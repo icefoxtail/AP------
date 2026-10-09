@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_13_B1";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q13-B1",
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "집합",
+    "originalCategory": "집합",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "집합"
+    ],
+    "wide": false,
+    "content": "$12$의 정수 약수 전체의 집합을 $D$라 하자. $D$의 부분집합 $A$ 중 $-1\\in A$이고 모든 원소의 곱이 양수인 집합 $A$의 개수는?",
+    "choices": [
+      "$64$",
+      "$320$",
+      "$1008$",
+      "$1024$",
+      "$2048$"
+    ],
+    "answer": "④",
+    "solution": "음의 약수는 $-1,-2,-3,-4,-6,-12$로 모두 $6$개이다. $-1$을 반드시 택하므로 나머지 음수 $5$개에서는 홀수 개를 택해야 음수의 총 개수가 짝수가 된다.\n나머지 음수의 선택은 $\\binom51+\\binom53+\\binom55=5+10+1=16$가지이다.\n양수 약수 $6$개는 자유롭게 선택하므로 $2^6=64$가지이다.\n$-1$을 반드시 포함하므로 공집합이 나올 수 없다. 따라서 $16\\times64=1024$개이므로 정답은 ④이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 13,
+    "slot": "B1",
+    "purposeGroup": "B"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q13-B1");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q13-B1","meta":{"rpmL1":"집합과 명제","rpmL2":"집합의 뜻과 포함 관계","rpmL3":"부분집합","rpmL4":"EXT-H1-C2-05-Q13-SIGNED-PRODUCT|정수 약수의 곱의 부호를 만족하는 부분집합","rpmL4Namespace":"GENERATED_EXT_L4","rpmPrimaryRecordId":"H1-RPM-234","rpmAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","generatedL4RegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/palma-q13-registry.json","generatedL4RegistrySha256":"06968c7dd781aca7ca25b99adca3a5706bb29b6f72ac21ece46cd6d117b3b18b","secondaryConceptKeys":[],"crossConceptKeys":["EXT-CC-H1-Q13-SIGNED-DIVISOR-ENUMERATION","EXT-CC-H1-Q13-COMBINATION-COUNTING"],"conditionKeys":["COND_INTEGER","COND_POSITIVE","EXT-COND-H1-Q13-REQUIRED-ELEMENT"],"crossConceptRegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json","conditionRegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json","sourceKind":"generated","integrationPattern":"CASE_BRANCH","difficultyBucket":4,"level":"상","problemTypeKey":"PT_SUBSET_COUNT","templateKey":"TPL_SUBSET_COUNT_SET_CONDITION","standardCourse":"공통수학2","standardUnitKey":"H22-C2-05","subUnitKey":"H22-C2-05-CORE"},"metaFinalSha256":"332125d862b4d040921f29604b8faab2581a506e2d384bf9be550be876e65586","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q13-B1.json","sha256":"85d6ac8e34d7c33ebe04a68328738381b04868d9ef129f8775b8b6e1289ae1ea","reviewStatus":"REVIEW_PASS","uid":"ALITE-PALMA25-2MID-Q13-B1"},"metaReviewEvidenceSha256":"85d6ac8e34d7c33ebe04a68328738381b04868d9ef129f8775b8b6e1289ae1ea","difficultyBucket":4,"level":"상","problemTypeKey":"PT_SUBSET_COUNT","templateKey":"TPL_SUBSET_COUNT_SET_CONDITION","secondaryConceptKeys":[],"crossConceptKeys":["EXT-CC-H1-Q13-SIGNED-DIVISOR-ENUMERATION","EXT-CC-H1-Q13-COMBINATION-COUNTING"],"conditionKeys":["COND_INTEGER","COND_POSITIVE","EXT-COND-H1-Q13-REQUIRED-ELEMENT"],"integrationPattern":"CASE_BRANCH"});})();

@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "ALIVE_QID9_TARGETED_META_CORRECTION_REVIEW_V1",
+  "status": "PASS",
+  "reviewer": {
+    "role": "alive_fidelity_reviewer",
+    "agentTask": "/root/palma_q09_meta_mapping",
+    "authority": "current canonical integrationPattern definitions"
+  },
+  "scope": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q09-C1",
+      "field": "integrationPattern",
+      "value": "SEQUENTIAL",
+      "rationale": "내분 좌표→무게중심→거리의 선형 연산"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q09-C2",
+      "field": "integrationPattern",
+      "value": "SEQUENTIAL",
+      "rationale": "내분 좌표→무게중심→직선 조건→거리의 순차 계산"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q09-C3",
+      "field": "integrationPattern",
+      "value": "SEQUENTIAL",
+      "rationale": "좌표 결정→무게중심 조건→넓이의 순차 계산"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q10-C1",
+      "field": "integrationPattern",
+      "value": "SEQUENTIAL",
+      "rationale": "합집합→차집합 순차 적용"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q10-C2",
+      "field": "integrationPattern",
+      "value": "SEQUENTIAL",
+      "rationale": "교집합→차집합→합집합 결과의 순차 연산"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q10-C3",
+      "field": "integrationPattern",
+      "value": "CASE_BRANCH",
+      "rationale": "두 집합이 모두 포함/둘 다 미포함인 두 조건 분기 후 합집합"
+    }
+  ],
+  "canonicalValues": [
+    "NONE",
+    "SEQUENTIAL",
+    "INTERDEPENDENT",
+    "REINTERPRETATION",
+    "CASE_BRANCH",
+    "DEEP_COMPOSITE"
+  ],
+  "authorityFiles": [
+    "archive/data/meta-foundation/canonical/metadata_rules.json",
+    "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md"
+  ],
+  "packageSha256": {
+    "GPT_QID9_Q09_PACKAGE.json": "3bdbc716d52e1f5688499c06cf316f66663cc473dc9e690195ec278dd2760a41",
+    "GPT_QID9_Q10_PACKAGE.json": "4a949812fcf34d31c5d4e5e3a65a3a2046b703fd4fc70dd7b0168d1f3faccd22"
+  },
+  "answerOrStudentTextChanged": false,
+  "method": "targeted correction review; existing q09-q12 open-book ledger retained as prior history, not treated as review of these updated fields"
+}

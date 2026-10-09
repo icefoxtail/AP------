@@ -2,10 +2,12 @@
   "use strict";
   const C = window.Archive2Core,
     Source = window.Archive2Source;
+  const ProblemBankMeta = window.ProblemBankMeta;
   const O = window.Archive2Output;
   const Parts = window.Archive2Papers;
   const History = window.Archive2History;
   const frozenPaperCache = new Map();
+  const composeMetaQueryCache = new Map();
   const lockedIndex = (index) =>
     Boolean(Parts.receipt(state.receipts, Parts.partIndex(index)));
   const ownHistoryContext = () => {
@@ -134,7 +136,7 @@
     };
     delete selectionFilters.scopeQuestionUids;
     for (const record of state.catalog.records || []) {
-      if (!C.matches(record, selectionFilters, state) || !workspaceEligibility(record).ok) continue;
+      if (!C.matches(record, selectionFilters, state) || !composeMetaMatches(record) || !workspaceEligibility(record).ok) continue;
       const parent = C.basicScopeParent(
         record,
         state.catalog.basicScopeLinks,
@@ -207,6 +209,8 @@
     historyError: "",
     targetVersion: 0,
     finderIndex: new Map(),
+    metaIndex: [],
+    metaIndexSource: null,
     inspector: "summary",
     previewIndex: 0,
     outputMode: "exam",
@@ -737,7 +741,7 @@
     const seenUids = new Set();
     for (const record of state.catalog.records || []) {
       if (!record.questionUid || seenUids.has(record.questionUid)) continue;
-      if (!C.matches(record, selectionFilters, state) || !workspaceEligibility(record).ok) continue;
+      if (!C.matches(record, selectionFilters, state) || !composeMetaMatches(record) || !workspaceEligibility(record).ok) continue;
       if (!C.rowMatches(record, { difficultyBuckets: state.buckets }) || excluded.has(record.questionUid)) continue;
       const parent = C.basicScopeParent(
         record,
@@ -870,11 +874,37 @@
   }
   function pool() {
     const scopes = selectedScopeOptions();
-    if (!scopes.length) return state.catalog.records;
+    if (!scopes.length) return state.catalog.records.filter(record => composeMetaMatches(record));
     const uids = new Set(scopes.flatMap(scope => scope.scopeQuestionUids));
     return state.catalog.records.filter(
-      (r) => uids.has(r.questionUid),
+      (r) => uids.has(r.questionUid) && composeMetaMatches(r),
     );
+  }
+  function composeMetaMatches(record, filters = state.filters) {
+    const hasMetaFilter = Boolean(filters.L1 || filters.L2 || filters.L3 || filters.L4 || state.buckets.length);
+    if (!hasMetaFilter) return true;
+    if (state.catalog?.records && state.metaIndexSource !== state.catalog.records) {
+      state.metaIndex = ProblemBankMeta.buildIndex(state.catalog.records, []);
+      state.metaIndexSource = state.catalog.records;
+      composeMetaQueryCache.clear();
+    }
+    // Existing MF-qualified selectors keep their established canonical authority path.
+    const directFilters = {};
+    for (const level of [1, 2, 3, 4]) {
+      const value = filters[`L${level}`];
+      if (value && !(level >= 3 && /^(?:mf|rpm):/.test(value)))
+        directFilters[`rpmL${level}`] = value.replace(/^rpm:/, "");
+    }
+    if (state.buckets.length) directFilters.difficultyBuckets = state.buckets;
+    const key = JSON.stringify([state.indexVersion, directFilters]);
+    let allowed = composeMetaQueryCache.get(key);
+    if (!allowed) {
+      allowed = new Set(ProblemBankMeta.query(state.metaIndex, directFilters, { profile: "DIRECT" })
+        .map(row => row.questionUid));
+      if (composeMetaQueryCache.size >= 8) composeMetaQueryCache.clear();
+      composeMetaQueryCache.set(key, allowed);
+    }
+    return allowed.has(record.questionUid);
   }
   function request(useFrozen = false) {
     const rows = useFrozen ? state.rows : planRows();
@@ -1523,7 +1553,7 @@
     const baseFilters = { ...selectionFilters, L3: "", L4: "" };
     const excluded = C.composeExclusions(context()).union;
     const eligible = pool().filter(r =>
-      C.matches(r, baseFilters, state) && workspaceEligibility(r).ok && !excluded.has(r.questionUid));
+      C.matches(r, baseFilters, state) && composeMetaMatches(r) && workspaceEligibility(r).ok && !excluded.has(r.questionUid));
     const labels = window.ARCHIVE_META_FOUNDATION_LABELS || { problemTypes: {}, templates: {} };
     const concepts = new Map(), types = new Map();
     for (const record of eligible) {
@@ -1562,6 +1592,7 @@
     const candidates = pool().filter(
       (r) =>
         C.matches(r, selectionFilters, state) &&
+        composeMetaMatches(r) &&
         workspaceEligibility(r).ok &&
         !excluded.has(r.questionUid),
     );
@@ -3962,6 +3993,10 @@
       if (typeof window.applyArchiveMetaFoundationCatalog !== "function")
         throw new Error("CANONICAL_AUTHORITY_UNAVAILABLE: 현재 분류 기준을 확인할 수 없습니다.");
       state.catalog = await window.applyArchiveMetaFoundationCatalog();
+      if (!ProblemBankMeta) throw new Error("PROBLEM_BANK_META_UNAVAILABLE");
+      state.metaIndex = ProblemBankMeta.buildIndex(state.catalog.records, []);
+      state.metaIndexSource = state.catalog.records;
+      composeMetaQueryCache.clear();
       state.crosswalkInventory = await fetch(
         "data/archive2-crosswalk-inventory.json",
       )

@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_05_C3";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q05-C3",
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "직선의 방정식",
+    "originalCategory": "직선의 방정식",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-C2-02-LINE_EQUATION",
+    "subUnit": "직선의 방정식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "직선의 방정식"
+    ],
+    "wide": false,
+    "content": "실수 $t$에 대하여 세 점 $A(0,0)$, $B(6,0)$, $C(t,4)$가 만드는 삼각형의 외심이 직선 $y=2$ 위에 있다. 가능한 $t$의 값을 모두 바르게 나타낸 것은?",
+    "choices": [
+      "$t=0$ 또는 $t=3$",
+      "$t=0$ 또는 $t=6$",
+      "$t=3$ 또는 $t=6$",
+      "$t=-6$ 또는 $t=0$",
+      "$t=3-\\sqrt5$ 또는 $t=3+\\sqrt5$"
+    ],
+    "answer": "②",
+    "solution": "선분 $AB$는 $x$축 위에 있고 중점이 $(3,0)$이므로 수직이등분선은 $x=3$이다. 따라서 외심은 주어진 직선 $y=2$와의 교점 $O(3,2)$이어야 한다. 외심에서 $A$까지의 거리 제곱은 $OA^2=3^2+2^2=13$이고, $C(t,4)$까지의 거리 제곱은 $OC^2=(t-3)^2+(4-2)^2=(t-3)^2+4$이다. $(t-3)^2+4=13$에서 $(t-3)^2=9$이므로 $t=0$ 또는 $t=6$이다. 두 경우 모두 $C$가 $y=4$ 위에 있어 삼각형은 퇴화하지 않는다. 정답은 ②이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 5,
+    "slot": "C3",
+    "purposeGroup": "C"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q05-C3");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q05-C3","meta":{"rpmL1":"L1-1|도형의 방정식","rpmL2":"L2-1.2|직선의 방정식","rpmL3":"L3-1.2.1|직선의 방정식","rpmL4":"EXT-H1-C2-02-Q05-PERP-BISECTOR-PARAMETER|매개변수·자취 조건을 만족하는 수직이등분선","rpmL4Namespace":"GENERATED_EXT_L4","rpmPrimaryRecordId":"H1-RPM-210","rpmAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","generatedL4RegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-02-LINE_EQUATION/extension-l4/registry.json","generatedL4RegistrySha256":"4563c60b4f64ea69e8f501fa0a367b07b6ed3514b4a0ff402102599d38378658","secondaryConceptKeys":[],"crossConceptKeys":["CC_CIRCUMCIRCLE"],"conditionKeys":[],"crossConceptRegistryRef":null,"conditionRegistryRef":null,"sourceKind":"generated","integrationPattern":"CASE_BRANCH","difficultyBucket":4,"level":"상","problemTypeKey":"PT_LINE_EQUATION","templateKey":"TPL_LINE_PERP_BISECTOR","crossConceptEvidenceLabels":["삼각형의 외심"],"standardCourse":"공통수학2","standardUnitKey":"H22-C2-02","subUnitKey":"H22-C2-02-LINE_EQUATION"},"metaFinalSha256":"498e1391afedc655115f89c508693c5f029b6edf9d693a041def6c4edc349917","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q05-C3.json","sha256":"921b7f0524d1ff3d909e7d2adc5d5205f796a49ae55d38c11a92e7f056b73e8e","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261009_PALMA_Q05_Q08_36","scopeUids":["ALITE-PALMA25-2MID-Q05-C3"],"uid":"ALITE-PALMA25-2MID-Q05-C3"},"metaReviewEvidenceSha256":"921b7f0524d1ff3d909e7d2adc5d5205f796a49ae55d38c11a92e7f056b73e8e","difficultyBucket":4,"level":"상","problemTypeKey":"PT_LINE_EQUATION","templateKey":"TPL_LINE_PERP_BISECTOR","secondaryConceptKeys":[],"crossConceptKeys":["CC_CIRCUMCIRCLE"],"conditionKeys":[],"integrationPattern":"CASE_BRANCH"});})();

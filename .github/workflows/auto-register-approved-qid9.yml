@@ -1,0 +1,70 @@
+name: Auto-register approved QID9 Meta and Consumer
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'alive/06_EXECUTION/H1_SCHOOL_EXPANSION/**/GPT_QID9_EXAM_MANIFEST.json'
+      - 'alive/06_EXECUTION/H1_SCHOOL_EXPANSION/**/GPT_QID9_Q*_PACKAGE.json'
+      - 'archive/tools/generated-meta/auto-register-approved-qid9.mjs'
+      - 'tools/check-generated-bank-browser.cjs'
+      - 'archive/generated/lite/v1/2022/H1/**/extension-l4/**'
+      - 'archive/generated/lite/v1/2022/H1/**/extension-meta/**'
+      - '.github/workflows/auto-register-approved-qid9.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'archive/tools/generated-meta/auto-register-approved-qid9.mjs'
+      - 'archive/tools/generated-meta-retention-gate.cjs'
+      - 'tests/generated-meta-retention.test.cjs'
+      - 'tests/archive2-generated-bank-registration.test.js'
+      - 'tools/check-generated-bank-browser.cjs'
+      - '.github/workflows/auto-register-approved-qid9.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: approved-qid9-auto-register-main
+  cancel-in-progress: false
+
+jobs:
+  auto-register:
+    name: Approval-to-Meta-to-Consumer-to-Chrome
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Materialize only approved QID9 items
+        run: node archive/tools/generated-meta/auto-register-approved-qid9.mjs --write
+      - name: Validate complete approved Meta and student Consumer
+        run: |
+          node archive/tools/generated-meta-retention-gate.cjs
+          node --test tests/generated-meta-retention.test.cjs tests/archive2-generated-bank-registration.test.js tests/problem-bank-meta.test.cjs tests/generated-meta-backfill.test.cjs
+      - name: Install real Chrome
+        uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Confirm actual student lookup, preview and print
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+        run: node tools/check-generated-bank-browser.cjs
+      - name: Commit generated artifacts without touching unrelated files
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        run: |
+          git add -A -- archive/generated/lite/v1/2022/H1 archive/data/generated-lite-consumer/v1/index.json archive/data/generated-lite-consumer/v1/shards alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE
+          if git diff --cached --quiet; then
+            echo "No new approval to publish"
+            exit 0
+          fi
+          git fetch origin main
+          test "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" || { echo "Main moved; abort stale write"; exit 1; }
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m "chore(alive): auto-register approved Generated QID9 and Meta"
+          git push origin HEAD:main

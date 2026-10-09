@@ -1,0 +1,1668 @@
+{
+  "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
+  "school": "팔마고",
+  "batchId": "PALMA25-QID9-Q13_Q16_36-20261009",
+  "sourceKind": "generated",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceExamFileSha256": "1C7C2C331464AA214331D844E32F9378C86654B1B8E495C8C3CDF759B26BEAEF",
+  "releaseBasis": "GPT_OPEN_BOOK_REVIEW_PASS_20261009_PALMA_Q13_Q16_36",
+  "reviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q13_Q16_OPENBOOK_REVIEW_REPAIR_20261009.md",
+  "technicalVerification": {
+    "studentBrowser": "NOT_TESTED",
+    "mainMerge": "PENDING",
+    "staticSchema": "VERIFIED_9_OF_9"
+  },
+  "records": [
+    {
+      "generatedUid": "ALITE-PALMA25-2MID-Q14-A1",
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "sourceExamFileSha256": "1C7C2C331464AA214331D844E32F9378C86654B1B8E495C8C3CDF759B26BEAEF",
+      "sourceQid": 14,
+      "localOrdinal": 1,
+      "l2": "H22-C2-06-CORE",
+      "purposeGroup": "A",
+      "slot": "A1",
+      "rpmPrimary": {
+        "recordId": "H1-RPM-244",
+        "l1": "집합과 명제",
+        "l2": "명제",
+        "l3": "명제와 조건",
+        "l4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산",
+        "namespace": "GENERATED_EXT_L4",
+        "mappingStatus": "GENERATED_EXT_L4_REGISTERED"
+      },
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "reviewApprovalBasis": "GPT_OPEN_BOOK_REVIEW_PASS_20261009_PALMA_Q13_Q16_36",
+      "studentSupplyEligible": true,
+      "consumerSelectable": true,
+      "studentVisual": "NOT_REQUIRED",
+      "question": {
+        "id": 1,
+        "uid": "ALITE-PALMA25-2MID-Q14-A1",
+        "level": "중",
+        "difficultyBucket": 3,
+        "category": "명제",
+        "originalCategory": "명제",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "명제"
+        ],
+        "wide": false,
+        "content": "명제 ‘모든 실수 $x$에 대하여 $-x^2+ax-9<0$이다.’의 부정이 참이 되도록 하는 실수 $a$의 값의 범위는?",
+        "choices": [
+          "$a<-6$ 또는 $a>6$",
+          "$-6<a<6$",
+          "$a\\le-6$ 또는 $a\\ge6$",
+          "$-6\\le a\\le6$",
+          "$a\\le-3$ 또는 $a\\ge3$"
+        ],
+        "answer": "③",
+        "solution": "주어진 명제의 부정은 ‘어떤 실수 $x$에 대하여 $-x^2+ax-9\\ge0$이다.’이다.\n$-x^2+ax-9=-\\left(x-\\dfrac a2\\right)^2+\\dfrac{a^2}{4}-9$이므로 최댓값은 $\\dfrac{a^2}{4}-9$이다.\n부정 명제가 참이려면 최댓값이 $0$ 이상이어야 하므로 $\\dfrac{a^2}{4}-9\\ge0$, 즉 $a^2\\ge36$이다.\n따라서 $a\\le-6$ 또는 $a\\ge6$이다. 등호에서 식의 값이 $0$이 되는 실수가 존재하므로 경계도 포함한다. 따라서 정답은 ③이다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "sourceQid": 14,
+        "slot": "A1",
+        "purposeGroup": "A",
+        "meta": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-PALMA25-2MID-Q14-A1",
+          "status": "SOURCE_META_PRESERVED",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-06",
+          "subUnitKey": "H22-C2-06-CORE",
+          "rpmPrimaryRecordId": "H1-RPM-244",
+          "rpmL1": "집합과 명제",
+          "rpmL2": "명제",
+          "rpmL3": "명제와 조건",
+          "rpmL4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산",
+          "rpmL4Namespace": "GENERATED_EXT_L4",
+          "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+          "templateKey": "TPL_PROPOSITION_UNIVERSAL_QUADRATIC_PARAMETER",
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": [
+            "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/registry.json",
+          "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "conditionEvidenceLabels": [],
+          "evidenceDebt": [],
+          "approval": "GPT_OPEN_BOOK_REVIEW_PASS",
+          "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+          "consumerSelectable": true,
+          "sourceCandidatePackageGitBlobSha": "5a3517c687181ffdf4320f53dfedaaa5a24a9a48",
+          "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q13_Q16_OPENBOOK_REVIEW_REPAIR_20261009.md",
+          "physicalStorageBucketKey": "H22-C2-06-CORE",
+          "sourceKind": "generated",
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "problemTypeKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "integrationPattern"
+            }
+          }
+        },
+        "rpmPrimaryL3": "명제와 조건",
+        "generatedL4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_PROPOSITION_UNIVERSAL_QUADRATIC_PARAMETER",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/shards/palma-2025-2mid-qid9-q14.js",
+      "sourceShardGitSha": "797661fc0d50c205257dc113e5dd6e5abe33c848"
+    },
+    {
+      "generatedUid": "ALITE-PALMA25-2MID-Q14-A2",
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "sourceExamFileSha256": "1C7C2C331464AA214331D844E32F9378C86654B1B8E495C8C3CDF759B26BEAEF",
+      "sourceQid": 14,
+      "localOrdinal": 2,
+      "l2": "H22-C2-06-CORE",
+      "purposeGroup": "A",
+      "slot": "A2",
+      "rpmPrimary": {
+        "recordId": "H1-RPM-244",
+        "l1": "집합과 명제",
+        "l2": "명제",
+        "l3": "명제와 조건",
+        "l4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산",
+        "namespace": "GENERATED_EXT_L4",
+        "mappingStatus": "GENERATED_EXT_L4_REGISTERED"
+      },
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "reviewApprovalBasis": "GPT_OPEN_BOOK_REVIEW_PASS_20261009_PALMA_Q13_Q16_36",
+      "studentSupplyEligible": true,
+      "consumerSelectable": true,
+      "studentVisual": "NOT_REQUIRED",
+      "question": {
+        "id": 2,
+        "uid": "ALITE-PALMA25-2MID-Q14-A2",
+        "level": "중",
+        "difficultyBucket": 3,
+        "category": "명제",
+        "originalCategory": "명제",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "명제"
+        ],
+        "wide": false,
+        "content": "명제 ‘모든 실수 $x$에 대하여 $-2x^2+ax-8<0$이다.’의 부정이 참이 되도록 하는 실수 $a$의 값의 범위는?",
+        "choices": [
+          "$a\\le-4$ 또는 $a\\ge4$",
+          "$-8\\le a\\le8$",
+          "$a<-8$ 또는 $a>8$",
+          "$-8<a<8$",
+          "$a\\le-8$ 또는 $a\\ge8$"
+        ],
+        "answer": "⑤",
+        "solution": "부정 명제는 ‘어떤 실수 $x$에서 $-2x^2+ax-8\\ge0$이다.’이다.\n$-2x^2+ax-8=-2\\left(x-\\dfrac a4\\right)^2+\\dfrac{a^2}{8}-8$이므로 최댓값이 $0$ 이상일 조건은 $a^2\\ge64$이다.\n따라서 $a\\le-8$ 또는 $a\\ge8$이다. 등호인 경우에도 최댓값 $0$을 갖는 실수가 존재한다. 따라서 정답은 ⑤이다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "sourceQid": 14,
+        "slot": "A2",
+        "purposeGroup": "A",
+        "meta": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-PALMA25-2MID-Q14-A2",
+          "status": "SOURCE_META_PRESERVED",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-06",
+          "subUnitKey": "H22-C2-06-CORE",
+          "rpmPrimaryRecordId": "H1-RPM-244",
+          "rpmL1": "집합과 명제",
+          "rpmL2": "명제",
+          "rpmL3": "명제와 조건",
+          "rpmL4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산",
+          "rpmL4Namespace": "GENERATED_EXT_L4",
+          "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+          "templateKey": "TPL_PROPOSITION_UNIVERSAL_QUADRATIC_PARAMETER",
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": [
+            "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/registry.json",
+          "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "conditionEvidenceLabels": [],
+          "evidenceDebt": [],
+          "approval": "GPT_OPEN_BOOK_REVIEW_PASS",
+          "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+          "consumerSelectable": true,
+          "sourceCandidatePackageGitBlobSha": "5a3517c687181ffdf4320f53dfedaaa5a24a9a48",
+          "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q13_Q16_OPENBOOK_REVIEW_REPAIR_20261009.md",
+          "physicalStorageBucketKey": "H22-C2-06-CORE",
+          "sourceKind": "generated",
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "problemTypeKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "integrationPattern"
+            }
+          }
+        },
+        "rpmPrimaryL3": "명제와 조건",
+        "generatedL4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_PROPOSITION_UNIVERSAL_QUADRATIC_PARAMETER",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/shards/palma-2025-2mid-qid9-q14.js",
+      "sourceShardGitSha": "797661fc0d50c205257dc113e5dd6e5abe33c848"
+    },
+    {
+      "generatedUid": "ALITE-PALMA25-2MID-Q14-A3",
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "sourceExamFileSha256": "1C7C2C331464AA214331D844E32F9378C86654B1B8E495C8C3CDF759B26BEAEF",
+      "sourceQid": 14,
+      "localOrdinal": 3,
+      "l2": "H22-C2-06-CORE",
+      "purposeGroup": "A",
+      "slot": "A3",
+      "rpmPrimary": {
+        "recordId": "H1-RPM-244",
+        "l1": "집합과 명제",
+        "l2": "명제",
+        "l3": "명제와 조건",
+        "l4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산",
+        "namespace": "GENERATED_EXT_L4",
+        "mappingStatus": "GENERATED_EXT_L4_REGISTERED"
+      },
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "reviewApprovalBasis": "GPT_OPEN_BOOK_REVIEW_PASS_20261009_PALMA_Q13_Q16_36",
+      "studentSupplyEligible": true,
+      "consumerSelectable": true,
+      "studentVisual": "NOT_REQUIRED",
+      "question": {
+        "id": 3,
+        "uid": "ALITE-PALMA25-2MID-Q14-A3",
+        "level": "중",
+        "difficultyBucket": 3,
+        "category": "명제",
+        "originalCategory": "명제",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "명제"
+        ],
+        "wide": false,
+        "content": "명제 ‘모든 실수 $x$에 대하여 $-x^2+2ax-16<0$이다.’의 부정이 참이 되도록 하는 실수 $a$의 값의 범위는?",
+        "choices": [
+          "$a\\le-4$ 또는 $a\\ge4$",
+          "$a<-4$ 또는 $a>4$",
+          "$-4<a<4$",
+          "$a\\le-8$ 또는 $a\\ge8$",
+          "$-4\\le a\\le4$"
+        ],
+        "answer": "①",
+        "solution": "부정 명제는 ‘어떤 실수 $x$에 대하여 $-x^2+2ax-16\\ge0$이다.’이다.\n$-x^2+2ax-16=-(x-a)^2+a^2-16$이므로 최댓값은 $a^2-16$이다.\n최댓값이 $0$ 이상이면 부정이 참이다. 따라서 $a^2\\ge16$이므로 $a\\le-4$ 또는 $a\\ge4$이다.\n등호에서는 $x=a$에서 식의 값이 $0$이므로 경계를 포함한다. 따라서 정답은 ①이다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "sourceQid": 14,
+        "slot": "A3",
+        "purposeGroup": "A",
+        "meta": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-PALMA25-2MID-Q14-A3",
+          "status": "SOURCE_META_PRESERVED",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-06",
+          "subUnitKey": "H22-C2-06-CORE",
+          "rpmPrimaryRecordId": "H1-RPM-244",
+          "rpmL1": "집합과 명제",
+          "rpmL2": "명제",
+          "rpmL3": "명제와 조건",
+          "rpmL4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산",
+          "rpmL4Namespace": "GENERATED_EXT_L4",
+          "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+          "templateKey": "TPL_PROPOSITION_UNIVERSAL_QUADRATIC_PARAMETER",
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": [
+            "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/registry.json",
+          "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "conditionEvidenceLabels": [],
+          "evidenceDebt": [],
+          "approval": "GPT_OPEN_BOOK_REVIEW_PASS",
+          "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+          "consumerSelectable": true,
+          "sourceCandidatePackageGitBlobSha": "5a3517c687181ffdf4320f53dfedaaa5a24a9a48",
+          "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q13_Q16_OPENBOOK_REVIEW_REPAIR_20261009.md",
+          "physicalStorageBucketKey": "H22-C2-06-CORE",
+          "sourceKind": "generated",
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "problemTypeKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "integrationPattern"
+            }
+          }
+        },
+        "rpmPrimaryL3": "명제와 조건",
+        "generatedL4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_PROPOSITION_UNIVERSAL_QUADRATIC_PARAMETER",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/shards/palma-2025-2mid-qid9-q14.js",
+      "sourceShardGitSha": "797661fc0d50c205257dc113e5dd6e5abe33c848"
+    },
+    {
+      "generatedUid": "ALITE-PALMA25-2MID-Q14-B1",
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "sourceExamFileSha256": "1C7C2C331464AA214331D844E32F9378C86654B1B8E495C8C3CDF759B26BEAEF",
+      "sourceQid": 14,
+      "localOrdinal": 4,
+      "l2": "H22-C2-06-CORE",
+      "purposeGroup": "B",
+      "slot": "B1",
+      "rpmPrimary": {
+        "recordId": "H1-RPM-244",
+        "l1": "집합과 명제",
+        "l2": "명제",
+        "l3": "명제와 조건",
+        "l4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산",
+        "namespace": "GENERATED_EXT_L4",
+        "mappingStatus": "GENERATED_EXT_L4_REGISTERED"
+      },
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "reviewApprovalBasis": "GPT_OPEN_BOOK_REVIEW_PASS_20261009_PALMA_Q13_Q16_36",
+      "studentSupplyEligible": true,
+      "consumerSelectable": true,
+      "studentVisual": "NOT_REQUIRED",
+      "question": {
+        "id": 4,
+        "uid": "ALITE-PALMA25-2MID-Q14-B1",
+        "level": "중",
+        "difficultyBucket": 3,
+        "category": "명제",
+        "originalCategory": "명제",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "명제"
+        ],
+        "wide": false,
+        "content": "명제 ‘어떤 실수 $x$에 대하여 $x^2-4x+a\\le0$이다.’의 부정이 참이 되도록 하는 실수 $a$의 값의 범위는?",
+        "choices": [
+          "$a\\ge4$",
+          "$a<4$",
+          "$a\\le4$",
+          "$a>4$",
+          "$a>-4$"
+        ],
+        "answer": "④",
+        "solution": "‘어떤 실수 $x$에 대하여 $x^2-4x+a\\le0$이다.’의 부정은 ‘모든 실수 $x$에 대하여 $x^2-4x+a>0$이다.’이다.\n$x^2-4x+a=(x-2)^2+a-4$이므로 최솟값은 $a-4$이다.\n모든 실수에서 양수이려면 최솟값이 $0$보다 커야 하므로 $a-4>0$이다.\n$a=4$에서는 $x=2$일 때 $0$이 되어 원래 명제가 참이므로 경계는 제외한다. 따라서 정답은 ④이다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "sourceQid": 14,
+        "slot": "B1",
+        "purposeGroup": "B",
+        "meta": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-PALMA25-2MID-Q14-B1",
+          "status": "SOURCE_META_PRESERVED",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-06",
+          "subUnitKey": "H22-C2-06-CORE",
+          "rpmPrimaryRecordId": "H1-RPM-244",
+          "rpmL1": "집합과 명제",
+          "rpmL2": "명제",
+          "rpmL3": "명제와 조건",
+          "rpmL4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산",
+          "rpmL4Namespace": "GENERATED_EXT_L4",
+          "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+          "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": [
+            "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/registry.json",
+          "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "conditionEvidenceLabels": [],
+          "evidenceDebt": [],
+          "approval": "GPT_OPEN_BOOK_REVIEW_PASS",
+          "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+          "consumerSelectable": true,
+          "sourceCandidatePackageGitBlobSha": "5a3517c687181ffdf4320f53dfedaaa5a24a9a48",
+          "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q13_Q16_OPENBOOK_REVIEW_REPAIR_20261009.md",
+          "physicalStorageBucketKey": "H22-C2-06-CORE",
+          "sourceKind": "generated",
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "problemTypeKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "integrationPattern"
+            }
+          }
+        },
+        "rpmPrimaryL3": "명제와 조건",
+        "generatedL4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/shards/palma-2025-2mid-qid9-q14.js",
+      "sourceShardGitSha": "797661fc0d50c205257dc113e5dd6e5abe33c848"
+    },
+    {
+      "generatedUid": "ALITE-PALMA25-2MID-Q14-B2",
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "sourceExamFileSha256": "1C7C2C331464AA214331D844E32F9378C86654B1B8E495C8C3CDF759B26BEAEF",
+      "sourceQid": 14,
+      "localOrdinal": 5,
+      "l2": "H22-C2-06-CORE",
+      "purposeGroup": "B",
+      "slot": "B2",
+      "rpmPrimary": {
+        "recordId": "H1-RPM-244",
+        "l1": "집합과 명제",
+        "l2": "명제",
+        "l3": "명제와 조건",
+        "l4": "EXT-H1-C2-06-Q14-RESTRICTED-DOMAIN|제한된 정의역에서 양화명제 부정의 참 조건",
+        "namespace": "GENERATED_EXT_L4",
+        "mappingStatus": "GENERATED_EXT_L4_REGISTERED"
+      },
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "reviewApprovalBasis": "GPT_OPEN_BOOK_REVIEW_PASS_20261009_PALMA_Q13_Q16_36",
+      "studentSupplyEligible": true,
+      "consumerSelectable": true,
+      "studentVisual": "NOT_REQUIRED",
+      "question": {
+        "id": 5,
+        "uid": "ALITE-PALMA25-2MID-Q14-B2",
+        "level": "중",
+        "difficultyBucket": 3,
+        "category": "명제",
+        "originalCategory": "명제",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "명제"
+        ],
+        "wide": false,
+        "content": "명제 ‘$0\\le x\\le2$인 모든 실수 $x$에 대하여 $-x^2+4x+a<0$이다.’의 부정이 참이 되도록 하는 실수 $a$의 값의 범위는?",
+        "choices": [
+          "$a>-4$",
+          "$a\\ge-4$",
+          "$a\\le-4$",
+          "$a<-4$",
+          "$a\\ge0$"
+        ],
+        "answer": "②",
+        "solution": "부정 명제는 ‘$0\\le x\\le2$인 어떤 실수 $x$에 대하여 $-x^2+4x+a\\ge0$이다.’이다.\n$-x^2+4x+a=-(x-2)^2+a+4$이며 꼭짓점 $x=2$가 주어진 구간에 포함되므로, 구간의 최댓값은 $a+4$이다.\n따라서 부정이 참일 조건은 $a+4\\ge0$, 즉 $a\\ge-4$이다.\n경계 $a=-4$에서도 $x=2$에서 이차식이 $0$이 되므로 포함한다. 따라서 정답은 ②이다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "sourceQid": 14,
+        "slot": "B2",
+        "purposeGroup": "B",
+        "meta": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-PALMA25-2MID-Q14-B2",
+          "status": "SOURCE_META_PRESERVED",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-06",
+          "subUnitKey": "H22-C2-06-CORE",
+          "rpmPrimaryRecordId": "H1-RPM-244",
+          "rpmL1": "집합과 명제",
+          "rpmL2": "명제",
+          "rpmL3": "명제와 조건",
+          "rpmL4": "EXT-H1-C2-06-Q14-RESTRICTED-DOMAIN|제한된 정의역에서 양화명제 부정의 참 조건",
+          "rpmL4Namespace": "GENERATED_EXT_L4",
+          "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+          "templateKey": "TPL_QUANTIFIER_NEGATION_INTERVAL",
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": [
+            "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+            "EXT-CROSS-H1-C2-06-Q14-INTERVAL-EXTREMA"
+          ],
+          "conditionKeys": [
+            "COND_RANGE",
+            "EXT-COND-H1-Q14-X-INTERVAL"
+          ],
+          "integrationPattern": "SEQUENTIAL",
+          "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/palma-q14-registry.json",
+          "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "conditionEvidenceLabels": [
+            "COND_RANGE",
+            "x의 제한 정의역 0≤x≤2"
+          ],
+          "evidenceDebt": [],
+          "approval": "GPT_OPEN_BOOK_REVIEW_PASS",
+          "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+          "consumerSelectable": true,
+          "sourceCandidatePackageGitBlobSha": "5a3517c687181ffdf4320f53dfedaaa5a24a9a48",
+          "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q13_Q16_OPENBOOK_REVIEW_REPAIR_20261009.md",
+          "physicalStorageBucketKey": "H22-C2-06-CORE",
+          "sourceKind": "generated",
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "problemTypeKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "integrationPattern"
+            }
+          }
+        },
+        "rpmPrimaryL3": "명제와 조건",
+        "generatedL4": "EXT-H1-C2-06-Q14-RESTRICTED-DOMAIN|제한된 정의역에서 양화명제 부정의 참 조건",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_QUANTIFIER_NEGATION_INTERVAL",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+          "EXT-CROSS-H1-C2-06-Q14-INTERVAL-EXTREMA"
+        ],
+        "conditionKeys": [
+          "COND_RANGE",
+          "EXT-COND-H1-Q14-X-INTERVAL"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/shards/palma-2025-2mid-qid9-q14.js",
+      "sourceShardGitSha": "797661fc0d50c205257dc113e5dd6e5abe33c848"
+    },
+    {
+      "generatedUid": "ALITE-PALMA25-2MID-Q14-B3",
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "sourceExamFileSha256": "1C7C2C331464AA214331D844E32F9378C86654B1B8E495C8C3CDF759B26BEAEF",
+      "sourceQid": 14,
+      "localOrdinal": 6,
+      "l2": "H22-C2-06-CORE",
+      "purposeGroup": "B",
+      "slot": "B3",
+      "rpmPrimary": {
+        "recordId": "H1-RPM-244",
+        "l1": "집합과 명제",
+        "l2": "명제",
+        "l3": "명제와 조건",
+        "l4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산",
+        "namespace": "GENERATED_EXT_L4",
+        "mappingStatus": "GENERATED_EXT_L4_REGISTERED"
+      },
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "reviewApprovalBasis": "GPT_OPEN_BOOK_REVIEW_PASS_20261009_PALMA_Q13_Q16_36",
+      "studentSupplyEligible": true,
+      "consumerSelectable": true,
+      "studentVisual": "NOT_REQUIRED",
+      "question": {
+        "id": 6,
+        "uid": "ALITE-PALMA25-2MID-Q14-B3",
+        "level": "상",
+        "difficultyBucket": 4,
+        "category": "명제",
+        "originalCategory": "명제",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "명제"
+        ],
+        "wide": false,
+        "content": "$-8\\le a\\le8$인 정수 $a$에 대하여 명제 ‘모든 실수 $x$에 대하여 $-x^2+ax-9<0$이다.’의 부정이 참이 되도록 하는 $a$의 개수는?",
+        "choices": [
+          "$4$",
+          "$12$",
+          "$3$",
+          "$6$",
+          "$17$"
+        ],
+        "answer": "④",
+        "solution": "주어진 명제의 부정은 ‘어떤 실수 $x$에서 $-x^2+ax-9\\ge0$이다.’이다.\n$-x^2+ax-9=-\\left(x-\\dfrac a2\\right)^2+\\dfrac{a^2}{4}-9$이므로 최댓값이 $0$ 이상일 조건은 $a^2\\ge36$이다.\n따라서 $a\\le-6$ 또는 $a\\ge6$이고, $-8\\le a\\le8$인 정수 중 가능한 것은 $-8,-7,-6,6,7,8$의 $6$개이다.\n$a=\\pm6$에서도 식이 $0$이 되는 $x$가 존재하므로 포함한다. 따라서 정답은 ④이다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "sourceQid": 14,
+        "slot": "B3",
+        "purposeGroup": "B",
+        "meta": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-PALMA25-2MID-Q14-B3",
+          "status": "SOURCE_META_PRESERVED",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-06",
+          "subUnitKey": "H22-C2-06-CORE",
+          "rpmPrimaryRecordId": "H1-RPM-244",
+          "rpmL1": "집합과 명제",
+          "rpmL2": "명제",
+          "rpmL3": "명제와 조건",
+          "rpmL4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산",
+          "rpmL4Namespace": "GENERATED_EXT_L4",
+          "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+          "templateKey": "TPL_PROPOSITION_COUNTEREXAMPLE_COUNT_PARAMETER",
+          "difficultyBucket": 4,
+          "level": "상",
+          "crossConceptKeys": [
+            "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+            "EXT-CROSS-H1-C2-06-Q14-INTEGER-PARAMETER-COUNT"
+          ],
+          "conditionKeys": [
+            "COND_INTEGER",
+            "COND_RANGE"
+          ],
+          "integrationPattern": "CASE_BRANCH",
+          "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/registry.json",
+          "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "conditionEvidenceLabels": [
+            "COND_INTEGER",
+            "COND_RANGE"
+          ],
+          "evidenceDebt": [],
+          "approval": "GPT_OPEN_BOOK_REVIEW_PASS",
+          "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+          "consumerSelectable": true,
+          "sourceCandidatePackageGitBlobSha": "5a3517c687181ffdf4320f53dfedaaa5a24a9a48",
+          "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q13_Q16_OPENBOOK_REVIEW_REPAIR_20261009.md",
+          "physicalStorageBucketKey": "H22-C2-06-CORE",
+          "sourceKind": "generated",
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "problemTypeKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "integrationPattern"
+            }
+          }
+        },
+        "rpmPrimaryL3": "명제와 조건",
+        "generatedL4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_PROPOSITION_COUNTEREXAMPLE_COUNT_PARAMETER",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+          "EXT-CROSS-H1-C2-06-Q14-INTEGER-PARAMETER-COUNT"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/shards/palma-2025-2mid-qid9-q14.js",
+      "sourceShardGitSha": "797661fc0d50c205257dc113e5dd6e5abe33c848"
+    },
+    {
+      "generatedUid": "ALITE-PALMA25-2MID-Q14-C1",
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "sourceExamFileSha256": "1C7C2C331464AA214331D844E32F9378C86654B1B8E495C8C3CDF759B26BEAEF",
+      "sourceQid": 14,
+      "localOrdinal": 7,
+      "l2": "H22-C2-06-CORE",
+      "purposeGroup": "C",
+      "slot": "C1",
+      "rpmPrimary": {
+        "recordId": "H1-RPM-244",
+        "l1": "집합과 명제",
+        "l2": "명제",
+        "l3": "명제와 조건",
+        "l4": "EXT-H1-C2-06-Q14-RESTRICTED-DOMAIN|제한된 정의역에서 양화명제 부정의 참 조건",
+        "namespace": "GENERATED_EXT_L4",
+        "mappingStatus": "GENERATED_EXT_L4_REGISTERED"
+      },
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "reviewApprovalBasis": "GPT_OPEN_BOOK_REVIEW_PASS_20261009_PALMA_Q13_Q16_36",
+      "studentSupplyEligible": true,
+      "consumerSelectable": true,
+      "studentVisual": "NOT_REQUIRED",
+      "question": {
+        "id": 7,
+        "uid": "ALITE-PALMA25-2MID-Q14-C1",
+        "level": "상",
+        "difficultyBucket": 5,
+        "category": "명제",
+        "originalCategory": "명제",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "명제"
+        ],
+        "wide": false,
+        "content": "명제 ‘$0\\le x\\le2$인 모든 실수 $x$에 대하여 $-x^2+2ax-3<0$이다.’의 부정이 참이 되도록 하는 실수 $a$의 값의 범위는?",
+        "choices": [
+          "$a\\ge\\sqrt3$",
+          "$a>\\sqrt3$",
+          "$a\\le-\\sqrt3$ 또는 $a\\ge\\sqrt3$",
+          "$a\\ge\\dfrac74$",
+          "$a\\le\\sqrt3$"
+        ],
+        "answer": "①",
+        "solution": "부정 명제는 ‘$0\\le x\\le2$인 어떤 실수 $x$에서 $-x^2+2ax-3\\ge0$이다.’이다.\n함수 $f(x)=-x^2+2ax-3=-(x-a)^2+a^2-3$을 구간 $0\\le x\\le2$에서 살펴보자.\n$a\\le0$이면 $0\\le x\\le2$에서 $-x^2\\le0$, $2ax\\le0$이므로 $f(x)\\le-3<0$이다.\n$0<a\\le2$이면 꼭짓점 $x=a$가 구간 안에 있으므로 최댓값 $a^2-3\\ge0$, 즉 $\\sqrt3\\le a\\le2$여야 한다.\n$a>2$이면 구간에서 $f(x)$가 증가하여 최댓값은 $f(2)=4a-7>0$이다.\n세 경우를 합치면 $a\\ge\\sqrt3$이다. $a=\\sqrt3$에서도 $x=\\sqrt3$에서 최댓값 $0$을 가지므로 경계를 포함한다.\n따라서 정답은 ①이다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "sourceQid": 14,
+        "slot": "C1",
+        "purposeGroup": "C",
+        "meta": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-PALMA25-2MID-Q14-C1",
+          "status": "SOURCE_META_PRESERVED",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-06",
+          "subUnitKey": "H22-C2-06-CORE",
+          "rpmPrimaryRecordId": "H1-RPM-244",
+          "rpmL1": "집합과 명제",
+          "rpmL2": "명제",
+          "rpmL3": "명제와 조건",
+          "rpmL4": "EXT-H1-C2-06-Q14-RESTRICTED-DOMAIN|제한된 정의역에서 양화명제 부정의 참 조건",
+          "rpmL4Namespace": "GENERATED_EXT_L4",
+          "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+          "templateKey": "TPL_QUANTIFIER_NEGATION_INTERVAL",
+          "difficultyBucket": 5,
+          "level": "상",
+          "crossConceptKeys": [
+            "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+            "EXT-CROSS-H1-C2-06-Q14-INTERVAL-EXTREMA"
+          ],
+          "conditionKeys": [
+            "COND_RANGE",
+            "EXT-COND-H1-Q14-X-INTERVAL"
+          ],
+          "integrationPattern": "CASE_BRANCH",
+          "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/palma-q14-registry.json",
+          "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "conditionEvidenceLabels": [
+            "COND_RANGE",
+            "x의 제한 정의역 0≤x≤2"
+          ],
+          "evidenceDebt": [],
+          "approval": "GPT_OPEN_BOOK_REVIEW_PASS",
+          "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+          "consumerSelectable": true,
+          "sourceCandidatePackageGitBlobSha": "5a3517c687181ffdf4320f53dfedaaa5a24a9a48",
+          "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q13_Q16_OPENBOOK_REVIEW_REPAIR_20261009.md",
+          "physicalStorageBucketKey": "H22-C2-06-CORE",
+          "sourceKind": "generated",
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "problemTypeKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "integrationPattern"
+            }
+          }
+        },
+        "rpmPrimaryL3": "명제와 조건",
+        "generatedL4": "EXT-H1-C2-06-Q14-RESTRICTED-DOMAIN|제한된 정의역에서 양화명제 부정의 참 조건",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_QUANTIFIER_NEGATION_INTERVAL",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+          "EXT-CROSS-H1-C2-06-Q14-INTERVAL-EXTREMA"
+        ],
+        "conditionKeys": [
+          "COND_RANGE",
+          "EXT-COND-H1-Q14-X-INTERVAL"
+        ],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/shards/palma-2025-2mid-qid9-q14.js",
+      "sourceShardGitSha": "797661fc0d50c205257dc113e5dd6e5abe33c848"
+    },
+    {
+      "generatedUid": "ALITE-PALMA25-2MID-Q14-C2",
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "sourceExamFileSha256": "1C7C2C331464AA214331D844E32F9378C86654B1B8E495C8C3CDF759B26BEAEF",
+      "sourceQid": 14,
+      "localOrdinal": 8,
+      "l2": "H22-C2-06-CORE",
+      "purposeGroup": "C",
+      "slot": "C2",
+      "rpmPrimary": {
+        "recordId": "H1-RPM-244",
+        "l1": "집합과 명제",
+        "l2": "명제",
+        "l3": "명제와 조건",
+        "l4": "EXT-H1-C2-06-Q14-DUAL-QUANTIFIER|두 양화명제의 부정 동시 성립",
+        "namespace": "GENERATED_EXT_L4",
+        "mappingStatus": "GENERATED_EXT_L4_REGISTERED"
+      },
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "reviewApprovalBasis": "GPT_OPEN_BOOK_REVIEW_PASS_20261009_PALMA_Q13_Q16_36",
+      "studentSupplyEligible": true,
+      "consumerSelectable": true,
+      "studentVisual": "NOT_REQUIRED",
+      "question": {
+        "id": 8,
+        "uid": "ALITE-PALMA25-2MID-Q14-C2",
+        "level": "상",
+        "difficultyBucket": 5,
+        "category": "명제",
+        "originalCategory": "명제",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "명제"
+        ],
+        "wide": false,
+        "content": "$-6\\le a\\le8$인 정수 $a$에 대하여 두 명제<br>$p$: ‘모든 실수 $x$에 대하여 $-x^2+2ax-9<0$이다.’<br>$q$: ‘모든 실수 $x$에 대하여 $-x^2+2(a-4)x-4<0$이다.’<br>명제 $p$의 부정과 명제 $q$의 부정이 모두 참이 되도록 하는 $a$의 개수는?",
+        "choices": [
+          "$15$",
+          "$7$",
+          "$10$",
+          "$12$",
+          "$3$"
+        ],
+        "answer": "②",
+        "solution": "두 명제의 부정이 모두 참이려면 각각 어떤 실수 $x$에서 해당 이차식이 $0$ 이상이어야 한다. $p$와 $q$의 반례가 되는 $x$는 서로 달라도 된다.\n$p$의 이차식은 $-x^2+2ax-9=-(x-a)^2+a^2-9$이므로, $p$의 부정은 $a^2\\ge9$, 즉 $a\\le-3$ 또는 $a\\ge3$일 때 참이다.\n$q$의 이차식은 $-x^2+2(a-4)x-4=-(x-a+4)^2+(a-4)^2-4$이므로, $q$의 부정은 $(a-4)^2\\ge4$, 즉 $a\\le2$ 또는 $a\\ge6$일 때 참이다.\n두 조건의 공통 범위는 $a\\le-3$ 또는 $a\\ge6$이다.\n$-6\\le a\\le8$인 정수 중 $-6,-5,-4,-3$의 $4$개와 $6,7,8$의 $3$개로 모두 $7$개이다.\n따라서 정답은 ②이다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "sourceQid": 14,
+        "slot": "C2",
+        "purposeGroup": "C",
+        "meta": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-PALMA25-2MID-Q14-C2",
+          "status": "SOURCE_META_PRESERVED",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-06",
+          "subUnitKey": "H22-C2-06-CORE",
+          "rpmPrimaryRecordId": "H1-RPM-244",
+          "rpmL1": "집합과 명제",
+          "rpmL2": "명제",
+          "rpmL3": "명제와 조건",
+          "rpmL4": "EXT-H1-C2-06-Q14-DUAL-QUANTIFIER|두 양화명제의 부정 동시 성립",
+          "rpmL4Namespace": "GENERATED_EXT_L4",
+          "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+          "templateKey": "TPL_PROPOSITION_COUNTEREXAMPLE_COUNT_PARAMETER",
+          "difficultyBucket": 5,
+          "level": "상",
+          "crossConceptKeys": [
+            "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+            "EXT-CROSS-H1-C2-06-Q14-INTEGER-PARAMETER-COUNT"
+          ],
+          "conditionKeys": [
+            "COND_INTEGER",
+            "COND_RANGE",
+            "EXT-COND-H1-Q14-BOTH-NEGATIONS"
+          ],
+          "integrationPattern": "CASE_BRANCH",
+          "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/palma-q14-registry.json",
+          "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "conditionEvidenceLabels": [
+            "COND_INTEGER",
+            "COND_RANGE",
+            "두 전칭명제의 부정이 모두 참"
+          ],
+          "evidenceDebt": [],
+          "approval": "GPT_OPEN_BOOK_REVIEW_PASS",
+          "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+          "consumerSelectable": true,
+          "sourceCandidatePackageGitBlobSha": "5a3517c687181ffdf4320f53dfedaaa5a24a9a48",
+          "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q13_Q16_OPENBOOK_REVIEW_REPAIR_20261009.md",
+          "physicalStorageBucketKey": "H22-C2-06-CORE",
+          "sourceKind": "generated",
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "problemTypeKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "integrationPattern"
+            }
+          }
+        },
+        "rpmPrimaryL3": "명제와 조건",
+        "generatedL4": "EXT-H1-C2-06-Q14-DUAL-QUANTIFIER|두 양화명제의 부정 동시 성립",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_PROPOSITION_COUNTEREXAMPLE_COUNT_PARAMETER",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+          "EXT-CROSS-H1-C2-06-Q14-INTEGER-PARAMETER-COUNT"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE",
+          "EXT-COND-H1-Q14-BOTH-NEGATIONS"
+        ],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/shards/palma-2025-2mid-qid9-q14.js",
+      "sourceShardGitSha": "797661fc0d50c205257dc113e5dd6e5abe33c848"
+    },
+    {
+      "generatedUid": "ALITE-PALMA25-2MID-Q14-C3",
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "sourceExamFileSha256": "1C7C2C331464AA214331D844E32F9378C86654B1B8E495C8C3CDF759B26BEAEF",
+      "sourceQid": 14,
+      "localOrdinal": 9,
+      "l2": "H22-C2-06-CORE",
+      "purposeGroup": "C",
+      "slot": "C3",
+      "rpmPrimary": {
+        "recordId": "H1-RPM-244",
+        "l1": "집합과 명제",
+        "l2": "명제",
+        "l3": "명제와 조건",
+        "l4": "EXT-H1-C2-06-Q14-COUNTEREXAMPLE-INVERSE|부정의 참 매개변수 개수에서 상수 역산",
+        "namespace": "GENERATED_EXT_L4",
+        "mappingStatus": "GENERATED_EXT_L4_REGISTERED"
+      },
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "reviewApprovalBasis": "GPT_OPEN_BOOK_REVIEW_PASS_20261009_PALMA_Q13_Q16_36",
+      "studentSupplyEligible": true,
+      "consumerSelectable": true,
+      "studentVisual": "NOT_REQUIRED",
+      "question": {
+        "id": 9,
+        "uid": "ALITE-PALMA25-2MID-Q14-C3",
+        "level": "상",
+        "difficultyBucket": 5,
+        "category": "명제",
+        "originalCategory": "명제",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "명제"
+        ],
+        "wide": false,
+        "content": "자연수 $k$와 $-5\\le a\\le5$인 정수 $a$에 대하여 명제 ‘모든 실수 $x$에 대하여 $-x^2+2ax-k<0$이다.’를 생각하자. 이 명제의 부정이 참이 되는 정수 $a$가 정확히 $6$개일 때, 가능한 모든 $k$의 값의 합은?",
+        "choices": [
+          "$39$",
+          "$26$",
+          "$35$",
+          "$45$",
+          "$9$"
+        ],
+        "answer": "③",
+        "solution": "주어진 명제의 부정은 ‘어떤 실수 $x$에서 $-x^2+2ax-k\\ge0$이다.’이다.\n$-x^2+2ax-k=-(x-a)^2+a^2-k$이므로, 부정 명제가 참일 조건은 최댓값 $a^2-k\\ge0$, 즉 $a^2\\ge k$이다.\n$-5\\le a\\le5$인 정수 가운데 이를 만족하는 값이 정확히 $6$개이면 $a=-5,-4,-3,3,4,5$여야 한다.\n따라서 $a=\\pm3$에서는 $3^2\\ge k$가 성립하고, $a=\\pm2$에서는 $2^2<k$여야 한다.\n즉 $4<k\\le9$이다. 자연수 $k$는 $5,6,7,8,9$이며 합은 $5+6+7+8+9=35$이다.\n따라서 정답은 ③이다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "sourceQid": 14,
+        "slot": "C3",
+        "purposeGroup": "C",
+        "meta": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-PALMA25-2MID-Q14-C3",
+          "status": "SOURCE_META_PRESERVED",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-06",
+          "subUnitKey": "H22-C2-06-CORE",
+          "rpmPrimaryRecordId": "H1-RPM-244",
+          "rpmL1": "집합과 명제",
+          "rpmL2": "명제",
+          "rpmL3": "명제와 조건",
+          "rpmL4": "EXT-H1-C2-06-Q14-COUNTEREXAMPLE-INVERSE|부정의 참 매개변수 개수에서 상수 역산",
+          "rpmL4Namespace": "GENERATED_EXT_L4",
+          "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+          "templateKey": "TPL_PROPOSITION_COUNTEREXAMPLE_COUNT_PARAMETER",
+          "difficultyBucket": 5,
+          "level": "상",
+          "crossConceptKeys": [
+            "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+            "EXT-CROSS-H1-C2-06-Q14-INTEGER-PARAMETER-COUNT"
+          ],
+          "conditionKeys": [
+            "COND_INTEGER",
+            "COND_RANGE",
+            "COND_NATURAL_NUMBER",
+            "EXT-COND-H1-Q14-EXACT-SIX-COUNTEREXAMPLES"
+          ],
+          "integrationPattern": "CASE_BRANCH",
+          "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/palma-q14-registry.json",
+          "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "conditionEvidenceLabels": [
+            "COND_INTEGER",
+            "COND_RANGE",
+            "COND_NATURAL_NUMBER",
+            "부정이 참인 정수 매개변수 정확히 6개"
+          ],
+          "evidenceDebt": [],
+          "approval": "GPT_OPEN_BOOK_REVIEW_PASS",
+          "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+          "consumerSelectable": true,
+          "sourceCandidatePackageGitBlobSha": "5a3517c687181ffdf4320f53dfedaaa5a24a9a48",
+          "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q13_Q16_OPENBOOK_REVIEW_REPAIR_20261009.md",
+          "physicalStorageBucketKey": "H22-C2-06-CORE",
+          "sourceKind": "generated",
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "problemTypeKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+              "evidenceKey": "integrationPattern"
+            }
+          }
+        },
+        "rpmPrimaryL3": "명제와 조건",
+        "generatedL4": "EXT-H1-C2-06-Q14-COUNTEREXAMPLE-INVERSE|부정의 참 매개변수 개수에서 상수 역산",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_PROPOSITION_COUNTEREXAMPLE_COUNT_PARAMETER",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+          "EXT-CROSS-H1-C2-06-Q14-INTEGER-PARAMETER-COUNT"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE",
+          "COND_NATURAL_NUMBER",
+          "EXT-COND-H1-Q14-EXACT-SIX-COUNTEREXAMPLES"
+        ],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/shards/palma-2025-2mid-qid9-q14.js",
+      "sourceShardGitSha": "797661fc0d50c205257dc113e5dd6e5abe33c848"
+    }
+  ],
+  "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/shards/palma-2025-2mid-qid9-q14.js",
+  "sourceShardGitSha": "797661fc0d50c205257dc113e5dd6e5abe33c848"
+}

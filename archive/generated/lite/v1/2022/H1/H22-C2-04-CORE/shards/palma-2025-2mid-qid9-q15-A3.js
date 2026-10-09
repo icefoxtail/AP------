@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_15_A3";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q15-A3",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "도형의 이동",
+    "originalCategory": "도형의 이동",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-C2-04-CORE",
+    "subUnit": "도형의 이동 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "도형의 이동"
+    ],
+    "wide": false,
+    "content": "두 다항식 $f(x,y)=(x-3)^2+(y-1)^2-5$, $g(x,y)=(x+2)^2+(y-4)^2-5$에 대하여 다음 보기에서 옳은 것을 모두 고른 것은?<br><br>〈보기〉<br>ㄱ. $g(x,y)=f(x+4,y-3)$<br>ㄴ. $g(x,y)=f(-x+1,-y+5)$<br>ㄷ. $g(x,y)=f(y-1,x+3)$",
+    "choices": [
+      "ㄱ",
+      "ㄴ",
+      "ㄷ",
+      "ㄱ, ㄴ, ㄷ",
+      "ㄴ, ㄷ"
+    ],
+    "answer": "⑤",
+    "solution": "$f=0$의 중심은 $(3,1)$이고, $g=0$의 중심은 $(-2,4)$이다.\nㄱ에서 $x+4=3$, $y-3=1$이면 중심이 $(-1,4)$이므로 거짓이다.\nㄴ에서 $-x+1=3$, $-y+5=1$이면 중심이 $(-2,4)$이므로 참이다.\nㄷ에서 $y-1=3$, $x+3=1$이면 중심이 $(-2,4)$이므로 참이다.\n모든 치환은 원의 반지름을 유지한다. 따라서 옳은 것은 ㄴ, ㄷ이고 정답은 ⑤이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 15,
+    "slot": "A3",
+    "purposeGroup": "A"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q15-A3");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q15-A3","meta":{"rpmL1":"L1-1|도형의 방정식","rpmL2":"L2-1.4|도형의 이동","rpmL3":"L3-1.4.3|이동의 합성","rpmL4":"L4-1.4.3.1|연속 이동","rpmL4Namespace":"RPM_EXISTING_DRAFT","rpmPrimaryRecordId":"H1-RPM-229","rpmDraftAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmDraftAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","secondaryConceptKeys":[],"crossConceptKeys":["CC_CIRCLE_CENTER_RADIUS"],"conditionKeys":[],"crossConceptRegistryRef":null,"conditionRegistryRef":null,"sourceKind":"generated","integrationPattern":"CASE_BRANCH","difficultyBucket":3,"level":"중","problemTypeKey":"PT_MOVE_EQUATION_TRANSFORM","templateKey":"TT_EQUATION_GRAPH_MAPPING","standardCourse":"공통수학2","standardUnitKey":"H22-C2-04","subUnitKey":"H22-C2-04-CORE"},"metaFinalSha256":"9ffad1fcf55008aca4b20fd9368fd4fdcd97ddcef66dcfdac31f8b8baacbc572","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q15-A3.json","sha256":"26cd86f112a4362faa638e2531c01f1039d8fd649aa9dfb848eb959515ccdcd2","reviewStatus":"REVIEW_PASS","uid":"ALITE-PALMA25-2MID-Q15-A3"},"metaReviewEvidenceSha256":"26cd86f112a4362faa638e2531c01f1039d8fd649aa9dfb848eb959515ccdcd2","difficultyBucket":3,"level":"중","problemTypeKey":"PT_MOVE_EQUATION_TRANSFORM","templateKey":"TT_EQUATION_GRAPH_MAPPING","secondaryConceptKeys":[],"crossConceptKeys":["CC_CIRCLE_CENTER_RADIUS"],"conditionKeys":[],"integrationPattern":"CASE_BRANCH"});})();

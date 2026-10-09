@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_13_C2";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q13-C2",
+    "level": "상",
+    "difficultyBucket": 5,
+    "category": "집합",
+    "originalCategory": "집합",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "집합"
+    ],
+    "wide": false,
+    "content": "$10$의 정수 약수 전체의 집합을 $D$라 하자. $D$의 부분집합 $A$ 중 $-1\\in A$이고 원소의 개수가 짝수이며 모든 원소의 곱이 양수인 집합 $A$의 개수는?",
+    "choices": [
+      "$64$",
+      "$32$",
+      "$24$",
+      "$28$",
+      "$8$"
+    ],
+    "answer": "②",
+    "solution": "$10$의 양의 약수와 음의 약수는 각각 $4$개이다. $-1$을 반드시 포함하므로 나머지 음수 $3$개 중 홀수 개를 골라야 선택된 음수의 전체 개수가 짝수이다.\n음수 원소의 선택은 $\\binom31+\\binom33=3+1=4$가지이다.\n음수 원소의 개수가 짝수이므로 전체 원소의 개수까지 짝수가 되려면 양수 원소의 개수도 짝수여야 한다.\n양수 원소 선택은 $\\binom40+\\binom42+\\binom44=1+6+1=8$가지이다.\n따라서 전체 $4\\times8=32$가지이고, $-1$을 포함하므로 공집합은 없다. 정답은 ②이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 13,
+    "slot": "C2",
+    "purposeGroup": "C"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q13-C2");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q13-C2","meta":{"rpmL1":"집합과 명제","rpmL2":"집합의 뜻과 포함 관계","rpmL3":"부분집합","rpmL4":"EXT-H1-C2-05-Q13-FIXED-SIZE-PARITY|원소 수 조건과 곱의 부호를 결합한 부분집합 계수","rpmL4Namespace":"GENERATED_EXT_L4","rpmPrimaryRecordId":"H1-RPM-234","rpmAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","generatedL4RegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/palma-q13-registry.json","generatedL4RegistrySha256":"06968c7dd781aca7ca25b99adca3a5706bb29b6f72ac21ece46cd6d117b3b18b","secondaryConceptKeys":[],"crossConceptKeys":["EXT-CC-H1-Q13-SIGNED-DIVISOR-ENUMERATION","EXT-CC-H1-Q13-COMBINATION-COUNTING"],"conditionKeys":["COND_INTEGER","COND_POSITIVE","EXT-COND-H1-Q13-REQUIRED-ELEMENT","EXT-COND-H1-Q13-EVEN-CARDINALITY"],"crossConceptRegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json","conditionRegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json","sourceKind":"generated","integrationPattern":"CASE_BRANCH","difficultyBucket":5,"level":"상","problemTypeKey":"PT_SUBSET_COUNT","templateKey":"TPL_SUBSET_COUNT_SET_CONDITION","standardCourse":"공통수학2","standardUnitKey":"H22-C2-05","subUnitKey":"H22-C2-05-CORE"},"metaFinalSha256":"fb1c22eb00991a9ffbd60acaf5e45b11a1a1d9cf9ed057ca5a3aef41d6865cf3","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q13-C2.json","sha256":"ff26621d29c4524d96c6189fbb35c8a0d9ff20c9fb3c7c679ff3c1d20abcd5d9","reviewStatus":"REVIEW_PASS","uid":"ALITE-PALMA25-2MID-Q13-C2"},"metaReviewEvidenceSha256":"ff26621d29c4524d96c6189fbb35c8a0d9ff20c9fb3c7c679ff3c1d20abcd5d9","difficultyBucket":5,"level":"상","problemTypeKey":"PT_SUBSET_COUNT","templateKey":"TPL_SUBSET_COUNT_SET_CONDITION","secondaryConceptKeys":[],"crossConceptKeys":["EXT-CC-H1-Q13-SIGNED-DIVISOR-ENUMERATION","EXT-CC-H1-Q13-COMBINATION-COUNTING"],"conditionKeys":["COND_INTEGER","COND_POSITIVE","EXT-COND-H1-Q13-REQUIRED-ELEMENT","EXT-COND-H1-Q13-EVEN-CARDINALITY"],"integrationPattern":"CASE_BRANCH"});})();

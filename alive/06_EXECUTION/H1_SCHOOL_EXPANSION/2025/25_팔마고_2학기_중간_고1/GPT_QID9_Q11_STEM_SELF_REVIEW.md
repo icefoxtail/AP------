@@ -51,4 +51,3 @@
 - 신규 CrossConcept 메타의 Generated 전용 확장 정의와 부모·UID는 `GPT_QID9_Q11_PACKAGE.json` 및 q11 전용 extension registry에 기록. **현 단계는 후보 원천의 정의**이며 학생용 Consumer/index에 투영되었다는 뜻이 아니다. 충돌·기존 동일 canonical 재발견 시 최종 등록 전에 비교.
 - q01~q10 제작 기록은 보존, q11 제작 증분만 등록; 후속 원본 q12.
 - q11 신규 9 UID는 **CREATE_DRAFT_AUTHOR_SELF_REVIEW_COMPLETE / GPT_QUALITY_NOT_APPROVED / STUDENT_CONSUMER_NOT_REGISTERED / CHROME_NOT_TESTED**. 추후 원장이 '검수·main'을 명시하면 현재 사용자 승인 경로를 적용하고 실제 기술 출고까지 수행.
-

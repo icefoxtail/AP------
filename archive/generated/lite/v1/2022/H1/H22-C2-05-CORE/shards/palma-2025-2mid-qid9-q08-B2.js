@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_08_B2";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q08-B2",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "집합",
+    "originalCategory": "집합",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "집합"
+    ],
+    "wide": false,
+    "content": "$1$ 이상 $100$ 이하의 자연수 중 $4$의 배수도 아니고 $6$의 배수도 아닌 수의 개수는?",
+    "choices": [
+      "$75$",
+      "$59$",
+      "$67$",
+      "$92$",
+      "$33$"
+    ],
+    "answer": "③",
+    "solution": "$4$의 배수는 $25$개, $6$의 배수는 $16$개, 공배수는 $12$의 배수로 $8$개이다.\n$4$ 또는 $6$의 배수는 $25+16-8=33$개이다. 어느 쪽의 배수도 아닌 수는 이 합집합의 여집합이므로 전체 $100$개에서 빼면 $100-33=67$개이다. 따라서 정답은 ③이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 8,
+    "slot": "B2",
+    "purposeGroup": "B"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q08-B2");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q08-B2","meta":{"rpmL1":"L1-2|집합과 명제","rpmL2":"L2-2.2|집합의 연산","rpmL3":"L3-2.2.1|교집합과 합집합","rpmL4":"L4-2.2.1.2|원소 개수","rpmL4Namespace":"RPM_EXISTING_DRAFT","rpmPrimaryRecordId":"H1-RPM-238","rpmDraftAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmDraftAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","secondaryConceptKeys":[],"crossConceptKeys":[],"conditionKeys":["COND_NATURAL_NUMBER"],"crossConceptRegistryRef":null,"conditionRegistryRef":null,"sourceKind":"generated","integrationPattern":"SEQUENTIAL","difficultyBucket":3,"level":"중","problemTypeKey":"PT_SET_CARDINALITY","templateKey":"TPL_COMPLEMENT_CARDINALITY","standardCourse":"공통수학2","standardUnitKey":"H22-C2-05","subUnitKey":"H22-C2-05-CORE"},"metaFinalSha256":"1d14e8304b344200724ac0d105bec35cb4dedcc212904e584dc40a9763acf539","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q08-B2.json","sha256":"bad279de916a1268007646e0ce9025d0893f8cf0227435e391f057cfcb090bda","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261009_PALMA_Q05_Q08_36","scopeUids":["ALITE-PALMA25-2MID-Q08-B2"],"uid":"ALITE-PALMA25-2MID-Q08-B2"},"metaReviewEvidenceSha256":"bad279de916a1268007646e0ce9025d0893f8cf0227435e391f057cfcb090bda","difficultyBucket":3,"level":"중","problemTypeKey":"PT_SET_CARDINALITY","templateKey":"TPL_COMPLEMENT_CARDINALITY","secondaryConceptKeys":[],"crossConceptKeys":[],"conditionKeys":["COND_NATURAL_NUMBER"],"integrationPattern":"SEQUENTIAL"});})();

@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_11_C1";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q11-C1",
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "명제",
+    "originalCategory": "명제",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE",
+    "subUnit": "명제 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "명제"
+    ],
+    "wide": false,
+    "content": "전체집합 $U=\\{1,2,\\ldots,12\\}$의 원소 $x$에 대하여 조건 $p$는 ‘$x$는 $2$의 배수 또는 $3$의 배수’, 조건 $q_k$는 ‘$x$는 $k$의 배수’라고 하자. $2\\le k\\le12$인 자연수 $k$ 중에서 $p$가 $q_k$이기 위한 필요조건이지만 충분조건은 아닌 $k$의 개수는?",
+    "choices": [
+      "$8$",
+      "$6$",
+      "$7$",
+      "$9$",
+      "$10$"
+    ],
+    "answer": "①",
+    "solution": "$p$가 $q_k$의 필요조건이려면 $q_k\\Rightarrow p$여야 한다. $k$ 자체가 $U$에 속하므로, $k$가 $2$ 또는 $3$의 배수여야 한다.\n따라서 가능한 $k$는 $2,3,4,6,8,9,10,12$로 총 $8$개이다.\n이때 $q_k$의 모든 원소는 $p$를 만족한다. 반면 $p$는 $2$와 $3$을 모두 포함하지만 $q_k$가 두 수를 동시에 포함하려면 $k$가 $2$와 $3$의 공약수여야 한다. $k\\ge2$에서 그런 값은 없다.\n그러므로 어느 경우에도 $p$는 $q_k$의 충분조건이 아니며, 정답은 ①이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 11,
+    "slot": "C1",
+    "purposeGroup": "C"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q11-C1");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q11-C1","meta":{"rpmL1":"집합과 명제","rpmL2":"명제","rpmL3":"필요조건·충분조건","rpmL4":"매개변수","rpmL4Namespace":"RPM_EXISTING_DRAFT","rpmPrimaryRecordId":"H1-RPM-248","rpmDraftAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmDraftAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","secondaryConceptKeys":[],"crossConceptKeys":["CC_NUMBER_DIVISOR_MULTIPLE"],"conditionKeys":["COND_NATURAL_NUMBER","COND_RANGE"],"crossConceptRegistryRef":null,"conditionRegistryRef":null,"sourceKind":"generated","integrationPattern":"CASE_BRANCH","difficultyBucket":4,"level":"상","problemTypeKey":"PT_NEC_SUFF_RELATION","templateKey":"TPL_NEC_SUFF_SET_RELATION","standardCourse":"공통수학2","standardUnitKey":"H22-C2-06","subUnitKey":"H22-C2-06-CORE"},"metaFinalSha256":"38547e7861662e6cb55c3defe5d9500421a8a0b6b6f28171e899c2da579fed0e","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q11-C1.json","sha256":"9075ef5664e02c00dcd4019f5362b057973639228e0e7b1aba629edf49a69f76","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q09_Q12_36","scopeUids":["ALITE-PALMA25-2MID-Q11-C1"],"uid":"ALITE-PALMA25-2MID-Q11-C1"},"metaReviewEvidenceSha256":"9075ef5664e02c00dcd4019f5362b057973639228e0e7b1aba629edf49a69f76","difficultyBucket":4,"level":"상","problemTypeKey":"PT_NEC_SUFF_RELATION","templateKey":"TPL_NEC_SUFF_SET_RELATION","secondaryConceptKeys":[],"crossConceptKeys":["CC_NUMBER_DIVISOR_MULTIPLE"],"conditionKeys":["COND_NATURAL_NUMBER","COND_RANGE"],"integrationPattern":"CASE_BRANCH"});})();

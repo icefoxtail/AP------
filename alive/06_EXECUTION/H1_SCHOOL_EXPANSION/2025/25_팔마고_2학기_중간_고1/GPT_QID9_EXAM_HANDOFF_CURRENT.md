@@ -1,3 +1,15 @@
+# CURRENT 2026-10-10 — Q09-Q12 Archive 2.0 Consumer/Chrome PASS, main publication pending
+
+- 운영 요청 범위: Q09-Q16 A1-C3 총 72 UID. Q13-Q16의 36 UID는 이미 main 운영완료 (publication commit `7bc7b6ed02635db18a95931607ae60e36fe0b9c0`, Chrome evidence https://github.com/icefoxtail/AP------/actions/runs/37938836922). 이번 release 대상은 아직 main 미등록이던 Q09-Q12 36 UID다.
+- Q09-Q12 공개답 검수: 36/36, KEEP24 / Meta 수정9 / STEM 수정0 / HOLD0. 사용자는 전체 Q09-Q16의 운영병합을 지시했다. 직접 승인 evidence는 `GPT_QID9_Q09_Q12_USER_DIRECTED_APPROVAL_20261010.json`에 36 UID 및 최종 package SHA를 결속한다. 별도 독립검수를 수행했다고 주장하지 않는다.
+- Q09/Q10 integrationPattern 6개를 canonical enum에 맞게 핀포인트 수정했고, `GPT_QID9_Q09_Q10_META_CORRECTION_REVIEW_20261010.json`에서 targeted PASS. Q11의 다섯 EXT cross-concept UID reference와 resolver projection은 `GPT_QID9_Q11_META_BINDING_REVIEW_20261010.json`에서 PASS. Q12 단원 표시 키는 canonical 단원 마스터에 맞게 등록기 매핑을 추가했다.
+- Archive 2.0 등록: Q09-Q12 36 UID Source JS + metadata + Consumer/index 반영. `node archive/tools/generated-meta/auto-register-approved-qid9.mjs --check` PASS; retention gate PASS, 131 신규 UID 검사 / failures 0. 총 index 454.
+- 실제 Google Chrome student lookup/print smoke PASS: `palmaNewLookupVerified=144`, HOLD 제외. `node tools/check-archive2-runtime.cjs` 42/42 PASS. Archive2 generated bank tests 22/22 PASS.
+- 로컬 release 증거: `GPT_QID9_Q09_Q12_LOCAL_RELEASE_20261010.json`. 상태: LOCAL_REGISTERED_CHROME_PASS_MAIN_PENDING; main PR, remote readback, closeout은 미완료.
+- Git branch: `work/alive-25-palma-h1-2mid-qid9`; next source qid: 17.
+
+---
+
 # CURRENT 2026-10-09 — 팔마고 원본 q14 신규 9문항 작성·역발문 자체검산 완료 / 다음 q15
 
 - 원본 q14: 명제 ‘모든 x에 대해 -x²+ax-5<0’의 부정 매개변수 범위. RPM Primary L3 **명제와 조건** `H1-RPM-244`, 원본 blob `4cfce909c023e5c4df4a759945c8cc3e0a63ec76`.

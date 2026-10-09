@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_15_B3";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q15-B3",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "도형의 이동",
+    "originalCategory": "도형의 이동",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-C2-04-CORE",
+    "subUnit": "도형의 이동 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "도형의 이동"
+    ],
+    "wide": false,
+    "content": "$f(x,y)=(x-a)^2+(y-b)^2-4$, $g(x,y)=(x+2)^2+(y-5)^2-4$라 하자. 모든 실수 $x,y$에 대하여 $g(x,y)=f(-y+2,x-3)$이면 $a+b$의 값은? (단, $a,b$는 실수이다.)",
+    "choices": [
+      "$6$",
+      "$-8$",
+      "$2$",
+      "$-2$",
+      "$8$"
+    ],
+    "answer": "②",
+    "solution": "$g=0$의 중심은 $(-2,5)$이다. 좌표 치환 $(-y+2,x-3)$이 원래 중심 $(a,b)$가 되는 자리이므로\n$a=-5+2=-3$, $b=-2-3=-5$이다.\n따라서 $a+b=-3-5=-8$이므로 정답은 ②이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 15,
+    "slot": "B3",
+    "purposeGroup": "B"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q15-B3");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q15-B3","meta":{"rpmL1":"L1-1|도형의 방정식","rpmL2":"L2-1.4|도형의 이동","rpmL3":"L3-1.4.3|이동의 합성","rpmL4":"L4-1.4.3.1|연속 이동","rpmL4Namespace":"RPM_EXISTING_DRAFT","rpmPrimaryRecordId":"H1-RPM-229","rpmDraftAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmDraftAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","secondaryConceptKeys":[],"crossConceptKeys":["CC_CIRCLE_CENTER_RADIUS"],"conditionKeys":[],"crossConceptRegistryRef":null,"conditionRegistryRef":null,"sourceKind":"generated","integrationPattern":"SEQUENTIAL","difficultyBucket":3,"level":"중","problemTypeKey":"PT_MOVE_EQUATION_TRANSFORM","templateKey":"TT_EQUATION_GRAPH_MAPPING","standardCourse":"공통수학2","standardUnitKey":"H22-C2-04","subUnitKey":"H22-C2-04-CORE"},"metaFinalSha256":"36fa72bdf034c0883dbfed07c1d21d30851a80b354f2ba95b9d1753f9607b874","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q15-B3.json","sha256":"95a044bd2e9f66de5567eef55c5a5f10cf1003faefa0413709a474b9c3e4a2b5","reviewStatus":"REVIEW_PASS","uid":"ALITE-PALMA25-2MID-Q15-B3"},"metaReviewEvidenceSha256":"95a044bd2e9f66de5567eef55c5a5f10cf1003faefa0413709a474b9c3e4a2b5","difficultyBucket":3,"level":"중","problemTypeKey":"PT_MOVE_EQUATION_TRANSFORM","templateKey":"TT_EQUATION_GRAPH_MAPPING","secondaryConceptKeys":[],"crossConceptKeys":["CC_CIRCLE_CENTER_RADIUS"],"conditionKeys":[],"integrationPattern":"SEQUENTIAL"});})();

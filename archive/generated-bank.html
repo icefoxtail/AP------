@@ -123,7 +123,8 @@ const isSelectable=row=>{
   String(row.reviewApprovalBasis||"").startsWith("USER_DIRECTED_OPERATING_APPROVAL_")||
   row.reviewApprovalBasis==="USER_EXPLICIT_FIX_AND_MAIN_MERGE_20261008"
  );
- return reviewed||directed;
+ const userQuality=row.approval==="USER_DIRECTED_QUALITY_APPROVED"&&String(row.reviewApprovalBasis||"").startsWith("USER_DIRECTED_QUALITY_APPROVED");
+ return reviewed||directed||userQuality;
 };
 const unitName=row=>UNIT_LABELS[row.l2]||null;
 async function readJson(path){
@@ -332,6 +333,8 @@ $("generated-clear").addEventListener("click",()=>{selectedGenerated.clear();ren
   rows=data.records;excludedHoldUids=new Set(data.excludedHoldUids);
   selectableRows=rows.filter(isSelectable);
   searchableRows=selectableRows.map(row=>({row,searchText:generatedSearchText(row)}));
+  const requestedUid=typeof location==='object'?new URLSearchParams(location.search).get('uid'):null;
+  if(requestedUid&&selectableRows.some(row=>row.uid===requestedUid))$("generated-search").value=requestedUid;
   displayExams();updateSelection();renderGeneratedSearch();renderGeneratedSelection();status("");
  }catch(error){status("시험지를 불러오지 못했습니다: "+error.message);$("exam-cards").textContent="시험지 목록을 확인할 수 없습니다.";}
 })();

@@ -1,0 +1,1343 @@
+window.examTitle = "ALIVE_LITE_PALMA25_H1_2MID_QID9_Q15_H22-C2-04-CORE";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q15-A1",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "도형의 이동",
+    "originalCategory": "도형의 이동",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-C2-04-CORE",
+    "subUnit": "도형의 이동 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "도형의 이동"
+    ],
+    "wide": false,
+    "content": "두 다항식 $f(x,y)=(x-2)^2+(y+1)^2-4$, $g(x,y)=(x-5)^2+(y-1)^2-4$에 대하여 다음 보기에서 옳은 것을 모두 고른 것은?<br><br>〈보기〉<br>ㄱ. $g(x,y)=f(x-3,y-2)$<br>ㄴ. $g(x,y)=f(-x+4,-y)$<br>ㄷ. $g(x,y)=f(y+1,x-6)$",
+    "choices": [
+      "ㄱ",
+      "ㄷ",
+      "ㄱ, ㄷ",
+      "ㄴ, ㄷ",
+      "ㄱ, ㄴ, ㄷ"
+    ],
+    "answer": "③",
+    "solution": "$f(x,y)=0$은 중심 $(2,-1)$, 반지름 $2$인 원이고, $g(x,y)=0$은 중심 $(5,1)$, 반지름 $2$인 원이다.\nㄱ의 $f(x-3,y-2)=0$의 중심은 $(5,1)$이므로 참이다.\nㄴ의 $f(-x+4,-y)=0$의 중심은 $(2,1)$이므로 거짓이다.\nㄷ의 $f(y+1,x-6)=0$에서는 $y+1=2$, $x-6=-1$이어서 중심은 $(5,1)$이다. 따라서 참이다.\n양쪽 식은 반지름도 같고 최고차항의 계수도 같으므로 중심이 같으면 다항식으로도 일치한다.\n옳은 것은 ㄱ, ㄷ이므로 정답은 ③이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 15,
+    "slot": "A1",
+    "purposeGroup": "A",
+    "meta": {
+      "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+      "uid": "ALITE-PALMA25-2MID-Q15-A1",
+      "status": "SOURCE_META_PRESERVED",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "subUnitKey": "H22-C2-04-CORE",
+      "rpmPrimaryRecordId": "H1-RPM-229",
+      "rpmL1": "L1-1|도형의 방정식",
+      "rpmL2": "L2-1.4|도형의 이동",
+      "rpmL3": "L3-1.4.3|이동의 합성",
+      "rpmL4": "L4-1.4.3.1|연속 이동",
+      "rpmL4Namespace": "RPM_PRIMARY",
+      "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+      "templateKey": "TT_EQUATION_GRAPH_MAPPING",
+      "difficultyBucket": 3,
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_CIRCLE_CENTER_RADIUS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "generatedL4RegistryRef": null,
+      "crossConceptRegistryRef": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+      "conditionRegistryRef": null,
+      "conditionEvidenceLabels": [],
+      "evidenceDebt": [],
+      "approval": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerSelectable": true,
+      "sourceCandidatePackageGitBlobSha": "282424973e2e3998d025a71eea1ce7bc64737850",
+      "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q13_Q16_OPENBOOK_REVIEW_REPAIR_20261009.md",
+      "physicalStorageBucketKey": "H22-C2-04-CORE",
+      "sourceKind": "generated",
+      "evidenceByField": {
+        "standardCourse": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardCourse"
+        },
+        "standardUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardUnitKey"
+        },
+        "subUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "subUnitKey"
+        },
+        "rpmPrimaryRecordId": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmPrimaryRecordId"
+        },
+        "rpmL1": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL1"
+        },
+        "rpmL2": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL2"
+        },
+        "rpmL3": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL3"
+        },
+        "rpmL4": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4"
+        },
+        "rpmL4Namespace": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4Namespace"
+        },
+        "problemTypeKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "problemTypeKey"
+        },
+        "templateKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "templateKey"
+        },
+        "difficultyBucket": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "difficultyBucket"
+        },
+        "level": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "level"
+        },
+        "crossConceptKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "crossConceptKeys"
+        },
+        "conditionKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "conditionKeys"
+        },
+        "integrationPattern": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "integrationPattern"
+        }
+      }
+    },
+    "rpmPrimaryL3": "L3-1.4.3|이동의 합성",
+    "generatedL4": "L4-1.4.3.1|연속 이동",
+    "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+    "templateKey": "TT_EQUATION_GRAPH_MAPPING",
+    "crossConceptKeys": [
+      "CC_CIRCLE_CENTER_RADIUS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH"
+  },
+  {
+    "id": 2,
+    "uid": "ALITE-PALMA25-2MID-Q15-A2",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "도형의 이동",
+    "originalCategory": "도형의 이동",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-C2-04-CORE",
+    "subUnit": "도형의 이동 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "도형의 이동"
+    ],
+    "wide": false,
+    "content": "두 다항식 $f(x,y)=(x+1)^2+(y-2)^2-9$, $g(x,y)=(x-2)^2+y^2-9$에 대하여 다음 보기에서 옳은 것을 모두 고른 것은?<br><br>〈보기〉<br>ㄱ. $g(x,y)=f(x-3,y+2)$<br>ㄴ. $g(x,y)=f(-x+1,-y+2)$<br>ㄷ. $g(x,y)=f(y+2,x+1)$",
+    "choices": [
+      "ㄱ",
+      "ㄱ, ㄴ",
+      "ㄴ",
+      "ㄱ, ㄷ",
+      "ㄱ, ㄴ, ㄷ"
+    ],
+    "answer": "②",
+    "solution": "$f=0$의 중심은 $(-1,2)$이고 $g=0$의 중심은 $(2,0)$이다. 두 원의 반지름은 모두 $3$이다.\nㄱ: $f(x-3,y+2)=0$의 중심은 $(-1+3,2-2)=(2,0)$이므로 참이다.\nㄴ: $-x+1=-1$, $-y+2=2$를 풀면 중심은 $(2,0)$이므로 참이다.\nㄷ: $y+2=-1$, $x+1=2$에서 중심은 $(1,-3)$이므로 거짓이다.\n옳은 것은 ㄱ, ㄴ이므로 정답은 ②이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 15,
+    "slot": "A2",
+    "purposeGroup": "A",
+    "meta": {
+      "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+      "uid": "ALITE-PALMA25-2MID-Q15-A2",
+      "status": "SOURCE_META_PRESERVED",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "subUnitKey": "H22-C2-04-CORE",
+      "rpmPrimaryRecordId": "H1-RPM-229",
+      "rpmL1": "L1-1|도형의 방정식",
+      "rpmL2": "L2-1.4|도형의 이동",
+      "rpmL3": "L3-1.4.3|이동의 합성",
+      "rpmL4": "L4-1.4.3.1|연속 이동",
+      "rpmL4Namespace": "RPM_PRIMARY",
+      "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+      "templateKey": "TT_EQUATION_GRAPH_MAPPING",
+      "difficultyBucket": 3,
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_CIRCLE_CENTER_RADIUS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "generatedL4RegistryRef": null,
+      "crossConceptRegistryRef": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+      "conditionRegistryRef": null,
+      "conditionEvidenceLabels": [],
+      "evidenceDebt": [],
+      "approval": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerSelectable": true,
+      "sourceCandidatePackageGitBlobSha": "282424973e2e3998d025a71eea1ce7bc64737850",
+      "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q13_Q16_OPENBOOK_REVIEW_REPAIR_20261009.md",
+      "physicalStorageBucketKey": "H22-C2-04-CORE",
+      "sourceKind": "generated",
+      "evidenceByField": {
+        "standardCourse": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardCourse"
+        },
+        "standardUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardUnitKey"
+        },
+        "subUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "subUnitKey"
+        },
+        "rpmPrimaryRecordId": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmPrimaryRecordId"
+        },
+        "rpmL1": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL1"
+        },
+        "rpmL2": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL2"
+        },
+        "rpmL3": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL3"
+        },
+        "rpmL4": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4"
+        },
+        "rpmL4Namespace": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4Namespace"
+        },
+        "problemTypeKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "problemTypeKey"
+        },
+        "templateKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "templateKey"
+        },
+        "difficultyBucket": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "difficultyBucket"
+        },
+        "level": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "level"
+        },
+        "crossConceptKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "crossConceptKeys"
+        },
+        "conditionKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "conditionKeys"
+        },
+        "integrationPattern": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "integrationPattern"
+        }
+      }
+    },
+    "rpmPrimaryL3": "L3-1.4.3|이동의 합성",
+    "generatedL4": "L4-1.4.3.1|연속 이동",
+    "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+    "templateKey": "TT_EQUATION_GRAPH_MAPPING",
+    "crossConceptKeys": [
+      "CC_CIRCLE_CENTER_RADIUS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH"
+  },
+  {
+    "id": 3,
+    "uid": "ALITE-PALMA25-2MID-Q15-A3",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "도형의 이동",
+    "originalCategory": "도형의 이동",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-C2-04-CORE",
+    "subUnit": "도형의 이동 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "도형의 이동"
+    ],
+    "wide": false,
+    "content": "두 다항식 $f(x,y)=(x-3)^2+(y-1)^2-5$, $g(x,y)=(x+2)^2+(y-4)^2-5$에 대하여 다음 보기에서 옳은 것을 모두 고른 것은?<br><br>〈보기〉<br>ㄱ. $g(x,y)=f(x+4,y-3)$<br>ㄴ. $g(x,y)=f(-x+1,-y+5)$<br>ㄷ. $g(x,y)=f(y-1,x+3)$",
+    "choices": [
+      "ㄱ",
+      "ㄴ",
+      "ㄷ",
+      "ㄱ, ㄴ, ㄷ",
+      "ㄴ, ㄷ"
+    ],
+    "answer": "⑤",
+    "solution": "$f=0$의 중심은 $(3,1)$이고, $g=0$의 중심은 $(-2,4)$이다.\nㄱ에서 $x+4=3$, $y-3=1$이면 중심이 $(-1,4)$이므로 거짓이다.\nㄴ에서 $-x+1=3$, $-y+5=1$이면 중심이 $(-2,4)$이므로 참이다.\nㄷ에서 $y-1=3$, $x+3=1$이면 중심이 $(-2,4)$이므로 참이다.\n모든 치환은 원의 반지름을 유지한다. 따라서 옳은 것은 ㄴ, ㄷ이고 정답은 ⑤이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 15,
+    "slot": "A3",
+    "purposeGroup": "A",
+    "meta": {
+      "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+      "uid": "ALITE-PALMA25-2MID-Q15-A3",
+      "status": "SOURCE_META_PRESERVED",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "subUnitKey": "H22-C2-04-CORE",
+      "rpmPrimaryRecordId": "H1-RPM-229",
+      "rpmL1": "L1-1|도형의 방정식",
+      "rpmL2": "L2-1.4|도형의 이동",
+      "rpmL3": "L3-1.4.3|이동의 합성",
+      "rpmL4": "L4-1.4.3.1|연속 이동",
+      "rpmL4Namespace": "RPM_PRIMARY",
+      "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+      "templateKey": "TT_EQUATION_GRAPH_MAPPING",
+      "difficultyBucket": 3,
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_CIRCLE_CENTER_RADIUS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "generatedL4RegistryRef": null,
+      "crossConceptRegistryRef": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+      "conditionRegistryRef": null,
+      "conditionEvidenceLabels": [],
+      "evidenceDebt": [],
+      "approval": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerSelectable": true,
+      "sourceCandidatePackageGitBlobSha": "282424973e2e3998d025a71eea1ce7bc64737850",
+      "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q13_Q16_OPENBOOK_REVIEW_REPAIR_20261009.md",
+      "physicalStorageBucketKey": "H22-C2-04-CORE",
+      "sourceKind": "generated",
+      "evidenceByField": {
+        "standardCourse": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardCourse"
+        },
+        "standardUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardUnitKey"
+        },
+        "subUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "subUnitKey"
+        },
+        "rpmPrimaryRecordId": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmPrimaryRecordId"
+        },
+        "rpmL1": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL1"
+        },
+        "rpmL2": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL2"
+        },
+        "rpmL3": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL3"
+        },
+        "rpmL4": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4"
+        },
+        "rpmL4Namespace": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4Namespace"
+        },
+        "problemTypeKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "problemTypeKey"
+        },
+        "templateKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "templateKey"
+        },
+        "difficultyBucket": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "difficultyBucket"
+        },
+        "level": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "level"
+        },
+        "crossConceptKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "crossConceptKeys"
+        },
+        "conditionKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "conditionKeys"
+        },
+        "integrationPattern": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "integrationPattern"
+        }
+      }
+    },
+    "rpmPrimaryL3": "L3-1.4.3|이동의 합성",
+    "generatedL4": "L4-1.4.3.1|연속 이동",
+    "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+    "templateKey": "TT_EQUATION_GRAPH_MAPPING",
+    "crossConceptKeys": [
+      "CC_CIRCLE_CENTER_RADIUS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH"
+  },
+  {
+    "id": 4,
+    "uid": "ALITE-PALMA25-2MID-Q15-B1",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "도형의 이동",
+    "originalCategory": "도형의 이동",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-C2-04-CORE",
+    "subUnit": "도형의 이동 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "도형의 이동"
+    ],
+    "wide": false,
+    "content": "두 다항식 $f(x,y)=(x-2)^2+(y+1)^2-4$, $g(x,y)=(x-5)^2+(y-4)^2-4$가 모든 실수 $x,y$에 대하여 $g(x,y)=f(y-a,-x+b)$를 만족시킬 때, 상수 $a,b$에 대하여 $a+b$의 값은?",
+    "choices": [
+      "$-4$",
+      "$2$",
+      "$6$",
+      "$8$",
+      "$10$"
+    ],
+    "answer": "③",
+    "solution": "$f=0$의 중심은 $(2,-1)$, $g=0$의 중심은 $(5,4)$이다.\n치환 $y-a=2$, $-x+b=-1$을 통해 얻는 새 중심이 $(5,4)$이므로\n$4-a=2$에서 $a=2$, $-5+b=-1$에서 $b=4$이다.\n따라서 $a+b=2+4=6$이므로 정답은 ③이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 15,
+    "slot": "B1",
+    "purposeGroup": "B",
+    "meta": {
+      "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+      "uid": "ALITE-PALMA25-2MID-Q15-B1",
+      "status": "SOURCE_META_PRESERVED",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "subUnitKey": "H22-C2-04-CORE",
+      "rpmPrimaryRecordId": "H1-RPM-229",
+      "rpmL1": "L1-1|도형의 방정식",
+      "rpmL2": "L2-1.4|도형의 이동",
+      "rpmL3": "L3-1.4.3|이동의 합성",
+      "rpmL4": "L4-1.4.3.1|연속 이동",
+      "rpmL4Namespace": "RPM_PRIMARY",
+      "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+      "templateKey": "TT_EQUATION_GRAPH_MAPPING",
+      "difficultyBucket": 3,
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_CIRCLE_CENTER_RADIUS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "generatedL4RegistryRef": null,
+      "crossConceptRegistryRef": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+      "conditionRegistryRef": null,
+      "conditionEvidenceLabels": [],
+      "evidenceDebt": [],
+      "approval": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerSelectable": true,
+      "sourceCandidatePackageGitBlobSha": "282424973e2e3998d025a71eea1ce7bc64737850",
+      "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q13_Q16_OPENBOOK_REVIEW_REPAIR_20261009.md",
+      "physicalStorageBucketKey": "H22-C2-04-CORE",
+      "sourceKind": "generated",
+      "evidenceByField": {
+        "standardCourse": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardCourse"
+        },
+        "standardUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardUnitKey"
+        },
+        "subUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "subUnitKey"
+        },
+        "rpmPrimaryRecordId": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmPrimaryRecordId"
+        },
+        "rpmL1": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL1"
+        },
+        "rpmL2": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL2"
+        },
+        "rpmL3": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL3"
+        },
+        "rpmL4": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4"
+        },
+        "rpmL4Namespace": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4Namespace"
+        },
+        "problemTypeKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "problemTypeKey"
+        },
+        "templateKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "templateKey"
+        },
+        "difficultyBucket": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "difficultyBucket"
+        },
+        "level": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "level"
+        },
+        "crossConceptKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "crossConceptKeys"
+        },
+        "conditionKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "conditionKeys"
+        },
+        "integrationPattern": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "integrationPattern"
+        }
+      }
+    },
+    "rpmPrimaryL3": "L3-1.4.3|이동의 합성",
+    "generatedL4": "L4-1.4.3.1|연속 이동",
+    "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+    "templateKey": "TT_EQUATION_GRAPH_MAPPING",
+    "crossConceptKeys": [
+      "CC_CIRCLE_CENTER_RADIUS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "uid": "ALITE-PALMA25-2MID-Q15-B2",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "도형의 이동",
+    "originalCategory": "도형의 이동",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-C2-04-CORE",
+    "subUnit": "도형의 이동 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "도형의 이동"
+    ],
+    "wide": false,
+    "content": "$f(x,y)=(x-a)^2+(y-b)^2-9$, $g(x,y)=(x-3)^2+(y+1)^2-9$라 하자. 모든 실수 $x,y$에 대하여 $g(x,y)=f(y+2,-x+1)$이면 $2a+b$의 값은? (단, $a,b$는 실수이다.)",
+    "choices": [
+      "$0$",
+      "$-8$",
+      "$-1$",
+      "$4$",
+      "$6$"
+    ],
+    "answer": "①",
+    "solution": "$g=0$의 중심은 $(3,-1)$이다.\n$g(x,y)=f(y+2,-x+1)$이므로 새 원의 중심에서는 $y+2=a$, $-x+1=b$가 성립한다.\n$(x,y)=(3,-1)$을 대입하여 $a=-1+2=1$, $b=-3+1=-2$를 얻는다.\n따라서 $2a+b=2\\cdot1-2=0$이므로 정답은 ①이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 15,
+    "slot": "B2",
+    "purposeGroup": "B",
+    "meta": {
+      "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+      "uid": "ALITE-PALMA25-2MID-Q15-B2",
+      "status": "SOURCE_META_PRESERVED",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "subUnitKey": "H22-C2-04-CORE",
+      "rpmPrimaryRecordId": "H1-RPM-229",
+      "rpmL1": "L1-1|도형의 방정식",
+      "rpmL2": "L2-1.4|도형의 이동",
+      "rpmL3": "L3-1.4.3|이동의 합성",
+      "rpmL4": "L4-1.4.3.1|연속 이동",
+      "rpmL4Namespace": "RPM_PRIMARY",
+      "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+      "templateKey": "TT_EQUATION_GRAPH_MAPPING",
+      "difficultyBucket": 3,
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_CIRCLE_CENTER_RADIUS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "generatedL4RegistryRef": null,
+      "crossConceptRegistryRef": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+      "conditionRegistryRef": null,
+      "conditionEvidenceLabels": [],
+      "evidenceDebt": [],
+      "approval": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerSelectable": true,
+      "sourceCandidatePackageGitBlobSha": "282424973e2e3998d025a71eea1ce7bc64737850",
+      "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q13_Q16_OPENBOOK_REVIEW_REPAIR_20261009.md",
+      "physicalStorageBucketKey": "H22-C2-04-CORE",
+      "sourceKind": "generated",
+      "evidenceByField": {
+        "standardCourse": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardCourse"
+        },
+        "standardUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardUnitKey"
+        },
+        "subUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "subUnitKey"
+        },
+        "rpmPrimaryRecordId": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmPrimaryRecordId"
+        },
+        "rpmL1": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL1"
+        },
+        "rpmL2": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL2"
+        },
+        "rpmL3": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL3"
+        },
+        "rpmL4": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4"
+        },
+        "rpmL4Namespace": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4Namespace"
+        },
+        "problemTypeKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "problemTypeKey"
+        },
+        "templateKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "templateKey"
+        },
+        "difficultyBucket": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "difficultyBucket"
+        },
+        "level": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "level"
+        },
+        "crossConceptKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "crossConceptKeys"
+        },
+        "conditionKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "conditionKeys"
+        },
+        "integrationPattern": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "integrationPattern"
+        }
+      }
+    },
+    "rpmPrimaryL3": "L3-1.4.3|이동의 합성",
+    "generatedL4": "L4-1.4.3.1|연속 이동",
+    "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+    "templateKey": "TT_EQUATION_GRAPH_MAPPING",
+    "crossConceptKeys": [
+      "CC_CIRCLE_CENTER_RADIUS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 6,
+    "uid": "ALITE-PALMA25-2MID-Q15-B3",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "도형의 이동",
+    "originalCategory": "도형의 이동",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-C2-04-CORE",
+    "subUnit": "도형의 이동 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "도형의 이동"
+    ],
+    "wide": false,
+    "content": "$f(x,y)=(x-a)^2+(y-b)^2-4$, $g(x,y)=(x+2)^2+(y-5)^2-4$라 하자. 모든 실수 $x,y$에 대하여 $g(x,y)=f(-y+2,x-3)$이면 $a+b$의 값은? (단, $a,b$는 실수이다.)",
+    "choices": [
+      "$6$",
+      "$-8$",
+      "$2$",
+      "$-2$",
+      "$8$"
+    ],
+    "answer": "②",
+    "solution": "$g=0$의 중심은 $(-2,5)$이다. 좌표 치환 $(-y+2,x-3)$이 원래 중심 $(a,b)$가 되는 자리이므로\n$a=-5+2=-3$, $b=-2-3=-5$이다.\n따라서 $a+b=-3-5=-8$이므로 정답은 ②이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 15,
+    "slot": "B3",
+    "purposeGroup": "B",
+    "meta": {
+      "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+      "uid": "ALITE-PALMA25-2MID-Q15-B3",
+      "status": "SOURCE_META_PRESERVED",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "subUnitKey": "H22-C2-04-CORE",
+      "rpmPrimaryRecordId": "H1-RPM-229",
+      "rpmL1": "L1-1|도형의 방정식",
+      "rpmL2": "L2-1.4|도형의 이동",
+      "rpmL3": "L3-1.4.3|이동의 합성",
+      "rpmL4": "L4-1.4.3.1|연속 이동",
+      "rpmL4Namespace": "RPM_PRIMARY",
+      "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+      "templateKey": "TT_EQUATION_GRAPH_MAPPING",
+      "difficultyBucket": 3,
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_CIRCLE_CENTER_RADIUS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "generatedL4RegistryRef": null,
+      "crossConceptRegistryRef": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+      "conditionRegistryRef": null,
+      "conditionEvidenceLabels": [],
+      "evidenceDebt": [],
+      "approval": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerSelectable": true,
+      "sourceCandidatePackageGitBlobSha": "282424973e2e3998d025a71eea1ce7bc64737850",
+      "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q13_Q16_OPENBOOK_REVIEW_REPAIR_20261009.md",
+      "physicalStorageBucketKey": "H22-C2-04-CORE",
+      "sourceKind": "generated",
+      "evidenceByField": {
+        "standardCourse": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardCourse"
+        },
+        "standardUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardUnitKey"
+        },
+        "subUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "subUnitKey"
+        },
+        "rpmPrimaryRecordId": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmPrimaryRecordId"
+        },
+        "rpmL1": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL1"
+        },
+        "rpmL2": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL2"
+        },
+        "rpmL3": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL3"
+        },
+        "rpmL4": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4"
+        },
+        "rpmL4Namespace": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4Namespace"
+        },
+        "problemTypeKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "problemTypeKey"
+        },
+        "templateKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "templateKey"
+        },
+        "difficultyBucket": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "difficultyBucket"
+        },
+        "level": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "level"
+        },
+        "crossConceptKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "crossConceptKeys"
+        },
+        "conditionKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "conditionKeys"
+        },
+        "integrationPattern": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "integrationPattern"
+        }
+      }
+    },
+    "rpmPrimaryL3": "L3-1.4.3|이동의 합성",
+    "generatedL4": "L4-1.4.3.1|연속 이동",
+    "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+    "templateKey": "TT_EQUATION_GRAPH_MAPPING",
+    "crossConceptKeys": [
+      "CC_CIRCLE_CENTER_RADIUS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 7,
+    "uid": "ALITE-PALMA25-2MID-Q15-C1",
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "도형의 이동",
+    "originalCategory": "도형의 이동",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-C2-04-CORE",
+    "subUnit": "도형의 이동 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "도형의 이동"
+    ],
+    "wide": false,
+    "content": "원 $C:(x-2)^2+(y+3)^2=13$을 $x$축의 양의 방향으로 $3$, $y$축의 음의 방향으로 $1$만큼 평행이동한 다음 직선 $y=x$에 대하여 대칭이동하였다. 최종 원의 방정식으로 옳은 것은?",
+    "choices": [
+      "$(x-5)^2+(y+4)^2=13",
+      "$x^2+(y-1)^2=13",
+      "$(x-5)^2+(y-4)^2=13",
+      "$(x+5)^2+(y+4)^2=13",
+      "$(x+4)^2+(y-5)^2=13"
+    ],
+    "answer": "⑤",
+    "solution": "처음 원의 중심은 $(2,-3)$이고 반지름의 제곱은 $13$이다.\n먼저 평행이동하면 중심은 $(2+3,-3-1)=(5,-4)$가 된다.\n직선 $y=x$에 대한 대칭이동에서는 좌표 $(u,v)$가 $(v,u)$로 바뀌므로 최종 중심은 $(-4,5)$이다.\n이동과 대칭이동은 반지름을 보존하므로 최종 원의 방정식은 $(x+4)^2+(y-5)^2=13$이다.\n따라서 정답은 ⑤이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 15,
+    "slot": "C1",
+    "purposeGroup": "C",
+    "meta": {
+      "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+      "uid": "ALITE-PALMA25-2MID-Q15-C1",
+      "status": "SOURCE_META_PRESERVED",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "subUnitKey": "H22-C2-04-CORE",
+      "rpmPrimaryRecordId": "H1-RPM-229",
+      "rpmL1": "L1-1|도형의 방정식",
+      "rpmL2": "L2-1.4|도형의 이동",
+      "rpmL3": "L3-1.4.3|이동의 합성",
+      "rpmL4": "L4-1.4.3.1|연속 이동",
+      "rpmL4Namespace": "RPM_PRIMARY",
+      "problemTypeKey": "PT_MOVE_COMPOSITE",
+      "templateKey": "TT_COMPOSITE_CIRCLE",
+      "difficultyBucket": 4,
+      "level": "상",
+      "crossConceptKeys": [
+        "CC_CIRCLE_CENTER_RADIUS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "generatedL4RegistryRef": null,
+      "crossConceptRegistryRef": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+      "conditionRegistryRef": null,
+      "conditionEvidenceLabels": [],
+      "evidenceDebt": [],
+      "approval": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerSelectable": true,
+      "sourceCandidatePackageGitBlobSha": "282424973e2e3998d025a71eea1ce7bc64737850",
+      "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q13_Q16_OPENBOOK_REVIEW_REPAIR_20261009.md",
+      "physicalStorageBucketKey": "H22-C2-04-CORE",
+      "sourceKind": "generated",
+      "evidenceByField": {
+        "standardCourse": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardCourse"
+        },
+        "standardUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardUnitKey"
+        },
+        "subUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "subUnitKey"
+        },
+        "rpmPrimaryRecordId": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmPrimaryRecordId"
+        },
+        "rpmL1": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL1"
+        },
+        "rpmL2": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL2"
+        },
+        "rpmL3": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL3"
+        },
+        "rpmL4": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4"
+        },
+        "rpmL4Namespace": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4Namespace"
+        },
+        "problemTypeKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "problemTypeKey"
+        },
+        "templateKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "templateKey"
+        },
+        "difficultyBucket": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "difficultyBucket"
+        },
+        "level": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "level"
+        },
+        "crossConceptKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "crossConceptKeys"
+        },
+        "conditionKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "conditionKeys"
+        },
+        "integrationPattern": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "integrationPattern"
+        }
+      }
+    },
+    "rpmPrimaryL3": "L3-1.4.3|이동의 합성",
+    "generatedL4": "L4-1.4.3.1|연속 이동",
+    "problemTypeKey": "PT_MOVE_COMPOSITE",
+    "templateKey": "TT_COMPOSITE_CIRCLE",
+    "crossConceptKeys": [
+      "CC_CIRCLE_CENTER_RADIUS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 8,
+    "uid": "ALITE-PALMA25-2MID-Q15-C2",
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "도형의 이동",
+    "originalCategory": "도형의 이동",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-C2-04-CORE",
+    "subUnit": "도형의 이동 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "도형의 이동"
+    ],
+    "wide": false,
+    "content": "중심이 $(a,b)$이고 반지름이 $2$인 원 $C$에 다음 두 이동을 각각 시행하였다.\n(가) $x$축의 양의 방향으로 $3$, $y$축의 양의 방향으로 $2$만큼 평행이동한 뒤 $x$축에 대하여 대칭이동한다.\n(나) 직선 $y=x$에 대하여 대칭이동한 뒤 $x$축의 양의 방향으로 $1$, $y$축의 음의 방향으로 $4$만큼 평행이동한다.\n(가)와 (나)의 최종 원이 일치할 때, $a+b$의 값은?",
+    "choices": [
+      "$-6$",
+      "$-4$",
+      "$-2$",
+      "$2$",
+      "$6$"
+    ],
+    "answer": "④",
+    "solution": "(가)에서 중심 $(a,b)$는 먼저 $(a+3,b+2)$로 옮겨지고, 이를 $x$축에 대하여 대칭이동하면 $(a+3,-b-2)$가 된다.\n(나)에서는 먼저 $(b,a)$로 옮겨진 다음 평행이동하여 $(b+1,a-4)$가 된다.\n반지름이 같은 두 원이 일치하려면 중심이 같아야 한다. 따라서\n$a+3=b+1$에서 $b=a+2$이고, $-b-2=a-4$에서 $a+b=2$이다.\n실제로 $b=a+2$와 $a+b=2$를 풀면 $a=0,b=2$가 되어 최종 중심은 모두 $(3,-4)$다.\n따라서 정답은 ④이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 15,
+    "slot": "C2",
+    "purposeGroup": "C",
+    "meta": {
+      "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+      "uid": "ALITE-PALMA25-2MID-Q15-C2",
+      "status": "SOURCE_META_PRESERVED",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "subUnitKey": "H22-C2-04-CORE",
+      "rpmPrimaryRecordId": "H1-RPM-229",
+      "rpmL1": "L1-1|도형의 방정식",
+      "rpmL2": "L2-1.4|도형의 이동",
+      "rpmL3": "L3-1.4.3|이동의 합성",
+      "rpmL4": "L4-1.4.3.1|연속 이동",
+      "rpmL4Namespace": "RPM_PRIMARY",
+      "problemTypeKey": "PT_MOVE_COMPOSITE",
+      "templateKey": "TT_COMPOSITE_CIRCLE",
+      "difficultyBucket": 4,
+      "level": "상",
+      "crossConceptKeys": [
+        "CC_CIRCLE_CENTER_RADIUS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "generatedL4RegistryRef": null,
+      "crossConceptRegistryRef": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+      "conditionRegistryRef": null,
+      "conditionEvidenceLabels": [],
+      "evidenceDebt": [],
+      "approval": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerSelectable": true,
+      "sourceCandidatePackageGitBlobSha": "282424973e2e3998d025a71eea1ce7bc64737850",
+      "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q13_Q16_OPENBOOK_REVIEW_REPAIR_20261009.md",
+      "physicalStorageBucketKey": "H22-C2-04-CORE",
+      "sourceKind": "generated",
+      "evidenceByField": {
+        "standardCourse": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardCourse"
+        },
+        "standardUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardUnitKey"
+        },
+        "subUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "subUnitKey"
+        },
+        "rpmPrimaryRecordId": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmPrimaryRecordId"
+        },
+        "rpmL1": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL1"
+        },
+        "rpmL2": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL2"
+        },
+        "rpmL3": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL3"
+        },
+        "rpmL4": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4"
+        },
+        "rpmL4Namespace": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4Namespace"
+        },
+        "problemTypeKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "problemTypeKey"
+        },
+        "templateKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "templateKey"
+        },
+        "difficultyBucket": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "difficultyBucket"
+        },
+        "level": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "level"
+        },
+        "crossConceptKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "crossConceptKeys"
+        },
+        "conditionKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "conditionKeys"
+        },
+        "integrationPattern": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "integrationPattern"
+        }
+      }
+    },
+    "rpmPrimaryL3": "L3-1.4.3|이동의 합성",
+    "generatedL4": "L4-1.4.3.1|연속 이동",
+    "problemTypeKey": "PT_MOVE_COMPOSITE",
+    "templateKey": "TT_COMPOSITE_CIRCLE",
+    "crossConceptKeys": [
+      "CC_CIRCLE_CENTER_RADIUS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 9,
+    "uid": "ALITE-PALMA25-2MID-Q15-C3",
+    "level": "상",
+    "difficultyBucket": 5,
+    "category": "도형의 이동",
+    "originalCategory": "도형의 이동",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-C2-04-CORE",
+    "subUnit": "도형의 이동 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "도형의 이동"
+    ],
+    "wide": false,
+    "content": "원 $C:(x-2)^2+(y+1)^2=4$를 직선 $y=x$에 대하여 대칭이동한 뒤, $x$축의 양의 방향으로 $t$, $y$축의 음의 방향으로 $2t$만큼 평행이동한다. 마지막으로 $y$축에 대하여 대칭이동한 원을 $C'$라 하자.\n$C'$가 $x$축에 접하고 $t>0$일 때, $C'$의 방정식은?",
+    "choices": [
+      "$(x-1)^2+(y-2)^2=4",
+      "$(x-1)^2+(y+2)^2=4",
+      "$\\left(x-\\dfrac32\\right)^2+(y+2)^2=4",
+      "$(x+1)^2+(y+2)^2=4",
+      "$(x-3)^2+(y+2)^2=4"
+    ],
+    "answer": "④",
+    "solution": "원 $C$의 중심은 $(2,-1)$이고 반지름은 $2$이다.\n직선 $y=x$에 대하여 대칭이동하면 중심이 $(-1,2)$가 되고, 이어서 $(t,-2t)$만큼 평행이동하면 $(t-1,2-2t)$가 된다.\n마지막으로 $y$축에 대하여 대칭이동하므로 $C'$의 중심은 $(1-t,2-2t)$이다.\n원 $C'$가 $x$축에 접하려면 중심과 $x$축 사이 거리가 반지름 $2$와 같아야 하므로 $|2-2t|=2$이다.\n따라서 $t=0$ 또는 $t=2$인데 $t>0$이므로 $t=2$이다. 최종 중심은 $(-1,-2)$이다.\n반지름이 그대로 $2$이므로 $C':(x+1)^2+(y+2)^2=4$이고 정답은 ④이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 15,
+    "slot": "C3",
+    "purposeGroup": "C",
+    "meta": {
+      "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+      "uid": "ALITE-PALMA25-2MID-Q15-C3",
+      "status": "SOURCE_META_PRESERVED",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "subUnitKey": "H22-C2-04-CORE",
+      "rpmPrimaryRecordId": "H1-RPM-229",
+      "rpmL1": "L1-1|도형의 방정식",
+      "rpmL2": "L2-1.4|도형의 이동",
+      "rpmL3": "L3-1.4.3|이동의 합성",
+      "rpmL4": "L4-1.4.3.1|연속 이동",
+      "rpmL4Namespace": "RPM_PRIMARY",
+      "problemTypeKey": "PT_MOVE_COMPOSITE",
+      "templateKey": "TT_COMPOSITE_CIRCLE",
+      "difficultyBucket": 5,
+      "level": "상",
+      "crossConceptKeys": [
+        "CC_CIRCLE_CENTER_RADIUS",
+        "CC_CIRCLE_TANGENCY"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "generatedL4RegistryRef": null,
+      "crossConceptRegistryRef": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+      "conditionRegistryRef": null,
+      "conditionEvidenceLabels": [
+        "t>0: 접선 조건에서 t=0 제외"
+      ],
+      "evidenceDebt": [],
+      "approval": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerSelectable": true,
+      "sourceCandidatePackageGitBlobSha": "282424973e2e3998d025a71eea1ce7bc64737850",
+      "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q13_Q16_OPENBOOK_REVIEW_REPAIR_20261009.md",
+      "physicalStorageBucketKey": "H22-C2-04-CORE",
+      "sourceKind": "generated",
+      "evidenceByField": {
+        "standardCourse": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardCourse"
+        },
+        "standardUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardUnitKey"
+        },
+        "subUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "subUnitKey"
+        },
+        "rpmPrimaryRecordId": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmPrimaryRecordId"
+        },
+        "rpmL1": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL1"
+        },
+        "rpmL2": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL2"
+        },
+        "rpmL3": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL3"
+        },
+        "rpmL4": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4"
+        },
+        "rpmL4Namespace": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4Namespace"
+        },
+        "problemTypeKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "problemTypeKey"
+        },
+        "templateKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "templateKey"
+        },
+        "difficultyBucket": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "difficultyBucket"
+        },
+        "level": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "level"
+        },
+        "crossConceptKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "crossConceptKeys"
+        },
+        "conditionKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "conditionKeys"
+        },
+        "integrationPattern": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "integrationPattern"
+        }
+      }
+    },
+    "rpmPrimaryL3": "L3-1.4.3|이동의 합성",
+    "generatedL4": "L4-1.4.3.1|연속 이동",
+    "problemTypeKey": "PT_MOVE_COMPOSITE",
+    "templateKey": "TT_COMPOSITE_CIRCLE",
+    "crossConceptKeys": [
+      "CC_CIRCLE_CENTER_RADIUS",
+      "CC_CIRCLE_TANGENCY"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];
