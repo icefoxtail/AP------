@@ -1,0 +1,285 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "daaae1df4071544541ab2d7dd5ddcf559036a1ccfa6511bef22d3a24fe7fc8eb",
+  "solutionSha256": "b48e85defe88fa252e68fdc6ab96d2002c8010e866fd3665edeb971cac038bec",
+  "coordinateModel": {
+    "originX": 195.84697835644698,
+    "originY": 94.24269090292275,
+    "sx": 17.783625972263643,
+    "sy": 17.783625972263643
+  },
+  "points": [
+    {
+      "id": "H",
+      "at": [
+        0,
+        0
+      ],
+      "name": "H"
+    },
+    {
+      "id": "A",
+      "at": [
+        9.464101615137753,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "C",
+      "at": [
+        0,
+        -9.464101615137753
+      ],
+      "name": "C"
+    },
+    {
+      "id": "B",
+      "at": [
+        0,
+        -16.392304845413264
+      ],
+      "name": "B"
+    }
+  ],
+  "segments": [
+    {
+      "id": "BA",
+      "points": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "points": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "CH",
+      "points": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "BH",
+      "points": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "AH",
+      "points": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "circles": [],
+  "incidences": [],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "lenAH",
+      "segment": "AH",
+      "value": 9.464101615137753,
+      "mode": "ADJACENT",
+      "text": "6+2√(3)",
+      "factRole": "CONCLUSION",
+      "labelPlacement": "LEADER_CALLOUT",
+      "labelAt": [
+        4.7,
+        2.5
+      ]
+    }
+  ],
+  "regions": [],
+  "otherLabels": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed equal-unit realization satisfies BC=4√3, angle B=30°, angle ACH=135°, and AH perpendicular to BH.",
+    "normalization": {
+      "originPoint": "H",
+      "xAxisPoint": "A",
+      "unitScale": 9.464101615137753
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "H": [
+        0,
+        0
+      ],
+      "A": [
+        9.464101615137753,
+        0
+      ],
+      "C": [
+        0,
+        -9.464101615137753
+      ],
+      "B": [
+        0,
+        -16.392304845413264
+      ]
+    },
+    "conditions": [
+      {
+        "id": "BC4sqrt3",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "expected": 6.928203230275509,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "B30",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "expected": 30,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "ACB135",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "expected": 135,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "ACH45",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "C",
+          "H"
+        ],
+        "expected": 45,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "AHperpBH",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "A",
+          "H",
+          "B",
+          "H"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "AHCH",
+        "kind": "EQUAL_DISTANCE",
+        "refs": [
+          "A",
+          "H",
+          "C",
+          "H"
+        ],
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-H",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "H",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "A",
+        "inputs": [
+          "H"
+        ]
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "C",
+        "inputs": [
+          "H",
+          "A"
+        ]
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "B",
+        "inputs": [
+          "H",
+          "A",
+          "C"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "BC4sqrt3",
+        "residual": 1.7763568394002505e-15,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "B30",
+        "residual": 7.105427357601002e-15,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "ACB135",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "ACH45",
+        "residual": 7.105427357601002e-15,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "AHperpBH",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "AHCH",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-witness",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "H",
+          "A",
+          "C"
+        ],
+        "observed": 1.0,
+        "minimum": 1e-09
+      }
+    ]
+  }
+}

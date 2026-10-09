@@ -1,0 +1,351 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "7f3b7cb7d9f295c18e66d874bebf17189b3fdbbb999bae6a4523686fc40a080c",
+  "solutionSha256": "f76b0adbd57fe24077e50c21583fac851e2ce0789dbf79ee9ed81eefb88c4548",
+  "coordinateModel": {
+    "originX": 100.66666666666667,
+    "originY": 216.47916666666666,
+    "sx": 42.91666666666666,
+    "sy": 42.91666666666666
+  },
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "The source fixes incidence, angles or metric facts but no absolute coordinate frame; this equal-unit realization preserves all listed constraints.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "C",
+      "unitScale": 1
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "O": [
+        0,
+        0
+      ],
+      "A": [
+        0.42261826174069944,
+        0.9063077870366499
+      ],
+      "B": [
+        0.42261826174069944,
+        -0.9063077870366499
+      ],
+      "C": [
+        1,
+        0
+      ],
+      "P": [
+        2.3662015831524985,
+        0
+      ]
+    },
+    "conditions": [
+      {
+        "id": "OA1",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "tolerance": 1e-07,
+        "expected": 1
+      },
+      {
+        "id": "OB1",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "tolerance": 1e-07,
+        "expected": 1
+      },
+      {
+        "id": "OC1",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "C"
+        ],
+        "tolerance": 1e-07,
+        "expected": 1
+      },
+      {
+        "id": "OPtangencyA",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "A",
+          "A",
+          "P"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "OPtangencyB",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "B",
+          "B",
+          "P"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "angleP50",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "tolerance": 1e-07,
+        "expected": 50
+      },
+      {
+        "id": "anglePAC32_5",
+        "kind": "ANGLE",
+        "refs": [
+          "P",
+          "A",
+          "C"
+        ],
+        "tolerance": 1e-07,
+        "expected": 32.5
+      },
+      {
+        "id": "anglePBC32_5",
+        "kind": "ANGLE",
+        "refs": [
+          "P",
+          "B",
+          "C"
+        ],
+        "tolerance": 1e-07,
+        "expected": 32.5
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-O",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "C",
+        "inputs": []
+      },
+      {
+        "id": "construct-P",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "P",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "OA1",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OB1",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OC1",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OPtangencyA",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OPtangencyB",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "angleP50",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "anglePAC32_5",
+        "residual": 1.4210854715202004e-14,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "anglePBC32_5",
+        "residual": 1.4210854715202004e-14,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct-anchor-points",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "observed": 1.0,
+        "minimum": 1e-06
+      }
+    ]
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "at": [
+        0.42261826174069944,
+        0.9063077870366499
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        0.42261826174069944,
+        -0.9063077870366499
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        1,
+        0
+      ],
+      "name": null
+    },
+    {
+      "id": "P",
+      "at": [
+        2.3662015831524985,
+        0
+      ],
+      "name": "P"
+    }
+  ],
+  "segments": [
+    {
+      "id": "PA",
+      "points": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "points": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "points": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "points": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 1
+    }
+  ],
+  "incidences": [
+    {
+      "id": "inc-circleO-A",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "inc-circleO-B",
+      "point": "B",
+      "circle": "circleO"
+    },
+    {
+      "id": "inc-circleO-C",
+      "point": "C",
+      "circle": "circleO"
+    }
+  ],
+  "lines": [],
+  "angles": [],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "C-label",
+      "text": "C"
+    },
+    {
+      "id": "given-angle",
+      "text": "∠P=50°"
+    },
+    {
+      "id": "arc-condition",
+      "text": "C on minor arc AB"
+    },
+    {
+      "id": "target-sum",
+      "text": "sum=65°"
+    }
+  ]
+}

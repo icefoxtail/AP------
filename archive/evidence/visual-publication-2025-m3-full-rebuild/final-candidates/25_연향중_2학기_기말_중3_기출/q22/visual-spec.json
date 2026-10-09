@@ -1,0 +1,453 @@
+{
+  "id": "25_연향중_2학기_기말_중3_기출-q22",
+  "title": "호의 길이와 원 밖 할선각",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -11,
+    "xMax": 26,
+    "yMin": -11,
+    "yMax": 19,
+    "width": 350,
+    "height": 360,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "The source fixes incidence, angles or metric facts but no absolute coordinate frame; this equal-unit realization preserves all listed constraints.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "P",
+        "unitScale": 23.811761799581312
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "O": [
+          0.0,
+          -0.0
+        ],
+        "A": [
+          -6.803360514166089,
+          -5.891883036371797
+        ],
+        "B": [
+          8.504200642707612,
+          -2.9459415181858963
+        ],
+        "D": [
+          6.80336051416609,
+          5.891883036371796
+        ],
+        "C": [
+          -1.7008401285415218,
+          8.837824554557692
+        ],
+        "P": [
+          23.811761799581312,
+          1.7763568394002505e-15
+        ]
+      },
+      "conditions": [
+        {
+          "id": "OA9",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "tolerance": 1e-07,
+          "expected": 9
+        },
+        {
+          "id": "OB9",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "tolerance": 1e-07,
+          "expected": 9
+        },
+        {
+          "id": "OC9",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "tolerance": 1e-07,
+          "expected": 9
+        },
+        {
+          "id": "OD9",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "D"
+          ],
+          "tolerance": 1e-07,
+          "expected": 9
+        },
+        {
+          "id": "arcAB120",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "O",
+            "B"
+          ],
+          "tolerance": 1e-07,
+          "expected": 120
+        },
+        {
+          "id": "arcDC60",
+          "kind": "ANGLE",
+          "refs": [
+            "D",
+            "O",
+            "C"
+          ],
+          "tolerance": 1e-07,
+          "expected": 60
+        },
+        {
+          "id": "P_AB",
+          "kind": "COLLINEAR",
+          "refs": [
+            "P",
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "P_DC",
+          "kind": "COLLINEAR",
+          "refs": [
+            "P",
+            "D",
+            "C"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "Pangle30",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "P",
+            "C"
+          ],
+          "tolerance": 1e-07,
+          "expected": 30
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-O",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-D",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "D",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "C",
+          "inputs": []
+        },
+        {
+          "id": "construct-P",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "P",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "OA9",
+          "residual": 1.7763568394002505e-15,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OB9",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OC9",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OD9",
+          "residual": 1.7763568394002505e-15,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "arcAB120",
+          "residual": 1.4210854715202004e-14,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "arcDC60",
+          "residual": 1.4210854715202004e-14,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "P_AB",
+          "residual": 5.848088360165435e-17,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "P_DC",
+          "residual": 5.848088360165435e-17,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "Pangle30",
+          "residual": 7.105427357601002e-15,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct-anchor-points",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "observed": 9.000000000000002,
+          "minimum": 1e-06
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0.0,
+        -0.0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        -6.803360514166089,
+        -5.891883036371797
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        8.504200642707612,
+        -2.9459415181858963
+      ],
+      "name": "B"
+    },
+    {
+      "id": "D",
+      "kind": "POINT",
+      "at": [
+        6.80336051416609,
+        5.891883036371796
+      ],
+      "name": "D"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        -1.7008401285415218,
+        8.837824554557692
+      ],
+      "name": "C"
+    },
+    {
+      "id": "P",
+      "kind": "POINT",
+      "at": [
+        23.811761799581312,
+        1.7763568394002505e-15
+      ],
+      "name": "P"
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        -6.803360514166089,
+        -5.891883036371797
+      ],
+      "to": [
+        8.504200642707612,
+        -2.9459415181858963
+      ]
+    },
+    {
+      "id": "DC",
+      "kind": "SEGMENT",
+      "from": [
+        6.80336051416609,
+        5.891883036371796
+      ],
+      "to": [
+        -1.7008401285415218,
+        8.837824554557692
+      ]
+    },
+    {
+      "id": "PA",
+      "kind": "SEGMENT",
+      "from": [
+        23.811761799581312,
+        1.7763568394002505e-15
+      ],
+      "to": [
+        -6.803360514166089,
+        -5.891883036371797
+      ]
+    },
+    {
+      "id": "PB",
+      "kind": "SEGMENT",
+      "from": [
+        23.811761799581312,
+        1.7763568394002505e-15
+      ],
+      "to": [
+        8.504200642707612,
+        -2.9459415181858963
+      ]
+    },
+    {
+      "id": "PC",
+      "kind": "SEGMENT",
+      "from": [
+        23.811761799581312,
+        1.7763568394002505e-15
+      ],
+      "to": [
+        -1.7008401285415218,
+        8.837824554557692
+      ]
+    },
+    {
+      "id": "PD",
+      "kind": "SEGMENT",
+      "from": [
+        23.811761799581312,
+        1.7763568394002505e-15
+      ],
+      "to": [
+        6.80336051416609,
+        5.891883036371796
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        0.0,
+        -0.0
+      ],
+      "radius": 9
+    },
+    {
+      "id": "arcAB-summary",
+      "kind": "GRAPH_ANNOTATION",
+      "at": [
+        -10,
+        10.5
+      ],
+      "text": "AB:6π",
+      "math": false
+    },
+    {
+      "id": "arcCD-summary",
+      "kind": "GRAPH_ANNOTATION",
+      "at": [
+        12,
+        14.0
+      ],
+      "text": "CD:3π",
+      "math": false
+    },
+    {
+      "id": "arcAC-summary",
+      "kind": "GRAPH_ANNOTATION",
+      "at": [
+        -10,
+        17.5
+      ],
+      "text": "AC:6π",
+      "math": false
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "O": "O",
+      "A": "A",
+      "B": "B",
+      "D": "D",
+      "C": "C",
+      "P": "P"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "DC": [
+        "D",
+        "C"
+      ],
+      "PA": [
+        "P",
+        "A"
+      ],
+      "PB": [
+        "P",
+        "B"
+      ],
+      "PC": [
+        "P",
+        "C"
+      ],
+      "PD": [
+        "P",
+        "D"
+      ]
+    },
+    "annotations": []
+  }
+}

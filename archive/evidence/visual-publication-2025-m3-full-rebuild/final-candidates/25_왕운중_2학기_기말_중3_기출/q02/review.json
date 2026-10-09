@@ -1,0 +1,319 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "cb9340726ed574fed56570abb2e628df248af0492571a2beb3b9dcd1420feddf",
+  "solutionSha256": "4f0608a70e6a2594817588f4fb330b6f3f18b9c4deb890715c9a127cf2f48eb3",
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Two tangent contacts are constructed from external point C; radius-contact perpendicularity and equal tangent lengths are source/solution facts.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "C",
+      "unitScale": 4.47213595499958
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "O": [
+        0.0,
+        0.0
+      ],
+      "C": [
+        4.47213595499958,
+        0.0
+      ],
+      "A": [
+        0.8944271909999159,
+        1.7888543819998317
+      ],
+      "E": [
+        0.8944271909999159,
+        -1.7888543819998317
+      ]
+    },
+    "conditions": [
+      {
+        "id": "incA",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "expected": 2,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "incE",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "E"
+        ],
+        "expected": 2,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "tanA",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "A",
+          "C",
+          "A"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "tanE",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "E",
+          "C",
+          "E"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "lenCA",
+        "kind": "DISTANCE",
+        "refs": [
+          "C",
+          "A"
+        ],
+        "expected": 4,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "lenCE",
+        "kind": "DISTANCE",
+        "refs": [
+          "C",
+          "E"
+        ],
+        "expected": 4,
+        "tolerance": 1e-06
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "origin",
+        "operation": "SOURCE_ORIGIN",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "circleA",
+        "operation": "TANGENT_CONTACT_A",
+        "output": "A",
+        "inputs": [
+          "O",
+          "C"
+        ]
+      },
+      {
+        "id": "circleE",
+        "operation": "TANGENT_CONTACT_E",
+        "output": "E",
+        "inputs": [
+          "O",
+          "C"
+        ]
+      },
+      {
+        "id": "externalC",
+        "operation": "EXTERNAL_POINT",
+        "output": "C",
+        "inputs": [
+          "O",
+          "A",
+          "E"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "incA",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "incE",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "tanA",
+        "residual": 5.551115123125783e-17,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "tanE",
+        "residual": 5.551115123125783e-17,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "lenCA",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "lenCE",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct_CA",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "C",
+          "A"
+        ],
+        "observed": 4.0,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_CE",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "C",
+          "E"
+        ],
+        "observed": 4.0,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_OA",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "observed": 2.0,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_OE",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "E"
+        ],
+        "observed": 2.0,
+        "minimum": 1e-05
+      }
+    ]
+  },
+  "coordinateModel": {
+    "originX": 172.0,
+    "originY": 256.0,
+    "sx": 56.0,
+    "sy": 56.0
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "C",
+      "at": [
+        4.47213595499958,
+        0.0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "A",
+      "at": [
+        0.8944271909999159,
+        1.7888543819998317
+      ],
+      "name": "A"
+    },
+    {
+      "id": "E",
+      "at": [
+        0.8944271909999159,
+        -1.7888543819998317
+      ],
+      "name": "E"
+    }
+  ],
+  "segments": [
+    {
+      "id": "CA",
+      "points": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "CE",
+      "points": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OE",
+      "points": [
+        "O",
+        "E"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "radius": 2.0
+    }
+  ],
+  "incidences": [
+    {
+      "id": "incA",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "incE",
+      "point": "E",
+      "circle": "circleO"
+    }
+  ],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "CA4",
+      "segment": "CA",
+      "value": 4,
+      "text": "4 cm",
+      "mode": "DIMENSION",
+      "factRole": "CONCLUSION"
+    },
+    {
+      "id": "CE4",
+      "segment": "CE",
+      "value": 4,
+      "text": "4 cm",
+      "mode": "DIMENSION",
+      "factRole": "GIVEN"
+    }
+  ],
+  "regions": []
+}

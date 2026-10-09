@@ -1,0 +1,264 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "7b52e650927c02279350f508acef047e5ddd346cd527cdb3cbf09042bfe87cf9",
+  "solutionSha256": "80fde18b8a556a3aaf623f1df3cd50dee2034e4342679c69f94a74f1dac787fe",
+  "coordinateModel": {
+    "originX": 92.22222222222223,
+    "originY": 286.8888888888889,
+    "sx": 41.11111111111111,
+    "sy": 41.11111111111111
+  },
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Coordinates are a constructed realization of the source geometry, not measurements from the sketch.",
+    "normalization": {
+      "originPoint": "B",
+      "xAxisPoint": "C",
+      "unitScale": 5
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "B": [
+        0,
+        0
+      ],
+      "C": [
+        5,
+        0
+      ],
+      "H": [
+        3.6,
+        0
+      ],
+      "A": [
+        3.6,
+        5.2
+      ]
+    },
+    "conditions": [
+      {
+        "id": "ABdist",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-07,
+        "expected": 6.324555320336759
+      },
+      {
+        "id": "BCdist",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "tolerance": 1e-07,
+        "expected": 5
+      },
+      {
+        "id": "ACdist",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "tolerance": 1e-07,
+        "expected": 5.385164807134504
+      },
+      {
+        "id": "AHperpBC",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "A",
+          "H",
+          "B",
+          "C"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "B_H_C",
+        "kind": "COLLINEAR",
+        "refs": [
+          "B",
+          "H",
+          "C"
+        ],
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "C",
+        "inputs": []
+      },
+      {
+        "id": "construct-H",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "H",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "A",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "ABdist",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "BCdist",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "ACdist",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "AHperpBC",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "B_H_C",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct-anchor-points",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "observed": 5.0,
+        "minimum": 1e-06
+      }
+    ]
+  },
+  "points": [
+    {
+      "id": "B",
+      "at": [
+        0,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        5,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "H",
+      "at": [
+        3.6,
+        0
+      ],
+      "name": "H"
+    },
+    {
+      "id": "A",
+      "at": [
+        3.6,
+        5.2
+      ],
+      "name": "A"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "points": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AH",
+      "points": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "BH",
+      "points": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "HC",
+      "points": [
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "circles": [],
+  "incidences": [],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "AHlen",
+      "segment": "AH",
+      "value": 5.2,
+      "mode": "ADJACENT",
+      "text": "26/5",
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "BHlen",
+      "segment": "BH",
+      "value": 3.6,
+      "mode": "ADJACENT",
+      "text": "18/5",
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "tan-result",
+      "text": "tan B=13/9"
+    }
+  ]
+}

@@ -1,0 +1,526 @@
+{
+  "id": "wangun-final-q20",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -2,
+    "xMax": 10,
+    "yMin": -2,
+    "yMax": 10,
+    "width": 512,
+    "height": 512,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "A diameter of 9 cm gives radius 9/2; the tangent is horizontal, AH=8 and AH∥OT, so the right triangle HTO has HT=2√2 and area AHT=8√2.",
+      "normalization": {
+        "originPoint": "H",
+        "xAxisPoint": "T",
+        "unitScale": 2.8284271247461903
+      },
+      "freeVariables": [
+        {
+          "id": "heightAH",
+          "value": 8
+        },
+        {
+          "id": "radius",
+          "value": 4.5
+        }
+      ],
+      "pointCoordinates": {
+        "H": [
+          0.0,
+          0.0
+        ],
+        "A": [
+          0.0,
+          8.0
+        ],
+        "T": [
+          2.8284271247461903,
+          0.0
+        ],
+        "C": [
+          6.82842712474619,
+          0.0
+        ],
+        "O": [
+          2.8284271247461903,
+          4.5
+        ],
+        "B": [
+          5.656854249492381,
+          1.0
+        ]
+      },
+      "conditions": [
+        {
+          "id": "incA",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 4.5,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "incB",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "expected": 4.5,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "incT",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "T"
+          ],
+          "expected": 4.5,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "diameterAB",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 9,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "heightAH",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "H"
+          ],
+          "expected": 8,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "baseHT",
+          "kind": "DISTANCE",
+          "refs": [
+            "H",
+            "T"
+          ],
+          "expected": 2.8284271247461903,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "perpAtH",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "A",
+            "H",
+            "H",
+            "T"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "tangentAtT",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "T",
+            "T",
+            "C"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "collinearHTC",
+          "kind": "COLLINEAR",
+          "refs": [
+            "H",
+            "T",
+            "C"
+          ],
+          "tolerance": 1e-06
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "originH",
+          "operation": "SOURCE_ORIGIN",
+          "output": "H",
+          "inputs": []
+        },
+        {
+          "id": "baseT",
+          "operation": "NORMALIZED_TANGENT_BASE",
+          "output": "T",
+          "inputs": [
+            "H"
+          ]
+        },
+        {
+          "id": "radiusOT",
+          "operation": "PERPENDICULAR_RADIUS",
+          "output": "O",
+          "inputs": [
+            "T"
+          ]
+        },
+        {
+          "id": "pointA",
+          "operation": "CIRCLE_POINT_FOR_HEIGHT",
+          "output": "A",
+          "inputs": [
+            "O",
+            "H"
+          ]
+        },
+        {
+          "id": "antipodeB",
+          "operation": "DIAMETRAL_OPPOSITE",
+          "output": "B",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "id": "externalC",
+          "operation": "TANGENT_LINE_POINT",
+          "output": "C",
+          "inputs": [
+            "T"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "incA",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "incB",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "incT",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "diameterAB",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "heightAH",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "baseHT",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "perpAtH",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "tangentAtT",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "collinearHTC",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct_AB",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "observed": 9.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_AH",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "H"
+          ],
+          "observed": 8.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_HT",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "H",
+            "T"
+          ],
+          "observed": 2.8284271247461903,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_TC",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "T",
+            "C"
+          ],
+          "observed": 3.9999999999999996,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_OT",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "T"
+          ],
+          "observed": 4.5,
+          "minimum": 1e-05
+        }
+      ]
+    },
+    "givenFacts": [
+      "AB is diameter 9 cm",
+      "T is circle tangent",
+      "AH⊥CT",
+      "AH=8 cm"
+    ],
+    "solutionFacts": [
+      "OT=OA=9/2",
+      "AH∥OT",
+      "HT=2√2",
+      "area AHT=8√2"
+    ]
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "H",
+      "kind": "POINT",
+      "at": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0.0,
+        8.0
+      ]
+    },
+    {
+      "id": "T",
+      "kind": "POINT",
+      "at": [
+        2.8284271247461903,
+        0.0
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        6.82842712474619,
+        0.0
+      ]
+    },
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        2.8284271247461903,
+        4.5
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        5.656854249492381,
+        1.0
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        2.8284271247461903,
+        4.5
+      ],
+      "radius": 4.5
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        8.0
+      ],
+      "to": [
+        5.656854249492381,
+        1.0
+      ]
+    },
+    {
+      "id": "AH",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        8.0
+      ],
+      "to": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "HT",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        2.8284271247461903,
+        0.0
+      ]
+    },
+    {
+      "id": "TC",
+      "kind": "SEGMENT",
+      "from": [
+        2.8284271247461903,
+        0.0
+      ],
+      "to": [
+        6.82842712474619,
+        0.0
+      ]
+    },
+    {
+      "id": "OT",
+      "kind": "SEGMENT",
+      "from": [
+        2.8284271247461903,
+        4.5
+      ],
+      "to": [
+        2.8284271247461903,
+        0.0
+      ]
+    },
+    {
+      "id": "measureNote",
+      "kind": "CONDITION_BOX",
+      "at": [
+        0,
+        9.5
+      ],
+      "lines": [
+        "AB=9 cm; AH=8 cm; HT=2√2 cm"
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "H": "H",
+      "A": "A",
+      "T": "T",
+      "C": "C",
+      "O": "O",
+      "B": "B"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "AH": [
+        "A",
+        "H"
+      ],
+      "HT": [
+        "H",
+        "T"
+      ],
+      "TC": [
+        "T",
+        "C"
+      ],
+      "OT": [
+        "O",
+        "T"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "rightH",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "H",
+          "T"
+        ],
+        "value": 90,
+        "marker": "SQUARE",
+        "showLabel": false,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rightT",
+        "kind": "ANGLE",
+        "refs": [
+          "O",
+          "T",
+          "C"
+        ],
+        "value": 90,
+        "marker": "SQUARE",
+        "showLabel": false,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "areaAHT",
+        "kind": "REGION",
+        "refs": [
+          "A",
+          "H",
+          "T"
+        ],
+        "value": 11.313708498984761,
+        "text": "8sqrt(2)",
+        "factRole": "CONCLUSION",
+        "labelAt": [
+          0.8,
+          1.2
+        ]
+      }
+    ]
+  }
+}

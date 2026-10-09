@@ -1,0 +1,386 @@
+{
+  "id": "m3-geumdang-mid-q17",
+  "visualType": "line_circle_geometry",
+  "title": "두 접선이 만드는 정삼각형",
+  "viewport": {
+    "xMin": -1.5,
+    "xMax": 11.892304845413264,
+    "yMin": -4.964101615137754,
+    "yMax": 4.964101615137754,
+    "width": 560,
+    "height": 480,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Constructed tangent-circle realization with PA=PB=6 and angle APB=60 degrees.",
+      "normalization": {
+        "originPoint": "P",
+        "xAxisPoint": "O",
+        "unitScale": 6.928203230275509
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "P": [
+          0,
+          0
+        ],
+        "A": [
+          5.196152422706632,
+          3
+        ],
+        "B": [
+          5.196152422706632,
+          -3
+        ],
+        "O": [
+          6.928203230275509,
+          0
+        ]
+      },
+      "conditions": [
+        {
+          "id": "PA6",
+          "kind": "DISTANCE",
+          "refs": [
+            "P",
+            "A"
+          ],
+          "expected": 6,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "PB6",
+          "kind": "DISTANCE",
+          "refs": [
+            "P",
+            "B"
+          ],
+          "expected": 6,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "angleP60",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "P",
+            "B"
+          ],
+          "expected": 60,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "OAperpPA",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "A",
+            "P",
+            "A"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "OBperpPB",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "B",
+            "P",
+            "B"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "AB6",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 6,
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-P",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "P",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "A",
+          "inputs": [
+            "P"
+          ]
+        },
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "B",
+          "inputs": [
+            "P",
+            "A"
+          ]
+        },
+        {
+          "id": "construct-O",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "O",
+          "inputs": [
+            "P",
+            "A",
+            "B"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "PA6",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "PB6",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "angleP60",
+          "residual": 7.105427357601002e-15,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OAperpPA",
+          "residual": 8.546500828371396e-17,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OBperpPB",
+          "residual": 8.546500828371396e-17,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "AB6",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "noncollinear-witness",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "P",
+            "A",
+            "B"
+          ],
+          "observed": 0.8660254037844387,
+          "minimum": 1e-09
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "P",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "P"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        5.196152422706632,
+        3
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        5.196152422706632,
+        -3
+      ],
+      "name": "B"
+    },
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        6.928203230275509,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "PA",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        5.196152422706632,
+        3
+      ]
+    },
+    {
+      "id": "PB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        5.196152422706632,
+        -3
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        5.196152422706632,
+        3
+      ],
+      "to": [
+        5.196152422706632,
+        -3
+      ]
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        6.928203230275509,
+        0
+      ],
+      "to": [
+        5.196152422706632,
+        3
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        6.928203230275509,
+        0
+      ],
+      "to": [
+        5.196152422706632,
+        -3
+      ]
+    },
+    {
+      "id": "OP",
+      "kind": "SEGMENT",
+      "from": [
+        6.928203230275509,
+        0
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        6.928203230275509,
+        0
+      ],
+      "radius": 3.4641016151377544
+    },
+    {
+      "id": "area-answer",
+      "kind": "EQUATION_LABEL",
+      "text": "9sqrt(3)",
+      "at": [
+        9,
+        1
+      ],
+      "math": true
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 18,
+    "sourcePointLabels": {
+      "P": "P",
+      "A": "A",
+      "B": "B",
+      "O": "O"
+    },
+    "segmentPointRefs": {
+      "PA": [
+        "P",
+        "A"
+      ],
+      "PB": [
+        "P",
+        "B"
+      ],
+      "AB": [
+        "A",
+        "B"
+      ],
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ],
+      "OP": [
+        "O",
+        "P"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "lenPA6",
+        "kind": "LENGTH",
+        "owner": "PA",
+        "value": 6,
+        "mode": "ADJACENT",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenPB6",
+        "kind": "LENGTH",
+        "owner": "PB",
+        "value": 6,
+        "mode": "ADJACENT",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenAB6",
+        "kind": "LENGTH",
+        "owner": "AB",
+        "value": 6,
+        "mode": "ADJACENT",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

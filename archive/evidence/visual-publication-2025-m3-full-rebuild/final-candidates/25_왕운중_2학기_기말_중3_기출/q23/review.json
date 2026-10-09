@@ -1,0 +1,528 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "cb9340726ed574fed56570abb2e628df248af0492571a2beb3b9dcd1420feddf",
+  "solutionSha256": "351dd7ba6d9f88042e5773ddb8983f83a9bc18b167f709169f716f2436105660",
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "A cyclic realization fixes ∠C=56° and uses a valid illustrative split α=50°, β=74°; D is the tangent/secant intersection, E is the angle-bisector intersection, and the solution result is invariant at 118°.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "C",
+      "unitScale": 4
+    },
+    "freeVariables": [
+      {
+        "id": "alpha",
+        "value": 50
+      },
+      {
+        "id": "beta",
+        "value": 74
+      },
+      {
+        "id": "arcBC",
+        "value": 70
+      }
+    ],
+    "pointCoordinates": {
+      "A": [
+        -3.997563308076383,
+        -0.13959798681000382
+      ],
+      "B": [
+        1.3680805733026744,
+        3.7587704831436337
+      ],
+      "C": [
+        4.0,
+        -7.347880794884119e-16
+      ],
+      "O": [
+        -0.0,
+        0.0
+      ],
+      "D": [
+        4.000000000000002,
+        5.67097187692273
+      ],
+      "E": [
+        1.0845662209696116,
+        -0.05088908590689463
+      ]
+    },
+    "conditions": [
+      {
+        "id": "incA",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "expected": 4,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "incB",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "expected": 4,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "incC",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "C"
+        ],
+        "expected": 4,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "ABlineD",
+        "kind": "COLLINEAR",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "AlineE",
+        "kind": "COLLINEAR",
+        "refs": [
+          "A",
+          "E",
+          "C"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "tangent",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "C",
+          "C",
+          "D"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "angleACB",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "expected": 56,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "angleADC",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "expected": 54,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "angleADE",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "D",
+          "E"
+        ],
+        "expected": 27,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "angleAED",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "E",
+          "D"
+        ],
+        "expected": 118,
+        "tolerance": 1e-06
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "origin",
+        "operation": "SOURCE_ORIGIN",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "baseC",
+        "operation": "NORMALIZED_RADIUS",
+        "output": "C",
+        "inputs": [
+          "O"
+        ]
+      },
+      {
+        "id": "circleA",
+        "operation": "ROTATE_POLAR_182",
+        "output": "A",
+        "inputs": [
+          "O",
+          "C"
+        ]
+      },
+      {
+        "id": "circleB",
+        "operation": "ROTATE_POLAR_70",
+        "output": "B",
+        "inputs": [
+          "O",
+          "C"
+        ]
+      },
+      {
+        "id": "tangentIntersectionD",
+        "operation": "INTERSECT_TANGENT_AB",
+        "output": "D",
+        "inputs": [
+          "A",
+          "B",
+          "O",
+          "C"
+        ]
+      },
+      {
+        "id": "angleBisectorIntersectionE",
+        "operation": "BISECTOR_INTERSECTION_AC",
+        "output": "E",
+        "inputs": [
+          "A",
+          "C",
+          "D"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "incA",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "incB",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "incC",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "ABlineD",
+        "residual": 1.0837421413568814e-16,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "AlineE",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "tangent",
+        "residual": 1.295397370634938e-16,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "angleACB",
+        "residual": 7.105427357601002e-15,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "angleADC",
+        "residual": 1.4210854715202004e-14,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "angleADE",
+        "residual": 1.0658141036401503e-14,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "angleAED",
+        "residual": 1.4210854715202004e-14,
+        "tolerance": 1e-06
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct_AD",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "D"
+        ],
+        "observed": 9.885531903140505,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_CD",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "C",
+          "D"
+        ],
+        "observed": 5.670971876922731,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_AC",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "observed": 7.99878156125113,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_DE",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "D",
+          "E"
+        ],
+        "observed": 6.421794686679494,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_BC",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "observed": 4.58861149080837,
+        "minimum": 1e-05
+      }
+    ]
+  },
+  "coordinateModel": {
+    "originX": 204.66666666666666,
+    "originY": 330.66666666666663,
+    "sx": 21.333333333333332,
+    "sy": 21.333333333333332
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        -3.997563308076383,
+        -0.13959798681000382
+      ],
+      "name": "A",
+      "labelAt": [
+        -5.5,
+        -0.5
+      ]
+    },
+    {
+      "id": "B",
+      "at": [
+        1.3680805733026744,
+        3.7587704831436337
+      ],
+      "name": "B",
+      "labelAt": [
+        1.5,
+        5.4
+      ],
+      "labelPlacement": "LEADER_CALLOUT"
+    },
+    {
+      "id": "C",
+      "at": [
+        4.0,
+        -7.347880794884119e-16
+      ],
+      "name": "C",
+      "labelAt": [
+        5.5,
+        -1.0
+      ],
+      "labelPlacement": "LEADER_CALLOUT"
+    },
+    {
+      "id": "O",
+      "at": [
+        -0.0,
+        0.0
+      ],
+      "name": "O",
+      "labelAt": [
+        -0.5,
+        1.0
+      ],
+      "labelPlacement": "LEADER_CALLOUT"
+    },
+    {
+      "id": "D",
+      "at": [
+        4.000000000000002,
+        5.67097187692273
+      ],
+      "name": "D",
+      "labelAt": [
+        5.0,
+        6.2
+      ]
+    },
+    {
+      "id": "E",
+      "at": [
+        1.0845662209696116,
+        -0.05088908590689463
+      ],
+      "name": "E",
+      "labelAt": [
+        0.8,
+        -1.4
+      ],
+      "labelPlacement": "LEADER_CALLOUT"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AD",
+      "points": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "CD",
+      "points": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "AC",
+      "points": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "DE",
+      "points": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        -0.0,
+        0.0
+      ],
+      "radius": 4
+    }
+  ],
+  "arcs": [
+    {
+      "id": "arcBC",
+      "center": "O",
+      "radius": 4,
+      "startPoint": "C",
+      "endPoint": "B",
+      "sweep": "CCW",
+      "degrees": 70
+    }
+  ],
+  "incidences": [
+    {
+      "id": "incA",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "incB",
+      "point": "B",
+      "circle": "circleO"
+    },
+    {
+      "id": "incC",
+      "point": "C",
+      "circle": "circleO"
+    }
+  ],
+  "angles": [
+    {
+      "id": "angleACB",
+      "points": [
+        "A",
+        "C",
+        "B"
+      ],
+      "degrees": 56,
+      "marker": "ARC",
+      "text": "56°",
+      "factRole": "GIVEN",
+      "labelPlacement": "CONDITION_BOX",
+      "conditionBoxId": "crowded-relations",
+      "showLabel": false
+    },
+    {
+      "id": "angleAED",
+      "points": [
+        "A",
+        "E",
+        "D"
+      ],
+      "degrees": 118,
+      "marker": "ARC",
+      "text": "118°",
+      "factRole": "CONCLUSION",
+      "labelPlacement": "CONDITION_BOX",
+      "conditionBoxId": "crowded-relations",
+      "showLabel": false
+    }
+  ],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "constructionNote",
+      "text": "α=∠BAC, β=∠ABCα+β=124°DE bisects ∠ADC"
+    },
+    {
+      "id": "crowded-relations",
+      "text": "∠ACB=56°∠AED=118°",
+      "powers": [],
+      "conditionBoxFor": [
+        "angleACB",
+        "angleAED"
+      ]
+    }
+  ]
+}

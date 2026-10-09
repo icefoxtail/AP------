@@ -1,0 +1,278 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "7f3b7cb7d9f295c18e66d874bebf17189b3fdbbb999bae6a4523686fc40a080c",
+  "solutionSha256": "4e6b4a2f0b41d050cf79ec145b4809457407cf3e145f5a6c8b81d9e2fbbbca2a",
+  "coordinateModel": {
+    "originX": 118.93333333333334,
+    "originY": 212.6,
+    "sx": 21.733333333333334,
+    "sy": 21.733333333333334
+  },
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "The source fixes circle incidence and Euclidean relationships but no absolute frame; this equal-unit realization satisfies every enumerated condition.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "P",
+      "unitScale": 6
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "O": [
+        0,
+        0
+      ],
+      "P": [
+        6,
+        0
+      ],
+      "A": [
+        1.5,
+        2.598076211353316
+      ],
+      "B": [
+        1.5,
+        -2.598076211353316
+      ]
+    },
+    "conditions": [
+      {
+        "id": "OA3",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "tolerance": 1e-07,
+        "expected": 3
+      },
+      {
+        "id": "OB3",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "tolerance": 1e-07,
+        "expected": 3
+      },
+      {
+        "id": "OAtangent",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "A",
+          "A",
+          "P"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "OBtangent",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "B",
+          "B",
+          "P"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "PAeqPB",
+        "kind": "EQUAL_DISTANCE",
+        "refs": [
+          "P",
+          "A",
+          "P",
+          "B"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "Pangle60",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "tolerance": 1e-07,
+        "expected": 60
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-O",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "construct-P",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "P",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "B",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "OA3",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OB3",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OAtangent",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OBtangent",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "PAeqPB",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "Pangle60",
+        "residual": 7.105427357601002e-15,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct-anchor",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "P"
+        ],
+        "observed": 6.0,
+        "minimum": 1e-06
+      }
+    ]
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "P",
+      "at": [
+        6,
+        0
+      ],
+      "name": "P"
+    },
+    {
+      "id": "A",
+      "at": [
+        1.5,
+        2.598076211353316
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        1.5,
+        -2.598076211353316
+      ],
+      "name": "B"
+    }
+  ],
+  "segments": [
+    {
+      "id": "PA",
+      "points": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "points": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "points": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OP",
+      "points": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 3
+    }
+  ],
+  "incidences": [
+    {
+      "id": "inc-circleO-A",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "inc-circleO-B",
+      "point": "B",
+      "circle": "circleO"
+    }
+  ],
+  "lines": [],
+  "angles": [],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "tangent-summary",
+      "text": "OB=3; ∠APB=60°; PA+PB=6√3"
+    }
+  ]
+}

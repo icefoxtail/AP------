@@ -1,0 +1,430 @@
+{
+  "id": "25_연향중_2학기_기말_중3_기출-q11",
+  "title": "접선과 작은 호의 합",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -1.6,
+    "xMax": 3.2,
+    "yMin": -1.6,
+    "yMax": 3.3,
+    "width": 390,
+    "height": 360,
+    "panel": 120
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "The source fixes incidence, angles or metric facts but no absolute coordinate frame; this equal-unit realization preserves all listed constraints.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "C",
+        "unitScale": 1
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "O": [
+          0,
+          0
+        ],
+        "A": [
+          0.42261826174069944,
+          0.9063077870366499
+        ],
+        "B": [
+          0.42261826174069944,
+          -0.9063077870366499
+        ],
+        "C": [
+          1,
+          0
+        ],
+        "P": [
+          2.3662015831524985,
+          0
+        ]
+      },
+      "conditions": [
+        {
+          "id": "OA1",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "tolerance": 1e-07,
+          "expected": 1
+        },
+        {
+          "id": "OB1",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "tolerance": 1e-07,
+          "expected": 1
+        },
+        {
+          "id": "OC1",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "tolerance": 1e-07,
+          "expected": 1
+        },
+        {
+          "id": "OPtangencyA",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "A",
+            "A",
+            "P"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "OPtangencyB",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "B",
+            "B",
+            "P"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "angleP50",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "P",
+            "B"
+          ],
+          "tolerance": 1e-07,
+          "expected": 50
+        },
+        {
+          "id": "anglePAC32_5",
+          "kind": "ANGLE",
+          "refs": [
+            "P",
+            "A",
+            "C"
+          ],
+          "tolerance": 1e-07,
+          "expected": 32.5
+        },
+        {
+          "id": "anglePBC32_5",
+          "kind": "ANGLE",
+          "refs": [
+            "P",
+            "B",
+            "C"
+          ],
+          "tolerance": 1e-07,
+          "expected": 32.5
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-O",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "C",
+          "inputs": []
+        },
+        {
+          "id": "construct-P",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "P",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "OA1",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OB1",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OC1",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OPtangencyA",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OPtangencyB",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "angleP50",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "anglePAC32_5",
+          "residual": 1.4210854715202004e-14,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "anglePBC32_5",
+          "residual": 1.4210854715202004e-14,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct-anchor-points",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "observed": 1.0,
+          "minimum": 1e-06
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0.42261826174069944,
+        0.9063077870366499
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        0.42261826174069944,
+        -0.9063077870366499
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        1,
+        0
+      ],
+      "name": null
+    },
+    {
+      "id": "P",
+      "kind": "POINT",
+      "at": [
+        2.3662015831524985,
+        0
+      ],
+      "name": "P"
+    },
+    {
+      "id": "PA",
+      "kind": "SEGMENT",
+      "from": [
+        2.3662015831524985,
+        0
+      ],
+      "to": [
+        0.42261826174069944,
+        0.9063077870366499
+      ]
+    },
+    {
+      "id": "PB",
+      "kind": "SEGMENT",
+      "from": [
+        2.3662015831524985,
+        0
+      ],
+      "to": [
+        0.42261826174069944,
+        -0.9063077870366499
+      ]
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        0.42261826174069944,
+        0.9063077870366499
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        0.42261826174069944,
+        -0.9063077870366499
+      ]
+    },
+    {
+      "id": "AC",
+      "kind": "SEGMENT",
+      "from": [
+        0.42261826174069944,
+        0.9063077870366499
+      ],
+      "to": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        0.42261826174069944,
+        -0.9063077870366499
+      ],
+      "to": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 1
+    },
+    {
+      "id": "C-label",
+      "kind": "GRAPH_ANNOTATION",
+      "at": [
+        1.08,
+        0.08
+      ],
+      "text": "C",
+      "math": false
+    },
+    {
+      "id": "given-angle",
+      "kind": "GRAPH_ANNOTATION",
+      "at": [
+        -1.05,
+        1.65
+      ],
+      "text": "∠P=50°",
+      "math": false
+    },
+    {
+      "id": "arc-condition",
+      "kind": "GRAPH_ANNOTATION",
+      "at": [
+        -1.05,
+        2.0
+      ],
+      "text": "C on minor arc AB",
+      "math": false
+    },
+    {
+      "id": "target-sum",
+      "kind": "GRAPH_ANNOTATION",
+      "at": [
+        -1.05,
+        2.35
+      ],
+      "text": "sum=65°",
+      "math": false
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "O": "O",
+      "A": "A",
+      "B": "B",
+      "C": null,
+      "P": "P"
+    },
+    "segmentPointRefs": {
+      "PA": [
+        "P",
+        "A"
+      ],
+      "PB": [
+        "P",
+        "B"
+      ],
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ],
+      "AC": [
+        "A",
+        "C"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ]
+    },
+    "annotations": []
+  }
+}

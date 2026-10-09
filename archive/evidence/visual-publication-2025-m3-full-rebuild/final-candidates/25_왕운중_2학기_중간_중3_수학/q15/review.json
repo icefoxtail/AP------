@@ -1,0 +1,309 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "18beff97c61fd548e2d9b9526dd13e38cffe65e96243fe21f7fb3f7edf48e685",
+  "solutionSha256": "843e8c130e484a61ab061344b6d65b0854eb9afcf1c9516b0876ccb9a2433008",
+  "coordinateModel": {
+    "originX": 89.68690702087287,
+    "originY": 123.83301707779887,
+    "sx": 21.062618595825423,
+    "sy": 21.062618595825423
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        0,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        10,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "M",
+      "at": [
+        5,
+        0
+      ],
+      "name": "M"
+    },
+    {
+      "id": "O",
+      "at": [
+        5,
+        -2.6666666666666665
+      ],
+      "name": "O"
+    },
+    {
+      "id": "C",
+      "at": [
+        5,
+        3
+      ],
+      "name": "C"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AM",
+      "points": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "MB",
+      "points": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "CM",
+      "points": [
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "OM",
+      "points": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "points": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OC",
+      "points": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        5,
+        -2.6666666666666665
+      ],
+      "radius": 5.666666666666667
+    }
+  ],
+  "incidences": [],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "lenCM",
+      "segment": "CM",
+      "value": 3,
+      "text": "3 cm",
+      "unit": "cm",
+      "mode": "ADJACENT",
+      "factRole": "GIVEN"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Coordinates are a normalized exact Euclidean realization of the source and verified-solution relations; they are not source coordinate claims.",
+    "normalization": {
+      "originPoint": "A",
+      "xAxisPoint": "B",
+      "unitScale": 10
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        10,
+        0
+      ],
+      "M": [
+        5,
+        0
+      ],
+      "O": [
+        5,
+        -2.6666666666666665
+      ],
+      "C": [
+        5,
+        3
+      ]
+    },
+    "conditions": [
+      {
+        "id": "AB",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 10,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "CM",
+        "kind": "DISTANCE",
+        "refs": [
+          "C",
+          "M"
+        ],
+        "expected": 3,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "AM",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "M"
+        ],
+        "expected": 5,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "MB",
+        "kind": "DISTANCE",
+        "refs": [
+          "M",
+          "B"
+        ],
+        "expected": 5,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "CMperp",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "C",
+          "M",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-08
+      },
+      {
+        "id": "circleA",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "expected": 5.666666666666667,
+        "tolerance": 1e-08
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-A",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-B",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "construct-M",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "M",
+        "inputs": []
+      },
+      {
+        "id": "construct-O",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "construct-C",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "C",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "AB",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "CM",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "AM",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "MB",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "CMperp",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "circleA",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "main-figure-nondegenerate",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "A",
+          "B",
+          "O"
+        ],
+        "observed": 0.4705882352941176,
+        "minimum": 1e-08
+      }
+    ]
+  }
+}

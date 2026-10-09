@@ -1,0 +1,333 @@
+{
+  "id": "25_연향중_2학기_기말_중3_기출-q4",
+  "title": "같은 접선 길이로 합 구하기",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -4,
+    "xMax": 11,
+    "yMin": -4,
+    "yMax": 7,
+    "width": 390,
+    "height": 360,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "The source fixes circle incidence and Euclidean relationships but no absolute frame; this equal-unit realization satisfies every enumerated condition.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "P",
+        "unitScale": 6
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "O": [
+          0,
+          0
+        ],
+        "P": [
+          6,
+          0
+        ],
+        "A": [
+          1.5,
+          2.598076211353316
+        ],
+        "B": [
+          1.5,
+          -2.598076211353316
+        ]
+      },
+      "conditions": [
+        {
+          "id": "OA3",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "tolerance": 1e-07,
+          "expected": 3
+        },
+        {
+          "id": "OB3",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "tolerance": 1e-07,
+          "expected": 3
+        },
+        {
+          "id": "OAtangent",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "A",
+            "A",
+            "P"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "OBtangent",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "B",
+            "B",
+            "P"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "PAeqPB",
+          "kind": "EQUAL_DISTANCE",
+          "refs": [
+            "P",
+            "A",
+            "P",
+            "B"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "Pangle60",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "P",
+            "B"
+          ],
+          "tolerance": 1e-07,
+          "expected": 60
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-O",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "construct-P",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "P",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "B",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "OA3",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OB3",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OAtangent",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OBtangent",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "PAeqPB",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "Pangle60",
+          "residual": 7.105427357601002e-15,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct-anchor",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "P"
+          ],
+          "observed": 6.0,
+          "minimum": 1e-06
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "P",
+      "kind": "POINT",
+      "at": [
+        6,
+        0
+      ],
+      "name": "P"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        1.5,
+        2.598076211353316
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        1.5,
+        -2.598076211353316
+      ],
+      "name": "B"
+    },
+    {
+      "id": "PA",
+      "kind": "SEGMENT",
+      "from": [
+        6,
+        0
+      ],
+      "to": [
+        1.5,
+        2.598076211353316
+      ]
+    },
+    {
+      "id": "PB",
+      "kind": "SEGMENT",
+      "from": [
+        6,
+        0
+      ],
+      "to": [
+        1.5,
+        -2.598076211353316
+      ]
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        1.5,
+        2.598076211353316
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        1.5,
+        -2.598076211353316
+      ]
+    },
+    {
+      "id": "OP",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        6,
+        0
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 3
+    },
+    {
+      "id": "tangent-summary",
+      "kind": "GRAPH_ANNOTATION",
+      "at": [
+        2.5,
+        5.2
+      ],
+      "text": "OB=3; ∠APB=60°; PA+PB=6√3",
+      "math": false
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "O": "O",
+      "P": "P",
+      "A": "A",
+      "B": "B"
+    },
+    "segmentPointRefs": {
+      "PA": [
+        "P",
+        "A"
+      ],
+      "PB": [
+        "P",
+        "B"
+      ],
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ],
+      "OP": [
+        "O",
+        "P"
+      ]
+    },
+    "annotations": []
+  }
+}

@@ -1,0 +1,359 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "daaae1df4071544541ab2d7dd5ddcf559036a1ccfa6511bef22d3a24fe7fc8eb",
+  "solutionSha256": "09fa1e5fb9e3a858c2ba5e405a0ee9f67d8205959ca6623924a415e9307bae90",
+  "coordinateModel": {
+    "originX": 280.0,
+    "originY": 240.0,
+    "sx": 16.551724137931036,
+    "sy": 16.551724137931036
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "C",
+      "at": [
+        9.666666666666666,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "M",
+      "at": [
+        6.666666666666667,
+        0
+      ],
+      "name": "M"
+    },
+    {
+      "id": "A",
+      "at": [
+        6.666666666666667,
+        7
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        6.666666666666667,
+        -7
+      ],
+      "name": "B"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "OC",
+      "points": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "OM",
+      "points": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "CM",
+      "points": [
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "points": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "AM",
+      "points": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "BM",
+      "points": [
+        "B",
+        "M"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 9.666666666666666
+    }
+  ],
+  "incidences": [
+    {
+      "id": "A-on-circle",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "B-on-circle",
+      "point": "B",
+      "circle": "circleO"
+    },
+    {
+      "id": "C-on-circle",
+      "point": "C",
+      "circle": "circleO"
+    }
+  ],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "lenBM7",
+      "segment": "BM",
+      "value": 7,
+      "mode": "ADJACENT",
+      "text": "7",
+      "factRole": "GIVEN"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "radius-result",
+      "text": "OA=29/3"
+    }
+  ],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed circle realization matches BM=7, CM=3, AB perpendicular OC, and M as chord midpoint.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "M",
+      "unitScale": 6.666666666666667
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "O": [
+        0,
+        0
+      ],
+      "C": [
+        9.666666666666666,
+        0
+      ],
+      "M": [
+        6.666666666666667,
+        0
+      ],
+      "A": [
+        6.666666666666667,
+        7
+      ],
+      "B": [
+        6.666666666666667,
+        -7
+      ]
+    },
+    "conditions": [
+      {
+        "id": "BM7",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "M"
+        ],
+        "expected": 7,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "CM3",
+        "kind": "DISTANCE",
+        "refs": [
+          "C",
+          "M"
+        ],
+        "expected": 3,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "OMperpAB",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "M",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "ABperpOC",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "A",
+          "B",
+          "O",
+          "C"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "MmidAB",
+        "kind": "MIDPOINT",
+        "refs": [
+          "M",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "O_MC_collinear",
+        "kind": "COLLINEAR",
+        "refs": [
+          "O",
+          "M",
+          "C"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "radiusOA",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "expected": 9.666666666666666,
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-O",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "C",
+        "inputs": [
+          "O"
+        ]
+      },
+      {
+        "id": "construct-M",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "M",
+        "inputs": [
+          "O",
+          "C"
+        ]
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "A",
+        "inputs": [
+          "O",
+          "C",
+          "M"
+        ]
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "B",
+        "inputs": [
+          "O",
+          "C",
+          "M",
+          "A"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "BM7",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "CM3",
+        "residual": 8.881784197001252e-16,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OMperpAB",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "ABperpOC",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "MmidAB",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "O_MC_collinear",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "radiusOA",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-witness",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "O",
+          "C",
+          "A"
+        ],
+        "observed": 0.7241379310344828,
+        "minimum": 1e-09
+      }
+    ]
+  }
+}

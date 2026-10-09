@@ -1,0 +1,476 @@
+{
+  "id": "wangun-mid-q16",
+  "title": "같은 중심거리로 정삼각형과 반지름 구하기",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -8.59097200554163,
+    "xMax": 8.59097200554163,
+    "yMin": -12.055073620679385,
+    "yMax": 5.126870390403877,
+    "width": 390,
+    "height": 360,
+    "panel": 0,
+    "margin": 32
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Coordinates are a normalized exact Euclidean realization of the source and verified-solution relations; they are not source coordinate claims.",
+      "normalization": {
+        "originPoint": "D",
+        "xAxisPoint": "B",
+        "unitScale": 6
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "D": [
+          0,
+          0
+        ],
+        "B": [
+          6,
+          0
+        ],
+        "A": [
+          -6,
+          0
+        ],
+        "C": [
+          0,
+          -10.392304845413264
+        ],
+        "E": [
+          3,
+          -5.196152422706632
+        ],
+        "F": [
+          -3,
+          -5.196152422706632
+        ],
+        "O": [
+          0,
+          -3.4641016151377544
+        ]
+      },
+      "conditions": [
+        {
+          "id": "AB12",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 12,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "equalChords",
+          "kind": "EQUAL_DISTANCE",
+          "refs": [
+            "A",
+            "B",
+            "B",
+            "C"
+          ],
+          "tolerance": 1e-08
+        },
+        {
+          "id": "OD",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "D"
+          ],
+          "expected": 3.4641016151377544,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "perpD",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "D",
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-08
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-D",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "D",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "C",
+          "inputs": []
+        },
+        {
+          "id": "construct-E",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "E",
+          "inputs": []
+        },
+        {
+          "id": "construct-F",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "F",
+          "inputs": []
+        },
+        {
+          "id": "construct-O",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "O",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "AB12",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "equalChords",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "OD",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "perpD",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "main-figure-nondegenerate",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "D",
+            "B",
+            "C"
+          ],
+          "observed": 1.0,
+          "minimum": 1e-08
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "D",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        6,
+        0
+      ]
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        -6,
+        0
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        0,
+        -10.392304845413264
+      ]
+    },
+    {
+      "id": "E",
+      "kind": "POINT",
+      "at": [
+        3,
+        -5.196152422706632
+      ]
+    },
+    {
+      "id": "F",
+      "kind": "POINT",
+      "at": [
+        -3,
+        -5.196152422706632
+      ]
+    },
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0,
+        -3.4641016151377544
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        -6,
+        0
+      ],
+      "to": [
+        6,
+        0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        6,
+        0
+      ],
+      "to": [
+        0,
+        -10.392304845413264
+      ]
+    },
+    {
+      "id": "CA",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        -10.392304845413264
+      ],
+      "to": [
+        -6,
+        0
+      ]
+    },
+    {
+      "id": "OD",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        -3.4641016151377544
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "OE",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        -3.4641016151377544
+      ],
+      "to": [
+        3,
+        -5.196152422706632
+      ]
+    },
+    {
+      "id": "OF",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        -3.4641016151377544
+      ],
+      "to": [
+        -3,
+        -5.196152422706632
+      ]
+    },
+    {
+      "id": "AD",
+      "kind": "SEGMENT",
+      "from": [
+        -6,
+        0
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "DB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        6,
+        0
+      ]
+    },
+    {
+      "id": "BE",
+      "kind": "SEGMENT",
+      "from": [
+        6,
+        0
+      ],
+      "to": [
+        3,
+        -5.196152422706632
+      ]
+    },
+    {
+      "id": "EC",
+      "kind": "SEGMENT",
+      "from": [
+        3,
+        -5.196152422706632
+      ],
+      "to": [
+        0,
+        -10.392304845413264
+      ]
+    },
+    {
+      "id": "CF",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        -10.392304845413264
+      ],
+      "to": [
+        -3,
+        -5.196152422706632
+      ]
+    },
+    {
+      "id": "FA",
+      "kind": "SEGMENT",
+      "from": [
+        -3,
+        -5.196152422706632
+      ],
+      "to": [
+        -6,
+        0
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        -3.4641016151377544
+      ],
+      "radius": 6.928203230275509
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 15,
+    "sourcePointLabels": {
+      "D": "D",
+      "B": "B",
+      "A": "A",
+      "C": "C",
+      "E": "E",
+      "F": "F",
+      "O": "O"
+    },
+    "pointLabelAnchors": {
+      "C": [
+        0,
+        -7.4
+      ],
+      "D": [
+        0,
+        1.7
+      ],
+      "E": [
+        5,
+        -5.196152422706632
+      ],
+      "F": [
+        -5,
+        -5.196152422706632
+      ]
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "CA": [
+        "C",
+        "A"
+      ],
+      "OD": [
+        "O",
+        "D"
+      ],
+      "OE": [
+        "O",
+        "E"
+      ],
+      "OF": [
+        "O",
+        "F"
+      ],
+      "AD": [
+        "A",
+        "D"
+      ],
+      "DB": [
+        "D",
+        "B"
+      ],
+      "BE": [
+        "B",
+        "E"
+      ],
+      "EC": [
+        "E",
+        "C"
+      ],
+      "CF": [
+        "C",
+        "F"
+      ],
+      "FA": [
+        "F",
+        "A"
+      ]
+    },
+    "annotations": []
+  }
+}

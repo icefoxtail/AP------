@@ -1,0 +1,407 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "20bb7e51dacfbf80bbc732b3217f29056a9ff50ee6617eb70638949b51ab4e51",
+  "solutionSha256": "d75408136ade9ba1669eaa6bec1928f84b18a894b9c68061cdb75f879c28b21b",
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "The circle realization encodes diameter line AC through O, tangent BC at B, and inscribed angle ADB=55°; the solution derives the 20° tangent-triangle angle.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "C",
+      "unitScale": 11.695217600652345
+    },
+    "freeVariables": [
+      {
+        "id": "polarB",
+        "value": 70
+      },
+      {
+        "id": "polarD",
+        "value": 260
+      }
+    ],
+    "pointCoordinates": {
+      "O": [
+        0.0,
+        0.0
+      ],
+      "A": [
+        -4.0,
+        0.0
+      ],
+      "B": [
+        1.3680805733026753,
+        3.7587704831436333
+      ],
+      "D": [
+        -0.6945927106677213,
+        -3.939231012048832
+      ],
+      "C": [
+        11.695217600652345,
+        0.0
+      ]
+    },
+    "conditions": [
+      {
+        "id": "incA",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "expected": 4.0,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "incB",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "expected": 4.0,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "incD",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "D"
+        ],
+        "expected": 4.0,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "diamLine",
+        "kind": "COLLINEAR",
+        "refs": [
+          "A",
+          "O",
+          "C"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "tangent",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "B",
+          "B",
+          "C"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "given55",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "expected": 55,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "right90",
+        "kind": "ANGLE",
+        "refs": [
+          "O",
+          "B",
+          "C"
+        ],
+        "expected": 90,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "result20",
+        "kind": "ANGLE",
+        "refs": [
+          "O",
+          "C",
+          "B"
+        ],
+        "expected": 20,
+        "tolerance": 1e-06
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "origin",
+        "operation": "SOURCE_ORIGIN",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "baseC",
+        "operation": "NORMALIZED_AXIS_POINT",
+        "output": "C",
+        "inputs": [
+          "O"
+        ]
+      },
+      {
+        "id": "oppositeA",
+        "operation": "DIAMETRAL_OPPOSITE",
+        "output": "A",
+        "inputs": [
+          "O",
+          "C"
+        ]
+      },
+      {
+        "id": "contactB",
+        "operation": "ROTATE_TO_POLAR_70",
+        "output": "B",
+        "inputs": [
+          "O",
+          "C"
+        ]
+      },
+      {
+        "id": "pointD",
+        "operation": "ROTATE_TO_POLAR_260",
+        "output": "D",
+        "inputs": [
+          "O",
+          "C"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "incA",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "incB",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "incD",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "diamLine",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "tangent",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "given55",
+        "residual": 1.4210854715202004e-14,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "right90",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "result20",
+        "residual": 1.0658141036401503e-14,
+        "tolerance": 1e-06
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct_OA",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "observed": 4.0,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_OC",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "C"
+        ],
+        "observed": 11.695217600652345,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_OB",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "observed": 4.0,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_BC",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "observed": 10.989909677818485,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_AD",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "D"
+        ],
+        "observed": 5.142300877492315,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_DB",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "D",
+          "B"
+        ],
+        "observed": 7.969557584733964,
+        "minimum": 1e-05
+      }
+    ]
+  },
+  "coordinateModel": {
+    "originX": 166.39999999999998,
+    "originY": 166.39999999999998,
+    "sx": 22.4,
+    "sy": 22.4
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "at": [
+        -4.0,
+        0.0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        1.3680805733026753,
+        3.7587704831436333
+      ],
+      "name": "B"
+    },
+    {
+      "id": "D",
+      "at": [
+        -0.6945927106677213,
+        -3.939231012048832
+      ],
+      "name": "D"
+    },
+    {
+      "id": "C",
+      "at": [
+        11.695217600652345,
+        0.0
+      ],
+      "name": "C"
+    }
+  ],
+  "segments": [
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OC",
+      "points": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "OB",
+      "points": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AD",
+      "points": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DB",
+      "points": [
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 4.0
+    }
+  ],
+  "incidences": [
+    {
+      "id": "incA",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "incB",
+      "point": "B",
+      "circle": "circleO"
+    },
+    {
+      "id": "incD",
+      "point": "D",
+      "circle": "circleO"
+    }
+  ],
+  "angles": [],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "angleNote",
+      "text": "∠ADB=55° → ∠AOB=110°; x=20°"
+    }
+  ]
+}

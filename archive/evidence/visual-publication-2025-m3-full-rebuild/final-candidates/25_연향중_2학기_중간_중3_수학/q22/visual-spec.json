@@ -1,0 +1,340 @@
+{
+  "id": "25_연향중_2학기_중간_중3_수학-q22",
+  "title": "높이로 tan B를 읽기",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -1,
+    "xMax": 6,
+    "yMin": -1,
+    "yMax": 6.2,
+    "width": 390,
+    "height": 360,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Coordinates are a constructed realization of the source geometry, not measurements from the sketch.",
+      "normalization": {
+        "originPoint": "B",
+        "xAxisPoint": "C",
+        "unitScale": 5
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "B": [
+          0,
+          0
+        ],
+        "C": [
+          5,
+          0
+        ],
+        "H": [
+          3.6,
+          0
+        ],
+        "A": [
+          3.6,
+          5.2
+        ]
+      },
+      "conditions": [
+        {
+          "id": "ABdist",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-07,
+          "expected": 6.324555320336759
+        },
+        {
+          "id": "BCdist",
+          "kind": "DISTANCE",
+          "refs": [
+            "B",
+            "C"
+          ],
+          "tolerance": 1e-07,
+          "expected": 5
+        },
+        {
+          "id": "ACdist",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "C"
+          ],
+          "tolerance": 1e-07,
+          "expected": 5.385164807134504
+        },
+        {
+          "id": "AHperpBC",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "A",
+            "H",
+            "B",
+            "C"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "B_H_C",
+          "kind": "COLLINEAR",
+          "refs": [
+            "B",
+            "H",
+            "C"
+          ],
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "C",
+          "inputs": []
+        },
+        {
+          "id": "construct-H",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "H",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "A",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "ABdist",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "BCdist",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "ACdist",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "AHperpBC",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "B_H_C",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct-anchor-points",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "B",
+            "C"
+          ],
+          "observed": 5.0,
+          "minimum": 1e-06
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        5,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "H",
+      "kind": "POINT",
+      "at": [
+        3.6,
+        0
+      ],
+      "name": "H"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        3.6,
+        5.2
+      ],
+      "name": "A"
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        3.6,
+        5.2
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        5,
+        0
+      ]
+    },
+    {
+      "id": "CA",
+      "kind": "SEGMENT",
+      "from": [
+        5,
+        0
+      ],
+      "to": [
+        3.6,
+        5.2
+      ]
+    },
+    {
+      "id": "AH",
+      "kind": "SEGMENT",
+      "from": [
+        3.6,
+        5.2
+      ],
+      "to": [
+        3.6,
+        0
+      ]
+    },
+    {
+      "id": "BH",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        3.6,
+        0
+      ]
+    },
+    {
+      "id": "HC",
+      "kind": "SEGMENT",
+      "from": [
+        3.6,
+        0
+      ],
+      "to": [
+        5,
+        0
+      ]
+    },
+    {
+      "id": "tan-result",
+      "kind": "GRAPH_ANNOTATION",
+      "at": [
+        1.5,
+        4.4
+      ],
+      "text": "tan B=13/9",
+      "math": false
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "H": "H"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "CA": [
+        "C",
+        "A"
+      ],
+      "AH": [
+        "A",
+        "H"
+      ],
+      "BH": [
+        "B",
+        "H"
+      ],
+      "HC": [
+        "H",
+        "C"
+      ]
+    },
+    "pointLabelAnchors": {},
+    "annotations": [
+      {
+        "id": "AHlen",
+        "kind": "LENGTH",
+        "owner": "AH",
+        "value": 5.2,
+        "text": "26/5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BHlen",
+        "kind": "LENGTH",
+        "owner": "BH",
+        "value": 3.6,
+        "text": "18/5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

@@ -1,0 +1,417 @@
+{
+  "id": "m3-geumdang-mid-q19",
+  "visualType": "line_circle_geometry",
+  "title": "접선과 중심을 이은 직각삼각형",
+  "viewport": {
+    "xMin": -1.5,
+    "xMax": 15.5,
+    "yMin": -5.5,
+    "yMax": 5.5,
+    "width": 560,
+    "height": 480,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Constructed external tangent realization with radius 4 and external radial gap 6, giving OP=10.",
+      "normalization": {
+        "originPoint": "P",
+        "xAxisPoint": "O",
+        "unitScale": 10
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "P": [
+          0,
+          0
+        ],
+        "O": [
+          10,
+          0
+        ],
+        "X": [
+          6,
+          0
+        ],
+        "A": [
+          8.4,
+          3.666060555964672
+        ],
+        "B": [
+          8.4,
+          -3.666060555964672
+        ]
+      },
+      "conditions": [
+        {
+          "id": "radius4",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "expected": 4,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "gap6",
+          "kind": "DISTANCE",
+          "refs": [
+            "P",
+            "X"
+          ],
+          "expected": 6,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "OP10",
+          "kind": "DISTANCE",
+          "refs": [
+            "P",
+            "O"
+          ],
+          "expected": 10,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "PA2sqrt21",
+          "kind": "DISTANCE",
+          "refs": [
+            "P",
+            "A"
+          ],
+          "expected": 9.16515138991168,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "OAperpPA",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "A",
+            "P",
+            "A"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "OBperpPB",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "B",
+            "P",
+            "B"
+          ],
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-P",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "P",
+          "inputs": []
+        },
+        {
+          "id": "construct-O",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "O",
+          "inputs": [
+            "P"
+          ]
+        },
+        {
+          "id": "construct-X",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "X",
+          "inputs": [
+            "P",
+            "O"
+          ]
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "A",
+          "inputs": [
+            "P",
+            "O",
+            "X"
+          ]
+        },
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "B",
+          "inputs": [
+            "P",
+            "O",
+            "X",
+            "A"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "radius4",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "gap6",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OP10",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "PA2sqrt21",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OAperpPA",
+          "residual": 4.845410522502478e-17,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OBperpPB",
+          "residual": 4.845410522502478e-17,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "noncollinear-witness",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "P",
+            "O",
+            "A"
+          ],
+          "observed": 0.4,
+          "minimum": 1e-09
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "P",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "P"
+    },
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        10,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "X",
+      "kind": "POINT",
+      "at": [
+        6,
+        0
+      ],
+      "name": null
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        8.4,
+        3.666060555964672
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        8.4,
+        -3.666060555964672
+      ],
+      "name": "B"
+    },
+    {
+      "id": "OP",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        10,
+        0
+      ]
+    },
+    {
+      "id": "PX",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        6,
+        0
+      ]
+    },
+    {
+      "id": "OX",
+      "kind": "SEGMENT",
+      "from": [
+        10,
+        0
+      ],
+      "to": [
+        6,
+        0
+      ]
+    },
+    {
+      "id": "PA",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        8.4,
+        3.666060555964672
+      ]
+    },
+    {
+      "id": "PB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        8.4,
+        -3.666060555964672
+      ]
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        10,
+        0
+      ],
+      "to": [
+        8.4,
+        3.666060555964672
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        10,
+        0
+      ],
+      "to": [
+        8.4,
+        -3.666060555964672
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        10,
+        0
+      ],
+      "radius": 4
+    },
+    {
+      "id": "pa-result",
+      "kind": "EQUATION_LABEL",
+      "text": "PA=2sqrt(21)",
+      "at": [
+        1,
+        6
+      ],
+      "math": true
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 18,
+    "sourcePointLabels": {
+      "P": "P",
+      "O": "O",
+      "X": null,
+      "A": "A",
+      "B": "B"
+    },
+    "segmentPointRefs": {
+      "OP": [
+        "P",
+        "O"
+      ],
+      "PX": [
+        "P",
+        "X"
+      ],
+      "OX": [
+        "O",
+        "X"
+      ],
+      "PA": [
+        "P",
+        "A"
+      ],
+      "PB": [
+        "P",
+        "B"
+      ],
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "gap6",
+        "kind": "LENGTH",
+        "owner": "PX",
+        "value": 6,
+        "mode": "ADJACENT",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "radius4",
+        "kind": "LENGTH",
+        "owner": "OX",
+        "value": 4,
+        "mode": "ADJACENT",
+        "text": "4",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

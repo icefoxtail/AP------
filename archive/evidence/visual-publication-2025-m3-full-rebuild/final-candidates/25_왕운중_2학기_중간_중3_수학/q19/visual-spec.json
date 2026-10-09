@@ -1,0 +1,386 @@
+{
+  "id": "wangun-mid-q19",
+  "title": "빗변 중점과 수선으로 sin x 구하기",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -1.44,
+    "xMax": 13.44,
+    "yMin": -1.44,
+    "yMax": 6.4399999999999995,
+    "width": 390,
+    "height": 360,
+    "panel": 0,
+    "margin": 32
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Coordinates are a normalized exact Euclidean realization of the source and verified-solution relations; they are not source coordinate claims.",
+      "normalization": {
+        "originPoint": "B",
+        "xAxisPoint": "C",
+        "unitScale": 12
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "B": [
+          0,
+          0
+        ],
+        "C": [
+          12,
+          0
+        ],
+        "A": [
+          0,
+          5
+        ],
+        "M": [
+          6,
+          2.5
+        ],
+        "H": [
+          6,
+          0
+        ]
+      },
+      "conditions": [
+        {
+          "id": "AB",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 5,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "BC",
+          "kind": "DISTANCE",
+          "refs": [
+            "B",
+            "C"
+          ],
+          "expected": 12,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "AC13",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "C"
+          ],
+          "expected": 13,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "Mmid",
+          "kind": "MIDPOINT",
+          "refs": [
+            "M",
+            "A",
+            "C"
+          ],
+          "tolerance": 1e-08
+        },
+        {
+          "id": "MHperp",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "M",
+            "H",
+            "B",
+            "C"
+          ],
+          "tolerance": 1e-08
+        },
+        {
+          "id": "B90",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "expected": 90,
+          "tolerance": 1e-08
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-B",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "C",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-M",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "M",
+          "inputs": []
+        },
+        {
+          "id": "construct-H",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "H",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "AB",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "BC",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "AC13",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "Mmid",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "MHperp",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "B90",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "main-figure-nondegenerate",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "B",
+            "C",
+            "A"
+          ],
+          "observed": 1.0,
+          "minimum": 1e-08
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        12,
+        0
+      ]
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0,
+        5
+      ]
+    },
+    {
+      "id": "M",
+      "kind": "POINT",
+      "at": [
+        6,
+        2.5
+      ]
+    },
+    {
+      "id": "H",
+      "kind": "POINT",
+      "at": [
+        6,
+        0
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        5
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        12,
+        0
+      ]
+    },
+    {
+      "id": "CA",
+      "kind": "SEGMENT",
+      "from": [
+        12,
+        0
+      ],
+      "to": [
+        0,
+        5
+      ]
+    },
+    {
+      "id": "BM",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        6,
+        2.5
+      ]
+    },
+    {
+      "id": "MH",
+      "kind": "SEGMENT",
+      "from": [
+        6,
+        2.5
+      ],
+      "to": [
+        6,
+        0
+      ]
+    },
+    {
+      "id": "BH",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        6,
+        0
+      ]
+    },
+    {
+      "id": "MC",
+      "kind": "SEGMENT",
+      "from": [
+        6,
+        2.5
+      ],
+      "to": [
+        12,
+        0
+      ]
+    },
+    {
+      "id": "answer",
+      "kind": "EQUATION_LABEL",
+      "at": [
+        8.4,
+        3.0
+      ],
+      "text": "sin(x)=12/13",
+      "math": true,
+      "priority": 3
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 15,
+    "sourcePointLabels": {
+      "B": "B",
+      "C": "C",
+      "A": "A",
+      "M": "M",
+      "H": "H"
+    },
+    "pointLabelAnchors": {},
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "CA": [
+        "C",
+        "A"
+      ],
+      "BM": [
+        "B",
+        "M"
+      ],
+      "MH": [
+        "M",
+        "H"
+      ],
+      "BH": [
+        "B",
+        "H"
+      ],
+      "MC": [
+        "M",
+        "C"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "B90",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 90,
+        "factRole": "GIVEN",
+        "marker": "SQUARE"
+      }
+    ]
+  }
+}

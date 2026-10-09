@@ -1,0 +1,462 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "cb9340726ed574fed56570abb2e628df248af0492571a2beb3b9dcd1420feddf",
+  "solutionSha256": "632bda9de43c0c84299e5dcd91edfaba8d543bb1c2fe5cc03ccb0a38ca7bfdd9",
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed from the exact four side lengths and supplementary opposite angles in the verified solution; BD is the shared diagonal and coordinates are only a Euclidean realization.",
+    "normalization": {
+      "originPoint": "B",
+      "xAxisPoint": "D",
+      "unitScale": 3.605551275463989
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "B": [
+        0.0,
+        0.0
+      ],
+      "D": [
+        3.605551275463989,
+        0.0
+      ],
+      "A": [
+        -1.386750490563073,
+        1.4411533842457842
+      ],
+      "C": [
+        1.9414506867883021,
+        -0.4803844614152614
+      ],
+      "O": [
+        1.8027756377319946,
+        3.122498999199199
+      ]
+    },
+    "conditions": [
+      {
+        "id": "d0",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 2,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "d1",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "D"
+        ],
+        "expected": 5.196152422706632,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "d2",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "expected": 2,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "d3",
+        "kind": "DISTANCE",
+        "refs": [
+          "C",
+          "D"
+        ],
+        "expected": 1.7320508075688772,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "d4",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "D"
+        ],
+        "expected": 3.605551275463989,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "d5",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "expected": 3.605551275463989,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "d6",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "expected": 3.605551275463989,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "d7",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "C"
+        ],
+        "expected": 3.605551275463989,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "d8",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "D"
+        ],
+        "expected": 3.605551275463989,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "a0",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "expected": 30,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "a1",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "expected": 150,
+        "tolerance": 1e-06
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "originB",
+        "operation": "SOURCE_ORIGIN",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "baseD",
+        "operation": "NORMALIZED_BASELINE",
+        "output": "D",
+        "inputs": [
+          "B"
+        ]
+      },
+      {
+        "id": "circleIntersectionA",
+        "operation": "DISTANCE_CIRCLE_INTERSECTION_UPPER",
+        "output": "A",
+        "inputs": [
+          "B",
+          "D"
+        ]
+      },
+      {
+        "id": "circleIntersectionC",
+        "operation": "DISTANCE_CIRCLE_INTERSECTION_LOWER",
+        "output": "C",
+        "inputs": [
+          "B",
+          "D"
+        ]
+      },
+      {
+        "id": "circumcenterO",
+        "operation": "CIRCUMCENTER_OF_ABD",
+        "output": "O",
+        "inputs": [
+          "A",
+          "B",
+          "D"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "d0",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "d1",
+        "residual": 8.881784197001252e-16,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "d2",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "d3",
+        "residual": 2.220446049250313e-16,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "d4",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "d5",
+        "residual": 4.440892098500626e-16,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "d6",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "d7",
+        "residual": 4.440892098500626e-16,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "d8",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "a0",
+        "residual": 2.1316282072803006e-14,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "a1",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "ABD_noncollinear",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "observed": 0.4999999999999999,
+        "minimum": 0.01
+      },
+      {
+        "id": "BCD_noncollinear",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "observed": 0.2401922307076307,
+        "minimum": 0.01
+      },
+      {
+        "id": "AC_distinct",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "observed": 3.843075691322092,
+        "minimum": 0.01
+      },
+      {
+        "id": "BD_distinct",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "B",
+          "D"
+        ],
+        "observed": 3.605551275463989,
+        "minimum": 0.01
+      }
+    ]
+  },
+  "coordinateModel": {
+    "originX": 197.76470588235293,
+    "originY": 416.7529411764706,
+    "sx": 52.705882352941174,
+    "sy": 52.705882352941174
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        -1.386750490563073,
+        1.4411533842457842
+      ],
+      "name": "A",
+      "labelAt": [
+        -0.3,
+        2.0
+      ]
+    },
+    {
+      "id": "B",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        1.9414506867883021,
+        -0.4803844614152614
+      ],
+      "name": "C"
+    },
+    {
+      "id": "D",
+      "at": [
+        3.605551275463989,
+        0.0
+      ],
+      "name": "D"
+    },
+    {
+      "id": "O",
+      "at": [
+        1.8027756377319946,
+        3.122498999199199
+      ],
+      "name": "O"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "points": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "points": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "BD",
+      "points": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        1.8027756377319946,
+        3.122498999199199
+      ],
+      "radius": 3.605551275463989
+    }
+  ],
+  "incidences": [
+    {
+      "id": "onCircle_A",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "onCircle_B",
+      "point": "B",
+      "circle": "circleO"
+    },
+    {
+      "id": "onCircle_C",
+      "point": "C",
+      "circle": "circleO"
+    },
+    {
+      "id": "onCircle_D",
+      "point": "D",
+      "circle": "circleO"
+    }
+  ],
+  "angles": [
+    {
+      "id": "angleA30",
+      "points": [
+        "B",
+        "A",
+        "D"
+      ],
+      "degrees": 30,
+      "marker": "ARC",
+      "text": "30°",
+      "factRole": "GIVEN",
+      "labelPlacement": "CONDITION_BOX",
+      "conditionBoxId": "crowded-relations",
+      "showLabel": false
+    },
+    {
+      "id": "angleC150",
+      "points": [
+        "B",
+        "C",
+        "D"
+      ],
+      "degrees": 150,
+      "marker": "ARC",
+      "text": "150°",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "labelPlacement": "CONDITION_BOX",
+      "conditionBoxId": "crowded-relations",
+      "showLabel": false
+    }
+  ],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "crowded-relations",
+      "text": "AB=2BC=2CD=√3AD=3√3∠BAD=30°∠BCD=150°S=2√3",
+      "powers": [],
+      "conditionBoxFor": [
+        "angleA30",
+        "angleC150"
+      ]
+    }
+  ]
+}

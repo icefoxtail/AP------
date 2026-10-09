@@ -1,0 +1,334 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "7f3b7cb7d9f295c18e66d874bebf17189b3fdbbb999bae6a4523686fc40a080c",
+  "solutionSha256": "aea5c66a73552c3339ad5283a6ab0c782bf14c85e18ec48f4c7b51fc41a5fa6d",
+  "coordinateModel": {
+    "originX": 70.35294117647058,
+    "originY": 267.52941176470586,
+    "sx": 19.176470588235293,
+    "sy": 19.176470588235293
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        0,
+        0
+      ],
+      "name": "A",
+      "factRole": "SOURCE_IDENTITY"
+    },
+    {
+      "id": "B",
+      "at": [
+        12,
+        0
+      ],
+      "name": "B",
+      "factRole": "SOURCE_IDENTITY"
+    },
+    {
+      "id": "M",
+      "at": [
+        6,
+        0
+      ],
+      "name": null,
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "O",
+      "at": [
+        6,
+        4
+      ],
+      "name": "O",
+      "factRole": "GIVEN",
+      "labelPlacement": "LEADER_CALLOUT",
+      "labelAt": [
+        4,
+        4
+      ],
+      "labelId": "O-name",
+      "leaderId": "O-name-leader"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "OM",
+      "points": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "points": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "outerCircle",
+      "center": [
+        6,
+        4
+      ],
+      "radius": 7.211102550927978
+    },
+    {
+      "id": "innerCircle",
+      "center": [
+        6,
+        4
+      ],
+      "radius": 4
+    }
+  ],
+  "incidences": [
+    {
+      "id": "A-on-outer",
+      "point": "A",
+      "circle": "outerCircle"
+    },
+    {
+      "id": "B-on-outer",
+      "point": "B",
+      "circle": "outerCircle"
+    },
+    {
+      "id": "M-on-inner",
+      "point": "M",
+      "circle": "innerCircle"
+    }
+  ],
+  "lines": [],
+  "angles": [
+    {
+      "id": "rightM",
+      "points": [
+        "O",
+        "M",
+        "A"
+      ],
+      "degrees": 90,
+      "marker": "SQUARE",
+      "text": "90°",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "showLabel": false
+    }
+  ],
+  "lengths": [
+    {
+      "id": "ab12",
+      "segment": "AB",
+      "value": 12,
+      "text": "12 cm",
+      "unit": "cm",
+      "mode": "DIMENSION",
+      "factRole": "GIVEN"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "annularArea",
+      "at": [
+        6,
+        9.6
+      ],
+      "text": "36π"
+    }
+  ],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "A source-faithful normalized realization fixes AB=12 and makes OM the perpendicular radius to the inner-circle tangent; the unsupplied inner radius is chosen as the free normalization r=4.5, while the annular result is invariant under this choice.",
+    "normalization": {
+      "originPoint": "A",
+      "xAxisPoint": "B",
+      "unitScale": 12
+    },
+    "freeVariables": [
+      {
+        "id": "innerRadius",
+        "value": 4
+      }
+    ],
+    "pointCoordinates": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        12,
+        0
+      ],
+      "M": [
+        6,
+        0
+      ],
+      "O": [
+        6,
+        4
+      ]
+    },
+    "conditions": [
+      {
+        "id": "chordAB12",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 12,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "MmidAB",
+        "kind": "MIDPOINT",
+        "refs": [
+          "M",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-08
+      },
+      {
+        "id": "radiusTangent",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "M",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-08
+      },
+      {
+        "id": "innerRadiusChoice",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "M"
+        ],
+        "expected": 4,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "outerRadiusDerived",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "expected": 7.211102550927978,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "outerRadiusB",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "expected": 7.211102550927978,
+        "tolerance": 1e-08
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "set-A",
+        "operation": "SET_ORIGIN",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "set-B",
+        "operation": "PLACE_ON_POSITIVE_X_AXIS",
+        "output": "B",
+        "inputs": [
+          "A"
+        ]
+      },
+      {
+        "id": "set-M",
+        "operation": "MIDPOINT_OF_CHORD",
+        "output": "M",
+        "inputs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "set-O",
+        "operation": "NORMAL_TO_TANGENT_AT_M",
+        "output": "O",
+        "inputs": [
+          "M",
+          "innerRadius"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "chordAB12",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "MmidAB",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "radiusTangent",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "innerRadiusChoice",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "outerRadiusDerived",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "outerRadiusB",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "triangleOMA-nondegenerate",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "O",
+          "M",
+          "A"
+        ],
+        "observed": 0.8320502943378437,
+        "minimum": 1e-08
+      }
+    ]
+  }
+}

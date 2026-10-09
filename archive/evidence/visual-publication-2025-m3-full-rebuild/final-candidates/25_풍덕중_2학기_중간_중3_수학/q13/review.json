@@ -1,0 +1,367 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "a07b1a3861307ee3ebf979998838090f0bedd2ef6b2f1c7b1acc1403ebc5b72b",
+  "solutionSha256": "6c02c74f04571c02199a6e0a71bd8028c498773e099beee9d15b16a03f645f0a",
+  "coordinateModel": {
+    "originX": 118.10116102711709,
+    "originY": 296.59706422382635,
+    "sx": 36.08211009326098,
+    "sy": 36.08211009326098
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        6.928203230275509,
+        4
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        0,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "H",
+      "at": [
+        6.928203230275509,
+        0
+      ],
+      "name": "H"
+    },
+    {
+      "id": "C",
+      "at": [
+        10.928203230275509,
+        0
+      ],
+      "name": "C"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AH",
+      "points": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "BH",
+      "points": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "AC",
+      "points": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "HC",
+      "points": [
+        "H",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "circles": [],
+  "incidences": [],
+  "lines": [],
+  "angles": [
+    {
+      "id": "B30",
+      "points": [
+        "A",
+        "B",
+        "H"
+      ],
+      "degrees": 30,
+      "marker": "ARC",
+      "text": "30°",
+      "factRole": "GIVEN",
+      "labelPlacement": "CONDITION_BOX",
+      "conditionBoxId": "crowded-relations",
+      "showLabel": false
+    },
+    {
+      "id": "H90",
+      "points": [
+        "B",
+        "H",
+        "A"
+      ],
+      "degrees": 90,
+      "marker": "SQUARE",
+      "text": "90°",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "showLabel": false
+    },
+    {
+      "id": "C45",
+      "points": [
+        "H",
+        "C",
+        "A"
+      ],
+      "degrees": 45,
+      "marker": "ARC",
+      "text": "45°",
+      "factRole": "GIVEN",
+      "labelPlacement": "CONDITION_BOX",
+      "conditionBoxId": "crowded-relations",
+      "showLabel": false
+    }
+  ],
+  "lengths": [
+    {
+      "id": "AB8",
+      "segment": "AB",
+      "value": 8,
+      "text": "8 km",
+      "mode": "ADJACENT",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "HC4",
+      "segment": "HC",
+      "value": 4,
+      "text": "4 km",
+      "mode": "ADJACENT",
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "BCres",
+      "segment": "BC",
+      "value": 10.928203230275509,
+      "text": "4+4·√(3) km",
+      "mode": "DIMENSION",
+      "factRole": "CONCLUSION"
+    }
+  ],
+  "regions": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Coordinates realize AB=8, angle B=30, altitude AH perpendicular BC, angle C=45, and equal legs AH=HC.",
+    "normalization": {
+      "originPoint": "B",
+      "xAxisPoint": "H",
+      "unitScale": 6.928203230275509
+    },
+    "freeVariables": [
+      {
+        "id": "AB",
+        "value": 8
+      },
+      {
+        "id": "angleB",
+        "value": 30
+      },
+      {
+        "id": "angleC",
+        "value": 45
+      }
+    ],
+    "pointCoordinates": {
+      "A": [
+        6.928203230275509,
+        4
+      ],
+      "B": [
+        0,
+        0
+      ],
+      "H": [
+        6.928203230275509,
+        0
+      ],
+      "C": [
+        10.928203230275509,
+        0
+      ]
+    },
+    "conditions": [
+      {
+        "id": "AB8",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 8,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "AH4",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "H"
+        ],
+        "expected": 4,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "BH4r3",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "H"
+        ],
+        "expected": 6.928203230275509,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "HC4",
+        "kind": "DISTANCE",
+        "refs": [
+          "H",
+          "C"
+        ],
+        "expected": 4,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "B30",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "H"
+        ],
+        "expected": 30,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "H90",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "H",
+          "A"
+        ],
+        "expected": 90,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "C45",
+        "kind": "ANGLE",
+        "refs": [
+          "H",
+          "C",
+          "A"
+        ],
+        "expected": 45,
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "p1",
+        "operation": "CONSTRUCT_POINT",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "p2",
+        "operation": "CONSTRUCT_POINT",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "p3",
+        "operation": "CONSTRUCT_POINT",
+        "output": "H",
+        "inputs": []
+      },
+      {
+        "id": "p4",
+        "operation": "CONSTRUCT_POINT",
+        "output": "C",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "AB8",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "AH4",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "BH4r3",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "HC4",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "B30",
+        "residual": 3.552713678800501e-15,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "H90",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "C45",
+        "residual": 7.105427357601002e-15,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "ABH",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "A",
+          "B",
+          "H"
+        ],
+        "observed": 0.8660254037844386,
+        "minimum": 1e-06
+      }
+    ]
+  },
+  "otherLabels": [
+    {
+      "id": "crowded-relations",
+      "text": "∠ABH=30°∠HCA=45°",
+      "powers": [],
+      "conditionBoxFor": [
+        "B30",
+        "C45"
+      ]
+    }
+  ]
+}

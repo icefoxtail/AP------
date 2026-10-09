@@ -1,0 +1,305 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "daaae1df4071544541ab2d7dd5ddcf559036a1ccfa6511bef22d3a24fe7fc8eb",
+  "solutionSha256": "931d639911ebc631113582aad7f7da4f51f3d691267a9d206550981c8469fce7",
+  "coordinateModel": {
+    "originX": 152.0,
+    "originY": 240.0,
+    "sx": 16.0,
+    "sy": 16.0
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        8,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "M",
+      "at": [
+        0,
+        0
+      ],
+      "name": "M"
+    },
+    {
+      "id": "A",
+      "at": [
+        0,
+        6
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        0,
+        -6
+      ],
+      "name": "B"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "OM",
+      "points": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "points": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "AM",
+      "points": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "MB",
+      "points": [
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        8,
+        0
+      ],
+      "radius": 10
+    }
+  ],
+  "incidences": [
+    {
+      "id": "A-on-circle",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "B-on-circle",
+      "point": "B",
+      "circle": "circleO"
+    }
+  ],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "lenAM6",
+      "segment": "AM",
+      "value": 6,
+      "mode": "ADJACENT",
+      "text": "6",
+      "factRole": "CONCLUSION"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed circle realization with a 12-unit chord, its perpendicular radius line and midpoint foot; radius 10 and offset 8 are schematic normalization choices.",
+    "normalization": {
+      "originPoint": "M",
+      "xAxisPoint": "O",
+      "unitScale": 8
+    },
+    "freeVariables": [
+      {
+        "id": "radius",
+        "value": 10
+      },
+      {
+        "id": "centerToChord",
+        "value": 8
+      }
+    ],
+    "pointCoordinates": {
+      "O": [
+        8,
+        0
+      ],
+      "M": [
+        0,
+        0
+      ],
+      "A": [
+        0,
+        6
+      ],
+      "B": [
+        0,
+        -6
+      ]
+    },
+    "conditions": [
+      {
+        "id": "AB12",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 12,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "AM6",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "M"
+        ],
+        "expected": 6,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "MB6",
+        "kind": "DISTANCE",
+        "refs": [
+          "M",
+          "B"
+        ],
+        "expected": 6,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "OM8",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "M"
+        ],
+        "expected": 8,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "OMperpAB",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "M",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "MmidAB",
+        "kind": "MIDPOINT",
+        "refs": [
+          "M",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-O",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "construct-M",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "M",
+        "inputs": [
+          "O"
+        ]
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "A",
+        "inputs": [
+          "O",
+          "M"
+        ]
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "B",
+        "inputs": [
+          "O",
+          "M",
+          "A"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "AB12",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "AM6",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "MB6",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OM8",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OMperpAB",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "MmidAB",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-witness",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "O",
+          "M",
+          "A"
+        ],
+        "observed": 0.6,
+        "minimum": 1e-09
+      }
+    ]
+  }
+}

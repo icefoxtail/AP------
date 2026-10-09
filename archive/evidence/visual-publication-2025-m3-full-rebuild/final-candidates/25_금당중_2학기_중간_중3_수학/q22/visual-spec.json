@@ -1,0 +1,284 @@
+{
+  "id": "m3-geumdang-mid-q22",
+  "visualType": "line_circle_geometry",
+  "title": "절편 삼각형에서 삼각비 식의 값 -3",
+  "viewport": {
+    "xMin": -1.5,
+    "xMax": 9.5,
+    "yMin": -1.5,
+    "yMax": 5.5,
+    "width": 560,
+    "height": 480,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Constructed coordinate realization of y=1/2x+4 with intercepts A=(-8,0), B=(0,4), and O=(0,0).",
+      "normalization": {
+        "originPoint": "A",
+        "xAxisPoint": "O",
+        "unitScale": 8
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "A": [
+          0,
+          0
+        ],
+        "O": [
+          8,
+          0
+        ],
+        "B": [
+          8,
+          4
+        ]
+      },
+      "conditions": [
+        {
+          "id": "AO8",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "O"
+          ],
+          "expected": 8,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "BO4",
+          "kind": "DISTANCE",
+          "refs": [
+            "B",
+            "O"
+          ],
+          "expected": 4,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "AB4sqrt5",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 8.94427190999916,
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-O",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "O",
+          "inputs": [
+            "A"
+          ]
+        },
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "B",
+          "inputs": [
+            "A",
+            "O"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "AO8",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "BO4",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "AB4sqrt5",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "noncollinear-witness",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "A",
+            "O",
+            "B"
+          ],
+          "observed": 0.4472135954999579,
+          "minimum": 1e-09
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        8,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        8,
+        4
+      ],
+      "name": "B"
+    },
+    {
+      "id": "AO",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        8,
+        0
+      ]
+    },
+    {
+      "id": "BO",
+      "kind": "SEGMENT",
+      "from": [
+        8,
+        4
+      ],
+      "to": [
+        8,
+        0
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        8,
+        4
+      ]
+    },
+    {
+      "id": "x-axis",
+      "kind": "LINE",
+      "coefficients": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "y-axis",
+      "kind": "LINE",
+      "coefficients": [
+        1,
+        0,
+        -8
+      ]
+    },
+    {
+      "id": "graph",
+      "kind": "LINE",
+      "coefficients": [
+        -1,
+        2,
+        0
+      ]
+    },
+    {
+      "id": "expression-result",
+      "kind": "EQUATION_LABEL",
+      "text": "-3",
+      "at": [
+        3,
+        6
+      ],
+      "math": true
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 18,
+    "sourcePointLabels": {
+      "A": "A",
+      "O": "O",
+      "B": "B"
+    },
+    "segmentPointRefs": {
+      "AO": [
+        "A",
+        "O"
+      ],
+      "BO": [
+        "B",
+        "O"
+      ],
+      "AB": [
+        "A",
+        "B"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "AO8",
+        "kind": "LENGTH",
+        "owner": "AO",
+        "value": 8,
+        "mode": "ADJACENT",
+        "text": "8",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BO4",
+        "kind": "LENGTH",
+        "owner": "BO",
+        "value": 4,
+        "mode": "ADJACENT",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AB4sqrt5",
+        "kind": "LENGTH",
+        "owner": "AB",
+        "value": 8.94427190999916,
+        "mode": "ADJACENT",
+        "text": "4sqrt(5)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

@@ -1,0 +1,357 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "cb9340726ed574fed56570abb2e628df248af0492571a2beb3b9dcd1420feddf",
+  "solutionSha256": "67dd34ec9d5fd581c68852c0d5a1c9119894db74680a74b1a923841e0a22c299",
+  "coordinateModel": {
+    "originX": 144.41379310344826,
+    "originY": 224.9655172413793,
+    "sx": 16.862068965517242,
+    "sy": 16.862068965517242
+  },
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "The source fixes named incidences, circle/tangent/angle/length relations but no Cartesian coordinates. This explicit constructed realization preserves the listed source and verified-solution conditions; arbitrary arc placements are declared free variables.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "B",
+      "unitScale": 5.333333333333333
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "O": [
+        0,
+        0
+      ],
+      "A": [
+        -5.333333333333333,
+        0
+      ],
+      "B": [
+        5.333333333333333,
+        0
+      ],
+      "P": [
+        11.333333333333332,
+        0
+      ],
+      "T": [
+        2.5098039215686274,
+        4.705882352941177
+      ]
+    },
+    "conditions": [
+      {
+        "id": "angle-rightOTP",
+        "kind": "ANGLE",
+        "refs": [
+          "O",
+          "T",
+          "P"
+        ],
+        "expected": 90,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "condition-1",
+        "kind": "COLLINEAR",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "condition-2",
+        "kind": "COLLINEAR",
+        "refs": [
+          "O",
+          "B",
+          "P"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "condition-3",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "expected": 5.333333333333333,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "condition-4",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "expected": 5.333333333333333,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "condition-5",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "T"
+        ],
+        "expected": 5.333333333333333,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "condition-6",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "T",
+          "P",
+          "T"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "length-lengthPT",
+        "kind": "DISTANCE",
+        "refs": [
+          "P",
+          "T"
+        ],
+        "expected": 10.0,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "length-lengthBP",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "P"
+        ],
+        "expected": 6.0,
+        "tolerance": 1e-06
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-O",
+        "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-B",
+        "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "construct-P",
+        "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+        "output": "P",
+        "inputs": []
+      },
+      {
+        "id": "construct-T",
+        "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+        "output": "T",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "angle-rightOTP",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "condition-1",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "condition-2",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "condition-3",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "condition-4",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "condition-5",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "condition-6",
+        "residual": 6.66133814775094e-17,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "length-lengthPT",
+        "residual": 1.7763568394002505e-15,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "length-lengthBP",
+        "residual": 8.881784197001252e-16,
+        "tolerance": 1e-06
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-triple",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "O",
+          "A",
+          "T"
+        ],
+        "observed": 0.8823529411764707,
+        "minimum": 1e-06
+      }
+    ]
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "at": [
+        -5.333333333333333,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        5.333333333333333,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "P",
+      "at": [
+        11.333333333333332,
+        0
+      ],
+      "name": "P"
+    },
+    {
+      "id": "T",
+      "at": [
+        2.5098039215686274,
+        4.705882352941177
+      ],
+      "name": "T"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "OP",
+      "points": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "OT",
+      "points": [
+        "O",
+        "T"
+      ]
+    },
+    {
+      "id": "PT",
+      "points": [
+        "P",
+        "T"
+      ]
+    },
+    {
+      "id": "BP",
+      "points": [
+        "B",
+        "P"
+      ]
+    }
+  ],
+  "circles": [],
+  "arcs": [
+    {
+      "id": "semiArcAB",
+      "center": "O",
+      "radius": 5.333333333333333,
+      "startPoint": "A",
+      "endPoint": "B",
+      "sweep": "CW",
+      "degrees": 180
+    }
+  ],
+  "incidences": [],
+  "lines": [],
+  "angles": [
+    {
+      "id": "rightOTP",
+      "points": [
+        "O",
+        "T",
+        "P"
+      ],
+      "degrees": 90,
+      "marker": "SQUARE",
+      "text": "90°",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "showLabel": false
+    }
+  ],
+  "lengths": [
+    {
+      "id": "lengthPT",
+      "segment": "PT",
+      "value": 10.0,
+      "mode": "ADJACENT",
+      "text": "10",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "lengthBP",
+      "segment": "BP",
+      "value": 6.0,
+      "mode": "ADJACENT",
+      "text": "6",
+      "factRole": "GIVEN"
+    }
+  ],
+  "regions": [],
+  "otherLabels": []
+}

@@ -1,0 +1,288 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "a07b1a3861307ee3ebf979998838090f0bedd2ef6b2f1c7b1acc1403ebc5b72b",
+  "solutionSha256": "e1c85757324840f7834c21e431dc1c51b725bcf5a8e606c5d48a98c218a3bebb",
+  "coordinateModel": {
+    "originX": 99.63636363636364,
+    "originY": 240.0,
+    "sx": 45.09090909090909,
+    "sy": 45.09090909090909
+  },
+  "points": [
+    {
+      "id": "P",
+      "at": [
+        0,
+        0
+      ],
+      "name": "P"
+    },
+    {
+      "id": "O",
+      "at": [
+        5,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "at": [
+        3.2,
+        2.4
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        3.2,
+        -2.4
+      ],
+      "name": "B"
+    }
+  ],
+  "segments": [
+    {
+      "id": "PA",
+      "points": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "points": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "points": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OP",
+      "points": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        5,
+        0
+      ],
+      "radius": 3
+    }
+  ],
+  "incidences": [
+    {
+      "id": "A-touch",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "B-touch",
+      "point": "B",
+      "circle": "circleO"
+    }
+  ],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "radiusOA",
+      "segment": "OA",
+      "value": 3,
+      "mode": "ADJACENT",
+      "text": "3",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "radiusOB",
+      "segment": "OB",
+      "value": 3,
+      "mode": "ADJACENT",
+      "text": "3",
+      "factRole": "GIVEN"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "rhs-proof",
+      "text": "OA=OB, OP=OP → PA=PB"
+    }
+  ],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed external point and tangent circle give two right triangles PAO and PBO with shared hypotenuse OP and equal radii.",
+    "normalization": {
+      "originPoint": "P",
+      "xAxisPoint": "O",
+      "unitScale": 5
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "P": [
+        0,
+        0
+      ],
+      "O": [
+        5,
+        0
+      ],
+      "A": [
+        3.2,
+        2.4
+      ],
+      "B": [
+        3.2,
+        -2.4
+      ]
+    },
+    "conditions": [
+      {
+        "id": "OA3",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "expected": 3,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "OB3",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "expected": 3,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "rightPAO",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "P",
+          "A",
+          "O",
+          "A"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "rightPBO",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "P",
+          "B",
+          "O",
+          "B"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "sharedOP",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "P"
+        ],
+        "expected": 5,
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-P",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "P",
+        "inputs": []
+      },
+      {
+        "id": "construct-O",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "O",
+        "inputs": [
+          "P"
+        ]
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "A",
+        "inputs": [
+          "P",
+          "O"
+        ]
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "B",
+        "inputs": [
+          "P",
+          "O",
+          "A"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "OA3",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OB3",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "rightPAO",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "rightPBO",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "sharedOP",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-witness",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "P",
+          "O",
+          "A"
+        ],
+        "observed": 0.6,
+        "minimum": 1e-09
+      }
+    ]
+  }
+}

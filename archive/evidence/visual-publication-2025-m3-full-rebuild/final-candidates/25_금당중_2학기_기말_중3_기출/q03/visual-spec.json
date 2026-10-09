@@ -1,0 +1,399 @@
+{
+  "id": "25-geumdang-final-q03-fresh-v2",
+  "title": "호의 비에서 원주각으로",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -1.2,
+    "xMax": 1.2,
+    "yMin": -1.15,
+    "yMax": 1.8,
+    "width": 420,
+    "height": 520,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Source problem gives circle/angle relations, not absolute coordinates. Normalize center O to the origin and the selected source point to the positive x-axis; fix a nondegenerate Euclidean realization satisfying every listed incidence and angle condition.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "A",
+        "unitScale": 1.0
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "O": [
+          0.0,
+          0.0
+        ],
+        "A": [
+          1.0,
+          0.0
+        ],
+        "B": [
+          0.30901699437494745,
+          0.9510565162951535
+        ],
+        "C": [
+          -0.9781476007338056,
+          -0.2079116908177595
+        ]
+      },
+      "conditions": [
+        {
+          "id": "radius-oA",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "tolerance": 1e-06,
+          "expected": 1.0
+        },
+        {
+          "id": "radius-oB",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "tolerance": 1e-06,
+          "expected": 1.0
+        },
+        {
+          "id": "radius-oC",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "tolerance": 1e-06,
+          "expected": 1.0
+        },
+        {
+          "id": "given-arc-ab-72",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "O",
+            "B"
+          ],
+          "tolerance": 1e-06,
+          "expected": 72
+        },
+        {
+          "id": "given-arc-bc-120",
+          "kind": "ANGLE",
+          "refs": [
+            "B",
+            "O",
+            "C"
+          ],
+          "tolerance": 1e-06,
+          "expected": 120
+        },
+        {
+          "id": "given-arc-ca-168",
+          "kind": "ANGLE",
+          "refs": [
+            "C",
+            "O",
+            "A"
+          ],
+          "tolerance": 1e-06,
+          "expected": 168
+        },
+        {
+          "id": "conclusion-inscribed-36",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "C",
+            "B"
+          ],
+          "tolerance": 1e-06,
+          "expected": 36
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "place-O",
+          "operation": "NORMALIZE_ORIGIN",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "place-A",
+          "operation": "NORMALIZE_X_AXIS",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "place-B",
+          "operation": "PLACE_FROM_ARC_RATIO_3_OF_15",
+          "output": "B",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "id": "place-C",
+          "operation": "PLACE_FROM_ARC_RATIO_8_OF_15",
+          "output": "C",
+          "inputs": [
+            "O",
+            "B"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "radius-oA",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "radius-oB",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "radius-oC",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "given-arc-ab-72",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "given-arc-bc-120",
+          "residual": 1.4210854715202004e-14,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "given-arc-ca-168",
+          "residual": 2.842170943040401e-14,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "conclusion-inscribed-36",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "a-b-distinct",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "minimum": 1e-06,
+          "observed": 1.1755705045849463
+        },
+        {
+          "id": "o-a-b-noncollinear",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "O",
+            "A",
+            "B"
+          ],
+          "minimum": 1e-06,
+          "observed": 0.9510565162951535
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": null
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        1.0,
+        0.0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        0.30901699437494745,
+        0.9510565162951535
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        -0.9781476007338056,
+        -0.2079116908177595
+      ],
+      "name": "C"
+    },
+    {
+      "id": "circle-main",
+      "kind": "CIRCLE",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "radius": 1.0
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        0.30901699437494745,
+        0.9510565162951535
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        1.0,
+        0.0
+      ],
+      "to": [
+        0.30901699437494745,
+        0.9510565162951535
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        0.30901699437494745,
+        0.9510565162951535
+      ],
+      "to": [
+        -0.9781476007338056,
+        -0.2079116908177595
+      ]
+    },
+    {
+      "id": "CA",
+      "kind": "SEGMENT",
+      "from": [
+        -0.9781476007338056,
+        -0.2079116908177595
+      ],
+      "to": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "ratio-note",
+      "kind": "CONDITION_BOX",
+      "at": [
+        0.0,
+        1.55
+      ],
+      "lines": [
+        "호의 비 3:5:7"
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 18,
+    "sourcePointLabels": {
+      "O": null,
+      "A": "A",
+      "B": "B",
+      "C": "C"
+    },
+    "segmentPointRefs": {
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ],
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "CA": [
+        "C",
+        "A"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "central-aob-72",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 72,
+        "text": "72",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "labelAt": [
+          0.38,
+          0.28
+        ]
+      },
+      {
+        "id": "inscribed-acb-36",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 36,
+        "text": "36",
+        "factRole": "CONCLUSION",
+        "labelAt": [
+          -0.24731123461972482,
+          0.11747762364288072
+        ]
+      }
+    ]
+  }
+}

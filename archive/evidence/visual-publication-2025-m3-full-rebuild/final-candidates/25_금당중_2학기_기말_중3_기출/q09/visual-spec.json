@@ -1,0 +1,731 @@
+{
+  "id": "25-geumdang-final-q09-fresh-v2",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -0.55,
+    "xMax": 0.55,
+    "yMin": -1.25,
+    "yMax": 0.25,
+    "width": 760,
+    "height": 800,
+    "panel": 180,
+    "margin": 32
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Triangle angles 50° and 60° determine the outer circle; the inner circle is constructed tangent at A and tangent to BC at D.",
+      "normalization": {
+        "originPoint": "A",
+        "xAxisPoint": "T",
+        "unitScale": 0.25
+      },
+      "freeVariables": [
+        {
+          "id": "BC_length",
+          "value": 1
+        },
+        {
+          "id": "outerRadius",
+          "value": 0.5320888862379561
+        },
+        {
+          "id": "innerRadius",
+          "value": 0.35569710795437864
+        },
+        {
+          "id": "tangentLengthAT",
+          "value": 0.25
+        }
+      ],
+      "pointCoordinates": {
+        "O": [
+          1.3877787807814457e-17,
+          -0.532088886237956
+        ],
+        "S": [
+          5.551115123125783e-17,
+          -0.3556971079543785
+        ],
+        "A": [
+          -0.0,
+          0.0
+        ],
+        "B": [
+          -0.46080249255343814,
+          -0.798133329356934
+        ],
+        "C": [
+          0.5240052604587699,
+          -0.6244851516900036
+        ],
+        "D": [
+          0.06176615459767533,
+          -0.705990377591871
+        ],
+        "E": [
+          -0.3080427315411478,
+          -0.5335456619315678
+        ],
+        "T": [
+          0.25,
+          0.0
+        ]
+      },
+      "conditions": [
+        {
+          "id": "big-A",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 0.5320888862379561,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "big-B",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "expected": 0.5320888862379561,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "big-C",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "expected": 0.5320888862379561,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "small-A",
+          "kind": "DISTANCE",
+          "refs": [
+            "S",
+            "A"
+          ],
+          "expected": 0.35569710795437864,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "small-D",
+          "kind": "DISTANCE",
+          "refs": [
+            "S",
+            "D"
+          ],
+          "expected": 0.35569710795437864,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "small-E",
+          "kind": "DISTANCE",
+          "refs": [
+            "S",
+            "E"
+          ],
+          "expected": 0.35569710795437864,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "AEB",
+          "kind": "COLLINEAR",
+          "refs": [
+            "A",
+            "E",
+            "B"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "BDC",
+          "kind": "COLLINEAR",
+          "refs": [
+            "B",
+            "D",
+            "C"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "OAS",
+          "kind": "COLLINEAR",
+          "refs": [
+            "O",
+            "A",
+            "S"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "SDperpBC",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "S",
+            "D",
+            "B",
+            "C"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "angABC",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "expected": 50,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "angACB",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "C",
+            "B"
+          ],
+          "expected": 60,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "angADE",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "D",
+            "E"
+          ],
+          "expected": 60,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "angEDB",
+          "kind": "ANGLE",
+          "refs": [
+            "E",
+            "D",
+            "B"
+          ],
+          "expected": 35,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "angEAD",
+          "kind": "ANGLE",
+          "refs": [
+            "E",
+            "A",
+            "D"
+          ],
+          "expected": 35,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "tangent-AT-perp-OA",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "A",
+            "A",
+            "T"
+          ],
+          "tolerance": 1e-06
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "point-O",
+          "operation": "SET_ORIGIN",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "point-S",
+          "operation": "CONSTRUCT_POINT",
+          "output": "S",
+          "inputs": [
+            "O"
+          ]
+        },
+        {
+          "id": "point-A",
+          "operation": "CONSTRUCT_POINT",
+          "output": "A",
+          "inputs": [
+            "O"
+          ]
+        },
+        {
+          "id": "point-B",
+          "operation": "CONSTRUCT_POINT",
+          "output": "B",
+          "inputs": [
+            "O"
+          ]
+        },
+        {
+          "id": "point-C",
+          "operation": "CONSTRUCT_POINT",
+          "output": "C",
+          "inputs": [
+            "O"
+          ]
+        },
+        {
+          "id": "point-D",
+          "operation": "CONSTRUCT_POINT",
+          "output": "D",
+          "inputs": [
+            "O"
+          ]
+        },
+        {
+          "id": "point-E",
+          "operation": "CONSTRUCT_POINT",
+          "output": "E",
+          "inputs": [
+            "O"
+          ]
+        },
+        {
+          "id": "point-T",
+          "operation": "CONSTRUCT_POINT",
+          "output": "T",
+          "inputs": [
+            "O"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "big-A",
+          "residual": 1.1102230246251565e-16,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "big-B",
+          "residual": 1.1102230246251565e-16,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "big-C",
+          "residual": 1.1102230246251565e-16,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "small-A",
+          "residual": 1.6653345369377348e-16,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "small-D",
+          "residual": 1.1102230246251565e-16,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "small-E",
+          "residual": 5.551115123125783e-17,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "AEB",
+          "residual": 4.888374407777868e-17,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "BDC",
+          "residual": 5.2306823619450095e-17,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "OAS",
+          "residual": 2.6210950991528543e-16,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "SDperpBC",
+          "residual": 1.9507872706114896e-17,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "angABC",
+          "residual": 1.4210854715202004e-14,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "angACB",
+          "residual": 7.105427357601002e-15,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "angADE",
+          "residual": 1.4210854715202004e-14,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "angEDB",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "angEAD",
+          "residual": 1.4210854715202004e-14,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "tangent-AT-perp-OA",
+          "residual": 2.6081709591671787e-17,
+          "tolerance": 1e-06
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "ABC-nondegenerate",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "observed": 0.9396926207859083,
+          "minimum": 1e-06
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        1.3877787807814457e-17,
+        -0.532088886237956
+      ],
+      "name": null
+    },
+    {
+      "id": "S",
+      "kind": "POINT",
+      "at": [
+        5.551115123125783e-17,
+        -0.3556971079543785
+      ],
+      "name": null
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        -0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        -0.46080249255343814,
+        -0.798133329356934
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        0.5240052604587699,
+        -0.6244851516900036
+      ]
+    },
+    {
+      "id": "D",
+      "kind": "POINT",
+      "at": [
+        0.06176615459767533,
+        -0.705990377591871
+      ]
+    },
+    {
+      "id": "E",
+      "kind": "POINT",
+      "at": [
+        -0.3080427315411478,
+        -0.5335456619315678
+      ]
+    },
+    {
+      "id": "T",
+      "kind": "POINT",
+      "at": [
+        0.25,
+        0.0
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        -0.0,
+        0.0
+      ],
+      "to": [
+        -0.46080249255343814,
+        -0.798133329356934
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        -0.46080249255343814,
+        -0.798133329356934
+      ],
+      "to": [
+        0.5240052604587699,
+        -0.6244851516900036
+      ]
+    },
+    {
+      "id": "CA",
+      "kind": "SEGMENT",
+      "from": [
+        0.5240052604587699,
+        -0.6244851516900036
+      ],
+      "to": [
+        -0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "AE",
+      "kind": "SEGMENT",
+      "from": [
+        -0.0,
+        0.0
+      ],
+      "to": [
+        -0.3080427315411478,
+        -0.5335456619315678
+      ]
+    },
+    {
+      "id": "AD",
+      "kind": "SEGMENT",
+      "from": [
+        -0.0,
+        0.0
+      ],
+      "to": [
+        0.06176615459767533,
+        -0.705990377591871
+      ]
+    },
+    {
+      "id": "ED",
+      "kind": "SEGMENT",
+      "from": [
+        -0.3080427315411478,
+        -0.5335456619315678
+      ],
+      "to": [
+        0.06176615459767533,
+        -0.705990377591871
+      ]
+    },
+    {
+      "id": "DB",
+      "kind": "SEGMENT",
+      "from": [
+        0.06176615459767533,
+        -0.705990377591871
+      ],
+      "to": [
+        -0.46080249255343814,
+        -0.798133329356934
+      ]
+    },
+    {
+      "id": "DC",
+      "kind": "SEGMENT",
+      "from": [
+        0.06176615459767533,
+        -0.705990377591871
+      ],
+      "to": [
+        0.5240052604587699,
+        -0.6244851516900036
+      ]
+    },
+    {
+      "id": "AT",
+      "kind": "SEGMENT",
+      "from": [
+        -0.0,
+        0.0
+      ],
+      "to": [
+        0.25,
+        0.0
+      ]
+    },
+    {
+      "id": "bigCircle",
+      "kind": "CIRCLE",
+      "center": [
+        1.3877787807814457e-17,
+        -0.532088886237956
+      ],
+      "radius": 0.5320888862379561
+    },
+    {
+      "id": "smallCircle",
+      "kind": "CIRCLE",
+      "center": [
+        5.551115123125783e-17,
+        -0.3556971079543785
+      ],
+      "radius": 0.35569710795437864
+    },
+    {
+      "id": "crowded-relations",
+      "kind": "CONDITION_BOX",
+      "at": [
+        0.7418604651162791,
+        -0.5000000000000001
+      ],
+      "lines": [
+        "∠EDB=35°"
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "O": null,
+      "S": null,
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D",
+      "E": "E",
+      "T": "T"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "CA": [
+        "C",
+        "A"
+      ],
+      "AE": [
+        "A",
+        "E"
+      ],
+      "AD": [
+        "A",
+        "D"
+      ],
+      "ED": [
+        "E",
+        "D"
+      ],
+      "DB": [
+        "D",
+        "B"
+      ],
+      "DC": [
+        "D",
+        "C"
+      ],
+      "AT": [
+        "A",
+        "T"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "angABC",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 50,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angACB",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 60,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angADE",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "D",
+          "E"
+        ],
+        "value": 60,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "angEDB",
+        "kind": "ANGLE",
+        "refs": [
+          "E",
+          "D",
+          "B"
+        ],
+        "value": 35,
+        "factRole": "DERIVED_INTERMEDIATE",
+        "labelPlacement": "CONDITION_BOX",
+        "showLabel": false,
+        "conditionBoxId": "crowded-relations"
+      },
+      {
+        "id": "angEAD",
+        "kind": "ANGLE",
+        "refs": [
+          "E",
+          "A",
+          "D"
+        ],
+        "value": 35,
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "pointLabelAnchors": {
+      "A": [
+        0,
+        0.08
+      ]
+    }
+  }
+}

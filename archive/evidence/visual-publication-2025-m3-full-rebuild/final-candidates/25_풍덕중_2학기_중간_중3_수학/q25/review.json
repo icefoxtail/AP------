@@ -1,0 +1,531 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "a07b1a3861307ee3ebf979998838090f0bedd2ef6b2f1c7b1acc1403ebc5b72b",
+  "solutionSha256": "c6681b5c78d60ba8ea9b51e5924f3f2812cdfa9efe3d4b4c23e7c8261d371ff9",
+  "coordinateModel": {
+    "originX": 89.29063797050782,
+    "originY": 240.0,
+    "sx": 38.19375864700523,
+    "sy": 38.19375864700523
+  },
+  "points": [
+    {
+      "id": "P",
+      "at": [
+        0,
+        0
+      ],
+      "name": "P"
+    },
+    {
+      "id": "O",
+      "at": [
+        8.19756061276768,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "at": [
+        7.807200583588266,
+        1.7457431218879391
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        7.807200583588266,
+        -1.7457431218879391
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        6.831300510639732,
+        1.5275252316519468
+      ],
+      "name": "C"
+    },
+    {
+      "id": "D",
+      "at": [
+        5.855400437691199,
+        -1.3093073414159544
+      ],
+      "name": "D"
+    },
+    {
+      "id": "E",
+      "at": [
+        6.506000486323555,
+        0.5819143739626463
+      ],
+      "name": "E"
+    }
+  ],
+  "segments": [
+    {
+      "id": "PA",
+      "points": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "points": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "PC",
+      "points": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "PD",
+      "points": [
+        "P",
+        "D"
+      ]
+    },
+    {
+      "id": "CD",
+      "points": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "CA",
+      "points": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "DB",
+      "points": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "CE",
+      "points": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "DE",
+      "points": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "points": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OE",
+      "points": [
+        "O",
+        "E"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        8.19756061276768,
+        0
+      ],
+      "radius": 1.7888543819998317
+    }
+  ],
+  "incidences": [
+    {
+      "id": "A-touch",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "B-touch",
+      "point": "B",
+      "circle": "circleO"
+    },
+    {
+      "id": "E-touch",
+      "point": "E",
+      "circle": "circleO"
+    }
+  ],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "lenPB8",
+      "segment": "PB",
+      "value": 8,
+      "mode": "ADJACENT",
+      "text": "8",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "lenPC7",
+      "segment": "PC",
+      "value": 7,
+      "mode": "ADJACENT",
+      "text": "7",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "lenCD3",
+      "segment": "CD",
+      "value": 3,
+      "mode": "ADJACENT",
+      "text": "3",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "lenPDx",
+      "segment": "PD",
+      "value": 6,
+      "mode": "ADJACENT",
+      "text": "6",
+      "factRole": "CONCLUSION"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed circle with external tangent lengths PB=8, PC=7, CD=3; exact contact-point tangent equalities determine PD=6.",
+    "normalization": {
+      "originPoint": "P",
+      "xAxisPoint": "O",
+      "unitScale": 8.19756061276768
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "P": [
+        0,
+        0
+      ],
+      "O": [
+        8.19756061276768,
+        0
+      ],
+      "A": [
+        7.807200583588266,
+        1.7457431218879391
+      ],
+      "B": [
+        7.807200583588266,
+        -1.7457431218879391
+      ],
+      "C": [
+        6.831300510639732,
+        1.5275252316519468
+      ],
+      "D": [
+        5.855400437691199,
+        -1.3093073414159544
+      ],
+      "E": [
+        6.506000486323555,
+        0.5819143739626463
+      ]
+    },
+    "conditions": [
+      {
+        "id": "PB8",
+        "kind": "DISTANCE",
+        "refs": [
+          "P",
+          "B"
+        ],
+        "expected": 8,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "PC7",
+        "kind": "DISTANCE",
+        "refs": [
+          "P",
+          "C"
+        ],
+        "expected": 7,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "CD3",
+        "kind": "DISTANCE",
+        "refs": [
+          "C",
+          "D"
+        ],
+        "expected": 3,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "PA8",
+        "kind": "DISTANCE",
+        "refs": [
+          "P",
+          "A"
+        ],
+        "expected": 8,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "PD6",
+        "kind": "DISTANCE",
+        "refs": [
+          "P",
+          "D"
+        ],
+        "expected": 6,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "CA1",
+        "kind": "DISTANCE",
+        "refs": [
+          "C",
+          "A"
+        ],
+        "expected": 1,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "CE1",
+        "kind": "DISTANCE",
+        "refs": [
+          "C",
+          "E"
+        ],
+        "expected": 1,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "DE2",
+        "kind": "DISTANCE",
+        "refs": [
+          "D",
+          "E"
+        ],
+        "expected": 2,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "DB2",
+        "kind": "DISTANCE",
+        "refs": [
+          "D",
+          "B"
+        ],
+        "expected": 2,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "PAperpOA",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "P",
+          "A",
+          "O",
+          "A"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "PBperpOB",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "P",
+          "B",
+          "O",
+          "B"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "CDperpOE",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "C",
+          "D",
+          "O",
+          "E"
+        ],
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-P",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "P",
+        "inputs": []
+      },
+      {
+        "id": "construct-O",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "O",
+        "inputs": [
+          "P"
+        ]
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "A",
+        "inputs": [
+          "P",
+          "O"
+        ]
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "B",
+        "inputs": [
+          "P",
+          "O",
+          "A"
+        ]
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "C",
+        "inputs": [
+          "P",
+          "O",
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "construct-D",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "D",
+        "inputs": [
+          "P",
+          "O",
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      {
+        "id": "construct-E",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "E",
+        "inputs": [
+          "P",
+          "O",
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "PB8",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "PC7",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "CD3",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "PA8",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "PD6",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "CA1",
+        "residual": 4.440892098500626e-16,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "CE1",
+        "residual": 1.1102230246251565e-16,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "DE2",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "DB2",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "PAperpOA",
+        "residual": 2.792850922403182e-16,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "PBperpOB",
+        "residual": 2.792850922403182e-16,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "CDperpOE",
+        "residual": 8.275113844157575e-17,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-witness",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "P",
+          "O",
+          "A"
+        ],
+        "observed": 0.2182178902359924,
+        "minimum": 1e-09
+      }
+    ]
+  }
+}

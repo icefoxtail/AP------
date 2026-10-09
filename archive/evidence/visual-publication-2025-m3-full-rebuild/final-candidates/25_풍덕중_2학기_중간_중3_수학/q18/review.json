@@ -1,0 +1,444 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "a07b1a3861307ee3ebf979998838090f0bedd2ef6b2f1c7b1acc1403ebc5b72b",
+  "solutionSha256": "6290a9f9778757e965dad9a187e7349d0d8ec23cbe3e5ba04ddcc7b38d32f73d",
+  "coordinateModel": {
+    "originX": 156.26390153841834,
+    "originY": 311.7678734065379,
+    "sx": 37.488084395641444,
+    "sy": 37.488084395641444
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        0,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        3,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        -0.6666666666666666,
+        5.962847939999439
+      ],
+      "name": "C"
+    },
+    {
+      "id": "O",
+      "at": [
+        1,
+        1.118033988749895
+      ],
+      "name": "O"
+    },
+    {
+      "id": "P",
+      "at": [
+        1,
+        0
+      ],
+      "name": "P"
+    },
+    {
+      "id": "Q",
+      "at": [
+        1.9523809523809523,
+        1.70367083999984
+      ],
+      "name": "Q"
+    },
+    {
+      "id": "R",
+      "at": [
+        -0.1111111111111111,
+        0.9938079899999066
+      ],
+      "name": "R"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "points": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AP",
+      "points": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "BP",
+      "points": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "BQ",
+      "points": [
+        "B",
+        "Q"
+      ]
+    },
+    {
+      "id": "CQ",
+      "points": [
+        "C",
+        "Q"
+      ]
+    },
+    {
+      "id": "AR",
+      "points": [
+        "A",
+        "R"
+      ]
+    },
+    {
+      "id": "CR",
+      "points": [
+        "C",
+        "R"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        1,
+        1.118033988749895
+      ],
+      "radius": 1.118033988749895
+    }
+  ],
+  "incidences": [
+    {
+      "id": "P-touch",
+      "point": "P",
+      "circle": "circleO"
+    },
+    {
+      "id": "Q-touch",
+      "point": "Q",
+      "circle": "circleO"
+    },
+    {
+      "id": "R-touch",
+      "point": "R",
+      "circle": "circleO"
+    }
+  ],
+  "lines": [],
+  "angles": [],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed exact 3-6-7 triangle and incircle; equal tangent lengths determine the contact-segment variable.",
+    "normalization": {
+      "originPoint": "A",
+      "xAxisPoint": "B",
+      "unitScale": 3
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        3,
+        0
+      ],
+      "C": [
+        -0.6666666666666666,
+        5.962847939999439
+      ],
+      "O": [
+        1,
+        1.118033988749895
+      ],
+      "P": [
+        1,
+        0
+      ],
+      "Q": [
+        1.9523809523809523,
+        1.70367083999984
+      ],
+      "R": [
+        -0.1111111111111111,
+        0.9938079899999066
+      ]
+    },
+    "conditions": [
+      {
+        "id": "AB3",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 3,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "AC6",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "expected": 6,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "BC7",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "expected": 7,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "AP1",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "P"
+        ],
+        "expected": 1,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "AR1",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "R"
+        ],
+        "expected": 1,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "BP2",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "P"
+        ],
+        "expected": 2,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "BQ2",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "Q"
+        ],
+        "expected": 2,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "CQ5",
+        "kind": "DISTANCE",
+        "refs": [
+          "C",
+          "Q"
+        ],
+        "expected": 5,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "CR5",
+        "kind": "DISTANCE",
+        "refs": [
+          "C",
+          "R"
+        ],
+        "expected": 5,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "x5",
+        "kind": "DISTANCE",
+        "refs": [
+          "C",
+          "Q"
+        ],
+        "expected": 5,
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "B",
+        "inputs": [
+          "A"
+        ]
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "C",
+        "inputs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "construct-O",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "O",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      {
+        "id": "construct-P",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "P",
+        "inputs": [
+          "A",
+          "B",
+          "C",
+          "O"
+        ]
+      },
+      {
+        "id": "construct-Q",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "Q",
+        "inputs": [
+          "A",
+          "B",
+          "C",
+          "O",
+          "P"
+        ]
+      },
+      {
+        "id": "construct-R",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "R",
+        "inputs": [
+          "A",
+          "B",
+          "C",
+          "O",
+          "P",
+          "Q"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "AB3",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "AC6",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "BC7",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "AP1",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "AR1",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "BP2",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "BQ2",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "CQ5",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "CR5",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "x5",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-witness",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "observed": 0.9938079899999066,
+        "minimum": 1e-09
+      }
+    ]
+  }
+}

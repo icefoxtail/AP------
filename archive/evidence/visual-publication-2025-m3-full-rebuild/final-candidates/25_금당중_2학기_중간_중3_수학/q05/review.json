@@ -1,0 +1,293 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "daaae1df4071544541ab2d7dd5ddcf559036a1ccfa6511bef22d3a24fe7fc8eb",
+  "solutionSha256": "2d8b8a07a99ec224a0d37cb4cb85b1dcd44b4092e730464ea25e9d33b25165d7",
+  "coordinateModel": {
+    "originX": 187.55555555555554,
+    "originY": 413.3333333333333,
+    "sx": 23.11111111111111,
+    "sy": 23.11111111111111
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        0,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "C",
+      "at": [
+        8,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "B",
+      "at": [
+        8,
+        15
+      ],
+      "name": "B"
+    },
+    {
+      "id": "D",
+      "at": [
+        1.7716262975778547,
+        3.3217993079584773
+      ],
+      "name": "D"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "points": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "CB",
+      "points": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "CD",
+      "points": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "AD",
+      "points": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DB",
+      "points": [
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "circles": [],
+  "incidences": [],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "AC8",
+      "segment": "AC",
+      "value": 8,
+      "mode": "DIMENSION",
+      "text": "8",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "CB15",
+      "segment": "CB",
+      "value": 15,
+      "mode": "ADJACENT",
+      "text": "15",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "AB17",
+      "segment": "AB",
+      "value": 17,
+      "mode": "ADJACENT",
+      "text": "17",
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed equal-unit realization of the source right triangle AC=8, CB=15, AB=17 and its altitude from C to AB.",
+    "normalization": {
+      "originPoint": "A",
+      "xAxisPoint": "C",
+      "unitScale": 8
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "A": [
+        0,
+        0
+      ],
+      "C": [
+        8,
+        0
+      ],
+      "B": [
+        8,
+        15
+      ],
+      "D": [
+        1.7716262975778547,
+        3.3217993079584773
+      ]
+    },
+    "conditions": [
+      {
+        "id": "AC8",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "expected": 8,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "CB15",
+        "kind": "DISTANCE",
+        "refs": [
+          "C",
+          "B"
+        ],
+        "expected": 15,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "AB17",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 17,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "CDperpAB",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "D_on_AB",
+        "kind": "COLLINEAR",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "rightC",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "expected": 90,
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "C",
+        "inputs": [
+          "A"
+        ]
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "B",
+        "inputs": [
+          "A",
+          "C"
+        ]
+      },
+      {
+        "id": "construct-D",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "D",
+        "inputs": [
+          "A",
+          "C",
+          "B"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "AC8",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "CB15",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "AB17",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "CDperpAB",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "D_on_AB",
+        "residual": 5.551115123125783e-17,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "rightC",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-witness",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "observed": 0.8823529411764706,
+        "minimum": 1e-09
+      }
+    ]
+  }
+}
