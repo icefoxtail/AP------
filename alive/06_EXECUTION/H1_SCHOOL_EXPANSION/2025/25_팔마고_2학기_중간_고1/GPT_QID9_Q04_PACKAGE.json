@@ -1,0 +1,463 @@
+{
+  "schemaVersion": "ALIVE_QID9_CREATE_PACKAGE_V1",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceQid": 4,
+  "sourceQuestionType": "객관식",
+  "sourceFingerprint": {
+    "originalStem": "두 실수 $a,b$에 대하여 $\\sqrt{(a+1)^2+(b-2)^2}+\\sqrt{(2-a)^2+(6-b)^2}$의 최솟값은?",
+    "primaryConcept": "평면좌표—두 점 사이의 거리와 삼각부등식",
+    "originalMinimum": 5,
+    "sourceAnswer": "⑤",
+    "originalPoints": [
+      [
+        -1,
+        2
+      ],
+      [
+        2,
+        6
+      ]
+    ],
+    "sourceVisualDependency": "NONE",
+    "sourceStandardUnitKey": "H22-C2-01",
+    "sourceSubUnitKey": "H22-C2-01-COORDINATE_METRIC"
+  },
+  "invariant": "좌표를 거리로 해석하고 조건에 맞는 점 P의 위치에서 거리 관련 최적값을 확정한다.",
+  "rpmExactL3L4Lookup": "PENDING_SOURCE_RPM_MASTER_READ; do not invent H1-RPM ids",
+  "l3WorkingLabel": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
+  "l4Candidates": [
+    {
+      "label": "두 점 사이 거리·거리합 하한",
+      "slots": [
+        "A1",
+        "A2",
+        "A3"
+      ],
+      "status": "SEMANTIC_WORKING_LABEL"
+    },
+    {
+      "label": "직선/반직선 위의 거리합",
+      "slots": [
+        "B1",
+        "B2",
+        "B3"
+      ],
+      "status": "SEMANTIC_WORKING_LABEL"
+    },
+    {
+      "label": "위치 제약·균형점·역최적화",
+      "slots": [
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "status": "GENERATED_EXT_L4_CANDIDATE_NOT_REGISTERED"
+    }
+  ],
+  "experiencePlan": {
+    "A": "같은 거리합 최솟값 풀이를 삼각부등식과 거리공식으로 정확히 적용",
+    "B": "점의 위치 제약(직선/반직선)으로 등호 성립성과 반사 또는 경계를 먼저 판단",
+    "C": "이산 위치, 두 거리의 최댓값 최적화, 목표 최솟값에서 역으로 매개변수와 등호점 결정"
+  },
+  "itemCount": 9,
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 1,
+    "④": 2,
+    "⑤": 2
+  },
+  "authorSelfCheck": {
+    "authorMathCheck": "9/9; full 5-option semantic review pending independent reviewer",
+    "structuralCheck": "9 candidate objects, 45 unique per-slot choices, exact source SHA, L3 anchored",
+    "numericalSpotCheck": [
+      {
+        "slot": "B1",
+        "numericalMinimum": 5.000000004499819,
+        "approxArgmin": 1.6664999999999992,
+        "expected": 5,
+        "result": "CONSISTENT"
+      },
+      {
+        "slot": "B2",
+        "numericalMinimum": 6.324555320336759,
+        "approxArgmin": 0,
+        "expected": 6.324555320336759,
+        "result": "CONSISTENT"
+      },
+      {
+        "slot": "B3",
+        "numericalMinimum": 4.47213595499958,
+        "approxArgmin": 3,
+        "expected": 4.47213595499958,
+        "result": "CONSISTENT"
+      },
+      {
+        "slot": "C1",
+        "numericalMinimum": 7.404918347287666,
+        "approxArgmin": 1,
+        "expected": 7.404918347287666,
+        "result": "CONSISTENT"
+      },
+      {
+        "slot": "C2",
+        "numericalMinimum": 3.8009063392827764,
+        "approxArgmin": 0.3330000000000002,
+        "expected": 3.8005847503304597,
+        "result": "CONSISTENT"
+      },
+      {
+        "slot": "C3",
+        "numericalMinimum": 10,
+        "approxArgmin": 0.25,
+        "expected": 10,
+        "result": "CONSISTENT"
+      }
+    ],
+    "studentSourceReverseRead": "Each stem independently defines requested variable/region; no graphics required; answer/solution shown only in author bundle",
+    "notIndependentReview": true,
+    "rpmCatalogIdsVerified": false,
+    "reviewerStatus": "NOT_RUN",
+    "realBrowserRender": "NOT_TESTED",
+    "studentSupply": "NOT_REGISTERED"
+  },
+  "items": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-PALMA25-2MID-Q04-A1",
+      "purpose": "반복 숙달",
+      "stem": "두 실수 $x,y$에 대하여 $\\sqrt{(x-1)^2+(y+2)^2}+\\sqrt{(x-5)^2+(y-1)^2}$의 최솟값은?",
+      "choices": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$",
+        "$7$"
+      ],
+      "answer": "③",
+      "solution": "$P(x,y)$, $A(1,-2)$, $B(5,1)$로 놓으면 주어진 식은 $PA+PB$이다. 삼각형의 두 변의 길이의 합은 나머지 한 변 이상이므로 $PA+PB\\ge AB$이다. $P$가 선분 $AB$ 위에 있으면 등호가 성립한다. $AB=\\sqrt{(5-1)^2+(1+2)^2}=\\sqrt{16+9}=5$이므로 최솟값은 $5$이다. 따라서 정답은 ③이다.",
+      "distractorReasons": [
+        "① 수평·수직 차이 중 작은 값만 취함",
+        "② 가로 좌표 차이만 사용",
+        "④ 좌표 차이에 임의로 1을 더함",
+        "⑤ 두 거리의 합을 한 변보다 크게 잡음"
+      ],
+      "level": "하",
+      "difficultyBucket": 1,
+      "mode": "STRICT_VARIANT",
+      "l3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
+      "l4WorkingLabel": "두 점 사이 거리·거리합 하한",
+      "crossConcepts": [],
+      "conditionKeys": [
+        "P 전체 평면"
+      ],
+      "integrationPattern": "NONE",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_DRAFT_AUTHOR_SELF_CHECKED",
+      "reviewerStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "UNREGISTERED"
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-PALMA25-2MID-Q04-A2",
+      "purpose": "반복 숙달",
+      "stem": "실수 $a,b$에 대하여 $\\sqrt{(a+2)^2+(b-1)^2}+\\sqrt{(a-4)^2+(b-9)^2}$의 최솟값은?",
+      "choices": [
+        "$8$",
+        "$12$",
+        "$6$",
+        "$9$",
+        "$10$"
+      ],
+      "answer": "⑤",
+      "solution": "$P(a,b)$, $A(-2,1)$, $B(4,9)$라 하면 식은 $PA+PB$이다. $PA+PB\\ge AB$이고 $P$가 선분 $AB$ 위에 있을 때 등호가 성립한다. 양 끝점 사이의 거리는 $AB=\\sqrt{(4+2)^2+(9-1)^2}=\\sqrt{6^2+8^2}=10$이다. 따라서 정답은 ⑤이다.",
+      "distractorReasons": [
+        "① 세로 좌표 차이만 사용",
+        "② 가로·세로 차이를 잘못 더함",
+        "③ 가로 좌표 차이만 사용",
+        "④ 직각삼각형 거리 계산 착오"
+      ],
+      "level": "하",
+      "difficultyBucket": 1,
+      "mode": "STRICT_VARIANT",
+      "l3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
+      "l4WorkingLabel": "두 점 사이 거리·거리합 하한",
+      "crossConcepts": [],
+      "conditionKeys": [
+        "P 전체 평면"
+      ],
+      "integrationPattern": "NONE",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_DRAFT_AUTHOR_SELF_CHECKED",
+      "reviewerStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "UNREGISTERED"
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-PALMA25-2MID-Q04-A3",
+      "purpose": "반복 숙달",
+      "stem": "두 실수 $a,b$에 대하여 $\\sqrt{(a-1)^2+(b-2)^2}+\\sqrt{(a-6)^2+(b-14)^2}$의 최솟값은?",
+      "choices": [
+        "$13$",
+        "$5$",
+        "$12$",
+        "$17$",
+        "$169$"
+      ],
+      "answer": "①",
+      "solution": "$P(a,b)$, $A(1,2)$, $B(6,14)$로 놓으면 식은 $PA+PB$이고, $PA+PB\\ge AB$이다. $P$가 선분 $AB$ 위에 놓이는 경우가 가능하므로 이 하한은 최솟값이다. $AB=\\sqrt{(6-1)^2+(14-2)^2}=\\sqrt{25+144}=13$이다. 따라서 정답은 ①이다.",
+      "distractorReasons": [
+        "② 가로 좌표 차이만 사용",
+        "③ 세로 좌표 차이만 사용",
+        "④ 가로·세로 차이를 그냥 더함",
+        "⑤ 거리를 제곱한 값 사용"
+      ],
+      "level": "하",
+      "difficultyBucket": 2,
+      "mode": "STRICT_VARIANT",
+      "l3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
+      "l4WorkingLabel": "두 점 사이 거리·거리합 하한",
+      "crossConcepts": [],
+      "conditionKeys": [
+        "P 전체 평면"
+      ],
+      "integrationPattern": "NONE",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_DRAFT_AUTHOR_SELF_CHECKED",
+      "reviewerStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "UNREGISTERED"
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-PALMA25-2MID-Q04-B1",
+      "purpose": "사고 확장",
+      "stem": "두 점 $A(-1,2)$, $B(3,1)$과 $x$축 위를 움직이는 점 $P$에 대하여 $PA+PB$의 최솟값은?",
+      "choices": [
+        "$\\sqrt{17}$",
+        "$4$",
+        "$\\sqrt{29}$",
+        "$5$",
+        "$6$"
+      ],
+      "answer": "④",
+      "solution": "$A(-1,2)$를 $x$축에 대하여 대칭이동한 점을 $A'(-1,-2)$라 하자. $P$가 $x$축 위에 있으므로 $PA=PA'$이다. 따라서 $PA+PB=PA'+PB\\ge A'B$이다. $A'$와 $B$는 $x$축의 서로 다른 쪽에 있으므로 선분 $A'B$는 $x$축과 만난다. 그 교점을 $P$로 택하면 등호가 성립한다. $A'B=\\sqrt{(3+1)^2+(1+2)^2}=\\sqrt{16+9}=5$이다. 따라서 정답은 ④이다.",
+      "distractorReasons": [
+        "① x축 제약을 무시하고 원래 두 점의 거리만 취함",
+        "② 수평 좌표 차이만 취함",
+        "③ 대칭점의 세로 차이를 잘못 계산",
+        "⑤ 두 좌표 차이를 더하는 오류"
+      ],
+      "level": "중",
+      "difficultyBucket": 3,
+      "mode": "EXAM_FOLLOWUP",
+      "l3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
+      "l4WorkingLabel": "직선 위 점까지의 거리합—대칭이동",
+      "crossConcepts": [
+        "도형의 대칭이동"
+      ],
+      "conditionKeys": [
+        "P는 x축 위"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_DRAFT_AUTHOR_SELF_CHECKED",
+      "reviewerStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "UNREGISTERED"
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-PALMA25-2MID-Q04-B2",
+      "purpose": "사고 확장",
+      "stem": "두 점 $A(-1,3)$, $B(-3,1)$과 점 $P(t,0)$에 대하여 $t\\ge 0$일 때 $PA+PB$의 최솟값은?",
+      "choices": [
+        "$2\\sqrt{5}$",
+        "$2\\sqrt{10}$",
+        "$2\\sqrt{13}$",
+        "$\\sqrt{10}$",
+        "$4\\sqrt{10}$"
+      ],
+      "answer": "②",
+      "solution": "$PA=\\sqrt{(t+1)^2+9}$, $PB=\\sqrt{(t+3)^2+1}$이다. $t\\ge0$에서는 $t+1$, $t+3$이 모두 양수이고 $t$가 커질수록 각 제곱도 커진다. 따라서 두 거리는 모두 $t=0$에서 가장 작다. 이때 $PA=\\sqrt{1+9}=\\sqrt{10}$, $PB=\\sqrt{9+1}=\\sqrt{10}$이므로 최솟값은 $2\\sqrt{10}$이다. $x$축의 왼쪽 반직선까지 허용할 때의 값과 혼동해서는 안 된다. 따라서 정답은 ②이다.",
+      "distractorReasons": [
+        "① x축 전체에서의 대칭점 거리 하한을 사용하여 t≥0 제한을 무시",
+        "③ 좌표 차이를 잘못 대입",
+        "④ 두 거리 중 하나만 더함",
+        "⑤ 두 거리의 합을 두 배로 계산"
+      ],
+      "level": "중",
+      "difficultyBucket": 3,
+      "mode": "EXAM_FOLLOWUP",
+      "l3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
+      "l4WorkingLabel": "반직선 위 거리합—끝점 판정",
+      "crossConcepts": [
+        "좌표의 부호·단조적인 길이 비교"
+      ],
+      "conditionKeys": [
+        "t>=0"
+      ],
+      "integrationPattern": "BOUNDARY",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_DRAFT_AUTHOR_SELF_CHECKED",
+      "reviewerStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "UNREGISTERED"
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-PALMA25-2MID-Q04-B3",
+      "purpose": "사고 확장",
+      "stem": "두 점 $A(1,4)$, $B(5,2)$와 직선 $y=x$ 위의 점 $P(t,t)$에 대하여 $PA+PB$가 최소가 되는 실수 $t$의 값은?",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$4$",
+        "$5$",
+        "$3$"
+      ],
+      "answer": "⑤",
+      "solution": "삼각부등식에 의해 $PA+PB\\ge AB$이다. 등호가 성립하려면 $P$가 선분 $AB$ 위에 있어야 한다. 두 점을 잇는 직선은 기울기가 $\\dfrac{2-4}{5-1}=-\\dfrac12$이므로 $y-4=-\\dfrac12(x-1)$이다. 여기에 $x=y=t$를 대입하면 $t-4=-\\dfrac12(t-1)$, 즉 $2t-8=-t+1$이어서 $t=3$이다. 이때 $(3,3)$은 두 끝점을 잇는 선분의 중점이므로 등호가 실제로 성립한다. 따라서 정답은 ⑤이다.",
+      "distractorReasons": [
+        "① 첫 번째 점의 x좌표만 대입",
+        "② 중간 계산에서 t항 하나 누락",
+        "③ 선분 교점 계산에서 부호 착각",
+        "④ 두 번째 점의 x좌표만 대입"
+      ],
+      "level": "중",
+      "difficultyBucket": 3,
+      "mode": "EXAM_FOLLOWUP",
+      "l3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
+      "l4WorkingLabel": "직선 제약에서 거리합 등호점 찾기",
+      "crossConcepts": [
+        "두 직선의 교점"
+      ],
+      "conditionKeys": [
+        "P lies y=x"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_DRAFT_AUTHOR_SELF_CHECKED",
+      "reviewerStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "UNREGISTERED"
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-PALMA25-2MID-Q04-C1",
+      "purpose": "실전 평가",
+      "stem": "두 점 $A(0,3)$, $B(4,3)$과 점 $P(t,0)$에 대하여 $t\\in\\{-1,1,3,5\\}$일 때 $PA+PB$의 최솟값은?",
+      "choices": [
+        "$2\\sqrt{13}$",
+        "$\\sqrt{10}+3\\sqrt2$",
+        "$\\sqrt{10}+\\sqrt{34}$",
+        "$6\\sqrt2$",
+        "$2\\sqrt{10}$"
+      ],
+      "answer": "②",
+      "solution": "허용된 $t$는 네 개이므로 이를 각각 대입하여 비교한다. $t=-1$이면 $PA=\\sqrt{1+9}=\\sqrt{10}$, $PB=\\sqrt{25+9}=\\sqrt{34}$이다. $t=5$에서도 두 거리가 서로 바뀌어 합은 $\\sqrt{10}+\\sqrt{34}$이다. $t=1$에서는 $PA=\\sqrt{10}$, $PB=\\sqrt{9+9}=3\\sqrt2$이고 $t=3$에서도 합이 같다. $\\sqrt{34}>3\\sqrt2$이므로 최솟값은 $\\sqrt{10}+3\\sqrt2$이다. $t$를 모든 실수로 볼 때의 하한과 다름에 주의한다. 따라서 정답은 ②이다.",
+      "distractorReasons": [
+        "① t가 연속적인 실수라고 가정한 반사점 거리 하한",
+        "③ 경계 t=-1,5에서의 거리합",
+        "④ 거리 두 개를 각각 같은 값으로 잘못 간주",
+        "⑤ 두 점에 대한 수평 거리 성분 누락"
+      ],
+      "level": "중",
+      "difficultyBucket": 3,
+      "mode": "TYPE_BANK",
+      "l3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
+      "l4WorkingLabel": "유한 위치 제약과 거리합 최솟값",
+      "crossConcepts": [
+        "유한집합 경우 비교",
+        "근호 대소 비교"
+      ],
+      "conditionKeys": [
+        "t belongs finite set"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_DRAFT_AUTHOR_SELF_CHECKED",
+      "reviewerStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "UNREGISTERED"
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-PALMA25-2MID-Q04-C2",
+      "purpose": "실전 평가",
+      "stem": "두 점 $A(-2,3)$, $B(4,1)$과 $x$축 위의 점 $P$에 대하여 $PA$, $PB$ 중 큰 값이 최소가 되도록 할 때, 그 최솟값은?",
+      "choices": [
+        "$\\dfrac{\\sqrt{130}}3$",
+        "$\\sqrt{13}$",
+        "$\\sqrt{17}$",
+        "$\\dfrac{\\sqrt{130}}6$",
+        "$\\sqrt{130}$"
+      ],
+      "answer": "①",
+      "solution": "$P(t,0)$라 놓으면 $PA^2=(t+2)^2+9=t^2+4t+13$이고 $PB^2=(t-4)^2+1=t^2-8t+17$이다. $t\\le\\dfrac13$일 때에는 $PB\\ge PA$이므로 큰 값은 $PB$인데, 이 구간은 $t<4$이므로 $t$가 증가할수록 $PB$가 작아진다. $t\\ge\\dfrac13$일 때에는 $PA\\ge PB$이므로 큰 값은 $PA$인데, 이 구간은 $t>-2$이므로 $t$가 증가할수록 $PA$가 커진다. 따라서 두 거리의 크기가 같은 점에서 큰 값이 최소가 된다. $t^2+4t+13=t^2-8t+17$에서 $t=\\dfrac13$이고, 이때 $PA^2=\\dfrac{130}{9}$이다. 따라서 최솟값은 $\\dfrac{\\sqrt{130}}3$이며 정답은 ①이다.",
+      "distractorReasons": [
+        "② 원점에서 A까지 거리만 판단",
+        "③ 원점에서 B까지 거리만 판단",
+        "④ 최솟값 계산 뒤 잘못 한 번 더 2로 나눔",
+        "⑤ 제곱근 밖으로 분모 3을 꺼내지 못함"
+      ],
+      "level": "상",
+      "difficultyBucket": 4,
+      "mode": "TYPE_BANK",
+      "l3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
+      "l4WorkingLabel": "거리의 최댓값 최소화—균형점",
+      "crossConcepts": [
+        "거리 제곱 비교",
+        "구간별 단조 판단"
+      ],
+      "conditionKeys": [
+        "P lies x-axis"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_DRAFT_AUTHOR_SELF_CHECKED",
+      "reviewerStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "UNREGISTERED"
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-PALMA25-2MID-Q04-C3",
+      "purpose": "실전 평가",
+      "stem": "두 점 $A(-2,3)$, $B(4,k)$에 대하여 $k>0$이다. $x$축 위의 점 $P(t,0)$에 대한 $PA+PB$의 최솟값이 $10$일 때, 이 최솟값을 갖는 $t$에 대하여 $k+4t$의 값은?",
+      "choices": [
+        "$4$",
+        "$5$",
+        "$7$",
+        "$6$",
+        "$8$"
+      ],
+      "answer": "④",
+      "solution": "$A(-2,3)$를 $x$축에 대하여 대칭이동하면 $A'(-2,-3)$이다. $k>0$이므로 선분 $A'B$는 반드시 $x$축과 만나고, 따라서 $PA+PB=PA'+PB$의 최솟값은 $A'B=\\sqrt{6^2+(k+3)^2}$이다. 이것이 $10$이므로 $36+(k+3)^2=100$, 즉 $(k+3)^2=64$이다. $k>0$에서 $k+3>0$이므로 $k=5$이다. $A'(-2,-3)$에서 $B(4,5)$까지 선분을 $A'+s(B-A')$라 하면 $y=-3+8s$이다. $P$는 $y=0$에서 만나므로 $s=\\dfrac38$, $t=-2+6\\cdot\\dfrac38=\\dfrac14$이다. 따라서 $k+4t=5+1=6$이고 정답은 ④이다.",
+      "distractorReasons": [
+        "① k만 부분적으로 계산",
+        "② t를 제외하고 k만 답으로 사용",
+        "③ 교점 x좌표를 1/2로 착각",
+        "⑤ k+t를 잘못 결합"
+      ],
+      "level": "상",
+      "difficultyBucket": 4,
+      "mode": "TYPE_BANK",
+      "l3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
+      "l4WorkingLabel": "거리합 하한을 역이용한 매개변수·등호점 복원",
+      "crossConcepts": [
+        "대칭이동",
+        "이차방정식의 부호 분기",
+        "선분의 내분"
+      ],
+      "conditionKeys": [
+        "k>0",
+        "P lies x-axis",
+        "minimum equals 10"
+      ],
+      "integrationPattern": "COMPOSITE",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_DRAFT_AUTHOR_SELF_CHECKED",
+      "reviewerStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "UNREGISTERED"
+    }
+  ],
+  "nextSourceQid": 5,
+  "publication": "NOT_RELEASED",
+  "note": "Q04 is draft only. Candidate math checked by creator; no independent GPT open-book batch review, no generated consumer/index/main."
+}
