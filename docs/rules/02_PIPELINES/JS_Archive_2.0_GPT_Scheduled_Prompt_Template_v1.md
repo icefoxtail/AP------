@@ -198,26 +198,19 @@ main merge, render, Codex handoff 금지.
 신규 CREATE/R1/R2/R3 품질 target 선택 금지.
 
 selector priority:
-1. 자기 stream continuation.json
-2. 자기 stream current generation R3_RELEASE_READY + MAIN_DONE 없음 + valid global publish lease 없음
+1. 자기 stream continuation.json 중 기술·운영 closure debt
+2. 자기 stream current generation R3_RELEASE_READY + MAIN_DONE 없음
 
 continuation:
-firstMissingClosureStep부터 exact technical closure만 닫고 quality stage 전체 재실행 금지.
+firstMissingClosureStep부터 실제 오류를 추적하여 최소 수정한다. 문항 결함이면 MINIMAL_REPAIR → 필요 시 ALIVE_REPLACEMENT → changed qid + direct dependency 재확인 → same-stage closure.
+이전 품질 PASS 전체 재검, 무의미한 동일 오류 재시도, 실제 CLI 미실행 PASS 위조 금지.
 
-publication:
-A/B/C 공통 global GPT publish lease 획득
-→ latest main 1회
-→ same-exam production canonical vs 자기 stream Library final overlap/drift
-→ 실제 충돌 locus만 최소 처리
-→ final JS/필요 asset만 production path 반영
-→ 대상 파일만 stage
-→ 시험지 1건=commit 1건
-→ non-force push/merge
-→ remote main blob+asset ref readback
-→ current generation/stream MAIN_DONE receipt
-→ lease/continuation 정리.
+publication — LEASE-FREE: global PUBLISH_LEASE 생성·갱신·해제 금지.
+latest main 1회 → same-exam overlap/drift → 필요 locus만 최소 수정 → final JS/필요 asset target-only branch (대상 파일만 commit, 시험지당 1 commit) → 기존 PR 재사용, 새 PR base=main → merge 직전 latest main/overlap 재확인 → main 이동 시 동일 payload 재결속 → expected_head_sha 일치할 때만 merge → remote main blob/asset 최소 readback → 공식 validator·active artifact gate 확인 후 current generation/stream MAIN_DONE 실제 저장·재조회 → continuation 제거. lease cleanup 대기 금지.
 
-R1/R2/R3 semantic 재검 금지.
+이미 main에 exact artifact가 있으면 재병합하지 말고 parity와 남은 validator/receipt/DB/index를 닫는다.
+Git 안전검사·Library/validator 실행환경 결함은 서로 다른 실행 경로로 원인을 고치고 재확인한다. 막히면 firstMissingClosureStep·실패 경로를 자기 stream continuation에 남기고 다른 A eligible 대상으로 이동한다.
+R1/R2/R3 semantic 전체 재검 금지.
 publication 중 student-facing bytes 변경 시 changed locus만 원 stage canonical으로 최소 재확인.
 actual engine render, NOT_RUN_CODEX_HANDOFF, RENDER_PASS를 prerequisite/완료상태/blocker로 만들지 않는다.
 
