@@ -1,0 +1,629 @@
+{
+  "schemaVersion": "ALIVE_QID9_CREATE_PACKAGE_V2_META_FIRST",
+  "scope": "2025 팔마고 고1 2학기 중간 — 원본 q05 신규 9문항",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceQid": 5,
+  "sourceQuestionType": "객관식",
+  "sourceFingerprint": {
+    "originalStem": "두 점 $A(4,-1)$, $B(-2,2)$를 잇는 선분 $AB$의 수직이등분선의 방정식을 구하시오. [3.7점]",
+    "originalAnswer": "①",
+    "originalEquation": "4x-2y-3=0",
+    "originalMidpoint": [
+      1,
+      0.5
+    ],
+    "originalSegmentSlope": "-1/2",
+    "originalBisectorSlope": "2",
+    "sourceImage": "NONE",
+    "standardUnitKey": "H22-C2-02",
+    "subUnitKey": "H22-C2-02-LINE_EQUATION"
+  },
+  "primaryConcept": "직선의 방정식 — 중점·수직관계로 수직이등분선 구하기",
+  "lockedPrimaryL3": "L3-1.2.1|직선의 방정식",
+  "activeProblemTypeKey": "PT_LINE_EQUATION",
+  "activeTemplateKey": "TPL_LINE_PERP_BISECTOR",
+  "templateAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+  "l4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-02-LINE_EQUATION/extension-l4/registry.json",
+  "experiencePlan": {
+    "A": "중점/기울기의 기본 적용과 수평·수직 특수형",
+    "B": "역조건·반사 대칭 및 수직이등분선의 절편 응용",
+    "C": "매개변수 분기·외심의 두 직선 연립·외심 위치 역조건"
+  },
+  "itemCount": 9,
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 2,
+    "④": 2,
+    "⑤": 1
+  },
+  "authorSelfCheck": {
+    "reverseStemItemsChecked": 9,
+    "decisions": {
+      "KEEP": 7,
+      "REVISED": 2,
+      "HOLD": 0
+    },
+    "wrongChoiceIndexCoverage": "9 x 4/4",
+    "choiceUniqueness": "9 x 5 DISTINCT",
+    "gradeOneCurriculum": "2022 공통수학2; 미분/벡터/삼각함수 금지",
+    "mathWitness": "q05 original midpoint(1,1/2) and 4x-2y-3=0; A1 bisector 3x+2y-12=0; A2 y=1; A3 x=1; B1 t=5 and 5x+y-13=0; B2 B=(3,-1); B3 area 6; C1 t=1,3 with x+y=0/x-y=0; C2 circumcenter=(2,3); C3 t=0,6",
+    "mathMethod": "exact coordinate calculations and independent numeric substitutions of locus equations; not formal external GPT quality certification",
+    "unmappedEvidence": "C2/C3 외심 CrossConcept key 미확정—label/metaDebt 보존, 임의 키 생성 금지",
+    "realChrome": "NOT_RUN_CREATE_DRAFT"
+  },
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q05-A1",
+      "sourceQid": 5,
+      "slot": "A1",
+      "purpose": "반복 숙달",
+      "stem": "두 점 $A(1,-2)$, $B(7,2)$를 잇는 선분 $AB$의 수직이등분선의 방정식은?",
+      "choices": [
+        "$2x-3y-8=0$",
+        "$3x+2y-12=0$",
+        "$3x+2y+1=0$",
+        "$3x+2y-25=0$",
+        "$3x+2y-16=0$"
+      ],
+      "answer": "②",
+      "solution": "선분 $AB$의 중점은 $M(4,0)$이고, 기울기는 $\\dfrac{2-(-2)}{7-1}=\\dfrac23$이다. 따라서 수직이등분선은 기울기가 $-\\dfrac32$이고 $M$을 지난다. $y=-\\dfrac32(x-4)$를 정리하면 $3x+2y-12=0$이다. 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "$AB$의 기울기 $\\frac23$을 그대로 사용하여 $M(4,0)$을 지나는 직선 $2x-3y-8=0$을 얻는다.",
+        "③": "중점 대신 $A(1,-2)$를 지나게 하면 $3(1)+2(-2)=-1$이므로 $3x+2y+1=0$이다.",
+        "④": "중점 대신 $B(7,2)$를 지나게 하면 $3(7)+2(2)=25$이므로 $3x+2y-25=0$이다.",
+        "⑤": "중점의 세로좌표를 $0$ 대신 $2$로 오산한 $M'(4,2)$를 쓰면 $3x+2y=16$이다."
+      },
+      "mode": "STRICT_VARIANT",
+      "lockedPrimaryL3": "L3-1.2.1|직선의 방정식",
+      "lockedSourceInvariant": "선분 중점과 선분에 수직인 직선을 정하여 수직이등분선의 방정식을 얻는다",
+      "experienceAxis": "중점 계산·수직 기울기",
+      "crossConceptEvidenceLabels": [],
+      "level": "하",
+      "difficultyBucket": 1,
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-02",
+        "subUnitKey": "H22-C2-02-LINE_EQUATION",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.2|직선의 방정식",
+        "rpmL3": "L3-1.2.1|직선의 방정식",
+        "rpmL4": "EXT-H1-C2-02-Q05-PERP-BISECTOR-CORE|수직이등분선의 방정식—중점과 수직 조건",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-02-LINE_EQUATION/extension-l4/registry.json",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "evidenceRecordId": "H1-RPM-210",
+          "mappingRole": "L3_PARENT_ONLY_NOT_RENAMED_AS_RPM_L4"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "level": "하",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_PERP_BISECTOR",
+        "metaSourcePack": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "metaAuthorityStatus": "CREATOR_DRAFT_KEYS_FROM_VERIFIED_CANONICAL_SOURCE"
+      },
+      "studentVisual": "NOT_REQUIRED",
+      "creatorSelfReview": "KEEP",
+      "status": "CREATE_CANDIDATE_AUTHOR_REVIEWED",
+      "qualityApprovalStatus": "NOT_REQUESTED_FOR_Q05",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q05-A2",
+      "sourceQid": 5,
+      "slot": "A2",
+      "purpose": "반복 숙달",
+      "stem": "두 점 $A(-1,4)$, $B(-1,-2)$를 잇는 선분 $AB$의 수직이등분선의 방정식은?",
+      "choices": [
+        "$x=-1$",
+        "$y=4$",
+        "$y=-2$",
+        "$y=1$",
+        "$y=-1$"
+      ],
+      "answer": "④",
+      "solution": "두 점의 $x$좌표가 같으므로 선분 $AB$는 수직선 위에 있다. 중점은 $M\\left(-1,\\dfrac{4+(-2)}2\\right)=(-1,1)$이다. 이에 수직이고 $M$을 지나는 직선은 수평선 $y=1$이다. 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "원래 선분 $AB$가 놓인 직선 $x=-1$을 그대로 수직이등분선으로 택한다.",
+        "②": "중점 대신 끝점 $A$를 지나는 수평선 $y=4$를 구한다.",
+        "③": "중점 대신 끝점 $B$를 지나는 수평선 $y=-2$를 구한다.",
+        "⑤": "중점의 $x$좌표 $-1$을 수평선의 $y$좌표로 잘못 읽어 $y=-1$로 적는다."
+      },
+      "mode": "EXAM_FOLLOWUP",
+      "lockedPrimaryL3": "L3-1.2.1|직선의 방정식",
+      "lockedSourceInvariant": "선분 중점과 선분에 수직인 직선을 정하여 수직이등분선의 방정식을 얻는다",
+      "experienceAxis": "수직 선분에 대한 수평 이등분선",
+      "crossConceptEvidenceLabels": [],
+      "level": "하",
+      "difficultyBucket": 2,
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-02",
+        "subUnitKey": "H22-C2-02-LINE_EQUATION",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.2|직선의 방정식",
+        "rpmL3": "L3-1.2.1|직선의 방정식",
+        "rpmL4": "EXT-H1-C2-02-Q05-PERP-BISECTOR-CORE|수직이등분선의 방정식—중점과 수직 조건",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-02-LINE_EQUATION/extension-l4/registry.json",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "evidenceRecordId": "H1-RPM-210",
+          "mappingRole": "L3_PARENT_ONLY_NOT_RENAMED_AS_RPM_L4"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "level": "하",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_PERP_BISECTOR",
+        "metaSourcePack": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "metaAuthorityStatus": "CREATOR_DRAFT_KEYS_FROM_VERIFIED_CANONICAL_SOURCE"
+      },
+      "studentVisual": "NOT_REQUIRED",
+      "creatorSelfReview": "KEEP",
+      "status": "CREATE_CANDIDATE_AUTHOR_REVIEWED",
+      "qualityApprovalStatus": "NOT_REQUESTED_FOR_Q05",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q05-A3",
+      "sourceQid": 5,
+      "slot": "A3",
+      "purpose": "반복 숙달",
+      "stem": "두 점 $A(-4,3)$, $B(6,3)$를 잇는 선분 $AB$의 수직이등분선의 방정식은?",
+      "choices": [
+        "$x=1$",
+        "$y=3$",
+        "$x=-4$",
+        "$x=6$",
+        "$x=-5$"
+      ],
+      "answer": "①",
+      "solution": "선분 $AB$는 수평선 $y=3$ 위에 있으며 중점은 $M\\left(\\dfrac{-4+6}{2},3\\right)=(1,3)$이다. 수평선에 수직이고 $M$을 지나는 직선은 $x=1$이다. 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "원래 선분이 놓인 수평선 $y=3$을 수직이등분선으로 오해한다.",
+        "③": "중점 대신 $A$를 지나는 수직선 $x=-4$를 쓴다.",
+        "④": "중점 대신 $B$를 지나는 수직선 $x=6$을 쓴다.",
+        "⑤": "중점의 $x$좌표를 $\\frac{-4-6}{2}=-5$로 잘못 계산하여 $x=-5$로 쓴다."
+      },
+      "mode": "EXAM_FOLLOWUP",
+      "lockedPrimaryL3": "L3-1.2.1|직선의 방정식",
+      "lockedSourceInvariant": "선분 중점과 선분에 수직인 직선을 정하여 수직이등분선의 방정식을 얻는다",
+      "experienceAxis": "수평 선분에 대한 수직 이등분선",
+      "crossConceptEvidenceLabels": [],
+      "level": "하",
+      "difficultyBucket": 2,
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-02",
+        "subUnitKey": "H22-C2-02-LINE_EQUATION",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.2|직선의 방정식",
+        "rpmL3": "L3-1.2.1|직선의 방정식",
+        "rpmL4": "EXT-H1-C2-02-Q05-PERP-BISECTOR-CORE|수직이등분선의 방정식—중점과 수직 조건",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-02-LINE_EQUATION/extension-l4/registry.json",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "evidenceRecordId": "H1-RPM-210",
+          "mappingRole": "L3_PARENT_ONLY_NOT_RENAMED_AS_RPM_L4"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "level": "하",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_PERP_BISECTOR",
+        "metaSourcePack": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "metaAuthorityStatus": "CREATOR_DRAFT_KEYS_FROM_VERIFIED_CANONICAL_SOURCE"
+      },
+      "studentVisual": "NOT_REQUIRED",
+      "creatorSelfReview": "KEEP",
+      "status": "CREATE_CANDIDATE_AUTHOR_REVIEWED",
+      "qualityApprovalStatus": "NOT_REQUESTED_FOR_Q05",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q05-B1",
+      "sourceQid": 5,
+      "slot": "B1",
+      "purpose": "사고 확장",
+      "stem": "두 점 $A(0,0)$, $B(t,1)$에 대하여 $t>2$이다. 선분 $AB$의 수직이등분선이 점 $P(2,3)$을 지날 때, 이 수직이등분선의 방정식은?",
+      "choices": [
+        "$-x+y-1=0$",
+        "$x-5y=0$",
+        "$5x+y-13=0$",
+        "$5x+y=0$",
+        "$5x+y-26=0$"
+      ],
+      "answer": "③",
+      "solution": "수직이등분선 위의 점은 두 끝점까지의 거리가 같으므로 $PA^2=PB^2$이다. $PA^2=2^2+3^2=13$, $PB^2=(t-2)^2+(1-3)^2=(t-2)^2+4$이므로 $(t-2)^2=9$이다. 따라서 $t=5$ 또는 $t=-1$인데 $t>2$이므로 $t=5$이다. 이제 $A(0,0)$과 $B(5,1)$의 중점은 $(\\frac52,\\frac12)$, $AB$의 기울기는 $\\frac15$이다. 수직이등분선은 기울기가 $-5$이고 중점을 지나므로 $y-\\frac12=-5(x-\\frac52)$, 즉 $5x+y-13=0$이다. 정답은 ③이다.",
+      "distractorReasons": {
+        "①": "$t>2$를 무시하고 $t=-1$을 사용하면 $A(0,0),B(-1,1)$의 수직이등분선은 $-x+y-1=0$이다.",
+        "②": "수직이등분선이 아니라 $A(0,0), B(5,1)$을 지나는 직선을 구하면 $y=\\frac15x$, 즉 $x-5y=0$이다.",
+        "④": "기울기 $-5$만 사용하고 중점을 지나야 한다는 조건을 빠뜨려 $5x+y=0$을 답한다.",
+        "⑤": "수직 기울기는 맞지만 중점 대신 $B(5,1)$을 지나게 하면 $5x+y=26$, 즉 $5x+y-26=0$이 된다."
+      },
+      "mode": "EXAM_FOLLOWUP",
+      "lockedPrimaryL3": "L3-1.2.1|직선의 방정식",
+      "lockedSourceInvariant": "선분 중점과 선분에 수직인 직선을 정하여 수직이등분선의 방정식을 얻는다",
+      "experienceAxis": "등거리 조건으로 매개변수 결정",
+      "crossConceptEvidenceLabels": [],
+      "level": "중",
+      "difficultyBucket": 3,
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-02",
+        "subUnitKey": "H22-C2-02-LINE_EQUATION",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.2|직선의 방정식",
+        "rpmL3": "L3-1.2.1|직선의 방정식",
+        "rpmL4": "EXT-H1-C2-02-Q05-PERP-BISECTOR-INVERSE|등거리 역조건으로 수직이등분선 복원",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-02-LINE_EQUATION/extension-l4/registry.json",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "evidenceRecordId": "H1-RPM-210",
+          "mappingRole": "L3_PARENT_ONLY_NOT_RENAMED_AS_RPM_L4"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_PERP_BISECTOR",
+        "metaSourcePack": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "metaAuthorityStatus": "CREATOR_DRAFT_KEYS_FROM_VERIFIED_CANONICAL_SOURCE"
+      },
+      "studentVisual": "NOT_REQUIRED",
+      "creatorSelfReview": "KEEP",
+      "status": "CREATE_CANDIDATE_AUTHOR_REVIEWED",
+      "qualityApprovalStatus": "NOT_REQUESTED_FOR_Q05",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q05-B2",
+      "sourceQid": 5,
+      "slot": "B2",
+      "purpose": "사고 확장",
+      "stem": "두 점 $P(0,0)$, $Q(2,1)$과 점 $A(1,3)$이 있다. 점 $B$는 $A$와 다른 점이며 $AP=BP$, $AQ=BQ$를 만족한다. 점 $B$의 좌표는?",
+      "choices": [
+        "$(2,1)$",
+        "$(1,-3)$",
+        "$(-1,3)$",
+        "$(3,-1)$",
+        "$(3,3)$"
+      ],
+      "answer": "④",
+      "solution": "점 $P,Q$는 모두 두 점 $A,B$까지의 거리가 같고 $P\\ne Q$이므로 직선 $PQ$는 선분 $AB$의 수직이등분선이다. $PQ$는 $P(0,0)$과 $Q(2,1)$을 지나므로 $y=\\frac12x$이다. 점 $A(1,3)$을 지나며 $PQ$에 수직인 직선은 기울기가 $-2$이므로 $y-3=-2(x-1)$, 즉 $y=-2x+5$이다. 두 직선의 교점은 $M(2,1)$이고, 이는 $AB$의 중점이다. 따라서 $B=(2\\cdot2-1,\\;2\\cdot1-3)=(3,-1)$이다. 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "두 직선의 교점인 중점 $M(2,1)$을 끝점 $B$라고 착각한다.",
+        "②": "수직이등분선 $PQ$ 대신 $x$축을 대칭축으로 취해 $A(1,3)$을 $(1,-3)$으로 보낸다.",
+        "③": "수직이등분선 $PQ$ 대신 $y$축을 대칭축으로 취해 $A(1,3)$을 $(-1,3)$으로 보낸다.",
+        "⑤": "$M(2,1)$을 지나는 수직선 $x=2$를 대칭축으로 착각해 $A(1,3)$을 $(3,3)$으로 보낸다."
+      },
+      "mode": "EXAM_FOLLOWUP",
+      "lockedPrimaryL3": "L3-1.2.1|직선의 방정식",
+      "lockedSourceInvariant": "선분 중점과 선분에 수직인 직선을 정하여 수직이등분선의 방정식을 얻는다",
+      "experienceAxis": "두 등거리 점으로 수직이등분선과 대응점 역복원",
+      "crossConceptEvidenceLabels": [
+        "직선에 대한 대칭이동"
+      ],
+      "level": "중",
+      "difficultyBucket": 4,
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-02",
+        "subUnitKey": "H22-C2-02-LINE_EQUATION",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.2|직선의 방정식",
+        "rpmL3": "L3-1.2.1|직선의 방정식",
+        "rpmL4": "EXT-H1-C2-02-Q05-PERP-BISECTOR-APPLICATION|수직이등분선을 이용한 점·넓이·외심 문제",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-02-LINE_EQUATION/extension-l4/registry.json",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "evidenceRecordId": "H1-RPM-210",
+          "mappingRole": "L3_PARENT_ONLY_NOT_RENAMED_AS_RPM_L4"
+        },
+        "crossConceptKeys": [
+          "CC_REFLECTION"
+        ],
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "중",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_PERP_BISECTOR",
+        "metaSourcePack": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "metaAuthorityStatus": "CREATOR_DRAFT_KEYS_FROM_VERIFIED_CANONICAL_SOURCE"
+      },
+      "studentVisual": "NOT_REQUIRED",
+      "creatorSelfReview": "KEEP",
+      "status": "CREATE_CANDIDATE_AUTHOR_REVIEWED",
+      "qualityApprovalStatus": "NOT_REQUESTED_FOR_Q05",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q05-B3",
+      "sourceQid": 5,
+      "slot": "B3",
+      "purpose": "사고 확장",
+      "stem": "두 점 $A(-3,-1)$, $B(3,7)$을 잇는 선분의 수직이등분선이 $x$축, $y$축과 만나는 점을 각각 $P,Q$라 하자. 원점 $O$에 대하여 삼각형 $OPQ$의 넓이는?",
+      "choices": [
+        "$0$",
+        "$12$",
+        "$\\dfrac{27}{8}$",
+        "$\\dfrac{169}{24}$",
+        "$6$"
+      ],
+      "answer": "⑤",
+      "solution": "선분 $AB$의 중점은 $M(0,3)$이고, $AB$의 기울기는 $\\frac{7-(-1)}{3-(-3)}=\\frac43$이다. 수직이등분선은 기울기가 $-\\frac34$이므로 $y-3=-\\frac34x$, 즉 $3x+4y=12$이다. $x$절편과 $y$절편은 각각 $P(4,0)$, $Q(0,3)$이다. 삼각형 $OPQ$는 직각삼각형이므로 넓이는 $\\frac12\\cdot4\\cdot3=6$이다. 정답은 ⑤이다.",
+      "distractorReasons": {
+        "①": "수직 방향만 적용하고 중점을 잊어 $3x+4y=0$으로 계산하면 두 절편이 모두 원점이 되어 넓이 $0$을 얻게 된다.",
+        "②": "절편 $4,3$으로 직사각형 넓이 $4\\cdot3=12$를 구해 삼각형의 $\\frac12$를 빠뜨린다.",
+        "③": "수직이등분선 대신 $AB$를 지나는 직선 $4x-3y+9=0$으로 계산하면 절편 $-\\frac94,3$이므로 넓이 $\\frac12\\cdot\\frac94\\cdot3=\\frac{27}{8}$이 나온다.",
+        "④": "기울기 $-\\frac34$는 적용하되 중점 대신 $A(-3,-1)$을 지나게 하면 $3x+4y=-13$이므로 넓이가 $\\frac12\\cdot\\frac{13}3\\cdot\\frac{13}4=\\frac{169}{24}$가 된다."
+      },
+      "mode": "EXAM_FOLLOWUP",
+      "lockedPrimaryL3": "L3-1.2.1|직선의 방정식",
+      "lockedSourceInvariant": "선분 중점과 선분에 수직인 직선을 정하여 수직이등분선의 방정식을 얻는다",
+      "experienceAxis": "수직이등분선 절편과 좌표삼각형의 넓이",
+      "crossConceptEvidenceLabels": [
+        "좌표축과 삼각형의 넓이"
+      ],
+      "level": "중",
+      "difficultyBucket": 3,
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-02",
+        "subUnitKey": "H22-C2-02-LINE_EQUATION",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.2|직선의 방정식",
+        "rpmL3": "L3-1.2.1|직선의 방정식",
+        "rpmL4": "EXT-H1-C2-02-Q05-PERP-BISECTOR-APPLICATION|수직이등분선을 이용한 점·넓이·외심 문제",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-02-LINE_EQUATION/extension-l4/registry.json",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "evidenceRecordId": "H1-RPM-210",
+          "mappingRole": "L3_PARENT_ONLY_NOT_RENAMED_AS_RPM_L4"
+        },
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_PERP_BISECTOR",
+        "metaSourcePack": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "metaAuthorityStatus": "CREATOR_DRAFT_KEYS_FROM_VERIFIED_CANONICAL_SOURCE"
+      },
+      "studentVisual": "NOT_REQUIRED",
+      "creatorSelfReview": "KEEP",
+      "status": "CREATE_CANDIDATE_AUTHOR_REVIEWED",
+      "qualityApprovalStatus": "NOT_REQUESTED_FOR_Q05",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q05-C1",
+      "sourceQid": 5,
+      "slot": "C1",
+      "purpose": "실전 평가",
+      "stem": "실수 $t>0$에 대하여 두 점 $A(t,0)$, $B(0,2t-3)$을 잇는 선분의 수직이등분선이 원점 $O$를 지난다. 가능한 두 $t$의 값이 작은 것부터 $t_1,t_2$일 때, $t=t_1$과 $t=t_2$에서의 수직이등분선의 방정식을 순서대로 바르게 나타낸 것은?",
+      "choices": [
+        "$x+y=0,\\quad x-y=0$",
+        "$x-y=0,\\quad x+y=0$",
+        "$x+y=0,\\quad x+y=0$",
+        "$x-y=0,\\quad x-y=0$",
+        "$x+2y=0,\\quad x-2y=0$"
+      ],
+      "answer": "①",
+      "solution": "원점이 수직이등분선 위에 있으므로 $OA^2=OB^2$, 즉 $t^2=(2t-3)^2$이다. $(t-(2t-3))(t+(2t-3))=0$에서 $t=3$ 또는 $t=1$을 얻는다. 따라서 $t_1=1$, $t_2=3$이다. $t=1$이면 $A(1,0),B(0,-1)$이므로 중점은 $(\\frac12,-\\frac12)$이고 수직이등분선은 $x+y=0$이다. $t=3$이면 $A(3,0),B(0,3)$이므로 중점은 $(\\frac32,\\frac32)$이고 수직이등분선은 $x-y=0$이다. 순서대로 적은 것은 ①이다.",
+      "distractorReasons": {
+        "②": "$t=1$일 때 $x+y=0$, $t=3$일 때 $x-y=0$을 각각 얻고도 작은 $t$부터 쓰라는 순서를 바꾸면 $x-y=0,\\ x+y=0$이 된다.",
+        "③": "$t=3$에서 $B_y=2\\cdot3-3=3$을 $-3$으로 오산하면 그 경우도 $x+y=0$이 되어 $x+y=0,\\ x+y=0$이라고 한다.",
+        "④": "$t=1$에서 $B=(0,-1)$을 $(0,1)$로 잘못 놓으면 첫 직선도 $x-y=0$이 되므로 두 직선을 모두 $x-y=0$으로 쓴다.",
+        "⑤": "수직이등분선의 법선 $(\\Delta x,\\Delta y)$에서 $\\Delta y$를 잘못 두 배하면 각각 $x+2y=0$, $x-2y=0$으로 쓴다."
+      },
+      "mode": "EXAM_FOLLOWUP",
+      "lockedPrimaryL3": "L3-1.2.1|직선의 방정식",
+      "lockedSourceInvariant": "선분 중점과 선분에 수직인 직선을 정하여 수직이등분선의 방정식을 얻는다",
+      "experienceAxis": "원점의 등거리 조건에서 부호 분기·두 선형 궤적 구별",
+      "crossConceptEvidenceLabels": [],
+      "level": "상",
+      "difficultyBucket": 4,
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-02",
+        "subUnitKey": "H22-C2-02-LINE_EQUATION",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.2|직선의 방정식",
+        "rpmL3": "L3-1.2.1|직선의 방정식",
+        "rpmL4": "EXT-H1-C2-02-Q05-PERP-BISECTOR-PARAMETER|매개변수·자취 조건을 만족하는 수직이등분선",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-02-LINE_EQUATION/extension-l4/registry.json",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "evidenceRecordId": "H1-RPM-210",
+          "mappingRole": "L3_PARENT_ONLY_NOT_RENAMED_AS_RPM_L4"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "level": "상",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_PERP_BISECTOR",
+        "metaSourcePack": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "metaAuthorityStatus": "CREATOR_DRAFT_KEYS_FROM_VERIFIED_CANONICAL_SOURCE"
+      },
+      "studentVisual": "NOT_REQUIRED",
+      "creatorSelfReview": "REVISED",
+      "status": "CREATE_CANDIDATE_AUTHOR_REVIEWED",
+      "qualityApprovalStatus": "NOT_REQUESTED_FOR_Q05",
+      "consumerStatus": "NOT_REGISTERED",
+      "authorDraftBeforeReverseReading": "실수 $t>0$에 대하여 두 점 $A(t,0)$, $B(0,2t-3)$을 잇는 선분의 수직이등분선이 원점을 지날 때 $t$의 값을 구하시오.",
+      "authorRevisionReason": "초안은 매개변수만 계산해 직선의 방정식(L3)을 묻지 않았다. 최종본에서 가능한 두 선의 방정식을 직접 구하고 작은 t부터 순서대로 비교하도록 질문을 변경했다.",
+      "affectedEvidenceFreshness": "STALE_PRIOR_DRAFT__RECHECKED_FINAL_STEM",
+      "freshCheck": "최종 t=1,3 및 두 실제 수직이등분선 x+y=0 / x-y=0; 5지 재작성 후 각 오답 유도값 결속."
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q05-C2",
+      "sourceQid": 5,
+      "slot": "C2",
+      "purpose": "실전 평가",
+      "stem": "세 점 $A(3,5)$, $B(4,2)$, $C(0,4)$를 꼭짓점으로 하는 삼각형의 외심의 좌표는?",
+      "choices": [
+        "$\\left(\\dfrac72,\\dfrac72\\right)$",
+        "$\\left(\\dfrac73,\\dfrac{11}3\\right)$",
+        "$(2,3)$",
+        "$\\left(\\dfrac32,\\dfrac92\\right)$",
+        "$(3,2)$"
+      ],
+      "answer": "③",
+      "solution": "외심은 삼각형의 변의 수직이등분선 두 개가 만나는 점이다. $AB$의 중점은 $(\\frac72,\\frac72)$이고 $B-A=(1,-3)$이므로 그 수직이등분선은 $(x-\\frac72)-3(y-\\frac72)=0$, 즉 $x-3y+7=0$이다. $AC$의 중점은 $(\\frac32,\\frac92)$이고 $C-A=(-3,-1)$이므로 그 수직이등분선은 $3x+y-9=0$이다. 연립하면 $x=3y-7$, $3(3y-7)+y=9$이므로 $y=3$, $x=2$이다. 실제로 세 꼭짓점까지의 거리 제곱은 모두 $5$이므로 외심은 $(2,3)$이다. 정답은 ③이다.",
+      "distractorReasons": {
+        "①": "$AB$의 중점 $\\bigl(\\frac{3+4}2,\\frac{5+2}2\\bigr)=(\\frac72,\\frac72)$을 외심으로 착각한다.",
+        "②": "외심 대신 무게중심을 구하면 $\\bigl(\\frac{3+4+0}3,\\frac{5+2+4}3\\bigr)=(\\frac73,\\frac{11}3)$이다.",
+        "④": "$AC$의 중점 $\\bigl(\\frac{3+0}2,\\frac{5+4}2\\bigr)=(\\frac32,\\frac92)$을 외심으로 착각한다.",
+        "⑤": "두 수직이등분선 연립해 $(2,3)$의 $x,y$ 순서를 바꾸면 $(3,2)$라고 쓴다."
+      },
+      "mode": "EXAM_FOLLOWUP",
+      "lockedPrimaryL3": "L3-1.2.1|직선의 방정식",
+      "lockedSourceInvariant": "선분 중점과 선분에 수직인 직선을 정하여 수직이등분선의 방정식을 얻는다",
+      "experienceAxis": "외심을 서로 다른 두 수직이등분선의 교점으로 결정",
+      "crossConceptEvidenceLabels": [
+        "삼각형의 외심"
+      ],
+      "level": "상",
+      "difficultyBucket": 4,
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-02",
+        "subUnitKey": "H22-C2-02-LINE_EQUATION",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.2|직선의 방정식",
+        "rpmL3": "L3-1.2.1|직선의 방정식",
+        "rpmL4": "EXT-H1-C2-02-Q05-PERP-BISECTOR-APPLICATION|수직이등분선을 이용한 점·넓이·외심 문제",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-02-LINE_EQUATION/extension-l4/registry.json",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "evidenceRecordId": "H1-RPM-210",
+          "mappingRole": "L3_PARENT_ONLY_NOT_RENAMED_AS_RPM_L4"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_PERP_BISECTOR",
+        "metaSourcePack": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "metaAuthorityStatus": "CREATOR_DRAFT_KEYS_FROM_VERIFIED_CANONICAL_SOURCE",
+        "crossConceptUnmappedEvidenceLabels": [
+          "삼각형의 외심"
+        ],
+        "metaDebt": {
+          "crossConceptKeys": "외심 자체의 canonical CrossConcept key 미확인; 핵심 L3·수직이등분선의 사용은 확정, 추가 키 임의 등록 금지"
+        }
+      },
+      "studentVisual": "NOT_REQUIRED",
+      "creatorSelfReview": "KEEP",
+      "status": "CREATE_CANDIDATE_AUTHOR_REVIEWED",
+      "qualityApprovalStatus": "NOT_REQUESTED_FOR_Q05",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q05-C3",
+      "sourceQid": 5,
+      "slot": "C3",
+      "purpose": "실전 평가",
+      "stem": "실수 $t$에 대하여 세 점 $A(0,0)$, $B(6,0)$, $C(t,4)$가 만드는 삼각형의 외심이 직선 $y=2$ 위에 있다. 가능한 $t$의 값을 모두 바르게 나타낸 것은?",
+      "choices": [
+        "$t=0\\ \\text{또는}\\ t=3$",
+        "$t=0\\ \\text{또는}\\ t=6$",
+        "$t=3\\ \\text{또는}\\ t=6$",
+        "$t=-6\\ \\text{또는}\\ t=0$",
+        "$t=3-\\sqrt5\\ \\text{또는}\\ t=3+\\sqrt5$"
+      ],
+      "answer": "②",
+      "solution": "선분 $AB$는 $x$축 위에 있고 중점이 $(3,0)$이므로 수직이등분선은 $x=3$이다. 따라서 외심은 주어진 직선 $y=2$와의 교점 $O(3,2)$이어야 한다. 외심에서 $A$까지의 거리 제곱은 $OA^2=3^2+2^2=13$이고, $C(t,4)$까지의 거리 제곱은 $OC^2=(t-3)^2+(4-2)^2=(t-3)^2+4$이다. $(t-3)^2+4=13$에서 $(t-3)^2=9$이므로 $t=0$ 또는 $t=6$이다. 두 경우 모두 $C$가 $y=4$ 위에 있어 삼각형은 퇴화하지 않는다. 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "$(t-3)^2=9$에서 한 해 $t=0$은 얻지만 다른 해를 $t-3=0$으로 잘못 풀어 $t=3$을 포함한다.",
+        "③": "$t-3=-3$에서 $t=0$이어야 하는데 $t=3$으로 잘못 옮기고, $t-3=3$에서는 $t=6$을 얻는다.",
+        "④": "수직이등분선 $x=3$을 $x=-3$으로 오인해 외심 $(-3,2)$를 사용하면 $OA^2=13$, $OC^2=(t+3)^2+4$이므로 $t=-6$ 또는 $0$을 얻는다.",
+        "⑤": "외심 $O(3,2)$에서 $OA^2=3^2+2^2=13$인데 세로 차이 $2$를 빼먹어 $OA^2=9$로 오산하면 $(t-3)^2+4=9$, 즉 $t=3-\\sqrt5$ 또는 $3+\\sqrt5$를 얻는다."
+      },
+      "mode": "EXAM_FOLLOWUP",
+      "lockedPrimaryL3": "L3-1.2.1|직선의 방정식",
+      "lockedSourceInvariant": "선분 중점과 선분에 수직인 직선을 정하여 수직이등분선의 방정식을 얻는다",
+      "experienceAxis": "외심이 놓인 직선과 수직이등분선을 연립한 뒤 역조건 해 선택",
+      "crossConceptEvidenceLabels": [
+        "삼각형의 외심"
+      ],
+      "level": "상",
+      "difficultyBucket": 4,
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-02",
+        "subUnitKey": "H22-C2-02-LINE_EQUATION",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.2|직선의 방정식",
+        "rpmL3": "L3-1.2.1|직선의 방정식",
+        "rpmL4": "EXT-H1-C2-02-Q05-PERP-BISECTOR-PARAMETER|매개변수·자취 조건을 만족하는 수직이등분선",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-02-LINE_EQUATION/extension-l4/registry.json",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "evidenceRecordId": "H1-RPM-210",
+          "mappingRole": "L3_PARENT_ONLY_NOT_RENAMED_AS_RPM_L4"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "level": "상",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_PERP_BISECTOR",
+        "metaSourcePack": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "metaAuthorityStatus": "CREATOR_DRAFT_KEYS_FROM_VERIFIED_CANONICAL_SOURCE",
+        "crossConceptUnmappedEvidenceLabels": [
+          "삼각형의 외심"
+        ],
+        "metaDebt": {
+          "crossConceptKeys": "외심 자체의 canonical CrossConcept key 미확인; 핵심 L3·수직이등분선의 사용은 확정, 추가 키 임의 등록 금지"
+        }
+      },
+      "studentVisual": "NOT_REQUIRED",
+      "creatorSelfReview": "REVISED",
+      "status": "CREATE_CANDIDATE_AUTHOR_REVIEWED",
+      "qualityApprovalStatus": "NOT_REQUESTED_FOR_Q05",
+      "consumerStatus": "NOT_REGISTERED",
+      "authorDraftBeforeReverseReading": "실수 $t$에 대하여 세 점 $A(0,0)$, $B(6,0)$, $C(t,4)$의 외심이 점 $(3,2)$일 때 $t$의 값을 구하시오.",
+      "authorRevisionReason": "초안이 외심 좌표를 직접 주어 수직이등분선이라는 원본 핵심 판단을 생략할 수 있었다. 최종본은 외심이 y=2 위라는 정보만 주고 AB의 수직이등분선 x=3을 복원하게 했다. 또한 ⑤는 과거 억지 오답을 제거하고 OA²=9 오산으로 실제 값 3±√5가 나오는 보기로 교체했다.",
+      "affectedEvidenceFreshness": "STALE_PRIOR_DRAFT__RECHECKED_FINAL_STEM",
+      "freshCheck": "최종 외심 O=(3,2), 가능한 t=0,6의 비퇴화·거리 조건과 ⑤의 3±√5 오답 계산을 다시 확인했다."
+    }
+  ],
+  "nextSourceQid": 6,
+  "publication": "CREATE_ONLY_NOT_REGISTERED_OR_USER_APPROVED"
+}
