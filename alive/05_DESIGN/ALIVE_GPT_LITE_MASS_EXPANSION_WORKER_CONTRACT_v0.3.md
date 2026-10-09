@@ -5,6 +5,11 @@
 상위 문서: `ALIVE_GPT_LITE_MASS_EXPANSION_PRODUCTION_PLAN_v0.1.md`, `ALIVE_GPT_LITE_MASS_EXPANSION_PRODUCTION_PLAN_v0.2.md`.
 본 문서의 *LITE 파일럿 실행방법*이 v0.1/v0.2의 모호한 생산 배수·작업 단위 설명보다 우선한다. FULL v0.3, original/similar/types, 현재 Meta Foundation·난이도 정본, 현재 운영 컨베이어를 변경하지 않는다.
 
+## CURRENT OVERRIDE — 팔마고 다음 신규 학교는 CREATE 중 SVG (2026-10-10)
+- 본 v0.3은 LITE 파일럿 문서이며, 아래 “기하/그림은 필요한 경우에만 생성”의 판단은 **문제용/해설용 각각** 적용한다. 도형의 방정식 필수 SVG 규정과 문제은행 SVG 전체 CURRENT를 축소 해석할 수 없다.
+- 새 학교의 모든 Generated UID는 출제자가 SVG 문서·엔진 실제 지원범위를 먼저 읽고, **생성 원패스에서 필요한 해설 SVG를 기존 엔진으로 실제 제작·수학 검증·후속 해설 asset 연결 증거와 함께 닫는다**. 필요 SVG가 없으면 CREATE 정상완료/출시 PASS 금지, 미지원·별도 executor는 동일 qid HOLD/continuation으로 처리.
+- 실행 정본: [다음 학교 ALIVE CREATE+SVG](../06_EXECUTION/ALIVE_NEXT_SCHOOL_CREATE_WITH_SOLUTION_SVG_CURRENT_v1.md). **기존 팔마고는 별도 SVG 보강**, 소급 재제작 없음.
+
 ## 0. 목적과 재발 방지: 1:1 생산은 기본값이 아니다
 **HARD: 기출 1문항 → 신규 1문항으로 기계적으로 대응시키는 작업을 대량 확장이라고 보고하지 않는다.**
 - **시험지 1개는 seed inventory**다. 실제 확장 의사결정은 **원본 개별 qid × 가능한 의미 Blueprint** 단위로 한다.

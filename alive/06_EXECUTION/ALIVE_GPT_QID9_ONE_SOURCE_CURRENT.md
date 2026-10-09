@@ -5,6 +5,12 @@
 
 # ALIVE GPT QID9 — 원본 한 문항 × 9개 슬롯 작업 계약 CURRENT
 
+## CURRENT HARD — 다음 학교 신규 제작은 해설 SVG를 CREATE에 동봉 (2026-10-10)
+- 학교 첫 진입에 Visual 전문 문서·엔진 스키마 필독 후 생성 중 문항별 PROBLEM_VISUAL/SOLUTION_VISUAL을 별도로 처리한다. 도형의 방정식 해설 SVG 기본 필수 규정 적용, 실제 지원 renderer로 SVG 및 SHA/geometry 증거를 **qid 제작 시점에** 동결. 문항 패키지만 commit하고 SVG를 사후 일괄 보강 대상으로 남기는 관행 금지.
+- 상세 규정 [ALIVE 다음 학교 CREATE+SVG CURRENT](ALIVE_NEXT_SCHOOL_CREATE_WITH_SOLUTION_SVG_CURRENT_v1.md). **기존 팔마고 QID9는 별도 SVG 엔진 보강 라인**, 재제작/재검수 자동 소급 없음. Student Consumer·Chrome 시험은 실제 시행 시에만 PASS.
+
+
+
 ## CURRENT HARD — 수정 AI OWN_AND_FIX / 메타 확장 / main 후 학생 화면 기술 마감 (2026-10-09 형님 직접 지시)
 - 모든 JS Archive·ALIVE·문제은행 수정/검수/메타/출시 실행자는 [수정 AI 책임·Meta 확장·출시 마감 CURRENT](docs/architecture/Archive_Correction_Owner_EndToEnd_Closeout_CURRENT_v1.md)를 필독한다. **보고/미확정/NOT_TESTED로 작업 종료하지 않고**, 자신이 발견한 결함을 직접 수정하거나 실제 기술 실행자를 연결해 완료를 수납한다.
 - 기존 canonical key를 먼저 검색하되 필요한 CrossConcept·Condition·Generated L4 키가 없으면 사용자 추가 승인 대기 없이 **Generated-only 확장 registry**에 의미·parent·evidence·UID를 등록한 뒤 Source/metadata/Consumer/index에 영구반영한다. RPM LOCKED·원본 기출 및 무관한 UID 보호, 무근거 추정 금지.
