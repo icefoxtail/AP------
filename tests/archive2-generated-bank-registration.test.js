@@ -238,7 +238,7 @@ test('consumer UI lists only selectable generated rows, searches individual ques
   assert.match(el('paper-title').textContent,/복성고/);
   const search=el('generated-search');
   search.value='효천고';search.listeners.input();
-  assert.ok(el('generated-results').children.filter(x=>x.tag==='article').length>0);
+  assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,0);
   search.value='복성고';search.listeners.input();
   assert.ok(el('generated-results').children.length>0);
   const card=el('generated-results').children[0];
