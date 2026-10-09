@@ -1,0 +1,469 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "92934d10f806380671f6287e91a794c42e26d1385b9890515085dffc651e79c2",
+  "solutionSha256": "c17f6fa615e88e18e3406c918aaa9f6b33f83120d2f8475e8b71032360ea16d4",
+  "coordinateModel": {
+    "originX": 343.03960237429203,
+    "originY": 258.69173090880105,
+    "sx": 27.20005847436882,
+    "sy": 27.20005847436882
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "at": [
+        5.0,
+        0.0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        -4.045084971874736,
+        2.9389262614623664
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        -4.045084971874737,
+        -2.938926261462365
+      ],
+      "name": "C"
+    },
+    {
+      "id": "D",
+      "at": [
+        1.2096094779983384,
+        -4.851478631379982
+      ],
+      "name": "D"
+    },
+    {
+      "id": "P",
+      "at": [
+        -9.63525491562421,
+        4.755282581475769
+      ],
+      "name": "P"
+    }
+  ],
+  "segments": [
+    {
+      "id": "PA",
+      "points": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "points": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "PC",
+      "points": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "points": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "points": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "points": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "OC",
+      "points": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circle7",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 5
+    }
+  ],
+  "incidences": [
+    {
+      "id": "inc-A",
+      "point": "A",
+      "circle": "circle7"
+    },
+    {
+      "id": "inc-B",
+      "point": "B",
+      "circle": "circle7"
+    },
+    {
+      "id": "inc-C",
+      "point": "C",
+      "circle": "circle7"
+    },
+    {
+      "id": "inc-D",
+      "point": "D",
+      "circle": "circle7"
+    }
+  ],
+  "angles": [
+    {
+      "id": "angleAPC",
+      "points": [
+        "A",
+        "P",
+        "C"
+      ],
+      "degrees": 36,
+      "marker": "ARC",
+      "text": "36°",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "angleABC",
+      "points": [
+        "A",
+        "B",
+        "C"
+      ],
+      "degrees": 72,
+      "marker": "ARC",
+      "text": "72°",
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "angleBAC",
+      "points": [
+        "B",
+        "A",
+        "C"
+      ],
+      "degrees": 36,
+      "marker": "ARC",
+      "text": "36°",
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "angleADC",
+      "points": [
+        "A",
+        "D",
+        "C"
+      ],
+      "degrees": 108,
+      "marker": "ARC",
+      "text": "108°",
+      "factRole": "CONCLUSION"
+    }
+  ],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "The source gives a diagram and geometric conditions but no absolute coordinates; this coordinate realization was constructed from those incidences, angles and line relations.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "A",
+      "unitScale": 5
+    },
+    "freeVariables": [
+      {
+        "id": "radius",
+        "value": 5
+      }
+    ],
+    "pointCoordinates": {
+      "O": [
+        0,
+        0
+      ],
+      "A": [
+        5.0,
+        0.0
+      ],
+      "B": [
+        -4.045084971874736,
+        2.9389262614623664
+      ],
+      "C": [
+        -4.045084971874737,
+        -2.938926261462365
+      ],
+      "D": [
+        1.2096094779983384,
+        -4.851478631379982
+      ],
+      "P": [
+        -9.63525491562421,
+        4.755282581475769
+      ]
+    },
+    "conditions": [
+      {
+        "id": "AB-equals-AC",
+        "kind": "EQUAL_DISTANCE",
+        "refs": [
+          "A",
+          "B",
+          "A",
+          "C"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "tangent-perpendicular",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "C",
+          "C",
+          "P"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "inc-A",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "expected": 5,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "inc-B",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "expected": 5,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "inc-C",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "C"
+        ],
+        "expected": 5,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "inc-D",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "D"
+        ],
+        "expected": 5,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "fact-angleAPC",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "P",
+          "C"
+        ],
+        "expected": 36,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "fact-angleABC",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "expected": 72,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "fact-angleBAC",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "expected": 36,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "fact-angleADC",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "expected": 108,
+        "tolerance": 1e-06
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-O",
+        "operation": "SET_ORIGIN",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_POINT",
+        "output": "A",
+        "inputs": [
+          "O"
+        ]
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_POINT",
+        "output": "B",
+        "inputs": [
+          "O"
+        ]
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_POINT",
+        "output": "C",
+        "inputs": [
+          "O"
+        ]
+      },
+      {
+        "id": "construct-D",
+        "operation": "CONSTRUCT_POINT",
+        "output": "D",
+        "inputs": [
+          "O"
+        ]
+      },
+      {
+        "id": "construct-P",
+        "operation": "CONSTRUCT_POINT",
+        "output": "P",
+        "inputs": [
+          "O"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "AB-equals-AC",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "tangent-perpendicular",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "inc-A",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "inc-B",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "inc-C",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "inc-D",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "fact-angleAPC",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "fact-angleABC",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "fact-angleBAC",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "fact-angleADC",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "circle-nondegenerate",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "observed": 5.0,
+        "minimum": 1e-06
+      }
+    ]
+  }
+}

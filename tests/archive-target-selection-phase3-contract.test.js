@@ -32,7 +32,9 @@ assert(examsRoute.includes('results: results.map'), 'bulk exclusion must return 
 // consumes that filtered endpoint rather than reconstructing assignment rules.
 assert(studentPortalRoute.includes('class_exam_assignment_exclusions'), 'student portal must retain exclusion-table filtering');
 assert(studentPortalRoute.includes('AND NOT EXISTS'), 'excluded students must be filtered from portal assignments');
-assert(studentPortalUi.includes("student-portal/exams?student_id="), 'student UI must consume the filtered exams endpoint');
+assert(/student-portal\/exams\?\$\{params\.toString\(\)\}/.test(studentPortalUi) &&
+  /new URLSearchParams\(\{ student_id: String\(session\.student_id\) \}\)/.test(studentPortalUi),
+  'student UI must consume the filtered exams endpoint with the authenticated student id');
 assert(studentPortalUi.includes('single source of truth'), 'student UI must document filtered endpoint ownership');
 
 console.log('archive target selection phase3 static contract checks passed');

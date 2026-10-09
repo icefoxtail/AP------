@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_11_C3";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q11-C3",
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "명제",
+    "originalCategory": "명제",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE",
+    "subUnit": "명제 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "명제"
+    ],
+    "wide": false,
+    "content": "실수 $x$에 대한 두 조건 $p:(x-2)(x-6)\\le0$, $q:(x-a)(x+a-8)\\le0$이 있다. $0\\le a\\le8$인 정수 $a$ 중에서 $p$가 $q$이기 위한 필요조건이지만 충분조건은 아닌 $a$의 개수는?",
+    "choices": [
+      "$1$",
+      "$3$",
+      "$2$",
+      "$5$",
+      "$7$"
+    ],
+    "answer": "②",
+    "solution": "$p$의 진리집합은 $[2,6]$이다.\n$q$의 두 근은 $a$, $8-a$이므로 진리집합은 중심이 $4$이고 반폭이 $|a-4|$인 $[4-|a-4|,4+|a-4|]$이다.\n$q\\Rightarrow p$가 성립하려면 이 구간이 $[2,6]$에 포함되어야 하므로 $|a-4|\\le2$이다. 따라서 정수 $a=2,3,4,5,6$을 얻는다.\n그런데 $a=2$ 또는 $a=6$이면 두 진리집합이 같아 $p$도 $q$의 충분조건이 된다. 두 값을 제외하면 $a=3,4,5$이다.\n$a=4$일 때 $q$는 $(x-4)^2\\le0$, 즉 $x=4$인 조건이므로 역시 진부분집합이다.\n따라서 가능한 $a$는 $3$개이므로 정답은 ②이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 11,
+    "slot": "C3",
+    "purposeGroup": "C"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q11-C3");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q11-C3","meta":{"rpmL1":"집합과 명제","rpmL2":"명제","rpmL3":"필요조건·충분조건","rpmL4":"매개변수","rpmL4Namespace":"RPM_EXISTING_DRAFT","rpmPrimaryRecordId":"H1-RPM-248","rpmDraftAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmDraftAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","secondaryConceptKeys":[],"crossConceptKeys":["EXT-CROSS-H1-C2-06-INTERVAL-INCLUSION","CC_INEQUALITY_QUADRATIC"],"conditionKeys":["COND_INTEGER","COND_RANGE"],"crossConceptRegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q11-cross-concepts.json","conditionRegistryRef":null,"sourceKind":"generated","integrationPattern":"CASE_BRANCH","difficultyBucket":4,"level":"상","problemTypeKey":"PT_NEC_SUFF_RELATION","templateKey":"TPL_NEC_SUFF_POLYNOMIAL_PARAMETER","standardCourse":"공통수학2","standardUnitKey":"H22-C2-06","subUnitKey":"H22-C2-06-CORE"},"metaFinalSha256":"c045af684ea15a43a583c9527ef4496460d88785fa198e96d0416c89c8258bfa","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q11-C3.json","sha256":"4a356ac016bc19c65d702f8917ed2e6495577696406f29ff54972c03debacc91","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q09_Q12_36","scopeUids":["ALITE-PALMA25-2MID-Q11-C3"],"uid":"ALITE-PALMA25-2MID-Q11-C3"},"metaReviewEvidenceSha256":"4a356ac016bc19c65d702f8917ed2e6495577696406f29ff54972c03debacc91","difficultyBucket":4,"level":"상","problemTypeKey":"PT_NEC_SUFF_RELATION","templateKey":"TPL_NEC_SUFF_POLYNOMIAL_PARAMETER","secondaryConceptKeys":[],"crossConceptKeys":["EXT-CROSS-H1-C2-06-INTERVAL-INCLUSION","CC_INEQUALITY_QUADRATIC"],"conditionKeys":["COND_INTEGER","COND_RANGE"],"integrationPattern":"CASE_BRANCH"});})();

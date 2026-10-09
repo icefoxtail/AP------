@@ -447,7 +447,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q13-solution.svg"
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -514,7 +515,9 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q15-solution.svg"
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 16,
@@ -581,7 +584,9 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q17-solution.svg"
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 18,
@@ -615,7 +620,9 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q18-solution.svg"
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 19,
@@ -649,7 +656,9 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q19-solution.svg"
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 20,
@@ -683,7 +692,9 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q20-solution.svg"
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 21,
@@ -713,7 +724,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q21-solution.svg"
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 22,
@@ -743,7 +756,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q22-solution.svg"
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 23,
@@ -771,6 +786,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q23-solution.svg"
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   }
 ];

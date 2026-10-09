@@ -1,0 +1,382 @@
+{
+  "id": "m3-geumdang-mid-q7",
+  "visualType": "line_circle_geometry",
+  "title": "45° 직각삼각형에서 길이 전달",
+  "viewport": {
+    "xMin": -1.5,
+    "xMax": 7.5,
+    "yMin": -1.5,
+    "yMax": 7.5,
+    "width": 560,
+    "height": 480,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Constructed realization of the source right isosceles triangle ABC and exterior right triangle BDC sharing hypotenuse BC.",
+      "normalization": {
+        "originPoint": "B",
+        "xAxisPoint": "C",
+        "unitScale": 6
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "B": [
+          0,
+          0
+        ],
+        "A": [
+          0,
+          6
+        ],
+        "C": [
+          6,
+          0
+        ],
+        "D": [
+          4.5,
+          2.598076211353316
+        ]
+      },
+      "conditions": [
+        {
+          "id": "AC6sqrt2",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "C"
+          ],
+          "expected": 8.485281374238571,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "BC6",
+          "kind": "DISTANCE",
+          "refs": [
+            "B",
+            "C"
+          ],
+          "expected": 6,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "BD3sqrt3",
+          "kind": "DISTANCE",
+          "refs": [
+            "B",
+            "D"
+          ],
+          "expected": 5.196152422706632,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "DC3",
+          "kind": "DISTANCE",
+          "refs": [
+            "D",
+            "C"
+          ],
+          "expected": 3,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "rightB",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "expected": 90,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "C45",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "C",
+            "B"
+          ],
+          "expected": 45,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "D90",
+          "kind": "ANGLE",
+          "refs": [
+            "B",
+            "D",
+            "C"
+          ],
+          "expected": 90,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "DBC30",
+          "kind": "ANGLE",
+          "refs": [
+            "D",
+            "B",
+            "C"
+          ],
+          "expected": 30,
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "A",
+          "inputs": [
+            "B"
+          ]
+        },
+        {
+          "id": "construct-C",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "C",
+          "inputs": [
+            "B",
+            "A"
+          ]
+        },
+        {
+          "id": "construct-D",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "D",
+          "inputs": [
+            "B",
+            "A",
+            "C"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "AC6sqrt2",
+          "residual": 1.7763568394002505e-15,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "BC6",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "BD3sqrt3",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "DC3",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "rightB",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "C45",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "D90",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "DBC30",
+          "residual": 3.552713678800501e-15,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "noncollinear-witness",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "B",
+            "A",
+            "C"
+          ],
+          "observed": 1.0,
+          "minimum": 1e-09
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0,
+        6
+      ],
+      "name": "A"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        6,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "D",
+      "kind": "POINT",
+      "at": [
+        4.5,
+        2.598076211353316
+      ],
+      "name": "D"
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        6
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        6,
+        0
+      ]
+    },
+    {
+      "id": "AC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        6
+      ],
+      "to": [
+        6,
+        0
+      ]
+    },
+    {
+      "id": "BD",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        4.5,
+        2.598076211353316
+      ]
+    },
+    {
+      "id": "DC",
+      "kind": "SEGMENT",
+      "from": [
+        4.5,
+        2.598076211353316
+      ],
+      "to": [
+        6,
+        0
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 18,
+    "sourcePointLabels": {
+      "B": "B",
+      "A": "A",
+      "C": "C",
+      "D": "D"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "AC": [
+        "A",
+        "C"
+      ],
+      "BD": [
+        "B",
+        "D"
+      ],
+      "DC": [
+        "D",
+        "C"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "lenAC",
+        "kind": "LENGTH",
+        "owner": "AC",
+        "value": 8.485281374238571,
+        "mode": "ADJACENT",
+        "text": "6sqrt(2)",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenBC",
+        "kind": "LENGTH",
+        "owner": "BC",
+        "value": 6,
+        "mode": "ADJACENT",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenBD",
+        "kind": "LENGTH",
+        "owner": "BD",
+        "value": 5.196152422706632,
+        "mode": "ADJACENT",
+        "text": "3sqrt(3)",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  }
+}

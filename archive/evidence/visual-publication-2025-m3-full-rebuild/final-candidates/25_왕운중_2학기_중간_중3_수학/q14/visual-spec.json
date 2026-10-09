@@ -1,0 +1,300 @@
+{
+  "id": "wangun-mid-q14",
+  "title": "반지름과 공통변으로 RHS 합동",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -6.32,
+    "xMax": 7.32,
+    "yMin": -6.32,
+    "yMax": 6.32,
+    "width": 390,
+    "height": 360,
+    "panel": 0,
+    "margin": 32
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Coordinates are a normalized exact Euclidean realization of the source and verified-solution relations; they are not source coordinate claims.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "M",
+        "unitScale": 3
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "O": [
+          0,
+          0
+        ],
+        "A": [
+          3,
+          -4
+        ],
+        "B": [
+          3,
+          4
+        ],
+        "M": [
+          3,
+          0
+        ]
+      },
+      "conditions": [
+        {
+          "id": "OA",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 5,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "OB",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "expected": 5,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "perp",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "M",
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-08
+        },
+        {
+          "id": "mid",
+          "kind": "MIDPOINT",
+          "refs": [
+            "M",
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-08
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-O",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-M",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "M",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "OA",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "OB",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "perp",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "mid",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "main-figure-nondegenerate",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "O",
+            "A",
+            "B"
+          ],
+          "observed": 0.96,
+          "minimum": 1e-08
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        3,
+        -4
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        3,
+        4
+      ]
+    },
+    {
+      "id": "M",
+      "kind": "POINT",
+      "at": [
+        3,
+        0
+      ]
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        3,
+        -4
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        3,
+        4
+      ]
+    },
+    {
+      "id": "AM",
+      "kind": "SEGMENT",
+      "from": [
+        3,
+        -4
+      ],
+      "to": [
+        3,
+        0
+      ]
+    },
+    {
+      "id": "BM",
+      "kind": "SEGMENT",
+      "from": [
+        3,
+        4
+      ],
+      "to": [
+        3,
+        0
+      ]
+    },
+    {
+      "id": "OM",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        3,
+        0
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 5
+    },
+    {
+      "id": "rhsAnswer",
+      "kind": "EQUATION_LABEL",
+      "at": [
+        6,
+        0
+      ],
+      "text": "RHS",
+      "math": true,
+      "priority": 3
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 15,
+    "sourcePointLabels": {
+      "O": "O",
+      "A": "A",
+      "B": "B",
+      "M": "M"
+    },
+    "pointLabelAnchors": {},
+    "segmentPointRefs": {
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ],
+      "AM": [
+        "A",
+        "M"
+      ],
+      "BM": [
+        "B",
+        "M"
+      ],
+      "OM": [
+        "O",
+        "M"
+      ]
+    },
+    "annotations": []
+  }
+}

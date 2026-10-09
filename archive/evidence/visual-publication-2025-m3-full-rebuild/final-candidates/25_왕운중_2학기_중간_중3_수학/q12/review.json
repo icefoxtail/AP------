@@ -1,0 +1,348 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "18beff97c61fd548e2d9b9526dd13e38cffe65e96243fe21f7fb3f7edf48e685",
+  "solutionSha256": "f6fbcb129dc5d179763d1cd057a4b9916676177838c5565e27d304c4151fd7e3",
+  "coordinateModel": {
+    "originX": 195.0,
+    "originY": 180.0,
+    "sx": 19.89247311827957,
+    "sy": 19.89247311827957
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "at": [
+        -3,
+        5.196152422706632
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        -6,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        -3,
+        -5.196152422706632
+      ],
+      "name": "C"
+    },
+    {
+      "id": "D",
+      "at": [
+        3,
+        -5.196152422706632
+      ],
+      "name": "D"
+    },
+    {
+      "id": "E",
+      "at": [
+        6,
+        0
+      ],
+      "name": "E"
+    },
+    {
+      "id": "F",
+      "at": [
+        3,
+        5.196152422706632
+      ],
+      "name": "F"
+    },
+    {
+      "id": "H",
+      "at": [
+        0,
+        5.196152422706632
+      ],
+      "name": "H"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "points": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "points": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EF",
+      "points": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FA",
+      "points": [
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "OH",
+      "points": [
+        "O",
+        "H"
+      ]
+    },
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 6
+    }
+  ],
+  "incidences": [],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "lenOH",
+      "segment": "OH",
+      "value": 5.196152422706632,
+      "text": "3√(3)",
+      "unit": "",
+      "mode": "ADJACENT",
+      "factRole": "GIVEN"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Coordinates are a normalized exact Euclidean realization of the source and verified-solution relations; they are not source coordinate claims.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "E",
+      "unitScale": 6
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "O": [
+        0,
+        0
+      ],
+      "A": [
+        -3,
+        5.196152422706632
+      ],
+      "B": [
+        -6,
+        0
+      ],
+      "C": [
+        -3,
+        -5.196152422706632
+      ],
+      "D": [
+        3,
+        -5.196152422706632
+      ],
+      "E": [
+        6,
+        0
+      ],
+      "F": [
+        3,
+        5.196152422706632
+      ],
+      "H": [
+        0,
+        5.196152422706632
+      ]
+    },
+    "conditions": [
+      {
+        "id": "radOA",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "expected": 6,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "reg1",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 6,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "reg2",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "expected": 6,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "radOH",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "H"
+        ],
+        "expected": 5.196152422706632,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "ohperp",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "H",
+          "A",
+          "F"
+        ],
+        "tolerance": 1e-08
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-O",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-B",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "construct-C",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "C",
+        "inputs": []
+      },
+      {
+        "id": "construct-D",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "D",
+        "inputs": []
+      },
+      {
+        "id": "construct-E",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "E",
+        "inputs": []
+      },
+      {
+        "id": "construct-F",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "F",
+        "inputs": []
+      },
+      {
+        "id": "construct-H",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "H",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "radOA",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "reg1",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "reg2",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "radOH",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "ohperp",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "main-figure-nondegenerate",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "O",
+          "A",
+          "B"
+        ],
+        "observed": 0.8660254037844387,
+        "minimum": 1e-08
+      }
+    ]
+  }
+}

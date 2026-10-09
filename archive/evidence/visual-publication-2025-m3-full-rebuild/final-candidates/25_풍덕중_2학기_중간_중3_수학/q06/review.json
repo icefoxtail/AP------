@@ -1,0 +1,235 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "a07b1a3861307ee3ebf979998838090f0bedd2ef6b2f1c7b1acc1403ebc5b72b",
+  "solutionSha256": "fc13d149e8311d21f221aa702a289b61322e88f224a93a01efe857990b9677d7",
+  "coordinateModel": {
+    "originX": 174.2962962962963,
+    "originY": 295.7037037037037,
+    "sx": 65.92592592592592,
+    "sy": 65.92592592592592
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        0,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        2,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        2,
+        2.23606797749979
+      ],
+      "name": "C"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "points": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "circles": [],
+  "incidences": [],
+  "lines": [],
+  "angles": [
+    {
+      "id": "B90",
+      "points": [
+        "A",
+        "B",
+        "C"
+      ],
+      "degrees": 90,
+      "marker": "SQUARE",
+      "text": "90°",
+      "factRole": "GIVEN"
+    }
+  ],
+  "lengths": [
+    {
+      "id": "AB2",
+      "segment": "AB",
+      "value": 2,
+      "text": "2",
+      "mode": "ADJACENT",
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "BCroot5",
+      "segment": "BC",
+      "value": 2.23606797749979,
+      "text": "√(5)",
+      "mode": "ADJACENT",
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "AC3",
+      "segment": "CA",
+      "value": 3,
+      "text": "3",
+      "mode": "ADJACENT",
+      "factRole": "GIVEN"
+    }
+  ],
+  "regions": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed from sin A=BC/AC=sqrt(5)/3, AC=3 and right angle at B; coordinates are not measured from the problem image.",
+    "normalization": {
+      "originPoint": "A",
+      "xAxisPoint": "B",
+      "unitScale": 2
+    },
+    "freeVariables": [
+      {
+        "id": "AC",
+        "value": 3
+      },
+      {
+        "id": "BC",
+        "value": 2.23606797749979
+      }
+    ],
+    "pointCoordinates": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        2,
+        0
+      ],
+      "C": [
+        2,
+        2.23606797749979
+      ]
+    },
+    "conditions": [
+      {
+        "id": "AB2",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 2,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "BCroot5",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "expected": 2.23606797749979,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "AC3",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "expected": 3,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "B90",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "expected": 90,
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "p1",
+        "operation": "CONSTRUCT_POINT",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "p2",
+        "operation": "CONSTRUCT_POINT",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "p3",
+        "operation": "CONSTRUCT_POINT",
+        "output": "C",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "AB2",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "BCroot5",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "AC3",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "B90",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "ABC",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "observed": 0.7453559924999299,
+        "minimum": 1e-06
+      }
+    ]
+  }
+}

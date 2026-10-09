@@ -1,0 +1,500 @@
+{
+  "id": "wangun-final-q04",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -8,
+    "xMax": 8,
+    "yMin": -11,
+    "yMax": 5,
+    "width": 512,
+    "height": 512,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "The circle uses two tangent contacts separated by a 130 degree central angle; the external tangent angle is 50 degrees and a point on the major arc gives the 65 degree inscribed angle.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "A",
+        "unitScale": 4.0
+      },
+      "freeVariables": [
+        {
+          "id": "polarB",
+          "value": 230
+        },
+        {
+          "id": "polarC",
+          "value": 120
+        }
+      ],
+      "pointCoordinates": {
+        "O": [
+          0.0,
+          0.0
+        ],
+        "A": [
+          4.0,
+          0.0
+        ],
+        "B": [
+          -2.5711504387461575,
+          -3.064177772475912
+        ],
+        "C": [
+          -1.9999999999999991,
+          3.464101615137755
+        ],
+        "P": [
+          4.0,
+          -8.578027682038234
+        ]
+      },
+      "conditions": [
+        {
+          "id": "incA",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 4.0,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "incB",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "expected": 4.0,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "incC",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "expected": 4.0,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "tanA",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "A",
+            "P",
+            "A"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "tanB",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "B",
+            "P",
+            "B"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "given50",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "P",
+            "B"
+          ],
+          "expected": 50,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "result65",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "C",
+            "B"
+          ],
+          "expected": 65,
+          "tolerance": 1e-06
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "origin",
+          "operation": "SOURCE_ORIGIN",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "baseA",
+          "operation": "NORMALIZED_RADIUS",
+          "output": "A",
+          "inputs": [
+            "O"
+          ]
+        },
+        {
+          "id": "contactB",
+          "operation": "ROTATE_TO_230_DEG",
+          "output": "B",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "id": "inscribedC",
+          "operation": "ROTATE_TO_120_DEG",
+          "output": "C",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "id": "externalP",
+          "operation": "EXTERNAL_COMMON_TANGENT_POINT",
+          "output": "P",
+          "inputs": [
+            "O",
+            "A",
+            "B"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "incA",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "incB",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "incC",
+          "residual": 4.440892098500626e-16,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "tanA",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "tanB",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "given50",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "result65",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct_OA",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "observed": 4.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_OB",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "observed": 4.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_PA",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "P",
+            "A"
+          ],
+          "observed": 8.578027682038234,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_PB",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "P",
+            "B"
+          ],
+          "observed": 8.578027682038234,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_AC",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "C"
+          ],
+          "observed": 6.928203230275509,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_BC",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "B",
+            "C"
+          ],
+          "observed": 6.553216354311934,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_AB",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "observed": 7.2504622962931995,
+          "minimum": 1e-05
+        }
+      ]
+    },
+    "givenFacts": [
+      "PA and PB are tangents",
+      "∠P=50°"
+    ],
+    "solutionFacts": [
+      "∠AOB=130°",
+      "x=∠ACB=65°"
+    ]
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        4.0,
+        0.0
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        -2.5711504387461575,
+        -3.064177772475912
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        -1.9999999999999991,
+        3.464101615137755
+      ]
+    },
+    {
+      "id": "P",
+      "kind": "POINT",
+      "at": [
+        4.0,
+        -8.578027682038234
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 4
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        4.0,
+        0.0
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        -2.5711504387461575,
+        -3.064177772475912
+      ]
+    },
+    {
+      "id": "PA",
+      "kind": "SEGMENT",
+      "from": [
+        4.0,
+        -8.578027682038234
+      ],
+      "to": [
+        4.0,
+        0.0
+      ]
+    },
+    {
+      "id": "PB",
+      "kind": "SEGMENT",
+      "from": [
+        4.0,
+        -8.578027682038234
+      ],
+      "to": [
+        -2.5711504387461575,
+        -3.064177772475912
+      ]
+    },
+    {
+      "id": "AC",
+      "kind": "SEGMENT",
+      "from": [
+        4.0,
+        0.0
+      ],
+      "to": [
+        -1.9999999999999991,
+        3.464101615137755
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        -2.5711504387461575,
+        -3.064177772475912
+      ],
+      "to": [
+        -1.9999999999999991,
+        3.464101615137755
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        4.0,
+        0.0
+      ],
+      "to": [
+        -2.5711504387461575,
+        -3.064177772475912
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 14,
+    "sourcePointLabels": {
+      "O": "O",
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "P": "P"
+    },
+    "segmentPointRefs": {
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ],
+      "PA": [
+        "P",
+        "A"
+      ],
+      "PB": [
+        "P",
+        "B"
+      ],
+      "AC": [
+        "A",
+        "C"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "AB": [
+        "A",
+        "B"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "given50",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 50,
+        "text": "50",
+        "marker": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "result65",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 65,
+        "text": "65",
+        "marker": "ARC",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  }
+}

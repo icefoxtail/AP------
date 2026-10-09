@@ -1,0 +1,491 @@
+{
+  "id": "25_연향중_2학기_중간_중3_수학-q20",
+  "title": "접선 길이의 합으로 둘레 구하기",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -6,
+    "xMax": 6,
+    "yMin": -6,
+    "yMax": 12.898979485566356,
+    "width": 390,
+    "height": 360,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Coordinates are a constructed realization of the source geometry, not measurements from the sketch.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "B",
+        "unitScale": 5
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "O": [
+          0,
+          0
+        ],
+        "A": [
+          -5,
+          0
+        ],
+        "B": [
+          5,
+          0
+        ],
+        "D": [
+          -5,
+          2.1010205144336442
+        ],
+        "C": [
+          5,
+          11.898979485566356
+        ],
+        "E": [
+          -3.499271061118826,
+          3.5714285714285716
+        ]
+      },
+      "conditions": [
+        {
+          "id": "OA5",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "tolerance": 1e-07,
+          "expected": 5
+        },
+        {
+          "id": "OB5",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "tolerance": 1e-07,
+          "expected": 5
+        },
+        {
+          "id": "OE5",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "E"
+          ],
+          "tolerance": 1e-07,
+          "expected": 5
+        },
+        {
+          "id": "ADperpAO",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "A",
+            "D",
+            "O",
+            "A"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "BCperpBO",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "B",
+            "C",
+            "O",
+            "B"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "DCperpOE",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "D",
+            "C",
+            "O",
+            "E"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "D_E_C",
+          "kind": "COLLINEAR",
+          "refs": [
+            "D",
+            "E",
+            "C"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "ABdiameter",
+          "kind": "COLLINEAR",
+          "refs": [
+            "A",
+            "O",
+            "B"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "DC14",
+          "kind": "DISTANCE",
+          "refs": [
+            "D",
+            "C"
+          ],
+          "tolerance": 1e-07,
+          "expected": 14
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-O",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-D",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "D",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "C",
+          "inputs": []
+        },
+        {
+          "id": "construct-E",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "E",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "OA5",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OB5",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OE5",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "ADperpAO",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "BCperpBO",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "DCperpOE",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "D_E_C",
+          "residual": 6.03909531173402e-17,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "ABdiameter",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "DC14",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct-anchor-points",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "observed": 5.0,
+          "minimum": 1e-06
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        -5,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        5,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "D",
+      "kind": "POINT",
+      "at": [
+        -5,
+        2.1010205144336442
+      ],
+      "name": "D"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        5,
+        11.898979485566356
+      ],
+      "name": "C"
+    },
+    {
+      "id": "E",
+      "kind": "POINT",
+      "at": [
+        -3.499271061118826,
+        3.5714285714285716
+      ],
+      "name": "E"
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        -5,
+        0
+      ],
+      "to": [
+        5,
+        0
+      ]
+    },
+    {
+      "id": "AD",
+      "kind": "SEGMENT",
+      "from": [
+        -5,
+        0
+      ],
+      "to": [
+        -5,
+        2.1010205144336442
+      ]
+    },
+    {
+      "id": "DC",
+      "kind": "SEGMENT",
+      "from": [
+        -5,
+        2.1010205144336442
+      ],
+      "to": [
+        5,
+        11.898979485566356
+      ]
+    },
+    {
+      "id": "CB",
+      "kind": "SEGMENT",
+      "from": [
+        5,
+        11.898979485566356
+      ],
+      "to": [
+        5,
+        0
+      ]
+    },
+    {
+      "id": "DE",
+      "kind": "SEGMENT",
+      "from": [
+        -5,
+        2.1010205144336442
+      ],
+      "to": [
+        -3.499271061118826,
+        3.5714285714285716
+      ]
+    },
+    {
+      "id": "EC",
+      "kind": "SEGMENT",
+      "from": [
+        -3.499271061118826,
+        3.5714285714285716
+      ],
+      "to": [
+        5,
+        11.898979485566356
+      ]
+    },
+    {
+      "id": "OE",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        -3.499271061118826,
+        3.5714285714285716
+      ]
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        -5,
+        0
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        5,
+        0
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 5
+    },
+    {
+      "id": "tangentDC",
+      "kind": "LINE",
+      "coefficients": [
+        0.9797958971132712,
+        -1,
+        7
+      ]
+    },
+    {
+      "id": "perimeter-result",
+      "kind": "GRAPH_ANNOTATION",
+      "at": [
+        0,
+        7
+      ],
+      "text": "둘레 38 cm",
+      "math": false
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D",
+      "E": "E",
+      "O": "O"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "AD": [
+        "A",
+        "D"
+      ],
+      "DC": [
+        "D",
+        "C"
+      ],
+      "CB": [
+        "C",
+        "B"
+      ],
+      "DE": [
+        "D",
+        "E"
+      ],
+      "EC": [
+        "E",
+        "C"
+      ],
+      "OE": [
+        "O",
+        "E"
+      ],
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ]
+    },
+    "pointLabelAnchors": {},
+    "annotations": []
+  }
+}

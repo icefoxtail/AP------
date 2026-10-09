@@ -1,0 +1,357 @@
+{
+  "id": "m3-geumdang-mid-q9",
+  "visualType": "line_circle_geometry",
+  "title": "높이와 135° 외각으로 AH 결정",
+  "viewport": {
+    "xMin": -3.5,
+    "xMax": 12.964101615137753,
+    "yMin": -19.892304845413264,
+    "yMax": 3.5,
+    "width": 560,
+    "height": 480,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Constructed equal-unit realization satisfies BC=4√3, angle B=30°, angle ACH=135°, and AH perpendicular to BH.",
+      "normalization": {
+        "originPoint": "H",
+        "xAxisPoint": "A",
+        "unitScale": 9.464101615137753
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "H": [
+          0,
+          0
+        ],
+        "A": [
+          9.464101615137753,
+          0
+        ],
+        "C": [
+          0,
+          -9.464101615137753
+        ],
+        "B": [
+          0,
+          -16.392304845413264
+        ]
+      },
+      "conditions": [
+        {
+          "id": "BC4sqrt3",
+          "kind": "DISTANCE",
+          "refs": [
+            "B",
+            "C"
+          ],
+          "expected": 6.928203230275509,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "B30",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "expected": 30,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "ACB135",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "C",
+            "B"
+          ],
+          "expected": 135,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "ACH45",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "C",
+            "H"
+          ],
+          "expected": 45,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "AHperpBH",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "A",
+            "H",
+            "B",
+            "H"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "AHCH",
+          "kind": "EQUAL_DISTANCE",
+          "refs": [
+            "A",
+            "H",
+            "C",
+            "H"
+          ],
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-H",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "H",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "A",
+          "inputs": [
+            "H"
+          ]
+        },
+        {
+          "id": "construct-C",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "C",
+          "inputs": [
+            "H",
+            "A"
+          ]
+        },
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "B",
+          "inputs": [
+            "H",
+            "A",
+            "C"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "BC4sqrt3",
+          "residual": 1.7763568394002505e-15,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "B30",
+          "residual": 7.105427357601002e-15,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "ACB135",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "ACH45",
+          "residual": 7.105427357601002e-15,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "AHperpBH",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "AHCH",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "noncollinear-witness",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "H",
+            "A",
+            "C"
+          ],
+          "observed": 1.0,
+          "minimum": 1e-09
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "H",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "H"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        9.464101615137753,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        0,
+        -9.464101615137753
+      ],
+      "name": "C"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        0,
+        -16.392304845413264
+      ],
+      "name": "B"
+    },
+    {
+      "id": "BA",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        -16.392304845413264
+      ],
+      "to": [
+        9.464101615137753,
+        0
+      ]
+    },
+    {
+      "id": "AC",
+      "kind": "SEGMENT",
+      "from": [
+        9.464101615137753,
+        0
+      ],
+      "to": [
+        0,
+        -9.464101615137753
+      ]
+    },
+    {
+      "id": "CH",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        -9.464101615137753
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "BH",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        -16.392304845413264
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "AH",
+      "kind": "SEGMENT",
+      "from": [
+        9.464101615137753,
+        0
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        -16.392304845413264
+      ],
+      "to": [
+        0,
+        -9.464101615137753
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 18,
+    "sourcePointLabels": {
+      "H": "H",
+      "A": "A",
+      "C": "C",
+      "B": "B"
+    },
+    "segmentPointRefs": {
+      "BA": [
+        "B",
+        "A"
+      ],
+      "AC": [
+        "A",
+        "C"
+      ],
+      "CH": [
+        "C",
+        "H"
+      ],
+      "BH": [
+        "B",
+        "H"
+      ],
+      "AH": [
+        "A",
+        "H"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "lenAH",
+        "kind": "LENGTH",
+        "owner": "AH",
+        "value": 9.464101615137753,
+        "mode": "ADJACENT",
+        "text": "6+2sqrt(3)",
+        "factRole": "CONCLUSION",
+        "side": -1,
+        "labelPlacement": "LEADER_CALLOUT",
+        "labelAt": [
+          4.7,
+          2.5
+        ]
+      }
+    ]
+  }
+}

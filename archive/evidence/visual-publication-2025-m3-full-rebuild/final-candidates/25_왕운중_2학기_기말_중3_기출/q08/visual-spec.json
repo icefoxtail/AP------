@@ -1,0 +1,498 @@
+{
+  "id": "wangun-final-q8",
+  "title": "보는 호의 차가 x−y를 결정: 160°÷2=80°",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -6.2,
+    "xMax": 6.2,
+    "yMin": -6.2,
+    "yMax": 6.2,
+    "width": 760,
+    "height": 360,
+    "panel": 180
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "The source fixes named incidences, circle/tangent/angle/length relations but no Cartesian coordinates. This explicit constructed realization preserves the listed source and verified-solution conditions; arbitrary arc placements are declared free variables.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "A",
+        "unitScale": 5.0
+      },
+      "freeVariables": [
+        {
+          "id": "arcABdeg",
+          "value": 60
+        },
+        {
+          "id": "arcBCdeg",
+          "value": 70
+        },
+        {
+          "id": "arcCDdeg",
+          "value": 70
+        }
+      ],
+      "pointCoordinates": {
+        "O": [
+          0,
+          0
+        ],
+        "A": [
+          5.0,
+          0.0
+        ],
+        "B": [
+          2.5000000000000004,
+          4.330127018922193
+        ],
+        "C": [
+          -3.2139380484326967,
+          3.83022221559489
+        ],
+        "D": [
+          -4.698463103929543,
+          -1.7101007166283433
+        ],
+        "E": [
+          0.8682408883346499,
+          -4.924038765061041
+        ]
+      },
+      "conditions": [
+        {
+          "id": "inc-omega-A",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 5,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc-omega-B",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "expected": 5,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc-omega-C",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "expected": 5,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc-omega-D",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "D"
+          ],
+          "expected": 5,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc-omega-E",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "E"
+          ],
+          "expected": 5,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "angle-givenAED",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "E",
+            "D"
+          ],
+          "expected": 100,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "angle-xAtB",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "expected": 115,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "angle-yAtA",
+          "kind": "ANGLE",
+          "refs": [
+            "C",
+            "A",
+            "D"
+          ],
+          "expected": 35,
+          "tolerance": 1e-06
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-O",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "C",
+          "inputs": []
+        },
+        {
+          "id": "construct-D",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "D",
+          "inputs": []
+        },
+        {
+          "id": "construct-E",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "E",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "inc-omega-A",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc-omega-B",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc-omega-C",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc-omega-D",
+          "residual": 8.881784197001252e-16,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc-omega-E",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "angle-givenAED",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "angle-xAtB",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "angle-yAtA",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "noncollinear-triple",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "O",
+            "A",
+            "B"
+          ],
+          "observed": 0.8660254037844385,
+          "minimum": 1e-06
+        }
+      ]
+    },
+    "sourceProblemImageSha256": "4f311182cad9625c75c07130cf27f5a8314c201608807987086c871a7a560703"
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": null
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        5.0,
+        0.0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        2.5000000000000004,
+        4.330127018922193
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        -3.2139380484326967,
+        3.83022221559489
+      ],
+      "name": "C"
+    },
+    {
+      "id": "D",
+      "kind": "POINT",
+      "at": [
+        -4.698463103929543,
+        -1.7101007166283433
+      ],
+      "name": "D"
+    },
+    {
+      "id": "E",
+      "kind": "POINT",
+      "at": [
+        0.8682408883346499,
+        -4.924038765061041
+      ],
+      "name": "E"
+    },
+    {
+      "id": "omega",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 5
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        5.0,
+        0.0
+      ],
+      "to": [
+        2.5000000000000004,
+        4.330127018922193
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        2.5000000000000004,
+        4.330127018922193
+      ],
+      "to": [
+        -3.2139380484326967,
+        3.83022221559489
+      ]
+    },
+    {
+      "id": "CD",
+      "kind": "SEGMENT",
+      "from": [
+        -3.2139380484326967,
+        3.83022221559489
+      ],
+      "to": [
+        -4.698463103929543,
+        -1.7101007166283433
+      ]
+    },
+    {
+      "id": "DE",
+      "kind": "SEGMENT",
+      "from": [
+        -4.698463103929543,
+        -1.7101007166283433
+      ],
+      "to": [
+        0.8682408883346499,
+        -4.924038765061041
+      ]
+    },
+    {
+      "id": "EA",
+      "kind": "SEGMENT",
+      "from": [
+        0.8682408883346499,
+        -4.924038765061041
+      ],
+      "to": [
+        5.0,
+        0.0
+      ]
+    },
+    {
+      "id": "AC",
+      "kind": "SEGMENT",
+      "from": [
+        5.0,
+        0.0
+      ],
+      "to": [
+        -3.2139380484326967,
+        3.83022221559489
+      ]
+    },
+    {
+      "id": "AD",
+      "kind": "SEGMENT",
+      "from": [
+        5.0,
+        0.0
+      ],
+      "to": [
+        -4.698463103929543,
+        -1.7101007166283433
+      ]
+    },
+    {
+      "id": "crowded-relations",
+      "kind": "CONDITION_BOX",
+      "at": [
+        14.578378378378378,
+        0.0
+      ],
+      "lines": [
+        "∠ABC=115°",
+        "∠CAD=35°"
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D",
+      "E": "E",
+      "O": null
+    },
+    "pointLabelAnchors": {},
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "CD": [
+        "C",
+        "D"
+      ],
+      "DE": [
+        "D",
+        "E"
+      ],
+      "EA": [
+        "E",
+        "A"
+      ],
+      "AC": [
+        "A",
+        "C"
+      ],
+      "AD": [
+        "A",
+        "D"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "givenAED",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "E",
+          "D"
+        ],
+        "value": 100,
+        "text": "100",
+        "factRole": "GIVEN",
+        "marker": "ARC"
+      },
+      {
+        "id": "xAtB",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 115,
+        "text": "115",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "marker": "ARC",
+        "labelPlacement": "CONDITION_BOX",
+        "showLabel": false,
+        "conditionBoxId": "crowded-relations"
+      },
+      {
+        "id": "yAtA",
+        "kind": "ANGLE",
+        "refs": [
+          "C",
+          "A",
+          "D"
+        ],
+        "value": 35,
+        "text": "35",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "marker": "ARC",
+        "labelPlacement": "CONDITION_BOX",
+        "showLabel": false,
+        "conditionBoxId": "crowded-relations"
+      }
+    ]
+  }
+}

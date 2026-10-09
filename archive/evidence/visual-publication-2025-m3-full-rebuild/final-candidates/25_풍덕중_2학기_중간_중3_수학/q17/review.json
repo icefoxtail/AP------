@@ -1,0 +1,328 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "a07b1a3861307ee3ebf979998838090f0bedd2ef6b2f1c7b1acc1403ebc5b72b",
+  "solutionSha256": "cd50a8cac3457c75b9d82ac99f488eb156cf5b1f1856bde4a09afd5071638729",
+  "coordinateModel": {
+    "originX": 280.0,
+    "originY": 240.0,
+    "sx": 32.0,
+    "sy": 32.0
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "at": [
+        5,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        -2.347357813929454,
+        -4.414737964294635
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        -2.347357813929454,
+        4.414737964294634
+      ],
+      "name": "C"
+    },
+    {
+      "id": "M",
+      "at": [
+        1.326321093035273,
+        -2.2073689821473175
+      ],
+      "name": "M"
+    },
+    {
+      "id": "N",
+      "at": [
+        1.326321093035273,
+        2.207368982147317
+      ],
+      "name": "N"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "points": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "points": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OC",
+      "points": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 5
+    }
+  ],
+  "incidences": [
+    {
+      "id": "A-circle",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "B-circle",
+      "point": "B",
+      "circle": "circleO"
+    },
+    {
+      "id": "C-circle",
+      "point": "C",
+      "circle": "circleO"
+    }
+  ],
+  "lines": [],
+  "angles": [],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed circle realizes an inscribed isosceles triangle with apex angle 62 degrees; equal chord distances imply equal chords and base angles.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "A",
+      "unitScale": 5
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "O": [
+        0,
+        0
+      ],
+      "A": [
+        5,
+        0
+      ],
+      "B": [
+        -2.347357813929454,
+        -4.414737964294635
+      ],
+      "C": [
+        -2.347357813929454,
+        4.414737964294634
+      ],
+      "M": [
+        1.326321093035273,
+        -2.2073689821473175
+      ],
+      "N": [
+        1.326321093035273,
+        2.207368982147317
+      ]
+    },
+    "conditions": [
+      {
+        "id": "apex62",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "expected": 62,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "baseB59",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "expected": 59,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "baseC59",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "expected": 59,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "equalChords",
+        "kind": "EQUAL_DISTANCE",
+        "refs": [
+          "A",
+          "B",
+          "A",
+          "C"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "equalCenterDistances",
+        "kind": "EQUAL_DISTANCE",
+        "refs": [
+          "O",
+          "M",
+          "O",
+          "N"
+        ],
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-O",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "A",
+        "inputs": [
+          "O"
+        ]
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "B",
+        "inputs": [
+          "O",
+          "A"
+        ]
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "C",
+        "inputs": [
+          "O",
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "construct-M",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "M",
+        "inputs": [
+          "O",
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      {
+        "id": "construct-N",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "N",
+        "inputs": [
+          "O",
+          "A",
+          "B",
+          "C",
+          "M"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "apex62",
+        "residual": 1.4210854715202004e-14,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "baseB59",
+        "residual": 7.105427357601002e-15,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "baseC59",
+        "residual": 7.105427357601002e-15,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "equalChords",
+        "residual": 1.7763568394002505e-15,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "equalCenterDistances",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-witness",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "O",
+          "A",
+          "B"
+        ],
+        "observed": 0.882947592858927,
+        "minimum": 1e-09
+      }
+    ]
+  }
+}

@@ -1,0 +1,397 @@
+{
+  "id": "wangun-mid-q15",
+  "title": "현의 절반과 높이로 반지름 구하기",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -2.0266666666666673,
+    "xMax": 12.026666666666667,
+    "yMin": -9.693333333333335,
+    "yMax": 4.360000000000001,
+    "width": 390,
+    "height": 360,
+    "panel": 0,
+    "margin": 32
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Coordinates are a normalized exact Euclidean realization of the source and verified-solution relations; they are not source coordinate claims.",
+      "normalization": {
+        "originPoint": "A",
+        "xAxisPoint": "B",
+        "unitScale": 10
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "A": [
+          0,
+          0
+        ],
+        "B": [
+          10,
+          0
+        ],
+        "M": [
+          5,
+          0
+        ],
+        "O": [
+          5,
+          -2.6666666666666665
+        ],
+        "C": [
+          5,
+          3
+        ]
+      },
+      "conditions": [
+        {
+          "id": "AB",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 10,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "CM",
+          "kind": "DISTANCE",
+          "refs": [
+            "C",
+            "M"
+          ],
+          "expected": 3,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "AM",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "M"
+          ],
+          "expected": 5,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "MB",
+          "kind": "DISTANCE",
+          "refs": [
+            "M",
+            "B"
+          ],
+          "expected": 5,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "CMperp",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "C",
+            "M",
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-08
+        },
+        {
+          "id": "circleA",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 5.666666666666667,
+          "tolerance": 1e-08
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-A",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-M",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "M",
+          "inputs": []
+        },
+        {
+          "id": "construct-O",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "C",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "AB",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "CM",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "AM",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "MB",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "CMperp",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "circleA",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "main-figure-nondegenerate",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "A",
+            "B",
+            "O"
+          ],
+          "observed": 0.4705882352941176,
+          "minimum": 1e-08
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        10,
+        0
+      ]
+    },
+    {
+      "id": "M",
+      "kind": "POINT",
+      "at": [
+        5,
+        0
+      ]
+    },
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        5,
+        -2.6666666666666665
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        5,
+        3
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        10,
+        0
+      ]
+    },
+    {
+      "id": "AM",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        5,
+        0
+      ]
+    },
+    {
+      "id": "MB",
+      "kind": "SEGMENT",
+      "from": [
+        5,
+        0
+      ],
+      "to": [
+        10,
+        0
+      ]
+    },
+    {
+      "id": "CM",
+      "kind": "SEGMENT",
+      "from": [
+        5,
+        3
+      ],
+      "to": [
+        5,
+        0
+      ]
+    },
+    {
+      "id": "OM",
+      "kind": "SEGMENT",
+      "from": [
+        5,
+        -2.6666666666666665
+      ],
+      "to": [
+        5,
+        0
+      ]
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        5,
+        -2.6666666666666665
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        5,
+        -2.6666666666666665
+      ],
+      "to": [
+        10,
+        0
+      ]
+    },
+    {
+      "id": "OC",
+      "kind": "SEGMENT",
+      "from": [
+        5,
+        -2.6666666666666665
+      ],
+      "to": [
+        5,
+        3
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        5,
+        -2.6666666666666665
+      ],
+      "radius": 5.666666666666667
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 15,
+    "sourcePointLabels": {
+      "A": "A",
+      "B": "B",
+      "M": "M",
+      "O": "O",
+      "C": "C"
+    },
+    "pointLabelAnchors": {},
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "AM": [
+        "A",
+        "M"
+      ],
+      "MB": [
+        "M",
+        "B"
+      ],
+      "CM": [
+        "C",
+        "M"
+      ],
+      "OM": [
+        "O",
+        "M"
+      ],
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ],
+      "OC": [
+        "O",
+        "C"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "lenCM",
+        "kind": "LENGTH",
+        "owner": "CM",
+        "value": 3,
+        "text": "3",
+        "factRole": "GIVEN",
+        "mode": "ADJACENT",
+        "unit": "cm"
+      }
+    ]
+  }
+}

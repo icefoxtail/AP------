@@ -1,0 +1,308 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "18beff97c61fd548e2d9b9526dd13e38cffe65e96243fe21f7fb3f7edf48e685",
+  "solutionSha256": "8fc3af6daabb4e29fa4729ca487a2ac4ca402762bdd77744a4afbd789e62ebd0",
+  "coordinateModel": {
+    "originX": 174.93745905052793,
+    "originY": 222.45807771468094,
+    "sx": 0.16983231085872372,
+    "sy": 0.16983231085872372
+  },
+  "points": [
+    {
+      "id": "H",
+      "at": [
+        0,
+        0
+      ],
+      "name": "H"
+    },
+    {
+      "id": "P",
+      "at": [
+        0,
+        500
+      ],
+      "name": "P"
+    },
+    {
+      "id": "A",
+      "at": [
+        -595.876796297105,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        832.139741175259,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "L",
+      "at": [
+        -655.876796297105,
+        500
+      ],
+      "name": "L"
+    },
+    {
+      "id": "R",
+      "at": [
+        892.139741175259,
+        500
+      ],
+      "name": "R"
+    }
+  ],
+  "segments": [
+    {
+      "id": "ground",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "PH",
+      "points": [
+        "P",
+        "H"
+      ]
+    },
+    {
+      "id": "PA",
+      "points": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "points": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "PL",
+      "points": [
+        "P",
+        "L"
+      ]
+    },
+    {
+      "id": "PR",
+      "points": [
+        "P",
+        "R"
+      ]
+    },
+    {
+      "id": "AH",
+      "points": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "HB",
+      "points": [
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "circles": [],
+  "incidences": [],
+  "lines": [],
+  "angles": [
+    {
+      "id": "dep31",
+      "points": [
+        "B",
+        "P",
+        "R"
+      ],
+      "degrees": 31,
+      "marker": "ARC",
+      "text": "31°",
+      "factRole": "GIVEN"
+    }
+  ],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Coordinates are a normalized exact Euclidean realization of the source and verified-solution relations; they are not source coordinate claims.",
+    "normalization": {
+      "originPoint": "H",
+      "xAxisPoint": "B",
+      "unitScale": 832.139741175259
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "H": [
+        0,
+        0
+      ],
+      "P": [
+        0,
+        500
+      ],
+      "A": [
+        -595.876796297105,
+        0
+      ],
+      "B": [
+        832.139741175259,
+        0
+      ],
+      "L": [
+        -655.876796297105,
+        500
+      ],
+      "R": [
+        892.139741175259,
+        500
+      ]
+    },
+    "conditions": [
+      {
+        "id": "alt",
+        "kind": "DISTANCE",
+        "refs": [
+          "P",
+          "H"
+        ],
+        "expected": 500,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "dep40",
+        "kind": "ANGLE",
+        "refs": [
+          "L",
+          "P",
+          "A"
+        ],
+        "expected": 40,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "dep31",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "P",
+          "R"
+        ],
+        "expected": 31,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "groundline",
+        "kind": "COLLINEAR",
+        "refs": [
+          "A",
+          "H",
+          "B"
+        ],
+        "tolerance": 1e-08
+      },
+      {
+        "id": "level",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "P",
+          "H",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-08
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-H",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "H",
+        "inputs": []
+      },
+      {
+        "id": "construct-P",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "P",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-B",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "construct-L",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "L",
+        "inputs": []
+      },
+      {
+        "id": "construct-R",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "R",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "alt",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "dep40",
+        "residual": 7.105427357601002e-15,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "dep31",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "groundline",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "level",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "main-figure-nondegenerate",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "H",
+          "P",
+          "A"
+        ],
+        "observed": 1.0,
+        "minimum": 1e-08
+      }
+    ]
+  }
+}

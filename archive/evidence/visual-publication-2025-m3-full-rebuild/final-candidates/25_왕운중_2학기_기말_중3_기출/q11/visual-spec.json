@@ -1,0 +1,380 @@
+{
+  "id": "wangun-final-q11",
+  "title": "접선과 현: 24°→호 BC 48°; x=84°",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -6.2,
+    "xMax": 6.2,
+    "yMin": -9.2,
+    "yMax": 6.2,
+    "width": 760,
+    "height": 360,
+    "panel": 180
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "The source fixes named incidences, circle/tangent/angle/length relations but no Cartesian coordinates. This explicit constructed realization preserves the listed source and verified-solution conditions; arbitrary arc placements are declared free variables.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "C",
+        "unitScale": 5.0
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "O": [
+          0,
+          0
+        ],
+        "A": [
+          -4.8907380036690284,
+          1.0395584540887965
+        ],
+        "B": [
+          3.345653031794289,
+          -3.7157241273869728
+        ],
+        "C": [
+          5.0,
+          0.0
+        ],
+        "T": [
+          5,
+          -8
+        ]
+      },
+      "conditions": [
+        {
+          "id": "inc-omega-A",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 5,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc-omega-B",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "expected": 5,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc-omega-C",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "expected": 5,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "angle-given24",
+          "kind": "ANGLE",
+          "refs": [
+            "B",
+            "C",
+            "T"
+          ],
+          "expected": 24,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "angle-conclusion84",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "expected": 84,
+          "tolerance": 1e-06
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-O",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "C",
+          "inputs": []
+        },
+        {
+          "id": "construct-T",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "T",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "inc-omega-A",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc-omega-B",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc-omega-C",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "angle-given24",
+          "residual": 3.552713678800501e-15,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "angle-conclusion84",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "noncollinear-triple",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "O",
+            "A",
+            "B"
+          ],
+          "observed": 0.5877852522924737,
+          "minimum": 1e-06
+        }
+      ]
+    },
+    "sourceProblemImageSha256": "ca4a00af02e70d6bc5a45438da7173f1ddc4697e628440bbc27b118ac4d10cc7"
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        -4.8907380036690284,
+        1.0395584540887965
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        3.345653031794289,
+        -3.7157241273869728
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        5.0,
+        0.0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "T",
+      "kind": "POINT",
+      "at": [
+        5,
+        -8
+      ],
+      "name": "T"
+    },
+    {
+      "id": "omega",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 5
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        -4.8907380036690284,
+        1.0395584540887965
+      ],
+      "to": [
+        3.345653031794289,
+        -3.7157241273869728
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        3.345653031794289,
+        -3.7157241273869728
+      ],
+      "to": [
+        5.0,
+        0.0
+      ]
+    },
+    {
+      "id": "AC",
+      "kind": "SEGMENT",
+      "from": [
+        -4.8907380036690284,
+        1.0395584540887965
+      ],
+      "to": [
+        5.0,
+        0.0
+      ]
+    },
+    {
+      "id": "CT",
+      "kind": "SEGMENT",
+      "from": [
+        5.0,
+        0.0
+      ],
+      "to": [
+        5,
+        -8
+      ]
+    },
+    {
+      "id": "tangentCT",
+      "kind": "LINE",
+      "coefficients": [
+        1.0,
+        0.0,
+        -5.0
+      ]
+    },
+    {
+      "id": "tangent-check-tangentCT",
+      "kind": "TANGENT",
+      "refs": [
+        "tangentCT",
+        "omega"
+      ],
+      "at": [
+        5.0,
+        0.0
+      ]
+    },
+    {
+      "id": "crowded-relations",
+      "kind": "CONDITION_BOX",
+      "at": [
+        18.105405405405406,
+        -1.5000000000000004
+      ],
+      "lines": [
+        "∠BCT=24°",
+        "호 AB=3×호 BC",
+        "∠ABC=84°"
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "O": "O",
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "T": "T"
+    },
+    "pointLabelAnchors": {},
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "AC": [
+        "A",
+        "C"
+      ],
+      "CT": [
+        "C",
+        "T"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "given24",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "C",
+          "T"
+        ],
+        "value": 24,
+        "text": "24",
+        "factRole": "GIVEN",
+        "marker": "ARC",
+        "labelPlacement": "CONDITION_BOX",
+        "showLabel": false,
+        "conditionBoxId": "crowded-relations"
+      },
+      {
+        "id": "conclusion84",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 84,
+        "text": "84",
+        "factRole": "CONCLUSION",
+        "marker": "ARC",
+        "labelPlacement": "CONDITION_BOX",
+        "showLabel": false,
+        "conditionBoxId": "crowded-relations"
+      }
+    ]
+  }
+}

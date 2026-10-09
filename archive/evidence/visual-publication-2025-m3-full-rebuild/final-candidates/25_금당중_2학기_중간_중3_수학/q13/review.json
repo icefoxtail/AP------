@@ -1,0 +1,235 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "daaae1df4071544541ab2d7dd5ddcf559036a1ccfa6511bef22d3a24fe7fc8eb",
+  "solutionSha256": "a543fde7d53062ef66c3340f78baf77030bbd108b6e3a34cd859c252d2f67ea4",
+  "coordinateModel": {
+    "originX": 172.96974182985156,
+    "originY": 394.4848709149258,
+    "sx": 35.676752723382805,
+    "sy": 35.676752723382805
+  },
+  "points": [
+    {
+      "id": "B",
+      "at": [
+        0,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        6,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "A",
+      "at": [
+        5,
+        8.660254037844386
+      ],
+      "name": "A"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "points": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "circles": [],
+  "incidences": [],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "lenBC6",
+      "segment": "BC",
+      "value": 6,
+      "mode": "ADJACENT",
+      "text": "6",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "AB10",
+      "segment": "AB",
+      "value": 10,
+      "mode": "ADJACENT",
+      "text": "10",
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "AC2sqrt19",
+      "segment": "CA",
+      "value": 8.717797887081348,
+      "mode": "ADJACENT",
+      "text": "√(76)",
+      "factRole": "CONCLUSION"
+    }
+  ],
+  "regions": [
+    {
+      "id": "triABC",
+      "points": [
+        "A",
+        "B",
+        "C"
+      ],
+      "value": 25.980762113533157,
+      "text": "15√(3)",
+      "factRole": "GIVEN",
+      "labelAt": [
+        3.7,
+        2.9
+      ]
+    }
+  ],
+  "otherLabels": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed coordinates satisfy angle B=60°, BC=6, area ABC=15√3, and derive AB=10.",
+    "normalization": {
+      "originPoint": "B",
+      "xAxisPoint": "C",
+      "unitScale": 6
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "B": [
+        0,
+        0
+      ],
+      "C": [
+        6,
+        0
+      ],
+      "A": [
+        5,
+        8.660254037844386
+      ]
+    },
+    "conditions": [
+      {
+        "id": "BC6",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "expected": 6,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "B60",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "expected": 60,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "area15sqrt3",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 10,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "AC2sqrt19",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "expected": 8.717797887081348,
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "C",
+        "inputs": [
+          "B"
+        ]
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "A",
+        "inputs": [
+          "B",
+          "C"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "BC6",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "B60",
+        "residual": 7.105427357601002e-15,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "area15sqrt3",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "AC2sqrt19",
+        "residual": 1.7763568394002505e-15,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-witness",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "observed": 0.8660254037844386,
+        "minimum": 1e-09
+      }
+    ]
+  }
+}

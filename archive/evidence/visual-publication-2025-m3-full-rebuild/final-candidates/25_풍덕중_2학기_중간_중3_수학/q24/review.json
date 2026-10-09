@@ -1,0 +1,320 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "a07b1a3861307ee3ebf979998838090f0bedd2ef6b2f1c7b1acc1403ebc5b72b",
+  "solutionSha256": "9f89c5702c2fa21a9c9af3f80d77105b1d423533c8c6d16e85c5aad6216ac638",
+  "coordinateModel": {
+    "originX": 211.11111111111111,
+    "originY": 240.0,
+    "sx": 17.222222222222225,
+    "sy": 17.222222222222225
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "P",
+      "at": [
+        16,
+        0
+      ],
+      "name": "P"
+    },
+    {
+      "id": "A",
+      "at": [
+        4,
+        6.928203230275509
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        4,
+        -6.928203230275509
+      ],
+      "name": "B"
+    }
+  ],
+  "segments": [
+    {
+      "id": "OP",
+      "points": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "points": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "AP",
+      "points": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "BP",
+      "points": [
+        "B",
+        "P"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 8
+    }
+  ],
+  "incidences": [
+    {
+      "id": "A-touch",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "B-touch",
+      "point": "B",
+      "circle": "circleO"
+    }
+  ],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "OP16",
+      "segment": "OP",
+      "value": 16,
+      "mode": "ADJACENT",
+      "text": "16",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "OA8",
+      "segment": "OA",
+      "value": 8,
+      "mode": "ADJACENT",
+      "text": "8",
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "quad-area",
+      "text": "64√(3)"
+    }
+  ],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed tangent-circle realization uses OP=16, angle APO=30°, radius OA=8, and equal tangents PA=PB.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "P",
+      "unitScale": 16
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "O": [
+        0,
+        0
+      ],
+      "P": [
+        16,
+        0
+      ],
+      "A": [
+        4,
+        6.928203230275509
+      ],
+      "B": [
+        4,
+        -6.928203230275509
+      ]
+    },
+    "conditions": [
+      {
+        "id": "OP16",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "P"
+        ],
+        "expected": 16,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "OA8",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "expected": 8,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "AP8sqrt3",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "P"
+        ],
+        "expected": 13.856406460551018,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "APO30",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "P",
+          "O"
+        ],
+        "expected": 30,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "OAperpAP",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "A",
+          "A",
+          "P"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "OBperpBP",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "B",
+          "B",
+          "P"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "PAeqPB",
+        "kind": "EQUAL_DISTANCE",
+        "refs": [
+          "P",
+          "A",
+          "P",
+          "B"
+        ],
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-O",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "construct-P",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "P",
+        "inputs": [
+          "O"
+        ]
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "A",
+        "inputs": [
+          "O",
+          "P"
+        ]
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "B",
+        "inputs": [
+          "O",
+          "P",
+          "A"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "OP16",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OA8",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "AP8sqrt3",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "APO30",
+        "residual": 7.105427357601002e-15,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OAperpAP",
+        "residual": 6.409875621278547e-17,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OBperpBP",
+        "residual": 6.409875621278547e-17,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "PAeqPB",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-witness",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "O",
+          "P",
+          "A"
+        ],
+        "observed": 0.8660254037844386,
+        "minimum": 1e-09
+      }
+    ]
+  }
+}

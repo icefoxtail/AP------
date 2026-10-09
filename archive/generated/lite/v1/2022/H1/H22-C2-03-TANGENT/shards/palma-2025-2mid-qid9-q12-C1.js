@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_12_C1";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q12-C1",
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "원의 방정식",
+    "originalCategory": "원의 방정식",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-03",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-C2-03-TANGENT",
+    "subUnit": "원과 접선",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "원의 방정식"
+    ],
+    "wide": false,
+    "content": "원 $x^2+y^2=25$ 밖의 점 $A(a,0)$ $(a>5)$에서 이 원에 그은 두 접선의 접점을 각각 $P,Q$라 한다. 선분 $PQ$의 길이가 $6$일 때, $a$의 값은?",
+    "choices": [
+      "$\\dfrac{25}{4}$",
+      "$5$",
+      "$4$",
+      "$\\dfrac{25}{3}$",
+      "$\\sqrt{61}$"
+    ],
+    "answer": "①",
+    "solution": "점 $A(a,0)$에서 그은 두 접선의 접점을 이은 직선은 $ax=25$이므로 $x=\\dfrac{25}{a}$이다.\n원점에서 이 직선까지의 거리를 $d$라 하면 $d=\\dfrac{25}{a}$이다. 현 $PQ$의 중점을 $M$이라 할 때 $OM\\perp PQ$이고, $PM=QM=3$이다.\n원 반지름이 $5$이므로 직각삼각형 $OMP$에서 $d^2+3^2=5^2$이고 $d=4$이다.\n따라서 $\\dfrac{25}{a}=4$이므로 $a=\\dfrac{25}{4}$이다. 이는 $a>5$를 만족한다.\n따라서 정답은 ①이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 12,
+    "slot": "C1",
+    "purposeGroup": "C"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q12-C1");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q12-C1","meta":{"rpmL1":"도형의 방정식","rpmL2":"원의 방정식","rpmL3":"원의 접선","rpmL4":"EXT-H1-C2-03-Q12-CONTACT-CHORD-LENGTH|접점의 현 길이","rpmL4Namespace":"GENERATED_EXT_L4","rpmPrimaryRecordId":"H1-RPM-221","rpmAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","generatedL4RegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-l4/registry.json","generatedL4RegistrySha256":"14605d85adb58dfb34e741b81ac39c015e45b0b801986c124d5f8008c73d6299","secondaryConceptKeys":[],"crossConceptKeys":["CC_PYTHAGOREAN"],"conditionKeys":["COND_RANGE"],"crossConceptRegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-meta/palma-q12-cross-concepts.json","conditionRegistryRef":null,"sourceKind":"generated","integrationPattern":"SEQUENTIAL","difficultyBucket":4,"level":"상","problemTypeKey":"PT_CIRCLE_TANGENT","templateKey":"TM_TANGENT_CONTACT_CHORD_LENGTH","standardCourse":"공통수학2","standardUnitKey":"H22-C2-03","subUnitKey":"H22-C2-03-TANGENT"},"metaFinalSha256":"31eda4355d47b3f8a7d7ebc3c2d7cb60622d44b980b6ce7c34f4336d0e37aa15","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q12-C1.json","sha256":"d88c6a6dd559096dc0bdfd71dc1784e76a678f1906c208dfb8fbf0cdcc638611","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q09_Q12_36","scopeUids":["ALITE-PALMA25-2MID-Q12-C1"],"uid":"ALITE-PALMA25-2MID-Q12-C1"},"metaReviewEvidenceSha256":"d88c6a6dd559096dc0bdfd71dc1784e76a678f1906c208dfb8fbf0cdcc638611","difficultyBucket":4,"level":"상","problemTypeKey":"PT_CIRCLE_TANGENT","templateKey":"TM_TANGENT_CONTACT_CHORD_LENGTH","secondaryConceptKeys":[],"crossConceptKeys":["CC_PYTHAGOREAN"],"conditionKeys":["COND_RANGE"],"integrationPattern":"SEQUENTIAL"});})();

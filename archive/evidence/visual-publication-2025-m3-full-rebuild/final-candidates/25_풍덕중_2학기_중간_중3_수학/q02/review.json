@@ -1,0 +1,233 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "a07b1a3861307ee3ebf979998838090f0bedd2ef6b2f1c7b1acc1403ebc5b72b",
+  "solutionSha256": "36faa2821f382db9963202d04e19b09e25ffcb4d6bb8c99c664f1c5d2217959f",
+  "coordinateModel": {
+    "originX": 104.54545454545453,
+    "originY": 313.6363636363636,
+    "sx": 51.81818181818181,
+    "sy": 51.81818181818181
+  },
+  "points": [
+    {
+      "id": "B",
+      "at": [
+        0,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        5.196152422706632,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "A",
+      "at": [
+        5.196152422706632,
+        3
+      ],
+      "name": "A"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "points": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "circles": [],
+  "incidences": [],
+  "lines": [],
+  "angles": [
+    {
+      "id": "B30",
+      "points": [
+        "A",
+        "B",
+        "C"
+      ],
+      "degrees": 30,
+      "marker": "ARC",
+      "text": "30°",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "C90",
+      "points": [
+        "B",
+        "C",
+        "A"
+      ],
+      "degrees": 90,
+      "marker": "SQUARE",
+      "text": "90°",
+      "factRole": "GIVEN"
+    }
+  ],
+  "lengths": [
+    {
+      "id": "AB6",
+      "segment": "AB",
+      "value": 6,
+      "text": "6",
+      "mode": "ADJACENT",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "AC3",
+      "segment": "CA",
+      "value": 3,
+      "text": "3",
+      "mode": "ADJACENT",
+      "factRole": "CONCLUSION"
+    },
+    {
+      "id": "BC3sqrt3",
+      "segment": "BC",
+      "value": 5.196152422706632,
+      "text": "3·√(3)",
+      "mode": "ADJACENT",
+      "factRole": "CONCLUSION"
+    }
+  ],
+  "regions": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed realization from hypotenuse AB=6, angle B=30 degrees and right angle C; no coordinates are measured from the source image.",
+    "normalization": {
+      "originPoint": "B",
+      "xAxisPoint": "C",
+      "unitScale": 5.196152422706632
+    },
+    "freeVariables": [
+      {
+        "id": "AB",
+        "value": 6
+      },
+      {
+        "id": "Bangle",
+        "value": 30
+      }
+    ],
+    "pointCoordinates": {
+      "B": [
+        0,
+        0
+      ],
+      "C": [
+        5.196152422706632,
+        0
+      ],
+      "A": [
+        5.196152422706632,
+        3
+      ]
+    },
+    "conditions": [
+      {
+        "id": "AB6",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 6,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "B30",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "expected": 30,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "C90",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "expected": 90,
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "p1",
+        "operation": "CONSTRUCT_POINT",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "p2",
+        "operation": "CONSTRUCT_POINT",
+        "output": "C",
+        "inputs": []
+      },
+      {
+        "id": "p3",
+        "operation": "CONSTRUCT_POINT",
+        "output": "A",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "AB6",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "B30",
+        "residual": 3.552713678800501e-15,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "C90",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "triangle",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "observed": 0.5,
+        "minimum": 1e-06
+      }
+    ]
+  }
+}

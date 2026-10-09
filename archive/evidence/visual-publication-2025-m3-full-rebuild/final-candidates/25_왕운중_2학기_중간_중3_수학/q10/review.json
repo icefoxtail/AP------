@@ -1,0 +1,189 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "18beff97c61fd548e2d9b9526dd13e38cffe65e96243fe21f7fb3f7edf48e685",
+  "solutionSha256": "fddfe7c0bfb90c0e717f1c7c00d65f8ebe9c4eb6feaefc96e72e505e30d1e925",
+  "coordinateModel": {
+    "originX": 119.351436732546,
+    "originY": 223.675718366273,
+    "sx": 87.351436732546,
+    "sy": 87.351436732546
+  },
+  "points": [
+    {
+      "id": "C",
+      "at": [
+        0,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "A",
+      "at": [
+        1.7320508075688772,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        0,
+        1
+      ],
+      "name": "B"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "points": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "circles": [],
+  "incidences": [],
+  "lines": [],
+  "angles": [
+    {
+      "id": "B60",
+      "points": [
+        "A",
+        "B",
+        "C"
+      ],
+      "degrees": 60,
+      "marker": "ARC",
+      "text": "60°",
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Coordinates are a normalized exact Euclidean realization of the source and verified-solution relations; they are not source coordinate claims.",
+    "normalization": {
+      "originPoint": "C",
+      "xAxisPoint": "A",
+      "unitScale": 1.7320508075688772
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "C": [
+        0,
+        0
+      ],
+      "A": [
+        1.7320508075688772,
+        0
+      ],
+      "B": [
+        0,
+        1
+      ]
+    },
+    "conditions": [
+      {
+        "id": "A30",
+        "kind": "ANGLE",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "expected": 30,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "B60",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "expected": 60,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "C90",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "expected": 90,
+        "tolerance": 1e-08
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-C",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "C",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-B",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "B",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "A30",
+        "residual": 3.552713678800501e-15,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "B60",
+        "residual": 7.105427357601002e-15,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "C90",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "main-figure-nondegenerate",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "observed": 1.0,
+        "minimum": 1e-08
+      }
+    ]
+  }
+}

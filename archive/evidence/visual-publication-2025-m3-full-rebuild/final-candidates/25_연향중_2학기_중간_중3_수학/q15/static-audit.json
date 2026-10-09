@@ -1,0 +1,269 @@
+{
+  "schemaVersion": "geometry-publication-audit-v1",
+  "authority": "INDEPENDENT_STATIC_OBSERVER",
+  "publicationAuthorized": false,
+  "renderStatus": "NOT_RUN",
+  "scope": "frozen expected facts versus actual SVG; source-solve correctness and visual review remain external",
+  "svgSha256": "395427175a2d2574c7e28d2a6c4977d79eadc671153f2d828f4af143ad3fe3b0",
+  "errors": [],
+  "observations": [
+    {
+      "type": "COORDINATE_EVIDENCE",
+      "mode": "CONSTRUCTED_REALIZATION",
+      "conditionCount": 7,
+      "residualPassCount": 7,
+      "degeneracyPassCount": 1
+    },
+    {
+      "id": "A",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        -1.3513946718425407e-11,
+        0.0
+      ],
+      "sourceLabel": "A",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "B",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        8.000000000013513,
+        0.0
+      ],
+      "sourceLabel": "B",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "D",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        3.9999999999999996,
+        0.0
+      ],
+      "sourceLabel": "D",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "C",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        3.9999999999999996,
+        1.9999999999864864
+      ],
+      "sourceLabel": "C",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "O",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        3.9999999999999996,
+        -3.0
+      ],
+      "sourceLabel": "O",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "AB",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          -1.3513946718425407e-11,
+          0.0
+        ],
+        [
+          8.000000000013513,
+          0.0
+        ]
+      ]
+    },
+    {
+      "id": "CD",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          3.9999999999999996,
+          1.9999999999864864
+        ],
+        [
+          3.9999999999999996,
+          0.0
+        ]
+      ]
+    },
+    {
+      "id": "AD",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          -1.3513946718425407e-11,
+          0.0
+        ],
+        [
+          3.9999999999999996,
+          0.0
+        ]
+      ]
+    },
+    {
+      "id": "DB",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          3.9999999999999996,
+          0.0
+        ],
+        [
+          8.000000000013513,
+          0.0
+        ]
+      ]
+    },
+    {
+      "id": "OA",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          3.9999999999999996,
+          -3.0
+        ],
+        [
+          -1.3513946718425407e-11,
+          0.0
+        ]
+      ]
+    },
+    {
+      "id": "OB",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          3.9999999999999996,
+          -3.0
+        ],
+        [
+          8.000000000013513,
+          0.0
+        ]
+      ]
+    },
+    {
+      "id": "OC",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          3.9999999999999996,
+          -3.0
+        ],
+        [
+          3.9999999999999996,
+          1.9999999999864864
+        ]
+      ]
+    },
+    {
+      "id": "OD",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          3.9999999999999996,
+          -3.0
+        ],
+        [
+          3.9999999999999996,
+          0.0
+        ]
+      ]
+    },
+    {
+      "id": "circleO",
+      "type": "CIRCLE",
+      "center": [
+        3.9999999999999996,
+        -3.0
+      ],
+      "radius": 4.999999999986486
+    },
+    {
+      "id": "inc-circleO-A",
+      "type": "CIRCLE_INCIDENCE",
+      "point": "A",
+      "circle": "circleO",
+      "observedPoint": [
+        -1.3513946718425407e-11,
+        0.0
+      ],
+      "observedCenter": [
+        3.9999999999999996,
+        -3.0
+      ],
+      "observedRadius": 4.999999999986486,
+      "radialDelta": 2.432454238032733e-11
+    },
+    {
+      "id": "inc-circleO-B",
+      "type": "CIRCLE_INCIDENCE",
+      "point": "B",
+      "circle": "circleO",
+      "observedPoint": [
+        8.000000000013513,
+        0.0
+      ],
+      "observedCenter": [
+        3.9999999999999996,
+        -3.0
+      ],
+      "observedRadius": 4.999999999986486,
+      "radialDelta": 2.432365420190763e-11
+    },
+    {
+      "id": "inc-circleO-C",
+      "type": "CIRCLE_INCIDENCE",
+      "point": "C",
+      "circle": "circleO",
+      "observedPoint": [
+        3.9999999999999996,
+        1.9999999999864864
+      ],
+      "observedCenter": [
+        3.9999999999999996,
+        -3.0
+      ],
+      "observedRadius": 4.999999999986486,
+      "radialDelta": 0.0
+    },
+    {
+      "id": "CDlen",
+      "type": "LENGTH",
+      "ownerSegment": "CD",
+      "observedLength": 1.9999999999864864,
+      "projectionFraction": 0.4999999999898649,
+      "offsetPx": 20.0,
+      "labelPlacement": "OWNER_SEGMENT"
+    },
+    {
+      "id": "ADlen",
+      "type": "LENGTH",
+      "ownerSegment": "AD",
+      "observedLength": 4.000000000013514,
+      "projectionFraction": 0.6500000000045608,
+      "offsetPx": 20.0,
+      "labelPlacement": "OWNER_SEGMENT"
+    }
+  ],
+  "sourceSha256": "7b52e650927c02279350f508acef047e5ddd346cd527cdb3cbf09042bfe87cf9",
+  "solutionSha256": "5aa0001b97951e19497ae43a9a485db387aa5ee0be375c2e5914154e888222b6",
+  "reviewSha256": "9700a6b15775c35b33728d8d6d66b9df5f3c64b4119cff837007f50c39b2046d",
+  "coordinateEvidenceMode": "CONSTRUCTED_REALIZATION",
+  "coordinateEvidenceSha256": "0602ac78161731bdd84e1ad8856ce0a903d7f8a2bff9ee44c0ba9b19bb737b34",
+  "coverage": {
+    "declaredFacts": 20,
+    "observations": 20,
+    "primitiveCount": 14,
+    "labelCount": 8,
+    "unreviewedPrimitives": 0,
+    "unreviewedLabels": 0
+  },
+  "status": "PASS"
+}

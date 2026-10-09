@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "ALIVE_QID9_UNIT_MAPPING_REVIEW_V1",
+  "status": "PASS",
+  "reviewer": {
+    "role": "alive_fidelity_reviewer",
+    "agentTask": "/root/palma_q09_meta_mapping"
+  },
+  "scope": [
+    {
+      "sourceQid": 9,
+      "standardUnitKey": "H22-C2-01",
+      "standardUnitLabel": "평면좌표",
+      "subUnitKey": "H22-C2-01-GEOMETRY_APPLICATION",
+      "subUnitLabel": "도형의 방정식 활용",
+      "basis": "표준단원키 master H22-C2-01 entries; High1 RPM crosswalk H1-RPM-208/209 confirms exact pair."
+    },
+    {
+      "sourceQid": 12,
+      "standardUnitKey": "H22-C2-03",
+      "standardUnitLabel": "원의 방정식",
+      "subUnitKey": "H22-C2-03-TANGENT",
+      "subUnitLabel": "원과 접선",
+      "basis": "표준단원키 master H22-C2-03 entries; High1 RPM crosswalk H1-RPM-221/222 confirms exact pair."
+    }
+  ],
+  "packageSha256": {
+    "GPT_QID9_Q09_PACKAGE.json": "3bdbc716d52e1f5688499c06cf316f66663cc473dc9e690195ec278dd2760a41",
+    "GPT_QID9_Q12_PACKAGE.json": "c5a4218201f9fc8a711a3a4eb3f172c02fdde73794e83427541fe33981929ec1"
+  },
+  "registrationScript": "archive/tools/generated-meta/auto-register-approved-qid9.mjs",
+  "registrationScriptSha256": "89fa6b59ab186d0088640c4b412207e1d62f2b5f1052bdb5d5eca3289db75745"
+}

@@ -1,0 +1,552 @@
+{
+  "id": "yeonhyang-q05-af-leader-v2",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -7,
+    "xMax": 7,
+    "yMin": -6,
+    "yMax": 6,
+    "width": 760,
+    "height": 512,
+    "panel": 180
+  },
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Use triangle side lengths 9, 7, 6 from the tangent lengths; compute its incenter and perpendicular contact points, giving equal tangent segments 5,4,2.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "D",
+        "unitScale": 1.9069251784911847
+      },
+      "pointCoordinates": {
+        "O": [
+          0,
+          0
+        ],
+        "A": [
+          -5.085133809309825,
+          -1.6666666666666667
+        ],
+        "B": [
+          1.9069251784911847,
+          4
+        ],
+        "C": [
+          1.9069251784911847,
+          -2
+        ],
+        "D": [
+          1.9069251784911847,
+          0
+        ],
+        "E": [
+          -0.09080596088053206,
+          -1.9047619047619049
+        ],
+        "F": [
+          -1.2006565938648195,
+          1.4814814814814814
+        ]
+      },
+      "freeVariables": [
+        {
+          "id": "sideAB",
+          "value": 9
+        },
+        {
+          "id": "sideAC",
+          "value": 7
+        },
+        {
+          "id": "sideBC",
+          "value": 6
+        }
+      ],
+      "conditions": [
+        {
+          "id": "AB9",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 9,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "AC7",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "C"
+          ],
+          "expected": 7,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "AF5",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "F"
+          ],
+          "expected": 5,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "A_tangent_equal",
+          "kind": "EQUAL_DISTANCE",
+          "refs": [
+            "A",
+            "F",
+            "A",
+            "E"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "B_tangent_equal",
+          "kind": "EQUAL_DISTANCE",
+          "refs": [
+            "B",
+            "F",
+            "B",
+            "D"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "C_tangent_equal",
+          "kind": "EQUAL_DISTANCE",
+          "refs": [
+            "C",
+            "E",
+            "C",
+            "D"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "F_on_AB",
+          "kind": "COLLINEAR",
+          "refs": [
+            "A",
+            "F",
+            "B"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "E_on_AC",
+          "kind": "COLLINEAR",
+          "refs": [
+            "A",
+            "E",
+            "C"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "D_on_BC",
+          "kind": "COLLINEAR",
+          "refs": [
+            "B",
+            "D",
+            "C"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "OFperpAB",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "F",
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "OEperpAC",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "E",
+            "A",
+            "C"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "ODperpBC",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "D",
+            "B",
+            "C"
+          ],
+          "tolerance": 1e-06
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "O",
+          "operation": "CONSTRUCT_POINT",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "A",
+          "operation": "CONSTRUCT_POINT",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "B",
+          "operation": "CONSTRUCT_POINT",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "C",
+          "operation": "CONSTRUCT_POINT",
+          "output": "C",
+          "inputs": []
+        },
+        {
+          "id": "D",
+          "operation": "CONSTRUCT_POINT",
+          "output": "D",
+          "inputs": []
+        },
+        {
+          "id": "E",
+          "operation": "CONSTRUCT_POINT",
+          "output": "E",
+          "inputs": []
+        },
+        {
+          "id": "F",
+          "operation": "CONSTRUCT_POINT",
+          "output": "F",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "AB9",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "AC7",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "AF5",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "A_tangent_equal",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "B_tangent_equal",
+          "residual": 4.440892098500626e-16,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "C_tangent_equal",
+          "residual": 4.440892098500626e-16,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "F_on_AB",
+          "residual": 7.894919286223336e-17,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "E_on_AC",
+          "residual": 1.2688263138573217e-17,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "D_on_BC",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "OFperpAB",
+          "residual": 2.0700653007450532e-16,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "OEperpAC",
+          "residual": 2.744684796077146e-16,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "ODperpBC",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "ABC_noncollinear",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "minimum": 1e-09,
+          "observed": 0.6659103797905724
+        }
+      ]
+    },
+    "independentFactHash": "ef0e618e2e4ccde6007ac1d069af2c93f04fdf16d3ac197e09132da0e56f24c3"
+  },
+  "derivedFacts": {
+    "sourceConditionCoverage": [
+      "incircle tangent at D,E,F",
+      "AB=9",
+      "AC=7",
+      "AF=5",
+      "equal tangent lengths from A/B/C",
+      "BC=6"
+    ],
+    "decisiveRelationCovered": true,
+    "uncoveredCriticalConditions": []
+  },
+  "displayFacts": {
+    "title": "내접원에서 같은 점의 접선 길이"
+  },
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        -5.085133809309825,
+        -1.6666666666666667
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        1.9069251784911847,
+        4
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        1.9069251784911847,
+        -2
+      ]
+    },
+    {
+      "id": "D",
+      "kind": "POINT",
+      "at": [
+        1.9069251784911847,
+        0
+      ]
+    },
+    {
+      "id": "E",
+      "kind": "POINT",
+      "at": [
+        -0.09080596088053206,
+        -1.9047619047619049
+      ]
+    },
+    {
+      "id": "F",
+      "kind": "POINT",
+      "at": [
+        -1.2006565938648195,
+        1.4814814814814814
+      ]
+    },
+    {
+      "id": "incircle",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 1.9069251784911847
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        -5.085133809309825,
+        -1.6666666666666667
+      ],
+      "to": [
+        1.9069251784911847,
+        4
+      ]
+    },
+    {
+      "id": "AC",
+      "kind": "SEGMENT",
+      "from": [
+        -5.085133809309825,
+        -1.6666666666666667
+      ],
+      "to": [
+        1.9069251784911847,
+        -2
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        1.9069251784911847,
+        4
+      ],
+      "to": [
+        1.9069251784911847,
+        -2
+      ]
+    },
+    {
+      "id": "AF",
+      "kind": "SEGMENT",
+      "from": [
+        -5.085133809309825,
+        -1.6666666666666667
+      ],
+      "to": [
+        -1.2006565938648195,
+        1.4814814814814814
+      ]
+    },
+    {
+      "id": "AE",
+      "kind": "SEGMENT",
+      "from": [
+        -5.085133809309825,
+        -1.6666666666666667
+      ],
+      "to": [
+        -0.09080596088053206,
+        -1.9047619047619049
+      ]
+    },
+    {
+      "id": "crowded-relations",
+      "kind": "CONDITION_BOX",
+      "at": [
+        9.44186046511628,
+        0.0
+      ],
+      "lines": [
+        "AF=AE=5 cm",
+        "BF=BD=4 cm",
+        "CE=CD=2 cm",
+        "BC=BD+DC=6 cm"
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 14,
+    "sourcePointLabels": {
+      "O": "O",
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D",
+      "E": "E",
+      "F": "F"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "AC": [
+        "A",
+        "C"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "AF": [
+        "A",
+        "F"
+      ],
+      "AE": [
+        "A",
+        "E"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "ab9",
+        "kind": "LENGTH",
+        "owner": "AB",
+        "value": 9,
+        "text": "9",
+        "unit": "cm",
+        "factRole": "GIVEN",
+        "side": -1
+      },
+      {
+        "id": "ac7",
+        "kind": "LENGTH",
+        "owner": "AC",
+        "value": 7,
+        "text": "7",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "af5",
+        "kind": "LENGTH",
+        "owner": "AF",
+        "value": 5,
+        "text": "5",
+        "unit": "cm",
+        "factRole": "GIVEN",
+        "mode": "ADJACENT",
+        "side": 1,
+        "labelPlacement": "CONDITION_BOX",
+        "conditionBoxId": "crowded-relations"
+      },
+      {
+        "id": "bc6",
+        "kind": "LENGTH",
+        "owner": "BC",
+        "value": 6,
+        "text": "6",
+        "unit": "cm",
+        "factRole": "CONCLUSION",
+        "mode": "DIMENSION",
+        "side": -1
+      }
+    ]
+  }
+}

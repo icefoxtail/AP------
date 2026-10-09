@@ -10,7 +10,7 @@ assert(
   source.includes('async function loadStudentClassExamAssignments') &&
     source.includes('FROM class_exam_assignments cea') &&
     source.includes('JOIN class_exam_assignment_recipients ar ON ar.assignment_id = cea.id') &&
-    source.includes('ORDER BY cea.exam_date DESC'),
+    source.includes('ORDER BY exam_date DESC'),
   'student portal should load every issued assignment from the frozen recipient roster'
 );
 
@@ -24,7 +24,7 @@ assert(
 
 assert(
   source.includes("method === 'GET' && id === 'exams'") &&
-    source.includes('loadStudentClassExamAssignments(env, verified.student.id, 150)'),
+    /loadStudentClassExamAssignments\(\s*env,\s*verified\.student\.id,\s*150,/.test(source),
   'student portal should expose a student-token protected historical OMR exam list'
 );
 
@@ -43,7 +43,7 @@ assert(
 );
 
 assert(
-  studentPortal.includes('student-portal/exams?student_id=') &&
+  /student-portal\/exams\?\$\{params\.toString\(\)\}/.test(studentPortal) &&
     studentPortal.includes('student-portal/omr-submit'),
   'student portal frontend should call the historical OMR list and submit endpoints'
 );

@@ -1,0 +1,578 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "cb9340726ed574fed56570abb2e628df248af0492571a2beb3b9dcd1420feddf",
+  "solutionSha256": "b827373fbd1bd2f28905fa7889ab3b45ff5ec40a7b412e83b3899ca184e3a2bf",
+  "coordinateModel": {
+    "originX": 290.0,
+    "originY": 299.35483870967744,
+    "sx": 23.870967741935488,
+    "sy": 23.870967741935488
+  },
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "The source fixes named incidences, circle/tangent/angle/length relations but no Cartesian coordinates. This explicit constructed realization preserves the listed source and verified-solution conditions; arbitrary arc placements are declared free variables.",
+    "normalization": {
+      "originPoint": "A",
+      "xAxisPoint": "T",
+      "unitScale": 3.4732918522949863
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "O": [
+        0,
+        5
+      ],
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        3.4732918522949863,
+        8.596699001693256
+      ],
+      "D": [
+        3.4732918522949863,
+        1.4033009983067442
+      ],
+      "C": [
+        -3.4732918522949863,
+        8.596699001693256
+      ],
+      "T": [
+        3.4732918522949863,
+        0
+      ]
+    },
+    "conditions": [
+      {
+        "id": "inc-omega-A",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "expected": 5,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "inc-omega-B",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "expected": 5,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "inc-omega-D",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "D"
+        ],
+        "expected": 5,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "inc-omega-C",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "C"
+        ],
+        "expected": 5,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "angle-givenABC",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "expected": 68,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "angle-bca68",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "expected": 68,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "angle-abd22",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "expected": 22,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "angle-acd22",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "expected": 22,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "angle-rightCBD",
+        "kind": "ANGLE",
+        "refs": [
+          "C",
+          "B",
+          "D"
+        ],
+        "expected": 90,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "angle-conclusionBCD",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "expected": 46,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "condition-1",
+        "kind": "COLLINEAR",
+        "refs": [
+          "B",
+          "D",
+          "T"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "condition-2",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "A",
+          "T",
+          "B",
+          "T"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "condition-3",
+        "kind": "COLLINEAR",
+        "refs": [
+          "C",
+          "O",
+          "D"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "condition-4",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "A",
+          "A",
+          "T"
+        ],
+        "tolerance": 1e-06
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-O",
+        "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-B",
+        "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "construct-D",
+        "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+        "output": "D",
+        "inputs": []
+      },
+      {
+        "id": "construct-C",
+        "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+        "output": "C",
+        "inputs": []
+      },
+      {
+        "id": "construct-T",
+        "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+        "output": "T",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "inc-omega-A",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "inc-omega-B",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "inc-omega-D",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "inc-omega-C",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "angle-givenABC",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "angle-bca68",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "angle-abd22",
+        "residual": 3.552713678800501e-15,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "angle-acd22",
+        "residual": 2.1316282072803006e-14,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "angle-rightCBD",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "angle-conclusionBCD",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "condition-1",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "condition-2",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "condition-3",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "condition-4",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-triple",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "O",
+          "A",
+          "B"
+        ],
+        "observed": 0.6946583704589971,
+        "minimum": 1e-06
+      }
+    ]
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0,
+        5
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "at": [
+        0,
+        0
+      ],
+      "name": "A",
+      "labelAt": [
+        -1.6688543591846074,
+        0.9635135135135128
+      ],
+      "labelPlacement": "LEADER_CALLOUT",
+      "leaderId": "A-name-leader",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "B",
+      "at": [
+        3.4732918522949863,
+        8.596699001693256
+      ],
+      "name": "B"
+    },
+    {
+      "id": "D",
+      "at": [
+        3.4732918522949863,
+        1.4033009983067442
+      ],
+      "name": "D"
+    },
+    {
+      "id": "C",
+      "at": [
+        -3.4732918522949863,
+        8.596699001693256
+      ],
+      "name": "C"
+    },
+    {
+      "id": "T",
+      "at": [
+        3.4732918522949863,
+        0
+      ],
+      "name": "T",
+      "labelPlacement": "OWNER_ADJACENT",
+      "leaderId": "T-name-leader",
+      "factRole": "GIVEN",
+      "labelAt": [
+        4.897616176619311,
+        0.0
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "points": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "CD",
+      "points": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "BD",
+      "points": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "AD",
+      "points": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "AT",
+      "points": [
+        "A",
+        "T"
+      ]
+    },
+    {
+      "id": "BT",
+      "points": [
+        "B",
+        "T"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "omega",
+      "center": [
+        0,
+        5
+      ],
+      "radius": 5
+    }
+  ],
+  "arcs": [],
+  "incidences": [
+    {
+      "id": "omega-A",
+      "point": "A",
+      "circle": "omega"
+    },
+    {
+      "id": "omega-B",
+      "point": "B",
+      "circle": "omega"
+    },
+    {
+      "id": "omega-D",
+      "point": "D",
+      "circle": "omega"
+    },
+    {
+      "id": "omega-C",
+      "point": "C",
+      "circle": "omega"
+    }
+  ],
+  "lines": [],
+  "angles": [
+    {
+      "id": "givenABC",
+      "points": [
+        "A",
+        "B",
+        "C"
+      ],
+      "degrees": 68,
+      "marker": "ARC",
+      "text": "68°",
+      "factRole": "GIVEN",
+      "labelPlacement": "CONDITION_BOX",
+      "conditionBoxId": "crowded-relations",
+      "showLabel": false
+    },
+    {
+      "id": "bca68",
+      "points": [
+        "B",
+        "C",
+        "A"
+      ],
+      "degrees": 68,
+      "marker": "ARC",
+      "text": "68°",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "labelPlacement": "CONDITION_BOX",
+      "conditionBoxId": "crowded-relations",
+      "showLabel": false
+    },
+    {
+      "id": "abd22",
+      "points": [
+        "A",
+        "B",
+        "D"
+      ],
+      "degrees": 22,
+      "marker": "ARC",
+      "text": "22°",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "labelPlacement": "CONDITION_BOX",
+      "conditionBoxId": "crowded-relations",
+      "showLabel": false
+    },
+    {
+      "id": "acd22",
+      "points": [
+        "A",
+        "C",
+        "D"
+      ],
+      "degrees": 22,
+      "marker": "ARC",
+      "text": "22°",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "labelPlacement": "CONDITION_BOX",
+      "conditionBoxId": "crowded-relations",
+      "showLabel": false
+    },
+    {
+      "id": "rightCBD",
+      "points": [
+        "C",
+        "B",
+        "D"
+      ],
+      "degrees": 90,
+      "marker": "SQUARE",
+      "text": "90°",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "showLabel": false
+    },
+    {
+      "id": "conclusionBCD",
+      "points": [
+        "B",
+        "C",
+        "D"
+      ],
+      "degrees": 46,
+      "marker": "ARC",
+      "text": "46°",
+      "factRole": "CONCLUSION"
+    }
+  ],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "crowded-relations",
+      "text": "∠ABD=22°∠ACD=22°∠BCA=68°∠ABC=68°",
+      "powers": [],
+      "conditionBoxFor": [
+        "abd22",
+        "acd22",
+        "bca68",
+        "givenABC"
+      ]
+    }
+  ]
+}

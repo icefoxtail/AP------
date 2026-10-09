@@ -1,0 +1,188 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "7b52e650927c02279350f508acef047e5ddd346cd527cdb3cbf09042bfe87cf9",
+  "solutionSha256": "949126418a51c92cb86aa6344387f4558f11360896fb6a3a878cc091314ff467",
+  "coordinateModel": {
+    "originX": 59.16666666666667,
+    "originY": 234.33333333333334,
+    "sx": 27.166666666666668,
+    "sy": 27.166666666666668
+  },
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Coordinates are a constructed realization of the source geometry, not measurements from the sketch.",
+    "normalization": {
+      "originPoint": "E",
+      "xAxisPoint": "G",
+      "unitScale": 10
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "E": [
+        0,
+        0
+      ],
+      "G": [
+        10,
+        0
+      ],
+      "A": [
+        0,
+        4
+      ]
+    },
+    "conditions": [
+      {
+        "id": "AE4",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "E"
+        ],
+        "tolerance": 1e-07,
+        "expected": 4
+      },
+      {
+        "id": "EG10",
+        "kind": "DISTANCE",
+        "refs": [
+          "E",
+          "G"
+        ],
+        "tolerance": 1e-07,
+        "expected": 10
+      },
+      {
+        "id": "AEperpEG",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "A",
+          "E",
+          "E",
+          "G"
+        ],
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-E",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "E",
+        "inputs": []
+      },
+      {
+        "id": "construct-G",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "G",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "A",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "AE4",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "EG10",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "AEperpEG",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct-anchor-points",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "E",
+          "G"
+        ],
+        "observed": 10.0,
+        "minimum": 1e-06
+      }
+    ]
+  },
+  "points": [
+    {
+      "id": "E",
+      "at": [
+        0,
+        0
+      ],
+      "name": "E"
+    },
+    {
+      "id": "G",
+      "at": [
+        10,
+        0
+      ],
+      "name": "G"
+    },
+    {
+      "id": "A",
+      "at": [
+        0,
+        4
+      ],
+      "name": "A"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AE",
+      "points": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "EG",
+      "points": [
+        "E",
+        "G"
+      ]
+    },
+    {
+      "id": "AG",
+      "points": [
+        "A",
+        "G"
+      ]
+    }
+  ],
+  "circles": [],
+  "incidences": [],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "EGlen",
+      "segment": "EG",
+      "value": 10,
+      "mode": "ADJACENT",
+      "text": "10 cm",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "unit": "cm"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "x-at-G",
+      "text": "x"
+    }
+  ]
+}

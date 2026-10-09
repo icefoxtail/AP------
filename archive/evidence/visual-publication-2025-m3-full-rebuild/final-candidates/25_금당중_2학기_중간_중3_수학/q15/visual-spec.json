@@ -1,0 +1,439 @@
+{
+  "id": "m3-geumdang-mid-q15",
+  "visualType": "line_circle_geometry",
+  "title": "중심과 현의 수직 단면으로 반지름 계산",
+  "viewport": {
+    "xMin": -12.566666666666666,
+    "xMax": 12.566666666666666,
+    "yMin": -12.566666666666666,
+    "yMax": 12.566666666666666,
+    "width": 560,
+    "height": 480,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Constructed circle realization matches BM=7, CM=3, AB perpendicular OC, and M as chord midpoint.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "M",
+        "unitScale": 6.666666666666667
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "O": [
+          0,
+          0
+        ],
+        "C": [
+          9.666666666666666,
+          0
+        ],
+        "M": [
+          6.666666666666667,
+          0
+        ],
+        "A": [
+          6.666666666666667,
+          7
+        ],
+        "B": [
+          6.666666666666667,
+          -7
+        ]
+      },
+      "conditions": [
+        {
+          "id": "BM7",
+          "kind": "DISTANCE",
+          "refs": [
+            "B",
+            "M"
+          ],
+          "expected": 7,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "CM3",
+          "kind": "DISTANCE",
+          "refs": [
+            "C",
+            "M"
+          ],
+          "expected": 3,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "OMperpAB",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "M",
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "ABperpOC",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "A",
+            "B",
+            "O",
+            "C"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "MmidAB",
+          "kind": "MIDPOINT",
+          "refs": [
+            "M",
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "O_MC_collinear",
+          "kind": "COLLINEAR",
+          "refs": [
+            "O",
+            "M",
+            "C"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "radiusOA",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 9.666666666666666,
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-O",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "C",
+          "inputs": [
+            "O"
+          ]
+        },
+        {
+          "id": "construct-M",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "M",
+          "inputs": [
+            "O",
+            "C"
+          ]
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "A",
+          "inputs": [
+            "O",
+            "C",
+            "M"
+          ]
+        },
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "B",
+          "inputs": [
+            "O",
+            "C",
+            "M",
+            "A"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "BM7",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "CM3",
+          "residual": 8.881784197001252e-16,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OMperpAB",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "ABperpOC",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "MmidAB",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "O_MC_collinear",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "radiusOA",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "noncollinear-witness",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "O",
+            "C",
+            "A"
+          ],
+          "observed": 0.7241379310344828,
+          "minimum": 1e-09
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        9.666666666666666,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "M",
+      "kind": "POINT",
+      "at": [
+        6.666666666666667,
+        0
+      ],
+      "name": "M"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        6.666666666666667,
+        7
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        6.666666666666667,
+        -7
+      ],
+      "name": "B"
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        6.666666666666667,
+        7
+      ],
+      "to": [
+        6.666666666666667,
+        -7
+      ]
+    },
+    {
+      "id": "OC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        9.666666666666666,
+        0
+      ]
+    },
+    {
+      "id": "OM",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        6.666666666666667,
+        0
+      ]
+    },
+    {
+      "id": "CM",
+      "kind": "SEGMENT",
+      "from": [
+        9.666666666666666,
+        0
+      ],
+      "to": [
+        6.666666666666667,
+        0
+      ]
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        6.666666666666667,
+        7
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        6.666666666666667,
+        -7
+      ]
+    },
+    {
+      "id": "AM",
+      "kind": "SEGMENT",
+      "from": [
+        6.666666666666667,
+        7
+      ],
+      "to": [
+        6.666666666666667,
+        0
+      ]
+    },
+    {
+      "id": "BM",
+      "kind": "SEGMENT",
+      "from": [
+        6.666666666666667,
+        -7
+      ],
+      "to": [
+        6.666666666666667,
+        0
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 9.666666666666666
+    },
+    {
+      "id": "radius-result",
+      "kind": "EQUATION_LABEL",
+      "text": "OA=29/3",
+      "at": [
+        12,
+        2
+      ],
+      "math": true
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 18,
+    "sourcePointLabels": {
+      "O": "O",
+      "C": "C",
+      "M": "M",
+      "A": "A",
+      "B": "B"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "OC": [
+        "O",
+        "C"
+      ],
+      "OM": [
+        "O",
+        "M"
+      ],
+      "CM": [
+        "C",
+        "M"
+      ],
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ],
+      "AM": [
+        "A",
+        "M"
+      ],
+      "BM": [
+        "B",
+        "M"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "lenBM7",
+        "kind": "LENGTH",
+        "owner": "BM",
+        "value": 7,
+        "mode": "ADJACENT",
+        "text": "7",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

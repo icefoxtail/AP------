@@ -1,0 +1,352 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "7f3b7cb7d9f295c18e66d874bebf17189b3fdbbb999bae6a4523686fc40a080c",
+  "solutionSha256": "ddf98c4cc0f424eaa778eeec9ea9ccd4bcd3a7f1c3f181594bad90c407d17113",
+  "coordinateModel": {
+    "originX": 256,
+    "originY": 256,
+    "sx": 149.33333333333334,
+    "sy": 149.33333333333334
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "at": [
+        -0.788010753606722,
+        -0.6156614753256582
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        1.0,
+        0.0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        0.24192189559966767,
+        0.9702957262759965
+      ],
+      "name": "C"
+    },
+    {
+      "id": "M",
+      "at": [
+        0.10599462319663894,
+        -0.30783073766282926
+      ],
+      "name": "M"
+    },
+    {
+      "id": "N",
+      "at": [
+        -0.27304442900352716,
+        0.17731712547516923
+      ],
+      "name": "N"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "points": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "OM",
+      "points": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "ON",
+      "points": [
+        "O",
+        "N"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 1
+    }
+  ],
+  "incidences": [
+    {
+      "id": "inc_A",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "inc_B",
+      "point": "B",
+      "circle": "circleO"
+    },
+    {
+      "id": "inc_C",
+      "point": "C",
+      "circle": "circleO"
+    }
+  ],
+  "angles": [
+    {
+      "id": "a38",
+      "points": [
+        "B",
+        "A",
+        "C"
+      ],
+      "degrees": 38,
+      "text": "38°",
+      "factRole": "GIVEN",
+      "marker": "ARC"
+    },
+    {
+      "id": "x71",
+      "points": [
+        "A",
+        "B",
+        "C"
+      ],
+      "degrees": 71,
+      "text": "71°",
+      "factRole": "CONCLUSION",
+      "marker": "ARC"
+    },
+    {
+      "id": "m90",
+      "points": [
+        "O",
+        "M",
+        "A"
+      ],
+      "degrees": 90,
+      "marker": "SQUARE",
+      "factRole": "GIVEN",
+      "showLabel": false
+    },
+    {
+      "id": "n90",
+      "points": [
+        "O",
+        "N",
+        "A"
+      ],
+      "degrees": 90,
+      "marker": "SQUARE",
+      "factRole": "GIVEN",
+      "showLabel": false
+    }
+  ],
+  "lengths": [],
+  "regions": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Normalize radius to 1; choose equal chords symmetric about the angle bisector, then construct M and N as center-to-chord perpendicular feet.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "B",
+      "unitScale": 1
+    },
+    "pointCoordinates": {
+      "O": [
+        0,
+        0
+      ],
+      "A": [
+        -0.788010753606722,
+        -0.6156614753256582
+      ],
+      "B": [
+        1.0,
+        0.0
+      ],
+      "C": [
+        0.24192189559966767,
+        0.9702957262759965
+      ],
+      "M": [
+        0.10599462319663894,
+        -0.30783073766282926
+      ],
+      "N": [
+        -0.27304442900352716,
+        0.17731712547516923
+      ]
+    },
+    "freeVariables": [
+      {
+        "id": "radius",
+        "value": 1
+      }
+    ],
+    "conditions": [
+      {
+        "id": "BAC38",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "expected": 38,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "ABC71",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "expected": 71,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "OMperpAB",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "M",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "ONperpAC",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "N",
+          "A",
+          "C"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "OMON",
+        "kind": "EQUAL_DISTANCE",
+        "refs": [
+          "O",
+          "M",
+          "O",
+          "N"
+        ],
+        "tolerance": 1e-06
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "O",
+        "operation": "CONSTRUCT_POINT",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "A",
+        "operation": "CONSTRUCT_POINT",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "B",
+        "operation": "CONSTRUCT_POINT",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "C",
+        "operation": "CONSTRUCT_POINT",
+        "output": "C",
+        "inputs": []
+      },
+      {
+        "id": "M",
+        "operation": "CONSTRUCT_POINT",
+        "output": "M",
+        "inputs": []
+      },
+      {
+        "id": "N",
+        "operation": "CONSTRUCT_POINT",
+        "output": "N",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "BAC38",
+        "residual": 7.105427357601002e-15,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "ABC71",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "OMperpAB",
+        "residual": 2.7049516717882084e-16,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "ONperpAC",
+        "residual": 2.704951671788209e-16,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "OMON",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "AB_nonzero",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "observed": 1.8910371511986337,
+        "minimum": 1e-09
+      }
+    ]
+  }
+}

@@ -1,0 +1,305 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "daaae1df4071544541ab2d7dd5ddcf559036a1ccfa6511bef22d3a24fe7fc8eb",
+  "solutionSha256": "31c48360958f81462e7558bf3ab9a5b12ac41537c7d312391632504acb4478b8",
+  "coordinateModel": {
+    "originX": 152.34639473916758,
+    "originY": 384.17319736958376,
+    "sx": 42.5512017536108,
+    "sy": 42.5512017536108
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        0,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        6,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        6,
+        6
+      ],
+      "name": "C"
+    },
+    {
+      "id": "D",
+      "at": [
+        3.102222521132795,
+        6.776457135307562
+      ],
+      "name": "D"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "points": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "points": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "points": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "circles": [],
+  "incidences": [],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "lenBC6",
+      "segment": "BC",
+      "value": 6,
+      "mode": "ADJACENT",
+      "text": "6",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "lenCD3",
+      "segment": "CD",
+      "value": 3,
+      "mode": "ADJACENT",
+      "text": "3",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "lenAB6",
+      "segment": "AB",
+      "value": 6,
+      "mode": "ADJACENT",
+      "text": "6",
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "regions": [
+    {
+      "id": "triABC",
+      "points": [
+        "A",
+        "B",
+        "C"
+      ],
+      "value": 18,
+      "text": "18",
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "triACD",
+      "points": [
+        "A",
+        "C",
+        "D"
+      ],
+      "value": 11.022703842524301,
+      "text": "√(243/2)",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "leader": true,
+      "labelAt": [
+        4.5,
+        7.8
+      ]
+    }
+  ],
+  "otherLabels": [
+    {
+      "id": "area-total",
+      "text": "18+(9√(6))/2"
+    }
+  ],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed quadrilateral realizes the two right/60-degree triangles sharing AC.",
+    "normalization": {
+      "originPoint": "A",
+      "xAxisPoint": "B",
+      "unitScale": 6
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        6,
+        0
+      ],
+      "C": [
+        6,
+        6
+      ],
+      "D": [
+        3.102222521132795,
+        6.776457135307562
+      ]
+    },
+    "conditions": [
+      {
+        "id": "BC6",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "expected": 6,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "CD3",
+        "kind": "DISTANCE",
+        "refs": [
+          "C",
+          "D"
+        ],
+        "expected": 3,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "A45",
+        "kind": "ANGLE",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "expected": 45,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "B90",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "expected": 90,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "C60",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "expected": 60,
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "B",
+        "inputs": [
+          "A"
+        ]
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "C",
+        "inputs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "construct-D",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "D",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "BC6",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "CD3",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "A45",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "B90",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "C60",
+        "residual": 7.105427357601002e-15,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-witness",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "observed": 0.7071067811865476,
+        "minimum": 1e-09
+      }
+    ]
+  }
+}

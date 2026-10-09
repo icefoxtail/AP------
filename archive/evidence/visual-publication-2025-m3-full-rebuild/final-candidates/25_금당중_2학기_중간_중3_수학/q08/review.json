@@ -1,0 +1,219 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "daaae1df4071544541ab2d7dd5ddcf559036a1ccfa6511bef22d3a24fe7fc8eb",
+  "solutionSha256": "b679d3b0c489074a3605da5df565069eac813dc52deda6ecfbad29461ed43217",
+  "coordinateModel": {
+    "originX": 89.23076923076923,
+    "originY": 372.16880008525584,
+    "sx": 38.15384615384615,
+    "sy": 38.15384615384615
+  },
+  "points": [
+    {
+      "id": "B",
+      "at": [
+        0,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        10,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "A",
+      "at": [
+        4,
+        6.928203230275509
+      ],
+      "name": "A"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "points": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "circles": [],
+  "incidences": [],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "AB8",
+      "segment": "AB",
+      "value": 8,
+      "mode": "ADJACENT",
+      "text": "8",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "BC10",
+      "segment": "BC",
+      "value": 10,
+      "mode": "ADJACENT",
+      "text": "10",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "AC2sqrt21",
+      "segment": "CA",
+      "value": 9.16515138991168,
+      "mode": "ADJACENT",
+      "text": "√(84)",
+      "factRole": "CONCLUSION"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed coordinate triangle realizes AB=8, BC=10 and included angle B=60° exactly.",
+    "normalization": {
+      "originPoint": "B",
+      "xAxisPoint": "C",
+      "unitScale": 10
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "B": [
+        0,
+        0
+      ],
+      "C": [
+        10,
+        0
+      ],
+      "A": [
+        4,
+        6.928203230275509
+      ]
+    },
+    "conditions": [
+      {
+        "id": "AB8",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 8,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "BC10",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "expected": 10,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "B60",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "expected": 60,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "AC2sqrt21",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "expected": 9.16515138991168,
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "C",
+        "inputs": [
+          "B"
+        ]
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "A",
+        "inputs": [
+          "B",
+          "C"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "AB8",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "BC10",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "B60",
+        "residual": 7.105427357601002e-15,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "AC2sqrt21",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-witness",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "observed": 0.8660254037844386,
+        "minimum": 1e-09
+      }
+    ]
+  }
+}

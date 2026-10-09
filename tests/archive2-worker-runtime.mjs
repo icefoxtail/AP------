@@ -426,6 +426,8 @@ try {
       sourceOrdinal: record.sourceOrdinal,
       sourceFingerprint: record.sourceFingerprint,
     };
+    // Raw source rows may carry retired overlay fields; runtime metadata must come only from canonical authority.
+    for (const field of core.META_FIELDS) delete q[field];
     for (const field of core.META_FIELDS)
       if (record[field] !== undefined) q[field] = record[field];
     return q;
@@ -1345,6 +1347,8 @@ try {
       sourceOrdinal: record.sourceOrdinal,
       sourceFingerprint: record.sourceFingerprint,
     };
+    // Raw source rows can include obsolete overlay fields; use canonical metadata only.
+    for (const field of core.META_FIELDS) delete q[field];
     for (const field of core.META_FIELDS)
       if (record[field] !== undefined) q[field] = record[field];
     return q;

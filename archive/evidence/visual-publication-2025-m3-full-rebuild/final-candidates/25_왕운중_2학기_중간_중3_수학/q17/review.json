@@ -1,0 +1,346 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "18beff97c61fd548e2d9b9526dd13e38cffe65e96243fe21f7fb3f7edf48e685",
+  "solutionSha256": "cbcc73d295f04de85992eeecedbddf6315a4c371405f04ca2cde5d12b5234b9d",
+  "coordinateModel": {
+    "originX": 176.88888888888889,
+    "originY": 71.33333333333334,
+    "sx": 36.22222222222222,
+    "sy": 36.22222222222222
+  },
+  "points": [
+    {
+      "id": "B",
+      "at": [
+        0,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "P",
+      "at": [
+        -2,
+        0
+      ],
+      "name": "P"
+    },
+    {
+      "id": "Q",
+      "at": [
+        3,
+        0
+      ],
+      "name": "Q"
+    },
+    {
+      "id": "O",
+      "at": [
+        0,
+        -3
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "at": [
+        -2.769230769230769,
+        -1.8461538461538463
+      ],
+      "name": "A"
+    },
+    {
+      "id": "C",
+      "at": [
+        3,
+        -3
+      ],
+      "name": "C"
+    }
+  ],
+  "segments": [
+    {
+      "id": "PB",
+      "points": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "BQ",
+      "points": [
+        "B",
+        "Q"
+      ]
+    },
+    {
+      "id": "PA",
+      "points": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "QC",
+      "points": [
+        "Q",
+        "C"
+      ]
+    },
+    {
+      "id": "OB",
+      "points": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OC",
+      "points": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        0,
+        -3
+      ],
+      "radius": 3
+    }
+  ],
+  "incidences": [],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "PA2",
+      "segment": "PA",
+      "value": 2,
+      "text": "2 cm",
+      "unit": "cm",
+      "mode": "ADJACENT",
+      "factRole": "GIVEN"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "xAnswer",
+      "at": [
+        4,
+        -2.4
+      ],
+      "text": "x=3"
+    }
+  ],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Coordinates are a normalized exact Euclidean realization of the source and verified-solution relations; they are not source coordinate claims.",
+    "normalization": {
+      "originPoint": "B",
+      "xAxisPoint": "Q",
+      "unitScale": 3
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "B": [
+        0,
+        0
+      ],
+      "P": [
+        -2,
+        0
+      ],
+      "Q": [
+        3,
+        0
+      ],
+      "O": [
+        0,
+        -3
+      ],
+      "A": [
+        -2.769230769230769,
+        -1.8461538461538463
+      ],
+      "C": [
+        3,
+        -3
+      ]
+    },
+    "conditions": [
+      {
+        "id": "PB2",
+        "kind": "DISTANCE",
+        "refs": [
+          "P",
+          "B"
+        ],
+        "expected": 2,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "BQ3",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "Q"
+        ],
+        "expected": 3,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "PA2",
+        "kind": "DISTANCE",
+        "refs": [
+          "P",
+          "A"
+        ],
+        "expected": 2,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "QC3",
+        "kind": "DISTANCE",
+        "refs": [
+          "Q",
+          "C"
+        ],
+        "expected": 3,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "PAperpOA",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "P",
+          "A",
+          "O",
+          "A"
+        ],
+        "tolerance": 1e-08
+      },
+      {
+        "id": "QBperpOB",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "Q",
+          "B",
+          "O",
+          "B"
+        ],
+        "tolerance": 1e-08
+      },
+      {
+        "id": "QCperpOC",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "Q",
+          "C",
+          "O",
+          "C"
+        ],
+        "tolerance": 1e-08
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-B",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "construct-P",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "P",
+        "inputs": []
+      },
+      {
+        "id": "construct-Q",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "Q",
+        "inputs": []
+      },
+      {
+        "id": "construct-O",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-C",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "C",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "PB2",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "BQ3",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "PA2",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "QC3",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "PAperpOA",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "QBperpOB",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "QCperpOC",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "main-figure-nondegenerate",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "B",
+          "P",
+          "O"
+        ],
+        "observed": 1.0,
+        "minimum": 1e-08
+      }
+    ]
+  }
+}

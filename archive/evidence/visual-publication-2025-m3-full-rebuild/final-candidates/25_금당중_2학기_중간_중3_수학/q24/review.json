@@ -1,0 +1,449 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "daaae1df4071544541ab2d7dd5ddcf559036a1ccfa6511bef22d3a24fe7fc8eb",
+  "solutionSha256": "d740ff73f60f337c3a9c35639f692a2e31ca5fd1ee9140f7f4bdf3b2a3fdda5e",
+  "coordinateModel": {
+    "originX": 280.0,
+    "originY": 240.0,
+    "sx": 32.0,
+    "sy": 32.0
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "M",
+      "at": [
+        3,
+        0
+      ],
+      "name": "M"
+    },
+    {
+      "id": "A",
+      "at": [
+        3,
+        4
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        3,
+        -4
+      ],
+      "name": "B"
+    },
+    {
+      "id": "N",
+      "at": [
+        1.5,
+        2.598076211353316
+      ],
+      "name": "N"
+    },
+    {
+      "id": "C",
+      "at": [
+        -1.9641016151377544,
+        4.598076211353316
+      ],
+      "name": "C"
+    },
+    {
+      "id": "D",
+      "at": [
+        4.964101615137754,
+        0.598076211353316
+      ],
+      "name": "D"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "CD",
+      "points": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "OM",
+      "points": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "ON",
+      "points": [
+        "O",
+        "N"
+      ]
+    },
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OC",
+      "points": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "AM",
+      "points": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "MB",
+      "points": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "CN",
+      "points": [
+        "C",
+        "N"
+      ]
+    },
+    {
+      "id": "ND",
+      "points": [
+        "N",
+        "D"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 5
+    }
+  ],
+  "incidences": [
+    {
+      "id": "A-on-circle",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "B-on-circle",
+      "point": "B",
+      "circle": "circleO"
+    },
+    {
+      "id": "C-on-circle",
+      "point": "C",
+      "circle": "circleO"
+    },
+    {
+      "id": "D-on-circle",
+      "point": "D",
+      "circle": "circleO"
+    }
+  ],
+  "lines": [],
+  "angles": [],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "proof-result",
+      "text": "OA=OC, OM=ON → AB=CD"
+    }
+  ],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed circle realization provides two equal-distance perpendicular chord sections, enough to witness the congruent right triangles.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "M",
+      "unitScale": 3
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "O": [
+        0,
+        0
+      ],
+      "M": [
+        3,
+        0
+      ],
+      "A": [
+        3,
+        4
+      ],
+      "B": [
+        3,
+        -4
+      ],
+      "N": [
+        1.5,
+        2.598076211353316
+      ],
+      "C": [
+        -1.9641016151377544,
+        4.598076211353316
+      ],
+      "D": [
+        4.964101615137754,
+        0.598076211353316
+      ]
+    },
+    "conditions": [
+      {
+        "id": "OA5",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "expected": 5,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "OC5",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "C"
+        ],
+        "expected": 5,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "OM3",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "M"
+        ],
+        "expected": 3,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "ON3",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "N"
+        ],
+        "expected": 3,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "OMperpAB",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "M",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "ONperpCD",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "N",
+          "C",
+          "D"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "MmidAB",
+        "kind": "MIDPOINT",
+        "refs": [
+          "M",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "NmidCD",
+        "kind": "MIDPOINT",
+        "refs": [
+          "N",
+          "C",
+          "D"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "equalHalfChords",
+        "kind": "EQUAL_DISTANCE",
+        "refs": [
+          "A",
+          "M",
+          "C",
+          "N"
+        ],
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-O",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "construct-M",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "M",
+        "inputs": [
+          "O"
+        ]
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "A",
+        "inputs": [
+          "O",
+          "M"
+        ]
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "B",
+        "inputs": [
+          "O",
+          "M",
+          "A"
+        ]
+      },
+      {
+        "id": "construct-N",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "N",
+        "inputs": [
+          "O",
+          "M",
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "C",
+        "inputs": [
+          "O",
+          "M",
+          "A",
+          "B",
+          "N"
+        ]
+      },
+      {
+        "id": "construct-D",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "D",
+        "inputs": [
+          "O",
+          "M",
+          "A",
+          "B",
+          "N",
+          "C"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "OA5",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OC5",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OM3",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "ON3",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OMperpAB",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "ONperpCD",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "MmidAB",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "NmidCD",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "equalHalfChords",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-witness",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "O",
+          "M",
+          "A"
+        ],
+        "observed": 0.8,
+        "minimum": 1e-09
+      }
+    ]
+  }
+}

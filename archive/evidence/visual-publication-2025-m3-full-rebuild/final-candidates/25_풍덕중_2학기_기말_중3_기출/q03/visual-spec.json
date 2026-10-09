@@ -1,0 +1,581 @@
+{
+  "id": "pungdeok-final-q03",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -6.5,
+    "xMax": 6.5,
+    "yMin": -4,
+    "yMax": 9,
+    "width": 512,
+    "height": 512,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "The diagram extends the source semicircle to its parent circle, keeping AB as a diameter; the secant intersection E and 56 degree minor arc DC are constructed from the given 62 degree exterior angle.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "B",
+        "unitScale": 4
+      },
+      "freeVariables": [
+        {
+          "id": "polarD",
+          "value": 110
+        },
+        {
+          "id": "polarC",
+          "value": 54
+        }
+      ],
+      "pointCoordinates": {
+        "O": [
+          0,
+          0
+        ],
+        "A": [
+          -4.0,
+          0.0
+        ],
+        "B": [
+          4.0,
+          0.0
+        ],
+        "D": [
+          -1.3680805733026749,
+          3.7587704831436337
+        ],
+        "C": [
+          2.3511410091698925,
+          3.23606797749979
+        ],
+        "E": [
+          0.6304931440355688,
+          6.613029553887423
+        ]
+      },
+      "conditions": [
+        {
+          "id": "incA",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 4,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "incB",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "expected": 4,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "incC",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "expected": 4,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "incD",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "D"
+          ],
+          "expected": 4,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "diamLine",
+          "kind": "COLLINEAR",
+          "refs": [
+            "A",
+            "O",
+            "B"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "secant1",
+          "kind": "COLLINEAR",
+          "refs": [
+            "E",
+            "D",
+            "A"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "secant2",
+          "kind": "COLLINEAR",
+          "refs": [
+            "E",
+            "C",
+            "B"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "given62",
+          "kind": "ANGLE",
+          "refs": [
+            "D",
+            "E",
+            "C"
+          ],
+          "expected": 62,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "result56",
+          "kind": "ANGLE",
+          "refs": [
+            "D",
+            "O",
+            "C"
+          ],
+          "expected": 56,
+          "tolerance": 1e-06
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "origin",
+          "operation": "SOURCE_ORIGIN",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "baseA",
+          "operation": "NORMALIZED_RADIUS",
+          "output": "A",
+          "inputs": [
+            "O"
+          ]
+        },
+        {
+          "id": "pointB",
+          "operation": "ROTATE_TO_POLAR_0",
+          "output": "B",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "id": "pointD",
+          "operation": "ROTATE_TO_POLAR_110",
+          "output": "D",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "id": "pointC",
+          "operation": "ROTATE_TO_POLAR_54",
+          "output": "C",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "id": "externalE",
+          "operation": "SECANT_LINES_INTERSECTION",
+          "output": "E",
+          "inputs": [
+            "A",
+            "D",
+            "B",
+            "C"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "incA",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "incB",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "incC",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "incD",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "diamLine",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "secant1",
+          "residual": 1.2629768597492223e-16,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "secant2",
+          "residual": 6.314884298746113e-17,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "given62",
+          "residual": 1.4210854715202004e-14,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "result56",
+          "residual": 7.105427357601002e-15,
+          "tolerance": 1e-06
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct_AO",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "O"
+          ],
+          "observed": 4.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_OB",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "observed": 4.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_OD",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "D"
+          ],
+          "observed": 4.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_OC",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "observed": 4.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_ED",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "E",
+            "D"
+          ],
+          "observed": 3.4844069433059057,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_DA",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "D",
+            "A"
+          ],
+          "observed": 4.588611490808369,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_EC",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "E",
+            "C"
+          ],
+          "observed": 3.7900525806629326,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_CB",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "C",
+            "B"
+          ],
+          "observed": 3.6319239979163744,
+          "minimum": 1e-05
+        }
+      ]
+    },
+    "givenFacts": [
+      "AB diameter of semicircle",
+      "AD and BC extended meet at E",
+      "∠DEC=62°"
+    ],
+    "solutionFacts": [
+      "arc AB=180°",
+      "arc DC=56°",
+      "∠DOC=56°"
+    ]
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        -4.0,
+        0.0
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        4.0,
+        0.0
+      ]
+    },
+    {
+      "id": "D",
+      "kind": "POINT",
+      "at": [
+        -1.3680805733026749,
+        3.7587704831436337
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        2.3511410091698925,
+        3.23606797749979
+      ]
+    },
+    {
+      "id": "E",
+      "kind": "POINT",
+      "at": [
+        0.6304931440355688,
+        6.613029553887423
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 4
+    },
+    {
+      "id": "AO",
+      "kind": "SEGMENT",
+      "from": [
+        -4.0,
+        0.0
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        4.0,
+        0.0
+      ]
+    },
+    {
+      "id": "OD",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        -1.3680805733026749,
+        3.7587704831436337
+      ]
+    },
+    {
+      "id": "OC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        2.3511410091698925,
+        3.23606797749979
+      ]
+    },
+    {
+      "id": "ED",
+      "kind": "SEGMENT",
+      "from": [
+        0.6304931440355688,
+        6.613029553887423
+      ],
+      "to": [
+        -1.3680805733026749,
+        3.7587704831436337
+      ]
+    },
+    {
+      "id": "DA",
+      "kind": "SEGMENT",
+      "from": [
+        -1.3680805733026749,
+        3.7587704831436337
+      ],
+      "to": [
+        -4.0,
+        0.0
+      ]
+    },
+    {
+      "id": "EC",
+      "kind": "SEGMENT",
+      "from": [
+        0.6304931440355688,
+        6.613029553887423
+      ],
+      "to": [
+        2.3511410091698925,
+        3.23606797749979
+      ]
+    },
+    {
+      "id": "CB",
+      "kind": "SEGMENT",
+      "from": [
+        2.3511410091698925,
+        3.23606797749979
+      ],
+      "to": [
+        4.0,
+        0.0
+      ]
+    },
+    {
+      "id": "givenArcNote",
+      "kind": "CONDITION_BOX",
+      "at": [
+        5.1,
+        7.4
+      ],
+      "lines": [
+        "∠DEC = 62°; arc DC = 56°"
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 14,
+    "sourcePointLabels": {
+      "O": "O",
+      "A": "A",
+      "B": "B",
+      "D": "D",
+      "C": "C",
+      "E": "E"
+    },
+    "segmentPointRefs": {
+      "AO": [
+        "A",
+        "O"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ],
+      "OD": [
+        "O",
+        "D"
+      ],
+      "OC": [
+        "O",
+        "C"
+      ],
+      "ED": [
+        "E",
+        "D"
+      ],
+      "DA": [
+        "D",
+        "A"
+      ],
+      "EC": [
+        "E",
+        "C"
+      ],
+      "CB": [
+        "C",
+        "B"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "result56",
+        "kind": "ANGLE",
+        "refs": [
+          "D",
+          "O",
+          "C"
+        ],
+        "value": 56,
+        "text": "56",
+        "marker": "ARC",
+        "factRole": "CONCLUSION",
+        "labelAt": [
+          0.30618082211214404,
+          2.178589751231455
+        ]
+      }
+    ]
+  }
+}

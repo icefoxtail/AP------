@@ -1,0 +1,276 @@
+{
+  "id": "m3-geumdang-mid-q3",
+  "visualType": "line_circle_geometry",
+  "title": "ratio-triangle",
+  "viewport": {
+    "xMin": -1,
+    "xMax": 5,
+    "yMin": -2,
+    "yMax": 5,
+    "width": 520,
+    "height": 420,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "cos A=2/3 is represented by a similar right triangle normalized to AC=9.",
+      "normalization": {
+        "originPoint": "A",
+        "xAxisPoint": "B",
+        "unitScale": 6
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "A": [
+          0,
+          0
+        ],
+        "B": [
+          6,
+          0
+        ],
+        "C": [
+          6,
+          6.708203932499369
+        ]
+      },
+      "conditions": [
+        {
+          "id": "AB2",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 6,
+          "tolerance": 1e-09
+        },
+        {
+          "id": "BCsqrt5",
+          "kind": "DISTANCE",
+          "refs": [
+            "B",
+            "C"
+          ],
+          "expected": 6.708203932499369,
+          "tolerance": 1e-09
+        },
+        {
+          "id": "AC3",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "C"
+          ],
+          "expected": 9,
+          "tolerance": 1e-09
+        },
+        {
+          "id": "rightB",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "expected": 90,
+          "tolerance": 1e-09
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "origin",
+          "operation": "NORMALIZE_ORIGIN",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "adjacent-end",
+          "operation": "SET_ADJACENT_RATIO",
+          "output": "B",
+          "inputs": [
+            "A"
+          ]
+        },
+        {
+          "id": "opposite-end",
+          "operation": "PYTHAGOREAN_COMPLETION",
+          "output": "C",
+          "inputs": [
+            "A",
+            "B"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "AB2",
+          "residual": 0.0,
+          "tolerance": 1e-09
+        },
+        {
+          "conditionId": "BCsqrt5",
+          "residual": 0.0,
+          "tolerance": 1e-09
+        },
+        {
+          "conditionId": "AC3",
+          "residual": 0.0,
+          "tolerance": 1e-09
+        },
+        {
+          "conditionId": "rightB",
+          "residual": 0.0,
+          "tolerance": 1e-09
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "triangle-nondegenerate",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "observed": 0.7453559924999299,
+          "minimum": 1e-09
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        6,
+        0
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        6,
+        6.708203932499369
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        6,
+        0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        6,
+        0
+      ],
+      "to": [
+        6,
+        6.708203932499369
+      ]
+    },
+    {
+      "id": "CA",
+      "kind": "SEGMENT",
+      "from": [
+        6,
+        6.708203932499369
+      ],
+      "to": [
+        0,
+        0
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 18,
+    "sourcePointLabels": {
+      "A": "A",
+      "B": "B",
+      "C": "C"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "CA": [
+        "C",
+        "A"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "rightB",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 90,
+        "text": "90",
+        "labelAt": [
+          4.9,
+          1.1
+        ],
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AB2",
+        "kind": "LENGTH",
+        "owner": "AB",
+        "value": 6,
+        "mode": "ADJACENT",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BCsqrt5",
+        "kind": "LENGTH",
+        "owner": "BC",
+        "value": 6.708203932499369,
+        "mode": "ADJACENT",
+        "text": "3sqrt(5)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AC3",
+        "kind": "LENGTH",
+        "owner": "CA",
+        "value": 9,
+        "mode": "ADJACENT",
+        "text": "9",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

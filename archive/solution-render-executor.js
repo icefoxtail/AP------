@@ -257,6 +257,7 @@
             const box = document.createElement('div');
             box.className = 'q-box sol-box';
             box.dataset.sourceRef = deps.getArchiveQuestionSourceRef(q, i);
+            box.dataset.solutionFullWidth = q.solutionImageLayout === 'fullwidth' ? 'true' : 'false';
             box.dataset.solutionHtml = solutionHtml;
             box.innerHTML = `<div class="q-num">${i + 1}.</div><div data-semantic-content="1" style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${deps.wrapLatex(q.answer ?? '-')}</div>${solutionImageHtml}<div class="sol-exp">${solutionHtml}</div></div>`;
             deps.normalizeQuestionImageSources(box);
@@ -275,6 +276,7 @@
                 record.box.dataset.solutionDecisionBlockId = blockId;
                 const chunks = record.chunks.map(({ chunkId, measuredHeight, tight }) => ({ chunkId, measuredHeight, tight }));
                 solutionDecisionBlocks.push({ blockId, questionKey: `solution-block:${index + 1}`, measuredHeight: record.raw, measurements,
+                    fullWidth: record.box.dataset.solutionFullWidth === 'true',
                     shellOverhead: Math.max(1, record.raw - chunks.reduce((sum, chunk) => sum + chunk.measuredHeight, 0)),
                     continuationShellOverhead: record.continuationShellOverhead, chunks });
             });
@@ -323,6 +325,7 @@
                 questionKey: `solution-block:${solutionIndex + 1}`,
                 measuredHeight: raw,
                 measurements: { raw: Math.max(1, raw), tight: Math.max(1, tight) },
+                fullWidth: box.dataset.solutionFullWidth === 'true',
                 shellOverhead: Math.max(1, raw - chunkTotal),
                 continuationShellOverhead,
                 chunks: measuredChunks

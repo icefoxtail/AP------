@@ -1,0 +1,582 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "cb9340726ed574fed56570abb2e628df248af0492571a2beb3b9dcd1420feddf",
+  "solutionSha256": "638cdc9e5a98e2cdf6ffbe173dd846dc5b25aa6b633c2a79c29335624bfb89ce",
+  "coordinateModel": {
+    "originX": 301.9947702418659,
+    "originY": 189.36708860759495,
+    "sx": 21.856540084388183,
+    "sy": 21.856540084388183
+  },
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "The source fixes named incidences, circle/tangent/angle/length relations but no Cartesian coordinates. This explicit constructed realization preserves the listed source and verified-solution conditions; arbitrary arc placements are declared free variables.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "TAB",
+      "unitScale": 4.115966043420212
+    },
+    "freeVariables": [
+      {
+        "id": "tangentLengthAtA",
+        "value": 3.0
+      },
+      {
+        "id": "tangentLengthAtB",
+        "value": 6.0
+      },
+      {
+        "id": "tangentLengthAtC",
+        "value": 4.0
+      },
+      {
+        "id": "tangentLengthAtD",
+        "value": 4.0
+      }
+    ],
+    "pointCoordinates": {
+      "O": [
+        0,
+        0
+      ],
+      "A": [
+        4.115966043420212,
+        -2.9999999999999987
+      ],
+      "B": [
+        4.115966043420212,
+        6.000000000000001
+      ],
+      "C": [
+        -5.21355698833227,
+        2.399999999999999
+      ],
+      "D": [
+        -2.547978979260129,
+        -5.142857142857144
+      ],
+      "TAB": [
+        4.115966043420212,
+        0.0
+      ],
+      "TBC": [
+        -1.4817477756312767,
+        3.8399999999999994
+      ],
+      "TCD": [
+        -3.8807679837961992,
+        -1.371428571428573
+      ],
+      "TDA": [
+        1.2599896051286381,
+        -3.9183673469387745
+      ],
+      "E": [
+        -3.547570732662182,
+        -2.314285714285716
+      ]
+    },
+    "conditions": [
+      {
+        "id": "inc-omega-TAB",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "TAB"
+        ],
+        "expected": 4.115966043420212,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "inc-omega-TBC",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "TBC"
+        ],
+        "expected": 4.115966043420212,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "inc-omega-TCD",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "TCD"
+        ],
+        "expected": 4.115966043420212,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "inc-omega-TDA",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "TDA"
+        ],
+        "expected": 4.115966043420212,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "condition-1",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "TAB",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "condition-2",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "TBC",
+          "B",
+          "C"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "condition-3",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "TCD",
+          "C",
+          "D"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "condition-4",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "TDA",
+          "D",
+          "A"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "condition-5",
+        "kind": "COLLINEAR",
+        "refs": [
+          "D",
+          "E",
+          "C"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "length-lengthAB",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 9.0,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "length-lengthBC",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "expected": 10.0,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "length-lengthDA",
+        "kind": "DISTANCE",
+        "refs": [
+          "D",
+          "A"
+        ],
+        "expected": 7.0,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "length-lengthDE",
+        "kind": "DISTANCE",
+        "refs": [
+          "D",
+          "E"
+        ],
+        "expected": 3.0,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "length-lengthEC",
+        "kind": "DISTANCE",
+        "refs": [
+          "E",
+          "C"
+        ],
+        "expected": 5.0,
+        "tolerance": 1e-06
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-O",
+        "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-B",
+        "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "construct-C",
+        "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+        "output": "C",
+        "inputs": []
+      },
+      {
+        "id": "construct-D",
+        "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+        "output": "D",
+        "inputs": []
+      },
+      {
+        "id": "construct-TAB",
+        "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+        "output": "TAB",
+        "inputs": []
+      },
+      {
+        "id": "construct-TBC",
+        "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+        "output": "TBC",
+        "inputs": []
+      },
+      {
+        "id": "construct-TCD",
+        "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+        "output": "TCD",
+        "inputs": []
+      },
+      {
+        "id": "construct-TDA",
+        "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+        "output": "TDA",
+        "inputs": []
+      },
+      {
+        "id": "construct-E",
+        "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+        "output": "E",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "inc-omega-TAB",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "inc-omega-TBC",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "inc-omega-TCD",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "inc-omega-TDA",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "condition-1",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "condition-2",
+        "residual": 4.3157713660926246e-17,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "condition-3",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "condition-4",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "condition-5",
+        "residual": 3.7007434154171876e-17,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "length-lengthAB",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "length-lengthBC",
+        "residual": 1.7763568394002505e-15,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "length-lengthDA",
+        "residual": 8.881784197001252e-16,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "length-lengthDE",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "length-lengthEC",
+        "residual": 1.7763568394002505e-15,
+        "tolerance": 1e-06
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-triple",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "O",
+          "A",
+          "B"
+        ],
+        "observed": 0.9995917534020514,
+        "minimum": 1e-06
+      }
+    ]
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "at": [
+        4.115966043420212,
+        -2.9999999999999987
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        4.115966043420212,
+        6.000000000000001
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        -5.21355698833227,
+        2.399999999999999
+      ],
+      "name": "C"
+    },
+    {
+      "id": "D",
+      "at": [
+        -2.547978979260129,
+        -5.142857142857144
+      ],
+      "name": "D"
+    },
+    {
+      "id": "TAB",
+      "at": [
+        4.115966043420212,
+        0.0
+      ],
+      "name": null
+    },
+    {
+      "id": "TBC",
+      "at": [
+        -1.4817477756312767,
+        3.8399999999999994
+      ],
+      "name": null
+    },
+    {
+      "id": "TCD",
+      "at": [
+        -3.8807679837961992,
+        -1.371428571428573
+      ],
+      "name": null
+    },
+    {
+      "id": "TDA",
+      "at": [
+        1.2599896051286381,
+        -3.9183673469387745
+      ],
+      "name": null
+    },
+    {
+      "id": "E",
+      "at": [
+        -3.547570732662182,
+        -2.314285714285716
+      ],
+      "name": "E"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "DE",
+      "points": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EC",
+      "points": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "DA",
+      "points": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "omega",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 4.115966043420212
+    }
+  ],
+  "arcs": [],
+  "incidences": [
+    {
+      "id": "omega-TAB",
+      "point": "TAB",
+      "circle": "omega"
+    },
+    {
+      "id": "omega-TBC",
+      "point": "TBC",
+      "circle": "omega"
+    },
+    {
+      "id": "omega-TCD",
+      "point": "TCD",
+      "circle": "omega"
+    },
+    {
+      "id": "omega-TDA",
+      "point": "TDA",
+      "circle": "omega"
+    }
+  ],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "lengthAB",
+      "segment": "AB",
+      "value": 9.0,
+      "mode": "ADJACENT",
+      "text": "9",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "lengthBC",
+      "segment": "BC",
+      "value": 10.0,
+      "mode": "ADJACENT",
+      "text": "10",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "lengthDA",
+      "segment": "DA",
+      "value": 7.0,
+      "mode": "ADJACENT",
+      "text": "7",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "lengthDE",
+      "segment": "DE",
+      "value": 3.0,
+      "mode": "ADJACENT",
+      "text": "3",
+      "factRole": "GIVEN",
+      "labelPlacement": "CONDITION_BOX",
+      "conditionBoxId": "crowded-relations"
+    },
+    {
+      "id": "lengthEC",
+      "segment": "EC",
+      "value": 5.0,
+      "mode": "ADJACENT",
+      "text": "5",
+      "factRole": "GIVEN"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "crowded-relations",
+      "text": "DE=3",
+      "powers": [],
+      "conditionBoxFor": [
+        "lengthDE"
+      ]
+    }
+  ]
+}

@@ -8,7 +8,7 @@ from fractions import Fraction
 from pathlib import Path
 from . import ENGINE_VERSION
 from .semantic_model import validate
-from .geometry_model import Circle,Line,clip_line,finite
+from .geometry_model import Circle,CircularArc,Line,clip_line,finite
 from .viewport import for_spec
 from .function_sampling import sample
 from .math_expression import Expr,parse,serialize,evaluate,exact_coordinate
@@ -33,6 +33,7 @@ def prepare(spec):
     for value in geometry.values():
         if isinstance(value,Circle):
             x,y=value.center;r=value.radius;critical.extend([(x-r,y-r),(x+r,y+r)])
+        elif isinstance(value,CircularArc):critical.extend(value.critical_points())
         elif isinstance(value,tuple) and len(value)==2 and isinstance(value[0],float):critical.append(value)
         elif isinstance(value,tuple):critical.extend(value)
     piecewise_features=spec['displayFacts'].get('piecewiseFeatures')
@@ -56,7 +57,7 @@ def prepare(spec):
             reference=trig_features['referencePoint'];critical.append((float(Fraction(reference['xPiMultiple']))*math.pi,float(Fraction(reference['y']))))
     if isinstance(axis_option,bool) and axis_option:critical.extend([(0,0),(1,0),(0,1)])
     vp=for_spec(spec,critical)
-    if not vp.equal and any(isinstance(v,Circle) for v in geometry.values()):raise ValueError('CIRCLE_REQUIRES_EQUAL_UNITS')
+    if not vp.equal and any(isinstance(v,(Circle,CircularArc)) for v in geometry.values()):raise ValueError('CIRCLE_REQUIRES_EQUAL_UNITS')
     primitives=[];labels=[];obstacles=[];sampling=[]
     def primitive(p,obstacle=None):
         primitives.append(p)
@@ -219,7 +220,9 @@ def prepare(spec):
         oid=obj['id'];kind=obj['kind'];value=geometry.get(oid)
         if kind=='POINT':
             primitive({'id':oid,'kind':'circle','at':vp.screen(value),'radius':tokens['criticalPoint'] if obj.get('priority')==0 else tokens['point'],'layer':70,'role':'point','token':'indicator'},'point')
-            if oid not in named:labels.append({'id':oid+'-name','kind':'POINT_NAME','target':oid,'text':obj.get('name',oid),'at':vp.screen(value),'font':tokens['pointName'],'priority':obj.get('priority',1)})
+            point_names=semantic.get('publication',{}).get('sourcePointLabels',{})
+            point_name=point_names.get(oid,obj.get('name',oid))
+            if oid not in named and point_name is not None:labels.append({'id':oid+'-name','kind':'POINT_NAME','target':oid,'text':point_name,'at':vp.screen(value),'font':tokens['pointName'],'priority':obj.get('priority',1)})
         elif kind in {'LINE','AUXILIARY_LINE'}:
             hits=clip_line(value,vp.bounds)
             if len(hits)==2:primitive({'id':oid,'kind':'line','from':vp.screen(hits[0]),'to':vp.screen(hits[1]),'token':'auxiliary' if kind=='AUXILIARY_LINE' else 'tangent' if oid in tangent_lines else 'mainShape','layer':20 if kind=='AUXILIARY_LINE' else 40,'role':'auxiliary' if kind=='AUXILIARY_LINE' else 'line','dash':'4 3' if kind=='AUXILIARY_LINE' else ''},'auxiliary' if kind=='AUXILIARY_LINE' else 'line')
@@ -227,6 +230,11 @@ def prepare(spec):
             primitive({'id':oid,'kind':'line','from':vp.screen(value[0]),'to':vp.screen(value[1]),'token':'leaderLine' if kind=='LEADER_LINE' else 'secondaryShape','layer':80 if kind=='LEADER_LINE' else 30,'role':'leader' if kind=='LEADER_LINE' else 'line'},'leader' if kind=='LEADER_LINE' else 'line')
         elif kind=='CIRCLE':
             primitive({'id':oid,'kind':'circle','at':vp.screen(value.center),'radius':value.radius*vp.sx,'token':'mainShape','layer':40,'role':'circle'},'circle')
+        elif kind=='CIRCULAR_ARC':
+            primitive({'id':oid,'kind':'polyline','points':[vp.screen(p) for p in value.sample_points()],
+                       'token':'mainShape','layer':40,'role':'circularArc',
+                       'ownerPoints':[obj['startPoint'],obj['endPoint']],
+                       'centerPoint':obj['centerPoint'],'ownerRadius':value.radius,'sweep':value.sweep},'curve')
         elif kind=='FUNCTION_GRAPH':
             result=sample(obj['expression'],obj['domain'],vp,critical_x=obj.get('criticalX',[]),breaks=obj.get('breaks',[]))
             sampling.append({'id':oid,**{k:v for k,v in result.items() if k!='branches'}})

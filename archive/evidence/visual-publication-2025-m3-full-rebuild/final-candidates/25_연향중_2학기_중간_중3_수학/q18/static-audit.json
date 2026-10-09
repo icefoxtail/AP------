@@ -1,0 +1,188 @@
+{
+  "schemaVersion": "geometry-publication-audit-v1",
+  "authority": "INDEPENDENT_STATIC_OBSERVER",
+  "publicationAuthorized": false,
+  "renderStatus": "NOT_RUN",
+  "scope": "frozen expected facts versus actual SVG; source-solve correctness and visual review remain external",
+  "svgSha256": "e0ad10e86260ef1b7ec9b541a5bf6acdedc8ecbd6ae19b11333bb01fd250de2e",
+  "errors": [],
+  "observations": [
+    {
+      "type": "COORDINATE_EVIDENCE",
+      "mode": "CONSTRUCTED_REALIZATION",
+      "conditionCount": 6,
+      "residualPassCount": 6,
+      "degeneracyPassCount": 1
+    },
+    {
+      "id": "O",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        0.0,
+        0.0
+      ],
+      "sourceLabel": "O",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "P",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        4.0,
+        0.0
+      ],
+      "sourceLabel": "P",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "A",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        1.0,
+        -1.732050807558282
+      ],
+      "sourceLabel": "A",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "B",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        1.0,
+        1.7320508075582823
+      ],
+      "sourceLabel": "B",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "PA",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          4.0,
+          0.0
+        ],
+        [
+          1.0,
+          -1.732050807558282
+        ]
+      ]
+    },
+    {
+      "id": "PB",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          4.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.7320508075582823
+        ]
+      ]
+    },
+    {
+      "id": "OA",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          -1.732050807558282
+        ]
+      ]
+    },
+    {
+      "id": "OB",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.7320508075582823
+        ]
+      ]
+    },
+    {
+      "id": "circleO",
+      "type": "CIRCLE",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "radius": 2.0
+    },
+    {
+      "id": "inc-circleO-A",
+      "type": "CIRCLE_INCIDENCE",
+      "point": "A",
+      "circle": "circleO",
+      "observedPoint": [
+        1.0,
+        -1.732050807558282
+      ],
+      "observedCenter": [
+        0.0,
+        0.0
+      ],
+      "observedRadius": 2.0,
+      "radialDelta": 9.175993298526919e-12
+    },
+    {
+      "id": "inc-circleO-B",
+      "type": "CIRCLE_INCIDENCE",
+      "point": "B",
+      "circle": "circleO",
+      "observedPoint": [
+        1.0,
+        1.7320508075582823
+      ],
+      "observedCenter": [
+        0.0,
+        0.0
+      ],
+      "observedRadius": 2.0,
+      "radialDelta": 9.175549209317069e-12
+    },
+    {
+      "id": "angleP",
+      "type": "ANGLE",
+      "ownerVertex": "P",
+      "expectedAngleDeg": 60.0,
+      "observedAngleDeg": 59.99999999839215,
+      "radiusPx": 16.000000000388834,
+      "labelShown": true,
+      "labelPlacement": "OWNER_WEDGE"
+    },
+    {
+      "id": "radiusA",
+      "type": "LENGTH",
+      "ownerSegment": "OA",
+      "observedLength": 1.999999999990824,
+      "projectionFraction": 0.5000000000003012,
+      "offsetPx": 35.99999999979235,
+      "labelPlacement": "OWNER_SEGMENT"
+    }
+  ],
+  "sourceSha256": "7b52e650927c02279350f508acef047e5ddd346cd527cdb3cbf09042bfe87cf9",
+  "solutionSha256": "d3aca62fd82f99a0a4d3cbfdeb925b49e582182ff057be3282bf345668079fb6",
+  "reviewSha256": "b8a22c335c524661d145c42b1894f7c09b7d1029e5bf59a2de64e7eb761bd288",
+  "coordinateEvidenceMode": "CONSTRUCTED_REALIZATION",
+  "coordinateEvidenceSha256": "3cc030807f3af6774acd1e441316ba89942b550f881c6501739dbd4fa44e93c3",
+  "coverage": {
+    "declaredFacts": 14,
+    "observations": 14,
+    "primitiveCount": 10,
+    "labelCount": 7,
+    "unreviewedPrimitives": 0,
+    "unreviewedLabels": 0
+  },
+  "status": "PASS"
+}

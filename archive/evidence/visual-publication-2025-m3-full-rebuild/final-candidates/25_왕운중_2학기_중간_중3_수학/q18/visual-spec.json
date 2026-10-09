@@ -1,0 +1,503 @@
+{
+  "id": "wangun-mid-q18",
+  "title": "접선 길이의 반복으로 합을 고정",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -29.34384814359243,
+    "xMax": 49.643983729670616,
+    "yMin": -7.643983729670618,
+    "yMax": 37.61952712566729,
+    "width": 390,
+    "height": 360,
+    "panel": 0,
+    "margin": 32
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Coordinates are a normalized exact Euclidean realization of the source and verified-solution relations; they are not source coordinate claims.",
+      "normalization": {
+        "originPoint": "A",
+        "xAxisPoint": "B",
+        "unitScale": 34.0
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "A": [
+          0.0,
+          0.0
+        ],
+        "B": [
+          34.0,
+          0.0
+        ],
+        "C": [
+          22.11764705882353,
+          23.12595270645763
+        ],
+        "D": [
+          1.211114410252168,
+          29.97554339599667
+        ],
+        "E": [
+          -12.95695987150894,
+          22.54145494168704
+        ],
+        "F": [
+          -21.699864413921816,
+          14.321867350922142
+        ]
+      },
+      "conditions": [
+        {
+          "id": "AB",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 34,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "BC",
+          "kind": "DISTANCE",
+          "refs": [
+            "B",
+            "C"
+          ],
+          "expected": 26,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "AC",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "C"
+          ],
+          "expected": 32,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "CD",
+          "kind": "DISTANCE",
+          "refs": [
+            "C",
+            "D"
+          ],
+          "expected": 22,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "AD",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "D"
+          ],
+          "expected": 30,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "DE",
+          "kind": "DISTANCE",
+          "refs": [
+            "D",
+            "E"
+          ],
+          "expected": 16,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "AE",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "E"
+          ],
+          "expected": 26,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "EF",
+          "kind": "DISTANCE",
+          "refs": [
+            "E",
+            "F"
+          ],
+          "expected": 12,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "AF",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "F"
+          ],
+          "expected": 26,
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-A",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "C",
+          "inputs": []
+        },
+        {
+          "id": "construct-D",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "D",
+          "inputs": []
+        },
+        {
+          "id": "construct-E",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "E",
+          "inputs": []
+        },
+        {
+          "id": "construct-F",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "F",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "AB",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "BC",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "AC",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "CD",
+          "residual": 3.552713678800501e-15,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "AD",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "DE",
+          "residual": 7.105427357601002e-15,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "AE",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "EF",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "AF",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "main-figure-nondegenerate",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "observed": 0.7226860220768009,
+          "minimum": 1e-08
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        34.0,
+        0.0
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        22.11764705882353,
+        23.12595270645763
+      ]
+    },
+    {
+      "id": "D",
+      "kind": "POINT",
+      "at": [
+        1.211114410252168,
+        29.97554339599667
+      ]
+    },
+    {
+      "id": "E",
+      "kind": "POINT",
+      "at": [
+        -12.95695987150894,
+        22.54145494168704
+      ]
+    },
+    {
+      "id": "F",
+      "kind": "POINT",
+      "at": [
+        -21.699864413921816,
+        14.321867350922142
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        34.0,
+        0.0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        34.0,
+        0.0
+      ],
+      "to": [
+        22.11764705882353,
+        23.12595270645763
+      ]
+    },
+    {
+      "id": "AC",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        22.11764705882353,
+        23.12595270645763
+      ]
+    },
+    {
+      "id": "CD",
+      "kind": "SEGMENT",
+      "from": [
+        22.11764705882353,
+        23.12595270645763
+      ],
+      "to": [
+        1.211114410252168,
+        29.97554339599667
+      ]
+    },
+    {
+      "id": "AD",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        1.211114410252168,
+        29.97554339599667
+      ]
+    },
+    {
+      "id": "DE",
+      "kind": "SEGMENT",
+      "from": [
+        1.211114410252168,
+        29.97554339599667
+      ],
+      "to": [
+        -12.95695987150894,
+        22.54145494168704
+      ]
+    },
+    {
+      "id": "AE",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        -12.95695987150894,
+        22.54145494168704
+      ]
+    },
+    {
+      "id": "EF",
+      "kind": "SEGMENT",
+      "from": [
+        -12.95695987150894,
+        22.54145494168704
+      ],
+      "to": [
+        -21.699864413921816,
+        14.321867350922142
+      ]
+    },
+    {
+      "id": "AF",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        -21.699864413921816,
+        14.321867350922142
+      ]
+    },
+    {
+      "id": "incircle1",
+      "kind": "CIRCLE",
+      "center": [
+        20.0,
+        8.546547739343037
+      ],
+      "radius": 8.546547739343037
+    },
+    {
+      "id": "incircle2",
+      "kind": "CIRCLE",
+      "center": [
+        8.360536582056849,
+        19.678523450781217
+      ],
+      "radius": 7.559289460184546
+    },
+    {
+      "id": "incircle3",
+      "kind": "CIRCLE",
+      "center": [
+        -4.961386409426553,
+        20.216774674257287
+      ],
+      "radius": 5.773502691896261
+    },
+    {
+      "id": "incircle4",
+      "kind": "CIRCLE",
+      "center": [
+        -14.079334865956245,
+        14.97572468137248
+      ],
+      "radius": 4.743416490252569
+    },
+    {
+      "id": "sumAnswer",
+      "kind": "EQUATION_LABEL",
+      "at": [
+        42,
+        10
+      ],
+      "text": "AD+AF=56",
+      "math": true,
+      "priority": 3
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 15,
+    "sourcePointLabels": {
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D",
+      "E": "E",
+      "F": "F"
+    },
+    "pointLabelAnchors": {},
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "AC": [
+        "A",
+        "C"
+      ],
+      "CD": [
+        "C",
+        "D"
+      ],
+      "AD": [
+        "A",
+        "D"
+      ],
+      "DE": [
+        "D",
+        "E"
+      ],
+      "AE": [
+        "A",
+        "E"
+      ],
+      "EF": [
+        "E",
+        "F"
+      ],
+      "AF": [
+        "A",
+        "F"
+      ]
+    },
+    "annotations": []
+  }
+}

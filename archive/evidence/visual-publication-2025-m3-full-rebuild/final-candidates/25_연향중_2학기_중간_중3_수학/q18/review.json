@@ -1,0 +1,294 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "7b52e650927c02279350f508acef047e5ddd346cd527cdb3cbf09042bfe87cf9",
+  "solutionSha256": "d3aca62fd82f99a0a4d3cbfdeb925b49e582182ff057be3282bf345668079fb6",
+  "coordinateModel": {
+    "originX": 154.25,
+    "originY": 180.0,
+    "sx": 40.75,
+    "sy": 40.75
+  },
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Coordinates are a constructed realization of the source geometry, not measurements from the sketch.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "P",
+      "unitScale": 4
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "O": [
+        0,
+        0
+      ],
+      "P": [
+        4,
+        0
+      ],
+      "A": [
+        1,
+        -1.7320508075688772
+      ],
+      "B": [
+        1,
+        1.7320508075688772
+      ]
+    },
+    "conditions": [
+      {
+        "id": "OA2",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "tolerance": 1e-07,
+        "expected": 2
+      },
+      {
+        "id": "OB2",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "tolerance": 1e-07,
+        "expected": 2
+      },
+      {
+        "id": "APperpOA",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "A",
+          "P",
+          "O",
+          "A"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "BPperpOB",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "B",
+          "P",
+          "O",
+          "B"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "Pangle60",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "tolerance": 1e-07,
+        "expected": 60
+      },
+      {
+        "id": "ABequal",
+        "kind": "EQUAL_DISTANCE",
+        "refs": [
+          "P",
+          "A",
+          "P",
+          "B"
+        ],
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-O",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "construct-P",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "P",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "B",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "OA2",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OB2",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "APperpOA",
+        "residual": 6.409875621278547e-17,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "BPperpOB",
+        "residual": 6.409875621278547e-17,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "Pangle60",
+        "residual": 7.105427357601002e-15,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "ABequal",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct-anchor-points",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "P"
+        ],
+        "observed": 4.0,
+        "minimum": 1e-06
+      }
+    ]
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "P",
+      "at": [
+        4,
+        0
+      ],
+      "name": "P"
+    },
+    {
+      "id": "A",
+      "at": [
+        1,
+        -1.7320508075688772
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        1,
+        1.7320508075688772
+      ],
+      "name": "B"
+    }
+  ],
+  "segments": [
+    {
+      "id": "PA",
+      "points": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "points": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "points": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 2
+    }
+  ],
+  "incidences": [
+    {
+      "id": "inc-circleO-A",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "inc-circleO-B",
+      "point": "B",
+      "circle": "circleO"
+    }
+  ],
+  "lines": [],
+  "angles": [
+    {
+      "id": "angleP",
+      "points": [
+        "A",
+        "P",
+        "B"
+      ],
+      "degrees": 60,
+      "marker": "ARC",
+      "text": "60°",
+      "factRole": "GIVEN"
+    }
+  ],
+  "lengths": [
+    {
+      "id": "radiusA",
+      "segment": "OA",
+      "value": 2,
+      "mode": "ADJACENT",
+      "text": "2 cm",
+      "factRole": "GIVEN",
+      "unit": "cm"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "area-conclusion",
+      "text": "4√3 cm²"
+    }
+  ]
+}

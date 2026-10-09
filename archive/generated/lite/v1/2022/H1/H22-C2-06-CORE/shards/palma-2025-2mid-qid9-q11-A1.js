@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_11_A1";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q11-A1",
+    "level": "하",
+    "difficultyBucket": 2,
+    "category": "명제",
+    "originalCategory": "명제",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE",
+    "subUnit": "명제 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "명제"
+    ],
+    "wide": false,
+    "content": "두 조건 $p$, $q$에 대하여 $p$가 $q$이기 위한 필요조건이지만 충분조건은 아닌 것은? (단, $x$는 실수이다.)",
+    "choices": [
+      "$p:x\\ge0$\n$q:x>2$",
+      "$p:x>2$\n$q:x\\ge0$",
+      "$p:x=0$\n$q:x^2=0$",
+      "$p:x>0$\n$q:x<0$",
+      "$p:-1\\le x\\le1$\n$q:-2\\le x\\le2$"
+    ],
+    "answer": "①",
+    "solution": "$p$가 $q$이기 위한 필요조건이면 $q\\Rightarrow p$가 참이고, 충분조건은 아니어야 하므로 $p\\Rightarrow q$는 거짓이어야 한다.\n①에서는 $x>2$이면 반드시 $x\\ge0$이다. 반대로 $x=1$은 $x\\ge0$을 만족하지만 $x>2$를 만족하지 않는다.\n②와 ⑤는 $p\\Rightarrow q$만 성립하고, ③은 두 조건이 동치이다. ④는 어느 방향의 함의도 성립하지 않는다.\n따라서 정답은 ①이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 11,
+    "slot": "A1",
+    "purposeGroup": "A"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q11-A1");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q11-A1","meta":{"rpmL1":"집합과 명제","rpmL2":"명제","rpmL3":"필요조건·충분조건","rpmL4":"조건 관계","rpmL4Namespace":"RPM_EXISTING_DRAFT","rpmPrimaryRecordId":"H1-RPM-247","rpmDraftAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmDraftAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","secondaryConceptKeys":[],"crossConceptKeys":[],"conditionKeys":[],"crossConceptRegistryRef":null,"conditionRegistryRef":null,"sourceKind":"generated","integrationPattern":"SEQUENTIAL","difficultyBucket":2,"level":"하","problemTypeKey":"PT_NEC_SUFF_RELATION","templateKey":"TPL_NEC_SUFF_DIRECT_JUDGMENT","standardCourse":"공통수학2","standardUnitKey":"H22-C2-06","subUnitKey":"H22-C2-06-CORE"},"metaFinalSha256":"f97b309c5490ec0b5f5422987ff76a5eaad5d6e8d136ecda16981e9dc188e74f","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q11-A1.json","sha256":"f20c92effdae37759756b8b13ee1ba2f6e3c1426fd84fa498520b1b3d7c78ce8","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q09_Q12_36","scopeUids":["ALITE-PALMA25-2MID-Q11-A1"],"uid":"ALITE-PALMA25-2MID-Q11-A1"},"metaReviewEvidenceSha256":"f20c92effdae37759756b8b13ee1ba2f6e3c1426fd84fa498520b1b3d7c78ce8","difficultyBucket":2,"level":"하","problemTypeKey":"PT_NEC_SUFF_RELATION","templateKey":"TPL_NEC_SUFF_DIRECT_JUDGMENT","secondaryConceptKeys":[],"crossConceptKeys":[],"conditionKeys":[],"integrationPattern":"SEQUENTIAL"});})();

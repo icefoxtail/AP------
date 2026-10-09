@@ -1,0 +1,167 @@
+{
+  "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
+  "school": "팔마고",
+  "batchId": "PALMA25_QID9_AUTO_12",
+  "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/shards/palma-2025-2mid-qid9-q12-C3.js",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "records": [
+    {
+      "generatedUid": "ALITE-PALMA25-2MID-Q12-C3",
+      "localOrdinal": 1,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "sourceQid": 12,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/shards/palma-2025-2mid-qid9-q12-C3.js",
+      "l2": "H22-C2-03-TANGENT",
+      "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+      "reviewApprovalReceipt": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q12-C3.json",
+      "rpmPrimary": {
+        "recordId": "H1-RPM-221",
+        "l3": "원의 접선",
+        "l4": "접점 현과 접선 길이 역조건"
+      },
+      "question": {
+        "id": 1,
+        "uid": "ALITE-PALMA25-2MID-Q12-C3",
+        "level": "상",
+        "difficultyBucket": 4,
+        "category": "원의 방정식",
+        "originalCategory": "원의 방정식",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-TANGENT",
+        "subUnit": "원과 접선",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "원의 방정식"
+        ],
+        "wide": false,
+        "content": "원 $x^2+y^2=r^2$ $(0<r<8)$ 밖의 점 $A(8,0)$에서 이 원에 그은 두 접선의 접점을 각각 $P,Q$라 한다. 원점 $O$에서 직선 $PQ$까지의 거리를 $d$, 선분 $AP$의 길이를 $\\ell$이라 하자. $d+\\ell=\\dfrac{19}{2}$일 때, 가능한 모든 $r^2$의 값의 합은?",
+        "choices": [
+          "$28$",
+          "$88$",
+          "$60$",
+          "$40$",
+          "$168$"
+        ],
+        "answer": "②",
+        "solution": "접점의 현 $PQ$는 $8x=r^2$이므로 $d=\\dfrac{r^2}{8}$이다.\n반지름 $OP$와 접선 $AP$가 수직이므로 $OP^2+AP^2=OA^2$, 즉 $r^2+\\ell^2=64$이다.\n따라서 $r^2=64-\\ell^2$를 거리 조건에 대입하면\n$\\dfrac{64-\\ell^2}{8}+\\ell=\\dfrac{19}{2}$이고, 양변에 $8$을 곱해 정리하면\n$64-\\ell^2+8\\ell=76$, 곧 $\\ell^2-8\\ell+12=0$이다.\n$(\\ell-2)(\\ell-6)=0$이므로 $\\ell=2$ 또는 $\\ell=6$이다.\n각각 $r^2=64-2^2=60$, $r^2=64-6^2=28$이며 두 값 모두 $0<r<8$을 만족한다.\n따라서 가능한 모든 $r^2$의 값의 합은 $60+28=88$이므로 정답은 ②이다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "sourceQid": 12,
+        "slot": "C3",
+        "purposeGroup": "C",
+        "meta": {
+          "rpmL1": "도형의 방정식",
+          "rpmL2": "원의 방정식",
+          "rpmL3": "원의 접선",
+          "rpmL4": "EXT-H1-C2-03-Q12-CONTACT-REVERSE|접점 현과 접선 길이 역조건",
+          "rpmL4Namespace": "GENERATED_EXT_L4",
+          "rpmPrimaryRecordId": "H1-RPM-221",
+          "rpmAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "rpmAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+          "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-l4/registry.json",
+          "generatedL4RegistrySha256": "14605d85adb58dfb34e741b81ac39c015e45b0b801986c124d5f8008c73d6299",
+          "secondaryConceptKeys": [],
+          "crossConceptKeys": [
+            "CC_POINT_LINE_DISTANCE",
+            "CC_PYTHAGOREAN",
+            "CC_QUADRATIC_EQUATION"
+          ],
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-meta/palma-q12-cross-concepts.json",
+          "conditionRegistryRef": null,
+          "sourceKind": "generated",
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 4,
+          "level": "상",
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TM_TANGENT_LENGTH",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-03",
+          "subUnitKey": "H22-C2-03-TANGENT"
+        },
+        "metaFinalSha256": "19347cf1b38d4fac67816a1d7c5a9742ba2a99aabb54e80075bcef86d0f18331",
+        "metaReviewEvidence": {
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q12-C3.json",
+          "sha256": "2348709cb85d13cafa195288780141798a5624d81827d7fbe56426e4b4ae139c",
+          "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+          "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q09_Q12_36",
+          "scopeUids": [
+            "ALITE-PALMA25-2MID-Q12-C3"
+          ],
+          "uid": "ALITE-PALMA25-2MID-Q12-C3"
+        },
+        "metaReviewEvidenceSha256": "2348709cb85d13cafa195288780141798a5624d81827d7fbe56426e4b4ae139c",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [
+          "CC_POINT_LINE_DISTANCE",
+          "CC_PYTHAGOREAN",
+          "CC_QUADRATIC_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원의 접선",
+        "rpmL4": "EXT-H1-C2-03-Q12-CONTACT-REVERSE|접점 현과 접선 길이 역조건",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "rpmPrimaryRecordId": "H1-RPM-221",
+        "rpmAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "rpmAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-l4/registry.json",
+        "generatedL4RegistrySha256": "14605d85adb58dfb34e741b81ac39c015e45b0b801986c124d5f8008c73d6299",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [
+          "CC_POINT_LINE_DISTANCE",
+          "CC_PYTHAGOREAN",
+          "CC_QUADRATIC_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-meta/palma-q12-cross-concepts.json",
+        "conditionRegistryRef": null,
+        "sourceKind": "generated",
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "level": "상",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "subUnitKey": "H22-C2-03-TANGENT"
+      },
+      "metaFinalSha256": "19347cf1b38d4fac67816a1d7c5a9742ba2a99aabb54e80075bcef86d0f18331",
+      "metaReviewEvidence": {
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q12-C3.json",
+        "sha256": "2348709cb85d13cafa195288780141798a5624d81827d7fbe56426e4b4ae139c",
+        "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+        "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q09_Q12_36",
+        "scopeUids": [
+          "ALITE-PALMA25-2MID-Q12-C3"
+        ],
+        "uid": "ALITE-PALMA25-2MID-Q12-C3"
+      },
+      "metaReviewEvidenceSha256": "2348709cb85d13cafa195288780141798a5624d81827d7fbe56426e4b4ae139c",
+      "sourceShardGitSha": "645d96b992b611ca8abcf402c0909e31a4230b51"
+    }
+  ],
+  "sourceShardGitSha": "645d96b992b611ca8abcf402c0909e31a4230b51"
+}

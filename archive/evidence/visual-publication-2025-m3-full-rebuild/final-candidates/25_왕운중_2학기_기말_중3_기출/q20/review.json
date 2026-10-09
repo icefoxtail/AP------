@@ -1,0 +1,465 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "cb9340726ed574fed56570abb2e628df248af0492571a2beb3b9dcd1420feddf",
+  "solutionSha256": "8d66c206c34c34a01116f13ec6d02f0b206c1c00436175fc4aa5887c30f49ed4",
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "A diameter of 9 cm gives radius 9/2; the tangent is horizontal, AH=8 and AH∥OT, so the right triangle HTO has HT=2√2 and area AHT=8√2.",
+    "normalization": {
+      "originPoint": "H",
+      "xAxisPoint": "T",
+      "unitScale": 2.8284271247461903
+    },
+    "freeVariables": [
+      {
+        "id": "heightAH",
+        "value": 8
+      },
+      {
+        "id": "radius",
+        "value": 4.5
+      }
+    ],
+    "pointCoordinates": {
+      "H": [
+        0.0,
+        0.0
+      ],
+      "A": [
+        0.0,
+        8.0
+      ],
+      "T": [
+        2.8284271247461903,
+        0.0
+      ],
+      "C": [
+        6.82842712474619,
+        0.0
+      ],
+      "O": [
+        2.8284271247461903,
+        4.5
+      ],
+      "B": [
+        5.656854249492381,
+        1.0
+      ]
+    },
+    "conditions": [
+      {
+        "id": "incA",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "expected": 4.5,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "incB",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "expected": 4.5,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "incT",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "T"
+        ],
+        "expected": 4.5,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "diameterAB",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 9,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "heightAH",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "H"
+        ],
+        "expected": 8,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "baseHT",
+        "kind": "DISTANCE",
+        "refs": [
+          "H",
+          "T"
+        ],
+        "expected": 2.8284271247461903,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "perpAtH",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "A",
+          "H",
+          "H",
+          "T"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "tangentAtT",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "T",
+          "T",
+          "C"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "collinearHTC",
+        "kind": "COLLINEAR",
+        "refs": [
+          "H",
+          "T",
+          "C"
+        ],
+        "tolerance": 1e-06
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "originH",
+        "operation": "SOURCE_ORIGIN",
+        "output": "H",
+        "inputs": []
+      },
+      {
+        "id": "baseT",
+        "operation": "NORMALIZED_TANGENT_BASE",
+        "output": "T",
+        "inputs": [
+          "H"
+        ]
+      },
+      {
+        "id": "radiusOT",
+        "operation": "PERPENDICULAR_RADIUS",
+        "output": "O",
+        "inputs": [
+          "T"
+        ]
+      },
+      {
+        "id": "pointA",
+        "operation": "CIRCLE_POINT_FOR_HEIGHT",
+        "output": "A",
+        "inputs": [
+          "O",
+          "H"
+        ]
+      },
+      {
+        "id": "antipodeB",
+        "operation": "DIAMETRAL_OPPOSITE",
+        "output": "B",
+        "inputs": [
+          "O",
+          "A"
+        ]
+      },
+      {
+        "id": "externalC",
+        "operation": "TANGENT_LINE_POINT",
+        "output": "C",
+        "inputs": [
+          "T"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "incA",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "incB",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "incT",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "diameterAB",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "heightAH",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "baseHT",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "perpAtH",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "tangentAtT",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "collinearHTC",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct_AB",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "observed": 9.0,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_AH",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "H"
+        ],
+        "observed": 8.0,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_HT",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "H",
+          "T"
+        ],
+        "observed": 2.8284271247461903,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_TC",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "T",
+          "C"
+        ],
+        "observed": 3.9999999999999996,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_OT",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "T"
+        ],
+        "observed": 4.5,
+        "minimum": 1e-05
+      }
+    ]
+  },
+  "coordinateModel": {
+    "originX": 106.66666666666667,
+    "originY": 405.33333333333337,
+    "sx": 37.333333333333336,
+    "sy": 37.333333333333336
+  },
+  "points": [
+    {
+      "id": "H",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "H"
+    },
+    {
+      "id": "A",
+      "at": [
+        0.0,
+        8.0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "T",
+      "at": [
+        2.8284271247461903,
+        0.0
+      ],
+      "name": "T"
+    },
+    {
+      "id": "C",
+      "at": [
+        6.82842712474619,
+        0.0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "O",
+      "at": [
+        2.8284271247461903,
+        4.5
+      ],
+      "name": "O"
+    },
+    {
+      "id": "B",
+      "at": [
+        5.656854249492381,
+        1.0
+      ],
+      "name": "B"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AH",
+      "points": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "HT",
+      "points": [
+        "H",
+        "T"
+      ]
+    },
+    {
+      "id": "TC",
+      "points": [
+        "T",
+        "C"
+      ]
+    },
+    {
+      "id": "OT",
+      "points": [
+        "O",
+        "T"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        2.8284271247461903,
+        4.5
+      ],
+      "radius": 4.5
+    }
+  ],
+  "incidences": [
+    {
+      "id": "incA",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "incB",
+      "point": "B",
+      "circle": "circleO"
+    },
+    {
+      "id": "incT",
+      "point": "T",
+      "circle": "circleO"
+    }
+  ],
+  "angles": [
+    {
+      "id": "rightH",
+      "points": [
+        "A",
+        "H",
+        "T"
+      ],
+      "degrees": 90,
+      "marker": "SQUARE",
+      "text": "90°",
+      "showLabel": false,
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rightT",
+      "points": [
+        "O",
+        "T",
+        "C"
+      ],
+      "degrees": 90,
+      "marker": "SQUARE",
+      "text": "90°",
+      "showLabel": false,
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "lengths": [],
+  "regions": [
+    {
+      "id": "areaAHT",
+      "points": [
+        "A",
+        "H",
+        "T"
+      ],
+      "value": 11.313708498984761,
+      "text": "8√(2)",
+      "labelAt": [
+        0.8,
+        1.2
+      ],
+      "factRole": "CONCLUSION"
+    }
+  ],
+  "otherLabels": [
+    {
+      "id": "measureNote",
+      "text": "AB=9 cm; AH=8 cm; HT=2√2 cm"
+    }
+  ]
+}

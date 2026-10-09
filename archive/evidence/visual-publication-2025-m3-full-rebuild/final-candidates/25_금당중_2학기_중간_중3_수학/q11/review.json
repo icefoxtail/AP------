@@ -1,0 +1,240 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "daaae1df4071544541ab2d7dd5ddcf559036a1ccfa6511bef22d3a24fe7fc8eb",
+  "solutionSha256": "21dc7b63ed7578cc250877216510b95ccf1030853f5804906cba563f73ad3563",
+  "coordinateModel": {
+    "originX": 208.041238209143,
+    "originY": 374.2768775266123,
+    "sx": 49.14874831559186,
+    "sy": 49.14874831559186
+  },
+  "points": [
+    {
+      "id": "B",
+      "at": [
+        0,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        2.9282032302755088,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "A",
+      "at": [
+        1.4641016151377544,
+        5.464101615137754
+      ],
+      "name": "A"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "points": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "circles": [],
+  "incidences": [],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "lenAB",
+      "segment": "AB",
+      "value": 5.656854249492381,
+      "mode": "ADJACENT",
+      "text": "4√(2)",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "lenAC",
+      "segment": "CA",
+      "value": 5.656854249492381,
+      "mode": "ADJACENT",
+      "text": "4√(2)",
+      "factRole": "GIVEN"
+    }
+  ],
+  "regions": [
+    {
+      "id": "triABC",
+      "points": [
+        "A",
+        "B",
+        "C"
+      ],
+      "value": 8,
+      "text": "8",
+      "factRole": "CONCLUSION"
+    }
+  ],
+  "otherLabels": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed symmetric realization of AB=AC=4√2 and base angle 75°, with exact area 8.",
+    "normalization": {
+      "originPoint": "B",
+      "xAxisPoint": "C",
+      "unitScale": 2.9282032302755088
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "B": [
+        0,
+        0
+      ],
+      "C": [
+        2.9282032302755088,
+        0
+      ],
+      "A": [
+        1.4641016151377544,
+        5.464101615137754
+      ]
+    },
+    "conditions": [
+      {
+        "id": "AB4sqrt2",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 5.656854249492381,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "AC4sqrt2",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "expected": 5.656854249492381,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "B75",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "expected": 75,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "C75",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "expected": 75,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "A30",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "expected": 30,
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "C",
+        "inputs": [
+          "B"
+        ]
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "A",
+        "inputs": [
+          "B",
+          "C"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "AB4sqrt2",
+        "residual": 8.881784197001252e-16,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "AC4sqrt2",
+        "residual": 8.881784197001252e-16,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "B75",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "C75",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "A30",
+        "residual": 2.1316282072803006e-14,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-witness",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "observed": 0.9659258262890683,
+        "minimum": 1e-09
+      }
+    ]
+  }
+}
