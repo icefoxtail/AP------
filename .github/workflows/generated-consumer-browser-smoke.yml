@@ -6,6 +6,12 @@ on:
     paths:
       - 'archive/generated-bank.html'
       - 'archive/data/generated-lite-consumer/**'
+      - 'archive/generated/lite/v1/**'
+      - 'archive/tools/generated-meta-retention-gate.cjs'
+      - 'archive/tools/generated-meta/**'
+      - 'archive/tools/generated-meta/register-approved-generated-meta.test.mjs'
+      - 'tests/generated-meta-retention.test.cjs'
+      - 'tests/archive2-generated-bank-registration.test.js'
       - 'tools/check-generated-bank-browser.cjs'
       - '.github/workflows/generated-consumer-browser-smoke.yml'
   pull_request:
@@ -13,6 +19,12 @@ on:
     paths:
       - 'archive/generated-bank.html'
       - 'archive/data/generated-lite-consumer/**'
+      - 'archive/generated/lite/v1/**'
+      - 'archive/tools/generated-meta-retention-gate.cjs'
+      - 'archive/tools/generated-meta/**'
+      - 'archive/tools/generated-meta/register-approved-generated-meta.test.mjs'
+      - 'tests/generated-meta-retention.test.cjs'
+      - 'tests/archive2-generated-bank-registration.test.js'
       - 'tools/check-generated-bank-browser.cjs'
       - '.github/workflows/generated-consumer-browser-smoke.yml'
   workflow_dispatch:
@@ -30,13 +42,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Verify 283 approved consumer rows with existing and B06 source SHA and student finder
+      - name: Enforce post-cutover generated Meta projection and legacy isolation
+        run: node --test tests/generated-meta-retention.test.cjs
+      - name: Enforce approved Meta registration, byte binding, CAS, rollback, and withdrawal
+        run: node --test archive/tools/generated-meta/register-approved-generated-meta.test.mjs
+      - name: Verify approved consumer rows and preserved source SHA
         run: node --test tests/archive2-generated-bank-registration.test.js tests/archive2-generated-bank-subjective-table.test.cjs tests/archive2-bokseong-b04-b05-consumer.test.cjs tests/archive2-bokseong-b06-consumer.test.cjs tests/archive2-bokseong-b01-b02-consumer.test.cjs tests/archive2-bokseong-b02-q11-semantic-consumer.test.cjs tests/archive2-bokseong-b05-q22-consumer.test.cjs
       - uses: browser-actions/setup-chrome@v1
         id: chrome
         with:
           chrome-version: stable
-      - name: B03-B06 new SVG original PNG wrapper and 283 UID lookup with HOLD rejection
+      - name: B03-B06 and Palma QID9 36 Chrome lookup with HOLD rejection
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
         run: node tools/check-generated-bank-browser.cjs

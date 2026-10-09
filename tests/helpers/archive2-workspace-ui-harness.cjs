@@ -89,6 +89,7 @@ function workspaceHarness(fetcher = async () => { throw new Error('unexpected ne
     context.document.activeElement = null;
   };
   const ctx = vm.createContext(context);
+  vm.runInContext(read('problem-bank-meta.js'), ctx);
   vm.runInContext(read('archive2-canonical.js'), ctx);
   vm.runInContext(read('archive2-core.js'), ctx);
   vm.runInContext(read('archive2-history.js'), ctx);

@@ -11,7 +11,7 @@ const fixture=()=>{
   for(let i=1;i<=count;i++){
    const uid='ALITE-TEST-'+shardName.toUpperCase()+'-'+String(i).padStart(3,'0');
    const subjective=school==='복성고'&&i===23;
-   records.push({uid,school,year:2026,grade:'고1',subject:'공통수학1',sourceQid:i,sourceExamBlobSha:sourceSha,localOrdinal:i,shard,sourceKind:'generated'});
+   records.push({uid,school,year:2026,grade:'고1',subject:'공통수학1',sourceQid:i,sourceExamBlobSha:sourceSha,localOrdinal:i,shard,sourceKind:'generated',consumerSelectable:true,approval:'REVIEW_APPROVED',reviewStatus:'REVIEW_PASS'});
    items.push({generatedUid:uid,localOrdinal:i,sourceKind:'generated',question:{questionType:subjective?'서술형':'객관식',content:subjective?'표를 확인하세요. '+table+'경우의 수를 구하시오.':'값을 구하시오.',choices:subjective?[]:['1','2','3','4','5'],answer:subjective?'$8$':'③',solution:'해설'}});
   }
   shards[shard]={schemaVersion:'ALIVE_GENERATED_CONSUMER_SHARD_V1',records:items};

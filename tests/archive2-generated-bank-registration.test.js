@@ -34,29 +34,35 @@ function contentFingerprint(question) {
   return 'fnv1a64-utf16:' + n.toString(16).padStart(16, '0');
 }
 
-test('consumer DB preserves previous approvals, adds four Palma questions and excludes holds', () => {
+test('consumer DB preserves previous approvals, registers current Palma rows and excludes holds', () => {
   assert.equal(index.schemaVersion, 'ALIVE_GENERATED_CONSUMER_INDEX_V1');
   assert.equal(index.approvedCount, index.records.length);
-  assert.equal(index.records.length, 287);
+  assert.ok(index.records.length>=382);
   assert.equal(hyocheon.length, 92);
   assert.equal(b03.length, 38);
   assert.equal(index.approvedBySchool['효천고'], 92);
   assert.equal(index.approvedBySchool['복성고'],191);
-  assert.equal(palma.length, 4);
-  assert.equal(index.approvedBySchool['팔마고'], 4);
-  assert.deepEqual(palma.map(r => r.uid), [
+  assert.ok(palma.length>=99);
+  assert.equal(index.approvedBySchool['팔마고'],palma.length);
+  assert.deepEqual(palma.filter(r => r.uid.includes('-B07-')).map(r => r.uid), [
     'ALITE-PALMA25-H1-2MID-B07-Q01-BP01',
     'ALITE-PALMA25-H1-2MID-B07-Q01-BP02',
     'ALITE-PALMA25-H1-2MID-B07-Q13-BP01',
-    'ALITE-PALMA25-H1-2MID-B07-Q13-BP02'
+    'ALITE-PALMA25-H1-2MID-B07-Q13-BP02',
+    'ALITE-PALMA25-H1-2MID-B07-Q13-BP03'
   ]);
-  assert.equal(new Set(index.records.map(r => r.uid)).size, 287);
+  assert.equal(new Set(index.records.map(r => r.uid)).size,index.records.length);
   assert.ok(index.records.slice(0, 92).every(r => r.school === '효천고'));
   assert.ok(index.records.slice(92,130).every(r => r.school === '복성고' && r.approval === 'REVIEW_APPROVED'));
   assert.ok(index.records.slice(130,165).every(r => r.school === '복성고' && r.approval === 'USER_DIRECTED_OPERATING_APPROVED'));
   assert.ok(index.records.slice(165,273).every(r => r.school === '복성고' && r.approval === 'REVIEW_APPROVED'));
   assert.ok(index.records.every(r => !holdUids.has(r.uid)));
-  assert.ok(index.records.every(r => r.sourceKind === 'generated' && /^ALITE-[A-Za-z0-9-]+$/.test(r.uid)));
+  // Preserve exactly six reviewed B05/B06 source UIDs; reject all other non-ALITE identifiers.
+  const legacyIds=new Set(["B05_Q04_C01_DISTANCE_SUM_MIN","B05_Q09_C01_CENTROID_RATIO_RECOVERY","B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY","B06_Q05_C01_TWO_POINT_LINE_INTERSECTION","B06_Q05_C02_INTERSECTION_PARALLEL_LINE","B06_Q23_C01_PARAMETER_INTERSECTION_EQUIDISTANCE"]);
+  const historical=index.records.filter(r=>legacyIds.has(r.uid));
+  assert.equal(historical.length,6);
+  assert.ok(historical.every(r=>r.school==='팔마고'&&r.year===2025&&r.sourceKind==='generated'&&r.approval==='REVIEW_APPROVED'&&r.reviewStatus==='REVIEW_PASS'&&r.consumerSelectable===true));
+  assert.ok(index.records.every(r=>r.sourceKind==='generated'&&(/^ALITE-[A-Za-z0-9-]+$/.test(r.uid)||legacyIds.has(r.uid))));
   assert.equal(index.records.filter(r => r.uid.includes('BSG26-B01R2-')).length, 45);
   assert.equal(index.records.filter(r => r.uid.includes('BSG26-B02-')).length, 38);
   assert.equal(gitSha(fs.readFileSync(path.join(root, originalFile))), '8266fa476906e9134b94f23e803bd3b2fb26ece4');
@@ -124,15 +130,16 @@ test('38 B03 approved consumer rows resolve to exact source/meta and SHA-bound c
   assert.equal(b03.filter(r => r.reviewApprovalBasis.includes('USER_DIRECTED_OVERRIDE')).length, 4);
 });
 
-test('four Palma approvals resolve through the exact runtime shard path and candidate UID', () => {
+test('five Palma B07 approvals resolve through the exact runtime shard path and candidate UID', () => {
   const expectedUids = [
     'ALITE-PALMA25-H1-2MID-B07-Q01-BP01',
     'ALITE-PALMA25-H1-2MID-B07-Q01-BP02',
     'ALITE-PALMA25-H1-2MID-B07-Q13-BP01',
-    'ALITE-PALMA25-H1-2MID-B07-Q13-BP02'
+    'ALITE-PALMA25-H1-2MID-B07-Q13-BP02',
+    'ALITE-PALMA25-H1-2MID-B07-Q13-BP03'
   ];
-  assert.deepEqual(palma.map(r => r.uid), expectedUids);
-  for (const row of palma) {
+  assert.deepEqual(palma.filter(r => r.uid.includes('-B07-')).map(r => r.uid), expectedUids);
+  for (const row of palma.filter(r => r.uid.includes('-B07-'))) {
     assert.equal(row.consumerSelectable, true, row.uid);
     assert.equal(row.approval, 'REVIEW_APPROVED', row.uid);
     assert.equal(row.reviewStatus, 'REVIEW_PASS', row.uid);
@@ -150,6 +157,38 @@ test('four Palma approvals resolve through the exact runtime shard path and cand
     assert.ok('①②③④⑤'.includes(question.answer));
     assert.equal(question.subUnitKey, row.l2);
     assert.equal(matches[0].sourceExamBlobSha, row.sourceExamBlobSha);
+  }
+});
+
+
+test('new Palma QID9 36 register with four canonical parent units and retain B07 existing four', () => {
+  const fresh=palma.filter(r=>/^ALITE-PALMA25-2MID-Q0[1-4]-[ABC][123]$/.test(r.uid));
+  assert.equal(fresh.length,36);
+  assert.equal(new Set(fresh.map(r=>r.uid)).size,36);
+  const expectedL2=['H22-C2-05-CORE','H22-C2-06-CORE','H22-C2-03-CIRCLE_EQUATION','H22-C2-01-COORDINATE_METRIC'];
+  for(let n=1;n<=4;n++){
+    const batch=fresh.filter(r=>r.sourceQid===n);
+    assert.equal(batch.length,9);
+    assert.ok(batch.every(r=>r.l2===expectedL2[n-1]));
+  }
+  for(const row of fresh){
+    assert.equal(row.approval,'USER_DIRECTED_OPERATING_APPROVED');
+    assert.equal(row.reviewApprovalBasis,'USER_DIRECTED_OPERATING_APPROVAL_20261009_QID9_36');
+    assert.equal(row.consumerSelectable,true);
+    const bytes=fs.readFileSync(path.join(archive,row.shard));
+    assert.equal(gitSha(bytes),row.shardGitBlobSha,row.uid);
+    const shard=JSON.parse(bytes);
+    const matches=shard.records.filter(x=>x.generatedUid===row.uid&&x.localOrdinal===row.localOrdinal);
+    assert.equal(matches.length,1,row.uid);
+    const q=matches[0].question;
+    assert.equal(q.uid,row.uid);
+    assert.equal(q.subUnitKey,row.l2);
+    assert.equal(q.standardUnitKey,row.l1);
+    assert.equal(q.choices.length,5);
+    assert.equal(new Set(q.choices).size,5);
+    assert.ok('①②③④⑤'.includes(q.answer));
+    assert.ok(q.content&&q.solution);
+    assert.equal(q.sourceKind,'generated');
   }
 });
 
@@ -190,15 +229,18 @@ test('consumer UI lists only selectable generated rows, searches individual ques
   };
   let printed=0;
   vm.runInNewContext(code,{document,window:{print:()=>printed++},fetch:fetchStub,console,Map,Set,Promise},{timeout:2000});
-  await new Promise(resolve=>setTimeout(resolve,25));
   const el=id=>document.getElementById(id);
+  // An index of hundreds of questions can take longer than a fixed 25ms VM fixture delay.
+  for(let attempt=0;attempt<150&&el('exam-cards').children.length!==2;attempt++){
+    await new Promise(resolve=>setTimeout(resolve,20));
+  }
   const cards=el('exam-cards').children;
-  assert.equal(cards.length,1);
+  assert.equal(cards.length,2);
   assert.equal(el('print').disabled,true);
   const bok=cards.find(x=>x.children[0].textContent.includes('복성고'));
   const hyo=cards.find(x=>x.children[0].textContent.includes('효천고'));
   assert.ok(bok);
-  assert.equal(hyo,undefined);
+  assert.ok(hyo);
   assert.match(bok.children[1].textContent,/23문항/);
   bok.onclick();await el('print').listeners.click();
   assert.equal(printed,1);
@@ -206,7 +248,7 @@ test('consumer UI lists only selectable generated rows, searches individual ques
   assert.match(el('paper-title').textContent,/복성고/);
   const search=el('generated-search');
   search.value='효천고';search.listeners.input();
-  assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,0);
+  assert.ok(el('generated-results').children.filter(x=>x.tag==='article').length>0);
   search.value='복성고';search.listeners.input();
   assert.ok(el('generated-results').children.length>0);
   const card=el('generated-results').children[0];
@@ -222,17 +264,22 @@ test('consumer UI lists only selectable generated rows, searches individual ques
   assert.equal(el('paper-items').children.length,1);
   const textOf=node=>String(node.textContent||'')+node.children.map(textOf).join('');
   assert.ok(!textOf(el('paper-items')).includes('정답:'));
-  assert.equal(index.records.length,287);
-  assert.equal(selectableCount(index),195);
+  assert.ok(index.records.length>=382);
+  assert.equal(selectableCount(index),index.approvedCount);
   assert.ok(index.records.every(r=>!holdUids.has(r.uid)));
   search.value='팔마고';search.listeners.input();
-  assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,4);
+  // Up to 50 cards are displayed; search by UID reaches every approved Palma question.
+  assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,Math.min(50,palma.length));
+  search.value=palma.at(-1).uid;search.listeners.input();
+  assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,1);
+  search.value='팔마고';search.listeners.input();
   const palmaCard=el('generated-results').children.find(x=>x.tag==='article');
   const palmaActions=palmaCard.children.find(x=>x.className==='generated-actions');
   const palmaOpen=palmaActions.children.find(x=>x.textContent==='문항 열기');
   await palmaOpen.listeners.click();
   assert.ok(!textOf(el('generated-preview')).includes('정답'));
   assert.ok(!textOf(el('generated-preview')).includes('해설'));
+  // B07 BP03 is now reviewed and released; its exact UID must be searchable.
   search.value='ALITE-PALMA25-H1-2MID-B07-Q13-BP03';search.listeners.input();
-  assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,0);
+  assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,1);
 });
