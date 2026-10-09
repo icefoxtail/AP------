@@ -53,8 +53,11 @@
       "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
       "releasedCount": 0,
       "contentReviewStatus": "OPEN_BOOK_CONTENT_REVIEW_20261009_COMPLETED",
-      "releaseGateStatus": "PENDING_GENERATED_CONSUMER_AND_META_READBACK",
-      "reviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_36_OPENBOOK_REVIEW_REPAIR_20261009.md"
+      "releaseGateStatus": "STATIC_READY_PR_MERGE_AND_CHROME_PENDING",
+      "reviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_36_OPENBOOK_REVIEW_REPAIR_20261009.md",
+      "consumerRegistrationStatus": "STATIC_REGISTERED_9_OF_9",
+      "canonicalGeneratedSourceJs": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/shards/palma-2025-2mid-qid9-q01.js",
+      "studentLookupVerifiedCount": 0
     },
     {
       "qid": 2,
@@ -97,8 +100,11 @@
       "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
       "releasedCount": 0,
       "contentReviewStatus": "OPEN_BOOK_CONTENT_REVIEW_20261009_COMPLETED",
-      "releaseGateStatus": "PENDING_GENERATED_CONSUMER_AND_META_READBACK",
-      "reviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_36_OPENBOOK_REVIEW_REPAIR_20261009.md"
+      "releaseGateStatus": "STATIC_READY_PR_MERGE_AND_CHROME_PENDING",
+      "reviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_36_OPENBOOK_REVIEW_REPAIR_20261009.md",
+      "consumerRegistrationStatus": "STATIC_REGISTERED_9_OF_9",
+      "canonicalGeneratedSourceJs": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/shards/palma-2025-2mid-qid9-q02.js",
+      "studentLookupVerifiedCount": 0
     },
     {
       "qid": 3,
@@ -144,8 +150,11 @@
       "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
       "releasedCount": 0,
       "contentReviewStatus": "OPEN_BOOK_CONTENT_REVIEW_20261009_COMPLETED",
-      "releaseGateStatus": "PENDING_GENERATED_CONSUMER_AND_META_READBACK",
-      "reviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_36_OPENBOOK_REVIEW_REPAIR_20261009.md"
+      "releaseGateStatus": "STATIC_READY_PR_MERGE_AND_CHROME_PENDING",
+      "reviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_36_OPENBOOK_REVIEW_REPAIR_20261009.md",
+      "consumerRegistrationStatus": "STATIC_REGISTERED_9_OF_9",
+      "canonicalGeneratedSourceJs": "archive/generated/lite/v1/2022/H1/H22-C2-03-CIRCLE_EQUATION/shards/palma-2025-2mid-qid9-q03.js",
+      "studentLookupVerifiedCount": 0
     },
     {
       "qid": 4,
@@ -183,9 +192,12 @@
       "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
       "releasedCount": 0,
       "contentReviewStatus": "OPEN_BOOK_CONTENT_REVIEW_20261009_COMPLETED",
-      "releaseGateStatus": "PENDING_GENERATED_CONSUMER_AND_META_READBACK",
+      "releaseGateStatus": "STATIC_READY_PR_MERGE_AND_CHROME_PENDING",
       "reviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_36_OPENBOOK_REVIEW_REPAIR_20261009.md",
-      "contentReviewNote": "Q04 9/9 wrong-choice index 4/4 checked, C2/C3 exact numeric witness fresh; consumer not registered."
+      "contentReviewNote": "Q04 9/9 wrong-choice index 4/4 checked, C2/C3 exact numeric witness fresh; consumer not registered.",
+      "consumerRegistrationStatus": "STATIC_REGISTERED_9_OF_9",
+      "canonicalGeneratedSourceJs": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-qid9-q04.js",
+      "studentLookupVerifiedCount": 0
     }
   ],
   "metrics": {
@@ -203,11 +215,14 @@
     "openBookContentReviewed": 36,
     "contentReviewKeep": 24,
     "contentReviewRevised": 10,
-    "contentReviewRedesigned": 2
+    "contentReviewRedesigned": 2,
+    "staticConsumerRegisteredNew": 36,
+    "generatedCanonicalJSCount": 36,
+    "studentLookupBrowserVerified": 0
   },
   "nextSourceQid": 5,
   "legacyMainCandidates": "기존 팔마고 27개 후보는 main의 별도 작업으로 보존. 신규 27개와 합산한 54를 이번 생성분으로 보지 말 것.",
-  "publication": "NOT_RELEASED_REVIEW_QUEUED",
+  "publication": "WORK_BRANCH_CONSUMER_36_STATIC_REGISTERED_MAIN_MERGE_PENDING",
   "workflow": {
     "create": "ONE_QID_AT_A_TIME_ONE_COMMIT_IN_SAME_EXAM_BRANCH",
     "review": "BATCH_OPEN_BOOK_STEM_FIRST_MATH_SOLUTION_TRACE_META",
@@ -235,6 +250,7 @@
     ],
     "reviewLedger": "GPT_QID9_36_OPENBOOK_REVIEW_REPAIR_20261009.md",
     "correctiveFollowUp": "2026-10-09: Q04 B2/C1 reason-index duplicates removed, B3/B1 error path evidence refreshed, C2/C3 revised student-facing target rebound to updated numericalSpotCheck. Current counts reflect B3 promoted from KEEP to REVISED.",
-    "evidenceFreshness": "REVISED_Q04_NUMERICAL_SPOT_CHECK_BINDING_COMPLETED; NOT_A_RELEASE_GATE"
+    "evidenceFreshness": "REVISED_Q04_NUMERICAL_SPOT_CHECK_BINDING_COMPLETED; NOT_A_RELEASE_GATE",
+    "studentReleaseDecision": "USER_DIRECTED_OPERATING_APPROVAL_20261009_QID9_36"
   }
 }
