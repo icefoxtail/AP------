@@ -44,7 +44,7 @@ const main=()=>{
      p.items?.length===9&&p.items.every(z=>z.reviewStatus==='GPT_OPEN_BOOK_REVIEW_PASS');
  });
  const approved=[...manifest.qidLedger.filter(e=>e.qid>=5 && e.reviewStatus===approve),
-   ...completed.map(qid=>({qid,reviewStatus:'REVIEW_APPROVED',
+   ...completed.map(qid=>({qid,reviewStatus:'REVIEW_PASS',
      qualityApprovalBasis:'GPT_OPEN_BOOK_REVIEW_PASS_20261009_PALMA_Q13_Q16_36'}))];
  requireTrue(index.approvedCount===index.records.length,'INDEX_COUNT_DRIFT');
  requireTrue(new Set(index.records.map(x=>x.uid)).size===index.records.length,'INDEX_DUPLICATE_UID');
@@ -52,8 +52,8 @@ const main=()=>{
   const n=item.qid,ns=String(n).padStart(2,'0'),base=DIR+'GPT_QID9_Q'+ns+'_PACKAGE.json';
   requireTrue(exists(base),'APPROVED_PACKAGE_MISSING:'+n);
   const pkg=json(base),basis=item.qualityApprovalBasis||item.approvalBasis;
-  const approvalStatus=item.reviewStatus==='REVIEW_APPROVED'?'REVIEW_APPROVED':approve;
-  requireTrue(approvalStatus==='REVIEW_APPROVED'?
+  const approvalStatus=item.reviewStatus==='REVIEW_PASS'?'REVIEW_PASS':approve;
+  requireTrue(approvalStatus==='REVIEW_PASS'?
     basis==='GPT_OPEN_BOOK_REVIEW_PASS_20261009_PALMA_Q13_Q16_36':
     String(basis||'').startsWith('USER_DIRECTED_QUALITY_APPROVED'),'APPROVAL_BASIS_UNVERIFIED:'+n);
   requireTrue(pkg.sourceQid===n&&pkg.items.length===9&&new Set(pkg.items.map(x=>x.uid)).size===9,'QID9_PACKAGE_SCOPE_INVALID:'+n);
@@ -190,7 +190,7 @@ const main=()=>{
     existing.l2=subUnitKey;
     existing.sourceShard=sourcePath;
     existing.sourceShardGitSha=currentSourceSha;
-    existing.approval=approvalStatus;
+    existing.approval=approvalStatus==='REVIEW_PASS'?'REVIEW_APPROVED':approvalStatus;
     existing.reviewStatus=approvalStatus;
     existing.reviewApprovalBasis=basis;
     existing.consumerSelectable=true;
@@ -203,7 +203,7 @@ const main=()=>{
      uid,school:'팔마고',year:2025,grade:'고1',subject:'공통수학2',sourceQid:n,
      sourceKind:'generated',l1:standardUnitKey,l2:subUnitKey,
      shard:consumerPath.replace(/^archive\//,''),localOrdinal:1,
-     approval:approvalStatus,reviewStatus:approvalStatus,reviewApprovalBasis:basis,consumerSelectable:true
+     approval:approvalStatus==='REVIEW_PASS'?'REVIEW_APPROVED':approvalStatus,reviewStatus:approvalStatus,reviewApprovalBasis:basis,consumerSelectable:true
    };
    const paths={sourceShard:sourcePath,sourceMetadata:metadataPath,consumerShard:consumerPath,consumerIndex:INDEX};
    const expectedSha256=Object.fromEntries(Object.entries(paths).map(([key,rel])=>[key,hex(read(rel))]));
