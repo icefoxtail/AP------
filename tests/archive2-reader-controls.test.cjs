@@ -27,7 +27,9 @@ test("standalone readers expose only the compact mobile back/mode/more controls"
   assert.match(controls, /studentReturnTo/);
   assert.match(controls, /target\.origin === location\.origin/);
   assert.match(controls, /target\.pathname\.startsWith\("\/apmath\/student\/"\)/);
-  assert.match(engine, /history\.replaceState\(null, '', outputUrl\.toString\(\)\)/);
+  assert.match(engine, /outputUrl\.searchParams\.set\('outputRequestId', envelope\.outputRequestId\)/);
+  assert.match(engine, /payload: \{ printHeaderOptions, outputEnvelope: runtimeEnvelope, outputUrl: outputUrl\.href \}/);
+  assert.match(read("archive/screen-runtime-adapter.js"), /history\[method\]\(null, '', ctx\.intent\?\.payload\?\.outputUrl \|\| ctx\.candidate\.environment\.url\)/);
   assert.match(mixed, /common-fast-runtime\.js\?v=20261003-reader-controls-s1-2/);
   assert.match(workspaceHtml, /archive2-library\.js\?v=20261003-navigation-s5-3/);
   assert.match(workspaceHtml, /archive2-workspace\.js\?v=20261009-common-meta-compose-1/);
@@ -38,7 +40,9 @@ test("preview stays embedded and mode actions do not reset an iframe", () => {
   assert.doesNotMatch(controls, /iframe\.src|location\.reload|fetch\(/);
   assert.doesNotMatch(mixed, /archive2-output-envelope \.mode-tabs\s*\{\s*display:\s*none/);
   assert.match(mixed, /publishOutputEnvelopeMode\(current, mode\)/);
-  assert.match(engine, /publishOutputEnvelopeMode\(current, mode\)/);
+  assert.match(engine, /meta: \{ \.\.\.current\.meta, printHeaderOptions \}/);
+  assert.match(engine, /if \(!isLatest\(\)\) return discarded\(\)/);
+  assert.match(read("archive/screen-runtime-adapter.js"), /OUTPUT_MODE_TRANSACTION_MISMATCH/);
   assert.match(fastRuntime, /async visible\(ctx\)[\s\S]*await policy\.visible\?\.\(ctx\)[\s\S]*ctx\.snapshot\.geometry = geometry\(ctx\.snapshot\.rootNode\)/);
   assert.match(fastRuntime, /runtime\.activeSnapshot[\s\S]*snapshot\.geometry = geometry\(snapshot\.rootNode\)/);
   const mixedModeStart = mixed.indexOf("async function switchMode(mode)");
