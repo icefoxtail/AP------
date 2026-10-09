@@ -254,7 +254,7 @@ test('consumer UI lists only selectable generated rows, searches individual ques
   assert.equal(el('paper-items').children.length,1);
   const textOf=node=>String(node.textContent||'')+node.children.map(textOf).join('');
   assert.ok(!textOf(el('paper-items')).includes('정답:'));
-  assert.equal(index.records.length,323);
+  assert.equal(index.records.length,331);
   assert.equal(selectableCount(index),331);
   assert.ok(index.records.every(r=>!holdUids.has(r.uid)));
   search.value='팔마고';search.listeners.input();

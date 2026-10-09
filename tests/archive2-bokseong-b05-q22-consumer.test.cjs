@@ -10,8 +10,8 @@ const questions=context.window.questionBank,meta=JSON.parse(fs.readFileSync(path
 function sha(b){return crypto.createHash('sha1').update('blob '+b.length+'\0').update(b).digest('hex')}
 function fp(q){const s=JSON.stringify({content:q.content,choices:q.choices,answer:q.answer,solution:q.solution});let n=14695981039346656037n;for(let i=0;i<s.length;i++)n=BigInt.asUintN(64,(n^BigInt(s.charCodeAt(i)))*1099511628211n);return 'fnv1a64-utf16:'+n.toString(16).padStart(16,'0')}
 test('ten q22 registered; prior 273 unchanged and only two historical holds excluded',()=>{
- assert.equal(index.approvedCount,323);assert.equal(index.records.length,323);assert.equal(index.approvedBySchool['복성고'],191);assert.equal(index.approvedBySchool['효천고'],92);
- assert.equal(index.excludedHoldUids.length,25);assert.equal(rows.length,10);assert.equal(shard.records.length,10);assert.equal(new Set(index.records.map(x=>x.uid)).size,323);
+ assert.equal(index.approvedCount,331);assert.equal(index.records.length,331);assert.equal(index.approvedBySchool['복성고'],191);assert.equal(index.approvedBySchool['효천고'],92);
+ assert.equal(index.excludedHoldUids.length,17);assert.equal(rows.length,10);assert.equal(shard.records.length,10);assert.equal(new Set(index.records.map(x=>x.uid)).size,331);
  assert.ok(rows.every(r=>!index.excludedHoldUids.includes(r.uid)&&r.consumerSelectable));
  assert.equal(sha(fs.readFileSync(path.join(root,'archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js'))),'8266fa476906e9134b94f23e803bd3b2fb26ece4');
 });
