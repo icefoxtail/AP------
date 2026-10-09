@@ -10,13 +10,13 @@ const original='archive/exams/original/high/h1/1final/26_복성고_1학기_기�
 function sha(buf){const b=Buffer.isBuffer(buf)?buf:Buffer.from(buf);return crypto.createHash('sha1').update('blob '+b.length+'\0').update(b).digest('hex')}
 function fp(q){const s=JSON.stringify({content:q.content,choices:q.choices,answer:q.answer,solution:q.solution});let n=14695981039346656037n;for(let i=0;i<s.length;i++)n=BigInt.asUintN(64,(n^BigInt(s.charCodeAt(i)))*1099511628211n);return 'fnv1a64-utf16:'+n.toString(16).padStart(16,'0')}
 test('B04 26 and B05 Q21 9 are uniquely registered, while Q22 10 HOLD never become selectable',()=>{
- assert.equal(index.approvedCount,323);
- assert.equal(index.records.length,323);
+ assert.equal(index.approvedCount,346);
+ assert.equal(index.records.length,346);
  assert.equal(index.approvedBySchool['효천고'],92);
  assert.equal(index.approvedBySchool['복성고'],191);
  assert.equal(b04.length,26);assert.equal(b05.length,9);assert.equal(all.length,35);
  assert.ok(all.every(x=>x.consumerSelectable&&x.approval==='USER_DIRECTED_OPERATING_APPROVED'));
- assert.equal(new Set(index.records.map(x=>x.uid)).size,323);
+ assert.equal(new Set(index.records.map(x=>x.uid)).size,346);
  assert.equal(hold.filter(x=>index.excludedHoldUids.includes(x)).length,0);
  assert.equal(hold.filter(x=>index.records.some(r=>r.uid===x)).length,10);
  assert.equal(hold.filter(x=>all.some(r=>r.uid===x)).length,0);

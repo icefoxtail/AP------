@@ -1,0 +1,311 @@
+{
+  "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
+  "school": "팔마고",
+  "batchId": "PALMA25-B05-HOLD3",
+  "sourceKind": "generated",
+  "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-B05-held-release.js",
+  "sourceShardGitSha": "b17efe1c1e8233b1ffe622791d6f45b220eeabe1",
+  "records": [
+    {
+      "generatedUid": "B05_Q04_C01_DISTANCE_SUM_MIN",
+      "sourceKind": "generated",
+      "sourceQid": 4,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-B05-held-release.js",
+      "localOrdinal": 1,
+      "l2": "H22-C2-01-COORDINATE_METRIC",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "reviewStatus": "REVIEW_PASS",
+      "consumerSelectable": true,
+      "meta": {
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.1|평면좌표",
+        "rpmL3": "L3-1.1.1|두 점 사이의 거리",
+        "rpmL4": "L4-1.1.1.2|도형의 변 길이",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmPrimaryRecordId": "H1-RPM-205",
+        "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "삼각부등식"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "level": "중",
+        "problemTypeKey": "PT_COORD_DISTANCE",
+        "templateKey": "TPL_COORD_DISTANCE_DIRECT",
+        "metaClassificationNote": "NUMERIC_INSTANCE_NOT_EXT_L4"
+      },
+      "metaFinalSha256": "1e5f22bd7d451e604a4d01cefbcfa117e0f54cf1e7d4324ba02b32053134227a",
+      "metaReviewEvidenceSha256": "eefa4b8d730f20a6545d30a1687c1a6b838bc08b65ae97a1f22c908d7b4f5477",
+      "question": {
+        "id": 1,
+        "uid": "B05_Q04_C01_DISTANCE_SUM_MIN",
+        "level": "중",
+        "difficultyBucket": 2,
+        "category": "평면좌표",
+        "originalCategory": "평면좌표",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "subUnit": "평면좌표와 거리",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "평면좌표"
+        ],
+        "wide": false,
+        "content": "두 실수 $x,y$에 대하여\n$\\sqrt{(x+2)^2+(y-3)^2}+\\sqrt{(x-4)^2+(y-11)^2}$의 최솟값은?",
+        "choices": [
+          "$6$",
+          "$8$",
+          "$14$",
+          "$10$",
+          "$100$"
+        ],
+        "answer": "④",
+        "solution": "점 $P=(x,y)$, $A=(-2,3)$, $B=(4,11)$로 놓으면 주어진 식은 $PA+PB$이다. 삼각형의 두 변의 길이의 합은 나머지 한 변의 길이보다 작지 않으므로\n$PA+PB\\ge AB$이다.\n\n$AB=\\sqrt{(4-(-2))^2+(11-3)^2}=\\sqrt{6^2+8^2}=10$이므로 주어진 식은 항상 10 이상이다. $P$가 선분 $AB$ 위에 있으면 등호가 성립하고, 그런 점은 허용된 실수 $x,y$ 중에 실제로 존재한다. 따라서 최솟값은 10이며 정답은 ④이다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "problemTypeKey": "PT_COORD_DISTANCE",
+        "templateKey": "TPL_COORD_DISTANCE_DIRECT",
+        "meta": {
+          "rpmL1": "L1-1|도형의 방정식",
+          "rpmL2": "L2-1.1|평면좌표",
+          "rpmL3": "L3-1.1.1|두 점 사이의 거리",
+          "rpmL4": "L4-1.1.1.2|도형의 변 길이",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmPrimaryRecordId": "H1-RPM-205",
+          "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+          "crossConceptKeys": [],
+          "crossConceptEvidenceLabels": [
+            "삼각부등식"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "level": "중",
+          "problemTypeKey": "PT_COORD_DISTANCE",
+          "templateKey": "TPL_COORD_DISTANCE_DIRECT",
+          "metaClassificationNote": "NUMERIC_INSTANCE_NOT_EXT_L4"
+        },
+        "metaFinalSha256": "1e5f22bd7d451e604a4d01cefbcfa117e0f54cf1e7d4324ba02b32053134227a"
+      },
+      "sourceShardGitSha": "b17efe1c1e8233b1ffe622791d6f45b220eeabe1"
+    },
+    {
+      "generatedUid": "B05_Q09_C01_CENTROID_RATIO_RECOVERY",
+      "sourceKind": "generated",
+      "sourceQid": 9,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-B05-held-release.js",
+      "localOrdinal": 2,
+      "l2": "H22-C2-01-COORDINATE_METRIC",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "reviewStatus": "REVIEW_PASS",
+      "consumerSelectable": true,
+      "meta": {
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.1|평면좌표",
+        "rpmL3": "L3-1.1.3|삼각형의 무게중심",
+        "rpmL4": "L4-1.1.3.2|좌표 도형 활용",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmPrimaryRecordId": "H1-RPM-209",
+        "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "내분점",
+          "삼각형의 무게중심"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "metaClassificationNote": "EXISTING_RPM_DRAFT",
+        "metaDebt": {
+          "rpmBinding": "Direct RPM crosswalk binding gap retained as evidence; no false ACTIVE claim"
+        }
+      },
+      "metaFinalSha256": "bb95eb82fa88a4640410e9b9533dc340a2fb660e41c58488c384aa72cf6260a2",
+      "metaReviewEvidenceSha256": "eefa4b8d730f20a6545d30a1687c1a6b838bc08b65ae97a1f22c908d7b4f5477",
+      "question": {
+        "id": 2,
+        "uid": "B05_Q09_C01_CENTROID_RATIO_RECOVERY",
+        "level": "상",
+        "difficultyBucket": 4,
+        "category": "평면좌표",
+        "originalCategory": "평면좌표",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "subUnit": "평면좌표와 거리",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "평면좌표"
+        ],
+        "wide": false,
+        "content": "좌표평면 위의 세 점 $A(0,0)$, $B(6,0)$, $C(0,9)$를 꼭짓점으로 하는 삼각형 $ABC$가 있다. 점 $P,Q,R$를 각각 선분 $AB$, $BC$, $CA$ 위에 잡아\n$AP:PB=BQ:QC=2:1$, $CR:RA=k:1$ ($k>0$)이 되게 한다. 삼각형 $PQR$의 무게중심과 삼각형 $ABC$의 무게중심이 일치할 때, $k$의 값은?",
+        "choices": [
+          "$\\dfrac12$",
+          "$\\dfrac32$",
+          "$3$",
+          "$8$",
+          "$2$"
+        ],
+        "answer": "⑤",
+        "solution": "$AP:PB=2:1$이므로 $P=(4,0)$이다. $BQ:QC=2:1$이므로\n$Q=\\left(\\dfrac{1\\cdot6+2\\cdot0}{3},\\dfrac{1\\cdot0+2\\cdot9}{3}\\right)=(2,6)$이다.\n\n$CR:RA=k:1$에서 $R$은 $C$에서 $A$ 쪽으로 전체 선분의 $\\dfrac{k}{k+1}$만큼 이동한 점이다. 따라서\n$R=\\left(0,\\dfrac{9}{k+1}\\right)$이다. 원래 삼각형의 무게중심은\n$G=\\left(\\dfrac{0+6+0}{3},\\dfrac{0+0+9}{3}\\right)=(2,3)$이고, $PQR$의 무게중심은\n$G'=\\left(\\dfrac{4+2+0}{3},\\dfrac{0+6+\\frac{9}{k+1}}{3}\\right)\n=\\left(2,2+\\dfrac{3}{k+1}\\right)$이다.\n\n두 무게중심이 일치하므로\n$2+\\dfrac{3}{k+1}=3$이다. 따라서 $k+1=3$, $k=2$이다. $k>0$에서 이 해는 허용되며 유일하다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "meta": {
+          "rpmL1": "L1-1|도형의 방정식",
+          "rpmL2": "L2-1.1|평면좌표",
+          "rpmL3": "L3-1.1.3|삼각형의 무게중심",
+          "rpmL4": "L4-1.1.3.2|좌표 도형 활용",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmPrimaryRecordId": "H1-RPM-209",
+          "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+          "crossConceptKeys": [],
+          "crossConceptEvidenceLabels": [
+            "내분점",
+            "삼각형의 무게중심"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 4,
+          "level": "상",
+          "problemTypeKey": "PT_COORD_CENTROID",
+          "templateKey": "TPL_CENTROID_APPLICATION",
+          "metaClassificationNote": "EXISTING_RPM_DRAFT",
+          "metaDebt": {
+            "rpmBinding": "Direct RPM crosswalk binding gap retained as evidence; no false ACTIVE claim"
+          }
+        },
+        "metaFinalSha256": "bb95eb82fa88a4640410e9b9533dc340a2fb660e41c58488c384aa72cf6260a2"
+      },
+      "sourceShardGitSha": "b17efe1c1e8233b1ffe622791d6f45b220eeabe1"
+    },
+    {
+      "generatedUid": "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY",
+      "sourceKind": "generated",
+      "sourceQid": 18,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-B05-held-release.js",
+      "localOrdinal": 3,
+      "l2": "H22-C2-01-COORDINATE_METRIC",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "reviewStatus": "REVIEW_PASS",
+      "consumerSelectable": true,
+      "meta": {
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.1|평면좌표",
+        "rpmL3": "L3-1.1.3|삼각형의 무게중심",
+        "rpmL4": "L4-1.1.3.2|좌표 도형 활용",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmPrimaryRecordId": "H1-RPM-209",
+        "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "각의 이등분선 정리",
+          "무게중심과 넓이 분할"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "metaClassificationNote": "EXISTING_RPM_DRAFT",
+        "metaDebt": {
+          "rpmBinding": "Direct RPM crosswalk binding gap retained as evidence; no false ACTIVE claim"
+        }
+      },
+      "metaFinalSha256": "44e39008e278d9bf7385f451d97e40623799a1c2397f8b39217e3cdd83580364",
+      "metaReviewEvidenceSha256": "eefa4b8d730f20a6545d30a1687c1a6b838bc08b65ae97a1f22c908d7b4f5477",
+      "question": {
+        "id": 3,
+        "uid": "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY",
+        "level": "상",
+        "difficultyBucket": 4,
+        "category": "평면좌표",
+        "originalCategory": "평면좌표",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "subUnit": "평면좌표와 거리",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "평면좌표"
+        ],
+        "wide": false,
+        "content": "좌표평면 위의 세 점 $A(0,0)$, $B(t,0)$, $C(0,6)$ ($t>0$)를 꼭짓점으로 하는 삼각형 $ABC$가 있다. 삼각형 $ABC$의 내심을 $I$라 하고, 직선 $AI$가 선분 $BC$와 만나는 점을 $H$라 하자. 삼각형 $ABC$의 무게중심을 $G$라 할 때, 삼각형 $GHC$의 넓이가 $2$이다. $t$의 값은?",
+        "choices": [
+          "$\\dfrac34$",
+          "$\\dfrac65$",
+          "$3$",
+          "$4$",
+          "$1+\\sqrt{13}$"
+        ],
+        "answer": "③",
+        "solution": "$AI$는 $\\angle A$의 이등분선이므로 각의 이등분선 정리에 따라\n$BH:HC=AB:AC=t:6$이다. 따라서\n$\\dfrac{HC}{BC}=\\dfrac{6}{t+6}$이다.\n\n삼각형 $ABC$의 넓이는 $\\dfrac12\\cdot t\\cdot6=3t$이다. 무게중심 $G$와 변 $BC$가 만드는 삼각형은 원래 삼각형 넓이의 $\\dfrac13$이므로\n$[GBC]=t$이다. $GHC$와 $GBC$는 밑변이 각각 $HC$, $BC$이고 같은 높이를 가지므로\n$\\dfrac{[GHC]}{[GBC]}=\\dfrac{HC}{BC}=\\dfrac{6}{t+6}$이다. 따라서\n$[GHC]=\\dfrac{6t}{t+6}$이다.\n\n주어진 넓이가 2이므로\n$\\dfrac{6t}{t+6}=2$,\n$6t=2t+12$,\n$4t=12$,\n$t=3$이다. 조건 $t>0$도 만족하므로 정답은 ③이다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "meta": {
+          "rpmL1": "L1-1|도형의 방정식",
+          "rpmL2": "L2-1.1|평면좌표",
+          "rpmL3": "L3-1.1.3|삼각형의 무게중심",
+          "rpmL4": "L4-1.1.3.2|좌표 도형 활용",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmPrimaryRecordId": "H1-RPM-209",
+          "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+          "crossConceptKeys": [],
+          "crossConceptEvidenceLabels": [
+            "각의 이등분선 정리",
+            "무게중심과 넓이 분할"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 4,
+          "level": "상",
+          "problemTypeKey": "PT_COORD_CENTROID",
+          "templateKey": "TPL_CENTROID_APPLICATION",
+          "metaClassificationNote": "EXISTING_RPM_DRAFT",
+          "metaDebt": {
+            "rpmBinding": "Direct RPM crosswalk binding gap retained as evidence; no false ACTIVE claim"
+          }
+        },
+        "metaFinalSha256": "44e39008e278d9bf7385f451d97e40623799a1c2397f8b39217e3cdd83580364"
+      },
+      "sourceShardGitSha": "b17efe1c1e8233b1ffe622791d6f45b220eeabe1"
+    }
+  ]
+}
