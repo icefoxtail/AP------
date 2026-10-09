@@ -9,8 +9,9 @@ import gate from '../generated-meta-retention-gate.cjs';
 const ROOT_PREFIXES = ['archive/', 'alive/'];
 const HEX64 = /^[a-f0-9]{64}$/i;
 const HEX40 = /^[a-f0-9]{40}$/i;
-const { validateMeta } = gate;
+const { validateMeta, validateAuthorityBinding, validateMetaTaxonomyBindings } = gate;
 const nonempty = value => typeof value === 'string' && value.trim().length > 0;
+const TOP_LEVEL_META_FIELDS = ['problemTypeKey', 'templateKey', 'secondaryConceptKeys', 'crossConceptKeys', 'conditionKeys', 'integrationPattern'];
 
 const sorted = value => Array.isArray(value) ? value.map(sorted) : value && typeof value === 'object'
   ? Object.fromEntries(Object.keys(value).sort().map(key => [key, sorted(value[key])])) : value;
@@ -40,38 +41,6 @@ function assertMetaValid(meta) {
 }
 
 function labelOf(value) { return typeof value === 'string' ? value.split('|').at(-1).trim() : ''; }
-function validateRpmParent(root, meta, question) {
-  const draft = meta.rpmL4Namespace === 'RPM_EXISTING_DRAFT';
-  const ref = draft ? meta.rpmDraftAuthorityRef : meta.rpmAuthorityRef;
-  const expectedSha = draft ? meta.rpmDraftAuthoritySha256 : meta.rpmAuthoritySha256;
-  if (!meta.rpmPrimaryRecordId || !ref || !HEX64.test(expectedSha || '')) throw new Error('RPM_AUTHORITY_BINDING_REQUIRED_FALSE_LOCKED_REJECTED');
-  const authorityFile = repoFile(root, ref, 'RPM_AUTHORITY');
-  const bytes = fs.readFileSync(authorityFile);
-  if (sha256Bytes(bytes).toLowerCase() !== expectedSha.toLowerCase()) throw new Error('RPM_AUTHORITY_BYTES_MISMATCH');
-  const authority = parseJsonFile(authorityFile, 'RPM_AUTHORITY');
-  if (authority.rpmAuthority?.status && authority.rpmAuthority.status !== 'LOCKED') throw new Error('RPM_AUTHORITY_NOT_LOCKED');
-  const records = authority.records || [];
-  const row = exactOne(records, item => (item.id || item.recordId) === meta.rpmPrimaryRecordId, 'RPM_PRIMARY_RECORD');
-  const p = row.rpmPath || row;
-  for (const [metaKey, authorityKey] of [['rpmL1', 'majorUnit'], ['rpmL2', 'midUnit'], ['rpmL3', 'l3']]) {
-    if (labelOf(meta[metaKey]) !== p[authorityKey]) throw new Error(`RPM_PARENT_${metaKey.toUpperCase()}_MISMATCH`);
-  }
-  if (meta.rpmL4Namespace !== 'GENERATED_EXT_L4' && labelOf(meta.rpmL4) !== p.l4) throw new Error('RPM_PRIMARY_L4_MISMATCH');
-  if (question.standardCourse !== row.standardCourse || question.standardUnitKey !== row.standardUnitKey || question.subUnitKey !== row.subUnitKey) throw new Error('RPM_PARENT_COURSE_UNIT_BUCKET_MISMATCH');
-  return row;
-}
-
-function validateGeneratedExtension(root, meta, question, parentRecord) {
-  if (meta.rpmL4Namespace !== 'GENERATED_EXT_L4') return;
-  const file = repoFile(root, meta.generatedL4RegistryRef, 'GENERATED_L4_REGISTRY');
-  if (!HEX64.test(meta.generatedL4RegistrySha256 || '') || sha256Bytes(fs.readFileSync(file)).toLowerCase() !== meta.generatedL4RegistrySha256.toLowerCase()) throw new Error('GENERATED_L4_REGISTRY_BYTES_MISMATCH');
-  const registry = parseJsonFile(file, 'GENERATED_L4_REGISTRY');
-  const candidates = registry.proposals || registry.candidates || registry.records || [];
-  const candidate = exactOne(candidates, item => item.candidateL4Id === meta.rpmL4 || item.key === meta.rpmL4 || item.label === labelOf(meta.rpmL4), 'GENERATED_L4_CANDIDATE');
-  if (!/APPROVED|REVIEW_PASS/i.test(String(candidate.reviewStatus || registry.status || '')) || candidate.consumerSelectable !== true && candidate.canonicalPromoted !== true) throw new Error('GENERATED_L4_NOT_APPROVED_SELECTABLE');
-  if ((candidate.proposedParentRPMPrimaryL3 || candidate.parentRPMPrimaryL3 || candidate.parentL3) !== parentRecord.rpmPath?.l3) throw new Error('GENERATED_L4_PARENT_L3_MISMATCH');
-  if ((registry.course || candidate.course) !== question.standardCourse || (registry.targetL2 || candidate.targetL2 || question.subUnitKey) !== question.subUnitKey) throw new Error('GENERATED_L4_COURSE_UNIT_MISMATCH');
-}
 
 function exactOne(items, predicate, label) {
   const found = items.filter(predicate);
@@ -88,7 +57,8 @@ function readSource(bytes, filename) {
 
 function bodyProjection(question) {
   const result = structuredClone(question);
-  for (const key of ['uid', 'difficultyBucket', 'level', 'meta', 'metaFinalSha256', 'metaReviewEvidence', 'metaReviewEvidenceSha256']) delete result[key];
+  for (const key of ['uid', 'difficultyBucket', 'level', 'meta', 'metaFinalSha256', 'metaReviewEvidence', 'metaReviewEvidenceSha256',
+    'problemTypeKey', 'templateKey', 'secondaryConceptKeys', 'crossConceptKeys', 'conditionKeys', 'integrationPattern']) delete result[key];
   return result;
 }
 
@@ -101,10 +71,14 @@ function verifyReviewEvidence(root, binding, uid, metaDigest) {
   if (evidence.schemaVersion !== 'GENERATED_META_REVIEW_EVIDENCE_V1' || !Array.isArray(evidence.items)) throw new Error('REVIEW_EVIDENCE_SCHEMA_INVALID');
   const item = exactOne(evidence.items, row => row?.uid === uid, 'REVIEW_EVIDENCE_UID');
   const status = item.reviewStatus;
-  if (!['REVIEW_PASS', 'REVIEW_APPROVED', 'USER_DIRECTED_OPERATING_APPROVED'].includes(status)) throw new Error('REVIEW_EVIDENCE_STATUS_NOT_APPROVED');
+  if (!['REVIEW_PASS', 'REVIEW_APPROVED', 'USER_DIRECTED_OPERATING_APPROVED', 'USER_DIRECTED_QUALITY_APPROVED'].includes(status)) throw new Error('REVIEW_EVIDENCE_STATUS_NOT_APPROVED');
   if (binding.reviewStatus !== status) throw new Error('REVIEW_EVIDENCE_STATUS_BINDING_MISMATCH');
   if (item.metaFinalSha256 !== metaDigest) throw new Error('REVIEW_EVIDENCE_META_SHA_MISMATCH');
-  return { path: binding.path, sha256: binding.sha256.toLowerCase(), reviewStatus: status };
+  if (status === 'USER_DIRECTED_QUALITY_APPROVED' && (!Array.isArray(item.scopeUids) || !item.scopeUids.includes(uid) || typeof item.approvalBasis !== 'string' || !item.approvalBasis.startsWith('USER_DIRECTED_QUALITY_APPROVED'))) throw new Error('USER_DIRECTED_APPROVAL_SCOPE_BINDING_INVALID');
+  return {
+    path: binding.path, sha256: binding.sha256.toLowerCase(), reviewStatus: status,
+    ...(status === 'USER_DIRECTED_QUALITY_APPROVED' ? { approvalBasis: item.approvalBasis, scopeUids: item.scopeUids } : {})
+  };
 }
 
 function writeJson(value) { return Buffer.from(`${JSON.stringify(value, null, 2)}\n`, 'utf8'); }
@@ -161,7 +135,7 @@ function atomicReplace(files, beforeReplace) {
 export function registerApprovedGeneratedMeta({ root, uid, meta, reviewEvidence, approval, paths, expectedSha256, newRegistration }, options = {}) {
   if (typeof uid !== 'string' || !uid.trim()) throw new Error('UID_REQUIRED');
   if (newRegistration && !/^ALITE-[A-Za-z0-9-]+$/.test(uid)) throw new Error('NEW_UID_RUNTIME_UID_INVALID');
-  if (!approval || !['REVIEW_PASS', 'REVIEW_APPROVED', 'USER_DIRECTED_OPERATING_APPROVED'].includes(approval.status)) throw new Error('APPROVAL_STATUS_REQUIRED');
+  if (!approval || !['REVIEW_PASS', 'REVIEW_APPROVED', 'USER_DIRECTED_OPERATING_APPROVED', 'USER_DIRECTED_QUALITY_APPROVED'].includes(approval.status)) throw new Error('APPROVAL_STATUS_REQUIRED');
   assertMetaValid(meta);
   if (approval.status !== reviewEvidence?.reviewStatus) throw new Error('APPROVAL_STATUS_REVIEW_EVIDENCE_MISMATCH');
   if (!paths?.sourceShard?.startsWith('archive/generated/lite/v1/') || !paths?.sourceMetadata?.startsWith('archive/generated/lite/v1/') || !paths?.consumerShard?.startsWith('archive/data/generated-lite-consumer/v1/shards/') || paths?.consumerIndex !== 'archive/data/generated-lite-consumer/v1/index.json') throw new Error('REGISTRATION_TARGET_PATH_OUT_OF_SCOPE');
@@ -179,8 +153,11 @@ export function registerApprovedGeneratedMeta({ root, uid, meta, reviewEvidence,
   const authority = exactOne(sourceMetaDoc, item => item.uid === uid, 'SOURCE_METADATA_UID');
   const sourceQuestion = exactOne(sourceQs, question => question.uid === uid || (question.uid == null && Number.isInteger(authority.qid) && question.id === authority.qid), 'SOURCE_UID_OR_LOCAL_QID');
   if (sourceQs.length !== 1) throw new Error('SOURCE_SHARD_MULTI_UID_UNSUPPORTED');
-  const parentRecord = validateRpmParent(root, meta, sourceQuestion);
-  validateGeneratedExtension(root, meta, sourceQuestion, parentRecord);
+  const authorityValidation = validateAuthorityBinding(root, meta, sourceQuestion, uid);
+  if (authorityValidation.issues.length) throw new Error(`META_AUTHORITY_INVALID:${authorityValidation.issues.join('|')}`);
+  const parentRecord = authorityValidation.primaryRecord;
+  const taxonomyIssues = validateMetaTaxonomyBindings(root, meta, parentRecord);
+  if (taxonomyIssues.length) throw new Error(`META_TAXONOMY_INVALID:${taxonomyIssues.join('|')}`);
   const sourceHadUid = sourceQuestion.uid === uid;
   if (sourceQuestion.uid == null) sourceQuestion.uid = uid;
   const consumerDoc = parseJsonFile(targets.consumerShard.file, 'CONSUMER_SHARD');
@@ -197,7 +174,8 @@ export function registerApprovedGeneratedMeta({ root, uid, meta, reviewEvidence,
     const proposed = newRegistration.indexRow;
     if (!proposed || typeof proposed !== 'object') throw new Error('NEW_UID_INDEX_ROW_REQUIRED');
     if (!Number.isInteger(proposed.localOrdinal) || proposed.localOrdinal < 1 || !Number.isInteger(proposed.year) || !nonempty(proposed.school) || !nonempty(proposed.grade) || !nonempty(proposed.subject)) throw new Error('NEW_UID_INDEX_IDENTITY_FIELDS_INVALID');
-    if (!['REVIEW_APPROVED', 'USER_DIRECTED_OPERATING_APPROVED'].includes(proposed.approval) || proposed.reviewStatus !== approval.status || !nonempty(proposed.reviewApprovalBasis)) throw new Error('NEW_UID_APPROVAL_FIELDS_INVALID');
+    if (!['REVIEW_APPROVED', 'USER_DIRECTED_OPERATING_APPROVED', 'USER_DIRECTED_QUALITY_APPROVED'].includes(proposed.approval) || proposed.reviewStatus !== approval.status || !nonempty(proposed.reviewApprovalBasis)) throw new Error('NEW_UID_APPROVAL_FIELDS_INVALID');
+    if (approval.status === 'USER_DIRECTED_QUALITY_APPROVED' && proposed.reviewApprovalBasis !== evidence.approvalBasis) throw new Error('NEW_UID_DIRECTIVE_BASIS_MISMATCH');
     if (proposed.l2 !== sourceQuestion.subUnitKey || proposed.shard !== paths.consumerShard.replace(/^archive\//, '') || proposed.sourceKind && proposed.sourceKind !== 'generated' || proposed.consumerSelectable === false) throw new Error('NEW_UID_INDEX_SOURCE_BUCKET_PARITY_INVALID');
     const sourceExamPath = authority.sourceArchiveFile || authority.sourceExamPath || newRegistration.sourceExamPath;
     const sourceExamBlobSha = authority.sourceBlobSha || authority.sourceExamBlobSha || newRegistration.sourceExamBlobSha;
@@ -239,6 +217,10 @@ export function registerApprovedGeneratedMeta({ root, uid, meta, reviewEvidence,
   sourceQuestion.metaReviewEvidence = evidenceRef;
   sourceQuestion.metaReviewEvidenceSha256 = evidence.sha256;
   sourceQuestion.difficultyBucket = meta.difficultyBucket; sourceQuestion.level = meta.level;
+  for (const field of TOP_LEVEL_META_FIELDS) {
+    if (Object.prototype.hasOwnProperty.call(meta, field)) sourceQuestion[field] = structuredClone(meta[field]);
+    else delete sourceQuestion[field];
+  }
   authority.meta = meta; authority.metaFinalSha256 = digest; authority.metaReviewEvidence = evidenceRef;
   authority.metaReviewEvidenceSha256 = evidence.sha256;
   authority.reviewEvidenceBinding = evidence;
@@ -248,18 +230,30 @@ export function registerApprovedGeneratedMeta({ root, uid, meta, reviewEvidence,
   consumerRecord.question.metaReviewEvidenceSha256 = evidence.sha256;
   consumerRecord.question.uid = uid;
   consumerRecord.question.difficultyBucket = meta.difficultyBucket; consumerRecord.question.level = meta.level;
+  for (const field of TOP_LEVEL_META_FIELDS) {
+    if (Object.prototype.hasOwnProperty.call(meta, field)) consumerRecord.question[field] = structuredClone(meta[field]);
+    else delete consumerRecord.question[field];
+  }
   indexRow.meta = meta; indexRow.metaFinalSha256 = digest; indexRow.metaReviewEvidence = evidenceRef;
   indexRow.metaReviewEvidenceSha256 = evidence.sha256;
   indexRow.rpmL1 = meta.rpmL1; indexRow.rpmL2 = meta.rpmL2; indexRow.rpmL3 = meta.rpmL3; indexRow.rpmL4 = meta.rpmL4;
   indexRow.difficultyBucket = meta.difficultyBucket; indexRow.level = meta.level;
+  for (const field of TOP_LEVEL_META_FIELDS) {
+    if (Object.prototype.hasOwnProperty.call(meta, field)) indexRow[field] = structuredClone(meta[field]);
+    else delete indexRow[field];
+  }
 
   const overlay = {
     uid, meta, metaFinalSha256: digest, metaReviewEvidence: evidenceRef,
     metaReviewEvidenceSha256: evidence.sha256,
     difficultyBucket: meta.difficultyBucket, level: meta.level
   };
+  const topLevelMeta = Object.fromEntries(TOP_LEVEL_META_FIELDS.filter(field => Object.prototype.hasOwnProperty.call(meta, field)).map(field => [field, meta[field]]));
+  Object.assign(overlay, topLevelMeta);
+  const removeSecondaryConceptKeys = !Object.prototype.hasOwnProperty.call(meta, 'secondaryConceptKeys');
   const identity = sourceHadUid ? `q.uid === ${JSON.stringify(uid)}` : `(!q.uid && q.id === ${JSON.stringify(sourceQuestion.id)})`;
-  const patchScript = `\n;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>${identity});if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],${JSON.stringify(overlay)});})();\n`;
+  const deleteSecondary = removeSecondaryConceptKeys ? 'delete rows[0].secondaryConceptKeys;' : '';
+  const patchScript = `\n;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>${identity});if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],${JSON.stringify(overlay)});${deleteSecondary}})();\n`;
   const newSourceBytes = Buffer.concat([targets.sourceShard.before, Buffer.from(patchScript, 'utf8')]);
   const reparsed = readSource(newSourceBytes, paths.sourceShard).questionBank;
   const registeredQuestion = exactOne(reparsed, q => q.uid === uid, 'OVERLAY_SOURCE_UID');
@@ -269,6 +263,11 @@ export function registerApprovedGeneratedMeta({ root, uid, meta, reviewEvidence,
   consumerDoc.sourceShardGitSha = newSourceBlob;
   consumerRecord.sourceShardGitSha = newSourceBlob;
   indexRow.sourceShardGitSha = newSourceBlob;
+  indexRow.metaVerification = {
+    status: 'VERIFIED_CURRENT_SOURCE', sourceBound: true, reviewBytesBound: true,
+    metaFinalSha256: digest, sourceShardGitSha: newSourceBlob,
+    reviewEvidenceSha256: evidence.sha256
+  };
   const newConsumerBytes = writeJson(consumerDoc);
   const newConsumerBlob = gitBlobSha(newConsumerBytes);
   indexRow.consumerShardGitSha = newConsumerBlob;

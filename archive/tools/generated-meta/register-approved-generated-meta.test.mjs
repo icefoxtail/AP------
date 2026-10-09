@@ -6,12 +6,14 @@ import path from 'node:path';
 import vm from 'node:vm';
 import { registerApprovedGeneratedMeta, withdrawGeneratedUid, metaSha256, sha256Bytes, gitBlobSha } from './register-approved-generated-meta.mjs';
 import gate from '../generated-meta-retention-gate.cjs';
-const { validateReviewBinding, audit } = gate;
+import problemBankMeta from '../../problem-bank-meta.js';
+import assessmentRecipes from '../../problem-bank-assessment-recipes.js';
+const { validateReviewBinding, validateAuthorityBinding, validateMetaTaxonomyBindings, audit } = gate;
 
 const metaTemplate = {
   rpmL1: 'H1-L1', rpmL2: 'H1-L2', rpmL3: 'H1-L3', rpmL4: 'H1-L4',
   rpmL4Namespace: 'RPM_EXISTING_DRAFT', rpmPrimaryRecordId: 'TEST-RPM-001',
-  rpmDraftAuthorityRef: 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json', crossConceptKeys: [], conditionKeys: [],
+  rpmDraftAuthorityRef: 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json', secondaryConceptKeys: [], crossConceptKeys: [], conditionKeys: [],
   integrationPattern: 'NONE', difficultyBucket: 4, level: '상',
   problemTypeKey: null, templateKey: null,
   metaDebt: { problemTypeKey: 'UNKNOWN: no exact mapping evidence', templateKey: 'UNKNOWN: no exact template evidence' }
@@ -19,6 +21,16 @@ const metaTemplate = {
 
 function fixture({ unregistered = false } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'generated-meta-register-'));
+  for (const rel of [
+    'archive/data/meta-foundation/compiled/taxonomy_registry.json',
+    'archive/data/meta-foundation/compiled/concept_registry.json',
+    'archive/data/meta-foundation/compiled/condition_registry.json',
+    'archive/data/meta-foundation/canonical/metadata_rules.json'
+  ]) {
+    const target = path.join(root, rel);
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.copyFileSync(path.join(process.cwd(), rel), target);
+  }
   const rel = {
     sourceShard: 'archive/generated/lite/v1/test/shards/source.js',
     sourceMetadata: 'archive/generated/lite/v1/test/metadata/source.json',
@@ -30,7 +42,7 @@ function fixture({ unregistered = false } = {}) {
   const question = { id: 1, uid: 'ALITE-TEST-001', content: '$x+1$', choices: ['1', '2'], answer: '①', solution: '계산', solutionImage: 'assets/test/q1.svg', standardUnitKey: 'H1', subUnitKey: 'H1-PHYSICAL', level: '중', difficultyBucket: 3 };
   question.standardCourse = '공통수학1';
   const meta = structuredClone(metaTemplate);
-  const rpmAuthority = { schemaVersion: 'rpm-primary-active-crosswalk-v1', rpmAuthority: { status: 'LOCKED' }, records: [{ id: meta.rpmPrimaryRecordId, standardCourse: question.standardCourse, standardUnitKey: question.standardUnitKey, subUnitKey: question.subUnitKey, rpmPath: { majorUnit: 'H1-L1', midUnit: 'H1-L2', l3: 'H1-L3', l4: 'H1-L4' } }] };
+  const rpmAuthority = { schemaVersion: 'rpm-primary-active-crosswalk-v1', rpmAuthority: { status: 'LOCKED' }, records: [{ id: meta.rpmPrimaryRecordId, curriculum: '2022', scope: 'H1-SCOPE', standardCourse: question.standardCourse, standardUnitKey: question.standardUnitKey, subUnitKey: question.subUnitKey, rpmPath: { majorUnit: 'H1-L1', midUnit: 'H1-L2', l3: 'H1-L3', l4: 'H1-L4' } }] };
   const rpmBytes = Buffer.from(JSON.stringify(rpmAuthority, null, 2) + '\n');
   const rpmFile = path.join(root, meta.rpmDraftAuthorityRef);
   fs.mkdirSync(path.dirname(rpmFile), { recursive: true }); fs.writeFileSync(rpmFile, rpmBytes);
@@ -87,6 +99,10 @@ test('registration writes identical approved Meta and byte-bound evidence to all
     assert.equal(sourceQuestion.level, '상');
     assert.equal(index.rpmL2, f.meta.rpmL2);
     assert.equal(index.l2, 'H1-PHYSICAL');
+    for (const field of ['problemTypeKey', 'templateKey', 'secondaryConceptKeys', 'crossConceptKeys', 'conditionKeys', 'integrationPattern']) {
+      const expected = Object.prototype.hasOwnProperty.call(f.meta, field) ? JSON.stringify(f.meta[field]) : undefined;
+      for (const value of [sourceQuestion[field], consumer.question[field], index[field]]) assert.equal(value === undefined ? undefined : JSON.stringify(value), expected, field);
+    }
     assert.equal(index.sourceShardGitSha, gitBlobSha(fs.readFileSync(path.join(f.root, f.rel.sourceShard))));
   } finally { fs.rmSync(f.root, { recursive: true, force: true }); }
 });
@@ -113,13 +129,30 @@ test('registration rejects a claimed RPM_LOCKED path without an actual pinned RP
   const f = fixture();
   try {
     f.args.meta.rpmL4Namespace = 'RPM_LOCKED';
+    const crosswalkBytes = fs.readFileSync(path.join(f.root, f.meta.rpmDraftAuthorityRef));
+    f.args.meta.rpmAuthorityRef = f.meta.rpmDraftAuthorityRef;
+    f.args.meta.rpmAuthoritySha256 = sha256Bytes(crosswalkBytes);
+    const masterRef = 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json';
+    const master = { authorityStatus: 'LOCKED', policy: { L3L4: 'CANONICAL_DRAFT normalized labels' }, records: [{
+      curriculum: '2022', level: 'high', scope: 'H1-SCOPE', majorUnit: 'H1-L1', midUnit: 'H1-L2',
+      majorStatus: 'RPM_VERIFIED', midStatus: 'RPM_VERIFIED',
+      concepts: [{ concept: 'H1-L3', status: 'CANONICAL_DRAFT', problemTypes: [{ problemType: 'H1-L4', status: 'CANONICAL_DRAFT' }] }]
+    }] };
+    const masterBytes = Buffer.from(JSON.stringify(master, null, 2) + '\n');
+    const masterPath = path.join(f.root, masterRef);
+    fs.mkdirSync(path.dirname(masterPath), { recursive: true }); fs.writeFileSync(masterPath, masterBytes);
+    f.args.meta.rpmCanonicalMasterRef = masterRef;
+    f.args.meta.rpmCanonicalMasterSha256 = sha256Bytes(masterBytes);
     const evidenceFile = path.join(f.root, f.rel.evidence);
     const evidence = JSON.parse(fs.readFileSync(evidenceFile, 'utf8'));
     evidence.items[0].metaFinalSha256 = metaSha256(f.args.meta);
     const bytes = Buffer.from(JSON.stringify(evidence, null, 2) + '\n');
     fs.writeFileSync(evidenceFile, bytes);
     f.args.reviewEvidence.sha256 = sha256Bytes(bytes);
-    assert.throws(() => registerApprovedGeneratedMeta(f.args), /RPM_AUTHORITY_BINDING_REQUIRED_FALSE_LOCKED_REJECTED/);
+    const authorityResult = validateAuthorityBinding(f.root, f.args.meta, f.question, f.question.uid);
+    assert.ok(authorityResult.issues.includes('RPM_LOCKED_GLOBAL_POLICY_DRAFT'));
+    assert.ok(authorityResult.issues.includes('RPM_LOCKED_LEAF_DRAFT'));
+    assert.throws(() => registerApprovedGeneratedMeta(f.args), /RPM_LOCKED_GLOBAL_POLICY_DRAFT|RPM_LOCKED_LEAF_DRAFT/);
   } finally { fs.rmSync(f.root, { recursive: true, force: true }); }
 });
 
@@ -254,5 +287,106 @@ test('new approval creates a previously absent UID from source bytes, passes gat
     assert.equal(withdrawn.status, 'WITHDRAWN');
     assert.equal(audit(f.root).status, 'PASS_NEW_UID_SCOPE_ONLY');
     assert.equal(JSON.parse(fs.readFileSync(indexPath, 'utf8')).approvedCount, 323);
+  } finally { fs.rmSync(f.root, { recursive: true, force: true }); }
+});
+
+test('scoped user-directed quality authority registers without claiming an independent GPT verdict', () => {
+  const f = fixture({ unregistered: true });
+  try {
+    const basis = 'USER_DIRECTED_QUALITY_APPROVED:fixture-scope';
+    const sourceMetadataPath = path.join(f.root, f.rel.sourceMetadata);
+    const sourceMetadata = JSON.parse(fs.readFileSync(sourceMetadataPath, 'utf8'));
+    sourceMetadata[0].reviewApprovalStatus = 'USER_DIRECTED_QUALITY_APPROVED';
+    fs.writeFileSync(sourceMetadataPath, JSON.stringify(sourceMetadata, null, 2) + '\n');
+    f.args.expectedSha256.sourceMetadata = sha256Bytes(fs.readFileSync(sourceMetadataPath));
+
+    const evidencePath = path.join(f.root, f.rel.evidence);
+    const evidenceBytes = Buffer.from(JSON.stringify({ schemaVersion: 'GENERATED_META_REVIEW_EVIDENCE_V1', items: [{
+      uid: f.question.uid, reviewStatus: 'USER_DIRECTED_QUALITY_APPROVED',
+      metaFinalSha256: metaSha256(f.meta), approvalBasis: basis, scopeUids: [f.question.uid]
+    }] }, null, 2) + '\n');
+    fs.writeFileSync(evidencePath, evidenceBytes);
+    f.args.reviewEvidence = { path: f.rel.evidence, sha256: sha256Bytes(evidenceBytes), reviewStatus: 'USER_DIRECTED_QUALITY_APPROVED' };
+    f.args.approval.status = 'USER_DIRECTED_QUALITY_APPROVED';
+    f.args.newRegistration.indexRow.approval = 'USER_DIRECTED_QUALITY_APPROVED';
+    f.args.newRegistration.indexRow.reviewStatus = 'USER_DIRECTED_QUALITY_APPROVED';
+    f.args.newRegistration.indexRow.reviewApprovalBasis = basis;
+
+    const cutoverPath = path.join(f.root, 'archive/data/generated-lite-consumer/v1/meta-retention-cutover-20261009.json');
+    fs.mkdirSync(path.dirname(cutoverPath), { recursive: true });
+    const legacyUids = Array.from({ length: 323 }, (_, index) => `LEGACY-${String(index + 1).padStart(3, '0')}`);
+    fs.writeFileSync(cutoverPath, JSON.stringify({ schemaVersion: 'GENERATED_META_RETENTION_CUTOVER_V1', legacyCount: 323, legacyUids, historicalMetaEvidenceCompatibilityCount: 0, historicalMetaEvidenceCompatibility: [] }, null, 2) + '\n');
+    const indexPath = path.join(f.root, f.rel.consumerIndex);
+    const index = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
+    index.records = legacyUids.map(uid => ({ uid, school: 'Legacy' }));
+    index.approvedCount = index.records.length;
+    index.approvedBySchool = { Legacy: index.records.length };
+    fs.writeFileSync(indexPath, JSON.stringify(index, null, 2) + '\n');
+    f.args.expectedSha256.consumerIndex = sha256Bytes(fs.readFileSync(indexPath));
+
+    const result = registerApprovedGeneratedMeta(f.args);
+    assert.equal(result.status, 'REGISTERED');
+    assert.equal(result.reviewEvidence.reviewStatus, 'USER_DIRECTED_QUALITY_APPROVED');
+    assert.deepEqual(result.reviewEvidence.scopeUids, [f.question.uid]);
+    assert.equal(result.reviewEvidence.approvalBasis, basis);
+    assert.equal(Object.hasOwn(result.reviewEvidence, 'gptReviewStatus'), false);
+    const auditResult = audit(f.root);
+    assert.equal(auditResult.status, 'PASS_NEW_UID_SCOPE_ONLY', auditResult.errors.join('\n'));
+    assert.equal(auditResult.newUidChecked, 1);
+  } finally { fs.rmSync(f.root, { recursive: true, force: true }); }
+});
+
+test('complete registered Meta carries a current-source marker into shared VERIFIED recipes', () => {
+  const f = fixture({ unregistered: true });
+  try {
+    f.args.meta.secondaryConceptKeys = [];
+    f.args.meta.problemTypeKey = 'PT_CIRCLE_EQUATION';
+    f.args.meta.templateKey = 'TM_CIRCLE_CENTER_RADIUS';
+    delete f.args.meta.metaDebt;
+    const evidencePath = path.join(f.root, f.rel.evidence);
+    const evidenceBytes = Buffer.from(JSON.stringify({ schemaVersion: 'GENERATED_META_REVIEW_EVIDENCE_V1', items: [{
+      uid: f.question.uid, reviewStatus: 'REVIEW_PASS', metaFinalSha256: metaSha256(f.args.meta)
+    }] }, null, 2) + '\n');
+    fs.writeFileSync(evidencePath, evidenceBytes);
+    f.args.reviewEvidence.sha256 = sha256Bytes(evidenceBytes);
+    const result = registerApprovedGeneratedMeta(f.args);
+    assert.equal(result.status, 'REGISTERED');
+    const index = JSON.parse(fs.readFileSync(path.join(f.root, f.rel.consumerIndex), 'utf8'));
+    const row = index.records.find(item => item.uid === f.question.uid);
+    const view = problemBankMeta.projectGenerated(row);
+    assert.equal(view.verifiedEligible, true);
+    assert.deepEqual(view.secondaryConceptKeys, []);
+    assert.equal(row.metaVerification.metaFinalSha256, row.metaFinalSha256);
+    assert.equal(row.metaVerification.sourceShardGitSha, row.sourceShardGitSha);
+    assert.equal(row.metaVerification.reviewEvidenceSha256, row.metaReviewEvidenceSha256);
+    const source = { window: {} };
+    vm.runInNewContext(fs.readFileSync(path.join(f.root, f.rel.sourceShard), 'utf8'), source);
+    for (const field of ['problemTypeKey', 'templateKey', 'secondaryConceptKeys', 'crossConceptKeys', 'conditionKeys', 'integrationPattern']) {
+      assert.equal(JSON.stringify(source.window.questionBank[0][field]), JSON.stringify(f.args.meta[field]), field);
+    }
+    const recipe = assessmentRecipes.queryRecipe([view], 'FIVE_MINUTE');
+    assert.equal(recipe.profile, 'VERIFIED');
+    assert.deepEqual(recipe.candidates.map(item => item.uid), [f.question.uid]);
+  } finally { fs.rmSync(f.root, { recursive: true, force: true }); }
+});
+
+test('canonical Meta taxonomy bindings reject unregistered keys and wrong parents', () => {
+  const f = fixture();
+  try {
+    const parent = validateAuthorityBinding(f.root, f.meta, f.question, f.question.uid).primaryRecord;
+    const valid = { ...f.meta, problemTypeKey: 'PT_CIRCLE_EQUATION', templateKey: 'TM_CIRCLE_CENTER_RADIUS', metaDebt: undefined };
+    assert.deepEqual(validateMetaTaxonomyBindings(f.root, valid, parent), []);
+    assert.ok(validateMetaTaxonomyBindings(f.root, { ...valid, problemTypeKey: 'PT_DOES_NOT_EXIST' }, parent).includes('META_PROBLEM_TYPE_NOT_ACTIVE_UNIQUE'));
+    assert.ok(validateMetaTaxonomyBindings(f.root, { ...valid, templateKey: 'TM_TANGENT_AT_POINT' }, parent).includes('META_TEMPLATE_PROBLEM_TYPE_PARENT_MISMATCH'));
+    assert.ok(validateMetaTaxonomyBindings(f.root, { ...valid, crossConceptKeys: ['CC_DOES_NOT_EXIST'] }, parent).some(issue => issue.startsWith('META_CROSS_CONCEPT_NOT_ACTIVE_UNIQUE')));
+    const globallyShared = validateMetaTaxonomyBindings(f.root, { ...valid, crossConceptKeys: ['CC_ABSOLUTE_VALUE_EQUATION'] }, parent);
+    assert.deepEqual(globallyShared, []);
+    const sharedConcept = JSON.parse(fs.readFileSync(path.join(f.root, 'archive/data/meta-foundation/compiled/concept_registry.json'), 'utf8')).concepts.find(row => row.conceptKey === 'CC_ABSOLUTE_VALUE_EQUATION');
+    assert.ok(!sharedConcept.taxonomyRefs.includes(valid.problemTypeKey));
+    assert.ok(sharedConcept.curriculumRefs.some(ref => !ref.includes(parent.standardCourse)));
+    assert.ok(validateMetaTaxonomyBindings(f.root, { ...valid, conditionKeys: ['COND_NOT_ACTIVE'] }, parent).some(issue => issue.startsWith('META_CONDITION_NOT_ACTIVE_UNIQUE')));
+    assert.ok(validateMetaTaxonomyBindings(f.root, { ...valid, integrationPattern: 'UNREGISTERED_PATTERN' }, parent).includes('META_INTEGRATION_PATTERN_NOT_CANONICAL'));
+    assert.deepEqual(validateMetaTaxonomyBindings(f.root, { ...f.meta, problemTypeKey: null, templateKey: null,
+      metaDebt: { ...f.meta.metaDebt, problemTypeKey: 'UNKNOWN', templateKey: 'UNKNOWN' } }, parent), []);
   } finally { fs.rmSync(f.root, { recursive: true, force: true }); }
 });

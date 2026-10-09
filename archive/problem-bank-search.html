@@ -30,7 +30,7 @@ body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#
 <script>
 'use strict';
 const el=id=>document.getElementById(id),shards=new Map();
-let inventory=[],matching=[],limit=40,holds=[];
+let inventory=[],matching=[],limit=40,holds=[],previewRequest=0;
 const filters=()=>{
  const f={};for(const k of ['L1','L2','L3','L4'])if(el(k).value)f[k]=el(k).value;
  if(el('source').value)f.sourceKind=el('source').value;
@@ -66,16 +66,18 @@ function render(){
  el('more').hidden=matching.length<=limit;
 }
 async function previewGenerated(row,button){
+ const request=++previewRequest;
  button.disabled=true;el('preview').hidden=false;el('preview').textContent='문항을 불러오는 중입니다.';
  try{
   if(!/^data\/generated-lite-consumer\/v1\/shards\/[^?#]+\.json$/.test(row.shard)||row.shard.includes('..'))throw Error('문항 경로 오류');
   if(!shards.has(row.shard))shards.set(row.shard,fetch(row.shard,{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('문항 로드 실패');return r.json();}).catch(e=>{shards.delete(row.shard);throw e;}));
-  const q=Archive2Source.restoreGenerated(row,await shards.get(row.shard),holds);
+  const q=await Archive2Source.restoreGenerated(row,await shards.get(row.shard),holds);
+  if(request!==previewRequest)return;
   el('preview').replaceChildren();const stem=document.createElement('div');safeStem(stem,q.content);el('preview').append(stem);
   for(const [i,value] of (q.choices||[]).entries()){const p=document.createElement('p');p.textContent='①②③④⑤'[i]+' '+value;el('preview').append(p);}
   if(q.image){if(!/^assets\/generated-lite\/[^?#]+\.svg$/.test(q.image)||q.image.includes('..'))throw Error('문항 이미지 경로 오류');const img=document.createElement('img');img.src=q.image;img.alt=q.imageAlt||'문제 그림';el('preview').append(img);}
   if(window.MathJax?.typesetPromise)await MathJax.typesetPromise([el('preview')]);
- }catch(e){el('preview').textContent=e.message;}finally{button.disabled=false;}
+ }catch(e){if(request===previewRequest)el('preview').textContent=e.message;}finally{button.disabled=false;}
 }
 function safeStem(host,content){
  const raw=String(content??''),pattern=/<div class="question-table-wrap"><table class="question-table">([\s\S]*?)<\/table><\/div>/g;
