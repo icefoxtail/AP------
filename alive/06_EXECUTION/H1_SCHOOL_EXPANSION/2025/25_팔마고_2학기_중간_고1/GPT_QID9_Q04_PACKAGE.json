@@ -1,0 +1,511 @@
+{
+  "schemaVersion": "ALIVE_QID9_CREATE_PACKAGE_V1",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceQid": 4,
+  "sourceQuestionType": "객관식",
+  "sourceFingerprint": {
+    "originalStem": "두 실수 $a,b$에 대하여 $\\sqrt{(a+1)^2+(b-2)^2}+\\sqrt{(2-a)^2+(6-b)^2}$의 최솟값은?",
+    "primaryConcept": "평면좌표—두 점 사이의 거리와 삼각부등식",
+    "originalMinimum": 5,
+    "sourceAnswer": "⑤",
+    "originalPoints": [
+      [
+        -1,
+        2
+      ],
+      [
+        2,
+        6
+      ]
+    ],
+    "sourceVisualDependency": "NONE",
+    "sourceStandardUnitKey": "H22-C2-01",
+    "sourceSubUnitKey": "H22-C2-01-COORDINATE_METRIC"
+  },
+  "invariant": "좌표를 거리로 해석하고 조건에 맞는 점 P의 위치에서 거리 관련 최적값을 확정한다.",
+  "rpmExactL3L4Lookup": "PENDING_SOURCE_RPM_MASTER_READ; do not invent H1-RPM ids",
+  "l3WorkingLabel": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
+  "l4Candidates": [
+    {
+      "label": "두 점 사이 거리·거리합 하한",
+      "slots": [
+        "A1",
+        "A2",
+        "A3"
+      ],
+      "status": "SEMANTIC_WORKING_LABEL"
+    },
+    {
+      "label": "직선/반직선 위의 거리합",
+      "slots": [
+        "B1",
+        "B2",
+        "B3"
+      ],
+      "status": "SEMANTIC_WORKING_LABEL"
+    },
+    {
+      "label": "거리합의 최적 위치·거리 복원·역최적화",
+      "slots": [
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "status": "GENERATED_EXT_L4_CANDIDATE_NOT_REGISTERED"
+    }
+  ],
+  "experiencePlan": {
+    "A": "같은 거리합 최솟값 풀이를 삼각부등식과 거리공식으로 정확히 적용",
+    "B": "점의 위치 제약(직선/반직선)으로 등호 성립성과 반사 또는 경계를 먼저 판단",
+    "C": "이산 위치, 두 거리의 최댓값 최적화, 목표 최솟값에서 역으로 매개변수와 등호점 결정"
+  },
+  "itemCount": 9,
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 1,
+    "④": 2,
+    "⑤": 2
+  },
+  "authorSelfCheck": {
+    "authorMathCheck": "Current Q04 candidate: revised B2/C1 distractor coverage and C2/C3 exact target recomputed; arithmetic spot checks are not independent GPT quality PASS",
+    "structuralCheck": "9 candidate objects; 45 pairwise-distinct per-item choices; distractor index coverage 4/4 for 9/9 items; technical release remains NOT_TESTED",
+    "numericalSpotCheck": [
+      {
+        "slot": "B1",
+        "numericalMinimum": 5.00000001800144,
+        "approxArgmin": 1.667,
+        "expected": 5,
+        "expectedAnswer": "5",
+        "exactJustification": "A'(-1,-2), B(3,1)의 거리 sqrt(4^2+3^2)=5; x축 교점 t=5/3",
+        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE",
+        "expectedMeaning": "minimum of PA+PB; student requested answer separately in expectedAnswer"
+      },
+      {
+        "slot": "B2",
+        "numericalMinimum": 6.324555320336759,
+        "approxArgmin": 0,
+        "expected": 6.324555320336759,
+        "expectedAnswer": "2sqrt(10)",
+        "exactJustification": "t>=0에서 각 거리 증가; t=0일 때 sqrt10+sqrt10=2sqrt10",
+        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE",
+        "expectedMeaning": "minimum of PA+PB; student requested answer separately in expectedAnswer"
+      },
+      {
+        "slot": "B3",
+        "numericalMinimum": 4.47213595499958,
+        "approxArgmin": 3,
+        "expected": 4.47213595499958,
+        "expectedAnswer": "t=3",
+        "exactJustification": "AB와 y=x 교점 P=(3,3)에서 거리합=AB=sqrt20, 질문은 최소 위치 t=3",
+        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE",
+        "expectedMeaning": "minimum of PA+PB; student requested answer separately in expectedAnswer"
+      },
+      {
+        "slot": "C1",
+        "numericalMinimum": 7.404918347287666,
+        "approxArgmin": 1,
+        "alsoArgmin": 3,
+        "expected": 7.404918347287666,
+        "expectedAnswer": "sqrt(10)+3sqrt(2)",
+        "exactJustification": "t={-1,1,3,5} 각 경우 대입; t=1,3에서 sqrt10+sqrt18이 최소",
+        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE",
+        "expectedMeaning": "minimum of PA+PB; student requested answer separately in expectedAnswer"
+      },
+      {
+        "slot": "C2",
+        "numericalMinimum": 7.211102550927978,
+        "approxArgmin": 2.5,
+        "expected": 7.211102550927978,
+        "expectedAnswer": "3sqrt(13)/2",
+        "computedTargetPA": 5.4083269131959835,
+        "computedOtherPB": 1.8027756377319946,
+        "exactJustification": "A'(-2,-3), B(4,1), x축 교점 P=(5/2,0); PA=3/4*A'B=3sqrt13/2, PB=sqrt13/2; 거리합 최솟값 A'B=2sqrt13. 현재 질문은 거리합이 아니라 최솟값을 실현할 때 PA.",
+        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE",
+        "expectedMeaning": "minimum of PA+PB; student requested answer separately in expectedAnswer"
+      },
+      {
+        "slot": "C3",
+        "numericalMinimum": 10,
+        "approxArgmin": 0.25,
+        "expected": 10,
+        "expectedAnswer": "P=(1/4,0)",
+        "recoveredK": 5,
+        "computedPoint": {
+          "x": 0.25,
+          "y": 0
+        },
+        "exactJustification": "min PA+PB=10 -> (k+3)^2=64 and k>0 -> k=5; A'B와 x축 교점 P=(1/4,0), PA+PB=10",
+        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE",
+        "expectedMeaning": "minimum of PA+PB; student requested answer separately in expectedAnswer"
+      }
+    ],
+    "studentSourceReverseRead": "Q04 C2 student stem asks PA at minimum PA+PB (not min of max distances); C3 asks point P where min is achieved (not k+4t); remaining Q04 stems preserved. Generated candidate review only.",
+    "notIndependentReview": true,
+    "rpmCatalogIdsVerified": false,
+    "reviewerStatus": "NOT_RUN",
+    "realBrowserRender": "NOT_TESTED",
+    "studentSupply": "NOT_REGISTERED",
+    "distractorIndexCoverage": {
+      "checkedSlots": 9,
+      "perSlot": "Four unique wrong-answer option labels in ①②③④⑤, excluding stored answer; reasons in matching choice order",
+      "status": "ALL_9_SLOTS_4_OF_4",
+      "reviewKind": "NON_PRODUCTION_AUTHOR_TARGETED_AUDIT"
+    },
+    "evidenceFreshness": {
+      "status": "REFRESHED_FOR_CURRENT_Q04_CANDIDATE",
+      "stalePriorC2": "Original min-max C2 numericalMinimum≈3.800906 and expected≈3.800585 are invalid for redesigned C2 and were removed from active numericalSpotCheck",
+      "affectedSlots": [
+        "B1",
+        "B2",
+        "B3",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "reusedPreviousResultAsFinalPass": false,
+      "details": "numericalMinimum and expected always refer to min(PA+PB); expectedAnswer refers to student's target (length PA in C2; coordinate P in C3)"
+    }
+  },
+  "items": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-PALMA25-2MID-Q04-A1",
+      "purpose": "반복 숙달",
+      "stem": "두 실수 $x,y$에 대하여 $\\sqrt{(x-1)^2+(y+2)^2}+\\sqrt{(x-5)^2+(y-1)^2}$의 최솟값은?",
+      "choices": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$\\sqrt{17}$",
+        "$7$"
+      ],
+      "answer": "③",
+      "solution": "$P(x,y)$, $A(1,-2)$, $B(5,1)$로 놓으면 주어진 식은 $PA+PB$이다. 삼각형의 두 변의 길이의 합은 나머지 한 변 이상이므로 $PA+PB\\ge AB$이다. $P$가 선분 $AB$ 위에 있으면 등호가 성립한다. $AB=\\sqrt{(5-1)^2+(1+2)^2}=\\sqrt{16+9}=5$이므로 최솟값은 $5$이다. 따라서 정답은 ③이다.",
+      "distractorReasons": [
+        "① 수평·수직 차이 중 작은 값만 취함",
+        "② 가로 좌표 차이만 사용",
+        "④ 두 점의 y좌표 차이 3을 1로 잘못 계산하여 √(4²+1²)=√17로 구함",
+        "⑤ 피타고라스 정리를 쓰지 않고 가로·세로 차이 4+3=7로 계산"
+      ],
+      "level": "하",
+      "difficultyBucket": 1,
+      "mode": "STRICT_VARIANT",
+      "l3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
+      "l4WorkingLabel": "두 점 사이 거리·거리합 하한",
+      "crossConcepts": [],
+      "conditionKeys": [
+        "P 전체 평면"
+      ],
+      "integrationPattern": "NONE",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_DRAFT_REVISED_TARGETED",
+      "reviewerStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "UNREGISTERED"
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-PALMA25-2MID-Q04-A2",
+      "purpose": "반복 숙달",
+      "stem": "실수 $a,b$에 대하여 $\\sqrt{(a+2)^2+(b-1)^2}+\\sqrt{(a-4)^2+(b-9)^2}$의 최솟값은?",
+      "choices": [
+        "$8$",
+        "$14$",
+        "$6$",
+        "$9$",
+        "$10$"
+      ],
+      "answer": "⑤",
+      "solution": "$P(a,b)$, $A(-2,1)$, $B(4,9)$라 하면 식은 $PA+PB$이다. $PA+PB\\ge AB$이고 $P$가 선분 $AB$ 위에 있을 때 등호가 성립한다. 양 끝점 사이의 거리는 $AB=\\sqrt{(4+2)^2+(9-1)^2}=\\sqrt{6^2+8^2}=10$이다. 따라서 정답은 ⑤이다.",
+      "distractorReasons": [
+        "① 세로 좌표 차이만 사용",
+        "② 가로 차이 6과 세로 차이 8을 피타고라스 정리 없이 6+8=14로 계산",
+        "③ 가로 좌표 차이만 사용",
+        "④ 두 점 사이 거리 대신 두 번째 점의 y좌표 9를 그대로 사용"
+      ],
+      "level": "하",
+      "difficultyBucket": 1,
+      "mode": "STRICT_VARIANT",
+      "l3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
+      "l4WorkingLabel": "두 점 사이 거리·거리합 하한",
+      "crossConcepts": [],
+      "conditionKeys": [
+        "P 전체 평면"
+      ],
+      "integrationPattern": "NONE",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_DRAFT_REVISED_TARGETED",
+      "reviewerStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "UNREGISTERED"
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-PALMA25-2MID-Q04-A3",
+      "purpose": "반복 숙달",
+      "stem": "두 실수 $a,b$에 대하여 $\\sqrt{(a-1)^2+(b-2)^2}+\\sqrt{(a-6)^2+(b-14)^2}$의 최솟값은?",
+      "choices": [
+        "$13$",
+        "$5$",
+        "$12$",
+        "$17$",
+        "$169$"
+      ],
+      "answer": "①",
+      "solution": "$P(a,b)$, $A(1,2)$, $B(6,14)$로 놓으면 식은 $PA+PB$이고, $PA+PB\\ge AB$이다. $P$가 선분 $AB$ 위에 놓이는 경우가 가능하므로 이 하한은 최솟값이다. $AB=\\sqrt{(6-1)^2+(14-2)^2}=\\sqrt{25+144}=13$이다. 따라서 정답은 ①이다.",
+      "distractorReasons": [
+        "② 가로 좌표 차이만 사용",
+        "③ 세로 좌표 차이만 사용",
+        "④ 가로·세로 차이를 그냥 더함",
+        "⑤ 거리를 제곱한 값 사용"
+      ],
+      "level": "하",
+      "difficultyBucket": 2,
+      "mode": "STRICT_VARIANT",
+      "l3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
+      "l4WorkingLabel": "두 점 사이 거리·거리합 하한",
+      "crossConcepts": [],
+      "conditionKeys": [
+        "P 전체 평면"
+      ],
+      "integrationPattern": "NONE",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_DRAFT_AUTHOR_SELF_CHECKED",
+      "reviewerStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "UNREGISTERED"
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-PALMA25-2MID-Q04-B1",
+      "purpose": "사고 확장",
+      "stem": "두 점 $A(-1,2)$, $B(3,1)$과 $x$축 위를 움직이는 점 $P$에 대하여 $PA+PB$의 최솟값은?",
+      "choices": [
+        "$\\sqrt{17}$",
+        "$4$",
+        "$\\sqrt{29}$",
+        "$5$",
+        "$6$"
+      ],
+      "answer": "④",
+      "solution": "$A(-1,2)$를 $x$축에 대하여 대칭이동한 점을 $A'(-1,-2)$라 하자. $P$가 $x$축 위에 있으므로 $PA=PA'$이다. 따라서 $PA+PB=PA'+PB\\ge A'B$이다. $A'$와 $B$는 $x$축의 서로 다른 쪽에 있으므로 선분 $A'B$는 $x$축과 만난다. 그 교점을 $P$로 택하면 등호가 성립한다. $A'B=\\sqrt{(3+1)^2+(1+2)^2}=\\sqrt{16+9}=5$이다. 따라서 정답은 ④이다.",
+      "distractorReasons": [
+        "① x축 제약을 무시하고 원래 두 점의 거리만 취함",
+        "② 수평 좌표 차이만 취함",
+        "③ 반사점 A'(-1,-2)에서 B(3,1)까지의 세로 차 3을 사용하면서 A의 높이 2를 중복 합산하여 √(4²+3²+2²)=√29를 답함",
+        "⑤ 가로 차이 4에 A의 높이 2만 더해 6으로 계산하고 B의 높이 1을 누락"
+      ],
+      "level": "중",
+      "difficultyBucket": 3,
+      "mode": "EXAM_FOLLOWUP",
+      "l3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
+      "l4WorkingLabel": "직선 위 점까지의 거리합—대칭이동",
+      "crossConcepts": [
+        "도형의 대칭이동"
+      ],
+      "conditionKeys": [
+        "P는 x축 위"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_DRAFT_REVISED_TARGETED",
+      "reviewerStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "UNREGISTERED"
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-PALMA25-2MID-Q04-B2",
+      "purpose": "사고 확장",
+      "stem": "두 점 $A(-1,3)$, $B(-3,1)$과 점 $P(t,0)$에 대하여 $t\\ge 0$일 때 $PA+PB$의 최솟값은?",
+      "choices": [
+        "$2\\sqrt{5}$",
+        "$2\\sqrt{10}$",
+        "$\\sqrt{13}+\\sqrt{17}$",
+        "$\\sqrt{10}$",
+        "$4\\sqrt{10}$"
+      ],
+      "answer": "②",
+      "solution": "$PA=\\sqrt{(t+1)^2+9}$, $PB=\\sqrt{(t+3)^2+1}$이다. $t\\ge0$에서는 $t+1$, $t+3$이 모두 양수이고 $t$가 커질수록 각 제곱도 커진다. 따라서 두 거리는 모두 $t=0$에서 가장 작다. 이때 $PA=\\sqrt{1+9}=\\sqrt{10}$, $PB=\\sqrt{9+1}=\\sqrt{10}$이므로 최솟값은 $2\\sqrt{10}$이다. $x$축의 왼쪽 반직선까지 허용할 때의 값과 혼동해서는 안 된다. 따라서 정답은 ②이다.",
+      "distractorReasons": [
+        "① x축 전체를 허용한 것으로 착각하고 반사점 A'(-1,-3)과 B(-3,1) 사이의 거리 √(2²+4²)=2√5를 답함",
+        "③ t=1을 최소 위치라고 잘못 정해 PA=√13, PB=√17을 합한 √13+√17을 답함",
+        "④ t=0에서 PA=√10만 구하고 PB=√10을 합산하지 않아 √10을 답함",
+        "⑤ t=0에서 합 PA+PB=2√10을 구한 뒤 두 거리 합을 다시 2배 하여 4√10으로 답함"
+      ],
+      "level": "중",
+      "difficultyBucket": 3,
+      "mode": "EXAM_FOLLOWUP",
+      "l3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
+      "l4WorkingLabel": "반직선 위 거리합—끝점 판정",
+      "crossConcepts": [
+        "좌표의 부호·단조적인 길이 비교"
+      ],
+      "conditionKeys": [
+        "t>=0"
+      ],
+      "integrationPattern": "BOUNDARY",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_DRAFT_REVISED_TARGETED",
+      "reviewerStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "UNREGISTERED"
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-PALMA25-2MID-Q04-B3",
+      "purpose": "사고 확장",
+      "stem": "두 점 $A(1,4)$, $B(5,2)$와 직선 $y=x$ 위의 점 $P(t,t)$에 대하여 $PA+PB$가 최소가 되는 실수 $t$의 값은?",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$4$",
+        "$5$",
+        "$3$"
+      ],
+      "answer": "⑤",
+      "solution": "삼각부등식에 의해 $PA+PB\\ge AB$이다. 등호가 성립하려면 $P$가 선분 $AB$ 위에 있어야 한다. 두 점을 잇는 직선은 기울기가 $\\dfrac{2-4}{5-1}=-\\dfrac12$이므로 $y-4=-\\dfrac12(x-1)$이다. 여기에 $x=y=t$를 대입하면 $t-4=-\\dfrac12(t-1)$, 즉 $2t-8=-t+1$이어서 $t=3$이다. 이때 $(3,3)$은 두 끝점을 잇는 선분의 중점이므로 등호가 실제로 성립한다. 따라서 정답은 ⑤이다.",
+      "distractorReasons": [
+        "① 첫 번째 점의 x좌표만 대입",
+        "② AB의 기울기를 Δy/Δx=(-2)/1=-2로 잘못 계산해 직선 y-4=-2(x-1)과 y=x의 교점 t=2를 답함",
+        "③ AB를 수평 직선 y=4로 잘못 생각해 y=x와의 교점 t=4를 답함",
+        "④ 두 번째 점의 x좌표만 대입"
+      ],
+      "level": "중",
+      "difficultyBucket": 3,
+      "mode": "EXAM_FOLLOWUP",
+      "l3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
+      "l4WorkingLabel": "직선 제약에서 거리합 등호점 찾기",
+      "crossConcepts": [
+        "두 직선의 교점"
+      ],
+      "conditionKeys": [
+        "P lies y=x"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_DRAFT_AUTHOR_SELF_CHECKED",
+      "reviewerStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "UNREGISTERED"
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-PALMA25-2MID-Q04-C1",
+      "purpose": "실전 평가",
+      "stem": "두 점 $A(0,3)$, $B(4,3)$과 점 $P(t,0)$에 대하여 $t\\in\\{-1,1,3,5\\}$일 때 $PA+PB$의 최솟값은?",
+      "choices": [
+        "$2\\sqrt{13}$",
+        "$\\sqrt{10}+3\\sqrt2$",
+        "$\\sqrt{10}+\\sqrt{34}$",
+        "$6\\sqrt2$",
+        "$6$"
+      ],
+      "answer": "②",
+      "solution": "허용된 $t$는 네 개이므로 이를 각각 대입하여 비교한다. $t=-1$이면 $PA=\\sqrt{1+9}=\\sqrt{10}$, $PB=\\sqrt{25+9}=\\sqrt{34}$이다. $t=5$에서도 두 거리가 서로 바뀌어 합은 $\\sqrt{10}+\\sqrt{34}$이다. $t=1$에서는 $PA=\\sqrt{10}$, $PB=\\sqrt{9+9}=3\\sqrt2$이고 $t=3$에서도 합이 같다. $\\sqrt{34}>3\\sqrt2$이므로 최솟값은 $\\sqrt{10}+3\\sqrt2$이다. $t$를 모든 실수로 볼 때의 하한과 다름에 주의한다. 따라서 정답은 ②이다.",
+      "distractorReasons": [
+        "① t를 모든 실수로 허용한 것으로 착각하고 A'(0,-3), B(4,3) 사이의 거리 √(4²+6²)=2√13을 답함",
+        "③ 허용된 t=-1(또는 5)을 최소 위치로 착각하여 √10+√34를 답함",
+        "④ t=1에서 PB=3√2인데 PA도 같은 3√2로 잘못 계산하여 6√2를 답함",
+        "⑤ t=1에서 두 점까지의 수평 좌표 차이를 모두 무시하고 세로 길이만 3+3=6으로 답함"
+      ],
+      "level": "중",
+      "difficultyBucket": 3,
+      "mode": "TYPE_BANK",
+      "l3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
+      "l4WorkingLabel": "유한 위치 제약과 거리합 최솟값",
+      "crossConcepts": [
+        "유한집합 경우 비교",
+        "근호 대소 비교"
+      ],
+      "conditionKeys": [
+        "t belongs finite set"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_DRAFT_REVISED_TARGETED",
+      "reviewerStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "UNREGISTERED"
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-PALMA25-2MID-Q04-C2",
+      "purpose": "실전 평가",
+      "stem": "두 점 $A(-2,3)$, $B(4,1)$과 $x$축 위의 점 $P$에 대하여 $PA+PB$가 최소가 될 때, $PA$의 길이는?",
+      "choices": [
+        "$\\dfrac{3\\sqrt{13}}{2}$",
+        "$\\dfrac{\\sqrt{13}}{2}$",
+        "$2\\sqrt{13}$",
+        "$\\sqrt{13}$",
+        "$\\dfrac{3\\sqrt{13}}{4}$"
+      ],
+      "answer": "①",
+      "solution": "점 $A(-2,3)$를 $x$축에 대하여 대칭이동한 점을 $A'(-2,-3)$이라 하자. $P$가 $x$축 위에 있으므로 $PA=PA'$이고, $PA+PB=PA'+PB\\ge A'B$이다. 선분 $A'B$는 $x$축과 만나므로 등호가 성립할 때의 점 $P$가 존재한다. $A'B=\\sqrt{(4+2)^2+(1+3)^2}=2\\sqrt{13}$이다. $A'$의 $y$좌표가 $-3$, $B$의 $y$좌표가 $1$이므로 선분 $A'B$와 $x$축의 교점은 $A'B$를 $3:1$로 내분한다. 따라서 $PA=PA'=\\dfrac34 A'B=\\dfrac{3\\sqrt{13}}2$이다. 따라서 정답은 ①이다.",
+      "distractorReasons": [
+        "② 최솟값에서 $PA$ 대신 $PB=\\dfrac14 A'B$를 답함",
+        "③ 거리합의 최솟값 $A'B$를 $PA$로 오해",
+        "④ 교점을 선분의 중점으로 잘못 간주해 $PA=\\dfrac12 A'B$로 계산",
+        "⑤ $A'B=2\\sqrt{13}$의 계수 2를 빠뜨리고 $\\dfrac34\\sqrt{13}$으로 계산"
+      ],
+      "level": "상",
+      "difficultyBucket": 4,
+      "mode": "TYPE_BANK",
+      "l3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
+      "l4WorkingLabel": "거리합 최소 등호점에서 내분비를 이용한 거리 복원",
+      "crossConcepts": [
+        "대칭이동",
+        "선분의 내분",
+        "좌표에서 거리 계산"
+      ],
+      "conditionKeys": [
+        "P lies x-axis",
+        "PA+PB minimized"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_DRAFT_REVISED_TARGETED",
+      "reviewerStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "UNREGISTERED"
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-PALMA25-2MID-Q04-C3",
+      "purpose": "실전 평가",
+      "stem": "두 점 $A(-2,3)$, $B(4,k)$에 대하여 $k>0$이다. $x$축 위의 점 $P$에 대한 $PA+PB$의 최솟값이 $10$일 때, 이 최솟값을 갖는 점 $P$의 좌표는?",
+      "choices": [
+        "$(-2,0)$",
+        "$(\\dfrac74,0)$",
+        "$(1,0)$",
+        "$(\\dfrac14,0)$",
+        "$(0,0)$"
+      ],
+      "answer": "④",
+      "solution": "$A(-2,3)$를 $x$축에 대하여 대칭이동한 점을 $A'(-2,-3)$이라 하자. $k>0$이므로 선분 $A'B$는 $x$축과 만나고, $PA+PB$의 최솟값은 $A'B$이다. 따라서 $\\sqrt{(4+2)^2+(k+3)^2}=10$이고, $(k+3)^2=64$이다. $k>0$이므로 $k+3=8$, 즉 $k=5$이다. 이제 $A'(-2,-3)$과 $B(4,5)$를 지나는 직선은 기울기가 $\\dfrac{5-(-3)}{4-(-2)}=\\dfrac43$이므로 $y+3=\\dfrac43(x+2)$이다. 최솟값을 갖는 점 $P$는 이 직선과 $x$축의 교점이므로 $y=0$을 대입하면 $x+2=\\dfrac94$, 즉 $x=\\dfrac14$이다. 따라서 정답은 ④이다.",
+      "distractorReasons": [
+        "① 반사점 $A'$의 $x$좌표를 최적 교점의 $x$좌표로 오해",
+        "② $A'B$를 내분할 때 $3:1$이 아닌 $5:3$으로 반대 방향의 가중치를 사용하여 $x=7/4$로 계산",
+        "③ 내분 계산에서 가로 변화량 6을 세로 변화량 8로 오인해 $-2+8\\cdot(3/8)=1$로 계산",
+        "⑤ 두 점의 최적 연결선이 원점을 지날 것이라고 추정"
+      ],
+      "level": "상",
+      "difficultyBucket": 4,
+      "mode": "TYPE_BANK",
+      "l3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
+      "l4WorkingLabel": "거리합 최솟값에서 매개변수와 등호 교점 복원",
+      "crossConcepts": [
+        "대칭이동",
+        "이차방정식의 부호 분기",
+        "직선의 방정식과 좌표축 교점"
+      ],
+      "conditionKeys": [
+        "k>0",
+        "P lies x-axis",
+        "minimum equals 10"
+      ],
+      "integrationPattern": "COMPOSITE",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_DRAFT_REVISED_TARGETED",
+      "reviewerStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "UNREGISTERED"
+    }
+  ],
+  "nextSourceQid": 5,
+  "publication": "NOT_RELEASED",
+  "note": "Q04 is draft only. Candidate math checked by creator; no independent GPT open-book batch review, no generated consumer/index/main."
+}
