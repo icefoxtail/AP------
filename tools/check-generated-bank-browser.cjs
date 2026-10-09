@@ -52,7 +52,7 @@ async function main(){
       throw Error('Real Chrome mock-exam failure: '+label);
     }
     await wait("document.querySelectorAll('#exam-cards .exam-card').length===1",'one source exam with eligible variants');
-    const home=await ev("(()=>({labels:[...document.querySelectorAll('#exam-cards .exam-card')].map(x=>x.textContent),advanced:!!document.getElementById('advanced'),controls:[...document.querySelectorAll('main input,main select')].length,ready:document.getElementById('print').disabled}))()");
+    const home=await ev("(()=>({labels:[...document.querySelectorAll('#exam-cards .exam-card')].map(x=>x.textContent),advanced:!!document.getElementById('advanced'),controls:[...document.querySelectorAll('#exam-cards input,#exam-cards select,#print-heading input,#print-heading select')].length,ready:document.getElementById('print').disabled}))()");
     if(home.advanced||home.controls||!home.ready||!home.labels.some(x=>x.includes('복성고')&&x.includes('23문항')))throw Error('Exam-only screen incorrect '+JSON.stringify(home));
     await ev("(()=>{window.__paperPrintCount=0;window.print=()=>window.__paperPrintCount++;const btn=[...document.querySelectorAll('#exam-cards .exam-card')].find(x=>x.textContent.includes('복성고'));btn.click();document.getElementById('print').click();return true})()");
     await wait("window.__paperPrintCount===1",'Bokseong 23 question print');
