@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_14_C1";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q14-C1",
+    "level": "상",
+    "difficultyBucket": 5,
+    "category": "명제",
+    "originalCategory": "명제",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE",
+    "subUnit": "명제 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "명제"
+    ],
+    "wide": false,
+    "content": "명제 ‘$0\\le x\\le2$인 모든 실수 $x$에 대하여 $-x^2+2ax-3<0$이다.’의 부정이 참이 되도록 하는 실수 $a$의 값의 범위는?",
+    "choices": [
+      "$a\\ge\\sqrt3$",
+      "$a>\\sqrt3$",
+      "$a\\le-\\sqrt3$ 또는 $a\\ge\\sqrt3$",
+      "$a\\ge\\dfrac74$",
+      "$a\\le\\sqrt3$"
+    ],
+    "answer": "①",
+    "solution": "부정 명제는 ‘$0\\le x\\le2$인 어떤 실수 $x$에서 $-x^2+2ax-3\\ge0$이다.’이다.\n함수 $f(x)=-x^2+2ax-3=-(x-a)^2+a^2-3$을 구간 $0\\le x\\le2$에서 살펴보자.\n$a\\le0$이면 $0\\le x\\le2$에서 $-x^2\\le0$, $2ax\\le0$이므로 $f(x)\\le-3<0$이다.\n$0<a\\le2$이면 꼭짓점 $x=a$가 구간 안에 있으므로 최댓값 $a^2-3\\ge0$, 즉 $\\sqrt3\\le a\\le2$여야 한다.\n$a>2$이면 구간에서 $f(x)$가 증가하여 최댓값은 $f(2)=4a-7>0$이다.\n세 경우를 합치면 $a\\ge\\sqrt3$이다. $a=\\sqrt3$에서도 $x=\\sqrt3$에서 최댓값 $0$을 가지므로 경계를 포함한다.\n따라서 정답은 ①이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 14,
+    "slot": "C1",
+    "purposeGroup": "C"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q14-C1");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q14-C1","meta":{"rpmL1":"집합과 명제","rpmL2":"명제","rpmL3":"명제와 조건","rpmL4":"EXT-H1-C2-06-Q14-RESTRICTED-DOMAIN|제한된 정의역에서 양화명제 부정의 참 조건","rpmL4Namespace":"GENERATED_EXT_L4","rpmPrimaryRecordId":"H1-RPM-244","rpmAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","generatedL4RegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/palma-q14-registry.json","generatedL4RegistrySha256":"893ae7b5ec75110119d2b68579340d12e2761d6cda052904419977d151949559","secondaryConceptKeys":[],"crossConceptKeys":["EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA","EXT-CROSS-H1-C2-06-Q14-INTERVAL-EXTREMA"],"conditionKeys":["COND_RANGE","EXT-COND-H1-Q14-X-INTERVAL"],"crossConceptRegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json","conditionRegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json","sourceKind":"generated","integrationPattern":"CASE_BRANCH","difficultyBucket":5,"level":"상","problemTypeKey":"PT_QUANTIFIER_NEGATION","templateKey":"TPL_QUANTIFIER_NEGATION_INTERVAL","standardCourse":"공통수학2","standardUnitKey":"H22-C2-06","subUnitKey":"H22-C2-06-CORE"},"metaFinalSha256":"9032736def74cf0e874d825672049db4be12217d05d0a6b71fbeb3527325f596","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q14-C1.json","sha256":"1ba6aea9db2dfdc18e1a8b95a896161e7e37269c06f14c81dea0083690eea436","reviewStatus":"REVIEW_PASS","uid":"ALITE-PALMA25-2MID-Q14-C1"},"metaReviewEvidenceSha256":"1ba6aea9db2dfdc18e1a8b95a896161e7e37269c06f14c81dea0083690eea436","difficultyBucket":5,"level":"상","problemTypeKey":"PT_QUANTIFIER_NEGATION","templateKey":"TPL_QUANTIFIER_NEGATION_INTERVAL","secondaryConceptKeys":[],"crossConceptKeys":["EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA","EXT-CROSS-H1-C2-06-Q14-INTERVAL-EXTREMA"],"conditionKeys":["COND_RANGE","EXT-COND-H1-Q14-X-INTERVAL"],"integrationPattern":"CASE_BRANCH"});})();

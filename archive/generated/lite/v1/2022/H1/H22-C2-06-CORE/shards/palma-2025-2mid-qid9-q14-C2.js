@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_14_C2";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q14-C2",
+    "level": "상",
+    "difficultyBucket": 5,
+    "category": "명제",
+    "originalCategory": "명제",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE",
+    "subUnit": "명제 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "명제"
+    ],
+    "wide": false,
+    "content": "$-6\\le a\\le8$인 정수 $a$에 대하여 두 명제<br>$p$: ‘모든 실수 $x$에 대하여 $-x^2+2ax-9<0$이다.’<br>$q$: ‘모든 실수 $x$에 대하여 $-x^2+2(a-4)x-4<0$이다.’<br>명제 $p$의 부정과 명제 $q$의 부정이 모두 참이 되도록 하는 $a$의 개수는?",
+    "choices": [
+      "$15$",
+      "$7$",
+      "$10$",
+      "$12$",
+      "$3$"
+    ],
+    "answer": "②",
+    "solution": "두 명제의 부정이 모두 참이려면 각각 어떤 실수 $x$에서 해당 이차식이 $0$ 이상이어야 한다. $p$와 $q$의 반례가 되는 $x$는 서로 달라도 된다.\n$p$의 이차식은 $-x^2+2ax-9=-(x-a)^2+a^2-9$이므로, $p$의 부정은 $a^2\\ge9$, 즉 $a\\le-3$ 또는 $a\\ge3$일 때 참이다.\n$q$의 이차식은 $-x^2+2(a-4)x-4=-(x-a+4)^2+(a-4)^2-4$이므로, $q$의 부정은 $(a-4)^2\\ge4$, 즉 $a\\le2$ 또는 $a\\ge6$일 때 참이다.\n두 조건의 공통 범위는 $a\\le-3$ 또는 $a\\ge6$이다.\n$-6\\le a\\le8$인 정수 중 $-6,-5,-4,-3$의 $4$개와 $6,7,8$의 $3$개로 모두 $7$개이다.\n따라서 정답은 ②이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 14,
+    "slot": "C2",
+    "purposeGroup": "C"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q14-C2");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q14-C2","meta":{"rpmL1":"집합과 명제","rpmL2":"명제","rpmL3":"명제와 조건","rpmL4":"EXT-H1-C2-06-Q14-DUAL-QUANTIFIER|두 양화명제의 부정 동시 성립","rpmL4Namespace":"GENERATED_EXT_L4","rpmPrimaryRecordId":"H1-RPM-244","rpmAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","generatedL4RegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/palma-q14-registry.json","generatedL4RegistrySha256":"893ae7b5ec75110119d2b68579340d12e2761d6cda052904419977d151949559","secondaryConceptKeys":[],"crossConceptKeys":["EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA","EXT-CROSS-H1-C2-06-Q14-INTEGER-PARAMETER-COUNT"],"conditionKeys":["COND_INTEGER","COND_RANGE","EXT-COND-H1-Q14-BOTH-NEGATIONS"],"crossConceptRegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json","conditionRegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json","sourceKind":"generated","integrationPattern":"CASE_BRANCH","difficultyBucket":5,"level":"상","problemTypeKey":"PT_PROPOSITION_PARAMETER_CONDITION","templateKey":"TPL_PROPOSITION_COUNTEREXAMPLE_COUNT_PARAMETER","standardCourse":"공통수학2","standardUnitKey":"H22-C2-06","subUnitKey":"H22-C2-06-CORE"},"metaFinalSha256":"6125f0ddcb83264ce93b79be708f509c1c10858d0594f270b53234aefa211671","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q14-C2.json","sha256":"eb3bcef62b1f392459c30064e9e2ae1297a1b8aba11a21323db27d055f575632","reviewStatus":"REVIEW_PASS","uid":"ALITE-PALMA25-2MID-Q14-C2"},"metaReviewEvidenceSha256":"eb3bcef62b1f392459c30064e9e2ae1297a1b8aba11a21323db27d055f575632","difficultyBucket":5,"level":"상","problemTypeKey":"PT_PROPOSITION_PARAMETER_CONDITION","templateKey":"TPL_PROPOSITION_COUNTEREXAMPLE_COUNT_PARAMETER","secondaryConceptKeys":[],"crossConceptKeys":["EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA","EXT-CROSS-H1-C2-06-Q14-INTEGER-PARAMETER-COUNT"],"conditionKeys":["COND_INTEGER","COND_RANGE","EXT-COND-H1-Q14-BOTH-NEGATIONS"],"integrationPattern":"CASE_BRANCH"});})();
