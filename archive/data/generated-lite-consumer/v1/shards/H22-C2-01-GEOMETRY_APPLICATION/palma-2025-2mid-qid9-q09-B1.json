@@ -1,0 +1,151 @@
+{
+  "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
+  "school": "팔마고",
+  "batchId": "PALMA25_QID9_AUTO_09",
+  "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/shards/palma-2025-2mid-qid9-q09-B1.js",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "records": [
+    {
+      "generatedUid": "ALITE-PALMA25-2MID-Q09-B1",
+      "localOrdinal": 1,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "sourceQid": 9,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/shards/palma-2025-2mid-qid9-q09-B1.js",
+      "l2": "H22-C2-01-GEOMETRY_APPLICATION",
+      "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+      "reviewApprovalReceipt": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q09-B1.json",
+      "rpmPrimary": {
+        "recordId": "H1-RPM-209",
+        "l3": "삼각형의 무게중심",
+        "l4": "좌표 도형 활용"
+      },
+      "question": {
+        "id": 1,
+        "uid": "ALITE-PALMA25-2MID-Q09-B1",
+        "level": "중",
+        "difficultyBucket": 3,
+        "category": "평면좌표",
+        "originalCategory": "평면좌표",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C2-01-GEOMETRY_APPLICATION",
+        "subUnit": "도형의 방정식 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "평면좌표"
+        ],
+        "wide": false,
+        "content": "좌표평면 위의 세 점 $O(0,0)$, $A(9,0)$, $B(p,6)$에 대하여 점 $C$, $D$, $E$가 각각 선분 $OA$, $AB$, $BO$를 $3:1$로 내분한다. 삼각형 $CDE$의 무게중심이 $(4,2)$일 때, 실수 $p$의 값은?",
+        "choices": [
+          "$-5$",
+          "$12$",
+          "$-3$",
+          "$3$",
+          "$-1$"
+        ],
+        "answer": "④",
+        "solution": "각 선분의 내분점 좌표를 구하면 $C=(\\dfrac{27}{4},0)$, $D=(\\dfrac{9+3p}{4},\\dfrac92)$, $E=(\\dfrac p4,\\dfrac32)$이다.\n세 점의 x좌표의 합은 $\\dfrac{27+9+3p+p}{4}=9+p$이고, y좌표의 합은 $0+\\dfrac92+\\dfrac32=6$이다. 따라서 삼각형 $CDE$의 무게중심은 $\\left(\\dfrac{9+p}{3},2\\right)$이다.\n문제에서 무게중심이 $(4,2)$라고 했으므로 $\\dfrac{9+p}{3}=4$이고, $9+p=12$에서 $p=3$이다. 따라서 정답은 ④이다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "sourceQid": 9,
+        "slot": "B1",
+        "purposeGroup": "B",
+        "meta": {
+          "rpmL1": "도형의 방정식",
+          "rpmL2": "평면좌표",
+          "rpmL3": "삼각형의 무게중심",
+          "rpmL4": "좌표 도형 활용",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmPrimaryRecordId": "H1-RPM-209",
+          "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+          "secondaryConceptKeys": [],
+          "crossConceptKeys": [
+            "CC_INTERNAL_DIVISION"
+          ],
+          "conditionKeys": [],
+          "crossConceptRegistryRef": null,
+          "conditionRegistryRef": null,
+          "sourceKind": "generated",
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "level": "중",
+          "problemTypeKey": "PT_COORD_CENTROID",
+          "templateKey": "TPL_CENTROID_REVERSE",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-01",
+          "subUnitKey": "H22-C2-01-GEOMETRY_APPLICATION"
+        },
+        "metaFinalSha256": "230a758ebc1411821a57533d280ee2250a270b12eb0350b66142ed2b7770ab6b",
+        "metaReviewEvidence": {
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q09-B1.json",
+          "sha256": "39f88f1f96f9c4880918f30900db4947713816eee7eb6047cb229fd82820808b",
+          "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+          "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q09_Q12_36",
+          "scopeUids": [
+            "ALITE-PALMA25-2MID-Q09-B1"
+          ],
+          "uid": "ALITE-PALMA25-2MID-Q09-B1"
+        },
+        "metaReviewEvidenceSha256": "39f88f1f96f9c4880918f30900db4947713816eee7eb6047cb229fd82820808b",
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_REVERSE",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [
+          "CC_INTERNAL_DIVISION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "평면좌표",
+        "rpmL3": "삼각형의 무게중심",
+        "rpmL4": "좌표 도형 활용",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmPrimaryRecordId": "H1-RPM-209",
+        "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [
+          "CC_INTERNAL_DIVISION"
+        ],
+        "conditionKeys": [],
+        "crossConceptRegistryRef": null,
+        "conditionRegistryRef": null,
+        "sourceKind": "generated",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_REVERSE",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "subUnitKey": "H22-C2-01-GEOMETRY_APPLICATION"
+      },
+      "metaFinalSha256": "230a758ebc1411821a57533d280ee2250a270b12eb0350b66142ed2b7770ab6b",
+      "metaReviewEvidence": {
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q09-B1.json",
+        "sha256": "39f88f1f96f9c4880918f30900db4947713816eee7eb6047cb229fd82820808b",
+        "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+        "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q09_Q12_36",
+        "scopeUids": [
+          "ALITE-PALMA25-2MID-Q09-B1"
+        ],
+        "uid": "ALITE-PALMA25-2MID-Q09-B1"
+      },
+      "metaReviewEvidenceSha256": "39f88f1f96f9c4880918f30900db4947713816eee7eb6047cb229fd82820808b",
+      "sourceShardGitSha": "fd7889b2c0bc91cbf57b899b0ef73ebdc33d7260"
+    }
+  ],
+  "sourceShardGitSha": "fd7889b2c0bc91cbf57b899b0ef73ebdc33d7260"
+}

@@ -1,0 +1,1315 @@
+{
+  "schemaVersion": "ALIVE_QID9_CREATE_PACKAGE_V1",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceQid": 12,
+  "sourceQuestionType": "객관식",
+  "sourceFingerprint": {
+    "sourceStem": "점 $(-3,4)$에서 원 $x^2+y^2=10$에 그은 두 접선이 원과 만나는 점을 각각 $P$, $Q$라고 할 때 원의 중심과 직선 $PQ$ 사이의 거리는? [4.3점]",
+    "storedSourceChoices": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
+    ],
+    "storedSourceAnswer": "②",
+    "sourceProblemTypeKey": "PT_CIRCLE_TANGENT",
+    "sourceTemplateKey": "TM_TANGENT_CONTACT_CHORD_LINE",
+    "sourceQuestionType": "객관식",
+    "computedTruth": "외부점 (-3,4)까지 거리 5, r²=10, 두 접점의 현 -3x+4y=10, 중심에서 현까지 거리 10/5=2",
+    "sourceOriginalAssetReference": null,
+    "protectedOriginalJs": true
+  },
+  "lockedPrimaryL3": "원의 접선",
+  "rpmEvidence": {
+    "l1": "도형의 방정식",
+    "l2": "원의 방정식",
+    "l3": "원의 접선",
+    "recordIds": [
+      "H1-RPM-221",
+      "H1-RPM-222"
+    ],
+    "exactL4CoverageStatus": "EXTERNAL_CONTACT_CHORD_NOT_VERBATIM_RPM_L4; GENERATED_ONLY_EXT_USED",
+    "source": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json"
+  },
+  "activeMeta": {
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKeys": [
+      "TM_TANGENT_CONTACT_CHORD_LINE",
+      "TM_TANGENT_CONTACT_CHORD_LENGTH",
+      "TM_TANGENT_LENGTH",
+      "TM_TANGENT_FROM_EXTERNAL_POINT"
+    ],
+    "authority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json"
+  },
+  "experiencePlan": {
+    "A": "원본과 동일한 외부점 두 접선·접점의 현까지 거리: 좌표 및 중심 수치 변형 3개",
+    "B": "외부점/현 거리에서 반지름 역산, 현 길이, 현 방정식에서 접선 길이",
+    "C": "현 길이 역산, 현 통과점으로 외부점 복원, 거리와 접선 길이의 두 해·가능반지름 합"
+  },
+  "itemCount": 9,
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 2,
+    "④": 2,
+    "⑤": 1
+  },
+  "authorSelfCheck": {
+    "finalInputCount": 9,
+    "studentStemReverseReading": 9,
+    "keep": 8,
+    "revised": 1,
+    "hold": 0,
+    "answerFiveUnique": 9,
+    "distractorIndexedPaths": 36,
+    "mathematicalComputationReproducedByCreator": 9,
+    "externalPointAssumptionsChecked": 9,
+    "observedSpotCheck": {
+      "A1": 3,
+      "A2": 2.5,
+      "A3": 4,
+      "B1": 40,
+      "B2": 10,
+      "B3": 8,
+      "C1": 6.25,
+      "C2": 6,
+      "C3": 88
+    },
+    "C3RadiiSquared": [
+      60,
+      28
+    ],
+    "C3Boundary": {
+      "r2_60": "0<sqrt(60)<8",
+      "r2_28": "0<sqrt(28)<8"
+    },
+    "distinction": "AUTHOR_SELF_CHECK_ONLY_NOT_EXTERNAL_GPT_QUALITY_PASS",
+    "originalJSChanged": false,
+    "studentChrome": "NOT_TESTED",
+    "evidenceCorrections": [
+      {
+        "slot": "C2",
+        "before": "r² 대신 t²=4로 착각",
+        "after": "반지름 4를 제곱하지 않고 r²=4로 잘못 사용",
+        "studentContentChanged": false,
+        "recheckedChoice": "⑤ $4\\sqrt3$",
+        "status": "REVISED_EVIDENCE"
+      }
+    ]
+  },
+  "generatedL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-l4/registry.json",
+  "generatedCrossConceptRegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-meta/palma-q12-cross-concepts.json",
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q12-A1",
+      "slot": "A1",
+      "sourceQid": 12,
+      "mode": "STRICT_VARIANT",
+      "stem": "좌표평면 위의 원 $x^2+y^2=30$ 밖의 점 $A(6,8)$에서 이 원에 그은 두 접선의 접점을 각각 $P,Q$라 하자. 원의 중심에서 직선 $PQ$까지의 거리는?",
+      "choices": [
+        "$3$",
+        "$5$",
+        "$\\dfrac{15}{4}$",
+        "$10$",
+        "$7$"
+      ],
+      "answer": "①",
+      "solution": "두 접점 중 하나를 $P(u,v)$라고 하면, $P$에서의 접선은 $ux+vy=30$이다. 이 접선이 $A(6,8)$을 지나므로 $6u+8v=30$이다.\n같은 방법으로 $Q$도 $6x+8y=30$을 만족하므로 접점 $P,Q$를 지나는 직선의 방정식은 $6x+8y=30$이다.\n원점에서 이 직선까지의 거리는 $\\dfrac{|{-30}|}{\\sqrt{6^2+8^2}}=\\dfrac{30}{10}=3$이다.\n따라서 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "직선 거리 공식 분모에서 y계수를 누락: 30/6=5 → $5$",
+        "③": "직선 거리 공식 분모에서 x계수를 누락: 30/8=15/4 → $\\dfrac{15}{4}$",
+        "④": "원의 중심과 외부 점 A의 거리를 물은 것으로 오해: sqrt(6²+8²)=10 → $10$",
+        "⑤": "원의 중심 대신 외부 점 A에서 접점의 현까지의 거리를 계산: |(6·6+8·8)−30|/10=7 → $7$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "mistake": "직선 거리 공식 분모에서 y계수를 누락",
+          "calculation": "30/6=5",
+          "value": "$5$",
+          "matchedChoice": "$5$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "③",
+          "mistake": "직선 거리 공식 분모에서 x계수를 누락",
+          "calculation": "30/8=15/4",
+          "value": "$\\dfrac{15}{4}$",
+          "matchedChoice": "$\\dfrac{15}{4}$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "④",
+          "mistake": "원의 중심과 외부 점 A의 거리를 물은 것으로 오해",
+          "calculation": "sqrt(6²+8²)=10",
+          "value": "$10$",
+          "matchedChoice": "$10$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "⑤",
+          "mistake": "원의 중심 대신 외부 점 A에서 접점의 현까지의 거리를 계산",
+          "calculation": "|(6·6+8·8)−30|/10=7",
+          "value": "$7$",
+          "matchedChoice": "$7$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        }
+      ],
+      "experienceAxis": "접점 미지수에서 공통 접점 현 방정식을 만들고 거리 공식 사용",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "원의 접선",
+      "lockedL3DecisiveStep": "외부점 A에서 원에 그은 접선을 접점에서의 수직 조건으로 세워 접점의 현 또는 접선 길이 관계를 얻는다",
+      "targetL4": "EXT-H1-C2-03-Q12-CONTACT-CHORD",
+      "schoolExamStyleEvidence": "공통수학2 기출형 원의 접선·접점의 현·거리 및 매개변수 역조건 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "접선 2개가 통과하는 외부점 좌표→두 접점의 공통 직선→원점까지 거리",
+      "changedMathRecheck": "NOT_APPLICABLE_NO_POST_DRAFT_MUTATION",
+      "remainingRisk": "EXTERNAL_GPT_REVIEW_AND_STUDENT_CHROME_NOT_PERFORMED",
+      "numericValidation": {
+        "actual": 3,
+        "options": [
+          3,
+          5,
+          3.75,
+          10,
+          7
+        ],
+        "selectedIndex": 1
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-TANGENT",
+        "subUnit": "원과 접선",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원의 접선",
+        "rpmRecordIds": [
+          "H1-RPM-221",
+          "H1-RPM-222"
+        ],
+        "rpmL4": "EXT-H1-C2-03-Q12-CONTACT-CHORD|외부점의 두 접점과 접점의 현",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-l4/registry.json",
+        "l4Authority": "GENERATED_ONLY_CREATOR_DRAFT",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-221",
+            "H1-RPM-222"
+          ],
+          "mappingRole": "L3_PARENT_ONLY_NOT_MISLABELLED_RPM_L4"
+        },
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_CONTACT_CHORD_LINE",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_POINT_LINE_DISTANCE"
+        ],
+        "crossConceptEvidenceLabels": [
+          "원점과 직선 사이 거리"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-meta/palma-q12-cross-concepts.json",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "conditionAuthorityStatus": "NOT_APPLICABLE",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "difficultyBasis": "접점 접선식의 공통 제약 한 번과 점-직선 거리 계산",
+        "sourceQid": 12,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q12-A2",
+      "slot": "A2",
+      "sourceQid": 12,
+      "mode": "STRICT_VARIANT",
+      "stem": "원 $(x-1)^2+(y+2)^2=25$ 밖의 점 $A(7,6)$에서 그은 두 접선이 원과 만나는 점을 $P,Q$라 하자. 원의 중심과 직선 $PQ$ 사이의 거리는?",
+      "choices": [
+        "$5$",
+        "$10$",
+        "$5\\sqrt3$",
+        "$\\dfrac52$",
+        "$\\dfrac{15}{2}$"
+      ],
+      "answer": "④",
+      "solution": "원의 중심은 $C(1,-2)$이고 반지름은 $5$이다. 접점 $P(1+u,-2+v)$에서의 접선을 중심이 원점인 좌표로 옮기면 $u(x-1)+v(y+2)=25$이다.\n접선이 $A(7,6)$을 지나므로 $6u+8v=25$이다. 따라서 두 접점의 현 $PQ$는 $6(x-1)+8(y+2)=25$이다.\n중심 $C$에서 이 직선까지의 거리는 $\\dfrac{25}{\\sqrt{6^2+8^2}}=\\dfrac52$이다.\n따라서 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "접점의 현 거리 대신 반지름을 답으로 선택: sqrt(25)=5 → $5$",
+        "②": "원 중심에서 외부점까지 거리를 선택: sqrt(6²+8²)=10 → $10$",
+        "③": "원의 중심에서 현까지 거리 대신 접선 길이를 선택: sqrt(10²−5²)=5sqrt(3) → $5\\sqrt3$",
+        "⑤": "중심 대신 외부점 A에서 현까지의 거리를 선택: 10−25/10=15/2 → $\\dfrac{15}{2}$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "접점의 현 거리 대신 반지름을 답으로 선택",
+          "calculation": "sqrt(25)=5",
+          "value": "$5$",
+          "matchedChoice": "$5$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "②",
+          "mistake": "원 중심에서 외부점까지 거리를 선택",
+          "calculation": "sqrt(6²+8²)=10",
+          "value": "$10$",
+          "matchedChoice": "$10$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "③",
+          "mistake": "원의 중심에서 현까지 거리 대신 접선 길이를 선택",
+          "calculation": "sqrt(10²−5²)=5sqrt(3)",
+          "value": "$5\\sqrt3$",
+          "matchedChoice": "$5\\sqrt3$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "⑤",
+          "mistake": "중심 대신 외부점 A에서 현까지의 거리를 선택",
+          "calculation": "10−25/10=15/2",
+          "value": "$\\dfrac{15}{2}$",
+          "matchedChoice": "$\\dfrac{15}{2}$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        }
+      ],
+      "experienceAxis": "중심이 원점이 아닌 원에서 외부점을 상대좌표로 이동하여 접점 현 거리 계산",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "원의 접선",
+      "lockedL3DecisiveStep": "외부점 A에서 원에 그은 접선을 접점에서의 수직 조건으로 세워 접점의 현 또는 접선 길이 관계를 얻는다",
+      "targetL4": "EXT-H1-C2-03-Q12-CONTACT-CHORD",
+      "schoolExamStyleEvidence": "공통수학2 기출형 원의 접선·접점의 현·거리 및 매개변수 역조건 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "중심(1,-2) 기준 외부점 상대좌표 (6,8)→접점 현 공통식→거리 계산",
+      "changedMathRecheck": "NOT_APPLICABLE_NO_POST_DRAFT_MUTATION",
+      "remainingRisk": "EXTERNAL_GPT_REVIEW_AND_STUDENT_CHROME_NOT_PERFORMED",
+      "numericValidation": {
+        "actual": 2.5,
+        "options": [
+          5,
+          10,
+          8.660254037844386,
+          2.5,
+          7.5
+        ],
+        "selectedIndex": 4
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-TANGENT",
+        "subUnit": "원과 접선",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원의 접선",
+        "rpmRecordIds": [
+          "H1-RPM-221",
+          "H1-RPM-222"
+        ],
+        "rpmL4": "EXT-H1-C2-03-Q12-CONTACT-CHORD|외부점의 두 접점과 접점의 현",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-l4/registry.json",
+        "l4Authority": "GENERATED_ONLY_CREATOR_DRAFT",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-221",
+            "H1-RPM-222"
+          ],
+          "mappingRole": "L3_PARENT_ONLY_NOT_MISLABELLED_RPM_L4"
+        },
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_CONTACT_CHORD_LINE",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_POINT_LINE_DISTANCE"
+        ],
+        "crossConceptEvidenceLabels": [
+          "중심을 원점으로 평행이동하여 점-직선 거리"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-meta/palma-q12-cross-concepts.json",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "conditionAuthorityStatus": "NOT_APPLICABLE",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "difficultyBasis": "평행이동 좌표계 한 번과 접선·거리 공식",
+        "sourceQid": 12,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q12-A3",
+      "slot": "A3",
+      "sourceQid": 12,
+      "mode": "STRICT_VARIANT",
+      "stem": "원 $x^2+y^2=52$ 밖의 점 $A(5,12)$에서 그은 두 접선의 접점을 각각 $P,Q$라 할 때, 원점과 직선 $PQ$ 사이의 거리는?",
+      "choices": [
+        "$13$",
+        "$4$",
+        "$9$",
+        "$2\\sqrt{13}$",
+        "$3\\sqrt{13}$"
+      ],
+      "answer": "②",
+      "solution": "접점 $(u,v)$에서의 접선이 $A(5,12)$를 지나므로 $5u+12v=52$이다. 따라서 접점 $P,Q$를 지나는 직선의 방정식은 $5x+12y=52$이다.\n원점에서 이 직선까지의 거리는 $\\dfrac{52}{\\sqrt{5^2+12^2}}=\\dfrac{52}{13}=4$이다.\n한편 외부점까지의 거리는 $13$, 외부점에서 현까지의 거리는 $13-4=9$이므로 이를 구하는 거리와 혼동하지 않는다.\n따라서 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "접점 현까지 거리가 아닌 외부점까지 거리 계산: sqrt(5²+12²)=13 → $13$",
+        "③": "원점 대신 외부점 A에서 접점의 현까지 거리 계산: 13−52/13=9 → $9$",
+        "④": "원점에서 현까지 거리를 반지름으로 혼동: sqrt(52)=2sqrt(13) → $2\\sqrt{13}$",
+        "⑤": "원점에서 현까지 거리를 접선의 길이로 혼동: sqrt(13²−52)=3sqrt(13) → $3\\sqrt{13}$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "접점 현까지 거리가 아닌 외부점까지 거리 계산",
+          "calculation": "sqrt(5²+12²)=13",
+          "value": "$13$",
+          "matchedChoice": "$13$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "③",
+          "mistake": "원점 대신 외부점 A에서 접점의 현까지 거리 계산",
+          "calculation": "13−52/13=9",
+          "value": "$9$",
+          "matchedChoice": "$9$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "④",
+          "mistake": "원점에서 현까지 거리를 반지름으로 혼동",
+          "calculation": "sqrt(52)=2sqrt(13)",
+          "value": "$2\\sqrt{13}$",
+          "matchedChoice": "$2\\sqrt{13}$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "⑤",
+          "mistake": "원점에서 현까지 거리를 접선의 길이로 혼동",
+          "calculation": "sqrt(13²−52)=3sqrt(13)",
+          "value": "$3\\sqrt{13}$",
+          "matchedChoice": "$3\\sqrt{13}$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        }
+      ],
+      "experienceAxis": "원점 접점 현까지 거리와 외부점·접선 길이의 구별",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "원의 접선",
+      "lockedL3DecisiveStep": "외부점 A에서 원에 그은 접선을 접점에서의 수직 조건으로 세워 접점의 현 또는 접선 길이 관계를 얻는다",
+      "targetL4": "EXT-H1-C2-03-Q12-CONTACT-CHORD",
+      "schoolExamStyleEvidence": "공통수학2 기출형 원의 접선·접점의 현·거리 및 매개변수 역조건 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "구해야 하는 주어가 원점에서 PQ 거리이므로 D/r/접선 길이 오해를 배제",
+      "changedMathRecheck": "NOT_APPLICABLE_NO_POST_DRAFT_MUTATION",
+      "remainingRisk": "EXTERNAL_GPT_REVIEW_AND_STUDENT_CHROME_NOT_PERFORMED",
+      "numericValidation": {
+        "actual": 4,
+        "options": [
+          13,
+          4,
+          9,
+          7.211102550927978,
+          10.816653826391967
+        ],
+        "selectedIndex": 2
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-TANGENT",
+        "subUnit": "원과 접선",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원의 접선",
+        "rpmRecordIds": [
+          "H1-RPM-221",
+          "H1-RPM-222"
+        ],
+        "rpmL4": "EXT-H1-C2-03-Q12-CONTACT-CHORD|외부점의 두 접점과 접점의 현",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-l4/registry.json",
+        "l4Authority": "GENERATED_ONLY_CREATOR_DRAFT",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-221",
+            "H1-RPM-222"
+          ],
+          "mappingRole": "L3_PARENT_ONLY_NOT_MISLABELLED_RPM_L4"
+        },
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_CONTACT_CHORD_LINE",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_POINT_LINE_DISTANCE"
+        ],
+        "crossConceptEvidenceLabels": [
+          "점과 직선 사이 거리"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-meta/palma-q12-cross-concepts.json",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "conditionAuthorityStatus": "NOT_APPLICABLE",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "difficultyBasis": "접점 현 생성과 5-12-13 공식 활용, 거리 대상 구별",
+        "sourceQid": 12,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q12-B1",
+      "slot": "B1",
+      "sourceQid": 12,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "원 $x^2+y^2=r^2$ $(0<r<10)$ 밖의 점 $A(6,8)$에서 이 원에 그은 두 접선의 접점을 각각 $P,Q$라 하자. 원점에서 직선 $PQ$까지의 거리가 $4$일 때, $r^2$의 값은?",
+      "choices": [
+        "$10$",
+        "$16$",
+        "$24$",
+        "$32$",
+        "$40$"
+      ],
+      "answer": "⑤",
+      "solution": "원의 반지름을 $r$라 하면 외부점 $A(6,8)$에서 그은 두 접선의 접점을 잇는 직선은 $6x+8y=r^2$이다.\n원점에서 이 직선까지의 거리가 $4$이므로 $\\dfrac{r^2}{\\sqrt{6^2+8^2}}=4$이다. 즉 $\\dfrac{r^2}{10}=4$에서 $r^2=40$이다.\n$r^2=40<100=OA^2$이므로 점 $A$는 실제로 원 밖에 있고 두 접선이 존재한다.\n따라서 정답은 ⑤이다.",
+      "distractorReasons": {
+        "①": "외부점에서 원점까지 거리를 제곱 반지름으로 오해: OA=sqrt(6²+8²)=10 → $10$",
+        "②": "접점 현 거리 4를 반지름으로 오인해 제곱: 4²=16 → $16$",
+        "③": "외부점 좌표 중 x=6만 사용해 제곱 반지름 역산: 4·6=24 → $24$",
+        "④": "외부점 좌표 중 y=8만 사용해 제곱 반지름 역산: 4·8=32 → $32$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "외부점에서 원점까지 거리를 제곱 반지름으로 오해",
+          "calculation": "OA=sqrt(6²+8²)=10",
+          "value": "$10$",
+          "matchedChoice": "$10$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "②",
+          "mistake": "접점 현 거리 4를 반지름으로 오인해 제곱",
+          "calculation": "4²=16",
+          "value": "$16$",
+          "matchedChoice": "$16$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "③",
+          "mistake": "외부점 좌표 중 x=6만 사용해 제곱 반지름 역산",
+          "calculation": "4·6=24",
+          "value": "$24$",
+          "matchedChoice": "$24$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "④",
+          "mistake": "외부점 좌표 중 y=8만 사용해 제곱 반지름 역산",
+          "calculation": "4·8=32",
+          "value": "$32$",
+          "matchedChoice": "$32$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        }
+      ],
+      "experienceAxis": "외부점 접점 현 거리에서 반지름 제곱 역산하고 원 밖 조건 검사",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "원의 접선",
+      "lockedL3DecisiveStep": "외부점 A에서 원에 그은 접선을 접점에서의 수직 조건으로 세워 접점의 현 또는 접선 길이 관계를 얻는다",
+      "targetL4": "EXT-H1-C2-03-Q12-CONTACT-CHORD",
+      "schoolExamStyleEvidence": "공통수학2 기출형 원의 접선·접점의 현·거리 및 매개변수 역조건 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "거리 4와 외부점 거리 10으로 r²=40, 외부점 조건 r<10 확인",
+      "changedMathRecheck": "NOT_APPLICABLE_NO_POST_DRAFT_MUTATION",
+      "remainingRisk": "EXTERNAL_GPT_REVIEW_AND_STUDENT_CHROME_NOT_PERFORMED",
+      "numericValidation": {
+        "actual": 40,
+        "options": [
+          10,
+          16,
+          24,
+          32,
+          40
+        ],
+        "selectedIndex": 5
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-TANGENT",
+        "subUnit": "원과 접선",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원의 접선",
+        "rpmRecordIds": [
+          "H1-RPM-221",
+          "H1-RPM-222"
+        ],
+        "rpmL4": "EXT-H1-C2-03-Q12-CONTACT-CHORD|외부점의 두 접점과 접점의 현",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-l4/registry.json",
+        "l4Authority": "GENERATED_ONLY_CREATOR_DRAFT",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-221",
+            "H1-RPM-222"
+          ],
+          "mappingRole": "L3_PARENT_ONLY_NOT_MISLABELLED_RPM_L4"
+        },
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_CONTACT_CHORD_LINE",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_POINT_LINE_DISTANCE"
+        ],
+        "crossConceptEvidenceLabels": [
+          "접점 현까지 거리로 원의 반지름 제곱 역산"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-meta/palma-q12-cross-concepts.json",
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "conditionEvidenceLabels": [
+          "0<r<10: 두 접선 존재"
+        ],
+        "conditionAuthorityStatus": "EXISTING_USAGE_REFERENCE_NOT_FINAL_AUTHORITY_ASSERTED",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "difficultyBasis": "접점 현 관계의 역산과 외부점 가능성 확인",
+        "sourceQid": 12,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q12-B2",
+      "slot": "B2",
+      "sourceQid": 12,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "원 $x^2+y^2=50$ 밖의 점 $A(10,0)$에서 이 원에 그은 두 접선의 접점을 각각 $P,Q$라 하자. 선분 $PQ$의 길이는?",
+      "choices": [
+        "$5$",
+        "$5\\sqrt2$",
+        "$10$",
+        "$20$",
+        "$10\\sqrt2$"
+      ],
+      "answer": "③",
+      "solution": "접점 $(u,v)$에서의 접선 $ux+vy=50$이 $A(10,0)$을 지나므로 $10u=50$, 즉 $u=5$이다.\n따라서 두 접점 $P,Q$는 직선 $x=5$ 위에 있다. 원에 대입하면 $5^2+y^2=50$이므로 $y=\\pm5$이다.\n즉 $P,Q$는 $(5,5)$와 $(5,-5)$이고, 그 사이의 거리는 $5-(-5)=10$이다.\n따라서 정답은 ③이다.",
+      "distractorReasons": {
+        "①": "두 접점 사이 전체 길이가 아닌 반현의 길이만 계산: |5−0|=5 → $5$",
+        "②": "접점 현 길이 대신 원의 반지름을 선택: sqrt(50)=5sqrt(2) → $5\\sqrt2$",
+        "④": "접점 사이 거리 10을 전체 현으로 본 뒤 다시 두 배: 2·(5−(−5))=20 → $20$",
+        "⑤": "현 길이가 원의 지름이라고 착각: 2sqrt(50)=10sqrt(2) → $10\\sqrt2$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "두 접점 사이 전체 길이가 아닌 반현의 길이만 계산",
+          "calculation": "|5−0|=5",
+          "value": "$5$",
+          "matchedChoice": "$5$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "②",
+          "mistake": "접점 현 길이 대신 원의 반지름을 선택",
+          "calculation": "sqrt(50)=5sqrt(2)",
+          "value": "$5\\sqrt2$",
+          "matchedChoice": "$5\\sqrt2$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "④",
+          "mistake": "접점 사이 거리 10을 전체 현으로 본 뒤 다시 두 배",
+          "calculation": "2·(5−(−5))=20",
+          "value": "$20$",
+          "matchedChoice": "$20$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "⑤",
+          "mistake": "현 길이가 원의 지름이라고 착각",
+          "calculation": "2sqrt(50)=10sqrt(2)",
+          "value": "$10\\sqrt2$",
+          "matchedChoice": "$10\\sqrt2$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        }
+      ],
+      "experienceAxis": "접점의 현을 x=5로 복원한 뒤 원과의 교점 2개를 구해 길이 산출",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "원의 접선",
+      "lockedL3DecisiveStep": "외부점 A에서 원에 그은 접선을 접점에서의 수직 조건으로 세워 접점의 현 또는 접선 길이 관계를 얻는다",
+      "targetL4": "EXT-H1-C2-03-Q12-CONTACT-CHORD-LENGTH",
+      "schoolExamStyleEvidence": "공통수학2 기출형 원의 접선·접점의 현·거리 및 매개변수 역조건 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "접점 두 개의 x좌표 같음→y=±5→거리 10, 그림 없어도 계산 가능",
+      "changedMathRecheck": "NOT_APPLICABLE_NO_POST_DRAFT_MUTATION",
+      "remainingRisk": "EXTERNAL_GPT_REVIEW_AND_STUDENT_CHROME_NOT_PERFORMED",
+      "numericValidation": {
+        "actual": 10,
+        "options": [
+          5,
+          7.0710678118654755,
+          10,
+          20,
+          14.142135623730951
+        ],
+        "selectedIndex": 3
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-TANGENT",
+        "subUnit": "원과 접선",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원의 접선",
+        "rpmRecordIds": [
+          "H1-RPM-221",
+          "H1-RPM-222"
+        ],
+        "rpmL4": "EXT-H1-C2-03-Q12-CONTACT-CHORD-LENGTH|접점의 현 길이",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-l4/registry.json",
+        "l4Authority": "GENERATED_ONLY_CREATOR_DRAFT",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-221",
+            "H1-RPM-222"
+          ],
+          "mappingRole": "L3_PARENT_ONLY_NOT_MISLABELLED_RPM_L4"
+        },
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_CONTACT_CHORD_LENGTH",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "crossConceptEvidenceLabels": [
+          "원의 교점 좌표와 두 접점 사이 거리"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-meta/palma-q12-cross-concepts.json",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "conditionAuthorityStatus": "NOT_APPLICABLE",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "difficultyBasis": "접선 관계→접점 좌표→현 길이 2단계",
+        "sourceQid": 12,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q12-B3",
+      "slot": "B3",
+      "sourceQid": 12,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "원 $x^2+y^2=r^2$ 밖의 점 $A(6,8)$에서 그은 두 접선의 접점을 각각 $P,Q$라 한다. 직선 $PQ$의 방정식이 $3x+4y=18$일 때, 점 $A$에서 원에 그은 접선의 길이는?",
+      "choices": [
+        "$6$",
+        "$10$",
+        "$2\\sqrt{34}$",
+        "$8$",
+        "$\\sqrt{82}$"
+      ],
+      "answer": "④",
+      "solution": "원 밖의 점 $A(6,8)$에서 그은 접선의 두 접점을 잇는 직선은 $6x+8y=r^2$이다.\n주어진 직선 $3x+4y=18$의 양변에 $2$를 곱하면 $6x+8y=36$이므로 $r^2=36$이다.\n원점에서 $A$까지의 거리는 $\\sqrt{6^2+8^2}=10$이다. 접점에서 반지름과 접선은 수직이므로, 접선 길이를 $\\ell$이라 할 때 $\\ell^2=10^2-6^2=64$이다.\n따라서 접선의 길이는 $8$이며 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "접선의 길이 대신 반지름을 선택: sqrt(r²)=sqrt(36)=6 → $6$",
+        "②": "접선의 길이 대신 OA를 선택: sqrt(6²+8²)=10 → $10$",
+        "③": "피타고라스 관계에서 반지름 제곱을 더함: sqrt(10²+6²)=sqrt(136)=2sqrt(34) → $2\\sqrt{34}$",
+        "⑤": "직선 상수 18을 곧바로 r²로 착각: sqrt(10²−18)=sqrt(82) → $\\sqrt{82}$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "접선의 길이 대신 반지름을 선택",
+          "calculation": "sqrt(r²)=sqrt(36)=6",
+          "value": "$6$",
+          "matchedChoice": "$6$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "②",
+          "mistake": "접선의 길이 대신 OA를 선택",
+          "calculation": "sqrt(6²+8²)=10",
+          "value": "$10$",
+          "matchedChoice": "$10$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "③",
+          "mistake": "피타고라스 관계에서 반지름 제곱을 더함",
+          "calculation": "sqrt(10²+6²)=sqrt(136)=2sqrt(34)",
+          "value": "$2\\sqrt{34}$",
+          "matchedChoice": "$2\\sqrt{34}$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "⑤",
+          "mistake": "직선 상수 18을 곧바로 r²로 착각",
+          "calculation": "sqrt(10²−18)=sqrt(82)",
+          "value": "$\\sqrt{82}$",
+          "matchedChoice": "$\\sqrt{82}$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        }
+      ],
+      "experienceAxis": "접점의 현의 방정식 계수 비율을 맞춰 반지름 확정 후 접선 길이 계산",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "원의 접선",
+      "lockedL3DecisiveStep": "외부점 A에서 원에 그은 접선을 접점에서의 수직 조건으로 세워 접점의 현 또는 접선 길이 관계를 얻는다",
+      "targetL4": "EXT-H1-C2-03-Q12-CONTACT-REVERSE",
+      "schoolExamStyleEvidence": "공통수학2 기출형 원의 접선·접점의 현·거리 및 매개변수 역조건 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "접점 현 방정식 계수에서 r²=36을 구해 AP=8",
+      "changedMathRecheck": "NOT_APPLICABLE_NO_POST_DRAFT_MUTATION",
+      "remainingRisk": "EXTERNAL_GPT_REVIEW_AND_STUDENT_CHROME_NOT_PERFORMED",
+      "numericValidation": {
+        "actual": 8,
+        "options": [
+          6,
+          10,
+          11.661903789690601,
+          8,
+          9.055385138137417
+        ],
+        "selectedIndex": 4
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-TANGENT",
+        "subUnit": "원과 접선",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원의 접선",
+        "rpmRecordIds": [
+          "H1-RPM-221",
+          "H1-RPM-222"
+        ],
+        "rpmL4": "EXT-H1-C2-03-Q12-CONTACT-REVERSE|접점 현과 접선 길이 역조건",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-l4/registry.json",
+        "l4Authority": "GENERATED_ONLY_CREATOR_DRAFT",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-221",
+            "H1-RPM-222"
+          ],
+          "mappingRole": "L3_PARENT_ONLY_NOT_MISLABELLED_RPM_L4"
+        },
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_FROM_EXTERNAL_POINT",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "crossConceptEvidenceLabels": [
+          "접점의 현 방정식에서 반지름 복원 후 접선-반지름 직각삼각형"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-meta/palma-q12-cross-concepts.json",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "conditionAuthorityStatus": "NOT_APPLICABLE",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "difficultyBasis": "직선의 동치식과 피타고라스 정리를 잇는 두 판단",
+        "sourceQid": 12,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q12-C1",
+      "slot": "C1",
+      "sourceQid": 12,
+      "mode": "TYPE_BANK",
+      "stem": "원 $x^2+y^2=25$ 밖의 점 $A(a,0)$ $(a>5)$에서 이 원에 그은 두 접선의 접점을 각각 $P,Q$라 한다. 선분 $PQ$의 길이가 $6$일 때, $a$의 값은?",
+      "choices": [
+        "$\\dfrac{25}{4}$",
+        "$5$",
+        "$4$",
+        "$\\dfrac{25}{3}$",
+        "$\\sqrt{61}$"
+      ],
+      "answer": "①",
+      "solution": "점 $A(a,0)$에서 그은 두 접선의 접점을 이은 직선은 $ax=25$이므로 $x=\\dfrac{25}{a}$이다.\n원점에서 이 직선까지의 거리를 $d$라 하면 $d=\\dfrac{25}{a}$이다. 현 $PQ$의 중점을 $M$이라 할 때 $OM\\perp PQ$이고, $PM=QM=3$이다.\n원 반지름이 $5$이므로 직각삼각형 $OMP$에서 $d^2+3^2=5^2$이고 $d=4$이다.\n따라서 $\\dfrac{25}{a}=4$이므로 $a=\\dfrac{25}{4}$이다. 이는 $a>5$를 만족한다.\n따라서 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "외부점 좌표 a를 원의 반지름으로 오인: a=r=5 → $5$",
+        "③": "접점의 현의 x좌표를 외부점 A의 x좌표로 오인: a=OM=sqrt(5²−3²)=4 → $4$",
+        "④": "현의 반길이 3을 원점-현 거리와 혼동: a=25/3 → $\\dfrac{25}{3}$",
+        "⑤": "전체 현 6을 접선 AP의 길이로 착각: OA=sqrt(OP²+AP²)=sqrt(25+36)=sqrt(61) → $\\sqrt{61}$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "mistake": "외부점 좌표 a를 원의 반지름으로 오인",
+          "calculation": "a=r=5",
+          "value": "$5$",
+          "matchedChoice": "$5$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "③",
+          "mistake": "접점의 현의 x좌표를 외부점 A의 x좌표로 오인",
+          "calculation": "a=OM=sqrt(5²−3²)=4",
+          "value": "$4$",
+          "matchedChoice": "$4$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "④",
+          "mistake": "현의 반길이 3을 원점-현 거리와 혼동",
+          "calculation": "a=25/3",
+          "value": "$\\dfrac{25}{3}$",
+          "matchedChoice": "$\\dfrac{25}{3}$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "⑤",
+          "mistake": "전체 현 6을 접선 AP의 길이로 착각",
+          "calculation": "OA=sqrt(OP²+AP²)=sqrt(25+36)=sqrt(61)",
+          "value": "$\\sqrt{61}$",
+          "matchedChoice": "$\\sqrt{61}$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        }
+      ],
+      "experienceAxis": "현 길이를 반현과 직각삼각형으로 역산하고 외부점 좌표 복원",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "원의 접선",
+      "lockedL3DecisiveStep": "외부점 A에서 원에 그은 접선을 접점에서의 수직 조건으로 세워 접점의 현 또는 접선 길이 관계를 얻는다",
+      "targetL4": "EXT-H1-C2-03-Q12-CONTACT-CHORD-LENGTH",
+      "schoolExamStyleEvidence": "공통수학2 기출형 원의 접선·접점의 현·거리 및 매개변수 역조건 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "a>5이고 현 6→반현3→원점 현 거리4→a=25/4",
+      "changedMathRecheck": "NOT_APPLICABLE_NO_POST_DRAFT_MUTATION",
+      "remainingRisk": "EXTERNAL_GPT_REVIEW_AND_STUDENT_CHROME_NOT_PERFORMED",
+      "numericValidation": {
+        "actual": 6.25,
+        "options": [
+          6.25,
+          5,
+          4,
+          8.333333333333334,
+          7.810249675906654
+        ],
+        "selectedIndex": 1
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-TANGENT",
+        "subUnit": "원과 접선",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원의 접선",
+        "rpmRecordIds": [
+          "H1-RPM-221",
+          "H1-RPM-222"
+        ],
+        "rpmL4": "EXT-H1-C2-03-Q12-CONTACT-CHORD-LENGTH|접점의 현 길이",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-l4/registry.json",
+        "l4Authority": "GENERATED_ONLY_CREATOR_DRAFT",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-221",
+            "H1-RPM-222"
+          ],
+          "mappingRole": "L3_PARENT_ONLY_NOT_MISLABELLED_RPM_L4"
+        },
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_CONTACT_CHORD_LENGTH",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "crossConceptEvidenceLabels": [
+          "현의 중점·직각삼각형으로 접점 현의 위치 역산"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-meta/palma-q12-cross-concepts.json",
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "conditionEvidenceLabels": [
+          "a>5 외부 점 조건"
+        ],
+        "conditionAuthorityStatus": "EXISTING_USAGE_REFERENCE_NOT_FINAL_AUTHORITY_ASSERTED",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "difficultyBasis": "접점의 현을 수직이등분하는 중심-현 거리의 역조건",
+        "sourceQid": 12,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q12-C2",
+      "slot": "C2",
+      "sourceQid": 12,
+      "mode": "TYPE_BANK",
+      "stem": "원 $x^2+y^2=16$ 밖의 점 $A(t,6)$에서 이 원에 그은 두 접선의 접점을 각각 $P,Q$라 하자. 직선 $PQ$가 점 $B(1,2)$를 지날 때, 선분 $AP$의 길이는? (단, $t$는 실수이다.)",
+      "choices": [
+        "$4$",
+        "$2\\sqrt{13}$",
+        "$6$",
+        "$2\\sqrt{17}$",
+        "$4\\sqrt3$"
+      ],
+      "answer": "③",
+      "solution": "점 $A(t,6)$에서 그은 접선의 두 접점을 잇는 직선은 $tx+6y=16$이다.\n이 직선이 $B(1,2)$를 지나므로 $t+6\\cdot2=16$, 즉 $t=4$이다.\n따라서 $A=(4,6)$이고, $OA^2=4^2+6^2=52$이다. 원의 반지름이 $4$이며 접점에서 반지름과 접선은 수직이므로\n$AP^2=OA^2-OP^2=52-16=36$이다. 선분의 길이는 양수이므로 $AP=6$이다.\n따라서 정답은 ③이다.",
+      "distractorReasons": {
+        "①": "접선 길이 대신 반지름 또는 구한 t를 그대로 사용: sqrt(16)=4=t → $4$",
+        "②": "접선 길이 대신 원점에서 외부점 A까지의 길이: sqrt(t²+6²)=sqrt(52)=2sqrt(13) → $2\\sqrt{13}$",
+        "④": "직각삼각형에서 OA²와 반지름²을 잘못 더함: sqrt(52+16)=2sqrt(17) → $2\\sqrt{17}$",
+        "⑤": "반지름 4를 제곱하지 않고 r²=4로 잘못 사용: sqrt(52−4)=sqrt(48)=4sqrt(3) → $4\\sqrt3$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "접선 길이 대신 반지름 또는 구한 t를 그대로 사용",
+          "calculation": "sqrt(16)=4=t",
+          "value": "$4$",
+          "matchedChoice": "$4$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "②",
+          "mistake": "접선 길이 대신 원점에서 외부점 A까지의 길이",
+          "calculation": "sqrt(t²+6²)=sqrt(52)=2sqrt(13)",
+          "value": "$2\\sqrt{13}$",
+          "matchedChoice": "$2\\sqrt{13}$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "④",
+          "mistake": "직각삼각형에서 OA²와 반지름²을 잘못 더함",
+          "calculation": "sqrt(52+16)=2sqrt(17)",
+          "value": "$2\\sqrt{17}$",
+          "matchedChoice": "$2\\sqrt{17}$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "⑤",
+          "mistake": "반지름 4를 제곱하지 않고 r²=4로 잘못 사용",
+          "calculation": "sqrt(52−4)=sqrt(48)=4sqrt(3)",
+          "value": "$4\\sqrt3$",
+          "matchedChoice": "$4\\sqrt3$",
+          "verification": "RECHECKED_CURRENT_CANDIDATE_SQRT48_EQUALS_4SQRT3"
+        }
+      ],
+      "experienceAxis": "접점 현이 지나는 점을 이용해 외부점 좌표를 역산하고 접선 길이 구하기",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "원의 접선",
+      "lockedL3DecisiveStep": "외부점 A에서 원에 그은 접선을 접점에서의 수직 조건으로 세워 접점의 현 또는 접선 길이 관계를 얻는다",
+      "targetL4": "EXT-H1-C2-03-Q12-CONTACT-REVERSE",
+      "schoolExamStyleEvidence": "공통수학2 기출형 원의 접선·접점의 현·거리 및 매개변수 역조건 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "REVISED",
+      "authorReverseStemReading": "B가 PQ 위→t=4→직각삼각형 OPA에서 AP=6",
+      "changedMathRecheck": "EVIDENCE_ONLY_REVISION: corrected distractor ⑤ logic from impossible t²=4 to radius-square omission r²=4; sqrt(48)=4sqrt3 rechecked; stem/choices/answer/solution unchanged",
+      "remainingRisk": "EXTERNAL_GPT_REVIEW_AND_STUDENT_CHROME_NOT_PERFORMED",
+      "numericValidation": {
+        "actual": 6,
+        "options": [
+          4,
+          7.211102550927978,
+          6,
+          8.246211251235321,
+          6.928203230275509
+        ],
+        "selectedIndex": 3
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-TANGENT",
+        "subUnit": "원과 접선",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원의 접선",
+        "rpmRecordIds": [
+          "H1-RPM-221",
+          "H1-RPM-222"
+        ],
+        "rpmL4": "EXT-H1-C2-03-Q12-CONTACT-REVERSE|접점 현과 접선 길이 역조건",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-l4/registry.json",
+        "l4Authority": "GENERATED_ONLY_CREATOR_DRAFT",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-221",
+            "H1-RPM-222"
+          ],
+          "mappingRole": "L3_PARENT_ONLY_NOT_MISLABELLED_RPM_L4"
+        },
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_FROM_EXTERNAL_POINT",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "crossConceptEvidenceLabels": [
+          "접점의 현과 점-직선 포함 조건, 피타고라스"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-meta/palma-q12-cross-concepts.json",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "conditionAuthorityStatus": "NOT_APPLICABLE",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "difficultyBasis": "접점 현 방정식의 점 조건과 접선 길이 공식 연결",
+        "sourceQid": 12,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED",
+      "reverseStemEvidenceFreshness": "ALL_STUDENT_INPUT_UNCHANGED; TARGETED_DISTRACTOR_FRESH",
+      "revisionEvidence": {
+        "type": "DISTRACTOR_REASON_ONLY",
+        "before": "r² 대신 t²=4로 착각",
+        "after": "반지름 4를 제곱하지 않고 r²=4로 잘못 사용",
+        "affectedFields": [
+          "distractorReasons.⑤",
+          "distractorWitnesses.⑤"
+        ],
+        "studentInputChanged": false,
+        "mathRecheck": "sqrt(52−4)=sqrt48=4sqrt3, numeric choice unchanged"
+      }
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q12-C3",
+      "slot": "C3",
+      "sourceQid": 12,
+      "mode": "TYPE_BANK",
+      "stem": "원 $x^2+y^2=r^2$ $(0<r<8)$ 밖의 점 $A(8,0)$에서 이 원에 그은 두 접선의 접점을 각각 $P,Q$라 한다. 원점 $O$에서 직선 $PQ$까지의 거리를 $d$, 선분 $AP$의 길이를 $\\ell$이라 하자. $d+\\ell=\\dfrac{19}{2}$일 때, 가능한 모든 $r^2$의 값의 합은?",
+      "choices": [
+        "$28$",
+        "$88$",
+        "$60$",
+        "$40$",
+        "$168$"
+      ],
+      "answer": "②",
+      "solution": "접점의 현 $PQ$는 $8x=r^2$이므로 $d=\\dfrac{r^2}{8}$이다.\n반지름 $OP$와 접선 $AP$가 수직이므로 $OP^2+AP^2=OA^2$, 즉 $r^2+\\ell^2=64$이다.\n따라서 $r^2=64-\\ell^2$를 거리 조건에 대입하면\n$\\dfrac{64-\\ell^2}{8}+\\ell=\\dfrac{19}{2}$이고, 양변에 $8$을 곱해 정리하면\n$64-\\ell^2+8\\ell=76$, 곧 $\\ell^2-8\\ell+12=0$이다.\n$(\\ell-2)(\\ell-6)=0$이므로 $\\ell=2$ 또는 $\\ell=6$이다.\n각각 $r^2=64-2^2=60$, $r^2=64-6^2=28$이며 두 값 모두 $0<r<8$을 만족한다.\n따라서 가능한 모든 $r^2$의 값의 합은 $60+28=88$이므로 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "접선 길이 ℓ=6인 경우만 선택하여 다른 해를 누락: r²=64−6²=28 → $28$",
+        "③": "접선 길이 ℓ=2인 경우만 선택하여 다른 해를 누락: r²=64−2²=60 → $60$",
+        "④": "반지름 제곱의 합 대신 두 접선 길이의 제곱만 더함: 2²+6²=40 → $40$",
+        "⑤": "피타고라스 식을 r²=64+ℓ²로 잘못 변형: (64+2²)+(64+6²)=168 → $168$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "접선 길이 ℓ=6인 경우만 선택하여 다른 해를 누락",
+          "calculation": "r²=64−6²=28",
+          "value": "$28$",
+          "matchedChoice": "$28$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "③",
+          "mistake": "접선 길이 ℓ=2인 경우만 선택하여 다른 해를 누락",
+          "calculation": "r²=64−2²=60",
+          "value": "$60$",
+          "matchedChoice": "$60$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "④",
+          "mistake": "반지름 제곱의 합 대신 두 접선 길이의 제곱만 더함",
+          "calculation": "2²+6²=40",
+          "value": "$40$",
+          "matchedChoice": "$40$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        },
+        {
+          "label": "⑤",
+          "mistake": "피타고라스 식을 r²=64+ℓ²로 잘못 변형",
+          "calculation": "(64+2²)+(64+6²)=168",
+          "value": "$168$",
+          "matchedChoice": "$168$",
+          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+        }
+      ],
+      "experienceAxis": "접점 현 거리와 접선 길이로 반지름의 두 가능한 경우를 모두 도출",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "원의 접선",
+      "lockedL3DecisiveStep": "외부점 A에서 원에 그은 접선을 접점에서의 수직 조건으로 세워 접점의 현 또는 접선 길이 관계를 얻는다",
+      "targetL4": "EXT-H1-C2-03-Q12-CONTACT-REVERSE",
+      "schoolExamStyleEvidence": "공통수학2 기출형 원의 접선·접점의 현·거리 및 매개변수 역조건 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "외부점거리8, 두 길이의 합19/2→ℓ=2 또는6→r² 두 값; 총합은 88",
+      "changedMathRecheck": "NOT_APPLICABLE_NO_POST_DRAFT_MUTATION",
+      "remainingRisk": "EXTERNAL_GPT_REVIEW_AND_STUDENT_CHROME_NOT_PERFORMED",
+      "numericValidation": {
+        "actual": 88,
+        "options": [
+          28,
+          88,
+          60,
+          40,
+          168
+        ],
+        "selectedIndex": 2
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-TANGENT",
+        "subUnit": "원과 접선",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원의 접선",
+        "rpmRecordIds": [
+          "H1-RPM-221",
+          "H1-RPM-222"
+        ],
+        "rpmL4": "EXT-H1-C2-03-Q12-CONTACT-REVERSE|접점 현과 접선 길이 역조건",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-l4/registry.json",
+        "l4Authority": "GENERATED_ONLY_CREATOR_DRAFT",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-221",
+            "H1-RPM-222"
+          ],
+          "mappingRole": "L3_PARENT_ONLY_NOT_MISLABELLED_RPM_L4"
+        },
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_POINT_LINE_DISTANCE",
+          "CC_PYTHAGOREAN",
+          "CC_QUADRATIC_EQUATION"
+        ],
+        "crossConceptEvidenceLabels": [
+          "원점에서 현까지 거리",
+          "접선 직각삼각형",
+          "두 이차방정식 근과 반지름 범위"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-meta/palma-q12-cross-concepts.json",
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "conditionEvidenceLabels": [
+          "0<r<8, 실제 접선 존재와 반지름 양수"
+        ],
+        "conditionAuthorityStatus": "EXISTING_USAGE_REFERENCE_NOT_FINAL_AUTHORITY_ASSERTED",
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "level": "상",
+        "difficultyBasis": "서로 다른 두 직각 관계 연결, 매개변수 역조건 이차방정식 두 해, 퇴화 배제",
+        "sourceQid": 12,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED"
+    }
+  ],
+  "nextSourceQid": 13,
+  "publication": "CONTENT_OPEN_BOOK_REVIEW_PASS_TECHNICAL_PUBLICATION_PENDING"
+}

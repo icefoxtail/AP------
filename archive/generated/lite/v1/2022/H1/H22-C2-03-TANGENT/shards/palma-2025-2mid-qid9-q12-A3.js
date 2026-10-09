@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_12_A3";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q12-A3",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "원의 방정식",
+    "originalCategory": "원의 방정식",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-03",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-C2-03-TANGENT",
+    "subUnit": "원과 접선",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "원의 방정식"
+    ],
+    "wide": false,
+    "content": "원 $x^2+y^2=52$ 밖의 점 $A(5,12)$에서 그은 두 접선의 접점을 각각 $P,Q$라 할 때, 원점과 직선 $PQ$ 사이의 거리는?",
+    "choices": [
+      "$13$",
+      "$4$",
+      "$9$",
+      "$2\\sqrt{13}$",
+      "$3\\sqrt{13}$"
+    ],
+    "answer": "②",
+    "solution": "접점 $(u,v)$에서의 접선이 $A(5,12)$를 지나므로 $5u+12v=52$이다. 따라서 접점 $P,Q$를 지나는 직선의 방정식은 $5x+12y=52$이다.\n원점에서 이 직선까지의 거리는 $\\dfrac{52}{\\sqrt{5^2+12^2}}=\\dfrac{52}{13}=4$이다.\n한편 외부점까지의 거리는 $13$, 외부점에서 현까지의 거리는 $13-4=9$이므로 이를 구하는 거리와 혼동하지 않는다.\n따라서 정답은 ②이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 12,
+    "slot": "A3",
+    "purposeGroup": "A"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q12-A3");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q12-A3","meta":{"rpmL1":"도형의 방정식","rpmL2":"원의 방정식","rpmL3":"원의 접선","rpmL4":"EXT-H1-C2-03-Q12-CONTACT-CHORD|외부점의 두 접점과 접점의 현","rpmL4Namespace":"GENERATED_EXT_L4","rpmPrimaryRecordId":"H1-RPM-221","rpmAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","generatedL4RegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-l4/registry.json","generatedL4RegistrySha256":"14605d85adb58dfb34e741b81ac39c015e45b0b801986c124d5f8008c73d6299","secondaryConceptKeys":[],"crossConceptKeys":["CC_POINT_LINE_DISTANCE"],"conditionKeys":[],"crossConceptRegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-meta/palma-q12-cross-concepts.json","conditionRegistryRef":null,"sourceKind":"generated","integrationPattern":"SEQUENTIAL","difficultyBucket":3,"level":"중","problemTypeKey":"PT_CIRCLE_TANGENT","templateKey":"TM_TANGENT_CONTACT_CHORD_LINE","standardCourse":"공통수학2","standardUnitKey":"H22-C2-03","subUnitKey":"H22-C2-03-TANGENT"},"metaFinalSha256":"824fb45df604bcb2edd8bcb4ec211867373b84b8c8efe9d613b04a8d43b49927","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q12-A3.json","sha256":"fd57baadc5cb3bb365d6621ef92afe49e86a0193251f5e042ee8cfa67ccdcdd2","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q09_Q12_36","scopeUids":["ALITE-PALMA25-2MID-Q12-A3"],"uid":"ALITE-PALMA25-2MID-Q12-A3"},"metaReviewEvidenceSha256":"fd57baadc5cb3bb365d6621ef92afe49e86a0193251f5e042ee8cfa67ccdcdd2","difficultyBucket":3,"level":"중","problemTypeKey":"PT_CIRCLE_TANGENT","templateKey":"TM_TANGENT_CONTACT_CHORD_LINE","secondaryConceptKeys":[],"crossConceptKeys":["CC_POINT_LINE_DISTANCE"],"conditionKeys":[],"integrationPattern":"SEQUENTIAL"});})();

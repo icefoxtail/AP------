@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_11_B3";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q11-B3",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "명제",
+    "originalCategory": "명제",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE",
+    "subUnit": "명제 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "명제"
+    ],
+    "wide": false,
+    "content": "실수 $x$에 관한 두 조건 $p:x^2-4x+3=0$, $q:(x-1)(x-a)=0$이 있다. $p$가 $q$이기 위한 필요조건이지만 충분조건은 아니도록 하는 실수 $a$의 값은?",
+    "choices": [
+      "$0$",
+      "$2$",
+      "$3$",
+      "$1$",
+      "$-1$"
+    ],
+    "answer": "④",
+    "solution": "$p$를 인수분해하면 $(x-1)(x-3)=0$이므로 진리집합은 $\\{1,3\\}$이다.\n$q$의 진리집합은 $\\{1,a\\}$이다. $q\\Rightarrow p$이려면 $a=1$ 또는 $a=3$이어야 한다.\n$a=3$이면 두 진리집합이 같아 필요충분조건이 된다. $a=1$이면 $q$의 진리집합이 $\\{1\\}$이고 $p$에는 $3$이 추가로 속한다.\n그러므로 필요조건만 성립하는 값은 $a=1$이고 정답은 ④이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 11,
+    "slot": "B3",
+    "purposeGroup": "B"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q11-B3");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q11-B3","meta":{"rpmL1":"집합과 명제","rpmL2":"명제","rpmL3":"필요조건·충분조건","rpmL4":"매개변수","rpmL4Namespace":"RPM_EXISTING_DRAFT","rpmPrimaryRecordId":"H1-RPM-248","rpmDraftAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmDraftAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","secondaryConceptKeys":[],"crossConceptKeys":["CC_QUADRATIC_EQUATION"],"conditionKeys":[],"crossConceptRegistryRef":null,"conditionRegistryRef":null,"sourceKind":"generated","integrationPattern":"SEQUENTIAL","difficultyBucket":3,"level":"중","problemTypeKey":"PT_NEC_SUFF_RELATION","templateKey":"TPL_NEC_SUFF_POLYNOMIAL_PARAMETER","standardCourse":"공통수학2","standardUnitKey":"H22-C2-06","subUnitKey":"H22-C2-06-CORE"},"metaFinalSha256":"1e9dabddd42d627eeb7007b858376b21db8030797a7dadfa98edb1cfad0c7aa5","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q11-B3.json","sha256":"c13ac3ba72757c92a5a11ba722233cbf250aac22e34a9c9fffee3e1aada28479","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q09_Q12_36","scopeUids":["ALITE-PALMA25-2MID-Q11-B3"],"uid":"ALITE-PALMA25-2MID-Q11-B3"},"metaReviewEvidenceSha256":"c13ac3ba72757c92a5a11ba722233cbf250aac22e34a9c9fffee3e1aada28479","difficultyBucket":3,"level":"중","problemTypeKey":"PT_NEC_SUFF_RELATION","templateKey":"TPL_NEC_SUFF_POLYNOMIAL_PARAMETER","secondaryConceptKeys":[],"crossConceptKeys":["CC_QUADRATIC_EQUATION"],"conditionKeys":[],"integrationPattern":"SEQUENTIAL"});})();

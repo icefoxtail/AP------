@@ -1,0 +1,1020 @@
+{
+  "schemaVersion": "ALIVE_QID9_CREATE_PACKAGE_V1",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceQid": 19,
+  "sourceQuestionType": "객관식",
+  "sourceFingerprint": {
+    "sourceStem": "태극형 큰 원 x²+y²=16과 중심 (-2,0),(2,0)인 반원호 및 직선 y=m(x+2)의 5교점 조건",
+    "storedSourceAnswer": "①",
+    "sourceOriginalImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q19.png",
+    "sourceImageDirectVisualReview": "NOT_TESTED",
+    "originalSourcePreserved": true
+  },
+  "lockedPrimaryL3": "원과 직선",
+  "rpmEvidence": {
+    "l1": "도형의 방정식",
+    "l2": "원의 방정식",
+    "l3": "원과 직선",
+    "l4": "교점 개수",
+    "recordIds": [
+      "H1-RPM-219"
+    ],
+    "mappingStatus": "DIRECT_ACTIVE",
+    "pt": "PT_CIRCLE_LINE_RELATION",
+    "tpl": "TM_CIRCLE_INTERSECTION_COUNT",
+    "source": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "rpmLockedPreserved": true
+  },
+  "activeMeta": {
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKeys": [
+      "TM_CIRCLE_INTERSECTION_COUNT"
+    ],
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_RANGE",
+      "COND_NATURAL_NUMBER"
+    ],
+    "authority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+    "generatedExtensionNeeded": false
+  },
+  "experiencePlan": {
+    "A": "원본형 세 곡선과 직선의 5교점 범위, 좌우 반사와 반원 반지름 변화",
+    "B": "접선의 4교점 임계값/수치 대입의 교점 수/중심간 거리 변화",
+    "C": "서로 다른 접선 임계값 두 개/자연수 기울기 격자/역제곱근 기울기"
+  },
+  "itemCount": 9,
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 2,
+    "④": 2,
+    "⑤": 1
+  },
+  "authorSelfCheck": {
+    "uidCount": 9,
+    "reverseStem": "KEEP9_REVISED0_HOLD0",
+    "distractorPaths": "36/36_DEFINED_REASON_TO_CHOICE",
+    "exactBoundaryValues": "A1:0=3,mcrit=4;A2/A3:0=4,mcrit=4;B3:0=4,mcrit=4;C1:0=6,lower=5,upper=3;C3:n24=4",
+    "mathematicalGate": "EXACT_FORMULA_AND_ENDPOINT_COMPARISON",
+    "solutionFinalAnswerParity": "9/9",
+    "studentAssetsRequired": 0,
+    "originalSourceImage": "NOT_TESTED",
+    "independentGptQualityReview": "NOT_RUN",
+    "actualChrome": "NOT_TESTED"
+  },
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q19-A1",
+      "slot": "A1",
+      "sourceQid": 19,
+      "mode": "STRICT_VARIANT",
+      "stem": "큰 원 $C:x^2+y^2=36$, 아래쪽 반원호 $S_1:(x+3)^2+y^2=9\\ (y\\le0)$, 위쪽 반원호 $S_2:(x-3)^2+y^2=9\\ (y\\ge0)$이 있다. 직선 $y=m(x+3)$이 세 곡선의 합집합과 서로 다른 다섯 점에서 만나도록 하는 실수 $m$의 범위는?",
+      "choices": [
+        "$0<m<\\dfrac1{\\sqrt3}$",
+        "$0\\le m<\\dfrac1{\\sqrt3}$",
+        "$0<m\\le\\dfrac1{\\sqrt3}$",
+        "$0<m<\\dfrac12$",
+        "$m>0$"
+      ],
+      "answer": "①",
+      "solution": "큰 원은 내부점 $(-3,0)$을 지나는 직선과 항상 서로 다른 두 점에서 만난다. $m>0$일 때 아래쪽 반원호는 한 점, 위쪽 반원호는 두 점에서 만나야 합계 다섯 점이다. 위쪽 반원호의 중심 $(3,0)$에서 직선까지의 거리는 $d=\\dfrac{6m}{\\sqrt{1+m^2}}$이고, $d<3$을 제곱하면 $36m^2<9(1+m^2)$, 즉 $m^2<\\dfrac13$이다. $m=0$에서는 반원호의 끝점이 서로 및 큰 원과 겹쳐 교점은 세 점이고, $m=1/\\sqrt3$에서는 위쪽 반원호에 접해 네 점이다. 따라서 $0<m<\\dfrac1{\\sqrt3}$이므로 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "$m=0$에서 서로 겹치는 끝점을 별개로 세어 0 포함",
+        "③": "위쪽 반원호의 접점 하나를 두 점으로 세어 상한 등호 포함",
+        "④": "$6m/\\sqrt{1+m^2}<3$에서 분모를 1로 바꾸어 $m<1/2$",
+        "⑤": "위쪽 반원호가 두 점에서 만나는 조건을 빠뜨리고 $m>0$만 남김"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "mistake": "$m=0$에서 서로 겹치는 끝점을 별개로 세어 0 포함",
+          "actualIncorrectChoice": "$0\\le m<\\dfrac1{\\sqrt3}$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "위쪽 반원호의 접점 하나를 두 점으로 세어 상한 등호 포함",
+          "actualIncorrectChoice": "$0<m\\le\\dfrac1{\\sqrt3}$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "$6m/\\sqrt{1+m^2}<3$에서 분모를 1로 바꾸어 $m<1/2$",
+          "actualIncorrectChoice": "$0<m<\\dfrac12$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "위쪽 반원호가 두 점에서 만나는 조건을 빠뜨리고 $m>0$만 남김",
+          "actualIncorrectChoice": "$m>0$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "원점과 반원 끝점 겹침을 제거한 정확한 교점 5개 판정",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "원과 직선",
+      "lockedL3DecisiveStep": "원의 중심에서 직선까지의 거리, 접점 개수와 반원호의 y범위·끝점 중복을 구분하여 총 교점 수를 확정",
+      "targetL4": "교점 개수",
+      "schoolExamStyleEvidence": "반원호의 방정식 및 y 부호 명시, 정답형과 학교식 표현 일치",
+      "studentVisual": "NOT_REQUIRED_EXACT_ARC_EQUATIONS",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-INTERSECTION",
+        "subUnit": "원과 직선·원의 관계",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원과 직선",
+        "rpmL4": "교점 개수",
+        "rpmRecordId": "H1-RPM-219",
+        "rpmBindingStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 19,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "접선 임계값·교점 개수·반원호 부호 및 범위"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "metaRegistryBasis": "ACTIVE_CANONICAL_NO_GENERATED_EXT_REQUIRED"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 큰 원·반원호의 정의 및 직선에서, 묻는 것은 서로 다른 교점 수와 기울기/자연수 조건이다. 반원 방향·접선 경계·중복 제거 없이 원과 직선의 판정을 끝낼 수 없다.",
+      "changedMathRecheck": "EXACT_CIRCLE_LINE_DISTANCE_AND_BOUNDARY_COUNTS_FROZEN",
+      "remainingRisk": "SOURCE_ORIGINAL_PNG_NOT_VISUALLY_OPENED; INDEPENDENT_GPT_REVIEW_NOT_RUN; CHROME_NOT_TESTED",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q19-A2",
+      "slot": "A2",
+      "sourceQid": 19,
+      "mode": "STRICT_VARIANT",
+      "stem": "큰 원 $C:(x+\\dfrac12)^2+y^2=\\dfrac{49}{4}$, 아래쪽 반원호 $S_1:(x+2)^2+y^2=4\\ (y\\le0)$, 위쪽 반원호 $S_2:(x-2)^2+y^2=1\\ (y\\ge0)$이 있다. 직선 $y=m(x+2)$가 세 곡선의 합집합과 서로 다른 다섯 점에서 만나는 $m$의 범위는?",
+      "choices": [
+        "$0\\le m<\\dfrac1{\\sqrt{15}}$",
+        "$0<m\\le\\dfrac1{\\sqrt{15}}$",
+        "$0<m<\\dfrac1{\\sqrt{15}}$",
+        "$0<m<\\dfrac13$",
+        "$0<m<\\dfrac14$"
+      ],
+      "answer": "③",
+      "solution": "큰 원의 중심 $(-\\dfrac12,0)$과 반지름 $\\dfrac72$에 대해 직선은 내부점 $(-2,0)$을 지나므로 두 점에서 만난다. $m>0$이면 아래쪽 반원호와 한 점, 위쪽 반원호와 두 점에서 만날 때 총 다섯 점이다. 위쪽 중심 $(2,0)$과 직선의 거리 $d=\\dfrac{4m}{\\sqrt{1+m^2}}$가 반지름 1보다 작아야 하므로 $16m^2<1+m^2$, $15m^2<1$이다. $m=0$에서는 큰 원과 두 반원호의 끝점 $(-4,0),(3,0)$이 겹쳐 네 점이며 상한에서는 접하므로 네 점이다. 따라서 $0<m<\\dfrac1{\\sqrt{15}}$이므로 정답은 ③이다.",
+      "distractorReasons": {
+        "①": "$m=0$에서 두 끝점이 큰 원과 중복되는 사실을 생략해 0 포함",
+        "②": "거리 $d=1$인 접점을 두 점으로 오판해 상한 포함",
+        "④": "$16m^2<1+m^2$를 $9m^2<1$로 잘못 정리해 $m<1/3$",
+        "⑤": "$\\sqrt{1+m^2}$를 없애고 $4m<1$만 사용해 $m<1/4$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "$m=0$에서 두 끝점이 큰 원과 중복되는 사실을 생략해 0 포함",
+          "actualIncorrectChoice": "$0\\le m<\\dfrac1{\\sqrt{15}}$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "②",
+          "mistake": "거리 $d=1$인 접점을 두 점으로 오판해 상한 포함",
+          "actualIncorrectChoice": "$0<m\\le\\dfrac1{\\sqrt{15}}$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "$16m^2<1+m^2$를 $9m^2<1$로 잘못 정리해 $m<1/3$",
+          "actualIncorrectChoice": "$0<m<\\dfrac13$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "$\\sqrt{1+m^2}$를 없애고 $4m<1$만 사용해 $m<1/4$",
+          "actualIncorrectChoice": "$0<m<\\dfrac14$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "반원호의 반지름이 다른 경우 접선 거리와 수평 경계 확인",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "원과 직선",
+      "lockedL3DecisiveStep": "원의 중심에서 직선까지의 거리, 접점 개수와 반원호의 y범위·끝점 중복을 구분하여 총 교점 수를 확정",
+      "targetL4": "교점 개수",
+      "schoolExamStyleEvidence": "반원호의 방정식 및 y 부호 명시, 정답형과 학교식 표현 일치",
+      "studentVisual": "NOT_REQUIRED_EXACT_ARC_EQUATIONS",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-INTERSECTION",
+        "subUnit": "원과 직선·원의 관계",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원과 직선",
+        "rpmL4": "교점 개수",
+        "rpmRecordId": "H1-RPM-219",
+        "rpmBindingStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 19,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "접선 임계값·교점 개수·반원호 부호 및 범위"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "metaRegistryBasis": "ACTIVE_CANONICAL_NO_GENERATED_EXT_REQUIRED"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 큰 원·반원호의 정의 및 직선에서, 묻는 것은 서로 다른 교점 수와 기울기/자연수 조건이다. 반원 방향·접선 경계·중복 제거 없이 원과 직선의 판정을 끝낼 수 없다.",
+      "changedMathRecheck": "EXACT_CIRCLE_LINE_DISTANCE_AND_BOUNDARY_COUNTS_FROZEN",
+      "remainingRisk": "SOURCE_ORIGINAL_PNG_NOT_VISUALLY_OPENED; INDEPENDENT_GPT_REVIEW_NOT_RUN; CHROME_NOT_TESTED",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q19-A3",
+      "slot": "A3",
+      "sourceQid": 19,
+      "mode": "STRICT_VARIANT",
+      "stem": "큰 원 $C:(x-\\dfrac12)^2+y^2=\\dfrac{49}{4}$, 아래쪽 반원호 $S_1:(x-2)^2+y^2=4\\ (y\\le0)$, 위쪽 반원호 $S_2:(x+2)^2+y^2=1\\ (y\\ge0)$이 있다. 직선 $y=m(x-2)$가 세 곡선의 합집합과 서로 다른 다섯 점에서 만나게 하는 $m$의 범위는?",
+      "choices": [
+        "$-\\dfrac14<m<0$",
+        "$-\\dfrac1{\\sqrt{15}}\\le m<0$",
+        "$-\\dfrac1{\\sqrt{15}}<m\\le0$",
+        "$-\\dfrac1{\\sqrt{15}}<m<0$",
+        "$0<m<\\dfrac1{\\sqrt{15}}$"
+      ],
+      "answer": "④",
+      "solution": "직선은 큰 원의 내부점 $(2,0)$을 지나므로 큰 원과 두 점에서 만난다. 오른쪽 아래 반원호와 한 점, 왼쪽 위 반원호와 두 점에서 만나려면 기울기가 음수여야 한다. 위 반원호의 중심 $(-2,0)$과 직선까지의 거리는 $d=\\dfrac{4|m|}{\\sqrt{1+m^2}}$이므로 $d<1$에서 $15m^2<1$이다. $m=0$이면 두 반원호의 끝점이 큰 원과 겹쳐 네 점이고 $m=-1/\\sqrt{15}$에서는 접하여 네 점이다. 따라서 $-\\dfrac1{\\sqrt{15}}<m<0$으로 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "$4|m|/\\sqrt{1+m^2}<1$의 분모를 1로 놓아 $|m|<1/4$",
+        "②": "접선에서 한 교점을 두 교점으로 세어 하한 등호 포함",
+        "③": "수평선의 겹치는 끝점을 분리해 0 포함",
+        "⑤": "도형 좌우를 반사했는데 기울기 부호를 그대로 양수로 둠"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "$4|m|/\\sqrt{1+m^2}<1$의 분모를 1로 놓아 $|m|<1/4$",
+          "actualIncorrectChoice": "$-\\dfrac14<m<0$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "②",
+          "mistake": "접선에서 한 교점을 두 교점으로 세어 하한 등호 포함",
+          "actualIncorrectChoice": "$-\\dfrac1{\\sqrt{15}}\\le m<0$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "수평선의 겹치는 끝점을 분리해 0 포함",
+          "actualIncorrectChoice": "$-\\dfrac1{\\sqrt{15}}<m\\le0$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "도형 좌우를 반사했는데 기울기 부호를 그대로 양수로 둠",
+          "actualIncorrectChoice": "$0<m<\\dfrac1{\\sqrt{15}}$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "좌우 반사된 합성 반원호에서 기울기 부호를 거꾸로 판정",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "원과 직선",
+      "lockedL3DecisiveStep": "원의 중심에서 직선까지의 거리, 접점 개수와 반원호의 y범위·끝점 중복을 구분하여 총 교점 수를 확정",
+      "targetL4": "교점 개수",
+      "schoolExamStyleEvidence": "반원호의 방정식 및 y 부호 명시, 정답형과 학교식 표현 일치",
+      "studentVisual": "NOT_REQUIRED_EXACT_ARC_EQUATIONS",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-INTERSECTION",
+        "subUnit": "원과 직선·원의 관계",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원과 직선",
+        "rpmL4": "교점 개수",
+        "rpmRecordId": "H1-RPM-219",
+        "rpmBindingStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 19,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "접선 임계값·교점 개수·반원호 부호 및 범위"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "metaRegistryBasis": "ACTIVE_CANONICAL_NO_GENERATED_EXT_REQUIRED"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 큰 원·반원호의 정의 및 직선에서, 묻는 것은 서로 다른 교점 수와 기울기/자연수 조건이다. 반원 방향·접선 경계·중복 제거 없이 원과 직선의 판정을 끝낼 수 없다.",
+      "changedMathRecheck": "EXACT_CIRCLE_LINE_DISTANCE_AND_BOUNDARY_COUNTS_FROZEN",
+      "remainingRisk": "SOURCE_ORIGINAL_PNG_NOT_VISUALLY_OPENED; INDEPENDENT_GPT_REVIEW_NOT_RUN; CHROME_NOT_TESTED",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q19-B1",
+      "slot": "B1",
+      "sourceQid": 19,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "큰 원 $C:x^2+y^2=16$, 아래쪽 반원호 $S_1:(x+2)^2+y^2=4\\ (y\\le0)$, 위쪽 반원호 $S_2:(x-2)^2+y^2=4\\ (y\\ge0)$이 있다. 양수 $m$에 대하여 직선 $y=m(x+2)$가 세 곡선의 합집합과 서로 다른 네 점에서 만나게 하는 $m$의 값은?",
+      "choices": [
+        "$0$",
+        "$\\dfrac1{\\sqrt3}$",
+        "$\\dfrac12$",
+        "$1$",
+        "$\\sqrt3$"
+      ],
+      "answer": "②",
+      "solution": "큰 원과의 교점은 두 점, 아래쪽 반원호와의 교점은 한 점이다. 따라서 네 점이 되려면 위쪽 반원호에 접해 교점이 하나여야 한다. 위 반원호의 중심 $(2,0)$과 직선 사이 거리 $d=\\dfrac{4m}{\\sqrt{1+m^2}}$가 반지름 $2$와 같으므로 $16m^2=4(1+m^2)$, 즉 $12m^2=4$이다. $m>0$에서 $m=1/\\sqrt3$이며 이 접점은 $y>0$에 있으므로 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "수평선 $m=0$은 끝점 중복 후 3점인데 접선 4점으로 혼동",
+        "③": "거리식에서 분모를 빠뜨려 $4m=2\\Rightarrow m=1/2$",
+        "④": "중심 사이 가로 거리 4를 $2\\sqrt2$로 잘못 계산하면 $2\\sqrt2 m/\\sqrt{1+m^2}=2\\Rightarrow m=1$",
+        "⑤": "$m^2=1/3$에서 역수와 제곱근을 혼동해 $m=\\sqrt3$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "수평선 $m=0$은 끝점 중복 후 3점인데 접선 4점으로 혼동",
+          "actualIncorrectChoice": "$0$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "거리식에서 분모를 빠뜨려 $4m=2\\Rightarrow m=1/2$",
+          "actualIncorrectChoice": "$\\dfrac12$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "중심 사이 가로 거리 4를 $2\\sqrt2$로 잘못 계산하면 $2\\sqrt2 m/\\sqrt{1+m^2}=2\\Rightarrow m=1$",
+          "actualIncorrectChoice": "$1$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "$m^2=1/3$에서 역수와 제곱근을 혼동해 $m=\\sqrt3$",
+          "actualIncorrectChoice": "$\\sqrt3$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "다섯 점에서 네 점으로 바뀌는 접선 경계값의 역산",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "원과 직선",
+      "lockedL3DecisiveStep": "원의 중심에서 직선까지의 거리, 접점 개수와 반원호의 y범위·끝점 중복을 구분하여 총 교점 수를 확정",
+      "targetL4": "교점 개수",
+      "schoolExamStyleEvidence": "반원호의 방정식 및 y 부호 명시, 정답형과 학교식 표현 일치",
+      "studentVisual": "NOT_REQUIRED_EXACT_ARC_EQUATIONS",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-INTERSECTION",
+        "subUnit": "원과 직선·원의 관계",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원과 직선",
+        "rpmL4": "교점 개수",
+        "rpmRecordId": "H1-RPM-219",
+        "rpmBindingStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceQid": 19,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "접선 임계값·교점 개수·반원호 부호 및 범위"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "metaRegistryBasis": "ACTIVE_CANONICAL_NO_GENERATED_EXT_REQUIRED"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 큰 원·반원호의 정의 및 직선에서, 묻는 것은 서로 다른 교점 수와 기울기/자연수 조건이다. 반원 방향·접선 경계·중복 제거 없이 원과 직선의 판정을 끝낼 수 없다.",
+      "changedMathRecheck": "EXACT_CIRCLE_LINE_DISTANCE_AND_BOUNDARY_COUNTS_FROZEN",
+      "remainingRisk": "SOURCE_ORIGINAL_PNG_NOT_VISUALLY_OPENED; INDEPENDENT_GPT_REVIEW_NOT_RUN; CHROME_NOT_TESTED",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q19-B2",
+      "slot": "B2",
+      "sourceQid": 19,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "큰 원 $C:x^2+y^2=16$, 아래쪽 반원호 $S_1:(x+2)^2+y^2=4\\ (y\\le0)$, 위쪽 반원호 $S_2:(x-2)^2+y^2=4\\ (y\\ge0)$이 있다. 직선 $y=\\dfrac14(x+2)$가 세 곡선의 합집합과 만나는 서로 다른 점의 개수는?",
+      "choices": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$6$",
+        "$5$"
+      ],
+      "answer": "⑤",
+      "solution": "직선은 큰 원의 내부점 $(-2,0)$을 지나므로 큰 원과 두 점에서 만난다. 양의 기울기이므로 아래쪽 반원호와는 왼쪽 한 점에서 만난다. 위쪽 반원호 중심 $(2,0)$과의 거리는 $d=\\dfrac{4\\cdot(1/4)}{\\sqrt{1+1/16}}=\\dfrac4{\\sqrt{17}}<2$이므로 그 반원호와 두 점에서 만난다. $m\\ne0$일 때 큰 원과 작은 반원호의 끝점은 서로 겹치지 않는다. 따라서 서로 다른 교점은 $2+1+2=5$개이고 정답은 ⑤이다.",
+      "distractorReasons": {
+        "①": "작은 두 반원호의 교점 3개를 세지 않고 큰 원의 2개만 세어 2",
+        "②": "위 반원호 교점 2개를 누락해 $2+1=3$",
+        "③": "위쪽 반원호의 두 점을 접점 하나로 오판해 $2+1+1=4$",
+        "④": "위쪽 반원호에 존재하지 않는 세 번째 교점을 하나 더 세어 $2+1+3=6$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "작은 두 반원호의 교점 3개를 세지 않고 큰 원의 2개만 세어 2",
+          "actualIncorrectChoice": "$2$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "②",
+          "mistake": "위 반원호 교점 2개를 누락해 $2+1=3$",
+          "actualIncorrectChoice": "$3$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "위쪽 반원호의 두 점을 접점 하나로 오판해 $2+1+1=4$",
+          "actualIncorrectChoice": "$4$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "위쪽 반원호에 존재하지 않는 세 번째 교점을 하나 더 세어 $2+1+3=6$",
+          "actualIncorrectChoice": "$6$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "고정 기울기에서 큰 원과 작은 반원호의 교점을 각각 판정",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "원과 직선",
+      "lockedL3DecisiveStep": "원의 중심에서 직선까지의 거리, 접점 개수와 반원호의 y범위·끝점 중복을 구분하여 총 교점 수를 확정",
+      "targetL4": "교점 개수",
+      "schoolExamStyleEvidence": "반원호의 방정식 및 y 부호 명시, 정답형과 학교식 표현 일치",
+      "studentVisual": "NOT_REQUIRED_EXACT_ARC_EQUATIONS",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-INTERSECTION",
+        "subUnit": "원과 직선·원의 관계",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원과 직선",
+        "rpmL4": "교점 개수",
+        "rpmRecordId": "H1-RPM-219",
+        "rpmBindingStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceQid": 19,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "접선 임계값·교점 개수·반원호 부호 및 범위"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "metaRegistryBasis": "ACTIVE_CANONICAL_NO_GENERATED_EXT_REQUIRED"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 큰 원·반원호의 정의 및 직선에서, 묻는 것은 서로 다른 교점 수와 기울기/자연수 조건이다. 반원 방향·접선 경계·중복 제거 없이 원과 직선의 판정을 끝낼 수 없다.",
+      "changedMathRecheck": "EXACT_CIRCLE_LINE_DISTANCE_AND_BOUNDARY_COUNTS_FROZEN",
+      "remainingRisk": "SOURCE_ORIGINAL_PNG_NOT_VISUALLY_OPENED; INDEPENDENT_GPT_REVIEW_NOT_RUN; CHROME_NOT_TESTED",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q19-B3",
+      "slot": "B3",
+      "sourceQid": 19,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "큰 원 $C:(x-1)^2+y^2=25$, 아래쪽 반원호 $S_1:(x+2)^2+y^2=4\\ (y\\le0)$, 위쪽 반원호 $S_2:(x-4)^2+y^2=4\\ (y\\ge0)$이 있다. 직선 $y=m(x+2)$가 세 곡선의 합집합과 서로 다른 다섯 점에서 만나게 되는 $m$의 범위는?",
+      "choices": [
+        "$0<m<\\dfrac16$",
+        "$0<m\\le\\dfrac1{\\sqrt8}$",
+        "$0<m<\\dfrac1{\\sqrt8}$",
+        "$0<m<\\dfrac1{\\sqrt{35}}$",
+        "$0<m<\\dfrac1{\\sqrt3}$"
+      ],
+      "answer": "③",
+      "solution": "직선은 큰 원의 내부점 $(-2,0)$을 지나므로 큰 원과 항상 두 점에서 만난다. $m>0$이면 아래쪽 반원호와 한 점에서 만나며, 위쪽 반원호와 두 점에서 만나야 한다. 위쪽 중심 $(4,0)$까지의 거리 $d=\\dfrac{6m}{\\sqrt{1+m^2}}$가 반지름 $2$보다 작을 조건은 $36m^2<4(1+m^2)$, 즉 $m^2<1/8$이다. 수평선의 끝점 중복과 접점 한 개를 제외하므로 $0<m<\\dfrac1{\\sqrt8}$이고 정답은 ③이다.",
+      "distractorReasons": {
+        "①": "오른쪽 반원호까지의 가로 거리 6을 반지름 보정 없이 기울기의 역수 한계로 착각해 $m<1/6$",
+        "②": "상한 접점을 두 교점으로 세어 상한 등호 포함",
+        "④": "반지름 2를 1로 오인해 $6m/\\sqrt{1+m^2}<1\\Rightarrow m<1/\\sqrt{35}$",
+        "⑤": "가로 거리 6을 4로 오인해 $4m/\\sqrt{1+m^2}<2\\Rightarrow m<1/\\sqrt3$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "오른쪽 반원호까지의 가로 거리 6을 반지름 보정 없이 기울기의 역수 한계로 착각해 $m<1/6$",
+          "actualIncorrectChoice": "$0<m<\\dfrac16$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "②",
+          "mistake": "상한 접점을 두 교점으로 세어 상한 등호 포함",
+          "actualIncorrectChoice": "$0<m\\le\\dfrac1{\\sqrt8}$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "반지름 2를 1로 오인해 $6m/\\sqrt{1+m^2}<1\\Rightarrow m<1/\\sqrt{35}$",
+          "actualIncorrectChoice": "$0<m<\\dfrac1{\\sqrt{35}}$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "가로 거리 6을 4로 오인해 $4m/\\sqrt{1+m^2}<2\\Rightarrow m<1/\\sqrt3$",
+          "actualIncorrectChoice": "$0<m<\\dfrac1{\\sqrt3}$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "중심 간격이 달라진 두 반원호에서 임계값의 변화를 계산",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "원과 직선",
+      "lockedL3DecisiveStep": "원의 중심에서 직선까지의 거리, 접점 개수와 반원호의 y범위·끝점 중복을 구분하여 총 교점 수를 확정",
+      "targetL4": "교점 개수",
+      "schoolExamStyleEvidence": "반원호의 방정식 및 y 부호 명시, 정답형과 학교식 표현 일치",
+      "studentVisual": "NOT_REQUIRED_EXACT_ARC_EQUATIONS",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-INTERSECTION",
+        "subUnit": "원과 직선·원의 관계",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원과 직선",
+        "rpmL4": "교점 개수",
+        "rpmRecordId": "H1-RPM-219",
+        "rpmBindingStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 19,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "접선 임계값·교점 개수·반원호 부호 및 범위"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "metaRegistryBasis": "ACTIVE_CANONICAL_NO_GENERATED_EXT_REQUIRED"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 큰 원·반원호의 정의 및 직선에서, 묻는 것은 서로 다른 교점 수와 기울기/자연수 조건이다. 반원 방향·접선 경계·중복 제거 없이 원과 직선의 판정을 끝낼 수 없다.",
+      "changedMathRecheck": "EXACT_CIRCLE_LINE_DISTANCE_AND_BOUNDARY_COUNTS_FROZEN",
+      "remainingRisk": "SOURCE_ORIGINAL_PNG_NOT_VISUALLY_OPENED; INDEPENDENT_GPT_REVIEW_NOT_RUN; CHROME_NOT_TESTED",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q19-C1",
+      "slot": "C1",
+      "sourceQid": 19,
+      "mode": "TYPE_BANK",
+      "stem": "큰 원 $C:x^2+y^2=100$, 위쪽 반원호 $S_1:(x-2)^2+y^2=1\\ (y\\ge0)$, 위쪽 반원호 $S_2:(x-5)^2+y^2=1\\ (y\\ge0)$이 있다. 직선 $y=m(x+1)$이 이 세 곡선의 합집합과 서로 다른 네 점에서 만나게 하는 실수 $m$의 범위는?",
+      "choices": [
+        "$0<m<\\dfrac1{\\sqrt{35}}$",
+        "$0<m<\\dfrac1{\\sqrt8}$",
+        "$\\dfrac1{\\sqrt{35}}\\le m<\\dfrac1{\\sqrt8}$",
+        "$\\dfrac1{\\sqrt{35}}<m<\\dfrac1{\\sqrt8}$",
+        "$\\dfrac1{\\sqrt8}<m<1$"
+      ],
+      "answer": "④",
+      "solution": "큰 원은 내부점 $(-1,0)$을 지나는 직선과 항상 두 점에서 만난다. $m<0$에서는 두 위쪽 반원호에 교점이 없다. $m=0$에서는 두 반원호의 끝점을 모두 지나 총 여섯 점이다. 양수 $m$에 대해 중심 $(2,0)$까지의 거리 $3m/\\sqrt{1+m^2}<1$은 $m<1/\\sqrt8$, 중심 $(5,0)$까지의 거리 $6m/\\sqrt{1+m^2}<1$은 $m<1/\\sqrt{35}$이다. 정확히 네 점이려면 가까운 반원호와 두 점, 먼 반원호와 영 점에서 만나야 한다. 아래 경계에서는 먼 반원호의 접점 1개가 추가되어 다섯 점, 위 경계에서는 가까운 반원호의 접점 1개만 남아 세 점이다. 따라서 $\\dfrac1{\\sqrt{35}}<m<\\dfrac1{\\sqrt8}$이고 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "두 위쪽 반원호 모두 두 점에서 만나는 여섯 교점 구간을 잘못 선택",
+        "②": "여섯 교점 구간까지 네 교점으로 오판하고 먼 반원호의 접선 조건을 제외",
+        "③": "먼 반원호의 접점 하나가 더해져 다섯 점인 하한을 포함",
+        "⑤": "가까운 반원호도 만나지 않아 큰 원의 두 점만 남는 구간을 선택"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "두 위쪽 반원호 모두 두 점에서 만나는 여섯 교점 구간을 잘못 선택",
+          "actualIncorrectChoice": "$0<m<\\dfrac1{\\sqrt{35}}$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "②",
+          "mistake": "여섯 교점 구간까지 네 교점으로 오판하고 먼 반원호의 접선 조건을 제외",
+          "actualIncorrectChoice": "$0<m<\\dfrac1{\\sqrt8}$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "먼 반원호의 접점 하나가 더해져 다섯 점인 하한을 포함",
+          "actualIncorrectChoice": "$\\dfrac1{\\sqrt{35}}\\le m<\\dfrac1{\\sqrt8}$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "가까운 반원호도 만나지 않아 큰 원의 두 점만 남는 구간을 선택",
+          "actualIncorrectChoice": "$\\dfrac1{\\sqrt8}<m<1$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "서로 다른 접선 임계값 사이에서 4교점만 되는 구간 분리",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "원과 직선",
+      "lockedL3DecisiveStep": "원의 중심에서 직선까지의 거리, 접점 개수와 반원호의 y범위·끝점 중복을 구분하여 총 교점 수를 확정",
+      "targetL4": "교점 개수",
+      "schoolExamStyleEvidence": "반원호의 방정식 및 y 부호 명시, 정답형과 학교식 표현 일치",
+      "studentVisual": "NOT_REQUIRED_EXACT_ARC_EQUATIONS",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-INTERSECTION",
+        "subUnit": "원과 직선·원의 관계",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원과 직선",
+        "rpmL4": "교점 개수",
+        "rpmRecordId": "H1-RPM-219",
+        "rpmBindingStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 19,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "접선 임계값·교점 개수·반원호 부호 및 범위 자연수 검토"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "metaRegistryBasis": "ACTIVE_CANONICAL_NO_GENERATED_EXT_REQUIRED"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 큰 원·반원호의 정의 및 직선에서, 묻는 것은 서로 다른 교점 수와 기울기/자연수 조건이다. 반원 방향·접선 경계·중복 제거 없이 원과 직선의 판정을 끝낼 수 없다.",
+      "changedMathRecheck": "EXACT_CIRCLE_LINE_DISTANCE_AND_BOUNDARY_COUNTS_FROZEN",
+      "remainingRisk": "SOURCE_ORIGINAL_PNG_NOT_VISUALLY_OPENED; INDEPENDENT_GPT_REVIEW_NOT_RUN; CHROME_NOT_TESTED",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q19-C2",
+      "slot": "C2",
+      "sourceQid": 19,
+      "mode": "TYPE_BANK",
+      "stem": "큰 원 $C:x^2+y^2=100$, 위쪽 반원호 $S_1:(x-2)^2+y^2=1\\ (y\\ge0)$, 위쪽 반원호 $S_2:(x-5)^2+y^2=1\\ (y\\ge0)$이 있다. 자연수 $n$에 대하여 직선 $y=\\dfrac n{20}(x+1)$이 세 곡선의 합집합과 서로 다른 네 점에서 만나는 $n$의 개수는?",
+      "choices": [
+        "$4$",
+        "$3$",
+        "$5$",
+        "$7$",
+        "$8$"
+      ],
+      "answer": "①",
+      "solution": "큰 원과는 항상 두 점에서 만난다. 두 위쪽 반원호 중 가까운 반원호에만 두 교점이 있어야 네 점이다. 그 조건은 중심까지 거리와 반지름 1을 대조하여 $1/\\sqrt{35}<m<1/\\sqrt8$이다. $m=n/20$을 대입하면 $20/\\sqrt{35}<n<20/\\sqrt8$이다. 양 끝은 각각 약 $3.38,7.07$이므로 가능한 자연수는 $4,5,6,7$로 네 개다. 접하는 임계값은 어느 쪽도 허용하지 않는다. 따라서 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "$n>3.38$을 잘못 올림하여 $n\\ge5$로 두고 $5,6,7$의 3개",
+        "③": "$n<7.07$을 $n\\le8$로 잘못 반올림해 $4,5,6,7,8$의 5개",
+        "④": "아래쪽 임계값을 누락하고 $n=1$부터 $7$까지 7개를 세기",
+        "⑤": "자연수에 0을 포함시키고 아래 임계값도 누락하여 $0,1,\\ldots,7$의 8개"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "mistake": "$n>3.38$을 잘못 올림하여 $n\\ge5$로 두고 $5,6,7$의 3개",
+          "actualIncorrectChoice": "$3$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "$n<7.07$을 $n\\le8$로 잘못 반올림해 $4,5,6,7,8$의 5개",
+          "actualIncorrectChoice": "$5$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "아래쪽 임계값을 누락하고 $n=1$부터 $7$까지 7개를 세기",
+          "actualIncorrectChoice": "$7$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "자연수에 0을 포함시키고 아래 임계값도 누락하여 $0,1,\\ldots,7$의 8개",
+          "actualIncorrectChoice": "$8$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "실수 기울기 구간을 자연수 격자 조건으로 변환",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "원과 직선",
+      "lockedL3DecisiveStep": "원의 중심에서 직선까지의 거리, 접점 개수와 반원호의 y범위·끝점 중복을 구분하여 총 교점 수를 확정",
+      "targetL4": "교점 개수",
+      "schoolExamStyleEvidence": "반원호의 방정식 및 y 부호 명시, 정답형과 학교식 표현 일치",
+      "studentVisual": "NOT_REQUIRED_EXACT_ARC_EQUATIONS",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-INTERSECTION",
+        "subUnit": "원과 직선·원의 관계",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원과 직선",
+        "rpmL4": "교점 개수",
+        "rpmRecordId": "H1-RPM-219",
+        "rpmBindingStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE",
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 19,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "접선 임계값·교점 개수·반원호 부호 및 범위 자연수 검토"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "metaRegistryBasis": "ACTIVE_CANONICAL_NO_GENERATED_EXT_REQUIRED"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 큰 원·반원호의 정의 및 직선에서, 묻는 것은 서로 다른 교점 수와 기울기/자연수 조건이다. 반원 방향·접선 경계·중복 제거 없이 원과 직선의 판정을 끝낼 수 없다.",
+      "changedMathRecheck": "EXACT_CIRCLE_LINE_DISTANCE_AND_BOUNDARY_COUNTS_FROZEN",
+      "remainingRisk": "SOURCE_ORIGINAL_PNG_NOT_VISUALLY_OPENED; INDEPENDENT_GPT_REVIEW_NOT_RUN; CHROME_NOT_TESTED",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "COND_RANGE",
+        "COND_NATURAL_NUMBER"
+      ],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q19-C3",
+      "slot": "C3",
+      "sourceQid": 19,
+      "mode": "TYPE_BANK",
+      "stem": "큰 원 $C:x^2+y^2=16$, 아래쪽 반원호 $S_1:(x+2)^2+y^2=4\\ (y\\le0)$, 위쪽 반원호 $S_2:(x-3)^2+y^2=1\\ (y\\ge0)$이 있다. $1\\le n\\le40$인 자연수 $n$에 대하여 직선 $y=\\dfrac{x+2}{\\sqrt n}$이 세 곡선의 합집합과 서로 다른 다섯 점에서 만나도록 하는 $n$의 개수는?",
+      "choices": [
+        "$15$",
+        "$16$",
+        "$17$",
+        "$24$",
+        "$40$"
+      ],
+      "answer": "②",
+      "solution": "직선의 기울기 $m=1/\\sqrt n$은 양수이고, 직선은 큰 원 내부점 $(-2,0)$과 아래쪽 반원호의 중심을 지난다. 따라서 큰 원과 두 점, 아래쪽 반원호와 한 점에서 만난다. 위쪽 중심 $(3,0)$까지의 거리 $d=\\dfrac{5m}{\\sqrt{1+m^2}}$가 반지름 1보다 작을 때만 위 반원호에 두 교점이 생긴다. $25m^2<1+m^2$에서 $24m^2<1$이고 $m^2=1/n$을 대입하면 $n>24$이다. $n=24$는 접점 하나여서 전체 네 점만 생기므로 제외한다. $1\\le n\\le40$과 결합하면 $n=25,26,\\ldots,40$의 $16$개이고 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "상한 $40$을 제외하여 $25$부터 $39$까지 15개",
+        "③": "접점이 하나인 $n=24$도 다섯 교점으로 세어 $24$부터 $40$까지 17개",
+        "④": "$n>24$의 방향을 뒤집어 $1$부터 $24$까지 24개를 세기",
+        "⑤": "접선 조건을 무시하고 $1$부터 $40$까지 모두 허용하여 40개"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "상한 $40$을 제외하여 $25$부터 $39$까지 15개",
+          "actualIncorrectChoice": "$15$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "접점이 하나인 $n=24$도 다섯 교점으로 세어 $24$부터 $40$까지 17개",
+          "actualIncorrectChoice": "$17$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "$n>24$의 방향을 뒤집어 $1$부터 $24$까지 24개를 세기",
+          "actualIncorrectChoice": "$24$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "접선 조건을 무시하고 $1$부터 $40$까지 모두 허용하여 40개",
+          "actualIncorrectChoice": "$40$",
+          "verificationBasis": "ACTUAL_ERRONEOUS_STEP_TO_STUDENT_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "역제곱근 기울기의 접선 경계와 자연수 범위",
+      "level": "상",
+      "difficultyBucket": 5,
+      "lockedPrimaryL3": "원과 직선",
+      "lockedL3DecisiveStep": "원의 중심에서 직선까지의 거리, 접점 개수와 반원호의 y범위·끝점 중복을 구분하여 총 교점 수를 확정",
+      "targetL4": "교점 개수",
+      "schoolExamStyleEvidence": "반원호의 방정식 및 y 부호 명시, 정답형과 학교식 표현 일치",
+      "studentVisual": "NOT_REQUIRED_EXACT_ARC_EQUATIONS",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-INTERSECTION",
+        "subUnit": "원과 직선·원의 관계",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원과 직선",
+        "rpmL4": "교점 개수",
+        "rpmRecordId": "H1-RPM-219",
+        "rpmBindingStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE",
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 5,
+        "level": "상",
+        "sourceQid": 19,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "접선 임계값·교점 개수·반원호 부호 및 범위 자연수 검토"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "metaRegistryBasis": "ACTIVE_CANONICAL_NO_GENERATED_EXT_REQUIRED"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 큰 원·반원호의 정의 및 직선에서, 묻는 것은 서로 다른 교점 수와 기울기/자연수 조건이다. 반원 방향·접선 경계·중복 제거 없이 원과 직선의 판정을 끝낼 수 없다.",
+      "changedMathRecheck": "EXACT_CIRCLE_LINE_DISTANCE_AND_BOUNDARY_COUNTS_FROZEN",
+      "remainingRisk": "SOURCE_ORIGINAL_PNG_NOT_VISUALLY_OPENED; INDEPENDENT_GPT_REVIEW_NOT_RUN; CHROME_NOT_TESTED",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "COND_RANGE",
+        "COND_NATURAL_NUMBER"
+      ],
+      "crossConceptKeys": []
+    }
+  ],
+  "nextSourceQid": 20,
+  "publication": {
+    "status": "CREATE_CANDIDATES_ONLY",
+    "studentConsumerIndexed": 0,
+    "mainPublication": "NOT_DONE",
+    "chrome": "NOT_TESTED"
+  },
+  "qualityReview": {
+    "method": "NOT_RUN",
+    "creatorSelfCheckIsNotIndependentPass": true
+  }
+}
