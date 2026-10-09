@@ -6,6 +6,9 @@ on:
     paths:
       - 'archive/generated-bank.html'
       - 'archive/data/generated-lite-consumer/**'
+      - 'archive/generated/lite/v1/**'
+      - 'archive/tools/generated-meta-retention-gate.cjs'
+      - 'tests/generated-meta-retention.test.cjs'
       - 'tools/check-generated-bank-browser.cjs'
       - '.github/workflows/generated-consumer-browser-smoke.yml'
   pull_request:
@@ -13,6 +16,9 @@ on:
     paths:
       - 'archive/generated-bank.html'
       - 'archive/data/generated-lite-consumer/**'
+      - 'archive/generated/lite/v1/**'
+      - 'archive/tools/generated-meta-retention-gate.cjs'
+      - 'tests/generated-meta-retention.test.cjs'
       - 'tools/check-generated-bank-browser.cjs'
       - '.github/workflows/generated-consumer-browser-smoke.yml'
   workflow_dispatch:
@@ -30,6 +36,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Enforce post-cutover generated Meta projection and legacy isolation
+        run: node --test tests/generated-meta-retention.test.cjs
       - name: Verify 323 consumer rows including Palma QID9 36 and preserved source SHA
         run: node --test tests/archive2-generated-bank-registration.test.js tests/archive2-generated-bank-subjective-table.test.cjs tests/archive2-bokseong-b04-b05-consumer.test.cjs tests/archive2-bokseong-b06-consumer.test.cjs tests/archive2-bokseong-b01-b02-consumer.test.cjs tests/archive2-bokseong-b02-q11-semantic-consumer.test.cjs tests/archive2-bokseong-b05-q22-consumer.test.cjs
       - uses: browser-actions/setup-chrome@v1
