@@ -1,5 +1,11 @@
 # ALIVE LITE 실행 계약 — 다른 채팅·Codex용
 
+## CURRENT HARD — QID9 시험지 단일 브랜치 및 누적 공개답 검수 (2026-10-09)
+- 신규 GPT 문항 생성은 `ALIVE_GPT_QID9_ONE_SOURCE_CURRENT.md` 최상단 CURRENT HARD에 따른다. **한 시험지=한 Git 작업 브랜치**, **원본 qid 1개=독립 제작 커밋 1개**. qid별 브랜치/PR을 새로 생성하거나 하나씩 별도 품질검수로 차단하지 않는다.
+- 원본 문항은 한 번에 하나씩 설계·생성·자체검산 후 동일 브랜치에 누적한다. 완료/미완료·UID·SHA를 manifest에 기록하고 다음 qid로 계속 진행한다.
+- 여러 qid가 모이면 공개답 기반 **발문 우선 → 해설 수학 추적 → 오답·메타** 순서로 **묶음 품질검수**. 권장 45UID(5×9), 27/36/45 등 적응형. 45개 이전에도 형님 지시 시 즉시 검수. HOLD 숫자 채우기 금지.
+- GPT가 품질과 학생 공급을 판단하고, Codex는 이미 확정된 파일의 Git commit/push/main 운영병합·readback만 담당한다. 기존 기출 R1/R2 blind 계약과 RPM LOCKED 정본은 불변.
+
 ## CURRENT HARD — Generated QID9 공개답 검수 즉시 적용 (2026-10-09)
 - 신규 생성문항은 학생용 발문을 1순위로, 정답·상세 해설을 함께 보며 계산·논리·경계를 추적하는 `GPT_OPEN_BOOK_REVIEW`로 1회 검수한다. **답 비공개 blind freeze 및 최초 독립 재풀이를 전 슬롯에 강제하지 않는다.** 구체 절차는 `ALIVE_GPT_QID9_ONE_SOURCE_CURRENT.md` 상단 CURRENT 절.
 - 의심점·고위험 수학에서만 다른 풀이/경계 사례를 핀포인트 재검한다. **기존 실제 기출 R1/R2 독립 freeze 규칙은 유지**한다. 학생용 발문 부자연스러움은 필수 finding이며 수정 후 영향부만 재확인한다.
