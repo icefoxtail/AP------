@@ -16,12 +16,12 @@ const valid=()=>({uid:'ALITE-NEW-001',approvedMeta:meta,indexMeta:meta,consumerM
  questionMeta:meta,sourceMeta:meta,
  digests:{index:sha256(meta),consumer:sha256(meta),question:sha256(meta),source:sha256(meta),authority:sha256(meta)},
  evidence:{index:SHA,consumer:SHA,authority:SHA}});
-test('existing 323 approvals stay exempt while six new Palma records pass full Meta parity',()=>{
+test('existing 323 approvals stay exempt while 23 new Palma records pass full Meta parity',()=>{
  const r=audit(path.resolve(__dirname,'..'));
  assert.equal(r.status,'PASS_NEW_UID_SCOPE_ONLY',r.errors.join('\n'));
  assert.equal(r.legacyExemptNotRecertified,323);
- assert.equal(r.newUidChecked,15);
- assert.equal(r.total,338);
+ assert.equal(r.newUidChecked,23);
+ assert.equal(r.total,346);
 });
 test('fully evidenced future UID passes projection-only gate',()=>{
  assert.deepEqual(validateMeta(meta),[]);
