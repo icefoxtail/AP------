@@ -94,3 +94,4 @@ current inventory, not `1..N`, define each exam denominator.
 - The integrated main tree passed `node tools/check-archive2-runtime.cjs` (42/42).
 - The actual Archive desktop `mode=sol` render on the integrated tree passed all 10 exams and loaded all 130 solution SVGs with zero errors. Evidence is recorded in `archive-render-desktop-20261009-v8/summary.json` and `archive-render-desktop-20261009-v8/archive-render-matrix.json`.
 - Remote main readback matched `1ba22c805c9fc4b144b5670d414964ee73d3521d` after the merge.
+- The later registration-artifact synchronization at `cf42ca40701510ff4caedac99612879f727c6a25` was merged into the integration tree at `f3ae9664a9e454f9910664d59250f46419d2ff7c`; the runtime guard passed 42/42 after that merge. Its three changed paths do not include the ten target exam JS files, 130 target SVGs, or Archive renderer.
