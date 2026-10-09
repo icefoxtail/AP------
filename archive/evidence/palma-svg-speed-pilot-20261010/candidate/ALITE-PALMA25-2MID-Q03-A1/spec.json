@@ -1,0 +1,177 @@
+{
+  "id": "ALITE-PALMA25-2MID-Q03-A1",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -5.0,
+    "xMax": 6.0,
+    "yMin": -5.0,
+    "yMax": 5.0,
+    "width": 390,
+    "height": 360,
+    "panel": 0
+  },
+  "axes": false,
+  "title": "원의 중심과 반지름",
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "A rigid translation and rotation align two existing mathematically meaningful points with the normalized origin and positive x-axis; unit scale is preserved, and every transformed point is explicitly listed. No helper points are added to the student visual.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "T",
+        "unitScale": 4.0
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "O": [
+          0.0,
+          0.0
+        ],
+        "T": [
+          4.0,
+          0.0
+        ]
+      },
+      "conditions": [
+        {
+          "id": "normalizationAxis",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "T"
+          ],
+          "expected": 4.0,
+          "tolerance": 1e-09
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct_O",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "O",
+          "inputs": [
+            "O",
+            "T"
+          ]
+        },
+        {
+          "id": "construct_T",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "T",
+          "inputs": [
+            "O",
+            "T"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "normalizationAxis",
+          "residual": 0,
+          "tolerance": 1e-09
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct_O_T",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "T"
+          ],
+          "observed": 4.0,
+          "minimum": 1e-09
+        }
+      ]
+    },
+    "questionUid": "ALITE-PALMA25-2MID-Q03-A1",
+    "sourceToVisualFrame": {
+      "origin": [
+        -3,
+        2
+      ],
+      "ex": [
+        1.0,
+        0.0
+      ],
+      "ey": [
+        -0.0,
+        1.0
+      ]
+    }
+  },
+  "derivedFacts": {
+    "answerCheck": "center=(-3,2); r=4; equation=(x+3)^2+(y-2)^2=16",
+    "coordinateFrame": [
+      "O",
+      "T"
+    ]
+  },
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "T",
+      "kind": "POINT",
+      "at": [
+        4.0,
+        0.0
+      ],
+      "name": "T"
+    },
+    {
+      "id": "C",
+      "kind": "CIRCLE",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "radius": 4
+    },
+    {
+      "id": "radius",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        4.0,
+        0.0
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "O": "C",
+      "T": "T"
+    },
+    "segmentPointRefs": {
+      "radius": [
+        "O",
+        "T"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "radiusValue",
+        "kind": "LENGTH",
+        "owner": "radius",
+        "value": 4,
+        "text": "4",
+        "mode": "ADJACENT",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

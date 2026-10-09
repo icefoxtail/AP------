@@ -1,0 +1,95 @@
+{
+  "evidenceType": "PALMA_SOLUTION_OUTPUT_TECHNICAL_CLOSEOUT",
+  "status": "PHYSICAL_SOURCE_CONSUMER_QPP1_QPP4_TECHNICAL_QA_PASS_V8_CANDIDATE_RELEASE_NOT_AUTHORIZED",
+  "worktree": "C:/Users/USER/Desktop/AP-worktrees/palma-svg-speed-pilot/AP------",
+  "branch": "codex/palma-svg-speed-pilot-20261010",
+  "head": "da3cb983f826aeae31610f700e2310971d558e11",
+  "latestOriginMain": "450338e6855ae49e93b56a58abb181aabc77db91",
+  "rootAppliedDataReceipt": {
+    "path": ".tmp/archive/palma-svg-speed-pilot-20261010/root-intake/apply-receipt.json",
+    "sha256": "43261EA494B0C36003550131D2F48A6499B5E06FF98639ED3BE7AEB8C16BC655",
+    "proposalSha": "0B7DC28B26DC9799B7B821FF1C1B35EBDB8C2DEDC0FFBD3CFD92C4A29C0DB175",
+    "reviewReceiptSha": "AA7BD02F5496576C8A526530E210DD6C414E425F1DE81A9D75CD540B78C46F7D",
+    "status": "APPLIED_EXACT_REVIEWED_BYTES",
+    "targetUidCount": 10
+  },
+  "technicalCodeAllowlist": {
+    "archive/archive2-output.js": "7110C184F40CA77A202FD33A4AF2E8645734027F89E27CBDB58630C47F149A2F",
+    "archive/common-fast-runtime.js": "FB6FB23AA1653F051B698BB1B5AE0D60BAE9E6A13F9404F3B905867EC9B4A099",
+    "archive/engine.html": "DC47B40ECD1C4773F05773DCAB457F9785826C560B6779B9D582A8771C191C0C",
+    "archive/generated-bank.html": "2609CF3B9DF32A2C60C29EE46F99910896C62ECEE0F7155E1C58773D1DF730D6",
+    "archive/index.html": "86F808DC79FA31D91152C5B7230428715322F32BA03D66D5471A3684D48B050A",
+    "archive/mixed_engine.html": "E68995081F58723E807E0F55016E514D5E24F196C5F6A40629F52854EFA76665",
+    "archive/solution-render-executor.js": "4A5FC507CE1C3F382C5FD00E10D8C6A6A3DC86EC91B2463D9109B169813B8BBF",
+    "archive/unit-past-exams.html": "9A058EC7A33D9422D29A46E95F172B0B87E9088ACEE64CB58292EAC2FC27ACFF",
+    "archive/workspace.html": "70F913058152025780F163B1570FD3417B45C0D65F53E85D5C8671AB298602B2",
+    "tests/archive2-generated-bank-subjective-table.test.cjs": "561CE1E5579B9582C0C3229F690EE24C64BE7096E277F85BECB11A553BBE043E",
+    "tests/archive2-reader-controls.test.cjs": "AEF4E67A96ADB80C47180E412ED8DA8DF0A885258EB63F0DAFA157B4ABF87522",
+    "tests/archive2-solution-chunker.test.cjs": "AD59966A78E297783339F6EBACBBA5D18CCBCCB8AC33C04DE6C9749AFC65CDCF"
+  },
+  "rootAppliedProductionDataExcludedFromTechnicalCodeAllowlist": [
+    "archive/assets/generated-lite/palma-speed-pilot/",
+    "archive/data/generated-lite-consumer/",
+    "archive/generated/lite/"
+  ],
+  "verification": {
+    "focusedTestCommand": "node --test tests/archive2-generated-bank-subjective-table.test.cjs tests/archive2-solution-chunker.test.cjs tests/archive2-reader-controls.test.cjs",
+    "focusedTestExit": 0,
+    "focusedTestResult": "PASS 15/15",
+    "focusedTestRawLog": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/focused-tests-final-v8.log",
+    "focusedTestRawLogSha256": "6904287A3B1C38F3EB98D60B6EE74B545D64053CE026CB7702837643CACF4D18",
+    "archive2RuntimeCommand": "node tools/check-archive2-runtime.cjs",
+    "archive2RuntimeExit": 0,
+    "archive2RuntimeResult": "PASS 42/42",
+    "archive2RuntimeRawLog": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/archive2-runtime-guard-final-v8.log",
+    "archive2RuntimeRawLogSha256": "D21E17380BA16FBA6D1D1ED388CA7D5F4833AB7CA2ADF702C2F8B0092712D2BB",
+    "gitDiffCheck": "PASS"
+  },
+  "browser": {
+    "manifestPath": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/manifest.json",
+    "manifestSha256": "931B258A337CD0EE81D5B5D76B8051291672A7A39C91742BB7BF48C4B6266736",
+    "qpp1Report": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-ui-v8-qpp1-review/report.json",
+    "qpp1ReportSha256": "933B076FE05838CA9E58859DC3B894D7C292BD7DC239CBCEF71969F2C5FE472F",
+    "qpp1Result": "PASS 10/10 solution route and rendered font threshold; student question print has no solution image, answer, or solution nodes",
+    "qpp4Report": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/qpp4-v8-default-layout-check.json",
+    "qpp4ReportSha256": "1D19E7AAFE85AA6C06ED39FDC4ECBDD9723D9C69387C4C442C28A281BCE63033",
+    "qpp4Result": "PASS default two-column layout/divider retained",
+    "q19TypesetDiagnostic": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/q19-fast-typeset-diagnostic.json",
+    "q19TypesetDiagnosticSha256": "120F50488824F7A725BC8BFD1B3AD44A663B3F79975E4CD15F16FE3331A01A1A",
+    "q19TypesetResult": "PASS strict output ready, two pages, zero MathJax errors after atomic display-math chunking",
+    "q19PreFixChunkEvidence": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/q19-chunk-diagnostic.json",
+    "q19PreFixChunkEvidenceSha256": "0D9EECD144C977B934527856EC50CD1F6277856BB2C90C79A60456966365B888"
+  },
+  "latestMainOverlap": {
+    "path": "archive/solution-render-executor.js",
+    "note": "Read-only diff versus latest origin/main reviewed. Main includes prior deferred authority-measurement changes absent from assigned base. Current technical diff is limited to qpp1 single-column support; preserve upstream code when root performs the authorized merge. No git merge or conflict resolution was performed in this worker."
+  },
+  "physicalPreview": {
+    "script": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/serve-physical-preview.cjs",
+    "scriptSha256": "DD151DDDF518153D2DC42740A042DA2AD07FB2E730F14849C555DEBA82952102",
+    "command": "node .tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/serve-physical-preview.cjs 41741 --manifest-path=.tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/manifest.json --manifest-sha=931B258A337CD0EE81D5B5D76B8051291672A7A39C91742BB7BF48C4B6266736 --apply-receipt-sha=43261EA494B0C36003550131D2F48A6499B5E06FF98639ED3BE7AEB8C16BC655",
+    "port": 41741,
+    "startupLog": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/preview-physical-v8-41741.stdout.log",
+    "startupLogSha256": "0F0B7A964BC11D8874FC95CA85C5553B603AE5ED1D6846AB1BA8A2C965EEFC32",
+    "indexAfterSha256": "1EA8FF778FA3941B77F3CAE17D6E24422233D2C8C98F8040ABC758BBD9418C5D",
+    "q19ConsumerAfterSha256": "68610896D84CBC495FD5823BD978C7BA5863D1682C8A1B8DD258403E278366EB",
+    "q19PhysicalAssetSha256": "660B6BB1FF28FFD1C0DFE0547CD9435F7653E71C06F30D7878D888732374D4D2",
+    "responseOverlay": false,
+    "sourceConsumerIndexHashValidation": "PASS",
+    "baseVsReviewedQuestionBodyMetaApprovalParity": "PASS",
+    "actualQpp1ChromeReport": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/physical-postapply-v8-qpp1-review/report.json",
+    "actualQpp1ChromeReportSha256": "30AD2508723D9531C9D73FF71B1DCDCCCEADEB6858B43A2F3D2C9083A9BEE111",
+    "actualQpp1ChromeResult": "PASS 10/10 physical routes, CSS font floor, exact asset bytes, student leak/print checks, Q19 safe-top",
+    "actualQpp4Receipt": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/physical-qpp4-regression.json",
+    "actualQpp4ReceiptSha256": "7992AE27E4497AEC222DEF8FD5307F353D01BB054E389455540DCE9E3B27F8F9",
+    "actualQpp4Result": "PASS default two columns/divider preserved",
+    "sourceConsumerIndex": "physical afterSHA pinned to root apply receipt and baseline body/Meta/approval parity passed"
+  },
+  "rootAppliedHashOnlyRebind": {
+    "path": ".tmp/archive/palma-svg-speed-pilot-20261010/root-intake/hash-rebind-apply-receipt.json",
+    "sha256": "B8C4BF4DF5398D75A7D8647F389BAE3F5A52E3B6FA000A429D2E7A37211D648B",
+    "status": "APPLIED_EXACT_HASH_ONLY_REBIND",
+    "indexAfterSha256": "55171B8A19F211674CDEC7809A6A702F231D041CFC88131C518DF89806975C4A",
+    "cutoverAfterSha256": "FF4927A33A3E5A28D4DB995D6F836D0CB256B06627837E32824CF2FD769DDFDA"
+  }
+}

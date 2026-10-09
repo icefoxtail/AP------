@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_12_A1";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q12-A1",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "원의 방정식",
+    "originalCategory": "원의 방정식",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-03",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-C2-03-TANGENT",
+    "subUnit": "원과 접선",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "원의 방정식"
+    ],
+    "wide": false,
+    "content": "좌표평면 위의 원 $x^2+y^2=30$ 밖의 점 $A(6,8)$에서 이 원에 그은 두 접선의 접점을 각각 $P,Q$라 하자. 원의 중심에서 직선 $PQ$까지의 거리는?",
+    "choices": [
+      "$3$",
+      "$5$",
+      "$\\dfrac{15}{4}$",
+      "$10$",
+      "$7$"
+    ],
+    "answer": "①",
+    "solution": "두 접점 중 하나를 $P(u,v)$라고 하면, $P$에서의 접선은 $ux+vy=30$이다. 이 접선이 $A(6,8)$을 지나므로 $6u+8v=30$이다.\n같은 방법으로 $Q$도 $6x+8y=30$을 만족하므로 접점 $P,Q$를 지나는 직선의 방정식은 $6x+8y=30$이다.\n원점에서 이 직선까지의 거리는 $\\dfrac{|{-30}|}{\\sqrt{6^2+8^2}}=\\dfrac{30}{10}=3$이다.\n따라서 정답은 ①이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 12,
+    "slot": "A1",
+    "purposeGroup": "A"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q12-A1");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q12-A1","meta":{"rpmL1":"도형의 방정식","rpmL2":"원의 방정식","rpmL3":"원의 접선","rpmL4":"EXT-H1-C2-03-Q12-CONTACT-CHORD|외부점의 두 접점과 접점의 현","rpmL4Namespace":"GENERATED_EXT_L4","rpmPrimaryRecordId":"H1-RPM-221","rpmAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","generatedL4RegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-l4/registry.json","generatedL4RegistrySha256":"14605d85adb58dfb34e741b81ac39c015e45b0b801986c124d5f8008c73d6299","secondaryConceptKeys":[],"crossConceptKeys":["CC_POINT_LINE_DISTANCE"],"conditionKeys":[],"crossConceptRegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-meta/palma-q12-cross-concepts.json","conditionRegistryRef":null,"sourceKind":"generated","integrationPattern":"SEQUENTIAL","difficultyBucket":3,"level":"중","problemTypeKey":"PT_CIRCLE_TANGENT","templateKey":"TM_TANGENT_CONTACT_CHORD_LINE","standardCourse":"공통수학2","standardUnitKey":"H22-C2-03","subUnitKey":"H22-C2-03-TANGENT"},"metaFinalSha256":"824fb45df604bcb2edd8bcb4ec211867373b84b8c8efe9d613b04a8d43b49927","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q12-A1.json","sha256":"5b3a6f0f463c03376f70d8ca93582ba8341b8549298f5549cfc169592e5d868a","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q09_Q12_36","scopeUids":["ALITE-PALMA25-2MID-Q12-A1"],"uid":"ALITE-PALMA25-2MID-Q12-A1"},"metaReviewEvidenceSha256":"5b3a6f0f463c03376f70d8ca93582ba8341b8549298f5549cfc169592e5d868a","difficultyBucket":3,"level":"중","problemTypeKey":"PT_CIRCLE_TANGENT","templateKey":"TM_TANGENT_CONTACT_CHORD_LINE","secondaryConceptKeys":[],"crossConceptKeys":["CC_POINT_LINE_DISTANCE"],"conditionKeys":[],"integrationPattern":"SEQUENTIAL"});})();

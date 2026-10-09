@@ -36,7 +36,11 @@ window.questionBank = [
     "sourceKind": "generated",
     "sourceQid": 6,
     "slot": "A1",
-    "purposeGroup": "A"
+    "purposeGroup": "A",
+    "solutionImage": "assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q06-A1-solution.svg",
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "중심 O와 반지름 √13인 원, 두 접선 및 중심을 지나는 절선.",
+    "solutionImageCaption": "접선 경계와 포함되는 절선의 경우를 비교한다."
   }
 ];
 

@@ -1,0 +1,460 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "343e7f6f3a72bc83ac09d9127005089cd545419d8064003183e3de507096c5e5",
+  "solutionSha256": "548c5c1e1409974a8e274c20092680d4d3913f91079ef2937a4dbc6dab692939",
+  "coordinateModel": {
+    "originX": 94.5,
+    "originY": 431.0,
+    "sx": 57.0,
+    "sy": 57.0
+  },
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "A rigid translation and rotation align two existing mathematically meaningful points with the normalized origin and positive x-axis; unit scale is preserved, and every transformed point is explicitly listed. No helper points are added to the student visual.",
+    "normalization": {
+      "originPoint": "A",
+      "xAxisPoint": "B",
+      "unitScale": 3.0
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "A": [
+        0.0,
+        0.0
+      ],
+      "B": [
+        3.0,
+        0.0
+      ],
+      "C": [
+        0.0,
+        6.0
+      ],
+      "H": [
+        2.0,
+        2.0
+      ],
+      "G": [
+        1.0,
+        2.0
+      ],
+      "M": [
+        1.5,
+        3.0
+      ]
+    },
+    "conditions": [
+      {
+        "id": "normalizationAxis",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 3.0,
+        "tolerance": 1e-09
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct_A",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "A",
+        "inputs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "construct_B",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "B",
+        "inputs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "construct_C",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "C",
+        "inputs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "construct_H",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "H",
+        "inputs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "construct_G",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "G",
+        "inputs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "construct_M",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "M",
+        "inputs": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "normalizationAxis",
+        "residual": 0,
+        "tolerance": 1e-09
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct_A_B",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "observed": 3.0,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_A_C",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "observed": 6.0,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_A_H",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "H"
+        ],
+        "observed": 2.8284271247461903,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_A_G",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "G"
+        ],
+        "observed": 2.23606797749979,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_A_M",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "M"
+        ],
+        "observed": 3.3541019662496847,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_B_C",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "observed": 6.708203932499369,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_B_H",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "B",
+          "H"
+        ],
+        "observed": 2.23606797749979,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_B_G",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "B",
+          "G"
+        ],
+        "observed": 2.8284271247461903,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_B_M",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "B",
+          "M"
+        ],
+        "observed": 3.3541019662496847,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_C_H",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "C",
+          "H"
+        ],
+        "observed": 4.47213595499958,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_C_G",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "C",
+          "G"
+        ],
+        "observed": 4.123105625617661,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_C_M",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "C",
+          "M"
+        ],
+        "observed": 3.3541019662496847,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_H_G",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "H",
+          "G"
+        ],
+        "observed": 1.0,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_H_M",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "H",
+          "M"
+        ],
+        "observed": 1.118033988749895,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_G_M",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "G",
+          "M"
+        ],
+        "observed": 1.118033988749895,
+        "minimum": 1e-09
+      }
+    ]
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "A",
+      "labelPlacement": "LEADER_CALLOUT",
+      "labelAt": [
+        -0.55,
+        -0.45
+      ]
+    },
+    {
+      "id": "B",
+      "at": [
+        3.0,
+        0.0
+      ],
+      "name": "B",
+      "labelPlacement": "LEADER_CALLOUT",
+      "labelAt": [
+        3.5,
+        -0.45
+      ]
+    },
+    {
+      "id": "C",
+      "at": [
+        0.0,
+        6.0
+      ],
+      "name": "C",
+      "labelPlacement": "LEADER_CALLOUT",
+      "labelAt": [
+        -0.55,
+        6.5
+      ]
+    },
+    {
+      "id": "H",
+      "at": [
+        2.0,
+        2.0
+      ],
+      "name": "H",
+      "labelPlacement": "LEADER_CALLOUT",
+      "labelAt": [
+        2.35,
+        2.25
+      ]
+    },
+    {
+      "id": "G",
+      "at": [
+        1.0,
+        2.0
+      ],
+      "name": "G",
+      "labelPlacement": "LEADER_CALLOUT",
+      "labelAt": [
+        0.35,
+        2.2
+      ]
+    },
+    {
+      "id": "M",
+      "at": [
+        1.5,
+        3.0
+      ],
+      "name": "M",
+      "labelPlacement": "LEADER_CALLOUT",
+      "labelAt": [
+        1.8,
+        3.3
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "points": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AH",
+      "points": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "AM",
+      "points": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "BH",
+      "points": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "HC",
+      "points": [
+        "H",
+        "C"
+      ]
+    },
+    {
+      "id": "GH",
+      "points": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "GC",
+      "points": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "AG",
+      "points": [
+        "A",
+        "G"
+      ]
+    },
+    {
+      "id": "GM",
+      "points": [
+        "G",
+        "M"
+      ]
+    }
+  ],
+  "circles": [],
+  "arcs": [],
+  "incidences": [],
+  "lines": [],
+  "angles": [],
+  "lengths": [],
+  "regions": [
+    {
+      "id": "GHCarea",
+      "points": [
+        "G",
+        "H",
+        "C"
+      ],
+      "value": 2,
+      "text": "2",
+      "factRole": "CONCLUSION"
+    }
+  ],
+  "otherLabels": [
+    {
+      "id": "ratioFacts",
+      "text": "BH:HC=1:2AG:GM=2:1",
+      "powers": [],
+      "conditionBoxFor": []
+    }
+  ]
+}

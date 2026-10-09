@@ -1,0 +1,574 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "dbd3fe9c43367dc862c8de55598844291df1ff470e14eda0cf024c48b3d95f53",
+  "solutionSha256": "7052e07686c7bc82fb8b9907bcb4d0560d5a260bd99b99da33a47098e6fdcd6a",
+  "coordinateModel": {
+    "originX": 53.45454545454545,
+    "originY": 356.5454545454545,
+    "sx": 21.454545454545453,
+    "sy": 21.454545454545453
+  },
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "A rigid translation and rotation align two existing mathematically meaningful points with the normalized origin and positive x-axis; unit scale is preserved, and every transformed point is explicitly listed. No helper points are added to the student visual.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "A",
+      "unitScale": 9.0
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "O": [
+        0.0,
+        0.0
+      ],
+      "A": [
+        9.0,
+        0.0
+      ],
+      "B": [
+        3.0,
+        9.0
+      ],
+      "C": [
+        6.0,
+        0.0
+      ],
+      "D": [
+        5.0,
+        6.0
+      ],
+      "E": [
+        1.0,
+        3.0
+      ],
+      "G": [
+        4.0,
+        3.0
+      ]
+    },
+    "conditions": [
+      {
+        "id": "normalizationAxis",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "expected": 9.0,
+        "tolerance": 1e-09
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct_O",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "O",
+        "inputs": [
+          "O",
+          "A"
+        ]
+      },
+      {
+        "id": "construct_A",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "A",
+        "inputs": [
+          "O",
+          "A"
+        ]
+      },
+      {
+        "id": "construct_B",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "B",
+        "inputs": [
+          "O",
+          "A"
+        ]
+      },
+      {
+        "id": "construct_C",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "C",
+        "inputs": [
+          "O",
+          "A"
+        ]
+      },
+      {
+        "id": "construct_D",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "D",
+        "inputs": [
+          "O",
+          "A"
+        ]
+      },
+      {
+        "id": "construct_E",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "E",
+        "inputs": [
+          "O",
+          "A"
+        ]
+      },
+      {
+        "id": "construct_G",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "G",
+        "inputs": [
+          "O",
+          "A"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "normalizationAxis",
+        "residual": 0,
+        "tolerance": 1e-09
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct_O_A",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "observed": 9.0,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_O_B",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "observed": 9.486832980505138,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_O_C",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "C"
+        ],
+        "observed": 6.0,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_O_D",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "D"
+        ],
+        "observed": 7.810249675906654,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_O_E",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "E"
+        ],
+        "observed": 3.1622776601683795,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_O_G",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "G"
+        ],
+        "observed": 5.0,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_A_B",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "observed": 10.816653826391969,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_A_C",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "observed": 3.0,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_A_D",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "D"
+        ],
+        "observed": 7.211102550927978,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_A_E",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "E"
+        ],
+        "observed": 8.54400374531753,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_A_G",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "G"
+        ],
+        "observed": 5.830951894845301,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_B_C",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "observed": 9.486832980505138,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_B_D",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "B",
+          "D"
+        ],
+        "observed": 3.605551275463989,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_B_E",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "B",
+          "E"
+        ],
+        "observed": 6.324555320336759,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_B_G",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "B",
+          "G"
+        ],
+        "observed": 6.082762530298219,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_C_D",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "C",
+          "D"
+        ],
+        "observed": 6.082762530298219,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_C_E",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "C",
+          "E"
+        ],
+        "observed": 5.830951894845301,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_C_G",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "C",
+          "G"
+        ],
+        "observed": 3.605551275463989,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_D_E",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "D",
+          "E"
+        ],
+        "observed": 5.0,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_D_G",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "D",
+          "G"
+        ],
+        "observed": 3.1622776601683795,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_E_G",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "E",
+          "G"
+        ],
+        "observed": 3.0,
+        "minimum": 1e-09
+      }
+    ]
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "at": [
+        9.0,
+        0.0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        3.0,
+        9.0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        6.0,
+        0.0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "D",
+      "at": [
+        5.0,
+        6.0
+      ],
+      "name": "D"
+    },
+    {
+      "id": "E",
+      "at": [
+        1.0,
+        3.0
+      ],
+      "name": "E"
+    },
+    {
+      "id": "G",
+      "at": [
+        4.0,
+        3.0
+      ],
+      "name": "G"
+    }
+  ],
+  "segments": [
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BO",
+      "points": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "CD",
+      "points": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "points": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EC",
+      "points": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "OC",
+      "points": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "points": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "points": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DB",
+      "points": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "BE",
+      "points": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "EO",
+      "points": [
+        "E",
+        "O"
+      ]
+    }
+  ],
+  "circles": [],
+  "arcs": [],
+  "incidences": [],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "OC_len",
+      "segment": "OC",
+      "value": 6,
+      "mode": "ADJACENT",
+      "text": "6",
+      "factRole": "GIVEN",
+      "labelPlacement": "CONDITION_BOX",
+      "conditionBoxId": "ratioFacts"
+    },
+    {
+      "id": "CA_len",
+      "segment": "CA",
+      "value": 3,
+      "mode": "ADJACENT",
+      "text": "3",
+      "factRole": "GIVEN",
+      "labelPlacement": "CONDITION_BOX",
+      "conditionBoxId": "ratioFacts"
+    },
+    {
+      "id": "AD_len",
+      "segment": "AD",
+      "value": 7.211102550927978,
+      "mode": "ADJACENT",
+      "text": "2·√(13)",
+      "factRole": "GIVEN",
+      "labelPlacement": "CONDITION_BOX",
+      "conditionBoxId": "ratioFacts"
+    },
+    {
+      "id": "DB_len",
+      "segment": "DB",
+      "value": 3.605551275463989,
+      "mode": "ADJACENT",
+      "text": "√(13)",
+      "factRole": "GIVEN",
+      "labelPlacement": "CONDITION_BOX",
+      "conditionBoxId": "ratioFacts"
+    },
+    {
+      "id": "BE_len",
+      "segment": "BE",
+      "value": 6.324555320336759,
+      "mode": "ADJACENT",
+      "text": "2·√(10)",
+      "factRole": "GIVEN",
+      "labelPlacement": "CONDITION_BOX",
+      "conditionBoxId": "ratioFacts"
+    },
+    {
+      "id": "EO_len",
+      "segment": "EO",
+      "value": 3.1622776601683795,
+      "mode": "ADJACENT",
+      "text": "√(10)",
+      "factRole": "GIVEN",
+      "labelPlacement": "CONDITION_BOX",
+      "conditionBoxId": "ratioFacts"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "ratioFacts",
+      "text": "OC: 6, CA: 3OC:CA=2:1AD: 2·√(13), DB: √(13)AD:DB=2:1BE: 2·√(10), EO: √(10)BE:EO=2:1",
+      "powers": [],
+      "conditionBoxFor": [
+        "OC_len",
+        "CA_len",
+        "AD_len",
+        "DB_len",
+        "BE_len",
+        "EO_len"
+      ]
+    }
+  ]
+}

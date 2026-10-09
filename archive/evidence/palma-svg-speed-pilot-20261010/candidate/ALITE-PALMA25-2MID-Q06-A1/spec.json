@@ -1,0 +1,244 @@
+{
+  "id": "ALITE-PALMA25-2MID-Q06-A1",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -7.488452649040594,
+    "xMax": 7.488452649040594,
+    "yMin": -7.7658027471532085,
+    "yMax": 7.7658027471532085,
+    "width": 500,
+    "height": 420,
+    "panel": 0
+  },
+  "axes": false,
+  "title": "원과 직선의 접하는 경계",
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "A rigid translation and rotation align two existing mathematically meaningful points with the normalized origin and positive x-axis; unit scale is preserved, and every transformed point is explicitly listed. No helper points are added to the student visual.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "Tplus",
+        "unitScale": 3.605551275463989
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "O": [
+          0.0,
+          -0.0
+        ],
+        "Tplus": [
+          3.6055512754639896,
+          0.0
+        ],
+        "Tminus": [
+          -3.6055512754639896,
+          0.0
+        ]
+      },
+      "conditions": [
+        {
+          "id": "normalizationAxis",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "Tplus"
+          ],
+          "expected": 3.605551275463989,
+          "tolerance": 1e-09
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct_O",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "O",
+          "inputs": [
+            "O",
+            "Tplus"
+          ]
+        },
+        {
+          "id": "construct_Tplus",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "Tplus",
+          "inputs": [
+            "O",
+            "Tplus"
+          ]
+        },
+        {
+          "id": "construct_Tminus",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "Tminus",
+          "inputs": [
+            "O",
+            "Tplus"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "normalizationAxis",
+          "residual": 0,
+          "tolerance": 1e-09
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct_O_Tplus",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "Tplus"
+          ],
+          "observed": 3.6055512754639896,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_O_Tminus",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "Tminus"
+          ],
+          "observed": 3.6055512754639896,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_Tplus_Tminus",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "Tplus",
+            "Tminus"
+          ],
+          "observed": 7.211102550927979,
+          "minimum": 1e-09
+        }
+      ]
+    },
+    "questionUid": "ALITE-PALMA25-2MID-Q06-A1",
+    "sourceToVisualFrame": {
+      "origin": [
+        0,
+        0
+      ],
+      "ex": [
+        -0.5547001962252291,
+        0.8320502943378437
+      ],
+      "ey": [
+        -0.8320502943378437,
+        -0.5547001962252291
+      ]
+    }
+  },
+  "derivedFacts": {
+    "answerCheck": "distance=|k|/sqrt(13); |k|<=13; integer k count=27",
+    "coordinateFrame": [
+      "O",
+      "Tplus"
+    ]
+  },
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0.0,
+        -0.0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "Tplus",
+      "kind": "POINT",
+      "at": [
+        3.6055512754639896,
+        0.0
+      ],
+      "name": "T₊"
+    },
+    {
+      "id": "Tminus",
+      "kind": "POINT",
+      "at": [
+        -3.6055512754639896,
+        0.0
+      ],
+      "name": "T₋"
+    },
+    {
+      "id": "C",
+      "kind": "CIRCLE",
+      "center": [
+        0.0,
+        -0.0
+      ],
+      "radius": 3.605551275463989
+    },
+    {
+      "id": "Kplus",
+      "kind": "LINE",
+      "coefficients": [
+        -3.6055512754639896,
+        0.0,
+        13
+      ]
+    },
+    {
+      "id": "Kminus",
+      "kind": "LINE",
+      "coefficients": [
+        -3.6055512754639896,
+        0.0,
+        -13
+      ]
+    },
+    {
+      "id": "K0",
+      "kind": "AUXILIARY_LINE",
+      "coefficients": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "TangPlus",
+      "kind": "TANGENT",
+      "refs": [
+        "Kplus",
+        "C"
+      ],
+      "at": [
+        3.6055512754639896,
+        0.0
+      ]
+    },
+    {
+      "id": "TangMinus",
+      "kind": "TANGENT",
+      "refs": [
+        "Kminus",
+        "C"
+      ],
+      "at": [
+        -3.6055512754639896,
+        0.0
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "O": "O",
+      "Tplus": "T₊",
+      "Tminus": "T₋"
+    },
+    "segmentPointRefs": {},
+    "annotations": []
+  }
+}

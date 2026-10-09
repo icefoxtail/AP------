@@ -1,0 +1,142 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "eafd8de0ba37dac4144a0e259554ef4aeee66fe5cf4b16d975277711ef93572d",
+  "solutionSha256": "31124d9b656e0fb59e008d230c083c905abbf9bd5fa55480e93d113b7525f662",
+  "coordinateModel": {
+    "originX": 180.2,
+    "originY": 180.0,
+    "sx": 29.6,
+    "sy": 29.6
+  },
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "A rigid translation and rotation align two existing mathematically meaningful points with the normalized origin and positive x-axis; unit scale is preserved, and every transformed point is explicitly listed. No helper points are added to the student visual.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "T",
+      "unitScale": 4.0
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "O": [
+        0.0,
+        0.0
+      ],
+      "T": [
+        4.0,
+        0.0
+      ]
+    },
+    "conditions": [
+      {
+        "id": "normalizationAxis",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "T"
+        ],
+        "expected": 4.0,
+        "tolerance": 1e-09
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct_O",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "O",
+        "inputs": [
+          "O",
+          "T"
+        ]
+      },
+      {
+        "id": "construct_T",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "T",
+        "inputs": [
+          "O",
+          "T"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "normalizationAxis",
+        "residual": 0,
+        "tolerance": 1e-09
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct_O_T",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "T"
+        ],
+        "observed": 4.0,
+        "minimum": 1e-09
+      }
+    ]
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "T",
+      "at": [
+        4.0,
+        0.0
+      ],
+      "name": "T"
+    }
+  ],
+  "segments": [
+    {
+      "id": "radius",
+      "points": [
+        "O",
+        "T"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "C",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "radius": 4
+    }
+  ],
+  "arcs": [],
+  "incidences": [
+    {
+      "id": "T_on_C",
+      "point": "T",
+      "circle": "C"
+    }
+  ],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "radiusValue",
+      "segment": "radius",
+      "value": 4,
+      "mode": "ADJACENT",
+      "text": "4",
+      "factRole": "GIVEN",
+      "labelPlacement": "OWNER_SEGMENT"
+    }
+  ],
+  "regions": [],
+  "otherLabels": []
+}

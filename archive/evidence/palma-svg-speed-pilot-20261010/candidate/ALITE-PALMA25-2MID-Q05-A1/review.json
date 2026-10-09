@@ -1,0 +1,226 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "ead16d17e1fc410a4f0e8d7b81e481fda911c08e06cf7bab5c58d538249204af",
+  "solutionSha256": "ab2f56b37c544ce014e56e00ba170de4c6c60031433dccb1d87543c42fb26815",
+  "coordinateModel": {
+    "originX": 138.58333333333331,
+    "originY": 274.83333333333337,
+    "sx": 28.243484991134586,
+    "sy": 28.243484991134586
+  },
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "A rigid translation and rotation align two existing mathematically meaningful points with the normalized origin and positive x-axis; unit scale is preserved, and every transformed point is explicitly listed. No helper points are added to the student visual.",
+    "normalization": {
+      "originPoint": "A",
+      "xAxisPoint": "B",
+      "unitScale": 7.211102550927978
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "A": [
+        0.0,
+        0.0
+      ],
+      "B": [
+        7.211102550927979,
+        0.0
+      ],
+      "M": [
+        3.6055512754639896,
+        0.0
+      ],
+      "X": [
+        3.6055512754639896,
+        7.211102550927979
+      ]
+    },
+    "conditions": [
+      {
+        "id": "normalizationAxis",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 7.211102550927978,
+        "tolerance": 1e-09
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct_A",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "A",
+        "inputs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "construct_B",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "B",
+        "inputs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "construct_M",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "M",
+        "inputs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "construct_X",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "X",
+        "inputs": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "normalizationAxis",
+        "residual": 0,
+        "tolerance": 1e-09
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct_A_B",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "observed": 7.211102550927979,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_A_M",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "M"
+        ],
+        "observed": 3.6055512754639896,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_A_X",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "X"
+        ],
+        "observed": 8.062257748298551,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_B_M",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "B",
+          "M"
+        ],
+        "observed": 3.6055512754639896,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_B_X",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "B",
+          "X"
+        ],
+        "observed": 8.062257748298551,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_M_X",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "M",
+          "X"
+        ],
+        "observed": 7.211102550927979,
+        "minimum": 1e-09
+      }
+    ]
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        7.211102550927979,
+        0.0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "M",
+      "at": [
+        3.6055512754639896,
+        0.0
+      ],
+      "name": "M"
+    },
+    {
+      "id": "X",
+      "at": [
+        3.6055512754639896,
+        7.211102550927979
+      ],
+      "name": "X"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "circles": [],
+  "arcs": [],
+  "incidences": [],
+  "lines": [
+    {
+      "id": "L_AB",
+      "coefficients": [
+        0.0,
+        3.6055512754639896,
+        0
+      ]
+    },
+    {
+      "id": "L_BIS",
+      "coefficients": [
+        3.6055512754639896,
+        0.0,
+        -13
+      ]
+    }
+  ],
+  "angles": [],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": []
+}

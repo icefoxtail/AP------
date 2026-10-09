@@ -1,0 +1,38 @@
+{
+  "chunkCount": 23,
+  "chunks": [
+    {
+      "i": 5,
+      "chunk": "<span>$$(x+2)^2+m^2x^2=4</span>",
+      "unrendered": 0,
+      "errors": [],
+      "mjx": 0,
+      "caught": null
+    },
+    {
+      "i": 7,
+      "chunk": "<span>\\Longleftrightarrow x\\bigl((1+m^2)x+4\\bigr)=0.$$</span>",
+      "unrendered": 0,
+      "errors": [],
+      "mjx": 0,
+      "caught": null
+    },
+    {
+      "i": 14,
+      "chunk": "<span>$$(x-2)^2+m^2x^2=4</span>",
+      "unrendered": 0,
+      "errors": [],
+      "mjx": 0,
+      "caught": null
+    },
+    {
+      "i": 16,
+      "chunk": "<span>\\Longleftrightarrow x\\bigl((1+m^2)x-4\\bigr)=0.$$</span>",
+      "unrendered": 0,
+      "errors": [],
+      "mjx": 0,
+      "caught": null
+    }
+  ],
+  "fullHtml": "$C_0$와 $y=mx$의 교점은 $x^2(1+m^2)=16$을 만족하므로 항상 서로 다른 두 점이다.<br><br>$C_1$에 대입하면<br>$$(x+2)^2+m^2x^2=4<br>\\Longleftrightarrow x\\bigl((1+m^2)x+4\\bigr)=0.$$<br>교점 후보는 $O=(0,0)$와 $\\left(-4/(1+m^2),-4m/(1+m^2)\\right)$이다. 두 번째 점은 $m\\ge0$일 때 $C_1$의 아래쪽 반원에 속한다.<br><br>$C_2$에 대입하면<br>$$(x-2)^2+m^2x^2=4<br>\\Longleftrightarrow x\\bigl((1+m^2)x-4\\bigr)=0.$$<br>교점 후보는 $O$와 $\\left(4/(1+m^2),4m/(1+m^2)\\right)$이다. 두 번째 점은 $m\\ge0$일 때 $C_2$의 위쪽 반원에 속한다.<br><br>$m&gt;0$이면 두 반원에서 원점이 아닌 교점이 하나씩 더 생긴다. 이 두 점은 $C_0$ 위의 교점과 다르다. 실제로 각각 원점으로부터의 거리는 $4/\\sqrt{1+m^2}&lt;4$이고, $C_0$ 위의 점은 원점에서 거리가 $4$이기 때문이다. 두 반원의 공통 교점 $O$는 한 번만 세므로 서로 다른 교점은 $2+1+1+1=5$개다. $m&lt;0$이면 각 반원에서 원점이 아닌 후보가 지정된 반원에 속하지 않아 $O$만 남으므로 전체는 세 점이다. $m=0$에서는 반원의 끝점 $(-4,0),(4,0)$가 각각 $C_0$의 교점과 겹치고 두 반원의 공통점은 $O$이므로 역시 세 점이다. 따라서 다섯 점이 되는 범위는 $m&gt;0$이다. 정답은 ③이다."
+}

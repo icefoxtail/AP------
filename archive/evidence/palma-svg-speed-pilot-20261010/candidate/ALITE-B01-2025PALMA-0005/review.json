@@ -1,0 +1,689 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "877cbf3caccda6b7735e0748f64607d5431468ef25c45ca7328c4e93cabe82d8",
+  "solutionSha256": "65bbd5288d89944cfb7178203347bfd6d0c39ef19bb0c6d7332abe779622e22b",
+  "coordinateModel": {
+    "originX": 280.0,
+    "originY": 325.0,
+    "sx": 49.6,
+    "sy": 49.6
+  },
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "A rigid translation and rotation align two existing mathematically meaningful points with the normalized origin and positive x-axis; unit scale is preserved, and every transformed point is explicitly listed. No helper points are added to the student visual.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "Eright",
+      "unitScale": 4.0
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "O": [
+        0.0,
+        0.0
+      ],
+      "OuterP": [
+        3.5777087639996634,
+        1.7888543819998317
+      ],
+      "OuterN": [
+        -3.5777087639996634,
+        -1.7888543819998317
+      ],
+      "Extra1": [
+        -3.2,
+        -1.6
+      ],
+      "Extra2": [
+        3.2,
+        1.6
+      ],
+      "C1C": [
+        -2.0,
+        0.0
+      ],
+      "C2C": [
+        2.0,
+        0.0
+      ],
+      "Eleft": [
+        -4.0,
+        0.0
+      ],
+      "Eright": [
+        4.0,
+        0.0
+      ]
+    },
+    "conditions": [
+      {
+        "id": "normalizationAxis",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "Eright"
+        ],
+        "expected": 4.0,
+        "tolerance": 1e-09
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct_O",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "O",
+        "inputs": [
+          "O",
+          "Eright"
+        ]
+      },
+      {
+        "id": "construct_OuterP",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "OuterP",
+        "inputs": [
+          "O",
+          "Eright"
+        ]
+      },
+      {
+        "id": "construct_OuterN",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "OuterN",
+        "inputs": [
+          "O",
+          "Eright"
+        ]
+      },
+      {
+        "id": "construct_Extra1",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "Extra1",
+        "inputs": [
+          "O",
+          "Eright"
+        ]
+      },
+      {
+        "id": "construct_Extra2",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "Extra2",
+        "inputs": [
+          "O",
+          "Eright"
+        ]
+      },
+      {
+        "id": "construct_C1C",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "C1C",
+        "inputs": [
+          "O",
+          "Eright"
+        ]
+      },
+      {
+        "id": "construct_C2C",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "C2C",
+        "inputs": [
+          "O",
+          "Eright"
+        ]
+      },
+      {
+        "id": "construct_Eleft",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "Eleft",
+        "inputs": [
+          "O",
+          "Eright"
+        ]
+      },
+      {
+        "id": "construct_Eright",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "Eright",
+        "inputs": [
+          "O",
+          "Eright"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "normalizationAxis",
+        "residual": 0,
+        "tolerance": 1e-09
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct_O_OuterP",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "OuterP"
+        ],
+        "observed": 4.0,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_O_OuterN",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "OuterN"
+        ],
+        "observed": 4.0,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_O_Extra1",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "Extra1"
+        ],
+        "observed": 3.577708763999664,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_O_Extra2",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "Extra2"
+        ],
+        "observed": 3.577708763999664,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_O_C1C",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "C1C"
+        ],
+        "observed": 2.0,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_O_C2C",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "C2C"
+        ],
+        "observed": 2.0,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_O_Eleft",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "Eleft"
+        ],
+        "observed": 4.0,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_O_Eright",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "Eright"
+        ],
+        "observed": 4.0,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_OuterP_OuterN",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "OuterP",
+          "OuterN"
+        ],
+        "observed": 8.0,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_OuterP_Extra1",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "OuterP",
+          "Extra1"
+        ],
+        "observed": 7.577708763999664,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_OuterP_Extra2",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "OuterP",
+          "Extra2"
+        ],
+        "observed": 0.4222912360003362,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_OuterP_C1C",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "OuterP",
+          "C1C"
+        ],
+        "observed": 5.8575451390491775,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_OuterP_C2C",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "OuterP",
+          "C2C"
+        ],
+        "observed": 2.385197045109973,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_OuterP_Eleft",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "OuterP",
+          "Eleft"
+        ],
+        "observed": 7.785991915741841,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_OuterP_Eright",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "OuterP",
+          "Eright"
+        ],
+        "observed": 1.8380233643788895,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_OuterN_Extra1",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "OuterN",
+          "Extra1"
+        ],
+        "observed": 0.4222912360003362,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_OuterN_Extra2",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "OuterN",
+          "Extra2"
+        ],
+        "observed": 7.577708763999664,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_OuterN_C1C",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "OuterN",
+          "C1C"
+        ],
+        "observed": 2.385197045109973,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_OuterN_C2C",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "OuterN",
+          "C2C"
+        ],
+        "observed": 5.8575451390491775,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_OuterN_Eleft",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "OuterN",
+          "Eleft"
+        ],
+        "observed": 1.8380233643788895,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_OuterN_Eright",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "OuterN",
+          "Eright"
+        ],
+        "observed": 7.785991915741841,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_Extra1_Extra2",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "Extra1",
+          "Extra2"
+        ],
+        "observed": 7.155417527999328,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_Extra1_C1C",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "Extra1",
+          "C1C"
+        ],
+        "observed": 2.0,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_Extra1_C2C",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "Extra1",
+          "C2C"
+        ],
+        "observed": 5.440588203494178,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_Extra1_Eleft",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "Extra1",
+          "Eleft"
+        ],
+        "observed": 1.7888543819998317,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_Extra1_Eright",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "Extra1",
+          "Eright"
+        ],
+        "observed": 7.37563556583431,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_Extra2_C1C",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "Extra2",
+          "C1C"
+        ],
+        "observed": 5.440588203494178,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_Extra2_C2C",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "Extra2",
+          "C2C"
+        ],
+        "observed": 2.0,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_Extra2_Eleft",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "Extra2",
+          "Eleft"
+        ],
+        "observed": 7.37563556583431,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_Extra2_Eright",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "Extra2",
+          "Eright"
+        ],
+        "observed": 1.7888543819998317,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_C1C_C2C",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "C1C",
+          "C2C"
+        ],
+        "observed": 4.0,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_C1C_Eleft",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "C1C",
+          "Eleft"
+        ],
+        "observed": 2.0,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_C1C_Eright",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "C1C",
+          "Eright"
+        ],
+        "observed": 6.0,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_C2C_Eleft",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "C2C",
+          "Eleft"
+        ],
+        "observed": 6.0,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_C2C_Eright",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "C2C",
+          "Eright"
+        ],
+        "observed": 2.0,
+        "minimum": 1e-09
+      },
+      {
+        "id": "distinct_Eleft_Eright",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "Eleft",
+          "Eright"
+        ],
+        "observed": 8.0,
+        "minimum": 1e-09
+      }
+    ]
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "OuterP",
+      "at": [
+        3.5777087639996634,
+        1.7888543819998317
+      ],
+      "name": "P",
+      "labelAt": [
+        3.6,
+        2.27
+      ]
+    },
+    {
+      "id": "OuterN",
+      "at": [
+        -3.5777087639996634,
+        -1.7888543819998317
+      ],
+      "name": "Q",
+      "labelAt": [
+        -3.84,
+        -2.5
+      ]
+    },
+    {
+      "id": "Extra1",
+      "at": [
+        -3.2,
+        -1.6
+      ],
+      "name": "R"
+    },
+    {
+      "id": "Extra2",
+      "at": [
+        3.2,
+        1.6
+      ],
+      "name": "S"
+    },
+    {
+      "id": "C1C",
+      "at": [
+        -2.0,
+        0.0
+      ],
+      "name": null
+    },
+    {
+      "id": "C2C",
+      "at": [
+        2.0,
+        0.0
+      ],
+      "name": null
+    },
+    {
+      "id": "Eleft",
+      "at": [
+        -4.0,
+        0.0
+      ],
+      "name": null
+    },
+    {
+      "id": "Eright",
+      "at": [
+        4.0,
+        0.0
+      ],
+      "name": null
+    }
+  ],
+  "segments": [],
+  "circles": [
+    {
+      "id": "C0",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "radius": 4
+    }
+  ],
+  "arcs": [
+    {
+      "id": "arc1",
+      "center": "C1C",
+      "radius": 2.0,
+      "startPoint": "Eleft",
+      "endPoint": "O",
+      "sweep": "CCW",
+      "degrees": 180.0
+    },
+    {
+      "id": "arc2",
+      "center": "C2C",
+      "radius": 2.0,
+      "startPoint": "O",
+      "endPoint": "Eright",
+      "sweep": "CW",
+      "degrees": 180.0
+    }
+  ],
+  "incidences": [
+    {
+      "id": "OuterP_on_C0",
+      "point": "OuterP",
+      "circle": "C0"
+    },
+    {
+      "id": "OuterN_on_C0",
+      "point": "OuterN",
+      "circle": "C0"
+    }
+  ],
+  "lines": [
+    {
+      "id": "L05",
+      "coefficients": [
+        1.0,
+        -2.0,
+        0
+      ]
+    }
+  ],
+  "angles": [],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "caseCount",
+      "text": "교점 개수 예: m=1/2m < 0 : 3m = 0 : 3m > 0 : 5O 공통, 1회",
+      "powers": [],
+      "conditionBoxFor": []
+    },
+    {
+      "id": "arc1-label",
+      "text": "C_1",
+      "powers": []
+    },
+    {
+      "id": "arc2-label",
+      "text": "C_2",
+      "powers": []
+    },
+    {
+      "id": "L05-equation",
+      "text": "ℓ_m: y=mx",
+      "powers": []
+    },
+    {
+      "id": "C0-label",
+      "text": "C_0",
+      "powers": []
+    }
+  ]
+}

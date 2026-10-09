@@ -183,6 +183,10 @@ window.questionBank = [
         "rpmBinding": "Direct RPM crosswalk binding gap retained as evidence; no false ACTIVE claim"
       }
     },
-    "metaFinalSha256": "44e39008e278d9bf7385f451d97e40623799a1c2397f8b39217e3cdd83580364"
+    "metaFinalSha256": "44e39008e278d9bf7385f451d97e40623799a1c2397f8b39217e3cdd83580364",
+    "solutionImage": "assets/generated-lite/palma-speed-pilot/B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY-solution.svg",
+    "solutionImageSize": "large",
+    "solutionImageAlt": "삼각형 ABC와 H, G, M 및 BH:HC, AG:GM, 영역 GHC.",
+    "solutionImageCaption": "두 길이비와 GHC 영역의 넓이 관계를 확인한다."
   }
 ];

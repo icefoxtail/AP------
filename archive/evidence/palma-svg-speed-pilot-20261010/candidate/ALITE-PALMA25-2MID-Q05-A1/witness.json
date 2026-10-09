@@ -1,0 +1,236 @@
+{
+  "engineVersion": "geometry-visual-v1",
+  "authority": "BUILD_SIDE_ONLY",
+  "publicationAuthorized": false,
+  "classification": "STANDARD",
+  "visualSpecSha256": "6b06f0f800e016aa2e1598d25fe0a319fa28d3a85c06700f9d376b34866addf3",
+  "normalizedSvgSha256": "4525501d985730a059c222cb2b68c6f415dbd494fda36edb8b439454cafd2f35",
+  "texSha256": "84db17bf8f14154b7fb0a19749fd8464b6fc3ee033639e4f1c689a4d2ed2199a",
+  "coordinateModel": {
+    "originX": 138.58333333333331,
+    "originY": 274.83333333333337,
+    "sx": 28.243484991134586,
+    "sy": 28.243484991134586,
+    "aspectPolicy": "EQUAL_UNIT"
+  },
+  "relations": [
+    {
+      "id": "isPerpendicular",
+      "kind": "PERPENDICULAR",
+      "status": "PASS",
+      "observed": null
+    }
+  ],
+  "layout": {
+    "labels": [
+      {
+        "id": "A-name",
+        "kind": "POINT_NAME",
+        "target": "A",
+        "text": "A",
+        "at": [
+          138.58333333333331,
+          274.83333333333337
+        ],
+        "font": 16.0,
+        "priority": 1,
+        "allowSuppress": false,
+        "owner": "A",
+        "sourceLabel": "A",
+        "allowPanel": false,
+        "gaps": [
+          10,
+          16,
+          24
+        ],
+        "directions": [
+          "W",
+          "SW",
+          "NW",
+          "N",
+          "S",
+          "NE",
+          "SE",
+          "E"
+        ],
+        "box": {
+          "x": 118.02333333333331,
+          "y": 284.83333333333337,
+          "width": 10.56,
+          "height": 24.0
+        },
+        "baseline": [
+          118.02333333333331,
+          304.03333333333336
+        ],
+        "placement": "COORDINATE_RELOCATION_SW"
+      },
+      {
+        "id": "B-name",
+        "kind": "POINT_NAME",
+        "target": "B",
+        "text": "B",
+        "at": [
+          342.25000000000006,
+          274.83333333333337
+        ],
+        "font": 16.0,
+        "priority": 1,
+        "allowSuppress": false,
+        "owner": "B",
+        "sourceLabel": "B",
+        "allowPanel": false,
+        "gaps": [
+          10,
+          16,
+          24
+        ],
+        "directions": [
+          "E",
+          "NE",
+          "SE",
+          "N",
+          "S",
+          "SW",
+          "NW",
+          "W"
+        ],
+        "box": {
+          "x": 352.25000000000006,
+          "y": 240.83333333333337,
+          "width": 10.56,
+          "height": 24.0
+        },
+        "baseline": [
+          352.25000000000006,
+          260.03333333333336
+        ],
+        "placement": "COORDINATE_RELOCATION_NE"
+      },
+      {
+        "id": "M-name",
+        "kind": "POINT_NAME",
+        "target": "M",
+        "text": "M",
+        "at": [
+          240.41666666666666,
+          274.83333333333337
+        ],
+        "font": 16.0,
+        "priority": 1,
+        "allowSuppress": false,
+        "owner": "M",
+        "sourceLabel": "M",
+        "allowPanel": false,
+        "gaps": [
+          10,
+          16,
+          24
+        ],
+        "directions": [
+          "N",
+          "NE",
+          "E",
+          "SE",
+          "S",
+          "SW",
+          "W",
+          "NW"
+        ],
+        "box": {
+          "x": 250.41666666666666,
+          "y": 240.83333333333337,
+          "width": 10.56,
+          "height": 24.0
+        },
+        "baseline": [
+          250.41666666666666,
+          260.03333333333336
+        ],
+        "placement": "COORDINATE_RELOCATION_NE"
+      },
+      {
+        "id": "X-name",
+        "kind": "POINT_NAME",
+        "target": "X",
+        "text": "X",
+        "at": [
+          240.41666666666666,
+          71.16666666666666
+        ],
+        "font": 16.0,
+        "priority": 1,
+        "allowSuppress": false,
+        "owner": "X",
+        "sourceLabel": "X",
+        "allowPanel": false,
+        "gaps": [
+          10,
+          16,
+          24
+        ],
+        "directions": [
+          "N",
+          "NE",
+          "E",
+          "SE",
+          "S",
+          "SW",
+          "W",
+          "NW"
+        ],
+        "box": {
+          "x": 250.41666666666666,
+          "y": 37.16666666666666,
+          "width": 10.56,
+          "height": 24.0
+        },
+        "baseline": [
+          250.41666666666666,
+          56.36666666666666
+        ],
+        "placement": "COORDINATE_RELOCATION_NE"
+      }
+    ],
+    "suppressed": [],
+    "unresolved": [],
+    "trace": [
+      {
+        "id": "A-name",
+        "fallback": "COORDINATE_RELOCATION_SW"
+      },
+      {
+        "id": "B-name",
+        "fallback": "COORDINATE_RELOCATION_NE"
+      },
+      {
+        "id": "M-name",
+        "fallback": "COORDINATE_RELOCATION_NE"
+      },
+      {
+        "id": "X-name",
+        "fallback": "COORDINATE_RELOCATION_NE"
+      }
+    ],
+    "repairs": [],
+    "leaders": [],
+    "status": "PASS",
+    "basis": "APPROXIMATE_BUILD_SIDE_ONLY",
+    "publicationWarnings": []
+  },
+  "sampling": [],
+  "semanticStatus": "PASS",
+  "status": "CANDIDATE_REQUIRES_QA",
+  "publicationProfile": "geometry-publication-v1",
+  "requiredGates": [
+    "INDEPENDENT_PUBLICATION_AUDIT",
+    "RENDERED_LAYOUT",
+    "ARCHIVE_MODE_SOL_390",
+    "INDEPENDENT_VISUAL_REVIEW"
+  ],
+  "publicationSpecSha256": "b24f72d8faaeb56b99a4ccb9c15da864e10d31d68d6bccfa65b3abff4052335a",
+  "coordinateEvidenceMode": "CONSTRUCTED_REALIZATION",
+  "coordinateEvidenceSha256": "63681462e9cf8603763e31f5fa7e5eca06d58b4ee752bedee40ef8fe627694ae",
+  "texStatus": "LEGACY_DRAFT_NOT_PUBLICATION_PARITY",
+  "semanticWitnessSha256": "ef26ce9e26eab14457e4d615bb3712754a990450edc8a2473222391d782de6a3"
+}

@@ -491,7 +491,7 @@
     url.searchParams.set("archive2Context", "archive2");
     url.searchParams.set("archive2OutputContract", contractApi().CONTRACT_VERSION);
     // Static hosts may retain an older inline engine at the unversioned URL.
-    url.searchParams.set("v", "20261006-storage-independent-output-2");
+    url.searchParams.set("v", "20261010-sol-qpp1-atomicmath-2");
     return url;
   }
   function outputEnvelopeUrl(path, base, envelope, options = {}) {

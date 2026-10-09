@@ -38,7 +38,11 @@ window.questionBank = [
     "slot": "A1",
     "purposeGroup": "A",
     "rpmPrimaryL3": "원의 방정식",
-    "generatedL4": "QID9 A1 생성 유형"
+    "generatedL4": "QID9 A1 생성 유형",
+    "solutionImage": "assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q03-A1-solution.svg",
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "중심 C와 점 T가 표시된 반지름 4인 원.",
+    "solutionImageCaption": "중심과 접점, 반지름의 관계를 해설에서 확인한다."
   },
   {
     "id": 2,

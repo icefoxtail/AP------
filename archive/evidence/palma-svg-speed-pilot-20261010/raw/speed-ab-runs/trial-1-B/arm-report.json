@@ -1,0 +1,2135 @@
+{
+  "schemaVersion": "PALMA_V8_SPEED_AB_ARM_RUN_V1",
+  "arm": "B",
+  "trial": 1,
+  "manifestPath": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/manifest.json",
+  "manifestSha256": "931B258A337CD0EE81D5B5D76B8051291672A7A39C91742BB7BF48C4B6266736",
+  "frozenInputManifestPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/frozen-input-manifest.json",
+  "frozenInputManifestSha256": "02004A28442DB078F4C0E8B3B3A01D07B701AEBBF15B56812038FC0EA252EE1C",
+  "comparand": "same frozen v8 specs / source+solution facts; all 10 builds, recorded postplacement steps, static audits, and actual-display Chrome layout passes executed in both arms",
+  "engineMode": "one Python process, sequential 10-item batch",
+  "chromeMode": "one headless Chrome session reused sequentially for 10 SVGs",
+  "engineBuildCount": 10,
+  "postplacementCount": 5,
+  "staticAuditCount": 10,
+  "actualChromeRenderCount": 10,
+  "engineStageNs": 213532900,
+  "postplacementStageNs": 654884000,
+  "staticAuditStageNs": 1558518400,
+  "actualChromeStageNs": 4072373800,
+  "totalElapsedNs": 6499759700,
+  "engineRows": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q03-A1",
+      "engineSvgSha256": "DE5D82B1A235CD6A3EC4A593E6536773803BF93FEA27634FA29222F6DB786CAD",
+      "witnessNormalizedSvgSha256": "DE5D82B1A235CD6A3EC4A593E6536773803BF93FEA27634FA29222F6DB786CAD",
+      "witnessStatus": "CANDIDATE_REQUIRES_QA",
+      "unresolved": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q05-A1",
+      "engineSvgSha256": "4525501D985730A059C222CB2B68C6F415DBD494FDA36EDB8B439454CAFD2F35",
+      "witnessNormalizedSvgSha256": "4525501D985730A059C222CB2B68C6F415DBD494FDA36EDB8B439454CAFD2F35",
+      "witnessStatus": "CANDIDATE_REQUIRES_QA",
+      "unresolved": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q06-A1",
+      "engineSvgSha256": "56C82FF96F8C33ABF3F85B6D49150D203BABD0EC9A85E052920216593F2FA52B",
+      "witnessNormalizedSvgSha256": "56C82FF96F8C33ABF3F85B6D49150D203BABD0EC9A85E052920216593F2FA52B",
+      "witnessStatus": "CANDIDATE_REQUIRES_QA",
+      "unresolved": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q07-A1",
+      "engineSvgSha256": "A2CAA27A51281C03DD16E60D7C3F6529B4348FD40010033236E0DFABB6AECD8B",
+      "witnessNormalizedSvgSha256": "A2CAA27A51281C03DD16E60D7C3F6529B4348FD40010033236E0DFABB6AECD8B",
+      "witnessStatus": "CANDIDATE_REQUIRES_QA",
+      "unresolved": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q09-A1",
+      "engineSvgSha256": "A91139D9EDAFCBAC5051B349A11B8B988928768805CA271435306F153278B63F",
+      "witnessNormalizedSvgSha256": "A91139D9EDAFCBAC5051B349A11B8B988928768805CA271435306F153278B63F",
+      "witnessStatus": "CANDIDATE_REQUIRES_QA",
+      "unresolved": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q12-A1",
+      "engineSvgSha256": "73F2B5ACE4944964B4FB8D94ED50259E4CA31F39854CD273420C352ED89347CC",
+      "witnessNormalizedSvgSha256": "73F2B5ACE4944964B4FB8D94ED50259E4CA31F39854CD273420C352ED89347CC",
+      "witnessStatus": "CANDIDATE_REQUIRES_QA",
+      "unresolved": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q15-A1",
+      "engineSvgSha256": "805109A44E88534EAC511E0CD5E51741A5850F9386024CAC522EB70DFD91272C",
+      "witnessNormalizedSvgSha256": "805109A44E88534EAC511E0CD5E51741A5850F9386024CAC522EB70DFD91272C",
+      "witnessStatus": "CANDIDATE_REQUIRES_QA",
+      "unresolved": []
+    },
+    {
+      "uid": "ALITE-PALMA25-B04-Q17-C01",
+      "engineSvgSha256": "89424B66DDD3FE1EF8B152587A6F88F8630B547AAB86AC0E83C8A01FF9F3A0BB",
+      "witnessNormalizedSvgSha256": "89424B66DDD3FE1EF8B152587A6F88F8630B547AAB86AC0E83C8A01FF9F3A0BB",
+      "witnessStatus": "CANDIDATE_REQUIRES_QA",
+      "unresolved": []
+    },
+    {
+      "uid": "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY",
+      "engineSvgSha256": "23D616D4D9B748B5A9A5633B99B114039CF2FAA9C15B87028A935EC4C024D7BB",
+      "witnessNormalizedSvgSha256": "23D616D4D9B748B5A9A5633B99B114039CF2FAA9C15B87028A935EC4C024D7BB",
+      "witnessStatus": "CANDIDATE_REQUIRES_QA",
+      "unresolved": []
+    },
+    {
+      "uid": "ALITE-B01-2025PALMA-0005",
+      "engineSvgSha256": "BEDFBC5D0BF1623E2D107912091C624C9038EF26420F2F860AD0076F61754E43",
+      "witnessNormalizedSvgSha256": "BEDFBC5D0BF1623E2D107912091C624C9038EF26420F2F860AD0076F61754E43",
+      "witnessStatus": "CANDIDATE_REQUIRES_QA",
+      "unresolved": []
+    }
+  ],
+  "postplacementRows": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q03-A1",
+      "method": "byte-copy-no-postplacement",
+      "elapsedNs": 721700
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q05-A1",
+      "method": "byte-copy-no-postplacement",
+      "elapsedNs": 545300
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q06-A1",
+      "method": "byte-copy-no-postplacement",
+      "elapsedNs": 572600
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q07-A1",
+      "method": "recorded-deterministic-postplacement",
+      "labelId": "moveVector",
+      "deltaY": 8,
+      "processElapsedNs": 129873100,
+      "schemaVersion": "CONDITION_BOX_SAFE_MARGIN_POSTPLACEMENT_V1",
+      "status": "PASS",
+      "inputPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\engine\\ALITE-PALMA25-2MID-Q07-A1-engine.svg",
+      "inputSha256": "A2CAA27A51281C03DD16E60D7C3F6529B4348FD40010033236E0DFABB6AECD8B",
+      "outputPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\final-svg\\ALITE-PALMA25-2MID-Q07-A1.svg",
+      "outputSha256": "557586FB636C256F743AD4FD37ECAE2A5709B409D4D11244AD10215012D9FCA2",
+      "boxId": "moveVector-box",
+      "xmlParse": "PASS"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q09-A1",
+      "method": "recorded-deterministic-postplacement",
+      "labelId": "ratioFacts",
+      "deltaY": 8,
+      "processElapsedNs": 125181900,
+      "schemaVersion": "CONDITION_BOX_SAFE_MARGIN_POSTPLACEMENT_V1",
+      "status": "PASS",
+      "inputPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\engine\\ALITE-PALMA25-2MID-Q09-A1-engine.svg",
+      "inputSha256": "A91139D9EDAFCBAC5051B349A11B8B988928768805CA271435306F153278B63F",
+      "outputPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\final-svg\\ALITE-PALMA25-2MID-Q09-A1.svg",
+      "outputSha256": "BF937E0AD94683FEDCB8C8AEDE367604B328138EBFB1A210BD1FBEC65C54D5DE",
+      "boxId": "ratioFacts-box",
+      "xmlParse": "PASS"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q12-A1",
+      "method": "byte-copy-no-postplacement",
+      "elapsedNs": 749100
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q15-A1",
+      "method": "recorded-deterministic-postplacement",
+      "labelId": "choiceMap",
+      "deltaY": 8,
+      "processElapsedNs": 128332500,
+      "schemaVersion": "CONDITION_BOX_SAFE_MARGIN_POSTPLACEMENT_V1",
+      "status": "PASS",
+      "inputPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\engine\\ALITE-PALMA25-2MID-Q15-A1-engine.svg",
+      "inputSha256": "805109A44E88534EAC511E0CD5E51741A5850F9386024CAC522EB70DFD91272C",
+      "outputPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\final-svg\\ALITE-PALMA25-2MID-Q15-A1.svg",
+      "outputSha256": "DCF7B9FF7F080E3BDD912B9D5C5F896A248854EC8F0340F8F7CDE4FE5C9131A9",
+      "boxId": "choiceMap-box",
+      "xmlParse": "PASS"
+    },
+    {
+      "uid": "ALITE-PALMA25-B04-Q17-C01",
+      "method": "recorded-deterministic-postplacement",
+      "labelId": "reflectionStages",
+      "deltaY": 8,
+      "processElapsedNs": 122917800,
+      "schemaVersion": "CONDITION_BOX_SAFE_MARGIN_POSTPLACEMENT_V1",
+      "status": "PASS",
+      "inputPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\engine\\ALITE-PALMA25-B04-Q17-C01-engine.svg",
+      "inputSha256": "89424B66DDD3FE1EF8B152587A6F88F8630B547AAB86AC0E83C8A01FF9F3A0BB",
+      "outputPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\final-svg\\ALITE-PALMA25-B04-Q17-C01.svg",
+      "outputSha256": "392B2AF29150AF90AE87D059B7F93B56738469E1FADFD4CC6E6EEB94AB2721B4",
+      "boxId": "reflectionStages-box",
+      "xmlParse": "PASS"
+    },
+    {
+      "uid": "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY",
+      "method": "byte-copy-no-postplacement",
+      "elapsedNs": 624800
+    },
+    {
+      "uid": "ALITE-B01-2025PALMA-0005",
+      "method": "recorded-deterministic-postplacement",
+      "labelId": "caseCount",
+      "deltaY": 10,
+      "processElapsedNs": 137659200,
+      "schemaVersion": "CONDITION_BOX_SAFE_MARGIN_POSTPLACEMENT_V1",
+      "status": "PASS",
+      "inputPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\engine\\ALITE-B01-2025PALMA-0005-engine.svg",
+      "inputSha256": "BEDFBC5D0BF1623E2D107912091C624C9038EF26420F2F860AD0076F61754E43",
+      "outputPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\final-svg\\ALITE-B01-2025PALMA-0005.svg",
+      "outputSha256": "660B6BB1FF28FFD1C0DFE0547CD9435F7653E71C06F30D7878D888732374D4D2",
+      "boxId": "caseCount-box",
+      "xmlParse": "PASS"
+    }
+  ],
+  "auditRows": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q03-A1",
+      "exitCode": 0,
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/audit/ALITE-PALMA25-2MID-Q03-A1.json",
+      "sha256": "BCCC1814C7AD9288B64731A789FE75224F34B083A501D71BA257EE539A96084B",
+      "status": "PASS",
+      "errors": [],
+      "publicationAuthorized": false,
+      "renderStatus": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q05-A1",
+      "exitCode": 0,
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/audit/ALITE-PALMA25-2MID-Q05-A1.json",
+      "sha256": "8AEF12AD6890B40845D61FDE025A809DA56E412FDA32371B3636E2CDA757D3FD",
+      "status": "PASS",
+      "errors": [],
+      "publicationAuthorized": false,
+      "renderStatus": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q06-A1",
+      "exitCode": 0,
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/audit/ALITE-PALMA25-2MID-Q06-A1.json",
+      "sha256": "683ACBFAEBF96A8B069DA9E1942F67829500F2AA4539B23025CA4C7748FF8076",
+      "status": "PASS",
+      "errors": [],
+      "publicationAuthorized": false,
+      "renderStatus": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q07-A1",
+      "exitCode": 0,
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/audit/ALITE-PALMA25-2MID-Q07-A1.json",
+      "sha256": "0F601C9FA09F24CFE4A580F1F30F3E3708ECF8DF7E97E1A66CE3EB00831DFD05",
+      "status": "PASS",
+      "errors": [],
+      "publicationAuthorized": false,
+      "renderStatus": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q09-A1",
+      "exitCode": 0,
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/audit/ALITE-PALMA25-2MID-Q09-A1.json",
+      "sha256": "DAB7E26AB659CC190257FAEBBFD31C673A2A6F20C7776D6D6B7E33BD6046409F",
+      "status": "PASS",
+      "errors": [],
+      "publicationAuthorized": false,
+      "renderStatus": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q12-A1",
+      "exitCode": 0,
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/audit/ALITE-PALMA25-2MID-Q12-A1.json",
+      "sha256": "166FD6970F0D902368F5EA9D0BA7B495BD1985C58034DF6A4778C196FFE6A6B7",
+      "status": "PASS",
+      "errors": [],
+      "publicationAuthorized": false,
+      "renderStatus": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q15-A1",
+      "exitCode": 0,
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/audit/ALITE-PALMA25-2MID-Q15-A1.json",
+      "sha256": "41F49E8F3AF83F3EF9DD57A7640914FBD59AD7F9292851CA5EFFE14374C0A83C",
+      "status": "PASS",
+      "errors": [],
+      "publicationAuthorized": false,
+      "renderStatus": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-B04-Q17-C01",
+      "exitCode": 0,
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/audit/ALITE-PALMA25-B04-Q17-C01.json",
+      "sha256": "8A3FD18719A2EC18B5E7059F1745D8F172F44CB41DD2F5080142D434E1681282",
+      "status": "PASS",
+      "errors": [],
+      "publicationAuthorized": false,
+      "renderStatus": "NOT_RUN"
+    },
+    {
+      "uid": "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY",
+      "exitCode": 0,
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/audit/B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY.json",
+      "sha256": "9B53DF409ABDA5169581AD46F5864D6DE7B0844AE122FDF7C39BBA387F85872C",
+      "status": "PASS",
+      "errors": [],
+      "publicationAuthorized": false,
+      "renderStatus": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-B01-2025PALMA-0005",
+      "exitCode": 0,
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/audit/ALITE-B01-2025PALMA-0005.json",
+      "sha256": "1D507737C03AA40A2106CF4AE253FA925EBDE675242F3CBA321BF0F1C8EE7E69",
+      "status": "PASS",
+      "errors": [],
+      "publicationAuthorized": false,
+      "renderStatus": "NOT_RUN"
+    }
+  ],
+  "renderRows": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q03-A1",
+      "status": "PASS",
+      "errors": [],
+      "svgSha256": "DE5D82B1A235CD6A3EC4A593E6536773803BF93FEA27634FA29222F6DB786CAD",
+      "screenshotSha256": "57FCAA11353B98A320EE022B7B66175E5A616C51136B446A786A6FB6CAC016EC",
+      "reportPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/render/ALITE-PALMA25-2MID-Q03-A1.json",
+      "reportSha256": "6FF512A9FE5E637E6473715FF3E2E00D9EAF7421E5B86E76907A2865E0236B0A",
+      "effectiveFontMin": 16,
+      "display": {
+        "width": 390,
+        "height": 360
+      },
+      "svgBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 360
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 360
+      },
+      "labelMeasurements": [
+        {
+          "id": "O-name",
+          "kind": "POINT_NAME",
+          "owner": "O",
+          "annotation": null,
+          "finalViewportCssFontPx": 16,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 159.63999938964844,
+            "y": 175.1999969482422,
+            "width": 12,
+            "height": 16
+          },
+          "bbox": {
+            "x": 159.63999938964844,
+            "y": 175.1999969482422,
+            "width": 12,
+            "height": 16
+          }
+        },
+        {
+          "id": "T-name",
+          "kind": "POINT_NAME",
+          "owner": "T",
+          "annotation": null,
+          "finalViewportCssFontPx": 16,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 308.6000061035156,
+            "y": 175.1999969482422,
+            "width": 13,
+            "height": 16
+          },
+          "bbox": {
+            "x": 308.6000061035156,
+            "y": 175.1999969482422,
+            "width": 13,
+            "height": 16
+          }
+        },
+        {
+          "id": "radiusValue-label",
+          "kind": "LENGTH_LABEL",
+          "owner": "radius",
+          "annotation": "radiusValue",
+          "finalViewportCssFontPx": 16,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 234.89999389648438,
+            "y": 192,
+            "width": 9,
+            "height": 16
+          },
+          "bbox": {
+            "x": 234.89999389648438,
+            "y": 192,
+            "width": 9,
+            "height": 16
+          }
+        }
+      ],
+      "geometryCount": 4
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q05-A1",
+      "status": "PASS",
+      "errors": [],
+      "svgSha256": "4525501D985730A059C222CB2B68C6F415DBD494FDA36EDB8B439454CAFD2F35",
+      "screenshotSha256": "45E4ACAEE9DB0E5451DCC3AE4F383D99152B3AAAB00C86C5895405DC28EEEFFA",
+      "reportPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/render/ALITE-PALMA25-2MID-Q05-A1.json",
+      "reportSha256": "2DCA80DA9D4B5D308E03B588A3307EE582854D275DE2F9E2B0F6312C4293E313",
+      "effectiveFontMin": 16,
+      "display": {
+        "width": 520,
+        "height": 440
+      },
+      "svgBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 520,
+        "height": 440
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 520,
+        "height": 440
+      },
+      "labelMeasurements": [
+        {
+          "id": "A-name",
+          "kind": "POINT_NAME",
+          "owner": "A",
+          "annotation": null,
+          "finalViewportCssFontPx": 16,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 117.02333068847656,
+            "y": 292.0333251953125,
+            "width": 12,
+            "height": 16
+          },
+          "bbox": {
+            "x": 117.02333068847656,
+            "y": 292.0333251953125,
+            "width": 12,
+            "height": 16
+          }
+        },
+        {
+          "id": "B-name",
+          "kind": "POINT_NAME",
+          "owner": "B",
+          "annotation": null,
+          "finalViewportCssFontPx": 16,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 352.25,
+            "y": 248.0333251953125,
+            "width": 13,
+            "height": 16
+          },
+          "bbox": {
+            "x": 352.25,
+            "y": 248.0333251953125,
+            "width": 13,
+            "height": 16
+          }
+        },
+        {
+          "id": "M-name",
+          "kind": "POINT_NAME",
+          "owner": "M",
+          "annotation": null,
+          "finalViewportCssFontPx": 16,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 250.4166717529297,
+            "y": 248.0333251953125,
+            "width": 16.000015258789062,
+            "height": 16
+          },
+          "bbox": {
+            "x": 250.4166717529297,
+            "y": 248.0333251953125,
+            "width": 16.000015258789062,
+            "height": 16
+          }
+        },
+        {
+          "id": "X-name",
+          "kind": "POINT_NAME",
+          "owner": "X",
+          "annotation": null,
+          "finalViewportCssFontPx": 16,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 249.4166717529297,
+            "y": 44.36666488647461,
+            "width": 14.000015258789062,
+            "height": 16
+          },
+          "bbox": {
+            "x": 249.4166717529297,
+            "y": 44.36666488647461,
+            "width": 14.000015258789062,
+            "height": 16
+          }
+        }
+      ],
+      "geometryCount": 7
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q06-A1",
+      "status": "PASS",
+      "errors": [],
+      "svgSha256": "56C82FF96F8C33ABF3F85B6D49150D203BABD0EC9A85E052920216593F2FA52B",
+      "screenshotSha256": "181CADA10CCCC9656B8CF89BFFBA99CDC41F3A8DF9B0A81356ECE6B8F9B47873",
+      "reportPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/render/ALITE-PALMA25-2MID-Q06-A1.json",
+      "reportSha256": "8B63D3671B29A71F1E9926D0DD705E89FA33060AA053552BE098A5AD6EFD5AF1",
+      "effectiveFontMin": 16,
+      "display": {
+        "width": 500,
+        "height": 420
+      },
+      "svgBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 500,
+        "height": 420
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 500,
+        "height": 420
+      },
+      "labelMeasurements": [
+        {
+          "id": "O-name",
+          "kind": "POINT_NAME",
+          "owner": "O",
+          "annotation": null,
+          "finalViewportCssFontPx": 16,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 260,
+            "y": 183.1999969482422,
+            "width": 12,
+            "height": 16
+          },
+          "bbox": {
+            "x": 260,
+            "y": 183.1999969482422,
+            "width": 12,
+            "height": 16
+          }
+        },
+        {
+          "id": "Tminus-name",
+          "kind": "POINT_NAME",
+          "owner": "Tminus",
+          "annotation": null,
+          "finalViewportCssFontPx": 16,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 177.35714721679688,
+            "y": 205.1999969482422,
+            "width": 16,
+            "height": 16
+          },
+          "bbox": {
+            "x": 177.35714721679688,
+            "y": 205.1999969482422,
+            "width": 16,
+            "height": 16
+          }
+        },
+        {
+          "id": "Tplus-name",
+          "kind": "POINT_NAME",
+          "owner": "Tplus",
+          "annotation": null,
+          "finalViewportCssFontPx": 16,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 342.6428527832031,
+            "y": 183.1999969482422,
+            "width": 16,
+            "height": 16
+          },
+          "bbox": {
+            "x": 342.6428527832031,
+            "y": 183.1999969482422,
+            "width": 16,
+            "height": 16
+          }
+        }
+      ],
+      "geometryCount": 7
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q07-A1",
+      "status": "PASS",
+      "errors": [],
+      "svgSha256": "557586FB636C256F743AD4FD37ECAE2A5709B409D4D11244AD10215012D9FCA2",
+      "screenshotSha256": "60D29BF11E864FBF32DDA02D88A0FD78A35081AAE36636A7594F24BBC4677D10",
+      "reportPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/render/ALITE-PALMA25-2MID-Q07-A1.json",
+      "reportSha256": "F2997110C1CF96D589A73DE21A55CA115D459937715AFF31590F249AD05F5E52",
+      "effectiveFontMin": 14.184375,
+      "display": {
+        "width": 638.296875,
+        "height": 461
+      },
+      "svgBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 638.296875,
+        "height": 461
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 720,
+        "height": 520
+      },
+      "labelMeasurements": [
+        {
+          "id": "C1-name",
+          "kind": "POINT_NAME",
+          "owner": "C1",
+          "annotation": null,
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 97.3375473022461,
+            "y": 206.37945556640625,
+            "width": 13.976242065429688,
+            "height": 14
+          },
+          "bbox": {
+            "x": 109.79692077636719,
+            "y": 232.79197692871094,
+            "width": 15.765226364135742,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "C2-name",
+          "kind": "POINT_NAME",
+          "owner": "C2",
+          "annotation": null,
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 198.26483154296875,
+            "y": 206.37945556640625,
+            "width": 13.976242065429688,
+            "height": 14
+          },
+          "bbox": {
+            "x": 223.64308166503906,
+            "y": 232.79197692871094,
+            "width": 15.765226364135742,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "moveVector",
+          "kind": "CONDITION_BOX",
+          "owner": null,
+          "annotation": null,
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"Noto Sans KR\", Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+          "client": {
+            "x": 290.77972412109375,
+            "y": 33.64921951293945,
+            "width": 111.49996948242188,
+            "height": 41.27656173706055
+          },
+          "bbox": {
+            "x": 328.0000305175781,
+            "y": 37.95197296142578,
+            "width": 125.77218627929688,
+            "height": 46.560035705566406
+          }
+        }
+      ],
+      "geometryCount": 7
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q09-A1",
+      "status": "PASS",
+      "errors": [],
+      "svgSha256": "BF937E0AD94683FEDCB8C8AEDE367604B328138EBFB1A210BD1FBEC65C54D5DE",
+      "screenshotSha256": "9323C9E0F3B6E70D036309E9D250C32E817E5624BBB487688B56FFA277FF1E2C",
+      "reportPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/render/ALITE-PALMA25-2MID-Q09-A1.json",
+      "reportSha256": "45CCA917C310D9021DA085BFA6286FC2900765620B8E352F903D81E488D71708",
+      "effectiveFontMin": 14.184375,
+      "display": {
+        "width": 638.296875,
+        "height": 461
+      },
+      "svgBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 638.296875,
+        "height": 461
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 720,
+        "height": 520
+      },
+      "labelMeasurements": [
+        {
+          "id": "A-name",
+          "kind": "POINT_NAME",
+          "owner": "A",
+          "annotation": null,
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 226.43356323242188,
+            "y": 330.9762878417969,
+            "width": 11,
+            "height": 14
+          },
+          "bbox": {
+            "x": 255.41744995117188,
+            "y": 373.3374328613281,
+            "width": 12.40802001953125,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "B-name",
+          "kind": "POINT_NAME",
+          "owner": "B",
+          "annotation": null,
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 99.76774597167969,
+            "y": 120.78965759277344,
+            "width": 11,
+            "height": 14
+          },
+          "bbox": {
+            "x": 112.53819274902344,
+            "y": 136.2465362548828,
+            "width": 12.40802001953125,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "C-name",
+          "kind": "POINT_NAME",
+          "owner": "C",
+          "annotation": null,
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 156.82762145996094,
+            "y": 330.9762878417969,
+            "width": 11,
+            "height": 14
+          },
+          "bbox": {
+            "x": 176.90182495117188,
+            "y": 373.3374328613281,
+            "width": 12.40802001953125,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "D-name",
+          "kind": "POINT_NAME",
+          "owner": "D",
+          "annotation": null,
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 151.35372924804688,
+            "y": 177.84951782226562,
+            "width": 11,
+            "height": 14
+          },
+          "bbox": {
+            "x": 170.72727966308594,
+            "y": 200.61016845703125,
+            "width": 12.40802001953125,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "E-name",
+          "kind": "POINT_NAME",
+          "owner": "E",
+          "annotation": null,
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 48.18174743652344,
+            "y": 234.9093780517578,
+            "width": 10.999996185302734,
+            "height": 14
+          },
+          "bbox": {
+            "x": 54.34909439086914,
+            "y": 264.9737854003906,
+            "width": 12.40802001953125,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "G-name",
+          "kind": "POINT_NAME",
+          "owner": "G",
+          "annotation": null,
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 132.3337860107422,
+            "y": 254.4129180908203,
+            "width": 11,
+            "height": 14.000015258789062
+          },
+          "bbox": {
+            "x": 149.27273559570312,
+            "y": 286.97381591796875,
+            "width": 12.40802001953125,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "O-name",
+          "kind": "POINT_NAME",
+          "owner": "O",
+          "annotation": null,
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 29.161787033081055,
+            "y": 330.9762878417969,
+            "width": 10.999998092651367,
+            "height": 14
+          },
+          "bbox": {
+            "x": 32.89454650878906,
+            "y": 373.3374328613281,
+            "width": 12.40802001953125,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "ratioFacts",
+          "kind": "CONDITION_BOX",
+          "owner": null,
+          "annotation": null,
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"Noto Sans KR\", Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+          "client": {
+            "x": 236.58828735351562,
+            "y": 33.64921951293945,
+            "width": 153.07809448242188,
+            "height": 126.38282775878906
+          },
+          "bbox": {
+            "x": 266.87200927734375,
+            "y": 37.95197296142578,
+            "width": 172.67236328125,
+            "height": 142.56005859375
+          }
+        }
+      ],
+      "geometryCount": 20
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q12-A1",
+      "status": "PASS",
+      "errors": [],
+      "svgSha256": "73F2B5ACE4944964B4FB8D94ED50259E4CA31F39854CD273420C352ED89347CC",
+      "screenshotSha256": "E154E29B963D4E96DB363E5C0B92130714E24B2C2D695C5B6F5F3EB007573A2F",
+      "reportPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/render/ALITE-PALMA25-2MID-Q12-A1.json",
+      "reportSha256": "A735A9414926535436898783F6BF00DAC8284964B70FC6A512169B6ECE76A006",
+      "effectiveFontMin": 16,
+      "display": {
+        "width": 520,
+        "height": 460
+      },
+      "svgBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 520,
+        "height": 460
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 520,
+        "height": 460
+      },
+      "labelMeasurements": [
+        {
+          "id": "A-name",
+          "kind": "POINT_NAME",
+          "owner": "A",
+          "annotation": null,
+          "finalViewportCssFontPx": 16,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 410.37933349609375,
+            "y": 244.4967041015625,
+            "width": 12,
+            "height": 16
+          },
+          "bbox": {
+            "x": 410.37933349609375,
+            "y": 244.4967041015625,
+            "width": 12,
+            "height": 16
+          }
+        },
+        {
+          "id": "H-name",
+          "kind": "POINT_NAME",
+          "owner": "H",
+          "annotation": null,
+          "finalViewportCssFontPx": 16,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 274.3516540527344,
+            "y": 216.4967041015625,
+            "width": 14,
+            "height": 16
+          },
+          "bbox": {
+            "x": 274.3516540527344,
+            "y": 216.4967041015625,
+            "width": 14,
+            "height": 16
+          }
+        },
+        {
+          "id": "O-name",
+          "kind": "POINT_NAME",
+          "owner": "O",
+          "annotation": null,
+          "finalViewportCssFontPx": 16,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 178.5169219970703,
+            "y": 216.4967041015625,
+            "width": 12,
+            "height": 16
+          },
+          "bbox": {
+            "x": 178.5169219970703,
+            "y": 216.4967041015625,
+            "width": 12,
+            "height": 16
+          }
+        },
+        {
+          "id": "P-name",
+          "kind": "POINT_NAME",
+          "owner": "P",
+          "annotation": null,
+          "finalViewportCssFontPx": 16,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 274.3516540527344,
+            "y": 94.78791046142578,
+            "width": 12,
+            "height": 16
+          },
+          "bbox": {
+            "x": 274.3516540527344,
+            "y": 94.78791046142578,
+            "width": 12,
+            "height": 16
+          }
+        },
+        {
+          "id": "Q-name",
+          "kind": "POINT_NAME",
+          "owner": "Q",
+          "annotation": null,
+          "finalViewportCssFontPx": 16,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 274.3516540527344,
+            "y": 338.20550537109375,
+            "width": 12,
+            "height": 16
+          },
+          "bbox": {
+            "x": 274.3516540527344,
+            "y": 338.20550537109375,
+            "width": 12,
+            "height": 16
+          }
+        },
+        {
+          "id": "centerDistance-label",
+          "kind": "LENGTH_LABEL",
+          "owner": "OH",
+          "annotation": "centerDistance",
+          "finalViewportCssFontPx": 16,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 237.0054931640625,
+            "y": 233.2967071533203,
+            "width": 9,
+            "height": 16
+          },
+          "bbox": {
+            "x": 237.0054931640625,
+            "y": 233.2967071533203,
+            "width": 9,
+            "height": 16
+          }
+        }
+      ],
+      "geometryCount": 16
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q15-A1",
+      "status": "PASS",
+      "errors": [],
+      "svgSha256": "DCF7B9FF7F080E3BDD912B9D5C5F896A248854EC8F0340F8F7CDE4FE5C9131A9",
+      "screenshotSha256": "ACBE71C93DD4FB6B3D3EC02C14F2419CD1B0D4E0B40FC0869CB1D110D8B35715",
+      "reportPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/render/ALITE-PALMA25-2MID-Q15-A1.json",
+      "reportSha256": "88C84128195FCC46AFFFF5DA95D024B01C3F40FC55D0EDE0B8B3172DBB3CE16E",
+      "effectiveFontMin": 14.184375,
+      "display": {
+        "width": 638.296875,
+        "height": 461
+      },
+      "svgBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 638.296875,
+        "height": 461
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 720,
+        "height": 520
+      },
+      "labelMeasurements": [
+        {
+          "id": "F-name",
+          "kind": "POINT_NAME",
+          "owner": "F",
+          "annotation": null,
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 101.68052673339844,
+            "y": 245.3865203857422,
+            "width": 11,
+            "height": 13.999984741210938
+          },
+          "bbox": {
+            "x": 114.69581604003906,
+            "y": 276.7920227050781,
+            "width": 12.40802001953125,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "G-name",
+          "kind": "POINT_NAME",
+          "owner": "G",
+          "annotation": null,
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 208.10621643066406,
+            "y": 225.88299560546875,
+            "width": 11,
+            "height": 14.000015258789062
+          },
+          "bbox": {
+            "x": 234.7441864013672,
+            "y": 254.79200744628906,
+            "width": 12.40802001953125,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "W-name",
+          "kind": "POINT_NAME",
+          "owner": "W",
+          "annotation": null,
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 153.18299865722656,
+            "y": 169.7639923095703,
+            "width": 17,
+            "height": 14
+          },
+          "bbox": {
+            "x": 172.7906951904297,
+            "y": 191.4896697998047,
+            "width": 19.1760311126709,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "choiceMap",
+          "kind": "CONDITION_BOX",
+          "owner": null,
+          "annotation": null,
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"Noto Sans KR\", Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+          "client": {
+            "x": 290.77972412109375,
+            "y": 33.64921951293945,
+            "width": 104.453125,
+            "height": 83.82968139648438
+          },
+          "bbox": {
+            "x": 328.0000305175781,
+            "y": 37.95197296142578,
+            "width": 117.82330322265625,
+            "height": 94.5600357055664
+          }
+        }
+      ],
+      "geometryCount": 9
+    },
+    {
+      "uid": "ALITE-PALMA25-B04-Q17-C01",
+      "status": "PASS",
+      "errors": [],
+      "svgSha256": "392B2AF29150AF90AE87D059B7F93B56738469E1FADFD4CC6E6EEB94AB2721B4",
+      "screenshotSha256": "CB5CEEF7D285A5AA2EEF8AEB6D196C50F49638E82D197AC3FF54CFD746603439",
+      "reportPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/render/ALITE-PALMA25-B04-Q17-C01.json",
+      "reportSha256": "F33B0EAA97C476B27B9B783286C8C01E885D3CB6C5C15DB69329E52B011AD127",
+      "effectiveFontMin": 14.184375,
+      "display": {
+        "width": 638.296875,
+        "height": 461
+      },
+      "svgBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 638.296875,
+        "height": 461
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 720,
+        "height": 520
+      },
+      "labelMeasurements": [
+        {
+          "id": "A-name",
+          "kind": "POINT_NAME",
+          "owner": "A",
+          "annotation": null,
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 84.79183197021484,
+            "y": 203.18798828125,
+            "width": 11,
+            "height": 14
+          },
+          "bbox": {
+            "x": 95.64533233642578,
+            "y": 229.19200134277344,
+            "width": 12.40802001953125,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "B-name",
+          "kind": "POINT_NAME",
+          "owner": "B",
+          "annotation": null,
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 173.4040069580078,
+            "y": 183.68447875976562,
+            "width": 11,
+            "height": 13.999984741210938
+          },
+          "bbox": {
+            "x": 195.6000213623047,
+            "y": 207.19200134277344,
+            "width": 12.40802001953125,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "D-name",
+          "kind": "POINT_NAME",
+          "owner": "D",
+          "annotation": null,
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 174.98793029785156,
+            "y": 268.0815124511719,
+            "width": 11,
+            "height": 14
+          },
+          "bbox": {
+            "x": 197.38668823242188,
+            "y": 302.3919982910156,
+            "width": 12.40802001953125,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "M-name",
+          "kind": "POINT_NAME",
+          "owner": "M",
+          "annotation": "M-name",
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 157.51138305664062,
+            "y": 179.68736267089844,
+            "width": 15,
+            "height": 14
+          },
+          "bbox": {
+            "x": 177.67311096191406,
+            "y": 202.68325805664062,
+            "width": 16.920026779174805,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "V1-name",
+          "kind": "POINT_NAME",
+          "owner": "V1",
+          "annotation": null,
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 143.1439971923828,
+            "y": 123.1644515991211,
+            "width": 17.557846069335938,
+            "height": 13.999992370605469
+          },
+          "bbox": {
+            "x": 161.4666748046875,
+            "y": 138.92530822753906,
+            "width": 19.805282592773438,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "V2-name",
+          "kind": "POINT_NAME",
+          "owner": "V2",
+          "annotation": null,
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 143.1439971923828,
+            "y": 313.47149658203125,
+            "width": 18.557846069335938,
+            "height": 14
+          },
+          "bbox": {
+            "x": 161.4666748046875,
+            "y": 353.59197998046875,
+            "width": 20.933284759521484,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "reflectionStages",
+          "kind": "CONDITION_BOX",
+          "owner": null,
+          "annotation": null,
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"Noto Sans KR\", Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+          "client": {
+            "x": 255.31875610351562,
+            "y": 33.64921951293945,
+            "width": 134.67184448242188,
+            "height": 41.27656173706055
+          },
+          "bbox": {
+            "x": 288,
+            "y": 37.95197296142578,
+            "width": 151.91009521484375,
+            "height": 46.560035705566406
+          }
+        }
+      ],
+      "geometryCount": 14
+    },
+    {
+      "uid": "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY",
+      "status": "PASS",
+      "errors": [],
+      "svgSha256": "23D616D4D9B748B5A9A5633B99B114039CF2FAA9C15B87028A935EC4C024D7BB",
+      "screenshotSha256": "DE187FAFCF2766F6ADD4CC9860FB8FF1844CE24088C816199C604EBFF69FDAC2",
+      "reportPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/render/B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY.json",
+      "reportSha256": "C7C5AB9143F3E8041339AD0C112B6E19775E0CCC455ADA55AA298C1FB394F35E",
+      "effectiveFontMin": 14.184375,
+      "display": {
+        "width": 638.296875,
+        "height": 461
+      },
+      "svgBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 638.296875,
+        "height": 461
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 720,
+        "height": 520
+      },
+      "labelMeasurements": [
+        {
+          "id": "A-name",
+          "kind": "POINT_NAME",
+          "owner": "A",
+          "annotation": "A-name",
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 54.98395538330078,
+            "y": 393.8348388671875,
+            "width": 11.000007629394531,
+            "height": 14
+          },
+          "bbox": {
+            "x": 62.02199935913086,
+            "y": 444.2419738769531,
+            "width": 12.40802001953125,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "B-name",
+          "kind": "POINT_NAME",
+          "owner": "B",
+          "annotation": "B-name",
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 260.63787841796875,
+            "y": 393.8348388671875,
+            "width": 11,
+            "height": 14
+          },
+          "bbox": {
+            "x": 294,
+            "y": 444.2419738769531,
+            "width": 12.40802001953125,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "C-name",
+          "kind": "POINT_NAME",
+          "owner": "C",
+          "annotation": "C-name",
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 55.98395538330078,
+            "y": 42.638572692871094,
+            "width": 11,
+            "height": 14.000003814697266
+          },
+          "bbox": {
+            "x": 63.150001525878906,
+            "y": 48.09197998046875,
+            "width": 12.40802001953125,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "G-name",
+          "kind": "POINT_NAME",
+          "owner": "G",
+          "annotation": "G-name",
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 101.46260833740234,
+            "y": 259.92547607421875,
+            "width": 11,
+            "height": 14
+          },
+          "bbox": {
+            "x": 114.44999694824219,
+            "y": 293.1919860839844,
+            "width": 12.40802001953125,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "GHCarea-label",
+          "kind": "AREA_LABEL",
+          "owner": "GHCarea",
+          "annotation": "GHCarea",
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 130.37863159179688,
+            "y": 210.86703491210938,
+            "width": 7.859375,
+            "height": 14
+          },
+          "bbox": {
+            "x": 147.06732177734375,
+            "y": 237.85398864746094,
+            "width": 8.865388870239258,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "H-name",
+          "kind": "POINT_NAME",
+          "owner": "H",
+          "annotation": "H-name",
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 202.5262908935547,
+            "y": 257.39886474609375,
+            "width": 13,
+            "height": 14
+          },
+          "bbox": {
+            "x": 228.45001220703125,
+            "y": 290.34197998046875,
+            "width": 14.664023399353027,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "M-name",
+          "kind": "POINT_NAME",
+          "owner": "M",
+          "annotation": "M-name",
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 174.73379516601562,
+            "y": 204.34043884277344,
+            "width": 15,
+            "height": 14
+          },
+          "bbox": {
+            "x": 197.1000213623047,
+            "y": 230.49197387695312,
+            "width": 16.920026779174805,
+            "height": 15.792025566101074
+          }
+        },
+        {
+          "id": "ratioFacts",
+          "kind": "CONDITION_BOX",
+          "owner": null,
+          "annotation": null,
+          "finalViewportCssFontPx": 14.184375,
+          "baseFontPx": 16,
+          "font": "\"Noto Sans KR\", Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+          "client": {
+            "x": 89.86865234375,
+            "y": 387.3721008300781,
+            "width": 72.12759399414062,
+            "height": 41.276519775390625
+          },
+          "bbox": {
+            "x": 101.37200164794922,
+            "y": 436.9519958496094,
+            "width": 81.36005401611328,
+            "height": 46.55999755859375
+          }
+        }
+      ],
+      "geometryCount": 25
+    },
+    {
+      "uid": "ALITE-B01-2025PALMA-0005",
+      "status": "PASS",
+      "errors": [],
+      "svgSha256": "660B6BB1FF28FFD1C0DFE0547CD9435F7653E71C06F30D7878D888732374D4D2",
+      "screenshotSha256": "6F1C08F90F595A690DED630FD749E62CD254E1498018B3C3E6ADD4EDF1406101",
+      "reportPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/render/ALITE-B01-2025PALMA-0005.json",
+      "reportSha256": "C35DC8739B6AA509C012259F90C2632362FF7F70FDBA00D97D1D7C9B1690185D",
+      "effectiveFontMin": 11.338168174342107,
+      "display": {
+        "width": 638.296875,
+        "height": 545.921875
+      },
+      "svgBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 638.296875,
+        "height": 545.921875
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 760,
+        "height": 650
+      },
+      "labelMeasurements": [
+        {
+          "id": "C0-label",
+          "kind": "GRAPH_ANNOTATION",
+          "owner": null,
+          "annotation": null,
+          "finalViewportCssFontPx": 11.338168174342107,
+          "baseFontPx": 13.5,
+          "font": "\"Noto Sans KR\", Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+          "client": {
+            "x": 388.9579162597656,
+            "y": 354.46246337890625,
+            "width": 19.859375,
+            "height": 15.999969482421875
+          },
+          "bbox": {
+            "x": 463.1199645996094,
+            "y": 422.0412902832031,
+            "width": 23.645931243896484,
+            "height": 19.050695419311523
+          }
+        },
+        {
+          "id": "Extra1-name",
+          "kind": "POINT_NAME",
+          "owner": "Extra1",
+          "annotation": null,
+          "finalViewportCssFontPx": 13.437828947368422,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 97.42426300048828,
+            "y": 312.1434020996094,
+            "width": 10,
+            "height": 13
+          },
+          "bbox": {
+            "x": 116,
+            "y": 371.6533203125,
+            "width": 11.906684875488281,
+            "height": 15.478690147399902
+          }
+        },
+        {
+          "id": "Extra2-name",
+          "kind": "POINT_NAME",
+          "owner": "Extra2",
+          "annotation": null,
+          "finalViewportCssFontPx": 13.437828947368422,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 364.03076171875,
+            "y": 225.8725128173828,
+            "width": 9,
+            "height": 13
+          },
+          "bbox": {
+            "x": 433.4399719238281,
+            "y": 268.93328857421875,
+            "width": 10.716015815734863,
+            "height": 15.478690147399902
+          }
+        },
+        {
+          "id": "L05-equation",
+          "kind": "GRAPH_ANNOTATION",
+          "owner": null,
+          "annotation": null,
+          "finalViewportCssFontPx": 11.338168174342107,
+          "baseFontPx": 13.5,
+          "font": "\"Noto Sans KR\", Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+          "client": {
+            "x": 143.32284545898438,
+            "y": 244.36463928222656,
+            "width": 57.01893615722656,
+            "height": 15.999984741210938
+          },
+          "bbox": {
+            "x": 170.64999389648438,
+            "y": 290.9512939453125,
+            "width": 67.8906478881836,
+            "height": 19.050695419311523
+          }
+        },
+        {
+          "id": "O-name",
+          "kind": "POINT_NAME",
+          "owner": "O",
+          "annotation": null,
+          "finalViewportCssFontPx": 13.437828947368422,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 243.56065368652344,
+            "y": 287.4849548339844,
+            "width": 11,
+            "height": 13.000030517578125
+          },
+          "bbox": {
+            "x": 290,
+            "y": 342.2933044433594,
+            "width": 13.097352981567383,
+            "height": 15.478690147399902
+          }
+        },
+        {
+          "id": "OuterN-name",
+          "kind": "POINT_NAME",
+          "owner": "OuterN",
+          "annotation": null,
+          "finalViewportCssFontPx": 13.437828947368422,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 75.19808959960938,
+            "y": 367.1041259765625,
+            "width": 11,
+            "height": 13
+          },
+          "bbox": {
+            "x": 89.53600311279297,
+            "y": 437.09332275390625,
+            "width": 13.097352981567383,
+            "height": 15.478690147399902
+          }
+        },
+        {
+          "id": "OuterP-name",
+          "kind": "POINT_NAME",
+          "owner": "OuterP",
+          "annotation": null,
+          "finalViewportCssFontPx": 13.437828947368422,
+          "baseFontPx": 16,
+          "font": "\"STIX Two Math\", \"Cambria Math\", \"Times New Roman\", serif",
+          "client": {
+            "x": 385.1281433105469,
+            "y": 168.39892578125,
+            "width": 10,
+            "height": 13
+          },
+          "bbox": {
+            "x": 458.5599670410156,
+            "y": 200.50131225585938,
+            "width": 11.906684875488281,
+            "height": 15.478690147399902
+          }
+        },
+        {
+          "id": "arc1-label",
+          "kind": "GRAPH_ANNOTATION",
+          "owner": null,
+          "annotation": null,
+          "finalViewportCssFontPx": 11.338168174342107,
+          "baseFontPx": 13.5,
+          "font": "\"Noto Sans KR\", Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+          "client": {
+            "x": 161.9258270263672,
+            "y": 367.1233825683594,
+            "width": 19.859375,
+            "height": 16
+          },
+          "bbox": {
+            "x": 192.79998779296875,
+            "y": 437.11627197265625,
+            "width": 23.645931243896484,
+            "height": 19.050695419311523
+          }
+        },
+        {
+          "id": "arc2-label",
+          "kind": "GRAPH_ANNOTATION",
+          "owner": null,
+          "annotation": null,
+          "finalViewportCssFontPx": 11.338168174342107,
+          "baseFontPx": 13.5,
+          "font": "\"Noto Sans KR\", Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+          "client": {
+            "x": 285.9486083984375,
+            "y": 163.00279235839844,
+            "width": 19.859375,
+            "height": 15.999984741210938
+          },
+          "bbox": {
+            "x": 340.4700012207031,
+            "y": 194.0762939453125,
+            "width": 23.645931243896484,
+            "height": 19.050695419311523
+          }
+        },
+        {
+          "id": "caseCount",
+          "kind": "CONDITION_BOX",
+          "owner": null,
+          "annotation": null,
+          "finalViewportCssFontPx": 13.437828947368422,
+          "baseFontPx": 16,
+          "font": "\"Noto Sans KR\", Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+          "client": {
+            "x": 443.4483642578125,
+            "y": 32.717166900634766,
+            "width": 117.427490234375,
+            "height": 100.62698364257812
+          },
+          "bbox": {
+            "x": 528,
+            "y": 38.949302673339844,
+            "width": 139.8172607421875,
+            "height": 119.8133773803711
+          }
+        }
+      ],
+      "geometryCount": 14
+    }
+  ],
+  "expectedManifestHashes": {
+    "ALITE-PALMA25-2MID-Q03-A1": "DE5D82B1A235CD6A3EC4A593E6536773803BF93FEA27634FA29222F6DB786CAD",
+    "ALITE-PALMA25-2MID-Q05-A1": "4525501D985730A059C222CB2B68C6F415DBD494FDA36EDB8B439454CAFD2F35",
+    "ALITE-PALMA25-2MID-Q06-A1": "56C82FF96F8C33ABF3F85B6D49150D203BABD0EC9A85E052920216593F2FA52B",
+    "ALITE-PALMA25-2MID-Q07-A1": "557586FB636C256F743AD4FD37ECAE2A5709B409D4D11244AD10215012D9FCA2",
+    "ALITE-PALMA25-2MID-Q09-A1": "BF937E0AD94683FEDCB8C8AEDE367604B328138EBFB1A210BD1FBEC65C54D5DE",
+    "ALITE-PALMA25-2MID-Q12-A1": "73F2B5ACE4944964B4FB8D94ED50259E4CA31F39854CD273420C352ED89347CC",
+    "ALITE-PALMA25-2MID-Q15-A1": "DCF7B9FF7F080E3BDD912B9D5C5F896A248854EC8F0340F8F7CDE4FE5C9131A9",
+    "ALITE-PALMA25-B04-Q17-C01": "392B2AF29150AF90AE87D059B7F93B56738469E1FADFD4CC6E6EEB94AB2721B4",
+    "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY": "23D616D4D9B748B5A9A5633B99B114039CF2FAA9C15B87028A935EC4C024D7BB",
+    "ALITE-B01-2025PALMA-0005": "660B6BB1FF28FFD1C0DFE0547CD9435F7653E71C06F30D7878D888732374D4D2"
+  },
+  "finalSvgHashes": {
+    "ALITE-PALMA25-2MID-Q03-A1": "DE5D82B1A235CD6A3EC4A593E6536773803BF93FEA27634FA29222F6DB786CAD",
+    "ALITE-PALMA25-2MID-Q05-A1": "4525501D985730A059C222CB2B68C6F415DBD494FDA36EDB8B439454CAFD2F35",
+    "ALITE-PALMA25-2MID-Q06-A1": "56C82FF96F8C33ABF3F85B6D49150D203BABD0EC9A85E052920216593F2FA52B",
+    "ALITE-PALMA25-2MID-Q07-A1": "557586FB636C256F743AD4FD37ECAE2A5709B409D4D11244AD10215012D9FCA2",
+    "ALITE-PALMA25-2MID-Q09-A1": "BF937E0AD94683FEDCB8C8AEDE367604B328138EBFB1A210BD1FBEC65C54D5DE",
+    "ALITE-PALMA25-2MID-Q12-A1": "73F2B5ACE4944964B4FB8D94ED50259E4CA31F39854CD273420C352ED89347CC",
+    "ALITE-PALMA25-2MID-Q15-A1": "DCF7B9FF7F080E3BDD912B9D5C5F896A248854EC8F0340F8F7CDE4FE5C9131A9",
+    "ALITE-PALMA25-B04-Q17-C01": "392B2AF29150AF90AE87D059B7F93B56738469E1FADFD4CC6E6EEB94AB2721B4",
+    "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY": "23D616D4D9B748B5A9A5633B99B114039CF2FAA9C15B87028A935EC4C024D7BB",
+    "ALITE-B01-2025PALMA-0005": "660B6BB1FF28FFD1C0DFE0547CD9435F7653E71C06F30D7878D888732374D4D2"
+  },
+  "allFinalSvgHashesMatchV8": true,
+  "allStaticAuditsPass": true,
+  "allActualRendersPass": true,
+  "processRows": [
+    {
+      "label": "engine-batch",
+      "command": "C:\\Users\\USER\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "argv": [
+        ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/bench-batch-v8-artifact.py",
+        "--repo-root",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------",
+        "--manifest",
+        ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/manifest.json",
+        "--out-dir",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\engine",
+        "--report-out",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\engine\\batch.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "elapsedNs": 211561800,
+      "stdoutPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/001-engine-batch.stdout.txt",
+      "stderrPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/001-engine-batch.stderr.txt"
+    },
+    {
+      "label": "postplace-ALITE-PALMA25-2MID-Q07-A1",
+      "command": "C:\\Users\\USER\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "argv": [
+        ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/postplacement-safe-margin-v1.py",
+        "--input",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\engine\\ALITE-PALMA25-2MID-Q07-A1-engine.svg",
+        "--output",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\final-svg\\ALITE-PALMA25-2MID-Q07-A1.svg",
+        "--label-id",
+        "moveVector",
+        "--delta-y",
+        "8"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "elapsedNs": 129873100,
+      "stdoutPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/002-postplace-ALITE-PALMA25-2MID-Q07-A1.stdout.txt",
+      "stderrPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/002-postplace-ALITE-PALMA25-2MID-Q07-A1.stderr.txt"
+    },
+    {
+      "label": "postplace-ALITE-PALMA25-2MID-Q09-A1",
+      "command": "C:\\Users\\USER\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "argv": [
+        ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/postplacement-safe-margin-v1.py",
+        "--input",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\engine\\ALITE-PALMA25-2MID-Q09-A1-engine.svg",
+        "--output",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\final-svg\\ALITE-PALMA25-2MID-Q09-A1.svg",
+        "--label-id",
+        "ratioFacts",
+        "--delta-y",
+        "8"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "elapsedNs": 125181900,
+      "stdoutPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/003-postplace-ALITE-PALMA25-2MID-Q09-A1.stdout.txt",
+      "stderrPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/003-postplace-ALITE-PALMA25-2MID-Q09-A1.stderr.txt"
+    },
+    {
+      "label": "postplace-ALITE-PALMA25-2MID-Q15-A1",
+      "command": "C:\\Users\\USER\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "argv": [
+        ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/postplacement-safe-margin-v1.py",
+        "--input",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\engine\\ALITE-PALMA25-2MID-Q15-A1-engine.svg",
+        "--output",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\final-svg\\ALITE-PALMA25-2MID-Q15-A1.svg",
+        "--label-id",
+        "choiceMap",
+        "--delta-y",
+        "8"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "elapsedNs": 128332500,
+      "stdoutPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/004-postplace-ALITE-PALMA25-2MID-Q15-A1.stdout.txt",
+      "stderrPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/004-postplace-ALITE-PALMA25-2MID-Q15-A1.stderr.txt"
+    },
+    {
+      "label": "postplace-ALITE-PALMA25-B04-Q17-C01",
+      "command": "C:\\Users\\USER\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "argv": [
+        ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/postplacement-safe-margin-v1.py",
+        "--input",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\engine\\ALITE-PALMA25-B04-Q17-C01-engine.svg",
+        "--output",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\final-svg\\ALITE-PALMA25-B04-Q17-C01.svg",
+        "--label-id",
+        "reflectionStages",
+        "--delta-y",
+        "8"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "elapsedNs": 122917800,
+      "stdoutPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/005-postplace-ALITE-PALMA25-B04-Q17-C01.stdout.txt",
+      "stderrPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/005-postplace-ALITE-PALMA25-B04-Q17-C01.stderr.txt"
+    },
+    {
+      "label": "postplace-ALITE-B01-2025PALMA-0005",
+      "command": "C:\\Users\\USER\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "argv": [
+        ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/postplacement-safe-margin-v1.py",
+        "--input",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\engine\\ALITE-B01-2025PALMA-0005-engine.svg",
+        "--output",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\final-svg\\ALITE-B01-2025PALMA-0005.svg",
+        "--label-id",
+        "caseCount",
+        "--delta-y",
+        "10"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "elapsedNs": 137659200,
+      "stdoutPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/006-postplace-ALITE-B01-2025PALMA-0005.stdout.txt",
+      "stderrPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/006-postplace-ALITE-B01-2025PALMA-0005.stderr.txt"
+    },
+    {
+      "label": "audit-ALITE-PALMA25-2MID-Q03-A1",
+      "command": "C:\\Users\\USER\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "argv": [
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------/archive/tools/geometry-equation/audit_publication.py",
+        "--svg",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\final-svg\\ALITE-PALMA25-2MID-Q03-A1.svg",
+        "--review",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\PALMA25_H1_2MID\\revised-batch-v8\\candidate\\ALITE-PALMA25-2MID-Q03-A1\\review.json",
+        "--source",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\frozen-inputs\\ALITE-PALMA25-2MID-Q03-A1-frozen-source.js",
+        "--solution",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\frozen-inputs\\ALITE-PALMA25-2MID-Q03-A1-frozen-solution.txt",
+        "--out",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\audit\\ALITE-PALMA25-2MID-Q03-A1.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "elapsedNs": 147901100,
+      "stdoutPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/007-audit-ALITE-PALMA25-2MID-Q03-A1.stdout.txt",
+      "stderrPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/007-audit-ALITE-PALMA25-2MID-Q03-A1.stderr.txt"
+    },
+    {
+      "label": "audit-ALITE-PALMA25-2MID-Q05-A1",
+      "command": "C:\\Users\\USER\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "argv": [
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------/archive/tools/geometry-equation/audit_publication.py",
+        "--svg",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\final-svg\\ALITE-PALMA25-2MID-Q05-A1.svg",
+        "--review",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\PALMA25_H1_2MID\\revised-batch-v8\\candidate\\ALITE-PALMA25-2MID-Q05-A1\\review.json",
+        "--source",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\frozen-inputs\\ALITE-PALMA25-2MID-Q05-A1-frozen-source.js",
+        "--solution",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\frozen-inputs\\ALITE-PALMA25-2MID-Q05-A1-frozen-solution.txt",
+        "--out",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\audit\\ALITE-PALMA25-2MID-Q05-A1.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "elapsedNs": 164508100,
+      "stdoutPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/008-audit-ALITE-PALMA25-2MID-Q05-A1.stdout.txt",
+      "stderrPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/008-audit-ALITE-PALMA25-2MID-Q05-A1.stderr.txt"
+    },
+    {
+      "label": "audit-ALITE-PALMA25-2MID-Q06-A1",
+      "command": "C:\\Users\\USER\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "argv": [
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------/archive/tools/geometry-equation/audit_publication.py",
+        "--svg",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\final-svg\\ALITE-PALMA25-2MID-Q06-A1.svg",
+        "--review",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\PALMA25_H1_2MID\\revised-batch-v8\\candidate\\ALITE-PALMA25-2MID-Q06-A1\\review.json",
+        "--source",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\frozen-inputs\\ALITE-PALMA25-2MID-Q06-A1-frozen-source.js",
+        "--solution",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\frozen-inputs\\ALITE-PALMA25-2MID-Q06-A1-frozen-solution.txt",
+        "--out",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\audit\\ALITE-PALMA25-2MID-Q06-A1.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "elapsedNs": 153824300,
+      "stdoutPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/009-audit-ALITE-PALMA25-2MID-Q06-A1.stdout.txt",
+      "stderrPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/009-audit-ALITE-PALMA25-2MID-Q06-A1.stderr.txt"
+    },
+    {
+      "label": "audit-ALITE-PALMA25-2MID-Q07-A1",
+      "command": "C:\\Users\\USER\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "argv": [
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------/archive/tools/geometry-equation/audit_publication.py",
+        "--svg",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\final-svg\\ALITE-PALMA25-2MID-Q07-A1.svg",
+        "--review",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\PALMA25_H1_2MID\\revised-batch-v8\\candidate\\ALITE-PALMA25-2MID-Q07-A1\\review.json",
+        "--source",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\frozen-inputs\\ALITE-PALMA25-2MID-Q07-A1-frozen-source.js",
+        "--solution",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\frozen-inputs\\ALITE-PALMA25-2MID-Q07-A1-frozen-solution.txt",
+        "--out",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\audit\\ALITE-PALMA25-2MID-Q07-A1.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "elapsedNs": 155191300,
+      "stdoutPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/010-audit-ALITE-PALMA25-2MID-Q07-A1.stdout.txt",
+      "stderrPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/010-audit-ALITE-PALMA25-2MID-Q07-A1.stderr.txt"
+    },
+    {
+      "label": "audit-ALITE-PALMA25-2MID-Q09-A1",
+      "command": "C:\\Users\\USER\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "argv": [
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------/archive/tools/geometry-equation/audit_publication.py",
+        "--svg",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\final-svg\\ALITE-PALMA25-2MID-Q09-A1.svg",
+        "--review",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\PALMA25_H1_2MID\\revised-batch-v8\\candidate\\ALITE-PALMA25-2MID-Q09-A1\\review.json",
+        "--source",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\frozen-inputs\\ALITE-PALMA25-2MID-Q09-A1-frozen-source.js",
+        "--solution",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\frozen-inputs\\ALITE-PALMA25-2MID-Q09-A1-frozen-solution.txt",
+        "--out",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\audit\\ALITE-PALMA25-2MID-Q09-A1.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "elapsedNs": 171172500,
+      "stdoutPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/011-audit-ALITE-PALMA25-2MID-Q09-A1.stdout.txt",
+      "stderrPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/011-audit-ALITE-PALMA25-2MID-Q09-A1.stderr.txt"
+    },
+    {
+      "label": "audit-ALITE-PALMA25-2MID-Q12-A1",
+      "command": "C:\\Users\\USER\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "argv": [
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------/archive/tools/geometry-equation/audit_publication.py",
+        "--svg",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\final-svg\\ALITE-PALMA25-2MID-Q12-A1.svg",
+        "--review",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\PALMA25_H1_2MID\\revised-batch-v8\\candidate\\ALITE-PALMA25-2MID-Q12-A1\\review.json",
+        "--source",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\frozen-inputs\\ALITE-PALMA25-2MID-Q12-A1-frozen-source.js",
+        "--solution",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\frozen-inputs\\ALITE-PALMA25-2MID-Q12-A1-frozen-solution.txt",
+        "--out",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\audit\\ALITE-PALMA25-2MID-Q12-A1.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "elapsedNs": 148452300,
+      "stdoutPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/012-audit-ALITE-PALMA25-2MID-Q12-A1.stdout.txt",
+      "stderrPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/012-audit-ALITE-PALMA25-2MID-Q12-A1.stderr.txt"
+    },
+    {
+      "label": "audit-ALITE-PALMA25-2MID-Q15-A1",
+      "command": "C:\\Users\\USER\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "argv": [
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------/archive/tools/geometry-equation/audit_publication.py",
+        "--svg",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\final-svg\\ALITE-PALMA25-2MID-Q15-A1.svg",
+        "--review",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\PALMA25_H1_2MID\\revised-batch-v8\\candidate\\ALITE-PALMA25-2MID-Q15-A1\\review.json",
+        "--source",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\frozen-inputs\\ALITE-PALMA25-2MID-Q15-A1-frozen-source.js",
+        "--solution",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\frozen-inputs\\ALITE-PALMA25-2MID-Q15-A1-frozen-solution.txt",
+        "--out",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\audit\\ALITE-PALMA25-2MID-Q15-A1.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "elapsedNs": 144487600,
+      "stdoutPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/013-audit-ALITE-PALMA25-2MID-Q15-A1.stdout.txt",
+      "stderrPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/013-audit-ALITE-PALMA25-2MID-Q15-A1.stderr.txt"
+    },
+    {
+      "label": "audit-ALITE-PALMA25-B04-Q17-C01",
+      "command": "C:\\Users\\USER\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "argv": [
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------/archive/tools/geometry-equation/audit_publication.py",
+        "--svg",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\final-svg\\ALITE-PALMA25-B04-Q17-C01.svg",
+        "--review",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\PALMA25_H1_2MID\\revised-batch-v8\\candidate\\ALITE-PALMA25-B04-Q17-C01\\review.json",
+        "--source",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\frozen-inputs\\ALITE-PALMA25-B04-Q17-C01-frozen-source.js",
+        "--solution",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\frozen-inputs\\ALITE-PALMA25-B04-Q17-C01-frozen-solution.txt",
+        "--out",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\audit\\ALITE-PALMA25-B04-Q17-C01.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "elapsedNs": 150207600,
+      "stdoutPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/014-audit-ALITE-PALMA25-B04-Q17-C01.stdout.txt",
+      "stderrPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/014-audit-ALITE-PALMA25-B04-Q17-C01.stderr.txt"
+    },
+    {
+      "label": "audit-B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY",
+      "command": "C:\\Users\\USER\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "argv": [
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------/archive/tools/geometry-equation/audit_publication.py",
+        "--svg",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\final-svg\\B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY.svg",
+        "--review",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\PALMA25_H1_2MID\\revised-batch-v8\\candidate\\B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY\\review.json",
+        "--source",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\frozen-inputs\\B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY-frozen-source.js",
+        "--solution",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\frozen-inputs\\B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY-frozen-solution.txt",
+        "--out",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\audit\\B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "elapsedNs": 153542400,
+      "stdoutPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/015-audit-B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY.stdout.txt",
+      "stderrPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/015-audit-B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY.stderr.txt"
+    },
+    {
+      "label": "audit-ALITE-B01-2025PALMA-0005",
+      "command": "C:\\Users\\USER\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "argv": [
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------/archive/tools/geometry-equation/audit_publication.py",
+        "--svg",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\final-svg\\ALITE-B01-2025PALMA-0005.svg",
+        "--review",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\PALMA25_H1_2MID\\revised-batch-v8\\candidate\\ALITE-B01-2025PALMA-0005\\review.json",
+        "--source",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\frozen-inputs\\ALITE-B01-2025PALMA-0005-frozen-source.js",
+        "--solution",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\frozen-inputs\\ALITE-B01-2025PALMA-0005-frozen-solution.txt",
+        "--out",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\palma-svg-speed-pilot\\AP------\\.tmp\\archive\\palma-svg-speed-pilot-20261010\\palma-pilot\\speed-ab\\runs\\trial-1-B\\audit\\ALITE-B01-2025PALMA-0005.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "elapsedNs": 150218200,
+      "stdoutPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/016-audit-ALITE-B01-2025PALMA-0005.stdout.txt",
+      "stderrPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/process/016-audit-ALITE-B01-2025PALMA-0005.stderr.txt"
+    }
+  ],
+  "overallPass": true
+}

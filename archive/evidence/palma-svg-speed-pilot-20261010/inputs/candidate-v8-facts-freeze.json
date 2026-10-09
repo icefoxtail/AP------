@@ -1,0 +1,667 @@
+{
+  "schemaVersion": "PALMA_SVG_SPEED_PILOT_FACT_FREEZE_V1",
+  "sourceConsumersRead": 10,
+  "sourceConsumerExactParity": "PASS_10_OF_10_CONTENT_CHOICES_ANSWER_SOLUTION",
+  "expectedFacts": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q03-A1",
+      "concept": "원 표준형에서 중심·반지름",
+      "answerCheck": "center=(-3,2); r=4; equation=(x+3)^2+(y-2)^2=16",
+      "points": {
+        "O": [
+          -3,
+          2
+        ],
+        "T": [
+          1,
+          2
+        ]
+      },
+      "segments": {
+        "r": [
+          "O",
+          "T"
+        ]
+      },
+      "circles": {
+        "C": {
+          "center": "O",
+          "radius": 4
+        }
+      },
+      "newVisualInformation": [
+        "center ownership",
+        "radius owner segment"
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q05-A1",
+      "concept": "수직이등분선",
+      "answerCheck": "M=(4,0); slope(AB)=2/3; perpendicular slope=-3/2; line=3x+2y-12=0",
+      "points": {
+        "A": [
+          1,
+          -2
+        ],
+        "B": [
+          7,
+          2
+        ],
+        "M": [
+          4,
+          0
+        ],
+        "X": [
+          0,
+          6
+        ]
+      },
+      "segments": {
+        "AB": [
+          "A",
+          "B"
+        ]
+      },
+      "lines": {
+        "L_AB": [
+          -2,
+          3,
+          8
+        ],
+        "L_BIS": [
+          3,
+          2,
+          -12
+        ]
+      },
+      "relations": [
+        {
+          "kind": "PERPENDICULAR",
+          "lines": [
+            "L_AB",
+            "L_BIS"
+          ],
+          "intersection": "M"
+        }
+      ],
+      "newVisualInformation": [
+        "midpoint ownership",
+        "perpendicular line relation"
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q06-A1",
+      "concept": "원과 직선 교점 개수",
+      "answerCheck": "distance=|k|/sqrt(13); |k|<=13; integer k count=27",
+      "points": {
+        "O": [
+          0,
+          0
+        ],
+        "Tplus": [
+          -2,
+          3
+        ],
+        "Tminus": [
+          2,
+          -3
+        ]
+      },
+      "circles": {
+        "C": {
+          "center": "O",
+          "radius": "sqrt(13)"
+        }
+      },
+      "lines": {
+        "K0": [
+          2,
+          -3,
+          0
+        ],
+        "Kplus": [
+          2,
+          -3,
+          13
+        ],
+        "Kminus": [
+          2,
+          -3,
+          -13
+        ]
+      },
+      "incidences": [
+        [
+          "Tplus",
+          "Kplus"
+        ],
+        [
+          "Tminus",
+          "Kminus"
+        ]
+      ],
+      "newVisualInformation": [
+        "secant through center",
+        "both tangent boundary states"
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q07-A1",
+      "concept": "두 원 넓이를 이등분하는 공통 직선",
+      "answerCheck": "centers=(0,-2),(3,4); common center line y=2x-2; m+n=0",
+      "points": {
+        "C1": [
+          0,
+          -2
+        ],
+        "C2": [
+          3,
+          4
+        ]
+      },
+      "segments": {
+        "centerLine": [
+          "C1",
+          "C2"
+        ]
+      },
+      "circles": {
+        "A": {
+          "center": "C1",
+          "radius": 3
+        },
+        "B": {
+          "center": "C2",
+          "radius": 3
+        }
+      },
+      "lines": {
+        "L": [
+          -2,
+          1,
+          2
+        ]
+      },
+      "newVisualInformation": [
+        "center ownership",
+        "one line passes through both centers and bisects both disks"
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q09-A1",
+      "concept": "내분점 삼각형의 무게중심",
+      "answerCheck": "C=(6,0), D=(5,6), E=(1,3), G=(4,3), a+b=7",
+      "points": {
+        "O": [
+          0,
+          0
+        ],
+        "A": [
+          9,
+          0
+        ],
+        "B": [
+          3,
+          9
+        ],
+        "C": [
+          6,
+          0
+        ],
+        "D": [
+          5,
+          6
+        ],
+        "E": [
+          1,
+          3
+        ],
+        "G": [
+          4,
+          3
+        ]
+      },
+      "segments": {
+        "OA": [
+          "O",
+          "A"
+        ],
+        "AB": [
+          "A",
+          "B"
+        ],
+        "BO": [
+          "B",
+          "O"
+        ],
+        "CD": [
+          "C",
+          "D"
+        ],
+        "DE": [
+          "D",
+          "E"
+        ],
+        "EC": [
+          "E",
+          "C"
+        ]
+      },
+      "newVisualInformation": [
+        "source triangle and 2:1 division points",
+        "derived triangle centroid"
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q12-A1",
+      "concept": "외부점에서 원에 그은 접선의 접점현",
+      "answerCheck": "A=(6,8), r=sqrt(30), chord PQ:6x+8y=30; center-line distance=3",
+      "points": {
+        "O": [
+          0,
+          0
+        ],
+        "A": [
+          6,
+          8
+        ],
+        "H": [
+          1.8,
+          2.4
+        ],
+        "P": [
+          -1.866060555964672,
+          5.149545416973504
+        ],
+        "Q": [
+          5.466060555964672,
+          -0.34954541697350405
+        ]
+      },
+      "circles": {
+        "C": {
+          "center": "O",
+          "radius": "sqrt(30)"
+        }
+      },
+      "lines": {
+        "chord": [
+          6,
+          8,
+          -30
+        ]
+      },
+      "segments": {
+        "AP": [
+          "A",
+          "P"
+        ],
+        "AQ": [
+          "A",
+          "Q"
+        ],
+        "OP": [
+          "O",
+          "P"
+        ],
+        "OQ": [
+          "O",
+          "Q"
+        ],
+        "OH": [
+          "O",
+          "H"
+        ],
+        "PQ": [
+          "P",
+          "Q"
+        ]
+      },
+      "newVisualInformation": [
+        "two tangent contacts",
+        "chord of contact",
+        "perpendicular center-to-chord distance"
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q15-A1",
+      "concept": "원 방정식의 이동·변수 치환",
+      "answerCheck": "f center=(2,-1), g center=(5,1), r=2; ㄱ and ㄷ map to (5,1); ㄴ maps to (2,1)",
+      "points": {
+        "F": [
+          2,
+          -1
+        ],
+        "G": [
+          5,
+          1
+        ],
+        "W": [
+          2,
+          1
+        ]
+      },
+      "circles": {
+        "CF": {
+          "center": "F",
+          "radius": 2
+        },
+        "CG": {
+          "center": "G",
+          "radius": 2
+        },
+        "CW": {
+          "center": "W",
+          "radius": 2
+        }
+      },
+      "segments": {
+        "T1": [
+          "F",
+          "G"
+        ],
+        "T2": [
+          "F",
+          "W"
+        ]
+      },
+      "newVisualInformation": [
+        "two valid transformed centers overlap at target center",
+        "false option center differs by a vertical unit"
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-B04-Q17-C01",
+      "concept": "원의 대칭이동과 평행이동",
+      "answerCheck": "A=(3,1), reflection B=(1,3), translated D=(2,5), mirror line y=x; answer ②",
+      "points": {
+        "A": [
+          3,
+          1
+        ],
+        "B": [
+          1,
+          3
+        ],
+        "D": [
+          2,
+          5
+        ],
+        "M": [
+          2,
+          2
+        ],
+        "V1": [
+          0,
+          0
+        ],
+        "V2": [
+          5,
+          5
+        ]
+      },
+      "segments": {
+        "AB": [
+          "A",
+          "B"
+        ],
+        "BD": [
+          "B",
+          "D"
+        ]
+      },
+      "circles": {
+        "C0": {
+          "center": "A",
+          "radius": 2
+        },
+        "Cref": {
+          "center": "B",
+          "radius": 2
+        },
+        "Cfinal": {
+          "center": "D",
+          "radius": 2
+        }
+      },
+      "lines": {
+        "mirror": [
+          -1,
+          1,
+          0
+        ]
+      },
+      "newVisualInformation": [
+        "reflection before/after center pair",
+        "perpendicular bisector mirror axis",
+        "subsequent translation vector"
+      ]
+    },
+    {
+      "uid": "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY",
+      "concept": "각의 이등분선 분할과 무게중심 넓이",
+      "answerCheck": "t=3; B=(3,0), C=(0,6), H=(2,2), G=(1,2), I=(r,r), M=(1.5,3); area GHC=2",
+      "points": {
+        "A": [
+          0,
+          0
+        ],
+        "B": [
+          3,
+          0
+        ],
+        "C": [
+          0,
+          6
+        ],
+        "H": [
+          2,
+          2
+        ],
+        "G": [
+          1,
+          2
+        ],
+        "I": [
+          1.1458980337503153,
+          1.1458980337503153
+        ],
+        "M": [
+          1.5,
+          3
+        ]
+      },
+      "segments": {
+        "AB": [
+          "A",
+          "B"
+        ],
+        "BC": [
+          "B",
+          "C"
+        ],
+        "CA": [
+          "C",
+          "A"
+        ],
+        "AH": [
+          "A",
+          "H"
+        ],
+        "AM": [
+          "A",
+          "M"
+        ],
+        "BH": [
+          "B",
+          "H"
+        ],
+        "HC": [
+          "H",
+          "C"
+        ],
+        "GH": [
+          "G",
+          "H"
+        ],
+        "GC": [
+          "G",
+          "C"
+        ]
+      },
+      "newVisualInformation": [
+        "angle-bisector ratio on BC",
+        "centroid median ratio",
+        "GHC subtriangle region and area 2"
+      ]
+    },
+    {
+      "uid": "ALITE-B01-2025PALMA-0005",
+      "concept": "큰 원과 두 반원호의 서로 다른 교점 수",
+      "answerCheck": "m>0 gives 5 distinct points; m<=0 gives 3; common origin counted once",
+      "points": {
+        "O": [
+          0,
+          0
+        ],
+        "OuterP": [
+          3.5777087639996634,
+          1.7888543819998317
+        ],
+        "OuterN": [
+          -3.5777087639996634,
+          -1.7888543819998317
+        ],
+        "Extra1": [
+          -3.2,
+          -1.6
+        ],
+        "Extra2": [
+          3.2,
+          1.6
+        ],
+        "C1C": [
+          -2,
+          0
+        ],
+        "C2C": [
+          2,
+          0
+        ],
+        "Eleft": [
+          -4,
+          0
+        ],
+        "Eright": [
+          4,
+          0
+        ]
+      },
+      "circles": {
+        "C0": {
+          "center": "O",
+          "radius": 4
+        }
+      },
+      "arcs": {
+        "A1": {
+          "center": "C1C",
+          "radius": 2,
+          "startPoint": "Eleft",
+          "endPoint": "O",
+          "sweep": "CCW",
+          "degrees": 180
+        },
+        "A2": {
+          "center": "C2C",
+          "radius": 2,
+          "startPoint": "O",
+          "endPoint": "Eright",
+          "sweep": "CW",
+          "degrees": 180
+        }
+      },
+      "lines": {
+        "L05": [
+          1,
+          -2,
+          0
+        ]
+      },
+      "newVisualInformation": [
+        "two semicircular arcs rather than full circles",
+        "positive-slope extra intersections",
+        "shared endpoint O counted once"
+      ],
+      "incidences": [
+        {
+          "id": "OuterP_on_C0",
+          "point": "OuterP",
+          "circle": "C0"
+        },
+        {
+          "id": "OuterN_on_C0",
+          "point": "OuterN",
+          "circle": "C0"
+        }
+      ],
+      "semicircularArcs": {
+        "C1": {
+          "center": "C1C",
+          "radius": 2,
+          "start": "Eleft",
+          "end": "O",
+          "sweep": "CCW",
+          "domain": "y<=0"
+        },
+        "C2": {
+          "center": "C2C",
+          "radius": 2,
+          "start": "O",
+          "end": "Eright",
+          "sweep": "CW",
+          "domain": "y>=0"
+        }
+      },
+      "caseTopology": {
+        "mNegative": {
+          "distinctIntersections": 3,
+          "reason": "No extra intersections on the restricted semicircular arcs; common endpoint O counted once."
+        },
+        "mZero": {
+          "distinctIntersections": 3,
+          "reason": "Arc endpoints coincide with the outer-circle intersections; common endpoint O counted once."
+        },
+        "mPositive": {
+          "distinctIntersections": 5,
+          "reason": "Two outer-circle intersections, one extra intersection on each semicircular arc, plus shared O counted once."
+        },
+        "exampleSlope": {
+          "m": 0.5,
+          "outerCircleIntersections": [
+            "OuterP",
+            "OuterN"
+          ],
+          "lowerArcExtra": "Extra1",
+          "upperArcExtra": "Extra2",
+          "sharedEndpoint": "O"
+        }
+      }
+    }
+  ],
+  "timingMs": {
+    "sourceReadAndParityAndFactCalculation": 60
+  },
+  "problemDispositionCount": {
+    "EXEMPT": 10
+  },
+  "solutionDispositionCount": {
+    "REQUIRED": 10
+  },
+  "status": "FROZEN_SOURCE_TOPOLOGY_V4",
+  "correction": {
+    "preservedPrior": "facts-freeze.v3-preserved-q19-fullcircle-draft.json",
+    "locus": "Q19 visual topology: C1/C2 are restricted circular arcs, not full circles; preserve lower/upper half-plane and shared O endpoint."
+  },
+  "correctionTimingMs": 64
+}

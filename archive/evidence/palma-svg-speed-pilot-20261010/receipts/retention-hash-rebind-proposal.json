@@ -1,0 +1,395 @@
+{
+  "schemaVersion": "PALMA_POST_APPLY_GENERATED_META_HASH_REBIND_PROPOSAL_V1",
+  "status": "ROOT_REVIEW_REQUIRED_NOT_APPLIED",
+  "baselineHead": "da3cb983f826aeae31610f700e2310971d558e11",
+  "baselineGate": {
+    "path": ".tmp/archive/palma-svg-speed-pilot-20261010/root-intake/generated-meta-retention-baseline-head-da3.raw.json",
+    "sha256": "C3A4B6FFD84121C03BE0072DB9F6BEFDDBC597DFA373E8F18EFC3E28D1CBDF2B",
+    "status": "PASS_NEW_UID_SCOPE_ONLY",
+    "newUidChecked": 131,
+    "failures": 0
+  },
+  "currentGate": {
+    "path": ".tmp/archive/palma-svg-speed-pilot-20261010/root-intake/generated-meta-retention-current.raw.json",
+    "sha256": "E61EC971D9B11D5D421C06C409BE390C453239DC966B445265DD99708FD2C33D",
+    "status": "FAIL",
+    "newUidChecked": 131,
+    "failures": 32
+  },
+  "newFailureCount": 32,
+  "failedUidCount": 18,
+  "failureUids": {
+    "ALITE-B01-2025PALMA-0001": [
+      "SOURCE_SHARD_BYTES_SHA_MISMATCH",
+      "REVIEW_EVIDENCE_BINDING_MISSING_OR_HISTORICAL_BYTES_CHANGED"
+    ],
+    "ALITE-B01-2025PALMA-0002": [
+      "SOURCE_SHARD_BYTES_SHA_MISMATCH",
+      "REVIEW_EVIDENCE_BINDING_MISSING_OR_HISTORICAL_BYTES_CHANGED"
+    ],
+    "ALITE-B01-2025PALMA-0003": [
+      "SOURCE_SHARD_BYTES_SHA_MISMATCH",
+      "REVIEW_EVIDENCE_BINDING_MISSING_OR_HISTORICAL_BYTES_CHANGED"
+    ],
+    "ALITE-B01-2025PALMA-0004": [
+      "SOURCE_SHARD_BYTES_SHA_MISMATCH",
+      "REVIEW_EVIDENCE_BINDING_MISSING_OR_HISTORICAL_BYTES_CHANGED"
+    ],
+    "ALITE-B01-2025PALMA-0005": [
+      "SOURCE_SHARD_BYTES_SHA_MISMATCH",
+      "REVIEW_EVIDENCE_BINDING_MISSING_OR_HISTORICAL_BYTES_CHANGED"
+    ],
+    "ALITE-B01-2025PALMA-0006": [
+      "SOURCE_SHARD_BYTES_SHA_MISMATCH",
+      "REVIEW_EVIDENCE_BINDING_MISSING_OR_HISTORICAL_BYTES_CHANGED"
+    ],
+    "ALITE-PALMA25-B04-Q07-C01": [
+      "SOURCE_SHARD_BYTES_SHA_MISMATCH",
+      "REVIEW_EVIDENCE_BINDING_MISSING_OR_HISTORICAL_BYTES_CHANGED"
+    ],
+    "ALITE-PALMA25-B04-Q15-C01": [
+      "SOURCE_SHARD_BYTES_SHA_MISMATCH",
+      "REVIEW_EVIDENCE_BINDING_MISSING_OR_HISTORICAL_BYTES_CHANGED"
+    ],
+    "ALITE-PALMA25-B04-Q17-C01": [
+      "SOURCE_SHARD_BYTES_SHA_MISMATCH",
+      "REVIEW_EVIDENCE_BINDING_MISSING_OR_HISTORICAL_BYTES_CHANGED"
+    ],
+    "B05_Q04_C01_DISTANCE_SUM_MIN": [
+      "SOURCE_SHARD_BYTES_SHA_MISMATCH",
+      "REVIEW_EVIDENCE_BINDING_MISSING_OR_HISTORICAL_BYTES_CHANGED"
+    ],
+    "B05_Q09_C01_CENTROID_RATIO_RECOVERY": [
+      "SOURCE_SHARD_BYTES_SHA_MISMATCH",
+      "REVIEW_EVIDENCE_BINDING_MISSING_OR_HISTORICAL_BYTES_CHANGED"
+    ],
+    "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY": [
+      "SOURCE_SHARD_BYTES_SHA_MISMATCH",
+      "REVIEW_EVIDENCE_BINDING_MISSING_OR_HISTORICAL_BYTES_CHANGED"
+    ],
+    "ALITE-PALMA25-2MID-Q05-A1": [
+      "META_VERIFICATION_MARKER_STALE_OR_MISSING"
+    ],
+    "ALITE-PALMA25-2MID-Q06-A1": [
+      "META_VERIFICATION_MARKER_STALE_OR_MISSING"
+    ],
+    "ALITE-PALMA25-2MID-Q07-A1": [
+      "META_VERIFICATION_MARKER_STALE_OR_MISSING"
+    ],
+    "ALITE-PALMA25-2MID-Q15-A1": [
+      "META_VERIFICATION_MARKER_STALE_OR_MISSING"
+    ],
+    "ALITE-PALMA25-2MID-Q09-A1": [
+      "SOURCE_SHARD_BYTES_SHA_MISMATCH",
+      "META_VERIFICATION_MARKER_STALE_OR_MISSING"
+    ],
+    "ALITE-PALMA25-2MID-Q12-A1": [
+      "SOURCE_SHARD_BYTES_SHA_MISMATCH",
+      "META_VERIFICATION_MARKER_STALE_OR_MISSING"
+    ]
+  },
+  "proposedHashOnlyUpdates": [
+    {
+      "uid": "ALITE-B01-2025PALMA-0001",
+      "type": "INDEX_SOURCE_SHARD_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "before": "6d87ea311ed395664508395b8375eed0f609d82a",
+      "after": "e710267aee7a5f7bd42d884fcdbd58be31c8be5d",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-CIRCLE_EQUATION/shards/palma-2025-2mid-B01-hold-release.js",
+      "reason": "index row sourceShardGitSha must bind actual current source shard blob"
+    },
+    {
+      "uid": "ALITE-B01-2025PALMA-0001",
+      "type": "CUTOVER_HISTORICAL_SOURCE_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/meta-retention-cutover-20261009.json",
+      "before": "6d87ea311ed395664508395b8375eed0f609d82a",
+      "after": "e710267aee7a5f7bd42d884fcdbd58be31c8be5d",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-CIRCLE_EQUATION/shards/palma-2025-2mid-B01-hold-release.js",
+      "reason": "historical source-byte compatibility hash only; no approval or semantic Meta change"
+    },
+    {
+      "uid": "ALITE-B01-2025PALMA-0002",
+      "type": "INDEX_SOURCE_SHARD_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "before": "6d87ea311ed395664508395b8375eed0f609d82a",
+      "after": "e710267aee7a5f7bd42d884fcdbd58be31c8be5d",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-CIRCLE_EQUATION/shards/palma-2025-2mid-B01-hold-release.js",
+      "reason": "index row sourceShardGitSha must bind actual current source shard blob"
+    },
+    {
+      "uid": "ALITE-B01-2025PALMA-0002",
+      "type": "CUTOVER_HISTORICAL_SOURCE_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/meta-retention-cutover-20261009.json",
+      "before": "6d87ea311ed395664508395b8375eed0f609d82a",
+      "after": "e710267aee7a5f7bd42d884fcdbd58be31c8be5d",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-CIRCLE_EQUATION/shards/palma-2025-2mid-B01-hold-release.js",
+      "reason": "historical source-byte compatibility hash only; no approval or semantic Meta change"
+    },
+    {
+      "uid": "ALITE-B01-2025PALMA-0003",
+      "type": "INDEX_SOURCE_SHARD_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "before": "6d87ea311ed395664508395b8375eed0f609d82a",
+      "after": "e710267aee7a5f7bd42d884fcdbd58be31c8be5d",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-CIRCLE_EQUATION/shards/palma-2025-2mid-B01-hold-release.js",
+      "reason": "index row sourceShardGitSha must bind actual current source shard blob"
+    },
+    {
+      "uid": "ALITE-B01-2025PALMA-0003",
+      "type": "CUTOVER_HISTORICAL_SOURCE_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/meta-retention-cutover-20261009.json",
+      "before": "6d87ea311ed395664508395b8375eed0f609d82a",
+      "after": "e710267aee7a5f7bd42d884fcdbd58be31c8be5d",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-CIRCLE_EQUATION/shards/palma-2025-2mid-B01-hold-release.js",
+      "reason": "historical source-byte compatibility hash only; no approval or semantic Meta change"
+    },
+    {
+      "uid": "ALITE-B01-2025PALMA-0004",
+      "type": "INDEX_SOURCE_SHARD_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "before": "6d87ea311ed395664508395b8375eed0f609d82a",
+      "after": "e710267aee7a5f7bd42d884fcdbd58be31c8be5d",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-CIRCLE_EQUATION/shards/palma-2025-2mid-B01-hold-release.js",
+      "reason": "index row sourceShardGitSha must bind actual current source shard blob"
+    },
+    {
+      "uid": "ALITE-B01-2025PALMA-0004",
+      "type": "CUTOVER_HISTORICAL_SOURCE_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/meta-retention-cutover-20261009.json",
+      "before": "6d87ea311ed395664508395b8375eed0f609d82a",
+      "after": "e710267aee7a5f7bd42d884fcdbd58be31c8be5d",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-CIRCLE_EQUATION/shards/palma-2025-2mid-B01-hold-release.js",
+      "reason": "historical source-byte compatibility hash only; no approval or semantic Meta change"
+    },
+    {
+      "uid": "ALITE-B01-2025PALMA-0005",
+      "type": "INDEX_SOURCE_SHARD_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "before": "6d87ea311ed395664508395b8375eed0f609d82a",
+      "after": "e710267aee7a5f7bd42d884fcdbd58be31c8be5d",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-CIRCLE_EQUATION/shards/palma-2025-2mid-B01-hold-release.js",
+      "reason": "index row sourceShardGitSha must bind actual current source shard blob"
+    },
+    {
+      "uid": "ALITE-B01-2025PALMA-0005",
+      "type": "CUTOVER_HISTORICAL_SOURCE_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/meta-retention-cutover-20261009.json",
+      "before": "6d87ea311ed395664508395b8375eed0f609d82a",
+      "after": "e710267aee7a5f7bd42d884fcdbd58be31c8be5d",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-CIRCLE_EQUATION/shards/palma-2025-2mid-B01-hold-release.js",
+      "reason": "historical source-byte compatibility hash only; no approval or semantic Meta change"
+    },
+    {
+      "uid": "ALITE-B01-2025PALMA-0006",
+      "type": "INDEX_SOURCE_SHARD_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "before": "6d87ea311ed395664508395b8375eed0f609d82a",
+      "after": "e710267aee7a5f7bd42d884fcdbd58be31c8be5d",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-CIRCLE_EQUATION/shards/palma-2025-2mid-B01-hold-release.js",
+      "reason": "index row sourceShardGitSha must bind actual current source shard blob"
+    },
+    {
+      "uid": "ALITE-B01-2025PALMA-0006",
+      "type": "CUTOVER_HISTORICAL_SOURCE_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/meta-retention-cutover-20261009.json",
+      "before": "6d87ea311ed395664508395b8375eed0f609d82a",
+      "after": "e710267aee7a5f7bd42d884fcdbd58be31c8be5d",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-CIRCLE_EQUATION/shards/palma-2025-2mid-B01-hold-release.js",
+      "reason": "historical source-byte compatibility hash only; no approval or semantic Meta change"
+    },
+    {
+      "uid": "ALITE-PALMA25-B04-Q07-C01",
+      "type": "INDEX_SOURCE_SHARD_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "before": "9d8dba4d17effc1fa15c31c99ee8c90159ba1365",
+      "after": "9c153135d92b3bd4f4031de2703d13fd72f83904",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-04-CORE/shards/palma-2025-2mid-B04-held-release.js",
+      "reason": "index row sourceShardGitSha must bind actual current source shard blob"
+    },
+    {
+      "uid": "ALITE-PALMA25-B04-Q07-C01",
+      "type": "CUTOVER_HISTORICAL_SOURCE_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/meta-retention-cutover-20261009.json",
+      "before": "9d8dba4d17effc1fa15c31c99ee8c90159ba1365",
+      "after": "9c153135d92b3bd4f4031de2703d13fd72f83904",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-04-CORE/shards/palma-2025-2mid-B04-held-release.js",
+      "reason": "historical source-byte compatibility hash only; no approval or semantic Meta change"
+    },
+    {
+      "uid": "ALITE-PALMA25-B04-Q15-C01",
+      "type": "INDEX_SOURCE_SHARD_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "before": "9d8dba4d17effc1fa15c31c99ee8c90159ba1365",
+      "after": "9c153135d92b3bd4f4031de2703d13fd72f83904",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-04-CORE/shards/palma-2025-2mid-B04-held-release.js",
+      "reason": "index row sourceShardGitSha must bind actual current source shard blob"
+    },
+    {
+      "uid": "ALITE-PALMA25-B04-Q15-C01",
+      "type": "CUTOVER_HISTORICAL_SOURCE_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/meta-retention-cutover-20261009.json",
+      "before": "9d8dba4d17effc1fa15c31c99ee8c90159ba1365",
+      "after": "9c153135d92b3bd4f4031de2703d13fd72f83904",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-04-CORE/shards/palma-2025-2mid-B04-held-release.js",
+      "reason": "historical source-byte compatibility hash only; no approval or semantic Meta change"
+    },
+    {
+      "uid": "ALITE-PALMA25-B04-Q17-C01",
+      "type": "INDEX_SOURCE_SHARD_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "before": "9d8dba4d17effc1fa15c31c99ee8c90159ba1365",
+      "after": "9c153135d92b3bd4f4031de2703d13fd72f83904",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-04-CORE/shards/palma-2025-2mid-B04-held-release.js",
+      "reason": "index row sourceShardGitSha must bind actual current source shard blob"
+    },
+    {
+      "uid": "ALITE-PALMA25-B04-Q17-C01",
+      "type": "CUTOVER_HISTORICAL_SOURCE_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/meta-retention-cutover-20261009.json",
+      "before": "9d8dba4d17effc1fa15c31c99ee8c90159ba1365",
+      "after": "9c153135d92b3bd4f4031de2703d13fd72f83904",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-04-CORE/shards/palma-2025-2mid-B04-held-release.js",
+      "reason": "historical source-byte compatibility hash only; no approval or semantic Meta change"
+    },
+    {
+      "uid": "B05_Q04_C01_DISTANCE_SUM_MIN",
+      "type": "INDEX_SOURCE_SHARD_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "before": "b17efe1c1e8233b1ffe622791d6f45b220eeabe1",
+      "after": "9d37043daa5588e4d0906ddfcad3f8b9d36e0c87",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-B05-held-release.js",
+      "reason": "index row sourceShardGitSha must bind actual current source shard blob"
+    },
+    {
+      "uid": "B05_Q04_C01_DISTANCE_SUM_MIN",
+      "type": "CUTOVER_HISTORICAL_SOURCE_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/meta-retention-cutover-20261009.json",
+      "before": "b17efe1c1e8233b1ffe622791d6f45b220eeabe1",
+      "after": "9d37043daa5588e4d0906ddfcad3f8b9d36e0c87",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-B05-held-release.js",
+      "reason": "historical source-byte compatibility hash only; no approval or semantic Meta change"
+    },
+    {
+      "uid": "B05_Q09_C01_CENTROID_RATIO_RECOVERY",
+      "type": "INDEX_SOURCE_SHARD_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "before": "b17efe1c1e8233b1ffe622791d6f45b220eeabe1",
+      "after": "9d37043daa5588e4d0906ddfcad3f8b9d36e0c87",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-B05-held-release.js",
+      "reason": "index row sourceShardGitSha must bind actual current source shard blob"
+    },
+    {
+      "uid": "B05_Q09_C01_CENTROID_RATIO_RECOVERY",
+      "type": "CUTOVER_HISTORICAL_SOURCE_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/meta-retention-cutover-20261009.json",
+      "before": "b17efe1c1e8233b1ffe622791d6f45b220eeabe1",
+      "after": "9d37043daa5588e4d0906ddfcad3f8b9d36e0c87",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-B05-held-release.js",
+      "reason": "historical source-byte compatibility hash only; no approval or semantic Meta change"
+    },
+    {
+      "uid": "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY",
+      "type": "INDEX_SOURCE_SHARD_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "before": "b17efe1c1e8233b1ffe622791d6f45b220eeabe1",
+      "after": "9d37043daa5588e4d0906ddfcad3f8b9d36e0c87",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-B05-held-release.js",
+      "reason": "index row sourceShardGitSha must bind actual current source shard blob"
+    },
+    {
+      "uid": "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY",
+      "type": "CUTOVER_HISTORICAL_SOURCE_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/meta-retention-cutover-20261009.json",
+      "before": "b17efe1c1e8233b1ffe622791d6f45b220eeabe1",
+      "after": "9d37043daa5588e4d0906ddfcad3f8b9d36e0c87",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-B05-held-release.js",
+      "reason": "historical source-byte compatibility hash only; no approval or semantic Meta change"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q05-A1",
+      "type": "INDEX_META_VERIFICATION_SOURCE_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "before": "aa62cc8381b81d8bdb71fdb58842ee8c09a0331d",
+      "after": "9da0ec52aae9d20e65da1bb852e0932aa594ea25",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-02-LINE_EQUATION/shards/palma-2025-2mid-qid9-q05-A1.js",
+      "markerStatus": "VERIFIED_CURRENT_SOURCE",
+      "reason": "technical source hash dependency only; status/meta/evidence bytes unchanged"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q06-A1",
+      "type": "INDEX_META_VERIFICATION_SOURCE_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "before": "651eec08fddbcb2cfa74f6d2c97ec181fa2b22f0",
+      "after": "f2a4e29539ad39a9c5f4cfad33cc619d3f84f0e7",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-INTERSECTION/shards/palma-2025-2mid-qid9-q06-A1.js",
+      "markerStatus": "VERIFIED_CURRENT_SOURCE",
+      "reason": "technical source hash dependency only; status/meta/evidence bytes unchanged"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q07-A1",
+      "type": "INDEX_META_VERIFICATION_SOURCE_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "before": "6f01357c39de6fc3cbba2e0eaed3db91060116ed",
+      "after": "788b9645614626367e1516bce5ff03b8e8e59f94",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-04-CORE/shards/palma-2025-2mid-qid9-q07-A1.js",
+      "markerStatus": "VERIFIED_CURRENT_SOURCE",
+      "reason": "technical source hash dependency only; status/meta/evidence bytes unchanged"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q15-A1",
+      "type": "INDEX_META_VERIFICATION_SOURCE_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "before": "91445fd89bd368ac5a4f058a8044da8d6d8d1ab3",
+      "after": "f74c8fb7ffc525e6fe797fad1247074085bbae09",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-04-CORE/shards/palma-2025-2mid-qid9-q15-A1.js",
+      "markerStatus": "VERIFIED_CURRENT_SOURCE",
+      "reason": "technical source hash dependency only; status/meta/evidence bytes unchanged"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q09-A1",
+      "type": "INDEX_SOURCE_SHARD_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "before": "05be963a2cc23f7daa658be3995441a235d23cf7",
+      "after": "545b81323911f2a09d8eb8513f24b6b4e53ef8dd",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/shards/palma-2025-2mid-qid9-q09-A1.js",
+      "reason": "index row sourceShardGitSha must bind actual current source shard blob"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q09-A1",
+      "type": "INDEX_META_VERIFICATION_SOURCE_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "before": "05be963a2cc23f7daa658be3995441a235d23cf7",
+      "after": "545b81323911f2a09d8eb8513f24b6b4e53ef8dd",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/shards/palma-2025-2mid-qid9-q09-A1.js",
+      "markerStatus": "VERIFIED_CURRENT_SOURCE",
+      "reason": "technical source hash dependency only; status/meta/evidence bytes unchanged"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q12-A1",
+      "type": "INDEX_SOURCE_SHARD_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "before": "b34335783c5be199fa86094e771761b798c36a35",
+      "after": "d7e32550d2c8485c7582fd1331bf8aa4972bc410",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/shards/palma-2025-2mid-qid9-q12-A1.js",
+      "reason": "index row sourceShardGitSha must bind actual current source shard blob"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q12-A1",
+      "type": "INDEX_META_VERIFICATION_SOURCE_GIT_SHA",
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "before": "b34335783c5be199fa86094e771761b798c36a35",
+      "after": "d7e32550d2c8485c7582fd1331bf8aa4972bc410",
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/shards/palma-2025-2mid-qid9-q12-A1.js",
+      "markerStatus": "VERIFIED_CURRENT_SOURCE",
+      "reason": "technical source hash dependency only; status/meta/evidence bytes unchanged"
+    }
+  ],
+  "updateCount": 32,
+  "protected": [
+    "source/consumer question content, choices, answer, solution",
+    "semantic Meta content/digests/review evidence bytes",
+    "approval/review status/consumerSelectable",
+    "assets/SVG bytes"
+  ],
+  "note": "No existing narrowly scoped hash-only rebind CLI was identified. Metadata/cutover changes are not applied pending ROOT decision; this proposal isolates only current source blob SHA dependencies."
+}

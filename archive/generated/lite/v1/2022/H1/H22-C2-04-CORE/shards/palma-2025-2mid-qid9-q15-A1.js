@@ -36,7 +36,11 @@ window.questionBank = [
     "sourceKind": "generated",
     "sourceQid": 15,
     "slot": "A1",
-    "purposeGroup": "A"
+    "purposeGroup": "A",
+    "solutionImage": "assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q15-A1-solution.svg",
+    "solutionImageSize": "large",
+    "solutionImageAlt": "선택지별 원의 중심 후보와 가능한 중심 G, W의 대응.",
+    "solutionImageCaption": "각 선택지의 중심 조건을 도형과 대응시킨다."
   }
 ];
 

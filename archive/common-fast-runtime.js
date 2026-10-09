@@ -90,7 +90,55 @@
             },
             validate(ctx) {
                 check(ctx);
-                if (!root.MathJax?.typesetPromise || root.APRenderLoop.unrenderedMathCount(ctx.targetArea)) throw Error('MATH_TYPESET_INCOMPLETE');
+                const unrenderedMathCount = root.APRenderLoop.unrenderedMathCount(ctx.targetArea);
+                if (!root.MathJax?.typesetPromise || unrenderedMathCount) {
+                    const sourceQuestions = Array.isArray(ctx.buildState?.data) ? ctx.buildState.data : [];
+                    const questionBoxes = Array.from(ctx.targetArea.querySelectorAll('.q-box[data-source-ref]'));
+                    const sourceUid = question => String(question?.questionUid || question?.source_question_uid || question?._sourceQuestionUid || question?.question_uid || question?.uid || '');
+                    const errorNodes = node => Array.from(node.querySelectorAll('mjx-merror,[data-mjx-error]')).map(error => ({
+                        tag: error.tagName,
+                        text: error.textContent || '',
+                        tex: error.getAttribute('data-mjx-tex') || error.getAttribute('data-tex') || '',
+                        attributes: Array.from(error.attributes || []).reduce((out, attribute) => { out[attribute.name] = attribute.value; return out; }, {})
+                    }));
+                    const dollarTextNodes = node => {
+                        const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+                        const matches = [];
+                        while (walker.nextNode()) {
+                            const text = String(walker.currentNode.nodeValue || '');
+                            if (!/\$\$[\s\S]+?\$\$|\$[^$\n]+?\$/.test(text)) continue;
+                            const parent = walker.currentNode.parentElement;
+                            matches.push({
+                                text,
+                                insideMathJax: Boolean(parent?.closest('mjx-container, math, .MathJax')),
+                                parentTag: parent?.tagName || '',
+                                parentClass: String(parent?.className || '')
+                            });
+                        }
+                        return matches;
+                    };
+                    root.__AP_SOLUTION_TYPESET_DIAGNOSTICS__ = {
+                        mode: ctx.buildState?.mode || '',
+                        qpp: ctx.buildState?.qpp || null,
+                        unrenderedMathCount,
+                        mathJaxPromiseAvailable: Boolean(root.MathJax?.typesetPromise),
+                        questions: questionBoxes.map(box => {
+                            const sourceRef = String(box.getAttribute('data-source-ref') || '');
+                            const question = sourceQuestions.find(item => sourceRef.endsWith('#' + sourceUid(item))) || (sourceQuestions.length === 1 ? sourceQuestions[0] : null);
+                            return {
+                                sourceRef,
+                                uid: sourceUid(question),
+                                unrenderedMathCount: root.APRenderLoop.unrenderedMathCount(box),
+                                sourceSolutionTeX: String(question?.solution || question?.explanation || question?.sol || ''),
+                                renderedSolutionText: box.querySelector('.sol-exp')?.textContent || '',
+                                dollarTextNodes: dollarTextNodes(box),
+                                errorNodes: errorNodes(box)
+                            };
+                        }),
+                        mathErrorNodes: errorNodes(ctx.targetArea)
+                    };
+                    throw Error('MATH_TYPESET_INCOMPLETE');
+                }
                 if (ctx.targetArea.querySelector('mjx-merror')) throw Error('MATH_TYPESET_ERROR');
                 ctx.binding.validate?.();
             },

@@ -282,7 +282,11 @@ window.questionBank = [
         "templateKey": "No exact active template for this generated L4; prior meta reviewed."
       }
     },
-    "metaFinalSha256": "b6be61104dcaff4df63f961122b411b561b9d40b6da52274744f772399a8a1df"
+    "metaFinalSha256": "b6be61104dcaff4df63f961122b411b561b9d40b6da52274744f772399a8a1df",
+    "solutionImage": "assets/generated-lite/palma-speed-pilot/ALITE-B01-2025PALMA-0005-solution.svg",
+    "solutionImageSize": "large",
+    "solutionImageAlt": "큰 원 C₀, 아래 반원호 C₁, 위 반원호 C₂와 직선 ℓₘ 및 교점.",
+    "solutionImageCaption": "반원호의 제한과 직선 기울기에 따른 교점 수 변화를 비교한다."
   },
   {
     "id": 6,

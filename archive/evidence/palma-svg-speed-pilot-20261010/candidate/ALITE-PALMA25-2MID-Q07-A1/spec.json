@@ -1,0 +1,198 @@
+{
+  "id": "ALITE-PALMA25-2MID-Q07-A1",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -5.366563145999495,
+    "xMax": 12.074767078498866,
+    "yMin": -8.049844718999243,
+    "yMax": 8.049844718999243,
+    "width": 720,
+    "height": 520,
+    "panel": 360
+  },
+  "axes": false,
+  "title": "두 원의 공통 넓이 이등분선",
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "A rigid translation and rotation align two existing mathematically meaningful points with the normalized origin and positive x-axis; unit scale is preserved, and every transformed point is explicitly listed. No helper points are added to the student visual.",
+      "normalization": {
+        "originPoint": "C1",
+        "xAxisPoint": "C2",
+        "unitScale": 6.708203932499369
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "C1": [
+          0.0,
+          0.0
+        ],
+        "C2": [
+          6.708203932499369,
+          0.0
+        ]
+      },
+      "conditions": [
+        {
+          "id": "normalizationAxis",
+          "kind": "DISTANCE",
+          "refs": [
+            "C1",
+            "C2"
+          ],
+          "expected": 6.708203932499369,
+          "tolerance": 1e-09
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct_C1",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "C1",
+          "inputs": [
+            "C1",
+            "C2"
+          ]
+        },
+        {
+          "id": "construct_C2",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "C2",
+          "inputs": [
+            "C1",
+            "C2"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "normalizationAxis",
+          "residual": 0,
+          "tolerance": 1e-09
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct_C1_C2",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "C1",
+            "C2"
+          ],
+          "observed": 6.708203932499369,
+          "minimum": 1e-09
+        }
+      ]
+    },
+    "questionUid": "ALITE-PALMA25-2MID-Q07-A1",
+    "sourceToVisualFrame": {
+      "origin": [
+        0,
+        -2
+      ],
+      "ex": [
+        0.4472135954999579,
+        0.8944271909999159
+      ],
+      "ey": [
+        -0.8944271909999159,
+        0.4472135954999579
+      ]
+    }
+  },
+  "derivedFacts": {
+    "answerCheck": "centers=(0,-2),(3,4); common center line y=2x-2; m+n=0",
+    "coordinateFrame": [
+      "C1",
+      "C2"
+    ]
+  },
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "C1",
+      "kind": "POINT",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "C₁"
+    },
+    {
+      "id": "C2",
+      "kind": "POINT",
+      "at": [
+        6.708203932499369,
+        0.0
+      ],
+      "name": "C₂"
+    },
+    {
+      "id": "A",
+      "kind": "CIRCLE",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "radius": 3
+    },
+    {
+      "id": "B",
+      "kind": "CIRCLE",
+      "center": [
+        6.708203932499369,
+        0.0
+      ],
+      "radius": 3
+    },
+    {
+      "id": "centerLine",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        6.708203932499369,
+        0.0
+      ]
+    },
+    {
+      "id": "L",
+      "kind": "LINE",
+      "coefficients": [
+        0.0,
+        2.23606797749979,
+        0
+      ]
+    },
+    {
+      "id": "moveVector",
+      "kind": "CONDITION_BOX",
+      "at": [
+        0,
+        0
+      ],
+      "lines": [
+        "중심 이동 방향",
+        "C1 -> C2 : (+3,+6)"
+      ],
+      "priority": 1
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "C1": "C₁",
+      "C2": "C₂"
+    },
+    "segmentPointRefs": {
+      "centerLine": [
+        "C1",
+        "C2"
+      ]
+    },
+    "annotations": []
+  }
+}

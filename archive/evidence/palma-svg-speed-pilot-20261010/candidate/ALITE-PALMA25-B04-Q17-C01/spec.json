@@ -1,0 +1,466 @@
+{
+  "id": "ALITE-PALMA25-B04-Q17-C01",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -3.5355339059327373,
+    "xMax": 7.071067811865475,
+    "yMin": -6.363961030678928,
+    "yMax": 4.242640687119285,
+    "width": 720,
+    "height": 520,
+    "panel": 400
+  },
+  "axes": false,
+  "title": "원의 대칭이동과 평행이동",
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "A rigid translation and rotation align two existing mathematically meaningful points with the normalized origin and positive x-axis; unit scale is preserved, and every transformed point is explicitly listed. No helper points are added to the student visual.",
+      "normalization": {
+        "originPoint": "A",
+        "xAxisPoint": "B",
+        "unitScale": 2.8284271247461903
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "A": [
+          0.0,
+          -0.0
+        ],
+        "B": [
+          2.82842712474619,
+          0.0
+        ],
+        "D": [
+          3.5355339059327373,
+          -2.1213203435596424
+        ],
+        "M": [
+          1.414213562373095,
+          0.0
+        ],
+        "V1": [
+          1.414213562373095,
+          2.82842712474619
+        ],
+        "V2": [
+          1.414213562373095,
+          -4.242640687119285
+        ]
+      },
+      "conditions": [
+        {
+          "id": "normalizationAxis",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 2.8284271247461903,
+          "tolerance": 1e-09
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct_A",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "A",
+          "inputs": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "construct_B",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "B",
+          "inputs": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "construct_D",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "D",
+          "inputs": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "construct_M",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "M",
+          "inputs": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "construct_V1",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "V1",
+          "inputs": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "construct_V2",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "V2",
+          "inputs": [
+            "A",
+            "B"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "normalizationAxis",
+          "residual": 0,
+          "tolerance": 1e-09
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct_A_B",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "observed": 2.82842712474619,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_A_D",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "D"
+          ],
+          "observed": 4.123105625617661,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_A_M",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "M"
+          ],
+          "observed": 1.414213562373095,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_A_V1",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "V1"
+          ],
+          "observed": 3.162277660168379,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_A_V2",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "V2"
+          ],
+          "observed": 4.472135954999579,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_B_D",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "B",
+            "D"
+          ],
+          "observed": 2.2360679774997894,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_B_M",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "B",
+            "M"
+          ],
+          "observed": 1.414213562373095,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_B_V1",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "B",
+            "V1"
+          ],
+          "observed": 3.162277660168379,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_B_V2",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "B",
+            "V2"
+          ],
+          "observed": 4.472135954999579,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_D_M",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "D",
+            "M"
+          ],
+          "observed": 2.9999999999999996,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_D_V1",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "D",
+            "V1"
+          ],
+          "observed": 5.385164807134503,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_D_V2",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "D",
+            "V2"
+          ],
+          "observed": 2.9999999999999996,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_M_V1",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "M",
+            "V1"
+          ],
+          "observed": 2.82842712474619,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_M_V2",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "M",
+            "V2"
+          ],
+          "observed": 4.242640687119285,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_V1_V2",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "V1",
+            "V2"
+          ],
+          "observed": 7.071067811865475,
+          "minimum": 1e-09
+        }
+      ]
+    },
+    "questionUid": "ALITE-PALMA25-B04-Q17-C01",
+    "sourceToVisualFrame": {
+      "origin": [
+        3,
+        1
+      ],
+      "ex": [
+        -0.7071067811865475,
+        0.7071067811865475
+      ],
+      "ey": [
+        -0.7071067811865475,
+        -0.7071067811865475
+      ]
+    }
+  },
+  "derivedFacts": {
+    "answerCheck": "A=(3,1), reflection B=(1,3), translated D=(2,5), mirror line y=x; answer ②",
+    "coordinateFrame": [
+      "A",
+      "B"
+    ]
+  },
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0.0,
+        -0.0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        2.82842712474619,
+        0.0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "D",
+      "kind": "POINT",
+      "at": [
+        3.5355339059327373,
+        -2.1213203435596424
+      ],
+      "name": "D"
+    },
+    {
+      "id": "M",
+      "kind": "POINT",
+      "at": [
+        1.414213562373095,
+        0.0
+      ],
+      "name": "M"
+    },
+    {
+      "id": "V1",
+      "kind": "POINT",
+      "at": [
+        1.414213562373095,
+        2.82842712474619
+      ],
+      "name": "V1"
+    },
+    {
+      "id": "V2",
+      "kind": "POINT",
+      "at": [
+        1.414213562373095,
+        -4.242640687119285
+      ],
+      "name": "V2"
+    },
+    {
+      "id": "C0",
+      "kind": "CIRCLE",
+      "center": [
+        0.0,
+        -0.0
+      ],
+      "radius": 2
+    },
+    {
+      "id": "Cfinal",
+      "kind": "CIRCLE",
+      "center": [
+        3.5355339059327373,
+        -2.1213203435596424
+      ],
+      "radius": 2
+    },
+    {
+      "id": "mirror",
+      "kind": "LINE",
+      "coefficients": [
+        1.414213562373095,
+        0.0,
+        -2
+      ]
+    },
+    {
+      "id": "reflectionStages",
+      "kind": "CONDITION_BOX",
+      "at": [
+        0,
+        0
+      ],
+      "lines": [
+        "1. 반사 A -> B (y=x)",
+        "2. 이동 B -> D (+1,+2)"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        -0.0
+      ],
+      "to": [
+        2.82842712474619,
+        0.0
+      ]
+    },
+    {
+      "id": "BD",
+      "kind": "SEGMENT",
+      "from": [
+        2.82842712474619,
+        0.0
+      ],
+      "to": [
+        3.5355339059327373,
+        -2.1213203435596424
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "A": "A",
+      "B": "B",
+      "D": "D",
+      "M": "M",
+      "V1": "V1",
+      "V2": "V2"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BD": [
+        "B",
+        "D"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "rightAtM",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "M",
+          "V1"
+        ],
+        "value": 90,
+        "marker": "SQUARE",
+        "showLabel": false,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "pointLabelCallouts": {
+      "M": [
+        2.5,
+        0.8
+      ]
+    }
+  }
+}

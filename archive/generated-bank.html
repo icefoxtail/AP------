@@ -44,6 +44,7 @@ img.math-figure{display:block;max-width:100%;max-height:410px;object-fit:contain
 .generated-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
 .generated-actions button{border:1px solid #b8c7d8;border-radius:8px;padding:8px 12px;background:#fff;color:#173d68;font-weight:700;min-height:40px}
 .generated-actions button.primary{color:#fff;background:#1768ba;border-color:#1768ba}
+.generated-actions button.solution-preview{border-color:#7d94ad;color:#244765}
 .generated-actions button:disabled{opacity:.48;cursor:not-allowed}
 .generated-preview{margin-top:16px;padding:18px;border:1px solid #dce5ef;border-radius:12px;background:#fff}
 .generated-preview[hidden]{display:none}
@@ -65,6 +66,8 @@ img.math-figure{display:block;max-width:100%;max-height:410px;object-fit:contain
 </style>
 <script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]},svg:{fontCache:'global'},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
+<script src="archive2-output.js?v=20261010-sol-qpp1-atomicmath-2"></script>
 </head>
 <body>
 <header><div class="header-inner"><a href="workspace.html">Archive 2.0</a><span>모의고사 만들기</span></div></header>
@@ -107,7 +110,7 @@ const SOURCE_EXAMS=Object.freeze({
  "69ad80ffa9ec80b2592bee26ffce247f8d7013d1":{school:"효천고",year:2026,grade:"고1",subject:"공통수학1",semester:1,term:"중간",count:26}
 });
 const UNIT_LABELS=Object.freeze({});
-let rows=[],selectableRows=[],searchableRows=[],excludedHoldUids=new Set(),examChoice=null,busy=false,generatedBusy=false;
+let rows=[],selectableRows=[],searchableRows=[],excludedHoldUids=new Set(),examChoice=null,busy=false,generatedBusy=false,generatedPreviewToken=0;
 const selectedGenerated=new Map();
 const $=id=>document.getElementById(id),positions="①②③④⑤",cache=new Map();
 const status=message=>$("message").textContent=message;
@@ -126,6 +129,15 @@ const isSelectable=row=>{
  const userQuality=row.approval==="USER_DIRECTED_QUALITY_APPROVED"&&String(row.reviewApprovalBasis||"").startsWith("USER_DIRECTED_QUALITY_APPROVED");
  return reviewed||directed||userQuality;
 };
+function isTeacherSession(){
+ try{
+  const session=JSON.parse(localStorage.getItem("APMATH_SESSION")||"null");
+  const role=String(session?.role||session?.user?.role||session?.auth?.role||"").replace(/\s/g,"").toLowerCase();
+  const id=String(session?.id||session?.user?.id||session?.auth?.id||"").replace(/\s/g,"").toLowerCase();
+  const loginId=String(session?.login_id||session?.loginId||session?.user?.login_id||session?.user?.loginId||"").replace(/\s/g,"").toLowerCase();
+  return Boolean(session?.session_token)&&(["teacher","admin","owner"].includes(role)||id==="t_admin"||loginId==="admin");
+ }catch{return false;}
+}
 const unitName=row=>UNIT_LABELS[row.l2]||null;
 async function readJson(path){
  if(typeof path!=="string"||!/^data\/generated-lite-consumer\/v1\/[a-zA-Z0-9_./-]+\.json$/.test(path)||path.includes(".."))throw Error("등록 경로 불일치");
@@ -251,16 +263,46 @@ function renderGeneratedSearch(){
  }
 }
 async function openGeneratedPreview(row){
- const host=$("generated-preview");host.hidden=false;host.replaceChildren();text(host,"문항을 불러오는 중입니다.","p");
+ const host=$("generated-preview"),token=++generatedPreviewToken;host.hidden=false;host.replaceChildren();text(host,"문항을 불러오는 중입니다.","p");
  try{
-  const q=await questionFor(row);host.replaceChildren();text(host,generatedTitle(row),"h3");
+  const q=await questionFor(row);if(token!==generatedPreviewToken)return;host.replaceChildren();text(host,generatedTitle(row),"h3");
   text(host,"원본 문항 q"+row.sourceQid+" · "+row.uid,"p");
   const body=document.createElement("section");body.className="paper-question";questionStem(body,q.content);figure(body,q);
   if(Array.isArray(q.choices))q.choices.forEach((choice,i)=>text(body,positions[i]+" "+choice,"div","choice"));
   host.appendChild(body);
+  if(isTeacherSession()){
+   const solution=document.createElement("button");solution.type="button";solution.className="solution-preview";solution.textContent="교사용 해설 미리보기";
+   solution.addEventListener("click",()=>openGeneratedSolution(row));host.appendChild(solution);
+  }
   const add=document.createElement("button");add.type="button";add.className="primary";add.textContent=selectedGenerated.has(row.uid)?"선택됨":"시험지에 선택";add.disabled=selectedGenerated.has(row.uid);add.addEventListener("click",()=>addGeneratedQuestion(row));host.appendChild(add);
   await math();
- }catch(error){host.replaceChildren();text(host,error.message||"문항을 열지 못했습니다.","p");}
+ }catch(error){if(token!==generatedPreviewToken)return;host.replaceChildren();text(host,error.message||"문항을 열지 못했습니다.","p");}
+}
+async function openGeneratedSolution(row){
+ if(!isTeacherSession()){status("교사 로그인 후 해설을 확인할 수 있습니다.");return;}
+ const popup=window.open("about:blank","_blank");
+ if(!popup){status("팝업을 허용한 뒤 해설을 확인하세요.");return;}
+ let envelope=null;
+ try{
+  const q=await questionFor(row);
+  if(popup.closed)return;
+  if(!isTeacherSession())throw Error("교사 로그인을 확인한 뒤 다시 시도하세요.");
+  const output=window.Archive2Output;
+  if(!output?.publishOutputEnvelope||!output?.outputEnvelopeUrl)throw Error("해설 출력 엔진을 불러오지 못했습니다.");
+  const solutionQuestion={...q,solutionImageSize:"full",solutionImageLayout:"fullwidth"};
+  envelope=await output.publishOutputEnvelope({
+   sourceKind:"generated-bank",sourceId:row.uid,mode:"sol",questionCount:1,questionUids:[row.uid],
+   meta:{title:generatedTitle(row),qpp:1,questionUids:[row.uid]},questions:[solutionQuestion]
+  });
+  if(popup.closed){await output.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);return;}
+  const url=output.outputEnvelopeUrl("mixed_engine.html",location.href,envelope,{preview:true});
+  popup.location.href=url.href;
+  status("교사용 해설 미리보기를 열었습니다.");
+ }catch(error){
+  if(envelope)try{await window.Archive2Output?.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);}catch{}
+  try{if(!popup.closed)popup.close();}catch{}
+  status("해설 미리보기를 열지 못했습니다: "+(error.message||"오류"));
+ }
 }
 function addGeneratedQuestion(row){
  if(!isSelectable(row)){status("학생 선택 승인이 없는 문항입니다.");return;}

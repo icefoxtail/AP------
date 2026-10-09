@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "geometry-publication-audit-v1",
+  "authority": "INDEPENDENT_STATIC_OBSERVER",
+  "publicationAuthorized": false,
+  "renderStatus": "NOT_RUN",
+  "scope": "frozen expected facts versus actual SVG; source-solve correctness and visual review remain external",
+  "svgSha256": "4525501d985730a059c222cb2b68c6f415dbd494fda36edb8b439454cafd2f35",
+  "errors": [],
+  "observations": [
+    {
+      "type": "COORDINATE_EVIDENCE",
+      "mode": "CONSTRUCTED_REALIZATION",
+      "conditionCount": 1,
+      "residualPassCount": 1,
+      "degeneracyPassCount": 6
+    },
+    {
+      "id": "A",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        -1.18010007120215e-11,
+        1.1804019642876456e-11
+      ],
+      "sourceLabel": "A",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "B",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        7.211102550927978,
+        1.1804019642876456e-11
+      ],
+      "sourceLabel": "B",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "M",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        3.6055512754757912,
+        1.1804019642876456e-11
+      ],
+      "sourceLabel": "M",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "X",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        3.6055512754757912,
+        7.211102550916176
+      ],
+      "sourceLabel": "X",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "AB",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          -1.18010007120215e-11,
+          1.1804019642876456e-11
+        ],
+        [
+          7.211102550927978,
+          1.1804019642876456e-11
+        ]
+      ]
+    },
+    {
+      "id": "L_AB",
+      "type": "LINE",
+      "endpoints": [
+        [
+          -2.218800784889113,
+          1.1804019642876456e-11
+        ],
+        [
+          10.816653826380165,
+          1.1804019642876456e-11
+        ]
+      ]
+    },
+    {
+      "id": "L_BIS",
+      "type": "LINE",
+      "endpoints": [
+        [
+          3.6055512754757912,
+          -4.714951667914446
+        ],
+        [
+          3.6055512754757912,
+          8.597853041491051
+        ]
+      ]
+    }
+  ],
+  "sourceSha256": "ead16d17e1fc410a4f0e8d7b81e481fda911c08e06cf7bab5c58d538249204af",
+  "solutionSha256": "ab2f56b37c544ce014e56e00ba170de4c6c60031433dccb1d87543c42fb26815",
+  "reviewSha256": "387756be53844f11f308bb798537e9a45f8456d18a899dff9cab562bc2695588",
+  "coordinateEvidenceMode": "CONSTRUCTED_REALIZATION",
+  "coordinateEvidenceSha256": "63681462e9cf8603763e31f5fa7e5eca06d58b4ee752bedee40ef8fe627694ae",
+  "coverage": {
+    "declaredFacts": 7,
+    "observations": 8,
+    "primitiveCount": 7,
+    "labelCount": 4,
+    "unreviewedPrimitives": 0,
+    "unreviewedLabels": 0
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,733 @@
+{
+  "id": "ALITE-PALMA25-2MID-Q09-A1",
+  "visualType": "coordinate_geometry",
+  "viewport": {
+    "xMin": -1.0,
+    "xMax": 10.0,
+    "yMin": -1.0,
+    "yMax": 10.0,
+    "width": 720,
+    "height": 520,
+    "panel": 420
+  },
+  "axes": false,
+  "title": "내분점과 무게중심",
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "A rigid translation and rotation align two existing mathematically meaningful points with the normalized origin and positive x-axis; unit scale is preserved, and every transformed point is explicitly listed. No helper points are added to the student visual.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "A",
+        "unitScale": 9.0
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "O": [
+          0.0,
+          0.0
+        ],
+        "A": [
+          9.0,
+          0.0
+        ],
+        "B": [
+          3.0,
+          9.0
+        ],
+        "C": [
+          6.0,
+          0.0
+        ],
+        "D": [
+          5.0,
+          6.0
+        ],
+        "E": [
+          1.0,
+          3.0
+        ],
+        "G": [
+          4.0,
+          3.0
+        ]
+      },
+      "conditions": [
+        {
+          "id": "normalizationAxis",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 9.0,
+          "tolerance": 1e-09
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct_O",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "O",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "id": "construct_A",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "A",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "id": "construct_B",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "B",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "id": "construct_C",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "C",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "id": "construct_D",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "D",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "id": "construct_E",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "E",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "id": "construct_G",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "G",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "normalizationAxis",
+          "residual": 0,
+          "tolerance": 1e-09
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct_O_A",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "observed": 9.0,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_O_B",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "observed": 9.486832980505138,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_O_C",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "observed": 6.0,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_O_D",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "D"
+          ],
+          "observed": 7.810249675906654,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_O_E",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "E"
+          ],
+          "observed": 3.1622776601683795,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_O_G",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "G"
+          ],
+          "observed": 5.0,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_A_B",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "observed": 10.816653826391969,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_A_C",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "C"
+          ],
+          "observed": 3.0,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_A_D",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "D"
+          ],
+          "observed": 7.211102550927978,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_A_E",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "E"
+          ],
+          "observed": 8.54400374531753,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_A_G",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "G"
+          ],
+          "observed": 5.830951894845301,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_B_C",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "B",
+            "C"
+          ],
+          "observed": 9.486832980505138,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_B_D",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "B",
+            "D"
+          ],
+          "observed": 3.605551275463989,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_B_E",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "B",
+            "E"
+          ],
+          "observed": 6.324555320336759,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_B_G",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "B",
+            "G"
+          ],
+          "observed": 6.082762530298219,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_C_D",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "C",
+            "D"
+          ],
+          "observed": 6.082762530298219,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_C_E",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "C",
+            "E"
+          ],
+          "observed": 5.830951894845301,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_C_G",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "C",
+            "G"
+          ],
+          "observed": 3.605551275463989,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_D_E",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "D",
+            "E"
+          ],
+          "observed": 5.0,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_D_G",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "D",
+            "G"
+          ],
+          "observed": 3.1622776601683795,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_E_G",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "E",
+            "G"
+          ],
+          "observed": 3.0,
+          "minimum": 1e-09
+        }
+      ]
+    },
+    "questionUid": "ALITE-PALMA25-2MID-Q09-A1",
+    "sourceToVisualFrame": {
+      "origin": [
+        0,
+        0
+      ],
+      "ex": [
+        1.0,
+        0.0
+      ],
+      "ey": [
+        -0.0,
+        1.0
+      ]
+    }
+  },
+  "derivedFacts": {
+    "answerCheck": "C=(6,0), D=(5,6), E=(1,3), G=(4,3), a+b=7",
+    "coordinateFrame": [
+      "O",
+      "A"
+    ]
+  },
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        9.0,
+        0.0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        3.0,
+        9.0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        6.0,
+        0.0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "D",
+      "kind": "POINT",
+      "at": [
+        5.0,
+        6.0
+      ],
+      "name": "D"
+    },
+    {
+      "id": "E",
+      "kind": "POINT",
+      "at": [
+        1.0,
+        3.0
+      ],
+      "name": "E"
+    },
+    {
+      "id": "G",
+      "kind": "POINT",
+      "at": [
+        4.0,
+        3.0
+      ],
+      "name": "G"
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        9.0,
+        0.0
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        9.0,
+        0.0
+      ],
+      "to": [
+        3.0,
+        9.0
+      ]
+    },
+    {
+      "id": "BO",
+      "kind": "SEGMENT",
+      "from": [
+        3.0,
+        9.0
+      ],
+      "to": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "CD",
+      "kind": "SEGMENT",
+      "from": [
+        6.0,
+        0.0
+      ],
+      "to": [
+        5.0,
+        6.0
+      ]
+    },
+    {
+      "id": "DE",
+      "kind": "SEGMENT",
+      "from": [
+        5.0,
+        6.0
+      ],
+      "to": [
+        1.0,
+        3.0
+      ]
+    },
+    {
+      "id": "EC",
+      "kind": "SEGMENT",
+      "from": [
+        1.0,
+        3.0
+      ],
+      "to": [
+        6.0,
+        0.0
+      ]
+    },
+    {
+      "id": "OC",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        6.0,
+        0.0
+      ]
+    },
+    {
+      "id": "CA",
+      "kind": "SEGMENT",
+      "from": [
+        6.0,
+        0.0
+      ],
+      "to": [
+        9.0,
+        0.0
+      ]
+    },
+    {
+      "id": "AD",
+      "kind": "SEGMENT",
+      "from": [
+        9.0,
+        0.0
+      ],
+      "to": [
+        5.0,
+        6.0
+      ]
+    },
+    {
+      "id": "DB",
+      "kind": "SEGMENT",
+      "from": [
+        5.0,
+        6.0
+      ],
+      "to": [
+        3.0,
+        9.0
+      ]
+    },
+    {
+      "id": "BE",
+      "kind": "SEGMENT",
+      "from": [
+        3.0,
+        9.0
+      ],
+      "to": [
+        1.0,
+        3.0
+      ]
+    },
+    {
+      "id": "EO",
+      "kind": "SEGMENT",
+      "from": [
+        1.0,
+        3.0
+      ],
+      "to": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "ratioFacts",
+      "kind": "CONDITION_BOX",
+      "at": [
+        0,
+        0
+      ],
+      "lines": [
+        "OC: 6, CA: 3",
+        "OC:CA=2:1",
+        "AD: 2·√(13), DB: √(13)",
+        "AD:DB=2:1",
+        "BE: 2·√(10), EO: √(10)",
+        "BE:EO=2:1"
+      ],
+      "priority": 1
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "O": "O",
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D",
+      "E": "E",
+      "G": "G"
+    },
+    "segmentPointRefs": {
+      "OA": [
+        "O",
+        "A"
+      ],
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BO": [
+        "B",
+        "O"
+      ],
+      "CD": [
+        "C",
+        "D"
+      ],
+      "DE": [
+        "D",
+        "E"
+      ],
+      "EC": [
+        "E",
+        "C"
+      ],
+      "OC": [
+        "O",
+        "C"
+      ],
+      "CA": [
+        "C",
+        "A"
+      ],
+      "AD": [
+        "A",
+        "D"
+      ],
+      "DB": [
+        "D",
+        "B"
+      ],
+      "BE": [
+        "B",
+        "E"
+      ],
+      "EO": [
+        "E",
+        "O"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "OC_len",
+        "kind": "LENGTH",
+        "owner": "OC",
+        "value": 6,
+        "text": "6",
+        "mode": "ADJACENT",
+        "labelPlacement": "CONDITION_BOX",
+        "conditionBoxId": "ratioFacts",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "CA_len",
+        "kind": "LENGTH",
+        "owner": "CA",
+        "value": 3,
+        "text": "3",
+        "mode": "ADJACENT",
+        "labelPlacement": "CONDITION_BOX",
+        "conditionBoxId": "ratioFacts",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AD_len",
+        "kind": "LENGTH",
+        "owner": "AD",
+        "value": 7.211102550927978,
+        "text": "2*sqrt(13)",
+        "mode": "ADJACENT",
+        "labelPlacement": "CONDITION_BOX",
+        "conditionBoxId": "ratioFacts",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "DB_len",
+        "kind": "LENGTH",
+        "owner": "DB",
+        "value": 3.605551275463989,
+        "text": "sqrt(13)",
+        "mode": "ADJACENT",
+        "labelPlacement": "CONDITION_BOX",
+        "conditionBoxId": "ratioFacts",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BE_len",
+        "kind": "LENGTH",
+        "owner": "BE",
+        "value": 6.324555320336759,
+        "text": "2*sqrt(10)",
+        "mode": "ADJACENT",
+        "labelPlacement": "CONDITION_BOX",
+        "conditionBoxId": "ratioFacts",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "EO_len",
+        "kind": "LENGTH",
+        "owner": "EO",
+        "value": 3.1622776601683795,
+        "text": "sqrt(10)",
+        "mode": "ADJACENT",
+        "labelPlacement": "CONDITION_BOX",
+        "conditionBoxId": "ratioFacts",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

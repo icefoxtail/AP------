@@ -88,6 +88,7 @@
         let cols;
         let colIdx = 0;
         let solutionPageNo = 0;
+        const singleColumn = Number(appState?.qpp) === 1;
         let solutionUsableHeight = 0;
         let solutionPlacementOrder = 0;
         const solutionOccurrences = new Map();
@@ -131,21 +132,21 @@
         const makeGridPage = () => {
             const p = deps.makePage(area, 'sol', pNum++);
             const grid = document.createElement('div');
-            grid.className = 'grid-container';
+            grid.className = `grid-container${singleColumn ? ' sol-fullwidth-grid' : ''}`;
             const l = document.createElement('div');
-            l.className = 'grid-col sol-grid-col';
+            l.className = `grid-col sol-grid-col${singleColumn ? ' sol-fullwidth-column' : ''}`;
             const r = document.createElement('div');
             r.className = 'grid-col sol-grid-col';
             grid.appendChild(l);
-            grid.appendChild(r);
+            if (!singleColumn) grid.appendChild(r);
             p.body.appendChild(grid);
             solutionPageNo = pNum - 1;
             solutionUsableHeight = Math.max(solutionUsableHeight, Number(p.body.clientHeight || 1));
-            return { p, cols: [l, r] };
+            return { p, cols: singleColumn ? [l] : [l, r] };
         };
 
         const advanceColumn = () => {
-            if (colIdx === 0) colIdx = 1;
+            if (colIdx === 0 && cols.length > 1) colIdx = 1;
             else {
                 ({ cols } = makeGridPage());
                 colIdx = 0;
@@ -345,7 +346,7 @@
             appState.solutionDecisionLedger = {
                 mode: 'solution',
                 usableHeight: Math.max(1, solutionUsableHeight),
-                columns: 2,
+                columns: singleColumn ? 1 : 2,
                 blockGap: 0,
                 blocks: Object.freeze(solutionDecisionBlocks.map(block => Object.freeze({
                     ...block,

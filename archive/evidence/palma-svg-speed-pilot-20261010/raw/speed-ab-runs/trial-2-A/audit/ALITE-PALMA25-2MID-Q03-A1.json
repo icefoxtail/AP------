@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "geometry-publication-audit-v1",
+  "authority": "INDEPENDENT_STATIC_OBSERVER",
+  "publicationAuthorized": false,
+  "renderStatus": "NOT_RUN",
+  "scope": "frozen expected facts versus actual SVG; source-solve correctness and visual review remain external",
+  "svgSha256": "de5d82b1a235cd6a3ec4a593e6536773803bf93fea27634fa29222f6db786cad",
+  "errors": [],
+  "observations": [
+    {
+      "type": "COORDINATE_EVIDENCE",
+      "mode": "CONSTRUCTED_REALIZATION",
+      "conditionCount": 1,
+      "residualPassCount": 1,
+      "degeneracyPassCount": 1
+    },
+    {
+      "id": "O",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        0.0,
+        0.0
+      ],
+      "sourceLabel": "C",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "T",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        4.000000000000001,
+        0.0
+      ],
+      "sourceLabel": "T",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "radius",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          4.000000000000001,
+          0.0
+        ]
+      ]
+    },
+    {
+      "id": "C",
+      "type": "CIRCLE",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "radius": 4.0
+    },
+    {
+      "id": "T_on_C",
+      "type": "CIRCLE_INCIDENCE",
+      "point": "T",
+      "circle": "C",
+      "observedPoint": [
+        4.000000000000001,
+        0.0
+      ],
+      "observedCenter": [
+        0.0,
+        0.0
+      ],
+      "observedRadius": 4.0,
+      "radialDelta": 8.881784197001252e-16
+    },
+    {
+      "id": "radiusValue",
+      "type": "LENGTH",
+      "ownerSegment": "radius",
+      "observedLength": 4.000000000000001,
+      "projectionFraction": 0.5,
+      "offsetPx": 20.0,
+      "labelPlacement": "OWNER_SEGMENT"
+    }
+  ],
+  "sourceSha256": "eafd8de0ba37dac4144a0e259554ef4aeee66fe5cf4b16d975277711ef93572d",
+  "solutionSha256": "31124d9b656e0fb59e008d230c083c905abbf9bd5fa55480e93d113b7525f662",
+  "reviewSha256": "f759673e2027f0e956544c882db1b0b080149747a6374052bb0bc9af5d61cd98",
+  "coordinateEvidenceMode": "CONSTRUCTED_REALIZATION",
+  "coordinateEvidenceSha256": "6fc25a98f0bb5fffdf2391eb90f78b58f2cd530f5ac8ba135175ab23606b34dd",
+  "coverage": {
+    "declaredFacts": 6,
+    "observations": 7,
+    "primitiveCount": 4,
+    "labelCount": 3,
+    "unreviewedPrimitives": 0,
+    "unreviewedLabels": 0
+  },
+  "status": "PASS"
+}

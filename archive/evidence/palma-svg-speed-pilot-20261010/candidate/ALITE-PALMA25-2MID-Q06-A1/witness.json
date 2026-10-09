@@ -1,0 +1,202 @@
+{
+  "engineVersion": "geometry-visual-v1",
+  "authority": "BUILD_SIDE_ONLY",
+  "publicationAuthorized": false,
+  "classification": "STANDARD",
+  "visualSpecSha256": "51f7602107f2bb1575f16272138f10ce7d62ebaf858d8277270063716b4d83f8",
+  "normalizedSvgSha256": "56c82ff96f8c33abf3f85b6d49150d203babd0ec9a85e052920216593f2fa52b",
+  "texSha256": "908cb5f5ec5fa835621d0ce9c2958413cdc83f5f7283e16417783719719c3df0",
+  "coordinateModel": {
+    "originX": 250.0,
+    "originY": 210.0,
+    "sx": 22.921004536878215,
+    "sy": 22.921004536878215,
+    "aspectPolicy": "EQUAL_UNIT"
+  },
+  "relations": [
+    {
+      "id": "TangPlus",
+      "kind": "TANGENT",
+      "status": "PASS",
+      "observed": [
+        3.6055512754639896,
+        0.0
+      ]
+    },
+    {
+      "id": "TangMinus",
+      "kind": "TANGENT",
+      "status": "PASS",
+      "observed": [
+        -3.6055512754639896,
+        0.0
+      ]
+    }
+  ],
+  "layout": {
+    "labels": [
+      {
+        "id": "O-name",
+        "kind": "POINT_NAME",
+        "target": "O",
+        "text": "O",
+        "at": [
+          250.0,
+          210.0
+        ],
+        "font": 16.0,
+        "priority": 1,
+        "allowSuppress": false,
+        "owner": "O",
+        "sourceLabel": "O",
+        "allowPanel": false,
+        "gaps": [
+          10,
+          16,
+          24
+        ],
+        "directions": [
+          "N",
+          "NE",
+          "E",
+          "SE",
+          "S",
+          "SW",
+          "W",
+          "NW"
+        ],
+        "box": {
+          "x": 260.0,
+          "y": 176.0,
+          "width": 10.56,
+          "height": 24.0
+        },
+        "baseline": [
+          260.0,
+          195.2
+        ],
+        "placement": "COORDINATE_RELOCATION_NE"
+      },
+      {
+        "id": "Tminus-name",
+        "kind": "POINT_NAME",
+        "target": "Tminus",
+        "text": "T₋",
+        "at": [
+          167.3571428571429,
+          210.0
+        ],
+        "font": 16.0,
+        "priority": 1,
+        "allowSuppress": false,
+        "owner": "Tminus",
+        "sourceLabel": "T₋",
+        "allowPanel": false,
+        "gaps": [
+          10,
+          16,
+          24
+        ],
+        "directions": [
+          "N",
+          "NE",
+          "E",
+          "SE",
+          "S",
+          "SW",
+          "W",
+          "NW"
+        ],
+        "box": {
+          "x": 177.3571428571429,
+          "y": 198.0,
+          "width": 26.560000000000002,
+          "height": 24.0
+        },
+        "baseline": [
+          177.3571428571429,
+          217.2
+        ],
+        "placement": "COORDINATE_RELOCATION_E"
+      },
+      {
+        "id": "Tplus-name",
+        "kind": "POINT_NAME",
+        "target": "Tplus",
+        "text": "T₊",
+        "at": [
+          332.6428571428571,
+          210.0
+        ],
+        "font": 16.0,
+        "priority": 1,
+        "allowSuppress": false,
+        "owner": "Tplus",
+        "sourceLabel": "T₊",
+        "allowPanel": false,
+        "gaps": [
+          10,
+          16,
+          24
+        ],
+        "directions": [
+          "N",
+          "NE",
+          "E",
+          "SE",
+          "S",
+          "SW",
+          "W",
+          "NW"
+        ],
+        "box": {
+          "x": 342.6428571428571,
+          "y": 176.0,
+          "width": 26.560000000000002,
+          "height": 24.0
+        },
+        "baseline": [
+          342.6428571428571,
+          195.2
+        ],
+        "placement": "COORDINATE_RELOCATION_NE"
+      }
+    ],
+    "suppressed": [],
+    "unresolved": [],
+    "trace": [
+      {
+        "id": "O-name",
+        "fallback": "COORDINATE_RELOCATION_NE"
+      },
+      {
+        "id": "Tminus-name",
+        "fallback": "COORDINATE_RELOCATION_E"
+      },
+      {
+        "id": "Tplus-name",
+        "fallback": "COORDINATE_RELOCATION_NE"
+      }
+    ],
+    "repairs": [],
+    "leaders": [],
+    "status": "PASS",
+    "basis": "APPROXIMATE_BUILD_SIDE_ONLY",
+    "publicationWarnings": []
+  },
+  "sampling": [],
+  "semanticStatus": "PASS",
+  "status": "CANDIDATE_REQUIRES_QA",
+  "publicationProfile": "geometry-publication-v1",
+  "requiredGates": [
+    "INDEPENDENT_PUBLICATION_AUDIT",
+    "RENDERED_LAYOUT",
+    "ARCHIVE_MODE_SOL_390",
+    "INDEPENDENT_VISUAL_REVIEW"
+  ],
+  "publicationSpecSha256": "9467fc4566a0f93aa88bcdd007254ccdd7a9a87a194bc81ed0bd33950a56d9fb",
+  "coordinateEvidenceMode": "CONSTRUCTED_REALIZATION",
+  "coordinateEvidenceSha256": "60691bcb55e8174168302a8514e3974e54beb6816e6b042901389db7086f7a32",
+  "texStatus": "LEGACY_DRAFT_NOT_PUBLICATION_PARITY",
+  "semanticWitnessSha256": "d26c873671cc352705ab5a57276bcf73cc30532188a04bba3811d76efc4b2646"
+}

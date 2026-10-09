@@ -1,0 +1,479 @@
+{
+  "id": "ALITE-PALMA25-2MID-Q12-A1",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -6.3,
+    "xMax": 11.9,
+    "yMin": -9.5,
+    "yMax": 8.7,
+    "width": 520,
+    "height": 460,
+    "panel": 0
+  },
+  "axes": false,
+  "title": "접점현과 중심에서의 거리",
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "A rigid translation and rotation align two existing mathematically meaningful points with the normalized origin and positive x-axis; unit scale is preserved, and every transformed point is explicitly listed. No helper points are added to the student visual.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "A",
+        "unitScale": 10.0
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "O": [
+          0.0,
+          0.0
+        ],
+        "A": [
+          10.0,
+          -8.881784197001252e-16
+        ],
+        "H": [
+          3.0,
+          -2.220446049250313e-16
+        ],
+        "P": [
+          3.0000000000000004,
+          4.582575694955841
+        ],
+        "Q": [
+          3.0,
+          -4.582575694955841
+        ]
+      },
+      "conditions": [
+        {
+          "id": "normalizationAxis",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 10.0,
+          "tolerance": 1e-09
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct_O",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "O",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "id": "construct_A",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "A",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "id": "construct_H",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "H",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "id": "construct_P",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "P",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "id": "construct_Q",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "Q",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "normalizationAxis",
+          "residual": 0,
+          "tolerance": 1e-09
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct_O_A",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "observed": 10.0,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_O_H",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "H"
+          ],
+          "observed": 3.0,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_O_P",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "P"
+          ],
+          "observed": 5.477225575051662,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_O_Q",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "Q"
+          ],
+          "observed": 5.477225575051662,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_A_H",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "H"
+          ],
+          "observed": 7.0,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_A_P",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "P"
+          ],
+          "observed": 8.366600265340756,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_A_Q",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "Q"
+          ],
+          "observed": 8.366600265340756,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_H_P",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "H",
+            "P"
+          ],
+          "observed": 4.582575694955841,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_H_Q",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "H",
+            "Q"
+          ],
+          "observed": 4.582575694955841,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_P_Q",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "P",
+            "Q"
+          ],
+          "observed": 9.165151389911681,
+          "minimum": 1e-09
+        }
+      ]
+    },
+    "questionUid": "ALITE-PALMA25-2MID-Q12-A1",
+    "sourceToVisualFrame": {
+      "origin": [
+        0,
+        0
+      ],
+      "ex": [
+        0.6,
+        0.8
+      ],
+      "ey": [
+        -0.8,
+        0.6
+      ]
+    }
+  },
+  "derivedFacts": {
+    "answerCheck": "A=(6,8), r=sqrt(30), chord PQ:6x+8y=30; center-line distance=3",
+    "coordinateFrame": [
+      "O",
+      "A"
+    ]
+  },
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        10.0,
+        -8.881784197001252e-16
+      ],
+      "name": "A"
+    },
+    {
+      "id": "H",
+      "kind": "POINT",
+      "at": [
+        3.0,
+        -2.220446049250313e-16
+      ],
+      "name": "H"
+    },
+    {
+      "id": "P",
+      "kind": "POINT",
+      "at": [
+        3.0000000000000004,
+        4.582575694955841
+      ],
+      "name": "P"
+    },
+    {
+      "id": "Q",
+      "kind": "POINT",
+      "at": [
+        3.0,
+        -4.582575694955841
+      ],
+      "name": "Q"
+    },
+    {
+      "id": "C",
+      "kind": "CIRCLE",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "radius": 5.477225575051661
+    },
+    {
+      "id": "chord",
+      "kind": "LINE",
+      "coefficients": [
+        10.0,
+        -8.881784197001252e-16,
+        -30
+      ]
+    },
+    {
+      "id": "AP",
+      "kind": "SEGMENT",
+      "from": [
+        10.0,
+        -8.881784197001252e-16
+      ],
+      "to": [
+        3.0000000000000004,
+        4.582575694955841
+      ]
+    },
+    {
+      "id": "AQ",
+      "kind": "SEGMENT",
+      "from": [
+        10.0,
+        -8.881784197001252e-16
+      ],
+      "to": [
+        3.0,
+        -4.582575694955841
+      ]
+    },
+    {
+      "id": "OP",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        3.0000000000000004,
+        4.582575694955841
+      ]
+    },
+    {
+      "id": "OQ",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        3.0,
+        -4.582575694955841
+      ]
+    },
+    {
+      "id": "OH",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        3.0,
+        -2.220446049250313e-16
+      ]
+    },
+    {
+      "id": "PQ",
+      "kind": "SEGMENT",
+      "from": [
+        3.0000000000000004,
+        4.582575694955841
+      ],
+      "to": [
+        3.0,
+        -4.582575694955841
+      ]
+    },
+    {
+      "id": "tangentP",
+      "kind": "LINE",
+      "coefficients": [
+        3.0000000000000004,
+        4.582575694955841,
+        -30.000000000000004
+      ]
+    },
+    {
+      "id": "tangentPRelation",
+      "kind": "TANGENT",
+      "refs": [
+        "tangentP",
+        "C"
+      ],
+      "at": [
+        3.0000000000000004,
+        4.582575694955841
+      ]
+    },
+    {
+      "id": "tangentQ",
+      "kind": "LINE",
+      "coefficients": [
+        3.0,
+        -4.582575694955841,
+        -30.000000000000004
+      ]
+    },
+    {
+      "id": "tangentQRelation",
+      "kind": "TANGENT",
+      "refs": [
+        "tangentQ",
+        "C"
+      ],
+      "at": [
+        3.0,
+        -4.582575694955841
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "O": "O",
+      "A": "A",
+      "H": "H",
+      "P": "P",
+      "Q": "Q"
+    },
+    "segmentPointRefs": {
+      "AP": [
+        "A",
+        "P"
+      ],
+      "AQ": [
+        "A",
+        "Q"
+      ],
+      "OP": [
+        "O",
+        "P"
+      ],
+      "OQ": [
+        "O",
+        "Q"
+      ],
+      "OH": [
+        "O",
+        "H"
+      ],
+      "PQ": [
+        "P",
+        "Q"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "centerDistance",
+        "kind": "LENGTH",
+        "owner": "OH",
+        "value": 3,
+        "text": "3",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "rightAtH",
+        "kind": "ANGLE",
+        "refs": [
+          "P",
+          "H",
+          "O"
+        ],
+        "value": 90,
+        "marker": "SQUARE",
+        "showLabel": false,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

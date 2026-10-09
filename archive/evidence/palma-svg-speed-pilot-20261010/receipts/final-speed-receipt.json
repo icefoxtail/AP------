@@ -1,0 +1,791 @@
+{
+  "schemaVersion": "PALMA_V8_CANDIDATE_A_B_RUNTIME_SPEED_RECEIPT_V1",
+  "status": "PASS",
+  "scope": {
+    "candidateManifestPath": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/manifest.json",
+    "candidateManifestSha256": "931B258A337CD0EE81D5B5D76B8051291672A7A39C91742BB7BF48C4B6266736",
+    "frozenInputManifestPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/frozen-input-manifest.json",
+    "frozenInputManifestSha256": "02004A28442DB078F4C0E8B3B3A01D07B701AEBBF15B56812038FC0EA252EE1C",
+    "candidateCount": 10,
+    "generatedUids": [
+      "ALITE-PALMA25-2MID-Q03-A1",
+      "ALITE-PALMA25-2MID-Q05-A1",
+      "ALITE-PALMA25-2MID-Q06-A1",
+      "ALITE-PALMA25-2MID-Q07-A1",
+      "ALITE-PALMA25-2MID-Q09-A1",
+      "ALITE-PALMA25-2MID-Q12-A1",
+      "ALITE-PALMA25-2MID-Q15-A1",
+      "ALITE-PALMA25-B04-Q17-C01",
+      "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY",
+      "ALITE-B01-2025PALMA-0005"
+    ],
+    "engineProfile": "geometry-publication-v1 existing approved code path; no new engine",
+    "publicationAuthorization": false,
+    "claimBoundary": "This receipt records repeatable local speed and QA evidence only; it does not change the candidate manifest publicationAuthorized=false."
+  },
+  "comparison": {
+    "definitionA": "Ten individual Python process invocations, one spec per engine call, plus ten independent Chrome sessions for layout render.",
+    "definitionB": "One Python process builds the same ten specs sequentially, plus one reused Chrome session renders each final SVG sequentially. Every other check remains enabled and runs for every UID in both arms.",
+    "sharedWork": "Five recorded deterministic post-placement steps and ten independent static publication audits in each arm; ten actual Chrome display-size geometry/layout/font captures in each arm.",
+    "actualDisplayBasis": "Per-UID qpp1 physical output image box captured in strict v8 Chrome review; desktop publication viewport 1280x900.",
+    "roundOrder": [
+      "A-then-B",
+      "B-then-A",
+      "A-then-B"
+    ],
+    "equivalenceReportPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/comparison-report.json",
+    "equivalenceReportSha256": "C39982881CFCD7600E349CA25BFC2A733A0747CB0BFC52CFEF9B383624B5C66E",
+    "overallEquivalencePass": true,
+    "exactFinalSvgShaParity": true,
+    "exactEngineSvgAndWitnessParity": true,
+    "staticGeometryObservationAndCoverageParity": true,
+    "actualDomGeometryBBoxLayoutFontCaptureParity": true,
+    "screenshotShaParity": true,
+    "rounds": [
+      {
+        "trial": 1,
+        "order": "A-then-B",
+        "pass": true,
+        "itemCount": 10,
+        "engineFinalStaticRenderAllUidPass": true,
+        "exactScreenshotParity": true,
+        "armTimesNs": {
+          "A": 12392971300,
+          "B": 6499759700
+        },
+        "engineStageNs": {
+          "A": 1685667100,
+          "B": 213532900
+        },
+        "chromeStageNs": {
+          "A": 8485391800,
+          "B": 4072373800
+        },
+        "uidPassCount": 10
+      },
+      {
+        "trial": 2,
+        "order": "B-then-A",
+        "pass": true,
+        "itemCount": 10,
+        "engineFinalStaticRenderAllUidPass": true,
+        "exactScreenshotParity": true,
+        "armTimesNs": {
+          "A": 12412969700,
+          "B": 6569684700
+        },
+        "engineStageNs": {
+          "A": 1702892000,
+          "B": 203281000
+        },
+        "chromeStageNs": {
+          "A": 8565281200,
+          "B": 4192243500
+        },
+        "uidPassCount": 10
+      },
+      {
+        "trial": 3,
+        "order": "A-then-B",
+        "pass": true,
+        "itemCount": 10,
+        "engineFinalStaticRenderAllUidPass": true,
+        "exactScreenshotParity": true,
+        "armTimesNs": {
+          "A": 13315882400,
+          "B": 7219153600
+        },
+        "engineStageNs": {
+          "A": 1969458900,
+          "B": 227954400
+        },
+        "chromeStageNs": {
+          "A": 8979846100,
+          "B": 4617869200
+        },
+        "uidPassCount": 10
+      }
+    ]
+  },
+  "measurements": {
+    "clockSources": {
+      "outerProcessAndStage": "Node.js process.hrtime.bigint()",
+      "pythonEngine": "Python time.perf_counter_ns()"
+    },
+    "environment": {
+      "platform": "win32",
+      "release": "10.0.26200",
+      "nodeVersion": "v24.14.1",
+      "pythonVersion": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "chromeVersion": "154.0.8037.98"
+    },
+    "stageStatisticsNs": {
+      "A": {
+        "totalElapsedNs": {
+          "count": 3,
+          "valuesNs": [
+            12392971300,
+            12412969700,
+            13315882400
+          ],
+          "meanNs": 12707274466.666666,
+          "medianNs": 12412969700,
+          "minNs": 12392971300,
+          "maxNs": 13315882400
+        },
+        "engineStageNs": {
+          "count": 3,
+          "valuesNs": [
+            1685667100,
+            1702892000,
+            1969458900
+          ],
+          "meanNs": 1786006000,
+          "medianNs": 1702892000,
+          "minNs": 1685667100,
+          "maxNs": 1969458900
+        },
+        "postplacementStageNs": {
+          "count": 3,
+          "valuesNs": [
+            706341800,
+            690046400,
+            804777500
+          ],
+          "meanNs": 733721900,
+          "medianNs": 706341800,
+          "minNs": 690046400,
+          "maxNs": 804777500
+        },
+        "staticAuditStageNs": {
+          "count": 3,
+          "valuesNs": [
+            1515167700,
+            1454372400,
+            1561361100
+          ],
+          "meanNs": 1510300400,
+          "medianNs": 1515167700,
+          "minNs": 1454372400,
+          "maxNs": 1561361100
+        },
+        "actualChromeStageNs": {
+          "count": 3,
+          "valuesNs": [
+            8485391800,
+            8565281200,
+            8979846100
+          ],
+          "meanNs": 8676839700,
+          "medianNs": 8565281200,
+          "minNs": 8485391800,
+          "maxNs": 8979846100
+        }
+      },
+      "B": {
+        "totalElapsedNs": {
+          "count": 3,
+          "valuesNs": [
+            6499759700,
+            6569684700,
+            7219153600
+          ],
+          "meanNs": 6762866000,
+          "medianNs": 6569684700,
+          "minNs": 6499759700,
+          "maxNs": 7219153600
+        },
+        "engineStageNs": {
+          "count": 3,
+          "valuesNs": [
+            213532900,
+            203281000,
+            227954400
+          ],
+          "meanNs": 214922766.66666666,
+          "medianNs": 213532900,
+          "minNs": 203281000,
+          "maxNs": 227954400
+        },
+        "postplacementStageNs": {
+          "count": 3,
+          "valuesNs": [
+            654884000,
+            677647000,
+            778910300
+          ],
+          "meanNs": 703813766.6666666,
+          "medianNs": 677647000,
+          "minNs": 654884000,
+          "maxNs": 778910300
+        },
+        "staticAuditStageNs": {
+          "count": 3,
+          "valuesNs": [
+            1558518400,
+            1496040800,
+            1594007900
+          ],
+          "meanNs": 1549522366.6666667,
+          "medianNs": 1558518400,
+          "minNs": 1496040800,
+          "maxNs": 1594007900
+        },
+        "actualChromeStageNs": {
+          "count": 3,
+          "valuesNs": [
+            4072373800,
+            4192243500,
+            4617869200
+          ],
+          "meanNs": 4294162166.6666665,
+          "medianNs": 4192243500,
+          "minNs": 4072373800,
+          "maxNs": 4617869200
+        }
+      }
+    },
+    "meanSpeedupFactorAOverB": {
+      "totalElapsedNs": 1.878977709548979,
+      "engineStageNs": 8.309989805640258,
+      "postplacementStageNs": 1.0424943852334423,
+      "staticAuditStageNs": 0.9746877053791478,
+      "actualChromeStageNs": 2.0206129538734623
+    },
+    "countsPerArmPerRound": {
+      "engineBuilds": 10,
+      "postplacementPasses": 5,
+      "staticAudits": 10,
+      "actualChromeRenders": 10,
+      "screenshots": 10
+    },
+    "perTrialRuns": [
+      {
+        "trial": 1,
+        "arm": "A",
+        "reportPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-A/arm-report.json",
+        "reportSha256": "0BB078CC294E698EBE7548C98199171EA4614757FFB3B4F301A6132EFE2B2581",
+        "overallPass": true,
+        "counts": {
+          "builds": 10,
+          "postplacements": 5,
+          "staticAudits": 10,
+          "actualChromeRenders": 10
+        },
+        "timings": {
+          "totalElapsedNs": 12392971300,
+          "engineStageNs": 1685667100,
+          "postplacementStageNs": 706341800,
+          "staticAuditStageNs": 1515167700,
+          "actualChromeStageNs": 8485391800
+        },
+        "allFinalSvgHashesMatchV8": true,
+        "allStaticAuditsPass": true,
+        "allActualRendersPass": true
+      },
+      {
+        "trial": 1,
+        "arm": "B",
+        "reportPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/arm-report.json",
+        "reportSha256": "794D10F007C472B5487E655E6D0AEB5F1F1D7EA2EE8EB7CA3357188CD1B2204E",
+        "overallPass": true,
+        "counts": {
+          "builds": 10,
+          "postplacements": 5,
+          "staticAudits": 10,
+          "actualChromeRenders": 10
+        },
+        "timings": {
+          "totalElapsedNs": 6499759700,
+          "engineStageNs": 213532900,
+          "postplacementStageNs": 654884000,
+          "staticAuditStageNs": 1558518400,
+          "actualChromeStageNs": 4072373800
+        },
+        "allFinalSvgHashesMatchV8": true,
+        "allStaticAuditsPass": true,
+        "allActualRendersPass": true
+      },
+      {
+        "trial": 2,
+        "arm": "A",
+        "reportPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-2-A/arm-report.json",
+        "reportSha256": "6FF5B36CFB451AD23EA0F8BB15B13CA7EAB242FAE71C04D68BC89EF88DDA525E",
+        "overallPass": true,
+        "counts": {
+          "builds": 10,
+          "postplacements": 5,
+          "staticAudits": 10,
+          "actualChromeRenders": 10
+        },
+        "timings": {
+          "totalElapsedNs": 12412969700,
+          "engineStageNs": 1702892000,
+          "postplacementStageNs": 690046400,
+          "staticAuditStageNs": 1454372400,
+          "actualChromeStageNs": 8565281200
+        },
+        "allFinalSvgHashesMatchV8": true,
+        "allStaticAuditsPass": true,
+        "allActualRendersPass": true
+      },
+      {
+        "trial": 2,
+        "arm": "B",
+        "reportPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-2-B/arm-report.json",
+        "reportSha256": "DB28E13EF5EB88F638ABB1A357B363D948245E0845764BFCADA4D3C7125BAB38",
+        "overallPass": true,
+        "counts": {
+          "builds": 10,
+          "postplacements": 5,
+          "staticAudits": 10,
+          "actualChromeRenders": 10
+        },
+        "timings": {
+          "totalElapsedNs": 6569684700,
+          "engineStageNs": 203281000,
+          "postplacementStageNs": 677647000,
+          "staticAuditStageNs": 1496040800,
+          "actualChromeStageNs": 4192243500
+        },
+        "allFinalSvgHashesMatchV8": true,
+        "allStaticAuditsPass": true,
+        "allActualRendersPass": true
+      },
+      {
+        "trial": 3,
+        "arm": "A",
+        "reportPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-3-A/arm-report.json",
+        "reportSha256": "421E8BE6125B692299AEC07E298E00A9D05FD21A0602301F598B00920C4BB72E",
+        "overallPass": true,
+        "counts": {
+          "builds": 10,
+          "postplacements": 5,
+          "staticAudits": 10,
+          "actualChromeRenders": 10
+        },
+        "timings": {
+          "totalElapsedNs": 13315882400,
+          "engineStageNs": 1969458900,
+          "postplacementStageNs": 804777500,
+          "staticAuditStageNs": 1561361100,
+          "actualChromeStageNs": 8979846100
+        },
+        "allFinalSvgHashesMatchV8": true,
+        "allStaticAuditsPass": true,
+        "allActualRendersPass": true
+      },
+      {
+        "trial": 3,
+        "arm": "B",
+        "reportPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-3-B/arm-report.json",
+        "reportSha256": "A74C81C546F37246F53B3749FFC40002EDDE2B3D855C6CA7148015038F052279",
+        "overallPass": true,
+        "counts": {
+          "builds": 10,
+          "postplacements": 5,
+          "staticAudits": 10,
+          "actualChromeRenders": 10
+        },
+        "timings": {
+          "totalElapsedNs": 7219153600,
+          "engineStageNs": 227954400,
+          "postplacementStageNs": 778910300,
+          "staticAuditStageNs": 1594007900,
+          "actualChromeStageNs": 4617869200
+        },
+        "allFinalSvgHashesMatchV8": true,
+        "allStaticAuditsPass": true,
+        "allActualRendersPass": true
+      }
+    ],
+    "fullAIElapsed": "NOT_CAPTURED",
+    "authoringElapsed": "NOT_CAPTURED",
+    "independentReviewElapsed": "NOT_CAPTURED",
+    "aiRepairCount": "NOT_CAPTURED",
+    "knownRecordedLayoutAdjustments": 5,
+    "knownRecordedLayoutAdjustmentEvidence": {
+      "layoutPatchPath": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/layout-patch-v5.json",
+      "layoutPatchSha256": "86C6083B314385F17E5B44D9207B0632B854D804C8BDCC4111CC26C1ADC83CCF",
+      "q19PostplacementPath": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/postplacement-evidence-v8.json",
+      "q19PostplacementSha256": "FE84448586F9875AE476C3E4561DC28447222493F1DF046E438609C159D07354"
+    }
+  },
+  "inputsAndCode": {
+    "frozenInputCount": 10,
+    "frozenFactHashes": [
+      {
+        "uid": "ALITE-PALMA25-2MID-Q03-A1",
+        "sourceSha256": "EAFD8DE0BA37DAC4144A0E259554EF4AEEE66FE5CF4B16D975277711EF93572D",
+        "solutionSha256": "31124D9B656E0FB59E008D230C083C905ABBF9BD5FA55480E93D113B7525F662",
+        "specSha256": "37C1DA798CA333648FBAEAFB315D4DB8D3FDE18F82ECDB334BCCD0C3A128F769",
+        "reviewSha256": "791F565A6895AEF77F75CB1EE62C60A8DF5D77609AA6BEC52C28C2ADD3021B39",
+        "consumerShardAtFreezeSha256": "5CD3D32DEEBD770111CE2EA8610462DB8FD833A8020ECC02144FF973C9867000"
+      },
+      {
+        "uid": "ALITE-PALMA25-2MID-Q05-A1",
+        "sourceSha256": "EAD16D17E1FC410A4F0E8D7B81E481FDA911C08E06CF7BAB5C58D538249204AF",
+        "solutionSha256": "AB2F56B37C544CE014E56E00BA170DE4C6C60031433DCCB1D87543C42FB26815",
+        "specSha256": "D0FFB177FC888DBE7ACC6C671AF49DF8D4F08E6727813C94CE372A76533BBA29",
+        "reviewSha256": "C696A6C53638D0C4B0701C03CD5B83E788C8D12032C5C58D558EBFC1E0957E98",
+        "consumerShardAtFreezeSha256": "F7E77F3D897589C064244BD0A9D2609109B7F0AA3DC2AEB50D28C104B300E72E"
+      },
+      {
+        "uid": "ALITE-PALMA25-2MID-Q06-A1",
+        "sourceSha256": "26EA78E58D7ADED4DB86A37AFCACAADBA3F48AF52A8B8884684C7504F6366D37",
+        "solutionSha256": "555857D1F65888939F5EA6DFCE376DDD8B4C5B01C1BE491250883BD072BC491A",
+        "specSha256": "A469EAC5846F302BB8FF4A67FFDE4909770D320704B579BDD41EDC6FE9750656",
+        "reviewSha256": "887FCB38568A034E35AE9FD0650BB7910E20AB2BABB5ED4169B40F083E57F748",
+        "consumerShardAtFreezeSha256": "8FBCD318D671FCE98DB3A33E0DB21351C577866FF1A21A58409AA3C07D94D250"
+      },
+      {
+        "uid": "ALITE-PALMA25-2MID-Q07-A1",
+        "sourceSha256": "7E847E3B68EACCDB218755FD801E8304128909412652B49F60CA3338005DA9B0",
+        "solutionSha256": "8ED0D52BA111B75F12A5A28271E08E7FB89325D65FD42A9641D572C24811DF17",
+        "specSha256": "5FCE6CA8A1628BC516672CB5DAF743FA0A720B526636802CB982A2F255987C29",
+        "reviewSha256": "F95BBE56B12BC5644902518D4EF4F09C3EC2FE611AF7D19FF24437A28795300E",
+        "consumerShardAtFreezeSha256": "35EFEE90D8BD2FE81842111CFCABF004B2EEFB2C50C901BC282FAF3C9CE2C90F"
+      },
+      {
+        "uid": "ALITE-PALMA25-2MID-Q09-A1",
+        "sourceSha256": "DBD3FE9C43367DC862C8DE55598844291DF1FF470E14EDA0CF024C48B3D95F53",
+        "solutionSha256": "7052E07686C7BC82FB8B9907BCB4D0560D5A260BD99B99DA33A47098E6FDCD6A",
+        "specSha256": "2C306D7A6CF7FEF459A1705E340F095DD64E41F2DA5D1A637A641263A6430560",
+        "reviewSha256": "705B94CBD7B0CAFFDD245FE60CAC5E606C4ECB630F6E0C48DD672F32F54E1054",
+        "consumerShardAtFreezeSha256": "092F7599C6740606C8D8253686318CBA5D522999F62614087811F6FF136A55CD"
+      },
+      {
+        "uid": "ALITE-PALMA25-2MID-Q12-A1",
+        "sourceSha256": "7D7DD391D38A4A94D74720A5F1D1B75642B2FCE991A646A1D0C47E0A7D69A0C6",
+        "solutionSha256": "82BEB62690FE0670A0793528592945FF66DAADC60F08496D1A8BDFD844EDE79D",
+        "specSha256": "2BFEC46EC4D02E4FA4D71A3FA6993E29258CEF4AC1F979D8E960CC41266DCD04",
+        "reviewSha256": "C25D71ED3FF1B419E5E9BF3103DE7F312D6C1D88E749817FC90695A1BC945446",
+        "consumerShardAtFreezeSha256": "E94B451F0468E34D2189AAD48E910836372302D636D1087C7E7DE6553B5119EF"
+      },
+      {
+        "uid": "ALITE-PALMA25-2MID-Q15-A1",
+        "sourceSha256": "165907FCFB764AFA4A8CE9081A44F313BFD44D09426D8C8DA4D30387A20F469D",
+        "solutionSha256": "B70736405E426C0FC96BB1D92E3562CB6111CD327305F1E89D5B48BFD04E5D6E",
+        "specSha256": "D3BA66A455A9FC91A662BFC64C7CA4C3D55BD52B3970A3C769695F39ABA48A41",
+        "reviewSha256": "EA9D101B7513A3ED9E00D6EC9A40354A39CE75D892C7DE7B905612D0E2F5F465",
+        "consumerShardAtFreezeSha256": "2A6064B2D743C19BBAACA7E98F81C4B21711C03593703EE0E82480F45B6E9027"
+      },
+      {
+        "uid": "ALITE-PALMA25-B04-Q17-C01",
+        "sourceSha256": "8DBA813CBFE877CB1E0C56543A8EFF3B9038D29A4A309BD6C08546D359E061D8",
+        "solutionSha256": "2F23A4CB089D6A20E031BE4C179A2403D231D3FD7BCD9FB96BFA5B3392208F08",
+        "specSha256": "630A47653BFFA64EA59869DC963CB54D914187658E26732ABD89D898E40D9170",
+        "reviewSha256": "6B60DBB57748632893628FCDE5FF9BA9F242EA33CEF9F8C88D427839E3E63EFD",
+        "consumerShardAtFreezeSha256": "2A3F9A774DD01719683664561F5E2F6762EA94C13A34F972D8451882C24866A9"
+      },
+      {
+        "uid": "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY",
+        "sourceSha256": "343E7F6F3A72BC83AC09D9127005089CD545419D8064003183E3DE507096C5E5",
+        "solutionSha256": "548C5C1E1409974A8E274C20092680D4D3913F91079EF2937A4DBC6DAB692939",
+        "specSha256": "6890CEA1338E9CED1A1B687551264DDEA59528CC305B62E5A9F54D5C1CE5848C",
+        "reviewSha256": "F1C74D3BB9B2A7C9FF24EEFC03AEA74BB154E4968C11952DC7F7A8A5005B55CB",
+        "consumerShardAtFreezeSha256": "3634C1F09D46AD0DE0DB4474D05ACE29CE83C9AE4259DF3623A3175006D45915"
+      },
+      {
+        "uid": "ALITE-B01-2025PALMA-0005",
+        "sourceSha256": "877CBF3CACCDA6B7735E0748F64607D5431468EF25C45CA7328C4E93CABE82D8",
+        "solutionSha256": "65BBD5288D89944CFB7178203347BFD6D0C39EF19BB0C6D7332ABE779622E22B",
+        "specSha256": "EA8BEE31ABDD7503997756BF4D3974DED16E3AB0A0AB3AC4C1A0FD6755F240EC",
+        "reviewSha256": "040EA3946D1DA795025DD48EC2E20A5E01400844EC1F7FFD026456B93722867C",
+        "consumerShardAtFreezeSha256": "68610896D84CBC495FD5823BD978C7BA5863D1682C8A1B8DD258403E278366EB"
+      }
+    ],
+    "engineAndBenchmarkCodeManifestPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/engine-and-benchmark-code-sha.json",
+    "engineAndBenchmarkCodeManifestSha256": "86F2AEB146666516FA40347381F23B1D98C497E5EFE32593ACAEE06EA21B7834",
+    "engineAndBenchmarkCode": {
+      "schemaVersion": "PALMA_V8_SPEED_BENCH_CODE_SHA_MANIFEST_V1",
+      "engineFiles": [
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/__init__.py",
+          "sha256": "F6346FB2944EFC4CCCA3AF788D78695B6F645E2AC8ABCBE2163C5D50DEE672DC"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/config.py",
+          "sha256": "CE49B0EAD36930BED0CAE1A9A18D9FB6ACCB150E2CEACA7D666B834A043FF452"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/coordinate_evidence.py",
+          "sha256": "CF27D353B8FE9D4BFC3D523C6A172F2048EC43317DDEFF9AFC25108C520A8635"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/differential.py",
+          "sha256": "A411299279D12DBEF321177CF15A7FE4B00C8C2F1CDA5BB26455017FBD715B0C"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/engine.py",
+          "sha256": "547D58274D2D7B075DDECB89818D80A2F6A97990FF80A9DD10E8A9F03A764E79"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/entrypoints.py",
+          "sha256": "7DBC8E73B68705D7C10A27E6DF0C4CE1E4CCB7C84391A0E77772E25A684DF1EF"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/function_sampling.py",
+          "sha256": "63B882B2C28207FAE4B13A35AE54901716D727F1CE7CFA2F06CBDE387C8D0B69"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/geometry_model.py",
+          "sha256": "EB983FF0391A041737E291A7CD55A912B7C8F8CF25BE76E53FAA9C282B2BF486"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/label_layout.py",
+          "sha256": "29B4F3756BA77CA3233D239C313C41060B42011C086AACCB94AD4CACFF5E0BDD"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/legacy_registry.json",
+          "sha256": "5B8B28B1C9D524BF23E3A724152F675849901D03E98347DF84ED637A3B281792"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/math_expression.py",
+          "sha256": "4B46AE7AB23BB47BD5249E917060FADFEB7BA7A864F1B9A199D5CDCFF309D3CB"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/past_exam_adapter.py",
+          "sha256": "7D7FD3E58A62E10F1ADC2D7FF7BD0B0C1F95FDB4DA687AE2E5569A97906FEE15"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/publication.py",
+          "sha256": "F64FBF0C5BBEF367E599BA123EDA3B1B4B46FC8941B0194BBA97030FDD2523FC"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/semantic_model.py",
+          "sha256": "7505C617EC110C71B21A94EB8F2D920104B6AB12C23BFA2AC3F67CC10EE15A3E"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/special_registry.json",
+          "sha256": "ED0A45A38606735C70D63A1E6C885F607DDA109D7739DF352300281950D83E33"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/style_tokens.json",
+          "sha256": "44D2507576C60BAA9C33D294093BC2F7EF31A8F4B440A4929DE9A49D54506901"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/style_tokens.py",
+          "sha256": "069804BDF537721AF5F4036152C0BCA1E134194F7DE445C24592D4DAA7A574D2"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/svg_composer.py",
+          "sha256": "00D259925849F09E118051A31947A5BA318B0A15E77E0ABD1D6EA017B0B384F9"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/tikz_adapter.py",
+          "sha256": "A4B7FE888EB3AF47E30C89E023D6C93F9DB9145A0581AFDF60CF9721BAA6F6D6"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/viewport.py",
+          "sha256": "253F51521B70BC10FEF32B442B5BE2A4580F4A02B2EC8F3EB6D77DDBD43CAABB"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/visual_spec.schema.json",
+          "sha256": "D496091FEBE72E956167C894E35283C6AB42C4CAE42CE1127361FA50769B99A7"
+        }
+      ],
+      "otherFiles": [
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/__init__.py",
+          "sha256": "F6346FB2944EFC4CCCA3AF788D78695B6F645E2AC8ABCBE2163C5D50DEE672DC"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/config.py",
+          "sha256": "CE49B0EAD36930BED0CAE1A9A18D9FB6ACCB150E2CEACA7D666B834A043FF452"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/coordinate_evidence.py",
+          "sha256": "CF27D353B8FE9D4BFC3D523C6A172F2048EC43317DDEFF9AFC25108C520A8635"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/differential.py",
+          "sha256": "A411299279D12DBEF321177CF15A7FE4B00C8C2F1CDA5BB26455017FBD715B0C"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/engine.py",
+          "sha256": "547D58274D2D7B075DDECB89818D80A2F6A97990FF80A9DD10E8A9F03A764E79"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/entrypoints.py",
+          "sha256": "7DBC8E73B68705D7C10A27E6DF0C4CE1E4CCB7C84391A0E77772E25A684DF1EF"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/function_sampling.py",
+          "sha256": "63B882B2C28207FAE4B13A35AE54901716D727F1CE7CFA2F06CBDE387C8D0B69"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/geometry_model.py",
+          "sha256": "EB983FF0391A041737E291A7CD55A912B7C8F8CF25BE76E53FAA9C282B2BF486"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/label_layout.py",
+          "sha256": "29B4F3756BA77CA3233D239C313C41060B42011C086AACCB94AD4CACFF5E0BDD"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/legacy_registry.json",
+          "sha256": "5B8B28B1C9D524BF23E3A724152F675849901D03E98347DF84ED637A3B281792"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/math_expression.py",
+          "sha256": "4B46AE7AB23BB47BD5249E917060FADFEB7BA7A864F1B9A199D5CDCFF309D3CB"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/past_exam_adapter.py",
+          "sha256": "7D7FD3E58A62E10F1ADC2D7FF7BD0B0C1F95FDB4DA687AE2E5569A97906FEE15"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/publication.py",
+          "sha256": "F64FBF0C5BBEF367E599BA123EDA3B1B4B46FC8941B0194BBA97030FDD2523FC"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/semantic_model.py",
+          "sha256": "7505C617EC110C71B21A94EB8F2D920104B6AB12C23BFA2AC3F67CC10EE15A3E"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/special_registry.json",
+          "sha256": "ED0A45A38606735C70D63A1E6C885F607DDA109D7739DF352300281950D83E33"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/style_tokens.json",
+          "sha256": "44D2507576C60BAA9C33D294093BC2F7EF31A8F4B440A4929DE9A49D54506901"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/style_tokens.py",
+          "sha256": "069804BDF537721AF5F4036152C0BCA1E134194F7DE445C24592D4DAA7A574D2"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/svg_composer.py",
+          "sha256": "00D259925849F09E118051A31947A5BA318B0A15E77E0ABD1D6EA017B0B384F9"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/tikz_adapter.py",
+          "sha256": "A4B7FE888EB3AF47E30C89E023D6C93F9DB9145A0581AFDF60CF9721BAA6F6D6"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/viewport.py",
+          "sha256": "253F51521B70BC10FEF32B442B5BE2A4580F4A02B2EC8F3EB6D77DDBD43CAABB"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual_engine/visual_spec.schema.json",
+          "sha256": "D496091FEBE72E956167C894E35283C6AB42C4CAE42CE1127361FA50769B99A7"
+        },
+        {
+          "path": "archive/tools/geometry-equation/audit_publication.py",
+          "sha256": "617ECC5B106C7E3961CFE407C30B49F3C338927F62E6E645A9BB6F36B4E98FD8"
+        },
+        {
+          "path": "archive/tools/geometry-equation/verify-rendered-layout.mjs",
+          "sha256": "06CC0AF7D3C7C5E4BE79EA79BCCFD42F26C7E43CCFDBA25FDCB07833C1B77F86"
+        },
+        {
+          "path": "archive/tools/geometry-equation/visual-browser-runtime.mjs",
+          "sha256": "F27F8139DBC6FE0D82256FD747242A42065E0631B4587FEDA92C99F5252FD4E7"
+        },
+        {
+          "path": "archive/tools/geometry-equation/verify-visual-engine-static.mjs",
+          "sha256": "68AF00C1E5DA07371919A4785CC434E432E9F75667B5BE102C76CEE95862942B"
+        },
+        {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/postplacement-safe-margin-v1.py",
+          "sha256": "E247E6A78224474BAC885E62A513A0976B60EF9BC23C7318243B7B2C463E89FF"
+        },
+        {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/bench-single-v8-artifact.py",
+          "sha256": "0BBA026CF6648E0A8BC7004AD8A3D0757DA6166063CFA6166BC0792A61944826"
+        },
+        {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/bench-batch-v8-artifact.py",
+          "sha256": "BD64B92441B2ABC408276D0685FFCF5F80F2E8E59862E17BDB910CB58A1BCAFD"
+        },
+        {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/run-v8-ab-arm.mjs",
+          "sha256": "F9ACAA429520417073166A818BF5D306D775023E42B7C395822A7955032B1E20"
+        },
+        {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/compare-v8-ab.mjs",
+          "sha256": "60D13D7EC33C67AFE989F5F8943832C2BE7AC295DED70D72C90293AF1A1DEE7C"
+        }
+      ]
+    }
+  },
+  "physicalPostApplyBinding": {
+    "actualPhysicalTeacherAndStudentReport": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/physical-postapply-v8-qpp1-review/report.json",
+      "sha256": "30AD2508723D9531C9D73FF71B1DCDCCCEADEB6858B43A2F3D2C9083A9BEE111",
+      "statusCounts": {
+        "teacherStudentRoutePass": 10,
+        "fontGatePass": 10
+      },
+      "q19SafeTop": {
+        "imageBox": {
+          "x": 320.84375,
+          "y": 302.9375,
+          "width": 638.296875,
+          "height": 545.921875
+        },
+        "displayWidth": 638.296875,
+        "actualCssFontPx": 11.338168174342107,
+        "actualFontGate": true
+      }
+    },
+    "physicalQpp4Regression": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/physical-qpp4-regression.json",
+      "sha256": "7992AE27E4497AEC222DEF8FD5307F353D01BB054E389455540DCE9E3B27F8F9",
+      "pass": true,
+      "columns": "340.156px 340.156px",
+      "dividerDisplay": "block"
+    },
+    "rootApplyReceipt": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/root-intake/apply-receipt.json",
+      "sha256": "43261EA494B0C36003550131D2F48A6499B5E06FF98639ED3BE7AEB8C16BC655"
+    },
+    "appliedProposal": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/apply-proposal-v8/apply-proposal.json",
+      "sha256": "0B7DC28B26DC9799B7B821FF1C1B35EBDB8C2DEDC0FFBD3CFD92C4A29C0DB175"
+    },
+    "postApplyParityRaw": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/root-intake/postapply-current-parity.raw.json",
+      "sha256": "AF2E6B734E40EE9DCF5654B85E6ECD4E69A8577CCEBCBAB6F468A51E237FEDA0"
+    },
+    "historicalPreApplyReviewReceipt": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/final-review-receipt.json",
+      "sha256": "AA7BD02F5496576C8A526530E210DD6C414E425F1DE81A9D75CD540B78C46F7D"
+    },
+    "sourceAndConsumerVisualRefApplySeparateFromFrozenSpecAndFactBenchmark": true
+  },
+  "rawEvidence": {
+    "runRoot": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs",
+    "runReports": [
+      {
+        "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-A/arm-report.json",
+        "sha256": "0BB078CC294E698EBE7548C98199171EA4614757FFB3B4F301A6132EFE2B2581"
+      },
+      {
+        "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-1-B/arm-report.json",
+        "sha256": "794D10F007C472B5487E655E6D0AEB5F1F1D7EA2EE8EB7CA3357188CD1B2204E"
+      },
+      {
+        "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-2-A/arm-report.json",
+        "sha256": "6FF5B36CFB451AD23EA0F8BB15B13CA7EAB242FAE71C04D68BC89EF88DDA525E"
+      },
+      {
+        "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-2-B/arm-report.json",
+        "sha256": "DB28E13EF5EB88F638ABB1A357B363D948245E0845764BFCADA4D3C7125BAB38"
+      },
+      {
+        "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-3-A/arm-report.json",
+        "sha256": "421E8BE6125B692299AEC07E298E00A9D05FD21A0602301F598B00920C4BB72E"
+      },
+      {
+        "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/runs/trial-3-B/arm-report.json",
+        "sha256": "A74C81C546F37246F53B3749FFC40002EDDE2B3D855C6CA7148015038F052279"
+      }
+    ],
+    "perUidAuditAndChromeReports": "Each run report records all 10 raw static audit references and all 10 full Chrome capture references; paired screenshot PNGs and subprocess stdout/stderr are stored beside each arm report.",
+    "comparisonReport": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/comparison-report.json",
+      "sha256": "C39982881CFCD7600E349CA25BFC2A733A0747CB0BFC52CFEF9B383624B5C66E"
+    }
+  }
+}

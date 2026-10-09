@@ -36,7 +36,11 @@ window.questionBank = [
     "sourceKind": "generated",
     "sourceQid": 5,
     "slot": "A1",
-    "purposeGroup": "A"
+    "purposeGroup": "A",
+    "solutionImage": "assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q05-A1-solution.svg",
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "선분 AB의 중점 M과 AB에 수직인 수직이등분선.",
+    "solutionImageCaption": "중점과 수직 조건에 따른 기울기 관계를 확인한다."
   }
 ];
 

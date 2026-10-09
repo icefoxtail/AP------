@@ -167,6 +167,10 @@ window.questionBank = [
       "problemTypeKey": "PT_MOVE_LINE_REFLECTION",
       "templateKey": "TT_LINE_REFLECTION_EQUATION"
     },
-    "metaFinalSha256": "ebbffc8c0b4c57d3edb70e2dbb6cbe19e9ea6cbd1944256b4ac8a51260df356e"
+    "metaFinalSha256": "ebbffc8c0b4c57d3edb70e2dbb6cbe19e9ea6cbd1944256b4ac8a51260df356e",
+    "solutionImage": "assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-B04-Q17-C01-solution.svg",
+    "solutionImageSize": "large",
+    "solutionImageAlt": "원 중심 A의 대칭점 B, 중점 M, 이동 후 중심 D.",
+    "solutionImageCaption": "대칭이동 뒤 평행이동하는 순서와 벡터를 확인한다."
   }
 ];

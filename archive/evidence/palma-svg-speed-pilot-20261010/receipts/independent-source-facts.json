@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "PALMA_SVG_SPEED_PILOT_REVIEWER_SOURCE_FACTS_V1",
+  "role": "independent visual-only source and geometry reviewer",
+  "rosterPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/roster.json",
+  "rosterSha256": "f97b2462b316b44cc5b1669c5482924f98d2acd2b7b01da546427cf8970daf3a",
+  "sourceConsumerParityPath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/preflight/source-consumer-parity.json",
+  "sourceConsumerParitySha256": "a7ccb4a8c10d4125fa6d48a403f617faa90bb88446e7141782f96b7733f5917c",
+  "producerFactsFreezePath": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/facts-freeze.json",
+  "producerFactsFreezeSha256": "4647dad1b04c5c5758670bad0f1e7978fec0e84f54d9d9ab8f32d931f4fbc878",
+  "sourceConsumerParity": "PASS_10_OF_10",
+  "problemVisualDispositionCount": 10,
+  "solutionVisualDispositionCount": 10,
+  "sourceFactsIndependent": true,
+  "scopeNote": "Independent review covers only SVG-relevant coordinates, topology, owner relations, curriculum, source/consumer identity and hint leakage. No answer or solution reapproval was performed.",
+  "rows": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q03-A1",
+      "unit": "H22-C2-03",
+      "problemVisual": {"necessity":"VISUAL_EXEMPT","disposition":"EXEMPT","reason":"Center, radius and equation are explicit; a problem-side circle would restate the exact data and expose the relation being tested."},
+      "solutionVisual": {"necessity":"VISUAL_REQUIRED","disposition":"ADD","expectedFacts":["Circle center O=(-3,2).","Radius r=4; owner segment to an exact circle point such as (1,2) has length 4.","Equal x/y scale and correct axes/origin."],"pitfalls":["No approximate coordinate labels.","Bind the radius value to its actual segment."]}
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q05-A1",
+      "unit": "H22-C2-02",
+      "problemVisual": {"necessity":"VISUAL_EXEMPT","disposition":"EXEMPT","reason":"A/B coordinates fully define the task; drawing the perpendicular bisector would directly reveal the requested line."},
+      "solutionVisual": {"necessity":"VISUAL_REQUIRED","disposition":"ADD","expectedFacts":["A=(1,-2), B=(7,2), M=(4,0).","AB has slope 2/3; perpendicular bisector has slope -3/2 and equation 3x+2y-12=0.","M is the midpoint and intersection; AB and the bisector are perpendicular.","Optional y-intercept X=(0,6) lies on the bisector."],"pitfalls":["Preserve A/B labels and midpoint ownership.","Right-angle marker belongs at M."]}
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q06-A1",
+      "unit": "H22-C2-03",
+      "problemVisual": {"necessity":"VISUAL_EXEMPT","disposition":"EXEMPT","reason":"The circle and parameter line are exactly specified; boundary lines in the problem image would give away the integer range."},
+      "solutionVisual": {"necessity":"VISUAL_REQUIRED","disposition":"ADD","expectedFacts":["Circle center O=(0,0), radius sqrt(13).","Line family 2x-3y+k=0; k=0 is a secant through O.","k=13 and k=-13 are tangent boundaries at (-2,3) and (2,-3), respectively.","Distance condition is inclusive: |k|<=13; integers -13 through 13 give 27 values."],"pitfalls":["Do not exclude tangency.","Each tangent point must lie on its circle and line."]}
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q07-A1",
+      "unit": "H22-C2-04",
+      "problemVisual": {"necessity":"VISUAL_EXEMPT","disposition":"EXEMPT","reason":"The circle equations and translation vector specify the geometry; drawing the common center line reveals the requested result."},
+      "solutionVisual": {"necessity":"VISUAL_REQUIRED","disposition":"ADD","expectedFacts":["C1 center (0,-2), C2 center (3,4), both radii 3.","Translation vector is (+3,+6).","Common center line y=2x-2 passes through both centers and bisects both disks.","The circles are disjoint; do not imply that they intersect."],"pitfalls":["Translation arrow owner is C1 to C2.","Equal scale preserves both circles."]}
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q09-A1",
+      "unit": "H22-C2-01",
+      "problemVisual": {"necessity":"VISUAL_EXEMPT","disposition":"EXEMPT","reason":"All source vertices and 2:1 ratios are stated; drawing the three division points and centroid in the stem would preview the construction."},
+      "solutionVisual": {"necessity":"VISUAL_REQUIRED","disposition":"ADD","expectedFacts":["O=(0,0), A=(9,0), B=(3,9).","OC:CA=2:1 gives C=(6,0).","AD:DB=2:1 gives D=(5,6).","BE:EO=2:1 gives E=(1,3).","Centroid of triangle CDE is G=(4,3); a+b=7."],"pitfalls":["Preserve oriented segment orders OA, AB and BO.","Ratio labels bind to the corresponding segments."]}
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q12-A1",
+      "unit": "H22-C2-03",
+      "problemVisual": {"necessity":"VISUAL_EXEMPT","disposition":"EXEMPT","reason":"The circle and external point are fully specified; a tangent/chord diagram in the stem would hint the polar-line step."},
+      "solutionVisual": {"necessity":"VISUAL_REQUIRED","disposition":"ADD","expectedFacts":["Circle O=(0,0), radius sqrt(30); external point A=(6,8).","Contact chord PQ is 6x+8y=30.","Foot H=(9/5,12/5), OH=3 and OH is perpendicular to PQ.","P,Q lie on the circle; AP/AQ are tangent; OP perpendicular AP and OQ perpendicular AQ.","Exact contacts are H plus/minus (sqrt(21)/5)*(-4,3)."],"pitfalls":["Do not label calculated decimal coordinates.","Do not confuse chord PQ with tangent AP/AQ."]}
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q15-A1",
+      "unit": "H22-C2-04",
+      "problemVisual": {"necessity":"VISUAL_EXEMPT","disposition":"EXEMPT","reason":"The three substitution choices are the reasoning challenge; center diagrams in the stem reveal which choices match."},
+      "solutionVisual": {"necessity":"VISUAL_REQUIRED","disposition":"ADD","expectedFacts":["f-circle center F=(2,-1), target g-circle center G=(5,1), all radii 2.","Choice ㄱ maps center to (5,1).","Choice ㄴ maps center to (2,1), so it is false.","Choice ㄷ maps center to (5,1)."],"pitfalls":["Substitution direction is source f to the resulting graph.","Each case is visually separated."]}
+    },
+    {
+      "uid": "ALITE-PALMA25-B04-Q17-C01",
+      "unit": "H22-C2-04",
+      "problemVisual": {"necessity":"VISUAL_EXEMPT","disposition":"EXEMPT","reason":"A reflection-axis diagram would reveal the requested line equation."},
+      "solutionVisual": {"necessity":"VISUAL_REQUIRED","disposition":"ADD","expectedFacts":["Original center A=(3,1), reflected center B=(1,3).","M=(2,2) is midpoint of AB; mirror axis y=x and AB is perpendicular to it.","After translation vector (+1,+2), final center D=(2,5).","All three circles have radius 2."],"pitfalls":["Keep reflection and translation in separate stages.","Translation arrow is B to D, not A to D."]}
+    },
+    {
+      "uid": "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY",
+      "unit": "H22-C2-01",
+      "problemVisual": {"necessity":"VISUAL_EXEMPT","disposition":"EXEMPT","reason":"The figure depends on unknown t; a t=3 schematic in the stem reveals the answer, and an arbitrary not-to-scale figure risks misrepresenting metric relations."},
+      "solutionVisual": {"necessity":"VISUAL_REQUIRED","disposition":"ADD","expectedFacts":["t=3; A=(0,0), B=(3,0), C=(0,6).","AI=AH is the angle bisector; H=(2,2), BH:HC=1:2.","M=(3/2,3) is midpoint of BC; G=(1,2) is centroid and AG:GM=2:1.","Area of triangle GHC is 2.","If I is shown, exact r=(9-3sqrt(5))/2; label I without approximate coordinates."],"pitfalls":["H lies on BC; I lies on AH; G lies on median AM.","Highlight the actual GHC region."]}
+    },
+    {
+      "uid": "ALITE-B01-2025PALMA-0005",
+      "unit": "H22-C2-03",
+      "problemVisual": {"necessity":"VISUAL_EXEMPT","disposition":"EXEMPT","reason":"Equations and half-plane restrictions fully specify the sets; a graph in the stem can reveal the sign condition and intersection count."},
+      "solutionVisual": {"necessity":"VISUAL_REQUIRED","disposition":"ADD","expectedFacts":["C0 is full circle center O=(0,0), radius 4.","C1 is only the lower semicircle centered (-2,0), radius 2, from (-4,0) to O.","C2 is only the upper semicircle centered (2,0), radius 2, from O to (4,0).","Line family y=mx passes through O.","m>0: outer circle gives two points, each arc adds one, and shared O is counted once: total 5.","m<0: non-origin arc candidates lie on wrong semicircles: total 3.","m=0: arc endpoints overlap outer-circle endpoints and O is counted once: total 3."],"pitfalls":["Never draw C1/C2 as full circles.","Show m>0, m=0 and m<0 separately or with an equivalent explicit case boundary.","Do not count shared O more than once."]}
+    }
+  ]
+}

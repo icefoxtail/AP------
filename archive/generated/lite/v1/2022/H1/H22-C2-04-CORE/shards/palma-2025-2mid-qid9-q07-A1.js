@@ -36,7 +36,11 @@ window.questionBank = [
     "sourceKind": "generated",
     "sourceQid": 7,
     "slot": "A1",
-    "purposeGroup": "A"
+    "purposeGroup": "A",
+    "solutionImage": "assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q07-A1-solution.svg",
+    "solutionImageSize": "medium",
+    "solutionImageAlt": "두 원의 중심 C₁, C₂와 중심 이동 방향 및 벡터.",
+    "solutionImageCaption": "평행이동의 방향과 이동량을 도형에 대응시킨다."
   }
 ];
 

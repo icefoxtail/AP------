@@ -1,0 +1,1839 @@
+{
+  "schemaVersion": "PALMA_SVG_SPEED_PILOT_FINAL_REVIEW_RECEIPT_V1",
+  "status": "VISUAL_QA_PASS_SCOPE_BOUND",
+  "reviewedAt": "2026-10-09T23:40:49.733Z",
+  "scope": {
+    "worktree": "C:/Users/USER/Desktop/AP-worktrees/palma-svg-speed-pilot/AP------",
+    "expectedHead": "da3cb983f826aeae31610f700e2310971d558e11",
+    "observedHead": "da3cb983f826aeae31610f700e2310971d558e11",
+    "examUid": "PALMA25_H1_2MID",
+    "selectedUidCount": 10,
+    "uids": [
+      "ALITE-PALMA25-2MID-Q03-A1",
+      "ALITE-PALMA25-2MID-Q05-A1",
+      "ALITE-PALMA25-2MID-Q06-A1",
+      "ALITE-PALMA25-2MID-Q07-A1",
+      "ALITE-PALMA25-2MID-Q09-A1",
+      "ALITE-PALMA25-2MID-Q12-A1",
+      "ALITE-PALMA25-2MID-Q15-A1",
+      "ALITE-PALMA25-B04-Q17-C01",
+      "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY",
+      "ALITE-B01-2025PALMA-0005"
+    ],
+    "sourceExam": {
+      "path": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "rawSha256": "1C7C2C331464AA214331D844E32F9378C86654B1B8E495C8C3CDF759B26BEAEF"
+    },
+    "approvedIndex": {
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "rawSha256": "2CB1F6AABCC35F36302D8F773B7CC1196EF8C48726C7944DBE06DE912A61D199",
+      "schemaVersion": "ALIVE_GENERATED_CONSUMER_INDEX_V1",
+      "approvedCount": 454,
+      "palmaSelectableRegisteredRows": 171
+    },
+    "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+    "executionLine": "CODEX",
+    "publicationAuthorized": false,
+    "publicationBoundary": "Reviewer QA only; ROOT retains publication and post-merge actual UI closure."
+  },
+  "candidateManifest": {
+    "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/manifest.json",
+    "sha256": "931B258A337CD0EE81D5B5D76B8051291672A7A39C91742BB7BF48C4B6266736",
+    "status": "REVIEW_PENDING_ACTUAL_QPP1_RENDER",
+    "candidateCount": 10,
+    "publicationAuthorized": false,
+    "renderStatus": "NOT_RUN",
+    "witnessFinalSvgParityCounts": {
+      "MATCH": 5,
+      "MATCH_AFTER_RECORDED_RENDER_SAFE_TEXT_SHIFT": 5
+    },
+    "layoutPatch": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/layout-patch-v5.json",
+      "sha256": "86C6083B314385F17E5B44D9207B0632B854D804C8BDCC4111CC26C1ADC83CCF"
+    },
+    "q19PostplacementEvidence": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/postplacement-evidence-v8.json",
+      "sha256": "FE84448586F9875AE476C3E4561DC28447222493F1DF046E438609C159D07354"
+    },
+    "q19PostplacementScript": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/postplacement-safe-margin-v1.py",
+      "sha256": "E247E6A78224474BAC885E62A513A0976B60EF9BC23C7318243B7B2C463E89FF"
+    }
+  },
+  "dispositionSummary": {
+    "denominator": 10,
+    "problem": {
+      "EXEMPT": 10,
+      "perUid": "all 10 independently EXEMPT because explicit equations/conditions fully specify problem geometry"
+    },
+    "solution": {
+      "ADD": 10,
+      "perUid": "all 10 independently ADD/REQUIRED under H22-C2 geometry visual gate"
+    }
+  },
+  "independentReview": {
+    "readReceipt": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/reviewer-read-receipt.json",
+      "sha256": "CFADA37158BD0DEBF491EEAD9653C9784DDBA7B2E1DB4A91015DDFC99C25AD4C"
+    },
+    "goldenNegativePreflight": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/preflight/calibration-preflight.json",
+      "sha256": "9AD2AFFB7C2EF96708EFA9E7CA006373FCC48338EBA82CDC441EC05B7EFCD248"
+    },
+    "independentSourceFacts": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/preflight/reviewer-source-facts.json",
+      "sha256": "2BBED82E3964256E8E2AE2A7C7A9E32FDA0B57731F3C1C8326984A44B3DCED1B"
+    },
+    "sourceConsumerParity": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/preflight/source-consumer-parity.json",
+      "sha256": "A7CCB4A8C10D4125FA6D48A403F617FAA90BB88446E7141782F96B7733F5917C"
+    },
+    "v8Integrity": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v8-integrity-check.json",
+      "sha256": "E5BD14CE61DADF3A40571EC5D8AC983965C75DA53388BADF14BC2DFBCC07E2B6"
+    },
+    "v5ToV6Diff": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v5-v6-diff.json",
+      "sha256": "AFDF1A3E6A9EE9663141ABABC4F370FF632A20AAAC398273B0AAF0535020A237"
+    },
+    "v7ToV8Diff": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v7-v8-diff.json",
+      "sha256": "38281703E48874AE7B283B6F8BAA89B3C4D3B4A07F66300CEC602A2A4E5AB743"
+    },
+    "directRenderSummary": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v8-direct-render-review-summary.json",
+      "sha256": "096D91FE920EF39923B376D622067B8E25A98FB07BE088707FE1C89F7C06936E"
+    },
+    "actualQpp1Report": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-ui-v8-qpp1-review/report.json",
+      "sha256": "933B076FE05838CA9E58859DC3B894D7C292BD7DC239CBCEF71969F2C5FE472F"
+    },
+    "qpp4Regression": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/qpp4-v8-default-layout-check.json",
+      "sha256": "1D19E7AAFE85AA6C06ED39FDC4ECBDD9723D9C69387C4C442C28A281BCE63033"
+    },
+    "q19NaturalAndDisplayCapture": [
+      {
+        "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v8-render/ALITE-B01-2025PALMA-0005-natural.json",
+        "sha256": "F321CF9AB34FC57A7E4B173FA35E54A5C65A5E714E6BA681D659B661B88B147D"
+      },
+      {
+        "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v8-render/ALITE-B01-2025PALMA-0005-qpp1-638px.json",
+        "sha256": "BC7B6950BEC665854F8E215A74EEEFD843F9877E97DBDF8A3D4C181111495844"
+      }
+    ],
+    "focusedTest": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/final-focused-test.raw.txt",
+      "sha256": "07FF2D3A18BD02776A0EABDC5704DEC1CA4ECA102719E82FD4FA1D4210F89659",
+      "status": "PASS 7/7"
+    },
+    "runtimeGuard": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/final-runtime-guard.raw.txt",
+      "sha256": "382B4B235080275EBDCDE4DD3FA4C7F15111180D5819A56BC7AC1EA515D4C703",
+      "status": "PASS 42/42"
+    }
+  },
+  "runtimeCode": {
+    "sha256": {
+      "archive/generated-bank.html": "2609CF3B9DF32A2C60C29EE46F99910896C62ECEE0F7155E1C58773D1DF730D6",
+      "archive/mixed_engine.html": "E68995081F58723E807E0F55016E514D5E24F196C5F6A40629F52854EFA76665",
+      "archive/solution-render-executor.js": "4A5FC507CE1C3F382C5FD00E10D8C6A6A3DC86EC91B2463D9109B169813B8BBF",
+      "archive/archive2-output.js": "7110C184F40CA77A202FD33A4AF2E8645734027F89E27CBDB58630C47F149A2F",
+      "archive/common-fast-runtime.js": "FB6FB23AA1653F051B698BB1B5AE0D60BAE9E6A13F9404F3B905867EC9B4A099",
+      "archive/mathjax_render_loop.js": "367B73892BEE7B7B97DB6D1CF64586A1840FF282B4336D279602ADE8AF9490EF",
+      "tests/archive2-generated-bank-subjective-table.test.cjs": "561CE1E5579B9582C0C3229F690EE24C64BE7096E277F85BECB11A553BBE043E"
+    },
+    "fixtureRuntime": {
+      "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-preview-runtime.json",
+      "sha256": "1DD8A8E02DF4A34BCFE67C71423B8785E81DAC996CCB4D9847490F7D092692B0"
+    },
+    "fixture": {
+      "baseUrl": "http://127.0.0.1:41740/archive/",
+      "strict": true,
+      "manifestDrift": [],
+      "driftOverride": false,
+      "sourceConsumerIndexProductionWrites": false,
+      "overlay": "in-memory Consumer response only; production source/Consumer/index bytes remain unchanged in this QA fixture"
+    },
+    "studentPrintInstrumentation": "test-only window.print no-op; actual same-page #paper-items inspected",
+    "qpp4Shim": "test-only qpp=4 output-envelope metadata shim for regression check only; existing two-column layout and divider preserved"
+  },
+  "summary": {
+    "candidateDenominator": 10,
+    "sourceConsumerParity": "PASS 10/10 content/choices/answer/solution and index selectable",
+    "staticPublicationAudit": "PASS 10/10",
+    "directActualChromeRender": "PASS 10/10",
+    "actualTeacherSolutionQpp1": "PASS 10/10 exact asset response SHA",
+    "actualTeacherSolutionCssFont": "PASS 10/10 min >=11 CSS px",
+    "studentPreviewAndPrintNoLeak": "PASS 10/10",
+    "qpp4ExistingTwoColumnLayout": "PASS",
+    "q19OwnerLabels": "POINT_NAME.target for O/P/Q/R/S; C1/C2 center points anonymous; C1/C2 curve labels remain visual adjacency only (no machine arc-label owner schema claim)"
+  },
+  "codeFiles": [
+    "archive/generated-bank.html",
+    "archive/mixed_engine.html",
+    "archive/solution-render-executor.js",
+    "archive/archive2-output.js",
+    "archive/common-fast-runtime.js",
+    "archive/mathjax_render_loop.js",
+    "tests/archive2-generated-bank-subjective-table.test.cjs"
+  ],
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q03-A1",
+      "sourceQid": 3,
+      "approval": "USER_DIRECTED_OPERATING_APPROVED",
+      "reviewStatus": "USER_DIRECTED_CONTENT_REVIEWED",
+      "visualDisposition": {
+        "problem": {
+          "necessity": "VISUAL_EXEMPT",
+          "disposition": "EXEMPT",
+          "reason": "Center, radius and equation are explicit; a problem-side circle would restate the exact data and expose the relation being tested."
+        },
+        "solution": {
+          "necessity": "VISUAL_REQUIRED",
+          "disposition": "ADD",
+          "expectedFacts": [
+            "Circle center O=(-3,2).",
+            "Radius r=4; owner segment to an exact circle point such as (1,2) has length 4.",
+            "Equal x/y scale and correct axes/origin."
+          ],
+          "pitfalls": [
+            "No approximate coordinate labels.",
+            "Bind the radius value to its actual segment."
+          ]
+        }
+      },
+      "sourceConsumer": {
+        "source": {
+          "path": "archive/generated/lite/v1/2022/H1/H22-C2-03-CIRCLE_EQUATION/shards/palma-2025-2mid-qid9-q03.js",
+          "rawSha256": "EAFD8DE0BA37DAC4144A0E259554EF4AEEE66FE5CF4B16D975277711EF93572D",
+          "gitBlobSha": "29d99d537e0169d84bfed584822e5290ce9769de"
+        },
+        "consumer": {
+          "path": "archive/data/generated-lite-consumer/v1/shards/H22-C2-03-CIRCLE_EQUATION/palma-2025-2mid-qid9-q03.json",
+          "rawSha256": "CF0CCF01F345DC6FD041BF3D29A6DAF40C4F6D25ED97EB504D52C531EFBD1211"
+        },
+        "index": {
+          "path": "archive/data/generated-lite-consumer/v1/index.json",
+          "rawSha256": "2CB1F6AABCC35F36302D8F773B7CC1196EF8C48726C7944DBE06DE912A61D199",
+          "selectable": true,
+          "shard": "data/generated-lite-consumer/v1/shards/H22-C2-03-CIRCLE_EQUATION/palma-2025-2mid-qid9-q03.json"
+        },
+        "parity": {
+          "sourceQuestionFound": true,
+          "consumerQuestionFound": true,
+          "indexRowFound": true,
+          "consumerSelectable": true,
+          "fields": [
+            {
+              "field": "content",
+              "match": true
+            },
+            {
+              "field": "choices",
+              "match": true
+            },
+            {
+              "field": "answer",
+              "match": true
+            },
+            {
+              "field": "solution",
+              "match": true
+            }
+          ],
+          "allFieldsMatch": true
+        }
+      },
+      "candidate": {
+        "svg": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q03-A1/visual.svg",
+          "rawSha256": "DE5D82B1A235CD6A3EC4A593E6536773803BF93FEA27634FA29222F6DB786CAD",
+          "gitBlobSha": "799ed02d3f6f09c2881f326c9147ab8397606f22"
+        },
+        "spec": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q03-A1/spec.json",
+          "rawSha256": "37C1DA798CA333648FBAEAFB315D4DB8D3FDE18F82ECDB334BCCD0C3A128F769"
+        },
+        "witness": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q03-A1/witness.json",
+          "rawSha256": "F2CC8D2EABB2105371023D9049B5AD5B05DA09003AE46D6950589CC413A65D72",
+          "status": "CANDIDATE_REQUIRES_QA",
+          "semanticStatus": "PASS",
+          "publicationAuthorized": false,
+          "normalizedSvgSha256": "de5d82b1a235cd6a3ec4a593e6536773803bf93fea27634fa29222f6db786cad",
+          "matchesFinalSvg": true
+        },
+        "review": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q03-A1/review.json",
+          "rawSha256": "791F565A6895AEF77F75CB1EE62C60A8DF5D77609AA6BEC52C28C2ADD3021B39",
+          "sourceSha256": "eafd8de0ba37dac4144a0e259554ef4aeee66fe5cf4b16d975277711ef93572d",
+          "solutionSha256": "31124d9b656e0fb59e008d230c083c905abbf9bd5fa55480e93d113b7525f662"
+        },
+        "staticAudit": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q03-A1/audit-report-v8.json",
+          "rawSha256": "BCCC1814C7AD9288B64731A789FE75224F34B083A501D71BA257EE539A96084B",
+          "schemaVersion": "geometry-publication-audit-v1",
+          "status": "PASS",
+          "publicationAuthorized": false,
+          "renderStatus": "NOT_RUN",
+          "errors": []
+        },
+        "asset": {
+          "path": "archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q03-A1-solution.svg",
+          "rawSha256": "DE5D82B1A235CD6A3EC4A593E6536773803BF93FEA27634FA29222F6DB786CAD",
+          "gitBlobSha": "799ed02d3f6f09c2881f326c9147ab8397606f22"
+        }
+      },
+      "directChrome": {
+        "status": "PASS",
+        "browserVersion": "154.0.8037.98",
+        "minEffectiveFontPx": 16,
+        "labelCollisionCount": 0,
+        "criticalCollisionCount": 0,
+        "clippedTextCount": 0,
+        "overflowCount": 0,
+        "reusedFromUnchangedV5Svg": true,
+        "report": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v5-render/ALITE-PALMA25-2MID-Q03-A1.json",
+          "sha256": "FE1141D867A10AD1D4B97C4B84786326A14B40B26C30EC5F3145868F25DFC6A7"
+        },
+        "png": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v5-render/ALITE-PALMA25-2MID-Q03-A1.png",
+          "sha256": "889A209A5EB2C6CCD5A5F81F2BEED8AEAEFAE695E10E8D086240A15726951F1F"
+        }
+      },
+      "actualStudentOutput": {
+        "uidVisible": true,
+        "teacherButtonCount": 0,
+        "answerSolutionSelectors": 0,
+        "printEnabled": true,
+        "printCalledByTestNoOp": true,
+        "questionCount": 1,
+        "answerSolutionNodes": 0,
+        "solutionAssetRefs": 0,
+        "screenshot": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-ui-v8-qpp1-review/ALITE-PALMA25-2MID-Q03-A1-student.png",
+          "sha256": "54EB0DB176B98BA69AECE6E526C6CF3DD8B13A681A331E89AF1E8BBCE90B4E02"
+        }
+      },
+      "actualTeacherSolutionOutput": {
+        "buttonCount": 1,
+        "mode": "sol",
+        "qpp": "1",
+        "preview": "1",
+        "gridClass": "grid-container sol-fullwidth-grid",
+        "gridChildCount": 1,
+        "imagePath": "http://127.0.0.1:41740/archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q03-A1-solution.svg",
+        "naturalWidth": 390,
+        "renderedWidthCssPx": 390,
+        "cssScale": 1,
+        "minCssFontPx": 16,
+        "minRequiredCssFontPx": 11,
+        "responseStatus": 200,
+        "responseSha256": "DE5D82B1A235CD6A3EC4A593E6536773803BF93FEA27634FA29222F6DB786CAD",
+        "responseHeaderSha256": "DE5D82B1A235CD6A3EC4A593E6536773803BF93FEA27634FA29222F6DB786CAD",
+        "expectedAssetSha256": "DE5D82B1A235CD6A3EC4A593E6536773803BF93FEA27634FA29222F6DB786CAD",
+        "screenshot": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-ui-v8-qpp1-review/ALITE-PALMA25-2MID-Q03-A1-teacher-sol.png",
+          "sha256": "FDCA8A2BF177A756C1822BC98C476B72F86CBADBD8BF8A9CC74C2E296C21BB83"
+        },
+        "routePass": true,
+        "fontPass": true
+      }
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q05-A1",
+      "sourceQid": 5,
+      "approval": "USER_DIRECTED_QUALITY_APPROVED",
+      "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+      "visualDisposition": {
+        "problem": {
+          "necessity": "VISUAL_EXEMPT",
+          "disposition": "EXEMPT",
+          "reason": "A/B coordinates fully define the task; drawing the perpendicular bisector would directly reveal the requested line."
+        },
+        "solution": {
+          "necessity": "VISUAL_REQUIRED",
+          "disposition": "ADD",
+          "expectedFacts": [
+            "A=(1,-2), B=(7,2), M=(4,0).",
+            "AB has slope 2/3; perpendicular bisector has slope -3/2 and equation 3x+2y-12=0.",
+            "M is the midpoint and intersection; AB and the bisector are perpendicular.",
+            "Optional y-intercept X=(0,6) lies on the bisector."
+          ],
+          "pitfalls": [
+            "Preserve A/B labels and midpoint ownership.",
+            "Right-angle marker belongs at M."
+          ]
+        }
+      },
+      "sourceConsumer": {
+        "source": {
+          "path": "archive/generated/lite/v1/2022/H1/H22-C2-02-LINE_EQUATION/shards/palma-2025-2mid-qid9-q05-A1.js",
+          "rawSha256": "EAD16D17E1FC410A4F0E8D7B81E481FDA911C08E06CF7BAB5C58D538249204AF",
+          "gitBlobSha": "aa62cc8381b81d8bdb71fdb58842ee8c09a0331d"
+        },
+        "consumer": {
+          "path": "archive/data/generated-lite-consumer/v1/shards/H22-C2-02-LINE_EQUATION/palma-2025-2mid-qid9-q05-A1.json",
+          "rawSha256": "2D2123A72DCE31D83E719334C793D0F693515E88F3BFD757C970F3FD31B7A85F"
+        },
+        "index": {
+          "path": "archive/data/generated-lite-consumer/v1/index.json",
+          "rawSha256": "2CB1F6AABCC35F36302D8F773B7CC1196EF8C48726C7944DBE06DE912A61D199",
+          "selectable": true,
+          "shard": "data/generated-lite-consumer/v1/shards/H22-C2-02-LINE_EQUATION/palma-2025-2mid-qid9-q05-A1.json"
+        },
+        "parity": {
+          "sourceQuestionFound": true,
+          "consumerQuestionFound": true,
+          "indexRowFound": true,
+          "consumerSelectable": true,
+          "fields": [
+            {
+              "field": "content",
+              "match": true
+            },
+            {
+              "field": "choices",
+              "match": true
+            },
+            {
+              "field": "answer",
+              "match": true
+            },
+            {
+              "field": "solution",
+              "match": true
+            }
+          ],
+          "allFieldsMatch": true
+        }
+      },
+      "candidate": {
+        "svg": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q05-A1/visual.svg",
+          "rawSha256": "4525501D985730A059C222CB2B68C6F415DBD494FDA36EDB8B439454CAFD2F35",
+          "gitBlobSha": "dc784c4dbb10d6073305007505f214d97d64cea7"
+        },
+        "spec": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q05-A1/spec.json",
+          "rawSha256": "D0FFB177FC888DBE7ACC6C671AF49DF8D4F08E6727813C94CE372A76533BBA29"
+        },
+        "witness": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q05-A1/witness.json",
+          "rawSha256": "3AB5C4685D129DBE98A8E4F47AFA9DDC0386B222D93267E6C969EA61DA701961",
+          "status": "CANDIDATE_REQUIRES_QA",
+          "semanticStatus": "PASS",
+          "publicationAuthorized": false,
+          "normalizedSvgSha256": "4525501d985730a059c222cb2b68c6f415dbd494fda36edb8b439454cafd2f35",
+          "matchesFinalSvg": true
+        },
+        "review": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q05-A1/review.json",
+          "rawSha256": "C696A6C53638D0C4B0701C03CD5B83E788C8D12032C5C58D558EBFC1E0957E98",
+          "sourceSha256": "ead16d17e1fc410a4f0e8d7b81e481fda911c08e06cf7bab5c58d538249204af",
+          "solutionSha256": "ab2f56b37c544ce014e56e00ba170de4c6c60031433dccb1d87543c42fb26815"
+        },
+        "staticAudit": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q05-A1/audit-report-v8.json",
+          "rawSha256": "8AEF12AD6890B40845D61FDE025A809DA56E412FDA32371B3636E2CDA757D3FD",
+          "schemaVersion": "geometry-publication-audit-v1",
+          "status": "PASS",
+          "publicationAuthorized": false,
+          "renderStatus": "NOT_RUN",
+          "errors": []
+        },
+        "asset": {
+          "path": "archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q05-A1-solution.svg",
+          "rawSha256": "4525501D985730A059C222CB2B68C6F415DBD494FDA36EDB8B439454CAFD2F35",
+          "gitBlobSha": "dc784c4dbb10d6073305007505f214d97d64cea7"
+        }
+      },
+      "directChrome": {
+        "status": "PASS",
+        "browserVersion": "154.0.8037.98",
+        "minEffectiveFontPx": 16,
+        "labelCollisionCount": 0,
+        "criticalCollisionCount": 0,
+        "clippedTextCount": 0,
+        "overflowCount": 0,
+        "reusedFromUnchangedV5Svg": true,
+        "report": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v5-render/ALITE-PALMA25-2MID-Q05-A1.json",
+          "sha256": "8C612B949539AB8ABAA603E887216A2E142C9FFB5CCDB55024DE202B4F47B7A5"
+        },
+        "png": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v5-render/ALITE-PALMA25-2MID-Q05-A1.png",
+          "sha256": "45E4ACAEE9DB0E5451DCC3AE4F383D99152B3AAAB00C86C5895405DC28EEEFFA"
+        }
+      },
+      "actualStudentOutput": {
+        "uidVisible": true,
+        "teacherButtonCount": 0,
+        "answerSolutionSelectors": 0,
+        "printEnabled": true,
+        "printCalledByTestNoOp": true,
+        "questionCount": 1,
+        "answerSolutionNodes": 0,
+        "solutionAssetRefs": 0,
+        "screenshot": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-ui-v8-qpp1-review/ALITE-PALMA25-2MID-Q05-A1-student.png",
+          "sha256": "00C4715DEE59E2BD4EBD485C0A6160DAC06A0B2013EE0D60A1092F07DBE03CA3"
+        }
+      },
+      "actualTeacherSolutionOutput": {
+        "buttonCount": 1,
+        "mode": "sol",
+        "qpp": "1",
+        "preview": "1",
+        "gridClass": "grid-container sol-fullwidth-grid",
+        "gridChildCount": 1,
+        "imagePath": "http://127.0.0.1:41740/archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q05-A1-solution.svg",
+        "naturalWidth": 520,
+        "renderedWidthCssPx": 520,
+        "cssScale": 1,
+        "minCssFontPx": 16,
+        "minRequiredCssFontPx": 11,
+        "responseStatus": 200,
+        "responseSha256": "4525501D985730A059C222CB2B68C6F415DBD494FDA36EDB8B439454CAFD2F35",
+        "responseHeaderSha256": "4525501D985730A059C222CB2B68C6F415DBD494FDA36EDB8B439454CAFD2F35",
+        "expectedAssetSha256": "4525501D985730A059C222CB2B68C6F415DBD494FDA36EDB8B439454CAFD2F35",
+        "screenshot": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-ui-v8-qpp1-review/ALITE-PALMA25-2MID-Q05-A1-teacher-sol.png",
+          "sha256": "DF0679A504744391C6B64BD3E61CDA0AACEF8A7CB4067A3FAF989BA5EAD5D14E"
+        },
+        "routePass": true,
+        "fontPass": true
+      }
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q06-A1",
+      "sourceQid": 6,
+      "approval": "USER_DIRECTED_QUALITY_APPROVED",
+      "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+      "visualDisposition": {
+        "problem": {
+          "necessity": "VISUAL_EXEMPT",
+          "disposition": "EXEMPT",
+          "reason": "The circle and parameter line are exactly specified; boundary lines in the problem image would give away the integer range."
+        },
+        "solution": {
+          "necessity": "VISUAL_REQUIRED",
+          "disposition": "ADD",
+          "expectedFacts": [
+            "Circle center O=(0,0), radius sqrt(13).",
+            "Line family 2x-3y+k=0; k=0 is a secant through O.",
+            "k=13 and k=-13 are tangent boundaries at (-2,3) and (2,-3), respectively.",
+            "Distance condition is inclusive: |k|<=13; integers -13 through 13 give 27 values."
+          ],
+          "pitfalls": [
+            "Do not exclude tangency.",
+            "Each tangent point must lie on its circle and line."
+          ]
+        }
+      },
+      "sourceConsumer": {
+        "source": {
+          "path": "archive/generated/lite/v1/2022/H1/H22-C2-03-INTERSECTION/shards/palma-2025-2mid-qid9-q06-A1.js",
+          "rawSha256": "26EA78E58D7ADED4DB86A37AFCACAADBA3F48AF52A8B8884684C7504F6366D37",
+          "gitBlobSha": "651eec08fddbcb2cfa74f6d2c97ec181fa2b22f0"
+        },
+        "consumer": {
+          "path": "archive/data/generated-lite-consumer/v1/shards/H22-C2-03-INTERSECTION/palma-2025-2mid-qid9-q06-A1.json",
+          "rawSha256": "6B7779FE406E5745CDE295F1B528C08E1E3CADBB81A363F6A0C035A59E676D95"
+        },
+        "index": {
+          "path": "archive/data/generated-lite-consumer/v1/index.json",
+          "rawSha256": "2CB1F6AABCC35F36302D8F773B7CC1196EF8C48726C7944DBE06DE912A61D199",
+          "selectable": true,
+          "shard": "data/generated-lite-consumer/v1/shards/H22-C2-03-INTERSECTION/palma-2025-2mid-qid9-q06-A1.json"
+        },
+        "parity": {
+          "sourceQuestionFound": true,
+          "consumerQuestionFound": true,
+          "indexRowFound": true,
+          "consumerSelectable": true,
+          "fields": [
+            {
+              "field": "content",
+              "match": true
+            },
+            {
+              "field": "choices",
+              "match": true
+            },
+            {
+              "field": "answer",
+              "match": true
+            },
+            {
+              "field": "solution",
+              "match": true
+            }
+          ],
+          "allFieldsMatch": true
+        }
+      },
+      "candidate": {
+        "svg": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q06-A1/visual.svg",
+          "rawSha256": "56C82FF96F8C33ABF3F85B6D49150D203BABD0EC9A85E052920216593F2FA52B",
+          "gitBlobSha": "682eafb56220b5643e6495e4b9572d15e98212af"
+        },
+        "spec": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q06-A1/spec.json",
+          "rawSha256": "A469EAC5846F302BB8FF4A67FFDE4909770D320704B579BDD41EDC6FE9750656"
+        },
+        "witness": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q06-A1/witness.json",
+          "rawSha256": "37BB3C6FD66BE349E78B5D3769909EC86F020C273980E5205A96D2668AF8C975",
+          "status": "CANDIDATE_REQUIRES_QA",
+          "semanticStatus": "PASS",
+          "publicationAuthorized": false,
+          "normalizedSvgSha256": "56c82ff96f8c33abf3f85b6d49150d203babd0ec9a85e052920216593f2fa52b",
+          "matchesFinalSvg": true
+        },
+        "review": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q06-A1/review.json",
+          "rawSha256": "887FCB38568A034E35AE9FD0650BB7910E20AB2BABB5ED4169B40F083E57F748",
+          "sourceSha256": "26ea78e58d7aded4db86a37afcacaadba3f48af52a8b8884684c7504f6366d37",
+          "solutionSha256": "555857d1f65888939f5ea6dfce376ddd8b4c5b01c1be491250883bd072bc491a"
+        },
+        "staticAudit": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q06-A1/audit-report-v8.json",
+          "rawSha256": "683ACBFAEBF96A8B069DA9E1942F67829500F2AA4539B23025CA4C7748FF8076",
+          "schemaVersion": "geometry-publication-audit-v1",
+          "status": "PASS",
+          "publicationAuthorized": false,
+          "renderStatus": "NOT_RUN",
+          "errors": []
+        },
+        "asset": {
+          "path": "archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q06-A1-solution.svg",
+          "rawSha256": "56C82FF96F8C33ABF3F85B6D49150D203BABD0EC9A85E052920216593F2FA52B",
+          "gitBlobSha": "682eafb56220b5643e6495e4b9572d15e98212af"
+        }
+      },
+      "directChrome": {
+        "status": "PASS",
+        "browserVersion": "154.0.8037.98",
+        "minEffectiveFontPx": 16,
+        "labelCollisionCount": 0,
+        "criticalCollisionCount": 0,
+        "clippedTextCount": 0,
+        "overflowCount": 0,
+        "reusedFromUnchangedV5Svg": true,
+        "report": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v5-render/ALITE-PALMA25-2MID-Q06-A1.json",
+          "sha256": "B9F725C9687A8D1353BCB9A8583205DC6564E062EFADB27B6DFDE5BF5695A7B2"
+        },
+        "png": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v5-render/ALITE-PALMA25-2MID-Q06-A1.png",
+          "sha256": "181CADA10CCCC9656B8CF89BFFBA99CDC41F3A8DF9B0A81356ECE6B8F9B47873"
+        }
+      },
+      "actualStudentOutput": {
+        "uidVisible": true,
+        "teacherButtonCount": 0,
+        "answerSolutionSelectors": 0,
+        "printEnabled": true,
+        "printCalledByTestNoOp": true,
+        "questionCount": 1,
+        "answerSolutionNodes": 0,
+        "solutionAssetRefs": 0,
+        "screenshot": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-ui-v8-qpp1-review/ALITE-PALMA25-2MID-Q06-A1-student.png",
+          "sha256": "3A4A8438CE46FCE0468D313842281CA04D170F411F512449DB70121ED2C47BC1"
+        }
+      },
+      "actualTeacherSolutionOutput": {
+        "buttonCount": 1,
+        "mode": "sol",
+        "qpp": "1",
+        "preview": "1",
+        "gridClass": "grid-container sol-fullwidth-grid",
+        "gridChildCount": 1,
+        "imagePath": "http://127.0.0.1:41740/archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q06-A1-solution.svg",
+        "naturalWidth": 500,
+        "renderedWidthCssPx": 500,
+        "cssScale": 1,
+        "minCssFontPx": 16,
+        "minRequiredCssFontPx": 11,
+        "responseStatus": 200,
+        "responseSha256": "56C82FF96F8C33ABF3F85B6D49150D203BABD0EC9A85E052920216593F2FA52B",
+        "responseHeaderSha256": "56C82FF96F8C33ABF3F85B6D49150D203BABD0EC9A85E052920216593F2FA52B",
+        "expectedAssetSha256": "56C82FF96F8C33ABF3F85B6D49150D203BABD0EC9A85E052920216593F2FA52B",
+        "screenshot": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-ui-v8-qpp1-review/ALITE-PALMA25-2MID-Q06-A1-teacher-sol.png",
+          "sha256": "2AA0AE9D5BCD457373353EB91F0205E7E91163764734AE880B2445C06C9F4558"
+        },
+        "routePass": true,
+        "fontPass": true
+      }
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q07-A1",
+      "sourceQid": 7,
+      "approval": "USER_DIRECTED_QUALITY_APPROVED",
+      "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+      "visualDisposition": {
+        "problem": {
+          "necessity": "VISUAL_EXEMPT",
+          "disposition": "EXEMPT",
+          "reason": "The circle equations and translation vector specify the geometry; drawing the common center line reveals the requested result."
+        },
+        "solution": {
+          "necessity": "VISUAL_REQUIRED",
+          "disposition": "ADD",
+          "expectedFacts": [
+            "C1 center (0,-2), C2 center (3,4), both radii 3.",
+            "Translation vector is (+3,+6).",
+            "Common center line y=2x-2 passes through both centers and bisects both disks.",
+            "The circles are disjoint; do not imply that they intersect."
+          ],
+          "pitfalls": [
+            "Translation arrow owner is C1 to C2.",
+            "Equal scale preserves both circles."
+          ]
+        }
+      },
+      "sourceConsumer": {
+        "source": {
+          "path": "archive/generated/lite/v1/2022/H1/H22-C2-04-CORE/shards/palma-2025-2mid-qid9-q07-A1.js",
+          "rawSha256": "7E847E3B68EACCDB218755FD801E8304128909412652B49F60CA3338005DA9B0",
+          "gitBlobSha": "6f01357c39de6fc3cbba2e0eaed3db91060116ed"
+        },
+        "consumer": {
+          "path": "archive/data/generated-lite-consumer/v1/shards/H22-C2-04-CORE/palma-2025-2mid-qid9-q07-A1.json",
+          "rawSha256": "1F6228DE64523EBD9F9173BF822A22FF54538BA4B627B749822F37B1663D9148"
+        },
+        "index": {
+          "path": "archive/data/generated-lite-consumer/v1/index.json",
+          "rawSha256": "2CB1F6AABCC35F36302D8F773B7CC1196EF8C48726C7944DBE06DE912A61D199",
+          "selectable": true,
+          "shard": "data/generated-lite-consumer/v1/shards/H22-C2-04-CORE/palma-2025-2mid-qid9-q07-A1.json"
+        },
+        "parity": {
+          "sourceQuestionFound": true,
+          "consumerQuestionFound": true,
+          "indexRowFound": true,
+          "consumerSelectable": true,
+          "fields": [
+            {
+              "field": "content",
+              "match": true
+            },
+            {
+              "field": "choices",
+              "match": true
+            },
+            {
+              "field": "answer",
+              "match": true
+            },
+            {
+              "field": "solution",
+              "match": true
+            }
+          ],
+          "allFieldsMatch": true
+        }
+      },
+      "candidate": {
+        "svg": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q07-A1/visual.svg",
+          "rawSha256": "557586FB636C256F743AD4FD37ECAE2A5709B409D4D11244AD10215012D9FCA2",
+          "gitBlobSha": "6b90c6d049b2a6787641585b58ba0bc16d2440f8"
+        },
+        "spec": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q07-A1/spec.json",
+          "rawSha256": "5FCE6CA8A1628BC516672CB5DAF743FA0A720B526636802CB982A2F255987C29"
+        },
+        "witness": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q07-A1/witness.json",
+          "rawSha256": "21189E5FD56E84EAD3FB7142B8C5BC95FD53582D368684506EECD8DB662E7B2F",
+          "status": "CANDIDATE_REQUIRES_QA",
+          "semanticStatus": "PASS",
+          "publicationAuthorized": false,
+          "normalizedSvgSha256": "a2caa27a51281c03dd16e60d7c3f6529b4348fd40010033236e0dfabb6aecd8b",
+          "matchesFinalSvg": false
+        },
+        "review": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q07-A1/review.json",
+          "rawSha256": "F95BBE56B12BC5644902518D4EF4F09C3EC2FE611AF7D19FF24437A28795300E",
+          "sourceSha256": "7e847e3b68eaccdb218755fd801e8304128909412652b49f60ca3338005da9b0",
+          "solutionSha256": "8ed0d52ba111b75f12a5a28271e08e7fb89325d65fd42a9641d572c24811df17"
+        },
+        "staticAudit": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q07-A1/audit-report-v8.json",
+          "rawSha256": "0F601C9FA09F24CFE4A580F1F30F3E3708ECF8DF7E97E1A66CE3EB00831DFD05",
+          "schemaVersion": "geometry-publication-audit-v1",
+          "status": "PASS",
+          "publicationAuthorized": false,
+          "renderStatus": "NOT_RUN",
+          "errors": []
+        },
+        "asset": {
+          "path": "archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q07-A1-solution.svg",
+          "rawSha256": "557586FB636C256F743AD4FD37ECAE2A5709B409D4D11244AD10215012D9FCA2",
+          "gitBlobSha": "6b90c6d049b2a6787641585b58ba0bc16d2440f8"
+        }
+      },
+      "directChrome": {
+        "status": "PASS",
+        "browserVersion": "154.0.8037.98",
+        "minEffectiveFontPx": 16,
+        "labelCollisionCount": 0,
+        "criticalCollisionCount": 0,
+        "clippedTextCount": 0,
+        "overflowCount": 0,
+        "reusedFromUnchangedV5Svg": true,
+        "report": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v5-render/ALITE-PALMA25-2MID-Q07-A1.json",
+          "sha256": "2068C40458CA353E4358C55283EC75C838F1E59D3321A08E4756770D245BF78F"
+        },
+        "png": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v5-render/ALITE-PALMA25-2MID-Q07-A1.png",
+          "sha256": "CDF3CBDA08BF24DA3D38008E5E87F1B663431D2509636D9DE6A39AE2EA062862"
+        }
+      },
+      "actualStudentOutput": {
+        "uidVisible": true,
+        "teacherButtonCount": 0,
+        "answerSolutionSelectors": 0,
+        "printEnabled": true,
+        "printCalledByTestNoOp": true,
+        "questionCount": 1,
+        "answerSolutionNodes": 0,
+        "solutionAssetRefs": 0,
+        "screenshot": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-ui-v8-qpp1-review/ALITE-PALMA25-2MID-Q07-A1-student.png",
+          "sha256": "EF68E67087E3DB4024FCD134E8A58F9815C7E6D33C76007BF0CB78CA1F6D10C8"
+        }
+      },
+      "actualTeacherSolutionOutput": {
+        "buttonCount": 1,
+        "mode": "sol",
+        "qpp": "1",
+        "preview": "1",
+        "gridClass": "grid-container sol-fullwidth-grid",
+        "gridChildCount": 1,
+        "imagePath": "http://127.0.0.1:41740/archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q07-A1-solution.svg",
+        "naturalWidth": 720,
+        "renderedWidthCssPx": 638.296875,
+        "cssScale": 0.8865234375,
+        "minCssFontPx": 14.184375,
+        "minRequiredCssFontPx": 11,
+        "responseStatus": 200,
+        "responseSha256": "557586FB636C256F743AD4FD37ECAE2A5709B409D4D11244AD10215012D9FCA2",
+        "responseHeaderSha256": "557586FB636C256F743AD4FD37ECAE2A5709B409D4D11244AD10215012D9FCA2",
+        "expectedAssetSha256": "557586FB636C256F743AD4FD37ECAE2A5709B409D4D11244AD10215012D9FCA2",
+        "screenshot": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-ui-v8-qpp1-review/ALITE-PALMA25-2MID-Q07-A1-teacher-sol.png",
+          "sha256": "24AD8ABFB392ADAE1811F11A6D92063AACC278156E9480FB60D8E509D9AF780F"
+        },
+        "routePass": true,
+        "fontPass": true
+      }
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q09-A1",
+      "sourceQid": 9,
+      "approval": "USER_DIRECTED_QUALITY_APPROVED",
+      "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+      "visualDisposition": {
+        "problem": {
+          "necessity": "VISUAL_EXEMPT",
+          "disposition": "EXEMPT",
+          "reason": "All source vertices and 2:1 ratios are stated; drawing the three division points and centroid in the stem would preview the construction."
+        },
+        "solution": {
+          "necessity": "VISUAL_REQUIRED",
+          "disposition": "ADD",
+          "expectedFacts": [
+            "O=(0,0), A=(9,0), B=(3,9).",
+            "OC:CA=2:1 gives C=(6,0).",
+            "AD:DB=2:1 gives D=(5,6).",
+            "BE:EO=2:1 gives E=(1,3).",
+            "Centroid of triangle CDE is G=(4,3); a+b=7."
+          ],
+          "pitfalls": [
+            "Preserve oriented segment orders OA, AB and BO.",
+            "Ratio labels bind to the corresponding segments."
+          ]
+        }
+      },
+      "sourceConsumer": {
+        "source": {
+          "path": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/shards/palma-2025-2mid-qid9-q09-A1.js",
+          "rawSha256": "DBD3FE9C43367DC862C8DE55598844291DF1FF470E14EDA0CF024C48B3D95F53",
+          "gitBlobSha": "05be963a2cc23f7daa658be3995441a235d23cf7"
+        },
+        "consumer": {
+          "path": "archive/data/generated-lite-consumer/v1/shards/H22-C2-01-GEOMETRY_APPLICATION/palma-2025-2mid-qid9-q09-A1.json",
+          "rawSha256": "FBCAAA85EF082F279F1A8FF9329B644969489E0D275B56563AFC6C945C35BDD0"
+        },
+        "index": {
+          "path": "archive/data/generated-lite-consumer/v1/index.json",
+          "rawSha256": "2CB1F6AABCC35F36302D8F773B7CC1196EF8C48726C7944DBE06DE912A61D199",
+          "selectable": true,
+          "shard": "data/generated-lite-consumer/v1/shards/H22-C2-01-GEOMETRY_APPLICATION/palma-2025-2mid-qid9-q09-A1.json"
+        },
+        "parity": {
+          "sourceQuestionFound": true,
+          "consumerQuestionFound": true,
+          "indexRowFound": true,
+          "consumerSelectable": true,
+          "fields": [
+            {
+              "field": "content",
+              "match": true
+            },
+            {
+              "field": "choices",
+              "match": true
+            },
+            {
+              "field": "answer",
+              "match": true
+            },
+            {
+              "field": "solution",
+              "match": true
+            }
+          ],
+          "allFieldsMatch": true
+        }
+      },
+      "candidate": {
+        "svg": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q09-A1/visual.svg",
+          "rawSha256": "BF937E0AD94683FEDCB8C8AEDE367604B328138EBFB1A210BD1FBEC65C54D5DE",
+          "gitBlobSha": "e47dfc27956a217646f27bf7d5fd07bda87a0a34"
+        },
+        "spec": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q09-A1/spec.json",
+          "rawSha256": "2C306D7A6CF7FEF459A1705E340F095DD64E41F2DA5D1A637A641263A6430560"
+        },
+        "witness": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q09-A1/witness.json",
+          "rawSha256": "00950184EF216D48A5F12AC1BCE3661FAEEFEF9686B58B554B5608093FBC88C7",
+          "status": "CANDIDATE_REQUIRES_QA",
+          "semanticStatus": "PASS",
+          "publicationAuthorized": false,
+          "normalizedSvgSha256": "a91139d9edafcbac5051b349a11b8b988928768805ca271435306f153278b63f",
+          "matchesFinalSvg": false
+        },
+        "review": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q09-A1/review.json",
+          "rawSha256": "705B94CBD7B0CAFFDD245FE60CAC5E606C4ECB630F6E0C48DD672F32F54E1054",
+          "sourceSha256": "dbd3fe9c43367dc862c8de55598844291df1ff470e14eda0cf024c48b3d95f53",
+          "solutionSha256": "7052e07686c7bc82fb8b9907bcb4d0560d5a260bd99b99da33a47098e6fdcd6a"
+        },
+        "staticAudit": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q09-A1/audit-report-v8.json",
+          "rawSha256": "DAB7E26AB659CC190257FAEBBFD31C673A2A6F20C7776D6D6B7E33BD6046409F",
+          "schemaVersion": "geometry-publication-audit-v1",
+          "status": "PASS",
+          "publicationAuthorized": false,
+          "renderStatus": "NOT_RUN",
+          "errors": []
+        },
+        "asset": {
+          "path": "archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q09-A1-solution.svg",
+          "rawSha256": "BF937E0AD94683FEDCB8C8AEDE367604B328138EBFB1A210BD1FBEC65C54D5DE",
+          "gitBlobSha": "e47dfc27956a217646f27bf7d5fd07bda87a0a34"
+        }
+      },
+      "directChrome": {
+        "status": "PASS",
+        "browserVersion": "154.0.8037.98",
+        "minEffectiveFontPx": 16,
+        "labelCollisionCount": 0,
+        "criticalCollisionCount": 0,
+        "clippedTextCount": 0,
+        "overflowCount": 0,
+        "reusedFromUnchangedV5Svg": true,
+        "report": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v5-render/ALITE-PALMA25-2MID-Q09-A1.json",
+          "sha256": "A118F3C6D2D90ADE7B62DF97792B08AF4C87B239E77F4CF74D4694367135AA47"
+        },
+        "png": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v5-render/ALITE-PALMA25-2MID-Q09-A1.png",
+          "sha256": "54092AC103FF19BF0DAE096B9F6915263EC22BF76D6FE617492901C824E9A575"
+        }
+      },
+      "actualStudentOutput": {
+        "uidVisible": true,
+        "teacherButtonCount": 0,
+        "answerSolutionSelectors": 0,
+        "printEnabled": true,
+        "printCalledByTestNoOp": true,
+        "questionCount": 1,
+        "answerSolutionNodes": 0,
+        "solutionAssetRefs": 0,
+        "screenshot": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-ui-v8-qpp1-review/ALITE-PALMA25-2MID-Q09-A1-student.png",
+          "sha256": "218EAA30588EF5A1BF74A365D0329FAA578F1334ACD437DA980A06C05AD211B5"
+        }
+      },
+      "actualTeacherSolutionOutput": {
+        "buttonCount": 1,
+        "mode": "sol",
+        "qpp": "1",
+        "preview": "1",
+        "gridClass": "grid-container sol-fullwidth-grid",
+        "gridChildCount": 1,
+        "imagePath": "http://127.0.0.1:41740/archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q09-A1-solution.svg",
+        "naturalWidth": 720,
+        "renderedWidthCssPx": 638.296875,
+        "cssScale": 0.8865234375,
+        "minCssFontPx": 14.184375,
+        "minRequiredCssFontPx": 11,
+        "responseStatus": 200,
+        "responseSha256": "BF937E0AD94683FEDCB8C8AEDE367604B328138EBFB1A210BD1FBEC65C54D5DE",
+        "responseHeaderSha256": "BF937E0AD94683FEDCB8C8AEDE367604B328138EBFB1A210BD1FBEC65C54D5DE",
+        "expectedAssetSha256": "BF937E0AD94683FEDCB8C8AEDE367604B328138EBFB1A210BD1FBEC65C54D5DE",
+        "screenshot": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-ui-v8-qpp1-review/ALITE-PALMA25-2MID-Q09-A1-teacher-sol.png",
+          "sha256": "7CE7FD899585EEFAF3C0A35044980013CF85ADECC9788A06FBC36E54B668247F"
+        },
+        "routePass": true,
+        "fontPass": true
+      }
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q12-A1",
+      "sourceQid": 12,
+      "approval": "USER_DIRECTED_QUALITY_APPROVED",
+      "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+      "visualDisposition": {
+        "problem": {
+          "necessity": "VISUAL_EXEMPT",
+          "disposition": "EXEMPT",
+          "reason": "The circle and external point are fully specified; a tangent/chord diagram in the stem would hint the polar-line step."
+        },
+        "solution": {
+          "necessity": "VISUAL_REQUIRED",
+          "disposition": "ADD",
+          "expectedFacts": [
+            "Circle O=(0,0), radius sqrt(30); external point A=(6,8).",
+            "Contact chord PQ is 6x+8y=30.",
+            "Foot H=(9/5,12/5), OH=3 and OH is perpendicular to PQ.",
+            "P,Q lie on the circle; AP/AQ are tangent; OP perpendicular AP and OQ perpendicular AQ.",
+            "Exact contacts are H plus/minus (sqrt(21)/5)*(-4,3)."
+          ],
+          "pitfalls": [
+            "Do not label calculated decimal coordinates.",
+            "Do not confuse chord PQ with tangent AP/AQ."
+          ]
+        }
+      },
+      "sourceConsumer": {
+        "source": {
+          "path": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/shards/palma-2025-2mid-qid9-q12-A1.js",
+          "rawSha256": "7D7DD391D38A4A94D74720A5F1D1B75642B2FCE991A646A1D0C47E0A7D69A0C6",
+          "gitBlobSha": "b34335783c5be199fa86094e771761b798c36a35"
+        },
+        "consumer": {
+          "path": "archive/data/generated-lite-consumer/v1/shards/H22-C2-03-TANGENT/palma-2025-2mid-qid9-q12-A1.json",
+          "rawSha256": "9ADB16EF77D519CE8013EF530EA57A90B3FC7EB3722DD391F58B45B637F2F513"
+        },
+        "index": {
+          "path": "archive/data/generated-lite-consumer/v1/index.json",
+          "rawSha256": "2CB1F6AABCC35F36302D8F773B7CC1196EF8C48726C7944DBE06DE912A61D199",
+          "selectable": true,
+          "shard": "data/generated-lite-consumer/v1/shards/H22-C2-03-TANGENT/palma-2025-2mid-qid9-q12-A1.json"
+        },
+        "parity": {
+          "sourceQuestionFound": true,
+          "consumerQuestionFound": true,
+          "indexRowFound": true,
+          "consumerSelectable": true,
+          "fields": [
+            {
+              "field": "content",
+              "match": true
+            },
+            {
+              "field": "choices",
+              "match": true
+            },
+            {
+              "field": "answer",
+              "match": true
+            },
+            {
+              "field": "solution",
+              "match": true
+            }
+          ],
+          "allFieldsMatch": true
+        }
+      },
+      "candidate": {
+        "svg": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q12-A1/visual.svg",
+          "rawSha256": "73F2B5ACE4944964B4FB8D94ED50259E4CA31F39854CD273420C352ED89347CC",
+          "gitBlobSha": "a980140cfe51642eb77461e02011d432ed967ad4"
+        },
+        "spec": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q12-A1/spec.json",
+          "rawSha256": "2BFEC46EC4D02E4FA4D71A3FA6993E29258CEF4AC1F979D8E960CC41266DCD04"
+        },
+        "witness": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q12-A1/witness.json",
+          "rawSha256": "2C83EC85380D693E030D14393CE68BCA99B42FBB18474296BC0C99258547C3DD",
+          "status": "CANDIDATE_REQUIRES_QA",
+          "semanticStatus": "PASS",
+          "publicationAuthorized": false,
+          "normalizedSvgSha256": "73f2b5ace4944964b4fb8d94ed50259e4ca31f39854cd273420c352ed89347cc",
+          "matchesFinalSvg": true
+        },
+        "review": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q12-A1/review.json",
+          "rawSha256": "C25D71ED3FF1B419E5E9BF3103DE7F312D6C1D88E749817FC90695A1BC945446",
+          "sourceSha256": "7d7dd391d38a4a94d74720a5f1d1b75642b2fce991a646a1d0c47e0a7d69a0c6",
+          "solutionSha256": "82beb62690fe0670a0793528592945ff66daadc60f08496d1a8bdfd844ede79d"
+        },
+        "staticAudit": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q12-A1/audit-report-v8.json",
+          "rawSha256": "166FD6970F0D902368F5EA9D0BA7B495BD1985C58034DF6A4778C196FFE6A6B7",
+          "schemaVersion": "geometry-publication-audit-v1",
+          "status": "PASS",
+          "publicationAuthorized": false,
+          "renderStatus": "NOT_RUN",
+          "errors": []
+        },
+        "asset": {
+          "path": "archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q12-A1-solution.svg",
+          "rawSha256": "73F2B5ACE4944964B4FB8D94ED50259E4CA31F39854CD273420C352ED89347CC",
+          "gitBlobSha": "a980140cfe51642eb77461e02011d432ed967ad4"
+        }
+      },
+      "directChrome": {
+        "status": "PASS",
+        "browserVersion": "154.0.8037.98",
+        "minEffectiveFontPx": 16,
+        "labelCollisionCount": 0,
+        "criticalCollisionCount": 0,
+        "clippedTextCount": 0,
+        "overflowCount": 0,
+        "reusedFromUnchangedV5Svg": true,
+        "report": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v5-render/ALITE-PALMA25-2MID-Q12-A1.json",
+          "sha256": "1D7AACA48A17552B98CBA6D9780FA13D07D4618362343789B43A8EA2D627F15C"
+        },
+        "png": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v5-render/ALITE-PALMA25-2MID-Q12-A1.png",
+          "sha256": "AA0B14414A5BE76A2D32DDBD5B26E96849A0FE811C60C56764D7D20D8D666DE9"
+        }
+      },
+      "actualStudentOutput": {
+        "uidVisible": true,
+        "teacherButtonCount": 0,
+        "answerSolutionSelectors": 0,
+        "printEnabled": true,
+        "printCalledByTestNoOp": true,
+        "questionCount": 1,
+        "answerSolutionNodes": 0,
+        "solutionAssetRefs": 0,
+        "screenshot": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-ui-v8-qpp1-review/ALITE-PALMA25-2MID-Q12-A1-student.png",
+          "sha256": "29899C055A809CFDAEAF39195F4DAC74D4BFDADC18E25E095E5022EC3F56CACD"
+        }
+      },
+      "actualTeacherSolutionOutput": {
+        "buttonCount": 1,
+        "mode": "sol",
+        "qpp": "1",
+        "preview": "1",
+        "gridClass": "grid-container sol-fullwidth-grid",
+        "gridChildCount": 1,
+        "imagePath": "http://127.0.0.1:41740/archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q12-A1-solution.svg",
+        "naturalWidth": 520,
+        "renderedWidthCssPx": 520,
+        "cssScale": 1,
+        "minCssFontPx": 16,
+        "minRequiredCssFontPx": 11,
+        "responseStatus": 200,
+        "responseSha256": "73F2B5ACE4944964B4FB8D94ED50259E4CA31F39854CD273420C352ED89347CC",
+        "responseHeaderSha256": "73F2B5ACE4944964B4FB8D94ED50259E4CA31F39854CD273420C352ED89347CC",
+        "expectedAssetSha256": "73F2B5ACE4944964B4FB8D94ED50259E4CA31F39854CD273420C352ED89347CC",
+        "screenshot": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-ui-v8-qpp1-review/ALITE-PALMA25-2MID-Q12-A1-teacher-sol.png",
+          "sha256": "4868A53B814E9A08F5FD7BD72D74EEB169565BEAB16286FA469442103601923C"
+        },
+        "routePass": true,
+        "fontPass": true
+      }
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q15-A1",
+      "sourceQid": 15,
+      "approval": "REVIEW_APPROVED",
+      "reviewStatus": "REVIEW_PASS",
+      "visualDisposition": {
+        "problem": {
+          "necessity": "VISUAL_EXEMPT",
+          "disposition": "EXEMPT",
+          "reason": "The three substitution choices are the reasoning challenge; center diagrams in the stem reveal which choices match."
+        },
+        "solution": {
+          "necessity": "VISUAL_REQUIRED",
+          "disposition": "ADD",
+          "expectedFacts": [
+            "f-circle center F=(2,-1), target g-circle center G=(5,1), all radii 2.",
+            "Choice ㄱ maps center to (5,1).",
+            "Choice ㄴ maps center to (2,1), so it is false.",
+            "Choice ㄷ maps center to (5,1)."
+          ],
+          "pitfalls": [
+            "Substitution direction is source f to the resulting graph.",
+            "Each case is visually separated."
+          ]
+        }
+      },
+      "sourceConsumer": {
+        "source": {
+          "path": "archive/generated/lite/v1/2022/H1/H22-C2-04-CORE/shards/palma-2025-2mid-qid9-q15-A1.js",
+          "rawSha256": "165907FCFB764AFA4A8CE9081A44F313BFD44D09426D8C8DA4D30387A20F469D",
+          "gitBlobSha": "91445fd89bd368ac5a4f058a8044da8d6d8d1ab3"
+        },
+        "consumer": {
+          "path": "archive/data/generated-lite-consumer/v1/shards/H22-C2-04-CORE/palma-2025-2mid-qid9-q15-A1.json",
+          "rawSha256": "9B8C7821C9967D7521C7757B273D99AE863EFA5D49FA198CFE8F173305AADFB4"
+        },
+        "index": {
+          "path": "archive/data/generated-lite-consumer/v1/index.json",
+          "rawSha256": "2CB1F6AABCC35F36302D8F773B7CC1196EF8C48726C7944DBE06DE912A61D199",
+          "selectable": true,
+          "shard": "data/generated-lite-consumer/v1/shards/H22-C2-04-CORE/palma-2025-2mid-qid9-q15-A1.json"
+        },
+        "parity": {
+          "sourceQuestionFound": true,
+          "consumerQuestionFound": true,
+          "indexRowFound": true,
+          "consumerSelectable": true,
+          "fields": [
+            {
+              "field": "content",
+              "match": true
+            },
+            {
+              "field": "choices",
+              "match": true
+            },
+            {
+              "field": "answer",
+              "match": true
+            },
+            {
+              "field": "solution",
+              "match": true
+            }
+          ],
+          "allFieldsMatch": true
+        }
+      },
+      "candidate": {
+        "svg": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q15-A1/visual.svg",
+          "rawSha256": "DCF7B9FF7F080E3BDD912B9D5C5F896A248854EC8F0340F8F7CDE4FE5C9131A9",
+          "gitBlobSha": "0d497872a955b24d0d5037c1e7386bb8f6d8fe4f"
+        },
+        "spec": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q15-A1/spec.json",
+          "rawSha256": "D3BA66A455A9FC91A662BFC64C7CA4C3D55BD52B3970A3C769695F39ABA48A41"
+        },
+        "witness": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q15-A1/witness.json",
+          "rawSha256": "2537332D36C0BEBD43959A7390FCF7FE751A9E81F839F492770EBF0205FF3BE1",
+          "status": "CANDIDATE_REQUIRES_QA",
+          "semanticStatus": "PASS",
+          "publicationAuthorized": false,
+          "normalizedSvgSha256": "805109a44e88534eac511e0cd5e51741a5850f9386024cac522eb70dfd91272c",
+          "matchesFinalSvg": false
+        },
+        "review": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q15-A1/review.json",
+          "rawSha256": "EA9D101B7513A3ED9E00D6EC9A40354A39CE75D892C7DE7B905612D0E2F5F465",
+          "sourceSha256": "165907fcfb764afa4a8ce9081a44f313bfd44d09426d8c8da4d30387a20f469d",
+          "solutionSha256": "b70736405e426c0fc96bb1d92e3562cb6111cd327305f1e89d5b48bfd04e5d6e"
+        },
+        "staticAudit": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-2MID-Q15-A1/audit-report-v8.json",
+          "rawSha256": "41F49E8F3AF83F3EF9DD57A7640914FBD59AD7F9292851CA5EFFE14374C0A83C",
+          "schemaVersion": "geometry-publication-audit-v1",
+          "status": "PASS",
+          "publicationAuthorized": false,
+          "renderStatus": "NOT_RUN",
+          "errors": []
+        },
+        "asset": {
+          "path": "archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q15-A1-solution.svg",
+          "rawSha256": "DCF7B9FF7F080E3BDD912B9D5C5F896A248854EC8F0340F8F7CDE4FE5C9131A9",
+          "gitBlobSha": "0d497872a955b24d0d5037c1e7386bb8f6d8fe4f"
+        }
+      },
+      "directChrome": {
+        "status": "PASS",
+        "browserVersion": "154.0.8037.98",
+        "minEffectiveFontPx": 16,
+        "labelCollisionCount": 0,
+        "criticalCollisionCount": 0,
+        "clippedTextCount": 0,
+        "overflowCount": 0,
+        "reusedFromUnchangedV5Svg": true,
+        "report": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v5-render/ALITE-PALMA25-2MID-Q15-A1.json",
+          "sha256": "52D682F60F61F9F708116E80B0FA34688E297A619414921A7A7AA3DF4360464E"
+        },
+        "png": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v5-render/ALITE-PALMA25-2MID-Q15-A1.png",
+          "sha256": "E1182525930652D4CF858DB2C43BAB46055D521B777F8AC8E9AF50C6F22F6DD0"
+        }
+      },
+      "actualStudentOutput": {
+        "uidVisible": true,
+        "teacherButtonCount": 0,
+        "answerSolutionSelectors": 0,
+        "printEnabled": true,
+        "printCalledByTestNoOp": true,
+        "questionCount": 1,
+        "answerSolutionNodes": 0,
+        "solutionAssetRefs": 0,
+        "screenshot": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-ui-v8-qpp1-review/ALITE-PALMA25-2MID-Q15-A1-student.png",
+          "sha256": "7DFB682A4F0878E53D944335F7096C90C82D2C150C476564D02494A5F8CCB0A3"
+        }
+      },
+      "actualTeacherSolutionOutput": {
+        "buttonCount": 1,
+        "mode": "sol",
+        "qpp": "1",
+        "preview": "1",
+        "gridClass": "grid-container sol-fullwidth-grid",
+        "gridChildCount": 1,
+        "imagePath": "http://127.0.0.1:41740/archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q15-A1-solution.svg",
+        "naturalWidth": 720,
+        "renderedWidthCssPx": 638.296875,
+        "cssScale": 0.8865234375,
+        "minCssFontPx": 14.184375,
+        "minRequiredCssFontPx": 11,
+        "responseStatus": 200,
+        "responseSha256": "DCF7B9FF7F080E3BDD912B9D5C5F896A248854EC8F0340F8F7CDE4FE5C9131A9",
+        "responseHeaderSha256": "DCF7B9FF7F080E3BDD912B9D5C5F896A248854EC8F0340F8F7CDE4FE5C9131A9",
+        "expectedAssetSha256": "DCF7B9FF7F080E3BDD912B9D5C5F896A248854EC8F0340F8F7CDE4FE5C9131A9",
+        "screenshot": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-ui-v8-qpp1-review/ALITE-PALMA25-2MID-Q15-A1-teacher-sol.png",
+          "sha256": "61E4781F2227A0315AC0AE0562C2DF6457DD367DFE01B33255AA7F93022AB582"
+        },
+        "routePass": true,
+        "fontPass": true
+      }
+    },
+    {
+      "uid": "ALITE-PALMA25-B04-Q17-C01",
+      "sourceQid": 17,
+      "approval": "REVIEW_APPROVED",
+      "reviewStatus": "REVIEW_PASS",
+      "visualDisposition": {
+        "problem": {
+          "necessity": "VISUAL_EXEMPT",
+          "disposition": "EXEMPT",
+          "reason": "A reflection-axis diagram would reveal the requested line equation."
+        },
+        "solution": {
+          "necessity": "VISUAL_REQUIRED",
+          "disposition": "ADD",
+          "expectedFacts": [
+            "Original center A=(3,1), reflected center B=(1,3).",
+            "M=(2,2) is midpoint of AB; mirror axis y=x and AB is perpendicular to it.",
+            "After translation vector (+1,+2), final center D=(2,5).",
+            "All three circles have radius 2."
+          ],
+          "pitfalls": [
+            "Keep reflection and translation in separate stages.",
+            "Translation arrow is B to D, not A to D."
+          ]
+        }
+      },
+      "sourceConsumer": {
+        "source": {
+          "path": "archive/generated/lite/v1/2022/H1/H22-C2-04-CORE/shards/palma-2025-2mid-B04-held-release.js",
+          "rawSha256": "8DBA813CBFE877CB1E0C56543A8EFF3B9038D29A4A309BD6C08546D359E061D8",
+          "gitBlobSha": "9d8dba4d17effc1fa15c31c99ee8c90159ba1365"
+        },
+        "consumer": {
+          "path": "archive/data/generated-lite-consumer/v1/shards/H22-C2-04-CORE/palma-2025-2mid-B04-held-release.json",
+          "rawSha256": "24B2ECE58A7A933576332CD0B1517B5C94F176403DBB515517534E2EB4D1CD0C"
+        },
+        "index": {
+          "path": "archive/data/generated-lite-consumer/v1/index.json",
+          "rawSha256": "2CB1F6AABCC35F36302D8F773B7CC1196EF8C48726C7944DBE06DE912A61D199",
+          "selectable": true,
+          "shard": "data/generated-lite-consumer/v1/shards/H22-C2-04-CORE/palma-2025-2mid-B04-held-release.json"
+        },
+        "parity": {
+          "sourceQuestionFound": true,
+          "consumerQuestionFound": true,
+          "indexRowFound": true,
+          "consumerSelectable": true,
+          "fields": [
+            {
+              "field": "content",
+              "match": true
+            },
+            {
+              "field": "choices",
+              "match": true
+            },
+            {
+              "field": "answer",
+              "match": true
+            },
+            {
+              "field": "solution",
+              "match": true
+            }
+          ],
+          "allFieldsMatch": true
+        }
+      },
+      "candidate": {
+        "svg": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-B04-Q17-C01/visual.svg",
+          "rawSha256": "392B2AF29150AF90AE87D059B7F93B56738469E1FADFD4CC6E6EEB94AB2721B4",
+          "gitBlobSha": "631b30187aa638568525deb86158ca14686c519a"
+        },
+        "spec": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-B04-Q17-C01/spec.json",
+          "rawSha256": "630A47653BFFA64EA59869DC963CB54D914187658E26732ABD89D898E40D9170"
+        },
+        "witness": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-B04-Q17-C01/witness.json",
+          "rawSha256": "5123104B1D7FE45395D55F2A050B80C532BC5370CA47E577EC751AF199055A06",
+          "status": "CANDIDATE_REQUIRES_QA",
+          "semanticStatus": "PASS",
+          "publicationAuthorized": false,
+          "normalizedSvgSha256": "89424b66ddd3fe1ef8b152587a6f88f8630b547aab86ac0e83c8a01ff9f3a0bb",
+          "matchesFinalSvg": false
+        },
+        "review": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-B04-Q17-C01/review.json",
+          "rawSha256": "6B60DBB57748632893628FCDE5FF9BA9F242EA33CEF9F8C88D427839E3E63EFD",
+          "sourceSha256": "8dba813cbfe877cb1e0c56543a8eff3b9038d29a4a309bd6c08546d359e061d8",
+          "solutionSha256": "2f23a4cb089d6a20e031be4c179a2403d231d3fd7bcd9fb96bfa5b3392208f08"
+        },
+        "staticAudit": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-PALMA25-B04-Q17-C01/audit-report-v8.json",
+          "rawSha256": "8A3FD18719A2EC18B5E7059F1745D8F172F44CB41DD2F5080142D434E1681282",
+          "schemaVersion": "geometry-publication-audit-v1",
+          "status": "PASS",
+          "publicationAuthorized": false,
+          "renderStatus": "NOT_RUN",
+          "errors": []
+        },
+        "asset": {
+          "path": "archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-B04-Q17-C01-solution.svg",
+          "rawSha256": "392B2AF29150AF90AE87D059B7F93B56738469E1FADFD4CC6E6EEB94AB2721B4",
+          "gitBlobSha": "631b30187aa638568525deb86158ca14686c519a"
+        }
+      },
+      "directChrome": {
+        "status": "PASS",
+        "browserVersion": "154.0.8037.98",
+        "minEffectiveFontPx": 16,
+        "labelCollisionCount": 0,
+        "criticalCollisionCount": 0,
+        "clippedTextCount": 0,
+        "overflowCount": 0,
+        "reusedFromUnchangedV5Svg": true,
+        "report": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v5-render/ALITE-PALMA25-B04-Q17-C01.json",
+          "sha256": "AB25FB61029F08AD3F85D6A44341C123505267BB8CF3B189D218FC19B72206C9"
+        },
+        "png": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v5-render/ALITE-PALMA25-B04-Q17-C01.png",
+          "sha256": "DFBF4092C984ADEDFB55FEEBB5232EB4177A2429C0AE405CF488AEC19B5489E5"
+        }
+      },
+      "actualStudentOutput": {
+        "uidVisible": true,
+        "teacherButtonCount": 0,
+        "answerSolutionSelectors": 0,
+        "printEnabled": true,
+        "printCalledByTestNoOp": true,
+        "questionCount": 1,
+        "answerSolutionNodes": 0,
+        "solutionAssetRefs": 0,
+        "screenshot": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-ui-v8-qpp1-review/ALITE-PALMA25-B04-Q17-C01-student.png",
+          "sha256": "CAEFF7FCD19C2E226011A48C487077BCC3ACC7F2BFC26FF111318D39182ACFF7"
+        }
+      },
+      "actualTeacherSolutionOutput": {
+        "buttonCount": 1,
+        "mode": "sol",
+        "qpp": "1",
+        "preview": "1",
+        "gridClass": "grid-container sol-fullwidth-grid",
+        "gridChildCount": 1,
+        "imagePath": "http://127.0.0.1:41740/archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-B04-Q17-C01-solution.svg",
+        "naturalWidth": 720,
+        "renderedWidthCssPx": 638.296875,
+        "cssScale": 0.8865234375,
+        "minCssFontPx": 14.184375,
+        "minRequiredCssFontPx": 11,
+        "responseStatus": 200,
+        "responseSha256": "392B2AF29150AF90AE87D059B7F93B56738469E1FADFD4CC6E6EEB94AB2721B4",
+        "responseHeaderSha256": "392B2AF29150AF90AE87D059B7F93B56738469E1FADFD4CC6E6EEB94AB2721B4",
+        "expectedAssetSha256": "392B2AF29150AF90AE87D059B7F93B56738469E1FADFD4CC6E6EEB94AB2721B4",
+        "screenshot": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-ui-v8-qpp1-review/ALITE-PALMA25-B04-Q17-C01-teacher-sol.png",
+          "sha256": "75F038873196AB263847521076F177D149D80BDC1AEFB92D9C9DDE68C7211002"
+        },
+        "routePass": true,
+        "fontPass": true
+      }
+    },
+    {
+      "uid": "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY",
+      "sourceQid": 18,
+      "approval": "REVIEW_APPROVED",
+      "reviewStatus": "REVIEW_PASS",
+      "visualDisposition": {
+        "problem": {
+          "necessity": "VISUAL_EXEMPT",
+          "disposition": "EXEMPT",
+          "reason": "The figure depends on unknown t; a t=3 schematic in the stem reveals the answer, and an arbitrary not-to-scale figure risks misrepresenting metric relations."
+        },
+        "solution": {
+          "necessity": "VISUAL_REQUIRED",
+          "disposition": "ADD",
+          "expectedFacts": [
+            "t=3; A=(0,0), B=(3,0), C=(0,6).",
+            "AI=AH is the angle bisector; H=(2,2), BH:HC=1:2.",
+            "M=(3/2,3) is midpoint of BC; G=(1,2) is centroid and AG:GM=2:1.",
+            "Area of triangle GHC is 2.",
+            "If I is shown, exact r=(9-3sqrt(5))/2; label I without approximate coordinates."
+          ],
+          "pitfalls": [
+            "H lies on BC; I lies on AH; G lies on median AM.",
+            "Highlight the actual GHC region."
+          ]
+        }
+      },
+      "sourceConsumer": {
+        "source": {
+          "path": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-B05-held-release.js",
+          "rawSha256": "343E7F6F3A72BC83AC09D9127005089CD545419D8064003183E3DE507096C5E5",
+          "gitBlobSha": "b17efe1c1e8233b1ffe622791d6f45b220eeabe1"
+        },
+        "consumer": {
+          "path": "archive/data/generated-lite-consumer/v1/shards/H22-C2-01-COORDINATE_METRIC/palma-2025-2mid-B05-held-release.json",
+          "rawSha256": "D0EA8B69655342EE0560DA558994B4DCDE998E672D77E6CA130CB4BCD2C3091C"
+        },
+        "index": {
+          "path": "archive/data/generated-lite-consumer/v1/index.json",
+          "rawSha256": "2CB1F6AABCC35F36302D8F773B7CC1196EF8C48726C7944DBE06DE912A61D199",
+          "selectable": true,
+          "shard": "data/generated-lite-consumer/v1/shards/H22-C2-01-COORDINATE_METRIC/palma-2025-2mid-B05-held-release.json"
+        },
+        "parity": {
+          "sourceQuestionFound": true,
+          "consumerQuestionFound": true,
+          "indexRowFound": true,
+          "consumerSelectable": true,
+          "fields": [
+            {
+              "field": "content",
+              "match": true
+            },
+            {
+              "field": "choices",
+              "match": true
+            },
+            {
+              "field": "answer",
+              "match": true
+            },
+            {
+              "field": "solution",
+              "match": true
+            }
+          ],
+          "allFieldsMatch": true
+        }
+      },
+      "candidate": {
+        "svg": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY/visual.svg",
+          "rawSha256": "23D616D4D9B748B5A9A5633B99B114039CF2FAA9C15B87028A935EC4C024D7BB",
+          "gitBlobSha": "878d37caa3e369f764b486a6ef4cac58a79983ba"
+        },
+        "spec": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY/spec.json",
+          "rawSha256": "6890CEA1338E9CED1A1B687551264DDEA59528CC305B62E5A9F54D5C1CE5848C"
+        },
+        "witness": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY/witness.json",
+          "rawSha256": "412DD17BED3895F5D7717BF745C5B3504DDBE907D853DB0490600CE13B2EED7D",
+          "status": "CANDIDATE_REQUIRES_QA",
+          "semanticStatus": "PASS",
+          "publicationAuthorized": false,
+          "normalizedSvgSha256": "23d616d4d9b748b5a9a5633b99b114039cf2faa9c15b87028a935ec4c024d7bb",
+          "matchesFinalSvg": true
+        },
+        "review": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY/review.json",
+          "rawSha256": "F1C74D3BB9B2A7C9FF24EEFC03AEA74BB154E4968C11952DC7F7A8A5005B55CB",
+          "sourceSha256": "343e7f6f3a72bc83ac09d9127005089cd545419d8064003183e3de507096c5e5",
+          "solutionSha256": "548c5c1e1409974a8e274c20092680d4d3913f91079ef2937a4dbc6dab692939"
+        },
+        "staticAudit": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY/audit-report-v8.json",
+          "rawSha256": "9B53DF409ABDA5169581AD46F5864D6DE7B0844AE122FDF7C39BBA387F85872C",
+          "schemaVersion": "geometry-publication-audit-v1",
+          "status": "PASS",
+          "publicationAuthorized": false,
+          "renderStatus": "NOT_RUN",
+          "errors": []
+        },
+        "asset": {
+          "path": "archive/assets/generated-lite/palma-speed-pilot/B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY-solution.svg",
+          "rawSha256": "23D616D4D9B748B5A9A5633B99B114039CF2FAA9C15B87028A935EC4C024D7BB",
+          "gitBlobSha": "878d37caa3e369f764b486a6ef4cac58a79983ba"
+        }
+      },
+      "directChrome": {
+        "status": "PASS",
+        "browserVersion": "154.0.8037.98",
+        "minEffectiveFontPx": 16,
+        "labelCollisionCount": 0,
+        "criticalCollisionCount": 0,
+        "clippedTextCount": 0,
+        "overflowCount": 0,
+        "reusedFromUnchangedV5Svg": true,
+        "report": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v5-render/B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY.json",
+          "sha256": "4DA53BEF79CA2D01DF83D61470637F7821EAC202B28A8924B6F4E595F75425BF"
+        },
+        "png": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v5-render/B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY.png",
+          "sha256": "BB83583F73DC4924F4B9C73F2EFBD627224203893C58A5A813615BB0E765256F"
+        }
+      },
+      "actualStudentOutput": {
+        "uidVisible": true,
+        "teacherButtonCount": 0,
+        "answerSolutionSelectors": 0,
+        "printEnabled": true,
+        "printCalledByTestNoOp": true,
+        "questionCount": 1,
+        "answerSolutionNodes": 0,
+        "solutionAssetRefs": 0,
+        "screenshot": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-ui-v8-qpp1-review/B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY-student.png",
+          "sha256": "0DD0E1B532B5CAB36BD0E02A4D8D7F8A780BAE6ED829A3C1CDBCD81D97BB690B"
+        }
+      },
+      "actualTeacherSolutionOutput": {
+        "buttonCount": 1,
+        "mode": "sol",
+        "qpp": "1",
+        "preview": "1",
+        "gridClass": "grid-container sol-fullwidth-grid",
+        "gridChildCount": 1,
+        "imagePath": "http://127.0.0.1:41740/archive/assets/generated-lite/palma-speed-pilot/B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY-solution.svg",
+        "naturalWidth": 720,
+        "renderedWidthCssPx": 638.296875,
+        "cssScale": 0.8865234375,
+        "minCssFontPx": 14.184375,
+        "minRequiredCssFontPx": 11,
+        "responseStatus": 200,
+        "responseSha256": "23D616D4D9B748B5A9A5633B99B114039CF2FAA9C15B87028A935EC4C024D7BB",
+        "responseHeaderSha256": "23D616D4D9B748B5A9A5633B99B114039CF2FAA9C15B87028A935EC4C024D7BB",
+        "expectedAssetSha256": "23D616D4D9B748B5A9A5633B99B114039CF2FAA9C15B87028A935EC4C024D7BB",
+        "screenshot": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-ui-v8-qpp1-review/B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY-teacher-sol.png",
+          "sha256": "624487F630086AA194714AD6A0D6D85BD070138D8A9C647DC656C5C9F40A46EA"
+        },
+        "routePass": true,
+        "fontPass": true
+      }
+    },
+    {
+      "uid": "ALITE-B01-2025PALMA-0005",
+      "sourceQid": 19,
+      "approval": "REVIEW_APPROVED",
+      "reviewStatus": "REVIEW_PASS",
+      "visualDisposition": {
+        "problem": {
+          "necessity": "VISUAL_EXEMPT",
+          "disposition": "EXEMPT",
+          "reason": "Equations and half-plane restrictions fully specify the sets; a graph in the stem can reveal the sign condition and intersection count."
+        },
+        "solution": {
+          "necessity": "VISUAL_REQUIRED",
+          "disposition": "ADD",
+          "expectedFacts": [
+            "C0 is full circle center O=(0,0), radius 4.",
+            "C1 is only the lower semicircle centered (-2,0), radius 2, from (-4,0) to O.",
+            "C2 is only the upper semicircle centered (2,0), radius 2, from O to (4,0).",
+            "Line family y=mx passes through O.",
+            "m>0: outer circle gives two points, each arc adds one, and shared O is counted once: total 5.",
+            "m<0: non-origin arc candidates lie on wrong semicircles: total 3.",
+            "m=0: arc endpoints overlap outer-circle endpoints and O is counted once: total 3."
+          ],
+          "pitfalls": [
+            "Never draw C1/C2 as full circles.",
+            "Show m>0, m=0 and m<0 separately or with an equivalent explicit case boundary.",
+            "Do not count shared O more than once."
+          ]
+        }
+      },
+      "sourceConsumer": {
+        "source": {
+          "path": "archive/generated/lite/v1/2022/H1/H22-C2-03-CIRCLE_EQUATION/shards/palma-2025-2mid-B01-hold-release.js",
+          "rawSha256": "877CBF3CACCDA6B7735E0748F64607D5431468EF25C45CA7328C4E93CABE82D8",
+          "gitBlobSha": "6d87ea311ed395664508395b8375eed0f609d82a"
+        },
+        "consumer": {
+          "path": "archive/data/generated-lite-consumer/v1/shards/H22-C2-03-CIRCLE_EQUATION/palma-2025-2mid-B01-hold-release.json",
+          "rawSha256": "38277E292EF7469577CE676B1E6FEE3C5441D43C07B05B74ACCBA4386BE8F432"
+        },
+        "index": {
+          "path": "archive/data/generated-lite-consumer/v1/index.json",
+          "rawSha256": "2CB1F6AABCC35F36302D8F773B7CC1196EF8C48726C7944DBE06DE912A61D199",
+          "selectable": true,
+          "shard": "data/generated-lite-consumer/v1/shards/H22-C2-03-CIRCLE_EQUATION/palma-2025-2mid-B01-hold-release.json"
+        },
+        "parity": {
+          "sourceQuestionFound": true,
+          "consumerQuestionFound": true,
+          "indexRowFound": true,
+          "consumerSelectable": true,
+          "fields": [
+            {
+              "field": "content",
+              "match": true
+            },
+            {
+              "field": "choices",
+              "match": true
+            },
+            {
+              "field": "answer",
+              "match": true
+            },
+            {
+              "field": "solution",
+              "match": true
+            }
+          ],
+          "allFieldsMatch": true
+        }
+      },
+      "candidate": {
+        "svg": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-B01-2025PALMA-0005/visual.svg",
+          "rawSha256": "660B6BB1FF28FFD1C0DFE0547CD9435F7653E71C06F30D7878D888732374D4D2",
+          "gitBlobSha": "42f65df8f23a68205b560098f3df2d05e2124f3c"
+        },
+        "spec": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-B01-2025PALMA-0005/spec.json",
+          "rawSha256": "EA8BEE31ABDD7503997756BF4D3974DED16E3AB0A0AB3AC4C1A0FD6755F240EC"
+        },
+        "witness": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-B01-2025PALMA-0005/witness.json",
+          "rawSha256": "31BFFC17EF59AA2E4577F286B76F09BFAF4414BF58C90D991E2B70A715772872",
+          "status": "CANDIDATE_REQUIRES_QA",
+          "semanticStatus": "PASS",
+          "publicationAuthorized": false,
+          "normalizedSvgSha256": "bedfbc5d0bf1623e2d107912091c624c9038ef26420f2f860ad0076f61754e43",
+          "matchesFinalSvg": false
+        },
+        "review": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-B01-2025PALMA-0005/review.json",
+          "rawSha256": "040EA3946D1DA795025DD48EC2E20A5E01400844EC1F7FFD026456B93722867C",
+          "sourceSha256": "877cbf3caccda6b7735e0748f64607d5431468ef25c45ca7328c4e93cabe82d8",
+          "solutionSha256": "65bbd5288d89944cfb7178203347bfd6d0c39ef19bb0c6d7332abe779622e22b"
+        },
+        "staticAudit": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/candidate/ALITE-B01-2025PALMA-0005/audit-report-v8.json",
+          "rawSha256": "1D507737C03AA40A2106CF4AE253FA925EBDE675242F3CBA321BF0F1C8EE7E69",
+          "schemaVersion": "geometry-publication-audit-v1",
+          "status": "PASS",
+          "publicationAuthorized": false,
+          "renderStatus": "NOT_RUN",
+          "errors": []
+        },
+        "asset": {
+          "path": "archive/assets/generated-lite/palma-speed-pilot/ALITE-B01-2025PALMA-0005-solution.svg",
+          "rawSha256": "660B6BB1FF28FFD1C0DFE0547CD9435F7653E71C06F30D7878D888732374D4D2",
+          "gitBlobSha": "42f65df8f23a68205b560098f3df2d05e2124f3c"
+        }
+      },
+      "directChrome": {
+        "status": "PASS",
+        "browserVersion": "154.0.8037.98",
+        "minEffectiveFontPx": 13.5,
+        "labelCollisionCount": 0,
+        "criticalCollisionCount": 0,
+        "clippedTextCount": 0,
+        "overflowCount": 0,
+        "reusedFromUnchangedV5Svg": false,
+        "report": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v8-render/ALITE-B01-2025PALMA-0005-natural.json",
+          "sha256": "F321CF9AB34FC57A7E4B173FA35E54A5C65A5E714E6BA681D659B661B88B147D"
+        },
+        "png": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/candidate-review/v8-render/ALITE-B01-2025PALMA-0005-natural.png",
+          "sha256": "B527EE61295CE222D0326001D8D29378C3F2DE18B420948A8D87B30F41F9DCC2"
+        }
+      },
+      "actualStudentOutput": {
+        "uidVisible": true,
+        "teacherButtonCount": 0,
+        "answerSolutionSelectors": 0,
+        "printEnabled": true,
+        "printCalledByTestNoOp": true,
+        "questionCount": 1,
+        "answerSolutionNodes": 0,
+        "solutionAssetRefs": 0,
+        "screenshot": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-ui-v8-qpp1-review/ALITE-B01-2025PALMA-0005-student.png",
+          "sha256": "C73B1A3B32F3BB962EDFB7520FB8DC1EED5373F28400A8B1FDFA357FACFB458C"
+        }
+      },
+      "actualTeacherSolutionOutput": {
+        "buttonCount": 1,
+        "mode": "sol",
+        "qpp": "1",
+        "preview": "1",
+        "gridClass": "grid-container sol-fullwidth-grid",
+        "gridChildCount": 1,
+        "imagePath": "http://127.0.0.1:41740/archive/assets/generated-lite/palma-speed-pilot/ALITE-B01-2025PALMA-0005-solution.svg",
+        "naturalWidth": 760,
+        "renderedWidthCssPx": 638.296875,
+        "cssScale": 0.8398643092105263,
+        "minCssFontPx": 11.338168174342107,
+        "minRequiredCssFontPx": 11,
+        "responseStatus": 200,
+        "responseSha256": "660B6BB1FF28FFD1C0DFE0547CD9435F7653E71C06F30D7878D888732374D4D2",
+        "responseHeaderSha256": "660B6BB1FF28FFD1C0DFE0547CD9435F7653E71C06F30D7878D888732374D4D2",
+        "expectedAssetSha256": "660B6BB1FF28FFD1C0DFE0547CD9435F7653E71C06F30D7878D888732374D4D2",
+        "screenshot": {
+          "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/strict-ui-v8-qpp1-review/ALITE-B01-2025PALMA-0005-teacher-sol.png",
+          "sha256": "F355416E2F28D5195C5B5DD181B8F615D994C3F981F3DF47191C06C6D048209F"
+        },
+        "routePass": true,
+        "fontPass": true
+      }
+    }
+  ]
+}

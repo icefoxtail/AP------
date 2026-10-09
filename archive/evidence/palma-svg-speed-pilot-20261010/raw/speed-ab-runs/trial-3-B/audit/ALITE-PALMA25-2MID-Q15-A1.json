@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "geometry-publication-audit-v1",
+  "authority": "INDEPENDENT_STATIC_OBSERVER",
+  "publicationAuthorized": false,
+  "renderStatus": "NOT_RUN",
+  "scope": "frozen expected facts versus actual SVG; source-solve correctness and visual review remain external",
+  "svgSha256": "dcf7b9ff7f080e3bdd912b9d5c5f896a248854ec8f0340f8f7cde4fe5c9131a9",
+  "errors": [],
+  "observations": [
+    {
+      "type": "COORDINATE_EVIDENCE",
+      "mode": "CONSTRUCTED_REALIZATION",
+      "conditionCount": 1,
+      "residualPassCount": 1,
+      "degeneracyPassCount": 3
+    },
+    {
+      "id": "F",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        -1.967679013286401e-11,
+        0.0
+      ],
+      "sourceLabel": "F",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "G",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        3.6055512754836663,
+        0.0
+      ],
+      "sourceLabel": "G",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "W",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        1.1094003924335925,
+        1.6641005886597582
+      ],
+      "sourceLabel": "W",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "trueMap",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          -1.967679013286401e-11,
+          0.0
+        ],
+        [
+          3.6055512754836663,
+          0.0
+        ]
+      ]
+    },
+    {
+      "id": "falseMap",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          -1.967679013286401e-11,
+          0.0
+        ],
+        [
+          1.1094003924335925,
+          1.6641005886597582
+        ]
+      ]
+    },
+    {
+      "id": "CF",
+      "type": "CIRCLE",
+      "center": [
+        -1.967679013286401e-11,
+        0.0
+      ],
+      "radius": 2.000000000004983
+    },
+    {
+      "id": "CG",
+      "type": "CIRCLE",
+      "center": [
+        3.6055512754836663,
+        0.0
+      ],
+      "radius": 2.000000000004983
+    },
+    {
+      "id": "CW",
+      "type": "CIRCLE",
+      "center": [
+        1.1094003924335925,
+        1.6641005886597582
+      ],
+      "radius": 2.000000000004983
+    }
+  ],
+  "sourceSha256": "165907fcfb764afa4a8ce9081a44f313bfd44d09426d8c8da4d30387a20f469d",
+  "solutionSha256": "b70736405e426c0fc96bb1d92e3562cb6111cd327305f1e89d5b48bfd04e5d6e",
+  "reviewSha256": "bb8a52f5d7605d69461aebb8dab09833ab1b256e542e5e0af5c433b925dd7d79",
+  "coordinateEvidenceMode": "CONSTRUCTED_REALIZATION",
+  "coordinateEvidenceSha256": "a1a09c82cf9e21b08880089b4d812915759af98262ffe59a1a1e0fa7196add19",
+  "coverage": {
+    "declaredFacts": 9,
+    "observations": 9,
+    "primitiveCount": 9,
+    "labelCount": 4,
+    "unreviewedPrimitives": 0,
+    "unreviewedLabels": 0
+  },
+  "status": "PASS"
+}

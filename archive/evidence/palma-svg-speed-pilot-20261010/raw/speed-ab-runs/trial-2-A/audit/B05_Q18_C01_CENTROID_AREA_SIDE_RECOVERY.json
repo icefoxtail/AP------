@@ -1,0 +1,257 @@
+{
+  "schemaVersion": "geometry-publication-audit-v1",
+  "authority": "INDEPENDENT_STATIC_OBSERVER",
+  "publicationAuthorized": false,
+  "renderStatus": "NOT_RUN",
+  "scope": "frozen expected facts versus actual SVG; source-solve correctness and visual review remain external",
+  "svgSha256": "23d616d4d9b748b5a9a5633b99b114039cf2faa9c15b87028a935ec4c024d7bb",
+  "errors": [],
+  "observations": [
+    {
+      "type": "COORDINATE_EVIDENCE",
+      "mode": "CONSTRUCTED_REALIZATION",
+      "conditionCount": 1,
+      "residualPassCount": 1,
+      "degeneracyPassCount": 15
+    },
+    {
+      "id": "A",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        0.0,
+        0.0
+      ],
+      "sourceLabel": "A",
+      "labelPlacement": "LEADER_CALLOUT"
+    },
+    {
+      "id": "B",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        3.0,
+        0.0
+      ],
+      "sourceLabel": "B",
+      "labelPlacement": "LEADER_CALLOUT"
+    },
+    {
+      "id": "C",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        0.0,
+        6.0
+      ],
+      "sourceLabel": "C",
+      "labelPlacement": "LEADER_CALLOUT"
+    },
+    {
+      "id": "H",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        2.0,
+        2.0
+      ],
+      "sourceLabel": "H",
+      "labelPlacement": "LEADER_CALLOUT"
+    },
+    {
+      "id": "G",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        1.0,
+        2.0
+      ],
+      "sourceLabel": "G",
+      "labelPlacement": "LEADER_CALLOUT"
+    },
+    {
+      "id": "M",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        1.5,
+        3.0
+      ],
+      "sourceLabel": "M",
+      "labelPlacement": "LEADER_CALLOUT"
+    },
+    {
+      "id": "AB",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          3.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "id": "BC",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          3.0,
+          0.0
+        ],
+        [
+          0.0,
+          6.0
+        ]
+      ]
+    },
+    {
+      "id": "CA",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          0.0,
+          6.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "id": "AH",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          2.0,
+          2.0
+        ]
+      ]
+    },
+    {
+      "id": "AM",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.5,
+          3.0
+        ]
+      ]
+    },
+    {
+      "id": "BH",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          3.0,
+          0.0
+        ],
+        [
+          2.0,
+          2.0
+        ]
+      ]
+    },
+    {
+      "id": "HC",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          2.0,
+          2.0
+        ],
+        [
+          0.0,
+          6.0
+        ]
+      ]
+    },
+    {
+      "id": "GH",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          2.0
+        ]
+      ]
+    },
+    {
+      "id": "GC",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          0.0,
+          6.0
+        ]
+      ]
+    },
+    {
+      "id": "AG",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          2.0
+        ]
+      ]
+    },
+    {
+      "id": "GM",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          1.5,
+          3.0
+        ]
+      ]
+    },
+    {
+      "id": "GHCarea",
+      "type": "REGION",
+      "observedArea": 2.0,
+      "ownerPoints": [
+        "G",
+        "H",
+        "C"
+      ],
+      "leader": false
+    }
+  ],
+  "sourceSha256": "343e7f6f3a72bc83ac09d9127005089cd545419d8064003183e3de507096c5e5",
+  "solutionSha256": "548c5c1e1409974a8e274c20092680d4d3913f91079ef2937a4dbc6dab692939",
+  "reviewSha256": "59c55fdaaf5f545c8a597ea7090f13436db27d855eb3b8d7d860dc4722c70f9b",
+  "coordinateEvidenceMode": "CONSTRUCTED_REALIZATION",
+  "coordinateEvidenceSha256": "bdfcf960f8109964c75c50cfe20047743ec50d58701c16f45c3117a3ea8e69d3",
+  "coverage": {
+    "declaredFacts": 19,
+    "observations": 19,
+    "primitiveCount": 25,
+    "labelCount": 8,
+    "unreviewedPrimitives": 0,
+    "unreviewedLabels": 0
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,182 @@
+{
+  "engineVersion": "geometry-visual-v1",
+  "authority": "BUILD_SIDE_ONLY",
+  "publicationAuthorized": false,
+  "classification": "STANDARD",
+  "visualSpecSha256": "306cf9e6eb5a607e3e313a3baf55c880e90c10f1fe2e213f08866a529aa51aa5",
+  "normalizedSvgSha256": "a2caa27a51281c03dd16e60d7c3f6529b4348fd40010033236e0dfabb6aecd8b",
+  "texSha256": "6a48f453d3806b782473e19f92d433fbb89be5bf1e4c06f66a08a6337853564c",
+  "coordinateModel": {
+    "originX": 123.07692307692307,
+    "originY": 260.0,
+    "sx": 16.97118259845994,
+    "sy": 16.97118259845994,
+    "aspectPolicy": "EQUAL_UNIT"
+  },
+  "relations": [],
+  "layout": {
+    "labels": [
+      {
+        "id": "C1-name",
+        "kind": "POINT_NAME",
+        "target": "C1",
+        "text": "C₁",
+        "at": [
+          123.07692307692307,
+          260.0
+        ],
+        "font": 16.0,
+        "priority": 1,
+        "allowSuppress": false,
+        "owner": "C1",
+        "sourceLabel": "C₁",
+        "allowPanel": false,
+        "gaps": [
+          10,
+          16,
+          24
+        ],
+        "directions": [
+          "W",
+          "SW",
+          "NW",
+          "N",
+          "S",
+          "NE",
+          "SE",
+          "E"
+        ],
+        "box": {
+          "x": 109.79692307692306,
+          "y": 226.0,
+          "width": 26.560000000000002,
+          "height": 24.0
+        },
+        "baseline": [
+          109.79692307692306,
+          245.2
+        ],
+        "placement": "COORDINATE_RELOCATION_N"
+      },
+      {
+        "id": "C2-name",
+        "kind": "POINT_NAME",
+        "target": "C2",
+        "text": "C₂",
+        "at": [
+          236.9230769230769,
+          260.0
+        ],
+        "font": 16.0,
+        "priority": 1,
+        "allowSuppress": false,
+        "owner": "C2",
+        "sourceLabel": "C₂",
+        "allowPanel": false,
+        "gaps": [
+          10,
+          16,
+          24
+        ],
+        "directions": [
+          "E",
+          "NE",
+          "SE",
+          "N",
+          "S",
+          "SW",
+          "NW",
+          "W"
+        ],
+        "box": {
+          "x": 223.6430769230769,
+          "y": 226.0,
+          "width": 26.560000000000002,
+          "height": 24.0
+        },
+        "baseline": [
+          223.6430769230769,
+          245.2
+        ],
+        "placement": "COORDINATE_RELOCATION_N"
+      },
+      {
+        "id": "moveVector",
+        "kind": "CONDITION_BOX",
+        "at": [
+          123.07692307692307,
+          260.0
+        ],
+        "lines": [
+          "중심 이동 방향",
+          "C1 -> C2 : (+3,+6)"
+        ],
+        "priority": 1,
+        "font": 16.0,
+        "renderedLines": [
+          {
+            "text": "중심 이동 방향",
+            "math": false,
+            "markup": null
+          },
+          {
+            "text": "C1 -> C2 : (+3,+6)",
+            "math": false,
+            "markup": null
+          }
+        ],
+        "text": "중심 이동 방향\nC1 -> C2 : (+3,+6)",
+        "hasMath": false,
+        "allowSuppress": false,
+        "markup": null,
+        "box": {
+          "x": 328,
+          "y": 32,
+          "width": 190.08,
+          "height": 48.0
+        },
+        "baseline": [
+          328,
+          70.4
+        ],
+        "placement": "SIDE_PANEL"
+      }
+    ],
+    "suppressed": [],
+    "unresolved": [],
+    "trace": [
+      {
+        "id": "C1-name",
+        "fallback": "COORDINATE_RELOCATION_N"
+      },
+      {
+        "id": "C2-name",
+        "fallback": "COORDINATE_RELOCATION_N"
+      },
+      {
+        "id": "moveVector",
+        "fallback": "SIDE_PANEL"
+      }
+    ],
+    "repairs": [],
+    "leaders": [],
+    "status": "PASS",
+    "basis": "APPROXIMATE_BUILD_SIDE_ONLY",
+    "publicationWarnings": []
+  },
+  "sampling": [],
+  "semanticStatus": "PASS",
+  "status": "CANDIDATE_REQUIRES_QA",
+  "publicationProfile": "geometry-publication-v1",
+  "requiredGates": [
+    "INDEPENDENT_PUBLICATION_AUDIT",
+    "RENDERED_LAYOUT",
+    "ARCHIVE_MODE_SOL_390",
+    "INDEPENDENT_VISUAL_REVIEW"
+  ],
+  "publicationSpecSha256": "969e832f76265d97d73440f046ea17bac6d4e6c5c5f1607b6ad2b7ca75929e39",
+  "coordinateEvidenceMode": "CONSTRUCTED_REALIZATION",
+  "coordinateEvidenceSha256": "e81fca72f7883c105910a3c6d0326e6978532db1a59e7449937c7bd8d6cba792",
+  "texStatus": "LEGACY_DRAFT_NOT_PUBLICATION_PARITY",
+  "semanticWitnessSha256": "baecf9f7983b1066007265c55e117c917223fe732a7ae5b0a8293ede25b80fec"
+}

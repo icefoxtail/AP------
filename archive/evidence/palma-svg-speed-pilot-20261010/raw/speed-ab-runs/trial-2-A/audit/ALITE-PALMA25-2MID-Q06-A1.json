@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "geometry-publication-audit-v1",
+  "authority": "INDEPENDENT_STATIC_OBSERVER",
+  "publicationAuthorized": false,
+  "renderStatus": "NOT_RUN",
+  "scope": "frozen expected facts versus actual SVG; source-solve correctness and visual review remain external",
+  "svgSha256": "56c82ff96f8c33abf3f85b6d49150d203babd0ec9a85e052920216593f2fa52b",
+  "errors": [],
+  "observations": [
+    {
+      "type": "COORDINATE_EVIDENCE",
+      "mode": "CONSTRUCTED_REALIZATION",
+      "conditionCount": 1,
+      "residualPassCount": 1,
+      "degeneracyPassCount": 3
+    },
+    {
+      "id": "O",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        0.0,
+        0.0
+      ],
+      "sourceLabel": "O",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "Tplus",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        3.605551275470223,
+        0.0
+      ],
+      "sourceLabel": "T₊",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "Tminus",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        -3.605551275470222,
+        0.0
+      ],
+      "sourceLabel": "T₋",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "C",
+      "type": "CIRCLE",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "radius": 3.6055512754702224
+    },
+    {
+      "id": "Tplus_on_C",
+      "type": "CIRCLE_INCIDENCE",
+      "point": "Tplus",
+      "circle": "C",
+      "observedPoint": [
+        3.605551275470223,
+        0.0
+      ],
+      "observedCenter": [
+        0.0,
+        0.0
+      ],
+      "observedRadius": 3.6055512754702224,
+      "radialDelta": 4.440892098500626e-16
+    },
+    {
+      "id": "Tminus_on_C",
+      "type": "CIRCLE_INCIDENCE",
+      "point": "Tminus",
+      "circle": "C",
+      "observedPoint": [
+        -3.605551275470222,
+        0.0
+      ],
+      "observedCenter": [
+        0.0,
+        0.0
+      ],
+      "observedRadius": 3.6055512754702224,
+      "radialDelta": 4.440892098500626e-16
+    },
+    {
+      "id": "Kplus",
+      "type": "LINE",
+      "endpoints": [
+        [
+          3.605551275470223,
+          -7.7658027471532085
+        ],
+        [
+          3.605551275470223,
+          7.7658027471532085
+        ]
+      ]
+    },
+    {
+      "id": "Kminus",
+      "type": "LINE",
+      "endpoints": [
+        [
+          -3.605551275470222,
+          -7.7658027471532085
+        ],
+        [
+          -3.605551275470222,
+          7.7658027471532085
+        ]
+      ]
+    },
+    {
+      "id": "K0",
+      "type": "LINE",
+      "endpoints": [
+        [
+          0.0,
+          -7.7658027471532085
+        ],
+        [
+          0.0,
+          7.7658027471532085
+        ]
+      ]
+    }
+  ],
+  "sourceSha256": "26ea78e58d7aded4db86a37afcacaadba3f48af52a8b8884684c7504f6366d37",
+  "solutionSha256": "555857d1f65888939f5ea6dfce376ddd8b4c5b01c1be491250883bd072bc491a",
+  "reviewSha256": "a588194906b3f96b1537bbf6d02f315b1e6c94513054ce1007897f7dbc924670",
+  "coordinateEvidenceMode": "CONSTRUCTED_REALIZATION",
+  "coordinateEvidenceSha256": "60691bcb55e8174168302a8514e3974e54beb6816e6b042901389db7086f7a32",
+  "coverage": {
+    "declaredFacts": 9,
+    "observations": 10,
+    "primitiveCount": 7,
+    "labelCount": 3,
+    "unreviewedPrimitives": 0,
+    "unreviewedLabels": 0
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,280 @@
+{
+  "id": "ALITE-PALMA25-2MID-Q05-A1",
+  "visualType": "coordinate_geometry",
+  "viewport": {
+    "xMin": -2.2188007849009166,
+    "xMax": 10.816653826391969,
+    "yMin": -4.714951667914447,
+    "yMax": 8.597853041491051,
+    "width": 520,
+    "height": 440,
+    "panel": 0
+  },
+  "axes": false,
+  "title": "수직이등분선과 중점",
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "A rigid translation and rotation align two existing mathematically meaningful points with the normalized origin and positive x-axis; unit scale is preserved, and every transformed point is explicitly listed. No helper points are added to the student visual.",
+      "normalization": {
+        "originPoint": "A",
+        "xAxisPoint": "B",
+        "unitScale": 7.211102550927978
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "A": [
+          0.0,
+          0.0
+        ],
+        "B": [
+          7.211102550927979,
+          0.0
+        ],
+        "M": [
+          3.6055512754639896,
+          0.0
+        ],
+        "X": [
+          3.6055512754639896,
+          7.211102550927979
+        ]
+      },
+      "conditions": [
+        {
+          "id": "normalizationAxis",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 7.211102550927978,
+          "tolerance": 1e-09
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct_A",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "A",
+          "inputs": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "construct_B",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "B",
+          "inputs": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "construct_M",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "M",
+          "inputs": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "construct_X",
+          "operation": "RIGID_FRAME_TRANSFORM",
+          "output": "X",
+          "inputs": [
+            "A",
+            "B"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "normalizationAxis",
+          "residual": 0,
+          "tolerance": 1e-09
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct_A_B",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "observed": 7.211102550927979,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_A_M",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "M"
+          ],
+          "observed": 3.6055512754639896,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_A_X",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "X"
+          ],
+          "observed": 8.062257748298551,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_B_M",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "B",
+            "M"
+          ],
+          "observed": 3.6055512754639896,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_B_X",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "B",
+            "X"
+          ],
+          "observed": 8.062257748298551,
+          "minimum": 1e-09
+        },
+        {
+          "id": "distinct_M_X",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "M",
+            "X"
+          ],
+          "observed": 7.211102550927979,
+          "minimum": 1e-09
+        }
+      ]
+    },
+    "questionUid": "ALITE-PALMA25-2MID-Q05-A1",
+    "sourceToVisualFrame": {
+      "origin": [
+        1,
+        -2
+      ],
+      "ex": [
+        0.8320502943378437,
+        0.5547001962252291
+      ],
+      "ey": [
+        -0.5547001962252291,
+        0.8320502943378437
+      ]
+    }
+  },
+  "derivedFacts": {
+    "answerCheck": "M=(4,0); slope(AB)=2/3; perpendicular slope=-3/2; line=3x+2y-12=0",
+    "coordinateFrame": [
+      "A",
+      "B"
+    ]
+  },
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        7.211102550927979,
+        0.0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "M",
+      "kind": "POINT",
+      "at": [
+        3.6055512754639896,
+        0.0
+      ],
+      "name": "M"
+    },
+    {
+      "id": "X",
+      "kind": "POINT",
+      "at": [
+        3.6055512754639896,
+        7.211102550927979
+      ],
+      "name": "X"
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        7.211102550927979,
+        0.0
+      ]
+    },
+    {
+      "id": "L_AB",
+      "kind": "LINE",
+      "coefficients": [
+        0.0,
+        3.6055512754639896,
+        0
+      ]
+    },
+    {
+      "id": "L_BIS",
+      "kind": "LINE",
+      "coefficients": [
+        3.6055512754639896,
+        0.0,
+        -13
+      ]
+    },
+    {
+      "id": "isPerpendicular",
+      "kind": "PERPENDICULAR",
+      "refs": [
+        "L_AB",
+        "L_BIS"
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "A": "A",
+      "B": "B",
+      "M": "M",
+      "X": "X"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ]
+    },
+    "annotations": []
+  }
+}

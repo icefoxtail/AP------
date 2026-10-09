@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "PALMA_GENERATED_META_RETENTION_PROPOSED_REBIND_VALIDATION_V1",
+  "validationMode": "same official gate audit(root); read-only overlay overrides exactly index.json and meta-retention-cutover-20261009.json; all other current production files read directly",
+  "status": "PASS_NEW_UID_SCOPE_ONLY",
+  "legacyExemptNotRecertified": 323,
+  "newUidChecked": 131,
+  "total": 454,
+  "failures": 0,
+  "errors": [],
+  "overrides": [
+    {
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "sha256": "55171B8A19F211674CDEC7809A6A702F231D041CFC88131C518DF89806975C4A"
+    },
+    {
+      "path": "archive/data/generated-lite-consumer/v1/meta-retention-cutover-20261009.json",
+      "sha256": "FF4927A33A3E5A28D4DB995D6F836D0CB256B06627837E32824CF2FD769DDFDA"
+    }
+  ]
+}

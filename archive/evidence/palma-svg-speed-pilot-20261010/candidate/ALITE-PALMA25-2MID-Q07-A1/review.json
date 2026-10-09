@@ -1,0 +1,150 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "7e847e3b68eaccdb218755fd801e8304128909412652b49f60ca3338005da9b0",
+  "solutionSha256": "8ed0d52ba111b75f12a5a28271e08e7fb89325d65fd42a9641d572c24811df17",
+  "coordinateModel": {
+    "originX": 123.07692307692307,
+    "originY": 260.0,
+    "sx": 16.97118259845994,
+    "sy": 16.97118259845994
+  },
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "A rigid translation and rotation align two existing mathematically meaningful points with the normalized origin and positive x-axis; unit scale is preserved, and every transformed point is explicitly listed. No helper points are added to the student visual.",
+    "normalization": {
+      "originPoint": "C1",
+      "xAxisPoint": "C2",
+      "unitScale": 6.708203932499369
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "C1": [
+        0.0,
+        0.0
+      ],
+      "C2": [
+        6.708203932499369,
+        0.0
+      ]
+    },
+    "conditions": [
+      {
+        "id": "normalizationAxis",
+        "kind": "DISTANCE",
+        "refs": [
+          "C1",
+          "C2"
+        ],
+        "expected": 6.708203932499369,
+        "tolerance": 1e-09
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct_C1",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "C1",
+        "inputs": [
+          "C1",
+          "C2"
+        ]
+      },
+      {
+        "id": "construct_C2",
+        "operation": "RIGID_FRAME_TRANSFORM",
+        "output": "C2",
+        "inputs": [
+          "C1",
+          "C2"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "normalizationAxis",
+        "residual": 0,
+        "tolerance": 1e-09
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct_C1_C2",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "C1",
+          "C2"
+        ],
+        "observed": 6.708203932499369,
+        "minimum": 1e-09
+      }
+    ]
+  },
+  "points": [
+    {
+      "id": "C1",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "C₁"
+    },
+    {
+      "id": "C2",
+      "at": [
+        6.708203932499369,
+        0.0
+      ],
+      "name": "C₂"
+    }
+  ],
+  "segments": [
+    {
+      "id": "centerLine",
+      "points": [
+        "C1",
+        "C2"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "A",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "radius": 3
+    },
+    {
+      "id": "B",
+      "center": [
+        6.708203932499369,
+        0.0
+      ],
+      "radius": 3
+    }
+  ],
+  "arcs": [],
+  "incidences": [],
+  "lines": [
+    {
+      "id": "L",
+      "coefficients": [
+        0.0,
+        2.23606797749979,
+        0
+      ]
+    }
+  ],
+  "angles": [],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "moveVector",
+      "text": "중심 이동 방향C1 -> C2 : (+3,+6)",
+      "powers": [],
+      "conditionBoxFor": []
+    }
+  ]
+}
