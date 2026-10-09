@@ -124,7 +124,7 @@
     "sourceBranch": "codex/2025-m3-visual-publication-full-rebuild",
     "sourceCommitSha": "a83617b5bb30e2f299b9c6f03299551a6b22606f",
     "remoteMainBaseSha": "876d77e4be782e552aa81a11027f87c95e992514",
-    "latestRemoteMainIncludedSha": "0f072b68e919b129d561752267c31ddf957260f6",
+    "latestRemoteMainIncludedSha": "cf42ca40701510ff4caedac99612879f727c6a25",
     "topicMergeCommitSha": "c126336c03e1b820a28713d9102ad751c1a7f7bd",
     "latestMainMergeCommitSha": "1ba22c805c9fc4b144b5670d414964ee73d3521d",
     "remoteReadbackShaAfterMerge": "1ba22c805c9fc4b144b5670d414964ee73d3521d",
@@ -132,7 +132,8 @@
     "postMergeRuntimeGuard": {
       "status": "PASS",
       "tests": 42,
-      "command": "node tools/check-archive2-runtime.cjs"
+      "command": "node tools/check-archive2-runtime.cjs",
+      "runAfterReconciliationCommit": "f3ae9664a9e454f9910664d59250f46419d2ff7c"
     },
     "postMergeArchiveRender": {
       "status": "PASS",
@@ -150,6 +151,18 @@
     "reviewedGitBlobParity": {
       "sourceExamJsCount": 10,
       "productionSolutionSvgCount": 130
+    },
+    "mainReconciliationMergeCommitSha": "f3ae9664a9e454f9910664d59250f46419d2ff7c",
+    "renderScopeUnchangedByLatestMain": {
+      "status": "PASS",
+      "changedPaths": [
+        "archive/data/archive2-canonical-input-manifest.json",
+        "archive/data/archive2-catalog.json",
+        "archive/question-index-report.md"
+      ],
+      "targetExamJsChanged": 0,
+      "targetSolutionSvgChanged": 0,
+      "archiveRendererChanged": 0
     }
   }
 }
