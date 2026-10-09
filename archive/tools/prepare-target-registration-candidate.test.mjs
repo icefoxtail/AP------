@@ -59,11 +59,13 @@ test('accepts only the canonical H2 probability-statistics identity from existin
   const existingPsRow = existingDbContext.window.mainDB.exams.find(row => row.file === 'original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js');
   assert.equal(existingPsRow.primaryStandardCourse, '확률과 통계');
   assert.equal(existingPsRow.courseRanges[0].courseCode, 'H15-PS');
+  assert.equal(existingPsRow.subject, '확률과통계');
   const psExamUid = '23_강남여고_1학기_중간_고2_확률과통계';
   const psPath = `archive/exams/original/high/h2/1mid/${psExamUid}.js`;
   const identity = parseAuthorizedDisplayIdentity({ examUid: psExamUid, productionRelativePath: psPath, grade: 'h2', course: 'H15-PS' });
   assert.equal(identity.sourceFile, `original/high/h2/1mid/${psExamUid}.js`);
   assert.deepEqual(identity.displayAlias, { school: '강남여고', year: 2023, semester: '1', examType: 'mid', grade: '고2', subject: '확률과통계', contentType: '기출' });
+  assert.equal(identity.displayAlias.subject, existingPsRow.subject);
   assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: psExamUid, productionRelativePath: psPath, grade: 'h1', course: 'H15-PS' }), /ROSTER_GRADE_ALIAS_MISMATCH/);
   assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: psExamUid, productionRelativePath: psPath, grade: 'h2', course: 'H15-M2' }), /ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH/);
   assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: '23_강남여고_1학기_중간_고2_수학II', productionRelativePath: 'archive/exams/original/high/h2/1mid/23_강남여고_1학기_중간_고2_수학II.js', grade: 'h2', course: 'H15-PS' }), /ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH/);
