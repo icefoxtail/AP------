@@ -1,7 +1,8 @@
 # 2025 팔마고 2학기 중간 — ALIVE QID9 시험지 통합 작업 인계 CURRENT
 
 ## CURRENT — Q04 제작·36문항 공개답 내용 보정 완료 / 다음 Q05 (2026-10-09)
-- 검토·수정 원장: `GPT_QID9_36_OPENBOOK_REVIEW_REPAIR_20261009.md` (유지 25 / 보완 9 / 재설계 2).
+- 검토·수정 원장: `GPT_QID9_36_OPENBOOK_REVIEW_REPAIR_20261009.md` (유지 24 / 보완 10 / 재설계 2).
+- **Q04 후속 회귀 봉합:** B2/C1 distractorReasons의 중복·누락 번호를 4/4로 수정하고 B3의 오답계산도 구체화했다. C2 기존 min-max 3.8006 근거를 폐기하고, 현행 질문의 `min(PA+PB)=2√13`, 최적점 `P=(5/2,0)`, 구하는 답 `PA=3√13/2`를 재결속했다. C3도 최솟값 10과 목표 점 P=(1/4,0)을 별도 기록. 전 Q04 후보 9개 × 오답 네 개의 인덱스 검사 완료. 본 확인은 학생용 RELEASE/MAIN_DONE이 아니다.
 - 후속 기술 출시인증 미완료: Q04 exact RPM L3/L4 결속, Generated Consumer·index/DB, 실제 렌더 및 main remote readback `NOT_TESTED`.
 - 작업 브랜치 유일 authority: `work/alive-25-palma-h1-2mid-qid9`; [통합 Draft PR #356](https://github.com/icefoxtail/AP------/pull/356). 문항별 새 브랜치·PR 생성 금지.
 - 원본: `archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js`, Git blob `4cfce909c023e5c4df4a759945c8cc3e0a63ec76`, 원본 23문항. 원본 production 수정 금지.
@@ -9,7 +10,7 @@
 - [Q04 작업 산출물](https://github.com/icefoxtail/AP------/blob/work/alive-25-palma-h1-2mid-qid9/alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q04_PACKAGE.json) — 발문·보기 5개·정답·상세 해설·오답 근거·L3/L4 working label·후속 수치점검 포함. 원본 q04만 처리했으며 다른 qid 변경 없음.
 - Q04 제작 커밋: `4ed8b6c244b8c735ed8e417d151796dd407787a8`; 원장 커밋: `b462fb18e4eb54cfb9120734ffcada25a097ad63`.
 - Q04 정답 위치: A1 ③ / A2 ⑤ / A3 ① / B1 ④ / B2 ② / B3 ⑤ / C1 ② / C2 ① / C3 ④. 분포 ①2·②2·③1·④2·⑤2.
-- **물리 상태**: q01~q04 CREATE 후보 `36/36`, 공개답 내용검토 `36/36`(유지 25·보완 9·재설계 2), 최종 기술 release PASS `0/36`, 신규 학생 등록 `0/36`. 기존 main 과거 팔마고 후보와 혼동 금지.
+- **물리 상태**: q01~q04 CREATE 후보 `36/36`, 공개답 내용검토 `36/36`(유지 24·보완 10·재설계 2), 최종 기술 release PASS `0/36`, 신규 학생 등록 `0/36`. 기존 main 과거 팔마고 후보와 혼동 금지.
 - Q04의 **공식 RPM L3/L4 record ID는 아직 직접 검증하지 않음**. `l4WorkingLabel`은 비교용 생성 설계명이며 공식 RPM 키/등록 완료로 주장 금지. 다음 검수/메타 작업에서 실제 RPM master와 매핑하거나 Generated EXT-L4를 정식 처리한다.
 - 브라우저 렌더/Generated Consumer 선택·모의고사 출제/remote main publication은 **NOT_TESTED/NOT_REGISTERED**. 후보 36개를 학생용 PASS로 주장하지 않는다.
 
