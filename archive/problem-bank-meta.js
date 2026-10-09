@@ -140,7 +140,7 @@
         status === 'CONFIRMED' ? 'CONFIRMED' :
         Array.isArray(value) && value.length === 0 || value === 'NONE' ? 'RECORDED_NOT_APPLICABLE' : 'RECORDED';
     }
-    for (const field of ['standardCourse', 'standardUnitKey', 'subUnitKey', 'rpmL4Namespace',
+    for (const field of ['standardCourse', 'standardUnitKey', 'standardUnit', 'subUnitKey', 'subUnit', 'rpmL4Namespace',
       'rpmPrimaryRecordId', 'familyKey', 'variantGroupKey', 'templateFamilyKey']) {
       view[field] = m[field] ?? record[field] ?? q[field] ?? null;
     }
