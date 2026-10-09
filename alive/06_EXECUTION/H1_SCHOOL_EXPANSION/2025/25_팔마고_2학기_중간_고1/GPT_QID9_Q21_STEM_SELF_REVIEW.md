@@ -27,3 +27,7 @@
 ## 제작 closure
 - 9 UID / 9 solutions / 객관식 0 / 정답 분포 N/A / KEEP 9 / REVISED 0 / HOLD 0.
 - `AUTHOR_SELF_RECHECK_COMPLETE`는 이번 최종 후보의 발문·수학·Meta에 대한 제작자 자가검수만 뜻한다. `GPT_OPEN_BOOK_REVIEW=NOT_RUN`, `CONSUMER=NOT_REGISTERED`, `CHROME=NOT_TESTED`, `MAIN_Q21_RELEASE=NOT_DONE`.
+
+## 표시 전용 핀포인트 수리 (2026-10-10)
+- A1~A3 학생용 발문에서 문자열 리터럴 `\\n`을 렌더용 `<br>`로 변경. B1 해설의 `\\dfrac32`을 명시적 `\\dfrac{3}{2}`로 정규화.
+- 조건·정답·진리집합·증명·난이도·Meta·UID의 의미 변화 없음. 최종 candidate의 표시 문자열만 fresh 확인; 기존 수학 self-check와 구간 포함 판정은 변화 없음.
