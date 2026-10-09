@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "ARCHIVE_CODEX_TOOL_UPGRADE_REPORT_V1",
+  "runId": "extracted-first-policy-20261009",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "userDirection": "After extraction, use JS and actual required assets in CREATE/R1/R2/R3; consult original PDF only for concrete source-dependent item defects.",
+  "baseHead": "c237089d6866ef2a1a5843baca30b494d54520fe",
+  "completedAt": "2026-10-08T16:59:41.234Z",
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "scope": "QID_ONLY",
+  "initialSourceIntakeOriginalReadingPreserved": true,
+  "independentFreezeAndActualAssetViewingPreserved": true,
+  "oldEvidenceMigrated": false,
+  "examSourcesOrAssetsChanged": false,
+  "toolEnforcement": "Required sourceReferencePolicyMetadata at new handoff preflight; no OS-level PDF access restriction.",
+  "existingSessions": "Require explicit updated assignment direction; config edits do not retroactively change a running session.",
+  "checks": {
+    "focused": {
+      "passed": 39,
+      "exitCode": 0
+    },
+    "runtime": {
+      "passed": 42,
+      "exitCode": 0
+    },
+    "chrome": "NOT_RUN_NO_UI_ENGINE_STORAGE_FLOW_CHANGE",
+    "roles": "5 TOML files parsed; gpt-6-luna/high preserved"
+  },
+  "speed": {
+    "measuredEndToEndSavings": null,
+    "basis": "Repeated PDF render/OCR/transcription is removed from normal downstream workflow; future pilot required for measured savings."
+  },
+  "technicalWorker": {
+    "role": "archive_master",
+    "session": "extracted_source_policy_tool",
+    "firstActionReceipt": "NOT_AVAILABLE; no retrospective receipt synthesized",
+    "returnedFocusedTests": 24
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "rawSha256": "cf012b0c638bfe30cfd25ac43686ed4c743573cdbc7792cd3eeafa2ee263bc0b"
+    },
+    {
+      "path": ".codex/skills/apmath-archive-exams/SKILL.md",
+      "rawSha256": "17e09024d98923af529af6b08bc54cfc7c894b1fa32638bb7707d24f7bf9cb71"
+    },
+    {
+      "path": ".codex/agents/archive-create.toml",
+      "rawSha256": "335f999bdc09eab0668cd21367cc7fc31f4bef121562247f576c6d131bf7884c"
+    },
+    {
+      "path": ".codex/agents/archive-r1.toml",
+      "rawSha256": "59dc577b11ffe507cb9a1992fbad118855c1744dec2e6bc6e693b1a73d26d1d9"
+    },
+    {
+      "path": ".codex/agents/archive-r2.toml",
+      "rawSha256": "5e8e038e5dac200ecb006c92dc9d2d04c99771a54f72301bba4f96ec01e250dc"
+    },
+    {
+      "path": ".codex/agents/archive-r3.toml",
+      "rawSha256": "1c3ced9b604435366072c5f5b3c46a67bf6e7f0ded83b5062647af4f0e2202c9"
+    },
+    {
+      "path": ".codex/agents/archive-master.toml",
+      "rawSha256": "fc6c47c9c7171ada7561aa2a36f41fbf6d871243f58e78cf03c6b13a1bbe245c"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/Archive_Extracted_Source_First_v1.md",
+      "rawSha256": "0add45ac456c682b4b985976e30957c389d160682332ee741101eea99b5f501b"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Execution_v1.md",
+      "rawSha256": "ee377c2e4346f2368f48d26d7c6f4044b8a1c2a15af05ae9aac5c95f574a9a4e"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/JS_Archive_2.0_Common_Quality_Contract_v1.md",
+      "rawSha256": "90517785f701e92813b07cff2f93783434ab99a9502f51b8c5f117f15363287e"
+    },
+    {
+      "path": "archive/tools/CODEX_HANDOFF.md",
+      "rawSha256": "cb97de63bb4ae8e28030a5691bf692b67b211f5e344468488b1738c03be96a96"
+    },
+    {
+      "path": "archive/tools/CODEX_MAINTENANCE.md",
+      "rawSha256": "260f2f3c6bdddd7874bee44e1bf6951565e2688a300af8e7b5468b42a69056f3"
+    },
+    {
+      "path": "archive/tools/archive-source-reference-policy.mjs",
+      "rawSha256": "e3da75cdfb4e135463a3d2ae9ebabc7a164a975f154a96445a87607ca037f06f"
+    },
+    {
+      "path": "archive/tools/archive-source-reference-policy.test.mjs",
+      "rawSha256": "ff9652cd0dc715c852211d67ea66f12e48ba0c28ac846df5677d2032943d5b77"
+    },
+    {
+      "path": "archive/tools/archive-codex-handoff.mjs",
+      "rawSha256": "c9073a5fbf0e41ce49a91eb4d623c3bf7551cc3b24fdc2ed5a7830c569a9fe10"
+    },
+    {
+      "path": "archive/tools/archive-codex-handoff.test.mjs",
+      "rawSha256": "60eb08bac7f47ee372a4f465f3dc448faee95afe29b7244301356903235e789b"
+    },
+    {
+      "path": "archive/analysis/extracted-first-policy-20261009/focused.stdout.txt",
+      "rawSha256": "c9a5a44c2c3d8ac14a9e17ed91df96fc63c86c42eb321680ad1639f7757a7c33"
+    },
+    {
+      "path": "archive/analysis/extracted-first-policy-20261009/focused.stderr.txt",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "archive/analysis/extracted-first-policy-20261009/focused.process.json",
+      "rawSha256": "2247e760fd69d691344426533f664ce9510a3421ef7432055ae24f3be4b296a6"
+    },
+    {
+      "path": "archive/analysis/extracted-first-policy-20261009/runtime.stdout.txt",
+      "rawSha256": "0ab8369458815583735c59d1ba4cfee43bf1a32eef6c7aee99153bc3a571db11"
+    },
+    {
+      "path": "archive/analysis/extracted-first-policy-20261009/runtime.stderr.txt",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "archive/analysis/extracted-first-policy-20261009/runtime.process.json",
+      "rawSha256": "e18d2047421b8d4c0721a82718bccd2bf4ede11a07fde0749805312da2b5fab2"
+    },
+    {
+      "path": "archive/analysis/extracted-first-policy-20261009/roles.json",
+      "rawSha256": "9c3c23c14f5ef21ef10a1825b92c1aade48fca711c45f2a02d43ab6dc1b71d57"
+    }
+  ],
+  "technicalCorrections": [
+    "Generated roles.json CRLF normalized to LF before publication; raw process logs preserved."
+  ]
+}

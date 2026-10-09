@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "ROOT_TARGET_REGISTRATION_PRODUCER_AUTHORITY_V1",
+  "decisionAuthority": "ROOT_DELEGATED",
+  "runId": "h2-intake-batch01-20261009",
+  "rootIdentity": "/root",
+  "decidedAt": "2026-10-09T15:37:32.996Z",
+  "authorityReference": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/technical-registration/ROOT.execution-authority.snapshot.md",
+    "sourcePath": "docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Execution_v1.md",
+    "section": 25,
+    "sourceGitCommit": "bd43c9d3f2b59557068afd282003f8478b8cb3f5",
+    "sourceRawSha256": "ee377c2e4346f2368f48d26d7c6f4044b8a1c2a15af05ae9aac5c95f574a9a4e",
+    "sha256": "ee377c2e4346f2368f48d26d7c6f4044b8a1c2a15af05ae9aac5c95f574a9a4e",
+    "sourceGitBlobSha1": "c17adade0631f2bfe23b4ca921eaab8a9c9383dd"
+  },
+  "roster": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/technical-registration/registration-subroster.v3.json",
+    "sha256": "5cd795793c082c23116cd38d8a6d6d888a4a083a5ef3a184cbe40339b7f673bc"
+  },
+  "scope": [
+    {
+      "order": 10,
+      "examUid": "24_강남여고_1학기_중간_고2_대수",
+      "assignmentAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\24_강남여고_1학기_중간_고2_대수\\CREATE.assignment.json",
+      "inputRawSha256": "d6b1236a5d20fe923adbc6af2b1be0f07e43395ff608202182bff6b4c7c02dc5",
+      "qidCount": 25,
+      "stage": "CREATE_PENDING",
+      "productionRelativePath": "archive/exams/original/high/h2/1mid/24_강남여고_1학기_중간_고2_대수.js",
+      "productionPath": "archive/exams/original/high/h2/1mid/24_강남여고_1학기_중간_고2_대수.js",
+      "grade": "h2",
+      "course": "H15-M1",
+      "questionCount": 25,
+      "legacyDisplayAliasAdmission": {
+        "schemaVersion": "ROOT_TARGET_REGISTRATION_LEGACY_DISPLAY_ALIAS_ADMISSION_V1",
+        "examUid": "24_강남여고_1학기_중간_고2_대수",
+        "productionPath": "archive/exams/original/high/h2/1mid/24_강남여고_1학기_중간_고2_대수.js",
+        "grade": "h2",
+        "course": "H15-M1",
+        "questionCount": 25,
+        "sourceRawSha256": "7682d45aa112f60403a32f1333def73d8598dfc12715a17a3726b708d40c469f",
+        "sourceGitBlobSha1": "829ee06ee6275c5106db0cd5286e0f2db42f8a01",
+        "sourceField": "standardCourse",
+        "sourceFieldValue": "수학I",
+        "sourceCurriculumFamily": "H15-M1",
+        "legacyUidSuffix": "대수",
+        "displaySubject": "수학I",
+        "attestation": {
+          "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.legacy-course-display-alias-attestation.r1_10.rev1.json",
+          "sha256": "62bd52420c82dfc9cc5c366f24ca07f57b6a12bcc6afeeffdf41de36b46e422b"
+        }
+      },
+      "r1MetaBindingPendingAdmission": {
+        "schemaVersion": "ROOT_TARGET_REGISTRATION_META_BINDING_PENDING_ADMISSION_V1",
+        "examUid": "24_강남여고_1학기_중간_고2_대수",
+        "sourceRawSha256": "7682d45aa112f60403a32f1333def73d8598dfc12715a17a3726b708d40c469f",
+        "sourceGitBlobSha1": "829ee06ee6275c5106db0cd5286e0f2db42f8a01",
+        "questionCount": 25,
+        "r1EvidencePath": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.evidence.r1_10.20261009.rev6.bound.json",
+        "r1EvidenceSha256": "4594b8d926ff53b562d4342e6d7c8aeff69e77f42e00dc48f72de728264ae318",
+        "qids": [
+          9,
+          17,
+          18,
+          19,
+          20,
+          21,
+          24
+        ],
+        "fieldNames": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "disposition": "PRESERVE_CURRENT_VALUES_AS_MANUAL_REVIEW_PENDING"
+      }
+    }
+  ],
+  "reason": "ROOT authorizes bounded canonical seed and joins for this release-ready current-source target with complete R1/R2/R3 and real six-case render; retain all source-clean, HEAD, current R1, denominator, baseline and non-target-invariance gates. H2 Math I display identity is verified against existing canonical H15-M1 database aliases.",
+  "sourceCommit": "bd43c9d3f2b59557068afd282003f8478b8cb3f5",
+  "newTargetParityAdmission": true,
+  "parentProjectionAuthorityGranted": false
+}

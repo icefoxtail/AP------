@@ -1,0 +1,187 @@
+{
+  "schemaVersion": "ROOT_SOURCE3_CANONICAL_CATALOG_HEADER_REPAIR_PLAN_V1",
+  "runId": "archive-2026-1mid-nine-20261008",
+  "examUid": "26_강남여고_1학기_중간_고2_대수",
+  "status": "REPAIR_READY_ROOT_COPY_REQUIRED",
+  "head": "47dfa12159d2ffa29572139183312b1b55366706",
+  "sourceUnchangedSha256": "ee7f5dec997371cde114fab1c22bced3b9eda8bc29d9845f1f5cc554e8be973f",
+  "targetAssetSha256": "edcad8201e06a4ab6a7aa40c78f638f409c871ffefcdd7a34d2db9f7f16d95b9",
+  "actualRootCatalogCheck": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고2_대수/registration-technical-final/source3/postapply/catalog-check-final/result.json",
+    "sha256": "91af6324c2ac6bfe93f8c8015b7e0ad01edbc49a4578a129264774edc65827bf",
+    "disposition": "FAIL"
+  },
+  "isolatedCanonicalCatalogCheck": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고2_대수/registration-technical-final/source3/postapply/canonical-candidate-check/result.json",
+    "sha256": "b6da36f62873cab85130dc2d15e175f09b79c0e8733f77678c5e65e9c1d2e766",
+    "disposition": "PASS",
+    "candidateCatalogSha256": "53125af4a372dea0fcfa2746da7f4af1c58ecf80463282a696f4c28894010309",
+    "candidateManifestSha256": "8bb03a3f62c1f0b88a2a399ac78f63c0125dfeccb1ab5b1012e30c196ddbfaf2"
+  },
+  "repairLocus": {
+    "catalog": {
+      "changedTopLevelKeys": [
+        "indexVersion"
+      ],
+      "appliedIndexVersion": "219762b21af6bcd93c1a107e28292f6d843d332d1de35e3638f33264d9a849eb",
+      "canonicalIndexVersion": "47b85a7a39808becbd88cd060694637451fdfc715a241339e51a2f90d2ac4730",
+      "allOtherDecodedContentEqual": true
+    },
+    "manifest": {
+      "changedTopLevelKeys": [
+        "generatedFromCatalogIndexVersion",
+        "projectionVersion",
+        "files"
+      ],
+      "changedInputPaths": [
+        "data/archive2-catalog.json"
+      ],
+      "onlyCatalogInputDigestRebound": true
+    },
+    "noRowsOrMetaReclassification": true
+  },
+  "invariance": {
+    "indexVersion": {
+      "applied": "219762b21af6bcd93c1a107e28292f6d843d332d1de35e3638f33264d9a849eb",
+      "canonical": "47b85a7a39808becbd88cd060694637451fdfc715a241339e51a2f90d2ac4730"
+    },
+    "identityDigest": {
+      "applied": "77d63c47199905dcc0a2a5c0e46555378a029eaefb4399bad564aea3462da528",
+      "canonical": "77d63c47199905dcc0a2a5c0e46555378a029eaefb4399bad564aea3462da528"
+    },
+    "decodedTopLevelDifferences": [
+      "indexVersion"
+    ],
+    "targetRowsExact": true,
+    "nonTargetDecodedRowsExact": true,
+    "decodedCounts": {
+      "actual": {
+        "records": 13057,
+        "exams": 548
+      },
+      "canonical": {
+        "records": 13057,
+        "exams": 548
+      },
+      "target": {
+        "actual": 25,
+        "canonical": 25
+      },
+      "nonTarget": {
+        "actual": 13032,
+        "canonical": 13032
+      }
+    },
+    "packing": {
+      "columnsEqual": true,
+      "columns": 67,
+      "allStringsEqual": true,
+      "stringCount": 58642,
+      "nonTargetPackedRowsExact": true,
+      "nonTargetPackedRowCount": 13032,
+      "allCatalogRecordsCount": 13057
+    },
+    "manifest": {
+      "topLevelDifferences": [
+        "generatedFromCatalogIndexVersion",
+        "projectionVersion",
+        "files"
+      ],
+      "filePathDifferences": [
+        "data/archive2-catalog.json"
+      ],
+      "currentSha256": "932dbc5237cbf78e2a3957fa165dde208277d796d99ddc762d46f6e79708ef6b",
+      "canonicalSha256": "8bb03a3f62c1f0b88a2a399ac78f63c0125dfeccb1ab5b1012e30c196ddbfaf2"
+    },
+    "overrideIndex": {
+      "currentSha256": "de96971c50a8c71ecc6d2dff95e59951f7fe10411fba0c6c176903d8242297c1",
+      "canonicalSha256": "de96971c50a8c71ecc6d2dff95e59951f7fe10411fba0c6c176903d8242297c1",
+      "exact": true
+    },
+    "packageNonTargetInvariant": {
+      "dbExamRows": 547,
+      "identityRows": 13040,
+      "metadataRows": 13040,
+      "indexRows": 13032,
+      "catalogRows": 13032,
+      "allPreservedByDeepComparison": true,
+      "identityRuntimeTuplesPreserved": true
+    },
+    "nineCurrentPhysicalFiles": [
+      {
+        "relativePath": "archive/db.js",
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/db.js",
+        "rawSha256": "7d9412e7ba90d3e546bf88beace804806724a6b90d0db303a78de45c07995816",
+        "rawBufferBlobSha1": "7797a20ecd68ef4096b0630166c046cea90ea544"
+      },
+      {
+        "relativePath": "archive/data/question_identity_map.json",
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/data/question_identity_map.json",
+        "rawSha256": "8390d9f651994b3e611843994dc6d7b2f3f4ba3e0d8be9985107a0999d2ee1dd",
+        "rawBufferBlobSha1": "62fead7140c1e6a2238406d96e1f72fa6db77c47"
+      },
+      {
+        "relativePath": "archive/data/question_metadata.json",
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/data/question_metadata.json",
+        "rawSha256": "e4642aaafe7d5df9398469c960d1479f7ce25523f177aa8fa4dd2df9238b2958",
+        "rawBufferBlobSha1": "fca1cb192cf4cd95296e866e4360cc0d5d3fd4fd"
+      },
+      {
+        "relativePath": "archive/question-identity.js",
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/question-identity.js",
+        "rawSha256": "2c3e6439399a5d31dbf43e5c17fdccae37ecd6423f9f655ccf46be8abac773dc",
+        "rawBufferBlobSha1": "8b0bbce6fcbb6c200bc1fa186fdf9473d0237086"
+      },
+      {
+        "relativePath": "archive/question-index.js",
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/question-index.js",
+        "rawSha256": "c2dc21ac7e452dcf0f904adcc1550387b35289c97bb711c4e2fde2076fbea8c3",
+        "rawBufferBlobSha1": "46eaab225a417538d83dd8d740ec74a2dc69e7f7"
+      },
+      {
+        "relativePath": "archive/question-index-report.md",
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/question-index-report.md",
+        "rawSha256": "9a7ae373577ab5f20c8083a74760dcdf258d83f32dd9bec94adf3989924d6e48",
+        "rawBufferBlobSha1": "99a38be99b14b9bce530da04fe06f5dc66350f3e"
+      },
+      {
+        "relativePath": "archive/question-index-audit.md",
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/question-index-audit.md",
+        "rawSha256": "9bf8ac980f427f396c6557191691f18ecd408ec91aadaf30e89e08044f8d7047",
+        "rawBufferBlobSha1": "f3e1dc6cedd85542f89a1bb38de381d2951ee052"
+      },
+      {
+        "relativePath": "archive/data/archive2-catalog.json",
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/data/archive2-catalog.json",
+        "rawSha256": "a14122cf4a5d82cce8a53e041b121bebad85794b322784325e77612c2f9d7e9b",
+        "rawBufferBlobSha1": "e8f64e085b6753596d4cfd0f57052dfd974cc5bc"
+      },
+      {
+        "relativePath": "archive/data/archive2-canonical-input-manifest.json",
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/data/archive2-canonical-input-manifest.json",
+        "rawSha256": "932dbc5237cbf78e2a3957fa165dde208277d796d99ddc762d46f6e79708ef6b",
+        "rawBufferBlobSha1": "e7d129bd6eec45fc6922f9170d55363dcdbd3abe"
+      }
+    ]
+  },
+  "copyFiles": [
+    {
+      "relativePath": "archive/data/archive2-catalog.json",
+      "sourcePath": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/rc3c/archive/data/archive2-catalog.json",
+      "currentPath": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/data/archive2-catalog.json",
+      "currentRawSha256": "a14122cf4a5d82cce8a53e041b121bebad85794b322784325e77612c2f9d7e9b",
+      "expectedRawSha256": "53125af4a372dea0fcfa2746da7f4af1c58ecf80463282a696f4c28894010309",
+      "expectedRawBufferBlobSha1": "0d0db9c071879f3de7fb153296e96bb5de021b44"
+    },
+    {
+      "relativePath": "archive/data/archive2-canonical-input-manifest.json",
+      "sourcePath": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/rc3c/archive/data/archive2-canonical-input-manifest.json",
+      "currentPath": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/data/archive2-canonical-input-manifest.json",
+      "currentRawSha256": "932dbc5237cbf78e2a3957fa165dde208277d796d99ddc762d46f6e79708ef6b",
+      "expectedRawSha256": "8bb03a3f62c1f0b88a2a399ac78f63c0125dfeccb1ab5b1012e30c196ddbfaf2",
+      "expectedRawBufferBlobSha1": "1d347725357624353c943b79c0a8acbf99ae001e"
+    }
+  ],
+  "requiredRootAction": "Copy exactly copyFiles[0] and copyFiles[1] sourcePath to the matching currentPath, verify expected raw SHA after copy, then rerun actual root --check plus registration parity and identity/runtime checks bound to the final nine-file SHA set.",
+  "issues": []
+}

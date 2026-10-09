@@ -42,6 +42,7 @@ function harness(data = structuredClone(catalog)) {
     addEventListener() {},
     fetch: async url => ({ ok: true, json: async () => JSON.parse(read(new URL(String(url)).pathname.replace(/^\/archive\//, ''))) }),
     Archive2Core: core,
+    ProblemBankMeta: require('../archive/problem-bank-meta.js'),
     Archive2Canonical: core.Canonical,
     Archive2Output: require('../archive/archive2-output.js'),
     Archive2Papers: require('../archive/archive2-papers.js'),
@@ -515,12 +516,13 @@ test('all changed browser scripts use new cache versions', () => {
     ['archive2-core.js', '20261001-h23-compose-closure-1'],
     ['meta-foundation-runtime.js', '20260930-canonical-lock-2'],
     ['archive2-history.js', '20261004-class-grade-fallback-1'],
-    ['archive2-workspace.js', '20261006-interaction-audit-2'],
+    ['archive2-workspace.js', '20261009-common-meta-compose-1'],
   ])
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
-  assert.match(html, /archive2-source\.js\?v=20260930-meta-v2-sidecar-1/);
+  assert.match(html, /problem-bank-meta\.js\?v=20261009-meta-view-1/);
+  assert.match(html, /archive2-source\.js\?v=20261009-generated-meta-restore-1/);
   assert.match(html, /archive2-library\.js\?v=20261003-navigation-s5-3/);
-  assert.match(html, /archive2\.css\?v=20261003-navigation-s5-1/);
+  assert.match(html, /archive2\.css\?v=20261008-finder-filter-row-1/);
   assert.match(html, /archive2-navigation\.js\?v=20260929-saved-library-2/);
 });
 

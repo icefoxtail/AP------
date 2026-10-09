@@ -206,3 +206,91 @@
     margin: 12px 0 0 auto !important;
   }
 }
+
+
+/* Legacy engine qpp4 solution reader: mobile flow for the explicitly identified
+   engine toolbar and solution boxes. Archive2 remains context-gated, and the
+   marker-free mixed engine keeps its legacy two-column layout. */
+@media screen and (max-width: 640px) {
+  html:not([data-archive2-context]):has(#qpp-display)[data-ap-render-ready="true"] :is(#print-area, [data-archive-build-root]):has(.q-box.sol-box) {
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: calc(100vw - 16px) !important;
+    max-width: none !important;
+    margin: 8px auto !important;
+    padding: 0 !important;
+    gap: 14px !important;
+    transform: none !important;
+    transform-origin: top left !important;
+  }
+
+  html:not([data-archive2-context]):has(#qpp-display)[data-ap-render-ready="true"] .page:has(.q-box.sol-box) {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 14px 12px !important;
+    overflow: visible !important;
+    flex: 0 0 auto !important;
+  }
+
+  html:not([data-archive2-context]):has(#qpp-display)[data-ap-render-ready="true"] .page:has(.q-box.sol-box) .page-body {
+    box-sizing: border-box;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  html:not([data-archive2-context]):has(#qpp-display)[data-ap-render-ready="true"] .grid-container:has(.q-box.sol-box) {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    flex: 0 0 auto !important;
+  }
+
+  html:not([data-archive2-context]):has(#qpp-display)[data-ap-render-ready="true"] .grid-container:has(.q-box.sol-box)::after {
+    display: none !important;
+  }
+
+  html:not([data-archive2-context]):has(#qpp-display)[data-ap-render-ready="true"] .grid-container:has(.q-box.sol-box) .grid-col {
+    box-sizing: border-box;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  html:not([data-archive2-context]):has(#qpp-display)[data-ap-render-ready="true"] .q-box.sol-box {
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 12px 0 !important;
+    overflow: visible !important;
+  }
+
+  html:not([data-archive2-context]):has(#qpp-display)[data-ap-render-ready="true"] :is(#print-area, [data-archive-build-root]) img,
+  html:not([data-archive2-context]):has(#qpp-display)[data-ap-render-ready="true"] :is(#print-area, [data-archive-build-root]) svg {
+    max-width: 100% !important;
+  }
+
+  html:not([data-archive2-context]):has(#qpp-display)[data-ap-render-ready="true"] .sol-image-wrap {
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  html:not([data-archive2-context]):has(#qpp-display)[data-ap-render-ready="true"] .sol-image-wrap img {
+    width: auto !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    height: auto !important;
+  }
+}

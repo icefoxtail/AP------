@@ -1,0 +1,216 @@
+{
+  "schemaVersion": "JS_ARCHIVE_REGISTRATION_R1_ITEM_RECOVERY_VERDICT_COMPAT_V1",
+  "disposition": "TECHNICAL_GUARDS_UPDATED_TESTS_AND_E_BINDING_PREFLIGHT_PASS_ROOT_PRODUCER_RETRY_PENDING",
+  "capturedAtUtc": "2026-10-08T07:34:30.1096508Z",
+  "worktreeRoot": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------",
+  "head": "42acf2783db712e38ca703234ee25707c91d0e24",
+  "target": "archive/tools/prepare-target-registration-candidate.mjs",
+  "originalHelperSha256": "697f4f92b694bec59d44b4aa57914616431790e7a80920a26fca937aac0ace0c",
+  "originalTestSha256": "c413730832ec35e6ecf69612746eed875f4571c4da2b944779370258d541e503",
+  "observedFailure": {
+    "cause": "The R1 registration candidate verdict allowlist omitted PASS_AFTER_ITEM_RECOVERY for q18, although the bound full-current R1 V2 evidence/report is PASS and q18 carries fresh R1/R2 recovery proof.",
+    "code": "R1_META_PROOF_META_PASS_REQUIRED",
+    "preservedFailureAttempt": "No PASS was synthesized; the previous producer failure and current validator/evidence bytes are preserved by reference."
+  },
+  "currentValidatedProof": {
+    "q18Verdict": "PASS_AFTER_ITEM_RECOVERY",
+    "evidenceSha256": "e1a3398b8fc8698b44b42fd823d387c4b6df5df46a34337a2855e9cb84c0e57d",
+    "nonTargetInvariantSha256": "4978288de96570ffa2b82a98a99ed332bb0acda669e7ebcccbd09f71d473bf43",
+    "evidencePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산여고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.evidence.composed.json",
+    "fullQuestionCount": 22,
+    "examUid": "21_매산여고_1학기_기말_고1_기출",
+    "q18ItemStatus": "CLEAR_AFTER_FRESH_SCOPED_R1_R2",
+    "fullV2ReportSha256": "b166b10c39dc4b59a070acc29224344c50c65bb91d9efbd49132b890c6cef815",
+    "sourceRawSha256": "e85636985754fda04a6fecc0aaa842d22417aee4a33402cda7e3fbe5b2d38bcd",
+    "fullV2ReportPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산여고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.raw-generic-report.rev3.json",
+    "fullV2ReportDisposition": "PASS",
+    "q18MetaAxis": "PASS",
+    "stage": "R1",
+    "sourceRawBufferGitBlobSha1": "8908ccf8ec87bff730db5721b184ecf5a6f32043",
+    "itemRecoveryEvidenceSha256": "038ac709a77e358c86b71f9659f834730f5bfe48cd909428063354a613a6573c",
+    "rootDecisionSha256": "277cddb8d5a1877697b93a94cc0f3d1daa71dde1ec22a818bbf86ccd0ceecbf4",
+    "freshScopedReviewStages": [
+      "R1",
+      "R2"
+    ],
+    "sourcePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산여고_1학기_기말_고1_기출\\21_매산여고_1학기_기말_고1_기출.js",
+    "evidenceArtifactSha": "8908ccf8ec87bff730db5721b184ecf5a6f32043",
+    "fullV2ReportSourceRawSha256": "e85636985754fda04a6fecc0aaa842d22417aee4a33402cda7e3fbe5b2d38bcd",
+    "fullV2ReportArtifactSha": "8908ccf8ec87bff730db5721b184ecf5a6f32043"
+  },
+  "narrowCompatibility": "Only adds PASS_AFTER_ITEM_RECOVERY. Every R1 row remains in the full 22-qid denominator and must have an accepted verdict plus positive META. The special verdict is accepted only for q18 with row/current-source itemStatus CLEAR_AFTER_FRESH_SCOPED_R1_R2, disposition FRESH_Q18_R1_PASS_R2_MATCH_ALIVE_REPLACEMENT, repairApplied=true, sourceMode ALIVE_REPLACEMENT, root-authorized q18 recovery evidence, zero-mutation 21-qid invariance, fresh R1/R2 q18 receipts with R2 MATCH, and q18 META PASS. Validation remains current R1_V2/CODEX, active artifact contract PASS, full 22 qids, and zero issues.",
+  "validation": {
+    "passed": 13,
+    "command": "node --test archive/tools/prepare-target-registration-candidate.test.mjs",
+    "failed": 0,
+    "disposition": "PASS"
+  },
+  "effects": {
+    "commit": "NONE",
+    "examSourceEdited": false,
+    "metaFieldsReclassified": false,
+    "qualityEvidenceEdited": false,
+    "rootPublicationOrReadback": false,
+    "sourceOrRegistryMutation": false
+  },
+  "nextRequiredAction": "ROOT reruns only the target-specific E registration producer using the current locked assignment and the passing full22 R1 binding; then performs the existing target-only/non-target checks.",
+  "files": [
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\tools\\prepare-target-registration-candidate.mjs",
+      "sha256": "88d198d185194177debf3726a4493669f8c7159333fbc9e8a8c9af9fced12758"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\tools\\prepare-target-registration-candidate.test.mjs",
+      "sha256": "d102ac5a947c0531b0a6e8df5c888bdcbaafac07eaffee108ac2dbf6971df13f"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\h1-final-five-pilot-20261008\\technical-registration-verdict-compat\\prepare-target-registration-candidate.test.log",
+      "sha256": "165c67c4afc08043f102beb1be4bfc52f65a047f6e87ee11d77241ddb9ccee66"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\h1-final-five-pilot-20261008\\technical-registration-verdict-compat\\history\\pre-item-recovery-verdict\\prepare-target-registration-candidate.mjs",
+      "sha256": "697f4f92b694bec59d44b4aa57914616431790e7a80920a26fca937aac0ace0c"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\h1-final-five-pilot-20261008\\technical-registration-verdict-compat\\history\\pre-item-recovery-verdict\\prepare-target-registration-candidate.test.mjs",
+      "sha256": "c413730832ec35e6ecf69612746eed875f4571c4da2b944779370258d541e503"
+    }
+  ],
+  "currentRootAuthority": {
+    "sha256": "fe1a3ca659f1436d845ab4fb7d6f0d3e9c553b9945bb5da3727488acbf9b8f4f",
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\h1-final-five-pilot-20261008\\ROOT.registration-producer-authority.json"
+  },
+  "currentLockedRoster": {
+    "sha256": "67a5c8c0cd47944055c44b2dd6711426e372cd18ba12497830c15c3da5954966",
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\h1-final-five-pilot-20261008\\ROOT.registration-roster.json"
+  },
+  "actualObservedFailure": {
+    "sha256": "37cc76505bed08dc59f7719bae8efc4cbe97ee0ca528dc762f43b1dcbab8a2c9",
+    "rawStderrFileSaved": false,
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\h1-final-five-pilot-20261008\\ROOT.registration.C.observed-failure.json"
+  },
+  "retry2SourceMarkerClearAmendment": {
+    "disposition": "CLOSED_TECHNICALLY_ACTUAL_CURRENT_R1_BINDING_PREFLIGHT_PASS",
+    "changedAtUtc": "2026-10-08T07:40:15.904Z",
+    "currentSource": {
+      "path": "archive/exams/original/high/h1/1final/21_매산여고_1학기_기말_고1_기출.js",
+      "rawSha256": "e85636985754fda04a6fecc0aaa842d22417aee4a33402cda7e3fbe5b2d38bcd",
+      "gitBlobSha1": "8908ccf8ec87bff730db5721b184ecf5a6f32043",
+      "qidCount": 22,
+      "q18OwnItemStatus": false
+    },
+    "codeChange": "Allows absent q18 itemStatus only through an exact two-step provenance chain: original non-target map binds replacement source → pending-HOLD input; ROOT/author hold-clear proof SHA binds input raw SHA/blob → current source raw SHA with only itemStatus changed; preserved input bytes replay to the original non-target hash map and current parsed 21 non-target objects; q18 parsed object is identical after excluding only itemStatus. Direct single-step path remains supported. Derives exact non-target denominator from qid list and exact object-hash map; no stale source SHA or unknown physical status accepted.",
+    "observedEvidence": {
+      "r1EvidencePath": "archive/analysis/21_매산여고_1학기_기말_고1_기출/h1-final-five-pilot-20261008/R1.evidence.composed.json",
+      "r1EvidenceSha256": "e1a3398b8fc8698b44b42fd823d387c4b6df5df46a34337a2855e9cb84c0e57d",
+      "r1ValidationPath": "archive/analysis/21_매산여고_1학기_기말_고1_기출/h1-final-five-pilot-20261008/R1.raw-generic-report.rev3.json",
+      "r1ValidationSha256": "b166b10c39dc4b59a070acc29224344c50c65bb91d9efbd49132b890c6cef815",
+      "currentSourceRawSha256": "e85636985754fda04a6fecc0aaa842d22417aee4a33402cda7e3fbe5b2d38bcd",
+      "nonTargetInvariantPath": "archive/analysis/21_매산여고_1학기_기말_고1_기출/h1-final-five-pilot-20261008/ITEM_RECOVERY.q18.non-target-invariance.json",
+      "nonTargetInvariantSha256": "4978288de96570ffa2b82a98a99ed332bb0acda669e7ebcccbd09f71d473bf43",
+      "nonTargetInvariantCurrentSourceRawSha256": "1e1ec528a66ee8ce293bd33d67a1e89a05b8da6f622103e44dc513dc890d63a9",
+      "sourceBindingResult": "BLOCKED: R1_ITEM_RECOVERY_NON_TARGET_INVARIANCE_INVALID because proof currentSourceRawSha256 does not equal assignment/current source e85636985754fda04a6fecc0aaa842d22417aee4a33402cda7e3fbe5b2d38bcd. No guard weakened."
+    },
+    "actualPreflight": {
+      "command": "Direct read-only verifyR1EvidenceBinding using existing Sunchon registration.assignment.json and current parsed source bank; no producer generation, package, candidate apply, or registry writes.",
+      "disposition": "PASS",
+      "examUid": "21_순천고_1학기_기말_고1_기출",
+      "currentSourceRawSha256": "21d86eab5f8985e9ba4bb9a2dc7e118a86dc0ee0343ffb00418ffea632f4a954",
+      "sourceBlobSha1": "c4f9829fdc2877c75b29df4dc6acfab1b83f1828",
+      "questionCount": 22,
+      "q18OwnItemStatus": false,
+      "r1Disposition": "PASS",
+      "r1EvidenceSha256": "35624448bc8f61ce05518359618a8154cb6098cfdc967eccd1a7df0897629720",
+      "r1ValidationSha256": "93e0b1704958419a487e45133742bde8fd90597311a7e8f7e215403664fb0b7a",
+      "previousQ18ActualPreflightAlsoPass": true
+    },
+    "tests": {
+      "command": "node --test archive/tools/prepare-target-registration-candidate.test.mjs",
+      "passed": 16,
+      "failed": 0,
+      "logPath": "archive/analysis/h1-final-five-pilot-20261008/technical-registration-verdict-compat/prepare-target-registration-candidate.retry2.test.log",
+      "logSha256": "6b69509ae42d4cc7e0b19b507231ac95b624ccb2b7b8882a34389caaafd94e72"
+    },
+    "fileBindings": [
+      {
+        "path": "archive/tools/prepare-target-registration-candidate.mjs",
+        "sha256": "63775b0866c9ce2dd82573b1577112bc2729d22a4006b3ad98c202363ab03aa9"
+      },
+      {
+        "path": "archive/tools/prepare-target-registration-candidate.test.mjs",
+        "sha256": "c136a35392b3cbe05e930227a6e631f6b369c91afab46928d61e2ffe5ef56672"
+      }
+    ],
+    "nextRequiredAction": "ROOT may retry the target-only C registration producer using existing current authority/assignment and this passing R1 binding; preserve the failed retry2 attempt, then validate target-only/non-target invariance as usual.",
+    "chain": {
+      "originalInvariantPath": "archive/analysis/21_매산여고_1학기_기말_고1_기출/h1-final-five-pilot-20261008/ITEM_RECOVERY.q18.non-target-invariance.json",
+      "originalInvariantSha256": "4978288de96570ffa2b82a98a99ed332bb0acda669e7ebcccbd09f71d473bf43",
+      "originalCurrentSourceRawSha256": "1e1ec528a66ee8ce293bd33d67a1e89a05b8da6f622103e44dc513dc890d63a9",
+      "holdClearChangePath": ".tmp/archive/h1-final-five-pilot-20261008/21_매산여고_1학기_기말_고1_기출/evidence/ITEM_RECOVERY.q18.hold-clear-change.json",
+      "holdClearChangeSha256": "c55324b5d657cf08c82b0508d09af0e03f87bf98e76cf93492b2e180e5d7f66f",
+      "holdClearInputRawSha256": "1e1ec528a66ee8ce293bd33d67a1e89a05b8da6f622103e44dc513dc890d63a9",
+      "holdClearInputBlobSha1": "9ccc7075e8938c7a28b7fa9138703a14d78ada6f",
+      "holdClearCurrentSourceRawSha256": "e85636985754fda04a6fecc0aaa842d22417aee4a33402cda7e3fbe5b2d38bcd",
+      "historicalSourceEvidencePath": "archive/analysis/21_매산여고_1학기_기말_고1_기출/h1-final-five-pilot-20261008/preserved-inputs/history/q18-hold-clear-preimage/21_매산여고_1학기_기말_고1_기출/21_매산여고_1학기_기말_고1_기출.js.source-evidence.json",
+      "historicalSourceRawSha256": "1e1ec528a66ee8ce293bd33d67a1e89a05b8da6f622103e44dc513dc890d63a9",
+      "derivedNonTargetCount": 21,
+      "verifiedOriginalToCurrentNonTargetObjectHashes": true,
+      "verifiedQ18AllFieldsExceptAdministrativeItemStatusUnchanged": true
+    }
+  },
+  "metaOnlyTemplateDebtCompatibility": {
+    "disposition": "NARROW_CURRENT_R1_APPROVED_NULL_PROJECTION_DEBT_ALIAS",
+    "codeChange": "Accept PASS_WITH_META_ONLY_DEBT only when that exact META axis status has projectionStatus TEMPLATE_UNMATERIALIZED, nullDebt.fields exactly [templateKey], a non-empty reason exactly echoed in row.metaDebtReason, row.metaDebtFields exactly [templateKey], and the same qid in current source owns templateKey:null. All ordinary positive META statuses remain unchanged; other debt or missing proof remains rejected.",
+    "examUid": "21_순천고_1학기_기말_고1_기출",
+    "sourceRawSha256": "21d86eab5f8985e9ba4bb9a2dc7e118a86dc0ee0343ffb00418ffea632f4a954",
+    "sourceBlobSha1": "c4f9829fdc2877c75b29df4dc6acfab1b83f1828",
+    "questionCount": 22,
+    "r1EvidencePath": "archive/analysis/21_순천고_1학기_기말_고1_기출/h1-final-five-pilot-20261008/R1.evidence.bound.q2-rebind.revision2.json",
+    "r1EvidenceSha256": "35624448bc8f61ce05518359618a8154cb6098cfdc967eccd1a7df0897629720",
+    "r1ValidationPath": "archive/analysis/21_순천고_1학기_기말_고1_기출/h1-final-five-pilot-20261008/R1.generic-validation.q2-rebind.final.stdout.json",
+    "r1ValidationSha256": "93e0b1704958419a487e45133742bde8fd90597311a7e8f7e215403664fb0b7a",
+    "debtRows": [
+      {
+        "qid": 13,
+        "verdict": "PASS",
+        "metaStatus": "PASS_WITH_META_ONLY_DEBT",
+        "projectionStatus": "TEMPLATE_UNMATERIALIZED",
+        "physicalNullField": "templateKey",
+        "nullDebtFields": [
+          "templateKey"
+        ],
+        "reasonSha256": "b30fd6b5dbfc1066b4b229b4d6c1d1a6df4f285d7d59fc8eda49bad8308506d5"
+      },
+      {
+        "qid": 19,
+        "verdict": "PASS",
+        "metaStatus": "PASS_WITH_META_ONLY_DEBT",
+        "projectionStatus": "TEMPLATE_UNMATERIALIZED",
+        "physicalNullField": "templateKey",
+        "nullDebtFields": [
+          "templateKey"
+        ],
+        "reasonSha256": "c27a93336a10e0dfb91f016daabdf5fe1fe8d8a8cc13270d4641a8bd45276f87"
+      }
+    ],
+    "otherTwentyRowsMetaPass": true,
+    "activeFull22R1ValidatorPass": true,
+    "tests": {
+      "command": "node --test archive/tools/prepare-target-registration-candidate.test.mjs",
+      "passed": 17,
+      "failed": 0,
+      "logPath": "archive/analysis/h1-final-five-pilot-20261008/technical-registration-verdict-compat/prepare-target-registration-candidate.retry2.test.log",
+      "logSha256": "2362de4c8d0892a3e948061c8c7b49c47f6bcc783f2f8a7b9f2ec949c92f6074"
+    },
+    "fileBindings": [
+      {
+        "path": "archive/tools/prepare-target-registration-candidate.mjs",
+        "sha256": "0a0c42fe771b935d1372f449fb9a7cb65656382304b5933716547cf78b24e033"
+      },
+      {
+        "path": "archive/tools/prepare-target-registration-candidate.test.mjs",
+        "sha256": "24dd854c9dc7642f5b8b0c36fa1feb05b5cc83eae5d931843ab2f257c15e7458"
+      }
+    ]
+  }
+}

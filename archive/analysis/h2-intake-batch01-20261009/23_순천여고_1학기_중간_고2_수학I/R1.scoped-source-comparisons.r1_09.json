@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_SCOPED_SOURCE_COMPARISON_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "23_순천여고_1학기_중간_고2_수학I",
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "sourcePdf": {
+    "path": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/수1/2023_순여고2_수1_1중간.pdf",
+    "sha256": "c7bebac4da715f2c4cc4a9e7a93dcf6455c8b2b20e8d8d5e761d5afc7c4708da",
+    "currentBytesSha256": "c7bebac4da715f2c4cc4a9e7a93dcf6455c8b2b20e8d8d5e761d5afc7c4708da"
+  },
+  "reusedIntakeEvidence": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\intake-original.evidence.json",
+    "sha256": "3f282284debd07517494c93e5812cc8361062612e514b4dc088fdc00a4c15f03",
+    "pdfSha256": "c7bebac4da715f2c4cc4a9e7a93dcf6455c8b2b20e8d8d5e761d5afc7c4708da",
+    "reusedForIdentityAndLocationOnly": true
+  },
+  "baselineStudentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\R1.student-only.json",
+    "sha256": "cf9f612506ae0942a67917badaa47fbef37c7532acbbc12c936daa513573a18a",
+    "initialSourceRawSha256": "6d7b75d6c9b4743a3687a2a092966bed532a81fd82033adbd11f4f5668452b17",
+    "studentParityAtFreeze": "EXACT_23_OF_23"
+  },
+  "comparisons": [
+    {
+      "qid": 4,
+      "kind": "ACTUAL_PDF_QID_ONLY",
+      "page": 1,
+      "scopeFile": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\R1.q4.pdf-scope-revision1.png",
+      "scopeSha256": "a21e2880bee1464a81dc425a51d1edfbed499fd9fd260c18b034bcc934359e51",
+      "factChecked": "The printed stem says “다음 중 옳은 것은?”; statements ①, ②, and ④ match the extracted text and are each true over the real-number school domain.",
+      "finding": "SOURCE_CONFIRMED_MULTIPLE_TRUE_SINGLE_CHOICE; no safe answer encoding or source-faithful single answer."
+    },
+    {
+      "qid": 21,
+      "kind": "ACTUAL_PDF_QID_ONLY",
+      "page": 5,
+      "scopeFile": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\R1.q21.pdf-scope.png",
+      "scopeSha256": "d066fa00e9cd64813c30bef8880bd89dc3fb6563a6c743686fe7740e91e14e39",
+      "factChecked": "Printed radicands are sinθ and cosθ with no square exponents; the stem also places θ in quadrant III.",
+      "finding": "SOURCE_CONFIRMED_UNDEFINED_OVER_REAL_NUMBERS; item has no real-valued requested expression."
+    },
+    {
+      "qid": 22,
+      "kind": "ACTUAL_PDF_QID_ONLY",
+      "page": 5,
+      "scopeFile": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\R1.q22.pdf-scope.png",
+      "scopeSha256": "61b2428c3e5455cd5ae4f8427a239757e83bcd9945e266bd3324c24562796e99",
+      "factChecked": "The q22 problem graphic in the current asset matches the original printed region (template match 0.9973); the same sparse graph fragment appears in source.",
+      "finding": "NO_EXTRACTED_ASSET_CROP_DISCREPANCY; keep exact source crop, note limited visual information; algebraic statement fully defines line/functions."
+    },
+    {
+      "qid": 23,
+      "kind": "ACTUAL_PDF_QID_ONLY",
+      "page": 5,
+      "scopeFile": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\R1.q23.pdf-scope.png",
+      "scopeSha256": "3071770b6efb10b5d900c6143e76b464d1ceba812fe3fb3ed616745323803666",
+      "factChecked": "Printed DE condition is (3/2)log_3 6, whereas the current extracted body had (3/2)log_2 6.",
+      "finding": "AUDITED_SOURCE_REPAIR_DONE; both mirrored student fields were corrected to log_3; old q23 freeze invalid only for q23; fresh qid-only R1 required."
+    }
+  ],
+  "notComparedQids": "No other PDF page or answer source was opened; no whole-page re-transcription or OCR was performed.",
+  "intakeAssetHashDifference": {
+    "qid": 18,
+    "oldIntakeAssetSha256": "33f20f5b6e31a1547d5e174ee3bca5e68402d6a79be510f1c9c1ead709f33570",
+    "currentAssignedAssetSha256": "f635e850c208450ff71370796ede74a23777aa640a2902b59d8615fae790190b",
+    "currentAssetActuallyOpened": true,
+    "actualPdfCompared": false,
+    "reason": "No content/visual defect found in the current assigned crop; the intake evidence hash is preserved as historical provenance, and no PDF review was triggered by SHA difference alone."
+  }
+}

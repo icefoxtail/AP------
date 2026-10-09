@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_CALIBRATION_V1",
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.\n직선이 $y=mx+n$ 꼴로 주어지면 $x$의 계수 $m$이 기울기이다.\n주어진 직선\n$y=-3x+\\dfrac73$\n의 기울기는 $-3$이므로\n$m=-3$이다.\n이제 직선 $y=-3x+n$이 점 $(1,-2)$를 지난다는 조건을 사용한다.\n점을 지난다는 것은 그 점의 $x$, $y$좌표를 직선의 식에 대입했을 때 등식이 성립한다는 뜻이다.\n$x=1$, $y=-2$를 대입하면\n$-2=-3\\cdot1+n$\n$-2=-3+n$이다.\n양변에 $3$을 더하면\n$n=-2+3=1$이다.\n따라서\n$m+n=-3+1=-2$이다.\n\n그러므로 정답은 ①이다.",
+        "observation": "Direct slope-to-point substitution is shown with each equality on its own line; preserve the actual substitution steps."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "sha256:387029a67b1f37b92625cf1284f67b4e1a5e8c33384e7e6de418b982935dd307",
+        "solutionExcerpt": "먼저 직선 $y=ax+b$를 평행이동한 뒤의 식을 구한다.\n$x$축의 방향으로 $2$만큼 이동한다는 것은 오른쪽으로 $2$만큼 이동하는 것이고,\n$y$축의 방향으로 $-1$만큼 이동한다는 것은 아래로 $1$만큼 이동하는 것이다.\n오른쪽으로 $2$만큼 이동한 식은 원래 식의 $x$ 대신 $x-2$를 넣고,\n아래로 $1$만큼 이동한 식은 $y$ 대신 $y+1$을 넣는다.\n따라서 평행이동한 직선은\n$y+1=a(x-2)+b$이다.\n오른쪽을 전개하면\n$y+1=ax-2a+b$\n양변에서 $1$을 빼면\n$y=ax+b-2a-1$이다.\n이 이동한 직선이\n$x+2y+3=0$\n과 수직으로 만난다.\n직선 $x+2y+3=0$을 $y$에 대하여 정리하면\n$2y=-x-3$\n$y=-\\dfrac12x-\\dfrac32$이다.\n따라서 이 직선의 기울기는\n$-\\dfrac12$이다.\n수직인 두 직선의 기울기의 곱은 $-1$이므로\n$a\\left(-\\dfrac12\\right)=-1$\n$-\\dfrac a2=-1$\n$a=2$이다.\n따라서 평행이동한 직선은\n$y=2x+b-2\\cdot2-1$\n$y=2x+b-5$이다.\n이제 두 직선이 $x$축 위의 한 점에서 만난다는 조건을 사용한다.\n$x$축 위의 점은 $y$좌표가 $0$이므로\n교점에서는 $y=0$이다.\n직선 $x+2y+3=0$에 $y=0$을 대",
+        "observation": "Translation, perpendicular slope, and intersection condition are separated; equations carry the derivation."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다.\n$x^2+y^2+6x-2y+1=0$\n상수항 $1$을 오른쪽으로 옮기면\n$x^2+6x+y^2-2y=-1$이다.\n$x^2+6x$에는 $9$를,\n$y^2-2y$에는 $1$을 더해 완전제곱식을 만든다.\n$(x^2+6x+9)+(y^2-2y+1)=-1+9+1$\n$(x+3)^2+(y-1)^2=9$이다.\n즉\n$(x-(-3))^2+(y-1)^2=3^2$이므로\n처음 원의 중심은 $(-3,1)$이고\n반지름은 $3$이다.\n\n이제 중심만 이동 순서대로 따라간다.\n먼저 $x$축의 방향으로 $-2$만큼,\n$y$축의 방향으로 $1$만큼 평행이동한다.\n$x$좌표는 $-3-2=-5$,\n$y$좌표는 $1+1=2$이므로\n$(-3,1)\\rightarrow(-5,2)$이다.\n그다음 원점에 대하여 대칭이동한다.\n원점 대칭에서는 두 좌표의 부호가 모두 바뀌므로\n$(x,y)\\rightarrow(-x,-y)$이다.\n따라서\n$(-5,2)\\rightarrow(5,-2)$이다.\n평행이동이나 대칭이동을 해도 원의 크기는 변하지 않으므로\n반지름은 계속 $3$이다.\n최종 원의 중심은 $(5,-2)$이고\n반지름은 $3$이므로",
+        "observation": "Center shifts are separated for translation and origin reflection; radius invariance is carried through to the final equation."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 4,
+        "solutionSha256": "sha256:acdb76bc6092e60c215baaf235516b6fd1a7777ffc9d20cb1f134a95a7043cdf",
+        "solutionExcerpt": "기울기가 $1$인 직선을\n$y=x+b$\n라고 하자.\n이를 일반형으로 쓰면\n$x-y+b=0$이다.\n원 $x^2+y^2=5$의 중심은 $O(0,0)$이고 반지름은 $\\sqrt5$이다.\n직선이 원에 접하려면 원의 중심에서 직선까지의 거리가 반지름과 같아야 한다.\n원점에서 직선 $x-y+b=0$까지의 거리는\n$\\dfrac{|b|}{\\sqrt{1^2+(-1)^2}}$\n$=\\dfrac{|b|}{\\sqrt2}$이다.\n따라서\n$\\dfrac{|b|}{\\sqrt2}=\\sqrt5$이다.\n양변에 $\\sqrt2$를 곱하면\n$|b|=\\sqrt{10}$이므로\n$b=\\sqrt{10}$ 또는 $b=-\\sqrt{10}$이다.\n따라서 두 접선은\n$y=x+\\sqrt{10}$,\n$y=x-\\sqrt{10}$이다.\n이 두 직선이 $y$축과 만날 때에는 $x=0$이므로\n$A=(0,\\sqrt{10})$,\n$B=(0,-\\sqrt{10})$이다.\n두 점은 같은 $y$축 위에 있으므로\n$\\overline{AB}=\\sqrt{10}-(-\\sqrt{10})$\n$=2\\sqrt{10}$이다.\n\n따라서 정답은 ⑤이다.",
+        "observation": "Standard form and the distance criterion are explicit; both signs are resolved before conclusion."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 10,
+        "solutionSha256": "sha256:600e0a71c0142fd37da184b35f4650cacc44597b9b48a7e7a350131e83d1551c",
+        "solutionExcerpt": "주어진 조건\n$A\\cap B=B$\n는 $B$의 모든 원소가 $A$에도 들어 있다는 뜻이다.\n따라서\n$B\\subseteq A$이다.\n이 포함관계를 이용해 각 보기를 확인한다.\n\nㄱ. $B\\subseteq A$\n주어진 조건에서 바로 얻으므로 항상 참이다.\n\nㄴ. $B^c\\subset A^c$\n여집합을 취하면 포함관계의 방향은 반대로 바뀐다.\n$B\\subseteq A$이면\n$A^c\\subseteq B^c$이다.\n따라서 ㄴ은 항상 참이 아니다.\n\nㄷ. $A\\cup B=A$\n$B$가 $A$ 안에 포함되어 있으므로 합집합을 해도 $A$ 그대로이다.\n따라서 참이다.\nㄹ. $A\\cap B^c\\ne\\varnothing$\n$A=B$인 경우도 조건 $A\\cap B=B$를 만족한다.\n이때\n$A\\cap B^c=A\\cap A^c=\\varnothing$이므로\nㄹ은 항상 참이 아니다.\n따라서 항상 옳은 것은 ㄱ, ㄷ이다.\n\n따라서 정답은 ③이다.",
+        "observation": "ㄱ/ㄴ/ㄷ claims have separate blocks and counterexample logic; do not compress enumerated claims."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+        "solutionExcerpt": "집합 $A$의 원소는 $1$, $2$, $\\{1\\}$이다. 원소 관계 $\\in$와 부분집합 관계 $\\subset$를 구분하여 각 보기를 판단한다.\n\n① $1$은 $A$의 원소이므로 $1\\in A$는 참이다.\n\n② $1$은 집합이 아니라 수이므로 $1\\subset A$라고 나타낼 수 없다. 거짓이다.\n\n③ $\\{1\\}$은 $A$의 원소이므로 $\\{1\\}\\in A$는 참이다.\n\n④ $\\{1\\}$의 원소 $1$이 $A$에 속하므로 $\\{1\\}\\subset A$는 참이다.\n\n⑤ $\\{\\{1\\}\\}$의 원소 $\\{1\\}$이 $A$에 속하므로 $\\{\\{1\\}\\}\\subset A$는 참이다.\n\n따라서 옳지 않은 것은 ②이다.",
+        "observation": "Element and subset relations are distinguished item by item in plain student language."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "sha256:d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+        "solutionExcerpt": "드모르간의 법칙으로\n$A^C\\cup B^C=(A\\cap B)^C$이다.\n따라서\n$n(A^C\\cup B^C)=30-n(A\\cap B)$이다.\n포함배제에 의해\n$n(A\\cup B)=20+15-n(A\\cap B)$이다.\n$A\\cup B\\subseteq U$이므로\n$20+15-n(A\\cap B)\\le30$,\n$n(A\\cap B)\\ge5$이다.\n따라서 $n(A^C\\cup B^C)$는 $30-5=25$보다 클 수 없다.\n이 값은 $A\\cap B$에 5개, $A-B$에 15개, $B-A$에 10개를 두고 바깥에 원소를 두지 않으면 가능하다. 이때 $n(A)=5+15=20$, $n(B)=5+10=15$, $n(U)=5+15+10=30$이다.\n\n그러므로 최댓값은 25이다.",
+        "observation": "The lower bound from universe size is paired with a realizable Venn allocation demonstrating attainability."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:093fba9886d141f2136ce98a7854553020ebdbf4320d9683427d51dd4032f373",
+        "solutionExcerpt": "각 원소가 세 원소짜리 부분집합에 몇 번 들어가는지 센다.\n원소 $1$을 고정하면 나머지 다섯 원소 중 두 원소를 고른다. 첫 번째 원소를 5가지로, 다음 원소를 4가지로 고르면 두 원소의 순서만 바뀐 선택을 두 번 세므로\n$\\dfrac{5\\times4}{2}=10$가지이다.\n같은 방식으로 $2,3,4,5,6$도 각각 10개의 부분집합에 들어간다.\n모든 부분집합의 모든 원소의 합은\n$(1+2+3+4+5+6)\\times10$\n$=21\\times10$\n$=210$이다.\n정답은 ①이다.",
+        "observation": "Combinatorial overcount correction is explicit and carried through to the total."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+        "observation": "Read the fixed false-PASS families: evaluated-runtime LaTeX escape loss, non-separated enumerated claims, and unresolved metadata nulls without lookup evidence."
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE"
+  }
+}

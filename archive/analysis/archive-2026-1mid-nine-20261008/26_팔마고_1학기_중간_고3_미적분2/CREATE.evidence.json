@@ -1,0 +1,1871 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "CREATE",
+  "status": "CREATE_COMPLETE_PENDING_R1",
+  "runId": "archive-2026-1mid-nine-20261008",
+  "examUid": "26_팔마고_1학기_중간_고3_미적분2",
+  "reviewerIdentity": {
+    "role": "archive_create",
+    "reviewerId": "/root/create_07"
+  },
+  "artifactSha": "2b375676e675fea67b31b277ac2ff00ab972b716",
+  "sourceMode": "ORIGINAL_PDF_PRIMARY",
+  "sourceDocument": {
+    "pdfPath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+    "pdfSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+    "sourcePageCount": 8,
+    "visualInspection": {
+      "allPagesOpened": true,
+      "renderDpi": 135,
+      "figureCropRenderDpi": 270,
+      "converter": "Poppler pdftoppm",
+      "qidDenominator": 22,
+      "selectedResponseCount": 20,
+      "constructedResponseCount": 2,
+      "figureQids": [
+        7,
+        10,
+        16,
+        19,
+        20,
+        21
+      ]
+    }
+  },
+  "sourceParity": {
+    "status": "PASS",
+    "qidDenominator": 22,
+    "sourceTextExactParityCount": 22,
+    "choicesExactParityCount": 22,
+    "sourceFullPdfSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+    "fullPageVisualRead": {
+      "allEightPagesOpened": true,
+      "figureQids": [
+        7,
+        10,
+        16,
+        19,
+        20,
+        21
+      ],
+      "sourceFigurePixelsPreserved": true,
+      "studentHandwritingHintsFound": false
+    }
+  },
+  "questionLayoutStatus": "PASS",
+  "sourceTextExactParityStatus": "PASS",
+  "choicesExactParityStatus": "PASS",
+  "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "questionLayoutLedgerRef": "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/CREATE.question-layout-ledger.json",
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h2/2mid/25_금당고_2학기_중간_고2_미적분.js",
+        "sha256": "sha256:12d402a742b0573eb13b38cd209e5bcbceaffd6b421fa31d6e9fb1e6acb89e86",
+        "gitBlobSha": "d8738128ae80e60a7eca4802cd461f85adefc84e"
+      },
+      {
+        "path": "archive/exams/original/high/h2/2mid/23_금당고_2학기_중간_고2_미적분.js",
+        "sha256": "sha256:56d6cee5015d90d21d81ee07f0b32dc1c389f2134c2989343f47f1b68f8cd9b1",
+        "gitBlobSha": "5fdd0623dff613ef59f144a523b5264b2c6701d1"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h2/2mid/25_금당고_2학기_중간_고2_미적분.js",
+        "qid": 12,
+        "solutionSha256": "sha256:6db4bb24cd1f288ae7067356fbb554f1b39893dd4486324711c60e01377fba4e",
+        "solutionExcerpt": "[키포인트] $1-\\cos u$의 기본 극한을 이용하여 $f(n)$을 구한 뒤 제곱합을 계산한다.\n조건 정리: $u=nx$로 놓으",
+        "observation": "실제 해설에서 u=nx 치환으로 f(n)=n^2/2를 먼저 분리하고 제곱합 공식을 적용해 극한 계산을 단계별로 드러낸다."
+      },
+      {
+        "path": "archive/exams/original/high/h2/2mid/25_금당고_2학기_중간_고2_미적분.js",
+        "qid": 18,
+        "solutionSha256": "sha256:642d747af141db29fff776082c3463a9d92a7e0df7a2d440aaaebbed4d4da4fe",
+        "solutionExcerpt": "[키포인트] 점 $P$의 좌표와 접선의 방정식으로 $QA$를 구하고 두 넓이를 $\\theta$로 나타낸다.\n조건 정리: 반지름이 ",
+        "observation": "실제 원본 그림의 O,H,P,Q,R와 부채꼴/삼각형 정의를 읽고, 좌표·접선식·넓이식을 연결한 뒤 기본극한 인수로 나눠 결론을 낸다."
+      },
+      {
+        "path": "archive/exams/original/high/h2/2mid/23_금당고_2학기_중간_고2_미적분.js",
+        "qid": 18,
+        "solutionSha256": "sha256:e81f719bf2d2127fba577cec4d7b95b272c1f9d79162a2a1e76287c9a5f512de",
+        "solutionExcerpt": "[키포인트] $x\\to0$에서 $\\sin\\dfrac x4$는 $\\dfrac x4$와 같은 정도로 작아지므로 합성할 때마다 $\\df",
+        "observation": "합성함수의 반복 극한에서 첫 단계와 귀납적으로 반복되는 비율을 분리하고, 탄젠트 기본극한을 연결해 무한등비급수로 닫는다."
+      },
+      {
+        "path": "archive/exams/original/high/h2/2mid/23_금당고_2학기_중간_고2_미적분.js",
+        "qid": 19,
+        "solutionSha256": "sha256:7203d85dd1a1dc92b9f4a10f8aef6433dcdc661cbe3a2710e5ca4bdb0bb1f4aa",
+        "solutionExcerpt": "[키포인트] $x\\to1$에서 $f'(x-1)$이 발산하므로 곱이 유한하려면 $f(x^2)$이 $0$에 수렴해야 한다.\n조건 정리",
+        "observation": "발산하는 도함수 인자와 유한한 곱의 조건으로 상수를 정한 뒤, t 치환·로그 근사·계수 비교 순서로 해설한다."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "qualityCompareCount": "22/22",
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "SOURCE_ONLY_CREATE",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "actualSampleReadAt": "2026-10-08T10:37:45.925Z",
+    "actualSampleReadNotes": "Read exact current bytes of both current 2015-course calculus Golden JS samples, inspected solutions q12/q18 and q18/q19, opened 25_금당고 q18 image, and read the bound 2026-10-01 복성고 negative README before any target solution authoring.",
+    "registryDisposition": "HISTORICAL_PREFLIGHT_PASS_UNREGISTERED_SAMPLES_NOT_VALID_AS_V2_REGISTRY_BACKED_GATE",
+    "registryStatus": "HISTORICAL_ONLY_UNREGISTERED_SAMPLE_SET",
+    "registryBackedStatus": "SEE_GOLDEN_CALIBRATION_V2_REGISTRY_SECTION"
+  },
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "reviewedAt": "2026-10-08T10:55:37.289Z",
+    "registryPath": "archive/data/codex-quality-calibration-registry-v2.json",
+    "registrySha256": "f42e82d8c6c6f83d294d7d825eb0cc2c7cc939f1e62db3ed6faaea0cd9f0733d",
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "observation": "Read the bound false-PASS regression: verify solution visuals from actual primitive geometry, keep enumerated solution decisions physically separated, do not treat N/N self-report as evidence, and inspect runtime TeX escapes."
+    },
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "items": [
+          {
+            "qid": 18,
+            "solutionSha256": "fefba6a6d76b654b79ec2859fcf1de86b57187979008f366c97947b959e8e585",
+            "observation": "실제 학생용 SVG에서 3×3 격자와 필수 아래쪽 점, 양쪽 대각선 끝점의 소유 관계를 열어 확인했다. 풀이 본문은 집합 포함관계로 필수 원소를 고정한 뒤 제한을 만족하는 선택 수 48을 단계별로 센다.",
+            "visualSha256": "a25115d177bf803cd978ab37b98f123dc6a5b0c4655a51367c650992365b4be7"
+          },
+          {
+            "qid": 21,
+            "solutionSha256": "e2e27419b63fccefdb50858eeaccafe16a98a37f91669bf52ee73f1c05dfd7ec",
+            "observation": "실제 좌표 도형 SVG를 열어 꼭짓점, 중점, 무게중심 표기와 본문 좌표가 맞음을 확인했다. 풀이 본문은 무게중심 x좌표, 제곱거리 등식, 직선-점 거리 순서로 서술형 계산을 재현한다.",
+            "visualSha256": "53ac6a7b8498b402f91f32a10cae541c0e2865b18b77c3afda6b54c78b65435a"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "items": [
+          {
+            "qid": 18,
+            "solutionSha256": "dbb168438633ba88adee92599fbd9150a649f8cff8c64dd73f1c776d5a5fc86f",
+            "observation": "실제 반사 경로 SVG에서 직사각형 경계, 반사점, 수직이등분선 구조를 열어 확인했다. 풀이가 네 경로 길이를 반사점 거리로 바꾸고 두 쌍의 같은 거리 조건으로 Q를 찾은 뒤 경계 위치를 확인한다.",
+            "visualSha256": "246de1cb1700c3cc6a4728d1c02411bef19c7b6b3f9f64d2c900d08e501d9523"
+          },
+          {
+            "qid": 21,
+            "solutionSha256": "3b1db3c72a8f0fe52b66865319ba4b7a57c7374a8e2b7ec36cd3bbed18364ac9",
+            "observation": "실제 수직선 위 내분·외분 그림을 열어 내부/외부 두 위치를 구분한 풀이와 맞음을 확인했다. 풀이 본문은 비율에 따른 두 경우와 각 좌표 계산을 따로 적어 누락 없이 닫는다.",
+            "visualSha256": "21f6cc9ec91c9f756ac038625d4d6e250d6de75af4b294f7e6103997c92ab556"
+          }
+        ]
+      }
+    ]
+  },
+  "metaSelection": {
+    "curriculum": "2015",
+    "sourceCourseLabel": "미적분",
+    "semanticOwner": "CREATE worker",
+    "automaticSemanticCorrection": false,
+    "projectionDebtQids": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      22
+    ],
+    "directActiveProjectionQids": [
+      4,
+      11,
+      12,
+      21
+    ],
+    "curriculumResolutionNote": "Source footer labels the exam 미적분; per-item standard unit follows the source method and current 2015 master. Unmapped function/angle-limit loci remain explicit PT/TPL projection debt rather than being forced into derivative keys."
+  },
+  "itemHoldCount": 0,
+  "rows": [
+    {
+      "qid": 1,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+          "sourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+          "sourcePage": 1,
+          "sourcePageCount": 8,
+          "sourceIdentity": "26_팔마고_1학기_중간_고3_미적분2:q1",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "directPageOpened": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Source atoms and choices were transcribed exactly; AUTO-FIRST leaves natural wrapping."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducible": true,
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Korean explanation introduces the decisive step; each algebraic transformation, condition use, and conclusion is on its own readable line."
+        },
+        "meta": {
+          "status": "PROJECTION_DEBT_EXPLICIT",
+          "standardCourse": "미적분",
+          "standardUnitKey": "H15-CALC-01",
+          "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "UNMATERIALIZED",
+          "reason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred."
+        },
+        "visualSvg": {
+          "status": "NO_SOURCE_FIGURE",
+          "problemImage": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The source item has no problem figure requiring an asset; no solution SVG was created."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "8750552124856ad3b23423bf99710cd611f50a34733b17709f7f09f54e674c65",
+      "difficultyReason": "Bucket 1; judged from this source item’s required conceptual choice, algebraic steps, branching, and constraint handling, not its item number or point value.",
+      "questionLayout": {
+        "beforeDisposition": "SOURCE_AUTO_FLOW",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "NOT_REQUIRED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "Source atom stream and choices remain exact; screen disposition awaits R3 render."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred.",
+      "rpmProjectionGap": {
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-01",
+        "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+        "selectedPrimaryMethod": "수열의 극한",
+        "projectionStatus": "NO_EXACT_ACTIVE_PT_TPL",
+        "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json"
+      }
+    },
+    {
+      "qid": 2,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+          "sourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+          "sourcePage": 1,
+          "sourcePageCount": 8,
+          "sourceIdentity": "26_팔마고_1학기_중간_고3_미적분2:q2",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "directPageOpened": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_POLISH",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Only semantic-boundary line breaks were added; source text and choice atoms stay exact."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducible": true,
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Korean explanation introduces the decisive step; each algebraic transformation, condition use, and conclusion is on its own readable line."
+        },
+        "meta": {
+          "status": "PROJECTION_DEBT_EXPLICIT",
+          "standardCourse": "미적분",
+          "standardUnitKey": "H15-CALC-02",
+          "subUnitKey": "H15-CALC-02-SERIES",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "UNMATERIALIZED",
+          "reason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred."
+        },
+        "visualSvg": {
+          "status": "NO_SOURCE_FIGURE",
+          "problemImage": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The source item has no problem figure requiring an asset; no solution SVG was created."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "9a84c309b72f2c9a796bb25293490bb8dc99bdae6fcfbb206ace80c4e0f7cfee",
+      "difficultyReason": "Bucket 1; judged from this source item’s required conceptual choice, algebraic steps, branching, and constraint handling, not its item number or point value.",
+      "questionLayout": {
+        "beforeDisposition": "SOURCE_LINE_FLOW",
+        "finalDisposition": "LAYOUT_POLISH",
+        "issueCodes": [
+          "SEMANTIC_BOUNDARY_LINEBREAK"
+        ],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "NOT_REQUIRED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "Line breaks clarify only meaning boundaries and leave all source atoms unchanged."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred.",
+      "rpmProjectionGap": {
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-02",
+        "subUnitKey": "H15-CALC-02-SERIES",
+        "selectedPrimaryMethod": "급수",
+        "projectionStatus": "NO_EXACT_ACTIVE_PT_TPL",
+        "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json"
+      }
+    },
+    {
+      "qid": 3,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+          "sourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+          "sourcePage": 1,
+          "sourcePageCount": 8,
+          "sourceIdentity": "26_팔마고_1학기_중간_고3_미적분2:q3",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "directPageOpened": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Source atoms and choices were transcribed exactly; AUTO-FIRST leaves natural wrapping."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducible": true,
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Korean explanation introduces the decisive step; each algebraic transformation, condition use, and conclusion is on its own readable line."
+        },
+        "meta": {
+          "status": "PROJECTION_DEBT_EXPLICIT",
+          "standardCourse": "미적분",
+          "standardUnitKey": "H15-CALC-03",
+          "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "UNMATERIALIZED",
+          "reason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred."
+        },
+        "visualSvg": {
+          "status": "NO_SOURCE_FIGURE",
+          "problemImage": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The source item has no problem figure requiring an asset; no solution SVG was created."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "992943a88292e422d7118ec68079e186b4801fb4efa06fa197e7d5822203104c",
+      "difficultyReason": "Bucket 2; judged from this source item’s required conceptual choice, algebraic steps, branching, and constraint handling, not its item number or point value.",
+      "questionLayout": {
+        "beforeDisposition": "SOURCE_AUTO_FLOW",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "NOT_REQUIRED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "Source atom stream and choices remain exact; screen disposition awaits R3 render."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred.",
+      "rpmProjectionGap": {
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-03",
+        "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
+        "selectedPrimaryMethod": "함수의 극한",
+        "projectionStatus": "NO_EXACT_ACTIVE_PT_TPL",
+        "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json"
+      }
+    },
+    {
+      "qid": 4,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+          "sourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+          "sourcePage": 1,
+          "sourcePageCount": 8,
+          "sourceIdentity": "26_팔마고_1학기_중간_고3_미적분2:q4",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "directPageOpened": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Source atoms and choices were transcribed exactly; AUTO-FIRST leaves natural wrapping."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducible": true,
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Korean explanation introduces the decisive step; each algebraic transformation, condition use, and conclusion is on its own readable line."
+        },
+        "meta": {
+          "status": "SEMANTIC_SELECTION_RECORDED",
+          "standardCourse": "미적분",
+          "standardUnitKey": "H15-CALC-05",
+          "subUnitKey": "H15-CALC-05-OTHER_DIFFERENTIATION",
+          "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+          "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+          "projectionStatus": "DIRECT_ACTIVE",
+          "reason": "Selected exact currently active calculus rule projection from the solution’s decisive method."
+        },
+        "visualSvg": {
+          "status": "NO_SOURCE_FIGURE",
+          "problemImage": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The source item has no problem figure requiring an asset; no solution SVG was created."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "270bbc82574b1737cf2772125abfbc73b48703b0f82472b811fe7e933c383194",
+      "difficultyReason": "Bucket 2; judged from this source item’s required conceptual choice, algebraic steps, branching, and constraint handling, not its item number or point value.",
+      "questionLayout": {
+        "beforeDisposition": "SOURCE_AUTO_FLOW",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "NOT_REQUIRED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "Source atom stream and choices remain exact; screen disposition awaits R3 render."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+          "sourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+          "sourcePage": 1,
+          "sourcePageCount": 8,
+          "sourceIdentity": "26_팔마고_1학기_중간_고3_미적분2:q5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "directPageOpened": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Source atoms and choices were transcribed exactly; AUTO-FIRST leaves natural wrapping."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducible": true,
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Korean explanation introduces the decisive step; each algebraic transformation, condition use, and conclusion is on its own readable line."
+        },
+        "meta": {
+          "status": "PROJECTION_DEBT_EXPLICIT",
+          "standardCourse": "미적분",
+          "standardUnitKey": "H15-CALC-01",
+          "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "UNMATERIALIZED",
+          "reason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred."
+        },
+        "visualSvg": {
+          "status": "NO_SOURCE_FIGURE",
+          "problemImage": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The source item has no problem figure requiring an asset; no solution SVG was created."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "5029a0ce70ef6114b8b469517d21dd605f2a16f027eccc888e38bcb7fc8e3f0c",
+      "difficultyReason": "Bucket 2; judged from this source item’s required conceptual choice, algebraic steps, branching, and constraint handling, not its item number or point value.",
+      "questionLayout": {
+        "beforeDisposition": "SOURCE_AUTO_FLOW",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "NOT_REQUIRED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "Source atom stream and choices remain exact; screen disposition awaits R3 render."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred.",
+      "rpmProjectionGap": {
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-01",
+        "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+        "selectedPrimaryMethod": "수열의 극한",
+        "projectionStatus": "NO_EXACT_ACTIVE_PT_TPL",
+        "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json"
+      }
+    },
+    {
+      "qid": 6,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+          "sourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+          "sourcePage": 2,
+          "sourcePageCount": 8,
+          "sourceIdentity": "26_팔마고_1학기_중간_고3_미적분2:q6",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "directPageOpened": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Source atoms and choices were transcribed exactly; AUTO-FIRST leaves natural wrapping."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducible": true,
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Korean explanation introduces the decisive step; each algebraic transformation, condition use, and conclusion is on its own readable line."
+        },
+        "meta": {
+          "status": "PROJECTION_DEBT_EXPLICIT",
+          "standardCourse": "미적분",
+          "standardUnitKey": "H15-CALC-02",
+          "subUnitKey": "H15-CALC-02-SERIES",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "UNMATERIALIZED",
+          "reason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred."
+        },
+        "visualSvg": {
+          "status": "NO_SOURCE_FIGURE",
+          "problemImage": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The source item has no problem figure requiring an asset; no solution SVG was created."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "1861a019068762e35ff9c4e33b2feaf1d14e3a2d44f381ff66e7b3ed8e30bb57",
+      "difficultyReason": "Bucket 3; judged from this source item’s required conceptual choice, algebraic steps, branching, and constraint handling, not its item number or point value.",
+      "questionLayout": {
+        "beforeDisposition": "SOURCE_AUTO_FLOW",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "NOT_REQUIRED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "Source atom stream and choices remain exact; screen disposition awaits R3 render."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred.",
+      "rpmProjectionGap": {
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-02",
+        "subUnitKey": "H15-CALC-02-SERIES",
+        "selectedPrimaryMethod": "수열의 극한",
+        "projectionStatus": "NO_EXACT_ACTIVE_PT_TPL",
+        "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json"
+      }
+    },
+    {
+      "qid": 7,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+          "sourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+          "sourcePage": 2,
+          "sourcePageCount": 8,
+          "sourceIdentity": "26_팔마고_1학기_중간_고3_미적분2:q7",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "directPageOpened": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Source atoms and choices were transcribed exactly; AUTO-FIRST leaves natural wrapping."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducible": true,
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Korean explanation introduces the decisive step; each algebraic transformation, condition use, and conclusion is on its own readable line."
+        },
+        "meta": {
+          "status": "PROJECTION_DEBT_EXPLICIT",
+          "standardCourse": "미적분",
+          "standardUnitKey": "H15-CALC-04",
+          "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "UNMATERIALIZED",
+          "reason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred."
+        },
+        "visualSvg": {
+          "status": "SOURCE_PIXEL_PROBLEM_IMAGE",
+          "problemImage": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q7.png",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "Original scan pixels are cropped into the assigned asset tree; no source handwriting is present."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "5ceeaf45f1f09bffdd2d94bc860250c05380ab8c50da5895d51acc7f48eef24e",
+      "difficultyReason": "Bucket 3; judged from this source item’s required conceptual choice, algebraic steps, branching, and constraint handling, not its item number or point value.",
+      "questionLayout": {
+        "beforeDisposition": "SOURCE_AUTO_FLOW",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_CROP_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "Source atom stream and choices remain exact; screen disposition awaits R3 render."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred.",
+      "rpmProjectionGap": {
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-04",
+        "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
+        "selectedPrimaryMethod": "삼각함수의 미분",
+        "projectionStatus": "NO_EXACT_ACTIVE_PT_TPL",
+        "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json"
+      },
+      "sourceAsset": {
+        "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q7.png",
+        "sha256": "d545e443dad7e5277473e7e6e80e14203caf256b5dd07f5b16b318fc2d1a2b80",
+        "sourcePdfPage": 2,
+        "renderDpi": 270,
+        "cropCoordinates135Dpi": null,
+        "openedAndCompared": true
+      }
+    },
+    {
+      "qid": 8,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+          "sourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+          "sourcePage": 2,
+          "sourcePageCount": 8,
+          "sourceIdentity": "26_팔마고_1학기_중간_고3_미적분2:q8",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "directPageOpened": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Source atoms and choices were transcribed exactly; AUTO-FIRST leaves natural wrapping."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducible": true,
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Korean explanation introduces the decisive step; each algebraic transformation, condition use, and conclusion is on its own readable line."
+        },
+        "meta": {
+          "status": "PROJECTION_DEBT_EXPLICIT",
+          "standardCourse": "미적분",
+          "standardUnitKey": "H15-CALC-01",
+          "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "UNMATERIALIZED",
+          "reason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred."
+        },
+        "visualSvg": {
+          "status": "NO_SOURCE_FIGURE",
+          "problemImage": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The source item has no problem figure requiring an asset; no solution SVG was created."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "1daff91232cf069f7743524dcaf809b4ebba2eb185f81f123fb568772f317535",
+      "difficultyReason": "Bucket 3; judged from this source item’s required conceptual choice, algebraic steps, branching, and constraint handling, not its item number or point value.",
+      "questionLayout": {
+        "beforeDisposition": "SOURCE_AUTO_FLOW",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "NOT_REQUIRED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "Source atom stream and choices remain exact; screen disposition awaits R3 render."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred.",
+      "rpmProjectionGap": {
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-01",
+        "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+        "selectedPrimaryMethod": "수열의 극한",
+        "projectionStatus": "NO_EXACT_ACTIVE_PT_TPL",
+        "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json"
+      }
+    },
+    {
+      "qid": 9,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+          "sourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+          "sourcePage": 2,
+          "sourcePageCount": 8,
+          "sourceIdentity": "26_팔마고_1학기_중간_고3_미적분2:q9",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "directPageOpened": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Source atoms and choices were transcribed exactly; AUTO-FIRST leaves natural wrapping."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducible": true,
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Korean explanation introduces the decisive step; each algebraic transformation, condition use, and conclusion is on its own readable line."
+        },
+        "meta": {
+          "status": "PROJECTION_DEBT_EXPLICIT",
+          "standardCourse": "미적분",
+          "standardUnitKey": "H15-CALC-02",
+          "subUnitKey": "H15-CALC-02-SERIES",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "UNMATERIALIZED",
+          "reason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred."
+        },
+        "visualSvg": {
+          "status": "NO_SOURCE_FIGURE",
+          "problemImage": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The source item has no problem figure requiring an asset; no solution SVG was created."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "98d608671f56e0f82fd9faa45ec2fb6a86db57b0f47a58ba7d5f5f215a0f1268",
+      "difficultyReason": "Bucket 3; judged from this source item’s required conceptual choice, algebraic steps, branching, and constraint handling, not its item number or point value.",
+      "questionLayout": {
+        "beforeDisposition": "SOURCE_AUTO_FLOW",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "NOT_REQUIRED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "Source atom stream and choices remain exact; screen disposition awaits R3 render."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred.",
+      "rpmProjectionGap": {
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-02",
+        "subUnitKey": "H15-CALC-02-SERIES",
+        "selectedPrimaryMethod": "급수",
+        "projectionStatus": "NO_EXACT_ACTIVE_PT_TPL",
+        "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json"
+      }
+    },
+    {
+      "qid": 10,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+          "sourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+          "sourcePage": 3,
+          "sourcePageCount": 8,
+          "sourceIdentity": "26_팔마고_1학기_중간_고3_미적분2:q10",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "directPageOpened": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Source atoms and choices were transcribed exactly; AUTO-FIRST leaves natural wrapping."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducible": true,
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Korean explanation introduces the decisive step; each algebraic transformation, condition use, and conclusion is on its own readable line."
+        },
+        "meta": {
+          "status": "PROJECTION_DEBT_EXPLICIT",
+          "standardCourse": "미적분",
+          "standardUnitKey": "H15-CALC-01",
+          "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "UNMATERIALIZED",
+          "reason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred."
+        },
+        "visualSvg": {
+          "status": "SOURCE_PIXEL_PROBLEM_IMAGE",
+          "problemImage": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q10.png",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "Original scan pixels are cropped into the assigned asset tree; no source handwriting is present."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "34980b79bb26892fe40102395bf45f94edd2a36231d1012e31d7d734786afc3d",
+      "difficultyReason": "Bucket 3; judged from this source item’s required conceptual choice, algebraic steps, branching, and constraint handling, not its item number or point value.",
+      "questionLayout": {
+        "beforeDisposition": "SOURCE_AUTO_FLOW",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_CROP_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "Source atom stream and choices remain exact; screen disposition awaits R3 render."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred.",
+      "rpmProjectionGap": {
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-01",
+        "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+        "selectedPrimaryMethod": "수열의 극한",
+        "projectionStatus": "NO_EXACT_ACTIVE_PT_TPL",
+        "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json"
+      },
+      "sourceAsset": {
+        "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q10.png",
+        "sha256": "fea439fac925f22d541eb9713671c05d136489f7ccd177641adc7f62b2e6f257",
+        "sourcePdfPage": 3,
+        "renderDpi": 270,
+        "cropCoordinates135Dpi": null,
+        "openedAndCompared": true
+      }
+    },
+    {
+      "qid": 11,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+          "sourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+          "sourcePage": 3,
+          "sourcePageCount": 8,
+          "sourceIdentity": "26_팔마고_1학기_중간_고3_미적분2:q11",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "directPageOpened": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Source atoms and choices were transcribed exactly; AUTO-FIRST leaves natural wrapping."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducible": true,
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Korean explanation introduces the decisive step; each algebraic transformation, condition use, and conclusion is on its own readable line."
+        },
+        "meta": {
+          "status": "SEMANTIC_SELECTION_RECORDED",
+          "standardCourse": "미적분",
+          "standardUnitKey": "H15-CALC-05",
+          "subUnitKey": "H15-CALC-05-OTHER_DIFFERENTIATION",
+          "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+          "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+          "projectionStatus": "DIRECT_ACTIVE",
+          "reason": "Selected exact currently active calculus rule projection from the solution’s decisive method."
+        },
+        "visualSvg": {
+          "status": "NO_SOURCE_FIGURE",
+          "problemImage": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The source item has no problem figure requiring an asset; no solution SVG was created."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "5b69ea017cfd26c30c302c72c18fd7f279b2a6ab834bb5e205c07c93fd0a88f2",
+      "difficultyReason": "Bucket 2; judged from this source item’s required conceptual choice, algebraic steps, branching, and constraint handling, not its item number or point value.",
+      "questionLayout": {
+        "beforeDisposition": "SOURCE_AUTO_FLOW",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "NOT_REQUIRED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "Source atom stream and choices remain exact; screen disposition awaits R3 render."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+          "sourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+          "sourcePage": 3,
+          "sourcePageCount": 8,
+          "sourceIdentity": "26_팔마고_1학기_중간_고3_미적분2:q12",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "directPageOpened": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Source atoms and choices were transcribed exactly; AUTO-FIRST leaves natural wrapping."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducible": true,
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Korean explanation introduces the decisive step; each algebraic transformation, condition use, and conclusion is on its own readable line."
+        },
+        "meta": {
+          "status": "SEMANTIC_SELECTION_RECORDED",
+          "standardCourse": "미적분",
+          "standardUnitKey": "H15-CALC-03",
+          "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
+          "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+          "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+          "projectionStatus": "DIRECT_ACTIVE",
+          "reason": "Selected exact currently active calculus rule projection from the solution’s decisive method."
+        },
+        "visualSvg": {
+          "status": "NO_SOURCE_FIGURE",
+          "problemImage": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The source item has no problem figure requiring an asset; no solution SVG was created."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "8a4f3d3171cd21ff7f6b0b8d4f691f158030a0a26b9683cd5b06ce35f871540f",
+      "difficultyReason": "Bucket 3; judged from this source item’s required conceptual choice, algebraic steps, branching, and constraint handling, not its item number or point value.",
+      "questionLayout": {
+        "beforeDisposition": "SOURCE_AUTO_FLOW",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "NOT_REQUIRED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "Source atom stream and choices remain exact; screen disposition awaits R3 render."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+          "sourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+          "sourcePage": 3,
+          "sourcePageCount": 8,
+          "sourceIdentity": "26_팔마고_1학기_중간_고3_미적분2:q13",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "directPageOpened": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Source atoms and choices were transcribed exactly; AUTO-FIRST leaves natural wrapping."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducible": true,
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Korean explanation introduces the decisive step; each algebraic transformation, condition use, and conclusion is on its own readable line."
+        },
+        "meta": {
+          "status": "PROJECTION_DEBT_EXPLICIT",
+          "standardCourse": "미적분",
+          "standardUnitKey": "H15-CALC-01",
+          "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "UNMATERIALIZED",
+          "reason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred."
+        },
+        "visualSvg": {
+          "status": "NO_SOURCE_FIGURE",
+          "problemImage": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The source item has no problem figure requiring an asset; no solution SVG was created."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "c423fc0d0fd149ab7173d41b4045eed7b02d5ebd58c018bfee7980c232290615",
+      "difficultyReason": "Bucket 2; judged from this source item’s required conceptual choice, algebraic steps, branching, and constraint handling, not its item number or point value.",
+      "questionLayout": {
+        "beforeDisposition": "SOURCE_AUTO_FLOW",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "NOT_REQUIRED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "Source atom stream and choices remain exact; screen disposition awaits R3 render."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred.",
+      "rpmProjectionGap": {
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-01",
+        "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+        "selectedPrimaryMethod": "수열의 극한",
+        "projectionStatus": "NO_EXACT_ACTIVE_PT_TPL",
+        "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json"
+      }
+    },
+    {
+      "qid": 14,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+          "sourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+          "sourcePage": 4,
+          "sourcePageCount": 8,
+          "sourceIdentity": "26_팔마고_1학기_중간_고3_미적분2:q14",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "directPageOpened": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_POLISH",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Only semantic-boundary line breaks were added; source text and choice atoms stay exact."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducible": true,
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Korean explanation introduces the decisive step; each algebraic transformation, condition use, and conclusion is on its own readable line."
+        },
+        "meta": {
+          "status": "PROJECTION_DEBT_EXPLICIT",
+          "standardCourse": "미적분",
+          "standardUnitKey": "H15-CALC-01",
+          "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "UNMATERIALIZED",
+          "reason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred."
+        },
+        "visualSvg": {
+          "status": "NO_SOURCE_FIGURE",
+          "problemImage": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The source item has no problem figure requiring an asset; no solution SVG was created."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "6b143d71c6d2ee0f336b2386d374e780b2e60424d7060e4420166038697ee269",
+      "difficultyReason": "Bucket 3; judged from this source item’s required conceptual choice, algebraic steps, branching, and constraint handling, not its item number or point value.",
+      "questionLayout": {
+        "beforeDisposition": "SOURCE_LINE_FLOW",
+        "finalDisposition": "LAYOUT_POLISH",
+        "issueCodes": [
+          "SEMANTIC_BOUNDARY_LINEBREAK"
+        ],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "NOT_REQUIRED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "Line breaks clarify only meaning boundaries and leave all source atoms unchanged."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred.",
+      "rpmProjectionGap": {
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-01",
+        "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+        "selectedPrimaryMethod": "수열의 극한",
+        "projectionStatus": "NO_EXACT_ACTIVE_PT_TPL",
+        "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json"
+      }
+    },
+    {
+      "qid": 15,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+          "sourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+          "sourcePage": 4,
+          "sourcePageCount": 8,
+          "sourceIdentity": "26_팔마고_1학기_중간_고3_미적분2:q15",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "directPageOpened": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Source atoms and choices were transcribed exactly; AUTO-FIRST leaves natural wrapping."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducible": true,
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Korean explanation introduces the decisive step; each algebraic transformation, condition use, and conclusion is on its own readable line."
+        },
+        "meta": {
+          "status": "PROJECTION_DEBT_EXPLICIT",
+          "standardCourse": "미적분",
+          "standardUnitKey": "H15-CALC-02",
+          "subUnitKey": "H15-CALC-02-SERIES",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "UNMATERIALIZED",
+          "reason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred."
+        },
+        "visualSvg": {
+          "status": "NO_SOURCE_FIGURE",
+          "problemImage": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The source item has no problem figure requiring an asset; no solution SVG was created."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "fbb77611ceb3e1536d4562b85a1785140382ffe751684303692e2d8018c33647",
+      "difficultyReason": "Bucket 3; judged from this source item’s required conceptual choice, algebraic steps, branching, and constraint handling, not its item number or point value.",
+      "questionLayout": {
+        "beforeDisposition": "SOURCE_AUTO_FLOW",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "NOT_REQUIRED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "Source atom stream and choices remain exact; screen disposition awaits R3 render."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred.",
+      "rpmProjectionGap": {
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-02",
+        "subUnitKey": "H15-CALC-02-SERIES",
+        "selectedPrimaryMethod": "급수",
+        "projectionStatus": "NO_EXACT_ACTIVE_PT_TPL",
+        "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json"
+      }
+    },
+    {
+      "qid": 16,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+          "sourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+          "sourcePage": 5,
+          "sourcePageCount": 8,
+          "sourceIdentity": "26_팔마고_1학기_중간_고3_미적분2:q16",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "directPageOpened": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Source atoms and choices were transcribed exactly; AUTO-FIRST leaves natural wrapping."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducible": true,
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Korean explanation introduces the decisive step; each algebraic transformation, condition use, and conclusion is on its own readable line."
+        },
+        "meta": {
+          "status": "PROJECTION_DEBT_EXPLICIT",
+          "standardCourse": "미적분",
+          "standardUnitKey": "H15-CALC-04",
+          "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "UNMATERIALIZED",
+          "reason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred."
+        },
+        "visualSvg": {
+          "status": "SOURCE_PIXEL_PROBLEM_IMAGE",
+          "problemImage": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q16.png",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "Original scan pixels are cropped into the assigned asset tree; no source handwriting is present."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "05d037016f5bb73bc8e3b0a5016039742a1ed11cf74b13b50c7872c6d042a4de",
+      "difficultyReason": "Bucket 4; judged from this source item’s required conceptual choice, algebraic steps, branching, and constraint handling, not its item number or point value.",
+      "questionLayout": {
+        "beforeDisposition": "SOURCE_AUTO_FLOW",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_CROP_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "Source atom stream and choices remain exact; screen disposition awaits R3 render."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred.",
+      "rpmProjectionGap": {
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-04",
+        "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
+        "selectedPrimaryMethod": "삼각함수의 미분",
+        "projectionStatus": "NO_EXACT_ACTIVE_PT_TPL",
+        "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json"
+      },
+      "sourceAsset": {
+        "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q16.png",
+        "sha256": "de96084eca5e016166e5d444b26833b4d7d4b8ecbfe9cc4ff9acf8f79fb5a4b8",
+        "sourcePdfPage": 5,
+        "renderDpi": 270,
+        "cropCoordinates135Dpi": null,
+        "openedAndCompared": true
+      }
+    },
+    {
+      "qid": 17,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+          "sourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+          "sourcePage": 5,
+          "sourcePageCount": 8,
+          "sourceIdentity": "26_팔마고_1학기_중간_고3_미적분2:q17",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "directPageOpened": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Source atoms and choices were transcribed exactly; AUTO-FIRST leaves natural wrapping."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducible": true,
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Korean explanation introduces the decisive step; each algebraic transformation, condition use, and conclusion is on its own readable line."
+        },
+        "meta": {
+          "status": "PROJECTION_DEBT_EXPLICIT",
+          "standardCourse": "미적분",
+          "standardUnitKey": "H15-CALC-02",
+          "subUnitKey": "H15-CALC-02-SERIES",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "UNMATERIALIZED",
+          "reason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred."
+        },
+        "visualSvg": {
+          "status": "NO_SOURCE_FIGURE",
+          "problemImage": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The source item has no problem figure requiring an asset; no solution SVG was created."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "9cd1ef7055aac6fa2949b12e1275f5fcb13c9acaab21de67a3dc7d89fad712a0",
+      "difficultyReason": "Bucket 4; judged from this source item’s required conceptual choice, algebraic steps, branching, and constraint handling, not its item number or point value.",
+      "questionLayout": {
+        "beforeDisposition": "SOURCE_AUTO_FLOW",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "NOT_REQUIRED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "Source atom stream and choices remain exact; screen disposition awaits R3 render."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred.",
+      "rpmProjectionGap": {
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-02",
+        "subUnitKey": "H15-CALC-02-SERIES",
+        "selectedPrimaryMethod": "수열의 극한",
+        "projectionStatus": "NO_EXACT_ACTIVE_PT_TPL",
+        "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json"
+      }
+    },
+    {
+      "qid": 18,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+          "sourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+          "sourcePage": 6,
+          "sourcePageCount": 8,
+          "sourceIdentity": "26_팔마고_1학기_중간_고3_미적분2:q18",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "directPageOpened": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Source atoms and choices were transcribed exactly; AUTO-FIRST leaves natural wrapping."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducible": true,
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Korean explanation introduces the decisive step; each algebraic transformation, condition use, and conclusion is on its own readable line."
+        },
+        "meta": {
+          "status": "PROJECTION_DEBT_EXPLICIT",
+          "standardCourse": "미적분",
+          "standardUnitKey": "H15-CALC-03",
+          "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "UNMATERIALIZED",
+          "reason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred."
+        },
+        "visualSvg": {
+          "status": "NO_SOURCE_FIGURE",
+          "problemImage": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The source item has no problem figure requiring an asset; no solution SVG was created."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "7d2288f701c95a89f57835eaee638eea30d0aa23e58f7005c3f4229e15366507",
+      "difficultyReason": "Bucket 4; judged from this source item’s required conceptual choice, algebraic steps, branching, and constraint handling, not its item number or point value.",
+      "questionLayout": {
+        "beforeDisposition": "SOURCE_AUTO_FLOW",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "NOT_REQUIRED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "Source atom stream and choices remain exact; screen disposition awaits R3 render."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred.",
+      "rpmProjectionGap": {
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-03",
+        "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
+        "selectedPrimaryMethod": "지수함수와 로그함수의 미분",
+        "projectionStatus": "NO_EXACT_ACTIVE_PT_TPL",
+        "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json"
+      }
+    },
+    {
+      "qid": 19,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+          "sourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+          "sourcePage": 6,
+          "sourcePageCount": 8,
+          "sourceIdentity": "26_팔마고_1학기_중간_고3_미적분2:q19",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "directPageOpened": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Source atoms and choices were transcribed exactly; AUTO-FIRST leaves natural wrapping."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducible": true,
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Korean explanation introduces the decisive step; each algebraic transformation, condition use, and conclusion is on its own readable line."
+        },
+        "meta": {
+          "status": "PROJECTION_DEBT_EXPLICIT",
+          "standardCourse": "미적분",
+          "standardUnitKey": "H15-CALC-01",
+          "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "UNMATERIALIZED",
+          "reason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred."
+        },
+        "visualSvg": {
+          "status": "SOURCE_PIXEL_PROBLEM_IMAGE",
+          "problemImage": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q19.png",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "Original scan pixels are cropped into the assigned asset tree; no source handwriting is present."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "ba4a166a346caaa1df1d61bc0e72f303ff8a51078450042fc4e269c80b4d07bb",
+      "difficultyReason": "Bucket 5; judged from this source item’s required conceptual choice, algebraic steps, branching, and constraint handling, not its item number or point value.",
+      "questionLayout": {
+        "beforeDisposition": "SOURCE_AUTO_FLOW",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_CROP_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "Source atom stream and choices remain exact; screen disposition awaits R3 render."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred.",
+      "rpmProjectionGap": {
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-01",
+        "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+        "selectedPrimaryMethod": "수열의 극한",
+        "projectionStatus": "NO_EXACT_ACTIVE_PT_TPL",
+        "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json"
+      },
+      "sourceAsset": {
+        "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q19.png",
+        "sha256": "3b8a093fa9f91ff4a06ea582b833be0b414bd6dac78e111f2ef9a21b5b6fc685",
+        "sourcePdfPage": 6,
+        "renderDpi": 270,
+        "cropCoordinates135Dpi": null,
+        "openedAndCompared": true
+      }
+    },
+    {
+      "qid": 20,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+          "sourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+          "sourcePage": 7,
+          "sourcePageCount": 8,
+          "sourceIdentity": "26_팔마고_1학기_중간_고3_미적분2:q20",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "directPageOpened": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Source atoms and choices were transcribed exactly; AUTO-FIRST leaves natural wrapping."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducible": true,
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Korean explanation introduces the decisive step; each algebraic transformation, condition use, and conclusion is on its own readable line."
+        },
+        "meta": {
+          "status": "PROJECTION_DEBT_EXPLICIT",
+          "standardCourse": "미적분",
+          "standardUnitKey": "H15-CALC-04",
+          "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "UNMATERIALIZED",
+          "reason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred."
+        },
+        "visualSvg": {
+          "status": "SOURCE_PIXEL_PROBLEM_IMAGE",
+          "problemImage": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q20.png",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "Original scan pixels are cropped into the assigned asset tree; no source handwriting is present."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "5ce6f06e0dad42af1622923709256a0db007da9cc24070ecd125197104733e20",
+      "difficultyReason": "Bucket 5; judged from this source item’s required conceptual choice, algebraic steps, branching, and constraint handling, not its item number or point value.",
+      "questionLayout": {
+        "beforeDisposition": "SOURCE_AUTO_FLOW",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_CROP_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "Source atom stream and choices remain exact; screen disposition awaits R3 render."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred.",
+      "rpmProjectionGap": {
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-04",
+        "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
+        "selectedPrimaryMethod": "삼각함수의 미분",
+        "projectionStatus": "NO_EXACT_ACTIVE_PT_TPL",
+        "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json"
+      },
+      "sourceAsset": {
+        "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q20.png",
+        "sha256": "de49274798d7aec487708cf904eaf96101a4a4ef24418c02445d62d4dcedc866",
+        "sourcePdfPage": 7,
+        "renderDpi": 270,
+        "cropCoordinates135Dpi": null,
+        "openedAndCompared": true
+      }
+    },
+    {
+      "qid": 21,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+          "sourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+          "sourcePage": 8,
+          "sourcePageCount": 8,
+          "sourceIdentity": "26_팔마고_1학기_중간_고3_미적분2:q21",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "directPageOpened": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_POLISH",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Only semantic-boundary line breaks were added; source text and choice atoms stay exact."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducible": true,
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Korean explanation introduces the decisive step; each algebraic transformation, condition use, and conclusion is on its own readable line."
+        },
+        "meta": {
+          "status": "SEMANTIC_SELECTION_RECORDED",
+          "standardCourse": "미적분",
+          "standardUnitKey": "H15-CALC-06",
+          "subUnitKey": "H15-CALC-06",
+          "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+          "templateKey": "TPL_TANGENT_CONSTRUCTION",
+          "projectionStatus": "DIRECT_ACTIVE",
+          "reason": "Selected exact currently active calculus rule projection from the solution’s decisive method."
+        },
+        "visualSvg": {
+          "status": "SOURCE_PIXEL_PROBLEM_IMAGE",
+          "problemImage": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q21.png",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "Original scan pixels are cropped into the assigned asset tree; no source handwriting is present."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "69586c33fbdc1865913abc0dc499f46394b5a0a5c1453a713312385392d852e6",
+      "difficultyReason": "Bucket 4; judged from this source item’s required conceptual choice, algebraic steps, branching, and constraint handling, not its item number or point value.",
+      "questionLayout": {
+        "beforeDisposition": "SOURCE_LINE_FLOW",
+        "finalDisposition": "LAYOUT_POLISH",
+        "issueCodes": [
+          "SEMANTIC_BOUNDARY_LINEBREAK"
+        ],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_CROP_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "Line breaks clarify only meaning boundaries and leave all source atoms unchanged."
+      },
+      "sourceAsset": {
+        "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q21.png",
+        "sha256": "70d80e8cd8c98ddd594ecf137e459962e3d9b2a6ce81fac3be0ae93336360c8c",
+        "sourcePdfPage": 8,
+        "renderDpi": 270,
+        "cropCoordinates135Dpi": null,
+        "openedAndCompared": true
+      }
+    },
+    {
+      "qid": 22,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+          "sourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+          "sourcePage": 8,
+          "sourcePageCount": 8,
+          "sourceIdentity": "26_팔마고_1학기_중간_고3_미적분2:q22",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "directPageOpened": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_POLISH",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Only semantic-boundary line breaks were added; source text and choice atoms stay exact."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducible": true,
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Korean explanation introduces the decisive step; each algebraic transformation, condition use, and conclusion is on its own readable line."
+        },
+        "meta": {
+          "status": "PROJECTION_DEBT_EXPLICIT",
+          "standardCourse": "미적분",
+          "standardUnitKey": "H15-CALC-03",
+          "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "UNMATERIALIZED",
+          "reason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred."
+        },
+        "visualSvg": {
+          "status": "NO_SOURCE_FIGURE",
+          "problemImage": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The source item has no problem figure requiring an asset; no solution SVG was created."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "f4d5742a46e81517120640553482d6f7007a5cd2328289ed9a4470fa41f059b9",
+      "difficultyReason": "Bucket 4; judged from this source item’s required conceptual choice, algebraic steps, branching, and constraint handling, not its item number or point value.",
+      "questionLayout": {
+        "beforeDisposition": "SOURCE_LINE_FLOW",
+        "finalDisposition": "LAYOUT_POLISH",
+        "issueCodes": [
+          "SEMANTIC_BOUNDARY_LINEBREAK"
+        ],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "NOT_REQUIRED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "Line breaks clarify only meaning boundaries and leave all source atoms unchanged."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current locked curriculum/crosswalk does not provide a unique exact ACTIVE PT/TPL for the source-derived semantic path; preserve the selected source-method path and keep the item/manual review path. No substitute PT/TPL was inferred.",
+      "rpmProjectionGap": {
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-03",
+        "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
+        "selectedPrimaryMethod": "지수함수와 로그함수의 미분",
+        "projectionStatus": "NO_EXACT_ACTIVE_PT_TPL",
+        "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json"
+      }
+    }
+  ],
+  "closureNotes": {
+    "normalCreateValidatorCount": 0,
+    "createPreflight": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/CREATE.preflight.final.json",
+      "status": "STRUCTURAL_PREFLIGHT_CLEAR",
+      "questionCount": 22,
+      "itemHoldCount": 0,
+      "findings": []
+    },
+    "genericValidator": "PENDING_ONE_NORMAL_V2_RUN",
+    "render": "NOT_RUN_CODEX_HANDOFF_R3_OWNER",
+    "registeredSampleCorrectionReview": "COMPLETED_BEFORE_GENERIC_VALIDATION"
+  },
+  "assignmentBinding": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/CREATE.assignment.head-51070f1e.json",
+    "sha256": "446adfd120130c18c8d40aff7d2dbac27d2e3e0a838d1b5b9193ad1e9dd9fa66",
+    "expectedHead": "51070f1e34d5d6f798432471f58fdef5d06764ac",
+    "inputSourcePath": "D:/2026_1학기중간_/미적분/26_팔마고_1학기_중간_고3_미적분2.pdf",
+    "inputSourceSha256": "ad83ddf0faf9fa98c466b8bf92693e29db542a6b85a5c349a9297ef0871cb9ba",
+    "workingJsAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\26_팔마고_1학기_중간_고3_미적분2.js",
+    "assetRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2",
+    "evidenceRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2",
+    "productionRelativePath": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js"
+  }
+}

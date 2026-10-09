@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_R1_CURRENT_FIELD_COMPARISON_V1",
+  "examUid": "26_강남여고_1학기_중간_고2_대수",
+  "reviewerId": "recovery_03",
+  "currentArtifactRawSha256": "ee7f5dec997371cde114fab1c22bced3b9eda8bc29d9845f1f5cc554e8be973f",
+  "freeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_강남여고_1학기_중간_고2_대수\\R1.scope-1,10@recovery-01.original-freeze.json",
+    "sha256": "c7614d24b3c7e865d75b40dfcb0910fbdf5d450706cbb01a960e017616c281b2",
+    "sourceRawSha256": "4c07a30c00e50b53dc1090d1416420e6a5c12f8cffb6cd56808cf606b46c8539",
+    "reviewerId": "Codex-R1-recovery-03",
+    "studentQidOrder": [
+      1,
+      10
+    ]
+  },
+  "studentParityProof": "CREATE.item-recovery.post-R1-parity.json",
+  "postfreezeCliFailure": {
+    "path": "R1.scope-1,10.postfreeze.fail-02.raw.txt",
+    "sha256": "346e82a32c683c5ba5abe004611901b6a5d08775bb079f36a54c1f8ed7ad938c",
+    "error": "CURRENT_SOURCE_DENOMINATOR_CHANGED",
+    "qualityPassAsserted": false
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "frozenAnswer": "①",
+      "currentStoredAnswer": "①",
+      "answerMatch": true,
+      "currentSolutionSha256": "103c9473965039ee5865391f9ace302ac9c95faa0046c5b25f1949fccebc8bc1",
+      "currentMeta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 10,
+      "frozenAnswer": "①",
+      "currentStoredAnswer": "①",
+      "answerMatch": true,
+      "currentSolutionSha256": "cef599c1a892b950cdb65b2f8a09e9c9aa536c8abb72fcbf29a7007e28a36f44",
+      "currentMeta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    }
+  ],
+  "allAnswersMatch": true,
+  "solutionMatchAssessment": {
+    "1": "Current solution checks the frozen five-statement result by one block per choice and concludes only ①; aligns with the frozen independent reasoning.",
+    "10": "Current solution rewrites the nested radical to rational exponents, computes f(1), f(2), f(3), and the quotient as a^(1/2)=√a; aligns with the frozen independent reasoning."
+  },
+  "freshR1D2": {
+    "1": {
+      "bucket": 1,
+      "confidence": "high",
+      "boundaryFlag": "NONE",
+      "priorLevelAfterFreezeComparison": "하",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "10": {
+      "bucket": 2,
+      "confidence": "high",
+      "boundaryFlag": "NONE",
+      "priorLevelAfterFreezeComparison": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "oldBucket": 3,
+      "newBucket": 2
+    }
+  },
+  "qualityPassAsserted": false
+}

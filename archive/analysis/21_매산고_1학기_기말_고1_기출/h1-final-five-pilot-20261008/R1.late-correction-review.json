@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_LATE_CORRECTION_REVIEW_V1",
+  "stage": "R1",
+  "examUid": "21_매산고_1학기_기말_고1_기출",
+  "runId": "h1-final-five-pilot-20261008",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "scope": "CHANGED_LOCUS_AND_DIRECT_DEPENDENCY_ONLY",
+  "lateOrderingGapDisposition": "PRESERVED",
+  "calibrationPreflight": {
+    "path": "archive/analysis/21_매산고_1학기_기말_고1_기출/h1-final-five-pilot-20261008/R1.solution-calibration.late-correction-preflight.json",
+    "sha256": "2817a1b0ff684949a34edd51ca685c3606b475deba70fc5c9aa3d784daf656a5",
+    "status": "CALIBRATION_PREFLIGHT_PASS",
+    "sampleReadBeforeChangedLocusReview": true,
+    "originalLateOrderFailure": "FAILED-02 preserved; not retroactively counted as preflight"
+  },
+  "sourceRawSha256": "9ef452747702cedf02d229a900ccf100251684e17124540a682a63be40946773",
+  "reviewedQids": [
+    5,
+    10,
+    18
+  ],
+  "unaffectedQidsNotReopened": true,
+  "changedRows": [
+    {
+      "qid": 5,
+      "reviewedAxes": [
+        "SOLUTION_LAYOUT",
+        "VISUAL_SVG"
+      ],
+      "storedAnswer": "②",
+      "solutionSha256": "bc10fb29031c0b0fba2490538cdfb837a4c0dfb18cd498575c006b2af0e31503",
+      "preimageJsSha256": "4a949b6469ac73d1061a5d7b5fe5a02ad4f5ce5675bc37041574f83c2f6656d2",
+      "preimageSvgSha256": "0a0214fc00811fdf00f93280d006c62f2a878278a92d69981a0150e004d2ce57",
+      "currentSvg": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\assets\\images\\21_매산고_1학기_기말_고1_기출\\q5-solution.svg",
+      "currentSvgSha256": "4f871edf50e0a29fbf05e8f32369936ea1fa37599dc843962db0a918013828ac",
+      "previewAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\solution-svg-previews\\q5-solution.png",
+      "previewSha256": "101b03ffb3bf2ef6ade5e2e3cd1950d1c91cfdb2722a3645c4f1bc4f41687fec",
+      "disposition": "PASS_AFTER_ASSET_REPAIR",
+      "reason": "Post-repair passive preview shows T on the radius-2 circle and on y=2x−2√5; line slope is +2 in math coordinates while OT slope is −1/2. Labels, actual primitive geometry, answer, and source solution align. R3 engine render remains unrun."
+    },
+    {
+      "qid": 10,
+      "reviewedAxes": [
+        "SOLUTION_LAYOUT",
+        "VISUAL_SVG"
+      ],
+      "storedAnswer": "①",
+      "preimageJsSha256": "4a949b6469ac73d1061a5d7b5fe5a02ad4f5ce5675bc37041574f83c2f6656d2",
+      "preimageSolutionSha256": "222039e1d2b6f5359ceea4260375a8a23be9f21476b19fd9235278ce6253f5b0",
+      "currentSolutionSha256": "51628bd1e3dfe47ff8dfff94f1cb33b7e9b30d508d68dc9ae2c0c32014fd2a13",
+      "previewAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\solution-svg-previews\\q10-solution.png",
+      "previewSha256": "4842d1161faced61ccf7a502b305e673b5eb91a40cf1c64c77b29d2b41bae89c",
+      "disposition": "PASS_AFTER_SOLUTION_CLARIFICATION",
+      "reason": "Expanded AP²+BP²=2MP²+MA²+MB² using M as midpoint; the cross terms cancel and MP²≥0. M=(1,0) lies on the constraint line. The unchanged circle SVG shows center P=(1,0), radius 1, and tangency to the y-axis."
+    },
+    {
+      "qid": 18,
+      "reviewedAxes": [
+        "SOLUTION_LAYOUT",
+        "VISUAL_SVG"
+      ],
+      "storedAnswer": "97/4",
+      "preimageJsSha256": "a09227b10dc96d84a73898461f6e70e92a3985d7c0fa78fedb6f1cb0df263150",
+      "preimageSolutionSha256": "f6f5383890172f3be14cf585fa599e65b1ef59cc39591adbdac85eb93d494013",
+      "currentSolutionSha256": "e4ec6a91951a41606d9ed1e41a2d9444d651249478db09a35460a7b3c6bc2baa",
+      "previewAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\solution-svg-previews\\q18-solution.png",
+      "previewSha256": "6c81f7be7775560ff09855d3a9ac92bc0a1e0c88e5947961c87d56a03233ea2a",
+      "disposition": "PASS_AFTER_SOLUTION_COMPLETION",
+      "reason": "Added the feasibility bound g(x)=−(x−1)²+21/4≤5 for x≥3/2; f≤5 is exactly [3/2,5/2], so the maximum 97/4 is attained. Unchanged graph plots f=20(x−2)² and g=−x²+2x+17/4 with the correct interval; R3 engine render remains unrun."
+    }
+  ]
+}

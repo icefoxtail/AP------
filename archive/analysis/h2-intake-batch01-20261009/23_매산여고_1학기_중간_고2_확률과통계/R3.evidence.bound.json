@@ -1,0 +1,329 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R3",
+  "examUid": "23_매산여고_1학기_중간_고2_확률과통계",
+  "artifactSha": "df50cff7b9565ff390f4b112accc6b1ced31bcc1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "status": "R3_RELEASE_READY_CANDIDATE_PENDING_GENERIC_V2",
+  "overallVerdict": "PASS_CANDIDATE",
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "questionCount": 22,
+  "allowedQids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22
+  ],
+  "targetedScope": {
+    "openFindingQids": [
+      3,
+      4,
+      21,
+      22
+    ],
+    "changedQids": [
+      3,
+      4,
+      21,
+      22
+    ],
+    "directDependencyQids": []
+  },
+  "rows": [
+    {
+      "qid": 3,
+      "verdict": "PASS",
+      "reviewScope": "changed answer/choice selector; source student fields unchanged",
+      "reviewEvidence": "R1/R2 recovery validates current answer after strict-threshold count correction. Desktop/mobile exam, solution, answer captures show q3 content and ④ response intact; no layout, clipping, MathJax, or answer rendering defect.",
+      "solutionSha256": "2746d133d5d152d107aacbf1f493687b814b661ea05a478314e585eaf39b775c"
+    },
+    {
+      "qid": 4,
+      "verdict": "PASS",
+      "reviewScope": "changed answer selector; source student fields unchanged",
+      "reviewEvidence": "R1/R2 recovery validates current answer after answer selector correction. Desktop/mobile exam, solution, answer captures show q4 content and ⑤ response intact; no layout, clipping, MathJax, or answer rendering defect.",
+      "solutionSha256": "0de44f45c558342a4222519ca74c391390515a54c32857fcb193cfcf82206faf"
+    },
+    {
+      "qid": 21,
+      "verdict": "PASS",
+      "reviewScope": "authorized direct replacement of superseded true-HOLD item; current source validated by fresh R1/R2 recovery",
+      "reviewEvidence": "Current q21 has a fresh complete-source R1/R2 validation. Earlier CREATE true-HOLD history remains preserved in CREATE evidence; it is superseded for current source and contributes zero current live item HOLDs. Desktop/mobile exam and solution captures show the full two-part prompt and solution without clipping.",
+      "solutionSha256": "0f6abc08d8e0f6e9d18377467de18913d68eaf7d8ca6840aa03ef0ee25ea108c"
+    },
+    {
+      "qid": 22,
+      "verdict": "PASS",
+      "reviewScope": "source terminology repair; current source validated by R1/R2 recovery",
+      "reviewEvidence": "R1/R2 recovery validates the current terminology-repaired source. Desktop/mobile exam and solution captures show the full q22 prompt and solution and the answer table includes q22; no layout, clipping, MathJax, or answer rendering defect.",
+      "solutionSha256": "92ef18a00c668e6088b332a2e09adf10b77c503cf8a7c578cc0ca1dc9fe1602f"
+    }
+  ],
+  "lockedScopeIntegrity": true,
+  "releaseIntegrity": true,
+  "itemHoldCount": 0,
+  "itemHolds": [],
+  "renderReview": {
+    "captureReport": {
+      "path": ".tmp/archive/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/r3-captures-20261009/machine-capture.json",
+      "sha256": "d6ff2eafc179e3250afb3572405db93aed78d598056a0bce959eef0c88f45458"
+    },
+    "review": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/R3.capture-review.json",
+      "sha256": "7b15f56b9b2962278eb8445dcc60f7bdef5d1fb5dd3516ee7bd208e654a930b8"
+    },
+    "status": "RENDER_PASS",
+    "caseIds": [
+      "exam/desktop",
+      "exam/mobile",
+      "sol/desktop",
+      "sol/mobile",
+      "ans/desktop",
+      "ans/mobile"
+    ],
+    "qidCount": 22,
+    "lastQid": 22
+  },
+  "artifactDispositions": {
+    "artifactSha": "df50cff7b9565ff390f4b112accc6b1ced31bcc1",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current q1 fields are null and projectionStatus is PROJECTION_UNMATERIALIZED. The three independent truth checks require distinct arrangement, combination and repeated-combination semantics; GLOBAL ACTIVE taxonomy and exact binding lookup did not yield a unique primary. Preserve the existing unresolved projection; do not invent a mixed key.",
+        "reuseProvenance": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.reused-row-provenance.json",
+          "sha256": "d13e2e7ef8b7dcc54a4f79cfa68785d7d17b0a9d8ba0c83fca6dfdbf99094b06"
+        }
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "reuseProvenance": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.reused-row-provenance.json",
+          "sha256": "d13e2e7ef8b7dcc54a4f79cfa68785d7d17b0a9d8ba0c83fca6dfdbf99094b06"
+        }
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "reuseProvenance": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.reused-row-provenance.json",
+          "sha256": "d13e2e7ef8b7dcc54a4f79cfa68785d7d17b0a9d8ba0c83fca6dfdbf99094b06"
+        }
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "reuseProvenance": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.reused-row-provenance.json",
+          "sha256": "d13e2e7ef8b7dcc54a4f79cfa68785d7d17b0a9d8ba0c83fca6dfdbf99094b06"
+        }
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "reuseProvenance": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.reused-row-provenance.json",
+          "sha256": "d13e2e7ef8b7dcc54a4f79cfa68785d7d17b0a9d8ba0c83fca6dfdbf99094b06"
+        }
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing physical PT/TPL are retained; projectionStatus is PROJECTION_BINDING_PENDING for the registered legacy L2 key H15-PS-02-BINOMIAL_COEFFICIENT. This is compatibility projection debt, not a semantic HOLD or authority to reclassify.",
+        "reuseProvenance": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.reused-row-provenance.json",
+          "sha256": "d13e2e7ef8b7dcc54a4f79cfa68785d7d17b0a9d8ba0c83fca6dfdbf99094b06"
+        }
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing physical PT/TPL are retained; projectionStatus is PROJECTION_BINDING_PENDING for the registered legacy L2 key H15-PS-02-BINOMIAL_COEFFICIENT. This is compatibility projection debt, not a semantic HOLD or authority to reclassify.",
+        "reuseProvenance": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.reused-row-provenance.json",
+          "sha256": "d13e2e7ef8b7dcc54a4f79cfa68785d7d17b0a9d8ba0c83fca6dfdbf99094b06"
+        }
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing physical PT/TPL are retained; projectionStatus is PROJECTION_BINDING_PENDING for the registered legacy L2 key H15-PS-02-BINOMIAL_COEFFICIENT. This is compatibility projection debt, not a semantic HOLD or authority to reclassify.",
+        "reuseProvenance": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.reused-row-provenance.json",
+          "sha256": "d13e2e7ef8b7dcc54a4f79cfa68785d7d17b0a9d8ba0c83fca6dfdbf99094b06"
+        }
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing physical PT/TPL are retained; projectionStatus is PROJECTION_BINDING_PENDING for the registered legacy L2 key H15-PS-02-BINOMIAL_COEFFICIENT. This is compatibility projection debt, not a semantic HOLD or authority to reclassify.",
+        "reuseProvenance": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.reused-row-provenance.json",
+          "sha256": "d13e2e7ef8b7dcc54a4f79cfa68785d7d17b0a9d8ba0c83fca6dfdbf99094b06"
+        }
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "reuseProvenance": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.reused-row-provenance.json",
+          "sha256": "d13e2e7ef8b7dcc54a4f79cfa68785d7d17b0a9d8ba0c83fca6dfdbf99094b06"
+        }
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "reuseProvenance": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.reused-row-provenance.json",
+          "sha256": "d13e2e7ef8b7dcc54a4f79cfa68785d7d17b0a9d8ba0c83fca6dfdbf99094b06"
+        }
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "reuseProvenance": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.reused-row-provenance.json",
+          "sha256": "d13e2e7ef8b7dcc54a4f79cfa68785d7d17b0a9d8ba0c83fca6dfdbf99094b06"
+        }
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "reuseProvenance": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.reused-row-provenance.json",
+          "sha256": "d13e2e7ef8b7dcc54a4f79cfa68785d7d17b0a9d8ba0c83fca6dfdbf99094b06"
+        }
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "reuseProvenance": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.reused-row-provenance.json",
+          "sha256": "d13e2e7ef8b7dcc54a4f79cfa68785d7d17b0a9d8ba0c83fca6dfdbf99094b06"
+        }
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "reuseProvenance": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.reused-row-provenance.json",
+          "sha256": "d13e2e7ef8b7dcc54a4f79cfa68785d7d17b0a9d8ba0c83fca6dfdbf99094b06"
+        }
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "reuseProvenance": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.reused-row-provenance.json",
+          "sha256": "d13e2e7ef8b7dcc54a4f79cfa68785d7d17b0a9d8ba0c83fca6dfdbf99094b06"
+        }
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "reuseProvenance": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.reused-row-provenance.json",
+          "sha256": "d13e2e7ef8b7dcc54a4f79cfa68785d7d17b0a9d8ba0c83fca6dfdbf99094b06"
+        }
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "reuseProvenance": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.reused-row-provenance.json",
+          "sha256": "d13e2e7ef8b7dcc54a4f79cfa68785d7d17b0a9d8ba0c83fca6dfdbf99094b06"
+        }
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "reuseProvenance": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.reused-row-provenance.json",
+          "sha256": "d13e2e7ef8b7dcc54a4f79cfa68785d7d17b0a9d8ba0c83fca6dfdbf99094b06"
+        }
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "reuseProvenance": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.reused-row-provenance.json",
+          "sha256": "d13e2e7ef8b7dcc54a4f79cfa68785d7d17b0a9d8ba0c83fca6dfdbf99094b06"
+        }
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "currentMetaFieldsSha256": "3c66d48b19c66601528e08e4cc3a0f403af733894a0531d826fd3785f79efbaa",
+        "reviewProvenance": "FRESH_R1_Q21_CURRENT_META_REVIEW"
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "reuseProvenance": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.reused-row-provenance.json",
+          "sha256": "d13e2e7ef8b7dcc54a4f79cfa68785d7d17b0a9d8ba0c83fca6dfdbf99094b06"
+        }
+      }
+    ]
+  },
+  "artifactRawSha256": "935c52ea1e6d60dbb8c280559c9a8666076d7fd59a7c803154641679034433e8",
+  "technicalHashes": {
+    "rawSha256": "935c52ea1e6d60dbb8c280559c9a8666076d7fd59a7c803154641679034433e8",
+    "validatorRawBufferBlobSha1": "df50cff7b9565ff390f4b112accc6b1ced31bcc1",
+    "gitCleanFilterBlobSha1": "df50cff7b9565ff390f4b112accc6b1ced31bcc1"
+  }
+}

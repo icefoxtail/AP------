@@ -1,0 +1,1 @@
+import fs from 'node:fs';import vm from 'node:vm';const p='.tmp/archive/codex-20261007-2sem-mid-palma-m3/26_팔마중_2학기_중간_중3_기출/candidate/26_팔마중_2학기_중간_중3_기출.js';const b={window:{}};vm.createContext(b);vm.runInContext(fs.readFileSync(p,'utf8'),b,{filename:p,timeout:5000});const qs=b.window.questionBank||b.window.questions;for(const q of qs)console.log(q.id,Object.keys(q).join(','))

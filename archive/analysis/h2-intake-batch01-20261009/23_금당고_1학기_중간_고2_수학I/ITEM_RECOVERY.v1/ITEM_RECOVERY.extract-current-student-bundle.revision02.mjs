@@ -1,0 +1,31 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {readExam,sha256,writeFresh} from '../../../../tools/archive-codex-artifact-io.mjs';
+import {STUDENT_FIELDS,studentAssetRefs,normalizeStudentBundle} from '../../../../tools/archive-student-bundle.mjs';
+const root=process.cwd();
+const sourceRel='.tmp/archive/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/item-recovery-v2/23_금당고_1학기_중간_고2_수학I.js';
+const beforeRel='archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.candidate.before.js';
+const assetRoot=path.resolve(root,'.tmp/archive/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/item-recovery-v2');
+const oldBundlePath=path.resolve(root,'.tmp/archive/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/item-recovery-v2/ITEM_RECOVERY.student-only.json');
+const outRel='archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.current-student-only.revision02.json';
+const expected='420efca1b17423e9b7cb05f3e2b1b0ff37a206e55ab10598d71fcc73e29a5987';
+const exam=readExam(path.resolve(root,sourceRel));
+const before=readExam(path.resolve(root,beforeRel));
+if(exam.rawSha256!==expected||before.rawSha256!=='f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e')throw Error('EXPECTED_SOURCE_SHA_MISMATCH');
+const old=JSON.parse(fs.readFileSync(oldBundlePath,'utf8'));
+const oldRows=new Map(old.rows.map(r=>[Number(r.qid),r]));
+const studentOf=q=>Object.fromEntries([...STUDENT_FIELDS].filter(k=>Object.hasOwn(q,k)).map(k=>[k,q[k]]));
+const preStudents=new Map(before.questions.map(q=>[Number(q.id),studentOf(q)]));
+const rows=exam.questions.map(q=>{
+  const student=studentOf(q);
+  if(Array.isArray(student.choices))student.choices=student.choices.map(c=>c&&typeof c==='object'&&!Array.isArray(c)?Object.fromEntries(Object.entries(c).filter(([k])=>['text','content','value','answer'].includes(k))):c);
+  const assets=studentAssetRefs(student).map(ref=>{const file=path.resolve(assetRoot,ref);const bytes=fs.readFileSync(file);return{ref,path:file,sha256:sha256(bytes)};});
+  const oldRow=oldRows.get(Number(q.id));
+  return {qid:Number(q.id),student,assets,originalStudentPayloadSha256:oldRow?.studentPayloadSha256??null};
+});
+const native={schemaVersion:'JS_ARCHIVE_STUDENT_BUNDLE_V2',sourceRawSha256:exam.rawSha256,sourceRawBlobSha1:exam.rawBufferGitBlobSha1,questionCount:exam.questions.length,qids:exam.questions.map(q=>Number(q.id)),rows};
+const value=normalizeStudentBundle(native,{expectedSourceRawSha256:expected});
+if(value.questionCount!==20||value.qids.join(',')!=='1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20')throw Error('CURRENT_BUNDLE_DENOMINATOR_OR_ORDER_FAIL');
+for(const row of value.rows){const pre=preStudents.get(row.qid);if(!pre)throw Error('BASELINE_STUDENT_ROW_MISSING:'+row.qid);if(![9,10,18,19].includes(row.qid)&&JSON.stringify(row.student)!==JSON.stringify(pre))throw Error('NON_TARGET_STUDENT_PARITY_FAIL:'+row.qid);if([9,10,18,19].includes(row.qid)){const oldRow=oldRows.get(row.qid);if(!oldRow||JSON.stringify(oldRow.student)!==JSON.stringify(pre))throw Error('OLD_TARGET_STUDENT_BUNDLE_BASELINE_MISMATCH:'+row.qid);if(row.studentPayloadSha256===oldRow.studentPayloadSha256)throw Error('TARGET_STUDENT_PAYLOAD_DID_NOT_CHANGE:'+row.qid);}}
+const out=path.resolve(root,outRel);const ref=writeFresh(out,value);
+console.log(JSON.stringify({ref,sourceRawSha256:value.sourceRawSha256,questionCount:value.questionCount,targetRows:value.rows.filter(r=>[9,10,18,19].includes(r.qid)).map(r=>({qid:r.qid,studentPayloadSha256:r.studentPayloadSha256,originalStudentPayloadSha256:r.originalStudentPayloadSha256,assets:r.assets})),nonTargetStudentParity:'16/16',assetCount:value.rows.reduce((n,r)=>n+r.assets.length,0),adapterProvenance:value.adapterProvenance},null,2));

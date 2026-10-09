@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "R1_Q13_META_CORRECTION_PREIMAGE_V1",
+  "qid": 13,
+  "sourceRawSha256": "70c8b641383c51c73233e519789090fa1adf3a81b367d773a4c8197eb255b35a",
+  "before": {
+    "problemTypeKey": "PT_COORD_CENTROID",
+    "templateKey": "TPL_CENTROID_APPLICATION",
+    "primaryMethod": "수직 기울기 조건과 직각삼각형 외심 성질",
+    "decisiveStep": "RIGHT_TRIANGLE_CIRCUMCENTER",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-09",
+    "subUnitKey": "H15-SA-09-COORDINATE_METRIC"
+  },
+  "after": {
+    "problemTypeKey": "PT_COORD_FIGURE_PROPERTIES",
+    "templateKey": null
+  },
+  "reason": "The source asks for the circumcenter of triangle ABP, and the solution uses the right-triangle circumcenter. PT_COORD_CENTROID/TPL_CENTROID_APPLICATION are semantically false. Current active H1 taxonomy has PT_COORD_FIGURE_PROPERTIES with an exact curriculum binding at H15-SA-09-COORDINATE_METRIC; no active template describes a right-triangle circumcenter, so keep template null with explicit debt rather than inventing one.",
+  "currentAuthority": {
+    "taxonomyPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+    "bindingsPath": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+    "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json"
+  },
+  "changedStudentInputs": false,
+  "changedSolution": false,
+  "answerFreezeRemainsValid": true
+}\n

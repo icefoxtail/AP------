@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_CHOICE_DESIGN_V1",
+  "revision": 2,
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "26_삼산중_2학기_중간_중3_기출",
+  "qid": 8,
+  "stage": "ITEM_RECOVERY",
+  "solutionFirstFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\q8.solution-first-freeze.corrected.json",
+  "solutionFirstFreezeSha256": "dd217f8fe9cd976741ad40e06f219b81bb75acd7506b86e2ab7dfbb3d7c66652",
+  "choiceDesignOrder": "Solution freeze → all five options drafted and checked → answer placement selected",
+  "stem": "직각삼각형 ABC에서 ∠C=90°, ∠A=a°이고 빗변 AB의 길이가 √13이다. (단, a≠45°) 이때 BC의 길이를 삼각비로 나타낸 것은? (4점)",
+  "choices": [
+    {
+      "position": 1,
+      "text": "√13 cos a°",
+      "rationale": "cos를 선택해 목표 BC와 인접변 AC를 혼동",
+      "correct": false
+    },
+    {
+      "position": 2,
+      "text": "√13 tan a°",
+      "rationale": "tan을 사용해 빗변 기준 사인비를 다른 변 기준 비율로 바꿈",
+      "correct": false
+    },
+    {
+      "position": 3,
+      "text": "√13 sin² a°",
+      "rationale": "사인비를 제곱해 목표변을 과소표현",
+      "correct": false
+    },
+    {
+      "position": 4,
+      "text": "√13 sin a°",
+      "rationale": "정답: sin a°=BC/AB",
+      "correct": true
+    },
+    {
+      "position": 5,
+      "text": "√13 sin a° cos a°",
+      "rationale": "사인비에 cos 값을 추가로 곱하는 오류",
+      "correct": false
+    }
+  ],
+  "answer": "④",
+  "uniquenessCheck": {
+    "domain": "0°<a<90° and a≠45°",
+    "proofs": [
+      "sin a°=BC/AB, so BC=√13 sin a°.",
+      "cos a° differs from sin a° because a≠45°.",
+      "tan a°>sin a° for 0°<a<90°.",
+      "sin²a°<sin a° for 0°<a<90°.",
+      "sin a°cos a°<sin a° because 0<cos a°<1."
+    ],
+    "correctChoiceCount": 1
+  },
+  "answerPositionReview": {
+    "preReplacementMcqDistribution": {
+      "①": 4,
+      "②": 5,
+      "③": 3,
+      "④": 3,
+      "⑤": 5
+    },
+    "finalMcqDistributionAfterReplacement": {
+      "①": 4,
+      "②": 5,
+      "③": 3,
+      "④": 3,
+      "⑤": 5
+    },
+    "reason": "Choice position ④ retains the original qid answer position and leaves the existing multiple-choice label distribution unchanged."
+  }
+}

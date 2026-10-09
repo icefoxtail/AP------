@@ -1,0 +1,16 @@
+✔ preflights R1 and R2 against a full 20-qid bundle while scoping the fresh review to q17/q20 (99.2408ms)
+✔ freezes exactly two fresh answers with a full denominator and no stage-pass or dispatcher claim (80.3271ms)
+✔ postfreeze disclosure verifies all 20 source rows and emits only q17/q20 answer fields and assets (75.0534ms)
+✔ rejects outside-qid payload mutation, missing scoped assets, and missing ROOT recovery admission proof (143.1185ms)
+✔ allows q17/q20 asset replacement while requiring all 18 outside-scope asset hashes to stay exact (56.7286ms)
+✔ R1 composition guard rejects a false q14 source SHA, wrong old bundle, stale PASS count, or arbitrary PASS list (174.1431ms)
+✔ rejects wrong reviewer role, three answers, and source-SHA rebind attempts (103.6717ms)
+✔ rejects full qid loss, scope overwrite, and source or current bundle drift after freeze (200.5526ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1035.4598

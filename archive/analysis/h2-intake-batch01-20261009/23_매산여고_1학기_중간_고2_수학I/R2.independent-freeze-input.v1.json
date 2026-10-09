@@ -1,0 +1,117 @@
+[
+  {
+    "independentAnswer": "2 (choice 4)",
+    "reasoning": "Cube root 16 times 2^(-1/3) = 2^(4/3-1/3)=2.",
+    "qid": 1
+  },
+  {
+    "independentAnswer": "2 (choice 2)",
+    "reasoning": "Log subtraction is log_2(28/7)=log_2 4=2.",
+    "qid": 2
+  },
+  {
+    "independentAnswer": "8 (choice 4)",
+    "reasoning": "Since base 5 is increasing, 2x-3<15, so x<9 and the greatest integer is 8.",
+    "qid": 3
+  },
+  {
+    "independentAnswer": "60 degrees (choice 4)",
+    "reasoning": "pi/3 radians equals 60 degrees.",
+    "qid": 4
+  },
+  {
+    "independentAnswer": "ㄱ, ㄴ (choice 3)",
+    "reasoning": "B+C=pi-A makes sin((B+C)/2)=cos(A/2), and tan(B+C)=-tan A. Also sin(A+B)+sin C=2sin C, not 0.",
+    "qid": 5
+  },
+  {
+    "independentAnswer": "64 (choice 1)",
+    "reasoning": "Alpha+beta=(log_3 16)/2 and alpha beta=3. The exponent is 3(log_3 16)/2, so the value is 16^(3/2)=64.",
+    "qid": 6
+  },
+  {
+    "independentAnswer": "0 (choice 3)",
+    "reasoning": "After translation then y-axis reflection, the graph is 2^(-x-m+1)+n. Matching 2^(-x+4)+3 gives m=-3,n=3.",
+    "qid": 7
+  },
+  {
+    "independentAnswer": "32 (choice 2)",
+    "reasoning": "The log difference is (5/3)log_10 x up to sign. For 1<log_10 x<3 this is an integer at 6/5,9/5,12/5. Their x-product is 10^(27/5), so p+q=5+27=32.",
+    "qid": 8
+  },
+  {
+    "independentAnswer": "k>5 (choice 5)",
+    "reasoning": "The graph has minimum y=5 at x=1; every horizontal line strictly above it intersects twice.",
+    "qid": 9
+  },
+  {
+    "independentAnswer": "11pi/6 (choice 3)",
+    "reasoning": "Substitute cos(pi/2-theta)=sin theta and cos(pi/2+theta)=-sin theta. The quadratic is positive for all x iff 2sin(theta)(2sin(theta)-1)<0. In (pi/2,pi), this gives (5pi/6,pi), whose endpoint sum is 11pi/6.",
+    "qid": 10
+  },
+  {
+    "independentAnswer": "1 (choice 5)",
+    "reasoning": "Opposite rays imply 7theta-3theta is an odd multiple of pi. In (pi/2,pi), theta=3pi/4, so tan(theta-pi/2)=1.",
+    "qid": 11
+  },
+  {
+    "independentAnswer": "32 (choice 5)",
+    "reasoning": "Use reciprocal log identities to get log_3 x+log_3 y-log_3 4=log_3 8, hence log_3(xy)=log_3 32.",
+    "qid": 12
+  },
+  {
+    "independentAnswer": "25pi/12 (choice 4)",
+    "reasoning": "The absolute-value equality holds on [0,pi/2] and also at 5pi/4 (where sin=cos<0). B is [pi/6,5pi/6]. Their union is [0,5pi/6] union {5pi/4}; sum is 25pi/12.",
+    "qid": 13
+  },
+  {
+    "independentAnswer": "-sqrt(22)/4 (choice 1)",
+    "reasoning": "Let t=y/x<0. From t+1/t=-16/3, sin(theta)cos(theta)=t/(1+t^2)=-3/16. Thus (sin-cos)^2=1-2sin cos=11/8; in quadrant IV it is negative.",
+    "qid": 14
+  },
+  {
+    "independentAnswer": "3<=k<=7 (choice 5)",
+    "reasoning": "Set t=2^x>0. For t<1 the condition requires k>=t+4+1/(t-1), whose supremum is 3 as t approaches 0. For t>1 it requires k<= that expression, whose minimum is 7 at t=2. At t=1 the original inequality is true.",
+    "qid": 15
+  },
+  {
+    "independentAnswer": null,
+    "reasoning": "The first inequality g(f(x))<0 forces 0<f(x)<2, hence 3<x<9, so only five integer x values (4,5,6,7,8) can occur. The prompt demands six, so no natural c can satisfy the stated condition; no valid answer is determined.",
+    "qid": 16
+  },
+  {
+    "independentAnswer": null,
+    "reasoning": "The collinear ratio AB:BC=2:1 with C on the x-axis forces y_A=3y_B. Since B has y_B>1, the vertical difference between A and B exceeds 2, so AB>2. On y=9^(-x), D is at x_B/2, while the ratio equation gives x_A=(x_B-1)/2, hence AD=1/2. This contradicts AB=AD; no configuration satisfies the prompt.",
+    "qid": 17
+  },
+  {
+    "independentAnswer": "50 (choice 4)",
+    "reasoning": "Slope -1 and length 2sqrt(2) give c-a=2. Then log_4(a+12)-log_2 a=-2, so (a+12)/a^2=1/16 and a=24,c=26; sum=50.",
+    "qid": 18
+  },
+  {
+    "independentAnswer": "x=3 or x=1/243",
+    "reasoning": "Let u=log_3 x. Then (u+1)(u+3)/2=4, so u^2+4u-5=0 and u=1 or -5.",
+    "qid": 19
+  },
+  {
+    "independentAnswer": "7/4",
+    "reasoning": "Put s=sin(x-3pi/4). Then f=k+1+s-s^2, whose maximum on [-1,1] is k+5/4 and minimum is k-1. Given maximum 4, k=11/4, so m=7/4.",
+    "qid": 20
+  },
+  {
+    "independentAnswer": "(1) 11sqrt(2)/4; (2) A=(9/8,31/8), a=(31/8)^(8/9)",
+    "reasoning": "The curves are inverse, and reflection across y=x preserves the line, so B is the coordinate swap of A. Write A=(u,5-u), B=(5-u,u). With C=(0,1),D=(1,0), shoelace gives area=|25-8u|/2=8; the positive first-quadrant placement yields u=9/8. Then AB=sqrt(2)(5-2u)=11sqrt(2)/4 and a^u=5-u=31/8.",
+    "qid": 21
+  },
+  {
+    "independentAnswer": "5/2",
+    "reasoning": "The shift gives f(x)=a cos(b(x-pi/6))+2. Period 8pi gives b=1/4 and maximum 3 gives a=1. At x=3pi/2 the cosine argument is pi/3, so f=1/2+2=5/2.",
+    "qid": 22
+  },
+  {
+    "independentAnswer": "12",
+    "reasoning": "For fixed integer a, write d=gcd of its prime exponents. A rational value log_a b in [-1,2] has reduced denominator n dividing d. There are 4 integer values (n=1), and for each n>1 there are 3phi(n), so f(a)=4+3(d-1)=3d+1. Thus f(a)>=7 iff a is a perfect power with d>=2. There are 12 such integers from 2 through 100: 4,8,9,16,25,27,32,36,49,64,81,100.",
+    "qid": 23
+  }
+]

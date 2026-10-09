@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
+  "school": "팔마고",
+  "batchId": "PALMA25_QID9_AUTO_06",
+  "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-INTERSECTION/shards/palma-2025-2mid-qid9-q06-B2.js",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "records": [
+    {
+      "generatedUid": "ALITE-PALMA25-2MID-Q06-B2",
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "sourceQid": 6,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-INTERSECTION/shards/palma-2025-2mid-qid9-q06-B2.js",
+      "sourceShardGitSha": "5a1e6ec8aaa33c16b3a1215774437c045ab91c15",
+      "localOrdinal": 1,
+      "l2": "H22-C2-03-INTERSECTION",
+      "slot": "B2",
+      "purposeGroup": "B",
+      "consumerSelectable": true,
+      "question": {
+        "id": 1,
+        "uid": "ALITE-PALMA25-2MID-Q06-B2",
+        "level": "중",
+        "difficultyBucket": 3,
+        "category": "원의 방정식",
+        "originalCategory": "원의 방정식",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-INTERSECTION",
+        "subUnit": "원과 직선·원의 관계",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "원의 방정식"
+        ],
+        "wide": false,
+        "content": "원 $(x-2)^2+(y+1)^2=5$와 직선 $x-2y+k=0$이 만나지 않도록 하는 음의 정수 $k$의 최댓값은?",
+        "choices": [
+          "$-9$",
+          "$-11$",
+          "$-10$",
+          "$-7$",
+          "$-6$"
+        ],
+        "answer": "③",
+        "solution": "원의 중심은 $(2,-1)$, 반지름은 $\\sqrt5$이다.\n중심에서 직선까지의 거리는 $d=\\dfrac{|2-2(-1)+k|}{\\sqrt{1^2+(-2)^2}}=\\dfrac{|k+4|}{\\sqrt5}$이다.\n원과 직선이 만나지 않으려면 $d>\\sqrt5$이므로 $|k+4|>5$이다.\n따라서 $k<-9$ 또는 $k>1$이고, 이 중 음의 정수는 $k\\le-10$이다.\n그러므로 음의 정수 $k$의 최댓값은 $-10$이다. 따라서 정답은 ③이다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "sourceQid": 6,
+        "slot": "B2",
+        "purposeGroup": "B",
+        "meta": {
+          "rpmL1": "L1-1|도형의 방정식",
+          "rpmL2": "L2-1.3|원의 방정식",
+          "rpmL3": "L3-1.3.2|원과 직선",
+          "rpmL4": "L4-1.3.2.1|교점 개수",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmPrimaryRecordId": "H1-RPM-219",
+          "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+          "secondaryConceptKeys": [],
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_INTEGER",
+            "COND_NEGATIVE"
+          ],
+          "crossConceptRegistryRef": null,
+          "conditionRegistryRef": null,
+          "sourceKind": "generated",
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "level": "중",
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+          "conditionEvidenceLabels": [
+            "음의 정수",
+            "교점 없음"
+          ],
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-03",
+          "subUnitKey": "H22-C2-03-INTERSECTION"
+        },
+        "metaFinalSha256": "aa6f260a25a54f7a9abf939ffe6fcf30f13f251fbb5de53c5f983850f6663c34",
+        "metaReviewEvidence": {
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q06-B2.json",
+          "sha256": "135bd25581b9f3a9feaec65d7fdd16e9d1d272c2e6cf2dccd830d3cb22fc2fdb",
+          "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+          "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261009_PALMA_Q05_Q08_36",
+          "scopeUids": [
+            "ALITE-PALMA25-2MID-Q06-B2"
+          ],
+          "uid": "ALITE-PALMA25-2MID-Q06-B2"
+        },
+        "metaReviewEvidenceSha256": "135bd25581b9f3a9feaec65d7fdd16e9d1d272c2e6cf2dccd830d3cb22fc2fdb",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_NEGATIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "meta": {
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.3|원의 방정식",
+        "rpmL3": "L3-1.3.2|원과 직선",
+        "rpmL4": "L4-1.3.2.1|교점 개수",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmPrimaryRecordId": "H1-RPM-219",
+        "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_NEGATIVE"
+        ],
+        "crossConceptRegistryRef": null,
+        "conditionRegistryRef": null,
+        "sourceKind": "generated",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+        "conditionEvidenceLabels": [
+          "음의 정수",
+          "교점 없음"
+        ],
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "subUnitKey": "H22-C2-03-INTERSECTION"
+      },
+      "metaFinalSha256": "aa6f260a25a54f7a9abf939ffe6fcf30f13f251fbb5de53c5f983850f6663c34",
+      "metaReviewEvidence": {
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q06-B2.json",
+        "sha256": "135bd25581b9f3a9feaec65d7fdd16e9d1d272c2e6cf2dccd830d3cb22fc2fdb",
+        "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+        "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261009_PALMA_Q05_Q08_36",
+        "scopeUids": [
+          "ALITE-PALMA25-2MID-Q06-B2"
+        ],
+        "uid": "ALITE-PALMA25-2MID-Q06-B2"
+      },
+      "metaReviewEvidenceSha256": "135bd25581b9f3a9feaec65d7fdd16e9d1d272c2e6cf2dccd830d3cb22fc2fdb"
+    }
+  ],
+  "sourceShardGitSha": "5a1e6ec8aaa33c16b3a1215774437c045ab91c15"
+}

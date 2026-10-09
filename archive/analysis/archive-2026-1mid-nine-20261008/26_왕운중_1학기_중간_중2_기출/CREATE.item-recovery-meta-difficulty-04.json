@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_ITEM_RECOVERY_META_DIFFICULTY_V1",
+  "runId": "archive-2026-1mid-nine-20261008",
+  "examUid": "26_왕운중_1학기_중간_중2_기출",
+  "stage": "CREATE",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "sourceArtifactRawSha256": "c38f2c0b8f746170688be1d1c919bd1bbcdf4b4ffab0f925698aa8ef2b2dfbd2",
+  "workingJsAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_왕운중_1학기_중간_중2_기출\\26_왕운중_1학기_중간_중2_기출.js",
+  "supersededF0cSourceRawSha256": "f0c5cd0b0494f2a27b3da62846692ea497b0668928cbf7ef64035717c917a27e",
+  "priorClassificationReplacementSidecarPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.item-recovery-meta-difficulty-03.json",
+  "priorClassificationReplacementSidecarSha256": "15c60bcb38239f84139b35de0a7245fe3bde49f02e4068ec2073e17a00fd2816",
+  "proposalPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.q16-supported-replacement-proposal-03.json",
+  "proposalSha256": "d02fc72a5d946b34f98820878b8322dbb081bff6749cd51bca5a4ca98b318e7a",
+  "adjudicationAuditPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.q16-meta-adjudication-audit-04.json",
+  "adjudicationAuditSha256": "7a50eb354646471aa7679430586eb33a2be59e0bb1edc59f1b3e9d0d75ecfc2c",
+  "r1FreezeRef": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/R1.scope-16@recovery-02.freeze.json",
+  "r1FreezeSha256": "cbf2c32c0ff9d74cfc9f3aadf7bc1ab12cee25ef96b78b9af5bd6343cded4622",
+  "r1Adjudicator": "r1_09",
+  "semanticAuthority": {
+    "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "sha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+    "recordId": "M2-RPM-138",
+    "mappingStatus": "RPM_ONLY",
+    "bindingStatus": "NO_ACTIVE_MAPPING",
+    "curriculum": "2022"
+  },
+  "prior2015PathPreserved": {
+    "recordId": "M2-RPM-020",
+    "disposition": "SUPERSEDED_CROSSWALK_CANDIDATE; do not materialize into current fields"
+  },
+  "sequenceBoundary": "New q16 D2/Meta proposal was initially captured before new q16 authoring with prior exposure explicitly disclosed; after fresh q16 freeze, original R1 owner independently adjudicated D1 and current 2022 semantic path. No claim of clean pre-upstream exposure.",
+  "physicalSourceChanges": {
+    "q16DifficultyFields": [
+      "difficultyBucket",
+      "difficultyConfidence",
+      "difficultyBoundaryFlag",
+      "legacyLevelCompatibility"
+    ],
+    "rpmSemanticFieldsInSource": false,
+    "studentFieldsChangedInThisRevision": false
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "level": "하",
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "The repeating block is immediate; multiply by 100 and subtract once, with no strategy choice or hidden condition."
+      },
+      "currentCurriculum": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL"
+      },
+      "rpmSemanticStatus": "FINAL",
+      "rpmPrimaryPath": {
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "유리수와 순환소수",
+        "midUnit": "유리수와 순환소수",
+        "l3": "순환소수",
+        "l4": "순환소수를 분수로"
+      },
+      "rpmL3": "순환소수",
+      "rpmL4": "순환소수를 분수로",
+      "rpmRecordId": "M2-RPM-004",
+      "primaryMethod": "Convert a pure repeating decimal to a fraction by aligning one full repeating period and subtracting.",
+      "decisiveStep": "100x-x=23, hence 99x=23; the resulting fraction is irreducible.",
+      "projectionStatus": "UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "projectionReason": "The current 2015 M2-1 crosswalk for M2-RPM-004 is RPM_ONLY / NO_ACTIVE_MAPPING. No exact ACTIVE problemTypeKey/templateKey with curriculum binding is available. RPM semantic remains FINAL; this is projection debt only.",
+      "nullReason": "The current 2015 M2-1 crosswalk for M2-RPM-004 is RPM_ONLY / NO_ACTIVE_MAPPING. No exact ACTIVE problemTypeKey/templateKey with curriculum binding is available. RPM semantic remains FINAL; this is projection debt only.",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current 2015 M2-1 crosswalk for M2-RPM-004 is RPM_ONLY / NO_ACTIVE_MAPPING. No exact ACTIVE problemTypeKey/templateKey with curriculum binding is available. RPM semantic remains FINAL; this is projection debt only."
+    },
+    {
+      "qid": 16,
+      "level": "중",
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "A direct basic-form rearrangement and division by a positive coefficient gives the answer in one fixed method. The adjacent coarse legacy label 중 remains defensible for the 3-point two-sided-variable form after independent recheck; preserve level."
+      },
+      "currentCurriculum": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "standardUnitOrder": 2
+      },
+      "rpmSemanticStatus": "FINAL",
+      "rpmPrimaryPath": {
+        "curriculum": "2022",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식",
+        "midUnit": "일차부등식",
+        "l3": "일차부등식의 풀이",
+        "l4": "기본형"
+      },
+      "rpmL3": "일차부등식의 풀이",
+      "rpmL4": "기본형",
+      "rpmRecordId": "M2-RPM-138",
+      "primaryMethod": "Move variable terms to one side and constants to the other, then divide by the positive coefficient.",
+      "decisiveStep": "2x>-8; division by positive 2 preserves >, so x>-4.",
+      "projectionStatus": "UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "projectionReason": "The current 2022 M2-2 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING, so no exact ACTIVE curriculum binding exists. Semantic remains FINAL.",
+      "nullReason": "No ACTIVE curriculum binding for the exact M2-RPM-138 semantic path; keep PT/TPL null as projection-only debt.",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current 2022 M2-2 crosswalk record for M2-RPM-138 is RPM_ONLY / NO_ACTIVE_MAPPING. No exact ACTIVE curriculum-bound PT/TPL pair exists; semantic is FINAL, and only projection fields remain null.",
+      "itemStatus": null
+    }
+  ],
+  "r1FreshQid16ReviewRequired": true,
+  "r2FreshQid16ReviewRequired": true,
+  "qualityVerdict": "NOT_ASSERTED"
+}

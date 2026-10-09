@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POSTAPPLY_CATALOG_REPAIR_V1",
+  "executionLine": "CODEX",
+  "target": "23_강남여고_1학기_중간_고2_확률과통계",
+  "status": "CATALOG_CANONICAL_CHECK_PASS",
+  "expectedHead": "1bdca365baec9c5020c35f7188364de0354ca4b1",
+  "rootApplyReceipt": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/technical-registration/root-apply-v1/target-registration.receipt.json",
+    "sha256": "bb03170ae3373cfa5430d080f138683f0c4a6937c887aa78c36f173b8ba14065"
+  },
+  "firstFailedCheck": {
+    "capturePath": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/technical-registration/postapply-catalog/attempt-01/ROOT.command-process-capture.json",
+    "capturedExitCode": 1,
+    "stderrSha256": "7a6a46625fb0a64a386bafd24f7bf4b0fb6cfef289b0ad18cd23fb8e94f5b9ad"
+  },
+  "semanticComparison": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/technical-registration/postapply-catalog/attempt-02/applied-vs-canonical.report.json",
+    "sha256": "dffdc5845b04f06ef969e4d946239fceeed6775f7344354e15abf52c8e56e09c",
+    "disposition": "ZERO_RECORD_DIFF_TWO_FILE_PROJECTION_DRIFT",
+    "catalogTopLevelOnly": "indexVersion",
+    "targetRecordDiffs": 0,
+    "nonTargetRecordDiffs": 0,
+    "recordCount": 13219,
+    "targetRecordCount": 25,
+    "overrideIndexEqual": true
+  },
+  "repair": {
+    "files": [
+      {
+        "path": "archive/data/archive2-catalog.json",
+        "beforeSha256": "9990b93e053c73a15a6b2dec9860a2af4ec18cc6fb7880f109f6faf15b672362",
+        "afterSha256": "00c894e102bb9707158c3419b45973695b6d05328c095370d40f1ebfb210587a"
+      },
+      {
+        "path": "archive/data/archive2-canonical-input-manifest.json",
+        "beforeSha256": "4a01c178fa6f82364a8e98e9a2c092d86e56efc0fb85f98d014cb73b69cf4f69",
+        "afterSha256": "85ec248140eb2ba2c99c52a74a39422ce4b73f19492809cf0ce5b79f5c77c296"
+      }
+    ],
+    "source": "isolated canonical generator output from registration-canonical-root",
+    "mutationScope": "exactly these two primary files; no other registry files, index, source, assets, authority, or Meta rows modified by this repair"
+  },
+  "recheck": {
+    "command": "node archive/tools/build-archive2-catalog.mjs --check",
+    "exitCode": 0,
+    "stdout": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/technical-registration/postapply-catalog/attempt-02/catalog-check.stdout.raw.txt",
+      "sha256": "0ff9c93d7ea176bdd494ed7c54816b0626d24743602bb7ca932c27e1ea571acd"
+    },
+    "stderr": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/technical-registration/postapply-catalog/attempt-02/catalog-check.stderr.raw.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "exit": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/technical-registration/postapply-catalog/attempt-02/catalog-check.exit.txt",
+      "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+    },
+    "indexVersion": "ce023ce5b97743738415299f372e7cb943651af81e49333dcd392b734b5bbe04",
+    "projectionVersion": "archive2-canonical-v1:ed19ddd2a138e661b55732e09d15616a6086f35d95da7771578c2617937ed890",
+    "questions": 13219,
+    "metadataRecords": 13227
+  },
+  "notRun": "No runtime suite, registration/meta tests, validators, R1/R2/R3, or render review rerun in this exact technical continuation."
+}

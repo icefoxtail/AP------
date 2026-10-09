@@ -1,0 +1,177 @@
+{
+  "schema": "JS_ARCHIVE_CREATE_GOLDEN_NEGATIVE_PREFLIGHT_V1",
+  "examUid": "26_강남여고_1학기_중간_고1_기출",
+  "runId": "archive-2026-1mid-nine-20261008",
+  "performedBeforeAnyTargetSolutionWriting": true,
+  "sourceInputs": [
+    {
+      "path": "D:\\2026_1학기중간_\\고1\\강남여고\\S28BW-826051515310_0023.jpg",
+      "sha256": "1c59b7dc21bb0d727571df5a680223c2edd3f45262f0186c308d98234b275966"
+    },
+    {
+      "path": "D:\\2026_1학기중간_\\고1\\강남여고\\S28BW-826051515310_0024.jpg",
+      "sha256": "fc2dfa90d235ba7c1e1ce8c4fee787fe9deacdd753032e52dec8e6d6f3015418"
+    },
+    {
+      "path": "D:\\2026_1학기중간_\\고1\\강남여고\\S28BW-826051515310_0025.jpg",
+      "sha256": "b246827e0d71209da1005310985b9554f9912631c9e78ef8a82e3ef9f8af4151"
+    },
+    {
+      "path": "D:\\2026_1학기중간_\\고1\\강남여고\\S28BW-826051515310_0026.jpg",
+      "sha256": "1e1eaa39822b7ba385a0ec34e403668181cbe94d76838e67c1539fddff9b1193"
+    },
+    {
+      "path": "D:\\2026_1학기중간_\\고1\\강남여고\\S28BW-826051515310_0027.jpg",
+      "sha256": "0d620c26f515c3428379d379f3be8f6851db148f4577288cf5c575ffcb5104b7"
+    }
+  ],
+  "goldenRegistry": {
+    "path": "archive/data/codex-quality-calibration-registry-v2.json",
+    "sha256": "f42e82d8c6c6f83d294d7d825eb0cc2c7cc939f1e62db3ed6faaea0cd9f0733d",
+    "gitBlobSha": "8b49da1ab5969c569e261f520e12c265587f98ec"
+  },
+  "goldenSamples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "rawSha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+      "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949",
+      "observedQids": [
+        1,
+        2,
+        7
+      ],
+      "observations": [
+        {
+          "qid": 1,
+          "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+          "solutionExcerpt": "Read complete solution bytes; teacher explanation links formula choice to explicit calculation and separates intermediate transformations from conclusion.",
+          "observation": "Read complete solution bytes; teacher explanation links formula choice to explicit calculation and separates intermediate transformations from conclusion."
+        },
+        {
+          "qid": 2,
+          "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+          "solutionExcerpt": "Read complete solution bytes; conditions/variable relations are applied in ordered blocks with the necessary intermediate calculation retained.",
+          "observation": "Read complete solution bytes; conditions/variable relations are applied in ordered blocks with the necessary intermediate calculation retained."
+        },
+        {
+          "qid": 7,
+          "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+          "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다.\n$x^2+y^2+6x-2y+1=0$\n상수항 $1$을 오른쪽으로 옮기면\n$x^2+6x+y^2-2y=-1$이다.\n$x^2+6x$에는 $9$를,\n$y^2-2y$에는 $1$을 더해 완전제곱식을 만든다.\n$(x^2+6x+9)+(y^2-2y+1)=-1+9+1$\n$(x+3)^2+(y-1)^2=9$이다.\n즉\n$(x-(-3))^2+(y-1)^2=3^2$이므로\n처음 원의 중심은 $(-3,1)$이고\n반지름은 $3$이다.\n\n이제 중심만 이동 순서대로 따라간다.\n",
+          "observation": "Supplemental final quality compare after draft: complete solution tracks the circle center through translation/origin symmetry while preserving radius; actual SVG shows the same centers and final circle topology. Rasterizer uses fallback boxes for two subscript labels.",
+          "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+          "svgPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+          "viewedPng": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_강남여고_1학기_중간_고1_기출\\golden-preview\\maesan-q07.png",
+          "readTiming": "POST_DRAFT_FINAL_QUALITY_COMPARE"
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "rawSha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+      "observedQids": [
+        1,
+        2
+      ],
+      "observations": [
+        {
+          "qid": 1,
+          "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+          "solutionExcerpt": "Read complete solution bytes; teacher explanation links formula choice to explicit calculation and separates intermediate transformations from conclusion.",
+          "observation": "Read complete solution bytes; teacher explanation links formula choice to explicit calculation and separates intermediate transformations from conclusion."
+        },
+        {
+          "qid": 2,
+          "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+          "solutionExcerpt": "Read complete solution bytes; conditions/variable relations are applied in ordered blocks with the necessary intermediate calculation retained. Opened actual SVG and rendered PNG; line topology agrees with the algebraic claim. Korean font fallback appears in this external rasterizer.",
+          "observation": "Read complete solution bytes; conditions/variable relations are applied in ordered blocks with the necessary intermediate calculation retained. Opened actual SVG and rendered PNG; line topology agrees with the algebraic claim. Korean font fallback appears in this external rasterizer."
+        }
+      ],
+      "svgPaths": [
+        "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg"
+      ],
+      "svgSha256": [
+        "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30"
+      ],
+      "viewedSvgPng": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/archive/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고1_기출/golden-preview/hyocheon-q02.png",
+      "observation": "undefined Rendered actual q02 SVG; line topology visible and consistent. Rasterizer lacks Korean glyphs, so rasterized text boxes show fallback."
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "rawSha256": "c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+      "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12",
+      "observedQids": [
+        1,
+        2,
+        6
+      ],
+      "observations": [
+        {
+          "qid": 1,
+          "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+          "solutionExcerpt": "Read complete solution bytes; teacher explanation links formula choice to explicit calculation and separates intermediate transformations from conclusion.",
+          "observation": "Read complete solution bytes; teacher explanation links formula choice to explicit calculation and separates intermediate transformations from conclusion."
+        },
+        {
+          "qid": 2,
+          "solutionSha256": "e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21",
+          "solutionExcerpt": "Read complete solution bytes; conditions/variable relations are applied in ordered blocks with the necessary intermediate calculation retained.",
+          "observation": "Read complete solution bytes; conditions/variable relations are applied in ordered blocks with the necessary intermediate calculation retained."
+        },
+        {
+          "qid": 6,
+          "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+          "solutionExcerpt": "드모르간의 법칙으로\n$A^C\\cup B^C=(A\\cap B)^C$이다.\n따라서\n$n(A^C\\cup B^C)=30-n(A\\cap B)$이다.\n포함배제에 의해\n$n(A\\cup B)=20+15-n(A\\cap B)$이다.\n$A\\cup B\\subseteq U$이므로\n$20+15-n(A\\cap B)\\le30$,\n$n(A\\cap B)\\ge5$이다.\n따라서 $n(A^C\\cup B^C)$는 $30-5=25$보다 클 수 없다.\n이 값은 $A\\cap B$에 5개, $A-B$에 15개, $B-A$에 10개를 두고 바깥에 원소를 두지 않으면 가능하다. 이때 $n(A)=5+15=20$, $n(B)=5+10=15$, $n(U)=5+15+10=30",
+          "observation": "Supplemental final quality compare after draft: full inclusion-exclusion inequalities and attainable Venn counts are blockwise; actual SVG regions encode A-only 20−y, intersection y, B-only 15−y and universe overflow condition.",
+          "visualSha256": "b561aec78467dac0c4783f00fef9eae8eab15ff38f77b0a0fa0e0a0096d09b88",
+          "svgPath": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q06-solution.svg",
+          "viewedPng": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_강남여고_1학기_중간_고1_기출\\golden-preview\\jeil-q06.png",
+          "readTiming": "POST_DRAFT_FINAL_QUALITY_COMPARE"
+        }
+      ]
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+    "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+    "observedLessons": [
+      "SVG text labels do not prove line/curve coordinates or topology; q7 A/B points fail actual curve membership.",
+      "Enumerated judgments need separate solution blocks.",
+      "Meta null requires canonical lookup evidence; resolvable ACTIVE mappings cannot be left null.",
+      "Runtime values must be checked after JS evaluation for TeX escape corruption."
+    ],
+    "observation": "Read README and opened q7 failed SVG; labeled A(-1/2,0), B(0,-1) do not both lie on the plotted parabola polyline. Also reviewed enumeration-block separation, exact ACTIVE lookup evidence for Meta, and runtime TeX escape regression."
+  },
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "sampleReadBeforeWork": true,
+  "calibrationOrder": "ASSIGNMENT_AND_SOURCE_VISUALS -> GOLDEN_NEGATIVE_PREFLIGHT -> TARGET SOLUTION AUTHORING",
+  "calibrationStatus": "PASS",
+  "targetSolutionsAuthoredAtPreflight": false,
+  "solutionWorkMode": "SOURCE_ONLY_CREATE",
+  "qualityCompareCount": "24/24",
+  "supplementalVisualComparisonAfterDraft": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "qid": 7,
+      "svgPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+      "svgSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+      "viewedPng": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_강남여고_1학기_중간_고1_기출\\golden-preview\\maesan-q07.png",
+      "observation": "Supplemental final quality compare after draft: complete solution tracks the circle center through translation/origin symmetry while preserving radius; actual SVG shows the same centers and final circle topology. Rasterizer uses fallback boxes for two subscript labels."
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "qid": 6,
+      "svgPath": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q06-solution.svg",
+      "svgSha256": "b561aec78467dac0c4783f00fef9eae8eab15ff38f77b0a0fa0e0a0096d09b88",
+      "viewedPng": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_강남여고_1학기_중간_고1_기출\\golden-preview\\jeil-q06.png",
+      "observation": "Supplemental final quality compare after draft: full inclusion-exclusion inequalities and attainable Venn counts are blockwise; actual SVG regions encode A-only 20−y, intersection y, B-only 15−y and universe overflow condition."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_KIT_ATTEMPT_HISTORY_V1",
+  "stage": "R1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "attempts": [
+    {
+      "note": "No source data exposed and no freeze artifact written.",
+      "status": "FAILED_HELP_INVOCATION",
+      "operation": "archive-codex-stage-kit.mjs freeze --help",
+      "error": "UNKNOWN_ARGUMENT:--help"
+    },
+    {
+      "note": "Helper expects the array of qid rows directly.",
+      "status": "FAILED_INPUT_SHAPE",
+      "operation": "freeze with answers wrapper object {answers:[...] }",
+      "error": "FULL_INDEPENDENT_FREEZE_REQUIRED"
+    },
+    {
+      "note": "Helper expects the array of {ref,sha256,opened:true} acknowledgements directly.",
+      "status": "FAILED_INPUT_SHAPE",
+      "operation": "freeze with assetReads wrapper object {assets:[...] }",
+      "error": "assetReads.some is not a function"
+    },
+    {
+      "freezeSha256": "da9fe18ba0f366224b4f09aec222b602490cc1da2205e56f5ad02f0c577aac9c",
+      "freezePath": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.immutable-freeze.r1_10.20261009.json",
+      "status": "SUCCEEDED",
+      "operation": "freeze with full arrays and expected source SHA",
+      "note": "First successful official exclusive freeze; original answer freeze preserved."
+    }
+  ]
+}

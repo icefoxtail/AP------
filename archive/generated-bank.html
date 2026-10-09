@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Archive 2.0 | 모의고사 만들기</title>
+<style>
+:root{font-family:"Pretendard","Noto Sans KR","Malgun Gothic",system-ui,sans-serif;color:#172f4e;background:#f4f7fb}
+*{box-sizing:border-box}body{margin:0}button{cursor:pointer;font:inherit}
+header{background:#162d4c;color:white}
+.header-inner{max-width:1180px;margin:auto;padding:18px 26px;display:flex;align-items:center;justify-content:space-between}
+header a{color:#fff;text-decoration:none;font-size:18px;font-weight:800}header span{color:#b9cce2;font-size:12px}
+main{max-width:1180px;margin:0 auto;padding:42px 26px 90px}
+h1,h2,p{margin:0}h1{font-size:31px;letter-spacing:-1px}h2{font-size:20px;letter-spacing:-.5px}
+.subtitle{margin-top:10px;font-size:15px;color:#617996;line-height:1.5}
+.section{margin-top:24px;background:#fff;border:1px solid #dce5ef;border-radius:17px;padding:27px 30px}
+.section-head{display:flex;align-items:center;gap:11px;margin-bottom:22px}
+.step{width:32px;height:32px;display:grid;place-items:center;border-radius:9px;background:#e9f1fb;color:#1c538c;font-size:13px;font-weight:800}
+.exam-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:13px}
+.exam-card{display:flex;flex-direction:column;gap:11px;min-height:112px;padding:19px 22px;text-align:left;border:1.5px solid #d7e1ed;border-radius:12px;background:#fcfdff;color:#1d3a5b}
+.exam-card strong{font-size:18px;line-height:1.4}.exam-card small{font-size:13px;color:#647c98}
+.exam-card[aria-pressed="true"]{border-color:#2873c5;background:#eaf3ff;box-shadow:inset 0 0 0 1px #2873c5}
+.exam-card:hover{border-color:#2873c5}
+.summary{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.summary-copy{line-height:1.6;color:#607892;font-size:15px}
+.summary-copy strong{font-size:17px;color:#173d68}
+.primary{padding:14px 24px;border:1px solid #1768ba;border-radius:11px;color:#fff;background:#1768ba;font-size:16px;font-weight:800;white-space:nowrap;min-height:50px}
+.primary:disabled{opacity:.48;cursor:not-allowed}
+.primary:hover:not(:disabled){background:#0d559e}
+#message{margin-top:16px;min-height:23px;font-size:13px;color:#5a7190}
+#paper{display:none}
+.paper-question{margin:0 0 26px;break-inside:avoid;page-break-inside:avoid;font-size:15px;line-height:1.75;white-space:pre-wrap}
+.paper-question .paper-number{font-weight:800;font-size:16px;margin:0 0 6px}
+.paper-question .stem{white-space:pre-wrap}
+.paper-question .choice{padding:5px 0}
+.question-table-wrap{max-width:100%;overflow-x:auto;margin:10px 0}
+.question-table{border-collapse:collapse;white-space:normal;font-size:13px}
+.question-table th,.question-table td{border:1px solid #a5b2c0;text-align:center;padding:4px 8px}
+img.math-figure{display:block;max-width:100%;max-height:410px;object-fit:contain;margin:12px 0}
+.answer{margin:12px 0;border-top:1px solid #dce4ec;padding:12px 0;white-space:pre-wrap}
+.generated-question-search{display:grid;gap:10px}
+.generated-question-search input{width:100%;min-height:46px;padding:10px 12px;border:1px solid #cbd8e6;border-radius:9px;font:inherit;color:#173d68}
+.generated-search-summary{margin:8px 0;color:#607892;font-size:14px;line-height:1.5}
+.generated-question-card{min-height:142px}
+.generated-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+.generated-actions button{border:1px solid #b8c7d8;border-radius:8px;padding:8px 12px;background:#fff;color:#173d68;font-weight:700;min-height:40px}
+.generated-actions button.primary{color:#fff;background:#1768ba;border-color:#1768ba}
+.generated-actions button:disabled{opacity:.48;cursor:not-allowed}
+.generated-preview{margin-top:16px;padding:18px;border:1px solid #dce5ef;border-radius:12px;background:#fff}
+.generated-preview[hidden]{display:none}
+.generated-selection{display:grid;gap:8px;margin:10px 0 16px}
+.generated-selection-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px;border:1px solid #dce5ef;border-radius:8px}
+.generated-selection-row button{border:1px solid #b8c7d8;border-radius:8px;padding:7px 10px;background:#fff;color:#173d68}
+@media(max-width:660px){
+ .header-inner{padding:15px 18px}main{padding:25px 15px 70px}h1{font-size:26px}
+ .section{padding:20px 18px;margin-top:17px}.exam-grid{grid-template-columns:1fr}
+ .summary{display:block}.primary{margin-top:20px;width:100%}
+}
+@media print{
+ @page{size:A4;margin:16mm 15mm}
+ body{background:#fff}header,.intro,.section,#message{display:none!important}
+ main{max-width:none;margin:0;padding:0}#paper{display:block!important}
+ #paper h1{font-size:19px;text-align:center;margin-bottom:25px}
+ .paper-question{page-break-inside:avoid}
+}
+</style>
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]},svg:{fontCache:'global'},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<header><div class="header-inner"><a href="workspace.html">Archive 2.0</a><span>모의고사 만들기</span></div></header>
+<main>
+<div class="intro"><h1>모의고사 만들기</h1><p class="subtitle">시험지를 선택하면 같은 문항 수로 모의고사를 출력합니다.</p></div>
+<section class="section" aria-labelledby="exam-heading">
+<div class="section-head"><span class="step">01</span><h2 id="exam-heading">시험지 선택</h2></div>
+<div id="exam-cards" class="exam-grid">시험지 목록을 불러오는 중입니다.</div>
+</section>
+<section class="section" aria-labelledby="generated-search-heading">
+<div class="section-head"><span class="step">G</span><h2 id="generated-search-heading">생성 문항 검색·선택</h2></div>
+<p class="summary-copy">학생 공급이 승인된 생성 문항만 검색하고 선택할 수 있습니다. 정답과 해설은 문제 보기 화면에 표시하지 않습니다.</p>
+<div class="generated-question-search">
+<label for="generated-search">학교명, 학년, 과목, 단원, 원본 문항 번호 또는 UID</label>
+<input id="generated-search" type="search" autocomplete="off" placeholder="예: 팔마고, 원의 방정식, q10">
+</div>
+<p id="generated-search-summary" class="generated-search-summary" role="status" aria-live="polite">승인된 생성 문항을 불러오는 중입니다.</p>
+<div id="generated-results" class="exam-grid" aria-live="polite"></div>
+<div id="generated-preview" class="generated-preview" hidden></div>
+<p id="generated-selection-summary">선택된 문항이 없습니다.</p>
+<div id="generated-selection-list" class="generated-selection"></div>
+<div class="generated-actions">
+<button id="generated-print" class="primary" type="button" disabled>선택한 문항 인쇄</button>
+<button id="generated-clear" type="button" disabled>선택 초기화</button>
+</div>
+</section>
+<section class="section" aria-labelledby="print-heading">
+<div class="section-head"><span class="step">02</span><h2 id="print-heading">모의고사 출력</h2></div>
+<div class="summary"><div id="selection-summary" class="summary-copy">출력할 시험지를 선택해 주세요.</div><button id="print" type="button" class="primary" disabled>모의고사 출력 →</button></div>
+</section>
+<div id="message" role="status" aria-live="polite"></div>
+<section id="paper"><h1 id="paper-title">모의고사</h1><div id="paper-items"></div></section>
+</main>
+<script>
+"use strict";
+const INDEX="data/generated-lite-consumer/v1/index.json";
+// Exact original source JS counts, independently verified against 2026 main.
+const SOURCE_EXAMS=Object.freeze({
+ "8266fa476906e9134b94f23e803bd3b2fb26ece4":{school:"복성고",year:2026,grade:"고1",subject:"공통수학1",semester:1,term:"기말",count:23},
+ "69ad80ffa9ec80b2592bee26ffce247f8d7013d1":{school:"효천고",year:2026,grade:"고1",subject:"공통수학1",semester:1,term:"중간",count:26}
+});
+const UNIT_LABELS=Object.freeze({});
+let rows=[],selectableRows=[],searchableRows=[],excludedHoldUids=new Set(),examChoice=null,busy=false,generatedBusy=false;
+const selectedGenerated=new Map();
+const $=id=>document.getElementById(id),positions="①②③④⑤",cache=new Map();
+const status=message=>$("message").textContent=message;
+const unique=items=>new Set(items).size===items.length;
+// Six reviewed Palma B05/B06 historical source UIDs are preserved, not reissued.
+const APPROVED_LEGACY_PALMA_UIDS=new Set(["B05_Q04_C01_DISTANCE_SUM_MIN","B05_Q09_C01_CENTROID_RATIO_RECOVERY","B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY","B06_Q05_C01_TWO_POINT_LINE_INTERSECTION","B06_Q05_C02_INTERSECTION_PARALLEL_LINE","B06_Q23_C01_PARAMETER_INTERSECTION_EQUIDISTANCE"]);
+const validGeneratedUid=row=>/^ALITE-[A-Za-z0-9-]+$/.test(row.uid)||
+ (APPROVED_LEGACY_PALMA_UIDS.has(row.uid)&&row.sourceKind==="generated"&&row.school==="팔마고"&&row.year===2025&&row.approval==="REVIEW_APPROVED"&&row.reviewStatus==="REVIEW_PASS");
+const isSelectable=row=>{
+ if(!row||row.sourceKind!=="generated"||row.consumerSelectable!==true||excludedHoldUids.has(row.uid))return false;
+ const reviewed=row.approval==="REVIEW_APPROVED"&&row.reviewStatus==="REVIEW_PASS";
+ const directed=row.approval==="USER_DIRECTED_OPERATING_APPROVED"&&(
+  String(row.reviewApprovalBasis||"").startsWith("USER_DIRECTED_OPERATING_APPROVAL_")||
+  row.reviewApprovalBasis==="USER_EXPLICIT_FIX_AND_MAIN_MERGE_20261008"
+ );
+ const userQuality=row.approval==="USER_DIRECTED_QUALITY_APPROVED"&&String(row.reviewApprovalBasis||"").startsWith("USER_DIRECTED_QUALITY_APPROVED");
+ return reviewed||directed||userQuality;
+};
+const unitName=row=>UNIT_LABELS[row.l2]||null;
+async function readJson(path){
+ if(typeof path!=="string"||!/^data\/generated-lite-consumer\/v1\/[a-zA-Z0-9_./-]+\.json$/.test(path)||path.includes(".."))throw Error("등록 경로 불일치");
+ const response=await fetch(path,{cache:"no-cache"});
+ if(!response.ok)throw Error("등록 데이터 로드 실패: "+response.status);
+ return response.json();
+}
+function text(parent,value,tag="div",cls=""){const node=document.createElement(tag);if(cls)node.className=cls;node.textContent=String(value??"");parent.appendChild(node);return node;}
+async function math(){if(window.MathJax?.typesetPromise)try{await MathJax.typesetPromise();}catch(e){console.warn("수식 표시 확인 필요",e)}}
+async function questionFor(row){
+ if(!isSelectable(row))throw Error("학생 선택 승인이 없는 생성 문항입니다.");
+ if(!cache.has(row.shard)){
+  cache.set(row.shard,readJson(row.shard).catch(e=>{cache.delete(row.shard);throw e}));
+ }
+ const data=await cache.get(row.shard);
+ if(data.schemaVersion!=="ALIVE_GENERATED_CONSUMER_SHARD_V1"||!Array.isArray(data.records))throw Error("문항 등록 스키마 오류");
+ const matches=data.records.filter(r=>r.generatedUid===row.uid&&r.localOrdinal===row.localOrdinal);
+ if(matches.length!==1||matches[0].sourceKind!=="generated"||!Array.isArray(matches[0].question?.choices))throw Error("문항 UID/보기 결속 오류");
+ const question=matches[0].question;
+ const objective=question.questionType==="객관식"&&question.choices.length===5&&positions.includes(question.answer);
+ const subjective=["서술형","단답형","주관식"].includes(question.questionType)&&question.choices.length===0&&String(question.answer||"").trim()!=="";
+ if(!objective&&!subjective)throw Error("문항 형식/보기/정답 결속 오류");
+ return question;
+}
+function figure(parent,q){
+ if(!q.image)return;
+ if(!/^assets\/generated-lite\/ALITE-[A-Za-z0-9-]+\.svg$/.test(q.image))throw Error("승인 자산 경로 오류");
+ const img=document.createElement("img");img.src=q.image;img.alt=q.imageAlt||"문항 수학 시각자료";img.className="math-figure";parent.appendChild(img);
+}
+function questionStem(parent,value){
+ const raw=String(value??""),container=document.createElement("div");container.className="stem";
+ const pattern=/<div class="question-table-wrap"><table class="question-table">([\s\S]*?)<\/table><\/div>/g;
+ let cursor=0,match;
+ while((match=pattern.exec(raw))!==null){
+  const inside=match[1],rows=[...inside.matchAll(/<tr>([\s\S]*?)<\/tr>/g)];
+  const outside=inside.replace(/<\/?(?:thead|tbody)>/g,"").replace(/<tr>[\s\S]*?<\/tr>/g,"").trim();
+  if(!rows.length||outside)continue;
+  const grid=rows.map(row=>{
+   const cells=[...row[1].matchAll(/<(th|td)>([^<>]*)<\/\1>/g)];
+   const rest=row[1].replace(/<(?:th|td)>[^<>]*<\/(?:th|td)>/g,"").trim();
+   return cells.length&&!rest?cells.map(c=>({tag:c[1],label:c[2]})):null;
+  });
+  if(grid.some(cells=>!cells))continue;
+  if(match.index>cursor)text(container,raw.slice(cursor,match.index),"span");
+  const wrap=document.createElement("div");wrap.className="question-table-wrap";
+  const table=document.createElement("table");table.className="question-table";
+  for(const cells of grid){const tr=document.createElement("tr");for(const cell of cells)text(tr,cell.label,cell.tag);table.appendChild(tr);}
+  wrap.appendChild(table);container.appendChild(wrap);cursor=pattern.lastIndex;
+ }
+ if(cursor<raw.length)text(container,raw.slice(cursor),"span");
+ parent.appendChild(container);
+}
+function questionMarkup(parent,q,row,answers=false){
+ questionStem(parent,q.content);figure(parent,q);
+ q.choices.forEach((c,i)=>text(parent,positions[i]+" "+c,"div","choice"));
+ if(answers){text(parent,"정답: "+q.answer+"\n"+(q.solution||""),"div","answer");}
+}
+
+function examTitle(e){return e.year+" "+e.school+" "+e.grade+" "+e.semester+"학기 "+e.term;}
+function examRows(e){return selectableRows.filter(r=>r.sourceExamBlobSha===e.sha&&r.school===e.school&&r.year===e.year&&r.grade===e.grade);}
+function availableExams(){
+ return Object.entries(SOURCE_EXAMS).map(([sha,e])=>({...e,sha})).filter(e=>examRows(e).length>=e.count);
+}
+function displayExams(){
+ const host=$("exam-cards");host.replaceChildren();
+ for(const e of availableExams()){
+  const card=document.createElement("button");card.type="button";
+  card.className="exam-card";card.setAttribute("aria-pressed",String(examChoice?.sha===e.sha));
+  text(card,examTitle(e),"strong");
+  text(card,e.count+"문항 · "+e.subject,"small");
+  card.onclick=()=>{examChoice=e;displayExams();updateSelection();};
+  host.appendChild(card);
+ }
+ if(!host.children.length)host.textContent="출력할 수 있는 시험지가 없습니다.";
+}
+function updateSelection(){
+ $("print").disabled=!examChoice||busy;
+ const el=$("selection-summary");el.replaceChildren();
+ if(!examChoice){el.textContent="출력할 시험지를 선택해 주세요.";return;}
+ text(el,examTitle(examChoice),"strong");
+ text(el,examChoice.count+"문항 · 시험지 원문과 동일한 문항 수","div");
+}
+function chooseVariants(pool,count){
+ // Prefer distinct source question numbers before taking additional variants.
+ const groups=new Map();
+ for(const r of pool){if(!groups.has(r.sourceQid))groups.set(r.sourceQid,[]);groups.get(r.sourceQid).push(r);}
+ const ordered=[...groups.entries()].sort((a,b)=>a[0]-b[0]).map(([,items])=>{
+  for(let i=items.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[items[i],items[j]]=[items[j],items[i]];}
+  return items;
+ });
+ const chosen=[];
+ while(chosen.length<count&&ordered.some(items=>items.length)){
+  for(const items of ordered){if(items.length)chosen.push(items.pop());if(chosen.length===count)break;}
+ }
+ return chosen;
+}
+function generatedTitle(row){
+ const unit=row.l2Label||unitName(row)||row.l2||"단원 정보 없음";
+ return String(row.school||"")+" · "+String(row.year||"")+" · "+String(row.grade||"")+" · "+String(row.subject||"")+" · "+String(unit);
+}
+function generatedSearchText(row){
+ return [row.school,row.year,row.grade,row.subject,row.l1,row.l2Label,unitName(row),row.l2,"q"+row.sourceQid,row.sourceQid,row.uid]
+  .filter(value=>value!==undefined&&value!==null).join(" ").normalize("NFC").toLocaleLowerCase("ko-KR");
+}
+function renderGeneratedSearch(){
+ const host=$("generated-results"),input=$("generated-search"),summary=$("generated-search-summary");
+ if(!host||!input||!summary)return;
+ const query=String(input.value||"").trim().normalize("NFC").toLocaleLowerCase("ko-KR");
+ host.replaceChildren();
+ if(!query){summary.textContent=selectableRows.length+"개 승인 문항 중 검색어를 입력해 주세요.";return;}
+ const terms=query.split(/\s+/).filter(Boolean);
+ const matches=searchableRows.filter(item=>terms.every(term=>item.searchText.includes(term))).slice(0,50);
+ summary.textContent=matches.length+"개 표시 (최대 50개) · 검색 대상 "+selectableRows.length+"개 승인 문항";
+ if(!matches.length){text(host,"검색 조건에 맞는 승인 생성 문항이 없습니다.","p");return;}
+ for(const item of matches){
+  const row=item.row,card=document.createElement("article");card.className="exam-card generated-question-card";
+  text(card,generatedTitle(row),"strong");
+  text(card,"원본 문항 q"+row.sourceQid+" · "+row.uid,"small");
+  const actions=document.createElement("div");actions.className="generated-actions";
+  const open=document.createElement("button");open.type="button";open.textContent="문항 열기";open.addEventListener("click",()=>openGeneratedPreview(row));
+  const add=document.createElement("button");add.type="button";add.className="primary";add.textContent=selectedGenerated.has(row.uid)?"추가됨":"시험지에 선택";add.disabled=selectedGenerated.has(row.uid);add.addEventListener("click",()=>addGeneratedQuestion(row));
+  actions.appendChild(open);actions.appendChild(add);card.appendChild(actions);host.appendChild(card);
+ }
+}
+async function openGeneratedPreview(row){
+ const host=$("generated-preview");host.hidden=false;host.replaceChildren();text(host,"문항을 불러오는 중입니다.","p");
+ try{
+  const q=await questionFor(row);host.replaceChildren();text(host,generatedTitle(row),"h3");
+  text(host,"원본 문항 q"+row.sourceQid+" · "+row.uid,"p");
+  const body=document.createElement("section");body.className="paper-question";questionStem(body,q.content);figure(body,q);
+  if(Array.isArray(q.choices))q.choices.forEach((choice,i)=>text(body,positions[i]+" "+choice,"div","choice"));
+  host.appendChild(body);
+  const add=document.createElement("button");add.type="button";add.className="primary";add.textContent=selectedGenerated.has(row.uid)?"선택됨":"시험지에 선택";add.disabled=selectedGenerated.has(row.uid);add.addEventListener("click",()=>addGeneratedQuestion(row));host.appendChild(add);
+  await math();
+ }catch(error){host.replaceChildren();text(host,error.message||"문항을 열지 못했습니다.","p");}
+}
+function addGeneratedQuestion(row){
+ if(!isSelectable(row)){status("학생 선택 승인이 없는 문항입니다.");return;}
+ if(!selectedGenerated.has(row.uid))selectedGenerated.set(row.uid,row);
+ renderGeneratedSelection();renderGeneratedSearch();
+}
+function renderGeneratedSelection(){
+ const list=$("generated-selection-list"),summary=$("generated-selection-summary"),print=$("generated-print"),clear=$("generated-clear");
+ if(!list||!summary||!print||!clear)return;
+ list.replaceChildren();const selected=[...selectedGenerated.values()];
+ summary.textContent=selected.length?selected.length+"개 문항이 선택되었습니다.":"선택된 문항이 없습니다.";
+ for(const row of selected){
+  const item=document.createElement("div");item.className="generated-selection-row";
+  text(item,generatedTitle(row)+" · 원본 q"+row.sourceQid+" · "+row.uid,"span");
+  const remove=document.createElement("button");remove.type="button";remove.textContent="제거";remove.addEventListener("click",()=>{selectedGenerated.delete(row.uid);renderGeneratedSelection();renderGeneratedSearch();});item.appendChild(remove);list.appendChild(item);
+ }
+ print.disabled=!selected.length||generatedBusy;clear.disabled=!selected.length||generatedBusy;
+}
+async function printGeneratedSelection(){
+ if(generatedBusy||!selectedGenerated.size)return;
+ generatedBusy=true;renderGeneratedSelection();const selected=[...selectedGenerated.values()];
+ try{
+  if(!unique(selected.map(row=>row.uid))||selected.some(row=>!isSelectable(row)))throw Error("선택 문항 승인 상태를 확인하지 못했습니다.");
+  status("선택한 "+selected.length+"개 문항을 준비하고 있습니다.");
+  const questions=await Promise.all(selected.map(questionFor));
+  const panel=$("paper-items"),fragment=document.createDocumentFragment();
+  for(let i=0;i<selected.length;i++){
+   const part=document.createElement("section");part.className="paper-question";
+   text(part,String(i+1)+".","div","paper-number");questionMarkup(part,questions[i],selected[i],false);fragment.appendChild(part);
+  }
+  panel.replaceChildren(fragment);$("paper-title").textContent="생성문제 · "+selected.length+"문항";
+  await math();status("선택한 "+selected.length+"개 문항 인쇄 화면을 엽니다.");window.print();
+ }catch(error){status("선택 문항을 출력하지 못했습니다: "+error.message);}
+ finally{generatedBusy=false;renderGeneratedSelection();updateSelection();}
+}
+async function printExam(){
+ if(!examChoice||busy)return;
+ const e=examChoice;
+ const pool=examRows(e);
+ if(pool.length<e.count){status("해당 시험지의 문항 수가 부족합니다.");return;}
+ busy=true;updateSelection();status("모의고사 "+e.count+"문항을 준비하고 있습니다.");
+ try{
+  const chosen=chooseVariants(pool,e.count);
+  if(chosen.length!==e.count||!unique(chosen.map(r=>r.uid)))throw Error("문항 수 또는 UID 구성 오류");
+  const questions=await Promise.all(chosen.map(r=>questionFor(r)));
+  const panel=$("paper-items"),fragment=document.createDocumentFragment();
+  for(let i=0;i<chosen.length;i++){
+   const part=document.createElement("section");part.className="paper-question";
+   text(part,String(i+1)+".","div","paper-number");questionMarkup(part,questions[i],chosen[i],false);
+   fragment.appendChild(part);
+  }
+  panel.replaceChildren(fragment);
+  $("paper-title").textContent=examTitle(e)+" 모의고사";
+  await math();
+  status(e.count+"문항 인쇄 화면을 엽니다.");
+  window.print();
+ }catch(error){status("출력을 준비하지 못했습니다: "+error.message);}
+ finally{busy=false;updateSelection();}
+}
+$("print").addEventListener("click",printExam);
+$("generated-search").addEventListener("input",renderGeneratedSearch);
+$("generated-print").addEventListener("click",printGeneratedSelection);
+$("generated-clear").addEventListener("click",()=>{selectedGenerated.clear();renderGeneratedSelection();renderGeneratedSearch();});
+(async()=>{
+ try{
+  const data=await readJson(INDEX);
+  if(data.schemaVersion!=="ALIVE_GENERATED_CONSUMER_INDEX_V1"||data.sourceKind!=="generated"||!Array.isArray(data.records)||data.records.length!==data.approvedCount||data.records.length<1)throw Error("문제지 데이터 확인 실패");
+  const ids=data.records.map(r=>r.uid);
+  if(!Array.isArray(data.excludedHoldUids)||!unique(ids)||data.records.some(row=>!validGeneratedUid(row)||data.excludedHoldUids.includes(row.uid)))throw Error("문항 데이터 확인 실패");
+  rows=data.records;excludedHoldUids=new Set(data.excludedHoldUids);
+  selectableRows=rows.filter(isSelectable);
+  searchableRows=selectableRows.map(row=>({row,searchText:generatedSearchText(row)}));
+  const requestedUid=typeof location==='object'?new URLSearchParams(location.search).get('uid'):null;
+  if(requestedUid&&selectableRows.some(row=>row.uid===requestedUid))$("generated-search").value=requestedUid;
+  displayExams();updateSelection();renderGeneratedSearch();renderGeneratedSelection();status("");
+ }catch(error){status("시험지를 불러오지 못했습니다: "+error.message);$("exam-cards").textContent="시험지 목록을 확인할 수 없습니다.";}
+})();
+</script>
+</body>
+</html>

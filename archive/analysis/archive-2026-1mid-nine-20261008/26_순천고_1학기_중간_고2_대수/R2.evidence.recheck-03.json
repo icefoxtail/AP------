@@ -1,0 +1,1462 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R2",
+  "examUid": "26_순천고_1학기_중간_고2_대수",
+  "artifactSha": "8c0ba378b0cad4b912876fd1cedd518125a9f38b",
+  "artifactRawSha256": "e7f9df6cc5f838a9dd3b4e4c0f0587c39d5cfc0e118f10bb185387c539bcd664",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "reviewerId": "r2_04",
+  "workingPath": ".tmp/archive/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/26_순천고_1학기_중간_고2_대수.js",
+  "productionPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+  "assetRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_순천고_1학기_중간_고2_대수",
+  "denominator": 24,
+  "expectedQids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "studentBundle": {
+    "path": ".tmp/archive/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R2.student.json",
+    "sha256": "bd7af2e4cdac770c7a645cb7cfcb2a86e85ff8d8a0194e947b7caa11e95472bd",
+    "studentParity": "EXACT"
+  },
+  "independentFreeze": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R2.stage-kit-freeze.json",
+    "sha256": "49fd0395e830d8c57e4177d86da22c079652b794a1cffa392905dfa489f030bd",
+    "reviewerId": "r2_04",
+    "questionCount": 24
+  },
+  "postfreezeDisclosure": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R2.stage-kit-postfreeze.json",
+    "sha256": "a55313fb1d405d6141aa80b2949d305146d787e581182abc548f29907ccc13b4",
+    "studentParity": "EXACT",
+    "qids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ]
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "blindAnswer": "④ (8)",
+      "currentStoredAnswer": "④",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": null,
+      "reasoning": "2^(-2)·(2^3)^(5/3)=2^(-2)·2^5=2^3.",
+      "originalFrozenAnswer": null,
+      "adjudication": null,
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-A-01-CORE",
+        "subUnit": "core",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SINGLE_TOPIC",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "crosswalkRecordId": null
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current resolver independently reaches semantic FINAL for this qid and reports projection PROJECTION_UNMATERIALIZED (CROSSWALK_L2_PROJECTION_MISMATCH). Current H22 Algebra projection lacks a usable exact binding; preserve null fields without nearest-key inference.",
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 1
+      },
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Bucket 1: the exponent-law operation is apparent immediately; two direct power rewrites complete the arithmetic."
+      }
+    },
+    {
+      "qid": 2,
+      "blindAnswer": "⑤ (∛6)",
+      "currentStoredAnswer": "⑤",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": null,
+      "reasoning": "The cube-root product is ∛((√21+3)(√21−3))=∛12; dividing by ⁹√8=∛2 gives ∛6.",
+      "originalFrozenAnswer": null,
+      "adjudication": null,
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "exponent log",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SINGLE_TOPIC",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "crosswalkRecordId": "H2-M1-RPM-067"
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current resolver independently reaches semantic FINAL for this qid and reports projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current H22 Algebra projection lacks a usable exact binding; preserve null fields without nearest-key inference.",
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 2
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Bucket 3: nested radicals require a deliberate conjugate-product simplification before division."
+      }
+    },
+    {
+      "qid": 3,
+      "blindAnswer": "② (3)",
+      "currentStoredAnswer": "②",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": null,
+      "reasoning": "log₂9·log₃(2√2)=2log₂3·(3/2)log₃2=3.",
+      "originalFrozenAnswer": null,
+      "adjudication": null,
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "exponent log",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SINGLE_TOPIC",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "crosswalkRecordId": "H2-M1-RPM-075"
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current resolver independently reaches semantic FINAL for this qid and reports projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current H22 Algebra projection lacks a usable exact binding; preserve null fields without nearest-key inference.",
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 3
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Bucket 2: standard log power and reciprocal identities combine directly once the product is read."
+      }
+    },
+    {
+      "qid": 4,
+      "blindAnswer": "① (0.0567)",
+      "currentStoredAnswer": "①",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": null,
+      "reasoning": "−1.2464=0.7536−2=log(5.67)−log(100)=log(0.0567).",
+      "originalFrozenAnswer": null,
+      "adjudication": null,
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "exponent log",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SINGLE_TOPIC",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "crosswalkRecordId": "H2-M1-RPM-078"
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current resolver independently reaches semantic FINAL for this qid and reports projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current H22 Algebra projection lacks a usable exact binding; preserve null fields without nearest-key inference.",
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 4
+      },
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Bucket 1: one standard decimal-place shift determines x directly."
+      }
+    },
+    {
+      "qid": 5,
+      "blindAnswer": "③ (2)",
+      "currentStoredAnswer": "③",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": null,
+      "reasoning": "Vertical asymptote gives a=−2; (5,0) gives log₃3+b=0, so b=−1 and ab=2.",
+      "originalFrozenAnswer": null,
+      "adjudication": null,
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "logarithmic function",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SINGLE_TOPIC",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "crosswalkRecordId": "H2-M1-RPM-088"
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 5
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Bucket 3: interpret an asymptote and a plotted point as two parameter conditions."
+      }
+    },
+    {
+      "qid": 6,
+      "blindAnswer": "④ (ㄴ, ㄷ)",
+      "currentStoredAnswer": "④",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": null,
+      "reasoning": "ㄱ is false since 45°=π/4; 300° is the x-axis reflection of 60°; −5π/6 is in quadrant III.",
+      "originalFrozenAnswer": null,
+      "adjudication": null,
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "trigonometric basic",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SINGLE_TOPIC",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "crosswalkRecordId": "H2-M1-RPM-095"
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current resolver independently reaches semantic FINAL for this qid and reports projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current H22 Algebra projection lacks a usable exact binding; preserve null fields without nearest-key inference.",
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 6
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Bucket 2: apply familiar angle conversion, reflection, and quadrant facts to a short list."
+      }
+    },
+    {
+      "qid": 7,
+      "blindAnswer": "⑤ (11π/3)",
+      "currentStoredAnswer": "⑤",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": null,
+      "reasoning": "sinθ·tanθ>0 requires cosθ>0; the negative sum selects quadrant IV, and 11π/3 is coterminal with 5π/3.",
+      "originalFrozenAnswer": null,
+      "adjudication": null,
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "trigonometric basic",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SINGLE_TOPIC",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "crosswalkRecordId": "H2-M1-RPM-098"
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current resolver independently reaches semantic FINAL for this qid and reports projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current H22 Algebra projection lacks a usable exact binding; preserve null fields without nearest-key inference.",
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 7
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Bucket 3: combine two sign constraints before selecting a coterminal angle."
+      }
+    },
+    {
+      "qid": 8,
+      "blindAnswer": "③ (3)",
+      "currentStoredAnswer": "③",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": null,
+      "reasoning": "Argument positive for −2<x<5; base |x−2| must be positive and not 1. Valid integer x are −1,0,4, whose sum is 3.",
+      "originalFrozenAnswer": null,
+      "adjudication": null,
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "logarithmic function",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "crosswalkRecordId": null
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current resolver independently reaches semantic FINAL for this qid and reports projection PROJECTION_UNMATERIALIZED (CROSSWALK_PROJECTION_ROW_MISSING). Current H22 Algebra projection lacks a usable exact binding; preserve null fields without nearest-key inference.",
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 8
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Bucket 3: factor a quadratic and combine three logarithm-domain restrictions with integer enumeration."
+      }
+    },
+    {
+      "qid": 9,
+      "blindAnswer": "⑤ (4)",
+      "currentStoredAnswer": "⑤",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": null,
+      "reasoning": "For every negative exponent, B^x>1 iff 0<B<1. Here B=((a−4)^2+1)/2, so integer a must satisfy |a−4|<1, giving 4.",
+      "originalFrozenAnswer": null,
+      "adjudication": null,
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-02",
+        "standardUnit": "지수함수",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+        "subUnit": "exponential function",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SINGLE_TOPIC",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "crosswalkRecordId": "H2-M1-RPM-083"
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current resolver independently reaches semantic FINAL for this qid and reports projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current H22 Algebra projection lacks a usable exact binding; preserve null fields without nearest-key inference.",
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 9
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Bucket 3: translate a universal exponential inequality to a base interval, then solve for integer a."
+      }
+    },
+    {
+      "qid": 10,
+      "blindAnswer": "② (3)",
+      "currentStoredAnswer": "②",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": null,
+      "reasoning": "Domain is −4<x<7; product inequality reduces to (x−6)(x+3)≥0, leaving integer x=−3,6; sum 3.",
+      "originalFrozenAnswer": null,
+      "adjudication": null,
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "logarithmic function",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "crosswalkRecordId": "H2-M1-RPM-091"
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current resolver independently reaches semantic FINAL for this qid and reports projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current H22 Algebra projection lacks a usable exact binding; preserve null fields without nearest-key inference.",
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 10
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Bucket 3: combine log-domain, quadratic inequality, and integer-sum conditions."
+      }
+    },
+    {
+      "qid": 11,
+      "blindAnswer": "④ (25)",
+      "currentStoredAnswer": "④",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": null,
+      "reasoning": "Right shift h=(1/2)log₃5 multiplies coefficient 2 by 9^h=5, so a=10; point condition gives c=4 and b=c+7=11; sum 25.",
+      "originalFrozenAnswer": null,
+      "adjudication": null,
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-02",
+        "standardUnit": "지수함수",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+        "subUnit": "exponential function",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "crosswalkRecordId": "H2-M1-RPM-080"
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 11
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Bucket 3: coordinate two graph translations with a separate point condition and combine three constants."
+      }
+    },
+    {
+      "qid": 12,
+      "blindAnswer": "⑤ (28(log3−log2))",
+      "currentStoredAnswer": "⑤",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": null,
+      "reasoning": "The difference is 28log(vA/vB)=28log(3/2).",
+      "originalFrozenAnswer": null,
+      "adjudication": null,
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "exponent log",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SINGLE_TOPIC",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "crosswalkRecordId": "H2-M1-RPM-075"
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current resolver independently reaches semantic FINAL for this qid and reports projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current H22 Algebra projection lacks a usable exact binding; preserve null fields without nearest-key inference.",
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 12
+      },
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Bucket 1: substitute the stated speed ratio in the supplied model and apply the log quotient law."
+      }
+    },
+    {
+      "qid": 13,
+      "blindAnswer": "① (−√10/5)",
+      "currentStoredAnswer": "①",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": null,
+      "reasoning": "The fraction simplifies to tanθ=3. In quadrant III, sinθ=−3/√10 and cosθ=−1/√10, so sinθ−cosθ=−2/√10.",
+      "originalFrozenAnswer": null,
+      "adjudication": null,
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_EQUATION",
+        "subUnit": "trigonometric equation",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "crosswalkRecordId": null
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current resolver independently reaches semantic FINAL for this qid and reports projection PROJECTION_UNMATERIALIZED (CROSSWALK_L2_PROJECTION_MISMATCH). Current H22 Algebra projection lacks a usable exact binding; preserve null fields without nearest-key inference.",
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 13
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Bucket 3: factor a non-obvious rational trig expression, then use a quadrant to recover both components."
+      }
+    },
+    {
+      "qid": 14,
+      "blindAnswer": "① (11년 후)",
+      "currentStoredAnswer": "①",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": null,
+      "reasoning": "Compare powers of 2: 4+t/2>12−t/4 iff t>32/3; least natural t is 11.",
+      "originalFrozenAnswer": null,
+      "adjudication": null,
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-02",
+        "standardUnit": "지수함수",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+        "subUnit": "exponential function",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SINGLE_TOPIC",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "crosswalkRecordId": "H2-M1-RPM-086"
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 14
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Bucket 2: rewrite two standard exponential models and solve one strict threshold inequality."
+      }
+    },
+    {
+      "qid": 15,
+      "blindAnswer": "② (3√2/4)",
+      "currentStoredAnswer": "②",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": null,
+      "reasoning": "For P=(p,p), horizontal and vertical leg equality gives −log₄p=−log₂(p+1/4); thus √p=p+1/4, so p=1/4 and the leg lengths are 3/4; QR=(3/4)√2.",
+      "originalFrozenAnswer": null,
+      "adjudication": null,
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-02",
+        "standardUnit": "지수함수",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+        "subUnit": "exponential function",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "crosswalkRecordId": "H2-M1-RPM-086"
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 15
+      },
+      "difficulty": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "Bucket 4: parameterize a point and combine perpendicular-distance geometry with exponential/log equations."
+      }
+    },
+    {
+      "qid": 16,
+      "blindAnswer": "③ (0≤k<2)",
+      "currentStoredAnswer": "③",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": null,
+      "reasoning": "Set t=(1/3)^x>0. The quadratic t²−6kt+18k has no zero/nonpositive value for any t>0 exactly when its minimum is positive for 0<k<2, or when k=0 (then t²>0).",
+      "originalFrozenAnswer": null,
+      "adjudication": null,
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-02",
+        "standardUnit": "지수함수",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+        "subUnit": "exponential function",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "crosswalkRecordId": "H2-M1-RPM-084"
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current resolver independently reaches semantic FINAL for this qid and reports projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current H22 Algebra projection lacks a usable exact binding; preserve null fields without nearest-key inference.",
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 16
+      },
+      "difficulty": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "Bucket 4: positive substitution and parameter-dependent quadratic require boundary and sign-case analysis."
+      }
+    },
+    {
+      "qid": 17,
+      "blindAnswer": "② (169π/5)",
+      "currentStoredAnswer": "②",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": null,
+      "reasoning": "Equal sector angle and area condition give a²+b²=c². Integer legs with ab=60 are 5,12 and hypotenuse 13; perimeter 30 gives θ=2π/5 and sector area θ·13²/2=169π/5.",
+      "originalFrozenAnswer": null,
+      "adjudication": null,
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "trigonometric basic",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "crosswalkRecordId": null
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current resolver independently reaches semantic FINAL for this qid and reports projection PROJECTION_UNMATERIALIZED (CROSSWALK_PROJECTION_ROW_MISSING). Current H22 Algebra projection lacks a usable exact binding; preserve null fields without nearest-key inference.",
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 17
+      },
+      "difficulty": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "Bucket 4: infer a right triangle, enumerate integer triples, then combine arc length and sector area."
+      }
+    },
+    {
+      "qid": 18,
+      "blindAnswer": "④ (247/2)",
+      "currentStoredAnswer": "④",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": null,
+      "reasoning": "Tangent-intercept area is S_n=r^4/(2x₁y₁)=3^(8/n−3+2n)/2. The exponent is minimized over natural n at n=2, giving m=3^5/2; k+m=247/2.",
+      "originalFrozenAnswer": null,
+      "adjudication": null,
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "exponent log",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "crosswalkRecordId": "H2-M1-RPM-069"
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current resolver independently reaches semantic FINAL for this qid and reports projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current H22 Algebra projection lacks a usable exact binding; preserve null fields without nearest-key inference.",
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 18
+      },
+      "difficulty": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Bucket 4: derive a geometric expression and optimize a discrete exponent over natural n."
+      }
+    },
+    {
+      "qid": 19,
+      "blindAnswer": "④ (9)",
+      "currentStoredAnswer": "④",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": null,
+      "reasoning": "Collinearity gives b=a^4 and c=a^5; a^4−a=14 gives a=2, hence (a,b,c)=(2,16,32). Let u=log₂p,v=log₂q: 1/u+4/v=1; minimizing u+v gives u=3,v=6 and minimum 9.",
+      "originalFrozenAnswer": null,
+      "adjudication": null,
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "exponent log",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "crosswalkRecordId": "H2-M1-RPM-076"
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current resolver independently reaches semantic FINAL for this qid and reports projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current H22 Algebra projection lacks a usable exact binding; preserve null fields without nearest-key inference.",
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 19
+      },
+      "difficulty": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Bucket 4: recover exponential coordinates from collinearity and optimize a coupled logarithmic expression."
+      }
+    },
+    {
+      "qid": 20,
+      "blindAnswer": "③ (9; corrected after freeze)",
+      "currentStoredAnswer": "③",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH_AFTER_POSTFREEZE_ADJUDICATION",
+      "disposition": "Original freeze answer 8 retained; q20 correction to 9 is separately bound in R2.freeze-adjudication-q20.json.",
+      "reasoning": "Corrected after post-freeze recount: h(3)=1 gives the n=1 left intersection; each n=2,3,4 has one left intersection and no right intersection, so b=4. g counts total a=5; a+b=9.",
+      "originalFrozenAnswer": "8 (choice 2)",
+      "adjudication": {
+        "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R2.freeze-adjudication-q20.json",
+        "sha256": "2f86ea0a776bc579ab0f96ae04ba158fd26c618f7ade66b566927b46685fa4a0"
+      },
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "logarithmic function",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "crosswalkRecordId": "H2-M1-RPM-094"
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 20
+      },
+      "difficulty": {
+        "difficultyBucket": 5,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Bucket 5: exact counts across four piecewise tents and two logs require decisive branch, concavity, and endpoint analysis."
+      }
+    },
+    {
+      "qid": 21,
+      "blindAnswer": "45",
+      "currentStoredAnswer": "45",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": null,
+      "reasoning": "(abc)^n=3^(n/3)7^(n/5)11^(n/9) is an integer iff 3|n, 5|n, and 9|n; the least is lcm(3,5,9)=45.",
+      "originalFrozenAnswer": null,
+      "adjudication": null,
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "exponent log",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SINGLE_TOPIC",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "crosswalkRecordId": "H2-M1-RPM-069"
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current resolver independently reaches semantic FINAL for this qid and reports projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current H22 Algebra projection lacks a usable exact binding; preserve null fields without nearest-key inference.",
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 21
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Bucket 2: prime exponents reduce directly to a least-common-multiple condition."
+      }
+    },
+    {
+      "qid": 22,
+      "blindAnswer": "5",
+      "currentStoredAnswer": "5",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH_AFTER_POSTFREEZE_ADJUDICATION",
+      "disposition": "Original frozen candidate set was corrected after checking base monotonicity: a=3 is greater than 1 and does not produce maximum 2. The only valid value is a=5.",
+      "reasoning": "A(x)=−x²−8x+9=25−(x+4)² ranges from 9 at x=0 to 25 at x=−4 on [−6,0], so A(x)>1. For 0<a<1, log_a(A(x))<0 throughout, so maximum 2 is impossible. Thus a>1, log_a is increasing, and its maximum is log_a25 at x=−4. log_a25=2 implies a²=25; a>1 gives the unique value a=5.",
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "logarithmic function",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+        "templateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SINGLE_TOPIC",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "crosswalkRecordId": "H2-M1-RPM-093"
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 22
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Bucket 3: split the log-base monotonicity cases and compare the quadratic range."
+      },
+      "originalFrozenAnswer": "a∈{3,5}; condition does not determine a uniquely",
+      "adjudication": {
+        "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R2.freeze-adjudication-q22.json",
+        "sha256": "6134d2c3e45ac4b01728755589d740cd899169152676a6717e23e3d647fcb2e8"
+      }
+    },
+    {
+      "qid": 23,
+      "blindAnswer": "23",
+      "currentStoredAnswer": "23",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": null,
+      "reasoning": "For n=4,…,10 the values f(n) are 2,1,0,1,0,1,2 (positive/even has two roots, negative/even zero, zero one, negative/odd one); increases occur at n=6,8,9, whose sum is 23.",
+      "originalFrozenAnswer": null,
+      "adjudication": null,
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-A-01-CORE",
+        "subUnit": "core",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SINGLE_TOPIC",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "crosswalkRecordId": null
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current resolver independently reaches semantic FINAL for this qid and reports projection PROJECTION_UNMATERIALIZED (CROSSWALK_L2_PROJECTION_MISMATCH). Current H22 Algebra projection lacks a usable exact binding; preserve null fields without nearest-key inference.",
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 23
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Bucket 3: factor once, tabulate parity/sign root counts over the fixed integer range, then compare adjacent values."
+      }
+    },
+    {
+      "qid": 24,
+      "blindAnswer": "14",
+      "currentStoredAnswer": "14",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": null,
+      "reasoning": "The outer equation forces f(x)=3 or 7. For each level L, |(1/2)^x−a|+b=L has 2 roots when a>L−b and 1 otherwise (for L>b); count pairs (a,b) in 1..10 where counts sum to 3: b=1,2 each give 4 values of a; b=3 gives 6, total 14.",
+      "originalFrozenAnswer": null,
+      "adjudication": null,
+      "meta": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-02",
+        "standardUnit": "지수함수",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+        "subUnit": "exponential function",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "crosswalkRecordId": "H2-M1-RPM-086"
+      },
+      "metaStatus": "PASS",
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "metaResolutionRef": {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.meta-rpm-resolution.json",
+        "sha256": "eb189dac1eaeb7b7dfaf9cedbf1ad48c9465e2e8a1fe6aa4fd17e6e401544ae5",
+        "qid": 24
+      },
+      "difficulty": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "Bucket 4: convert to two function levels and count positive mirrored intersections across integer parameter cases."
+      }
+    }
+  ],
+  "itemHoldCount": 0,
+  "itemHolds": [],
+  "nextRequiredAction": "R3 actual render and release integrity",
+  "artifactDispositions": {
+    "artifactSha": "8c0ba378b0cad4b912876fd1cedd518125a9f38b",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current resolver semanticStatus FINAL; projection PROJECTION_UNMATERIALIZED (CROSSWALK_L2_PROJECTION_MISMATCH). Current 2022 H2 Algebra metadata offers no exact target binding; retain nullable projection debt and do not infer nearest keys.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current resolver semanticStatus FINAL; projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current 2022 H2 Algebra metadata offers no exact target binding; retain nullable projection debt and do not infer nearest keys.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current resolver semanticStatus FINAL; projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current 2022 H2 Algebra metadata offers no exact target binding; retain nullable projection debt and do not infer nearest keys.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current resolver semanticStatus FINAL; projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current 2022 H2 Algebra metadata offers no exact target binding; retain nullable projection debt and do not infer nearest keys.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [],
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION"
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current resolver semanticStatus FINAL; projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current 2022 H2 Algebra metadata offers no exact target binding; retain nullable projection debt and do not infer nearest keys.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current resolver semanticStatus FINAL; projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current 2022 H2 Algebra metadata offers no exact target binding; retain nullable projection debt and do not infer nearest keys.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current resolver semanticStatus FINAL; projection PROJECTION_UNMATERIALIZED (CROSSWALK_PROJECTION_ROW_MISSING). Current 2022 H2 Algebra metadata offers no exact target binding; retain nullable projection debt and do not infer nearest keys.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current resolver semanticStatus FINAL; projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current 2022 H2 Algebra metadata offers no exact target binding; retain nullable projection debt and do not infer nearest keys.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current resolver semanticStatus FINAL; projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current 2022 H2 Algebra metadata offers no exact target binding; retain nullable projection debt and do not infer nearest keys.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [],
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION"
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current resolver semanticStatus FINAL; projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current 2022 H2 Algebra metadata offers no exact target binding; retain nullable projection debt and do not infer nearest keys.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current resolver semanticStatus FINAL; projection PROJECTION_UNMATERIALIZED (CROSSWALK_L2_PROJECTION_MISMATCH). Current 2022 H2 Algebra metadata offers no exact target binding; retain nullable projection debt and do not infer nearest keys.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [],
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS"
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [],
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS"
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current resolver semanticStatus FINAL; projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current 2022 H2 Algebra metadata offers no exact target binding; retain nullable projection debt and do not infer nearest keys.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current resolver semanticStatus FINAL; projection PROJECTION_UNMATERIALIZED (CROSSWALK_PROJECTION_ROW_MISSING). Current 2022 H2 Algebra metadata offers no exact target binding; retain nullable projection debt and do not infer nearest keys.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current resolver semanticStatus FINAL; projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current 2022 H2 Algebra metadata offers no exact target binding; retain nullable projection debt and do not infer nearest keys.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current resolver semanticStatus FINAL; projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current 2022 H2 Algebra metadata offers no exact target binding; retain nullable projection debt and do not infer nearest keys.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [],
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS"
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current resolver semanticStatus FINAL; projection PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION). Current 2022 H2 Algebra metadata offers no exact target binding; retain nullable projection debt and do not infer nearest keys.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": [],
+        "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+        "templateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL"
+      },
+      {
+        "qid": 23,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current resolver semanticStatus FINAL; projection PROJECTION_UNMATERIALIZED (CROSSWALK_L2_PROJECTION_MISMATCH). Current 2022 H2 Algebra metadata offers no exact target binding; retain nullable projection debt and do not infer nearest keys.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 24,
+        "metaDebtFields": [],
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS"
+      }
+    ]
+  },
+  "r1MetadataReuse": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R1.evidence.json",
+    "sha256": "53e92817e077eca106e378ec189a66c95a1da406acb271a105ffdfcc3cf79806",
+    "scope": "current qid-aligned META and difficulty fields plus unchanged artifactDispositions only"
+  },
+  "q22Adjudication": {
+    "schemaVersion": "JS_ARCHIVE_R2_QID_ADJUDICATION_V1",
+    "qid": 22,
+    "disposition": "UNIQUE_ANSWER_MATCH_AFTER_ADJUDICATION",
+    "originalFreezePath": "archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R2.stage-kit-freeze.json",
+    "originalFreezeSha256": "49fd0395e830d8c57e4177d86da22c079652b794a1cffa392905dfa489f030bd",
+    "originalFrozenAnswer": "a∈{3,5}; condition does not determine a uniquely",
+    "correctedAnswer": "5",
+    "correctionPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R2.freeze-adjudication-q22.json",
+    "correctionSha256": "6134d2c3e45ac4b01728755589d740cd899169152676a6717e23e3d647fcb2e8",
+    "priorFalseHoldEvidence": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R2.evidence.recheck-02.json",
+      "sha256": "ecea981cc64dd17284936479adb919a7d6bd7655574e6e1e16306ee392eca7d9",
+      "disposition": "PRESERVED_PRIOR_ATTEMPT_ADJUDICATED_FALSE_HOLD"
+    }
+  }
+}

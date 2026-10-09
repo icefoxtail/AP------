@@ -489,7 +489,7 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [],
-    "content": "다항함수 $f(x)$가 모든 실수 $x$에 대하여 $\\displaystyle\\int_{-1}^x(x-t)f(t),dt=x^4-ax^2+bx$를 만족시킬 때, $f(1)$의 값은? (단, $a,b$는 상수이다.) [4.7점]",
+    "content": "다항함수 $f(x)$가 모든 실수 $x$에 대하여 <br>$\\displaystyle\\int_{-1}^x(x-t)f(t),dt=x^4-ax^2+bx$를 만족시킬 때, $f(1)$의 값은? (단, $a,b$는 상수이다.) [4.7점]",
     "choices": [
       "$-4$",
       "$1$",

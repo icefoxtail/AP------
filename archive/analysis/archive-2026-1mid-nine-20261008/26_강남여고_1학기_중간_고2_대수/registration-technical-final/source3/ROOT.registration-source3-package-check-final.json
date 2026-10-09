@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "ROOT_TARGET_REGISTRATION_PACKAGE_CHECK_V1",
+  "runId": "archive-2026-1mid-nine-20261008",
+  "examUid": "26_강남여고_1학기_중간_고2_대수",
+  "status": "PASS",
+  "head": "47dfa12159d2ffa29572139183312b1b55366706",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "checks": {
+    "packageSha256": "ac6b0736a574b0bf3026cd46af6f18d350c1b2dabe693d261248f1cd92cbc564",
+    "packageSchema": "JS_ARCHIVE_TARGET_REGISTRATION_PACKAGE_V1",
+    "targetSha": {
+      "rawSha256": "ee7f5dec997371cde114fab1c22bced3b9eda8bc29d9845f1f5cc554e8be973f",
+      "rawBufferBlobSha1": "045e963a26a0ea0ed90bab3c7497041a0416a160"
+    },
+    "assetBindings": [
+      {
+        "ref": "assets/images/26_강남여고_1학기_중간_고2_대수/q19.png",
+        "sha256": "edcad8201e06a4ab6a7aa40c78f638f409c871ffefcdd7a34d2db9f7f16d95b9"
+      }
+    ],
+    "baselineBindings": [
+      {
+        "relativePath": "archive/db.js",
+        "sha256": "c362bf80fa8957c149e3a60f9477781e7205b5b8eea2fca0ac5446c476fece87"
+      },
+      {
+        "relativePath": "archive/data/question_identity_map.json",
+        "sha256": "7b02c4e1e4075e2cdedb11769b57f25b26e3611493cf3ca2d339f2792c649ccb"
+      },
+      {
+        "relativePath": "archive/data/question_metadata.json",
+        "sha256": "2b2c348ffeb3d768775117ef81752fca5a50cdbf7d85ee23eaf7d8e9fab5969d"
+      },
+      {
+        "relativePath": "archive/question-identity.js",
+        "sha256": "865dff11be9e0903574bec1920aaa23e0228111239c3b46cca1ead07d1b2dedf"
+      },
+      {
+        "relativePath": "archive/question-index.js",
+        "sha256": "0917f5310859ab73a1c1b2b4b5084c3dbcebcaaddeb1d9d0c3409048afbc5c76"
+      },
+      {
+        "relativePath": "archive/question-index-report.md",
+        "sha256": "a613ffdaf1e55bded4364dcf7521246b451969f360064f4e7ab216b1f46737b2"
+      },
+      {
+        "relativePath": "archive/question-index-audit.md",
+        "sha256": "794d603dea022ef58a121898d490243d8509336b07d09c749b82ab2dca38e3cc"
+      },
+      {
+        "relativePath": "archive/data/archive2-catalog.json",
+        "sha256": "401e27c5ac285d3f1c01020fa36f543a7e34a04351583c9b471c0198d8de3fcd"
+      },
+      {
+        "relativePath": "archive/data/archive2-canonical-input-manifest.json",
+        "sha256": "f0b0e2d484a2c697f910f72c4d41f762d8d10ae552fca21b2fc1e47dbf650292"
+      }
+    ],
+    "targetCounts": {
+      "identity": 25,
+      "metadata": 25,
+      "index": 25,
+      "catalog": 25,
+      "db": 1
+    },
+    "nonTargetInvariant": {
+      "dbExamRows": 547,
+      "identityRows": 13040,
+      "metadataRows": 13040,
+      "indexRows": 13032,
+      "catalogRows": 13032,
+      "allPreservedByDeepComparison": true,
+      "identityRuntimeTuplesPreserved": true
+    },
+    "catalog": {
+      "baselineColumns": 67,
+      "candidateColumns": 67,
+      "columnsExact": true,
+      "baselineStrings": 58541,
+      "candidateStrings": 58642,
+      "stringDictionaryPrefixExact": true,
+      "baselinePackedRows": 13032,
+      "candidatePackedRows": 13057,
+      "candidateNonTargetPackedRows": 13032,
+      "nonTargetPackedRowsExact": true,
+      "candidateCatalogSha256": "35efd898edf3f60f27463f1cfd986230ca79a82deddcfc0bcb90cc9691057ca8"
+    },
+    "r1": {
+      "evidenceSha256": "8dbdebdafab5992c896f6e61a9b1bb25251de620d6c0d169c3f404a1db1d844f",
+      "validationSha256": "0075810f73b5050ea7925ab16e8ce6995c167fcf1cf683be42f0ad033211e4da",
+      "disposition": "PASS",
+      "denominator": 25,
+      "artifactDispositionsRequiredProjectionCopiedExactly": true,
+      "artifactDispositionsRows": 25
+    },
+    "targetMetadata": {
+      "rows": 25,
+      "nullProblemType": 25,
+      "nullTemplate": 25
+    },
+    "issues": []
+  }
+}

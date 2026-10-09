@@ -1,0 +1,21 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {createHash} from 'node:crypto';
+import {pathToFileURL} from 'node:url';
+const root=process.cwd();
+const {readExam}=await import(pathToFileURL(path.join(root,'archive/tools/archive-codex-artifact-io.mjs')));
+const {normalizeStudentBundle,STUDENT_FIELDS}=await import(pathToFileURL(path.join(root,'archive/tools/archive-student-bundle.mjs')));
+const ev=path.join(root,'archive/analysis/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출');
+const tmp=path.join(root,'.tmp/archive/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출');
+const source=path.join(tmp,'26_동산중_1학기_중간_중2_기출.js');
+const bundlePath=path.join(tmp,'R1.current-full24.student.final.json');
+const exam=readExam(source);
+const bundle=normalizeStudentBundle(JSON.parse(fs.readFileSync(bundlePath)),{inputFile:bundlePath,expectedSourceRawSha256:exam.rawSha256});
+const refsOf=v=>{const out=new Set();const scan=x=>{if(typeof x==='string'){for(const m of x.matchAll(/<(?:img|image)\b[^>]*?(?:src|href|xlink:href)\s*=\s*[\"']([^\"']+)/gi))if(!/^(?:data:|#)/.test(m[1]))out.add(m[1]);}else if(Array.isArray(x))x.forEach(scan);else if(x&&typeof x==='object')Object.values(x).forEach(scan)};scan(v);return out;};
+const cleanChoices=a=>Array.isArray(a)?a.map(c=>c&&typeof c==='object'&&!Array.isArray(c)?Object.fromEntries(Object.entries(c).filter(([k])=>['text','content','value','answer'].includes(k))):c):a;
+const qmap=new Map(exam.questions.map(q=>[Number(q.id??q.qid),q]));
+if(bundle.rows.length!==24||bundle.qids.join(',')!==Array.from({length:24},(_,i)=>i+1).join(','))throw new Error('FULL_DENOMINATOR_OR_ORDER_INVALID');
+const rowProof=[];
+for(const r of bundle.rows){const q=qmap.get(r.qid);if(!q)throw new Error('CURRENT_SOURCE_QID_MISSING:'+r.qid);const current=Object.fromEntries([...STUDENT_FIELDS].filter(k=>Object.hasOwn(q,k)).map(k=>[k,k==='choices'?cleanChoices(q[k]):q[k]]));const expected=Object.fromEntries([...STUDENT_FIELDS].filter(k=>Object.hasOwn(r.student,k)).map(k=>[k,k==='choices'?cleanChoices(r.student[k]):r.student[k]]));if(JSON.stringify(current)!==JSON.stringify(expected))throw new Error('STUDENT_FIELD_PARITY_MISMATCH:'+r.qid);const req=new Set(refsOf(r.student));if(r.student.image)req.add(r.student.image);const assetRefs=(r.assets||[]).map(a=>a.ref);if(req.size!==assetRefs.length||[...req].some(x=>!assetRefs.includes(x)))throw new Error('ASSET_SET_MISMATCH:'+r.qid);for(const a of r.assets||[])if(createHash('sha256').update(fs.readFileSync(a.path)).digest('hex')!==a.sha256)throw new Error('ASSET_SHA_MISMATCH:'+r.qid+':'+a.ref);rowProof.push({qid:r.qid,studentPayloadSha256:r.studentPayloadSha256,assetRefs:(r.assets||[]).map(a=>({ref:a.ref,sha256:a.sha256}))});}
+const proof={schemaVersion:'JS_ARCHIVE_R1_FULL24_STUDENT_PARITY_V1',examUid:'26_동산중_1학기_중간_중2_기출',stage:'R1',executionLine:'CODEX',qualityContractVersion:'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006',source:{path:source,rawSha256:exam.rawSha256,rawBufferGitBlobSha1:exam.rawBufferGitBlobSha1},bundle:{path:bundlePath,rawSha256:createHash('sha256').update(fs.readFileSync(bundlePath)).digest('hex'),sourceRawSha256:bundle.sourceRawSha256,questionCount:bundle.questionCount,qids:bundle.qids,adapterProvenance:bundle.adapterProvenance},result:'EXACT_24_QID_STUDENT_PARITY',answerFieldsRead:false,solutionFieldsRead:false,rows:rowProof};
+const out=path.join(ev,'R1.final-full24-student-parity.json');if(fs.existsSync(out))throw new Error('PARITY_PROOF_ALREADY_EXISTS');fs.writeFileSync(out,JSON.stringify(proof,null,2)+'\n',{encoding:'utf8',flag:'wx'});console.log(JSON.stringify({out,bundleSha256:proof.bundle.rawSha256,sourceRawSha256:exam.rawSha256,sourceBlobSha1:exam.rawBufferGitBlobSha1,questionCount:proof.rows.length,result:proof.result,assets:proof.rows.filter(r=>r.assetRefs.length)},null,2));

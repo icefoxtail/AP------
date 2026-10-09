@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "R1_Q8_MATH_CORRECTION_V1",
+  "qid": 8,
+  "sourcePreimageSha256": "512658cf971268c7ebb99f250bc5312a845825734ab76514ab7cb55546c2a80f",
+  "sourceCurrentSha256": "885c4d6557ee707403dfe06c5ad60fc797e072d6ea6a6196231bc4c80f3389ca",
+  "before": {
+    "answer": "②",
+    "solution": "두 그래프의 차가 모든 실수에서 양수여야 한다.\n$(k-1)x^2+x+1-(kx-3)=(k-1)x^2+(1-k)x+4$\n$k=1$이면 차는 항상 $4$이므로 조건을 만족한다.\n$k<1$이면 이차항 계수가 음수여서 큰 $|x|$에서 음수가 되므로 불가능하다.\n$k>1$이면 위로 열린 이차식이므로 판별식이 음수여야 한다.\n$D=(1-k)^2-16(k-1)=(k-1)(k-17)<0$\n따라서 $1<k<17$이다. 정수는 $2,3,\\ldots,16$으로 15개이다.\n$k=1$도 포함하므로 모두 16개이다. 정답은 ②이다.",
+    "solutionSha256": "a293a7259d1073e8b903e679d31d9956b8009329c67c05fb84cb3c0c531b5d0b"
+  },
+  "after": {
+    "answer": "①",
+    "solution": "두 그래프의 차가 모든 실수에서 양수여야 한다.\\n$(k-1)x^2+x+1-(kx-3)=(k-1)x^2+(1-k)x+4$\\n이 그래프는 이차함수이므로\\n$k-1\\\\ne0$\\n이다.\\n$k<1$이면 이차항 계수가 음수여서 큰 $|x|$에서 차가 음수가 되므로 불가능하다.\\n$k>1$이면 위로 열린 이차식이므로 판별식이 음수여야 한다.\\n$D=(1-k)^2-16(k-1)=(k-1)(k-17)<0$\\n따라서 $1<k<17$이다.\\n정수 $k$는 $2,3,\\\\ldots,16$이므로 15개이다.\\n정답은 ①이다.",
+    "solutionSha256": "d4f1785ef1ffa2a8d96e99034f051a03cb12a6315488d31c8122d5cad4c35f53"
+  },
+  "correction": "Exclude k=1 because the source requires a quadratic function (nonzero x² coefficient); count integers 2…16 = 15.",
+  "sourceStudentInputsChanged": false,
+  "choicesChanged": false,
+  "originalFreezePreserved": true,
+  "adjudicationPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.q8.adjudication.json",
+  "officialCompanion": {
+    "path": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2021_순천고1_1기말_해설.pdf",
+    "sha256": "2ed553d672b29c19d7c35ce0c32f5a2bd9b3b3c6cb7e4e9df7cedb481f7406a5",
+    "page": 2,
+    "observedAnswer": "① 15"
+  }
+}

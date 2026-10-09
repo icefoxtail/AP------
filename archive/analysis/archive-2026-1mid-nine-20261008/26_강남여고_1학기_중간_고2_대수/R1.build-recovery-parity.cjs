@@ -1,0 +1,26 @@
+const fs=require('fs'),path=require('path'),vm=require('vm'),crypto=require('crypto');
+const root=process.argv[2],ev=process.argv[3],uid='26_강남여고_1학기_중간_고2_대수';
+const js=path.join(root,'.tmp/archive/archive-2026-1mid-nine-20261008',uid,`${uid}.js`);
+const oldBundle=path.join(root,'.tmp/archive/archive-2026-1mid-nine-20261008',uid,'R1.student.json');
+const recoveryBundle=path.join(root,'.tmp/archive/archive-2026-1mid-nine-20261008',uid,'R1.scope-1,10@recovery-01.json');
+const recoveryFreeze=path.join(ev,'R1.scope-1,10@recovery-01.original-freeze.json');
+const fullFreeze=path.join(ev,'R1.original-freeze.json');
+const out=path.join(ev,'R1.recovery.student-parity.json');
+if(fs.existsSync(out))throw new Error('FRESH_PARITY_WITNESS_PATH_EXISTS');
+const parse=p=>JSON.parse(fs.readFileSync(p,'utf8').replace(/^\uFEFF/,''));
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const old=parse(oldBundle),rec=parse(recoveryBundle),rf=parse(recoveryFreeze),ff=parse(fullFreeze);
+const bytes=fs.readFileSync(js),rawSha=sha(bytes),box={window:{}};vm.createContext(box);vm.runInContext(bytes.toString('utf8'),box,{filename:js});
+const qs=box.window.questionBank||box.window.questions;if(!Array.isArray(qs)||qs.length!==25)throw new Error('CURRENT_FULL25_BANK_REQUIRED');
+const allowed=old.whitelist; if(!Array.isArray(allowed)||!allowed.includes('content')||!allowed.includes('choices'))throw new Error('STUDENT_WHITELIST_REQUIRED');
+const byId=new Map(qs.map(q=>[Number(q.id),q]));
+const stable=x=>Array.isArray(x)?x.map(stable):(x&&typeof x==='object'?Object.fromEntries(Object.keys(x).sort().map(k=>[k,stable(x[k])])):x);
+const digest=x=>sha(Buffer.from(JSON.stringify(stable(x)),'utf8'));
+const currentStudent=q=>{const o={};for(const k of allowed)if(Object.prototype.hasOwnProperty.call(q,k))o[k]=q[k];return o;};
+const fullRows=new Map(old.rows.map(r=>[Number(r.qid),r]));const recRows=new Map(rec.rows.map(r=>[Number(r.qid),r]));
+const scopes=[{source:'RECOVERY_SCOPE_FREEZE',ids:[1,10],rows:recRows},{source:'UNCHANGED_ORIGINAL_SCOPE',ids:[2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25],rows:fullRows}];
+const rows=[];for(const scope of scopes)for(const id of scope.ids){const saved=scope.rows.get(id),q=byId.get(id);if(!saved||!saved.student||!q)throw new Error('STUDENT_PARITY_ROW_MISSING:q'+id);const now=currentStudent(q),expected=saved.student;if(JSON.stringify(stable(now))!==JSON.stringify(stable(expected)))throw new Error('STUDENT_FIELD_PARITY_FAIL:q'+id);const refs=(saved.assets||[]).map(a=>({ref:a.ref,sha256:a.sha256}));for(const a of saved.assets||[]){const file=a.path;if(!fs.existsSync(file)||sha(fs.readFileSync(file))!==a.sha256)throw new Error('CURRENT_ASSET_PARITY_FAIL:q'+id+':'+a.ref);}rows.push({qid:id,scope:scope.source,studentPayloadSha256:digest(expected),currentStudentPayloadSha256:digest(now),studentFieldParity:'EXACT',assetRefs:refs});}
+if(rows.length!==25||new Set(rows.map(r=>r.qid)).size!==25)throw new Error('FULL25_SCOPED_PARITY_REQUIRED');
+const value={schemaVersion:'JS_ARCHIVE_R1_RECOVERY_STUDENT_PARITY_V1',examUid:uid,currentSource:{path:js,rawSha256:rawSha,rawBufferBlobSha1:require('child_process').execFileSync('git',['-C',root,'hash-object','--',js],{encoding:'utf8'}).trim()},originalFullFreeze:{path:fullFreeze,sha256:sha(fs.readFileSync(fullFreeze)),sourceRawSha256:ff.sourceRawSha256,studentBundle:ff.studentBundle},recoveryFreeze:{path:recoveryFreeze,sha256:sha(fs.readFileSync(recoveryFreeze)),sourceRawSha256:rf.sourceRawSha256,studentBundle:rf.studentBundle},coverage:{currentQuestionCount:25,recoveryScopeQids:[1,10],unchangedOriginalScopeQids:rows.filter(r=>r.scope==='UNCHANGED_ORIGINAL_SCOPE').map(r=>r.qid),exactStudentParityQids:rows.map(r=>r.qid),assetShaCheckedQids:rows.filter(r=>r.assetRefs.length).map(r=>r.qid),answersOrSolutionsRead:false},rows};
+fs.writeFileSync(out,JSON.stringify(value,null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({path:out,sha256:sha(fs.readFileSync(out)),sourceRawSha256:rawSha,coverage:rows.length,recoveryScope:2,unchangedScope:23,parity:'EXACT',assetQids:value.coverage.assetShaCheckedQids},null,2));

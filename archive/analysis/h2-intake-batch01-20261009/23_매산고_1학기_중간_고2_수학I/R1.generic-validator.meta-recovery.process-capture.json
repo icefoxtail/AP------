@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "JS_ARCHIVE_VALIDATOR_PROCESS_CAPTURE_V1",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "command": "node archive/tools/archive-stage-validator.mjs --stage R1 --quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006 --execution-line CODEX --json --exam .tmp/archive/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/23_매산고_1학기_중간_고2_수학I.js --evidence archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/R1.evidence.meta-recovery.bound.json --asset-root .tmp/archive/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I",
+  "exitCode": 1,
+  "evidencePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산고_1학기_중간_고2_수학I\\R1.evidence.meta-recovery.bound.json",
+  "evidenceSha256": "04a6e0d4eb3922a035951eae253c0166cbb029684c3b700c0810847ea5598615",
+  "stdoutPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산고_1학기_중간_고2_수학I\\R1.generic-validator.meta-recovery.raw.json",
+  "stdoutSha256": "05972430e9235af644fcd86a51b378a2f5727cc18190b432c4402379a74edfa8",
+  "stderrPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산고_1학기_중간_고2_수학I\\R1.generic-validator.meta-recovery.stderr.txt",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "reportDisposition": "FAIL",
+  "validatorMode": "R1_V2",
+  "issues": [
+    "ARTIFACT_CHOICE_LITERAL_SELECTOR_PROOF_INVALID:q4",
+    "ARTIFACT_CHOICE_LITERAL_SELECTOR_UNSUPPORTED:q4",
+    "ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED:q4:i0",
+    "ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED:q4:i1",
+    "ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED:q4:i2",
+    "ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED:q4:i3",
+    "ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED:q4:i4"
+  ],
+  "completedAtUtc": "2026-10-09T11:38:43.6506794Z"
+}

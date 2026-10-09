@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_SCOPED_POSTFREEZE_DISCLOSURE_Q16_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "23_매산여고_1학기_중간_고2_수학I",
+  "currentSourceRawSha256": "e0e9ee03bb5a36fcd603054656ea31558f5db5a7dd10accdc5c565e4e725328c",
+  "freshFreezeSourceRawSha256": "86b0a387bdde96fc50231456b33aab28342b8bb061745d1765173566f5c0c15d",
+  "currentFullStudentPacket": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\R1.recovery.current-student-only-postmeta23.json",
+    "sha256": "b75422f1b9c4478694696d4139656884625beec6df3ae34beb345c3a5a605454",
+    "qidCount": 23,
+    "qids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "answersRead": false
+  },
+  "freshScope": {
+    "qid": 16,
+    "qids": [
+      16
+    ],
+    "count": 1,
+    "studentBundle": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\R1.recovery.student-only.json",
+      "sha256": "79271035059a8f076b9dae5f97f5a329bfe0aa5a0131f2131de3f2bc5f037d69"
+    },
+    "freeze": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\R1.recovery.q16.freeze.json",
+      "sha256": "1e0e5ecd440deb9b4a00278f72db24a89665178917515a203cf287b639b1097a"
+    },
+    "frozenAt": "2026-10-09T12:46:14.785Z",
+    "studentPayloadSha256": "049b7b46a50347503ac73c5900f247cf6a36d6cbe3ceefb3fde1604a7157984d"
+  },
+  "sourceTransition": {
+    "preMetaSourceRawSha256": "86b0a387bdde96fc50231456b33aab28342b8bb061745d1765173566f5c0c15d",
+    "currentSourceRawSha256": "e0e9ee03bb5a36fcd603054656ea31558f5db5a7dd10accdc5c565e4e725328c",
+    "metaClosure": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\R1.recovery.meta-closure.v2.json",
+      "sha256": "4cb9b2f91059fde4c9a055a16c0bb77ba82de4c271507cde57af39faf7bd372e"
+    },
+    "changedMetaQids": [
+      3,
+      7,
+      9,
+      15,
+      17,
+      18,
+      19,
+      21
+    ],
+    "qid16ObjectUnaffectedByMetaPatch": true,
+    "all23StudentProjectionParity": true
+  },
+  "rows": [
+    {
+      "qid": 16,
+      "answer": "③",
+      "solution": "먼저 첫째 부등식으로 정수 후보를 정한다.\n\n$g(t)=t^2-2t=t(t-2)$이므로\n$g(f(x))<0 \\Longleftrightarrow 0<f(x)<2$이다.\n\n$f(x)=\\log_{\\sqrt3}(x/3)$이고 밑 $\\sqrt3>1$이므로 로그함수는 증가한다. 따라서\n$0<\\log_{\\sqrt3}(x/3)<2$\n$1<x/3<3$\n$3<x<9$이다.\n\n정수 $x$는 $4,5,6,7,8$이다. 둘째 부등식은 이 후보에서 진수가 양수이며,\n$f(g(x)+3)<c$\n$\\Longleftrightarrow \\frac{g(x)+3}{3}<(\\sqrt3)^c$\n$\\Longleftrightarrow x^2-2x+3<3^{1+c/2}$로 바뀐다.\n\n각 후보에서 왼쪽 값은 다음과 같다.\n\n$$\\begin{array}{c|ccccc} x & 4 & 5 & 6 & 7 & 8 \\\\ x^2-2x+3 & 11 & 18 & 27 & 38 & 51 \\end{array}$$\n\n$c=4$이면 오른쪽은 $27$이므로 엄격한 부등식을 만족하는 정수는 $x=4,5$뿐이다. $c=5$이면 오른쪽은 $27\\sqrt3$이고\n$38^2=1444<2187=(27\\sqrt3)^2<2601=51^2$이므로 $x=4,5,6,7$ 네 개가 해이다.\n\n한편 $c\\le4$일 때 해의 개수는 $2$개 이하이고, $c\\ge6$이면 오른쪽이 $81$ 이상이어서 다섯 후보가 모두 해이다. 따라서 정수해가 정확히 $4$개가 되는 자연수는\n\n$c=5$이다.\n\n그러므로 정답은 ③이다."
+    }
+  ],
+  "disclosedAt": "2026-10-09T12:57:30.895Z",
+  "denominatorClaim": "ONE_FRESH_QID_ONLY; NOT A FULL-23 FRESH BLIND FREEZE"
+}

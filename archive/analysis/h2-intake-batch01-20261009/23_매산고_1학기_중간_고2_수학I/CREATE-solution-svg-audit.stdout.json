@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_SOLUTION_SVG_PYTHON_AUDIT_V1",
+  "python": "Python 3.14",
+  "q18": {
+    "pythonInputs": {
+      "pixelOrigin": [
+        100,
+        370
+      ],
+      "equalScalePxPerUnit": 55,
+      "actualSvgVerticesPx": {
+        "A": [
+          155.0,
+          150.0
+        ],
+        "B": [
+          155.0,
+          370.0
+        ],
+        "C": [
+          345.526,
+          40.0
+        ],
+        "M": [
+          250.263,
+          205.0
+        ]
+      }
+    },
+    "pythonCalculatedOutputs": {
+      "actualCoordinates": {
+        "A": [
+          1.0,
+          4.0
+        ],
+        "B": [
+          1.0,
+          0.0
+        ],
+        "C": [
+          4.4641090909090915,
+          6.0
+        ],
+        "M": [
+          2.7320545454545457,
+          3.0
+        ]
+      },
+      "expectedM": [
+        2.732050807568877,
+        3.0
+      ],
+      "expectedC": [
+        4.464101615137754,
+        6.0
+      ],
+      "AB": 4.0,
+      "AC": 4.000006474209637,
+      "AM": 2.0000032371048184,
+      "BM": 3.4641034840821012,
+      "AMdotMB": 1.2948429752559755e-05,
+      "coordinateResiduals": {
+        "M": 3.7378856685421624e-06,
+        "C": 7.475771337084325e-06
+      },
+      "tolerance": 0.001
+    },
+    "status": "PASS"
+  },
+  "q20": {
+    "pythonInputs": {
+      "curveSampleCount": 65,
+      "pixelOrigin": [
+        80,
+        350
+      ],
+      "xPixelsPerUnit": 35,
+      "yPixelsPerUnit": 45,
+      "linePixelY": 222.72136,
+      "actualSvgSamplesAtX4X8X12": [
+        [
+          220.0,
+          222.72
+        ],
+        [
+          360.0,
+          170.0
+        ],
+        [
+          500.0,
+          222.72
+        ]
+      ]
+    },
+    "pythonCalculatedOutputs": {
+      "curveAt4": [
+        4.0,
+        2.8284444444444445
+      ],
+      "curveAt8": [
+        8.0,
+        4.0
+      ],
+      "curveAt12": [
+        12.0,
+        2.8284444444444445
+      ],
+      "expectedHeight": 2.8284271247461903,
+      "observedHeight": 2.828414222222222,
+      "heightResidual": 1.290252396835001e-05,
+      "rectangleWidth": 8,
+      "observedRectangleArea": 22.627313777777776,
+      "expectedRectangleArea": 22.627416997969522,
+      "areaResidual": 0.00010322019174680008,
+      "minimizingParameters": {
+        "a": 4.0,
+        "b": 0.19634954084936207,
+        "c": 4.71238898038469,
+        "abc": 3.7011016504085092
+      },
+      "abcExact": "3���/8",
+      "tolerance": 0.001
+    },
+    "status": "PASS"
+  }
+}

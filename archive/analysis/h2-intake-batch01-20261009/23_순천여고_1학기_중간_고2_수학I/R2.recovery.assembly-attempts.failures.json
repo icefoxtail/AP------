@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_ASSEMBLY_ATTEMPTS_FAILURES_V1",
+  "stage": "R2",
+  "reviewerId": "/root/r2_09_recovery",
+  "sourceRawSha256": "93035c888ffd968840b038bbe5c85c881dfbf84fb0c8bcdbf655ffe8f4d2bf57",
+  "attempts": [
+    {
+      "attempt": 1,
+      "failureCode": "HASHNOTE_OUTPUT_PATH_TYPO",
+      "failureCause": "First assembly wrote postfreeze binding and reuse records, then failed on a mistyped Korean hash-note output path."
+    },
+    {
+      "attempt": 2,
+      "failureCode": "ADOPTION_INPUT_PATH_TYPO",
+      "failureCause": "Second assembly read stopped before output on the same directory-name typo in the adoption input path."
+    },
+    {
+      "attempt": 3,
+      "failureCode": "SOURCE_PATH_LOOKUP_KEY_ERROR",
+      "failureCause": "Third assembly validation tried to resolve the source SHA as an input-file key; no outputs were written."
+    }
+  ],
+  "preservedPartialOutputs": [
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\R2.recovery.postfreeze-binding.v1.json",
+      "sha256": "ff4dadb1029f90f33881457adaaa8aaaea01b4af2d9c962ff90e79ee01a4351a"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\R2.recovery.qualified-21-reuse.v1.json",
+      "sha256": "086c9c553542de460cc7bc7116fd85fe6955be527735a8301d23ec91d398143f"
+    }
+  ],
+  "noSourceOrStudentInputChanged": true,
+  "oldFreezeAndOldFailureProofUnchanged": true,
+  "disposition": "PRESERVED_TECHNICAL_PATH_FAILURES; corrected absolute paths before final assembly",
+  "recordedAt": "2026-10-09T13:46:47.894Z"
+}

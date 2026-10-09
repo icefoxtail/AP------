@@ -1,0 +1,11 @@
+file:///C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_%EB%A7%A4%EC%82%B0%EC%97%AC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EC%88%98%ED%95%99I/technical-registration/postapply-catalog/attempt01/catalog-rebind-proof.v1.mjs:17
+const out={schema:'REGISTRATION_POSTAPPLY_CATALOG_REBIND_PROOF_V1',uid,head:createRequire(import.meta.url).execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),catalogBeforeSha256:crypto.createHash('sha256').update(fs.readFileSync(path.join(evidence,'before/archive/data/archive2-catalog.json'))).digest('hex'),catalogAfterSha256:crypto.createHash('sha256').update(fs.readFileSync('archive/data/archive2-catalog.json')).digest('hex'),manifestBeforeSha256:crypto.createHash('sha256').update(fs.readFileSync(path.join(evidence,'before/archive/data/archive2-canonical-input-manifest.json'))).digest('hex'),manifestAfterSha256:crypto.createHash('sha256').update(fs.readFileSync('archive/data/archive2-canonical-input-manifest.json')).digest('hex'),catalogRecordCount:ar.length,examCount:ad.exams.length,targetRecords:at.length,nonTargetRecords:an.length,changedHeaderKeys:Object.keys(before).filter(k=>JSON.stringify(before[k])!==JSON.stringify(current[k])),manifestChangedPaths:manifestChanged,pendingQids:[16],nullProjectionRows,targetAutomaticCount:at.filter(x=>x.automatic).length,checks};console.log(JSON.stringify(out));if(Object.values(checks).some(v=>v!==true))process.exitCode=1;
+                                                                                                           ^
+
+TypeError: createRequire(...).execFileSync is not a function
+    at file:///C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_%EB%A7%A4%EC%82%B0%EC%97%AC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EC%88%98%ED%95%99I/technical-registration/postapply-catalog/attempt01/catalog-rebind-proof.v1.mjs:17:108
+    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.14.1

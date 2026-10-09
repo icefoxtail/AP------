@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "ROOT_REPLACEMENT_SCOPE_BLIND_ADAPTER_IMPLEMENTATION_V1",
+  "status": "IMPLEMENTATION_CLOSED_ROOT_R1_COMPOSITION_ADMISSION_GUARD_READY",
+  "capturedAtUtc": "2026-10-08T04:20:59.7963293Z",
+  "worktreeRoot": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------",
+  "baselineHeadObserved": "5e711187f736e211e7b9ff0a4bf9a599b164eafd",
+  "currentHead": "a2fd9f4c669315f31d0fce3e04ce87f39d264b5e",
+  "examUid": "21_매산고_1학기_기말_고1_기출",
+  "runId": "h1-final-five-pilot-20261008",
+  "stageScope": {
+    "R1": {
+      "q14PriorFreezeSourceSha256": "9ef452747702cedf02d229a900ccf100251684e17124540a682a63be40946773",
+      "priorBaselineReusedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        18,
+        19
+      ],
+      "priorComposedBaselineSourceSha256": "37aa02556959821382042d0f8aa7104c4fe969a899016e397cd64e18328af4d9",
+      "originalFreezeSourceSha256": "e2fc9978a60dc3acf7d161b427c888673c913589ffacf1e630d5f6b76dd933b8",
+      "freshQids": [
+        17,
+        20
+      ]
+    },
+    "R2": {
+      "directOriginalFreezeSourceSha256": "37aa02556959821382042d0f8aa7104c4fe969a899016e397cd64e18328af4d9",
+      "reusedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        18,
+        19
+      ],
+      "freshQids": [
+        17,
+        20
+      ]
+    }
+  },
+  "adapter": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\h1-final-five-pilot-20261008\\ROOT.replacement-scope-blind.mjs",
+    "sha256": "e3e60d3b022e6a2d66c924e118cb6995052740ec0ea9cba6934428019f29820b"
+  },
+  "test": {
+    "command": "node --test archive/analysis/h1-final-five-pilot-20261008/technical-replacement-scope/ROOT.replacement-scope-blind.test.mjs",
+    "failed": 0,
+    "passed": 8,
+    "disposition": "PASS"
+  },
+  "r1CompositionGuard": {
+    "q14FreshFreezeSourceRawSha256": "9ef452747702cedf02d229a900ccf100251684e17124540a682a63be40946773",
+    "q14LayoutClosureSha256": "bf1814b99b7a956a8e261434f5ffefbabdab520680709e360147843849dc8bc2",
+    "currentFullR1PassReportSha256": "fd7c49b7cfb36413887a9a960a3964cbdf4adabe77c9081ed2664f62c2389ea4",
+    "originalR1FreezeSha256": "0b5456fd13e028cfa1dd0d5d7bc814aca607c83e71c5ac004ad32518b906dc69",
+    "schemaVersion": "ROOT_CURRENT_R1_FROZEN_SCOPE_COMPOSITION_V1",
+    "currentSafeBundle": "R2.student-bundle.json / source37",
+    "preservesOriginalFreezeIdentity": true,
+    "q14FreshFreezeSha256": "143ff62fdbd6ac58a9b2e31ce8be6bdd477a6dcf8f7cdaea6f816803bb428cd2",
+    "verifiesFullR1Pass20Qids": true,
+    "currentFullR1PassReportSourceRawSha256": "37aa02556959821382042d0f8aa7104c4fe969a899016e397cd64e18328af4d9",
+    "originalR1FreezeSourceRawSha256": "e2fc9978a60dc3acf7d161b427c888673c913589ffacf1e630d5f6b76dd933b8",
+    "currentFullR1PassReportBlobSha1": "db338d4a3991340f50d7e41221e182fe0eb13640"
+  },
+  "rootAuthorityRequired": "For R1, pass priorFullScopeAdmission path/SHA and typed component references; original E2 freeze stays separate, current old safe bundle is source37. R2 remains direct source37 original-freeze binding.",
+  "execution": {
+    "sourceMutation": "NONE",
+    "rootAuthorityCreated": false,
+    "dispatcherMutation": "NONE",
+    "currentFinalReplacementSourceBound": false,
+    "scopeFreezeCreated": false,
+    "commitOrPublication": "NONE",
+    "disclosureCreated": false
+  },
+  "nextRequiredAction": "ROOT authors the typed R1 prior-scope composition file with actual path/SHA references plus current source570 recovery proof, current full safe bundle, fresh reviewer/session and asset acknowledgments; then runs preflight and the clean reviewer. R2 authority uses the direct source37 freeze/bundle binding.",
+  "files": [
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\h1-final-five-pilot-20261008\\ROOT.replacement-scope-blind.mjs",
+      "sha256": "e3e60d3b022e6a2d66c924e118cb6995052740ec0ea9cba6934428019f29820b"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\h1-final-five-pilot-20261008\\technical-replacement-scope\\ROOT.replacement-scope-blind.test.mjs",
+      "sha256": "670b68d3c38e372046940060e40d447d38bfc646fd8d818c7416b076bacb354f"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\h1-final-five-pilot-20261008\\technical-replacement-scope\\ROOT.replacement-scope-blind.test.log",
+      "sha256": "e3f011e2d640ce110b0eb82687c1f6efdca32892dffbd5b512133af2d00df7dd"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\h1-final-five-pilot-20261008\\technical-replacement-scope\\README.md",
+      "sha256": "a7993f69c1db4191791592e7b8b6971cb507d5d83dd67f15b3d2ded3aebc5b92"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\h1-final-five-pilot-20261008\\technical-replacement-scope\\history\\pre-r1-composition-guard\\ROOT.replacement-scope-blind.mjs",
+      "sha256": "4f2a9ba23918e61251de58ac16bd24b6226a9cdf6a977a0902e1e467da90b1f5"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\h1-final-five-pilot-20261008\\technical-replacement-scope\\history\\pre-r1-composition-guard\\ROOT.replacement-scope-blind.test.mjs",
+      "sha256": "6d55d5f6b7faac6134c9d7e6670165a3aea023f962095268d9b6e5476bab6682"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\h1-final-five-pilot-20261008\\technical-replacement-scope\\history\\pre-r1-composition-guard\\ROOT.replacement-scope-blind.test.log",
+      "sha256": "2d05f25132766f0712839ee87632ef42ce19e6c6966e7046d33f80a2976f27cb"
+    }
+  ]
+}

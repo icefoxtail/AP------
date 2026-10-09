@@ -1,0 +1,206 @@
+{
+  "schemaVersion": "ALIVE_GENERATED_L4_QID9_V0_DESIGN_REGISTER",
+  "authority": "Generated standalone L4 ids; do not overwrite RPM Primary",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceQid": 1,
+  "sourceExamGitBlob": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "primaryL3Id": "H1-RPM-231",
+  "primaryL3Label": "집합과 원소",
+  "primaryL3Decision": "집합의 원소가 명확하게 결정되는지, 주어진 값이 그 집합에 속하는지 학생이 판별한다",
+  "primaryL3MappingStatus": "RPM_ONLY; generated semantic parent not automatically active PT/TPL",
+  "extensions": [
+    {
+      "id": "EXT-H1-C2-05-Q01-SET-DEFINITION",
+      "labelKo": "원소 판정 기준의 명확성",
+      "meaning": "모임이 집합인지 객관적인 기준의 존재로 판정",
+      "comparator": "H1-RPM-231: 원소나열법·조건제시법과 구분",
+      "sourceQid": 1,
+      "examples": [
+        "A1",
+        "A2",
+        "B1"
+      ],
+      "role": "최종 학생 질문은 집합 성립 여부",
+      "parentLockedRpmL3Id": "H1-RPM-231",
+      "lifecycle": "GENERATED_ACTIVE",
+      "studentPublishing": "REVIEW_PENDING",
+      "canonicalRpmPromotion": false,
+      "verifiedExternalClassification": false
+    },
+    {
+      "id": "EXT-H1-C2-05-Q01-FINITENESS-MEMBERSHIP",
+      "labelKo": "집합의 유한성·원소 조건 판정",
+      "meaning": "정의역·원소 조건과 유한 여부의 진리값을 결합 판별",
+      "comparator": "H1-RPM-232: 유한집합 원소의 개수를 직접 묻는 문제와 구분",
+      "sourceQid": 1,
+      "examples": [
+        "C1"
+      ],
+      "role": "최종 학생 질문은 원소 여부와 집합의 정의 가능성/유한성",
+      "parentLockedRpmL3Id": "H1-RPM-231",
+      "lifecycle": "GENERATED_ACTIVE",
+      "studentPublishing": "REVIEW_PENDING",
+      "canonicalRpmPromotion": false,
+      "verifiedExternalClassification": false
+    }
+  ],
+  "slots": [
+    {
+      "slot": "A1",
+      "l4": "EXT-H1-C2-05-Q01-SET-DEFINITION",
+      "cc": [],
+      "cond": [
+        "명확한 판정 기준"
+      ],
+      "path": "원본의 주관 표현 구분 → 판정 기준 여부 → 정답",
+      "add": "없음: 기본 숙달",
+      "uid": "ALITE-PALMA25-2MID-Q01-A1",
+      "purposeGroup": "A",
+      "primaryL3Id": "H1-RPM-231",
+      "finalStudentDecision": "조건제시된 집합의 원소 여부 또는 집합 정의 가능성을 판정",
+      "stage": "CREATE_DRAFT_REVIEW_PENDING"
+    },
+    {
+      "slot": "A2",
+      "l4": "EXT-H1-C2-05-Q01-SET-DEFINITION",
+      "cc": [],
+      "cond": [
+        "집합 아닌 예외"
+      ],
+      "path": "보기별 객관적 소속 가능성 → 예외 1개 → 정답",
+      "add": "부정형 판단",
+      "uid": "ALITE-PALMA25-2MID-Q01-A2",
+      "purposeGroup": "A",
+      "primaryL3Id": "H1-RPM-231",
+      "finalStudentDecision": "조건제시된 집합의 원소 여부 또는 집합 정의 가능성을 판정",
+      "stage": "CREATE_DRAFT_REVIEW_PENDING"
+    },
+    {
+      "slot": "A3",
+      "l4": "H1-RPM-231",
+      "cc": [
+        "절댓값 일차부등식: 정수 범위의 원소 판정 보조"
+      ],
+      "cond": [
+        "등호 미포함"
+      ],
+      "path": "조건제시법 해석 → 정수 원소나열 → 비원소 경계",
+      "add": "경계 판단",
+      "uid": "ALITE-PALMA25-2MID-Q01-A3",
+      "purposeGroup": "A",
+      "primaryL3Id": "H1-RPM-231",
+      "finalStudentDecision": "조건제시된 집합의 원소 여부 또는 집합 정의 가능성을 판정",
+      "stage": "CREATE_DRAFT_REVIEW_PENDING"
+    },
+    {
+      "slot": "B1",
+      "l4": "EXT-H1-C2-05-Q01-SET-DEFINITION",
+      "cc": [
+        "이차방정식의 정수해: 명확한 집합 여부 확인 보조"
+      ],
+      "cond": [
+        "4가지 진술 중 정의 가능 집합 개수"
+      ],
+      "path": "ㄱ~ㄹ 각각 집합인지 → 참인 개수 → 정답",
+      "add": "여러 사례 일괄 판정",
+      "uid": "ALITE-PALMA25-2MID-Q01-B1",
+      "purposeGroup": "B",
+      "primaryL3Id": "H1-RPM-231",
+      "finalStudentDecision": "조건제시된 집합의 원소 여부 또는 집합 정의 가능성을 판정",
+      "stage": "CREATE_DRAFT_REVIEW_PENDING"
+    },
+    {
+      "slot": "B2",
+      "l4": "H1-RPM-231",
+      "cc": [
+        "곱이 0인 방정식의 근: 조건제시법 복원 보조"
+      ],
+      "cond": [
+        "원소나열과 5개 명제 대조"
+      ],
+      "path": "해집합 원소 확정 → 다섯 진술의 참·거짓",
+      "add": "표현 변환·선지 판정",
+      "uid": "ALITE-PALMA25-2MID-Q01-B2",
+      "purposeGroup": "B",
+      "primaryL3Id": "H1-RPM-231",
+      "finalStudentDecision": "조건제시된 집합의 원소 여부 또는 집합 정의 가능성을 판정",
+      "stage": "CREATE_DRAFT_REVIEW_PENDING"
+    },
+    {
+      "slot": "B3",
+      "l4": "H1-RPM-231",
+      "cc": [
+        "제곱 부등식: 정수 원소 추출 보조"
+      ],
+      "cond": [
+        "정수 음수·양수·끝점"
+      ],
+      "path": "x²<9를 정수해집합으로 변환 → ㄱㄴㄷㄹ 논리 판별",
+      "add": "경계+진술 복합",
+      "uid": "ALITE-PALMA25-2MID-Q01-B3",
+      "purposeGroup": "B",
+      "primaryL3Id": "H1-RPM-231",
+      "finalStudentDecision": "조건제시된 집합의 원소 여부 또는 집합 정의 가능성을 판정",
+      "stage": "CREATE_DRAFT_REVIEW_PENDING"
+    },
+    {
+      "slot": "C1",
+      "l4": "EXT-H1-C2-05-Q01-FINITENESS-MEMBERSHIP",
+      "cc": [
+        "실수 구간과 정수 집합의 차이: 유한성 판단 보조"
+      ],
+      "cond": [
+        "유한성과 0의 소속을 동시에 요구"
+      ],
+      "path": "표현별 유한·무한 판정 → 0 소속 확인 → 정답",
+      "add": "두 조건의 필요충분 동시 확인",
+      "uid": "ALITE-PALMA25-2MID-Q01-C1",
+      "purposeGroup": "C",
+      "primaryL3Id": "H1-RPM-231",
+      "finalStudentDecision": "조건제시된 집합의 원소 여부 또는 집합 정의 가능성을 판정",
+      "stage": "CREATE_DRAFT_REVIEW_PENDING"
+    },
+    {
+      "slot": "C2",
+      "l4": "H1-RPM-231",
+      "cc": [
+        "이차 부등식과 매개변수 범위: 소속 조건 역산 보조"
+      ],
+      "cond": [
+        "-1∈Ak, 0∈Ak, 3∉Ak"
+      ],
+      "path": "세 원소 소속 조건→ k의 세 구간→교집합→정수 개수",
+      "add": "매개변수 역산, 3가지 소속 조건",
+      "uid": "ALITE-PALMA25-2MID-Q01-C2",
+      "purposeGroup": "C",
+      "primaryL3Id": "H1-RPM-231",
+      "finalStudentDecision": "조건제시된 집합의 원소 여부 또는 집합 정의 가능성을 판정",
+      "stage": "CREATE_DRAFT_REVIEW_PENDING"
+    },
+    {
+      "slot": "C3",
+      "l4": "H1-RPM-231",
+      "cc": [
+        "절댓값 부등식·인수분해 부등식: 소속 조건 역산 보조"
+      ],
+      "cond": [
+        "두 집합, 2∈Ak, -1∉Ak, 4∉Bk"
+      ],
+      "path": "두 집합의 원소 판정→세 매개변수 범위→교집합→가능 k의 제곱의 합",
+      "add": "복수 집합·다중 경계·조건 종합",
+      "uid": "ALITE-PALMA25-2MID-Q01-C3",
+      "purposeGroup": "C",
+      "primaryL3Id": "H1-RPM-231",
+      "finalStudentDecision": "조건제시된 집합의 원소 여부 또는 집합 정의 가능성을 판정",
+      "stage": "CREATE_DRAFT_REVIEW_PENDING"
+    }
+  ],
+  "metrics": {
+    "slotCount": 9,
+    "existingRpmL4Slots": 5,
+    "generatedExtL4Slots": 4,
+    "uniqueGeneratedExtL4": 2
+  },
+  "releaseStatus": "CREATE_DRAFT_REVIEW_PENDING_NO_CONSUMER_REGISTRATION",
+  "rationalization": "Generated L4 labels activate immediately for lookup; student question UID remains review-pending until a single GPT independent quality pass"
+}

@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R1",
+  "examUid": "26_삼산중_2학기_중간_중3_기출",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "runId": "codex-20261007-2sem-mid-samsan-m3",
+  "reviewMode": "FRESH_Q8_ONLY_R1_AFTER_STUDENT_BODY_REPLACEMENT",
+  "allowedQids": [
+    8
+  ],
+  "artifactRawSha256": "41a052f24f3f90cf5c1b66a89b38ef0bb8aeb958d545a20c23c205633e6fd0ae",
+  "artifactSha": "fd1e9e22da6cfbd6c51b0a633ad370352a902e2b",
+  "studentBundleAbsolute": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\q8.R1R2.answer-free.student-bundle.json",
+  "studentBundleSha256": "da590a87e034b0fc6b8823b09d5b0183a2076949832e72436f770fd626d94fc2",
+  "independentFreeze": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\q8.R1.independent-freeze.json",
+    "sha256": "9418460612656a6ca174e380dbc762a0554dec14da8a149f0a817de193a17a43"
+  },
+  "postfreezeDisclosure": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\q8.R1.postfreeze-q8-disclosure.json",
+    "sha256": "5e6ce8f8e6c09ba2e0ca2620241c7e95adf71833b16dc06b59e4439af40dfe46"
+  },
+  "preflightOrderFailure": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\failed-attempt\\R1-q8-preflight-order-failure-01.json",
+    "sha256": "ebd23d952de890abffe3683bec2043d58576f39a32def32085d77f9c433ad75d"
+  },
+  "freshMetaEvidence": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\q8.fresh-meta-evidence.json",
+    "sha256": "f38773237dc0914d5e54531c68b16a4ee019e319425da8072da965fae052f3e7"
+  },
+  "rows": [
+    {
+      "qid": 8,
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "√13 sin a°",
+        "derivation": "In the right triangle, sin(a°)=BC/AB. With AB=√13, BC=√13 sin(a°)."
+      },
+      "preDisclosureFrozenAnswer": "√13 sin a°",
+      "preDisclosureFreezeChoice": 4,
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS",
+      "sourceMode": "ROOT_DIRECTED_QUESTION_ONLY_REPLACEMENT",
+      "sourceIdentity": {
+        "replacementScope": "QUESTION_ONLY",
+        "receiptPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/item-recovery-q8/q8.replacement.authoring-receipt.final.json",
+        "receiptSha256": "0152b028d355854903c5dc812b874f4a6d30737f1e0050887fdc3ff5666d41d2",
+        "changeAndInvariancePath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/item-recovery-q8/q8.replacement.change-and-invariance-evidence.json",
+        "changeAndInvarianceSha256": "0a944b3856e471c22b11554423f78916b570a279b249b7c105c0028431327ad8",
+        "studentPayloadSha256": "0dd363f74fb30637a220d48f3c145e7865d1a0c4a747462fd5feae9dcf9615d2",
+        "sourceScanOpened": false
+      },
+      "QUESTION_LAYOUT": {
+        "status": "PASS",
+        "evidence": "KEEP. Current answer-free q8 content/choices are exact-bound by the replacement bundle and source candidate. The condition, right-angle/angle definition, and requested BC expression remain in a readable sequence; no source wording or choice normalization was made. Actual engine micro-render remains for R3."
+      },
+      "SOLUTION_LAYOUT": {
+        "status": "PASS",
+        "evidence": "The stored solution states the opposite-side/hypotenuse roles, writes sin(a°)=BC/AB, substitutes AB=√13, isolates BC, and ends with the matching choice. The short sequence is sufficient for this one-step task and has explicit line breaks at the equation transitions. Golden/Negative samples were read before this correction-review; the initial disclosure-before-preflight failure is preserved separately. Calibration preflight archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/evidence/R1-q8-golden-negative-correction-review-preflight.json SHA-256 0f4e785ff3eb9d6f985d884ca03ef605cc589b487e0c7af980b8d8b388f6bc0f; actual correction-review compared the current solution after preflight."
+      },
+      "SMALL_BOARD": {
+        "status": "PASS",
+        "evidence": "The actual solution has a continuous board flow: identify sides → form sine ratio → substitute hypotenuse → isolate BC → state ④."
+      },
+      "BOARD_FLOW_CONTINUITY": {
+        "status": "PASS",
+        "evidence": "No missing algebraic step: multiplying both sides of sin(a°)=BC/√13 by √13 yields BC=√13 sin(a°)."
+      },
+      "META": {
+        "status": "PASS",
+        "evidence": "Current q8 fields were compared with freshMeta evidence f38773237dc0914d5e54531c68b16a4ee019e319425da8072da965fae052f3e7. Curriculum, L1/L2/L3/L4, active PT/TPL, owner pack, taxonomy enums, cross-concepts, conditions, integration, and difficulty fields match; no projection debt is present."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Bucket 2 / medium / NONE / NORMAL fits a direct single-triangle sine application with no auxiliary construction, branch split, or multi-stage measurement."
+      },
+      "VISUAL_SVG": {
+        "status": "PASS",
+        "evidence": "Required problem SVG opened and inspected. C is marked right; AB is the hypotenuse labeled √13; A owns the a° angle; BC is opposite A. Coordinates use AC:BC=480:320=3:2, consistent with AB=160√13 and label √13 under a schematic scale. Labels are separated; no solution image is needed for this direct ratio derivation. Review is static SVG semantic inspection, not actual engine render."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Question/choices exact-bound to the answer-free current q8 bundle; semantic boundaries are intact; render disposition deferred to R3."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Actual stored solution matched the independent derivation and calibrated small-board quality bar; no defect requiring edit. Preflight path archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/evidence/R1-q8-golden-negative-correction-review-preflight.json, SHA-256 0f4e785ff3eb9d6f985d884ca03ef605cc589b487e0c7af980b8d8b388f6bc0f."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "Fresh q8 Meta evidence binds current candidate SHA and all current values; no missing/null projection field."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "Actual current q8 SVG source and geometry reviewed; all labels and relations match q8 semantics."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "ea31b2451f1b954bed80ab7e309a54e35e0476d3f6ed8b17ad4f1485d7d08232",
+      "metaDebtFields": [],
+      "assetPath": "assets/images/26_삼산중_2학기_중간_중3_기출/q8.svg",
+      "assetSha256": "d223e915d967f71863e85268f7d7f075ed1454d243bb771ab1257cdac7e04c41",
+      "preFreezeAssetSha256": "d223e915d967f71863e85268f7d7f075ed1454d243bb771ab1257cdac7e04c41",
+      "postfreezeAdjudication": {
+        "status": "NOT_REQUIRED",
+        "reason": "independent choice 4 matches stored answer ④; no encoding correction needed."
+      }
+    }
+  ],
+  "summary": {
+    "questionCount": 1,
+    "answerMatch": 1,
+    "questionLayoutPass": 1,
+    "solutionLayoutPass": 1,
+    "smallBoardPass": 1,
+    "boardFlowPass": 1,
+    "metaPass": 1,
+    "difficultyPass": 1,
+    "visualPass": 1,
+    "itemHoldCount": 0
+  },
+  "createdAt": "2026-10-08T06:24:00Z",
+  "solutionQualityCalibration": {
+    "calibrationStatus": "PASS",
+    "preflightPath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\evidence\\R1-q8-golden-negative-correction-review-preflight.json",
+    "preflightSha256": "0f4e785ff3eb9d6f985d884ca03ef605cc589b487e0c7af980b8d8b388f6bc0f",
+    "scope": "Q8 correction-review only; no new answer solve and no candidate edit.",
+    "sampleReadBeforeCorrectionReview": true,
+    "sampleReadBeforeInitialStoredSolutionDisclosure": false,
+    "qualityCompareCount": "1/1",
+    "calibrationOrder": "answer freeze → postfreeze solution disclosure before sample calibration (failed attempt captured) → Golden/Negative preflight → q8 solution correction-review and current-source compare"
+  }
+}

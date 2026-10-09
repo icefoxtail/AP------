@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_SOURCE_DEFECT_EVIDENCE_V1",
+  "examUid": "23_금당고_1학기_중간_고2_수학I",
+  "runId": "h2-intake-batch01-20261009",
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "sourcePdfActuallyReviewed": true,
+  "sourcePdf": {
+    "path": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/수1/2023_금당고2_수1_1중간.pdf",
+    "sha256": "ab2d49cfcce9e92b17e59cc6fa6c38fda58bff65aa00a29acb0da9d66e95cc05",
+    "reviewedPages": [
+      {
+        "page": 1,
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학I\\source-defect-review\\source-page-1.png",
+        "sha256": "0766fee06c194fcb5403c73bd1e90e68ccdcd858cdeaa0238de3c696edd87717",
+        "scopedQids": [
+          7
+        ]
+      },
+      {
+        "page": 2,
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학I\\source-defect-review\\source-page-2.png",
+        "sha256": "0dd4dd015b0b4ace8855cbf7e11b5ab3d278cc36b8951db492643a1aaa954314",
+        "scopedQids": [
+          9,
+          10
+        ]
+      },
+      {
+        "page": 3,
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학I\\source-defect-review\\source-page-3.png",
+        "sha256": "0835da936d8f1df033c77a8619401309e6ec1733c63b72c42a70224b59f29045",
+        "scopedQids": [
+          18
+        ]
+      },
+      {
+        "page": 4,
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학I\\source-defect-review\\source-page-4.png",
+        "sha256": "89e4a2d82e2a7585055659a4f116eb0ef1701de7ac29f318740212ecb55b00b9",
+        "scopedQids": [
+          19
+        ]
+      }
+    ]
+  },
+  "extractedBaseline": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학I\\extracted-baseline.js",
+    "sha256": "312b6a9baefc7c5bd1977663fb7579be66fa2b107ad040d6b4cc99bf65df50e3"
+  },
+  "currentCandidate": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학I\\23_금당고_1학기_중간_고2_수학I.js"
+  },
+  "sourceParity": {
+    "denominator": 20,
+    "questionAndContentExactCount": 20,
+    "choicesExactCount": 20,
+    "questionTypeExactCount": 20,
+    "scoreExactCount": 20,
+    "unmodifiedStudentTextAndChoiceFields": true,
+    "visualReferenceMigrations": [
+      {
+        "qid": 7,
+        "from": "archive/assets/images/23_금당고_1학기_중간_고2_수학I/q07.png",
+        "to": "assets/images/23_금당고_1학기_중간_고2_수학I/q07.png",
+        "assetSha256": "05f9c34e9e82f3a23b776a4a4b895a1a18ce2728e541e4c7f19034048d28e203"
+      },
+      {
+        "qid": 13,
+        "from": "archive/assets/images/23_금당고_1학기_중간_고2_수학I/q13.png",
+        "to": "assets/images/23_금당고_1학기_중간_고2_수학I/q13.png",
+        "assetSha256": "81aff54bf4d3f1e6ff2a1f20ce7c45cb0b6fac6a12d329b005f224f8c29d23df"
+      }
+    ],
+    "actualPdfParityClaim": "SCOPED_QID_ONLY"
+  },
+  "itemHoldFindings": [
+    {
+      "qid": 7,
+      "kind": "SOURCE_UNDERDETERMINED",
+      "reason": "The diagram yields c=2^a=log_2(b) and d=2^b but gives no numerical anchor. c=2 yields (a,b,c,d)=(1,4,2,16), abcd=128; c=4 yields (2,16,4,65536), abcd=2^23. Thus abcd is not fixed.",
+      "sourcePdfPage": 1
+    },
+    {
+      "qid": 9,
+      "kind": "SOURCE_CHOICE_MISMATCH",
+      "reason": "Log domain: a-1>0, a!=2, and -(a-1)(a-5)>0, hence 1<a<5 with a!=2. Valid integers are 3 and 4, so the sum is 7; 7 is absent from the printed choices.",
+      "sourcePdfPage": 2
+    },
+    {
+      "qid": 10,
+      "kind": "SOURCE_UNIQUE_ANSWER_FAILURE",
+      "reason": "Let x=log_a3,y=log_b3. x+y=3 and 1/x^2+1/y^2=7 imply 7(xy)^2+2xy-9=0, so xy=1 or xy=-9/7. Both branches are allowed because a,b>0 and a,b!=1 permits one base below 1. The requested x^3+y^3 is respectively 18 or 270/7.",
+      "sourcePdfPage": 2,
+      "printedMarkObservation": "The source page shows a handwritten mark by choice 1 (18); it does not remove the valid negative-log branch."
+    },
+    {
+      "qid": 18,
+      "kind": "SOURCE_CHOICE_MISMATCH",
+      "reason": "For m<=12, n<=floor(m/3), contributing 18 for m=1..11 and 4 for m=12. For m=13..24, n<=floor(48/m), contributing 28. For m=25..48, n=1 contributes 24. Total=74, absent from printed choices.",
+      "sourcePdfPage": 3,
+      "printedMarkObservation": "The source page shows a handwritten mark by choice 1 (52); the count from the printed condition is 74."
+    },
+    {
+      "qid": 19,
+      "kind": "SOURCE_NO_REAL_SOLUTION",
+      "reason": "Set t=3^a>=3. Then A=(0,t), B=(t-6,0); the circle through O,A,B has area pi*(t^2+(t-6)^2)/4. The printed area 13pi/4 gives 2t^2-12t+23=0 with discriminant -40, so there is no real a.",
+      "sourcePdfPage": 4
+    }
+  ]
+}

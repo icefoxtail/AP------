@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_RECOVERY_QID_QUALITY_REVIEW_V1",
+  "examUid": "26_동산중_1학기_중간_중2_기출",
+  "stage": "R1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "reviewerIdentity": {"role":"archive_r1","reviewerId":"r1_08"},
+  "reviewedArtifact": {"path":"C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/archive/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/26_동산중_1학기_중간_중2_기출.js","rawSha256":"bf01f97280750894b99b631e501f8990d40a14a82133def913b85c2f3d6f7e52","rawBufferGitBlobSha1":"b677fcfb7dca704aa461e3aacc69954856b51244"},
+  "studentInput": {"path":"C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/archive/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/R1.current-full24.student.json","sha256":"5717ad4b49e758933eea9444ecd305aa09970edb32f8588f6bad9e1122c0eb2d","parityProofPath":"archive/analysis/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/R1.full24.student-parity.json","parityProofSha256":"e783b79708098ef27f5ca3451d09c8acb81ef8d6e980f46a69dcb9846ea6e517","result":"EXACT_24_QID_STUDENT_PARITY"},
+  "answerComparison": {"path":"archive/analysis/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/review/R1.recovery-19-21.postfreeze-qid-disclosure.rev2.json","sha256":"c67e57c4b7bdf4144a031280ba5b98402bae698d9fc3bfa264c4cc044da6d8ec","scope":[19,20,21],"result":"3_OF_3_MATCH","supersededRowsExcluded":[21],"supersededOldFreezeExcluded":"R1.independent-freeze.json from incomplete q19 visual input"},
+  "recoveryProvenance": {
+    "q19q20Freeze": {"path":"archive/analysis/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/R1.scope-19,20,21@recovery-01.freeze.json","sha256":"b63dd4306d9dd64391c77f7cf0df9ef53f9fe00861a91b0194f7df93acca44a8","usedQids":[19,20],"unusedSupersededQids":[21]},
+    "q21Freeze": {"path":"archive/analysis/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/R1.scope-21@recovery-02.freeze.json","sha256":"865a04c8fb3329f4f9aaf9a6d04f09e0a47884a117509ca16ddc0ffc0ef0b060","usedQids":[21]},
+    "authorizedReplacementMode":"ALIVE_REPLACEMENT + CODEX_DIRECT_AUTHORING",
+    "priorOriginalHoldProvenancePreserved":true
+  },
+  "rows": [
+    {
+      "qid": 19,
+      "sourceMode": "ALIVE_REPLACEMENT",
+      "repairApplied": true,
+      "disposition": "ALIVE_REPLACEMENT: complete symbolic inequality choices; the original number-line figure is not reconstructed or used.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswer": {"choice":2,"text":"$x\\le5$","cardinality":1},
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS_CONTENT_REVIEW;ROOT_HOLD_CLEARANCE_PENDING",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {"status":"PASS","disposition":"KEEP_GRID","basis":"Current student item has a complete statement and five symbolic inequality choices. Grid layout is preserved; no image is required for the replacement. Student payload exactly matches the current source."},
+        "SOLUTION_LAYOUT": {"status":"PASS","smallBoardContinuityStatus":"PASS","basis":"Solution separates transposition of 2x, transfer of 7, division by positive 3, and final x≤5. Steps and sign direction are explicit; no correction needed."},
+        "META": {"status":"PASS","disposition":"KEEP_REVIEWED_CORRECTION_SET","basis":"Current M2-02 unit/subunit, 2022 RPM basic-form path, difficulty 1/high/NONE, and BORDERLINE_ACCEPTABLE legacy bridge match the read-only current authority review. PT/TPL remain explicit manual_review projection debt because no exact M2-02 active binding exists."},
+        "VISUAL_SVG": {"status":"PASS","disposition":"NO_VISUAL_REQUIRED_FOR_AUTHORIZED_SYMBOLIC_REPLACEMENT","basis":"Current complete symbolic choices do not require a number-line image or SVG; the teacher-marked source diagram is excluded and no answer-marked asset was exposed."}
+      },
+      "answerCardinality": 1,
+      "studentPayloadSha256": "5ad9dbab9592631f6cfb859226a67f0588d1d9cade440ab123b14fe26ddb63a0",
+      "smallBoardContinuityStatus": "PASS",
+      "difficulty": {"difficultyBucket":1,"difficultyConfidence":"high","difficultyBoundaryFlag":"NONE","legacyLevel":"중","legacyLevelCompatibility":"BORDERLINE_ACCEPTABLE"},
+      "metaProjectionDebt": {"metaDebtFields":["problemTypeKey","templateKey"],"metaDebtReason":"No exact current ACTIVE curriculum binding exists for M2-02/M2-02-LINEAR_INEQUALITY; preserve deterministic RPM primary semantics and do not borrow higher-course keys."},
+      "currentHoldMarker": "STALE_ORIGINAL_INPUT_HOLD_PENDING_ROOT_CLEARANCE"
+    },
+    {
+      "qid": 20,
+      "sourceMode": "ALIVE_REPLACEMENT",
+      "repairApplied": true,
+      "disposition": "ALIVE_REPLACEMENT: complete inequality and natural-number count statement recovered as current student text.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswer": {"choice":3,"text":"7","cardinality":1},
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS_CONTENT_REVIEW;ROOT_HOLD_CLEARANCE_PENDING",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {"status":"PASS","disposition":"KEEP_GRID","basis":"Current statement and five numeric choices are complete; grid is appropriate and student payload exactly matches current source."},
+        "SOLUTION_LAYOUT": {"status":"PASS","smallBoardContinuityStatus":"PASS","basis":"Solution first obtains x<8, then separately applies x≥1 and enumerates 1–7, giving seven natural-number solutions."},
+        "META": {"status":"PASS","disposition":"KEEP_REVIEWED_CORRECTION_SET","basis":"This is a non-contextual integer-solution-count item: M2-02-LINEAR_INEQUALITY with active COND_NATURAL_NUMBER, RPM L3-3.1.3/L4-3.1.3.1, difficulty 2/high/NONE and legacy compatibility NORMAL. PT/TPL projection debt is explicit."},
+        "VISUAL_SVG": {"status":"PASS","disposition":"NO_VISUAL_REQUIRED","basis":"All mathematical information is in the current text and choices; no image, table, or SVG is referenced."}
+      },
+      "answerCardinality": 1,
+      "studentPayloadSha256": "35bc41e49345a981a060f0525fe003e89f9f993b78c21cc68fda78b3b4a25ce0",
+      "smallBoardContinuityStatus": "PASS",
+      "difficulty": {"difficultyBucket":2,"difficultyConfidence":"high","difficultyBoundaryFlag":"NONE","legacyLevel":"중","legacyLevelCompatibility":"NORMAL"},
+      "metaProjectionDebt": {"metaDebtFields":["problemTypeKey","templateKey"],"metaDebtReason":"No exact current ACTIVE curriculum binding exists for M2-02/M2-02-LINEAR_INEQUALITY; preserve deterministic RPM primary semantics and do not borrow higher-course keys."},
+      "currentHoldMarker": "STALE_ORIGINAL_INPUT_HOLD_PENDING_ROOT_CLEARANCE"
+    },
+    {
+      "qid": 21,
+      "sourceMode": "ALIVE_REPLACEMENT",
+      "repairApplied": true,
+      "disposition": "ALIVE_REPLACEMENT: current question states 20% discount and at least 10% profit over 8,000원 cost.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswer": "③ (11,000원)",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS_CONTENT_REVIEW;ROOT_HOLD_CLEARANCE_PENDING",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {"status":"PASS","disposition":"KEEP_GRID","basis":"Current statement and five monetary choices are complete and legible in text; grid is appropriate and no referenced visual is missing."},
+        "SOLUTION_LAYOUT": {"status":"PASS","smallBoardContinuityStatus":"PASS","basis":"Solution separately interprets 10% profit (800원), 20% discount (0.8p), builds 0.8p−8,000≥800, then solves p≥11,000. No correction needed."},
+        "META": {"status":"PASS","disposition":"KEEP_REVIEWED_CORRECTION_SET","basis":"Contextual discount/profit application: M2-02-LINEAR_INEQUALITY_WORD, RPM L3-3.2.3/L4-3.2.3.1, difficulty 2/high/NONE and legacy compatibility NORMAL. No active exact M2-02 PT/TPL binding; projection debt is explicit."},
+        "VISUAL_SVG": {"status":"PASS","disposition":"NO_VISUAL_REQUIRED","basis":"Current replacement includes all monetary data in the statement and choices; no image or SVG reference is present."}
+      },
+      "answerCardinality": 1,
+      "studentPayloadSha256": "5cb87dec1bb267aa3a88cf42d5eb25666476c8050bbd67d1667968f76192618f",
+      "smallBoardContinuityStatus": "PASS",
+      "difficulty": {"difficultyBucket":2,"difficultyConfidence":"high","difficultyBoundaryFlag":"NONE","legacyLevel":"중","legacyLevelCompatibility":"NORMAL"},
+      "metaProjectionDebt": {"metaDebtFields":["problemTypeKey","templateKey"],"metaDebtReason":"No exact current ACTIVE curriculum binding exists for M2-02/M2-02-LINEAR_INEQUALITY_WORD; preserve deterministic RPM primary semantics and do not borrow higher-course keys."},
+      "currentHoldMarker": "STALE_ORIGINAL_INPUT_HOLD_PENDING_ROOT_CLEARANCE"
+    }
+  ],
+  "qualityFinding": "NO_REMAINING_SUBSTANTIVE_ITEM_DEFECTS_Q19_Q21",
+  "currentStatusLimitation": "The three source objects still carry original itemStatus/reviewStatus HOLD markers; this file does not clear them. ROOT clearance is required before current full24 generic validation.",
+  "actualRenderClaimed": false,
+  "genericValidatorRun": false,
+  "completionSealCreated": false
+}

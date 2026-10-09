@@ -1,0 +1,12 @@
+file:///C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/archive/archive-2026-1mid-nine-20261008/26_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A03_%EB%AF%B8%EC%A0%81%EB%B6%842/registration-rebase/root-checkout/archive/tools/prepare-target-registration.mjs:4
+const root=fs.realpathSync(path.resolve(args.root)),safe=p=>{const f=path.resolve(root,p),rel=path.relative(root,f);if(rel.startsWith('..')||path.isAbsolute(rel))throw Error('PATH_ESCAPE:'+p);return f;},hash=b=>createHash('sha256').update(b).digest('hex'),json=p=>JSON.parse(fs.readFileSync(p,'utf8').replace(/^\uFEFF/,''));
+                                                                                                                                                                        ^
+
+Error: PATH_ESCAPE:C:\Users\USER\Desktop\AP-worktrees\archive-2026-1mid-nine\AP------\.tmp\archive\archive-2026-1mid-nine-20261008\26_팔마고_1학기_중간_고3_미적분2\registration-rebase\registration-candidate-02
+    at safe (file:///C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/archive/archive-2026-1mid-nine-20261008/26_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A03_%EB%AF%B8%EC%A0%81%EB%B6%842/registration-rebase/root-checkout/archive/tools/prepare-target-registration.mjs:4:169)
+    at file:///C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/archive/archive-2026-1mid-nine-20261008/26_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A03_%EB%AF%B8%EC%A0%81%EB%B6%842/registration-rebase/root-checkout/archive/tools/prepare-target-registration.mjs:5:227
+    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.14.1

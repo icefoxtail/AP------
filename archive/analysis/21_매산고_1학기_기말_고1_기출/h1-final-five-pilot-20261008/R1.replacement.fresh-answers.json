@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "ROOT_FRESH_REPLACEMENT_SCOPE_ANSWERS_V1",
+  "reviewerIdentity": {
+    "role": "archive_r1",
+    "reviewerId": "/root/r1_maesan2021_replacement"
+  },
+  "answers": [
+    {
+      "qid": 17,
+      "independentAnswer": "14",
+      "reasoning": "The first line passes through A=(2,0), and the second through B=(0,6). Their slopes m and -1/m are perpendicular, so each intersection P lies on the circle with diameter AB. Its center is (1,3), and r^2=|AB|^2/4=(4+36)/4=10. Thus a+b+r^2=1+3+10=14."
+    },
+    {
+      "qid": 20,
+      "independentAnswer": "16",
+      "reasoning": "The intersections are l∩m=(a,b), l∩n=(a+b,b-a), and m∩n=(0,0). The triangle area is half the absolute determinant, (a^2+b^2)/2. For this to be an integer with gcd(a,b)=1, a and b must both be odd (both even is impossible, and opposite parity gives an odd sum of squares). Thus enumerate odd coprime pairs 1<a<b with a^2+b^2≤300. By b=5,7,9,11,13,15,17, the qualifying counts are 1,2,2,4,5,1,1, totaling 16."
+    }
+  ]
+}

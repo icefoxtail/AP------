@@ -1,23 +1,15 @@
 window.examTitle = "23_여천고_1학기_중간_고1_기출";
+
 window.questionBank = [
   {
     "id": 1,
     "level": "중",
     "category": "다항식의 연산",
-    "content": "두 다항식 $A, B$에 대하여<br>$A+B=3x^2-2xy+y^2$, $A-B=-x^2+4xy-5y^2$<br>일 때, $B-2A=ax^2+bxy+cy^2$이다. $a+b+c$의 값은? (단, $a, b, c$는 실수이다.)",
-    "choices": [
-      "$-4$",
-      "$-2$",
-      "$0$",
-      "$2$",
-      "$4$"
-    ],
-    "answer": "④",
-    "solution": "두 식을 연립하여 $A, B$를 구한다.\n$(A+B) + (A-B) = 2A = 2x^2 + 2xy - 4y^2 \\rightarrow A = x^2 + xy - 2y^2$\n$(A+B) - (A-B) = 2B = 4x^2 - 6xy + 6y^2 \\rightarrow B = 2x^2 - 3xy + 3y^2$\n구하고자 하는 식은 $B-2A$이므로,\n$B-2A = (2x^2 - 3xy + 3y^2) - 2(x^2 + xy - 2y^2)$\n$= 2x^2 - 3xy + 3y^2 - 2x^2 - 2xy + 4y^2 = -5xy + 7y^2$\n따라서 $a=0, b=-5, c=7$이므로 $a+b+c = 2$이다.",
     "originalCategory": "다항식의 연산",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -28,30 +20,39 @@ window.questionBank = [
       "중난도"
     ],
     "wide": false,
-    "standardUnitOrder": 1,
+    "content": "두 다항식 $A, B$에 대하여<br>$A+B=3x^2-2xy+y^2$, $A-B=-x^2+4xy-5y^2$<br>일 때, $B-2A=ax^2+bxy+cy^2$이다. $a+b+c$의 값은? (단, $a, b, c$는 실수이다.)",
+    "choices": [
+      "$-4$",
+      "$-2$",
+      "$0$",
+      "$2$",
+      "$4$"
+    ],
+    "answer": "④",
     "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 기본 연산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solution": "$A+B$와 $A-B$를 더하고 빼서 $A$, $B$를 먼저 구한다.\n두 식을 더하면\n$2A=(3x^2-2xy+y^2)+(-x^2+4xy-5y^2)$\n$=2x^2+2xy-4y^2$이므로\n$A=x^2+xy-2y^2$이다.\n두 식을 빼면\n$2B=(3x^2-2xy+y^2)-(-x^2+4xy-5y^2)$\n$=4x^2-6xy+6y^2$이므로\n$B=2x^2-3xy+3y^2$이다.\n따라서\n$B-2A=(2x^2-3xy+3y^2)-2(x^2+xy-2y^2)$\n$=-5xy+7y^2$이다.\n즉 $a=0$, $b=-5$, $c=7$이므로\n$a+b+c=2$이다.\n\n따라서 정답은 ④이다.",
+    "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+    "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
     "level": "중",
     "category": "복소수",
-    "content": "복소수 $z=(1+i)a^2-(5+4i)a+6+3i$에 대하여 $z^2$이 음의 실수가 되도록 하는 실수 $a$값의 합은?",
-    "choices": [
-      "$2$",
-      "$3$",
-      "$4$",
-      "$5$",
-      "$6$"
-    ],
-    "answer": "①",
-    "solution": "$z$를 실수부분과 허수부분으로 정리하면,\n$z = (a^2-5a+6) + (a^2-4a+3)i$\n$z^2$이 음의 실수가 되려면 $z$는 순허수이어야 하므로,\n실수부분 $a^2-5a+6 = 0$ 이고 허수부분 $a^2-4a+3 \\ne 0$ 이어야 한다.\n$a^2-5a+6 = 0 \\rightarrow (a-2)(a-3) = 0 \\rightarrow a=2$ 또는 $a=3$\n$a^2-4a+3 \\ne 0 \\rightarrow (a-1)(a-3) \\ne 0 \\rightarrow a \\ne 1$ 이고 $a \\ne 3$\n따라서 조건을 만족하는 실수 $a$의 값은 $2$뿐이며 그 합도 $2$이다.",
     "originalCategory": "복소수",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-04",
     "standardUnit": "복소수",
+    "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -62,30 +63,41 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "standardUnitOrder": 4,
+    "content": "복소수 $z=(1+i)a^2-(5+4i)a+6+3i$에 대하여 $z^2$이 음의 실수가 되도록 하는 실수 $a$값의 합은?",
+    "choices": [
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$"
+    ],
+    "answer": "①",
     "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
     "subUnit": "복소수의 계산",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "$z$의 실수부와 허수부를 각각 정리한다.\n$z=(1+i)a^2-(5+4i)a+6+3i$에서\n실수부는\n$a^2-5a+6=(a-2)(a-3)$이고,\n허수부는\n$a^2-4a+3=(a-1)(a-3)$이다.\n$z=x+yi$라 두면\n$z^2=(x^2-y^2)+2xyi$이다.\n$z^2$이 음의 실수이려면 $2xy=0$이면서 $x^2-y^2<0$이어야 한다.\n즉 $x=0$, $y\\ne0$이어야 한다.\n실수부가 $0$이 되는 값은 $a=2,3$이다.\n$a=2$이면 허수부가 $-1$이므로 $z=-i$, $z^2=-1$로 조건을 만족한다.\n$a=3$이면 $z=0$이므로 음의 실수가 아니다.\n따라서 가능한 $a$는 $2$ 하나이고 그 합은 $2$이다.\n\n따라서 정답은 ①이다.",
+    "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+    "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NEGATIVE"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
     "level": "중",
     "category": "나머지정리",
-    "content": "다항식 $P(x)$를 $3x-1$로 나누었을 때의 몫을 $Q(x)$, 나머지를 $r$이라 할 때, $xP(x)$를 $x-\\frac{1}{3}$로 나누었을 때의 몫과 나머지는? (단, $r$는 상수이다.)",
-    "choices": [
-      "몫: $xQ(x)$, 나머지: $r$",
-      "몫: $xQ(x)$, 나머지: $-r$",
-      "몫: $3xQ(x)-r$, 나머지: $\\frac{3}{2}r$",
-      "몫: $3xQ(x)+r$, 나머지: $-\\frac{1}{3}r$",
-      "몫: $3xQ(x)+r$, 나머지: $\\frac{1}{3}r$"
-    ],
-    "answer": "⑤",
-    "solution": "주어진 조건에서 $P(x) = (3x-1)Q(x) + r$ 이다.\n양변에 $x$를 곱하면,\n$xP(x) = x(3x-1)Q(x) + rx = 3x(x-\\frac{1}{3})Q(x) + rx$\n이 식을 $(x-\\frac{1}{3})$로 묶어내기 위해 변형하면,\n$xP(x) = 3x(x-\\frac{1}{3})Q(x) + r(x-\\frac{1}{3}) + \\frac{1}{3}r$\n$= (x-\\frac{1}{3})[3xQ(x) + r] + \\frac{1}{3}r$\n따라서 몫은 $3xQ(x)+r$ 이고, 나머지는 $\\frac{1}{3}r$ 이다.",
     "originalCategory": "나머지정리",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -96,30 +108,39 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "standardUnitOrder": 1,
+    "content": "다항식 $P(x)$를 $3x-1$로 나누었을 때의 몫을 $Q(x)$, 나머지를 $r$이라 할 때, $xP(x)$를 $x-\\frac{1}{3}$로 나누었을 때의 몫과 나머지는? (단, $r$는 상수이다.)",
+    "choices": [
+      "몫: $xQ(x)$, 나머지: $r$",
+      "몫: $xQ(x)$, 나머지: $-r$",
+      "몫: $3xQ(x)-r$, 나머지: $\\frac{3}{2}r$",
+      "몫: $3xQ(x)+r$, 나머지: $-\\frac{1}{3}r$",
+      "몫: $3xQ(x)+r$, 나머지: $\\frac{1}{3}r$"
+    ],
+    "answer": "⑤",
     "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
     "subUnit": "다항식의 나눗셈",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solution": "나눗셈 관계를 먼저 식으로 쓴다.\n$P(x)=(3x-1)Q(x)+r$이다.\n$3x-1=3\\left(x-\\dfrac13\\right)$이므로\n$P(x)=3\\left(x-\\dfrac13\\right)Q(x)+r$이다.\n양변에 $x$를 곱하면\n$xP(x)=3x\\left(x-\\dfrac13\\right)Q(x)+xr$이다.\n여기서\n$xr=r\\left(x-\\dfrac13\\right)+\\dfrac13r$이므로\n$xP(x)=\\left(x-\\dfrac13\\right)\\{3xQ(x)+r\\}+\\dfrac13r$이다.\n따라서 $x-\\dfrac13$으로 나누었을 때의 몫은 $3xQ(x)+r$, 나머지는 $\\dfrac13r$이다.\n\n따라서 정답은 ⑤이다.",
+    "problemTypeKey": "PT_H1_POLY_DIVISION",
+    "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
     "level": "중",
     "category": "곱셈공식",
-    "content": "$x-y=3$, $x^3-y^3=-27$일 때, $xy$의 값은?",
-    "choices": [
-      "$-15$",
-      "$-12$",
-      "$-10$",
-      "$-6$",
-      "$-1$"
-    ],
-    "answer": "④",
-    "solution": "곱셈공식의 변형에 의해\n$x^3-y^3 = (x-y)^3 + 3xy(x-y)$\n주어진 값을 대입하면,\n$-27 = 3^3 + 3xy(3)$\n$-27 = 27 + 9xy$\n$9xy = -54 \\rightarrow xy = -6$",
     "originalCategory": "곱셈공식",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -131,30 +152,39 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "standardUnitOrder": 1,
+    "content": "$x-y=3$, $x^3-y^3=-27$일 때, $xy$의 값은?",
+    "choices": [
+      "$-15$",
+      "$-12$",
+      "$-10$",
+      "$-6$",
+      "$-1$"
+    ],
+    "answer": "④",
     "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 기본 연산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solution": "세제곱의 차를 이용한다.\n$x^3-y^3=(x-y)(x^2+xy+y^2)$이므로\n$-27=3(x^2+xy+y^2)$이다.\n따라서\n$x^2+xy+y^2=-9$이다.\n또\n$(x-y)^2=x^2-2xy+y^2=9$이다.\n두 식을 빼면\n$(x^2+xy+y^2)-(x^2-2xy+y^2)=-9-9$이므로\n$3xy=-18$이다.\n따라서 $xy=-6$이다.\n\n따라서 정답은 ④이다.",
+    "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+    "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
     "level": "중",
     "category": "인수분해",
-    "content": "다항식 $f(x)=2x^3-3x^2-2x+a$를 인수분해 하면 $(x-1)g(x)$의 꼴로 된다. 이때 다항식 $g(x)$의 모든 계수들과 상수항의 합은? [3.7점]",
-    "choices": [
-      "$-5$",
-      "$-2$",
-      "$1$",
-      "$4$",
-      "$6$"
-    ],
-    "answer": "②",
-    "solution": "$f(x)$가 $x-1$을 인수로 가지므로 $f(1)=0$ 이다.\n$f(1) = 2 - 3 - 2 + a = 0 \\rightarrow a=3$\n$f(x) = 2x^3 - 3x^2 - 2x + 3$을 조립제법으로 $(x-1)$로 나누면,\n$f(x) = (x-1)(2x^2-x-3)$ 이 되므로 $g(x) = 2x^2-x-3$ 이다.\n$g(x)$의 모든 계수들과 상수항의 합은 $g(1)$의 값과 같으므로,\n$g(1) = 2(1)^2 - 1 - 3 = -2$ 이다.",
     "originalCategory": "인수분해",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-03",
     "standardUnit": "인수분해",
+    "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -165,30 +195,41 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "standardUnitOrder": 3,
+    "content": "다항식 $f(x)=2x^3-3x^2-2x+a$를 인수분해 하면 $(x-1)g(x)$의 꼴로 된다. 이때 다항식 $g(x)$의 모든 계수들과 상수항의 합은? [3.7점]",
+    "choices": [
+      "$-5$",
+      "$-2$",
+      "$1$",
+      "$4$",
+      "$6$"
+    ],
+    "answer": "②",
     "subUnitKey": "H15-SA-03-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solution": "$(x-1)$이 $f(x)$의 인수이므로 인수정리에 의해 $f(1)=0$이다.\n$f(1)=2-3-2+a=a-3$이므로\n$a=3$이다.\n따라서\n$f(x)=2x^3-3x^2-2x+3$이다.\n이를 $x-1$로 나누면\n$g(x)=2x^2-x-3$이다.\n다항식의 모든 계수의 합은 $x=1$을 대입한 값과 같으므로\n$g(1)=2-1-3=-2$이다.\n\n따라서 정답은 ②이다.",
+    "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+    "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+    "crossConceptKeys": [
+      "CC_POLYNOMIAL_DIVISION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
     "level": "중",
     "category": "복소수",
-    "content": "$\\frac{1}{i}+\\frac{2}{i^2}+\\frac{3}{i^3}+\\frac{4}{i^4}+\\frac{5}{i^5}=a+bi$일 때 $ab$의 값은?",
-    "choices": [
-      "$-6$",
-      "$-4$",
-      "$-2$",
-      "$3$",
-      "$6$"
-    ],
-    "answer": "①",
-    "solution": "$i$의 거듭제곱의 성질($i^2=-1, i^3=-i, i^4=1, i^5=i$)을 이용하여 식을 간단히 하면,\n$\\frac{1}{i} = -i$\n$\\frac{2}{i^2} = \\frac{2}{-1} = -2$\n$\\frac{3}{i^3} = \\frac{3}{-i} = 3i$\n$\\frac{4}{i^4} = \\frac{4}{1} = 4$\n$\\frac{5}{i^5} = \\frac{5}{i} = -5i$\n주어진 식의 합은 $-i - 2 + 3i + 4 - 5i = 2 - 3i$ 이다.\n따라서 $a=2, b=-3$이므로 $ab = -6$ 이다.",
     "originalCategory": "복소수",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-04",
     "standardUnit": "복소수",
+    "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -201,30 +242,39 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "standardUnitOrder": 4,
+    "content": "$\\frac{1}{i}+\\frac{2}{i^2}+\\frac{3}{i^3}+\\frac{4}{i^4}+\\frac{5}{i^5}=a+bi$일 때 $ab$의 값은?",
+    "choices": [
+      "$-6$",
+      "$-4$",
+      "$-2$",
+      "$3$",
+      "$6$"
+    ],
+    "answer": "①",
     "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
     "subUnit": "복소수의 계산",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "$i$의 거듭제곱은 $i, -1, -i, 1$이 주기적으로 반복된다.\n따라서\n$\\dfrac1i=-i$,\n$\\dfrac2{i^2}=-2$,\n$\\dfrac3{i^3}=3i$,\n$\\dfrac4{i^4}=4$,\n$\\dfrac5{i^5}=-5i$이다.\n모두 더하면\n$(-2+4)+(-1+3-5)i=2-3i$이다.\n따라서 $a=2$, $b=-3$이므로\n$ab=-6$이다.\n\n따라서 정답은 ①이다.",
+    "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+    "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
     "level": "중",
     "category": "복소수",
-    "content": "복소수 $z=\\sqrt{-1}\\sqrt{-16}+\\frac{\\sqrt{18}}{\\sqrt{-2}}$일 때, $z\\bar{z}$의 값은?",
-    "choices": [
-      "$16$",
-      "$20$",
-      "$25$",
-      "$27$",
-      "$30$"
-    ],
-    "answer": "③",
-    "solution": "음수의 제곱근 성질을 이용하여 $z$를 정리한다.\n$\\sqrt{-1}\\sqrt{-16} = -\\sqrt{(-1)(-16)} = -\\sqrt{16} = -4$\n$\\frac{\\sqrt{18}}{\\sqrt{-2}} = -\\sqrt{\\frac{18}{-2}} = -\\sqrt{-9} = -3i$\n따라서 $z = -4 - 3i$ 이다.\n$z\\bar{z} = (-4 - 3i)(-4 + 3i) = (-4)^2 - (3i)^2 = 16 + 9 = 25$",
     "originalCategory": "복소수",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-04",
     "standardUnit": "복소수",
+    "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -238,30 +288,41 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "standardUnitOrder": 4,
+    "content": "복소수 $z=\\sqrt{-1}\\sqrt{-16}+\\frac{\\sqrt{18}}{\\sqrt{-2}}$일 때, $z\\bar{z}$의 값은?",
+    "choices": [
+      "$16$",
+      "$20$",
+      "$25$",
+      "$27$",
+      "$30$"
+    ],
+    "answer": "③",
     "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
     "subUnit": "복소수의 계산",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "주어진 복소수를 먼저 간단히 한다.\n$\\sqrt{-1}=i$, $\\sqrt{-16}=4i$이므로\n$\\sqrt{-1}\\sqrt{-16}=i\\cdot4i=-4$이다.\n또\n$\\dfrac{\\sqrt{18}}{\\sqrt{-2}}=\\dfrac{3\\sqrt2}{i\\sqrt2}=\\dfrac3i=-3i$이다.\n따라서\n$z=-4-3i$이다.\n켤레복소수는 $\\bar z=-4+3i$이므로\n$z\\bar z=(-4-3i)(-4+3i)$\n$=(-4)^2+3^2=25$이다.\n\n따라서 정답은 ③이다.",
+    "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+    "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+    "crossConceptKeys": [
+      "CC_RADICAL_EXPRESSION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
     "level": "상",
     "category": "다항식의 연산",
-    "content": "$2a^3+3a^2b-b^3=121$이 되도록 하는 두 자연수 $a, b$에 대하여 $ab$의 값은?",
-    "choices": [
-      "$20$",
-      "$24$",
-      "$28$",
-      "$32$",
-      "$36$"
-    ],
-    "answer": "③",
-    "solution": "좌변을 인수분해하기 위해 조립제법 등을 활용하여 정리한다.\n$2a^3+3a^2b-b^3 = (a+b)(2a^2+ab-b^2) = (a+b)^2(2a-b) = 121$\n$121 = 11^2 \\times 1$ 이고, $a, b$는 자연수이므로 $a+b \\ge 2$이다.\n따라서 $(a+b)^2 = 11^2$ 이고 $2a-b = 1$ 이어야 한다.\n$a+b = 11$\n$2a-b = 1$\n두 식을 연립하면 $3a = 12 \\rightarrow a=4$, 대입하면 $b=7$이다.\n따라서 $ab = 4 \\times 7 = 28$이다.",
     "originalCategory": "다항식의 연산",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-03",
     "standardUnit": "인수분해",
+    "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -274,30 +335,41 @@ window.questionBank = [
       "응용"
     ],
     "wide": false,
-    "standardUnitOrder": 3,
+    "content": "$2a^3+3a^2b-b^3=121$이 되도록 하는 두 자연수 $a, b$에 대하여 $ab$의 값은?",
+    "choices": [
+      "$20$",
+      "$24$",
+      "$28$",
+      "$32$",
+      "$36$"
+    ],
+    "answer": "③",
     "subUnitKey": "H15-SA-03-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solution": "왼쪽 식을 인수분해한다.\n$2a^3+3a^2b-b^3=(a+b)^2(2a-b)$이다.\n따라서\n$(a+b)^2(2a-b)=121=11^2$이다.\n$a,b$는 자연수이므로 $a+b\\ge2$이다.\n따라서 $(a+b)^2=121$, $2a-b=1$이어야 한다.\n즉\n$a+b=11$,\n$2a-b=1$이다.\n두 식을 더하면 $3a=12$이므로 $a=4$이고,\n$b=7$이다.\n따라서\n$ab=4\\cdot7=28$이다.\n\n따라서 정답은 ③이다.",
+    "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+    "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
     "level": "중",
     "category": "인수분해",
-    "content": "$7^6-1$을 자연수 $n$으로 나누었을 때 다음 중 나누어떨어지지 않은 자연수 $n$은?",
-    "choices": [
-      "$6$",
-      "$10$",
-      "$43$",
-      "$48$",
-      "$57$"
-    ],
-    "answer": "②",
-    "solution": "$7^6-1$을 합차공식을 이용하여 인수분해한다.\n$7^6-1 = (7^3-1)(7^3+1) = (343-1)(343+1) = 342 \\times 344$\n$342$와 $344$를 소인수분해하면,\n$342 = 2 \\times 171 = 2 \\times 3^2 \\times 19$\n$344 = 8 \\times 43 = 2^3 \\times 43$\n따라서 $7^6-1 = 2^4 \\times 3^2 \\times 19 \\times 43$ 이다.\n① $6 = 2 \\times 3$ (나누어떨어짐)\n② $10 = 2 \\times 5$ (소인수 5가 없으므로 나누어떨어지지 않음)\n③ $43$ (나누어떨어짐)\n④ $48 = 2^4 \\times 3$ (나누어떨어짐)\n⑤ $57 = 3 \\times 19$ (나누어떨어짐)\n정답은 $10$이다.",
     "originalCategory": "인수분해",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-03",
     "standardUnit": "인수분해",
+    "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -308,30 +380,39 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "standardUnitOrder": 3,
+    "content": "$7^6-1$을 자연수 $n$으로 나누었을 때 다음 중 나누어떨어지지 않은 자연수 $n$은?",
+    "choices": [
+      "$6$",
+      "$10$",
+      "$43$",
+      "$48$",
+      "$57$"
+    ],
+    "answer": "②",
     "subUnitKey": "H15-SA-03-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solution": "거듭제곱의 차를 인수분해한다.\n$7^6-1=(7^3-1)(7^3+1)$이다.\n$7^3=343$이므로\n$7^6-1=342\\cdot344=117648$이다.\n각 보기를 확인하면\n$6$은 $342$의 약수이므로 나누어떨어진다.\n$43$은 $344=43\\cdot8$이므로 나누어떨어진다.\n$48$에 대해서는 $117648=48\\cdot2451$이다.\n$57$은 $342=57\\cdot6$이므로 나누어떨어진다.\n그러나 $117648$의 일의 자리는 $8$이므로 $10$으로는 나누어떨어지지 않는다.\n\n따라서 정답은 ②이다.",
+    "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+    "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
     "level": "중",
     "category": "이차방정식",
-    "content": "다음 보기에서 서로 다른 두 실근을 갖는 이차방정식을 모두 고르면?<br><보기><br>ㄱ. $4x^2-x-1=0$<br>ㄴ. $9x^2+6x+1=0$<br>ㄷ. $x^2-3x+6=0$<br>ㄹ. $3x^2-6x+1=0$",
-    "choices": [
-      "ㄱ",
-      "ㄱ, ㄴ",
-      "ㄴ, ㄷ",
-      "ㄱ, ㄷ",
-      "ㄱ, ㄹ"
-    ],
-    "answer": "⑤",
-    "solution": "각 이차방정식의 판별식 $D$를 구하여 부호를 판별한다.\nㄱ. $D = (-1)^2 - 4(4)(-1) = 17 > 0$ (서로 다른 두 실근)\nㄴ. $D/4 = 3^2 - (9)(1) = 0$ (중근)\nㄷ. $D = (-3)^2 - 4(1)(6) = 9 - 24 = -15 < 0$ (서로 다른 두 허근)\nㄹ. $D/4 = (-3)^2 - (3)(1) = 9 - 3 = 6 > 0$ (서로 다른 두 실근)\n따라서 서로 다른 두 실근을 갖는 것은 ㄱ, ㄹ이다.",
     "originalCategory": "이차방정식",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-05",
     "standardUnit": "이차방정식",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -343,30 +424,39 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "standardUnitOrder": 5,
+    "content": "다음 보기에서 서로 다른 두 실근을 갖는 이차방정식을 모두 고르면?<br><보기><br>ㄱ. $4x^2-x-1=0$<br>ㄴ. $9x^2+6x+1=0$<br>ㄷ. $x^2-3x+6=0$<br>ㄹ. $3x^2-6x+1=0$",
+    "choices": [
+      "ㄱ",
+      "ㄱ, ㄴ",
+      "ㄴ, ㄷ",
+      "ㄱ, ㄷ",
+      "ㄱ, ㄹ"
+    ],
+    "answer": "⑤",
     "subUnitKey": "H15-SA-05-DISCRIMINANT",
     "subUnit": "판별식과 근의 조건",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "서로 다른 두 실근을 가지려면 판별식 $D=b^2-4ac$가 $0$보다 커야 한다.\n\nㄱ. $4x^2-x-1=0$에서\n$D=(-1)^2-4\\cdot4\\cdot(-1)=17>0$이므로 참이다.\n\nㄴ. $9x^2+6x+1=0$에서\n$D=6^2-4\\cdot9\\cdot1=0$이므로 중근을 갖는다. 거짓이다.\n\nㄷ. $x^2-3x+6=0$에서\n$D=(-3)^2-4\\cdot1\\cdot6=-15<0$이므로 실근이 없다. 거짓이다.\n\nㄹ. $3x^2-6x+1=0$에서\n$D=(-6)^2-4\\cdot3\\cdot1=24>0$이므로 참이다.\n\n따라서 ㄱ, ㄹ이 옳으므로 정답은 ⑤이다.",
+    "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+    "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 11,
     "level": "중",
     "category": "이차방정식",
-    "content": "이차방정식 $x^2+5x-1=0$의 두 근을 $\\alpha, \\beta$라고 할 때, $\\frac{\\beta+1}{\\alpha}+\\frac{\\alpha+1}{\\beta}$의 값을 구하면?",
-    "choices": [
-      "$-22$",
-      "$-21$",
-      "$21$",
-      "$22$",
-      "$23$"
-    ],
-    "answer": "①",
-    "solution": "근과 계수의 관계에 의해 $\\alpha+\\beta=-5$, $\\alpha\\beta=-1$이다.\n주어진 식을 통분하여 정리하면,\n$\\frac{\\beta+1}{\\alpha} + \\frac{\\alpha+1}{\\beta} = \\frac{\\beta(\\beta+1) + \\alpha(\\alpha+1)}{\\alpha\\beta} = \\frac{\\alpha^2+\\beta^2+\\alpha+\\beta}{\\alpha\\beta}$\n$\\alpha^2+\\beta^2 = (\\alpha+\\beta)^2 - 2\\alpha\\beta = (-5)^2 - 2(-1) = 25 + 2 = 27$\n분자는 $27 + (-5) = 22$가 되고, 분모는 $-1$이 된다.\n따라서 식의 값은 $\\frac{22}{-1} = -22$이다.",
     "originalCategory": "이차방정식",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-05",
     "standardUnit": "이차방정식",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -379,30 +469,39 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "standardUnitOrder": 5,
+    "content": "이차방정식 $x^2+5x-1=0$의 두 근을 $\\alpha, \\beta$라고 할 때, $\\frac{\\beta+1}{\\alpha}+\\frac{\\alpha+1}{\\beta}$의 값을 구하면?",
+    "choices": [
+      "$-22$",
+      "$-21$",
+      "$21$",
+      "$22$",
+      "$23$"
+    ],
+    "answer": "①",
     "subUnitKey": "H15-SA-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "두 근의 합과 곱을 이용한다.\n$x^2+5x-1=0$의 두 근이 $\\alpha,\\beta$이므로\n$\\alpha+\\beta=-5$, $\\alpha\\beta=-1$이다.\n주어진 식을 한 분수로 정리하면\n$\\dfrac{\\beta+1}{\\alpha}+\\dfrac{\\alpha+1}{\\beta}$\n$=\\dfrac{\\beta(\\beta+1)+\\alpha(\\alpha+1)}{\\alpha\\beta}$\n$=\\dfrac{\\alpha^2+\\beta^2+\\alpha+\\beta}{\\alpha\\beta}$이다.\n$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta$\n$=25+2=27$이므로\n주어진 값은\n$\\dfrac{27-5}{-1}=-22$이다.\n\n따라서 정답은 ①이다.",
+    "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+    "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
     "level": "상",
     "category": "이차방정식",
-    "content": "실수 $a, b$에 대하여 $x$에 대한 이차방정식 $x^2+ax+b=0$의 한 근이 $2-i$이다. $x$에 대한 이차방정식 $mx^2+nx-1=0$의 두 근이 $\\frac{1}{a}, \\frac{1}{b}$일 때, 실수 $m, n$에 대하여 $mn$의 값은? (단, $i=\\sqrt{-1}$)",
-    "choices": [
-      "$-20$",
-      "$-10$",
-      "$10$",
-      "$20$",
-      "$30$"
-    ],
-    "answer": "④",
-    "solution": "실수 계수 방정식 $x^2+ax+b=0$의 한 근이 $2-i$이므로 다른 한 근은 $2+i$이다.\n근과 계수의 관계에 의해\n두 근의 합: $(2-i)+(2+i) = 4 = -a \\rightarrow a=-4$\n두 근의 곱: $(2-i)(2+i) = 4 - i^2 = 5 = b \\rightarrow b=5$\n방정식 $mx^2+nx-1=0$의 두 근이 $\\frac{1}{-4}, \\frac{1}{5}$이므로,\n두 근의 곱: $-\\frac{1}{4} \\times \\frac{1}{5} = -\\frac{1}{20} = -\\frac{1}{m} \\rightarrow m=20$\n두 근의 합: $-\\frac{1}{4} + \\frac{1}{5} = -\\frac{1}{20} = -\\frac{n}{m} = -\\frac{n}{20} \\rightarrow n=1$\n따라서 $mn = 20 \\times 1 = 20$이다.",
     "originalCategory": "이차방정식",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-04",
     "standardUnit": "복소수",
+    "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -416,30 +515,41 @@ window.questionBank = [
       "부등식"
     ],
     "wide": false,
-    "standardUnitOrder": 4,
+    "content": "실수 $a, b$에 대하여 $x$에 대한 이차방정식 $x^2+ax+b=0$의 한 근이 $2-i$이다. $x$에 대한 이차방정식 $mx^2+nx-1=0$의 두 근이 $\\frac{1}{a}, \\frac{1}{b}$일 때, 실수 $m, n$에 대하여 $mn$의 값은? (단, $i=\\sqrt{-1}$)",
+    "choices": [
+      "$-20$",
+      "$-10$",
+      "$10$",
+      "$20$",
+      "$30$"
+    ],
+    "answer": "④",
     "subUnitKey": "H15-SA-04-COMPLEX_ROOT",
     "subUnit": "복소수와 이차방정식",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "계수가 실수인 이차방정식에서 한 근이 $2-i$이면 다른 한 근은 켤레복소수 $2+i$이다.\n따라서 첫 번째 방정식의 두 근의 합과 곱은\n$-a=(2-i)+(2+i)=4$,\n$b=(2-i)(2+i)=5$이다.\n즉 $a=-4$, $b=5$이다.\n두 번째 방정식의 두 근은\n$\\dfrac1a=-\\dfrac14$, $\\dfrac1b=\\dfrac15$이다.\n따라서 두 근의 곱은\n$-\\dfrac1{20}$이다.\n방정식 $mx^2+nx-1=0$에서 두 근의 곱은 $-\\dfrac1m$이므로\n$-\\dfrac1m=-\\dfrac1{20}$, 따라서 $m=20$이다.\n두 근의 합은 $-\\dfrac1{20}$이고 이는 $-\\dfrac nm$과 같으므로\n$-\\dfrac n{20}=-\\dfrac1{20}$, 따라서 $n=1$이다.\n그러므로\n$mn=20$이다.\n\n따라서 정답은 ④이다.",
+    "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+    "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+    "crossConceptKeys": [
+      "CC_ROOTS_COEFFICIENTS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 13,
     "level": "중",
     "category": "이차함수",
-    "content": "이차함수 $y=x^2+ax+3$의 그래프와 직선 $y=2x+b$가 서로 다른 두 점에서 만나고 두 교점의 $x$좌표가 $-2$와 $1$일 때, $a+b$의 값은? (단, $a, b$는 상수)",
-    "choices": [
-      "$7$",
-      "$8$",
-      "$9$",
-      "$10$",
-      "$11$"
-    ],
-    "answer": "②",
-    "solution": "두 그래프의 교점의 $x$좌표는 방정식 $x^2+ax+3=2x+b$의 근이다.\n$x^2 + (a-2)x + 3-b = 0$\n이 방정식의 두 근이 $-2, 1$이므로 근과 계수의 관계에 의해,\n두 근의 합: $-2+1 = -1 = -(a-2) \\rightarrow a-2 = 1 \\rightarrow a=3$\n두 근의 곱: $(-2)\\times 1 = -2 = 3-b \\rightarrow b=5$\n따라서 $a+b = 3 + 5 = 8$이다.",
     "originalCategory": "이차함수",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-13",
     "standardUnit": "이차함수",
+    "standardUnitOrder": 13,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -453,30 +563,41 @@ window.questionBank = [
       "좌표"
     ],
     "wide": false,
-    "standardUnitOrder": 13,
+    "content": "이차함수 $y=x^2+ax+3$의 그래프와 직선 $y=2x+b$가 서로 다른 두 점에서 만나고 두 교점의 $x$좌표가 $-2$와 $1$일 때, $a+b$의 값은? (단, $a, b$는 상수)",
+    "choices": [
+      "$7$",
+      "$8$",
+      "$9$",
+      "$10$",
+      "$11$"
+    ],
+    "answer": "②",
     "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "approved_source_repair",
     "subUnitClassificationDepth": "complete_rule",
+    "solution": "두 그래프의 교점에서는 두 $y$값이 같다.\n따라서\n$x^2+ax+3=2x+b$이고,\n$x^2+(a-2)x+(3-b)=0$이다.\n이 방정식의 두 근이 $-2$, $1$이므로 근과 계수의 관계에 의해\n$-2+1=-(a-2)$이다.\n즉 $-1=2-a$이므로 $a=3$이다.\n또 두 근의 곱은\n$(-2)\\cdot1=3-b$이므로\n$-2=3-b$, 따라서 $b=5$이다.\n그러므로\n$a+b=8$이다.\n\n따라서 정답은 ②이다.",
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+    "crossConceptKeys": [
+      "CC_ROOTS_COEFFICIENTS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
     "level": "상",
     "category": "이차함수",
-    "content": "이차함수 $y=-\\frac{1}{3}x^2+x$의 그래프와 접하고 기울기가 음수인 직선이 점 $(0,2)$를 지날 때, 이 직선의 방정식을 구하면?",
-    "choices": [
-      "$y=\\frac{3-2\\sqrt{2}}{3}x+2$",
-      "$y=\\frac{3-2\\sqrt{6}}{3}x+2$",
-      "$y=\\frac{1-2\\sqrt{6}}{3}x+2$",
-      "$y=\\frac{1-2\\sqrt{2}}{3}x+2$",
-      "$y=\\frac{1-2\\sqrt{10}}{3}x+2$"
-    ],
-    "answer": "②",
-    "solution": "점 $(0,2)$를 지나는 직선의 방정식을 $y=mx+2$ 라 하자. (단, 기울기 $m<0$)\n이차함수와 직선이 접하므로 방정식 $-\\frac{1}{3}x^2+x = mx+2$ 가 중근을 가져야 한다.\n식의 양변에 3을 곱하여 정리하면,\n$-x^2 + 3x = 3mx + 6 \\rightarrow x^2 + 3(m-1)x + 6 = 0$\n판별식 $D = 9(m-1)^2 - 24 = 0$\n$9(m^2 - 2m + 1) - 24 = 0 \\rightarrow 9m^2 - 18m - 15 = 0 \\rightarrow 3m^2 - 6m - 5 = 0$\n근의 공식을 이용하면 $m = \\frac{3 \\pm \\sqrt{9 - 3(-5)}}{3} = \\frac{3 \\pm \\sqrt{24}}{3} = \\frac{3 \\pm 2\\sqrt{6}}{3}$\n조건에서 기울기 $m<0$ 이므로 $m = \\frac{3-2\\sqrt{6}}{3}$ 이다.\n따라서 직선의 방정식은 $y = \\frac{3-2\\sqrt{6}}{3}x + 2$ 이다.",
     "originalCategory": "이차함수",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-13",
     "standardUnit": "이차함수",
+    "standardUnitOrder": 13,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -490,30 +611,43 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "standardUnitOrder": 13,
+    "content": "이차함수 $y=-\\frac{1}{3}x^2+x$의 그래프와 접하고 기울기가 음수인 직선이 점 $(0,2)$를 지날 때, 이 직선의 방정식을 구하면?",
+    "choices": [
+      "$y=\\frac{3-2\\sqrt{2}}{3}x+2$",
+      "$y=\\frac{3-2\\sqrt{6}}{3}x+2$",
+      "$y=\\frac{1-2\\sqrt{6}}{3}x+2$",
+      "$y=\\frac{1-2\\sqrt{2}}{3}x+2$",
+      "$y=\\frac{1-2\\sqrt{10}}{3}x+2$"
+    ],
+    "answer": "②",
     "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "approved_source_repair",
     "subUnitClassificationDepth": "complete_rule",
+    "solution": "점 $(0,2)$를 지나는 직선을 $y=mx+2$라 두자.\n이 직선과 이차함수의 그래프가 접하므로 두 식을 연립했을 때 중근을 가져야 한다.\n$-\\dfrac13x^2+x=mx+2$를 정리하면\n$x^2-3(1-m)x+6=0$이다.\n접하려면 판별식이 $0$이므로\n$9(1-m)^2-24=0$이다.\n따라서\n$(1-m)^2=\\dfrac83$이고\n$m=\\dfrac{3\\pm2\\sqrt6}{3}$이다.\n문제에서 기울기가 음수라고 했으므로\n$m=\\dfrac{3-2\\sqrt6}{3}$이다.\n따라서 구하는 직선은\n$y=\\dfrac{3-2\\sqrt6}{3}x+2$이다.\n\n따라서 정답은 ②이다.",
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+    "crossConceptKeys": [
+      "CC_DISCRIMINANT"
+    ],
+    "conditionKeys": [
+      "COND_NEGATIVE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
     "level": "중",
     "category": "이차함수",
-    "content": "$x$의 값의 범위가 $-1 \\le x \\le 3$일 때, 이차함수 $y=x^2-4x+k$의 최솟값은 $5$이다. 이 범위에서 이차함수의 최댓값을 구하면?",
-    "choices": [
-      "$15$",
-      "$14$",
-      "$13$",
-      "$12$",
-      "$11$"
-    ],
-    "answer": "②",
-    "solution": "이차함수를 표준형으로 변형하면 $y = (x-2)^2 + k-4$ 이다.\n축의 방정식이 $x=2$ 이며, 제한된 범위 $[-1, 3]$ 내에 포함된다.\n아래로 볼록한 그래프이므로 최솟값은 꼭짓점인 $x=2$ 일 때 가진다.\n$f(2) = k-4 = 5 \\rightarrow k=9$\n최댓값은 꼭짓점 $x=2$에서 가장 멀리 떨어진 $x=-1$ 일 때 가진다.\n따라서 최댓값은 $f(-1) = (-1-2)^2 + 9 - 4 = 9 + 5 = 14$ 이다.",
     "originalCategory": "이차함수",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-13",
     "standardUnit": "이차함수",
+    "standardUnitOrder": 13,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -527,30 +661,41 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "standardUnitOrder": 13,
+    "content": "$x$의 값의 범위가 $-1 \\le x \\le 3$일 때, 이차함수 $y=x^2-4x+k$의 최솟값은 $5$이다. 이 범위에서 이차함수의 최댓값을 구하면?",
+    "choices": [
+      "$15$",
+      "$14$",
+      "$13$",
+      "$12$",
+      "$11$"
+    ],
+    "answer": "②",
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "approved_source_repair",
     "subUnitClassificationDepth": "complete_rule",
+    "solution": "이차함수\n$y=x^2-4x+k=(x-2)^2+k-4$이다.\n주어진 범위 $-1\\le x\\le3$ 안에 꼭짓점의 $x$좌표 $2$가 포함된다.\n따라서 최솟값은 $k-4$이다.\n$k-4=5$이므로 $k=9$이다.\n이제 양 끝점의 함숫값을 비교한다.\n$x=-1$일 때\n$y=1+4+9=14$이다.\n$x=3$일 때\n$y=9-12+9=6$이다.\n위로 열린 포물선이므로 이 구간의 최댓값은 두 끝점 중 큰 값인 $14$이다.\n\n따라서 정답은 ②이다.",
+    "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+    "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
     "level": "중",
     "category": "이차함수",
-    "content": "이차함수 $y=x^2+2(1+a)x+a^2+1$의 그래프가 $x$축과 만나지 않도록 하는 자연수 $a$의 개수는?",
-    "choices": [
-      "$0$",
-      "$3$",
-      "$4$",
-      "$5$",
-      "$6$"
-    ],
-    "answer": "①",
-    "solution": "이차함수의 그래프가 $x$축과 만나지 않으려면 방정식 $x^2+2(1+a)x+a^2+1=0$의 판별식 $D < 0$ 이어야 한다.\n$D/4 = (1+a)^2 - (a^2+1) < 0$\n$a^2 + 2a + 1 - a^2 - 1 < 0$\n$2a < 0 \\rightarrow a < 0$\n조건을 만족하는 자연수 $a$는 존재하지 않는다.\n따라서 그 개수는 $0$이고, 정답은 ①이다.",
     "originalCategory": "이차함수",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-13",
     "standardUnit": "이차함수",
+    "standardUnitOrder": 13,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -564,30 +709,43 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "standardUnitOrder": 13,
+    "content": "이차함수 $y=x^2+2(1+a)x+a^2+1$의 그래프가 $x$축과 만나지 않도록 하는 자연수 $a$의 개수는?",
+    "choices": [
+      "$0$",
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$"
+    ],
+    "answer": "①",
     "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "approved_source_repair",
     "subUnitClassificationDepth": "complete_rule",
+    "solution": "그래프가 $x$축과 만나지 않으려면 대응하는 이차방정식이 실근을 가지지 않아야 한다.\n$x^2+2(1+a)x+a^2+1=0$의 판별식은\n$D=\\{2(1+a)\\}^2-4(a^2+1)$\n$=4(1+2a+a^2-a^2-1)$\n$=8a$이다.\n$x$축과 만나지 않으려면 $D<0$이므로\n$a<0$이다.\n그런데 $a$는 자연수이므로 이 조건을 만족하는 값은 없다.\n따라서 가능한 자연수 $a$의 개수는 $0$개이다.\n\n따라서 정답은 ①이다.",
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+    "crossConceptKeys": [
+      "CC_DISCRIMINANT"
+    ],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
     "level": "상",
     "category": "이차함수",
-    "content": "최고차항의 계수가 1인 이차함수 $y=f(x)$의 그래프가 $x$축과 서로 다른 두 점 $(\\alpha, 0), (\\beta, 0)$에서 만나고 $\\alpha+\\beta=2$이다. 함수 $y=f(x)$의 그래프의 꼭짓점이 직선 $y=3x-6$ 위에 있을 때, $f(2)$의 값은?",
-    "choices": [
-      "$-2$",
-      "$-1$",
-      "$1$",
-      "$2$",
-      "$3$"
-    ],
-    "answer": "①",
-    "solution": "이차함수 $f(x)$의 두 근이 $\\alpha, \\beta$이고 $\\alpha+\\beta=2$이므로 대칭축은 $x = \\frac{\\alpha+\\beta}{2} = 1$이다.\n최고차항의 계수가 1이므로 $f(x) = (x-1)^2 + k$ 로 둘 수 있다.\n꼭짓점 $(1, k)$가 직선 $y = 3x - 6$ 위에 있으므로 대입하면,\n$k = 3(1) - 6 = -3$\n따라서 $f(x) = (x-1)^2 - 3$ 이다.\n$f(2) = (2-1)^2 - 3 = 1 - 3 = -2$ 이다.",
     "originalCategory": "이차함수",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-13",
     "standardUnit": "이차함수",
+    "standardUnitOrder": 13,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -600,30 +758,41 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "standardUnitOrder": 13,
+    "content": "최고차항의 계수가 1인 이차함수 $y=f(x)$의 그래프가 $x$축과 서로 다른 두 점 $(\\alpha, 0), (\\beta, 0)$에서 만나고 $\\alpha+\\beta=2$이다. 함수 $y=f(x)$의 그래프의 꼭짓점이 직선 $y=3x-6$ 위에 있을 때, $f(2)$의 값은?",
+    "choices": [
+      "$-2$",
+      "$-1$",
+      "$1$",
+      "$2$",
+      "$3$"
+    ],
+    "answer": "①",
     "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "approved_source_repair",
     "subUnitClassificationDepth": "complete_rule",
+    "solution": "두 $x$절편이 $\\alpha,\\beta$이고 최고차항의 계수가 $1$이므로\n$f(x)=(x-\\alpha)(x-\\beta)$이다.\n$\\alpha+\\beta=2$이므로 포물선의 대칭축은\n$x=\\dfrac{\\alpha+\\beta}{2}=1$이다.\n따라서 꼭짓점의 $x$좌표는 $1$이다.\n꼭짓점이 직선 $y=3x-6$ 위에 있으므로 꼭짓점의 $y$좌표는\n$3\\cdot1-6=-3$이다.\n즉 $f(1)=-3$이다.\n또 두 근의 합이 $2$이므로\n$f(x)=x^2-2x+\\alpha\\beta$이다.\n$f(1)=1-2+\\alpha\\beta=-3$에서\n$\\alpha\\beta=-2$이다.\n따라서\n$f(2)=4-4-2=-2$이다.\n\n따라서 정답은 ①이다.",
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+    "crossConceptKeys": [
+      "CC_ROOTS_COEFFICIENTS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 18,
     "level": "상",
     "category": "이차함수",
-    "content": "두 이차함수 $f(x)=x^2-ax+b$, $g(x)=-x^2+cx-d$에 대하여 함수 $y=f(x)$의 그래프는 $x$축에 접하고, 두 함수 $y=f(x)$와 $y=g(x)$의 그래프는 제1사분면과 제2사분면에서 만난다. 보기에서 옳은 것만을 있는대로 고른 것은?<br><보기><br>ㄱ. $a^2-4b=0$<br>ㄴ. $a^2-4d<0$<br>ㄷ. $(a+c)^2-8(b+d)>0$",
-    "choices": [
-      "ㄱ",
-      "ㄱ, ㄴ",
-      "ㄴ, ㄷ",
-      "ㄱ, ㄷ",
-      "ㄱ, ㄴ, ㄷ"
-    ],
-    "answer": "④",
-    "solution": "[키포인트]\n각 보기의 조건을 두 그래프의 접점과 교점에 대한 대수 조건으로 바꾼다.\nㄱ. $f(x)=x^2-ax+b$의 그래프가 $x$축에 접하므로 이차방정식 $x^2-ax+b=0$은 중근을 갖는다. 따라서 판별식은\n$a^2-4b=0$ 이다. 그러므로 ㄱ은 참이다.\nㄴ. 두 그래프가 제1사분면과 제2사분면에서 만나므로 교점의 $x$좌표를 $r_1<0<r_2$라 할 수 있다.\n$g(x)-f(x)=-2x^2+(a+c)x-(b+d)$는 아래로 열린 이차식이고, $r_1$과 $r_2$를 두 근으로 갖는다. 따라서 두 근 사이에서 양수이므로 $g(0)-f(0)>0$이다.\n즉 $-(b+d)>0$이다. ㄱ에서 $b=a^2/4\\ge0$이므로 $-d>b\\ge0$, 따라서 $d<0$이다.\n그러므로 $a^2-4d=a^2+(-4d)>0$이므로 $a^2-4d<0$은 거짓이다.\nㄷ. 두 그래프의 교점의 $x$좌표는\n$x^2-ax+b=-x^2+cx-d$, 즉 $2x^2-(a+c)x+(b+d)=0$의 근이다.\n제1사분면과 제2사분면에서 서로 다른 두 점에서 만나므로 이 이차방정식은 서로 다른 두 실근을 갖는다. 따라서 판별식은\n$(a+c)^2-8(b+d)>0$이다. 그러므로 ㄷ은 참이다.\n따라서 옳은 것은 ㄱ, ㄷ이므로 정답은 ④이다.",
     "originalCategory": "이차함수",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-13",
     "standardUnit": "이차함수",
+    "standardUnitOrder": 13,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -637,24 +806,41 @@ window.questionBank = [
       "좌표"
     ],
     "wide": false,
-    "standardUnitOrder": 13,
+    "content": "두 이차함수 $f(x)=x^2-ax+b$, $g(x)=-x^2+cx-d$에 대하여 함수 $y=f(x)$의 그래프는 $x$축에 접하고, 두 함수 $y=f(x)$와 $y=g(x)$의 그래프는 제1사분면과 제2사분면에서 만난다. 보기에서 옳은 것만을 있는대로 고른 것은?<br><보기><br>ㄱ. $a^2-4b=0$<br>ㄴ. $a^2-4d<0$<br>ㄷ. $(a+c)^2-8(b+d)>0$",
+    "choices": [
+      "ㄱ",
+      "ㄱ, ㄴ",
+      "ㄴ, ㄷ",
+      "ㄱ, ㄷ",
+      "ㄱ, ㄴ, ㄷ"
+    ],
+    "answer": "④",
     "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "각 보기를 그래프 조건과 연결해 판단한다.\n\nㄱ. $y=f(x)=x^2-ax+b$가 $x$축에 접하므로\n$x^2-ax+b=0$은 중근을 갖는다.\n따라서 판별식이 $0$이어서\n$a^2-4b=0$이다. 참이다.\n\nㄴ. 두 그래프의 교점은\n$x^2-ax+b=-x^2+cx-d$에서\n$2x^2-(a+c)x+(b+d)=0$의 두 근으로 나타난다.\n교점 하나는 제1사분면, 다른 하나는 제2사분면에 있으므로 두 근의 부호가 서로 다르다.\n따라서 두 근의 곱 $\\dfrac{b+d}{2}<0$, 즉 $b+d<0$이다.\nㄱ에서 $b=\\dfrac{a^2}{4}$이므로 $d<-\\dfrac{a^2}{4}$이다.\n따라서 $a^2-4d>0$이므로 ㄴ은 거짓이다.\n\nㄷ. 두 그래프는 서로 다른 두 점에서 만나므로\n$2x^2-(a+c)x+(b+d)=0$은 서로 다른 두 실근을 갖는다.\n따라서 판별식\n$(a+c)^2-8(b+d)>0$이다. 참이다.\n\n따라서 ㄱ, ㄷ이 옳으므로 정답은 ④이다.",
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+    "crossConceptKeys": [
+      "CC_DISCRIMINANT"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 19,
     "level": "중",
     "category": "나머지정리",
-    "content": "다항식 $P(x)$를 $(x-1)^2$으로 나누었을 때의 나머지는 $x-4$이고, $x-3$으로 나누었을 때의 나머지는 $3$이다. 이때 $P(x)$를 $(x-1)^2(x-3)$으로 나누었을 때의 나머지를 구하시오.",
-    "choices": [],
-    "answer": "x^2-x-3",
-    "solution": "$P(x)$를 $(x-1)^2(x-3)$으로 나누었을 때의 나머지는 2차 이하의 다항식이다.\n$P(x)$가 $(x-1)^2$으로 나눈 나머지가 $x-4$이므로, 구하는 나머지를 $R(x) = a(x-1)^2 + x - 4$ 로 둘 수 있다.\n$P(x)$를 $x-3$으로 나눈 나머지가 $3$이므로 $P(3)=3$ 이고, 나머지 정리에서 $R(3)=3$ 이어야 한다.\n$R(3) = a(3-1)^2 + 3 - 4 = 4a - 1 = 3 \\rightarrow 4a = 4 \\rightarrow a=1$\n따라서 나머지는 $R(x) = 1(x-1)^2 + x - 4 = x^2 - 2x + 1 + x - 4 = x^2 - x - 3$ 이다.",
     "originalCategory": "나머지정리",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "항등식과 나머지정리",
+    "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -666,24 +852,35 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "standardUnitOrder": 2,
+    "content": "다항식 $P(x)$를 $(x-1)^2$으로 나누었을 때의 나머지는 $x-4$이고, $x-3$으로 나누었을 때의 나머지는 $3$이다. 이때 $P(x)$를 $(x-1)^2(x-3)$으로 나누었을 때의 나머지를 구하시오.",
+    "choices": [],
+    "answer": "x^2-x-3",
     "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
     "subUnit": "나머지정리와 인수정리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solution": "$P(x)$를 $(x-1)^2(x-3)$으로 나눈 나머지를 $R(x)$라 두면 $R(x)$의 차수는 $3$보다 작다.\n또 $P(x)$를 $(x-1)^2$으로 나눈 나머지가 $x-4$이므로\n$R(x)=x-4+k(x-1)^2$로 둘 수 있다.\n$P(x)$를 $x-3$으로 나눈 나머지가 $3$이므로 나머지정리에 의해\n$R(3)=3$이다.\n따라서\n$3-4+k(3-1)^2=3$\n$-1+4k=3$이므로\n$k=1$이다.\n따라서\n$R(x)=x-4+(x-1)^2$\n$=x^2-x-3$이다.\n\n그러므로 구하는 나머지는 $x^2-x-3$이다.",
+    "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+    "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+    "crossConceptKeys": [
+      "CC_POLYNOMIAL_DIVISION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 20,
     "level": "상",
     "category": "이차함수",
-    "content": "이차함수 $f(x)=ax^2+bx+c$가 다음 조건을 만족시킬 때, $f(0)$의 값을 구하시오. (단, $a, b, c$는 상수이다.)<br><보기><br>(가) $f(-1)=f(5)$<br>(나) 함수 $y=f(x)$의 그래프의 꼭짓점의 $y$좌표는 $-3$이다.<br>(다) 함수 $y=f(x)$의 그래프가 $x$축과 두 점 $P, Q$에서 만나고 $\\overline{PQ}=2$이다.",
-    "choices": [],
-    "answer": "9",
-    "solution": "조건 (가)에서 $f(-1)=f(5)$이므로 대칭축은 $x = \\frac{-1+5}{2} = 2$ 이다.\n조건 (나)에서 꼭짓점의 $y$좌표가 $-3$이므로 $f(x) = a(x-2)^2 - 3$ 으로 둘 수 있다.\n조건 (다)에서 $\\overline{PQ}=2$ 이고 대칭축이 $x=2$이므로 두 교점은 $x = 2-1 = 1$, $x = 2+1 = 3$ 이다.\n즉, $f(1)=0$ 이므로 식에 대입하면,\n$a(1-2)^2 - 3 = 0 \\rightarrow a = 3$\n따라서 $f(x) = 3(x-2)^2 - 3$ 이다.\n$f(0) = 3(-2)^2 - 3 = 12 - 3 = 9$ 이다.",
     "originalCategory": "이차함수",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-13",
     "standardUnit": "이차함수",
+    "standardUnitOrder": 13,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -697,24 +894,33 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "standardUnitOrder": 13,
+    "content": "이차함수 $f(x)=ax^2+bx+c$가 다음 조건을 만족시킬 때, $f(0)$의 값을 구하시오. (단, $a, b, c$는 상수이다.)<br><보기><br>(가) $f(-1)=f(5)$<br>(나) 함수 $y=f(x)$의 그래프의 꼭짓점의 $y$좌표는 $-3$이다.<br>(다) 함수 $y=f(x)$의 그래프가 $x$축과 두 점 $P, Q$에서 만나고 $\\overline{PQ}=2$이다.",
+    "choices": [],
+    "answer": "9",
     "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "approved_source_repair",
     "subUnitClassificationDepth": "complete_rule",
+    "solution": "조건 (가)에서 $f(-1)=f(5)$이므로 포물선의 대칭축은 두 $x$값의 중점인\n$x=2$이다.\n조건 (나)에 의해 꼭짓점은 $(2,-3)$이므로\n$f(x)=a(x-2)^2-3$으로 둘 수 있다.\n조건 (다)에서 두 $x$절편 $P,Q$ 사이의 거리가 $2$이고 대칭축이 $x=2$이므로 두 근은\n$x=1$, $x=3$이다.\n따라서 $f(1)=0$에서\n$a(1-2)^2-3=0$이므로\n$a=3$이다.\n그러므로\n$f(0)=3(0-2)^2-3=12-3=9$이다.\n\n따라서 구하는 값은 $9$이다.",
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 21,
     "level": "상",
     "category": "인수분해",
-    "content": "$x(x+1)(x+2)(x+3)+1$을 인수분해하고 이를 이용하여 다음 수 $10 \\times 11 \\times 12 \\times 13 + 1$가 제곱수임을 서술하시오.",
-    "choices": [],
-    "answer": "131^2",
-    "solution": "주어진 식을 적절히 짝지어 전개한다.\n$[x(x+3)][(x+1)(x+2)] + 1 = (x^2+3x)(x^2+3x+2) + 1$\n$x^2+3x = t$로 치환하면,\n$t(t+2) + 1 = t^2 + 2t + 1 = (t+1)^2$\n치환을 원래대로 되돌리면 $(x^2+3x+1)^2$ 으로 인수분해 된다.\n이를 이용하여 $x=10$을 대입하면,\n$10 \\times 11 \\times 12 \\times 13 + 1 = (10^2 + 3(10) + 1)^2 = (100 + 30 + 1)^2 = 131^2$\n따라서 이 수는 $131^2$이 되어 자연수의 제곱수임이 증명된다.",
     "originalCategory": "인수분해",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-03",
     "standardUnit": "인수분해",
+    "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -728,24 +934,33 @@ window.questionBank = [
       "대입"
     ],
     "wide": false,
-    "standardUnitOrder": 3,
+    "content": "$x(x+1)(x+2)(x+3)+1$을 인수분해하고 이를 이용하여 다음 수 $10 \\times 11 \\times 12 \\times 13 + 1$가 제곱수임을 서술하시오.",
+    "choices": [],
+    "answer": "131^2",
     "subUnitKey": "H15-SA-03-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solution": "네 인수의 가운데 구조가 같도록 묶는다.\n$x(x+3)=x^2+3x$이고\n$(x+1)(x+2)=x^2+3x+2$이다.\n$t=x^2+3x$라 두면\n$x(x+1)(x+2)(x+3)+1$\n$=t(t+2)+1$\n$=t^2+2t+1$\n$=(t+1)^2$이다.\n따라서\n$x(x+1)(x+2)(x+3)+1=(x^2+3x+1)^2$이다.\n여기에 $x=10$을 대입하면\n$10\\times11\\times12\\times13+1$\n$=(10^2+3\\cdot10+1)^2$\n$=131^2$이다.\n그러므로 주어진 수는 제곱수이고 그 값은 $131^2$이다.",
+    "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+    "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 22,
     "level": "상",
     "category": "이차함수",
-    "content": "최고차항의 계수가 $a \\ (a>0)$인 이차함수 $f(x)$가 다음 조건을 만족시킨다. $100a$의 값을 구하시오.<br>(가) 직선 $y=4ax-10$과 함수 $y=f(x)$의 그래프가 만나는 두 점의 $x$좌표는 $1$과 $5$이다.<br>(나) $1 \\le x \\le 5$에서 $f(x)$의 최솟값은 $8$이다.",
-    "choices": [],
-    "answer": "450",
-    "solution": "조건 (가)에 의해 $f(x) - (4ax-10) = a(x-1)(x-5)$ 로 식을 세울 수 있다.\n$f(x) = a(x^2-6x+5) + 4ax - 10 = ax^2 - 2ax + 5a - 10$\n완전제곱꼴로 변형하면,\n$f(x) = a(x-1)^2 - a + 5a - 10 = a(x-1)^2 + 4a - 10$\n최고차항의 계수 $a>0$ 이므로 아래로 볼록하고 $x=1$이 대칭축이다.\n구간 $1 \\le x \\le 5$에서 최솟값은 $x=1$일 때 $f(1) = 4a-10$ 이다.\n조건 (나)에서 최솟값이 $8$이므로,\n$4a - 10 = 8 \\rightarrow 4a = 18 \\rightarrow a = 4.5$\n따라서 $100a = 100 \\times 4.5 = 450$ 이다.",
     "originalCategory": "이차함수",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-13",
     "standardUnit": "이차함수",
+    "standardUnitOrder": 13,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -759,24 +974,38 @@ window.questionBank = [
       "표해석"
     ],
     "wide": false,
-    "standardUnitOrder": 13,
+    "content": "최고차항의 계수가 $a \\ (a>0)$인 이차함수 $f(x)$가 다음 조건을 만족시킨다. $100a$의 값을 구하시오.<br>(가) 직선 $y=4ax-10$과 함수 $y=f(x)$의 그래프가 만나는 두 점의 $x$좌표는 $1$과 $5$이다.<br>(나) $1 \\le x \\le 5$에서 $f(x)$의 최솟값은 $8$이다.",
+    "choices": [],
+    "answer": "450",
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "approved_source_repair",
     "subUnitClassificationDepth": "complete_rule",
+    "solution": "조건 (가)에서 두 그래프의 교점의 $x$좌표가 $1$, $5$이므로\n$f(x)-(4ax-10)$은 최고차항의 계수가 $a$이고 두 근이 $1$, $5$인 이차식이다.\n따라서\n$f(x)-(4ax-10)=a(x-1)(x-5)$이다.\n정리하면\n$f(x)=a(x-1)(x-5)+4ax-10$\n$=ax^2-2ax+5a-10$\n$=a(x-1)^2+4a-10$이다.\n$a>0$이므로 위로 열린 포물선이고, 구간 $1\\le x\\le5$에서 꼭짓점 $x=1$이 포함된다.\n따라서 최솟값은\n$f(1)=4a-10$이다.\n조건 (나)에 의해\n$4a-10=8$이므로\n$a=\\dfrac92$이다.\n따라서\n$100a=450$이다.\n\n따라서 구하는 값은 $450$이다.",
+    "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+    "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+    "crossConceptKeys": [
+      "CC_COMPLETE_SQUARE"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 23,
     "level": "중",
     "category": "이차함수",
-    "content": "길이가 2cm인 막대 18개를 빈틈없이 연결하여 만들 수 있는 직사각형의 최대 넓이를 구하시오.",
-    "choices": [],
-    "answer": "80",
-    "solution": "직사각형의 가로와 세로에 사용되는 막대의 개수를 각각 $a, b$ 라 하자. (단, $a, b$는 자연수)\n둘레에 사용되는 막대는 총 18개이므로 $2(a+b) = 18 \\rightarrow a+b=9$ 이다.\n가로 길이는 $2a$, 세로 길이는 $2b$ 이다.\n넓이 $S = (2a)(2b) = 4ab = 4a(9-a) = -4a^2 + 36a = -4(a-4.5)^2 + 81$\n$a$는 자연수이므로 $a=4$ 또는 $a=5$ 일 때 넓이가 최대가 된다.\n$a=4$ 일 때 $b=5$가 되며, 넓이는 $4 \\times 4 \\times 5 = 80$ 이다.\n따라서 만들 수 있는 직사각형의 최대 넓이는 $80$ 이다.",
     "originalCategory": "이차함수",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-13",
     "standardUnit": "이차함수",
+    "standardUnitOrder": 13,
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -790,10 +1019,24 @@ window.questionBank = [
       "자연수조건"
     ],
     "wide": false,
-    "standardUnitOrder": 13,
+    "content": "길이가 2cm인 막대 18개를 빈틈없이 연결하여 만들 수 있는 직사각형의 최대 넓이를 구하시오.",
+    "choices": [],
+    "answer": "80",
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "approved_source_repair",
     "subUnitClassificationDepth": "complete_rule",
+    "solution": "직사각형의 가로에 사용하는 막대 수를 $m$, 세로에 사용하는 막대 수를 $n$이라 하자.\n막대 하나의 길이가 $2$cm이므로 가로와 세로의 길이는 각각 $2m$cm, $2n$cm이다.\n네 변에 사용한 막대가 모두 $18$개이므로\n$2m+2n=18$, 즉\n$m+n=9$이다.\n직사각형의 넓이는\n$(2m)(2n)=4mn$이다.\n합이 $9$인 두 자연수의 곱은 두 수가 가장 가까울 때 가장 크므로\n$(m,n)=(4,5)$ 또는 $(5,4)$일 때\n$mn=20$으로 최대이다.\n따라서 최대 넓이는\n$4\\cdot20=80\\text{ cm}^2$이다.\n\n따라서 구하는 최대 넓이는 $80$이다.",
+    "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+    "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];

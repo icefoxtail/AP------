@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_SOURCE_DEFECT_ASSESSMENT_V1",
+  "runId": "archive-2026-1mid-nine-20261008",
+  "examUid": "26_왕운중_1학기_중간_중2_기출",
+  "stage": "CREATE",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "worktreeRootAbsolute": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------",
+  "expectedHead": "0a89a9af2f40b16182d29241d88bb63aa39ab969",
+  "currentArtifactRawSha256": "ac8667fbbbad6440389fe07647eb655301fe363e5d0dabde22ba44ae6470252d",
+  "safeStudentBundle": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/archive/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.scope-1,16@source-assessment-02.json",
+  "safeStudentBundleSha256": "fd51800798313fe97fcd31c1bd3f79ed7e4823db1003e8c6bec9119b0e66e2a3",
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "independentStudentInputAssessmentBeforeStoredAnswersSolutionsDifficultyOrMeta": false,
+  "sourceRegions": [
+    {
+      "cropSha256": "b7024c53910ef8a4286f7248e62e57573cb240b894a9eeeacfa3f656e7a5db78",
+      "crop": "x=200,y=1700,width=2500,height=2700",
+      "cropPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/source-defect-regions/qid-1-lower-left.png",
+      "sourcePageSha256": "bb0277d69f5bfdb82a9cdf0b45bba00fd256384a1c70da5f95db88778bb35b5c",
+      "qid": 1,
+      "page": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0005.jpg"
+    },
+    {
+      "cropSha256": "4ae3d6513cebd54e5ef90e662728371e54a4fd86bd7b04537e5b79118b6d2585",
+      "crop": "x=200,y=3600,width=2300,height=2200",
+      "cropPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/source-defect-regions/qid-16-statements-2x.png",
+      "sourcePageSha256": "16f0074cf7a5c77624cff98b34e94f196e88afaa107b61429a852b7a8b289f4a",
+      "qid": 16,
+      "page": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0007.jpg"
+    }
+  ],
+  "assessments": [
+    {
+      "sourceFinding": "Confirmed multiple-correct source defect; no single minimal correction is warranted because the source itself contains multiple valid options and scan markings cross the printed choices.",
+      "qid": 1,
+      "resolution": "True item HOLD; replace QUESTION_ONLY with a fresh single-answer repeating-decimal item. Preserve old source/failure evidence.",
+      "observedStudentDefect": "Prompt requests one correct expression, but the printed choices 1, 4, and 5 all visibly encode valid repeating-decimal notation: 0.010101...=0.(01), 1.234234...=1.(234), and 9.999...=9.(9)."
+    },
+    {
+      "sourceFinding": "Confirmed student-input insufficiency. The corresponding printed relation signs in the assigned scan are obscured by handwritten marks; their exact values cannot be recovered from the pixels without inventing source labels. The question asks counts that depend directly on those signs.",
+      "qid": 16,
+      "resolution": "True item HOLD; replace QUESTION_ONLY with a fresh linear-inequality classification/count item. Preserve old source/failure evidence.",
+      "observedStudentDefect": "Six relation slots in the listed expressions are represented by ? in current extracted JS."
+    }
+  ],
+  "independentProposals": [
+    {
+      "difficultyBucketProposal": 2,
+      "curriculumTopic": "Middle-school repeating decimals / finite and repeating decimal representation",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "rationale": "Single-choice recognition/comparison of repeating-period notation; low transformation burden, but final candidate not yet fixed.",
+      "metaProposal": "Retain current source curriculum locus if supported by actual current curriculum mapping. Do not derive standardUnitKey, subUnitKey, PT, or TPL from a numeric suffix; resolve after candidate and canonical lookup.",
+      "difficultyBoundaryFlag": "NONE",
+      "qid": 1,
+      "difficultyConfidence": "medium"
+    },
+    {
+      "difficultyBucketProposal": 2,
+      "curriculumTopic": "Middle-school linear inequalities / identify inequalities and first-degree inequalities",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "rationale": "Classifying equation versus inequality and first-degree form across a short list; limited algebraic normalization, candidate not yet fixed.",
+      "metaProposal": "Retain current source curriculum locus if supported by actual current curriculum mapping. Do not derive standardUnitKey, subUnitKey, PT, or TPL from a numeric suffix; resolve after candidate and canonical lookup.",
+      "difficultyBoundaryFlag": "NONE",
+      "qid": 16,
+      "difficultyConfidence": "medium"
+    }
+  ],
+  "exposureNote": "Before this independent source assessment was locked, a broad rg command unintentionally returned a small snippet from older CREATE evidence that mentioned a prior qid1 source crop/repair attempt. No stored answer, solution, HOLD status/reason, Meta, or difficulty fields were intentionally opened. The conclusions above were established by current safe student bundle plus direct inspection of the qid1 and qid16 assigned scan crops.",
+  "priorFailureDisposition": "Historical CREATE/R1/R2 failures and input limitations remain immutable; this assessment does not retroactively pass or overwrite them.",
+  "createdAt": "2026-10-09",
+  "sourceAssessmentBoundary": "Not a clean pre-upstream assessment: before direct source-region review, a broad rg over the assigned run evidence returned one old qid1 source/repair-context sentence from CREATE.evidence.final2: “Opened the full locked JPG and enlarged the answer-expression crop; no clearer assigned source pixels were available.” This is retained as contamination context, not used as a source verdict. No old answer, solution, HOLD status/reason, Meta, or difficulty field was opened. The exact visible source findings were subsequently established from the current safe student-only bundle and directly opened qid-specific scan crops."
+}

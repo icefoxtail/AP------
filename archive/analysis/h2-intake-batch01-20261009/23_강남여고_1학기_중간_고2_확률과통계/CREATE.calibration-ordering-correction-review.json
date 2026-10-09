@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_LATE_CALIBRATION_CORRECTION_REVIEW_V1",
+  "examUid": "23_강남여고_1학기_중간_고2_확률과통계",
+  "reviewerId": "/root/create_03",
+  "reviewedAtUtc": "2026-10-09T02:09:44Z",
+  "orderingFailure": {
+    "status": "PRESERVED_FAIL",
+    "reason": "The Maesan q7 solution SVG was first visually opened after target answer/solution authoring and after validator capture1 failed; it is not represented as pre-work preflight.",
+    "initialCalibrationPreflight": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/calibration/CREATE.solution-calibration-preflight.json",
+      "modifiedUtc": "2026-10-09T01:11:53.517Z"
+    },
+    "targetFirstModifiedUtc": "2026-10-09T01:21:43.364Z",
+    "validatorFailureCapture": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/CREATE.validator-capture.json",
+      "modifiedUtc": "2026-10-09T01:26:01.259Z"
+    },
+    "lateFirstVisualRead": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/calibration/golden-maesan-q7.png",
+      "modifiedUtc": "2026-10-09T01:26:42.270Z",
+      "sampleSvgPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+      "sampleSvgSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+      "observedFacts": "C0=(-3,1)→C1=(-5,2)→C2=(5,-2), unchanged radius 3, and final equation (x-5)^2+(y+2)^2=9 match the actual SVG geometry and labels."
+    },
+    "retroactivePreflightClaimed": false
+  },
+  "correctionReview": {
+    "protocol": "JS_Archive_2.0_Codex_Execution_v1.md §21; JS아카이브 학생용 해설 운영규칙 v1 current sample preflight and changed-locus review",
+    "postReadCalibrationGatePath": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/CREATE.correction-review-calibration.json",
+    "postReadCalibrationGateResultPath": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/correction-review/CREATE.correction-review-calibration.gate-result.json",
+    "status": "PASS",
+    "scopeQids": [
+      14,
+      17,
+      21
+    ],
+    "wholeExamResolved": false,
+    "rows": [
+      {
+        "qid": 14,
+        "reviewStatus": "PASS",
+        "problemRef": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q14.png",
+        "problemAssetSha256": "23ab9fd18de7ecd256449f8d4bd00ecb381d38a6001b9a54b7229b991f7540bb",
+        "solutionImageRef": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q14-solution.svg",
+        "solutionImageSha256": "684f936192b176e90661c0c99739c5d95eee8a27b07de66107e7a2902468a71f",
+        "renderedReviewPath": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/correction-review/rendered/q14-solution.png",
+        "renderedReviewSha256": "7fe453e9410b6b2b35ae27ce2829d9d4290826f830c20ab969b109fcc3fdabac",
+        "currentAnswer": "⑤",
+        "currentSolutionSha256": "91e963432ff3ed961409c680018bbad3a40c3bc4f61d98645432208e6f5f3969",
+        "expectedFacts": "The four blocked nodes are (1,2),(3,2),(1,4),(3,4); free nodes use the left+below recurrence; B=43.",
+        "observedReview": "Reopened the source grid and post-preflight SVG. Four blocker locations align; node values are consistent, and 14+29=43 at B. No answer/solution or SVG correction required.",
+        "sourceSolutionVisualParity": "PASS",
+        "changedFields": []
+      },
+      {
+        "qid": 17,
+        "reviewStatus": "PASS",
+        "problemRef": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q17.png",
+        "problemAssetSha256": "7681254c4b0e134ba6059fb8cc12f3991c2b0086ec62e30e08e790d0f210f028",
+        "solutionImageRef": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q17-solution.svg",
+        "solutionImageSha256": "a9b2fb41975a93358ee5152f1c5929a06001f0cba4bf803b68128ee5ab4c1782",
+        "renderedReviewPath": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/correction-review/rendered/q17-solution.png",
+        "renderedReviewSha256": "17ba528a63dd21f00ef2454a339395aca385cd420597f36dd2bd705201621af8",
+        "currentAnswer": "⑤",
+        "currentSolutionSha256": "46aac2bf723cf9baa5787c21ffbec6f95be6e7fb881cd48ad6a55e3e8e0e915d",
+        "expectedFacts": "Eight regions form four axis-fixed singletons and two left-right mirrored pairs; symmetric assignments are 2^6 and nonsymmetric assignments 2^8-2^6=192.",
+        "observedReview": "Reopened the source diagram and post-preflight SVG. Four axial triangles plus two mirrored pairs match the stated six orbits; 256-64=192 and answer ⑤ align. No correction required.",
+        "sourceSolutionVisualParity": "PASS",
+        "changedFields": []
+      },
+      {
+        "qid": 21,
+        "reviewStatus": "PASS",
+        "problemRef": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q21.png",
+        "problemAssetSha256": "8f4fa03bdcfbf59979bd75e5ecf6707cc0cfd6a20722b4b7614435d826fe0914",
+        "solutionImageRef": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q21-solution.svg",
+        "solutionImageSha256": "6ed1be254e68a750314f0ff837fa700a0b70af38a970537c86c985fc79de6f21",
+        "renderedReviewPath": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/correction-review/rendered/q21-solution.png",
+        "renderedReviewSha256": "f264031246f5927db4d15d3bb5836b784e74c8008751e1d4606e96a68a4c0685",
+        "currentAnswer": "②",
+        "currentSolutionSha256": "1d7caffd7dd78e31433b02211750c6e7914717b9fdbffd647f072194e1e7bc38",
+        "expectedFacts": "On a six-cycle, nonadjacent odd-position sets count 9 for k=2 and 2 for k=3; distinct numbers imply six rotations per arrangement; total 624.",
+        "observedReview": "Reopened the source hexagon and post-preflight SVG. The shown O/E witnesses are nonadjacent, case counts and P assignments are consistent, and (2592+1152)/6=624 matches answer ②. No correction required.",
+        "sourceSolutionVisualParity": "PASS",
+        "changedFields": []
+      }
+    ]
+  },
+  "sourceMutation": false,
+  "solutionMutation": false,
+  "visualMutation": false,
+  "changedQids": [],
+  "openQids": [],
+  "itemHoldQids": [],
+  "nextRequiredAction": "Rebind this honest correction-review evidence, capture the normal V2/CODEX generic validator once, preflight handoff, and create a fresh stable completion event; retain the prior PASS event as superseded provenance."
+}

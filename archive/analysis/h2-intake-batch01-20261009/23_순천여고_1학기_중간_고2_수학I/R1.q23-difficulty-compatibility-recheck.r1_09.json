@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "R1_Q23_DIFFICULTY_COMPATIBILITY_RECHECK_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "23_순천여고_1학기_중간_고2_수학I",
+  "qid": 23,
+  "scope": "Legacy-level compatibility only; reuse the qualified q23 answer/solution and current-pass bucket; no new answer solve or full mathematics sweep.",
+  "sourceBefore": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/.tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/23_순천여고_1학기_중간_고2_수학I.js",
+    "rawSha256": "5c35df2711729b9f9549abdef77a00b71a1794d63bb499353d4f7b09ebd30451",
+    "rawBufferBlobSha1": "d6a9be5c9742ceeb98b419ee43478239f753fee5",
+    "q23ObjectSha256": "sha256:e11c12796728f53d4de34005488e2edcc43f667ff8ab669106fddd7dee9145eb",
+    "studentPayloadSha256": "4599c3e9766be9ad949df051b2cbf293dd2cf7102aa21987da3f9b835eb8ccf9"
+  },
+  "currentDifficulty": {
+    "level": "상",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+  },
+  "priorQualifiedEvidence": {
+    "r1Evidence": {
+      "path": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/R1.evidence.r1_09.recovery.v5.bound.json",
+      "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+    },
+    "currentMetaClosure": {
+      "path": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/R1.meta-subunit-closure.r1_09.revision1.json",
+      "sha256": "9833a3cf1f7fcc981078e35bd10dd316785bbcb6b5a172f482408c6fb2d3f9ac"
+    },
+    "q23Freeze": {
+      "path": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/R1.independent-freeze.r1_09.json",
+      "sha256": "dab3ee1fff943ffe6fa7b55ee5d0482776635a197e6fdeb003329d1b95980f9b"
+    },
+    "q23SolutionSha256": "79ad3ada4c28537dcdd460637acec5b9bf3da3b14c5d920b51583645530ae6e4"
+  },
+  "canonicalAuthority": {
+    "difficultyRule": {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+      "sha256": "3afb7c110d922847a058a550117b4abd6035b26683771ece21ebcd2f3985f638",
+      "sections": [
+        "§4.3 3↔4 boundary",
+        "§11.2 adjacent legacy-level mismatch"
+      ]
+    },
+    "decisionProcedure": "Use current source + previously verified solution and prior q23 current-pass bucket; re-evaluate only whether the adjacent level 상/bucket3 relation is acceptable."
+  },
+  "recheck": {
+    "sourceStudentStructure": "Three logarithmic graphs f,g,h; use the given vertical-asymptote distance to determine k, find three pairwise intersections, apply the stated h-domain to reject invalid roots, then take a centroid coordinate.",
+    "bucketDecision": "Retain bucket3 / medium / B34: the transformations are standard logarithm equalities and ordinary quadratic solving; the method is visible from pairwise graph intersections, with no non-routine insight or complex case structure that warrants moving to bucket4.",
+    "legacyLevelDecision": "BORDERLINE_ACCEPTABLE: legacy level 상 is reasonable for this coordinated upper-boundary structure because the answer depends on the asymptote-derived parameter, three graph intersections, and two domain-based root selections. This is a local structural judgment, not based on score, exam position, school, distribution, or calculation length.",
+    "recheckStatus": "RESOLVED_ADJACENT_BOUNDARY"
+  },
+  "decision": {
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "level": "상",
+    "legacyLevelCompatibilityBefore": "BORDERLINE_REVIEW",
+    "legacyLevelCompatibilityAfter": "BORDERLINE_ACCEPTABLE",
+    "fieldsToChangeOnly": [
+      "legacyLevelCompatibility"
+    ]
+  },
+  "guards": {
+    "answerOrSolutionChanged": false,
+    "studentTextOrChoicesChanged": false,
+    "metaTaxonomyChanged": false,
+    "problemOrSolutionAssetsChanged": false,
+    "autoTaggingApplied": false,
+    "newAnswerFreeze": false,
+    "newMathSolveClaim": false,
+    "pdfRead": false,
+    "overallMetaSemanticPassAsserted": false
+  }
+}

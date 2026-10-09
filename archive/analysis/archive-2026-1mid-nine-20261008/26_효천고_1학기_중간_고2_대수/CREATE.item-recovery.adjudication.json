@@ -1,0 +1,233 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_ADJUDICATION_V1",
+  "examUid": "26_효천고_1학기_중간_고2_대수",
+  "runId": "archive-2026-1mid-nine-20261008",
+  "stage": "CREATE",
+  "substage": "POST_R2_ITEM_RECOVERY",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "assignmentPath": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/CREATE.item-recovery.assignment.json",
+  "assignmentSha256": "8caf98f783f35a3e5273f63ad4d7ee4fca9032c3e7cafdf2b2d50c399b1d90a3",
+  "initialWorktreeHead": "7d1cc00727a6cfde528cb0e991704f80a0fa8a68",
+  "dispatchHeadMismatch": {
+    "dispatchSupplied": "2546400b50bb3762f286d66714a3c82d164410ce",
+    "packetAndFirstCheck": "7d1cc00727a6cfde528cb0e991704f80a0fa8a68",
+    "rootDisposition": "STALE_ROOT_DISPATCH_BASELINE_AFTER_SOURCE7_PUBLICATION; packet/current worktree binding authoritative"
+  },
+  "originalSource": {
+    "path": "D:/2026_1학기중간_/대수/26_효천고_1학기_중간_고2_대수.pdf",
+    "sha256": "03bfbf534577b98f121c6960f64d16a137c5d959e3b3651fcf74f8f3d1a743f5"
+  },
+  "sourceFirstEvidence": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/CREATE.source-first.item-recovery.json",
+    "sha256": "38ae29f553ee36f7c671ee582003d776e83833d37fad86729788376802b8cac2"
+  },
+  "freshStudentProposal": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/CREATE.fresh-student-proposals.json",
+    "sha256": "03783b0546c70dacf055f835d39d114f1754873b814a65556a000288bfe997f2"
+  },
+  "calibrationPreflight": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/CREATE.item-recovery.calibration.json",
+    "sha256": "b782843d8a55da91af24f451e3115be02bc3b43447ba44622b7af102b39094e8",
+    "command": "node archive/tools/solution-calibration-gate.mjs --exam <current-working-js> --evidence <calibration.json> --stage ITEM_RECOVERY --preflight",
+    "result": "PASS; questionCount=23; issues=[]",
+    "completedAt": "2026-10-08T23:58:17+09:00"
+  },
+  "preRevisionRawSha256": "d2051b55316ac61e8dbc1dc5d4d6feb2cc3155a9d877eab68f590c3d8d5f9006",
+  "exactPreimage": {
+    "path": ".tmp/archive/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/preimage/26_효천고_1학기_중간_고2_대수.js",
+    "sha256": "d2051b55316ac61e8dbc1dc5d4d6feb2cc3155a9d877eab68f590c3d8d5f9006"
+  },
+  "q13": {
+    "sourceFirst": "PDF prints 60. With m=(2log_2 n+1)/3 in 1..60, the only natural n are 2^(1+3j), j=0..29; sum 2(8^30-1)/7 is outside every printed option.",
+    "repairDecision": "AUDITED_REPAIR / AUDITED_SOURCE_REPAIR; one-character deletion 60→6, not direct replacement.",
+    "printedSourceValue": "60",
+    "auditedStudentValue": "6",
+    "repairReason": "This is the unique minimal correction supported by all five preserved printed choices: with m in 1..6, natural n forces m=1,3,5 and n=2,16,128; the sum 146 matches only choice ③.",
+    "independentMathResult": "m=1,3,5 → n=2,16,128 → sum 146",
+    "affectedFields": [
+      "content",
+      "answer",
+      "solution",
+      "itemStatus",
+      "holdReason"
+    ],
+    "postRepairAnswerCardinality": 1,
+    "choiceErrorPathAudit": {
+      "choicesPreservedExactly": [
+        "136",
+        "141",
+        "146",
+        "151",
+        "156"
+      ],
+      "uniqueCorrectChoice": "③ / 146",
+      "allFiveReviewed": true,
+      "note": "The four off-by-5 distractors do not correspond to a source-supported alternative solution; they remain exact source choices. No fabricated mathematical rationale was assigned to them."
+    },
+    "replacement": false
+  },
+  "q23": {
+    "sourceFirst": "Original raster prints 312 followed by Korean copula 이다; current student content contains $3120$이다.",
+    "repairDecision": "AUDITED_REPAIR; remove the one extra Arabic zero in the student transcription, 3120→312.",
+    "sourceArea": 312,
+    "independentAnswer": "2",
+    "affectedFields": [
+      "content",
+      "answer",
+      "solution",
+      "itemStatus",
+      "holdReason"
+    ],
+    "sourceImageAsset": {
+      "ref": "assets/images/26_효천고_1학기_중간_고2_대수/q23.png",
+      "sha256": "519084d53b17eb4da2c8a90ada32354e787394c5781af5f63e4f88d7d5cdb933",
+      "opened": true,
+      "mutation": "none"
+    },
+    "replacement": false
+  },
+  "difficultyVisibility": {
+    "freshProposalFileWasPhysicallyWrittenBeforeAnyOldLevelOrBucketValueRead": true,
+    "freshProposalReadOrder": "source-first q13 then q23; corrected student-only proposals frozen before q13/q23 old difficulty field values were read",
+    "priorValuesViewedAfterCandidateLock": true,
+    "priorExposureAt": null,
+    "q13Prior": {
+      "level": "상",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "q23Prior": {
+      "level": "상",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "freshSourceOnlyProposals": {
+      "q13": "2 / medium / B23",
+      "q23": "3 / medium / B23"
+    },
+    "disposition": "Fresh pre-exposure proposals were preserved; stored source difficulty fields were visible only after proposal freeze. Final values are the independently reviewed R1 adjudication; these are not called blind in this CREATE session.",
+    "priorExposureRecordedAt": "2026-10-09T00:08:14+09:00",
+    "priorExposureWindow": "After the proposal timestamp and before 2026-10-09T00:08:14+09:00; exact instant not measured.",
+    "finalR1": {
+      "q13": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "STRONG_CONFLICT"
+      },
+      "q23": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    "taxonomyFinal": "NOT_ASSERTED"
+  },
+  "candidate": {
+    "path": ".tmp/archive/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/26_효천고_1학기_중간_고2_대수.js",
+    "rawSha256": "b4398daa976df00582af6670f2e352b28fc7670c8d0a0ed76b08c99b06da7cc6",
+    "changedQids": [
+      13,
+      23
+    ],
+    "changedFields": [
+      "content",
+      "answer",
+      "solution",
+      "itemStatus",
+      "holdReason",
+      "difficultyBucket",
+      "difficultyConfidence",
+      "difficultyBoundaryFlag",
+      "legacyLevelCompatibility",
+      "difficultyReason",
+      "conditionKeys",
+      "crossConceptKeys",
+      "integrationPattern",
+      "problemTypeKey"
+    ],
+    "itemStatus": "PASS_AFTER_REPAIR",
+    "freshAffectedR1R2": "Affected q13/q23 R1 freeze and R1 adjudication complete; full R2 remains required."
+  },
+  "sourceProblemDiagrams": "No new diagram was created. q23 original source pixels are preserved as the current q23.png; no redraw or cleanup occurred.",
+  "nonTargetInvariance": {
+    "preimagePath": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/ROOT.recovery.non-target-preimage.json",
+    "preimageSha256": "b2819add256b9a0f1aa1606d605caf56bb7ec3904d372bd968b4cc863e84e6dd",
+    "verification": "PASS: 21/21 non-target objects and all referenced assets byte-identical; rechecked after final source/meta revision.",
+    "evidencePath": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/CREATE.item-recovery.invariance.json",
+    "evidenceSha256": "7d60dd093ad8084b46739a6745af487d8bcedf741ef19d2155a9c8f6d7b65c9f",
+    "candidateRawSha256": "b4398daa976df00582af6670f2e352b28fc7670c8d0a0ed76b08c99b06da7cc6"
+  },
+  "assetInvariance": {
+    "onlyPreimageAsset": "assets/images/26_효천고_1학기_중간_고2_대수/q23.png",
+    "preimageSha256": "519084d53b17eb4da2c8a90ada32354e787394c5781af5f63e4f88d7d5cdb933",
+    "candidateSha256": "519084d53b17eb4da2c8a90ada32354e787394c5781af5f63e4f88d7d5cdb933",
+    "unrelatedAssetMutation": false
+  },
+  "finalDisposition": "RECOVERY_SOURCE_AND_META_LOCKED; CURRENT_CREATE_V2_VALIDATION_PENDING_GLOBAL_CANONICAL_STABILITY_AND_ROOT_PREFLIGHT_DISPOSITION",
+  "createPreflight": {
+    "status": "REVIEW_REQUIRED",
+    "questionCount": 23,
+    "itemHoldCount": 0,
+    "findings": [
+      {
+        "qid": 17,
+        "field": "content",
+        "code": "TEX_MATH_DELIMITER_UNPAIRED",
+        "locus": {
+          "start": 284,
+          "end": 285,
+          "text": "$"
+        },
+        "reason": "Opening math delimiter has no matching closer."
+      }
+    ],
+    "unitOrderFindings": [],
+    "semanticApproval": false,
+    "sourceMutation": false,
+    "artifactRawSha256": "b4398daa976df00582af6670f2e352b28fc7670c8d0a0ed76b08c99b06da7cc6",
+    "artifactBlobSha1": "e608fcfbb88f9536edfdbf1f0ea6540b7ff0affd",
+    "rawReportPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/CREATE.preflight.recovery-attempt-02.stdout.raw.json",
+    "rawReportSha256": "5b3c3699113856790b1b533cbe13b48e79bd50172f3c1e0260124c3bc5b687d1",
+    "toolSha256": "a5bff02b10d15ed738bd064ea0b4587b115dd24d35444be1fbc648fa5767d47e"
+  },
+  "laterRootMainDrift": {
+    "rootProvidedHead": "47dfa12159d2ffa29572139183312b1b55366706",
+    "observedAt": "2026-10-09T00:12:41+09:00",
+    "note": "Root main publication advanced after another exam R3. Preserve initial packet/worktree HEAD 7d1cc... and exact source5 raw SHA; no source5 input change reported."
+  },
+  "freshAffectedReview": {
+    "stage": "R1",
+    "failedAttempt": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/R1.scope-13,23@recovery-01.pre-freeze-input-boundary-failure.json",
+      "sha256": "583bb32663fbcea3bbbfb769ea06f20470d701f636977ad68e071837309fd83c",
+      "disposition": "PRESERVED_FAILURE_NO_FREEZE"
+    },
+    "cleanFreeze": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/R1.scope-13,23@recovery-clean-02.original-freeze.json",
+      "sha256": "ca23a06ac85d4f172053c2a08162c076e5fd98c2ff8cb6505c92d893205dfeb9",
+      "sourceRawSha256": "5afa167857f4e23734358717db89876b07363a3a555292acc523f65476d57d43"
+    },
+    "readOnlyR1Final": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/R1.recovery.r1_05.readonly-adjudication.json",
+      "sha256": "f5afc9aa7c6fa2455fdbaac80fb1fbf0f470d1f17a4fdaf1ff1d71df566ebd2d"
+    },
+    "answers": {
+      "q13": "146 / choice ③",
+      "q23": "2"
+    },
+    "status": "AFFECTED_R1_COMPLETE; FULL23_R1/R2_FLOW_REMAINS_ROOT_ROUTED"
+  },
+  "createPreflightClosure": {
+    "status": "FALSE_POSITIVE_CONFIRMED_NO_SOURCE_CHANGE",
+    "assessmentPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/R1.q17-create-preflight-assessment.r1_05.json",
+    "assessmentSha256": "1c803168319ea428b848cb2bbb86f451d44838002e781f1e4b1e58d21ef3baf7",
+    "reviewer": "r1_05"
+  }
+}

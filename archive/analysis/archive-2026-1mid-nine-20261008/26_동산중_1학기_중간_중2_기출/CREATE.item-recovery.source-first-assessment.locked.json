@@ -1,0 +1,104 @@
+{
+  "examUid": "26_동산중_1학기_중간_중2_기출",
+  "stage": "CREATE",
+  "substage": "POST_R2_ITEM_RECOVERY",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "assessmentRevision": 2,
+  "supersedesPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\CREATE.item-recovery.source-first-assessment.json",
+  "supersedesSha256": "fcaf47e2a91bbf29afc01a73e0da1b8691c4f4ea364e4b872371346124f62711",
+  "assignmentPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\CREATE.item-recovery.assignment.head-877e1b6e.json",
+  "assignmentSha256": "c8595a9f1fc81ac1d84efda85e4859ba8fcdf0b7f1155d8cb3b08f4ff2ab0b1d",
+  "sourcePath": "D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0016.jpg",
+  "sourceSha256": "ab77fdf10222b4cf7357c8dbe0aa1bf95eeb9a086f373dda74039d385d73e411",
+  "upstreamHOLDReasonsOrStudentArtifactInspected": false,
+  "sourceAssessmentLocked": true,
+  "items": [
+    {
+      "qid": 19,
+      "independentSolution": "3x+8≥5x+4 ⇒ -2x≥-4 ⇒ x≤2",
+      "studentAssetFeasibility": "Current source pixels do not support a confirmed student-safe crop as-is: handwritten circle/answer marking encloses choice 3, and handwritten strokes cross the choice area including the endpoint zone of choice 5. Cropping all five options necessarily retains answer-bearing marks. A pixel-only cleanup could be considered only after its before/after proves every printed endpoint, line direction, shading, tick/number label unchanged; choice 5 endpoint is presently not independently recoverable. If not recoverable, do not redraw as original; use an explicitly authored replacement graphic only under the true-HOLD recovery route.",
+      "correctPrintedChoice": 3,
+      "originalChoiceMapping": [
+        {
+          "endpoint": 2,
+          "set": "x<2",
+          "endpointType": "open",
+          "shade": "left",
+          "choice": 1
+        },
+        {
+          "endpoint": 2,
+          "set": "x>2",
+          "endpointType": "open",
+          "shade": "right",
+          "choice": 2
+        },
+        {
+          "endpoint": 2,
+          "set": "x≤2",
+          "endpointType": "closed",
+          "shade": "left",
+          "choice": 3
+        },
+        {
+          "endpoint": 2,
+          "set": "x≥2",
+          "endpointType": "closed",
+          "shade": "right",
+          "choice": 4
+        },
+        {
+          "endpoint": 6,
+          "set": "UNDETERMINED_SOURCE; endpoint intersects graphite/circle mark",
+          "endpointType": "UNDETERMINED_SOURCE",
+          "shade": "left",
+          "choice": 5
+        }
+      ],
+      "visualEvidence": "Opened full page and enlarged q19 choice crop plus focused choice-5 endpoint crop. Choice labels and topology for 1–4 are legible; choice 5 printed x=6 label and left shading are visible; its endpoint open/closed status is masked.",
+      "minimalSourceRepair": "No printed-source correction warranted; q19 text and choices are present.",
+      "printedSource": "Page 4, q19: 일차부등식 3x+8≥5x+4의 해를 수직선 위에 나타낸 것"
+    },
+    {
+      "printedLocus": "Page 4 lower-left, next objective item below q19; printed prompt first line and relation are crossed by graphite and clipped/obscured at the scan left edge; visible fragment refers to a natural-number condition and a linear inequality, with choice values including 21, 28, 36.",
+      "qid": 20,
+      "minimalSourceRepair": "No confirmed repair possible from assigned JPGs; source folder contains no PDF or alternate scan.",
+      "sourceStatus": "UNDETERMINED_SOURCE",
+      "sourceSafeAsset": "Do not release/reconstruct from current source because exact condition and values are not independently legible.",
+      "curriculumTopicEvidence": "Middle-school linear inequality / natural-number constraint from visible text; exact semantic and difficulty classification deferred."
+    },
+    {
+      "printedLocus": "Page 4 lower-left boxed word problem after the preceding item; the leading amount at the far left and portions of the sale/profit sentence are masked or outside the scanned crop; visible fragment states a 20% discount and a profit-percentage condition.",
+      "qid": 21,
+      "minimalSourceRepair": "No confirmed repair possible from assigned JPGs; source folder contains no PDF or alternate scan.",
+      "sourceStatus": "UNDETERMINED_SOURCE",
+      "sourceSafeAsset": "Do not release/reconstruct from current source because exact condition and values are not independently legible.",
+      "curriculumTopicEvidence": "Middle-school linear inequality application / price-profit relation from visible fragment; exact quantities and required target are unclear, so final Meta/difficulty deferred."
+    }
+  ],
+  "preExposureProposals": {
+    "qid19": {
+      "sourceBasedPrimaryProposal": "2022 middle-school, M2-1 일차부등식 / L2 일차부등식",
+      "difficultyConfidence": "medium",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reason": "single routine linear-inequality transformation followed by endpoint/direction representation; candidate remains provisional until solution/visual and L1 anchor calibration.",
+      "rpmCandidate": "L3 부등식의 성질 → L4 수직선으로 해 표현",
+      "difficultyBucket": 1,
+      "difficultyBoundaryFlag": "B12"
+    },
+    "qid21": {
+      "primaryProposal": "DEFERRED_UNDETERMINED_SOURCE",
+      "reason": "exact price/profit quantities and required target cannot be established from the scan.",
+      "difficultyProposal": "UNKNOWN; source body incomplete"
+    },
+    "qid20": {
+      "primaryProposal": "DEFERRED_UNDETERMINED_SOURCE",
+      "reason": "exact source condition and values cannot be established from the scan.",
+      "difficultyProposal": "UNKNOWN; source body incomplete"
+    }
+  },
+  "difficultyAndMetaProposalsWrittenBeforePriorFieldInspection": true,
+  "priorDifficultyOrMetaFieldsInspected": false,
+  "assetDecision": "No JS asset or prior answer/solution/Meta/difficulty was opened; source-only evidence only."
+}

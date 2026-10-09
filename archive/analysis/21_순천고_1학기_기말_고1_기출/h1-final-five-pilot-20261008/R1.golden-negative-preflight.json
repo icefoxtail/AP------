@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "R1_GOLDEN_NEGATIVE_PREFLIGHT_V1",
+  "examUid": "21_순천고_1학기_기말_고1_기출",
+  "reviewerIdentity": "/root/r1_suncheon2021_five",
+  "performedAfterFailureRecord": true,
+  "preflightBeforeAnySolutionEdit": true,
+  "goldenRegistryPath": "archive/data/codex-quality-calibration-registry-v2.json",
+  "goldenRegistrySha256": "f42e82d8c6c6f83d294d7d825eb0cc2c7cc939f1e62db3ed6faaea0cd9f0733d",
+  "goldenSamples": [
+    {
+      "kind": "GOLDEN",
+      "examPath": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "qid": 7,
+      "assetPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+      "previewPath": ".tmp/archive/h1-final-five-pilot-20261008/21_순천고_1학기_기말_고1_기출/source-pdf/golden-preflight/maesan-q07.png",
+      "observation": "실제 풀이에서 중심 좌표의 이동과 반지름 보존을 단계별 식으로 보여 준다. 정적 PNG에서는 원의 상대 위치와 최종 중심이 풀이 설명에 부합한다.",
+      "examSha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+      "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+      "assetSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+      "previewSha256": "d1f0c26de2eb5a771879ed5d401880c90c17c91c3ac150fcac7311d4f76dcd14",
+      "solutionObservation": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다.\n$x^2+y^2+6x-2y+1=0$\n상수항 $1$을 오른쪽으로 옮기면\n$x^2+6x+y^2-2y=-1$이다.\n$x^2+6x$에는 $9$를,\n$y^2-2y$에는 $1$을 더해 완전제곱식을 만든다.\n$(x^2+6x+9)+(y^2-2y+1)=-1+9+1$\n$(x+3)^2+(y-1)^2=9$이다.\n즉\n$(x-(-3))^2+(y-1)^2=3^2$이므로\n처음 원의 중심은 $(-3,1)$이고\n반지름은"
+    },
+    {
+      "kind": "GOLDEN",
+      "examPath": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "qid": 2,
+      "assetPath": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+      "previewPath": ".tmp/archive/h1-final-five-pilot-20261008/21_순천고_1학기_기말_고1_기출/source-pdf/golden-preflight/hyochoen-q02.png",
+      "observation": "풀이에서 각 직선을 y=mx+n 꼴로 바꾸고 기울기 곱 -1을 식으로 적용한다. 현재 pre-existing PNG preview의 한국어는 글리프 상자로 깨져 있고 선의 기울기/교점만 판독된다. 이 표시 결함을 target에 복사하지 않는다.",
+      "examSha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+      "assetSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+      "previewSha256": "d92c987e1e9ad5169b1f40a2ccd6026a6d9abbcc946e8f2adc65ae912f8bfffa",
+      "solutionObservation": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfrac23$이므로\n첫째 직선의 기울기는 $-\\dfrac13$이다.\n\n다음으로 직선\n$kx-2y-1=0$\n을 $y$에 대하여 정리하면\n$-2y=-kx+1$\n$y=\\dfrac{k}{2}x-\\dfrac12$이므로\n둘째 직선의 기울기는 $\\dfrac{k}{2}$이다.\n두 직선이 수직이므로\n$-\\dfrac13\\cdot\\dfrac{k}{2}=-1$이다.\n$-\\dfrac{k}{6}=-1$\n$k=6$이다.\n\n"
+    }
+  ],
+  "negativeSample": {
+    "readmePath": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "readmeSha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+    "visualFixturePath": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q20-solution.bad.svg",
+    "visualFixtureSha256": "89debcfed249f581602aa9c77fb54390866dccb4a95fe21f59ec1ee6fac82cb7",
+    "observation": "Fixture README identifies false visual PASS; the bad SVG line primitive does not have the stated normal slope for l:3x+4y-8=0. Labels alone must not substitute for coordinate geometry; the actual failure SVG is retained and not copied."
+  },
+  "additionalObservedNegativePreview": {
+    "path": ".tmp/archive/h1-final-five-pilot-20261008/21_순천고_1학기_기말_고1_기출/source-pdf/golden-preflight/negative-q1.png",
+    "sha256": "af45ba43e6af81fc6287e7db04660b2df81d1a771d9af7adcd1bf9c8f2957872",
+    "observation": "Labelled points A and B are visibly off the drawn line despite slope/intercept labels."
+  },
+  "axesApplied": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "calibrationStatus": "COMPLETED_WITH_PREEXISTING_SAMPLE_PREVIEW_GLYPH_DEFECT_RECORDED",
+  "failedAttempt": {
+    "schemaVersion": "R1_SOLUTION_PREFLIGHT_ORDER_FAILURE_V1",
+    "reviewerIdentity": "/root/r1_suncheon2021_five",
+    "examUid": "21_순천고_1학기_기말_고1_기출",
+    "originalFreezeSha256": "c12ff4ddf9fc48d63c94d85890b38b2105d330791b65cd6652e666c85273aa24",
+    "disclosureSha256": "d29284da06f4a5dc41e4db8bc907d9ceba185f9068e4378d06ea059c1288f064",
+    "targetSourceSha256AtDisclosure": "d3d55ae58381cc774ad5a7b1d303f2716c945a5c59a244531deb1a0e7a5a4122",
+    "failure": "Target stored answers/solutions were inspected from the approved postfreeze disclosure before actual Golden/Negative preflight. Preserve this attempt; do not use it as full SOLUTION_LAYOUT/SMALL_BOARD PASS. Only bounded correction-review after fresh preflight is used in this session.",
+    "failedAttemptPreserved": true
+  },
+  "knownJeilQ18VisualExceptionExcluded": true
+}

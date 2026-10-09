@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "JS_ARCHIVE_FREEZE_ADJUDICATION_V1",
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학II\\R2.r2_05.original-freeze.json",
+    "sha256": "cc51d47318c31c6043f9f06e536d1356c0c4d744c1f0a8b03c0514f5ce430ee8"
+  },
+  "createdAt": "2026-10-09T02:32:36.435Z",
+  "corrections": [
+    {
+      "qid": 11,
+      "correctedAnswer": "4 (choice ②)",
+      "reason": "The q11 prompt and complete original graph show the straight descending branch clipped at the upper plotting window, without an endpoint symbol or a stated domain restriction. It continues through x=-3, where f(x) tends to 3 from both sides; the filled point (-3,0) is isolated and does not change lim x/f(x), so a=-3 qualifies. At a=-2 the line tends to f=2, so it qualifies. At a=-1 the left/right limits of f are 1 and 2, giving different quotient limits -1 and -1/2, so it does not qualify. At a=0, f has nonzero one-sided limits 2 and 1 and x tends to 0, so the quotient limit is 0. At a=1 and 3, f tends to 0 while x tends to nonzero values, so no finite limit exists. At a=2, f tends to 1 from both sides and quotient limit is 2. The qualifying values are -3,-2,0,2; count=4. This corrects the original freeze count 5 while preserving the original freeze and preliminary adjudication.",
+      "sourceFactWitness": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/R1.q11-original-source-review.v2.json",
+        "sha256": "fdd8517f9edb74bc7f8c01f78bdc72084a1e914771444d23141578ce0873531c"
+      },
+      "postRepairDisclosure": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/R2.r2_05.postfreeze-source-fact-v2.json",
+        "sha256": "626790d1e9035ad5e872492be62eccaff01e798a285ee4e382e2249e5a8816f0"
+      },
+      "originalAnswer": "5 (choice 3)"
+    }
+  ],
+  "originalFreezeMutated": false
+}

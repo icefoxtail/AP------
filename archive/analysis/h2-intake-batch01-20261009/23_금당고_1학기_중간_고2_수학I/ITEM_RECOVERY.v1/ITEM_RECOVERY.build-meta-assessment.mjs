@@ -1,0 +1,42 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {gitBlobSha} from '../../../../tools/archive-stage-validator.mjs';
+import {readExam} from '../../../../tools/archive-codex-artifact-io.mjs';
+const root=process.cwd();
+const evidenceRel='archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1';
+const sourceRel='.tmp/archive/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/item-recovery-v2/23_금당고_1학기_중간_고2_수학I.js';
+const h=b=>crypto.createHash('sha256').update(b).digest('hex');
+const load=p=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8'));
+const tagPath='archive/data/master_tables/js_archive_tag_master.json';
+const rpmPath='archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json';
+const taxonomyPath='archive/data/meta-foundation/compiled/taxonomy_registry.json';
+const bindingsPath='archive/data/meta-foundation/compiled/curriculum_bindings.json';
+const conditionsPath='archive/data/meta-foundation/compiled/condition_registry.json';
+const conceptsPath='archive/data/meta-foundation/compiled/concept_registry.json';
+const tag=load(tagPath),rpm=load(rpmPath),taxonomy=load(taxonomyPath),bindings=load(bindingsPath),conditions=load(conditionsPath),concepts=load(conceptsPath);
+const standard=key=>tag.find(r=>r.keyType==='standardUnitKey'&&r.key===key&&r.status==='active');
+const subunit=key=>tag.find(r=>r.keyType==='subUnitKey'&&r.subUnitKey===key&&r.status==='active');
+const rpmRow=id=>rpm.records.find(r=>r.id===id);
+const pt=key=>taxonomy.problemTypes.find(r=>r.problemTypeKey===key&&r.status==='ACTIVE');
+const tpl=key=>taxonomy.templates.find(r=>r.templateKey===key&&r.status==='ACTIVE');
+const condition=key=>conditions.conditions.find(r=>(r.conditionKey||r.key)===key&&r.status==='ACTIVE');
+const concept=key=>concepts.concepts.find(r=>(r.conceptKey||r.key)===key&&r.status==='ACTIVE');
+const keys=['H15-M1-02-LOGARITHM','H15-M1-02-EXPONENT_LOG_APPLICATION','H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION','H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION'];
+for(const key of keys)if(!subunit(key))throw Error('SUBUNIT_NOT_ACTIVE:'+key);
+for(const key of ['COND_INTEGER','COND_POSITIVE','COND_RANGE'])if(!condition(key))throw Error('CONDITION_NOT_ACTIVE:'+key);
+for(const key of ['CC_INEQUALITY_ABSOLUTE_VALUE','CC_CIRCUMCIRCLE','CC_AREA','CC_RIGHT_TRIANGLE'])if(!concept(key))throw Error('CONCEPT_NOT_ACTIVE:'+key);
+if(!pt('PT_FUNCTION_GRAPH_GEOMETRY')||!tpl('TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION')||tpl('TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION').parentProblemTypeKey!=='PT_FUNCTION_GRAPH_GEOMETRY')throw Error('FUNCTION_GRAPH_GEOMETRY_PROJECTION_INVALID');
+const exam=readExam(path.join(root,sourceRel));
+if(exam.rawSha256!=='420efca1b17423e9b7cb05f3e2b1b0ff37a206e55ab10598d71fcc73e29a5987')throw Error('CURRENT_SOURCE_SHA_MISMATCH');
+const rows=[
+  {qid:9,standardCourse:'수학I',standardUnitKey:'H15-M1-02',standardUnit:standard('H15-M1-02').labelKo,standardUnitOrder:2,subUnitKey:keys[0],subUnit:subunit(keys[0]).subUnit,rpmSemanticStatus:'FINAL',rpmPrimaryAuthority:'H2-M1-RPM-008',rpmPrimaryPath:rpmRow('H2-M1-RPM-008').rpmPath,primaryMethod:'로그의 밑·진수 정의 조건',decisiveStep:'진수의 부호로 2<a<7을 얻고 밑 a-2=1인 a=3을 제외한다.',problemTypeKey:null,templateKey:null,projectionStatus:'UNMATERIALIZED',nullReason:'H2-M1-RPM-008은 RPM_ONLY이며 GLOBAL ACTIVE lookup에서 로그 밑·진수 조건과 정확히 일치하는 PT/TPL이 없다. 더 넓은 PT_DOMAIN_RANGE_SURJECTIVITY는 로그 정의 조건을 충분히 특정하지 않아 임의 결속하지 않는다.',crossConceptKeys:[],conditionKeys:['COND_INTEGER','COND_POSITIVE'],integrationPattern:'NONE',difficulty:{bucket:2,confidence:'high',boundaryFlag:'NONE',legacyLevelCompatibility:'NORMAL',reason:'로그 밑과 진수 정의 조건을 한 번 적용하고 유한 정수 후보를 거르는 표준 초입 구조다.'}},
+  {qid:10,standardCourse:'수학I',standardUnitKey:'H15-M1-02',standardUnit:standard('H15-M1-02').labelKo,standardUnitOrder:2,subUnitKey:keys[1],subUnit:subunit(keys[1]).subUnit,rpmSemanticStatus:'FINAL',rpmPrimaryAuthority:'H2-M1-RPM-007',rpmPrimaryPath:rpmRow('H2-M1-RPM-007').rpmPath,primaryMethod:'로그와 지수의 reciprocal 관계 및 대칭합',decisiveStep:'p=xy를 reciprocal-square 조건으로 결정하고 a,b>1에서 x,y>0을 사용해 음수 p 근을 제거한다.',problemTypeKey:null,templateKey:null,projectionStatus:'UNMATERIALIZED',nullReason:'H2-M1-RPM-007은 RPM_ONLY이며 GLOBAL ACTIVE lookup에서 reciprocal-log 대칭합 유형과 정확히 일치하는 PT/TPL이 없다. 유사한 일반 다항식 평가 유형은 결정 전략을 과장하므로 결속하지 않는다.',crossConceptKeys:[],conditionKeys:['COND_POSITIVE'],integrationPattern:'SEQUENTIAL',difficulty:{bucket:4,confidence:'high',boundaryFlag:'NONE',legacyLevelCompatibility:'NORMAL',reason:'역수 로그 관계에서 대칭곱을 결정하고 양수성으로 불가능한 가지를 제거하는 복합 조건 구조다.'}},
+  {qid:18,standardCourse:'수학I',standardUnitKey:'H15-M1-04',standardUnit:standard('H15-M1-04').labelKo,standardUnitOrder:4,subUnitKey:keys[2],subUnit:subunit(keys[2]).subUnit,rpmSemanticStatus:'FINAL',rpmPrimaryAuthority:'H2-M1-RPM-025',rpmPrimaryPath:rpmRow('H2-M1-RPM-025').rpmPath,primaryMethod:'밑 a>1 로그부등식의 단조성과 절댓값 분기',decisiveStep:'m=8을 경계로 나누어 정수 상한을 세고 공유 행을 한 번만 센다.',problemTypeKey:null,templateKey:null,projectionStatus:'UNMATERIALIZED',nullReason:'H2-M1-RPM-025는 RPM_ONLY이며 GLOBAL ACTIVE registry에 로그부등식 기반 자연수 순서쌍 세기를 정확히 나타내는 PT/TPL이 없다. 임의 키를 만들지 않았다.',crossConceptKeys:['CC_INEQUALITY_ABSOLUTE_VALUE'],conditionKeys:['COND_INTEGER','COND_POSITIVE'],integrationPattern:'CASE_BRANCH',difficulty:{bucket:4,confidence:'high',boundaryFlag:'NONE',legacyLevelCompatibility:'NORMAL',reason:'절댓값 경우 분기, 로그 단조성, 유한 범위 자연수 상한 계수 과정이 풀이 중심이다.'}},
+  {qid:19,standardCourse:'수학I',standardUnitKey:'H15-M1-03',standardUnit:standard('H15-M1-03').labelKo,standardUnitOrder:3,subUnitKey:keys[3],subUnit:subunit(keys[3]).subUnit,rpmSemanticStatus:'FINAL',rpmSemanticSource:'GLOBAL_ACTIVE_SHARED_SEMANTIC',rpmPrimaryPath:{majorUnit:'지수함수와 로그함수',midUnit:'지수함수의 활용',l3:pt('PT_FUNCTION_GRAPH_GEOMETRY').canonicalLabelKo,l4:tpl('TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION').canonicalLabelKo},primaryMethod:'지수·로그 곡선의 축 절편을 매개변수로 나타내고 원의 넓이 조건에 연결',decisiveStep:'두 절편을 t=3^a로 나타낸 뒤 직각삼각형의 외접원 반지름으로 이차방정식을 만든다.',problemTypeKey:'PT_FUNCTION_GRAPH_GEOMETRY',templateKey:'TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION',projectionStatus:'BINDING_PENDING',projectionReason:'GLOBAL ACTIVE shared PT/TPL은 의미와 parent 관계가 정확하지만 2015 수학I H15-M1-03 exact curriculum binding이 없다. H2-M1-RPM-020 그래프 교점은 함수끼리의 교점을 요구하므로 이 축 절편·원의 넓이 구조에는 적용하지 않았다. Binding gap은 semantic HOLD가 아니다.',crossConceptKeys:['CC_CIRCUMCIRCLE','CC_AREA','CC_RIGHT_TRIANGLE'],conditionKeys:['COND_RANGE'],integrationPattern:'SEQUENTIAL',difficulty:{bucket:4,confidence:'high',boundaryFlag:'NONE',legacyLevelCompatibility:'NORMAL',reason:'함수 절편, 직각삼각형의 외접원 넓이, a 범위에 따른 이차근 선택이 결합된 상위 표준 구조다.'}}
+];
+const docs=['docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md','docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md','docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md'];
+const authorityFiles=[...docs.map(p=>({path:p,sha256:h(fs.readFileSync(path.join(root,p)))})),...[tagPath,rpmPath,taxonomyPath,bindingsPath,conditionsPath,conceptsPath].map(p=>({path:p,rawSha256:h(fs.readFileSync(path.join(root,p))),gitBlobSha:gitBlobSha(fs.readFileSync(path.join(root,p)))}))];
+const m103Bindings=bindings.bindings.filter(b=>b.standardUnitKey==='H15-M1-03'&&(b.problemTypeKey==='PT_FUNCTION_GRAPH_GEOMETRY'||b.templateKey==='TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION'));
+const out={schemaVersion:'JS_ARCHIVE_ITEM_RECOVERY_FRESH_META_ASSESSMENT_V1',examUid:'23_금당고_1학기_중간_고2_수학I',executionLine:'CODEX',qualityContractVersion:'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006',candidateRawSha256:h(exam.bytes),candidateGitBlobSha1:gitBlobSha(exam.bytes),compiledTagMasterRawSha256:h(fs.readFileSync(path.join(root,tagPath))),compiledTagMasterGitBlobSha1:gitBlobSha(fs.readFileSync(path.join(root,tagPath))),approvedSubUnitKeys:keys.map(key=>({key,record:subunit(key)})),targetRows:rows,exactM1_03FunctionGraphGeometryBindings:m103Bindings,authorityFiles,semanticReviewScope:'qid 9,10,18,19 only; non-target semantic metadata not reclassified'};
+const output=path.join(root,evidenceRel,'ITEM_RECOVERY.meta-fresh-assessment.json');fs.writeFileSync(output,JSON.stringify(out,null,2)+'\n',{flag:'wx'});const bytes=fs.readFileSync(output);console.log(JSON.stringify({path:output,sha256:h(bytes),gitBlobSha:gitBlobSha(bytes),candidateRawSha256:out.candidateRawSha256,candidateGitBlobSha1:out.candidateGitBlobSha1,masterRawSha256:out.compiledTagMasterRawSha256,nonTargetMetaReclassified:false,targetStatuses:rows.map(r=>({qid:r.qid,projectionStatus:r.projectionStatus,subUnitKey:r.subUnitKey}))},null,2));

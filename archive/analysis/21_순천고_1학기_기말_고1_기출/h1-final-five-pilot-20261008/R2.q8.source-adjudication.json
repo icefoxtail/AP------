@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_SOURCE_ADJUDICATION_V1",
+  "runId": "h1-final-five-pilot-20261008",
+  "examUid": "21_순천고_1학기_기말_고1_기출",
+  "stage": "R2",
+  "qid": 8,
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R2.original-freeze.json",
+    "sha256": "1824b0ef15e70d3f2ef5e90a4ddabf859781998fe1e1497cbe7889ea68222f1b",
+    "originalIndependentAnswer": "16 (choice ②)",
+    "preservedImmutable": true
+  },
+  "currentSource": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_순천고_1학기_기말_고1_기출\\21_순천고_1학기_기말_고1_기출.js",
+    "rawSha256": "1d5fe75302366c1cda1d41ef28cef3774ab696c1a4e9b62eb5007e7815253831",
+    "studentBundlePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_순천고_1학기_기말_고1_기출\\R2.student-bundle.json",
+    "studentBundleSha256": "b700b9735c6f80aef9258659529b24c6e776d7dfe0efbe0dca3672628e42c6ea",
+    "studentParity": "EXACT"
+  },
+  "sourceEvidence": {
+    "sourcePdf": {
+      "path": "C:\\Users\\USER\\Desktop\\기출정리 파일\\(2)1기말\\수학(상)\\2021_순천고1_1기말.pdf",
+      "sha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+      "page": 2,
+      "region": "right column, q8 block; page-2 rendered pixels x=545..1114, y=800..1014",
+      "excerpt": "모든 실수 x에서 이차함수 y=(k−1)x²+x+1의 그래프가 직선 y=kx−3보다 위쪽에 있도록 하는 정수 k의 개수는?",
+      "regionImage": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R2.q8.source-page2-region.png",
+        "sha256": "e248f3d0bb02197a2838f5472ff8d3dd685643546604a701ac609235ac8986f1"
+      }
+    },
+    "officialCompanionPdf": {
+      "path": "C:\\Users\\USER\\Desktop\\기출정리 파일\\(2)1기말\\수학(상)\\2021_순천고1_1기말_해설.pdf",
+      "sha256": "2ed553d672b29c19d7c35ce0c32f5a2bd9b3b3c6cb7e4e9df7cedb481f7406a5",
+      "page": 2,
+      "region": "right column, q8 answer and solution block; page-2 rendered pixels x=545..1117, y=800..1529",
+      "excerpt": "정답 ① (15); 판별식 조건으로 1<k<17, 따라서 정수 k=2,...,16으로 15개.",
+      "regionImage": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R2.q8.companion-page2-region.png",
+        "sha256": "56151c9eb53a98b089cfc3d767a30f9a23f90383ed96d8b0dcfa8aec12d8445b"
+      }
+    }
+  },
+  "reasoning": {
+    "f": "f(x)=(k−1)x²+x+1 is explicitly required to be a quadratic function; this requires k−1≠0, so k≠1.",
+    "aboveLine": "f(x)−(kx−3)=(k−1)x²+(1−k)x+4. If k<1 the leading coefficient is negative, so it cannot stay positive for all real x. For k>1, strict positivity requires D=(1−k)²−16(k−1)=(k−1)(k−17)<0, giving 1<k<17.",
+    "integerCount": "Since k is an integer and k=1 is excluded by the stated degree condition, k=2,...,16, count 15.",
+    "conclusion": "The original blind 16 omitted the explicit quadratic-function condition. The source wording matches the current student stem exactly; stored answer ① is correct. This is an independent-calculation adjudication, not a source mutation or a true item HOLD.",
+    "correctedIndependentAnswer": "15 (choice ①)",
+    "matchesStoredAnswer": true,
+    "sourceStemFidelity": "EXACT"
+  },
+  "freezeAdjudication": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R2.q8.freeze-adjudication.json",
+    "sha256": "b50563610e78e764f8900ee166a11eac0364868f089c44920a7553086658edc6"
+  },
+  "sourceMutation": false
+}

@@ -11,8 +11,8 @@ DEFAULT_RUN = 'main-integration-v1'
 
 def run_path(value):
     path = (ROOT / value).resolve()
-    family = (ROOT / 'archive/_generated/geometry-visual-engine').resolve()
-    if not path.is_relative_to(family):
+    family = (ROOT / '.tmp/archive').resolve()
+    if not path.is_relative_to(family) or len(path.relative_to(family).parts) < 2:
         raise ValueError('EVIDENCE_OUTPUT_SCOPE_VIOLATION')
     return path
 
@@ -98,6 +98,6 @@ def verify(run):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--verify', action='store_true')
-    parser.add_argument('--run', default=f'archive/_generated/geometry-visual-engine/{DEFAULT_RUN}')
+    parser.add_argument('--run', default=f'.tmp/archive/visual-engine-baseline/{DEFAULT_RUN}')
     args = parser.parse_args()
     print(json.dumps(verify(args.run) if args.verify else freeze(args.run)))

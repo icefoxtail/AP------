@@ -1,0 +1,295 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_CALIBRATION_PREFLIGHT_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "stage": "ITEM_RECOVERY",
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+        "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.\n내분점 공식에서는 한쪽 끝점의 좌표에 반대쪽의 비를 곱",
+        "observation": "Full read. q1: verified the explanation's condition-to-equation path, intermediate arithmetic and answer closure."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "sha256:387029a67b1f37b92625cf1284f67b4e1a5e8c33384e7e6de418b982935dd307",
+        "solutionExcerpt": "먼저 직선 $y=ax+b$를 평행이동한 뒤의 식을 구한다.\n$x$축의 방향으로 $2$만큼 이동한다는 것은 오른쪽으로 $2$만큼 이동하는 것이고,",
+        "observation": "Full read. q6: verified the explanation's condition-to-equation path, intermediate arithmetic and answer closure."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(3,0)$에 대하여\n$x$좌표의 차는",
+        "observation": "Full read. q1: verified the explanation's condition-to-equation path, intermediate arithmetic and answer closure."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "sha256:b67b1dd954e46112bb32991d499fec3db169d9e9a4f7f3622af4f64bb7a6c0a7",
+        "solutionExcerpt": "주어진 방정식이 실제 원을 나타내려면 반지름의 제곱이 양수여야 한다.\n주어진 식은\n$x^2+y^2-kx+2y+2k+1=0$이다.\n$x$와 $y$",
+        "observation": "Full read. q6: verified the explanation's condition-to-equation path, intermediate arithmetic and answer closure."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+        "solutionExcerpt": "집합 $A$의 원소는 $1$, $2$, $\\{1\\}$이다. 원소 관계 $\\in$와 부분집합 관계 $\\subset$를 구분하여 각 보기를 판단한다",
+        "observation": "Full read. q1: verified the explanation's condition-to-equation path, intermediate arithmetic and answer closure."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "sha256:d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+        "solutionExcerpt": "드모르간의 법칙으로\n$A^C\\cup B^C=(A\\cap B)^C$이다.\n따라서\n$n(A^C\\cup B^C)=30-n(A\\cap B)$이다.\n포함",
+        "observation": "Full read. q6: verified the explanation's condition-to-equation path, intermediate arithmetic and answer closure."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+        "observation": "Read the full Bokseong false-PASS README and q1 bad SVG. Recomputed the displayed line from the point coordinates A(-5,3), B(1,-2): its y-intercept is -5/3, while the label claims -7/6 and the plotted y-axis point is inconsistent. This fixture requires checking actual coordinates/topology instead of trusting labels."
+      }
+    ],
+    "sampleReadLog": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "readAxes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "observation": "Read full q1 prompt, choices, answer and solution; traced every displayed transformation and checked the conclusion against the source and answer."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "readAxes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "observation": "Read full q2 prompt, choices, answer and solution; traced every displayed transformation and checked the conclusion against the source and answer."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "77b762f1e35e5f530421cb7eb1d987ec0935ad0b9e2058a665c07fe6f930e5f0",
+        "readAxes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "observation": "Read full q3 prompt, choices, answer and solution; traced every displayed transformation and checked the conclusion against the source and answer."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 4,
+        "solutionSha256": "871e7e0f0fbd6a385eba138eeaa25c5e0bd50ed778c640993b81c2b7961ca0d7",
+        "readAxes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "observation": "Read full q4 prompt, choices, answer and solution; traced every displayed transformation and checked the conclusion against the source and answer."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 5,
+        "solutionSha256": "5cec67e22a9be1c7667c879d80ae639baf011e44574e6963243d3d987324554f",
+        "readAxes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "observation": "Read full q5 prompt, choices, answer and solution; traced every displayed transformation and checked the conclusion against the source and answer."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "387029a67b1f37b92625cf1284f67b4e1a5e8c33384e7e6de418b982935dd307",
+        "readAxes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "observation": "Read full q6 prompt, choices, answer and solution; traced every displayed transformation and checked the conclusion against the source and answer."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "readAxes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "observation": "Read full q1 prompt, choices, answer and solution; traced every displayed transformation and checked the conclusion against the source and answer."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "readAxes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "observation": "Read full q2 prompt, choices, answer and solution; traced every displayed transformation and checked the conclusion against the source and answer."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+        "readAxes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "observation": "Read full q3 prompt, choices, answer and solution; traced every displayed transformation and checked the conclusion against the source and answer."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 4,
+        "solutionSha256": "acdb76bc6092e60c215baaf235516b6fd1a7777ffc9d20cb1f134a95a7043cdf",
+        "readAxes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "observation": "Read full q4 prompt, choices, answer and solution; traced every displayed transformation and checked the conclusion against the source and answer."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 5,
+        "solutionSha256": "8e1a0f149d821431abc022690f63b1b99c675d8373a575c92dc4d1688dc4b109",
+        "readAxes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "observation": "Read full q5 prompt, choices, answer and solution; traced every displayed transformation and checked the conclusion against the source and answer."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "b67b1dd954e46112bb32991d499fec3db169d9e9a4f7f3622af4f64bb7a6c0a7",
+        "readAxes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "observation": "Read full q6 prompt, choices, answer and solution; traced every displayed transformation and checked the conclusion against the source and answer."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+        "readAxes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "observation": "Read full q1 prompt, choices, answer and solution; traced every displayed transformation and checked the conclusion against the source and answer."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21",
+        "readAxes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "observation": "Read full q2 prompt, choices, answer and solution; traced every displayed transformation and checked the conclusion against the source and answer."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "e664fd207ce80863250fa1281dfe247a5bbe1284ec2f37d87f3e38e034d00deb",
+        "readAxes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "observation": "Read full q3 prompt, choices, answer and solution; traced every displayed transformation and checked the conclusion against the source and answer."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 4,
+        "solutionSha256": "f644427bc93e3b5853d0d6c597d3e5b56dde904ce78f0615e45edeb595097083",
+        "readAxes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "observation": "Read full q4 prompt, choices, answer and solution; traced every displayed transformation and checked the conclusion against the source and answer."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 5,
+        "solutionSha256": "5e4868f8a81c3f06c5319c07a69299fbc6dcb8a93594f408afc7c5da9343aa8e",
+        "readAxes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "observation": "Read full q5 prompt, choices, answer and solution; traced every displayed transformation and checked the conclusion against the source and answer."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+        "readAxes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "observation": "Read full q6 prompt, choices, answer and solution; traced every displayed transformation and checked the conclusion against the source and answer."
+      }
+    ],
+    "visualSampleRead": {
+      "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+      "sha256": "sha256:8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+      "gitBlobSha": "f82defa94ca5ec41e76f7bf5977fcfa37db888ca",
+      "qid": 2,
+      "observation": "Read the actual SVG and inspected its rendered image. The blue line is x+3y+2=0 (slope -1/3); the red line is 6x-2y-1=0 (slope 3), confirming perpendicularity. ImageMagick font fallback shows Korean glyph boxes in this local preview, so only line geometry was used."
+    }
+  }
+}

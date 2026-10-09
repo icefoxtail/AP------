@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_16_C2";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q16-C2",
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "집합",
+    "originalCategory": "집합",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "집합"
+    ],
+    "wide": false,
+    "content": "전체집합 $U$의 부분집합 $A,B$에 대하여 $A\\cup B=U$, $|U|=12$, $|A|=8$, $|B|=7$이다. $C=A\\cap B$라 할 때, 집합 $(A-C)\\cup(B-C)$의 원소의 개수는?",
+    "choices": [
+      "$12$",
+      "$9$",
+      "$3$",
+      "$6$",
+      "$15$"
+    ],
+    "answer": "②",
+    "solution": "$A\\cup B=U$이므로 $|A\\cap B|=|A|+|B|-|U|=8+7-12=3$이다. $C=A\\cap B$이고, $(A-C)\\cup(B-C)=(A\\cup B)-C=U-C$이다.\n따라서 구하는 원소의 개수는 $12-3=9$개이므로 정답은 ②이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 16,
+    "slot": "C2",
+    "purposeGroup": "C"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q16-C2");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q16-C2","meta":{"rpmL1":"집합과 명제","rpmL2":"집합의 연산","rpmL3":"집합의 연산법칙","rpmL4":"복합 연산","rpmL4Namespace":"RPM_EXISTING_DRAFT","rpmPrimaryRecordId":"H1-RPM-242","rpmDraftAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmDraftAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","secondaryConceptKeys":[],"crossConceptKeys":[],"conditionKeys":["EXT-COND-H1-Q16-UNION-COVER"],"crossConceptRegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json","conditionRegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json","sourceKind":"generated","integrationPattern":"INTERDEPENDENT","difficultyBucket":4,"level":"상","problemTypeKey":"PT_SET_OPERATION_LAW","templateKey":"TPL_OPERATION_LAW_COMPOSITE","standardCourse":"공통수학2","standardUnitKey":"H22-C2-05","subUnitKey":"H22-C2-05-CORE"},"metaFinalSha256":"6ea015f4515848dd9b005dcb17d70e637221a6f47ad6f7117d6f243de1cdb0fd","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q16-C2.json","sha256":"b76b5bc416ab168e71e55ffb42ada19d3efc5847af258bf5c74256c9a5e7484e","reviewStatus":"REVIEW_PASS","uid":"ALITE-PALMA25-2MID-Q16-C2"},"metaReviewEvidenceSha256":"b76b5bc416ab168e71e55ffb42ada19d3efc5847af258bf5c74256c9a5e7484e","difficultyBucket":4,"level":"상","problemTypeKey":"PT_SET_OPERATION_LAW","templateKey":"TPL_OPERATION_LAW_COMPOSITE","secondaryConceptKeys":[],"crossConceptKeys":[],"conditionKeys":["EXT-COND-H1-Q16-UNION-COVER"],"integrationPattern":"INTERDEPENDENT"});})();

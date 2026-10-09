@@ -1,0 +1,44 @@
+[
+  {
+    "name": "workspace-policy",
+    "command": "node tools/archive/check-exam-workspace-policy.mjs --staged",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "0c4018baace0a34597899f561f7868e544ba75284ded34331aafb260bc3e3b47",
+    "stdoutSha256": "bbe1f6f5aa83a3cdc8a61a6b93fa21da0c690283c374159738ddc3e588c43bf5",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "postcopyCatalog",
+    "command": "C:\\Program Files\\nodejs\\node.exe archive/tools/build-archive2-catalog.mjs --check",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "0c4018baace0a34597899f561f7868e544ba75284ded34331aafb260bc3e3b47",
+    "stdoutSha256": "be0b7df2d9a067d414042492b8353034a9da1e9da0c33f5403f01d148ea4a5a2",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "proof": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/registration-d662-root-apply/checks/catalog-check-02.result.json",
+    "reuseBasis": "Exact source/assets/nine registry bytes unchanged since this current-bound successful validator."
+  },
+  {
+    "name": "postcopyRegistration",
+    "command": "C:\\Program Files\\nodejs\\node.exe archive/tools/verify-archive-registration.mjs",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "0c4018baace0a34597899f561f7868e544ba75284ded34331aafb260bc3e3b47",
+    "stdoutSha256": "6dbbe966953792edb7c741bf96db924c20de9c049dc3fee9c464c611cd1576fe",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "proof": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/registration-d662-root-apply/checks/registration-parity-02.result.json",
+    "reuseBasis": "Exact source/assets/nine registry bytes unchanged since this current-bound successful validator."
+  },
+  {
+    "name": "postcopyIdentity",
+    "command": "node <bounded current target identity/runtime checker>",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "0c4018baace0a34597899f561f7868e544ba75284ded34331aafb260bc3e3b47",
+    "stdoutSha256": "67991790e5d2f5e396ecce30c2f464553b8c351cf33259d3c8bca42356457c8e",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "proof": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/registration-d662-root-apply/checks/target-identity-runtime-03.result.json",
+    "reuseBasis": "Exact source/assets/nine registry bytes unchanged since this current-bound successful validator."
+  }
+]

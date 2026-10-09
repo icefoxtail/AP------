@@ -291,7 +291,7 @@ window.questionBank = [
       "$P(3,-2)$",
       "$P(-3,-2)$"
     ],
-    "image": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q07.png",
+    "image": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q07.png?v=20261008.1",
     "category": "쌍곡선",
     "originalCategory": "기하와 벡터",
     "layoutTag": "grid",

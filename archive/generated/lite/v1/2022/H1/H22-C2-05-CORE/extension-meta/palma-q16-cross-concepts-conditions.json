@@ -1,0 +1,142 @@
+{
+  "schemaVersion": "ALIVE_GENERATED_META_EXTENSIONS_QID16_V1",
+  "curriculum": "2022",
+  "course": "공통수학2",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceQid": 16,
+  "sourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "parentRpmL3": "집합의 연산법칙",
+  "parentRpmL3RecordIds": [
+    "H1-RPM-241",
+    "H1-RPM-242"
+  ],
+  "scope": "GENERATED_ONLY_RPM_LOCKED_UNMODIFIED",
+  "crossConcepts": [
+    {
+      "id": "EXT-CC-H1-Q16-DIVISIBILITY-MULTIPLES",
+      "labelKo": "공배수를 이용한 집합 원소수 계수",
+      "definition": "2의 배수집합과 3의 배수집합의 공통 원소를 최소공배수 6의 배수로 바꾸어 원소 수를 구함",
+      "role": "C3 집합의 연산을 실제 정수의 배수 관계와 결합",
+      "parentRpmL3RecordIds": [
+        "H1-RPM-241"
+      ],
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q16-C3"
+      ],
+      "sourceQid": 16,
+      "status": "GENERATED_ACTIVE"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "EXT-COND-H1-Q16-SUBSET-INCLUSION",
+      "labelKo": "집합 사이의 포함관계 조건",
+      "definition": "A⊆B 또는 B⊆A 등 포함관계가 집합의 연산법칙 판정에 결정적인 제약",
+      "signatures": [
+        "B⊆A",
+        "A⊆B",
+        "Q⊆P",
+        "A∩(A−B)^c=A ⇔ A⊆B"
+      ],
+      "role": "집합식에서 도출하거나 부여한 방향성 포함관계를 적용하여 참거짓/미지집합을 확정",
+      "parentRpmL3RecordIds": [
+        "H1-RPM-241",
+        "H1-RPM-242"
+      ],
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q16-A1",
+        "ALITE-PALMA25-2MID-Q16-A2",
+        "ALITE-PALMA25-2MID-Q16-A3",
+        "ALITE-PALMA25-2MID-Q16-B1",
+        "ALITE-PALMA25-2MID-Q16-B3",
+        "ALITE-PALMA25-2MID-Q16-C1"
+      ],
+      "sourceQid": 16,
+      "status": "GENERATED_ACTIVE"
+    },
+    {
+      "id": "EXT-COND-H1-Q16-UNION-COVER",
+      "labelKo": "두 집합이 전체집합을 덮는 조건",
+      "definition": "A∪B=U 관계 아래 유한 전체집합의 크기와 두 집합의 원소 수를 결합하여 교집합의 크기를 확정",
+      "signatures": [
+        "A∪B=U",
+        "|U|=12"
+      ],
+      "role": "C2에서 공통영역을 정해 원소수 복합 연산 가능하게 하는 조건",
+      "parentRpmL3RecordIds": [
+        "H1-RPM-242"
+      ],
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q16-C2"
+      ],
+      "sourceQid": 16,
+      "status": "GENERATED_ACTIVE"
+    }
+  ],
+  "canonicalConditionKeysReused": [
+    "COND_RANGE"
+  ],
+  "canonicalRegistryRef": "archive/data/meta-foundation/canonical/condition_registry.json",
+  "sourceUidMetadataProjection": {
+    "ALITE-PALMA25-2MID-Q16-A1": {
+      "conditionKeys": [
+        "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+      ],
+      "crossConceptKeys": []
+    },
+    "ALITE-PALMA25-2MID-Q16-A2": {
+      "conditionKeys": [
+        "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+      ],
+      "crossConceptKeys": []
+    },
+    "ALITE-PALMA25-2MID-Q16-A3": {
+      "conditionKeys": [
+        "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+      ],
+      "crossConceptKeys": []
+    },
+    "ALITE-PALMA25-2MID-Q16-B1": {
+      "conditionKeys": [
+        "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+      ],
+      "crossConceptKeys": []
+    },
+    "ALITE-PALMA25-2MID-Q16-B2": {
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "crossConceptKeys": []
+    },
+    "ALITE-PALMA25-2MID-Q16-B3": {
+      "conditionKeys": [
+        "COND_RANGE",
+        "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+      ],
+      "crossConceptKeys": []
+    },
+    "ALITE-PALMA25-2MID-Q16-C1": {
+      "conditionKeys": [
+        "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+      ],
+      "crossConceptKeys": []
+    },
+    "ALITE-PALMA25-2MID-Q16-C2": {
+      "conditionKeys": [
+        "EXT-COND-H1-Q16-UNION-COVER"
+      ],
+      "crossConceptKeys": []
+    },
+    "ALITE-PALMA25-2MID-Q16-C3": {
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "crossConceptKeys": [
+        "EXT-CC-H1-Q16-DIVISIBILITY-MULTIPLES"
+      ]
+    }
+  },
+  "underlyingEvidence": "Q16 final student stems/solutions and direct truth-case verification on 3-element universe for A1,A2,A3,B1,C1, explicit finite set computation for B2,B3,C2,C3",
+  "sourceContradictionNote": "Original q16 source braces ambiguity preserved in audit; generated questions use explicit unambiguous premises.",
+  "consumerState": "GPT_OPEN_BOOK_APPROVED_REGISTERED"
+}

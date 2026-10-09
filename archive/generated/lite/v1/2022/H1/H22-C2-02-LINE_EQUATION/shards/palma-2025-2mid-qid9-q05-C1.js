@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_05_C1";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q05-C1",
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "직선의 방정식",
+    "originalCategory": "직선의 방정식",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-C2-02-LINE_EQUATION",
+    "subUnit": "직선의 방정식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "직선의 방정식"
+    ],
+    "wide": false,
+    "content": "실수 $t>0$에 대하여 두 점 $A(t,0)$, $B(0,2t-3)$을 잇는 선분의 수직이등분선이 원점 $O$를 지난다. 가능한 두 $t$의 값이 작은 것부터 $t_1,t_2$일 때, $t=t_1$과 $t=t_2$에서의 수직이등분선의 방정식을 순서대로 바르게 나타낸 것은?",
+    "choices": [
+      "$x+y=0,\\quad x-y=0$",
+      "$x-y=0,\\quad x+y=0$",
+      "$x+y=0,\\quad x+y=0$",
+      "$x-y=0,\\quad x-y=0$",
+      "$x+2y=0,\\quad x-2y=0$"
+    ],
+    "answer": "①",
+    "solution": "원점이 수직이등분선 위에 있으므로 $OA^2=OB^2$, 즉 $t^2=(2t-3)^2$이다. $(t-(2t-3))(t+(2t-3))=0$에서 $t=3$ 또는 $t=1$을 얻는다. 따라서 $t_1=1$, $t_2=3$이다. $t=1$이면 $A(1,0),B(0,-1)$이므로 중점은 $(\\frac12,-\\frac12)$이고 수직이등분선은 $x+y=0$이다. $t=3$이면 $A(3,0),B(0,3)$이므로 중점은 $(\\frac32,\\frac32)$이고 수직이등분선은 $x-y=0$이다. 순서대로 적은 것은 ①이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 5,
+    "slot": "C1",
+    "purposeGroup": "C"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q05-C1");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q05-C1","meta":{"rpmL1":"L1-1|도형의 방정식","rpmL2":"L2-1.2|직선의 방정식","rpmL3":"L3-1.2.1|직선의 방정식","rpmL4":"EXT-H1-C2-02-Q05-PERP-BISECTOR-PARAMETER|매개변수·자취 조건을 만족하는 수직이등분선","rpmL4Namespace":"GENERATED_EXT_L4","rpmPrimaryRecordId":"H1-RPM-210","rpmAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","generatedL4RegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-02-LINE_EQUATION/extension-l4/registry.json","generatedL4RegistrySha256":"4563c60b4f64ea69e8f501fa0a367b07b6ed3514b4a0ff402102599d38378658","secondaryConceptKeys":[],"crossConceptKeys":[],"conditionKeys":["COND_POSITIVE"],"crossConceptRegistryRef":null,"conditionRegistryRef":null,"sourceKind":"generated","integrationPattern":"CASE_BRANCH","difficultyBucket":4,"level":"상","problemTypeKey":"PT_LINE_EQUATION","templateKey":"TPL_LINE_PERP_BISECTOR","standardCourse":"공통수학2","standardUnitKey":"H22-C2-02","subUnitKey":"H22-C2-02-LINE_EQUATION"},"metaFinalSha256":"161571159ffa1c1dd18b799322b2153976c6e02d340ed3c1d0f2815aa0a20873","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q05-C1.json","sha256":"ade14fc72f286d9123b7f013ba344534548c6a3402d6a7613a2ac325bbde3259","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261009_PALMA_Q05_Q08_36","scopeUids":["ALITE-PALMA25-2MID-Q05-C1"],"uid":"ALITE-PALMA25-2MID-Q05-C1"},"metaReviewEvidenceSha256":"ade14fc72f286d9123b7f013ba344534548c6a3402d6a7613a2ac325bbde3259","difficultyBucket":4,"level":"상","problemTypeKey":"PT_LINE_EQUATION","templateKey":"TPL_LINE_PERP_BISECTOR","secondaryConceptKeys":[],"crossConceptKeys":[],"conditionKeys":["COND_POSITIVE"],"integrationPattern":"CASE_BRANCH"});})();

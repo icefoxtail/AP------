@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_CLOSEOUT_V1",
+  "examUid": "26_왕의중_2학기_중간_중2_기출",
+  "runId": "codex-20261007-2sem-mid-wangui-m2",
+  "stage": "CREATE",
+  "result": "CREATE_COMPLETE",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "candidate": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-wangui-m2\\26_왕의중_2학기_중간_중2_기출\\candidate\\26_왕의중_2학기_중간_중2_기출.js",
+    "artifactSha": "6237c705ebdef30dd1a19a4665fd03fcd7724738",
+    "rawSha256": "d5946054e82285a67ec487cd8c42f0d58896a5e5bc6eb79c731bd5f174a0eb9b"
+  },
+  "evidence": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_왕의중_2학기_중간_중2_기출\\codex-20261007-2sem-mid-wangui-m2\\create-evidence.json",
+    "sha256": "949b8e7af57dd0ed3c9d42087899fa29eb2637cc40a2ae7aa6f8e074263f1983"
+  },
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_왕의중_2학기_중간_중2_기출\\codex-20261007-2sem-mid-wangui-m2\\source\\current-final-r1r2-student-bundle.json",
+    "sha256": "7a47e28158c31ad6e560799ef5be7c2e90c877a063d9311e90a7700c3aa3fb1f",
+    "answerFree": true,
+    "denominator": 24
+  },
+  "validator": {
+    "command": "node archive/tools/archive-stage-validator.mjs --stage CREATE --exam <candidate> --evidence <create-evidence.json> --asset-root <candidate> --quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006 --execution-line CODEX --json",
+    "status": "PASS",
+    "reportPath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_왕의중_2학기_중간_중2_기출\\codex-20261007-2sem-mid-wangui-m2\\create-validator.report.json",
+    "reportSha256": "617db8e9a825424db65381064351fa9fcf1eefb7dc10efba8ac45dff48489c1e",
+    "initialFailedReportPath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_왕의중_2학기_중간_중2_기출\\codex-20261007-2sem-mid-wangui-m2\\create-validator.initial-fail.json",
+    "initialFailedReportSha256": "8afda2cfc314aaadd1b6da3a76d86ea4c947c5164b559e4bed0e8e38be3f28e6"
+  },
+  "runContext": {
+    "startHead": "3079953bfa714c85ade41cce5aa32f11e4daa343",
+    "postStartMainAdvance": "40676fd96dde5eeb104dde534a1f817fade5ab36",
+    "status": "POST_START_MAIN_ADVANCE",
+    "inheritedOtherRunPass": false
+  },
+  "nextStage": "R1",
+  "registrationPerformed": false,
+  "productionMutationPerformed": false,
+  "checks": {
+    "candidateParsed": true,
+    "qidSequence": true,
+    "artifactShaBound": true,
+    "rawShaBound": true,
+    "studentBundleBound": true,
+    "answerFreeBundle": true,
+    "studentParity24": true,
+    "assetParity": true,
+    "nullSubUnitCount": 0,
+    "validatorPass": true,
+    "validatorQidCount": true
+  }
+}

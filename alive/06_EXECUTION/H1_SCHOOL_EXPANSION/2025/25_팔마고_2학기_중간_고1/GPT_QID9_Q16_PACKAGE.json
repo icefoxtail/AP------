@@ -1,0 +1,1056 @@
+{
+  "schemaVersion": "ALIVE_QID9_CREATE_PACKAGE_V1",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceQid": 16,
+  "sourceQuestionType": "객관식",
+  "sourceFingerprint": {
+    "sourceOriginalStemType": "집합 연산 참거짓 ㄱㄴㄷㄹ",
+    "sourceIssue": "SOURCE_ORIGINAL_BRACES_AMBIGUOUS_Q16_AUDIT_HOLD",
+    "sourcePreserved": true,
+    "derivedPremise": "B⊆U−(Aᶜ∪Bᶜ) ⇔ B⊆A",
+    "sourcePdfOrQuestionScan": "NOT_AVAILABLE_IN_CURRENT_REPO_SOURCE_INVENTORY",
+    "branchUsesUnambiguousGeneratedStems": true
+  },
+  "lockedPrimaryL3": "집합의 연산법칙",
+  "rpmEvidence": {
+    "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "recordIds": [
+      "H1-RPM-241",
+      "H1-RPM-242"
+    ],
+    "binding": "DIRECT_ACTIVE",
+    "l4": [
+      "드모르간 법칙",
+      "복합 연산"
+    ]
+  },
+  "activeMeta": {
+    "problemTypeKey": "PT_SET_OPERATION_LAW",
+    "templateKeys": [
+      "TPL_OPERATION_LAW_JUDGMENT",
+      "TPL_OPERATION_LAW_COMPOSITE"
+    ],
+    "taxonomy": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "rpmLockedPreserved": true,
+    "conditionRegistryRef": "archive/data/meta-foundation/canonical/condition_registry.json",
+    "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json",
+    "generatedConditionKeys": [
+      "EXT-COND-H1-Q16-SUBSET-INCLUSION",
+      "EXT-COND-H1-Q16-UNION-COVER"
+    ],
+    "generatedCrossConceptKeys": [
+      "EXT-CC-H1-Q16-DIVISIBILITY-MULTIPLES"
+    ],
+    "canonicalConditionKeysReused": [
+      "COND_RANGE"
+    ]
+  },
+  "experiencePlan": {
+    "A": "원본형의 숨은 포함관계를 정리하고 네 개의 집합식을 판정",
+    "B": "항등식 복원·실제 집합 원소·역집합식 복원",
+    "C": "역조건 판정·공통영역 분할·배수집합 복합영역",
+    "computationalLoadSeparatedFromCognitiveDifficulty": true
+  },
+  "itemCount": 9,
+  "answerDistribution": {
+    "③": 1,
+    "⑤": 2,
+    "①": 2,
+    "④": 2,
+    "②": 2
+  },
+  "authorSelfCheck": {
+    "uidCount": 9,
+    "reverseStem": [
+      "KEEP:9",
+      "REVISED:0",
+      "HOLD:0"
+    ],
+    "distractorPaths": "36/36_LABELED_TO_CHOICES",
+    "setLawTruthTable": "A1_A2_A3_B1_C1_EXHAUSTIVE_FINITE_3_ELEMENT_UNIVERSE_CHECKED",
+    "exactFiniteCounts": "B2_B3_C2_C3_DIRECT_ENUMERATION_OR_SET_CARDINALITY_CHECKED",
+    "solutionFinalAnswerParity": "9/9",
+    "assetsRequired": 0,
+    "actualBrowserRender": "NOT_TESTED",
+    "originalSourceConflict": "ISOLATED_NOT_SILENTLY_CORRECTED",
+    "independentGptQualityReview": "NOT_RUN",
+    "technicalFormattingPatch": "STEM_HTML_BREAKS_AND_DISTRACTOR_4_OF_4_CLEAN",
+    "metaChecked": "UID_9_OF_9_PARENT_CANONICAL_AND_EXT_REFS_BOUND"
+  },
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q16-A1",
+      "slot": "A1",
+      "sourceQid": 16,
+      "mode": "STRICT_VARIANT",
+      "stem": "전체집합 $U$의 부분집합 $A,B$에 대하여 $B\\subseteq U-(A^c\\cup B^c)$이다. 다음 보기에서 항상 옳은 것만을 있는 대로 고른 것은?<br><br>〈보기〉<br>ㄱ. $(A\\cap B)^c=B^c$<br>ㄴ. $A\\cap(A-B)^c=A$<br>ㄷ. $(A^c\\cup B)^c=\\varnothing$<br>ㄹ. $(B-A)\\cup(A^c-B^c)=\\varnothing$",
+      "choices": [
+        "ㄱ, ㄴ",
+        "ㄱ, ㄷ",
+        "ㄱ, ㄹ",
+        "ㄴ, ㄷ",
+        "ㄴ, ㄹ"
+      ],
+      "answer": "③",
+      "solution": "드모르간의 법칙에 의해 $U-(A^c\\cup B^c)=A\\cap B$이므로 주어진 조건은 $B\\subseteq A$와 같다.\nㄱ. $A\\cap B=B$이므로 참이다.\nㄴ. $A\\cap(A-B)^c=A\\cap(A^c\\cup B)=B$이므로 항상 $A$인 것은 아니다.\nㄷ. $(A^c\\cup B)^c=A-B$이므로 반드시 공집합인 것은 아니다.\nㄹ. $B-A=\\varnothing$이고 $A^c-B^c=A^c\\cap B=B-A=\\varnothing$이므로 참이다.\n따라서 옳은 것은 ㄱ, ㄹ이므로 정답은 ③이다.",
+      "distractorReasons": {
+        "①": "ㄴ을 참으로 착각: U={1,2}, A={1,2}, B={1}에서 ㄴ 좌변={1}, 우변={1,2}. 그래서 ㄱ·ㄴ을 잘못 선택",
+        "②": "ㄷ을 참으로 착각: 같은 예에서 (A의 여집합 ∪ B)의 여집합={2}. 그래서 ㄱ·ㄷ을 잘못 선택",
+        "④": "ㄴ과 ㄷ을 참이라고 오인: 같은 예에서 두 명제 모두 거짓인데 ㄴ·ㄷ 선택",
+        "⑤": "ㄴ 참/ㄱ 거짓으로 오인: ㄴ·ㄹ 선택. 같은 반례에서 ㄴ은 거짓, ㄱ은 참"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "ㄴ을 참으로 착각: U={1,2}, A={1,2}, B={1}에서 ㄴ 좌변={1}, 우변={1,2}. 그래서 ㄱ·ㄴ을 잘못 선택",
+          "actualIncorrectChoice": "ㄱ, ㄴ",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "②",
+          "mistake": "ㄷ을 참으로 착각: 같은 예에서 (A의 여집합 ∪ B)의 여집합={2}. 그래서 ㄱ·ㄷ을 잘못 선택",
+          "actualIncorrectChoice": "ㄱ, ㄷ",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "ㄴ과 ㄷ을 참이라고 오인: 같은 예에서 두 명제 모두 거짓인데 ㄴ·ㄷ 선택",
+          "actualIncorrectChoice": "ㄴ, ㄷ",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "ㄴ 참/ㄱ 거짓으로 오인: ㄴ·ㄹ 선택. 같은 반례에서 ㄴ은 거짓, ㄱ은 참",
+          "actualIncorrectChoice": "ㄴ, ㄹ",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "포함 전제를 여집합·교집합으로 전환하고 네 항등식을 판정",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "집합의 연산법칙",
+      "lockedL3DecisiveStep": "포함관계·차집합·여집합을 드모르간 및 집합 항등식으로 변환한 뒤 참/거짓 또는 원소 수를 확정",
+      "targetL4": "복합 연산",
+      "schoolExamStyleEvidence": "공통수학2 집합의 연산법칙 5지선다; 질문 대상·조건·답형 완비",
+      "studentVisual": "NOT_REQUIRED_TEXT_ONLY",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "standardUnit": "집합",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C2-05-CORE",
+        "subUnit": "집합 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 연산",
+        "rpmL3": "집합의 연산법칙",
+        "rpmL4": "복합 연산",
+        "rpmRecordId": "H1-RPM-242",
+        "rpmBindingStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_SET_OPERATION_LAW",
+        "templateKey": "TPL_OPERATION_LAW_JUDGMENT",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 16,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "B⊆A가 집합 연산식의 모든 참/거짓을 결정"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json",
+        "metaRegistryBasis": "ACTIVE_CANONICAL_AND_GENERATED_EXT_FOR_AUTHOR_CANDIDATE"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 것: B가 A∩B에 포함. 묻는 것: 네 식의 참거짓. 핵심: B⊆A 추론·집합항등식 판정",
+      "changedMathRecheck": "FIRST_DRAFT_DIRECT_SET_ALGEBRA_AND_EXPLICIT_COUNTEREXAMPLE",
+      "remainingRisk": "ORIGINAL_SOURCE_Q16_BRACE_TRANSCRIPTION_UNVERIFIED; GPT_OPEN_BOOK_CONTENT_REVIEW_NOT_RUN",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+      ],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q16-A2",
+      "slot": "A2",
+      "sourceQid": 16,
+      "mode": "STRICT_VARIANT",
+      "stem": "전체집합 $U$의 부분집합 $A,B$가 $A\\subseteq U-(B^c\\cup A^c)$를 만족한다. 다음 보기에서 항상 옳은 것만을 있는 대로 고른 것은?<br><br>〈보기〉<br>ㄱ. $A\\cup B=B$<br>ㄴ. $(A\\cup B)^c=A^c$<br>ㄷ. $A-B=\\varnothing$<br>ㄹ. $B\\cap A^c=\\varnothing$",
+      "choices": [
+        "ㄱ, ㄴ",
+        "ㄴ, ㄷ",
+        "ㄱ, ㄹ",
+        "ㄷ, ㄹ",
+        "ㄱ, ㄷ"
+      ],
+      "answer": "⑤",
+      "solution": "$U-(B^c\\cup A^c)=A\\cap B$이므로 조건은 $A\\subseteq B$이다.\nㄱ. $A\\cup B=B$이므로 참이다.\nㄴ. $(A\\cup B)^c=B^c$이며, $A^c$와는 항상 같지 않다.\nㄷ. $A\\subseteq B$이므로 $A-B=\\varnothing$이다.\nㄹ. $B\\cap A^c=B-A$이므로 반드시 공집합은 아니다.\n따라서 옳은 것은 ㄱ, ㄷ이므로 정답은 ⑤이다.",
+      "distractorReasons": {
+        "①": "ㄴ을 참으로 오인: U={1,2}, A={1}, B={1,2}에서 ㄴ 좌변=공집합, 우변={2}",
+        "②": "ㄴ의 여집합 대상 B를 A로 오해해 ㄴ·ㄷ 선택. 같은 반례에서 ㄴ은 거짓",
+        "③": "B−A를 A−B와 혼동해 ㄱ·ㄹ 선택. 같은 반례에서 B−A={2}",
+        "④": "B∩(A의 여집합)을 공집합으로 오인해 ㄷ·ㄹ 선택. 같은 반례에서 {2}"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "ㄴ을 참으로 오인: U={1,2}, A={1}, B={1,2}에서 ㄴ 좌변=공집합, 우변={2}",
+          "actualIncorrectChoice": "ㄱ, ㄴ",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "②",
+          "mistake": "ㄴ의 여집합 대상 B를 A로 오해해 ㄴ·ㄷ 선택. 같은 반례에서 ㄴ은 거짓",
+          "actualIncorrectChoice": "ㄴ, ㄷ",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "B−A를 A−B와 혼동해 ㄱ·ㄹ 선택. 같은 반례에서 B−A={2}",
+          "actualIncorrectChoice": "ㄱ, ㄹ",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "B∩(A의 여집합)을 공집합으로 오인해 ㄷ·ㄹ 선택. 같은 반례에서 {2}",
+          "actualIncorrectChoice": "ㄷ, ㄹ",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "포함 관계의 방향을 바꾸어 같은 복합 식을 판단",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "집합의 연산법칙",
+      "lockedL3DecisiveStep": "포함관계·차집합·여집합을 드모르간 및 집합 항등식으로 변환한 뒤 참/거짓 또는 원소 수를 확정",
+      "targetL4": "복합 연산",
+      "schoolExamStyleEvidence": "공통수학2 집합의 연산법칙 5지선다; 질문 대상·조건·답형 완비",
+      "studentVisual": "NOT_REQUIRED_TEXT_ONLY",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "standardUnit": "집합",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C2-05-CORE",
+        "subUnit": "집합 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 연산",
+        "rpmL3": "집합의 연산법칙",
+        "rpmL4": "복합 연산",
+        "rpmRecordId": "H1-RPM-242",
+        "rpmBindingStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_SET_OPERATION_LAW",
+        "templateKey": "TPL_OPERATION_LAW_JUDGMENT",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 16,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "A⊆B가 집합 연산식의 모든 참/거짓을 결정"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json",
+        "metaRegistryBasis": "ACTIVE_CANONICAL_AND_GENERATED_EXT_FOR_AUTHOR_CANDIDATE"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 것: A⊆B. 묻는 것: 항상 성립하는 집합식. 핵심: 두 차집합의 방향 구별",
+      "changedMathRecheck": "FIRST_DRAFT_DIRECT_SET_ALGEBRA_AND_EXPLICIT_COUNTEREXAMPLE",
+      "remainingRisk": "ORIGINAL_SOURCE_Q16_BRACE_TRANSCRIPTION_UNVERIFIED; GPT_OPEN_BOOK_CONTENT_REVIEW_NOT_RUN",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+      ],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q16-A3",
+      "slot": "A3",
+      "sourceQid": 16,
+      "mode": "STRICT_VARIANT",
+      "stem": "전체집합 $U$의 부분집합 $P,Q$가 $Q\\subseteq U-(P^c\\cup Q^c)$를 만족한다. 다음 보기에서 항상 옳은 것만을 있는 대로 고른 것은?<br><br>〈보기〉<br>ㄱ. $(P-Q)^c=Q$<br>ㄴ. $(P\\cap Q)^c=Q^c$<br>ㄷ. $Q-P=\\varnothing$<br>ㄹ. $P\\cup Q=Q$",
+      "choices": [
+        "ㄴ, ㄷ",
+        "ㄱ, ㄴ",
+        "ㄴ, ㄹ",
+        "ㄱ, ㄷ",
+        "ㄱ, ㄹ"
+      ],
+      "answer": "①",
+      "solution": "$U-(P^c\\cup Q^c)=P\\cap Q$이므로 조건은 $Q\\subseteq P$이다.\nㄱ. $(P-Q)^c$는 일반적으로 $Q$와 같지 않다.\nㄴ. $P\\cap Q=Q$이므로 참이다.\nㄷ. $Q\\subseteq P$이므로 $Q-P=\\varnothing$이다.\nㄹ. $P\\cup Q=P$이므로 항상 $Q$인 것은 아니다.\n따라서 옳은 것은 ㄴ, ㄷ이므로 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "ㄱ의 여집합을 오계산: U={1,2}, P={1}, Q=공집합에서 (P−Q)의 여집합={2} ≠ Q",
+        "③": "P∪Q=P를 Q로 혼동해 ㄴ·ㄹ 선택. 같은 반례에서 P∪Q={1} ≠ Q",
+        "④": "ㄱ을 참으로 오판하여 ㄱ·ㄷ 선택. 앞의 예에서 ㄱ은 거짓",
+        "⑤": "ㄱ과 ㄹ을 동시에 참으로 오판하여 ㄱ·ㄹ 선택. 앞의 예에서 둘 다 거짓"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "mistake": "ㄱ의 여집합을 오계산: U={1,2}, P={1}, Q=공집합에서 (P−Q)의 여집합={2} ≠ Q",
+          "actualIncorrectChoice": "ㄱ, ㄴ",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "P∪Q=P를 Q로 혼동해 ㄴ·ㄹ 선택. 같은 반례에서 P∪Q={1} ≠ Q",
+          "actualIncorrectChoice": "ㄴ, ㄹ",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "ㄱ을 참으로 오판하여 ㄱ·ㄷ 선택. 앞의 예에서 ㄱ은 거짓",
+          "actualIncorrectChoice": "ㄱ, ㄷ",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "ㄱ과 ㄹ을 동시에 참으로 오판하여 ㄱ·ㄹ 선택. 앞의 예에서 둘 다 거짓",
+          "actualIncorrectChoice": "ㄱ, ㄹ",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "기호 치환 뒤 포함 관계와 연산 방향의 동시 판정",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "집합의 연산법칙",
+      "lockedL3DecisiveStep": "포함관계·차집합·여집합을 드모르간 및 집합 항등식으로 변환한 뒤 참/거짓 또는 원소 수를 확정",
+      "targetL4": "복합 연산",
+      "schoolExamStyleEvidence": "공통수학2 집합의 연산법칙 5지선다; 질문 대상·조건·답형 완비",
+      "studentVisual": "NOT_REQUIRED_TEXT_ONLY",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "standardUnit": "집합",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C2-05-CORE",
+        "subUnit": "집합 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 연산",
+        "rpmL3": "집합의 연산법칙",
+        "rpmL4": "복합 연산",
+        "rpmRecordId": "H1-RPM-242",
+        "rpmBindingStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_SET_OPERATION_LAW",
+        "templateKey": "TPL_OPERATION_LAW_JUDGMENT",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 16,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "Q⊆P가 집합 연산식의 모든 참/거짓을 결정"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json",
+        "metaRegistryBasis": "ACTIVE_CANONICAL_AND_GENERATED_EXT_FOR_AUTHOR_CANDIDATE"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 것: Q⊆P. 묻는 것: 네 집합 항등식. 핵심: 합집합·교집합의 흡수와 차집합",
+      "changedMathRecheck": "FIRST_DRAFT_DIRECT_SET_ALGEBRA_AND_EXPLICIT_COUNTEREXAMPLE",
+      "remainingRisk": "ORIGINAL_SOURCE_Q16_BRACE_TRANSCRIPTION_UNVERIFIED; GPT_OPEN_BOOK_CONTENT_REVIEW_NOT_RUN",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+      ],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q16-B1",
+      "slot": "B1",
+      "sourceQid": 16,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "전체집합 $U$의 두 부분집합 $A,B$가 $B\\subseteq A$를 만족할 때, 반드시 성립하는 집합의 등식은?",
+      "choices": [
+        "$(A-B)\\cap B=B$",
+        "$(A^c\\cup B)^c=A",
+        "$(A\\cap B)^c=A^c",
+        "$(A-B)\\cup B=A",
+        "$A\\cap B=A$"
+      ],
+      "answer": "④",
+      "solution": "$B\\subseteq A$이므로 $A$에서 $B$를 뺀 집합과 $B$는 공통 원소가 없고, 둘을 합치면 정확히 $A$가 된다. 즉 $(A-B)\\cup B=A$이다.\n다른 보기들이 항상 참인 것은 아니다. 예를 들어 $U=\\{1,2,3\\},A=\\{1,2\\},B=\\{1\\}$이면 ① 좌변 $\\varnothing$, ② 좌변 $\\{2\\}$, ③ 좌변 $\\{2,3\\}$, ⑤ 좌변 $\\{1\\}$이므로 각 우변과 다르다.\n따라서 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "차집합과 B는 서로소인데 (A−B)∩B=B라고 오판. A={1,2},B={1}이면 좌변 공집합",
+        "②": "(A의 여집합∪B)의 여집합=A−B={2}를 A={1,2}로 오판",
+        "③": "(A∩B)의 여집합=B의 여집합={2,3}을 A의 여집합={3}으로 오판",
+        "⑤": "A∩B=B={1}을 A={1,2}로 오판"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "차집합과 B는 서로소인데 (A−B)∩B=B라고 오판. A={1,2},B={1}이면 좌변 공집합",
+          "actualIncorrectChoice": "$(A-B)\\cap B=B$",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "②",
+          "mistake": "(A의 여집합∪B)의 여집합=A−B={2}를 A={1,2}로 오판",
+          "actualIncorrectChoice": "$(A^c\\cup B)^c=A",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "(A∩B)의 여집합=B의 여집합={2,3}을 A의 여집합={3}으로 오판",
+          "actualIncorrectChoice": "$(A\\cap B)^c=A^c",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "A∩B=B={1}을 A={1,2}로 오판",
+          "actualIncorrectChoice": "$A\\cap B=A$",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "서로소 분해로 집합 전체를 재구성하는 합집합 항등식",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "집합의 연산법칙",
+      "lockedL3DecisiveStep": "포함관계·차집합·여집합을 드모르간 및 집합 항등식으로 변환한 뒤 참/거짓 또는 원소 수를 확정",
+      "targetL4": "복합 연산",
+      "schoolExamStyleEvidence": "공통수학2 집합의 연산법칙 5지선다; 질문 대상·조건·답형 완비",
+      "studentVisual": "NOT_REQUIRED_TEXT_ONLY",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "standardUnit": "집합",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C2-05-CORE",
+        "subUnit": "집합 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 연산",
+        "rpmL3": "집합의 연산법칙",
+        "rpmL4": "복합 연산",
+        "rpmRecordId": "H1-RPM-242",
+        "rpmBindingStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_SET_OPERATION_LAW",
+        "templateKey": "TPL_OPERATION_LAW_COMPOSITE",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+        ],
+        "integrationPattern": "CONDITION_COMPOSITE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceQid": 16,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "B⊆A에 따라 차집합을 합쳐 전체 A를 복원"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json",
+        "metaRegistryBasis": "ACTIVE_CANONICAL_AND_GENERATED_EXT_FOR_AUTHOR_CANDIDATE"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 것: B⊆A. 묻는 것: 단 하나의 항상 참인 등식. 핵심: 차집합과 합집합의 복원",
+      "changedMathRecheck": "FIRST_DRAFT_DIRECT_SET_ALGEBRA_AND_EXPLICIT_COUNTEREXAMPLE",
+      "remainingRisk": "ORIGINAL_SOURCE_Q16_BRACE_TRANSCRIPTION_UNVERIFIED; GPT_OPEN_BOOK_CONTENT_REVIEW_NOT_RUN",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+      ],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q16-B2",
+      "slot": "B2",
+      "sourceQid": 16,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "전체집합 $U=\\{1,2,\\ldots,10\\}$에 대하여 $A=\\{1,2,3,4,5,6,7\\}$, $B=\\{2,4,6,8,10\\}$이다. 집합 $(A^c\\cup B)^c$의 원소의 개수는?",
+      "choices": [
+        "$3$",
+        "$4$",
+        "$2$",
+        "$5$",
+        "$9$"
+      ],
+      "answer": "②",
+      "solution": "드모르간의 법칙을 적용하면 $(A^c\\cup B)^c=A\\cap B^c=A-B$이다. $A$의 원소 중 $B$에 없는 것은 $1,3,5,7$이므로 $A-B=\\{1,3,5,7\\}$이다.\n따라서 원소의 개수는 $4$개이므로 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "A∩B={2,4,6}의 크기 3을 정답이라고 착각",
+        "③": "B−A={8,10}의 크기 2를 계산하며 빼는 순서를 반대로 함",
+        "④": "B의 원소 수 5를 그대로 답으로 사용",
+        "⑤": "A∪B의 원소 수 9를 계산하며 차집합 대신 합집합을 사용"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "A∩B={2,4,6}의 크기 3을 정답이라고 착각",
+          "actualIncorrectChoice": "$3$",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "B−A={8,10}의 크기 2를 계산하며 빼는 순서를 반대로 함",
+          "actualIncorrectChoice": "$2$",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "B의 원소 수 5를 그대로 답으로 사용",
+          "actualIncorrectChoice": "$5$",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "A∪B의 원소 수 9를 계산하며 차집합 대신 합집합을 사용",
+          "actualIncorrectChoice": "$9$",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "드모르간 식을 실제 유한집합 차집합으로 변환",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "집합의 연산법칙",
+      "lockedL3DecisiveStep": "포함관계·차집합·여집합을 드모르간 및 집합 항등식으로 변환한 뒤 참/거짓 또는 원소 수를 확정",
+      "targetL4": "드모르간 법칙",
+      "schoolExamStyleEvidence": "공통수학2 집합의 연산법칙 5지선다; 질문 대상·조건·답형 완비",
+      "studentVisual": "NOT_REQUIRED_TEXT_ONLY",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "standardUnit": "집합",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C2-05-CORE",
+        "subUnit": "집합 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 연산",
+        "rpmL3": "집합의 연산법칙",
+        "rpmL4": "드모르간 법칙",
+        "rpmRecordId": "H1-RPM-241",
+        "rpmBindingStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_SET_OPERATION_LAW",
+        "templateKey": "TPL_OPERATION_LAW_COMPOSITE",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CONDITION_COMPOSITE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceQid": 16,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "U={1,...,10}의 범위 안에서 여집합의 원소수를 확정"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json",
+        "metaRegistryBasis": "ACTIVE_CANONICAL_AND_GENERATED_EXT_FOR_AUTHOR_CANDIDATE"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 것: 유한집합 A,B. 묻는 것: 복합식의 원소 수. 핵심: 여집합 변환 후 실제 원소 선정",
+      "changedMathRecheck": "FIRST_DRAFT_DIRECT_SET_ALGEBRA_AND_EXPLICIT_COUNTEREXAMPLE",
+      "remainingRisk": "ORIGINAL_SOURCE_Q16_BRACE_TRANSCRIPTION_UNVERIFIED; GPT_OPEN_BOOK_CONTENT_REVIEW_NOT_RUN",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q16-B3",
+      "slot": "B3",
+      "sourceQid": 16,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "전체집합 $U=\\{1,2,\\ldots,12\\}$의 부분집합 $A=\\{2,3,5,7,11\\}$과 $B\\subseteq A$가 $U-(A^c\\cup B^c)=\\{2,7,11\\}$을 만족한다. 집합 $B$의 원소의 개수는?",
+      "choices": [
+        "$3$",
+        "$5$",
+        "$2$",
+        "$7$",
+        "$9$"
+      ],
+      "answer": "①",
+      "solution": "$U-(A^c\\cup B^c)=A\\cap B$이다. 그런데 $B\\subseteq A$이므로 $A\\cap B=B$이다. 따라서 $B=\\{2,7,11\\}$이고 $|B|=3$이다.\n따라서 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "A={2,3,5,7,11}의 원소 수 5만 세고 복합식의 조건을 무시",
+        "③": "A−B={3,5}의 원소 수 2를 B의 원소 수로 오인",
+        "④": "U−A의 원소 수 12−5=7을 답으로 오인",
+        "⑤": "U−B의 원소 수 12−3=9를 답으로 오인"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "mistake": "A={2,3,5,7,11}의 원소 수 5만 세고 복합식의 조건을 무시",
+          "actualIncorrectChoice": "$5$",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "A−B={3,5}의 원소 수 2를 B의 원소 수로 오인",
+          "actualIncorrectChoice": "$2$",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "U−A의 원소 수 12−5=7을 답으로 오인",
+          "actualIncorrectChoice": "$7$",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "U−B의 원소 수 12−3=9를 답으로 오인",
+          "actualIncorrectChoice": "$9$",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "완성된 복합 집합식을 거꾸로 정리하여 미지 집합을 복원",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "집합의 연산법칙",
+      "lockedL3DecisiveStep": "포함관계·차집합·여집합을 드모르간 및 집합 항등식으로 변환한 뒤 참/거짓 또는 원소 수를 확정",
+      "targetL4": "드모르간 법칙",
+      "schoolExamStyleEvidence": "공통수학2 집합의 연산법칙 5지선다; 질문 대상·조건·답형 완비",
+      "studentVisual": "NOT_REQUIRED_TEXT_ONLY",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "standardUnit": "집합",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C2-05-CORE",
+        "subUnit": "집합 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 연산",
+        "rpmL3": "집합의 연산법칙",
+        "rpmL4": "드모르간 법칙",
+        "rpmRecordId": "H1-RPM-241",
+        "rpmBindingStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_SET_OPERATION_LAW",
+        "templateKey": "TPL_OPERATION_LAW_COMPOSITE",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE",
+          "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+        ],
+        "integrationPattern": "CONDITION_COMPOSITE",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 16,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "U={1,...,12}, B⊆A를 결합하여 복합식을 역산"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json",
+        "metaRegistryBasis": "ACTIVE_CANONICAL_AND_GENERATED_EXT_FOR_AUTHOR_CANDIDATE"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 것: B⊆A와 복합식의 원소. 묻는 것: |B|. 핵심: 드모르간 변환·흡수·원소수",
+      "changedMathRecheck": "FIRST_DRAFT_DIRECT_SET_ALGEBRA_AND_EXPLICIT_COUNTEREXAMPLE",
+      "remainingRisk": "ORIGINAL_SOURCE_Q16_BRACE_TRANSCRIPTION_UNVERIFIED; GPT_OPEN_BOOK_CONTENT_REVIEW_NOT_RUN",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "COND_RANGE",
+        "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+      ],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q16-C1",
+      "slot": "C1",
+      "sourceQid": 16,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "전체집합 $U$의 부분집합 $A,B$가 $A\\cap(A-B)^c=A$를 만족한다. 이 조건만으로 반드시 참인 것은?",
+      "choices": [
+        "$(A^c\\cup B)^c=A",
+        "$B-A=\\varnothing$",
+        "$(A\\cap B)^c=B^c$",
+        "$A\\cup B=A$",
+        "$A\\cap B=A$"
+      ],
+      "answer": "⑤",
+      "solution": "$A\\cap(A-B)^c=A\\cap(A^c\\cup B)=(A\\cap A^c)\\cup(A\\cap B)=A\\cap B$이다. 따라서 조건은 $A\\cap B=A$, 즉 $A\\subseteq B$이다. 이때 반드시 참인 것은 ⑤이다.\n실제로 $U=\\{1,2\\},A=\\{1\\},B=\\{1,2\\}$로 두면 조건은 성립하지만 ① 좌변 $\\varnothing$, ② 좌변 $\\{2\\}$, ③ 좌변 $\\{2\\}$, ④ 좌변 $\\{1,2\\}$여서 각 보기의 등식이 성립하지 않는다.\n따라서 정답은 ⑤이다.",
+      "distractorReasons": {
+        "①": "A−B=공집합을 A와 같다고 오인. U={1,2},A={1},B={1,2}에서 두 집합은 다름",
+        "②": "B−A와 A−B를 혼동. 같은 반례에서 B−A={2}",
+        "③": "(A∩B)의 여집합=A의 여집합={2}를 B의 여집합=공집합으로 오인",
+        "④": "A∪B=B={1,2}를 A={1}로 오인"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "A−B=공집합을 A와 같다고 오인. U={1,2},A={1},B={1,2}에서 두 집합은 다름",
+          "actualIncorrectChoice": "$(A^c\\cup B)^c=A",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "②",
+          "mistake": "B−A와 A−B를 혼동. 같은 반례에서 B−A={2}",
+          "actualIncorrectChoice": "$B-A=\\varnothing$",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "(A∩B)의 여집합=A의 여집합={2}를 B의 여집합=공집합으로 오인",
+          "actualIncorrectChoice": "$(A\\cap B)^c=B^c$",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "A∪B=B={1,2}를 A={1}로 오인",
+          "actualIncorrectChoice": "$A\\cup B=A$",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "역방향 집합식에서 숨은 포함관계를 찾아 검증",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "집합의 연산법칙",
+      "lockedL3DecisiveStep": "포함관계·차집합·여집합을 드모르간 및 집합 항등식으로 변환한 뒤 참/거짓 또는 원소 수를 확정",
+      "targetL4": "복합 연산",
+      "schoolExamStyleEvidence": "공통수학2 집합의 연산법칙 5지선다; 질문 대상·조건·답형 완비",
+      "studentVisual": "NOT_REQUIRED_TEXT_ONLY",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "standardUnit": "집합",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C2-05-CORE",
+        "subUnit": "집합 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 연산",
+        "rpmL3": "집합의 연산법칙",
+        "rpmL4": "복합 연산",
+        "rpmRecordId": "H1-RPM-242",
+        "rpmBindingStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_SET_OPERATION_LAW",
+        "templateKey": "TPL_OPERATION_LAW_JUDGMENT",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+        ],
+        "integrationPattern": "CONDITION_COMPOSITE",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 16,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "복합 집합식의 항등관계가 A⊆B와 동치임을 역으로 도출"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json",
+        "metaRegistryBasis": "ACTIVE_CANONICAL_AND_GENERATED_EXT_FOR_AUTHOR_CANDIDATE"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 것: A∩(A−B)^c=A. 묻는 것: 필연적 등식. 핵심: A⊆B로 환원",
+      "changedMathRecheck": "FIRST_DRAFT_DIRECT_SET_ALGEBRA_AND_EXPLICIT_COUNTEREXAMPLE",
+      "remainingRisk": "ORIGINAL_SOURCE_Q16_BRACE_TRANSCRIPTION_UNVERIFIED; GPT_OPEN_BOOK_CONTENT_REVIEW_NOT_RUN",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+      ],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q16-C2",
+      "slot": "C2",
+      "sourceQid": 16,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "전체집합 $U$의 부분집합 $A,B$에 대하여 $A\\cup B=U$, $|U|=12$, $|A|=8$, $|B|=7$이다. $C=A\\cap B$라 할 때, 집합 $(A-C)\\cup(B-C)$의 원소의 개수는?",
+      "choices": [
+        "$12$",
+        "$9$",
+        "$3$",
+        "$6$",
+        "$15$"
+      ],
+      "answer": "②",
+      "solution": "$A\\cup B=U$이므로 $|A\\cap B|=|A|+|B|-|U|=8+7-12=3$이다. $C=A\\cap B$이고, $(A-C)\\cup(B-C)=(A\\cup B)-C=U-C$이다.\n따라서 구하는 원소의 개수는 $12-3=9$개이므로 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "U의 원소 수 12를 그대로 답으로 써 교집합 C 제거를 생략",
+        "③": "교집합의 원소 수 8+7−12=3만 구한 뒤 질문의 차집합 합집합으로 진행하지 않음",
+        "④": "공통부분을 두 번 제거하여 12−2×3=6으로 계산",
+        "⑤": "A와 B의 원소 수 8+7=15를 더하면서 겹치는 원소를 중복 집계"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "U의 원소 수 12를 그대로 답으로 써 교집합 C 제거를 생략",
+          "actualIncorrectChoice": "$12$",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "교집합의 원소 수 8+7−12=3만 구한 뒤 질문의 차집합 합집합으로 진행하지 않음",
+          "actualIncorrectChoice": "$3$",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "공통부분을 두 번 제거하여 12−2×3=6으로 계산",
+          "actualIncorrectChoice": "$6$",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "A와 B의 원소 수 8+7=15를 더하면서 겹치는 원소를 중복 집계",
+          "actualIncorrectChoice": "$15$",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "두 집합의 분해와 공통영역의 중복 제거를 연결",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "집합의 연산법칙",
+      "lockedL3DecisiveStep": "포함관계·차집합·여집합을 드모르간 및 집합 항등식으로 변환한 뒤 참/거짓 또는 원소 수를 확정",
+      "targetL4": "복합 연산",
+      "schoolExamStyleEvidence": "공통수학2 집합의 연산법칙 5지선다; 질문 대상·조건·답형 완비",
+      "studentVisual": "NOT_REQUIRED_TEXT_ONLY",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "standardUnit": "집합",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C2-05-CORE",
+        "subUnit": "집합 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 연산",
+        "rpmL3": "집합의 연산법칙",
+        "rpmL4": "복합 연산",
+        "rpmRecordId": "H1-RPM-242",
+        "rpmBindingStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_SET_OPERATION_LAW",
+        "templateKey": "TPL_OPERATION_LAW_COMPOSITE",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "EXT-COND-H1-Q16-UNION-COVER"
+        ],
+        "integrationPattern": "CONDITION_COMPOSITE",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 16,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "A∪B=U라는 전제와 크기 12·8·7에서 교집합·서로소영역을 계산"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json",
+        "metaRegistryBasis": "ACTIVE_CANONICAL_AND_GENERATED_EXT_FOR_AUTHOR_CANDIDATE"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 것: 합집합=전체집합과 원소 수. 묻는 것: 공통 원소를 제외한 합집합 크기. 핵심: 포함배제 후 집합식 변형",
+      "changedMathRecheck": "FIRST_DRAFT_DIRECT_SET_ALGEBRA_AND_EXPLICIT_COUNTEREXAMPLE",
+      "remainingRisk": "ORIGINAL_SOURCE_Q16_BRACE_TRANSCRIPTION_UNVERIFIED; GPT_OPEN_BOOK_CONTENT_REVIEW_NOT_RUN",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "EXT-COND-H1-Q16-UNION-COVER"
+      ],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q16-C3",
+      "slot": "C3",
+      "sourceQid": 16,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "전체집합 $U=\\{1,2,\\ldots,20\\}$에서 $A$는 $2$의 배수 전체, $B$는 $3$의 배수 전체로 이루어진 집합이다. $C=(A\\cup B)^c\\cup(A\\cap B)$일 때, 집합 $C$의 원소의 개수는?",
+      "choices": [
+        "$13$",
+        "$3$",
+        "$7$",
+        "$10$",
+        "$16$"
+      ],
+      "answer": "④",
+      "solution": "$|A|=10$, $|B|=6$, $|A\\cap B|=3$이다. 따라서 $|A\\cup B|=10+6-3=13$이고, $|(A\\cup B)^c|=20-13=7$이다.\n$(A\\cup B)^c$와 $A\\cap B$는 서로소이므로 $|C|=7+3=10$이다.\n따라서 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "합집합의 크기 10+6−3=13만 구하고 여집합과 교집합의 결합을 생략",
+        "②": "교집합의 크기 3만 세고 여집합 부분 누락",
+        "③": "합집합의 여집합 크기 20−13=7만 세고 교집합 부분 누락",
+        "⑤": "A와 B의 원소 수를 10+6=16으로 합쳐 공통영역 중복 및 여집합 의미 누락"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "합집합의 크기 10+6−3=13만 구하고 여집합과 교집합의 결합을 생략",
+          "actualIncorrectChoice": "$13$",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "②",
+          "mistake": "교집합의 크기 3만 세고 여집합 부분 누락",
+          "actualIncorrectChoice": "$3$",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "합집합의 여집합 크기 20−13=7만 세고 교집합 부분 누락",
+          "actualIncorrectChoice": "$7$",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "A와 B의 원소 수를 10+6=16으로 합쳐 공통영역 중복 및 여집합 의미 누락",
+          "actualIncorrectChoice": "$16$",
+          "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "서로소인 여집합 영역과 겹치는 영역의 합집합 크기 계산",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "집합의 연산법칙",
+      "lockedL3DecisiveStep": "포함관계·차집합·여집합을 드모르간 및 집합 항등식으로 변환한 뒤 참/거짓 또는 원소 수를 확정",
+      "targetL4": "드모르간 법칙",
+      "schoolExamStyleEvidence": "공통수학2 집합의 연산법칙 5지선다; 질문 대상·조건·답형 완비",
+      "studentVisual": "NOT_REQUIRED_TEXT_ONLY",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "standardUnit": "집합",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C2-05-CORE",
+        "subUnit": "집합 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 연산",
+        "rpmL3": "집합의 연산법칙",
+        "rpmL4": "드모르간 법칙",
+        "rpmRecordId": "H1-RPM-241",
+        "rpmBindingStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_SET_OPERATION_LAW",
+        "templateKey": "TPL_OPERATION_LAW_COMPOSITE",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q16-DIVISIBILITY-MULTIPLES"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CONDITION_COMPOSITE",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 16,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "U={1,...,20}의 범위와 배수의 공배수(최소공배수 6) 계산을 결합"
+        ],
+        "crossConceptEvidenceLabels": [
+          "6의 배수로 2와 3의 공통배수를 직접 계수"
+        ],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json",
+        "metaRegistryBasis": "ACTIVE_CANONICAL_AND_GENERATED_EXT_FOR_AUTHOR_CANDIDATE"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 것: 2·3의 배수 집합. 묻는 것: 여집합과 교집합을 결합한 집합 크기. 핵심: 포함배제·서로소 합",
+      "changedMathRecheck": "FIRST_DRAFT_DIRECT_SET_ALGEBRA_AND_EXPLICIT_COUNTEREXAMPLE",
+      "remainingRisk": "ORIGINAL_SOURCE_Q16_BRACE_TRANSCRIPTION_UNVERIFIED; GPT_OPEN_BOOK_CONTENT_REVIEW_NOT_RUN",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "crossConceptKeys": [
+        "EXT-CC-H1-Q16-DIVISIBILITY-MULTIPLES"
+      ]
+    }
+  ],
+  "nextSourceQid": 14,
+  "publication": "CREATOR_DRAFT_NOT_APPROVED_NOT_IN_STUDENT_CONSUMER",
+  "generatedMetaRegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json",
+  "qualityReview": {
+    "reviewDate": "2026-10-09",
+    "method": "GPT_OPEN_BOOK_STEM_FIRST_MATH_TRACE_META_DISTRACTOR",
+    "scope": "A1-C3_9_OF_9",
+    "reviewer": "GPT_SEPARATE_FROM_ORIGINAL_CREATOR",
+    "result": "PASS",
+    "keep": 9,
+    "revised": 0,
+    "hold": 0,
+    "issueLocus": [],
+    "reviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q13_Q16_OPENBOOK_REVIEW_REPAIR_20261009.md",
+    "mathAnswerAndSolutionParity": "9_OF_9",
+    "studentBrowserRender": "NOT_TESTED",
+    "releaseState": "NOT_YET_REGISTERED"
+  }
+}

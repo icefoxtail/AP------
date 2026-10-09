@@ -1,0 +1,585 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R3",
+  "examUid": "23_강남여고_1학기_중간_고2_확률과통계",
+  "artifactSha": "3d4d07a3270d939cc69a260720177943ff940862",
+  "artifactRawSha256": "05d98359c9c889518a3ecf8cc30057c1b3b42c5fcb7aaf25538bd113183fa598",
+  "sourceRawSha256": "05d98359c9c889518a3ecf8cc30057c1b3b42c5fcb7aaf25538bd113183fa598",
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "questionCount": 25,
+  "targetedScope": {
+    "openFindingQids": [],
+    "changedQids": [],
+    "directDependencyQids": [
+      14,
+      17,
+      21
+    ]
+  },
+  "rows": [
+    {
+      "qid": 14,
+      "verdict": "PASS",
+      "disposition": "UNCHANGED_TARGETED_RELEASE_REVIEW",
+      "evidence": "q14 problem image and solution SVG render in exam/sol captures; browser shows grid, A/B and recurrence labels in Korean; no tofu, clipping or asset decode failure.",
+      "solutionSha256": "91e963432ff3ed961409c680018bbad3a40c3bc4f61d98645432208e6f5f3969",
+      "renderedAssetBindings": [
+        {
+          "ref": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q14.png",
+          "sha256": "23ab9fd18de7ecd256449f8d4bd00ecb381d38a6001b9a54b7229b991f7540bb",
+          "decodedIn": [
+            "exam/desktop",
+            "exam/mobile"
+          ]
+        },
+        {
+          "ref": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q14-solution.svg",
+          "sha256": "684f936192b176e90661c0c99739c5d95eee8a27b07de66107e7a2902468a71f",
+          "decodedIn": [
+            "sol/desktop",
+            "sol/mobile"
+          ]
+        }
+      ],
+      "captureCasesReviewed": [
+        "exam/desktop",
+        "exam/mobile",
+        "sol/desktop",
+        "sol/mobile"
+      ]
+    },
+    {
+      "qid": 17,
+      "verdict": "PASS",
+      "disposition": "UNCHANGED_TARGETED_RELEASE_REVIEW",
+      "evidence": "q17 problem diagram and solution SVG render in exam/sol captures; color-orbit labels and Korean text are legible; no tofu, clipping or asset decode failure.",
+      "solutionSha256": "46aac2bf723cf9baa5787c21ffbec6f95be6e7fb881cd48ad6a55e3e8e0e915d",
+      "renderedAssetBindings": [
+        {
+          "ref": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q17.png",
+          "sha256": "7681254c4b0e134ba6059fb8cc12f3991c2b0086ec62e30e08e790d0f210f028",
+          "decodedIn": [
+            "exam/desktop",
+            "exam/mobile"
+          ]
+        },
+        {
+          "ref": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q17-solution.svg",
+          "sha256": "a9b2fb41975a93358ee5152f1c5929a06001f0cba4bf803b68128ee5ab4c1782",
+          "decodedIn": [
+            "sol/desktop",
+            "sol/mobile"
+          ]
+        }
+      ],
+      "captureCasesReviewed": [
+        "exam/desktop",
+        "exam/mobile",
+        "sol/desktop",
+        "sol/mobile"
+      ]
+    },
+    {
+      "qid": 21,
+      "verdict": "PASS",
+      "disposition": "UNCHANGED_TARGETED_RELEASE_REVIEW",
+      "evidence": "q21 problem diagram and solution SVG render in exam/sol captures; hexagon/placement labels and Korean text are legible; no tofu, clipping or asset decode failure.",
+      "solutionSha256": "1d7caffd7dd78e31433b02211750c6e7914717b9fdbffd647f072194e1e7bc38",
+      "renderedAssetBindings": [
+        {
+          "ref": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q21.png",
+          "sha256": "8f4fa03bdcfbf59979bd75e5ecf6707cc0cfd6a20722b4b7614435d826fe0914",
+          "decodedIn": [
+            "exam/desktop",
+            "exam/mobile"
+          ]
+        },
+        {
+          "ref": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q21-solution.svg",
+          "sha256": "6ed1be254e68a750314f0ff837fa700a0b70af38a970537c86c985fc79de6f21",
+          "decodedIn": [
+            "sol/desktop",
+            "sol/mobile"
+          ]
+        }
+      ],
+      "captureCasesReviewed": [
+        "exam/desktop",
+        "exam/mobile",
+        "sol/desktop",
+        "sol/mobile"
+      ]
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "3d4d07a3270d939cc69a260720177943ff940862",
+    "rows": [
+      {
+        "qid": 1,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-01",
+          "subUnitKey": "H15-PS-01-PERMUTATION",
+          "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+          "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+          "rpmL3": "순열",
+          "rpmL4": "중복·원순열",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "META_ONLY_COMPATIBILITY_PENDING/FAMILY_TEMPLATE_SELECTION_PENDING; preserved actual PT_COUNTING_REPEATED_ASSIGNMENT/TPL_REPEATED_PERMUTATION_ASSIGNMENT; RPM semantic remains FINAL; no semantic reclassification performed."
+      },
+      {
+        "qid": 2,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-01",
+          "subUnitKey": "H15-PS-01-COMBINATION",
+          "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+          "rpmL3": "중복조합",
+          "rpmL4": "중복을 허용한 선택",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 3,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-01",
+          "subUnitKey": "H15-PS-01-PERMUTATION",
+          "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+          "templateKey": "TPL_CIRCULAR_PERMUTATION",
+          "rpmL3": "순열",
+          "rpmL4": "중복·원순열",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "META_ONLY_COMPATIBILITY_PENDING/FAMILY_TEMPLATE_SELECTION_PENDING; preserved actual PT_COUNTING_ARRANGEMENT/TPL_CIRCULAR_PERMUTATION; RPM semantic remains FINAL; no semantic reclassification performed."
+      },
+      {
+        "qid": 4,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-01",
+          "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+          "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+          "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+          "rpmL3": "순열",
+          "rpmL4": "중복·원순열",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "PROJECTION_UNMATERIALIZED/CROSSWALK_L2_PROJECTION_MISMATCH; preserved actual PT_COUNTING_REPEATED_ASSIGNMENT/TPL_REPEATED_PERMUTATION_ASSIGNMENT; RPM semantic remains FINAL; no semantic reclassification performed."
+      },
+      {
+        "qid": 5,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-01",
+          "subUnitKey": "H15-PS-01-PERMUTATION",
+          "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+          "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+          "rpmL3": "순열",
+          "rpmL4": "중복·원순열",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "META_ONLY_COMPATIBILITY_PENDING/FAMILY_TEMPLATE_SELECTION_PENDING; preserved actual PT_COUNTING_ARRANGEMENT/TPL_IDENTICAL_OBJECT_PERMUTATION; RPM semantic remains FINAL; no semantic reclassification performed."
+      },
+      {
+        "qid": 6,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-01",
+          "subUnitKey": "H15-PS-01-PERMUTATION",
+          "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+          "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+          "rpmL3": "순열",
+          "rpmL4": "일렬 배열",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 7,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-02",
+          "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+          "problemTypeKey": "PT_BINOMIAL_THEOREM",
+          "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+          "rpmL3": "이항계수",
+          "rpmL4": "조합 항등식",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "PROJECTION_UNMATERIALIZED/CROSSWALK_L2_PROJECTION_MISMATCH; preserved actual PT_BINOMIAL_THEOREM/TPL_BINOMIAL_COEFFICIENT_IDENTITY; RPM semantic remains FINAL; no semantic reclassification performed."
+      },
+      {
+        "qid": 8,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-02",
+          "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+          "problemTypeKey": "PT_BINOMIAL_THEOREM",
+          "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+          "rpmL3": "이항정리",
+          "rpmL4": "특정 항의 계수",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 9,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-01",
+          "subUnitKey": "H15-PS-01-PERMUTATION",
+          "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+          "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+          "rpmL3": "순열",
+          "rpmL4": "중복·원순열",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "META_ONLY_COMPATIBILITY_PENDING/FAMILY_TEMPLATE_SELECTION_PENDING; preserved actual PT_COUNTING_ARRANGEMENT/TPL_IDENTICAL_OBJECT_PERMUTATION; RPM semantic remains FINAL; no semantic reclassification performed."
+      },
+      {
+        "qid": 10,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-01",
+          "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+          "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+          "rpmL3": "중복조합",
+          "rpmL4": "정수해 개수",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "PROJECTION_UNMATERIALIZED/CROSSWALK_L2_PROJECTION_MISMATCH; preserved actual PT_COUNTING_SELECTION_DISTRIBUTION/TPL_REPEATED_COMBINATION_DISTRIBUTION; RPM semantic remains FINAL; no semantic reclassification performed."
+      },
+      {
+        "qid": 11,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-01",
+          "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+          "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+          "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+          "rpmL3": "순열",
+          "rpmL4": "중복·원순열",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "PROJECTION_UNMATERIALIZED/CROSSWALK_L2_PROJECTION_MISMATCH; preserved actual PT_COUNTING_REPEATED_ASSIGNMENT/TPL_REPEATED_PERMUTATION_ASSIGNMENT; RPM semantic remains FINAL; no semantic reclassification performed."
+      },
+      {
+        "qid": 12,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-01",
+          "subUnitKey": "H15-PS-01-COMBINATION",
+          "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+          "rpmL3": "중복조합",
+          "rpmL4": "정수해 개수",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 13,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-01",
+          "subUnitKey": "H15-PS-01-PERMUTATION",
+          "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+          "templateKey": "TPL_CIRCULAR_PERMUTATION",
+          "rpmL3": "순열",
+          "rpmL4": "중복·원순열",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "META_ONLY_COMPATIBILITY_PENDING/FAMILY_TEMPLATE_SELECTION_PENDING; preserved actual PT_COUNTING_ARRANGEMENT/TPL_CIRCULAR_PERMUTATION; RPM semantic remains FINAL; no semantic reclassification performed."
+      },
+      {
+        "qid": 14,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-01",
+          "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+          "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+          "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+          "rpmL3": "순열",
+          "rpmL4": "일렬 배열",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "PROJECTION_UNMATERIALIZED/CROSSWALK_L2_PROJECTION_MISMATCH; preserved actual PT_COUNTING_ARRANGEMENT/TPL_PERMUTATION_STANDARD_CONSTRAINT; RPM semantic remains FINAL; no semantic reclassification performed."
+      },
+      {
+        "qid": 15,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-02",
+          "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+          "problemTypeKey": "PT_BINOMIAL_THEOREM",
+          "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+          "rpmL3": "이항정리",
+          "rpmL4": "특정 항의 계수",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 16,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-01",
+          "subUnitKey": "H15-PS-01-COMBINATION",
+          "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "templateKey": "TPL_COMBINATION_SELECTION",
+          "rpmL3": "조합",
+          "rpmL4": "분할·분배",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 17,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-01",
+          "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+          "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+          "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+          "rpmL3": "순열",
+          "rpmL4": "일렬 배열",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "PROJECTION_UNMATERIALIZED/CROSSWALK_L2_PROJECTION_MISMATCH; preserved actual PT_COUNTING_REPEATED_ASSIGNMENT/TPL_REPEATED_PERMUTATION_ASSIGNMENT; RPM semantic remains FINAL; no semantic reclassification performed."
+      },
+      {
+        "qid": 18,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-01",
+          "subUnitKey": "H15-PS-01-COMBINATION",
+          "problemTypeKey": "PT_FUNCTION_COUNTING",
+          "templateKey": "TPL_MONOTONE_FUNCTION_COUNT",
+          "rpmL3": "중복조합",
+          "rpmL4": "중복을 허용한 선택",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 19,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-01",
+          "subUnitKey": "H15-PS-01-COMBINATION",
+          "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "templateKey": "TPL_COMBINATION_SELECTION",
+          "rpmL3": "조합",
+          "rpmL4": "선택",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 20,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-01",
+          "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+          "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+          "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+          "rpmL3": "순열",
+          "rpmL4": "일렬 배열",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "PROJECTION_UNMATERIALIZED/CROSSWALK_L2_PROJECTION_MISMATCH; preserved actual PT_COUNTING_REPEATED_ASSIGNMENT/TPL_REPEATED_PERMUTATION_ASSIGNMENT; RPM semantic remains FINAL; no semantic reclassification performed."
+      },
+      {
+        "qid": 21,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-01",
+          "subUnitKey": "H15-PS-01-PERMUTATION",
+          "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+          "templateKey": "TPL_CIRCULAR_PERMUTATION",
+          "rpmL3": "순열",
+          "rpmL4": "중복·원순열",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "META_ONLY_COMPATIBILITY_PENDING/FAMILY_TEMPLATE_SELECTION_PENDING; preserved actual PT_COUNTING_ARRANGEMENT/TPL_CIRCULAR_PERMUTATION; RPM semantic remains FINAL; no semantic reclassification performed."
+      },
+      {
+        "qid": 22,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-01",
+          "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+          "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+          "rpmL3": "조합",
+          "rpmL4": "분할·분배",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "PROJECTION_UNMATERIALIZED/CROSSWALK_L2_PROJECTION_MISMATCH; preserved actual PT_COUNTING_SELECTION_DISTRIBUTION/TPL_REPEATED_COMBINATION_DISTRIBUTION; RPM semantic remains FINAL; no semantic reclassification performed."
+      },
+      {
+        "qid": 23,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-02",
+          "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+          "problemTypeKey": "PT_BINOMIAL_THEOREM",
+          "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+          "rpmL3": "이항정리",
+          "rpmL4": "특정 항의 계수",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 24,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-01",
+          "subUnitKey": "H15-PS-01-COMBINATION",
+          "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+          "rpmL3": "중복조합",
+          "rpmL4": "정수해 개수",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 25,
+        "currentFields": {
+          "standardUnitKey": "H15-PS-01",
+          "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+          "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+          "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+          "rpmL3": "순열",
+          "rpmL4": "일렬 배열",
+          "rpmSemanticStatus": "FINAL"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "PROJECTION_UNMATERIALIZED/CROSSWALK_L2_PROJECTION_MISMATCH; preserved actual PT_COUNTING_REPEATED_ASSIGNMENT/TPL_REPEATED_PERMUTATION_ASSIGNMENT; RPM semantic remains FINAL; no semantic reclassification performed."
+      }
+    ]
+  },
+  "lockedScopeIntegrity": true,
+  "releaseIntegrity": true,
+  "reviewerIdentity": {
+    "role": "archive_r3",
+    "reviewerId": "/root/r3_03",
+    "displayPrefix": "R3"
+  },
+  "renderReview": {
+    "status": "RENDER_PASS",
+    "captureReport": {
+      "path": ".tmp/archive/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/capture-v1/machine-capture.json",
+      "sha256": "8a78a75f813a8d6480bef7b1ac5b1a300f4f54519a671a2939cefd9122a1e3b6"
+    },
+    "review": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/R3.capture-review.json",
+      "sha256": "930cf2a2160576dbc5fa7244d1dec7b7c2accaa3a81a9c0d58b02203cefb6f6d"
+    },
+    "cases": [
+      {
+        "id": "exam/desktop",
+        "status": "PASS",
+        "qidsReviewed": 25,
+        "layoutReviewStatus": "PASS",
+        "mathJaxStatus": "PASS",
+        "assetDecodeStatus": "PASS"
+      },
+      {
+        "id": "exam/mobile",
+        "status": "PASS",
+        "qidsReviewed": 25,
+        "layoutReviewStatus": "PASS",
+        "mathJaxStatus": "PASS",
+        "assetDecodeStatus": "PASS"
+      },
+      {
+        "id": "sol/desktop",
+        "status": "PASS",
+        "qidsReviewed": 25,
+        "layoutReviewStatus": "PASS",
+        "mathJaxStatus": "PASS",
+        "assetDecodeStatus": "PASS"
+      },
+      {
+        "id": "sol/mobile",
+        "status": "PASS",
+        "qidsReviewed": 25,
+        "layoutReviewStatus": "PASS",
+        "mathJaxStatus": "PASS",
+        "assetDecodeStatus": "PASS"
+      },
+      {
+        "id": "ans/desktop",
+        "status": "PASS",
+        "qidsReviewed": 25,
+        "layoutReviewStatus": "PASS",
+        "mathJaxStatus": "PASS",
+        "assetDecodeStatus": "PASS"
+      },
+      {
+        "id": "ans/mobile",
+        "status": "PASS",
+        "qidsReviewed": 25,
+        "layoutReviewStatus": "PASS",
+        "mathJaxStatus": "PASS",
+        "assetDecodeStatus": "PASS"
+      }
+    ]
+  }
+}

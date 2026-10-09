@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POSTFREEZE_DISCLOSURE_V2",
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\24_강남여고_1학기_중간_고2_대수\\R1.immutable-freeze.r1_10.20261009.json",
+    "sha256": "da9fe18ba0f366224b4f09aec222b602490cc1da2205e56f5ad02f0c577aac9c"
+  },
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\24_강남여고_1학기_중간_고2_대수\\R1.student-only.json",
+    "sha256": "64ceaa4da7ad14b6b8602fc6bab6bc2a8dc961201905ee17569c15bd3d663eb1"
+  },
+  "sourceRawSha256": "55c755d9cd5873a89a2b1a2e0b637b40e9506eea750165358e24c7dc31beb539",
+  "originalFreezeSourceRawSha256": "a0f58a6705144669b779e29deb21baa610b8bfe01866649430c995ab677ed664",
+  "studentParity": "EXACT",
+  "rows": [
+    {
+      "qid": 16,
+      "answer": "①",
+      "solution": "그림에서 포물선은 꼭짓점 $(0,-4)$를 지나고 $x$절편이 $-8,8$이므로 $f(x)=\\dfrac{x^2}{16}-4$이다. 직선은 $x$절편 $-4$와 두 그래프의 교점의 $x$좌표 $16$을 지나므로 $g(x)=\\dfrac35x+\\dfrac{12}{5}$이다.\n밑이 $\\dfrac12$인 로그함수는 감소하므로 주어진 부등식은 $0<|f(x)|<|g(x)|$와 같다. 경계는 $f=g$ 또는 $f=-g$에서 생긴다.\n$f=g$의 해는 $x=-\\dfrac{32}{5},16$이고, $f=-g$의 해는 $x=\\dfrac{-24\\pm8\\sqrt{19}}5$이다. 따라서 정수 후보 구간은 $-\\dfrac{24+8\\sqrt{19}}5<x<-\\dfrac{32}{5}$ 또는 $\\dfrac{-24+8\\sqrt{19}}5<x<16$이다.\n첫 구간의 정수는 $-11,-10,-9,-8,-7$이고 $x=-8$에서는 $|f(x)|=0$이라 제외되어 4개이다. 둘째 구간의 정수는 $3$부터 $15$까지이며 $x=8$에서 $|f(x)|=0$이므로 12개이다.\n따라서 모두 $4+12=16$개이므로 정답은 ①이다.",
+      "decisiveStep": "|f|<|g| 경계 f=±g의 정수구간에서 영점 로그 불가값을 뺀다."
+    },
+    {
+      "qid": 21,
+      "answer": "⑤",
+      "solution": "함수 $f(x)=a\\sin2x+b$의 최댓값은 $a+b$이고 최솟값은 $b-a$이다. $g(t)$가 $t=10$에서 최솟값을 가지므로 $a+b=10$이다. 이때 $g(10)=\\dfrac{3\\pi}{2}$이다.\n$0< (t-b)/a <1$이면 네 교점의 $x$좌표 합은 $3\\pi$이고, $-1<(t-b)/a<0$이면 $5\\pi$이다. 경계 $-1$에서는 합이 $\\dfrac{5\\pi}{2}$이다. 따라서 $g(2)+g(3)=\\dfrac{15\\pi}{2}$가 되려면 $t=2$가 하한 $b-a$이고 $t=3$은 음수 내부값이어야 한다. $g(2)=\\dfrac{5\\pi}{2}$, $g(3)=5\\pi$가 되어 합이 조건과 일치한다.\n$a+b=10$, $b-a=2$를 풀면 $a=4$, $b=6$이다.\n따라서 $ab=24$이고 정답은 ⑤이다.",
+      "decisiveStep": "최소 g(t)는 t=a+b=10, 식 (가)로 b−a=2를 얻는다."
+    }
+  ],
+  "disclosedAt": "2026-10-09T05:10:47.771Z"
+}

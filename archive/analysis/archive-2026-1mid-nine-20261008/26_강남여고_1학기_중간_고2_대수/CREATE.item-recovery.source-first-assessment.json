@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "SOURCE_FIRST_INDEPENDENT_ASSESSMENT_V1",
+  "reviewerId": "recovery_03",
+  "examUid": "26_강남여고_1학기_중간_고2_대수",
+  "stage": "CREATE_POST_R2_ITEM_RECOVERY",
+  "assessedBeforeUpstreamHoldReasonOrAnswerRead": true,
+  "initialHead": "044c41a26f5bed0708ad42709ed2932be314e55a",
+  "sourceRawSha256": "2e3c6e27f34ca7e3ef559ea5f636132b09d9f1c3c483afaf074dccb48e4cf891",
+  "sourcePdf": "D:/2026_1학기중간_/대수/26_강남여고_1학기_중간_고2_대수.pdf",
+  "sourcePdfSha256": "3b917c45f0b81c9cf32133471a2044e5887e91b0ea409e4a6c5009bf96450b2f",
+  "visualEvidence": [
+    {
+      "page": 1,
+      "sha256": "0f14d0670e036c907c7c135f1b44cb4d7e7f41e4034fd8a1e13e26ec4014d40d",
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_강남여고_1학기_중간_고2_대수\\source-page-1.png"
+    },
+    {
+      "page": 2,
+      "sha256": "a78ef6546dda009a986fba0352c92827700fce45463e468fe3d492908bddd1b3",
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_강남여고_1학기_중간_고2_대수\\source-page-2.png"
+    }
+  ],
+  "qids": [
+    {
+      "independentVerdict": "SOURCE_ITEM_AMBIGUOUS_MULTIPLE_CORRECT",
+      "qid": 1,
+      "sourceObservation": "다음 중 옳은 것은? 객관식 5지. 선택지 ① 16의 네제곱근은 ±2이다. ⑤ -1의 세제곱근은 -1뿐이다. 실수 범위에서 두 진술 모두 참이므로 단일 정답 조건이 깨진다.",
+      "smallestRepairTest": "단일 부호/숫자 수정을 임의로 고르면 출제 의도를 추측하므로 출처 근거 있는 최소 복원으로 확인되지 않음.",
+      "sourcePage": 1
+    },
+    {
+      "sourcePage": 2,
+      "independentDerivation": "f(n)=a^((n+3)/6); f(1)=a^(2/3), f(2)=a^(5/6), f(3)=a; 따라서 지수는 2/3+5/6-1=1/2, 결과 √a.",
+      "smallestRepairTest": "원 식과 조건을 유지하고 선택지의 지수근호 표기 후보를 확인하는 최소 repair가 가능할 수 있으므로 choice-level correction 후보로 보류; 정답은 √a.",
+      "independentVerdict": "SOURCE_ANSWER_ABSENT_FROM_CHOICES",
+      "qid": 10,
+      "sourceObservation": "1이 아닌 양수 a와 자연수 n에 대하여 f(n)=∛(a·√(a^(n+1)))이고 f(1)f(2)/f(3)의 값을 5지선다에서 묻는다."
+    }
+  ],
+  "createdUtc": "2026-10-08T13:23:57.0681835Z"
+}

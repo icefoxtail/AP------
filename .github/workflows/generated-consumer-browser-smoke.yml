@@ -1,0 +1,58 @@
+name: Generated Consumer Browser Smoke
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'archive/generated-bank.html'
+      - 'archive/data/generated-lite-consumer/**'
+      - 'archive/generated/lite/v1/**'
+      - 'archive/tools/generated-meta-retention-gate.cjs'
+      - 'archive/tools/generated-meta/**'
+      - 'archive/tools/generated-meta/register-approved-generated-meta.test.mjs'
+      - 'tests/generated-meta-retention.test.cjs'
+      - 'tests/archive2-generated-bank-registration.test.js'
+      - 'tools/check-generated-bank-browser.cjs'
+      - '.github/workflows/generated-consumer-browser-smoke.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'archive/generated-bank.html'
+      - 'archive/data/generated-lite-consumer/**'
+      - 'archive/generated/lite/v1/**'
+      - 'archive/tools/generated-meta-retention-gate.cjs'
+      - 'archive/tools/generated-meta/**'
+      - 'archive/tools/generated-meta/register-approved-generated-meta.test.mjs'
+      - 'tests/generated-meta-retention.test.cjs'
+      - 'tests/archive2-generated-bank-registration.test.js'
+      - 'tools/check-generated-bank-browser.cjs'
+      - '.github/workflows/generated-consumer-browser-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    name: Actual Chrome student lookup
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Enforce post-cutover generated Meta projection and legacy isolation
+        run: node --test tests/generated-meta-retention.test.cjs
+      - name: Enforce approved Meta registration, byte binding, CAS, rollback, and withdrawal
+        run: node --test archive/tools/generated-meta/register-approved-generated-meta.test.mjs
+      - name: Verify approved consumer rows and preserved source SHA
+        run: node --test tests/archive2-generated-bank-registration.test.js tests/archive2-generated-bank-subjective-table.test.cjs tests/archive2-bokseong-b04-b05-consumer.test.cjs tests/archive2-bokseong-b06-consumer.test.cjs tests/archive2-bokseong-b01-b02-consumer.test.cjs tests/archive2-bokseong-b02-q11-semantic-consumer.test.cjs tests/archive2-bokseong-b05-q22-consumer.test.cjs
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: B03-B06 and Palma QID9 36 Chrome lookup with HOLD rejection
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+        run: node tools/check-generated-bank-browser.cjs

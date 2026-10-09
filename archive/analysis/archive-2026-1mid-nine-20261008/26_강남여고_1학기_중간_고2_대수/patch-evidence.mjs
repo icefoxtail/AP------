@@ -1,0 +1,5 @@
+import fs from 'node:fs';import {createHash} from 'node:crypto';
+const evFile=process.argv[2],reportFile=process.argv[3];const e=JSON.parse(fs.readFileSync(evFile,'utf8').replace(/^\uFEFF/,''));const h=f=>createHash('sha256').update(fs.readFileSync(f)).digest('hex');
+const sample=e.goldenCalibration.samples.find(x=>x.path.endsWith('25_제일고_2학기_중간_고1_기출.js'));sample.items.find(x=>x.qid===6).solutionSha256='d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af';
+e.validatorAttempts=[{attempt:1,path:reportFile,sha256:h(reportFile),disposition:'FAIL',issues:['ARTIFACT_GOLDEN_PROVENANCE_INVALID:ITEM_BINDING_REQUIRED','ARTIFACT_SMALL_BOARD_CONTINUITY_REQUIRED:q1','ARTIFACT_SMALL_BOARD_CONTINUITY_REQUIRED:q10'],repair:'Corrected the exact Golden q6 solution SHA binding; held qids remain CARRY_ITEM_HOLD.'}];
+fs.writeFileSync(evFile,JSON.stringify(e,null,2)+'\n','utf8');console.log(JSON.stringify({evidenceSha256:h(evFile),preservedInitialReport:reportFile,reportSha256:h(reportFile),goldenSha256:sample.items.find(x=>x.qid===6).solutionSha256},null,2));

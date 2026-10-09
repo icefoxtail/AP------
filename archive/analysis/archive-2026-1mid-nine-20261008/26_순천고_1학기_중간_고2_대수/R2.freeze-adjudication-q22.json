@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "JS_ARCHIVE_FREEZE_ADJUDICATION_V1",
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_순천고_1학기_중간_고2_대수\\R2.stage-kit-freeze.json",
+    "sha256": "49fd0395e830d8c57e4177d86da22c079652b794a1cffa392905dfa489f030bd"
+  },
+  "createdAt": "2026-10-08T09:59:39.390Z",
+  "corrections": [
+    {
+      "qid": 22,
+      "correctedAnswer": "5",
+      "reason": "The original postfreeze reasoning incorrectly classified a=3 as 0<a<1. In fact a=3>1, so log_3 is increasing and its maximum on the domain is log_3(25), not 2. Write A(x)=−x²−8x+9=25−(x+4)². On −6≤x≤0, A ranges from 9 (at x=0) to 25 (at x=−4), so A(x)>1 everywhere. If 0<a<1, then log_a(A(x))<0 everywhere and cannot have maximum 2. Hence a>1, log_a is increasing, and the maximum is log_a(25) at x=−4. Setting this equal to 2 gives a²=25; with a>1, a=5 uniquely. The original freeze and false-HOLD evidence are preserved; this is a valid-input same-session reasoning correction only.",
+      "originalAnswer": "a∈{3,5}; condition does not determine a uniquely"
+    }
+  ],
+  "originalFreezeMutated": false
+}

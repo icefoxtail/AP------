@@ -1,0 +1,17 @@
+{
+  "schemaVersion":"JS_ARCHIVE_ITEM_RECOVERY_BLIND_SELF_CHECK_V1",
+  "examUid":"23_금당고_1학기_중간_고2_수학I",
+  "stage":"ITEM_RECOVERY",
+  "executionLine":"CODEX",
+  "qualityContractVersion":"JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "input":"Candidate question/choices only; answers and solutions were withheld during this check. Same-session direct-author self-check, not R1/R2 certification.",
+  "rows":[
+    {"qid":9,"reSolve":"For log base a-2, require a>2 and a!=3. The argument -(a-2)(a-7)>0 gives 2<a<7. Valid integer a are 4,5,6, so the sum is 15.","answer":"②","choices":["9","15","17","18","22"],"correctChoiceCount":1,"distractorCheck":{"9":"Wrongly use root 6 for the quadratic, leaving 4,5.","17":"Admit a=2 at the shared zero/base-zero boundary.","18":"Forget that a-2 cannot equal 1, retaining a=3.","22":"Include a=7 even though the argument is zero."},"status":"PASS"},
+    {"qid":10,"reSolve":"Set x=log_a2,y=log_b2. Since a,b>1, x,y>0. The second condition is 1/x^2+1/y^2=14; with x+y=4 and p=xy, this gives 7p^2+p-8=0, so p=1 or -8/7. Positivity leaves p=1. Then x,y=2±sqrt(3), both positive, so valid a,b exist; x^3+y^3=52.","answer":"①","choices":["52","56","60","61","64"],"correctChoiceCount":1,"distractorCheck":{"56":"Erroneously use (x+y)(x^2+y^2) for the cube sum.","60":"Use S^3-pS instead of S^3-3pS.","61":"Omit the factor S from the cross term.","64":"Omit the cross terms entirely."},"status":"PASS"},
+    {"qid":18,"reSolve":"The inequality is equivalent to n*max(m/8,8/m)<=3. For m=1..8, the floor counts are 0,0,1,1,1,2,2,3, totaling 10. For m=8..24, counts are 3, then 2 for m=9..12, then 1 for m=13..24, totaling 23. Subtract the shared m=8,n=1..3 row: 10+23-3=30.","answer":"③","choices":["23","27","30","33","37"],"correctChoiceCount":1,"distractorCheck":{"23":"Count only the m>=8 branch.","27":"Use strict < and remove three equality pairs.","33":"Double-count the inclusive m=8 row.","37":"Use ceilings rather than floors in the m<=8 branch."},"status":"PASS"},
+    {"qid":19,"reSolve":"Let t=3^a>=3. A=(0,t), B=(t-8,0), so OAB is a right triangle with R^2=(t^2+(t-8)^2)/4. Area 10pi gives (t-2)(t-6)=0. The domain leaves t=6, hence a=log_3 6. This value satisfies a>=1 and yields distinct non-collinear O,A,B.","answer":"\\log_3 6","choices":[],"correctChoiceCount":null,"status":"PASS"}
+  ],
+  "visuals":"No target qid requires a problem asset, shared visual or solution SVG; current student bundle records empty target asset lists.",
+  "allObjectiveItemsExactlyOneCorrectChoice":true,
+  "status":"PASS"
+}

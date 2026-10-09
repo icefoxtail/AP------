@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "SOURCE7_REGISTRATION_VALIDATOR_RUN_V1",
+  "id": "catalogPayloadParityFinal",
+  "command": "C:\\Program Files\\nodejs\\node.exe \"C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/registration-technical-final/inputs/compare-current-canonical-catalog.source7.mjs\" \"C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------\" \"C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/archive/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/registration-root\" \"C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/archive/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/registration-package-source7.json\" \"C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/registration-technical-final/postapply/catalog-payload-parity.final.json\"",
+  "cwd": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------",
+  "exitCode": 1,
+  "signal": null,
+  "status": "FAIL",
+  "stdout": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/registration-technical-final/postapply/catalog-payload-parity/stdout.bin",
+    "sha256": "c0b06c42a704ffad554e0fcfbf52670b6fb035dec711e2fb5e57a306a99edd06",
+    "bytes": 1294,
+    "text": "{\n  \"status\": \"FAIL\",\n  \"checks\": {\n    \"targetSourceHashMatchesCleanLf\": true,\n    \"targetCoverage22\": true,\n    \"targetCanonicalAndPackageParity\": true,\n    \"nonTarget12987DeepParity\": true,\n    \"allDecodedRecordsCanonical\": true,\n    \"packingColumnDictionaryParity\": true,\n    \"indexVersionOnlyDecodedHeaderDrift\": true,\n    \"manifestIndexProjectionAndCatalogDigestRepairOnly\": false\n  },\n  \"decodedTopLevelDifferences\": [\n    \"indexVersion\"\n  ],\n  \"manifestTopLevelDifferences\": [\n    \"generatedFromCatalogIndexVersion\",\n    \"projectionVersion\",\n    \"files\"\n  ],\n  \"manifestFileDiffPaths\": [\n    \"data/archive2-catalog.json\",\n    \"data/question_identity_map.json\",\n    \"data/question_metadata.json\"\n  ],\n  \"packedTopLevelDifferences\": [\n    \"indexVersion\"\n  ],\n  \"currentCatalogSha256\": \"a6e920c8497320a09b4340314447266f05f2fe495a34cc07caee27e02fa42a6e\",\n  \"candidateCatalogSha256\": \"ca120927f707c29d6b62a8d0e87c3f88ca29e6fb8342b65dd90eceb407079cb2\",\n  \"reportPath\": \"C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/registration-technical-final/postapply/catalog-payload-parity.final.json\",\n  \"reportSha256\": \"06f4c4a94a89f7e38bf343438cbb402303d8e5b3f634895a012d239d64563c33\"\n}\n"
+  },
+  "stderr": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/registration-technical-final/postapply/catalog-payload-parity/stderr.bin",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0,
+    "text": ""
+  },
+  "reportPath": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/registration-technical-final/postapply/catalog-payload-parity.final.json",
+  "reportSha256": "06f4c4a94a89f7e38bf343438cbb402303d8e5b3f634895a012d239d64563c33"
+}

@@ -1,0 +1,297 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R3",
+  "status": "R3_RELEASE_READY",
+  "runId": "h2-intake-batch01-20261009",
+  "examUid": "23_금당고_1학기_중간_고2_수학II",
+  "reviewerIdentity": {
+    "role": "archive_r3",
+    "reviewerId": "/root/r3_05",
+    "displayPrefix": "R3"
+  },
+  "artifactSha": "e4192c46c79a3abdf4ff7e6a729f4cd0a470e31c",
+  "artifactRawSha256": "3b905a30464f7f056c0e67bd4eb0bfc23b856caf90c84847aa4f618313ffaf9a",
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "targetedScope": {
+    "openFindingQids": [],
+    "changedQids": [
+      11,
+      20
+    ],
+    "directDependencyQids": [],
+    "wholeExamSemanticRecheck": false
+  },
+  "lockedScopeIntegrity": true,
+  "releaseIntegrity": true,
+  "scopeDisposition": "TARGETED_CHANGED_QID_RELEASE",
+  "rows": [
+    {
+      "qid": 11,
+      "verdict": "PASS",
+      "findingDisposition": "CLOSED",
+      "reviewedLocus": "answer/solution q11 source-fact correction and choice identity",
+      "changedFields": [
+        "answer",
+        "solution"
+      ],
+      "notes": "Current answer ② maps to choice value 4. The reviewed solution identifies -3,-2,0,2 from the existing scoped q11 source-fact witness; the isolated filled point at (-3,0) does not change the quotient limit. The current graph asset, question and choices match the assigned source intake. No further source review was performed.",
+      "sourceFactEvidence": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/R1.q11-original-source-review.v2.json",
+        "sha256": "fdd8517f9edb74bc7f8c01f78bdc72084a1e914771444d23141578ce0873531c"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "SOURCE_FACT_CORRECTION"
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "UNCHANGED_R2_ARTIFACT_DISPOSITION"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "CURRENT_PROBLEM_ASSET_PARITY",
+          "assetRef": "assets/images/23_금당고_1학기_중간_고2_수학II/q11.png",
+          "assetSha256": "9fbcc57cfb43b79c5cee8c19d5970dcae0095091ffdd484080318b35deccc2fc"
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "verdict": "PASS",
+      "findingDisposition": "CLOSED",
+      "reviewedLocus": "q20 solution SVG dependency after removal of extraneous point",
+      "changedFields": [
+        "solutionImage"
+      ],
+      "notes": "The actual solution SVG has only the intended parabola, two tangent lines, triangle base, incircle, radius segment and labels. It has no external asset references; its rendered diagram is present in desktop/mobile solution screens without clipping or label collision. Question image and student prompt are unchanged.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP"
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "UNCHANGED_R2_ARTIFACT_DISPOSITION"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "EXTRANEOUS_POINT_REMOVED",
+          "assetRef": "assets/images/23_금당고_1학기_중간_고2_수학II/q20-solution.svg",
+          "assetSha256": "605654fddf9a6394585040f54fded0b9a767945760d86e9b216cde9c16488849"
+        }
+      }
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "e4192c46c79a3abdf4ff7e6a729f4cd0a470e31c",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      }
+    ]
+  },
+  "upstreamEvidenceBindings": [
+    {
+      "stage": "R1",
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/R1.evidence.revision3.bound.json",
+      "sha256": "e856ed826d7fbe6774851e3903a023a695435c07c427f8a5872735e39f05fb87"
+    },
+    {
+      "stage": "R1_EVENT",
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/R1.complete-event.source-fact-v2.json",
+      "sha256": "23f8a5f262c7809c40ab14450dd78df38cb4bde64832c566de5c51e730487485"
+    },
+    {
+      "stage": "R2",
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/R2.evidence.source-fact-v2.json",
+      "sha256": "9dafc1761401c95adb3f6cc736dd16a61ebe68f94ece35b231b8e0e9d568af91"
+    },
+    {
+      "stage": "R2_EVENT",
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/R2.completion-event.source-fact-v2.json",
+      "sha256": "91ec85b7ac946dea351d8d4656e76cf19c0987aa921a1525a0a623cb6dcd2ca6"
+    }
+  ],
+  "actualRenderReview": {
+    "status": "REVIEWED_PASS",
+    "captureReport": {
+      "path": ".tmp/archive/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/capture-v1/machine-capture.json",
+      "sha256": "f6f09adde201e51c95ff4e18bcad7cffb3e65712d04a2cb9f003f2815826a238"
+    },
+    "review": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/R3.capture-review.actual-v1.json",
+      "sha256": "b04784749335b81a62fc45007e0b77a21209aaf2f02f5a2dc3d70ec932b6ba83"
+    },
+    "caseIds": [
+      "exam/desktop",
+      "exam/mobile",
+      "sol/desktop",
+      "sol/mobile",
+      "ans/desktop",
+      "ans/mobile"
+    ],
+    "reviewedQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "loadedAssets": [
+      {
+        "ref": "assets/images/23_금당고_1학기_중간_고2_수학II/q01.png",
+        "sha256": "062730e915376a254bfb40bd1d8b7cf5a0482a4bf462f480f64156efc20021b1",
+        "fileSha256": "062730e915376a254bfb40bd1d8b7cf5a0482a4bf462f480f64156efc20021b1"
+      },
+      {
+        "ref": "assets/images/23_금당고_1학기_중간_고2_수학II/q11.png",
+        "sha256": "9fbcc57cfb43b79c5cee8c19d5970dcae0095091ffdd484080318b35deccc2fc",
+        "fileSha256": "9fbcc57cfb43b79c5cee8c19d5970dcae0095091ffdd484080318b35deccc2fc"
+      },
+      {
+        "ref": "assets/images/23_금당고_1학기_중간_고2_수학II/q17.png",
+        "sha256": "478ef3be9ee37dd0f6604861ea7d92ad5f61ae43b1c7b69ab1aac2baa912ec99",
+        "fileSha256": "478ef3be9ee37dd0f6604861ea7d92ad5f61ae43b1c7b69ab1aac2baa912ec99"
+      },
+      {
+        "ref": "assets/images/23_금당고_1학기_중간_고2_수학II/q20.png",
+        "sha256": "3bffa5aede2af40dc96118e9d401d341238a7b58fc86f55f1726887c80b546a2",
+        "fileSha256": "3bffa5aede2af40dc96118e9d401d341238a7b58fc86f55f1726887c80b546a2"
+      },
+      {
+        "ref": "assets/images/23_금당고_1학기_중간_고2_수학II/q17-solution.svg",
+        "sha256": "b5f2f717a629267192bd8df2030c757296f4eda5b90da0f755c56bb40940abbd",
+        "fileSha256": "b5f2f717a629267192bd8df2030c757296f4eda5b90da0f755c56bb40940abbd"
+      },
+      {
+        "ref": "assets/images/23_금당고_1학기_중간_고2_수학II/q20-solution.svg",
+        "sha256": "605654fddf9a6394585040f54fded0b9a767945760d86e9b216cde9c16488849",
+        "fileSha256": "605654fddf9a6394585040f54fded0b9a767945760d86e9b216cde9c16488849"
+      }
+    ]
+  }
+}

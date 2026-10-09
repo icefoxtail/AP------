@@ -22,7 +22,7 @@ export function buildMatrix({run,bindings,modes=['sol']}) {
     const targets=items.map(v=>String(v.questionId));if(new Set(targets).size!==targets.length)throw Error('DUPLICATE_SOURCE_TARGET');
     const patches=items.map(item=>{
       if(!original.some(q=>String(q.id)===String(item.questionId)))throw Error('SOURCE_QUESTION_MISSING');
-      const fixture=fixtures.find(v=>v.id===item.fixtureId);return{id:item.questionId,fields:{solutionImage:fixture.svg.replace(/^archive\//,''),solutionImageAlt:item.alt,solutionImageCaption:item.caption,solutionImageSize:'full'}};
+      const fixture=fixtures.find(v=>v.id===item.fixtureId);return{id:item.questionId,fields:{solutionImage:'/'+fixture.svg.replace(/^\/+/,''),solutionImageAlt:item.alt,solutionImageCaption:item.caption,solutionImageSize:'full'}};
     });
     const candidate=source+'\n;for(const patch of '+JSON.stringify(patches)+'){const q=window.questionBank.find(q=>String(q.id)===String(patch.id));Object.assign(q,patch.fields);}\n';
     const bank=loadBank(candidate);if(bank.length!==original.length)throw Error('SOURCE_QCOUNT_MUTATION');

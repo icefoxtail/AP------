@@ -1,0 +1,1333 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "examUid": "26_왕운중_1학기_중간_중2_기출",
+  "stage": "CREATE",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "artifactSha": "e51fe7b5b2cfadf69131632a56b10008e34a1fcc",
+  "artifactRawSha256": "c38f2c0b8f746170688be1d1c919bd1bbcdf4b4ffab0f925698aa8ef2b2dfbd2",
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "Read current solution bytes: applies internal-division formula with opposite ratio weights, obtains P=(1,6), finds midpoint M=(3,8), then tracks distance PM through substitutions to 2√2."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "observation": "Read current solution bytes: obtains slope −3, substitutes point (1,−2) to solve n=1, then computes m+n=−2."
+          },
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "observation": "Read current solution and SVG source; opened only ROOT-authorized existing Chrome PNG at original resolution. The three circle/center states and note card fit; source labels align with the plotted center transforms; no clipping observed.",
+            "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "Read current solution bytes: uses signed coordinate differences, substitutes them into the distance formula, and simplifies √50 to 5√2."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "observation": "Read current solution and SVG source, then opened only the ROOT-authorized existing Chrome PNG at original resolution. It shows a descending line with slope −1/3 and a steep ascending line with slope 3; labels identify k=6 and the perpendicular relation. No clipping observed.",
+            "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30"
+          },
+          {
+            "qid": 5,
+            "solutionSha256": "8e1a0f149d821431abc022690f63b1b99c675d8373a575c92dc4d1688dc4b109",
+            "observation": "Read current solution bytes: uses set equality to determine parameter values in order, then substitutes them into the requested sum."
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "observation": "Read the registered Negative README before target solution authoring. It requires checking actual SVG coordinates, separating enumerated small-board decisions, exact current Meta lookup, and evaluated runtime TeX."
+    }
+  },
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "내분점 공식에서는 한쪽 끝점의 좌표에 반대쪽의 비를 곱한다.",
+        "observation": "Read current solution bytes: applies internal-division formula with opposite ratio weights, obtains P=(1,6), finds midpoint M=(3,8), then tracks distance PM through substitutions to 2√2."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.",
+        "observation": "Read current solution and SVG source; opened only ROOT-authorized existing Chrome PNG at original resolution. The three circle/center states and note card fit; source labels align with the plotted center transforms; no clipping observed."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 5,
+        "solutionSha256": "sha256:8e1a0f149d821431abc022690f63b1b99c675d8373a575c92dc4d1688dc4b109",
+        "solutionExcerpt": "두 집합 $A$, $B$가 같으므로 두 집합에 들어 있는 원소가 정확히 같아야 한다.",
+        "observation": "Read current solution bytes: uses set equality to determine parameter values in order, then substitutes them into the requested sum."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.",
+        "observation": "Read current solution and SVG source, then opened only the ROOT-authorized existing Chrome PNG at original resolution. It shows a descending line with slope −1/3 and a steep ascending line with slope 3; labels identify k=6 and the perpendicular relation. No clipping observed."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "SOURCE_ONLY_CREATE",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "visualReuse": {
+      "disposition": "REUSED_ROOT_AUTHORIZED_EXISTING_CHROME_RASTERS_OWN_VISUAL_READ",
+      "decisionPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/ROOT.existing-golden-render-reuse.decision.json",
+      "decisionSha256": null,
+      "priorProducer": "r1_07",
+      "currentWorkerChromeExecutionClaimed": false,
+      "witnesses": [
+        {
+          "qid": 7,
+          "samplePath": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+          "svgPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+          "currentSvgSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+          "existingRasterPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/golden-existing-render-witness/golden-maesan-q7-chrome.png",
+          "existingRasterSha256": "890ebd7f52131fe6c85a47e1a16a77b3c822ec25c5b9a409760148ee0058d406",
+          "visualObservation": "Read current solution and SVG source; opened only ROOT-authorized existing Chrome PNG at original resolution. The three circle/center states and note card fit; source labels align with the plotted center transforms; no clipping observed."
+        },
+        {
+          "qid": 2,
+          "samplePath": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+          "svgPath": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+          "currentSvgSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+          "existingRasterPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/golden-existing-render-witness/golden-hyocheon-q2-chrome.png",
+          "existingRasterSha256": "525b1cd62a8665035d1b4c6adb77a3e00e331c5da5ddb3ad8e7b7be195cf8f40",
+          "visualObservation": "Read current solution and SVG source, then opened only the ROOT-authorized existing Chrome PNG at original resolution. It shows a descending line with slope −1/3 and a steep ascending line with slope 3; labels identify k=6 and the perpendicular relation. No clipping observed."
+        }
+      ]
+    },
+    "targetSolutionComparisons": [
+      {
+        "qid": 1,
+        "solutionSha256": "b832400dc250d96a4a88a452593b5e289e0dd0688da7a16431eef5a94ec0afdb",
+        "disposition": "PASS",
+        "observation": "Pure two-digit repetend; align by 100, subtract, verify irreducibility and the unique choice."
+      },
+      {
+        "qid": 16,
+        "solutionSha256": "e8219e7d92ffb8fe69d1a0d9c950c2afb78ec7e771f58597666199204a2bd1f5",
+        "disposition": "PASS",
+        "observation": "One basic linear inequality; collect terms, divide by positive 2 without reversing the sign, then state x>-4."
+      }
+    ],
+    "qualityCompareCount": "24/24",
+    "finalCompareDisposition": "22 unchanged qids retain complete prior comparison evidence; q1 and current q16 replacements have fresh R1 coverage and post-calibration solutions. No text or SVG copied."
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "sourceMode": "ALIVE_REPLACEMENT",
+      "provenanceEvidence": {
+        "curriculum": {
+          "sourceAssessmentPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.source-assessment-02.json",
+          "sourceAssessmentSha256": "11594801b55d933e50b9d30c2e2911b11a4112e67a9a4c5aac1117e40fec3acc",
+          "topic": "M2-01-REPEATING_DECIMAL",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-01",
+          "subUnitKey": "M2-01-REPEATING_DECIMAL",
+          "statement": "Only the assigned visible M2 topic is retained; no new unit or off-grade content is inferred."
+        },
+        "answerCardinality": {
+          "expectedAnswerCount": 1,
+          "answer": "①",
+          "sourceStudentPayloadSha256": "f454d21d09702d1855de9ad8d2265f7ee540d1b183dbb12f48dd037eeedeeb43",
+          "statement": "The repeating decimal 0.\\overline{23} has the unique irreducible fraction 23/99."
+        },
+        "replacement": {
+          "disposition": "QUESTION_ONLY",
+          "authoringProvenance": "CODEX_DIRECT_AUTHORING",
+          "label": "ALIVE_REPLACEMENT + CODEX_DIRECT_AUTHORING",
+          "sourceDefect": "The original single-answer prompt contains several visibly valid period notations; the assigned print itself does not admit one uniquely correct option.",
+          "historicalHoldEvidencePath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.item-hold-history-02.json",
+          "supersededCandidateHistoryPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.q16-supported-replacement-history-03.json"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "disposition": "KEEP",
+          "evidence": "Single-answer fraction conversion replacement; choices and exact student projection are locked and statically reviewed. No engine render claim."
+        },
+        "solutionLayout": {
+          "disposition": "KEEP",
+          "evidence": "Sets x=0.\\overline{23}, multiplies by 100, subtracts to obtain 99x=23, checks irreducibility, and closes with choice ①.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "disposition": "SEMANTIC_FINAL_PROJECTION_UNMATERIALIZED",
+          "evidence": "2022 current-scope RPM semantic FINAL (M2-RPM-122); PT/TPL are explicit projection-only nulls.",
+          "metaDispositionPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.item-recovery-meta-difficulty-05.json"
+        },
+        "visualSvg": {
+          "disposition": "NO_VISUAL_REQUIRED",
+          "evidence": "No image or diagram is necessary; each decisive step is fully represented by the text and equations."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current 2022 M2-1 crosswalk entry M2-RPM-122 is RPM_ONLY / NO_ACTIVE_MAPPING. No exact ACTIVE curriculum binding exists; the semantic path remains FINAL and only PT/TPL projection is unmaterialized.",
+      "solutionSha256": "b832400dc250d96a4a88a452593b5e289e0dd0688da7a16431eef5a94ec0afdb",
+      "difficultyEvidence": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "The repeating block is immediate; multiply by 100 and subtract once, with no strategy choice or hidden condition.",
+        "r1Evidence": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/R1.evidence.final.r1_09.revision2.json",
+        "r1EvidenceSha256": "642a42bdd24eda8e001ccf17b55e4faedf091408e1c8c4678e0acda6544bb07e",
+        "r1FreezeRef": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/R1.scope-1,16@recovery-01.freeze.json",
+        "r1FreezeSha256": "fd6c6069025df96fdf9712876b8ddbc157cb114eef77f27b8ff0d9f475ce37b3"
+      },
+      "recoveryDisposition": {
+        "qid": 1,
+        "sourceMode": "ALIVE_REPLACEMENT",
+        "authoringProvenance": "CODEX_DIRECT_AUTHORING",
+        "sourceDefectConfirmed": true,
+        "questionOnlyReplacement": true,
+        "itemHoldCleared": true,
+        "currentRpmSemanticStatus": "FINAL"
+      }
+    },
+    {
+      "qid": 2,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePage": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0005.jpg",
+          "lockedInputSha256": "bb0277d69f5bfdb82a9cdf0b45bba00fd256384a1c70da5f95db88778bb35b5c",
+          "transcription": "Student-facing Korean text and choice order transcribed from the assigned page; exact layout-only line boundaries recorded in current artifact.",
+          "unresolved": null
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "evidence": "Reviewed source wording, formula boundaries and choice order; preserved source atoms and separated only complete semantic blocks."
+        },
+        "solutionLayout": {
+          "evidence": "Reviewed authored solution q2; formulas and essential calculation steps are on separate lines with minimal Korean prose."
+        },
+        "meta": {
+          "evidence": "Current-pass classification: 중2 수학 / M2-01 / M2-01-REPEATING_DECIMAL; PT/TPL reviewed against current ACTIVE registry. Nullable projection debt recorded explicitly."
+        },
+        "visualSvg": {
+          "evidence": "No problem-level figure/table is present in this question; student-facing body is source text and choices."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD.",
+      "solutionSha256": "c9c83451fa5e48dd819897fd667910204cee22867b39f3d75d6b938defcced30"
+    },
+    {
+      "qid": 3,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePage": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0005.jpg",
+          "lockedInputSha256": "bb0277d69f5bfdb82a9cdf0b45bba00fd256384a1c70da5f95db88778bb35b5c",
+          "transcription": "Student-facing Korean text and choice order transcribed from the assigned page; exact layout-only line boundaries recorded in current artifact.",
+          "unresolved": null
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "evidence": "Reviewed source wording, formula boundaries and choice order; preserved source atoms and separated only complete semantic blocks."
+        },
+        "solutionLayout": {
+          "evidence": "Reviewed authored solution q3; formulas and essential calculation steps are on separate lines with minimal Korean prose."
+        },
+        "meta": {
+          "evidence": "Current-pass classification: 중2 수학 / M2-01 / M2-01-REPEATING_DECIMAL; PT/TPL reviewed against current ACTIVE registry. Nullable projection debt recorded explicitly."
+        },
+        "visualSvg": {
+          "evidence": "No problem-level figure/table is present in this question; student-facing body is source text and choices."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD.",
+      "solutionSha256": "0423fb9f7934251517fc7bd1a460260a7134a033b524c40e850ee9cfedc58207"
+    },
+    {
+      "qid": 4,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePage": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0005.jpg",
+          "lockedInputSha256": "bb0277d69f5bfdb82a9cdf0b45bba00fd256384a1c70da5f95db88778bb35b5c",
+          "transcription": "Student-facing Korean text and choice order transcribed from the assigned page; exact layout-only line boundaries recorded in current artifact.",
+          "unresolved": null
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "evidence": "Reviewed source wording, formula boundaries and choice order; preserved source atoms and separated only complete semantic blocks."
+        },
+        "solutionLayout": {
+          "evidence": "Reviewed authored solution q4; formulas and essential calculation steps are on separate lines with minimal Korean prose."
+        },
+        "meta": {
+          "evidence": "Current-pass classification: 중2 수학 / M2-01 / M2-01-REPEATING_DECIMAL; PT/TPL reviewed against current ACTIVE registry. Nullable projection debt recorded explicitly."
+        },
+        "visualSvg": {
+          "evidence": "No problem-level figure/table is present in this question; student-facing body is source text and choices."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD.",
+      "solutionSha256": "378db4dbe025b9972b419bc8ff808d40343cafc214543f0f6a72ee538cd70df1"
+    },
+    {
+      "qid": 5,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePage": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0005.jpg",
+          "lockedInputSha256": "bb0277d69f5bfdb82a9cdf0b45bba00fd256384a1c70da5f95db88778bb35b5c",
+          "transcription": "Student-facing Korean text and choice order transcribed from the assigned page; exact layout-only line boundaries recorded in current artifact.",
+          "unresolved": null
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "evidence": "Reviewed source wording, formula boundaries and choice order; preserved source atoms and separated only complete semantic blocks."
+        },
+        "solutionLayout": {
+          "evidence": "Reviewed authored solution q5; formulas and essential calculation steps are on separate lines with minimal Korean prose."
+        },
+        "meta": {
+          "evidence": "Current-pass classification: 중2 수학 / M2-01 / M2-01-REPEATING_DECIMAL; PT/TPL reviewed against current ACTIVE registry. Nullable projection debt recorded explicitly."
+        },
+        "visualSvg": {
+          "evidence": "No problem-level figure/table is present in this question; student-facing body is source text and choices."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD.",
+      "solutionSha256": "b8e52884b0947fb170ccbc82ba7c2181170a1eeafde526d17da63efa04cf6a02"
+    },
+    {
+      "qid": 6,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePage": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0005.jpg",
+          "lockedInputSha256": "bb0277d69f5bfdb82a9cdf0b45bba00fd256384a1c70da5f95db88778bb35b5c",
+          "transcription": "Student-facing Korean text and choice order transcribed from the assigned page; exact layout-only line boundaries recorded in current artifact.",
+          "unresolved": null
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "evidence": "Reviewed source wording, formula boundaries and choice order; preserved source atoms and separated only complete semantic blocks."
+        },
+        "solutionLayout": {
+          "evidence": "Reviewed authored solution q6; formulas and essential calculation steps are on separate lines with minimal Korean prose."
+        },
+        "meta": {
+          "evidence": "Current-pass classification: 중2 수학 / M2-01 / M2-01-REPEATING_DECIMAL; PT/TPL reviewed against current ACTIVE registry. Nullable projection debt recorded explicitly."
+        },
+        "visualSvg": {
+          "evidence": "No problem-level figure/table is present in this question; student-facing body is source text and choices."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD.",
+      "solutionSha256": "194a2d0e045925d39b96043ada1b121d1c8cf6f09a395e763bd564f8c6d9fa8e"
+    },
+    {
+      "qid": 7,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePage": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0006.jpg",
+          "lockedInputSha256": "7208cca2dd32f78c7f12eddcfe8c89c0a1c6cf33ba514ef04e16b106ff62aeca",
+          "transcription": "Student-facing Korean text and choice order transcribed from the assigned page; exact layout-only line boundaries recorded in current artifact.",
+          "unresolved": null
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "evidence": "Reviewed source wording, formula boundaries and choice order; preserved source atoms and separated only complete semantic blocks."
+        },
+        "solutionLayout": {
+          "evidence": "Reviewed authored solution q7; formulas and essential calculation steps are on separate lines with minimal Korean prose."
+        },
+        "meta": {
+          "evidence": "Current-pass classification: 중2 수학 / M2-01 / M2-01-REPEATING_DECIMAL; PT/TPL reviewed against current ACTIVE registry. Nullable projection debt recorded explicitly."
+        },
+        "visualSvg": {
+          "evidence": "No problem-level figure/table is present in this question; student-facing body is source text and choices."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD.",
+      "solutionSha256": "af315170df7109bd32c6c116382a7866740bbf7b66272957c2304aadf8e6518e"
+    },
+    {
+      "qid": 8,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePage": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0006.jpg",
+          "lockedInputSha256": "7208cca2dd32f78c7f12eddcfe8c89c0a1c6cf33ba514ef04e16b106ff62aeca",
+          "transcription": "Student-facing Korean text and choice order transcribed from the assigned page; exact layout-only line boundaries recorded in current artifact.",
+          "unresolved": null
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "evidence": "Reviewed source wording, formula boundaries and choice order; preserved source atoms and separated only complete semantic blocks."
+        },
+        "solutionLayout": {
+          "evidence": "Reviewed authored solution q8; formulas and essential calculation steps are on separate lines with minimal Korean prose."
+        },
+        "meta": {
+          "evidence": "Current-pass classification: 중2 수학 / M2-01 / M2-01-REPEATING_DECIMAL; PT/TPL reviewed against current ACTIVE registry. Nullable projection debt recorded explicitly."
+        },
+        "visualSvg": {
+          "evidence": "No problem-level figure/table is present in this question; student-facing body is source text and choices."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD.",
+      "solutionSha256": "171a0a1913bc09c3d20e0ff6733ecabab07ba8b5ac20f13ab4b0357341b79856"
+    },
+    {
+      "qid": 9,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePage": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0006.jpg",
+          "lockedInputSha256": "7208cca2dd32f78c7f12eddcfe8c89c0a1c6cf33ba514ef04e16b106ff62aeca",
+          "transcription": "Student-facing Korean text and choice order transcribed from the assigned page; exact layout-only line boundaries recorded in current artifact.",
+          "unresolved": null
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "evidence": "Reviewed source wording, formula boundaries and choice order; preserved source atoms and separated only complete semantic blocks."
+        },
+        "solutionLayout": {
+          "evidence": "Reviewed authored solution q9; formulas and essential calculation steps are on separate lines with minimal Korean prose."
+        },
+        "meta": {
+          "evidence": "Current-pass classification: 중2 수학 / M2-01 / M2-01-EXPONENT_LAW; PT/TPL reviewed against current ACTIVE registry. Nullable projection debt recorded explicitly."
+        },
+        "visualSvg": {
+          "evidence": "No problem-level figure/table is present in this question; student-facing body is source text and choices."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD.",
+      "solutionSha256": "e668a110fafd54324f2c0da422080bea6a0a51f0f84fb0976d53d406a788b7db"
+    },
+    {
+      "qid": 10,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePage": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0006.jpg",
+          "lockedInputSha256": "7208cca2dd32f78c7f12eddcfe8c89c0a1c6cf33ba514ef04e16b106ff62aeca",
+          "transcription": "Student-facing Korean text and choice order transcribed from the assigned page; exact layout-only line boundaries recorded in current artifact.",
+          "unresolved": null
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "evidence": "Reviewed source wording, formula boundaries and choice order; preserved source atoms and separated only complete semantic blocks."
+        },
+        "solutionLayout": {
+          "evidence": "Reviewed authored solution q10; formulas and essential calculation steps are on separate lines with minimal Korean prose."
+        },
+        "meta": {
+          "evidence": "Current-pass classification: 중2 수학 / M2-01 / M2-01-EXPONENT_LAW; PT/TPL reviewed against current ACTIVE registry. Nullable projection debt recorded explicitly."
+        },
+        "visualSvg": {
+          "evidence": "No problem-level figure/table is present in this question; student-facing body is source text and choices."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD.",
+      "solutionSha256": "b62c6fd9614458f614ed9ccb6b354e5be940b80db8139f2a4f81d5ce69bad693"
+    },
+    {
+      "qid": 11,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePage": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0006.jpg",
+          "lockedInputSha256": "7208cca2dd32f78c7f12eddcfe8c89c0a1c6cf33ba514ef04e16b106ff62aeca",
+          "transcription": "Student-facing Korean text and choice order transcribed from the assigned page; exact layout-only line boundaries recorded in current artifact.",
+          "unresolved": null
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "evidence": "Reviewed source wording, formula boundaries and choice order; preserved source atoms and separated only complete semantic blocks."
+        },
+        "solutionLayout": {
+          "evidence": "Reviewed authored solution q11; formulas and essential calculation steps are on separate lines with minimal Korean prose."
+        },
+        "meta": {
+          "evidence": "Current-pass classification: 중2 수학 / M2-01 / M2-01-POLYNOMIAL_OPERATIONS; PT/TPL reviewed against current ACTIVE registry. Nullable projection debt recorded explicitly."
+        },
+        "visualSvg": {
+          "evidence": "No problem-level figure/table is present in this question; student-facing body is source text and choices."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD.",
+      "solutionSha256": "7599356339f48323a179e36dc3fdd4d70ab2defa39175bd4a4307da69687ec04"
+    },
+    {
+      "qid": 12,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePage": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0006.jpg",
+          "lockedInputSha256": "7208cca2dd32f78c7f12eddcfe8c89c0a1c6cf33ba514ef04e16b106ff62aeca",
+          "transcription": "Student-facing Korean text and choice order transcribed from the assigned page; exact layout-only line boundaries recorded in current artifact.",
+          "unresolved": null
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "evidence": "Reviewed source wording, formula boundaries and choice order; preserved source atoms and separated only complete semantic blocks."
+        },
+        "solutionLayout": {
+          "evidence": "Reviewed authored solution q12; formulas and essential calculation steps are on separate lines with minimal Korean prose."
+        },
+        "meta": {
+          "evidence": "Current-pass classification: 중2 수학 / M2-01 / M2-01-POLYNOMIAL_OPERATIONS; PT/TPL reviewed against current ACTIVE registry. Nullable projection debt recorded explicitly."
+        },
+        "visualSvg": {
+          "evidence": "No problem-level figure/table is present in this question; student-facing body is source text and choices."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD.",
+      "solutionSha256": "12c4b70be16e4b41554c5293755f6641147491eb59b996c8dc90e1dbb23a21e8"
+    },
+    {
+      "qid": 13,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePage": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0006.jpg",
+          "lockedInputSha256": "7208cca2dd32f78c7f12eddcfe8c89c0a1c6cf33ba514ef04e16b106ff62aeca",
+          "transcription": "Student-facing Korean text and choice order transcribed from the assigned page; exact layout-only line boundaries recorded in current artifact.",
+          "unresolved": null
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "evidence": "Reviewed source wording, formula boundaries and choice order; preserved source atoms and separated only complete semantic blocks."
+        },
+        "solutionLayout": {
+          "evidence": "Reviewed authored solution q13; formulas and essential calculation steps are on separate lines with minimal Korean prose."
+        },
+        "meta": {
+          "evidence": "Current-pass classification: 중2 수학 / M2-01 / M2-01-POLYNOMIAL_OPERATIONS; PT/TPL reviewed against current ACTIVE registry. Nullable projection debt recorded explicitly."
+        },
+        "visualSvg": {
+          "evidence": "Opened original-pixel problem crop assets/images/26_왕운중_1학기_중간_중2_기출/q13.png; verified the visible labels, topology and source markings against the assigned scan."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD.",
+      "solutionSha256": "f3ff6db8c76acbf060d27aa037b4d3d09940f88bac0c1f824f82efccec325384"
+    },
+    {
+      "qid": 14,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePage": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0007.jpg",
+          "lockedInputSha256": "16f0074cf7a5c77624cff98b34e94f196e88afaa107b61429a852b7a8b289f4a",
+          "transcription": "Student-facing Korean text and choice order transcribed from the assigned page; exact layout-only line boundaries recorded in current artifact.",
+          "unresolved": null
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "evidence": "Reviewed source wording, formula boundaries and choice order; preserved source atoms and separated only complete semantic blocks."
+        },
+        "solutionLayout": {
+          "evidence": "Reviewed authored solution q14; formulas and essential calculation steps are on separate lines with minimal Korean prose."
+        },
+        "meta": {
+          "evidence": "Current-pass classification: 중2 수학 / M2-01 / M2-01-POLYNOMIAL_OPERATIONS; PT/TPL reviewed against current ACTIVE registry. Nullable projection debt recorded explicitly."
+        },
+        "visualSvg": {
+          "evidence": "No problem-level figure/table is present in this question; student-facing body is source text and choices."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD.",
+      "solutionSha256": "ce3b7ec69bc8e870933da6f2f72fb80738d90812f77ad89275c3d6ae6ffa4ad5"
+    },
+    {
+      "qid": 15,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePage": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0007.jpg",
+          "lockedInputSha256": "16f0074cf7a5c77624cff98b34e94f196e88afaa107b61429a852b7a8b289f4a",
+          "transcription": "Student-facing Korean text and choice order transcribed from the assigned page; exact layout-only line boundaries recorded in current artifact.",
+          "unresolved": null
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "evidence": "Reviewed source wording, formula boundaries and choice order; preserved source atoms and separated only complete semantic blocks."
+        },
+        "solutionLayout": {
+          "evidence": "Reviewed authored solution q15; formulas and essential calculation steps are on separate lines with minimal Korean prose."
+        },
+        "meta": {
+          "evidence": "Current-pass classification: 중2 수학 / M2-01 / M2-01-POLYNOMIAL_OPERATIONS; PT/TPL reviewed against current ACTIVE registry. Nullable projection debt recorded explicitly."
+        },
+        "visualSvg": {
+          "evidence": "No problem-level figure/table is present in this question; student-facing body is source text and choices."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD.",
+      "solutionSha256": "ecf236030c0800c99f8cba348866b04366dd294b74181694771f9e83be1955bb"
+    },
+    {
+      "qid": 16,
+      "sourceMode": "ALIVE_REPLACEMENT",
+      "provenanceEvidence": {
+        "curriculum": {
+          "sourceAssessmentPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.source-assessment-02.json",
+          "sourceAssessmentSha256": "11594801b55d933e50b9d30c2e2911b11a4112e67a9a4c5aac1117e40fec3acc",
+          "topic": "M2-02-LINEAR_INEQUALITY",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-02",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "statement": "Only the assigned visible M2 topic is retained; no new unit or off-grade content is inferred."
+        },
+        "answerCardinality": {
+          "expectedAnswerCount": 1,
+          "answer": "①",
+          "sourceStudentPayloadSha256": "ae74f69ebcf0b7c72369b494cd2059a24b37fc7b046c31aea45a5ae4467c3786",
+          "statement": "The basic inequality is equivalent to x>-4; only choice ① is equivalent."
+        },
+        "replacement": {
+          "disposition": "QUESTION_ONLY",
+          "authoringProvenance": "CODEX_DIRECT_AUTHORING",
+          "label": "ALIVE_REPLACEMENT + CODEX_DIRECT_AUTHORING",
+          "sourceDefect": "The original printed relation signs were obscured by handwriting and the extracted placeholders made the requested counts unknowable.",
+          "historicalHoldEvidencePath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.item-hold-history-02.json",
+          "supersededCandidateHistoryPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.q16-supported-replacement-history-03.json"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "disposition": "KEEP",
+          "evidence": "Basic one-variable inequality replacement, five choices and student projection exactly bound; static layout KEEP from full24 R1. No engine render claim."
+        },
+        "solutionLayout": {
+          "disposition": "KEEP",
+          "evidence": "Separates subtracting 2x, subtracting 3, and dividing by positive 2; explicitly notes the sign is preserved and closes with x>-4 / choice ①.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "disposition": "SEMANTIC_FINAL_PROJECTION_UNMATERIALIZED",
+          "evidence": "2022 current-scope RPM semantic FINAL (M2-RPM-138); PT/TPL are explicit projection-only nulls.",
+          "metaDispositionPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.item-recovery-meta-difficulty-05.json"
+        },
+        "visualSvg": {
+          "disposition": "NO_VISUAL_REQUIRED",
+          "evidence": "No image or diagram is necessary; each decisive step is fully represented by the text and equations."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current 2022 M2-2 crosswalk record for M2-RPM-138 is RPM_ONLY / NO_ACTIVE_MAPPING. No exact ACTIVE curriculum-bound PT/TPL pair exists; semantic is FINAL, and only projection fields remain null.",
+      "solutionSha256": "e8219e7d92ffb8fe69d1a0d9c950c2afb78ec7e771f58597666199204a2bd1f5",
+      "difficultyEvidence": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "A direct basic-form rearrangement and division by a positive coefficient gives the answer in one fixed method. The adjacent coarse legacy label 중 remains defensible for the 3-point two-sided-variable form after independent recheck; preserve level.",
+        "r1Evidence": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/R1.evidence.final.r1_09.revision2.json",
+        "r1EvidenceSha256": "642a42bdd24eda8e001ccf17b55e4faedf091408e1c8c4678e0acda6544bb07e",
+        "r1FreezeRef": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/R1.scope-16@recovery-02.freeze.json",
+        "r1FreezeSha256": "cbf2c32c0ff9d74cfc9f3aadf7bc1ab12cee25ef96b78b9af5bd6343cded4622"
+      },
+      "recoveryDisposition": {
+        "qid": 16,
+        "sourceMode": "ALIVE_REPLACEMENT",
+        "authoringProvenance": "CODEX_DIRECT_AUTHORING",
+        "sourceDefectConfirmed": true,
+        "questionOnlyReplacement": true,
+        "itemHoldCleared": true,
+        "currentRpmSemanticStatus": "FINAL"
+      }
+    },
+    {
+      "qid": 17,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePage": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0007.jpg",
+          "lockedInputSha256": "16f0074cf7a5c77624cff98b34e94f196e88afaa107b61429a852b7a8b289f4a",
+          "transcription": "Student-facing Korean text and choice order transcribed from the assigned page; exact layout-only line boundaries recorded in current artifact.",
+          "unresolved": null
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "evidence": "Reviewed source wording, formula boundaries and choice order; preserved source atoms and separated only complete semantic blocks."
+        },
+        "solutionLayout": {
+          "evidence": "Reviewed authored solution q17; formulas and essential calculation steps are on separate lines with minimal Korean prose."
+        },
+        "meta": {
+          "evidence": "Current-pass classification: 중2 수학 / M2-02 / M2-02-LINEAR_INEQUALITY; PT/TPL reviewed against current ACTIVE registry. Active PT/TPL pair used."
+        },
+        "visualSvg": {
+          "evidence": "No problem-level figure/table is present in this question; student-facing body is source text and choices."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "solutionSha256": "60181ca0ebe675ff9c9a40246cfe78e8ca40879ba4d33550beb8357f783822ce"
+    },
+    {
+      "qid": 18,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePage": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0007.jpg",
+          "lockedInputSha256": "16f0074cf7a5c77624cff98b34e94f196e88afaa107b61429a852b7a8b289f4a",
+          "transcription": "Student-facing Korean text and choice order transcribed from the assigned page; exact layout-only line boundaries recorded in current artifact.",
+          "unresolved": null
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "evidence": "Reviewed source wording, formula boundaries and choice order; preserved source atoms and separated only complete semantic blocks."
+        },
+        "solutionLayout": {
+          "evidence": "Reviewed authored solution q18; formulas and essential calculation steps are on separate lines with minimal Korean prose."
+        },
+        "meta": {
+          "evidence": "Current-pass classification: 중2 수학 / M2-02 / M2-02-LINEAR_INEQUALITY; PT/TPL reviewed against current ACTIVE registry. Active PT/TPL pair used."
+        },
+        "visualSvg": {
+          "evidence": "No problem-level figure/table is present in this question; student-facing body is source text and choices."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "solutionSha256": "7e7c6ff45b38a99ff2000a528064087ce879ec39e49f297c36fb6eb3a41a12a4"
+    },
+    {
+      "qid": 19,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePage": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0007.jpg",
+          "lockedInputSha256": "16f0074cf7a5c77624cff98b34e94f196e88afaa107b61429a852b7a8b289f4a",
+          "transcription": "Student-facing Korean text and choice order transcribed from the assigned page; exact layout-only line boundaries recorded in current artifact.",
+          "unresolved": null
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "evidence": "Reviewed source wording, formula boundaries and choice order; preserved source atoms and separated only complete semantic blocks."
+        },
+        "solutionLayout": {
+          "evidence": "Reviewed authored solution q19; formulas and essential calculation steps are on separate lines with minimal Korean prose."
+        },
+        "meta": {
+          "evidence": "Current-pass classification: 중2 수학 / M2-02 / M2-02-LINEAR_INEQUALITY; PT/TPL reviewed against current ACTIVE registry. Active PT/TPL pair used."
+        },
+        "visualSvg": {
+          "evidence": "No problem-level figure/table is present in this question; student-facing body is source text and choices."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "solutionSha256": "44f99e34b6ea6b811c76ae30a22b1343fff199d13b182a602320b470987b76ab"
+    },
+    {
+      "qid": 20,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePage": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0007.jpg",
+          "lockedInputSha256": "16f0074cf7a5c77624cff98b34e94f196e88afaa107b61429a852b7a8b289f4a",
+          "transcription": "Student-facing Korean text and choice order transcribed from the assigned page; exact layout-only line boundaries recorded in current artifact.",
+          "unresolved": null
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "evidence": "Reviewed source wording, formula boundaries and choice order; preserved source atoms and separated only complete semantic blocks."
+        },
+        "solutionLayout": {
+          "evidence": "Reviewed authored solution q20; formulas and essential calculation steps are on separate lines with minimal Korean prose."
+        },
+        "meta": {
+          "evidence": "Current-pass classification: 중2 수학 / M2-02 / M2-02-LINEAR_INEQUALITY; PT/TPL reviewed against current ACTIVE registry. Active PT/TPL pair used."
+        },
+        "visualSvg": {
+          "evidence": "No problem-level figure/table is present in this question; student-facing body is source text and choices."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "solutionSha256": "883a4b34da016a0ac4f8df3f9dcd6bcfcaf3df6f8ac46de486151c4b43c587d3"
+    },
+    {
+      "qid": 21,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePage": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0008.jpg",
+          "lockedInputSha256": "9360b6ccfcc7023c52f5b535a3a47d78a14ab3adf282418ab1471335539e2e71",
+          "transcription": "Student-facing Korean text and choice order transcribed from the assigned page; exact layout-only line boundaries recorded in current artifact.",
+          "unresolved": null
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "evidence": "Reviewed source wording, formula boundaries and choice order; preserved source atoms and separated only complete semantic blocks."
+        },
+        "solutionLayout": {
+          "evidence": "Reviewed authored solution q21; formulas and essential calculation steps are on separate lines with minimal Korean prose."
+        },
+        "meta": {
+          "evidence": "Current-pass classification: 중2 수학 / M2-01 / M2-01-REPEATING_DECIMAL; PT/TPL reviewed against current ACTIVE registry. Nullable projection debt recorded explicitly."
+        },
+        "visualSvg": {
+          "evidence": "No problem-level figure/table is present in this question; student-facing body is source text and choices."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD.",
+      "solutionSha256": "b33ae96b7fae34a8cd15028b007be14156ed58dd4999d8d1a167d3909a60e0d6"
+    },
+    {
+      "qid": 22,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePage": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0008.jpg",
+          "lockedInputSha256": "9360b6ccfcc7023c52f5b535a3a47d78a14ab3adf282418ab1471335539e2e71",
+          "transcription": "Student-facing Korean text and choice order transcribed from the assigned page; exact layout-only line boundaries recorded in current artifact.",
+          "unresolved": null
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "evidence": "Reviewed source wording, formula boundaries and choice order; preserved source atoms and separated only complete semantic blocks."
+        },
+        "solutionLayout": {
+          "evidence": "Reviewed authored solution q22; formulas and essential calculation steps are on separate lines with minimal Korean prose."
+        },
+        "meta": {
+          "evidence": "Current-pass classification: 중2 수학 / M2-01 / M2-01-EXPONENT_LAW; PT/TPL reviewed against current ACTIVE registry. Nullable projection debt recorded explicitly."
+        },
+        "visualSvg": {
+          "evidence": "No problem-level figure/table is present in this question; student-facing body is source text and choices."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD.",
+      "solutionSha256": "6ca6acc7768b4ee2b214e1d139e725c448f9cb5555afbec45ae00a8c5f128f7a"
+    },
+    {
+      "qid": 23,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePage": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0008.jpg",
+          "lockedInputSha256": "9360b6ccfcc7023c52f5b535a3a47d78a14ab3adf282418ab1471335539e2e71",
+          "transcription": "Student-facing Korean text and choice order transcribed from the assigned page; exact layout-only line boundaries recorded in current artifact.",
+          "unresolved": null
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "evidence": "Reviewed source wording, formula boundaries and choice order; preserved source atoms and separated only complete semantic blocks."
+        },
+        "solutionLayout": {
+          "evidence": "Reviewed authored solution q23; formulas and essential calculation steps are on separate lines with minimal Korean prose."
+        },
+        "meta": {
+          "evidence": "Current-pass classification: 중2 수학 / M2-01 / M2-01-POLYNOMIAL_OPERATIONS; PT/TPL reviewed against current ACTIVE registry. Nullable projection debt recorded explicitly."
+        },
+        "visualSvg": {
+          "evidence": "Opened original-pixel problem crop assets/images/26_왕운중_1학기_중간_중2_기출/q23.png; verified the visible labels, topology and source markings against the assigned scan."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD.",
+      "solutionSha256": "630c10b295e48023c86a24bdfdc2ddeb6fb1901b18a43a06694b9c3031974079"
+    },
+    {
+      "qid": 24,
+      "sourceMode": "ORIGINAL",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePage": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0008.jpg",
+          "lockedInputSha256": "9360b6ccfcc7023c52f5b535a3a47d78a14ab3adf282418ab1471335539e2e71",
+          "transcription": "Student-facing Korean text and choice order transcribed from the assigned page; exact layout-only line boundaries recorded in current artifact.",
+          "unresolved": null
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "evidence": "Reviewed source wording, formula boundaries and choice order; preserved source atoms and separated only complete semantic blocks."
+        },
+        "solutionLayout": {
+          "evidence": "Reviewed authored solution q24; formulas and essential calculation steps are on separate lines with minimal Korean prose."
+        },
+        "meta": {
+          "evidence": "Current-pass classification: 중2 수학 / M2-02 / M2-02-LINEAR_INEQUALITY_WORD; PT/TPL reviewed against current ACTIVE registry. Nullable projection debt recorded explicitly."
+        },
+        "visualSvg": {
+          "evidence": "No problem-level figure/table is present in this question; student-facing body is source text and choices."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD.",
+      "solutionSha256": "d013cb36c7185a0770520a4b0404a65ba95b58e277be66bac2a18772e3ba8228"
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "e51fe7b5b2cfadf69131632a56b10008e34a1fcc",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "The current 2022 M2-1 crosswalk entry M2-RPM-122 is RPM_ONLY / NO_ACTIVE_MAPPING. No exact ACTIVE curriculum binding exists; the semantic path remains FINAL and only PT/TPL projection is unmaterialized."
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD."
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD."
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD."
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD."
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD."
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD."
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD."
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD."
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD."
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD."
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD."
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD."
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD."
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD."
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "The current 2022 M2-2 crosswalk record for M2-RPM-138 is RPM_ONLY / NO_ACTIVE_MAPPING. No exact ACTIVE curriculum-bound PT/TPL pair exists; semantic is FINAL, and only projection fields remain null."
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD."
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD."
+      },
+      {
+        "qid": 23,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD."
+      },
+      {
+        "qid": 24,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No exact ACTIVE problemTypeKey/templateKey pair is registered for this current M2 subUnit / source method; kept nullable compatibility projections after checking the current tag master and ACTIVE taxonomy. This is projection debt, not a semantic HOLD."
+      }
+    ]
+  },
+  "sourceInputs": [
+    {
+      "path": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0005.jpg",
+      "sha256": "bb0277d69f5bfdb82a9cdf0b45bba00fd256384a1c70da5f95db88778bb35b5c"
+    },
+    {
+      "path": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0006.jpg",
+      "sha256": "7208cca2dd32f78c7f12eddcfe8c89c0a1c6cf33ba514ef04e16b106ff62aeca"
+    },
+    {
+      "path": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0007.jpg",
+      "sha256": "16f0074cf7a5c77624cff98b34e94f196e88afaa107b61429a852b7a8b289f4a"
+    },
+    {
+      "path": "D:/2026_1학기중간_/중2/왕운중/S28BW-826051515310_0008.jpg",
+      "sha256": "9360b6ccfcc7023c52f5b535a3a47d78a14ab3adf282418ab1471335539e2e71"
+    }
+  ],
+  "createPreflightRef": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.preflight.recovery-09.attempt-03.raw.json",
+  "calibrationPreflightRef": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.solution-preflight-final-03.json",
+  "itemHoldQids": [],
+  "itemHoldDisposition": "No current item/content HOLD remains. Original q1/q16 source holds, the superseded f0c classification-only Meta HOLD, and all failed/preliminary evidence remain preserved as history. Current q1/q16 replacements have current 2022 RPM semantic FINAL with projection-only null PT/TPL.",
+  "createPreflightFinalRef": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.preflight.recovery-09.attempt-03.raw.json",
+  "createPreflightFinalSha256": "21d4a45132669d7d01c865181dc0231d660a0e1125afbd138407c0b3cb6ad6ef",
+  "revisionProvenance": [
+    {
+      "qid": 2,
+      "locus": [
+        "answer",
+        "solution"
+      ],
+      "reason": "Independent re-evaluation found that 49/(2×5×7) reduces to 7/10, a terminating decimal; the correct recurring-only count is 3, not the earlier draft count 4.",
+      "previousDraftValue": {
+        "answer": "④",
+        "count": 4
+      },
+      "currentValue": {
+        "answer": "③",
+        "count": 3
+      },
+      "sourceMutation": false,
+      "reviewedCurrentArtifactRawSha256": "941a83cfe9b45920765adbcd970542434b7f7dc677f7d593bb82aff43aa67c3a"
+    },
+    {
+      "revision": "recovery-09",
+      "baseArtifactRawSha256": "ac8667fbbbad6440389fe07647eb655301fe363e5d0dabde22ba44ae6470252d",
+      "candidateArtifactRawSha256": "f0c5cd0b0494f2a27b3da62846692ea497b0668928cbf7ef64035717c917a27e",
+      "changedQids": [
+        1,
+        16
+      ],
+      "changedLocus": "QUESTION_ONLY ALIVE_REPLACEMENT + CODEX_DIRECT_AUTHORING; answers and solutions; q1/q16 D2 physical fields; sidecar-only RPM semantic/projection disposition",
+      "unchangedQidCount": 22,
+      "nonTargetInvarianceRef": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.item-recovery.non-target-invariance-03.json",
+      "sourceAssessmentRef": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.source-assessment-02.json",
+      "sourceAssessmentSha256": "11594801b55d933e50b9d30c2e2911b11a4112e67a9a4c5aac1117e40fec3acc",
+      "preApplyR1FreezeRef": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/R1.scope-1,16@recovery-01.freeze.json",
+      "preApplyR1FreezeSha256": "fd6c6069025df96fdf9712876b8ddbc157cb114eef77f27b8ff0d9f475ce37b3",
+      "postApplyR1Review": "PASS q1/q16 content/answer/solution/static layouts; q16 remains Meta-only semantic HOLD"
+    },
+    {
+      "revision": "recovery-09-final",
+      "supersededCurrentCandidateRawSha256": "f0c5cd0b0494f2a27b3da62846692ea497b0668928cbf7ef64035717c917a27e",
+      "baseFinalMetaCandidateRawSha256": "cea9276a3202f11e6c99d9dbd26686cc0870dfe380dc4dd2c2aa76c20cdea579",
+      "finalCandidateRawSha256": "c38f2c0b8f746170688be1d1c919bd1bbcdf4b4ffab0f925698aa8ef2b2dfbd2",
+      "changedQids": [
+        16
+      ],
+      "changedLocus": "qid16 D2 physical fields only after its student/answer/solution replacement; Meta semantic/projection adjudication is sidecar-only",
+      "unchangedQids": 23,
+      "nonTargetInvarianceRef": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.item-recovery.non-target-invariance-04.json",
+      "finalMetaSidecarRef": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.item-recovery-meta-difficulty-05.json",
+      "priorClassificationMetaHoldPreserved": true,
+      "studentAnswerSolutionBytesAfterFreshReviewUnchanged": true
+    }
+  ],
+  "technicalHashes": {
+    "rawSha256": "c38f2c0b8f746170688be1d1c919bd1bbcdf4b4ffab0f925698aa8ef2b2dfbd2",
+    "validatorRawBufferBlobSha1": "e51fe7b5b2cfadf69131632a56b10008e34a1fcc",
+    "gitCleanFilterBlobSha1": "e51fe7b5b2cfadf69131632a56b10008e34a1fcc"
+  },
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "sourceAssessmentRef": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.source-assessment-02.json",
+  "sourceAssessmentSha256": "11594801b55d933e50b9d30c2e2911b11a4112e67a9a4c5aac1117e40fec3acc",
+  "sourceAssessmentExposureAddendumRef": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.source-assessment-exposure-addendum-02.json",
+  "postR1SearchExposureRef": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.post-R1-search-exposure-03.json",
+  "visualMethodExposureRef": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.visual-method-exposure-addendum-03.json",
+  "currentCreatePreflight": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.preflight.recovery-09.attempt-03.raw.json",
+    "sha256": "21d4a45132669d7d01c865181dc0231d660a0e1125afbd138407c0b3cb6ad6ef",
+    "status": "STRUCTURAL_PREFLIGHT_CLEAR",
+    "questionCount": 24,
+    "itemHoldCount": 0,
+    "findings": [],
+    "unitMasterSha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+    "semanticApproval": false,
+    "sourceMutation": false
+  },
+  "currentR1RecoveryDisposition": {
+    "source": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/R1.scope-1,16@recovery-01.freeze.json",
+    "freezeSha256": "fd6c6069025df96fdf9712876b8ddbc157cb114eef77f27b8ff0d9f475ce37b3",
+    "postApplyReview": "R1 q1/q16 answers/solutions/layout PASS; Meta projection/taxonomy disposition bound separately"
+  },
+  "targetMetaSidecarRef": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.item-recovery-meta-difficulty-05.json",
+  "revisionHistoryRef": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.q16-supported-replacement-history-03.json",
+  "nonTargetInvarianceRef": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.item-recovery.non-target-invariance-04.json",
+  "currentR1Evidence": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/R1.evidence.final.r1_09.revision2.json",
+    "sha256": "642a42bdd24eda8e001ccf17b55e4faedf091408e1c8c4678e0acda6544bb07e",
+    "validationPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/R1.validator.final.r1_09.revision2.raw.json",
+    "validationSha256": "1fc855ad31ac123497297b75a6469bfae5211d98142045d585e912ed615b8044",
+    "eventPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/R1.complete-event.r1_09.final.json",
+    "eventSha256": "43663598607427c8ffa2e8732bbafc5bef41f7d3e31968963df10037849a649e",
+    "disposition": "PASS, 24/24, zero issues"
+  }
+}

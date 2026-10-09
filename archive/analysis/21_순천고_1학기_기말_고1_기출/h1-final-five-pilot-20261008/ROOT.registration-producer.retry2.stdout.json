@@ -1,0 +1,29 @@
+{
+  "command": [
+    "archive/tools/prepare-target-registration-candidate.mjs",
+    "--root",
+    "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------",
+    "--authority",
+    "archive/analysis/h1-final-five-pilot-20261008/ROOT.registration-producer-authority.json",
+    "--roster",
+    "archive/analysis/h1-final-five-pilot-20261008/ROOT.registration-roster.json",
+    "--roster-index",
+    "4",
+    "--assignment",
+    ".tmp/archive/h1-final-five-pilot-20261008/21_순천고_1학기_기말_고1_기출/registration.assignment.retry2.json",
+    "--r1-evidence",
+    "archive/analysis/21_순천고_1학기_기말_고1_기출/h1-final-five-pilot-20261008/R1.evidence.bound.q2-rebind.revision2.json",
+    "--r1-validation",
+    "archive/analysis/21_순천고_1학기_기말_고1_기출/h1-final-five-pilot-20261008/R1.generic-validation.q2-rebind.final.stdout.json",
+    "--candidate-root",
+    "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_금당고_1학기_기말_고1_기출\\registration-canonical-root",
+    "--index-root",
+    "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_순천고_1학기_기말_고1_기출\\registration-index-root.retry2",
+    "--evidence-root",
+    "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\registration-producer.retry2",
+    "--package-output",
+    ".tmp/archive/h1-final-five-pilot-20261008/21_순천고_1학기_기말_고1_기출/registration-package.retry2.json"
+  ],
+  "stdout": "{\n  \"status\": \"PLAN_VALIDATED_NOT_APPLIED\",\n  \"examUid\": \"21_순천고_1학기_기말_고1_기출\",\n  \"sourceQuestionCount\": 22,\n  \"targetRows\": {\n    \"identity\": 22,\n    \"metadata\": 22,\n    \"questionIndex\": 22,\n    \"catalog\": 22\n  },\n  \"packagePath\": \".tmp/archive/h1-final-five-pilot-20261008/21_순천고_1학기_기말_고1_기출/registration-package.retry2.json\",\n  \"packageSha256\": \"499b34562efecfb3a779b0f212de9eef735b1949f4201c1712c3942bc8783246\",\n  \"dryRunReceiptPath\": \"C:\\\\Users\\\\USER\\\\Desktop\\\\AP-worktrees\\\\archive-gates\\\\AP------\\\\archive\\\\analysis\\\\21_순천고_1학기_기말_고1_기출\\\\h1-final-five-pilot-20261008\\\\registration-producer.retry2\\\\target-registration.receipt.json\",\n  \"dryRunStatus\": \"PLAN_VALIDATED_NOT_APPLIED\",\n  \"receiptPath\": \"C:\\\\Users\\\\USER\\\\Desktop\\\\AP-worktrees\\\\archive-gates\\\\AP------\\\\archive\\\\analysis\\\\21_순천고_1학기_기말_고1_기출\\\\h1-final-five-pilot-20261008\\\\registration-producer.retry2/target-registration-producer.receipt.json\"\n}\n",
+  "sha256": "fd5527b07e3125176478ed25d8e4288a6e2440d30af9be5e8de80622db28bff1"
+}

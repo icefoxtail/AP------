@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "ROOT_REBASE_POSTCOPY_VALIDATOR_SUMMARY_V1",
+  "runId": "archive-2026-1mid-nine-20261008",
+  "examUid": "26_강남여고_1학기_중간_고2_대수",
+  "status": "PASS",
+  "registryStableDuringChecks": true,
+  "sourceStableDuringChecks": true,
+  "assetStableDuringChecks": true,
+  "registryFiles": {
+    "archive/db.js": "075263baf97672aab82f3c75fbcbebb3b18e687205ed6ef359c44fae88245071",
+    "archive/data/question_identity_map.json": "4076a3c341ac212cec43bdd72dea96d163318237b366674608a80ab12a79bc07",
+    "archive/data/question_metadata.json": "662b617672c7cfcec9fda27cd005393f167e09e26129090cb3ef56972145816c",
+    "archive/question-identity.js": "478baf50b4252a7e481d820a7f6baf568a64679a5083e225d60c1d89236770e1",
+    "archive/question-index.js": "c870aab119f7a85fca34b3931fdcd0bccd49e6240021fffd5b4be1f983fb0911",
+    "archive/question-index-report.md": "551720cd3b0e6a2aaca081950978f3fff11a4f7e61f50937222a874ece9ca40a",
+    "archive/question-index-audit.md": "89551e82291fb1f3e4b03787201a99095ae5980fbf6a118aae4d00b4442f7431",
+    "archive/data/archive2-catalog.json": "c7cf3a1f0910945ae3b9ea4376ed4ed1965b2d443a4353ce34584215fc2e9115",
+    "archive/data/archive2-canonical-input-manifest.json": "e85d99cc430b48c4ce3372470688660226317835e196d0d0fdd0e0abc20e9c43"
+  },
+  "source": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/exams/original/high/h2/1mid/26_강남여고_1학기_중간_고2_대수.js",
+    "sha256": "ee7f5dec997371cde114fab1c22bced3b9eda8bc29d9845f1f5cc554e8be973f"
+  },
+  "asset": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/assets/images/26_강남여고_1학기_중간_고2_대수/q19.png",
+    "sha256": "edcad8201e06a4ab6a7aa40c78f638f409c871ffefcdd7a34d2db9f7f16d95b9"
+  },
+  "results": [
+    {
+      "schemaVersion": "ROOT_REBASE_POSTCOPY_VALIDATOR_RUN_V1",
+      "name": "postcopyRegistration",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "archive/tools/verify-archive-registration.mjs"
+      ],
+      "cwd": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------",
+      "exitCode": 0,
+      "disposition": "PASS",
+      "processError": null,
+      "stdout": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_강남여고_1학기_중간_고2_대수\\registration-rebase-final\\postcopy\\root-registration-parity\\stdout.bin",
+        "sha256": "457c923931f0f26194b107ee0276983bbe7e7e80598909136459ce3eede10c8b",
+        "bytes": 171
+      },
+      "stderr": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_강남여고_1학기_중간_고2_대수\\registration-rebase-final\\postcopy\\root-registration-parity\\stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "finishedAt": "2026-10-08T15:58:20.182Z",
+      "reportPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_강남여고_1학기_중간_고2_대수\\registration-rebase-final\\postcopy\\root-registration-parity\\result.json",
+      "reportSha256": "2508e4c9b65aac395207b107ac1ea062dec0b0a69d601101fb51fbcf0e45e955"
+    },
+    {
+      "schemaVersion": "ROOT_REBASE_POSTCOPY_VALIDATOR_RUN_V1",
+      "name": "postcopyIdentity",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--test",
+        "tests/archive-question-identity-contract.test.mjs",
+        "tests/archive-question-identity-runtime.test.mjs",
+        "tests/archive-question-identity-collision-regression.test.mjs"
+      ],
+      "cwd": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------",
+      "exitCode": 0,
+      "disposition": "PASS",
+      "processError": null,
+      "stdout": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_강남여고_1학기_중간_고2_대수\\registration-rebase-final\\postcopy\\root-identity-runtime-tests\\stdout.bin",
+        "sha256": "1de4fc7955dc0dd956b8da5f1a287b0fe979b7c046b018b822fbc5a56fa004d9",
+        "bytes": 702
+      },
+      "stderr": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_강남여고_1학기_중간_고2_대수\\registration-rebase-final\\postcopy\\root-identity-runtime-tests\\stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "finishedAt": "2026-10-08T15:58:19.922Z",
+      "reportPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_강남여고_1학기_중간_고2_대수\\registration-rebase-final\\postcopy\\root-identity-runtime-tests\\result.json",
+      "reportSha256": "065ca4f65f68b38931e87c5091ef78e5338faba1b7b8ed2f41bd0a020a52cc55"
+    }
+  ]
+}

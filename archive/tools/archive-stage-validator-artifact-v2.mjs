@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { objectSha } from './pipeline-core/canonical.mjs';
+import { STUDENT_FIELDS } from './archive-student-bundle.mjs';
 import { validateMetaValidatorReceipt, validateResolverEvidence } from './meta-foundation/rpm-active-resolver.mjs';
 
 export const QUALITY_CONTRACT_V2 = 'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006';
@@ -28,6 +29,9 @@ const BASIC_FIELDS = ['id', 'level', 'category', 'originalCategory', 'questionTy
 const DIFFICULTY_ENUMS = { difficultyConfidence: ['high','medium','low','UNKNOWN'], difficultyBoundaryFlag: ['NONE','B12','B23','B34','B45','UNKNOWN'], legacyLevelCompatibility: ['NORMAL','BORDERLINE_REVIEW','BORDERLINE_ACCEPTABLE','STRONG_CONFLICT','UNKNOWN'] };
 const EXCLUDED_ANSWERS = new Set(['__EXCLUDED__', 'EXCLUDED_CANDIDATE']);
 const CIRCLED_PREFIX = /^\s*(?:①|②|③|④|⑤)\s*/;
+const CIRCLED_GLYPH_ONLY = /^[①-⑳]$/u;
+const LITERAL_SELECTOR_MARKERS = Object.freeze(['①', '②', '③', '④', '⑤']);
+const LITERAL_SELECTOR_SCHEMA = 'JS_ARCHIVE_LITERAL_SELECTOR_PROOF_V1';
 const CONTROL_ESCAPE = /[\u0000-\u0009\u000b\u000c\u000e-\u001f\u007f]/;
 
 const nonEmpty = value => typeof value === 'string' && value.trim().length > 0;
@@ -193,16 +197,122 @@ function validateDifficulty(question, qid, issues) {
   }
 }
 
-function validateChoiceStructure(question, qid, issues) {
+function studentPayloadSha256(question) {
+  // Match normalizeStudentBundle's legacy adapter: whitelist fields while preserving
+  // the source question's insertion order, then hash that exact JSON serialization.
+  const student = Object.fromEntries(Object.entries(question || {}).filter(([key]) => STUDENT_FIELDS.has(key)));
+  return createHash('sha256').update(JSON.stringify(student)).digest('hex');
+}
+
+function sourceParityMatchesProof(reviewRow, proof) {
+  const source = reviewRow?.provenanceEvidence?.sourceParity ?? reviewRow?.sourceParity;
+  if (!source) return true;
+  const sourceArchiveFile = source.sourceArchiveFile;
+  const sourceOrdinal = source.sourceOrdinal ?? source.qid;
+  const baselineSha = source.baselineSourceRawSha256 ?? source.baselineRawSha256
+    ?? source.baselineSha256;
+  const choicesExact = source.choicesExact ?? source.choicesUnchanged
+    ?? source.sourceTextAndChoicesUnmodified;
+  return (!sourceArchiveFile || sourceArchiveFile === proof.sourceParity.sourceArchiveFile)
+    && (sourceOrdinal === undefined || Number(sourceOrdinal) === proof.sourceParity.sourceOrdinal)
+    && (!baselineSha || baselineSha === proof.sourceParity.baselineSourceRawSha256)
+    && (choicesExact === undefined || choicesExact === true);
+}
+
+function markerSequenceOccursInOrder(text, markers) {
+  if (typeof text !== 'string') return false;
+  let cursor = 0;
+  for (const marker of markers) {
+    const at = text.indexOf(marker, cursor);
+    if (at < 0) return false;
+    cursor = at + marker.length;
+  }
+  return true;
+}
+
+function validatesLiteralSelectorProof(question, disposition, reviewRow, qid, evidence, assetRoot) {
+  const choices = array(question?.choices);
+  if (choices.length !== LITERAL_SELECTOR_MARKERS.length
+    || choices.some((choice, index) => choice !== LITERAL_SELECTOR_MARKERS[index])
+    || (question?.preserveChoicePrefixes !== undefined && question.preserveChoicePrefixes !== false)) return false;
+
+  const proof = disposition?.literalChoiceSelectorProof;
+  const source = proof?.sourceParity;
+  const reference = proof?.sourceReference;
+  const normalizedSourceFile = String(source?.sourceArchiveFile || '').replaceAll('\\', '/');
+  const boundSourceIdentity = evidence?.sourceIdentity || {};
+  const boundSourcePath = boundSourceIdentity.sourceArchiveFile ?? boundSourceIdentity.productionRelativePath;
+  const boundBaselineSha = evidence?.baselineSourceRawSha256
+    ?? evidence?.extractedBaselineRawSha256
+    ?? boundSourceIdentity.baselineSourceRawSha256
+    ?? boundSourceIdentity.extractedBaselineSha256;
+  if (proof?.schemaVersion !== LITERAL_SELECTOR_SCHEMA
+    || proof.qid !== qid
+    || proof.artifactSha !== evidence?.artifactSha
+    || evidence?.artifactDispositions?.artifactSha !== evidence?.artifactSha
+    || proof.choicesSha256 !== objectSha(choices)
+    || proof.studentPayloadSha256 !== studentPayloadSha256(question)
+    || source?.sourceOrdinal !== qid
+    || !/^[a-f0-9]{64}$/.test(source?.baselineSourceRawSha256 || '')
+    || !nonEmpty(source?.sourceArchiveFile)
+    || path.isAbsolute(source.sourceArchiveFile)
+    || normalizedSourceFile.split('/').includes('..')
+    || !/^archive\/exams\/original\/high\/h[123]\//.test(normalizedSourceFile)
+    || path.posix.basename(normalizedSourceFile, '.js') !== evidence?.examUid
+    || (boundSourcePath && String(boundSourcePath).replaceAll('\\', '/') !== normalizedSourceFile)
+    || (boundBaselineSha && boundBaselineSha !== source.baselineSourceRawSha256)
+    || source?.choicesExact !== true
+    || !Array.isArray(proof.markers)
+    || JSON.stringify(proof.markers) !== JSON.stringify(LITERAL_SELECTOR_MARKERS)
+    || !sourceParityMatchesProof(reviewRow, proof)) return false;
+
+  if (reference?.kind === 'QUESTION_CONTENT') {
+    return reference.field === 'content'
+      && reference.contentSha256 === objectSha(question?.content ?? '')
+      && reference.markersObserved?.length === LITERAL_SELECTOR_MARKERS.length
+      && JSON.stringify(reference.markersObserved) === JSON.stringify(LITERAL_SELECTOR_MARKERS)
+      && reference.reviewed === true
+      && nonEmpty(reference.observation)
+      && markerSequenceOccursInOrder(question?.content, LITERAL_SELECTOR_MARKERS);
+  }
+
+  if (reference?.kind === 'PROBLEM_ASSET') {
+    const qRefs = [question?.image, question?.visualAsset].filter(nonEmpty);
+    if (!qRefs.includes(reference.ref)
+      || reference.opened !== true
+      || reference.sourceFidelity !== 'EXACT_EXTRACTED_IMAGE'
+      || !nonEmpty(reference.observation)
+      || JSON.stringify(reference.markersObserved) !== JSON.stringify(LITERAL_SELECTOR_MARKERS)
+      || !/^[a-f0-9]{64}$/.test(reference.assetSha256 || '')) return false;
+    try {
+      const file = resolveInside(assetRoot, reference.ref);
+      return fs.existsSync(file)
+        && fs.statSync(file).isFile()
+        && createHash('sha256').update(fs.readFileSync(file)).digest('hex') === reference.assetSha256;
+    } catch {
+      return false;
+    }
+  }
+  return false;
+}
+
+function validateChoiceStructure(question, qid, issues, disposition, reviewRow, evidence, assetRoot) {
   if (!Array.isArray(question?.choices)) issues.push('ARTIFACT_CHOICES_ARRAY_REQUIRED:q'+qid);
   const choices = array(question?.choices);
+  const literalSelectorAllowed = validatesLiteralSelectorProof(question, disposition, reviewRow, qid, evidence, assetRoot);
+  if (disposition?.literalChoiceSelectorProof !== undefined && !literalSelectorAllowed) {
+    issues.push('ARTIFACT_CHOICE_LITERAL_SELECTOR_PROOF_INVALID:q' + qid);
+  }
+  if (!literalSelectorAllowed && choices.length > 0 && choices.every(choice => typeof choice === 'string' && CIRCLED_GLYPH_ONLY.test(choice))) {
+    issues.push('ARTIFACT_CHOICE_LITERAL_SELECTOR_UNSUPPORTED:q' + qid);
+  }
   for (let index = 0; index < choices.length; index += 1) {
     const choice = choices[index];
     if (typeof choice !== 'string' || !choice.trim()) {
       issues.push('ARTIFACT_CHOICE_VALUE_REQUIRED:q' + qid + ':i' + index);
       continue;
     }
-    if (CIRCLED_PREFIX.test(choice)) {
+    if (CIRCLED_PREFIX.test(choice) && !literalSelectorAllowed) {
       issues.push('ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED:q' + qid + ':i' + index);
     }
   }
@@ -374,7 +484,7 @@ export function validateArtifactContract({ stage, evidence, questions, repoRoot,
     if(failed(reviewRow?.verdict) || Object.values(reviewRow?.axisEvidence||{}).some(v=>failed(typeof v==='object'?v?.status:v))) issues.push('ARTIFACT_KNOWN_FAILED_REVIEW:q'+qid);
     validateBasicSchema(question, qid, issues);
     validateAssetRefs(question, qid, assetRoot, issues);
-    validateChoiceStructure(question, qid, issues);
+    validateChoiceStructure(question, qid, issues, dispositions.get(qid), reviewRow, evidence, assetRoot);
     inspectControlEscapes(question, qid, issues);
 
     if (EXCLUDED_ANSWERS.has(String(question?.answer || ''))) issues.push('ARTIFACT_EXCLUDED_STUDENT_ITEM:q'+qid);

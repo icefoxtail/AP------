@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_07_A2";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q07-A2",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "도형의 이동",
+    "originalCategory": "도형의 이동",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-C2-04-CORE",
+    "subUnit": "도형의 이동 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "도형의 이동"
+    ],
+    "wide": false,
+    "content": "원 $C_1:(x-2)^2+(y-1)^2=1$을 $x$축의 음의 방향으로 $2$, $y$축의 양의 방향으로 $4$만큼 평행이동한 원을 $C_2$라 하자. 두 원의 넓이를 동시에 이등분하는 직선의 방정식을 $y=mx+n$이라 할 때, $m+n$의 값은?",
+    "choices": [
+      "$-2$",
+      "$5$",
+      "$1$",
+      "$3$",
+      "$-1$"
+    ],
+    "answer": "④",
+    "solution": "원 $C_1$의 중심은 $(2,1)$이다. 이를 왼쪽으로 $2$, 위쪽으로 $4$만큼 이동하면 원 $C_2$의 중심은 $(0,5)$가 된다.\n두 원의 넓이를 동시에 이등분하려면 두 중심을 지나야 한다. 기울기는 $m=\\dfrac{5-1}{0-2}=-2$이다.\n이 직선은 $(0,5)$를 지나므로 $n=5$이다.\n따라서 $m+n=-2+5=3$이므로 정답은 ④이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 7,
+    "slot": "A2",
+    "purposeGroup": "A"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q07-A2");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q07-A2","meta":{"rpmL1":"L1-1|도형의 방정식","rpmL2":"L2-1.4|도형의 이동","rpmL3":"L3-1.4.1|평행이동","rpmL4":"L4-1.4.1.2|원의 이동","rpmL4Namespace":"RPM_EXISTING_DRAFT","rpmPrimaryRecordId":"H1-RPM-226","rpmDraftAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmDraftAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","secondaryConceptKeys":[],"crossConceptKeys":[],"conditionKeys":[],"crossConceptRegistryRef":null,"conditionRegistryRef":null,"sourceKind":"generated","integrationPattern":"SEQUENTIAL","difficultyBucket":3,"level":"중","problemTypeKey":"PT_MOVE_CIRCLE_TRANSLATION","templateKey":"TT_CIRCLE_TRANSLATION_CENTER","standardCourse":"공통수학2","standardUnitKey":"H22-C2-04","subUnitKey":"H22-C2-04-CORE"},"metaFinalSha256":"9bba8b15cd7c23d0723c466c6b8307b5dbc01eae830fbc3b9b3c132af353d9c9","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q07-A2.json","sha256":"710458b9e8f641a5c45c7c340003a32d388622da2a0687bcae150e998d034aa5","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261009_PALMA_Q05_Q08_36","scopeUids":["ALITE-PALMA25-2MID-Q07-A2"],"uid":"ALITE-PALMA25-2MID-Q07-A2"},"metaReviewEvidenceSha256":"710458b9e8f641a5c45c7c340003a32d388622da2a0687bcae150e998d034aa5","difficultyBucket":3,"level":"중","problemTypeKey":"PT_MOVE_CIRCLE_TRANSLATION","templateKey":"TT_CIRCLE_TRANSLATION_CENTER","secondaryConceptKeys":[],"crossConceptKeys":[],"conditionKeys":[],"integrationPattern":"SEQUENTIAL"});})();

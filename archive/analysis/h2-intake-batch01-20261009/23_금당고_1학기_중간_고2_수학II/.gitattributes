@@ -1,0 +1,6 @@
+# Immutable audit records bind SHA-256 over exact process/file bytes.
+# Preserve CRLF and trailing process-output bytes; do not normalize signed proof data.
+*.json -text -diff
+*.txt -text -diff
+*.md -text -diff
+*.bin -text -diff

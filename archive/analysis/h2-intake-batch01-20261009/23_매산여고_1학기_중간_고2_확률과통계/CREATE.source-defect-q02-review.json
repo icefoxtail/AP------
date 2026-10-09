@@ -1,0 +1,43 @@
+{
+  "reviewerId": "/root/create_08",
+  "reason": "The extracted problem diagram omitted the printed P label that the prompt uses as its start point.",
+  "reviewedRegion": {
+    "dpi": 300,
+    "renderPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\source-q02-page1-300dpi.png",
+    "renderSha256": "10c8e1a32d7d325f99aa8c837920fc1e9cda012dc7200c005385b872a06bb67a",
+    "pdfPage": 1
+  },
+  "reviewedAt": "2026-10-09T01:49:16.1375394Z",
+  "assetBefore": {
+    "sha256": "f3dec10bb39fe84cda70db9a328fefd8e18d772a6e56a5c26326e92f027d3307",
+    "ref": "archive/assets/images/23_매산여고_1학기_중간_고2_확률과통계/q02.png"
+  },
+  "scope": "QID_ONLY",
+  "examUid": "23_매산여고_1학기_중간_고2_확률과통계",
+  "schemaVersion": "JS_ARCHIVE_CODEX_SOURCE_DEFECT_REVIEW_V1",
+  "originalPdf": {
+    "path": "C:\\Users\\USER\\Desktop\\기출정리 파일\\(1)1중간\\확률과통계\\2023_매여고2_확통_1중간.pdf",
+    "sha256": "08219d78fbd02c8d00661e262a055b238a65d28610cbf895bc62479a609f13b2"
+  },
+  "assetAfter": {
+    "cropRectPx": [
+      590,
+      2250,
+      650,
+      330
+    ],
+    "maskRationale": "Removed only adjacent prompt text outside the lower-left diagram edge; preserved printed P below the lower-left grid corner and Q/R labels.",
+    "outsideDiagramMaskPx": [
+      0,
+      0,
+      44,
+      210
+    ],
+    "sha256": "67b9268748d6b46cb0185d0f7e25c42b8b9ab4b4c84c4a5c41ea58d3b40bc0e1",
+    "ref": "assets/images/23_매산여고_1학기_중간_고2_확률과통계/q02.png",
+    "cropDpi": 300
+  },
+  "category": "JS_ASSET_CONFLICT",
+  "qid": 2,
+  "finding": "Assigned q02 asset shows the grid and R/Q but no P. The scoped original PDF page 1 shows P at the lower-left grid corner; the candidate crop was minimally expanded from the 300-DPI page to include P while retaining the six-by-four grid and Q/R labels."
+}

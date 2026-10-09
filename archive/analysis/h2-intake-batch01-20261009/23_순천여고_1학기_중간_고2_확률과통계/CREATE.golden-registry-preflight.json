@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_GOLDEN_PREFLIGHT_V2",
+  "stage": "CREATE",
+  "examUid": "23_순천여고_1학기_중간_고2_확률과통계",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "performedAt": "2026-10-09T01:50:03.378Z",
+  "performedBeforeTargetSolutionWork": true,
+  "targetSourceRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+  "registry": {
+    "path": "archive/data/codex-quality-calibration-registry-v2.json",
+    "sha256": "f42e82d8c6c6f83d294d7d825eb0cc2c7cc939f1e62db3ed6faaea0cd9f0733d"
+  },
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "items": [
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "observation": "Read the actual solution: complete-square form fixes center (-3,1), center moves to (-5,2), then origin symmetry maps to (5,-2); radius stays 3. Read q7 SVG and rendered preview: dashed original/intermediate circles and final circle track those centers and unchanged radius; do not treat image-renderer font fallback as browser evidence.",
+            "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+            "visualRef": "assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg"
+          },
+          {
+            "qid": 14,
+            "solutionSha256": "10ee4e341cb3da057af2893386417777181ad5c84adeaf49c917a91ed7dd50a2",
+            "observation": "Read the actual solution: maximum intersection 14; inclusion-exclusion gives minimum 3; the two panels map exact disjoint/intersection counts to the limiting cases. Rendered Venn circles keep A/B owners and the overlap labels legible.",
+            "visualSha256": "329a041add7ad65e98913b3aef6b1f401b3d96713986609acad2d4de9ed8d135",
+            "visualRef": "assets/images/25_매산여고_2학기_중간_고1_기출/q14-solution.svg"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "items": [
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "observation": "Read the actual solution and q02 SVG: the lines have slopes -1/3 and k/2; the drawn blue shallow negative line and red steep positive line express perpendicularity. Rendered side text has math-font fallback boxes in ImageMagick; no browser PASS is inferred.",
+            "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+            "visualRef": "assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg"
+          },
+          {
+            "qid": 3,
+            "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+            "observation": "Read the actual solution and q03 SVG: center (-1,3), radius 2, with point (1,3) at the rightmost radius endpoint. Rendered circle/center/radius geometry matches those facts; do not copy unrelated typography.",
+            "visualSha256": "3208ec847fd87a1907669b72f0b0fb2b795407361335c0ce34bc2fa4fda9cce8",
+            "visualRef": "assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+        "items": [
+          {
+            "qid": 17,
+            "solutionSha256": "dc90f7eeb09e7d4b09deaa46cf76518426ab5f9e832a005a690e7082177af03b",
+            "observation": "Read the actual solution and q17 SVG: vector AB=(-3,4), the admissible perpendicular side vector is (4,3), CD endpoints (6,11),(9,7), and the diameter circle is centered at (15/2,9) with radius 5/2. Rendered polygon/circle coordinates and labels agree; image renderer shows MathJax fallback boxes in some text.",
+            "visualSha256": "f87f8dab040c26c459d7056923c9801d7655db1d46e65159851f406ded5bc35a",
+            "visualRef": "assets/images/25_제일고_2학기_중간_고1_기출/q17-solution.svg"
+          },
+          {
+            "qid": 22,
+            "solutionSha256": "53aa1f776ff9f4bb671f7f0ff436e7f38feed37c59475d616f0fe769681fc99f",
+            "observation": "Read the actual solution and q22 SVG: center distance 5, source-circle radius 4, integer radii d=1..9; endpoint tangencies give one each and seven interior radii give two each, total 16. Rendered nested-circle intersections illustrate endpoint/interior counts; renderer fallback boxes are not treated as production render evidence.",
+            "visualSha256": "48b7eaf6353b98c1c0433013d5acf20aef62e6480540b610ae904412af5ba988",
+            "visualRef": "assets/images/25_제일고_2학기_중간_고1_기출/q22-solution.svg"
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "observation": "Read failure fixture and confirmed the concrete false-PASS cases: SVG labels can disagree with actual primitives, enumerated subparts must be separated in rendered solution blocks, and runtime TeX escape damage requires sandbox-level checks. These cases guide review without inheriting the rejected outputs."
+    }
+  },
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "decision": "The fixed registry is the quality floor. Use explicit source conditions, visible counting/algebra setup, sequential intermediate values, separate case blocks, and a conclusion tied to the selected answer. Do not inherit any rendering treatment that is unreadable or unverified."
+}

@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_SECOND_REPLACEMENT_DESIGN_FREEZE_V1",
+  "examUid": "26_팔마중_2학기_중간_중1_기출",
+  "qid": 2,
+  "stage": "ITEM_RECOVERY",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "preflight": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_팔마중_2학기_중간_중1_기출\\codex-20261007-2sem-mid-palma-m1\\evidence\\ITEM_RECOVERY.q2.second-replacement.calibration.preflight.json",
+    "status": "PASS"
+  },
+  "priorFirstReplacementHold": {
+    "R1": "POSTFREEZE_RAY_NOTATION_ADJUDICATION_PASS",
+    "R2": "ITEM_HOLD_MULTIPLE_FALSE_OPTIONS"
+  },
+  "originalSourceDecision": "Original printed q2 remains contradictory under standard ray reading and indeterminate under vector reading; no source-only repair can choose one printed correction.",
+  "design": {
+    "concept": "M1 basic geometry: rays identified by starting point and direction; equality of segment lengths",
+    "difficultyBucket": 2,
+    "responseForm": "five-choice single incorrect statement",
+    "conditions": [
+      "A,B,C,D are collinear in this order",
+      "length AB equals length BC",
+      "ray identity explicitly means same start and same direction"
+    ],
+    "studentBody": "직선 $l$ 위에 네 점 A, B, C, D가 이 순서대로 있다. 반직선은 시작점과 향하는 방향이 모두 같으면 같은 반직선이다. 선분 AB의 길이와 선분 BC의 길이가 같을 때, 다음 중 옳지 않은 것을 고르면? (4점)",
+    "choices": [
+      "반직선 AB와 반직선 AC는 같다.",
+      "반직선 DC와 반직선 DB는 같다.",
+      "선분 AB의 길이와 선분 BC의 길이는 같다.",
+      "반직선 AB와 반직선 DC는 같다.",
+      "반직선 CA와 반직선 CB는 같다."
+    ],
+    "independentTruths": [
+      "TRUE",
+      "TRUE",
+      "TRUE",
+      "FALSE",
+      "TRUE"
+    ],
+    "uniqueCorrectCount": 1,
+    "answer": "④",
+    "distractorPaths": [
+      "same origin and rightward direction",
+      "same origin D and leftward direction",
+      "the explicitly given equal lengths",
+      "opposite directions and different starts",
+      "same origin C and leftward direction"
+    ],
+    "solution": "반직선은 시작점과 향하는 방향이 모두 같아야 같은 반직선이다. 점의 순서는 A-B-C-D이다.\n\n① 반직선 AB와 AC는 시작점이 A이고 둘 다 오른쪽을 향하므로 같다.\n\n② 반직선 DC와 DB는 시작점이 D이고 둘 다 왼쪽을 향하므로 같다.\n\n③ 선분 AB와 선분 BC의 길이는 같다고 주어졌다.\n\n④ 반직선 AB는 A에서 시작해 오른쪽을 향하고, 반직선 DC는 D에서 시작해 왼쪽을 향하므로 서로 다르다.\n\n⑤ 반직선 CA와 CB는 시작점이 C이고 둘 다 왼쪽을 향하므로 같다.\n\n따라서 옳지 않은 것은 ④이다."
+  },
+  "metaIntent": {
+    "category": "선분과 반직선",
+    "standardCourse": "중1 수학",
+    "standardUnitKey": "M1-05",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+    "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_SEGMENT_RAY_OBJECT_IDENTITY",
+    "difficultyBucket": 2
+  }
+}

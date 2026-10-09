@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_CANDIDATES_V1",
+  "reviewerId": "recovery_03",
+  "examUid": "26_강남여고_1학기_중간_고2_대수",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "q1": {
+    "recoveryType": "QUESTION_REPLACEMENT",
+    "method": "CODEX_DIRECT_AUTHORING",
+    "replacementScope": "QUESTION_ONLY",
+    "replacedQid": 1,
+    "reason": "ORIGINAL_ITEM_UNRECOVERABLE_AFTER_REVIEW2",
+    "sourceMode": "DIRECT_REPLACEMENT_SOURCE_NOT_EXACT_TRANSCRIPTION",
+    "sourceRef": "D:/2026_1학기중간_/대수/26_강남여고_1학기_중간_고2_대수.pdf p.1; sha256 3b917c45f0b81c9cf32133471a2044e5887e91b0ea409e4a6c5009bf96450b2f",
+    "stem": "실수 범위에서\n다음 중 옳은 것은? (3점)",
+    "solutionFirstCoreRef": "CREATE.item-recovery.scope-and-solution-first.json#/qids/qid1/solutionFirstCore",
+    "choices": [
+      "$\\sqrt[5]{-32}=-2$",
+      "$\\sqrt[5]{32}=\\pm2$",
+      "$\\sqrt[4]{16}=-2$",
+      "$\\sqrt[3]{-8}=2$",
+      "$\\sqrt{(-3)^2}=-3$"
+    ],
+    "answer": "①",
+    "solution": "홀수 제곱근은 음수도 실수로 나타낼 수 있고, 짝수 제곱근 기호는 음이 아닌 값을 나타낸다. 각 보기를 확인한다.\n\n① $(-2)^5=-32$이므로 $\\sqrt[5]{-32}=-2$이다.\n\n② $2^5=32$이므로 $\\sqrt[5]{32}=2$이다. 홀수 제곱근의 실수값은 하나이므로 $\\pm2$가 아니다.\n\n③ $(-2)^4=16$이지만 $\\sqrt[4]{16}$은 음이 아닌 값인 $2$이다.\n\n④ $(-2)^3=-8$이므로 $\\sqrt[3]{-8}=-2$이다.\n\n⑤ $\\sqrt{(-3)^2}=\\sqrt9=3$이다.\n\n따라서 옳은 것은 ①이다.",
+    "distractorAudit": [
+      {
+        "choice": 2,
+        "path": "홀수 차수의 실수근이 두 값 ±2라고 보는 짝수근 성질 혼동",
+        "whyFalse": "x^5=32의 실수해는 2 하나다."
+      },
+      {
+        "choice": 3,
+        "path": "x^4=16의 음의 방정식 해를 principal radical 값으로 선택",
+        "whyFalse": "√[4]{16}은 음이 아닌 2다."
+      },
+      {
+        "choice": 4,
+        "path": "홀수근에서 음의 피제곱수 부호를 잃음",
+        "whyFalse": "(-2)^3=-8이므로 실수 세제곱근은 -2다."
+      },
+      {
+        "choice": 5,
+        "path": "√(x²)=x로 처리해 절댓값/주값 조건을 누락",
+        "whyFalse": "√((-3)^2)=√9=3이다."
+      }
+    ],
+    "independentCheck": {
+      "existence": "all expressions defined over reals",
+      "uniqueCorrectChoice": "1 only",
+      "duplicateEquivalentChoices": false,
+      "responseForm": "5-choice multiple choice",
+      "answerPositionDistribution": "① is below current non-target answer count; no ③ default."
+    },
+    "solutionBlockAudit": [
+      {
+        "block": "concept",
+        "evidence": "홀수 제곱근은 음수도 실수로 나타낼 수 있고, 짝수 제곱근 기호는 음이 아닌 값을 나타낸다."
+      },
+      {
+        "block": "choice1",
+        "equation": "(-2)^5=-32",
+        "conclusion": "√[5]{-32}=-2"
+      },
+      {
+        "block": "choice2",
+        "equation": "2^5=32",
+        "conclusion": "√[5]{32}=2, not ±2"
+      },
+      {
+        "block": "choice3",
+        "equation": "√[4]{16}=2",
+        "conclusion": "principal radical is nonnegative though -2 solves x^4=16"
+      },
+      {
+        "block": "choice4",
+        "equation": "(-2)^3=-8",
+        "conclusion": "√[3]{-8}=-2"
+      },
+      {
+        "block": "choice5",
+        "equation": "√((-3)^2)=√9=3",
+        "conclusion": "not -3"
+      },
+      {
+        "block": "answer",
+        "conclusion": "only choice 1 is true; answer ①"
+      }
+    ]
+  },
+  "q10": {
+    "recoveryType": "AUDITED_SOURCE_REPAIR",
+    "sourceMode": "MINIMAL_CHOICE_CORRECTION_SOURCE_FAITHFUL",
+    "qid": 10,
+    "changedLocus": "choices[0] only, from $\\sqrt[4]a$ to $\\sqrt a$; retain stem and choices[1..4]",
+    "answer": "①",
+    "solutionCorrection": "Preserve exponent derivation and state that the corrected first choice equals the computed √a; conclude ①.",
+    "allChoicesDistinctForACondition": "Since a>0 and a≠1, distinct rational exponents give distinct values. Exponents in choices 1–5 after repair are 1/2, 3/4, 5/4, 7/6, 13/12; only choice 1 has exponent 1/2.",
+    "freshAffectedR1R2Required": true,
+    "solutionBlockAudit": [
+      {
+        "equation": "f(n)=a^((n+3)/6)",
+        "block": "radical-to-power"
+      },
+      {
+        "equation": "f(1)=a^(2/3); f(2)=a^(5/6); f(3)=a",
+        "block": "values"
+      },
+      {
+        "equation": "a^(2/3+5/6-1)=a^(1/2)=√a",
+        "block": "combination"
+      },
+      {
+        "block": "choice",
+        "conclusion": "corrected choice 1 is √a; a>0 and a≠1 keep distinct exponents distinct"
+      }
+    ]
+  },
+  "qualityPassAsserted": false,
+  "freshAffectedR1R2Complete": false
+}

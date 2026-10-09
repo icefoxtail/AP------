@@ -1,0 +1,44 @@
+[
+  {
+    "name": "workspace-policy",
+    "command": "node tools/archive/check-exam-workspace-policy.mjs --staged",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "bea83d4c4f56042f86d6825e4d1f9e8e1b76bcab6ccef70d488f006867c161fb",
+    "stdoutSha256": "bbe1f6f5aa83a3cdc8a61a6b93fa21da0c690283c374159738ddc3e588c43bf5",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "postcopyCatalog",
+    "command": "C:\\Program Files\\nodejs\\node.exe archive/tools/build-archive2-catalog.mjs --check",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "bea83d4c4f56042f86d6825e4d1f9e8e1b76bcab6ccef70d488f006867c161fb",
+    "stdoutSha256": "5e813321dfd965ecefb4def06fcab9ae4cefef21d4823ad3271d3e4f8b398d62",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "proof": "archive/analysis/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고2_대수/registration-rebase-final/postcopy/root-catalog-check/result.json",
+    "reuseBasis": "Exact source/assets/nine registry bytes unchanged since this current-bound successful validator."
+  },
+  {
+    "name": "registrationParityFinal",
+    "command": "C:\\Program Files\\nodejs\\node.exe archive/tools/verify-archive-registration.mjs",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "bea83d4c4f56042f86d6825e4d1f9e8e1b76bcab6ccef70d488f006867c161fb",
+    "stdoutSha256": "457c923931f0f26194b107ee0276983bbe7e7e80598909136459ce3eede10c8b",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "proof": "archive/analysis/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고2_대수/registration-rebase-final/postcopy/root-registration-parity/result.json",
+    "reuseBasis": "Exact source/assets/nine registry bytes unchanged since this current-bound successful validator."
+  },
+  {
+    "name": "identityRuntimeTestsFinal",
+    "command": "C:\\Program Files\\nodejs\\node.exe --test tests/archive-question-identity-contract.test.mjs tests/archive-question-identity-runtime.test.mjs tests/archive-question-identity-collision-regression.test.mjs",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "bea83d4c4f56042f86d6825e4d1f9e8e1b76bcab6ccef70d488f006867c161fb",
+    "stdoutSha256": "1de4fc7955dc0dd956b8da5f1a287b0fe979b7c046b018b822fbc5a56fa004d9",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "proof": "archive/analysis/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고2_대수/registration-rebase-final/postcopy/root-identity-runtime-tests/result.json",
+    "reuseBasis": "Exact source/assets/nine registry bytes unchanged since this current-bound successful validator."
+  }
+]

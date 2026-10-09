@@ -1,0 +1,920 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "CREATE",
+  "examUid": "26_동산중_1학기_중간_중2_기출",
+  "solutionRewrite": "FULL_ALL_QUESTIONS",
+  "solutionRewriteCount": "24/24",
+  "itemHoldCount": 0,
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "openedPhysicalFiles": [
+          "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+          "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+          "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/golden-existing-render-witness/golden-maesan-q7-chrome.png"
+        ],
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "items": [
+          {
+            "visualObservation": "Current SVG SHA matched the existing authorized PNG witness. Opened the authorized existing Chrome PNG: three centers and dashed intermediate circles are visibly distinguished; final circle and x/y axes are legible.",
+            "observation": "Actual solution read. It introduces the translated/reflected circle center and retained radius, writes each center transformation, applies the circle equation, and reaches the final equation through visible algebra instead of hiding the coordinate changes.",
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+            "qid": 7
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "openedPhysicalFiles": [
+          "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+          "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+          "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/golden-existing-render-witness/golden-hyocheon-q2-chrome.png"
+        ],
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "items": [
+          {
+            "visualObservation": "Current SVG SHA matched the existing authorized PNG witness. Opened the authorized existing Chrome PNG: the two lines use opposite visual directions, axes/grid are clear, and the side panel labels the slopes and perpendicular condition.",
+            "observation": "Actual solution read. It isolates each line equation, derives both slopes, states the perpendicular product condition, substitutes k, and shows the arithmetic to the final answer.",
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+            "qid": 2
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "observation": "Read the registered hard regression fixture. It documents false PASS from unread actual SVG geometry, enumerated ㄱ/ㄴ/ㄷ blocks collapsed into one paragraph, Meta nulls despite exact active keys, and doubled TeX escape source/runtime divergence. For this recovery, explicitly inspect each numbered reasoning step and actual visual coordinates/topology; no aggregate audit or labels-only SVG check can substitute.",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23"
+    }
+  },
+  "sourceReadsRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\CREATE.item-recovery.source-first-assessment.locked.json",
+  "sourceReadsSha256": "d7d895bc88402cdfd4316ac60dcd430ff82dd27ac63130b8540b8502c2eff524",
+  "rows": [
+    {
+      "qid": 1,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "9e9d63f486bec145a0b10b131453437df934189b89f31833d7916cc22a3bd096",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current ACTIVE Meta Foundation has no exact middle-school 2022 physical PT/TPL mapping for this unit; retain null rather than force an unrelated key, with manual/non-auto status.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Locked source page 1 opened and transcribed; q1 solution freshly written from the source task and independently recomputed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "Actual solution q1 was read and laid out in separate explanation/equation/conclusion blocks."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "Used current 2022 master row: 중2 수학, M2-01 수와 식, order 1; existing physical nulls are explicitly debt-bound."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "No item-level image or SVG is needed; text conditions and choices were directly read from the locked JPG."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Original scan D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0013.jpg reviewed; page/question identity q1 directly matched."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "efa9e88476b23dc377d44774b74a7a7908ad6d1c042dd571a289c52b591f738e",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current ACTIVE Meta Foundation has no exact middle-school 2022 physical PT/TPL mapping for this unit; retain null rather than force an unrelated key, with manual/non-auto status.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Locked source page 1 opened and transcribed; q2 solution freshly written from the source task and independently recomputed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "Actual solution q2 was read and laid out in separate explanation/equation/conclusion blocks."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "Used current 2022 master row: 중2 수학, M2-01 수와 식, order 1; existing physical nulls are explicitly debt-bound."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "No item-level image or SVG is needed; text conditions and choices were directly read from the locked JPG."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Original scan D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0013.jpg reviewed; page/question identity q2 directly matched."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "948dc816597d8071f62306d717fbde9923ef27ecde825a1072cfc529b70ecd7b",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current ACTIVE Meta Foundation has no exact middle-school 2022 physical PT/TPL mapping for this unit; retain null rather than force an unrelated key, with manual/non-auto status.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Locked source page 1 opened and transcribed; q3 solution freshly written from the source task and independently recomputed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "Actual solution q3 was read and laid out in separate explanation/equation/conclusion blocks."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "Used current 2022 master row: 중2 수학, M2-01 수와 식, order 1; existing physical nulls are explicitly debt-bound."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "No item-level image or SVG is needed; text conditions and choices were directly read from the locked JPG."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Original scan D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0013.jpg reviewed; page/question identity q3 directly matched."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "b41affe6d2c3f2d34ce4296485e164f18e3b597ba7184b6ea621f50db4d2b0e7",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current ACTIVE Meta Foundation has no exact middle-school 2022 physical PT/TPL mapping for this unit; retain null rather than force an unrelated key, with manual/non-auto status.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Locked source page 1 opened and transcribed; q4 solution freshly written from the source task and independently recomputed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "Actual solution q4 was read and laid out in separate explanation/equation/conclusion blocks."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "Used current 2022 master row: 중2 수학, M2-01 수와 식, order 1; existing physical nulls are explicitly debt-bound."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "No item-level image or SVG is needed; text conditions and choices were directly read from the locked JPG."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Original scan D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0013.jpg reviewed; page/question identity q4 directly matched."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "1fe8f38c3c5b327a4232dcae2ac073066a87f013745061f99a07945c1f903d15",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current ACTIVE Meta Foundation has no exact middle-school 2022 physical PT/TPL mapping for this unit; retain null rather than force an unrelated key, with manual/non-auto status.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Locked source page 1 opened and transcribed; q5 solution freshly written from the source task and independently recomputed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "Actual solution q5 was read and laid out in separate explanation/equation/conclusion blocks."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "Used current 2022 master row: 중2 수학, M2-01 수와 식, order 1; existing physical nulls are explicitly debt-bound."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "No item-level image or SVG is needed; text conditions and choices were directly read from the locked JPG."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Original scan D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0013.jpg reviewed; page/question identity q5 directly matched."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "c91213eb458fd2929dffeb5c006be7438deec915cbbe4060f038be14c6fe43b6",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current ACTIVE Meta Foundation has no exact middle-school 2022 physical PT/TPL mapping for this unit; retain null rather than force an unrelated key, with manual/non-auto status.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Locked source page 1 opened and transcribed; q6 solution freshly written from the source task and independently recomputed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "Actual solution q6 was read and laid out in separate explanation/equation/conclusion blocks."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "Used current 2022 master row: 중2 수학, M2-01 수와 식, order 1; existing physical nulls are explicitly debt-bound."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "No item-level image or SVG is needed; text conditions and choices were directly read from the locked JPG."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Original scan D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0013.jpg reviewed; page/question identity q6 directly matched."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "5954b1fb93dd563f4d5b3587af4e8bf091e0818d18b711b13fccfc57ba12561c",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current ACTIVE Meta Foundation has no exact middle-school 2022 physical PT/TPL mapping for this unit; retain null rather than force an unrelated key, with manual/non-auto status.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Locked source page 2 opened and transcribed; q7 solution freshly written from the source task and independently recomputed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "Actual solution q7 was read and laid out in separate explanation/equation/conclusion blocks."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "Used current 2022 master row: 중2 수학, M2-01 수와 식, order 1; existing physical nulls are explicitly debt-bound."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "No item-level image or SVG is needed; text conditions and choices were directly read from the locked JPG."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Original scan D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0014.jpg reviewed; page/question identity q7 directly matched."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "54df10a35c02ab019c3bad6ca0ab33b1b267f5eb8035056f6937433e52ab1552",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current ACTIVE Meta Foundation has no exact middle-school 2022 physical PT/TPL mapping for this unit; retain null rather than force an unrelated key, with manual/non-auto status.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Locked source page 2 opened and transcribed; q8 solution freshly written from the source task and independently recomputed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "Actual solution q8 was read and laid out in separate explanation/equation/conclusion blocks."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "Used current 2022 master row: 중2 수학, M2-01 수와 식, order 1; existing physical nulls are explicitly debt-bound."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "No item-level image or SVG is needed; text conditions and choices were directly read from the locked JPG."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Original scan D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0014.jpg reviewed; page/question identity q8 directly matched."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "f5baf68ddeac743069ba70b3c3b6dce593fa771c6048411d66472c5314b27423",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current ACTIVE Meta Foundation has no exact middle-school 2022 physical PT/TPL mapping for this unit; retain null rather than force an unrelated key, with manual/non-auto status.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Locked source page 2 opened and transcribed; q9 solution freshly written from the source task and independently recomputed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "Actual solution q9 was read and laid out in separate explanation/equation/conclusion blocks."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "Used current 2022 master row: 중2 수학, M2-01 수와 식, order 1; existing physical nulls are explicitly debt-bound."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "No item-level image or SVG is needed; text conditions and choices were directly read from the locked JPG."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Original scan D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0014.jpg reviewed; page/question identity q9 directly matched."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "603f81d039745b0138f891663bd21eb83480dbb5664d355fbc642e729ae26d76",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current ACTIVE Meta Foundation has no exact middle-school 2022 physical PT/TPL mapping for this unit; retain null rather than force an unrelated key, with manual/non-auto status.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Locked source page 2 opened and transcribed; q10 solution freshly written from the source task and independently recomputed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "Actual solution q10 was read and laid out in separate explanation/equation/conclusion blocks."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "Used current 2022 master row: 중2 수학, M2-01 수와 식, order 1; existing physical nulls are explicitly debt-bound."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "No item-level image or SVG is needed; text conditions and choices were directly read from the locked JPG."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Original scan D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0014.jpg reviewed; page/question identity q10 directly matched."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "1077fa98d1e7972858725a1dc2f857c6949e338c1106f90348849d7cc4ee6eec",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current ACTIVE Meta Foundation has no exact middle-school 2022 physical PT/TPL mapping for this unit; retain null rather than force an unrelated key, with manual/non-auto status.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Locked source page 2 opened and transcribed; q11 solution freshly written from the source task and independently recomputed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "Actual solution q11 was read and laid out in separate explanation/equation/conclusion blocks."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "Used current 2022 master row: 중2 수학, M2-01 수와 식, order 1; existing physical nulls are explicitly debt-bound."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "No item-level image or SVG is needed; text conditions and choices were directly read from the locked JPG."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Original scan D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0014.jpg reviewed; page/question identity q11 directly matched."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "47cb013a22c4c0574f85d57ccb4fbbeb1a0feb329c6ce44a8e7c30e238588740",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current ACTIVE Meta Foundation has no exact middle-school 2022 physical PT/TPL mapping for this unit; retain null rather than force an unrelated key, with manual/non-auto status.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Locked source page 2 opened and transcribed; q12 solution freshly written from the source task and independently recomputed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "Actual solution q12 was read and laid out in separate explanation/equation/conclusion blocks."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "Used current 2022 master row: 중2 수학, M2-01 수와 식, order 1; existing physical nulls are explicitly debt-bound."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "No item-level image or SVG is needed; text conditions and choices were directly read from the locked JPG."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Original scan D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0014.jpg reviewed; page/question identity q12 directly matched."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "21eda23af7d34871394482862f9aa1800bbfa57d577d66198c9583cbc12500c7",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current ACTIVE Meta Foundation has no exact middle-school 2022 physical PT/TPL mapping for this unit; retain null rather than force an unrelated key, with manual/non-auto status.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Locked source page 3 opened and transcribed; q13 solution freshly written from the source task and independently recomputed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "Actual solution q13 was read and laid out in separate explanation/equation/conclusion blocks."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "Used current 2022 master row: 중2 수학, M2-01 수와 식, order 1; existing physical nulls are explicitly debt-bound."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "No item-level image or SVG is needed; text conditions and choices were directly read from the locked JPG."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Original scan D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0015.jpg reviewed; page/question identity q13 directly matched."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "44624cf20c1ea965f9513fa091a4423ca79a70a026ef44ebf26208ec776608c5",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current ACTIVE Meta Foundation has no exact middle-school 2022 physical PT/TPL mapping for this unit; retain null rather than force an unrelated key, with manual/non-auto status.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Locked source page 3 opened and transcribed; q14 solution freshly written from the source task and independently recomputed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "Actual solution q14 was read and laid out in separate explanation/equation/conclusion blocks."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "Used current 2022 master row: 중2 수학, M2-01 수와 식, order 1; existing physical nulls are explicitly debt-bound."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "No item-level image or SVG is needed; text conditions and choices were directly read from the locked JPG."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Original scan D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0015.jpg reviewed; page/question identity q14 directly matched."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "79c12dc569cf199f8804cdf9d2411894956af95d4a5d8280a727a9963a53b532",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current ACTIVE Meta Foundation has no exact middle-school 2022 physical PT/TPL mapping for this unit; retain null rather than force an unrelated key, with manual/non-auto status.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Locked source page 3 opened and transcribed; q15 solution freshly written from the source task and independently recomputed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "Actual solution q15 was read and laid out in separate explanation/equation/conclusion blocks."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "Used current 2022 master row: 중2 수학, M2-02 일차부등식, order 2; existing physical nulls are explicitly debt-bound."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "No item-level image or SVG is needed; text conditions and choices were directly read from the locked JPG."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Original scan D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0015.jpg reviewed; page/question identity q15 directly matched."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "666514f85edfc69fe1952455b4cca290963a18a8a06a53c86a41eb2aa47c0647",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current ACTIVE Meta Foundation has no exact middle-school 2022 physical PT/TPL mapping for this unit; retain null rather than force an unrelated key, with manual/non-auto status.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Locked source page 3 opened and transcribed; q16 solution freshly written from the source task and independently recomputed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "Actual solution q16 was read and laid out in separate explanation/equation/conclusion blocks."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "Used current 2022 master row: 중2 수학, M2-02 일차부등식, order 2; existing physical nulls are explicitly debt-bound."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "No item-level image or SVG is needed; text conditions and choices were directly read from the locked JPG."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Original scan D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0015.jpg reviewed; page/question identity q16 directly matched."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "d8c68c3ed497b40dddda6175fcac405303c1030f0dcf21db821f115cc8a39794",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current ACTIVE Meta Foundation has no exact middle-school 2022 physical PT/TPL mapping for this unit; retain null rather than force an unrelated key, with manual/non-auto status.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Locked source page 3 opened and transcribed; q17 solution freshly written from the source task and independently recomputed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "Actual solution q17 was read and laid out in separate explanation/equation/conclusion blocks."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "Used current 2022 master row: 중2 수학, M2-02 일차부등식, order 2; existing physical nulls are explicitly debt-bound."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "No item-level image or SVG is needed; text conditions and choices were directly read from the locked JPG."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Original scan D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0015.jpg reviewed; page/question identity q17 directly matched."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "b9f056a8ec4cc07363bf2e54638abb870a0c8bc442c566dec72da87de21360f1",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current ACTIVE Meta Foundation has no exact middle-school 2022 physical PT/TPL mapping for this unit; retain null rather than force an unrelated key, with manual/non-auto status.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Locked source page 3 opened and transcribed; q18 solution freshly written from the source task and independently recomputed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "Actual solution q18 was read and laid out in separate explanation/equation/conclusion blocks."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "Used current 2022 master row: 중2 수학, M2-02 일차부등식, order 2; existing physical nulls are explicitly debt-bound."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "No item-level image or SVG is needed; text conditions and choices were directly read from the locked JPG."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Original scan D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0015.jpg reviewed; page/question identity q18 directly matched."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceMode": "ALIVE_REPLACEMENT",
+      "verdict": "PASS",
+      "solutionSha256": "8593ab3420fed82085b881882e90434061b122634065378a3dd3f6a741f79810",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current Meta Foundation contains no ACTIVE M2-02 curriculum binding or exact active machine projection for this RPM Primary; keep problemTypeKey/templateKey null as nonblocking Meta-only debt and do not borrow H1 keys or invent an M2 key.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Current authored content and choices were visually/layout reviewed as a bounded text replacement; current student input is exact in the freshly extracted source bundle."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "R1 quality review confirmed the solution flow and small-board structure; actual calculations and decisive condition are displayed."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "R1 source-based M2-02 current fields applied; RPM primary route is resolved. The absent M2-02 ACTIVE P/T projection is explicitly recorded as nonblocking Meta-only debt."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "The replacement question is text-only and needs no student visual/SVG. The damaged original q19 diagram was not reused or reconstructed; source provenance records the original hold."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "ALIVE_REPLACEMENT. The original printed locus is partially obscured; the replacement preserves only visible M2 linear-inequality topic cues and does not claim transcription or pixel repair.",
+        "sourceMode": "ALIVE_REPLACEMENT",
+        "authoringMode": "CODEX_DIRECT_AUTHORING",
+        "originalSource": {
+          "sourceFirstAssessment": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\CREATE.item-recovery.source-first-assessment.locked.json",
+          "qid": 19,
+          "sha256": "ab77fdf10222b4cf7357c8dbe0aa1bf95eeb9a086f373dda74039d385d73e411",
+          "path": "D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0016.jpg",
+          "sourceFirstAssessmentSha256": "d7d895bc88402cdfd4316acdcd430ff82dd27ac63130b8540b8502c2eff524"
+        },
+        "replacementPacket": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\CREATE.item-recovery.replacement-authoring.packet.json",
+        "replacementPacketSha256": "281ef4bacaa6847d1189333b3bae27a290822e4cf9b570d8f0fb229560e84d32",
+        "r1QualityReview": {
+          "disposition": "PASS",
+          "sha256": "5c5f1067682e7a68fecab8f09ece475ff345f4fb8fa744d915e77fd3980907cf",
+          "independentAnswer": "MATCH",
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\review\\R1.recovery-19-21.quality-review.json",
+          "smallBoard": "PASS"
+        },
+        "originalPixels": "Historical source holds preserved in original CREATE/R1/R2 evidence; original scan remains marked and no reconstructed graphic is represented as original."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceMode": "ALIVE_REPLACEMENT",
+      "verdict": "PASS",
+      "solutionSha256": "4aee99b59b721a3b338b105770a6ae752b981560c9bc31965c5670e2f6724e32",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current Meta Foundation contains no ACTIVE M2-02 curriculum binding or exact active machine projection for this RPM Primary; keep problemTypeKey/templateKey null as nonblocking Meta-only debt and do not borrow H1 keys or invent an M2 key.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Current authored content and choices were visually/layout reviewed as a bounded text replacement; current student input is exact in the freshly extracted source bundle."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "R1 quality review confirmed the solution flow and small-board structure; actual calculations and decisive condition are displayed."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "R1 source-based M2-02 current fields applied; RPM primary route is resolved. The absent M2-02 ACTIVE P/T projection is explicitly recorded as nonblocking Meta-only debt."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "The replacement question is text-only and needs no student visual/SVG. The damaged original q19 diagram was not reused or reconstructed; source provenance records the original hold."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "ALIVE_REPLACEMENT. The original printed locus is partially obscured; the replacement preserves only visible M2 linear-inequality topic cues and does not claim transcription or pixel repair.",
+        "sourceMode": "ALIVE_REPLACEMENT",
+        "authoringMode": "CODEX_DIRECT_AUTHORING",
+        "originalSource": {
+          "sourceFirstAssessment": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\CREATE.item-recovery.source-first-assessment.locked.json",
+          "qid": 20,
+          "sha256": "ab77fdf10222b4cf7357c8dbe0aa1bf95eeb9a086f373dda74039d385d73e411",
+          "path": "D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0016.jpg",
+          "sourceFirstAssessmentSha256": "d7d895bc88402cdfd4316acdcd430ff82dd27ac63130b8540b8502c2eff524"
+        },
+        "replacementPacket": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\CREATE.item-recovery.replacement-authoring.packet.json",
+        "replacementPacketSha256": "281ef4bacaa6847d1189333b3bae27a290822e4cf9b570d8f0fb229560e84d32",
+        "r1QualityReview": {
+          "disposition": "PASS",
+          "sha256": "5c5f1067682e7a68fecab8f09ece475ff345f4fb8fa744d915e77fd3980907cf",
+          "independentAnswer": "MATCH",
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\review\\R1.recovery-19-21.quality-review.json",
+          "smallBoard": "PASS"
+        },
+        "originalPixels": "Historical source holds preserved in original CREATE/R1/R2 evidence; original scan remains marked and no reconstructed graphic is represented as original."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceMode": "ALIVE_REPLACEMENT",
+      "verdict": "PASS",
+      "solutionSha256": "d34b882e19bdb665dd891d5eb8ba98440a092c6a9e39c36257b372925e9173a0",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current Meta Foundation contains no ACTIVE M2-02 curriculum binding or exact active machine projection for this RPM Primary; keep problemTypeKey/templateKey null as nonblocking Meta-only debt and do not borrow H1 keys or invent an M2 key.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Current authored content and choices were visually/layout reviewed as a bounded text replacement; current student input is exact in the freshly extracted source bundle."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "R1 quality review confirmed the solution flow and small-board structure; actual calculations and decisive condition are displayed."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "R1 source-based M2-02 current fields applied; RPM primary route is resolved. The absent M2-02 ACTIVE P/T projection is explicitly recorded as nonblocking Meta-only debt."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "The replacement question is text-only and needs no student visual/SVG. The damaged original q19 diagram was not reused or reconstructed; source provenance records the original hold."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "ALIVE_REPLACEMENT. The original printed locus is partially obscured; the replacement preserves only visible M2 linear-inequality topic cues and does not claim transcription or pixel repair.",
+        "sourceMode": "ALIVE_REPLACEMENT",
+        "authoringMode": "CODEX_DIRECT_AUTHORING",
+        "originalSource": {
+          "sourceFirstAssessment": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\CREATE.item-recovery.source-first-assessment.locked.json",
+          "qid": 21,
+          "sha256": "ab77fdf10222b4cf7357c8dbe0aa1bf95eeb9a086f373dda74039d385d73e411",
+          "path": "D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0016.jpg",
+          "sourceFirstAssessmentSha256": "d7d895bc88402cdfd4316acdcd430ff82dd27ac63130b8540b8502c2eff524"
+        },
+        "replacementPacket": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\CREATE.item-recovery.q21.replacement-authoring.revision2.packet.json",
+        "replacementPacketSha256": "60e85460ecfc6370cd96d43ac9a15116711dc07af7b3d92fb0c3b21e8c1208a8",
+        "r1QualityReview": {
+          "disposition": "PASS",
+          "sha256": "5c5f1067682e7a68fecab8f09ece475ff345f4fb8fa744d915e77fd3980907cf",
+          "independentAnswer": "MATCH",
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\review\\R1.recovery-19-21.quality-review.json",
+          "smallBoard": "PASS"
+        },
+        "originalPixels": "Historical source holds preserved in original CREATE/R1/R2 evidence; original scan remains marked and no reconstructed graphic is represented as original."
+      }
+    },
+    {
+      "qid": 22,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "ec78b6a7d706d8698a9f2ce92653c0272fd3e1e939cd48cfc7e4f65f5247b8f9",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current ACTIVE Meta Foundation has no exact middle-school 2022 physical PT/TPL mapping for this unit; retain null rather than force an unrelated key, with manual/non-auto status.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Locked source page 4 opened and transcribed; q22 solution freshly written from the source task and independently recomputed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "Actual solution q22 was read and laid out in separate explanation/equation/conclusion blocks."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "Used current 2022 master row: 중2 수학, M2-01 수와 식, order 1; existing physical nulls are explicitly debt-bound."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "No item-level image or SVG is needed; text conditions and choices were directly read from the locked JPG."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Original scan D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0016.jpg reviewed; page/question identity q22 directly matched."
+      }
+    },
+    {
+      "qid": 23,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "f1d945e547d25d7b8614e72345d49c38803a21c343122d35845534ff364bf876",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No exact ACTIVE middle-geometry PT/TPL represents this direct cylinder-to-cone volume equality; physical keys remain null pending manual canonical support.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Locked source page 4 opened and transcribed; q23 solution freshly written from the source task and independently recomputed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "Actual solution q23 was read and laid out in separate explanation/equation/conclusion blocks."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "Used current 2022 master row: 중1 수학, M1-07 입체도형의 성질, order 7; existing physical nulls are explicitly debt-bound."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "Opened actual candidate crop assets/images/26_동산중_1학기_중간_중2_기출/q23.png. Printed visual labels were legible; no solution SVG is required."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Original scan D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0016.jpg reviewed; page/question identity q23 directly matched."
+      }
+    },
+    {
+      "qid": 24,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "c975f0993414a925ab518aed8cd30279a49839339597c5bfea53c8438df83a64",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current ACTIVE Meta Foundation has no exact middle-school 2022 physical PT/TPL mapping for this unit; retain null rather than force an unrelated key, with manual/non-auto status.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "observation": "Locked source page 4 opened and transcribed; q24 solution freshly written from the source task and independently recomputed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "observation": "Actual solution q24 was read and laid out in separate explanation/equation/conclusion blocks."
+        },
+        "meta": {
+          "status": "PASS",
+          "observation": "Used current 2022 master row: 중2 수학, M2-02 일차부등식, order 2; existing physical nulls are explicitly debt-bound."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "observation": "Opened actual candidate crop assets/images/26_동산중_1학기_중간_중2_기출/q24.png. Printed visual labels were legible; no solution SVG is required."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Original scan D:/2026_1학기중간_/중2/동산중/S28BW-826051515310_0016.jpg reviewed; page/question identity q24 directly matched."
+      }
+    }
+  ],
+  "artifactSha": "c75629caaa40b9c792ef3670dc2d37b1a5f3d8f28ed932859ea57f798f76252b",
+  "artifactRawSha256": "c75629caaa40b9c792ef3670dc2d37b1a5f3d8f28ed932859ea57f798f76252b",
+  "technicalHashes": {
+    "rawSha256": "c75629caaa40b9c792ef3670dc2d37b1a5f3d8f28ed932859ea57f798f76252b",
+    "validatorRawBufferBlobSha1": "0d349890f38865c5408906106b76d669cde344b4",
+    "gitCleanFilterBlobSha1": null
+  }
+}

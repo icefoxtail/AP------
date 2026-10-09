@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_GOLDEN_NEGATIVE_PREFLIGHT_V1",
+  "examUid": "23_매산고_1학기_중간_고2_수학I",
+  "performedBeforeSolutionAuthoring": true,
+  "reviewedAt": "2026-10-09",
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "The board flow identifies the ratio convention before substitution, displays both coordinates, then evaluates distance by successive equations; no hidden coordinate step."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "observation": "The parallel condition is translated to equal slopes, the point condition is substituted into the line, and the requested sum is visibly computed."
+          },
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "observation": "The solution tracks the circle center through translation and origin reflection; actual equal-scale SVG primitives place C₀=(−3,1), C₁=(−5,2), C₂=(5,−2), preserve radius 3, and align the final equation with C₂.",
+            "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+            "visualRead": {
+              "path": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+              "sha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+              "openedRaster": {
+                "path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/calibration/maesan-q7-static-review.png",
+                "sha256": "16e542ff0a53df66d3a0f5846bc3fb89ef2fab49a52667e70af6776f7b1de4d3",
+                "method": "ImageMagick 7.1.2 static SVG raster; actual pixels opened",
+                "limitation": "Static raster substituted glyphs for some subscripts because the local ImageMagick font resolver lacked the authored math font. Geometry/topology and source text were read separately; this is not an Archive engine render claim."
+              }
+            }
+          }
+        ],
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "items": [
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "observation": "The solution isolates each line slope, applies the perpendicular-slope product, solves k, and the actual solution SVG primitives carry slopes −1/3 and 3 on equal-scale axes; their product is −1.",
+            "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+            "visualRead": {
+              "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+              "sha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+              "openedRaster": {
+                "path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/calibration/svg-review-1.png",
+                "sha256": "5359820233ea74d86429c56c3b822a4c9199073801419e588d0407e75661f887",
+                "method": "ImageMagick 7.1.2 static SVG raster; actual pixels opened",
+                "limitation": "Korean text glyph fallback in this local raster was not treated as engine evidence; geometry was checked from actual SVG primitives."
+              }
+            }
+          },
+          {
+            "qid": 3,
+            "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+            "observation": "Completing squares is shown before center/radius extraction; actual SVG circle center is (−1,3), and the center-to-point radius segment is 2.",
+            "visualSha256": "3208ec847fd87a1907669b72f0b0fb2b795407361335c0ce34bc2fa4fda9cce8",
+            "visualRead": {
+              "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg",
+              "sha256": "3208ec847fd87a1907669b72f0b0fb2b795407361335c0ce34bc2fa4fda9cce8",
+              "openedRaster": {
+                "path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/calibration/svg-review-2.png",
+                "sha256": "ddd7c245943631a103bdb274cd0ad64c0cae5e67601d0394efa48d8a89867aab",
+                "method": "ImageMagick 7.1.2 static SVG raster; actual pixels opened",
+                "limitation": null
+              }
+            }
+          }
+        ],
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99"
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "observation": "Read the full false-PASS regression README. In the actual q1 negative SVG the line primitive crosses the origin although the stated intercept is −7/6, and the marked A(−5,3), B(1,−2) do not lie on the displayed line. Review coordinates/topology rather than trusting labels.",
+      "visual": {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg",
+        "sha256": "022a90d5887f312af6eff6d0c1ee15cac740460bb177709f9a6f274fd20f3d92",
+        "openedRaster": {
+          "path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/calibration/svg-review-3.png",
+          "sha256": "41f001c5a78bc9a6288e05f48b6b61207b11dfc870a5ca7828f46eea60eedab9",
+          "method": "ImageMagick 7.1.2 static SVG raster; actual pixels opened"
+        }
+      }
+    }
+  },
+  "sampleSelectionReason": "Two fixed Codex Golden registry samples, with at least two actual solution qids per sample. Each selected exam contains solutionImage assets, so one actual SVG visual was opened and SHA-bound per sample. Negative is the current Bokseong false-PASS fixture.",
+  "notRenderedInOfficialEngine": true,
+  "renderPassClaimed": false
+}

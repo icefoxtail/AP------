@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_Q23_LAYOUT_CORRECTION_REVIEW_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "examUid": "23_순천여고_1학기_중간_고2_수학I",
+  "qid": 23,
+  "scope": "qid-limited QUESTION_LAYOUT correction only; R3 owns official rerender",
+  "preflight": {
+    "path": "R1.correction-calibration-preflight.q23-layout.r1_09.json",
+    "sha256": "8300d3356a4aaed5c09fc047e80c0a5fe6a544b19c1e2ff8168c0cc66bbfb54f",
+    "status": "PASS",
+    "sampleReadBeforeCorrection": true
+  },
+  "diagnostic": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/R3.capture-blocker.q23-equal-slot.v1.json",
+    "sha256": "a02252dc6fc9ef0bf4a1efd44d7f36230032c17b3756f7b4f6e86d710a8075c8",
+    "failure": "EQUAL_SLOT_AUDIT_FAILED/CONTENT_OUTSIDE_SLOT",
+    "page": 5,
+    "slot": 2,
+    "viewport": {
+      "width": 1280,
+      "height": 1000
+    },
+    "slotRect": {
+      "left": 408.8440075596504,
+      "right": 725.0004567288763
+    },
+    "paintedMathJaxSpacer": {
+      "selector": "mjx-spacer under mjx-mover for overline(DE)",
+      "outerHTML": "<mjx-spacer>–––––</mjx-spacer>",
+      "left": 405.5002554531853,
+      "width": 28.8125,
+      "marginLeftPx": -3.39467,
+      "visibility": "visible",
+      "opacity": 1,
+      "color": "rgb(24, 29, 38)"
+    },
+    "actualOverflowPx": 3.3437521064651,
+    "diagnosticPng": {
+      "path": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/R3.q23-mathjax-legacy-diagnostic.png",
+      "sha256": "d1043b3636d3fbe791316d38f20cc0a8b16ba895ef6b9b200dbc8b09aa295f26",
+      "scope": "legacy diagnostic crop; not an official equal-slot RENDER_PASS"
+    }
+  },
+  "correction": {
+    "field": "layoutTag",
+    "before": "",
+    "after": "fullwidth",
+    "wide": false,
+    "enginePath": "existing fullwidth per-question path provides 8px inset, greater than the painted 3.344px protrusion",
+    "engineAuditChanged": false,
+    "sharedEngineChanged": false
+  },
+  "source": {
+    "beforeRawSha256": "92f2812e402abd9afddbcb65caee674cc61e954e26ebd8c1a4196f6c21a22482",
+    "beforeRawBufferBlobSha1": "48b7d99a4ed4980cddf7ff260f8e701ae9db6cc0",
+    "afterRawSha256": "5c35df2711729b9f9549abdef77a00b71a1794d63bb499353d4f7b09ebd30451",
+    "afterRawBufferBlobSha1": "d6a9be5c9742ceeb98b419ee43478239f753fee5",
+    "oldQuestionObjectSha256": "sha256:1fbed3c0b8e2e0c927ca373865a93578c7e681405c976eed2d17423684ced676",
+    "newQuestionObjectSha256": "sha256:e11c12796728f53d4de34005488e2edcc43f667ff8ab669106fddd7dee9145eb",
+    "contentHashBefore": "sha256:d84100c353e8aa976f3f2883af14b905e52ca55164da4ea36205dbd447ea19d1",
+    "contentHashAfter": "sha256:d84100c353e8aa976f3f2883af14b905e52ca55164da4ea36205dbd447ea19d1",
+    "choicesHashBefore": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "choicesHashAfter": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "contentExact": true,
+    "choicesExact": true,
+    "answerExact": true,
+    "solutionExact": true,
+    "metaExact": true,
+    "assetsExact": true
+  },
+  "studentParity": {
+    "oldPacket": {
+      "path": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/R1.student-only.current.q16-solution-fix.json",
+      "sha256": "7af1bb82ceee16c9b79e538325d86f1765727e50dc15b3e5c457dee6b27b1315",
+      "sourceRawSha256": "92f2812e402abd9afddbcb65caee674cc61e954e26ebd8c1a4196f6c21a22482"
+    },
+    "currentPacket": {
+      "path": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/R1.student-only.current.q23-fullwidth.json",
+      "sha256": "34019a50c5f7339339587591c845a58f3f9ef27b545dd124e9620640e2bc2d00",
+      "sourceRawSha256": "5c35df2711729b9f9549abdef77a00b71a1794d63bb499353d4f7b09ebd30451"
+    },
+    "untouchedQidsExact": 22,
+    "q23OnlyStudentFieldChanged": "layoutTag",
+    "q23StudentPayloadSha256Before": "9f132617fa520fdd6d607c55e6ef478012dfe051dd6a4574def7798de78a5b43",
+    "q23StudentPayloadSha256After": "4599c3e9766be9ad949df051b2cbf293dd2cf7102aa21987da3f9b835eb8ccf9",
+    "q23ContentAndChoicesExact": true,
+    "allAssetRefsExact": true,
+    "freezeValidity": {
+      "status": "VALID_FOR_MATHEMATICAL_INPUT",
+      "path": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/R1.independent-freeze.r1_09.json",
+      "sha256": "dab3ee1fff943ffe6fa7b55ee5d0482776635a197e6fdeb003329d1b95980f9b",
+      "qid23FreezePresent": true,
+      "reason": "Only external layoutTag changed; question/content atoms, choices, image refs, shared data and all mathematical conditions remain exact. Original q23 independent answer remains valid; no new solve/freeze."
+    }
+  },
+  "provenance": {
+    "priorR1Event": {
+      "path": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/R1.complete-event.r1_09_recovery.v3.json",
+      "sha256": "c8602e98a4bac750c0fcc80898f87e5244034a7fb65062d940ec882a88006997"
+    },
+    "q23SeparateFreshProof": {
+      "path": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/R1.durable-continuation.r1_09.q23postrepair.json",
+      "sha256": "5220c8cbe0ec5dc1cbf49c9a7435ac0c31386588fd25c32a54715b854e6a3df5"
+    }
+  },
+  "status": {
+    "questionLayout": "FULLWIDTH_STATIC_CORRECTION; OFFICIAL_R3_RENDER_PENDING",
+    "actualEngineRender": "NOT_RUN_R1_SCOPE_R3_OWNS_ACTUAL_RENDER",
+    "renderPassAsserted": false,
+    "pdfReadThisCorrectionReview": false,
+    "full23FreshMathematicsClaim": false
+  }
+}\n

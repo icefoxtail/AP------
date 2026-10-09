@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ROOT_PUBLICATION_CHECKS_V1",
+  "mainSha": "63e49b275317a9a6ac01de5781b437f31b3942ea",
+  "checks": [
+    {
+      "name": "materializer",
+      "command": "node tests/archive-meta-v2-materializer.test.mjs",
+      "status": "completed",
+      "exitCode": 0,
+      "stdoutPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/publication-commit-01/checks/materializer.stdout.txt",
+      "stdoutSha256": "cc67fcb4d2dc9667353c286ce83c2f07f276cb6cbfd1681da6f51fd8efd36ba0",
+      "stderrPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/publication-commit-01/checks/materializer.stderr.txt",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "semantic-authority",
+      "command": "node tests/archive2-meta-v2-semantic-authority.test.cjs",
+      "status": "completed",
+      "exitCode": 0,
+      "stdoutPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/publication-commit-01/checks/semantic-authority.stdout.txt",
+      "stdoutSha256": "1e029e1baac393a34c36f3bd9f92672c22723b9dbb6712474fdcbbc4ba612c02",
+      "stderrPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/publication-commit-01/checks/semantic-authority.stderr.txt",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "identity-contract",
+      "command": "node tests/archive-question-identity-contract.test.mjs",
+      "status": "completed",
+      "exitCode": 0,
+      "stdoutPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/publication-commit-01/checks/identity-contract.stdout.txt",
+      "stdoutSha256": "033b3ef24eef9b3c5f9ddba9a00e35d49a889dc6f791f8e1bdcb257ce51fce21",
+      "stderrPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/publication-commit-01/checks/identity-contract.stderr.txt",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "identity-runtime",
+      "command": "node tests/archive-question-identity-runtime.test.mjs",
+      "status": "completed",
+      "exitCode": 0,
+      "stdoutPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/publication-commit-01/checks/identity-runtime.stdout.txt",
+      "stdoutSha256": "b1030b279c96780f50093ef3161b1a6362b234d09f036ed0376328c9caa0ec2b",
+      "stderrPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/publication-commit-01/checks/identity-runtime.stderr.txt",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "archive2-runtime",
+      "command": "node tools/check-archive2-runtime.cjs",
+      "status": "completed",
+      "exitCode": 0,
+      "stdoutPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/publication-commit-01/checks/archive2-runtime.stdout.txt",
+      "stdoutSha256": "806b5bd502099390d94ea417eac3dc219f8d0e96f412e3232833084eca96226f",
+      "stderrPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/publication-commit-01/checks/archive2-runtime.stderr.txt",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "git-diff-check",
+      "command": "git diff --check",
+      "status": "completed",
+      "exitCode": 0,
+      "stdoutPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/publication-commit-01/checks/git-diff-check.stdout.txt",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/publication-commit-01/checks/git-diff-check.stderr.txt",
+      "stderrSha256": "2d77d08658db519e0b0813c605ef4346e77559d1167f0846ee8410172b3e6bc6"
+    },
+    {
+      "name": "archive2-catalog-check",
+      "command": "node archive/tools/build-archive2-catalog.mjs --check",
+      "status": "completed",
+      "exitCode": 0,
+      "stdoutPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/publication-commit-01/catalog-check.stdout.txt",
+      "stdoutSha256": "177c177deee1b4b32fad535172ae75003c2f6736762a9ee729f5c85153fe7050",
+      "stderrPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/publication-commit-01/catalog-check.stderr.txt",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "verify-archive-registration",
+      "command": "node archive/tools/verify-archive-registration.mjs",
+      "status": "completed",
+      "exitCode": 0,
+      "stdoutPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/publication-commit-01/registration-verify.stdout.txt",
+      "stdoutSha256": "20e9b45e9f08c0cf6b2c5824058074e3b043691cfe3ca84c11564aa2e93a2c91",
+      "stderrPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/publication-commit-01/registration-verify.stderr.txt",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

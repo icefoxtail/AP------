@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_SOURCE_REFERENCE_ASSIGNMENT_V1",
+  "sourceReferencePolicy": {
+    "schemaVersion": "JS_ARCHIVE_SOURCE_REFERENCE_POLICY_V1",
+    "stage": "CREATE",
+    "sourceInputMode": "EXTRACTED_JS_ASSETS",
+    "pdfReviewMode": "DEFECT_ONLY",
+    "sourceParityBasis": "REUSED_INTAKE_EVIDENCE",
+    "reusedIntakeEvidence": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\intake-original.evidence.json",
+      "sha256": "fe88210dc7b24075d36c9bc92ece7bb89506dea2e2ba90b2c2a017b66ab99dd0"
+    },
+    "pdfActuallyReviewed": true,
+    "originalSourceReviewEvidence": {
+      "originalPdf": {
+        "path": "C:\\Users\\USER\\Desktop\\기출정리 파일\\(1)1중간\\수1\\2023_매여고2_수1_1중간.pdf",
+        "sha256": "361c3999b49074e71edc520fc363842eca1d1541a72cfafa311a39b743572199"
+      },
+      "evidence": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\CREATE.scoped-source-review.json",
+        "sha256": "4bcaac6099582b72485b87386f43e46a0a23f3f82e7df53ab17e316156c8f921"
+      },
+      "reviewedQids": [
+        16
+      ],
+      "reviewerId": "/root/create_07",
+      "reviewedAt": "2026-10-09T01:39:29.224Z",
+      "physicalPdfSha256Verified": true,
+      "pdfByteInspection": "SHA256_ONLY",
+      "readingAttestationBasis": "REVIEWER_EVIDENCE"
+    },
+    "sourceDefect": {
+      "category": "UNCLEAR_CONDITION",
+      "qids": [
+        16
+      ],
+      "scope": "QID_ONLY",
+      "reason": "Current JS and scoped original page agree, but the stated condition g(f(x))<0 restricts integer x to exactly five values while the prompt requires six solutions of the system for some natural c; no c can satisfy it.",
+      "findings": [
+        {
+          "qid": 16,
+          "detail": "Original PDF page 4 and current JS both state f(x)=log_{sqrt(3)}(x/3), g(x)=x^2−2x. g(f(x))<0 implies 0<f(x)<2, hence 3<x<9 and the only integer x are 4,5,6,7,8. Six integer solutions are impossible for every c."
+        }
+      ]
+    },
+    "originalReferencePlan": {
+      "required": false,
+      "scope": "QID_ONLY",
+      "qids": [
+        16
+      ],
+      "category": "UNCLEAR_CONDITION",
+      "reason": "Current JS and scoped original page agree, but the stated condition g(f(x))<0 restricts integer x to exactly five values while the prompt requires six solutions of the system for some natural c; no c can satisfy it.",
+      "findings": [
+        {
+          "qid": 16,
+          "detail": "Original PDF page 4 and current JS both state f(x)=log_{sqrt(3)}(x/3), g(x)=x^2−2x. g(f(x))<0 implies 0<f(x)<2, hence 3<x<9 and the only integer x are 4,5,6,7,8. Six integer solutions are impossible for every c."
+        }
+      ],
+      "evidenceRequirement": "ACTUAL_ORIGINAL_SOURCE_SHA_AND_QID_SCOPED_REVIEW_FINDINGS"
+    },
+    "semanticVerdictCreated": false
+  }
+}

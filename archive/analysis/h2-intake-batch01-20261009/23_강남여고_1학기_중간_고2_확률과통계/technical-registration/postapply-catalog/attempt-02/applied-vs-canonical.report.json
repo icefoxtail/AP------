@@ -1,0 +1,162 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POSTAPPLY_CATALOG_COMPARISON_V1",
+  "target": "23_강남여고_1학기_중간_고2_확률과통계",
+  "comparisonStatus": "ZERO_RECORD_DIFF_TWO_FILE_PROJECTION_DRIFT",
+  "expectedHead": "1bdca365baec9c5020c35f7188364de0354ca4b1",
+  "candidateHead": "1bdca365baec9c5020c35f7188364de0354ca4b1",
+  "failureAttempt": {
+    "command": "node archive/tools/build-archive2-catalog.mjs --check",
+    "exitCode": 1,
+    "capture": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/technical-registration/postapply-catalog/attempt-01/ROOT.command-process-capture.json",
+      "sha256": "0bed6db6d9c235b6614755464c4ae708a6b98750887eb60f2bb099fac03476cb"
+    },
+    "stdout": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/technical-registration/postapply-catalog/attempt-01/stdout.raw.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/technical-registration/postapply-catalog/attempt-01/stderr.raw.txt",
+      "sha256": "7a6a46625fb0a64a386bafd24f7bf4b0fb6cfef289b0ad18cd23fb8e94f5b9ad"
+    }
+  },
+  "appliedRegistrationReceipt": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/technical-registration/root-apply-v1/target-registration.receipt.json",
+    "sha256": "bb03170ae3373cfa5430d080f138683f0c4a6937c887aa78c36f173b8ba14065"
+  },
+  "isolatedCanonicalGeneration": {
+    "command": "node archive/tools/build-archive2-catalog.mjs",
+    "candidateRoot": ".tmp/archive/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/registration-canonical-root",
+    "exitCode": 0,
+    "toolPath": ".tmp/archive/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/registration-canonical-root/archive/tools/build-archive2-catalog.mjs",
+    "toolSha256": "eb31810985025ea5d9e412c8b18aa1e439aa8ad147e63d00089e4a21f2d38e81",
+    "stdout": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/technical-registration/postapply-catalog/attempt-02/isolated-generator.stdout.raw.txt",
+      "sha256": "0ff9c93d7ea176bdd494ed7c54816b0626d24743602bb7ca932c27e1ea571acd"
+    },
+    "stderr": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/technical-registration/postapply-catalog/attempt-02/isolated-generator.stderr.raw.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "exit": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/technical-registration/postapply-catalog/attempt-02/isolated-generator.exit.txt",
+      "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+    }
+  },
+  "catalog": {
+    "appliedPath": "archive/data/archive2-catalog.json",
+    "appliedSha256": "9990b93e053c73a15a6b2dec9860a2af4ec18cc6fb7880f109f6faf15b672362",
+    "canonicalSha256": "00c894e102bb9707158c3419b45973695b6d05328c095370d40f1ebfb210587a",
+    "appliedIndexVersion": "6ed9954e836545e7eea9f22da0ffd4004cbb79c3bf4d0b633ac23225eb3dde4d",
+    "canonicalIndexVersion": "ce023ce5b97743738415299f372e7cb943651af81e49333dcd392b734b5bbe04",
+    "topLevelDiffFields": [
+      "indexVersion"
+    ],
+    "columnsEqual": true,
+    "stringsEqual": true,
+    "packedRecordMatrixEqual": true,
+    "decodedRecordCount": {
+      "applied": 13219,
+      "canonical": 13219
+    },
+    "targetRowCount": {
+      "applied": 25,
+      "canonical": 25
+    },
+    "targetRecordDiffCount": 0,
+    "nonTargetRecordDiffCount": 0,
+    "examDirectoryEqual": true,
+    "taxonomyEqual": true,
+    "healthEqual": true
+  },
+  "manifest": {
+    "appliedPath": "archive/data/archive2-canonical-input-manifest.json",
+    "appliedSha256": "4a01c178fa6f82364a8e98e9a2c092d86e56efc0fb85f98d014cb73b69cf4f69",
+    "canonicalSha256": "85ec248140eb2ba2c99c52a74a39422ce4b73f19492809cf0ce5b79f5c77c296",
+    "topLevelDiffFields": [
+      "generatedFromCatalogIndexVersion",
+      "projectionVersion",
+      "files"
+    ],
+    "fileDiffs": [
+      {
+        "path": "data/archive2-catalog.json",
+        "applied": {
+          "path": "data/archive2-catalog.json",
+          "sha256": "9990b93e053c73a15a6b2dec9860a2af4ec18cc6fb7880f109f6faf15b672362"
+        },
+        "canonical": {
+          "path": "data/archive2-catalog.json",
+          "sha256": "00c894e102bb9707158c3419b45973695b6d05328c095370d40f1ebfb210587a"
+        }
+      }
+    ]
+  },
+  "reviewOverride": {
+    "path": "archive/data/archive2-item-review-overrides.json",
+    "appliedSha256": "de96971c50a8c71ecc6d2dff95e59951f7fe10411fba0c6c176903d8242297c1",
+    "canonicalSha256": "de96971c50a8c71ecc6d2dff95e59951f7fe10411fba0c6c176903d8242297c1",
+    "equal": true
+  },
+  "appliedNineFileBindings": [
+    {
+      "path": "archive/db.js",
+      "appliedSha256": "3b9195c44480970addee49e0debb021ff46eeb6fc59d9bdc256e8aedd798bf92",
+      "canonicalSha256": "3b9195c44480970addee49e0debb021ff46eeb6fc59d9bdc256e8aedd798bf92",
+      "equal": true
+    },
+    {
+      "path": "archive/data/question_identity_map.json",
+      "appliedSha256": "a5fcb0c103bd96b1412c746fbb753a7a9fa5f3f71b72b122071305173476b17a",
+      "canonicalSha256": "a5fcb0c103bd96b1412c746fbb753a7a9fa5f3f71b72b122071305173476b17a",
+      "equal": true
+    },
+    {
+      "path": "archive/data/question_metadata.json",
+      "appliedSha256": "3e4865fb9edc74f7c039b25197f66fbf712616e0395495a6d7a48b356b87323e",
+      "canonicalSha256": "3e4865fb9edc74f7c039b25197f66fbf712616e0395495a6d7a48b356b87323e",
+      "equal": true
+    },
+    {
+      "path": "archive/question-identity.js",
+      "appliedSha256": "fdc31badc91a9833d05c839d04dc48fb51fb9f314246fc71886411533fe79c35",
+      "canonicalSha256": "fdc31badc91a9833d05c839d04dc48fb51fb9f314246fc71886411533fe79c35",
+      "equal": true
+    },
+    {
+      "path": "archive/question-index.js",
+      "appliedSha256": "8b7605d04618e7208fe08b3fc4b48e587039d70e7040d9b83e95c09847d1e54b",
+      "canonicalSha256": "8b7605d04618e7208fe08b3fc4b48e587039d70e7040d9b83e95c09847d1e54b",
+      "equal": true
+    },
+    {
+      "path": "archive/question-index-report.md",
+      "appliedSha256": "12f99c47fb14c3aee214ef9832e48d94a6a4bd51fbd2beaf87a0d99986be1d31",
+      "canonicalSha256": "12f99c47fb14c3aee214ef9832e48d94a6a4bd51fbd2beaf87a0d99986be1d31",
+      "equal": true
+    },
+    {
+      "path": "archive/question-index-audit.md",
+      "appliedSha256": "020f33ba5d18a2ca0258c93fa65998265d09a1934f5c5b20f7884b3886b44ad3",
+      "canonicalSha256": "020f33ba5d18a2ca0258c93fa65998265d09a1934f5c5b20f7884b3886b44ad3",
+      "equal": true
+    },
+    {
+      "path": "archive/data/archive2-catalog.json",
+      "appliedSha256": "9990b93e053c73a15a6b2dec9860a2af4ec18cc6fb7880f109f6faf15b672362",
+      "canonicalSha256": "00c894e102bb9707158c3419b45973695b6d05328c095370d40f1ebfb210587a",
+      "equal": false
+    },
+    {
+      "path": "archive/data/archive2-canonical-input-manifest.json",
+      "appliedSha256": "4a01c178fa6f82364a8e98e9a2c092d86e56efc0fb85f98d014cb73b69cf4f69",
+      "canonicalSha256": "85ec248140eb2ba2c99c52a74a39422ce4b73f19492809cf0ce5b79f5c77c296",
+      "equal": false
+    }
+  ],
+  "allowedRepair": [
+    "archive/data/archive2-catalog.json",
+    "archive/data/archive2-canonical-input-manifest.json"
+  ],
+  "repairBasis": "Current registry-derived target and non-target record objects, packed record matrix, dictionary, exam directory, taxonomy, health, override index, and all other seven registered files match. Catalog differs only at indexVersion; manifest differs only at generated catalog index version/projection and the catalog file SHA entry."
+}

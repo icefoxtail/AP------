@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_PREFREEZE_INPUT_BOUNDARY_FAILURE_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "26_효천고_1학기_중간_고2_대수",
+  "runId": "archive-2026-1mid-nine-20261008",
+  "stage": "R1",
+  "affectedQids": [
+    13,
+    23
+  ],
+  "assignmentPath": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/R1.scope-13,23@recovery-01.assignment.json",
+  "assignmentSha256": "cbb9e0ac8ce64c4057f587956aa28abcb512a585b573aab879e577f386e42eec",
+  "studentBundlePath": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/archive/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/R1.scope-13,23@recovery-01.json",
+  "studentBundleSha256": "65cb797ded432490f582e9cde0748c2be69a8aabfae23d194a0e6d509653127a",
+  "recordedAtUtc": "2026-10-08T15:09:11Z",
+  "incidentTime": "Exact query timestamp unavailable in the originating tool result; occurred after the archive-codex-stage-kit freeze --help probe and before any answer rows or freeze were created.",
+  "toolAndQuery": {
+    "command": "rg -n -C 2 '대수|로그|지수함수|로그함수|H2-ALG' \"$wt\\docs\\rules\\01_CANONICAL\\JS아카이브_표준단원키_마스터테이블.md\" \"$wt\\archive\\data\\master_tables\\js_archive_tag_master.json\"; rg -n --glob '*.json' --glob '*.md' 'LOG|EXPONENTIAL|로그함수|지수함수|로그의 성질|로그' \"$wt\\docs\\rules\\01_CANONICAL\\taxonomy\" \"$wt\\archive\\data\"",
+    "tool": "functions.exec -> exec_command",
+    "outputLocus": "The returned output was truncated after broad recursive search results. Visible unrelated evidence snippets included archive/data/r3-intake/m3/25_금당중_2학기_중간_중3_수학.r3-r31.physical-evidence.json (method TOPOLOGY_COMPUTE / recheckMode R3_CURRENT_PASS_RAW_SVG_COORDINATE_TOPOLOGY); 23_순천여중_2학기_기말_중3_기출.r3.post-repair.v2.physical-evidence.json; 24_금당중_2학기_중간_중3_수학.r3-retry.physical-evidence.json; and archive/data/r2e-intake/m3/25_왕운중_2학기_기말_중3_기출.r3-authority.physical-evidence.json."
+  },
+  "exposure": {
+    "assignedExamAnswersOrSolutions": "No exposure known; returned unrelated snippets did not identify the assigned exam or qids 13/23 and did not show their answers/solutions.",
+    "unrelatedHistoricalR3Evidence": "Yes; the visible unrelated paths/snippet types are listed under toolAndQuery.outputLocus.",
+    "assignedExamPriorStageEvidence": "No exposure known.",
+    "requiredStudentAsset": "q23 image had already been opened before this query.",
+    "assignedExamOldMetaOrLevel": "No exposure known."
+  },
+  "disposition": {
+    "answerRowsCreated": false,
+    "sourceChanged": false,
+    "status": "FAILURE_ATTEMPT_PRESERVED_FOR_CLEAN_R1_ROUTING",
+    "nextAction": "ROOT routes qids 13 and 23 to a fresh R1 session using narrow canonical taxonomy reads only.",
+    "mathPassClaimed": false,
+    "freezeCreated": false
+  }
+}

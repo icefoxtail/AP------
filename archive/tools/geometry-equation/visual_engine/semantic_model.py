@@ -11,7 +11,7 @@ KINDS = {'POINT','POINT_NAME','COORDINATE_LABEL','LINE','SEGMENT','CIRCLE',
     'GRAPH_ANNOTATION','CONDITION_BOX','AUXILIARY_LINE','LEADER_LINE'}
 VISUAL_TYPES={'coordinate_geometry','line_circle_geometry','function_graph','calculus_graph','explanation_card'}
 RELATIONS={'INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR','PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL'}
-FIELDS={'id','kind','at','from','to','center','radius','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence'}
+FIELDS={'id','kind','at','from','to','center','radius','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch'}
 REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'}}
 
 def parity(a,b):
@@ -36,6 +36,9 @@ def validate(spec):
         raise ValueError('UNKNOWN_SPEC_FIELD')
     if not {'id','visualType','viewport','objects','sourceFacts','derivedFacts','displayFacts'} <= spec.keys():
         raise ValueError('MISSING_SPEC_FIELD')
+    axes=spec.get('axes',True)
+    if not isinstance(axes,bool) and (not isinstance(axes,dict) or set(axes)!={'x','y'} or any(not isinstance(value,bool) for value in axes.values())):
+        raise ValueError('INVALID_AXIS_POLICY')
     if not isinstance(spec['id'],str) or not spec['id'] or spec['visualType'] not in VISUAL_TYPES:
         raise ValueError('INVALID_VISUAL_TYPE_OR_ID')
     for key in ('sourceFacts','derivedFacts','displayFacts'):
@@ -71,6 +74,7 @@ def validate(spec):
             if not isinstance(obj.get('expression'),str): raise ValueError('EXPRESSION_REQUIRED')
             lo,hi=point(obj['domain'])
             if lo>=hi: raise ValueError('INVALID_DOMAIN')
+            if 'branch' in obj and obj['branch'] not in {'LEFT','RIGHT'}:raise ValueError('INVALID_GRAPH_BRANCH_TAG')
         elif kind in {'EQUATION_LABEL','GRAPH_ANNOTATION','CONDITION_BOX'}:
             point(obj['at'])
             if kind=='CONDITION_BOX':

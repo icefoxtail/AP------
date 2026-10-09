@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_GOLDEN_VISUAL_CALIBRATION_V1",
+  "calibrationRef": "R1.calibration-preflight.json",
+  "visualSamples": [
+    {
+      "samplePath": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sampleRawSha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+      "qid": 14,
+      "solutionSha256": "sha256:10ee4e341cb3da057af2893386417777181ad5c84adeaf49c917a91ed7dd50a2",
+      "solutionImage": "assets/images/25_매산여고_2학기_중간_고1_기출/q14-solution.svg",
+      "visualAssetPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q14-solution.svg",
+      "visualSha256": "sha256:329a041add7ad65e98913b3aef6b1f401b3d96713986609acad2d4de9ed8d135",
+      "visualGitBlobSha1": "df7d14d2c7093961e7ee97544e68e060fb3f761e",
+      "openedRasterPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\calibration-svgs\\massan-q14.png",
+      "openedRasterSha256": "sha256:b82b00aaa6f5b8435138105d4e2181a4930cb18a787efb212164012d620e603a",
+      "observation": "The Venn circles and count labels match both bounds: overlap 3 with union 30 for the minimum, and overlap 14 with outside 11 for the maximum; no label owner ambiguity."
+    },
+    {
+      "samplePath": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sampleRawSha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "qid": 3,
+      "solutionSha256": "sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+      "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg",
+      "visualAssetPath": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg",
+      "visualSha256": "sha256:3208ec847fd87a1907669b72f0b0fb2b795407361335c0ce34bc2fa4fda9cce8",
+      "visualGitBlobSha1": "13529e3f27459a91e016e726cbeab23d1075009b",
+      "openedRasterPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\calibration-svgs\\hyochun-q3.png",
+      "openedRasterSha256": "sha256:274409502dca6efc0c5187aa58bb1c6cd21c165df40ec0b8ca572076f918ab3b",
+      "observation": "The displayed circle is centered at (-1,3), has radius 2, and the labeled rightmost point is (1,3), consistent with the completed-square solution."
+    },
+    {
+      "samplePath": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sampleRawSha256": "sha256:c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+      "qid": 15,
+      "solutionSha256": "sha256:9726199ae74e6339f7629a963850c12d6f6431af82dbe1087212ddf88672a5ed",
+      "solutionImage": "assets/images/25_제일고_2학기_중간_고1_기출/q15-solution.svg",
+      "visualAssetPath": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q15-solution.svg",
+      "visualSha256": "sha256:69d77e49eaaba69e2ab31218b4dc3d6869c49055eb513dac8ebc33e153bc7324",
+      "visualGitBlobSha1": "5f1ac87c1d7c317f15bee65d0a8f2dd3e11d6041",
+      "openedRasterPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\calibration-svgs\\jeil-q15.png",
+      "openedRasterSha256": "sha256:29e7849363543ee267caa31df848f61ce2353717c7357b2cab92150c2bfa4715",
+      "observation": "The triangle vertices, D/E section points, DE segment and dashed BC share the solution coordinates/parallel claim; text glyph fallback in this local raster conversion was not used to judge the source SVG typography."
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+    "sha256": "sha256:240dade5ecd6991b156f456fe7036883a59e43df3117d0f2a25b3c790a39eaa4",
+    "observation": "Physically opened frozen q7 bad SVG; the labeled curve/point claims do not match the actual plotted polyline and point coordinates, confirming that text-label agreement is not visual parity."
+  }
+}

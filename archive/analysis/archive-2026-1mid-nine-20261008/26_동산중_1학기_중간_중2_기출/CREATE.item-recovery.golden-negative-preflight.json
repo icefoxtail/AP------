@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_GOLDEN_NEGATIVE_PREFLIGHT_V1",
+  "examUid": "26_동산중_1학기_중간_중2_기출",
+  "stage": "CREATE",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "preflightTiming": "BEFORE_TARGET_SOLUTION_AUTHORING",
+  "priorDifficultyMetaFieldsInspected": false,
+  "registry": {
+    "path": "archive/data/codex-quality-calibration-registry-v2.json",
+    "scope": "student-facing small-board/layout/visual quality floor only; curriculum/Meta/difficulty not transferred",
+    "sha256": "f42e82d8c6c6f83d294d7d825eb0cc2c7cc939f1e62db3ed6faaea0cd9f0733d",
+    "goldens": [
+      "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+    ]
+  },
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "openedPhysicalFiles": [
+        "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/golden-existing-render-witness/golden-maesan-q7-chrome.png"
+      ],
+      "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+      "items": [
+        {
+          "visualObservation": "Current SVG SHA matched the existing authorized PNG witness. Opened the authorized existing Chrome PNG: three centers and dashed intermediate circles are visibly distinguished; final circle and x/y axes are legible.",
+          "observation": "Actual solution read. It introduces the translated/reflected circle center and retained radius, writes each center transformation, applies the circle equation, and reaches the final equation through visible algebra instead of hiding the coordinate changes.",
+          "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+          "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+          "qid": 7
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "openedPhysicalFiles": [
+        "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/golden-existing-render-witness/golden-hyocheon-q2-chrome.png"
+      ],
+      "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "items": [
+        {
+          "visualObservation": "Current SVG SHA matched the existing authorized PNG witness. Opened the authorized existing Chrome PNG: the two lines use opposite visual directions, axes/grid are clear, and the side panel labels the slopes and perpendicular condition.",
+          "observation": "Actual solution read. It isolates each line equation, derives both slopes, states the perpendicular product condition, substitutes k, and shows the arithmetic to the final answer.",
+          "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+          "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+          "qid": 2
+        }
+      ]
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "observation": "Read the registered hard regression fixture. It documents false PASS from unread actual SVG geometry, enumerated ㄱ/ㄴ/ㄷ blocks collapsed into one paragraph, Meta nulls despite exact active keys, and doubled TeX escape source/runtime divergence. For this recovery, explicitly inspect each numbered reasoning step and actual visual coordinates/topology; no aggregate audit or labels-only SVG check can substitute.",
+    "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23"
+  },
+  "renderReuseAuthority": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/ROOT.existing-golden-render-reuse.decision.json",
+    "sha256": "af80e5b4142a8ff17455457d9dea969464e53763dae5e2022020e36289573262",
+    "method": "view_image existing prior authorized PNGs only after current SVG SHA matched; no new browser execution",
+    "currentSvgHashesMatched": true
+  },
+  "overall": "PASS_PREWORK_DONE"
+}

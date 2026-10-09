@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "ROOT_TARGET_PREAPPLY_PARITY_V2",
+  "createdAtUtc": "2026-10-09T14:43:22.455Z",
+  "head": "d348f0dae2bf7fd7fac9e608e35bc9675cec097e",
+  "candidateHead": "d348f0dae2bf7fd7fac9e608e35bc9675cec097e",
+  "examUid": "23_강남여고_1학기_중간_고2_수학I",
+  "package": {
+    "path": ".tmp/archive/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/registration-package.v2.json",
+    "sha256": "18f347bc1ec66803bfb55b7a2d635cfab1f4c55a8a30428d5e73ae721118cb7c",
+    "baselineBindingsSha256": "6f440ea9e3fb331a7b497a7723070fbca2eb9be472a14e623f4c558d17bb4fb3"
+  },
+  "producerReceiptSha256": "e64fb3c74ee133046267f1783963ef7ee9c469ade21bbdc829439857f5dfd9f9",
+  "dryRunReceiptSha256": "7c104bf831c0b6e190d86db282325e5e8b03a71cdcd3ef547d34eb00215e9eb0",
+  "dryRunStatus": "PLAN_VALIDATED_NOT_APPLIED",
+  "targetCounts": {
+    "identity": 25,
+    "metadata": 25,
+    "index": 25,
+    "catalog": 25,
+    "db": 1
+  },
+  "nonTargetInvariant": {
+    "dbExamRows": 562,
+    "identityRows": 13386,
+    "metadataRows": 13386,
+    "indexRows": 13378,
+    "catalogRows": 13378,
+    "allPreservedByDeepComparison": true,
+    "identityRuntimeTuplesPreserved": true
+  },
+  "candidateStatus": [
+    "archive/data/archive2-canonical-input-manifest.json",
+    "archive/data/archive2-catalog.json",
+    "archive/data/question_identity_map.json",
+    "archive/data/question_metadata.json",
+    "archive/db.js",
+    "archive/question-index.js"
+  ],
+  "candidateRegistryChangeCount": 6,
+  "candidateGeneratedCatalogSha256": "204c2e31bef2d22ca90059db832925789f1b13150f1d631e8668279ce28af9da",
+  "candidateGeneratedCatalogBound": true,
+  "allMainFilesMatchPackageBaseline": true,
+  "allCandidateBaselineHashesMatchPackage": true,
+  "candidateChangedFilesAreRegistryOnly": true,
+  "files": [
+    {
+      "path": "archive/db.js",
+      "mainBaselineSha256": "d28701473ffc4ffcf1f8c9574ee2393fc9f4fe340a08c6d52bd8f25b61c05407",
+      "candidateCurrentSha256": "2a231f318cca9d32a32e42bbd905487b20898e69736202a4844fcebf252292ea",
+      "candidatePreProducerSha256": "d28701473ffc4ffcf1f8c9574ee2393fc9f4fe340a08c6d52bd8f25b61c05407",
+      "candidateSnapshotSha256": "2a231f318cca9d32a32e42bbd905487b20898e69736202a4844fcebf252292ea",
+      "snapshot": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/technical-registration/root-apply-v2/candidate-output-before/archive__db.js"
+    },
+    {
+      "path": "archive/data/question_identity_map.json",
+      "mainBaselineSha256": "cff3383b56755e087b5fadf6f84e5271d1b5cc23584c9a33d3497e8edc1e2bfb",
+      "candidateCurrentSha256": "2a4204cd3b94dbcae7c3e5e0aadba048c2c81e6b39696db8bbfb20ade73af881",
+      "candidatePreProducerSha256": "cff3383b56755e087b5fadf6f84e5271d1b5cc23584c9a33d3497e8edc1e2bfb",
+      "candidateSnapshotSha256": "2a4204cd3b94dbcae7c3e5e0aadba048c2c81e6b39696db8bbfb20ade73af881",
+      "snapshot": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/technical-registration/root-apply-v2/candidate-output-before/archive__data__question_identity_map.json"
+    },
+    {
+      "path": "archive/data/question_metadata.json",
+      "mainBaselineSha256": "690bfee3ea2aed049b48244885bbfbfaa6c21e22d664765307ef2d059f260575",
+      "candidateCurrentSha256": "175ee38cb520b17232ff4aacf56a90cda4f06943daa597a24a2e32b7a58ef8d1",
+      "candidatePreProducerSha256": "690bfee3ea2aed049b48244885bbfbfaa6c21e22d664765307ef2d059f260575",
+      "candidateSnapshotSha256": "175ee38cb520b17232ff4aacf56a90cda4f06943daa597a24a2e32b7a58ef8d1",
+      "snapshot": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/technical-registration/root-apply-v2/candidate-output-before/archive__data__question_metadata.json"
+    },
+    {
+      "path": "archive/question-identity.js",
+      "mainBaselineSha256": "72ff20b7cc9f0b1b95762c1ae1210b6bb92e5fb6f8801fc05677f329062b923e",
+      "candidateCurrentSha256": "72ff20b7cc9f0b1b95762c1ae1210b6bb92e5fb6f8801fc05677f329062b923e",
+      "candidatePreProducerSha256": "72ff20b7cc9f0b1b95762c1ae1210b6bb92e5fb6f8801fc05677f329062b923e",
+      "candidateSnapshotSha256": "72ff20b7cc9f0b1b95762c1ae1210b6bb92e5fb6f8801fc05677f329062b923e",
+      "snapshot": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/technical-registration/root-apply-v2/candidate-output-before/archive__question-identity.js"
+    },
+    {
+      "path": "archive/question-index.js",
+      "mainBaselineSha256": "aef2137ed25c73002ba2235da45325453a4790102ee24682b13b02ba3448828f",
+      "candidateCurrentSha256": "f35aeb74f214edd1f656a60624585fc789768c35c91c966f385f8c7b1d04e8bb",
+      "candidatePreProducerSha256": "aef2137ed25c73002ba2235da45325453a4790102ee24682b13b02ba3448828f",
+      "candidateSnapshotSha256": "f35aeb74f214edd1f656a60624585fc789768c35c91c966f385f8c7b1d04e8bb",
+      "snapshot": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/technical-registration/root-apply-v2/candidate-output-before/archive__question-index.js"
+    },
+    {
+      "path": "archive/question-index-report.md",
+      "mainBaselineSha256": "e2691540918673a82525dfd68873bd2ec18ab6bcbeb51dcbccbe678257faac27",
+      "candidateCurrentSha256": "e2691540918673a82525dfd68873bd2ec18ab6bcbeb51dcbccbe678257faac27",
+      "candidatePreProducerSha256": "e2691540918673a82525dfd68873bd2ec18ab6bcbeb51dcbccbe678257faac27",
+      "candidateSnapshotSha256": "e2691540918673a82525dfd68873bd2ec18ab6bcbeb51dcbccbe678257faac27",
+      "snapshot": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/technical-registration/root-apply-v2/candidate-output-before/archive__question-index-report.md"
+    },
+    {
+      "path": "archive/question-index-audit.md",
+      "mainBaselineSha256": "f2ac74260ebd5fe690aa62481f7c4d6f47cd888750f72631817bfa678f365e56",
+      "candidateCurrentSha256": "f2ac74260ebd5fe690aa62481f7c4d6f47cd888750f72631817bfa678f365e56",
+      "candidatePreProducerSha256": "f2ac74260ebd5fe690aa62481f7c4d6f47cd888750f72631817bfa678f365e56",
+      "candidateSnapshotSha256": "f2ac74260ebd5fe690aa62481f7c4d6f47cd888750f72631817bfa678f365e56",
+      "snapshot": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/technical-registration/root-apply-v2/candidate-output-before/archive__question-index-audit.md"
+    },
+    {
+      "path": "archive/data/archive2-catalog.json",
+      "mainBaselineSha256": "fd5eca1171e429c7608f1f0fe4371289a0ff2f597ba7e33160fbab893ddc21de",
+      "candidateCurrentSha256": "204c2e31bef2d22ca90059db832925789f1b13150f1d631e8668279ce28af9da",
+      "candidatePreProducerSha256": "fd5eca1171e429c7608f1f0fe4371289a0ff2f597ba7e33160fbab893ddc21de",
+      "candidateSnapshotSha256": "204c2e31bef2d22ca90059db832925789f1b13150f1d631e8668279ce28af9da",
+      "snapshot": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/technical-registration/root-apply-v2/candidate-output-before/archive__data__archive2-catalog.json"
+    },
+    {
+      "path": "archive/data/archive2-canonical-input-manifest.json",
+      "mainBaselineSha256": "370910870b4ccd9be674622b2d7b08ba50455c8393e1cfbe7b0c9ba39a78817e",
+      "candidateCurrentSha256": "d60d27ad9ed7a4b94ce925e845d3515030385b5a3eed1203c6486fe631e1aae8",
+      "candidatePreProducerSha256": "370910870b4ccd9be674622b2d7b08ba50455c8393e1cfbe7b0c9ba39a78817e",
+      "candidateSnapshotSha256": "d60d27ad9ed7a4b94ce925e845d3515030385b5a3eed1203c6486fe631e1aae8",
+      "snapshot": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/technical-registration/root-apply-v2/candidate-output-before/archive__data__archive2-canonical-input-manifest.json"
+    }
+  ]
+}

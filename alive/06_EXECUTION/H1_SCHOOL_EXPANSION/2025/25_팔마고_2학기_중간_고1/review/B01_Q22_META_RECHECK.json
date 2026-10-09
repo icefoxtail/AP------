@@ -1,0 +1,37 @@
+{
+  "recordType": "B01_Q22_META_RECHECK",
+  "version": "1.0",
+  "status": "PASS_METADATA_LOCUS_FIXED",
+  "candidateId": "ALITE-B01-2025PALMA-0006",
+  "sourceQid": 22,
+  "candidatePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/candidates/B01_원의 방정식/B01_CANDIDATE_0006.md",
+  "oldCandidateSha256": "73BD20926ADAD0458AE1D1D8C160AE81EC421E39B73B0E4AC6DB62777DC74A20",
+  "newCandidateSha256": "DC6434F94D3E8766F9343BCCAB192720A45CCFEB9A9CF6A30760D9EC97BF53BB",
+  "difficulty": {
+    "oldTarget": {"level": "상", "bucket": 4},
+    "newTarget": {"level": "중", "bucket": 3},
+    "authorActual": {"level": "중", "bucket": 3},
+    "independentAdjudication": {"level": "중", "bucket": 3},
+    "fieldsNowAgree": true
+  },
+  "studentInputIntegrity": {
+    "studentPacketPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/candidates/B01_원의 방정식/review-blind/B01_STUDENT_ONLY.md",
+    "studentPacketSha256": "6ED435EEE52163422ED950875A910157575DE95B5195DF28B75926F4072FBB2F",
+    "packetByteIdentical": true,
+    "studentPromptResponseAndSolutionFieldsUnchanged": true,
+    "existingBlindFreezeStillValid": true,
+    "freezeSha256": "26365F15D3E1A0F8AAC94AD95A1F806233B32C1F637998646939A98E43731040"
+  },
+  "receiptIntegrity": {
+    "receiptPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/candidates/B01_원의 방정식/B01_RECEIPT.md",
+    "receiptSha256": "E253F34EE667D6C52118ADE9150C4D4FA4BCD43AE4812EE22A1BBD2C52256CA3",
+    "bindsNewCandidateSha256": true
+  },
+  "reviewDisposition": {
+    "previousQualityVerdict": "HOLD",
+    "updatedQualityVerdict": "PASS",
+    "reviewScope": "Only the difficulty metadata locus was rechecked; existing blind math freeze was reused, no re-solve or broader review.",
+    "q12q19SupplyStatus": "EXTENSION_PENDING preserved",
+    "actualRender": "NOT_RUN"
+  }
+}

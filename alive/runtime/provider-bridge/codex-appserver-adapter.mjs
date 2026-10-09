@@ -13,7 +13,8 @@ import { APP_SERVER_PHASES, getOrCreateLaunchContext, phaseContextForLaunch } fr
 const ROOT = process.cwd();
 const PHASES = ['U1', 'U2', 'U3'];
 const HISTORY_RPC_TIMEOUT_MS = 1000;
-const JOB = process.argv[process.argv.indexOf('--job') + 1];
+const jobIndex = process.argv.indexOf('--job');
+const JOB = jobIndex >= 0 ? process.argv[jobIndex + 1] : null;
 const MODEL = process.env.APMATH_CODEX_MODEL || 'gpt-5.6-luna';
 const REASONING_EFFORT = process.env.APMATH_CODEX_REASONING_EFFORT || 'xhigh';
 const MODEL_ROUTE = `${MODEL}/${REASONING_EFFORT}`;
@@ -170,18 +171,25 @@ const writeState = state => {
 const readState = () => JSON.parse(fs.readFileSync(statePath, 'utf8'));
 
 class AppServerClient {
-  constructor() {
-    this.proc = spawn('codex', ['app-server', '--stdio'], { stdio: ['pipe', 'pipe', 'ignore'], windowsHide: true });
+  constructor({ traceDir = stateDir } = {}) {
+    this.proc = spawn(process.env.CODEX_CLI_PATH || 'codex', ['app-server', '--stdio'], { stdio: ['pipe', 'pipe', 'ignore'], windowsHide: true });
     this.buffer = '';
     this.nextId = 1;
     this.pending = new Map();
     this.notifications = [];
-    this.tracePath = path.join(stateDir, 'appserver-message-trace.jsonl');
+    this.tracePath = traceDir ? path.join(traceDir, 'appserver-message-trace.jsonl') : null;
     this.traceSequence = 0;
-    fs.mkdirSync(stateDir, { recursive: true });
+    if (traceDir) fs.mkdirSync(traceDir, { recursive: true });
+    this.exitRecord = null;
+    this.closeRecord = null;
+    this.closeEvent = new Promise(resolve => this.proc.once('close', (code, signal) => {
+      this.closeRecord = { code: code ?? null, signal: signal ?? null, observedAt: Date.now() };
+      resolve(this.closeRecord);
+    }));
     this.proc.stdout.setEncoding('utf8');
     this.proc.stdout.on('data', chunk => this.consume(chunk));
     this.proc.on('exit', (code, signal) => {
+      this.exitRecord = { code: code ?? null, signal: signal ?? null, observedAt: Date.now() };
       for (const pending of this.pending.values()) pending.reject(new Error(`CODEX_APPSERVER_EXIT:${code ?? signal}`));
       this.pending.clear();
     });
@@ -197,7 +205,7 @@ class AppServerClient {
       try { message = JSON.parse(line); } catch { continue; }
       const route = classifyAppServerMessage(message, this.pending);
       try {
-        fs.appendFileSync(this.tracePath, `${JSON.stringify(summarizeAppServerMessage(message, route, ++this.traceSequence))}\n`, 'utf8');
+        if (this.tracePath) fs.appendFileSync(this.tracePath, `${JSON.stringify(summarizeAppServerMessage(message, route, ++this.traceSequence))}\n`, 'utf8');
       } catch {
         // Diagnostics must never change provider behavior.
       }
@@ -222,6 +230,62 @@ class AppServerClient {
   }
 
   close() { this.proc.kill(); }
+
+  async closeAndObserve({ timeoutMs = 5000 } = {}) {
+    const pid = Number.isInteger(this.proc.pid) ? this.proc.pid : null;
+    let killRequested = false, killError = null, closeWaitTimedOut = false;
+    if (this.proc.exitCode === null && this.proc.signalCode === null) {
+      try { killRequested = this.proc.kill(); }
+      catch (error) { killError = String(error); }
+    }
+    if (!this.closeRecord) {
+      try { await withTimeout(this.closeEvent, timeoutMs, 'CODEX_APPSERVER_CLOSE_TIMEOUT'); }
+      catch { closeWaitTimedOut = true; }
+    }
+    return {
+      pid,
+      killRequested,
+      killError,
+      exitObserved: Boolean(this.exitRecord),
+      exitCode: this.exitRecord?.code ?? this.proc.exitCode ?? null,
+      exitSignal: this.exitRecord?.signal ?? this.proc.signalCode ?? null,
+      closeObserved: Boolean(this.closeRecord),
+      closeCode: this.closeRecord?.code ?? null,
+      closeSignal: this.closeRecord?.signal ?? null,
+      closeWaitTimedOut
+    };
+  }
+}
+
+async function interruptTurnAndObserve(app, threadId, turnId, { ackTimeoutMs = 2000, completionTimeoutMs = 3000 } = {}) {
+  const prior = completedTurnFor(app.notifications, threadId, turnId);
+  if (prior) return {
+    schemaVersion: 'APPSERVER_REMOTE_TURN_CANCELLATION_v1',
+    status: prior.params.turn.status === 'interrupted' ? 'REMOTE_INTERRUPT_CONFIRMED' : 'REMOTE_TERMINAL_BEFORE_INTERRUPT',
+    threadId, turnId, interruptRequested: false, acknowledgementReceived: false,
+    terminalNotificationObserved: true, terminalStatus: prior.params.turn.status
+  };
+  let acknowledgement = null, acknowledgementError = null;
+  try {
+    acknowledgement = await withTimeout(app.request('turn/interrupt', { threadId, turnId }), ackTimeoutMs, 'VISUAL_PROVIDER_INTERRUPT_TIMEOUT');
+  } catch (error) { acknowledgementError = String(error.message || error); }
+  const deadline = Date.now() + completionTimeoutMs;
+  let terminal = completedTurnFor(app.notifications, threadId, turnId);
+  while (!terminal && Date.now() < deadline) {
+    await new Promise(resolve => setTimeout(resolve, 25));
+    terminal = completedTurnFor(app.notifications, threadId, turnId);
+  }
+  const terminalStatus = terminal?.params?.turn?.status || null;
+  return {
+    schemaVersion: 'APPSERVER_REMOTE_TURN_CANCELLATION_v1',
+    status: terminalStatus === 'interrupted' ? 'REMOTE_INTERRUPT_CONFIRMED' : terminal ? 'REMOTE_TERMINAL_NON_INTERRUPT' : acknowledgementError ? 'REMOTE_INTERRUPT_UNCONFIRMED' : 'INTERRUPT_ACK_WITHOUT_TERMINAL',
+    threadId, turnId, interruptRequested: true,
+    acknowledgementReceived: acknowledgement !== null,
+    acknowledgementKeys: acknowledgement && typeof acknowledgement === 'object' ? Object.keys(acknowledgement).sort() : null,
+    acknowledgementError,
+    terminalNotificationObserved: Boolean(terminal), terminalStatus,
+    elapsedMs: completionTimeoutMs - Math.max(0, deadline - Date.now())
+  };
 }
 
 const threadParams = (phase, developerInstructions) => ({
@@ -237,6 +301,53 @@ const threadParams = (phase, developerInstructions) => ({
   runtimeWorkspaceRoots: [ROOT],
   sessionStartSource: 'startup'
 });
+
+/** Narrow engine continuation using the existing authenticated AppServer.
+ * This is not a work-batch FINAL_AUDIT or a Seal. Each call has a fresh ephemeral
+ * input context, no tools, and returns provider-issued thread/turn identities.
+ */
+export async function invokeVisualContinuation({root,traceDir,purpose,input,outputSchema,timeoutMs=180000}) {
+  if(!root||!purpose||!Array.isArray(input)||!outputSchema)throw new Error('VISUAL_CONTINUATION_INPUT_REQUIRED');
+  const app=new AppServerClient({traceDir});let threadId=null,turnId=null,remoteCancellation=null,providerFailure=null,result=null;
+  try {
+    const initialized=await withTimeout(app.request('initialize',{clientInfo:{name:'apmath-visual-continuation',version:'1.0.0'},capabilities:{experimentalApi:true}}),15000,'VISUAL_PROVIDER_INITIALIZE_TIMEOUT');
+    app.proc.stdin.write(JSON.stringify({jsonrpc:'2.0',method:'initialized',params:{}})+'\n');
+    const catalog=await withTimeout(app.request('model/list',{limit:100}),15000,'VISUAL_PROVIDER_CATALOG_TIMEOUT');
+    const selected=(catalog.data||[]).find(m=>m.isDefault)||(catalog.data||[]).find(m=>m.model===MODEL||m.id===MODEL);
+    const selectedModel=process.env.APMATH_CODEX_MODEL||selected?.model||selected?.id||MODEL;
+    const efforts=(selected?.supportedReasoningEfforts||[]).map(e=>typeof e==='string'?e:e.reasoningEffort);
+    const selectedEffort=process.env.APMATH_CODEX_REASONING_EFFORT||(efforts.includes(REASONING_EFFORT)?REASONING_EFFORT:selected?.defaultReasoningEffort||'high');
+    const start=await withTimeout(app.request('thread/start',{...threadParams(purpose,'You are an isolated APMath visual planning or review worker. Use only supplied inputs. Do not call tools or spawn subagents. Return the requested JSON. A missing condition or unsupported construction must remain unresolved.'),model:selectedModel,cwd:root,runtimeWorkspaceRoots:[root]}),15000,'VISUAL_PROVIDER_THREAD_TIMEOUT');
+    const thread=start.thread;threadId=thread.id;
+    const response=await withTimeout(app.request('turn/start',{threadId:thread.id,model:selectedModel,effort:selectedEffort,input,outputSchema,approvalPolicy:'never',sandboxPolicy:{type:'readOnly',networkAccess:false},collaborationMode:{mode:'default',settings:{model:selectedModel,developer_instructions:null}}}),15000,'VISUAL_PROVIDER_TURN_TIMEOUT');
+    const turn=turnFromStartResponse(response);if(!turn?.id)throw new Error('VISUAL_PROVIDER_TURN_ID_MISSING');
+    turnId=turn.id;
+    const deadline=Date.now()+timeoutMs;let text='';
+    while(Date.now()<deadline){
+      text=completedTurnText(app.notifications,thread.id,turn.id);
+      const completion=completedTurnFor(app.notifications,thread.id,turn.id);
+      if(completion){
+        if(completion.params.turn.status!=='completed')throw new Error('VISUAL_PROVIDER_TURN_'+completion.params.turn.status+':'+JSON.stringify(completion.params.turn.error||{}));
+        if(!text)throw new Error('VISUAL_PROVIDER_EMPTY_OUTPUT');
+        result={provider:'CodexAppServer',model:selectedModel+'/'+selectedEffort,purpose,sessionId:thread.sessionId,contextId:thread.id,providerInvocationId:turn.id,providerTerminalStatus:completion.params.turn.status,appServerVersion:initialized?.serverInfo?.version||thread.cliVersion||null,subagentToolsEnabled:false,rawOutput:text,output:JSON.parse(text)};
+        return result;
+      }
+      await new Promise(resolve=>setTimeout(resolve,50));
+    }
+    throw new Error('VISUAL_PROVIDER_TIMEOUT');
+  }catch(error){
+    providerFailure=error;
+    if(threadId&&turnId){
+      try{remoteCancellation=await interruptTurnAndObserve(app,threadId,turnId);}
+      catch(interruptError){remoteCancellation={schemaVersion:'APPSERVER_REMOTE_TURN_CANCELLATION_v1',status:'INTERRUPT_FLOW_ERROR',threadId,turnId,interruptRequested:true,acknowledgementReceived:false,terminalNotificationObserved:false,error:String(interruptError.message||interruptError)};}
+    }else remoteCancellation={schemaVersion:'APPSERVER_REMOTE_TURN_CANCELLATION_v1',status:'TURN_ID_UNAVAILABLE',threadId,turnId,interruptRequested:false,acknowledgementReceived:false,terminalNotificationObserved:false};
+    throw error;
+  }finally{
+    const providerProcessCleanup=await app.closeAndObserve();
+    if(providerFailure){providerFailure.providerRemoteCancellation=remoteCancellation;providerFailure.providerProcessCleanup=providerProcessCleanup;}
+    if(result)result.providerProcessCleanup=providerProcessCleanup;
+  }
+}
 
 async function daemonMain() {
   const app = new AppServerClient();

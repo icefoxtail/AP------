@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+import path from 'node:path';
+import { pathToFileURL } from 'node:url';
+const root = process.cwd();
+const uid = '23_매산여고_1학기_중간_고2_수학I';
+const base = `archive/analysis/h2-intake-batch01-20261009/${uid}`;
+const assignmentPath = `.tmp/archive/h2-intake-batch01-20261009/${uid}/registration.assignment.v2.json`;
+const assignment = JSON.parse(fs.readFileSync(assignmentPath, 'utf8'));
+const source = assignment.productionRelativePath;
+const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
+ctx.globalThis = ctx;
+vm.createContext(ctx);
+vm.runInContext(fs.readFileSync(source, 'utf8'), ctx, { filename: source, timeout: 5000 });
+const bank = ctx.window.questionBank || ctx.window.questions || ctx.questionBank || ctx.questions;
+const { verifyR1EvidenceBinding } = await import(pathToFileURL(path.join(root, 'archive/tools/prepare-target-registration-candidate.mjs')).href);
+const result = verifyR1EvidenceBinding({ root, evidencePath: `${base}/R1.current-certificate.evidence.v1.json`, validationPath: `${base}/R1.current-certificate.generic-v2.raw.v1.json`, assignment, examUid: uid, bank });
+console.log(JSON.stringify({ status: 'PASS', qids: result.evidence.rows.length, metaDebtRows: result.metaDebtRows.length, verdicts: [...new Set(result.evidence.rows.map(row => row.verdict))], q16ItemStatus: result.evidence.rows.find(row => row.qid === 16)?.itemStatus, sourceSha: result.evidence.artifactRawSha256, validationDisposition: result.validation.disposition, issues: result.validation.issues.length }));

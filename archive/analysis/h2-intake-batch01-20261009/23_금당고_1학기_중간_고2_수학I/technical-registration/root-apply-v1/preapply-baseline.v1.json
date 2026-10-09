@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "ROOT_TARGET_PREAPPLY_PARITY_V1",
+  "head": "d348f0dae2bf7fd7fac9e608e35bc9675cec097e",
+  "candidateHead": "d348f0dae2bf7fd7fac9e608e35bc9675cec097e",
+  "candidateStatus": [
+    "archive/data/archive2-canonical-input-manifest.json",
+    "archive/data/archive2-catalog.json",
+    "archive/data/question_identity_map.json",
+    "archive/data/question_metadata.json",
+    "archive/db.js",
+    "archive/question-identity.js",
+    "archive/question-index-audit.md",
+    "archive/question-index-report.md",
+    "archive/question-index.js"
+  ],
+  "candidateRegistryChangeCount": 9,
+  "examUid": "23_금당고_1학기_중간_고2_수학I",
+  "package": {
+    "path": ".tmp/archive/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/registration-package.v1.json",
+    "sha256": "bb41265bc38fb6c492e152b4580b11f9b5eb7ca61ab4ea3917fc1c9118b154c5"
+  },
+  "producerReceiptSha256": "968423e4b0bff204ca326905715ca698e4f14bb3ac7412fba938f928b2b9d6e1",
+  "dryRunReceiptSha256": "48135be4015d9fcd8ad3e584425b1999207542ea670a70f10f007e75f42f1664",
+  "dryRunStatus": "PLAN_VALIDATED_NOT_APPLIED",
+  "targetCounts": {
+    "identity": 20,
+    "metadata": 20,
+    "index": 20,
+    "catalog": 20,
+    "db": 1
+  },
+  "nonTargetInvariant": {
+    "dbExamRows": 563,
+    "identityRows": 13411,
+    "metadataRows": 13411,
+    "indexRows": 13403,
+    "catalogRows": 13403,
+    "allPreservedByDeepComparison": true,
+    "identityRuntimeTuplesPreserved": true
+  },
+  "candidateGeneratedCatalogSha256": "8d960d9d638e059b0b34c86842b7eb5cdc421397e864db87e638045761393d97",
+  "candidateCatalogBound": true,
+  "allNineCurrentRootFilesMatchPackageBaseline": true,
+  "allCandidateFilesSnapshotBound": true,
+  "files": [
+    {
+      "path": "archive/db.js",
+      "rootBeforeSha256": "2a231f318cca9d32a32e42bbd905487b20898e69736202a4844fcebf252292ea",
+      "candidateBeforeSha256": "33a3a94f277af5510f9e668c3d75c8ac3fcb79d7dcf085de76eeaf7dd8b3f5eb",
+      "packageBaselineSha256": "2a231f318cca9d32a32e42bbd905487b20898e69736202a4844fcebf252292ea",
+      "snapshot": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/technical-registration/root-apply-v1/candidate-output-before/archive__db.js"
+    },
+    {
+      "path": "archive/data/question_identity_map.json",
+      "rootBeforeSha256": "e596d9bac7edc338b535176309b97f4e1b0781abcfac8afdf4a1df07de5c0ab8",
+      "candidateBeforeSha256": "7a83f861c56c13279d66d27e3d4cd812b5f88af578427f694e41b19fb7804053",
+      "packageBaselineSha256": "e596d9bac7edc338b535176309b97f4e1b0781abcfac8afdf4a1df07de5c0ab8",
+      "snapshot": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/technical-registration/root-apply-v1/candidate-output-before/archive__data__question_identity_map.json"
+    },
+    {
+      "path": "archive/data/question_metadata.json",
+      "rootBeforeSha256": "d97d37322f781b59e42be5bf5a67d300ac094a7dceb86103061ba45fcd3f5edf",
+      "candidateBeforeSha256": "7e99c2f6f0d7f0cd1446ef122ea7991b6782dd50d1c13be1f4cbab8343200d3a",
+      "packageBaselineSha256": "d97d37322f781b59e42be5bf5a67d300ac094a7dceb86103061ba45fcd3f5edf",
+      "snapshot": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/technical-registration/root-apply-v1/candidate-output-before/archive__data__question_metadata.json"
+    },
+    {
+      "path": "archive/question-identity.js",
+      "rootBeforeSha256": "bb040de3367aa6ee7393e7b47dbe3975e88d2cdf4475cc2e605bb7479e1c2fc4",
+      "candidateBeforeSha256": "bb040de3367aa6ee7393e7b47dbe3975e88d2cdf4475cc2e605bb7479e1c2fc4",
+      "packageBaselineSha256": "bb040de3367aa6ee7393e7b47dbe3975e88d2cdf4475cc2e605bb7479e1c2fc4",
+      "snapshot": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/technical-registration/root-apply-v1/candidate-output-before/archive__question-identity.js"
+    },
+    {
+      "path": "archive/question-index.js",
+      "rootBeforeSha256": "ca723daf04523fea7435d2c2714fe0479d9b4adb7d44b6895c8ae109e0edb436",
+      "candidateBeforeSha256": "6ff68f7cb0db8ed82d7b2cbc12d018a6e5f283cde60712ff741ad66c3d246e18",
+      "packageBaselineSha256": "ca723daf04523fea7435d2c2714fe0479d9b4adb7d44b6895c8ae109e0edb436",
+      "snapshot": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/technical-registration/root-apply-v1/candidate-output-before/archive__question-index.js"
+    },
+    {
+      "path": "archive/question-index-report.md",
+      "rootBeforeSha256": "2e91775bf4d3f7ca5b9a5076ec38c31813a7f49addde74c9da0471a2278d7697",
+      "candidateBeforeSha256": "2e91775bf4d3f7ca5b9a5076ec38c31813a7f49addde74c9da0471a2278d7697",
+      "packageBaselineSha256": "2e91775bf4d3f7ca5b9a5076ec38c31813a7f49addde74c9da0471a2278d7697",
+      "snapshot": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/technical-registration/root-apply-v1/candidate-output-before/archive__question-index-report.md"
+    },
+    {
+      "path": "archive/question-index-audit.md",
+      "rootBeforeSha256": "321c111827880659f21bb2e9d71f2b9a70d0ab3a5d4a76ea595b958c6dbe6852",
+      "candidateBeforeSha256": "321c111827880659f21bb2e9d71f2b9a70d0ab3a5d4a76ea595b958c6dbe6852",
+      "packageBaselineSha256": "321c111827880659f21bb2e9d71f2b9a70d0ab3a5d4a76ea595b958c6dbe6852",
+      "snapshot": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/technical-registration/root-apply-v1/candidate-output-before/archive__question-index-audit.md"
+    },
+    {
+      "path": "archive/data/archive2-catalog.json",
+      "rootBeforeSha256": "0302e8e949cd89ad63b7b585269f6aa54888d91b523c2f04ddb90a852280aaa6",
+      "candidateBeforeSha256": "8d960d9d638e059b0b34c86842b7eb5cdc421397e864db87e638045761393d97",
+      "packageBaselineSha256": "0302e8e949cd89ad63b7b585269f6aa54888d91b523c2f04ddb90a852280aaa6",
+      "snapshot": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/technical-registration/root-apply-v1/candidate-output-before/archive__data__archive2-catalog.json"
+    },
+    {
+      "path": "archive/data/archive2-canonical-input-manifest.json",
+      "rootBeforeSha256": "db78be3fcdc6fe6e6f2e3e1dfccdad69b37254537aad86357dcfac37d31446fa",
+      "candidateBeforeSha256": "1b9f711816a1fcfa05a10ba7c99e633ce09d44a238986f888ca6a61ab109720d",
+      "packageBaselineSha256": "db78be3fcdc6fe6e6f2e3e1dfccdad69b37254537aad86357dcfac37d31446fa",
+      "snapshot": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/technical-registration/root-apply-v1/candidate-output-before/archive__data__archive2-canonical-input-manifest.json"
+    }
+  ]
+}

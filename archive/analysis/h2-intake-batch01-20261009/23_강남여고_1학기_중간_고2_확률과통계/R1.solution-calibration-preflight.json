@@ -1,0 +1,88 @@
+{
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+        "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.",
+        "observation": "실제 2번 해설을 판독해 조건→개념 선택→수식 전개→결론이 연결되는지 확인했다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:77b762f1e35e5f530421cb7eb1d987ec0935ad0b9e2058a665c07fe6f930e5f0",
+        "solutionExcerpt": "원의 중심과 반지름을 읽으려면 주어진 식을 원의 표준형으로 바꾸어야 한다.",
+        "observation": "실제 3번 해설을 판독해 조건→개념 선택→수식 전개→결론이 연결되는지 확인했다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.",
+        "observation": "실제 2번 해설을 판독해 조건→개념 선택→수식 전개→결론이 연결되는지 확인했다. 연결 SVG assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg도 실제로 열어 계산 도형과 수치 표기를 확인했다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+        "solutionExcerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.",
+        "observation": "실제 3번 해설을 판독해 조건→개념 선택→수식 전개→결론이 연결되는지 확인했다. 연결 SVG assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg도 실제로 열어 계산 도형과 수치 표기를 확인했다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21",
+        "solutionExcerpt": "함수의 그래프는 같은 $x$좌표에 서로 다른 두 $y$좌표가 대응하지 않아야 한다.",
+        "observation": "실제 2번 해설을 판독해 조건→개념 선택→수식 전개→결론이 연결되는지 확인했다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:e664fd207ce80863250fa1281dfe247a5bbe1284ec2f37d87f3e38e034d00deb",
+        "solutionExcerpt": "부분집합에 $a$, $b$를 모두 포함하지 않으므로 나머지 원소 $c,d,e,f$만 선택하면 된다.",
+        "observation": "실제 3번 해설을 판독해 조건→개념 선택→수식 전개→결론이 연결되는지 확인했다."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q3-solution.bad.svg",
+        "sha256": "sha256:7d898cf2fc9942f3b97f3f9157c1c956d9edf6759b54c7cc9fb7887b1074213c",
+        "gitBlobSha": "3598d979a174c87faf66ef93aadb962b2047b5df"
+      }
+    ]
+  }
+}

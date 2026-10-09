@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_QID_PREFLIGHT_ASSESSMENT_V1",
+  "stage": "R1",
+  "reviewerId": "r1_05",
+  "qid": 17,
+  "decision": "HELPER_FALSE_POSITIVE_NO_SOURCE_REPAIR",
+  "sourceRawSha256": "b4398daa976df00582af6670f2e352b28fc7670c8d0a0ed76b08c99b06da7cc6",
+  "currentStudentPayload": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\R1.current-full23.student.recovery-03.json",
+    "bundleSha256": "a5d2f3df58e61f1787d930f5d8f1e40e3add1d683ed377e6670a514c8feb03e6",
+    "payloadSha256": "bbbe853434241d7e44276a33ea95b71bde1ee02729cb0d74c79a584b74f9e96a"
+  },
+  "originalFrozenStudentParity": {
+    "originalIntegratedFreeze": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\R1.integrated-freeze-composition.final.json",
+      "sha256": "4ab1564bb754baec7f613443b97dbb6e0ae00a21207671d9952ed0695323600a"
+    },
+    "originalBundlePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\R1.current-full23.student.final.json",
+    "originalPayloadSha256": "bbbe853434241d7e44276a33ea95b71bde1ee02729cb0d74c79a584b74f9e96a",
+    "exactStudentObjectParity": true
+  },
+  "currentStudentContent": "상수 $k$에 대하여 정의역과 공역이 각각 실수 전체의 집합인 함수 $f(x)=\\begin{cases}2^{-x-2}&(x<k)\\\\-\\log_2(x+2)-2&(x\\ge k)\\end{cases}$가 일대일 대응이다. 함수 $g(x)=\\begin{cases}\\log_2(2-x)+2&(x<-k)\\\\-2^{x-2}+2&(x\\ge-k)\\end{cases}$를<br>라 할 때, $f(a)\\le b\\le g(a)$를 만족시키는 정수 $a$, $b$의 모든 순서쌍 $(a,b)$의 개수는? (단, $-2\\le a\\le1$) [5점]",
+  "actualPdfInspection": {
+    "sourcePage": 4,
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\source-page-4.png",
+    "sha256": "034e34b2cd1039400d1a454ca928d292d5bb4381f5cc9d50bbe7ae8f683e7b94",
+    "finding": "The printed q17 piecewise definitions contain x<k and x<-k inside the corresponding displayed mathematical cases; the condition -2≤a≤1 is printed as the final standalone inline expression."
+  },
+  "preflightFinding": {
+    "reportPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\CREATE.preflight.recovery-attempt-02.stdout.raw.json",
+    "reportSha256": "5b3c3699113856790b1b533cbe13b48e79bd50172f3c1e0260124c3bc5b687d1",
+    "locus": {
+      "start": 284,
+      "end": 285,
+      "text": "$"
+    },
+    "reason": "Opening math delimiter has no matching closer."
+  },
+  "delimiterAudit": {
+    "rawInlineDollarOffsets": [
+      3,
+      5,
+      38,
+      107,
+      123,
+      194,
+      207,
+      225,
+      237,
+      239,
+      242,
+      244,
+      254,
+      260,
+      272,
+      284
+    ],
+    "balancedPairs": [
+      [
+        3,
+        5
+      ],
+      [
+        38,
+        107
+      ],
+      [
+        123,
+        194
+      ],
+      [
+        207,
+        225
+      ],
+      [
+        237,
+        239
+      ],
+      [
+        242,
+        244
+      ],
+      [
+        254,
+        260
+      ],
+      [
+        272,
+        284
+      ]
+    ],
+    "allEightPairsBalanced": true,
+    "finalReportedDollarIsClosingDelimiter": true,
+    "preflightMaskingMechanism": {
+      "regex": "<[^>]*>",
+      "firstMatchedRange": {
+        "start": 68,
+        "end": 200,
+        "text": "<k)\\\\-\\log_2(x+2)-2&(x\\ge k)\\end{cases}$가 일대일 대응이다. 함수 $g(x)=\\begin{cases}\\log_2(2-x)+2&(x<-k)\\\\-2^{x-2}+2&(x\\ge-k)\\end{cases}$를<br>"
+      },
+      "effect": "The helper starts at the mathematical less-than sign in (x<k) and consumes through the following <br> closing angle, masking the actual closing $ at 107 and opening $ at 123. This makes the visible token stream odd and causes the final balanced $ at offset 284 to be mislabeled as an opener."
+    }
+  },
+  "applicableTypesettingRule": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\docs\\rules\\01_CANONICAL\\JS아카이브_문항조판_운영규칙_v1.md",
+    "sha256": "b592921444db8bfeb32d19e0a3554f4ca1718b738eb8a8aa0dd14c30ecd61fe9",
+    "disposition": "Preserve exact source characters and keep line breaks outside complete $...$ math units. The existing <br> is after the completed g(x) math span; the printed less-than relations occur inside balanced TeX spans."
+  },
+  "preflightImplementation": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\tools\\archive-create-preflight.mjs",
+    "sha256": "a5bff02b10d15ed738bb064ea0b4587b115dd24d35444be1fbc648fa5767d47e"
+  },
+  "result": {
+    "sourceChange": false,
+    "answerFreezeInvalidated": false,
+    "newMathFreezeRequired": false,
+    "actualRenderClaimed": false
+  }
+}

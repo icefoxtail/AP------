@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_SOLUTION_CALIBRATION_PREFLIGHT_V1",
+  "stage": "R1",
+  "examUid": "23_금당고_1학기_중간_고2_수학II",
+  "reviewerId": "/root/r1_05",
+  "purpose": "q11 minimal solution correction review after PDF source fact review",
+  "sampleReadBeforeRepair": true,
+  "calibrationAxes": ["STUDENT_REPRODUCIBILITY", "SMALL_BOARD_STRUCTURE", "EXPLANATION_DENSITY", "VISUAL_SEMANTIC_PARITY", "VISUAL_READABILITY"],
+  "goldenCalibrationSet": ["archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js", "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"],
+  "goldenCalibration": {
+    "samples": [
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","sha256":"7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156","items":[
+        {"qid":4,"solutionSha256":"871e7e0f0fbd6a385eba138eeaa25c5e0bd50ed778c640993b81c2b7961ca0d7","observation":"Re-read before q11 repair: perpendicular slope, point-line distance, both b candidates, then b>0 selection are explicit separate calculation steps."},
+        {"qid":7,"solutionSha256":"0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9","visualSha256":"c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8","observation":"Re-read solution and opened rendered SVG before repair: completing the square, center translation and origin reflection are sequential; intermediate and final circles match the stated centers/radius."}
+      ]},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","sha256":"3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99","items":[
+        {"qid":1,"solutionSha256":"027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682","observation":"Re-read before q11 repair: coordinate differences and radical simplification are presented as a reproducible sequence."},
+        {"qid":2,"solutionSha256":"84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2","visualSha256":"8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30","observation":"Re-read solution and opened rendered SVG: slopes −1/3 and 3 are perpendicular. Local renderer lacks CJK font, so converter label readability is not asserted."}
+      ]}
+    ]
+  },
+  "negativeSample": {"path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md","sha256":"dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23","observation":"Re-read before q11 repair and reopened rendered q20 bad SVG. The displayed 3x+4y−8=0 label has a different actual slope, demonstrating the need to verify geometry rather than labels.","svgPath":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q20-solution.bad.svg","svgSha256":"89debcfed249f581602aa9c77fb54390866dccb4a95fe21f59ec1ee6fac82cb7","renderedPngPath":"archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/preflight-negative-q20.png","renderedPngSha256":"424157ad349d4d1a95ecad85828c3e5928a6fa24eaab2d908419d3b821685247"},
+  "calibrationStatus": "PASS"
+}

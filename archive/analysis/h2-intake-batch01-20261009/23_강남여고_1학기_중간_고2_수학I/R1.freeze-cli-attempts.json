@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_TOOL_ATTEMPTS_V1",
+  "reviewerIdentity": {
+    "role": "archive_r1",
+    "reviewerId": "/root/r1_02"
+  },
+  "attempts": [
+    {
+      "command": "archive-codex-stage-kit freeze",
+      "result": "FAIL",
+      "issue": "FULL_INDEPENDENT_FREEZE_REQUIRED",
+      "cause": "answer packet initially nested under rows instead of CLI-required top-level array",
+      "sourceRead": false,
+      "freezeWritten": false
+    },
+    {
+      "command": "archive-codex-stage-kit freeze",
+      "result": "FAIL",
+      "issue": "assetReads.some is not a function",
+      "cause": "asset acknowledgement packet initially nested under reads instead of CLI-required top-level array",
+      "sourceRead": false,
+      "freezeWritten": false
+    }
+  ],
+  "recoveredBy": "Corrected packet envelopes without changing any independent answer or asset acknowledgement; successful immutable freeze SHA f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1."
+}

@@ -1,0 +1,148 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_META_DECISIONS_V1",
+  "reviewerId": "recovery_03",
+  "examUid": "26_강남여고_1학기_중간_고2_대수",
+  "artifactRawSha256": "ee7f5dec997371cde114fab1c22bced3b9eda8bc29d9845f1f5cc554e8be973f",
+  "changedQids": [
+    1,
+    10
+  ],
+  "q1": {
+    "replacementScope": "QUESTION_ONLY",
+    "sourcePath": "D:/2026_1학기중간_/대수/26_강남여고_1학기_중간_고2_대수.pdf",
+    "difficulty": {
+      "status": "FRESH_R1_D2_APPLIED",
+      "bucket": 1,
+      "confidence": "high",
+      "boundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "priorFieldVisibility": {
+        "level": "하",
+        "bucket": 1
+      },
+      "priorFieldExposureSource": "CREATE candidate was visible to recovery_03 before canonical difficulty read; not used as independent authority",
+      "blindPassAsserted": false,
+      "freshR1FreezeSha256": "c7614d24b3c7e865d75b40dfcb0910fbdf5d450706cbb01a960e017616c281b2",
+      "legacyComparisonAfterFreeze": "level 하 is the canonical legacy mapping for bucket 1; NORMAL"
+    },
+    "rpmCandidate": {
+      "sourceAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/대수.md",
+      "primaryMethod": "실수 범위에서 홀수·짝수 거듭제곱근의 값과 principal radical 부호를 판정한다.",
+      "L4": "L4-1.1.1.2 실수 조건",
+      "path": "2022 대수 > 지수함수와 로그함수 > 지수 > 거듭제곱근 > 실수 조건",
+      "L1": "L1-1 지수함수와 로그함수",
+      "L3": "L3-1.1.1 거듭제곱근",
+      "sourceAuthoritySha256": "e422e8963dd2ecb0a5a169a5bf187fe43409b9c23c065e6e28512cd2991f05fe",
+      "L2": "L2-1.1 지수",
+      "decisiveStep": "(-2)^5=-32이므로 √[5]{-32}=-2이며, 나머지 네 진술은 홀수·짝수 근의 실수 부호와 principal value에 어긋난다."
+    },
+    "projection": {
+      "metaDebtReason": "현재 GLOBAL ACTIVE taxonomy에는 H22-A-01/H22-A-01-EXPONENT_LOG의 이 2022 대수 거듭제곱근 구조에 정확한 PT/TPL binding이 없다. PT_RADICAL_EXPRESSION는 다른 course/unit binding이며 의미가 정확히 맞지 않아 재사용하지 않고 새 key도 만들지 않는다.",
+      "status": "UNMATERIALIZED_CANDIDATE",
+      "taxonomyRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+      "templateKey": null,
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "curriculumBindingsSha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+      "problemTypeKey": null
+    },
+    "metaFields": {
+      "standardUnitKey": "H22-A-01",
+      "problemTypeKey": null,
+      "standardUnit": "지수와 로그",
+      "subUnitConfidence": "candidate_evidence",
+      "standardCourse": "대수",
+      "subUnitKey": "H22-A-01-EXPONENT_LOG",
+      "subUnitClassificationDepth": "complete_candidate",
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "subUnit": "지수와 로그",
+      "standardUnitOrder": 1,
+      "templateKey": null,
+      "crossConceptKeys": []
+    },
+    "recoveryType": "QUESTION_REPLACEMENT",
+    "sourceMode": "CODEX_DIRECT_AUTHORING",
+    "sourceSha256": "3b917c45f0b81c9cf32133471a2044e5887e91b0ea409e4a6c5009bf96450b2f",
+    "sourcePage": 1,
+    "semanticDecisionStatus": "APPLIED_FROM_FRESH_R1_PROPOSAL_PENDING_GENERIC_CREATE_GATE"
+  },
+  "q10": {
+    "repairType": "MINIMAL_CHOICE_CORRECTION",
+    "changedLocus": [
+      "choices[0]",
+      "answer",
+      "solution",
+      "itemStatus",
+      "itemHoldReason"
+    ],
+    "sourceParityStatus": "SOURCE_CORRECTION_AUTHORIZED",
+    "freshR1R2Required": true,
+    "difficultyAndMeta": "FRESH_R1_D2_APPLIED",
+    "sourceMode": "AUDITED_SOURCE_REPAIR",
+    "metaCandidate": {
+      "curriculum": "2022",
+      "course": "대수",
+      "standardUnitKey": "H22-A-01",
+      "standardUnit": "지수와 로그",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H22-A-01-EXPONENT_LOG",
+      "subUnit": "지수와 로그",
+      "rpmPrimaryPath": "2022 대수 > 지수함수와 로그함수 > 지수 > 지수법칙 > 지수식 계산",
+      "L3": "L3-1.1.3 지수법칙",
+      "L4": "L4-1.1.3.1 지수식 계산",
+      "relatedConcept": "근호를 유리수 지수로 바꾸기",
+      "primaryMethod": "중첩근호를 유리수 지수로 바꾸고 곱·몫에서 지수법칙을 적용한다.",
+      "decisiveStep": "2/3+5/6−1=1/2"
+    },
+    "difficulty": {
+      "status": "FRESH_R1_D2_APPLIED",
+      "bucket": 2,
+      "confidence": "high",
+      "boundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "priorFieldVisibility": {
+        "level": "중",
+        "bucket": 3
+      },
+      "priorFieldExposureSource": "CREATE candidate was visible to recovery_03 before canonical difficulty read; not used as independent authority",
+      "blindPassAsserted": false,
+      "freshR1FreezeSha256": "c7614d24b3c7e865d75b40dfcb0910fbdf5d450706cbb01a960e017616c281b2",
+      "legacyComparisonAfterFreeze": "level 중 is the canonical legacy mapping for bucket 2; NORMAL",
+      "previousDifficultyBucket": 3,
+      "appliedDifficultyBucket": 2
+    }
+  },
+  "qualityPassAsserted": false,
+  "createdUtc": "2026-10-08T13:39:52.4426996Z",
+  "r1FreshFreeze": {
+    "path": "R1.scope-1,10@recovery-01.original-freeze.json",
+    "sha256": "c7614d24b3c7e865d75b40dfcb0910fbdf5d450706cbb01a960e017616c281b2",
+    "bundleSha256": "9cd52f3b2ba0c489e32f0077d76c7534386042ea802776b42bad9299c2030c84",
+    "reviewerId": "Codex-R1-recovery-03",
+    "sourceRawSha256": "4c07a30c00e50b53dc1090d1416420e6a5c12f8cffb6cd56808cf606b46c8539",
+    "status": "IMMUTABLE_FRESH_SCOPE_FREEZE",
+    "answers": {
+      "1": "①",
+      "10": "①"
+    },
+    "studentQidOrder": [
+      1,
+      10
+    ],
+    "assetsRead": [],
+    "actualRender": "NOT_RUN"
+  },
+  "freshR1IndependentAnswers": [
+    {
+      "qid": 1,
+      "answer": "①"
+    },
+    {
+      "qid": 10,
+      "answer": "①"
+    }
+  ]
+}

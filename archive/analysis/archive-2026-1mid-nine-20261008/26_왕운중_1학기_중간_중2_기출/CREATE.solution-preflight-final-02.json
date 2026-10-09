@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_SOLUTION_CALIBRATION_PREFLIGHT_V1",
+  "runId": "archive-2026-1mid-nine-20261008",
+  "examUid": "26_왕운중_1학기_중간_중2_기출",
+  "stage": "CREATE",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "performedBeforeTargetSolutionAuthoring": true,
+  "targetSolutionsAuthoredAfterSampleRead": true,
+  "registryPath": "archive/data/codex-quality-calibration-registry-v2.json",
+  "registrySha256": "f42e82d8c6c6f83d294d7d825eb0cc2c7cc939f1e62db3ed6faaea0cd9f0733d",
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "samples": [
+    {
+      "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+          "observation": "Read current solution bytes: applies internal-division formula with opposite ratio weights, obtains P=(1,6), finds midpoint M=(3,8), then tracks distance PM through substitutions to 2√2."
+        },
+        {
+          "qid": 2,
+          "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+          "observation": "Read current solution bytes: obtains slope −3, substitutes point (1,−2) to solve n=1, then computes m+n=−2."
+        },
+        {
+          "qid": 7,
+          "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+          "openedAuthorizedPngSha256": "890ebd7f52131fe6c85a47e1a16a77b3c822ec25c5b9a409760148ee0058d406",
+          "observation": "Read current solution and SVG source; opened only ROOT-authorized existing Chrome PNG at original resolution. The three circle/center states and note card fit; source labels align with the plotted center transforms; no clipping observed.",
+          "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+          "visualPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+          "openedAuthorizedPngPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/golden-existing-render-witness/golden-maesan-q7-chrome.png"
+        }
+      ],
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js"
+    },
+    {
+      "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+          "observation": "Read current solution bytes: uses signed coordinate differences, substitutes them into the distance formula, and simplifies √50 to 5√2."
+        },
+        {
+          "qid": 2,
+          "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+          "openedAuthorizedPngSha256": "525b1cd62a8665035d1b4c6adb77a3e00e331c5da5ddb3ad8e7b7be195cf8f40",
+          "observation": "Read current solution and SVG source, then opened only the ROOT-authorized existing Chrome PNG at original resolution. It shows a descending line with slope −1/3 and a steep ascending line with slope 3; labels identify k=6 and the perpendicular relation. No clipping observed.",
+          "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+          "visualPath": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+          "openedAuthorizedPngPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/golden-existing-render-witness/golden-hyocheon-q2-chrome.png"
+        },
+        {
+          "qid": 5,
+          "solutionSha256": "8e1a0f149d821431abc022690f63b1b99c675d8373a575c92dc4d1688dc4b109",
+          "observation": "Read current solution bytes: uses set equality to determine parameter values in order, then substitutes them into the requested sum."
+        }
+      ],
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+    "observation": "Read the registered Negative README before target solution authoring. It requires checking actual SVG coordinates, separating enumerated small-board decisions, exact current Meta lookup, and evaluated runtime TeX.",
+    "visualSamplePath": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg",
+    "visualSampleSha256": "022a90d5887f312af6eff6d0c1ee15cac740460bb177709f9a6f274fd20f3d92",
+    "visualMethod": "Direct SVG source byte inspection (no newly generated preview used in final evidence).",
+    "visualObservation": "The labeled line primitive endpoints are (70,82.5) and (535,340.8), so at the labeled A dot x=150 it has y≈126.9 rather than the plotted circle y=135; at the labeled B dot x=330 it has y≈226.9 rather than y=285. At x=300, the line crosses y≈210.3, the x-axis, not the labeled y-intercept −7/6. The geometry contradicts its labels."
+  },
+  "approvedVisualReuse": {
+    "decisionPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/ROOT.existing-golden-render-reuse.decision.json",
+    "decisionSha256": null,
+    "approvedPngOnly": true,
+    "currentSvgShaMatches": [
+      true,
+      true
+    ],
+    "noCurrentWorkerChromeRun": true
+  },
+  "excludedProcessArtifacts": [
+    {
+      "sha256": "289057c29ab3cfe8001680bc0724f90434badbd16dae607c6bc0060d04984d71",
+      "status": "EXCLUDED_UNAUTHORIZED_NEW_RASTER",
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/golden-preflight/hyocheon-q2-solution.png"
+    },
+    {
+      "sha256": "e88da032df3519bd0294fd51c07ff3705f256fbfedc24398bfb537a6b9a28c55",
+      "status": "EXCLUDED_UNAUTHORIZED_NEW_RASTER",
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/golden-preflight/negative-q1.svg.png"
+    }
+  ],
+  "visualMethodExposureAddendum": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.visual-method-exposure-addendum-03.json",
+  "sampleReadBeforeTargetSolutionAuthoring": true,
+  "qualityCompareCount": "24/24",
+  "targetQuestionVisualDisposition": "NO_VISUAL_REQUIRED",
+  "targetSolutionVisualDisposition": "NO_VISUAL_REQUIRED",
+  "targetVisualReason": "Both replacement items are text-only; each decisive mathematical step is fully represented in algebra and no problem or solution diagram is needed."
+}
