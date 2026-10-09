@@ -1,0 +1,1663 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "runId": "codex-20261007-2sem-mid-jeil-calc1",
+  "examUid": "26_제일고_2학기_중간_고2_미적분I",
+  "stage": "R1",
+  "artifactSha": "79969a82997f485304e116d340ebe4069a61a016",
+  "artifactRawSha256": "970eedff8a9a306bfdf108cb38920b677d20dbd89246945110254e2ba4a1aa2f",
+  "studentBundleSha256": "5f1176b381968a3f11c68977eb39f99cfba76f7d0593563251ba2c2d1f5819cb",
+  "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+  "denominator": 22,
+  "expectedQids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22
+  ],
+  "independentFreeze": {
+    "path": "R1.independent-answer-freeze.json",
+    "sha256": "e64c120c617680ed1b81be95fb54bb8fd99c6aaa0ca9c1f6c030b4a19d7c8ec2",
+    "preDisclosure": true,
+    "qid8FreshReplacement": {
+      "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_제일고_2학기_중간_고2_미적분I\\codex-20261007-2sem-mid-jeil-calc1\\evidence\\R1-q8-fresh-answer-freeze.json",
+      "sha256": "527e0fb4b85dff03d4e3cefd9da69fdfe2ab2fd18b776f99698988f70da9efca",
+      "replacesQid": 8
+    }
+  },
+  "studentFreezeRebind": {
+    "path": "R1.student-freeze-rebind.json",
+    "sha256": "0433e89b8186beb7dfef8ac3be93d9665a706ad5b717e5e2d4a4d8dd084a7d25",
+    "studentFieldsUnchanged": true,
+    "qid8CurrentStudentBundle": {
+      "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_제일고_2학기_중간_고2_미적분I\\codex-20261007-2sem-mid-jeil-calc1\\handoff\\R1-R2.student-only-q8-fresh.json",
+      "sha256": "e81888dc8d0331c248d74b13e4a02b9dbdf0578ac99752f961463681ed795b1a",
+      "qid": 8,
+      "payloadSha256": "bbed73a4c60dd0150228ca06d0aad864be00e381047e1ee2114074e61221af67"
+    }
+  },
+  "postfreezeAdjudications": [
+    {
+      "qid": 10,
+      "path": "R1.q10-postfreeze-adjudication.json",
+      "sha256": "fcedcfe4c68afa21b89d69ef00a82d1f7544da2b6a3f2f5af50f2eb6c3e2e80e",
+      "changedLocusOnly": true
+    }
+  ],
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "학생이 따라 할 거리 공식의 좌표차 대입, 제곱 합, 제곱근 정리를 작은 단계로 분리했다. target에서는 한계·미분 정의의 대입과 극한 정리를 같은 식 전환마다 보이게 한다."
+          },
+          {
+            "qid": 5,
+            "solutionSha256": "8e1a0f149d821431abc022690f63b1b99c675d8373a575c92dc4d1688dc4b109",
+            "observation": "집합 원소 대응을 먼저 명시하고 변수 관계를 대입 후 결론을 냈다. target에서도 조건에서 얻는 관계와 최종 대입을 건너뛰지 않는다."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "observation": "Rendered the source SVG. The descending line matches slope -1/3, the steep ascending line matches slope 3, and the callout states k=6; axes and line crossings remain readable.",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+            "observation": "각 보기마다 참·거짓을 실제 원소 관계로 판정하고 선택 이유를 붙였다. target의 여러 조건 문항도 조건 단위로 나누고 결론 근거를 연결한다."
+          },
+          {
+            "qid": 3,
+            "solutionSha256": "e664fd207ce80863250fa1281dfe247a5bbe1284ec2f37d87f3e38e034d00deb",
+            "observation": "포함 불가 조건으로 선택 가능한 원소를 먼저 좁힌 뒤 독립 선택 수를 곱했다. target에서는 경우분리/계수 비교가 있으면 각 근거를 분리한다."
+          },
+          {
+            "qid": 14,
+            "solutionSha256": "61c8f11a6d5e63b1c96916105b53e8ee083003a69bd765642d30c6ad37df6ec6",
+            "observation": "Rendered the source SVG. It distinguishes the a=3 vertical/horizontal perpendicular pair from the a=1 sloped pair; line directions, axes and the parameter callout are readable.",
+            "visualSha256": "7f7c6589bda617cbb05786ffb3927c4f23a5c0ad84c5aa7831a2f6f0a8cbcb58"
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Read the fixed false-PASS regression README before this R1 review; it requires actual SVG primitive/topology evidence, separate enumerated solution blocks, lookup evidence for resolvable metadata, and runtime escape verification."
+    },
+    "reviewedBeforeR1SolutionReview": false,
+    "visualSampleReviews": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+        "observation": "Opened the rendered source solution diagram; line slopes and labeled perpendicular relation agree with the derivation."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 14,
+        "visualSha256": "7f7c6589bda617cbb05786ffb3927c4f23a5c0ad84c5aa7831a2f6f0a8cbcb58",
+        "observation": "Opened the rendered source solution diagram; vertical/horizontal and sloped cases match the written case distinction."
+      }
+    ]
+  },
+  "artifactDispositions": {
+    "artifactSha": "79969a82997f485304e116d340ebe4069a61a016",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current 2022 Calculus I RPM primary row for IVT is DIRECT_BINDING_GAP while the actual candidate retains the unique ACTIVE PT_INTERMEDIATE_VALUE_APPLICATION and TPL_IVT_VALUE_EXISTENCE_INTERVAL values. Preserve those fields and evidence; do not synthesize a curriculum binding."
+      }
+    ]
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "sourceIdentity": {
+        "sourceFile": "S28BW-826100719360_0001.jpg",
+        "sourceSha256": "21bec3ff1e17119d8779875ae3e3092f9c16507fe20bf857faaff55c6c98c688",
+        "page": 1,
+        "sourceExactParity": "PASS"
+      },
+      "independentAnswer": "②",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "R1.independent-answer-freeze.json",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "solutionSha256": "a771cc214f5acf7dbf5ac2582dff384f2e1777fd264ada4efa816ff34a7e8799",
+      "smallBoardContinuityStatus": "PASS",
+      "boardFlowContinuity": {
+        "status": "PASS",
+        "evidence": "Solution lines preserve each required inference; enumerated conditions are separated and no independent transition is compressed."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Reviewed source-matched current student content qid by qid. Automatic grid layout retained; no semantic boundary requires a manual break."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Current solution is separated into reproducible steps and conclusion; required subparts are distinct and no board-flow compression defect was found."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "CANONICAL_FIELDS_REVIEWED",
+          "evidence": "Reviewed current course/unit/subunit, L3/L4, cross-concept/condition/integration, difficulty fields, tags and status fields against the applicable canonical contracts."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "PROBLEM_VISUAL_PARITY_PASS",
+          "evidence": "Opened the referenced image before freeze; its labels/topology agree with the source scan and the image SHA is bound below. No solution SVG is used."
+        }
+      },
+      "questionLayout": {
+        "disposition": "KEEP",
+        "evidence": "AUTO-FIRST grid; source content and choices exact-parity retained."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "evidence": "Student-readable step order and line breaks independently reviewed."
+      },
+      "metaReview": {
+        "status": "PASS",
+        "currentFieldsSha256": "b218d48740f93643e9c32422db49370a399e37017e68458d6ee2fb3eca609578",
+        "disposition": "FIELDS_REVIEWED"
+      },
+      "visualReview": {
+        "status": "PASS",
+        "required": true,
+        "assetRef": "assets/images/26_제일고_2학기_중간_고2_미적분I/q01.png",
+        "sourcePage": 1,
+        "observation": "Actual referenced asset opened and compared against the original scanned source; no label/topology mismatch."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceIdentity": {
+        "sourceFile": "S28BW-826100719360_0001.jpg",
+        "sourceSha256": "21bec3ff1e17119d8779875ae3e3092f9c16507fe20bf857faaff55c6c98c688",
+        "page": 1,
+        "sourceExactParity": "PASS"
+      },
+      "independentAnswer": "④",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "R1.independent-answer-freeze.json",
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "solutionSha256": "fe65c0286353be46f5a2c3eaf76c004472f4c5fd106806bebaaed0fe04287752",
+      "smallBoardContinuityStatus": "PASS",
+      "boardFlowContinuity": {
+        "status": "PASS",
+        "evidence": "Solution lines preserve each required inference; enumerated conditions are separated and no independent transition is compressed."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Reviewed source-matched current student content qid by qid. Automatic grid layout retained; no semantic boundary requires a manual break."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Current solution is separated into reproducible steps and conclusion; required subparts are distinct and no board-flow compression defect was found."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "CANONICAL_FIELDS_REVIEWED",
+          "evidence": "Reviewed current course/unit/subunit, L3/L4, cross-concept/condition/integration, difficulty fields, tags and status fields against the applicable canonical contracts."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_SVG_NOT_REQUIRED",
+          "evidence": "No problem image or solution SVG is required by the student input for this qid."
+        }
+      },
+      "questionLayout": {
+        "disposition": "KEEP",
+        "evidence": "AUTO-FIRST grid; source content and choices exact-parity retained."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "evidence": "Student-readable step order and line breaks independently reviewed."
+      },
+      "metaReview": {
+        "status": "PASS",
+        "currentFieldsSha256": "71c9b370c3dc0fb48969e97a03c0da08070a08b0a23f408a4c0a4131dd958dc8",
+        "disposition": "FIELDS_REVIEWED"
+      },
+      "visualReview": {
+        "status": "PASS",
+        "required": false,
+        "assetRef": null,
+        "assetSha256": null,
+        "sourcePage": 1,
+        "observation": "No visual is required."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceIdentity": {
+        "sourceFile": "S28BW-826100719360_0001.jpg",
+        "sourceSha256": "21bec3ff1e17119d8779875ae3e3092f9c16507fe20bf857faaff55c6c98c688",
+        "page": 1,
+        "sourceExactParity": "PASS"
+      },
+      "independentAnswer": "①",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "R1.independent-answer-freeze.json",
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "solutionSha256": "42bbde09adebe4a6ede50856022eb3ac0b9502d1ce540dc23b0b766bc1e58bbc",
+      "smallBoardContinuityStatus": "PASS",
+      "boardFlowContinuity": {
+        "status": "PASS",
+        "evidence": "Solution lines preserve each required inference; enumerated conditions are separated and no independent transition is compressed."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Reviewed source-matched current student content qid by qid. Automatic grid layout retained; no semantic boundary requires a manual break."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Current solution is separated into reproducible steps and conclusion; required subparts are distinct and no board-flow compression defect was found."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "CANONICAL_FIELDS_REVIEWED",
+          "evidence": "Reviewed current course/unit/subunit, L3/L4, cross-concept/condition/integration, difficulty fields, tags and status fields against the applicable canonical contracts."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_SVG_NOT_REQUIRED",
+          "evidence": "No problem image or solution SVG is required by the student input for this qid."
+        }
+      },
+      "questionLayout": {
+        "disposition": "KEEP",
+        "evidence": "AUTO-FIRST grid; source content and choices exact-parity retained."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "evidence": "Student-readable step order and line breaks independently reviewed."
+      },
+      "metaReview": {
+        "status": "PASS",
+        "currentFieldsSha256": "b3b9fd055cf501fb85e14f7d98e8f6415c5f01fb02b8b73062763dbe392c45b7",
+        "disposition": "FIELDS_REVIEWED"
+      },
+      "visualReview": {
+        "status": "PASS",
+        "required": false,
+        "assetRef": null,
+        "assetSha256": null,
+        "sourcePage": 1,
+        "observation": "No visual is required."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceIdentity": {
+        "sourceFile": "S28BW-826100719360_0001.jpg",
+        "sourceSha256": "21bec3ff1e17119d8779875ae3e3092f9c16507fe20bf857faaff55c6c98c688",
+        "page": 1,
+        "sourceExactParity": "PASS"
+      },
+      "independentAnswer": "②",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "R1.independent-answer-freeze.json",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "solutionSha256": "bd372f1a5fb4eb8e570cac86cfc52f7fd28708743c0aecb3e5bc1440349e3010",
+      "smallBoardContinuityStatus": "PASS",
+      "boardFlowContinuity": {
+        "status": "PASS",
+        "evidence": "Solution lines preserve each required inference; enumerated conditions are separated and no independent transition is compressed."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Reviewed source-matched current student content qid by qid. Automatic grid layout retained; no semantic boundary requires a manual break."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Current solution is separated into reproducible steps and conclusion; required subparts are distinct and no board-flow compression defect was found."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "CANONICAL_FIELDS_REVIEWED",
+          "evidence": "Reviewed current course/unit/subunit, L3/L4, cross-concept/condition/integration, difficulty fields, tags and status fields against the applicable canonical contracts."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_SVG_NOT_REQUIRED",
+          "evidence": "No problem image or solution SVG is required by the student input for this qid."
+        }
+      },
+      "questionLayout": {
+        "disposition": "KEEP",
+        "evidence": "AUTO-FIRST grid; source content and choices exact-parity retained."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "evidence": "Student-readable step order and line breaks independently reviewed."
+      },
+      "metaReview": {
+        "status": "PASS",
+        "currentFieldsSha256": "225161c89f40161a91e0d01a74168d1fb907bac977afaa09c49dd2619e6b8ecd",
+        "disposition": "FIELDS_REVIEWED"
+      },
+      "visualReview": {
+        "status": "PASS",
+        "required": false,
+        "assetRef": null,
+        "assetSha256": null,
+        "sourcePage": 1,
+        "observation": "No visual is required."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceIdentity": {
+        "sourceFile": "S28BW-826100719360_0001.jpg",
+        "sourceSha256": "21bec3ff1e17119d8779875ae3e3092f9c16507fe20bf857faaff55c6c98c688",
+        "page": 1,
+        "sourceExactParity": "PASS"
+      },
+      "independentAnswer": "③",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "R1.independent-answer-freeze.json",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "solutionSha256": "febd553cec4c39662db00e5fa2f874ced2c354734d98f9e95b362e8c87005b66",
+      "smallBoardContinuityStatus": "PASS",
+      "boardFlowContinuity": {
+        "status": "PASS",
+        "evidence": "Solution lines preserve each required inference; enumerated conditions are separated and no independent transition is compressed."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "MINIMAL_TEX_ENCODING_CORRECTION_STATIC_PASS",
+          "evidence": "Bound original R3 captures show q5 choices[0], [1], [3] rendered malformed in exam desktop/mobile. The only source-byte edits add the missing TeX command backslashes and braces, preserving the same values -5/2, -5/3, and 7/3. Current q5 choices extract as $-\\dfrac{5}{2}$, $-\\dfrac{5}{3}$, $4$, $\\dfrac{7}{3}$, $6$. Student content/choices otherwise unchanged. Actual R3 re-render remains pending."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Current solution is separated into reproducible steps and conclusion; required subparts are distinct and no board-flow compression defect was found."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "CANONICAL_FIELDS_REVIEWED",
+          "evidence": "Reviewed current course/unit/subunit, L3/L4, cross-concept/condition/integration, difficulty fields, tags and status fields against the applicable canonical contracts."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_SVG_NOT_REQUIRED",
+          "evidence": "No problem image or solution SVG is required by the student input for this qid."
+        }
+      },
+      "questionLayout": {
+        "disposition": "MINIMAL_TEX_ENCODING_CORRECTION_STATIC_PASS",
+        "evidence": "Corrected only q5 choices[0], choices[1], choices[3] TeX encoding after the bound R3 exam desktop/mobile FAIL. Exact semantic values and the other two choices are unchanged; all bytes outside those three q5 choice string literals are unchanged. Static R1 correction passes; actual renderer retest remains R3-owned."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "evidence": "Student-readable step order and line breaks independently reviewed."
+      },
+      "metaReview": {
+        "status": "PASS",
+        "currentFieldsSha256": "d403f732909aaa226c6ea6df81cac259f9e71500940c41095c31439de50c65db",
+        "disposition": "FIELDS_REVIEWED"
+      },
+      "visualReview": {
+        "status": "PASS",
+        "required": false,
+        "assetRef": null,
+        "assetSha256": null,
+        "sourcePage": 1,
+        "observation": "No visual is required."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceIdentity": {
+        "sourceFile": "S28BW-826100719360_0001.jpg",
+        "sourceSha256": "21bec3ff1e17119d8779875ae3e3092f9c16507fe20bf857faaff55c6c98c688",
+        "page": 1,
+        "sourceExactParity": "PASS"
+      },
+      "independentAnswer": "①",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "R1.independent-answer-freeze.json",
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "solutionSha256": "7badd78a34abceec7ade1c55bb3caa6d35ccad2c1dbe146307649996783bb715",
+      "smallBoardContinuityStatus": "PASS",
+      "boardFlowContinuity": {
+        "status": "PASS",
+        "evidence": "Solution lines preserve each required inference; enumerated conditions are separated and no independent transition is compressed."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Reviewed source-matched current student content qid by qid. Automatic grid layout retained; no semantic boundary requires a manual break."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Current solution is separated into reproducible steps and conclusion; required subparts are distinct and no board-flow compression defect was found."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "CANONICAL_FIELDS_REVIEWED",
+          "evidence": "Reviewed current course/unit/subunit, L3/L4, cross-concept/condition/integration, difficulty fields, tags and status fields against the applicable canonical contracts."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_SVG_NOT_REQUIRED",
+          "evidence": "No problem image or solution SVG is required by the student input for this qid."
+        }
+      },
+      "questionLayout": {
+        "disposition": "KEEP",
+        "evidence": "AUTO-FIRST grid; source content and choices exact-parity retained."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "evidence": "Student-readable step order and line breaks independently reviewed."
+      },
+      "metaReview": {
+        "status": "PASS",
+        "currentFieldsSha256": "31f515c071c6999ac98764331721ca295d7b00767d957c923d78edabd36ee40a",
+        "disposition": "FIELDS_REVIEWED"
+      },
+      "visualReview": {
+        "status": "PASS",
+        "required": false,
+        "assetRef": null,
+        "assetSha256": null,
+        "sourcePage": 1,
+        "observation": "No visual is required."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceIdentity": {
+        "sourceFile": "S28BW-826100719360_0002.jpg",
+        "sourceSha256": "25c03555d7c84e399a6401e84d9da63866f0b3e6f6d61638ed19e1b60cfa54de",
+        "page": 2,
+        "sourceExactParity": "PASS"
+      },
+      "independentAnswer": "④",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "R1.independent-answer-freeze.json",
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "solutionSha256": "efaf5459674f1dbcda7569f919479fe2f7b2252785a576a5c54f8908205c3d7a",
+      "smallBoardContinuityStatus": "PASS",
+      "boardFlowContinuity": {
+        "status": "PASS",
+        "evidence": "Solution lines preserve each required inference; enumerated conditions are separated and no independent transition is compressed."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Reviewed source-matched current student content qid by qid. Automatic grid layout retained; no semantic boundary requires a manual break."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Current solution is separated into reproducible steps and conclusion; required subparts are distinct and no board-flow compression defect was found."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "CANONICAL_FIELDS_REVIEWED",
+          "evidence": "Reviewed current course/unit/subunit, L3/L4, cross-concept/condition/integration, difficulty fields, tags and status fields against the applicable canonical contracts."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_SVG_NOT_REQUIRED",
+          "evidence": "No problem image or solution SVG is required by the student input for this qid."
+        }
+      },
+      "questionLayout": {
+        "disposition": "KEEP",
+        "evidence": "AUTO-FIRST grid; source content and choices exact-parity retained."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "evidence": "Student-readable step order and line breaks independently reviewed."
+      },
+      "metaReview": {
+        "status": "PASS",
+        "currentFieldsSha256": "fd8fc5d3808af6a251c6d22920201843cefefc98206e8dbdaebb7d2381820e14",
+        "disposition": "FIELDS_REVIEWED"
+      },
+      "visualReview": {
+        "status": "PASS",
+        "required": false,
+        "assetRef": null,
+        "assetSha256": null,
+        "sourcePage": 2,
+        "observation": "No visual is required."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/2mid/26_제일고_2학기_중간_고2_미적분I.js",
+        "sourceOrdinal": 8,
+        "questionUid": "26_제일고_2학기_중간_고2_미적분I#q8",
+        "artifactRawSha256": "5024ab6365b997669b47edfa0985900d8adfef50db7523ef9f6924787585198c",
+        "studentBundleSha256": "e81888dc8d0331c248d74b13e4a02b9dbdf0578ac99752f961463681ed795b1a",
+        "studentPayloadSha256": "bbed73a4c60dd0150228ca06d0aad864be00e381047e1ee2114074e61221af67",
+        "sourceMode": "AUDITED_REPAIR",
+        "repairType": "DETERMINISTIC_RADICAL_SCOPE_CORRECTION",
+        "requiredAssets": []
+      },
+      "independentAnswer": "③",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_제일고_2학기_중간_고2_미적분I\\codex-20261007-2sem-mid-jeil-calc1\\evidence\\R1-q8-fresh-answer-freeze.json#sha256=527e0fb4b85dff03d4e3cefd9da69fdfe2ab2fd18b776f99698988f70da9efca",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS_AFTER_REPAIR",
+      "disposition": "SOURCE_REPAIR_VERIFIED; independent solve and postfreeze comparison MATCH; no additional R1 correction needed.",
+      "repairApplied": true,
+      "solutionSha256": "7d6cad27b982cf1d92400cfd5cc1ffb805b930562b26a40a9b18e1e868f21a67",
+      "smallBoardContinuityStatus": "PASS",
+      "boardFlowContinuity": {
+        "status": "PASS",
+        "evidence": "Function/domain → continuity → f(2)>0 → f(3)<0 (with sqrt(15)<4) → IVT root in (2,3) → choice ③. Every decisive value and inference is physically present in solution."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Q8 current content and choices match the current answer-free student bundle byte-for-byte at field value level; AUTO-FIRST; no deterministic readability defect; layoutTag grid retained."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "The explanation separates function continuity, endpoint sign evaluations, IVT conclusion, and final answer into readable lines; each displayed expression is complete and the conclusion follows the computation."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "Retain current active PT/TPL keys and current curriculum fields. Current 2022 Calculus I RPM row is DIRECT_BINDING_GAP; record migration debt without synthesizing a curriculum binding or reclassifying.",
+          "evidence": "Current field hash and projection gap bound in artifactDispositions; see q8 Meta review."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "NOT_REQUIRED",
+          "evidence": "Student bundle and assignment declare no q8 visual asset; question and solution are scalar algebra/IVT reasoning and no problem or solution SVG is required. No source scan was opened."
+        }
+      },
+      "questionLayout": {
+        "disposition": "KEEP",
+        "evidence": "Q8 current content and choices match the current answer-free student bundle byte-for-byte at field value level; AUTO-FIRST; no deterministic readability defect; layoutTag grid retained."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "evidence": "The explanation separates function continuity, endpoint sign evaluations, IVT conclusion, and final answer into readable lines; each displayed expression is complete and the conclusion follows the computation."
+      },
+      "metaReview": {
+        "status": "PASS_WITH_DOCUMENTED_RPM_BINDING_GAP",
+        "currentFieldsSha256": "86d3afe305b2830f23be8399f03bc994c32a7744f095c3a06b46e0318054287d",
+        "disposition": "Retain current active PT/TPL keys and current curriculum fields. Current 2022 Calculus I RPM row is DIRECT_BINDING_GAP; record migration debt without synthesizing a curriculum binding or reclassifying."
+      },
+      "visualReview": {
+        "status": "PASS",
+        "required": false,
+        "assetRef": null,
+        "sourcePage": null,
+        "observation": "Student bundle and assignment declare no q8 visual asset; question and solution are scalar algebra/IVT reasoning and no problem or solution SVG is required. No source scan was opened."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceIdentity": {
+        "sourceFile": "S28BW-826100719360_0002.jpg",
+        "sourceSha256": "25c03555d7c84e399a6401e84d9da63866f0b3e6f6d61638ed19e1b60cfa54de",
+        "page": 2,
+        "sourceExactParity": "PASS"
+      },
+      "independentAnswer": "⑤",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "R1.independent-answer-freeze.json",
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "solutionSha256": "32c893b44cab073cafb9268837181ee1345e8c7474ef66906cab6a3ebbab7a0b",
+      "smallBoardContinuityStatus": "PASS",
+      "boardFlowContinuity": {
+        "status": "PASS",
+        "evidence": "Solution lines preserve each required inference; enumerated conditions are separated and no independent transition is compressed."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Reviewed source-matched current student content qid by qid. Automatic grid layout retained; no semantic boundary requires a manual break."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Current solution is separated into reproducible steps and conclusion; required subparts are distinct and no board-flow compression defect was found."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "CANONICAL_FIELDS_REVIEWED",
+          "evidence": "Reviewed current course/unit/subunit, L3/L4, cross-concept/condition/integration, difficulty fields, tags and status fields against the applicable canonical contracts."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "PROBLEM_VISUAL_PARITY_PASS",
+          "evidence": "Opened the referenced image before freeze; its labels/topology agree with the source scan and the image SHA is bound below. No solution SVG is used."
+        }
+      },
+      "questionLayout": {
+        "disposition": "KEEP",
+        "evidence": "AUTO-FIRST grid; source content and choices exact-parity retained."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "evidence": "Student-readable step order and line breaks independently reviewed."
+      },
+      "metaReview": {
+        "status": "PASS",
+        "currentFieldsSha256": "6c08f6fce9fdce8c36c07e13fa37d8fc1edb6092bce51500acdda40fc10da56d",
+        "disposition": "FIELDS_REVIEWED"
+      },
+      "visualReview": {
+        "status": "PASS",
+        "required": true,
+        "assetRef": "assets/images/26_제일고_2학기_중간_고2_미적분I/q09.png",
+        "sourcePage": 2,
+        "observation": "Actual referenced asset opened and compared against the original scanned source; no label/topology mismatch."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceIdentity": {
+        "sourceFile": "S28BW-826100719360_0002.jpg",
+        "sourceSha256": "25c03555d7c84e399a6401e84d9da63866f0b3e6f6d61638ed19e1b60cfa54de",
+        "page": 2,
+        "sourceExactParity": "PASS"
+      },
+      "independentAnswer": "⑤",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "R1.independent-answer-freeze.json",
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "solutionSha256": "3252a808ab25f1beb74f31e8c94a96670eb47ffc58b8c1edc68d1c5dd8350780",
+      "smallBoardContinuityStatus": "PASS",
+      "boardFlowContinuity": {
+        "status": "PASS",
+        "evidence": "Solution lines preserve each required inference; enumerated conditions are separated and no independent transition is compressed."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Reviewed source-matched current student content qid by qid. Automatic grid layout retained; no semantic boundary requires a manual break."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Current solution is separated into reproducible steps and conclusion; required subparts are distinct and no board-flow compression defect was found."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "CANONICAL_FIELDS_REVIEWED",
+          "evidence": "Reviewed current course/unit/subunit, L3/L4, cross-concept/condition/integration, difficulty fields, tags and status fields against the applicable canonical contracts."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_SVG_NOT_REQUIRED",
+          "evidence": "No problem image or solution SVG is required by the student input for this qid."
+        }
+      },
+      "questionLayout": {
+        "disposition": "KEEP",
+        "evidence": "AUTO-FIRST grid; source content and choices exact-parity retained."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "evidence": "Student-readable step order and line breaks independently reviewed."
+      },
+      "metaReview": {
+        "status": "PASS",
+        "currentFieldsSha256": "161d469142fa952a1fa974b9e39b8a1b06342d68c953f181684236b179ff21be",
+        "disposition": "FIELDS_REVIEWED"
+      },
+      "visualReview": {
+        "status": "PASS",
+        "required": false,
+        "assetRef": null,
+        "assetSha256": null,
+        "sourcePage": 2,
+        "observation": "No visual is required."
+      },
+      "postfreezeAdjudicationRef": "R1.q10-postfreeze-adjudication.json"
+    },
+    {
+      "qid": 11,
+      "sourceIdentity": {
+        "sourceFile": "S28BW-826100719360_0002.jpg",
+        "sourceSha256": "25c03555d7c84e399a6401e84d9da63866f0b3e6f6d61638ed19e1b60cfa54de",
+        "page": 2,
+        "sourceExactParity": "PASS"
+      },
+      "independentAnswer": "①",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "R1.independent-answer-freeze.json",
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "solutionSha256": "fc2a0c3cd776598b540c8250205238c712be4ff2325e607ba2b46f13f32c8426",
+      "smallBoardContinuityStatus": "PASS",
+      "boardFlowContinuity": {
+        "status": "PASS",
+        "evidence": "Solution lines preserve each required inference; enumerated conditions are separated and no independent transition is compressed."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Reviewed source-matched current student content qid by qid. Automatic grid layout retained; no semantic boundary requires a manual break."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Current solution is separated into reproducible steps and conclusion; required subparts are distinct and no board-flow compression defect was found."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "CANONICAL_FIELDS_REVIEWED",
+          "evidence": "Reviewed current course/unit/subunit, L3/L4, cross-concept/condition/integration, difficulty fields, tags and status fields against the applicable canonical contracts."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_SVG_NOT_REQUIRED",
+          "evidence": "No problem image or solution SVG is required by the student input for this qid."
+        }
+      },
+      "questionLayout": {
+        "disposition": "KEEP",
+        "evidence": "AUTO-FIRST grid; source content and choices exact-parity retained."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "evidence": "Student-readable step order and line breaks independently reviewed."
+      },
+      "metaReview": {
+        "status": "PASS",
+        "currentFieldsSha256": "f2df8e008fce018ea5bb5e8a1e2e8a665cc5388029b9766a2d1e5f906a04e3d6",
+        "disposition": "FIELDS_REVIEWED"
+      },
+      "visualReview": {
+        "status": "PASS",
+        "required": false,
+        "assetRef": null,
+        "assetSha256": null,
+        "sourcePage": 2,
+        "observation": "No visual is required."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceIdentity": {
+        "sourceFile": "S28BW-826100719360_0003.jpg",
+        "sourceSha256": "1eedc9e75204fda31a69ed9a3f843fd6cf7d279a0520e8f180e350928fdc0b93",
+        "page": 3,
+        "sourceExactParity": "PASS"
+      },
+      "independentAnswer": "④",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "R1.independent-answer-freeze.json",
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "solutionSha256": "d048d7e28ee08fab6d0c78240748311f27d13c53bed625e060038e0e90d1b0b6",
+      "smallBoardContinuityStatus": "PASS",
+      "boardFlowContinuity": {
+        "status": "PASS",
+        "evidence": "Solution lines preserve each required inference; enumerated conditions are separated and no independent transition is compressed."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Reviewed source-matched current student content qid by qid. Automatic grid layout retained; no semantic boundary requires a manual break."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Current solution is separated into reproducible steps and conclusion; required subparts are distinct and no board-flow compression defect was found."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "CANONICAL_FIELDS_REVIEWED",
+          "evidence": "Reviewed current course/unit/subunit, L3/L4, cross-concept/condition/integration, difficulty fields, tags and status fields against the applicable canonical contracts."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_SVG_NOT_REQUIRED",
+          "evidence": "No problem image or solution SVG is required by the student input for this qid."
+        }
+      },
+      "questionLayout": {
+        "disposition": "KEEP",
+        "evidence": "AUTO-FIRST grid; source content and choices exact-parity retained."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "evidence": "Student-readable step order and line breaks independently reviewed."
+      },
+      "metaReview": {
+        "status": "PASS",
+        "currentFieldsSha256": "a998dd1fef863e6f335ce38dc18d340a5e8b5c915eb59db022aaaf0866628d73",
+        "disposition": "FIELDS_REVIEWED"
+      },
+      "visualReview": {
+        "status": "PASS",
+        "required": false,
+        "assetRef": null,
+        "assetSha256": null,
+        "sourcePage": 3,
+        "observation": "No visual is required."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceIdentity": {
+        "sourceFile": "S28BW-826100719360_0003.jpg",
+        "sourceSha256": "1eedc9e75204fda31a69ed9a3f843fd6cf7d279a0520e8f180e350928fdc0b93",
+        "page": 3,
+        "sourceExactParity": "PASS"
+      },
+      "independentAnswer": "③",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "R1.independent-answer-freeze.json",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "solutionSha256": "c64afd3cb5d48089dd97569fa98421fab6a235200bf9f753b3ee516d57915363",
+      "smallBoardContinuityStatus": "PASS",
+      "boardFlowContinuity": {
+        "status": "PASS",
+        "evidence": "Solution lines preserve each required inference; enumerated conditions are separated and no independent transition is compressed."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Reviewed source-matched current student content qid by qid. Automatic grid layout retained; no semantic boundary requires a manual break."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Current solution is separated into reproducible steps and conclusion; required subparts are distinct and no board-flow compression defect was found."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "CANONICAL_FIELDS_REVIEWED",
+          "evidence": "Reviewed current course/unit/subunit, L3/L4, cross-concept/condition/integration, difficulty fields, tags and status fields against the applicable canonical contracts."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_SVG_NOT_REQUIRED",
+          "evidence": "No problem image or solution SVG is required by the student input for this qid."
+        }
+      },
+      "questionLayout": {
+        "disposition": "KEEP",
+        "evidence": "AUTO-FIRST grid; source content and choices exact-parity retained."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "evidence": "Student-readable step order and line breaks independently reviewed."
+      },
+      "metaReview": {
+        "status": "PASS",
+        "currentFieldsSha256": "c6de485ae9a84e9b52635bae9ab7255968b0aee8729e30fc8b68ec6db317e97c",
+        "disposition": "FIELDS_REVIEWED"
+      },
+      "visualReview": {
+        "status": "PASS",
+        "required": false,
+        "assetRef": null,
+        "assetSha256": null,
+        "sourcePage": 3,
+        "observation": "No visual is required."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceIdentity": {
+        "sourceFile": "S28BW-826100719360_0003.jpg",
+        "sourceSha256": "1eedc9e75204fda31a69ed9a3f843fd6cf7d279a0520e8f180e350928fdc0b93",
+        "page": 3,
+        "sourceExactParity": "PASS"
+      },
+      "independentAnswer": "⑤",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "R1.independent-answer-freeze.json",
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "solutionSha256": "fc6d193740ec311f39a09784e3d91c276d176a6685ee6d586a6129f61aea2665",
+      "smallBoardContinuityStatus": "PASS",
+      "boardFlowContinuity": {
+        "status": "PASS",
+        "evidence": "Solution lines preserve each required inference; enumerated conditions are separated and no independent transition is compressed."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Reviewed source-matched current student content qid by qid. Automatic grid layout retained; no semantic boundary requires a manual break."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Current solution is separated into reproducible steps and conclusion; required subparts are distinct and no board-flow compression defect was found."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "CANONICAL_FIELDS_REVIEWED",
+          "evidence": "Reviewed current course/unit/subunit, L3/L4, cross-concept/condition/integration, difficulty fields, tags and status fields against the applicable canonical contracts."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_SVG_NOT_REQUIRED",
+          "evidence": "No problem image or solution SVG is required by the student input for this qid."
+        }
+      },
+      "questionLayout": {
+        "disposition": "KEEP",
+        "evidence": "AUTO-FIRST grid; source content and choices exact-parity retained."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "evidence": "Student-readable step order and line breaks independently reviewed."
+      },
+      "metaReview": {
+        "status": "PASS",
+        "currentFieldsSha256": "82bd09fa8c39788aca610bfd395167283d4d55967fdd35987ed2fb103c782b1c",
+        "disposition": "FIELDS_REVIEWED"
+      },
+      "visualReview": {
+        "status": "PASS",
+        "required": false,
+        "assetRef": null,
+        "assetSha256": null,
+        "sourcePage": 3,
+        "observation": "No visual is required."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceIdentity": {
+        "sourceFile": "S28BW-826100719360_0003.jpg",
+        "sourceSha256": "1eedc9e75204fda31a69ed9a3f843fd6cf7d279a0520e8f180e350928fdc0b93",
+        "page": 3,
+        "sourceExactParity": "PASS"
+      },
+      "independentAnswer": "②",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "R1.independent-answer-freeze.json",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "solutionSha256": "dc1709dc185d6e5f905d9b6abf8f20d7799b8a2bd836866cdc5c0c88a1179e2e",
+      "smallBoardContinuityStatus": "PASS",
+      "boardFlowContinuity": {
+        "status": "PASS",
+        "evidence": "Solution lines preserve each required inference; enumerated conditions are separated and no independent transition is compressed."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Reviewed source-matched current student content qid by qid. Automatic grid layout retained; no semantic boundary requires a manual break."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Current solution is separated into reproducible steps and conclusion; required subparts are distinct and no board-flow compression defect was found."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "CANONICAL_FIELDS_REVIEWED",
+          "evidence": "Reviewed current course/unit/subunit, L3/L4, cross-concept/condition/integration, difficulty fields, tags and status fields against the applicable canonical contracts."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_SVG_NOT_REQUIRED",
+          "evidence": "No problem image or solution SVG is required by the student input for this qid."
+        }
+      },
+      "questionLayout": {
+        "disposition": "KEEP",
+        "evidence": "AUTO-FIRST grid; source content and choices exact-parity retained."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "evidence": "Student-readable step order and line breaks independently reviewed."
+      },
+      "metaReview": {
+        "status": "PASS",
+        "currentFieldsSha256": "82bd09fa8c39788aca610bfd395167283d4d55967fdd35987ed2fb103c782b1c",
+        "disposition": "FIELDS_REVIEWED"
+      },
+      "visualReview": {
+        "status": "PASS",
+        "required": false,
+        "assetRef": null,
+        "assetSha256": null,
+        "sourcePage": 3,
+        "observation": "No visual is required."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceIdentity": {
+        "sourceFile": "S28BW-826100719360_0004.jpg",
+        "sourceSha256": "dc0f909024d05645c5cb6df53138b2bdd81ef3029be3d893fb5e3350be56f1d6",
+        "page": 4,
+        "sourceExactParity": "PASS"
+      },
+      "independentAnswer": "③",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "R1.independent-answer-freeze.json",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "solutionSha256": "fcc5c7341896c6e59d774c550f396003eb835b0138287cd45b91c60b2dd2a23d",
+      "smallBoardContinuityStatus": "PASS",
+      "boardFlowContinuity": {
+        "status": "PASS",
+        "evidence": "Solution lines preserve each required inference; enumerated conditions are separated and no independent transition is compressed."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Reviewed source-matched current student content qid by qid. Automatic grid layout retained; no semantic boundary requires a manual break."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Current solution is separated into reproducible steps and conclusion; required subparts are distinct and no board-flow compression defect was found."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "CANONICAL_FIELDS_REVIEWED",
+          "evidence": "Reviewed current course/unit/subunit, L3/L4, cross-concept/condition/integration, difficulty fields, tags and status fields against the applicable canonical contracts."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_SVG_NOT_REQUIRED",
+          "evidence": "No problem image or solution SVG is required by the student input for this qid."
+        }
+      },
+      "questionLayout": {
+        "disposition": "KEEP",
+        "evidence": "AUTO-FIRST grid; source content and choices exact-parity retained."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "evidence": "Student-readable step order and line breaks independently reviewed."
+      },
+      "metaReview": {
+        "status": "PASS",
+        "currentFieldsSha256": "451c19dcde602cd38495e013f00e1efa4d0ad97a1cdfcafb90f0235c57412439",
+        "disposition": "FIELDS_REVIEWED"
+      },
+      "visualReview": {
+        "status": "PASS",
+        "required": false,
+        "assetRef": null,
+        "assetSha256": null,
+        "sourcePage": 4,
+        "observation": "No visual is required."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceIdentity": {
+        "sourceFile": "S28BW-826100719360_0004.jpg",
+        "sourceSha256": "dc0f909024d05645c5cb6df53138b2bdd81ef3029be3d893fb5e3350be56f1d6",
+        "page": 4,
+        "sourceExactParity": "PASS"
+      },
+      "independentAnswer": "①",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "R1.independent-answer-freeze.json",
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "solutionSha256": "e2c1e74a78bfb7d951ca6c231b84dfd50fd3db5ba19f6d77fb9944b4a04dfecb",
+      "smallBoardContinuityStatus": "PASS",
+      "boardFlowContinuity": {
+        "status": "PASS",
+        "evidence": "Solution lines preserve each required inference; enumerated conditions are separated and no independent transition is compressed."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Reviewed source-matched current student content qid by qid. Automatic grid layout retained; no semantic boundary requires a manual break."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Current solution is separated into reproducible steps and conclusion; required subparts are distinct and no board-flow compression defect was found."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "CANONICAL_FIELDS_REVIEWED",
+          "evidence": "Reviewed current course/unit/subunit, L3/L4, cross-concept/condition/integration, difficulty fields, tags and status fields against the applicable canonical contracts."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_SVG_NOT_REQUIRED",
+          "evidence": "No problem image or solution SVG is required by the student input for this qid."
+        }
+      },
+      "questionLayout": {
+        "disposition": "KEEP",
+        "evidence": "AUTO-FIRST grid; source content and choices exact-parity retained."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "evidence": "Student-readable step order and line breaks independently reviewed."
+      },
+      "metaReview": {
+        "status": "PASS",
+        "currentFieldsSha256": "69a4b546bf62e23d933841fd3c74ca577aeaabb00d98eae07a78c59ab1e2da2d",
+        "disposition": "FIELDS_REVIEWED"
+      },
+      "visualReview": {
+        "status": "PASS",
+        "required": false,
+        "assetRef": null,
+        "assetSha256": null,
+        "sourcePage": 4,
+        "observation": "No visual is required."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceIdentity": {
+        "sourceFile": "S28BW-826100719360_0005.jpg",
+        "sourceSha256": "5e1930ae627a786b470aedfb05f6900eaafbaf4b745af78a47c8e546d8ba36de",
+        "page": 5,
+        "sourceExactParity": "PASS"
+      },
+      "independentAnswer": "④",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "R1.independent-answer-freeze.json",
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "solutionSha256": "7e1a403c1c08c21c3b6feaff932740f607bf2657e171fdefd11621fa993e4499",
+      "smallBoardContinuityStatus": "PASS",
+      "boardFlowContinuity": {
+        "status": "PASS",
+        "evidence": "Solution lines preserve each required inference; enumerated conditions are separated and no independent transition is compressed."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Reviewed source-matched current student content qid by qid. Automatic grid layout retained; no semantic boundary requires a manual break."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Current solution is separated into reproducible steps and conclusion; required subparts are distinct and no board-flow compression defect was found."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "CANONICAL_FIELDS_REVIEWED",
+          "evidence": "Reviewed current course/unit/subunit, L3/L4, cross-concept/condition/integration, difficulty fields, tags and status fields against the applicable canonical contracts."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_SVG_NOT_REQUIRED",
+          "evidence": "No problem image or solution SVG is required by the student input for this qid."
+        }
+      },
+      "questionLayout": {
+        "disposition": "KEEP",
+        "evidence": "AUTO-FIRST grid; source content and choices exact-parity retained."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "evidence": "Student-readable step order and line breaks independently reviewed."
+      },
+      "metaReview": {
+        "status": "PASS",
+        "currentFieldsSha256": "a998dd1fef863e6f335ce38dc18d340a5e8b5c915eb59db022aaaf0866628d73",
+        "disposition": "FIELDS_REVIEWED"
+      },
+      "visualReview": {
+        "status": "PASS",
+        "required": false,
+        "assetRef": null,
+        "assetSha256": null,
+        "sourcePage": 5,
+        "observation": "No visual is required."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceIdentity": {
+        "sourceFile": "S28BW-826100719360_0005.jpg",
+        "sourceSha256": "5e1930ae627a786b470aedfb05f6900eaafbaf4b745af78a47c8e546d8ba36de",
+        "page": 5,
+        "sourceExactParity": "PASS"
+      },
+      "independentAnswer": "⑤",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "R1.independent-answer-freeze.json",
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "solutionSha256": "327efdeea3121457a03fb8d5243587c4643ae63a31e44183ace3ea4f154dfa28",
+      "smallBoardContinuityStatus": "PASS",
+      "boardFlowContinuity": {
+        "status": "PASS",
+        "evidence": "Solution lines preserve each required inference; enumerated conditions are separated and no independent transition is compressed."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Reviewed source-matched current student content qid by qid. Automatic grid layout retained; no semantic boundary requires a manual break."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Current solution is separated into reproducible steps and conclusion; required subparts are distinct and no board-flow compression defect was found."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "CANONICAL_FIELDS_REVIEWED",
+          "evidence": "Reviewed current course/unit/subunit, L3/L4, cross-concept/condition/integration, difficulty fields, tags and status fields against the applicable canonical contracts."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "PROBLEM_VISUAL_PARITY_PASS",
+          "evidence": "Opened the referenced image before freeze; its labels/topology agree with the source scan and the image SHA is bound below. No solution SVG is used."
+        }
+      },
+      "questionLayout": {
+        "disposition": "KEEP",
+        "evidence": "AUTO-FIRST grid; source content and choices exact-parity retained."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "evidence": "Student-readable step order and line breaks independently reviewed."
+      },
+      "metaReview": {
+        "status": "PASS",
+        "currentFieldsSha256": "1aa3de5f08f065e2ba167450adb7d17a316ca17749468a74a49edd5747c76592",
+        "disposition": "FIELDS_REVIEWED"
+      },
+      "visualReview": {
+        "status": "PASS",
+        "required": true,
+        "assetRef": "assets/images/26_제일고_2학기_중간_고2_미적분I/q19.png",
+        "sourcePage": 5,
+        "observation": "Actual referenced asset opened and compared against the original scanned source; no label/topology mismatch."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceIdentity": {
+        "sourceFile": "S28BW-826100719360_0006.jpg",
+        "sourceSha256": "c5e334843ea13f455b37052ccf65d9e8f5e40a1e521ea042bcb294b53c2e184f",
+        "page": 6,
+        "sourceExactParity": "PASS"
+      },
+      "independentAnswer": "$f'(x)=2x+2$",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "R1.independent-answer-freeze.json",
+      "storedAnswer": "$f'(x)=2x+2$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "solutionSha256": "1adb61c26dd475d05fcd9fb6dabeef901c8070853a231f6f6f348f727b709f7e",
+      "smallBoardContinuityStatus": "PASS",
+      "boardFlowContinuity": {
+        "status": "PASS",
+        "evidence": "Solution lines preserve each required inference; enumerated conditions are separated and no independent transition is compressed."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Reviewed source-matched current student content qid by qid. Automatic grid layout retained; no semantic boundary requires a manual break."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Current solution is separated into reproducible steps and conclusion; required subparts are distinct and no board-flow compression defect was found."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "CANONICAL_FIELDS_REVIEWED",
+          "evidence": "Reviewed current course/unit/subunit, L3/L4, cross-concept/condition/integration, difficulty fields, tags and status fields against the applicable canonical contracts."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_SVG_NOT_REQUIRED",
+          "evidence": "No problem image or solution SVG is required by the student input for this qid."
+        }
+      },
+      "questionLayout": {
+        "disposition": "KEEP",
+        "evidence": "AUTO-FIRST grid; source content and choices exact-parity retained."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "evidence": "Student-readable step order and line breaks independently reviewed."
+      },
+      "metaReview": {
+        "status": "PASS",
+        "currentFieldsSha256": "7ecc6e0027db9f35a6dd495f02bb07a37dcebea6372fc00ce3c72216d9ff2b67",
+        "disposition": "FIELDS_REVIEWED"
+      },
+      "visualReview": {
+        "status": "PASS",
+        "required": false,
+        "assetRef": null,
+        "assetSha256": null,
+        "sourcePage": 6,
+        "observation": "No visual is required."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceIdentity": {
+        "sourceFile": "S28BW-826100719360_0006.jpg",
+        "sourceSha256": "c5e334843ea13f455b37052ccf65d9e8f5e40a1e521ea042bcb294b53c2e184f",
+        "page": 6,
+        "sourceExactParity": "PASS"
+      },
+      "independentAnswer": "6",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "R1.independent-answer-freeze.json",
+      "storedAnswer": "6",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "solutionSha256": "ac02131181de16e2b1dfb85573f7b16722eabc7b4d10fa558abaeb91a5427c22",
+      "smallBoardContinuityStatus": "PASS",
+      "boardFlowContinuity": {
+        "status": "PASS",
+        "evidence": "Solution lines preserve each required inference; enumerated conditions are separated and no independent transition is compressed."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Reviewed source-matched current student content qid by qid. Automatic grid layout retained; no semantic boundary requires a manual break."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Current solution is separated into reproducible steps and conclusion; required subparts are distinct and no board-flow compression defect was found."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "CANONICAL_FIELDS_REVIEWED",
+          "evidence": "Reviewed current course/unit/subunit, L3/L4, cross-concept/condition/integration, difficulty fields, tags and status fields against the applicable canonical contracts."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_SVG_NOT_REQUIRED",
+          "evidence": "No problem image or solution SVG is required by the student input for this qid."
+        }
+      },
+      "questionLayout": {
+        "disposition": "KEEP",
+        "evidence": "AUTO-FIRST grid; source content and choices exact-parity retained."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "evidence": "Student-readable step order and line breaks independently reviewed."
+      },
+      "metaReview": {
+        "status": "PASS",
+        "currentFieldsSha256": "7833ad0ad06ef311b1bba9bbf5ef03c1c8272eead027d75c6e2fdf9f54a071d7",
+        "disposition": "FIELDS_REVIEWED"
+      },
+      "visualReview": {
+        "status": "PASS",
+        "required": false,
+        "assetRef": null,
+        "assetSha256": null,
+        "sourcePage": 6,
+        "observation": "No visual is required."
+      }
+    },
+    {
+      "qid": 22,
+      "sourceIdentity": {
+        "sourceFile": "S28BW-826100719360_0006.jpg",
+        "sourceSha256": "c5e334843ea13f455b37052ccf65d9e8f5e40a1e521ea042bcb294b53c2e184f",
+        "page": 6,
+        "sourceExactParity": "PASS"
+      },
+      "independentAnswer": "3-1. $f(1)=1$, $f'(1)=2$; 3-2. $a=-1$, $b=-2$; 3-3. $26$",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "R1.independent-answer-freeze.json",
+      "storedAnswer": "3-1. $f(1)=1$, $f'(1)=2$; 3-2. $a=-1$, $b=-2$; 3-3. $26$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "solutionSha256": "38b69b1bb9431e8a2027c60d1451e0368d0f73663e4e065db0fc9eb518e47515",
+      "smallBoardContinuityStatus": "PASS",
+      "boardFlowContinuity": {
+        "status": "PASS",
+        "evidence": "Solution lines preserve each required inference; enumerated conditions are separated and no independent transition is compressed."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Reviewed source-matched current student content qid by qid. Automatic grid layout retained; no semantic boundary requires a manual break."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Current solution is separated into reproducible steps and conclusion; required subparts are distinct and no board-flow compression defect was found."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "CANONICAL_FIELDS_REVIEWED",
+          "evidence": "Reviewed current course/unit/subunit, L3/L4, cross-concept/condition/integration, difficulty fields, tags and status fields against the applicable canonical contracts."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_SVG_NOT_REQUIRED",
+          "evidence": "No problem image or solution SVG is required by the student input for this qid."
+        }
+      },
+      "questionLayout": {
+        "disposition": "KEEP",
+        "evidence": "AUTO-FIRST grid; source content and choices exact-parity retained."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "evidence": "Student-readable step order and line breaks independently reviewed."
+      },
+      "metaReview": {
+        "status": "PASS",
+        "currentFieldsSha256": "77a0c21f0d565e92ce164450e5ba9be7dfd84e7d00ef9ca26af7f5ef00c688f9",
+        "disposition": "FIELDS_REVIEWED"
+      },
+      "visualReview": {
+        "status": "PASS",
+        "required": false,
+        "assetRef": null,
+        "assetSha256": null,
+        "sourcePage": 6,
+        "observation": "No visual is required."
+      }
+    }
+  ],
+  "studentBundleScope": {
+    "qidCoverage": "1-22",
+    "denominator": 22,
+    "assetCount": 3
+  },
+  "qid8PostfreezeComparison": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_제일고_2학기_중간_고2_미적분I\\codex-20261007-2sem-mid-jeil-calc1\\evidence\\R1-q8-postfreeze-comparison.json",
+    "sha256": "a74c07141beeb6f89d56ae2f0750a624c241268950c4711a28254a1ae281597c",
+    "compareResult": "MATCH",
+    "qid": 8
+  },
+  "currentStudentBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_제일고_2학기_중간_고2_미적분I\\codex-20261007-2sem-mid-jeil-calc1\\handoff\\R3.current-final-student-only-bundle.q5-corrected.json",
+  "currentStudentPayloadSha256": "236b83398f53baaf5eee97bdaeb0e3d93f603a44a8165ef354b856166a8db6e9"
+}

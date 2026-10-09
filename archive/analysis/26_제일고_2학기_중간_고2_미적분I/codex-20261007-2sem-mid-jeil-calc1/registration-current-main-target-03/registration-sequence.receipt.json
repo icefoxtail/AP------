@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ROOT_TARGET_REGISTRATION_SEQUENCE_V1",
+  "examUid": "26_제일고_2학기_중간_고2_미적분I",
+  "runId": "codex-20261007-2sem-mid-jeil-calc1",
+  "mainHead": "63e49b275317a9a6ac01de5781b437f31b3942ea",
+  "registrationAssignmentPath": ".tmp/archive/codex-20261007-2sem-mid-jeil-calc1/26_제일고_2학기_중간_고2_미적분I/registration.assignment.current-main.63e49b2.v2.json",
+  "registrationAssignmentSha256": "c1f615d650fcca36a0f2fd175ba21efb930696aa06ce9bf203f21dfa8e445c99",
+  "packagePath": ".tmp/archive/codex-20261007-2sem-mid-jeil-calc1/26_제일고_2학기_중간_고2_미적분I/registration-package.current-main.target-03.63e49b2.json",
+  "packageSha256": "6694b1e8ccde1091a73e1775a7a1cacf84e67883f9bb7af28fc5f7767d545178",
+  "applyReceiptPath": "archive/analysis/26_제일고_2학기_중간_고2_미적분I/codex-20261007-2sem-mid-jeil-calc1/registration-current-main-target-03/apply/target-registration.receipt.json",
+  "applyReceiptSha256": "6dc44d54eefa0ac9c48a582a5ae4c5eee6b83f1a3a203087aa6ca9ec36f4d4dc",
+  "applyStatus": "APPLIED_PENDING_VALIDATORS",
+  "commands": [
+    {
+      "name": "prepare-target-registration",
+      "command": "node archive/tools/prepare-target-registration.mjs --root . --assignment .tmp/archive/codex-20261007-2sem-mid-jeil-calc1/26_제일고_2학기_중간_고2_미적분I/registration.assignment.current-main.63e49b2.v2.json --candidate-root .tmp/archive/codex-20261007-2sem-mid-import/registration-canonical-root --output .tmp/archive/codex-20261007-2sem-mid-jeil-calc1/26_제일고_2학기_중간_고2_미적분I/registration-package.current-main.target-03.63e49b2.json",
+      "status": "completed",
+      "exitCode": 0,
+      "stdoutPath": "archive/analysis/26_제일고_2학기_중간_고2_미적분I/codex-20261007-2sem-mid-jeil-calc1/registration-current-main-target-03/prepare-target-registration.stdout.txt",
+      "stdoutSha256": "906c50ed85c1ce468160aa95478eebf47ed44e66418cb3e86d072b4e5fa9a576",
+      "stderrPath": "archive/analysis/26_제일고_2학기_중간_고2_미적분I/codex-20261007-2sem-mid-jeil-calc1/registration-current-main-target-03/prepare-target-registration.stderr.txt",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "register-target-exam.dryrun",
+      "command": "node archive/tools/register-target-exam.mjs --root . --assignment ... --proposal ... --catalog-candidate .tmp/archive/codex-20261007-2sem-mid-import/registration-canonical-root/archive/data/archive2-catalog.json --evidence-root archive/analysis/26_제일고_2학기_중간_고2_미적분I/codex-20261007-2sem-mid-jeil-calc1/registration-current-main-target-03/dryrun",
+      "status": "completed",
+      "exitCode": 0,
+      "stdoutPath": "archive/analysis/26_제일고_2학기_중간_고2_미적분I/codex-20261007-2sem-mid-jeil-calc1/registration-current-main-target-03/dryrun/stdout.txt",
+      "stdoutSha256": "f259d36fa0d5fdfdca30e384e9a2d1910bf52f37cb0e9504c4097578d58ab1d6",
+      "stderrPath": "archive/analysis/26_제일고_2학기_중간_고2_미적분I/codex-20261007-2sem-mid-jeil-calc1/registration-current-main-target-03/dryrun/stderr.txt",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "register-target-exam.apply",
+      "command": "node archive/tools/register-target-exam.mjs --root . --assignment ... --proposal ... --catalog-candidate .tmp/archive/codex-20261007-2sem-mid-import/registration-canonical-root/archive/data/archive2-catalog.json --evidence-root archive/analysis/26_제일고_2학기_중간_고2_미적분I/codex-20261007-2sem-mid-jeil-calc1/registration-current-main-target-03/apply --apply",
+      "status": "completed",
+      "exitCode": 0,
+      "stdoutPath": "archive/analysis/26_제일고_2학기_중간_고2_미적분I/codex-20261007-2sem-mid-jeil-calc1/registration-current-main-target-03/apply/stdout.txt",
+      "stdoutSha256": "3d87417b1b23076918a3e4f2ce72ebad9a9c50c02272997601d20bfd308b9a38",
+      "stderrPath": "archive/analysis/26_제일고_2학기_중간_고2_미적분I/codex-20261007-2sem-mid-jeil-calc1/registration-current-main-target-03/apply/stderr.txt",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

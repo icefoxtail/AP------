@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_CALIBRATION_PREFLIGHT_V1",
+  "examUid": "23_매산여고_1학기_중간_고2_수학I",
+  "stage": "CREATE",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "SOURCE_ONLY_CREATE",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.\n내분점 공식에서는 한쪽 끝점의 좌표에 반대쪽의 비를 곱한다.\n따라서 $A(9,14)$의 좌",
+        "observation": "q1을 처음부터 읽어 내분점·중점의 좌표를 각각 계산한 뒤 거리식에 대입하는 흐름을 확인했다. 공식 적용 전 비의 의미를 말로 풀고 두 좌표를 따로 산출한다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다",
+        "observation": "q7을 읽고 완전제곱식으로 중심·반지름을 얻은 후 이동을 순서대로 중심 좌표에 적용하는 작은칠판 흐름을 확인했다. SVG primitive를 확인했고 그래프의 두 중심 이동과 최종 원의 위치가 설명과 일치했다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(3,0)$에 대하여\n$x$좌표의 차는\n$3-(-2)=5$이고,\n$y$좌표",
+        "observation": "q1에서 두 좌표 차를 각각 구해 거리 공식의 제곱근 안에 대입하고 결과를 단계별로 정리하는 흐름을 읽었다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfra",
+        "observation": "q2에서 첫째·둘째 직선을 각각 y=mx+n으로 바꾼 뒤 두 기울기의 곱을 -1과 같게 두는 전개를 읽었다. SVG primitive를 확인했고 원문 두 직선의 기울기와 교점·교차 방향이 해설과 일치했다."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ]
+  },
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "observation": "False-PASS fixture를 실제 읽었다. source-aligned math, each enumerated small-board block, runtime TeX, and actual SVG primitive geometry are independent checks; aggregate self-report is insufficient."
+    },
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "q1을 처음부터 읽어 내분점·중점의 좌표를 각각 계산한 뒤 거리식에 대입하는 흐름을 확인했다. 공식 적용 전 비의 의미를 말로 풀고 두 좌표를 따로 산출한다."
+          },
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "observation": "q7을 읽고 완전제곱식으로 중심·반지름을 얻은 후 이동을 순서대로 중심 좌표에 적용하는 작은칠판 흐름을 확인했다. SVG primitive를 확인했고 그래프의 두 중심 이동과 최종 원의 위치가 설명과 일치했다.",
+            "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+            "axes": [
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "visualObservation": "실제 solution SVG bytes를 읽고 raster preview도 열어 geometry/labels를 확인했다. ImageMagick preview에서는 Korean font fallback이 보여 실제 Archive browser visual PASS는 주장하지 않으며, SVG semantic geometry는 text/coordinate code review로 확인했다.",
+            "visualReviewMethod": "SVG_CODE_REVIEW"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "q1에서 두 좌표 차를 각각 구해 거리 공식의 제곱근 안에 대입하고 결과를 단계별로 정리하는 흐름을 읽었다."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "observation": "q2에서 첫째·둘째 직선을 각각 y=mx+n으로 바꾼 뒤 두 기울기의 곱을 -1과 같게 두는 전개를 읽었다. SVG primitive를 확인했고 원문 두 직선의 기울기와 교점·교차 방향이 해설과 일치했다.",
+            "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+            "axes": [
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "visualObservation": "실제 solution SVG bytes를 읽고 raster preview도 열어 geometry/labels를 확인했다. ImageMagick preview에서는 Korean font fallback이 보여 실제 Archive browser visual PASS는 주장하지 않으며, SVG semantic geometry는 text/coordinate code review로 확인했다.",
+            "visualReviewMethod": "SVG_CODE_REVIEW"
+          }
+        ]
+      }
+    ]
+  }
+}

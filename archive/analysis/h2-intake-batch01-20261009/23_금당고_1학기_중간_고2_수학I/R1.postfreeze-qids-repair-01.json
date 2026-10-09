@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POSTFREEZE_DISCLOSURE_V2",
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+    "sha256": "2cddd1c287c905efecd7ac8b7de61def08d3f8c1e68c00a38da3eb8df58591f5"
+  },
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학I\\R1.student-only.json",
+    "sha256": "dc8812ef0e78d4510fb007455a1a666d8c73ac5cf7070fee82d9cdf2b60792fc"
+  },
+  "sourceRawSha256": "90f604a69d0648625fd9da944242959b86c6d320884269388e36fc60fb9d7bd6",
+  "originalFreezeSourceRawSha256": "ea3ad7b6d18ad2be61ac8e20420395adb9caee888891c0e9e9ce20fe6f621f65",
+  "studentParity": "EXACT",
+  "rows": [
+    {
+      "qid": 5,
+      "answer": "⑤",
+      "solution": "로그를 하나의 변수로 바꾸어 자연수 $x$의 범위를 구한다.\n$t=\\log_2 x$라 두면 $\\log_2 x^4=4\\log_2 x=4t$이므로\n$t^2-4t+3\\le0$\n$(t-1)(t-3)\\le0$에서 $1\\le t\\le3$이다.\n밑 $2$는 $1$보다 크므로 $2\\le x\\le8$이다. 이 구간의 자연수는 $2,3,4,5,6,7,8$의 일곱 개이다.\n따라서 정답은 ⑤이다.",
+      "decisiveStep": "t=log_2 x로 치환해 부등식 구간을 구한 뒤, 자연수 x=2,3,4,5,6,7,8을 모두 센다."
+    },
+    {
+      "qid": 7,
+      "answer": "⑤",
+      "solution": "점선이 나타내는 좌표를 차례로 읽는다.\n높이 $1$에서 로그그래프의 점선 교점의 $x$좌표가 $a$이므로 $\\log_2 a=1$, 따라서 $a=2$이다.\n같은 수직선에서 지수그래프의 높이가 $c$이므로 $c=2^a=4$이다.\n높이 $c$에서 로그그래프의 점선 교점의 $x$좌표가 $b$이므로 $\\log_2 b=c$, 따라서 $b=2^c=16$이다.\n마지막으로 $x=b$에서 지수그래프의 높이가 $d$이므로 $d=2^b=2^{16}$이다.\n따라서 $abcd=2\\cdot4\\cdot16\\cdot2^{16}=2^{23}$이고, 정답은 ⑤이다.",
+      "decisiveStep": "점선이 주는 a=2를 먼저 정하고, 지수와 로그가 역함수인 점을 이용해 c=4, b=16, d=2^16을 차례로 구한다."
+    }
+  ],
+  "disclosedAt": "2026-10-09T03:36:38.672Z"
+}

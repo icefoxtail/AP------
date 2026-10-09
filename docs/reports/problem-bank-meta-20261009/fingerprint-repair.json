@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "PROBLEM_BANK_META_FINGERPRINT_REPAIR_V1",
+  "status": "REPAIRED_METADATA_ONLY",
+  "createdAt": "2026-10-09",
+  "reason": "Stored SHA-256 student-payload fingerprint predates the current source/Consumer payload; current source and Consumer body fields match exactly and all source shard Git blob references match current bytes.",
+  "algorithm": "SHA256_JSON_UID_STUDENT_FIELDS_IMAGE_V1",
+  "formula": "sha256(JSON.stringify({uid,content,choices,answer,solution,image}))",
+  "scan": {
+    "totalIndexRecords": 346,
+    "fnvRecords": 191,
+    "sha256Records": 4,
+    "unsupportedOrMissingRecords": 151,
+    "knownAlgorithmCurrentMatches": 194,
+    "provenStaleRecords": 1,
+    "unprovenRecords": 151,
+    "provenStaleUids": [
+      "ALITE-PALMA25-H1-2MID-B07-Q01-BP01"
+    ],
+    "unprovenReason": "Existing unsupported/missing fingerprint prefixes have no provable historical producer contract and were left unchanged."
+  },
+  "target": {
+    "uid": "ALITE-PALMA25-H1-2MID-B07-Q01-BP01",
+    "localOrdinal": 1,
+    "indexPath": "archive/data/generated-lite-consumer/v1/index.json",
+    "consumerShardPath": "archive/data/generated-lite-consumer/v1/shards/H22-C2-05-CORE/palma-2025-2mid-B07.json",
+    "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/shards/palma-2025-2mid-B07.js",
+    "storedFingerprintBefore": "sha256:cf99a8fe7112e98d53dbda88d8a4fca37527332f475f6750f05aca384d7f0570",
+    "storedFingerprintAfter": "sha256:4c3959784820693e29b3bc959249721d3c52ed97bddd07c31d9080934d63a576",
+    "sourceConsumerStudentPayloadExactMatch": true
+  },
+  "authority": {
+    "sourceShardGitBlobSha": "dad260f085f3ddab162b1e7ca0ac6274e6b31bbf",
+    "sourceShardGitBlobShaBefore": "dad260f085f3ddab162b1e7ca0ac6274e6b31bbf",
+    "sourceShardGitBlobShaAfter": "dad260f085f3ddab162b1e7ca0ac6274e6b31bbf",
+    "sourceShardFileSha256Before": "d5bb1f77d61d84dfea15d90aa4895c8d1dfb2e5a2c3514876f2de7fa822c342c",
+    "sourceShardFileSha256After": "d5bb1f77d61d84dfea15d90aa4895c8d1dfb2e5a2c3514876f2de7fa822c342c"
+  },
+  "rawByteSha256": {
+    "consumerShardBefore": "10d77cb7a1d655ef8768a7410a2419c98a0b642a69ff4297f08b1cc3cd318c3f",
+    "consumerShardAfter": "64f33013b10e8f7ac1c48d10fb8fa5cff04213a8c2ca793006cbc85c744147a5",
+    "indexBefore": "2a699182146cb235504d57372bf2b82c9593cd0966fa476405a9b646fca947db",
+    "indexAfter": "0f3de7fa641666d13ada60071d8babf71e5b9328bd6ceac10e8e9448d8a80180"
+  },
+  "consumerShardGitBlobSha": {
+    "before": "4dde0da6c3988a1b41708965cf342eee5cd5e965",
+    "after": "6bfa98d10aa20622ab8daf485e2838a7c79384da"
+  },
+  "indexShardAliases": [
+    {
+      "uid": "ALITE-PALMA25-H1-2MID-B07-Q01-BP01",
+      "localOrdinal": 1,
+      "consumerShardGitBlobShaBefore": "4dde0da6c3988a1b41708965cf342eee5cd5e965",
+      "consumerShardGitBlobShaAfter": "6bfa98d10aa20622ab8daf485e2838a7c79384da"
+    },
+    {
+      "uid": "ALITE-PALMA25-H1-2MID-B07-Q01-BP02",
+      "localOrdinal": 2,
+      "consumerShardGitBlobShaBefore": "4dde0da6c3988a1b41708965cf342eee5cd5e965",
+      "consumerShardGitBlobShaAfter": "6bfa98d10aa20622ab8daf485e2838a7c79384da"
+    },
+    {
+      "uid": "ALITE-PALMA25-H1-2MID-B07-Q13-BP01",
+      "localOrdinal": 3,
+      "consumerShardGitBlobShaBefore": "4dde0da6c3988a1b41708965cf342eee5cd5e965",
+      "consumerShardGitBlobShaAfter": "6bfa98d10aa20622ab8daf485e2838a7c79384da"
+    },
+    {
+      "uid": "ALITE-PALMA25-H1-2MID-B07-Q13-BP02",
+      "localOrdinal": 4,
+      "consumerShardGitBlobShaBefore": "4dde0da6c3988a1b41708965cf342eee5cd5e965",
+      "consumerShardGitBlobShaAfter": "6bfa98d10aa20622ab8daf485e2838a7c79384da"
+    }
+  ],
+  "changedLoci": [
+    "Consumer record contentFingerprint for target UID",
+    "Index contentFingerprint for target UID",
+    "Index consumerShardGitSha/shardGitBlobSha for every row aliasing the changed Consumer shard"
+  ],
+  "protectedFields": [
+    "source JavaScript bytes",
+    "student content/choices/answer/solution/image",
+    "UID/localOrdinal",
+    "approval/review status",
+    "Meta values",
+    "solution SVG/assets",
+    "sourceExam relation"
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_SOURCE_REPAIR_V1",
+  "examUid": "23_순천여고_1학기_중간_고2_수학I",
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "sourcePdf": {
+    "path": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/수1/2023_순여고2_수1_1중간.pdf",
+    "sha256": "c7bebac4da715f2c4cc4a9e7a93dcf6455c8b2b20e8d8d5e761d5afc7c4708da",
+    "reviewedPages": [
+      1,
+      2,
+      4,
+      5
+    ]
+  },
+  "repairs": [
+    {
+      "qid": 5,
+      "page": 1,
+      "fields": [
+        "question",
+        "content"
+      ],
+      "before": "\\log_3 (x+1) + \\log_3 (x-2)",
+      "after": "\\log_2 (x+1) + \\log_2 (x-2)",
+      "reason": "PDF q5 clearly shows base 2; baseline extraction used base 3. This repair makes the unique domain-valid solution x=3 and answer ⑤.",
+      "sourceTextOnlyRepair": true,
+      "choicesChanged": false,
+      "assetRefChanged": false
+    },
+    {
+      "qid": 11,
+      "page": 2,
+      "fields": [
+        "question",
+        "content"
+      ],
+      "before": "x^2 - 2(3^k+7)x + 3^k+18",
+      "after": "x^2 - 2\\times 3^k x + 7\\times 3^k +18",
+      "reason": "PDF q11 shows separate products 2×3^k and 7×3^k. This repair yields discriminant condition (3^k-9)(3^k+2)<0 and answer ⑤.",
+      "sourceTextOnlyRepair": true,
+      "choicesChanged": false,
+      "assetRefChanged": false
+    },
+    {
+      "qid": 12,
+      "page": 2,
+      "fields": [
+        "question",
+        "content"
+      ],
+      "before": "\\sin\\frac{a\\pi}{6}",
+      "after": "\\sin\\frac{a\\pi}{7}",
+      "reason": "PDF q12 denominator is 7. The six sine values pair by sin(π−x), giving three distinct values and answer ③.",
+      "sourceTextOnlyRepair": true,
+      "choicesChanged": false,
+      "assetRefChanged": false
+    },
+    {
+      "qid": 18,
+      "page": 4,
+      "fields": [
+        "question",
+        "content"
+      ],
+      "before": [
+        "\\log_2 (\\overline{AR} \\times \\overline{OR}) = \\frac{8}{3}",
+        "k\\sqrt[3]{3}"
+      ],
+      "after": [
+        "\\log_3 (\\overline{AR} \\times \\overline{OR}) = \\frac{8}{3}",
+        "k\\sqrt[6]{3}"
+      ],
+      "reason": "PDF q18 shows log base 3 and sixth-root target; source image was blank and is replaced with a verified crop of the q18 diagram from page 4.",
+      "sourceTextOnlyRepair": true,
+      "choicesChanged": false,
+      "assetRefChanged": true,
+      "assetRepair": {
+        "priorBlankAssetSha256": "33f20f5b6e31a1547d5e174ee3bca5e68402d6a79be510f1c9c1ead709f33570",
+        "currentAssetRef": "assets/images/23_순천여고_1학기_중간_고2_수학I/q18.png",
+        "currentAssetSha256": "f635e850c208450ff71370796ede74a23777aa640a2902b59d8615fae790190b",
+        "sourcePdfPage": 4,
+        "cropBoxAt300Dpi": [
+          315,
+          1880,
+          1060,
+          2328
+        ],
+        "openedAndInspected": true
+      }
+    },
+    {
+      "qid": 23,
+      "page": 5,
+      "fields": [
+        "question",
+        "content"
+      ],
+      "before": [
+        "f(x) = \\log_2 (x+3)",
+        "g(x) = \\log_4 (x+3)",
+        "h(x) = \\log_2 (x-k)"
+      ],
+      "after": [
+        "f(x) = \\log_{\\frac{1}{3}} (x+3)",
+        "g(x) = \\log_9 (x+3)",
+        "h(x) = \\log_3 (x-k)"
+      ],
+      "reason": "PDF q23 shows bases 1/3, 9, and 3 respectively; the baseline extracted 2, 4, and 2.",
+      "sourceTextOnlyRepair": true,
+      "choicesChanged": false,
+      "assetRefChanged": false
+    }
+  ],
+  "assetMigrations": [
+    {
+      "qid": 16,
+      "from": "archive/assets/images/23_순천여고_1학기_중간_고2_수학I/q16.png",
+      "to": "assets/images/23_순천여고_1학기_중간_고2_수학I/q16.png",
+      "q16and22BytesUnchanged": true,
+      "q18Repair": "verified q18 diagram crop from page 4; prior blank source asset preserved separately"
+    },
+    {
+      "qid": 18,
+      "from": "archive/assets/images/23_순천여고_1학기_중간_고2_수학I/q18.png",
+      "to": "assets/images/23_순천여고_1학기_중간_고2_수학I/q18.png",
+      "q16and22BytesUnchanged": false,
+      "q18Repair": "verified q18 diagram crop from page 4; prior blank source asset preserved separately"
+    },
+    {
+      "qid": 22,
+      "from": "archive/assets/images/23_순천여고_1학기_중간_고2_수학I/q22.png",
+      "to": "assets/images/23_순천여고_1학기_중간_고2_수학I/q22.png",
+      "q16and22BytesUnchanged": true,
+      "q18Repair": "verified q18 diagram crop from page 4; prior blank source asset preserved separately"
+    }
+  ],
+  "confirmedItemHolds": [
+    {
+      "qid": 4,
+      "reason": "PDF q4 confirms extracted wording; choices ①, ②, ④ are all true over the real numbers; no unique answer."
+    },
+    {
+      "qid": 21,
+      "reason": "PDF q21 confirms θ in quadrant III and separate √sinθ, √cosθ, whose radicands are negative; no real value."
+    }
+  ],
+  "unreviewedSourceClaims": "No full-PDF/OCR sweep; only pages 1, 2, 4, and 5 were opened to resolve named qid-specific extraction defects."
+}

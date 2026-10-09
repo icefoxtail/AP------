@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_DURABLE_CONTINUATION_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "runId": "h2-intake-batch01-20261009",
+  "examUid": "24_강남여고_1학기_중간_고2_대수",
+  "stage": "R1",
+  "reviewerId": "r1_10",
+  "status": "R1_TECHNICAL_CHECKPOINT_PENDING",
+  "assignment": {
+    "path": ".tmp/archive/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.assignment.json",
+    "sha256": "708fd10cdbff6f5dcca78303bf512b6b6dcbb582f1367b8a30d96d65b30025d1",
+    "initialHead": "fca4988d9c510492cce88652041ab48652d20180",
+    "finalObservedHead": "d7a32efc9364454d9d1cb0c36ff468d90487eb06"
+  },
+  "artifact": {
+    "workingJsAbsolute": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/.tmp/archive/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/24_강남여고_1학기_중간_고2_대수.js",
+    "rawSha256": "4f1529eeefac76a5aa37d24609322f3a331f43ca4570ed7c0696fd8c387f42ea",
+    "validatorRawBufferBlobSha1": "5328f27a4f7cacd72bd53dd7b8d89bfddd15834c",
+    "gitCleanFilterBlobSha1": "5328f27a4f7cacd72bd53dd7b8d89bfddd15834c",
+    "studentBundleSha256": "64ceaa4da7ad14b6b8602fc6bab6bc2a8dc961201905ee17569c15bd3d663eb1",
+    "studentPayloadParity": "EXACT"
+  },
+  "freeze": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.immutable-freeze.r1_10.20261009.json",
+    "sha256": "da9fe18ba0f366224b4f09aec222b602490cc1da2205e56f5ad02f0c577aac9c",
+    "sourceRawSha256AtFreeze": "a0f58a6705144669b779e29deb21baa610b8bfe01866649430c995ab677ed664",
+    "currentStudentBodyChanged": false,
+    "finalMismatchAfterAdjudication": 0,
+    "postfreezeCorrectedQids": [14, 16, 18, 21]
+  },
+  "currentEvidence": {
+    "boundEvidencePath": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.evidence.r1_10.20261009.rev2.bound.json",
+    "boundEvidenceSha256": "1ba01300fe62f68300f4f68dc25da57ed6178775e9369b6f42e8eba20f4a2b73",
+    "rowCount": 25,
+    "artifactDispositionCount": 25,
+    "itemHoldCount": 0
+  },
+  "assignmentBoundIdentityOverlay": {
+    "status": "ASSIGNMENT_BOUND_PRE_REGISTRATION_OVERLAY",
+    "identityClosurePath": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.identity-overlay-closure.r1_10.20261009.json",
+    "identityClosureSha256": "1e294562ea76f86d29ac14d861c30339174298bd74df7aea3dec68745f6b7e7d",
+    "addendumPath": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/technical-identity-resolution/R1.assignment.identity-overlay.addendum.v1.json",
+    "addendumSha256": "ca0a9d191c45144337f5e0796089b39f7405919e5453cffe66407bfc540d0de2",
+    "overlayPath": ".tmp/archive/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/technical-identity-resolution/question-identity-map.pre-registration-overlay.v1.json",
+    "overlaySha256": "7f65fde7f0428f65ad2ffd74166b719bf3377f094569183d5206231a0ea1b9ca",
+    "resolvedQids": 25,
+    "solutionIdentityAlignment": "ALIGNMENT_PASS_SCOPED_TO_OVERLAY",
+    "globalIdentityMapPath": "archive/data/question_identity_map.json",
+    "globalIdentityMapSha256": "487a835fc619d7cb590ee37214a3fbd681b83b10a6cda4316f15e7a1b017de5f",
+    "globalIdentityMapChanged": false,
+    "globalIdentityRegistered": false
+  },
+  "genericValidatorRuns": [
+    {
+      "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.validator.raw.stdout.json",
+      "sha256": "d1c412482e5f63216228421f00958ab22cefaf214d336bef41267512fabd0896",
+      "processCapturePath": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.validator.process-capture.json",
+      "processCaptureSha256": "7be181f3f9577b17355ff0ed9cfcf7f9275d40c50a3fbb9153a240af22904e73",
+      "exitCode": 1,
+      "disposition": "FAIL",
+      "issueCount": 31,
+      "reason": "First current R1 evidence had a stale q7 literal-selector payload hash; current q7 proof was corrected in a separate evidence revision.",
+      "preserved": true
+    },
+    {
+      "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.validator.rev2.raw.stdout.json",
+      "sha256": "98ca94667c810a2bf5c6c47f6f64903934b54a0b970303b8fb0e08fe55db8485",
+      "processCapturePath": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.validator.rev2.process-capture.json",
+      "processCaptureSha256": "f9b88a898730e8807ecdf6bcc263ebb430d58fbf2868e5a7eeb532ed7639bf34",
+      "exitCode": 1,
+      "disposition": "FAIL",
+      "commonV2Valid": true,
+      "artifactContractActive": true,
+      "questionCount": 25,
+      "issueCount": 24,
+      "issueCounts": {"q9": 6, "q17": 6, "q18": 6, "q19": 6},
+      "issueCodes": [
+        "ARTIFACT_META_RPM_ONLY_NULL_SUBUNIT_PROOF_INVALID",
+        "ARTIFACT_META_VALUE_REQUIRED:subUnitKey",
+        "ARTIFACT_META_VALUE_REQUIRED:subUnit",
+        "ARTIFACT_META_VALUE_REQUIRED:subUnitConfidence",
+        "ARTIFACT_META_VALUE_REQUIRED:subUnitClassificationDepth",
+        "ARTIFACT_META_DEBT_FIELD_INVALID"
+      ]
+    }
+  ],
+  "currentMetaAuthorityGap": {
+    "status": "PENDING_CANONICAL_AUTHORITY",
+    "qids": [9, 17, 18, 19],
+    "standardCourse": "수학I",
+    "curriculumScope": "2015 H15-M1",
+    "missingL2Parents": ["H15-M1-03", "H15-M1-04"],
+    "actionTaken": "Preserved actual null subUnit fields and existing debt; no key or parent projection invented; no forced PASS.",
+    "sourceItemHoldCount": 0
+  },
+  "render": {
+    "status": "NOT_RUN_R3",
+    "archiveEngineRender": "NOT_RUN_R3",
+    "r3Started": false,
+    "r2Started": false
+  },
+  "completionSeal": {
+    "status": "NOT_RUN_REPORT_FAIL",
+    "reason": "archive-codex-stage-kit seal requires a current R1_V2 report with active artifactContract PASS and zero issues."
+  },
+  "nextRequiredAction": "ROOT/MASTER technical continuation to resolve current H15-M1-03/04 L2 authority. Then resume this same R1 session, rebind only q9/q17/q18/q19 Meta loci, and run the necessary generic V2 validator again; preserve all current answer freeze, four-axis review, calibration, and unrelated qid evidence."
+}

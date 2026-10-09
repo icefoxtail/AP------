@@ -1,0 +1,11 @@
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),{spawnSync}=require('node:child_process');
+const root=process.cwd(),ev=path.join(root,'archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I');
+const argv=['archive/tools/archive-stage-validator.mjs','--stage','CREATE','--exam',path.join(root,'.tmp/archive/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/23_매산고_1학기_중간_고2_수학I.js'),'--evidence',path.join(ev,'CREATE.evidence.rev3.json'),'--asset-root',path.join(root,'.tmp/archive/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I'),'--quality-contract','JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006','--execution-line','CODEX','--json'];
+const run=spawnSync(process.execPath,argv,{cwd:root,encoding:null,windowsHide:true,maxBuffer:32*1024*1024});
+const stdout=run.stdout||Buffer.alloc(0),stderr=run.stderr||Buffer.alloc(0);
+const stdoutPath=path.join(ev,'CREATE-validator.rev3.stdout.json'),stderrPath=path.join(ev,'CREATE-validator.rev3.stderr.txt'),rawPath=path.join(ev,'CREATE-validator.rev3.raw.json');
+fs.writeFileSync(stdoutPath,stdout);fs.writeFileSync(stderrPath,stderr);fs.writeFileSync(rawPath,stdout);
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const capture={schemaVersion:'JS_ARCHIVE_CODEX_VALIDATOR_PROCESS_CAPTURE_V1',argv:['node',...argv],cwd:root,exitCode:run.status,signal:run.signal||null,error:run.error?String(run.error):null,stdout:{path:stdoutPath,sha256:sha(stdout),bytes:stdout.length},stderr:{path:stderrPath,sha256:sha(stderr),bytes:stderr.length},rawReportPath:rawPath,rawReportIsExactStdout:true,capturedAt:new Date().toISOString()};
+const capturePath=path.join(ev,'CREATE-validator.rev3.process-capture.json');fs.writeFileSync(capturePath,JSON.stringify(capture,null,2)+'\n');
+process.stdout.write(JSON.stringify({...capture,capturePath},null,2)+'\n');process.exitCode=run.status===null?1:run.status;

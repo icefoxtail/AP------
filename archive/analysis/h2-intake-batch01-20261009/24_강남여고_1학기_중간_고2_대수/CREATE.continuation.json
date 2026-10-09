@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_DURABLE_CONTINUATION_V1",
+  "examUid": "24_강남여고_1학기_중간_고2_대수",
+  "stage": "CREATE",
+  "result": "CREATE_DRAFT_COMPLETE_VALIDATOR_FAIL",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "denominator": 25,
+  "finalArtifactPath": ".tmp/archive/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/24_강남여고_1학기_중간_고2_대수.js",
+  "finalArtifactRawSha256": "f9d8592009218672855c6515795dc01d6092ccf039e931091213e7258add6837",
+  "finalArtifactSha": "9622bad3c285b24a8a2473fbc4618100263762f6",
+  "evidenceRef": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/CREATE.evidence.bound.final.json",
+    "sha256": "d7b09356c156a4641ee6adaaacfc56a031e22b6aa691a48c1a9d32ba05a2faa1"
+  },
+  "validatorCaptureRef": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/CREATE.validator-capture.final.json",
+    "sha256": "51b9bffa6b7e58792d901532b46449bd8d5b4cb3c2f3948e0bbd6b6ac5762f10",
+    "exitCode": 1,
+    "disposition": "FAIL",
+    "executionProvenance": "PROCESS_CAPTURED",
+    "issues": [
+      "ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED:q7:i0",
+      "ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED:q7:i1",
+      "ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED:q7:i2",
+      "ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED:q7:i3",
+      "ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED:q7:i4",
+      "ARTIFACT_META_RPM_ONLY_NULL_SUBUNIT_PROOF_INVALID:q9",
+      "ARTIFACT_META_VALUE_REQUIRED:subUnitKey:q9",
+      "ARTIFACT_META_VALUE_REQUIRED:subUnit:q9",
+      "ARTIFACT_META_VALUE_REQUIRED:subUnitConfidence:q9",
+      "ARTIFACT_META_VALUE_REQUIRED:subUnitClassificationDepth:q9",
+      "ARTIFACT_META_DEBT_FIELD_INVALID:q9",
+      "ARTIFACT_META_RPM_ONLY_NULL_SUBUNIT_PROOF_INVALID:q17",
+      "ARTIFACT_META_VALUE_REQUIRED:subUnitKey:q17",
+      "ARTIFACT_META_VALUE_REQUIRED:subUnit:q17",
+      "ARTIFACT_META_VALUE_REQUIRED:subUnitConfidence:q17",
+      "ARTIFACT_META_VALUE_REQUIRED:subUnitClassificationDepth:q17",
+      "ARTIFACT_META_DEBT_FIELD_INVALID:q17",
+      "ARTIFACT_META_RPM_ONLY_NULL_SUBUNIT_PROOF_INVALID:q18",
+      "ARTIFACT_META_VALUE_REQUIRED:subUnitKey:q18",
+      "ARTIFACT_META_VALUE_REQUIRED:subUnit:q18",
+      "ARTIFACT_META_VALUE_REQUIRED:subUnitConfidence:q18",
+      "ARTIFACT_META_VALUE_REQUIRED:subUnitClassificationDepth:q18",
+      "ARTIFACT_META_DEBT_FIELD_INVALID:q18",
+      "ARTIFACT_META_RPM_ONLY_NULL_SUBUNIT_PROOF_INVALID:q19",
+      "ARTIFACT_META_VALUE_REQUIRED:subUnitKey:q19",
+      "ARTIFACT_META_VALUE_REQUIRED:subUnit:q19",
+      "ARTIFACT_META_VALUE_REQUIRED:subUnitConfidence:q19",
+      "ARTIFACT_META_VALUE_REQUIRED:subUnitClassificationDepth:q19",
+      "ARTIFACT_META_DEBT_FIELD_INVALID:q19"
+    ]
+  },
+  "preflight": {
+    "status": "STRUCTURAL_PREFLIGHT_CLEAR",
+    "itemHoldCount": 0,
+    "questionCount": 25
+  },
+  "solutionCalibration": {
+    "status": "PASS",
+    "qualityCompareCount": "25/25"
+  },
+  "sourceCorrections": [
+    {
+      "qid": 12,
+      "kind": "AUDITED_REPAIR",
+      "description": "Corrected extracted -64^(3/n) to source -64^3 under n-th root; exact page 2 PDF scope, before/after, answer and proof are in CREATE evidence."
+    }
+  ],
+  "firstMissingClosureStep": "ROOT bounded technical continuation for the shared V2 schema/validator compatibility gaps, then same-session current bind and fresh generic validator capture.",
+  "exactReason": {
+    "q7": {
+      "issueCodes": [
+        "ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED:q7:i0",
+        "ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED:q7:i1",
+        "ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED:q7:i2",
+        "ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED:q7:i3",
+        "ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED:q7:i4"
+      ],
+      "sourceReview": "Page 1 confirms choices ①–⑤ are literal source answer values under arrows marking the five equality signs. Preserve them; current engine strips prefix by default when preserveChoicePrefixes=false, but generic validator unconditionally rejects CIRCLED_PREFIX choice strings."
+    },
+    "h15SubUnitGaps": {
+      "affectedQids": [
+        9,
+        17,
+        18,
+        19
+      ],
+      "unitKeys": {
+        "H15-M1-03": [
+          9,
+          17,
+          19
+        ],
+        "H15-M1-04": [
+          18
+        ]
+      },
+      "evidence": "Current standard unit master has no child rows for H15-M1-03/04 and question_metadata.json has zero registered rows for either key. No subUnitKey was invented. Exact master/crosswalk/metadata hashes and qid mapping are in CREATE.evidence.bound.final.json."
+    },
+    "resolvedQ10": {
+      "qid": 10,
+      "key": "H15-M1-07-TRIGONOMETRIC_INEQUALITY",
+      "basis": "Reused the existing registered legacy-compatible key for H15-M1-07; question_metadata.json has 7 matching inequality rows. Generic report no longer fails q10."
+    }
+  },
+  "nextRequiredAction": "ROOT routes the narrow shared compatibility question; do not start R1/R2 until ROOT supplies a lawful representation for the remaining validator gaps."
+}

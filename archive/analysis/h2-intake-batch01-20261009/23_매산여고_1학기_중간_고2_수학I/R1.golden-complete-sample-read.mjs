@@ -1,0 +1,3 @@
+import {readExam,sha256} from '../../../../archive/tools/archive-codex-artifact-io.mjs';
+const paths=[['Maesan','archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js',[1,2]],['Hyochon','archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js',[1,2]],['Jeil','archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js',[1,2]]];
+for(const [name,path,qids] of paths){const e=readExam(path);for(const id of qids){const q=e.questions.find(x=>Number(x.id)===id);console.log(JSON.stringify({name,path,examSha256:e.rawSha256,qid:id,solutionSha256:sha256(Buffer.from(String(q.solution??''))),solutionImage:q.solutionImage??null,solution:q.solution}));}}

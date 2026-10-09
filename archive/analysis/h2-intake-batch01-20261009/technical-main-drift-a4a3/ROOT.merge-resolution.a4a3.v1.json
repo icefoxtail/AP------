@@ -1,0 +1,171 @@
+{
+  "schemaVersion": "ROOT_REMOTE_MAIN_DRIFT_MERGE_NINE_REGISTRY_RESOLUTION_V1",
+  "executionLine": "CODEX",
+  "examUid": "23_매산여고_1학기_중간_고2_확률과통계",
+  "scope": "Exact nine conflicted registry outputs only; no source/answer/visual/Meta reclassification work.",
+  "primary": {
+    "head": "4af2a4f7ad28353402c6adae235c3f50b7bd3cf8",
+    "mergeHead": "a4a3e090c672121a2a170b614c7901fa7f88710b",
+    "expectedHead": "4af2a4f7ad28353402c6adae235c3f50b7bd3cf8",
+    "expectedMergeHead": "a4a3e090c672121a2a170b614c7901fa7f88710b",
+    "unmergedStageEntriesForNine": 27,
+    "unmergedStagesPreserved": true,
+    "gitIndexTouched": false
+  },
+  "rawConflictStageSnapshot": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/technical-main-drift-a4a3/index-stages-v2.manifest.json",
+    "sha256": "72d66135cda71a037875e380785ab61bf48f4eb1c303421f1901f4e939fdad3c",
+    "stage1": 9,
+    "stage2": 9,
+    "stage3": 9
+  },
+  "sealedTargetPackage": {
+    "originalPath": ".tmp/archive/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/registration-package.v2.json",
+    "originalSha256": "dbd36d039869050b27389b4652f82ee92b5f5b4c8f4d8e4932b2d8170842e7e4",
+    "remoteRebasedPath": "archive/analysis/h2-intake-batch01-20261009/technical-main-drift-a4a3/registration-package.remote-rebase-a4a3.v1.json",
+    "remoteRebasedSha256": "c9f5c00d52bfc99db4f066d3d68c83499fcd60ca02aa5f7019ace758ae70a7ee",
+    "catalogRowsExactToOriginalV2": true,
+    "questionCount": 22
+  },
+  "candidateRemoteApply": {
+    "candidateHead": "a4a3e090c672121a2a170b614c7901fa7f88710b",
+    "receiptCandidatePath": ".tmp/archive/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/registration-canonical-root/.tmp/registration-evidence-remote-rebase-a4a3-v1/target-registration.receipt.json",
+    "receiptSha256": "cb406434357a02772fd65b9b56385e46b9c9e825c03964a7198e9a14939d3b50",
+    "status": "APPLIED_PENDING_VALIDATORS",
+    "targetCounts": {
+      "db": 1,
+      "identity": 22,
+      "metadata": 22,
+      "index": 22,
+      "catalog": 22
+    },
+    "remoteNonTargetRows": {
+      "db": 560,
+      "identity": 13344,
+      "metadata": 13344,
+      "index": 13336,
+      "catalog": 13336,
+      "deepComparisonPreserved": true,
+      "runtimeTuplesPreserved": true
+    }
+  },
+  "metaDebt": {
+    "authority": "Existing sealed package v2 + ROOT admission v3 unchanged",
+    "qids": [
+      1,
+      6,
+      7,
+      8,
+      9
+    ],
+    "exactToPackageAndManualReviewPreserved": true,
+    "manualReviewStatus": "manual_review",
+    "metadataStatus": "approved_partial_with_explicit_holds",
+    "problemTypeTemplateFieldStatus": "manual_review_pending",
+    "automaticEligibilityPromoted": false
+  },
+  "catalogHeaderRepairProof": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/technical-main-drift-a4a3/candidate-catalog-header-rebind-proof.v1.json",
+    "sha256": "b9208ac1934d41ad2e99b4a61c06619cddf4f1d38cdbca0588e75ec5fb6c8cd5",
+    "records": 13358,
+    "nonTargetRows": 13336,
+    "recordsEqualBeforeAfterCanonicalMaterializer": true,
+    "nonTargetRowsEqualLatestRemoteStage3": true,
+    "otherSevenRegistryFilesByteEqual": true,
+    "onlyIndexVersionHeaderDiff": true,
+    "manifestDifferencesDerivedFromCatalogHeaderOnly": true
+  },
+  "checks": {
+    "candidateCanonicalCatalogCheck": {
+      "exitCode": 0,
+      "stdoutPath": "archive/analysis/h2-intake-batch01-20261009/technical-main-drift-a4a3/remote-canonical-check-after-rebind-v2/build-archive2-catalog.stdout.raw.txt",
+      "stdoutSha256": "f1e6e97a79c49fa46f09f63a7425cb1583615887f7981adc7f3fe0a4cb04111e",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "primaryMergedCatalogCheck": {
+      "exitCode": 0,
+      "stdoutPath": "archive/analysis/h2-intake-batch01-20261009/technical-main-drift-a4a3/primary-merge-catalog-check-v1/catalog.stdout.raw.txt",
+      "stdoutSha256": "f1e6e97a79c49fa46f09f63a7425cb1583615887f7981adc7f3fe0a4cb04111e",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "runtimeGuard42": {
+      "exitCode": 0,
+      "stdoutPath": "archive/analysis/h2-intake-batch01-20261009/technical-main-drift-a4a3/runtime-guard-v2/runtime.stdout.raw.txt",
+      "stdoutSha256": "427117b2a1baf5ecc9a9bb12b1db1f013e94f89e675fb562ab856209e59df89a",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "registrationMetaFocusedTests": {
+      "exitCode": 0,
+      "passed": 47,
+      "failed": 0,
+      "stdoutPath": "archive/analysis/h2-intake-batch01-20261009/technical-main-drift-a4a3/meta-registration-tests-v1/tests.stdout.raw.txt",
+      "stdoutSha256": "f4b1ab13533346a3da158da2022da7777026f6bac040c8e067153cd66cb8c774",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "primaryCopy": {
+    "paths": [
+      "archive/db.js",
+      "archive/data/question_identity_map.json",
+      "archive/data/question_metadata.json",
+      "archive/question-identity.js",
+      "archive/question-index.js",
+      "archive/question-index-report.md",
+      "archive/question-index-audit.md",
+      "archive/data/archive2-catalog.json",
+      "archive/data/archive2-canonical-input-manifest.json"
+    ],
+    "hashes": [
+      {
+        "path": "archive/db.js",
+        "sha256": "c56892367613c7b5142569a49de0e573e122882d9f4f987b16759c15d8facfc9",
+        "bytes": 560390
+      },
+      {
+        "path": "archive/data/question_identity_map.json",
+        "sha256": "55e5156e50bb96f4ace41e849b8074da96dbf151fed56e9dbd112e71c4555100",
+        "bytes": 14594341
+      },
+      {
+        "path": "archive/data/question_metadata.json",
+        "sha256": "3995e5704d891652812b4b7fb8108728f553f5ec80a12c287e333285df77746e",
+        "bytes": 33810942
+      },
+      {
+        "path": "archive/question-identity.js",
+        "sha256": "3dcc025b800b9b6a2b35b789890fccdd8c9c1813b230410b47ce115edae7b411",
+        "bytes": 3405821
+      },
+      {
+        "path": "archive/question-index.js",
+        "sha256": "22483cb83e6aae1f9686a75d44e61fc0239e81afeb189e188c5ee37b08060cdb",
+        "bytes": 14244408
+      },
+      {
+        "path": "archive/question-index-report.md",
+        "sha256": "ee06fc413ba8a8acad6ded7e00aefd348197604263b16b4f32dca0afca1f0ba0",
+        "bytes": 3188
+      },
+      {
+        "path": "archive/question-index-audit.md",
+        "sha256": "003684eb6dbd1a3b5e95780847e83779a03c78b525027a406f513925b4dd7824",
+        "bytes": 7689
+      },
+      {
+        "path": "archive/data/archive2-catalog.json",
+        "sha256": "939305d086390e34b5866e39571a72c1ff189146e73086d3ea58ee335dd54d64",
+        "bytes": 28661243
+      },
+      {
+        "path": "archive/data/archive2-canonical-input-manifest.json",
+        "sha256": "d7b3987d305faa87970b25f1ed104c4017ad3393c5a1ea965dfb15ad933b079f",
+        "bytes": 9014
+      }
+    ],
+    "allPrimaryPathsByteEqualCandidateSnapshot": true,
+    "unmergedStageEntriesRemain": true,
+    "staged": false,
+    "committed": false,
+    "pushed": false
+  }
+}

@@ -1,0 +1,2 @@
+import {readExam,sha256} from '../../../../archive/tools/archive-codex-artifact-io.mjs';import fs from 'node:fs';import path from 'node:path';
+const p='archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js',e=readExam(p),q=e.questions.find(x=>Number(x.id)===7),svg=path.resolve('archive/'+q.solutionImage);console.log(JSON.stringify({path:p,examSha256:e.rawSha256,qid:7,solutionSha256:sha256(Buffer.from(q.solution)),solution:q.solution,solutionImage:q.solutionImage,visualSha256:sha256(fs.readFileSync(svg)),visualPath:svg}));

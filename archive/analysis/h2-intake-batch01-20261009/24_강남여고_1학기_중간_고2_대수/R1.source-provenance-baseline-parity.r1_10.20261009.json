@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_SOURCE_PROVENANCE_BASELINE_PARITY_V1",
+  "stage": "R1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "reviewerId": "r1_10",
+  "examUid": "24_강남여고_1학기_중간_고2_대수",
+  "currentWorkingSourceRawSha256": "4f1529eeefac76a5aa37d24609322f3a331f43ca4570ed7c0696fd8c387f42ea",
+  "extractedBaselinePath": ".tmp/archive/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/extracted-baseline.js",
+  "extractedBaselineRawSha256": "d6b1236a5d20fe923adbc6af2b1be0f07e43395ff608202182bff6b4c7c02dc5",
+  "baselineSourceStudentShape": {
+    "imageRef": "not present in baseline object schema",
+    "number": "sourceOrdinal",
+    "choices": "choices",
+    "question": "content"
+  },
+  "denominator": 25,
+  "baselineParity": {
+    "contentExactQids": 24,
+    "imageRefBaselineRows": 0,
+    "currentImageRefsAdded": [
+      {
+        "ref": "assets/images/24_강남여고_1학기_중간_고2_대수/q16.png",
+        "sha256": "de7b2a0e108fced35eb682b130b8b1434b6c530b351cccc350e8684150e9b2b8",
+        "qid": 16
+      },
+      {
+        "ref": "assets/images/24_강남여고_1학기_중간_고2_대수/q18.png",
+        "sha256": "a7687ff2b3f447e963f1b37ce6524b5886cf8e5fb91383832413355eb8485623",
+        "qid": 18
+      },
+      {
+        "ref": "assets/images/24_강남여고_1학기_중간_고2_대수/q24.png",
+        "sha256": "0f8c1ee47856b02f3df184d87db0a3fda5d68385a5ca0659033b2f3c42325a7b",
+        "qid": 24
+      }
+    ],
+    "choicesExactQids": 25,
+    "changedStudentContentQids": [
+      {
+        "qid": 12,
+        "provenanceActualScope": "CREATE reused source evidence: qid 12 only, page 2, 150 dpi crop; R1 did not read the PDF.",
+        "currentContentSha256": "2f3992f8adbec7d776e0b3aeb26aca5bda14df100c72a73c2238c38f3cba780e",
+        "currentChoicesSha256": "e205515d99f812c134c861440f6f86d08fbf56e0afac02f8e7e9db9181b74688",
+        "provenanceSha256": "b1ce2776eb1f37168c91d3f01a372eb475262833c0666172170541f83fd71a09",
+        "provenancePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/수1/2024_강남고2_수1_1중간.pdf",
+        "baselineChoicesSha256": "e205515d99f812c134c861440f6f86d08fbf56e0afac02f8e7e9db9181b74688",
+        "provenancePath": ".tmp/archive/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/q12-source-correction.provenance.json",
+        "baselineContentSha256": "f315131a906be2253bd8f9dab565c282256a6d877478b2e498841831cc6bd4c4",
+        "provenancePdfSha256": "6000fc9dff3d478eac3a79228f617b0172577065f6c3dde58f98c90793fce3b6"
+      }
+    ]
+  },
+  "intakeEvidence": {
+    "reusedNoPdfReread": true,
+    "path": ".tmp/archive/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/intake-original.evidence.json",
+    "sourcePdfSha256": "6000fc9dff3d478eac3a79228f617b0172577065f6c3dde58f98c90793fce3b6",
+    "pdfDpi": 300,
+    "sha256": "a6847ba98f9daeb59ae4e8a4525d97fd2a52daa2d7f16bbe3048f6b49ed860a0",
+    "inventoryImages": 3,
+    "inventoryQuestions": 25
+  },
+  "q7SourceChoiceEvidence": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/q7-source-choice-verification.json",
+    "R1PostfreezeCurrentStudentFieldsReviewed": true,
+    "R1ActualPdfReview": "NOT_READ",
+    "qid": 7,
+    "sha256": "cbcbaf389e6fd3f97079245a20200b93fc4899fd7f428c38814e29c38e39e006",
+    "priorScopedPdfReviewByCreate": "choice area only, page 1; exact five literal marker values"
+  },
+  "pdfActualReviewByR1": {
+    "reason": "No concrete R1 source-dependent defect remained after current JS/asset review; q12/q7 source check evidence was reused with its original provenance only.",
+    "status": "NOT_READ"
+  },
+  "extractionBaselineParityResult": "24/25 content exact; 25/25 choices exact; q12 is a documented source correction; current image refs q16/q18/q24 exist in intake asset evidence but are absent from baseline object fields. This is baseline parity, not a new PDF comparison."
+}

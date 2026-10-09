@@ -1,0 +1,112 @@
+{
+  "schemaVersion": "JS_ARCHIVE_GOLDEN_PREFLIGHT_V2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "reviewerId": "r1_10",
+  "examUid": "24_강남여고_1학기_중간_고2_대수",
+  "registryPath": "archive/data/codex-quality-calibration-registry-v2.json",
+  "registrySha256": "f42e82d8c6c6f83d294d7d825eb0cc2c7cc939f1e62db3ed6faaea0cd9f0733d",
+  "preflightOrderFailurePath": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.solution-preflight-order-failure.r1_10.20261009.json",
+  "preflightOrderFailureSha256": "C3E357147B1D70340956E51ADC5C848EE2868879B71B6A1578AA391868A5B161",
+  "status": "COMPLETE_ACTUAL_PRE-FLIGHT",
+  "sampleReadChronology": [
+    "Fixed calibration registry read.",
+    "Negative regression README read.",
+    "Actual fixed Golden JS files were evaluated and selected qid content, answer, solution, and solutionImage references were read: Maesan q7, Hyochon q4, Jeil q6.",
+    "Attempt to open local SVG via file URL was blocked by explicit browser security policy; no browser retry or alternate browser surface used.",
+    "Exact Golden and five Negative SVG bytes were rasterized with installed ImageMagick 7.1.2 Q16-HDRI; all resulting PNGs were opened and visually inspected.",
+    "Renderer warning: STIX Two Math/Cambria Math unavailable; Sans fallback used. Glyph boxes are recorded as renderer limitation."
+  ],
+  "browserNavigation": "NOT_RUN_BROWSER_POLICY_BLOCK",
+  "imageRenderer": "ImageMagick 7.1.2 Q16-HDRI",
+  "actualArchiveEngineRender": "NOT_RUN",
+  "goldenQuestions": [
+    {
+      "contentSha256": "609c575a0aa00d5249abf009df6ef65dd1f15cfb9e5a5ca0dd1b5cf5d43e9d2a",
+      "solutionImageSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+      "qid": 7,
+      "observation": "The solution explicitly derives the circle center/radius, carries the center through both translations, then gives the final equation. SVG shows initial/intermediate/final circles and center path; compact relation panel. ImageMagick font fallback rendered some math glyphs as boxes.",
+      "renderedPreview": "calibration-renders/golden-maesan-q7.png",
+      "renderedPreviewSha256": "c1b3b4254dc3596dcfdb37137f07b58b6c749558018b576da6dde075b81e661b",
+      "sourceSha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+      "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+      "solutionImage": "assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js"
+    },
+    {
+      "contentSha256": "a384a554009c436d08ffff16b1521e41f5abb73b69c36b7fa2eaf004307bf945",
+      "solutionImageSha256": "e8cffa56d1c16824f73bafa4a4cb5828735f070b6689e033f773682a7b0c791a",
+      "qid": 4,
+      "observation": "The solution sets a general slope-1 line, applies center-to-line distance, obtains both tangents, identifies y-axis intersections, and computes their separation. SVG shows the circle, parallel tangents, radius/perpendicular cue, and labeled A/B segment; math glyph boxes reflect ImageMagick font fallback.",
+      "renderedPreview": "calibration-renders/golden-hyochon-q4.png",
+      "renderedPreviewSha256": "e000e45c97f4f7f04694e72dabf061aa4230a0ec7aaff17b04ecb99c3372ecdb4",
+      "sourceSha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "solutionSha256": "acdb76bc6092e60c215baaf235516b6fd1a7777ffc9d20cb1f134a95a7043cdf",
+      "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q04-solution.svg",
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+    },
+    {
+      "contentSha256": "833eb4e705013bbee974e9c2f0db7c55315fc8108ee6b01477ef5b2f59e10955",
+      "solutionImageSha256": "b561aec78467dac0c4783f00fef9eae8eab15ff38f77b0a0fa0e0a0096d09b88",
+      "qid": 6,
+      "observation": "The solution uses De Morgan, inclusion-exclusion, derives the minimum overlap, then constructs a feasible partition. SVG shows the two sets and region labels with the overlap variable tied to the inequality; set-operation glyphs rendered as font-fallback boxes in ImageMagick.",
+      "renderedPreview": "calibration-renders/golden-jeil-q6.png",
+      "renderedPreviewSha256": "6196801adB051717bf4cfD14A25B600558AE78A54775394e911e213AC7FBAEC",
+      "sourceSha256": "c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+      "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+      "solutionImage": "assets/images/25_제일고_2학기_중간_고1_기출/q06-solution.svg",
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+    }
+  ],
+  "negativeSamples": [
+    {
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "observation": "Read the failure regression contract: verify actual geometry, not SVG labels; inspect physical small-board blocks, exact ACTIVE Meta lookups, and runtime TeX after sandbox evaluation."
+    },
+    {
+      "preview": "calibration-renders/negative-bokseong-q1.png",
+      "sha256": "022a90d5887f312af6eff6d0c1ee15cac740460bb177709f9a6f274fd20f3d92",
+      "observation": "Displayed line primitive does not pass the labeled A/B points or realize the labeled slope/intercept.",
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg",
+      "previewSha256": "0845f220e88c89f0544199fada8830b87037bb06e28851ab676fcc8ca07b926e"
+    },
+    {
+      "preview": "calibration-renders/negative-bokseong-q3.png",
+      "sha256": "7d898cf2fc9942f3b97f3f9157c1c956d9edf6759b54c7cc9fb7887b1074213c",
+      "observation": "Displayed line has positive slope while the labeled line equation implies slope −7; PH is not perpendicular.",
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q3-solution.bad.svg",
+      "previewSha256": "63ad323e8f4f55739d912d7510e1f1093d9e8b407a4e390a3d5ab72bc2e9c0e8"
+    },
+    {
+      "preview": "calibration-renders/negative-bokseong-q7.png",
+      "sha256": "240dade5ecd6991b156f456fe7036883a59e43df3117d0f2a25b3c790a39eaa4",
+      "observation": "Displayed parabola fails to pass the labeled A(−1/2,0) and B(0,−1).",
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+      "previewSha256": "369342e301137decd53c4dd648922a9b7a84acf4a0d543da57983cb0940c19b"
+    },
+    {
+      "preview": "calibration-renders/negative-bokseong-q8.png",
+      "sha256": "5082ba76d12ffc1ceaca34ba7f215607515a5c8378331ab54baed859e5120e5",
+      "observation": "The labeled tangent facts do not match the actual point/line geometry.",
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q8-solution.bad.svg",
+      "previewSha256": "87008d01194046f45c49f6e1cf229b83c9b95efe408a838ad7a00755391536"
+    },
+    {
+      "preview": "calibration-renders/negative-bokseong-q20.png",
+      "sha256": "89debcfed249f581602aa9c77fb54390866dccb4a95fe21f59ec1ee6fac82cb7",
+      "observation": "Actual line primitive has slope +3/4 while the label gives line 3x+4y−8=0 (slope −3/4), so its orientation is not perpendicular to the intended vector.",
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q20-solution.bad.svg",
+      "previewSha256": "1d abf518fb94618620d55b7fe657720c3643f9742dac23aa827129e601ad5c1b"
+    }
+  ],
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "targetComparison": "NOT_YET_PERFORMED",
+  "solutionChanges": "NONE"
+}

@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ROOT_TECHNICAL_CORRECTION_DECISION_V1",
+  "runId": "codex-20261007-2sem-mid-palma-m3",
+  "cohortRunId": "codex-20261007-2sem-mid-import",
+  "examUid": "26_팔마중_2학기_중간_중3_기출",
+  "stage": "R1_THEN_R2_THEN_R3",
+  "createdAtUtc": "2026-10-08T11:36:28.2193127Z",
+  "decisionAuthority": "ROOT_DELEGATED",
+  "authorityBasis": "User delegated complete import, bounded correction, stage routing, publication and closeout; current JS Archive Codex Execution §§9,11,15,20,25.",
+  "decision": "MINIMAL_POSTFREEZE_SOLUTION_TEX_ENCODING_CORRECTION_FOR_R3_BLOCKERS",
+  "currentMainHead": "8442c6afbc53f412809534101e7a981384f7cc99",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "candidatePath": ".tmp/archive/codex-20261007-2sem-mid-palma-m3/26_팔마중_2학기_중간_중3_기출/candidate/26_팔마중_2학기_중간_중3_기출.js",
+  "candidateRawSha256": "3968635c070f8ca44c726b4709f4be7ea3714da473fcbeeb2b1a7feb1604709a",
+  "candidateBlobSha1": "a64aa62f76737f3d74f3f81ed50ac50e505288b4",
+  "targetQids": [
+    4,
+    16
+  ],
+  "scope": "TWO_QID_SOLUTION_TEX_TOKEN_ONLY",
+  "r3FailClosedHandoffPath": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/R3.fail-closed-handoff.q4-q16.current-main.json",
+  "r3FailClosedHandoffSha256": "769b72cf05b2aafbd4f0b044db22e7d742ecfe450c9c3a116ca01a626276ca27",
+  "r3CaptureReviewPath": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/R3-capture-review.q4-q16-blocker.current-main.json",
+  "r3CaptureReviewSha256": null,
+  "r3MachineCapturePath": ".tmp/archive/codex-20261007-2sem-mid-palma-m3/26_팔마중_2학기_중간_중3_기출/capture-r3-current-main-01/machine-capture.json",
+  "r3MachineCaptureSha256": "197be9b0b507538090f871139332070bfc44210ef768d70ce73c7b78f985431a",
+  "r3Blockers": [
+    {
+      "field": "solution",
+      "qid": 4,
+      "malformedToken": "dfrac12",
+      "affectedCases": [
+        "sol/desktop",
+        "sol/mobile"
+      ],
+      "sourceLine": 138,
+      "requiredEncoding": "\\dfrac12"
+    },
+    {
+      "field": "solution",
+      "qid": 16,
+      "malformedToken": "dfrac12",
+      "affectedCases": [
+        "sol/desktop",
+        "sol/mobile"
+      ],
+      "sourceLine": 592,
+      "requiredEncoding": "\\dfrac12"
+    }
+  ],
+  "allowedChange": "Insert only the missing TeX command backslash before dfrac12 in q4 and q16 solution strings. Do not change prose, mathematics, answers, student fields, assets, Meta or difficulty.",
+  "preserve": [
+    "All valid R1 and R2 independent answer freezes; student payload and all assets; original candidate snapshot; original R3 capture and fail-closed handoff; existing successful R1/R2 stage reports and completion events."
+  ],
+  "requiredPreflight": "R1 must perform the current Golden/Negative solution calibration preflight before the token correction, then review only q4/q16 SOLUTION_LAYOUT/render-bound encoding and solution hashes. R2 must reuse valid frozen answers without re-solving, confirm current student payload parity, and technically rebind only changed solution hashes/provenance. R3 same session must recapture all six cases after the correction and release only if all cases pass.",
+  "candidateScopeInvariant": "Student content/choices/images/answers/Meta/difficulty and asset bytes remain unchanged; only q4 and q16 solution TeX tokens may differ. No source scans. No RENDER_PASS for the failed capture.",
+  "studentBundlePath": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/handoff/R3.current-final-student-only-bundle.after-q11-replacement.json",
+  "studentBundleSha256": "a414c408c83b958801096f2f80284e71cae73acfbda110dcd96f8876d937e1fc",
+  "r1EvidencePath": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/R1-q11-fresh-evidence.json",
+  "r1EvidenceSha256": "7b37f5b9e38379caaa1316063d5b2136e5190647aac5c56e0a22ce5c7339f6d6",
+  "r1ValidatorPath": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/R1-q11-fresh.generic-v2-report.current-head.raw.json",
+  "r1ValidatorSha256": "0b461057bdbe45b2be90c340a425e6f3d8b7a73516ed2de2007847b6d0af7392",
+  "r1FreezePath": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/R1-q11-composite-independent-answer-freeze.json",
+  "r1FreezeSha256": "8ddc674d00268f024548636a8b6bd25aefb6d96bd070ccb1bbbecd20930f84ed",
+  "r2FreezePath": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/R2.q11-fresh-clean.aggregate.blind-freeze.json",
+  "r2FreezeSha256": "dc60fa152f9fe5629b58bf48572708a7ca4b91754d3ae41a6974c0c37bfdfd46"
+}

@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "JS_ARCHIVE_META_PROJECTION_TECHNICAL_ASSESSMENT_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "status": "OPEN_REQUIRES_SEMANTIC_AUTHORITY",
+  "worktreeRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------",
+  "head": "3cecb45b2483ee1273a4b8a288f9b05ab91c9865",
+  "scope": {
+    "stage": "technical continuation only",
+    "sourceQuestionIds": ["H15-M1-03", "H15-M1-04"],
+    "examTargets": [
+      { "examUid": "23_강남여고_1학기_중간_고2_수학I", "affectedQids": [5, 6, 8, 16, 18, 20] },
+      { "examUid": "23_금당고_1학기_중간_고2_수학I", "unresolvedL2Qids": [4, 6, 7, 12, 17, 19] }
+    ],
+    "explicitExclusions": ["question solving", "semantic reclassification", "source/meta mutation", "stage-worker HOLD resolution", "quality-contract/validator/registry mutation"]
+  },
+  "inputBindings": [
+    {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/R1.meta-projection-gap.json",
+      "absolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.meta-projection-gap.json",
+      "sha256": "221438fd6e075af1e7d70c5fc8b134d2ad3fe67ab12e278b27d68ba062ae01af"
+    },
+    {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/CREATE.technical-continuation.json",
+      "absolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학I\\CREATE.technical-continuation.json",
+      "sha256": "1a49e9fe06d03fddcb3116f4373ab3ddd56d8f129d9e2ea206275bb56c000d44"
+    }
+  ],
+  "authorityAndImplementationBindings": [
+    { "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md", "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e", "finding": "H15-M1-03/04 are L1 rows; no official child subUnit rows are defined; §16-21 says only registered official child keys may be used for new production JS." },
+    { "path": "archive/data/master_tables/js_archive_tag_master.json", "sha256": "68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a", "finding": "Compiled tag master contains the two L1 standardUnitKey entries and no exact H15-M1-03/04 subUnit entries." },
+    { "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json", "sha256": "ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1", "finding": "2015 records for both parents have subUnitKey:null across DIRECT_BINDING_GAP, RPM_ONLY, and FAMILY_BINDING_GAP; no active child projection is available." },
+    { "path": "docs/rules/02_PIPELINES/JS_Archive_2.0_Common_Quality_Contract_v1.md", "sha256": "90517785f701e92813b07cff2f93783434ab99a9502f51b8c5f117f15363287e", "finding": "§13 grants a specific H2/2015/Geometry null-L2 proof path. It also says existing parent-equals-subunit compatibility values and registered legacy keys are maintained; it does not state that this is an approval rule for new target registrations." },
+    { "path": "archive/tools/archive-stage-validator-artifact-v2.mjs", "sha256": "2603cee4d1846f9fb63699d0305faf6fcca8fbfd796116be55a98b2ee0983e4d", "finding": "Null proof is hard-scoped to H2 + 2015 + Geometry and resolver receipt. The special unregistered noncanonical child check is H15-GV-specific. Generic required-field checks do not establish H2 Math I semantic legitimacy." },
+    { "path": "archive/tools/meta-foundation/rpm-active-resolver.mjs", "sha256": "2687708d0db1bcbe79a040b13fc96451df0ca9e1e578e6865cf1cc45839b0116", "finding": "Resolver recognizes H2 scope families including Math I and probability, but H15-M1 child projection is absent from current crosswalk; no H2-Math-I null exception is defined by validator." },
+    { "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json", "sha256": "09a62de1afe1e47d901635d73c00dcfc2d82a97f8748950df3250f0ebea4e431", "finding": "Current H2 probability crosswalk is empty; this assessment does not infer any L2 mapping." },
+    { "path": "archive/tools/prepare-target-registration-candidate.mjs", "sha256": "0a0c42fe771b935d1372f449fb9a7cb65656382304b5933716547cf78b24e033", "finding": "Bounded candidate helper display-identity allowlist is limited to math2, geometry, and H1 수학(상); H2 Math I and probability targets are unsupported by this helper." },
+    { "path": "archive/tools/prepare-target-registration.mjs", "sha256": "2894ce2537db95e92d03901135fe9ccb39d0eddd0214cd6e4afaa0fef43ed411", "finding": "Generic target package consumes canonical generator outputs and source SHA without a course allowlist; this is the existing route for H2 Math I and probability when the global generator gates pass." },
+    { "path": "archive/tools/CODEX_MAINTENANCE.md", "sha256": "260f2f3c6bdddd7874bee44e1bf6951565e2688a300af8e7b5468b42a69056f3", "finding": "§§109-136 define full canonical target-only route and bounded helper limitations; no semantic field is assigned by registration." }
+  ],
+  "technicalConclusion": {
+    "classification": "GENUINELY_MISSING_SEMANTIC_AUTHORITY_FOR_NEW_TARGETS",
+    "canonicalDrift": false,
+    "parserOrSerializerDefect": false,
+    "validCurrentRepresentationProven": false,
+    "detail": "The H2 Math I authority sources do not supply official L2 children, while the only documented null-L2 proof route is Geometry-specific. The general existing same-parent compatibility sentence is maintenance language; whether it covers these unregistered incoming exam targets is undefined. Applying parent==subUnit to new targets or copying Geometry's null proof would extend authority without approval.",
+    "validatorDisposition": "NO_VALIDATOR_RERUN; existing CREATE generic report remains FAIL for geometry-only null proof on q4/q6/q7/q12/q17/q19; it is not repaired by this assessment.",
+    "priorR1Disposition": "The bound R1 gap packet records six affected qids and six independently unresolved parent-as-subunit values; no semantic reclassification is made here."
+  },
+  "minimalAuthorityRequired": {
+    "decisionOwner": "ROOT must obtain an explicit semantic policy decision from the canonical Meta authority owner/user; this worker cannot adjudicate it.",
+    "boundedQuestion": "For H2, 2015 curriculum, standardCourse=수학I, and only H15-M1-03/H15-M1-04, may a new target represent L2 as (A) an explicitly approved parent-equals-subUnit compatibility projection, (B) unresolved null L2 with a dedicated narrowly scoped proof/debt route, or (C) only an officially registered child subUnitKey?",
+    "requiredEvidence": "The decision must define whether legacy compatibility applies to newly registered targets, identify any allowed label/value pairing, and bind the exact two L1 keys and affected qids. No broad H2/course-wide/null policy is implied.",
+    "nextActionAfterDecision": "ROOT authorizes the exact technical locus; then implement only the chosen canonical/validator/resolver binding in the approved files and rerun only the affected generic validation/Meta binding. Preserve original source/evidence/freeze and record the final SHA-bound disposition."
+  },
+  "registrationRouting": {
+    "h2Math1AndProbability": "Use the existing full path prepare-target-registration.mjs plus register-target-exam.mjs against successful isolated canonical-generator outputs; no course-specific prohibition exists in that consumer.",
+    "boundedCandidateHelper": "prepare-target-registration-candidate.mjs currently supports math2, geometry, and H1 수학(상) display identities only. H2 Math I and probability are unsupported when the full global generator is blocked; do not broaden it in this continuation.",
+    "guard": "Registration copies approved embedded Meta and does not grant semantic approval or synthesize L2."
+  },
+  "workPerformed": {
+    "sourceOrEvidenceMutated": false,
+    "validatorsExecuted": [],
+    "semanticReclassification": false,
+    "stageQualityWork": false,
+    "reportDirectory": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\technical-meta-projection-gap"
+  }
+}

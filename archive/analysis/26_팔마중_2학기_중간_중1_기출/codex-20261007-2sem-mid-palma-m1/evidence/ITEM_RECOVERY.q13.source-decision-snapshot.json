@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_SOURCE_DECISION_SNAPSHOT_V1",
+  "examUid": "26_팔마중_2학기_중간_중1_기출",
+  "qid": 13,
+  "stage": "ITEM_RECOVERY",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "decisionAuthority": "ORIGINAL_PRINTED_SOURCE_AND_EXACT_GEOMETRY",
+  "source": {
+    "path": "C:\\Users\\USER\\Downloads\\2학기중간_2026\\팔마중2\\S28BW-826100719540_0003.jpg",
+    "page": 3,
+    "sha256": "803f841a3bc66fc40f45c7c17060599c8620e39c3d0fa800516da2a941d61b10",
+    "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+    "handwritingTreatment": "ignored as non-source"
+  },
+  "studentOnlyRevalidation": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_팔마중_2학기_중간_중1_기출\\codex-20261007-2sem-mid-palma-m1\\evidence\\ITEM_RECOVERY.q13.student-only-latest-byte.json",
+    "sha256": "cb280291fddcb0d0ea72db1a17eba17e1fce9b0753ad76126888191a19fbc3de"
+  },
+  "calibrationPreflight": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_팔마중_2학기_중간_중1_기출\\codex-20261007-2sem-mid-palma-m1\\evidence\\ITEM_RECOVERY.q13.calibration.preflight.json",
+    "sha256": "06a3b2ee752924a5477adf9a60f3f56024b9bffe057411d28c57b40619d3db28",
+    "status": "PASS"
+  },
+  "printedFacts": {
+    "triangleCongruence": "△ABC≡△DEF",
+    "orderedCorrespondence": "A↔D, B↔E, C↔F",
+    "ABcm": 5,
+    "BCcm": 4,
+    "angleBDeg": 60,
+    "angleFDeg": 70
+  },
+  "independentConsistencyCheck": {
+    "method": "law of cosines, diagnostic only",
+    "ACSquared": 20.999999999999996,
+    "AC": 4.58257569495584,
+    "cosC": 0.3273268353539886,
+    "impliedAngleCDeg": 70.89339464913091,
+    "requiredByCongruenceAngleCDeg": 70,
+    "angleMismatchDeg": 0.8933946491309115,
+    "impliedAngleADeg": 49.10660535086909,
+    "conclusion": "PRINTED_SIDE_AND_ANGLE_DATA_CONTRADICT"
+  },
+  "repairDecision": {
+    "classification": "TRUE_HOLD_SOURCE_TRUTH_BLOCKED",
+    "minimumSourceFaithfulRepair": "IMPOSSIBLE_WITHOUT_CHANGING_A_PRINTED_VALUE_OR_RELATION",
+    "reason": "The full-page print confirms all conflicting labels without scan ambiguity. Congruence requires C=F=70°, while the exact side data AB=5, BC=4, B=60° imply C≈70.893°. Altering any value would invent a correction unsupported by the printed source; solution-only editing cannot make the original conditions simultaneously true.",
+    "action": "QUESTION_ONLY replacement for q13 under ROOT authorization"
+  },
+  "handwritingIgnored": true
+}

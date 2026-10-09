@@ -1,5 +1,12 @@
 # ALIVE GPT QID9 — 원본 한 문항 × 9개 슬롯 작업 계약 CURRENT
 
+## CURRENT HARD — 원장 직접 검수·main 반영 지시 = 품질 최종 승인 (2026-10-09 최신 사용자 지시)
+- **원장이 특정 Generated/ALIVE 문항·배치에 대해 "검수하고 main에 반영", "검수 후 운영병합", "main에 반영" 등 품질 확인과 출시를 직접 지시하면, 그 명시한 범위의 품질 승인 authority는 `USER_DIRECTED_QUALITY_APPROVED`로 충족한다.** 추가로 새 GPT 세션의 "정식 품질검수", 별도 독립검수 인증, open-book review PASS, 재승인·배치 대기를 요구하지 않는다. 원장 지시를 받았는데 formal GPT REVIEW 0건이라는 이유로 QUALITY_PENDING으로 표시하거나 출시를 보류하지 않는다.
+- 지시 범위와 최종 파일/UID를 결속해 `approvalBasis=USER_DIRECTED_QUALITY_APPROVED`(또는 현재 스키마의 기존 `USER_DIRECTED_OPERATING_APPROVED` 및 실제 원장 지시 evidence)를 남긴다. **실제로 수행하지 않은 독립 GPT 검사를 PASS했다고 꾸미지 않으며**, 이력의 `openBookQualityReviewed:0` 같은 계수는 독립 검수 이력일 뿐 사용자 승인 취소 근거가 아니다.
+- **남는 작업은 기술적 출고·완료:** 최종 UID·출처/변경 범위, 정확한 Meta 영구보존·기존 정본 키, source/Consumer/index parity, 에셋 존재/렌더, 최소 validator·실제 필요한 Chrome, main 병합·remote readback. 기술 오류가 발견되면 문제 locus만 직접 수리하고 영향 범위만 재검증한다. 수학적/발문상 실제 오류가 드러나면 해당 UID만 수정·HOLD하고, 원장의 품질 승인 지시를 이유로 오류 자체를 무시하지 않는다. **기술 검사는 2차 품질 승인 절차가 아니다.**
+- **기존 팔마고 QID9 q01~q04 36개:** `USER_DIRECTED_OPERATING_APPROVAL_20261009_QID9_36` 및 기존 main 등록/Chrome 근거를 품질 승인·운영 출시의 완료 authority로 사용한다. 별도 정식 GPT PASS 인증을 추가 요구하지 않고 q05부터 제작을 진행한다. 과거 `formal independent not claimed` 기록은 거짓 독립검수 표기를 막는 이력으로만 읽으며 품질 미승인·재작업 지시가 아니다.
+- 이 절은 아래의 "별도 GPT가 독립 PASS한 후에만", "새 독립 세션 필수"라는 **생성문항 품질 승인의 선행 조건을 사용자 직접 지시 범위에서 supersede**한다. 원장이 직접 승인하지 않은 신규 초안은 기존 품질 검수 경로를 따른다. 학교 기출 원문 R1/R2 blind 및 Archive Runtime의 기술 무결성 검증은 그대로다.
+
 ## CURRENT HARD — 생성 Meta 설계→저장 영구보존 계약 (2026-10-09 문제은행 프로젝트)
 - **문항 생성 시 실제 사용한 L1/L2/L3/L4, CrossConcept, Condition, IntegrationPattern 및 1~5단계 난이도는 작업용 사고 메모만 남겨서는 안 된다.** 최종 생성 source shard/metadata에 UID별 확정값으로 저장하고, GPT REVIEW 통과 후 학생용 Generated Consumer shard 및 인덱스에도 동일 UID로 검색·조회 가능한 형태로 투영한다. 보존 여부는 출시 직전 UID별 확인 대상이다.
 - 필수: 정확한 RPM/Generated 확장 Primary L3와 L4, 교육과정·L1/L2 parent, difficultyBucket=1~5, crossConceptKeys[]/conditionKeys[]/integrationPattern. 개념·조건이 실제 미적용이면 [] 또는 NONE을 명시하여 **미기재와 구별**한다. problemTypeKey/templateKey는 ACTIVE 매핑을 사용하거나 실제 매핑 상태를 근거와 함께 보류한다. 가짜 canonical 키·L3/L4 임의 추정 금지.
@@ -12,7 +19,7 @@
 - **역발문 복원:** 각 UID에 대해 학생 입력으로부터 `문제에서 주어진 것 → 실제로 묻는 것 → 필요한 결정적 판단 → 풀이 경로/우회 가능성`을 짧게 다시 복원하여 제작 설계와 대조한다. 의도와 다르면 `STEM_REVISED` 또는 `HOLD`; "검토 완료/수학 일치" 한 문장만 쓰고 넘어가지 않는다. **실제 결함이 없는 문항은 `KEEP`하고 억지 수정을 만들지 않는다.**
 - **수정·전파:** 발문 결함이면 **발문 또는 목표량/조건부터** 재설계하고 최종 학생용 문장을 저장한다. 수학적 의미를 바꿨다면 정답·객관식 다섯 보기·오답 도출 경로·상세 해설·L3/L4/CrossConcept·difficulty·필수 asset 및 경계/유일성까지 **영향받은 부분만** 다시 검증·동기화한다. 표현만 다듬어 의미가 안 바뀌면 변경 위치의 문장·보기·해설 정합성만 확인한다. 명백한 결함이 해소되지 않으면 `HOLD` / `QID_INCOMPLETE`로 남기고 학생용 PASS나 수학 검증 완료를 주장하지 않는다. 다음 원본 qid 제작은 현행 누적 체크포인트 정책대로 별도 진행 가능하다.
 - **제작자 self-review 증거(프로덕션 아님):** 각 source qid의 비출시 검수 ledger/핸드오프에 `uid / originalStemOrIssue / reverseReadingFinding / decision KEEP|REVISED|HOLD / finalStem / affectedFields / changedMathRecheck / remainingRisk`를 간명하게 남긴다. `KEEP`은 1줄 근거, `REVISED`는 구체적 결함·실제 전후 변경, `HOLD`는 미해결 원인/다음 조치를 남긴다. qid 집계로 KEEP·REVISED·HOLD 수를 합산하고 검수 대상 UID 분모와 매칭한다. `SELF_RECHECK_COMPLETE`는 각 슬롯의 결과와 수정 후 최종 파일이 실제 일치할 때만 선언한다. self-review 로그는 운영 JS/SVG/학생용 메타 스키마에 강제 삽입하지 않는다.
-- **2층 책임 분리:** 제작 GPT의 수정 완료와 이후 **별도 GPT 공개답(발문 우선→풀이 추적) 품질검수**는 명확히 구분한다. 자가검수 KEEP/REVISED는 독립 `GPT_OPEN_BOOK_REVIEW_PASS`가 아니다. 불필요하게 완성된 다른 UID나 기존 PASS를 다시 검수하지 않는다.
+- **승인 경로 구분:** 원장 직접 검수·main 반영 지시가 있으면 이 문서 맨 위의 `USER_DIRECTED_QUALITY_APPROVED` 경로로 별도 GPT 정식 검수를 생략한다. 그 외에는 제작 GPT의 수정 완료와 별도 GPT 공개답 검수를 구분한다. 자가검수 KEEP/REVISED는 독립 `GPT_OPEN_BOOK_REVIEW_PASS`가 아니다. 불필요하게 완성된 다른 UID나 기존 PASS를 다시 검수하지 않는다.
 - **다음 제작 GPT에 전달할 필수 실행문:** "발문·보기·정답·해설 1차 완성 후 자신의 설계 의도를 잠시 접고 학생·학교 출제자·우회풀이 관점에서 최종 발문을 역독해하라. 이상이 있으면 그 자리에서 발문/조건/목표량을 수정하고 영향을 받은 보기·정답·해설·Meta만 재확인하라. UID별 KEEP/REVISED/HOLD, 수정 전후와 해결 여부를 별도 self-review ledger에 남기고 최종 후보와 함께 같은 브랜치에 저장하라. 자체검수만으로 독립 PASS 또는 학생 출시를 주장하지 말라."
 - **대표 네거티브:** 팔마고 q04 C3처럼 `k+4t`가 예쁜 정수를 만드는지와 별도로 학교 시험 질문으로 자연스러운지 평가하고, "k+t를 잘못 결합"과 오답 ⑤의 값처럼 실제 오답 값이 오류 경로에서 재현되는지도 확인한다. 이 예시는 **의심 locus**이지 검증 없이 자동 FAIL·답 변경을 명령하는 것은 아니다. 원문 출제 의도와 근거를 확인한 후 최소 수정한다.
 - 이 CURRENT는 아래 이전 문구 중 모든 생성문항에 별도 blind-first/freeze를 요구하는 표현보다 우선한다. **제작자 역발문 self-check는 새 독립 리뷰 단계가 아니라 CREATE 안의 필수 수정 루프**이다.
@@ -24,7 +31,7 @@
 - **② 오답 4개 계산 경로 역재현:** 객관식은 정답을 제외한 선택지 **4개 번호를 각각 정확히 한 번** 대응시켜 '실제 잘못된 전제/연산 → 중간식(필요 시) → 계산된 값 또는 판단 → 해당 보기의 최종 값'을 직접 확인한다. 문자열 5개가 서로 다르다는 검사만으로는 불충분하다. 설명이 그럴듯해도 최종 보기값을 만들지 못하면 'DISTRACTOR_PATH_INVALID', 번호 중복/누락이면 'DISTRACTOR_INDEX_COVERAGE_INVALID', 동치인 복수 정답은 'ANSWER_UNIQUENESS_INVALID'. 재현 불가인 선택지/오답 근거는 제작자가 다시 설계하고 정답에 맞춰 억지 설명을 만들지 않는다.
 - **③ 변경 후 evidence freshness HARD:** 발문·목표량·조건·보기·정답·해설·L3/L4/CrossConcept·난도·자산 중 하나라도 의미상 변경되면 그 UID의 **영향받는 증거를 먼저 STALE로 무효화**한다. 특히 기존 numericalSpotCheck·예상 정답/경계·오답 4개 경로·답 인덱스/분포·평가목표 판정·Meta 분류를 이전 artifact의 PASS인 것처럼 최종본에 남기지 않는다. 바뀐 문제와 무관한 계산은 이력으로 분리하거나 제거하고, 최종 학생 입력 기준으로 **변경 영향 범위만** 재계산·재확인한다. 수치 샘플링은 exact math나 교육성 PASS의 대체 증거가 아니다.
 - **④ 최종 후보와 ledger 결속:** 비프로덕션 qid별 ledger에는 UID마다 'finalCandidateSha(또는 정확한 최종 후보 snapshot 식별자) / reverseStemFinding / primaryL3Necessity / distractorIndexCoverage(4/4) / distractorReproduction(4/4 또는 OPEN) / evidenceFreshness / decision KEEP|REVISED|HOLD / before→after / affectedFields / changedLocusRecheck / remainingRisk'를 기록한다. KEEP에도 학생 발문·보기·실제 사고의 역독해 근거를 남긴다. REVISED는 최종본의 영향 검사 증거를 갱신하고 HOLD는 미해결 사유를 남긴다. 최종 후보가 바뀌었는데 이전 예상값·정답·오답 계산을 현재 증거로 재사용하는 것은 금지한다.
-- **⑤ 완료 조건의 범위:** 'SELF_RECHECK_COMPLETE'는 현재 저장된 최종 artifact의 UID 분모 전체에서 KEEP/REVISED/HOLD를 명시하고, **자체 통과로 선언하는 UID**의 학교식 발문·L3 필요성·오답경로 4/4·영향 증거 freshness를 실제 확인한 경우에만 기록한다. 일부 검사만 실행했으면 해당 축을 NOT_TESTED/HOLD로 기록하며 9개 자동 PASS를 강제하지 않는다. 제작자 자체검수는 별도 GPT 공개답 품질검수와 학생용 출시를 대체하지 않는다.
+- **⑤ 완료 조건의 범위:** 'SELF_RECHECK_COMPLETE'는 현재 저장된 최종 artifact의 UID 분모 전체에서 KEEP/REVISED/HOLD를 명시하고, **자체 통과로 선언하는 UID**의 학교식 발문·L3 필요성·오답경로 4/4·영향 증거 freshness를 실제 확인한 경우에만 기록한다. 일부 검사만 실행했으면 해당 축을 NOT_TESTED/HOLD로 기록하며 9개 자동 PASS를 강제하지 않는다. 제작자 자체검수만으로 자동 출시하지 않으며, 원장이 직접 검수·main 반영을 지시한 범위는 위 사용자 승인 경로가 우선한다.
 - **회귀 네거티브 fixture:** 팔마고 초기 q04 C2는 거리합에서 'min max(PA,PB)'로 평가 목표가 이동했고 C3는 자연스럽지 않은 'k+4t'를 물으면서 오답 근거가 실제 보기값과 맞지 않았다. 이후 수정본에서는 B2·C1의 오답 설명에 번호 중복·누락이 남았고, C2 발문/답이 변경된 뒤에도 이전 min-max 문제의 numericalSpotCheck가 남았다. **수정된 문제의 정답이 옳아도 종전 수치 증거는 현재 계산 PASS가 아니다.** 이미 완성된 다른 qid 전부를 재생성하지 말고 확인된 UID/증거만 표적 보정한다.
 - **허위완료 금지:** 'choices.length=5', 문자열 중복 0, 예상값과 수치 근접, 'solution.endsWith(정답)', 'studentSourceReverseRead=충분' 같은 요약을 모아 교육적 자가검수 완료로 선언하지 않는다. 실제 검사별 판정 범위를 한정한다. 별도 agent·독립풀이 전수 반복·신규 stage를 추가하는 규칙이 아니라 **CREATE 내 역발문 → 직접수정 → 변경증거 재확인의 최소 루프**다.
 
@@ -35,7 +42,7 @@
 - 검수는 **여러 qid/UID가 모이면 한 번에 GPT 공개답 검수**한다. 권장 리뷰 크기 **약 45문항(9개×5 source qid)**, 컨텍스트/난도/시각자료에 따라 27·36·45 등 적응형으로 조절한다. 45개는 필수 최소 수량·HOLD 조건이 아니고, 형님이 요청하면 현재 쌓인 후보로 즉시 검수한다. 서로 다른 source qid의 분모·UID를 한 리뷰 ledger로 집계하고 결함은 해당 UID만 핀포인트 수정한다.
 - 공개답 검수 기준은 **학교식 한국어 발문 → 답·상세 해설을 공개한 수학적 추적 검수 → 객관식 5지·L3/L4/CrossConcept·Meta**. 모든 UID에 blind-first·독립 재풀이 강제 금지, 의심 사례만 대체 계산·경계/반례 검산. 기존 학교 기출 R1/R2 freeze 의무는 영향 없다.
 - 누적 브랜치의 `WORKING_MANIFEST/HANDOFF`에는 시험지 source SHA, qid별 A1~C3 UID·설계/후보 경로, 생성/자가점검/검수/학생 공급 단계, **개별 commit SHA**, 다음 qid, 리뷰 대기 UID 분모를 유지한다. 새 GPT 대화는 동일 브랜치와 manifest에서 시작하며 끝난 qid를 반복 제작하지 않는다. 정확한 컨텍스트 사용률 50/80%를 볼 수 없으면 추정하지 않고 checkpoint로 인계한다.
-- GPT 검수 PASS UID는 별도 L4 승인 대기 없이 **동일 업무에서 Archive 2.0 Generated Consumer 등록·학생 조회/출제·main 운영병합**까지 마감한다. 신규 생성 후보 저장과 학생용 노출은 다른 상태이므로 실제 출시 전에는 PASS/MAIN_DONE이라 하지 않는다. Codex는 확정 변경의 Git 운영병합·remote readback만 담당한다.
+- GPT 검수 PASS 또는 `USER_DIRECTED_QUALITY_APPROVED` UID는 별도 L4 승인 대기 없이 **동일 업무에서 Archive 2.0 Generated Consumer 등록·학생 조회/출제·main 운영병합**까지 마감한다. 신규 생성 후보 저장과 학생용 노출은 다른 상태이므로 실제 출시 전에는 PASS/MAIN_DONE이라 하지 않는다. Codex는 확정 변경의 Git 운영병합·remote readback만 담당한다.
 - 2026-10-09의 `qid 하나 만든 직후 반드시 리뷰/출시 후 다음 qid`, `원본별 별도 작업 branch/PR`, `매 문항 마다 새 GPT 검수 창` 등 과거 문구와 충돌하면 **이 CURRENT가 우선**한다. 기존 q1/q2/q3 각각의 임시 PR은 새 통합 브랜치가 정확하게 readback 된 뒤 종료하고 추적 링크만 보존한다.
 
 
@@ -57,7 +64,7 @@
 - **3 역설계 및 Stem Realizer:** 목표 수학 객체·유일 답·경계/퇴화·계산 부담을 먼저 만들고 좋은 계수/좌표/정수조건을 역산한다. 그 결과를 **실제 한국 학교 기출에 어울리는 자연스럽고 짧은 한국어 발문**으로 전환한다. 억지 조건·이질량 합산·불필요한 학생 캐릭터·수식 과밀·부자연스러운 질문을 없앤다. 발문은 내부 풀이 또는 답을 누설하지 않는다.
 - **4 역발문 점검 + 독립풀이:** 학생에게 보이는 최종 발문·5지·조건표·필수 그림만으로 질문 대상·조건·실제 풀이 경로를 **다시 복원**한다(Reverse Stem Check). 먼저 학생 입력만 보고 답과 보기별 참/거짓을 동결한 뒤 생성자 답과 대조한다. 원래 Blueprint가 발문에서 실현되지 않았으면 설계부터 다시 고친다. 적용되는 family만 정확 임계값/바로 양측·정의역·퇴화 사례 확인. **같은 제작 GPT의 나중 자체검수는 별도 창의 독립 GPT 리뷰를 대체하지 않는다.**
 - **5 오개념 보기 + 공급:** 객관식 오답 4개는 각기 다른 실제 오류 경로를 가진다. **원본 qid의 9문항 단위 정답 위치는 ①~⑤가 각각 1~2개**, 예시 분포 2/2/2/2/1이 되게 자연스러운 보기 순서만 재배열한다. 정답값·발문 수학을 위치 맞추려고 조작 금지. 객관식이 9개 미만이면 그 수에 맞춰 가능한 한 분산하고 잠긴 보기 순서는 유지한다. 난도 인지부담(새 개념/전환/판단·분기)과 계산량은 별도로 기록한다.
-- **검수 2층:** 제작 중 자체 계산·수식·보기·학생 발문 셀프체크 → 신규 대화/독립 GPT의 최종 학생 입력 first-blind freeze 독립검수 1회. 성공 UID는 즉시 Archive 2.0 Generated Consumer/index/main 출고; 승인 대기 L4로 막지 않는다. 불합격 UID만 수정하고 그 문항만 영향 재검한다.
+- **검수 경로:** 원장 직접 검수·main 반영 지시 범위는 별도 GPT 독립 인증 없이 사용자 품질 승인을 적용한다. 그 외의 신규 미승인 초안만 제작자 셀프체크 뒤 기존 별도 GPT 검수 경로를 따른다. 성공 UID는 즉시 Archive 2.0 Generated Consumer/index/main 출고; 승인 대기 L4로 막지 않는다. 불합격 UID만 수정하고 그 문항만 영향 재검한다.
 - **근거:** Notion `GPT 유사·변형 문항 생성 5단계 — 불변량·Blueprint·조건 역산·독립검증 v1` (2026-10-09 Gemini/Claude 보강), `원과 직선 L3 — 사고 경험 커버리지 맵 v0.1`, Git `ALIVE_META_BLUEPRINT_MASS_EXPANSION_UPGRADE_PLAN_v0.1.md`의 Mathematical Spec→Stem Realizer→Reverse Stem Check. 이 문서에 적은 내용은 실행 계약이며 범용 엔진 기능이 이미 자동구현됐다는 주장이 아니다.
 
 ## CURRENT USER AUTHORITY — L3 고정·L4 확장·발문 우선·1회 검수 후 즉시 공급 (2026-10-09)
@@ -80,11 +87,11 @@
 - **2순위는 수학·교육과정·선지**: 학생용 최종 입력에서 독립 풀이를 동결한 뒤 답·다섯 보기의 유일성·경계·개념 적합성을 검수한다. 오류가 있으면 새 설계부터 수정한다.
 - **3순위는 상세 한국어 해설**: 앞의 정확한 발문과 풀이 구조를 간명하게 설명한다. 설명 문장이 길다는 이유만으로 고품질이라고 평가하지 않는다.
 
-### 4. GPT 최초 독립검수 PASS → Archive 2.0 즉시 공급
-- GPT가 **최종 학생 발문·보기·필수 자산을 기준으로 한 번 독립검수**를 완료하고 PASS한 UID는 별도 L4 승인·중복 승격 회의·보류 승인 없이 **같은 업무에서 Generated JS + metadata + Consumer shard/index 등록 → Git main 운영병합 → 학생 검색·선택·출제 가능**까지 마감한다.
+### 4. GPT 검수 PASS 또는 원장 직접 품질 승인 → Archive 2.0 즉시 공급
+- GPT 검수 PASS 또는 원장 지시에 따른 `USER_DIRECTED_QUALITY_APPROVED` UID는 별도 L4 승인·중복 승격 회의·보류 승인 없이 **같은 업무에서 Generated JS + metadata + Consumer shard/index 등록 → Git main 운영병합 → 학생 검색·선택·출제 가능**까지 마감한다.
 - 최소 기술 검증은 UID 중복 0, 정답/보기 정합, 실제 asset 존재, 표준 대/중단원 표시·기본 스키마, Generated Consumer 조회/readback, 변경 경로 최소 Chrome smoke다. **기술 검증은 또 다른 품질 승인 절차가 아니다.** 오류가 있으면 해당 장애를 직접 수리하여 완료한다.
 - 문제를 학생에게 공급한 후 제기된 오류 신고나 원장 지시에 따라 **해당 UID만 즉시 검색·출제 비활성화**하고 이력을 보존한다. 이를 위한 `enabled / complaintStatus / ownerDecision`와 복구·교체 경로를 설계한다. 교사 판단 전이라도 명백한 수학 오류가 확인되면 잘못된 정답의 출제는 중단한다.
-- 9개 제작 의무와 9개 자동 PASS는 다르다. **독립검수에 통과한 모든 문항을 즉시 공급**하며 한 슬롯의 품질 실패나 출시 기술 실패를 이유로 무관한 다른 PASS 슬롯을 집단 보류하지 않는다. Archive 1 원본 및 기존 수학 시험지 인덱스는 변경하지 않는다.
+- 9개 제작 의무와 9개 자동 PASS는 다르다. **독립검수 PASS 또는 원장 직접 승인 문항을 즉시 공급**하며 한 슬롯의 품질 실패나 출시 기술 실패를 이유로 무관한 다른 PASS 슬롯을 집단 보류하지 않는다. Archive 1 원본 및 기존 수학 시험지 인덱스는 변경하지 않는다.
 
 ---
 
@@ -95,7 +102,7 @@
 2. A1~A3 반복 숙달(기본·수치·조건), B1~B3 사고 확장(판단 추가·역산·표현 전환), C1~C3 실전 평가(종합·변별·고난도)을 각각 목표로 설계한다. **아홉 칸을 전부 채우는 제작 시도를 의무화**한다. A 숫자변형은 의도적으로 허용하되 새 Blueprint라고 하지 않는다.
 3. 슬롯마다 학생 발문, 5지 또는 원본 형식에 맞는 정식 답형, 정답, 한국어 상세 해설, 실제 오답 이유, 레벨/1~5 bucket, RPM 경로, 원본 UID/수식·에셋 요구를 명시한다. C3 최고난도 등급도 실제 풀이 기준으로 검수하여 조정한다. 서로 다른 9개 L4를 억지로 만들지 않는다.
 4. 9개를 물리 draft로 만들되 어느 하나가 과도하게 억지스럽거나 수학이 틀리면 `QID_INCOMPLETE`로 반환한다. **9 PASS 강제 불가**. 다음 qid에 자동 이동하지 않고 해당 원본의 나머지 슬롯부터 이어서 완성한다.
-5. 별도 GPT 독립 REVIEW: 먼저 학생용 문장/보기/그림만 읽어 9개 개별 계산·답 동결 → 저장된 답·해설과 대조 → 발문 의미·교육적 품질·Meta·필수 에셋 점검. CREATE의 자체 확인은 독립 승인 아님.
+5. 품질 승인: 원장 직접 검수·main 반영 지시 범위는 `USER_DIRECTED_QUALITY_APPROVED`로 승인 종료하고 별도 GPT 독립 인증을 요구하지 않는다. 그 외 미승인 신규 초안에 대해서만 현행 GPT 리뷰 경로를 적용한다.
 6. GPT가 확정한 승인분만 학생 Consumer source에 등록하고 실렌더·DB 인덱스·학생 조회·remote SHA gate를 완료한다. Codex는 지정 파일에 대한 Git main 운영병합·readback만 담당한다. 이전 main 후보에 있던 기존 UID와의 중복/유사도는 별도로 판단한다.
 
 ## 세션·정본·인계

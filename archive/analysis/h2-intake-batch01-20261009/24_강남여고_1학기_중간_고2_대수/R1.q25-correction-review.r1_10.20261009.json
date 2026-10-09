@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_CORRECTION_REVIEW_V1",
+  "stage": "R1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "reviewerId": "r1_10",
+  "qid": 25,
+  "changedField": "solution",
+  "priorOrderFailurePath": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.solution-preflight-order-failure.r1_10.20261009.json",
+  "coverageFailurePath": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.golden-preflight-coverage-failure.r1_10.20261009.json",
+  "freshGoldenPreflightPath": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.golden-preflight.r1_10.20261009.rev2.json",
+  "postfreezeDisclosurePath": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.postfreeze-disclosure.q25.r1_10.20261009.rev2.json",
+  "failedCheckAttemptPaths": [
+    "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.q25-correction-review-attempt1-failure.r1_10.20261009.json",
+    "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.q25-correction-review-attempt2-failure.r1_10.20261009.json"
+  ],
+  "status": "PASS",
+  "scope": "q25-only correction review after fresh validator-complete Golden/Negative preflight",
+  "check": "Fieldwise exact student-body parity, paired math delimiters, escaped alpha and grouped log arguments, and frozen answer versus stored answer.",
+  "methodResult": "{\"qid\":25,\"studentParity\":\"EXACT_BY_FIELD\",\"frozenIndependentAnswer\":\"2\",\"storedAnswer\":\"2\",\"mathDelimiters\":\"PAIRED\",\"alphaAndLogTokens\":\"CORRECT\",\"solutionSha256\":\"b6af54871a2557e1c8f52116dd3c35302c5ffe80544484213fa0649a4703fd55\",\"sourceRawSha256\":\"2d290d07208d6b80a4503e1a83caae071b0e055f18e75b361756a2161831a871\"}",
+  "sourceRawSha256": "2d290d07208d6b80a4503e1a83caae071b0e055f18e75b361756a2161831a871",
+  "studentBundleSha256": "64ceaa4da7ad14b6b8602fc6bab6bc2a8dc961201905ee17569c15bd3d663eb1"
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_GOLDEN_PREFLIGHT_COVERAGE_FAILURE_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "24_강남여고_1학기_중간_고2_대수",
+  "reviewerId": "r1_10",
+  "status": "FAILED_ATTEMPT_PRESERVED",
+  "cause": "The initial actual sample pass read one qid per fixed Golden bank. After inspecting current archive-stage-validator-artifact-v2.mjs, validateGoldenProvenance was found to require at least two actual qid items per each selected bank.",
+  "priorPreflight": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.golden-preflight.r1_10.20261009.json",
+  "priorPreflightSha256": "54e84676c5f8885c899f5fe0e09a9a8006dc29bcb8ee1f08ae5ebe24c1915b05",
+  "sequenceImpact": "q25 solution repair occurred after the partial actual sample read and before validator-complete sample coverage was known; retain that repair attempt and complete fresh sample preflight, then perform q25-only correction review. No other solution edits.",
+  "sourceBeforeRepairSha256": "a0f58a6705144669b779e29deb21baa610b8bfe01866649430c995ab677ed664",
+  "sourcePartialRepairSha256": "19c9f89f8dc5e56bd0158d5d135025abd8f870cdb540e9c65d3c82054303a527",
+  "sourceCurrentAfterRepairSha256": "2d290d07208d6b80a4503e1a83caae071b0e055f18e75b361756a2161831a871",
+  "recovery": "Complete all fixed-set qid sample coverage and actual visual sample evidence, preserve the failure record, then review only q25 correction after the fresh preflight."
+}

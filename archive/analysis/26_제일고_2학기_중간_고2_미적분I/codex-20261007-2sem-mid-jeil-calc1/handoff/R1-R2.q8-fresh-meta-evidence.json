@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "JS_ARCHIVE_Q8_FRESH_META_EVIDENCE_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "26_제일고_2학기_중간_고2_미적분I",
+  "qid": 8,
+  "artifactRawSha256": "5024ab6365b997669b47edfa0985900d8adfef50db7523ef9f6924787585198c",
+  "artifactSha": "04bc995405be6c58a2336dd0ba49d2efd87c32de",
+  "studentBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_제일고_2학기_중간_고2_미적분I\\codex-20261007-2sem-mid-jeil-calc1\\handoff\\R1-R2.student-only-q8-fresh.json",
+  "studentBundleSha256": "e81888dc8d0331c248d74b13e4a02b9dbdf0578ac99752f961463681ed795b1a",
+  "sourceTruth": {
+    "printedEquation": "sqrt(5x)-x^2+5=0",
+    "sourceScanPath": "C:\\Users\\USER\\Downloads\\2학기중간_2026\\제일고 미적분1\\S28BW-826100719360_0002.jpg",
+    "sourceScanSha256": "25c03555d7c84e399a6401e84d9da63866f0b3e6f6d61638ed19e1b60cfa54de",
+    "sourceCropPath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_제일고_2학기_중간_고2_미적분I\\codex-20261007-2sem-mid-jeil-calc1\\q8-source-crop.jpg",
+    "sourceCropSha256": "0c37bda08878d3791d372e54f7d046e76f2d7b0271e05bf6e393db5e69dc1910",
+    "sourceRepairType": "DETERMINISTIC_RADICAL_SCOPE_CORRECTION",
+    "handwritingIgnored": true,
+    "requiredImage": null
+  },
+  "currentPass": {
+    "primaryMethod": "연속함수의 끝점 값의 부호 변화에 사잇값 정리를 적용한다.",
+    "decisiveStep": "f(x)=sqrt(5x)-x^2+5 is continuous on [2,3]; f(2)=sqrt(10)+1>0 and f(3)=sqrt(15)-4<0, hence a zero lies in (2,3).",
+    "answer": "③",
+    "answerUniqueness": "The supplied source states exactly one real root; independently confirmed by no roots on [0,sqrt(5)] and strict increase of x^2-5-sqrt(5x) for x>=sqrt(5)."
+  },
+  "taxonomy": {
+    "standardCourse": "미적분I",
+    "standardUnitKey": "H22-M1-02",
+    "standardUnit": "함수의 연속",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-M1-02",
+    "subUnit": "함수의 연속",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule",
+    "rpmPrimary": {
+      "midUnit": "함수의 연속",
+      "l3": "연속함수의 성질",
+      "l4": "사잇값 정리",
+      "mappingStatus": "DIRECT_BINDING_GAP"
+    },
+    "problemTypeKey": {
+      "key": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "label": "사잇값 정리의 활용",
+      "status": "ACTIVE"
+    },
+    "templateKey": {
+      "key": "TPL_IVT_VALUE_EXISTENCE_INTERVAL",
+      "label": "사잇값 정리로 특정 값·실근의 존재 확인",
+      "parentProblemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "status": "ACTIVE"
+    },
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "projectionStatus": "PROJECTION_BINDING_PENDING",
+    "projectionReason": "Current H22-M1-02 RPM crosswalk entry identifies the IVT semantic row with DIRECT_BINDING_GAP; retain the unique ACTIVE PT/template semantic keys without synthesizing a curriculum binding."
+  },
+  "difficulty": {
+    "level": "중",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "reason": "The decisive task is one standard IVT sign-change application after evaluating two endpoints; it is a low-step but concept-dependent item, with the 2/3 boundary noted for independent R1 adjudication."
+  },
+  "nonTargetInvariant": {
+    "baselineCount": 21,
+    "baselineEvidencePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_제일고_2학기_중간_고2_미적분I\\codex-20261007-2sem-mid-jeil-calc1\\item-recovery-q8-source-adjudication.json",
+    "status": "PENDING_FINAL_BYTE_COMPARE"
+  },
+  "taxonomyAuthorityRefs": [
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md",
+      "label": "JS rulebook",
+      "sha256": "670645d73151fa69debc43b4bb1c6f6d0d84f58047c07f340f4cff1ec2a88833",
+      "gitBlobSha": "ae6ec9ddbf93a2c73a9b13bdbdf73584249afb46"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md",
+      "label": "question layout",
+      "sha256": "b592921444db8bfeb32d19e0a3554f4ca1718b738eb8a8aa0dd14c30ecd61fe9",
+      "gitBlobSha": "964a21b1ad3a3178401a7046453a1630a7f9d3af"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+      "label": "Meta Foundation",
+      "sha256": "f24566984b8d7bc9fdeb43f36cddc8d643ed4b36e3c85dd595e81b5e6ee79ac9",
+      "gitBlobSha": "8cd98707cb79cabdbb145b60d8d989b1f8cb0046"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+      "label": "subunit",
+      "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55",
+      "gitBlobSha": "00f20ef25f0ad26a0b004794a4b7f6929d6cbc5e"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+      "label": "difficulty",
+      "sha256": "3afb7c110d922847a058a550117b4abd6035b26683771ece21ebcd2f3985f638",
+      "gitBlobSha": "51a6b4ae3164be845ba9d90fd49d88378fc32fbe"
+    },
+    {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+      "label": "H2 RPM crosswalk",
+      "sha256": "491f2b503d8405c5d0e42d79ea772237a83a44aac9873822adf644eaa4cec9e0",
+      "gitBlobSha": "a1dfb305834bc21a044e0ae8fcf8708a0496b3bf"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+      "label": "ACTIVE taxonomy",
+      "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f",
+      "gitBlobSha": "a103610df452c6158936251920f05bb73559395b"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/bindings.json",
+      "label": "curriculum bindings",
+      "sha256": "4d8d6b417d1809e420c5770e2bb5d89b832bd0da1a992bc5302482845777907a",
+      "gitBlobSha": "cd587b45c07042aa6896c7f7762a079f2768e60f"
+    }
+  ],
+  "calibrationPreflightRef": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_제일고_2학기_중간_고2_미적분I\\codex-20261007-2sem-mid-jeil-calc1\\item-recovery-q8-calibration-preflight.json",
+    "stage": "ITEM_RECOVERY",
+    "status": "PASS"
+  }
+}
