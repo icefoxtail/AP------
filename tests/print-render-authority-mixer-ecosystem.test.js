@@ -32,6 +32,7 @@ test('unit-past producer writes the real mixed storage contract with canonical p
     String, Number, Date, JSON, Map, Set, localStorage,
     getProfile: () => ({ grade: 'M3', gradeLabel: '중3' }),
     getQpp: () => 4,
+    readyShelf: () => false,
     getPaperSources: () => [{ label: '2026 · Fixture School · 1학기 중간' }],
     core: {
       getSubUnitLabel: record => record.subUnitLabel || '다항식',
