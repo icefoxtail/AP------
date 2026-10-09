@@ -131,7 +131,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "① $6a^6\\div2a^2=3a^4$로 옳다.\n② $15a^3b^2\\div3ab^3=5a^2b^{-1}=\\dfrac{5a^2}{b}$이므로 $5a^2b$는 잘못이다.\n③ $7x^4y^2\\times(-3xy^3)^2=7x^4y^2\\times9x^2y^6=63x^6y^8$로 옳다.\n④ $12a^4b^3\\times\\dfrac16a^2b^3=2a^6b^6$이므로 $2a^4$는 잘못이다.\n⑤ $\\left(\\dfrac{x^3}{y^4}\\right)^5=\\dfrac{x^{15}}{y^{20}}$으로 옳다.\n\n따라서 정답은 ②, ④이다.",
+    "solution": "① $6a^6\\div2a^2=3a^4$로 옳다.\n② $15a^3b^2\\div3ab^3=\\dfrac{5a^2}{b}$이므로 $5a^2b$는 잘못이다.\n③ $7x^4y^2\\times(-3xy^3)^2=7x^4y^2\\times9x^2y^6=63x^6y^8$로 옳다.\n④ $12a^4b^3\\times\\dfrac16a^2b^3=2a^6b^6$이므로 $2a^4$는 잘못이다.\n⑤ $\\left(\\dfrac{x^3}{y^4}\\right)^5=\\dfrac{x^{15}}{y^{20}}$으로 옳다.\n\n따라서 정답은 ②, ④이다.",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
@@ -586,7 +586,7 @@ window.questionBank = [
       "기출"
     ],
     "wide": false,
-    "solution": "$6a^3\\div(A\\div4a)=-12a^2$에서\n$A\\div4a=\\dfrac{A}{4a}$이므로\n$6a^3\\times\\dfrac{4a}{A}=-12a^2$이다.\n따라서\n$\\dfrac{24a^4}{A}=-12a^2$이고,\n$24a^4=-12a^2A$이므로\n$A=-2a^2$이다.\n\n따라서 정답은 ②이다.",
+    "solution": "구하는 식을 $A$라 두면\n$6a^3\\div(A\\div4a)=-12a^2$이다.\n$A\\div4a=\\dfrac{A}{4a}$이므로\n$6a^3\\times\\dfrac{4a}{A}=-12a^2$이다.\n따라서\n$\\dfrac{24a^4}{A}=-12a^2$이고,\n$24a^4=-12a^2A$이므로\n$A=-2a^2$이다.\n\n따라서 정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
@@ -832,7 +832,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "모두 900상자 이상을 실어야 하므로\n$150x+60(8-x)\\ge900$이다.\n정리하면\n$150x+480-60x\\ge900$\n$90x\\ge420$\n$x\\ge\\dfrac{14}{3}=4.66\\cdots$이다.\n트럭의 수는 자연수이므로 가능한 가장 작은 값은 $5$이다.\n\n따라서 정답은 ⑤이다.",
+    "solution": "150상자를 싣는 트럭의 수를 $x$대라 하면, 모두 900상자 이상을 실어야 하므로\n$150x+60(8-x)\\ge900$이다.\n정리하면\n$150x+480-60x\\ge900$\n$90x\\ge420$\n$x\\ge\\dfrac{14}{3}=4.66\\cdots$이다.\n트럭의 수는 자연수이므로 가능한 가장 작은 값은 $5$이다.\n\n따라서 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",

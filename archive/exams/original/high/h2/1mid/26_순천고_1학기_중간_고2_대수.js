@@ -212,7 +212,7 @@ window.questionBank = [
   },
   {
     "id": 6,
-    "content": "다음 &lt;보기&gt; 중 옳은 것만을 있는 대로 고른 것은? [3.5점]<br><div class=\"box\"><b>&lt;보기&gt;</b><br>ㄱ. $45^\\circ=\\frac\\pi8$(라디안)<br>ㄴ. $300^\\circ$을 나타내는 동경은 $\\frac\\pi3$을 나타내는 동경과 $x$축 대칭이다.<br>ㄷ. $-\\frac56\\pi$는 제3사분면의 각이다.</div>",
+    "content": "다음 보기 중 옳은 것만을 있는 대로 고른 것은? [3.5점]<br><div class=\"box\"><b>&lt;보기&gt;</b><br>ㄱ. $45^\\circ=\\frac\\pi8$(라디안)<br>ㄴ. $300^\\circ$을 나타내는 동경은 $\\frac\\pi3$을 나타내는 동경과 $x$축 대칭이다.<br>ㄷ. $-\\frac56\\pi$는 제3사분면의 각이다.</div>",
     "choices": [
       "ㄱ",
       "ㄴ",

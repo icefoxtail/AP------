@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_VISUAL_AXIS_CLARIFICATION_V1",
+  "artifactBinding": {
+    "path": "archive/exams/original/middle/m2/1final/24_금당중_1학기_기말_중2_기출.js",
+    "currentRawSha256": "53a9333ebf9caab43f4accb346fa5fdedcb67c091e7f5ae205ad24c807814a56",
+    "currentRawBufferBlobSha1": "8adf111c4e5ebc57a61c7f4ff3cd1e2b6e38f1a6"
+  },
+  "originalScopedReceipt": {
+    "path": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+    "sha256": "61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+    "scopeOnly": true,
+    "fullExamR1Pass": false
+  },
+  "clarifiedQids": [
+    {
+      "qid": 16,
+      "currentVisualFields": {
+        "image": "assets/images/24_금당중_1학기_기말_중2_기출/q16.png",
+        "solutionImage": null,
+        "visualAsset": null
+      },
+      "currentStudentAssetRefs": [
+        {
+          "ref": "assets/images/24_금당중_1학기_기말_중2_기출/q16.png",
+          "sha256": "8e30bfb08bd1c2b23aa07561fe829e00775095cbed6b364bd5afe4aa0f080ea2"
+        }
+      ],
+      "studentPayloadSha256": "089bd0e8ec97958ed134db04199d55e78b202cb9c2ffe8f67bcf401302011803",
+      "assetOpenEvidence": "q16.png was opened in the scoped review; SHA is in actual-opened-assets.json.",
+      "solutionChangedLocus": true,
+      "visualAxisDisposition": "UNREVIEWED_IN_THIS_SCOPED_RECEIPT"
+    },
+    {
+      "qid": 20,
+      "currentVisualFields": {
+        "image": null,
+        "solutionImage": null,
+        "visualAsset": null
+      },
+      "currentStudentAssetRefs": [],
+      "studentPayloadSha256": "cdad9b9e68c5f301ffdfbc57869d30cc5a92dc057749d61cae6c1d9b413d47f4",
+      "assetOpenEvidence": "No q20 student asset is referenced; no q20 image exists in the current bundle.",
+      "solutionChangedLocus": true,
+      "visualAxisDisposition": "UNREVIEWED_IN_THIS_SCOPED_RECEIPT"
+    }
+  ],
+  "clarification": {
+    "priorReceiptNote": "BENEFICIAL_SOLUTION_SVG_MISSING for q16/q20 was an unsubstantiated preliminary judgment.",
+    "actualKnownVisualDefect": false,
+    "requiredDirectDependencyForPhysicalEvidenceRebind": false,
+    "reason": "Current q16/q20 problem/solution visual fields and student asset parity were inspected only. No visual field or asset changed. The earlier note does not establish that an SVG is required or that an asset defect exists. q16 and q20 remain unreviewed on independent solution-visual necessity, outside this scoped receipt.",
+    "doesNotInspectAnswersOrSolutions": true
+  },
+  "nextAction": "If full-exam R1 later requires all four axes, perform an independent solution-visual necessity review for q16 and q20 before closure; do not treat this clarification as PASS."
+}
