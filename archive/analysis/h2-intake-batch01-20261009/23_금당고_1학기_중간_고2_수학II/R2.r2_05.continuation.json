@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_DURABLE_CONTINUATION_V1",
+  "status": "WAITING_FOR_SCOPED_QID11_SOURCE_FACT",
+  "examUid": "23_금당고_1학기_중간_고2_수학II",
+  "stage": "R2",
+  "reviewerId": "/root/r2_05",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "sourceRawSha256": "cec218a0e7561e30f3fb786e070fd0c360e2326de1483394b826955e467a96a1",
+  "originalFreeze": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/R2.r2_05.original-freeze.json",
+    "sha256": "cc51d47318c31c6043f9f06e536d1356c0c4d744c1f0a8b03c0514f5ce430ee8",
+    "qidCoverage": "1-20",
+    "assetReads": 4
+  },
+  "postfreezeDisclosure": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/R2.r2_05.postfreeze-disclosure.json",
+    "sha256": "399a8cd1f105c970bed20cc7f58d54bd07595ea618554a7f3c3302acf6870ce8",
+    "studentParity": "EXACT"
+  },
+  "preservedInitialQid11Adjudication": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/R2.r2_05.adjudication.json",
+    "sha256": "57e2a2815e1eead781c4adf5da241b82c33ba51b31ff5573d13ea0b79a96fa47",
+    "status": "PRESERVED_PRELIMINARY_DO_NOT_TREAT_AS_FINAL"
+  },
+  "openLocus": {
+    "qid": 11,
+    "question": "Does the graph include a two-sided neighborhood at x=-3, or is x=-3 its actual left endpoint?",
+    "currentStoredAnswer": "① (numeric 3 by first listed choice)",
+    "currentStoredSolutionAndChoiceIdentity": "Internally identify three values; R1 artifact records a conflicting four-value rationale and post-adjudicated value 3.",
+    "pdfReviewMode": "DEFECT_ONLY",
+    "authorizedScope": "ROOT-authorized qid-11 prompt/complete graph only to establish left boundary/domain/continuation; no answer-key lookup.",
+    "sourceFactOwner": "/root/r1_05",
+    "sourceRemainsReadOnly": true
+  },
+  "nextRequiredAction": "Await R1 same-session scoped source-fact witness. R2 reviewer then independently re-evaluates qid 11 from frozen complete student input, records any correction as a new adjudication preserving original freeze and preliminary adjudication, rechecks current student/asset parity, completes remaining R2 evidence, and runs normal V2 CODEX validator once. Do not seal PASS while qid 11 remains unresolved.",
+  "validator": "NOT_RUN_PENDING_QID11_RESOLUTION",
+  "completionEvent": "NOT_SEALED"
+}

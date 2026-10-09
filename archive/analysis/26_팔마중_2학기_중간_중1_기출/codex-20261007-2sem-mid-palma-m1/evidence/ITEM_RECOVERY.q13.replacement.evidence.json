@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_QID_EVIDENCE_V1",
+  "examUid": "26_팔마중_2학기_중간_중1_기출",
+  "qid": 13,
+  "stage": "ITEM_RECOVERY",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "recoveryType": "QUESTION_REPLACEMENT",
+  "method": "CODEX_DIRECT_AUTHORING",
+  "replacementScope": "QUESTION_ONLY",
+  "reason": "ORIGINAL_ITEM_UNRECOVERABLE_AFTER_REVIEW2",
+  "sourceMode": "QUESTION_REPLACEMENT",
+  "decisionAuthority": "ROOT_DELEGATED",
+  "rootDecision": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_팔마중_2학기_중간_중1_기출\\codex-20261007-2sem-mid-palma-m1\\ITEM_RECOVERY.root-decision.q13.json",
+    "sha256": "74fb4d3d3fc48509e9e911b2b0d6cefbf0b2180bb98d180eeb3ace2d775c2fd8"
+  },
+  "originalSourceRef": {
+    "path": "C:\\Users\\USER\\Downloads\\2학기중간_2026\\팔마중2\\S28BW-826100719540_0003.jpg",
+    "page": 3,
+    "sha256": "803f841a3bc66fc40f45c7c17060599c8620e39c3d0fa800516da2a941d61b10",
+    "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+    "handwritingTreatment": "ignored as non-source"
+  },
+  "sourceDecisionSnapshot": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_팔마중_2학기_중간_중1_기출\\codex-20261007-2sem-mid-palma-m1\\evidence\\ITEM_RECOVERY.q13.source-decision-snapshot.json",
+    "sha256": "295b0879b81f1593e9d066e02fea8ed1bf0b446b5f63b04409ed60ff3b7240cd"
+  },
+  "latestByteRevalidation": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_팔마중_2학기_중간_중1_기출\\codex-20261007-2sem-mid-palma-m1\\evidence\\ITEM_RECOVERY.q13.student-only-latest-byte.json",
+    "sha256": "cb280291fddcb0d0ea72db1a17eba17e1fce9b0753ad76126888191a19fbc3de"
+  },
+  "priorReports": {
+    "R1": {
+      "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_팔마중_2학기_중간_중1_기출\\codex-20261007-2sem-mid-palma-m1\\evidence\\R1.evidence.json",
+      "sha256": "64dde1f4a592468b6366bbfb2cc4e733a46fc5196f71fc8881cd655b161bf20e",
+      "q13Disposition": "ITEM_HOLD_CONTRADICTORY_SIDE_AND_ANGLE_DATA"
+    },
+    "R2": {
+      "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_팔마중_2학기_중간_중1_기출\\codex-20261007-2sem-mid-palma-m1\\evidence\\R2.clean.evidence.json",
+      "sha256": "294b451aac097a8a8ef9b8e54359e4c629fe633839ce182d43adfb18db26c121",
+      "q13Disposition": "MATCH_CONFIRMED"
+    }
+  },
+  "holdReassessment": {
+    "status": "TRUE_HOLD_SOURCE_TRUTH_BLOCKED",
+    "decisiveConflict": "AB=5, BC=4, ∠B=60° imply ∠C≈70.8934°, while ordered congruence and printed ∠F=70° require ∠C=70°.",
+    "whyNoMinimalRepair": "The scan is legible and offers no source-grounded correction. A single-value change would invent a correction; editing only the solution cannot make all printed facts consistent."
+  },
+  "replacement": {
+    "content": "다음 그림에서 △ABC≡△DEF이고 $\\overline{BC}=4$ cm, ∠B=60°, ∠F=70°일 때, $\\overline{EF}$의 길이와 ∠D의 크기로 옳은 것은? (4점)",
+    "choices": [
+      "4cm, 40°",
+      "4cm, 50°",
+      "4cm, 60°",
+      "4cm, 70°",
+      "4cm, 110°"
+    ],
+    "answer": "②",
+    "solution": "△ABC≡△DEF이므로 대응하는 각은 같아 ∠C=∠F=70°이다.\n\n△ABC의 내각의 합은 180°이므로\n∠A=180°−∠B−∠C=180°−60°−70°=50°이다.\n\n합동의 순서에서 A↔D이므로 ∠D=∠A=50°이다.\n또한 B↔E, C↔F이므로 선분 BC와 EF가 대응한다.\nEF=BC=4cm.\n\n따라서 옳은 것은 4cm, 50°인 ②이다.",
+    "image": "assets/images/26_팔마중_2학기_중간_중1_기출/q13.png",
+    "assetSha256": "8a20320138e0e70a1fc9f4f3c73a4551bc93838ea6b41d0f71090110a4f3defe",
+    "assetBytes": 9748
+  },
+  "answerAndChoiceAudit": {
+    "independentAnswer": "②",
+    "choiceTruths": [
+      "FALSE",
+      "TRUE",
+      "FALSE",
+      "FALSE",
+      "FALSE"
+    ],
+    "correctChoiceCount": 1,
+    "distractorReasons": [
+      "uses 40° by subtracting 70° twice",
+      "correct: EF=BC=4cm and A=50°",
+      "copies B angle instead of D=A",
+      "copies F angle instead of D=A",
+      "uses supplement of 70° instead of correspondence/angle-sum result"
+    ]
+  },
+  "freshStudentBundle": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_팔마중_2학기_중간_중1_기출\\codex-20261007-2sem-mid-palma-m1\\handoff\\ITEM_RECOVERY.q13.student-only-bundle.after-question-replacement.json",
+    "sha256": "27b22dc7588827f7ed65ba4e41e8fea7d690b68640ade626514b85c6d5d6aaa5",
+    "payloadSha256": "e0c9b1342d047df49e175baddfa3b47ac6312814eb57c4e6521d8afd65ca43f4",
+    "sourceRawSha256": "7b2de0fa3ea0847a15e91bdf8bd1e5d45fe5387c6e92fc6b97189d4a90945d1f",
+    "sourceArtifactSha": "273c60db7a3844684728577349f952ed4995f5f4",
+    "answerSolutionFields": "ABSENT"
+  },
+  "freshMetaEvidence": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_팔마중_2학기_중간_중1_기출\\codex-20261007-2sem-mid-palma-m1\\evidence\\ITEM_RECOVERY.q13.fresh-meta.evidence.json",
+    "sha256": "76bd731ff86cbbff1eabbb41c4a5d21262d1b26f96b900c326c78e8dea3334d9",
+    "status": "FRESH_META_PASS_PENDING_Q13_R1"
+  },
+  "replacementDiagram": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_팔마중_2학기_중간_중1_기출\\codex-20261007-2sem-mid-palma-m1\\evidence\\ITEM_RECOVERY.q13.replacement-diagram.geometry.json",
+    "sha256": "1e3ad979ab1b2b4641e3795698c26b91bb9f19a8e7fb9ce190e21524ec4eb24f",
+    "finalAssetSha256": "8a20320138e0e70a1fc9f4f3c73a4551bc93838ea6b41d0f71090110a4f3defe"
+  },
+  "calibrationPreflights": [
+    {
+      "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_팔마중_2학기_중간_중1_기출\\codex-20261007-2sem-mid-palma-m1\\evidence\\ITEM_RECOVERY.q13.calibration.preflight.json",
+      "sha256": "06a3b2ee752924a5477adf9a60f3f56024b9bffe057411d28c57b40619d3db28",
+      "stage": "ITEM_RECOVERY",
+      "status": "PASS"
+    },
+    {
+      "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_팔마중_2학기_중간_중1_기출\\codex-20261007-2sem-mid-palma-m1\\evidence\\ITEM_RECOVERY.q13.visual-calibration.preflight.json",
+      "sha256": "7c7fd23c4b5fe008248086a54546c64403bf92cf160c45e11296e6a270f4aa8d",
+      "stage": "VISUAL_REPAIR",
+      "status": "PASS"
+    }
+  ],
+  "changeLocus": {
+    "qid": 13,
+    "changedQuestionObjects": [
+      13
+    ],
+    "nonTargetQuestionObjectsChanged": 0,
+    "nonTargetAssetBytesChanged": 0,
+    "unchangedAssetCount": 16,
+    "q2AssetSha256": "6a3564267be3b394210c0e63c8b4798dc27bd572ff8f68b71753ddd33ac341a1",
+    "q10AssetSha256": "21cd346bfa799230787c82e2cecf9e396d8f76eab80d56e48bfa964b6131547d",
+    "q2AndQ10WorkPreserved": true
+  },
+  "candidateBefore": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_팔마중_2학기_중간_중1_기출\\codex-20261007-2sem-mid-palma-m1\\evidence\\ITEM_RECOVERY.q13.candidate.before.js",
+    "rawSha256": "cc286187d15c6952e823f3d6278a02c04f34488ef206cf1add12e475704d8be5"
+  },
+  "candidateAfter": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-palma-m1\\26_팔마중_2학기_중간_중1_기출\\candidate\\26_팔마중_2학기_중간_중1_기출.js",
+    "rawSha256": "7b2de0fa3ea0847a15e91bdf8bd1e5d45fe5387c6e92fc6b97189d4a90945d1f",
+    "gitBlobSha1": "273c60db7a3844684728577349f952ed4995f5f4"
+  },
+  "priorAssetBackup": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_팔마중_2학기_중간_중1_기출\\codex-20261007-2sem-mid-palma-m1\\evidence\\ITEM_RECOVERY.q13.original-conflict-asset.before.png",
+    "sha256": "bde771d563307c35fed8bd1b13d458f8716059ed9749e4f74304effc23f3ca07"
+  },
+  "requiredNext": "fresh q13-only R1 and R2 on the replacement current-final student bundle"
+}

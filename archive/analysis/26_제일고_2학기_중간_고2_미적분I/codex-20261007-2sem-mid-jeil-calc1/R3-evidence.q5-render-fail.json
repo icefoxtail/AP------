@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "runId": "codex-20261007-2sem-mid-jeil-calc1",
+  "examUid": "26_제일고_2학기_중간_고2_미적분I",
+  "stage": "R3",
+  "artifactSha": "04bc995405be6c58a2336dd0ba49d2efd87c32de",
+  "artifactRawSha256": "5024ab6365b997669b47edfa0985900d8adfef50db7523ef9f6924787585198c",
+  "denominator": 22,
+  "targetedScope": {
+    "openFindingQids": [
+      5
+    ],
+    "changedQids": [],
+    "directDependencyQids": []
+  },
+  "rows": [
+    {
+      "qid": 5,
+      "verdict": "FAIL",
+      "findingCode": "Q5_CHOICE_TEX_BACKSLASH_MISSING",
+      "location": "choices[0], choices[1], choices[3]",
+      "observed": "Candidate choices contain $-dfrac52$, $-dfrac53$, and $dfrac73$ with no TeX command backslash or fraction braces; both exam viewports visibly render malformed literal text.",
+      "affectedCases": [
+        "exam/desktop",
+        "exam/mobile"
+      ],
+      "captureReportSha256": "7a4f74af67e93ff3a2c26d107f367fef4a90536081a1abeb790e42cf820eb50a",
+      "captureSha256s": [
+        "9325549707c86afa5750a817b67be87e88a6384c428d228f8c4462225b7140bd",
+        "12568d636978068a2d11bf89b872bf9d7d996ce55d7ed313fa84ad6a36efa470"
+      ],
+      "candidateRawSha256": "5024ab6365b997669b47edfa0985900d8adfef50db7523ef9f6924787585198c"
+    }
+  ],
+  "lockedScopeIntegrity": true,
+  "releaseIntegrity": false,
+  "captureReport": {
+    "path": ".tmp/archive/codex-20261007-2sem-mid-jeil-calc1/26_제일고_2학기_중간_고2_미적분I/capture-r3-01/machine-capture.json",
+    "sha256": "7a4f74af67e93ff3a2c26d107f367fef4a90536081a1abeb790e42cf820eb50a",
+    "captureStatus": "CAPTURED_REVIEW_REQUIRED",
+    "renderPass": false
+  },
+  "r1EvidenceSha256": "e5aa02d4ea300995b1e79b24732527974d7e2bfb2bc057d0e25c0409f2a666a6",
+  "r1ValidationSha256": "9f770ac9f3a88e570930feddcf50d971e2cab8a2fc36728381ae97347b84e9b3",
+  "r2EvidenceSha256": "7b93fae355ea7ee0e5ae0fe5447281fa1741223267db0ab5fc4b35ae36c575f0",
+  "r2ValidationSha256": "6760495a3ea8e8ab5bd780dbef74c1e4127bb8f739e049cadde3dfd681151666",
+  "artifactDispositions": {
+    "artifactSha": "04bc995405be6c58a2336dd0ba49d2efd87c32de",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current 2022 Calculus I RPM primary row for IVT is DIRECT_BINDING_GAP while the actual candidate retains the unique ACTIVE PT_INTERMEDIATE_VALUE_APPLICATION and TPL_IVT_VALUE_EXISTENCE_INTERVAL values. Preserve those fields and evidence; do not synthesize a curriculum binding."
+      }
+    ]
+  }
+}

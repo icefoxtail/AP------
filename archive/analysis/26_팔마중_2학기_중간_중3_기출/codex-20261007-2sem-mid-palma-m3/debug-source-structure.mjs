@@ -1,0 +1,1 @@
+import fs from 'node:fs';const s=fs.readFileSync('.tmp/archive/codex-20261007-2sem-mid-palma-m3/26_팔마중_2학기_중간_중3_기출/candidate/26_팔마중_2학기_중간_중3_기출.js','utf8');for(const pat of [/(?:"id"|'id'|\bid)\s*:\s*1\b/,/(?:"answer"|'answer'|\banswer)\s*:/,/(?:"solution"|'solution'|\bsolution)\s*:/])console.log(pat.source,[...s.matchAll(new RegExp(pat.source,'g'))].map(m=>m.index).join(','))

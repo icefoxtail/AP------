@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "JS_ARCHIVE_Q8_SOURCE_ADJUDICATION_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "26_제일고_2학기_중간_고2_미적분I",
+  "qid": 8,
+  "decision": "SOURCE_REPAIR_DETERMINISTIC",
+  "sourceScanPath": "C:\\Users\\USER\\Downloads\\2학기중간_2026\\제일고 미적분1\\S28BW-826100719360_0002.jpg",
+  "sourceScanSha256": "25c03555d7c84e399a6401e84d9da63866f0b3e6f6d61638ed19e1b60cfa54de",
+  "sourceScanGitBlobSha": "70ba00073cbff5cf1e89a34987fc1731c7d5aa83",
+  "sourceCropPath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_제일고_2학기_중간_고2_미적분I\\codex-20261007-2sem-mid-jeil-calc1\\q8-source-crop.jpg",
+  "sourceCropSha256": "0c37bda08878d3791d372e54f7d046e76f2d7b0271e05bf6e393db5e69dc1910",
+  "printedEquation": "sqrt(5x) - x^2 + 5 = 0",
+  "glyphObservation": "On the high-resolution q8 crop, the printed radical vinculum ends after 5x; the following -x^2+5=0 is outside the radical. Student handwriting is ignored.",
+  "candidateEquation": "sqrt(5x-x^2)+5=0",
+  "r2EvidencePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_제일고_2학기_중간_고2_미적분I\\codex-20261007-2sem-mid-jeil-calc1\\r2-clean\\R2.clean-evidence.json",
+  "r2EvidenceSha256": "5ab525d25caeb579cfb754f53952a02b0a5c7cf8a2f22878103e4e018dd160d8",
+  "priorStudentRevalidationPath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_제일고_2학기_중간_고2_미적분I\\codex-20261007-2sem-mid-jeil-calc1\\item-recovery-q8-student-revalidation.json",
+  "priorStudentRevalidationSha256": "8c7c50dd8dad1a7f324a80d65751efd54c503111aefbabbe96ae205e4a6cc5de",
+  "deterministicRepair": {
+    "contentOnlySourceCorrection": "Change radical scope from (5x-x^2) to 5x, preserving all other printed wording/choices.",
+    "mathematics": "F(x)=sqrt(5x)-x^2+5 is continuous for x>=0. For x in [0,sqrt(5)] F(x)>0. For x>=sqrt(5), g(x)=x^2-5-sqrt(5x) is strictly increasing because g prime=2x-5/(2sqrt(5x))>0; g(sqrt(5))<0 and g(3)>0, so exactly one root exists and lies in (2,3). Endpoint signs F(2)=sqrt(10)+1>0 and F(3)=sqrt(15)-4<0 also certify (2,3) by IVT.",
+    "answer": "③"
+  },
+  "requiredAssetPresence": [
+    {
+      "qid": 1,
+      "rel": "assets/images/26_제일고_2학기_중간_고2_미적분I/q01.png",
+      "candidatePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-jeil-calc1\\26_제일고_2학기_중간_고2_미적분I\\candidate\\assets\\images\\26_제일고_2학기_중간_고2_미적분I\\q01.png",
+      "exists": true
+    },
+    {
+      "qid": 9,
+      "rel": "assets/images/26_제일고_2학기_중간_고2_미적분I/q09.png",
+      "candidatePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-jeil-calc1\\26_제일고_2학기_중간_고2_미적분I\\candidate\\assets\\images\\26_제일고_2학기_중간_고2_미적분I\\q09.png",
+      "exists": true
+    },
+    {
+      "qid": 19,
+      "rel": "assets/images/26_제일고_2학기_중간_고2_미적분I/q19.png",
+      "candidatePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-jeil-calc1\\26_제일고_2학기_중간_고2_미적분I\\candidate\\assets\\images\\26_제일고_2학기_중간_고2_미적분I\\q19.png",
+      "exists": true
+    }
+  ],
+  "nonTargetQuestionObjectBaseline": {
+    "artifactRawSha256": "5d1cb102d0b0f35699cdcf04166d5b164d533cdbbfc51534b2b3dd3a3ed1430c",
+    "artifactBlobSha": "9fb307c9c0c0aeff780d2bbbcfa421c206fd279b",
+    "count": 21,
+    "qidHashes": [
+      {
+        "qid": 1,
+        "rawObjectSha256": "5eeccc612b60a029bf61a9a5abe63d78623a6a125fc1d22cae1e310e33bb3832",
+        "gitBlobSha": "d058c43414f98f64299fa7993715f87e61c32e38"
+      },
+      {
+        "qid": 2,
+        "rawObjectSha256": "6669aff86230733e2dd7489f0124e89957b5b2705b128c5709b8ab14c6af32a3",
+        "gitBlobSha": "30e72751d1fdd8d8f3b5daff74c42dae87df15f4"
+      },
+      {
+        "qid": 3,
+        "rawObjectSha256": "089b27150d5161d93b0722ae2fdc5b88953ba8e5548cf3dc4ff26c9dec9db975",
+        "gitBlobSha": "648307ef4f25ff999e15d9d06b4de501ed0addd4"
+      },
+      {
+        "qid": 4,
+        "rawObjectSha256": "b7621f5a5d3ba5bcb770971a1ab17db8ad8d9cb98dcf6cff8f4cf7c6d39f26a2",
+        "gitBlobSha": "50243e7cc124c13f2ca2a6a44811f57b7815c972"
+      },
+      {
+        "qid": 5,
+        "rawObjectSha256": "fba7ec26aaa4b2582af7b74fd5f76a9c1c06e09e9340670ff2f0ef8d5fd9d226",
+        "gitBlobSha": "08c755b8022f852483e9ad93679e8c4161096ba7"
+      },
+      {
+        "qid": 6,
+        "rawObjectSha256": "0fde81328fc36839f07a278a10f1df0fa2f559d6cea8620d2fe0399ed2454306",
+        "gitBlobSha": "d0d91d91180e8b386986c8b75ddc90ebb1de225c"
+      },
+      {
+        "qid": 7,
+        "rawObjectSha256": "0ddd04b5f8f9f7a23aebab32d1ed99c6227d45ac1467fe6cc32ea3597c7c1403",
+        "gitBlobSha": "6916d5f66ac0b8bc0eb5862151a5fecc745c8533"
+      },
+      {
+        "qid": 9,
+        "rawObjectSha256": "0a06f5dcda767baf9d56b6d62f8f2b3159551e37ff7afff3747d841a80c752ae",
+        "gitBlobSha": "8bfe0111c0c864467ff8a3be22b405dbf3cd838a"
+      },
+      {
+        "qid": 10,
+        "rawObjectSha256": "72de68dfc111f91a47a96e38ab423a4c4dfc051859ff6704e4c3206ae273282e",
+        "gitBlobSha": "4ef9d4dc187b92dd24ca1a535f5913043b2bada2"
+      },
+      {
+        "qid": 11,
+        "rawObjectSha256": "c9f5042ae89f521a29386d738adb7635edc2c8a3a441e4fd2b7c5cdc009f33eb",
+        "gitBlobSha": "fd663224294e9121e051ae3eb85d13831db01405"
+      },
+      {
+        "qid": 12,
+        "rawObjectSha256": "4e363198c83cb3751356a69025ece2991eb7ee27bbe9251faf24707b9145463f",
+        "gitBlobSha": "15f861c88e544e9409a2f2f9d698d0bd25486b8e"
+      },
+      {
+        "qid": 13,
+        "rawObjectSha256": "a9ea01c8acb932982005a089d17af0ab1baea9ef36b20f2fedb266cf4aba2d29",
+        "gitBlobSha": "928c72037998bfa3fd4f5c34e84dd5e853294b20"
+      },
+      {
+        "qid": 14,
+        "rawObjectSha256": "b5c1dca943139a5b8a8c44ac0bd3bf61dd70c7d44b8e23f45c9b607b0e475b04",
+        "gitBlobSha": "f550ae9f27fb728caf412fc7ee4742c0bb5c97fa"
+      },
+      {
+        "qid": 15,
+        "rawObjectSha256": "ad6d5cee5a8acaeb7510720387499bd2d5273a87ee932be7e742978a403ff13a",
+        "gitBlobSha": "8abf7a3a0348ece65703076806a155e0404e71e1"
+      },
+      {
+        "qid": 16,
+        "rawObjectSha256": "105905bb31dbdf5be1ed9ee770b1fe55ee70b366cf68f6bfaea252cdba021273",
+        "gitBlobSha": "836dd9e02c9f4864e500d4f7c67e2daf38b10d4b"
+      },
+      {
+        "qid": 17,
+        "rawObjectSha256": "8bd96ac09e779886d2c799b4742b27d361de368bbe82d01ad28e88530e4d4d5e",
+        "gitBlobSha": "44b90d2fbf0600911d80b5d83e2546361bd100e9"
+      },
+      {
+        "qid": 18,
+        "rawObjectSha256": "29e295cb559ebc147d1cc8d216ded078ea6ed7bf613fd066c8f441c429f443e0",
+        "gitBlobSha": "26dc04053637102d8c1c6403a99ccf524c738374"
+      },
+      {
+        "qid": 19,
+        "rawObjectSha256": "cbd6fff246db04a5d6d4455449a2144fd13b4ada3e56c1f02bf8586d319ccf1b",
+        "gitBlobSha": "83e5752e963959f750655151b844feeb68c00fa2"
+      },
+      {
+        "qid": 20,
+        "rawObjectSha256": "b26567184cae1009610e0ed1b1796e70ef82037ce1b7a5939ba945908203543b",
+        "gitBlobSha": "8d6bb468305230bdb3442783a37c7afe1b33912c"
+      },
+      {
+        "qid": 21,
+        "rawObjectSha256": "e48a9c2cacb30debfa91b468893bade01d93adfa37f1a95609a488195d7313d5",
+        "gitBlobSha": "0a7ac96b48511045983d3be8956325f1988819aa"
+      },
+      {
+        "qid": 22,
+        "rawObjectSha256": "cec14f13c2ceba60578fb0214793773fecb91534fc4af35d4c2be496a4e923bc",
+        "gitBlobSha": "93746fdcbc65b54b881e13a9b3f0a1b50a3f582d"
+      }
+    ]
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "schemaVersion": "JS_ARCHIVE_IMMUTABLE_BLIND_FREEZE_V1",
+  "stage": "R2",
+  "reviewerIdentity": {
+    "role": "archive_r2",
+    "reviewerId": "/root/r2_11"
+  },
+  "frozenAt": "2026-10-09T03:44:42.100Z",
+  "sourceRawSha256": "f248064f4872fe0b581d915783151223d4d7a4619960d845fe61d4b737d25840",
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_확률과통계\\R2.student-only.json",
+    "sha256": "48e89fce5b1f8d720a7c2a51ba7570b48404161e66a80af2094d16af9702a14e"
+  },
+  "bundleAdapterProvenance": {
+    "input": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_확률과통계\\R2.student-only.json",
+      "sha256": "48e89fce5b1f8d720a7c2a51ba7570b48404161e66a80af2094d16af9702a14e"
+    },
+    "inputSchemaVersion": "JS_ARCHIVE_STUDENT_BUNDLE_V2",
+    "legacyConverted": false,
+    "studentFieldsDropped": [],
+    "answersRead": false,
+    "originalBundleMutated": false
+  },
+  "studentQidOrder": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "rows": [
+    {
+      "qid": 1,
+      "independentAnswer": "36",
+      "reasoning": "For 7 selections from 3 types with repetition, stars and bars gives C(7+3−1,7)=C(9,7)=36."
+    },
+    {
+      "qid": 2,
+      "independentAnswer": "24",
+      "reasoning": "Five distinct people around a circle modulo rotation: (5-1)!=24."
+    },
+    {
+      "qid": 3,
+      "independentAnswer": "500",
+      "reasoning": "The first digit has 4 nonzero choices; each of the remaining three digits has 5 choices, giving 4·5^3=500."
+    },
+    {
+      "qid": 4,
+      "independentAnswer": "34",
+      "reasoning": "The one-or-two-step recurrence gives F_9=34 ways to climb 8 steps."
+    },
+    {
+      "qid": 5,
+      "independentAnswer": "3",
+      "reasoning": "The sum is 2^n; 1000<2^n<10000 gives n=10,11,12,13, so max-min=3."
+    },
+    {
+      "qid": 6,
+      "independentAnswer": "220",
+      "reasoning": "The shaded entries are the C(n,1) and C(n,2) diagonals for n=1..10, whose sums are C(11,2)=55 and C(11,3)=165; total 220."
+    },
+    {
+      "qid": 7,
+      "independentAnswer": "12",
+      "reasoning": "Fix the conductor to remove rotation; the two violinists occupy the two adjacent seats in 2! ways, and the other three performers in 3! ways."
+    },
+    {
+      "qid": 8,
+      "independentAnswer": "630",
+      "reasoning": "There are five regions including the center disk. Choose 5 of 7 colors and biject them to the five regions, then quotient by the four rotations: C(7,5)·5!/4=630."
+    },
+    {
+      "qid": 9,
+      "independentAnswer": "192",
+      "reasoning": "There are three table corners with two adjacent seats associated to each. Assign the two labeled men to distinct corners and choose one of two seats at each (3·2·2·2=24); arrange four women in 4! ways and divide by 3 rotations: 192."
+    },
+    {
+      "qid": 10,
+      "independentAnswer": "51",
+      "reasoning": "Let r+y+b=10 with 0≤r≤5. There are C(12,2)=66 nonnegative solutions without the cap; r≥6 contributes C(6,2)=15, so 51."
+    },
+    {
+      "qid": 11,
+      "independentAnswer": "1045",
+      "reasoning": "Sum over k repeated 1s: Σ(k=0..4) C(6,4-k)·4!/k! = 360+480+180+24+1=1045."
+    },
+    {
+      "qid": 12,
+      "independentAnswer": "210",
+      "reasoning": "All arrangements of the multiset are 7!/(2!2!); the relative order of 4,5,6 is fixed in one of 3! orders, giving 1260/6=210."
+    },
+    {
+      "qid": 13,
+      "independentAnswer": "4860",
+      "reasoning": "To obtain x^10 choose k=2 factors of 2x^3; coefficient C(6,2)·2^2·(-3)^4=4860."
+    },
+    {
+      "qid": 14,
+      "independentAnswer": "86",
+      "reasoning": "Descending lexicographic order: 64 numbers start with 7; among those starting with 5, 16 have second digit 7, 4 have prefix 55 and third digit 7, and 1 has prefix 555 and last digit 7. Thus 5555 is 86th."
+    },
+    {
+      "qid": 15,
+      "independentAnswer": "150",
+      "reasoning": "Onto functions from a 5-element set to a 3-element set: 3^5−3·2^5+3=150."
+    },
+    {
+      "qid": 16,
+      "independentAnswer": "120",
+      "reasoning": "Set x'=x−1,y'=y−1,z'=z−1; then nonnegative sum ≤7, equivalent by slack variable to C(10,3)=120."
+    },
+    {
+      "qid": 17,
+      "independentAnswer": "21",
+      "reasoning": "Modulo (x²+3)², put t=x²+3; (t+1)^5≡1+5t. At x=1 this is 1+5·4=21."
+    },
+    {
+      "qid": 18,
+      "independentAnswer": "16",
+      "reasoning": "Write the four function values as 2^{e_i}, e_i∈{1,2,3}; their product condition requires sum e_i=9. Equivalently deficits 3−e_i sum to 3 with each at most 2: C(6,3)−4=16."
+    },
+    {
+      "qid": 19,
+      "independentAnswer": "339",
+      "reasoning": "There are C(6,2)C(10,2)=675 distributions before the each-box-total≥2 restriction. For a fixed box with total 0 or 1, counts are 45+36+40=121; for a fixed pair both totals≤1 there are 9 configurations. Inclusion-exclusion gives 675−3·121+3·9=339."
+    },
+    {
+      "qid": 20,
+      "independentAnswer": "206",
+      "reasoning": "Positive solutions to sum 14 are C(13,3)=286. Excluding any coordinate ≥9 removes 10 per coordinate, leaving 246 under the upper bound 8. All-odd solutions correspond to four 0..3 values summing 5: C(8,3)−4C(4,3)=40. Therefore at least one even is 246−40=206."
+    },
+    {
+      "qid": 21,
+      "independentAnswer": "30",
+      "reasoning": "Elements 5,6,7 belong to A∩B and not C. Each of 8,9,10 has four allowed memberships: A only, B only, both, or C only. Exclude C empty (3^3=27 patterns) and then exclude A=B with C nonempty (2^3−1=7): 64−27−7=30."
+    },
+    {
+      "qid": 22,
+      "independentAnswer": "180",
+      "reasoning": "Let a=f(1), b=f(3), c=f(5), with a≤b≤c and f(c)=3. For c=2 there are 6 triples and f(2) is fixed, giving 6·5=30; for c=3, b=3 and there are 3 triples, with f(2),f(4) free, giving 75; for c=4, f(4)=3, there are 15 triples and f(2) is free, giving 75. c=1,5 impossible. Total 180."
+    },
+    {
+      "qid": 23,
+      "independentAnswer": "24",
+      "reasoning": "After including 2 and 3, the other 25 elements must form an odd-cardinality subset. Half of all subsets have odd size, so the count is 2^24 and a=24."
+    }
+  ],
+  "assetReads": [
+    {
+      "ref": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q06.png",
+      "sha256": "8ba1dc4078ae1477d41fccfe33c0b773bd84059b719914de20e7472aa77d5d97",
+      "opened": true
+    },
+    {
+      "ref": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q08.png",
+      "sha256": "99d4baac9f56e3a93224f4f071558b6bd796bc4c02722b682c9690508f284ae7",
+      "opened": true
+    },
+    {
+      "ref": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q09.png",
+      "sha256": "01ac1e58e5acd8be4761ae7c447be7228d13332348130d075696b9ab1e8dff45",
+      "opened": true
+    }
+  ]
+}

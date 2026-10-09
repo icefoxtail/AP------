@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_GOLDEN_PREFLIGHT_V1",
+  "examUid": "26_왕의중_2학기_중간_중2_기출",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "performedBeforeCandidateSolutions": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","sha256":"4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf","items":[{"qid":1,"solutionSha256":"4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3","observation":"The solution states the internal-division weighting convention, computes both coordinates and midpoint separately, then substitutes into distance formula through simplification; each transformation is explicit."},{"qid":2,"solutionSha256":"b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba","observation":"The solution extracts slope, substitutes the given point, computes the requested sum, and closes with answer label; arithmetic remains visible."}]},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","sha256":"80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c","items":[{"qid":1,"solutionSha256":"027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682","observation":"Coordinate differences are shown before distance substitution and radical simplification; no arithmetic jump is hidden."},{"qid":2,"solutionSha256":"84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2","observation":"Both line equations are rearranged to expose slopes, orthogonality is applied explicitly, and the selected integer is stated."}]},
+      {"path":"archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js","sha256":"17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b","items":[{"qid":1,"solutionSha256":"452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9","observation":"Every membership/subset option is independently evaluated, with the reason tied to the elements of the set."},{"qid":2,"solutionSha256":"e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21","observation":"The vertical-line test is stated and each diagram is adjudicated in a separate paragraph; graph visuals are used as decisive input."}]}
+    ],
+    "negativeSample":{"path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md","sha256":"39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8","observation":"Read the fixed regression README: actual SVG coordinates/topology must be checked rather than labels; enumerated source claims require separate solution blocks; runtime-evaluated TeX must be inspected; exact active Meta should not be nulled. No negative SVG is copied."}
+  },
+  "preflightObservation":"For this middle-school geometry exam, borrow only the student-facing habits: explicit theorem-to-equation progression, standalone judgments for enumerated proof items, and geometry grounded in printed diagrams. Golden content/taxonomy is not source or curriculum authority."
+}

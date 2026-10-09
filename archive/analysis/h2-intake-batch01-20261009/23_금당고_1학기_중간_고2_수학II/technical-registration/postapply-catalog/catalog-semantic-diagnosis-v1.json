@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POSTAPPLY_CATALOG_SEMANTIC_DIAGNOSIS_V1",
+  "targetExam": "23_금당고_1학기_중간_고2_수학II",
+  "mainCheck": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/technical-registration/postapply-catalog/attempt-01/stderr.raw.txt",
+    "exitCode": 1,
+    "error": "Archive 2.0 catalog projection is stale"
+  },
+  "isolatedCurrentAppliedInputsCheck": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/technical-registration/postapply-catalog/attempt-02-candidate-check-02/stderr.raw.txt",
+    "exitCode": 1,
+    "error": "Archive 2.0 catalog projection is stale"
+  },
+  "isolatedCanonicalGeneration": {
+    "stdoutPath": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/technical-registration/postapply-catalog/expected-generation-candidate-attempt-01/stdout.raw.txt",
+    "exitCode": 0,
+    "expectedCatalogSha256": "7a4b6036ceb5a836bb12666e9ccac33c9fea8e7a87b7942132c6ea620bedc120",
+    "expectedManifestSha256": "0b127107058cfd528c28ef79667b6ad47751484cd267abe17cf2e4b875ec8608"
+  },
+  "isolatedCanonicalCheckAfterGeneration": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/technical-registration/postapply-catalog/attempt-04-canonical-expected-check-02/stdout.raw.txt",
+    "exitCode": 0
+  },
+  "comparison": {
+    "catalogChangedFields": [
+      {
+        "field": "indexVersion",
+        "main": "2ad048f409401633011774bd922f316602dce0c04fe368adc0fb4dbb718eff5a",
+        "expected": "923dbd4f05554f51004a6b88f80f5d03850aded4088167cdd8a9ffaf3dade696"
+      }
+    ],
+    "recordsChanged": 0,
+    "examsChanged": 0,
+    "encodingEqual": true,
+    "columnsEqual": true,
+    "stringsEqual": true,
+    "recordArraysByteValueEqual": true,
+    "sourceHashesEqual": true,
+    "taxonomyEqual": true,
+    "examArraysEqual": true,
+    "healthEqual": true,
+    "manifestChangedFields": [
+      {
+        "field": "generatedFromCatalogIndexVersion",
+        "main": "2ad048f409401633011774bd922f316602dce0c04fe368adc0fb4dbb718eff5a",
+        "expected": "923dbd4f05554f51004a6b88f80f5d03850aded4088167cdd8a9ffaf3dade696"
+      },
+      {
+        "field": "projectionVersion",
+        "main": "archive2-canonical-v1:9a21eb6ad28cb8c8960de0d4c9e22a801640ee88a5ba149c1228b3e5ed66b9f6",
+        "expected": "archive2-canonical-v1:ccd91e5706a5cff6b5ea913a2acdacdd6204e1d4573bdc304cca11108f2601ce"
+      }
+    ],
+    "manifestChangedHashRows": [
+      {
+        "path": "data/archive2-catalog.json",
+        "mainSha256": "d68a9c5df79cd10ebeb6f32a1cba69b0e4a186d170b7561b89c2ba06c1f9eb35",
+        "expectedSha256": "7a4b6036ceb5a836bb12666e9ccac33c9fea8e7a87b7942132c6ea620bedc120"
+      }
+    ]
+  },
+  "cause": "register-target-exam.mjs computes indexVersion on decoded catalogRecords; core.decodeCatalog reconstructs row key order from the packed columns. build-archive2-catalog.mjs computes indexVersion before packing on canonical source record objects. JSON.stringify input-order difference yields a different global indexVersion despite exact same packed record arrays/columns/strings and zero decoded record/exam changes.",
+  "minimalProposal": "ROOT may authorize replacing only archive2-catalog.json with the generated canonical version (only indexVersion differs) and archive2-canonical-input-manifest.json with the corresponding generated manifest (catalog input hash, generatedFromCatalogIndexVersion, and projectionVersion differ). No record, exam, string dictionary, column, runtime tuple, or non-target row change is required.",
+  "proposalManifestPath": ".tmp/archive/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/registration-postapply-catalog/proposed-v1/proposal-manifest.json"
+}

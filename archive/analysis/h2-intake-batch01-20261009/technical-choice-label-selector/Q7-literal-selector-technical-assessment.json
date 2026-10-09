@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CHOICE_LABEL_SELECTOR_TECHNICAL_ASSESSMENT_V1",
+  "status": "OPEN_ROOT_AUTHORIZATION_REQUIRED",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "worktreeRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------",
+  "head": "3cecb45b2483ee1273a4b8a288f9b05ab91c9865",
+  "target": {
+    "stage": "CREATE",
+    "examUid": "24_강남여고_1학기_중간_고2_대수",
+    "qid": 7,
+    "workingJsAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\24_강남여고_1학기_중간_고2_대수\\24_강남여고_1학기_중간_고2_대수.js",
+    "workingJsRawSha256": "f9d8592009218672855c6515795dc01d6092ccf039e931091213e7258add6837",
+    "assetRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\24_강남여고_1학기_중간_고2_대수",
+    "evidenceRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\24_강남여고_1학기_중간_고2_대수"
+  },
+  "inputBindings": [
+    { "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/CREATE.continuation.json", "sha256": "04cf70bafffdfb9b436ce79e616ef2ed985847824b1351ad8f25430355044942" },
+    { "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/CREATE.validator-capture.final.json", "sha256": "51b9bffa6b7e58792d901532b46449bd8d5b4cb3c2f3948e0bbd6b6ac5762f10" },
+    { "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/q7-source-choice-verification.json", "sha256": "cbcbaf389e6fd3f97079245a20200b93fc4899fd7f428c38814e29c38e39e006" },
+    { "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/CREATE.evidence.bound.final.json", "sha256": "d7b09356c156a4641ee6adaaacfc56a031e22b6aa691a48c1a9d32ba05a2faa1" },
+    { "path": ".tmp/archive/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/CREATE.assignment.json", "sha256": "9387d25adf5949944b8742b716537e077718832467c7a9cc4e5ffd18bc4ff4ad" },
+    { "path": ".tmp/archive/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/extracted-baseline.js", "rawSha256": "d6b1236a5d20fe923adbc6af2b1be0f07e43395ff608202182bff6b4c7c02dc5" }
+  ],
+  "implementationBindings": [
+    { "path": "archive/engine.html", "sha256": "4f335aee010e092c25a3dd428ff1aaf2f81ec39209c0669b162f1c042fd162c5", "locus": "renderChoicesHTML lines 1881-1884; stripChoicePrefix lines 1847-1849", "finding": "With preserveChoicePrefixes=true, choices are preserved as text and engine also emits its own ①-⑤ choice-no. With false/omitted, the prefix is stripped and one engine marker remains." },
+    { "path": "archive/tools/archive-stage-validator-artifact-v2.mjs", "sha256": "2603cee4d1846f9fb63699d0305faf6fcca8fbfd796116be55a98b2ee0983e4d", "locus": "validateChoiceStructure lines 196-216; caller lines 372-378", "finding": "Any choice starting with ①-⑤ is unconditionally rejected without inspecting source proof or the preserveChoicePrefixes control." },
+    { "path": "archive/tools/archive-stage-validator-artifact-v2.test.mjs", "sha256": "f9841dbd7b9e2a519e0e09de9ed328421a80b61dcd21baf645b0b9c7d49969c8", "finding": "Current tests cover Geometry Meta resolver and no literal-selector exception cases." },
+    { "path": "docs/rules/02_PIPELINES/JS_Archive_2.0_Common_Quality_Contract_v1.md", "sha256": "90517785f701e92813b07cff2f93783434ab99a9502f51b8c5f117f15363287e", "locus": "§4", "finding": "Engine owns objective-choice labels; exact choices parity remains required." }
+  ],
+  "sourceEvidence": {
+    "sourcePdfSha256": "6000fc9dff3d478eac3a79228f617b0172577065f6c3dde58f98c90793fce3b6",
+    "sourcePage": 1,
+    "sourcePageRenderSha256": "cf87f9f7170ab693cbde933e62e45e9e8d93e691b93d9e0c8f0dcfda93b243a2",
+    "sourceObservedChoices": ["①", "②", "③", "④", "⑤"],
+    "sourceObservedForm": "Five literal selector glyphs below equality signs with arrows; values choose the equality step, not appended objective choice labels.",
+    "choicesUnchangedFromExtractedBaseline": true,
+    "finalArtifactChoices": ["①", "②", "③", "④", "⑤"],
+    "currentPreserveChoicePrefixes": true,
+    "validatorIssues": [
+      "ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED:q7:i0",
+      "ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED:q7:i1",
+      "ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED:q7:i2",
+      "ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED:q7:i3",
+      "ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED:q7:i4"
+    ]
+  },
+  "technicalConclusion": {
+    "finding": "The validator classification is a source-backed false positive for this exact standalone selector list, while the current preserveChoicePrefixes=true value would also cause the engine to display two glyphs per choice. The source choices are correct and must stay byte-for-byte unchanged.",
+    "actualRenderPerformed": false,
+    "engineBehaviorDisposition": "STATIC_SOURCE_INSPECTION_ONLY; later R3 render still owns actual screen verification.",
+    "noChangePerformed": true
+  },
+  "minimalRepairProposal": {
+    "artifactLocus": "qid 7 preserveChoicePrefixes only: change true to explicit false. Keep choices exactly [①,②,③,④,⑤], keep answer, question body, and all source parity fields unchanged. Rebind the final JS/student bundle and evidence to the new artifact SHA.",
+    "validatorLocus": "archive/tools/archive-stage-validator-artifact-v2.mjs validateChoiceStructure plus its call site: allow the marker-prefix diagnostic to be suppressed only for the exact ordered five-element marker list when preserveChoicePrefixes is exactly false and the same qid's evidence row carries sourceParity.choicesUnchanged=true, matching qid, and sourcePdfChoiceCheck with decision PRESERVE_LITERAL_SOURCE_CHOICES, exact observed marker list, baselineChoicesUnchanged=true and finalChoicesUnchanged=true. Keep generic rejection for every other marker-prefixed choice.",
+    "engineLocus": "No engine change. Existing stripChoicePrefix plus preserveChoicePrefixes=false renders a single engine-owned ①–⑤ label while raw source choices remain exact.",
+    "canonicalLocus": "No quality-contract or source-parity rule change. Existing contract and source evidence already support exact choice parity; this is a narrow machine classification exception bound to the current artifact/source proof.",
+    "downstream": "R1 and R2 independently verify the literal selector semantics and full source choice parity; R3 performs actual q7 engine render and confirms there is exactly one visible selector glyph per option.",
+    "unrelatedIssues": "The current generic report remains FAIL on the separate H2 Math I L2 issues for q9/q17/q18/q19; this repair would address only the five q7 choice diagnostics."
+  },
+  "requiredTestsForAuthorizedRepair": [
+    "Positive: exact ordered [①,②,③,④,⑤], preserveChoicePrefixes=false, and matching SHA-bound current-qid source proof suppresses only the five choice-label diagnostics.",
+    "Negative: preserveChoicePrefixes=true, absent proof, mismatched qid/hash/baseline, or false choicesUnchanged retains rejection.",
+    "Negative: appended-marker strings such as ① text remain rejected even with literal-selector proof.",
+    "Negative: reordered, partial, repeated, unknown, empty, or extra choices do not match the narrow exception; existing empty-value diagnostics remain active.",
+    "Integration: on the exact q7 artifact, Archive Engine rendering with preserveChoicePrefixes=false yields one visible engine marker for each option; retain R3's required actual render/review later.",
+    "Run only the focused artifact-validator test file and assigned CREATE generic validator after the authorized repair; do not treat either as R1/R2/R3 completion."
+  ],
+  "workPerformed": {
+    "sourceJsChanged": false,
+    "engineChanged": false,
+    "validatorChanged": false,
+    "rulesChanged": false,
+    "validatorExecuted": false,
+    "questionSolved": false,
+    "semanticStageReview": false
+  },
+  "nextRequiredAction": "ROOT authorizes the exact validator exception and q7 preserveChoicePrefixes control locus; then apply the bounded repair and fresh-bind/revalidate in the existing CREATE session."
+}

@@ -1,0 +1,1965 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "CREATE",
+  "examUid": "26_팔마중_2학기_중간_중3_기출",
+  "runId": "codex-20261007-2sem-mid-palma-m3",
+  "artifactSha": "a64aa62f76737f3d74f3f81ed50ac50e505288b4",
+  "evidenceRef": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/ITEM_RECOVERY.q11.current-create-evidence.json",
+  "denominator": 24,
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949",
+        "items": [
+          {
+            "qid": 3,
+            "solutionSha256": "77b762f1e35e5f530421cb7eb1d987ec0935ad0b9e2058a665c07fe6f930e5f0",
+            "solutionExcerpt": "원의 중심과 반지름을 읽으려면 주어진 식을 원의 표준형으로 바꾸어야 한다.\n주어진 식은\n$x^2+y^2-6x+4y+9=0$이다.\n먼저 상수항 $9$를 오른쪽으로 옮겨\n$x$에 대한 항과 $y$에 대한 항을 모은다.\n$x^2-6x+y^2+4y=-9$이다.\n이제 각각 완전제곱식을 만든다.\n$x^2-6x$에는 $9$를 더하면\n$x^2-6x+9=(x-3)^2$이 된다.\n$y^2+4y$에는 $4$를 더하면\n$y^2+4y+4=(y+2)^2$가 된다.\n왼쪽에 $9$와 $4$",
+            "observation": "q3 completes square line-by-line and identifies standard form before answer; q8 separates sign deductions into ordered reasoning; q12 explicitly handles absolute-value cases and constraints."
+          },
+          {
+            "qid": 8,
+            "solutionSha256": "7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+            "solutionExcerpt": "먼저 주어진 그래프에서 원래 직선 $ax+by+c=0$의 정보를 하나씩 읽는다.\n그래프는 오른쪽으로 갈수록 위로 올라가므로\n기울기는 양수이다.\n또 $y$축과 만나는 점이 원점보다 아래에 있으므로\n$y$절편은 음수이다.\n직선\n$ax+by+c=0$\n을 $y=mx+n$ 꼴로 바꾸면\n$by=-ax-c$\n$y=-\\dfrac abx-\\dfrac cb$이다.\n따라서 기울기는\n$-\\dfrac ab$이다.\n그래프의 기울기가 양수이므로\n$-\\dfrac ab>0$이다.\n따라서 $a",
+            "observation": "q3 completes square line-by-line and identifies standard form before answer; q8 separates sign deductions into ordered reasoning; q12 explicitly handles absolute-value cases and constraints. Visual supplement: inspected the selected solution SVG bytes and labeled text/primitive layout; no rendered preview or RENDER_PASS is claimed.",
+            "visualSha256": "e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430",
+            "visualReadMode": "STATIC_SVG_SOURCE_REVIEW_SUPPLEMENT_AFTER_INITIAL_VALIDATOR"
+          },
+          {
+            "qid": 12,
+            "solutionSha256": "a555355216573e25a87a2b09d6164a6f02b0d688bc01e0bacac1eca42dead171",
+            "solutionExcerpt": "원래 원의 중심과 반지름부터 확인한다.\n원\n$(x-a)^2+(y-b)^2=a^2$\n의 중심은 $(a,b)$이다.\n반지름은 $|a|$이지만 문제에서 $a>0$이므로 반지름은 $a$이다.\n이 원을 $x$축의 방향으로 $-4$만큼,\n$y$축의 방향으로 $-2$만큼 평행이동하면 중심은\n$(a,b)\\rightarrow(a-4,b-2)$가 된다.\n따라서 이동한 원의 중심은 $(a-4,b-2)$이고\n반지름은 그대로 $a$이다.\n이 원이 $y$축에 접하므로\n중심에서 $y$축까",
+            "observation": "q3 completes square line-by-line and identifies standard form before answer; q8 separates sign deductions into ordered reasoning; q12 explicitly handles absolute-value cases and constraints. Visual supplement: inspected the selected solution SVG bytes and labeled text/primitive layout; no rendered preview or RENDER_PASS is claimed.",
+            "visualSha256": "67d04157729407bb19bc50d68ad0f68b72044088c1e6f599df82c7c6428e56df",
+            "visualReadMode": "STATIC_SVG_SOURCE_REVIEW_SUPPLEMENT_AFTER_INITIAL_VALIDATOR"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+        "items": [
+          {
+            "qid": 3,
+            "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+            "solutionExcerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.\n주어진 식은\n$x^2+y^2+2x-6y+6=0$이다.\n$x$에 대한 항과 $y$에 대한 항을 각각 완전제곱식으로 만든다.\n$x^2+2x=(x+1)^2-1$이고,\n$y^2-6y=(y-3)^2-9$이다.\n이를 원래 식에 대입하면\n$(x+1)^2-1+(y-3)^2-9+6=0$이다.\n상수항을 정리하면\n$(x+1)^2+(y-3)^2=4$\n$=(2)^2$이다.\n원의 표준형\n$(x-a)^2+(y-b)^2=r",
+            "observation": "q3 shows completing-square transformations; q8 separates each blank’s inference; q12 tracks transformed vertex and contact condition with intermediate equations. Visual supplement: inspected the selected solution SVG bytes and labeled text/primitive layout; no rendered preview or RENDER_PASS is claimed.",
+            "visualSha256": "752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c",
+            "visualReadMode": "STATIC_SVG_SOURCE_REVIEW_SUPPLEMENT_AFTER_INITIAL_VALIDATOR"
+          },
+          {
+            "qid": 8,
+            "solutionSha256": "c4c073520584482e1bff97912f36f72024c5125eaca5c9ffd126da7a21fee041",
+            "solutionExcerpt": "빈칸은 앞에서 얻은 관계를 순서대로 따라가면 결정할 수 있다.\n점 $P(x_1,y_1)$에서 직선 $l$에 내린 수선의 발을 $H(x_2,y_2)$라고 하자.\n직선 $PH$의 기울기는\n$\\dfrac{y_2-y_1}{x_2-x_1}$이고,\n직선 $l:ax+by+c=0$의 기울기는\n$-\\dfrac ab$이다.\n두 직선은 서로 수직이므로 기울기의 곱은 $-1$이다.\n따라서 ㄱ은\n$-1$이다.\n또 수직 조건을 정리하면\n$\\dfrac{x_2-x_1}{a}=\\dfrac{y",
+            "observation": "q3 shows completing-square transformations; q8 separates each blank’s inference; q12 tracks transformed vertex and contact condition with intermediate equations. Visual supplement: inspected the selected solution SVG bytes and labeled text/primitive layout; no rendered preview or RENDER_PASS is claimed.",
+            "visualSha256": "dd8effc9a317dd65467be77cedfccfd81c77702941dd9dd7e40620baec5f971c",
+            "visualReadMode": "STATIC_SVG_SOURCE_REVIEW_SUPPLEMENT_AFTER_INITIAL_VALIDATOR"
+          },
+          {
+            "qid": 12,
+            "solutionSha256": "c77c0042b36d4618b4c94ddb0d784539f8b4521004c45b5ae9467daf7a6d2414",
+            "solutionExcerpt": "먼저 원래 포물선을 꼭짓점 꼴로 바꾼다.\n$y=x^2+6x+13$\n$=(x+3)^2+4$이다.\n따라서 원래 포물선의 꼭짓점은 $(-3,4)$이다.\n이 그래프를 원점에 대하여 대칭이동하면\n점 $(x,y)$가 $(-x,-y)$로 이동한다.\n그러므로 꼭짓점 $(-3,4)$는\n$(-3,4)\\rightarrow(3,-4)$\n로 이동하고, 포물선은 아래로 열린다.\n원점 대칭 후의 식은\n$y=-(x-3)^2-4$이다.\n이 포물선을 $y$축의 방향으로 $a$만큼 평행이동하면\n",
+            "observation": "q3 shows completing-square transformations; q8 separates each blank’s inference; q12 tracks transformed vertex and contact condition with intermediate equations. Visual supplement: inspected the selected solution SVG bytes and labeled text/primitive layout; no rendered preview or RENDER_PASS is claimed.",
+            "visualSha256": "4963bdc9005a155cebc4c91017faac9835df94ab1c832611ce41055707133d4d",
+            "visualReadMode": "STATIC_SVG_SOURCE_REVIEW_SUPPLEMENT_AFTER_INITIAL_VALIDATOR"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12",
+        "items": [
+          {
+            "qid": 3,
+            "solutionSha256": "e664fd207ce80863250fa1281dfe247a5bbe1284ec2f37d87f3e38e034d00deb",
+            "solutionExcerpt": "부분집합에 $a$, $b$를 모두 포함하지 않으므로 나머지 원소 $c,d,e,f$만 선택하면 된다.\n$c,d,e,f$는 각각 포함하거나 포함하지 않는 두 가지 선택이 있다.\n따라서 부분집합의 수는\n$2\\times2\\times2\\times2=16$이다.\n이 부분집합들은 $a,b$를 포함하지 않으므로 모두 원래 집합의 진부분집합이다. 정답은 ③이다.",
+            "observation": "q3 gives a compact count with the restriction applied; q8 enumerates all valid cases separately; q12 separates slope and intercept deductions."
+          },
+          {
+            "qid": 8,
+            "solutionSha256": "a964a9a2b752493bee5421193970f58f11e6fc731cd3a10666ef007cf66e2fa5",
+            "solutionExcerpt": "$A$와 $B$는 서로소이고 $A\\cup B=U$이므로 두 집합의 원소 수는\n$n(A)+n(B)=5$이다.\n$n(B)=3$이므로 $n(A)=2$이다. $A$의 원소는 소수여야 하므로 $A$는 $\\{2,3,5\\}$ 중 두 원소로 이루어진다.\n$A=\\{2,3\\}$이면 $B=\\{1,4,5\\}$이고 원소의 합은 10이다.\n$A=\\{2,5\\}$이면 $B=\\{1,3,4\\}$이고 원소의 합은 8이다.\n$A=\\{3,5\\}$이면 $B=\\{1,2,4\\}$이고 원소의 합은 7이다.",
+            "observation": "q3 gives a compact count with the restriction applied; q8 enumerates all valid cases separately; q12 separates slope and intercept deductions."
+          },
+          {
+            "qid": 12,
+            "solutionSha256": "d7804138ca5964bbd84a9f1147bbae6c70eabbaaad399c9192148929d05e9426",
+            "solutionExcerpt": "주어진 직선을 $y$에 대하여 정리하면\n$y=-\\dfrac abx-\\dfrac cb$이다.\n그림에서 기울기는 양수이고 $y$절편은 음수이므로\n$-\\dfrac ab>0$,\n$-\\dfrac cb<0$이다.\n따라서\n$\\dfrac ab<0$,\n$\\dfrac cb>0$이다.\n새 직선은\n$cx+by+a=0$,\n$y=-\\dfrac cbx-\\dfrac ab$로 나타난다.\n이 직선의 기울기는 $-\\dfrac cb<0$이고 $y$절편은 $-\\dfrac ab>0$이다. 이에 맞는 ",
+            "observation": "q3 gives a compact count with the restriction applied; q8 enumerates all valid cases separately; q12 separates slope and intercept deductions. Visual supplement: inspected the selected solution SVG bytes and labeled text/primitive layout; no rendered preview or RENDER_PASS is claimed.",
+            "visualSha256": "8c58df3509fd907928d00ce5ee12608ae76681554fa54883f1826627c33fb601",
+            "visualReadMode": "STATIC_SVG_SOURCE_REVIEW_SUPPLEMENT_AFTER_INITIAL_VALIDATOR"
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+      "observation": "Reviewed false-PASS regression families: SVG actual-coordinate mismatch; enumerated subparts kept in one prose block; resolvable Meta null; runtime TeX double escape. Target implications: derive geometry from source constraints and actual asset primitives, use separate solution blocks for source subparts, require exact taxonomy evidence, and inspect evaluated JS strings for escape corruption."
+    },
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "qualityCompareCount": "24/24",
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "SOURCE_ONLY_CREATE_FRESH_SOLUTION",
+    "calibrationOrder": "GOLDEN_NEGATIVE_PREFLIGHT_BEFORE_SOLUTION_AUTHORING",
+    "visualSupplementReadTiming": {
+      "phase": "AFTER_INITIAL_GENERIC_VALIDATOR_FAILURE",
+      "reason": "The first raw validator report required SHA-bound selected Golden SVG visuals because selected Golden files contain solutionImage fields. This supplemental read preserves chronology and does not claim that visual sample inspection preceded solution authoring."
+    }
+  },
+  "sourceIdentity": {
+    "sourceFolder": "팔마중3",
+    "sourceFormat": "JPEG_PAGE_SCANS",
+    "sourcePageCount": 5,
+    "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+    "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+    "sourceScanRefs": [
+      {
+        "name": "S28BW-826100719540_0006.jpg",
+        "sha256": "bc25df4fffc7cba0eaa345910117ecab7da6c0baed6f03e9614977e097f726fb"
+      },
+      {
+        "name": "S28BW-826100719540_0007.jpg",
+        "sha256": "2b94d2a47091183232274aaceb314ccea19118d6ea75cd3247ee328389c05c3c"
+      },
+      {
+        "name": "S28BW-826100719540_0008.jpg",
+        "sha256": "a65247b28b9ffbfc90062c2e1fe08a6507a3abfb8389fa5e75dcca0cb5c18df5"
+      },
+      {
+        "name": "S28BW-826100719540_0009.jpg",
+        "sha256": "2d717d230b5e4c210948589db8188733c02e82dce187714238d9d5e5982bd09c"
+      },
+      {
+        "name": "S28BW-826100719540_0010.jpg",
+        "sha256": "b2048cdb83b679de46cea3a9629cd124c8abe779d7e299131f597342d3a7e694"
+      }
+    ],
+    "sourceExtractionSequence": [
+      "FULL_PAGE_EXACT_EXTRACTION",
+      "SOURCE_TEXT_FREEZE",
+      "QUESTION_LAYOUT_BUILD",
+      "SOURCE_TEXT_EXACT_PARITY",
+      "QUESTION_LAYOUT_FREEZE",
+      "SOURCE_FIDELITY_FREEZE"
+    ],
+    "sourceFreezeStatus": "ORIGINAL_Q11_REPLACED_AFTER_SOURCE_HOLD",
+    "sourceHoldQids": [
+      11
+    ],
+    "recoveryRef": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/ITEM_RECOVERY.q11.evidence.json"
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "9ab7a1efe84b6474bf6572c459645ca4452b4e1f771c48c39c9c9a73b5920226",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-05",
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "problemImage": {
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q1.png",
+          "sha256": "532c54ddc2da6875f36735e9953ab4eb71313882ac64c40bf302ba938a641360",
+          "provenance": "SOURCE_PAGE_CROP",
+          "sourcePageSha256": "bc25df4fffc7cba0eaa345910117ecab7da6c0baed6f03e9614977e097f726fb"
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q1.png"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0006.jpg",
+          "sourcePageSha256": "bc25df4fffc7cba0eaa345910117ecab7da6c0baed6f03e9614977e097f726fb",
+          "printedQuestionId": 1,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": []
+    },
+    {
+      "qid": 2,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "c8287947c5868ca2f1d5ab9df5c2c8e4ba20be6c798cb1286787727b0ce94aa9",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-05",
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "problemImage": {
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q2.png",
+          "sha256": "8c253a8b80a5dbbfb90003b780cf5613e835168bb00b4d92ad042c017bd980f5",
+          "provenance": "SOURCE_PAGE_CROP",
+          "sourcePageSha256": "bc25df4fffc7cba0eaa345910117ecab7da6c0baed6f03e9614977e097f726fb"
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q2.png"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0006.jpg",
+          "sourcePageSha256": "bc25df4fffc7cba0eaa345910117ecab7da6c0baed6f03e9614977e097f726fb",
+          "printedQuestionId": 2,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": []
+    },
+    {
+      "qid": 3,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "c60549453a63770cd70159329c11356a534e914b953c50af3e6ce00cc8fa3abe",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-05",
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "NOT_REQUIRED",
+        "problemImage": {
+          "reason": "No source diagram is required for this symbolic item."
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "ref": ""
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0006.jpg",
+          "sourcePageSha256": "bc25df4fffc7cba0eaa345910117ecab7da6c0baed6f03e9614977e097f726fb",
+          "printedQuestionId": 3,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current ACTIVE problemTypeKey/templateKey registry lookup did not yield a unique canonical projection for this exact source type; semantic labels were not fabricated.",
+      "problemTypeKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH",
+      "templateKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH"
+    },
+    {
+      "qid": 4,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "16633700031897471b01f11165bde9912f836f85a23d5350fef6d6f5e55e5421",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-05",
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "NOT_REQUIRED",
+        "problemImage": {
+          "reason": "No source diagram is required for this symbolic item."
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "ref": ""
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0006.jpg",
+          "sourcePageSha256": "bc25df4fffc7cba0eaa345910117ecab7da6c0baed6f03e9614977e097f726fb",
+          "printedQuestionId": 4,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current ACTIVE problemTypeKey/templateKey registry lookup did not yield a unique canonical projection for this exact source type; semantic labels were not fabricated.",
+      "problemTypeKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH",
+      "templateKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH"
+    },
+    {
+      "qid": 5,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "d2bbf8f2f3d2c1bd2724b6661c60614c827d7efcfb956b12e7b4dfe14c88cf5f",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-05",
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "NOT_REQUIRED",
+        "problemImage": {
+          "reason": "No source diagram is required for this symbolic item."
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "ref": ""
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0006.jpg",
+          "sourcePageSha256": "bc25df4fffc7cba0eaa345910117ecab7da6c0baed6f03e9614977e097f726fb",
+          "printedQuestionId": 5,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current ACTIVE problemTypeKey/templateKey registry lookup did not yield a unique canonical projection for this exact source type; semantic labels were not fabricated.",
+      "problemTypeKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH",
+      "templateKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH"
+    },
+    {
+      "qid": 6,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "e26c9225d20b52281b6262e5be817a2d12fa86f589983d9defb3e28f6369b9dd",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-05",
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "problemImage": {
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q6.png",
+          "sha256": "aeb124507dbbb0a2f79e5d46f3ceaee7a405af9342aa7e864b747033668cb761",
+          "provenance": "SOURCE_PAGE_CROP",
+          "sourcePageSha256": "2b94d2a47091183232274aaceb314ccea19118d6ea75cd3247ee328389c05c3c"
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q6.png"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0007.jpg",
+          "sourcePageSha256": "2b94d2a47091183232274aaceb314ccea19118d6ea75cd3247ee328389c05c3c",
+          "printedQuestionId": 6,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current ACTIVE problemTypeKey/templateKey registry lookup did not yield a unique canonical projection for this exact source type; semantic labels were not fabricated.",
+      "problemTypeKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH",
+      "templateKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH"
+    },
+    {
+      "qid": 7,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "732bbdf9736946048c527926d854d4f1c8cac00a7e61e09ffec0f52d2263dd7f",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-05",
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "problemImage": {
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q7.png",
+          "sha256": "36b744ca9521b20ae25e5804d2307b0eb85fb80199fe060344d37eb86db1aef6",
+          "provenance": "SOURCE_PAGE_CROP",
+          "sourcePageSha256": "2b94d2a47091183232274aaceb314ccea19118d6ea75cd3247ee328389c05c3c"
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q7.png"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0007.jpg",
+          "sourcePageSha256": "2b94d2a47091183232274aaceb314ccea19118d6ea75cd3247ee328389c05c3c",
+          "printedQuestionId": 7,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": []
+    },
+    {
+      "qid": 8,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "a5d20154c2b46757f3224a1f035c2ab72ab04aed3b1746b51dac0bf42fce77d6",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-05",
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "problemImage": {
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q8.png",
+          "sha256": "cf68e32a8a58eabf4f63c26747e0ef937ed402633e67d3c78c9fe9086371637b",
+          "provenance": "SOURCE_PAGE_CROP",
+          "sourcePageSha256": "2b94d2a47091183232274aaceb314ccea19118d6ea75cd3247ee328389c05c3c"
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q8.png"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0007.jpg",
+          "sourcePageSha256": "2b94d2a47091183232274aaceb314ccea19118d6ea75cd3247ee328389c05c3c",
+          "printedQuestionId": 8,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current ACTIVE problemTypeKey/templateKey registry lookup did not yield a unique canonical projection for this exact source type; semantic labels were not fabricated.",
+      "problemTypeKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH",
+      "templateKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH"
+    },
+    {
+      "qid": 9,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "7e2548d0b1348efda5280c83c49bcfb3df6851b2c23fd7978a10ee522636b2cd",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-05",
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "problemImage": {
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q9.png",
+          "sha256": "ff30dc3f4f8104f835a1016308cb2eca36217be483db97a28a59e479a019bcdf",
+          "provenance": "SOURCE_PAGE_CROP",
+          "sourcePageSha256": "2b94d2a47091183232274aaceb314ccea19118d6ea75cd3247ee328389c05c3c"
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q9.png"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0007.jpg",
+          "sourcePageSha256": "2b94d2a47091183232274aaceb314ccea19118d6ea75cd3247ee328389c05c3c",
+          "printedQuestionId": 9,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current ACTIVE problemTypeKey/templateKey registry lookup did not yield a unique canonical projection for this exact source type; semantic labels were not fabricated.",
+      "problemTypeKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH",
+      "templateKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH"
+    },
+    {
+      "qid": 10,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "557f4a8177e0091ac99ce3cbf470bfffc0e5773d0fab7f07f4b9f8c19b096855",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-05",
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "problemImage": {
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q10.png",
+          "sha256": "cf8a51788d7798dbc20f8f5bbc24c3b841fe5368fa8f8fbcbbfe4c292ce7e20c",
+          "provenance": "SOURCE_PAGE_CROP",
+          "sourcePageSha256": "2b94d2a47091183232274aaceb314ccea19118d6ea75cd3247ee328389c05c3c"
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q10.png"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0007.jpg",
+          "sourcePageSha256": "2b94d2a47091183232274aaceb314ccea19118d6ea75cd3247ee328389c05c3c",
+          "printedQuestionId": 10,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": []
+    },
+    {
+      "qid": 11,
+      "sourceMode": "AUDITED_REPAIR",
+      "verdict": "PASS",
+      "solutionSha256": "548cae63154c6df2d6f726fdaa02b5bd360523d12d293f757b249b1107d0e966",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "NOT_APPLICABLE_QUESTION_REPLACEMENT",
+      "choicesExactParityStatus": "NOT_APPLICABLE_QUESTION_REPLACEMENT",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_HOLD",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Question-only replacement states both diagonal lengths and the included acute angle in text; no source image with handwritten annotations is reused."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Replacement solution derives the quadrilateral formula by summing four triangle areas, factors both diagonal lengths, and shows the exact substitution and final value."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-05",
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Fresh q11-only semantic/difficulty judgment is bound in ITEM_RECOVERY.q11.meta-fresh-evidence.json."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "problemImage": "NOT_REQUIRED_TEXT_COMPLETE_REPLACEMENT",
+        "solutionSvg": "NOT_REQUIRED"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/ITEM_RECOVERY.q11.evidence.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/ITEM_RECOVERY.q11.evidence.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/ITEM_RECOVERY.q11.meta-fresh-evidence.json"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED_TEXT_COMPLETE"
+        }
+      },
+      "provenanceEvidence": {
+        "repair": {
+          "recoveryType": "QUESTION_REPLACEMENT",
+          "method": "CODEX_DIRECT_AUTHORING",
+          "replacementScope": "QUESTION_ONLY",
+          "reason": "ORIGINAL_ITEM_UNRECOVERABLE_AFTER_REVIEW2",
+          "sourceTruthFreezeRef": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/ITEM_RECOVERY.q11.source-truth-freeze.json",
+          "sourceTruthFreezeSha256": "8616f68b388a77bf8281dc5123d0cf8aa5b2bc312a22fa5d45e29012f5fc61fa"
+        },
+        "repairedTruth": {
+          "content": "사각형 ABCD의 두 대각선 AC, BD의 길이가 각각 10 cm, 6 cm이고, 두 대각선이 이루는 예각의 크기가 60°일 때, 사각형 ABCD의 넓이는? (4점)",
+          "choices": [
+            "$15 \\,\\mathrm{cm}^2$",
+            "$15\\sqrt{3} \\,\\mathrm{cm}^2$",
+            "$30 \\,\\mathrm{cm}^2$",
+            "$30\\sqrt{3} \\,\\mathrm{cm}^2$",
+            "$60 \\,\\mathrm{cm}^2$"
+          ],
+          "answer": "②",
+          "solutionSha256": "548cae63154c6df2d6f726fdaa02b5bd360523d12d293f757b249b1107d0e966",
+          "studentBundleRef": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/handoff/ITEM_RECOVERY.q11.current-final-student-only-bundle.json",
+          "studentBundleSha256": "022061182de57af15431f31efcd20001dd86bd43dd20fbc9d1ad57e339b3be47",
+          "metaEvidenceRef": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/ITEM_RECOVERY.q11.meta-fresh-evidence.json"
+        }
+      },
+      "metaDebtFields": [],
+      "sourceHoldEvidenceRef": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/evidence/q11-source-ambiguity-hold.json"
+    },
+    {
+      "qid": 12,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "06937e72dc0faf7bbc8cc8903d4b1736fcf997e43628b2f03928b5127227ad34",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-05",
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "problemImage": {
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q12.png",
+          "sha256": "5f1df34b60b0006f481c53a3606d34d0e26f5c1a70cf5225701635b0e0d32d30",
+          "provenance": "SOURCE_PAGE_CROP",
+          "sourcePageSha256": "a65247b28b9ffbfc90062c2e1fe08a6507a3abfb8389fa5e75dcca0cb5c18df5"
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q12.png"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0008.jpg",
+          "sourcePageSha256": "a65247b28b9ffbfc90062c2e1fe08a6507a3abfb8389fa5e75dcca0cb5c18df5",
+          "printedQuestionId": 12,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": []
+    },
+    {
+      "qid": 13,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "1e8d783a34760e3320a19c530eb70168b896fe43032893f44d2c66e1ed5c4990",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-05",
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "problemImage": {
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q13.png",
+          "sha256": "83888a45eccc8f32c8e24ce643cb36cdc5fab6d22875f107816ddedb241c955c",
+          "provenance": "SOURCE_PAGE_CROP",
+          "sourcePageSha256": "a65247b28b9ffbfc90062c2e1fe08a6507a3abfb8389fa5e75dcca0cb5c18df5"
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q13.png"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0008.jpg",
+          "sourcePageSha256": "a65247b28b9ffbfc90062c2e1fe08a6507a3abfb8389fa5e75dcca0cb5c18df5",
+          "printedQuestionId": 13,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": []
+    },
+    {
+      "qid": 14,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "ec88ad1aa53b586757c1955f540282ee0e9d5a3ed9fc638b9548f8b471f282ad",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "problemImage": {
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q14.png",
+          "sha256": "cc0cd1f1a656d9c034355513a6298e0eb0fc3a8e6bae40a60cfbe6b01b91cb0b",
+          "provenance": "SOURCE_PAGE_CROP",
+          "sourcePageSha256": "a65247b28b9ffbfc90062c2e1fe08a6507a3abfb8389fa5e75dcca0cb5c18df5"
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q14.png"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0008.jpg",
+          "sourcePageSha256": "a65247b28b9ffbfc90062c2e1fe08a6507a3abfb8389fa5e75dcca0cb5c18df5",
+          "printedQuestionId": 14,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current ACTIVE problemTypeKey/templateKey registry lookup did not yield a unique canonical projection for this exact source type; semantic labels were not fabricated.",
+      "problemTypeKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH",
+      "templateKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH"
+    },
+    {
+      "qid": 15,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "e24625e435d7b6270be0bb8b41fca018495b76fdacdeb2ecd6be5773b8853ad9",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "problemImage": {
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q15.png",
+          "sha256": "a1e9aa2b66af7d083f4fef3a94706c8b00e4a957db6d2fd985ccc5cfd2bae064",
+          "provenance": "SOURCE_PAGE_CROP",
+          "sourcePageSha256": "a65247b28b9ffbfc90062c2e1fe08a6507a3abfb8389fa5e75dcca0cb5c18df5"
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q15.png"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0008.jpg",
+          "sourcePageSha256": "a65247b28b9ffbfc90062c2e1fe08a6507a3abfb8389fa5e75dcca0cb5c18df5",
+          "printedQuestionId": 15,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current ACTIVE problemTypeKey/templateKey registry lookup did not yield a unique canonical projection for this exact source type; semantic labels were not fabricated.",
+      "problemTypeKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH",
+      "templateKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH"
+    },
+    {
+      "qid": 16,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "5b042c03772bce6635b4e232df95f05a6beefb563963a7ae059cb2eabf7592cf",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "problemImage": {
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q16.png",
+          "sha256": "0839f9dde828d780222a98b29a07208be7c3eadfe67b9dde17db210c0f518850",
+          "provenance": "SOURCE_PAGE_CROP",
+          "sourcePageSha256": "a65247b28b9ffbfc90062c2e1fe08a6507a3abfb8389fa5e75dcca0cb5c18df5"
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q16.png"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0008.jpg",
+          "sourcePageSha256": "a65247b28b9ffbfc90062c2e1fe08a6507a3abfb8389fa5e75dcca0cb5c18df5",
+          "printedQuestionId": 16,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": []
+    },
+    {
+      "qid": 17,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "12022d410fdf3aba8c4ae0cd9a59623b4cc5d8799530d50e89e9cea499499cd8",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "problemImage": {
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q17.png",
+          "sha256": "51c66bef3c163e02a3dd5a054246226fd1810b1efe75a060c777fc9835efe319",
+          "provenance": "SOURCE_PAGE_CROP",
+          "sourcePageSha256": "a65247b28b9ffbfc90062c2e1fe08a6507a3abfb8389fa5e75dcca0cb5c18df5"
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q17.png"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0008.jpg",
+          "sourcePageSha256": "a65247b28b9ffbfc90062c2e1fe08a6507a3abfb8389fa5e75dcca0cb5c18df5",
+          "printedQuestionId": 17,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current ACTIVE problemTypeKey/templateKey registry lookup did not yield a unique canonical projection for this exact source type; semantic labels were not fabricated.",
+      "problemTypeKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH",
+      "templateKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH"
+    },
+    {
+      "qid": 18,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "7525037797e8610cc6d673068b9228d1084dfefffd55663090ed175a0a2b3868",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "problemImage": {
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q18.png",
+          "sha256": "973552ff1ff8c3a26685d65cfd7f126c9f8c12d7a8bd47bb5082f3c0d5491e83",
+          "provenance": "SOURCE_PAGE_CROP",
+          "sourcePageSha256": "2d717d230b5e4c210948589db8188733c02e82dce187714238d9d5e5982bd09c"
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q18.png"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0009.jpg",
+          "sourcePageSha256": "2d717d230b5e4c210948589db8188733c02e82dce187714238d9d5e5982bd09c",
+          "printedQuestionId": 18,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current ACTIVE problemTypeKey/templateKey registry lookup did not yield a unique canonical projection for this exact source type; semantic labels were not fabricated.",
+      "problemTypeKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH",
+      "templateKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH"
+    },
+    {
+      "qid": 19,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "9960cf0c823e97590827ff5281610ddaa1847c360cf9f5a462205deee94104db",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "problemImage": {
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q19.png",
+          "sha256": "3c1ffd11e7a440cb83adde20a1050926bbebf884f040115af47cfb70fad6df37",
+          "provenance": "SOURCE_PAGE_CROP",
+          "sourcePageSha256": "2d717d230b5e4c210948589db8188733c02e82dce187714238d9d5e5982bd09c"
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q19.png"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0009.jpg",
+          "sourcePageSha256": "2d717d230b5e4c210948589db8188733c02e82dce187714238d9d5e5982bd09c",
+          "printedQuestionId": 19,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current ACTIVE problemTypeKey/templateKey registry lookup did not yield a unique canonical projection for this exact source type; semantic labels were not fabricated.",
+      "problemTypeKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH",
+      "templateKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH"
+    },
+    {
+      "qid": 20,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "e3efc641ee48c2a0b716c479f8df7c379ece22da1c808f3b2598c97bb5461700",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "problemImage": {
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q20.png",
+          "sha256": "fdb8e304ac3f9e8e5e128498707d43bbbd63c46738529e2bbe203c351fbf36c5",
+          "provenance": "SOURCE_PAGE_CROP",
+          "sourcePageSha256": "2d717d230b5e4c210948589db8188733c02e82dce187714238d9d5e5982bd09c"
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q20.png"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0009.jpg",
+          "sourcePageSha256": "2d717d230b5e4c210948589db8188733c02e82dce187714238d9d5e5982bd09c",
+          "printedQuestionId": 20,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current ACTIVE problemTypeKey/templateKey registry lookup did not yield a unique canonical projection for this exact source type; semantic labels were not fabricated.",
+      "problemTypeKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH",
+      "templateKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH"
+    },
+    {
+      "qid": 21,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "fdfcee1a2a780405ec4405ca1e603f0431f2958be10c24f206f00ba4a090058f",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-05",
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "problemImage": {
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q21.png",
+          "sha256": "ebf97540712f7867427b3472c0677a93c653a086ecb230e0bd7555e7f69f6b73",
+          "provenance": "SOURCE_PAGE_CROP",
+          "sourcePageSha256": "b2048cdb83b679de46cea3a9629cd124c8abe779d7e299131f597342d3a7e694"
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q21.png"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0010.jpg",
+          "sourcePageSha256": "b2048cdb83b679de46cea3a9629cd124c8abe779d7e299131f597342d3a7e694",
+          "printedQuestionId": 21,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": []
+    },
+    {
+      "qid": 22,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "d987b2ffa7da681825f358025668ab30b3dd4c706c81de5e49d15a908fb82583",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-05",
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "problemImage": {
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q22.png",
+          "sha256": "99a01d257ca90e9907d2e354751f6192b3a366853645bdc9b5d0c377d66b9e24",
+          "provenance": "SOURCE_PAGE_CROP",
+          "sourcePageSha256": "b2048cdb83b679de46cea3a9629cd124c8abe779d7e299131f597342d3a7e694"
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q22.png"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0010.jpg",
+          "sourcePageSha256": "b2048cdb83b679de46cea3a9629cd124c8abe779d7e299131f597342d3a7e694",
+          "printedQuestionId": 22,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": []
+    },
+    {
+      "qid": 23,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "3a152935c22fc7b473dcb6285e421c5c27f29e0a2d85b5010cb8568c607cf92c",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "problemImage": {
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q23.png",
+          "sha256": "0160c6615bf17a59688ed9ec4a6f118391235ec567b36eddb2bfe519a19e8140",
+          "provenance": "SOURCE_PAGE_CROP",
+          "sourcePageSha256": "b2048cdb83b679de46cea3a9629cd124c8abe779d7e299131f597342d3a7e694"
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q23.png"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0010.jpg",
+          "sourcePageSha256": "b2048cdb83b679de46cea3a9629cd124c8abe779d7e299131f597342d3a7e694",
+          "printedQuestionId": 23,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current ACTIVE problemTypeKey/templateKey registry lookup did not yield a unique canonical projection for this exact source type; semantic labels were not fabricated.",
+      "problemTypeKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH",
+      "templateKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH"
+    },
+    {
+      "qid": 24,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "8fadecb6a98842c199be14a7eba463ae7baf8137a88cd67d572dc5ed0da7ac4f",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayout": {
+        "beforeDisposition": "LAYOUT_KEEP",
+        "finalDisposition": "LAYOUT_KEEP",
+        "reason": "Source order and formula/condition boundaries retained; default grid; no unsupported override."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "reason": "Stepwise equations, substitutions, and final value remain traceable."
+      },
+      "meta": {
+        "status": "PASS",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "reason": "Printed source topic and decisive method map to the current M3 standard-unit and sub-unit master."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "problemImage": {
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q24.png",
+          "sha256": "2588413617b500264f4b0c1ba0afde170041eacb370e1e965879e5dd186f20db",
+          "provenance": "SOURCE_PAGE_CROP",
+          "sourcePageSha256": "b2048cdb83b679de46cea3a9629cd124c8abe779d7e299131f597342d3a7e694"
+        },
+        "solutionSvg": "NOT_REQUIRED_SOURCE_DIAGRAM_SUFFICIENT"
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidenceRef": "golden-negative-preflight.json"
+        },
+        "meta": {
+          "status": "PASS",
+          "evidenceRef": "source-extraction-freeze.json"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "ref": "assets/images/26_팔마중_2학기_중간_중3_기출/q24.png"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFormat": "JPEG_PAGE_SCANS",
+          "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+          "sourceBundleSha256": "d1ea43c38b8fe241c0076347cb04f31ee989d3a36dbb1ffcc12efc65ea6f2e41",
+          "sourcePage": "S28BW-826100719540_0010.jpg",
+          "sourcePageSha256": "b2048cdb83b679de46cea3a9629cd124c8abe779d7e299131f597342d3a7e694",
+          "printedQuestionId": 24,
+          "sourceTextExactParity": "PASS_BY_SCAN_TRANSCRIPTION",
+          "choicesExactParity": "PASS"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current ACTIVE problemTypeKey/templateKey registry lookup did not yield a unique canonical projection for this exact source type; semantic labels were not fabricated.",
+      "problemTypeKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH",
+      "templateKeyNullReason": "EXHAUSTIVE_ACTIVE_REGISTRY_NO_EXACT_MATCH"
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "a64aa62f76737f3d74f3f81ed50ac50e505288b4",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserve the current artifact's physically null Meta projection fields as existing disposition debt; R2 performs no semantic Meta reclassification."
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserve the current artifact's physically null Meta projection fields as existing disposition debt; R2 performs no semantic Meta reclassification."
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserve the current artifact's physically null Meta projection fields as existing disposition debt; R2 performs no semantic Meta reclassification."
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserve the current artifact's physically null Meta projection fields as existing disposition debt; R2 performs no semantic Meta reclassification."
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 23,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 24,
+        "metaDebtFields": []
+      }
+    ]
+  },
+  "recoveryEvidenceRef": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/ITEM_RECOVERY.q11.evidence.json",
+  "studentBundleRef": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/handoff/ITEM_RECOVERY.q11.current-final-student-only-bundle.json",
+  "studentBundleSha256": "022061182de57af15431f31efcd20001dd86bd43dd20fbc9d1ad57e339b3be47"
+}

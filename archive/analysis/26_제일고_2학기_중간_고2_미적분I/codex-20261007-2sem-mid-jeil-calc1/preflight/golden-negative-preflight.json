@@ -1,0 +1,213 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_CALIBRATION_PREFLIGHT_V1",
+  "examUid": "26_제일고_2학기_중간_고2_미적분I",
+  "stage": "CREATE",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "sampleReadBeforeWork": true,
+  "calibrationStatus": "PASS",
+  "solutionWorkMode": "SOURCE_ONLY_CREATE",
+  "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d",
+      "items": [
+        {
+          "qid": 1,
+          "observation": "학생이 따라 할 거리 공식의 좌표차 대입, 제곱 합, 제곱근 정리를 작은 단계로 분리했다. target에서는 한계·미분 정의의 대입과 극한 정리를 같은 식 전환마다 보이게 한다.",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY"
+          ],
+          "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+          "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(3,0)$에 대하여\n$x$좌표의 차는\n$3-(-2)=5$이고,\n$y$좌표"
+        },
+        {
+          "qid": 5,
+          "observation": "집합 원소 대응을 먼저 명시하고 변수 관계를 대입 후 결론을 냈다. target에서도 조건에서 얻는 관계와 최종 대입을 건너뛰지 않는다.",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY"
+          ],
+          "solutionSha256": "sha256:8e1a0f149d821431abc022690f63b1b99c675d8373a575c92dc4d1688dc4b109",
+          "solutionExcerpt": "두 집합 $A$, $B$가 같으므로 두 집합에 들어 있는 원소가 정확히 같아야 한다.\n$A=\\{3,2a,b-4\\}$에는 원소 $3$이 반드시 들어 있다.\n따라서 $B=\\{3a,4,"
+        },
+        {
+          "qid": 2,
+          "observation": "Rendered the source SVG. The descending line matches slope -1/3, the steep ascending line matches slope 3, and the callout states k=6; axes and line crossings remain readable.",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY",
+            "VISUAL_SEMANTIC_PARITY",
+            "VISUAL_READABILITY"
+          ],
+          "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+          "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfra",
+          "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+          "visualReadAfterInitialSolutionDraft": true
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sha256": "sha256:17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+      "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4",
+      "items": [
+        {
+          "qid": 1,
+          "observation": "각 보기마다 참·거짓을 실제 원소 관계로 판정하고 선택 이유를 붙였다. target의 여러 조건 문항도 조건 단위로 나누고 결론 근거를 연결한다.",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY"
+          ],
+          "solutionSha256": "sha256:452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+          "solutionExcerpt": "집합 $A$의 원소는 $1$, $2$, $\\{1\\}$이다. 원소 관계 $\\in$와 부분집합 관계 $\\subset$를 구분하여 각 보기를 판단한다.\n\n① $1$은 $A$의 원소이므로"
+        },
+        {
+          "qid": 3,
+          "observation": "포함 불가 조건으로 선택 가능한 원소를 먼저 좁힌 뒤 독립 선택 수를 곱했다. target에서는 경우분리/계수 비교가 있으면 각 근거를 분리한다.",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY"
+          ],
+          "solutionSha256": "sha256:e664fd207ce80863250fa1281dfe247a5bbe1284ec2f37d87f3e38e034d00deb",
+          "solutionExcerpt": "부분집합에 $a$, $b$를 모두 포함하지 않으므로 나머지 원소 $c,d,e,f$만 선택하면 된다.\n$c,d,e,f$는 각각 포함하거나 포함하지 않는 두 가지 선택이 있다.\n따라서"
+        },
+        {
+          "qid": 14,
+          "observation": "Rendered the source SVG. It distinguishes the a=3 vertical/horizontal perpendicular pair from the a=1 sloped pair; line directions, axes and the parameter callout are readable.",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY",
+            "VISUAL_SEMANTIC_PARITY",
+            "VISUAL_READABILITY"
+          ],
+          "solutionSha256": "sha256:61c8f11a6d5e63b1c96916105b53e8ee083003a69bd765642d30c6ad37df6ec6",
+          "solutionExcerpt": "먼저 $a=3$인지 확인한다.\n$a=3$이면 첫째 직선은\n$x+7=0$이고 둘째 직선은\n$y=5$이다.\n하나는 수직선이고 다른 하나는 수평선이므로 서로 수직이다. 따라서 $a=3$",
+          "visualSha256": "7f7c6589bda617cbb05786ffb3927c4f23a5c0ad84c5aa7831a2f6f0a8cbcb58",
+          "visualReadAfterInitialSolutionDraft": true
+        }
+      ]
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+    "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+    "observation": "Read the fixed false-PASS regression. Check that solution text labels are not accepted without actual primitive facts, enumerated conditions have separate board blocks, resolvable metadata is not left null, and JS runtime escaping is checked after VM evaluation."
+  },
+  "completedVisualReview": {
+    "renderMethod": "Sharp SVG rendering for observation only",
+    "renderedArtifacts": [
+      ".tmp/archive/codex-20261007-2sem-mid-jeil-calc1/preflight/hyochen-q2-solution.png",
+      ".tmp/archive/codex-20261007-2sem-mid-jeil-calc1/preflight/jeil-q14-solution.png"
+    ],
+    "items": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+        "observation": "Rendered the source SVG. The descending line matches slope -1/3, the steep ascending line matches slope 3, and the callout states k=6; axes and line crossings remain readable."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 14,
+        "visualSha256": "7f7c6589bda617cbb05786ffb3927c4f23a5c0ad84c5aa7831a2f6f0a8cbcb58",
+        "observation": "Rendered the source SVG. It distinguishes the a=3 vertical/horizontal perpendicular pair from the a=1 sloped pair; line directions, axes and the parameter callout are readable."
+      }
+    ],
+    "orderNote": "Textual Golden/Negative solution samples were read before target solution drafting. The bound Golden solution visuals were opened during the post-draft calibration and final quality comparison before CREATE close."
+  },
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(3,0)$에 대하여\n$x$좌표의 차는\n$3-(-2)=5$이고,\n$y$좌표",
+        "observation": "학생이 따라 할 거리 공식의 좌표차 대입, 제곱 합, 제곱근 정리를 작은 단계로 분리했다. target에서는 한계·미분 정의의 대입과 극한 정리를 같은 식 전환마다 보이게 한다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 5,
+        "solutionSha256": "sha256:8e1a0f149d821431abc022690f63b1b99c675d8373a575c92dc4d1688dc4b109",
+        "solutionExcerpt": "두 집합 $A$, $B$가 같으므로 두 집합에 들어 있는 원소가 정확히 같아야 한다.\n$A=\\{3,2a,b-4\\}$에는 원소 $3$이 반드시 들어 있다.\n따라서 $B=\\{3a,4,",
+        "observation": "집합 원소 대응을 먼저 명시하고 변수 관계를 대입 후 결론을 냈다. target에서도 조건에서 얻는 관계와 최종 대입을 건너뛰지 않는다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfra",
+        "observation": "Rendered the source SVG. The descending line matches slope -1/3, the steep ascending line matches slope 3, and the callout states k=6; axes and line crossings remain readable."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+        "solutionExcerpt": "집합 $A$의 원소는 $1$, $2$, $\\{1\\}$이다. 원소 관계 $\\in$와 부분집합 관계 $\\subset$를 구분하여 각 보기를 판단한다.\n\n① $1$은 $A$의 원소이므로",
+        "observation": "각 보기마다 참·거짓을 실제 원소 관계로 판정하고 선택 이유를 붙였다. target의 여러 조건 문항도 조건 단위로 나누고 결론 근거를 연결한다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:e664fd207ce80863250fa1281dfe247a5bbe1284ec2f37d87f3e38e034d00deb",
+        "solutionExcerpt": "부분집합에 $a$, $b$를 모두 포함하지 않으므로 나머지 원소 $c,d,e,f$만 선택하면 된다.\n$c,d,e,f$는 각각 포함하거나 포함하지 않는 두 가지 선택이 있다.\n따라서",
+        "observation": "포함 불가 조건으로 선택 가능한 원소를 먼저 좁힌 뒤 독립 선택 수를 곱했다. target에서는 경우분리/계수 비교가 있으면 각 근거를 분리한다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 14,
+        "solutionSha256": "sha256:61c8f11a6d5e63b1c96916105b53e8ee083003a69bd765642d30c6ad37df6ec6",
+        "solutionExcerpt": "먼저 $a=3$인지 확인한다.\n$a=3$이면 첫째 직선은\n$x+7=0$이고 둘째 직선은\n$y=5$이다.\n하나는 수직선이고 다른 하나는 수평선이므로 서로 수직이다. 따라서 $a=3$",
+        "observation": "Rendered the source SVG. It distinguishes the a=3 vertical/horizontal perpendicular pair from the a=1 sloped pair; line directions, axes and the parameter callout are readable."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "qualityCompareCount": "22/22",
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "SOURCE_ONLY_CREATE",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE"
+  }
+}
