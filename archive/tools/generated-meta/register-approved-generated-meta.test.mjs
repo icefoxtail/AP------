@@ -145,6 +145,14 @@ test('registration rejects status mismatch, excluded HOLD UIDs and multi-questio
   }
 });
 
+test('new registrations reject UIDs outside the generated-bank runtime format', () => {
+  const f = fixture({ unregistered: true });
+  try {
+    f.args.uid = 'B05_Q04_C01_DISTANCE_SUM_MIN';
+    assert.throws(() => registerApprovedGeneratedMeta(f.args), /NEW_UID_RUNTIME_UID_INVALID/);
+  } finally { fs.rmSync(f.root, { recursive: true, force: true }); }
+});
+
 test('registration restores every prior file if a staged replacement fails', () => {
   const f = fixture();
   try {
