@@ -15,6 +15,11 @@
 - 제작자 후속 재검: `alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q02_SELF_RECHECK.md`, blob `d70aff2e3b0e09be90c155a6cf457e8093fdf8b3`. **수학 조건/정수 개수/선지 9문항 계산 일치; 외부 GPT 독립 검수는 미실행.**
 - 위험 확인: 기존 RPM 243·244 semantic은 있으나, 실제 9개 학생 문항의 PT/TPL 및 Generated Consumer adapter 연동은 아직 최종 검증되지 않았다. 제품 기술 정합성을 해결하는 것은 추가 '품질 승인'이 아니라 독립검수 PASS 후 출시를 위한 최소 구현이다.
 
+## CURRENT OVERRIDE — 2026-10-09 Generated 공개답 발문 우선 검수 (이전 'blind freeze 필수' 절차 우선 대체)
+- 원장 최신 지시와 main `ALIVE_GPT_QID9_ONE_SOURCE_CURRENT.md` 기준: 생성문항 검수자는 **정답·상세 해설·설계 파일을 처음부터 열어도 된다**. 학생용 발문·보기의 한국 내신 품질을 가장 먼저 판단하고 직접 수정한 뒤, 해설의 수학 계산·경계·오답을 단계적으로 추적한다.
+- `STUDENT_ONLY` 파일은 선택적인 발문 모아보기 보조자료다. 별도 차단·'답 안 보고 먼저 9개 풀어 동결'을 필수로 요구하는 아래 과거 인계 문장은 HISTORY이다. 기존 기출 R1/R2 blind 계약은 불변.
+- 의심 문항만 대체 풀이/정확 경계 대입을 집중 수행한다. 문항 품질 PASS는 최종 검수자가 실제 확인한 것을 기록하고 모든 PASS UID를 Archive2 Consumer/index/main에 즉시 등록·학생 조회 검증까지 마감한다.
+
 ## 다음 창에 붙여넣을 프롬프트
 
 2025 팔마고 고1 2학기 중간 q2 QID9 작업을 이어라. 먼저 최신 main과 `pilot/gpt-palma25-2mid-q02-9slots-20261009` HEAD 확인 후 `GPT_QID9_Q02_STUDENT_ONLY.md`의 9문항 발문·보기만 보고 정답과 모든 보기의 판정을 독립 풀이해 물리 동결하라. 그 후 `GPT_QID9_Q02_CREATE_DRAFT.md`, `GPT_QID9_Q02_DESIGN.json`, main QID9 CURRENT를 읽고 한국어 내신식 발문을 최우선으로 수학·Meta·CrossConcept·조건 경계·오답을 한 번 검수하라. 승인 UID는 별도 L4 승인 대기 없이 Archive 2.0 Generated Consumer DB와 main까지 실제 반영·검증하고 핸드오프 문서를 갱신하라. q2 완료 전 다음 원본은 시작하지 마라.
