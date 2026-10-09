@@ -1,3 +1,14 @@
+# CURRENT 2026-10-09 — q05~q08 36문항 검수·수정·main 정적 등록 완료, 다음 q09
+
+- 원본 q05~q08 각 A1~C3 9문항 검수: KEEP30, REVISED6, HOLD0. 신규 36개 원장 지시 품질승인.
+- git main 52c66767e8ad9ef28bc243566d5396b2170b54b1 에 25파일 원자적 등록. 신규 Source 4, metadata 4, Consumer 4, Consumer index +36.
+- main index 전체 382, 팔마고 99, 기존 346 UID 보존 및 신규 36 UID 정적 parity PASS. 이미 승인된 q01~q04 36건 재검수·재등록 금지.
+- 실제 신규 36건 Chrome student lookup과 시험지/해설/정답 실렌더 미실시: MAIN_STATIC_REGISTERED / CHROME_NOT_TESTED (MAIN_DONE 아님).
+- 남은 canonical Meta evidence debt 14건(외심 CrossConcept 2 / 원과 직선 Condition 9 / 평행이동 양수조건 3). 부채는 명시적으로 저장되어 있으며 NONE 조작 금지.
+- 현재 통합 브랜치에서 **다음 신규 제작 q09**. q05~q08 재생성·중복 등록·독립 GPT 이중 인증 금지.
+- 실행 원장: GPT_QID9_Q05_Q08_OPENBOOK_REVIEW_REPAIR_20261009.md, GPT_QID9_Q05_Q08_MAIN_STATIC_RELEASE_LEDGER.md(최신 main), Git manifest 최신 main/브랜치 동기화.
+
+---
 # CURRENT 2026-10-09 — q08 CREATE checkpoint
 
 - q08 합집합·교집합 원소 개수 A1~C3 9개 신규 후보 저장. 제작자 역발문 KEEP6/REVISED3/HOLD0.
