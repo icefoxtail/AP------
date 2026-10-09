@@ -1,0 +1,14 @@
+[
+  {
+    "qid": 21,
+    "independentAnswer": {
+      "(1)": 7,
+      "(2)": 9
+    },
+    "reasoning": "The total number of equally likely 4-marble selections is C(12,4)=495. (1) If A has w white marbles, the probability of drawing four white marbles is C(w,4)/495. Thus C(w,4)=495*(7/99)=35. For w<4 the probability is 0; for w=4,5,6,7,8,9,10,11,12 the values C(w,4) are 1,5,15,35,70,126,210,330,495, so the unique count is w=7. (2) If B has w white marbles and 12-w red marbles, the probability of drawing three white and one red is C(w,3)C(12-w,1)/495. Thus C(w,3)(12-w)=495*(28/55)=252. Feasible integer w runs from 3 to 12; the corresponding products are 9,32,70,120,175,224,252,240,165,0, respectively. Only w=9 gives 252, so the unique count is 9.",
+    "branchesConsidered": {
+      "part1": "All integer white counts w=0..12 considered; w<4 yields zero, and C(w,4) increases strictly for w>=4, with only w=7 giving 35.",
+      "part2": "All feasible integer white counts w=3..12 enumerated; the target product 252 occurs only at w=9."
+    }
+  }
+]

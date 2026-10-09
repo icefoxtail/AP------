@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_META_FRESH_REVIEW_V1",
+  "examUid": "23_매산여고_1학기_중간_고2_확률과통계",
+  "qid": 21,
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "artifactRawSha256": "2d7c596ecd62024f22240a3db69817f298b8ae00fbf6d9f657bf52575781c92b",
+  "artifactSha": "4dfecb3c40e9e185274afc40dc5cbeb43ec08137",
+  "solutionSha256": "2c90662153f516b78879b6cfcafb98b20870f05edd6ff00ad0c4ed2d65e046fc",
+  "fields": {
+    "standardCourse": "확률과 통계",
+    "standardUnitKey": "H15-PS-03",
+    "standardUnit": "확률의 뜻과 활용",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H15-PS-03-PROBABILITY_APPLICATION",
+    "subUnit": "확률의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H15-PS-03-PROBABILITY_APPLICATION",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryPath": "2015 확률과 통계 > 경우의 수 > 확률의 활용 > 확률의 기본 성질과 활용 > 확률의 뜻·기본 계산",
+    "rpmL3": "확률의 기본 성질과 활용",
+    "rpmL4": "확률의 뜻·기본 계산",
+    "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+    "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+    "projectionStatus": "PROJECTION_REUSE",
+    "crossConceptKeys": [
+      "CC_COMBINATORICS_COUNTING"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "INTERDEPENDENT",
+    "category": "조합확률로 구슬 수를 역산",
+    "originalCategory": "확률의 뜻과 활용",
+    "tags": [
+      "서술형",
+      "확률",
+      "조합",
+      "경우의수",
+      "구슬",
+      "정수조건"
+    ],
+    "level": "중",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "tagConfidence": "high",
+    "tagStatus": "reviewed_pass",
+    "answerStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
+    "reviewStatus": "reviewed_pass"
+  },
+  "rationale": {
+    "l1l2": "Both subproblems infer counts of discrete objects from finite-sample probabilities in the probability-application subunit.",
+    "rpm": "Each solution expresses an event count over C(12,4); the active probability-basic-calculation L3/L4 path is the direct semantic owner.",
+    "projection": "Current ACTIVE problemType/template binding for probability count ratios is semantically exact; reuse is appropriate.",
+    "crossConcept": "Combination counting is an indispensable second concept because event cardinalities are computed with combinations.",
+    "conditions": "The unknown marble count is integral and restricted by physical feasibility to a finite range; those constraints determine the candidate set.",
+    "integrationPattern": "The probability equations depend on combination counts rather than applying independently, so INTERDEPENDENT is appropriate.",
+    "difficulty": "Bucket 3 / medium because two probability-count equations are used and the second requires finite integer enumeration; no boundary pressure or legacy-level conflict."
+  },
+  "noMetaDebtIntroduced": true
+}
