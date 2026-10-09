@@ -6,7 +6,8 @@
 - Archive 2.0 등록: Q09-Q12 36 UID Source JS + metadata + Consumer/index 반영. `node archive/tools/generated-meta/auto-register-approved-qid9.mjs --check` PASS; retention gate PASS, 131 신규 UID 검사 / failures 0. 총 index 454.
 - 실제 Google Chrome student lookup/print smoke PASS: `palmaNewLookupVerified=144`, HOLD 제외. `node tools/check-archive2-runtime.cjs` 42/42 PASS. Archive2 generated bank tests 22/22 PASS.
 - 로컬 release 증거: `GPT_QID9_Q09_Q12_LOCAL_RELEASE_20261010.json`. 상태: LOCAL_REGISTERED_CHROME_PASS_MAIN_PENDING; main PR, remote readback, closeout은 미완료.
-- Git branch: `work/alive-25-palma-h1-2mid-qid9`; next source qid: 17.
+- Git branch: `work/alive-25-palma-h1-2mid-qid9`; current branch manifest next source qid: 19.
+- Branch also contains q17/q18 creator-only packages added after this release request. Both remain `NOT_RUN`/`NOT_REGISTERED`; they are not part of the 72 approved/released UIDs.
 
 ---
 
