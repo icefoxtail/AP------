@@ -1,3 +1,11 @@
+# CURRENT 2026-10-09 — q08 CREATE checkpoint
+
+- q08 합집합·교집합 원소 개수 A1~C3 9개 신규 후보 저장. 제작자 역발문 KEEP6/REVISED3/HOLD0.
+- RPM H1-RPM-238/교집합과 합집합/원소 개수, ACTIVE PT_SET_CARDINALITY/TPL.
+- 누적 CREATE 72 (q01-q08), q01-q04 출시 36 완료, q05-q08 후보 36 검수·학생 등록 전.
+- 다음 미제작 q09. 이번 지시는 신규 제작이지 새 9 UID 품질/학생 출시 완료 지시가 아님.
+
+---
 # CURRENT — 팔마고 원본 q07 CREATE 9문항 (2026-10-09)
 
 - q07 최신 원본 `도형의 이동 / 원의 평행이동` 1개에서 신규 A1~C3 9문항 제작.
