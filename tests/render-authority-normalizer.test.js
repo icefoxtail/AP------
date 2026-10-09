@@ -25,6 +25,14 @@ test('Archive normalizer creates source-derived identity without treating id as 
   assert.equal(raw[0].sourceQuestionUid, undefined, 'normalization must not mutate raw source data');
 });
 
+test('Archive normalizer preserves a per-solution fullwidth image layout directive', () => {
+  const questions = A.normalizeArchiveQuestions([{ id: 4, content: '문항', answer: '84°', solution: '해설',
+    solutionImage: 'assets/images/q4-solution.svg', solutionImageSize: 'full', solutionImageLayout: 'fullwidth' }],
+  { sourceArchiveFile: 'exams/archive.js' });
+  assert.equal(questions[0].solutionImageLayout,'fullwidth');
+  assert.equal(questions[0].solutionImageSize,'full');
+});
+
 test('Mixer normalizer retains per-question provenance for same-id/different-source inputs', () => {
   const raw = [
     { id: 7, _sourceFile: 'exams/a.js', questionUid: 'uid-a', sourceQuestionOrdinal: 3, sourceQuestionNo: 7, content: 'A' },

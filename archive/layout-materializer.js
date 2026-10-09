@@ -6,6 +6,11 @@
         const cols = [0, 1].map(() => { const col = document.createElement('div'); col.className = columnClass; grid.appendChild(col); return col; });
         page.body.appendChild(grid); return cols;
     }
+    function fullwidthColumn(page, document) {
+        const grid = document.createElement('div'); grid.className = 'grid-container sol-fullwidth-grid';
+        const col = document.createElement('div'); col.className = 'grid-col sol-grid-col sol-fullwidth-column';
+        grid.appendChild(col); page.body.appendChild(grid); return col;
+    }
     function assertQuestionImagesReady(root, deps) {
         const readiness = deps.validateQuestionImageReadiness?.(root);
         if (readiness && !readiness.ok) {
@@ -77,23 +82,26 @@
         document.body.appendChild(probe);
         const probePage = deps.makePage(probe, 'sol', 0);
         const cols = columns(probePage, document, undefined, 'grid-col sol-grid-col');
+        const wideCol = fullwidthColumn(probePage, document);
         const marker = document.createElement('div'); marker.style.cssText = 'flex:none;height:0;min-height:0;padding:0;margin:0;';
         const capacity = measuredSolutionCapacity(document, probePage);
         const records = [];
         let succeeded = false;
-        const flowHeight = node => {
-            cols[0].replaceChildren(node, marker);
-            return Math.max(1, marker.getBoundingClientRect().top - cols[0].getBoundingClientRect().top);
+        const flowHeight = (node, wide = false) => {
+            const host = wide ? wideCol : cols[0];
+            host.replaceChildren(node, marker);
+            return Math.max(1, marker.getBoundingClientRect().top - host.getBoundingClientRect().top);
         };
         try {
             boxes.forEach((box, index) => {
+                const fullWidth = box.dataset.solutionFullWidth === 'true' || blocks[index].fullWidth === true;
                 const originalStyle = box.style.cssText;
-                const rawHeight = flowHeight(box);
+                const rawHeight = flowHeight(box, fullWidth);
                 deps.autoCompress(box);
-                const compressedHeight = flowHeight(box), compressedStyle = box.style.cssText;
+                const compressedHeight = flowHeight(box, fullWidth), compressedStyle = box.style.cssText;
                 box.style.cssText = originalStyle; deps.stagingHost.appendChild(box);
                 records.push({ box, originalStyle, compressedStyle, chunks: null,
-                    input: { blockId: blocks[index].blockId, rawHeight, compressedHeight, chunkCount: blocks[index].chunks.length, continuationHeights: {} } });
+                    input: { blockId: blocks[index].blockId, rawHeight, compressedHeight, chunkCount: blocks[index].chunks.length, fullWidth, continuationHeights: {} } });
             });
             const byId = new Map(records.map(record => [record.input.blockId, record]));
             let plan;
@@ -103,7 +111,9 @@
                 if (plan.status === 'READY') break;
                 const query = plan.measurementRequest, record = byId.get(query.blockId);
                 if (!record.chunks) {
-                    const host = document.createElement('div'); host.style.width = '83mm'; deps.stagingHost.appendChild(host);
+                    const host = document.createElement('div');
+                    host.style.width = record.input.fullWidth ? `${Math.max(1, wideCol.clientWidth - 24)}px` : '83mm';
+                    deps.stagingHost.appendChild(host);
                     record.chunks = deps.makeSolutionHtmlChunks(record.box.dataset.solutionHtml).map(html => { const node = document.createElement('span'); node.className = 'sol-chunk'; node.innerHTML = html; host.appendChild(node); return node; });
                     if (record.chunks.length !== record.input.chunkCount) throw new Error('SOLUTION_CHUNK_SCHEMA_PARITY_FAILED');
                     await deps.typesetMath('solution-planner-chunks', [host]);
@@ -115,7 +125,7 @@
                 const heights = [];
                 for (let index = query.start; index < record.chunks.length; index += 1) {
                     exp.appendChild(record.chunks[index]);
-                    heights.push(flowHeight(shell));
+                    heights.push(flowHeight(shell, record.input.fullWidth));
                     if (Math.round(heights.at(-1)) > capacity + 2) break;
                 }
                 exp.replaceChildren(); shell.remove();
@@ -127,7 +137,9 @@
             const placements = [];
             const occurrences = new Map();
             for (const pagePlan of plan.pages) {
-                const page = deps.makePage(area, 'sol', pagePlan.pageNo), target = columns(page, document, undefined, 'grid-col sol-grid-col');
+                const page = deps.makePage(area, 'sol', pagePlan.pageNo);
+                const fullWidthPage = pagePlan.itemPlacements.some(item => item.columnSpan > 1);
+                const target = fullWidthPage ? [fullwidthColumn(page, document)] : columns(page, document, undefined, 'grid-col sol-grid-col');
                 for (const item of pagePlan.itemPlacements) {
                     const record = byId.get(item.blockId), sourceRef = record.box.dataset.sourceRef;
                     let node = record.box;
@@ -146,6 +158,7 @@
                     target[item.columnNo - 1].appendChild(node);
                     const measurements = measurementsBySource.get(sourceRef);
                     placements.push({ blockId, questionKey: sourceRef, pageNo: pagePlan.pageNo, columnNo: item.columnNo,
+                        columnSpan: item.columnSpan, layoutTag: item.layoutTag || 'solution',
                         columnOrder: item.columnOrder, placementOrder: item.attemptOrder, continuationOf: item.continuation > 0 ? `solution:${sourceRef}:1` : '',
                         measurementMode: 'raw', measuredHeight: measurements.raw, measurements });
                 }

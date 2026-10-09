@@ -65,12 +65,41 @@ failure classes, NOT source reconstructions or PASS verdicts for its exam qids.
 
 - Maps must cover every POINT and SEGMENT. Source names and endpoint coordinates
   must agree; two names for coincident points are deliberately unsupported.
+- `CIRCULAR_ARC` draws only the clockwise/counterclockwise span between two
+  source points around a named center; the semantic model and independent audit
+  verify both endpoint incidences, radius, sweep direction, and angular span.
+- `pointLabelAnchors` freezes an adjacent baseline. `pointLabelCallouts` freezes
+  one external baseline; `pointLabelCalloutCandidates` freezes an ordered set of
+  baselines. The builder selects the first candidate whose owner-bound leader
+  clears geometry and previously placed labels. The review freezes the same
+  candidate set, and the independent audit confirms the selected baseline is in
+  that set. A single frozen baseline keeps its existing direct leader behavior;
+  candidate sets opt into geometry-clear routing.
 - ANGLE uses `[first ray point, vertex, second ray point]`; AUTO prefers a square
-  for 90 degrees. Minor/reflex sweeps are distinguished; 180 degrees requires
-  explicit `CW`/`CCW` in SVG screen coordinates. Same-vertex radii are separated.
+  for 90 degrees. Set `showLabel:false` when the source communicates a right
+  angle with a square marker and a numeric `90°` label is not part of the fact;
+  the marker remains owner-bound and is independently audited. Minor/reflex
+  sweeps are distinguished; 180 degrees requires explicit `CW`/`CCW` in SVG
+  screen coordinates. Same-vertex radii are separated. If the wedge cannot
+  physically fit its numeric label, `labelPlacement:"LEADER_CALLOUT"` with a
+  frozen `labelAt` or ordered `labelAtCandidates` can place the value outside
+  the wedge. Candidate sets select a clear direct or polyline route around
+  geometry and placed labels; the independent audit binds both route endpoints
+  to the angle's owner arc and value.
+- When an angle or length value has no readable wedge/segment position and no
+  geometry-clear leader route, `labelPlacement:"CONDITION_BOX"` can bind its
+  label to a named `CONDITION_BOX` object with `conditionBoxId`. The condition
+  box must contain the exact annotation value, and the independent review links
+  each annotation ID to that box in `otherLabels.conditionBoxFor`. The marker or
+  owner geometry remains visible while its value appears once in the linked
+  panel; the auditor rejects missing, duplicated, or mismatched mappings.
 - LENGTH supports ADJACENT and DIMENSION, with `side: 1|-1`. Ambiguous adjacent
   placement is rejected rather than silently attaching a value to another edge.
-  Choose DIMENSION explicitly when the source is crowded.
+  Choose DIMENSION explicitly when the source is crowded. When neither placement
+  fits, `labelPlacement:"LEADER_CALLOUT"` with a frozen `labelAt` or ordered
+  `labelAtCandidates` connects the value to the exact owner-segment midpoint.
+  Candidate leader segments must clear other geometry and placed labels, while
+  preserving the segment's midpoint as the source owner.
 - REGION supports a simple polygon, an interior value or explicit external
   `labelAt` with a short leader. Curved/holed regions are not covered.
 - `text` is an exact numeric expression in the existing AST format; approximate
@@ -81,8 +110,10 @@ failure classes, NOT source reconstructions or PASS verdicts for its exam qids.
   Defaults are 16 SVG units on a 390x360 canvas with no side panel. Explicit
   viewport choices remain subject to the existing critical-geometry framing.
 - The layout searches bounded owner-valid positions, including the inside of an
-  offset dimension when the outside runs off-canvas. No font reduction, required
-  label suppression, or detached panel fallback is used to force a PASS.
+  offset dimension when the outside runs off-canvas. No font reduction or
+  automatic suppression of required labels is used to force a PASS. A linked
+  condition box is an explicit presentation form with an independent fact map,
+  not an unbound fallback panel.
 - New and legacy annotation objects cannot be mixed in this profile. Coordinate
   axes/function graphs stay on the existing v1 route, not the publication overlay.
 - SVG is the qualified publication backend. The inherited TikZ output remains a
