@@ -4,7 +4,7 @@
 - Q09-Q12: review 36/36 (KEEP24 / Meta revised9 / STEM revised0 / HOLD0); UID/package SHA-bound approval; Source JS + metadata + Consumer/index 36/36 registered; Chrome student lookup/print PASS. Local receipt: `GPT_QID9_Q09_Q12_LOCAL_RELEASE_20261010.json`. Status stays pending until PR #359 merge and remote readback.
 - Target release checks: generated Meta registration/retention PASS (index 454, failures0); Archive2 Runtime Guard 42/42; generated-bank tests 22/22; focused consumer regressions 13/13; actual Chrome Palma lookup144/HOLD excluded.
 - Full repository CI remains red on baseline failures also reproduced on current-main baseline: inline bracket-label inventory, compose scope (삼각비), derivative/integral fixture counts, M2 O11 Golden SHA. Those files are not changed by QID9 release; see PR body for details.
-- Branch now contains q17-q20 creator drafts only; none have review/Consumer registration. They are not included in the 72-UID release approval. Next source qid: 21.
+- Branch also contains Q17-Q20 candidate packages and a separate open-book review/repair ledger. They remain unregistered in the student Consumer and outside this Q09-Q16 72-UID release scope. Next source qid: 21.
 - Current main baseline: `cf42ca40701510ff4caedac99612879f727c6a25`. Branch: `work/alive-25-palma-h1-2mid-qid9`.
 
 ---
