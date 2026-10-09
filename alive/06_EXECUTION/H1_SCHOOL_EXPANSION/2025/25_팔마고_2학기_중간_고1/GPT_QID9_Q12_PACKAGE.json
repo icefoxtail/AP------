@@ -59,8 +59,8 @@
   "authorSelfCheck": {
     "finalInputCount": 9,
     "studentStemReverseReading": 9,
-    "keep": 9,
-    "revised": 0,
+    "keep": 8,
+    "revised": 1,
     "hold": 0,
     "answerFiveUnique": 9,
     "distractorIndexedPaths": 36,
@@ -87,7 +87,17 @@
     },
     "distinction": "AUTHOR_SELF_CHECK_ONLY_NOT_EXTERNAL_GPT_QUALITY_PASS",
     "originalJSChanged": false,
-    "studentChrome": "NOT_TESTED"
+    "studentChrome": "NOT_TESTED",
+    "evidenceCorrections": [
+      {
+        "slot": "C2",
+        "before": "r² 대신 t²=4로 착각",
+        "after": "반지름 4를 제곱하지 않고 r²=4로 잘못 사용",
+        "studentContentChanged": false,
+        "recheckedChoice": "⑤ $4\\sqrt3$",
+        "status": "REVISED_EVIDENCE"
+      }
+    ]
   },
   "generatedL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-l4/registry.json",
   "generatedCrossConceptRegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-03-TANGENT/extension-meta/palma-q12-cross-concepts.json",
@@ -1036,7 +1046,7 @@
         "①": "접선 길이 대신 반지름 또는 구한 t를 그대로 사용: sqrt(16)=4=t → $4$",
         "②": "접선 길이 대신 원점에서 외부점 A까지의 길이: sqrt(t²+6²)=sqrt(52)=2sqrt(13) → $2\\sqrt{13}$",
         "④": "직각삼각형에서 OA²와 반지름²을 잘못 더함: sqrt(52+16)=2sqrt(17) → $2\\sqrt{17}$",
-        "⑤": "r² 대신 t²=4로 착각: sqrt(52−4)=sqrt(48)=4sqrt(3) → $4\\sqrt3$"
+        "⑤": "반지름 4를 제곱하지 않고 r²=4로 잘못 사용: sqrt(52−4)=sqrt(48)=4sqrt(3) → $4\\sqrt3$"
       },
       "distractorWitnesses": [
         {
@@ -1065,11 +1075,11 @@
         },
         {
           "label": "⑤",
-          "mistake": "r² 대신 t²=4로 착각",
+          "mistake": "반지름 4를 제곱하지 않고 r²=4로 잘못 사용",
           "calculation": "sqrt(52−4)=sqrt(48)=4sqrt(3)",
           "value": "$4\\sqrt3$",
           "matchedChoice": "$4\\sqrt3$",
-          "verification": "ARITHMETIC_REPRODUCED_BY_CREATOR"
+          "verification": "RECHECKED_CURRENT_CANDIDATE_SQRT48_EQUALS_4SQRT3"
         }
       ],
       "experienceAxis": "접점 현이 지나는 점을 이용해 외부점 좌표를 역산하고 접선 길이 구하기",
@@ -1081,9 +1091,9 @@
       "schoolExamStyleEvidence": "공통수학2 기출형 원의 접선·접점의 현·거리 및 매개변수 역조건 5지",
       "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
       "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
-      "creatorSelfReview": "KEEP",
+      "creatorSelfReview": "REVISED",
       "authorReverseStemReading": "B가 PQ 위→t=4→직각삼각형 OPA에서 AP=6",
-      "changedMathRecheck": "NOT_APPLICABLE_NO_POST_DRAFT_MUTATION",
+      "changedMathRecheck": "EVIDENCE_ONLY_REVISION: corrected distractor ⑤ logic from impossible t²=4 to radius-square omission r²=4; sqrt(48)=4sqrt3 rechecked; stem/choices/answer/solution unchanged",
       "remainingRisk": "EXTERNAL_GPT_REVIEW_AND_STUDENT_CHROME_NOT_PERFORMED",
       "numericValidation": {
         "actual": 6,
@@ -1146,7 +1156,19 @@
       },
       "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
       "reviewStatus": "NOT_APPROVED",
-      "consumerStatus": "NOT_REGISTERED"
+      "consumerStatus": "NOT_REGISTERED",
+      "reverseStemEvidenceFreshness": "ALL_STUDENT_INPUT_UNCHANGED; TARGETED_DISTRACTOR_FRESH",
+      "revisionEvidence": {
+        "type": "DISTRACTOR_REASON_ONLY",
+        "before": "r² 대신 t²=4로 착각",
+        "after": "반지름 4를 제곱하지 않고 r²=4로 잘못 사용",
+        "affectedFields": [
+          "distractorReasons.⑤",
+          "distractorWitnesses.⑤"
+        ],
+        "studentInputChanged": false,
+        "mathRecheck": "sqrt(52−4)=sqrt48=4sqrt3, numeric choice unchanged"
+      }
     },
     {
       "uid": "ALITE-PALMA25-2MID-Q12-C3",
