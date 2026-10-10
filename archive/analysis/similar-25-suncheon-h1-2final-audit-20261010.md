@@ -104,3 +104,10 @@
 - 23/23 canonical 표준단원·세부단원 parent/label 정합성 확인. **RPM L1~L4/Primary L3 링크는 이 레거시 유사 JS에 명시적 키가 없고 정본 RPM 데이터와의 개별 링크를 검증하지 못했으므로 `RPM_LINK=NOT_VERIFIED`**; 함부로 새 유형키나 PASS를 만들지 않았다.
 - 개별 문항의 수학적 결과는 위 표대로 유지·수정했으나 정식 다른 세션 독립검수/Chrome·PNG 시각 일치/RPM 가맹 확정이 남아 있어 `FINAL_PRODUCTION_SEAL=BLOCKED`, `MAIN_MERGE=NOT_REQUESTED`, `DEPLOY=NOT_REQUESTED`.
 - 후속: 형님의 별도 출시 지시가 있기 전에는 브랜치 검수 산출물로 유지. 실제 Chrome 렌더·SVG geometry independent reviewer·RPM canonical junction 검증 뒤 출시 판단한다. 기존 UID / 원본을 바꾸거나 문제를 임의 대체하지 않는다.
+
+## AGENTS.md / RPM resolver 정정 — 2026-10-10 KST
+
+- 후속 지시에 따라 branch의 `AGENTS.md` 및 `docs/architecture/Archive_Correction_Owner_EndToEnd_Closeout_CURRENT_v1.md`를 다시 읽었다. Meta 검수는 generic tag master에서 멈추지 않고 current RPM L1~L4, ACTIVE projection, PT/TPL 및 UID 연결을 확인해야 한다.
+- 앞 절의 “이 23개 H22-C2 개념군에 맞는 PT/TPL 등록 키가 없다”는 진술은 `js_archive_tag_master.json`만 본 뒤 내린 잘못된 결론이다. current 정본은 `docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`와 `archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json`이며, 해당 crosswalk에는 H22-C2-06~09 관련 H1-RPM-243~272 경로가 있다.
+- 방금 JS에 추가한 `conceptClusterKey` 23/23은 subUnit canonical tag 연결만 완료한다. 이를 qid별 RPM L1~L4·PT/TPL resolver linkage 완료로 간주할 수 없다. q별 의미 경로·projection을 resolver evidence로 대조하지 않았으므로 RPM linkage는 아직 `NOT_VERIFIED`다. 이 재독 결과에 따라 이전의 “정본에 연결할 key가 없음”을 폐기하며, RPM 연결이 완료됐다고 표시하지 않는다.
+- 이 수정은 검수 branch만 대상으로 했다. main 병합·DB/runtime/index 변경은 하지 않았다.
