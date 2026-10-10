@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "GD25_Q19_MATH_SPEC_V1",
+  "sourceQid": 19,
+  "lockedPrimaryL3": "H1-RPM-258",
+  "canonicalParent": "PT_SPECIAL_FUNCTION_PROPERTIES/TPL_CONSTANT_FUNCTION_PREIMAGE",
+  "invariant": "For |(x-h)^2-d|=k (d>0), four distinct real roots iff 0<k<d.",
+  "proof": [
+    "k≥0.",
+    "(x-h)^2=d+k gives two distinct roots.",
+    "(x-h)^2=d-k gives two distinct roots iff k<d.",
+    "k>0 ensures the root pairs do not coincide.",
+    "Four integer roots require d-k,d+k to be distinct positive perfect squares."
+  ],
+  "candidateParameters": [
+    {
+      "slot": "A1",
+      "h": 3,
+      "d": 5,
+      "mode": "sum",
+      "value": 10
+    },
+    {
+      "slot": "A2",
+      "h": 2,
+      "d": 6,
+      "mode": "sum",
+      "value": 15
+    },
+    {
+      "slot": "A3",
+      "h": -1,
+      "d": 8,
+      "mode": "product",
+      "value": 5040
+    },
+    {
+      "slot": "B1",
+      "h": 4,
+      "d": 4,
+      "mode": "count",
+      "value": 3
+    },
+    {
+      "slot": "B2",
+      "h": 1,
+      "d": 7,
+      "mode": "sum",
+      "value": 21
+    },
+    {
+      "slot": "B3",
+      "h": 3,
+      "d": 5,
+      "mode": "integerroots",
+      "value": 4
+    },
+    {
+      "slot": "C1",
+      "h": 2,
+      "d": 9,
+      "mode": "count",
+      "value": 8
+    },
+    {
+      "slot": "C2",
+      "h": 0,
+      "d": 10,
+      "mode": "integerroots",
+      "value": 6
+    },
+    {
+      "slot": "C3",
+      "h": 5,
+      "d": 12,
+      "mode": "sum",
+      "value": 66
+    }
+  ]
+}
