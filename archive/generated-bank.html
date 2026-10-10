@@ -94,7 +94,7 @@ window.MathJax={loader:{paths:{mathjax:AP_VENDOR_BASE+'mathjax','mathjax-tex':AP
 <p id="generated-selection-summary">선택된 문항이 없습니다.</p>
 <div id="generated-selection-list" class="generated-selection"></div>
 <div class="generated-actions">
-<button id="generated-print" class="primary" type="button" disabled>선택한 문항 인쇄</button>
+<button id="generated-print" class="primary" type="button" disabled>선택 문항 출력 미리보기</button>
 <button id="generated-clear" type="button" disabled>선택 초기화</button>
 </div>
 </section>
@@ -108,11 +108,6 @@ window.MathJax={loader:{paths:{mathjax:AP_VENDOR_BASE+'mathjax','mathjax-tex':AP
 <script>
 "use strict";
 const INDEX="data/generated-lite-consumer/v1/index.json";
-// Exact original source JS counts, independently verified against 2026 main.
-const SOURCE_EXAMS=Object.freeze({
- "8266fa476906e9134b94f23e803bd3b2fb26ece4":{school:"복성고",year:2026,grade:"고1",subject:"공통수학1",semester:1,term:"기말",count:23},
- "69ad80ffa9ec80b2592bee26ffce247f8d7013d1":{school:"효천고",year:2026,grade:"고1",subject:"공통수학1",semester:1,term:"중간",count:26}
-});
 const UNIT_LABELS=Object.freeze({});
 let rows=[],selectableRows=[],searchableRows=[],userDisabledUids=new Set(),examChoice=null,busy=false,generatedBusy=false,generatedPreviewToken=0;
 const selectedGenerated=new Map();
@@ -192,9 +187,26 @@ function questionMarkup(parent,q,row,answers=false){
 }
 
 function examTitle(e){return e.year+" "+e.school+" "+e.grade+" "+e.semester+"학기 "+e.term;}
-function examRows(e){return selectableRows.filter(r=>r.sourceExamBlobSha===e.sha&&r.school===e.school&&r.year===e.year&&r.grade===e.grade);}
+function examIdentity(row){
+ const path=String(row.sourceExamPath||"").split("/").pop();
+ const m=path.match(/^(\d{2,4})_([^_]+)_(\d+)학기_(중간|기말)_(고\d|중\d)/);
+ if(!m)return null;
+ const year=Number(m[1])<100?2000+Number(m[1]):Number(m[1]);
+ if(row.school!==m[2]||Number(row.year)!==year||row.grade!==m[5])return null;
+ return {year,school:m[2],grade:m[5],semester:Number(m[3]),term:m[4]};
+}
+function examRows(e){return e.rows;}
 function availableExams(){
- return Object.entries(SOURCE_EXAMS).map(([sha,e])=>({...e,sha})).filter(e=>examRows(e).length>=e.count);
+ const groups=new Map();
+ for(const row of selectableRows){
+  if(!/^[a-f0-9]{40}$/i.test(String(row.sourceExamBlobSha||""))||!Number.isInteger(Number(row.sourceQid))||Number(row.sourceQid)<1)continue;
+  const identity=examIdentity(row);if(!identity)continue;
+  const key=[row.sourceExamBlobSha,identity.school,identity.year,identity.grade,identity.semester,identity.term,row.subject].join("\n");
+  if(!groups.has(key))groups.set(key,{...identity,sha:row.sourceExamBlobSha,subject:row.subject,rows:[],sourceQids:new Set()});
+  const exam=groups.get(key);exam.rows.push(row);exam.sourceQids.add(Number(row.sourceQid));
+ }
+ return [...groups.values()].map(e=>({...e,count:e.sourceQids.size,sourceQids:[...e.sourceQids].sort((a,b)=>a-b)}))
+  .filter(e=>e.count>0).sort((a,b)=>a.year-b.year||a.school.localeCompare(b.school,"ko")||a.semester-b.semester||a.term.localeCompare(b.term,"ko"));
 }
 function displayExams(){
  const host=$("exam-cards");host.replaceChildren();
@@ -202,7 +214,7 @@ function displayExams(){
   const card=document.createElement("button");card.type="button";
   card.className="exam-card";card.setAttribute("aria-pressed",String(examChoice?.sha===e.sha));
   text(card,examTitle(e),"strong");
-  text(card,e.count+"문항 · "+e.subject,"small");
+  text(card,e.count+"개 원본 문항 · "+e.rows.length+"개 등록 후보 · "+e.subject,"small");
   card.onclick=()=>{examChoice=e;displayExams();updateSelection();};
   host.appendChild(card);
  }
@@ -213,7 +225,7 @@ function updateSelection(){
  const el=$("selection-summary");el.replaceChildren();
  if(!examChoice){el.textContent="출력할 시험지를 선택해 주세요.";return;}
  text(el,examTitle(examChoice),"strong");
- text(el,examChoice.count+"문항 · 시험지 원문과 동일한 문항 수","div");
+ text(el,examChoice.count+"개 원본 QID에서 등록된 Generated 문항을 하나씩 선택합니다.","div");
 }
 function chooseVariants(pool,count){
  // Prefer distinct source question numbers before taking additional variants.
@@ -322,19 +334,27 @@ function renderGeneratedSelection(){
 }
 async function printGeneratedSelection(){
  if(generatedBusy||!selectedGenerated.size)return;
- generatedBusy=true;renderGeneratedSelection();const selected=[...selectedGenerated.values()];
+ generatedBusy=true;renderGeneratedSelection();const selected=[...selectedGenerated.values()];let popup=null,envelope=null;
  try{
   if(!unique(selected.map(row=>row.uid))||selected.some(row=>!isSelectable(row)))throw Error("선택 문항의 기술 상태 또는 사용자 비활성화 상태를 확인하지 못했습니다.");
+  popup=window.open("about:blank","_blank");if(!popup)throw Error("팝업을 허용한 뒤 선택 문항 미리보기를 여세요.");
   status("선택한 "+selected.length+"개 문항을 준비하고 있습니다.");
   const questions=await Promise.all(selected.map(questionFor));
-  const panel=$("paper-items"),fragment=document.createDocumentFragment();
-  for(let i=0;i<selected.length;i++){
-   const part=document.createElement("section");part.className="paper-question";
-   text(part,String(i+1)+".","div","paper-number");questionMarkup(part,questions[i],selected[i],false);fragment.appendChild(part);
-  }
-  panel.replaceChildren(fragment);$("paper-title").textContent="생성문제 · "+selected.length+"문항";
-  await math();status("선택한 "+selected.length+"개 문항 인쇄 화면을 엽니다.");window.print();
- }catch(error){status("선택 문항을 출력하지 못했습니다: "+error.message);}
+  if(popup.closed)throw Error("미리보기 창이 닫혔습니다.");
+  const output=window.Archive2Output;
+  if(!output?.publishOutputEnvelope||!output?.outputEnvelopeUrl)throw Error("문항 출력 미리보기 엔진을 불러오지 못했습니다.");
+  envelope=await output.publishOutputEnvelope({
+   sourceKind:"generated-bank",sourceId:selected.map(row=>row.uid).join(","),mode:"exam",questionCount:selected.length,
+   questionUids:selected.map(row=>row.uid),meta:{title:"생성문제 · "+selected.length+"문항",qpp:1,questionUids:selected.map(row=>row.uid)},questions
+  });
+  if(popup.closed){await output.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);return;}
+  const url=output.outputEnvelopeUrl("mixed_engine.html",location.href,envelope,{preview:true});
+  popup.location.href=url.href;status("선택한 "+selected.length+"개 문항의 출력 미리보기를 열었습니다.");
+ }catch(error){
+  if(envelope)try{await window.Archive2Output?.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);}catch{}
+  try{if(popup&&!popup.closed)popup.close();}catch{}
+  status("선택 문항 미리보기를 열지 못했습니다: "+(error.message||"오류"));
+ }
  finally{generatedBusy=false;renderGeneratedSelection();updateSelection();}
 }
 async function printExam(){
