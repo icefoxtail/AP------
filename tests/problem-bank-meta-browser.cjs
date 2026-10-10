@@ -39,8 +39,20 @@ const server=http.createServer((req,res)=>{
   }
   const safeTable=await page.evaluate(()=>{const host=document.createElement('div');safeStem(host,'before<div class="question-table-wrap"><table class="question-table"><tr><th>A</th><td>1</td></tr></table></div>after<script>bad()</script>');return {tables:host.querySelectorAll('table').length,cells:host.querySelectorAll('th,td').length,scripts:host.querySelectorAll('script').length,text:host.textContent};});
   assert.equal(safeTable.tables,1);assert.equal(safeTable.cells,2);assert.equal(safeTable.scripts,0);assert.ok(safeTable.text.includes('before')&&safeTable.text.includes('after'));
+  // Keep the null-bucket browser path covered even when the current generated
+  // consumer has no production rows with unknown difficulty.
+  const unknownExpected=await page.evaluate(()=>{
+   const sample=inventory.find(r=>r.sourceKind==='generated');
+   if(!sample)throw new Error('generated fixture row unavailable');
+   const existingUnknown=inventory.filter(r=>r.sourceKind==='generated'&&r.difficultyBucket===null).length;
+   inventory.push({...sample,uid:'browser-fixture-unknown-difficulty',questionUid:'browser-fixture-unknown-difficulty',difficultyBucket:null});
+   render();
+   return existingUnknown+1;
+  });
   await page.selectOption('#difficulty','UNKNOWN');
-  assert.equal(await page.evaluate(()=>matching.length),7);
+  assert.equal(await page.evaluate(()=>matching.length),unknownExpected);
+  assert.equal(await page.evaluate(()=>matching.some(r=>r.uid==='browser-fixture-unknown-difficulty')),true);
+  assert.equal(await page.evaluate(()=>matching.every(r=>r.difficultyBucket===null)),true);
   await page.selectOption('#difficulty','');
   const l2=await page.evaluate(()=>inventory.find(r=>r.sourceKind==='generated'&&r.L2&&!r.L2.includes('|'))?.L2);
   assert.ok(l2,'recovered exact RPM L2 exists');
@@ -59,6 +71,6 @@ const server=http.createServer((req,res)=>{
   await page.waitForFunction(()=>document.querySelector('#generated-results .generated-question-card'));
   assert.equal(await page.locator('#generated-results .generated-question-card').count(),1);
   assert.deepEqual(errors,[]);
-  console.log(JSON.stringify({status:'ACTUAL_CHROME_PASS',registered,scopeL2:l2,difficultyBuckets:[1,2,3,4,5,'UNKNOWN'],unknown:7,storageFailure:true,generatedExactSelection:true}));
+  console.log(JSON.stringify({status:'ACTUAL_CHROME_PASS',registered,scopeL2:l2,difficultyBuckets:[1,2,3,4,5,'UNKNOWN'],unknown:unknownExpected,storageFailure:true,generatedExactSelection:true}));
  }finally{if(browser)await browser.close();await new Promise(r=>server.close(r));}
 })().catch(e=>{console.error(e);process.exitCode=1;});
