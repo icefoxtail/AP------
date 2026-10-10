@@ -18,11 +18,29 @@ const archiveDir = path.resolve(scriptDir, '..');
 const examsDir = path.join(archiveDir, 'exams');
 const asJson = process.argv.includes('--json');
 
-// A standalone heading may be followed by a line-broken option marker such as
-// "가)".  Only multi-character particles may cross whitespace; a single
-// particle must be attached directly to the label so the option marker is not
-// mistaken for the subject particle "가".
-const INLINE_VIEW_LABEL = /(?:&lt;\s*보기\s*&gt;|<\s*보기\s*>|\[\s*보기\s*\])(?:(?=\s*(?:에서|의|중|으로|처럼|보다))|(?=(?:를|을|와|과|에|로|만|도|가|는|은|이)))/gi;
+// Keep this boundary aligned with normalizeViewBlocks: labels only become
+// view blocks at the start of content or after an explicit rendered line break.
+// Raw newlines are included because the renderer converts them to <br> first.
+const BLOCK_BOUNDARY = String.raw`(?:^|(?:<br\s*\/?>\s*|\r?\n)+)`;
+const INLINE_VIEW_LABEL = new RegExp(
+  `${BLOCK_BOUNDARY}(?:&lt;보기&gt;|<보기>|\\[보기\\])(?=\\s*(?:에서|의|중|으로|처럼|보다|를|을|와|과|에|로|만|도|가|는|은|이))`,
+  'gi'
+);
+
+export function findInlineViewLabels(content) {
+  const value = String(content || '');
+  return [...value.matchAll(INLINE_VIEW_LABEL)].flatMap(match => {
+    const afterLabel = match.index + match[0].length;
+    const nextBlock = value.slice(afterLabel).search(/(?:<br\s*\/?>\s*){2,}|(?:\r?\n\s*){2,}/i);
+    const body = value.slice(afterLabel, nextBlock < 0 ? value.length : afterLabel + nextBlock);
+    const plain = body.replace(/<[^>]+>/g, '').trim();
+    const markerCount = (plain.match(/[ㄱㄴㄷㄹㅁ]\.|㉠|㉡|㉢|㉣|㉤|①|②|③|④|⑤/g) || []).length;
+    // normalizeViewBlocks only promotes substantial blocks (or blocks with
+    // multiple item markers); short labels remain ordinary text.
+    if (plain.length < 60 && markerCount < 2) return [];
+    return [{ index: match.index, value: match[0] }];
+  });
+}
 
 function walk(dir, out = []) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -59,13 +77,13 @@ for (const file of walk(examsDir)) {
   for (const question of bank) {
     questionCount++;
     const content = String(question.content || '');
-    const matches = [...content.matchAll(INLINE_VIEW_LABEL)];
+    const matches = findInlineViewLabels(content);
     for (const match of matches) {
       failures.push({
         file: path.relative(archiveDir, file).replace(/\\/g, '/'),
         id: question.id,
         field: 'content',
-        value: content.slice(Math.max(0, match.index - 40), match.index + match[0].length + 40)
+        value: content.slice(Math.max(0, match.index - 40), match.index + match.value.length + 40)
       });
     }
   }
@@ -88,4 +106,6 @@ if (asJson) {
   }
 }
 
-process.exit(failures.length ? 1 : 0);
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  process.exit(failures.length ? 1 : 0);
+}
