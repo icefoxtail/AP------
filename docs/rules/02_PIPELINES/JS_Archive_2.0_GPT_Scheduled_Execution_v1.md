@@ -12,6 +12,7 @@ campaign authority: JS_Archive_2.0_GPT_Campaign_Generation_v1.md
 이 문서는 GPT 예약 2.0의 문서상 목표 운영정책과 현재 적용 상태를 함께 정의한다. Prompt copy source는 `JS_Archive_2.0_GPT_Scheduled_Prompt_Template_v1.md`; A/B/C 대상 배정 authority는 `JS_Archive_2.0_GPT_Campaign_Generation_v1.md`와 frozen Git manifest다. Common Quality Contract의 문항 품질 기준은 계속 적용한다.
 
 **이 문서 PR은 문서 준비다. 현재 consumer와 예약은 구방식이다.** 적용 담당자는 consumer/예약 지시를 필요한 만큼 갱신하고, 신규 자격 대상 또는 다음 미완료 단계에서 실제 예약 인수·저장·후속 인수와 최종 마감을 확인한 뒤 전환을 선언한다. 이미 완료된 검수를 실증 목적으로 반복하지 않는다. 그 전까지 현재 consumer 지시를 따른다. 문서 변경만으로 진행 중 시험지나 예약 실행을 바꾸거나 재시작하지 않는다.
+기존 저장 continuation/인계문에 옛 CAS·marker-last·복수 upload/readback 지시가 남아 있으면 적용 담당자가 해당 운영지시만 새 정책으로 바꾸고, 이미 동결된 답·검수 증거·수정본은 그대로 보존한다(B13/C8에서 잔존 확인).
 
 `archive/tools/GPT2_ONE_SHOT_CLOSEOUT.md`와 `GPT2_CONNECTED_STDIO_HOST.md`는 선택형 CANARY 도구다. 새 기본 흐름의 선행조건이 아니며, 이 문서 변경은 해당 코드를 활성화하지 않는다.
 
