@@ -1,5 +1,12 @@
 # 2025 순천고 고1 2학기 기말 기존 유사문항 23개 품질 정리 — 브랜치 감사 원장
 
+## 메타 연결 보완 — 2026-10-10 KST
+
+- 앞선 감사에서 RPM/확장 메타 연결을 `NOT_VERIFIED`로만 남기고, canonical master에 이미 있는 개념 연결을 JS에 반영하지 않은 것은 누락이었다. 전용 branch에서 유사 JS 23개 객체에 `conceptClusterKey`를 추가했다. 각 값은 동일 문항의 `standardUnitKey + subUnitKey` 조합과 compiled master의 활성 `conceptClusterKey` 항목이 일치하는 키이며, 변경 수는 23/23이다.
+- 해당 JS 내 `content`, `choices`, `answer`, `solution`, id, 기존 UID/provenance 관련 상태, 원본 시험지는 바꾸지 않았다. 원본과 유사 문항의 q번호 쌍은 여전히 명시적 source pointer가 아닌 기존 내용·유형 대조에 따른 `INFERRED` 상태다.
+- `problemTypeKey` 및 `templateKey`는 현재 compiled master 전체 활성 키와 대조했으나 이 23개 H22-C2-06~09 개념군에 맞는 등록 키가 없다. 승인 master 등록 없이 새 키를 발명하거나 다른 단원의 키를 연결하지 않았다. 따라서 개념 메타 연결은 완료했지만 유형/템플릿 기반 RPM 자동추천 연결이나 정식 RPM linkage는 확인되지 않아 `NOT_VERIFIED`로 유지한다.
+- 정본 master revision: `archive/data/master_tables/js_archive_tag_master.json` (branch에서 조회한 blob `f0dc633dfac792ffd2fb4d8cbd3c7cb82d725593`).
+
 ## 최종 감사 추가 기록 — 2026-10-10 KST
 
 - 최신 main `1fcf5e12a41a74c6bd9bbae26b365577b9567925`와 이 전용 branch의 시험지 파일을 각각 조회했다. 원본 q1~q23·유사 q1~q23 모두 23문항이며 id 연속성은 23/23이다. 현재 main에 들어온 이후 비대상 코드 변경은 있으나 원본 파일은 이 감사에서 수정하지 않았다.
