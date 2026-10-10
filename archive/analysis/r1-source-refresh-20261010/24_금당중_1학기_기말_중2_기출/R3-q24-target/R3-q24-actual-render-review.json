@@ -1,0 +1,123 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_QID_TARGETED_ACTUAL_RENDER_REVIEW_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "stageScope": "R3_TARGETED_ACTUAL_RENDER_ONLY",
+  "examUid": "24_금당중_1학기_기말_중2_기출",
+  "qid": 24,
+  "reviewerIdentity": "Codex R3 worker /root/r3_geumdang_q24_render",
+  "reviewedAt": "2026-10-10",
+  "overallStatus": "RENDER_FAIL",
+  "wholeExamR3Status": "NOT_CLAIMED",
+  "genericV2Validator": {
+    "disposition": "NOT_RUN",
+    "reason": "Parent assignment is qid-24 actual-render-only; this record makes no whole-exam R3_RELEASE_READY or generic V2 PASS claim."
+  },
+  "renderEnvironment": {
+    "enginePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\repair-source-holds\\AP------\\archive\\engine.html",
+    "engineSha256": "8d6974f5f05f18231548183cfc415e1e2b95ac65b46d530fb540c605ec75d2f1",
+    "browser": "Playwright CLI, Chromium",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "viewportCssPixels": {
+      "width": 1440,
+      "height": 1000
+    },
+    "mobileCapture": "NOT_IN_SCOPE"
+  },
+  "artifact": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\repair-source-holds\\AP------\\.tmp\\archive\\r1-q24-closeout-20261010\\24_금당중_1학기_기말_중2_기출\\q24-visual-repair\\candidate-q24-only\\24_금당중_1학기_기말_중2_기출.js",
+    "sha256": "f8906f29c8aacce9d816662cbea045639522b4de407d0df9aac79c296c25aaec",
+    "gitBlobSha1": "61a21b2bf3404296a6be3281397256b79bf485d6",
+    "loadedFromCandidateMapping": true,
+    "candidateDeltaManifest": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\repair-source-holds\\AP------\\.tmp\\archive\\r1-q24-closeout-20261010\\24_금당중_1학기_기말_중2_기출\\q24-visual-repair\\q24-only-source-delta-manifest.json",
+      "sha256": "c720f00d075f0662455119e260cb048f995ce12204b07af31ddc1fd13c94e24d",
+      "declaredChangedLocus": "qid 24 solutionImage only"
+    }
+  },
+  "assetBindings": [
+    {
+      "ref": "assets/images/24_금당중_1학기_기말_중2_기출/q24.png",
+      "candidatePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\repair-source-holds\\AP------\\.tmp\\archive\\r1-q24-closeout-20261010\\24_금당중_1학기_기말_중2_기출\\q24-visual-repair\\candidate-q24-only\\assets\\images\\24_금당중_1학기_기말_중2_기출\\q24.png",
+      "sha256": "46663e972c07a76aa6a6ee605fa1807a9b1bdf8a7770776a2f28e9fe6d0b943e",
+      "loadedInModes": ["exam"],
+      "decode": "PASS",
+      "naturalPixels": [210, 170]
+    },
+    {
+      "ref": "assets/images/24_금당중_1학기_기말_중2_기출/q24-solution.svg",
+      "candidatePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\repair-source-holds\\AP------\\.tmp\\archive\\r1-q24-closeout-20261010\\24_금당중_1학기_기말_중2_기출\\q24-visual-repair\\candidate-q24-only\\assets\\images\\24_금당중_1학기_기말_중2_기출\\q24-solution.svg",
+      "sha256": "271eac5b5998cb6f4181341afe61a77e82cdd3903733d09d4fa23d7fdb373d12",
+      "loadedInModes": ["sol"],
+      "decode": "PASS",
+      "naturalPixels": [900, 1120],
+      "actualRenderedCssPixels": {
+        "width": 116.515625,
+        "height": 145
+      }
+    }
+  ],
+  "assetResolutionNote": "The temporary q24 candidate bundle contains only q24 image assets. The local browser server preferred candidate-bundle assets and fell back to the matching production asset path only for other question refs, allowing the complete candidate JS to render without altering it. q24 PNG and SVG both resolved from the candidate bundle. Other qids were not reviewed.",
+  "cases": [
+    {
+      "id": "exam/desktop",
+      "status": "PASS",
+      "qidCoverage": [24],
+      "viewportCssPixels": {"width": 1440, "height": 1000},
+      "mathJaxPresent": true,
+      "mathErrors": 0,
+      "q24ImageDecode": "PASS",
+      "layoutReview": "PASS",
+      "observation": "Question number and 서술형 3 label, Korean conditions, both subquestions, and the original trapezoid diagram are visible. After positioning q24 below the fixed mode bar, no content clipping was observed; text is readable at the captured desktop viewport.",
+      "captures": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\repair-source-holds\\AP------\\archive\\analysis\\r1-source-refresh-20261010\\24_금당중_1학기_기말_중2_기출\\R3-q24-target\\exam-q24-desktop-1440x1000.png",
+          "sha256": "a6da5038a19ba2fd69c1fd7472e680ca30dc9b58d5c950a16acc06f3c140b7f0",
+          "pixels": [1440, 1000]
+        }
+      ]
+    },
+    {
+      "id": "sol/desktop",
+      "status": "FAIL",
+      "qidCoverage": [24],
+      "viewportCssPixels": {"width": 1440, "height": 1000},
+      "mathJaxPresent": true,
+      "mathErrors": 0,
+      "q24SolutionSvgDecode": "PASS",
+      "layoutReview": "FAIL",
+      "finding": "Q24 solutionImage renders inside the two-column solution page at 116.515625×145 CSS px (client/offset width rounds to 117 px). The two area overlays can be seen, but the SVG's internal Korean labels, notes, and area annotations are too small to read at the student display size. No SVG clipping or MathJax error was observed. This is a q24 solution layout/readability failure.",
+      "captures": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\repair-source-holds\\AP------\\archive\\analysis\\r1-source-refresh-20261010\\24_금당중_1학기_기말_중2_기출\\R3-q24-target\\sol-q24-desktop-1440x1000.png",
+          "sha256": "d7338c39e38e9e20d0fa3c304f8b6c4f4efe9141e55f4150f839a7560edc43ff",
+          "pixels": [1440, 1000]
+        }
+      ]
+    },
+    {
+      "id": "ans/desktop",
+      "status": "PASS",
+      "qidCoverage": [24],
+      "viewportCssPixels": {"width": 1440, "height": 1000},
+      "mathJaxPresent": true,
+      "mathErrors": 0,
+      "layoutReview": "PASS",
+      "observation": "Q24 answer row displays both subpart results clearly; the 20 cm² TeX output is legible without clipping.",
+      "captures": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\repair-source-holds\\AP------\\archive\\analysis\\r1-source-refresh-20261010\\24_금당중_1학기_기말_중2_기출\\R3-q24-target\\ans-q24-row-desktop-1440x1000.png",
+          "sha256": "3c35aa482ef6d035ffc27771907a43c84210ff6fd17ffe015c608073f5692629",
+          "pixels": [331, 60]
+        },
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\repair-source-holds\\AP------\\archive\\analysis\\r1-source-refresh-20261010\\24_금당중_1학기_기말_중2_기출\\R3-q24-target\\ans-q24-desktop-1440x1000.png",
+          "sha256": "0027a8347749fe6c39511311d6bfd54f45bf5eff7bc8555e2295eb790ffba63",
+          "pixels": [1440, 1000]
+        }
+      ]
+    }
+  ],
+  "sourceEditsDuringRenderReview": false,
+  "nextRequiredAction": "Route only qid 24 to CREATE for a pinpoint solution SVG display/layout-size correction; preserve source question and answer; then rerender q24 exam/sol/ans at desktop 1440×1000 and rebind this targeted evidence to the new candidate SHA."
+}
