@@ -1,0 +1,586 @@
+{
+  "schemaVersion": "ALIVE_QID9_GEUMDANG25_Q05_SELF_REVIEW_V1",
+  "sourceQid": 5,
+  "sourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "candidateCount": 9,
+  "keep": 4,
+  "revised": 5,
+  "hold": 0,
+  "lockedPrimaryL3": "H1-RPM-247",
+  "answerDistribution": {
+    "①": 2,
+    "②": 1,
+    "③": 1,
+    "④": 4,
+    "⑤": 1
+  },
+  "formalIndependentGptReviewPerformed": false,
+  "sourcePdfCompared": false,
+  "studentChromeVerified": false,
+  "printedSolutionRendered": false,
+  "releaseStatus": "BRANCH_ONLY_UNRELEASED",
+  "visual": {
+    "problem": "EXEMPT_ALL",
+    "solution": {
+      "C3": "ADD_NUMBERLINE_SVG",
+      "others": "EXEMPT_DIRECT_RELATION"
+    },
+    "svgPath": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q05-C3-solution.svg",
+    "coordinateModel": {
+      "originX": 48,
+      "unitsPerX": 44,
+      "yRows": [
+        73,
+        120,
+        167,
+        214
+      ],
+      "domain": [
+        -5,
+        5
+      ],
+      "intervals": [
+        {
+          "label": "q",
+          "left": -2,
+          "right": 2
+        },
+        {
+          "label": "p (t=−1)",
+          "left": -4,
+          "right": 2
+        },
+        {
+          "label": "p (t=0)",
+          "left": -3,
+          "right": 3
+        },
+        {
+          "label": "p (t=1)",
+          "left": -2,
+          "right": 4
+        }
+      ]
+    },
+    "coordinatePythonCheck": "ACTUAL_EXECUTION: [-1,0,1] inclusive bounds; screenX=48+44*(mathX+5)",
+    "svgBrowserRender": "NOT_TESTED"
+  },
+  "rows": [
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q05-A1",
+      "slot": "A1",
+      "finalStem": "자연수 $x$에 대한 두 조건 $p$, $q$가 다음과 같다.\n$p$: $x$는 $6$의 배수, $q$: $x$는 $3$의 배수\n$p$는 $q$이기 위한 어떤 조건인가?",
+      "reverseReadingFinding": "학생에게 보이는 발문에서 배수 집합의 포함관계 직접 판정을 직접 확인하고 조건 관계의 두 방향 및 반례를 검토함",
+      "primaryL3Necessity": "조건명제 p→q와 q→p의 참거짓·진리집합 포함관계가 결정적 풀이",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "②",
+          "choiceText": "필요조건이지만 충분조건은 아니다.",
+          "actualErrorPath": "② $3$의 배수를 $6$의 배수에 포함시켜 필요조건으로 역전"
+        },
+        {
+          "choice": "③",
+          "choiceText": "필요충분조건이다.",
+          "actualErrorPath": "③ 반례 $x=3$을 무시해 두 조건이 동치라고 판단"
+        },
+        {
+          "choice": "④",
+          "choiceText": "필요조건도 충분조건도 아니다.",
+          "actualErrorPath": "④ 실제로 성립하는 $p\\to q$를 놓쳐 둘 다 아니라고 판단"
+        },
+        {
+          "choice": "⑤",
+          "choiceText": "두 조건을 동시에 만족시키는 값이 없다.",
+          "actualErrorPath": "⑤ $x=6$을 놓쳐 공통 해가 없다고 판단"
+        }
+      ],
+      "mathCheck": {
+        "p": [
+          6,
+          12,
+          18
+        ],
+        "q": [
+          3,
+          6,
+          9,
+          12,
+          15,
+          18
+        ],
+        "relation": "P_PROPER_SUBSET_Q"
+      },
+      "decision": "KEEP",
+      "remainingRisk": "학생용 실렌더·독립 리뷰 미실시, main 병합 금지"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q05-A2",
+      "slot": "A2",
+      "finalStem": "자연수 $x$에 대한 두 조건 $p$, $q$가 다음과 같다.\n$p$: $x$는 $12$의 약수, $q$: $x$는 $4$의 약수\n$p$는 $q$이기 위한 어떤 조건인가?",
+      "reverseReadingFinding": "학생에게 보이는 발문에서 약수 조건으로 필요조건 판정을 직접 확인하고 조건 관계의 두 방향 및 반례를 검토함",
+      "primaryL3Necessity": "조건명제 p→q와 q→p의 참거짓·진리집합 포함관계가 결정적 풀이",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "choiceText": "충분조건이지만 필요조건은 아니다.",
+          "actualErrorPath": "① $p\\to q$가 참이라고 포함관계 역전"
+        },
+        {
+          "choice": "③",
+          "choiceText": "필요충분조건이다.",
+          "actualErrorPath": "③ 반례 $x=3$을 빼고 두 조건을 동치라고 판단"
+        },
+        {
+          "choice": "④",
+          "choiceText": "필요조건도 충분조건도 아니다.",
+          "actualErrorPath": "④ 실제 성립하는 $q\\to p$를 놓침"
+        },
+        {
+          "choice": "⑤",
+          "choiceText": "두 조건을 동시에 만족시키는 값이 없다.",
+          "actualErrorPath": "⑤ 공통 해 $x=1,2,4$를 무시"
+        }
+      ],
+      "mathCheck": {
+        "p": [
+          1,
+          2,
+          3,
+          4,
+          6,
+          12
+        ],
+        "q": [
+          1,
+          2,
+          4
+        ],
+        "relation": "Q_PROPER_SUBSET_P"
+      },
+      "decision": "KEEP",
+      "remainingRisk": "학생용 실렌더·독립 리뷰 미실시, main 병합 금지"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q05-A3",
+      "slot": "A3",
+      "finalStem": "실수 $x$에 대하여 조건 $p$: $x^2=25$, 조건 $q$: $|x|=5$라 하자. $p$는 $q$이기 위한 어떤 조건인가?",
+      "reverseReadingFinding": "학생에게 보이는 발문에서 제곱식과 절댓값의 동치을 직접 확인하고 조건 관계의 두 방향 및 반례를 검토함",
+      "primaryL3Necessity": "조건명제 p→q와 q→p의 참거짓·진리집합 포함관계가 결정적 풀이",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "choiceText": "충분조건이지만 필요조건은 아니다.",
+          "actualErrorPath": "① $q\\to p$ 방향을 생략해 충분조건만 인정"
+        },
+        {
+          "choice": "②",
+          "choiceText": "필요조건이지만 충분조건은 아니다.",
+          "actualErrorPath": "② $p\\to q$ 방향을 생략해 필요조건만 인정"
+        },
+        {
+          "choice": "③",
+          "choiceText": "필요조건도 충분조건도 아니다.",
+          "actualErrorPath": "③ 양쪽 참인 포함관계를 모두 놓침"
+        },
+        {
+          "choice": "④",
+          "choiceText": "두 조건을 동시에 만족시키는 값이 없다.",
+          "actualErrorPath": "④ 공통 해 $\\pm5$를 무시"
+        }
+      ],
+      "mathCheck": {
+        "p": [
+          -5,
+          5
+        ],
+        "q": [
+          -5,
+          5
+        ],
+        "relation": "P_EQUALS_Q"
+      },
+      "decision": "KEEP",
+      "remainingRisk": "학생용 실렌더·독립 리뷰 미실시, main 병합 금지"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q05-B1",
+      "slot": "B1",
+      "finalStem": "실수 $x$에 대하여 $p$: $x>0$, $q$: $x^2>0$이라 하자. $q$는 $p$이기 위한 어떤 조건인가?",
+      "reverseReadingFinding": "학생에게 보이는 발문에서 필요조건의 방향을 바꾸어 판정을 직접 확인하고 조건 관계의 두 방향 및 반례를 검토함",
+      "primaryL3Necessity": "조건명제 p→q와 q→p의 참거짓·진리집합 포함관계가 결정적 풀이",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "choiceText": "충분조건이지만 필요조건은 아니다.",
+          "actualErrorPath": "① $p\\to q$와 $q\\to p$ 방향을 혼동"
+        },
+        {
+          "choice": "②",
+          "choiceText": "필요충분조건이다.",
+          "actualErrorPath": "② 음수 반례를 빠뜨리고 필요충분으로 판단"
+        },
+        {
+          "choice": "③",
+          "choiceText": "필요조건도 충분조건도 아니다.",
+          "actualErrorPath": "③ $p\\to q$가 참임을 놓쳐 아무 조건도 아니라고 판단"
+        },
+        {
+          "choice": "⑤",
+          "choiceText": "두 조건을 동시에 만족시키는 값이 없다.",
+          "actualErrorPath": "⑤ $x=1$을 무시해 동시 참이 불가능하다고 판단"
+        }
+      ],
+      "mathCheck": {
+        "p": "x>0",
+        "q": "x!=0",
+        "relation": "P_PROPER_SUBSET_Q"
+      },
+      "decision": "KEEP",
+      "remainingRisk": "학생용 실렌더·독립 리뷰 미실시, main 병합 금지"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q05-B2",
+      "slot": "B2",
+      "finalStem": "자연수 $x$에 대하여 $p$: $x$는 $12$의 약수, $q$: $x$는 $12$ 이하의 $3$의 배수라 하자. $p$는 $q$이기 위한 어떤 조건인가?",
+      "reverseReadingFinding": "학생에게 보이는 발문에서 부분적으로 겹치는 두 진리집합을 직접 확인하고 조건 관계의 두 방향 및 반례를 검토함",
+      "primaryL3Necessity": "조건명제 p→q와 q→p의 참거짓·진리집합 포함관계가 결정적 풀이",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "choiceText": "충분조건이지만 필요조건은 아니다.",
+          "actualErrorPath": "x=1에서 p 참, q 거짓인 반례를 누락해 충분조건 오판"
+        },
+        {
+          "choice": "②",
+          "choiceText": "필요조건이지만 충분조건은 아니다.",
+          "actualErrorPath": "x=9에서 q 참, p 거짓인 반례를 누락해 필요조건 오판"
+        },
+        {
+          "choice": "③",
+          "choiceText": "필요충분조건이다.",
+          "actualErrorPath": "공통 원소 3,6,12 존재만으로 진리집합이 같다고 오판"
+        },
+        {
+          "choice": "⑤",
+          "choiceText": "두 조건을 동시에 만족시키는 값이 없다.",
+          "actualErrorPath": "공통 원소 3,6,12를 무시해 두 조건이 배반된다고 오판"
+        }
+      ],
+      "mathCheck": {
+        "p": [
+          1,
+          2,
+          3,
+          4,
+          6,
+          12
+        ],
+        "q": [
+          3,
+          6,
+          9,
+          12
+        ],
+        "relation": "PARTIAL_INTERSECTION_NEITHER",
+        "actualAnswer": "④"
+      },
+      "decision": "REVISED",
+      "remainingRisk": "학생용 Chrome 해설 렌더 및 Git 운영출시 별도 기술 확인 필요",
+      "affectedFields": [
+        "answer",
+        "solution",
+        "meta",
+        "templateKey"
+      ],
+      "changedMathRecheck": "p→q 거짓 반례 x=1, q→p 거짓 반례 x=9, 정답 보기 ④ 유일",
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "fields": [
+          "answer",
+          "solution",
+          "meta",
+          "templateKey"
+        ],
+        "oldAnswer": "③",
+        "newAnswer": "④",
+        "creatorSelfReviewNotAuthority": true,
+        "chrome": "NOT_TESTED"
+      },
+      "reverseStemFinding": "진리집합 두 방향 미포함은 맞게 구했으나 제작 원장에 ④를 오답으로 기록한 선지 매칭 오류 수정"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q05-B3",
+      "slot": "B3",
+      "finalStem": "실수 $x$에 대하여 $p$: $x\\le-2$, $q$: $x\\ge3$이라 하자. 다음 중 옳은 것은?",
+      "reverseReadingFinding": "학생에게 보이는 발문에서 교집합이 공집합인 조건들을 직접 확인하고 조건 관계의 두 방향 및 반례를 검토함",
+      "primaryL3Necessity": "조건명제 p→q와 q→p의 참거짓·진리집합 포함관계가 결정적 풀이",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "②",
+          "choiceText": "$p$는 $q$이기 위한 충분조건이다.",
+          "actualErrorPath": "② $x=-2$에서 $p\\to q$ 거짓임을 놓침"
+        },
+        {
+          "choice": "③",
+          "choiceText": "$p$는 $q$이기 위한 필요조건이다.",
+          "actualErrorPath": "③ $x=3$에서 $q\\to p$ 거짓임을 놓침"
+        },
+        {
+          "choice": "④",
+          "choiceText": "$q$는 $p$이기 위한 충분조건이다.",
+          "actualErrorPath": "④ $x=3$의 반례를 간과"
+        },
+        {
+          "choice": "⑤",
+          "choiceText": "$p$는 $q$이기 위한 필요충분조건이다.",
+          "actualErrorPath": "⑤ 양방향 모두 거짓임을 놓침"
+        }
+      ],
+      "mathCheck": {
+        "p": "x<=-2",
+        "q": "x>=3",
+        "relation": "DISJOINT"
+      },
+      "decision": "REVISED",
+      "remainingRisk": "학생용 Chrome 해설 렌더 및 Git 운영출시 별도 기술 확인 필요",
+      "affectedFields": [
+        "meta",
+        "templateKey"
+      ],
+      "changedMathRecheck": "변경된 templateKey 와 해당 확장 registry parent/UID 정합성 확인; 수학 불변",
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "fields": [
+          "meta",
+          "templateKey"
+        ],
+        "oldAnswer": "①",
+        "newAnswer": "①",
+        "creatorSelfReviewNotAuthority": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q05-C1",
+      "slot": "C1",
+      "finalStem": "실수 $x$와 정수 $a$에 대한 두 조건 $p$: $x\\ge a$, $q$: $x\\ge2$가 있다. $-2\\le a\\le4$일 때, $p$가 $q$이기 위한 필요조건이지만 충분조건은 아니도록 하는 정수 $a$의 개수는?",
+      "reverseReadingFinding": "학생에게 보이는 발문에서 매개변수에 따른 필요·충분 경계을 직접 확인하고 조건 관계의 두 방향 및 반례를 검토함",
+      "primaryL3Necessity": "조건명제 p→q와 q→p의 참거짓·진리집합 포함관계가 결정적 풀이",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "choiceText": "$1$",
+          "actualErrorPath": "① $a=1$ 한 값만 세어 1"
+        },
+        {
+          "choice": "②",
+          "choiceText": "$2$",
+          "actualErrorPath": "② $a=0,1$만 세어 2"
+        },
+        {
+          "choice": "③",
+          "choiceText": "$3$",
+          "actualErrorPath": "③ 음의 끝점 $a=-2$를 누락해 3"
+        },
+        {
+          "choice": "⑤",
+          "choiceText": "$5$",
+          "actualErrorPath": "⑤ 경계 $a=2$에서도 충분조건이 아니라고 오인해 5"
+        }
+      ],
+      "mathCheck": {
+        "values": [
+          -2,
+          -1,
+          0,
+          1
+        ],
+        "relation": "A_LESS_THAN_2"
+      },
+      "decision": "REVISED",
+      "remainingRisk": "학생용 Chrome 해설 렌더 및 Git 운영출시 별도 기술 확인 필요",
+      "affectedFields": [
+        "meta",
+        "templateKey"
+      ],
+      "changedMathRecheck": "변경된 templateKey 와 해당 확장 registry parent/UID 정합성 확인; 수학 불변",
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "fields": [
+          "meta",
+          "templateKey"
+        ],
+        "oldAnswer": "④",
+        "newAnswer": "④",
+        "creatorSelfReviewNotAuthority": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q05-C2",
+      "slot": "C2",
+      "finalStem": "실수 $a$, $x$에 대하여 두 조건 $p$: $x^2-ax+6=0$, $q$: $x=2$ 또는 $x=3$이라 하자. $p$가 $q$이기 위한 필요충분조건이 되도록 하는 $a$의 값은?",
+      "reverseReadingFinding": "학생에게 보이는 발문에서 두 진리집합의 상등을 만드는 계수을 직접 확인하고 조건 관계의 두 방향 및 반례를 검토함",
+      "primaryL3Necessity": "조건명제 p→q와 q→p의 참거짓·진리집합 포함관계가 결정적 풀이",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "choiceText": "$1$",
+          "actualErrorPath": "근의 합 대신 차 3−2=1을 계수로 오인"
+        },
+        {
+          "choice": "②",
+          "choiceText": "$2$",
+          "actualErrorPath": "근 x=2를 계수 a의 값으로 오인"
+        },
+        {
+          "choice": "③",
+          "choiceText": "$3$",
+          "actualErrorPath": "근 x=3을 계수 a의 값으로 오인"
+        },
+        {
+          "choice": "⑤",
+          "choiceText": "$6$",
+          "actualErrorPath": "근의 합 5 대신 곱 2×3=6을 a로 오인"
+        }
+      ],
+      "mathCheck": {
+        "a": 5,
+        "roots": [
+          2,
+          3
+        ],
+        "relation": "TRUTH_SET_EQUAL"
+      },
+      "decision": "REVISED",
+      "remainingRisk": "학생용 Chrome 해설 렌더 및 Git 운영출시 별도 기술 확인 필요",
+      "affectedFields": [
+        "choices",
+        "answer",
+        "solution",
+        "meta",
+        "templateKey"
+      ],
+      "changedMathRecheck": "근 2,3에서 a=2+3=5, ⑤의 6은 곱 2×3 오개념; 정답 ④ 유일",
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "fields": [
+          "choices",
+          "answer",
+          "solution",
+          "meta",
+          "templateKey"
+        ],
+        "oldAnswer": "⑤",
+        "newAnswer": "④",
+        "creatorSelfReviewNotAuthority": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q05-C3",
+      "slot": "C3",
+      "finalStem": "정수 $t$와 실수 $x$에 대하여 두 조건 $p$: $|x-t|\\le3$, $q$: $|x|\\le2$라 하자. $p$가 $q$이기 위한 필요조건이지만 충분조건은 아니도록 하는 정수 $t$의 개수는?",
+      "reverseReadingFinding": "학생에게 보이는 발문에서 이동하는 구간의 포함과 매개변수을 직접 확인하고 조건 관계의 두 방향 및 반례를 검토함",
+      "primaryL3Necessity": "조건명제 p→q와 q→p의 참거짓·진리집합 포함관계가 결정적 풀이",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "choiceText": "$1$",
+          "actualErrorPath": "① $t=0$만 세어 1"
+        },
+        {
+          "choice": "②",
+          "choiceText": "$2$",
+          "actualErrorPath": "② 이동 구간 한 끝점의 등호 경우를 빠뜨려 2"
+        },
+        {
+          "choice": "④",
+          "choiceText": "$4$",
+          "actualErrorPath": "④ 왼쪽 조건을 $t\\ge-2$로 잘못 세어 $t=-2,-1,0,1$ 네 개"
+        },
+        {
+          "choice": "⑤",
+          "choiceText": "$5$",
+          "actualErrorPath": "양 끝점의 포함 한계를 각각 1씩 잘못 확장하여 실제의 $-1\\le t\\le1$ 대신 $-2\\le t\\le2$로 판단하면 정수 다섯 개를 센다."
+        }
+      ],
+      "mathCheck": {
+        "values": [
+          -1,
+          0,
+          1
+        ],
+        "pIntervals": [
+          [
+            -4,
+            2
+          ],
+          [
+            -3,
+            3
+          ],
+          [
+            -2,
+            4
+          ]
+        ],
+        "qInterval": [
+          -2,
+          2
+        ],
+        "relation": "Q_SUBSET_P_PROPER"
+      },
+      "decision": "REVISED",
+      "remainingRisk": "학생용 Chrome 해설 렌더 및 Git 운영출시 별도 기술 확인 필요",
+      "affectedFields": [
+        "distractorPaths[⑤]",
+        "meta",
+        "templateKey",
+        "SVG background fill"
+      ],
+      "changedMathRecheck": "변경된 templateKey 와 해당 확장 registry parent/UID 정합성 확인; 수학 불변",
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "fields": [
+          "meta",
+          "templateKey"
+        ],
+        "oldAnswer": "③",
+        "newAnswer": "③",
+        "creatorSelfReviewNotAuthority": true,
+        "chrome": "NOT_TESTED"
+      }
+    }
+  ],
+  "postIndependentReview": {
+    "source": "GPT round2 2026-10-10",
+    "correctedUids": [
+      "ALITE-GEUMDANG25-2FINAL-Q05-B2",
+      "ALITE-GEUMDANG25-2FINAL-Q05-B3",
+      "ALITE-GEUMDANG25-2FINAL-Q05-C1",
+      "ALITE-GEUMDANG25-2FINAL-Q05-C2",
+      "ALITE-GEUMDANG25-2FINAL-Q05-C3"
+    ],
+    "svgWhiteBgFixed": true,
+    "chrome": "NOT_TESTED"
+  }
+}

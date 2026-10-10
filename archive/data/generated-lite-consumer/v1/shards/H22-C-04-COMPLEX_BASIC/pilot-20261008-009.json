@@ -1,7 +1,7 @@
 {
   "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
   "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-04-COMPLEX_BASIC/shards/pilot-20261008-009.js",
-  "sourceShardGitSha": "1e0a7b58499aa76d54df8ff3dd25d5cef10c11d3",
+  "sourceShardGitSha": "f134287c47ca7ad8a00aa08b028909c47d5b0e19",
   "repairShardGitSha": "95ee4742c2b86d58d89a49f314870cb40679cc06",
   "records": [
     {
@@ -11,7 +11,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 14,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-04-COMPLEX_BASIC/shards/pilot-20261008-009.js",
-      "sourceShardGitSha": "1e0a7b58499aa76d54df8ff3dd25d5cef10c11d3",
+      "sourceShardGitSha": "f134287c47ca7ad8a00aa08b028909c47d5b0e19",
       "repairShardGitSha": "95ee4742c2b86d58d89a49f314870cb40679cc06",
       "localOrdinal": 1,
       "l2": "H22-C-04-COMPLEX_BASIC",
@@ -20,7 +20,7 @@
         "l3": "복소수의 뜻",
         "l4": "실수부·허수부"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 1,
         "level": "중",
@@ -29,12 +29,12 @@
         "originalCategory": "복소수의 뜻",
         "standardCourse": "공통수학1",
         "standardUnitKey": "H22-C-04",
-        "standardUnit": "복소수의 뜻",
+        "standardUnit": "복소수와 이차방정식",
         "standardUnitOrder": 4,
         "subUnitKey": "H22-C-04-COMPLEX_BASIC",
-        "subUnit": "복소수의 뜻",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "복소수의 뜻과 표현",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -55,6 +55,7 @@
         "solution": "[키포인트] 켤레복소수의 합과 곱으로 실수부와 허수부의 크기를 결정한다.\\n$z+\\overline z=2x=8$이므로 $x=4$이다. $(z-2)(\\overline z-2)=(x-2)^2+y^2=13$이므로 $y^2=9$, 따라서 $|y|=3$이다.",
         "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
         "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+        "uid": "ALITE-20261008-HYC26-Q14-002",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q14-002",
@@ -265,7 +266,27 @@
         "physicalStorageBucketKey": "H22-C-04-COMPLEX_BASIC",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+        "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-04",
+        "subUnitKey": "H22-C-04-COMPLEX_BASIC"
+      },
+      "sourceMetaSha256": "59da5dc419347f7efa2b4f689902ce628e2db9a9f4b01f7f4e34abf10cd892aa"
     }
-  ]
+  ],
+  "school": "효천고",
+  "batchId": "MAIN_SOURCE_pilot-20261008-009",
+  "sourceKind": "generated"
 }

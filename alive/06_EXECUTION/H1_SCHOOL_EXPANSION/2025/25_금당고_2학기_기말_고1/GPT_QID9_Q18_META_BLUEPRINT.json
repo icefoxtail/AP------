@@ -1,0 +1,400 @@
+{
+  "schemaVersion": "ALIVE_QID9_GEUMDANG25_Q18_META_BLUEPRINT_V1",
+  "sourceQid": 18,
+  "sourceExamPath": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+  "sourceExamBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "candidateJsBlobSha": "fba5a8b99f243e29721716fd34317cb32057d63e",
+  "sourceInvariant": "90° 원주각을 이루는 P는 AB를 지름으로 하는 원 위. 직선과 원의 거리 조건 및 각을 정의할 수 없는 A,B 끝점 예외를 결합하여 k를 센다.",
+  "lockedPrimaryL3": {
+    "id": "H1-RPM-219",
+    "label": "원과 직선",
+    "l4": "교점 개수",
+    "pt": "PT_CIRCLE_LINE_RELATION",
+    "template": "TM_CIRCLE_INTERSECTION_COUNT",
+    "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "binding": "ACTIVE"
+  },
+  "slots": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q18-A1",
+      "primaryL3": "H1-RPM-219",
+      "chosenL4": "교점 개수",
+      "studentStem": "좌표평면 위의 두 점 $A(-1,2)$, $B(1,-2)$와 직선 $l:x+2y=k$가 있다. 명제\n‘직선 $l$ 위의 어떤 점 $P$에 대하여 $\\angle APB=90^\\circ$이다.’\n가 참이 되도록 하는 $k$의 개수는? (단, $k$는 정수이다.)",
+      "choices": [
+        "$9$",
+        "$11$",
+        "$13$",
+        "$10$",
+        "$12$"
+      ],
+      "answer": "②",
+      "level": "하",
+      "difficultyBucket": 2,
+      "originalPoints": {
+        "A": [
+          -1,
+          2
+        ],
+        "B": [
+          1,
+          -2
+        ]
+      },
+      "lineNormal": [
+        1,
+        2
+      ],
+      "center": [
+        0,
+        0
+      ],
+      "radiusSquared": 5,
+      "constraintMode": "integer",
+      "answerCount": 11,
+      "decisiveExtra": "circle-line existence",
+      "problemVisual": "EXEMPT_STEM_COORDINATES_COMPLETE",
+      "solutionVisual": "ADD_CIRCLE_DIAMETER_AND_LINE_GEOMETRY",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q18-A1-solution.svg"
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q18-A2",
+      "primaryL3": "H1-RPM-219",
+      "chosenL4": "교점 개수",
+      "studentStem": "좌표평면 위의 두 점 $A(-2,2)$, $B(2,-2)$와 직선 $l:2x+y=k$가 있다. 명제\n‘직선 $l$ 위의 어떤 점 $P$에 대하여 $\\angle APB=90^\\circ$이다.’\n가 참이 되도록 하는 $k$의 개수는? (단, $k$는 정수이다.)",
+      "choices": [
+        "$11$",
+        "$12$",
+        "$14$",
+        "$13$",
+        "$15$"
+      ],
+      "answer": "④",
+      "level": "하",
+      "difficultyBucket": 2,
+      "originalPoints": {
+        "A": [
+          -2,
+          2
+        ],
+        "B": [
+          2,
+          -2
+        ]
+      },
+      "lineNormal": [
+        2,
+        1
+      ],
+      "center": [
+        0,
+        0
+      ],
+      "radiusSquared": 8,
+      "constraintMode": "integer",
+      "answerCount": 13,
+      "decisiveExtra": "circle-line existence",
+      "problemVisual": "EXEMPT_STEM_COORDINATES_COMPLETE",
+      "solutionVisual": "ADD_CIRCLE_DIAMETER_AND_LINE_GEOMETRY",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q18-A2-solution.svg"
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q18-A3",
+      "primaryL3": "H1-RPM-219",
+      "chosenL4": "EXT-GD25-Q18-TANGENCY-ENDPOINT-EXCLUSION",
+      "studentStem": "좌표평면 위의 두 점 $A(-2,1)$, $B(2,-1)$와 직선 $l:2x-y=k$가 있다. 명제\n‘직선 $l$ 위의 어떤 점 $P$에 대하여 $\\angle APB=90^\\circ$이다.’\n가 참이 되도록 하는 $k$의 개수는? (단, $k$는 정수이다.)",
+      "choices": [
+        "$9$",
+        "$10$",
+        "$11$",
+        "$8$",
+        "$7$"
+      ],
+      "answer": "①",
+      "level": "중",
+      "difficultyBucket": 3,
+      "originalPoints": {
+        "A": [
+          -2,
+          1
+        ],
+        "B": [
+          2,
+          -1
+        ]
+      },
+      "lineNormal": [
+        2,
+        -1
+      ],
+      "center": [
+        0,
+        0
+      ],
+      "radiusSquared": 5,
+      "constraintMode": "integer",
+      "answerCount": 9,
+      "decisiveExtra": "tangent endpoints excluded",
+      "problemVisual": "EXEMPT_STEM_COORDINATES_COMPLETE",
+      "solutionVisual": "ADD_CIRCLE_DIAMETER_AND_LINE_GEOMETRY",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q18-A3-solution.svg"
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q18-B1",
+      "primaryL3": "H1-RPM-219",
+      "chosenL4": "EXT-GD25-Q18-TRANSLATED-CIRCLE",
+      "studentStem": "좌표평면 위의 두 점 $A(1,3)$, $B(3,-1)$와 직선 $l:x+2y=k$가 있다. 명제\n‘직선 $l$ 위의 어떤 점 $P$에 대하여 $\\angle APB=90^\\circ$이다.’\n가 참이 되도록 하는 $k$의 개수는? (단, $k$는 정수이다.)",
+      "choices": [
+        "$9$",
+        "$10$",
+        "$12$",
+        "$13$",
+        "$11$"
+      ],
+      "answer": "⑤",
+      "level": "중",
+      "difficultyBucket": 3,
+      "originalPoints": {
+        "A": [
+          1,
+          3
+        ],
+        "B": [
+          3,
+          -1
+        ]
+      },
+      "lineNormal": [
+        1,
+        2
+      ],
+      "center": [
+        2,
+        1
+      ],
+      "radiusSquared": 5,
+      "constraintMode": "integer",
+      "answerCount": 11,
+      "decisiveExtra": "circle-line existence",
+      "problemVisual": "EXEMPT_STEM_COORDINATES_COMPLETE",
+      "solutionVisual": "ADD_CIRCLE_DIAMETER_AND_LINE_GEOMETRY",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q18-B1-solution.svg"
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q18-B2",
+      "primaryL3": "H1-RPM-219",
+      "chosenL4": "EXT-GD25-Q18-NONINTEGER-TANGENCY",
+      "studentStem": "좌표평면 위의 두 점 $A(-4,2)$, $B(2,2)$와 직선 $l:x+y=k$가 있다. 명제\n‘직선 $l$ 위의 어떤 점 $P$에 대하여 $\\angle APB=90^\\circ$이다.’\n가 참이 되도록 하는 $k$의 개수는? (단, $k$는 정수이다.)",
+      "choices": [
+        "$7$",
+        "$8$",
+        "$9$",
+        "$10$",
+        "$11$"
+      ],
+      "answer": "③",
+      "level": "중",
+      "difficultyBucket": 3,
+      "originalPoints": {
+        "A": [
+          -4,
+          2
+        ],
+        "B": [
+          2,
+          2
+        ]
+      },
+      "lineNormal": [
+        1,
+        1
+      ],
+      "center": [
+        -1,
+        2
+      ],
+      "radiusSquared": 9,
+      "constraintMode": "integer",
+      "answerCount": 9,
+      "decisiveExtra": "circle-line existence",
+      "problemVisual": "EXEMPT_STEM_COORDINATES_COMPLETE",
+      "solutionVisual": "ADD_CIRCLE_DIAMETER_AND_LINE_GEOMETRY",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q18-B2-solution.svg"
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q18-B3",
+      "primaryL3": "H1-RPM-219",
+      "chosenL4": "EXT-GD25-Q18-MULTIPLE-PARAMETER",
+      "studentStem": "좌표평면 위의 두 점 $A(-3,4)$, $B(3,-4)$와 직선 $l:3x+4y=k$가 있다. 명제\n‘직선 $l$ 위의 어떤 점 $P$에 대하여 $\\angle APB=90^\\circ$이다.’\n가 참이 되도록 하는 $k$의 개수는? (단, $k$는 $3$의 배수인 정수이다.)",
+      "choices": [
+        "$15$",
+        "$17$",
+        "$19$",
+        "$13$",
+        "$21$"
+      ],
+      "answer": "②",
+      "level": "중",
+      "difficultyBucket": 3,
+      "originalPoints": {
+        "A": [
+          -3,
+          4
+        ],
+        "B": [
+          3,
+          -4
+        ]
+      },
+      "lineNormal": [
+        3,
+        4
+      ],
+      "center": [
+        0,
+        0
+      ],
+      "radiusSquared": 25,
+      "constraintMode": "multiple3",
+      "answerCount": 17,
+      "decisiveExtra": "congruence modulo3",
+      "problemVisual": "EXEMPT_STEM_COORDINATES_COMPLETE",
+      "solutionVisual": "ADD_CIRCLE_DIAMETER_AND_LINE_GEOMETRY",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q18-B3-solution.svg",
+      "difficultyRationale": "$|k|\\le25$에서 3의 배수를 −24부터 24까지 세면 17개다. 직선-원 거리 조건에 합동 조건을 한 번 적용하는 문제이므로 최상 난도보다는 중간 난도가 적절하다."
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q18-C1",
+      "primaryL3": "H1-RPM-219",
+      "chosenL4": "EXT-GD25-Q18-DIAMETER-LINE-EXCLUSION",
+      "studentStem": "좌표평면 위의 두 점 $A(-2,1)$, $B(2,-1)$와 직선 $l:x+2y=k$가 있다. 명제\n‘직선 $l$ 위의 어떤 점 $P$에 대하여 $\\angle APB=90^\\circ$이다.’\n가 참이 되도록 하는 $k$의 개수는? (단, $k$는 정수이다.)",
+      "choices": [
+        "$9$",
+        "$11$",
+        "$12$",
+        "$10$",
+        "$13$"
+      ],
+      "answer": "④",
+      "level": "상",
+      "difficultyBucket": 4,
+      "originalPoints": {
+        "A": [
+          -2,
+          1
+        ],
+        "B": [
+          2,
+          -1
+        ]
+      },
+      "lineNormal": [
+        1,
+        2
+      ],
+      "center": [
+        0,
+        0
+      ],
+      "radiusSquared": 5,
+      "constraintMode": "integer",
+      "answerCount": 10,
+      "decisiveExtra": "line AB itself excluded",
+      "problemVisual": "EXEMPT_STEM_COORDINATES_COMPLETE",
+      "solutionVisual": "ADD_CIRCLE_DIAMETER_AND_LINE_GEOMETRY",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q18-C1-solution.svg"
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q18-C2",
+      "primaryL3": "H1-RPM-219",
+      "chosenL4": "EXT-GD25-Q18-POSITIVE-INT-AND-ENDPOINT",
+      "studentStem": "좌표평면 위의 두 점 $A(-1,2)$, $B(3,-4)$와 직선 $l:2x-3y=k$가 있다. 명제\n‘직선 $l$ 위의 어떤 점 $P$에 대하여 $\\angle APB=90^\\circ$이다.’\n가 참이 되도록 하는 $k$의 개수는? (단, $k$는 자연수이다.)",
+      "choices": [
+        "$17$",
+        "$16$",
+        "$18$",
+        "$19$",
+        "$15$"
+      ],
+      "answer": "①",
+      "level": "상",
+      "difficultyBucket": 4,
+      "originalPoints": {
+        "A": [
+          -1,
+          2
+        ],
+        "B": [
+          3,
+          -4
+        ]
+      },
+      "lineNormal": [
+        2,
+        -3
+      ],
+      "center": [
+        1,
+        -1
+      ],
+      "radiusSquared": 13,
+      "constraintMode": "positiveInteger",
+      "answerCount": 17,
+      "decisiveExtra": "positive k and no tangent at endpoints",
+      "problemVisual": "EXEMPT_STEM_COORDINATES_COMPLETE",
+      "solutionVisual": "ADD_CIRCLE_DIAMETER_AND_LINE_GEOMETRY",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q18-C2-solution.svg"
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q18-C3",
+      "primaryL3": "H1-RPM-219",
+      "chosenL4": "EXT-GD25-Q18-BOTH-INTERSECTIONS-EXCLUDE-ENDPOINTS",
+      "studentStem": "좌표평면 위의 두 점 $A(-2,3)$, $B(4,-1)$와 직선 $l:x+2y=k$가 있다. 명제\n‘직선 $l$ 위에 서로 다른 두 점 $P,Q$가 존재하여 $\\angle APB=\\angle AQB=90^\\circ$이다. (단, $P,Q$는 $A,B$와 모두 다른 점이다.)’\n가 참이 되도록 하는 $k$의 개수는? (단, $k$는 정수이다.)",
+      "choices": [
+        "$13$",
+        "$14$",
+        "$15$",
+        "$16$",
+        "$17$"
+      ],
+      "answer": "③",
+      "level": "상",
+      "difficultyBucket": 4,
+      "originalPoints": {
+        "A": [
+          -2,
+          3
+        ],
+        "B": [
+          4,
+          -1
+        ]
+      },
+      "lineNormal": [
+        1,
+        2
+      ],
+      "center": [
+        1,
+        1
+      ],
+      "radiusSquared": 13,
+      "constraintMode": "bothNoneEndpoint",
+      "answerCount": 15,
+      "decisiveExtra": "require both distinct non-endpoint points",
+      "problemVisual": "EXEMPT_STEM_COORDINATES_COMPLETE",
+      "solutionVisual": "ADD_CIRCLE_DIAMETER_AND_LINE_GEOMETRY",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q18-C3-solution.svg",
+      "difficultyRationale": "$|k−3|\\le\\sqrt{65}$의 정수 범위를 제곱수 비교로 정하고 A/B를 지나는 k=2,4를 더 제외한다. 비정수 경계와 기하 예외를 함께 판단하므로 상 수준은 유지하되 최고 bucket 5는 낮춘다."
+    }
+  ],
+  "status": "CREATOR_ONLY_BRANCH_NOT_INDEPENDENT"
+}

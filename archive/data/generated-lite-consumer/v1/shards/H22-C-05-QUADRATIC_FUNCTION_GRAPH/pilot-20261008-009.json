@@ -1,7 +1,7 @@
 {
   "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
   "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-05-QUADRATIC_FUNCTION_GRAPH/shards/pilot-20261008-009.js",
-  "sourceShardGitSha": "6eea6caedd06f22af0d565006503568a118f82cf",
+  "sourceShardGitSha": "11c7bb26d76ddda1933b8a4f162575ccaa2b1bb3",
   "repairShardGitSha": "9bc2b432a1800e4f60dfcfa9022744fbb5243027",
   "records": [
     {
@@ -11,7 +11,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 15,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-05-QUADRATIC_FUNCTION_GRAPH/shards/pilot-20261008-009.js",
-      "sourceShardGitSha": "6eea6caedd06f22af0d565006503568a118f82cf",
+      "sourceShardGitSha": "11c7bb26d76ddda1933b8a4f162575ccaa2b1bb3",
       "repairShardGitSha": "9bc2b432a1800e4f60dfcfa9022744fbb5243027",
       "localOrdinal": 1,
       "l2": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
@@ -20,7 +20,7 @@
         "l3": "그래프와 근",
         "l4": "x축과의 교점"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 1,
         "level": "중",
@@ -29,12 +29,12 @@
         "originalCategory": "그래프와 근",
         "standardCourse": "공통수학1",
         "standardUnitKey": "H22-C-05",
-        "standardUnit": "그래프와 근",
+        "standardUnit": "이차방정식과 이차함수",
         "standardUnitOrder": 5,
         "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-        "subUnit": "그래프와 근",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "이차함수의 그래프",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -46,15 +46,16 @@
         "content": "이차함수 $f(x)$의 서로 다른 두 영점은 $-1,3$이다. 방정식 $f(x-a)=0$의 두 근의 곱이 $a^2+7$일 때, $a$의 값은?",
         "choices": [
           "1",
-          "2",
           "3",
-          "4",
-          "5"
+          "5",
+          "7",
+          "9"
         ],
-        "answer": "⑤",
+        "answer": "③",
         "solution": "[키포인트] 이동한 두 근은 $a-1,a+3$이다.\\n두 근의 곱 $(a-1)(a+3)=a^2+2a-3$이 $a^2+7$과 같으므로 $2a=10$이다. 따라서 $a=5$이다.",
         "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
         "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+        "uid": "ALITE-20261008-HYC26-Q15-001",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q15-001",
@@ -265,7 +266,24 @@
         "physicalStorageBucketKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH"
+      },
+      "sourceMetaSha256": "f00184ecbb2373f956b8f2bd50282b9ed19863653aa638aa2e52fc9adb357fe4"
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q15-003",
@@ -274,7 +292,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 15,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-05-QUADRATIC_FUNCTION_GRAPH/shards/pilot-20261008-009.js",
-      "sourceShardGitSha": "6eea6caedd06f22af0d565006503568a118f82cf",
+      "sourceShardGitSha": "11c7bb26d76ddda1933b8a4f162575ccaa2b1bb3",
       "repairShardGitSha": "9bc2b432a1800e4f60dfcfa9022744fbb5243027",
       "localOrdinal": 2,
       "l2": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
@@ -283,7 +301,7 @@
         "l3": "그래프와 근",
         "l4": "x축과의 교점"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 2,
         "level": "상",
@@ -292,12 +310,12 @@
         "originalCategory": "그래프와 근",
         "standardCourse": "공통수학1",
         "standardUnitKey": "H22-C-05",
-        "standardUnit": "그래프와 근",
+        "standardUnit": "이차방정식과 이차함수",
         "standardUnitOrder": 5,
         "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-        "subUnit": "그래프와 근",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "이차함수의 그래프",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -319,6 +337,7 @@
         "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
         "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
         "image": "assets/generated-lite/ALITE-20261008-HYC26-Q15-003.svg",
+        "uid": "ALITE-20261008-HYC26-Q15-003",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q15-003",
@@ -529,7 +548,24 @@
         "physicalStorageBucketKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 4,
+        "level": "상",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH"
+      },
+      "sourceMetaSha256": "897fa64ac3c58f07950ccb3b7414a563d8e7a9eab4b860f73a8fc23e7956819c"
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q15-004",
@@ -538,7 +574,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 15,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-05-QUADRATIC_FUNCTION_GRAPH/shards/pilot-20261008-009.js",
-      "sourceShardGitSha": "6eea6caedd06f22af0d565006503568a118f82cf",
+      "sourceShardGitSha": "11c7bb26d76ddda1933b8a4f162575ccaa2b1bb3",
       "repairShardGitSha": "9bc2b432a1800e4f60dfcfa9022744fbb5243027",
       "localOrdinal": 3,
       "l2": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
@@ -547,7 +583,7 @@
         "l3": "그래프와 근",
         "l4": "x축과의 교점"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 3,
         "level": "상",
@@ -556,12 +592,12 @@
         "originalCategory": "그래프와 근",
         "standardCourse": "공통수학1",
         "standardUnitKey": "H22-C-05",
-        "standardUnit": "그래프와 근",
+        "standardUnit": "이차방정식과 이차함수",
         "standardUnitOrder": 5,
         "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-        "subUnit": "그래프와 근",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "이차함수의 그래프",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -583,6 +619,7 @@
         "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
         "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
         "image": "assets/generated-lite/ALITE-20261008-HYC26-Q15-004.svg",
+        "uid": "ALITE-20261008-HYC26-Q15-004",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q15-004",
@@ -793,7 +830,27 @@
         "physicalStorageBucketKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 4,
+        "level": "상",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH"
+      },
+      "sourceMetaSha256": "897fa64ac3c58f07950ccb3b7414a563d8e7a9eab4b860f73a8fc23e7956819c"
     }
-  ]
+  ],
+  "school": "효천고",
+  "batchId": "MAIN_SOURCE_pilot-20261008-009",
+  "sourceKind": "generated"
 }

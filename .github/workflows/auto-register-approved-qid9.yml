@@ -1,6 +1,7 @@
-name: Auto-register approved QID9 Meta and Consumer
+name: Register approved QID9 source packages
+
 on:
-  push:
+  pull_request:
     branches: [main]
     paths:
       - 'alive/06_EXECUTION/H1_SCHOOL_EXPANSION/**/GPT_QID9_EXAM_MANIFEST.json'
@@ -8,19 +9,17 @@ on:
       - 'alive/06_EXECUTION/H1_SCHOOL_EXPANSION/**/GPT_QID9_*_USER_DIRECTED_APPROVAL_*.json'
       - 'archive/analysis/palma-mock-builder-20261010/**'
       - 'archive/assets/generated-lite/ALITE-PALMA25-2MID-Q*-*.svg'
+      - 'archive/generated/lite/v1/**/shards/**/*.js'
+      - 'archive/generated/lite/v1/**/metadata/**/*.json'
       - 'archive/tools/generated-meta/auto-register-approved-qid9.mjs'
-      - 'tools/check-generated-bank-browser.cjs'
-      - 'archive/generated/lite/v1/2022/H1/**/extension-l4/**'
-      - 'archive/generated/lite/v1/2022/H1/**/extension-meta/**'
-      - '.github/workflows/auto-register-approved-qid9.yml'
-  pull_request:
-    branches: [main]
-    paths:
-      - 'archive/tools/generated-meta/auto-register-approved-qid9.mjs'
+      - 'archive/tools/generated-meta/register-approved-generated-meta.mjs'
       - 'archive/tools/generated-meta-retention-gate.cjs'
-      - 'tests/generated-meta-retention.test.cjs'
+      - 'archive/data/generated-lite-consumer/v1/**'
+      - 'archive/generated-mock-selection.js'
+      - 'archive/generated-bank.html'
       - 'tests/archive2-generated-bank-registration.test.js'
-      - 'tools/check-generated-bank-browser.cjs'
+      - 'tests/archive2-generated-mock-selection.test.cjs'
+      - 'tests/generated-meta-retention.test.cjs'
       - '.github/workflows/auto-register-approved-qid9.yml'
   workflow_dispatch:
 
@@ -28,14 +27,14 @@ permissions:
   contents: read
 
 concurrency:
-  group: approved-qid9-auto-register-main
+  group: approved-qid9-source-validation-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  auto-register:
-    name: Approval-to-Meta-to-Consumer-to-Chrome
+  validate-approved-source:
+    name: Approved source, scoped Meta, and Consumer validation
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
@@ -44,18 +43,21 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Materialize only approved QID9 items
+      - name: Materialize approved QID9 items from source packages and receipts
         run: node archive/tools/generated-meta/auto-register-approved-qid9.mjs --write
-      - name: Validate complete approved Meta and student Consumer
+      - name: Check approved UID completeness and source projection parity
+        run: node archive/tools/generated-meta/auto-register-approved-qid9.mjs --check
+      - name: Rebuild and check all main-resident source rows
         run: |
-          node archive/tools/generated-meta-retention-gate.cjs
-          node --test archive/tools/generated-meta/register-approved-generated-meta.test.mjs archive/tools/generated-meta/auto-register-approved-qid9.test.mjs tests/generated-meta-retention.test.cjs tests/archive2-generated-bank-registration.test.js tests/problem-bank-meta.test.cjs tests/generated-meta-backfill.test.cjs
-      - name: Install real Chrome
-        uses: browser-actions/setup-chrome@v1
-        id: chrome
-        with:
-          chrome-version: stable
-      - name: Confirm actual student lookup, preview and print
-        env:
-          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
-        run: node tools/check-generated-bank-browser.cjs
+          node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --write
+          node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --check
+      - name: Validate scoped approval Meta and source availability contracts
+        run: >-
+          node --test
+          archive/tools/generated-meta/register-approved-generated-meta.test.mjs
+          archive/tools/generated-meta/auto-register-approved-qid9.test.mjs
+          tests/generated-meta-retention.test.cjs
+          tests/generated-main-source-consumer-sync.test.cjs
+          tests/archive2-generated-bank-registration.test.js
+          tests/archive2-generated-mock-selection.test.cjs
+          tests/problem-bank-meta.test.cjs

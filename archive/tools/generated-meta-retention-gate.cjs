@@ -285,12 +285,15 @@ function validateAuthorityBinding(root,meta,question,uid){
  }catch(e){issues.push('META_AUTHORITY_INSPECTION_ERROR:'+e.message);}
  return {issues,primaryRecord};
 }
-function audit(root){
+function audit(root,{uidScope}={}){
  const consumerPrefix='archive/data/generated-lite-consumer/v1/';
  const sourcePrefix='archive/generated/lite/v1/';
  const idx=readJson(path.join(root,consumerPrefix,'index.json'));
  const cutover=readJson(path.join(root,consumerPrefix,'meta-retention-cutover-20261009.json'));
  const errors=[];
+ const scopedUids=uidScope===undefined?null:new Set(Array.isArray(uidScope)?uidScope:[]);
+ if(uidScope!==undefined&&(!Array.isArray(uidScope)||!uidScope.length||scopedUids.size!==uidScope.length||uidScope.some(uid=>!nonempty(uid))))
+  errors.push('UID_SCOPE_INVALID');
  if(cutover.schemaVersion!=='GENERATED_META_RETENTION_CUTOVER_V1'||cutover.legacyCount!==323||
    cutover.legacyUids?.length!==323||new Set(cutover.legacyUids).size!==323)
   errors.push('LEGACY_CUTOVER_ROSTER_INVALID');
@@ -312,7 +315,9 @@ function audit(root){
   const uid=row.uid;
   if(!nonempty(uid)||seen.has(uid)){errors.push(String(uid)+':DUPLICATE_OR_INVALID_UID');continue;}
   seen.add(uid);
-  if(holds.has(uid))errors.push(uid+':HOLD_EXPOSED');
+  const inScope=scopedUids===null||scopedUids.has(uid);
+  if(inScope&&holds.has(uid))errors.push(uid+':HOLD_EXPOSED');
+  if(!inScope)continue;
   if(legacy.has(uid)){exempt++;continue;}
   checked++;
   const issue=(code)=>errors.push(uid+':'+code);
@@ -403,8 +408,10 @@ function audit(root){
    }
   }catch(e){issue('INSPECTION_ERROR:'+e.message);}
  }
- return {status:errors.length?'FAIL':'PASS_NEW_UID_SCOPE_ONLY',
-   legacyExemptNotRecertified:exempt,newUidChecked:checked,total:seen.size,
+ if(scopedUids)for(const uid of scopedUids)if(!seen.has(uid))errors.push(uid+':UID_SCOPE_MISSING_FROM_INDEX');
+ return {status:errors.length?'FAIL':scopedUids?'PASS_APPROVED_UID_SCOPE_ONLY':'PASS_NEW_UID_SCOPE_ONLY',
+   uidScope:scopedUids?[...scopedUids].sort():undefined,
+   legacyExemptNotRecertified:exempt,newUidChecked:checked,total:scopedUids?scopedUids.size:seen.size,
    failures:errors.length,errors};
 }
 function bindingDigestMismatch(row,record,q,sourceQuestion,approved,binding){

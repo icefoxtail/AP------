@@ -1,7 +1,7 @@
 {
   "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
   "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-05-QUADRATIC_EQUATION/shards/pilot-20261008-008.js",
-  "sourceShardGitSha": "d3767e644fc483e571c55d4f2bc7d9e726965385",
+  "sourceShardGitSha": "276a4438c607cf8f36b11d81eac5d81bb139d20b",
   "repairShardGitSha": "6ffdb4006de096a888acc8999a3d2ca467d85dd8",
   "records": [
     {
@@ -11,7 +11,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 12,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-05-QUADRATIC_EQUATION/shards/pilot-20261008-008.js",
-      "sourceShardGitSha": "d3767e644fc483e571c55d4f2bc7d9e726965385",
+      "sourceShardGitSha": "276a4438c607cf8f36b11d81eac5d81bb139d20b",
       "repairShardGitSha": "6ffdb4006de096a888acc8999a3d2ca467d85dd8",
       "localOrdinal": 1,
       "l2": "H22-C-05-QUADRATIC_EQUATION",
@@ -21,7 +21,7 @@
         "l4": "근으로 방정식 구성",
         "mappingStatus": "DIRECT_ACTIVE"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 1,
         "level": "중",
@@ -33,9 +33,9 @@
         "standardUnit": "이차방정식과 이차함수",
         "standardUnitOrder": 5,
         "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-        "subUnit": "이차방정식과 이차함수",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "이차방정식",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -56,6 +56,7 @@
         "solution": "[키포인트] 역수로 바뀐 두 근의 합과 곱을 계산한다.\n원래 근과 계수의 관계에 의해 $\\alpha+\\beta=5$, $\\alpha\\beta=6$이다.\n새 두 근의 합은 $\\dfrac1\\alpha+\\dfrac1\\beta=\\dfrac{\\alpha+\\beta}{\\alpha\\beta}=\\dfrac56$이고 곱은 $\\dfrac1{\\alpha\\beta}=\\dfrac16$이다.\n따라서 구하는 방정식은 $x^2-\\dfrac56x+\\dfrac16=0$이다.",
         "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
         "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+        "uid": "ALITE-20261008-HYC26-Q12-001",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q12-001",
@@ -266,7 +267,24 @@
         "physicalStorageBucketKey": "H22-C-05-QUADRATIC_EQUATION",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION"
+      },
+      "sourceMetaSha256": "840b1af369ca6d20a793c39a726143e7d3a0051d9419cbbe8ef3aef2f48d3741"
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q12-002",
@@ -275,7 +293,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 12,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-05-QUADRATIC_EQUATION/shards/pilot-20261008-008.js",
-      "sourceShardGitSha": "d3767e644fc483e571c55d4f2bc7d9e726965385",
+      "sourceShardGitSha": "276a4438c607cf8f36b11d81eac5d81bb139d20b",
       "repairShardGitSha": "6ffdb4006de096a888acc8999a3d2ca467d85dd8",
       "localOrdinal": 2,
       "l2": "H22-C-05-QUADRATIC_EQUATION",
@@ -285,7 +303,7 @@
         "l4": "근으로 방정식 구성",
         "mappingStatus": "DIRECT_ACTIVE"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 2,
         "level": "중",
@@ -297,9 +315,9 @@
         "standardUnit": "이차방정식과 이차함수",
         "standardUnitOrder": 5,
         "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-        "subUnit": "이차방정식과 이차함수",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "이차방정식",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -320,6 +338,7 @@
         "solution": "[키포인트] 원래 이차방정식의 최고차항 계수를 반영해 근의 합과 곱을 구한다.\n$\\alpha+\\beta=\\dfrac82=4$, $\\alpha\\beta=\\dfrac32$이다.\n역수로 바뀐 두 근의 합은 $\\dfrac4{3/2}=\\dfrac83$이고 곱은 $\\dfrac1{3/2}=\\dfrac23$이다.\n따라서 $x^2-\\dfrac83x+\\dfrac23=0$이다.",
         "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
         "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+        "uid": "ALITE-20261008-HYC26-Q12-002",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q12-002",
@@ -530,7 +549,24 @@
         "physicalStorageBucketKey": "H22-C-05-QUADRATIC_EQUATION",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION"
+      },
+      "sourceMetaSha256": "f0562a49337489b179edf0beae72c99805c5ba81e57354f6483b1e0938725775"
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q12-003",
@@ -539,7 +575,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 12,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-05-QUADRATIC_EQUATION/shards/pilot-20261008-008.js",
-      "sourceShardGitSha": "d3767e644fc483e571c55d4f2bc7d9e726965385",
+      "sourceShardGitSha": "276a4438c607cf8f36b11d81eac5d81bb139d20b",
       "repairShardGitSha": "6ffdb4006de096a888acc8999a3d2ca467d85dd8",
       "localOrdinal": 3,
       "l2": "H22-C-05-QUADRATIC_EQUATION",
@@ -549,7 +585,7 @@
         "l4": "근으로 방정식 구성",
         "mappingStatus": "DIRECT_ACTIVE"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 3,
         "level": "중",
@@ -561,9 +597,9 @@
         "standardUnit": "이차방정식과 이차함수",
         "standardUnitOrder": 5,
         "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-        "subUnit": "이차방정식과 이차함수",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "이차방정식",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -584,6 +620,7 @@
         "solution": "[키포인트] 각 근에 $1$을 더했을 때의 합과 곱을 구한다.\n$\\alpha+\\beta=4$, $\\alpha\\beta=1$이다.\n새 근의 합은 $(\\alpha+1)+(\\beta+1)=6$이고 곱은 $(\\alpha+1)(\\beta+1)=1+4+1=6$이다.\n따라서 $x^2-6x+6=0$이다.",
         "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
         "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+        "uid": "ALITE-20261008-HYC26-Q12-003",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q12-003",
@@ -794,7 +831,24 @@
         "physicalStorageBucketKey": "H22-C-05-QUADRATIC_EQUATION",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION"
+      },
+      "sourceMetaSha256": "f0562a49337489b179edf0beae72c99805c5ba81e57354f6483b1e0938725775"
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q12-004",
@@ -803,7 +857,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 12,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-05-QUADRATIC_EQUATION/shards/pilot-20261008-008.js",
-      "sourceShardGitSha": "d3767e644fc483e571c55d4f2bc7d9e726965385",
+      "sourceShardGitSha": "276a4438c607cf8f36b11d81eac5d81bb139d20b",
       "repairShardGitSha": "6ffdb4006de096a888acc8999a3d2ca467d85dd8",
       "localOrdinal": 4,
       "l2": "H22-C-05-QUADRATIC_EQUATION",
@@ -813,7 +867,7 @@
         "l4": "근으로 방정식 구성",
         "mappingStatus": "DIRECT_ACTIVE"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 4,
         "level": "중",
@@ -825,9 +879,9 @@
         "standardUnit": "이차방정식과 이차함수",
         "standardUnitOrder": 5,
         "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-        "subUnit": "이차방정식과 이차함수",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "이차방정식",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -848,6 +902,7 @@
         "solution": "[키포인트] 새 근의 합과 곱을 원래 근의 합과 곱으로 표현한다.\n$\\alpha+\\beta=3$, $\\alpha\\beta=1$이다.\n새 근의 합은 $2(\\alpha+\\beta)-2=4$이다.\n곱은 $(2\\alpha-1)(2\\beta-1)=4\\alpha\\beta-2(\\alpha+\\beta)+1=4-6+1=-1$이다.\n따라서 $x^2-4x-1=0$이다.",
         "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
         "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+        "uid": "ALITE-20261008-HYC26-Q12-004",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q12-004",
@@ -1058,7 +1113,24 @@
         "physicalStorageBucketKey": "H22-C-05-QUADRATIC_EQUATION",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION"
+      },
+      "sourceMetaSha256": "31c89e6464c973b854fbb1cdfed671ae7c412c12e917beee52f4c00145b2f6e1"
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q12-005",
@@ -1067,7 +1139,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 12,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-05-QUADRATIC_EQUATION/shards/pilot-20261008-008.js",
-      "sourceShardGitSha": "d3767e644fc483e571c55d4f2bc7d9e726965385",
+      "sourceShardGitSha": "276a4438c607cf8f36b11d81eac5d81bb139d20b",
       "repairShardGitSha": "6ffdb4006de096a888acc8999a3d2ca467d85dd8",
       "localOrdinal": 5,
       "l2": "H22-C-05-QUADRATIC_EQUATION",
@@ -1077,7 +1149,7 @@
         "l4": "근으로 방정식 구성",
         "mappingStatus": "DIRECT_ACTIVE"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 5,
         "level": "상",
@@ -1089,9 +1161,9 @@
         "standardUnit": "이차방정식과 이차함수",
         "standardUnitOrder": 5,
         "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-        "subUnit": "이차방정식과 이차함수",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "이차방정식",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -1112,6 +1184,7 @@
         "solution": "[키포인트] 제곱된 두 근의 합과 곱을 구한다.\n$\\alpha+\\beta=5$, $\\alpha\\beta=3$이다.\n$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=25-6=19$이다.\n$\\alpha^2\\beta^2=(\\alpha\\beta)^2=9$이다.\n따라서 $x^2-19x+9=0$이다.",
         "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
         "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+        "uid": "ALITE-20261008-HYC26-Q12-005",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q12-005",
@@ -1322,7 +1395,24 @@
         "physicalStorageBucketKey": "H22-C-05-QUADRATIC_EQUATION",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION"
+      },
+      "sourceMetaSha256": "cb1b25ea1b3918055fec882cc30b28f2e49a816ba83e116d7a39091c2d14d8ef"
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q12-006",
@@ -1331,7 +1421,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 12,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-05-QUADRATIC_EQUATION/shards/pilot-20261008-008.js",
-      "sourceShardGitSha": "d3767e644fc483e571c55d4f2bc7d9e726965385",
+      "sourceShardGitSha": "276a4438c607cf8f36b11d81eac5d81bb139d20b",
       "repairShardGitSha": "6ffdb4006de096a888acc8999a3d2ca467d85dd8",
       "localOrdinal": 6,
       "l2": "H22-C-05-QUADRATIC_EQUATION",
@@ -1341,7 +1431,7 @@
         "l4": "근으로 방정식 구성",
         "mappingStatus": "DIRECT_ACTIVE"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 6,
         "level": "상",
@@ -1353,9 +1443,9 @@
         "standardUnit": "이차방정식과 이차함수",
         "standardUnitOrder": 5,
         "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-        "subUnit": "이차방정식과 이차함수",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "이차방정식",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -1376,6 +1466,7 @@
         "solution": "[키포인트] 근을 평행이동한 뒤 역수를 취하는 두 단계 변환이다.\n$\\alpha+\\beta=4$, $\\alpha\\beta=1$이다.\n$(\\alpha+1)(\\beta+1)=1+4+1=6$이므로 새 근의 곱은 $\\dfrac16$이다.\n새 근의 합은 $\\dfrac{\\alpha+\\beta+2}{(\\alpha+1)(\\beta+1)}=\\dfrac66=1$이다.\n최고차항 계수 $1$인 방정식은 $x^2-x+\\dfrac16=0$이므로 구하는 방정식은 $6x^2-6x+1=0$이다.",
         "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
         "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+        "uid": "ALITE-20261008-HYC26-Q12-006",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q12-006",
@@ -1586,7 +1677,27 @@
         "physicalStorageBucketKey": "H22-C-05-QUADRATIC_EQUATION",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION"
+      },
+      "sourceMetaSha256": "cb1b25ea1b3918055fec882cc30b28f2e49a816ba83e116d7a39091c2d14d8ef"
     }
-  ]
+  ],
+  "school": "효천고",
+  "batchId": "MAIN_SOURCE_pilot-20261008-008",
+  "sourceKind": "generated"
 }

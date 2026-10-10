@@ -7,6 +7,10 @@ historical authority: Canary / Phase 10 / 5시험지 qualification 기록은 역
 qualityContractVersion: `JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006`
 parent quality authority: `JS_Archive_2.0_Common_Quality_Contract_v1.md`
 
+## 2026-10-10 — 최신 작업 범위·종료 조건 우선
+
+루트 `AGENTS.md`의 ‘최신 요청의 작업 범위·종료 조건 우선’을 먼저 적용한다. 기존 문항의 명시적 한정 수정은 지정 대상과 필수 직접 의존 부분만 수정·영향 검증하고 지정된 종료 조건에서 끝낸다. 아래 전체 stage/전수 분모는 명시적으로 맡긴 전체 제작·전수 검수에 적용한다. 한정 수정을 CREATE/R1/R2/R3 전체 재실행이나 unchanged 시험지 재풀이로 승격하지 않는다. 범위 밖 발견은 보고만 하고 확장에는 사용자 승인이 필요하다. 이 구분은 품질 기준·qualityContractVersion·예약 실행 설정을 변경하지 않는다.
+
 ## 2026-10-09 DIRECT USER OVERRIDE — 추출 JS·에셋 우선
 
 `Archive_Extracted_Source_First_v1.md`를 따른다. 발문·보기·수식·문제 에셋의 source intake가 끝나면 CREATE부터 기존 JS·실제 에셋으로 제작·검수하며 PDF routine 재열람·전 페이지 대조는 하지 않는다. 원문 확인이 필요한 구체적인 문항 결함이 있을 때만 해당 qid와 직접 의존 범위의 PDF를 확인한다. 단순 답 불일치/계산·조판·SVG·receipt 오류는 먼저 JS·에셋으로 처리한다. source identity와 원문 충실도 근거는 intake provenance와 현재 JS/asset SHA로 재사용하고, 실제 하지 않은 PDF 대조나 원문 parity PASS를 만들지 않는다. R1/R2 freeze 전 PDF·답안·upstream 풀이 비노출, 완전한 필수 입력과 실제 자산 열람, 독립 검수, 실제 렌더·zero item HOLD·publication 기준은 유지한다. 이 사용자 지시는 아래의 기존 routine PDF 확인/전 페이지 대조 문구보다 우선한다.
@@ -496,8 +500,10 @@ Run bootstrap can use `archive/tools/capture-codex-exam.mjs --preflight` to actu
 
 For one new production exam, `prepare-target-registration.mjs` extracts only its rows from isolated canonical generator outputs. `register-target-exam.mjs` defaults to validated dry-run and requires explicit `--apply`, exact source/assets/HEAD/catalog/baseline hashes and full target UID/ordinal coverage. It preserves non-target records, runtime tuples and dictionary IDs, rolls back its own failed writes, and does not grant semantic review or automatic eligibility. ROOT performs required registration validation, target-only publication and remote readback before MAIN_DONE. A whole-generator unrelated failure is preserved rather than forcing PASS or changing unrelated exams. CLI usage and tested boundaries: `archive/tools/CODEX_MAINTENANCE.md`.
 
-## 2026-10-08 — DIRECT USER ASSIGNMENT AUTO-RELEASE HARD
+## 2026-10-08 — DIRECT USER ASSIGNMENT AUTO-RELEASE HARD (2026-10-10 범위 명확화)
 
-형님이 특정 시험지 또는 Archive 작업의 제작·수정·해설·Meta·시각자료·등록·검수를 직접 진행하라고 지시하면 작업자는 해당 지시 범위의 실제 작업을 끝낸 다음, 사용자에게 출시 인증·운영병합을 다시 요청하거나 승인 대기하지 않는다. 해당 작업의 정식 출시 인증(현재 적용되는 R1/R2/R3, validator/receipt 및 필요한 실제 렌더 또는 근거 있는 허용된 면제), 등록(Archive 1 DB와 해당하는 Archive 2.0 question-index/identity/metadata/catalog), production publish, main 운영병합, remote readback과 MAIN_DONE closure까지 하나의 완료 목표로 연속 실행한다.
+사용자가 해당 대상의 출시·등록·production publish·main 운영병합까지 맡겼다면(적용 가능한 기존 사용자 지시 포함), 작업자는 이미 승인된 범위의 실제 작업과 필요한 출시 검증·등록·publication·remote readback·기술 QA를 하나의 완료 목표로 책임진다. 동일한 출시 인증·운영병합의 재승인을 형식적으로 요구하지 않는다. 적용되는 R1/R2/R3와 validator/receipt·실제 렌더 또는 허용된 면제는 현재 artifact와 기존 유효 증거에 맞춰 수납하며, publication 단계에서 unchanged 시험지 전체를 다시 풀거나 검수하지 않는다.
 
-사용자가 발문 우선/해설 후속처럼 단계별 범위를 명시했다면 그 지시 범위만 출시·등록한다. 변경하지 않은 범위를 불필요하게 재검하거나 다른 시험지의 인증을 되감지 않는다. 검증하지 않은 PASS, 실행하지 않은 렌더 PASS, 미등록·미병합 상태의 MAIN_DONE 또는 품질 게이트 임의 우회는 금지한다. 기술 장애가 생기면 허용된 대체 경로로 수리한 뒤 결과를 재조회하며, 물리적으로 닫지 못한 단계는 정확한 결손과 재개 위치를 기록한다. 별도의 중지·보류·제외를 명시한 형님 최신 지시가 이 기본값보다 우선한다.
+단순히 ‘제작·수정·해설·Meta·시각자료·검수’를 요청했다는 이유만으로 전체 파이프라인을 자동 추가하지 않는다. 이미 승인된 출시·main 반영 지시(적용 가능한 기존 사용자 지시 포함)는 해당 변경 범위에서 유지한다. 최신 사용자 지시의 대상과 종료 조건이 우선한다. ‘이 qid만 수정’은 문항 범위를 한정하며, ‘패치·커밋·draft PR까지만’ 등 명시적 종료 조건이나 단계 분할·보류·제외 지시가 있으면 그 조건에서 끝낸다. 한정 수정은 변경 대상과 필수 직접 의존 부분의 필요한 검증 1회로 닫고, 실제 실패·추가 수정 후에만 영향 부분을 재검한다. 범위 밖 발견은 보고만 하며 확장은 사용자 승인을 받는다.
+
+검증하지 않은 PASS, 실행하지 않은 렌더 PASS, 미등록·미병합 상태의 MAIN_DONE 또는 품질 게이트 임의 우회는 금지한다. 출시가 승인된 작업의 기술 장애는 허용된 경로로 복구하고 결과를 재조회하되, 물리적으로 닫지 못한 단계는 정확한 결손과 재개 위치를 기록한다.

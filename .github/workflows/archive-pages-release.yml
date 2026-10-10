@@ -55,15 +55,17 @@ jobs:
           RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
         run: node archive/tools/generated-meta/auto-register-approved-qid9.mjs --check 2>&1 | tee "$RELEASE_EVIDENCE_DIR/projection-check.log"
 
-      - name: Enforce generated Meta retention
+      - name: Derive and check all main-resident Generated source rows
         env:
           RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
-        run: node archive/tools/generated-meta-retention-gate.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/meta-retention.log"
+        run: |
+          node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --write 2>&1 | tee "$RELEASE_EVIDENCE_DIR/main-source-projection-write.log"
+          node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --check 2>&1 | tee "$RELEASE_EVIDENCE_DIR/main-source-projection-check.log"
 
-      - name: Verify registration and generated mock selection contracts
+      - name: Verify approved UID Meta, complete source inventory, and selection contracts
         env:
           RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
-        run: node --test archive/tools/generated-meta/register-approved-generated-meta.test.mjs archive/tools/generated-meta/auto-register-approved-qid9.test.mjs tests/generated-meta-retention.test.cjs tests/archive2-generated-bank-registration.test.js tests/archive2-generated-mock-selection.test.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/selection-tests.log"
+        run: node --test archive/tools/generated-meta/register-approved-generated-meta.test.mjs archive/tools/generated-meta/auto-register-approved-qid9.test.mjs tests/generated-meta-retention.test.cjs tests/generated-main-source-consumer-sync.test.cjs tests/problem-bank-meta.test.cjs tests/archive2-generated-bank-registration.test.js tests/archive2-generated-mock-selection.test.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/selection-tests.log"
 
       - uses: browser-actions/setup-chrome@v1
         id: chrome
@@ -75,6 +77,12 @@ jobs:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
           RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
         run: node tools/check-generated-bank-browser.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/generated-bank-chrome.log"
+
+      - name: Verify main-resident Geumdang source output
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+        run: node tools/check-geumdang-qid9-browser.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/geumdang-source-chrome.log"
 
       - name: Verify complete generated mock selection, preview, print, answer, and solution flow
         env:
