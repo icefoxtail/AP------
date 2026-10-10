@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_GOLDEN_NEGATIVE_PREFLIGHT_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "reviewerIdentity": {
+    "role": "archive_r1",
+    "reviewerId": "/root/r1_gangnam"
+  },
+  "target": {
+    "examUid": "24_강남여고_1학기_중간_고2_확률과통계",
+    "rawSha256": "8209fe12fe6c6ee55a997588a54286303d0be867c3f63f2a1e003c6549033bb4",
+    "correctionTargetQid": 24,
+    "preflightCompletedBeforeCorrection": true
+  },
+  "goldenSamples": [
+    {
+      "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+      "sourceRawSha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+      "observation": "완전제곱식 중간 단계를 나누고 중심 이동을 순서대로 추적하며 결론을 원의 방정식으로 연결. 계산 생략 없이 학생이 재현 가능.",
+      "qid": 7,
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "readStatus": "ACTUALLY_READ"
+    },
+    {
+      "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+      "sourceRawSha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "observation": "기울기 산출식과 수직 조건 대입을 분리해 적고 k를 직접 계산. 정답만 제시하지 않고 핵심 중간식을 노출.",
+      "qid": 2,
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "readStatus": "ACTUALLY_READ"
+    },
+    {
+      "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+      "sourceRawSha256": "c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+      "observation": "드모르간과 포함배제를 순서대로 적용하고 상한 달성과 구성 가능성까지 적어 결론의 충분성을 설명.",
+      "qid": 6,
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "readStatus": "ACTUALLY_READ"
+    }
+  ],
+  "negativeSamples": [
+    {
+      "observation": "실패 fixture의 핵심은 집계 표식만 보고 PASS하면 안 되며 source 나열항목과 실제 풀이 block 분리를 직접 확인하는 것.",
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "readStatus": "ACTUALLY_READ"
+    },
+    {
+      "solutionSha256s": [
+        "ecae6454a06d8f4401f089b287d2567a821381ff7ffae41678faa50bbcb32dd7",
+        "f8d9b752380b8802d319c77e3687b4ab51f64fdc1e60e4d50d0500eae42d9d39"
+      ],
+      "sourceRawSha256": "ab429b66bb2e67e81051ae06982439ef3dd37f95a42af54fff88b89bcb19ea40",
+      "observation": "q2의 ㄱ~ㄹ, q17의 ㄱ~ㄷ 판정이 각각 별도 문단으로 나뉘는지 확인. 자기보고 audit count는 실제 block 구조 대체 불가.",
+      "qids": [
+        2,
+        17
+      ],
+      "path": "archive/exams/original/high/h1/2mid/26_복성고_2학기_중간_고1_기출.js",
+      "readStatus": "ACTUALLY_READ"
+    }
+  ],
+  "qualityAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "sampleTextReuse": "NONE",
+  "status": "PREFLIGHT_COMPLETED_BEFORE_Q24_SOLUTION_CORRECTION"
+}

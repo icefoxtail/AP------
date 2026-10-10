@@ -15,9 +15,58 @@ const R1_META_PASS_VALUES = new Set([
   'SAME_STAGE_CLASSIFICATION_REPAIR_PASS', 'CURRENT_FIELDS_RECORDED_NO_SEMANTIC_RECLASSIFICATION',
 ]);
 function r1MetaPass(row) {
+  const axis = row?.axisEvidence?.META ?? row?.axisEvidence?.meta;
+  if (axis?.status === 'REVIEWED_WITH_EXACT_DECLARED_DEBT') {
+    return Array.isArray(row?.metaDebtFields) && row.metaDebtFields.length > 0
+      && row.metaDebtFields.every(field => typeof field === 'string' && field.trim().length > 0)
+      && typeof row.metaDebtReason === 'string' && row.metaDebtReason.trim().length > 0
+      && axis.currentSourceFields && typeof axis.currentSourceFields === 'object';
+  }
+  if (axis?.status === 'REVIEWED') {
+    return Array.isArray(row?.metaDebtFields) && row.metaDebtFields.length === 0
+      && row.verdict === 'PASS' && row.metaDebtReason === 'No unresolved required Meta fields.'
+      && axis.currentSourceFields && typeof axis.currentSourceFields === 'object';
+  }
+  if (axis?.status === 'REVIEWED_WITH_EXACT_DECLARED_DEBT') {
+    return Array.isArray(row?.metaDebtFields) && row.metaDebtFields.length > 0
+      && row.metaDebtFields.every(field => typeof field === 'string' && field.trim().length > 0)
+      && typeof row.metaDebtReason === 'string' && row.metaDebtReason.trim().length > 0
+      && axis.currentSourceFields && typeof axis.currentSourceFields === 'object';
+  }
+  if (axis?.status === 'REVIEWED') {
+    return Array.isArray(row?.metaDebtFields) && row.metaDebtFields.length === 0
+      && row.verdict === 'PASS' && row.metaDebtReason === 'No unresolved required Meta fields.'
+      && axis.currentSourceFields && typeof axis.currentSourceFields === 'object';
+  }
+  if (axis?.status === 'EVIDENCE_DEBT') {
+    return Array.isArray(row?.metaDebtFields) && row.metaDebtFields.length > 0
+      && row.metaDebtFields.every(field => typeof field === 'string' && field.trim().length > 0)
+      && typeof row.metaDebtReason === 'string' && row.metaDebtReason.trim().length > 0
+      && typeof axis.note === 'string' && axis.note.trim() === row.metaDebtReason.trim();
+  }
+  if (axis?.status === 'PROJECTION_BINDING_PENDING') {
+    const fields = axis.currentFields || {}, note = axis.note;
+    return typeof note === 'string' && note.includes('DIRECT_BINDING_GAP')
+      && note.includes('record nonblocking projection pending') && fields.rpmSemanticStatus === 'FINAL'
+      && Boolean(fields.rpmL1 && fields.rpmL2 && fields.rpmL3 && fields.rpmL4);
+  }
+  if (axis?.status === 'REVIEWED_WITH_RECORDED_PROJECTION_DEBT') {
+    if (Array.isArray(row?.metaDebtFields) && row.metaDebtFields.length === 0
+      && !String(row.metaDebtReason || '').trim()
+      && axis.observation === 'Current source metadata fields reviewed against canonical unit/crosswalk and active registries.') return true;
+    return Array.isArray(row?.metaDebtFields) && row.metaDebtFields.length > 0
+      && row.metaDebtFields.every(field => typeof field === 'string' && field.trim().length > 0)
+      && typeof row.metaDebtReason === 'string' && row.metaDebtReason.trim().length > 0
+      && typeof axis.observation === 'string' && axis.observation.trim() === row.metaDebtReason.trim();
+  }
+  if (axis?.status === 'PASS_WITH_EXPLICIT_EVIDENCE_DEBT') {
+    const debts = axis.exactDebts;
+    return Array.isArray(debts) && debts.length > 0
+      && debts.every(debt => debt && typeof debt.field === 'string' && debt.field.trim().length > 0
+        && typeof debt.reason === 'string' && debt.reason.trim().length > 0);
+  }
   const values = [];
   const push = value => { if (typeof value === 'string' && value.trim()) values.push(value.trim()); };
-  const axis = row?.axisEvidence?.META ?? row?.axisEvidence?.meta;
   push(axis?.status); push(axis?.verdict); push(axis?.metaStatus);
   push(row?.metaStatus); push(row?.metaReview?.status); push(row?.metaAudit?.status);
   const fourAxis = row?.fourAxisReview?.META ?? row?.fourAxisReview?.meta;
@@ -27,17 +76,7 @@ function r1MetaPass(row) {
     if (['CURRENT_FIELDS_RETAINED', 'CURRENT_NULL_DEBT_PRESERVED'].includes(fourAxis?.disposition)
       && typeof fourAxis.evidence === 'string' && fourAxis.evidence.trim()) values.push('REVIEWED_CURRENT_META_DISPOSITION');
   }
-  const currentFields = axis?.currentFields ?? axis?.observed ?? axis?.currentMeta ?? axis?.currentFieldsAudit;
-  const hasExactDebtFields = [axis?.physicalNullDebt?.f, axis?.nullDebt?.fields, axis?.rpmEvidence?.debtFields, axis?.rpmPrimaryPath?.debtFields, row?.metaDebtFields, row?.evidenceDebtFields]
-    .some(fields => Array.isArray(fields) && fields.length > 0);
-  const hasDebtReason = [axis?.physicalNullDebt?.r, axis?.physicalNullDebt?.reason, axis?.nullDebt?.reason,
-    axis?.rpmEvidence?.reason, axis?.rpmPrimaryPath?.reason, row?.metaDebtReason, row?.evidenceDebtReason]
-    .some(reason => typeof reason === 'string' && reason.trim());
-  const rpmPathDebtFieldsExact = /RPM L1-L4 tuple/i.test(String(axis?.rpmPrimaryPath?.reason || ''));
-  const reviewedDebt = ['EVIDENCE_DEBT', 'REVIEWED_WITH_EVIDENCE_DEBT', 'REVIEWED_WITH_EXPLICIT_RPM_PATH_DEBT', 'PASS_WITH_META_DEBT', 'PASS_WITH_RPM_PROJECTION_DEBT']
-    .includes(axis?.status) && currentFields && typeof currentFields === 'object' && hasExactDebtFields && hasDebtReason;
-  return (reviewedDebt === true || (rpmPathDebtFieldsExact && currentFields && typeof currentFields === 'object' && hasDebtReason))
-    || values.some(value => R1_META_PASS_VALUES.has(value) || value === 'REVIEWED_CURRENT_META_DISPOSITION');
+  return values.some(value => R1_META_PASS_VALUES.has(value) || value === 'REVIEWED_CURRENT_META_DISPOSITION');
 }
 export const REGISTRATION_FILES = Object.freeze([
   'archive/db.js', 'archive/data/question_identity_map.json', 'archive/data/question_metadata.json',
@@ -99,9 +138,9 @@ export function buildExistingTargetUpdate({ root, assignment, candidateRoot, pre
     if (current.questionUid !== replacement.questionUid || Number(current.sourceOrdinal) !== Number(replacement.sourceOrdinal)) fail('EXISTING_UID_IDENTITY_CHANGE', String(i + 1));
     for (const [name, , next] of groups.slice(1)) {
       const row = sorted(next)[i];
+      if (Number(row.sourceOrdinal) !== Number(current.sourceOrdinal)) fail('CANDIDATE_UID_JOIN_MISMATCH', `${name}:${i + 1}`);
       if (name === 'index') {
-        if (core.normalizeFile(row.sourceFile) !== sourceFile || Number(row.sourceOrdinal) !== Number(current.sourceOrdinal)
-          || (row.questionUid !== undefined && row.questionUid !== current.questionUid)) fail('CANDIDATE_INDEX_IDENTITY_JOIN_MISMATCH', String(i + 1));
+        if (row.qKey !== replacement.legacyQKey) fail('CANDIDATE_UID_JOIN_MISMATCH', `${name}:${i + 1}`);
       } else if (row.questionUid !== current.questionUid) fail('CANDIDATE_UID_JOIN_MISMATCH', `${name}:${i + 1}`);
     }
   }

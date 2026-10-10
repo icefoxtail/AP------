@@ -1,0 +1,131 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_SOLUTION_LAYOUT_CORRECTION_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "24_매산여고_1학기_중간_고2_확률과통계",
+  "scope": {
+    "qids": [
+      8,
+      9
+    ],
+    "changedFields": [
+      "solution"
+    ],
+    "studentFieldsChanged": false,
+    "answersChanged": false,
+    "assetsChanged": false,
+    "engineChanged": false
+  },
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "pdfReviewStatus": "NOT_PERFORMED; official engine S12 failure is confirmed and correction is limited to extracted JS solution presentation.",
+  "preflight": {
+    "completedBeforeAuthoring": true,
+    "goldenSamples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "Ratio convention, coordinate formulas, midpoint, and distance simplification appear as clear sequential steps."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "observation": "Parallel slope, point substitution, n calculation, and m+n conclusion are connected explicitly."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "items": [
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "observation": "Separates line slope conversions and perpendicular product; actual line coordinates represent slopes −1/3 and 3, matching k=6.",
+            "visualPath": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+            "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30"
+          },
+          {
+            "qid": 3,
+            "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+            "observation": "Completing squares yields center (−1,3), radius 2, and matching circle visual.",
+            "visualPath": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg",
+            "visualSha256": "3208ec847fd87a1907669b72f0b0fb2b795407361335c0ce34bc2fa4fda9cce8"
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "observation": "Read the approved regression: separate enumerated judgments, compute SVG geometry from coordinates, inspect runtime TeX rather than aggregate counters."
+    }
+  },
+  "failure": {
+    "tracePath": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r3-recovery-q11-q22-20261011/R3.render-continuation.blocked.json",
+    "traceSha256": "0192b673c941b40e2c4f76062eb14208027a1d3c72c89e535e230f6ec7534a21",
+    "captureReportPath": ".tmp/archive/h2-1mid-20261011/24_매산여고_1학기_중간_고2_확률과통계/r3-capture-recovered-q11-q22/machine-capture.json",
+    "captureReportSha256": "b5831bb87165308d08810574ddcfa09208eace4de879ba019c8f2a45d8c0b32c",
+    "status": "CAPTURE_BLOCKED",
+    "view": "sol/desktop",
+    "gate": "SNAPSHOT_COMMON_HARD_GATE:S12",
+    "page": 2,
+    "bodyClientHeight": 958,
+    "bodyScrollHeight": 1149,
+    "columns": [
+      {
+        "qids": [
+          7
+        ],
+        "boxHeights": [
+          834
+        ]
+      },
+      {
+        "qids": [
+          8,
+          9
+        ],
+        "boxHeights": [
+          396,
+          725
+        ],
+        "interItemGapApprox": 28
+      }
+    ],
+    "asset": {
+      "path": "archive/assets/images/24_매산여고_1학기_중간_고2_확률과통계/q09-solution.svg",
+      "sha256": "eb8e4210a30d4bff3f8ba35031566f6cae84dffbcfd3409daf673e7b3a085a77"
+    }
+  },
+  "sourceBefore": {
+    "rawSha256": "18d9cefae333cf0fec077ee91fdd694ef1cdfcc7b15bbfd602d41f0d86ce7c1d",
+    "blobSha1": "e1f9ac02d7f6635f3b850acc46210067f386ad2c",
+    "q8SolutionSha256": "212917b89c9f642b0bd2eb491b02fe3b4e79f8bf69fb3acccc1e4031a1479edd",
+    "q9SolutionSha256": "289a0c8ad5d2d37644cb23a22db80dcad0417794281428dd00716f21406575fb"
+  },
+  "sourceAfter": {
+    "absolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-1mid-20261010\\AP------\\archive\\exams\\original\\high\\h2\\1mid\\24_매산여고_1학기_중간_고2_확률과통계.js",
+    "rawSha256": "e74bf69589c0c36663803c6016c15c056dad56e810b89fd55c5ea1f02eec651a",
+    "blobSha1": "82b7d51ead0c02646f10637784204f4c61a54ffb",
+    "q8SolutionSha256": "c54ca1507d09431d4eba5a0c6a668b48d2843ccf99612231d486fc73f543102e",
+    "q9SolutionSha256": "748cc19ab3536b244429bfa4df9fdb03f9ce06b5366f16f80bfd138024d6a49c"
+  },
+  "correction": {
+    "q8": "Joined existing sentence/math steps into natural inline flow; retained all four ordered pairs, free choices for f(0), f(1), 4·4·4=64, and answer ③.",
+    "q9": "Joined the case/result paragraphs into natural inline flow and tightened redundant wording; retained both counting cases, circular arrangements, choose(5,3), internal 3! ordering, a=720, b=1440, ratio 2, and answer ②.",
+    "nonTargetFieldsUnchanged": true
+  },
+  "validation": {
+    "stageValidator": "NOT_RUN_BY_CONTINUATION",
+    "targetedR1": "NEXT_REQUIRED",
+    "fullDenominatorValidator": "ROOT_ROUTED_AFTER_FRESH_TARGETED_R1",
+    "R2": "NOT_RUN",
+    "R3": "NOT_RUN",
+    "renderPass": false
+  }
+}

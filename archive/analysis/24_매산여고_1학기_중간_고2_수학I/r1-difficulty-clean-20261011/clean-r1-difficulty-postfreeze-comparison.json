@@ -1,0 +1,553 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_POSTFREEZE_DIFFICULTY_COMPARISON_V1",
+  "executionLine": "CODEX",
+  "sourceRawSha256": "9ae75468d939e39533c539d01d4440127a423d4d7ceaed790e2692985dec6dbe",
+  "projection": {
+    "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r1-difficulty-clean-20261011/current-stored-difficulty-only.after-freeze.json",
+    "sha256": "7bfc4a83620a2027c092244ab4271c364eda5c22415885124701added06237f0"
+  },
+  "preFreezeDifficultyAdjudication": {
+    "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r1-difficulty-clean-20261011/clean-r1-difficulty-adjudication.json",
+    "sha256": "9d4ad21b946b6fd30a429de49562a7ef075ad06d41b3fdcec28c73997855d8f4"
+  },
+  "scopeCaveat": "The immutable first-pass freeze captured difficulty buckets only; an independent expected legacy-level field was not frozen. Expected level below is the canonical mapping from the frozen final bucket; observed level is retained, and compatibility is adjudicated from the postfreeze-only projection. This is not presented as an independent level reclassification.",
+  "expectedLevelMapping": {
+    "1": "하",
+    "2": "중",
+    "3": "중",
+    "4": "상",
+    "5": "상"
+  },
+  "matchQids": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    7,
+    8,
+    14,
+    16,
+    21
+  ],
+  "mismatchQids": [
+    4,
+    9,
+    10,
+    11,
+    12,
+    13,
+    15,
+    17,
+    18,
+    19,
+    20,
+    22,
+    23,
+    24
+  ],
+  "requiredCorrections": [
+    {
+      "qid": 4,
+      "difficultyBucket": 1,
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    {
+      "qid": 9,
+      "difficultyBucket": 2
+    },
+    {
+      "qid": 10,
+      "difficultyBucket": 2
+    },
+    {
+      "qid": 11,
+      "difficultyBucket": 3,
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    {
+      "qid": 12,
+      "difficultyBucket": 2
+    },
+    {
+      "qid": 13,
+      "difficultyBucket": 3,
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    {
+      "qid": 15,
+      "difficultyBucket": 1,
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    {
+      "qid": 17,
+      "difficultyBucket": 1
+    },
+    {
+      "qid": 18,
+      "difficultyBucket": 4
+    },
+    {
+      "qid": 19,
+      "difficultyBucket": 4
+    },
+    {
+      "qid": 20,
+      "difficultyBucket": 3,
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    {
+      "qid": 22,
+      "difficultyBucket": 3,
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    {
+      "qid": 23,
+      "difficultyBucket": 4
+    },
+    {
+      "qid": 24,
+      "difficultyBucket": 4
+    }
+  ],
+  "rows": [
+    {
+      "qid": 1,
+      "comparisonStatus": "MATCH",
+      "observed": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "중",
+        "retainExistingLevel": true,
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "levelDisposition": "MATCH"
+    },
+    {
+      "qid": 2,
+      "comparisonStatus": "MATCH",
+      "observed": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "중",
+        "retainExistingLevel": true,
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "levelDisposition": "MATCH"
+    },
+    {
+      "qid": 3,
+      "comparisonStatus": "MATCH",
+      "observed": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "중",
+        "retainExistingLevel": true,
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "levelDisposition": "MATCH"
+    },
+    {
+      "qid": 4,
+      "comparisonStatus": "MISMATCH",
+      "observed": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "하",
+        "retainExistingLevel": true,
+        "difficultyBucket": 1,
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "levelDisposition": "BORDERLINE_ACCEPTED",
+      "levelBoundaryRationale": "기본 로그함수 그래프의 정의역·점근선 등 여러 성질을 판별해 legacy 중의 하단 경계는 설명 가능",
+      "requiredCorrections": {
+        "difficultyBucket": 1,
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      }
+    },
+    {
+      "qid": 5,
+      "comparisonStatus": "MATCH",
+      "observed": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "중",
+        "retainExistingLevel": true,
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "levelDisposition": "MATCH"
+    },
+    {
+      "qid": 6,
+      "comparisonStatus": "MATCH",
+      "observed": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "중",
+        "retainExistingLevel": true,
+        "difficultyBucket": 3,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "levelDisposition": "MATCH"
+    },
+    {
+      "qid": 7,
+      "comparisonStatus": "MATCH",
+      "observed": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "중",
+        "retainExistingLevel": true,
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "levelDisposition": "MATCH"
+    },
+    {
+      "qid": 8,
+      "comparisonStatus": "MATCH",
+      "observed": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "중",
+        "retainExistingLevel": true,
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "levelDisposition": "MATCH"
+    },
+    {
+      "qid": 9,
+      "comparisonStatus": "MISMATCH",
+      "observed": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "중",
+        "retainExistingLevel": true,
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "levelDisposition": "MATCH",
+      "requiredCorrections": {
+        "difficultyBucket": 2
+      }
+    },
+    {
+      "qid": 10,
+      "comparisonStatus": "MISMATCH",
+      "observed": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "중",
+        "retainExistingLevel": true,
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "levelDisposition": "MATCH",
+      "requiredCorrections": {
+        "difficultyBucket": 2
+      }
+    },
+    {
+      "qid": 11,
+      "comparisonStatus": "MISMATCH",
+      "observed": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "중",
+        "retainExistingLevel": true,
+        "difficultyBucket": 3,
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "levelDisposition": "BORDERLINE_ACCEPTED",
+      "levelBoundaryRationale": "근의 식 변형과 Vieta 결합으로 legacy 상의 중상 경계는 설명 가능",
+      "requiredCorrections": {
+        "difficultyBucket": 3,
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      }
+    },
+    {
+      "qid": 12,
+      "comparisonStatus": "MISMATCH",
+      "observed": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "중",
+        "retainExistingLevel": true,
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "levelDisposition": "MATCH",
+      "requiredCorrections": {
+        "difficultyBucket": 2
+      }
+    },
+    {
+      "qid": 13,
+      "comparisonStatus": "MISMATCH",
+      "observed": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "중",
+        "retainExistingLevel": true,
+        "difficultyBucket": 3,
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "levelDisposition": "BORDERLINE_ACCEPTED",
+      "levelBoundaryRationale": "양의 지수 치환과 판별식·중근 조건을 결합해 legacy 상의 중상 경계는 설명 가능",
+      "requiredCorrections": {
+        "difficultyBucket": 3,
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      }
+    },
+    {
+      "qid": 14,
+      "comparisonStatus": "MATCH",
+      "observed": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "상",
+        "retainExistingLevel": true,
+        "difficultyBucket": 4,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "levelDisposition": "MATCH"
+    },
+    {
+      "qid": 15,
+      "comparisonStatus": "MISMATCH",
+      "observed": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "하",
+        "retainExistingLevel": true,
+        "difficultyBucket": 1,
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "levelDisposition": "BORDERLINE_ACCEPTED",
+      "levelBoundaryRationale": "최댓값·주기 공식을 함께 적용해 legacy 중의 하단 경계는 설명 가능",
+      "requiredCorrections": {
+        "difficultyBucket": 1,
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      }
+    },
+    {
+      "qid": 16,
+      "comparisonStatus": "MATCH",
+      "observed": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "중",
+        "retainExistingLevel": true,
+        "difficultyBucket": 3,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "levelDisposition": "MATCH"
+    },
+    {
+      "qid": 17,
+      "comparisonStatus": "MISMATCH",
+      "observed": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "하",
+        "retainExistingLevel": true,
+        "difficultyBucket": 1,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "levelDisposition": "MATCH",
+      "requiredCorrections": {
+        "difficultyBucket": 1
+      }
+    },
+    {
+      "qid": 18,
+      "comparisonStatus": "MISMATCH",
+      "observed": {
+        "level": "상",
+        "difficultyBucket": 5,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "상",
+        "retainExistingLevel": true,
+        "difficultyBucket": 4,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "levelDisposition": "MATCH",
+      "requiredCorrections": {
+        "difficultyBucket": 4
+      }
+    },
+    {
+      "qid": 19,
+      "comparisonStatus": "MISMATCH",
+      "observed": {
+        "level": "상",
+        "difficultyBucket": 5,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "상",
+        "retainExistingLevel": true,
+        "difficultyBucket": 4,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "levelDisposition": "MATCH",
+      "requiredCorrections": {
+        "difficultyBucket": 4
+      }
+    },
+    {
+      "qid": 20,
+      "comparisonStatus": "MISMATCH",
+      "observed": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "중",
+        "retainExistingLevel": true,
+        "difficultyBucket": 3,
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "levelDisposition": "BORDERLINE_ACCEPTED",
+      "levelBoundaryRationale": "두 대칭 조건을 동경 합동식으로 바꾸어 교집합을 찾아 legacy 상의 중상 경계는 설명 가능",
+      "requiredCorrections": {
+        "difficultyBucket": 3,
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      }
+    },
+    {
+      "qid": 21,
+      "comparisonStatus": "MATCH",
+      "observed": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "중",
+        "retainExistingLevel": true,
+        "difficultyBucket": 3,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "levelDisposition": "MATCH"
+    },
+    {
+      "qid": 22,
+      "comparisonStatus": "MISMATCH",
+      "observed": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "중",
+        "retainExistingLevel": true,
+        "difficultyBucket": 3,
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "levelDisposition": "BORDERLINE_ACCEPTED",
+      "levelBoundaryRationale": "삼각 항등식과 사분면 부호를 결합해 legacy 상의 중상 경계는 설명 가능",
+      "requiredCorrections": {
+        "difficultyBucket": 3,
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      }
+    },
+    {
+      "qid": 23,
+      "comparisonStatus": "MISMATCH",
+      "observed": {
+        "level": "상",
+        "difficultyBucket": 5,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "상",
+        "retainExistingLevel": true,
+        "difficultyBucket": 4,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "levelDisposition": "MATCH",
+      "requiredCorrections": {
+        "difficultyBucket": 4
+      }
+    },
+    {
+      "qid": 24,
+      "comparisonStatus": "MISMATCH",
+      "observed": {
+        "level": "상",
+        "difficultyBucket": 5,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "recommendation": {
+        "expectedLevelByBucket": "상",
+        "retainExistingLevel": true,
+        "difficultyBucket": 4,
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "levelDisposition": "MATCH",
+      "requiredCorrections": {
+        "difficultyBucket": 4
+      }
+    }
+  ]
+}

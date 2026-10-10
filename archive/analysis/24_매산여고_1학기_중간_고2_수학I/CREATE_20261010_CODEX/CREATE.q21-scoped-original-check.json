@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_SCOPED_ORIGINAL_PDF_CHECK_V1",
+  "examUid": "24_매산여고_1학기_중간_고2_수학I",
+  "qid": 21,
+  "questionDefect": "Potentially non-unique extremum locations for arbitrary period-4 f: question later names x=a at the maximum and x=c at the minimum.",
+  "sourcePdf": {
+    "path": "C:\\Users\\USER\\Desktop\\기출정리 파일\\(1)1중간\\수1\\2024_매여고2_수1_1중간.pdf",
+    "sha256": "5332ac375ccd364e2d0eaea7d23d3967412dff7dae2bca8aff254eb6534b98f8",
+    "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010/24_매산여고_1학기_중간_고2_수학I.evidence.json",
+    "intakeEvidenceSha256": "D2635CF6EB7E86D2AEEB7C25A91A2FB8B9E8B5BC0CD8FB66F1F81E07462434F1"
+  },
+  "actualPdfInspection": {
+    "performed": true,
+    "scope": "PDF page 6, q21 block only; rendered 180 dpi and visually opened. No other question region or page was reviewed.",
+    "renderedPagePath": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/CREATE_20261010_CODEX/pdf-q21-check/source-q21-page.png",
+    "renderedPageSha256": "4A621729BB9D77A040F91BCB4F0AE652873568E5D851EF5A85B0A9DAD6C1BB00",
+    "q21Region": "upper-left question 21 prompt and boxed conditions (가), (나)",
+    "observed": "The original page has the same period condition f(x−p)=f(x+p), the stated maximum 5 at x=1 and minimum −1 at x=3, and no additional uniqueness word/graph in the q21 block.",
+    "comparisonResult": "EXTRACTED_JS_TEXT_MATCHES_SCOPED_SOURCE_REGION; NO_OMITTED_CONDITION_OR_FIGURE_FOUND",
+    "pdfRoutinePageComparison": "NOT_PERFORMED"
+  },
+  "mathFinding": {
+    "status": "OPEN_FOR_ROOT_DECISION",
+    "exactReason": "The source itself does not explicitly state that x=1 and x=3 are the unique extrema locations. For an arbitrary period-4 function, tied extrema could make the later maximizing/minimizing locations a,c non-unique; the original PDF contains no extra clause or figure to resolve this.",
+    "noSourceCorrection": "No transcription correction supported; adding uniqueness would alter the original source."
+  }
+}

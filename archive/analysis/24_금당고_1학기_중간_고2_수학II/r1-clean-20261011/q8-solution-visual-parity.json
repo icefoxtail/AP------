@@ -1,0 +1,248 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_SVG_PARITY_V1",
+  "examUid": "24_금당고_1학기_중간_고2_수학II",
+  "qid": 8,
+  "sourceRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+  "frozenSourceRawSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+  "solutionSha256": "78fa3e798dc0757967a373a907aeccb2e6113319e10a199184427969175adb25",
+  "finalSvgSha256": "fff7d3eb588d590499ced7de5476a81c7c12d46d231e83db62d94c9407ef0455",
+  "finalSvgGitBlobSha": "b52c157829a3fffcf70724f7ecbbd38fff70e671",
+  "expectedFacts": [
+    {
+      "type": "POINT",
+      "fact": "f(1)=0",
+      "role": "GIVEN"
+    },
+    {
+      "type": "POINT",
+      "fact": "f(2)=-5",
+      "role": "GIVEN"
+    },
+    {
+      "type": "SLOPE",
+      "fact": "secant slope=-5",
+      "role": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "type": "POINT",
+      "fact": "c=3/2 and f(c)=-2",
+      "role": "CONCLUSION"
+    },
+    {
+      "type": "SLOPE",
+      "fact": "f′(3/2)=-5 and parallel to secant",
+      "role": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "coordinateModel": {
+    "kind": "SOURCE_COORDINATES",
+    "origin": [
+      80,
+      170
+    ],
+    "sx": 240.0,
+    "sy": 45.0,
+    "screenX": "80+240x",
+    "screenY": "170-45y",
+    "xDomain": [
+      0,
+      2.2
+    ],
+    "yDomain": [
+      -7,
+      2
+    ]
+  },
+  "pythonInputs": {
+    "f": "-2x^2+x+1",
+    "df": "-4x+1",
+    "interval": [
+      1,
+      2
+    ],
+    "adaptiveChordErrorPxMax": 0.2
+  },
+  "pythonCalculatedOutputs": {
+    "f1": 0,
+    "f2": -5,
+    "secantSlope": -5.0,
+    "c": 1.5,
+    "fc": -2.0,
+    "tangentSlope": -5.0
+  },
+  "actualSvgPrimitives": {
+    "xmlTagCounts": {
+      "line": 5,
+      "polyline": 1,
+      "circle": 3,
+      "text": 16
+    },
+    "secant": {
+      "primitive": [
+        320.0,
+        170.0,
+        560.0,
+        395.0
+      ],
+      "screenSlope": 0.9375,
+      "mathSlope": -5.0
+    },
+    "tangent": {
+      "primitive": [
+        380.0,
+        203.75,
+        500.0,
+        316.25
+      ],
+      "screenSlope": 0.9375,
+      "mathSlope": -5.0
+    },
+    "curvePointCount": 289,
+    "frame": {
+      "xAxis": [
+        "80",
+        "170",
+        "630",
+        "170"
+      ],
+      "yAxis": [
+        "80",
+        "80",
+        "80",
+        "485"
+      ]
+    }
+  },
+  "observedFacts": [
+    {
+      "fact": "secant and tangent line primitive math slopes both -5",
+      "expected": -5,
+      "observed": [
+        -5.0,
+        -5.0
+      ],
+      "maxDelta": 0.0,
+      "tolerance": 1e-09,
+      "status": "PASS"
+    },
+    {
+      "fact": "curve polyline includes actual function points",
+      "rows": [
+        {
+          "mathPoint": [
+            1,
+            0
+          ],
+          "screenExpected": [
+            320.0,
+            170.0
+          ],
+          "screenObserved": [
+            320.0,
+            170.0
+          ],
+          "deltaPx": 0.0
+        },
+        {
+          "mathPoint": [
+            1.5,
+            -2.0
+          ],
+          "screenExpected": [
+            440.0,
+            260.0
+          ],
+          "screenObserved": [
+            440.0,
+            260.0
+          ],
+          "deltaPx": 0.0
+        },
+        {
+          "mathPoint": [
+            2,
+            -5
+          ],
+          "screenExpected": [
+            560.0,
+            395.0
+          ],
+          "screenObserved": [
+            560.0,
+            395.0
+          ],
+          "deltaPx": 0.0
+        }
+      ],
+      "maxDeltaPx": 0.0,
+      "tolerancePx": 0.001,
+      "status": "PASS"
+    }
+  ],
+  "sourceConditionCoverage": [
+    {
+      "condition": "domain endpoints [1,2]",
+      "status": "PASS"
+    },
+    {
+      "condition": "function f(x)=-2x²+x+1",
+      "status": "PASS"
+    },
+    {
+      "condition": "c=3/2 tangent is parallel to secant",
+      "status": "PASS"
+    }
+  ],
+  "sourceSemanticIdentity": {
+    "applicable": true,
+    "checks": [
+      {
+        "semanticRole": "function graph",
+        "sourceLabel": "f(x)",
+        "artifactLabel": "y=f(x)",
+        "result": "PASS"
+      },
+      {
+        "semanticRole": "MVT interval endpoints",
+        "sourceLabel": "1,2",
+        "artifactLabel": "1,2",
+        "result": "PASS"
+      }
+    ]
+  },
+  "factVisualizations": [
+    {
+      "fact": "secant through endpoints",
+      "role": "DERIVED_INTERMEDIATE",
+      "encoding": "dashed line"
+    },
+    {
+      "fact": "tangent at c",
+      "role": "CONCLUSION",
+      "encoding": "accent solid line and contact marker"
+    }
+  ],
+  "decisiveRelationCovered": true,
+  "uncoveredCriticalConditions": [],
+  "expectedFactCompletenessStatus": "PASS",
+  "labelOwnerBindings": [
+    {
+      "label": "(1,0)",
+      "owner": "left secant endpoint",
+      "status": "PASS"
+    },
+    {
+      "label": "(2,-5)",
+      "owner": "right secant endpoint",
+      "status": "PASS"
+    },
+    {
+      "label": "c=3/2",
+      "owner": "tangent contact",
+      "status": "PASS"
+    }
+  ],
+  "xmlParse": "PASS",
+  "browserRenderEvidence": "NOT_RUN_R1_R3_OWNER",
+  "svgPath": "archive/assets/images/24_금당고_1학기_중간_고2_수학II/q8-solution.svg"
+}

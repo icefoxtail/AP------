@@ -1,0 +1,164 @@
+{
+  "solutionQualityCalibration": {
+    "schemaVersion": "JS_ARCHIVE_SOLUTION_QUALITY_CALIBRATION_V1",
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949",
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156"
+      },
+      {
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99"
+      },
+      {
+        "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12",
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "observation": "중심과 반지름을 완전제곱식으로 분리한 뒤 이동 순서와 중심 좌표를 한 단계씩 연결하는 작은칠판 흐름을 판독.",
+        "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.",
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "qid": 7
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "observation": "그래프 기울기/절편의 부호를 수식으로 바꾸고 새 직선의 사분면 관계까지 이어지는 단계 흐름을 판독.",
+        "solutionExcerpt": "먼저 주어진 그래프에서 원래 직선 $ax+by+c=0$의 정보를 하나씩 읽는다.",
+        "solutionSha256": "sha256:7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+        "qid": 8
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "observation": "두 직선의 기울기 도출과 수직 관계 대입을 분리해 중간식이 이어지는 흐름을 판독.",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.",
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "qid": 2
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "observation": "완전제곱식 전환과 표준형에서 중심·반지름을 읽는 흐름을 판독.",
+        "solutionExcerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.",
+        "solutionSha256": "sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+        "qid": 3
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "observation": "집합 관계 변환, 포함배제, 최댓값 도달 구성을 순서대로 연결한 흐름을 판독.",
+        "solutionExcerpt": "드모르간의 법칙으로",
+        "solutionSha256": "sha256:d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+        "qid": 6
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "observation": "세 변 길이 제곱을 각각 계산한 뒤 두 변의 동일성을 결론으로 잇는 단계 구성을 판독.",
+        "solutionExcerpt": "두 점 사이의 거리 공식으로 세 변의 길이의 제곱을 구한다.",
+        "solutionSha256": "sha256:7c72f3a036e518df8cb19bf8759dc175ad8ab89a79e04d0c1964b3b6cbac7b94",
+        "qid": 10
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23"
+      }
+    ],
+    "visualReadbackRefs": [
+      {
+        "read": "ACTUALLY_OPENED",
+        "path": "archive/analysis/source-only-h2-1mid-20261010/golden-maesan-q7.png",
+        "observation": "중심 이동 도식은 공간 관계를 선/원으로 보이게 하지만, MathJax/글꼴 산출의 작은 네모 glyph는 복제하지 않음.",
+        "sha256": "sha256:06c8f83d47ca94840d02e2998049bdbc9c68843254732acdca6f483294fe409f"
+      },
+      {
+        "read": "ACTUALLY_OPENED",
+        "path": "archive/analysis/source-only-h2-1mid-20261010/golden-hyocheon-q2.png",
+        "observation": "두 직선과 좌표축의 관계는 구분됐으나 문구/수식 글꼴의 깨진 glyph가 보이므로 text-font/render fallback을 복제하지 않음.",
+        "sha256": "sha256:1462346c8f343c2cab153103f1a2858f064d924200de9b7d0870eb986ba1bf29"
+      },
+      {
+        "read": "ACTUALLY_OPENED",
+        "path": "archive/analysis/source-only-h2-1mid-20261010/R1_25_금당고_20261010_q18_clean/golden-jeil-q6.png",
+        "observation": "집합 겹침 영역을 색/경계로 분리하고 계산 카드와 연결한 구성에서 관계를 즉시 읽음.",
+        "sha256": "sha256:1c3880d4c579490329c9e1fd8266cbd45e8a66c86456659a466e705edb31a283"
+      },
+      {
+        "read": "ACTUALLY_OPENED",
+        "path": "archive/analysis/source-only-h2-1mid-20261010/R1_25_금당고_20261010_codex/negative-bokseong-q3.png",
+        "observation": "식 라벨과 actual line slope가 반대인 negative fixture. SVG 텍스트가 아니라 primitive에서 관계를 재계산할 것.",
+        "sha256": "sha256:5e7d4ccd91998aefb832699d35978f3bb45ea40bde7ea488aaafb6a2ad910764"
+      }
+    ],
+    "targetCorrectionScopes": [
+      {
+        "qid": 6,
+        "newVisualInformation": "학생 사이의 5개 원형 빈틈과 교사 배치가 서로 다른 빈틈을 차지함."
+      },
+      {
+        "qid": 9,
+        "newVisualInformation": "도로 교차점의 최단경로 수가 왼쪽/위 값의 합으로 누적되어 B에서 49가 됨."
+      },
+      {
+        "qid": 11,
+        "newVisualInformation": "정육각형은 60도 회전 6개, 직사각형은 180도 회전 2개를 같은 배치로 식별함."
+      },
+      {
+        "qid": 18,
+        "newVisualInformation": "1학년 블록 양옆은 2학년이어야 하므로 나머지 두 1학년과 3학년 자리 배치가 제한됨."
+      }
+    ],
+    "rendererRoute": "CUSTOM_DETERMINISTIC_SVG_FOR_COUNTING_TOPOLOGY;STATIC_ONLY_UNTIL_R3_RENDER",
+    "status": "SAMPLES_READ_AND_VISUAL_REPAIR_PREFLIGHT_READY"
+  },
+  "targetReviewScope": {
+    "qids": [
+      24
+    ],
+    "reason": "minimal correction-review after preserving the late-discovered solution sample-order failure",
+    "precededByFailedAttemptSha256": "824aa505483303e62c7e06c4d1086873d2e1298983851da7cda6797099316d2e"
+  },
+  "visualReadbackRefs": [
+    {
+      "read": "ACTUALLY_OPENED",
+      "path": "archive/analysis/source-only-h2-1mid-20261010/golden-maesan-q7.png",
+      "observation": "중심 이동 도식은 공간 관계를 선/원으로 보이게 하지만, MathJax/글꼴 산출의 작은 네모 glyph는 복제하지 않음.",
+      "sha256": "sha256:06c8f83d47ca94840d02e2998049bdbc9c68843254732acdca6f483294fe409f"
+    },
+    {
+      "read": "ACTUALLY_OPENED",
+      "path": "archive/analysis/source-only-h2-1mid-20261010/golden-hyocheon-q2.png",
+      "observation": "두 직선과 좌표축의 관계는 구분됐으나 문구/수식 글꼴의 깨진 glyph가 보이므로 text-font/render fallback을 복제하지 않음.",
+      "sha256": "sha256:1462346c8f343c2cab153103f1a2858f064d924200de9b7d0870eb986ba1bf29"
+    },
+    {
+      "read": "ACTUALLY_OPENED",
+      "path": "archive/analysis/source-only-h2-1mid-20261010/R1_25_금당고_20261010_q18_clean/golden-jeil-q6.png",
+      "observation": "집합 겹침 영역을 색/경계로 분리하고 계산 카드와 연결한 구성에서 관계를 즉시 읽음.",
+      "sha256": "sha256:1c3880d4c579490329c9e1fd8266cbd45e8a66c86456659a466e705edb31a283"
+    },
+    {
+      "read": "ACTUALLY_OPENED",
+      "path": "archive/analysis/source-only-h2-1mid-20261010/R1_25_금당고_20261010_codex/negative-bokseong-q3.png",
+      "observation": "식 라벨과 actual line slope가 반대인 negative fixture. SVG 텍스트가 아니라 primitive에서 관계를 재계산할 것.",
+      "sha256": "sha256:5e7d4ccd91998aefb832699d35978f3bb45ea40bde7ea488aaafb6a2ad910764"
+    }
+  ],
+  "status": "FRESH_PREFLIGHT_BEFORE_Q24_CORRECTION_REVIEW"
+}

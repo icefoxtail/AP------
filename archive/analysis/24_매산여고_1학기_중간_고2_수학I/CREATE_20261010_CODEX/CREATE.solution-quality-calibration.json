@@ -1,0 +1,71 @@
+{
+  "sampleReadBeforeWork": true,
+  "calibrationStatus": "PASS",
+  "solutionWorkMode": "SOURCE_ONLY_CREATE",
+  "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenSampleRefs": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+      "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949"
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+    }
+  ],
+  "goldenSampleQuestionRefs": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "qid": 2,
+      "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+      "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.\n직선이 $y=mx+n$ 꼴로 주어지면 $x$의 계수 $m$이 기울기이다.",
+      "observation": "설명에서 평행 조건을 기울기 equality로 바꾸고 점 좌표를 식에 대입해 각 판서 단계를 보인다."
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "qid": 7,
+      "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+      "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 ",
+      "observation": "완전제곱으로 원의 중심·반지름을 구한 뒤 두 이동을 순서대로 좌표에 적용하고 최종 원을 제시한다; source를 복제하지 않는 solution visual이 중심 이동을 보강한다."
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "qid": 2,
+      "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+      "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여",
+      "observation": "각 직선의 기울기를 먼저 분리해 계산하고 수직 조건을 곱셈식으로 적용한 뒤 답을 확정한다."
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "qid": 17,
+      "solutionSha256": "sha256:d46956c801f4bc2521d8ef9276cf1bbbd7d65c93b9a53389b223bd478fbeeb58",
+      "solutionExcerpt": "먼저 주어진 직선을 평행이동한 뒤의 식을 구한다.\n원래 직선은\n$y=k(x+3)-5$이다.\n$x$축의 방향으로 $5",
+      "observation": "이동 직선의 공통점과 원의 중심을 연결하는 조건이 계산 순서와 solution SVG의 실제 교점·중심에 반영되어 있다."
+    }
+  ],
+  "negativeSampleRefs": [
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+      "observation": "The fixture documents a false PASS where actual SVG primitives contradict labeled geometry; it also flags enumerated reasoning blocks, resolvable Meta nulls, and runtime TeX escapes."
+    },
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+      "sha256": "sha256:240dade5ecd6991b156f456fe7036883a59e43df3117d0f2a25b3c790a39eaa4",
+      "gitBlobSha": "2a42b27f3c8ec316334b5c68421f4619b58cdae7",
+      "observation": "Actual polyline endpoints contradict the declared point coordinates A(−1/2,0), B(0,−1), demonstrating why geometry must be recomputed from primitives."
+    }
+  ],
+  "qualityCompareCount": "0/24",
+  "workBeforeAuthoring": "NONE; preflight performed before target answer/solution authoring."
+}

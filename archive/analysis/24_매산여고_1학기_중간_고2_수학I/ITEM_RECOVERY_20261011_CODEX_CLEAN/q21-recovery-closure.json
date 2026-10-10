@@ -1,0 +1,235 @@
+{
+  "schemaVersion": "ITEM_RECOVERY_Q21_CLOSURE_PACKET_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "24_매산여고_1학기_중간_고2_수학I",
+  "qid": 21,
+  "stage": "ITEM_RECOVERY",
+  "result": "QUESTION_REPLACEMENT_AUTHORED_V2_ARTIFACT_PASS",
+  "replacementType": "QUESTION_REPLACEMENT",
+  "method": "CODEX_DIRECT_AUTHORING",
+  "replacementScope": "QUESTION_ONLY",
+  "reason": "ORIGINAL_ITEM_UNRECOVERABLE_AFTER_REVIEW2",
+  "sourceTruthDecision": {
+    "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/ITEM_RECOVERY_20261011_CODEX_CLEAN/q21-independent-source-decision.json",
+    "sha256": "9d71aab4513bb4465ea80a6fcb9667210a26eed6fc8239174479609c1445ed61",
+    "studentPacketPath": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/ITEM_RECOVERY_20261011_CODEX_CLEAN/q21-student-only.json",
+    "studentPacketSha256": "745b03bcb3bcc78ead95f9a81a144e496be52c71682eaaf74909c0af58843592",
+    "studentPayloadSha256": "5c1663ad0e80e43dcb57c28d04a78a1c97c47b92c89326134fdfeae426f4729b",
+    "sourceRegionPath": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/ITEM_RECOVERY_20261011_CODEX/source-page06-q21.png",
+    "finding": "No uniqueness qualifier or missing graph/condition; source exactly matches packet.",
+    "decision": "TRUE_HOLD_SOURCE_TRUTH_BLOCKED"
+  },
+  "calibrationPreflight": {
+    "command": "node archive/tools/solution-calibration-gate.mjs --exam <absolute-current-js> --evidence <absolute-preflight-json> --stage ITEM_RECOVERY --preflight --json",
+    "evidencePath": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/ITEM_RECOVERY_20261011_CODEX_CLEAN/q21-calibration-preflight.json",
+    "evidenceSha256": "4091caf594aaa70e6c92d9cfd4b2c4db269be3d6e8d831a53f4bed7d81b07a45",
+    "reportPath": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/ITEM_RECOVERY_20261011_CODEX_CLEAN/q21-calibration-preflight.report.json",
+    "reportSha256": "da82632b9a5ca0334239e513520da9b4117f5d4ebb504d443e5d3bec5e9375a5",
+    "report": {
+      "ok": true,
+      "stage": "ITEM_RECOVERY",
+      "gate": "CALIBRATION_PREFLIGHT",
+      "questionCount": 24,
+      "issues": []
+    }
+  },
+  "before": {
+    "artifactRawSha256": "fd53c2297a0984ca7d0a1c72cfbc27b207e77c0ee9f63418ef71f2103c862b04",
+    "artifactGitBlobSha1": "ff175c0ca217b873c194b75d0744d6b21c6502ec",
+    "oldSolutionAssetPath": "assets/images/24_매산여고_1학기_중간_고2_수학I/q21-solution.svg",
+    "oldSolutionAssetRawSha256": "c0c2dd8bdba0d8cf7f5a7f5b533a9e606fb69dc4a23c85c9c433a142cf7fcd48",
+    "oldSolutionAssetGitBlobSha1": "4664d0ffb123403e3aa5d34dc5d09d3b69de1483",
+    "studentPacketSha256": "745b03bcb3bcc78ead95f9a81a144e496be52c71682eaaf74909c0af58843592",
+    "sourceRawSha256": "fd53c2297a0984ca7d0a1c72cfbc27b207e77c0ee9f63418ef71f2103c862b04",
+    "sourceRawBlobSha1": "ff175c0ca217b873c194b75d0744d6b21c6502ec"
+  },
+  "after": {
+    "artifactPath": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+    "artifactRawSha256": "423e6dcffb163b7372d2e75a9ae63796661ab94852f7c84a199100af179a0f46",
+    "artifactGitBlobSha1": "8a1ff234d287e74217c6b79625ff2c9d152518fb",
+    "questionCount": 24,
+    "solutionSha256": "564b732d18111c6468e5e5e4861ae8d462952522c79e30016930978409424569",
+    "answer": "④",
+    "choices": [
+      "$30$",
+      "$32$",
+      "$36$",
+      "$40$",
+      "$46$"
+    ],
+    "solutionAssetPath": "assets/images/24_매산여고_1학기_중간_고2_수학I/q21-solution-recovery.svg",
+    "solutionAssetRawSha256": "6e91d4e7caf3fec5f900dcdbeba0bd00d9a4d84c0a54fd27a4de558fe388e35e",
+    "solutionAssetGitBlobSha1": "b8dbc6c36e7afa23866bbe7fc0ed19d9b2b8ce20",
+    "oldSolutionAssetRawSha256After": "c0c2dd8bdba0d8cf7f5a7f5b533a9e606fb69dc4a23c85c9c433a142cf7fcd48",
+    "oldSolutionAssetGitBlobSha1After": "4664d0ffb123403e3aa5d34dc5d09d3b69de1483"
+  },
+  "exactChanges": {
+    "changedQids": [
+      21
+    ],
+    "changedTargetFields": [
+      "content",
+      "choices",
+      "tags",
+      "answer",
+      "solution",
+      "standardUnitKey",
+      "standardUnit",
+      "standardUnitOrder",
+      "subUnitKey",
+      "subUnit",
+      "problemTypeKey",
+      "templateKey",
+      "conditionKeys",
+      "solutionImage",
+      "itemStatus",
+      "itemHoldReason",
+      "reviewStatus"
+    ],
+    "nonTargetQidCount": 23,
+    "nonTargetDeepEquality": {
+      "status": "PASS",
+      "compared": 23,
+      "changed": 0
+    },
+    "sourceIdentityPreserved": true,
+    "oldSolutionSvgBytesPreserved": true,
+    "oldSolutionSvgRefReplaced": true,
+    "itemHoldFieldsRemoved": true,
+    "solutionRuntimeNewlines": {
+      "hasRealNewlines": true,
+      "hasLiteralBackslashN": false
+    }
+  },
+  "meta": {
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-06",
+    "standardUnit": "삼각함수의 그래프",
+    "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+    "subUnit": "삼각함수의 그래프",
+    "rpmPrimary": {
+      "crosswalkId": "H2-M1-RPM-037",
+      "l1": "삼각함수",
+      "l2": "삼각함수의 그래프",
+      "l3": "기본 그래프",
+      "l4": "sin·cos"
+    },
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+    "exactCurriculumBindingDebt": "Crosswalk H2-M1-RPM-037 marks DIRECT_BINDING_GAP / bindingStatus MISSING; keys are active globally but no exact H15-M1-06 course binding is registered. No unsupported binding is asserted.",
+    "metaAuthority": {
+      "crosswalk": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "rawSha256": "ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+        "status": "ACTIVE_REFERENCE",
+        "selectedRowId": "H2-M1-RPM-037",
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "bindingStatus": "MISSING",
+        "rpmPath": {
+          "l1": "삼각함수",
+          "l2": "삼각함수의 그래프",
+          "l3": "기본 그래프",
+          "l4": "sin·cos"
+        }
+      },
+      "taxonomy": {
+        "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+        "rawSha256": "c1188bf7542d2f23e91b2880de050c5a48b23ece3a4ce165656f41e738a58ab4",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "problemTypeStatus": "ACTIVE",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "templateStatus": "ACTIVE"
+      },
+      "bindings": {
+        "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/bindings.json",
+        "rawSha256": "0cbb14bc1a708ff9a3efe658ecd897676e99881b5974b207db9ac275528f1c5d",
+        "exactCurriculumBindingFound": false,
+        "scope": "2015 / 수학I / H15-M1-06"
+      }
+    },
+    "difficulty": {
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "crossConceptKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  "visual": {
+    "problem": {
+      "disposition": "VISUAL_EXEMPT",
+      "reason": "The explicit cosine formula and interval determine the complete function; a source/problem image adds no needed condition or useful information."
+    },
+    "solutionDisposition": "ADD_NEW_VISUAL",
+    "geometryEvidencePath": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/ITEM_RECOVERY_20261011_CODEX_CLEAN/q21-visual-geometry-evidence.json",
+    "geometryEvidenceSha256": "9e52a287642ef09ad2e2b67a49d57fb9c036a5b7afd6d2f2d8ef7d06c38f7036",
+    "svgSha256": "6e91d4e7caf3fec5f900dcdbeba0bd00d9a4d84c0a54fd27a4de558fe388e35e",
+    "svgGitBlobSha1": "b8dbc6c36e7afa23866bbe7fc0ed19d9b2b8ce20",
+    "xmlParse": "PASS",
+    "geometryParity": [
+      {
+        "fact": "maximum sample",
+        "observed": [
+          5,
+          5
+        ],
+        "expected": [
+          5,
+          5
+        ],
+        "delta": [
+          0,
+          0
+        ]
+      },
+      {
+        "fact": "minimum sample",
+        "observed": [
+          7,
+          1
+        ],
+        "expected": [
+          7,
+          1
+        ],
+        "delta": [
+          0,
+          0
+        ]
+      },
+      {
+        "fact": "equal endpoint heights",
+        "observed": [
+          2.9999999999999996,
+          2.999999999999999
+        ],
+        "expected": [
+          3,
+          3
+        ],
+        "delta": [
+          0,
+          0
+        ]
+      }
+    ],
+    "actualRender": "NOT_RUN_ITEM_RECOVERY; R3 must inspect actual student-engine output"
+  },
+  "v2ArtifactContract": {
+    "reportPath": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/ITEM_RECOVERY_20261011_CODEX_CLEAN/q21-v2-artifact-contract.report.json",
+    "reportSha256": "840dd271eab17f70a68bff204cdd02cc2008040f274e08f100f230a102ffca2c",
+    "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+    "disposition": "PASS",
+    "issues": [],
+    "artifactSha": "8a1ff234d287e74217c6b79625ff2c9d152518fb",
+    "artifactRawSha256": "423e6dcffb163b7372d2e75a9ae63796661ab94852f7c84a199100af179a0f46"
+  },
+  "nextRequiredAction": "ROOT_ROUTE_FRESH_Q21_ONLY_R1_R2_R3_CLOSURES",
+  "r1R2R3Status": "NOT_RUN_BY_ITEM_RECOVERY_WORKER"
+}

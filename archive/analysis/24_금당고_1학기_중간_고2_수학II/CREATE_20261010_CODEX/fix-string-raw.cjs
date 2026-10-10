@@ -1,0 +1,1 @@
+const fs=require('node:fs');const path=require('node:path');const p=path.join(__dirname,'author-create.mjs');let s=fs.readFileSync(p,'utf8');s=s.replaceAll('solution:`','solution:String.raw`');fs.writeFileSync(p,s,'utf8');

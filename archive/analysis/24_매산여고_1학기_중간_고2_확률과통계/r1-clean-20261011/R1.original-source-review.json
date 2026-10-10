@@ -1,0 +1,21 @@
+{
+  "schemaVersion":"JS_ARCHIVE_R1_SCOPED_ORIGINAL_SOURCE_REVIEW_V1",
+  "qualityContractVersion":"JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine":"CODEX",
+  "reviewerIdentity":{"role":"archive_r1","reviewerId":"/root/r1_maesan_probability"},
+  "reviewedAt":"2026-10-11T02:02:49+09:00",
+  "scope":{"type":"QID_ONLY","qids":[11,22]},
+  "originalPdf":{"path":"C:/Users/USER/Desktop/기출정리 파일/(1)1중간/확률과통계/2024_매여고2_확통_1중간.pdf","sha256":"81da2951bb6cfb2053fe0814396331df8657ba694c8b6bb823587c9c3fa6c27d"},
+  "pageTextSearch":{"attempted":true,"result":"No usable extracted text; PDF reports KSC-EUC-H not implemented by pypdf. Used only page 3 and page 6 visual review for exact qids."},
+  "pageRenders":[
+    {"page":3,"path":"archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/source-page-03.png","sha256":"a7546e309be68fe0927e995a2d96ea8bf082864631368646e42ab3f10b41d747","reviewedRegion":"qid 11 right-column upper block only"},
+    {"page":6,"path":"archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/source-page-06.png","sha256":"616c9464b90904ab0004bf5debb5f4d30413ad3ac33806b4594ed975e7f33a62","reviewedRegion":"qid 22 left-column lower block only"}
+  ],
+  "findings":[
+    {"qid":11,"category":"UNCLEAR_CONDITION","factChecked":"Original q11 statement and all five printed choices","finding":"Printed statement is the same as current student payload: four inputs map to {1,2,3}, product >= 10; printed choices are 43,44,45,46,47. Independent exact count is 40, absent from all choices. Original source confirms a defect; no extraction discrepancy."},
+    {"qid":22,"category":"UNCLEAR_CONDITION","factChecked":"Original q22 coefficient condition and domain wording","finding":"Original q22 says coefficient of 1/x is 64 and coefficient of x is b, ask a+b, with (a,b are constants). No positivity/domain restriction on a. For real constants a=2 and a=-2 both satisfy the condition and yield distinct a+b (258 and -130). Original source confirms ambiguity; no extraction discrepancy."}
+  ],
+  "sourceParityDisposition":"EXACT_FOR_REVIEWED_FACTS",
+  "retranscriptionPerformed":false,
+  "fullPdfComparisonPerformed":false
+}

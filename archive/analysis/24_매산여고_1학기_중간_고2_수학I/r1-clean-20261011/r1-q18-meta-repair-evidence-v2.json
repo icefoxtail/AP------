@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_Q18_META_REPAIR_EVIDENCE_V2",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "24_매산여고_1학기_중간_고2_수학I",
+  "qid": 18,
+  "sourceRawSha256": "9ae75468d939e39533c539d01d4440127a423d4d7ceaed790e2692985dec6dbe",
+  "studentBundleSha256": "56a91d48a27a59c62922222636b72c0de876ec50ee8eb30aec72e4fd62d42dc4",
+  "studentPayloadSha256": "06447e223c3c0944e9449b398cda5149791a307fa57427eb505aa393fbf6ad64",
+  "studentContent": "정의역 1≤x<1000에서 log x의 소수 부분으로 정의한 함수의 그래프와 y=2−x/n의 서로 다른 교점 수를 센다.",
+  "finalSolutionSha256": "717e65b90db7daab0cce5489f9b7ca832903a78c86314121662c71bc466227f8",
+  "finalSolutionEvidence": "For each decade interval [10^k,10^(k+1)), the solution explicitly writes f(x)=log x−k, then counts crossings with the decreasing line; this is a logarithmic-function graph/intersection task.",
+  "beforeFields": {
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-02",
+    "standardUnit": "로그의 뜻과 성질",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H15-M1-02-LOGARITHM",
+    "subUnit": "로그의 뜻과 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "CASE_BRANCH"
+  },
+  "afterFields": {
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-04",
+    "standardUnit": "로그함수",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+    "subUnit": "로그함수의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "CASE_BRANCH"
+  },
+  "canonicalEvidence": {
+    "masterPath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+    "masterSha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5",
+    "rpmPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학I.md",
+    "rpmSha256": "68089f2ddcbfbb3c4626e5aec9531fa3947df0e4c803e32f3e9de1e911cfe700",
+    "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+    "crosswalkSha256": "ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+    "crosswalkRecord": {
+      "id": "H2-M1-RPM-028",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그함수",
+        "l3": "로그함수의 활용",
+        "l4": "그래프 교점"
+      },
+      "standardUnitKey": "H15-M1-04",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "problemTypeLabelKo": "함수 그래프의 교점",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+      "templateLabelKo": "두 함수 그래프의 교점",
+      "bindingStatus": "MISSING"
+    }
+  },
+  "studentFieldsUnchanged": {
+    "status": "PASS",
+    "qidCount": 24,
+    "postfreezeStudentParity": "EXACT"
+  },
+  "projectionDisposition": {
+    "status": "BINDING_PENDING",
+    "reason": "The exact RPM path projects to globally active PT/TPL values, but current crosswalk bindingStatus=MISSING for H15/수학I. Preserve mapped keys; do not invent an active binding."
+  }
+}

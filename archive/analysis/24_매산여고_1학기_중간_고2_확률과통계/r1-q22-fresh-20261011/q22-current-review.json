@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_QID_CURRENT_REVIEW_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "role": "R1_DEEP",
+  "examUid": "24_매산여고_1학기_중간_고2_확률과통계",
+  "qid": 22,
+  "scope": "q22 replacement only; source and assets unmodified; no full-denominator validator or seal",
+  "source": {
+    "path": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+    "rawSha256": "18d9cefae333cf0fec077ee91fdd694ef1cdfcc7b15bbfd602d41f0d86ce7c1d",
+    "rawBlobSha1": "e1f9ac02d7f6635f3b850acc46210067f386ad2c",
+    "currentStudentBundleSha256": "86b5bc85fd649fb71a22b7c1df01ccb6757060840aeee24bdc5dda0231f46678",
+    "studentRowPayloadSha256": "8fba0c07a7e256b2dd2d62a0606397d2839d97487ca7beb151fbac2a195a7f04",
+    "pdfReviewMode": "DEFECT_ONLY",
+    "pdfActuallyCompared": false,
+    "extractedBaselineParity": "q22 student fields match the current source-bound student payload",
+    "intakeEvidence": "Not re-read; no original-PDF comparison claimed"
+  },
+  "independentFreeze": {
+    "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-q22-fresh-20261011/q22-original-freeze.json",
+    "sha256": "eb97556f6928458d49168d69016e866b8f0860c35c3057a87d0dac4255cb80ed",
+    "independentAnswer": "450",
+    "reasoning": "C(8,3)a^5=1792 gives a^5=32 and real a=2; then b=C(8,5)a^3=448, so a+b=450.",
+    "comparison": "MATCHES stored answer"
+  },
+  "axes": {
+    "QUESTION_LAYOUT": {
+      "disposition": "KEEP_STATIC_REVIEW",
+      "basis": "Question is self-contained text with one inline binomial expression, a single explicit <br> after its heading, no choices/assets/table/shared material; grid is default and no special layout evidence supports override.",
+      "actualRendererCapture": "NOT_RUN_IN_Q22_ONLY_R1"
+    },
+    "SOLUTION_LAYOUT": {
+      "disposition": "KEEP",
+      "basis": "Four short conceptual blocks: general term, x^3 coefficient and real a, x^5 coefficient b, requested sum. Display-independent inline TeX and blank-line separation preserve the reasoning sequence.",
+      "solutionReview": "Stored solution is mathematically correct and agrees with independent derivation."
+    },
+    "META": {
+      "disposition": "EVIDENCE_DEBT",
+      "sourceValues": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-02",
+        "standardUnit": "이항정리",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+        "subUnit": "이항정리",
+        "level": "중",
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "confirmed": "H15 standard/subunit mapping appears in the canonical subunit/master table; PT/TPL are present in the 2015 probability-statistics runtime pack at the binomial theorem / term-coefficient taxonomy. Difficulty 2 and level 중 fit a routine linked coefficient-extraction problem.",
+      "exactDebts": [
+        "Current question_metadata.json row for this source file and ordinal 22 has standardCourse, standardUnitKey, standardUnit, subUnitKey, subUnit, conceptClusterKey, problemTypeKey, templateKey, and integrationPattern blank; crossConceptKeys/conditionKeys empty; tagConfidence/tagStatus/reviewStatus are review_required; metadataStatus is registration_pending_semantic_review; fieldStatus marks standardUnit/subUnit/concept/problemType/template/difficulty manual_review_pending. Its projection does not currently carry the source JS values.",
+        "Current source JS q22 has no explicit RPM L1-L4 or conceptClusterKey fields; the runtime taxonomy supports the relevant classification but a current qid-level approved RPM binding is not represented in the inspected projection.",
+        "Source-to-Consumer/index parity for q22 was not verified in this q22-only review; current projection debt must be resolved/confirmed by the full-locus owner before claiming parity."
+      ],
+      "noSourceEdits": true
+    },
+    "VISUAL_SVG": {
+      "problemVisual": "EXEMPT: coefficient extraction is fully specified algebraically; no spatial, geometric, tabular, or graphical relation is encoded.",
+      "solutionVisual": "EXEMPT: general-term substitution and scalar coefficient arithmetic have no educationally useful diagram; a graphic would duplicate notation.",
+      "referencedAssets": [],
+      "assetsOpened": "NOT_APPLICABLE_NO_REFERENCES"
+    }
+  },
+  "sourceExtractPath": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-q22-fresh-20261011/q22-postfreeze-qid-limited-source-extract.json",
+  "postfreezeDisclosureHelper": "NOT_USED: helper requires a full-exam freeze/bundle; q22-only immutable freeze retained, then current-source q22-only extraction was performed.",
+  "validation": "NOT_RUN_BY_ASSIGNMENT; parent will merge q11/q22 loci into the original R1 packet before full-denominator validator/seal",
+  "nextRequiredAction": "Parent merges q22 math and four-axis evidence; resolve the exact q22 Meta projection/parity debt before R1 closeout."
+}

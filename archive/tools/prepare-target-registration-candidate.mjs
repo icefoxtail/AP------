@@ -469,9 +469,10 @@ export function makeTargetMetadataRows({ sourceFile, bank, identityRows, r1Evide
       difficultyBoundaryFlag: sourceValue(question, 'difficultyBoundaryFlag', null),
       legacyLevelCompatibility: sourceValue(question, 'legacyLevelCompatibility', null),
       ...(admittedDebt ? {
-        projectionStatus: admittedDebt.projectionStatus,
+        ...(nonempty(admittedDebt.projectionStatus) ? { projectionStatus: admittedDebt.projectionStatus } : {}),
         metaDebtFields: jsonClone(admittedDebt.metaDebtFields),
         metaDebtReason: admittedDebt.metaDebtReason,
+        ...(Array.isArray(admittedDebt.metaDebtReasons) ? { metaDebtReasons: jsonClone(admittedDebt.metaDebtReasons) } : {}),
       } : {}),
       crossConceptKeys: sourceValue(question, 'crossConceptKeys', []),
       conditionKeys: sourceValue(question, 'conditionKeys', []),
@@ -605,9 +606,10 @@ function verifyR1MetaProof(evidence, assignment, examUid, bank, root, admission 
   const admittedQids = new Set(admittedRows.map(row => Number(row.qid)));
   assert(evidence.rows.every(row => (isAcceptedR1Verdict(row.verdict) || (admittedQids.has(Number(row.qid)) && row.verdict === 'PASS_WITH_META_DEBT'))
     && (admittedQids.has(Number(row.qid)) || hasAcceptedMetaDisposition(row, bank[Number(row.qid) - 1]))), 'R1_META_PROOF_META_PASS_REQUIRED');
+  const metaDebtRows = unresolvedR1MetaDebtRows(evidence, bank);
   const itemRecoveryRows = evidence.rows.filter(row => row.verdict === 'PASS_AFTER_ITEM_RECOVERY');
   assert(itemRecoveryRows.every(row => verifyR1ItemRecoveryProof({ row, examUid, bank, root, assignment })), 'R1_ITEM_RECOVERY_VERDICT_PROOF_REQUIRED');
-  return admittedRows;
+  return [...admittedRows, ...metaDebtRows];
 }
 
 export function verifyBoundR1MetaBindingPendingAdmission({
@@ -880,7 +882,7 @@ export function verifyR1MetaCoreDebtAdmission({ admission, evidence, assignment,
 }
 
 function isAcceptedR1Verdict(value) {
-  return value === 'PASS' || value === 'PASS_AFTER_ADJUDICATION' || value === 'PASS_AFTER_SAME_STAGE_SOURCE_FIGURE_ADJUDICATION' || value === 'PASS_AFTER_REPAIR' || value === 'PASS_AFTER_ITEM_RECOVERY';
+  return value === 'PASS' || value === 'PASS_AFTER_ADJUDICATION' || value === 'PASS_AFTER_SAME_STAGE_SOURCE_FIGURE_ADJUDICATION' || value === 'PASS_AFTER_REPAIR' || value === 'PASS_AFTER_ITEM_RECOVERY' || value === 'PASS_WITH_EXACT_DECLARED_META_DEBT';
 }
 
 function verifyR1ItemRecoveryProof({ row, examUid, bank, root, assignment }) {
@@ -1027,6 +1029,128 @@ const acceptedMetaPassValues = new Set([
   'CURRENT_FIELDS_RECORDED_NO_SEMANTIC_RECLASSIFICATION',
 ]);
 
+function parseEmbeddedExactMetaDebts(evidence) {
+  if (typeof evidence !== 'string') return null;
+  const marker = 'Exact recorded evidence debt:';
+  const markerAt = evidence.indexOf(marker);
+  if (markerAt < 0) return null;
+  const start = evidence.indexOf('[', markerAt + marker.length);
+  if (start < 0) return null;
+  let depth = 0, quoted = false, escaped = false;
+  for (let index = start; index < evidence.length; index += 1) {
+    const char = evidence[index];
+    if (quoted) {
+      if (escaped) escaped = false;
+      else if (char === '\\') escaped = true;
+      else if (char === '"') quoted = false;
+      continue;
+    }
+    if (char === '"') quoted = true;
+    else if (char === '[') depth += 1;
+    else if (char === ']' && --depth === 0) {
+      try { return JSON.parse(evidence.slice(start, index + 1)); }
+      catch { return null; }
+    }
+  }
+  return null;
+}
+
+function exactMetaDebtEntries(row, question = null) {
+  const axis = row?.axisEvidence?.META ?? row?.axisEvidence?.meta;
+  if (axis?.status === 'REVIEWED_WITH_EXACT_DECLARED_DEBT') {
+    const fields = row?.metaDebtFields, reason = row?.metaDebtReason, current = axis.currentSourceFields || {};
+    if (!Array.isArray(fields) || fields.length === 0 || typeof reason !== 'string' || !reason.trim() || !current || typeof current !== 'object') return null;
+    if (question && fields.some(field => typeof field !== 'string' || !field.trim() || (field in question && question[field] !== null))) return null;
+    return fields.map(field => ({ field: field.trim(), reason: reason.trim() }));
+  }
+  if (axis?.status === 'REVIEWED') {
+    return Array.isArray(row?.metaDebtFields) && row.metaDebtFields.length === 0
+      && row.verdict === 'PASS' && row.metaDebtReason === 'No unresolved required Meta fields.'
+      && axis.currentSourceFields && typeof axis.currentSourceFields === 'object' ? [] : null;
+  }
+  if (axis?.status === 'EVIDENCE_DEBT') {
+    const fields = row?.metaDebtFields, reason = row?.metaDebtReason;
+    if (!Array.isArray(fields) || fields.length === 0 || typeof reason !== 'string' || !reason.trim()
+      || typeof axis.note !== 'string' || axis.note.trim() !== reason.trim()) return null;
+    if (question && fields.some(field => typeof field !== 'string' || !field.trim()
+      || (field === 'templateKey' && question.templateKey !== null && question.templateKey !== undefined))) return null;
+    return fields.map(field => ({ field: field.trim(), reason: reason.trim() }));
+  }
+  if (axis?.status === 'PROJECTION_BINDING_PENDING') {
+    const note = axis.note;
+    const fields = axis.currentFields || {};
+    if (typeof note !== 'string' || !note.includes('DIRECT_BINDING_GAP') || !note.includes('record nonblocking projection pending')
+      || fields.rpmSemanticStatus !== 'FINAL' || !fields.rpmL1 || !fields.rpmL2 || !fields.rpmL3 || !fields.rpmL4) return null;
+    return [{ field: 'source_consumer_index_parity', reason: note.trim() }];
+  }
+  if (axis?.status === 'REVIEWED_WITH_RECORDED_PROJECTION_DEBT') {
+    const fields = row?.metaDebtFields;
+    const reason = row?.metaDebtReason;
+    if (Array.isArray(fields) && fields.length === 0 && !String(reason || '').trim()
+      && axis.observation === 'Current source metadata fields reviewed against canonical unit/crosswalk and active registries.') return [];
+    if (!Array.isArray(fields) || fields.length === 0 || typeof reason !== 'string' || !reason.trim()
+      || typeof axis.observation !== 'string' || axis.observation.trim() !== reason.trim()) return null;
+    const projectionOnly = new Set(['question_metadata_projection', 'source_consumer_index_parity']);
+    const entries = [];
+    for (const rawField of fields) {
+      if (typeof rawField !== 'string' || !rawField.trim()) return null;
+      const field = rawField.trim();
+      if (question && !projectionOnly.has(field) && question[field] !== null && question[field] !== undefined) return null;
+      entries.push({ field, reason: reason.trim() });
+    }
+    return entries;
+  }
+  if (axis?.status === 'PASS_WITH_EXPLICIT_EVIDENCE_DEBT') {
+    if (!Array.isArray(axis.exactDebts) || axis.exactDebts.length === 0) return null;
+    const entries = [];
+    for (const debt of axis.exactDebts) {
+      if (!debt || typeof debt.field !== 'string' || !debt.field.trim()
+        || typeof debt.reason !== 'string' || !debt.reason.trim()) return null;
+      entries.push({ field: debt.field.trim(), reason: debt.reason.trim() });
+    }
+    return entries;
+  }
+  const fourAxisMeta = row?.fourAxisReview?.META ?? row?.fourAxisReview?.meta;
+  if (fourAxisMeta?.disposition === 'CURRENT_NULL_DEBT_PRESERVED') {
+    const legacy = parseEmbeddedExactMetaDebts(fourAxisMeta.evidence);
+    if (!Array.isArray(legacy) || legacy.length === 0) return null;
+    const entries = [];
+    for (const debt of legacy) {
+      if (!debt || typeof debt.reason !== 'string' || !debt.reason.trim()) return null;
+      const fields = Array.isArray(debt.fields) ? debt.fields : (typeof debt.field === 'string' ? [debt.field] : []);
+      if (fields.length === 0 || fields.some(field => typeof field !== 'string' || !field.trim())) return null;
+      for (const field of fields) entries.push({ field: field.trim(), reason: debt.reason.trim() });
+    }
+    return entries;
+  }
+  return [];
+}
+
+function unresolvedR1MetaDebtRows(evidence, bank) {
+  const rows = [];
+  for (const row of evidence.rows) {
+    const question = bank[Number(row.qid) - 1];
+    const axisMeta = row?.axisEvidence?.META ?? row?.axisEvidence?.meta;
+    const exactDebts = exactMetaDebtEntries(row, question);
+    if (exactDebts === null) throw new Error('R1_META_PROOF_EXACT_DEBT_INVALID:' + row.qid);
+    // Candidate registration creates the stable source-file/ordinal identity mapping.
+    // The original identity debt remains in bound R1 evidence, but is resolved for this projection.
+    const unresolved = exactDebts.filter(debt => debt.field !== 'questionUid');
+    if (unresolved.length === 0) continue;
+    const metaDebtFields = [...new Set(unresolved.map(debt => debt.field))];
+    const metaDebtReason = unresolved.map(debt => `${debt.field}: ${debt.reason}`).join(' | ');
+    rows.push({
+      qid: Number(row.qid),
+      ...(nonempty(question?.projectionStatus) ? { projectionStatus: question.projectionStatus }
+        : (nonempty(axisMeta?.projectionStatus) ? { projectionStatus: axisMeta.projectionStatus } : {})),
+      metaDebtFields,
+      metaDebtReason,
+      metaDebtReasons: unresolved,
+    });
+  }
+  return rows;
+}
+
 function metaProofValues(row) {
   const values = [];
   const push = value => { if (typeof value === 'string' && value.trim()) values.push(value.trim()); };
@@ -1049,6 +1173,7 @@ function hasAcceptedMetaDisposition(row, question) {
   const values = metaProofValues(row);
   if (values.some(value => acceptedMetaPassValues.has(value) || value === 'REVIEWED_CURRENT_META_DISPOSITION')) return true;
   const axis = row?.axisEvidence?.META ?? row?.axisEvidence?.meta;
+  if (['PASS_WITH_EXPLICIT_EVIDENCE_DEBT', 'REVIEWED_WITH_RECORDED_PROJECTION_DEBT', 'EVIDENCE_DEBT', 'PROJECTION_BINDING_PENDING', 'REVIEWED_WITH_EXACT_DECLARED_DEBT', 'REVIEWED'].includes(axis?.status)) return exactMetaDebtEntries(row, question) !== null;
   if (axis?.status !== 'PASS_WITH_META_ONLY_DEBT') return false;
   const debtFields = axis.nullDebt?.fields;
   const rowDebtFields = row?.metaDebtFields;

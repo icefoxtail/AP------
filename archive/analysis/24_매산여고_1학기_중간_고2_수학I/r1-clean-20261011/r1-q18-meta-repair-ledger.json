@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_Q18_META_REPAIR_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "24_매산여고_1학기_중간_고2_수학I",
+  "qid": 18,
+  "beforeRawSha256": "2db16a2060927ce00eceb17ff6b24d4a0f32d581bc7a92d4785da4d667d2897b",
+  "afterRawSha256": "9ae75468d939e39533c539d01d4440127a423d4d7ceaed790e2692985dec6dbe",
+  "beforeFields": {
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-02",
+    "standardUnit": "로그의 뜻과 성질",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H15-M1-02-LOGARITHM",
+    "subUnit": "로그의 뜻과 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "CASE_BRANCH"
+  },
+  "afterFields": {
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-04",
+    "standardUnit": "로그함수",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+    "subUnit": "로그함수의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "CASE_BRANCH"
+  },
+  "rpmPrimaryKey": "H2-M1-RPM-028",
+  "semanticPath": {
+    "curriculum": "2015",
+    "scope": "수학I",
+    "l1": "H15-M1-04 로그함수",
+    "l2": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION 로그함수의 활용",
+    "l3": "로그함수의 활용",
+    "l4": "그래프 교점"
+  },
+  "projection": {
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+    "status": "DIRECT_BINDING_GAP",
+    "bindingStatus": "MISSING",
+    "reason": "The active crosswalk has this exact semantic mapping but no current exact H15 curriculum binding. Keep the keys and record binding pending; do not invent a new canonical key."
+  },
+  "studentFieldsExactParity": {
+    "status": "PASS",
+    "qidCount": 24
+  },
+  "globalProjectionFilesTouched": false,
+  "technicalAttemptNote": "The first repair script applied the five exact q18 changes and verified student parity, then its final ledger write failed on a misspelled variable name. This ledger reconstructs the completed mutation from the preserved before snapshot and current bytes."
+}

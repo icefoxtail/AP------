@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_PREFLIGHT_V1",
+  "status": "REVIEW_REQUIRED",
+  "questionCount": 24,
+  "itemHoldCount": 0,
+  "holds": [],
+  "findings": [
+    {
+      "qid": 11,
+      "field": "content",
+      "code": "TEX_MATH_DELIMITER_UNPAIRED",
+      "locus": {
+        "start": 377,
+        "end": 378,
+        "text": "$"
+      },
+      "reason": "Opening math delimiter has no matching closer."
+    },
+    {
+      "qid": 18,
+      "field": "content",
+      "code": "TEX_MATH_DELIMITER_UNPAIRED",
+      "locus": {
+        "start": 264,
+        "end": 265,
+        "text": "$"
+      },
+      "reason": "Opening math delimiter has no matching closer."
+    },
+    {
+      "qid": 18,
+      "field": "content",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 252,
+        "end": 257,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    }
+  ],
+  "unitOrder": {
+    "authority": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-1mid-20261010\\AP------\\docs\\rules\\01_CANONICAL\\JS아카이브_표준단원키_마스터테이블.md",
+      "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+    },
+    "findings": [],
+    "semanticReclassification": false,
+    "sourceMutation": false
+  },
+  "semanticApproval": false,
+  "sourceMutation": false,
+  "artifactRawSha256": "8c403b10678e331f5c613f093e14aa6d42b95cccd9a1a160751f828453ce3933",
+  "artifactSha": "594665e575b3ff0bcfe8af9469cf79bd1c5ff418"
+}

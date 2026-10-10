@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "R1_QID_DIFFICULTY_ADJUDICATION_V1",
+  "examUid": "24_강남여고_1학기_중간_고2_확률과통계",
+  "qid": 1,
+  "createdAt": "2026-10-11T00:02:07.6888649+09:00",
+  "scope": "qid 1 only: independent level/difficulty/legacy compatibility adjudication",
+  "fullExamR1Claimed": false,
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "sourceRawSha256Before": "7597f74e213a7bffab8a30fab9eb23e5b438f159772c95f4c99841b0fb03fa25",
+  "sourceRawSha256After": "e5f0004f7a887cd57bb091e2ebcb5dcbce52e41743e750de0637fd8d396c4686",
+  "sourceGitBlobShaAfter": "8ba0c1fe8f50b378e89f91b31903d77b897dcc4a",
+  "independentAnswerFreezeSha256": "568fc54a43c79340335807f3b0ff83aac17a18b49acdc3661358344e62750bcb",
+  "independentDifficultyFreezeSha256": "ab499d337a164c6892d2abe58408ea7108e8cde7674b467763fced940fc38669",
+  "postfreezeDisclosureSha256": "901b75d0d074303e95401740078aaa753c9882d530b786d039e63d4de8f3cd02",
+  "storedDifficultyProjectionSha256": "d7ef99b25e9be9d5997ecf15979e186c429aef6b1e47772e059d3775da0cdae9",
+  "patchReceiptPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-1mid-20261010\\AP------\\archive\\analysis\\24_강남여고_1학기_중간_고2_확률과통계\\r1\\q1-clean\\q1-metadata-patch-receipt.json",
+  "patchReceiptSha256": "94244c6bc542c92350e8ecd8a2569e81ab7297a689834b3eba1a2d0940697385",
+  "independentJudgment": {
+    "difficultyBucket": 1,
+    "confidence": "high",
+    "boundaryFlag": "NONE",
+    "expectedLegacyLevel": "하",
+    "reasoning": "The two standard counting expressions are read directly: 3Π4=81 and 5H3=35, then add. No extra condition interpretation, method selection, branching, or nonroutine transformation is needed. The completed solution is correct and matches the clean independent answer freeze."
+  },
+  "storedValuesAfterFreeze": {
+    "level": "하",
+    "difficultyBucket": 2,
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+  },
+  "adjudication": {
+    "level": {
+      "before": "하",
+      "after": "하",
+      "disposition": "KEEP"
+    },
+    "difficultyBucket": {
+      "before": 2,
+      "after": 1,
+      "disposition": "CORRECT_TO_INDEPENDENT_BUCKET"
+    },
+    "legacyLevelCompatibility": {
+      "before": "BORDERLINE_REVIEW",
+      "after": "NORMAL",
+      "disposition": "RECALCULATE_FROM_FINAL_LEVEL_AND_BUCKET"
+    },
+    "rule": "JS아카이브_difficultyBucket_5단계_운영규칙_v1.3 §§3, 4.1, 8, 9–11.2",
+    "rationale": "The first postfreeze comparison (level 하 + bucket 2) is a §11.2 adjacent boundary requiring independent review, not automatic acceptance. Independent clean adjudication selects bucket 1, and the unchanged legacy level 하 maps normally to bucket 1; compatibility is therefore NORMAL."
+  },
+  "changedQids": [
+    1
+  ],
+  "changedFields": [
+    "difficultyBucket",
+    "legacyLevelCompatibility"
+  ],
+  "answerOrSolutionEdited": false,
+  "stageValidatorDisposition": "NOT_RUN_QID_ONLY_ADJUDICATION_NOT_FULL_R1",
+  "issues": [],
+  "closure": "QID_1_DIFFICULTY_ADJUDICATED_METADATA_PATCH_VERIFIED"
+}
