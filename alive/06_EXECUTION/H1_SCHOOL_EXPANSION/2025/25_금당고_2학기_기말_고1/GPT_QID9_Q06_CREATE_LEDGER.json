@@ -1,0 +1,378 @@
+{
+  "schemaVersion": "ALIVE_QID9_GEUMDANG25_Q06_CREATE_LEDGER_V1",
+  "sourceQid": 6,
+  "sourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "originalPngSha": "1c1b846c7edd40c6203e19bae88d46f942b76aad",
+  "originalImageViewed": true,
+  "candidateCount": 9,
+  "keep": 5,
+  "revised": 4,
+  "hold": 0,
+  "answerDistribution": {
+    "①": 1,
+    "②": 2,
+    "③": 3,
+    "④": 2,
+    "⑤": 1
+  },
+  "mathEvidence": {
+    "A1": "outputs a,b,b; non-injective",
+    "A2": "2,4,6 bijection",
+    "A3": "1,0,1 non-injective",
+    "B1": "3,1,4,2 bijection; inverse 4=3",
+    "B2": "X=Y={1,2,3,4,5}; outputs 1,2,a,4,5. Bijection exactly when a=3.",
+    "B3": "1,2,3,3 onto not injective",
+    "C1": "a in {2,3}; sum5",
+    "C2": "3!=6",
+    "C3": [
+      [
+        -2,
+        -1,
+        0
+      ],
+      [
+        -2,
+        0,
+        1
+      ],
+      [
+        -1,
+        0,
+        2
+      ],
+      [
+        0,
+        1,
+        2
+      ]
+    ]
+  },
+  "realRender": "NOT_TESTED",
+  "formalIndependentReview": false,
+  "release": "BRANCH_ONLY_UNRELEASED",
+  "solutionVisual": {
+    "B3": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q06-B3-solution.svg",
+    "C3": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q06-C3-solution.svg",
+    "other": "EXEMPT"
+  },
+  "rows": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q06-A1",
+      "finalStem": "집합 $X=\\{1,2,3\\}$, $Y=\\{a,b,c\\}$에 대하여 함수 $f:X\\to Y$가 $f(1)=a$, $f(2)=b$, $f(3)=b$로 주어진다. 다음 중 옳지 않은 것은?",
+      "reverseReadingFinding": "최종 발문을 재독해하여 일대일 대응·역함수 존재와 선택지 단일성을 확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "reproducedError": "함수의 정의를 잘못 적용"
+        },
+        {
+          "choice": "②",
+          "reproducedError": "정의역과 치역 혼동"
+        },
+        {
+          "choice": "③",
+          "reproducedError": "치역에서 중복 b 오산"
+        },
+        {
+          "choice": "⑤",
+          "reproducedError": "역함수 존재를 잘못 판단"
+        }
+      ],
+      "decision": "KEEP",
+      "remainingRisk": "별도 독립검수 및 실제 Chrome 렌더 미수행"
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q06-A2",
+      "finalStem": "집합 $X=\\{1,2,3\\}$, $Y=\\{2,4,6\\}$에 대하여 함수 $f:X\\to Y$가 $f(x)=2x$로 주어진다. 다음 중 옳은 것은?",
+      "reverseReadingFinding": "최종 발문을 재독해하여 일대일 대응·역함수 존재와 선택지 단일성을 확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "reproducedError": "정의역과 공역을 뒤바꿈"
+        },
+        {
+          "choice": "②",
+          "reproducedError": "공역을 정의역으로 착각"
+        },
+        {
+          "choice": "④",
+          "reproducedError": "함숫값 6 누락"
+        },
+        {
+          "choice": "⑤",
+          "reproducedError": "역함수 존재성 역전"
+        }
+      ],
+      "decision": "KEEP",
+      "remainingRisk": "별도 독립검수 및 실제 Chrome 렌더 미수행"
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q06-A3",
+      "finalStem": "집합 $X=\\{-1,0,1\\}$, $Y=\\{0,1,2\\}$에 대하여 함수 $f:X\\to Y$가 $f(x)=x^2$로 주어진다. 다음 중 옳지 않은 것은?",
+      "reverseReadingFinding": "최종 발문을 재독해하여 일대일 대응·역함수 존재와 선택지 단일성을 확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "reproducedError": "정의역 혼동"
+        },
+        {
+          "choice": "②",
+          "reproducedError": "공역과 치역 혼동"
+        },
+        {
+          "choice": "③",
+          "reproducedError": "중복 함수값 집합 계산 실수"
+        },
+        {
+          "choice": "④",
+          "reproducedError": "음수 제곱 부호 실수"
+        }
+      ],
+      "decision": "KEEP",
+      "remainingRisk": "별도 독립검수 및 실제 Chrome 렌더 미수행"
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q06-B1",
+      "finalStem": "집합 $X=Y=\\{1,2,3,4\\}$에서 $f:X\\to Y$가 $f(1)=3$, $f(2)=1$, $f(3)=4$, $f(4)=2$로 주어진다. 다음 중 옳은 것은?",
+      "reverseReadingFinding": "최종 발문을 재독해하여 일대일 대응·역함수 존재와 선택지 단일성을 확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "reproducedError": "일대일 대응에 역함수가 없다고 판단"
+        },
+        {
+          "choice": "②",
+          "reproducedError": "치역 4 누락"
+        },
+        {
+          "choice": "④",
+          "reproducedError": "f(1)=3을 1로 오인"
+        },
+        {
+          "choice": "⑤",
+          "reproducedError": "일대일 대응인 점을 간과"
+        }
+      ],
+      "decision": "KEEP",
+      "remainingRisk": "별도 독립검수 및 실제 Chrome 렌더 미수행"
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q06-B2",
+      "finalStem": "집합 $X=Y=\\{1,2,3,4,5\\}$에서 함수 $f:X\\to Y$가 $f(1)=1$, $f(2)=2$, $f(3)=a$, $f(4)=4$, $f(5)=5$로 주어진다. $a\\in\\{1,2,3,4,5\\}$일 때 $f$의 역함수가 존재하도록 하는 $a$의 값은?",
+      "reverseReadingFinding": "최종 발문을 재독해하여 일대일 대응·역함수 존재와 선택지 단일성을 확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "reproducedError": "a=1은 f(1)=f(3)=1이므로 일대일 아님을 놓침"
+        },
+        {
+          "choice": "②",
+          "reproducedError": "a=2는 f(2)=f(3)=2로 중복됨을 놓침"
+        },
+        {
+          "choice": "④",
+          "reproducedError": "a=4는 f(3)=f(4)=4로 중복됨을 놓침"
+        },
+        {
+          "choice": "⑤",
+          "reproducedError": "a=5는 f(3)=f(5)=5로 중복됨을 놓침"
+        }
+      ],
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행; 신규 문항 품질과 운영 출시는 구별",
+      "affectedFields": [
+        "content",
+        "choices",
+        "answer",
+        "solution",
+        "meta",
+        "templateKey"
+      ],
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "affectedFields": [
+          "content",
+          "choices",
+          "answer",
+          "solution",
+          "meta",
+          "templateKey"
+        ],
+        "beforeAnswer": "①",
+        "afterAnswer": "③",
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "함수는 a∈Y의 5개 후보 모두 성립하나, a=3 외에는 다른 함숫값과 중복. 정답 ③ 유일"
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q06-B3",
+      "finalStem": "집합 $X=\\{1,2,3,4\\}$, $Y=\\{1,2,3\\}$에 대하여 $f(1)=1$, $f(2)=2$, $f(3)=3$, $f(4)=3$인 함수 $f:X\\to Y$가 있다. 다음 중 옳은 것은?",
+      "reverseReadingFinding": "최종 발문을 재독해하여 일대일 대응·역함수 존재와 선택지 단일성을 확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "reproducedError": "중복 대응을 놓치고 치역을 잘못 셈"
+        },
+        {
+          "choice": "③",
+          "reproducedError": "전사를 일대일 대응으로 오인"
+        },
+        {
+          "choice": "④",
+          "reproducedError": "다대일 대응이 함수가 아니라고 오인"
+        },
+        {
+          "choice": "⑤",
+          "reproducedError": "치역과 공역이 다른 것으로 오인"
+        }
+      ],
+      "decision": "KEEP",
+      "remainingRisk": "별도 독립검수 및 실제 Chrome 렌더 미수행"
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q06-C1",
+      "finalStem": "집합 $X=Y=\\{1,2,3,4\\}$에서 함수 $f:X\\to Y$가 $f(1)=1$, $f(2)=a$, $f(3)=5-a$, $f(4)=4$로 주어진다. $a\\in\\{1,2,3,4\\}$일 때 역함수가 존재하도록 하는 모든 $a$의 값의 합은?",
+      "reverseReadingFinding": "최종 발문을 재독해하여 일대일 대응·역함수 존재와 선택지 단일성을 확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "reproducedError": "a=2만 세어 2+2=4로 오산"
+        },
+        {
+          "choice": "③",
+          "reproducedError": "a=3만 세어 3+3=6으로 오산"
+        },
+        {
+          "choice": "④",
+          "reproducedError": "a=3,4를 잘못 합산해 7"
+        },
+        {
+          "choice": "⑤",
+          "reproducedError": "a=4를 중복 합산해 8"
+        }
+      ],
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행; 신규 문항 품질과 운영 출시는 구별",
+      "affectedFields": [
+        "level",
+        "difficultyBucket",
+        "meta",
+        "templateKey"
+      ],
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "affectedFields": [
+          "level",
+          "difficultyBucket",
+          "meta",
+          "templateKey"
+        ],
+        "beforeAnswer": "②",
+        "afterAnswer": "②",
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "a=2,3, 합5; 중/bucket3로 재판정"
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q06-C2",
+      "finalStem": "집합 $X=Y=\\{1,2,3,4,5\\}$에 대하여 $f(1)=2$, $f(2)=4$가 정해져 있다. 함수 $f:X\\to Y$가 일대일 대응이 되도록 $f(3)$, $f(4)$, $f(5)$를 정하는 방법은 모두 몇 가지인가?",
+      "reverseReadingFinding": "최종 발문을 재독해하여 일대일 대응·역함수 존재와 선택지 단일성을 확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "reproducedError": "두 가지 교환만 셈"
+        },
+        {
+          "choice": "②",
+          "reproducedError": "첫 출력 세 가지에 그침"
+        },
+        {
+          "choice": "③",
+          "reproducedError": "두 출력의 배정만 계산"
+        },
+        {
+          "choice": "⑤",
+          "reproducedError": "중복 출력을 부당 허용해 8"
+        }
+      ],
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행; 신규 문항 품질과 운영 출시는 구별",
+      "affectedFields": [
+        "meta",
+        "templateKey"
+      ],
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "affectedFields": [
+          "meta",
+          "templateKey"
+        ],
+        "beforeAnswer": "④",
+        "afterAnswer": "④",
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "문항 수학 불변, 누락된 확장 Meta의 parent/UID/분류 근거만 검증"
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q06-C3",
+      "finalStem": "집합 $X=\\{-2,-1,0,1,2\\}$, $Y=\\{0,1,4\\}$에서 함수 $f:X\\to Y$가 $f(x)=x^2$로 주어진다. 원소가 $3$개인 부분집합 $A$ 중에서 제한한 함수 $f:A\\to Y$가 일대일 대응이 되도록 하는 $A$는 모두 몇 개인가?",
+      "reverseReadingFinding": "최종 발문을 재독해하여 일대일 대응·역함수 존재와 선택지 단일성을 확인",
+      "distractorPaths": [
+        {
+          "choice": "②",
+          "reproducedError": "부호가 같은 입력 조합 두 개만 셈"
+        },
+        {
+          "choice": "③",
+          "reproducedError": "선택을 곱하지 않고 1+1+1=3"
+        },
+        {
+          "choice": "④",
+          "reproducedError": "잘못된 조합 하나를 더 포함해 5"
+        },
+        {
+          "choice": "⑤",
+          "reproducedError": "입력 후보를 단순 더해 6"
+        }
+      ],
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행; 신규 문항 품질과 운영 출시는 구별",
+      "affectedFields": [
+        "meta",
+        "templateKey",
+        "conditionKeys"
+      ],
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "affectedFields": [
+          "meta",
+          "templateKey",
+          "conditionKeys"
+        ],
+        "beforeAnswer": "①",
+        "afterAnswer": "①",
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "문항 수학 불변, 누락된 확장 Meta의 parent/UID/분류 근거만 검증"
+    }
+  ],
+  "postIndependentReview": {
+    "source": "GPT round2 2026-10-10",
+    "correctedSlots": [
+      "B2",
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "status": "PINPOINT_CORRECTED_NOT_CHROME_TESTED"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "GD25_Q22_MATH_SPEC_V1",
+  "sourceQid": 22,
+  "sourceExamBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "lockedPrimaryL3": "H1-RPM-272",
+  "formula": "t=sqrt(x-a)>=0; m*t*t-t+(m*a+k-b)=0",
+  "twoIntersectionCondition": "b-ma<=k<b-ma+1/(4m)",
+  "frozenCases": [
+    {
+      "slot": "A1",
+      "lower": -3,
+      "upper": -2.75,
+      "sampleK": null
+    },
+    {
+      "slot": "A2",
+      "lower": -2,
+      "upper": -1.875,
+      "sampleK": null
+    },
+    {
+      "slot": "A3",
+      "lower": -2.5,
+      "upper": -2,
+      "sampleK": null
+    },
+    {
+      "slot": "B1",
+      "lower": -1,
+      "upper": 1,
+      "sampleK": null
+    },
+    {
+      "slot": "B2",
+      "lower": -4,
+      "upper": -3.75,
+      "sampleK": -3.75
+    },
+    {
+      "slot": "B3",
+      "lower": -1.5,
+      "upper": 0.5,
+      "sampleK": null
+    },
+    {
+      "slot": "C1",
+      "lower": -1.6666666666666665,
+      "upper": 1.3333333333333335,
+      "sampleK": null
+    },
+    {
+      "slot": "C2",
+      "lower": 1,
+      "upper": 2.5,
+      "sampleK": null
+    },
+    {
+      "slot": "C3",
+      "lower": -2,
+      "upper": -1.75,
+      "sampleK": -1.8125
+    }
+  ],
+  "integerTestCases": {
+    "B1": [
+      -1,
+      0
+    ],
+    "B3": [
+      -1,
+      0
+    ],
+    "C1": [
+      -1,
+      0,
+      1
+    ],
+    "C2": [
+      1,
+      2
+    ]
+  },
+  "c3": {
+    "k": "-29/16",
+    "roots": [
+      "1/4",
+      "3/4"
+    ],
+    "xSum": "37/8"
+  },
+  "checkedUsing": "CREATOR_NUMERIC_AND_ALGEBRAIC_PROOF",
+  "visualScope": "NONNEGATIVE_T_INTERSECTION_COUNTS"
+}
