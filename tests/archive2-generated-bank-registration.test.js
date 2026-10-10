@@ -5,6 +5,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
 const vm = require('node:vm');
+const mockSelection = require('../archive/generated-mock-selection.js');
 
 const root = path.resolve(__dirname, '..');
 const archive = path.join(root, 'archive');
@@ -196,7 +197,7 @@ class Node {
   constructor(tag = 'div', fragment = false) {
     this.tag = tag; this.fragment = fragment; this.children = [];
     this.listeners = Object.create(null); this.textContent = '';
-    this.value = ''; this.checked = false; this.disabled = false;
+    this.value = ''; this.checked = false; this.disabled = false; this.hidden = false; this.dataset = {};
   }
   appendChild(child) {
     if (child.fragment) this.children.push(...child.children);
@@ -216,7 +217,9 @@ test('consumer UI lists only selectable generated rows, searches individual ques
     createDocumentFragment:()=>new Node('fragment',true)
   };
   const html=fs.readFileSync(path.join(archive,'generated-bank.html'),'utf8');
-  assert.ok(html.includes('생성 문항 검색·선택'));
+  assert.ok(html.includes('생성 문항 직접 검색·선택'));
+  assert.ok(html.includes('id="source-year"')&&html.includes('id="source-school"')&&html.includes('id="source-semester"'));
+  assert.ok(html.includes('id="purpose-A"')&&html.includes('id="difficulty-mode-mixed"'));
   assert.ok(html.includes('consumerSelectable'));
   const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)];
   const code=scripts.at(-1)?.[1];
@@ -228,7 +231,7 @@ test('consumer UI lists only selectable generated rows, searches individual ques
     return{ok:true,json:async()=>JSON.parse(fs.readFileSync(file,'utf8'))};
   };
   let printed=0;
-  vm.runInNewContext(code,{document,window:{print:()=>printed++},fetch:fetchStub,console,Map,Set,Promise},{timeout:2000});
+  vm.runInNewContext(code,{document,window:{print:()=>printed++,GeneratedMockSelection:mockSelection},fetch:fetchStub,console,Map,Set,Promise},{timeout:2000});
   const el=id=>document.getElementById(id);
   // An index of hundreds of questions can take longer than a fixed 25ms VM fixture delay.
   for(let attempt=0;attempt<150&&el('exam-cards').children.length!==2;attempt++){
