@@ -6,6 +6,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import { pathToFileURL } from 'node:url';
 import { validateSolutionCalibration } from './solution-calibration-gate.mjs';
+import { questionOnlyReplacementProfile } from './question-only-replacement-v2.mjs';
 
 const SCHEMA = 'JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1';
 const PASS = 'PASS';
@@ -164,7 +165,8 @@ function checkQuestionOnlyReplacementAdjudications(examFile, source, questions, 
   };
   for (const entry of entries) {
     const qid = Number(entry?.qid), row = byQid.get(qid);
-    if (qid !== 19 || entry?.schemaVersion !== 'JS_ARCHIVE_CREATE_QUESTION_ONLY_REPLACEMENT_HISTORY_V1') {
+    const profile = questionOnlyReplacementProfile(evidence.examUid, qid);
+    if (!profile || entry?.schemaVersion !== 'JS_ARCHIVE_CREATE_QUESTION_ONLY_REPLACEMENT_HISTORY_V1') {
       issues.push(`QUESTION_ONLY_REPLACEMENT_SCHEMA_OR_SCOPE_INVALID:q${qid}`);
       continue;
     }
@@ -177,6 +179,55 @@ function checkQuestionOnlyReplacementAdjudications(examFile, source, questions, 
     const qChoicesHash = crypto.createHash('sha256').update(JSON.stringify(q?.choices ?? [])).digest('hex');
     const candidate = decision.currentCandidate || {};
     const prior = decision.priorStatuses || {};
+    const problemImageRef = q?.image == null || q.image === '' ? null : q.image;
+    const solutionImageRef = q?.solutionImage == null || q.solutionImage === '' ? null : q.solutionImage;
+    const assetSha = (ref, prefix = false) => {
+      if (!ref) return null;
+      const file = path.resolve(repoRoot, 'archive', ref);
+      if (!file.startsWith(path.resolve(repoRoot, 'archive') + path.sep) || !fs.existsSync(file)) return 'MISSING_OR_OUT_OF_SCOPE';
+      const digest = crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+      return prefix ? `sha256:${digest}` : digest;
+    };
+    let problemImageSha256 = null, solutionImageSha256 = null;
+    try { problemImageSha256 = assetSha(problemImageRef); } catch { problemImageSha256 = 'MISSING_OR_OUT_OF_SCOPE'; }
+    try { solutionImageSha256 = assetSha(solutionImageRef, true); } catch { solutionImageSha256 = 'MISSING_OR_OUT_OF_SCOPE'; }
+    const candidateExtraRefs = [];
+    const collectCandidateAssetRefs = (kind, value, index = '') => {
+      if (typeof value === 'string' && value.trim()) {
+        candidateExtraRefs.push({ kind: index ? `${kind}:${index}` : kind, ref: value });
+      } else if (Array.isArray(value)) {
+        value.forEach((item, itemIndex) => collectCandidateAssetRefs(kind, item, String(itemIndex)));
+      } else if (value && typeof value === 'object') {
+        const ref = value.ref || value.path || value.assetRef || value.imageRef;
+        if (typeof ref === 'string' && ref.trim()) candidateExtraRefs.push({ kind: value.kind || kind, ref });
+        else Object.entries(value).filter(([key]) => /(?:ref|path|image|asset)$/i.test(key))
+          .forEach(([key, item]) => collectCandidateAssetRefs(`${kind}:${key}`, item));
+      }
+    };
+    for (const field of ['images', 'visualAsset', 'assets']) collectCandidateAssetRefs(field, q?.[field]);
+    const boundExtraAssets = [];
+    const seenCandidateAssets = new Set([`problem:${problemImageRef}`, `solution:${solutionImageRef}`]);
+    for (const extra of candidateExtraRefs) {
+      const key = `${extra.kind}:${extra.ref}`;
+      if (seenCandidateAssets.has(key)) continue;
+      seenCandidateAssets.add(key);
+      let digest = 'MISSING_OR_OUT_OF_SCOPE';
+      try {
+        const raw = assetSha(extra.ref);
+        if (/^[a-f0-9]{64}$/.test(raw)) digest = raw;
+      } catch {}
+      boundExtraAssets.push({ kind: extra.kind, ref: extra.ref, sha256: digest });
+    }
+    const q22AssetBindingsValid = profile.key !== 'SUN-CHEON-YEO-PROB-Q22'
+      || (decision.targetPayload?.problemImageRef === problemImageRef
+        && decision.targetPayload?.problemImageSha256 === problemImageSha256
+        && decision.targetPayload?.solutionImageRef === solutionImageRef
+        && decision.targetPayload?.solutionImageSha256 === solutionImageSha256
+        && (!problemImageRef || /^[a-f0-9]{64}$/.test(problemImageSha256))
+        && (!solutionImageRef || /^sha256:[a-f0-9]{64}$/.test(solutionImageSha256))
+        && same(decision.targetPayload?.assets, boundExtraAssets)
+        && boundExtraAssets.every(item => /^[a-f0-9]{64}$/.test(item.sha256))
+        && entry.currentAssetSha256 === problemImageSha256);
     if (decision.schemaVersion !== 'JS_ARCHIVE_CREATE_QUESTION_ONLY_REPLACEMENT_ADJUDICATION_V1'
       || decision.status !== 'QUESTION_ONLY_REPLACEMENT_ACCEPTED'
       || decision.executionLine !== 'CODEX' || decision.qualityContractVersion !== 'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006'
@@ -190,10 +241,11 @@ function checkQuestionOnlyReplacementAdjudications(examFile, source, questions, 
       || decision.targetPayload?.choicesSha256 !== qChoicesHash
       || decision.targetPayload?.answerSha256 !== hashText(q?.answer)
       || decision.targetPayload?.solutionSha256 !== hashText(q?.solution)
-      || decision.targetPayload?.problemImageRef !== q?.image
-      || decision.targetPayload?.problemImageSha256 !== entry.currentAssetSha256
-      || decision.targetPayload?.solutionImageRef !== q?.solutionImage
-      || !['sha256:' + crypto.createHash('sha256').update(fs.readFileSync(path.join(repoRoot, 'archive', q?.solutionImage || ''))).digest('hex')].includes(decision.targetPayload?.solutionImageSha256)
+      || (profile.key === 'LEGACY_Q19' && (decision.targetPayload?.problemImageRef !== q?.image
+        || decision.targetPayload?.problemImageSha256 !== entry.currentAssetSha256
+        || decision.targetPayload?.solutionImageRef !== q?.solutionImage
+        || !['sha256:' + crypto.createHash('sha256').update(fs.readFileSync(path.join(repoRoot, 'archive', q?.solutionImage || ''))).digest('hex')].includes(decision.targetPayload?.solutionImageSha256)))
+      || !q22AssetBindingsValid
       || prior.sourceExact?.status !== HOLD || prior.solutionMath?.status !== HOLD
       || !decision.replacementReason || decision.replacementReason.sourceParityClaimed !== false) {
       issues.push(`QUESTION_ONLY_REPLACEMENT_BINDING_INVALID:q${qid}`);
@@ -216,15 +268,35 @@ function checkQuestionOnlyReplacementAdjudications(examFile, source, questions, 
     }
     if (!r1 || r1.stage !== 'R1' || r1.reviewScope !== 'QID_ONLY' || Number(r1.qid) !== qid
       || r1.candidateRawSha256 !== raw || r1.mathReview?.verdict !== PASS
-      || !String(r1.result || '').startsWith('QID_19_R1_CONTENT_AND_META_PASS')) issues.push(`QUESTION_ONLY_R1_BINDING_INVALID:q${qid}`);
+      || !String(r1.result || '').startsWith(profile.key === 'LEGACY_Q19'
+        ? 'QID_19_R1_CONTENT_AND_META_PASS' : `QID_${qid}_R1_CONTENT_AND_META_PASS`)) issues.push(`QUESTION_ONLY_R1_BINDING_INVALID:q${qid}`);
+    const q22FreshR2Invalid = profile.key === 'SUN-CHEON-YEO-PROB-Q22'
+      && (r2?.postfreezeDecision?.answerRecomputed !== true || r2?.postfreezeDecision?.answerFreezeReused !== false);
+    const q22WrittenAnswerAudit = r2?.writtenAnswerAudit || {};
+    const q22WrittenResponseInvalid = profile.key === 'SUN-CHEON-YEO-PROB-Q22'
+      && (q?.questionType !== 'short_answer' || array(q?.choices).length !== 0
+        || typeof q?.answer !== 'string' || !q.answer.trim()
+        || r2?.responseForm !== 'SHORT_ANSWER'
+        || q22WrittenAnswerAudit.status !== PASS
+        || q22WrittenAnswerAudit.answerSha256 !== hashText(q?.answer)
+        || q22WrittenAnswerAudit.answerCardinality !== 1
+        || q22WrittenAnswerAudit.noDistinctAlternative !== true
+        || !String(q22WrittenAnswerAudit.uniquenessReason || '').trim());
     if (!r2 || r2.stage !== 'R2' || r2.scope?.coverage !== 'QID_ONLY' || Number(r2.scope?.qid) !== qid
       || r2.currentCandidate?.sha256 !== raw || r2.studentInputParity?.disposition !== 'EXACT'
-      || r2.postfreezeDecision?.answerRecomputed !== false || r2.postfreezeDecision?.answerFreezeReused !== true) {
+      || (profile.key === 'LEGACY_Q19' && (r2.postfreezeDecision?.answerRecomputed !== false || r2.postfreezeDecision?.answerFreezeReused !== true))
+      || q22FreshR2Invalid || q22WrittenResponseInvalid) {
       issues.push(`QUESTION_ONLY_R2_BINDING_INVALID:q${qid}`);
     }
-    if (!r3 || r3.review?.overall !== 'QID_19_DESKTOP_RENDER_PASS_ONLY'
-      || !array(r3.dispositions).filter(row => ['desktop-exam-q19', 'desktop-sol-q19', 'desktop-ans-q19'].includes(row.case))
-        .every(row => row.disposition === 'PASS_QID_RENDER')) issues.push(`QUESTION_ONLY_R3_BINDING_INVALID:q${qid}`);
+    const requiredR3Cases = profile.key === 'LEGACY_Q19'
+      ? ['desktop-exam-q19', 'desktop-sol-q19', 'desktop-ans-q19']
+      : [`desktop-exam-q${qid}`, `desktop-sol-q${qid}`, `desktop-ans-q${qid}`];
+    const observedR3Cases = array(r3?.dispositions).filter(item => requiredR3Cases.includes(item.case));
+    if (!r3 || r3.review?.overall !== (profile.key === 'LEGACY_Q19'
+      ? 'QID_19_DESKTOP_RENDER_PASS_ONLY' : `QID_${qid}_DESKTOP_RENDER_PASS_ONLY`)
+      || (profile.key === 'SUN-CHEON-YEO-PROB-Q22' && (observedR3Cases.length !== requiredR3Cases.length
+        || new Set(observedR3Cases.map(item => item.case)).size !== requiredR3Cases.length))
+      || !observedR3Cases.every(item => item.disposition === 'PASS_QID_RENDER')) issues.push(`QUESTION_ONLY_R3_BINDING_INVALID:q${qid}`);
     if (row?.sourceExact?.status !== QUESTION_ONLY_REPLACEMENT
       || row?.sourceExactAdjudicationRef?.path !== entry.adjudicationPath
       || row?.sourceExactAdjudicationRef?.sha256 !== entry.adjudicationSha256

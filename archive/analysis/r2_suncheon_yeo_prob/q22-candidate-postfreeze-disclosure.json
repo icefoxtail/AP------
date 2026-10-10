@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "JS_ARCHIVE_QID_LIMITED_POSTFREEZE_DISCLOSURE_V1",
+  "source": {
+    "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/candidate/24_순천여고_1학기_중간_고2_확률과통계.q22-candidate.js",
+    "rawSha256": "789e165fe1fb99aed5aa55634df1a557a7d9ac5348f3293a3b34ecd2407e6e93"
+  },
+  "originalFreeze": {
+    "path": "archive/analysis/r2_suncheon_yeo_prob/q22-candidate-original-freeze.json",
+    "sha256": "7050c7a5654ceffebff47a6660f3af148bec2afab83ed470981b4202d98382c1"
+  },
+  "studentBundle": {
+    "path": "archive/analysis/r2_suncheon_yeo_prob/q22-candidate-student-only.json",
+    "sha256": "c472e883399eb927a90c93cb4cae3bf2dfdd65dfcbd8d53f5fcb24fefc534439",
+    "studentParity": "EXACT",
+    "studentPayloadSha256": "2067d193ec64bb6d3906a0d9c322a178fae2d13b8204611ab42613440445869f",
+    "assets": []
+  },
+  "qids": [
+    22
+  ],
+  "rows": [
+    {
+      "qid": 22,
+      "answer": "(6, 3)",
+      "solution": "이항정리에 의해\n$\\displaystyle \\sum_{k=0}^{n}\\binom{n}{k}2^k=(1+2)^n=3^n$\n이므로 $3^n=729=3^6$에서 $n=6$입니다.\n\n이제 $1\\le r<6$이므로 $r=1,2,3,4,5$를 확인합니다.\n\n$r=1$: $\\binom61+2\\binom62=6+30=36$\n$r=2$: $\\binom62+2\\binom63=15+40=55$\n$r=3$: $\\binom63+2\\binom64=20+30=50$\n$r=4$: $\\binom64+2\\binom65=15+12=27$\n$r=5$: $\\binom65+2\\binom66=6+2=8$\n\n둘째 조건을 만족하는 값은 $r=3$뿐입니다. 따라서 구하는 순서쌍은 $\\boxed{(n,r)=(6,3)}$입니다.",
+      "decisiveStep": "The binomial sum forces n=6; testing all five allowed r values in the adjacent-coefficient equation leaves only r=3.",
+      "solutionSha256": "e66f7284782f1a81bd569e9a6ef31d07334bd91c482a5fca727e9bbe49a5ecf4"
+    }
+  ],
+  "disclosedAfterFreeze": true
+}

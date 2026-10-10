@@ -1,0 +1,2859 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "examUid": "24_매산여고_1학기_중간_고2_확률과통계",
+  "artifactSha": "96183c85985b5164a22288f92c124325bb33dae6",
+  "artifactRawSha256": "552df3d4c1a1c103957b1d89bf28ef0505e2b3eda0097661b2f0a546eaa197e2",
+  "questionCount": 23,
+  "expectedQids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "reviewerIdentity": {
+    "role": "archive_r1",
+    "reviewerId": "/root/maesan_prob_r1_merge"
+  },
+  "sourceIdentity": {
+    "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+    "currentSourceRawSha256": "18d9cefae333cf0fec077ee91fdd694ef1cdfcc7b15bbfd602d41f0d86ce7c1d",
+    "currentRawBufferBlobSha1": "e1f9ac02d7f6635f3b850acc46210067f386ad2c",
+    "assignedPreReviewRawSha256": "28eba2ba060919c07848c07f7f52a82121346df5350632d057c323e73457202a",
+    "assignedPreReviewBlobSha1": "980fdf2d8d9d6fca92032e8fbdc14471da154f6e",
+    "sourceOnlyBaseline": {
+      "path": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+      "sha256": "bed2790fcf22752ce94f146429c698ac51ad818ccba095d546c4124ace5d948f"
+    },
+    "sourceReferencePolicy": {
+      "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/source-reference-policy-reviewed.json",
+      "sha256": "bc19961f21268f46dd2018b92c90c7bca7aa994739613476b78c991bdf0e9bd3"
+    },
+    "originalFreeze": {
+      "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/R1.original-freeze.json",
+      "sha256": "7dc5690c8f65e15490c675a23339633776b70d82710100eaea29e11a2a9b33c8",
+      "sourceRawSha256": "28eba2ba060919c07848c07f7f52a82121346df5350632d057c323e73457202a"
+    }
+  },
+  "sourceReferencePolicyMetadata": {
+    "schemaVersion": "JS_ARCHIVE_CODEX_SOURCE_REFERENCE_ASSIGNMENT_V1",
+    "sourceReferencePolicy": {
+      "schemaVersion": "JS_ARCHIVE_SOURCE_REFERENCE_POLICY_V1",
+      "stage": "R1",
+      "sourceInputMode": "EXTRACTED_JS_ASSETS",
+      "pdfReviewMode": "DEFECT_ONLY",
+      "sourceParityBasis": "EXTRACTED_INPUT_BASELINE",
+      "reusedIntakeEvidence": null,
+      "pdfActuallyReviewed": true,
+      "originalSourceReviewEvidence": {
+        "originalPdf": {
+          "path": "C:\\Users\\USER\\Desktop\\기출정리 파일\\(1)1중간\\확률과통계\\2024_매여고2_확통_1중간.pdf",
+          "sha256": "81da2951bb6cfb2053fe0814396331df8657ba694c8b6bb823587c9c3fa6c27d"
+        },
+        "evidence": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-1mid-20261010\\AP------\\archive\\analysis\\24_매산여고_1학기_중간_고2_확률과통계\\r1-clean-20261011\\R1.original-source-review.json",
+          "sha256": "1aa453d36491551fd1cbc9dc5865878cb4ff554ce89425fada591fbf08972c88"
+        },
+        "reviewedQids": [
+          11,
+          22
+        ],
+        "reviewerId": "/root/r1_maesan_probability",
+        "reviewedAt": "2026-10-11T02:02:49+09:00",
+        "physicalPdfSha256Verified": true,
+        "pdfByteInspection": "SHA256_ONLY",
+        "readingAttestationBasis": "REVIEWER_EVIDENCE"
+      },
+      "sourceDefect": {
+        "category": "UNCLEAR_CONDITION",
+        "qids": [
+          11,
+          22
+        ],
+        "scope": "QID_ONLY",
+        "reason": "After postfreeze findings, only q11 answer-choice inconsistency and q22 missing a-sign/domain constraint were checked against the original source. Both are original-source content defects rather than JS extraction mismatches.",
+        "findings": [
+          {
+            "qid": 11,
+            "detail": "Original q11 choices 43,44,45,46,47 exclude the mathematically correct count 40."
+          },
+          {
+            "qid": 22,
+            "detail": "Original q22 states only that a,b are constants; it does not choose between real a=2 and a=-2, which produce distinct a+b."
+          }
+        ]
+      },
+      "originalReferencePlan": {
+        "required": false,
+        "scope": "QID_ONLY",
+        "qids": [
+          11,
+          22
+        ],
+        "category": "UNCLEAR_CONDITION",
+        "reason": "After postfreeze findings, only q11 answer-choice inconsistency and q22 missing a-sign/domain constraint were checked against the original source. Both are original-source content defects rather than JS extraction mismatches.",
+        "findings": [
+          {
+            "qid": 11,
+            "detail": "Original q11 choices 43,44,45,46,47 exclude the mathematically correct count 40."
+          },
+          {
+            "qid": 22,
+            "detail": "Original q22 states only that a,b are constants; it does not choose between real a=2 and a=-2, which produce distinct a+b."
+          }
+        ],
+        "evidenceRequirement": "ACTUAL_ORIGINAL_SOURCE_SHA_AND_QID_SCOPED_REVIEW_FINDINGS"
+      },
+      "semanticVerdictCreated": false
+    }
+  },
+  "studentInput": {
+    "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/current-student-only.recovered.json",
+    "sha256": "84e9d9f0155cbd1aabee71bf8816da2326898f175c43b4977b0d271278af69c0",
+    "sourceRawSha256": "18d9cefae333cf0fec077ee91fdd694ef1cdfcc7b15bbfd602d41f0d86ce7c1d",
+    "qids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "parityWithCurrentSource": "EXACT",
+    "scopeDeltaFromPriorStudentInput": {
+      "changedQids": [
+        22
+      ],
+      "q22CurrentPayloadMatchesFreshReview": true,
+      "unchangedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        23
+      ],
+      "unchangedPayloadAndAssetParity": "EXACT"
+    },
+    "freezeCoverage": {
+      "originalR1FreezeReusedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        23
+      ],
+      "q11OriginalFreezeAnswerRemainsValid": true,
+      "q22FreshFreezePath": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-q22-fresh-20261011/q22-original-freeze.json",
+      "q22FreshFreezeSha256": "eb97556f6928458d49168d69016e866b8f0860c35c3057a87d0dac4255cb80ed"
+    }
+  },
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "Coordinate differences, formula substitution, simplification and final answer are separated into readable steps."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+            "observation": "Read actual q02 solution SVG in Chrome: displayed decreasing/increasing lines and slope annotations (-1/3 and 3) agree with perpendicular-line solution; labels/layout readable."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "内分점 좌표 and midpoint/distance steps are explicit; each transformation is independently readable."
+          },
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+            "observation": "Read actual q07 solution SVG in Chrome: shifted/reflected circles and centers match (-3,1) -> (-5,2) -> (5,-2), radius 3 preserved; labels readable."
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "observation": "Actual-coordinate SVG mismatch, collapsed small-board judgments, omitted ACTIVE PT/TPL and sandbox-vs-runtime escape issues; read as regression guard."
+    }
+  },
+  "calibrationCorrection": {
+    "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/R1.calibration-correction-review.json",
+    "sha256": "f4cad895dc4cfc654410ca30a1edccbe4fe0af48377d24a6bcbfafa701451cba",
+    "initialAttemptPreserved": {
+      "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/R1.calibration-incomplete-attempt-1.json",
+      "sha256": "4dd35216b5ca08dafad26ed3c3654a4992079edc79e3faac66ec3946210e1072"
+    }
+  },
+  "assetReads": [
+    {
+      "ref": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q07.png",
+      "sha256": "026d95c45e360698ea6cc76e7a5ebb743fad4d3d4907d492bb4f85a52bc3c6c3",
+      "opened": true
+    },
+    {
+      "ref": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q17.png",
+      "sha256": "f4def6b6dbf6fb9e424e2ff69721073e78e027b876c749a7e3d1be65e0ec4108",
+      "opened": true
+    }
+  ],
+  "postfreezeDisclosure": {
+    "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/R1.postfreeze-current-full.json",
+    "sha256": "12245d900f8ce430f2dff6d7a126c29638ab6992c9778fd6da9f22c913129a52",
+    "studentParity": "EXACT"
+  },
+  "postfreezeAdjudication": {
+    "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/R1.q11-repair-adjudication.json",
+    "sha256": "a72ad997839c4815d4a4875e642fa9cac3b647d4e22d58bda2414ceae6b833fc",
+    "originalFreezeMutated": false
+  },
+  "sourceReview": {
+    "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/R1.original-source-review.json",
+    "sha256": "1aa453d36491551fd1cbc9dc5865878cb4ff554ce89425fada591fbf08972c88",
+    "qids": [
+      11,
+      22
+    ],
+    "scope": "QID_ONLY",
+    "pdfActuallyReviewed": true
+  },
+  "q10MetaCorrection": {
+    "qid": 10,
+    "field": "templateKey",
+    "before": "TPL_MONOTONE_FUNCTION_COUNT_FIXED_MIDDLE_VALUE",
+    "after": "TPL_MONOTONE_FUNCTION_COUNT",
+    "reason": "The previous raw alias is merged into the current ACTIVE monotone-function template; q10 source solution is explicitly nondecreasing function counting with a fixed middle-value condition.",
+    "directDependenciesRebound": [
+      "q10 META axis",
+      "q10 current source SHA",
+      "student bundle exact-parity proof"
+    ],
+    "sourceBodyChanged": false,
+    "otherQidsChanged": false
+  },
+  "metaProjectionAudit": {
+    "status": "EVIDENCE_DEBT",
+    "basis": "Current source fields were reviewed for all 23 QIDs; UID joins exist in identity map and question index, while the question_metadata consumer remains registration_pending_semantic_review for all 23.",
+    "uidAndIndexJoin": {
+      "sourceQuestions": 23,
+      "identityMapRows": 23,
+      "metadataRows": 23,
+      "questionIndexRows": 23,
+      "allQidsAndUidJoinsExact": true
+    },
+    "questionMetadataConsumer": {
+      "statusCounts": {
+        "registration_pending_semantic_review": 23
+      },
+      "allCurrentMetaFieldsEmpty": true,
+      "currentSourceQidCardinality": 23,
+      "disposition": "NOT_MATERIALIZED_PENDING_SEMANTIC_REVIEW; no projection was fabricated or promoted"
+    },
+    "exactMetaDebt": [
+      {
+        "qids": [
+          7
+        ],
+        "fields": [
+          "templateKey"
+        ],
+        "reason": "No exact ACTIVE H2-2015 binding/template for source-confirmed shortest-path graph count; leave null with explicit debt rather than reuse H1-only graph path template or invent a key."
+      },
+      {
+        "qids": [
+          13,
+          15
+        ],
+        "fields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "reason": "Current high2 probability-statistics crosswalk record is DIRECT_BINDING_GAP; semantic values remain FINAL but exact curriculum binding is pending, not a semantic HOLD."
+      }
+    ],
+    "authorityFiles": [
+      {
+        "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+        "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+      },
+      {
+        "path": "archive/data/master_tables/js_archive_tag_master.json",
+        "sha256": "4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec"
+      },
+      {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+        "sha256": "09a62de1afe1e47d901635d73c00dcfc2d82a97f8748950df3250f0ebea4e431"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+        "sha256": "2800ec15d1dd9c15c51d5f18b48d399b233fbe33ff8eebfdf89a49c4ba98ae5f"
+      },
+      {
+        "path": "archive/data/question_metadata.json",
+        "sha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4"
+      },
+      {
+        "path": "archive/data/question_identity_map.json",
+        "sha256": "e76f8b28a77e3c7542a652b0957c83375f7b5fc494085eb3223be65c9c845fed"
+      },
+      {
+        "path": "archive/question-index.js",
+        "sha256": "34645d93c028e2caeeb01f32f10d14679e35518b67edc356f94890bfd662851e"
+      }
+    ]
+  },
+  "itemHolds": [],
+  "visualAssetsStaticPreviewOnly": {
+    "actualArchiveEngineRender": "NOT_RUN_R1_STATIC_ASSET_REVIEW_ONLY",
+    "screenshots": [
+      {
+        "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/q03-solution-chrome-static.png",
+        "sha256": "4de25af758dd824e08e480405977f90c5cc17675815ef50e67840e48497a06c8"
+      },
+      {
+        "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/q07-solution-chrome-static.png",
+        "sha256": "941c9fb478267bacdb3bf7893bb2898eabc21daba2c4a3cca410b26d68a431a4"
+      },
+      {
+        "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/q09-solution-chrome-static.png",
+        "sha256": "3365e772cbba98bb9762cb881b1dbcd3c979584a8a873d8bf39698e2bd3037f0"
+      }
+    ]
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "independentAnswer": "3024 (②)",
+      "initialFreezeAnswer": "3024 (②)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "원형 배열은 회전 동치로 본다. 9권 중 5권 선택은 C(9,5)=126, 선택한 5권의 원순열은 (5-1)!=24이므로 126×24=3024.",
+          "postfreezeAdjudication": null
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "reviewBasis": "Current student-only source structure; layoutTag grid / wide false retained. Automatic line flow kept; no content or choice reflow edits. qids 21–23 remain in default grid because no verified static capacity reason justifies subjective-2up.",
+          "assetRefs": []
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "3d3f9b337ea4ac110de080b75456127a74a66211451db8c2c664822931ac05d1",
+          "finding": "Reviewed against complete final solution and calibrated Golden small-board flow."
+        },
+        "META": {
+          "status": "PASS",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-01",
+            "standardUnit": "순열과 조합",
+            "standardUnitOrder": 1,
+            "subUnitKey": "H15-PS-01-PERMUTATION",
+            "subUnit": "순열",
+            "level": "중",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rpmL1": "경우의 수",
+            "rpmL2": "순열과 조합",
+            "rpmL3": "순열",
+            "rpmL4": "중복·원순열",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+            "templateKey": "TPL_CIRCULAR_PERMUTATION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "sourceQid": 1,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "9da5ee7f4d93fb5530dc3ff4695847bd96198959c7edbda93eba4d3a97326fdc",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "independentDifficulty": {
+            "bucket": 2,
+            "reason": "회전하여 배열하는 순열과 선택 결합"
+          },
+          "note": "Current metadata key/value reviewed against source facts and applicable registries."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "EXEMPT",
+          "solutionNeed": "EXEMPT",
+          "problemRef": null,
+          "problemSha256": null,
+          "solutionRef": null,
+          "solutionSha256": null,
+          "finding": "The reviewed solution’s symbolic/counting steps communicate the decisive relation without a separate diagram."
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "중",
+        "independentBucket": 2,
+        "storedBucket": 2,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "회전하여 배열하는 순열과 선택 결합"
+      },
+      "solutionSha256": "3d3f9b337ea4ac110de080b75456127a74a66211451db8c2c664822931ac05d1"
+    },
+    {
+      "qid": 2,
+      "independentAnswer": "81 (⑤)",
+      "initialFreezeAnswer": "81 (⑤)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "4명의 각각이 가위·바위·보 중 하나를 내므로 독립적인 3가지 선택 4회, 3^4=81.",
+          "postfreezeAdjudication": null
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "reviewBasis": "Current student-only source structure; layoutTag grid / wide false retained. Automatic line flow kept; no content or choice reflow edits. qids 21–23 remain in default grid because no verified static capacity reason justifies subjective-2up.",
+          "assetRefs": []
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "6e286e1912eb2b055038c3f1dcb32b8e072fb5a5af4841b3b5e03e8ad69fb7dc",
+          "finding": "Reviewed against complete final solution and calibrated Golden small-board flow."
+        },
+        "META": {
+          "status": "PASS",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-01",
+            "standardUnit": "순열과 조합",
+            "standardUnitOrder": 1,
+            "subUnitKey": "H15-PS-01-PERMUTATION",
+            "subUnit": "순열",
+            "level": "하",
+            "difficultyBucket": 1,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rpmL1": "경우의 수",
+            "rpmL2": "순열과 조합",
+            "rpmL3": "순열",
+            "rpmL4": "중복·원순열",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+            "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "sourceQid": 2,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "a948707cf39bc261bee7cc45561957de5dfc2c1d67092a3d5c392f8a4da8d09e",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "independentDifficulty": {
+            "bucket": 1,
+            "reason": "각 대상에 3가지 결과를 배정하는 직접 곱의 법칙"
+          },
+          "note": "Current metadata key/value reviewed against source facts and applicable registries."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "EXEMPT",
+          "solutionNeed": "EXEMPT",
+          "problemRef": null,
+          "problemSha256": null,
+          "solutionRef": null,
+          "solutionSha256": null,
+          "finding": "The reviewed solution’s symbolic/counting steps communicate the decisive relation without a separate diagram."
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "하",
+        "independentBucket": 1,
+        "storedBucket": 1,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "각 대상에 3가지 결과를 배정하는 직접 곱의 법칙"
+      },
+      "solutionSha256": "6e286e1912eb2b055038c3f1dcb32b8e072fb5a5af4841b3b5e03e8ad69fb7dc"
+    },
+    {
+      "qid": 3,
+      "independentAnswer": "980 (①)",
+      "initialFreezeAnswer": "980 (①)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "흰 공 두 개가 이웃하지 않게 놓일 위치는 9칸 중 비인접 두 칸 C(8,2)=28. 나머지 7칸에 검은 3개와 빨간 4개의 배열은 7!/(3!4!)=35. 곱은 980.",
+          "postfreezeAdjudication": null
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "reviewBasis": "Current student-only source structure; layoutTag grid / wide false retained. Automatic line flow kept; no content or choice reflow edits. qids 21–23 remain in default grid because no verified static capacity reason justifies subjective-2up.",
+          "assetRefs": []
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "05ec86c37feec708ae33ea9c55b2087491d8606faa3b984b83090083859c00e8",
+          "finding": "Reviewed against complete final solution and calibrated Golden small-board flow."
+        },
+        "META": {
+          "status": "PASS",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-01",
+            "standardUnit": "순열과 조합",
+            "standardUnitOrder": 1,
+            "subUnitKey": "H15-PS-01-PERMUTATION",
+            "subUnit": "순열",
+            "level": "중",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rpmL1": "경우의 수",
+            "rpmL2": "순열과 조합",
+            "rpmL3": "순열",
+            "rpmL4": "중복·원순열",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+            "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "sourceQid": 3,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "850d4aca3e20d07da344ad4681de38069f74d87d31bc9e5c2d3c5ca02f805ff6",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "independentDifficulty": {
+            "bucket": 2,
+            "reason": "동일물 배열 뒤 비인접 자리를 고르는 구조"
+          },
+          "note": "Current metadata key/value reviewed against source facts and applicable registries."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "EXEMPT",
+          "solutionNeed": "BENEFICIAL_EXISTING",
+          "problemRef": null,
+          "problemSha256": null,
+          "solutionRef": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q03-solution.svg",
+          "solutionSha256": "6aac4d8b6127d6c59c2e6181617c01913951999cd0d3a02ca9786064e901b0e5",
+          "finding": "Opened Chrome static SVG: alternating 7 colored objects define exactly 8 nonadjacent insertion slots, labeled 0–7."
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "중",
+        "independentBucket": 2,
+        "storedBucket": 2,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "동일물 배열 뒤 비인접 자리를 고르는 구조"
+      },
+      "solutionSha256": "05ec86c37feec708ae33ea9c55b2087491d8606faa3b984b83090083859c00e8"
+    },
+    {
+      "qid": 4,
+      "independentAnswer": "60 (⑤)",
+      "initialFreezeAnswer": "60 (⑤)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "x^4 항은 x^4를 고르고 나머지 네 인자에서 2를 선택한 항이다. 계수 C(6,4)·2^2=60.",
+          "postfreezeAdjudication": null
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "reviewBasis": "Current student-only source structure; layoutTag grid / wide false retained. Automatic line flow kept; no content or choice reflow edits. qids 21–23 remain in default grid because no verified static capacity reason justifies subjective-2up.",
+          "assetRefs": []
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "d07d3af3061d27cf74465aee065141699cbe993f16fa25d33bb85de62269ecff",
+          "finding": "Reviewed against complete final solution and calibrated Golden small-board flow."
+        },
+        "META": {
+          "status": "PASS",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-02",
+            "standardUnit": "이항정리",
+            "standardUnitOrder": 2,
+            "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+            "subUnit": "이항정리",
+            "level": "하",
+            "difficultyBucket": 1,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rpmL1": "경우의 수",
+            "rpmL2": "이항정리",
+            "rpmL3": "이항정리",
+            "rpmL4": "특정 항의 계수",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_BINOMIAL_THEOREM",
+            "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "sourceQid": 4,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "dc189014ab657af7fafbbd0e36792143cac73d6b7f81e3370d0357a8ee601689",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "independentDifficulty": {
+            "bucket": 1,
+            "reason": "단일 이항계수 대입"
+          },
+          "note": "Current metadata key/value reviewed against source facts and applicable registries."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "EXEMPT",
+          "solutionNeed": "EXEMPT",
+          "problemRef": null,
+          "problemSha256": null,
+          "solutionRef": null,
+          "solutionSha256": null,
+          "finding": "The reviewed solution’s symbolic/counting steps communicate the decisive relation without a separate diagram."
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "하",
+        "independentBucket": 1,
+        "storedBucket": 1,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "단일 이항계수 대입"
+      },
+      "solutionSha256": "d07d3af3061d27cf74465aee065141699cbe993f16fa25d33bb85de62269ecff"
+    },
+    {
+      "qid": 5,
+      "independentAnswer": "ㄱ, ㄴ (③)",
+      "initialFreezeAnswer": "ㄱ, ㄴ (③)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "확률은 0과 1 사이이며 P(S)=1, P(∅)=0이므로 ㄱ·ㄴ은 참. ㄷ은 A,B가 모두 공집합일 때 합이 0이라 거짓. ㄹ은 P(A)+P(B)=1만으로 교집합이 공집합이라 결론 낼 수 없어 거짓.",
+          "postfreezeAdjudication": null
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "reviewBasis": "Current student-only source structure; layoutTag grid / wide false retained. Automatic line flow kept; no content or choice reflow edits. qids 21–23 remain in default grid because no verified static capacity reason justifies subjective-2up.",
+          "assetRefs": []
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "3e9cc0b1703be4fa3bc9678dc7fc1f9ab2eb7ec969c847bdcf6b6a8b31ddfe15",
+          "finding": "ㄱ/ㄴ/ㄷ/ㄹ judgments are separate lines."
+        },
+        "META": {
+          "status": "PASS",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-03",
+            "standardUnit": "확률의 뜻과 활용",
+            "standardUnitOrder": 3,
+            "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+            "subUnit": "확률의 뜻과 활용",
+            "level": "하",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rpmL1": "확률",
+            "rpmL2": "확률의 뜻과 활용",
+            "rpmL3": "확률의 기본",
+            "rpmL4": "표본공간과 사건",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+            "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "sourceQid": 5,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "a74c48a5559c35ca925995b27900d699bff9c96e086b8a65ef3286ae6ff03cff",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "independentDifficulty": {
+            "bucket": 2,
+            "reason": "확률 공리 진술을 각각 판별"
+          },
+          "note": "Current metadata key/value reviewed against source facts and applicable registries."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "EXEMPT",
+          "solutionNeed": "EXEMPT",
+          "problemRef": null,
+          "problemSha256": null,
+          "solutionRef": null,
+          "solutionSha256": null,
+          "finding": "The reviewed solution’s symbolic/counting steps communicate the decisive relation without a separate diagram."
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "하",
+        "independentBucket": 2,
+        "storedBucket": 2,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "확률 공리 진술을 각각 판별"
+      },
+      "solutionSha256": "3e9cc0b1703be4fa3bc9678dc7fc1f9ab2eb7ec969c847bdcf6b6a8b31ddfe15"
+    },
+    {
+      "qid": 6,
+      "independentAnswer": "121 (⑤)",
+      "initialFreezeAnswer": "121 (⑤)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "각 홀수 자리를 2y_i+1로 두면 y_i∈{0,1,2,3,4}, 합 y_i=5. 제한 없는 비음수해 C(9,4)=126에서 어떤 y_i≥5인 경우 5개를 제외한다(그 좌표가 5, 나머지 0). 121.",
+          "postfreezeAdjudication": null
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "reviewBasis": "Current student-only source structure; layoutTag grid / wide false retained. Automatic line flow kept; no content or choice reflow edits. qids 21–23 remain in default grid because no verified static capacity reason justifies subjective-2up.",
+          "assetRefs": []
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "94c6fcf332394eeac3d47c2e7284ca40f67ff4abf5b025f8fb47c7a2f89ada4c",
+          "finding": "Reviewed against complete final solution and calibrated Golden small-board flow."
+        },
+        "META": {
+          "status": "PASS",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-01",
+            "standardUnit": "순열과 조합",
+            "standardUnitOrder": 1,
+            "subUnitKey": "H15-PS-01-COMBINATION",
+            "subUnit": "조합",
+            "level": "중",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rpmL1": "경우의 수",
+            "rpmL2": "순열과 조합",
+            "rpmL3": "중복조합",
+            "rpmL4": "정수해 개수",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+            "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "sourceQid": 6,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "5d3b4bf072d289374a631a13b964263817862da4c3b8729509f2b78c6e8b9e6b",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "independentDifficulty": {
+            "bucket": 3,
+            "reason": "홀수 치환 후 상한을 한 번 제외하는 정수해"
+          },
+          "note": "Current metadata key/value reviewed against source facts and applicable registries."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "EXEMPT",
+          "solutionNeed": "EXEMPT",
+          "problemRef": null,
+          "problemSha256": null,
+          "solutionRef": null,
+          "solutionSha256": null,
+          "finding": "The reviewed solution’s symbolic/counting steps communicate the decisive relation without a separate diagram."
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "중",
+        "independentBucket": 3,
+        "storedBucket": 3,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "홀수 치환 후 상한을 한 번 제외하는 정수해"
+      },
+      "solutionSha256": "94c6fcf332394eeac3d47c2e7284ca40f67ff4abf5b025f8fb47c7a2f89ada4c"
+    },
+    {
+      "qid": 7,
+      "independentAnswer": "78 (④)",
+      "initialFreezeAnswer": "74 (②)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS_AFTER_ADJUDICATION",
+      "disposition": "POSTFREEZE_CALCULATION_CORRECTION; original freeze and separate adjudication retained.",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [
+        "templateKey"
+      ],
+      "metaDebtReason": "No exact ACTIVE H2-2015 crosswalk/template was found for H15-PS-01-COUNTING_APPLICATION × RPM 조합/선택 on shortest grid-path counting. Do not project an H1-only graph-path template or invent a key.",
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "실제 그림의 가로·세로 도로를 격자 그래프로 읽고 A에서 B로 오른쪽/위쪽으로만 누적한다. 막힌 도로 구간을 통과하지 않는 경로 수를 각 교차점에서 아래쪽·왼쪽 유입수 합으로 계산하여 B에서 74.",
+          "postfreezeAdjudication": {
+            "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/R1.postfreeze-adjudication-final.json",
+            "sha256": "80bed4e23ab9f3f25ab5d1a686978e9267b8e15b6d9035e3ff5a6b53d5766c66"
+          }
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "reviewBasis": "Current student-only source structure; layoutTag grid / wide false retained. Automatic line flow kept; no content or choice reflow edits. qids 21–23 remain in default grid because no verified static capacity reason justifies subjective-2up.",
+          "assetRefs": [
+            {
+              "ref": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q07.png",
+              "sha256": "026d95c45e360698ea6cc76e7a5ebb743fad4d3d4907d492bb4f85a52bc3c6c3",
+              "opened": true
+            }
+          ]
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "251d1acee7c5254acb6875581eb228637a8803c713f2e4762c965babde6a868a",
+          "finding": "Grid counts are tabulated by y row; missing-road location is an explicit dash and 78 is marked at B."
+        },
+        "META": {
+          "status": "EVIDENCE_DEBT",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-01",
+            "standardUnit": "순열과 조합",
+            "standardUnitOrder": 1,
+            "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+            "subUnit": "경우의 수의 활용",
+            "level": "중",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rpmL1": "경우의 수",
+            "rpmL2": "순열과 조합",
+            "rpmL3": "조합",
+            "rpmL4": "선택",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+            "templateKey": null,
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "sourceQid": 7,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "14c9843b6ba9c0664406e9cd6b9215189b87f544ea2e459d168d38a834176afb",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "independentDifficulty": {
+            "bucket": 3,
+            "reason": "이미지 도로망 동적 경로 누적"
+          },
+          "note": "No exact ACTIVE H2-2015 crosswalk/template was found for H15-PS-01-COUNTING_APPLICATION × RPM 조합/선택 on shortest grid-path counting. Do not project an H1-only graph-path template or invent a key."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "REQUIRED",
+          "solutionNeed": "REQUIRED_EXISTING",
+          "problemRef": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q07.png",
+          "problemSha256": "026d95c45e360698ea6cc76e7a5ebb743fad4d3d4907d492bb4f85a52bc3c6c3",
+          "solutionRef": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q07-solution.svg",
+          "solutionSha256": "ec9322f7c44eefbd1c771aac891fccf376bc2aefeed30880723b043aee11c0e",
+          "finding": "Opened problem road network and Chrome static table. The missing-road topology, blank middle cell, recurrence values, and destination 78 agree."
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "중",
+        "independentBucket": 3,
+        "storedBucket": 3,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "이미지 도로망 동적 경로 누적"
+      },
+      "solutionSha256": "251d1acee7c5254acb6875581eb228637a8803c713f2e4762c965babde6a868a"
+    },
+    {
+      "qid": 8,
+      "independentAnswer": "64 (③)",
+      "initialFreezeAnswer": "64 (③)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "(f(2),f(3))는 합이 5인 순서쌍 네 가지 (1,4),(2,3),(3,2),(4,1). f(0),f(1)은 각각 4가지이므로 4×4^2=64.",
+          "postfreezeAdjudication": null
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "reviewBasis": "Current student-only source structure; layoutTag grid / wide false retained. Automatic line flow kept; no content or choice reflow edits. qids 21–23 remain in default grid because no verified static capacity reason justifies subjective-2up.",
+          "assetRefs": []
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "212917b89c9f642b0bd2eb491b02fe3b4e79f8bf69fb3acccc1e4031a1479edd",
+          "finding": "Reviewed against complete final solution and calibrated Golden small-board flow."
+        },
+        "META": {
+          "status": "PASS",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-01",
+            "standardUnit": "순열과 조합",
+            "standardUnitOrder": 1,
+            "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+            "subUnit": "경우의 수의 활용",
+            "level": "하",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rpmL1": "경우의 수",
+            "rpmL2": "순열과 조합",
+            "rpmL3": "중복순열",
+            "rpmL4": "함수의 개수",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_FUNCTION_COUNTING",
+            "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "sourceQid": 8,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "5d4fab7403d487ac54aecaac17a607e6e9a0a92653fcdddafae7f07f35f65eb2",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "independentDifficulty": {
+            "bucket": 2,
+            "reason": "제약된 함수값 한 쌍과 나머지 자유 선택"
+          },
+          "note": "Current metadata key/value reviewed against source facts and applicable registries."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "EXEMPT",
+          "solutionNeed": "EXEMPT",
+          "problemRef": null,
+          "problemSha256": null,
+          "solutionRef": null,
+          "solutionSha256": null,
+          "finding": "The reviewed solution’s symbolic/counting steps communicate the decisive relation without a separate diagram."
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "하",
+        "independentBucket": 2,
+        "storedBucket": 2,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "제약된 함수값 한 쌍과 나머지 자유 선택"
+      },
+      "solutionSha256": "212917b89c9f642b0bd2eb491b02fe3b4e79f8bf69fb3acccc1e4031a1479edd"
+    },
+    {
+      "qid": 9,
+      "independentAnswer": "2 (②)",
+      "initialFreezeAnswer": "2 (②)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "여학생 연속 배치는 세 여학생을 한 블록으로 보아 원순열 5!·3!=720. 여학생 비인접 배치는 남학생 5명을 원탁에 앉혀 4!가지, 남학생 사이 5간격 중 3개에 여학생을 배치하고 순서 정해 C(5,3)·3!을 곱해 1440. 비는 2.",
+          "postfreezeAdjudication": null
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "reviewBasis": "Current student-only source structure; layoutTag grid / wide false retained. Automatic line flow kept; no content or choice reflow edits. qids 21–23 remain in default grid because no verified static capacity reason justifies subjective-2up.",
+          "assetRefs": []
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "289a0c8ad5d2d37644cb23a22db80dcad0417794281428dd00716f21406575fb",
+          "finding": "Separate a and b counting blocks and final ratio."
+        },
+        "META": {
+          "status": "PASS",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-01",
+            "standardUnit": "순열과 조합",
+            "standardUnitOrder": 1,
+            "subUnitKey": "H15-PS-01-PERMUTATION",
+            "subUnit": "순열",
+            "level": "중",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rpmL1": "경우의 수",
+            "rpmL2": "순열과 조합",
+            "rpmL3": "순열",
+            "rpmL4": "중복·원순열",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+            "templateKey": "TPL_CIRCULAR_PERMUTATION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "sourceQid": 9,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "44f5c1bcdb7cccca9ea8ebfd13254d600e982da2b61d849290f8196089ff021e",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "independentDifficulty": {
+            "bucket": 3,
+            "reason": "원순열 두 경우를 독립 산정 후 비율"
+          },
+          "note": "Current metadata key/value reviewed against source facts and applicable registries."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "EXEMPT",
+          "solutionNeed": "BENEFICIAL_EXISTING",
+          "problemRef": null,
+          "problemSha256": null,
+          "solutionRef": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q09-solution.svg",
+          "solutionSha256": "eb8e4210a30d4bff3f8ba35031566f6cae84dffbcfd3409da673e7b3a085a77",
+          "finding": "Opened Chrome static SVG: five male seats alternate with five gaps; labels are readable and match the counting argument."
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "중",
+        "independentBucket": 3,
+        "storedBucket": 3,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "원순열 두 경우를 독립 산정 후 비율"
+      },
+      "solutionSha256": "289a0c8ad5d2d37644cb23a22db80dcad0417794281428dd00716f21406575fb"
+    },
+    {
+      "qid": 10,
+      "independentAnswer": "100 (④)",
+      "initialFreezeAnswer": "100 (④)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "비감소열에서 f(3)=c가 짝수인 c=2,4,6을 나눈다. 앞의 두 항 선택은 {1,…,c}에서 중복조합 C(c+1,2), 마지막 항은 c,…,7 중 하나(8-c개). 합 3·6+10·4+21·2=100.",
+          "postfreezeAdjudication": null
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "reviewBasis": "Current student-only source structure; layoutTag grid / wide false retained. Automatic line flow kept; no content or choice reflow edits. qids 21–23 remain in default grid because no verified static capacity reason justifies subjective-2up.",
+          "assetRefs": []
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "e8007ffce90368b46d227949bd473a72caaedc736468a40e87ce319dbe963f34",
+          "finding": "Reviewed against complete final solution and calibrated Golden small-board flow."
+        },
+        "META": {
+          "status": "PASS",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-01",
+            "standardUnit": "순열과 조합",
+            "standardUnitOrder": 1,
+            "subUnitKey": "H15-PS-01-COMBINATION",
+            "subUnit": "조합",
+            "level": "상",
+            "difficultyBucket": 4,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rpmL1": "경우의 수",
+            "rpmL2": "순열과 조합",
+            "rpmL3": "중복조합",
+            "rpmL4": "중복을 허용한 선택",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_FUNCTION_COUNTING",
+            "templateKey": "TPL_MONOTONE_FUNCTION_COUNT",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "CASE_BRANCH",
+            "sourceQid": 10,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "f40e8a954a60a45b977e7b664dd6a99936373f48aad45492d9b67a5ba728934e",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "independentDifficulty": {
+            "bucket": 4,
+            "reason": "비감소 함수의 고정 중간값에 따른 세 갈래"
+          },
+          "note": "Corrected obsolete merged source TPL alias to current active TPL_MONOTONE_FUNCTION_COUNT on q10 only."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "EXEMPT",
+          "solutionNeed": "EXEMPT",
+          "problemRef": null,
+          "problemSha256": null,
+          "solutionRef": null,
+          "solutionSha256": null,
+          "finding": "The reviewed solution’s symbolic/counting steps communicate the decisive relation without a separate diagram."
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "상",
+        "independentBucket": 4,
+        "storedBucket": 4,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "비감소 함수의 고정 중간값에 따른 세 갈래"
+      },
+      "solutionSha256": "e8007ffce90368b46d227949bd473a72caaedc736468a40e87ce319dbe963f34"
+    },
+    {
+      "qid": 11,
+      "independentAnswer": "44 (②)",
+      "initialFreezeAnswer": "44 (②)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "Reused the immutable original independent freeze 44 (②). The current repaired solution counts by number of 3s: 1+16+18+8+1=44; answer ② matches.",
+          "postfreezeAdjudication": {
+            "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/R1.q11-repair-adjudication.json",
+            "sha256": "a72ad997839c4815d4a4875e642fa9cac3b647d4e22d58bda2414ceae6b833fc"
+          }
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "reviewBasis": "Current student-only source structure; layoutTag grid / wide false retained. Automatic line flow kept; no content or choice reflow edits. qids 21–23 remain in default grid because no verified static capacity reason justifies subjective-2up.",
+          "assetRefs": []
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "7de95717dac6c35f89c04f2f38ab00652f76a928a3d61a9072f94f7bd40027c1",
+          "finding": "Current repaired solution checked against the pre-repair Golden/Negative sample preflight; it groups cases by the number of 3s and displays the full 1+16+18+8+1 total before answer ②."
+        },
+        "META": {
+          "status": "PASS",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-01",
+            "standardUnit": "순열과 조합",
+            "standardUnitOrder": 1,
+            "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+            "subUnit": "경우의 수의 활용",
+            "level": "상",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rpmL1": "경우의 수",
+            "rpmL2": "순열과 조합",
+            "rpmL3": "중복순열",
+            "rpmL4": "함수의 개수",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_FUNCTION_COUNTING",
+            "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "sourceQid": 11,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "a27a701774c853faa465ed9d05469d662572a617c56b55cc23a3414f4fec4eab",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "independentDifficulty": {
+            "bucket": 3,
+            "reason": "곱 조건 함수의 값 빈도별 분류"
+          },
+          "note": "Current metadata key/value reviewed against source facts and applicable registries."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "EXEMPT",
+          "solutionNeed": "EXEMPT",
+          "problemRef": null,
+          "problemSha256": null,
+          "solutionRef": null,
+          "solutionSha256": null,
+          "finding": "The reviewed solution’s symbolic/counting steps communicate the decisive relation without a separate diagram."
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "상",
+        "independentBucket": 3,
+        "storedBucket": 3,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "곱 조건 함수의 값 빈도별 분류"
+      },
+      "solutionSha256": "7de95717dac6c35f89c04f2f38ab00652f76a928a3d61a9072f94f7bd40027c1"
+    },
+    {
+      "qid": 12,
+      "independentAnswer": "625 (②)",
+      "initialFreezeAnswer": "625 (②)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "합이 7인 서로 다른 원소쌍 (1,6),(2,5),(3,4)가 각 쌍 안에서 같은 함수값을 가져야 한다. 세 쌍에 5가지씩, 짝이 없는 7에도 5가지이므로 5^4=625.",
+          "postfreezeAdjudication": null
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "reviewBasis": "Current student-only source structure; layoutTag grid / wide false retained. Automatic line flow kept; no content or choice reflow edits. qids 21–23 remain in default grid because no verified static capacity reason justifies subjective-2up.",
+          "assetRefs": []
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "49c89cd7db7ffb188135622b33a57a0ecadd24a4e8728669acf7430ff13e3bf6",
+          "finding": "Reviewed against complete final solution and calibrated Golden small-board flow."
+        },
+        "META": {
+          "status": "PASS",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-01",
+            "standardUnit": "순열과 조합",
+            "standardUnitOrder": 1,
+            "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+            "subUnit": "경우의 수의 활용",
+            "level": "중",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rpmL1": "경우의 수",
+            "rpmL2": "순열과 조합",
+            "rpmL3": "중복순열",
+            "rpmL4": "함수의 개수",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_FUNCTION_COUNTING",
+            "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "sourceQid": 12,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "2472d7c3c03294ee6f65b11c2546ac76e57b25c229b418a41ec149843222779a",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "independentDifficulty": {
+            "bucket": 2,
+            "reason": "합이 7인 세 쌍의 함수값 동등 조건"
+          },
+          "note": "Current metadata key/value reviewed against source facts and applicable registries."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "EXEMPT",
+          "solutionNeed": "EXEMPT",
+          "problemRef": null,
+          "problemSha256": null,
+          "solutionRef": null,
+          "solutionSha256": null,
+          "finding": "The reviewed solution’s symbolic/counting steps communicate the decisive relation without a separate diagram."
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "중",
+        "independentBucket": 2,
+        "storedBucket": 2,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "합이 7인 세 쌍의 함수값 동등 조건"
+      },
+      "solutionSha256": "49c89cd7db7ffb188135622b33a57a0ecadd24a4e8728669acf7430ff13e3bf6"
+    },
+    {
+      "qid": 13,
+      "independentAnswer": "4 (①)",
+      "initialFreezeAnswer": "4 (①)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "x 계수는 9a^8, x^2 계수는 -36a^7. 합 9a^7(a-4)=0이며 a>0이므로 a=4.",
+          "postfreezeAdjudication": null
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "reviewBasis": "Current student-only source structure; layoutTag grid / wide false retained. Automatic line flow kept; no content or choice reflow edits. qids 21–23 remain in default grid because no verified static capacity reason justifies subjective-2up.",
+          "assetRefs": []
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "846f9cbe6a27be2a8d4fa1104df7a4c858f707e170b4d912a31f11a4f0b754ed",
+          "finding": "Reviewed against complete final solution and calibrated Golden small-board flow."
+        },
+        "META": {
+          "status": "PROJECTION_BINDING_PENDING",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-02",
+            "standardUnit": "이항정리",
+            "standardUnitOrder": 2,
+            "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+            "subUnit": "이항계수와 계수비교",
+            "level": "중",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rpmL1": "경우의 수",
+            "rpmL2": "이항정리",
+            "rpmL3": "이항계수",
+            "rpmL4": "이항계수의 성질",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_BINOMIAL_THEOREM",
+            "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+            "crossConceptKeys": [],
+            "conditionKeys": [
+              "COND_POSITIVE"
+            ],
+            "integrationPattern": "SEQUENTIAL",
+            "sourceQid": 13,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "8deec048185526b09f48c9ba3bd5a85db231b81dd6e06fd4697c95ee78d58202",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "independentDifficulty": {
+            "bucket": 3,
+            "reason": "이항계수 등식에서 양수 근 분기"
+          },
+          "note": "Current high2 probability-statistics crosswalk marks this exact projection DIRECT_BINDING_GAP; leave semantic FINAL and record nonblocking projection pending."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "EXEMPT",
+          "solutionNeed": "EXEMPT",
+          "problemRef": null,
+          "problemSha256": null,
+          "solutionRef": null,
+          "solutionSha256": null,
+          "finding": "The reviewed solution’s symbolic/counting steps communicate the decisive relation without a separate diagram."
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "중",
+        "independentBucket": 3,
+        "storedBucket": 3,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "이항계수 등식에서 양수 근 분기"
+      },
+      "solutionSha256": "846f9cbe6a27be2a8d4fa1104df7a4c858f707e170b4d912a31f11a4f0b754ed"
+    },
+    {
+      "qid": 14,
+      "independentAnswer": "3^20 (②)",
+      "initialFreezeAnswer": "3^20 (②)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "각 원소는 A 바깥/B 바깥, B에만, A와 B에 함께 속하는 세 상태 중 하나를 갖는다. 전체 20원소에 독립 적용하여 3^20.",
+          "postfreezeAdjudication": null
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "reviewBasis": "Current student-only source structure; layoutTag grid / wide false retained. Automatic line flow kept; no content or choice reflow edits. qids 21–23 remain in default grid because no verified static capacity reason justifies subjective-2up.",
+          "assetRefs": []
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "9923dcd164373298f6ea64a02d41f953e6fbeee74d71066fea6337ae592057bf",
+          "finding": "Reviewed against complete final solution and calibrated Golden small-board flow."
+        },
+        "META": {
+          "status": "PASS",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-01",
+            "standardUnit": "순열과 조합",
+            "standardUnitOrder": 1,
+            "subUnitKey": "H15-PS-01-COMBINATION",
+            "subUnit": "조합",
+            "level": "하",
+            "difficultyBucket": 1,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rpmL1": "경우의 수",
+            "rpmL2": "순열과 조합",
+            "rpmL3": "조합",
+            "rpmL4": "분할·분배",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+            "templateKey": "TPL_COMBINATION_SELECTION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "sourceQid": 14,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "e66fb44592b587d8feea197186cb0a64c8c718cec71e521b54051a422c2b5ddb",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "independentDifficulty": {
+            "bucket": 1,
+            "reason": "원소별 세 소속 상태"
+          },
+          "note": "Current metadata key/value reviewed against source facts and applicable registries."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "EXEMPT",
+          "solutionNeed": "EXEMPT",
+          "problemRef": null,
+          "problemSha256": null,
+          "solutionRef": null,
+          "solutionSha256": null,
+          "finding": "The reviewed solution’s symbolic/counting steps communicate the decisive relation without a separate diagram."
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "하",
+        "independentBucket": 1,
+        "storedBucket": 1,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "원소별 세 소속 상태"
+      },
+      "solutionSha256": "9923dcd164373298f6ea64a02d41f953e6fbeee74d71066fea6337ae592057bf"
+    },
+    {
+      "qid": 15,
+      "independentAnswer": "2^13 (③)",
+      "initialFreezeAnswer": "2^13 (③)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "a는 희재·유리를 포함하고 전체 선택 인원 짝수이므로 나머지 14명 중 짝수 명 선택: 2^13. b는 1,2를 포함해 나머지 15명 중 홀수 개를 선택하므로 2^14. b-a=2^14-2^13=2^13.",
+          "postfreezeAdjudication": null
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "reviewBasis": "Current student-only source structure; layoutTag grid / wide false retained. Automatic line flow kept; no content or choice reflow edits. qids 21–23 remain in default grid because no verified static capacity reason justifies subjective-2up.",
+          "assetRefs": []
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "6799888729a6b8b6365f16c077668d83b352d49de0c5779ef47d9860d1778f42",
+          "finding": "Reviewed against complete final solution and calibrated Golden small-board flow."
+        },
+        "META": {
+          "status": "PROJECTION_BINDING_PENDING",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-02",
+            "standardUnit": "이항정리",
+            "standardUnitOrder": 2,
+            "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+            "subUnit": "이항계수와 계수비교",
+            "level": "중",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rpmL1": "경우의 수",
+            "rpmL2": "이항정리",
+            "rpmL3": "이항계수",
+            "rpmL4": "이항계수의 성질",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_BINOMIAL_THEOREM",
+            "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "sourceQid": 15,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "821d022d71ddfa3ce8df1bbd44056325575d1fdac57af8d248ffbffb0cb4128e",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "independentDifficulty": {
+            "bucket": 3,
+            "reason": "짝수/홀수 크기 부분집합 두 개 비교"
+          },
+          "note": "Current high2 probability-statistics crosswalk marks this exact projection DIRECT_BINDING_GAP; leave semantic FINAL and record nonblocking projection pending."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "EXEMPT",
+          "solutionNeed": "EXEMPT",
+          "problemRef": null,
+          "problemSha256": null,
+          "solutionRef": null,
+          "solutionSha256": null,
+          "finding": "The reviewed solution’s symbolic/counting steps communicate the decisive relation without a separate diagram."
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "중",
+        "independentBucket": 3,
+        "storedBucket": 3,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "짝수/홀수 크기 부분집합 두 개 비교"
+      },
+      "solutionSha256": "6799888729a6b8b6365f16c077668d83b352d49de0c5779ef47d9860d1778f42"
+    },
+    {
+      "qid": 16,
+      "independentAnswer": "3/10 (③)",
+      "initialFreezeAnswer": "3/10 (③)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "전체는 5P3=60. 일의 자리가 홀수인 1,3,5를 나누고 340 초과 조건을 적용하면 유효 수는 18개(끝자리 1: 8개, 3: 6개, 5: 4개). 확률 18/60=3/10.",
+          "postfreezeAdjudication": null
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "reviewBasis": "Current student-only source structure; layoutTag grid / wide false retained. Automatic line flow kept; no content or choice reflow edits. qids 21–23 remain in default grid because no verified static capacity reason justifies subjective-2up.",
+          "assetRefs": []
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "11f3c15970e9ebd9022edf61401b1c71b14be7b08f7f1b09ab3af222b8c1224c",
+          "finding": "Reviewed against complete final solution and calibrated Golden small-board flow."
+        },
+        "META": {
+          "status": "PASS",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-03",
+            "standardUnit": "확률의 뜻과 활용",
+            "standardUnitOrder": 3,
+            "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+            "subUnit": "확률의 뜻과 활용",
+            "level": "중",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rpmL1": "확률",
+            "rpmL2": "확률의 뜻과 활용",
+            "rpmL3": "확률의 기본",
+            "rpmL4": "확률 계산",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+            "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "CASE_BRANCH",
+            "sourceQid": 16,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "738e60901296096d58ba18f09bca7decc87c784d178ac61a5e6cc6ed05701afe",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "independentDifficulty": {
+            "bucket": 2,
+            "reason": "세 자리 수의 백의 자리별 사례 계산"
+          },
+          "note": "Current metadata key/value reviewed against source facts and applicable registries."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "EXEMPT",
+          "solutionNeed": "EXEMPT",
+          "problemRef": null,
+          "problemSha256": null,
+          "solutionRef": null,
+          "solutionSha256": null,
+          "finding": "The reviewed solution’s symbolic/counting steps communicate the decisive relation without a separate diagram."
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "중",
+        "independentBucket": 2,
+        "storedBucket": 2,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "세 자리 수의 백의 자리별 사례 계산"
+      },
+      "solutionSha256": "11f3c15970e9ebd9022edf61401b1c71b14be7b08f7f1b09ab3af222b8c1224c"
+    },
+    {
+      "qid": 17,
+      "independentAnswer": "5/16 (④)",
+      "initialFreezeAnswer": "5/16 (④)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "회전 후 두 발사는 8개 동일 영역을 각각 균등하게 맞히므로 64개 순서쌍. 수 차가 4,5,6,7인 순서쌍은 각각 8,6,4,2개, 합 20개. 20/64=5/16.",
+          "postfreezeAdjudication": null
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "reviewBasis": "Current student-only source structure; layoutTag grid / wide false retained. Automatic line flow kept; no content or choice reflow edits. qids 21–23 remain in default grid because no verified static capacity reason justifies subjective-2up.",
+          "assetRefs": [
+            {
+              "ref": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q17.png",
+              "sha256": "f4def6b6dbf6fb9e424e2ff69721073e78e027b876c749a7e3d1be65e0ec4108",
+              "opened": true
+            }
+          ]
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "ef743577618cde59efe2785c6db31614250054b53048a84d6473fb2d8a687f13",
+          "finding": "Reviewed against complete final solution and calibrated Golden small-board flow."
+        },
+        "META": {
+          "status": "PASS",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-03",
+            "standardUnit": "확률의 뜻과 활용",
+            "standardUnitOrder": 3,
+            "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+            "subUnit": "확률의 뜻과 활용",
+            "level": "하",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rpmL1": "확률",
+            "rpmL2": "확률의 뜻과 활용",
+            "rpmL3": "독립시행",
+            "rpmL4": "반복 시행의 확률",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+            "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "sourceQid": 17,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "c3100216788df2142fd7e53f21f3005ee436bbaf4d5349421b571e86b6c35da4",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "independentDifficulty": {
+            "bucket": 2,
+            "reason": "균등 8영역 두 번 시행의 차이 계산"
+          },
+          "note": "Current metadata key/value reviewed against source facts and applicable registries."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "REQUIRED",
+          "solutionNeed": "EXEMPT",
+          "problemRef": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q17.png",
+          "problemSha256": "f4def6b6dbf6fb9e424e2ff69721073e78e027b876c749a7e3d1be65e0ec4108",
+          "solutionRef": null,
+          "solutionSha256": null,
+          "finding": "Opened q17 PNG: eight equal sectors labeled 1–8; this is necessary to identify equally likely outcomes."
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "하",
+        "independentBucket": 2,
+        "storedBucket": 2,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "균등 8영역 두 번 시행의 차이 계산"
+      },
+      "solutionSha256": "ef743577618cde59efe2785c6db31614250054b53048a84d6473fb2d8a687f13"
+    },
+    {
+      "qid": 18,
+      "independentAnswer": "4/9 (②)",
+      "initialFreezeAnswer": "4/9 (②)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "실근이 없으려면 판별식 (a+b)^2-4(ab+1)=(a-b)^2-4<0, 즉 |a-b|<2. 두 주사위 눈 순서쌍 중 차가 0 또는 1인 것은 6+10=16개, 확률 16/36=4/9.",
+          "postfreezeAdjudication": null
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "reviewBasis": "Current student-only source structure; layoutTag grid / wide false retained. Automatic line flow kept; no content or choice reflow edits. qids 21–23 remain in default grid because no verified static capacity reason justifies subjective-2up.",
+          "assetRefs": []
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "30b5768e8d9feb10a130baab58242468710203c022bd1c599dfc535a5a5d696f",
+          "finding": "Reviewed against complete final solution and calibrated Golden small-board flow."
+        },
+        "META": {
+          "status": "PASS",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-03",
+            "standardUnit": "확률의 뜻과 활용",
+            "standardUnitOrder": 3,
+            "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+            "subUnit": "확률의 뜻과 활용",
+            "level": "중",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rpmL1": "확률",
+            "rpmL2": "확률의 뜻과 활용",
+            "rpmL3": "독립시행",
+            "rpmL4": "반복 시행의 확률",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+            "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+            "crossConceptKeys": [
+              "CC_DISCRIMINANT"
+            ],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "sourceQid": 18,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "11a91c779eba05daa16fdb75cff78374f1fe64d034cf892db68b4184ade83a6d",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "independentDifficulty": {
+            "bucket": 2,
+            "reason": "판별식 조건을 주사위 눈 차로 환원"
+          },
+          "note": "Current metadata key/value reviewed against source facts and applicable registries."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "EXEMPT",
+          "solutionNeed": "EXEMPT",
+          "problemRef": null,
+          "problemSha256": null,
+          "solutionRef": null,
+          "solutionSha256": null,
+          "finding": "The reviewed solution’s symbolic/counting steps communicate the decisive relation without a separate diagram."
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "중",
+        "independentBucket": 2,
+        "storedBucket": 2,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "판별식 조건을 주사위 눈 차로 환원"
+      },
+      "solutionSha256": "30b5768e8d9feb10a130baab58242468710203c022bd1c599dfc535a5a5d696f"
+    },
+    {
+      "qid": 19,
+      "independentAnswer": "580 (③)",
+      "initialFreezeAnswer": "580 (③)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "s=a+c+e, t=b+d라 두면 s+t=12, |s-t|≤2이므로 s=5,6,7. 각 경우 수는 C(s+2,2)(t+1): 21·8+28·7+36·6=580.",
+          "postfreezeAdjudication": null
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "reviewBasis": "Current student-only source structure; layoutTag grid / wide false retained. Automatic line flow kept; no content or choice reflow edits. qids 21–23 remain in default grid because no verified static capacity reason justifies subjective-2up.",
+          "assetRefs": []
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "8621f995548ee4ff34ab9d183acc18ad8364ab7296d9b81d71ea26727dfecda4",
+          "finding": "Reviewed against complete final solution and calibrated Golden small-board flow."
+        },
+        "META": {
+          "status": "PASS",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-01",
+            "standardUnit": "순열과 조합",
+            "standardUnitOrder": 1,
+            "subUnitKey": "H15-PS-01-COMBINATION",
+            "subUnit": "조합",
+            "level": "상",
+            "difficultyBucket": 4,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rpmL1": "경우의 수",
+            "rpmL2": "순열과 조합",
+            "rpmL3": "중복조합",
+            "rpmL4": "정수해 개수",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+            "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+            "crossConceptKeys": [
+              "CC_INEQUALITY_ABSOLUTE_VALUE"
+            ],
+            "conditionKeys": [
+              "COND_INTEGER"
+            ],
+            "integrationPattern": "CASE_BRANCH",
+            "sourceQid": 19,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "a431b8b65a0a6613df608e17c8356ee012c8546e0da223eb7b37eca4fdbe92dd",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "independentDifficulty": {
+            "bucket": 4,
+            "reason": "변수 합과 절댓값 제한으로 세 총합 분기"
+          },
+          "note": "Current metadata key/value reviewed against source facts and applicable registries."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "EXEMPT",
+          "solutionNeed": "EXEMPT",
+          "problemRef": null,
+          "problemSha256": null,
+          "solutionRef": null,
+          "solutionSha256": null,
+          "finding": "The reviewed solution’s symbolic/counting steps communicate the decisive relation without a separate diagram."
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "상",
+        "independentBucket": 4,
+        "storedBucket": 4,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "변수 합과 절댓값 제한으로 세 총합 분기"
+      },
+      "solutionSha256": "8621f995548ee4ff34ab9d183acc18ad8364ab7296d9b81d71ea26727dfecda4"
+    },
+    {
+      "qid": 20,
+      "independentAnswer": "140 (⑤)",
+      "initialFreezeAnswer": "140 (⑤)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "짝수인 자리를 고르는 방법 4가지. 세 홀수와 한 짝수의 최소 합은 5이며, 합 13이 되기 위한 추가 8은 각 항의 2배 변수 합 4와 같다. 네 비음수 변수 해 C(7,3)=35, 곱해 140.",
+          "postfreezeAdjudication": null
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "reviewBasis": "Current student-only source structure; layoutTag grid / wide false retained. Automatic line flow kept; no content or choice reflow edits. qids 21–23 remain in default grid because no verified static capacity reason justifies subjective-2up.",
+          "assetRefs": []
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "7b0168e8f8a7099b874552b43c94cbfe2b877526ec411c992b2fc038e2002073",
+          "finding": "Reviewed against complete final solution and calibrated Golden small-board flow."
+        },
+        "META": {
+          "status": "PASS",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-01",
+            "standardUnit": "순열과 조합",
+            "standardUnitOrder": 1,
+            "subUnitKey": "H15-PS-01-COMBINATION",
+            "subUnit": "조합",
+            "level": "중",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rpmL1": "경우의 수",
+            "rpmL2": "순열과 조합",
+            "rpmL3": "중복조합",
+            "rpmL4": "정수해 개수",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+            "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+            "crossConceptKeys": [],
+            "conditionKeys": [
+              "COND_INTEGER",
+              "COND_POSITIVE"
+            ],
+            "integrationPattern": "SEQUENTIAL",
+            "sourceQid": 20,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "c5fb33cb7522744372f77ff2bc7321d61d60932bff8e413fd764071282d059e7",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "independentDifficulty": {
+            "bucket": 3,
+            "reason": "짝수 위치 선택 후 양의 정수해 변환"
+          },
+          "note": "Current metadata key/value reviewed against source facts and applicable registries."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "EXEMPT",
+          "solutionNeed": "EXEMPT",
+          "problemRef": null,
+          "problemSha256": null,
+          "solutionRef": null,
+          "solutionSha256": null,
+          "finding": "The reviewed solution’s symbolic/counting steps communicate the decisive relation without a separate diagram."
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "중",
+        "independentBucket": 3,
+        "storedBucket": 3,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "짝수 위치 선택 후 양의 정수해 변환"
+      },
+      "solutionSha256": "7b0168e8f8a7099b874552b43c94cbfe2b877526ec411c992b2fc038e2002073"
+    },
+    {
+      "qid": 21,
+      "independentAnswer": "2/9",
+      "initialFreezeAnswer": "2/9",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "$\\dfrac29$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "(a,b)는 6×6=36개. 중심 (5,3)에서 맨해튼 거리 3인 격자점 중 1≤a,b≤6을 세면 8개이므로 확률 8/36=2/9.",
+          "postfreezeAdjudication": null
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "reviewBasis": "Current student-only source structure; layoutTag grid / wide false retained. Automatic line flow kept; no content or choice reflow edits. qids 21–23 remain in default grid because no verified static capacity reason justifies subjective-2up.",
+          "assetRefs": []
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "b8ae5317757d3f324109c77e29c1850d6b8002677a05fde0085f7412807fe4f6",
+          "finding": "Reviewed against complete final solution and calibrated Golden small-board flow."
+        },
+        "META": {
+          "status": "PASS",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-03",
+            "standardUnit": "확률의 뜻과 활용",
+            "standardUnitOrder": 3,
+            "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+            "subUnit": "확률의 뜻과 활용",
+            "level": "중",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rpmL1": "확률",
+            "rpmL2": "확률의 뜻과 활용",
+            "rpmL3": "독립시행",
+            "rpmL4": "반복 시행의 확률",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+            "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+            "crossConceptKeys": [
+              "CC_ABSOLUTE_VALUE_EQUATION"
+            ],
+            "conditionKeys": [],
+            "integrationPattern": "CASE_BRANCH",
+            "sourceQid": 21,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "c053f1dc6e03564239f1675943f795ab748fb510555e3cb7439680c737c2b56a",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "independentDifficulty": {
+            "bucket": 2,
+            "reason": "두 주사위 점의 맨해튼 거리 계수"
+          },
+          "note": "Current metadata key/value reviewed against source facts and applicable registries."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "EXEMPT",
+          "solutionNeed": "EXEMPT",
+          "problemRef": null,
+          "problemSha256": null,
+          "solutionRef": null,
+          "solutionSha256": null,
+          "finding": "The reviewed solution’s symbolic/counting steps communicate the decisive relation without a separate diagram."
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "중",
+        "independentBucket": 2,
+        "storedBucket": 2,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "두 주사위 점의 맨해튼 거리 계수"
+      },
+      "solutionSha256": "b8ae5317757d3f324109c77e29c1850d6b8002677a05fde0085f7412807fe4f6"
+    },
+    {
+      "qid": 22,
+      "independentAnswer": "450",
+      "initialFreezeAnswer": "450",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "450",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "일반항에서 x^3의 계수는 C(8,3)a^5=56a^5=1792이므로 a^5=32이다. a는 실수이므로 a=2이다. x^5의 계수 b=C(8,5)a^3=56·8=448이다. 따라서 a+b=2+448=450.",
+          "postfreezeAdjudication": null,
+          "independentFreeze": {
+            "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-q22-fresh-20261011/q22-original-freeze.json",
+            "sha256": "eb97556f6928458d49168d69016e866b8f0860c35c3057a87d0dac4255cb80ed"
+          }
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC_REVIEW",
+          "reviewBasis": "Question is self-contained text with one inline binomial expression, a single explicit <br> after its heading, no choices/assets/table/shared material; grid is default and no special layout evidence supports override.",
+          "assetRefs": [],
+          "actualRendererCapture": "NOT_RUN_IN_Q22_ONLY_R1"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "reviewBasis": "Four short conceptual blocks: general term, x^3 coefficient and real a, x^5 coefficient b, requested sum. Display-independent inline TeX and blank-line separation preserve the reasoning sequence.",
+          "finding": "Stored solution is mathematically correct and agrees with independent derivation."
+        },
+        "META": {
+          "status": "PASS_WITH_EXPLICIT_EVIDENCE_DEBT",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-02",
+            "standardUnit": "이항정리",
+            "standardUnitOrder": 2,
+            "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+            "subUnit": "이항정리",
+            "level": "중",
+            "rpmL1": "경우의 수",
+            "rpmL2": "이항정리",
+            "rpmL3": "이항정리",
+            "rpmL4": "특정 항의 계수",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_BINOMIAL_THEOREM",
+            "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "sourceQid": 22,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "1aaac299f42e639cab8c8b7997f7dccf21950125340ae221f911eefa1b428527",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "exactDebts": [
+            {
+              "field": "question_metadata_projection",
+              "reason": "Fresh packet records current question_metadata.json blank for standardCourse, standardUnitKey, standardUnit, subUnitKey, subUnit, conceptClusterKey, problemTypeKey, templateKey and integrationPattern; source JS values remain present where directly stored; do not infer parity."
+            },
+            {
+              "field": "source_consumer_index_parity",
+              "reason": "q22-only review did not verify current source-to-Consumer/index parity; retain as projection debt."
+            }
+          ],
+          "reviewPacketMetaCorrection": {
+            "packetPath": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-q22-fresh-20261011/q22-current-review.json",
+            "packetSha256": "068e54a7381309a36cdc4a39a1a5dc73ffb00c7dd34cf3e6cdc4f313d33a47b8",
+            "correctedObservation": "The packet states q22 has no explicit RPM L1-L4/conceptClusterKey. Direct current-source parse at the bound SHA confirms rpmL1-L4 and rpmSemanticStatus=FINAL are present, so that unsupported debt claim is excluded from this disposition.",
+            "sourceIdentity": {
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-02",
+              "standardUnit": "이항정리",
+              "standardUnitOrder": 2,
+              "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+              "subUnit": "이항정리",
+              "level": "중",
+              "rpmL1": "경우의 수",
+              "rpmL2": "이항정리",
+              "rpmL3": "이항정리",
+              "rpmL4": "특정 항의 계수",
+              "rpmSemanticStatus": "FINAL",
+              "problemTypeKey": "PT_BINOMIAL_THEOREM",
+              "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 2,
+              "difficultyConfidence": "medium",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceQid": 22,
+              "sourceType": "ORIGINAL",
+              "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+              "sourceIdentityFingerprint": "1aaac299f42e639cab8c8b7997f7dccf21950125340ae221f911eefa1b428527",
+              "sourceProvenance": {
+                "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+                "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+                "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+                "sourceInputMode": "EXTRACTED_JS_ASSETS",
+                "pdfReviewMode": "DEFECT_ONLY"
+              }
+            }
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "EXEMPT",
+          "solutionNeed": "EXEMPT",
+          "problemRef": null,
+          "problemSha256": null,
+          "solutionRef": null,
+          "solutionSha256": null,
+          "finding": "EXEMPT: coefficient extraction is fully specified algebraically; no spatial, geometric, tabular, or graphical relation is encoded. EXEMPT: general-term substitution and scalar coefficient arithmetic have no educationally useful diagram; a graphic would duplicate notation.",
+          "referencedAssets": [],
+          "assetsOpened": "NOT_APPLICABLE_NO_REFERENCES"
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "중",
+        "independentBucket": 2,
+        "storedBucket": 2,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "H15 standard/subunit mapping appears in the canonical subunit/master table; PT/TPL are present in the 2015 probability-statistics runtime pack at the binomial theorem / term-coefficient taxonomy. Difficulty 2 and level 중 fit a routine linked coefficient-extraction problem."
+      },
+      "solutionSha256": "239199c7421e01fa95a2c9cece42d8ec83c37f84f0eaa52bfa3f49630580ca94"
+    },
+    {
+      "qid": 23,
+      "independentAnswer": "147",
+      "initialFreezeAnswer": "147",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "147",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "itemStatus": "READY",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "ANSWER": {
+          "status": "PASS",
+          "independentDerivation": "비감소 첫 세 값 i≤j≤k≤5의 곱이 제곱수인 조합을 k별로 분류한다. k=1,2,3,4,5일 때 유효한 첫 세 값 개수는 각각 1,1,1,5,2. 마지막 네 값은 k 이상 5 이하에서 중복조합으로 각각 C(8,4),C(7,4),C(6,4),C(5,4),C(4,4)가지. 합 70+35+15+25+2=147.",
+          "postfreezeAdjudication": null
+        },
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "reviewBasis": "Current student-only source structure; layoutTag grid / wide false retained. Automatic line flow kept; no content or choice reflow edits. qids 21–23 remain in default grid because no verified static capacity reason justifies subjective-2up.",
+          "assetRefs": []
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "cb6abb2152e4e1d587358b3e25f4ae77629a6673ce6e1ae576b276758e9e392d",
+          "finding": "Condition and admissible first triples are separated before the tail count."
+        },
+        "META": {
+          "status": "PASS",
+          "currentFields": {
+            "standardCourse": "확률과 통계",
+            "standardUnitKey": "H15-PS-01",
+            "standardUnit": "순열과 조합",
+            "standardUnitOrder": 1,
+            "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+            "subUnit": "경우의 수의 활용",
+            "level": "상",
+            "difficultyBucket": 4,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rpmL1": "경우의 수",
+            "rpmL2": "순열과 조합",
+            "rpmL3": "중복조합",
+            "rpmL4": "중복을 허용한 선택",
+            "rpmSemanticStatus": "FINAL",
+            "problemTypeKey": "PT_FUNCTION_COUNTING",
+            "templateKey": "TPL_MONOTONE_FUNCTION_COUNT",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "sourceQid": 23,
+            "sourceType": "ORIGINAL",
+            "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+            "sourceIdentityFingerprint": "6aee385c906a7a3fd4f6e0838aa3b07c07a37b6daf6c96e87791b399c1daf8bd",
+            "sourceProvenance": {
+              "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+              "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+              "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+              "sourceInputMode": "EXTRACTED_JS_ASSETS",
+              "pdfReviewMode": "DEFECT_ONLY"
+            }
+          },
+          "independentDifficulty": {
+            "bucket": 4,
+            "reason": "완전제곱 첫 세 함수값 분류와 비감소 꼬리 조합"
+          },
+          "note": "Current metadata key/value reviewed against source facts and applicable registries."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemNeed": "EXEMPT",
+          "solutionNeed": "EXEMPT",
+          "problemRef": null,
+          "problemSha256": null,
+          "solutionRef": null,
+          "solutionSha256": null,
+          "finding": "The reviewed solution’s symbolic/counting steps communicate the decisive relation without a separate diagram."
+        }
+      },
+      "difficultyReview": {
+        "legacyLevel": "상",
+        "independentBucket": 4,
+        "storedBucket": 4,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "완전제곱 첫 세 함수값 분류와 비감소 꼬리 조합"
+      },
+      "solutionSha256": "cb6abb2152e4e1d587358b3e25f4ae77629a6673ce6e1ae576b276758e9e392d"
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "96183c85985b5164a22288f92c124325bb33dae6",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "metaDebtReason": "No exact ACTIVE H2-2015 crosswalk/template was found for H15-PS-01-COUNTING_APPLICATION × RPM 조합/선택 on shortest grid-path counting. Do not project an H1-only graph-path template or invent a key."
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 23,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      }
+    ]
+  },
+  "technicalHashes": {
+    "rawSha256": "552df3d4c1a1c103957b1d89bf28ef0505e2b3eda0097661b2f0a546eaa197e2",
+    "validatorRawBufferBlobSha1": "96183c85985b5164a22288f92c124325bb33dae6",
+    "gitCleanFilterBlobSha1": "96183c85985b5164a22288f92c124325bb33dae6"
+  },
+  "resolvedItemHolds": [
+    {
+      "qid": 11,
+      "disposition": "FALSE_HOLD_CLEARED_BY_MINIMAL_REPAIR",
+      "evidence": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/ITEM_RECOVERY.q11.false-hold-disposition.json",
+      "sha256": "5c19db9e8d7f0a69709a046bad5ec11bf052eac76d8e3ba3a4d451cf04f4eb4c",
+      "review": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/R1.q11-repair-adjudication.json",
+      "reviewSha256": "a72ad997839c4815d4a4875e642fa9cac3b647d4e22d58bda2414ceae6b833fc"
+    },
+    {
+      "qid": 22,
+      "disposition": "QUESTION_ONLY_REPLACEMENT_FRESH_REVIEWED",
+      "evidence": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/ITEM_RECOVERY.authoring-packet.json",
+      "sha256": "e47f8a33b08115a940a1c33f98b2b88a6aaea84d336656d935e5cd6153f674d2",
+      "freshR1Review": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-q22-fresh-20261011/q22-current-review.json",
+      "freshR1ReviewSha256": "068e54a7381309a36cdc4a39a1a5dc73ffb00c7dd34cf3e6cdc4f313d33a47b8",
+      "freshFreezeSha256": "eb97556f6928458d49168d69016e866b8f0860c35c3057a87d0dac4255cb80ed"
+    }
+  ],
+  "targetedQidReviews": {
+    "scopeQids": [
+      11,
+      22
+    ],
+    "unchangedDispositionQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      23
+    ],
+    "reviewerIdentity": {
+      "role": "archive_r1",
+      "reviewerId": "/root/maesan_prob_r1_merge"
+    },
+    "q11": {
+      "adjudicationPath": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/R1.q11-repair-adjudication.json",
+      "adjudicationSha256": "a72ad997839c4815d4a4875e642fa9cac3b647d4e22d58bda2414ceae6b833fc",
+      "sourceRawSha256": "18d9cefae333cf0fec077ee91fdd694ef1cdfcc7b15bbfd602d41f0d86ce7c1d",
+      "originalFreezeSha256": "7dc5690c8f65e15490c675a23339633776b70d82710100eaea29e11a2a9b33c8"
+    },
+    "q22": {
+      "reviewPacketPath": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-q22-fresh-20261011/q22-current-review.json",
+      "reviewPacketSha256": "068e54a7381309a36cdc4a39a1a5dc73ffb00c7dd34cf3e6cdc4f313d33a47b8",
+      "freezePath": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-q22-fresh-20261011/q22-original-freeze.json",
+      "freezeSha256": "eb97556f6928458d49168d69016e866b8f0860c35c3057a87d0dac4255cb80ed",
+      "sourceExtractPath": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-q22-fresh-20261011/q22-postfreeze-qid-limited-source-extract.json",
+      "sourceExtractSha256": "14f47bd16c50f7cd17fb143f468a76b91b1b686db0b1b379ee6e48eed0c86585",
+      "metaCorrection": {
+        "packetPath": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-q22-fresh-20261011/q22-current-review.json",
+        "packetSha256": "068e54a7381309a36cdc4a39a1a5dc73ffb00c7dd34cf3e6cdc4f313d33a47b8",
+        "correctedObservation": "The packet states q22 has no explicit RPM L1-L4/conceptClusterKey. Direct current-source parse at the bound SHA confirms rpmL1-L4 and rpmSemanticStatus=FINAL are present, so that unsupported debt claim is excluded from this disposition.",
+        "sourceIdentity": {
+          "standardCourse": "확률과 통계",
+          "standardUnitKey": "H15-PS-02",
+          "standardUnit": "이항정리",
+          "standardUnitOrder": 2,
+          "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+          "subUnit": "이항정리",
+          "level": "중",
+          "rpmL1": "경우의 수",
+          "rpmL2": "이항정리",
+          "rpmL3": "이항정리",
+          "rpmL4": "특정 항의 계수",
+          "rpmSemanticStatus": "FINAL",
+          "problemTypeKey": "PT_BINOMIAL_THEOREM",
+          "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "sourceQid": 22,
+          "sourceType": "ORIGINAL",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+          "sourceIdentityFingerprint": "1aaac299f42e639cab8c8b7997f7dccf21950125340ae221f911eefa1b428527",
+          "sourceProvenance": {
+            "intakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+            "intakeEvidenceSha256": "BED2790FCF22752CE94F146429C698AC51AD818CCBA095D546C4124ACE5D948F",
+            "pdfSourceSha256": "81DA2951BB6CFB2053FE0814396331DF8657BA694C8B6BB823587C9C3FA6C27D",
+            "sourceInputMode": "EXTRACTED_JS_ASSETS",
+            "pdfReviewMode": "DEFECT_ONLY"
+          }
+        }
+      }
+    }
+  }
+}

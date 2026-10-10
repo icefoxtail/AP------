@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_FALSE_HOLD_DISPOSITION_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "24_매산여고_1학기_중간_고2_확률과통계",
+  "stage": "ITEM_RECOVERY",
+  "qid": 11,
+  "disposition": "FALSE_HOLD_CLEARED_BY_MINIMAL_REPAIR",
+  "sourceMode": "EXTRACTED_JS_ASSETS",
+  "pdfActuallyReviewedThisRun": false,
+  "reason": "The current question/choices are determinate. Group by the number of 3s: 0→1; 1→4(C(3,2)+C(3,3))=16; 2→6(2^2−1)=18; 3→4·2=8 because the remaining input is 1 or 2; 4→1. Total 44, exactly choice ②. The old solution omitted the second possibility in the 3-threes case and reported 40.",
+  "proof": {
+    "countByNumberOfThrees": [
+      {
+        "threes": 0,
+        "count": 1
+      },
+      {
+        "threes": 1,
+        "count": 16
+      },
+      {
+        "threes": 2,
+        "count": 18
+      },
+      {
+        "threes": 3,
+        "count": 8
+      },
+      {
+        "threes": 4,
+        "count": 1
+      }
+    ],
+    "total": 44,
+    "choices": [
+      "43",
+      "44",
+      "45",
+      "46",
+      "47"
+    ],
+    "uniqueChoice": "②"
+  },
+  "reusedEvidence": [
+    {
+      "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r2-clean-20261011/R2.evidence.json",
+      "sha256": "900add4014367eaf245ce9342e3cd6af4f0861d296589f7010b972f418b2fcfb",
+      "fact": "R2 blind freeze independently obtained 44 (choice ②); its later hold reason inherited the faulty stored solution."
+    },
+    {
+      "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/R1.original-source-review.json",
+      "sha256": "1aa453d36491551fd1cbc9dc5865878cb4ff554ce89425fada591fbf08972c88",
+      "fact": "Scoped page 3 review confirms exact JS student payload and choices 43–47; its count 40 is superseded by current correct recount."
+    }
+  ],
+  "mutation": {
+    "studentContentUnchanged": true,
+    "choicesUnchanged": true,
+    "answerBefore": "HOLD",
+    "answerAfter": "②",
+    "solutionCorrected": true,
+    "staleItemHoldFieldsRemoved": true,
+    "reviewStatusAfter": "CREATE_PENDING"
+  },
+  "independentR1R2LocusReviewRequired": true,
+  "releaseClaimed": false
+}

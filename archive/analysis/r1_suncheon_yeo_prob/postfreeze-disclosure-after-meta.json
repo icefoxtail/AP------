@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POSTFREEZE_DISCLOSURE_V2",
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\r1_suncheon_yeo_prob\\original-freeze.json",
+    "sha256": "ef5cc229311322e752119a67559456097cf7f5e69bd59cbdcfca32eed2631590"
+  },
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\r1_suncheon_yeo_prob\\student-current.json",
+    "sha256": "916320fc914566f06ab6d4a3cb9453892f78b51e3abf19d2d83d3fd45ee472cc"
+  },
+  "sourceRawSha256": "984e37c7fd5687866dc3eaf5faca82657fe0b5e84b6d57e7ed8b4688b9fca24c",
+  "originalFreezeSourceRawSha256": "c0a092f5047e8e39c1c0d0de08551c473415c718e9b35eb9f1a9acaf33233a8b",
+  "studentParity": "EXACT",
+  "rows": [
+    {
+      "qid": 11,
+      "answer": "②",
+      "solution": "치역을 먼저 나눕니다. 치역이 한 원소인 경우 합이 홀수가 되려면 치역은 $\\{1\\}$ 또는 $\\{3\\}$이므로 각 1개, 합 2개입니다. 두 원소 치역은 $\\{1,2\\}$ 또는 $\\{2,3\\}$일 때 합이 홀수입니다. 정해진 두 원소를 모두 치역에 쓰는 함수는 $2^3-2=6$개이므로 두 경우 합은 12개입니다. 세 원소 치역의 합은 짝수입니다.\n$\\displaystyle 2+12=14$\n따라서 정답은 ②입니다.",
+      "decisiveStep": "Range cases produce 2+6+6=14 functions."
+    },
+    {
+      "qid": 14,
+      "answer": "①",
+      "solution": "$f(2)=a<f(3)=b<f(4)=c$라 두면 $f(1)$은 $1$부터 $a$까지 $a$가지, $f(5)$는 $c$부터 $7$까지 $8-c$가지입니다. 중간 세 값 $a<b<c$를 고정해 더합니다. $c=3,4,5,6,7$일 때 각각의 합은 $5,16,30,40,35$입니다.\n$\\displaystyle 5+16+30+40+35=126$\n따라서 정답은 ①입니다.",
+      "decisiveStep": "Monotone endpoint count grouped by c: 5+16+30+40+35=126."
+    }
+  ],
+  "disclosedAt": "2026-10-10T17:04:14.285Z"
+}

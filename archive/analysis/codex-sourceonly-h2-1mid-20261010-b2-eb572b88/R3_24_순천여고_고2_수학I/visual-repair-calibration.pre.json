@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_R3_VISUAL_REPAIR_CALIBRATION_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "reviewerIdentity": {
+    "reviewerId": "/root/r3_suncheon_yeo_math1",
+    "role": "archive_r3"
+  },
+  "stage": "VISUAL_REPAIR",
+  "source": {
+    "rawSha256": "ee74a3afa6f9de874411267ab9cc53cbec1d0618497aab5cef9303087c4abee2",
+    "blobSha1": "84b6457f0509a7356854852942f445b5e9ccdd87",
+    "path": "archive/exams/original/high/h2/1mid/24_순천여고_1학기_중간_고2_수학I.js"
+  },
+  "targetVisualRepairScope": {
+    "qids": [
+      19,
+      20,
+      22
+    ],
+    "captureReport": {
+      "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/R3_24_순천여고_고2_수학I/capture-02-q07-fixed-svg-readability-failure/machine-capture.json",
+      "sha256": "d1da635a28c0e7b24766a3db7a07444f602aae6f54af4ff950fdf3c6ec7127f7"
+    },
+    "assets": [
+      {
+        "sha256": "ad66809ae2f442c3ddb649468d049be63cb62a676c97b5d020d8219f5196e320",
+        "qid": 19,
+        "ref": "assets/images/24_순천여고_1학기_중간_고2_수학I/q19-solution.svg"
+      },
+      {
+        "sha256": "2a357a36f4ca8dc22c09d449475a49fe276b27068726644afff94e0543d49a70",
+        "qid": 20,
+        "ref": "assets/images/24_순천여고_1학기_중간_고2_수학I/q20-solution.svg"
+      },
+      {
+        "sha256": "3ce14cbbfad4a65390a8a4cab74bc3e36a4591243474a51449658dcc5a70ab18",
+        "qid": 22,
+        "ref": "assets/images/24_순천여고_1학기_중간_고2_수학I/q22-solution.svg"
+      }
+    ],
+    "inspectionCrop": {
+      "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/R3_24_순천여고_고2_수학I/capture-02-q07-fixed-svg-readability-failure/review-last-mobile.png",
+      "sha256": "aee0be5e07db0020ad9f928809cbc5e6002a0a4d0bde084bf2c085996bae7f78"
+    },
+    "mobileCapture": {
+      "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/R3_24_순천여고_고2_수학I/capture-02-q07-fixed-svg-readability-failure/sol-mobile.png",
+      "sha256": "cc356fd8f19978aa7217a331f7d9ad86eb0e084667a7ad5ee62ee49ab92e37b2"
+    },
+    "finding": "In official Archive Engine sol/mobile capture at 390x844, cell labels in q19/q20/q22 solution SVGs are too small to read; q19/q20/q22 table rows and topology remain intact.",
+    "mode": "TARGETED_REPAIR"
+  },
+  "solutionQualityCalibration": {
+    "scopeCompareCount": "3/3 changed solution SVGs",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR",
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "sampleReadBeforeWork": true,
+    "goldenSampleQuestionRefs": [
+      {
+        "observation": "The point-division formula, midpoint, and distance calculation are written in separate reproducible steps.",
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.",
+        "qid": 1,
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js"
+      },
+      {
+        "observation": "The necessary set-equality criterion is stated before the item-specific substitution.",
+        "solutionSha256": "sha256:5cec67e22a9be1c7667c879d80ae639baf011e44574e6963243d3d987324554f",
+        "solutionExcerpt": "$A\\subset B$이고 $B\\subset A$이므로 두 집합은 서로 같은 집합이다.",
+        "qid": 5,
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js"
+      },
+      {
+        "observation": "Coordinate differences, substitution, simplification and the exact radical result are separated.",
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.",
+        "qid": 1,
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+      },
+      {
+        "visualSha256": "sha256:752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c",
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "visualRead": {
+          "sha256": "3f106613ff75ad55c606e3fd51309c568319976a890c56ce19726170af8d9140",
+          "browserVersion": "154.0.8037.98",
+          "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/R3_24_순천여고_고2_수학I/calibration-hyocheon-q3.svg.png"
+        },
+        "solutionExcerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.",
+        "observation": "The completed-square solution is explicit; the linked circle SVG shows labeled center/radius and is visibly legible in a current Chromium read.",
+        "qid": 3,
+        "solutionSha256": "sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370"
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "observation": "Read runtime-decoded source and actual primitive failures; counts/self-reported PASS are not evidence.",
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+      }
+    ],
+    "goldenSampleRefs": [
+      {
+        "sha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949"
+      },
+      {
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      }
+    ]
+  },
+  "createdAt": "2026-10-10T17:11:41.9447270Z",
+  "noBackdating": true
+}

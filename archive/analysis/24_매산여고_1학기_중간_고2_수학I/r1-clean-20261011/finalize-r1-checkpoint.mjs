@@ -1,0 +1,10 @@
+import fs from 'node:fs';import crypto from 'node:crypto';
+const p=process.argv[2],dir=process.argv[3],x=JSON.parse(fs.readFileSync(p,'utf8')),h=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+x.answerAxis.answerComparisonSha256=h(dir+'r1-answer-comparison.json');
+x.answerAxis.technicalAttemptLogRef=dir+'r1-technical-attempts-v2.json';x.answerAxis.technicalAttemptLogSha256=h(dir+'r1-technical-attempts-v2.json');
+x.metaAxis.q18RepairEvidenceRef=dir+'r1-q18-meta-repair-evidence-v2.json';x.metaAxis.q18RepairEvidenceSha256=h(dir+'r1-q18-meta-repair-evidence-v2.json');
+x.metaAxis.nullProjectionDebtReasonsRef=dir+'r1-nondifficulty-checkpoint.json';
+x.visualAxis.assetRepairEvidenceRefs=[{path:dir+'r1-svg-repair-ledger.json',sha256:h(dir+'r1-svg-repair-ledger.json')},{path:dir+'r1-svg-repair-loci.json',sha256:h(dir+'r1-svg-repair-loci.json')}];
+x.repairHistory=[{path:dir+'r1-source-repair-ledger.json',sha256:h(dir+'r1-source-repair-ledger.json')},{path:dir+'r1-q18-meta-before.json',sha256:h(dir+'r1-q18-meta-before.json')},{path:dir+'r1-q18-meta-repair-evidence-v2.json',sha256:h(dir+'r1-q18-meta-repair-evidence-v2.json')},...x.visualAxis.assetRepairEvidenceRefs];
+x.remainingWork=[{owner:'ROOT-dispatched fresh difficulty-only reviewer',scope:'q1-q24',action:'perform clean first-pass with student-only input, then compare level/bucket/compatibility after freeze; return evidence'},{owner:'ROOT',scope:'question_metadata.json projection rows for q1-q24',action:'resolve source→Consumer/index fields; do not infer from the empty projection records'},{owner:'current R1 worker after clean difficulty result',scope:'q1-q24',action:'integrate clean difficulty evidence, apply evidence-backed difficulty fields, perform required current projection/debt disposition, run normal V2 R1 validator once, repair any actual failure, then seal stable completion event'}];
+fs.writeFileSync(p,JSON.stringify(x,null,2)+String.fromCharCode(10));console.log(JSON.stringify({path:p,sha256:h(p),sourceRawSha256:x.assignment.sourceRawSha256,qidCount:x.rows.length,difficultyStatus:x.difficultyAxis.status,remainingWork:x.remainingWork},null,2));

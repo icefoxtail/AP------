@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_PREFLIGHT_ADJUDICATION_V1",
+  "examUid": "24_순천여고_1학기_중간_고2_확률과통계",
+  "stageId": "CREATE.24_순천여고_확률과통계",
+  "reviewerId": "/root/create_suncheon_yeo_prob",
+  "sourceRawSha256": "c0a092f5047e8e39c1c0d0de08551c473415c718e9b35eb9f1a9acaf33233a8b",
+  "preflight": {
+    "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/CREATE_24_순천여고_1학기_중간_고2_확률과통계/CREATE.preflight.final.stdout.json",
+    "sha256": "b59dabf28f5fff6c48f74398af40ea9320218e5de4e0f45d447e85d839f16432",
+    "stderrPath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/CREATE_24_순천여고_1학기_중간_고2_확률과통계/CREATE.preflight.final.stderr.txt",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exitCode": 1,
+    "status": "REVIEW_REQUIRED",
+    "itemHoldCount": 1,
+    "findings": [
+      {
+        "qid": 14,
+        "field": "content",
+        "code": "TEX_MATH_DELIMITER_UNPAIRED",
+        "locus": {
+          "start": 131,
+          "end": 133,
+          "text": "$$"
+        },
+        "reason": "Opening math delimiter has no matching closer."
+      }
+    ]
+  },
+  "adjudications": [
+    {
+      "qid": 10,
+      "status": "REPAIRED_TEX_MARKUP_ONLY",
+      "reason": "Missing closing `$` after the final ㄷ coefficient was repaired. The displayed source expression and choices remain unchanged; raw before/after and SHA are in q10-tex-markup-repair.json."
+    },
+    {
+      "qid": 14,
+      "status": "REVIEWED_FALSE_POSITIVE_NO_SOURCE_MUTATION",
+      "finding": "TEX_MATH_DELIMITER_UNPAIRED at opening $$",
+      "fact": "The source content has a matching closing $$ after f(5); all single-dollar inline pairs are also balanced. The preflight code masks `<...>` sequences as HTML tags, so the less-than relations inside the math expression cause it to mask the later display-math close. The Archive-facing source is left exact."
+    },
+    {
+      "qid": 22,
+      "status": "CARRY_ITEM_HOLD",
+      "reason": "Exact source restricts only integer a,b,c,n and a<b. The sum is 6815 and distinct integer quadruples (2,3,-2,8) and (0,1,6814,1) both satisfy it. No intended tuple or extra condition is inferred."
+    }
+  ],
+  "finalDisposition": "PREFLIGHT_REVIEW_REQUIRED_WITH_Q14_PARSER_FALSE_POSITIVE_ADJUDICATED_AND_Q22_TRUE_ITEM_HOLD_CARRIED",
+  "sourceMutationByAdjudication": false
+}

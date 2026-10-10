@@ -1,0 +1,505 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_VISUAL_PHYSICAL_EVIDENCE_V1",
+  "examUid": "24_순천여고_1학기_중간_고2_수학I",
+  "sourceArtifactPath": "archive/exams/original/high/h2/1mid/24_순천여고_1학기_중간_고2_수학I.js",
+  "rendererCapabilityRead": "alive/engine/visual_renderer.py SUPPORTED_TYPES; v0.1 spec",
+  "staticRasterReviewed": true,
+  "actualArchiveProductRender": "NOT_RUN_R3_REQUIRED",
+  "items": [
+    {
+      "qid": 18,
+      "need": "BENEFICIAL",
+      "assetAction": "NEW_SVG",
+      "assetRef": "assets/images/24_순천여고_1학기_중간_고2_수학I/q18-solution.svg",
+      "assetSha256": "b5d851c937c40278aa0ddac77c1351b8fdec0cc12bbc11441e7bb2c4186175cf",
+      "renderer": {
+        "implementation": "alive.engine.visual_renderer",
+        "version": "0.5.2-circle-geometry-label-layout",
+        "type": "coordinate_plane",
+        "specVersion": "0.1",
+        "supported": true,
+        "deterministicRerender": "PASS",
+        "generativeModelUsed": false,
+        "specPath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/CREATE-q18-solution.visual-spec.json",
+        "specSha256": "ce66d184027a956cd8bf71bb99da33a63e96b68ba0ddaf2ae65f98f68a4883e5",
+        "reportPath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/CREATE-q18-solution.renderer-report.json"
+      },
+      "staticRender": {
+        "tool": "ImageMagick SVG rasterization",
+        "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/CREATE-q18-solution.static.png",
+        "sha256": "a5f174cc420aeeb11404fd980d86ee4fb7d58d26d657a84f5503a3b9762bb97a",
+        "openedAndReviewed": true,
+        "studentArchiveEngineRender": "NOT_RUN_R3_REQUIRED"
+      },
+      "xmlParseStatus": "PASS",
+      "expectedFactCompletenessStatus": "PASS",
+      "sourceConditionCoverage": [
+        {
+          "condition": "two distinct intersections of an inverse-function pair",
+          "relevantToVisual": true,
+          "materialized": "paired curves mirrored about y=x, A/B at fixed points"
+        },
+        {
+          "condition": "AB=2√2",
+          "relevantToVisual": true,
+          "materialized": "highlighted AB endpoints at A(0,0), B(2,2); measured length"
+        },
+        {
+          "condition": "perpendicular bisector x+y=2",
+          "relevantToVisual": true,
+          "materialized": "perpendicular line through midpoint M(1,1)"
+        },
+        {
+          "condition": "a>1",
+          "relevantToVisual": false,
+          "reason": "algebraic parameter domain retained in adjacent solution text"
+        }
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "expectedFacts": [
+        {
+          "fact": "A=(0,0)",
+          "role": "DERIVED_INTERMEDIATE"
+        },
+        {
+          "fact": "M=(1,1)",
+          "role": "DERIVED_INTERMEDIATE"
+        },
+        {
+          "fact": "B=(2,2)",
+          "role": "DERIVED_INTERMEDIATE"
+        },
+        {
+          "fact": "AB length 2√2",
+          "role": "GIVEN"
+        },
+        {
+          "fact": "perpendicular bisector x+y=2",
+          "role": "GIVEN"
+        },
+        {
+          "fact": "inverse graphs symmetric about y=x",
+          "role": "GIVEN"
+        }
+      ],
+      "observedFacts": [
+        {
+          "fact": "point primitives",
+          "values": [
+            [
+              0,
+              0
+            ],
+            [
+              1.0000000015243904,
+              1.0000000015243904
+            ],
+            [
+              2.00000000304878,
+              2.00000000304878
+            ]
+          ],
+          "maxCoordinateDelta": 3.0487798952094636e-9
+        },
+        {
+          "fact": "AB segment primitive endpoints",
+          "values": [
+            [
+              0,
+              0
+            ],
+            [
+              2.00000000304878,
+              2.00000000304878
+            ]
+          ],
+          "length": 2.828427129057816,
+          "expectedLength": 2.8284271247461903,
+          "delta": 4.31162572311905e-9
+        },
+        {
+          "fact": "y=x guideline",
+          "slope": 1,
+          "expectedSlope": 1
+        },
+        {
+          "fact": "perpendicular bisector line",
+          "slope": -1,
+          "endpointCoordinateSums": [
+            2.000000003048781,
+            2.000000003048781
+          ],
+          "expectedSlope": -1,
+          "expectedCoordinateSum": 2
+        },
+        {
+          "fact": "inverse-function curve samples",
+          "sampleCount": 25,
+          "maxSwapDelta": 8.881784197001252e-16
+        },
+        {
+          "fact": "orthogonal relation mark",
+          "svgPrimitivePresent": true,
+          "rendererSpecDotProductValidation": "PASS"
+        },
+        {
+          "fact": "coordinate frame",
+          "xAxisHorizontal": true,
+          "yAxisVertical": true,
+          "equalUnitScale": true,
+          "originAtAxesIntersection": true
+        },
+        {
+          "fact": "AB segment primitive endpoints",
+          "values": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              2
+            ]
+          ],
+          "length": 2.8284271247461903,
+          "expectedLength": 2.8284271247461903,
+          "delta": 0
+        }
+      ],
+      "semanticParity": "PASS",
+      "sourceSemanticIdentity": {
+        "applicable": true,
+        "checks": "두 역함수 그래프의 교점은 y=x 위에 있고, 점 좌표 A(0,0), M(1,1), B(2,2) 및 중점·수직이등분선 관계를 좌표 평면/렌더된 primitives에서 확인; SVG 곡선 대응 표본 25쌍의 좌표 교환 오차 ≤ 8.89e−16."
+      },
+      "factVisualizations": [
+        {
+          "fact": "x+y=2",
+          "role": "GIVEN",
+          "encoding": "GIVEN_STYLE",
+          "primitive": "perpendicular line"
+        },
+        {
+          "fact": "AB=2√2",
+          "role": "GIVEN",
+          "encoding": "GIVEN_STYLE",
+          "primitive": "highlighted segment endpoints; measured coordinate distance"
+        },
+        {
+          "fact": "A,B lie on y=x",
+          "role": "DERIVED_INTERMEDIATE",
+          "encoding": "DERIVED_STYLE",
+          "primitive": "paired curves and diagonal guideline"
+        },
+        {
+          "fact": "A=(0,0), M=(1,1), B=(2,2)",
+          "role": "DERIVED_INTERMEDIATE",
+          "encoding": "DERIVED_STYLE",
+          "primitive": "point labels and coordinate positions"
+        },
+        {
+          "fact": "a+b=√3−1",
+          "role": "CONCLUSION",
+          "encoding": "NOT_RENDERED",
+          "primitive": null
+        }
+      ]
+    },
+    {
+      "qid": 19,
+      "need": "BENEFICIAL",
+      "assetAction": "NEW_SVG",
+      "assetRef": "assets/images/24_순천여고_1학기_중간_고2_수학I/q19-solution.svg",
+      "assetSha256": "ad66809ae2f442c3ddb649468d049be63cb62a676c97b5d020d8219f5196e320",
+      "renderer": {
+        "implementation": "alive.engine.visual_renderer",
+        "version": "0.5.2-circle-geometry-label-layout",
+        "type": "table",
+        "specVersion": "0.1",
+        "supported": true,
+        "deterministicRerender": "PASS",
+        "generativeModelUsed": false,
+        "specPath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/CREATE-q19-solution.visual-spec.json",
+        "specSha256": "5f30dd491963f853773d472d808d5a29455cd316924248f6d3e28f04f72e9246",
+        "reportPath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/CREATE-q19-solution.renderer-report.json"
+      },
+      "staticRender": {
+        "tool": "ImageMagick SVG rasterization",
+        "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/CREATE-q19-solution.static.png",
+        "sha256": "8fac17e1ae2092918a99980533182ab22df13daf10f47fb3bb1bc580681c5dc5",
+        "openedAndReviewed": true,
+        "studentArchiveEngineRender": "NOT_RUN_R3_REQUIRED"
+      },
+      "xmlParseStatus": "PASS",
+      "expectedFactCompletenessStatus": "PASS",
+      "sourceConditionCoverage": [
+        {
+          "condition": "2≤m<10, m natural",
+          "relevantToVisual": true,
+          "materialized": "all eight candidate integers are partitioned into prime-exponent gcd groups"
+        }
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "expectedFacts": [
+        {
+          "fact": "m=2,3,5,6,7 gives g=18 and N(g)=5",
+          "role": "DERIVED_INTERMEDIATE"
+        },
+        {
+          "fact": "m=4,9 gives g=36 and N(g)=8",
+          "role": "DERIVED_INTERMEDIATE"
+        },
+        {
+          "fact": "m=8 gives g=54 and N(g)=7",
+          "role": "DERIVED_INTERMEDIATE"
+        }
+      ],
+      "observedFacts": [
+        {
+          "fact": "actual renderer cell text",
+          "values": [
+            "m",
+            "g",
+            "N(g)",
+            "2,3,5,6,7",
+            "18",
+            "5",
+            "4,9",
+            "36",
+            "8",
+            "8",
+            "54",
+            "7"
+          ],
+          "expected": [
+            "m",
+            "g",
+            "N(g)",
+            "2,3,5,6,7",
+            "18",
+            "5",
+            "4,9",
+            "36",
+            "8",
+            "8",
+            "54",
+            "7"
+          ],
+          "exactParity": true
+        }
+      ],
+      "semanticParity": "PASS",
+      "sourceSemanticIdentity": {
+        "applicable": false,
+        "checks": []
+      },
+      "factVisualizations": [
+        {
+          "fact": "candidate classification by prime-exponent gcd",
+          "role": "DERIVED_INTERMEDIATE",
+          "encoding": "DERIVED_STYLE",
+          "primitive": "rendered table cells"
+        }
+      ]
+    },
+    {
+      "qid": 20,
+      "need": "BENEFICIAL",
+      "assetAction": "NEW_SVG",
+      "assetRef": "assets/images/24_순천여고_1학기_중간_고2_수학I/q20-solution.svg",
+      "assetSha256": "2a357a36f4ca8dc22c09d449475a49fe276b27068726644afff94e0543d49a70",
+      "renderer": {
+        "implementation": "alive.engine.visual_renderer",
+        "version": "0.5.2-circle-geometry-label-layout",
+        "type": "table",
+        "specVersion": "0.1",
+        "supported": true,
+        "deterministicRerender": "PASS",
+        "generativeModelUsed": false,
+        "specPath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/CREATE-q20-solution.visual-spec.json",
+        "specSha256": "2521f177f1338ed35a0b7312a1db869e095b5a689271bd8c784fafc1d0beb233",
+        "reportPath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/CREATE-q20-solution.renderer-report.json"
+      },
+      "staticRender": {
+        "tool": "ImageMagick SVG rasterization",
+        "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/CREATE-q20-solution.static.png",
+        "sha256": "3a2ff2a07680938519b62709c0b2987b8dc2a22af30cbc1635e10fd6a0ba816b",
+        "openedAndReviewed": true,
+        "studentArchiveEngineRender": "NOT_RUN_R3_REQUIRED"
+      },
+      "xmlParseStatus": "PASS",
+      "expectedFactCompletenessStatus": "PASS",
+      "sourceConditionCoverage": [
+        {
+          "condition": "first inequality yields x≤2",
+          "relevantToVisual": true,
+          "materialized": "E row"
+        },
+        {
+          "condition": "second inequality domain and bound yield 0<x≤4",
+          "relevantToVisual": true,
+          "materialized": "L row"
+        },
+        {
+          "condition": "both inequalities must hold",
+          "relevantToVisual": true,
+          "materialized": "E∩L row"
+        }
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "expectedFacts": [
+        {
+          "fact": "E=(-∞,2]",
+          "role": "DERIVED_INTERMEDIATE"
+        },
+        {
+          "fact": "L=(0,4]",
+          "role": "DERIVED_INTERMEDIATE"
+        },
+        {
+          "fact": "E∩L=(0,2]",
+          "role": "CONCLUSION"
+        }
+      ],
+      "observedFacts": [
+        {
+          "fact": "actual renderer cell text",
+          "values": [
+            "E",
+            "x ≤ 2",
+            "L",
+            "0 < x ≤ 4",
+            "E ∩ L",
+            "0 < x ≤ 2"
+          ],
+          "expected": [
+            "E",
+            "x ≤ 2",
+            "L",
+            "0 < x ≤ 4",
+            "E ∩ L",
+            "0 < x ≤ 2"
+          ],
+          "exactParity": true
+        }
+      ],
+      "semanticParity": "PASS",
+      "sourceSemanticIdentity": {
+        "applicable": false,
+        "checks": []
+      },
+      "factVisualizations": [
+        {
+          "fact": "E and L solution-set intersection",
+          "role": "CONCLUSION",
+          "encoding": "CONCLUSION_STYLE",
+          "primitive": "E, L, E∩L table rows"
+        }
+      ]
+    },
+    {
+      "qid": 22,
+      "need": "BENEFICIAL",
+      "assetAction": "NEW_SVG",
+      "assetRef": "assets/images/24_순천여고_1학기_중간_고2_수학I/q22-solution.svg",
+      "assetSha256": "3ce14cbbfad4a65390a8a4cab74bc3e36a4591243474a51449658dcc5a70ab18",
+      "renderer": {
+        "implementation": "alive.engine.visual_renderer",
+        "version": "0.5.2-circle-geometry-label-layout",
+        "type": "table",
+        "specVersion": "0.1",
+        "supported": true,
+        "deterministicRerender": "PASS",
+        "generativeModelUsed": false,
+        "specPath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/CREATE-q22-solution.visual-spec.json",
+        "specSha256": "0eae73bdc52cc8f08a99ce48c19e780c40dceda560e021a394f9296d4a579f6b",
+        "reportPath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/CREATE-q22-solution.renderer-report.json"
+      },
+      "staticRender": {
+        "tool": "ImageMagick SVG rasterization",
+        "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/CREATE-q22-solution.static.png",
+        "sha256": "f37ec2e1ebc4b55940ffa782375c59bf1de8c17bcfdde1457ba3531b677a4f9d",
+        "openedAndReviewed": true,
+        "studentArchiveEngineRender": "NOT_RUN_R3_REQUIRED"
+      },
+      "xmlParseStatus": "PASS",
+      "expectedFactCompletenessStatus": "PASS",
+      "sourceConditionCoverage": [
+        {
+          "condition": "2x−1=1 exceptional case",
+          "relevantToVisual": true,
+          "materialized": "first row x=1, equal zero logs"
+        },
+        {
+          "condition": "remaining nonunit argument case",
+          "relevantToVisual": true,
+          "materialized": "second row polynomial candidates"
+        },
+        {
+          "condition": "logarithm domain x>1/2",
+          "relevantToVisual": true,
+          "materialized": "filter x=−5 and retain x=2"
+        }
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "expectedFacts": [
+        {
+          "fact": "x=1 is a valid root from argument 1",
+          "role": "DERIVED_INTERMEDIATE"
+        },
+        {
+          "fact": "x=−5,2 are candidates from B=10",
+          "role": "DERIVED_INTERMEDIATE"
+        },
+        {
+          "fact": "x=−5 fails x>1/2 and x=2 is valid",
+          "role": "DERIVED_INTERMEDIATE"
+        },
+        {
+          "fact": "all roots are 1,2",
+          "role": "CONCLUSION"
+        }
+      ],
+      "observedFacts": [
+        {
+          "fact": "actual renderer cell text",
+          "values": [
+            "2x−1 = 1",
+            "x = 1",
+            "0 = 0",
+            "x²+3x = 10",
+            "x = −5, 2",
+            "x > 1/2 -> x = 2"
+          ],
+          "expected": [
+            "2x−1 = 1",
+            "x = 1",
+            "0 = 0",
+            "x²+3x = 10",
+            "x = −5, 2",
+            "x > 1/2 -> x = 2"
+          ],
+          "exactParity": true
+        }
+      ],
+      "semanticParity": "PASS",
+      "sourceSemanticIdentity": {
+        "applicable": false,
+        "checks": []
+      },
+      "factVisualizations": [
+        {
+          "fact": "exceptional argument-one case and domain-filtered candidates",
+          "role": "DERIVED_INTERMEDIATE",
+          "encoding": "DERIVED_STYLE",
+          "primitive": "separate table rows"
+        }
+      ]
+    }
+  ],
+  "artifactRawSha256": "005e32598224801ad64958725cd2fde129c254c2295d3d674efbf2fdf5b12768",
+  "artifactSha": "005e32598224801ad64958725cd2fde129c254c2295d3d674efbf2fdf5b12768"
+}

@@ -35,3 +35,10 @@ test("Original and mixed engine mode tabs keep 44px hit areas on mobile", () => 
   assert.match(ruleBlocks(mobileRule[1], ".mode-tabs .mode-tab")[0], /min-height:\s*44px/);
   assert.doesNotMatch(previewCss, /@media\s+print/i);
 });
+
+test("Mobile MathJax wrapping is scoped to Archive2 solution boxes", () => {
+  assert.match(previewCss, /html\[data-archive2-context="archive2"\]\[data-ap-render-ready="true"\] \.q-box\.sol-box \.sol-exp mjx-container\s*\{/);
+  assert.match(previewCss, /html:not\(\[data-archive2-context\]\):has\(#qpp-display\)\[data-ap-render-ready="true"\] \.q-box\.sol-box \.sol-exp mjx-container\s*\{/);
+  assert.match(previewCss, /\.q-box\.sol-box \.sol-exp mjx-container mjx-math\s*\{/);
+  assert.doesNotMatch(previewCss, /\.q-box:not\(\.sol-box\).*mjx-container/);
+});

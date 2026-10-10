@@ -19,6 +19,7 @@ export const REGISTRY_PATHS = Object.freeze([
 ]);
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const json = bytes => JSON.parse(Buffer.from(bytes).toString('utf8').replace(/^\uFEFF/, ''));
+const clone = value => JSON.parse(JSON.stringify(value));
 const deep = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 const fail = (code, detail = '') => { throw Object.assign(new Error(code + (detail ? ':' + detail : '')), { code }); };
 const evalWindow = (source, name) => { const box = { window: {} }; vm.runInNewContext(source, box, { timeout: 5000 }); return box.window[name]; };
@@ -64,19 +65,48 @@ function indexRows(bytes) {
   return { rows: JSON.parse(source.slice(start, end)), encode: rows => Buffer.from(source.slice(0, start) + JSON.stringify(rows) + source.slice(end), 'utf8') };
 }
 
-function assertIndexReportInvariant(before, after) {
-  const visual = row => {
-    const text = String(row.contentText || '');
-    return { image: Boolean(row.hasImage), solutionImage: Boolean(row.hasSolutionImage), img: (text.match(/<img\b/gi) || []).length, svg: (text.match(/<svg\b/gi) || []).length, table: (text.match(/<table\b/gi) || []).length };
+function sourceIndexText(value) {
+  return String(value || '')
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/&amp;/gi, '&')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+function assertIndexReportInvariant(before, after, sourceBank) {
+  const sourceVisualFlags = question => {
+    const content = String(question?.content || '');
+    return { hasImage: Boolean(question?.image) || /<img\b/i.test(content) || /<svg\b/i.test(content) || /<table\b/i.test(content), hasSolutionImage: Boolean(question?.solutionImage) };
   };
   for (const old of before) {
     const next = after.find(row => Number(row.sourceOrdinal) === Number(old.sourceOrdinal));
     if (!next) fail('INDEX_TARGET_ORDINAL_MISSING', String(old.sourceOrdinal));
-    for (const key of ['qKey', 'id', 'level', 'standardUnit', 'standardUnitKey', 'standardCourse']) if (!deep(old[key], next[key])) fail('INDEX_REPORT_AGGREGATE_DRIFT', key + ':q' + old.sourceOrdinal);
-    if (Boolean(String(old.contentText || '').trim()) !== Boolean(String(next.contentText || '').trim())) fail('INDEX_REPORT_AGGREGATE_DRIFT', 'content:q' + old.sourceOrdinal);
-    if (Boolean(String(old.choicesText || '').trim()) !== Boolean(String(next.choicesText || '').trim())) fail('INDEX_REPORT_AGGREGATE_DRIFT', 'choices:q' + old.sourceOrdinal);
+    for (const key of ['qKey', 'id']) if (!deep(old[key], next[key])) fail('INDEX_REPORT_AGGREGATE_DRIFT', key + ':q' + old.sourceOrdinal);
+    const question = sourceBank[Number(old.sourceOrdinal) - 1];
+    for (const [indexField, sourceFields] of [
+      ['level', ['level']], ['standardUnit', ['standardUnit']], ['standardUnitKey', ['standardUnitKey']],
+      ['course', ['standardCourse', 'course']],
+    ]) {
+      const sourceField = sourceFields.find(field => Object.prototype.hasOwnProperty.call(question, field));
+      if (sourceField) {
+        if (!deep(next[indexField], question[sourceField])) fail('INDEX_REPORT_SOURCE_META_PARITY_MISMATCH', indexField + ':q' + old.sourceOrdinal);
+      } else if (!deep(old[indexField], next[indexField])) fail('INDEX_REPORT_AGGREGATE_DRIFT', indexField + ':q' + old.sourceOrdinal);
+    }
+    const sourceQuestion = sourceBank[Number(old.sourceOrdinal) - 1];
+    if (!sourceQuestion || next.contentText !== sourceIndexText(sourceQuestion.content)) fail('INDEX_REPORT_SOURCE_CONTENT_PARITY_MISMATCH', 'content:q' + old.sourceOrdinal);
+    const sourceChoicesText = Array.isArray(sourceQuestion.choices) ? sourceQuestion.choices.map(choice => String(choice || '')).join(' ') : '';
+    if (next.choicesText !== sourceIndexText(sourceChoicesText)) fail('INDEX_REPORT_SOURCE_CONTENT_PARITY_MISMATCH', 'choices:q' + old.sourceOrdinal);
     if (Boolean(Array.isArray(old.tags) && old.tags.length) !== Boolean(Array.isArray(next.tags) && next.tags.length)) fail('INDEX_REPORT_AGGREGATE_DRIFT', 'tags:q' + old.sourceOrdinal);
-    if (!deep(visual(old), visual(next))) fail('INDEX_REPORT_AGGREGATE_DRIFT', 'visual:q' + old.sourceOrdinal);
+    const expectedVisual = sourceVisualFlags(question);
+    if (Boolean(next.hasImage) !== expectedVisual.hasImage || Boolean(next.hasSolutionImage) !== expectedVisual.hasSolutionImage) {
+      fail('INDEX_REPORT_SOURCE_VISUAL_PARITY_MISMATCH', 'q' + old.sourceOrdinal);
+    }
   }
 }
 
@@ -199,7 +229,7 @@ function buildRuntime(identity) {
 function packCatalog(catalog, base, sourceFile) {
   if (base.encoding !== 'column-dictionary-v1') return { ...catalog, records: catalog.records };
   const columns = [...base.columns], columnSet = new Set(columns);
-  for (const row of catalog.records) for (const key of Object.keys(row)) if (!columnSet.has(key)) fail('CATALOG_COLUMN_SET_CHANGE_REQUIRED', key);
+  for (const row of catalog.records) for (const key of Object.keys(row)) if (!columnSet.has(key)) { columnSet.add(key); columns.push(key); }
   const strings = [...base.strings], stringIds = new Map(strings.map((value, index) => [value, index]));
   const encode = value => {
     if (typeof value !== 'string') return value ?? null;
@@ -208,9 +238,9 @@ function packCatalog(catalog, base, sourceFile) {
   };
   const bySourceOrdinal = new Map(catalog.records.filter(row => row.sourceFile === sourceFile).map(row => [Number(row.sourceOrdinal), row]));
   const baseDecoded = core.decodeCatalog(base).records;
-  const records = base.records.map((packed, index) => {
-    if (core.normalizeFile(baseDecoded[index].sourceFile) !== sourceFile) return packed;
-    const row = bySourceOrdinal.get(Number(baseDecoded[index].sourceOrdinal));
+  const records = baseDecoded.map((baseRow, index) => {
+    if (core.normalizeFile(baseRow.sourceFile) !== sourceFile) return columns.map(column => encode(baseRow[column]));
+    const row = bySourceOrdinal.get(Number(baseRow.sourceOrdinal));
     if (!row) fail('CATALOG_TARGET_PACKED_ROW_MISSING');
     return columns.map(column => encode(row[column]));
   });
@@ -241,6 +271,7 @@ export const TARGET_META_DELTA_POLICY = Object.freeze({
   fields: Object.freeze([
     'standardCourse', 'standardUnitKey', 'standardUnit', 'standardUnitOrder',
     'subUnitKey', 'subUnit', 'subUnitConfidence', 'subUnitClassificationDepth',
+    'difficultyBucket', 'difficultyConfidence', 'difficultyBoundaryFlag', 'legacyLevelCompatibility',
     'conceptClusterKey', 'problemTypeKey', 'templateKey', 'crossConceptKeys',
     'conditionKeys', 'integrationPattern', 'curriculumKey', 'courseKey',
     'L1', 'L2', 'L3', 'L4', 'secondaryConceptKeys', 'curriculumApplicability',
@@ -252,7 +283,9 @@ export const TARGET_META_DELTA_POLICY = Object.freeze({
 const TARGET_META_REVIEW_FIELDS = new Set([
   'metadataStatus', 'reviewStatus', 'fieldStatus', 'approvalEvidence',
   'metadataRevision', 'tagStatus', 'tagConfidence', 'registrationUpdateState',
+  'projectionStatus', 'metaDebtFields', 'metaDebtReason', 'metaDebtReasons',
 ]);
+const TARGET_META_DEBT_FIELDS = Object.freeze(['projectionStatus', 'metaDebtFields', 'metaDebtReason', 'metaDebtReasons']);
 const TARGET_META_SOURCE_IDENTITY_FIELDS = new Set([
   'questionUid', 'sourceArchiveFile', 'sourceOrdinal', 'sourceQuestionNo', 'legacyQKey',
   'sourceFingerprint', 'contentFingerprint',
@@ -267,6 +300,92 @@ function physicalMetaSourceValue(question, field) {
   return { present: true, value: question[field] };
 }
 
+function parseEmbeddedExactMetaDebts(evidence) {
+  if (typeof evidence !== 'string') return null;
+  const marker = 'Exact recorded evidence debt:';
+  const markerAt = evidence.indexOf(marker);
+  if (markerAt < 0) return null;
+  const start = evidence.indexOf('[', markerAt + marker.length);
+  if (start < 0) return null;
+  let depth = 0, quoted = false, escaped = false;
+  for (let index = start; index < evidence.length; index += 1) {
+    const char = evidence[index];
+    if (quoted) {
+      if (escaped) escaped = false;
+      else if (char === '\\') escaped = true;
+      else if (char === '"') quoted = false;
+      continue;
+    }
+    if (char === '"') quoted = true;
+    else if (char === '[') depth += 1;
+    else if (char === ']' && --depth === 0) {
+      try { return JSON.parse(evidence.slice(start, index + 1)); }
+      catch { return null; }
+    }
+  }
+  return null;
+}
+
+function deriveR1ExactMetaDebtRows(evidence) {
+  const result = [];
+  for (const row of evidence?.rows || []) {
+    const meta = row?.axisEvidence?.META ?? row?.axisEvidence?.meta;
+    const fourAxisMeta = row?.fourAxisReview?.META ?? row?.fourAxisReview?.meta;
+    let debts;
+    if (meta?.status === 'PASS_WITH_EXPLICIT_EVIDENCE_DEBT') {
+      debts = meta.exactDebts;
+    } else if (meta?.status === 'REVIEWED_WITH_EXACT_DECLARED_DEBT') {
+      if (!Array.isArray(row.metaDebtFields) || row.metaDebtFields.length === 0 || typeof row.metaDebtReason !== 'string' || !row.metaDebtReason.trim()) fail('CURRENT_R1_RECORDED_META_DEBT_INVALID', String(row.qid));
+      debts = row.metaDebtFields.map(field => ({ field: String(field), reason: row.metaDebtReason }));
+    } else if (meta?.status === 'REVIEWED') {
+      if (Array.isArray(row.metaDebtFields) && row.metaDebtFields.length === 0 && row.verdict === 'PASS') continue;
+      fail('CURRENT_R1_REVIEWED_META_ROW_INVALID', String(row.qid));
+    } else if (meta?.status === 'EVIDENCE_DEBT') {
+      if (!Array.isArray(row.metaDebtFields) || row.metaDebtFields.length === 0 || typeof row.metaDebtReason !== 'string'
+        || !row.metaDebtReason.trim() || meta.note?.trim() !== row.metaDebtReason.trim()) fail('CURRENT_R1_RECORDED_META_DEBT_INVALID', String(row.qid));
+      debts = row.metaDebtFields.map(field => ({ field: String(field), reason: row.metaDebtReason }));
+    } else if (meta?.status === 'PROJECTION_BINDING_PENDING') {
+      if (typeof meta.note !== 'string' || !meta.note.includes('DIRECT_BINDING_GAP') || !meta.note.includes('record nonblocking projection pending')) fail('CURRENT_R1_PROJECTION_BINDING_DEBT_INVALID', String(row.qid));
+      debts = [{ field: 'source_consumer_index_parity', reason: meta.note.trim() }];
+    } else if (meta?.status === 'REVIEWED_WITH_RECORDED_PROJECTION_DEBT'
+      && Array.isArray(row.metaDebtFields) && row.metaDebtFields.length > 0) {
+      if (typeof row.metaDebtReason !== 'string' || !row.metaDebtReason.trim() || meta.observation?.trim() !== row.metaDebtReason.trim()
+        || row.metaDebtFields.some(field => typeof field !== 'string' || !field.trim())) fail('CURRENT_R1_RECORDED_META_DEBT_INVALID', String(row.qid));
+      debts = row.metaDebtFields.map(field => ({ field: field.trim(), reason: row.metaDebtReason.trim() }));
+    } else if (fourAxisMeta?.disposition === 'CURRENT_NULL_DEBT_PRESERVED') {
+      const legacy = parseEmbeddedExactMetaDebts(fourAxisMeta.evidence);
+      if (!Array.isArray(legacy) || legacy.length === 0) fail('CURRENT_R1_LEGACY_EXACT_META_DEBT_INVALID', String(row.qid));
+      debts = [];
+      for (const debt of legacy) {
+        if (!debt || typeof debt.reason !== 'string' || !debt.reason.trim()) fail('CURRENT_R1_LEGACY_EXACT_META_DEBT_INVALID', String(row.qid));
+        const fields = Array.isArray(debt.fields) ? debt.fields : (typeof debt.field === 'string' ? [debt.field] : []);
+        if (!fields.length || fields.some(field => typeof field !== 'string' || !field.trim())) fail('CURRENT_R1_LEGACY_EXACT_META_DEBT_INVALID', String(row.qid));
+        for (const field of fields) debts.push({ field, reason: debt.reason });
+      }
+    } else {
+      continue;
+    }
+    if (!Array.isArray(debts) || debts.length === 0
+      || debts.some(debt => !debt || typeof debt.field !== 'string' || !debt.field.trim()
+        || typeof debt.reason !== 'string' || !debt.reason.trim())) {
+      fail(fourAxisMeta?.disposition === 'CURRENT_NULL_DEBT_PRESERVED'
+        ? 'CURRENT_R1_LEGACY_EXACT_META_DEBT_INVALID' : 'CURRENT_R1_EXACT_META_DEBT_INVALID', String(row.qid));
+    }
+    const unresolved = debts.filter(debt => debt.field.trim() !== 'questionUid')
+      .map(debt => ({ field: debt.field.trim(), reason: debt.reason.trim() }));
+    if (!unresolved.length) continue;
+    const metaDebtFields = [...new Set(unresolved.map(debt => debt.field))];
+    result.push({
+      qid: Number(row.qid),
+      metaDebtFields,
+      metaDebtReason: unresolved.map(debt => `${debt.field}: ${debt.reason}`).join(' | '),
+      metaDebtReasons: unresolved,
+      ...(typeof meta?.projectionStatus === 'string' && meta.projectionStatus.trim() ? { projectionStatus: meta.projectionStatus } : {}),
+    });
+  }
+  return result;
+}
+
 function targetMetaFieldGroup(field) {
   if (['standardCourse', 'standardUnitKey', 'standardUnit', 'standardUnitOrder'].includes(field)) return 'standardUnit';
   if (['subUnitKey', 'subUnit', 'subUnitConfidence', 'subUnitClassificationDepth'].includes(field)) return 'subUnit';
@@ -275,11 +394,91 @@ function targetMetaFieldGroup(field) {
   return 'concept';
 }
 
-export function deriveTargetMetadataDelta({ existingRows, candidateRows, sourceBank, identityRows, r1MetaPassQids, r1EvidenceRef }) {
+function isAcceptedCurrentR1MetaForDisplayProjection(r1Meta, source) {
+  if (['PASS', 'PASS_WITH_EXPLICIT_EVIDENCE_DEBT'].includes(r1Meta?.status)) return true;
+  if (r1Meta?.status === 'REVIEWED_WITH_RECORDED_PROJECTION_DEBT') {
+    const fields = r1Meta.metaDebtFields, reason = String(r1Meta.metaDebtReason || '').trim();
+    if (Array.isArray(fields) && fields.length === 0 && !reason) return r1Meta.observation === 'Current source metadata fields reviewed against canonical unit/crosswalk and active registries.';
+    return Array.isArray(fields) && fields.length > 0 && reason === String(r1Meta.observation || '').trim()
+      && fields.every(field => typeof field === 'string' && field.trim() && (['question_metadata_projection','source_consumer_index_parity'].includes(field) || source[field] === null || source[field] === undefined));
+  }
+  if (['REVIEWED_WITH_EXACT_DECLARED_DEBT', 'EVIDENCE_DEBT'].includes(r1Meta?.status)) {
+    return Array.isArray(r1Meta.metaDebtFields) && r1Meta.metaDebtFields.length > 0
+      && typeof r1Meta.metaDebtReason === 'string' && r1Meta.metaDebtReason.trim().length > 0;
+  }
+  if (r1Meta?.status === 'REVIEWED') return r1Meta.verdict === 'PASS' && r1Meta.metaDebtReason === 'No unresolved required Meta fields.';
+  if (r1Meta?.status === 'PROJECTION_BINDING_PENDING') return typeof r1Meta.note === 'string' && r1Meta.note.includes('DIRECT_BINDING_GAP') && r1Meta.note.includes('record nonblocking projection pending');
+  return false;
+}
+function hasBoundDisplayParent(projection, parent) {
+  if (!parent || parent.standardUnitKey !== projection.standardUnitKey || parent.L1 !== projection.L1 || parent.L2 !== projection.L2) return false;
+  if (parent.resolution === 'EXACT_CANONICAL_SUBUNIT') return parent.matchedSubUnitKey === projection.subUnitKey;
+  return parent.resolution === 'CANONICAL_PARENT_LABEL_ONLY' && parent.matchedSubUnitKey === '';
+}
+
+function isCanonicalParentOnlyR1Display(r1Meta, projection) {
+  if (!['REVIEWED_WITH_RECORDED_PROJECTION_DEBT', 'PASS_WITH_EXPLICIT_EVIDENCE_DEBT', 'EVIDENCE_DEBT', 'PROJECTION_BINDING_PENDING', 'REVIEWED_WITH_EXACT_DECLARED_DEBT', 'REVIEWED'].includes(r1Meta?.status)) return false;
+  const hasDirectRpm = Boolean(r1Meta.rpm?.l1 || r1Meta.rpm?.l2 || r1Meta.rpmL1 || r1Meta.rpmL2 || r1Meta.currentFields?.rpmL1 || r1Meta.currentFields?.rpmL2 || r1Meta.currentSourceFields?.rpmL1 || r1Meta.currentSourceFields?.rpmL2);
+  const evidenceFields = projection.evidenceByField || {};
+  return !hasDirectRpm && projection.L1 === projection.parentBinding?.L1 && projection.L2 === projection.parentBinding?.L2
+    && evidenceFields.rpmL1?.status === 'CONFIRMED' && evidenceFields.rpmL2?.status === 'CONFIRMED';
+}
+function verifyDisplayOnlyMetaProjection({ projection, candidate, source, metadata, sourceFile, r1EvidenceRef, r1Meta }) {
+  if (!projection) return false;
+  const binding = projection.sourceBinding || {};
+  const parent = projection.parentBinding || {};
+  const evidenceRefs = binding.evidenceRefs;
+  if (projection.projectionStatus !== 'DISPLAY_ONLY_SOURCE_BOUND' || projection.displayOnly !== true
+    || Object.hasOwn(projection, 'automatic') || Object.hasOwn(projection, 'defaultSelectable') || Object.hasOwn(projection, 'semanticDisposition')
+    || binding.questionUid !== candidate.questionUid
+    || core.normalizeFile(binding.sourceFile) !== sourceFile
+    || Number(binding.sourceOrdinal) !== Number(candidate.sourceOrdinal)
+    || binding.sourceFingerprint !== candidate.sourceFingerprint
+    || binding.assignmentFingerprint !== canonicalContentFingerprint(source)
+    || binding.metadataRevision !== metadata.metadataRevision
+    || !Array.isArray(evidenceRefs) || !evidenceRefs.includes(r1EvidenceRef)
+    || !r1Meta || !isAcceptedCurrentR1MetaForDisplayProjection(r1Meta, source)
+    || !hasBoundDisplayParent(projection, parent)) {
+    fail('CATALOG_DISPLAY_META_PROJECTION_SOURCE_BINDING_INVALID', 'q' + candidate.sourceOrdinal);
+  }
+  for (const field of ['standardCourse', 'standardUnitKey', 'standardUnit', 'subUnitKey', 'subUnit', 'curriculumKey', 'courseKey', 'L1', 'L2']) {
+    if (Object.prototype.hasOwnProperty.call(projection, field)
+      && Object.prototype.hasOwnProperty.call(metadata, field)
+      && !deep(projection[field], metadata[field])) fail('CATALOG_DISPLAY_META_PROJECTION_FIELD_PARITY_FAIL', field + ':q' + candidate.sourceOrdinal);
+  }
+  for (const field of ['standardCourse', 'standardUnitKey', 'standardUnit', 'subUnitKey', 'subUnit']) {
+    if (Object.prototype.hasOwnProperty.call(projection, field)
+      && Object.prototype.hasOwnProperty.call(r1Meta, field)
+      && !deep(projection[field], r1Meta[field])) fail('CATALOG_DISPLAY_META_PROJECTION_R1_PARITY_FAIL', field + ':q' + candidate.sourceOrdinal);
+  }
+  const rpmL1L4Unresolved = Array.isArray(r1Meta.exactDebts)
+    && r1Meta.exactDebts.some(debt => debt?.field === 'RPM_L1-L4' && typeof debt.reason === 'string' && debt.reason.trim());
+  const useCanonicalParentLabels = rpmL1L4Unresolved || isCanonicalParentOnlyR1Display(r1Meta, projection);
+  for (const [field, rpmField] of [['L1', 'l1'], ['L2', 'l2']]) {
+    if (Object.prototype.hasOwnProperty.call(projection, field)
+      && (useCanonicalParentLabels
+        ? projection[field] !== parent[field]
+        : (r1Meta.rpm?.[rpmField] !== projection[field]
+          || projection.evidenceByField?.[`rpm${field}`]?.status !== 'CONFIRMED'))) {
+      fail('CATALOG_DISPLAY_META_PROJECTION_R1_RPM_PARITY_FAIL', field + ':q' + candidate.sourceOrdinal);
+    }
+  }
+  if (Object.prototype.hasOwnProperty.call(projection, 'standardUnitKey')
+    && physicalMetaSourceValue(source, 'standardUnitKey').present
+    && projection.standardUnitKey !== source.standardUnitKey) fail('CATALOG_DISPLAY_META_PROJECTION_SOURCE_PARITY_FAIL', 'standardUnitKey:q' + candidate.sourceOrdinal);
+  if (Object.prototype.hasOwnProperty.call(projection, 'subUnitKey')
+    && physicalMetaSourceValue(source, 'subUnitKey').present
+    && projection.subUnitKey !== source.subUnitKey) fail('CATALOG_DISPLAY_META_PROJECTION_SOURCE_PARITY_FAIL', 'subUnitKey:q' + candidate.sourceOrdinal);
+  return true;
+}
+
+export function deriveTargetMetadataDelta({ existingRows, candidateRows, sourceBank, identityRows, r1MetaPassQids, r1MetaDebtRows = [], r1DisplayProjectionQids = [], r1EvidenceRef }) {
   const order = rows => [...rows].sort((a, b) => Number(a.sourceOrdinal) - Number(b.sourceOrdinal));
   if (![existingRows, candidateRows, identityRows, sourceBank].every(Array.isArray)
     || existingRows.length !== sourceBank.length || candidateRows.length !== sourceBank.length || identityRows.length !== sourceBank.length) fail('TARGET_META_DELTA_FULL_DENOMINATOR_REQUIRED');
   const passQids = new Set((r1MetaPassQids || []).map(Number));
+  const debtByQid = new Map((r1MetaDebtRows || []).map(row => [Number(row.qid), row]));
+  const displayProjectionQids = new Set((r1DisplayProjectionQids || []).map(Number));
   const policyFields = new Set(TARGET_META_DELTA_POLICY.fields);
   const oldRows = order(existingRows), newRows = order(candidateRows), ids = order(identityRows);
   const changes = [];
@@ -300,15 +499,33 @@ export function deriveTargetMetadataDelta({ existingRows, candidateRows, sourceB
         || TARGET_META_SOURCE_IDENTITY_FIELDS.has(key)) continue;
       if (JSON.stringify(old[key]) !== JSON.stringify(candidate[key])) fail('TARGET_META_FIELD_OUTSIDE_DELTA_POLICY', key + ':q' + qid);
     }
+    const expectedDebt = debtByQid.get(qid);
+    const debtFieldsChanged = TARGET_META_DEBT_FIELDS.some(field => JSON.stringify(old[field]) !== JSON.stringify(candidate[field]));
+    if (expectedDebt) {
+      if (!passQids.has(qid)
+        || !deep(candidate.metaDebtFields, expectedDebt.metaDebtFields)
+        || candidate.metaDebtReason !== expectedDebt.metaDebtReason
+        || !deep(candidate.metaDebtReasons, expectedDebt.metaDebtReasons)
+        || (expectedDebt.projectionStatus !== undefined && candidate.projectionStatus !== expectedDebt.projectionStatus)
+        || (expectedDebt.projectionStatus === undefined && candidate.projectionStatus !== old.projectionStatus)) {
+        fail('CANDIDATE_META_DEBT_R1_EVIDENCE_PARITY_MISMATCH', 'q' + qid);
+      }
+    } else if (debtFieldsChanged) {
+      fail('CANDIDATE_META_DEBT_WITHOUT_CURRENT_R1_EVIDENCE', 'q' + qid);
+    }
     const sourceChanged = old.sourceFingerprint !== identity.sourceFingerprint;
     const metaPass = passQids.has(qid);
     if (candidate.sourceFingerprint !== identity.sourceFingerprint
       || candidate.contentFingerprint !== canonicalContentFingerprint(source)) fail('CANDIDATE_META_IDENTITY_OR_CONTENT_FINGERPRINT_MISMATCH', 'q' + qid);
     if (changedFields.length && !metaPass) fail('TARGET_META_DELTA_REQUIRES_CURRENT_R1_META_PASS', 'q' + qid + ':' + changedFields.join(','));
-    const resetPending = changedFields.length > 0 || (sourceChanged && !metaPass);
+    const resetPending = changedFields.length > 0 || debtFieldsChanged || Boolean(expectedDebt)
+      || displayProjectionQids.has(qid) || (sourceChanged && !metaPass);
     const row = { ...old, sourceFingerprint: identity.sourceFingerprint };
     if (Object.prototype.hasOwnProperty.call(candidate, 'contentFingerprint')) row.contentFingerprint = candidate.contentFingerprint;
     for (const field of changedFields) row[field] = candidate[field];
+    if (expectedDebt) for (const field of TARGET_META_DEBT_FIELDS) {
+      if (Object.prototype.hasOwnProperty.call(candidate, field)) row[field] = clone(candidate[field]);
+    }
     const currentPhysicalMeta = Object.fromEntries(TARGET_META_DELTA_POLICY.fields
       .filter(field => Object.prototype.hasOwnProperty.call(row, field))
       .map(field => [field, row[field]]));
@@ -423,16 +640,44 @@ export async function buildExistingTargetMerge({ root, assignment, plan, candida
       || candidate.sourceFingerprint !== canonicalSourceFingerprint(source.bank[index])) fail('CANDIDATE_IDENTITY_NOT_DERIVED_FROM_CURRENT_SOURCE', 'q' + (index + 1));
   }
   const uidByOrdinal = new Map(ordered(replacements.identity).map(row => [Number(row.sourceOrdinal), row.questionUid]));
+  const legacyQKeyByOrdinal = new Map(ordered(replacements.identity).map(row => [Number(row.sourceOrdinal), row.legacyQKey]));
   for (const [name, rows] of [['metadata', replacements.metadata], ['index', replacements.index], ['catalog', replacements.catalog]]) for (const row of rows) {
-    if (row.questionUid !== uidByOrdinal.get(Number(row.sourceOrdinal))) fail('TARGET_UID_JOIN_MISMATCH', name + ':' + row.sourceOrdinal);
+    const ordinal = Number(row.sourceOrdinal);
+    if (name === 'index') {
+      if (row.qKey !== legacyQKeyByOrdinal.get(ordinal)) fail('TARGET_UID_JOIN_MISMATCH', name + ':' + row.sourceOrdinal);
+    } else if (row.questionUid !== uidByOrdinal.get(ordinal)) fail('TARGET_UID_JOIN_MISMATCH', name + ':' + row.sourceOrdinal);
   }
   const originalTargetMetadata = ordered(metaTarget);
   if (!Array.isArray(plan.originalTargetMetadata) || !deep(originalTargetMetadata, plan.originalTargetMetadata)
     || plan.originalTargetMetadataSha256 !== sha(Buffer.from(JSON.stringify(originalTargetMetadata), 'utf8'))) fail('ORIGINAL_TARGET_METADATA_PROVENANCE_BINDING_REQUIRED');
   const r1Proof = proofChain.stages.find(row => row.stage === 'R1');
+  const r1Evidence = json(fs.readFileSync(safeRootPath(realRoot, r1Proof.path)));
+  const r1MetaDebtRows = deriveR1ExactMetaDebtRows(r1Evidence);
+  const r1MetaByQid = new Map((r1Evidence.rows || []).map(row => {
+    const axis = row.axisEvidence?.META ?? row.axisEvidence?.meta ?? {}, fields = axis.currentFields || axis.currentSourceFields || axis.currentMeta || {};
+    return [Number(row.qid), { ...axis, ...Object.fromEntries(['standardCourse','standardUnitKey','standardUnit','subUnitKey','subUnit','rpmL1','rpmL2','rpmL3','rpmL4'].filter(key => fields[key] !== undefined).map(key => [key, fields[key]])),
+      rpm: axis.rpm || { l1: fields.rpmL1, l2: fields.rpmL2 },
+      metaDebtFields: Array.isArray(row.metaDebtFields) ? row.metaDebtFields : [],
+      metaDebtReason: typeof row.metaDebtReason === 'string' ? row.metaDebtReason : '',
+      verdict: row.verdict }];
+  }));
+  const oldCatalogRows = ordered(catalogTarget), candidateCatalogPlanRows = ordered(replacements.catalog), candidateMetaRows = ordered(replacements.metadata);
+  const r1DisplayProjectionQids = [];
+  for (let index = 0; index < qCount; index += 1) {
+    const candidateCatalog = candidateCatalogPlanRows[index], oldCatalog = oldCatalogRows[index];
+    if (!deep(candidateCatalog.metaProjection, oldCatalog.metaProjection) && candidateCatalog.metaProjection) {
+      verifyDisplayOnlyMetaProjection({
+        projection: candidateCatalog.metaProjection, candidate: candidateCatalog,
+        source: source.bank[index], metadata: candidateMetaRows[index], sourceFile, r1EvidenceRef: r1Proof.path,
+        r1Meta: r1MetaByQid.get(index + 1),
+      });
+      r1DisplayProjectionQids.push(index + 1);
+    }
+  }
   const metaDelta = deriveTargetMetadataDelta({
     existingRows: originalTargetMetadata, candidateRows: replacements.metadata, sourceBank: source.bank,
-    identityRows: ordered(replacements.identity), r1MetaPassQids: proofChain.r1MetaPassQids, r1EvidenceRef: r1Proof?.path,
+    identityRows: ordered(replacements.identity), r1MetaPassQids: proofChain.r1MetaPassQids,
+    r1MetaDebtRows, r1DisplayProjectionQids, r1EvidenceRef: r1Proof?.path,
   });
   const indexMetaMap = new Map([
     ['standardCourse', 'course'], ['standardUnitKey', 'standardUnitKey'], ['standardUnit', 'standardUnit'],
@@ -450,10 +695,14 @@ export async function buildExistingTargetMerge({ root, assignment, plan, candida
   const catalogMetaMap = new Map([
     ['standardCourse', 'standardCourse'], ['standardUnitKey', 'standardUnitKey'], ['standardUnit', 'standardUnit'],
     ['subUnitKey', 'subUnitKey'], ['subUnit', 'subUnit'], ['curriculumKey', 'curriculumKey'], ['courseKey', 'courseKey'],
+    ['conceptClusterKey', 'conceptClusterKey'], ['problemTypeKey', 'problemTypeKey'], ['templateKey', 'templateKey'],
+    ['crossConceptKeys', 'crossConceptKeys'], ['conditionKeys', 'conditionKeys'], ['integrationPattern', 'integrationPattern'],
+    ['difficultyBucket', 'difficultyBucket'], ['difficultyConfidence', 'difficultyConfidence'],
+    ['difficultyBoundaryFlag', 'difficultyBoundaryFlag'], ['legacyLevelCompatibility', 'legacyLevelCompatibility'],
     ['L1', 'L1'], ['L2', 'L2'], ['L3', 'L3'], ['L4', 'L4'],
   ]);
-  const catalogIdentityFields = new Set(['sourceFingerprint', 'rawQuestionHash', 'identityStatus', 'sourceIntegrityStatus', 'sourceStatus']);
-  const catalogComputedFields = new Set(['assignmentFingerprint', 'metadataAssignmentEvidence', 'taxonomyStatus', 'unverifiedTaxonomy', 'metadataConflicts', 'canonicalAssignmentReasons', 'courseFamilies', 'automatic', 'defaultSelectable', 'semanticDisposition', 'metadataStatus', 'fieldStatus', 'tagStatus', 'tagConfidence']);
+  const catalogIdentityFields = new Set(['sourceFingerprint', 'approvedSourceFingerprint', 'rawQuestionHash', 'identityStatus', 'sourceIntegrityStatus', 'sourceStatus']);
+  const catalogComputedFields = new Set(['assignmentFingerprint', 'metadataAssignmentEvidence', 'taxonomyStatus', 'unverifiedTaxonomy', 'metadataConflicts', 'canonicalAssignmentReasons', 'courseFamilies', 'automatic', 'defaultSelectable', 'semanticDisposition', 'metadataStatus', 'metadataRevision', 'fieldStatus', 'tagStatus', 'tagConfidence', 'reviewStatus', 'secondaryConceptKeys', 'metaProjectionStatus', 'metaProjectionFailureReason']);
   const catalogRows = ordered(replacements.catalog).map((candidate, index) => {
     const old = ordered(catalogTarget)[index];
     if (candidate.sourceStatus !== 'VERIFIED' || candidate.identityStatus !== 'VERIFIED'
@@ -466,7 +715,54 @@ export async function buildExistingTargetMerge({ root, assignment, plan, candida
     const decision = metaDelta.changes[index], metadata = metaDelta.rows[index];
     const physicalChanged = new Set(decision.changedFields);
     const allowedCatalogChanges = new Set([...catalogIdentityFields, ...catalogComputedFields]);
+    // A current R1-bound candidate can repair a stale catalog projection even when
+    // the physical source metadata already matches the target metadata row.
+    for (const [catalogField, metadataField] of catalogMetaMap) {
+      const candidateValue = candidate[catalogField];
+      const blankOrRetained = candidateValue === '' || candidateValue === null || candidateValue === undefined
+        || (Array.isArray(candidateValue) && candidateValue.length === 0) || deep(candidateValue, old[catalogField]);
+      const pendingDisplayUnavailable = candidate.metaProjectionStatus === 'DISPLAY_PROJECTION_UNAVAILABLE'
+        && ['DISPLAY_PROJECTION_PARENT_MISSING', 'DISPLAY_PROJECTION_COURSE_NOT_ALLOWED'].includes(candidate.metaProjectionFailureReason)
+        && blankOrRetained && ['approved_partial_with_explicit_holds', 'registration_pending_semantic_review'].includes(metadata.metadataStatus)
+        && (metadata.reviewStatus === 'review_required' || Object.values(metadata.fieldStatus || {}).includes('manual_review_pending'));
+      const unchangedDisplayOnlyProjection = candidate.metaProjectionStatus === 'DISPLAY_ONLY_SOURCE_BOUND'
+        && blankOrRetained && !physicalChanged.has(metadataField)
+        && (metadata.reviewStatus === 'review_required' || Object.values(metadata.fieldStatus || {}).includes('manual_review_pending'));
+      if (decision.r1MetaPass && Object.prototype.hasOwnProperty.call(candidate, catalogField)
+        && Object.prototype.hasOwnProperty.call(metadata, metadataField)
+        && (deep(candidateValue, metadata[metadataField]) || pendingDisplayUnavailable)) allowedCatalogChanges.add(catalogField);
+      else if ((pendingDisplayUnavailable && !physicalChanged.has(metadataField)) || unchangedDisplayOnlyProjection) allowedCatalogChanges.add(catalogField);
+    }
+    const sourceLevel = source.bank[index]?.level;
+    const legacyLevelSourceParity = Object.prototype.hasOwnProperty.call(candidate, 'legacyLevel')
+      && Object.prototype.hasOwnProperty.call(source.bank[index], 'level')
+      && deep(candidate.legacyLevel, sourceLevel);
+    const legacyLevelChanged = !deep(old.legacyLevel, candidate.legacyLevel);
+    if (legacyLevelChanged && !legacyLevelSourceParity) fail('CANDIDATE_CATALOG_LEGACY_LEVEL_SOURCE_PARITY_FAIL', 'q' + (index + 1));
+    if (legacyLevelSourceParity) allowedCatalogChanges.add('legacyLevel');
+    const legacyStandardUnitKeySourceParity = Object.prototype.hasOwnProperty.call(candidate, 'legacyStandardUnitKey')
+      && Object.prototype.hasOwnProperty.call(source.bank[index], 'standardUnitKey')
+      && deep(candidate.legacyStandardUnitKey, source.bank[index].standardUnitKey);
+    const legacyStandardUnitKeyChanged = !deep(old.legacyStandardUnitKey, candidate.legacyStandardUnitKey);
+    if (legacyStandardUnitKeyChanged && !legacyStandardUnitKeySourceParity) fail('CANDIDATE_CATALOG_LEGACY_STANDARD_UNIT_KEY_SOURCE_PARITY_FAIL', 'q' + (index + 1));
+    if (legacyStandardUnitKeySourceParity) allowedCatalogChanges.add('legacyStandardUnitKey');
+    const legacySubUnitKeySourceParity = Object.prototype.hasOwnProperty.call(candidate, 'legacySubUnitKey')
+      && Object.prototype.hasOwnProperty.call(source.bank[index], 'subUnitKey')
+      && deep(candidate.legacySubUnitKey, source.bank[index].subUnitKey);
+    const legacySubUnitKeyChanged = !deep(old.legacySubUnitKey, candidate.legacySubUnitKey);
+    if (legacySubUnitKeyChanged && !legacySubUnitKeySourceParity) fail('CANDIDATE_CATALOG_LEGACY_SUB_UNIT_KEY_SOURCE_PARITY_FAIL', 'q' + (index + 1));
+    if (legacySubUnitKeySourceParity) allowedCatalogChanges.add('legacySubUnitKey');
+    const displayProjectionChanged = !deep(candidate.metaProjection, old.metaProjection);
+    if (displayProjectionChanged) {
+      verifyDisplayOnlyMetaProjection({
+        projection: candidate.metaProjection, candidate, source: source.bank[index], metadata: candidateMetaRows[index],
+        sourceFile, r1EvidenceRef: r1Proof.path, r1Meta: r1MetaByQid.get(index + 1),
+      });
+      if (!decision.runtimeReviewReset) fail('DISPLAY_META_PROJECTION_REQUIRES_PENDING_REVIEW', 'q' + (index + 1));
+      allowedCatalogChanges.add('metaProjection');
+    }
     for (const [catalogField, metadataField] of catalogMetaMap) if (physicalChanged.has(metadataField)) allowedCatalogChanges.add(catalogField);
+    for (const field of TARGET_META_DEBT_FIELDS) if (Object.prototype.hasOwnProperty.call(metadata, field)) allowedCatalogChanges.add(field);
     const keys = new Set([...Object.keys(old), ...Object.keys(candidate)]);
     for (const key of keys) {
       if (allowedCatalogChanges.has(key)) continue;
@@ -478,11 +774,39 @@ export async function buildExistingTargetMerge({ root, assignment, plan, candida
         if (!deep(old[catalogField], candidate[catalogField])) fail('CATALOG_FIELD_WITHOUT_CURRENT_SOURCE_META', catalogField + ':q' + (index + 1));
         continue;
       }
-      if (JSON.stringify(candidate[catalogField]) !== JSON.stringify(metadata[metadataField])) fail('CANDIDATE_CATALOG_META_SOURCE_PARITY_MISMATCH', catalogField + ':q' + (index + 1));
+      if (JSON.stringify(candidate[catalogField]) !== JSON.stringify(metadata[metadataField])) {
+        const projection = candidate.metaProjection;
+        const candidateValue = candidate[catalogField];
+        const blankOrRetained = candidateValue === '' || candidateValue === null || candidateValue === undefined
+          || (Array.isArray(candidateValue) && candidateValue.length === 0) || deep(candidateValue, old[catalogField]);
+        const displayOnlySourceBound = projection?.projectionStatus === 'DISPLAY_ONLY_SOURCE_BOUND' && projection.displayOnly === true
+          && deep(projection[metadataField], metadata[metadataField]) && blankOrRetained;
+        const displayProjectionUnavailable = candidate.metaProjectionStatus === 'DISPLAY_PROJECTION_UNAVAILABLE'
+          && ['DISPLAY_PROJECTION_PARENT_MISSING', 'DISPLAY_PROJECTION_COURSE_NOT_ALLOWED'].includes(candidate.metaProjectionFailureReason)
+          && blankOrRetained && ['approved_partial_with_explicit_holds', 'registration_pending_semantic_review'].includes(metadata.metadataStatus)
+          && (metadata.reviewStatus === 'review_required' || Object.values(metadata.fieldStatus || {}).includes('manual_review_pending'));
+        if (!displayOnlySourceBound && !displayProjectionUnavailable) fail('CANDIDATE_CATALOG_META_SOURCE_PARITY_MISMATCH', JSON.stringify({ field: catalogField, qid: index + 1, projectionStatus: candidate.metaProjectionStatus, projectionFailure: candidate.metaProjectionFailureReason, candidateValue, oldValue: old[catalogField], metadataValue: metadata[metadataField], metadataStatus: metadata.metadataStatus, manualPending: Object.values(metadata.fieldStatus || {}).includes('manual_review_pending') }));
+      }
+    }
+    for (const field of TARGET_META_DEBT_FIELDS) {
+      if (Object.prototype.hasOwnProperty.call(candidate, field)
+        && Object.prototype.hasOwnProperty.call(metadata, field)
+        && !deep(candidate[field], metadata[field])) fail('CANDIDATE_CATALOG_META_DEBT_PARITY_MISMATCH', field + ':q' + (index + 1));
     }
     const next = { ...old };
     for (const field of catalogIdentityFields) if (Object.prototype.hasOwnProperty.call(candidate, field)) next[field] = candidate[field];
     for (const [catalogField, metadataField] of catalogMetaMap) if (physicalChanged.has(metadataField)) next[catalogField] = metadata[metadataField];
+    if (legacyLevelSourceParity) next.legacyLevel = candidate.legacyLevel;
+    if (legacyStandardUnitKeySourceParity) next.legacyStandardUnitKey = candidate.legacyStandardUnitKey;
+    if (legacySubUnitKeySourceParity) next.legacySubUnitKey = candidate.legacySubUnitKey;
+    for (const field of TARGET_META_DEBT_FIELDS) {
+      if (Object.prototype.hasOwnProperty.call(metadata, field)) next[field] = clone(metadata[field]);
+    }
+    if (displayProjectionChanged) {
+      next.metaProjection = clone(candidate.metaProjection);
+      next.metaProjectionStatus = candidate.metaProjection.projectionStatus;
+      next.metaProjectionFailureReason = '';
+    }
     next.assignmentFingerprint = candidate.assignmentFingerprint;
     next.sourceFingerprint = candidate.sourceFingerprint;
     next.rawQuestionHash = candidate.rawQuestionHash;
@@ -522,6 +846,7 @@ export async function buildExistingTargetMerge({ root, assignment, plan, candida
           r1EvidenceSha256: r1Proof?.sha256 || null,
           r1MetaPass: decision.r1MetaPass,
           changedFields: decision.changedFields,
+          ...(metadata.metaDebtReasons ? { unresolvedMetaDebtFields: metadata.metaDebtFields, unresolvedMetaDebtReasons: clone(metadata.metaDebtReasons) } : {}),
           currentPhysicalMeta: decision.currentPhysicalMeta,
           currentPhysicalMetaSha256: decision.currentPhysicalMetaSha256,
           disposition: 'PHYSICAL_META_VALUES_BOUND_REVIEW_RESET_PENDING',
@@ -543,7 +868,7 @@ export async function buildExistingTargetMerge({ root, assignment, plan, candida
   outputs.set('archive/data/question_identity_map.json', identityBytes);
   outputs.set('archive/data/question_metadata.json', Buffer.from(metadataText, 'utf8'));
   const idx = indexRows(baseline.get('archive/question-index.js'));
-  assertIndexReportInvariant(indexTarget, ordered(replacements.index));
+  assertIndexReportInvariant(indexTarget, ordered(replacements.index), source.bank);
   const indexNext = idx.rows.map(row => core.normalizeFile(row.sourceFile) === sourceFile ? ordered(replacements.index)[Number(row.sourceOrdinal) - 1] : row);
   if (indexNext.some(row => !row)) fail('QUESTION_INDEX_TARGET_REPLACEMENT_MISSING');
   if (new Set(indexNext.map(row => row.qKey)).size !== indexNext.length) fail('MERGED_QKEY_UNIQUENESS_FAIL');

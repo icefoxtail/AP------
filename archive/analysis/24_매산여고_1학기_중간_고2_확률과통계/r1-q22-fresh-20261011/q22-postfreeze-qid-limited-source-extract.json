@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "JS_ARCHIVE_QID_POSTFREEZE_SOURCE_EXTRACT_V1",
+  "sourceRawSha256": "18d9cefae333cf0fec077ee91fdd694ef1cdfcc7b15bbfd602d41f0d86ce7c1d",
+  "questionCount": 23,
+  "qid": 22,
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-1mid-20261010\\AP------\\archive\\analysis\\24_매산여고_1학기_중간_고2_확률과통계\\r2-q22-fresh-20261011\\current-student-only.bundle.json",
+    "sha256": "86b5bc85fd649fb71a22b7c1df01ccb6757060840aeee24bdc5dda0231f46678"
+  },
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-1mid-20261010\\AP------\\archive\\analysis\\24_매산여고_1학기_중간_고2_확률과통계\\r1-q22-fresh-20261011\\q22-original-freeze.json",
+    "sha256": "eb97556f6928458d49168d69016e866b8f0860c35c3057a87d0dac4255cb80ed"
+  },
+  "fields": {
+    "id": 22,
+    "content": "[주관식2 (서술형)] [7점] (부분점수 있음)<br>$(x+a)^8$의 전개식에서 $x^3$의 계수가 $1792$이고 $x^5$의 계수가 $b$일 때, $a+b$를 구하는 풀이 과정과 답을 쓰시오. (단, $a, b$는 실수 상수)",
+    "choices": [],
+    "tags": [
+      "서술형",
+      "이항정리"
+    ],
+    "answer": "450",
+    "solution": "$(x+a)^8$의 일반항은 $\\binom8r x^{8-r}a^r$이다.\n\n$x^3$항은 $8-r=3$, 즉 $r=5$일 때이므로 그 계수는 $\\binom85a^5=56a^5$이다. 따라서 $56a^5=1792$에서 $a^5=32$이고, 실수 $a$는 $2$이다.\n\n$x^5$항은 $8-r=5$, 즉 $r=3$일 때이므로 $b=\\binom83a^3=56\\cdot2^3=448$이다.\n\n따라서 $a+b=2+448=450$이다.",
+    "level": "중",
+    "standardCourse": "확률과 통계",
+    "standardUnitKey": "H15-PS-02",
+    "standardUnit": "이항정리",
+    "standardUnitOrder": 2,
+    "layoutTag": "grid",
+    "wide": false,
+    "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+    "subUnit": "이항정리",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "sourceType": "ORIGINAL",
+    "problemTypeKey": "PT_BINOMIAL_THEOREM",
+    "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "answerStatus": "CREATED",
+    "solutionStatus": "CREATED",
+    "reviewStatus": "CREATE_PENDING"
+  },
+  "extractionScope": "qid=22 only; performed after immutable independent freeze; no PDF opened",
+  "postfreezeHelperAttempt": "FAILED_CLOSED_FULL_ORIGINAL_FREEZE_AND_BUNDLE_REQUIRED because immutable input freeze is q22-only; no full-exam freeze or other qid disclosure performed"
+}

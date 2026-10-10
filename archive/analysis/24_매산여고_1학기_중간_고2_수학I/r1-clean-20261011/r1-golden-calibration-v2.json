@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_GOLDEN_PREFLIGHT_V2",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "24_매산여고_1학기_중간_고2_수학I",
+  "stage": "R1",
+  "completedBeforeTargetSolutionReview": true,
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "items": [
+        {
+          "qid": 2,
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY"
+          ],
+          "observation": "Read actual solution: parallel slopes are matched, the point condition is substituted, and m+n is calculated through visible algebra lines.",
+          "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba"
+        },
+        {
+          "qid": 7,
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY",
+            "VISUAL_SEMANTIC_PARITY",
+            "VISUAL_READABILITY"
+          ],
+          "observation": "Read actual solution and opened static SVG preview: standard-form conversion, center translation, origin reflection, and invariant radius are shown in separate steps; the center path and final circle agree.",
+          "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+          "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+          "visualRef": "assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg"
+        }
+      ],
+      "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156"
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "items": [
+        {
+          "qid": 1,
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY"
+          ],
+          "observation": "Read actual solution: coordinate differences are computed separately, then substituted into the distance formula with each radical simplification visible.",
+          "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682"
+        },
+        {
+          "qid": 2,
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY",
+            "VISUAL_SEMANTIC_PARITY",
+            "VISUAL_READABILITY"
+          ],
+          "observation": "Read actual solution and opened static SVG preview: both line equations are rearranged, slopes are named, and the product condition is solved; plotted line slopes match the equations. ImageMagick font fallback limits Korean label readability assessment, so no browser-render claim is made.",
+          "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+          "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+          "visualRef": "assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg"
+        }
+      ],
+      "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99"
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+    "observation": "Read the negative regression README plus q7-solution.bad.svg source. Its labeled A(-1/2,0) does not lie on the displayed parabola polyline; the fixture also records packed enumerated decisions as small-board false-pass examples, so actual primitives and physical line blocks must be inspected."
+  },
+  "negativePhysicalSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+    "sha256": "240dade5ecd6991b156f456fe7036883a59e43df3117d0f2a25b3c790a39eaa4"
+  },
+  "axesApplied": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "staticPreviewTool": "ImageMagick SVG raster preview; not Archive engine render",
+  "archiveEngineSupport": {
+    "path": "archive/engine.html",
+    "lineEvidence": "2344-2351 renderSolutionImageHTML uses q.solutionImage as an img src and supported size/layout options",
+    "status": "SCHEMA_CONFIRMED_BROWSER_RENDER_NOT_RUN_R3"
+  }
+}

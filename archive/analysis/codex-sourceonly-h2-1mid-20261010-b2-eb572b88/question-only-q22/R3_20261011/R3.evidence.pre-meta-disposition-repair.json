@@ -1,0 +1,199 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R3",
+  "examUid": "24_순천여고_1학기_중간_고2_확률과통계",
+  "artifactSha": "a21567853ee8a2e173dd37ef10f5bfea4dead5c1",
+  "artifactRawSha256": "789e165fe1fb99aed5aa55634df1a557a7d9ac5348f3293a3b34ecd2407e6e93",
+  "sourceRawSha256": "789e165fe1fb99aed5aa55634df1a557a7d9ac5348f3293a3b34ecd2407e6e93",
+  "questionCount": 23,
+  "currentSourcePath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/candidate/24_순천여고_1학기_중간_고2_확률과통계.q22-candidate.js",
+  "reviewerIdentity": {
+    "role": "archive_r3",
+    "reviewerId": "/root/r3_suncheon_yeo_prob"
+  },
+  "targetedScope": {
+    "openFindingQids": [],
+    "changedQids": [
+      22
+    ],
+    "directDependencyQids": [
+      22
+    ]
+  },
+  "lockedScopeIntegrity": true,
+  "releaseIntegrity": true,
+  "artifactDispositions": {
+    "artifactSha": "a21567853ee8a2e173dd37ef10f5bfea4dead5c1",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [
+          "rpmL3",
+          "rpmL4",
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Five expressions span combinations, permutations, repeated combinations and repeated arrangements; current exact lookup has no unique primary problem type/template or single RPM L3/L4 for the comparison task."
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [
+          "rpmL3",
+          "rpmL4"
+        ],
+        "metaDebtReason": "The exact active functions-graphs PT/TPL projection is reused for constrained function counting; the H15-PS-01 RPM Primary L3/L4 tree has no function-count leaf. Keep RPM leaf EVIDENCE_DEBT; do not invent a locked key."
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [
+          "rpmL3",
+          "rpmL4"
+        ],
+        "metaDebtReason": "The solution uses monotone finite-function counting and matches ACTIVE PT_FUNCTION_COUNTING/TPL_MONOTONE_FUNCTION_COUNT; H15-PS-01 RPM Primary has no function-count L3/L4 leaf."
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": [
+          "rpmL3",
+          "rpmL4"
+        ],
+        "metaDebtReason": "The replacement combines a weighted binomial sum with an adjacent binomial-coefficient identity. Current locked high2 RPM rows 009/010 have DIRECT_BINDING_GAP and MISSING binding; no authorized Generated-only L4 registry under the H15-PS-02-BINOMIAL_BASIC parent is present. Preserve L3/L4 as unresolved and do not assign a guessed or Generated RPM key to this original exam slot."
+      },
+      {
+        "qid": 23,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      }
+    ]
+  },
+  "rows": [
+    {
+      "qid": 22,
+      "verdict": "PASS",
+      "disposition": "R3 actual render and layout review; no semantic answer/solution re-review.",
+      "solutionSha256": "e66f7284782f1a81bd569e9a6ef31d07334bd91c482a5fca727e9bbe49a5ecf4",
+      "r1AnswerVerdict": "PASS_QID_ONLY",
+      "questionAndAnswerBytesUnchangedByR3": true,
+      "screenCoverage": "Fresh official Archive Engine six-case capture reviewed; q22 is present in all six cases.",
+      "qidOnlyPhysicalReviewRef": {
+        "path": "archive\\analysis\\codex-sourceonly-h2-1mid-20261010-b2-eb572b88\\question-only-q22\\R3_20261011\\R3.q22-physical-render-review.json",
+        "sha256": "b7b869decf3cbdb36a938ab071b8e7d31d78c81272229b860c329b24b6fde9d2"
+      },
+      "captureReviewRef": {
+        "path": "archive\\analysis\\codex-sourceonly-h2-1mid-20261010-b2-eb572b88\\question-only-q22\\R3_20261011\\R3.capture-review.json",
+        "sha256": "e3916aa65ae4c59a35b89925c60cbea8a62e2357255a86558e5fe7e1e63fdfa5"
+      },
+      "mobileDomDiagnosticRef": {
+        "path": "archive\\analysis\\codex-sourceonly-h2-1mid-20261010-b2-eb572b88\\question-only-q22\\R3_20261011\\R3.q22-mobile-answer-dom-diagnostic.json",
+        "sha256": "fbd77dcbb076188b9fcf9043eeb15c51296fcbb265f0f6cd4b2edb2cda64825b"
+      }
+    }
+  ],
+  "actualCapture": {
+    "reportRef": {
+      "path": ".tmp\\archive\\R3_q22_candidate_20261011_retry1\\machine-capture.json",
+      "sha256": "9f1eb5126ef8c8f52fd0e2b748a86e30234e7a755e0ca73dc448ba6754451da6"
+    },
+    "reviewRef": {
+      "path": "archive\\analysis\\codex-sourceonly-h2-1mid-20261010-b2-eb572b88\\question-only-q22\\R3_20261011\\R3.capture-review.json",
+      "sha256": "e3916aa65ae4c59a35b89925c60cbea8a62e2357255a86558e5fe7e1e63fdfa5"
+    }
+  },
+  "qidOnlyR3ReviewRef": {
+    "path": "archive\\analysis\\codex-sourceonly-h2-1mid-20261010-b2-eb572b88\\question-only-q22\\R3_20261011\\R3.q22-physical-render-review.json",
+    "sha256": "b7b869decf3cbdb36a938ab071b8e7d31d78c81272229b860c329b24b6fde9d2"
+  },
+  "renderReceiptPending": true
+}

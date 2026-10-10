@@ -1,0 +1,558 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R3",
+  "examUid": "24_매산여고_1학기_중간_고2_확률과통계",
+  "artifactSha": "82b7d51ead0c02646f10637784204f4c61a54ffb",
+  "artifactRawSha256": "e74bf69589c0c36663803c6016c15c056dad56e810b89fd55c5ea1f02eec651a",
+  "reviewerIdentity": {
+    "role": "archive_r3",
+    "reviewerId": "maesan_prob_r3"
+  },
+  "lockedRosterBinding": {
+    "path": "archive/analysis/h2-1mid-20261010-codex/ROOT.locked-roster.json",
+    "sha256": "508d9f8afd2314489379b8ee303e8fc56d9018f31acf6608954cfaf350685166",
+    "runId": "codex-h2-1mid-20261010-batch-20261011",
+    "expectedHead": "c41ab67a46ae1e5b6a8639bd3d804be1032a876f",
+    "lockedInputSourceRawSha256": "28eba2ba060919c07848c07f7f52a82121346df5350632d057c323e73457202a",
+    "currentArtifactRawSha256": "e74bf69589c0c36663803c6016c15c056dad56e810b89fd55c5ea1f02eec651a",
+    "currentArtifactBlobSha1": "82b7d51ead0c02646f10637784204f4c61a54ffb",
+    "productionPath": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+    "sourceOnlyEvidence": {
+      "path": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+      "sha256": "bed2790fcf22752ce94f146429c698ac51ad818ccba095d546c4124ace5d948f"
+    }
+  },
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "routinePdfComparison": "NOT_PERFORMED",
+  "targetedScope": {
+    "openFindingQids": [
+      8,
+      9
+    ],
+    "changedQids": [
+      8,
+      9,
+      11,
+      22
+    ],
+    "directDependencyQids": [
+      8,
+      9,
+      11,
+      22
+    ],
+    "currentR3RevisionChangedQids": [
+      8,
+      9
+    ],
+    "resolvedOpenFindingQids": [
+      11,
+      22
+    ]
+  },
+  "rows": [
+    {
+      "qid": 8,
+      "verdict": "STATIC_PASS_RENDER_BLOCKED",
+      "changedOpenDependencyReview": {
+        "status": "PASS",
+        "repairApplied": false,
+        "solutionSha256": "c54ca1507d09431d4eba5a0c6a668b48d2843ccf99612231d486fc73f543102e",
+        "answer": "③",
+        "upstreamR1": {
+          "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/R1.evidence.recovery-q08-q09.json",
+          "sha256": "176c3133a75877c07e93c02f6f7fe119b7a297673643af612582d6f75b0542a5",
+          "verdict": "PASS",
+          "compareResult": "MATCH"
+        },
+        "upstreamR2": {
+          "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r2-clean-20261011/R2.evidence.revision3.json",
+          "sha256": "18a10d08e5b67fdef78ceb795fbe6b062d8a65542682935e424d5c937e3ae1cb",
+          "verdict": "MATCH",
+          "compareResult": "MATCH"
+        },
+        "review": "Current corrected solution keeps the four ordered pairs, two independent free function values, 4·4·4=64 and ③; independent current R1/R2 rows agree."
+      },
+      "directDependencyReview": {
+        "status": "BLOCKED_RENDER",
+        "assetRefs": [],
+        "assetSha256s": [],
+        "decodedInCases": [],
+        "review": "Official solution desktop and direct mobile flows are blocked by page-2 S12 caused by the combined q8/q9 column overflow; no q8 solution decode PASS is claimed."
+      }
+    },
+    {
+      "qid": 9,
+      "verdict": "STATIC_PASS_RENDER_BLOCKED",
+      "changedOpenDependencyReview": {
+        "status": "PASS",
+        "repairApplied": false,
+        "solutionSha256": "748cc19ab3536b244429bfa4df9fdb03f9ce06b5366f16f80bfd138024d6a49c",
+        "answer": "②",
+        "upstreamR1": {
+          "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/R1.evidence.recovery-q08-q09.json",
+          "sha256": "176c3133a75877c07e93c02f6f7fe119b7a297673643af612582d6f75b0542a5",
+          "verdict": "PASS",
+          "compareResult": "MATCH"
+        },
+        "upstreamR2": {
+          "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r2-clean-20261011/R2.evidence.revision3.json",
+          "sha256": "18a10d08e5b67fdef78ceb795fbe6b062d8a65542682935e424d5c937e3ae1cb",
+          "verdict": "MATCH",
+          "compareResult": "MATCH"
+        },
+        "review": "Current corrected source answer and solution agree with current R1/R2; q11=44 (②), q22=450."
+      },
+      "directDependencyReview": {
+        "status": "BLOCKED_RENDER",
+        "assetRefs": [
+          "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q09-solution.svg"
+        ],
+        "assetSha256s": [
+          "eb8e4210a30d4bff3f8ba35031566f6cae84dffbcfd3409daf673e7b3a085a77"
+        ],
+        "decodedInCases": [],
+        "review": "Official solution desktop and direct mobile flows are blocked by page-2 S12 caused by the combined q8/q9 column overflow; no q9 solution decode PASS is claimed."
+      }
+    },
+    {
+      "qid": 11,
+      "verdict": "PASS",
+      "changedOpenDependencyReview": {
+        "status": "PASS",
+        "repairApplied": false,
+        "solutionSha256": "7de95717dac6c35f89c04f2f38ab00652f76a928a3d61a9072f94f7bd40027c1",
+        "answer": "②",
+        "upstreamR1": {
+          "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/R1.evidence.recovery-q08-q09.json",
+          "sha256": "176c3133a75877c07e93c02f6f7fe119b7a297673643af612582d6f75b0542a5",
+          "verdict": "PASS",
+          "compareResult": "MATCH"
+        },
+        "upstreamR2": {
+          "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r2-clean-20261011/R2.evidence.revision3.json",
+          "sha256": "18a10d08e5b67fdef78ceb795fbe6b062d8a65542682935e424d5c937e3ae1cb",
+          "verdict": "POSTFREEZE_ADJUDICATED",
+          "compareResult": "SUSPICIOUS"
+        },
+        "review": "Current corrected source answer and solution agree with current R1/R2; q11=44 (②), q22=450."
+      },
+      "directDependencyReview": {
+        "status": "PASS",
+        "assetRefs": [],
+        "assetSha256s": [],
+        "decodedInCases": [],
+        "review": "No additional visual or engine dependencies are required for the qid-level content correction."
+      }
+    },
+    {
+      "qid": 22,
+      "verdict": "PASS",
+      "changedOpenDependencyReview": {
+        "status": "PASS",
+        "repairApplied": false,
+        "solutionSha256": "239199c7421e01fa95a2c9cece42d8ec83c37f84f0eaa52bfa3f49630580ca94",
+        "answer": "450",
+        "upstreamR1": {
+          "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/R1.evidence.recovery-q08-q09.json",
+          "sha256": "176c3133a75877c07e93c02f6f7fe119b7a297673643af612582d6f75b0542a5",
+          "verdict": "PASS",
+          "compareResult": "MATCH"
+        },
+        "upstreamR2": {
+          "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r2-clean-20261011/R2.evidence.revision3.json",
+          "sha256": "18a10d08e5b67fdef78ceb795fbe6b062d8a65542682935e424d5c937e3ae1cb",
+          "verdict": "MATCH",
+          "compareResult": "MATCH"
+        },
+        "review": "Current corrected source answer and solution agree with current R1/R2; q11=44 (②), q22=450."
+      },
+      "directDependencyReview": {
+        "status": "PASS",
+        "assetRefs": [],
+        "assetSha256s": [],
+        "decodedInCases": [],
+        "review": "No additional visual or engine dependencies are required for the qid-level content correction."
+      }
+    }
+  ],
+  "lockedScopeIntegrity": true,
+  "releaseIntegrity": true,
+  "structureReview": {
+    "status": "PASS",
+    "qidCount": 23,
+    "orderedQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "lastQid": 23,
+    "syntax": "PASS",
+    "requiredFields": "PASS",
+    "difficultyFields": "PASS",
+    "controlCharacters": "PASS",
+    "choicesLabels": "PASS",
+    "pngSvgXmlCodeDependencies": "PASS",
+    "assetReferencesAndHashes": "PASS",
+    "itemHolds": 0,
+    "review": "Current full-denominator static source/assets structure check; changed/open/dependency rows remain limited to q8,q9,q11,q22."
+  },
+  "assetReview": {
+    "status": "PASS",
+    "assets": [
+      {
+        "ref": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q03-solution.svg",
+        "sha256": "6aac4d8b6127d6c59c2e6181617c01913951999cd0d3a02ca9786064e901b0e5",
+        "bytes": 4603,
+        "format": "svg"
+      },
+      {
+        "ref": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q07-solution.svg",
+        "sha256": "ec9322f7c44eefbd1c771aac891fccf376bc2aefeed30880723b043eaee11c0e",
+        "bytes": 6968,
+        "format": "svg"
+      },
+      {
+        "ref": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q07.png",
+        "sha256": "026d95c45e360698ea6cc76e7a5ebb743fad4d3d4907d492bb4f85a52bc3c6c3",
+        "bytes": 39528,
+        "format": "png"
+      },
+      {
+        "ref": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q09-solution.svg",
+        "sha256": "eb8e4210a30d4bff3f8ba35031566f6cae84dffbcfd3409daf673e7b3a085a77",
+        "bytes": 1998,
+        "format": "svg"
+      },
+      {
+        "ref": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q17.png",
+        "sha256": "f4def6b6dbf6fb9e424e2ff69721073e78e027b876c749a7e3d1be65e0ec4108",
+        "bytes": 29132,
+        "format": "png"
+      }
+    ]
+  },
+  "upstreamBindings": {
+    "CREATE": {
+      "evidence": {
+        "path": "archive/analysis/source-only-h2-1mid-20261010-b2/24_매산여고_1학기_중간_고2_확률과통계.evidence.json",
+        "sha256": "bed2790fcf22752ce94f146429c698ac51ad818ccba095d546c4124ace5d948f"
+      }
+    },
+    "R1": {
+      "evidence": {
+        "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/R1.evidence.recovery-q08-q09.json",
+        "sha256": "176c3133a75877c07e93c02f6f7fe119b7a297673643af612582d6f75b0542a5"
+      },
+      "validatorReport": {
+        "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/R1.validator.revision3.raw-generic-report.json",
+        "sha256": "6ed555ba4154ec53dfa2da3211b0a6522b7b892cd2f7bf287dbf6000b7b7a3c4",
+        "status": "PASS",
+        "denominator": 23
+      },
+      "completion": {
+        "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/R1.completion.sealed.revision3.json",
+        "sha256": "c76a84f36c70ff2bc6f47d0317bb2788ca05ed97caac31d7a64dfb5b02791c4e"
+      },
+      "artifactSha": "82b7d51ead0c02646f10637784204f4c61a54ffb"
+    },
+    "R2": {
+      "evidence": {
+        "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r2-clean-20261011/R2.evidence.revision3.json",
+        "sha256": "18a10d08e5b67fdef78ceb795fbe6b062d8a65542682935e424d5c937e3ae1cb"
+      },
+      "validatorReport": {
+        "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r2-clean-20261011/R2.validator.revision3.raw.json",
+        "sha256": "ad90b330180ec650a49907eb67aa8fdaaef48c6f9c9b9b0711f6f9f7f4302846",
+        "status": "PASS",
+        "denominator": 23
+      },
+      "completion": {
+        "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r2-clean-20261011/R2.completion.sealed.revision3.json",
+        "sha256": "8fc2c4463899de4ef7bc453bcdc035a6d7bd7b8baead5613724b8f651ee800b5"
+      },
+      "artifactSha": "82b7d51ead0c02646f10637784204f4c61a54ffb"
+    }
+  },
+  "artifactDispositions": {
+    "artifactSha": "82b7d51ead0c02646f10637784204f4c61a54ffb",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "metaDebtReason": "No exact ACTIVE H2-2015 crosswalk/template was found for H15-PS-01-COUNTING_APPLICATION × RPM 조합/선택 on shortest grid-path counting. Do not project an H1-only graph-path template or invent a key."
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 23,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      }
+    ]
+  },
+  "captureReview": {
+    "status": "BLOCKED_PARTIAL_CAPTURE",
+    "reviewerIdentity": {
+      "role": "archive_r3",
+      "reviewerId": "maesan_prob_r3"
+    },
+    "trace": {
+      "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r3-recovery-q11-q22-20261011/R3.render-continuation.q8-q9-revision3.json",
+      "sha256": "6092ecf6d94f112b4eebe4ea030c17cd06acc584d6605cfd233c998ee503b2e7"
+    },
+    "cases": [
+      {
+        "id": "exam/desktop",
+        "status": "CAPTURED_REVIEW_REQUIRED",
+        "viewport": {
+          "width": 1280,
+          "height": 1000
+        },
+        "qidCount": 23,
+        "mathErrors": 0,
+        "scrollWidth": 1280,
+        "captureSha256s": [
+          "cdc41df53ec2936cd6db78cfef87839bc4567d42649454633680ef6d000f4216"
+        ]
+      },
+      {
+        "id": "exam/mobile",
+        "status": "CAPTURED_REVIEW_REQUIRED",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "qidCount": 23,
+        "mathErrors": 0,
+        "scrollWidth": 390,
+        "captureSha256s": [
+          "cee606f419689d5af3b0be30477dd0caac30c98e348e253a0832e74c8ded8f8c"
+        ]
+      }
+    ],
+    "notRunCases": [
+      {
+        "id": "sol/mobile",
+        "status": "NOT_RUN_BY_SIX_CASE_COLLECTOR"
+      },
+      {
+        "id": "ans/desktop",
+        "status": "NOT_RUN"
+      },
+      {
+        "id": "ans/mobile",
+        "status": "NOT_RUN"
+      }
+    ]
+  },
+  "captureReport": {
+    "path": ".tmp/archive/h2-1mid-20261011/24_매산여고_1학기_중간_고2_확률과통계/r3-capture-q8-q9-revision3b/machine-capture.json",
+    "sha256": "a40cf4d4aa379a73eba81d9e00dc8575ee73cb4ec01b4c551aa47673d23b960d",
+    "status": "CAPTURE_BLOCKED",
+    "actualCaseIds": [
+      "exam/desktop",
+      "exam/mobile"
+    ],
+    "loadedJs": {
+      "path": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+      "sha256": "e74bf69589c0c36663803c6016c15c056dad56e810b89fd55c5ea1f02eec651a"
+    },
+    "cases": [
+      {
+        "id": "exam/desktop",
+        "status": "CAPTURED_REVIEW_REQUIRED",
+        "viewport": {
+          "width": 1280,
+          "height": 1000
+        },
+        "qidCount": 23,
+        "mathErrors": 0,
+        "scrollWidth": 1280,
+        "captureSha256s": [
+          "cdc41df53ec2936cd6db78cfef87839bc4567d42649454633680ef6d000f4216"
+        ],
+        "loadedAssets": [
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q07.png",
+            "sha256": "026d95c45e360698ea6cc76e7a5ebb743fad4d3d4907d492bb4f85a52bc3c6c3"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q17.png",
+            "sha256": "f4def6b6dbf6fb9e424e2ff69721073e78e027b876c749a7e3d1be65e0ec4108"
+          }
+        ]
+      },
+      {
+        "id": "exam/mobile",
+        "status": "CAPTURED_REVIEW_REQUIRED",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "qidCount": 23,
+        "mathErrors": 0,
+        "scrollWidth": 390,
+        "captureSha256s": [
+          "cee606f419689d5af3b0be30477dd0caac30c98e348e253a0832e74c8ded8f8c"
+        ],
+        "loadedAssets": [
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q07.png",
+            "sha256": "026d95c45e360698ea6cc76e7a5ebb743fad4d3d4907d492bb4f85a52bc3c6c3"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q17.png",
+            "sha256": "f4def6b6dbf6fb9e424e2ff69721073e78e027b876c749a7e3d1be65e0ec4108"
+          }
+        ]
+      }
+    ]
+  },
+  "actualRenderStatus": "CAPTURE_BLOCKED",
+  "technicalHashes": {
+    "rawSha256": "e74bf69589c0c36663803c6016c15c056dad56e810b89fd55c5ea1f02eec651a",
+    "validatorRawBufferBlobSha1": "82b7d51ead0c02646f10637784204f4c61a54ffb",
+    "gitCleanFilterBlobSha1": "82b7d51ead0c02646f10637784204f4c61a54ffb"
+  },
+  "actualRenderReviewStatus": "BLOCKED",
+  "itemHoldCount": 0,
+  "renderDiagnostic": {
+    "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r3-recovery-q11-q22-20261011/R3.render-continuation.q8-q9-revision3.json",
+    "sha256": "6092ecf6d94f112b4eebe4ea030c17cd06acc584d6605cfd233c998ee503b2e7",
+    "status": "BLOCKED",
+    "affectedQids": [
+      8,
+      9
+    ],
+    "cause": "S12 page-2 solution column overflow at qpp=4"
+  }
+}

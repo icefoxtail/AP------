@@ -199,6 +199,20 @@
     height: auto !important;
   }
 
+  /* Reflow a full-width solution's long inline MathJax atom into the mobile
+     column instead of letting it extend the page body horizontally. */
+  html[data-archive2-context="archive2"][data-ap-render-ready="true"] .q-box.sol-box .sol-exp mjx-container {
+    display: inline-block !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+  }
+
+  html[data-archive2-context="archive2"][data-ap-render-ready="true"] .q-box.sol-box .sol-exp mjx-container mjx-math {
+    max-width: 100% !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
   html[data-archive2-context="archive2"][data-ap-render-ready="true"] .page-qr,
   html[data-archive2-context="archive2"][data-ap-render-ready="true"] .page-submit-qr {
     position: static !important;
@@ -292,5 +306,17 @@
     max-width: 100% !important;
     max-height: none !important;
     height: auto !important;
+  }
+
+  html:not([data-archive2-context]):has(#qpp-display)[data-ap-render-ready="true"] .q-box.sol-box .sol-exp mjx-container {
+    display: inline-block !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+  }
+
+  html:not([data-archive2-context]):has(#qpp-display)[data-ap-render-ready="true"] .q-box.sol-box .sol-exp mjx-container mjx-math {
+    max-width: 100% !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
   }
 }

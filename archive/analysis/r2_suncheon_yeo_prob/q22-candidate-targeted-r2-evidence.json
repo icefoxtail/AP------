@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R2",
+  "examUid": "24_순천여고_1학기_중간_고2_확률과통계",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "artifactSha": "a21567853ee8a2e173dd37ef10f5bfea4dead5c1",
+  "artifactRawSha256": "789e165fe1fb99aed5aa55634df1a557a7d9ac5348f3293a3b34ecd2407e6e93",
+  "rows": [
+    {
+      "qid": 22,
+      "blindAnswer": "(n,r)=(6,3)",
+      "blindReasoning": "By the binomial theorem, Σ_{k=0}^n C(n,k)2^k=(1+2)^n=3^n=729=3^6, so n=6. For r=1,2,3,4,5, C(6,r)+2C(6,r+1) equals 36,55,50,27,8 respectively. Thus the unique admissible r is 3 and the requested ordered pair is (6,3).",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "(6, 3)",
+      "r1StoredAnswer": null,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "Fresh q22 blind recomputation matches candidate written answer; uniqueness enumerated across all admissible r."
+    }
+  ],
+  "scope": {
+    "coverage": "QID_ONLY",
+    "qid": 22
+  },
+  "currentCandidate": {
+    "path": "C:/Users/USER/Desktop/AP------/archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/candidate/24_순천여고_1학기_중간_고2_확률과통계.q22-candidate.js",
+    "sha256": "789e165fe1fb99aed5aa55634df1a557a7d9ac5348f3293a3b34ecd2407e6e93"
+  },
+  "studentInputParity": {
+    "disposition": "EXACT",
+    "qid": 22,
+    "studentBundlePath": "C:/Users/USER/Desktop/AP------/archive/analysis/r2_suncheon_yeo_prob/q22-candidate-student-only.json",
+    "studentBundleSha256": "c472e883399eb927a90c93cb4cae3bf2dfdd65dfcbd8d53f5fcb24fefc534439",
+    "sourceRawSha256": "789e165fe1fb99aed5aa55634df1a557a7d9ac5348f3293a3b34ecd2407e6e93",
+    "studentPayloadSha256": "2067d193ec64bb6d3906a0d9c322a178fae2d13b8204611ab42613440445869f",
+    "studentFieldNames": [
+      "id",
+      "content",
+      "question",
+      "choices",
+      "layoutTag",
+      "wide"
+    ],
+    "assetRefs": []
+  },
+  "postfreezeDecision": {
+    "answerRecomputed": true,
+    "answerFreezeReused": false,
+    "freezePath": "C:/Users/USER/Desktop/AP------/archive/analysis/r2_suncheon_yeo_prob/q22-candidate-original-freeze.json",
+    "freezeSha256": "7050c7a5654ceffebff47a6660f3af148bec2afab83ed470981b4202d98382c1",
+    "disclosurePath": "C:/Users/USER/Desktop/AP------/archive/analysis/r2_suncheon_yeo_prob/q22-candidate-postfreeze-disclosure.json",
+    "disclosureSha256": "d274a7e102fb51ec8c8f95e2801228dfd23d0d2e08f789e9d01cb1e795bd1ed8",
+    "independentAnswer": "(n,r)=(6,3)",
+    "candidateAnswer": "(6, 3)"
+  }
+}

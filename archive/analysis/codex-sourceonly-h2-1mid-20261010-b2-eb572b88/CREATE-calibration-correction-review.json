@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_CALIBRATION_CORRECTION_REVIEW_V1",
+  "examUid": "24_순천여고_1학기_중간_고2_수학I",
+  "reviewerId": "/root/create_suncheon_yeo_math1",
+  "recordedAt": "2026-10-10T15:14:44.886Z",
+  "originalPreflight": {
+    "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/CREATE-calibration-preflight.json",
+    "sha256": "0489d57791c86eddd2d6fb9d07952161a93d80a43b27161cbe4cbaca75162136",
+    "status": "PASS",
+    "preserved": true
+  },
+  "lateDiscoveredDefect": {
+    "issue": "Golden calibration provenance requires an actually reviewed representative solution visual from each sampled exam that contains solutionImage assets; original q1/q2 sample pair did not include Maesan solution visual.",
+    "discoveredAfterSolutionAuthoring": true,
+    "originalPreflightRelabeled": false
+  },
+  "correctionReviewPass": {
+    "status": "PASS",
+    "items": [
+      {
+        "path": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+        "sha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+        "staticRasterPath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/golden-maesan-q7-solution.png",
+        "staticRasterSha256": "bf20199fd5455e2a6cab5d673f05168c2df6feee0ae869e95281ad821c6febe3",
+        "opened": true,
+        "qid": 7,
+        "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "observation": "좌표축, 이동 전후 원과 중심, 원점 대칭 뒤 최종 원의 위치가 구별된다. 일부 수식 내 특수 기호는 글꼴 대체로 다르게 보이나 도형의 의미는 보존된다."
+      },
+      {
+        "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+        "sha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+        "staticRasterPath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/golden-hyocheon-q2-solution.png",
+        "staticRasterSha256": "def11e93c3d31060d0a41ffd8203bfbb0a861a96efbcc776bf4e0e9bfb3da844",
+        "opened": true,
+        "qid": 2,
+        "observation": "좌표축과 두 직선의 상대 기울기·교점이 시각적으로 드러남; 한글 수식 라벨 glyph는 tofu로 표시되어 이 글꼴 결함은 모방하지 않음."
+      }
+    ]
+  },
+  "solutionChangeRequired": false,
+  "finalReviewerGate": "Use new calibration correction review without modifying the original preflight record."
+}

@@ -1,0 +1,231 @@
+{
+  "schemaVersion": "JS_ARCHIVE_Q22_R1_SCOPED_REVIEW_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "reviewScope": "QID_ONLY",
+  "qid": 22,
+  "examUid": "24_순천여고_1학기_중간_고2_확률과통계",
+  "candidateRawSha256": "789e165fe1fb99aed5aa55634df1a557a7d9ac5348f3293a3b34ecd2407e6e93",
+  "candidateGitBlobSha1": "a21567853ee8a2e173dd37ef10f5bfea4dead5c1",
+  "sourceMode": "QUESTION_ONLY",
+  "candidateSourceParityClaim": "NOT_APPLICABLE_QUESTION_ONLY_REPLACEMENT",
+  "mathReview": {
+    "verdict": "PASS",
+    "independentAnswer": "(n,r)=(6,3)",
+    "storedAnswer": "(6, 3)",
+    "compareResult": "MATCH",
+    "answerCardinality": 1,
+    "noDistinctAlternative": true,
+    "independentAnswerFrozenBeforeStoredAnswer": true,
+    "reasoning": "From (a), the binomial theorem gives sum_{k=0}^n C(n,k)2^k=(1+2)^n=3^n=729=3^6, so n=6. For 1<=r<6, evaluate C(6,r)+2C(6,r+1): r=1 gives 6+30=36; r=2 gives 15+40=55; r=3 gives 20+30=50; r=4 gives 15+12=27; r=5 gives 6+2=8. Thus the unique admissible value is r=3, and the ordered pair is (6,3).",
+    "result": "n=6 from 3^n=729; r=1..5 gives 36,55,50,27,8, so only r=3; the unique pair is (6,3)."
+  },
+  "questionInputReview": {
+    "questionExact": true,
+    "choicesExact": true,
+    "problemAssetRefs": [],
+    "problemAssetsExact": true,
+    "fullWhitelistedPayloadExact": false,
+    "exactParityDisposition": "MISMATCH_RETAINED",
+    "frozenStudentKeys": [
+      "choices",
+      "id",
+      "image",
+      "question",
+      "questionType"
+    ],
+    "currentStudentKeys": [
+      "choices",
+      "content",
+      "id",
+      "layoutTag",
+      "question",
+      "wide"
+    ],
+    "presentationOnlyFieldDifferences": {
+      "candidateOnly": {
+        "content": "Exact duplicate of question text",
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "freezeOnly": {
+        "image": null
+      },
+      "questionTypeInHandoff": "short_answer"
+    },
+    "contentDuplicateExact": true,
+    "actualCaptureReview": {
+      "status": "CAPTURED_REVIEW_REQUIRED",
+      "renderPassAsserted": false,
+      "creatorCaptureObservationPath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/candidate/q22.capture-observation.json",
+      "creatorCaptureObservationSha256": "31c18893c6d186e3ea4e9b43f2daf83260b95000b999ff7d9e2baf7595056cc8",
+      "examScreenshotPath": ".tmp/archive/suncheon-yeo-q22-replacement-candidate-rev6-workspace/q22-exam-inspection.png",
+      "examScreenshotSha256": "35d483c6182f4d7ce7031e9b01b518c3b94e2eeba43250b55024abac7e746987",
+      "qidOnlyCropPath": "archive/analysis/r1_suncheon_yeo_prob/candidate-q22-capture-review/q22-exam-only.png",
+      "qidOnlyCropSha256": "f29730bb83f7b81632942ba8c871dcc32862a740092966401e12ebd1c6b4ed8d",
+      "reviewFinding": "Q22 prompt, both labeled conditions, and ordered-pair request are distinct and legible. No diagram/image reference is present. The full field set differs as listed above; exact parity is not claimed."
+    }
+  },
+  "solutionLayoutReview": {
+    "status": "PASS",
+    "smallBoardContinuityStatus": "PASS",
+    "solutionSha256": "e66f7284782f1a81bd569e9a6ef31d07334bd91c482a5fca727e9bbe49a5ecf4",
+    "solutionScreenshotPath": ".tmp/archive/suncheon-yeo-q22-replacement-candidate-rev6-workspace/q22-solution-inspection.png",
+    "solutionScreenshotSha256": "1c88eeecbaa28a15f5b6c336a5a1f844c68b87dc76991cf55cb203062574fc3d",
+    "qidOnlyCropPath": "archive/analysis/r1_suncheon_yeo_prob/candidate-q22-capture-review/q22-solution-only.png",
+    "qidOnlyCropSha256": "dfd4570200719b92cb1ab636eef8f6ce44ee7a4e9e83943c9f8ff24407f8ef32",
+    "reviewFinding": "The n deduction precedes a five-row r check and explicit uniqueness conclusion; the q22 solution block is readable and complete in the reviewed crop. The full capture remains CAPTURED_REVIEW_REQUIRED and is not an R3 render pass."
+  },
+  "metaReview": {
+    "status": "PASS",
+    "currentValues": {
+      "level": "상",
+      "category": "확률과 통계",
+      "originalCategory": "확률과 통계",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "standardUnitOrder": 2,
+      "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+      "subUnit": "이항정리",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "sourceExamUid": "24_순천여고_1학기_중간_고2_확률과통계",
+      "sourceQid": 22,
+      "sourceJsPath": "archive/exams/original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceMode": "QUESTION_ONLY",
+      "sourceType": "ORIGINAL",
+      "sourcePdfSha256": "BD5002EC7ABE21FEEDCEC9D05E25152ABA915F74DDA466C5A06686DD192013AD",
+      "sourceIntakeEvidencePath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/intake-repair/source-intake-repair.evidence.json",
+      "sourceIntakeEvidenceSha256": "4D536AE905F1AFDFF2DFB278CF99578F356D86841323E1B290889A18C3859EE3",
+      "rpmL1": "경우의 수",
+      "rpmL2": "이항정리",
+      "rpmL3": null,
+      "rpmL4": null,
+      "rpmCurriculum": "2015",
+      "rpmSemanticStatus": "EVIDENCE_DEBT",
+      "rpmSemanticReason": "이 후보는 이항정리의 가중합과 이항계수의 인접항 항등식을 결합한다. current high2-probability-statistics RPM crosswalk H2-PS-RPM-009/010은 해당 계수 항등식에 대해 mappingStatus=DIRECT_BINDING_GAP, bindingStatus=MISSING이며, H15-PS-02-BINOMIAL_BASIC 부모의 승인된 Generated-only L4 registry를 확인하지 못했다. 따라서 L3/L4 binding을 강제하지 않는다.",
+      "problemVisualDisposition": "EXEMPT_TEXT_COMPLETE",
+      "solutionVisualDisposition": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION",
+      "visualDisposition": {
+        "problem": "EXEMPT_TEXT_COMPLETE",
+        "solution": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION"
+      },
+      "questionUid": "qid_v1_4e25e81fca268d29a0d15378271663cd5df1473edff935d268eec94742ea4d9c",
+      "sourceIdentity": {
+        "questionUid": "qid_v1_4e25e81fca268d29a0d15378271663cd5df1473edff935d268eec94742ea4d9c",
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": 22,
+        "identityAlgorithm": "qid_v1",
+        "identityMapPath": "archive/data/question_identity_map.json"
+      },
+      "provenance": {
+        "sourceInputMode": "QUESTION_ONLY_REPLACEMENT",
+        "pdfReviewMode": "DEFECT_ONLY",
+        "sourcePdfSha256": "BD5002EC7ABE21FEEDCEC9D05E25152ABA915F74DDA466C5A06686DD192013AD",
+        "sourceIntakeEvidencePath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/intake-repair/source-intake-repair.evidence.json",
+        "sourceIntakeEvidenceSha256": "4D536AE905F1AFDFF2DFB278CF99578F356D86841323E1B290889A18C3859EE3",
+        "sourceOrdinal": 22,
+        "sourcePage": 4,
+        "scopedOriginalReview": null,
+        "sourceParityClaim": "NOT_APPLICABLE_QUESTION_ONLY_REPLACEMENT",
+        "sourceParityVerified": false,
+        "sourceParityReason": "이 문항은 원문 문항이 정답 유일성 결함으로 보류된 뒤 독립 대체 후보로 새로 작성됨. 원문 발문·정답과 일치 여부를 주장하지 않는다."
+      }
+    },
+    "disposition": "KEEP_WITH_EXACT_RPM_EVIDENCE_DEBT",
+    "debt": {
+      "fields": [
+        "rpmL3",
+        "rpmL4"
+      ],
+      "reason": "ROOT authority and candidate metadata record the H15-PS-02 direct RPM binding gap. Preserve nulls; no unsupported locked H2 L3/L4 or invented Generated extension was assigned in R1.",
+      "authorityRef": {
+        "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/ROOT.q22-authority.json",
+        "sha256": "7d311acc8ef06a678d879ef405a26a493c7c1ce283486e133cbc0c7d92afcd3f"
+      },
+      "metaBindingCandidateRef": {
+        "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/candidate/q22.meta-binding-candidate.json",
+        "sha256": "ecd9df3d4191b1840832444a676cf156fb41aa15a88d0ebcca5bc466884abc89"
+      }
+    }
+  },
+  "difficultyReview": {
+    "status": "PASS",
+    "level": "상",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "independentRationale": "The item links a direct binomial-theorem identification of n to a bounded five-value coefficient check for r. The standard method is clear; the two-step integer parameter check supports the stored bucket 4, medium confidence, no boundary flag."
+  },
+  "visualSvgReview": {
+    "status": "PASS",
+    "problemVisualDisposition": "EXEMPT_TEXT_COMPLETE",
+    "solutionVisualDisposition": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION",
+    "problemAssetRefs": [],
+    "solutionSvgRefs": [],
+    "rationale": "Both conditions are algebraic and the solution is a binomial identity plus a finite coefficient check; no spatial relation is present and no visual asset is needed."
+  },
+  "freeze": {
+    "path": "archive/analysis/r1_suncheon_yeo_prob/candidate-q22-independent-freeze.fresh-root-r1.json",
+    "sha256": "b08458fea5c6518caf02ebabc8e857f22236303a0250ab50b61d89eb4bdd091e",
+    "candidateRawSha256": "789e165fe1fb99aed5aa55634df1a557a7d9ac5348f3293a3b34ecd2407e6e93",
+    "studentBundlePath": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\r1_suncheon_yeo_prob\\candidate-q22-student-bundle.json",
+    "studentBundleSha256": "951f6dfc4bc70d21ca3ddc1feea87246dbf8def70a8c1c3349cc7af5f52b55dd",
+    "sourceInputPath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/candidate/q22.R1-student-only-input.json",
+    "sourceInputSha256": "5aba5a5d7a883ce6a358e005ba2ae2f72f68cc39fa95e51eae7515fea583e910",
+    "normalizedBundlePath": "archive/analysis/r1_suncheon_yeo_prob/candidate-q22-student-bundle.json",
+    "normalizedBundleSha256": "951f6dfc4bc70d21ca3ddc1feea87246dbf8def70a8c1c3349cc7af5f52b55dd",
+    "answersPath": "archive/analysis/r1_suncheon_yeo_prob/candidate-q22-independent-answers.fresh-root-r1.json",
+    "answersSha256": "7a737c36e346032b004cf7e50428001c0547f94e78512882da77d68b7f488dca",
+    "assetReadsPath": "archive/analysis/r1_suncheon_yeo_prob/candidate-q22-asset-reads.fresh-root-r1.json",
+    "assetReadsSha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "postfreezeHelperAttempt": {
+      "path": "archive/analysis/r1_suncheon_yeo_prob/candidate-q22-postfreeze-helper-failure.json",
+      "sha256": "c92fe2020f7133b6cc7fae228710614994c5c385abf340e0d7659558729a5b21",
+      "disposition": "PRESERVED_FAILED_TECHNICAL_ATTEMPT_CURRENT_SOURCE_DENOMINATOR_CHANGED"
+    },
+    "qidLimitedProjectionPath": "archive/analysis/r1_suncheon_yeo_prob/candidate-q22-current-student-projection.json",
+    "qidLimitedProjectionSha256": "568c1661fe7c6d6c092c4237012bd81100cb69d11ad352d5ae52dbf0cba16b03",
+    "qidLimitedDisclosurePath": "archive/analysis/r1_suncheon_yeo_prob/candidate-q22-postfreeze-disclosure.fresh-root-r1.json",
+    "qidLimitedDisclosureSha256": "3925fdbf49d348dbc80b4d49c29e2b58a3d1b13391428e148680db3d1dcec9cd"
+  },
+  "authorityAndParity": {
+    "rootAuthorityPath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/ROOT.q22-authority.json",
+    "rootAuthoritySha256": "7d311acc8ef06a678d879ef405a26a493c7c1ce283486e133cbc0c7d92afcd3f",
+    "replacementLedgerPath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/question-only-replacement-ledger.json",
+    "replacementLedgerSha256": "295526da64a8790fd7693779b2c7e51c4e2eeaceb2495ed20b7f8436b2f44b31",
+    "createEvidencePath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/candidate/CREATE.q22.question-only.evidence.json",
+    "createEvidenceSha256": "beb4cd5c96fbacf6ef860006c168a23cd20361ae200d6391a8d056e0e35b273a",
+    "nonTargetParityPath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/candidate/q22.non-target-parity.json",
+    "nonTargetParitySha256": "f0fe0fd72f2cd82d39681bdca321bfa56c00f81d70f9261abbd77c9e67bf3eb1",
+    "nonTargetQidsReused": 22,
+    "changedQids": [
+      22
+    ],
+    "originalFullExamFreezePreserved": {
+      "path": "archive/analysis/r1_suncheon_yeo_prob/original-freeze.json",
+      "sha256": "ef5cc229311322e752119a67559456097cf7f5e69bd59cbdcfca32eed2631590"
+    },
+    "originalR1EventPreserved": {
+      "path": "archive/analysis/r1_suncheon_yeo_prob/R1.complete.event.json",
+      "sha256": "92dbb7158a48922460a134405becf3fcd9303eabf9cb1370422b813cac4e95a5"
+    }
+  },
+  "result": "QID_22_R1_CONTENT_AND_META_PASS",
+  "nextRequiredAction": "Fresh q22-only R2 review. Keep candidate unmaterialized until R2 and R3 gates; carry the RPM L3/L4 evidence debt to the authorized Generated-only binding/consumer-index work."
+}

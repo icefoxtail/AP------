@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "JS_ARCHIVE_FREEZE_ADJUDICATION_V1",
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\r1_suncheon_yeo_prob\\original-freeze.json",
+    "sha256": "ef5cc229311322e752119a67559456097cf7f5e69bd59cbdcfca32eed2631590"
+  },
+  "createdAt": "2026-10-10T16:53:48.169Z",
+  "corrections": [
+    {
+      "qid": 14,
+      "correctedAnswer": "126",
+      "reason": "Post-freeze calculation correction: preserve original blind result 70; the first pass omitted the number of choices for f(3) after fixing f(2),f(4). Let c=f(4). Weighted sums of f(2) over pairs f(2)<f(3)<c are 1,4,10,20,35 for c=3,4,5,6,7, respectively. Multiplying by 8-c gives 5+16+30+40+35=126. This matches stored choice ① and the qid-14 block on source PDF page 3/4. Student source and stored solution need no correction.",
+      "originalAnswer": "70"
+    },
+    {
+      "qid": 23,
+      "correctedAnswer": "144",
+      "reason": "Reasoning-text correction only; answer unchanged. The number of ways to choose the five male seats is C(9,5)-3*C(6,5)=126-18=108. The earlier blind rationale sentence contained a stray tentative note '126-3=123?' and is superseded by this clean calculation: 108*5!*4!/3=103680=144*6!.",
+      "originalAnswer": "144"
+    }
+  ],
+  "originalFreezeMutated": false
+}
