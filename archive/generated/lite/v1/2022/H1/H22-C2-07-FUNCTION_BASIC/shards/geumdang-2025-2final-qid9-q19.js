@@ -29,7 +29,7 @@ window.generatedLiteQuestions.push(...[
     "wide": false,
     "content": "서로 다른 네 실수 $a,b,c,d$에서 $f(x)=|(x-3)^2-5|$가 상수함수일 때 가능한 정수 함숫값 $k$의 합은?",
     "choices": [
-      "$6$",
+      "$4$",
       "$9$",
       "$10$",
       "$11$",
@@ -123,12 +123,12 @@ window.generatedLiteQuestions.push(...[
     "choices": [
       "$14$",
       "$15$",
-      "$16$",
+      "$21$",
       "$20$",
-      "$21$"
+      "$5$"
     ],
     "answer": "②",
-    "solution": "$f(x)=k$를 풀면 $(x-2)^2=6+k$ 또는 $(x-2)^2=6-k$이다. 첫 식은 두 실근을 갖고, 둘째 식은 $6-k>0$일 때 두 실근을 갖는다. 네 실근 조건은 $0<k<6$이다. 따라서 가능한 정수는 $1,2,\\ldots,5$이고 합은 $1+2+\\cdots+5=15$이다.",
+    "solution": "$g(x)=k$를 풀면 $(x-2)^2=6+k$ 또는 $(x-2)^2=6-k$이다. 첫 식은 두 실근을 갖고, 둘째 식은 $6-k>0$일 때 두 실근을 갖는다. 네 실근 조건은 $0<k<6$이다. 따라서 가능한 정수는 $1,2,\\ldots,5$이고 합은 $1+2+\\cdots+5=15$이다.",
     "solutionImage": "assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-A2-solution.svg",
     "solutionImageAlt": "절댓값 이차함수와 네 교점을 표시한 해설 그래프",
     "solutionImageCaption": "0<k<d에서 수평선 y=k는 그래프와 네 점에서 만난다.",
@@ -213,13 +213,13 @@ window.generatedLiteQuestions.push(...[
     "wide": false,
     "content": "서로 다른 네 실수로 이루어진 집합 $X$에서 $f(x)=|(x+1)^2-8|$가 상수함수이다. 가능한 양의 정수 함숫값 $k$의 곱은?",
     "choices": [
-      "$5040$",
+      "$28$",
       "$720$",
-      "$5048$",
+      "$7$",
       "$40320$",
-      "$28$"
+      "$5040$"
     ],
-    "answer": "①",
+    "answer": "⑤",
     "solution": "$f(x)=k$를 풀면 $(x+1)^2=8+k$ 또는 $(x+1)^2=8-k$이다. 첫 식은 두 실근을 갖고, 둘째 식은 $8-k>0$일 때 두 실근을 갖는다. 네 실근 조건은 $0<k<8$이다. 따라서 가능한 정수는 $1,2,\\ldots,7$이고 곱은 $1\\cdot2\\cdots7=5040$이다.",
     "solutionImage": "assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-A3-solution.svg",
     "solutionImageAlt": "절댓값 이차함수와 네 교점을 표시한 해설 그래프",
@@ -305,7 +305,7 @@ window.generatedLiteQuestions.push(...[
     "wide": false,
     "content": "방정식 $|(x-4)^2-4|=k$가 서로 다른 네 실근을 갖도록 하는 양의 정수 $k$의 개수는?",
     "choices": [
-      "$2$",
+      "$1$",
       "$4$",
       "$5$",
       "$3$",
@@ -395,16 +395,16 @@ window.generatedLiteQuestions.push(...[
       "서로 다른 네 실근"
     ],
     "wide": false,
-    "content": "서로 다른 네 실수에서 $f(x)=|(x-1)^2-7|$의 값이 같은 양의 정수 $k$가 되도록 한다. 가능한 모든 $k$의 합은?",
+    "content": "함수 $f(x)=|(x-1)^2-7|$에 대하여, $0\\le k\\le8$인 정수 $k$ 중 방정식 $f(x)=k$가 서로 다른 두 실근을 갖도록 하는 모든 $k$의 합은?",
     "choices": [
+      "$7$",
       "$15$",
-      "$20$",
-      "$21$",
-      "$22$",
-      "$28$"
+      "$8$",
+      "$9$",
+      "$0$"
     ],
     "answer": "③",
-    "solution": "$f(x)=k$를 풀면 $(x-1)^2=7+k$ 또는 $(x-1)^2=7-k$이다. 첫 식은 두 실근을 갖고, 둘째 식은 $7-k>0$일 때 두 실근을 갖는다. 네 실근 조건은 $0<k<7$이다. 따라서 가능한 정수는 $1,2,\\ldots,6$이고 합은 $1+2+\\cdots+6=21$이다.",
+    "solution": "주어진 범위에서 $|(x-1)^2-7|=k$를 나누어 본다. $k=0$이면 $(x-1)^2=7$이므로 서로 다른 두 실근을 갖는다. $1\\le k\\le6$이면 $(x-1)^2=7+k$와 $(x-1)^2=7-k$가 각각 두 실근을 가져 모두 네 실근이다. $k=7$이면 $(x-1)^2=14$의 두 근과 $(x-1)^2=0$의 한 근으로 모두 세 실근이다. $k=8$이면 $(x-1)^2=15$만 가능하여 서로 다른 두 실근이다. 따라서 해당하는 $k$는 0,8이고 합은 8이다.",
     "solutionImage": "assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-B2-solution.svg",
     "solutionImageAlt": "절댓값 이차함수와 네 교점을 표시한 해설 그래프",
     "solutionImageCaption": "0<k<d에서 수평선 y=k는 그래프와 네 점에서 만난다.",
@@ -428,7 +428,7 @@ window.generatedLiteQuestions.push(...[
       "COND_INTEGER",
       "COND_DISTINCT_ROOTS"
     ],
-    "integrationPattern": "ABS_QUADRATIC_FOUR_PREIMAGES_SUM_B2",
+    "integrationPattern": "ABS_QUADRATIC_TWO_PREIMAGES_BOUNDED_BOUNDARY_B2",
     "reviewStatus": "CREATE_DRAFT_SELF_CHECKED",
     "studentSupplyEligible": false,
     "consumerSelectable": false,
@@ -489,13 +489,13 @@ window.generatedLiteQuestions.push(...[
     "wide": false,
     "content": "서로 다른 네 정수로 이루어진 집합 $X$에서 $f(x)=|(x-3)^2-5|$가 상수함수이다. 가능한 정수 함숫값 $k$의 합은?",
     "choices": [
-      "$1$",
       "$4$",
-      "$5$",
+      "$1$",
+      "$9$",
       "$8$",
       "$10$"
     ],
-    "answer": "②",
+    "answer": "①",
     "solution": "$f(x)=k$를 풀면 $(x-3)^2=5+k$ 또는 $(x-3)^2=5-k$이다. 네 서로 다른 실근을 위해 $0<k<5$이다. 네 근이 모두 정수이려면 5-k와 5+k가 서로 다른 양의 정수 제곱이어야 한다. 합이 10인 제곱수 쌍은 1과 9뿐이므로 k=4이다. 가능한 k의 합은 $4$이다.",
     "solutionImage": "assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-B3-solution.svg",
     "solutionImageAlt": "절댓값 이차함수와 네 교점을 표시한 해설 그래프",
@@ -675,7 +675,7 @@ window.generatedLiteQuestions.push(...[
     "choices": [
       "$4$",
       "$5$",
-      "$7$",
+      "$1$",
       "$8$",
       "$6$"
     ],
@@ -763,16 +763,16 @@ window.generatedLiteQuestions.push(...[
       "서로 다른 네 실근"
     ],
     "wide": false,
-    "content": "서로 다른 네 실수에서 $f(x)=|x^2-10x+13|$의 값이 같은 정수 $k$가 되도록 한다. 가능한 모든 $k$의 합은?",
+    "content": "방정식 $|x^2-10x+13|=k$가 서로 다른 네 실근을 갖는 양의 정수 $k$를 모두 생각하자. 각 $k$에 대해 네 실근을 $\\alpha_1,\\alpha_2,\\alpha_3,\\alpha_4$라 할 때, 모든 가능한 $k$에 대한 $\\alpha_1^2+\\alpha_2^2+\\alpha_3^2+\\alpha_4^2$의 합은?",
     "choices": [
-      "$55$",
+      "$11$",
+      "$1480$",
       "$66$",
-      "$60$",
-      "$67$",
-      "$78$"
+      "$1628$",
+      "$148$"
     ],
-    "answer": "②",
-    "solution": "$f(x)=k$를 풀면 $(x-5)^2=12+k$ 또는 $(x-5)^2=12-k$이다. 첫 식은 두 실근을 갖고, 둘째 식은 $12-k>0$일 때 두 실근을 갖는다. 네 실근 조건은 $0<k<12$이다. 따라서 가능한 정수는 $1,2,\\ldots,11$이고 합은 $1+2+\\cdots+11=66$이다.",
+    "answer": "④",
+    "solution": "완전제곱식으로 고치면 $|(x-5)^2-12|=k$이다. 서로 다른 네 실근을 얻으려면 $0<k<12$이므로 양의 정수 $k$는 1부터 11까지이다. 각 $k$에서 네 근은 $5\\pm\\sqrt{12+k}$와 $5\\pm\\sqrt{12-k}$이다. $(5+s)^2+(5-s)^2=50+2s^2$를 이용하면 네 근의 제곱합은 $[50+2(12+k)]+[50+2(12-k)]=148$로 $k$와 무관하다. 가능한 $k$가 11개이므로 구하는 합은 $11\\cdot148=1628$이다.",
     "solutionImage": "assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-C3-solution.svg",
     "solutionImageAlt": "절댓값 이차함수와 네 교점을 표시한 해설 그래프",
     "solutionImageCaption": "0<k<d에서 수평선 y=k는 그래프와 네 점에서 만난다.",
@@ -796,7 +796,7 @@ window.generatedLiteQuestions.push(...[
       "COND_INTEGER",
       "COND_DISTINCT_ROOTS"
     ],
-    "integrationPattern": "ABS_QUADRATIC_FOUR_PREIMAGES_SUM_C3",
+    "integrationPattern": "ABS_QUADRATIC_FOUR_PREIMAGES_ROOT_SQUARE_SUM_C3",
     "reviewStatus": "CREATE_DRAFT_SELF_CHECKED",
     "studentSupplyEligible": false,
     "consumerSelectable": false,

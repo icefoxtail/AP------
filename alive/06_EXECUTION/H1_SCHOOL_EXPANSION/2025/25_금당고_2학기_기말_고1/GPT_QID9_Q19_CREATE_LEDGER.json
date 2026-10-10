@@ -2,8 +2,8 @@
   "schemaVersion": "GD25_Q19_CREATOR_SELF_REVIEW_V1",
   "sourceQid": 19,
   "sourceExamBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
-  "candidateSourceJsBlobSha": "47cbab1e7dd074351c4b7c3376ee71ad80f2fca0",
-  "mathSpecBlobSha": "12e0de1cf8ecc5024da29bf56681fdb1cbdae4fe",
+  "candidateSourceJsBlobSha": "a735f665e66d550108355d23e9cbed992ed1a215",
+  "mathSpecBlobSha": "addd5914f30746fc6b98d06ae58516a0f8145e28",
   "lockedPrimaryL3": "H1-RPM-258",
   "candidateCount": 9,
   "keep": 9,
@@ -13,10 +13,10 @@
   "mainMerged": false,
   "answerDistribution": {
     "①": 2,
-    "②": 3,
+    "②": 1,
     "③": 2,
-    "④": 1,
-    "⑤": 1
+    "④": 2,
+    "⑤": 2
   },
   "visual": {
     "problemSvgCount": 0,
@@ -35,20 +35,20 @@
       "rpmNecessity": "상수함숫값 k가 네 서로 다른 원상을 갖는 필요충분조건 판정이 결정 단계다.",
       "distractorRoutes": [
         {
-          "index": "④",
-          "mistake": "k=d까지 포함"
-        },
-        {
-          "index": "⑤",
-          "mistake": "마지막 정숫값을 빼먹음"
-        },
-        {
           "index": "①",
-          "mistake": "합 대신 개수를 셈"
+          "mistake": "가능한 k는 1,2,3,4 네 개이므로 합 대신 개수를 답해 4"
         },
         {
           "index": "②",
-          "mistake": "조건과 무관하게 d를 답함"
+          "mistake": "가장 작은 유효값 k=1을 빠뜨려 2+3+4=9"
+        },
+        {
+          "index": "④",
+          "mistake": "올바른 합 10에 k=1을 한 번 더 더해 11"
+        },
+        {
+          "index": "⑤",
+          "mistake": "경계 k=d=5까지 잘못 포함하여 1+2+3+4+5=15"
         }
       ],
       "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
@@ -71,20 +71,20 @@
       "rpmNecessity": "상수함숫값 k가 네 서로 다른 원상을 갖는 필요충분조건 판정이 결정 단계다.",
       "distractorRoutes": [
         {
+          "index": "①",
+          "mistake": "k=1을 빠뜨려 2+3+4+5=14"
+        },
+        {
           "index": "③",
-          "mistake": "k=d를 포함"
+          "mistake": "경계 k=d=6까지 포함하여 1+2+3+4+5+6=21"
         },
         {
           "index": "④",
-          "mistake": "k=1을 빠뜨림"
+          "mistake": "유효한 가장 큰 값 k=5를 중복 더해 15+5=20"
         },
         {
           "index": "⑤",
-          "mistake": "합 대신 개수를 셈"
-        },
-        {
-          "index": "①",
-          "mistake": "경계 k=0을 별도 중복"
+          "mistake": "유효한 k가 1,2,3,4,5 다섯 개임을 세고 합 대신 개수를 답해 5"
         }
       ],
       "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
@@ -101,26 +101,26 @@
     {
       "slot": "A3",
       "uid": "ALITE-GEUMDANG25-2FINAL-Q19-A3",
-      "answer": "①",
+      "answer": "⑤",
       "value": 5040,
       "reverseStemFinding": "최종 발문에서 네 서로 다른 원상 조건을 읽고 |(x−h)^2−d|=k의 두 제곱방정식에서 각 근의 수를 역산했다.",
       "rpmNecessity": "상수함숫값 k가 네 서로 다른 원상을 갖는 필요충분조건 판정이 결정 단계다.",
       "distractorRoutes": [
         {
+          "index": "①",
+          "mistake": "1부터 7까지 곱하지 않고 합으로 바꾸어 28"
+        },
+        {
           "index": "②",
-          "mistake": "k=7을 빼고 1·2·3·4·5·6=720"
+          "mistake": "마지막 인수 7을 빠뜨려 1·2·3·4·5·6=720"
         },
         {
           "index": "③",
-          "mistake": "곱셈 대신 1+…+7=28"
+          "mistake": "곱을 구하지 않고 가능한 k의 개수 7을 답함"
         },
         {
           "index": "④",
-          "mistake": "k=8까지 잘못 포함해 8!=40320"
-        },
-        {
-          "index": "⑤",
-          "mistake": "7! 계산에서 7·6·5·4·3·2·1을 5048로 잘못 산술 계산"
+          "mistake": "경계 k=8을 포함하여 8!=40320"
         }
       ],
       "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
@@ -143,20 +143,20 @@
       "rpmNecessity": "상수함숫값 k가 네 서로 다른 원상을 갖는 필요충분조건 판정이 결정 단계다.",
       "distractorRoutes": [
         {
-          "index": "⑤",
-          "mistake": "k=0 포함"
-        },
-        {
           "index": "①",
-          "mistake": "k=d 포함"
+          "mistake": "가능한 값 중 k=1만 확인해 답함"
         },
         {
           "index": "②",
-          "mistake": "음수 정수도 포함"
+          "mistake": "경계 k=4까지 포함하여 1,2,3,4의 네 개로 셈"
         },
         {
           "index": "③",
-          "mistake": "k=1만 셈"
+          "mistake": "0≤k≤4의 모든 정수를 세어 두 경계를 잘못 포함해 5"
+        },
+        {
+          "index": "⑤",
+          "mistake": "양수 조건을 놓치고 −3,−2,−1,1,2,3을 세어 6"
         }
       ],
       "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
@@ -174,25 +174,25 @@
       "slot": "B2",
       "uid": "ALITE-GEUMDANG25-2FINAL-Q19-B2",
       "answer": "③",
-      "value": 21,
-      "reverseStemFinding": "최종 발문에서 네 서로 다른 원상 조건을 읽고 |(x−h)^2−d|=k의 두 제곱방정식에서 각 근의 수를 역산했다.",
-      "rpmNecessity": "상수함숫값 k가 네 서로 다른 원상을 갖는 필요충분조건 판정이 결정 단계다.",
+      "value": 8,
+      "reverseStemFinding": "0≤k≤8에서 절댓값 이차함수의 수평선 교점 수를 경계 k=0,7,8별로 판별",
+      "rpmNecessity": "경계에서 실제 서로 다른 근 개수를 판정: k=0은 2개, k=7은 3개, k=8은 2개",
       "distractorRoutes": [
         {
-          "index": "④",
-          "mistake": "마지막 값을 빼먹음"
-        },
-        {
-          "index": "⑤",
-          "mistake": "k=d 포함"
-        },
-        {
           "index": "①",
-          "mistake": "한 항을 중복"
+          "mistake": "k=7의 접선 경우를 두 실근으로 오인하고 k=0,8을 놓쳐 7만 답함"
         },
         {
           "index": "②",
-          "mistake": "합 대신 개수"
+          "mistake": "k=7도 두 실근이라고 잘못 보고 k=0을 빠뜨려 7+8=15"
+        },
+        {
+          "index": "④",
+          "mistake": "정답 집합 {0,8}에 네 실근인 k=1을 잘못 더해 0+1+8=9"
+        },
+        {
+          "index": "⑤",
+          "mistake": "k=0만 확인하고 k=8을 빠뜨림"
         }
       ],
       "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
@@ -209,26 +209,26 @@
     {
       "slot": "B3",
       "uid": "ALITE-GEUMDANG25-2FINAL-Q19-B3",
-      "answer": "②",
+      "answer": "①",
       "value": 4,
       "reverseStemFinding": "최종 발문에서 네 서로 다른 원상 조건을 읽고 |(x−h)^2−d|=k의 두 제곱방정식에서 각 근의 수를 역산했다.",
       "rpmNecessity": "상수함숫값 k가 네 서로 다른 원상을 갖는 필요충분조건 판정이 결정 단계다.",
       "distractorRoutes": [
         {
-          "index": "①",
-          "mistake": "d−k=4만 제곱수인지 확인하고 d+k 조건을 놓쳐 k=1"
+          "index": "②",
+          "mistake": "d−k=4만 제곱수인지 보고 k=1을 후보로 잘못 남김"
         },
         {
           "index": "③",
-          "mistake": "k=d=5 경계에서 한 개의 중근이 생기는 경우를 네 근으로 오인"
+          "mistake": "경계 k=5를 유효하다고 포함해 4+5=9"
         },
         {
           "index": "④",
-          "mistake": "두 제곱수의 차 9−1=8을 k로 사용"
+          "mistake": "제곱수 쌍 1,9의 차 9−1=8을 k로 사용"
         },
         {
           "index": "⑤",
-          "mistake": "제곱수 쌍의 합 1+9=10을 k로 사용"
+          "mistake": "제곱수 쌍 1,9의 합 1+9=10을 k로 사용"
         }
       ],
       "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
@@ -252,19 +252,19 @@
       "distractorRoutes": [
         {
           "index": "②",
-          "mistake": "k=0 포함"
+          "mistake": "가장 큰 유효값 8을 빠뜨려 1부터 7까지 일곱 개로 셈"
         },
         {
           "index": "③",
-          "mistake": "경계 k=d 포함"
+          "mistake": "경계 k=d=9를 유효하다고 포함해 9개로 셈"
         },
         {
           "index": "④",
-          "mistake": "가장 큰 k 빠짐"
+          "mistake": "0부터 9까지 경계를 모두 허용하여 열 개로 셈"
         },
         {
           "index": "⑤",
-          "mistake": "음수까지 셈"
+          "mistake": "양수 조건을 놓치고 −1부터 9까지 세어 11"
         }
       ],
       "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
@@ -288,19 +288,19 @@
       "distractorRoutes": [
         {
           "index": "①",
-          "mistake": "제곱수 합/차 혼동"
+          "mistake": "작은 제곱수 4를 k로 착각함"
         },
         {
           "index": "②",
-          "mistake": "잘못된 제곱수쌍"
+          "mistake": "k=d/2로 잘못 놓아 5"
         },
         {
           "index": "③",
-          "mistake": "k=0에서 네 근으로 셈"
+          "mistake": "가능한 k 한 개를 세고 합 대신 개수를 답해 1"
         },
         {
           "index": "④",
-          "mistake": "한 식만 제곱수 확인"
+          "mistake": "d=10 대신 2d=20을 잘못 사용해 제곱수쌍 1,9를 고르고 차 9−1=8을 k로 사용"
         }
       ],
       "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
@@ -317,26 +317,26 @@
     {
       "slot": "C3",
       "uid": "ALITE-GEUMDANG25-2FINAL-Q19-C3",
-      "answer": "②",
-      "value": 66,
-      "reverseStemFinding": "최종 발문에서 네 서로 다른 원상 조건을 읽고 |(x−h)^2−d|=k의 두 제곱방정식에서 각 근의 수를 역산했다.",
-      "rpmNecessity": "상수함숫값 k가 네 서로 다른 원상을 갖는 필요충분조건 판정이 결정 단계다.",
+      "answer": "④",
+      "value": 1628,
+      "reverseStemFinding": "네 근의 대칭쌍 제곱합이 k와 무관함을 보여 모든 admissible k에 대해 누적",
+      "rpmNecessity": "대칭근 쌍 (5±s)의 제곱합으로 k를 소거하고 가능한 11개 수준에 불변량을 누적",
       "distractorRoutes": [
         {
-          "index": "③",
-          "mistake": "끝점 k=d 포함"
+          "index": "①",
+          "mistake": "모든 k의 네 근 제곱합 대신 가능한 k의 개수 11을 답함"
         },
         {
-          "index": "④",
-          "mistake": "마지막 값 누락"
+          "index": "②",
+          "mistake": "근 제곱합 대신 가능한 k 자체의 합 1+…+11=66을 계산"
+        },
+        {
+          "index": "③",
+          "mistake": "k=11을 빠뜨려 10개의 k만 곱해 10·148=1480"
         },
         {
           "index": "⑤",
-          "mistake": "두 가지 근의 개수를 혼동"
-        },
-        {
-          "index": "①",
-          "mistake": "계산식에서 d를 잘못 씀"
+          "mistake": "한 k에서의 네 근 제곱합 148만 구하고 11개 k에 대해 합산하지 않음"
         }
       ],
       "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",

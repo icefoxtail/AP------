@@ -246,8 +246,8 @@ window.generatedLiteQuestions.push(...[
   {
     "id": 4,
     "uid": "ALITE-GEUMDANG25-2FINAL-Q20-B1",
-    "level": "중",
-    "difficultyBucket": 3,
+    "level": "상",
+    "difficultyBucket": 4,
     "category": "역함수의 존재 조건",
     "originalCategory": "함수",
     "standardCourse": "공통수학2",
@@ -269,16 +269,16 @@ window.generatedLiteQuestions.push(...[
       "최솟값"
     ],
     "wide": false,
-    "content": "정의역과 공역이 $\\mathbb R$인 함수 $f(x)=\\begin{cases}x+1&(x<2)\\\\ax^2+bx+12&(x\\ge2)\\end{cases}$가 역함수를 갖는다. 가능한 $a,b$ 중 $a$가 최소일 때의 함수를 $g$라 하자. $4g(4)$의 값은?",
+    "content": "정의역과 공역이 $\\mathbb R$인 함수 $f(x)=\\begin{cases}x+1&(x<2)\\\\ax^2+bx+12&(x\\ge2)\\end{cases}$가 역함수를 갖는다. 가능한 $a,b$ 중 $a$가 최소일 때의 함수를 $g$라 하자. $g^{-1}(12)$의 값은?",
     "choices": [
       "$12$",
-      "$36$",
-      "$21$",
-      "$48$",
-      "$156$"
+      "$0$",
+      "$2$",
+      "$4$",
+      "$11$"
     ],
     "answer": "④",
-    "solution": "첫째 구간의 치역은 $(-\\infty,3)$이다. 역함수가 존재하려면 둘째 구간은 $[3,\\infty)$를 일대일로 채워야 하므로 경계에서 $a(2)^2+b(2)+12=3$, 곧 $4a+2b=-9$이다. 또 오른쪽 포물선은 위로 열려야 하므로 $a>0$이고 꼭짓점은 $x=2$ 이하에 있어야 한다. 따라서 $-\\frac{b}{2a}\\le2$, 즉 $4a+b\\ge0$이다. $b=\\frac{-9-4a}{2}$를 대입하면 $2a+-9\\ge0$, 즉 $a\\ge\\frac{9}{4}=\\frac{9}{4}$이다. 최솟값에서 $a=\\frac{9}{4}$, $b=-9$이며 둘째 식은 $\\frac{9}{4}(x-2)^2+3$이다. $g(4)=3+\\frac{9}{4}(2)^2=12$이므로 $4g(4)=4\\left(3+\\frac{9}{4}(2)^2\\right)=48$이다.",
+    "solution": "첫째 구간의 치역은 $(-\\infty,3)$이다. 전단사이려면 둘째 구간은 $[3,\\infty)$를 일대일로 채우므로 $4a+2b=-9$이다. 꼭짓점이 $x=2$ 이하이려면 $4a+b\\ge0$이므로 $a\\ge\\frac94$. 최솟값에서 $a=\\frac94$, $b=-9$이고 오른쪽 식은 $\\frac94(x-2)^2+3$이다. $g^{-1}(12)$은 $\\frac94(x-2)^2+3=12$의 해 중 $x\\ge2$인 값이다. $(x-2)^2=4$에서 조건에 맞는 해는 $x=4$이므로 답은 $4$.",
     "solutionImage": "assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-B1-solution.svg",
     "solutionImageAlt": "조각함수의 두 치역이 경계에서 맞물리고 오른쪽 포물선이 단조롭게 증가하는 그림",
     "solutionImageCaption": "첫째 구간의 치역은 (-∞,L), 둘째 구간의 치역은 [L,∞)여야 한다.",
@@ -316,8 +316,8 @@ window.generatedLiteQuestions.push(...[
         "CC_QUADRATIC_FUNCTION"
       ],
       "conditionKeys": [],
-      "difficultyBucket": 3,
-      "level": "중",
+      "difficultyBucket": 4,
+      "level": "상",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
@@ -327,8 +327,8 @@ window.generatedLiteQuestions.push(...[
   {
     "id": 5,
     "uid": "ALITE-GEUMDANG25-2FINAL-Q20-B2",
-    "level": "중",
-    "difficultyBucket": 3,
+    "level": "상",
+    "difficultyBucket": 4,
     "category": "역함수의 존재 조건",
     "originalCategory": "함수",
     "standardCourse": "공통수학2",
@@ -350,16 +350,16 @@ window.generatedLiteQuestions.push(...[
       "최솟값"
     ],
     "wide": false,
-    "content": "함수 $f(x)=\\begin{cases}x+2&(x<2)\\\\ax^2+bx+12&(x\\ge2)\\end{cases}$의 정의역과 공역은 모두 실수 전체이다. $f$의 역함수가 존재하도록 하는 $a,b$에서 $a$의 최솟값일 때의 함수를 $g$라 하자. $g(3)$은?",
+    "content": "정의역과 공역이 $\\mathbb R$인 함수 $f(x)=\\begin{cases}x+2&(x<2)\\\\ax^2+bx+12&(x\\ge2)\\end{cases}$가 역함수를 갖는다. 가능한 $a,b$ 중 $a$가 최소일 때의 함수를 $g$라 하자. $g^{-1}(10)$의 값은?",
     "choices": [
-      "$4$",
-      "$2$",
-      "$9$",
-      "$3$",
-      "$6$"
+      "$2-\\sqrt3$",
+      "$2+\\sqrt3$",
+      "$\\sqrt3$",
+      "$10$",
+      "$2+\\sqrt6$"
     ],
-    "answer": "⑤",
-    "solution": "첫째 구간의 치역은 $(-\\infty,4)$이다. 역함수가 존재하려면 둘째 구간은 $[4,\\infty)$를 일대일로 채워야 하므로 경계에서 $a(2)^2+b(2)+12=4$, 곧 $4a+2b=-8$이다. 또 오른쪽 포물선은 위로 열려야 하므로 $a>0$이고 꼭짓점은 $x=2$ 이하에 있어야 한다. 따라서 $-\\frac{b}{2a}\\le2$, 즉 $4a+b\\ge0$이다. $b=\\frac{-8-4a}{2}$를 대입하면 $2a+-8\\ge0$, 즉 $a\\ge\\frac{8}{4}=2$이다. 최솟값에서 $a=2$, $b=-8$이며 둘째 식은 $2(x-2)^2+4$이다. $g(3)=4+2(1)^2=6$이므로 구하는 값은 $6$이다.",
+    "answer": "②",
+    "solution": "첫째 구간의 치역은 $(-\\infty,4)$이다. 둘째 구간이 $[4,\\infty)$를 단조롭게 채우려면 $4a+2b=-8$ 및 $4a+b\\ge0$이므로 $a\\ge2$. 최솟값에서 $a=2$, $b=-8$이고 오른쪽 식은 $2(x-2)^2+4$이다. $g^{-1}(10)$은 오른쪽 가지에서 $2(x-2)^2+4=10$을 만족하는 $x\\ge2$이다. $(x-2)^2=3$이므로 $x=2+\\sqrt3$이다.",
     "solutionImage": "assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-B2-solution.svg",
     "solutionImageAlt": "조각함수의 두 치역이 경계에서 맞물리고 오른쪽 포물선이 단조롭게 증가하는 그림",
     "solutionImageCaption": "첫째 구간의 치역은 (-∞,L), 둘째 구간의 치역은 [L,∞)여야 한다.",
@@ -397,8 +397,8 @@ window.generatedLiteQuestions.push(...[
         "CC_QUADRATIC_FUNCTION"
       ],
       "conditionKeys": [],
-      "difficultyBucket": 3,
-      "level": "중",
+      "difficultyBucket": 4,
+      "level": "상",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
@@ -431,16 +431,16 @@ window.generatedLiteQuestions.push(...[
       "최솟값"
     ],
     "wide": false,
-    "content": "실수 전체에서 실수 전체로 가는 함수 $f(x)=\\begin{cases}x+3&(x<2)\\\\ax^2+bx+13&(x\\ge2)\\end{cases}$가 역함수를 갖는다. $a$가 최소가 되도록 하는 $a,b$에서 얻은 함수를 $g$라 할 때, $2g(3)$은?",
+    "content": "정의역과 공역이 $\\mathbb R$인 함수 $f(x)=\\begin{cases}x+3&(x<2)\\\\ax^2+bx+13&(x\\ge2)\\end{cases}$가 역함수를 갖는다. 가능한 $a,b$ 중 $a$가 최소일 때의 함수를 $g$라 하자. $g^{-1}(13)+g^{-1}(1)$의 값은?",
     "choices": [
-      "$10$",
-      "$14$",
+      "$6$",
       "$4$",
-      "$20$",
-      "$7$"
+      "$2$",
+      "$-2$",
+      "$14$"
     ],
-    "answer": "②",
-    "solution": "첫째 구간의 치역은 $(-\\infty,5)$이다. 역함수가 존재하려면 둘째 구간은 $[5,\\infty)$를 일대일로 채워야 하므로 경계에서 $a(2)^2+b(2)+13=5$, 곧 $4a+2b=-8$이다. 또 오른쪽 포물선은 위로 열려야 하므로 $a>0$이고 꼭짓점은 $x=2$ 이하에 있어야 한다. 따라서 $-\\frac{b}{2a}\\le2$, 즉 $4a+b\\ge0$이다. $b=\\frac{-8-4a}{2}$를 대입하면 $2a+-8\\ge0$, 즉 $a\\ge\\frac{8}{4}=2$이다. 최솟값에서 $a=2$, $b=-8$이며 둘째 식은 $2(x-2)^2+5$이다. $g(3)=5+2(1)^2=7$이므로 $2g(3)=2\\left(5+2(1)^2\\right)=14$이다.",
+    "answer": "③",
+    "solution": "첫째 구간의 치역은 $(-\\infty,5)$이다. 경계 일치와 오른쪽 가지의 단조 증가 조건은 $4a+2b=-8$, $4a+b\\ge0$이므로 $a\\ge2$. 최솟값에서 $a=2$, $b=-8$이고 오른쪽 식은 $2(x-2)^2+5$이다. $g^{-1}(13)$은 $2(x-2)^2+5=13$에서 $x\\ge2$인 해이므로 $4$이다. $1<5$이므로 $g^{-1}(1)$은 왼쪽 식 $x+3=1$에서 $x=-2$이다. 합은 $4+(-2)=2$.",
     "solutionImage": "assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-B3-solution.svg",
     "solutionImageAlt": "조각함수의 두 치역이 경계에서 맞물리고 오른쪽 포물선이 단조롭게 증가하는 그림",
     "solutionImageCaption": "첫째 구간의 치역은 (-∞,L), 둘째 구간의 치역은 [L,∞)여야 한다.",
@@ -512,16 +512,16 @@ window.generatedLiteQuestions.push(...[
       "최솟값"
     ],
     "wide": false,
-    "content": "정의역과 공역이 모두 $\\mathbb R$인 함수 $f(x)=\\begin{cases}x+5&(x<1)\\\\ax^2+bx+12&(x\\ge1)\\end{cases}$에 역함수가 존재한다. $a$가 최소일 때의 함수를 $g$라 하자. $g(2)$의 값은?",
+    "content": "정의역과 공역이 $\\mathbb R$인 함수 $f(x)=\\begin{cases}x+5&(x<1)\\\\ax^2+bx+12&(x\\ge1)\\end{cases}$가 역함수를 갖는다. 가능한 $a,b$ 중 $a$가 최소일 때의 함수를 $g$라 하자. $g^{-1}(6)-g^{-1}(5)$의 값은?",
     "choices": [
-      "$12$",
+      "$0$",
+      "$1$",
       "$6$",
-      "$9$",
-      "$18$",
-      "$10$"
+      "$-1$",
+      "$5$"
     ],
-    "answer": "①",
-    "solution": "첫째 구간의 치역은 $(-\\infty,6)$이다. 역함수가 존재하려면 둘째 구간은 $[6,\\infty)$를 일대일로 채워야 하므로 경계에서 $a(1)^2+b(1)+12=6$, 곧 $a+b=-6$이다. 또 오른쪽 포물선은 위로 열려야 하므로 $a>0$이고 꼭짓점은 $x=1$ 이하에 있어야 한다. 따라서 $-\\frac{b}{2a}\\le1$, 즉 $2a+b\\ge0$이다. $b=-6-a$를 대입하면 $a-6\\ge0$, 즉 $a\\ge6$이다. 최솟값에서 $a=6$, $b=-12$이며 둘째 식은 $6(x-1)^2+6$이다. $g(2)=6+6(1)^2=12$이므로 구하는 값은 $12$이다.",
+    "answer": "②",
+    "solution": "첫째 구간의 치역은 $(-\\infty,6)$이다. 오른쪽 가지가 $[6,\\infty)$를 단조롭게 채우려면 $a+b=-6$ 및 $2a+b\\ge0$이므로 $a\\ge6$. 따라서 최소에서 $a=6$, $b=-12$이고 오른쪽 식은 $6(x-1)^2+6$이다. $g^{-1}(6)=1$은 오른쪽 가지의 경계에서 얻는다. $5<6$이므로 $g^{-1}(5)$는 왼쪽 식 $x+5=5$에서 $0$이다. 차는 $1-0=1$.",
     "solutionImage": "assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-C1-solution.svg",
     "solutionImageAlt": "조각함수의 두 치역이 경계에서 맞물리고 오른쪽 포물선이 단조롭게 증가하는 그림",
     "solutionImageCaption": "첫째 구간의 치역은 (-∞,L), 둘째 구간의 치역은 [L,∞)여야 한다.",
@@ -593,16 +593,16 @@ window.generatedLiteQuestions.push(...[
       "최솟값"
     ],
     "wide": false,
-    "content": "함수 $f(x)=\\begin{cases}x+1&(x<3)\\\\ax^2+bx+25&(x\\ge3)\\end{cases}$의 정의역과 공역이 모두 $\\mathbb R$이고 $f^{-1}$가 존재한다. $a$를 최소로 하는 함수 $g$에 대하여 $3g(4)$의 값은?",
+    "content": "정의역과 공역이 $\\mathbb R$인 함수 $f(x)=\\begin{cases}x+1&(x<3)\\\\ax^2+bx+25&(x\\ge3)\\end{cases}$가 역함수를 갖는다. 가능한 $a,b$ 중 $a$가 최소일 때의 함수를 $g$라 하자. $g^{-1}(\\frac{19}{3})$의 값은?",
     "choices": [
-      "$12$",
-      "$7$",
-      "$20$",
-      "$19$",
-      "$33$"
+      "$3$",
+      "$\\frac73$",
+      "$1$",
+      "$4$",
+      "$\\frac{19}{3}$"
     ],
     "answer": "④",
-    "solution": "첫째 구간의 치역은 $(-\\infty,4)$이다. 역함수가 존재하려면 둘째 구간은 $[4,\\infty)$를 일대일로 채워야 하므로 경계에서 $a(3)^2+b(3)+25=4$, 곧 $9a+3b=-21$이다. 또 오른쪽 포물선은 위로 열려야 하므로 $a>0$이고 꼭짓점은 $x=3$ 이하에 있어야 한다. 따라서 $-\\frac{b}{2a}\\le3$, 즉 $6a+b\\ge0$이다. $b=\\frac{-21-9a}{3}$를 대입하면 $3a+-21\\ge0$, 즉 $a\\ge\\frac{21}{9}=\\frac{2333333}{1000000}$이다. 최솟값에서 $a=\\frac{2333333}{1000000}$, $b=-14$이며 둘째 식은 $\\frac{2333333}{1000000}(x-3)^2+4$이다. $g(4)=4+\\frac{2333333}{1000000}(1)^2=\\frac{6333333}{1000000}$이므로 $3g(4)=3\\left(4+\\frac{2333333}{1000000}(1)^2\\right)=19$이다.",
+    "solution": "첫째 구간의 치역은 $(-\\infty,4)$이다. 경계 일치와 꼭짓점 조건은 $9a+3b=-21$, $6a+b\\ge0$이므로 $a\\ge\\frac73$. 최솟값에서 $a=\\frac73$, $b=-14$이며 오른쪽 식은 $\\frac73(x-3)^2+4$이다. 목표값 $\\frac{19}{3}$은 경계값 4보다 크므로 오른쪽 가지에서 역상을 찾는다. $\\frac73(x-3)^2+4=\\frac{19}{3}$에서 $(x-3)^2=1$이고 $x\\ge3$이므로 역상은 4이다.",
     "solutionImage": "assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-C2-solution.svg",
     "solutionImageAlt": "조각함수의 두 치역이 경계에서 맞물리고 오른쪽 포물선이 단조롭게 증가하는 그림",
     "solutionImageCaption": "첫째 구간의 치역은 (-∞,L), 둘째 구간의 치역은 [L,∞)여야 한다.",
@@ -674,16 +674,16 @@ window.generatedLiteQuestions.push(...[
       "최솟값"
     ],
     "wide": false,
-    "content": "정의역과 공역이 모두 실수 전체인 함수 $f(x)=\\begin{cases}x+2&(x<3)\\\\ax^2+bx+29&(x\\ge3)\\end{cases}$의 역함수가 존재한다. $a$가 최소일 때의 함수를 $g$라 할 때, $3g(5)$는?",
+    "content": "정의역과 공역이 $\\mathbb R$인 함수 $f(x)=\\begin{cases}x+2&(x<3)\\\\ax^2+bx+29&(x\\ge3)\\end{cases}$가 역함수를 갖는다. 가능한 $a,b$ 중 $a$가 최소일 때의 함수를 $g$라 하자. $g^{-1}(13)+g^{-1}(1)$의 값은?",
     "choices": [
-      "$15$",
-      "$32$",
-      "$47$",
-      "$39$",
-      "$215$"
+      "$3+\\sqrt3$",
+      "$1+\\sqrt3$",
+      "$2-\\sqrt3$",
+      "$14$",
+      "$2+\\sqrt3$"
     ],
-    "answer": "③",
-    "solution": "첫째 구간의 치역은 $(-\\infty,5)$이다. 역함수가 존재하려면 둘째 구간은 $[5,\\infty)$를 일대일로 채워야 하므로 경계에서 $a(3)^2+b(3)+29=5$, 곧 $9a+3b=-24$이다. 또 오른쪽 포물선은 위로 열려야 하므로 $a>0$이고 꼭짓점은 $x=3$ 이하에 있어야 한다. 따라서 $-\\frac{b}{2a}\\le3$, 즉 $6a+b\\ge0$이다. $b=\\frac{-24-9a}{3}$를 대입하면 $3a+-24\\ge0$, 즉 $a\\ge\\frac{24}{9}=\\frac{2666667}{1000000}$이다. 최솟값에서 $a=\\frac{2666667}{1000000}$, $b=-16$이며 둘째 식은 $\\frac{2666667}{1000000}(x-3)^2+5$이다. $g(5)=5+\\frac{2666667}{1000000}(2)^2=\\frac{15666667}{1000000}$이므로 $3g(5)=3\\left(5+\\frac{2666667}{1000000}(2)^2\\right)=47$이다.",
+    "answer": "⑤",
+    "solution": "첫째 구간의 치역은 $(-\\infty,5)$이다. 경계 일치와 오른쪽 가지 단조 조건은 $9a+3b=-24$, $6a+b\\ge0$이므로 $a\\ge\\frac83$. 최솟값에서 $a=\\frac83$, $b=-16$이며 오른쪽 식은 $\\frac83(x-3)^2+5$이다. $g^{-1}(13)$은 $\\frac83(x-3)^2+5=13$의 해 중 $x\\ge3$인 값이므로 $3+\\sqrt3$이다. $1<5$이므로 $g^{-1}(1)$은 왼쪽 식 $x+2=1$에서 $-1$이다. 합은 $3+\\sqrt3-1=2+\\sqrt3$.",
     "solutionImage": "assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-C3-solution.svg",
     "solutionImageAlt": "조각함수의 두 치역이 경계에서 맞물리고 오른쪽 포물선이 단조롭게 증가하는 그림",
     "solutionImageCaption": "첫째 구간의 치역은 (-∞,L), 둘째 구간의 치역은 [L,∞)여야 한다.",
