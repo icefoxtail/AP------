@@ -1,0 +1,253 @@
+{
+  "schemaVersion": "ALIVE_QID9_GEUMDANG25_Q14_META_BLUEPRINT_V1",
+  "sourceExamPath": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+  "sourceExamBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "sourceQid": 14,
+  "candidateJsBlobSha": "0e4f42fbec3d160e07340f62f3b9dca9ae5ca54c",
+  "originalInvariant": "f:X→X를 나머지로 정의하고 f^n(x)=f(f^{n-1}(x)) 순차 적용하여 반복합성 값 계산",
+  "primaryL3HardLock": {
+    "recordId": "H1-RPM-253",
+    "l3": "합성함수",
+    "l4": "합성함수 계산",
+    "reason": "단순 나머지 연산만으로는 목표를 직접 얻을 수 없고 함수의 연속 대입 또는 그 합성 주기가 필수",
+    "rpmAuthority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "rpmBinding": "DIRECT_ACTIVE"
+  },
+  "slots": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q14-A1",
+      "finalStem": "집합 $X=\\{0,1,2,3\\}$에 대하여 함수 $f:X\\to X$의 함숫값은 $x+1$을 $4$로 나누었을 때의 나머지이다. $f^{2}(0)+f^{3}(0)+f^{4}(0)$의 값은? (단, $f^1=f$, $f^{n+1}=f\\circ f^n$이며 $n$은 자연수)",
+      "lockedPrimaryL3": "H1-RPM-253",
+      "l4": "합성함수 계산",
+      "answer": "②",
+      "choices": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$3$",
+        "$9$"
+      ],
+      "difficultyBucket": 2,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+      "addedDecisiveStep": "4-cycle: 0→1→2→3→0; three listed values 2,3,0",
+      "problemVisualDecision": "EXEMPT_EXPRESSION_DEFINES_FUNCTION",
+      "solutionVisualDecision": "ADD_ITERATION_PATH_SVG",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q14-A1-solution.svg"
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q14-A2",
+      "finalStem": "집합 $X=\\{0,1,2,3,4\\}$에 대하여 함수 $f:X\\to X$의 함숫값은 $2x+1$을 $5$로 나누었을 때의 나머지이다. $f^{2}(0)+f^{3}(0)+f^{4}(0)$의 값은? (단, $f^1=f$, $f^{n+1}=f\\circ f^n$이며 $n$은 자연수)",
+      "lockedPrimaryL3": "H1-RPM-253",
+      "l4": "합성함수 계산",
+      "answer": "④",
+      "choices": [
+        "$3$",
+        "$4$",
+        "$6$",
+        "$5$",
+        "$8$"
+      ],
+      "difficultyBucket": 2,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+      "addedDecisiveStep": "4-cycle: 0→1→3→2→0; three listed values 3,2,0",
+      "problemVisualDecision": "EXEMPT_EXPRESSION_DEFINES_FUNCTION",
+      "solutionVisualDecision": "ADD_ITERATION_PATH_SVG",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q14-A2-solution.svg"
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q14-A3",
+      "finalStem": "집합 $X=\\{0,1,2,3\\}$에 대하여 함수 $f:X\\to X$의 함숫값은 $x^2+1$을 $4$로 나누었을 때의 나머지이다. $f^{2}(3)+f^{3}(3)+f^{4}(3)$의 값은? (단, $f^1=f$, $f^{n+1}=f\\circ f^n$이며 $n$은 자연수)",
+      "lockedPrimaryL3": "H1-RPM-253",
+      "l4": "합성함수 계산",
+      "answer": "①",
+      "choices": [
+        "$4$",
+        "$3$",
+        "$5$",
+        "$6$",
+        "$2$"
+      ],
+      "difficultyBucket": 3,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+      "addedDecisiveStep": "tail into 2-cycle: 3→2→1→2→1; values 1,2,1",
+      "problemVisualDecision": "EXEMPT_EXPRESSION_DEFINES_FUNCTION",
+      "solutionVisualDecision": "ADD_ITERATION_PATH_SVG",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q14-A3-solution.svg"
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q14-B1",
+      "finalStem": "집합 $X=\\{0,1,2,3,4\\}$에 대하여 함수 $f:X\\to X$의 함숫값은 $x^2+1$을 $5$로 나누었을 때의 나머지이다. $f^{2026}(0)+2f^{2027}(0)$의 값은? (단, $f^1=f$, $f^{n+1}=f\\circ f^n$이며 $n$은 자연수)",
+      "lockedPrimaryL3": "H1-RPM-253",
+      "l4": "EXT-GD25-Q14-LONG-PERIOD-WEIGHTED",
+      "answer": "⑤",
+      "choices": [
+        "$3$",
+        "$4$",
+        "$2$",
+        "$1$",
+        "$5$"
+      ],
+      "difficultyBucket": 3,
+      "crossConceptKeys": [
+        "CC_NUMBER_DIVISOR_MULTIPLE"
+      ],
+      "conditionKeys": [],
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+      "addedDecisiveStep": "3-cycle: 0→1→2→0; weighted large-index computation",
+      "problemVisualDecision": "EXEMPT_EXPRESSION_DEFINES_FUNCTION",
+      "solutionVisualDecision": "ADD_ITERATION_PATH_SVG",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q14-B1-solution.svg"
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q14-B2",
+      "finalStem": "집합 $X=\\{0,1,2,3,4\\}$에 대하여 함수 $f:X\\to X$의 함숫값은 $2x+1$을 $5$로 나누었을 때의 나머지이다. $f^7(0)+f^8(4)$의 값은? (단, $f^1=f$, $f^{n+1}=f\\circ f^n$이며 $n$은 자연수)",
+      "lockedPrimaryL3": "H1-RPM-253",
+      "l4": "EXT-GD25-Q14-TWO-ORBIT-FIXED",
+      "answer": "③",
+      "choices": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$7$",
+        "$8$"
+      ],
+      "difficultyBucket": 3,
+      "crossConceptKeys": [
+        "CC_NUMBER_DIVISOR_MULTIPLE"
+      ],
+      "conditionKeys": [],
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+      "addedDecisiveStep": "4-cycle 0→1→3→2→0 plus separate fixed point f(4)=4",
+      "problemVisualDecision": "EXEMPT_EXPRESSION_DEFINES_FUNCTION",
+      "solutionVisualDecision": "ADD_ITERATION_PATH_SVG",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q14-B2-solution.svg"
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q14-B3",
+      "finalStem": "집합 $X=\\{0,1,2,3,4,5\\}$에 대하여 함수 $f:X\\to X$의 함숫값은 $x^2+1$을 $6$으로 나누었을 때의 나머지이다. $f^{17}(0)+f^{18}(0)$의 값은? (단, $f^1=f$, $f^{n+1}=f\\circ f^n$이며 $n$은 자연수)",
+      "lockedPrimaryL3": "H1-RPM-253",
+      "l4": "EXT-GD25-Q14-TAIL-THEN-CYCLE",
+      "answer": "②",
+      "choices": [
+        "$5$",
+        "$7$",
+        "$6$",
+        "$8$",
+        "$10$"
+      ],
+      "difficultyBucket": 4,
+      "crossConceptKeys": [
+        "CC_NUMBER_PARITY"
+      ],
+      "conditionKeys": [],
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+      "addedDecisiveStep": "tail 0→1→2 then alternating 5,2; n parity calculation",
+      "problemVisualDecision": "EXEMPT_EXPRESSION_DEFINES_FUNCTION",
+      "solutionVisualDecision": "ADD_ITERATION_PATH_SVG",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q14-B3-solution.svg"
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q14-C1",
+      "finalStem": "집합 $X=\\{0,1,2,3,4\\}$와 $a\\in\\{1,2,3,4\\}$에 대하여 함수 $f_a:X\\to X$의 함숫값은 $ax+1$을 $5$로 나누었을 때의 나머지이다. $f_a^2(0)=3$일 때, $f_a^5(0)+f_a^6(0)$의 값은? (단, $f_a^1=f_a$, $f_a^{n+1}=f_a\\circ f_a^n$)",
+      "lockedPrimaryL3": "H1-RPM-253",
+      "l4": "EXT-GD25-Q14-PARAMETER-RECOVERY",
+      "answer": "④",
+      "choices": [
+        "$1$",
+        "$6$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "difficultyBucket": 4,
+      "crossConceptKeys": [
+        "CC_NUMBER_DIVISOR_MULTIPLE"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "templateKey": "GEN-TPL-GD25-Q14-PARAM-RECOVERY",
+      "addedDecisiveStep": "f_a²(0)=(a+1) mod5=3 implies unique a=2; four-cycle",
+      "problemVisualDecision": "EXEMPT_EXPRESSION_DEFINES_FUNCTION",
+      "solutionVisualDecision": "ADD_ITERATION_PATH_SVG",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q14-C1-solution.svg"
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q14-C2",
+      "finalStem": "집합 $X=\\{0,1,2,3,4,5,6\\}$에 대하여 함수 $f:X\\to X$의 함숫값은 $x^2$을 $7$로 나누었을 때의 나머지이다. $f^{2026}(3)+f^{2027}(3)$의 값은? (단, $f^1=f$, $f^{n+1}=f\\circ f^n$이며 $n$은 자연수)",
+      "lockedPrimaryL3": "H1-RPM-253",
+      "l4": "EXT-GD25-Q14-LONG-TWO-CYCLE",
+      "answer": "①",
+      "choices": [
+        "$6$",
+        "$4$",
+        "$2$",
+        "$8$",
+        "$0$"
+      ],
+      "difficultyBucket": 4,
+      "crossConceptKeys": [
+        "CC_NUMBER_PARITY"
+      ],
+      "conditionKeys": [],
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+      "addedDecisiveStep": "3→2→4→2; even/odd index parity",
+      "problemVisualDecision": "EXEMPT_EXPRESSION_DEFINES_FUNCTION",
+      "solutionVisualDecision": "ADD_ITERATION_PATH_SVG",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q14-C2-solution.svg"
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q14-C3",
+      "finalStem": "집합 $X=\\{0,1,2,3,4\\}$에 대하여 함수 $f:X\\to X$의 함숫값은 $2x+1$을 $5$로 나누었을 때의 나머지이다. $1\\le n\\le30$인 자연수 $n$ 중 $f^n(0)=1$을 만족하는 $n$의 개수는? (단, $f^1=f$, $f^{n+1}=f\\circ f^n$이며 $n$은 자연수)",
+      "lockedPrimaryL3": "H1-RPM-253",
+      "l4": "EXT-GD25-Q14-ITERATE-INDEX-COUNT",
+      "answer": "③",
+      "choices": [
+        "$7$",
+        "$9$",
+        "$8$",
+        "$6$",
+        "$10$"
+      ],
+      "difficultyBucket": 5,
+      "crossConceptKeys": [
+        "CC_NUMBER_DIVISOR_MULTIPLE"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "templateKey": "GEN-TPL-GD25-Q14-ITERATE-INDEX-COUNT",
+      "addedDecisiveStep": "0→1→3→2→0; count natural indices 1 mod4 in [1,30]",
+      "problemVisualDecision": "EXEMPT_EXPRESSION_DEFINES_FUNCTION",
+      "solutionVisualDecision": "ADD_ITERATION_PATH_SVG",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q14-C3-solution.svg"
+    }
+  ],
+  "status": "CREATE_ONLY_NO_INDEPENDENT_REVIEW"
+}
