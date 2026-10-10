@@ -46,7 +46,7 @@ jobs:
           node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --check
       - name: Validate Archive 2.0 technical integrity and search/output flow
         run: node --test tests/problem-bank-meta.test.cjs
-      - name: Create normal PR for changes detected after a main merge
+      - name: Create and auto-merge the normal projection PR
         if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ github.token }}
@@ -58,7 +58,18 @@ jobs:
             echo 'Generated Consumer projection is current.'
             exit 0
           fi
-          git switch -c codex/main-generated-consumer-${GITHUB_RUN_ID}
+          branch="codex/main-generated-consumer-${GITHUB_RUN_ID}"
+          git switch -c "$branch"
           git commit -m 'chore(archive): sync main Generated question sources'
           git push origin HEAD
-          gh pr create --base main --head "codex/main-generated-consumer-${GITHUB_RUN_ID}" --title 'Sync main Generated Consumer projection' --body 'Automated projection of main-resident Generated question JS and metadata. Review/approval history remains independent.' || gh pr list --head "codex/main-generated-consumer-${GITHUB_RUN_ID}" --json url --jq '.[0].url'
+          pr_url="$(gh pr create --base main --head "$branch" --title 'Sync main Generated Consumer projection' --body 'Automated projection of main-resident Generated question JS and metadata. Review history remains intact; source availability is independent of review approval.' --json url --jq .url || true)"
+          if [ -z "$pr_url" ]; then
+            pr_url="$(gh pr list --state open --base main --head "$branch" --json url --jq '.[0].url // empty')"
+          fi
+          if [ -z "$pr_url" ]; then
+            echo 'Could not create or resolve the normal projection PR.' >&2
+            exit 1
+          fi
+          # Respect branch protections and merge queues. This enables automatic merge when
+          # repository requirements are satisfied; it never uses administrator bypass.
+          gh pr merge "$pr_url" --auto --merge --delete-branch

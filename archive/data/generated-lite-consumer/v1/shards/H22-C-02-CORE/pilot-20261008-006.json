@@ -5,6 +5,76 @@
   "repairShardGitSha": "dcdbe708bd000b3a2d0b695be971cf4b1cc8497a",
   "records": [
     {
+      "generatedUid": "ALITE-20261008-HYC26-Q10-001",
+      "localOrdinal": 1,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js",
+      "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
+      "sourceQid": 10,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-02-CORE/shards/pilot-20261008-006.js",
+      "sourceShardGitSha": "97c6481ab0bf3b0a04defab0e8ea8576daafc254",
+      "l2": "H22-C-02-CORE",
+      "reviewStatus": "NOT_REVIEWED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+        "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE",
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE"
+      },
+      "question": {
+        "id": 1,
+        "level": "중",
+        "category": "항등식과 나머지 정리",
+        "originalCategory": "항등식과 나머지 정리",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "standardUnit": "항등식과 나머지 정리",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H22-C-02-CORE",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "wide": false,
+        "tags": [
+          "객관식",
+          "항등식",
+          "미정계수법"
+        ],
+        "content": "최고차항의 계수가 양수인 다항식 $P(x)$가 모든 실수 $x$에 대하여 $\\{P(x)\\}^2+xP(x)=(x^2-2x+3)(x^2-x+3)$을 만족시킨다. $P(2)$의 값은?",
+        "choices": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] 우변 두 인수의 차이가 $x$임을 이용한다.\n$Q(x)=x^2-2x+3$이라 하면 주어진 식은 $P(x)^2+xP(x)=Q(x)^2+xQ(x)$이다.\n따라서 $(P-Q)(P+Q+x)=0$이 항등식이므로 $P=Q$ 또는 $P=-Q-x$이다.\n후자는 최고차항의 계수가 음수이므로 제외한다.\n따라서 $P(x)=x^2-2x+3$이고 $P(2)=3$이다.",
+        "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+        "difficultyBucket": 3,
+        "uid": "ALITE-20261008-HYC26-Q10-001"
+      },
+      "approval": "NOT_REVIEWED",
+      "sourceMetaSha256": "40a52a7e37f3436a8261763e73a16627014003389799f25cd90d4836f45473c1"
+    },
+    {
       "generatedUid": "ALITE-20261008-HYC26-Q10-002",
       "sourceKind": "generated",
       "sourceExamPath": "archive/exams/original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js",
@@ -21,7 +91,7 @@
         "l4": "미정계수법",
         "mappingStatus": "DIRECT_ACTIVE"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 2,
         "level": "중",
@@ -276,7 +346,29 @@
         "physicalStorageBucketKey": "H22-C-02-CORE",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+        "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE",
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE"
+      },
+      "sourceMetaSha256": "40a52a7e37f3436a8261763e73a16627014003389799f25cd90d4836f45473c1"
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q10-003",
@@ -295,7 +387,7 @@
         "l4": "미정계수법",
         "mappingStatus": "DIRECT_ACTIVE"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 3,
         "level": "중",
@@ -550,7 +642,29 @@
         "physicalStorageBucketKey": "H22-C-02-CORE",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+        "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE",
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE"
+      },
+      "sourceMetaSha256": "40a52a7e37f3436a8261763e73a16627014003389799f25cd90d4836f45473c1"
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q10-004",
@@ -569,7 +683,7 @@
         "l4": "미정계수법",
         "mappingStatus": "DIRECT_ACTIVE"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 4,
         "level": "상",
@@ -824,7 +938,29 @@
         "physicalStorageBucketKey": "H22-C-02-CORE",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+        "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE",
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 4,
+        "level": "상",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE"
+      },
+      "sourceMetaSha256": "3f8f5aed9dffb9041c48e945a7b91f60ba3c1e5bc091b746f51a12e4242ef61c"
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q10-005",
@@ -843,7 +979,7 @@
         "l4": "미정계수법",
         "mappingStatus": "DIRECT_ACTIVE"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 5,
         "level": "상",
@@ -1098,7 +1234,29 @@
         "physicalStorageBucketKey": "H22-C-02-CORE",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+        "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE",
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 4,
+        "level": "상",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE"
+      },
+      "sourceMetaSha256": "3f8f5aed9dffb9041c48e945a7b91f60ba3c1e5bc091b746f51a12e4242ef61c"
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q10-006",
@@ -1117,7 +1275,7 @@
         "l4": "미정계수법",
         "mappingStatus": "DIRECT_ACTIVE"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 6,
         "level": "중",
@@ -1372,19 +1530,8 @@
         "physicalStorageBucketKey": "H22-C-02-CORE",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
-    },
-    {
-      "generatedUid": "ALITE-20261008-HYC26-Q10-001",
-      "localOrdinal": 1,
-      "sourceKind": "generated",
-      "sourceExamPath": "archive/exams/original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js",
-      "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
-      "sourceQid": 10,
-      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-02-CORE/shards/pilot-20261008-006.js",
-      "sourceShardGitSha": "97c6481ab0bf3b0a04defab0e8ea8576daafc254",
-      "l2": "H22-C-02-CORE",
-      "reviewStatus": "NOT_REVIEWED",
+      },
+      "approval": "REVIEW_APPROVED",
       "consumerSelectable": true,
       "technicalStatus": "READY",
       "technicalIssues": [],
@@ -1405,42 +1552,7 @@
         "standardUnitKey": "H22-C-02",
         "subUnitKey": "H22-C-02-CORE"
       },
-      "question": {
-        "id": 1,
-        "level": "중",
-        "category": "항등식과 나머지 정리",
-        "originalCategory": "항등식과 나머지 정리",
-        "standardCourse": "공통수학1",
-        "standardUnitKey": "H22-C-02",
-        "standardUnit": "항등식과 나머지 정리",
-        "standardUnitOrder": 2,
-        "subUnitKey": "H22-C-02-CORE",
-        "subUnit": "항등식과 나머지 정리 핵심 개념",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "questionType": "객관식",
-        "layoutTag": "grid",
-        "wide": false,
-        "tags": [
-          "객관식",
-          "항등식",
-          "미정계수법"
-        ],
-        "content": "최고차항의 계수가 양수인 다항식 $P(x)$가 모든 실수 $x$에 대하여 $\\{P(x)\\}^2+xP(x)=(x^2-2x+3)(x^2-x+3)$을 만족시킨다. $P(2)$의 값은?",
-        "choices": [
-          "1",
-          "2",
-          "3",
-          "4",
-          "5"
-        ],
-        "answer": "③",
-        "solution": "[키포인트] 우변 두 인수의 차이가 $x$임을 이용한다.\n$Q(x)=x^2-2x+3$이라 하면 주어진 식은 $P(x)^2+xP(x)=Q(x)^2+xQ(x)$이다.\n따라서 $(P-Q)(P+Q+x)=0$이 항등식이므로 $P=Q$ 또는 $P=-Q-x$이다.\n후자는 최고차항의 계수가 음수이므로 제외한다.\n따라서 $P(x)=x^2-2x+3$이고 $P(2)=3$이다.",
-        "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
-        "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
-        "difficultyBucket": 3,
-        "uid": "ALITE-20261008-HYC26-Q10-001"
-      }
+      "sourceMetaSha256": "40a52a7e37f3436a8261763e73a16627014003389799f25cd90d4836f45473c1"
     }
   ],
   "school": "효천고",
