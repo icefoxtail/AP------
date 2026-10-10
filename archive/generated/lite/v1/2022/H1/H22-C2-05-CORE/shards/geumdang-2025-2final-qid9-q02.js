@@ -49,22 +49,44 @@ window.questionBank = [
       "rpmL4": "부분집합 판정",
       "rpmL4Namespace": "RPM_EXISTING_DRAFT",
       "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
-      "rpmDraftAuthorityBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
       "problemTypeKey": "PT_SUBSET_JUDGMENT",
       "templateKey": "TPL_SUBSET_DIRECT",
       "crossConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "SUBSET_A1",
+      "integrationPattern": "NONE",
       "difficultyBucket": 1,
       "level": "하",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-05",
       "subUnitKey": "H22-C2-05-CORE",
-      "sourceKind": "generated"
+      "sourceKind": "generated",
+      "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+      "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "secondaryConceptKeys": []
     },
-    "reviewStatus": "BUILDER_SELF_REVIEWED",
-    "studentSupplyEligible": false,
-    "consumerSelectable": false
+    "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+    "studentSupplyEligible": true,
+    "consumerSelectable": true,
+    "metaFinalSha256": "2df27b70812f7e4321423420538fc0d655bcba83730b4d93d4e03e084f1a4c5b",
+    "metaReviewEvidenceSha256": "1279ed773d4ac7dbea6573698e8f2bc32585c091d1faa105068953c9862dc6d2",
+    "metaReviewEvidence": {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_금당고_2학기_기말_고1/Q02_META_REVIEW_EVIDENCE.json",
+      "sha256": "1279ed773d4ac7dbea6573698e8f2bc32585c091d1faa105068953c9862dc6d2",
+      "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-A1",
+      "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_GEUMDANG_Q02_9",
+      "scopeUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q02-A1"
+      ]
+    },
+    "problemTypeKey": "PT_SUBSET_JUDGMENT",
+    "templateKey": "TPL_SUBSET_DIRECT",
+    "secondaryConceptKeys": [],
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_GEUMDANG_Q02_9"
   },
   {
     "id": 2,
@@ -115,27 +137,54 @@ window.questionBank = [
       "rpmL4": "부분집합 판정",
       "rpmL4Namespace": "RPM_EXISTING_DRAFT",
       "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
-      "rpmDraftAuthorityBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
       "problemTypeKey": "PT_SUBSET_JUDGMENT",
-      "templateKey": "GEN_TPL_SUBSET_CONDITION_TO_CHOICE",
+      "templateKey": "TPL_SUBSET_DIRECT",
       "crossConceptKeys": [
-        "GEN_CC_MULTIPLES"
+        "EXT-GD25-Q02-CC-MULTIPLES"
       ],
       "conditionKeys": [
         "COND_NATURAL_NUMBER",
         "COND_RANGE"
       ],
-      "integrationPattern": "SUBSET_A2",
+      "integrationPattern": "SEQUENTIAL",
       "difficultyBucket": 2,
       "level": "하",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-05",
       "subUnitKey": "H22-C2-05-CORE",
-      "sourceKind": "generated"
+      "sourceKind": "generated",
+      "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+      "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "secondaryConceptKeys": []
     },
-    "reviewStatus": "BUILDER_SELF_REVIEWED",
-    "studentSupplyEligible": false,
-    "consumerSelectable": false
+    "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+    "studentSupplyEligible": true,
+    "consumerSelectable": true,
+    "metaFinalSha256": "de0af37042553322596227b8b00a3c94e2a2ad7be7718e9814e33a98cbd1f12a",
+    "metaReviewEvidenceSha256": "1279ed773d4ac7dbea6573698e8f2bc32585c091d1faa105068953c9862dc6d2",
+    "metaReviewEvidence": {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_금당고_2학기_기말_고1/Q02_META_REVIEW_EVIDENCE.json",
+      "sha256": "1279ed773d4ac7dbea6573698e8f2bc32585c091d1faa105068953c9862dc6d2",
+      "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-A2",
+      "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_GEUMDANG_Q02_9",
+      "scopeUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q02-A2"
+      ]
+    },
+    "problemTypeKey": "PT_SUBSET_JUDGMENT",
+    "templateKey": "TPL_SUBSET_DIRECT",
+    "secondaryConceptKeys": [],
+    "crossConceptKeys": [
+      "EXT-GD25-Q02-CC-MULTIPLES"
+    ],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_GEUMDANG_Q02_9"
   },
   {
     "id": 3,
@@ -185,27 +234,55 @@ window.questionBank = [
       "rpmL3": "부분집합",
       "rpmL4": "EXT-GD25-C2-05-Q02-PROPER-SUBSET",
       "rpmL4Namespace": "GENERATED_EXT_L4",
-      "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
-      "rpmDraftAuthorityBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
       "problemTypeKey": "PT_SUBSET_JUDGMENT",
-      "templateKey": "GEN_TPL_EMPTY_VS_PROPER_SUBSET",
+      "templateKey": "TPL_SUBSET_DIRECT",
       "crossConceptKeys": [
-        "GEN_CC_EMPTY_SET"
+        "EXT-GD25-Q02-CC-EMPTYSET"
       ],
       "conditionKeys": [
-        "GEN_COND_PROPER_INCLUSION"
+        "EXT-GD25-Q02-COND-PROPER-INCLUSION"
       ],
-      "integrationPattern": "SUBSET_A3",
+      "integrationPattern": "REINTERPRETATION",
       "difficultyBucket": 2,
       "level": "중",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-05",
       "subUnitKey": "H22-C2-05-CORE",
-      "sourceKind": "generated"
+      "sourceKind": "generated",
+      "rpmAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "rpmAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+      "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "generatedL4RegistrySha256": "a43399430c72c68529931ebb4c6398b00a606f608330003eb01ea84126e8af00",
+      "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "secondaryConceptKeys": []
     },
-    "reviewStatus": "BUILDER_SELF_REVIEWED",
-    "studentSupplyEligible": false,
-    "consumerSelectable": false
+    "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+    "studentSupplyEligible": true,
+    "consumerSelectable": true,
+    "metaFinalSha256": "7797ed921f3f07e11a21d0670eb53c32b6c390416bedf3b3d2de75d6404bae5a",
+    "metaReviewEvidenceSha256": "1279ed773d4ac7dbea6573698e8f2bc32585c091d1faa105068953c9862dc6d2",
+    "metaReviewEvidence": {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_금당고_2학기_기말_고1/Q02_META_REVIEW_EVIDENCE.json",
+      "sha256": "1279ed773d4ac7dbea6573698e8f2bc32585c091d1faa105068953c9862dc6d2",
+      "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-A3",
+      "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_GEUMDANG_Q02_9",
+      "scopeUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q02-A3"
+      ]
+    },
+    "problemTypeKey": "PT_SUBSET_JUDGMENT",
+    "templateKey": "TPL_SUBSET_DIRECT",
+    "secondaryConceptKeys": [],
+    "crossConceptKeys": [
+      "EXT-GD25-Q02-CC-EMPTYSET"
+    ],
+    "conditionKeys": [
+      "EXT-GD25-Q02-COND-PROPER-INCLUSION"
+    ],
+    "integrationPattern": "REINTERPRETATION",
+    "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_GEUMDANG_Q02_9"
   },
   {
     "id": 4,
@@ -255,28 +332,57 @@ window.questionBank = [
       "rpmL3": "부분집합",
       "rpmL4": "EXT-GD25-C2-05-Q02-PARAMETER-SUBSET",
       "rpmL4Namespace": "GENERATED_EXT_L4",
-      "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
-      "rpmDraftAuthorityBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
-      "problemTypeKey": "PT_SUBSET_JUDGMENT",
-      "templateKey": "GEN_TPL_SUBSET_PARAMETER_BOUNDS",
+      "problemTypeKey": "PT_SET_AGGREGATE",
+      "templateKey": "TPL_SUBSET_SUM_AGGREGATE",
       "crossConceptKeys": [
-        "GEN_CC_LINEAR_INEQUALITIES"
+        "EXT-GD25-Q02-CC-LINEAR-BOUNDS"
       ],
       "conditionKeys": [
         "COND_NATURAL_NUMBER",
         "COND_RANGE"
       ],
-      "integrationPattern": "SUBSET_B1",
+      "integrationPattern": "INTERDEPENDENT",
       "difficultyBucket": 3,
       "level": "중",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-05",
       "subUnitKey": "H22-C2-05-CORE",
-      "sourceKind": "generated"
+      "sourceKind": "generated",
+      "rpmAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "rpmAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+      "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "generatedL4RegistrySha256": "a43399430c72c68529931ebb4c6398b00a606f608330003eb01ea84126e8af00",
+      "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "secondaryConceptKeys": []
     },
-    "reviewStatus": "BUILDER_SELF_REVIEWED",
-    "studentSupplyEligible": false,
-    "consumerSelectable": false
+    "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+    "studentSupplyEligible": true,
+    "consumerSelectable": true,
+    "metaFinalSha256": "e17fbd1fd9f7d4d69b397533c284b53ed986bf9b4f139a84b159eccf5d1a44e4",
+    "metaReviewEvidenceSha256": "1279ed773d4ac7dbea6573698e8f2bc32585c091d1faa105068953c9862dc6d2",
+    "metaReviewEvidence": {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_금당고_2학기_기말_고1/Q02_META_REVIEW_EVIDENCE.json",
+      "sha256": "1279ed773d4ac7dbea6573698e8f2bc32585c091d1faa105068953c9862dc6d2",
+      "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-B1",
+      "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_GEUMDANG_Q02_9",
+      "scopeUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q02-B1"
+      ]
+    },
+    "problemTypeKey": "PT_SET_AGGREGATE",
+    "templateKey": "TPL_SUBSET_SUM_AGGREGATE",
+    "secondaryConceptKeys": [],
+    "crossConceptKeys": [
+      "EXT-GD25-Q02-CC-LINEAR-BOUNDS"
+    ],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "INTERDEPENDENT",
+    "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_GEUMDANG_Q02_9"
   },
   {
     "id": 5,
@@ -326,29 +432,59 @@ window.questionBank = [
       "rpmL3": "부분집합",
       "rpmL4": "EXT-GD25-C2-05-Q02-INTERSECTION-CONSTRAINED-SUBSET",
       "rpmL4Namespace": "GENERATED_EXT_L4",
-      "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
-      "rpmDraftAuthorityBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
-      "problemTypeKey": "PT_SUBSET_JUDGMENT",
-      "templateKey": "GEN_TPL_SUBSET_EXACT_INTERSECTION",
+      "problemTypeKey": "PT_SET_AGGREGATE",
+      "templateKey": "TPL_SUBSET_SUM_AGGREGATE",
       "crossConceptKeys": [
         "CC_SET_CARDINALITY",
-        "GEN_CC_EVEN_NUMBER"
+        "EXT-GD25-Q02-CC-EVEN"
       ],
       "conditionKeys": [
         "COND_NATURAL_NUMBER",
-        "GEN_COND_INTERSECTION_COUNT_ONE"
+        "EXT-GD25-Q02-COND-ONE-INTERSECTION"
       ],
-      "integrationPattern": "SUBSET_B2",
+      "integrationPattern": "INTERDEPENDENT",
       "difficultyBucket": 3,
       "level": "중",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-05",
       "subUnitKey": "H22-C2-05-CORE",
-      "sourceKind": "generated"
+      "sourceKind": "generated",
+      "rpmAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "rpmAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+      "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "generatedL4RegistrySha256": "a43399430c72c68529931ebb4c6398b00a606f608330003eb01ea84126e8af00",
+      "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "secondaryConceptKeys": []
     },
-    "reviewStatus": "BUILDER_SELF_REVIEWED",
-    "studentSupplyEligible": false,
-    "consumerSelectable": false
+    "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+    "studentSupplyEligible": true,
+    "consumerSelectable": true,
+    "metaFinalSha256": "7a2da4adb6a3ecb7fb8c7a30599527379fd7e010ddd285b49278af9bb209bb6a",
+    "metaReviewEvidenceSha256": "1279ed773d4ac7dbea6573698e8f2bc32585c091d1faa105068953c9862dc6d2",
+    "metaReviewEvidence": {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_금당고_2학기_기말_고1/Q02_META_REVIEW_EVIDENCE.json",
+      "sha256": "1279ed773d4ac7dbea6573698e8f2bc32585c091d1faa105068953c9862dc6d2",
+      "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-B2",
+      "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_GEUMDANG_Q02_9",
+      "scopeUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q02-B2"
+      ]
+    },
+    "problemTypeKey": "PT_SET_AGGREGATE",
+    "templateKey": "TPL_SUBSET_SUM_AGGREGATE",
+    "secondaryConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_SET_CARDINALITY",
+      "EXT-GD25-Q02-CC-EVEN"
+    ],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "EXT-GD25-Q02-COND-ONE-INTERSECTION"
+    ],
+    "integrationPattern": "INTERDEPENDENT",
+    "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_GEUMDANG_Q02_9"
   },
   {
     "id": 6,
@@ -398,28 +534,57 @@ window.questionBank = [
       "rpmL3": "부분집합",
       "rpmL4": "EXT-GD25-C2-05-Q02-SET-OPERATION-INCLUSION",
       "rpmL4Namespace": "GENERATED_EXT_L4",
-      "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
-      "rpmDraftAuthorityBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
       "problemTypeKey": "PT_SUBSET_JUDGMENT",
-      "templateKey": "GEN_TPL_SET_OPERATION_SUBSET_STATEMENTS",
+      "templateKey": "TPL_SUBSET_DIRECT",
       "crossConceptKeys": [
-        "GEN_CC_SET_DIFFERENCE",
+        "EXT-GD25-Q02-CC-SET-DIFFERENCE",
         "CC_PROPOSITION"
       ],
       "conditionKeys": [
-        "GEN_COND_SET_DIFFERENCE"
+        "EXT-GD25-Q02-COND-SET-DIFFERENCE"
       ],
-      "integrationPattern": "SUBSET_B3",
+      "integrationPattern": "SEQUENTIAL",
       "difficultyBucket": 3,
       "level": "중",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-05",
       "subUnitKey": "H22-C2-05-CORE",
-      "sourceKind": "generated"
+      "sourceKind": "generated",
+      "rpmAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "rpmAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+      "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "generatedL4RegistrySha256": "a43399430c72c68529931ebb4c6398b00a606f608330003eb01ea84126e8af00",
+      "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "secondaryConceptKeys": []
     },
-    "reviewStatus": "BUILDER_SELF_REVIEWED",
-    "studentSupplyEligible": false,
-    "consumerSelectable": false
+    "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+    "studentSupplyEligible": true,
+    "consumerSelectable": true,
+    "metaFinalSha256": "1d6893c565764697cc877997b4a9a0e9675e5eb488b61aad12bb0ee17a2b113b",
+    "metaReviewEvidenceSha256": "1279ed773d4ac7dbea6573698e8f2bc32585c091d1faa105068953c9862dc6d2",
+    "metaReviewEvidence": {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_금당고_2학기_기말_고1/Q02_META_REVIEW_EVIDENCE.json",
+      "sha256": "1279ed773d4ac7dbea6573698e8f2bc32585c091d1faa105068953c9862dc6d2",
+      "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-B3",
+      "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_GEUMDANG_Q02_9",
+      "scopeUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q02-B3"
+      ]
+    },
+    "problemTypeKey": "PT_SUBSET_JUDGMENT",
+    "templateKey": "TPL_SUBSET_DIRECT",
+    "secondaryConceptKeys": [],
+    "crossConceptKeys": [
+      "EXT-GD25-Q02-CC-SET-DIFFERENCE",
+      "CC_PROPOSITION"
+    ],
+    "conditionKeys": [
+      "EXT-GD25-Q02-COND-SET-DIFFERENCE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_GEUMDANG_Q02_9"
   },
   {
     "id": 7,
@@ -469,28 +634,57 @@ window.questionBank = [
       "rpmL3": "부분집합",
       "rpmL4": "EXT-GD25-C2-05-Q02-DOUBLE-INCLUSION-PARAMETER",
       "rpmL4Namespace": "GENERATED_EXT_L4",
-      "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
-      "rpmDraftAuthorityBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
-      "problemTypeKey": "PT_SUBSET_JUDGMENT",
-      "templateKey": "GEN_TPL_TWO_SIDED_PARAMETER_INCLUSION",
+      "problemTypeKey": "PT_SET_AGGREGATE",
+      "templateKey": "TPL_SUBSET_SUM_AGGREGATE",
       "crossConceptKeys": [
-        "GEN_CC_SET_ELEMENT_OUTSIDE"
+        "EXT-GD25-Q02-CC-NONMEMBER"
       ],
       "conditionKeys": [
         "COND_NATURAL_NUMBER",
-        "GEN_COND_SUBSET_AND_NOT_SUBSET"
+        "EXT-GD25-Q02-COND-INCLUSION-EXCLUSION"
       ],
-      "integrationPattern": "SUBSET_C1",
+      "integrationPattern": "CASE_BRANCH",
       "difficultyBucket": 4,
       "level": "상",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-05",
       "subUnitKey": "H22-C2-05-CORE",
-      "sourceKind": "generated"
+      "sourceKind": "generated",
+      "rpmAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "rpmAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+      "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "generatedL4RegistrySha256": "a43399430c72c68529931ebb4c6398b00a606f608330003eb01ea84126e8af00",
+      "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "secondaryConceptKeys": []
     },
-    "reviewStatus": "BUILDER_SELF_REVIEWED",
-    "studentSupplyEligible": false,
-    "consumerSelectable": false
+    "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+    "studentSupplyEligible": true,
+    "consumerSelectable": true,
+    "metaFinalSha256": "034334d5a3c7a0c5a84c1c0b973d161de36e24c6a83e80e259533920cf08aa3f",
+    "metaReviewEvidenceSha256": "1279ed773d4ac7dbea6573698e8f2bc32585c091d1faa105068953c9862dc6d2",
+    "metaReviewEvidence": {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_금당고_2학기_기말_고1/Q02_META_REVIEW_EVIDENCE.json",
+      "sha256": "1279ed773d4ac7dbea6573698e8f2bc32585c091d1faa105068953c9862dc6d2",
+      "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-C1",
+      "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_GEUMDANG_Q02_9",
+      "scopeUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q02-C1"
+      ]
+    },
+    "problemTypeKey": "PT_SET_AGGREGATE",
+    "templateKey": "TPL_SUBSET_SUM_AGGREGATE",
+    "secondaryConceptKeys": [],
+    "crossConceptKeys": [
+      "EXT-GD25-Q02-CC-NONMEMBER"
+    ],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "EXT-GD25-Q02-COND-INCLUSION-EXCLUSION"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_GEUMDANG_Q02_9"
   },
   {
     "id": 8,
@@ -544,30 +738,61 @@ window.questionBank = [
       "rpmL3": "부분집합",
       "rpmL4": "EXT-GD25-C2-05-Q02-SHIFTED-INTERVAL-INCLUSION",
       "rpmL4Namespace": "GENERATED_EXT_L4",
-      "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
-      "rpmDraftAuthorityBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
-      "problemTypeKey": "PT_SUBSET_JUDGMENT",
-      "templateKey": "GEN_TPL_INTERVAL_SUBSET_AND_NOT_SUBSET",
+      "problemTypeKey": "PT_SET_AGGREGATE",
+      "templateKey": "TPL_SUBSET_SUM_AGGREGATE",
       "crossConceptKeys": [
-        "GEN_CC_ABSOLUTE_INEQUALITY",
-        "GEN_CC_INTEGER_INTERVAL"
+        "EXT-GD25-Q02-CC-ABS-BOUNDS",
+        "EXT-GD25-Q02-CC-INT-INTERVAL"
       ],
       "conditionKeys": [
         "COND_INTEGER",
         "COND_RANGE",
-        "GEN_COND_SUBSET_AND_NOT_SUBSET"
+        "EXT-GD25-Q02-COND-INCLUSION-EXCLUSION"
       ],
-      "integrationPattern": "SUBSET_C2",
+      "integrationPattern": "CASE_BRANCH",
       "difficultyBucket": 4,
       "level": "상",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-05",
       "subUnitKey": "H22-C2-05-CORE",
-      "sourceKind": "generated"
+      "sourceKind": "generated",
+      "rpmAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "rpmAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+      "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "generatedL4RegistrySha256": "a43399430c72c68529931ebb4c6398b00a606f608330003eb01ea84126e8af00",
+      "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "secondaryConceptKeys": []
     },
-    "reviewStatus": "BUILDER_SELF_REVIEWED",
-    "studentSupplyEligible": false,
-    "consumerSelectable": false
+    "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+    "studentSupplyEligible": true,
+    "consumerSelectable": true,
+    "metaFinalSha256": "c26275ffe64c798ba2525b72a279a6be9f600f3285397ead58e3c21cb4cf084d",
+    "metaReviewEvidenceSha256": "1279ed773d4ac7dbea6573698e8f2bc32585c091d1faa105068953c9862dc6d2",
+    "metaReviewEvidence": {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_금당고_2학기_기말_고1/Q02_META_REVIEW_EVIDENCE.json",
+      "sha256": "1279ed773d4ac7dbea6573698e8f2bc32585c091d1faa105068953c9862dc6d2",
+      "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-C2",
+      "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_GEUMDANG_Q02_9",
+      "scopeUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q02-C2"
+      ]
+    },
+    "problemTypeKey": "PT_SET_AGGREGATE",
+    "templateKey": "TPL_SUBSET_SUM_AGGREGATE",
+    "secondaryConceptKeys": [],
+    "crossConceptKeys": [
+      "EXT-GD25-Q02-CC-ABS-BOUNDS",
+      "EXT-GD25-Q02-CC-INT-INTERVAL"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_RANGE",
+      "EXT-GD25-Q02-COND-INCLUSION-EXCLUSION"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_GEUMDANG_Q02_9"
   },
   {
     "id": 9,
@@ -621,29 +846,60 @@ window.questionBank = [
       "rpmL3": "부분집합",
       "rpmL4": "EXT-GD25-C2-05-Q02-DIVISIBILITY-PROPER-INCLUSION",
       "rpmL4Namespace": "GENERATED_EXT_L4",
-      "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
-      "rpmDraftAuthorityBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
-      "problemTypeKey": "PT_SUBSET_JUDGMENT",
-      "templateKey": "GEN_TPL_DIVISOR_PROPER_SUBSET_SANDWICH",
+      "problemTypeKey": "PT_SET_AGGREGATE",
+      "templateKey": "TPL_SUBSET_SUM_AGGREGATE",
       "crossConceptKeys": [
-        "GEN_CC_MULTIPLES",
-        "GEN_CC_DIVISIBILITY",
-        "GEN_CC_SET_INTERSECTION_UNION"
+        "EXT-GD25-Q02-CC-MULTIPLES",
+        "EXT-GD25-Q02-CC-DIVISIBILITY",
+        "EXT-GD25-Q02-CC-SET-OPS"
       ],
       "conditionKeys": [
         "COND_NATURAL_NUMBER",
-        "GEN_COND_PROPER_INCLUSION"
+        "EXT-GD25-Q02-COND-PROPER-INCLUSION"
       ],
-      "integrationPattern": "SUBSET_C3",
+      "integrationPattern": "DEEP_COMPOSITE",
       "difficultyBucket": 4,
       "level": "상",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-05",
       "subUnitKey": "H22-C2-05-CORE",
-      "sourceKind": "generated"
+      "sourceKind": "generated",
+      "rpmAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "rpmAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+      "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "generatedL4RegistrySha256": "a43399430c72c68529931ebb4c6398b00a606f608330003eb01ea84126e8af00",
+      "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/geumdang-2025-2final-q02-registry.json",
+      "secondaryConceptKeys": []
     },
-    "reviewStatus": "BUILDER_SELF_REVIEWED",
-    "studentSupplyEligible": false,
-    "consumerSelectable": false
+    "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+    "studentSupplyEligible": true,
+    "consumerSelectable": true,
+    "metaFinalSha256": "12faadfa2cc21018252642ddb5684f8cda924a298d7ae4cc8ddf53fc85f05f91",
+    "metaReviewEvidenceSha256": "1279ed773d4ac7dbea6573698e8f2bc32585c091d1faa105068953c9862dc6d2",
+    "metaReviewEvidence": {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_금당고_2학기_기말_고1/Q02_META_REVIEW_EVIDENCE.json",
+      "sha256": "1279ed773d4ac7dbea6573698e8f2bc32585c091d1faa105068953c9862dc6d2",
+      "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-C3",
+      "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_GEUMDANG_Q02_9",
+      "scopeUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q02-C3"
+      ]
+    },
+    "problemTypeKey": "PT_SET_AGGREGATE",
+    "templateKey": "TPL_SUBSET_SUM_AGGREGATE",
+    "secondaryConceptKeys": [],
+    "crossConceptKeys": [
+      "EXT-GD25-Q02-CC-MULTIPLES",
+      "EXT-GD25-Q02-CC-DIVISIBILITY",
+      "EXT-GD25-Q02-CC-SET-OPS"
+    ],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "EXT-GD25-Q02-COND-PROPER-INCLUSION"
+    ],
+    "integrationPattern": "DEEP_COMPOSITE",
+    "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_GEUMDANG_Q02_9"
   }
 ];
