@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "GD25_Q20_MATH_SPEC_V1",
+  "sourceQid": 20,
+  "lockedPrimaryL3": "H1-RPM-257",
+  "canonicalParent": "PT_ONE_TO_ONE_BIJECTION/TPL_BIJECTION_JUDGMENT_CONDITION",
+  "invariant": "For x<r: x+c and x≥r: ax²+bx+q, bijection R→R requires ar²+br+q=r+c, a>0 and -b/(2a)≤r.",
+  "proof": [
+    "The first branch maps (-∞,r) bijectively onto (-∞,r+c).",
+    "The second branch must map [r,∞) bijectively onto [r+c,∞), forcing the boundary value to match.",
+    "The right quadratic has range [r+c,∞) and is injective on [r,∞) exactly when a>0 and its vertex is at or to the left of r.",
+    "Substituting the boundary equation into the vertex inequality yields a≥(q-r-c)/r² for each candidate; minimum occurs at vertex r."
+  ],
+  "candidateParameters": [
+    {
+      "slot": "A1",
+      "r": 1,
+      "c": 3,
+      "q": 8,
+      "t": 2,
+      "mul": 1,
+      "value": 8
+    },
+    {
+      "slot": "A2",
+      "r": 1,
+      "c": 2,
+      "q": 6,
+      "t": 3,
+      "mul": 1,
+      "value": 15
+    },
+    {
+      "slot": "A3",
+      "r": 1,
+      "c": 4,
+      "q": 10,
+      "t": 3,
+      "mul": 1,
+      "value": 25
+    },
+    {
+      "slot": "B1",
+      "r": 2,
+      "c": 1,
+      "q": 12,
+      "t": 4,
+      "mul": 4,
+      "value": 48
+    },
+    {
+      "slot": "B2",
+      "r": 2,
+      "c": 2,
+      "q": 12,
+      "t": 3,
+      "mul": 1,
+      "value": 6
+    },
+    {
+      "slot": "B3",
+      "r": 2,
+      "c": 3,
+      "q": 13,
+      "t": 3,
+      "mul": 2,
+      "value": 14
+    },
+    {
+      "slot": "C1",
+      "r": 1,
+      "c": 5,
+      "q": 12,
+      "t": 2,
+      "mul": 1,
+      "value": 12
+    },
+    {
+      "slot": "C2",
+      "r": 3,
+      "c": 1,
+      "q": 25,
+      "t": 4,
+      "mul": 3,
+      "value": 19
+    },
+    {
+      "slot": "C3",
+      "r": 3,
+      "c": 2,
+      "q": 29,
+      "t": 5,
+      "mul": 3,
+      "value": 47
+    }
+  ]
+}

@@ -1,0 +1,299 @@
+{
+  "schemaVersion": "ALIVE_QID9_GEUMDANG25_Q20_META_BLUEPRINT_V1",
+  "sourceQid": 20,
+  "sourceExamPath": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+  "sourceExamBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "candidateJsBlobSha": "52991411cc2a93f93a1ae5d411d63b561eca1853",
+  "mathSpecBlobSha": "1878db031afa24100714aa3455f6f40f6da3c51a",
+  "lockedPrimaryL3": {
+    "id": "H1-RPM-257",
+    "label": "함수의 성질",
+    "l4": "일대일함수",
+    "pt": "PT_ONE_TO_ONE_BIJECTION",
+    "template": "TPL_BIJECTION_JUDGMENT_CONDITION",
+    "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "binding": "ACTIVE"
+  },
+  "sourceInvariant": "For x<r: x+c and x≥r: ax²+bx+q, bijection R→R requires ar²+br+q=r+c, a>0 and -b/(2a)≤r.",
+  "slots": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-A1",
+      "primaryL3": "H1-RPM-257",
+      "chosenL4": "일대일함수",
+      "studentStem": "정의역과 공역이 모두 실수 전체인 함수 $f$가 $f(x)=\\begin{cases}x+3&(x<1)\\\\ax^2+bx+8&(x\\ge1)\\end{cases}$이다. 역함수 $f^{-1}$가 존재하도록 하는 $a,b$ 중 $a$가 최소일 때의 함수를 $g$라 하자. $g(2)$의 값은?",
+      "choices": [
+        "$7$",
+        "$4$",
+        "$8$",
+        "$12$",
+        "$16$"
+      ],
+      "answer": "③",
+      "level": "중",
+      "difficultyBucket": 3,
+      "parameters": {
+        "r": 1,
+        "c": 3,
+        "q": 8,
+        "t": 2,
+        "multiplier": 1,
+        "minA": 4,
+        "minB": -8,
+        "correctValue": 8
+      },
+      "decisiveInvariant": "branch ranges must meet at L=r+c, with right vertex ≤r",
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-A1-solution.svg"
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-A2",
+      "primaryL3": "H1-RPM-257",
+      "chosenL4": "일대일함수",
+      "studentStem": "실수 전체에서 실수 전체로 가는 함수 $f$를 $f(x)=\\begin{cases}x+2&(x<1)\\\\ax^2+bx+6&(x\\ge1)\\end{cases}$로 정의한다. $f$가 역함수를 갖도록 하는 $a,b$ 중 $a$의 최솟값일 때의 함수를 $g$라 하자. $g(3)$은?",
+      "choices": [
+        "$3$",
+        "$12$",
+        "$15$",
+        "$30$",
+        "$7$"
+      ],
+      "answer": "⑤",
+      "level": "중",
+      "difficultyBucket": 3,
+      "parameters": {
+        "r": 1,
+        "c": 2,
+        "q": 6,
+        "t": 3,
+        "multiplier": 1,
+        "minA": 3,
+        "minB": -6,
+        "correctValue": 15
+      },
+      "decisiveInvariant": "branch ranges must meet at L=r+c, with right vertex ≤r",
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-A2-solution.svg"
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-A3",
+      "primaryL3": "H1-RPM-257",
+      "chosenL4": "일대일함수",
+      "studentStem": "함수 $f(x)=\\begin{cases}x+4&(x<1)\\\\ax^2+bx+10&(x\\ge1)\\end{cases}$의 정의역과 공역은 모두 $\\mathbb R$이다. $f^{-1}$가 존재하도록 하는 $a,b$ 중 $a$를 최소로 하여 얻은 함수를 $g$라 할 때, $g(3)$의 값은?",
+      "choices": [
+        "$5$",
+        "$20$",
+        "$25$",
+        "$50$",
+        "$45$"
+      ],
+      "answer": "③",
+      "level": "중",
+      "difficultyBucket": 3,
+      "parameters": {
+        "r": 1,
+        "c": 4,
+        "q": 10,
+        "t": 3,
+        "multiplier": 1,
+        "minA": 5,
+        "minB": -10,
+        "correctValue": 25
+      },
+      "decisiveInvariant": "branch ranges must meet at L=r+c, with right vertex ≤r",
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-A3-solution.svg"
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-B1",
+      "primaryL3": "H1-RPM-257",
+      "chosenL4": "일대일함수",
+      "studentStem": "정의역과 공역이 $\\mathbb R$인 함수 $f(x)=\\begin{cases}x+1&(x<2)\\\\ax^2+bx+12&(x\\ge2)\\end{cases}$가 역함수를 갖는다. 가능한 $a,b$ 중 $a$가 최소일 때의 함수를 $g$라 하자. $4g(4)$의 값은?",
+      "choices": [
+        "$12$",
+        "$36$",
+        "$64$",
+        "$48$",
+        "$60$"
+      ],
+      "answer": "④",
+      "level": "중",
+      "difficultyBucket": 3,
+      "parameters": {
+        "r": 2,
+        "c": 1,
+        "q": 12,
+        "t": 4,
+        "multiplier": 4,
+        "minA": 2.25,
+        "minB": -9,
+        "correctValue": 48
+      },
+      "decisiveInvariant": "branch ranges must meet at L=r+c, with right vertex ≤r",
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-B1-solution.svg"
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-B2",
+      "primaryL3": "H1-RPM-257",
+      "chosenL4": "일대일함수",
+      "studentStem": "함수 $f(x)=\\begin{cases}x+2&(x<2)\\\\ax^2+bx+12&(x\\ge2)\\end{cases}$의 정의역과 공역은 모두 실수 전체이다. $f$의 역함수가 존재하도록 하는 $a,b$에서 $a$의 최솟값일 때의 함수를 $g$라 하자. $g(3)$은?",
+      "choices": [
+        "$4$",
+        "$5$",
+        "$7$",
+        "$8$",
+        "$6$"
+      ],
+      "answer": "⑤",
+      "level": "중",
+      "difficultyBucket": 3,
+      "parameters": {
+        "r": 2,
+        "c": 2,
+        "q": 12,
+        "t": 3,
+        "multiplier": 1,
+        "minA": 2,
+        "minB": -8,
+        "correctValue": 6
+      },
+      "decisiveInvariant": "branch ranges must meet at L=r+c, with right vertex ≤r",
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-B2-solution.svg"
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-B3",
+      "primaryL3": "H1-RPM-257",
+      "chosenL4": "일대일함수",
+      "studentStem": "실수 전체에서 실수 전체로 가는 함수 $f(x)=\\begin{cases}x+3&(x<2)\\\\ax^2+bx+13&(x\\ge2)\\end{cases}$가 역함수를 갖는다. $a$가 최소가 되도록 하는 $a,b$에서 얻은 함수를 $g$라 할 때, $2g(3)$은?",
+      "choices": [
+        "$14$",
+        "$10$",
+        "$12$",
+        "$16$",
+        "$18$"
+      ],
+      "answer": "①",
+      "level": "상",
+      "difficultyBucket": 4,
+      "parameters": {
+        "r": 2,
+        "c": 3,
+        "q": 13,
+        "t": 3,
+        "multiplier": 2,
+        "minA": 2,
+        "minB": -8,
+        "correctValue": 14
+      },
+      "decisiveInvariant": "branch ranges must meet at L=r+c, with right vertex ≤r",
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-B3-solution.svg"
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-C1",
+      "primaryL3": "H1-RPM-257",
+      "chosenL4": "일대일함수",
+      "studentStem": "정의역과 공역이 모두 $\\mathbb R$인 함수 $f(x)=\\begin{cases}x+5&(x<1)\\\\ax^2+bx+12&(x\\ge1)\\end{cases}$에 역함수가 존재한다. $a$가 최소일 때의 함수를 $g$라 하자. $g(2)$의 값은?",
+      "choices": [
+        "$6$",
+        "$12$",
+        "$9$",
+        "$15$",
+        "$18$"
+      ],
+      "answer": "②",
+      "level": "상",
+      "difficultyBucket": 4,
+      "parameters": {
+        "r": 1,
+        "c": 5,
+        "q": 12,
+        "t": 2,
+        "multiplier": 1,
+        "minA": 6,
+        "minB": -12,
+        "correctValue": 12
+      },
+      "decisiveInvariant": "branch ranges must meet at L=r+c, with right vertex ≤r",
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-C1-solution.svg"
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-C2",
+      "primaryL3": "H1-RPM-257",
+      "chosenL4": "일대일함수",
+      "studentStem": "함수 $f(x)=\\begin{cases}x+1&(x<3)\\\\ax^2+bx+25&(x\\ge3)\\end{cases}$의 정의역과 공역이 모두 $\\mathbb R$이고 $f^{-1}$가 존재한다. $a$를 최소로 하는 함수 $g$에 대하여 $3g(4)$의 값은?",
+      "choices": [
+        "$16$",
+        "$18$",
+        "$20$",
+        "$19$",
+        "$22$"
+      ],
+      "answer": "④",
+      "level": "상",
+      "difficultyBucket": 4,
+      "parameters": {
+        "r": 3,
+        "c": 1,
+        "q": 25,
+        "t": 4,
+        "multiplier": 3,
+        "minA": 2.3333333333333335,
+        "minB": -14,
+        "correctValue": 19
+      },
+      "decisiveInvariant": "branch ranges must meet at L=r+c, with right vertex ≤r",
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-C2-solution.svg"
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-C3",
+      "primaryL3": "H1-RPM-257",
+      "chosenL4": "일대일함수",
+      "studentStem": "정의역과 공역이 모두 실수 전체인 함수 $f(x)=\\begin{cases}x+2&(x<3)\\\\ax^2+bx+29&(x\\ge3)\\end{cases}$의 역함수가 존재한다. $a$가 최소일 때의 함수를 $g$라 할 때, $3g(5)$는?",
+      "choices": [
+        "$43$",
+        "$45$",
+        "$49$",
+        "$51$",
+        "$47$"
+      ],
+      "answer": "⑤",
+      "level": "상",
+      "difficultyBucket": 4,
+      "parameters": {
+        "r": 3,
+        "c": 2,
+        "q": 29,
+        "t": 5,
+        "multiplier": 3,
+        "minA": 2.6666666666666665,
+        "minB": -16,
+        "correctValue": 47
+      },
+      "decisiveInvariant": "branch ranges must meet at L=r+c, with right vertex ≤r",
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-C3-solution.svg"
+    }
+  ]
+}
