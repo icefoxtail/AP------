@@ -10,38 +10,38 @@
 - undefined/비객체 문항 skip: 0
 - db.js 크기: 572913 bytes
 - 시험지 JS 총 크기: 24083798 bytes
-- 인덱스 크기: 14621552 bytes
+- 인덱스 크기: 14621625 bytes
 - 로드 실패 파일: 0
 
 > 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(13717)" 기준이다.
 
 ## 표준단원키 분류 (공식 마스터 143개 기준)
 
-- 공식(official): 13441
+- 공식(official): 13509
 - RAW-(임시 규약, 허용): 0 (distinct 0)
 - 비공식(invalid): 94 (distinct 21)
-- 빈 키(empty): 182
+- 빈 키(empty): 114
 
 상세 비공식 키 목록은 question-index-audit.md 참조.
 
 ## 필드 누락 (최종 인덱스 기준)
 
 - 누락 id: 0
-- 누락 content: 70
+- 누락 content: 24
 - 누락 choices: 5
-- 누락 level: 656
-- 누락 standardUnit: 182
-- 누락 standardUnitKey: 182
-- 누락 standardCourse: 194
+- 누락 level: 588
+- 누락 standardUnit: 114
+- 누락 standardUnitKey: 114
+- 누락 standardCourse: 126
 - 누락 tags: 0
 
 ## 시각요소 집계 (최종 인덱스 기준)
 
-- q.image 보유: 3011
-- content 내부 <img>: 29
+- q.image 보유: 3018
+- content 내부 <img>: 34
 - content 내부 <svg>: 77
 - content 내부 <table>: 182
-- 시각요소 보유(hasImage=true, OR 합산): 3292
+- 시각요소 보유(hasImage=true, OR 합산): 3302
 
 ## 누락 예시
 
