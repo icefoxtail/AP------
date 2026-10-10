@@ -1,0 +1,363 @@
+{
+  "schemaVersion": "GD25_Q20_CREATOR_SELF_REVIEW_V1",
+  "sourceQid": 20,
+  "sourceExamBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "candidateSourceJsBlobSha": "52991411cc2a93f93a1ae5d411d63b561eca1853",
+  "mathSpecBlobSha": "1878db031afa24100714aa3455f6f40f6da3c51a",
+  "lockedPrimaryL3": "H1-RPM-257",
+  "candidateCount": 9,
+  "keep": 9,
+  "hold": 0,
+  "formalIndependentQualityReview": false,
+  "actualBrowserRender": "NOT_TESTED",
+  "mainMerged": false,
+  "answerDistribution": {
+    "①": 2,
+    "②": 1,
+    "③": 2,
+    "④": 2,
+    "⑤": 2
+  },
+  "visual": {
+    "problemSvgCount": 0,
+    "solutionSvgCount": 9,
+    "physicalCoordinateCheck": "PIECEWISE_RANGE_AND_VERTEX_RELATION_STATIC_CHECKED; CHROME_NOT_TESTED",
+    "rendererExecuted": false,
+    "visualCorrection": "At the minimum a, the right branch is a(x-r)^2+L and starts at the range boundary (r,L)."
+  },
+  "rows": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-A1",
+      "answer": "③",
+      "value": 8,
+      "reverseStemFinding": "최종 발문에서 역함수 존재를 전단사 조건으로 되돌리고 두 구간의 치역 일치 및 오른쪽 포물선의 단조성을 판정했다.",
+      "rpmNecessity": "실수 전체에서 전단사인 필요충분조건으로 경계 함수값과 꼭짓점 위치를 함께 결정한다.",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "꼭짓점 조건에서 a≥3으로 잘못 계산해 g(2)=7"
+        },
+        {
+          "index": "②",
+          "mistake": "경계 함숫값 L=4만 답으로 씀"
+        },
+        {
+          "index": "④",
+          "mistake": "계산에서 b항을 빠뜨려 4+16−8=12"
+        },
+        {
+          "index": "⑤",
+          "mistake": "정의역 경계를 무시하고 ax²=16만 계산"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-A1-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ALGEBRAIC_DERIVATION",
+      "svgStaticEvidence": {
+        "leftRange": "(-infinity,L)",
+        "rightRange": "[L,infinity)",
+        "vertexAtBoundaryForMinimum": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-A2",
+      "answer": "⑤",
+      "value": 15,
+      "reverseStemFinding": "최종 발문에서 역함수 존재를 전단사 조건으로 되돌리고 두 구간의 치역 일치 및 오른쪽 포물선의 단조성을 판정했다.",
+      "rpmNecessity": "실수 전체에서 전단사인 필요충분조건으로 경계 함수값과 꼭짓점 위치를 함께 결정한다.",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "경계 함숫값 L=3만 답으로 씀"
+        },
+        {
+          "index": "②",
+          "mistake": "g(3)의 a(x−1)² 부분만 계산해 12"
+        },
+        {
+          "index": "④",
+          "mistake": "x−1 대신 x를 사용해 3+3·9=30"
+        },
+        {
+          "index": "⑤",
+          "mistake": "계수 a를 1로 잘못 정해 g(3)=7"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-A2-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ALGEBRAIC_DERIVATION",
+      "svgStaticEvidence": {
+        "leftRange": "(-infinity,L)",
+        "rightRange": "[L,infinity)",
+        "vertexAtBoundaryForMinimum": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-A3",
+      "answer": "③",
+      "value": 25,
+      "reverseStemFinding": "최종 발문에서 역함수 존재를 전단사 조건으로 되돌리고 두 구간의 치역 일치 및 오른쪽 포물선의 단조성을 판정했다.",
+      "rpmNecessity": "실수 전체에서 전단사인 필요충분조건으로 경계 함수값과 꼭짓점 위치를 함께 결정한다.",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "경계값 L=5만 읽음"
+        },
+        {
+          "index": "②",
+          "mistake": "증가량 a(x−1)²=20만 계산하고 L을 더하지 않음"
+        },
+        {
+          "index": "④",
+          "mistake": "x−1을 x로 잘못 대입해 5+5·9=50"
+        },
+        {
+          "index": "⑤",
+          "mistake": "a를 4로 잘못 구해 5+4·4=21 대신 인접 오답 45를 선택"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-A3-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ALGEBRAIC_DERIVATION",
+      "svgStaticEvidence": {
+        "leftRange": "(-infinity,L)",
+        "rightRange": "[L,infinity)",
+        "vertexAtBoundaryForMinimum": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-B1",
+      "answer": "④",
+      "value": 48,
+      "reverseStemFinding": "최종 발문에서 역함수 존재를 전단사 조건으로 되돌리고 두 구간의 치역 일치 및 오른쪽 포물선의 단조성을 판정했다.",
+      "rpmNecessity": "실수 전체에서 전단사인 필요충분조건으로 경계 함수값과 꼭짓점 위치를 함께 결정한다.",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "g(4)=12를 구하고 바깥의 4를 곱하지 않음"
+        },
+        {
+          "index": "②",
+          "mistake": "증가량만 사용해 4·9=36"
+        },
+        {
+          "index": "③",
+          "mistake": "경계 이후의 증가량을 과대 계산해 4g(4)=64"
+        },
+        {
+          "index": "⑤",
+          "mistake": "경계값을 3 대신 6으로 오인해 4·15=60"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-B1-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ALGEBRAIC_DERIVATION",
+      "svgStaticEvidence": {
+        "leftRange": "(-infinity,L)",
+        "rightRange": "[L,infinity)",
+        "vertexAtBoundaryForMinimum": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-B2",
+      "answer": "⑤",
+      "value": 6,
+      "reverseStemFinding": "최종 발문에서 역함수 존재를 전단사 조건으로 되돌리고 두 구간의 치역 일치 및 오른쪽 포물선의 단조성을 판정했다.",
+      "rpmNecessity": "실수 전체에서 전단사인 필요충분조건으로 경계 함수값과 꼭짓점 위치를 함께 결정한다.",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "경계 함숫값 L=4만 답으로 씀"
+        },
+        {
+          "index": "②",
+          "mistake": "a의 최솟값을 1로 잘못 정해 4+1=5"
+        },
+        {
+          "index": "③",
+          "mistake": "오프셋 1에서 a(x−2)²=2를 두 배 계산해 8 대신 인접 오답 7"
+        },
+        {
+          "index": "④",
+          "mistake": "a(x−2)²만 계산해 2를 8로 오산"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-B2-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ALGEBRAIC_DERIVATION",
+      "svgStaticEvidence": {
+        "leftRange": "(-infinity,L)",
+        "rightRange": "[L,infinity)",
+        "vertexAtBoundaryForMinimum": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-B3",
+      "answer": "①",
+      "value": 14,
+      "reverseStemFinding": "최종 발문에서 역함수 존재를 전단사 조건으로 되돌리고 두 구간의 치역 일치 및 오른쪽 포물선의 단조성을 판정했다.",
+      "rpmNecessity": "실수 전체에서 전단사인 필요충분조건으로 경계 함수값과 꼭짓점 위치를 함께 결정한다.",
+      "distractorRoutes": [
+        {
+          "index": "②",
+          "mistake": "경계 함숫값 5만 두 배 해 10"
+        },
+        {
+          "index": "③",
+          "mistake": "g(3)의 증가량만 두 배 해 12"
+        },
+        {
+          "index": "④",
+          "mistake": "상수항과 경계값을 중복해 더함"
+        },
+        {
+          "index": "⑤",
+          "mistake": "a를 3으로 잘못 정해 계산"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-B3-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ALGEBRAIC_DERIVATION",
+      "svgStaticEvidence": {
+        "leftRange": "(-infinity,L)",
+        "rightRange": "[L,infinity)",
+        "vertexAtBoundaryForMinimum": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-C1",
+      "answer": "②",
+      "value": 12,
+      "reverseStemFinding": "최종 발문에서 역함수 존재를 전단사 조건으로 되돌리고 두 구간의 치역 일치 및 오른쪽 포물선의 단조성을 판정했다.",
+      "rpmNecessity": "실수 전체에서 전단사인 필요충분조건으로 경계 함수값과 꼭짓점 위치를 함께 결정한다.",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "경계값 L=6만 답으로 선택"
+        },
+        {
+          "index": "③",
+          "mistake": "꼭짓점 조건을 잘못 적용해 a=3으로 두고 g(2)=9"
+        },
+        {
+          "index": "④",
+          "mistake": "거리 1을 1.5로 잘못 적용해 6+6·1.5=15"
+        },
+        {
+          "index": "⑤",
+          "mistake": "경계에서 더해지는 값을 두 번 합산"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-C1-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ALGEBRAIC_DERIVATION",
+      "svgStaticEvidence": {
+        "leftRange": "(-infinity,L)",
+        "rightRange": "[L,infinity)",
+        "vertexAtBoundaryForMinimum": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-C2",
+      "answer": "④",
+      "value": 19,
+      "reverseStemFinding": "최종 발문에서 역함수 존재를 전단사 조건으로 되돌리고 두 구간의 치역 일치 및 오른쪽 포물선의 단조성을 판정했다.",
+      "rpmNecessity": "실수 전체에서 전단사인 필요충분조건으로 경계 함수값과 꼭짓점 위치를 함께 결정한다.",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "최소 a를 4/3으로 잘못 구해 최종값 16"
+        },
+        {
+          "index": "②",
+          "mistake": "경계값 부분을 누락해 결과를 작게 계산"
+        },
+        {
+          "index": "③",
+          "mistake": "3g(4)=19를 정수 반올림해 20"
+        },
+        {
+          "index": "⑤",
+          "mistake": "경계값을 5로 잘못 읽어 22"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-C2-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ALGEBRAIC_DERIVATION",
+      "svgStaticEvidence": {
+        "leftRange": "(-infinity,L)",
+        "rightRange": "[L,infinity)",
+        "vertexAtBoundaryForMinimum": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-C3",
+      "answer": "⑤",
+      "value": 47,
+      "reverseStemFinding": "최종 발문에서 역함수 존재를 전단사 조건으로 되돌리고 두 구간의 치역 일치 및 오른쪽 포물선의 단조성을 판정했다.",
+      "rpmNecessity": "실수 전체에서 전단사인 필요충분조건으로 경계 함수값과 꼭짓점 위치를 함께 결정한다.",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "최소 a를 2로 잘못 구해 최종값 43"
+        },
+        {
+          "index": "②",
+          "mistake": "경계값을 누락해 45"
+        },
+        {
+          "index": "③",
+          "mistake": "3g(5)=47에서 산술 오차로 49"
+        },
+        {
+          "index": "④",
+          "mistake": "오프셋 제곱을 5로 잘못 계산해 51"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-C3-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ALGEBRAIC_DERIVATION",
+      "svgStaticEvidence": {
+        "leftRange": "(-infinity,L)",
+        "rightRange": "[L,infinity)",
+        "vertexAtBoundaryForMinimum": true,
+        "chrome": "NOT_TESTED"
+      }
+    }
+  ]
+}
