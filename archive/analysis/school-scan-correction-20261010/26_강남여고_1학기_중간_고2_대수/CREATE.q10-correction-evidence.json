@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "SCHOOL_SCAN_QID_CORRECTION_EVIDENCE_V1",
+  "examUid": "26_강남여고_1학기_중간_고2_대수",
+  "stage": "CREATE_CORRECTION",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "qid": 10,
+  "scope": "q10 only",
+  "source": {
+    "absolutePath": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\exams\\original\\high\\h2\\1mid\\26_강남여고_1학기_중간_고2_대수.js",
+    "initialRawSha256": "15c0f03ac953ef99d41b90bdb94d8f8a064b5379036de6b306361c0680bac789",
+    "finalRawSha256": "a4f31d83d795623c56846624ab65c338bf09a68b704903d4d547d4dd4f14ea1f",
+    "finalGitBlobSha": "b5c94074d61c0059e5977c8d22fd3f99bfba1a45",
+    "changedQids": [
+      10
+    ],
+    "qidCount": 25,
+    "nonTargetStudentFieldsMatchInitialBundle": true
+  },
+  "scanReview": {
+    "pages": [
+      {
+        "scanPage": 16,
+        "fileName": "S28BW-826101011330_0016.jpg",
+        "absolutePath": "C:\\Users\\USER\\Downloads\\스캔_학년별_학교별\\2학년\\순천강남여자고등학교\\2026학년도_1학기_1차_정기시험\\S28BW-826101011330_0016.jpg",
+        "sha256": "062da3dc3654e79888edcf5182620eddc772370e21f1401d5e365bb6a6ad16dd",
+        "usedForQ10": false
+      },
+      {
+        "scanPage": 17,
+        "fileName": "S28BW-826101011330_0017.jpg",
+        "absolutePath": "C:\\Users\\USER\\Downloads\\스캔_학년별_학교별\\2학년\\순천강남여자고등학교\\2026학년도_1학기_1차_정기시험\\S28BW-826101011330_0017.jpg",
+        "sha256": "ed891a8062de7fb72a634b6e8ab1121da139a32ea98bc243a501c19ecab042c2",
+        "usedForQ10": true
+      },
+      {
+        "scanPage": 18,
+        "fileName": "S28BW-826101011330_0018.jpg",
+        "absolutePath": "C:\\Users\\USER\\Downloads\\스캔_학년별_학교별\\2학년\\순천강남여자고등학교\\2026학년도_1학기_1차_정기시험\\S28BW-826101011330_0018.jpg",
+        "sha256": "3ab0d33547419cff237199fe2d5002b597efaad451379f4b76d56bcfb1ab5bc9",
+        "usedForQ10": false
+      },
+      {
+        "scanPage": 19,
+        "fileName": "S28BW-826101011330_0019.jpg",
+        "absolutePath": "C:\\Users\\USER\\Downloads\\스캔_학년별_학교별\\2학년\\순천강남여자고등학교\\2026학년도_1학기_1차_정기시험\\S28BW-826101011330_0019.jpg",
+        "sha256": "c039229974e641a2cc6e03b1dec456b6dc3fa1b2c4560ca4ab3b68d49f415dbd",
+        "usedForQ10": false
+      }
+    ],
+    "sourceTruth": {
+      "page": 17,
+      "printedStem": "f(n)=sqrt(cuberoot(a*sqrt(a^(n+1))))",
+      "printedChoices": [
+        "fourth root of a",
+        "fourth root of a^3",
+        "fourth root of a^5",
+        "sixth root of a^7",
+        "twelfth root of a^13"
+      ],
+      "handwrittenMarksUsedAsAnswerEvidence": false
+    }
+  },
+  "changes": {
+    "content": {
+      "before": "1이 아닌 양수 $a$와 자연수 $n$에 대하여 $f(n)=\\sqrt[3]{a\\sqrt{a^{n+1}}}$일 때, $\\dfrac{f(1)\\times f(2)}{f(3)}$의 값은? (4점)",
+      "after": "1이 아닌 양수 $a$와 자연수 $n$에 대하여 $f(n)=\\sqrt{\\sqrt[3]{a\\sqrt{a^{n+1}}}}$일 때, $\\dfrac{f(1)\\times f(2)}{f(3)}$의 값은? (4점)",
+      "reason": "The extracted JS omitted the outer square root visible in scan 0017."
+    },
+    "choices": {
+      "before": [
+        "$\\sqrt{a}$",
+        "$\\sqrt[4]{a^3}$",
+        "$\\sqrt[4]{a^5}$",
+        "$\\sqrt[6]{a^7}$",
+        "$\\sqrt[12]{a^{13}}$"
+      ],
+      "after": [
+        "$\\sqrt[4]{a}$",
+        "$\\sqrt[4]{a^3}$",
+        "$\\sqrt[4]{a^5}$",
+        "$\\sqrt[6]{a^7}$",
+        "$\\sqrt[12]{a^{13}}$"
+      ],
+      "reason": "Choice 1 corrected to the printed fourth root of a; choices 2-5 are unchanged."
+    },
+    "answer": {
+      "before": "①",
+      "after": "①",
+      "independentRecomputation": "f(n)=a^((n+3)/12); ratio exponent is 4/12+5/12-6/12=3/12=1/4, so choice ①."
+    },
+    "solution": {
+      "beforeSha256": "cef599c1a892b950cdb65b2f8a09e9c9aa536c8abb72fcbf29a7007e28a36f44",
+      "afterSha256": "aad431ed5b1f186fc0a8e825a113e461f55940d53b2cd3dc5a2ce07959a0da70",
+      "status": "FULL_REWRITE_AFTER_STEM_CORRECTION"
+    }
+  },
+  "dependencies": {
+    "questionImageRef": null,
+    "solutionImageRef": null,
+    "visualSvgRef": null,
+    "metadataChanged": false,
+    "metadataDisposition": "Retained existing exponent/logarithm unit and difficulty fields; correction restores the source radical nesting without changing concept or solution demand."
+  },
+  "calibration": {
+    "evidencePath": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_강남여고_1학기_중간_고2_대수\\CREATE.q10-calibration-preflight.json",
+    "preflight": "CALIBRATION_PREFLIGHT PASS, stage REPAIR, 25 qids, no issues."
+  }
+}
