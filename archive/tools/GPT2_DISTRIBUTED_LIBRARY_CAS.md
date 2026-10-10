@@ -1,6 +1,6 @@
 # GPT2 one-shot — distributed Library CAS host bridge (CANARY, not activated)
 
-This bridges the previously merged `gpt2-one-shot-closeout.mjs` to ChatGPT Files tools **through an authorized host process**. It does **not** change any active GPT2 worker or issue mathematical quality PASS. The complete one-shot flow still uses the official V2 validator and active artifact gate.
+This bridges the previously merged `gpt2-one-shot-closeout.mjs` to ChatGPT Files tools **through an authorized host process**. The default scratch directory is `/mnt/data` so the Files connector can access staged upload bytes; override `hostScratchDirectory` only for a host-authorized shared mount. It does **not** change any active GPT2 worker or issue mathematical quality PASS. The complete one-shot flow still uses the official V2 validator and active artifact gate.
 
 ## Confirmed live observations (2026-10-10)
 
