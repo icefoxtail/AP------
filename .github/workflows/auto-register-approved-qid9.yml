@@ -62,7 +62,7 @@ jobs:
           git switch -c "$branch"
           git commit -m 'chore(archive): sync main Generated question sources'
           git push origin HEAD
-          pr_url="$(gh pr create --base main --head "$branch" --title 'Sync main Generated Consumer projection' --body 'Automated projection of main-resident Generated question JS and metadata. Review history remains intact; source availability is independent of review approval.' --json url --jq .url || true)"
+          pr_url="$(gh pr create --base main --head "$branch" --title 'Sync main Generated Consumer projection' --body 'Automated projection of main-resident Generated question JS and metadata. Review history remains intact; source availability is independent of review approval.' || true)"
           if [ -z "$pr_url" ]; then
             pr_url="$(gh pr list --state open --base main --head "$branch" --json url --jq '.[0].url // empty')"
           fi
