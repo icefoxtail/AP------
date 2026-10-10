@@ -68,6 +68,22 @@ const requiredCommands = [
     args: ['--test', 'archive/tools/gpt2-one-shot-closeout.test.mjs']
   },
   {
+    label: 'archive/tools/gpt2-library-coordinated-adapter.test.mjs',
+    args: ['--test', 'archive/tools/gpt2-library-coordinated-adapter.test.mjs']
+  },
+  {
+    label: 'archive/tools/gpt2-github-cas-ledger.test.mjs',
+    args: ['--test', 'archive/tools/gpt2-github-cas-ledger.test.mjs']
+  },
+  {
+    label: 'archive/tools/gpt2-files-tool-transport.test.mjs',
+    args: ['--test', 'archive/tools/gpt2-files-tool-transport.test.mjs']
+  },
+  {
+    label: 'archive/tools/gpt2-connected-host-adapter.test.mjs',
+    args: ['--test', 'archive/tools/gpt2-connected-host-adapter.test.mjs']
+  },
+  {
     label: 'archive/tools/review-evidence-gate.test.mjs',
     args: ['--test', 'archive/tools/review-evidence-gate.test.mjs']
   },
