@@ -1,44 +1,44 @@
 {
   "schemaVersion": "school-fingerprint-gate.v1",
-  "status": "PASS",
+  "status": "FAIL",
   "operationalExposure": "HOLD",
   "source": {
     "root": "archive/exams/original",
-    "fileCount": 348,
-    "questionCount": 7981,
+    "fileCount": 451,
+    "questionCount": 10320,
     "parseErrorCount": 0
   },
-  "schoolCount": 37,
+  "schoolCount": 40,
   "eligibleSchoolCount": 23,
-  "hiddenSchoolCount": 14,
+  "hiddenSchoolCount": 17,
   "sampleReplay": {
-    "schoolKey": "연향중",
-    "candidateCount": 762,
+    "schoolKey": "왕운중",
+    "candidateCount": 829,
     "selectedCount": 15,
     "distribution": {
       "ok": true,
       "checks": [
         {
           "dimension": "unit",
-          "maxDelta": 0.03385826771653543,
+          "maxDelta": 0.0401286690792119,
           "tolerance": 0.13333333333333333,
           "ok": true
         },
         {
           "dimension": "subunit",
-          "maxDelta": 0.046981627296587926,
+          "maxDelta": 0.10317651789304383,
           "tolerance": 0.13333333333333333,
           "ok": true
         },
         {
           "dimension": "difficulty",
-          "maxDelta": 0.10183727034120735,
+          "maxDelta": 0.11395255327704062,
           "tolerance": 0.13333333333333333,
           "ok": true
         },
         {
           "dimension": "problemType",
-          "maxDelta": 0.034120734908136496,
+          "maxDelta": 0.04077201447527143,
           "tolerance": 0.13333333333333333,
           "ok": true
         }
@@ -79,7 +79,7 @@
     "originalOnly": true,
     "deterministic": true,
     "aliasAudit": true,
-    "thresholdAudit": true,
+    "thresholdAudit": false,
     "questionTypeCoverage": true,
     "presetConversion": true,
     "selectorReplay": true

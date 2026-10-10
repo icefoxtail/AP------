@@ -698,25 +698,38 @@ window.questionBank = [
       "사분면"
     ],
     "wide": false,
-    "content": "일차함수 $y=ax+b$의 그래프가 아래 그림과 같을 때, 다음 보기의 일차함수 중에서 그 그래프가 제 2사분면을 지나지 않는 것을 모두 찾으면? [5점]",
     "image": "assets/images/22_연향중_1학기_기말_중2_기출/q19.png",
-    "choices": [
-      "㉠, ㉡",
-      "㉠, ㉢",
-      "㉡, ㉣",
-      "㉠, ㉣",
-      "㉠, ㉡, ㉣"
-    ],
-    "answer": "③",
-    "solution": "주어진 그래프에서\n\n$a<0,\\quad b>0$이다.\n\n㉠\n$y=-bx-a$\n\n에서 기울기 $-b<0$,\n$y$절편 $-a>0$이므로 제2사분면을 지난다.\n\n㉡\n$y=bx+a$\n\n에서 기울기 $b>0$,\n$y$절편 $a<0$이다.\n\n$x<0$이면\n\n$bx<0$\n\n이고 $a<0$이므로\n\n$y<0$이다.\n\n따라서 제2사분면을 지나지 않는다.\n\n㉢\n$y=\\dfrac ba x+ab$\n\n에서\n\n$\\dfrac ba<0$,\n\n$ab<0$이다.\n\n$x$가 충분히 작은 음수이면\n$\\dfrac ba x>0$이 크게 되어 제2사분면을 지난다.\n\n㉣\n$y=-\\dfrac abx+ab$\n\n에서\n\n$-\\dfrac ab>0$,\n\n$ab<0$이다.\n\n$x<0$이면 두 항이 모두 음수이므로\n\n$y<0$이다.\n\n따라서 제2사분면을 지나지 않는다.\n\n그러므로 ㉡, ㉣이고 정답은 ③이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
+    "content": "일차함수 $y=ax+b$의 그래프가 아래 그림과 같다. 다음 네 일차함수의 그래프 중 제2사분면을 지나지 않는 것을 모두 고르면? [5점]\n\n㉠ $y=(a-b)x+b$\n㉡ $y=(b-a)x-b$\n㉢ $y=(a-b)x+a$\n㉣ $y=(b-a)x+a$",
+    "choices": [
+      "㉠, ㉡",
+      "㉠, ㉣",
+      "㉡, ㉢",
+      "㉡, ㉣",
+      "㉢, ㉣"
+    ],
+    "answer": "④",
+    "solution": "그림의 $y=ax+b$는 기울기가 음수이고 $y$절편이 양수이므로\n$a<0,\\quad b>0$이다.\n따라서\n$a-b<0,\\quad b-a>0$이다.\n\n㉠\n$y=(a-b)x+b$의 기울기는 $a-b<0$이고 $y$절편은 $b>0$이다.\n$x<0$이면 $(a-b)x>0$이므로 $y>0$이다.\n따라서 제2사분면을 지난다.\n\n㉡\n$y=(b-a)x-b$의 기울기는 $b-a>0$이고 $y$절편은 $-b<0$이다.\n$x<0$이면 $(b-a)x<0$이므로 $y<0$이다.\n따라서 제2사분면을 지나지 않는다.\n\n㉢\n$y=(a-b)x+a$의 $x$절편을 $x_0$라 하면\n$(a-b)x_0+a=0$\n$x_0=-\\dfrac{a}{a-b}$이다.\n$-a>0$이고 $a-b<0$이므로 $x_0<0$이다.\n또한\n$y=(a-b)(x-x_0)$이다.\n$x<x_0<0$인 $x$를 잡으면 $x-x_0<0$이고 $a-b<0$이므로 $y>0$이다.\n따라서 제2사분면을 지난다.\n\n㉣\n$y=(b-a)x+a$의 기울기는 $b-a>0$이고 $y$절편은 $a<0$이다.\n$x<0$이면 $(b-a)x<0$이므로 $y<0$이다.\n따라서 제2사분면을 지나지 않는다.\n\n제2사분면을 지나지 않는 것은 ㉡, ㉣이다.\n\n그러므로 정답은 ④이다.",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+    "templateKey": "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NEGATIVE",
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth",
+    "solutionImageAlt": "네 일차함수의 대표 그래프와 제2사분면 통과 여부",
+    "solutionImageCaption": "대표값 a=−1, b=2로 부호 경우를 비교한다."
   },
   {
     "id": 20,
