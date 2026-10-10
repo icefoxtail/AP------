@@ -1,10 +1,18 @@
 {
   "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
   "school": "팔마고",
-  "batchId": "MAIN_SOURCE_palma-2025-2mid-qid9-q04",
+  "batchId": "PALMA25-QID9-Q01-Q04-36-20261009",
   "sourceKind": "generated",
-  "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-qid9-q04.js",
-  "sourceShardGitSha": "3fdef7e3b767ec2200673450b04e94d48ba7a4c7",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceExamFileSha256": "1C7C2C331464AA214331D844E32F9378C86654B1B8E495C8C3CDF759B26BEAEF",
+  "releaseBasis": "USER_DIRECTED_OPERATING_APPROVAL_20261009_QID9_36",
+  "reviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_36_OPENBOOK_REVIEW_REPAIR_20261009.md",
+  "technicalVerification": {
+    "studentBrowser": "NOT_TESTED",
+    "mainMerge": "NOT_YET",
+    "staticSchema": "VERIFIED_9_OF_9"
+  },
   "records": [
     {
       "generatedUid": "ALITE-PALMA25-2MID-Q04-A1",
@@ -63,11 +71,177 @@
         "solution": "$P(x,y)$, $A(1,-2)$, $B(5,1)$로 놓으면 주어진 식은 $PA+PB$이다. 삼각형의 두 변의 길이의 합은 나머지 한 변 이상이므로 $PA+PB\\ge AB$이다. $P$가 선분 $AB$ 위에 있으면 등호가 성립한다. $AB=\\sqrt{(5-1)^2+(1+2)^2}=\\sqrt{16+9}=5$이므로 최솟값은 $5$이다. 따라서 정답은 ③이다.",
         "sourceType": "generated",
         "sourceKind": "generated",
-        "sourceQid": 4,
-        "slot": "A1",
-        "purposeGroup": "A",
-        "rpmPrimaryL3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
-        "generatedL4": "두 점 사이 거리·거리합 하한"
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-PALMA25-2MID-Q04-A1",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-01",
+          "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+          "rpmPrimaryRecordId": null,
+          "rpmL1": null,
+          "rpmL2": null,
+          "rpmL3": null,
+          "rpmL4": null,
+          "rpmL4Namespace": null,
+          "rpmDraftAuthorityRef": null,
+          "rpmDraftAuthoritySha256": null,
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 1,
+          "level": "하",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "USER_DIRECTED_OPERATING_APPROVED",
+          "reviewStatus": "USER_DIRECTED_CONTENT_REVIEWED",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "UNKNOWN",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "UNKNOWN",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "rpmPrimaryRecordId",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL1",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL2",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL3",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4Namespace",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthorityRef",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthoritySha256",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "problemTypeKey",
+              "status": "EVIDENCE_DEBT",
+              "reason": "PROBLEMTYPEKEY_VALUE_MISSING"
+            },
+            {
+              "field": "templateKey",
+              "status": "EVIDENCE_DEBT",
+              "reason": "TEMPLATEKEY_VALUE_MISSING"
+            },
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C2-01-COORDINATE_METRIC",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EVIDENCE_DEBT"
+        }
       },
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-qid9-q04.js",
       "sourceShardGitSha": "3fdef7e3b767ec2200673450b04e94d48ba7a4c7",
@@ -241,15 +415,6 @@
         "physicalStorageBucketKey": "H22-C2-01-COORDINATE_METRIC",
         "sourceKind": "generated",
         "rpmMappingStatus": "EVIDENCE_DEBT"
-      },
-      "technicalStatus": "READY",
-      "technicalIssues": [],
-      "meta": {
-        "difficultyBucket": 1,
-        "level": "하",
-        "standardCourse": "공통수학2",
-        "standardUnitKey": "H22-C2-01",
-        "subUnitKey": "H22-C2-01-COORDINATE_METRIC"
       }
     },
     {
@@ -309,11 +474,177 @@
         "solution": "$P(a,b)$, $A(-2,1)$, $B(4,9)$라 하면 식은 $PA+PB$이다. $PA+PB\\ge AB$이고 $P$가 선분 $AB$ 위에 있을 때 등호가 성립한다. 양 끝점 사이의 거리는 $AB=\\sqrt{(4+2)^2+(9-1)^2}=\\sqrt{6^2+8^2}=10$이다. 따라서 정답은 ⑤이다.",
         "sourceType": "generated",
         "sourceKind": "generated",
-        "sourceQid": 4,
-        "slot": "A2",
-        "purposeGroup": "A",
-        "rpmPrimaryL3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
-        "generatedL4": "두 점 사이 거리·거리합 하한"
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-PALMA25-2MID-Q04-A2",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-01",
+          "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+          "rpmPrimaryRecordId": null,
+          "rpmL1": null,
+          "rpmL2": null,
+          "rpmL3": null,
+          "rpmL4": null,
+          "rpmL4Namespace": null,
+          "rpmDraftAuthorityRef": null,
+          "rpmDraftAuthoritySha256": null,
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 1,
+          "level": "하",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "USER_DIRECTED_OPERATING_APPROVED",
+          "reviewStatus": "USER_DIRECTED_CONTENT_REVIEWED",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "UNKNOWN",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "UNKNOWN",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "rpmPrimaryRecordId",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL1",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL2",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL3",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4Namespace",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthorityRef",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthoritySha256",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "problemTypeKey",
+              "status": "EVIDENCE_DEBT",
+              "reason": "PROBLEMTYPEKEY_VALUE_MISSING"
+            },
+            {
+              "field": "templateKey",
+              "status": "EVIDENCE_DEBT",
+              "reason": "TEMPLATEKEY_VALUE_MISSING"
+            },
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C2-01-COORDINATE_METRIC",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EVIDENCE_DEBT"
+        }
       },
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-qid9-q04.js",
       "sourceShardGitSha": "3fdef7e3b767ec2200673450b04e94d48ba7a4c7",
@@ -487,15 +818,6 @@
         "physicalStorageBucketKey": "H22-C2-01-COORDINATE_METRIC",
         "sourceKind": "generated",
         "rpmMappingStatus": "EVIDENCE_DEBT"
-      },
-      "technicalStatus": "READY",
-      "technicalIssues": [],
-      "meta": {
-        "difficultyBucket": 1,
-        "level": "하",
-        "standardCourse": "공통수학2",
-        "standardUnitKey": "H22-C2-01",
-        "subUnitKey": "H22-C2-01-COORDINATE_METRIC"
       }
     },
     {
@@ -555,11 +877,177 @@
         "solution": "$P(a,b)$, $A(1,2)$, $B(6,14)$로 놓으면 식은 $PA+PB$이고, $PA+PB\\ge AB$이다. $P$가 선분 $AB$ 위에 놓이는 경우가 가능하므로 이 하한은 최솟값이다. $AB=\\sqrt{(6-1)^2+(14-2)^2}=\\sqrt{25+144}=13$이다. 따라서 정답은 ①이다.",
         "sourceType": "generated",
         "sourceKind": "generated",
-        "sourceQid": 4,
-        "slot": "A3",
-        "purposeGroup": "A",
-        "rpmPrimaryL3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
-        "generatedL4": "두 점 사이 거리·거리합 하한"
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-PALMA25-2MID-Q04-A3",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-01",
+          "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+          "rpmPrimaryRecordId": null,
+          "rpmL1": null,
+          "rpmL2": null,
+          "rpmL3": null,
+          "rpmL4": null,
+          "rpmL4Namespace": null,
+          "rpmDraftAuthorityRef": null,
+          "rpmDraftAuthoritySha256": null,
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 2,
+          "level": "하",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "USER_DIRECTED_OPERATING_APPROVED",
+          "reviewStatus": "USER_DIRECTED_CONTENT_REVIEWED",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "UNKNOWN",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "UNKNOWN",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "rpmPrimaryRecordId",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL1",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL2",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL3",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4Namespace",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthorityRef",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthoritySha256",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "problemTypeKey",
+              "status": "EVIDENCE_DEBT",
+              "reason": "PROBLEMTYPEKEY_VALUE_MISSING"
+            },
+            {
+              "field": "templateKey",
+              "status": "EVIDENCE_DEBT",
+              "reason": "TEMPLATEKEY_VALUE_MISSING"
+            },
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C2-01-COORDINATE_METRIC",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EVIDENCE_DEBT"
+        }
       },
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-qid9-q04.js",
       "sourceShardGitSha": "3fdef7e3b767ec2200673450b04e94d48ba7a4c7",
@@ -733,15 +1221,6 @@
         "physicalStorageBucketKey": "H22-C2-01-COORDINATE_METRIC",
         "sourceKind": "generated",
         "rpmMappingStatus": "EVIDENCE_DEBT"
-      },
-      "technicalStatus": "READY",
-      "technicalIssues": [],
-      "meta": {
-        "difficultyBucket": 2,
-        "level": "하",
-        "standardCourse": "공통수학2",
-        "standardUnitKey": "H22-C2-01",
-        "subUnitKey": "H22-C2-01-COORDINATE_METRIC"
       }
     },
     {
@@ -801,11 +1280,177 @@
         "solution": "$A(-1,2)$를 $x$축에 대하여 대칭이동한 점을 $A'(-1,-2)$라 하자. $P$가 $x$축 위에 있으므로 $PA=PA'$이다. 따라서 $PA+PB=PA'+PB\\ge A'B$이다. $A'$와 $B$는 $x$축의 서로 다른 쪽에 있으므로 선분 $A'B$는 $x$축과 만난다. 그 교점을 $P$로 택하면 등호가 성립한다. $A'B=\\sqrt{(3+1)^2+(1+2)^2}=\\sqrt{16+9}=5$이다. 따라서 정답은 ④이다.",
         "sourceType": "generated",
         "sourceKind": "generated",
-        "sourceQid": 4,
-        "slot": "B1",
-        "purposeGroup": "B",
-        "rpmPrimaryL3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
-        "generatedL4": "직선 위 점까지의 거리합—대칭이동"
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-PALMA25-2MID-Q04-B1",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-01",
+          "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+          "rpmPrimaryRecordId": null,
+          "rpmL1": null,
+          "rpmL2": null,
+          "rpmL3": null,
+          "rpmL4": null,
+          "rpmL4Namespace": null,
+          "rpmDraftAuthorityRef": null,
+          "rpmDraftAuthoritySha256": null,
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "USER_DIRECTED_OPERATING_APPROVED",
+          "reviewStatus": "USER_DIRECTED_CONTENT_REVIEWED",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "UNKNOWN",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "UNKNOWN",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "rpmPrimaryRecordId",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL1",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL2",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL3",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4Namespace",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthorityRef",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthoritySha256",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "problemTypeKey",
+              "status": "EVIDENCE_DEBT",
+              "reason": "PROBLEMTYPEKEY_VALUE_MISSING"
+            },
+            {
+              "field": "templateKey",
+              "status": "EVIDENCE_DEBT",
+              "reason": "TEMPLATEKEY_VALUE_MISSING"
+            },
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C2-01-COORDINATE_METRIC",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EVIDENCE_DEBT"
+        }
       },
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-qid9-q04.js",
       "sourceShardGitSha": "3fdef7e3b767ec2200673450b04e94d48ba7a4c7",
@@ -979,15 +1624,6 @@
         "physicalStorageBucketKey": "H22-C2-01-COORDINATE_METRIC",
         "sourceKind": "generated",
         "rpmMappingStatus": "EVIDENCE_DEBT"
-      },
-      "technicalStatus": "READY",
-      "technicalIssues": [],
-      "meta": {
-        "difficultyBucket": 3,
-        "level": "중",
-        "standardCourse": "공통수학2",
-        "standardUnitKey": "H22-C2-01",
-        "subUnitKey": "H22-C2-01-COORDINATE_METRIC"
       }
     },
     {
@@ -1047,11 +1683,177 @@
         "solution": "$PA=\\sqrt{(t+1)^2+9}$, $PB=\\sqrt{(t+3)^2+1}$이다. $t\\ge0$에서는 $t+1$, $t+3$이 모두 양수이고 $t$가 커질수록 각 제곱도 커진다. 따라서 두 거리는 모두 $t=0$에서 가장 작다. 이때 $PA=\\sqrt{1+9}=\\sqrt{10}$, $PB=\\sqrt{9+1}=\\sqrt{10}$이므로 최솟값은 $2\\sqrt{10}$이다. $x$축의 왼쪽 반직선까지 허용할 때의 값과 혼동해서는 안 된다. 따라서 정답은 ②이다.",
         "sourceType": "generated",
         "sourceKind": "generated",
-        "sourceQid": 4,
-        "slot": "B2",
-        "purposeGroup": "B",
-        "rpmPrimaryL3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
-        "generatedL4": "반직선 위 거리합—끝점 판정"
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-PALMA25-2MID-Q04-B2",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-01",
+          "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+          "rpmPrimaryRecordId": null,
+          "rpmL1": null,
+          "rpmL2": null,
+          "rpmL3": null,
+          "rpmL4": null,
+          "rpmL4Namespace": null,
+          "rpmDraftAuthorityRef": null,
+          "rpmDraftAuthoritySha256": null,
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "USER_DIRECTED_OPERATING_APPROVED",
+          "reviewStatus": "USER_DIRECTED_CONTENT_REVIEWED",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "UNKNOWN",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "UNKNOWN",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "rpmPrimaryRecordId",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL1",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL2",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL3",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4Namespace",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthorityRef",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthoritySha256",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "problemTypeKey",
+              "status": "EVIDENCE_DEBT",
+              "reason": "PROBLEMTYPEKEY_VALUE_MISSING"
+            },
+            {
+              "field": "templateKey",
+              "status": "EVIDENCE_DEBT",
+              "reason": "TEMPLATEKEY_VALUE_MISSING"
+            },
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C2-01-COORDINATE_METRIC",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EVIDENCE_DEBT"
+        }
       },
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-qid9-q04.js",
       "sourceShardGitSha": "3fdef7e3b767ec2200673450b04e94d48ba7a4c7",
@@ -1225,15 +2027,6 @@
         "physicalStorageBucketKey": "H22-C2-01-COORDINATE_METRIC",
         "sourceKind": "generated",
         "rpmMappingStatus": "EVIDENCE_DEBT"
-      },
-      "technicalStatus": "READY",
-      "technicalIssues": [],
-      "meta": {
-        "difficultyBucket": 3,
-        "level": "중",
-        "standardCourse": "공통수학2",
-        "standardUnitKey": "H22-C2-01",
-        "subUnitKey": "H22-C2-01-COORDINATE_METRIC"
       }
     },
     {
@@ -1293,11 +2086,177 @@
         "solution": "삼각부등식에 의해 $PA+PB\\ge AB$이다. 등호가 성립하려면 $P$가 선분 $AB$ 위에 있어야 한다. 두 점을 잇는 직선은 기울기가 $\\dfrac{2-4}{5-1}=-\\dfrac12$이므로 $y-4=-\\dfrac12(x-1)$이다. 여기에 $x=y=t$를 대입하면 $t-4=-\\dfrac12(t-1)$, 즉 $2t-8=-t+1$이어서 $t=3$이다. 이때 $(3,3)$은 두 끝점을 잇는 선분의 중점이므로 등호가 실제로 성립한다. 따라서 정답은 ⑤이다.",
         "sourceType": "generated",
         "sourceKind": "generated",
-        "sourceQid": 4,
-        "slot": "B3",
-        "purposeGroup": "B",
-        "rpmPrimaryL3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
-        "generatedL4": "직선 제약에서 거리합 등호점 찾기"
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-PALMA25-2MID-Q04-B3",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-01",
+          "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+          "rpmPrimaryRecordId": null,
+          "rpmL1": null,
+          "rpmL2": null,
+          "rpmL3": null,
+          "rpmL4": null,
+          "rpmL4Namespace": null,
+          "rpmDraftAuthorityRef": null,
+          "rpmDraftAuthoritySha256": null,
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "USER_DIRECTED_OPERATING_APPROVED",
+          "reviewStatus": "USER_DIRECTED_CONTENT_REVIEWED",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "UNKNOWN",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "UNKNOWN",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "rpmPrimaryRecordId",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL1",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL2",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL3",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4Namespace",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthorityRef",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthoritySha256",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "problemTypeKey",
+              "status": "EVIDENCE_DEBT",
+              "reason": "PROBLEMTYPEKEY_VALUE_MISSING"
+            },
+            {
+              "field": "templateKey",
+              "status": "EVIDENCE_DEBT",
+              "reason": "TEMPLATEKEY_VALUE_MISSING"
+            },
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C2-01-COORDINATE_METRIC",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EVIDENCE_DEBT"
+        }
       },
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-qid9-q04.js",
       "sourceShardGitSha": "3fdef7e3b767ec2200673450b04e94d48ba7a4c7",
@@ -1471,15 +2430,6 @@
         "physicalStorageBucketKey": "H22-C2-01-COORDINATE_METRIC",
         "sourceKind": "generated",
         "rpmMappingStatus": "EVIDENCE_DEBT"
-      },
-      "technicalStatus": "READY",
-      "technicalIssues": [],
-      "meta": {
-        "difficultyBucket": 3,
-        "level": "중",
-        "standardCourse": "공통수학2",
-        "standardUnitKey": "H22-C2-01",
-        "subUnitKey": "H22-C2-01-COORDINATE_METRIC"
       }
     },
     {
@@ -1539,11 +2489,177 @@
         "solution": "허용된 $t$는 네 개이므로 이를 각각 대입하여 비교한다. $t=-1$이면 $PA=\\sqrt{1+9}=\\sqrt{10}$, $PB=\\sqrt{25+9}=\\sqrt{34}$이다. $t=5$에서도 두 거리가 서로 바뀌어 합은 $\\sqrt{10}+\\sqrt{34}$이다. $t=1$에서는 $PA=\\sqrt{10}$, $PB=\\sqrt{9+9}=3\\sqrt2$이고 $t=3$에서도 합이 같다. $\\sqrt{34}>3\\sqrt2$이므로 최솟값은 $\\sqrt{10}+3\\sqrt2$이다. $t$를 모든 실수로 볼 때의 하한과 다름에 주의한다. 따라서 정답은 ②이다.",
         "sourceType": "generated",
         "sourceKind": "generated",
-        "sourceQid": 4,
-        "slot": "C1",
-        "purposeGroup": "C",
-        "rpmPrimaryL3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
-        "generatedL4": "유한 위치 제약과 거리합 최솟값"
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-PALMA25-2MID-Q04-C1",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-01",
+          "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+          "rpmPrimaryRecordId": null,
+          "rpmL1": null,
+          "rpmL2": null,
+          "rpmL3": null,
+          "rpmL4": null,
+          "rpmL4Namespace": null,
+          "rpmDraftAuthorityRef": null,
+          "rpmDraftAuthoritySha256": null,
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "USER_DIRECTED_OPERATING_APPROVED",
+          "reviewStatus": "USER_DIRECTED_CONTENT_REVIEWED",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "UNKNOWN",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "UNKNOWN",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "rpmPrimaryRecordId",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL1",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL2",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL3",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4Namespace",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthorityRef",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthoritySha256",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "problemTypeKey",
+              "status": "EVIDENCE_DEBT",
+              "reason": "PROBLEMTYPEKEY_VALUE_MISSING"
+            },
+            {
+              "field": "templateKey",
+              "status": "EVIDENCE_DEBT",
+              "reason": "TEMPLATEKEY_VALUE_MISSING"
+            },
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C2-01-COORDINATE_METRIC",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EVIDENCE_DEBT"
+        }
       },
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-qid9-q04.js",
       "sourceShardGitSha": "3fdef7e3b767ec2200673450b04e94d48ba7a4c7",
@@ -1717,15 +2833,6 @@
         "physicalStorageBucketKey": "H22-C2-01-COORDINATE_METRIC",
         "sourceKind": "generated",
         "rpmMappingStatus": "EVIDENCE_DEBT"
-      },
-      "technicalStatus": "READY",
-      "technicalIssues": [],
-      "meta": {
-        "difficultyBucket": 3,
-        "level": "중",
-        "standardCourse": "공통수학2",
-        "standardUnitKey": "H22-C2-01",
-        "subUnitKey": "H22-C2-01-COORDINATE_METRIC"
       }
     },
     {
@@ -1785,11 +2892,177 @@
         "solution": "점 $A(-2,3)$를 $x$축에 대하여 대칭이동한 점을 $A'(-2,-3)$이라 하자. $P$가 $x$축 위에 있으므로 $PA=PA'$이고, $PA+PB=PA'+PB\\ge A'B$이다. 선분 $A'B$는 $x$축과 만나므로 등호가 성립할 때의 점 $P$가 존재한다. $A'B=\\sqrt{(4+2)^2+(1+3)^2}=2\\sqrt{13}$이다. $A'$의 $y$좌표가 $-3$, $B$의 $y$좌표가 $1$이므로 선분 $A'B$와 $x$축의 교점은 $A'B$를 $3:1$로 내분한다. 따라서 $PA=PA'=\\dfrac34 A'B=\\dfrac{3\\sqrt{13}}2$이다. 따라서 정답은 ①이다.",
         "sourceType": "generated",
         "sourceKind": "generated",
-        "sourceQid": 4,
-        "slot": "C2",
-        "purposeGroup": "C",
-        "rpmPrimaryL3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
-        "generatedL4": "거리합 최소 등호점에서 내분비를 이용한 거리 복원"
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-PALMA25-2MID-Q04-C2",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-01",
+          "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+          "rpmPrimaryRecordId": null,
+          "rpmL1": null,
+          "rpmL2": null,
+          "rpmL3": null,
+          "rpmL4": null,
+          "rpmL4Namespace": null,
+          "rpmDraftAuthorityRef": null,
+          "rpmDraftAuthoritySha256": null,
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 4,
+          "level": "상",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "USER_DIRECTED_OPERATING_APPROVED",
+          "reviewStatus": "USER_DIRECTED_CONTENT_REVIEWED",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "UNKNOWN",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "UNKNOWN",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "rpmPrimaryRecordId",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL1",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL2",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL3",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4Namespace",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthorityRef",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthoritySha256",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "problemTypeKey",
+              "status": "EVIDENCE_DEBT",
+              "reason": "PROBLEMTYPEKEY_VALUE_MISSING"
+            },
+            {
+              "field": "templateKey",
+              "status": "EVIDENCE_DEBT",
+              "reason": "TEMPLATEKEY_VALUE_MISSING"
+            },
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C2-01-COORDINATE_METRIC",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EVIDENCE_DEBT"
+        }
       },
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-qid9-q04.js",
       "sourceShardGitSha": "3fdef7e3b767ec2200673450b04e94d48ba7a4c7",
@@ -1963,15 +3236,6 @@
         "physicalStorageBucketKey": "H22-C2-01-COORDINATE_METRIC",
         "sourceKind": "generated",
         "rpmMappingStatus": "EVIDENCE_DEBT"
-      },
-      "technicalStatus": "READY",
-      "technicalIssues": [],
-      "meta": {
-        "difficultyBucket": 4,
-        "level": "상",
-        "standardCourse": "공통수학2",
-        "standardUnitKey": "H22-C2-01",
-        "subUnitKey": "H22-C2-01-COORDINATE_METRIC"
       }
     },
     {
@@ -2031,11 +3295,177 @@
         "solution": "$A(-2,3)$를 $x$축에 대하여 대칭이동한 점을 $A'(-2,-3)$이라 하자. $k>0$이므로 선분 $A'B$는 $x$축과 만나고, $PA+PB$의 최솟값은 $A'B$이다. 따라서 $\\sqrt{(4+2)^2+(k+3)^2}=10$이고, $(k+3)^2=64$이다. $k>0$이므로 $k+3=8$, 즉 $k=5$이다. 이제 $A'(-2,-3)$과 $B(4,5)$를 지나는 직선은 기울기가 $\\dfrac{5-(-3)}{4-(-2)}=\\dfrac43$이므로 $y+3=\\dfrac43(x+2)$이다. 최솟값을 갖는 점 $P$는 이 직선과 $x$축의 교점이므로 $y=0$을 대입하면 $x+2=\\dfrac94$, 즉 $x=\\dfrac14$이다. 따라서 정답은 ④이다.",
         "sourceType": "generated",
         "sourceKind": "generated",
-        "sourceQid": 4,
-        "slot": "C3",
-        "purposeGroup": "C",
-        "rpmPrimaryL3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
-        "generatedL4": "거리합 최솟값에서 매개변수와 등호 교점 복원"
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-PALMA25-2MID-Q04-C3",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-01",
+          "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+          "rpmPrimaryRecordId": null,
+          "rpmL1": null,
+          "rpmL2": null,
+          "rpmL3": null,
+          "rpmL4": null,
+          "rpmL4Namespace": null,
+          "rpmDraftAuthorityRef": null,
+          "rpmDraftAuthoritySha256": null,
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 4,
+          "level": "상",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "USER_DIRECTED_OPERATING_APPROVED",
+          "reviewStatus": "USER_DIRECTED_CONTENT_REVIEWED",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "UNKNOWN",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "UNKNOWN",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "rpmPrimaryRecordId",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL1",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL2",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL3",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4Namespace",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthorityRef",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthoritySha256",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "problemTypeKey",
+              "status": "EVIDENCE_DEBT",
+              "reason": "PROBLEMTYPEKEY_VALUE_MISSING"
+            },
+            {
+              "field": "templateKey",
+              "status": "EVIDENCE_DEBT",
+              "reason": "TEMPLATEKEY_VALUE_MISSING"
+            },
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C2-01-COORDINATE_METRIC",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EVIDENCE_DEBT"
+        }
       },
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-qid9-q04.js",
       "sourceShardGitSha": "3fdef7e3b767ec2200673450b04e94d48ba7a4c7",
@@ -2209,16 +3639,9 @@
         "physicalStorageBucketKey": "H22-C2-01-COORDINATE_METRIC",
         "sourceKind": "generated",
         "rpmMappingStatus": "EVIDENCE_DEBT"
-      },
-      "technicalStatus": "READY",
-      "technicalIssues": [],
-      "meta": {
-        "difficultyBucket": 4,
-        "level": "상",
-        "standardCourse": "공통수학2",
-        "standardUnitKey": "H22-C2-01",
-        "subUnitKey": "H22-C2-01-COORDINATE_METRIC"
       }
     }
-  ]
+  ],
+  "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-01-COORDINATE_METRIC/shards/palma-2025-2mid-qid9-q04.js",
+  "sourceShardGitSha": "3fdef7e3b767ec2200673450b04e94d48ba7a4c7"
 }

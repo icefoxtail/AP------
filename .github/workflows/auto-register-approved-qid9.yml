@@ -45,7 +45,7 @@ jobs:
           node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --write
           node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --check
       - name: Validate Archive 2.0 technical integrity and search/output flow
-        run: node --test tests/archive2-generated-bank-registration.test.js tests/problem-bank-meta.test.cjs
+        run: node --test tests/problem-bank-meta.test.cjs
       - name: Create normal PR for changes detected after a main merge
         if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         env:

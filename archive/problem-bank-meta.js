@@ -96,7 +96,7 @@
     };
   }
   function isGeneratedSelectable(row, disabledUids = []) {
-    if (!row || row.sourceKind !== 'generated' || row.consumerSelectable === false ||
+    if (!row || row.sourceKind !== 'generated' || (row.consumerSelectable === false && row.mainSourceAvailable !== true) ||
         row.technicalStatus === 'ERROR' || new Set(disabledUids).has(row.uid || row.questionUid)) return false;
     // Main-resident question JS is usable even while its review history is pending.
     // `verifiedEligible` below remains a separate, evidence-backed quality signal.

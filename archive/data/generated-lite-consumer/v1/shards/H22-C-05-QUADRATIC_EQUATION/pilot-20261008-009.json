@@ -1,10 +1,8 @@
 {
   "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
-  "school": "효천고",
-  "batchId": "MAIN_SOURCE_pilot-20261008-009",
-  "sourceKind": "generated",
   "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-05-QUADRATIC_EQUATION/shards/pilot-20261008-009.js",
   "sourceShardGitSha": "a0881c933dd10824a979e5a47eca0b2031afc1a7",
+  "repairShardGitSha": "60ec5590f46ae54e08b357d8c5f07bdc7d810842",
   "records": [
     {
       "generatedUid": "ALITE-20261008-HYC26-Q14-001",
@@ -22,7 +20,7 @@
         "l3": "복소수 근",
         "l4": "계수 조건"
       },
-      "reviewStatus": "REVIEW_PASS",
+      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
       "question": {
         "id": 1,
         "level": "중",
@@ -31,12 +29,12 @@
         "originalCategory": "복소수 근",
         "standardCourse": "공통수학1",
         "standardUnitKey": "H22-C-05",
-        "standardUnit": "이차방정식과 이차함수",
+        "standardUnit": "복소수 근",
         "standardUnitOrder": 5,
         "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-        "subUnit": "이차방정식",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
+        "subUnit": "복소수 근",
+        "subUnitConfidence": "HIGH",
+        "subUnitClassificationDepth": "L2",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -57,7 +55,117 @@
         "solution": "[키포인트] 실수계수 이차방정식의 허근은 켤레복소수와 함께 나타난다.\\n다른 근은 $2-3i$이다. 근과 계수의 관계에서 두 근의 합이 $a$이므로 $a=(2+3i)+(2-3i)=4$이다.",
         "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
         "templateKey": null,
-        "uid": "ALITE-20261008-HYC26-Q14-001"
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-20261008-HYC26-Q14-001",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-05",
+          "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+          "rpmPrimaryRecordId": "H1-RPM-165",
+          "rpmL1": "방정식과 부등식",
+          "rpmL2": "이차방정식",
+          "rpmL3": "복소수 근",
+          "rpmL4": "계수 조건",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+          "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+          "templateKey": null,
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "approval": "REVIEW_APPROVED",
+          "reviewStatus": "REVIEW_PASS",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "UNKNOWN",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "templateKey",
+              "status": "EVIDENCE_DEBT",
+              "reason": "TEMPLATEKEY_VALUE_MISSING"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-05-QUADRATIC_EQUATION",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EXACT_CROSSWALK"
+        }
       },
       "metaProjection": {
         "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
@@ -169,20 +277,6 @@
         "physicalStorageBucketKey": "H22-C-05-QUADRATIC_EQUATION",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      },
-      "consumerSelectable": true,
-      "technicalStatus": "READY",
-      "technicalIssues": [],
-      "meta": {
-        "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
-        "crossConceptKeys": [],
-        "conditionKeys": [],
-        "integrationPattern": "NONE",
-        "difficultyBucket": 3,
-        "level": "중",
-        "standardCourse": "공통수학1",
-        "standardUnitKey": "H22-C-05",
-        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION"
       }
     },
     {
@@ -201,7 +295,7 @@
         "l3": "복소수 근",
         "l4": "계수 조건"
       },
-      "reviewStatus": "REVIEW_PASS",
+      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
       "question": {
         "id": 2,
         "level": "상",
@@ -210,12 +304,12 @@
         "originalCategory": "복소수 근",
         "standardCourse": "공통수학1",
         "standardUnitKey": "H22-C-05",
-        "standardUnit": "이차방정식과 이차함수",
+        "standardUnit": "복소수 근",
         "standardUnitOrder": 5,
         "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-        "subUnit": "이차방정식",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
+        "subUnit": "복소수 근",
+        "subUnitConfidence": "HIGH",
+        "subUnitClassificationDepth": "L2",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -236,7 +330,117 @@
         "solution": "[키포인트] 중근 조건으로 $z$를 제한하고 허근의 켤레조건을 대조한다.\\n$z-2i$는 실수인 중근 $2$ 또는 $-2$이므로 $z=2+2i$ 또는 $-2+2i$이다. $z-2$는 각각 $2i$ 또는 $-4+2i$이다. 두 번째 경우 켤레근의 곱은 $20$으로 상수항 $4$와 맞지 않는다. 따라서 $z=2+2i$, $a=0$, $b=4$여서 $a+b=4$이다.",
         "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
         "templateKey": null,
-        "uid": "ALITE-20261008-HYC26-Q14-003"
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-20261008-HYC26-Q14-003",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-05",
+          "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+          "rpmPrimaryRecordId": "H1-RPM-165",
+          "rpmL1": "방정식과 부등식",
+          "rpmL2": "이차방정식",
+          "rpmL3": "복소수 근",
+          "rpmL4": "계수 조건",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+          "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+          "templateKey": null,
+          "difficultyBucket": 4,
+          "level": "상",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "approval": "REVIEW_APPROVED",
+          "reviewStatus": "REVIEW_PASS",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "UNKNOWN",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "templateKey",
+              "status": "EVIDENCE_DEBT",
+              "reason": "TEMPLATEKEY_VALUE_MISSING"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-05-QUADRATIC_EQUATION",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EXACT_CROSSWALK"
+        }
       },
       "metaProjection": {
         "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
@@ -348,20 +552,6 @@
         "physicalStorageBucketKey": "H22-C-05-QUADRATIC_EQUATION",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      },
-      "consumerSelectable": true,
-      "technicalStatus": "READY",
-      "technicalIssues": [],
-      "meta": {
-        "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
-        "crossConceptKeys": [],
-        "conditionKeys": [],
-        "integrationPattern": "NONE",
-        "difficultyBucket": 4,
-        "level": "상",
-        "standardCourse": "공통수학1",
-        "standardUnitKey": "H22-C-05",
-        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION"
       }
     },
     {
@@ -380,7 +570,7 @@
         "l3": "근과 계수의 관계",
         "l4": "근의 합·곱"
       },
-      "reviewStatus": "REVIEW_PASS",
+      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
       "question": {
         "id": 3,
         "level": "중",
@@ -389,12 +579,12 @@
         "originalCategory": "근과 계수의 관계",
         "standardCourse": "공통수학1",
         "standardUnitKey": "H22-C-05",
-        "standardUnit": "이차방정식과 이차함수",
+        "standardUnit": "근과 계수의 관계",
         "standardUnitOrder": 5,
         "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-        "subUnit": "이차방정식",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
+        "subUnit": "근과 계수의 관계",
+        "subUnitConfidence": "HIGH",
+        "subUnitClassificationDepth": "L2",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -415,7 +605,111 @@
         "solution": "[키포인트] 원래 두 영점을 $a$만큼 옮긴다.\\n두 근은 $a+2,a+6$이므로 합이 $2a+8$이다. $2a+8=14$에서 $a=3$이다.",
         "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
         "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
-        "uid": "ALITE-20261008-HYC26-Q15-002"
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-20261008-HYC26-Q15-002",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-05",
+          "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+          "rpmPrimaryRecordId": "H1-RPM-162",
+          "rpmL1": "방정식과 부등식",
+          "rpmL2": "이차방정식",
+          "rpmL3": "근과 계수의 관계",
+          "rpmL4": "근의 합·곱",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+          "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+          "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "approval": "REVIEW_APPROVED",
+          "reviewStatus": "REVIEW_PASS",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-05-QUADRATIC_EQUATION",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EXACT_CROSSWALK"
+        }
       },
       "metaProjection": {
         "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
@@ -521,21 +815,6 @@
         "physicalStorageBucketKey": "H22-C-05-QUADRATIC_EQUATION",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      },
-      "consumerSelectable": true,
-      "technicalStatus": "READY",
-      "technicalIssues": [],
-      "meta": {
-        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
-        "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
-        "crossConceptKeys": [],
-        "conditionKeys": [],
-        "integrationPattern": "NONE",
-        "difficultyBucket": 3,
-        "level": "중",
-        "standardCourse": "공통수학1",
-        "standardUnitKey": "H22-C-05",
-        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION"
       }
     }
   ]

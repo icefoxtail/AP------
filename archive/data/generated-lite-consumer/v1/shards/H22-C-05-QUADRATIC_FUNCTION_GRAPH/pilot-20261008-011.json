@@ -1,10 +1,8 @@
 {
   "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
-  "school": "효천고",
-  "batchId": "MAIN_SOURCE_pilot-20261008-011",
-  "sourceKind": "generated",
   "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-05-QUADRATIC_FUNCTION_GRAPH/shards/pilot-20261008-011.js",
   "sourceShardGitSha": "b5e7fa79b21b15fc25b87cd4e85f4228484b4b5f",
+  "repairShardGitSha": "7e49432003ad207157d9b62498c7d2a59954a381",
   "records": [
     {
       "generatedUid": "ALITE-20261008-HYC26-Q18-001",
@@ -23,7 +21,7 @@
         "l4": "x축과의 교점",
         "mappingStatus": "DIRECT_ACTIVE"
       },
-      "reviewStatus": "REVIEW_PASS",
+      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
       "question": {
         "id": 1,
         "level": "중",
@@ -42,19 +40,132 @@
         ],
         "answer": "②",
         "solution": "[키포인트] 꼭짓점은 $P(3,-4)$이다. 따라서 직선 $PB$의 기울기는 $(0+4)/(5-3)=2$이다.",
-        "category": "이차방정식과 이차함수",
-        "originalCategory": "이차방정식과 이차함수",
-        "standardUnit": "이차방정식과 이차함수",
-        "standardUnitOrder": 5,
-        "subUnit": "이차함수의 그래프",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "tags": [
-          "객관식"
-        ],
-        "wide": false,
-        "difficultyBucket": 3,
-        "uid": "ALITE-20261008-HYC26-Q18-001"
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-20261008-HYC26-Q18-001",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-05",
+          "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+          "rpmPrimaryRecordId": "H1-RPM-166",
+          "rpmL1": "방정식과 부등식",
+          "rpmL2": "이차방정식과 이차함수",
+          "rpmL3": "그래프와 근",
+          "rpmL4": "x축과의 교점",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+          "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+          "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+          "difficultyBucket": null,
+          "level": "중",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "REVIEW_APPROVED",
+          "reviewStatus": "REVIEW_PASS",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "UNKNOWN",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "difficultyBucket",
+              "status": "EVIDENCE_DEBT",
+              "reason": "AUDITED_DIFFICULTY_EVIDENCE_DEBT_NO_INDEPENDENT_1_TO_5_EVIDENCE"
+            },
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EXACT_CROSSWALK"
+        }
       },
       "metaProjection": {
         "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
@@ -181,16 +292,6 @@
         "physicalStorageBucketKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      },
-      "consumerSelectable": true,
-      "technicalStatus": "READY",
-      "technicalIssues": [],
-      "meta": {
-        "difficultyBucket": 3,
-        "level": "중",
-        "standardCourse": "공통수학1",
-        "standardUnitKey": "H22-C-05",
-        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH"
       }
     },
     {
@@ -210,7 +311,7 @@
         "l4": "x축과의 교점",
         "mappingStatus": "DIRECT_ACTIVE"
       },
-      "reviewStatus": "REVIEW_PASS",
+      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
       "question": {
         "id": 2,
         "level": "중",
@@ -222,26 +323,139 @@
         "content": "$f(x)=(x-1)(x-5)$, $A(1,0)$, $B(5,0)$, 꼭짓점 $P$에 대하여 $A$를 지나고 $PB$와 평행한 직선이 포물선과 다시 만나는 점 $Q$의 $x$좌표는?",
         "choices": [
           "5",
-          "6",
           "7",
           "8",
-          "9"
+          "10",
+          "12"
         ],
-        "answer": "③",
+        "answer": "②",
         "solution": "[키포인트] $P(3,-4)$이므로 $PB$의 기울기는 $2$이다. 직선 $AQ$는 $y=2(x-1)$이고 $(x-1)(x-5)=2(x-1)$에서 $x=1,7$이다. 따라서 $Q$의 $x$좌표는 $7$이다.",
-        "category": "이차방정식과 이차함수",
-        "originalCategory": "이차방정식과 이차함수",
-        "standardUnit": "이차방정식과 이차함수",
-        "standardUnitOrder": 5,
-        "subUnit": "이차함수의 그래프",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "tags": [
-          "객관식"
-        ],
-        "wide": false,
-        "difficultyBucket": 3,
-        "uid": "ALITE-20261008-HYC26-Q18-002"
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-20261008-HYC26-Q18-002",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-05",
+          "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+          "rpmPrimaryRecordId": "H1-RPM-166",
+          "rpmL1": "방정식과 부등식",
+          "rpmL2": "이차방정식과 이차함수",
+          "rpmL3": "그래프와 근",
+          "rpmL4": "x축과의 교점",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+          "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+          "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+          "difficultyBucket": null,
+          "level": "중",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "REVIEW_APPROVED",
+          "reviewStatus": "REVIEW_PASS",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "UNKNOWN",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "difficultyBucket",
+              "status": "EVIDENCE_DEBT",
+              "reason": "AUDITED_DIFFICULTY_EVIDENCE_DEBT_NO_INDEPENDENT_1_TO_5_EVIDENCE"
+            },
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EXACT_CROSSWALK"
+        }
       },
       "metaProjection": {
         "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
@@ -368,70 +582,6 @@
         "physicalStorageBucketKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      },
-      "consumerSelectable": true,
-      "technicalStatus": "READY",
-      "technicalIssues": [],
-      "meta": {
-        "difficultyBucket": 3,
-        "level": "중",
-        "standardCourse": "공통수학1",
-        "standardUnitKey": "H22-C-05",
-        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH"
-      }
-    },
-    {
-      "generatedUid": "ALITE-20261008-HYC26-Q18-003",
-      "localOrdinal": 3,
-      "sourceKind": "generated",
-      "sourceExamPath": "archive/exams/original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js",
-      "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
-      "sourceQid": 18,
-      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-05-QUADRATIC_FUNCTION_GRAPH/shards/pilot-20261008-011.js",
-      "sourceShardGitSha": "b5e7fa79b21b15fc25b87cd4e85f4228484b4b5f",
-      "l2": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-      "reviewStatus": "NOT_REVIEWED",
-      "consumerSelectable": true,
-      "technicalStatus": "READY",
-      "technicalIssues": [],
-      "meta": {
-        "difficultyBucket": 3,
-        "level": "중",
-        "standardCourse": "공통수학1",
-        "standardUnitKey": "H22-C-05",
-        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH"
-      },
-      "question": {
-        "id": 3,
-        "level": "중",
-        "questionType": "객관식",
-        "standardCourse": "공통수학1",
-        "standardUnitKey": "H22-C-05",
-        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-        "layoutTag": "grid",
-        "content": "$f(x)=(x-1)(x-5)$에서 $A(1,0)$, $B(5,0)$와 꼭짓점 $P$를 잡는다. $A$를 지나고 $PB$에 평행한 직선과 포물선의 다른 교점 $Q$에서 $x$축으로 내린 발을 $R$이라 할 때 삼각형 $BQR$의 넓이는?",
-        "choices": [
-          "8",
-          "10",
-          "12",
-          "14",
-          "16"
-        ],
-        "answer": "③",
-        "solution": "[키포인트] $PB$의 기울기는 $2$이다. $AQ$와 포물선을 연립하면 $Q(7,12)$이다. 따라서 $R(7,0)$이며 $BR=2$, $QR=12$이므로 넓이는 $12$이다.",
-        "category": "이차방정식과 이차함수",
-        "originalCategory": "이차방정식과 이차함수",
-        "standardUnit": "이차방정식과 이차함수",
-        "standardUnitOrder": 5,
-        "subUnit": "이차함수의 그래프",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "tags": [
-          "객관식"
-        ],
-        "wide": false,
-        "difficultyBucket": 3,
-        "uid": "ALITE-20261008-HYC26-Q18-003"
       }
     },
     {
@@ -451,7 +601,7 @@
         "l4": "x축과의 교점",
         "mappingStatus": "DIRECT_ACTIVE"
       },
-      "reviewStatus": "REVIEW_PASS",
+      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
       "question": {
         "id": 4,
         "level": "상",
@@ -471,20 +621,132 @@
         "answer": "③",
         "solution": "[키포인트] 그림에서 $A(1,0)$, $B(5,0)$, $P(3,-4)$이다. $PB$의 기울기가 $2$이므로 $AQ$는 $y=2(x-1)$이다. $Q(7,12)$, $R(7,0)$이므로 삼각형 넓이는 $12$이다.",
         "image": "assets/generated-lite/ALITE-20261008-HYC26-Q18-004.svg",
-        "category": "이차방정식과 이차함수",
-        "originalCategory": "이차방정식과 이차함수",
-        "standardUnit": "이차방정식과 이차함수",
-        "standardUnitOrder": 5,
-        "subUnit": "이차함수의 그래프",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "tags": [
-          "객관식",
-          "그래프"
-        ],
-        "wide": false,
-        "difficultyBucket": 4,
-        "uid": "ALITE-20261008-HYC26-Q18-004"
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-20261008-HYC26-Q18-004",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-05",
+          "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+          "rpmPrimaryRecordId": "H1-RPM-166",
+          "rpmL1": "방정식과 부등식",
+          "rpmL2": "이차방정식과 이차함수",
+          "rpmL3": "그래프와 근",
+          "rpmL4": "x축과의 교점",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+          "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+          "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+          "difficultyBucket": null,
+          "level": "상",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "REVIEW_APPROVED",
+          "reviewStatus": "REVIEW_PASS",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "UNKNOWN",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "difficultyBucket",
+              "status": "EVIDENCE_DEBT",
+              "reason": "AUDITED_DIFFICULTY_EVIDENCE_DEBT_NO_INDEPENDENT_1_TO_5_EVIDENCE"
+            },
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EXACT_CROSSWALK"
+        }
       },
       "metaProjection": {
         "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
@@ -611,17 +873,64 @@
         "physicalStorageBucketKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      },
+      }
+    },
+    {
+      "generatedUid": "ALITE-20261008-HYC26-Q18-003",
+      "localOrdinal": 3,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js",
+      "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
+      "sourceQid": 18,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-05-QUADRATIC_FUNCTION_GRAPH/shards/pilot-20261008-011.js",
+      "sourceShardGitSha": "b5e7fa79b21b15fc25b87cd4e85f4228484b4b5f",
+      "l2": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+      "reviewStatus": "NOT_REVIEWED",
       "consumerSelectable": true,
       "technicalStatus": "READY",
       "technicalIssues": [],
       "meta": {
-        "difficultyBucket": 4,
-        "level": "상",
+        "difficultyBucket": 3,
+        "level": "중",
         "standardCourse": "공통수학1",
         "standardUnitKey": "H22-C-05",
         "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH"
+      },
+      "question": {
+        "id": 3,
+        "level": "중",
+        "questionType": "객관식",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "layoutTag": "grid",
+        "content": "$f(x)=(x-1)(x-5)$에서 $A(1,0)$, $B(5,0)$와 꼭짓점 $P$를 잡는다. $A$를 지나고 $PB$에 평행한 직선과 포물선의 다른 교점 $Q$에서 $x$축으로 내린 발을 $R$이라 할 때 삼각형 $BQR$의 넓이는?",
+        "choices": [
+          "8",
+          "10",
+          "12",
+          "14",
+          "16"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] $PB$의 기울기는 $2$이다. $AQ$와 포물선을 연립하면 $Q(7,12)$이다. 따라서 $R(7,0)$이며 $BR=2$, $QR=12$이므로 넓이는 $12$이다.",
+        "category": "이차방정식과 이차함수",
+        "originalCategory": "이차방정식과 이차함수",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnit": "이차함수의 그래프",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "tags": [
+          "객관식"
+        ],
+        "wide": false,
+        "difficultyBucket": 3,
+        "uid": "ALITE-20261008-HYC26-Q18-003"
       }
     }
-  ]
+  ],
+  "school": "효천고",
+  "batchId": "MAIN_SOURCE_pilot-20261008-011",
+  "sourceKind": "generated"
 }
