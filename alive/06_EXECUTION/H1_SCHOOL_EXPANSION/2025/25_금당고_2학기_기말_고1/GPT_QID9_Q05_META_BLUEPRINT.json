@@ -1,0 +1,359 @@
+{
+  "schemaVersion": "ALIVE_QID9_GEUMDANG25_Q05_BLUEPRINT_V1",
+  "sourceQid": 5,
+  "sourceExamPath": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+  "sourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "originalStem": "두 조건 p, q가 9의 양의 약수와 3의 양의 약수를 뜻할 때 p가 q이기 위한 어떤 조건인가",
+  "primaryL3": {
+    "id": "H1-RPM-247",
+    "name": "필요조건·충분조건",
+    "locked": true,
+    "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json"
+  },
+  "invariant": "p가 q의 필요조건인 것은 q⇒p, 충분조건인 것은 p⇒q로 판정한다. 반례와 진리집합 포함을 모두 적용한다.",
+  "slots": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q05-A1",
+      "primaryL3": "H1-RPM-247",
+      "l4": "조건 관계",
+      "difficultyBucket": 1,
+      "level": "하",
+      "studentStem": "자연수 $x$에 대한 두 조건 $p$, $q$가 다음과 같다.\n$p$: $x$는 $6$의 배수, $q$: $x$는 $3$의 배수\n$p$는 $q$이기 위한 어떤 조건인가?",
+      "choices": [
+        "충분조건이지만 필요조건은 아니다.",
+        "필요조건이지만 충분조건은 아니다.",
+        "필요충분조건이다.",
+        "필요조건도 충분조건도 아니다.",
+        "두 조건을 동시에 만족시키는 값이 없다."
+      ],
+      "answer": "①",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "NEC_SUFF_A1",
+      "blueprint": "배수 집합의 포함관계 직접 판정",
+      "visualProblem": "EXEMPT_TEXT_INPUT_COMPLETE",
+      "visualSolution": "EXEMPT_DIRECT_SET_REASONING",
+      "mathVerification": {
+        "p": [
+          6,
+          12,
+          18
+        ],
+        "q": [
+          3,
+          6,
+          9,
+          12,
+          15,
+          18
+        ],
+        "relation": "P_PROPER_SUBSET_Q"
+      }
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q05-A2",
+      "primaryL3": "H1-RPM-247",
+      "l4": "조건 관계",
+      "difficultyBucket": 2,
+      "level": "하",
+      "studentStem": "자연수 $x$에 대한 두 조건 $p$, $q$가 다음과 같다.\n$p$: $x$는 $12$의 약수, $q$: $x$는 $4$의 약수\n$p$는 $q$이기 위한 어떤 조건인가?",
+      "choices": [
+        "충분조건이지만 필요조건은 아니다.",
+        "필요조건이지만 충분조건은 아니다.",
+        "필요충분조건이다.",
+        "필요조건도 충분조건도 아니다.",
+        "두 조건을 동시에 만족시키는 값이 없다."
+      ],
+      "answer": "②",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "NEC_SUFF_A2",
+      "blueprint": "약수 조건으로 필요조건 판정",
+      "visualProblem": "EXEMPT_TEXT_INPUT_COMPLETE",
+      "visualSolution": "EXEMPT_DIRECT_SET_REASONING",
+      "mathVerification": {
+        "p": [
+          1,
+          2,
+          3,
+          4,
+          6,
+          12
+        ],
+        "q": [
+          1,
+          2,
+          4
+        ],
+        "relation": "Q_PROPER_SUBSET_P"
+      }
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q05-A3",
+      "primaryL3": "H1-RPM-247",
+      "l4": "조건 관계",
+      "difficultyBucket": 2,
+      "level": "중",
+      "studentStem": "실수 $x$에 대하여 조건 $p$: $x^2=25$, 조건 $q$: $|x|=5$라 하자. $p$는 $q$이기 위한 어떤 조건인가?",
+      "choices": [
+        "충분조건이지만 필요조건은 아니다.",
+        "필요조건이지만 충분조건은 아니다.",
+        "필요조건도 충분조건도 아니다.",
+        "두 조건을 동시에 만족시키는 값이 없다.",
+        "필요충분조건이다."
+      ],
+      "answer": "⑤",
+      "conditionKeys": [],
+      "crossConceptKeys": [
+        "EXT-GD25-Q05-CC-ABSOLUTE-SQUARE"
+      ],
+      "integrationPattern": "NEC_SUFF_A3",
+      "blueprint": "제곱식과 절댓값의 동치",
+      "visualProblem": "EXEMPT_TEXT_INPUT_COMPLETE",
+      "visualSolution": "EXEMPT_DIRECT_SET_REASONING",
+      "mathVerification": {
+        "p": [
+          -5,
+          5
+        ],
+        "q": [
+          -5,
+          5
+        ],
+        "relation": "P_EQUALS_Q"
+      }
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q05-B1",
+      "primaryL3": "H1-RPM-247",
+      "l4": "조건 관계",
+      "difficultyBucket": 3,
+      "level": "중",
+      "studentStem": "실수 $x$에 대하여 $p$: $x>0$, $q$: $x^2>0$이라 하자. $q$는 $p$이기 위한 어떤 조건인가?",
+      "choices": [
+        "충분조건이지만 필요조건은 아니다.",
+        "필요충분조건이다.",
+        "필요조건도 충분조건도 아니다.",
+        "필요조건이지만 충분조건은 아니다.",
+        "두 조건을 동시에 만족시키는 값이 없다."
+      ],
+      "answer": "④",
+      "conditionKeys": [],
+      "crossConceptKeys": [
+        "EXT-GD25-Q05-CC-SQUARE-SIGN"
+      ],
+      "integrationPattern": "NEC_SUFF_B1",
+      "blueprint": "필요조건의 방향을 바꾸어 판정",
+      "visualProblem": "EXEMPT_TEXT_INPUT_COMPLETE",
+      "visualSolution": "EXEMPT_DIRECT_SET_REASONING",
+      "mathVerification": {
+        "p": "x>0",
+        "q": "x!=0",
+        "relation": "P_PROPER_SUBSET_Q"
+      }
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q05-B2",
+      "primaryL3": "H1-RPM-247",
+      "l4": "EXT-GD25-C2-06-Q05-PARTIAL-OVERLAP",
+      "difficultyBucket": 3,
+      "level": "중",
+      "studentStem": "자연수 $x$에 대하여 $p$: $x$는 $12$의 약수, $q$: $x$는 $12$ 이하의 $3$의 배수라 하자. $p$는 $q$이기 위한 어떤 조건인가?",
+      "choices": [
+        "충분조건이지만 필요조건은 아니다.",
+        "필요조건이지만 충분조건은 아니다.",
+        "필요충분조건이다.",
+        "필요조건도 충분조건도 아니다.",
+        "두 조건을 동시에 만족시키는 값이 없다."
+      ],
+      "answer": "③",
+      "conditionKeys": [],
+      "crossConceptKeys": [
+        "EXT-GD25-Q05-CC-SET-OVERLAP"
+      ],
+      "integrationPattern": "NEC_SUFF_B2",
+      "blueprint": "부분적으로 겹치는 두 진리집합",
+      "visualProblem": "EXEMPT_TEXT_INPUT_COMPLETE",
+      "visualSolution": "EXEMPT_DIRECT_SET_REASONING",
+      "mathVerification": {
+        "p": [
+          1,
+          2,
+          3,
+          4,
+          6,
+          12
+        ],
+        "q": [
+          3,
+          6,
+          9,
+          12
+        ],
+        "relation": "PARTIAL_INTERSECTION_NEITHER"
+      }
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q05-B3",
+      "primaryL3": "H1-RPM-247",
+      "l4": "EXT-GD25-C2-06-Q05-DISJOINT-TRUTHSETS",
+      "difficultyBucket": 3,
+      "level": "중",
+      "studentStem": "실수 $x$에 대하여 $p$: $x\\le-2$, $q$: $x\\ge3$이라 하자. 다음 중 옳은 것은?",
+      "choices": [
+        "두 조건을 동시에 만족하는 실수는 없다.",
+        "$p$는 $q$이기 위한 충분조건이다.",
+        "$p$는 $q$이기 위한 필요조건이다.",
+        "$q$는 $p$이기 위한 충분조건이다.",
+        "$p$는 $q$이기 위한 필요충분조건이다."
+      ],
+      "answer": "①",
+      "conditionKeys": [],
+      "crossConceptKeys": [
+        "EXT-GD25-Q05-CC-SET-INTERSECTION"
+      ],
+      "integrationPattern": "NEC_SUFF_B3",
+      "blueprint": "교집합이 공집합인 조건들",
+      "visualProblem": "EXEMPT_TEXT_INPUT_COMPLETE",
+      "visualSolution": "EXEMPT_DIRECT_SET_REASONING",
+      "mathVerification": {
+        "p": "x<=-2",
+        "q": "x>=3",
+        "relation": "DISJOINT"
+      }
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q05-C1",
+      "primaryL3": "H1-RPM-247",
+      "l4": "매개변수",
+      "difficultyBucket": 4,
+      "level": "상",
+      "studentStem": "실수 $x$와 정수 $a$에 대한 두 조건 $p$: $x\\ge a$, $q$: $x\\ge2$가 있다. $-2\\le a\\le4$일 때, $p$가 $q$이기 위한 필요조건이지만 충분조건은 아니도록 하는 정수 $a$의 개수는?",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "answer": "④",
+      "conditionKeys": [
+        "EXT-GD25-Q05-COND-NECESSARY-NOT-SUFFICIENT"
+      ],
+      "crossConceptKeys": [
+        "EXT-GD25-Q05-CC-REAL-INEQUALITY"
+      ],
+      "integrationPattern": "NEC_SUFF_C1",
+      "blueprint": "매개변수에 따른 필요·충분 경계",
+      "visualProblem": "EXEMPT_TEXT_INPUT_COMPLETE",
+      "visualSolution": "EXEMPT_DIRECT_SET_REASONING",
+      "mathVerification": {
+        "values": [
+          -2,
+          -1,
+          0,
+          1
+        ],
+        "relation": "A_LESS_THAN_2"
+      }
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q05-C2",
+      "primaryL3": "H1-RPM-247",
+      "l4": "매개변수",
+      "difficultyBucket": 4,
+      "level": "상",
+      "studentStem": "실수 $a$, $x$에 대하여 두 조건 $p$: $x^2-ax+6=0$, $q$: $x=2$ 또는 $x=3$이라 하자. $p$가 $q$이기 위한 필요충분조건이 되도록 하는 $a$의 값은?",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "answer": "⑤",
+      "conditionKeys": [
+        "EXT-GD25-Q05-COND-EQUIVALENT-TRUTHSETS"
+      ],
+      "crossConceptKeys": [
+        "EXT-GD25-Q05-CC-QUADRATIC-ROOTS"
+      ],
+      "integrationPattern": "NEC_SUFF_C2",
+      "blueprint": "두 진리집합의 상등을 만드는 계수",
+      "visualProblem": "EXEMPT_TEXT_INPUT_COMPLETE",
+      "visualSolution": "EXEMPT_DIRECT_SET_REASONING",
+      "mathVerification": {
+        "a": 5,
+        "roots": [
+          2,
+          3
+        ],
+        "relation": "TRUTH_SET_EQUAL"
+      }
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q05-C3",
+      "primaryL3": "H1-RPM-247",
+      "l4": "EXT-GD25-C2-06-Q05-INTERVAL-CONTAINMENT",
+      "difficultyBucket": 5,
+      "level": "상",
+      "studentStem": "정수 $t$와 실수 $x$에 대하여 두 조건 $p$: $|x-t|\\le3$, $q$: $|x|\\le2$라 하자. $p$가 $q$이기 위한 필요조건이지만 충분조건은 아니도록 하는 정수 $t$의 개수는?",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "answer": "③",
+      "conditionKeys": [
+        "EXT-GD25-Q05-COND-NECESSARY-NOT-SUFFICIENT",
+        "EXT-GD25-Q05-COND-MOVING-INTERVAL"
+      ],
+      "crossConceptKeys": [
+        "EXT-GD25-Q05-CC-ABSOLUTE-INEQUALITY"
+      ],
+      "integrationPattern": "NEC_SUFF_C3",
+      "blueprint": "이동하는 구간의 포함과 매개변수",
+      "visualProblem": "EXEMPT_TEXT_INPUT_COMPLETE",
+      "visualSolution": "ADD_NUMBERLINE_SVG",
+      "mathVerification": {
+        "values": [
+          -1,
+          0,
+          1
+        ],
+        "pIntervals": [
+          [
+            -4,
+            2
+          ],
+          [
+            -3,
+            3
+          ],
+          [
+            -2,
+            4
+          ]
+        ],
+        "qInterval": [
+          -2,
+          2
+        ],
+        "relation": "Q_SUBSET_P_PROPER"
+      }
+    }
+  ],
+  "status": "CREATOR_SELF_CHECK_ONLY",
+  "releaseStatus": "BRANCH_ONLY_NO_MAIN_MERGE"
+}
