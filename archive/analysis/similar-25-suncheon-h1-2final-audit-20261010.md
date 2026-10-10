@@ -111,3 +111,42 @@
 - 앞 절의 “이 23개 H22-C2 개념군에 맞는 PT/TPL 등록 키가 없다”는 진술은 `js_archive_tag_master.json`만 본 뒤 내린 잘못된 결론이다. current 정본은 `docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`와 `archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json`이며, 해당 crosswalk에는 H22-C2-06~09 관련 H1-RPM-243~272 경로가 있다.
 - 방금 JS에 추가한 `conceptClusterKey` 23/23은 subUnit canonical tag 연결만 완료한다. 이를 qid별 RPM L1~L4·PT/TPL resolver linkage 완료로 간주할 수 없다. q별 의미 경로·projection을 resolver evidence로 대조하지 않았으므로 RPM linkage는 아직 `NOT_VERIFIED`다. 이 재독 결과에 따라 이전의 “정본에 연결할 key가 없음”을 폐기하며, RPM 연결이 완료됐다고 표시하지 않는다.
 - 이 수정은 검수 branch만 대상으로 했다. main 병합·DB/runtime/index 변경은 하지 않았다.
+
+## 최종 메타 연결 보정 — 2026-10-10
+
+앞서 기록한 `RPM_LINK=NOT_VERIFIED`는 메타 연결 보정 전 상태이며, 아래 결과로 갱신한다. 대상은 유사문항 JS만이며 원본 파일·UID·문항 내용·DB/runtime/index는 변경하지 않았다.
+
+- q1–q18, q20–q23: 각 문항의 검토한 풀이 방식에 맞는 기존 ACTIVE `problemTypeKey` / `templateKey`를 22쌍 연결했다. 해당 키 쌍은 target H22-C2 unit 범위의 ACTIVE taxonomy 또는 같은 unit/subUnit의 ACTIVE crosswalk에 존재함을 확인했다.
+- q19: `H1-RPM-264`가 `RPM_ONLY`이고 ACTIVE PT/TPL projection이 없어 두 필드를 비워 뒀다. 임의 확장 키는 만들지 않았다.
+- 기존 삽입 오류로 반복된 `conceptClusterKey`는 23개 문항 모두 한 개씩만 남도록 정리했다.
+- crosswalk 정합 상태는 아래와 같다. `PAIR_MATCH`는 기록된 crosswalk의 PT/TPL과 JS 키가 일치한다. `PAIR_REVIEW`는 crosswalk 후보 행은 있으나 현재 ACTIVE taxonomy의 더 구체적인 PT/TPL과 행의 projection 키가 달라 resolver 재조정이 필요하다. `NO_EXACT_ROW`는 이 crosswalk에서 문항별 exact RPM 행을 찾지 못했다. 이 구분은 RPM semantic 경로의 resolver receipt 발급을 뜻하지 않는다.
+
+| q | PT / TPL | RPM crosswalk | 최종 연결 상태 |
+|---|---|---|---|
+| 1 | `PT_PROPOSITION_JUDGMENT` / `TPL_PROPOSITION_CONDITION_IDENTIFICATION` | — | NO_EXACT_ROW |
+| 2 | `PT_PROPOSITION_PARAMETER_CONDITION` / `TPL_CONVERSE_CONTRAPOSITIVE_ROOT_PARAMETER` | H1-RPM-246 | PAIR_REVIEW · DIRECT_BINDING_GAP |
+| 3 | `PT_RADICAL_EXPRESSION` / `TPL_RADICAL_REAL_VALUE_RANGE` | H1-RPM-268 | PAIR_REVIEW · DIRECT_ACTIVE |
+| 4 | `PT_COMPOSITION_EVALUATION` / `TPL_COMPOSITION_VALUE_DIRECT` | H1-RPM-253 | PAIR_MATCH · DIRECT_ACTIVE |
+| 5 | `PT_QUANTIFIER_NEGATION` / `TPL_EXISTENTIAL_NEGATION_BASIC` | — | NO_EXACT_ROW |
+| 6 | `PT_NEC_SUFF_RELATION` / `TPL_NEC_SUFF_DIRECT_JUDGMENT` | H1-RPM-247 | PAIR_MATCH · DIRECT_ACTIVE |
+| 7 | `PT_DOMAIN_RANGE_SURJECTIVITY` / `TPL_FUNCTION_DOMAIN_RANGE_DIRECT` | H1-RPM-268 | PAIR_MATCH · DIRECT_ACTIVE |
+| 8 | `PT_ONE_TO_ONE_BIJECTION` / `TPL_AFFINE_INTERVAL_BIJECTION` | H1-RPM-257 | PAIR_REVIEW · DIRECT_ACTIVE |
+| 9 | `PT_ONE_TO_ONE_BIJECTION` / `TPL_PIECEWISE_RANGE_STITCH_BIJECTION` | H1-RPM-257 | PAIR_REVIEW · DIRECT_ACTIVE |
+| 10 | `PT_COMPOSITION_EVALUATION` / `TPL_COMPOSITION_VALUE_DIRECT` | H1-RPM-253 | PAIR_MATCH · DIRECT_ACTIVE |
+| 11 | `PT_TRUTH_SET_RELATION` / `TPL_TRUTHSET_SET_OPERATION` | H1-RPM-243 | PAIR_REVIEW · DIRECT_ACTIVE |
+| 12 | `PT_INVERSE_VALUE` / `TPL_INVERSE_VALUE_DIRECT` | H1-RPM-255 | PAIR_REVIEW · DIRECT_ACTIVE |
+| 13 | `PT_FUNCTION_RECOVERY` / `TPL_FUNCTION_FORM_FROM_GRAPH` | H1-RPM-263 | PAIR_REVIEW · DIRECT_ACTIVE |
+| 14 | `PT_FUNCTION_GRAPH_QUADRANT` / `TPL_FUNCTION_QUADRANT_PARAMETER` | H1-RPM-262 | PAIR_REVIEW · DIRECT_ACTIVE |
+| 15 | `PT_INVERSE_GRAPH` / `TPL_INVERSE_GRAPH_INTERSECTION` | H1-RPM-256 | PAIR_REVIEW · DIRECT_ACTIVE |
+| 16 | `PT_CONTRADICTION_PROOF` / `TPL_DIVISIBILITY_PARITY_CONTRADICTION` | H1-RPM-249 | PAIR_MATCH · FAMILY_ACTIVE |
+| 17 | `PT_FUNCTION_GRAPH_INTERSECTION` / `TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS` | H1-RPM-272 | PAIR_MATCH · DIRECT_ACTIVE |
+| 18 | `PT_FUNCTION_GRAPH_INTERSECTION` / `TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS` | H1-RPM-265 | PAIR_MATCH · DIRECT_BINDING_GAP |
+| 19 | — | H1-RPM-264 | PROJECTION_UNMATERIALIZED · RPM_ONLY |
+| 20 | `PT_LOGIC_CHAIN` / `TPL_LOGIC_CONSTRAINT_PUZZLE` | — | NO_EXACT_ROW |
+| 21 | `PT_FINITE_BIJECTION` / `TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION` | H1-RPM-254 | PAIR_REVIEW · DIRECT_ACTIVE |
+| 22 | `PT_COMPOSITION_PROPERTIES` / `TPL_COMPOSITION_RELATION_CONDITION` | H1-RPM-254 | PAIR_MATCH · DIRECT_ACTIVE |
+| 23 | `PT_FUNCTION_GRAPH_INTERSECTION` / `TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS` | H1-RPM-272 | PAIR_MATCH · DIRECT_ACTIVE |
+
+- 이 실행 환경에는 repository checkout/실행 가능한 worktree가 없어 `rpm-active-resolver.mjs`와 resolver receipt validator는 실행하지 않았다. 따라서 resolver receipt와 runtime parity는 PASS로 주장하지 않는다. PAIR_REVIEW 10문항, NO_EXACT_ROW 3문항, q19 projection gap 1문항이 남았다.
+- 정적 재확인: JS의 questionBank 파싱 성공, q1–q23 UID 연속·23개, PT/TPL 22쌍 완전쌍, q19만 키 없음, 각 문항 conceptClusterKey 1개. SVG 파일 변경 0개(이번 메타 보정분).
+- 이번 조정은 branch source/report 수정이다. main merge, 배포, DB 변경은 없고 Chrome 실렌더도 하지 않았다.
