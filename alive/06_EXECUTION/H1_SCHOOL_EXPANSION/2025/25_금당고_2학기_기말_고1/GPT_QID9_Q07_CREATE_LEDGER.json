@@ -4,8 +4,8 @@
   "sourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
   "lockedPrimaryL3": "H1-RPM-253",
   "candidateCount": 9,
-  "keep": 9,
-  "revised": 0,
+  "keep": 6,
+  "revised": 3,
   "hold": 0,
   "answerDistribution": {
     "①": 1,
@@ -120,11 +120,15 @@
         },
         {
           "choice": "⑤",
-          "errorPath": "$(-1)^2$을 $\\dfrac52$로 오산하여 5"
+          "errorPath": "g(f(3))=2를 구하고 원래의 입력 3을 잘못 추가하여 2+3=5로 계산"
         }
       ],
-      "decision": "KEEP",
-      "remainingRisk": "독립검수/Chrome 시험지·해설지·답표 렌더 미완료"
+      "decision": "REVISED",
+      "remainingRisk": "독립검수/Chrome 시험지·해설지·답표 렌더 미완료",
+      "affectedFields": [
+        "distractorPaths"
+      ],
+      "changedMathRecheck": "발문·5보기·정답·해설 및 생성 JS 불변, 오답 실제 계산 경로만 정정"
     },
     {
       "slot": "B1",
@@ -172,11 +176,15 @@
         },
         {
           "choice": "⑤",
-          "errorPath": "음의 부호를 잃고 합을 양수 3으로 오산"
+          "errorPath": "두 근 중 a=-3의 음의 부호를 지우고 3만 답으로 선택"
         }
       ],
-      "decision": "KEEP",
-      "remainingRisk": "독립검수/Chrome 시험지·해설지·답표 렌더 미완료"
+      "decision": "REVISED",
+      "remainingRisk": "독립검수/Chrome 시험지·해설지·답표 렌더 미완료",
+      "affectedFields": [
+        "distractorPaths"
+      ],
+      "changedMathRecheck": "발문·5보기·정답·해설 및 생성 JS 불변, 오답 실제 계산 경로만 정정"
     },
     {
       "slot": "B3",
@@ -194,15 +202,19 @@
         },
         {
           "choice": "④",
-          "errorPath": "중간에 $f(2)=5$로 합성 순서 오인하여 3으로 계산"
+          "errorPath": "마지막 함수 g(x)=x−1을 x+1로 잘못 적용하여 g(2)=2+1=3으로 계산"
         },
         {
           "choice": "⑤",
-          "errorPath": "마지막 $g$의 1 빼기를 생략하고 4로 계산"
+          "errorPath": "중간 f(1)=2에서 불필요하게 한 번 더 제곱하고 마지막 합성을 누락하여 2²=4로 계산"
         }
       ],
-      "decision": "KEEP",
-      "remainingRisk": "독립검수/Chrome 시험지·해설지·답표 렌더 미완료"
+      "decision": "REVISED",
+      "remainingRisk": "독립검수/Chrome 시험지·해설지·답표 렌더 미완료",
+      "affectedFields": [
+        "distractorPaths"
+      ],
+      "changedMathRecheck": "발문·5보기·정답·해설 및 생성 JS 불변, 오답 실제 계산 경로만 정정"
     },
     {
       "slot": "C1",
