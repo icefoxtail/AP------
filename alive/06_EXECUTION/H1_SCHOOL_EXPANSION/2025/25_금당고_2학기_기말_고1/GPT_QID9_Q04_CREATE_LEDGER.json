@@ -4,21 +4,27 @@
   "sourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
   "branch": "work/alive-25-geumdang-h1-2final-qid9",
   "candidateCount": 9,
-  "keep": 9,
-  "revised": 0,
+  "keep": 6,
+  "revised": 3,
   "hold": 0,
   "formalIndependentGptReviewPerformed": false,
   "sourcePdfCompared": false,
   "studentChromeVerified": false,
   "printedSolutionRendered": false,
-  "qualityStatus": "CREATE_DRAFT_SELF_CHECKED",
+  "qualityStatus": "CREATE_DRAFT_SELF_CHECKED_WITH_TARGETED_REVISION",
   "releaseStatus": "BRANCH_ONLY_UNRELEASED",
   "originalPrimaryL3": "H1-RPM-244",
   "originalStem": "명제 p→q가 거짓일 때 반드시 거짓인 명제",
   "visual": {
-    "problemVisual": "NO_VISUAL",
-    "solutionVisual": "EXEMPT_LOGIC_TEXT_PROOF_SUFFICIENT",
-    "rationale": "진리값·반례·논리식의 직접 서술이 핵심이며 별도 기하 SVG에 교육적 사실 추가 없음"
+    "problemVisual": "NO_VISUAL_ALL_NINE",
+    "solutionVisual": {
+      "C3": "ADD_TRUTH_TABLE_SVG_CANDIDATE",
+      "others": "EXEMPT_DIRECT_LOGIC"
+    },
+    "rationale": "C3의 여덟 진리값 경우를 실제 표로 비교해 여섯 경우를 빠짐없이 보여준다. 다른 8문항은 직접 진리값 풀이로 결정 관계가 충분히 표현됨.",
+    "svgPath": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q04-C3-solution.svg",
+    "truthTableVerified": "8_ASSIGNMENTS_6_MATCH",
+    "browserRender": "NOT_TESTED"
   },
   "mathChecks": {
     "A1": "p=T,q=F, only ② true",
@@ -29,7 +35,7 @@
     "B3": "p=r=T,q=F, only ④ false",
     "C1": "x={-2,-1} sum=-3",
     "C2": "x={-2,-1} count=2",
-    "C3": "2^3−2=6"
+    "C3": "8 complete assignments; two equal-truth cases give 0 false, six others exactly 1 false"
   },
   "rows": [
     {
@@ -87,18 +93,21 @@
       "uid": "ALITE-GEUMDANG25-2FINAL-Q04-B1",
       "slot": "B1",
       "originalStemOrIssue": "명제 $p\\to q$가 거짓이다. 다음 다섯 명제 $p\\to q$, $q\\to p$, $\\sim p\\to q$, $\\sim q\\to\\sim p$, $p\\leftrightarrow q$ 중 참인 명제의 개수는?",
-      "reverseReadingFinding": "학생 발문만 보고 참/거짓 조건, 질문 방향, 전제·결론 분기와 선택지 유일성 재확인",
-      "decision": "KEEP",
+      "reverseReadingFinding": "학생 발문만 보고 참/거짓 조건, 질문 방향, 전제·결론 분기와 선택지 유일성 재확인 오답값별 재현 근거를 정정하고 변경 영향만 재검함.",
+      "decision": "REVISED",
       "finalStem": "명제 $p\\to q$가 거짓이다. 다음 다섯 명제 $p\\to q$, $q\\to p$, $\\sim p\\to q$, $\\sim q\\to\\sim p$, $p\\leftrightarrow q$ 중 참인 명제의 개수는?",
-      "affectedFields": [],
+      "affectedFields": [
+        "distractorPaths"
+      ],
       "distractorPaths": {
         "①": "조건명제 전부 거짓으로 계산하여 0",
         "②": "q→p만 참이라고 보고 1",
         "④": "p↔q도 참이라고 착각하여 3",
-        "⑤": "거짓 전제인 두 명제에 p↔q까지 참으로 계산하여 4"
+        "⑤": "첫 번째 $p\\to q$만 거짓이고 나머지 $q\\to p$, $\\sim p\\to q$, $\\sim q\\to\\sim p$, $p\\leftrightarrow q$는 모두 참이라고 오인하여 4개로 계산한다."
       },
       "check": "4/4",
-      "remainingRisk": "Separate GPT open-book quality review and real Chrome output not performed"
+      "remainingRisk": "Separate GPT open-book quality review and real Chrome output not performed",
+      "changedMathRecheck": "원문 발문/답/보기 유지, 오답 오개념과 실제 선택지 값 간 대응 정정"
     },
     {
       "uid": "ALITE-GEUMDANG25-2FINAL-Q04-B2",
@@ -138,18 +147,21 @@
       "uid": "ALITE-GEUMDANG25-2FINAL-Q04-C1",
       "slot": "C1",
       "originalStemOrIssue": "실수 $x$가 집합 $\\{-2,-1,0,1,2\\}$의 원소일 때, 명제 '$x^2>0$이면 $x>0$이다.'가 거짓이 되도록 하는 모든 $x$의 값의 합은?",
-      "reverseReadingFinding": "학생 발문만 보고 참/거짓 조건, 질문 방향, 전제·결론 분기와 선택지 유일성 재확인",
-      "decision": "KEEP",
+      "reverseReadingFinding": "학생 발문만 보고 참/거짓 조건, 질문 방향, 전제·결론 분기와 선택지 유일성 재확인 오답값별 재현 근거를 정정하고 변경 영향만 재검함.",
+      "decision": "REVISED",
       "finalStem": "실수 $x$가 집합 $\\{-2,-1,0,1,2\\}$의 원소일 때, 명제 '$x^2>0$이면 $x>0$이다.'가 거짓이 되도록 하는 모든 $x$의 값의 합은?",
-      "affectedFields": [],
+      "affectedFields": [
+        "distractorPaths"
+      ],
       "distractorPaths": {
         "①": "-1만 반례로 세어 -1",
         "②": "-2만 반례로 세어 -2",
-        "④": "0도 반례로 더했지만 합을 0이라고 잘못 계산",
+        "④": "전건 $x^2>0$만 보고 후건 $x>0$을 무시해 $-2,-1,1,2$를 모두 반례로 골라 합 $-2-1+1+2=0$을 얻는다.",
         "⑤": "양수 1,2를 반례로 택해 합 3"
       },
       "check": "4/4",
-      "remainingRisk": "Separate GPT open-book quality review and real Chrome output not performed"
+      "remainingRisk": "Separate GPT open-book quality review and real Chrome output not performed",
+      "changedMathRecheck": "원문 발문/답/보기 유지, 오답 오개념과 실제 선택지 값 간 대응 정정"
     },
     {
       "uid": "ALITE-GEUMDANG25-2FINAL-Q04-C2",
@@ -172,18 +184,26 @@
       "uid": "ALITE-GEUMDANG25-2FINAL-Q04-C3",
       "slot": "C3",
       "originalStemOrIssue": "각각 참 또는 거짓인 명제 $p,q,r$에 대하여 세 명제 $p\\to q$, $q\\to r$, $r\\to p$ 중 정확히 하나만 거짓이 되는 $(p,q,r)$의 진리값 배정의 개수는?",
-      "reverseReadingFinding": "학생 발문만 보고 참/거짓 조건, 질문 방향, 전제·결론 분기와 선택지 유일성 재확인",
-      "decision": "KEEP",
+      "reverseReadingFinding": "학생 발문만 보고 참/거짓 조건, 질문 방향, 전제·결론 분기와 선택지 유일성 재확인 오답값별 재현 근거를 정정하고 변경 영향만 재검함.",
+      "decision": "REVISED",
       "finalStem": "각각 참 또는 거짓인 명제 $p,q,r$에 대하여 세 명제 $p\\to q$, $q\\to r$, $r\\to p$ 중 정확히 하나만 거짓이 되는 $(p,q,r)$의 진리값 배정의 개수는?",
-      "affectedFields": [],
+      "affectedFields": [
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "tags",
+        "visual ledger",
+        "distractorPaths"
+      ],
       "distractorPaths": {
-        "①": "p→q 한 곳만 고려해 q와 r 두 경우를 세어 2",
-        "②": "참인 명제의 위치 3곳만 세고 나머지 진리값의 경우를 놓침",
-        "③": "8개에서 근거 없이 4개를 제외",
-        "④": "전체 8개에서 3개만 제외해 5"
+        "①": "세 조건명제가 모두 참인 (거짓,거짓,거짓)과 (참,참,참)만 세어 2개로 계산한다.",
+        "②": "어느 조건명제가 거짓인지 위치 세 가지로만 세고 각 위치의 두 진리값 조합을 빠뜨려 3개로 계산한다.",
+        "③": "교대 진리값 (거짓,참,거짓), (참,거짓,참)을 잘못 제외하여 실제 6개에서 두 개를 빼 4개로 계산한다.",
+        "④": "(거짓,거짓,참)에서 $r\\to p$가 거짓인 것을 놓쳐 실제 6개에서 한 개를 빼 5개로 계산한다."
       },
       "check": "4/4",
-      "remainingRisk": "Separate GPT open-book quality review and real Chrome output not performed"
+      "remainingRisk": "Separate GPT open-book quality review and real Chrome output not performed",
+      "changedMathRecheck": "8개 전체 진리값 배정에서 거짓 0개 2건/거짓 1개 6건을 fresh enumeration 검증"
     }
   ]
 }
