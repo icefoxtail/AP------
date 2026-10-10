@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "ALIVE_QID9_GEUMDANG25_Q02_SELF_REVIEW_LEDGER_V1",
+  "sourceQid": 2,
+  "sourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "branch": "work/alive-25-geumdang-h1-2final-qid9",
+  "candidateCount": 9,
+  "keep": 9,
+  "revised": 0,
+  "hold": 0,
+  "qualityAuthority": "USER_DIRECTED_ACTION_SCOPED_FROM_Q01_QID9_SPECIAL_INSTRUCTION",
+  "formalIndependentGptReviewPerformed": false,
+  "printedPdfOrPageChecked": false,
+  "printedPdfStatus": "NOT_AVAILABLE",
+  "status": "CREATE_CANDIDATES_WITH_USER_DIRECTED_REVIEW_TECHNICAL_RELEASE_PENDING",
+  "mathVerifications": {
+    "A1": "A={1,3,5,7}, non-member 6",
+    "A2": "A={3,6,9,12}",
+    "A3": "only choice ③ is true",
+    "B1": "k=[2,3,4] sum=9",
+    "B2": "k=[2,4] sum=6",
+    "B3": "truth values [false,false,true,false,false]",
+    "C1": "k=[3,5] sum=8",
+    "C2": "k=[0,1,2,3,5,6] sum=17",
+    "C3": "k=[2,3] sum=5"
+  },
+  "visual": {
+    "C2": {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q02-C2-solution.svg",
+      "gitBlobSha": "cb10c4c01133f74e00be64824e9a19894e282023",
+      "sha256": "b49f1a26f26c1cae808381daab43869c721f7ab0a1de8ba93a6b1938e87834e4",
+      "expected": "가능한 정수 k=0,1,2,3,5,6, 합17"
+    },
+    "C3": {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q02-C3-solution.svg",
+      "gitBlobSha": "5ccfee84b0bff89328e178502b4c9259aeff8e7e",
+      "sha256": "2f17ae9f2206e77742da492882a108518b49aee51216439f7a0e7f7c1dad2b35",
+      "expected": "A∩B={6,12,18}; C2=A,C3=B"
+    }
+  },
+  "rows": [
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-A1",
+      "slot": "A1",
+      "distractorPaths": {
+        "①": "공집합은 부분집합이 아니라는 오개념",
+        "②": "원소 수가 달라서 부분집합이 아니라는 오개념",
+        "③": "원소 3개인 집합이 부분집합일 수 없다는 오개념",
+        "⑤": "A 자체가 A의 부분집합이 아니라는 오개념"
+      },
+      "check": "4/4",
+      "reverseStem": "문제 자료·묻는 집합의 포함 방향·오답 도출 경로를 학생 최종 발문만으로 재해석",
+      "decision": "KEEP"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-A2",
+      "slot": "A2",
+      "distractorPaths": {
+        "①": "0을 자연수이자 3의 배수로 간주",
+        "③": "8이 3의 배수라고 착각",
+        "④": "2가 3의 배수라고 착각",
+        "⑤": "15가 12 이하라고 조건 누락"
+      },
+      "check": "4/4",
+      "reverseStem": "문제 자료·묻는 집합의 포함 방향·오답 도출 경로를 학생 최종 발문만으로 재해석",
+      "decision": "KEEP"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-A3",
+      "slot": "A3",
+      "distractorPaths": {
+        "①": "공집합은 부분집합이 아니라고 착각",
+        "②": "진부분집합과 부분집합을 동일시",
+        "④": "4가 A의 원소라고 착각",
+        "⑤": "집합 포함 방향을 반대로 읽음"
+      },
+      "check": "4/4",
+      "reverseStem": "문제 자료·묻는 집합의 포함 방향·오답 도출 경로를 학생 최종 발문만으로 재해석",
+      "decision": "KEEP"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-B1",
+      "slot": "B1",
+      "distractorPaths": {
+        "①": "k=2,3만 포함, 합5",
+        "②": "k=2,4만 포함, 합6",
+        "③": "k=3,4만 포함, 합7",
+        "⑤": "상한을 k≤5로 잘못 읽어 2+3+4+5=14"
+      },
+      "check": "4/4",
+      "reverseStem": "문제 자료·묻는 집합의 포함 방향·오답 도출 경로를 학생 최종 발문만으로 재해석",
+      "decision": "KEEP"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-B2",
+      "slot": "B2",
+      "distractorPaths": {
+        "①": "k=2만 세어 합2",
+        "②": "k=4만 세어 합4",
+        "④": "교집합 2원소인 k=3을 포함해 2+3+4=9",
+        "⑤": "교집합 한 원소 조건을 빼 2+3+4+5=14"
+      },
+      "check": "4/4",
+      "reverseStem": "문제 자료·묻는 집합의 포함 방향·오답 도출 경로를 학생 최종 발문만으로 재해석",
+      "decision": "KEEP"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-B3",
+      "slot": "B3",
+      "distractorPaths": {
+        "①": "A\\B의 원소5를 C에도 속한다고 오판",
+        "②": "B∩C의 2를 A\\B에도 속한다고 오판",
+        "④": "C의 2가 A\\B에 없다는 사실 무시",
+        "⑤": "A\\C의 5를 B 원소로 오판"
+      },
+      "check": "4/4",
+      "reverseStem": "문제 자료·묻는 집합의 포함 방향·오답 도출 경로를 학생 최종 발문만으로 재해석",
+      "decision": "KEEP"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-C1",
+      "slot": "C1",
+      "distractorPaths": {
+        "①": "k3만 유효해 합3",
+        "②": "k5만 유효해 합5",
+        "③": "k3,4를 유효로 오인해 합7",
+        "⑤": "B_k⊄C를 무시해 3+4+5=12"
+      },
+      "check": "4/4",
+      "reverseStem": "문제 자료·묻는 집합의 포함 방향·오답 도출 경로를 학생 최종 발문만으로 재해석",
+      "decision": "KEEP"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-C2",
+      "slot": "C2",
+      "distractorPaths": {
+        "①": "k=6을 포함하지 않아 합11",
+        "②": "k2도 부당하게 제외해 합15",
+        "④": "제외할 4 대신 1을 빼 합20",
+        "⑤": "모든 k0..6를 포함해 합21"
+      },
+      "check": "4/4",
+      "reverseStem": "문제 자료·묻는 집합의 포함 방향·오답 도출 경로를 학생 최종 발문만으로 재해석",
+      "decision": "KEEP"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-C3",
+      "slot": "C3",
+      "distractorPaths": {
+        "①": "k=2만 유효라고 오판",
+        "②": "k=3만 유효라고 오판",
+        "④": "k=6에서 진부분집합을 보통 부분집합으로 혼동",
+        "⑤": "k=1,2,3,6 모두 포함해 합12"
+      },
+      "check": "4/4",
+      "reverseStem": "문제 자료·묻는 집합의 포함 방향·오답 도출 경로를 학생 최종 발문만으로 재해석",
+      "decision": "KEEP"
+    }
+  ]
+}
