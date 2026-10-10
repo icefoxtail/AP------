@@ -1,0 +1,470 @@
+{
+  "schemaVersion": "ALIVE_QID9_GEUMDANG25_Q12_CREATOR_SELF_REVIEW_V1",
+  "sourceQid": 12,
+  "sourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "createdCandidateSourceBlobSha": "1145d2a918b1729c02935fb2106d508953d021f0",
+  "lockedPrimaryL3": "H1-RPM-245",
+  "candidateCount": 9,
+  "keep": 9,
+  "revised": 0,
+  "hold": 0,
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 2,
+    "④": 2,
+    "⑤": 1
+  },
+  "status": "CREATOR_SELF_RECHECK_COMPLETE_NOT_INDEPENDENT",
+  "formalIndependentGptReviewPerformed": false,
+  "realChromeRender": "NOT_TESTED",
+  "generatedConsumerReleasedCount": 0,
+  "readerDocs": {
+    "qId9Policy": "alive/06_EXECUTION/ALIVE_GPT_QID9_ONE_SOURCE_CURRENT.md",
+    "visualPolicy": ".codex/skills/apmath-visual-upgrade/SKILL.md",
+    "gptVisualContract": "docs/rules/04_VISUAL/JS_Archive_GPT_Visual_Production_Contract_v1.md",
+    "visualPolicyBlobSha": "43c2f3f4d3d8602afe8b26675ea2ae309101d6f9",
+    "gptVisualContractBlobSha": "87929597314d32950a391af3acdaf99699bb0bd3",
+    "rendererSourceSha": "6221c4da203135c6358c3ed3a6d243103eba29b3",
+    "rendererActualExecution": "NOT_RUN",
+    "pythonNumericVerification": "Python independent test: 6 real thresholds, B1 integer max=12, C2 lattice [(1,4,22),(2,3,19),(3,2,16)], C3 sup14",
+    "coordinateModel": "pixelX=300+42*x; pixelY=250-42*y",
+    "browserRender": "NOT_TESTED"
+  },
+  "rows": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q12-A1",
+      "finalCandidateSourceBlobSha": "1145d2a918b1729c02935fb2106d508953d021f0",
+      "finalCorrectValue": 14,
+      "finalAnswer": "④",
+      "reverseStemFinding": "최종 발문에서 거짓인 결론의 조건→전제 일차식의 날카로운 상계/실제 최대→k의 최솟값을 복원했다",
+      "primaryL3Necessity": "대우에 해당하는 결론 부정이 없으면 최솟값의 충분성/최소성 논증을 완결할 수 없음",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "wrongCalculation": "2(1)+3(2)=8: y 경계 4를 2로 오독"
+        },
+        {
+          "choice": "②",
+          "wrongCalculation": "2(1)+3(3)=11: 실수 y<4를 정수처럼 y≤3으로 처리"
+        },
+        {
+          "choice": "③",
+          "wrongCalculation": "2(0)+3(4)=12: 실수 x<1을 x≤0으로 처리"
+        },
+        {
+          "choice": "⑤",
+          "wrongCalculation": "2(1)+3(5)=17: y 경계 4를 5로 오독"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 필요한 모든 수학 조건은 학생 발문에 명시됨",
+      "solutionVisualVerdict": "EXEMPT: 식만으로도 결정 단계가 짧고 복제 그림은 장식적",
+      "solutionAsset": null,
+      "svgBlobSha": null,
+      "visualExpectedFacts": null,
+      "visualActualPrimitiveParity": "STATIC_COORDINATES_LISTED_BUT_NOT_INDEPENDENT_GEOMETRY_PASS",
+      "visualActualChrome": "NOT_TESTED",
+      "changedFields": [],
+      "priorEvidenceStale": false,
+      "decision": "KEEP",
+      "remainingRisk": "별도 GPT 공개답 검수 및 실제 해설 렌더 미실시"
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q12-A2",
+      "finalCandidateSourceBlobSha": "1145d2a918b1729c02935fb2106d508953d021f0",
+      "finalCorrectValue": 10,
+      "finalAnswer": "①",
+      "reverseStemFinding": "최종 발문에서 거짓인 결론의 조건→전제 일차식의 날카로운 상계/실제 최대→k의 최솟값을 복원했다",
+      "primaryL3Necessity": "대우에 해당하는 결론 부정이 없으면 최솟값의 충분성/최소성 논증을 완결할 수 없음",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "②",
+          "wrongCalculation": "3(2)=6: 4y 항을 빼먹음"
+        },
+        {
+          "choice": "③",
+          "wrongCalculation": "3(1)+4(1)=7: 실수 x<2를 정수 x≤1로 바꿈"
+        },
+        {
+          "choice": "④",
+          "wrongCalculation": "3(0)+4(2)=8: x=0으로 고정하고 y 경계 1을 2로 오독"
+        },
+        {
+          "choice": "⑤",
+          "wrongCalculation": "3(3)+4(1)=13: x 경계 2를 3으로 오독"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 필요한 모든 수학 조건은 학생 발문에 명시됨",
+      "solutionVisualVerdict": "EXEMPT: 식만으로도 결정 단계가 짧고 복제 그림은 장식적",
+      "solutionAsset": null,
+      "svgBlobSha": null,
+      "visualExpectedFacts": null,
+      "visualActualPrimitiveParity": "STATIC_COORDINATES_LISTED_BUT_NOT_INDEPENDENT_GEOMETRY_PASS",
+      "visualActualChrome": "NOT_TESTED",
+      "changedFields": [],
+      "priorEvidenceStale": false,
+      "decision": "KEEP",
+      "remainingRisk": "별도 GPT 공개답 검수 및 실제 해설 렌더 미실시"
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q12-A3",
+      "finalCandidateSourceBlobSha": "1145d2a918b1729c02935fb2106d508953d021f0",
+      "finalCorrectValue": 3,
+      "finalAnswer": "③",
+      "reverseStemFinding": "최종 발문에서 거짓인 결론의 조건→전제 일차식의 날카로운 상계/실제 최대→k의 최솟값을 복원했다",
+      "primaryL3Necessity": "대우에 해당하는 결론 부정이 없으면 최솟값의 충분성/최소성 논증을 완결할 수 없음",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "wrongCalculation": "5(-1)=-5: 2y 항 누락"
+        },
+        {
+          "choice": "②",
+          "wrongCalculation": "5(-1)+2(3)=1: y<4를 y≤3인 정수조건으로 오인"
+        },
+        {
+          "choice": "④",
+          "wrongCalculation": "5(-1)+2(5)=5: y 경계 4를 5로 오독"
+        },
+        {
+          "choice": "⑤",
+          "wrongCalculation": "2(4)=8: x 항의 음수 기여 누락"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 필요한 모든 수학 조건은 학생 발문에 명시됨",
+      "solutionVisualVerdict": "EXEMPT: 식만으로도 결정 단계가 짧고 복제 그림은 장식적",
+      "solutionAsset": null,
+      "svgBlobSha": null,
+      "visualExpectedFacts": null,
+      "visualActualPrimitiveParity": "STATIC_COORDINATES_LISTED_BUT_NOT_INDEPENDENT_GEOMETRY_PASS",
+      "visualActualChrome": "NOT_TESTED",
+      "changedFields": [],
+      "priorEvidenceStale": false,
+      "decision": "KEEP",
+      "remainingRisk": "별도 GPT 공개답 검수 및 실제 해설 렌더 미실시"
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q12-B1",
+      "finalCandidateSourceBlobSha": "1145d2a918b1729c02935fb2106d508953d021f0",
+      "finalCorrectValue": 13,
+      "finalAnswer": "②",
+      "reverseStemFinding": "최종 발문에서 거짓인 결론의 조건→전제 일차식의 날카로운 상계/실제 최대→k의 최솟값을 복원했다",
+      "primaryL3Necessity": "대우에 해당하는 결론 부정이 없으면 최솟값의 충분성/최소성 논증을 완결할 수 없음",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "wrongCalculation": "3(2)+2(3)=12: 실제 반례 (2,3)가 있는 최대값에서 1을 더하지 않음"
+        },
+        {
+          "choice": "③",
+          "wrongCalculation": "3(2)+2(4)=14: 결론 거짓인 y<4를 y≤4로 바꿈"
+        },
+        {
+          "choice": "④",
+          "wrongCalculation": "3(3)+2(3)=15: 결론 거짓인 x<3을 x≤3으로 바꿈"
+        },
+        {
+          "choice": "⑤",
+          "wrongCalculation": "3(3)+2(4)=17: 두 경계를 모두 포함시켜 잘못 계산"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 필요한 모든 수학 조건은 학생 발문에 명시됨",
+      "solutionVisualVerdict": "EXEMPT: 식만으로도 결정 단계가 짧고 복제 그림은 장식적",
+      "solutionAsset": null,
+      "svgBlobSha": null,
+      "visualExpectedFacts": null,
+      "visualActualPrimitiveParity": "STATIC_COORDINATES_LISTED_BUT_NOT_INDEPENDENT_GEOMETRY_PASS",
+      "visualActualChrome": "NOT_TESTED",
+      "changedFields": [],
+      "priorEvidenceStale": false,
+      "decision": "KEEP",
+      "remainingRisk": "별도 GPT 공개답 검수 및 실제 해설 렌더 미실시"
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q12-B2",
+      "finalCandidateSourceBlobSha": "1145d2a918b1729c02935fb2106d508953d021f0",
+      "finalCorrectValue": 10,
+      "finalAnswer": "①",
+      "reverseStemFinding": "최종 발문에서 거짓인 결론의 조건→전제 일차식의 날카로운 상계/실제 최대→k의 최솟값을 복원했다",
+      "primaryL3Necessity": "대우에 해당하는 결론 부정이 없으면 최솟값의 충분성/최소성 논증을 완결할 수 없음",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "②",
+          "wrongCalculation": "4(2)-2(1)=6: y≤-1의 기준 -1을 1로 오독"
+        },
+        {
+          "choice": "③",
+          "wrongCalculation": "4(2)=8: -2y 항 누락"
+        },
+        {
+          "choice": "④",
+          "wrongCalculation": "4(2)-2(-2)=12: y>-1 대신 y>-2로 경계 설정"
+        },
+        {
+          "choice": "⑤",
+          "wrongCalculation": "4(3)-2(-1)=14: x<2 대신 x<3을 사용"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 필요한 모든 수학 조건은 학생 발문에 명시됨",
+      "solutionVisualVerdict": "ADD_SVG: 거짓 결론의 경계 포함 여부·극한 접근을 그림으로 학습",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q12-B2-solution.svg",
+      "svgBlobSha": "40e24407d186867fc9ab545bad94ae02250cdcb7",
+      "visualExpectedFacts": {
+        "falseRegion": "x<2,y>-1",
+        "corner": [
+          384,
+          292
+        ],
+        "mathPoint": [
+          2,
+          -1
+        ],
+        "limit": 10
+      },
+      "visualActualPrimitiveParity": "STATIC_COORDINATES_LISTED_BUT_NOT_INDEPENDENT_GEOMETRY_PASS",
+      "visualActualChrome": "NOT_TESTED",
+      "changedFields": [],
+      "priorEvidenceStale": false,
+      "decision": "KEEP",
+      "remainingRisk": "별도 GPT 공개답 검수 및 실제 해설 렌더 미실시"
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q12-B3",
+      "finalCandidateSourceBlobSha": "1145d2a918b1729c02935fb2106d508953d021f0",
+      "finalCorrectValue": 20,
+      "finalAnswer": "⑤",
+      "reverseStemFinding": "최종 발문에서 거짓인 결론의 조건→전제 일차식의 날카로운 상계/실제 최대→k의 최솟값을 복원했다",
+      "primaryL3Necessity": "대우에 해당하는 결론 부정이 없으면 최솟값의 충분성/최소성 논증을 완결할 수 없음",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "wrongCalculation": "2+3(4)=14: 2y 항 누락"
+        },
+        {
+          "choice": "②",
+          "wrongCalculation": "2+2(3)+3(3)=17: 실수 z<4를 정수 z≤3으로 취급"
+        },
+        {
+          "choice": "③",
+          "wrongCalculation": "2+2(3)+3(5)=23: z 경계 4를 5로 오독"
+        },
+        {
+          "choice": "④",
+          "wrongCalculation": "3+2(3)+3(4)=21: x 경계 2를 3으로 오독"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 필요한 모든 수학 조건은 학생 발문에 명시됨",
+      "solutionVisualVerdict": "EXEMPT: 식만으로도 결정 단계가 짧고 복제 그림은 장식적",
+      "solutionAsset": null,
+      "svgBlobSha": null,
+      "visualExpectedFacts": null,
+      "visualActualPrimitiveParity": "STATIC_COORDINATES_LISTED_BUT_NOT_INDEPENDENT_GEOMETRY_PASS",
+      "visualActualChrome": "NOT_TESTED",
+      "changedFields": [],
+      "priorEvidenceStale": false,
+      "decision": "KEEP",
+      "remainingRisk": "별도 GPT 공개답 검수 및 실제 해설 렌더 미실시"
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q12-C1",
+      "finalCandidateSourceBlobSha": "1145d2a918b1729c02935fb2106d508953d021f0",
+      "finalCorrectValue": 12,
+      "finalAnswer": "④",
+      "reverseStemFinding": "최종 발문에서 거짓인 결론의 조건→전제 일차식의 날카로운 상계/실제 최대→k의 최솟값을 복원했다",
+      "primaryL3Necessity": "대우에 해당하는 결론 부정이 없으면 최솟값의 충분성/최소성 논증을 완결할 수 없음",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "wrongCalculation": "3(2)=6: y 항 누락"
+        },
+        {
+          "choice": "②",
+          "wrongCalculation": "3(1)+2(3)=9: 실수 |x|<2를 정수 x≤1로 오인"
+        },
+        {
+          "choice": "③",
+          "wrongCalculation": "3(2)+2(2)=10: 실수 |y|<3을 정수 y≤2로 오인"
+        },
+        {
+          "choice": "⑤",
+          "wrongCalculation": "3(2)+2(4)=14: |y|<3의 상한을 4로 오독"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 필요한 모든 수학 조건은 학생 발문에 명시됨",
+      "solutionVisualVerdict": "ADD_SVG: 거짓 결론의 경계 포함 여부·극한 접근을 그림으로 학습",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q12-C1-solution.svg",
+      "svgBlobSha": "029a1a6f98310f4cdc873d05bc19997d95acdd8e",
+      "visualExpectedFacts": {
+        "falseRegion": "-2<x<2,-3<y<3",
+        "corner": [
+          384,
+          124
+        ],
+        "mathPoint": [
+          2,
+          3
+        ],
+        "limit": 12
+      },
+      "visualActualPrimitiveParity": "STATIC_COORDINATES_LISTED_BUT_NOT_INDEPENDENT_GEOMETRY_PASS",
+      "visualActualChrome": "NOT_TESTED",
+      "changedFields": [],
+      "priorEvidenceStale": false,
+      "decision": "KEEP",
+      "remainingRisk": "별도 GPT 공개답 검수 및 실제 해설 렌더 미실시"
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q12-C2",
+      "finalCandidateSourceBlobSha": "1145d2a918b1729c02935fb2106d508953d021f0",
+      "finalCorrectValue": 23,
+      "finalAnswer": "③",
+      "reverseStemFinding": "최종 발문에서 거짓인 결론의 조건→전제 일차식의 날카로운 상계/실제 최대→k의 최솟값을 복원했다",
+      "primaryL3Necessity": "대우에 해당하는 결론 부정이 없으면 최솟값의 충분성/최소성 논증을 완결할 수 없음",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "wrongCalculation": "2(3)+5(2)=16: 결론 거짓 후보 (3,2)의 값만 택하고 최대값을 무시"
+        },
+        {
+          "choice": "②",
+          "wrongCalculation": "2(2)+5(3)=19: 결론 거짓 후보 (2,3)의 값만 택하고 최대값을 무시"
+        },
+        {
+          "choice": "④",
+          "wrongCalculation": "2(1)+5(4)=22: 최대값이 실제 달성되므로 k는 그보다 커야 한다는 조건 누락"
+        },
+        {
+          "choice": "⑤",
+          "wrongCalculation": "2(0)+5(5)=25: y≥5로 결론이 참인 (0,5)를 반례 후보로 잘못 사용"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 필요한 모든 수학 조건은 학생 발문에 명시됨",
+      "solutionVisualVerdict": "ADD_SVG: 거짓 결론의 경계 포함 여부·극한 접근을 그림으로 학습",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q12-C2-solution.svg",
+      "svgBlobSha": "32bc5449f38d9f44477e9e6f150a42545d4f2d16",
+      "visualExpectedFacts": {
+        "allowedIntegerPoints": [
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            2
+          ]
+        ],
+        "screenPoints": [
+          [
+            342,
+            82
+          ],
+          [
+            384,
+            124
+          ],
+          [
+            426,
+            166
+          ]
+        ],
+        "max": 22
+      },
+      "visualActualPrimitiveParity": "STATIC_COORDINATES_LISTED_BUT_NOT_INDEPENDENT_GEOMETRY_PASS",
+      "visualActualChrome": "NOT_TESTED",
+      "changedFields": [],
+      "priorEvidenceStale": false,
+      "decision": "KEEP",
+      "remainingRisk": "별도 GPT 공개답 검수 및 실제 해설 렌더 미실시"
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q12-C3",
+      "finalCandidateSourceBlobSha": "1145d2a918b1729c02935fb2106d508953d021f0",
+      "finalCorrectValue": 14,
+      "finalAnswer": "②",
+      "reverseStemFinding": "최종 발문에서 거짓인 결론의 조건→전제 일차식의 날카로운 상계/실제 최대→k의 최솟값을 복원했다",
+      "primaryL3Necessity": "대우에 해당하는 결론 부정이 없으면 최솟값의 충분성/최소성 논증을 완결할 수 없음",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "wrongCalculation": "2(3)+3(2)=12: 결론 x≥2가 이미 참인 (3,2) 사용"
+        },
+        {
+          "choice": "③",
+          "wrongCalculation": "2(2)+3(3)=13: 결론 x≥2가 참인 끝점 (2,3) 사용"
+        },
+        {
+          "choice": "④",
+          "wrongCalculation": "15-x에서 x>1 조건 누락해 상한을 15로 판정"
+        },
+        {
+          "choice": "⑤",
+          "wrongCalculation": "2(-1)+3(6)=16: y≥4가 참인 (-1,6)을 반례로 사용"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 필요한 모든 수학 조건은 학생 발문에 명시됨",
+      "solutionVisualVerdict": "ADD_SVG: 거짓 결론의 경계 포함 여부·극한 접근을 그림으로 학습",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q12-C3-solution.svg",
+      "svgBlobSha": "3e4bdb32cc8eeefb85109671e9150e4c82fa03c5",
+      "visualExpectedFacts": {
+        "openEndpoints": [
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "screenPoints": [
+          [
+            342,
+            82
+          ],
+          [
+            384,
+            124
+          ]
+        ],
+        "supremum": 14
+      },
+      "visualActualPrimitiveParity": "STATIC_COORDINATES_LISTED_BUT_NOT_INDEPENDENT_GEOMETRY_PASS",
+      "visualActualChrome": "NOT_TESTED",
+      "changedFields": [],
+      "priorEvidenceStale": false,
+      "decision": "KEEP",
+      "remainingRisk": "별도 GPT 공개답 검수 및 실제 해설 렌더 미실시"
+    }
+  ]
+}
