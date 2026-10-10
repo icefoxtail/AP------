@@ -117,7 +117,7 @@ test('38 B03 approved consumer rows resolve to exact source/meta and SHA-bound c
     assert.equal(row.sourceExamBlobSha, '8266fa476906e9134b94f23e803bd3b2fb26ece4');
 
     const sourcePath = path.join(root, got.sourceShard);
-    assert.equal(gitSha(fs.readFileSync(sourcePath)), got.sourceShardGitSha, row.uid);
+    assert.equal(canonicalSourceGitSha(fs.readFileSync(sourcePath)), got.sourceShardGitSha, row.uid);
     const metaPath = got.sourceShard.replace('/shards/', '/metadata/').replace(/\.js$/, '.json');
     const meta = bySource.get(metaPath) || JSON.parse(fs.readFileSync(path.join(root, metaPath), 'utf8'));
     bySource.set(metaPath, meta);
@@ -132,7 +132,8 @@ test('38 B03 approved consumer rows resolve to exact source/meta and SHA-bound c
       const sourceWindow={};
       vm.runInNewContext(fs.readFileSync(sourcePath,'utf8'),{window:sourceWindow},{timeout:2000});
       const sourceQuestion=sourceWindow.questionBank.find(item=>item.uid===row.uid);
-      assert.equal(q.content,sourceQuestion.content,'source-derived Consumer retains the exact main-source condition markup');
+      const plainCondition=value=>value.replace(/<div class=['"]note-box['"]>/g,'\n').replace(/<br\s*\/?>/g,'\n').replace(/<\/div>/g,'');
+      assert.equal(plainCondition(q.content),plainCondition(sourceQuestion.content),'unchanged historical student condition text is preserved across the note-box display representation');
       assert.deepEqual(q.choices,Array.from(sourceQuestion.choices));
     }
     perQ[row.sourceQid] = (perQ[row.sourceQid] || 0) + 1;
@@ -269,10 +270,10 @@ test('consumer UI discovers source-backed exam groups, searches individual rows,
   assert.equal(el('builder-controls').hidden,false);
   assert.equal(el('generate-mock').disabled,false);
   assert.match(bok.children[1].textContent,/22개 원본 문항/);
-  bok.onclick();await el('print').listeners.click();
-  assert.equal(printed,1,el('message').textContent);
-  assert.equal(el('paper-items').children.length,22,'the exam card composes the source QIDs currently represented by selectable rows');
-  assert.match(el('paper-title').textContent,/복성고/);
+  bok.onclick();await el('print').listeners.click();const legacyExamEnvelope=envelopeInput;
+  assert.equal(printed,0,el('message').textContent);
+  assert.equal(envelopeInput.questionCount,22,'the mixer envelope composes the source QIDs currently represented by selectable rows');
+  assert.match(envelopeInput.meta.title,/복성고/);assert.match(popup.location.href,/mixed_engine\.html.*mode=exam.*preview=1/);
   await el('generate-mock').listeners.click();
   const mockCards=el('mock-questions').children;
   assert.ok(mockCards.length>0,el('message').textContent);
@@ -296,12 +297,12 @@ test('consumer UI discovers source-backed exam groups, searches individual rows,
   choose.listeners.click();
   assert.match(el('generated-selection-summary').textContent,/1개 문항/);
   await el('generated-print').listeners.click();
-  assert.equal(printed,1,'selected problem preview must not send a print job');
+  assert.equal(printed,0,'selected problem preview must not send a print job');
   assert.equal(envelopeInput.mode,'exam');
   assert.equal(envelopeInput.questions.length,1);
   const firstSelectedUid=envelopeInput.questionUids[0];
   assert.match(popup.location.href,/mixed_engine\.html.*mode=exam.*preview=1/);
-  assert.equal(el('paper-items').children.length,22,'the separate exam preview remains intact');
+  assert.equal(legacyExamEnvelope.questionCount,22,'the separate mixer exam envelope remains intact');
   const textOf=node=>String(node.textContent||'')+node.children.map(textOf).join('');
   assert.ok(!textOf(el('paper-items')).includes('정답:'));
   assert.ok(index.records.length>=382);

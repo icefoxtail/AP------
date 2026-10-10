@@ -55,7 +55,7 @@ function runFixture({session=null,holdShard=false,popupStartsClosed=false,search
 test('legacy source exam selection and print remain available; source counts match 23/26',async()=>{
  assert.ok(inline);new vm.Script(inline);
  assert.ok(!html.includes('개별 문항 검색'));assert.ok(!html.includes('검수 승인'));assert.ok(!html.includes('id="advanced"'));
- const {el,getPrinted}=runFixture();await new Promise(resolve=>setTimeout(resolve,25));
+ const {el,getPrinted,getPublished,getPopup}=runFixture();await new Promise(resolve=>setTimeout(resolve,25));
  assert.equal(el('exam-cards').children.length,2);
  assert.equal(el('print').disabled,true);
  const cards=el('exam-cards').children;
@@ -65,14 +65,9 @@ test('legacy source exam selection and print remain available; source counts mat
  assert.match(bok.children[1].textContent,/23개 원본 문항/);
  assert.match(hyo.children[1].textContent,/26개 원본 문항/);
  bok.onclick();await el('print').listeners.click();
- assert.equal(getPrinted(),1);
- assert.equal(el('paper-items').children.length,23);
- assert.match(el('paper-title').textContent,/복성고/);
- assert.equal(el('paper-items').children.at(-1).children.some(c=>c.className==='stem'),true);
+ assert.equal(getPrinted(),0);assert.equal(getPublished().questionCount,23);assert.match(getPublished().meta.title,/복성고/);assert.equal(new URL(getPopup().location.href).pathname,'/archive/mixed_engine.html');
  hyo.onclick();await el('print').listeners.click();
- assert.equal(getPrinted(),2);
- assert.equal(el('paper-items').children.length,26);
- assert.match(el('paper-title').textContent,/효천고/);
+ assert.equal(getPrinted(),0);assert.equal(getPublished().questionCount,26);assert.match(getPublished().meta.title,/효천고/);
 });
 test('subjective HTML table is parsed as safe real table; unknown tags are escaped',()=>{
  const {context}=runFixture(),p=new Node();
@@ -147,6 +142,16 @@ test('teacher solution preview uses approved Consumer question in shared single-
  assert.equal(url.pathname,'/archive/mixed_engine.html');assert.equal(url.searchParams.get('mode'),'sol');assert.equal(url.searchParams.get('preview'),'1');
  assert.equal(url.searchParams.get('outputOwnerId'),output.ownerId);assert.equal(url.searchParams.get('archive2Context'),'archive2');assert.equal(url.searchParams.get('archive2OutputContract'),'archive2-output-envelope-v1');
 });
+test('student mock output opens the mixer exam envelope with exact preview UID order',async()=>{
+ const {context,getPublished,getPopup,getPublishCalls,getPrinted}=runFixture();await new Promise(resolve=>setTimeout(resolve,25));
+ vm.runInContext("sourceExamChoice=SOURCE_EXAM_ROWS.find(exam=>exam.sha===selectableRows[0].sourceExamBlobSha);mockItems=selectableRows.slice(0,23).map(row=>({row,locked:false,question:null}));generatedConfigSnapshot=currentMockConfig();generatedConfigKey=mockConfigKey()",context,{timeout:2000});
+ await vm.runInContext("printMock()",context,{timeout:2000});
+ const output=getPublished(),url=new URL(getPopup().location.href),expected=vm.runInContext("selectableRows.slice(0,23).map(row=>row.uid)",context);
+ assert.equal(getPublishCalls(),1);assert.equal(getPrinted(),0);assert.equal(output.mode,'exam');assert.equal(output.questionCount,23);
+ assert.deepEqual(output.questionUids,expected);assert.deepEqual(output.questions.map(question=>question.uid),expected);
+ assert.equal(url.pathname,'/archive/mixed_engine.html');assert.equal(url.searchParams.get('mode'),'exam');assert.equal(url.searchParams.get('preview'),'1');
+});
+
 test('teacher composed answer output preserves question UID order in the shared ans envelope',async()=>{
  const {context,getPublished,getPopup,getPublishCalls}=runFixture({session:{role:'teacher',session_token:'test-session'}});await new Promise(resolve=>setTimeout(resolve,25));
  vm.runInContext("sourceExamChoice=SOURCE_EXAM_ROWS.find(exam=>exam.sha===selectableRows[0].sourceExamBlobSha);mockItems=selectableRows.slice(0,23).map(row=>({row,locked:false,question:null}));generatedConfigSnapshot=currentMockConfig();generatedConfigKey=mockConfigKey()",context,{timeout:2000});
