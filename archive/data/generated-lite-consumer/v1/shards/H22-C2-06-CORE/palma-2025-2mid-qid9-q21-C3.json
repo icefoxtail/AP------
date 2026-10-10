@@ -1,0 +1,230 @@
+{
+  "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
+  "school": "팔마고",
+  "batchId": "PALMA25_QID9_AUTO_21",
+  "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/shards/palma-2025-2mid-qid9-q21-C3.js",
+  "sourceShardGitSha": "83d3d1e8424d8828b9ff540f799265b8f0c6d0ee",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "currentSourceExamBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e",
+  "approvedSourceSnapshot": {
+    "path": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+    "gitBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76"
+  },
+  "approvedPackage": {
+    "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q21_PACKAGE.json",
+    "sha256": "33de32e2fde2e574f1f841c312911204f306be57273d47b7fc4cbfbb2abca8ae",
+    "gitBlobSha1": "125fa58ecf7c1ca5e7944f51963fc659882e2812"
+  },
+  "approvalReceipt": {
+    "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json",
+    "sha256": "38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d",
+    "gitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2"
+  },
+  "records": [
+    {
+      "generatedUid": "ALITE-PALMA25-2MID-Q21-C3",
+      "localOrdinal": 1,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "sourceQid": 21,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/shards/palma-2025-2mid-qid9-q21-C3.js",
+      "currentSourceExamBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e",
+      "approvedSourceSnapshotBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "approvalReceiptSha256": "38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d",
+      "approvalReceiptGitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+      "approvedPackageSha256": "33de32e2fde2e574f1f841c312911204f306be57273d47b7fc4cbfbb2abca8ae",
+      "approvedPackageGitBlobSha1": "125fa58ecf7c1ca5e7944f51963fc659882e2812",
+      "l2": "H22-C2-06-CORE",
+      "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+      "reviewApprovalReceipt": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q21-C3.json",
+      "rpmPrimary": {
+        "recordId": "H1-RPM-248",
+        "l3": "필요조건·충분조건",
+        "l4": "매개변수"
+      },
+      "question": {
+        "id": 1,
+        "uid": "ALITE-PALMA25-2MID-Q21-C3",
+        "level": "상",
+        "difficultyBucket": 4,
+        "category": "명제",
+        "originalCategory": "명제",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "서술형",
+        "layoutTag": "grid",
+        "tags": [
+          "서술형",
+          "명제"
+        ],
+        "wide": false,
+        "content": "실수 $x$에 대한 조건 $p:(x+2)(x-3)\\le0$이 있고, $r$은 $\\sim p$와 동치이다. $1\\le k\\le8$인 양의 정수 $k$에 대하여 조건 $q:|2x-1|\\ge k$를 정의하자. $r$이 $q$이기 위한 충분조건이지만 필요조건은 아니도록 하는 $k$를 모두 구하고, 그 개수를 쓰시오.",
+        "choices": [],
+        "answer": "$k=1,2,3,4,5$ (총 $5$개)",
+        "solution": "$p$가 참인 범위는 $-2\\le x\\le3$이다. 따라서 $r$은 $x<-2$ 또는 $x>3$이며, 이는 $|2x-1|>5$와 동치이다.\n$r\\Rightarrow q$가 참이려면 $|2x-1|>5$인 모든 $x$에서 $|2x-1|\\ge k$이어야 한다. 따라서 $k\\le5$이면 충분하고, $k>5$이면 $5<|2x-1|<k$를 만족하는 반례가 존재한다.\n$k\\le5$일 때 $x=-2$에서는 $|2x-1|=5\\ge k$여서 $q$는 참이지만 $r$은 거짓이다. 그러므로 $q\\Rightarrow r$는 거짓이며 $r$은 필요조건이 아니다.\n$k$는 $1$ 이상 $8$ 이하의 양의 정수이므로 조건을 만족하는 값은 $1,2,3,4,5$이다. 따라서 구하는 $k$는 $1,2,3,4,5$이고 개수는 $5$개이다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "sourceQid": 21,
+        "slot": "C3",
+        "purposeGroup": "C",
+        "meta": {
+          "rpmL1": "집합과 명제",
+          "rpmL2": "명제",
+          "rpmL3": "필요조건·충분조건",
+          "rpmL4": "매개변수",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmPrimaryRecordId": "H1-RPM-248",
+          "rpmDeclaredRecordIds": [
+            "H1-RPM-247"
+          ],
+          "rpmRecordResolution": {
+            "path": "archive/analysis/palma-mock-builder-20261010/Q21_RPM_RECORD_RESOLUTION/ALITE-PALMA25-2MID-Q21-C3.json",
+            "sha256": "de8443c26b894ee9eb9511e3f641b1cde7b5556b93f835c31dd2aa38b7627b15",
+            "gitBlobSha1": "1a2543ac1fb51e1454d47fcebf671c3011cc0a0d",
+            "declaredRecordIds": [
+              "H1-RPM-247"
+            ],
+            "selectedRecordId": "H1-RPM-248",
+            "selectionBasis": "EXACT_ACTIVE_UNIT_SUBUNIT_L3_L4_AND_TEMPLATE"
+          },
+          "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+          "secondaryConceptKeys": [],
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_RANGE",
+            "COND_INTEGER"
+          ],
+          "crossConceptRegistryRef": null,
+          "conditionRegistryRef": null,
+          "sourceKind": "generated",
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 4,
+          "level": "상",
+          "problemTypeKey": "PT_NEC_SUFF_RELATION",
+          "templateKey": "TPL_NEC_SUFF_INTERVAL_PARAMETER",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-06",
+          "subUnitKey": "H22-C2-06-CORE"
+        },
+        "metaFinalSha256": "1ed4da0231af02dbaa6122062eb017cd424da6d1fba4f2f19c11bfe592b8ff3f",
+        "metaReviewEvidence": {
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q21-C3.json",
+          "sha256": "308e617f96ef178f85ab40f8fde745e8f8562ea0e0cb7241e55074638c1c3ace",
+          "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+          "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q17_Q23_63",
+          "scopeUids": [
+            "ALITE-PALMA25-2MID-Q21-C3"
+          ],
+          "approvalReceiptPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json",
+          "approvalReceiptSha256": "38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d",
+          "approvalReceiptGitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+          "approvedPackagePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q21_PACKAGE.json",
+          "approvedPackageSha256": "33de32e2fde2e574f1f841c312911204f306be57273d47b7fc4cbfbb2abca8ae",
+          "approvedPackageGitBlobSha1": "125fa58ecf7c1ca5e7944f51963fc659882e2812",
+          "approvedSourceSnapshot": {
+            "path": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+            "gitBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76"
+          },
+          "currentSource": {
+            "path": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+            "gitBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e"
+          },
+          "uid": "ALITE-PALMA25-2MID-Q21-C3"
+        },
+        "metaReviewEvidenceSha256": "308e617f96ef178f85ab40f8fde745e8f8562ea0e0cb7241e55074638c1c3ace",
+        "problemTypeKey": "PT_NEC_SUFF_RELATION",
+        "templateKey": "TPL_NEC_SUFF_INTERVAL_PARAMETER",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE",
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "필요조건·충분조건",
+        "rpmL4": "매개변수",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmPrimaryRecordId": "H1-RPM-248",
+        "rpmDeclaredRecordIds": [
+          "H1-RPM-247"
+        ],
+        "rpmRecordResolution": {
+          "path": "archive/analysis/palma-mock-builder-20261010/Q21_RPM_RECORD_RESOLUTION/ALITE-PALMA25-2MID-Q21-C3.json",
+          "sha256": "de8443c26b894ee9eb9511e3f641b1cde7b5556b93f835c31dd2aa38b7627b15",
+          "gitBlobSha1": "1a2543ac1fb51e1454d47fcebf671c3011cc0a0d",
+          "declaredRecordIds": [
+            "H1-RPM-247"
+          ],
+          "selectedRecordId": "H1-RPM-248",
+          "selectionBasis": "EXACT_ACTIVE_UNIT_SUBUNIT_L3_L4_AND_TEMPLATE"
+        },
+        "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE",
+          "COND_INTEGER"
+        ],
+        "crossConceptRegistryRef": null,
+        "conditionRegistryRef": null,
+        "sourceKind": "generated",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "problemTypeKey": "PT_NEC_SUFF_RELATION",
+        "templateKey": "TPL_NEC_SUFF_INTERVAL_PARAMETER",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE"
+      },
+      "metaFinalSha256": "1ed4da0231af02dbaa6122062eb017cd424da6d1fba4f2f19c11bfe592b8ff3f",
+      "metaReviewEvidence": {
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q21-C3.json",
+        "sha256": "308e617f96ef178f85ab40f8fde745e8f8562ea0e0cb7241e55074638c1c3ace",
+        "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+        "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q17_Q23_63",
+        "scopeUids": [
+          "ALITE-PALMA25-2MID-Q21-C3"
+        ],
+        "approvalReceiptPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json",
+        "approvalReceiptSha256": "38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d",
+        "approvalReceiptGitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+        "approvedPackagePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q21_PACKAGE.json",
+        "approvedPackageSha256": "33de32e2fde2e574f1f841c312911204f306be57273d47b7fc4cbfbb2abca8ae",
+        "approvedPackageGitBlobSha1": "125fa58ecf7c1ca5e7944f51963fc659882e2812",
+        "approvedSourceSnapshot": {
+          "path": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+          "gitBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76"
+        },
+        "currentSource": {
+          "path": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+          "gitBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e"
+        },
+        "uid": "ALITE-PALMA25-2MID-Q21-C3"
+      },
+      "metaReviewEvidenceSha256": "308e617f96ef178f85ab40f8fde745e8f8562ea0e0cb7241e55074638c1c3ace",
+      "sourceShardGitSha": "83d3d1e8424d8828b9ff540f799265b8f0c6d0ee",
+      "sourceExamQuestionCount": 23,
+      "approval": "USER_DIRECTED_QUALITY_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "sourceMetaSha256": "277cfc410bc44b7981bcd566186b1fe5a1d81ee745528deb674bb051f8e43fa8"
+    }
+  ],
+  "sourceKind": "generated"
+}

@@ -51,10 +51,60 @@ img.math-figure{display:block;max-width:100%;max-height:410px;object-fit:contain
 .generated-selection{display:grid;gap:8px;margin:10px 0 16px}
 .generated-selection-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px;border:1px solid #dce5ef;border-radius:8px}
 .generated-selection-row button{border:1px solid #b8c7d8;border-radius:8px;padding:7px 10px;background:#fff;color:#173d68}
+.workflow-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.workflow-field{display:grid;gap:7px;color:#365473;font-size:14px;font-weight:700}
+.workflow-field select,.quota-field input{width:100%;min-height:45px;padding:9px 11px;border:1px solid #cbd8e6;border-radius:9px;background:#fff;color:#173d68;font:inherit}
+.source-selection{margin-top:16px;padding:14px 16px;border-radius:10px;background:#f3f7fc;color:#345777;line-height:1.6}
+.source-selection strong{display:block;color:#173d68;font-size:18px}
+.coverage-detail{margin-top:5px;color:#647c98;font-size:13px}
+.coverage-missing{margin-top:5px;color:#7a4b23;font-size:13px}
+.purpose-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+.purpose-card{display:flex;align-items:flex-start;gap:12px;padding:16px;border:1px solid #d7e1ed;border-radius:12px;background:#fcfdff;cursor:pointer}
+.purpose-card:has(input:checked){border-color:#2873c5;background:#eaf3ff;box-shadow:inset 0 0 0 1px #2873c5}
+.purpose-card input{width:18px;height:18px;margin:3px 0 0;accent-color:#1768ba;flex:0 0 auto}
+.purpose-code{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px;background:#e9f1fb;color:#1c538c;font-weight:800}
+.purpose-copy{display:grid;gap:5px}.purpose-copy strong{font-size:16px}.purpose-copy small{color:#617996;line-height:1.5}
+#purpose-difficulty-note{margin-top:13px;padding:11px 14px;border-radius:9px;background:#f5f8fc;color:#516d8a;font-size:14px}
+.mode-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-top:17px}
+.mode-card{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid #d7e1ed;border-radius:10px;color:#284968;cursor:pointer}
+.mode-card:has(input:checked){border-color:#2873c5;background:#eaf3ff}
+.mode-card input{accent-color:#1768ba}
+.mode-settings{margin-top:14px;padding:15px;border:1px solid #e0e8f1;border-radius:11px;background:#fbfcfe}
+.mode-settings[hidden]{display:none}
+.mode-settings p{margin-bottom:11px;color:#617996;font-size:13px;line-height:1.5}
+.quota-grid{display:grid;grid-template-columns:repeat(5,minmax(85px,1fr));gap:9px}
+.quota-field{display:grid;gap:6px;color:#365473;font-size:13px;font-weight:700}
+.ready-summary{margin-top:16px;min-height:25px;color:#385a7d;font-size:14px;line-height:1.6}
+.ready-summary[data-state="error"]{color:#9e3f31}
+.result-section .section-head{margin-bottom:14px}
+.result-summary{padding:13px 15px;border-radius:10px;background:#f1f6fc;color:#294c70;line-height:1.6}
+.result-summary strong{font-size:17px;color:#173d68}
+.stale-note{margin-top:9px;padding:10px 13px;border-radius:9px;background:#fff4e5;color:#89551d;font-size:13px;line-height:1.5}
+.stale-note[hidden]{display:none}
+.mock-questions{display:grid;gap:13px;margin-top:16px}
+.mock-question{padding:17px;border:1px solid #dce5ef;border-radius:12px;background:#fff}
+.mock-question-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.mock-question-meta{display:flex;flex-wrap:wrap;gap:7px;align-items:center;color:#536f8e;font-size:13px}
+.mock-question-meta strong{color:#1c4f83;font-size:15px}
+.mock-question-tools{display:flex;gap:7px;flex-wrap:wrap}
+.mock-question-tools button,.mock-toolbar button{min-height:38px;padding:7px 11px;border:1px solid #b8c7d8;border-radius:8px;background:#fff;color:#173d68;font-weight:700}
+.mock-question-tools button[aria-pressed="true"]{border-color:#1768ba;background:#eaf3ff;color:#145c9e}
+.mock-question-tools button:disabled,.mock-toolbar button:disabled{opacity:.48;cursor:not-allowed}
+.mock-question-body{margin-top:14px;border-top:1px solid #eef2f6;padding-top:13px;line-height:1.7}
+.mock-question-body .stem{white-space:pre-wrap}
+.mock-toolbar{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+.mock-toolbar .primary{margin-top:0}
+.legacy-section>summary,.manual-section>summary{cursor:pointer;font-weight:800;font-size:17px;color:#21476f}
+.legacy-section .section-head{margin:18px 0 14px}
+.legacy-summary{margin:0 0 16px;color:#617996;line-height:1.55}
+.section-spacer{margin-top:20px}
+.notice-box{padding:17px;border:1px dashed #bdcde0;border-radius:10px;background:#f8fafd;color:#617996;line-height:1.6}
 @media(max-width:660px){
  .header-inner{padding:15px 18px}main{padding:25px 15px 70px}h1{font-size:26px}
  .section{padding:20px 18px;margin-top:17px}.exam-grid{grid-template-columns:1fr}
  .summary{display:block}.primary{margin-top:20px;width:100%}
+ .purpose-grid{grid-template-columns:1fr}.quota-grid{grid-template-columns:repeat(3,minmax(75px,1fr))}
+ .mock-question-head{display:block}.mock-question-tools{margin-top:10px}
 }
 @media print{
  @page{size:A4;margin:16mm 15mm}
@@ -72,18 +122,91 @@ window.MathJax={loader:{paths:{mathjax:AP_VENDOR_BASE+'mathjax','mathjax-tex':AP
 <script src="problem-bank-meta.js?v=20261011-rpm-debt-projection1"></script>
 <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
 <script src="archive2-output.js?v=20261010-sol-qpp1-atomicmath-2"></script>
+<script src="generated-mock-selection.js?v=20261010-mock-builder-2"></script>
 </head>
 <body>
 <header><div class="header-inner"><a href="workspace.html">Archive 2.0</a><span>모의고사 만들기</span></div></header>
 <main>
-<div class="intro"><h1>모의고사 만들기</h1><p class="subtitle">시험지를 선택하면 같은 문항 수로 모의고사를 출력합니다.</p></div>
-<section class="section" aria-labelledby="exam-heading">
-<div class="section-head"><span class="step">01</span><h2 id="exam-heading">시험지 선택</h2></div>
-<div id="exam-cards" class="exam-grid">시험지 목록을 불러오는 중입니다.</div>
+<div class="intro"><h1>모의고사 만들기</h1><p class="subtitle">기준 시험지를 고른 뒤 학습 목적과 난이도를 정하고, 문항을 확인해 한 회분을 구성합니다.</p></div>
+<section class="section" aria-labelledby="source-heading">
+<div class="section-head"><span class="step">01</span><h2 id="source-heading">기준 시험지 선택</h2></div>
+<div class="workflow-grid">
+<label class="workflow-field" for="source-year">연도<select id="source-year"></select></label>
+<label class="workflow-field" for="source-school">학교<select id="source-school"></select></label>
+<label class="workflow-field" for="source-grade">학년<select id="source-grade"></select></label>
+<label class="workflow-field" for="source-subject">과목<select id="source-subject"></select></label>
+<label class="workflow-field" for="source-semester">학기<select id="source-semester"></select></label>
+<label class="workflow-field" for="source-term">시험<select id="source-term"></select></label>
+</div>
+<div class="source-selection" aria-live="polite">
+<strong id="source-exam-title">시험지를 선택해 주세요.</strong>
+<div id="source-coverage" class="coverage-detail">시험지와 승인된 유사문항을 불러오는 중입니다.</div>
+<div id="source-missing-qids" class="coverage-missing"></div>
+</div>
 </section>
-<section class="section" aria-labelledby="generated-search-heading">
-<div class="section-head"><span class="step">G</span><h2 id="generated-search-heading">생성 문항 검색·선택</h2></div>
-<p class="summary-copy">메인에 등록된 생성문제를 검색하고 선택할 수 있습니다. 검수 상태는 문항별 기록으로 표시합니다.</p>
+<section class="section" aria-labelledby="conditions-heading">
+<div class="section-head"><span class="step">02</span><h2 id="conditions-heading">출제 조건</h2></div>
+<div id="builder-unavailable" class="notice-box" hidden></div>
+<div id="builder-controls">
+<p class="summary-copy">어떤 연습을 넣을지 고르고, 난이도는 별도로 지정합니다.</p>
+<div id="purpose-cards" class="purpose-grid">
+<label class="purpose-card" data-purpose-card="A"><input id="purpose-A" type="checkbox" checked><span class="purpose-code">A</span><span class="purpose-copy"><strong>유형 익히기</strong><small>원본의 핵심 풀이를 유지하며 같은 유형을 연습합니다.</small></span></label>
+<label class="purpose-card" data-purpose-card="B"><input id="purpose-B" type="checkbox" checked><span class="purpose-code">B</span><span class="purpose-copy"><strong>응용 넓히기</strong><small>조건이나 개념 연결을 바꾼 문제로 풀이를 확장합니다.</small></span></label>
+<label class="purpose-card" data-purpose-card="C"><input id="purpose-C" type="checkbox" checked><span class="purpose-code">C</span><span class="purpose-copy"><strong>심화 도전하기</strong><small>여러 판단이나 개념을 연결해 해결합니다.</small></span></label>
+</div>
+<p id="purpose-difficulty-note">학습 목적과 난이도는 별도로 선택합니다.</p>
+<div class="mode-grid" role="radiogroup" aria-label="난이도 출제 방식">
+<label class="mode-card"><input id="difficulty-mode-random" name="difficulty-mode" type="radio" value="random" checked>랜덤 출제</label>
+<label class="mode-card"><input id="difficulty-mode-specified" name="difficulty-mode" type="radio" value="specified">난이도 지정</label>
+<label class="mode-card"><input id="difficulty-mode-mixed" name="difficulty-mode" type="radio" value="mixed">난이도 혼합</label>
+</div>
+<div id="specified-settings" class="mode-settings" hidden>
+<label class="workflow-field" for="difficulty-bucket">출제할 난이도<select id="difficulty-bucket">
+<option value="1">난이도 1</option><option value="2" selected>난이도 2</option><option value="3">난이도 3</option><option value="4">난이도 4</option><option value="5">난이도 5</option>
+</select></label>
+<p>승인된 생성 문항의 실제 난이도 값으로 골라요. 해당 난이도 후보가 부족하면 가능한 문항 수와 원본 번호를 표시합니다.</p>
+</div>
+<div id="mixed-settings" class="mode-settings" hidden>
+<p>각 난이도에서 몇 문항을 낼지 입력하세요. 합계만큼만 출제하며, 한 원본 번호에서 두 문항을 뽑지 않습니다.</p>
+<div class="quota-grid">
+<label class="quota-field" for="quota-1">난이도 1<input id="quota-1" type="number" min="0" value="0" inputmode="numeric"></label>
+<label class="quota-field" for="quota-2">난이도 2<input id="quota-2" type="number" min="0" value="0" inputmode="numeric"></label>
+<label class="quota-field" for="quota-3">난이도 3<input id="quota-3" type="number" min="0" value="0" inputmode="numeric"></label>
+<label class="quota-field" for="quota-4">난이도 4<input id="quota-4" type="number" min="0" value="0" inputmode="numeric"></label>
+<label class="quota-field" for="quota-5">난이도 5<input id="quota-5" type="number" min="0" value="0" inputmode="numeric"></label>
+</div>
+</div>
+<p id="builder-readiness" class="ready-summary" role="status" aria-live="polite"></p>
+<div class="mock-toolbar"><button id="generate-mock" type="button" class="primary" disabled>이 조건으로 모의고사 만들기</button></div>
+</div>
+</section>
+<section class="section result-section" aria-labelledby="results-heading">
+<div class="section-head"><span class="step">03</span><h2 id="results-heading">문항 확인·출력</h2></div>
+<div id="mock-result-summary" class="result-summary">출제 조건을 선택하고 모의고사를 만들어 주세요.</div>
+<p id="mock-stale-note" class="stale-note" hidden>출제 조건이 바뀌었습니다. 새 조건으로 다시 생성한 뒤 인쇄해 주세요.</p>
+<div id="mock-missing-qids" class="coverage-missing"></div>
+<div id="mock-questions" class="mock-questions" aria-live="polite"></div>
+<div class="mock-toolbar">
+<button id="regenerate-unlocked" type="button" disabled>고정하지 않은 문항 다시 섞기</button>
+<button id="print-mock" type="button" class="primary" disabled>모의고사 출력 미리보기</button>
+</div>
+<p id="teacher-output-note" class="coverage-detail">교사용 정답표와 해설은 교사 로그인 후 사용할 수 있습니다.</p>
+<div id="teacher-mock-tools" class="mock-toolbar" hidden>
+<button id="mock-answer-key" type="button" disabled>교사용 정답표</button>
+<button id="mock-solution-sheet" type="button" disabled>교사용 해설지</button>
+</div>
+</section>
+<details class="section legacy-section">
+<summary>기존 시험지 바로 출력</summary>
+<div class="section-head"><span class="step">기존</span><h2 id="print-heading">모의고사 출력</h2></div>
+<p class="legacy-summary">A/B/C 학습 목적 후보가 연결되지 않은 기존 학교 시험지는 이 경로에서 선택·출력할 수 있습니다.</p>
+<div id="exam-cards" class="exam-grid">시험지 목록을 불러오는 중입니다.</div>
+<div class="summary section-spacer"><div id="selection-summary" class="summary-copy">출력할 시험지를 선택해 주세요.</div><button id="print" type="button" class="primary" disabled>기존 방식으로 출력 →</button></div>
+</details>
+<details id="manual-section" class="section manual-section">
+<summary id="generated-search-heading">생성 문항 직접 검색·선택</summary>
+<div class="section-head"><span class="step">선택</span><h2>문제은행에서 직접 고르기</h2></div>
+<p class="summary-copy">메인 source JS에서 사용 가능한 Generated 문항을 검색·선택합니다. 검수 상태는 문항별 기록으로 표시하고, 정답과 해설은 문제 보기 화면에 표시하지 않습니다.</p>
 <div class="generated-question-search">
 <label for="generated-search">학교명, 학년, 과목, 단원, 원본 문항 번호 또는 UID</label>
 <input id="generated-search" type="search" autocomplete="off" placeholder="예: 팔마고, 원의 방정식, q10">
@@ -97,26 +220,33 @@ window.MathJax={loader:{paths:{mathjax:AP_VENDOR_BASE+'mathjax','mathjax-tex':AP
 <button id="generated-print" class="primary" type="button" disabled>선택 문항 출력 미리보기</button>
 <button id="generated-clear" type="button" disabled>선택 초기화</button>
 </div>
-</section>
-<section class="section" aria-labelledby="print-heading">
-<div class="section-head"><span class="step">02</span><h2 id="print-heading">모의고사 출력</h2></div>
-<div class="summary"><div id="selection-summary" class="summary-copy">출력할 시험지를 선택해 주세요.</div><button id="print" type="button" class="primary" disabled>모의고사 출력 →</button></div>
-</section>
+</details>
 <div id="message" role="status" aria-live="polite"></div>
 <section id="paper"><h1 id="paper-title">모의고사</h1><div id="paper-items"></div></section>
 </main>
 <script>
 "use strict";
 const INDEX="data/generated-lite-consumer/v1/index.json";
+// Hash-bound builder roster; general exam cards are discovered from the Consumer index.
+const SOURCE_EXAMS=Object.freeze({
+ "4cfce909c023e5c4df4a759945c8cc3e0a63ec76":{school:"팔마고",year:2025,grade:"고1",subject:"공통수학2",semester:2,term:"중간",count:23,strategy:"purpose-variants"},
+ "8266fa476906e9134b94f23e803bd3b2fb26ece4":{school:"복성고",year:2026,grade:"고1",subject:"공통수학1",semester:1,term:"기말",count:23,strategy:"legacy"},
+ "69ad80ffa9ec80b2592bee26ffce247f8d7013d1":{school:"효천고",year:2026,grade:"고1",subject:"공통수학1",semester:1,term:"중간",count:26,strategy:"legacy"}
+});
 const UNIT_LABELS=Object.freeze({});
-let rows=[],selectableRows=[],searchableRows=[],userDisabledUids=new Set(),examChoice=null,busy=false,generatedBusy=false,generatedPreviewToken=0;
+let rows=[],selectableRows=[],searchableRows=[],sourcePurposeRows=[],userDisabledUids=new Set(),examChoice=null,sourceExamChoice=null,busy=false,generatedBusy=false,generatedPreviewToken=0,mockBusy=false,mockItems=[],mockPreviewToken=0,generatedConfigKey=null,generatedConfigSnapshot=null,indexReady=false;
 const selectedGenerated=new Map();
 const $=id=>document.getElementById(id),positions="①②③④⑤",cache=new Map();
 const status=message=>$("message").textContent=message;
 const unique=items=>new Set(items).size===items.length;
+const mockSelection=window.GeneratedMockSelection;
+// Six reviewed Palma B05/B06 historical source UIDs are preserved, not reissued.
+const APPROVED_LEGACY_PALMA_UIDS=new Set(["B05_Q04_C01_DISTANCE_SUM_MIN","B05_Q09_C01_CENTROID_RATIO_RECOVERY","B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY","B06_Q05_C01_TWO_POINT_LINE_INTERSECTION","B06_Q05_C02_INTERSECTION_PARALLEL_LINE","B06_Q23_C01_PARAMETER_INTERSECTION_EQUIDISTANCE"]);
 const validGeneratedUid=row=>typeof row?.uid==="string"&&row.uid.trim().length>0;
 const isSelectable=row=>{
- return window.ProblemBankMeta?.isGeneratedSelectable(row,[...userDisabledUids])===true;
+ if(!row||row.sourceKind!=="generated"||row.technicalStatus==="ERROR"||userDisabledUids.has(row.uid||row.questionUid))return false;
+ const approvedLegacyPalma=APPROVED_LEGACY_PALMA_UIDS.has(row.uid)&&row.school==="팔마고"&&row.year===2025&&row.approval==="REVIEW_APPROVED"&&row.reviewStatus==="REVIEW_PASS";
+ return window.ProblemBankMeta?.isGeneratedSelectable(row,userDisabledUids)===true||approvedLegacyPalma;
 };
 function isTeacherSession(){
  try{
@@ -136,6 +266,19 @@ async function readJson(path){
 }
 function text(parent,value,tag="div",cls=""){const node=document.createElement(tag);if(cls)node.className=cls;node.textContent=String(value??"");parent.appendChild(node);return node;}
 async function math(){if(window.MathJax?.typesetPromise)try{await MathJax.typesetPromise();}catch(e){console.warn("수식 표시 확인 필요",e)}}
+function replacePaperItems(panel,fragment){window.MathJax?.typesetClear?.([panel]);panel.replaceChildren(fragment);}
+async function typesetPaper(panel){
+ const previousStyle=panel.getAttribute("style");
+ Object.assign(panel.style,{display:"block",position:"absolute",left:"-10000px",top:"0",visibility:"hidden",width:"180mm"});
+ try{
+  const engine=window.MathJax;
+  if(engine?.startup?.promise)await engine.startup.promise;
+  if(!engine?.typesetPromise)throw Error("수식 표시 엔진을 불러오지 못했습니다.");
+  await engine.typesetPromise([panel]);
+ }finally{
+  if(previousStyle===null)panel.removeAttribute("style");else panel.setAttribute("style",previousStyle);
+ }
+}
 async function questionFor(row){
  if(row?.technicalStatus==="ERROR")throw Error("문항 기술 오류: "+(row.technicalIssues||[]).join(" · "));
  if(!isSelectable(row))throw Error("사용자가 비활성화했거나 사용할 수 없는 문항입니다.");
@@ -154,11 +297,23 @@ async function questionFor(row){
 }
 function figure(parent,q){
  if(!q.image)return;
- if(!/^assets\/generated-lite\/[A-Za-z0-9-]+\.svg$/.test(q.image))throw Error("문제 이미지 경로 오류");
+ if(typeof q.image!=="string"||!/^assets\/(?:generated-lite|images)\/[^?#\\%]+\.(?:svg|png|jpe?g|webp)$/i.test(q.image)||q.image.split("/").some(part=>!part||part==="."||part===".."))throw Error("문제 이미지 경로 오류");
  const img=document.createElement("img");img.src=q.image;img.alt=q.imageAlt||"문항 수학 시각자료";img.className="math-figure";parent.appendChild(img);
 }
+function stemText(parent,raw){
+ const notes=/<div class=(["'])note-box\1>([\s\S]*?)<\/div>/g;
+ let cursor=0,match;
+ while((match=notes.exec(raw))!==null){
+  if(match.index>cursor)text(parent,raw.slice(cursor,match.index),"span");
+  const note=document.createElement("div");note.className="note-box";
+  const lines=match[2].split(/<br\s*\/?>/i);
+  lines.forEach((line,index)=>{if(index)note.appendChild(document.createElement("br"));text(note,line,"span");});
+  parent.appendChild(note);cursor=notes.lastIndex;
+ }
+ if(cursor<raw.length)text(parent,raw.slice(cursor),"span");
+}
 function questionStem(parent,value){
- const raw=String(value??""),container=document.createElement("div");container.className="stem";
+ const raw=String(value??""),container=document.createElement("div");container.className="stem";container.dataset.sourceText=raw;
  const pattern=/<div class="question-table-wrap"><table class="question-table">([\s\S]*?)<\/table><\/div>/g;
  let cursor=0,match;
  while((match=pattern.exec(raw))!==null){
@@ -171,31 +326,82 @@ function questionStem(parent,value){
    return cells.length&&!rest?cells.map(c=>({tag:c[1],label:c[2]})):null;
   });
   if(grid.some(cells=>!cells))continue;
-  if(match.index>cursor)text(container,raw.slice(cursor,match.index),"span");
+  if(match.index>cursor)stemText(container,raw.slice(cursor,match.index));
   const wrap=document.createElement("div");wrap.className="question-table-wrap";
   const table=document.createElement("table");table.className="question-table";
   for(const cells of grid){const tr=document.createElement("tr");for(const cell of cells)text(tr,cell.label,cell.tag);table.appendChild(tr);}
   wrap.appendChild(table);container.appendChild(wrap);cursor=pattern.lastIndex;
  }
- if(cursor<raw.length)text(container,raw.slice(cursor),"span");
+ if(cursor<raw.length)stemText(container,raw.slice(cursor));
  parent.appendChild(container);
 }
 function questionMarkup(parent,q,row,answers=false){
  questionStem(parent,q.content);figure(parent,q);
- q.choices.forEach((c,i)=>text(parent,positions[i]+" "+c,"div","choice"));
+ q.choices.forEach((c,i)=>{const raw=String(c??""),display=mockSelection.formatChoiceForDisplay(raw),choice=text(parent,positions[i]+" "+display,"div","choice");choice.dataset.sourceText=raw;});
  if(answers){text(parent,"정답: "+q.answer+"\n"+(q.solution||""),"div","answer");}
 }
 
+const SOURCE_FILTERS=Object.freeze([
+ {id:"source-year",key:"year",label:value=>value+"년"},
+ {id:"source-school",key:"school",label:value=>value},
+ {id:"source-grade",key:"grade",label:value=>value},
+ {id:"source-subject",key:"subject",label:value=>value},
+ {id:"source-semester",key:"semester",label:value=>value+"학기"},
+ {id:"source-term",key:"term",label:value=>value}
+]);
+const SOURCE_EXAM_ROWS=Object.entries(SOURCE_EXAMS).map(([sha,exam])=>({...exam,sha}));
 function examTitle(e){return e.year+" "+e.school+" "+e.grade+" "+e.semester+"학기 "+e.term;}
-function examIdentity(row){
- const path=String(row.sourceExamPath||"").split("/").pop();
- const m=path.match(/^(\d{2,4})_([^_]+)_(\d+)학기_(중간|기말)_(고\d|중\d)/);
- if(!m)return null;
- const year=Number(m[1])<100?2000+Number(m[1]):Number(m[1]);
- if(row.school!==m[2]||Number(row.year)!==year||row.grade!==m[5])return null;
- return {year,school:m[2],grade:m[5],semester:Number(m[3]),term:m[4]};
+function examRows(e){return e?.rows||[];}
+function belongsToSourceExam(row,exam=sourceExamChoice){return Boolean(row&&exam&&row.sourceExamBlobSha===exam.sha&&row.school===exam.school&&row.year===exam.year&&row.grade===exam.grade&&row.subject===exam.subject);}
+function purposeVariantRows(e=sourceExamChoice){
+ return selectableRows.filter(row=>belongsToSourceExam(row,e)&&/(?:^|-)Q\d+-[ABC][1-3]$/.test(row.uid));
 }
-function examRows(e){return e.rows;}
+function coveredQids(pool){return [...new Set(pool.map(row=>Number(row.sourceQid)).filter(Number.isInteger))].sort((a,b)=>a-b);}
+function qidsOutside(covered,count){const set=new Set(covered);return Array.from({length:count},(_,index)=>index+1).filter(qid=>!set.has(qid));}
+function setSourceControls(e){
+ if(!e)return;
+ let scoped=SOURCE_EXAM_ROWS.slice();
+ for(const filter of SOURCE_FILTERS){const select=$(filter.id);select.replaceChildren();
+  const values=[...new Set(scoped.map(row=>row[filter.key]))].sort((a,b)=>String(a).localeCompare(String(b),"ko-KR",{numeric:true}));
+  for(const value of values){const option=document.createElement("option");option.value=String(value);option.textContent=filter.label(value);select.appendChild(option);}
+  select.value=String(e[filter.key]);
+  scoped=scoped.filter(row=>String(row[filter.key])===String(e[filter.key]));
+ }
+}
+function resetMockResult(message="출제 조건을 선택하고 모의고사를 만들어 주세요."){
+ mockPreviewToken++;mockItems=[];generatedConfigKey=null;generatedConfigSnapshot=null;$("mock-questions").replaceChildren();
+ $("mock-result-summary").textContent=message;$("mock-missing-qids").textContent="";
+ $("mock-stale-note").hidden=true;
+ $("generate-mock").disabled=true;
+ $("regenerate-unlocked").disabled=true;$("print-mock").disabled=true;
+ renderTeacherMockControls();
+}
+function renderSourceSelection(){
+ const exam=sourceExamChoice;
+ if(!exam){sourcePurposeRows=[];$("source-exam-title").textContent="시험지를 선택해 주세요.";$("source-coverage").textContent="조건에 맞는 시험지가 없습니다.";$("source-missing-qids").textContent="";$("builder-controls").hidden=true;$("builder-unavailable").hidden=false;$("builder-unavailable").textContent="선택한 조건의 시험지를 찾지 못했습니다.";resetMockResult();return;}
+ if(!indexReady){sourcePurposeRows=[];$("source-exam-title").textContent=examTitle(exam);$("source-coverage").textContent="승인된 유사문항을 불러오는 중입니다.";$("source-missing-qids").textContent="";$("builder-controls").hidden=true;$("builder-unavailable").hidden=false;$("builder-unavailable").textContent="문항 데이터를 불러오는 중입니다.";resetMockResult();return;}
+ const pool=sourcePurposeRows=purposeVariantRows(exam),covered=coveredQids(pool),missing=qidsOutside(covered,exam.count);
+ $("source-exam-title").textContent=examTitle(exam);
+ $("source-coverage").textContent="기준 시험지 "+exam.count+"문항 · 목적별 유사문항 준비 "+covered.length+"/"+exam.count+"개 원본 문항";
+ $("source-missing-qids").textContent=missing.length?"유사문항이 아직 준비되지 않은 원본 문항: "+missing.map(qid=>"q"+qid).join(", "):"모든 원본 문항에 유사문항이 준비되어 있습니다.";
+ const ready=exam.strategy==="purpose-variants"&&pool.length>0;
+ $("builder-controls").hidden=!ready;$("builder-unavailable").hidden=ready;
+ $("builder-unavailable").textContent=exam.strategy==="legacy"?"선택한 시험지에는 A/B/C 학습 목적별 후보가 연결되지 않았습니다. 아래 ‘기존 시험지 바로 출력’에서 사용할 수 있습니다.":"이 시험지에는 아직 출제할 수 있는 승인 유사문항이 없습니다.";
+ if(ready)updateBuilderReadiness();
+}
+function handleSourceFilterChange(changedKey,value){
+ const changedIndex=SOURCE_FILTERS.findIndex(filter=>filter.key===changedKey);
+ if(changedIndex<0)return;
+ const prefix=SOURCE_FILTERS.slice(0,changedIndex);
+ const compatible=SOURCE_EXAM_ROWS.filter(exam=>prefix.every(filter=>String(exam[filter.key])===String($(filter.id).value))&&String(exam[changedKey])===String(value));
+ if(!compatible.length){sourceExamChoice=null;sourcePurposeRows=[];resetMockResult();renderSourceSelection();return;}
+ const current=sourceExamChoice;
+ const downstream=SOURCE_FILTERS.slice(changedIndex+1);
+ const downstreamScore=exam=>downstream.reduce((score,filter)=>score+(current&&String(exam[filter.key])===String(current[filter.key])?1:0),0);
+ compatible.sort((a,b)=>downstreamScore(b)-downstreamScore(a));
+ sourceExamChoice=compatible[0];setSourceControls(sourceExamChoice);resetMockResult();renderSourceSelection();
+}
+function bindSourceFilters(){for(const filter of SOURCE_FILTERS)$(filter.id).addEventListener("change",event=>handleSourceFilterChange(filter.key,event.currentTarget.value));}
 function availableExams(){
  const groups=new Map();
  for(const row of selectableRows){
@@ -207,6 +413,14 @@ function availableExams(){
  }
  return [...groups.values()].map(e=>({...e,count:e.sourceQids.size,sourceQids:[...e.sourceQids].sort((a,b)=>a-b)}))
   .filter(e=>e.count>0).sort((a,b)=>a.year-b.year||a.school.localeCompare(b.school,"ko")||a.semester-b.semester||a.term.localeCompare(b.term,"ko"));
+}
+function examIdentity(row){
+ const path=String(row.sourceExamPath||"").split("/").pop();
+ const m=path.match(/^(\d{2,4})_([^_]+)_(\d+)학기_(중간|기말)_(고\d|중\d)/);
+ if(!m)return null;
+ const year=Number(m[1])<100?2000+Number(m[1]):Number(m[1]);
+ if(row.school!==m[2]||Number(row.year)!==year||row.grade!==m[5])return null;
+ return {year,school:m[2],grade:m[5],semester:Number(m[3]),term:m[4]};
 }
 function displayExams(){
  const host=$("exam-cards");host.replaceChildren();
@@ -226,6 +440,210 @@ function updateSelection(){
  if(!examChoice){el.textContent="출력할 시험지를 선택해 주세요.";return;}
  text(el,examTitle(examChoice),"strong");
  text(el,examChoice.count+"개 원본 QID에서 등록된 Generated 문항을 하나씩 선택합니다.","div");
+}
+function currentMockConfig(){
+ const mode=["random","specified","mixed"].find(value=>$("difficulty-mode-"+value).checked)||"random";
+ const purposes=["A","B","C"].filter(value=>$("purpose-"+value).checked);
+ const quotas=Object.fromEntries([1,2,3,4,5].map(bucket=>[bucket,Number($("quota-"+bucket).value)||0]));
+ return {purposes,mode,difficulty:Number($("difficulty-bucket").value),quotas};
+}
+function mockConfigKey(config=currentMockConfig()){
+ return JSON.stringify({sourceSha:sourceExamChoice?.sha||null,purposes:config.purposes.slice().sort(),mode:config.mode,difficulty:config.difficulty,quotas:config.quotas});
+}
+function configDescription(config){
+ const purposeNames=config.purposes.map(key=>key+" "+(mockSelection.PURPOSES.find(item=>item.key===key)?.label||""));
+ const difficulty=config.mode==="specified"?"난이도 "+config.difficulty:config.mode==="mixed"?"난이도별 "+[1,2,3,4,5].filter(bucket=>config.quotas[bucket]>0).map(bucket=>bucket+" "+config.quotas[bucket]+"문항").join(" · "):"난이도 랜덤";
+ return "학습 목적 "+(purposeNames.join(" · ")||"미선택")+" · "+difficulty;
+}
+function setBuilderBusy(disabled){
+ for(const id of ["source-year","source-school","source-grade","source-subject","source-semester","source-term","purpose-A","purpose-B","purpose-C","difficulty-mode-random","difficulty-mode-specified","difficulty-mode-mixed","difficulty-bucket","quota-1","quota-2","quota-3","quota-4","quota-5"])$(id).disabled=disabled;
+ syncMockQuestionTools();renderTeacherMockControls();
+}
+function syncMockQuestionTools(){
+ const cards=$("mock-questions").children;
+ for(let index=0;index<cards.length;index++){
+  const tools=cards[index].children?.[0]?.children?.[1]?.children,item=mockItems[index];
+  if(!tools||!item)continue;
+  if(tools[0])tools[0].disabled=mockBusy;
+  if(tools[1])tools[1].disabled=mockBusy||item.locked;
+ }
+}
+function syncMockActions(canGenerate){
+ const stale=Boolean(mockItems.length&&generatedConfigKey!==mockConfigKey());
+ $("mock-stale-note").hidden=!stale;
+ $("generate-mock").disabled=mockBusy||!canGenerate;
+ $("regenerate-unlocked").disabled=mockBusy||!mockItems.some(item=>!item.locked)||stale;
+ $("print-mock").disabled=mockBusy||!mockItems.length||stale;
+ renderTeacherMockControls();
+}
+function renderTeacherMockControls(){
+ const teacher=isTeacherSession();
+ $("teacher-output-note").hidden=teacher;$("teacher-mock-tools").hidden=!teacher;
+ for(const id of ["mock-answer-key","mock-solution-sheet"])$(id).disabled=!mockItems.length||mockBusy||generatedConfigKey!==mockConfigKey();
+}
+function errorMessage(result){
+ const messages={
+  NO_PURPOSE_SELECTED:"학습 목적을 하나 이상 골라 주세요.",
+  INVALID_MODE:"출제 방식을 다시 선택해 주세요.",
+  INVALID_DIFFICULTY:"난이도 값을 확인해 주세요.",
+  NO_ELIGIBLE_CANDIDATES:"선택한 난이도에 맞는 승인 유사문항이 없습니다.",
+  INVALID_QUOTAS:"난이도별 문항 수를 확인해 주세요.",
+  EMPTY_QUOTAS:"난이도별 출제 문항 수를 입력해 주세요.",
+  MIXED_QUOTA_UNAVAILABLE:"입력한 난이도 배분은 서로 다른 원본 문항으로 구성할 수 없습니다.",
+  CURRENT_SELECTION_INELIGIBLE:"현재 조건에 맞지 않는 고정 문항이 있습니다. 조건을 되돌리거나 새로 생성해 주세요.",
+  NO_REPLACEMENT:"이 원본 문항에는 현재 조건에 맞는 다른 후보가 없습니다.",
+  INVALID_CURRENT_SELECTION:"현재 문항 구성을 다시 확인해 주세요.",
+  UID_COLLISION:"중복 문항이 생길 수 있어 다시 섞지 않았습니다. 다시 시도해 주세요."
+ };
+ if(result?.errorCode==="MIXED_QUOTA_UNAVAILABLE"){
+  if(result.sourceCountShortfall)return "난이도별 문항 수 합계가 기준 시험지의 "+result.sourceCount+"문항보다 "+result.sourceCountShortfall+"문항 많습니다.";
+  const shortfalls=Object.entries(result.shortfallByDifficulty||{}).filter(([,count])=>count>0).map(([bucket,count])=>"난이도 "+bucket+" "+count+"문항 부족 (해당 난이도 후보가 있는 원본 번호 "+(result.availableSourceQidsByDifficulty?.[bucket]||0)+"개)");
+  if(shortfalls.length)return messages.MIXED_QUOTA_UNAVAILABLE+" 부족분: "+shortfalls.join(", ")+".";
+ }
+ if(result?.errorCode==="NO_ELIGIBLE_CANDIDATES"&&result.requestedDifficulty)return "난이도 "+result.requestedDifficulty+" 후보가 없어 문항을 구성할 수 없습니다.";
+ return messages[result?.errorCode]||"현재 조건으로 문항을 구성하지 못했습니다.";
+}
+function currentPurposeRows(){return sourcePurposeRows;}
+function updateModeVisibility(){
+ const mode=currentMockConfig().mode;
+ $("specified-settings").hidden=mode!=="specified";
+ $("mixed-settings").hidden=mode!=="mixed";
+}
+function updateBuilderReadiness(){
+ const host=$("builder-readiness"),button=$("generate-mock"),exam=sourceExamChoice;
+ if(!exam||!currentPurposeRows().length){host.dataset.state="error";host.textContent="이 시험지에서 활용할 승인 유사문항이 없습니다.";syncMockActions(false);return null;}
+ const config=currentMockConfig();
+ const result=mockSelection.createMockSelection(currentPurposeRows(),{...config,sourceCount:exam.count});
+ if(!result.ok){host.dataset.state="error";host.textContent=errorMessage(result);syncMockActions(false);return result;}
+ host.dataset.state="ready";
+ host.textContent="현재 조건으로 "+result.items.length+"문항 구성 가능 · 원본 문항 "+result.coveredCount+"/"+exam.count+"개 사용 예정";
+ if(result.missingSourceQids.length)host.textContent+=" · 이번 조건에서 빠지는 원본 번호: "+result.missingSourceQids.map(qid=>"q"+qid).join(", ");
+ syncMockActions(result.items.length>0);
+ return result;
+}
+function renderMockSummary(result){
+ const exam=sourceExamChoice;
+ if(!exam||!result){$("mock-result-summary").textContent="출제 조건을 선택하고 모의고사를 만들어 주세요.";$("mock-missing-qids").textContent="";return;}
+ $("mock-result-summary").replaceChildren();
+ text($("mock-result-summary"),examTitle(exam)+" · "+result.items.length+"문항","strong");
+ text($("mock-result-summary"),configDescription(generatedConfigSnapshot||currentMockConfig()),"div");
+ text($("mock-result-summary")," · 기준 시험지 "+exam.count+"문항 중 원본 번호 "+result.coveredCount+"개를 사용합니다.","div");
+ const missing=result.missingSourceQids||[];
+ $("mock-missing-qids").textContent=missing.length?"이번 구성에 포함되지 않은 원본 문항: "+missing.map(qid=>"q"+qid).join(", "):"이번 구성에 모든 원본 문항이 포함되어 있습니다.";
+}
+function renderMockQuestions(){
+ const host=$("mock-questions");host.replaceChildren();
+ for(let index=0;index<mockItems.length;index++){
+  const item=mockItems[index],row=item.row,purpose=mockSelection.classifyPurpose(row),bucket=mockSelection.difficultyBucket(row);
+  const card=document.createElement("article");card.className="mock-question";card.dataset.sourceQid=String(row.sourceQid);card.dataset.uid=row.uid;
+  card.dataset.purpose=purpose||"";card.dataset.difficulty=bucket===null?"unknown":String(bucket);
+  const head=document.createElement("div");head.className="mock-question-head";
+  const meta=document.createElement("div");meta.className="mock-question-meta";
+  text(meta,"원본 q"+row.sourceQid,"strong");
+  const purposeInfo=mockSelection.PURPOSES.find(value=>value.key===purpose);
+  text(meta,purpose?purpose+" · "+purposeInfo.label:"학습 목적 정보 없음");
+  text(meta,bucket===null?"난이도 정보 없음":"난이도 "+bucket);
+  const tools=document.createElement("div");tools.className="mock-question-tools";
+  const lock=document.createElement("button");lock.type="button";lock.className="mock-lock";lock.setAttribute("aria-pressed",String(item.locked));lock.textContent=item.locked?"고정됨":"문항 고정";
+  lock.addEventListener("click",()=>{item.locked=!item.locked;lock.setAttribute("aria-pressed",String(item.locked));lock.textContent=item.locked?"고정됨":"문항 고정";replace.disabled=item.locked||mockBusy;$("regenerate-unlocked").disabled=mockBusy||!mockItems.some(value=>!value.locked)||generatedConfigKey!==mockConfigKey();});
+  const replace=document.createElement("button");replace.type="button";replace.className="mock-replace";replace.textContent="다른 후보로 교체";replace.disabled=item.locked||mockBusy;
+  replace.addEventListener("click",()=>replaceMockQuestion(index));
+  tools.appendChild(lock);tools.appendChild(replace);head.appendChild(meta);head.appendChild(tools);card.appendChild(head);
+  const body=document.createElement("div");body.className="mock-question-body";
+  body.dataset.loaded=String(Boolean(item.question));
+  if(item.question)questionMarkup(body,item.question,row,false);else text(body,"문항을 불러오는 중입니다.");
+  card.appendChild(body);host.appendChild(card);
+ }
+ syncMockQuestionTools();
+}
+async function loadMockQuestions(token){
+ const questions=await Promise.all(mockItems.map(item=>questionFor(item.row)));
+ if(token!==mockPreviewToken)return;
+ for(let index=0;index<mockItems.length;index++)mockItems[index].question=questions[index];
+ renderMockQuestions();await math();
+}
+async function generateMock(){
+ if(mockBusy)return;
+ const result=updateBuilderReadiness();if(!result?.ok)return;
+ const config=currentMockConfig();generatedConfigSnapshot={...config,purposes:config.purposes.slice(),quotas:{...config.quotas}};generatedConfigKey=mockConfigKey(config);
+ $("mock-stale-note").hidden=true;
+ const token=++mockPreviewToken,sourceSha=sourceExamChoice?.sha;
+ mockBusy=true;setBuilderBusy(true);$("generate-mock").disabled=true;$("regenerate-unlocked").disabled=true;$("print-mock").disabled=true;
+ mockItems=result.items.map(item=>({...item,question:null}));
+ renderMockSummary(result);renderMockQuestions();status(result.items.length+"개 승인 문항의 문제 미리보기를 불러옵니다.");
+ try{await loadMockQuestions(token);if(token===mockPreviewToken){$("regenerate-unlocked").disabled=false;$("print-mock").disabled=false;status("문항을 확인한 뒤 고정하거나 교체할 수 있습니다.");}}
+ catch(error){if(token===mockPreviewToken){mockItems=[];$("mock-questions").replaceChildren();renderMockSummary(null);status("문항을 불러오지 못했습니다: "+(error.message||"오류"));}}
+ finally{mockBusy=false;setBuilderBusy(false);if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)updateBuilderReadiness();else syncMockActions(Boolean(result.ok));}
+}
+async function replaceMockQuestion(index){
+ if(mockBusy||!mockItems[index]||mockItems[index].locked)return;
+ const config=currentMockConfig(),current=mockItems[index],result=mockSelection.replaceVariant({
+  currentRow:current.row,selectedRows:mockItems.map(item=>item.row),rows:currentPurposeRows(),...config
+ });
+ if(!result.ok){status(errorMessage(result));return;}
+ const token=mockPreviewToken,sourceSha=sourceExamChoice?.sha;
+ mockBusy=true;setBuilderBusy(true);$("print-mock").disabled=true;$("regenerate-unlocked").disabled=true;
+ status("원본 q"+current.row.sourceQid+"의 대체 후보를 불러옵니다.");
+ try{const question=await questionFor(result.row);if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)return;mockItems[index]={...current,row:result.row,question};renderMockQuestions();await math();status("원본 q"+result.row.sourceQid+" 문항을 교체했습니다.");}
+ catch(error){status("문항을 교체하지 못했습니다: "+(error.message||"오류"));}
+ finally{mockBusy=false;setBuilderBusy(false);if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)updateBuilderReadiness();else syncMockActions(true);}
+}
+async function regenerateUnlocked(){
+ if(mockBusy||!mockItems.length)return;
+ const result=mockSelection.regenerateUnlocked({items:mockItems,rows:currentPurposeRows(),sourceCount:sourceExamChoice?.count,...currentMockConfig()});
+ if(!result.ok){status(errorMessage(result));return;}
+ const token=++mockPreviewToken,sourceSha=sourceExamChoice?.sha;
+ mockBusy=true;setBuilderBusy(true);$("generate-mock").disabled=true;$("regenerate-unlocked").disabled=true;$("print-mock").disabled=true;
+ mockItems=result.items.map(item=>({...item,question:null}));
+ renderMockQuestions();renderMockSummary(result);status("고정하지 않은 문항을 다시 구성하고 있습니다.");
+ try{await loadMockQuestions(token);if(token===mockPreviewToken)status(result.unchangedSourceQids.length?"대체 후보가 없는 "+result.unchangedSourceQids.map(qid=>"q"+qid).join(", ")+" 문항은 유지했습니다.":"고정 문항을 유지하고 나머지 문항을 다시 구성했습니다.");}
+ catch(error){if(token===mockPreviewToken)status("문항을 다시 불러오지 못했습니다: "+(error.message||"오류"));}
+ finally{mockBusy=false;setBuilderBusy(false);if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)updateBuilderReadiness();else syncMockActions(true);}
+}
+async function printMock(){return openMockOutput("exam");}
+async function openMockOutput(mode){
+ if(mode!=="exam"&&!isTeacherSession()){status("교사 로그인 후 정답표와 해설을 확인할 수 있습니다.");return;}
+ if(!["exam","ans","sol"].includes(mode)||mockBusy||!mockItems.length)return;
+ if(generatedConfigKey!==mockConfigKey()){status("출제 조건이 변경되었습니다. 새 조건으로 다시 생성해 주세요.");updateBuilderReadiness();return;}
+ const chosen=mockItems.map(item=>item.row),questionUids=chosen.map(row=>row.uid),sourceQids=chosen.map(row=>row.sourceQid),sourceSha=sourceExamChoice?.sha,token=mockPreviewToken;
+ if(!unique(questionUids)||!unique(sourceQids)||chosen.some(row=>!isSelectable(row)||!belongsToSourceExam(row))){status("선택한 문항 승인 상태, 기준 시험지 결속 또는 원본 번호 중복을 확인하지 못했습니다.");return;}
+ const popup=window.open("about:blank","_blank");
+ if(!popup){status("팝업을 허용한 뒤 출력 미리보기를 열어 주세요.");return;}
+ let envelope=null;mockBusy=true;setBuilderBusy(true);renderTeacherMockControls();status(mode==="exam"?"믹서 엔진에서 모의고사 시험지를 준비합니다.":mode==="ans"?"교사용 정답표를 준비합니다.":"교사용 해설지를 준비합니다.");
+ try{
+  const loaded=await Promise.all(chosen.map(questionFor));
+  if(popup.closed)return;
+  if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)throw Error("현재 모의고사 구성이 바뀌었습니다. 다시 생성해 주세요.");
+  if(mode!=="exam"&&!isTeacherSession())throw Error("교사 로그인을 확인한 뒤 다시 시도해 주세요.");
+  const output=window.Archive2Output;
+  if(!output?.publishOutputEnvelope||!output?.outputEnvelopeUrl)throw Error("교사용 출력 엔진을 불러오지 못했습니다.");
+  const questions=mode==="sol"?loaded.map(question=>({...question,solutionImageSize:"full",solutionImageLayout:"fullwidth"})):loaded;
+  envelope=await output.publishOutputEnvelope({
+   sourceKind:"generated-mock",sourceId:"generated-mock-"+sourceSha,mode,questionCount:questions.length,questionUids,
+   meta:{title:examTitle(sourceExamChoice)+" 모의고사",qpp:1,questionUids},questions
+  });
+  if(popup.closed){await output.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);return;}
+  if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)throw Error("현재 모의고사 구성이 바뀌었습니다. 다시 생성해 주세요.");
+  const url=output.outputEnvelopeUrl("mixed_engine.html",location.href,envelope,{preview:mode==="exam"});
+  popup.location.href=url.href;
+  status(mode==="exam"?"믹서 엔진에서 모의고사 출력 미리보기를 열었습니다.":mode==="ans"?"교사용 정답표를 열었습니다.":"교사용 해설지를 열었습니다.");
+ }catch(error){
+  if(envelope)try{await window.Archive2Output?.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);}catch{}
+  try{if(!popup.closed)popup.close();}catch{}
+  status("교사용 자료를 열지 못했습니다: "+(error.message||"오류"));
+ }finally{mockBusy=false;setBuilderBusy(false);if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)updateBuilderReadiness();else syncMockActions(true);}
+}
+function bindMockBuilder(){
+ for(const purpose of ["A","B","C"])$("purpose-"+purpose).addEventListener("change",updateBuilderReadiness);
+ for(const mode of ["random","specified","mixed"])$("difficulty-mode-"+mode).addEventListener("change",()=>{updateModeVisibility();updateBuilderReadiness();});
+ $("difficulty-bucket").addEventListener("change",updateBuilderReadiness);
+ for(let bucket=1;bucket<=5;bucket++)$("quota-"+bucket).addEventListener("input",updateBuilderReadiness);
+ $("generate-mock").addEventListener("click",generateMock);
+ $("regenerate-unlocked").addEventListener("click",regenerateUnlocked);
+ $("print-mock").addEventListener("click",printMock);
+ $("mock-answer-key").addEventListener("click",()=>openMockOutput("ans"));
+ $("mock-solution-sheet").addEventListener("click",()=>openMockOutput("sol"));
+ updateModeVisibility();
 }
 function chooseVariants(pool,count){
  // Prefer distinct source question numbers before taking additional variants.
@@ -359,32 +777,36 @@ async function printGeneratedSelection(){
 }
 async function printExam(){
  if(!examChoice||busy)return;
- const e=examChoice;
- const pool=examRows(e);
+ const e=examChoice,pool=examRows(e);
  if(pool.length<e.count){status("해당 시험지의 문항 수가 부족합니다.");return;}
- busy=true;updateSelection();status("모의고사 "+e.count+"문항을 준비하고 있습니다.");
+ const popup=window.open("about:blank","_blank");
+ if(!popup){status("팝업을 허용한 뒤 출력 미리보기를 열어 주세요.");return;}
+ let envelope=null;busy=true;updateSelection();status("믹서 엔진에서 모의고사 "+e.count+"문항을 준비합니다.");
  try{
-  const chosen=chooseVariants(pool,e.count);
-  if(chosen.length!==e.count||!unique(chosen.map(r=>r.uid)))throw Error("문항 수 또는 UID 구성 오류");
-  const questions=await Promise.all(chosen.map(r=>questionFor(r)));
-  const panel=$("paper-items"),fragment=document.createDocumentFragment();
-  for(let i=0;i<chosen.length;i++){
-   const part=document.createElement("section");part.className="paper-question";
-   text(part,String(i+1)+".","div","paper-number");questionMarkup(part,questions[i],chosen[i],false);
-   fragment.appendChild(part);
-  }
-  panel.replaceChildren(fragment);
-  $("paper-title").textContent=examTitle(e)+" 모의고사";
-  await math();
-  status(e.count+"문항 인쇄 화면을 엽니다.");
-  window.print();
- }catch(error){status("출력을 준비하지 못했습니다: "+error.message);}
- finally{busy=false;updateSelection();}
+  const chosen=chooseVariants(pool,e.count),questionUids=chosen.map(row=>row.uid);
+  if(chosen.length!==e.count||!unique(questionUids))throw Error("문항 수 또는 UID 구성 오류");
+  const questions=await Promise.all(chosen.map(questionFor));
+  if(popup.closed)return;
+  const output=window.Archive2Output;
+  if(!output?.publishOutputEnvelope||!output?.outputEnvelopeUrl)throw Error("출력 엔진을 불러오지 못했습니다.");
+  envelope=await output.publishOutputEnvelope({sourceKind:"generated-mock",sourceId:"generated-mock-"+e.sha,mode:"exam",questionCount:questions.length,questionUids,meta:{title:examTitle(e)+" 모의고사",qpp:1,questionUids},questions});
+  if(popup.closed){await output.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);return;}
+  popup.location.href=output.outputEnvelopeUrl("mixed_engine.html",location.href,envelope,{preview:true}).href;
+  status("믹서 엔진에서 모의고사 출력 미리보기를 열었습니다.");
+ }catch(error){
+  if(envelope)try{await window.Archive2Output?.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);}catch{}
+  try{if(!popup.closed)popup.close();}catch{}
+  status("출력을 준비하지 못했습니다: "+error.message);
+ }finally{busy=false;updateSelection();}
 }
 $("print").addEventListener("click",printExam);
 $("generated-search").addEventListener("input",renderGeneratedSearch);
 $("generated-print").addEventListener("click",printGeneratedSelection);
 $("generated-clear").addEventListener("click",()=>{selectedGenerated.clear();renderGeneratedSelection();renderGeneratedSearch();});
+sourceExamChoice=SOURCE_EXAM_ROWS.find(exam=>exam.strategy==="purpose-variants")||SOURCE_EXAM_ROWS[0]||null;
+if(sourceExamChoice){setSourceControls(sourceExamChoice);bindSourceFilters();}
+bindMockBuilder();renderTeacherMockControls();
+status("시험지와 승인된 유사문항을 불러오고 있습니다.");
 (async()=>{
  try{
   const data=await readJson(INDEX);
@@ -395,10 +817,13 @@ $("generated-clear").addEventListener("click",()=>{selectedGenerated.clear();ren
   selectableRows=rows.filter(isSelectable);
   searchableRows=selectableRows.map(row=>({row,searchText:generatedSearchText(row)}));
   const requestedUid=typeof location==='object'?new URLSearchParams(location.search).get('uid'):null;
-  if(requestedUid&&selectableRows.some(row=>row.uid===requestedUid))$("generated-search").value=requestedUid;
+  if(requestedUid&&selectableRows.some(row=>row.uid===requestedUid)){$("generated-search").value=requestedUid;$("manual-section").open=true;}
+  indexReady=true;if(!sourceExamChoice)sourceExamChoice=SOURCE_EXAM_ROWS[0]||null;
+  if(sourceExamChoice)setSourceControls(sourceExamChoice);
+  renderSourceSelection();renderTeacherMockControls();
   displayExams();updateSelection();renderGeneratedSearch();renderGeneratedSelection();
   status(data.sourceSync?.errorCount?"일부 문항에서 기술 오류 "+data.sourceSync.errorCount+"건이 확인됐습니다. 문항별 오류를 확인하세요.":"");
- }catch(error){status("시험지를 불러오지 못했습니다: "+error.message);$("exam-cards").textContent="시험지 목록을 확인할 수 없습니다.";}
+ }catch(error){indexReady=false;status("시험지를 불러오지 못했습니다: "+error.message);$("source-coverage").textContent="승인 문항을 불러오지 못했습니다.";$("builder-controls").hidden=true;$("builder-unavailable").hidden=false;$("builder-unavailable").textContent="문항 데이터를 확인하지 못했습니다. 잠시 후 다시 불러와 주세요.";$("exam-cards").textContent="시험지 목록을 확인할 수 없습니다.";$("generate-mock").disabled=true;renderTeacherMockControls();}
 })();
 </script>
 </body>

@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
+import {execFileSync} from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../..');
@@ -14,6 +15,13 @@ const indexRel=`${consumerRoot}/index.json`;
 const mode=process.argv.includes('--write')?'write':'check';
 const sha256=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
 const gitBlobSha=bytes=>crypto.createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
+const sourceGitBlobSha=(relative,absolute,bytes)=>{
+ try{
+  const sha=execFileSync('git',['hash-object',`--path=${relative}`,absolute],{cwd:root,encoding:'utf8',stdio:['ignore','pipe','ignore']}).trim();
+  if(/^[a-f0-9]{40}$/i.test(sha))return sha;
+ }catch{}
+ return gitBlobSha(bytes);
+};
 const contentFingerprint=q=>{
  const value=JSON.stringify({content:q.content,choices:q.choices,answer:q.answer,solution:q.solution});
  let hash=14695981039346656037n;
@@ -119,7 +127,7 @@ const main=()=>{
  }
  const candidates=[],errors=[],sourceFiles=filesUnder(sourceRoot).filter(file=>file.includes(`${path.sep}shards${path.sep}`)&&file.endsWith('.js'));
  for(const abs of sourceFiles){
-  const source=path.relative(root,abs).split(path.sep).join('/'),bytes=fs.readFileSync(abs),sourceSha=gitBlobSha(bytes);
+  const source=path.relative(root,abs).split(path.sep).join('/'),bytes=fs.readFileSync(abs),sourceSha=sourceGitBlobSha(source,abs,bytes);
   let questions;
   try{const sandbox={window:{}};vm.runInNewContext(bytes.toString('utf8'),sandbox,{timeout:2000,filename:source});questions=sandbox.window.questionBank||sandbox.window.generatedLiteQuestions;if(!Array.isArray(questions))throw Error('QUESTION_BANK_NOT_ARRAY');}
   catch(error){errors.push({source,code:'SOURCE_PARSE_ERROR',detail:String(error.message||error)});continue;}
