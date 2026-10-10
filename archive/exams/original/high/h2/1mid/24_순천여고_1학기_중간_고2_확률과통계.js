@@ -235,7 +235,7 @@ window.questionBank = [
     "id": 12,
     "score": 4.3,
     "type": "multiple_choice",
-    "question": "1부터 6까지의 자연수가 하나씩 적혀있는 6개의 의자가 있다. 이 6개의 의자를 일정한 간격을 두고 원형으로 배열할 때, 서로 이웃한 2개의 의자에 적혀 있는 수의 합이 10이상인 경우가 존재하도록 배열하는 경우의 수는? (단, 회전하여 일치하는 것은 같은 것으로 본다.)\n\n<div class=\"diagram-box\"><img src=\"/assets/images/24_순천여고_1학기_중간_고2_확률과통계/q12.png\" width=\"320\" /></div>",
+    "question": "1부터 6까지의 자연수가 하나씩 적혀있는 6개의 의자가 있다. 이 6개의 의자를 일정한 간격을 두고 원형으로 배열할 때, 서로 이웃한 2개의 의자에 적혀 있는 수의 합이 10이상인 경우가 존재하도록 배열하는 경우의 수는? (단, 회전하여 일치하는 것은 같은 것으로 본다.)\n\n<div class=\"diagram-box\"><img src=\"assets/images/24_순천여고_1학기_중간_고2_확률과통계/q12.png\" width=\"320\" /></div>",
     "choices": [
       "68",
       "72",
@@ -319,7 +319,7 @@ window.questionBank = [
     "id": 16,
     "score": 3.3,
     "type": "multiple_choice",
-    "question": "[16~17] 아래 그림과 같이 정사각형 4개로 이루어진 정사각형에 서로 다른 4가지 색을 사용하여 색칠하려고 할 때, 다음 물음에 답하시오. (단, 한 정사각형에는 한 가지 색만 칠하고, 회전하여 일치하는 것은 같은 것으로 본다.)\n\n<div class=\"diagram-box\"><img src=\"/assets/images/24_순천여고_1학기_중간_고2_확률과통계/q16.png\" width=\"200\" /></div>\n\n16. 서로 다른 4가지 색 모두를 사용하여 칠하는 경우의 수를 구하면?",
+    "question": "[16~17] 아래 그림과 같이 정사각형 4개로 이루어진 정사각형에 서로 다른 4가지 색을 사용하여 색칠하려고 할 때, 다음 물음에 답하시오. (단, 한 정사각형에는 한 가지 색만 칠하고, 회전하여 일치하는 것은 같은 것으로 본다.)\n\n<div class=\"diagram-box\"><img src=\"assets/images/24_순천여고_1학기_중간_고2_확률과통계/q16.png\" width=\"200\" /></div>\n\n16. 서로 다른 4가지 색 모두를 사용하여 칠하는 경우의 수를 구하면?",
     "choices": [
       "6",
       "8",
@@ -403,7 +403,7 @@ window.questionBank = [
     "id": 20,
     "score": 4.5,
     "type": "multiple_choice",
-    "question": "다음 그림과 같은 도로망이 있다. $A$지점에서 출발하여 $B$지점까지 최단 거리로 가는 경우의 수를 구하면?\n\n<div class=\"diagram-box\"><img src=\"/assets/images/24_순천여고_1학기_중간_고2_확률과통계/q20.png\" width=\"260\" /></div>",
+    "question": "다음 그림과 같은 도로망이 있다. $A$지점에서 출발하여 $B$지점까지 최단 거리로 가는 경우의 수를 구하면?\n\n<div class=\"diagram-box\"><img src=\"assets/images/24_순천여고_1학기_중간_고2_확률과통계/q20.png\" width=\"260\" /></div>",
     "choices": [
       "18",
       "20",
@@ -454,7 +454,7 @@ window.questionBank = [
     "id": 23,
     "score": 7.0,
     "type": "short_answer",
-    "question": "[서술형3] 남자 5명과 여자 4명이 보드게임을 하기 위해 아래 그림과 같은 정삼각형 모양의 탁자에 둘러앉으려고 한다. 이때 삼각형의 모든 모서리에 적어도 1명의 남자가 앉는 경우의 수가 $n \\times 6!$일 때, 자연수 $n$의 값을 구하시오. (단, 회전하여 일치하는 것은 같은 것으로 본다.)\n\n<div class=\"diagram-box\"><img src=\"/assets/images/24_순천여고_1학기_중간_고2_확률과통계/q23.png\" width=\"280\" /></div>",
+    "question": "[서술형3] 남자 5명과 여자 4명이 보드게임을 하기 위해 아래 그림과 같은 정삼각형 모양의 탁자에 둘러앉으려고 한다. 이때 삼각형의 모든 모서리에 적어도 1명의 남자가 앉는 경우의 수가 $n \\times 6!$일 때, 자연수 $n$의 값을 구하시오. (단, 회전하여 일치하는 것은 같은 것으로 본다.)\n\n<div class=\"diagram-box\"><img src=\"assets/images/24_순천여고_1학기_중간_고2_확률과통계/q23.png\" width=\"280\" /></div>",
     "choices": [],
     "answer": "",
     "solution": "",
