@@ -3,8 +3,8 @@
   "sourceQid": 5,
   "sourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
   "candidateCount": 9,
-  "keep": 9,
-  "revised": 0,
+  "keep": 8,
+  "revised": 1,
   "hold": 0,
   "lockedPrimaryL3": "H1-RPM-247",
   "answerDistribution": {
@@ -444,7 +444,7 @@
         {
           "choice": "⑤",
           "choiceText": "$5$",
-          "actualErrorPath": "⑤ 오른쪽 조건을 $t\\le2$로 잘못 세어 $t=-2,-1,0,1,2$ 다섯 개"
+          "actualErrorPath": "양 끝점의 포함 한계를 각각 1씩 잘못 확장하여 실제의 $-1\\le t\\le1$ 대신 $-2\\le t\\le2$로 판단하면 정수 다섯 개를 센다."
         }
       ],
       "mathCheck": {
@@ -473,8 +473,12 @@
         ],
         "relation": "Q_SUBSET_P_PROPER"
       },
-      "decision": "KEEP",
-      "remainingRisk": "학생용 실렌더·독립 리뷰 미실시, main 병합 금지"
+      "decision": "REVISED",
+      "remainingRisk": "학생용 실렌더·독립 리뷰 미실시, main 병합 금지",
+      "affectedFields": [
+        "distractorPaths[⑤]"
+      ],
+      "changedMathRecheck": "원래 정수 t=-1,0,1 세 값/정답 ③/문항·해설·SVG 유지, 오답 ⑤의 범위 오류만 재현하도록 정정"
     }
   ]
 }
