@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "M2_SCOPED_R1_META_FOLLOWUP_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1_SCOPED_META_ADJUDICATION",
+  "examUid": "21_연향중_1학기_중간_중2_기출",
+  "source": {
+    "path": "archive/exams/original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
+    "absolutePath": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\archive\\exams\\original\\middle\\m2\\1mid\\21_연향중_1학기_중간_중2_기출.js",
+    "rawSha256": "9df23af29b3bfda408bfbfc3a2235ca58cdd6f4d7af9de4d60b1fdacc2056170",
+    "rawBufferBlobSha1": "7c2c001f2210839a5ee562473d72a60cd3ac5cda",
+    "questionCount": 21
+  },
+  "qid": 13,
+  "changedMetaFields": {
+    "subUnit": {
+      "baseline": "다항식의 계산",
+      "current": "지수법칙"
+    },
+    "subUnitKey": {
+      "baseline": "M2-01-POLYNOMIAL_OPERATIONS",
+      "current": "M2-01-EXPONENT_LAW"
+    },
+    "tags": {
+      "baseline": [
+        "객관식",
+        "원기둥",
+        "부피",
+        "비",
+        "단항식",
+        "계산"
+      ],
+      "current": [
+        "객관식",
+        "원기둥",
+        "부피",
+        "비",
+        "단항식",
+        "계산",
+        "도형"
+      ]
+    }
+  },
+  "currentSourceMeta": {
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "tags": [
+      "객관식",
+      "원기둥",
+      "부피",
+      "비",
+      "단항식",
+      "계산",
+      "도형"
+    ],
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  "canonicalEvidence": {
+    "subUnitMaster": {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+      "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5",
+      "key": "M2-01-EXPONENT_LAW",
+      "label": "지수법칙",
+      "parentKey": "M2-01",
+      "status": "active"
+    },
+    "rpmCrosswalk": {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+      "sha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+      "record": {
+        "id": "M2-RPM-129",
+        "curriculum": "2022",
+        "scope": "M2-1",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "단항식의 곱셈과 나눗셈",
+          "l4": "혼합 계산"
+        },
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "mappingStatus": "RPM_ONLY",
+        "bindingStatus": "NO_ACTIVE_MAPPING"
+      }
+    }
+  },
+  "sourceAdjudication": {
+    "decisiveOperation": "The two cylinder volumes are πa²b and πb²a; their ratio simplifies by mixed monomial multiplication/division and cancellation to a/b.",
+    "rpmRecordId": "M2-RPM-129",
+    "pathMatch": "2022 M2-1 → 식의 계산 → 단항식의 계산 → 단항식의 곱셈과 나눗셈 → 혼합 계산",
+    "decision": "PASS",
+    "reason": "The current source’s decisive algebra is exactly a mixed monomial calculation. M2-RPM-129 explicitly binds that path to standardUnitKey M2-01 and subUnitKey M2-01-EXPONENT_LAW; the active source master confirms the key label 지수법칙 and parent M2-01. The current fields therefore match canonical key, label, and parent."
+  },
+  "projectionAdjudication": {
+    "mappingStatus": "RPM_ONLY",
+    "bindingStatus": "NO_ACTIVE_MAPPING",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "decision": "PASS",
+    "reason": "The RPM record declares RPM_ONLY / NO_ACTIVE_MAPPING; no active PT/TPL binding is expected, so the current null projection is valid."
+  },
+  "visualTagAdjudication": {
+    "imageRef": "assets/images/21_연향중_1학기_중간_중2_기출/q13.png",
+    "imageSha256": "8d5b28e97bbb42f2267a5b54b89bfaea6769281ad42e8363ef565a1a6f6e3e25",
+    "opened": true,
+    "decision": "PASS",
+    "reason": "The question and opened can diagram concern cylinder geometry/volume, supporting the added 도형 tag."
+  },
+  "metaStatus": "PASS",
+  "reviewedAxes": [
+    "meta"
+  ],
+  "scopeOnly": true,
+  "fullExamR1Pass": false
+}

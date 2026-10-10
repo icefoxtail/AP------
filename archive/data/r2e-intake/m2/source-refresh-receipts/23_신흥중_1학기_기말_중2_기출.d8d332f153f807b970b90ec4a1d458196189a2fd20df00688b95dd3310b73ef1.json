@@ -1,0 +1,233 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_SCOPED_SOURCE_REFRESH_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "examUid": "23_신흥중_1학기_기말_중2_기출",
+  "scopeOnly": true,
+  "fullExamR1Pass": false,
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "pdfReviewStatus": "NOT_PERFORMED_NO_SOURCE_DEPENDENT_DEFECT",
+  "baseline": {
+    "commit": "0a6c04f54f4320648cb4cc49f85f10d4716d124b",
+    "sourcePath": "archive/exams/original/middle/m2/1final/23_신흥중_1학기_기말_중2_기출.js",
+    "rawSha256": "016610ffbc7af67f05b9efd7e7f63bd257ce908c59fa27343c31b3fa8e0dccb7",
+    "rawBufferGitBlobSha1": "1d3ad85ef04a4eec8b27b9dc8163fdd106272f3e"
+  },
+  "currentSource": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\archive\\exams\\original\\middle\\m2\\1final\\23_신흥중_1학기_기말_중2_기출.js",
+    "rawSha256": "63d477b19c54e9925d393df9f534faa3ab17453024b510cdd68ccaeb92fb2a4a",
+    "rawBufferGitBlobSha1": "5d5349d0f3aa15e21257439cbd8d863647b9144f"
+  },
+  "denominator": {
+    "qidCount": 24,
+    "qids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ]
+  },
+  "studentParity": {
+    "bundle": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\.tmp\\ci-review-m2\\23_신흥중_2final\\R1.current-student-only.json",
+      "sha256": "2217237b3222355353d3ecba52f1ed0bfb71d1cb0079ca52f382190c994eedaf"
+    },
+    "result": "EXACT",
+    "changedQids": [],
+    "unchangedQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ]
+  },
+  "sourceDiff": {
+    "changedQids": [
+      4,
+      16,
+      21
+    ],
+    "unexpectedDiffs": []
+  },
+  "changedScope": [
+    {
+      "qid": 4,
+      "fields": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "independentAnswer": "①",
+      "storedAnswer": "①",
+      "answerCompare": "MATCH"
+    },
+    {
+      "qid": 16,
+      "fields": [
+        "subUnitConfidence",
+        "subUnitClassificationDepth"
+      ],
+      "independentAnswer": "⑤",
+      "storedAnswer": "⑤",
+      "answerCompare": "MATCH_AFTER_ENCODING_ADJUDICATION"
+    },
+    {
+      "qid": 21,
+      "fields": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "independentAnswer": "151장 이상",
+      "storedAnswer": "151장 이상",
+      "answerCompare": "MATCH_AFTER_SEMANTIC_NORMALIZATION"
+    }
+  ],
+  "metaFindings": [
+    {
+      "qid": 4,
+      "field": "subUnitKey/subUnit",
+      "current": {
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "subUnit": "연립일차방정식의 활용"
+      },
+      "canonical": "M2-03 child row in JS아카이브_표준단원키_마스터테이블.md; equations are both modeled from an age-transfer word problem",
+      "disposition": "PASS"
+    },
+    {
+      "qid": 21,
+      "field": "subUnitKey/subUnit",
+      "current": {
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "subUnit": "일차부등식의 활용"
+      },
+      "canonical": "M2-02 child row in JS아카이브_표준단원키_마스터테이블.md; compare member/nonmember cost expressions and solve a strict linear inequality",
+      "disposition": "PASS"
+    },
+    {
+      "qid": 16,
+      "field": "subUnitConfidence/subUnitClassificationDepth",
+      "current": {
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule"
+      },
+      "canonical": "Subunit ops rule §3 permits rule_inferred/complete_rule; vertical translation of y=-3x remains LINEAR_FUNCTION_BASIC per master and canonical fallback adjudication note",
+      "disposition": "PASS"
+    }
+  ],
+  "reviewerFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\.tmp\\ci-review-m2\\23_신흥중_2final\\R1.scoped-independent-freeze.json",
+    "sha256": "12f79da519f67d9008b72a832c64752716c3640c96d4b4a28b2e94624b85aedc",
+    "rows": [
+      {
+        "qid": 4,
+        "independentAnswer": "①",
+        "reasoning": "갑이 을에게 8세를 받으면 두 나이는 x+8, y-8이므로 x+8=2(y-8), 즉 x-2y=-24이다. 을이 갑에게 8세를 받으면 두 나이는 x-8, y+8이 같으므로 x-y=16이다. 따라서 ①이다."
+      },
+      {
+        "qid": 16,
+        "independentAnswer": "5",
+        "reasoning": "y=-3x를 y축 방향으로 k만큼 평행이동하면 y=-3x+k이다. 점 (2,-1)을 대입해 -1=-6+k이므로 k=5이다."
+      },
+      {
+        "qid": 21,
+        "independentAnswer": "x≥151",
+        "reasoning": "회원 비용은 3000+100x원, 비회원 비용은 120x원이다. 회원이 더 유리하려면 3000+100x<120x, 즉 x>150이다. x는 장수인 정수이므로 151장 이상이다. 소문항 식과 부등식도 이에 따른다."
+      }
+    ],
+    "allStoredAnswersMatch": true,
+    "originalFreezePreserved": true
+  },
+  "assetParity": {
+    "result": "EXACT",
+    "assets": [
+      {
+        "ref": "assets/images/23_신흥중_1학기_기말_중2_기출/q1.png",
+        "baselineSha256": "b59a6275a088a7ba8440221e4b18141398e975c33fe387f6dfa70897bd864594",
+        "currentSha256": "b59a6275a088a7ba8440221e4b18141398e975c33fe387f6dfa70897bd864594",
+        "parity": "EXACT",
+        "opened": true
+      },
+      {
+        "ref": "assets/images/23_신흥중_1학기_기말_중2_기출/q13.png",
+        "baselineSha256": "b3c5c133ba12fe177999c3276b4178bc950d14183daa964f5eff94ae3763e816",
+        "currentSha256": "b3c5c133ba12fe177999c3276b4178bc950d14183daa964f5eff94ae3763e816",
+        "parity": "EXACT",
+        "opened": true
+      },
+      {
+        "ref": "assets/images/23_신흥중_1학기_기말_중2_기출/q19.png",
+        "baselineSha256": "03f1afa4461d83737851f3ee635a4373f6841ab2c57589f8177de59c51fd8bf7",
+        "currentSha256": "03f1afa4461d83737851f3ee635a4373f6841ab2c57589f8177de59c51fd8bf7",
+        "parity": "EXACT",
+        "opened": true
+      }
+    ]
+  },
+  "axesWithinScope": {
+    "QUESTION_LAYOUT": "UNCHANGED_STUDENT_FIELDS_EXACT_BASELINE_PARITY",
+    "SOLUTION_LAYOUT": "NOT_REVIEWED_SCOPE_LIMITED_SOURCE_META_REFRESH",
+    "META": "PASS_CHANGED_FIELDS_Q4_Q16_Q21",
+    "VISUAL_SVG": "UNCHANGED_REFERENCED_PROBLEM_ASSETS_OPENED; SOLUTION_VISUAL_NOT_REVIEWED"
+  },
+  "holds": [],
+  "pdfActualComparison": "NOT_PERFORMED",
+  "priorIntakeEvidence": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\archive\\data\\r2e-intake\\m2\\23_신흥중_1학기_기말_중2_기출.create.physical-evidence.json",
+    "reuse": "prior intake provenance retained; no claim of new PDF comparison"
+  },
+  "createdAt": "2026-10-09T21:37:28.774Z",
+  "revision": 2,
+  "previousAttempt": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\.tmp\\ci-review-m2\\23_신흥중_2final\\R1.scoped-source-refresh.final.json",
+    "sha256": "aa9978cedc6d1447e0dbd121f640f05cb8cec586f90f26327e8d08a3c6b89334",
+    "status": "PRESERVED_INITIAL_COMPARE_BEFORE_ENCODING_ADJUDICATION"
+  },
+  "adjudication": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\.tmp\\ci-review-m2\\23_신흥중_2final\\R1.scoped-answer-adjudication.json",
+    "sha256": "61a19294a4516c6e83b3e27266b80e4a9c143f1d3492fec0f7ccef42580b1a0d",
+    "originalFreezeMutated": false
+  },
+  "answerDisposition": "ALL_SCOPED_QID_ANSWERS_MATCH_AFTER_SEPARATE_POSTFREEZE_ADJUDICATION",
+  "validatorStatus": "NOT_RUN_SCOPE_ONLY_RECEIPT_IS_NOT_FULL_EXAM_R1"
+}

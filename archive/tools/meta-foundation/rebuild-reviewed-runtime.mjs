@@ -6,6 +6,7 @@ import {
   equal, jsonText, normalizeSourceFile, packetDigest, parseArgs, readJson,
   readPacket, repoRootFrom, sha256
 } from "./reviewed-apply-core.mjs";
+import { applyReviewedRepairProjection } from "./reviewed-runtime-repair-projection.mjs";
 
 const arg = parseArgs(process.argv.slice(2));
 const check = arg.flags.has("check");
@@ -22,6 +23,14 @@ if (packetPath) ({ packet, info: packetInfo } = readPacket(path.isAbsolute(packe
 
 const read = (...parts) => readJson(path.join(root, ...parts));
 const registryIndex = read("archive/data/meta-foundation/canonical/registry_index.json");
+const canonicalPackById = new Map();
+for (const source of registryIndex.canonicalSources || []) {
+  if (!String(source.path || "").endsWith("/pack.json")) continue;
+  const packPath = path.join(root, ...source.path.split("/"));
+  if (!fs.existsSync(packPath)) continue;
+  const pack = readJson(packPath);
+  if (pack.packId) canonicalPackById.set(pack.packId, pack);
+}
 const taxonomy = read("archive/data/meta-foundation/compiled/taxonomy_registry.json");
 const concepts = read("archive/data/meta-foundation/compiled/concept_registry.json");
 const conditions = read("archive/data/meta-foundation/compiled/condition_registry.json");
@@ -216,6 +225,7 @@ const catalogBySource = new Map((catalog.records || []).map((row) => [`${normali
 const outputFiles = new Map();
 const changedPacks = new Set();
 const touchedUids = [];
+const heldSourceUids = [];
 const makeRuntimeRecord = (meta, id, binding, l1, l2, l3, l4, packId, packVersion, catalogRow) => {
   const difficultyValid = Number.isInteger(meta.difficultyBucket) && meta.difficultyBucket >= 1 && meta.difficultyBucket <= 5;
   const runtimeSelectable = meta.reviewStatus === "reviewed_pass" && meta.foundationTaxonomyStatus === "CONFIRMED" &&
@@ -288,39 +298,54 @@ for (const override of overrideByUid.values()) {
   if (!meta.crossConceptKeys.every((key) => conceptByKey.get(key)?.status === "ACTIVE")) throw new Error(`REPAIR CrossConcept invalid: ${override.questionUid}`);
   const binding = bindingRows.find((row) => row.curriculum === (meta.curriculum || meta.curriculumKey) && row.standardUnitKey === meta.standardUnitKey && (row.subUnitKey ?? null) === (meta.subUnitKey ?? null) && row.problemTypeKey === meta.problemTypeKey);
   if (!binding) throw new Error(`REPAIR curriculum binding missing: ${override.questionUid}`);
-  const runtimePack = runtimes.get(packId);
-  const positions = [];
-  for (const [index, row] of runtimePack.runtime.records.entries()) if (row.questionUid === override.questionUid) positions.push(index);
   const anyRuntime = activeRuntimeByUid.get(override.questionUid);
-  if (positions.length > 1) throw new Error(`duplicate UID within runtime pack: ${override.questionUid}`);
-  if (anyRuntime && anyRuntime.packId !== packId) throw new Error(`runtimePackId mismatch for ${override.questionUid}: ${anyRuntime.packId} != ${packId}`);
   const catalogRow = catalogByUid.get(override.questionUid);
   if (!catalogRow || normalizeSourceFile(catalogRow.sourceFile) !== normalizeSourceFile(meta.sourceArchiveFile) || Number(catalogRow.sourceOrdinal) !== Number(meta.sourceOrdinal)) {
     throw new Error(`Archive2 catalog join missing/mismatched for ${override.questionUid}`);
   }
-  const next = makeRuntimeRecord(meta, identityByUid.get(override.questionUid), binding, l1, l2, l3, l4, packId, activePack.version, catalogRow);
-  if (positions.length) {
-    const prior = runtimePack.runtime.records[positions[0]];
-    Object.assign(prior, next);
-  } else {
-    runtimePack.runtime.records.push(next);
+  if (catalogRow.sourceStatus === "VERIFIED" && anyRuntime && anyRuntime.packId !== packId) {
+    throw new Error(`runtimePackId mismatch for ${override.questionUid}: ${anyRuntime.packId} != ${packId}`);
   }
-  runtimePack.runtime.records.sort((a, b) => a.questionUid.localeCompare(b.questionUid, "en"));
-  runtimePack.runtime.generatedFrom = {
-    ...(runtimePack.runtime.generatedFrom || {}),
-    reviewOverrides: "archive/data/meta-foundation/evidence/review-overrides/v1",
-    reviewOverrideDigest: overridesDigest
-  };
-  runtimePack.runtime.reviewedApply = {
-    schemaVersion: "archive-reviewed-runtime-rebuild-v1",
-    overrideDigest: overridesDigest,
-    acceptedRepairUidCount: [...overrideByUid.values()].filter((row) =>
-      row.latestAcceptedReview2.status === "REPAIR" &&
-      resolveRuntimePackId(row.latestAcceptedReview2.runtimePackId) === packId
-    ).length
-  };
-  changedPacks.add(packId);
-  touchedUids.push(override.questionUid);
+  const next = makeRuntimeRecord(meta, identityByUid.get(override.questionUid), binding, l1, l2, l3, l4, packId, activePack.version, catalogRow);
+  const existingRecord = runtimes.get(packId).runtime.records.find((row) => row.questionUid === override.questionUid);
+  const packScope = canonicalPackById.get(packId);
+  const unitDomains = packScope?.ownedStandardUnitDomains || [];
+  const standardCourses = packScope?.standardCourses || [];
+  const isInPackScope = (candidate) => !packScope ||
+    ((!unitDomains.length || unitDomains.includes(candidate?.standardUnitKey)) &&
+      (!standardCourses.length || standardCourses.includes(candidate?.standardCourse)));
+  const existingRecordInPackScope = isInPackScope(existingRecord);
+  const recordInPackScope = isInPackScope(next);
+  const projection = applyReviewedRepairProjection({
+    runtimes,
+    questionUid: override.questionUid,
+    packId,
+    sourceStatus: catalogRow.sourceStatus,
+    record: next,
+    existingRecordInPackScope,
+    recordInPackScope
+  });
+  if (!projection.promoted) heldSourceUids.push(override.questionUid);
+  for (const changedPackId of projection.affectedPackIds) {
+    const changedRuntime = runtimes.get(changedPackId).runtime;
+    changedRuntime.generatedFrom = {
+      ...(changedRuntime.generatedFrom || {}),
+      reviewOverrides: "archive/data/meta-foundation/evidence/review-overrides/v1",
+      reviewOverrideDigest: overridesDigest
+    };
+    changedRuntime.reviewedApply = {
+      ...(changedRuntime.reviewedApply || {}),
+      schemaVersion: "archive-reviewed-runtime-rebuild-v1",
+      overrideDigest: overridesDigest,
+      acceptedRepairUidCount: [...overrideByUid.values()].filter((row) =>
+        row.latestAcceptedReview2.status === "REPAIR" &&
+        resolveRuntimePackId(row.latestAcceptedReview2.runtimePackId) === changedPackId &&
+        changedRuntime.records.some((runtimeRow) => runtimeRow.questionUid === row.questionUid)
+      ).length
+    };
+    changedPacks.add(changedPackId);
+  }
+  if (projection.promoted) touchedUids.push(override.questionUid);
 }
 
 function groupUsage(records, field, project = (row) => row[field]) {
@@ -365,6 +390,7 @@ function makeTaxonomyRows(records) {
 function dynamicCounts(records) {
   const mapped = records.filter((row) => row.problemTypeKey);
   const selectable = records.filter((row) => row.runtimeSelectable === true).length;
+  const defaultSelectable = records.filter((row) => row.defaultSelectable === true).length;
   const difficultyHolds = records.filter((row) => row.difficultyReviewStatus === "manual_review" || String(row.metaFoundationDifficultyStatus || "").includes("HOLD")).length;
   const l3Final = records.filter((row) => row.metaFoundationL3Status === "FINAL" || Boolean(row.problemTypeKey)).length;
   const l4Final = records.filter((row) => row.metaFoundationL4Status === "FINAL" || Boolean(row.templateKey)).length;
@@ -383,9 +409,8 @@ function dynamicCounts(records) {
     solutionQualityHold: records.filter((row) => row.sourceQualityDisposition === "SOLUTION_REPAIR_REQUIRED").length,
     rpmPathHold: records.filter((row) => row.rpmPathStatus === "HOLD_NO_EQUIVALENT_PATH").length,
     difficultyHold: difficultyHolds,
-    defaultSelectable: records.filter((row) => row.defaultSelectable === true).length,
+    defaultSelectable,
     runtimeSelectable: selectable,
-    automaticEligibleExpected: selectable,
     supplementary: records.filter((row) => row.supplementary === true).length,
     sourceHold: records.filter((row) => row.metadataStatus === "SOURCE_HOLD").length,
     uniqueProblemTypes: new Set(mapped.map((row) => row.problemTypeKey)).size,
@@ -525,6 +550,7 @@ console.log(JSON.stringify({
   catalogSourceIdentityRepairJoinCount,
   catalogJoinMismatchCount,
   repairedUids: touchedUids.sort(),
+  heldSourceUids: heldSourceUids.sort(),
   changedPacks: [...changedPacks].sort(),
   outputMutationCount: write ? plannedPaths.length : 0,
   wouldChange: plannedPaths,

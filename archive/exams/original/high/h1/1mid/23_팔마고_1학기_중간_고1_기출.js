@@ -625,7 +625,7 @@ window.questionBank = [
       "객관식",
       "복소수"
     ],
-    "content": "$x^3=-1$의 한 허근을 $\\omega$라고 할 때, 다음 <보기> 중 옳은 것의 개수는? ㄱ. $\\omega^2=-\\dfrac{1}{\\omega}$. ㄴ. $1-\\omega+\\omega^2-\\omega^3+\\omega^4-\\cdots-\\omega^9=1$. ㄷ. $\\dfrac{1}{\\omega-1}+\\dfrac{1}{\\overline{\\omega}-1}=-1$. [4.7점]",
+    "content": "$x^3=-1$의 한 허근을 $\\omega$라고 할 때, 다음 보기 중 옳은 것의 개수는? ㄱ. $\\omega^2=-\\dfrac{1}{\\omega}$. ㄴ. $1-\\omega+\\omega^2-\\omega^3+\\omega^4-\\cdots-\\omega^9=1$. ㄷ. $\\dfrac{1}{\\omega-1}+\\dfrac{1}{\\overline{\\omega}-1}=-1$. [4.7점]",
     "choices": [
       "$1$",
       "$2$",

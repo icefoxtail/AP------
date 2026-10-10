@@ -74,7 +74,7 @@
         node.innerHTML = '<div class="sol-meta"><div class="sol-exp"></div></div>';
         return node;
     }
-    async function solution({ area, boxes, blocks, measurementsBySource, deps }) {
+    async function solution({ area, boxes, blocks, measurementsBySource, deferChunkMeasurements = false, deps }) {
         const document = area.ownerDocument;
         boxes.forEach(box => assertQuestionImagesReady(box, deps));
         const probe = document.createElement('div');
@@ -100,16 +100,56 @@
                 deps.autoCompress(box);
                 const compressedHeight = flowHeight(box, fullWidth), compressedStyle = box.style.cssText;
                 box.style.cssText = originalStyle; deps.stagingHost.appendChild(box);
-                records.push({ box, originalStyle, compressedStyle, chunks: null,
-                    input: { blockId: blocks[index].blockId, rawHeight, compressedHeight, chunkCount: blocks[index].chunks.length, fullWidth, continuationHeights: {} } });
+                const sourceRef = box.dataset.sourceRef;
+                const measurement = { raw: rawHeight, tight: compressedHeight };
+                if (deferChunkMeasurements) {
+                    measurementsBySource.set(sourceRef, measurement);
+                    blocks[index].measuredHeight = rawHeight;
+                    blocks[index].measurements = measurement;
+                    blocks[index].measurementSource = 'actual-output-column-flowHeight';
+                }
+                records.push({ box, block: blocks[index], sourceRef, originalStyle, compressedStyle, chunks: null,
+                    measuredRangeCount: 0,
+                    input: { blockId: blocks[index].blockId, rawHeight, compressedHeight,
+                        chunkCount: deferChunkMeasurements ? 1 : blocks[index].chunks.length,
+                        deferChunkCount: deferChunkMeasurements === true,
+                        fullWidth, continuationHeights: {} } });
             });
             const byId = new Map(records.map(record => [record.input.blockId, record]));
             let plan;
-            const maximumQueries = records.reduce((sum, record) => sum + record.input.chunkCount + 1, 0);
-            for (let queryCount = 0; queryCount <= maximumQueries; queryCount += 1) {
+            let maximumQueries = records.reduce((sum, record) => sum + record.input.chunkCount + 1, 0);
+            let queryCount = 0;
+            const prepareDeferredChunks = async () => {
+                const candidates = records.filter(record => record.input.deferChunkCount
+                    && Math.round(record.input.rawHeight) > capacity + 2
+                    && Math.round(record.input.compressedHeight) > capacity + 2);
+                const hosts = [];
+                candidates.forEach(record => {
+                    const host = document.createElement('div');
+                    host.style.width = record.input.fullWidth ? `${Math.max(1, wideCol.clientWidth - 24)}px` : '83mm';
+                    deps.stagingHost.appendChild(host);
+                    record.chunks = deps.makeSolutionHtmlChunks(record.box.dataset.solutionHtml || '').map(html => {
+                        const node = document.createElement('span'); node.className = 'sol-chunk'; node.innerHTML = html; host.appendChild(node); return node;
+                    });
+                    const previousCount = record.input.chunkCount;
+                    record.input.chunkCount = record.chunks.length;
+                    record.input.deferChunkCount = false;
+                    maximumQueries += record.input.chunkCount - previousCount;
+                    record.block.actualChunkCount = record.input.chunkCount;
+                    record.block.deferredChunkCount = false;
+                    record.block.measuredRangeCount = 0;
+                    hosts.push(host);
+                });
+                for (let offset = 0; offset < hosts.length; offset += 24) {
+                    await deps.typesetMath('solution-planner-chunks', hosts.slice(offset, offset + 24));
+                }
+                hosts.forEach(host => host.remove());
+            };
+            while (queryCount <= maximumQueries) {
                 plan = global.APLayoutAuthority.planMeasuredSolutionLayout({ pageGeometry: { usableHeight: capacity, columns: 2, tolerance: 2 }, blocks: records.map(record => record.input) });
                 if (plan.status === 'READY') break;
                 const query = plan.measurementRequest, record = byId.get(query.blockId);
+                if (records.some(item => item.input.deferChunkCount)) await prepareDeferredChunks();
                 if (!record.chunks) {
                     const host = document.createElement('div');
                     host.style.width = record.input.fullWidth ? `${Math.max(1, wideCol.clientWidth - 24)}px` : '83mm';
@@ -131,7 +171,10 @@
                 exp.replaceChildren(); shell.remove();
                 if (query.primary) record.input.primaryHeights = heights;
                 else record.input.continuationHeights[query.start] = heights;
+                record.measuredRangeCount += heights.length;
+                record.block.measuredRangeCount = record.measuredRangeCount;
                 await deps.raf();
+                queryCount += 1;
             }
             if (plan.status !== 'READY') throw new Error('SOLUTION_MEASUREMENT_DID_NOT_CONVERGE');
             const placements = [];
@@ -156,7 +199,7 @@
                     const blockId = `solution:${sourceRef}:${occurrence}`;
                     node.dataset.solutionLayoutBlockId = blockId;
                     target[item.columnNo - 1].appendChild(node);
-                    const measurements = measurementsBySource.get(sourceRef);
+                    const measurements = measurementsBySource.get(sourceRef) || { raw: record.input.rawHeight, tight: record.input.compressedHeight };
                     placements.push({ blockId, questionKey: sourceRef, pageNo: pagePlan.pageNo, columnNo: item.columnNo,
                         columnSpan: item.columnSpan, layoutTag: item.layoutTag || 'solution',
                         columnOrder: item.columnOrder, placementOrder: item.attemptOrder, continuationOf: item.continuation > 0 ? `solution:${sourceRef}:1` : '',

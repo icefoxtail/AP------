@@ -181,7 +181,7 @@ window.questionBank = [
       "삼각형의 성질"
     ],
     "wide": false,
-    "content": "그림에서 점 $O$가 $\\triangle ABC$의 외심일 때, 다음 <보기>에서 옳은 것만을 있는 대로 고른 것은? (3점)\nㄱ. $OA=OB=OC$\nㄴ. $OD=OE=OF$\nㄷ. $\\angle OBD=\\angle OBE$\nㄹ. $\\triangle OFA\\cong\\triangle OFC$",
+    "content": "그림에서 점 $O$가 $\\triangle ABC$의 외심일 때, 다음 보기에서 옳은 것만을 있는 대로 고른 것은? (3점)\nㄱ. $OA=OB=OC$\nㄴ. $OD=OE=OF$\nㄷ. $\\angle OBD=\\angle OBE$\nㄹ. $\\triangle OFA\\cong\\triangle OFC$",
     "choices": [
       "ㄱ, ㄷ",
       "ㄱ, ㄹ",

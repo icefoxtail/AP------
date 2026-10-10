@@ -95,6 +95,10 @@
         const solutionPlacementMap = new Map();
         const solutionMeasurementBySource = new Map();
         const solutionDecisionBlocks = [];
+        const deferredAuthorityMeasurements = deps.rendererMode() === 'batch'
+            && deps.measurementMode?.() === 'batch'
+            && deps.layoutPlannerMode?.() === 'authority'
+            && deps.renderAuthorityDualRun?.() !== true;
 
         const markSolutionPlacement = (node, continuation = false) => {
             const sourceRef = String(node?.getAttribute?.('data-source-ref') || '').trim();
@@ -267,7 +271,24 @@
         });
         await Promise.all(Array.from(staging.querySelectorAll('img')).map(img => deps.waitForQuestionImage(img)));
         if (deps.rendererMode() === 'batch') await deps.typesetMath('solution-staging', [staging]);
-        if (deps.measurementMode?.() === 'batch') {
+        if (deps.measurementMode?.() === 'batch' && deferredAuthorityMeasurements) {
+            // The authority materializer measures each box in the selected
+            // output column before it plans placement. Defer measurements and
+            // chunk generation until that consumer proves a box needs splitting.
+            solutionBoxes.forEach((box, index) => {
+                const blockId = `solution-block:${index + 1}:primary`;
+                box.dataset.solutionDecisionBlockId = blockId;
+                solutionDecisionBlocks.push({
+                    blockId,
+                    questionKey: `solution-block:${index + 1}`,
+                    measuredHeight: 1,
+                    measurements: { raw: 1, tight: 1 },
+                    fullWidth: box.dataset.solutionFullWidth === 'true',
+                    deferredChunkCount: true,
+                    chunks: []
+                });
+            });
+        } else if (deps.measurementMode?.() === 'batch') {
             const records = await measureSolutionBatch(solutionBoxes, staging, deps, document);
             records.forEach((record, index) => {
                 const sourceRef = String(record.box.getAttribute('data-source-ref') || '').trim();
@@ -334,7 +355,13 @@
         }
 
         if (deps.layoutPlannerMode?.() === 'authority') {
-            const planned = await deps.renderSolutionPlan({ area, boxes: solutionBoxes, blocks: solutionDecisionBlocks, measurementsBySource: solutionMeasurementBySource });
+            const planned = await deps.renderSolutionPlan({
+                area,
+                boxes: solutionBoxes,
+                blocks: solutionDecisionBlocks,
+                measurementsBySource: solutionMeasurementBySource,
+                deferChunkMeasurements: deferredAuthorityMeasurements
+            });
             solutionUsableHeight = planned.usableHeight;
             planned.placements.forEach(item => solutionPlacementMap.set(item.blockId, item));
         } else {
@@ -343,8 +370,27 @@
         }
 
         if (appState) {
+            const chunkCounts = solutionDecisionBlocks.map(block => Number.isInteger(block.actualChunkCount)
+                ? block.actualChunkCount
+                : block.chunks.length);
             appState.solutionDecisionLedger = {
                 mode: 'solution',
+                schemaVersion: deferredAuthorityMeasurements ? 'SOLUTION_LAYOUT_ROSTER_V1' : 'SOLUTION_DECISION_DETAIL_V1',
+                measurementSource: deferredAuthorityMeasurements
+                    ? 'actual-output-column-flowHeight'
+                    : (deps.measurementMode?.() === 'batch' ? 'solution-decision-batch' : 'solution-per-question-legacy'),
+                questionDenominator: solutionDecisionBlocks.length,
+                fullBoxMeasurementCount: solutionDecisionBlocks.length,
+                chunksGeneratedQuestionCount: solutionDecisionBlocks.filter(block => Number.isInteger(block.actualChunkCount) || block.chunks.length > 0).length,
+                splitCandidateCount: chunkCounts.filter(count => count > 1).length,
+                measuredChunkRangeCount: solutionDecisionBlocks.reduce((sum, block) => sum + Number(block.measuredRangeCount || 0), 0),
+                measuredChunkCount: chunkCounts.reduce((sum, count) => sum + count, 0),
+                measurementPolicy: deferredAuthorityMeasurements ? Object.freeze({
+                    fullBox: 'raw+tight actual selected-column flowHeight for every question',
+                    chunks: 'materialize only after both full-box measurements exceed selected-column capacity',
+                    chunkRangeMeasurements: 'planner-requested ranges measured on demand',
+                    sourceQuestionCount: solutionDecisionBlocks.length
+                }) : null,
                 usableHeight: Math.max(1, solutionUsableHeight),
                 columns: singleColumn ? 1 : 2,
                 blockGap: 0,

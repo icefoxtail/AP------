@@ -1219,7 +1219,7 @@ window.questionBank = [
       "도형",
       "서술형"
     ],
-    "content": "서술형 1) 다음 <보기>는 「평행사변형 $ABCD$의 두 쌍의 대변의 길이가 각각 같음」을 설명한 것이다. 빈칸 안에 알맞은 문장 또는 기호를 정확하게 쓰시오. [5점]\n<보기>\n그림과 같이 평행사변형 $ABCD$에서 대각선 $AC$를 그으면 $\\triangle ABC$와 $\\triangle CDA$에서\n$\\overline{AB}\\parallel\\overline{DC}$이므로 $\\angle BAC=\\angle DCA$ (엇각) …… ㉠\n(1) [빈칸] (엇각) …… ㉡ [2점]\n$\\overline{AC}$는 공통인 변 …… ㉢\n이다. ㉠, ㉡, ㉢에 의해 한 대응변의 길이가 같고, 그 양 끝 각의 크기가 각각 같으므로 (2) [빈칸]이다. [1점]\n따라서 $\\overline{AB}=\\overline{CD}$, $\\overline{BC}=\\overline{DA}$이므로 평행사변형 $ABCD$의 두 쌍의 (3) [빈칸]. [2점]",
+    "content": "서술형 1) 다음 보기는 「평행사변형 $ABCD$의 두 쌍의 대변의 길이가 각각 같음」을 설명한 것이다. 빈칸 안에 알맞은 문장 또는 기호를 정확하게 쓰시오. [5점]\n<보기>\n그림과 같이 평행사변형 $ABCD$에서 대각선 $AC$를 그으면 $\\triangle ABC$와 $\\triangle CDA$에서\n$\\overline{AB}\\parallel\\overline{DC}$이므로 $\\angle BAC=\\angle DCA$ (엇각) …… ㉠\n(1) [빈칸] (엇각) …… ㉡ [2점]\n$\\overline{AC}$는 공통인 변 …… ㉢\n이다. ㉠, ㉡, ㉢에 의해 한 대응변의 길이가 같고, 그 양 끝 각의 크기가 각각 같으므로 (2) [빈칸]이다. [1점]\n따라서 $\\overline{AB}=\\overline{CD}$, $\\overline{BC}=\\overline{DA}$이므로 평행사변형 $ABCD$의 두 쌍의 (3) [빈칸]. [2점]",
     "choices": [],
     "image": "assets/images/20_향림중_2학기_기말_중2_기출/q21.png",
     "answer": "(1) $\\angle BCA=\\angle DAC$  (2) $\\triangle ABC\\cong\\triangle CDA$  (3) 대변의 길이가 각각 같다",

@@ -279,8 +279,26 @@ test('actual catalog and all active runtime packs expose only canonical selectab
     }
   }
   w.state.filters = { grade: '중3' };
-  for (const unit of ['실수', '다항식', '이차방정식', '이차함수', '삼각비', '원', '통계'])
-    assert.ok(w.scopeOptions().some(scope => scope.L1.includes(unit) && scope.count > 0), unit);
+  for (const unit of ['실수', '다항식', '이차방정식', '이차함수', '삼각비', '원', '통계']) {
+    const assignments = w.state.catalog.records.filter(row =>
+      row.sourceGrade === '중3' &&
+      core.basicScopeParent(row, w.state.catalog.basicScopeLinks, w.state.catalog.canonicalAuthority)?.L1.includes(unit)
+    );
+    assert.ok(assignments.length > 0, `canonical ${unit} parent assignments must remain present`);
+    const selectable = assignments.filter(row => core.eligibility(row, w.state).ok);
+    if (selectable.length > 0) {
+      assert.ok(w.scopeOptions().some(scope => scope.L1.includes(unit) && scope.count > 0),
+        `eligible ${unit} rows must be projected into Compose`);
+    } else {
+      const sourceHeld = assignments.filter(row =>
+        row.sourceStatus === 'HOLD' && core.eligibility(row, w.state).reasons.includes('source_release')
+      );
+      assert.equal(sourceHeld.length, assignments.length,
+        `${unit} has no selectable source: every canonical assignment must remain blocked by the source-release gate`);
+      assert.equal(w.scopeOptions().filter(scope => scope.L1.includes(unit) && scope.count > 0).length, 0,
+        `held ${unit} source rows must not appear as selectable Compose scope`);
+    }
+  }
 });
 
 test('high-school scope inventory retains only canonical selectable UIDs for each subject projection', () => {
