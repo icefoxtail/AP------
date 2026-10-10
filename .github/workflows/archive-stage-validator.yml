@@ -157,7 +157,7 @@ jobs:
       github.event_name == 'issue_comment' &&
       github.event.issue.pull_request &&
       github.event.comment.user.login == github.repository_owner &&
-      (startsWith(github.event.comment.body, '/archive-stage-validate ') || startsWith(github.event.comment.body, '/archive-stage-validate-legacy '))
+      (startsWith(github.event.comment.body, '/archive-stage-validate ') || startsWith(github.event.comment.body, '/archive-stage-validate-legacy ') || startsWith(github.event.comment.body, '/archive-stage-validate-gpt '))
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -168,10 +168,14 @@ jobs:
           COMMENT: ${{ github.event.comment.body }}
         run: |
           set -euo pipefail
-          read -r cmd stage exam evidence extra <<< "$COMMENT"
-          [[ "$cmd" == "/archive-stage-validate" || "$cmd" == "/archive-stage-validate-legacy" ]]
+          read -r cmd stage exam evidence campaign stream extra <<< "$COMMENT"
+          [[ "$cmd" == "/archive-stage-validate" || "$cmd" == "/archive-stage-validate-legacy" || "$cmd" == "/archive-stage-validate-gpt" ]]
           [[ "$stage" =~ ^(CREATE|R1|R2|R3)$ ]]
-          [[ -z "${extra:-}" ]]
+          if [[ "$cmd" == "/archive-stage-validate-gpt" ]]; then
+            [[ "$campaign" =~ ^[A-Za-z0-9_]+$ && "$stream" =~ ^[ABC]$ && -z "${extra:-}" ]]
+          else
+            [[ -z "${campaign:-}" && -z "${stream:-}" && -z "${extra:-}" ]]
+          fi
           for value in "$exam" "$evidence"; do
             [[ "$value" == archive/* ]]
             [[ "$value" != *".."* ]]
@@ -181,6 +185,11 @@ jobs:
             echo "stage=$stage"
             echo "exam=$exam"
             echo "evidence=$evidence"
+            if [[ "$cmd" == "/archive-stage-validate-gpt" ]]; then
+              echo "execution_line=GPT_SCHEDULED"
+              echo "campaign_id=$campaign"
+              echo "stream=$stream"
+            fi
           } >> "$GITHUB_OUTPUT"
 
       - name: Checkout PR head
@@ -211,7 +220,11 @@ jobs:
           set -euo pipefail
           quality_args=()
           if [[ "$QUALITY" != LEGACY ]]; then quality_args=(--quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006); fi
+          gpt_args=()
+          if [[ "${{ steps.args.outputs.execution_line }}" == GPT_SCHEDULED ]]; then
+            gpt_args=(--execution-line GPT_SCHEDULED --campaign-id "${{ steps.args.outputs.campaign_id }}" --stream "${{ steps.args.outputs.stream }}")
+          fi
           node validator-src/archive/tools/archive-stage-validator.mjs \
-            "${quality_args[@]}" --stage "$STAGE" \
+            "${quality_args[@]}" "${gpt_args[@]}" --stage "$STAGE" \
             --exam "$GITHUB_WORKSPACE/target/$EXAM" \
             --evidence "$GITHUB_WORKSPACE/target/$EVIDENCE" --json
