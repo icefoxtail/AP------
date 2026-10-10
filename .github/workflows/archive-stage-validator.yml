@@ -157,7 +157,7 @@ jobs:
       github.event_name == 'issue_comment' &&
       github.event.issue.pull_request &&
       github.event.comment.user.login == github.repository_owner &&
-      (startsWith(github.event.comment.body, '/archive-stage-validate ') || startsWith(github.event.comment.body, '/archive-stage-validate-legacy '))
+      (startsWith(github.event.comment.body, '/archive-stage-validate ') || startsWith(github.event.comment.body, '/archive-stage-validate-legacy ') || startsWith(github.event.comment.body, '/archive-stage-validate-gpt '))
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -168,10 +168,14 @@ jobs:
           COMMENT: ${{ github.event.comment.body }}
         run: |
           set -euo pipefail
-          read -r cmd stage exam evidence extra <<< "$COMMENT"
-          [[ "$cmd" == "/archive-stage-validate" || "$cmd" == "/archive-stage-validate-legacy" ]]
+          read -r cmd stage exam evidence campaign stream extra <<< "$COMMENT"
+          [[ "$cmd" == "/archive-stage-validate" || "$cmd" == "/archive-stage-validate-legacy" || "$cmd" == "/archive-stage-validate-gpt" ]]
           [[ "$stage" =~ ^(CREATE|R1|R2|R3)$ ]]
-          [[ -z "${extra:-}" ]]
+          if [[ "$cmd" == "/archive-stage-validate-gpt" ]]; then
+            [[ "$campaign" =~ ^[A-Za-z0-9_]+$ && "$stream" =~ ^[ABC]$ && -z "${extra:-}" ]]
+          else
+            [[ -z "${campaign:-}" && -z "${stream:-}" && -z "${extra:-}" ]]
+          fi
           for value in "$exam" "$evidence"; do
             [[ "$value" == archive/* ]]
             [[ "$value" != *".."* ]]
@@ -181,6 +185,11 @@ jobs:
             echo "stage=$stage"
             echo "exam=$exam"
             echo "evidence=$evidence"
+            if [[ "$cmd" == "/archive-stage-validate-gpt" ]]; then
+              echo "execution_line=GPT_SCHEDULED"
+              echo "campaign_id=$campaign"
+              echo "stream=$stream"
+            fi
           } >> "$GITHUB_OUTPUT"
 
       - name: Checkout PR head
@@ -211,7 +220,40 @@ jobs:
           set -euo pipefail
           quality_args=()
           if [[ "$QUALITY" != LEGACY ]]; then quality_args=(--quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006); fi
+          gpt_args=()
+          if [[ "${{ steps.args.outputs.execution_line }}" == GPT_SCHEDULED ]]; then
+            gpt_args=(--execution-line GPT_SCHEDULED --campaign-id "${{ steps.args.outputs.campaign_id }}" --stream "${{ steps.args.outputs.stream }}")
+          fi
           node validator-src/archive/tools/archive-stage-validator.mjs \
-            "${quality_args[@]}" --stage "$STAGE" \
+            "${quality_args[@]}" "${gpt_args[@]}" --stage "$STAGE" \
             --exam "$GITHUB_WORKSPACE/target/$EXAM" \
             --evidence "$GITHUB_WORKSPACE/target/$EVIDENCE" --json
+
+      - name: Seal GPT stage with canonical V2 CLI
+        if: steps.args.outputs.execution_line == 'GPT_SCHEDULED'
+        shell: bash
+        env:
+          STAGE: ${{ steps.args.outputs.stage }}
+          EXAM: ${{ steps.args.outputs.exam }}
+          EVIDENCE: ${{ steps.args.outputs.evidence }}
+          CAMPAIGN: ${{ steps.args.outputs.campaign_id }}
+          STREAM: ${{ steps.args.outputs.stream }}
+        run: |
+          set -euo pipefail
+          exam_uid="$(basename "$EXAM" .js)"
+          node validator-src/archive/tools/gpt2-validate-and-seal.mjs \
+            --stage "$STAGE" \
+            --exam "$GITHUB_WORKSPACE/target/$EXAM" \
+            --evidence "$GITHUB_WORKSPACE/target/$EVIDENCE" \
+            --asset-root "$GITHUB_WORKSPACE/target/archive" \
+            --output-root "$RUNNER_TEMP/gpt2-seals" \
+            --campaign-id "$CAMPAIGN" --stream "$STREAM" --exam-uid "$exam_uid"
+
+      - name: Upload immutable GPT V2 seal and handoff
+        if: success() && steps.args.outputs.execution_line == 'GPT_SCHEDULED'
+        uses: actions/upload-artifact@v4
+        with:
+          name: gpt2-native-seal-${{ github.event.issue.number }}-${{ github.run_id }}
+          path: ${{ runner.temp }}/gpt2-seals
+          if-no-files-found: error
+          retention-days: 30

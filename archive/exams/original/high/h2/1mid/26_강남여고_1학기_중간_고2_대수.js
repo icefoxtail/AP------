@@ -400,16 +400,16 @@ window.questionBank = [
   },
   {
     "id": 10,
-    "content": "1이 아닌 양수 $a$와 자연수 $n$에 대하여 $f(n)=\\sqrt[3]{a\\sqrt{a^{n+1}}}$일 때, $\\dfrac{f(1)\\times f(2)}{f(3)}$의 값은? (4점)",
+    "content": "1이 아닌 양수 $a$와 자연수 $n$에 대하여 $f(n)=\\sqrt{\\sqrt[3]{a\\sqrt{a^{n+1}}}}$일 때, $\\dfrac{f(1)\\times f(2)}{f(3)}$의 값은? (4점)",
     "choices": [
-      "$\\sqrt{a}$",
+      "$\\sqrt[4]{a}$",
       "$\\sqrt[4]{a^3}$",
       "$\\sqrt[4]{a^5}$",
       "$\\sqrt[6]{a^7}$",
       "$\\sqrt[12]{a^{13}}$"
     ],
     "answer": "①",
-    "solution": "먼저 거듭제곱으로 나타내면\n$f(n)=\\sqrt[3]{a^{1+(n+1)/2}}=a^{(n+3)/6}$이다.\n\n따라서\n$f(1)=a^{2/3},\\quad f(2)=a^{5/6},\\quad f(3)=a$이다.\n\n구하는 값은\n$\\dfrac{f(1)f(2)}{f(3)}=a^{2/3+5/6-1}=a^{1/2}=\\sqrt a$이다.\n\n첫 번째 보기가 $\\sqrt a$이므로 정답은 ①이다.",
+    "solution": "중첩된 근호를 거듭제곱으로 바꾸면\n$f(n)=\\left(a\\cdot a^{\\frac{n+1}{2}}\\right)^{\\frac16}$.\n따라서\n$f(n)=a^{\\frac{1+\\frac{n+1}{2}}{6}}=a^{\\frac{n+3}{12}}$이다.\n\n$n=1,2,3$을 각각 대입하면\n$f(1)=a^{\\frac4{12}}=a^{\\frac13}$,\n$f(2)=a^{\\frac5{12}}$,\n$f(3)=a^{\\frac6{12}}=a^{\\frac12}$이다.\n\n그러므로\n$\\dfrac{f(1)\\times f(2)}{f(3)}=a^{\\frac4{12}+\\frac5{12}-\\frac6{12}}=a^{\\frac3{12}}=\\sqrt[4]{a}$이다.\n따라서 정답은 ①이다.",
     "unit": 1,
     "sub": "H22-A-01-EXPONENT_LOG",
     "subName": "지수와 로그",

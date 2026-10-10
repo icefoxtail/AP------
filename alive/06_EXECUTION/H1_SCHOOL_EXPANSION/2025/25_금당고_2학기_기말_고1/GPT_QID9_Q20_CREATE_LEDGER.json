@@ -1,0 +1,369 @@
+{
+  "schemaVersion": "GD25_Q20_CREATOR_SELF_REVIEW_V1",
+  "sourceQid": 20,
+  "sourceExamBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "candidateSourceJsBlobSha": "f2f49e3586473e8edb474361a7f39243a09fcaa0",
+  "mathSpecBlobSha": "af299a1b259cd61f552cf325b77ea8fae138fba0",
+  "lockedPrimaryL3": "H1-RPM-257",
+  "candidateCount": 9,
+  "keep": 9,
+  "hold": 0,
+  "formalIndependentQualityReview": false,
+  "actualBrowserRender": "NOT_TESTED",
+  "mainMerged": false,
+  "answerDistribution": {
+    "①": 1,
+    "②": 2,
+    "③": 2,
+    "④": 2,
+    "⑤": 2
+  },
+  "visual": {
+    "problemSvgCount": 0,
+    "solutionSvgCount": 9,
+    "physicalCoordinateCheck": "PIECEWISE_RANGE_AND_VERTEX_RELATION_PLUS_INVERSE_TARGET_BRANCH_SELECTION_STATIC_CHECKED; CHROME_NOT_TESTED",
+    "rendererExecuted": false,
+    "visualCorrection": "At the minimum a, the right branch is a(x-r)^2+L and starts at the range boundary (r,L)."
+  },
+  "rows": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-A1",
+      "answer": "③",
+      "value": 8,
+      "reverseStemFinding": "최종 발문에서 역함수 존재를 전단사 조건으로 되돌리고 두 구간의 치역 일치 및 오른쪽 포물선의 단조성을 판정했다.",
+      "rpmNecessity": "실수 전체에서 전단사인 필요충분조건으로 경계 함수값과 꼭짓점 위치를 함께 결정한다.",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "경계식과 꼭짓점 부등식을 잘못 정리해 a_min=3으로 두고, g(2)를 L+a로 오인하여 4+3=7"
+        },
+        {
+          "index": "②",
+          "mistake": "경계값 L=4만 답으로 선택"
+        },
+        {
+          "index": "④",
+          "mistake": "b항을 생략해 ax²+q=24"
+        },
+        {
+          "index": "⑤",
+          "mistake": "상수항 q만 빠뜨리고 ax²+bx에 x=2를 대입: 4·4−8·2=0"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-A1-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ALGEBRAIC_DERIVATION",
+      "svgStaticEvidence": {
+        "leftRange": "(-infinity,L)",
+        "rightRange": "[L,infinity)",
+        "vertexAtBoundaryForMinimum": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-A2",
+      "answer": "⑤",
+      "value": 15,
+      "reverseStemFinding": "최종 발문에서 역함수 존재를 전단사 조건으로 되돌리고 두 구간의 치역 일치 및 오른쪽 포물선의 단조성을 판정했다.",
+      "rpmNecessity": "실수 전체에서 전단사인 필요충분조건으로 경계 함수값과 꼭짓점 위치를 함께 결정한다.",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "경계 함숫값 L=3만 답으로 선택"
+        },
+        {
+          "index": "②",
+          "mistake": "상수 L을 빼고 a(x−1)²=12만 계산"
+        },
+        {
+          "index": "③",
+          "mistake": "x−1 대신 x를 넣어 3+3·9=30"
+        },
+        {
+          "index": "④",
+          "mistake": "허용되지 않는 a=2를 넣어 꼭짓점 조건을 놓친 채 g(3)=9"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-A2-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ALGEBRAIC_DERIVATION",
+      "svgStaticEvidence": {
+        "leftRange": "(-infinity,L)",
+        "rightRange": "[L,infinity)",
+        "vertexAtBoundaryForMinimum": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-A3",
+      "answer": "①",
+      "value": 25,
+      "reverseStemFinding": "최종 발문에서 역함수 존재를 전단사 조건으로 되돌리고 두 구간의 치역 일치 및 오른쪽 포물선의 단조성을 판정했다.",
+      "rpmNecessity": "실수 전체에서 전단사인 필요충분조건으로 경계 함수값과 꼭짓점 위치를 함께 결정한다.",
+      "distractorRoutes": [
+        {
+          "index": "②",
+          "mistake": "경계값 L=5만 답으로 선택"
+        },
+        {
+          "index": "③",
+          "mistake": "상수 L을 빼고 5·4=20"
+        },
+        {
+          "index": "④",
+          "mistake": "x−1 대신 x를 넣어 5+5·9=50"
+        },
+        {
+          "index": "⑤",
+          "mistake": "a_min을 4로 잘못 두어 5+4·4=21"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-A3-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ALGEBRAIC_DERIVATION",
+      "svgStaticEvidence": {
+        "leftRange": "(-infinity,L)",
+        "rightRange": "[L,infinity)",
+        "vertexAtBoundaryForMinimum": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-B1",
+      "answer": "④",
+      "value": 4,
+      "reverseStemFinding": "최솟값의 경계·꼭짓점 조건을 복원한 뒤 지정된 함숫값의 역상을 가지 조건에 맞게 선택했다.",
+      "rpmNecessity": "전단사 조건으로 최소 이차식을 정한 뒤, 그 역함수에서 목표값의 가지 선택과 역상을 판정해야 한다.",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "목표 함숫값 12를 역상으로 혼동"
+        },
+        {
+          "index": "②",
+          "mistake": "제곱근 해 중 x=0을 선택해 오른쪽 가지의 정의역 조건을 놓침"
+        },
+        {
+          "index": "③",
+          "mistake": "경계 입력 r=2를 역상으로 보고 식을 풀지 않음"
+        },
+        {
+          "index": "⑤",
+          "mistake": "왼쪽 식 x+1=12에서 나온 11을 선택해 x<2 조건과 가지를 놓침"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-B1-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ALGEBRAIC_DERIVATION",
+      "svgStaticEvidence": {
+        "leftRange": "(-infinity,L)",
+        "rightRange": "[L,infinity)",
+        "vertexAtBoundaryForMinimum": true,
+        "chrome": "NOT_TESTED"
+      },
+      "difficultyCorrectionRationale": "Bucket 4: boundary matching and vertex condition determine the minimal quadratic, then the item requires an additional inverse-value/branch decision."
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-B2",
+      "answer": "②",
+      "value": "2+sqrt(3)",
+      "reverseStemFinding": "최솟값의 경계·꼭짓점 조건을 복원한 뒤 지정된 함숫값의 역상을 가지 조건에 맞게 선택했다.",
+      "rpmNecessity": "전단사 조건으로 최소 이차식을 정한 뒤, 그 역함수에서 목표값의 가지 선택과 역상을 판정해야 한다.",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "x≥2 가지에서 제곱근의 음수 해를 골라 정의역을 위반"
+        },
+        {
+          "index": "③",
+          "mistake": "x−2의 이동을 빠뜨리고 √3만 선택"
+        },
+        {
+          "index": "④",
+          "mistake": "함숫값 10을 역상으로 혼동"
+        },
+        {
+          "index": "⑤",
+          "mistake": "계수 2를 나누지 않아 √6을 얻음"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-B2-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ALGEBRAIC_DERIVATION",
+      "svgStaticEvidence": {
+        "leftRange": "(-infinity,L)",
+        "rightRange": "[L,infinity)",
+        "vertexAtBoundaryForMinimum": true,
+        "chrome": "NOT_TESTED"
+      },
+      "difficultyCorrectionRationale": "Bucket 4: boundary matching and vertex condition determine the minimal quadratic, then the item requires an additional inverse-value/branch decision."
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-B3",
+      "answer": "③",
+      "value": 2,
+      "reverseStemFinding": "최솟값의 경계·꼭짓점 조건을 복원한 뒤 복수 함숫값의 역상을 각각 해당 가지에서 구해 발문의 합·차를 계산했다.",
+      "rpmNecessity": "전단사 조건으로 최소 이차식을 정한 뒤, 그 역함수에서 목표값의 가지 선택과 역상을 판정해야 한다.",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "왼쪽 역상 −2의 부호를 빠뜨려 4+2=6"
+        },
+        {
+          "index": "②",
+          "mistake": "오른쪽 역상 4만 계산"
+        },
+        {
+          "index": "④",
+          "mistake": "왼쪽 역상 −2만 계산"
+        },
+        {
+          "index": "⑤",
+          "mistake": "역함수 합 대신 목표 함숫값을 더함"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-B3-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ALGEBRAIC_DERIVATION",
+      "svgStaticEvidence": {
+        "leftRange": "(-infinity,L)",
+        "rightRange": "[L,infinity)",
+        "vertexAtBoundaryForMinimum": true,
+        "chrome": "NOT_TESTED"
+      },
+      "difficultyCorrectionRationale": "Bucket 4: boundary matching and vertex condition determine the minimal quadratic, then the item requires an additional inverse-value/branch decision for each target and a final operation."
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-C1",
+      "answer": "②",
+      "value": 1,
+      "reverseStemFinding": "최솟값의 경계·꼭짓점 조건을 복원한 뒤 복수 함숫값의 역상을 각각 해당 가지에서 구해 발문의 합·차를 계산했다.",
+      "rpmNecessity": "전단사 조건으로 최소 이차식을 정한 뒤, 그 역함수에서 목표값의 가지 선택과 역상을 판정해야 한다.",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "두 목표값 모두 경계 입력 1에 대응한다고 보아 차 0으로 혼동"
+        },
+        {
+          "index": "③",
+          "mistake": "계수 a=6을 답으로 선택"
+        },
+        {
+          "index": "④",
+          "mistake": "뺄셈 순서를 거꾸로 적용"
+        },
+        {
+          "index": "⑤",
+          "mistake": "둘째 목표값 5를 역상으로 혼동"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-C1-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ALGEBRAIC_DERIVATION",
+      "svgStaticEvidence": {
+        "leftRange": "(-infinity,L)",
+        "rightRange": "[L,infinity)",
+        "vertexAtBoundaryForMinimum": true,
+        "chrome": "NOT_TESTED"
+      },
+      "difficultyCorrectionRationale": "Bucket 4: boundary matching and vertex condition determine the minimal quadratic, then the item requires an additional inverse-value/branch decision for each target and a final operation."
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-C2",
+      "answer": "④",
+      "value": 4,
+      "reverseStemFinding": "최솟값의 경계·꼭짓점 조건을 복원한 뒤 지정된 함숫값의 역상을 가지 조건에 맞게 선택했다.",
+      "rpmNecessity": "전단사 조건으로 최소 이차식을 정한 뒤, 그 역함수에서 목표값의 가지 선택과 역상을 판정해야 한다.",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "경계 입력 r=3을 역상으로 바로 선택"
+        },
+        {
+          "index": "②",
+          "mistake": "최소 a=7/3을 답으로 혼동"
+        },
+        {
+          "index": "③",
+          "mistake": "오른쪽 평행이동 +3을 빠뜨려 x=1 선택"
+        },
+        {
+          "index": "⑤",
+          "mistake": "목표 함숫값 자체를 답으로 선택"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-C2-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ALGEBRAIC_DERIVATION",
+      "svgStaticEvidence": {
+        "leftRange": "(-infinity,L)",
+        "rightRange": "[L,infinity)",
+        "vertexAtBoundaryForMinimum": true,
+        "chrome": "NOT_TESTED"
+      },
+      "difficultyCorrectionRationale": "Bucket 4: boundary matching and vertex condition determine the minimal quadratic, then the item requires an additional inverse-value/branch decision."
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-C3",
+      "answer": "⑤",
+      "value": "2+sqrt(3)",
+      "reverseStemFinding": "최솟값의 경계·꼭짓점 조건을 복원한 뒤 복수 함숫값의 역상을 각각 해당 가지에서 구해 발문의 합·차를 계산했다.",
+      "rpmNecessity": "전단사 조건으로 최소 이차식을 정한 뒤, 그 역함수에서 목표값의 가지 선택과 역상을 판정해야 한다.",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "왼쪽 역상을 더하지 않고 오른쪽 역상만 답함"
+        },
+        {
+          "index": "②",
+          "mistake": "왼쪽 역상 계산 1−2를 −2로 잘못 계산해 (3+√3)+(−2)=1+√3"
+        },
+        {
+          "index": "③",
+          "mistake": "오른쪽 제곱근에서 x<3인 해를 골라 정의역 조건 위반"
+        },
+        {
+          "index": "④",
+          "mistake": "역상 합 대신 목표값 13+1을 계산"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-C3-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ALGEBRAIC_DERIVATION",
+      "svgStaticEvidence": {
+        "leftRange": "(-infinity,L)",
+        "rightRange": "[L,infinity)",
+        "vertexAtBoundaryForMinimum": true,
+        "chrome": "NOT_TESTED"
+      },
+      "difficultyCorrectionRationale": "Bucket 4: boundary matching and vertex condition determine the minimal quadratic, then the item requires an additional inverse-value/branch decision for each target and a final operation."
+    }
+  ]
+}

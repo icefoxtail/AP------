@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_Q18_SOLUTION_VISUAL_BINDING_REVIEW_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "25_금당고_1학기_중간_고2_수학I",
+  "qid": 18,
+  "reviewerIdentity": {
+    "role": "archive_r1",
+    "reviewerId": "codex-r1-q18-clean-20261010"
+  },
+  "studentParityEvidence": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010\\R1_25_금당고_20261010_q18_clean\\R1_q18_solution_visual_rebind_student_parity.json",
+    "sha256": "5a8cfd4ae508975e9b51b99723949241b8bb1cce19cf56f4592a3eb1302a4423"
+  },
+  "originalQ18Freeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010\\R1_25_금당고_20261010_q18_clean\\R1_q18_original-independent-freeze.json",
+    "sha256": "ef4115459c9c486c3f74c6730a901bd541aa73ebe9c4d644b69b9740aa79880b"
+  },
+  "originalQ18FreezeMutated": false,
+  "currentSourceRawSha256": "bb9011d3c3310a49a36c9974097af9d3833d05ff40e8f0ebe72cfc2848819fa3",
+  "currentSourceGitBlobSha1": "8f687d5f823892c485ec1cba078a9695ba8d1bf4",
+  "currentSolutionSha256": "f195aa2f79b5ef47d41b52166bbd4964df9ecdf702184312faf051799236bbcd",
+  "currentSolutionImage": "assets/images/25_금당고_1학기_중간_고2_수학I/q18-problem-replacement.svg",
+  "currentSolutionImageSha256": "face00290bb829ec2217159533ca7ad8c4e178078d664ba583555ec28618d70c",
+  "problemImageRef": "assets/images/25_금당고_1학기_중간_고2_수학I/q18-problem-replacement.svg",
+  "problemImageSha256": "face00290bb829ec2217159533ca7ad8c4e178078d664ba583555ec28618d70c",
+  "solutionImageBytesMatchProblemImage": true,
+  "authorCorrectionReceipt": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010\\ITEM_RECOVERY_q18_solution_visual_binding_correction.json",
+    "sha256": "b340151d57aaaf9fe00465afcead44be0708bf99bfc48704bd8a1aec7de633d5"
+  },
+  "reviewedAt": "2026-10-10T08:14:09.744Z",
+  "assetRead": {
+    "opened": true,
+    "method": "ImageMagick local SVG raster + functions.view_image",
+    "ref": "assets/images/25_금당고_1학기_중간_고2_수학I/q18-problem-replacement.svg",
+    "sha256": "face00290bb829ec2217159533ca7ad8c4e178078d664ba583555ec28618d70c",
+    "renderEvidence": {
+      "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010\\R1_25_금당고_20261010_q18_clean\\q18-solutionImage-afterfreeze.png",
+      "sha256": "fa43e3a3afec867cf3b4833b8b6f01e9d36c0d45b23e1cd60d2127bfc4e32b7e"
+    },
+    "observation": "Reopened after the blind freeze. A, D, B, C; both curves and the A-D-C / D-B-C line segments; S1/S2 labels remain legible with no collisions or geometry drift."
+  },
+  "solutionModeStaticPlacement": {
+    "enginePath": "archive/engine.html",
+    "inspectedLines": [
+      2837,
+      2855,
+      2342,
+      2351
+    ],
+    "status": "SOLUTION_IMAGE_RENDERED_ONCE_BEFORE_SOLUTION_TEXT",
+    "details": "Solution reminder formats q.content text only. The problem image field is not emitted in that reminder; renderSolutionImageHTML emits one solutionImage <img> after the answer and before .sol-exp. Long-solution continuation keeps the image in the first box only. With this same-ref binding, solution mode shows the graph once; no duplicate problem image or overlapping image element is introduced by the layout code.",
+    "actualArchiveEngineBrowserRender": "NOT_RUN_BY_R1",
+    "actualRenderPassAsserted": false
+  },
+  "solutionLayout": {
+    "status": "PASS",
+    "smallBoardContinuityStatus": "PASS",
+    "solutionSha256": "f195aa2f79b5ef47d41b52166bbd4964df9ecdf702184312faf051799236bbcd",
+    "observation": "Current solution remains unchanged and sequential: derive four point coordinates, calculate S1 and S2 by determinants, then sum. The solutionImage insertion is a single separate block before solution prose; static engine placement has no repeated image or overlap."
+  },
+  "visualSvg": {
+    "status": "PASS",
+    "problemVisual": {
+      "necessity": "VISUAL_REQUIRED",
+      "disposition": "KEEP_CURRENT_REPLACEMENT_SVG",
+      "assetRef": "assets/images/25_금당고_1학기_중간_고2_수학I/q18-problem-replacement.svg",
+      "assetSha256": "face00290bb829ec2217159533ca7ad8c4e178078d664ba583555ec28618d70c"
+    },
+    "solutionVisual": {
+      "necessity": "VISUAL_REQUIRED",
+      "disposition": "SOLUTION_IMAGE_BOUND_TO_EXISTING_VERIFIED_GRAPH",
+      "assetRef": "assets/images/25_금당고_1학기_중간_고2_수학I/q18-problem-replacement.svg",
+      "assetSha256": "face00290bb829ec2217159533ca7ad8c4e178078d664ba583555ec28618d70c",
+      "reason": "The graph provides the coordinate/triangle context used in the solution; the exact existing geometry is reused. Solution mode places this asset once and does not duplicate the problem image."
+    },
+    "actualArchiveEngineBrowserRender": "NOT_RUN_BY_R1",
+    "actualRenderPassAsserted": false
+  },
+  "noNewAnswerFreeze": "Student payload and problem asset exactly match the existing q18 immutable freeze; solutionImage is added only after the freeze."
+}

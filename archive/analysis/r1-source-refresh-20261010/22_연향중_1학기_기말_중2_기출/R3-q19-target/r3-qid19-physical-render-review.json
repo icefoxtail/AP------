@@ -1,0 +1,116 @@
+{
+  "recordType": "R3_QID_ONLY_PHYSICAL_RENDER_REVIEW",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "exam": "22_연향중_1학기_기말_중2_기출",
+  "scope": {
+    "qid": 19,
+    "wholeExamReview": false,
+    "wholeExamR3ReleaseReadyClaimed": false
+  },
+  "candidate": {
+    "workingJsAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\repair-source-holds\\AP------\\.tmp\\archive\\codex-20261010-yeonhyang-m2-q19-item-recovery\\22_연향중_1학기_기말_중2_기출\\22_연향중_1학기_기말_중2_기출.js",
+    "sha256": "add91ca1f15bfc17ab6ad5610d2d0d1aa330b7a61497973874d5e5dac3f70a76",
+    "gitBlobSha1": "40560d9f62a2bf414b2b9ab1c25a6b5dd263b764",
+    "officialEngineStagingJs": "C:\\Users\\USER\\Desktop\\AP-worktrees\\repair-source-holds\\AP------\\archive\\exams\\__R3_q19_actual_render.js",
+    "stagingJsSha256": "add91ca1f15bfc17ab6ad5610d2d0d1aa330b7a61497973874d5e5dac3f70a76"
+  },
+  "assets": {
+    "assetRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\repair-source-holds\\AP------\\.tmp\\archive\\codex-20261010-yeonhyang-m2-q19-item-recovery\\22_연향중_1학기_기말_중2_기출\\assets",
+    "problemImage": {
+      "path": "assets/images/22_연향중_1학기_기말_중2_기출/q19.png",
+      "sha256": "25fef042a2fd693b7a23ec7c18c7b02e952ff957a04834c9d0167a0499b295c3",
+      "intrinsicPx": "122x99",
+      "browserDecoded": true
+    },
+    "solutionImage": {
+      "path": "assets/images/22_연향중_1학기_기말_중2_기출/q19-solution.svg",
+      "sha256": "5b044f57487a9cf1bff686d3b48a0a0944b4b6cb6edb1f11c106bbdc35cdffc2",
+      "intrinsicPx": "236x150",
+      "desktopRenderedCssPx": "638.30x405.17",
+      "browserDecoded": true
+    }
+  },
+  "browser": {
+    "engine": "Official Archive Engine archive/engine.html",
+    "engineTitle": "JS아카이브 엔진 - Stage E v1.7.5 (AP Header + Submit QR)",
+    "browser": "Chromium",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "playwrightCliVersion": "0.1.22",
+    "desktopViewportCssPx": "1440x1000",
+    "devicePixelRatio": 1,
+    "documentReadyState": "complete",
+    "documentFonts": "loaded",
+    "engineUrl": "http://127.0.0.1:8767/archive/engine.html?data=exams%2F__R3_q19_actual_render.js&mode={exam|sol|ans}"
+  },
+  "dispositions": [
+    {
+      "case": "desktop-exam-q19",
+      "disposition": "PASS_QID_RENDER",
+      "viewport": "1440x1000",
+      "qidBoxCssPx": "316.16x494.02",
+      "mathJaxNodes": 5,
+      "problemPngDecoded": true,
+      "capture": "desktop-exam-q19.png",
+      "captureSha256": "b39262a9723154ba1b34ca4861534932fb9552ab0871ffe54de221b4b4987749",
+      "finding": "Problem text and choices displayed; q19 PNG decoded; no clipping or overflow observed."
+    },
+    {
+      "case": "desktop-sol-q19",
+      "disposition": "PASS_QID_RENDER",
+      "viewport": "1440x1000",
+      "solutionBoxes": 2,
+      "firstBoxCssPx": "656.31x959.19",
+      "mathJaxNodes": 44,
+      "svgDecoded": true,
+      "svgDisplayedCssPx": "638.30x405.17",
+      "capture": "desktop-sol-q19-viewport.png",
+      "captureSha256": "ba6a0b2a396b5f0146be41e3666a0d2cf46f5c3c308e08d58be5bec8a4baf76a",
+      "finding": "Solution SVG, four graph panels, Korean labels, ④ answer, and text legible; no tofu, clipping, or overflow observed."
+    },
+    {
+      "case": "desktop-ans-q19",
+      "disposition": "PASS_QID_RENDER",
+      "viewport": "1440x1000",
+      "answerRow": "19. / ④",
+      "answerRowCssPx": "330.16x40",
+      "capture": "desktop-ans-q19.png",
+      "captureSha256": "d10a1603c08eb4e35adb661956219695da835b0416fde478ada606df1a6a4464",
+      "finding": "Answer row displayed with expected qid and choice."
+    },
+    {
+      "case": "mobile-exam-q19",
+      "disposition": "CAPTURED_COMPACT_OBSERVATION",
+      "viewport": "390x844",
+      "fit": "screen",
+      "qidBoxCssPx": "148.92x232.70",
+      "mathJaxNodes": 5,
+      "problemPngDecoded": true,
+      "capture": "mobile-exam-q19.png",
+      "captureSha256": "e83f2a147c20d94df865c150bda919dcab3fe1ec91e244b0f4dfd3bd3c671bdb",
+      "finding": "Compact page-fit output remains within viewport; content is visibly scaled down."
+    },
+    {
+      "case": "mobile-sol-q19",
+      "disposition": "NOT_RUN_PARENT_SCOPE_CLOSED",
+      "reason": "Parent limited required physical evidence to the three desktop qid cases."
+    },
+    {
+      "case": "mobile-ans-q19",
+      "disposition": "NOT_RUN_PARENT_SCOPE_CLOSED",
+      "reason": "Parent limited required physical evidence to the three desktop qid cases."
+    }
+  ],
+  "review": {
+    "reviewer": "Codex R3 render worker",
+    "overall": "QID_19_DESKTOP_RENDER_PASS_ONLY",
+    "sourcePDFCompared": false,
+    "scopeNote": "Reviewed only repaired qid 19 in official Archive Engine. No whole-exam semantic review or R3_RELEASE_READY claim.",
+    "observations": [
+      "The q19 problem PNG and solution SVG were loaded from byte-identical staged candidate assets.",
+      "Desktop solution capture was aligned so the full q19 solution block is visible in the viewport.",
+      "No glyph tofu, missing image, clipping, or horizontal/vertical content overflow was observed for qid 19 in the three desktop modes.",
+      "Mobile sol/ans were not run per parent scope direction."
+    ]
+  }
+}

@@ -20,14 +20,27 @@ const valid=()=>({uid:'ALITE-NEW-001',approvedMeta:meta,indexMeta:meta,consumerM
  questionMeta:meta,sourceMeta:meta,
  digests:{index:sha256(meta),consumer:sha256(meta),question:sha256(meta),source:sha256(meta),authority:sha256(meta)},
  evidence:{index:SHA,consumer:SHA,authority:SHA}});
-test('legacy 323 stay exempt while every approved post-cutover UID passes Meta parity',()=>{
- const r=audit(path.resolve(__dirname,'..'));
- assert.equal(r.status,'PASS_NEW_UID_SCOPE_ONLY',r.errors.join('\n'));
- assert.equal(r.legacyExemptNotRecertified,323);
+test('source availability keeps unreviewed main rows while strict Meta retention stays scoped to approved Palma QID9 UIDs',()=>{
+ const root=path.resolve(__dirname,'..');
  const index=require('../archive/data/generated-lite-consumer/v1/index.json');
- assert.equal(r.newUidChecked,index.records.length-323);
- assert.equal(r.total,index.approvedCount);
- assert.ok(r.newUidChecked>=23);
+ const approvedQid9=index.records.filter(row=>/^ALITE-PALMA25-2MID-Q(?:17|18|19|20|21|22|23)-/.test(row.uid)&&
+   row.approval==='USER_DIRECTED_QUALITY_APPROVED'&&row.reviewStatus==='USER_DIRECTED_QUALITY_APPROVED');
+ assert.equal(approvedQid9.length,63);
+ const scoped=audit(root,{uidScope:approvedQid9.map(row=>row.uid)});
+ assert.equal(scoped.status,'PASS_APPROVED_UID_SCOPE_ONLY',scoped.errors.join('\n'));
+ assert.equal(scoped.newUidChecked,63);
+ const pending=index.records.find(row=>row.mainSourceAvailable===true&&!['REVIEW_PASS','USER_DIRECTED_QUALITY_APPROVED'].includes(row.reviewStatus));
+ assert.ok(pending,'main source availability is independent of review completion');
+ for(const uid of index.excludedHoldUids||[]){
+  const row=index.records.find(item=>item.uid===uid);
+  assert.ok(row&&row.mainSourceAvailable===true,`preserve source row ${uid}`);
+ }
+ const full=audit(root);
+ assert.equal(full.status,'FAIL','the strict post-cutover approval gate must not silently recertify the main-source inventory');
+ assert.equal(full.total,index.records.length);
+ assert.ok(full.errors.some(error=>error.includes(':NEW_UID_NOT_APPROVED_SELECTABLE')||error.includes(':NEW_UID_APPROVAL_MISSING')));
+ const missing=audit(root,{uidScope:['ALITE-UID-OUTSIDE-APPROVED-ROSTER']});
+ assert.ok(missing.errors.some(error=>error==='ALITE-UID-OUTSIDE-APPROVED-ROSTER:UID_SCOPE_MISSING_FROM_INDEX'));
 });
 test('fully evidenced future UID passes projection-only gate',()=>{
  assert.deepEqual(validateMeta(meta),[]);

@@ -1,0 +1,469 @@
+{
+  "schemaVersion": "ALIVE_QID9_GEUMDANG25_Q09_CREATOR_SELF_REVIEW_V1",
+  "sourceQid": 9,
+  "sourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "lockedPrimaryL3": "H1-RPM-263",
+  "candidateCount": 9,
+  "keep": 9,
+  "revised": 0,
+  "hold": 0,
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 2,
+    "④": 2,
+    "⑤": 1
+  },
+  "formalIndependentGptReviewPerformed": false,
+  "realChromeRender": "NOT_TESTED",
+  "releaseStatus": "BRANCH_ONLY_NOT_RELEASED",
+  "pythonExactCheck": {
+    "pointSubstitution": "9/9 + additional highlighted points verified through Python fractions",
+    "manualArithmeticAndQuadratic": "C3: (x-1)^2=4 -> x=-1,3",
+    "sourcePrimaryL3Authority": "H1-RPM-263 DIRECT_ACTIVE"
+  },
+  "rows": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q09-A1",
+      "finalStem": "유리함수 $y=\\dfrac{k}{x-p}+q$ ($k\\ne0$)의 점근선이 $x=2$, $y=1$이고 그래프가 점 $(3,5)$를 지난다. $k+p+q$의 값은?",
+      "reverseStemFinding": "실제 질문: 계수·점근선 직접 결정; 학생은 점근선/통과점으로 k,p,q의 필수값을 결정해야 함; 정의역 x≠2 확인",
+      "primaryL3Necessity": "유리함수의 점근선 및 점 대입으로 함수식 복원 필수",
+      "problemVisualVerdict": "EXEMPT: 좌표·조건을 모두 문장으로 제공하며 문제 그림은 답 누설 위험",
+      "solutionVisualVerdict": "ADD: 두 점근선, 좌표점 및 가지의 위치로 회복된 함수식과 관계를 직관화",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q09-A1-solution.svg",
+      "mathFacts": {
+        "k": 4,
+        "p": 2,
+        "q": 1,
+        "points": [
+          [
+            3,
+            5
+          ]
+        ]
+      },
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "②",
+          "calculationAndError": "$k-p+q=4-2+1=3$으로 $p$의 부호를 반대로 처리"
+        },
+        {
+          "choice": "③",
+          "calculationAndError": "$k+p-q=4+2-1=5$로 $q$를 뺌"
+        },
+        {
+          "choice": "④",
+          "calculationAndError": "$k+p=4+2=6$으로 $q$ 누락"
+        },
+        {
+          "choice": "⑤",
+          "calculationAndError": "$k+p+2q=4+2+2=8$로 $q$를 두 번 더함"
+        }
+      ],
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "독립 GPT 공개답 검수 및 실제 학생 Chrome/Consumer 미수행"
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q09-A2",
+      "finalStem": "유리함수 $y=\\dfrac{k}{x-p}+q$ ($k\\ne0$)의 점근선이 $x=-1$, $y=2$이고 그래프가 점 $(1,5)$를 지난다. $k-p+q$의 값은?",
+      "reverseStemFinding": "실제 질문: 음수 점근선에서 계수 복원; 학생은 점근선/통과점으로 k,p,q의 필수값을 결정해야 함; 정의역 x≠-1 확인",
+      "primaryL3Necessity": "유리함수의 점근선 및 점 대입으로 함수식 복원 필수",
+      "problemVisualVerdict": "EXEMPT: 좌표·조건을 모두 문장으로 제공하며 문제 그림은 답 누설 위험",
+      "solutionVisualVerdict": "ADD: 두 점근선, 좌표점 및 가지의 위치로 회복된 함수식과 관계를 직관화",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q09-A2-solution.svg",
+      "mathFacts": {
+        "k": 6,
+        "p": -1,
+        "q": 2,
+        "points": [
+          [
+            1,
+            5
+          ]
+        ]
+      },
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "calculationAndError": "$k-p-q=6+1-2=5$로 마지막 $q$의 부호를 반대로 처리"
+        },
+        {
+          "choice": "③",
+          "calculationAndError": "$k+p+q=6-1+2=7$로 $-p$ 대신 $p$ 대입"
+        },
+        {
+          "choice": "④",
+          "calculationAndError": "$k+q=6+2=8$로 $-p$ 누락"
+        },
+        {
+          "choice": "⑤",
+          "calculationAndError": "$k-p+2q=6+1+4=11$로 $q$ 중복"
+        }
+      ],
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "독립 GPT 공개답 검수 및 실제 학생 Chrome/Consumer 미수행"
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q09-A3",
+      "finalStem": "유리함수 $y=\\dfrac{k}{x-p}+q$ ($k\\ne0$)의 점근선이 $x=2$, $y=-3$이고 그래프가 점 $(0,1)$을 지난다. $k+p-q$의 값은?",
+      "reverseStemFinding": "실제 질문: 음수 계수·점근선 부호; 학생은 점근선/통과점으로 k,p,q의 필수값을 결정해야 함; 정의역 x≠2 확인",
+      "primaryL3Necessity": "유리함수의 점근선 및 점 대입으로 함수식 복원 필수",
+      "problemVisualVerdict": "EXEMPT: 좌표·조건을 모두 문장으로 제공하며 문제 그림은 답 누설 위험",
+      "solutionVisualVerdict": "ADD: 두 점근선, 좌표점 및 가지의 위치로 회복된 함수식과 관계를 직관화",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q09-A3-solution.svg",
+      "mathFacts": {
+        "k": -8,
+        "p": 2,
+        "q": -3,
+        "points": [
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "calculationAndError": "$k-p+q=-8-2-3=-13$으로 두 부호를 잘못 사용"
+        },
+        {
+          "choice": "②",
+          "calculationAndError": "$k+p+q=-8+2-3=-9$로 $-q$를 $+q$로 처리"
+        },
+        {
+          "choice": "④",
+          "calculationAndError": "$k-p-q=-8-2+3=-7$로 $p$를 뺌"
+        },
+        {
+          "choice": "⑤",
+          "calculationAndError": "$k+p=-8+2=-6$으로 $-q$ 누락"
+        }
+      ],
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "독립 GPT 공개답 검수 및 실제 학생 Chrome/Consumer 미수행"
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q09-B1",
+      "finalStem": "유리함수 $y=\\dfrac{k}{x-p}+q$ ($k\\ne0$)의 점근선이 $x=-2$, $y=1$이고 그래프가 점 $(0,4)$를 지난다. 이 그래프와 $x$축의 교점의 $x$좌표는?",
+      "reverseStemFinding": "실제 질문: 함수식 복원과 x절편; 학생은 점근선/통과점으로 k,p,q의 필수값을 결정해야 함; 정의역 x≠-2 확인",
+      "primaryL3Necessity": "유리함수의 점근선 및 점 대입으로 함수식 복원 필수",
+      "problemVisualVerdict": "EXEMPT: 좌표·조건을 모두 문장으로 제공하며 문제 그림은 답 누설 위험",
+      "solutionVisualVerdict": "ADD: 두 점근선, 좌표점 및 가지의 위치로 회복된 함수식과 관계를 직관화",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q09-B1-solution.svg",
+      "mathFacts": {
+        "k": 6,
+        "p": -2,
+        "q": 1,
+        "points": [
+          [
+            0,
+            4
+          ],
+          [
+            -8,
+            0
+          ]
+        ]
+      },
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "calculationAndError": "$x+2=-6$에서 $+2$를 이항하지 않고 $x=-6$이라 함"
+        },
+        {
+          "choice": "②",
+          "calculationAndError": "수직 점근선 $x=-2$를 $x$절편으로 혼동"
+        },
+        {
+          "choice": "③",
+          "calculationAndError": "주어진 점 $(0,4)$의 $x$좌표 0을 답으로 혼동"
+        },
+        {
+          "choice": "⑤",
+          "calculationAndError": "회복된 계수 $k=6$을 교점 좌표로 혼동"
+        }
+      ],
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "독립 GPT 공개답 검수 및 실제 학생 Chrome/Consumer 미수행"
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q09-B2",
+      "finalStem": "유리함수 $y=\\dfrac{k}{x-1}+q$ ($k\\ne0$)의 그래프가 두 점 $(2,5)$, $(3,3)$을 지난다. 이 그래프와 $x$축의 교점의 $x$좌표는?",
+      "reverseStemFinding": "실제 질문: 두 점 조건과 x절편; 학생은 점근선/통과점으로 k,p,q의 필수값을 결정해야 함; 정의역 x≠1 확인",
+      "primaryL3Necessity": "유리함수의 점근선 및 점 대입으로 함수식 복원 필수",
+      "problemVisualVerdict": "EXEMPT: 좌표·조건을 모두 문장으로 제공하며 문제 그림은 답 누설 위험",
+      "solutionVisualVerdict": "ADD: 두 점근선, 좌표점 및 가지의 위치로 회복된 함수식과 관계를 직관화",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q09-B2-solution.svg",
+      "mathFacts": {
+        "k": 4,
+        "p": 1,
+        "q": 1,
+        "points": [
+          [
+            2,
+            5
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            -3,
+            0
+          ]
+        ]
+      },
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "calculationAndError": "$q=2$로 잘못 구한 뒤 $4/(x-1)+2=0$을 풀어 $x=-1$"
+        },
+        {
+          "choice": "②",
+          "calculationAndError": "수직 점근선의 $x$좌표 1을 교점으로 선택"
+        },
+        {
+          "choice": "③",
+          "calculationAndError": "주어진 점 $(3,3)$의 가로좌표 3을 교점으로 혼동"
+        },
+        {
+          "choice": "④",
+          "calculationAndError": "주어진 점 $(2,5)$의 세로좌표 5를 교점으로 혼동"
+        }
+      ],
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "독립 GPT 공개답 검수 및 실제 학생 Chrome/Consumer 미수행"
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q09-B3",
+      "finalStem": "유리함수 $y=\\dfrac{k}{x-p}+3$ ($k\\ne0$)의 그래프가 두 점 $(0,1)$, $(2,5)$를 지난다. $k+p$의 값은?",
+      "reverseStemFinding": "실제 질문: 두 점으로 이동량 결정; 학생은 점근선/통과점으로 k,p,q의 필수값을 결정해야 함; 정의역 x≠1 확인",
+      "primaryL3Necessity": "유리함수의 점근선 및 점 대입으로 함수식 복원 필수",
+      "problemVisualVerdict": "EXEMPT: 좌표·조건을 모두 문장으로 제공하며 문제 그림은 답 누설 위험",
+      "solutionVisualVerdict": "ADD: 두 점근선, 좌표점 및 가지의 위치로 회복된 함수식과 관계를 직관화",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q09-B3-solution.svg",
+      "mathFacts": {
+        "k": 2,
+        "p": 1,
+        "q": 3,
+        "points": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            5
+          ]
+        ]
+      },
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "②",
+          "calculationAndError": "$p=1$만 답으로 선택"
+        },
+        {
+          "choice": "③",
+          "calculationAndError": "$k=2$만 답으로 선택"
+        },
+        {
+          "choice": "④",
+          "calculationAndError": "$k+q=2+3=5$로 $p$와 $q$ 혼동"
+        },
+        {
+          "choice": "⑤",
+          "calculationAndError": "$k+p+q=2+1+3=6$으로 수평이동량까지 더함"
+        }
+      ],
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "독립 GPT 공개답 검수 및 실제 학생 Chrome/Consumer 미수행"
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q09-C1",
+      "finalStem": "유리함수 $y=\\dfrac{k}{x-p}+q$ ($k\\ne0$)의 점근선이 $x=2$, $y=-1$이고 그래프가 점 $(3,3)$을 지난다. 이 그래프와 직선 $y=1$의 교점의 $x$좌표는?",
+      "reverseStemFinding": "실제 질문: 수평선과 교점; 학생은 점근선/통과점으로 k,p,q의 필수값을 결정해야 함; 정의역 x≠2 확인",
+      "primaryL3Necessity": "유리함수의 점근선 및 점 대입으로 함수식 복원 필수",
+      "problemVisualVerdict": "EXEMPT: 좌표·조건을 모두 문장으로 제공하며 문제 그림은 답 누설 위험",
+      "solutionVisualVerdict": "ADD: 두 점근선, 좌표점 및 가지의 위치로 회복된 함수식과 관계를 직관화",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q09-C1-solution.svg",
+      "mathFacts": {
+        "k": 4,
+        "p": 2,
+        "q": -1,
+        "points": [
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            1
+          ]
+        ]
+      },
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "calculationAndError": "$x=2-dfrac{4}{1-(-1)}=0$으로 교점 공식에서 부호 반대"
+        },
+        {
+          "choice": "③",
+          "calculationAndError": "점근선 $x=2$를 교점으로 오인"
+        },
+        {
+          "choice": "④",
+          "calculationAndError": "원래 주어진 점 $(3,3)$의 $x$좌표를 재사용"
+        },
+        {
+          "choice": "⑤",
+          "calculationAndError": "$x=p+k=2+4=6$으로 $y-q$로 나누는 단계를 생략"
+        }
+      ],
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "독립 GPT 공개답 검수 및 실제 학생 Chrome/Consumer 미수행"
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q09-C2",
+      "finalStem": "유리함수 $y=\\dfrac{k}{x+1}+q$ ($k\\ne0$)의 그래프가 두 점 $(1,5)$, $(2,4)$를 지난다. $x=-3$일 때 이 함수의 값은?",
+      "reverseStemFinding": "실제 질문: 두 점에서 함수식 결정 후 반대 가지 평가; 학생은 점근선/통과점으로 k,p,q의 필수값을 결정해야 함; 정의역 x≠-1 확인",
+      "primaryL3Necessity": "유리함수의 점근선 및 점 대입으로 함수식 복원 필수",
+      "problemVisualVerdict": "EXEMPT: 좌표·조건을 모두 문장으로 제공하며 문제 그림은 답 누설 위험",
+      "solutionVisualVerdict": "ADD: 두 점근선, 좌표점 및 가지의 위치로 회복된 함수식과 관계를 직관화",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q09-C2-solution.svg",
+      "mathFacts": {
+        "k": 6,
+        "p": -1,
+        "q": 2,
+        "points": [
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            -3,
+            -1
+          ]
+        ]
+      },
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "calculationAndError": "$dfrac{6}{-2}=-3$까지만 계산하고 $+q$ 누락"
+        },
+        {
+          "choice": "②",
+          "calculationAndError": "차를 잘못 계산해 $k=8,q=2$로 놓아 $8/(-2)+2=-2$"
+        },
+        {
+          "choice": "④",
+          "calculationAndError": "두 점으로 $q=3$이라 잘못 구해 $6/(-2)+3=0$"
+        },
+        {
+          "choice": "⑤",
+          "calculationAndError": "$x=-3$에서 함수값 대신 수평 점근선 $q=2$를 답으로 선택"
+        }
+      ],
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "독립 GPT 공개답 검수 및 실제 학생 Chrome/Consumer 미수행"
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q09-C3",
+      "finalStem": "유리함수 $y=\\dfrac{k}{x-p}+q$ ($k\\ne0$)의 점근선이 $x=1$, $y=-1$이고 그래프가 점 $(3,1)$을 지난다. 이 그래프와 직선 $y=x-2$의 두 교점의 $x$좌표의 곱은?",
+      "reverseStemFinding": "실제 질문: 직선과 두 교점; 학생은 점근선/통과점으로 k,p,q의 필수값을 결정해야 함; 정의역 x≠1 확인",
+      "primaryL3Necessity": "유리함수의 점근선 및 점 대입으로 함수식 복원 필수",
+      "problemVisualVerdict": "EXEMPT: 좌표·조건을 모두 문장으로 제공하며 문제 그림은 답 누설 위험",
+      "solutionVisualVerdict": "ADD: 두 점근선, 좌표점 및 가지의 위치로 회복된 함수식과 관계를 직관화",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q09-C3-solution.svg",
+      "mathFacts": {
+        "k": 4,
+        "p": 1,
+        "q": -1,
+        "points": [
+          [
+            3,
+            1
+          ],
+          [
+            -1,
+            -3
+          ]
+        ],
+        "intersectionXCoordinates": [
+          -1,
+          3
+        ],
+        "intersectionXProduct": -3
+      },
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "calculationAndError": "두 교점의 곱 대신 합 $-1+3=2$를 계산"
+        },
+        {
+          "choice": "②",
+          "calculationAndError": "작은 교점의 $x$좌표 $-1$만 선택"
+        },
+        {
+          "choice": "③",
+          "calculationAndError": "교점식 전개에서 상수항 −3을 빠뜨려 x(x−2)=0으로 잘못 만들고 근의 곱 0을 고름"
+        },
+        {
+          "choice": "⑤",
+          "calculationAndError": "큰 교점의 $x$좌표 $3$만 선택"
+        }
+      ],
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "독립 GPT 공개답 검수 및 실제 학생 Chrome/Consumer 미수행",
+      "answerValue": -3,
+      "answer": "④",
+      "choices": [
+        "$2$",
+        "$-1$",
+        "$0$",
+        "$-3$",
+        "$3$"
+      ]
+    }
+  ]
+}

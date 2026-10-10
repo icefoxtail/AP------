@@ -689,7 +689,7 @@ const main=()=>{
   const finalIndex=json(INDEX);
   requireTrue(finalIndex.approvedCount===finalIndex.records.length,'INDEX_COUNT_MISMATCH_AFTER');
   requireTrue(new Set(finalIndex.records.map(x=>x.uid)).size===finalIndex.records.length,'DUPLICATE_AFTER');
-  const checked=gate.audit(root);
+  const checked=gate.audit(root,{uidScope:expectedApprovedUids});
   latestSummary.retentionGate={failures:checked.failures,errors:checked.errors};
   requireTrue(checked.failures===0,'GENERATED_RETENTION_GATE_FAIL:'+checked.errors.slice(0,6).join('|'));
  }

@@ -3,6 +3,18 @@
 - 실행 정본: `docs/architecture/Approved_Generated_Source_Derived_Student_Projection_RELEASE_CURRENT_v1.md`. 지원되는 QID9 생산 형식은 main 출시 빌드에서 자동 projection 생성 → 승인 UID 누락 0·Source/Meta/asset 결속 검증 → 실제 Chrome·runtime 검사 → 검증된 사이트 배포를 모두 닫는다. 미지원 승인 형식을 조용히 누락하지 말고 해당 compiler를 보강한다.
 - Git 병합과 학생 사이트 배포를 구분한다. 승인 파일만 main에 들어갔다는 이유로 완료하지 않으며, 실패한 빌드는 기존 정상 사이트를 유지한다. 정확한 main SHA, 실제 배포 run, 학생 조회·선택·출력 evidence가 있어야 출시 완료다. 조회 파일을 수동으로 수정해 승인 authority와 분리하거나 실패 gate를 약화하여 통과시키지 않는다.
 
+## CURRENT HARD — JS 신규·수정·검수 Meta 필수 확인 (2026-10-10)
+- 모든 기출·유사·Generated·교재/평가용 JS의 신규 제작·기존 수정·문항 검수에서 [JS Metadata 필수 계약](docs/architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md)을 적용한다. 해당 작업 UID의 standardUnit/subUnit·RPM L1~L4·CrossConcept/Condition/Integration/PT/TPL·level/1~5 난이도·UID/sourceQid/provenance·Consumer/index 정합을 확인한다. 미확정 근거는 정확한 EVIDENCE_DEBT로 기록하고 가짜 키/추정값/가짜 NONE으로 채우지 않는다. 핀포인트 작업의 범위를 무관한 문항 전수 재검으로 확대하지 않는다. 메타 변경은 필수 직접 dependency와 운영 검색 projection에 결속한다.
+
+## CURRENT HARD — 최신 요청의 작업 범위·종료 조건 우선 (2026-10-10)
+
+- 먼저 최신 사용자 지시의 대상·작업 종류·종료 조건을 따른다. 아래 전수 생산·검수 규정은 명시적으로 맡긴 전체 작업에 적용하며, 기존 문항의 한정 수정 지시를 확대하는 근거가 아니다.
+- **한정 수정:** 지정 qid/파일/필드와 수정에 꼭 필요한 직접 의존 부분만 고친다. 변경 영향에 필요한 검증을 1회 수행하고 정한 종료 조건에서 끝낸다. 실제 실패·추가 수정이 있을 때만 영향 부분을 재검한다. CREATE→R1→R2→R3 자동 재진입, unchanged 시험지 전체 재풀이·전수 재검은 금지한다.
+- **전체 제작·전수 검수:** 사용자가 전체 작업을 명시하면 기존 전체 품질 절차와 분모를 유지한다. 전수 검수 중 든 ‘예시 qid’와 ‘이 qid만 수정’이라는 명시적 한정을 구별한다.
+- 범위 밖 발견사항은 간단히 보고만 하고 임의 수정·전수 조사하지 않는다. 범위 확장은 사용자 승인을 받는다. OWN_AND_FIX도 승인된 범위 안의 책임이다.
+- 출시·등록·main 반영까지 요청받았다면(적용 가능한 기존 사용자 지시 포함) 해당 범위의 publication·remote readback·필요한 학생 화면 기술 QA까지 책임진다. 이 책임이 변경하지 않은 전체 시험지 재검의 허가는 아니다. 패치·커밋·draft PR 등 명시된 종료 조건을 main 병합으로 바꾸지 않는다.
+- 시작할 때 실제 읽은 관련 정본 경로/버전과 대상·필요 검증·종료 조건만 짧게 밝힌다. 별도 대형 원장·반복 read receipt·새 승인 절차를 만들지 않는다.
+
 ## CURRENT HARD — 다음 학교부터 ALIVE CREATE 중 해설 SVG 동시 제작 (2026-10-10 원장 지시)
 - **적용: 팔마고 다음에 신규 착수하는 모든 학교 시험지의 ALIVE Generated 생산**(QID9/LITE 의미확장 공통). 제작자/작업자는 학교 작업 최초 진입에 기존 `.codex/skills/apmath-visual-upgrade/SKILL.md`, GPT Visual Contract, `도형추출.md`, 도형의방정식 해설 SVG 규정, **사용할 renderer schema/지원범위**를 필독하고 read receipt를 남긴다.
 - **문항·발문·해설 작성 중** 문제용 시각정보와 해설용 SVG를 각각 결정하고, SVG 필요 시 같은 원본 qid의 CREATE closure 안에서 기존 엔진으로 사실 동결→spec→실파일 제작→좌표/semantic QA→UID/asset 결속을 완료한다. 도형의 방정식 H22-C2-01~04는 시각화 기본 필수, 예외는 수학적으로 좁게 기록. SVG 누락인데 TEXT_ONLY라고 정상완료 금지.
@@ -21,7 +33,7 @@
 - **실행 정본:** [문제은행 전 문항 문제·해설 Visual/SVG 게이트 CURRENT](docs/rules/04_VISUAL/Problem_Bank_All_Items_Problem_And_Solution_Visual_Gate_CURRENT_v1.md). 이번 문서 반영은 POLICY_ONLY이며 전수조사·SVG 신규 제작/렌더 완료를 의미하지 않는다.
 
 ## CURRENT HARD — 수정 AI OWN_AND_FIX / 메타 확장 / main 후 학생 화면 기술 마감 (2026-10-09 형님 직접 지시)
-- 모든 JS Archive·ALIVE·문제은행 수정/검수/메타/출시 실행자는 [수정 AI 책임·Meta 확장·출시 마감 CURRENT](docs/architecture/Archive_Correction_Owner_EndToEnd_Closeout_CURRENT_v1.md)를 필독한다. **보고/미확정/NOT_TESTED로 작업 종료하지 않고**, 자신이 발견한 결함을 직접 수정하거나 실제 기술 실행자를 연결해 완료를 수납한다.
+- 모든 JS Archive·ALIVE·문제은행 수정/검수/메타/출시 실행자는 [수정 AI 책임·Meta 확장·출시 마감 CURRENT](docs/architecture/Archive_Correction_Owner_EndToEnd_Closeout_CURRENT_v1.md)를 필독한다. **승인된 대상·종료 조건 안에서** 발견한 결함을 직접 수정하거나 실제 기술 실행자를 연결해 완료를 수납한다. 범위 밖 결함은 보고하고 확장 승인을 받으며, 정확한 도구·권한 blocker나 명시된 한정 작업의 종료를 무한 재검으로 대신하지 않는다.
 - 기존 canonical key를 먼저 검색하되 필요한 CrossConcept·Condition·Generated L4 키가 없으면 사용자 추가 승인 대기 없이 **Generated-only 확장 registry**에 의미·parent·evidence·UID를 등록한 뒤 Source/metadata/Consumer/index에 영구반영한다. RPM LOCKED·원본 기출 및 무관한 UID 보호, 무근거 추정 금지.
 - 원장 직접 Generated 품질 지시의 별도 인증은 생략. **main 병합 이후 필요한 실제 Chrome 학생 조회/출력 등 기술 검사는 수정 AI가 끝까지 진행**한다. main write만으로 MAIN_DONE이 아니며, 실패하면 본 작업의 수리 대상으로 처리한다. 실제 미실행을 PASS로 꾸미지 않는다. 예외적 막힘은 시도·정확한 blockers·주체를 ledger에 남기되 재승인 요청/보고만 하고 끝내지 않는다.
 
@@ -65,7 +77,7 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 15. 완전한 학생 입력으로 답을 먼저 freeze한 뒤 비교에서 발견된 계산·선택기호 표기 오류는 blind 오염이 아니다. 원 freeze와 사전 추론은 보존하고 같은 stage에서 해당 locus만 근거 있는 adjudication/encoding correction을 한다. 정답을 맞힐 때까지 새 agent를 반복 호출하지 않는다. freeze 전 답 노출·그림 누락이나 student body 교체로 기존 freeze가 무효인 경우에만 영향 qid의 fresh 검수를 수행한다.
 
 16. 신규 Codex evidence는 qualityContractVersion을 반드시 기록하고, generic validator를 --quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006으로 호출한다. 버전 누락/오타를 legacy PASS로 우회하지 않는다. R3의 targeted rows와 전 문항 artifactDispositions를 구분한다.
-17. 기존 JS 발문 조판은 `docs/rules/01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`를 따른다. AUTO-FIRST로 정상 자동 줄바꿈은 KEEP하고, 실제 렌더에서 식·정의·조건·질문 경계가 붙어 읽기 어려운 qid만 완결 수식 바깥에서 최소 개행한다. 글자 수·문장 길이·정규식 기반 일괄 조판을 금지하며, `SOURCE_TEXT_EXACT_PARITY`와 choices exact equality를 유지한다. 실제 Archive exam engine의 대상 문항 전체를 렌더 확인한다. 사용자 지정 qid는 전체 분모의 독립 qid-by-qid 검토를 대체하지 않으며, 모든 문항에 KEEP 또는 최종 disposition과 그 화면 근거를 남긴다. MathJax `$...$` 안에 HTML/CSS placeholder를 넣지 않는다. `subjective-2up`은 canonical §6 근거가 있을 때만 개별 문항에 적용하며, 한 파일럿의 qid는 다른 문항/시험지의 자동 승격 근거가 아니다.
+17. 기존 JS 발문 조판은 `docs/rules/01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`를 따른다. AUTO-FIRST로 정상 자동 줄바꿈은 KEEP하고, 실제 렌더에서 식·정의·조건·질문 경계가 붙어 읽기 어려운 qid만 완결 수식 바깥에서 최소 개행한다. 글자 수·문장 길이·정규식 기반 일괄 조판을 금지하며, `SOURCE_TEXT_EXACT_PARITY`와 choices exact equality를 유지한다. 실제 Archive exam engine의 대상 문항 전체를 렌더 확인한다. 전수 검수가 명시된 작업에서 사용자가 든 예시 qid는 전체 분모의 독립 qid-by-qid 검토를 대체하지 않으며, 선정 분모의 모든 문항에 KEEP 또는 최종 disposition과 그 화면 근거를 남긴다. ‘이 qid만 수정’이라는 명시적 한정 작업은 해당 qid와 필수 직접 의존 부분만 검증하고 종료한다. MathJax `$...$` 안에 HTML/CSS placeholder를 넣지 않는다. `subjective-2up`은 canonical §6 근거가 있을 때만 개별 문항에 적용하며, 한 파일럿의 qid는 다른 문항/시험지의 자동 승격 근거가 아니다.
 
 ## Archive Codex 실행 증거·수납 보완
 

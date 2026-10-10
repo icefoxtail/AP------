@@ -1,0 +1,148 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_HOLD_CARRY_CONTINUATION_V1",
+  "stage": "R2",
+  "examUid": "25_금당고_1학기_중간_고2_수학I",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "status": "R2_FULL_QID_SWEEP_COMPLETE_WITH_TRUE_ITEM_HOLD",
+  "pass": false,
+  "completionSealCreated": false,
+  "artifact": {
+    "path": "C:/Users/USER/Desktop/AP------/archive/exams/original/high/h2/1mid/25_금당고_1학기_중간_고2_수학I.js",
+    "rawSha256": "36c8f7879e64785349d75f96545dcf8aef4db0000ee8c069e22e133a8f586fd2",
+    "rawBufferGitBlobSha1": "d60786b727b29a3ef6aaa0e6c7f08d6564b64c6f",
+    "head": "40761d5cfdd37142af266ab54d6f53410bf0ac56"
+  },
+  "denominator": {
+    "expected": 21,
+    "independentlyFrozen": 21,
+    "compared": 21,
+    "matchCount": 20,
+    "trueHoldCount": 1,
+    "holdQids": [
+      18
+    ]
+  },
+  "studentInput": {
+    "path": "C:/Users/USER/Desktop/AP------/archive/analysis/source-only-h2-1mid-20261010/R2_25_금당고_20261010_codex/R2_current-student-only.bundle.json",
+    "sha256": "2a0c25f67c1b138e9dea2981a2428833343abda0f7e0600eabec446a24a5f24d",
+    "sourceSha256": "36c8f7879e64785349d75f96545dcf8aef4db0000ee8c069e22e133a8f586fd2",
+    "qids": "1..21",
+    "answersIncluded": false,
+    "allReferencedProblemAssetsOpened": true
+  },
+  "originalFreeze": {
+    "path": "C:/Users/USER/Desktop/AP------/archive/analysis/source-only-h2-1mid-20261010/R2_25_금당고_20261010_codex/R2_original-independent-freeze.json",
+    "sha256": "1cf31703becf3d6db70f2b32277ffa7412d24b31f94fcd725af9267e3a4cc032",
+    "immutable": true,
+    "preStoredAnswerDisclosure": true
+  },
+  "postfreezeComparison": {
+    "path": "C:/Users/USER/Desktop/AP------/archive/analysis/source-only-h2-1mid-20261010/R2_25_금당고_20261010_codex/R2_postfreeze-current-disclosure.json",
+    "sha256": "3cbfdab1391e1b851266335a2f20d3d68d7c62eabe9d88635b55b9957c98aede",
+    "studentParity": "EXACT",
+    "scopeQids": "1..21"
+  },
+  "q18Adjudication": {
+    "path": "C:/Users/USER/Desktop/AP------/archive/analysis/source-only-h2-1mid-20261010/R2_25_금당고_20261010_codex/R2_adjudication_q18.json",
+    "sha256": "71f6b23351793da0358aa693f5f23bf2bd15fa00192a773f86e316265e22506e",
+    "separateFromOriginalFreeze": true,
+    "correctedValue": "32/3−8/(3 ln 3)≈8.240",
+    "listedChoices": [
+      "14/3",
+      "5",
+      "16/3",
+      "17/3",
+      "6"
+    ],
+    "choiceMatch": false,
+    "sourceReview": {
+      "path": "C:/Users/USER/Desktop/AP------/archive/analysis/source-only-h2-1mid-20261010/R2_25_금당고_20261010_codex/R2_q18-source-review.json",
+      "sha256": "d6584f6797890c6ad2bd26a11b8b512fbc52216a11636252fbe4b1267adbaba8",
+      "scope": "qid 18 only, page 3",
+      "sourcePdfPath": "D:\\기출정리 파일\\(1)1중간\\수1\\2025_금당고2_수1_1중간.pdf",
+      "sourcePdfSha256": "db22b02f9bf1a2869c401a580c468334de1ce53bd1d6329fd00d59fca0900616",
+      "sourceCropPath": "C:/Users/USER/Desktop/AP------/archive/analysis/source-only-h2-1mid-20261010/R2_25_금당고_20261010_codex/q18-original-page3-full-crop.png",
+      "sourceCropSha256": "1a0a405b576e10b401b1d9f7e2440967481c35ff051750023336c8be999bc086"
+    },
+    "competingClaims": {
+      "firstR2Attempt": "≈6.10; corrected because line−f was integrated only to x=−2/3, omitting the portion through curve crossing x=0.",
+      "create": "32/3−8/(3 ln 3)≈8.24; independently verified.",
+      "r1": "choice ③=16/3; not equal to source-defined area, not adopted."
+    },
+    "disposition": "TRUE_ITEM_HOLD_PENDING_ROOT_QUESTION_ONLY_REPLACEMENT"
+  },
+  "evidence": {
+    "path": "C:/Users/USER/Desktop/AP------/archive/analysis/source-only-h2-1mid-20261010/R2_25_금당고_20261010_codex/R2_evidence.json",
+    "sha256": "c2ee0b436537a2dd007e32a7d8f68eaf0b01a988f96dd9324e46d9452ed21075"
+  },
+  "genericValidator": {
+    "path": "C:/Users/USER/Desktop/AP------/archive/analysis/source-only-h2-1mid-20261010/R2_25_금당고_20261010_codex/R2_generic.report.final.json",
+    "sha256": "b49687191774a0077fd391d14eea0a95f3eea01a4cb1d9a66c90b7ea77e45b26",
+    "command": "node archive/tools/archive-stage-validator.mjs --stage R2 --quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006 --execution-line CODEX --exam <absolute JS> --evidence <absolute R2_evidence.json> --asset-root <absolute archive parent> --json",
+    "exitCode": 1,
+    "ok": false,
+    "validatorMode": "R2_V2",
+    "disposition": "FAIL",
+    "denominator": 21,
+    "issues": [
+      "ARTIFACT_KNOWN_FAILED_REVIEW:q18",
+      "ARTIFACT_VALUE_REQUIRED:solution:q18",
+      "ARTIFACT_ANSWER_REQUIRED:q18",
+      "ARTIFACT_ANSWER_REQUIRED_WITH_CHOICES:q18"
+    ]
+  },
+  "evidenceFiles": [
+    {
+      "path": "C:/Users/USER/Desktop/AP------/archive/analysis/source-only-h2-1mid-20261010/R2_25_금당고_20261010_codex/R2_current-student-only.bundle.json",
+      "sha256": "2a0c25f67c1b138e9dea2981a2428833343abda0f7e0600eabec446a24a5f24d"
+    },
+    {
+      "path": "C:/Users/USER/Desktop/AP------/archive/analysis/source-only-h2-1mid-20261010/R2_25_금당고_20261010_codex/R2_independent-answers.json",
+      "sha256": "17e30f3fa4edc4c1ab2cc7ee4dc3226e0c6369e023ab2e49fc0577436b414c29"
+    },
+    {
+      "path": "C:/Users/USER/Desktop/AP------/archive/analysis/source-only-h2-1mid-20261010/R2_25_금당고_20261010_codex/R2_actual-asset-reads.json",
+      "sha256": "51cb98a8cf938a38cd8b4f903e04347367a9ced0b254c27ad57876759acbc901"
+    },
+    {
+      "path": "C:/Users/USER/Desktop/AP------/archive/analysis/source-only-h2-1mid-20261010/R2_25_금당고_20261010_codex/R2_original-independent-freeze.json",
+      "sha256": "1cf31703becf3d6db70f2b32277ffa7412d24b31f94fcd725af9267e3a4cc032"
+    },
+    {
+      "path": "C:/Users/USER/Desktop/AP------/archive/analysis/source-only-h2-1mid-20261010/R2_25_금당고_20261010_codex/R2_postfreeze-current-disclosure.json",
+      "sha256": "3cbfdab1391e1b851266335a2f20d3d68d7c62eabe9d88635b55b9957c98aede"
+    },
+    {
+      "path": "C:/Users/USER/Desktop/AP------/archive/analysis/source-only-h2-1mid-20261010/R2_25_금당고_20261010_codex/R2_q18-correction.json",
+      "sha256": "438a04deeb62f8fc6a3722fd69b93a69016c0a27713dbf98cd8672028147f448"
+    },
+    {
+      "path": "C:/Users/USER/Desktop/AP------/archive/analysis/source-only-h2-1mid-20261010/R2_25_금당고_20261010_codex/R2_adjudication_q18.json",
+      "sha256": "71f6b23351793da0358aa693f5f23bf2bd15fa00192a773f86e316265e22506e"
+    },
+    {
+      "path": "C:/Users/USER/Desktop/AP------/archive/analysis/source-only-h2-1mid-20261010/R2_25_금당고_20261010_codex/R2_q18-source-review.json",
+      "sha256": "d6584f6797890c6ad2bd26a11b8b512fbc52216a11636252fbe4b1267adbaba8"
+    },
+    {
+      "path": "C:/Users/USER/Desktop/AP------/archive/analysis/source-only-h2-1mid-20261010/R2_25_금당고_20261010_codex/R2_evidence.json",
+      "sha256": "c2ee0b436537a2dd007e32a7d8f68eaf0b01a988f96dd9324e46d9452ed21075"
+    },
+    {
+      "path": "C:/Users/USER/Desktop/AP------/archive/analysis/source-only-h2-1mid-20261010/R2_25_금당고_20261010_codex/R2_generic.report.final.json",
+      "sha256": "b49687191774a0077fd391d14eea0a95f3eea01a4cb1d9a66c90b7ea77e45b26"
+    }
+  ],
+  "priorR1ArtifactsPreserved": [
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010\\R1_25_금당고_20261010_codex\\R1_evidence.final.bound.json",
+      "sha256": "9ee386ea59ab0a5b077ef32b8a161bb8a71610993950b9e93050e15994092799"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010\\R1_25_금당고_20261010_codex\\R1_ITEM_HOLD_CARRIED.continuation.final.json",
+      "sha256": "3d752d4ec5850222076d8bfd11d296c629ac8d326e059fe90cd031b9fd29fa35"
+    }
+  ],
+  "nextRequiredAction": "ROOT performs qid-only QUESTION_ONLY replacement for q18; after replacement, obtain clean affected-qid R1 and R2 re-review, then downstream R3/static-or-render and publication remain ROOT/R3 scope."
+}

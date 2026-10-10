@@ -1,7 +1,7 @@
 {
   "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
   "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-04-COMPLEX_OPERATION/shards/pilot-20261008-009.js",
-  "sourceShardGitSha": "007dc18d8f2451bc4e8e23b3231e54f7a87f0e56",
+  "sourceShardGitSha": "e2c6f6999508f145761bb592411882a38c139b80",
   "repairShardGitSha": "5b9b1327e5dbc22031e0ac8b2f5e7ba9143ba987",
   "records": [
     {
@@ -11,7 +11,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 14,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-04-COMPLEX_OPERATION/shards/pilot-20261008-009.js",
-      "sourceShardGitSha": "007dc18d8f2451bc4e8e23b3231e54f7a87f0e56",
+      "sourceShardGitSha": "e2c6f6999508f145761bb592411882a38c139b80",
       "repairShardGitSha": "5b9b1327e5dbc22031e0ac8b2f5e7ba9143ba987",
       "localOrdinal": 1,
       "l2": "H22-C-04-COMPLEX_OPERATION",
@@ -20,7 +20,7 @@
         "l3": "복소수의 연산",
         "l4": "켤레복소수"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 1,
         "level": "중",
@@ -29,12 +29,12 @@
         "originalCategory": "복소수의 연산",
         "standardCourse": "공통수학1",
         "standardUnitKey": "H22-C-04",
-        "standardUnit": "복소수의 연산",
+        "standardUnit": "복소수와 이차방정식",
         "standardUnitOrder": 4,
         "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
-        "subUnit": "복소수의 연산",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "복소수의 계산",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -55,6 +55,7 @@
         "solution": "[키포인트] 켤레근의 곱으로 실수계수 방정식의 상수항을 구한다.\\n다른 근은 $3-2i$이다. 근의 곱은 $(3+2i)(3-2i)=3^2+2^2=13$이므로 $a=13$이다.",
         "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
         "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+        "uid": "ALITE-20261008-HYC26-Q14-004",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q14-004",
@@ -265,7 +266,27 @@
         "physicalStorageBucketKey": "H22-C-04-COMPLEX_OPERATION",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+        "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-04",
+        "subUnitKey": "H22-C-04-COMPLEX_OPERATION"
+      },
+      "sourceMetaSha256": "46e740c8a172e408e73a17c74cb149e52f3e1fe58ce862c9c5930511ed7ea206"
     }
-  ]
+  ],
+  "school": "효천고",
+  "batchId": "MAIN_SOURCE_pilot-20261008-009",
+  "sourceKind": "generated"
 }

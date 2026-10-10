@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ROOT_POSTAPPLY_REGISTRATION_CHECKS_V1",
+  "runId": "h2-intake-batch02-20261010",
+  "examUid": "25_금당고_1학기_중간_고2_수학I",
+  "sourceRawSha256": "bb9011d3c3310a49a36c9974097af9d3833d05ff40e8f0ebe72cfc2848819fa3",
+  "checks": [
+    {
+      "name": "identity-materializer-registration-tests",
+      "command": "node",
+      "args": [
+        "--test",
+        "tests/archive-question-identity-contract.test.mjs",
+        "tests/archive-question-identity-runtime.test.mjs",
+        "tests/archive2-registration-sync.test.mjs",
+        "tests/target-registration-contract.test.mjs",
+        "tests/archive-meta-v2-materializer.test.mjs",
+        "tests/archive2-meta-v2-semantic-authority.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdoutPath": "archive/analysis/h2-intake-batch02-20261010/registration/25_금당고_1학기_중간_고2_수학I/postapply-tests/identity-materializer-registration-tests.stdout.txt",
+      "stdoutSha256": "f3bbb967f57da94242021d24502d0f0b9a84a0fa71f4b8de1ecdd73a7a2c1fb9",
+      "stderrPath": "archive/analysis/h2-intake-batch02-20261010/registration/25_금당고_1학기_중간_고2_수학I/postapply-tests/identity-materializer-registration-tests.stderr.txt",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "verify-archive-registration",
+      "command": "node",
+      "args": [
+        "archive/tools/verify-archive-registration.mjs"
+      ],
+      "exitCode": 0,
+      "stdoutPath": "archive/analysis/h2-intake-batch02-20261010/registration/25_금당고_1학기_중간_고2_수학I/postapply-tests/verify-archive-registration.stdout.txt",
+      "stdoutSha256": "412e743e00d95c8f643f15ad9b0d4f9574ea00397374ebd60cc50233848d3b61",
+      "stderrPath": "archive/analysis/h2-intake-batch02-20261010/registration/25_금당고_1학기_중간_고2_수학I/postapply-tests/verify-archive-registration.stderr.txt",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "archive2-runtime-guard",
+      "command": "node",
+      "args": [
+        "tools/check-archive2-runtime.cjs"
+      ],
+      "exitCode": 0,
+      "stdoutPath": "archive/analysis/h2-intake-batch02-20261010/registration/25_금당고_1학기_중간_고2_수학I/postapply-tests/archive2-runtime-guard.stdout.txt",
+      "stdoutSha256": "a5dff37ebb7da61423530e7e679fd76736c57868ab5975b6e08307aeef757833",
+      "stderrPath": "archive/analysis/h2-intake-batch02-20261010/registration/25_금당고_1학기_중간_고2_수학I/postapply-tests/archive2-runtime-guard.stderr.txt",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "git-diff-check",
+      "command": "git",
+      "args": [
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdoutPath": "archive/analysis/h2-intake-batch02-20261010/registration/25_금당고_1학기_중간_고2_수학I/postapply-tests/git-diff-check.stdout.txt",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrPath": "archive/analysis/h2-intake-batch02-20261010/registration/25_금당고_1학기_중간_고2_수학I/postapply-tests/git-diff-check.stderr.txt",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "createdAt": "2026-10-10T08:45:25.8207993Z"
+}

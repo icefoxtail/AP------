@@ -1,7 +1,7 @@
 {
   "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
   "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-02-CORE/shards/pilot-20261008-004.js",
-  "sourceShardGitSha": "e85a0e6240e635aec40aa449bef07d2e4f90d1c4",
+  "sourceShardGitSha": "fadd93ffaad6c85c604fc3ac41c810dccde8bcd4",
   "repairShardGitSha": "7a19fe4a0b090f6294f36d3aa8b53c888535dffe",
   "records": [
     {
@@ -11,7 +11,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 6,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-02-CORE/shards/pilot-20261008-004.js",
-      "sourceShardGitSha": "e85a0e6240e635aec40aa449bef07d2e4f90d1c4",
+      "sourceShardGitSha": "fadd93ffaad6c85c604fc3ac41c810dccde8bcd4",
       "repairShardGitSha": "7a19fe4a0b090f6294f36d3aa8b53c888535dffe",
       "localOrdinal": 1,
       "l2": "H22-C-02-CORE",
@@ -21,7 +21,7 @@
         "l4": "일차식으로 나눈 나머지",
         "mappingStatus": "RPM_ONLY"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 1,
         "level": "중",
@@ -32,9 +32,9 @@
         "standardUnit": "항등식과 나머지 정리",
         "standardUnitOrder": 2,
         "subUnitKey": "H22-C-02-CORE",
-        "subUnit": "항등식과 나머지 정리",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -45,17 +45,18 @@
         ],
         "content": "두 다항식 $f(x),g(x)$가 $f(x)+g(x)=2$, $\\{f(x)\\}^2-\\{g(x)\\}^2=4x-4$를 만족한다. $f(x)g(x)$를 $x-3$으로 나눈 나머지는?",
         "choices": [
-          "-6",
           "-5",
           "-4",
           "-3",
-          "-2"
+          "-2",
+          "-1"
         ],
-        "answer": "④",
+        "answer": "③",
         "solution": "[키포인트] 합차 공식으로 두 다항식의 값을 구하고 나머지정리를 적용한다.\n$(f+g)(f-g)=4x-4$이고 $f+g=2$이므로 $f-g=2x-2$이다.\n두 식을 더하고 빼면 $f(x)=x$, $g(x)=2-x$이다.\n나머지정리에 의해 구하는 값은 $f(3)g(3)=3\\times(-1)=-3$이다.",
         "problemTypeKey": null,
         "templateKey": null,
         "difficultyBucket": 2,
+        "uid": "ALITE-20261008-HYC26-Q06-001",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q06-001",
@@ -288,7 +289,24 @@
         "physicalStorageBucketKey": "H22-C-02-CORE",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE"
+      },
+      "sourceMetaSha256": "1af1fadaca5b7b37efdce29886c05454722ecbcc8a000c8d5030a1393773d6cb"
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q06-002",
@@ -297,7 +315,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 6,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-02-CORE/shards/pilot-20261008-004.js",
-      "sourceShardGitSha": "e85a0e6240e635aec40aa449bef07d2e4f90d1c4",
+      "sourceShardGitSha": "fadd93ffaad6c85c604fc3ac41c810dccde8bcd4",
       "repairShardGitSha": "7a19fe4a0b090f6294f36d3aa8b53c888535dffe",
       "localOrdinal": 2,
       "l2": "H22-C-02-CORE",
@@ -307,7 +325,7 @@
         "l4": "일차식으로 나눈 나머지",
         "mappingStatus": "RPM_ONLY"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 2,
         "level": "중",
@@ -318,9 +336,9 @@
         "standardUnit": "항등식과 나머지 정리",
         "standardUnitOrder": 2,
         "subUnitKey": "H22-C-02-CORE",
-        "subUnit": "항등식과 나머지 정리",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -331,17 +349,18 @@
         ],
         "content": "두 다항식 $f(x),g(x)$가 $f(x)+g(x)=4$, $\\{f(x)\\}^2-\\{g(x)\\}^2=8x+8$을 만족한다. $f(x)g(x)$를 $x+1$로 나눈 나머지는?",
         "choices": [
+          "0",
+          "2",
           "4",
           "6",
-          "8",
-          "10",
-          "12"
+          "8"
         ],
-        "answer": "①",
+        "answer": "③",
         "solution": "[키포인트] 나머지를 구하려면 $x=-1$에서의 두 함숫값만 알면 된다.\n$x=-1$을 대입하면 $f(-1)+g(-1)=4$이고 $f(-1)^2-g(-1)^2=0$이다.\n따라서 $(f(-1)-g(-1))(f(-1)+g(-1))=0$에서 $f(-1)=g(-1)=2$이다.\n나머지정리에 따라 나머지는 $f(-1)g(-1)=4$이다.",
         "problemTypeKey": null,
         "templateKey": null,
         "difficultyBucket": 2,
+        "uid": "ALITE-20261008-HYC26-Q06-002",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q06-002",
@@ -574,7 +593,24 @@
         "physicalStorageBucketKey": "H22-C-02-CORE",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE"
+      },
+      "sourceMetaSha256": "1af1fadaca5b7b37efdce29886c05454722ecbcc8a000c8d5030a1393773d6cb"
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q06-003",
@@ -583,7 +619,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 6,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-02-CORE/shards/pilot-20261008-004.js",
-      "sourceShardGitSha": "e85a0e6240e635aec40aa449bef07d2e4f90d1c4",
+      "sourceShardGitSha": "fadd93ffaad6c85c604fc3ac41c810dccde8bcd4",
       "repairShardGitSha": "7a19fe4a0b090f6294f36d3aa8b53c888535dffe",
       "localOrdinal": 3,
       "l2": "H22-C-02-CORE",
@@ -593,7 +629,7 @@
         "l4": "고차식 조건",
         "mappingStatus": "FAMILY_ACTIVE"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 3,
         "level": "중",
@@ -604,9 +640,9 @@
         "standardUnit": "항등식과 나머지 정리",
         "standardUnitOrder": 2,
         "subUnitKey": "H22-C-02-CORE",
-        "subUnit": "항등식과 나머지 정리",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -617,17 +653,18 @@
         ],
         "content": "두 다항식 $f(x),g(x)$가 $f(x)+g(x)=2x+1$, $f(x)-g(x)=1$을 만족한다. $f(x)g(x)$를 $x^2-1$로 나눈 나머지를 $R(x)$라 할 때, $R(2)$의 값은?",
         "choices": [
-          "-1",
-          "0",
           "1",
           "2",
-          "3"
+          "3",
+          "4",
+          "5"
         ],
-        "answer": "⑤",
+        "answer": "③",
         "solution": "[키포인트] 합과 차를 이용해 곱을 만든 뒤 나누는 식의 차수보다 낮은 나머지를 구한다.\n$4f(x)g(x)=\\{f(x)+g(x)\\}^2-\\{f(x)-g(x)\\}^2=(2x+1)^2-1$이다.\n따라서 $f(x)g(x)=x^2+x$이다.\n$x^2+x=(x^2-1)+(x+1)$이므로 $R(x)=x+1$이고 $R(2)=3$이다.",
         "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
         "templateKey": null,
         "difficultyBucket": 3,
+        "uid": "ALITE-20261008-HYC26-Q06-003",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q06-003",
@@ -850,7 +887,24 @@
         "physicalStorageBucketKey": "H22-C-02-CORE",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE"
+      },
+      "sourceMetaSha256": "245bec40d593583c711e0a2de4d1f08936fe27b59a38c63cff4187d8f35da914"
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q06-004",
@@ -859,7 +913,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 6,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-02-CORE/shards/pilot-20261008-004.js",
-      "sourceShardGitSha": "e85a0e6240e635aec40aa449bef07d2e4f90d1c4",
+      "sourceShardGitSha": "fadd93ffaad6c85c604fc3ac41c810dccde8bcd4",
       "repairShardGitSha": "7a19fe4a0b090f6294f36d3aa8b53c888535dffe",
       "localOrdinal": 4,
       "l2": "H22-C-02-CORE",
@@ -869,7 +923,7 @@
         "l4": "고차식 조건",
         "mappingStatus": "FAMILY_ACTIVE"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 4,
         "level": "상",
@@ -880,9 +934,9 @@
         "standardUnit": "항등식과 나머지 정리",
         "standardUnitOrder": 2,
         "subUnitKey": "H22-C-02-CORE",
-        "subUnit": "항등식과 나머지 정리",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -893,17 +947,18 @@
         ],
         "content": "두 다항식 $f(x),g(x)$가 $f(x)+g(x)=2x$, $\\{f(x)\\}^2-\\{g(x)\\}^2=4x$를 만족한다. $f(x)g(x)$를 $x^2-4$로 나눈 나머지는?",
         "choices": [
+          "1",
           "2",
           "3",
           "4",
-          "5",
-          "6"
+          "5"
         ],
-        "answer": "②",
+        "answer": "③",
         "solution": "[키포인트] 다항식의 항등식을 이용해 공통인수 $x$를 소거하고 곱을 구한다.\n$(f+g)(f-g)=4x$와 $f+g=2x$에서 $2x\\{f(x)-g(x)-2\\}=0$은 항등식이다.\n따라서 $f(x)-g(x)=2$이다.\n$4f(x)g(x)=(2x)^2-2^2$이므로 $f(x)g(x)=x^2-1$이다.\n$x^2-1=(x^2-4)+3$이므로 나머지는 $3$이다.",
         "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
         "templateKey": null,
         "difficultyBucket": 4,
+        "uid": "ALITE-20261008-HYC26-Q06-004",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q06-004",
@@ -1126,7 +1181,24 @@
         "physicalStorageBucketKey": "H22-C-02-CORE",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 4,
+        "level": "상",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE"
+      },
+      "sourceMetaSha256": "b9493b428de711b5677da4234b5b36a3acd0e369d83dc2b1cde09d6b349bc802"
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q06-005",
@@ -1135,7 +1207,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 6,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-02-CORE/shards/pilot-20261008-004.js",
-      "sourceShardGitSha": "e85a0e6240e635aec40aa449bef07d2e4f90d1c4",
+      "sourceShardGitSha": "fadd93ffaad6c85c604fc3ac41c810dccde8bcd4",
       "repairShardGitSha": "7a19fe4a0b090f6294f36d3aa8b53c888535dffe",
       "localOrdinal": 5,
       "l2": "H22-C-02-CORE",
@@ -1145,7 +1217,7 @@
         "l4": "일차식으로 나눈 나머지",
         "mappingStatus": "RPM_ONLY"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 5,
         "level": "중",
@@ -1156,9 +1228,9 @@
         "standardUnit": "항등식과 나머지 정리",
         "standardUnitOrder": 2,
         "subUnitKey": "H22-C-02-CORE",
-        "subUnit": "항등식과 나머지 정리",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -1169,17 +1241,18 @@
         ],
         "content": "두 다항식 $f(x),g(x)$가 $f(x)+g(x)=5$, $\\{f(x)\\}^2-\\{g(x)\\}^2=10x-15$를 만족한다. $f(x)g(x)$를 $x-2$로 나눈 나머지는?",
         "choices": [
-          "0",
           "2",
           "4",
           "6",
-          "8"
+          "8",
+          "10"
         ],
-        "answer": "④",
+        "answer": "③",
         "solution": "[키포인트] $x=2$에서 합과 차를 구하면 두 다항식을 전개하지 않아도 나머지를 구할 수 있다.\n$f(2)+g(2)=5$, $f(2)^2-g(2)^2=20-15=5$이다.\n$(f(2)-g(2))\\times5=5$이므로 $f(2)-g(2)=1$이다.\n따라서 $f(2)=3$, $g(2)=2$이고 나머지는 $3\\times2=6$이다.",
         "problemTypeKey": null,
         "templateKey": null,
         "difficultyBucket": 2,
+        "uid": "ALITE-20261008-HYC26-Q06-005",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q06-005",
@@ -1412,7 +1485,24 @@
         "physicalStorageBucketKey": "H22-C-02-CORE",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE"
+      },
+      "sourceMetaSha256": "1af1fadaca5b7b37efdce29886c05454722ecbcc8a000c8d5030a1393773d6cb"
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q06-006",
@@ -1421,7 +1511,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 6,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-02-CORE/shards/pilot-20261008-004.js",
-      "sourceShardGitSha": "e85a0e6240e635aec40aa449bef07d2e4f90d1c4",
+      "sourceShardGitSha": "fadd93ffaad6c85c604fc3ac41c810dccde8bcd4",
       "repairShardGitSha": "7a19fe4a0b090f6294f36d3aa8b53c888535dffe",
       "localOrdinal": 6,
       "l2": "H22-C-02-CORE",
@@ -1431,7 +1521,7 @@
         "l4": "고차식 조건",
         "mappingStatus": "FAMILY_ACTIVE"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 6,
         "level": "중",
@@ -1442,9 +1532,9 @@
         "standardUnit": "항등식과 나머지 정리",
         "standardUnitOrder": 2,
         "subUnitKey": "H22-C-02-CORE",
-        "subUnit": "항등식과 나머지 정리",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -1466,6 +1556,7 @@
         "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
         "templateKey": null,
         "difficultyBucket": 3,
+        "uid": "ALITE-20261008-HYC26-Q06-006",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q06-006",
@@ -1688,7 +1779,24 @@
         "physicalStorageBucketKey": "H22-C-02-CORE",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE"
+      },
+      "sourceMetaSha256": "245bec40d593583c711e0a2de4d1f08936fe27b59a38c63cff4187d8f35da914"
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q07-003",
@@ -1697,7 +1805,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 7,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-02-CORE/shards/pilot-20261008-004.js",
-      "sourceShardGitSha": "e85a0e6240e635aec40aa449bef07d2e4f90d1c4",
+      "sourceShardGitSha": "fadd93ffaad6c85c604fc3ac41c810dccde8bcd4",
       "repairShardGitSha": "7a19fe4a0b090f6294f36d3aa8b53c888535dffe",
       "localOrdinal": 7,
       "l2": "H22-C-02-CORE",
@@ -1707,7 +1815,7 @@
         "l4": "미정계수 결정",
         "mappingStatus": "RPM_ONLY"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 7,
         "level": "중",
@@ -1718,9 +1826,9 @@
         "standardUnit": "항등식과 나머지 정리",
         "standardUnitOrder": 2,
         "subUnitKey": "H22-C-02-CORE",
-        "subUnit": "항등식과 나머지 정리",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -1731,17 +1839,18 @@
         ],
         "content": "두 다항식 $P(x)=x^3+ax^2-4x-4$, $Q(x)=x^3+2x^2+bx-6$이 모두 $x-1$을 인수로 가질 때, $a+b$의 값은?",
         "choices": [
+          "6",
+          "8",
           "10",
           "12",
-          "14",
-          "16",
-          "18"
+          "14"
         ],
-        "answer": "①",
+        "answer": "③",
         "solution": "[키포인트] 공통인수 $x-1$에 인수정리를 각각 적용한다.\n$P(1)=1+a-4-4=a-7=0$이므로 $a=7$이다.\n$Q(1)=1+2+b-6=b-3=0$이므로 $b=3$이다.\n따라서 $a+b=10$이다.",
         "problemTypeKey": null,
         "templateKey": null,
         "difficultyBucket": 3,
+        "uid": "ALITE-20261008-HYC26-Q07-003",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q07-003",
@@ -1974,7 +2083,27 @@
         "physicalStorageBucketKey": "H22-C-02-CORE",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE"
+      },
+      "sourceMetaSha256": "78c998bc3b98f772038e0c144c8494dad96ebf572e92bd90bb8dff586550d262"
     }
-  ]
+  ],
+  "school": "효천고",
+  "batchId": "MAIN_SOURCE_pilot-20261008-004",
+  "sourceKind": "generated"
 }

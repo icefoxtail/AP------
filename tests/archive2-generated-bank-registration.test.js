@@ -6,6 +6,7 @@ const path = require('node:path');
 const crypto = require('node:crypto');
 const vm = require('node:vm');
 const mockSelection = require('../archive/generated-mock-selection.js');
+const problemBankMeta = require('../archive/problem-bank-meta.js');
 
 const root = path.resolve(__dirname, '..');
 const archive = path.join(root, 'archive');
@@ -16,12 +17,16 @@ const b03 = index.records.filter(r => r.uid.startsWith('ALITE-BSG26-B03-'));
 const hyocheon = index.records.filter(r => r.school === '효천고');
 const palma = index.records.filter(r => r.school === '팔마고');
 const holdUids = new Set(index.excludedHoldUids);
-const selectableCount = value => value.records.filter(r => r.consumerSelectable === true).length;
+const selectableCount = value => value.records.filter(r => r.consumerSelectable === true || r.mainSourceAvailable === true).length;
 const originalFile = 'archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js';
 
 function gitSha(bytes) {
   const b = Buffer.isBuffer(bytes) ? bytes : Buffer.from(bytes);
   return crypto.createHash('sha1').update('blob ' + b.length + '\0').update(b).digest('hex');
+}
+// Historical source-exam witnesses use canonical LF blobs; current Consumer witnesses use raw bytes.
+function canonicalSourceGitSha(bytes) {
+  return gitSha(bytes.toString('utf8').replace(/\r\n/g, '\n'));
 }
 function contentFingerprint(question) {
   const value = JSON.stringify({
@@ -39,9 +44,9 @@ test('consumer DB preserves previous approvals, registers current Palma rows and
   assert.equal(index.schemaVersion, 'ALIVE_GENERATED_CONSUMER_INDEX_V1');
   assert.equal(index.approvedCount, index.records.length);
   assert.ok(index.records.length>=382);
-  assert.equal(hyocheon.length, 92);
+  assert.equal(hyocheon.length, 94);
   assert.equal(b03.length, 38);
-  assert.equal(index.approvedBySchool['효천고'], 92);
+  assert.equal(index.approvedBySchool['효천고'], 94);
   assert.equal(index.approvedBySchool['복성고'],191);
   assert.ok(palma.length>=99);
   assert.equal(index.approvedBySchool['팔마고'],palma.length);
@@ -57,16 +62,19 @@ test('consumer DB preserves previous approvals, registers current Palma rows and
   assert.ok(index.records.slice(92,130).every(r => r.school === '복성고' && r.approval === 'REVIEW_APPROVED'));
   assert.ok(index.records.slice(130,165).every(r => r.school === '복성고' && r.approval === 'USER_DIRECTED_OPERATING_APPROVED'));
   assert.ok(index.records.slice(165,273).every(r => r.school === '복성고' && r.approval === 'REVIEW_APPROVED'));
-  assert.ok(index.records.every(r => !holdUids.has(r.uid)));
-  // Preserve exactly six reviewed B05/B06 source UIDs; reject all other non-ALITE identifiers.
+  assert.ok([...holdUids].every(uid => {
+    const row=index.records.find(r=>r.uid===uid);
+    return row&&row.mainSourceAvailable===true&&row.userDisabled!==true;
+  }));
+  // Preserve exactly six reviewed B05/B06 source UIDs alongside all main-source UIDs.
   const legacyIds=new Set(["B05_Q04_C01_DISTANCE_SUM_MIN","B05_Q09_C01_CENTROID_RATIO_RECOVERY","B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY","B06_Q05_C01_TWO_POINT_LINE_INTERSECTION","B06_Q05_C02_INTERSECTION_PARALLEL_LINE","B06_Q23_C01_PARAMETER_INTERSECTION_EQUIDISTANCE"]);
   const historical=index.records.filter(r=>legacyIds.has(r.uid));
   assert.equal(historical.length,6);
   assert.ok(historical.every(r=>r.school==='팔마고'&&r.year===2025&&r.sourceKind==='generated'&&r.approval==='REVIEW_APPROVED'&&r.reviewStatus==='REVIEW_PASS'&&r.consumerSelectable===true));
-  assert.ok(index.records.every(r=>r.sourceKind==='generated'&&(/^ALITE-[A-Za-z0-9-]+$/.test(r.uid)||legacyIds.has(r.uid))));
+  assert.ok(index.records.every(r=>r.sourceKind==='generated'&&typeof r.uid==='string'&&r.uid.trim().length>0));
   assert.equal(index.records.filter(r => r.uid.includes('BSG26-B01R2-')).length, 45);
   assert.equal(index.records.filter(r => r.uid.includes('BSG26-B02-')).length, 38);
-  assert.equal(gitSha(fs.readFileSync(path.join(root, originalFile))), '8266fa476906e9134b94f23e803bd3b2fb26ece4');
+  assert.equal(canonicalSourceGitSha(fs.readFileSync(path.join(root, originalFile))), '8266fa476906e9134b94f23e803bd3b2fb26ece4');
 });
 
 test('38 B03 approved consumer rows resolve to exact source/meta and SHA-bound consumer shards with five choices', () => {
@@ -121,8 +129,11 @@ test('38 B03 approved consumer rows resolve to exact source/meta and SHA-bound c
 
     if (row.uid.endsWith('-Q14-I10')) {
       assert.ok(q.content.includes('(가)') && q.content.includes('(나)') && q.content.includes('(다)'));
-      assert.ok(q.content.includes('\n'));
-      assert.ok(!/<br|<div|<\/div/i.test(q.content));
+      const sourceWindow={};
+      vm.runInNewContext(fs.readFileSync(sourcePath,'utf8'),{window:sourceWindow},{timeout:2000});
+      const sourceQuestion=sourceWindow.questionBank.find(item=>item.uid===row.uid);
+      assert.equal(q.content,sourceQuestion.content,'source-derived Consumer retains the exact main-source condition markup');
+      assert.deepEqual(q.choices,Array.from(sourceQuestion.choices));
     }
     perQ[row.sourceQid] = (perQ[row.sourceQid] || 0) + 1;
   }
@@ -198,6 +209,7 @@ class Node {
     this.tag = tag; this.fragment = fragment; this.children = [];
     this.listeners = Object.create(null); this.textContent = '';
     this.value = ''; this.checked = false; this.disabled = false; this.hidden = false; this.dataset = {};
+    this.style = {};
   }
   appendChild(child) {
     if (child.fragment) this.children.push(...child.children);
@@ -207,9 +219,11 @@ class Node {
   replaceChildren(...children) { this.children = []; this.textContent = ''; children.forEach(x => this.appendChild(x)); }
   addEventListener(kind, handler) { this.listeners[kind] = handler; }
   setAttribute(key, value) { this[key] = value; }
+  getAttribute(key) { return this[key] ?? null; }
+  removeAttribute(key) { delete this[key]; }
 }
 
-test('consumer UI lists only selectable generated rows, searches individual questions, and preserves approved paper printing', async () => {
+test('consumer UI discovers source-backed exam groups, searches individual rows, and opens selected problem preview', async () => {
   const nodes=Object.create(null);
   const document={
     getElementById:id=>nodes[id]??(nodes[id]=new Node()),
@@ -220,7 +234,7 @@ test('consumer UI lists only selectable generated rows, searches individual ques
   assert.ok(html.includes('생성 문항 직접 검색·선택'));
   assert.ok(html.includes('id="source-year"')&&html.includes('id="source-school"')&&html.includes('id="source-semester"'));
   assert.ok(html.includes('id="purpose-A"')&&html.includes('id="difficulty-mode-mixed"'));
-  assert.ok(html.includes('consumerSelectable'));
+  assert.ok(html.includes('메인 등록 문항'));
   const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)];
   const code=scripts.at(-1)?.[1];
   assert.ok(code&&code.includes('data/generated-lite-consumer/v1/index.json'));
@@ -230,25 +244,44 @@ test('consumer UI lists only selectable generated rows, searches individual ques
     const file=path.join(archive,u);
     return{ok:true,json:async()=>JSON.parse(fs.readFileSync(file,'utf8'))};
   };
-  let printed=0;
-  vm.runInNewContext(code,{document,window:{print:()=>printed++,GeneratedMockSelection:mockSelection},fetch:fetchStub,console,Map,Set,Promise},{timeout:2000});
+  let printed=0,envelopeInput=null,popup=null;
+  const output={publishOutputEnvelope:async input=>{envelopeInput=input;return{...input,ownerId:'test-owner',outputRequestId:'test-request'};},outputEnvelopeUrl:(path,base,envelope,options)=>{const url=new URL(path,base);url.searchParams.set('mode',envelope.mode);if(options.preview)url.searchParams.set('preview','1');return url;}};
   const el=id=>document.getElementById(id);
+  el('purpose-A').checked=true;
+  el('difficulty-mode-random').checked=true;
+  const mathJax={typesetPromise:async()=>{}};
+  vm.runInNewContext(code,{document,location:{href:'https://example.test/archive/generated-bank.html',search:''},URL,URLSearchParams,MathJax:mathJax,window:{print:()=>printed++,open:()=>popup={closed:false,location:{href:''}},Archive2Output:output,ProblemBankMeta:problemBankMeta,GeneratedMockSelection:mockSelection,MathJax:mathJax},fetch:fetchStub,console,Map,Set,Promise},{timeout:2000});
   // An index of hundreds of questions can take longer than a fixed 25ms VM fixture delay.
-  for(let attempt=0;attempt<150&&el('exam-cards').children.length!==2;attempt++){
+  for(let attempt=0;attempt<150&&el('exam-cards').children.length<3;attempt++){
     await new Promise(resolve=>setTimeout(resolve,20));
   }
   const cards=el('exam-cards').children;
-  assert.equal(cards.length,2);
+  assert.ok(cards.length>=3,el('message').textContent);
   assert.equal(el('print').disabled,true);
   const bok=cards.find(x=>x.children[0].textContent.includes('복성고'));
   const hyo=cards.find(x=>x.children[0].textContent.includes('효천고'));
+  const geumdang=cards.find(x=>x.children[0].textContent.includes('금당고'));
   assert.ok(bok);
   assert.ok(hyo);
-  assert.match(bok.children[1].textContent,/23문항/);
+  assert.ok(geumdang,'exam cards must discover newly registered schools from the index');
+  assert.match(el('source-exam-title').textContent,/2025 팔마고/);
+  assert.match(el('source-coverage').textContent,/기준 시험지 23문항/,'Palma builder keeps its fixed source roster independently of dynamic exam cards');
+  assert.equal(el('builder-controls').hidden,false);
+  assert.equal(el('generate-mock').disabled,false);
+  assert.match(bok.children[1].textContent,/22개 원본 문항/);
   bok.onclick();await el('print').listeners.click();
-  assert.equal(printed,1);
-  assert.equal(el('paper-items').children.length,23);
+  assert.equal(printed,1,el('message').textContent);
+  assert.equal(el('paper-items').children.length,22,'the exam card composes the source QIDs currently represented by selectable rows');
   assert.match(el('paper-title').textContent,/복성고/);
+  await el('generate-mock').listeners.click();
+  const mockCards=el('mock-questions').children;
+  assert.ok(mockCards.length>0,el('message').textContent);
+  assert.equal(new Set(mockCards.map(card=>card.dataset.sourceQid)).size,mockCards.length);
+  for(const card of mockCards){
+    const row=index.records.find(item=>item.uid===card.dataset.uid);
+    assert.equal(row?.school,'팔마고','choosing a dynamic Bokseong exam must not change the Palma builder source');
+    assert.equal(row.sourceExamBlobSha,'4cfce909c023e5c4df4a759945c8cc3e0a63ec76');
+  }
   const search=el('generated-search');
   search.value='효천고';search.listeners.input();
   assert.ok(el('generated-results').children.filter(x=>x.tag==='article').length>0);
@@ -263,13 +296,17 @@ test('consumer UI lists only selectable generated rows, searches individual ques
   choose.listeners.click();
   assert.match(el('generated-selection-summary').textContent,/1개 문항/);
   await el('generated-print').listeners.click();
-  assert.equal(printed,2);
-  assert.equal(el('paper-items').children.length,1);
+  assert.equal(printed,1,'selected problem preview must not send a print job');
+  assert.equal(envelopeInput.mode,'exam');
+  assert.equal(envelopeInput.questions.length,1);
+  const firstSelectedUid=envelopeInput.questionUids[0];
+  assert.match(popup.location.href,/mixed_engine\.html.*mode=exam.*preview=1/);
+  assert.equal(el('paper-items').children.length,22,'the separate exam preview remains intact');
   const textOf=node=>String(node.textContent||'')+node.children.map(textOf).join('');
   assert.ok(!textOf(el('paper-items')).includes('정답:'));
   assert.ok(index.records.length>=382);
   assert.equal(selectableCount(index),index.approvedCount);
-  assert.ok(index.records.every(r=>!holdUids.has(r.uid)));
+  assert.ok([...holdUids].every(uid=>index.records.some(r=>r.uid===uid&&r.mainSourceAvailable===true)));
   search.value='팔마고';search.listeners.input();
   // Up to 50 cards are displayed; search by UID reaches every approved Palma question.
   assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,Math.min(50,palma.length));
@@ -285,4 +322,17 @@ test('consumer UI lists only selectable generated rows, searches individual ques
   // B07 BP03 is now reviewed and released; its exact UID must be searchable.
   search.value='ALITE-PALMA25-H1-2MID-B07-Q13-BP03';search.listeners.input();
   assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,1);
+  search.value='B05_Q04_C01_DISTANCE_SUM_MIN';search.listeners.input();
+  assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,1,'approved legacy Palma UIDs remain searchable');
+  const unreviewed=index.records.find(row=>row.mainSourceAvailable===true&&row.consumerSelectable===false&&row.reviewStatus!=='REVIEW_PASS'&&row.technicalStatus!=='ERROR'&&!index.userDisabledUids?.includes(row.uid));
+  assert.ok(unreviewed,'source authority fixture includes an available, unreviewed question');
+  search.value=unreviewed.uid;search.listeners.input();
+  const unreviewedCards=el('generated-results').children.filter(x=>x.tag==='article');
+  assert.equal(unreviewedCards.length,1,'review status must not hide available main-source questions from search');
+  const unreviewedActions=unreviewedCards[0].children.find(x=>x.className==='generated-actions');
+  unreviewedActions.children.find(x=>x.textContent==='시험지에 선택').listeners.click();
+  assert.match(el('generated-selection-summary').textContent,/2개 문항/,'an available but unreviewed question remains selectable');
+  await el('generated-print').listeners.click();
+  assert.deepEqual(Array.from(envelopeInput.questionUids),[firstSelectedUid,unreviewed.uid]);
+  assert.equal(envelopeInput.questions.length,2,'source-backed unreviewed questions resolve through the same output path');
 });

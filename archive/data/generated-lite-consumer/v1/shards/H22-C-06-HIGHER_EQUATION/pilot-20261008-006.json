@@ -1,7 +1,7 @@
 {
   "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
   "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_EQUATION/shards/pilot-20261008-006.js",
-  "sourceShardGitSha": "87833677b3c0499dc44fed21ea4101563b627303",
+  "sourceShardGitSha": "08ad04850fad21591a5fb4ffb21683930b551e26",
   "repairShardGitSha": "d81b4b2f37f752fb9e1fc34fdde3fbd464df4f90",
   "records": [
     {
@@ -11,7 +11,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 11,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_EQUATION/shards/pilot-20261008-006.js",
-      "sourceShardGitSha": "87833677b3c0499dc44fed21ea4101563b627303",
+      "sourceShardGitSha": "08ad04850fad21591a5fb4ffb21683930b551e26",
       "repairShardGitSha": "d81b4b2f37f752fb9e1fc34fdde3fbd464df4f90",
       "localOrdinal": 1,
       "l2": "H22-C-06-HIGHER_EQUATION",
@@ -21,7 +21,7 @@
         "l4": "치환형",
         "mappingStatus": "DIRECT_ACTIVE"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 1,
         "level": "중",
@@ -32,9 +32,9 @@
         "standardUnit": "여러 가지 방정식과 부등식",
         "standardUnitOrder": 6,
         "subUnitKey": "H22-C-06-HIGHER_EQUATION",
-        "subUnit": "여러 가지 방정식과 부등식",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "여러 가지 방정식",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -45,17 +45,18 @@
         ],
         "content": "방정식 $(x^2-4x+1)(x^2-4x+7)=55$의 한 허근을 $\\omega$라 할 때, $\\omega^2-4\\omega$의 값은?",
         "choices": [
-          "-20",
-          "-18",
           "-16",
           "-14",
-          "-12"
+          "-12",
+          "-10",
+          "-8"
         ],
-        "answer": "⑤",
+        "answer": "③",
         "solution": "[키포인트] 공통부분 $t=x^2-4x$로 치환하고 허근에 해당하는 분기만 선택한다.\n$(t+1)(t+7)=55$이므로 $(t-4)(t+12)=0$이다.\n$t=4$는 $x^2-4x-4=0$으로 두 실근을 만든다.\n$t=-12$는 $x^2-4x+12=0$으로 판별식 $16-48<0$이어서 허근을 만든다.\n따라서 $\\omega^2-4\\omega=-12$이다.",
         "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
         "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
         "difficultyBucket": 3,
+        "uid": "ALITE-20261008-HYC26-Q11-001",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q11-001",
@@ -272,7 +273,27 @@
         "physicalStorageBucketKey": "H22-C-06-HIGHER_EQUATION",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+        "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION",
+          "CC_DISCRIMINANT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-HIGHER_EQUATION"
+      },
+      "sourceMetaSha256": "3c6b5f195ce805095ca017a6ad912500156b04011e2f93e38781c96d56ccdc4e"
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q11-002",
@@ -281,7 +302,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 11,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_EQUATION/shards/pilot-20261008-006.js",
-      "sourceShardGitSha": "87833677b3c0499dc44fed21ea4101563b627303",
+      "sourceShardGitSha": "08ad04850fad21591a5fb4ffb21683930b551e26",
       "repairShardGitSha": "d81b4b2f37f752fb9e1fc34fdde3fbd464df4f90",
       "localOrdinal": 2,
       "l2": "H22-C-06-HIGHER_EQUATION",
@@ -291,7 +312,7 @@
         "l4": "치환형",
         "mappingStatus": "DIRECT_ACTIVE"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 2,
         "level": "상",
@@ -302,9 +323,9 @@
         "standardUnit": "여러 가지 방정식과 부등식",
         "standardUnitOrder": 6,
         "subUnitKey": "H22-C-06-HIGHER_EQUATION",
-        "subUnit": "여러 가지 방정식과 부등식",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "여러 가지 방정식",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -315,17 +336,18 @@
         ],
         "content": "실수계수 방정식 $(x^2-2x+2)(x^2-2x+6)=77$의 한 허근을 $\\omega$라 할 때, $\\omega\\overline{\\omega}$의 값은?",
         "choices": [
+          "9",
           "11",
           "13",
           "15",
-          "19",
-          "21"
+          "17"
         ],
-        "answer": "②",
+        "answer": "③",
         "solution": "[키포인트] 허근을 주는 이차방정식을 분리하여 근과 계수의 관계를 사용한다.\n$t=x^2-2x$로 놓으면 $(t+2)(t+6)=77$, 즉 $(t-5)(t+13)=0$이다.\n$t=5$는 실근을 만들고 $t=-13$은 $x^2-2x+13=0$으로 허근을 만든다.\n이차방정식의 두 허근은 켤레복소수이므로 $\\omega\\overline{\\omega}=13$이다.",
         "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
         "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
         "difficultyBucket": 4,
+        "uid": "ALITE-20261008-HYC26-Q11-002",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q11-002",
@@ -544,7 +566,28 @@
         "physicalStorageBucketKey": "H22-C-06-HIGHER_EQUATION",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+        "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION",
+          "CC_DISCRIMINANT",
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "level": "상",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-HIGHER_EQUATION"
+      },
+      "sourceMetaSha256": "bbcf19669708a086826fb2fe32bba6b58da4e5457deebc99906d1873a3f360eb"
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q11-003",
@@ -553,7 +596,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 11,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_EQUATION/shards/pilot-20261008-006.js",
-      "sourceShardGitSha": "87833677b3c0499dc44fed21ea4101563b627303",
+      "sourceShardGitSha": "08ad04850fad21591a5fb4ffb21683930b551e26",
       "repairShardGitSha": "d81b4b2f37f752fb9e1fc34fdde3fbd464df4f90",
       "localOrdinal": 3,
       "l2": "H22-C-06-HIGHER_EQUATION",
@@ -563,7 +606,7 @@
         "l4": "치환형",
         "mappingStatus": "DIRECT_ACTIVE"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 3,
         "level": "상",
@@ -574,9 +617,9 @@
         "standardUnit": "여러 가지 방정식과 부등식",
         "standardUnitOrder": 6,
         "subUnitKey": "H22-C-06-HIGHER_EQUATION",
-        "subUnit": "여러 가지 방정식과 부등식",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "여러 가지 방정식",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -587,17 +630,18 @@
         ],
         "content": "실수계수 방정식 $(x^2-2x+1)(x^2-2x+5)=32$의 한 허근을 $\\omega$라 할 때, $\\omega^2+\\overline{\\omega}^{\\,2}$의 값은?",
         "choices": [
-          "-22",
-          "-20",
           "-18",
           "-16",
-          "-14"
+          "-14",
+          "-12",
+          "-10"
         ],
-        "answer": "⑤",
+        "answer": "③",
         "solution": "[키포인트] 허근을 가진 이차방정식에서 두 켤레근의 합과 곱을 구한다.\n$t=x^2-2x$를 대입하면 $(t+1)(t+5)=32$에서 $(t-3)(t+9)=0$이다.\n$t=-9$에 대응하는 $x^2-2x+9=0$만 허근을 갖는다.\n따라서 $\\omega+\\overline{\\omega}=2$, $\\omega\\overline{\\omega}=9$이다.\n$\\omega^2+\\overline{\\omega}^{\\,2}=2^2-2\\cdot9=-14$이다.",
         "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
         "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
         "difficultyBucket": 4,
+        "uid": "ALITE-20261008-HYC26-Q11-003",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q11-003",
@@ -816,7 +860,28 @@
         "physicalStorageBucketKey": "H22-C-06-HIGHER_EQUATION",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+        "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION",
+          "CC_DISCRIMINANT",
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "level": "상",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-HIGHER_EQUATION"
+      },
+      "sourceMetaSha256": "bbcf19669708a086826fb2fe32bba6b58da4e5457deebc99906d1873a3f360eb"
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q11-004",
@@ -825,7 +890,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 11,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_EQUATION/shards/pilot-20261008-006.js",
-      "sourceShardGitSha": "87833677b3c0499dc44fed21ea4101563b627303",
+      "sourceShardGitSha": "08ad04850fad21591a5fb4ffb21683930b551e26",
       "repairShardGitSha": "d81b4b2f37f752fb9e1fc34fdde3fbd464df4f90",
       "localOrdinal": 4,
       "l2": "H22-C-06-HIGHER_EQUATION",
@@ -835,7 +900,7 @@
         "l4": "치환형",
         "mappingStatus": "DIRECT_ACTIVE"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 4,
         "level": "상",
@@ -846,9 +911,9 @@
         "standardUnit": "여러 가지 방정식과 부등식",
         "standardUnitOrder": 6,
         "subUnitKey": "H22-C-06-HIGHER_EQUATION",
-        "subUnit": "여러 가지 방정식과 부등식",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "여러 가지 방정식",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -870,6 +935,7 @@
         "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
         "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
         "difficultyBucket": 4,
+        "uid": "ALITE-20261008-HYC26-Q11-004",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q11-004",
@@ -1086,7 +1152,27 @@
         "physicalStorageBucketKey": "H22-C-06-HIGHER_EQUATION",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+        "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION",
+          "CC_DISCRIMINANT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "level": "상",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-HIGHER_EQUATION"
+      },
+      "sourceMetaSha256": "ce39a1a1b82b448159eaa05c6654daf487d8a3112c9573b1bdaf161bd890e88d"
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q11-005",
@@ -1095,7 +1181,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 11,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_EQUATION/shards/pilot-20261008-006.js",
-      "sourceShardGitSha": "87833677b3c0499dc44fed21ea4101563b627303",
+      "sourceShardGitSha": "08ad04850fad21591a5fb4ffb21683930b551e26",
       "repairShardGitSha": "d81b4b2f37f752fb9e1fc34fdde3fbd464df4f90",
       "localOrdinal": 5,
       "l2": "H22-C-06-HIGHER_EQUATION",
@@ -1105,7 +1191,7 @@
         "l4": "치환형",
         "mappingStatus": "DIRECT_ACTIVE"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 5,
         "level": "상",
@@ -1116,9 +1202,9 @@
         "standardUnit": "여러 가지 방정식과 부등식",
         "standardUnitOrder": 6,
         "subUnitKey": "H22-C-06-HIGHER_EQUATION",
-        "subUnit": "여러 가지 방정식과 부등식",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "여러 가지 방정식",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -1129,17 +1215,18 @@
         ],
         "content": "방정식 $(x^2-6x+2)(x^2-6x+8)=72$의 모든 실근의 합은?",
         "choices": [
+          "2",
+          "4",
           "6",
           "8",
-          "10",
-          "14",
-          "16"
+          "10"
         ],
-        "answer": "①",
+        "answer": "③",
         "solution": "[키포인트] 실근을 갖는 치환값을 판별식으로 선별한다.\n$t=x^2-6x$로 놓으면 $(t+2)(t+8)=72$에서 $(t-4)(t+14)=0$이다.\n$t=4$인 $x^2-6x-4=0$은 서로 다른 두 실근을 갖는다.\n$t=-14$인 $x^2-6x+14=0$은 판별식이 $36-56<0$이므로 실근이 없다.\n따라서 실근 전체의 합은 $6$이다.",
         "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
         "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
         "difficultyBucket": 4,
+        "uid": "ALITE-20261008-HYC26-Q11-005",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q11-005",
@@ -1358,7 +1445,28 @@
         "physicalStorageBucketKey": "H22-C-06-HIGHER_EQUATION",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+        "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION",
+          "CC_DISCRIMINANT",
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "level": "상",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-HIGHER_EQUATION"
+      },
+      "sourceMetaSha256": "bbcf19669708a086826fb2fe32bba6b58da4e5457deebc99906d1873a3f360eb"
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q11-006",
@@ -1367,7 +1475,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 11,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_EQUATION/shards/pilot-20261008-006.js",
-      "sourceShardGitSha": "87833677b3c0499dc44fed21ea4101563b627303",
+      "sourceShardGitSha": "08ad04850fad21591a5fb4ffb21683930b551e26",
       "repairShardGitSha": "d81b4b2f37f752fb9e1fc34fdde3fbd464df4f90",
       "localOrdinal": 6,
       "l2": "H22-C-06-HIGHER_EQUATION",
@@ -1377,7 +1485,7 @@
         "l4": "치환형",
         "mappingStatus": "DIRECT_ACTIVE"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 6,
         "level": "상",
@@ -1388,9 +1496,9 @@
         "standardUnit": "여러 가지 방정식과 부등식",
         "standardUnitOrder": 6,
         "subUnitKey": "H22-C-06-HIGHER_EQUATION",
-        "subUnit": "여러 가지 방정식과 부등식",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "여러 가지 방정식",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -1401,17 +1509,18 @@
         ],
         "content": "방정식 $(x^2-6x+3)(x^2-6x+9)=112$의 네 근의 곱은? (단, 허근도 포함한다.)",
         "choices": [
-          "-105",
-          "-100",
           "-95",
           "-90",
-          "-85"
+          "-85",
+          "-80",
+          "-75"
         ],
-        "answer": "⑤",
+        "answer": "③",
         "solution": "[키포인트] 치환 후 두 이차방정식의 근의 곱을 각각 계산한다.\n$t=x^2-6x$라 하면 $(t+3)(t+9)=112$에서 $(t-5)(t+17)=0$이다.\n$t=5$인 이차방정식은 $x^2-6x-5=0$으로 두 근의 곱은 $-5$이다.\n$t=-17$인 이차방정식은 $x^2-6x+17=0$으로 두 근의 곱은 $17$이다.\n따라서 네 근의 곱은 $(-5)\\times17=-85$이다.",
         "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
         "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
         "difficultyBucket": 4,
+        "uid": "ALITE-20261008-HYC26-Q11-006",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q11-006",
@@ -1628,7 +1737,30 @@
         "physicalStorageBucketKey": "H22-C-06-HIGHER_EQUATION",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      }
+      },
+      "approval": "REVIEW_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+        "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION",
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-HIGHER_EQUATION"
+      },
+      "sourceMetaSha256": "2ed168e342f8fc949dd93c0a7becbf3a4df2a50c60ab52f1653e3c978e711823"
     }
-  ]
+  ],
+  "school": "효천고",
+  "batchId": "MAIN_SOURCE_pilot-20261008-006",
+  "sourceKind": "generated"
 }
