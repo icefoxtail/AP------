@@ -1,0 +1,161 @@
+{
+  "schemaVersion": "ARCHIVE_SVG_STATIC_PHYSICAL_EVIDENCE_V1",
+  "status": "STATIC_SEMANTIC_QA_PASS_BROWSER_NOT_RUN",
+  "browserRenderEvidence": "NOT_RUN_POLICY_BLOCKED",
+  "rows": [
+    {
+      "qid": 13,
+      "specPath": "archive/analysis/source-only-h2-1mid-20261010/25_금당고_q13_area_graph.visual-spec.json",
+      "specSha256": "55929ec8605794854293f5c337bfcdfb5a5bfe623be2c8a1281e4d41b59cd6bf",
+      "svgPath": "archive\\assets\\images\\25_금당고_1학기_중간_고2_수학II\\q13-solution.svg",
+      "svgSha256": "f09457538bab71f0496355d7ce7d992683a3d084e2b346ed49a963df2b0b1143",
+      "xmlParse": "PASS",
+      "renderer": "alive/engine/visual_renderer.py@0.5.2-circle-geometry-label-layout",
+      "type": "simple_function_graph",
+      "expectedFacts": [
+        "area function on [-2,1] has maximum 6 at x=-1"
+      ],
+      "independentCalculatedOutputs": {
+        "areaValues": {
+          "minus2": 0.0,
+          "minus1": 6.0,
+          "one": 0.0
+        },
+        "derivative": "(9/2)(x−1)(x+1)"
+      },
+      "actualSvgPrimitivesObserved": {
+        "plotPointCount": 61,
+        "maxFormulaResidual": 3.827376460208143e-08,
+        "domainEndpoints": [
+          -1.9999999975609755,
+          1.8348624841735273e-09
+        ],
+        "peak": [
+          -0.9999999972560976,
+          5.9999999935779815
+        ],
+        "peakDelta": [
+          2.743902438595569e-09,
+          -6.4220184725627405e-09
+        ],
+        "labels": [
+          "x=−1",
+          "A(x)=3/2(x-1)^2(x+2)",
+          "Amax=6"
+        ]
+      },
+      "tolerance": 1e-05,
+      "browserRenderEvidence": "NOT_RUN_POLICY_BLOCKED",
+      "finalViewportCssFontPx": "NOT_VERIFIED_BROWSER"
+    },
+    {
+      "qid": 19,
+      "specPath": "archive/analysis/source-only-h2-1mid-20261010/25_금당고_q19_parallel_tangents.visual-spec.json",
+      "specSha256": "f92828564b62a8a228e8df8cfb854a85ecbec67de38070a1baa85ea1aea03e41",
+      "svgPath": "archive\\assets\\images\\25_금당고_1학기_중간_고2_수학II\\q19-solution.svg",
+      "svgSha256": "cb74ba34cb7a59e11a5c096661d08804c26f9ec9fd2901a7e9f38b9e6435db53",
+      "xmlParse": "PASS",
+      "renderer": "alive/engine/visual_renderer.py@0.5.2-circle-geometry-label-layout",
+      "type": "simple_function_graph",
+      "expectedFacts": [
+        "Both tangent lines to y=2x^3 have slope 1."
+      ],
+      "independentCalculatedOutputs": {
+        "a": 0.2721655269759087,
+        "t": 0.4082482904638631,
+        "contactY": 0.13608276348795434,
+        "tangentEquations": [
+          "y=x−a",
+          "y=x+a"
+        ],
+        "slopes": [
+          1,
+          1
+        ]
+      },
+      "actualSvgPrimitivesObserved": {
+        "tangentLines": [
+          {
+            "from": [
+              -0.9999999987804878,
+              -1.2721655256097564
+            ],
+            "to": [
+              0.9999999987804877,
+              0.7278344719512193
+            ],
+            "slope": 1.0000000000000002,
+            "intercept": -0.2721655268292683
+          },
+          {
+            "from": [
+              -0.9999999987804878,
+              -0.7278344719512195
+            ],
+            "to": [
+              0.9999999987804877,
+              1.2721655256097562
+            ],
+            "slope": 1.0000000000000002,
+            "intercept": 0.27216552682926853
+          }
+        ],
+        "lineResiduals": [
+          1.4664036651623746e-10,
+          1.4664014447163254e-10
+        ],
+        "points": [
+          [
+            0.4082482902439024,
+            0.136082763414634
+          ],
+          [
+            -0.4082482902439025,
+            -0.136082763414634
+          ],
+          [
+            0.2721655268292684,
+            0.0
+          ],
+          [
+            0.0,
+            0.2721655268292684
+          ]
+        ],
+        "expectedPoints": [
+          [
+            0.4082482904638631,
+            0.13608276348795434
+          ],
+          [
+            -0.4082482904638631,
+            -0.13608276348795434
+          ],
+          [
+            0.2721655269759087,
+            0
+          ],
+          [
+            0,
+            0.2721655269759087
+          ]
+        ],
+        "pointResiduals": [
+          2.3185893554413913e-10,
+          2.3185883021915633e-10,
+          1.46640255493935e-10,
+          1.46640255493935e-10
+        ],
+        "labels": [
+          "y=x+a",
+          "y=x-a",
+          "(0,a)",
+          "(a,0)"
+        ]
+      },
+      "tolerance": 1e-05,
+      "browserRenderEvidence": "NOT_RUN_POLICY_BLOCKED",
+      "finalViewportCssFontPx": "NOT_VERIFIED_BROWSER"
+    }
+  ]
+}
