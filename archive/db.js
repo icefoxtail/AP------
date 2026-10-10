@@ -1396,7 +1396,7 @@ window.mainDB = {
     },
     {
       "file": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
-      "school": "동산중",
+      "school": "왕운중",
       "topic": "",
       "grade": "중2",
       "year": 2026,
