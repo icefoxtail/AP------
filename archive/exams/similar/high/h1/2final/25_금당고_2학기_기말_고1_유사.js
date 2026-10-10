@@ -37,7 +37,24 @@ window.questionBank = [
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "25_금당고_2학기_기말_고1_기출",
-    "aliveType": "B"
+    "aliveType": "B",
+    "sourceKind": "LEGACY_SIMILAR",
+    "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+    "sourceQid": 1,
+    "L1": "집합과 명제",
+    "L2": "집합",
+    "L3": "집합의 뜻",
+    "L4": "집합인지 판정하기",
+    "problemTypeKey": "PT_SET_DEFINITION",
+    "templateKey": "TPL_SET_IDENTIFY",
+    "crossConceptKeys": [],
+    "secondaryConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "metaFoundationSourceUid": "qid_v1_0f844937093babc5f468b604dd4c4c42209e7bd74fa0d564fceed077a347abf1",
+    "metaFoundationPackId": "SETS_PROPOSITIONS",
+    "metaFoundationAuthority": "meta-foundation:SETS_PROPOSITIONS@1.0.0"
   },
   {
     "id": 2,
@@ -60,7 +77,7 @@ window.questionBank = [
       "조건제시법"
     ],
     "wide": false,
-    "content": "집합 $A=\\{1,2,3,4,5,6\\}$에 대하여 $B=\\{x\\in A\\mid x$는 짝수$\\}$라 하자. 다음 중 $B$의 부분집합이 아닌 것은?",
+    "content": "집합 $A=\\{1,2,3,4,5,6\\}$에 대하여 $A$의 원소 중 짝수만을 모은 집합을 $B$라 하자. 다음 중 $B$의 부분집합이 아닌 것은?",
     "choices": [
       "$\\{2,6\\}$",
       "$\\{2,4,5\\}$",
@@ -75,7 +92,24 @@ window.questionBank = [
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "25_금당고_2학기_기말_고1_기출",
-    "aliveType": "C"
+    "aliveType": "C",
+    "sourceKind": "LEGACY_SIMILAR",
+    "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+    "sourceQid": 2,
+    "L1": "집합과 명제",
+    "L2": "집합",
+    "L3": "부분집합의 판정",
+    "L4": "부분집합인지 판정하기",
+    "problemTypeKey": "PT_SUBSET_JUDGMENT",
+    "templateKey": "TPL_SUBSET_DIRECT",
+    "crossConceptKeys": [],
+    "secondaryConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "metaFoundationSourceUid": "qid_v1_c3744c0ecd300299ef71eba00dcc7c8fe7a1b5c3f3f5beca581702b1e0394604",
+    "metaFoundationPackId": "SETS_PROPOSITIONS",
+    "metaFoundationAuthority": "meta-foundation:SETS_PROPOSITIONS@1.0.0"
   },
   {
     "id": 3,
@@ -113,7 +147,28 @@ window.questionBank = [
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "25_금당고_2학기_기말_고1_기출",
-    "aliveType": "C"
+    "aliveType": "C",
+    "sourceKind": "LEGACY_SIMILAR",
+    "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+    "sourceQid": 3,
+    "L1": "집합과 명제",
+    "L2": "집합",
+    "L3": "서로 같은 집합",
+    "L4": "서로 같은 집합에서 미지수 구하기",
+    "problemTypeKey": "PT_SET_EQUALITY",
+    "templateKey": "TPL_EQUAL_SET_PARAMETER",
+    "crossConceptKeys": [
+      "CC_SET_CARDINALITY"
+    ],
+    "secondaryConceptKeys": [
+      "CC_SET_CARDINALITY"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "metaFoundationSourceUid": "qid_v1_2c9d94dd6a20b1ad17d4d3116953ba5913d8f94b6a6434257a544dbd97ba0a91",
+    "metaFoundationPackId": "SETS_PROPOSITIONS",
+    "metaFoundationAuthority": "meta-foundation:SETS_PROPOSITIONS@1.0.0"
   },
   {
     "id": 4,
@@ -145,13 +200,30 @@ window.questionBank = [
       "$\\sim q\\land\\sim p$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 조건명제 $p\\to q$는 $p$가 참이고 $q$가 거짓일 때에만 거짓이다.\n정석 풀이:\n1. $p\\to q$가 거짓이므로 $p$는 참, $q$는 거짓이다.\n2. 따라서 $p\\lor q$는 참이다.\n3. 나머지 네 명제는 모두 거짓이다.\n따라서 정답은 ①이다.",
+    "solution": "[키포인트] 조건명제 $p\\to q$가 거짓이려면 $p$가 참이고 $q$가 거짓이어야 한다.\n정석 풀이:\n1. 주어진 조건에서 $p$는 참, $q$는 거짓이므로 $\\sim p$는 거짓이고 $\\sim q$는 참이다.\n2. ① $p\\lor q$는 참 또는 거짓이므로 참이다.\n3. ② $\\sim p\\land q$는 거짓이고, ③ $\\sim p\\lor q$도 거짓이다.\n4. ④ $p\\land q$는 거짓이며, ⑤ $\\sim q\\land\\sim p$도 참과 거짓의 논리곱이므로 거짓이다.\n5. 따라서 반드시 참인 명제는 ① 하나이다.\n따라서 정답은 ①이다.",
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "25_금당고_2학기_기말_고1_기출",
-    "aliveType": "B"
+    "aliveType": "B",
+    "sourceKind": "LEGACY_SIMILAR",
+    "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+    "sourceQid": 4,
+    "L1": "집합과 명제",
+    "L2": "명제",
+    "L3": "명제와 조건의 판정",
+    "L4": "조건명제의 참·거짓",
+    "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+    "templateKey": "TPL_IMPLICATION_TRUTH_VALUE",
+    "crossConceptKeys": [],
+    "secondaryConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "metaFoundationSourceUid": "qid_v1_ca1468d1a12db65e0f2f3257fcd4e5d620e8d8870011842a18af6e60f6010dea",
+    "metaFoundationPackId": "SETS_PROPOSITIONS",
+    "metaFoundationAuthority": "meta-foundation:SETS_PROPOSITIONS@1.0.0"
   },
   {
     "id": 5,
@@ -190,7 +262,28 @@ window.questionBank = [
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "25_금당고_2학기_기말_고1_기출",
-    "aliveType": "B"
+    "aliveType": "B",
+    "sourceKind": "LEGACY_SIMILAR",
+    "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+    "sourceQid": 5,
+    "L1": "집합과 명제",
+    "L2": "명제",
+    "L3": "필요조건·충분조건",
+    "L4": "집합과 필요조건·충분조건",
+    "problemTypeKey": "PT_NEC_SUFF_RELATION",
+    "templateKey": "TPL_NEC_SUFF_SET_RELATION",
+    "crossConceptKeys": [
+      "CC_NUMBER_DIVISOR_MULTIPLE"
+    ],
+    "secondaryConceptKeys": [
+      "CC_NUMBER_DIVISOR_MULTIPLE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 1,
+    "metaFoundationSourceUid": "qid_v1_3b34ff6b395c51ac06478e7fea561c69e1ce8c2266e8c418ff231455d29b1143",
+    "metaFoundationPackId": "SETS_PROPOSITIONS",
+    "metaFoundationAuthority": "meta-foundation:SETS_PROPOSITIONS@1.0.0"
   },
   {
     "id": 6,
@@ -245,7 +338,24 @@ window.questionBank = [
       ],
       "essentialVisualFacts": "-2->1, -1->3, 0->0, 1->2",
       "assetRef": "assets/images/25_금당고_2학기_기말_고1_유사/q06.svg"
-    }
+    },
+    "sourceKind": "LEGACY_SIMILAR",
+    "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+    "sourceQid": 6,
+    "L1": "함수",
+    "L2": "함수",
+    "L3": "정의역·공역·치역",
+    "L4": "정의역·공역·치역의 판정과 조건",
+    "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+    "templateKey": "TPL_DOMAIN_CODOMAIN_RANGE_CONDITION",
+    "crossConceptKeys": [],
+    "secondaryConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "metaFoundationSourceUid": "qid_v1_344ea01b2ba10863d1f0f9fda681a8737455ff8738b86caa58c7b0493ee4db4c",
+    "metaFoundationPackId": "FUNCTIONS_GRAPHS",
+    "metaFoundationAuthority": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2"
   },
   {
     "id": 7,
@@ -282,7 +392,24 @@ window.questionBank = [
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "25_금당고_2학기_기말_고1_기출",
-    "aliveType": "B"
+    "aliveType": "B",
+    "sourceKind": "LEGACY_SIMILAR",
+    "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+    "sourceQid": 7,
+    "L1": "함수",
+    "L2": "함수",
+    "L3": "합성함수의 계산",
+    "L4": "합성함숫값 직접 계산",
+    "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+    "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+    "crossConceptKeys": [],
+    "secondaryConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "metaFoundationSourceUid": "qid_v1_54662cf739eec0879fa5192e1d5d24a2628cdef08d3dadd4d9545bafead27f8f",
+    "metaFoundationPackId": "FUNCTIONS_GRAPHS",
+    "metaFoundationAuthority": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2"
   },
   {
     "id": 8,
@@ -320,7 +447,24 @@ window.questionBank = [
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "25_금당고_2학기_기말_고1_기출",
-    "aliveType": "B"
+    "aliveType": "B",
+    "sourceKind": "LEGACY_SIMILAR",
+    "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+    "sourceQid": 8,
+    "L1": "함수",
+    "L2": "함수",
+    "L3": "역함수 구하기와 함수값",
+    "L4": "역함숫값 직접 구하기",
+    "problemTypeKey": "PT_INVERSE_VALUE",
+    "templateKey": "TPL_INVERSE_VALUE_DIRECT",
+    "crossConceptKeys": [],
+    "secondaryConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "metaFoundationSourceUid": "qid_v1_65c1c2b86691587b7bf088ca38e15590a9be8b649058465e2f8c0293c07e2df8",
+    "metaFoundationPackId": "FUNCTIONS_GRAPHS",
+    "metaFoundationAuthority": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2"
   },
   {
     "id": 9,
@@ -359,7 +503,28 @@ window.questionBank = [
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "25_금당고_2학기_기말_고1_기출",
-    "aliveType": "C"
+    "aliveType": "C",
+    "sourceKind": "LEGACY_SIMILAR",
+    "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+    "sourceQid": 9,
+    "L1": "함수",
+    "L2": "유리함수",
+    "L3": "함수식 구하기",
+    "L4": "점근선과 한 점으로 함수식 구하기",
+    "problemTypeKey": "PT_FUNCTION_RECOVERY",
+    "templateKey": "TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT",
+    "crossConceptKeys": [],
+    "secondaryConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "metaFoundationSourceUid": "qid_v1_62fe17e4a415a25a64de6ceaec5247d83d59a93b6f21f4bef649f488f4edba42",
+    "metaFoundationPackId": "FUNCTIONS_GRAPHS",
+    "metaFoundationAuthority": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사/q09-solution.svg",
+    "solutionImageAlt": "유리함수의 점근선 x=2, y=-1과 P(4,3), Q(6,1)을 확인한다.",
+    "solutionImageCaption": "점근선에서 함수식을 복원한 뒤 y=1과의 교점을 구한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -380,7 +545,8 @@ window.questionBank = [
       "무리식",
       "정의역",
       "정수",
-      "집합"
+      "집합",
+      "수직선"
     ],
     "wide": false,
     "content": "두 무리식 $\\sqrt{2x+4}$, $\\sqrt{16-x}$의 값이 모두 실수가 되게 하는 정수 $x$ 전체의 집합을 $A$라 하자. $n(A)+\\min A+\\max A$의 값은?",
@@ -398,7 +564,31 @@ window.questionBank = [
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "25_금당고_2학기_기말_고1_기출",
-    "aliveType": "C"
+    "aliveType": "C",
+    "sourceKind": "LEGACY_SIMILAR",
+    "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+    "sourceQid": 10,
+    "L1": "함수",
+    "L2": "무리함수",
+    "L3": "무리식의 계산",
+    "L4": "무리식이 실수가 되는 범위",
+    "problemTypeKey": "PT_RADICAL_EXPRESSION",
+    "templateKey": "TPL_RADICAL_REAL_VALUE_RANGE",
+    "crossConceptKeys": [],
+    "secondaryConceptKeys": [],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "metaFoundationSourceUid": "qid_v1_074bd71ece4bf006b2e2d2b83fdb7f8f72fc2941f7590b70ae86e8bd3a6ca2fc",
+    "metaFoundationPackId": "FUNCTIONS_GRAPHS",
+    "metaFoundationAuthority": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사/q10-solution.svg",
+    "solutionImageAlt": "두 무리식의 진수 범위를 수직선에서 비교하여 정수 -2부터 16까지 확인한다.",
+    "solutionImageCaption": "정수의 개수는 16-(-2)+1=19개이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -437,7 +627,30 @@ window.questionBank = [
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "25_금당고_2학기_기말_고1_기출",
-    "aliveType": "B"
+    "aliveType": "B",
+    "sourceKind": "LEGACY_SIMILAR",
+    "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+    "sourceQid": 11,
+    "L1": "집합과 명제",
+    "L2": "집합",
+    "L3": "집합의 포함 관계",
+    "L4": "약수·배수의 집합 사이의 포함 관계",
+    "problemTypeKey": "PT_SET_INCLUSION",
+    "templateKey": "TPL_INCLUSION_DIVISOR_MULTIPLE",
+    "crossConceptKeys": [
+      "CC_NUMBER_DIVISOR_MULTIPLE"
+    ],
+    "secondaryConceptKeys": [
+      "CC_NUMBER_DIVISOR_MULTIPLE"
+    ],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 3,
+    "metaFoundationSourceUid": "qid_v1_4beff9d3be3c195e8c814df2f0bb8312f620af4ba7738dec4bd6b909e7fa2dea",
+    "metaFoundationPackId": "SETS_PROPOSITIONS",
+    "metaFoundationAuthority": "meta-foundation:SETS_PROPOSITIONS@1.0.0"
   },
   {
     "id": 12,
@@ -458,7 +671,8 @@ window.questionBank = [
       "명제",
       "대우",
       "부등식",
-      "정수조건"
+      "정수조건",
+      "그래프"
     ],
     "wide": false,
     "content": "두 실수 $x,y$에 대한 명제 ‘$4x+y\\ge k$이면 $x\\ge2$ 또는 $y\\ge1$이다.’가 참이 되도록 하는 정수 $k$ 중 $0\\le k\\le12$인 것의 개수는?",
@@ -470,13 +684,37 @@ window.questionBank = [
       "4"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 결론이 거짓인 범위를 먼저 잡아 그 범위에서 전제가 성립하지 않도록 해야 한다.\n정석 풀이:\n1. 결론 ‘$x\\ge2$ 또는 $y\\ge1$’이 거짓이면 $x\\lt2$이고 $y\\lt1$이다.\n2. 이때 $4x+y\\lt4\\cdot2+1=9$이다. 따라서 $k=9$이면 결론이 거짓인 모든 경우에 전제 $4x+y\\ge9$가 성립하지 않는다.\n3. $k\\lt9$이면 $x,y$를 각각 $2,1$에 충분히 가깝게 잡아 결론은 거짓이면서 $4x+y\\ge k$가 되게 할 수 있다. 따라서 필요한 조건은 $k\\ge9$이다.\n4. $0\\le k\\le12$인 정수 중 가능한 값은 $9,10,11,12$의 네 개이다.\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 조건명제의 결론이 거짓인 범위에서 전제가 참인 반례가 없어야 한다.\n정석 풀이:\n1. 결론 '$x\\ge2$ 또는 $y\\ge1$'이 거짓이려면 $x<2$, $y<1$이어야 한다.\n2. 이때 $4x+y<4\\cdot2+1=9$이므로 $k\\ge9$이면 전제 '$4x+y\\ge k$'는 성립할 수 없다.\n3. 반대로 $k<9$이면 $x=2-\\varepsilon$, $y=1-\\varepsilon$ ($0<\\varepsilon\\le\\dfrac{9-k}{5}$)로 놓을 수 있다. 이때 $x<2$, $y<1$이지만 $4x+y=9-5\\varepsilon\\ge k$이므로 반례가 된다.\n4. 따라서 필요한 조건은 $k\\ge9$이고, $0\\le k\\le12$인 정수 중 가능한 것은 $9,10,11,12$의 네 개이다.\n따라서 정답은 ⑤이다.",
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "25_금당고_2학기_기말_고1_기출",
-    "aliveType": "C"
+    "aliveType": "C",
+    "sourceKind": "LEGACY_SIMILAR",
+    "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+    "sourceQid": 12,
+    "L1": "집합과 명제",
+    "L2": "명제",
+    "L3": "명제가 참이 되기 위한 조건",
+    "L4": "역·대우의 경계조건과 매개변수",
+    "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+    "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_BOUND_PARAMETER",
+    "crossConceptKeys": [],
+    "secondaryConceptKeys": [],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 4,
+    "metaFoundationSourceUid": "qid_v1_c30bced2cdd43248c9cec549331c0558705a257bee894bac4c9e2a28e6e4afb5",
+    "metaFoundationPackId": "SETS_PROPOSITIONS",
+    "metaFoundationAuthority": "meta-foundation:SETS_PROPOSITIONS@1.0.0",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사/q12-solution.svg",
+    "solutionImageAlt": "결론이 거짓인 영역 x<2, y<1의 경계 (2,1)을 시각화한다.",
+    "solutionImageCaption": "이 영역에서 4x+y<9이며 경계점 자체는 포함하지 않는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -514,7 +752,26 @@ window.questionBank = [
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "25_금당고_2학기_기말_고1_기출",
-    "aliveType": "B"
+    "aliveType": "B",
+    "sourceKind": "LEGACY_SIMILAR",
+    "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+    "sourceQid": 13,
+    "L1": "집합과 명제",
+    "L2": "명제",
+    "L3": "절대부등식의 활용과 최댓값·최솟값",
+    "L4": "곱의 최댓값",
+    "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+    "templateKey": "TPL_AMGM_PRODUCT_EXTREMUM",
+    "crossConceptKeys": [],
+    "secondaryConceptKeys": [],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "metaFoundationSourceUid": "qid_v1_6ef888ff6f76fa9fd9e25ab385481ab6d8ddb17f30e1227a954a2af7298f8fed",
+    "metaFoundationPackId": "SETS_PROPOSITIONS",
+    "metaFoundationAuthority": "meta-foundation:SETS_PROPOSITIONS@1.0.0"
   },
   {
     "id": 14,
@@ -538,7 +795,7 @@ window.questionBank = [
       "나머지"
     ],
     "wide": false,
-    "content": "집합 $X=\\{0,1,2,3,4\\}$에서 함수 $f:X\\to X$의 함숫값 $f(x)$를 $2x+1$을 $5$로 나눈 나머지로 정한다. $f^3(0)+f^4(0)$의 값은?",
+    "content": "집합 $X=\\{0,1,2,3,4\\}$에서 함수 $f:X\\to X$의 함숫값 $f(x)$를 $2x+1$을 $5$로 나눈 나머지로 정한다. $f^3(0)+f^4(0)$의 값은? (단, $f^n$은 $f$를 $n$번 합성한 함수를 뜻한다.)",
     "choices": [
       "0",
       "2",
@@ -553,7 +810,24 @@ window.questionBank = [
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "25_금당고_2학기_기말_고1_기출",
-    "aliveType": "B"
+    "aliveType": "B",
+    "sourceKind": "LEGACY_SIMILAR",
+    "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+    "sourceQid": 14,
+    "L1": "함수",
+    "L2": "함수",
+    "L3": "반복합성",
+    "L4": "반복합성의 주기",
+    "problemTypeKey": "PT_ITERATED_COMPOSITION",
+    "templateKey": "TPL_ITERATION_PERIOD",
+    "crossConceptKeys": [],
+    "secondaryConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "metaFoundationSourceUid": "qid_v1_5c0bd4d6080d2ffe8dd05d23b804f3c80827bbb899e0161f86e393f2cdf08889",
+    "metaFoundationPackId": "FUNCTIONS_GRAPHS",
+    "metaFoundationAuthority": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2"
   },
   {
     "id": 15,
@@ -593,7 +867,34 @@ window.questionBank = [
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "25_금당고_2학기_기말_고1_기출",
-    "aliveType": "B"
+    "aliveType": "B",
+    "sourceKind": "LEGACY_SIMILAR",
+    "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+    "sourceQid": 15,
+    "L1": "함수",
+    "L2": "함수",
+    "L3": "역함수의 그래프",
+    "L4": "함수와 역함수의 교점·접점",
+    "problemTypeKey": "PT_INVERSE_GRAPH",
+    "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+    "crossConceptKeys": [
+      "CC_QUADRATIC_FUNCTION"
+    ],
+    "secondaryConceptKeys": [
+      "CC_QUADRATIC_FUNCTION"
+    ],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 3,
+    "metaFoundationSourceUid": "qid_v1_26d6391918689b1a8e8b8f8a335d007e3f4b868229749b41299252ac10dffc50",
+    "metaFoundationPackId": "FUNCTIONS_GRAPHS",
+    "metaFoundationAuthority": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사/q15-solution.svg",
+    "solutionImageAlt": "함수와 역함수가 직선 y=x에 대해 대칭이며 (5,5), (6,6)에서 만난다.",
+    "solutionImageCaption": "두 교점과 중점을 확인한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -649,7 +950,34 @@ window.questionBank = [
       ],
       "essentialVisualFacts": "asymptotes x=-3,y=2; curve passes (0,1)",
       "assetRef": "assets/images/25_금당고_2학기_기말_고1_유사/q16.svg"
-    }
+    },
+    "sourceKind": "LEGACY_SIMILAR",
+    "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+    "sourceQid": 16,
+    "L1": "함수",
+    "L2": "무리함수",
+    "L3": "함수식 구하기",
+    "L4": "그래프의 특징으로 함수식 구하기",
+    "problemTypeKey": "PT_FUNCTION_RECOVERY",
+    "templateKey": "TPL_FUNCTION_FORM_FROM_GRAPH",
+    "crossConceptKeys": [
+      "CC_RATIONAL_FUNCTION"
+    ],
+    "secondaryConceptKeys": [
+      "CC_RATIONAL_FUNCTION"
+    ],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "metaFoundationSourceUid": "qid_v1_11b2a06ff278378100d7bb26cca766d421f3804d5ed1a899137669f7108bdf6a",
+    "metaFoundationPackId": "FUNCTIONS_GRAPHS",
+    "metaFoundationAuthority": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사/q16-solution.svg",
+    "solutionImageAlt": "무리함수 y=√(2x+3)+3의 시작점 (-3/2,3)을 표시한다.",
+    "solutionImageCaption": "진수의 최솟값 0이 시작점을 결정한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -674,7 +1002,7 @@ window.questionBank = [
       "자연수조건"
     ],
     "wide": false,
-    "content": "세 집합 $A=\\{2,3,5,7\\}$, $B=\\{x\\mid x$는 자연수 $k$의 양의 약수$\\}$, $C=\\{x\\mid x$는 $k$ 이하의 $5$의 양의 배수$\\}$가 있다. $A\\cap B$의 모든 원소의 합이 $7$이고 $n(A\\cup C)=7$일 때, 자연수 $k$의 값은?",
+    "content": "집합 $A=\\{2,3,5,7\\}$에 대하여 자연수 $k$의 양의 약수 전체의 집합을 $B$, $k$ 이하인 $5$의 양의 배수 전체의 집합을 $C$라 하자. $A\\cap B$의 모든 원소의 합이 $7$이고 $n(A\\cup C)=7$일 때, 자연수 $k$의 값은?",
     "choices": [
       "10",
       "15",
@@ -689,7 +1017,33 @@ window.questionBank = [
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "25_금당고_2학기_기말_고1_기출",
-    "aliveType": "B"
+    "aliveType": "B",
+    "sourceKind": "LEGACY_SIMILAR",
+    "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+    "sourceQid": 17,
+    "L1": "집합과 명제",
+    "L2": "집합",
+    "L3": "조건을 만족하는 집합",
+    "L4": "집합의 조건을 만족하는 집합 구하기",
+    "problemTypeKey": "PT_SET_CONSTRUCTION",
+    "templateKey": "TPL_SET_EQUATION_SOLUTION",
+    "crossConceptKeys": [
+      "CC_NUMBER_DIVISOR_MULTIPLE",
+      "CC_NUMBER_PRIME_COPRIME"
+    ],
+    "secondaryConceptKeys": [
+      "CC_NUMBER_DIVISOR_MULTIPLE",
+      "CC_NUMBER_PRIME_COPRIME"
+    ],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 4,
+    "metaFoundationSourceUid": "qid_v1_566980584bc40097e6819ebeb994198e700c0aa9d9d6a0fe2c379bf47c077b03",
+    "metaFoundationPackId": "SETS_PROPOSITIONS",
+    "metaFoundationAuthority": "meta-foundation:SETS_PROPOSITIONS@1.0.0"
   },
   {
     "id": 18,
@@ -711,7 +1065,8 @@ window.questionBank = [
       "원",
       "직선",
       "점과직선사이거리",
-      "정수"
+      "정수",
+      "도형"
     ],
     "wide": false,
     "content": "좌표평면 위에 두 점 $A(-1,3)$, $B(1,-3)$과 직선 $l:2x-y=k$가 있다. 명제 ‘직선 $l$ 위의 어떤 점 $P$에 대하여 $\\angle APB=90^\\circ$이다.’가 참이 되도록 하는 정수 $k$의 최댓값은?",
@@ -723,13 +1078,42 @@ window.questionBank = [
       "9"
     ],
     "answer": "③",
-    "solution": "[키포인트] $\\angle APB=90^\\circ$인 점의 자취를 $AB$를 지름으로 하는 원으로 바꾸고 직선과 원의 교점 조건을 사용한다.\n정석 풀이:\n1. $AB$의 중점은 원점이고 $AB=2\\sqrt{10}$이므로 자취는 원 $x^2+y^2=10$이다.\n2. 원점에서 직선 $2x-y-k=0$까지의 거리는 $\\dfrac{|k|}{\\sqrt5}$이다.\n3. 교점이 존재하려면 $\\dfrac{|k|}{\\sqrt5}\\le\\sqrt{10}$, 즉 $|k|\\le5\\sqrt2$이다.\n4. $7\\lt5\\sqrt2\\lt8$이므로 가능한 정수 $k$의 최댓값은 $7$이다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 직각인 점 $P$의 자취를 $AB$를 지름으로 하는 원으로 바꿔 원과 직선의 교점 조건을 이용한다.\n정석 풀이:\n1. $A(-1,3)$, $B(1,-3)$의 중점은 원점이고 $AB=\\sqrt{(1+1)^2+(-3-3)^2}=2\\sqrt{10}$이다. 따라서 직각인 점 $P$의 자취는 두 끝점 $A,B$를 제외한 원 $x^2+y^2=10$ 위에 있다.\n2. 원점에서 직선 $2x-y-k=0$까지의 거리는 $\\dfrac{|k|}{\\sqrt5}$이다. 원과 직선이 만나려면 $\\dfrac{|k|}{\\sqrt5}\\le\\sqrt{10}$, 즉 $|k|\\le5\\sqrt2$이어야 한다.\n3. $7<5\\sqrt2<8$이므로 가능한 정수 $k$의 최댓값은 $7$이다.\n4. 실제로 $k=7$일 때 $P(3,-1)$은 $2(3)-(-1)=7$과 $3^2+(-1)^2=10$을 만족하며, $A,B$ 어느 점도 아니다. 따라서 직각 조건을 충족하는 점이 존재한다.\n따라서 정답은 ③이다.",
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "25_금당고_2학기_기말_고1_기출",
-    "aliveType": "B"
+    "aliveType": "B",
+    "sourceKind": "LEGACY_SIMILAR",
+    "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+    "sourceQid": 18,
+    "L1": "도형의 방정식",
+    "L2": "원의 방정식",
+    "L3": "원과 직선",
+    "L4": "원과 직선의 위치 관계",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_LINE_POSITION",
+    "crossConceptKeys": [
+      "CC_PROPOSITION",
+      "CC_RIGHT_TRIANGLE"
+    ],
+    "secondaryConceptKeys": [
+      "CC_PROPOSITION",
+      "CC_RIGHT_TRIANGLE"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER"
+    ],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 4,
+    "metaFoundationSourceUid": "qid_v1_ab6bb658269e231bfec16e35c4c23bf0767e927f1b9a0d2815381f20d16f443c",
+    "metaFoundationPackId": "GEOMETRY_EQUATIONS",
+    "metaFoundationAuthority": "meta-foundation:GEOMETRY_EQUATIONS@1.0.2",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사/q18-solution.svg",
+    "solutionImageAlt": "AB를 지름으로 하는 원과 2x-y=7의 두 교점을 나타낸다.",
+    "solutionImageCaption": "k=7에서 P(3,-1)는 원 위와 직선 위에 있어 직각 조건을 만족한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -751,10 +1135,11 @@ window.questionBank = [
       "상수함수",
       "절댓값",
       "이차함수",
-      "근의개수"
+      "근의개수",
+      "그래프"
     ],
     "wide": false,
-    "content": "서로 다른 네 실수 $a,b,c,d$에 대하여 $X=\\{a,b,c,d\\}$에서 $f(x)=|(x-1)(x-5)|$가 상수 $k$를 갖는다고 하자. 가능한 정수 $k$ 중 최댓값은?",
+    "content": "서로 다른 네 실수 $a,b,c,d$로 이루어진 집합 $X=\\{a,b,c,d\\}$를 정의역으로 하는 함수 $f(x)=|(x-1)(x-5)|$가 상수함수라고 하자. 이 상수함수의 함숫값을 $k$라 할 때, 가능한 정수 $k$의 최댓값은?",
     "choices": [
       "1",
       "2",
@@ -763,13 +1148,40 @@ window.questionBank = [
       "5"
     ],
     "answer": "③",
-    "solution": "[키포인트] $|(x-1)(x-5)|=k$를 두 이차방정식으로 나누어 서로 다른 네 실근이 생기는 범위를 찾는다.\n정석 풀이:\n1. $(x-1)(x-5)=k$의 판별식은 $16+4k$이므로 $k\\ge0$에서 서로 다른 두 실근을 갖는다.\n2. $(x-1)(x-5)=-k$의 판별식은 $16-4k$이다. 서로 다른 두 실근을 가지려면 $k\\lt4$이다.\n3. $k=0$이면 두 방정식이 같아져 서로 다른 근이 두 개뿐이므로 $0\\lt k\\lt4$이어야 한다.\n4. 가능한 정수는 $1,2,3$이고 최댓값은 $3$이다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 네 개의 서로 다른 원소에서 함숫값이 모두 $k$가 되려면 방정식 $|(x-1)(x-5)|=k$가 서로 다른 네 실근을 가져야 한다.\n정석 풀이:\n1. 절댓값의 값이므로 $k\\ge0$이다. $k=0$이면 근이 $x=1,5$의 두 개뿐이다.\n2. $k>0$일 때 $(x-1)(x-5)=k$와 $(x-1)(x-5)=-k$로 나눈다.\n3. 첫째 식은 $(x-3)^2=4+k$이므로 두 실근 $x=3\\pm\\sqrt{4+k}$를 갖는다.\n4. 둘째 식은 $(x-3)^2=4-k$이다. 여기에서 서로 다른 두 실근을 얻으려면 $4-k>0$, 즉 $k<4$이어야 한다. $k=4$에서는 $x=3$ 한 개만 나오고, $k>4$에서는 실근이 없다.\n5. $k>0$에서는 첫째 식과 둘째 식의 근이 겹치지 않는다. 따라서 네 개의 서로 다른 실근이 존재할 필요충분조건은 $0<k<4$이다.\n6. 가능한 정수 $k$는 $1,2,3$이고 그 최댓값은 $3$이다.\n따라서 정답은 ③이다.",
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "25_금당고_2학기_기말_고1_기출",
-    "aliveType": "B"
+    "aliveType": "B",
+    "sourceKind": "LEGACY_SIMILAR",
+    "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+    "sourceQid": 19,
+    "L1": "함수",
+    "L2": "함수",
+    "L3": "여러 가지 함수의 성질",
+    "L4": "상수함수가 되기 위한 같은 함수값의 개수",
+    "problemTypeKey": "PT_SPECIAL_FUNCTION_PROPERTIES",
+    "templateKey": "TPL_CONSTANT_FUNCTION_PREIMAGE",
+    "crossConceptKeys": [
+      "CC_QUADRATIC_EQUATION"
+    ],
+    "secondaryConceptKeys": [
+      "CC_QUADRATIC_EQUATION"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 4,
+    "metaFoundationSourceUid": "qid_v1_3c0a5225677db511c33a3cf0fc10ce334a81bb6adef3267863db5ae9043dfc28",
+    "metaFoundationPackId": "FUNCTIONS_GRAPHS",
+    "metaFoundationAuthority": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사/q19-solution.svg",
+    "solutionImageAlt": "절댓값 함수와 y=k의 네 교점을 그린다.",
+    "solutionImageCaption": "0<k<4에서만 서로 다른 네 교점이 존재한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -791,7 +1203,8 @@ window.questionBank = [
       "역함수",
       "일대일대응",
       "조각함수",
-      "이차함수"
+      "이차함수",
+      "그래프"
     ],
     "wide": false,
     "content": "정의역과 공역이 각각 실수 전체인 함수 $f$가 $f(x)=\\begin{cases}x+c&(x\\lt1)\\\\ax^2+bx+7&(x\\ge1)\\end{cases}$ $(a\\gt0)$이고 $f(0)=4$를 만족한다. $f$의 역함수가 존재하도록 하는 $a$의 값이 최소일 때 그 역함수를 $g$라 하자. $a-b+g(3)$의 값은?",
@@ -809,7 +1222,35 @@ window.questionBank = [
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "25_금당고_2학기_기말_고1_기출",
-    "aliveType": "C"
+    "aliveType": "C",
+    "sourceKind": "LEGACY_SIMILAR",
+    "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+    "sourceQid": 20,
+    "L1": "함수",
+    "L2": "함수",
+    "L3": "일대일함수와 일대일대응",
+    "L4": "조각함수의 일대일대응 조건",
+    "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+    "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+    "crossConceptKeys": [
+      "CC_QUADRATIC_FUNCTION"
+    ],
+    "secondaryConceptKeys": [
+      "CC_QUADRATIC_FUNCTION"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 5,
+    "metaFoundationSourceUid": "qid_v1_1484bf77d7c260ddea773d832de1912cd4065d0fe35bdf02c1212d7d71de6fca",
+    "metaFoundationPackId": "FUNCTIONS_GRAPHS",
+    "metaFoundationAuthority": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사/q20-solution.svg",
+    "solutionImageAlt": "조각함수의 두 구간 치역을 한 좌표평면에 표시한다.",
+    "solutionImageCaption": "(-∞,5)와 [5,∞)가 합쳐져 실수 전체를 덮는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -843,7 +1284,24 @@ window.questionBank = [
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "25_금당고_2학기_기말_고1_기출",
-    "aliveType": "B"
+    "aliveType": "B",
+    "sourceKind": "LEGACY_SIMILAR",
+    "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+    "sourceQid": 21,
+    "L1": "집합과 명제",
+    "L2": "집합",
+    "L3": "집합의 연산",
+    "L4": "서로소인 두 집합의 뜻",
+    "problemTypeKey": "PT_SET_OPERATION",
+    "templateKey": "TPL_OPERATION_DISJOINT_DEFINITION",
+    "crossConceptKeys": [],
+    "secondaryConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "metaFoundationSourceUid": "qid_v1_ed25a958b4a30a0612e44543f250460ef90fcdf9a73e016eb876c430d9c76a10",
+    "metaFoundationPackId": "SETS_PROPOSITIONS",
+    "metaFoundationAuthority": "meta-foundation:SETS_PROPOSITIONS@1.0.0"
   },
   {
     "id": 22,
@@ -866,7 +1324,8 @@ window.questionBank = [
       "직선",
       "교점",
       "판별식",
-      "범위"
+      "범위",
+      "그래프"
     ],
     "wide": false,
     "content": "무리함수 $y=\\sqrt{x-1}$의 그래프와 직선 $y=2x+k$가 서로 다른 두 점에서 만나도록 하는 $k$의 범위를 $p\\le k\\lt q$라 하자. $8(p+q)$의 값을 구하시오.",
@@ -878,6 +1337,33 @@ window.questionBank = [
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "25_금당고_2학기_기말_고1_기출",
-    "aliveType": "C"
+    "aliveType": "C",
+    "sourceKind": "LEGACY_SIMILAR",
+    "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+    "sourceQid": 22,
+    "L1": "함수",
+    "L2": "무리함수",
+    "L3": "함수 그래프의 교점",
+    "L4": "그래프의 교점 개수",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+    "crossConceptKeys": [
+      "CC_QUADRATIC_EQUATION"
+    ],
+    "secondaryConceptKeys": [
+      "CC_QUADRATIC_EQUATION"
+    ],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 5,
+    "metaFoundationSourceUid": "qid_v1_21f276e0a8be672251f001de6528fbfe01a7bd48f1f29eac59178eb0214dbf85",
+    "metaFoundationPackId": "FUNCTIONS_GRAPHS",
+    "metaFoundationAuthority": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사/q22-solution.svg",
+    "solutionImageAlt": "무리함수와 직선이 두 점에서 만나는 k=-2, 한 점에서 만나는 k=-15/8 경계를 비교한다.",
+    "solutionImageCaption": "k의 범위는 [-2,-15/8)이다.",
+    "solutionImageSize": "medium"
   }
 ];
