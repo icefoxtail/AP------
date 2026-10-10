@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "ALIVE_QID_TARGETED_REPAIR_FOLLOWUP_V1",
+  "date": "2026-10-10",
+  "repository": "icefoxtail/AP------",
+  "branch": "work/alive-25-geumdang-h1-2final-qid9",
+  "baseCommit": "3d2d886f569a4035f27b3ed90cb0d60358c0a297",
+  "scope": "Apply the residual corrections and previously approved design/difficulty recommendations enumerated in the user's targeted re-review. Keep all unrelated items and earlier review records intact.",
+  "evidenceSource": "The referenced /workspace/shared/geumdang-final-repair/ folder was not mounted in this execution environment. The user's detailed re-review text and the exact files read from the current remote branch were used.",
+  "corrections": {
+    "Q18": {
+      "slots": [
+        "A3",
+        "B3",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "actions": [
+        "A3/C1/C2/C3 diagrams now mark both intersections of a representative secant and display the item-specific endpoint/tangent exclusions. C1 explicitly keeps k=±5 because those tangency points are not A or B; C2 excludes natural k=18 at B; C3 excludes k=2,4 through A/B.",
+        "C3 solution now justifies the integer interval using 8<sqrt(65)<9.",
+        "B3 difficulty changed to medium/bucket 3: count multiples of 3 in [-25,25] after one distance bound.",
+        "C3 remains high but changed bucket 5→4: compare an irrational endpoint, count the integer interval, then remove two endpoint lines."
+      ]
+    },
+    "Q19": {
+      "slots": [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "B3",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "actions": [
+        "B1/C1 solutions now begin from the equation given in the stem, with no undefined f.",
+        "C1 now filters k=1,…,8, uses Vieta on Q²−k² to find each four-root product Pk=25−k², and sums to −4. Its five choices, solution, ledger, blueprint, math spec, example SVG and visual text are synchronized.",
+        "C2's option ④=8 route now uses the correct square pair 4,16 and explicitly confuses the square-root product 2·4 with the required value.",
+        "C3 ledger indices ②/③ are aligned with their actual values 1480/66.",
+        "A3 difficulty changed from high/bucket 4 to medium/bucket 3 because it is a direct 0<k<8 filter followed by 7!.",
+        "All nine normalized graph SVGs state t=(x−h)/sqrt(d), u=y/d and u=|t²−1|. B2 labels the shown 0<k<7 region as the excluded four-root case; B3 and C2 show exact integer-root examples."
+      ]
+    },
+    "Q20": {
+      "slots": [
+        "A1",
+        "B3",
+        "C1",
+        "C3"
+      ],
+      "actions": [
+        "A1/B3/C3 ledger routes now perform the displayed arithmetic to the cited choice; B3's single-branch routes distinguish right inverse 4 and left inverse −2.",
+        "B3/C1/C3 SVG labels now show g⁻¹ of each separate input and the requested addition/subtraction."
+      ]
+    },
+    "Q21": {
+      "slots": [],
+      "actions": [
+        "No files changed: the targeted re-review confirmed the previously applied B1/B3/C1/C2/C3 points and found no additional actual error."
+      ]
+    },
+    "Q22": {
+      "slots": [
+        "B3",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "actions": [
+        "B3 option ⑤'s route explicitly rounds the strict integer boundary k<1/2 up to k≤1 after the mistaken lower bound k≥0, producing 0+1=1.",
+        "C1 option ② explicitly records both the threshold 150→120 misread and reversed inequality; none of 168,144,120 is below 120, yielding 0.",
+        "C2 diagram now uses allowed example k=2 with t=3±sqrt(3); source alt/caption agree.",
+        "C3 diagram restores the final condition k=−29/16 with t=1/4,3/4 and x-sum 37/8; source alt/caption and ledger SVG pin agree."
+      ]
+    }
+  },
+  "difficultyRationales": {
+    "Q18B3": "17 multiples of 3 from −24 through 24 after a standard distance interval; medium/3.",
+    "Q18C3": "Irrational endpoint comparison plus removing two excluded endpoint lines; high/4.",
+    "Q19A3": "Directly enumerate k=1,…,7 and multiply; medium/3."
+  },
+  "validation": {
+    "javascript": "Three changed Q18/Q19/Q22 shard files passed node --check.",
+    "json": "Eight changed QID metadata/ledger/math-spec JSON artifacts parsed; manifest and this record read back as JSON.",
+    "svg": "All 18 changed SVGs were parsed as XML and rendered/visually inspected in Chromium (Q18 4, Q19 9, Q20 3, Q22 2).",
+    "mathematics": "Recomputed changed interval/count/option paths; verified Q19-C1 product sum 8·25−204=−4, Q20 specified wrong arithmetic paths, and Q22-C2/C3 displayed roots against stems.",
+    "excluded": "No whole pipeline, unrelated CI, consumer test, or main merge. Actual Chrome/Generated Consumer verification was not run; these were static SVG browser renders."
+  },
+  "mainMerged": false,
+  "consumerVerification": false,
+  "changedFileCount": 31
+}

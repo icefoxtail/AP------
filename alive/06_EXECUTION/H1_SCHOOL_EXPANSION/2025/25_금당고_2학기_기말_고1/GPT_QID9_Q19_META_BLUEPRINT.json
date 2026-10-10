@@ -1,0 +1,264 @@
+{
+  "schemaVersion": "ALIVE_QID9_GEUMDANG25_Q19_META_BLUEPRINT_V1",
+  "sourceQid": 19,
+  "sourceExamPath": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+  "sourceExamBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "candidateJsBlobSha": "35249a7249fe7099388c4835e23c20b00f57435f",
+  "mathSpecBlobSha": "2234a0a7e5912ede633400c56026df6094c4b616",
+  "lockedPrimaryL3": {
+    "id": "H1-RPM-258",
+    "label": "함수의 성질",
+    "l4": "항등함수·상수함수",
+    "pt": "PT_SPECIAL_FUNCTION_PROPERTIES",
+    "template": "TPL_CONSTANT_FUNCTION_PREIMAGE",
+    "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "binding": "ACTIVE"
+  },
+  "sourceInvariant": "|(x-h)^2-d|=k has four distinct real roots iff 0<k<d; integer roots require d−k,d+k distinct positive squares.",
+  "slots": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q19-A1",
+      "primaryL3": "H1-RPM-258",
+      "chosenL4": "항등함수·상수함수",
+      "studentStem": "서로 다른 네 실수 $a,b,c,d$에서 $f(x)=|(x-3)^2-5|$가 상수함수일 때 가능한 정수 함숫값 $k$의 합은?",
+      "choices": [
+        "$4$",
+        "$9$",
+        "$10$",
+        "$11$",
+        "$15$"
+      ],
+      "answer": "③",
+      "level": "중",
+      "difficultyBucket": 3,
+      "parameters": {
+        "h": 3,
+        "d": 5,
+        "mode": "sum",
+        "value": 10
+      },
+      "decisiveInvariant": "0<k<d",
+      "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
+      "solutionVisual": "ADD_FOUR_INTERSECTION_GRAPH",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-A1-solution.svg"
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q19-A2",
+      "primaryL3": "H1-RPM-258",
+      "chosenL4": "항등함수·상수함수",
+      "studentStem": "서로 다른 네 실수에서 $g(x)=|(x-2)^2-6|$의 함숫값이 같은 정수 $k$가 되도록 한다. 가능한 모든 $k$의 합은?",
+      "choices": [
+        "$14$",
+        "$15$",
+        "$21$",
+        "$20$",
+        "$5$"
+      ],
+      "answer": "②",
+      "level": "중",
+      "difficultyBucket": 3,
+      "parameters": {
+        "h": 2,
+        "d": 6,
+        "mode": "sum",
+        "value": 15
+      },
+      "decisiveInvariant": "0<k<d",
+      "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
+      "solutionVisual": "ADD_FOUR_INTERSECTION_GRAPH",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-A2-solution.svg"
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q19-A3",
+      "primaryL3": "H1-RPM-258",
+      "chosenL4": "항등함수·상수함수",
+      "studentStem": "서로 다른 네 실수로 이루어진 집합 $X$에서 $f(x)=|(x+1)^2-8|$가 상수함수이다. 가능한 양의 정수 함숫값 $k$의 곱은?",
+      "choices": [
+        "$28$",
+        "$720$",
+        "$7$",
+        "$40320$",
+        "$5040$"
+      ],
+      "answer": "⑤",
+      "level": "중",
+      "difficultyBucket": 3,
+      "parameters": {
+        "h": -1,
+        "d": 8,
+        "mode": "product",
+        "value": 5040
+      },
+      "decisiveInvariant": "0<k<d",
+      "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
+      "solutionVisual": "ADD_FOUR_INTERSECTION_GRAPH",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-A3-solution.svg",
+      "difficultyRationale": "0<k<8로 일곱 정수를 얻어 곱하는 직접 계산형이므로 중/3으로 조정."
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q19-B1",
+      "primaryL3": "H1-RPM-258",
+      "chosenL4": "항등함수·상수함수",
+      "studentStem": "방정식 $|(x-4)^2-4|=k$가 서로 다른 네 실근을 갖도록 하는 양의 정수 $k$의 개수는?",
+      "choices": [
+        "$1$",
+        "$4$",
+        "$5$",
+        "$3$",
+        "$6$"
+      ],
+      "answer": "④",
+      "level": "중",
+      "difficultyBucket": 3,
+      "parameters": {
+        "h": 4,
+        "d": 4,
+        "mode": "count",
+        "value": 3
+      },
+      "decisiveInvariant": "0<k<d",
+      "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
+      "solutionVisual": "ADD_FOUR_INTERSECTION_GRAPH",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-B1-solution.svg"
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q19-B2",
+      "primaryL3": "H1-RPM-258",
+      "chosenL4": "항등함수·상수함수",
+      "studentStem": "함수 $f(x)=|(x-1)^2-7|$에 대하여, $0\\le k\\le8$인 정수 $k$ 중 방정식 $f(x)=k$가 서로 다른 두 실근을 갖도록 하는 모든 $k$의 합은?",
+      "choices": [
+        "$7$",
+        "$15$",
+        "$8$",
+        "$9$",
+        "$0$"
+      ],
+      "answer": "③",
+      "level": "중",
+      "difficultyBucket": 3,
+      "parameters": {
+        "h": 1,
+        "d": 7,
+        "mode": "bounded_two_roots_sum",
+        "value": 8
+      },
+      "decisiveInvariant": "0≤k≤8에서 두 근인 경계는 k=0,8; k=7은 3근, 1≤k≤6은 4근",
+      "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
+      "solutionVisual": "ADD_FOUR_INTERSECTION_GRAPH",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-B2-solution.svg"
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q19-B3",
+      "primaryL3": "H1-RPM-258",
+      "chosenL4": "항등함수·상수함수",
+      "studentStem": "서로 다른 네 정수로 이루어진 집합 $X$에서 $f(x)=|(x-3)^2-5|$가 상수함수이다. 가능한 정수 함숫값 $k$의 합은?",
+      "choices": [
+        "$4$",
+        "$1$",
+        "$9$",
+        "$8$",
+        "$10$"
+      ],
+      "answer": "①",
+      "level": "상",
+      "difficultyBucket": 4,
+      "parameters": {
+        "h": 3,
+        "d": 5,
+        "mode": "integerroots",
+        "value": 4
+      },
+      "decisiveInvariant": "0<k<d",
+      "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
+      "solutionVisual": "ADD_FOUR_INTERSECTION_GRAPH",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-B3-solution.svg"
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q19-C1",
+      "primaryL3": "H1-RPM-258",
+      "chosenL4": "항등함수·상수함수",
+      "studentStem": "양의 정수 $k$에 대하여 방정식 $|(x-2)^2-9|=k$가 서로 다른 네 실근을 갖는다. 가능한 각 $k$에 대해 네 실근의 곱을 $P_k$라 할 때, 모든 가능한 $k$에 대한 $P_k$의 합은?",
+      "choices": [
+        "$-4$",
+        "$4$",
+        "$8$",
+        "$35$",
+        "$-60$"
+      ],
+      "answer": "①",
+      "level": "상",
+      "difficultyBucket": 4,
+      "parameters": {
+        "h": 2,
+        "d": 9,
+        "mode": "sum_of_four_root_products",
+        "value": -4
+      },
+      "decisiveInvariant": "0<k<9이고 Q²−k²의 상수항 25−k²가 네 근의 곱 Pₖ이다.",
+      "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
+      "solutionVisual": "NORMALIZED_FOUR_ROOT_GRAPH_AND_VIETA_PRODUCT",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-C1-solution.svg"
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q19-C2",
+      "primaryL3": "H1-RPM-258",
+      "chosenL4": "항등함수·상수함수",
+      "studentStem": "함수 $f(x)=|x^2-10|$가 서로 다른 네 정수에서 같은 값을 갖는다. 가능한 정수 함숫값 $k$의 합은?",
+      "choices": [
+        "$4$",
+        "$5$",
+        "$1$",
+        "$8$",
+        "$6$"
+      ],
+      "answer": "⑤",
+      "level": "상",
+      "difficultyBucket": 4,
+      "parameters": {
+        "h": 0,
+        "d": 10,
+        "mode": "integerroots",
+        "value": 6
+      },
+      "decisiveInvariant": "0<k<d",
+      "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
+      "solutionVisual": "ADD_FOUR_INTERSECTION_GRAPH",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-C2-solution.svg"
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q19-C3",
+      "primaryL3": "H1-RPM-258",
+      "chosenL4": "항등함수·상수함수",
+      "studentStem": "방정식 $|x^2-10x+13|=k$가 서로 다른 네 실근을 갖는 양의 정수 $k$를 모두 생각하자. 각 $k$에 대해 네 실근을 $\\alpha_1,\\alpha_2,\\alpha_3,\\alpha_4$라 할 때, 모든 가능한 $k$에 대한 $\\alpha_1^2+\\alpha_2^2+\\alpha_3^2+\\alpha_4^2$의 합은?",
+      "choices": [
+        "$11$",
+        "$1480$",
+        "$66$",
+        "$1628$",
+        "$148$"
+      ],
+      "answer": "④",
+      "level": "상",
+      "difficultyBucket": 4,
+      "parameters": {
+        "h": 5,
+        "d": 12,
+        "mode": "sum_of_four_root_squares",
+        "value": 1628
+      },
+      "decisiveInvariant": "각 0<k<12 수준에서 대칭근 제곱합은 148; 11개 k에 누적",
+      "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
+      "solutionVisual": "ADD_FOUR_INTERSECTION_GRAPH",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-C3-solution.svg"
+    }
+  ]
+}

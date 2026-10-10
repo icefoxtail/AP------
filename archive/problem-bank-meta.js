@@ -95,16 +95,12 @@
       },
     };
   }
-  function isGeneratedSelectable(row, holds = []) {
-    if (!row || row.sourceKind !== 'generated' || row.consumerSelectable !== true ||
-        new Set(holds).has(row.uid || row.questionUid)) return false;
-    const reviewed = row.approval === 'REVIEW_APPROVED' && row.reviewStatus === 'REVIEW_PASS';
-    const directed = row.approval === 'USER_DIRECTED_OPERATING_APPROVED' &&
-      (String(row.reviewApprovalBasis || '').startsWith('USER_DIRECTED_OPERATING_APPROVAL_') ||
-       row.reviewApprovalBasis === 'USER_EXPLICIT_FIX_AND_MAIN_MERGE_20261008');
-    const userQuality = row.approval === 'USER_DIRECTED_QUALITY_APPROVED' &&
-      String(row.reviewApprovalBasis || '').startsWith('USER_DIRECTED_QUALITY_APPROVED');
-    return reviewed || directed || userQuality;
+  function isGeneratedSelectable(row, disabledUids = []) {
+    if (!row || row.sourceKind !== 'generated' || (row.consumerSelectable === false && row.mainSourceAvailable !== true) ||
+        row.technicalStatus === 'ERROR' || new Set(disabledUids).has(row.uid || row.questionUid)) return false;
+    // Main-resident question JS is usable even while its review history is pending.
+    // `verifiedEligible` below remains a separate, evidence-backed quality signal.
+    return true;
   }
   function project(record, generated, consumer, holds) {
     const q = consumer?.question || {};
