@@ -1395,37 +1395,6 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
-      "file": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
-      "school": "동산중",
-      "topic": "",
-      "grade": "중2",
-      "year": 2026,
-      "semester": "1",
-      "examType": "mid",
-      "subject": "중2 수학",
-      "contentType": "기출",
-      "qCount": 24,
-      "rangeStartUnitKey": "M2-01",
-      "rangeStartUnit": "수와 식",
-      "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "M2-02",
-      "rangeEndUnit": "일차부등식",
-      "rangeEndUnitOrder": 2,
-      "courseRanges": [
-        {
-          "standardCourse": "중2 수학",
-          "courseCode": "M2",
-          "rangeStartUnitKey": "M2-01",
-          "rangeStartUnit": "수와 식",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "M2-02",
-          "rangeEndUnit": "일차부등식",
-          "rangeEndUnitOrder": 2
-        }
-      ],
-      "primaryStandardCourse": "중2 수학"
-    },
-    {
       "file": "original/middle/m2/1final/26_신흥중_1학기_기말_중2_기출.js",
       "school": "신흥중",
       "topic": "",
@@ -1483,6 +1452,37 @@ window.mainDB = {
           "rangeEndUnitKey": "M2-04",
           "rangeEndUnit": "일차함수와 그래프",
           "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "중2 수학"
+    },
+    {
+      "file": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+      "school": "왕운중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2026,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "중2 수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M2-01",
+      "rangeStartUnit": "수와 식",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M2-02",
+      "rangeEndUnit": "일차부등식",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-01",
+          "rangeStartUnit": "수와 식",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M2-02",
+          "rangeEndUnit": "일차부등식",
+          "rangeEndUnitOrder": 2
         }
       ],
       "primaryStandardCourse": "중2 수학"
@@ -1827,6 +1827,68 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "미적분"
+    },
+    {
+      "file": "original/high/h2/1mid/25_금당고_1학기_중간_고2_수학I.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2025,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "H15-M1-01",
+      "rangeStartUnit": "지수의 뜻과 성질",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M1-07",
+      "rangeEndUnit": "삼각방정식과 삼각부등식",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "수학I",
+          "courseCode": "H15-M1",
+          "rangeStartUnitKey": "H15-M1-01",
+          "rangeStartUnit": "지수의 뜻과 성질",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M1-07",
+          "rangeEndUnit": "삼각방정식과 삼각부등식",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "수학I"
+    },
+    {
+      "file": "original/high/h2/1mid/25_금당고_1학기_중간_고2_수학II.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2025,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H15-M2-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "수학II"
     },
     {
       "file": "original/high/h2/2mid/25_금당고_2학기_중간_고2_확률과통계.js",

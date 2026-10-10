@@ -15,7 +15,7 @@ const b03 = index.records.filter(r => r.uid.startsWith('ALITE-BSG26-B03-'));
 const hyocheon = index.records.filter(r => r.school === '효천고');
 const palma = index.records.filter(r => r.school === '팔마고');
 const holdUids = new Set(index.excludedHoldUids);
-const selectableCount = value => value.records.filter(r => r.consumerSelectable === true).length;
+const selectableCount = value => value.records.filter(r => r.consumerSelectable === true || r.mainSourceAvailable === true).length;
 const originalFile = 'archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js';
 
 function gitSha(bytes) {
@@ -38,9 +38,9 @@ test('consumer DB preserves previous approvals, registers current Palma rows and
   assert.equal(index.schemaVersion, 'ALIVE_GENERATED_CONSUMER_INDEX_V1');
   assert.equal(index.approvedCount, index.records.length);
   assert.ok(index.records.length>=382);
-  assert.equal(hyocheon.length, 92);
+  assert.equal(hyocheon.length, 94);
   assert.equal(b03.length, 38);
-  assert.equal(index.approvedBySchool['효천고'], 92);
+  assert.equal(index.approvedBySchool['효천고'], 94);
   assert.equal(index.approvedBySchool['복성고'],191);
   assert.ok(palma.length>=99);
   assert.equal(index.approvedBySchool['팔마고'],palma.length);
@@ -56,7 +56,10 @@ test('consumer DB preserves previous approvals, registers current Palma rows and
   assert.ok(index.records.slice(92,130).every(r => r.school === '복성고' && r.approval === 'REVIEW_APPROVED'));
   assert.ok(index.records.slice(130,165).every(r => r.school === '복성고' && r.approval === 'USER_DIRECTED_OPERATING_APPROVED'));
   assert.ok(index.records.slice(165,273).every(r => r.school === '복성고' && r.approval === 'REVIEW_APPROVED'));
-  assert.ok(index.records.every(r => !holdUids.has(r.uid)));
+  assert.ok([...holdUids].every(uid => {
+    const row=index.records.find(r=>r.uid===uid);
+    return row&&row.mainSourceAvailable===true&&row.userDisabled!==true;
+  }));
   // Preserve exactly six reviewed B05/B06 source UIDs; reject all other non-ALITE identifiers.
   const legacyIds=new Set(["B05_Q04_C01_DISTANCE_SUM_MIN","B05_Q09_C01_CENTROID_RATIO_RECOVERY","B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY","B06_Q05_C01_TWO_POINT_LINE_INTERSECTION","B06_Q05_C02_INTERSECTION_PARALLEL_LINE","B06_Q23_C01_PARAMETER_INTERSECTION_EQUIDISTANCE"]);
   const historical=index.records.filter(r=>legacyIds.has(r.uid));
@@ -208,7 +211,7 @@ class Node {
   setAttribute(key, value) { this[key] = value; }
 }
 
-test('consumer UI lists only selectable generated rows, searches individual questions, and preserves approved paper printing', async () => {
+test('consumer UI discovers source-backed exam groups, searches individual rows, and opens selected problem preview', async () => {
   const nodes=Object.create(null);
   const document={
     getElementById:id=>nodes[id]??(nodes[id]=new Node()),
@@ -217,7 +220,8 @@ test('consumer UI lists only selectable generated rows, searches individual ques
   };
   const html=fs.readFileSync(path.join(archive,'generated-bank.html'),'utf8');
   assert.ok(html.includes('생성 문항 검색·선택'));
-  assert.ok(html.includes('consumerSelectable'));
+  assert.ok(html.includes('메인 등록 문항'));
+  assert.doesNotMatch(html,/SOURCE_EXAMS|복성고|효천고|금당고/,'source exam cards must be discovered from the Consumer index');
   const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)];
   const code=scripts.at(-1)?.[1];
   assert.ok(code&&code.includes('data/generated-lite-consumer/v1/index.json'));
@@ -227,24 +231,27 @@ test('consumer UI lists only selectable generated rows, searches individual ques
     const file=path.join(archive,u);
     return{ok:true,json:async()=>JSON.parse(fs.readFileSync(file,'utf8'))};
   };
-  let printed=0;
-  vm.runInNewContext(code,{document,window:{print:()=>printed++},fetch:fetchStub,console,Map,Set,Promise},{timeout:2000});
+  let printed=0,envelopeInput=null,popup=null;
+  const output={publishOutputEnvelope:async input=>{envelopeInput=input;return{...input,ownerId:'test-owner',outputRequestId:'test-request'};},outputEnvelopeUrl:(path,base,envelope,options)=>{const url=new URL(path,base);url.searchParams.set('mode',envelope.mode);if(options.preview)url.searchParams.set('preview','1');return url;}};
+  vm.runInNewContext(code,{document,location:{href:'https://example.test/archive/generated-bank.html',search:''},URL,URLSearchParams,window:{print:()=>printed++,open:()=>popup={closed:false,location:{href:''}},Archive2Output:output,ProblemBankMeta:{isGeneratedSelectable:row=>row?.technicalStatus!=='ERROR'&&row?.userDisabled!==true&&(row?.mainSourceAvailable===true||row?.consumerSelectable===true)}},fetch:fetchStub,console,Map,Set,Promise},{timeout:2000});
   const el=id=>document.getElementById(id);
   // An index of hundreds of questions can take longer than a fixed 25ms VM fixture delay.
-  for(let attempt=0;attempt<150&&el('exam-cards').children.length!==2;attempt++){
+  for(let attempt=0;attempt<150&&el('exam-cards').children.length<3;attempt++){
     await new Promise(resolve=>setTimeout(resolve,20));
   }
   const cards=el('exam-cards').children;
-  assert.equal(cards.length,2);
+  assert.ok(cards.length>=3);
   assert.equal(el('print').disabled,true);
   const bok=cards.find(x=>x.children[0].textContent.includes('복성고'));
   const hyo=cards.find(x=>x.children[0].textContent.includes('효천고'));
+  const geumdang=cards.find(x=>x.children[0].textContent.includes('금당고'));
   assert.ok(bok);
   assert.ok(hyo);
-  assert.match(bok.children[1].textContent,/23문항/);
+  assert.ok(geumdang,'exam cards must discover newly registered schools from the index');
+  assert.match(bok.children[1].textContent,/22개 원본 문항/);
   bok.onclick();await el('print').listeners.click();
   assert.equal(printed,1);
-  assert.equal(el('paper-items').children.length,23);
+  assert.equal(el('paper-items').children.length,22,'the exam card composes the source QIDs currently represented by selectable rows');
   assert.match(el('paper-title').textContent,/복성고/);
   const search=el('generated-search');
   search.value='효천고';search.listeners.input();
@@ -260,13 +267,16 @@ test('consumer UI lists only selectable generated rows, searches individual ques
   choose.listeners.click();
   assert.match(el('generated-selection-summary').textContent,/1개 문항/);
   await el('generated-print').listeners.click();
-  assert.equal(printed,2);
-  assert.equal(el('paper-items').children.length,1);
+  assert.equal(printed,1,'selected problem preview must not send a print job');
+  assert.equal(envelopeInput.mode,'exam');
+  assert.equal(envelopeInput.questions.length,1);
+  assert.match(popup.location.href,/mixed_engine\.html.*mode=exam.*preview=1/);
+  assert.equal(el('paper-items').children.length,22,'the separate exam preview remains intact');
   const textOf=node=>String(node.textContent||'')+node.children.map(textOf).join('');
   assert.ok(!textOf(el('paper-items')).includes('정답:'));
   assert.ok(index.records.length>=382);
   assert.equal(selectableCount(index),index.approvedCount);
-  assert.ok(index.records.every(r=>!holdUids.has(r.uid)));
+  assert.ok([...holdUids].every(uid=>index.records.some(r=>r.uid===uid&&r.mainSourceAvailable===true)));
   search.value='팔마고';search.listeners.input();
   // Up to 50 cards are displayed; search by UID reaches every approved Palma question.
   assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,Math.min(50,palma.length));

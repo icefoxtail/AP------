@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "JS_ARCHIVE_FREEZE_ADJUDICATION_V1",
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010\\R2_25_금당고_20261010_codex\\R2_original-independent-freeze.json",
+    "sha256": "1cf31703becf3d6db70f2b32277ffa7412d24b31f94fcd725af9267e3a4cc032"
+  },
+  "createdAt": "2026-10-10T07:07:22.232Z",
+  "corrections": [
+    {
+      "qid": 18,
+      "correctedAnswer": "NO_VALID_CHOICE; S1+S2=32/3−8/(3 ln 3)≈8.240",
+      "reason": "Post-freeze q18-only PDF/source review confirmed the JS formulas, point definitions, S1/S2 boundaries, and options. The original R2 calculation incorrectly stopped the line-minus-f integral at x=−2/3 instead of following f from A=(−2,0) to the function crossing (0,2). Corrected: with t=ln√3=ln3/2, S1=∫[−2,0](3x+3+e^(−tx))dx+∫[−2/3,0](3x+4+ln(x+1)/t)dx=8/3+8/(3 ln3)≈5.094; S2=∫[0,2](1−e^(−tx)+ln(x+1)/t)dx=8−16/(3 ln3)≈3.146; total=32/3−8/(3 ln3)≈8.240. This is not among 14/3,5,16/3,17/3,6. Preserve the original independent freeze; this separate adjudication corrects only q18. CREATE previously derived the same expression/value; R1’s independent choice ③=16/3 is unsupported by the source-defined integral. True content HOLD pending qid-only replacement.",
+      "originalAnswer": "NO_VALID_CHOICE; independently computed area ≈ 6.10"
+    }
+  ],
+  "originalFreezeMutated": false
+}

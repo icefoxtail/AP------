@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POSTFREEZE_DISCLOSURE_V2",
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010\\R2_25_금당고_20261010_codex\\R2_q18-clean_combined-current-independent-freeze.json",
+    "sha256": "4297fd31d8315b47f73486673414fa0780b4255c53a02a41e4576d3341118519"
+  },
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010\\R2_25_금당고_20261010_codex\\R2_q18-clean_current-student-bundle.json",
+    "sha256": "47c57d8ae5d09f7e1ca2ddd13c1b1981b90b752c48a664ef91a832039c2e06db"
+  },
+  "sourceRawSha256": "2e16df31ff9ebb72d6fe23af89dd5b926b5fc0f5794bf50c5d649d13e067339f",
+  "originalFreezeSourceRawSha256": "2e16df31ff9ebb72d6fe23af89dd5b926b5fc0f5794bf50c5d649d13e067339f",
+  "studentParity": "EXACT",
+  "rows": [
+    {
+      "qid": 18,
+      "answer": "②",
+      "solution": "두 그래프의 $x$절편을 구하면 $f(x)=0$에서 $x=0$, $g(x)=0$에서 $x+1=1$이므로 공통점은 $\\mathrm{A}=(0,0)$이다. $x=1$일 때 $f(1)=1$, $g(1)=1$이므로 $\\mathrm{D}=(1,1)$이다. $\\mathrm{B}$는 $x=3$인 $f$ 위의 점이므로 $\\mathrm{B}=(3,7)$이고, $\\mathrm{C}$는 $g(x)=2$에서 $x+1=4$이므로 $\\mathrm{C}=(3,2)$이다.\n\n좌표의 행렬식을 이용하면 $S_1=\\dfrac12|1\\cdot2-1\\cdot3|=\\dfrac12$이다.\n\n또 $\\overrightarrow{DB}=(2,6)$, $\\overrightarrow{DC}=(2,1)$이므로 $S_2=\\dfrac12|2\\cdot1-6\\cdot2|=5$이다.\n\n따라서 $S_1+S_2=\\dfrac12+5=\\dfrac{11}{2}$이므로 정답은 ②이다.",
+      "decisiveStep": "각 점의 좌표를 구한 뒤, 두 삼각형의 넓이를 좌표 행렬식으로 계산한다."
+    }
+  ],
+  "disclosedAt": "2026-10-10T07:56:39.826Z"
+}

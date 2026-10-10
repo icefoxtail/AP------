@@ -315,7 +315,8 @@ export function withdrawGeneratedUid({ root, uid, reason, withdrawalEvidence, pa
   const newConsumerBytes = writeJson(consumerDoc);
   const newConsumerBlob = gitBlobSha(newConsumerBytes);
   indexDoc.records = indexDoc.records.filter(row => row.uid !== uid);
-  indexDoc.excludedHoldUids = [...new Set([...(indexDoc.excludedHoldUids || []), uid])].sort();
+  indexDoc.userDisabledUids = [...new Set([...(indexDoc.userDisabledUids || []), uid])].sort();
+  indexDoc.excludedHoldUids = [...new Set([...(indexDoc.excludedHoldUids || []), uid])].sort(); // retain review history for older readers
   indexDoc.approvedCount = indexDoc.records.length;
   for (const row of indexDoc.records) if (row.shard === indexRow.shard) {
     row.consumerShardGitSha = newConsumerBlob;

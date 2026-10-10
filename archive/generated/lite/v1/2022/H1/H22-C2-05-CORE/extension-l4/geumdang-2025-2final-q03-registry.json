@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "ALIVE_GEUMDANG_Q03_GENERATED_META_EXTENSION_V1",
+  "scopeSourceQid": 3,
+  "sourcePath": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+  "sourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "primaryL3": "H1-RPM-235",
+  "rpmLockedChanged": false,
+  "generatedOnly": true,
+  "recordIds": [
+    "H1-RPM-235",
+    "H1-RPM-236"
+  ],
+  "terms": [
+    {
+      "key": "GEN_COND_GD25_Q03_NATURAL_BOUND",
+      "type": "condition",
+      "label": "5 이하 자연수",
+      "parent": "H22-C2-05-CORE",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q03-A3"
+      ]
+    },
+    {
+      "key": "GEN_COND_GD25_Q03_DUPLICATE",
+      "type": "condition",
+      "label": "중복 원소",
+      "parent": "H22-C2-05-CORE",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q03-A3"
+      ]
+    },
+    {
+      "key": "GEN_COND_GD25_Q03_PAIR",
+      "type": "condition",
+      "label": "원소의 순서 없는 대응",
+      "parent": "H22-C2-05-CORE",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q03-B1",
+        "ALITE-GEUMDANG25-2FINAL-Q03-B2",
+        "ALITE-GEUMDANG25-2FINAL-Q03-C1"
+      ]
+    },
+    {
+      "key": "GEN_COND_GD25_Q03_INTEGER",
+      "type": "condition",
+      "label": "정수 매개변수",
+      "parent": "H22-C2-05-CORE",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q03-B3",
+        "ALITE-GEUMDANG25-2FINAL-Q03-C3"
+      ]
+    },
+    {
+      "key": "GEN_COND_GD25_Q03_ABS",
+      "type": "condition",
+      "label": "절댓값 분기",
+      "parent": "H22-C2-05-CORE",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q03-C2",
+        "ALITE-GEUMDANG25-2FINAL-Q03-C3"
+      ]
+    },
+    {
+      "key": "GEN_CC_GD25_Q03_QUADRATIC",
+      "type": "crossConcept",
+      "label": "이차방정식의 근으로 집합 구성",
+      "parent": "H22-C2-05-CORE",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q03-B3",
+        "ALITE-GEUMDANG25-2FINAL-Q03-C1",
+        "ALITE-GEUMDANG25-2FINAL-Q03-C3"
+      ]
+    },
+    {
+      "key": "GEN_CC_GD25_Q03_ABS",
+      "type": "crossConcept",
+      "label": "절댓값의 거리 해석",
+      "parent": "H22-C2-05-CORE",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q03-C2",
+        "ALITE-GEUMDANG25-2FINAL-Q03-C3"
+      ]
+    }
+  ],
+  "integrationPatterns": [
+    {
+      "key": "SET_EQUALITY_DUPLICATE",
+      "parent": "H1-RPM-235",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q03-A3"
+      ]
+    },
+    {
+      "key": "SET_EQUALITY_PAIR",
+      "parent": "H1-RPM-235",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q03-B1"
+      ]
+    },
+    {
+      "key": "SET_EQUALITY_TWO_ASSIGNMENTS",
+      "parent": "H1-RPM-235",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q03-B2"
+      ]
+    },
+    {
+      "key": "SET_EQUALITY_SQUARE",
+      "parent": "H1-RPM-235",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q03-B3"
+      ]
+    },
+    {
+      "key": "ROOT_SET_EQUALITY",
+      "parent": "H1-RPM-235",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q03-C1"
+      ]
+    },
+    {
+      "key": "SET_EQUALITY_ABS",
+      "parent": "H1-RPM-235",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q03-C2"
+      ]
+    },
+    {
+      "key": "ROOT_SET_ABS_EQUALITY",
+      "parent": "H1-RPM-235",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q03-C3"
+      ]
+    }
+  ]
+}

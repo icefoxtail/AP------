@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_Q18_SOURCE_ADJUDICATION_V1",
+  "scope": {
+    "qid": 18,
+    "reviewMode": "SCOPED_SOURCE_DEFECT_REVIEW",
+    "reviewed": "Only the q18 statement, diagram, shaded S1/S2 regions, and answer choices on exam page 3."
+  },
+  "source": {
+    "originalPdfAbsolutePath": "D:\\기출정리 파일\\(1)1중간\\수1\\2025_금당고2_수1_1중간.pdf",
+    "originalPdfSha256": "db22b02f9bf1a2869c401a580c468334de1ce53bd1d6329fd00d59fca0900616",
+    "page": 3,
+    "renderedPageCropAbsolutePath": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010\\R2_25_금당고_20261010_codex\\q18-original-page3-full-crop.png",
+    "renderedQ18CropSha256": "1a0a405b576e10b401b1d9f7e2440967481c35ff051750023336c8be999bc086",
+    "exactQuestionParity": "The page confirms f(x)=−(√3)^(−x)+3, g(x)=2−log_{√3}(x+1), A and B as the x-axis intercepts, C on g with y=4, l1 through A,C, l2 vertical through B, shaded S1/S2, and choices 14/3, 5, 16/3, 17/3, 6. This matches the current extracted student bundle and q18 problem PNG.",
+    "problemPngRef": "assets/images/25_금당고_1학기_중간_고2_수학I/q18.png",
+    "problemPngSha256": "4c4e14efa8b5765f7c98b580a22a75316fa7e2e68760bc37ccfb2452c7c228ce"
+  },
+  "independentRecalculation": {
+    "t": "ln(√3)=ln(3)/2",
+    "A": "(−2,0)",
+    "C": "(−2/3,4)",
+    "B": "(2,0)",
+    "curveIntersection": "(0,2)",
+    "l1": "y=3x+6",
+    "S1Terms": [
+      {
+        "interval": "[−2,0]",
+        "integrand": "l1−f=3x+3+e^(−tx)",
+        "value": "2/t=4/ln(3)≈3.641"
+      },
+      {
+        "interval": "[−2/3,0]",
+        "integrand": "l1−g=3x+4+ln(x+1)/t",
+        "value": "2+(ln(3)−2)/(3t)≈1.453"
+      }
+    ],
+    "S1": "8/3+8/(3 ln(3))≈5.094",
+    "S2": {
+      "interval": "[0,2]",
+      "integrand": "f−g=1−e^(−tx)+ln(x+1)/t",
+      "value": "8−16/(3 ln(3))≈3.146"
+    },
+    "total": "32/3−8/(3 ln(3))≈8.240",
+    "listedChoices": [
+      "14/3",
+      "5",
+      "16/3",
+      "17/3",
+      "6"
+    ],
+    "choiceMatch": false,
+    "disposition": "TRUE_ITEM_HOLD_PENDING_QID_ONLY_REPLACEMENT"
+  },
+  "preservedClaimsAndCorrection": {
+    "originalR2Freeze": "Preserved immutable; its first q18 result ≈6.10 came from stopping the l1−f integral at x=−2/3 instead of following f to (0,2).",
+    "postfreezeAdjudication": "R2_adjudication_q18.json corrects only q18 and leaves the original freeze unchanged.",
+    "createPriorClaim": "CREATE's source check derived 32/3−8/(3 ln 3)≈8.24; independently confirmed by this q18-only area derivation.",
+    "r1PriorClaim": "R1 independently froze choice ③=16/3, but that value does not equal the source-defined integral and is not adopted.",
+    "correctedConclusion": "Neither 6.10 nor 16/3 is correct; the source-defined value is about 8.240, absent from the choices. Carry as true item HOLD."
+  },
+  "renderedPageSha256": "346997e22248006bfb61970b448a95953af091db9668b4c966e1b4d4fc41cf5f"
+}

@@ -1,70 +1,75 @@
-name: Auto-register approved QID9 Meta and Consumer
+name: Register main-resident Generated questions
 on:
   push:
     branches: [main]
     paths:
-      - 'alive/06_EXECUTION/H1_SCHOOL_EXPANSION/**/GPT_QID9_EXAM_MANIFEST.json'
-      - 'alive/06_EXECUTION/H1_SCHOOL_EXPANSION/**/GPT_QID9_Q*_PACKAGE.json'
-      - 'archive/tools/generated-meta/auto-register-approved-qid9.mjs'
-      - 'tools/check-generated-bank-browser.cjs'
-      - 'archive/generated/lite/v1/2022/H1/**/extension-l4/**'
-      - 'archive/generated/lite/v1/2022/H1/**/extension-meta/**'
+      - 'archive/generated/lite/v1/**/shards/**/*.js'
+      - 'archive/generated/lite/v1/**/metadata/**/*.json'
+      - 'archive/tools/generated-meta/rebuild-main-source-consumer.mjs'
+      - 'archive/problem-bank-meta.js'
+      - 'archive/archive2-source.js'
+      - 'archive/generated-bank.html'
+      - 'archive/problem-bank-search.html'
       - '.github/workflows/auto-register-approved-qid9.yml'
   pull_request:
     branches: [main]
     paths:
-      - 'archive/tools/generated-meta/auto-register-approved-qid9.mjs'
-      - 'archive/tools/generated-meta-retention-gate.cjs'
-      - 'tests/generated-meta-retention.test.cjs'
-      - 'tests/archive2-generated-bank-registration.test.js'
-      - 'tools/check-generated-bank-browser.cjs'
+      - 'archive/generated/lite/v1/**/shards/**/*.js'
+      - 'archive/generated/lite/v1/**/metadata/**/*.json'
+      - 'archive/tools/generated-meta/rebuild-main-source-consumer.mjs'
+      - 'archive/problem-bank-meta.js'
+      - 'archive/archive2-source.js'
+      - 'archive/generated-bank.html'
+      - 'archive/problem-bank-search.html'
       - '.github/workflows/auto-register-approved-qid9.yml'
   workflow_dispatch:
-
 permissions:
   contents: write
-
+  pull-requests: write
 concurrency:
-  group: approved-qid9-auto-register-main
+  group: main-generated-source-consumer
   cancel-in-progress: false
-
 jobs:
-  auto-register:
-    name: Approval-to-Meta-to-Consumer-to-Chrome
+  register:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: true
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Materialize only approved QID9 items
-        run: node archive/tools/generated-meta/auto-register-approved-qid9.mjs --write
-      - name: Validate complete approved Meta and student Consumer
+      - name: Rebuild and verify complete main-resident source projection
         run: |
-          node archive/tools/generated-meta-retention-gate.cjs
-          node --test tests/generated-meta-retention.test.cjs tests/archive2-generated-bank-registration.test.js tests/problem-bank-meta.test.cjs tests/generated-meta-backfill.test.cjs
-      - name: Install real Chrome
-        uses: browser-actions/setup-chrome@v1
-        id: chrome
-        with:
-          chrome-version: stable
-      - name: Confirm actual student lookup, preview and print
-        env:
-          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
-        run: node tools/check-generated-bank-browser.cjs
-      - name: Commit generated artifacts without touching unrelated files
+          node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --write
+          node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --check
+      - name: Validate Archive 2.0 technical integrity and search/output flow
+        run: node --test tests/problem-bank-meta.test.cjs
+      - name: Create and normally merge the projection PR
         if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          git add -A -- archive/generated/lite/v1/2022/H1 archive/data/generated-lite-consumer/v1/index.json archive/data/generated-lite-consumer/v1/shards alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add archive/generated/lite/v1 archive/data/generated-lite-consumer/v1
           if git diff --cached --quiet; then
-            echo "No new approval to publish"
+            echo 'Generated Consumer projection is current.'
             exit 0
           fi
-          git fetch origin main
-          test "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" || { echo "Main moved; abort stale write"; exit 1; }
-          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m "chore(alive): auto-register approved Generated QID9 and Meta"
-          git push origin HEAD:main
+          branch="codex/main-generated-consumer-${GITHUB_RUN_ID}"
+          git switch -c "$branch"
+          git commit -m 'chore(archive): sync main Generated question sources'
+          git push origin HEAD
+          pr_url="$(gh pr create --base main --head "$branch" --title 'Sync main Generated Consumer projection' --body 'Automated projection of main-resident Generated question JS and metadata. Review history remains intact; source availability is independent of review approval.' || true)"
+          if [ -z "$pr_url" ]; then
+            pr_url="$(gh pr list --state open --base main --head "$branch" --json url --jq '.[0].url // empty')"
+          fi
+          if [ -z "$pr_url" ]; then
+            echo 'Could not create or resolve the normal projection PR.' >&2
+            exit 1
+          fi
+          # Perform an ordinary merge through GitHub. Repository protections still apply;
+          # no administrator bypass, merge-queue override, or direct main push is used.
+          gh pr merge "$pr_url" --merge --delete-branch

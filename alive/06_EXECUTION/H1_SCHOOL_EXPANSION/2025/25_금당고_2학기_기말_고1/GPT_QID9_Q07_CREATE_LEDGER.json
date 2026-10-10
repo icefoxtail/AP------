@@ -1,0 +1,401 @@
+{
+  "schemaVersion": "ALIVE_QID9_GEUMDANG25_Q07_SELF_REVIEW_V1",
+  "sourceQid": 7,
+  "sourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "lockedPrimaryL3": "H1-RPM-253",
+  "candidateCount": 9,
+  "keep": 2,
+  "revised": 7,
+  "hold": 0,
+  "answerDistribution": {
+    "①": 1,
+    "②": 2,
+    "③": 2,
+    "④": 2,
+    "⑤": 2
+  },
+  "mathEvidence": {
+    "A1": 24,
+    "A2": 27,
+    "A3": 2,
+    "B1": 16,
+    "B2": {
+      "roots": [
+        -3,
+        2
+      ],
+      "sum": -1
+    },
+    "B3": 1,
+    "C1": -0.5,
+    "C2": -2,
+    "C3": {
+      "a": 4,
+      "b": -3,
+      "result": 7
+    }
+  },
+  "creatorIndependentCalculation": "SYMPY_CHECK_A1_A2_A3_B1_B2_C1_C3_WITH_PYTHON_EXEC",
+  "formalIndependentReviewPerformed": false,
+  "chromeVerified": false,
+  "release": "BRANCH_ONLY_UNRELEASED",
+  "visual": {
+    "problem": "EXEMPT",
+    "solution": {
+      "C3": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q07-C3-solution.svg",
+      "others": "EXEMPT"
+    },
+    "svgRender": "NOT_TESTED"
+  },
+  "rows": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q07-A1",
+      "finalStem": "두 함수 $f(x)=2x+3$, $g(x)=x^2-1$에 대하여 $(g\\circ f)(1)$의 값은?",
+      "reverseStemFinding": "학생 발문에서 함수 합성 순서·정의역·변수 조건·답형을 역독해하여 재확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "errorPath": "$5^2$에서 3을 빼 22"
+        },
+        {
+          "choice": "②",
+          "errorPath": "$5^2$에서 2를 빼 23"
+        },
+        {
+          "choice": "④",
+          "errorPath": "마지막의 $-1$을 빼먹어 25"
+        },
+        {
+          "choice": "⑤",
+          "errorPath": "$5^2$에 1을 더해 26"
+        }
+      ],
+      "decision": "KEEP",
+      "remainingRisk": "독립검수/Chrome 시험지·해설지·답표 렌더 미완료"
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q07-A2",
+      "finalStem": "두 함수 $f(x)=x^2+2$, $g(x)=3x-1$에 대하여 $(f\\circ g)(2)$의 값은?",
+      "reverseStemFinding": "학생 발문에서 함수 합성 순서·정의역·변수 조건·답형을 역독해하여 재확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "errorPath": "$5^2-1=24$로 덧셈 부호 오인"
+        },
+        {
+          "choice": "②",
+          "errorPath": "$+2$를 빼먹어 25"
+        },
+        {
+          "choice": "③",
+          "errorPath": "$+2$를 $+1$로 잘못 계산"
+        },
+        {
+          "choice": "④",
+          "errorPath": "$+2$를 $+3$으로 잘못 계산"
+        }
+      ],
+      "decision": "KEEP",
+      "remainingRisk": "독립검수/Chrome 시험지·해설지·답표 렌더 미완료"
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q07-A3",
+      "finalStem": "두 함수 $f(x)=x-4$, $g(x)=2x^2$에 대하여 $(g\\circ f)(3)$의 값은?",
+      "reverseStemFinding": "학생 발문에서 함수 합성 순서·정의역·변수 조건·답형을 역독해하여 재확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "errorPath": "앞의 계수 2를 누락하여 1"
+        },
+        {
+          "choice": "③",
+          "errorPath": "제곱값과 입력 3을 혼동"
+        },
+        {
+          "choice": "④",
+          "errorPath": "$(-1)^2$을 2로 오산하여 4"
+        },
+        {
+          "choice": "⑤",
+          "errorPath": "g(f(3))=2를 구하고 원래의 입력 3을 잘못 추가하여 2+3=5로 계산"
+        }
+      ],
+      "decision": "REVISED",
+      "remainingRisk": "독립검수/Chrome 시험지·해설지·답표 렌더 미완료",
+      "affectedFields": [
+        "distractorPaths"
+      ],
+      "changedMathRecheck": "발문·5보기·정답·해설 및 생성 JS 불변, 오답 실제 계산 경로만 정정"
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q07-B1",
+      "finalStem": "두 함수 $f(x)=3x+1$, $g(x)=x^2-2$에 대하여 $(g\\circ f)(1)-(f\\circ g)(1)$의 값은?",
+      "reverseStemFinding": "학생 발문에서 함수 합성 순서·정의역·변수 조건·답형을 역독해하여 재확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "errorPath": "$14-2=12$로 음수의 감산 부호 착각"
+        },
+        {
+          "choice": "②",
+          "errorPath": "뒤쪽 합성함수값을 빼지 않아 14"
+        },
+        {
+          "choice": "③",
+          "errorPath": "$f(g(1))=-1$로 잘못 계산하여 15"
+        },
+        {
+          "choice": "⑤",
+          "errorPath": "$f(g(1))=-4$로 오산하여 18"
+        }
+      ],
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행; q07 답/해설의 수학값 원래 일치 유지",
+      "affectedFields": [
+        "meta",
+        "templateKey"
+      ],
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT round2",
+        "changedFields": [
+          "meta",
+          "templateKey"
+        ],
+        "oldAnswer": "④",
+        "newAnswer": "④",
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "해당 Generated templateKey와 parent/UID 등록 확인"
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q07-B2",
+      "finalStem": "실수 $a$에 대하여 $f(x)=ax+1$, $g(x)=x^2+1$이라 하자. $(g\\circ f)(2)=26$을 만족시키는 모든 $a$의 값의 합은?",
+      "reverseStemFinding": "학생 발문에서 함수 합성 순서·정의역·변수 조건·답형을 역독해하여 재확인",
+      "distractorPaths": [
+        {
+          "choice": "②",
+          "errorPath": "양의 근 $a=2$만 채택"
+        },
+        {
+          "choice": "③",
+          "errorPath": "$2a+1=-3$으로 잘못 제곱근 추출하여 $a=-2$"
+        },
+        {
+          "choice": "④",
+          "errorPath": "음의 근 $a=-3$만 채택"
+        },
+        {
+          "choice": "⑤",
+          "errorPath": "두 근 중 a=-3의 음의 부호를 지우고 3만 답으로 선택"
+        }
+      ],
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행; q07 답/해설의 수학값 원래 일치 유지",
+      "affectedFields": [
+        "distractorPaths",
+        "meta",
+        "templateKey"
+      ],
+      "changedMathRecheck": "해당 Generated templateKey와 parent/UID 등록 확인",
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT round2",
+        "changedFields": [
+          "meta",
+          "templateKey"
+        ],
+        "oldAnswer": "①",
+        "newAnswer": "①",
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q07-B3",
+      "finalStem": "두 함수 $f(x)=x^2+1$, $g(x)=x-1$에 대하여 $(g\\circ f\\circ g)(2)$의 값은?",
+      "reverseStemFinding": "학생 발문에서 함수 합성 순서·정의역·변수 조건·답형을 역독해하여 재확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "errorPath": "마지막에 $g(1)=0$으로 입력을 잘못 사용"
+        },
+        {
+          "choice": "③",
+          "errorPath": "중간의 $f(1)=2$에서 멈춤"
+        },
+        {
+          "choice": "④",
+          "errorPath": "마지막 함수 g(x)=x−1을 x+1로 잘못 적용하여 g(2)=2+1=3으로 계산"
+        },
+        {
+          "choice": "⑤",
+          "errorPath": "중간 f(1)=2에서 불필요하게 한 번 더 제곱하고 마지막 합성을 누락하여 2²=4로 계산"
+        }
+      ],
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행; q07 답/해설의 수학값 원래 일치 유지",
+      "affectedFields": [
+        "distractorPaths",
+        "meta",
+        "templateKey"
+      ],
+      "changedMathRecheck": "해당 Generated templateKey와 parent/UID 등록 확인",
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT round2",
+        "changedFields": [
+          "meta",
+          "templateKey"
+        ],
+        "oldAnswer": "②",
+        "newAnswer": "②",
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q07-C1",
+      "finalStem": "두 함수 $f(x)=x+2$, $g(x)=x^2$에 대하여 실수 $t$가 $(f\\circ g)(t)=(g\\circ f)(t)$를 만족할 때, $t$의 값은?",
+      "reverseStemFinding": "학생 발문에서 함수 합성 순서·정의역·변수 조건·답형을 역독해하여 재확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "errorPath": "$4t=-2$에서 $t=-2$로 4를 나누지 않음"
+        },
+        {
+          "choice": "②",
+          "errorPath": "$4t=-2$에서 $t=-1$로 오산"
+        },
+        {
+          "choice": "③",
+          "errorPath": "같은 이차항을 지운 뒤 나머지도 0이라고 판단"
+        },
+        {
+          "choice": "⑤",
+          "errorPath": "음의 부호를 누락하여 양의 절반으로 판단"
+        }
+      ],
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행; q07 답/해설의 수학값 원래 일치 유지",
+      "affectedFields": [
+        "level",
+        "difficultyBucket",
+        "meta",
+        "templateKey"
+      ],
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT round2",
+        "changedFields": [
+          "level",
+          "difficultyBucket",
+          "meta",
+          "templateKey"
+        ],
+        "oldAnswer": "④",
+        "newAnswer": "④",
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "합성식 차에서 t=-1/2 한 단계 일차방정식, 중/bucket3"
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q07-C2",
+      "finalStem": "두 함수 $f(x)=\\sqrt{x+2}$, $g(x)=x^2-1$에 대하여 $(f\\circ g)(x)$와 $(g\\circ f)(x)$가 모두 정의되는 실수 $x$ 중 가장 작은 정수는?",
+      "reverseStemFinding": "학생 발문에서 함수 합성 순서·정의역·변수 조건·답형을 역독해하여 재확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "errorPath": "근호의 정의역을 무시하고 -5까지 허용"
+        },
+        {
+          "choice": "②",
+          "errorPath": "근호의 정의역을 무시하고 -4까지 허용"
+        },
+        {
+          "choice": "③",
+          "errorPath": "근호의 정의역을 무시하고 -3까지 허용"
+        },
+        {
+          "choice": "④",
+          "errorPath": "끝점 x=-2를 제외해 최소 정수를 -1로 선정"
+        }
+      ],
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행; q07 답/해설의 수학값 원래 일치 유지",
+      "affectedFields": [
+        "meta",
+        "conditionKeys"
+      ],
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT round2",
+        "changedFields": [
+          "meta",
+          "conditionKeys"
+        ],
+        "oldAnswer": "⑤",
+        "newAnswer": "⑤",
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "(f∘g) 전 실수, (g∘f) x≥-2; 근호 합성 정의역 조건 등록"
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q07-C3",
+      "finalStem": "실수 $a,b$에 대하여 $f(x)=ax+b$, $g(x)=2x-1$이라 하자. 모든 실수 $x$에서 $(f\\circ g)(x)=(g\\circ f)(x)$이고 $f(2)=5$일 때, $a-b$의 값은?",
+      "reverseStemFinding": "학생 발문에서 함수 합성 순서·정의역·변수 조건·답형을 역독해하여 재확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "errorPath": "a=4 자체를 답으로 착각"
+        },
+        {
+          "choice": "②",
+          "errorPath": "조건 f(2)=5를 최종 답으로 사용"
+        },
+        {
+          "choice": "④",
+          "errorPath": "b=-4로 잘못 계산해 4-(-4)=8"
+        },
+        {
+          "choice": "⑤",
+          "errorPath": "b=-5로 잘못 계산해 4-(-5)=9"
+        }
+      ],
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행; q07 답/해설의 수학값 원래 일치 유지",
+      "affectedFields": [
+        "meta",
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT round2",
+        "changedFields": [
+          "meta",
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "oldAnswer": "③",
+        "newAnswer": "③",
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "항등식 계수비교형의 기존 ACTIVE PT_COMPOSITION_PROPERTIES로 정정, L3 합성함수 고정"
+    }
+  ],
+  "postIndependentReview": {
+    "source": "GPT round2 2026-10-10",
+    "revisedSlots": [
+      "B1",
+      "B2",
+      "B3",
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "registeredTemplates": 5,
+    "chrome": "NOT_TESTED"
+  }
+}

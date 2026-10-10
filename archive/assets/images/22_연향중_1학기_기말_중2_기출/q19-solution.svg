@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 650" role="img" aria-labelledby="title desc">
+<title id="title">기울기와 절편의 부호로 제2사분면 통과 여부 판단</title>
+<desc id="desc">a=-1, b=2를 대입한 네 대표 일차함수의 그래프. ㉠과 ㉢은 제2사분면을 지나고 ㉡과 ㉣은 지나지 않는다.</desc>
+<defs>
+<style>
+.title{font:700 28px sans-serif;fill:#17324d}.subtitle{font:18px sans-serif;fill:#41566c}
+.panel{fill:#fff;stroke:#c7d3df;stroke-width:2}.case{font:700 21px sans-serif;fill:#17324d}.sample{font:18px sans-serif;fill:#334e68}
+.result{font:700 17px sans-serif}.logic{font:16px sans-serif;fill:#526578}
+.axis{stroke:#263746;stroke-width:2.4}.line-pass{stroke:#006c83;stroke-width:4.4;stroke-linecap:round}.line-no{stroke:#a44920;stroke-width:4.4;stroke-dasharray:10 7;stroke-linecap:round}
+.q2{fill:#dff3f4}.q2label{font:14px sans-serif;fill:#34616a}.label{font:15px sans-serif;fill:#263746}.origin{font:13px sans-serif;fill:#263746}
+</style>
+</defs>
+<text x="30" y="40" class="title">기울기와 절편의 부호로 제2사분면 판별</text>
+<text x="30" y="69" class="subtitle">대표값 a = −1, b = 2를 대입해 각 그래프의 위치를 비교합니다.</text>
+<g id="case-1"><rect x="24" y="88" width="472" height="248" rx="16" class="panel"/>
+<text x="44" y="123" class="case">㉠  y = (a − b)x + b</text>
+<text x="44" y="155" class="sample">대표: y = −3x + 2</text>
+<text x="44" y="193" class="result" fill="#006c83">제2사분면을 지남</text>
+<text x="44" y="220" class="logic">기울기 &lt; 0, 절편 &gt; 0</text>
+<clipPath id="clip-1"><rect x="294" y="132" width="180" height="180"/></clipPath>
+<rect x="294" y="132" width="90.0" height="90.0" class="q2"/>
+<line x1="294" y1="222.00" x2="474" y2="222.00" class="axis"/>
+<line x1="384.00" y1="132" x2="384.00" y2="312" class="axis"/>
+<text x="466" y="215.00" class="label">x</text><text x="390.00" y="145" class="label">y</text>
+<text x="389.00" y="237.00" class="origin">O</text>
+<text x="298" y="149" class="q2label">II  (x&lt;0, y&gt;0)</text>
+<line clip-path="url(#clip-1)" x1="434.00" y1="312.00" x2="374.00" y2="132.00" class="line-pass"/>
+</g>
+<g id="case-2"><rect x="528" y="88" width="472" height="248" rx="16" class="panel"/>
+<text x="548" y="123" class="case">㉡  y = (b − a)x − b</text>
+<text x="548" y="155" class="sample">대표: y = 3x − 2</text>
+<text x="548" y="193" class="result" fill="#a44920">제2사분면을 지나지 않음</text>
+<text x="548" y="220" class="logic">기울기 &gt; 0, 절편 &lt; 0</text>
+<clipPath id="clip-2"><rect x="798" y="132" width="180" height="180"/></clipPath>
+<rect x="798" y="132" width="90.0" height="90.0" class="q2"/>
+<line x1="798" y1="222.00" x2="978" y2="222.00" class="axis"/>
+<line x1="888.00" y1="132" x2="888.00" y2="312" class="axis"/>
+<text x="970" y="215.00" class="label">x</text><text x="894.00" y="145" class="label">y</text>
+<text x="893.00" y="237.00" class="origin">O</text>
+<text x="802" y="149" class="q2label">II  (x&lt;0, y&gt;0)</text>
+<line clip-path="url(#clip-2)" x1="878.00" y1="312.00" x2="938.00" y2="132.00" class="line-no"/>
+</g>
+<g id="case-3"><rect x="24" y="364" width="472" height="248" rx="16" class="panel"/>
+<text x="44" y="399" class="case">㉢  y = (a − b)x + a</text>
+<text x="44" y="431" class="sample">대표: y = −3x − 1</text>
+<text x="44" y="469" class="result" fill="#006c83">제2사분면을 지남</text>
+<text x="44" y="496" class="logic">x절편 −1/3 왼쪽에서 y &gt; 0</text>
+<clipPath id="clip-3"><rect x="294" y="408" width="180" height="180"/></clipPath>
+<rect x="294" y="408" width="90.0" height="90.0" class="q2"/>
+<line x1="294" y1="498.00" x2="474" y2="498.00" class="axis"/>
+<line x1="384.00" y1="408" x2="384.00" y2="588" class="axis"/>
+<text x="466" y="491.00" class="label">x</text><text x="390.00" y="421" class="label">y</text>
+<text x="389.00" y="513.00" class="origin">O</text>
+<text x="298" y="425" class="q2label">II  (x&lt;0, y&gt;0)</text>
+<line clip-path="url(#clip-3)" x1="404.00" y1="588.00" x2="344.00" y2="408.00" class="line-pass"/>
+</g>
+<g id="case-4"><rect x="528" y="364" width="472" height="248" rx="16" class="panel"/>
+<text x="548" y="399" class="case">㉣  y = (b − a)x + a</text>
+<text x="548" y="431" class="sample">대표: y = 3x − 1</text>
+<text x="548" y="469" class="result" fill="#a44920">제2사분면을 지나지 않음</text>
+<text x="548" y="496" class="logic">기울기 &gt; 0, 절편 &lt; 0</text>
+<clipPath id="clip-4"><rect x="798" y="408" width="180" height="180"/></clipPath>
+<rect x="798" y="408" width="90.0" height="90.0" class="q2"/>
+<line x1="798" y1="498.00" x2="978" y2="498.00" class="axis"/>
+<line x1="888.00" y1="408" x2="888.00" y2="588" class="axis"/>
+<text x="970" y="491.00" class="label">x</text><text x="894.00" y="421" class="label">y</text>
+<text x="893.00" y="513.00" class="origin">O</text>
+<text x="802" y="425" class="q2label">II  (x&lt;0, y&gt;0)</text>
+<line clip-path="url(#clip-4)" x1="868.00" y1="588.00" x2="928.00" y2="408.00" class="line-no"/>
+</g>
+<text x="30" y="640" class="subtitle">실제 조건은 a&lt;0, b&gt;0이며, 대표값은 네 부호 관계를 보여 주기 위한 예입니다.</text></svg>

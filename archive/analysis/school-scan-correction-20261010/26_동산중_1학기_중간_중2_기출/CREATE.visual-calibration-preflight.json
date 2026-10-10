@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_VISUAL_CALIBRATION_PREFLIGHT_V1",
+  "chronology": {
+    "initialVisualDraftsPrecededVisualSpecificSampleRead": true,
+    "finalChangedSvgQaAndEvidenceClosureFollowSampleRead": true
+  },
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다",
+        "observation": "Read the full solution and opened its student-facing solution SVG in this visual calibration pass; checked the labeled relation against the displayed explanation.",
+        "visualSha256": "sha256:6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+        "visualObservation": "Opened the SVG bytes and reviewed the rasterized student-facing composition."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 8,
+        "solutionSha256": "sha256:7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+        "solutionExcerpt": "먼저 주어진 그래프에서 원래 직선 $ax+by+c=0$의 정보를 하나씩 읽는다.\n그래프는 오른쪽으로 갈수록 위로 올라가므로\n기울기는 양수이다.\n또 $y$축과 만나는 점이 원점보다 ",
+        "observation": "Read the full solution and opened its student-facing solution SVG in this visual calibration pass; checked the labeled relation against the displayed explanation.",
+        "visualSha256": "sha256:e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430",
+        "visualObservation": "Opened the SVG bytes and reviewed the rasterized student-facing composition."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfra",
+        "observation": "Read the full solution and opened its student-facing solution SVG in this visual calibration pass; checked the labeled relation against the displayed explanation.",
+        "visualSha256": "sha256:cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+        "visualObservation": "Opened the SVG bytes and reviewed the rasterized student-facing composition."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+        "solutionExcerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.\n주어진 식은\n$x^2+y^2+2x-6y+6=0$이다.\n$x$에 대한 항과 $y$에 대한 항을 각각 완전제곱식으로",
+        "observation": "Read the full solution and opened its student-facing solution SVG in this visual calibration pass; checked the labeled relation against the displayed explanation.",
+        "visualSha256": "sha256:752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c",
+        "visualObservation": "Opened the SVG bytes and reviewed the rasterized student-facing composition."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR"
+  }
+}

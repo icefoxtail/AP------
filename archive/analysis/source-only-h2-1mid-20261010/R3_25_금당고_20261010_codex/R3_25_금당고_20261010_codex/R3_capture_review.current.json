@@ -1,0 +1,257 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_R3_CAPTURE_REVIEW_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "captureReportSha256": "2a13980b92ec2250fe154770b22e54e09bc747be5e34a9660a9c444da1a28ee3",
+  "artifactSha": "5871a3a38b69f3c443670d8859b69c981d94ad04",
+  "reviewerIdentity": {
+    "role": "archive_r3",
+    "reviewerId": "/root/r3_geum_ii"
+  },
+  "reviewedAt": "2026-10-10T07:49:03.575Z",
+  "reviewedFullQidOrder": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "finalQidCoverage": {
+    "qid": 20,
+    "status": "PASS",
+    "allSixCases": true
+  },
+  "captureTransport": {
+    "kind": "LOCAL_HTTP",
+    "host": "127.0.0.1",
+    "port": "EPHEMERAL_NOT_RECORDED_BY_CAPTURE_CLI",
+    "routeTemplate": "/archive/engine.html?preview=1&fit=screen&qpp=4&mode=<exam|sol|ans>&data=exams%2F__codex_capture__%2F25_%EA%B8%88%EB%8B%B9%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EC%88%98%ED%95%99II.js",
+    "loadedSourceRef": {
+      "path": "archive/exams/original/high/h2/1mid/25_금당고_1학기_중간_고2_수학II.js",
+      "sha256": "cf7007cba3c5f137b789497e875653f626b94208014a92c0265fb7f392de31f1"
+    },
+    "engineRef": {
+      "path": "archive/engine.html",
+      "sha256": "8d6974f5f05f18231548183cfc415e1e2b95ac65b46d530fb540c605ec75d2f1"
+    },
+    "collectorCommand": "node archive/tools/capture-codex-exam.mjs --root . --exam archive/exams/original/high/h2/1mid/25_금당고_1학기_중간_고2_수학II.js --asset-root archive --output .tmp/archive/2026-10-10/geum-math-ii/r3-capture-06 --node-modules C:\\Users\\USER\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\node_modules",
+    "originScheme": "http",
+    "actualRoute": "http://127.0.0.1:<ephemeral-port>/archive/engine.html?preview=1&fit=screen&qpp=4&mode=<exam|sol|ans>&data=exams%2F__codex_capture__%2F25_%EA%B8%88%EB%8B%B9%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EC%88%98%ED%95%99II.js",
+    "fullOriginNotEmittedByCaptureCli": true
+  },
+  "cases": [
+    {
+      "id": "exam/desktop",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "reviewedCaptureSha256s": [
+        "fd1bfb40832faeb8276668603003f67db463c90b9de9546e63ce42d47502c004"
+      ],
+      "layoutReviewStatus": "PASS",
+      "mathJaxStatus": "PASS",
+      "assetDecodeStatus": "PASS",
+      "reviewNotes": "Reviewed full 20-qid desktop exam capture through q20; source question figures q12/q13 render, no clipping, overlap or horizontal overflow."
+    },
+    {
+      "id": "exam/mobile",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "reviewedCaptureSha256s": [
+        "b8d1d572733280d29fc4ed2d9739fc6c5af2c1b1bbb284ef7c98ac9e9ffd5c93"
+      ],
+      "layoutReviewStatus": "PASS",
+      "mathJaxStatus": "PASS",
+      "assetDecodeStatus": "PASS",
+      "reviewNotes": "Reviewed full 20-qid 390px mobile exam capture through q20; both required source figures render and the page remains within viewport width."
+    },
+    {
+      "id": "sol/desktop",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "reviewedCaptureSha256s": [
+        "0ddff6f7e653dd995389f3d3fa0ae12c5487906eebffeb420d5f608bb0f1e680"
+      ],
+      "layoutReviewStatus": "PASS",
+      "mathJaxStatus": "PASS",
+      "assetDecodeStatus": "PASS",
+      "reviewNotes": "Reviewed all solutions through q20. q13 graph labels A(x), Amax=6 and x=-1 are readable; q19 labels (0,a), (a,0), y=x+a and y=x-a are readable at actual rendered scale. No clipping or overflow."
+    },
+    {
+      "id": "sol/mobile",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "reviewedCaptureSha256s": [
+        "04f05a48bb87d559422f6b7a80afecddd52d29d51e3be84b2ef268a3cc57e138"
+      ],
+      "layoutReviewStatus": "PASS",
+      "mathJaxStatus": "PASS",
+      "assetDecodeStatus": "PASS",
+      "reviewNotes": "Reviewed all solutions through q20. Enlarged q13/q19 SVG labels remain readable at the captured 390px width; no clipping or horizontal overflow."
+    },
+    {
+      "id": "ans/desktop",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "reviewedCaptureSha256s": [
+        "b812eee007770832e8c798d53076d56beb77c1e9f72f5811590d1741b22a3d47"
+      ],
+      "layoutReviewStatus": "PASS",
+      "mathJaxStatus": "PASS",
+      "assetDecodeStatus": "PASS",
+      "reviewNotes": "Reviewed answer rows 1–20 including final q20; no clipping or overflow."
+    },
+    {
+      "id": "ans/mobile",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "reviewedCaptureSha256s": [
+        "401a7148678ca69ef056c74972c78069de9062936188f3c0db395a6c9e42cc1d"
+      ],
+      "layoutReviewStatus": "PASS",
+      "mathJaxStatus": "PASS",
+      "assetDecodeStatus": "PASS",
+      "reviewNotes": "Reviewed answer rows 1–20 including final q20; no clipping or overflow."
+    }
+  ],
+  "browserBinding": {
+    "channel": "chrome",
+    "browserVersion": "154.0.8037.98",
+    "playwrightVersion": "1.62.1",
+    "nodeModulesBundle": "C:\\Users\\USER\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\node_modules"
+  }
+}
