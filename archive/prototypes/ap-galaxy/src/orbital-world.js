@@ -220,8 +220,9 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   const groups = new Map();
   const entities = new Map();
   let catalogPoints = null;
-  let catalogPointNodes = [];
   let catalogPointFiles = [];
+  let visibleCatalogPointNodes = [];
+  let visibleCatalogPointFiles = [];
   let catalogPointPositions = null;
   let focusedGroupId = '';
   const constellations = [];
@@ -361,7 +362,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     return {
       file: exam.file, exam, groupId, slot, token, star, paper, pickMesh: star,
       position: new THREE.Vector3(), phase: hashAngle(exam.file), radius: 2.8 + (slot % 3) * 1.72,
-      speed: .22 + (hashText(exam.file) % 13) * .025, targetReady: false,
+      speed: .22 + (hashText(exam.file) % 13) * .025,
     };
   }
   function removeDataNode(entity) {
@@ -378,14 +379,23 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     sharedPaperMaterial.emissiveIntensity = searching ? .58 : .13;
     document.body.classList.toggle('search-active', searching);
     const oldGroups = [...groups.values()];
-    const unused = new Set(oldGroups);
+    const oldGroupsById = new Map(oldGroups.map((group) => [group.id, group]));
+    // Reserve every exact-ID match before assigning any fallback roots. A filtered
+    // group can occur before its old exact match in the next ordering.
+    const exactMatches = new Map();
+    for (const data of nextGroups) {
+      const exact = oldGroupsById.get(data.id);
+      if (exact && !exactMatches.has(data.id)) exactMatches.set(data.id, exact);
+    }
+    const reservedRoots = new Set([...exactMatches.values()].map((group) => group.root));
+    const unused = new Set(oldGroups.filter((group) => !reservedRoots.has(group.root)));
     const newGroupMap = new Map();
     for (let index = 0; index < nextGroups.length; index += 1) {
       const data = nextGroups[index];
-      let group = groups.get(data.id);
+      let group = exactMatches.get(data.id);
       let reused = false;
       if (group) {
-        unused.delete(group);
+        exactMatches.delete(data.id);
         reused = true;
       } else if (oldGroups.length) {
         group = [...unused][0];
@@ -439,8 +449,9 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     const groupByFile = new Map();
     for (const group of nextGroups) for (const file of group.files) groupByFile.set(file, group.id);
     const groupSlots = new Map(nextGroups.map((group) => [group.id, 0]));
-    catalogPointNodes = [];
     catalogPointFiles = [];
+    visibleCatalogPointNodes = [];
+    visibleCatalogPointFiles = [];
     const slotByFile = new Map();
     for (const exam of nextExams) {
       const id = groupByFile.get(exam.file);
@@ -448,13 +459,17 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       const slot = groupSlots.get(id) || 0;
       groupSlots.set(id, slot + 1);
       slotByFile.set(exam.file, slot);
-      catalogPointNodes.push({
+      const node = {
         file: exam.file, groupId: id, slot, phase: hashAngle(exam.file),
         radius: 2.8 + (slot % 3) * 1.72,
         speed: .22 + (hashText(exam.file) % 13) * .025,
         palette: hashText(exam.file) % ORBIT_COLORS.length,
-      });
+      };
       catalogPointFiles.push(exam.file);
+      if (!selectedFiles.has(exam.file)) {
+        visibleCatalogPointNodes.push(node);
+        visibleCatalogPointFiles.push(exam.file);
+      }
     }
     rebuildCatalogPoints();
     for (const exam of details) {
@@ -486,10 +501,10 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       catalogPoints.geometry.dispose();
       catalogPoints.material.dispose();
     }
-    const positions = new Float32Array(catalogPointNodes.length * 3);
-    const colors = new Float32Array(catalogPointNodes.length * 3);
-    for (let i = 0; i < catalogPointNodes.length; i += 1) {
-      new THREE.Color(ORBIT_COLORS[catalogPointNodes[i].palette % ORBIT_COLORS.length]).toArray(colors, i * 3);
+    const positions = new Float32Array(visibleCatalogPointNodes.length * 3);
+    const colors = new Float32Array(visibleCatalogPointNodes.length * 3);
+    for (let i = 0; i < visibleCatalogPointNodes.length; i += 1) {
+      new THREE.Color(ORBIT_COLORS[visibleCatalogPointNodes[i].palette % ORBIT_COLORS.length]).toArray(colors, i * 3);
     }
     const geometry = new THREE.BufferGeometry();
     const positionAttribute = new THREE.BufferAttribute(positions, 3);
@@ -501,7 +516,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       transparent: true, opacity: .92, blending: THREE.AdditiveBlending, depthWrite: false,
     }));
     catalogPoints.userData.kind = 'catalog-points';
-    catalogPoints.userData.files = catalogPointFiles;
+    catalogPoints.userData.files = visibleCatalogPointFiles;
     catalogPointPositions = positions;
     dataRoot.add(catalogPoints);
   }
@@ -589,8 +604,8 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       group.orbitPath.scale.setScalar(group.orbitRadius / Math.max(group.targetRadius, 1));
     }
 
-    for (let i = 0; i < catalogPointNodes.length; i += 1) {
-      const node = catalogPointNodes[i];
+    for (let i = 0; i < visibleCatalogPointNodes.length; i += 1) {
+      const node = visibleCatalogPointNodes[i];
       const group = groups.get(node.groupId);
       if (!group) continue;
       const angle = node.phase + simTime * node.speed;
@@ -610,12 +625,9 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       tempA.set(Math.cos(orbitalAngle) * entity.radius, Math.sin(orbitalAngle * 1.45) * .65, Math.sin(orbitalAngle) * entity.radius * .82);
       tempA.applyAxisAngle(orbitAxis, .16 + (entity.slot % 3) * .22);
       tempA.add(group.root.position);
-      if (!entity.targetReady) {
-        entity.position.copy(tempA);
-        entity.targetReady = true;
-      } else {
-        entity.position.lerp(tempA, Math.min(1, dt * 2.4));
-      }
+      // A detailed star replaces its point LOD, so both representations use the
+      // same orbital position with no interpolation lag or duplicate hit target.
+      entity.position.copy(tempA);
       entity.token.position.copy(entity.position);
       entity.token.rotation.y = Math.sin(simTime * .6 + entity.phase) * .12;
       entity.token.rotation.z = Math.cos(simTime * .3 + entity.phase) * .045;
