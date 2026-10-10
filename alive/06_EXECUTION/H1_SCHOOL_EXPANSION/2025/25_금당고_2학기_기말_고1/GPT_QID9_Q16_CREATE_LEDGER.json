@@ -1,0 +1,806 @@
+{
+  "schemaVersion": "GD25_Q16_CREATE_SELF_REVIEW_V1",
+  "sourceQid": 16,
+  "originalSourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "candidateSourceBlobSha": "01bd54d5efc736be92e5a4014d5516141286bd0d",
+  "lockedPrimaryL3": "H1-RPM-263",
+  "sourceUnitMismatchExplained": "원본 무리함수 분류 H22-C2-09이지만 Primary L3은 앞단의 유리함수 식 결정 H1-RPM-263; target 무리함수는 CrossConcept",
+  "candidateCount": 9,
+  "keep": 9,
+  "hold": 0,
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 2,
+    "④": 2,
+    "⑤": 1
+  },
+  "quality": "CREATOR_SELF_CHECK_ONLY",
+  "independentReviewPerformed": false,
+  "actualSvgBrowserRender": "NOT_TESTED",
+  "consumerPublished": false,
+  "svgProblemCount": 9,
+  "svgSolutionCount": 9,
+  "visualEvidence": "physical SVG Git tree staging and numerical curve equations verified, browser not rendered",
+  "rows": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q16-A1",
+      "sourceJsBlobSha": "01bd54d5efc736be92e5a4014d5516141286bd0d",
+      "answer": "①",
+      "expectedQuadrants": [
+        1,
+        2
+      ],
+      "mathFacts": {
+        "a": 2,
+        "b": 2,
+        "c": 2,
+        "verticalAsymptote": -2,
+        "horizontalAsymptote": 2,
+        "point": [
+          0,
+          1
+        ],
+        "domainBoundary": -1,
+        "radicalZero": null,
+        "quadrantWitnesses": {
+          "1": {
+            "x": 0.25,
+            "y": 3.5811388
+          },
+          "2": {
+            "x": -1,
+            "y": 2
+          }
+        }
+      },
+      "reverseStemCheck": "최종 발문과 문제 그래프만 다시 읽고 x=-c, y=a 및 x=0 표시점에서 a,b,c를 결정하고 sqrt(ax+b)+c의 정의역·부호로 사분면 선택을 복원",
+      "primaryL3Need": "다른 함수식을 임의로 대입해서는 해를 결정할 수 없고 원본 유리함수의 점근선과 표시점을 이용한 식 복원이 필수",
+      "problemVisual": "ADD_ACTUAL_RATIONAL_GRAPH",
+      "solutionVisual": "ADD_ACTUAL_RADICAL_GRAPH",
+      "decision": "KEEP",
+      "distractorPaths": [
+        {
+          "choice": "②",
+          "predicted": "제1, 제4사분면",
+          "missingQuadrants": [
+            2
+          ],
+          "extraneousQuadrants": [
+            4
+          ],
+          "actualErrorRoute": "가능한 제2사분면을 누락하고 불가능한 제4사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        },
+        {
+          "choice": "③",
+          "predicted": "제2, 제3사분면",
+          "missingQuadrants": [
+            1
+          ],
+          "extraneousQuadrants": [
+            3
+          ],
+          "actualErrorRoute": "가능한 제1사분면을 누락하고 불가능한 제3사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        },
+        {
+          "choice": "④",
+          "predicted": "제1사분면",
+          "missingQuadrants": [
+            2
+          ],
+          "extraneousQuadrants": [],
+          "actualErrorRoute": "정의역 또는 y부호의 끝점 검사를 생략해 실제 지나는 제2사분면을 누락"
+        },
+        {
+          "choice": "⑤",
+          "predicted": "제1, 제2, 제3사분면",
+          "missingQuadrants": [],
+          "extraneousQuadrants": [
+            3
+          ],
+          "actualErrorRoute": "시작점·축 교차 전에 부호 전환이 있다고 오인하여 불가능한 제3사분면을 추가"
+        }
+      ],
+      "independentQualityReview": "NOT_PERFORMED",
+      "studentBrowserRender": "NOT_TESTED"
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q16-A2",
+      "sourceJsBlobSha": "01bd54d5efc736be92e5a4014d5516141286bd0d",
+      "answer": "③",
+      "expectedQuadrants": [
+        1,
+        2
+      ],
+      "mathFacts": {
+        "a": 3,
+        "b": 6,
+        "c": 1,
+        "verticalAsymptote": -1,
+        "horizontalAsymptote": 3,
+        "point": [
+          0,
+          6
+        ],
+        "domainBoundary": -2,
+        "radicalZero": null,
+        "quadrantWitnesses": {
+          "1": {
+            "x": 0.25,
+            "y": 3.5980762
+          },
+          "2": {
+            "x": -2,
+            "y": 1
+          }
+        }
+      },
+      "reverseStemCheck": "최종 발문과 문제 그래프만 다시 읽고 x=-c, y=a 및 x=0 표시점에서 a,b,c를 결정하고 sqrt(ax+b)+c의 정의역·부호로 사분면 선택을 복원",
+      "primaryL3Need": "다른 함수식을 임의로 대입해서는 해를 결정할 수 없고 원본 유리함수의 점근선과 표시점을 이용한 식 복원이 필수",
+      "problemVisual": "ADD_ACTUAL_RATIONAL_GRAPH",
+      "solutionVisual": "ADD_ACTUAL_RADICAL_GRAPH",
+      "decision": "KEEP",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "predicted": "제1, 제4사분면",
+          "missingQuadrants": [
+            2
+          ],
+          "extraneousQuadrants": [
+            4
+          ],
+          "actualErrorRoute": "가능한 제2사분면을 누락하고 불가능한 제4사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        },
+        {
+          "choice": "②",
+          "predicted": "제2, 제3사분면",
+          "missingQuadrants": [
+            1
+          ],
+          "extraneousQuadrants": [
+            3
+          ],
+          "actualErrorRoute": "가능한 제1사분면을 누락하고 불가능한 제3사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        },
+        {
+          "choice": "④",
+          "predicted": "제1사분면",
+          "missingQuadrants": [
+            2
+          ],
+          "extraneousQuadrants": [],
+          "actualErrorRoute": "정의역 또는 y부호의 끝점 검사를 생략해 실제 지나는 제2사분면을 누락"
+        },
+        {
+          "choice": "⑤",
+          "predicted": "제2사분면",
+          "missingQuadrants": [
+            1
+          ],
+          "extraneousQuadrants": [],
+          "actualErrorRoute": "정의역 또는 y부호의 끝점 검사를 생략해 실제 지나는 제1사분면을 누락"
+        }
+      ],
+      "independentQualityReview": "NOT_PERFORMED",
+      "studentBrowserRender": "NOT_TESTED"
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q16-A3",
+      "sourceJsBlobSha": "01bd54d5efc736be92e5a4014d5516141286bd0d",
+      "answer": "④",
+      "expectedQuadrants": [
+        1,
+        2
+      ],
+      "mathFacts": {
+        "a": -2,
+        "b": 4,
+        "c": 2,
+        "verticalAsymptote": -2,
+        "horizontalAsymptote": -2,
+        "point": [
+          0,
+          2
+        ],
+        "domainBoundary": 2,
+        "radicalZero": null,
+        "quadrantWitnesses": {
+          "1": {
+            "x": 0.25,
+            "y": 3.8708287
+          },
+          "2": {
+            "x": -30,
+            "y": 10
+          }
+        }
+      },
+      "reverseStemCheck": "최종 발문과 문제 그래프만 다시 읽고 x=-c, y=a 및 x=0 표시점에서 a,b,c를 결정하고 sqrt(ax+b)+c의 정의역·부호로 사분면 선택을 복원",
+      "primaryL3Need": "다른 함수식을 임의로 대입해서는 해를 결정할 수 없고 원본 유리함수의 점근선과 표시점을 이용한 식 복원이 필수",
+      "problemVisual": "ADD_ACTUAL_RATIONAL_GRAPH",
+      "solutionVisual": "ADD_ACTUAL_RADICAL_GRAPH",
+      "decision": "KEEP",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "predicted": "제2, 제3사분면",
+          "missingQuadrants": [
+            1
+          ],
+          "extraneousQuadrants": [
+            3
+          ],
+          "actualErrorRoute": "가능한 제1사분면을 누락하고 불가능한 제3사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        },
+        {
+          "choice": "②",
+          "predicted": "제1, 제2, 제4사분면",
+          "missingQuadrants": [],
+          "extraneousQuadrants": [
+            4
+          ],
+          "actualErrorRoute": "시작점·축 교차 전에 부호 전환이 있다고 오인하여 불가능한 제4사분면을 추가"
+        },
+        {
+          "choice": "③",
+          "predicted": "제1, 제4사분면",
+          "missingQuadrants": [
+            2
+          ],
+          "extraneousQuadrants": [
+            4
+          ],
+          "actualErrorRoute": "가능한 제2사분면을 누락하고 불가능한 제4사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        },
+        {
+          "choice": "⑤",
+          "predicted": "제1, 제3, 제4사분면",
+          "missingQuadrants": [
+            2
+          ],
+          "extraneousQuadrants": [
+            3,
+            4
+          ],
+          "actualErrorRoute": "가능한 제2사분면을 누락하고 불가능한 제3·제4사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        }
+      ],
+      "independentQualityReview": "NOT_PERFORMED",
+      "studentBrowserRender": "NOT_TESTED"
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q16-B1",
+      "sourceJsBlobSha": "01bd54d5efc736be92e5a4014d5516141286bd0d",
+      "answer": "②",
+      "expectedQuadrants": [
+        1,
+        4
+      ],
+      "mathFacts": {
+        "a": 2,
+        "b": -6,
+        "c": -2,
+        "verticalAsymptote": 2,
+        "horizontalAsymptote": 2,
+        "point": [
+          0,
+          3
+        ],
+        "domainBoundary": 3,
+        "radicalZero": 5,
+        "quadrantWitnesses": {
+          "1": {
+            "x": 5.25,
+            "y": 0.1213203
+          },
+          "4": {
+            "x": 3,
+            "y": -2
+          }
+        }
+      },
+      "reverseStemCheck": "최종 발문과 문제 그래프만 다시 읽고 x=-c, y=a 및 x=0 표시점에서 a,b,c를 결정하고 sqrt(ax+b)+c의 정의역·부호로 사분면 선택을 복원",
+      "primaryL3Need": "다른 함수식을 임의로 대입해서는 해를 결정할 수 없고 원본 유리함수의 점근선과 표시점을 이용한 식 복원이 필수",
+      "problemVisual": "ADD_ACTUAL_RATIONAL_GRAPH",
+      "solutionVisual": "ADD_ACTUAL_RADICAL_GRAPH",
+      "decision": "KEEP",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "predicted": "제1, 제2사분면",
+          "missingQuadrants": [
+            4
+          ],
+          "extraneousQuadrants": [
+            2
+          ],
+          "actualErrorRoute": "가능한 제4사분면을 누락하고 불가능한 제2사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        },
+        {
+          "choice": "③",
+          "predicted": "제2, 제3사분면",
+          "missingQuadrants": [
+            1,
+            4
+          ],
+          "extraneousQuadrants": [
+            2,
+            3
+          ],
+          "actualErrorRoute": "가능한 제1·제4사분면을 누락하고 불가능한 제2·제3사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        },
+        {
+          "choice": "④",
+          "predicted": "제1사분면",
+          "missingQuadrants": [
+            4
+          ],
+          "extraneousQuadrants": [],
+          "actualErrorRoute": "정의역 또는 y부호의 끝점 검사를 생략해 실제 지나는 제4사분면을 누락"
+        },
+        {
+          "choice": "⑤",
+          "predicted": "제3, 제4사분면",
+          "missingQuadrants": [
+            1
+          ],
+          "extraneousQuadrants": [
+            3
+          ],
+          "actualErrorRoute": "가능한 제1사분면을 누락하고 불가능한 제3사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        }
+      ],
+      "independentQualityReview": "NOT_PERFORMED",
+      "studentBrowserRender": "NOT_TESTED"
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q16-B2",
+      "sourceJsBlobSha": "01bd54d5efc736be92e5a4014d5516141286bd0d",
+      "answer": "⑤",
+      "expectedQuadrants": [
+        2,
+        3
+      ],
+      "mathFacts": {
+        "a": -3,
+        "b": -6,
+        "c": -2,
+        "verticalAsymptote": 2,
+        "horizontalAsymptote": -3,
+        "point": [
+          0,
+          3
+        ],
+        "domainBoundary": -2,
+        "radicalZero": -3.3333333333333335,
+        "quadrantWitnesses": {
+          "2": {
+            "x": -30,
+            "y": 7.1651514
+          },
+          "3": {
+            "x": -3.25,
+            "y": -0.0635083
+          }
+        }
+      },
+      "reverseStemCheck": "최종 발문과 문제 그래프만 다시 읽고 x=-c, y=a 및 x=0 표시점에서 a,b,c를 결정하고 sqrt(ax+b)+c의 정의역·부호로 사분면 선택을 복원",
+      "primaryL3Need": "다른 함수식을 임의로 대입해서는 해를 결정할 수 없고 원본 유리함수의 점근선과 표시점을 이용한 식 복원이 필수",
+      "problemVisual": "ADD_ACTUAL_RATIONAL_GRAPH",
+      "solutionVisual": "ADD_ACTUAL_RADICAL_GRAPH",
+      "decision": "KEEP",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "predicted": "제1, 제2사분면",
+          "missingQuadrants": [
+            3
+          ],
+          "extraneousQuadrants": [
+            1
+          ],
+          "actualErrorRoute": "가능한 제3사분면을 누락하고 불가능한 제1사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        },
+        {
+          "choice": "②",
+          "predicted": "제1, 제4사분면",
+          "missingQuadrants": [
+            2,
+            3
+          ],
+          "extraneousQuadrants": [
+            1,
+            4
+          ],
+          "actualErrorRoute": "가능한 제2·제3사분면을 누락하고 불가능한 제1·제4사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        },
+        {
+          "choice": "③",
+          "predicted": "제1, 제2, 제3사분면",
+          "missingQuadrants": [],
+          "extraneousQuadrants": [
+            1
+          ],
+          "actualErrorRoute": "시작점·축 교차 전에 부호 전환이 있다고 오인하여 불가능한 제1사분면을 추가"
+        },
+        {
+          "choice": "④",
+          "predicted": "제2사분면",
+          "missingQuadrants": [
+            3
+          ],
+          "extraneousQuadrants": [],
+          "actualErrorRoute": "정의역 또는 y부호의 끝점 검사를 생략해 실제 지나는 제3사분면을 누락"
+        }
+      ],
+      "independentQualityReview": "NOT_PERFORMED",
+      "studentBrowserRender": "NOT_TESTED"
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q16-B3",
+      "sourceJsBlobSha": "01bd54d5efc736be92e5a4014d5516141286bd0d",
+      "answer": "③",
+      "expectedQuadrants": [
+        1,
+        2,
+        3
+      ],
+      "mathFacts": {
+        "a": 2,
+        "b": 8,
+        "c": -2,
+        "verticalAsymptote": 2,
+        "horizontalAsymptote": 2,
+        "point": [
+          0,
+          -4
+        ],
+        "domainBoundary": -4,
+        "radicalZero": -2,
+        "quadrantWitnesses": {
+          "1": {
+            "x": 0.25,
+            "y": 0.9154759
+          },
+          "2": {
+            "x": -1.75,
+            "y": 0.1213203
+          },
+          "3": {
+            "x": -4,
+            "y": -2
+          }
+        }
+      },
+      "reverseStemCheck": "최종 발문과 문제 그래프만 다시 읽고 x=-c, y=a 및 x=0 표시점에서 a,b,c를 결정하고 sqrt(ax+b)+c의 정의역·부호로 사분면 선택을 복원",
+      "primaryL3Need": "다른 함수식을 임의로 대입해서는 해를 결정할 수 없고 원본 유리함수의 점근선과 표시점을 이용한 식 복원이 필수",
+      "problemVisual": "ADD_ACTUAL_RATIONAL_GRAPH",
+      "solutionVisual": "ADD_ACTUAL_RADICAL_GRAPH",
+      "decision": "KEEP",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "predicted": "제1, 제2사분면",
+          "missingQuadrants": [
+            3
+          ],
+          "extraneousQuadrants": [],
+          "actualErrorRoute": "정의역 또는 y부호의 끝점 검사를 생략해 실제 지나는 제3사분면을 누락"
+        },
+        {
+          "choice": "②",
+          "predicted": "제1, 제3, 제4사분면",
+          "missingQuadrants": [
+            2
+          ],
+          "extraneousQuadrants": [
+            4
+          ],
+          "actualErrorRoute": "가능한 제2사분면을 누락하고 불가능한 제4사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        },
+        {
+          "choice": "④",
+          "predicted": "제1, 제2, 제4사분면",
+          "missingQuadrants": [
+            3
+          ],
+          "extraneousQuadrants": [
+            4
+          ],
+          "actualErrorRoute": "가능한 제3사분면을 누락하고 불가능한 제4사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        },
+        {
+          "choice": "⑤",
+          "predicted": "제2, 제3, 제4사분면",
+          "missingQuadrants": [
+            1
+          ],
+          "extraneousQuadrants": [
+            4
+          ],
+          "actualErrorRoute": "가능한 제1사분면을 누락하고 불가능한 제4사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        }
+      ],
+      "independentQualityReview": "NOT_PERFORMED",
+      "studentBrowserRender": "NOT_TESTED"
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q16-C1",
+      "sourceJsBlobSha": "01bd54d5efc736be92e5a4014d5516141286bd0d",
+      "answer": "②",
+      "expectedQuadrants": [
+        1,
+        2,
+        4
+      ],
+      "mathFacts": {
+        "a": -2,
+        "b": 8,
+        "c": -2,
+        "verticalAsymptote": 2,
+        "horizontalAsymptote": -2,
+        "point": [
+          0,
+          -4
+        ],
+        "domainBoundary": 4,
+        "radicalZero": 2,
+        "quadrantWitnesses": {
+          "1": {
+            "x": 0.25,
+            "y": 0.7386128
+          },
+          "2": {
+            "x": -30,
+            "y": 6.2462113
+          },
+          "4": {
+            "x": 2.25,
+            "y": -0.1291713
+          }
+        }
+      },
+      "reverseStemCheck": "최종 발문과 문제 그래프만 다시 읽고 x=-c, y=a 및 x=0 표시점에서 a,b,c를 결정하고 sqrt(ax+b)+c의 정의역·부호로 사분면 선택을 복원",
+      "primaryL3Need": "다른 함수식을 임의로 대입해서는 해를 결정할 수 없고 원본 유리함수의 점근선과 표시점을 이용한 식 복원이 필수",
+      "problemVisual": "ADD_ACTUAL_RATIONAL_GRAPH",
+      "solutionVisual": "ADD_ACTUAL_RADICAL_GRAPH",
+      "decision": "KEEP",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "predicted": "제1, 제2, 제3사분면",
+          "missingQuadrants": [
+            4
+          ],
+          "extraneousQuadrants": [
+            3
+          ],
+          "actualErrorRoute": "가능한 제4사분면을 누락하고 불가능한 제3사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        },
+        {
+          "choice": "③",
+          "predicted": "제2, 제3사분면",
+          "missingQuadrants": [
+            1,
+            4
+          ],
+          "extraneousQuadrants": [
+            3
+          ],
+          "actualErrorRoute": "가능한 제1·제4사분면을 누락하고 불가능한 제3사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        },
+        {
+          "choice": "④",
+          "predicted": "제1, 제3, 제4사분면",
+          "missingQuadrants": [
+            2
+          ],
+          "extraneousQuadrants": [
+            3
+          ],
+          "actualErrorRoute": "가능한 제2사분면을 누락하고 불가능한 제3사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        },
+        {
+          "choice": "⑤",
+          "predicted": "제1, 제4사분면",
+          "missingQuadrants": [
+            2
+          ],
+          "extraneousQuadrants": [],
+          "actualErrorRoute": "정의역 또는 y부호의 끝점 검사를 생략해 실제 지나는 제2사분면을 누락"
+        }
+      ],
+      "independentQualityReview": "NOT_PERFORMED",
+      "studentBrowserRender": "NOT_TESTED"
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q16-C2",
+      "sourceJsBlobSha": "01bd54d5efc736be92e5a4014d5516141286bd0d",
+      "answer": "④",
+      "expectedQuadrants": [
+        1,
+        3,
+        4
+      ],
+      "mathFacts": {
+        "a": 2,
+        "b": 4,
+        "c": -3,
+        "verticalAsymptote": 3,
+        "horizontalAsymptote": 2,
+        "point": [
+          0,
+          -1.3333333333333333
+        ],
+        "domainBoundary": -2,
+        "radicalZero": 2.5,
+        "quadrantWitnesses": {
+          "1": {
+            "x": 2.75,
+            "y": 0.082207
+          },
+          "3": {
+            "x": -2,
+            "y": -3
+          },
+          "4": {
+            "x": 0.25,
+            "y": -0.8786797
+          }
+        }
+      },
+      "reverseStemCheck": "최종 발문과 문제 그래프만 다시 읽고 x=-c, y=a 및 x=0 표시점에서 a,b,c를 결정하고 sqrt(ax+b)+c의 정의역·부호로 사분면 선택을 복원",
+      "primaryL3Need": "다른 함수식을 임의로 대입해서는 해를 결정할 수 없고 원본 유리함수의 점근선과 표시점을 이용한 식 복원이 필수",
+      "problemVisual": "ADD_ACTUAL_RATIONAL_GRAPH",
+      "solutionVisual": "ADD_ACTUAL_RADICAL_GRAPH",
+      "decision": "KEEP",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "predicted": "제1, 제2, 제4사분면",
+          "missingQuadrants": [
+            3
+          ],
+          "extraneousQuadrants": [
+            2
+          ],
+          "actualErrorRoute": "가능한 제3사분면을 누락하고 불가능한 제2사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        },
+        {
+          "choice": "②",
+          "predicted": "제2, 제3, 제4사분면",
+          "missingQuadrants": [
+            1
+          ],
+          "extraneousQuadrants": [
+            2
+          ],
+          "actualErrorRoute": "가능한 제1사분면을 누락하고 불가능한 제2사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        },
+        {
+          "choice": "③",
+          "predicted": "제1, 제2, 제3사분면",
+          "missingQuadrants": [
+            4
+          ],
+          "extraneousQuadrants": [
+            2
+          ],
+          "actualErrorRoute": "가능한 제4사분면을 누락하고 불가능한 제2사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        },
+        {
+          "choice": "⑤",
+          "predicted": "제1, 제4사분면",
+          "missingQuadrants": [
+            3
+          ],
+          "extraneousQuadrants": [],
+          "actualErrorRoute": "정의역 또는 y부호의 끝점 검사를 생략해 실제 지나는 제3사분면을 누락"
+        }
+      ],
+      "independentQualityReview": "NOT_PERFORMED",
+      "studentBrowserRender": "NOT_TESTED"
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q16-C3",
+      "sourceJsBlobSha": "01bd54d5efc736be92e5a4014d5516141286bd0d",
+      "answer": "①",
+      "expectedQuadrants": [
+        2,
+        3,
+        4
+      ],
+      "mathFacts": {
+        "a": -2,
+        "b": 4,
+        "c": -3,
+        "verticalAsymptote": 3,
+        "horizontalAsymptote": -2,
+        "point": [
+          0,
+          -1.3333333333333333
+        ],
+        "domainBoundary": 2,
+        "radicalZero": -2.5,
+        "quadrantWitnesses": {
+          "2": {
+            "x": -30,
+            "y": 5
+          },
+          "3": {
+            "x": -2.25,
+            "y": -0.0845241
+          },
+          "4": {
+            "x": 0.25,
+            "y": -1.1291713
+          }
+        }
+      },
+      "reverseStemCheck": "최종 발문과 문제 그래프만 다시 읽고 x=-c, y=a 및 x=0 표시점에서 a,b,c를 결정하고 sqrt(ax+b)+c의 정의역·부호로 사분면 선택을 복원",
+      "primaryL3Need": "다른 함수식을 임의로 대입해서는 해를 결정할 수 없고 원본 유리함수의 점근선과 표시점을 이용한 식 복원이 필수",
+      "problemVisual": "ADD_ACTUAL_RATIONAL_GRAPH",
+      "solutionVisual": "ADD_ACTUAL_RADICAL_GRAPH",
+      "decision": "KEEP",
+      "distractorPaths": [
+        {
+          "choice": "②",
+          "predicted": "제1, 제2, 제4사분면",
+          "missingQuadrants": [
+            3
+          ],
+          "extraneousQuadrants": [
+            1
+          ],
+          "actualErrorRoute": "가능한 제3사분면을 누락하고 불가능한 제1사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        },
+        {
+          "choice": "③",
+          "predicted": "제1, 제2, 제3사분면",
+          "missingQuadrants": [
+            4
+          ],
+          "extraneousQuadrants": [
+            1
+          ],
+          "actualErrorRoute": "가능한 제4사분면을 누락하고 불가능한 제1사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        },
+        {
+          "choice": "④",
+          "predicted": "제1, 제4사분면",
+          "missingQuadrants": [
+            2,
+            3
+          ],
+          "extraneousQuadrants": [
+            1
+          ],
+          "actualErrorRoute": "가능한 제2·제3사분면을 누락하고 불가능한 제1사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        },
+        {
+          "choice": "⑤",
+          "predicted": "제1, 제3, 제4사분면",
+          "missingQuadrants": [
+            2
+          ],
+          "extraneousQuadrants": [
+            1
+          ],
+          "actualErrorRoute": "가능한 제2사분면을 누락하고 불가능한 제1사분면을 포함; 정의역과 y부호를 동시에 잘못 판정"
+        }
+      ],
+      "independentQualityReview": "NOT_PERFORMED",
+      "studentBrowserRender": "NOT_TESTED"
+    }
+  ]
+}

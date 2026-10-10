@@ -10,6 +10,7 @@ import { validateSolutionCalibration } from './solution-calibration-gate.mjs';
 const SCHEMA = 'JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1';
 const PASS = 'PASS';
 const HOLD = 'HOLD';
+const QUESTION_ONLY_REPLACEMENT = 'QUESTION_ONLY_REPLACEMENT_ACCEPTED';
 const ALLOWED_STAGES = new Set(['CREATE', 'R1', 'R2', 'R3', 'SOLUTION_UPGRADE']);
 const REQUIRED_AXES = [
   'sourceExact', 'answerMath', 'solutionMath', 'smallBoard',
@@ -95,7 +96,7 @@ function runtimeTexIssues(question) {
   return issues;
 }
 
-function checkQuestionRows(questions, evidence, issues) {
+function checkQuestionRows(questions, evidence, issues, questionOnlyAcceptedQids = new Set()) {
   const rows = array(evidence.questionRows);
   const byQid = new Map();
   for (const row of rows) {
@@ -109,12 +110,18 @@ function checkQuestionRows(questions, evidence, issues) {
     if (!row) { issues.push(`QUESTION_ROW_MISSING:q${q.id}`); continue; }
     for (const axis of REQUIRED_AXES) {
       const item = row[axis];
-      if (!item || ![PASS, HOLD].includes(item.status)) {
+      const questionOnlyDisposition = axis === 'sourceExact'
+        && item?.status === QUESTION_ONLY_REPLACEMENT
+        && questionOnlyAcceptedQids.has(Number(q.id));
+      if (!item || (![PASS, HOLD].includes(item.status) && !questionOnlyDisposition)) {
         issues.push(`QUESTION_AXIS_EVIDENCE_MISSING:q${q.id}:${axis}`);
         continue;
       }
       if (item.status === PASS && !nonEmpty(item.evidence)) {
         issues.push(`QUESTION_AXIS_PASS_EVIDENCE_MISSING:q${q.id}:${axis}`);
+      }
+      if (questionOnlyDisposition && !nonEmpty(item.evidence)) {
+        issues.push(`QUESTION_ONLY_REPLACEMENT_EVIDENCE_MISSING:q${q.id}`);
       }
       if (item.status === HOLD && !validHoldEvidence(item)) {
         issues.push(`QUESTION_AXIS_HOLD_EVIDENCE_INCOMPLETE:q${q.id}:${axis}`);
@@ -134,6 +141,109 @@ function checkQuestionRows(questions, evidence, issues) {
     .map(([qid]) => qid)
     .sort((a, b) => a - b);
   return { rowCount: rows.length, heldQids };
+}
+
+function checkQuestionOnlyReplacementAdjudications(examFile, source, questions, evidence, issues) {
+  const entries = array(evidence.questionOnlyReplacementAdjudications);
+  const repoRoot = path.resolve(examFile.slice(0, examFile.lastIndexOf(`${path.sep}archive${path.sep}`)));
+  const byQid = new Map((evidence.questionRows || []).map(row => [Number(row.qid), row]));
+  const accepted = new Set();
+  const readBoundJson = (ref, label, qid) => {
+    const file = path.resolve(repoRoot, ref?.path || '');
+    if (!file.startsWith(repoRoot + path.sep) || !fs.existsSync(file)) {
+      issues.push(`QUESTION_ONLY_${label}_FILE_MISSING:q${qid}`);
+      return null;
+    }
+    const bytes = fs.readFileSync(file), digest = crypto.createHash('sha256').update(bytes).digest('hex');
+    if (!ref?.sha256 || digest !== ref.sha256) {
+      issues.push(`QUESTION_ONLY_${label}_SHA_MISMATCH:q${qid}`);
+      return null;
+    }
+    try { return JSON.parse(bytes.toString('utf8')); }
+    catch { issues.push(`QUESTION_ONLY_${label}_JSON_INVALID:q${qid}`); return null; }
+  };
+  for (const entry of entries) {
+    const qid = Number(entry?.qid), row = byQid.get(qid);
+    if (qid !== 19 || entry?.schemaVersion !== 'JS_ARCHIVE_CREATE_QUESTION_ONLY_REPLACEMENT_HISTORY_V1') {
+      issues.push(`QUESTION_ONLY_REPLACEMENT_SCHEMA_OR_SCOPE_INVALID:q${qid}`);
+      continue;
+    }
+    const decision = readBoundJson({ path: entry.adjudicationPath, sha256: entry.adjudicationSha256 }, 'ADJUDICATION', qid);
+    if (!decision) continue;
+    const q = questions.find(item => Number(item.id) === qid);
+    const raw = digestSource(source);
+    const blob = crypto.createHash('sha1').update(Buffer.concat([Buffer.from(`blob ${Buffer.byteLength(source)}\0`), Buffer.from(source)])).digest('hex');
+    const hashText = value => crypto.createHash('sha256').update(String(value ?? '')).digest('hex');
+    const qChoicesHash = crypto.createHash('sha256').update(JSON.stringify(q?.choices ?? [])).digest('hex');
+    const candidate = decision.currentCandidate || {};
+    const prior = decision.priorStatuses || {};
+    if (decision.schemaVersion !== 'JS_ARCHIVE_CREATE_QUESTION_ONLY_REPLACEMENT_ADJUDICATION_V1'
+      || decision.status !== 'QUESTION_ONLY_REPLACEMENT_ACCEPTED'
+      || decision.executionLine !== 'CODEX' || decision.qualityContractVersion !== 'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006'
+      || decision.qid !== qid || decision.stage !== 'CREATE' || decision.scopeOnly !== true
+      || decision.fullExamCreateComplete !== false
+      || decision.sourceParityClaim !== 'NOT_APPLICABLE_QUESTION_ONLY_REPLACEMENT'
+      || candidate.rawSha256 !== raw || candidate.gitBlobSha1 !== blob
+      || entry.currentSourceSha256 !== raw || Number(decision.sourceIdentity?.sourceOrdinal) !== qid
+      || decision.sourceIdentity?.questionUid !== entry.questionUid
+      || decision.targetPayload?.contentSha256 !== hashText(q?.content)
+      || decision.targetPayload?.choicesSha256 !== qChoicesHash
+      || decision.targetPayload?.answerSha256 !== hashText(q?.answer)
+      || decision.targetPayload?.solutionSha256 !== hashText(q?.solution)
+      || decision.targetPayload?.problemImageRef !== q?.image
+      || decision.targetPayload?.problemImageSha256 !== entry.currentAssetSha256
+      || decision.targetPayload?.solutionImageRef !== q?.solutionImage
+      || !['sha256:' + crypto.createHash('sha256').update(fs.readFileSync(path.join(repoRoot, 'archive', q?.solutionImage || ''))).digest('hex')].includes(decision.targetPayload?.solutionImageSha256)
+      || prior.sourceExact?.status !== HOLD || prior.solutionMath?.status !== HOLD
+      || !decision.replacementReason || decision.replacementReason.sourceParityClaimed !== false) {
+      issues.push(`QUESTION_ONLY_REPLACEMENT_BINDING_INVALID:q${qid}`);
+    }
+    const authority = readBoundJson(decision.authorityRef, 'AUTHORITY', qid);
+    const create = readBoundJson(decision.createValidatorRef, 'CREATE_VALIDATOR', qid);
+    const r1 = readBoundJson(decision.r1Ref, 'R1', qid);
+    const r2 = readBoundJson(decision.r2Ref, 'R2', qid);
+    const r3 = readBoundJson(decision.r3Ref, 'R3', qid);
+    if (!authority || authority.schemaVersion !== 'JS_ARCHIVE_QUESTION_ONLY_REPLACEMENT_AUTHORITY_V1'
+      || authority.status !== 'AUTHORIZED' || Number(authority.qid) !== qid
+      || authority.replacementScope !== 'QUESTION_ONLY'
+      || authority.sourceParityClaim !== 'NOT_APPLICABLE_QUESTION_ONLY_REPLACEMENT'
+      || authority.candidate?.rawSha256 !== raw) issues.push(`QUESTION_ONLY_AUTHORITY_BINDING_INVALID:q${qid}`);
+    if (!create || create.ok !== true || create.disposition !== 'PASS'
+      || create.qualityContractVersion !== 'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006'
+      || create.candidateScope !== 'QUESTION_ONLY_QID_CANDIDATE' || create.fullExamStageClosure !== false
+      || create.questionOnly?.qid !== qid || create.artifactSha !== blob || array(create.issues).length) {
+      issues.push(`QUESTION_ONLY_CREATE_VALIDATOR_BINDING_INVALID:q${qid}`);
+    }
+    if (!r1 || r1.stage !== 'R1' || r1.reviewScope !== 'QID_ONLY' || Number(r1.qid) !== qid
+      || r1.candidateRawSha256 !== raw || r1.mathReview?.verdict !== PASS
+      || !String(r1.result || '').startsWith('QID_19_R1_CONTENT_AND_META_PASS')) issues.push(`QUESTION_ONLY_R1_BINDING_INVALID:q${qid}`);
+    if (!r2 || r2.stage !== 'R2' || r2.scope?.coverage !== 'QID_ONLY' || Number(r2.scope?.qid) !== qid
+      || r2.currentCandidate?.sha256 !== raw || r2.studentInputParity?.disposition !== 'EXACT'
+      || r2.postfreezeDecision?.answerRecomputed !== false || r2.postfreezeDecision?.answerFreezeReused !== true) {
+      issues.push(`QUESTION_ONLY_R2_BINDING_INVALID:q${qid}`);
+    }
+    if (!r3 || r3.review?.overall !== 'QID_19_DESKTOP_RENDER_PASS_ONLY'
+      || !array(r3.dispositions).filter(row => ['desktop-exam-q19', 'desktop-sol-q19', 'desktop-ans-q19'].includes(row.case))
+        .every(row => row.disposition === 'PASS_QID_RENDER')) issues.push(`QUESTION_ONLY_R3_BINDING_INVALID:q${qid}`);
+    if (row?.sourceExact?.status !== QUESTION_ONLY_REPLACEMENT
+      || row?.sourceExactAdjudicationRef?.path !== entry.adjudicationPath
+      || row?.sourceExactAdjudicationRef?.sha256 !== entry.adjudicationSha256
+      || row?.solutionMath?.status !== PASS
+      || row?.solutionMathAdjudicationRef?.path !== entry.adjudicationPath
+      || row?.solutionMathAdjudicationRef?.sha256 !== entry.adjudicationSha256) {
+      issues.push(`QUESTION_ONLY_REPLACEMENT_CLEARANCE_UNBOUND:q${qid}`);
+    }
+    if (entry.priorStatuses?.sourceExact?.status !== HOLD || entry.priorStatuses?.solutionMath?.status !== HOLD) {
+      issues.push(`QUESTION_ONLY_PRIOR_HOLD_NOT_PRESERVED:q${qid}`);
+    }
+    accepted.add(qid);
+  }
+  for (const row of evidence.questionRows || []) {
+    const qid = Number(row.qid);
+    if (row?.sourceExact?.status === QUESTION_ONLY_REPLACEMENT
+      && !accepted.has(qid)) issues.push(`QUESTION_ONLY_REPLACEMENT_ORPHAN:q${qid}`);
+  }
+  return accepted;
 }
 
 function checkVisualRows(examFile, questions, evidence, issues) {
@@ -217,6 +327,72 @@ function checkSummary(evidence, derived, issues) {
   }
 }
 
+function checkFalseHoldAdjudications(examFile, source, questions, evidence, issues) {
+  const entries = array(evidence.falseHoldAdjudications);
+  const repoRoot = path.resolve(examFile.slice(0, examFile.lastIndexOf(`${path.sep}archive${path.sep}`)));
+  const byQid = new Map((evidence.questionRows || []).map(row => [Number(row.qid), row]));
+  for (const entry of entries) {
+    const qid = Number(entry?.qid), row = byQid.get(qid);
+    if (qid !== 24 || entry?.schemaVersion !== 'JS_ARCHIVE_CREATE_FALSE_HOLD_HISTORY_V1') { issues.push(`FALSE_HOLD_ADJUDICATION_SCHEMA_OR_SCOPE_INVALID:q${qid}`); continue; }
+    const file = path.resolve(repoRoot, entry.adjudicationPath || '');
+    if (!file.startsWith(repoRoot + path.sep) || !fs.existsSync(file)) { issues.push(`FALSE_HOLD_ADJUDICATION_FILE_MISSING:q${qid}`); continue; }
+    const bytes = fs.readFileSync(file), digest = crypto.createHash('sha256').update(bytes).digest('hex');
+    if (digest !== entry.adjudicationSha256) { issues.push(`FALSE_HOLD_ADJUDICATION_SHA_MISMATCH:q${qid}`); continue; }
+    const decision = JSON.parse(bytes.toString('utf8'));
+    const q = questions.find(item => Number(item.id) === qid), hashText = value => crypto.createHash('sha256').update(String(value ?? '')).digest('hex');
+    const assetFile = q?.image ? path.resolve(repoRoot, 'archive', q.image) : '';
+    const assetSha = assetFile && fs.existsSync(assetFile) ? crypto.createHash('sha256').update(fs.readFileSync(assetFile)).digest('hex') : null;
+    if (decision.schemaVersion !== 'JS_ARCHIVE_CREATE_FALSE_HOLD_ADJUDICATION_V1' || decision.status !== 'FALSE_HOLD_CLEARED'
+      || decision.executionLine !== 'CODEX' || decision.qualityContractVersion !== 'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006'
+      || decision.qid !== qid || decision.stage !== 'CREATE' || decision.scopeOnly !== true
+      || decision.fullExamCreateComplete !== false || decision.sourceBinding?.rawSha256 !== digestSource(source)
+      || entry.currentSourceSha256 !== digestSource(source) || entry.currentAssetSha256 !== assetSha
+      || decision.assetBinding?.sha256 !== assetSha || decision.sourceBinding?.qidContentSha256 !== hashText(q?.content)
+      || decision.sourceBinding?.qidChoicesSha256 !== crypto.createHash('sha256').update(JSON.stringify(q?.choices ?? [])).digest('hex')
+      || decision.sourceBinding?.qidAnswerSha256 !== hashText(q?.answer) || decision.sourceBinding?.qidSolutionSha256 !== hashText(q?.solution)
+      || decision.studentSourceMutated !== false || decision.solutionMutated !== false
+      || decision.sourceBinding?.currentStudentPayloadSha256 !== decision.sourceBinding?.baselineStudentPayloadSha256
+      || !decision.falseHoldAdjudication?.proof?.some(text => String(text).includes('[ABC]=[DBC]'))
+      || !decision.falseHoldAdjudication?.proof?.some(text => String(text).includes('[OBC]'))
+      || !decision.falseHoldAdjudication?.proof?.some(text => String(text).includes('3:5'))) {
+      issues.push(`FALSE_HOLD_ADJUDICATION_BINDING_INVALID:q${qid}`);
+    }
+    const holdRef = decision.falseHoldAdjudication || {};
+    if (entry.originalHold?.path !== holdRef.priorHoldPath || entry.originalHold?.sha256 !== holdRef.priorHoldSha256
+      || entry.originalFreeze?.path !== holdRef.originalFreezePath || entry.originalFreeze?.sha256 !== holdRef.originalFreezeSha256) {
+      issues.push(`FALSE_HOLD_ADJUDICATION_HISTORY_BINDING_INVALID:q${qid}`);
+    }
+    for (const ref of [{ path: holdRef.priorHoldPath, sha256: holdRef.priorHoldSha256 }, { path: holdRef.originalFreezePath, sha256: holdRef.originalFreezeSha256 }]) {
+      const target = path.resolve(repoRoot, ref.path || '');
+      if (!target.startsWith(repoRoot + path.sep) || !fs.existsSync(target)
+        || crypto.createHash('sha256').update(fs.readFileSync(target)).digest('hex') !== ref.sha256) issues.push(`FALSE_HOLD_ADJUDICATION_PRIOR_BYTES_MISMATCH:q${qid}`);
+    }
+    const durable = entry.durableReceiptCopy;
+    if (durable) {
+      const declared = array(evidence.sourceRefreshReviewV1?.receipts).find(ref => ref?.sourcePath === holdRef.priorHoldPath);
+      const target = path.resolve(repoRoot, durable.path || '');
+      const actual = target.startsWith(repoRoot + path.sep) && fs.existsSync(target)
+        ? sha256(fs.readFileSync(target)) : null;
+      const parity = actual === durable.declaredSha256 ? 'MATCH' : 'MISMATCH_PRESERVED';
+      if (!declared || declared.durablePath !== durable.path || declared.sha256 !== durable.declaredSha256
+        || !actual || actual !== durable.actualSha256 || parity !== durable.parity) issues.push(`FALSE_HOLD_RECEIPT_COPY_WITNESS_INVALID:q${qid}`);
+    }
+    if (row?.sourceExact?.status !== PASS || row?.solutionMath?.status !== PASS
+      || row?.sourceExactAdjudicationRef?.sha256 !== entry.adjudicationSha256
+      || row?.solutionMathAdjudicationRef?.sha256 !== entry.adjudicationSha256) issues.push(`FALSE_HOLD_ADJUDICATION_CLEARANCE_UNBOUND:q${qid}`);
+    if (entry.priorStatuses?.sourceExact?.status !== HOLD || entry.priorStatuses?.solutionMath?.status !== HOLD) issues.push(`FALSE_HOLD_ADJUDICATION_PRIOR_HOLD_NOT_PRESERVED:q${qid}`);
+  }
+  for (const row of evidence.questionRows || []) {
+    if ((row.sourceExactAdjudicationRef || row.solutionMathAdjudicationRef)
+      && !entries.some(entry => Number(entry.qid) === Number(row.qid))
+      && !array(evidence.questionOnlyReplacementAdjudications).some(entry => Number(entry.qid) === Number(row.qid))) {
+      issues.push(`FALSE_HOLD_ADJUDICATION_ORPHAN_CLEARANCE:q${row.qid}`);
+    }
+  }
+}
+
+function digestSource(source) { return crypto.createHash('sha256').update(source).digest('hex'); }
+
 export function validatePhysicalEvidence({ examFile, evidenceFile, stage }) {
   const { source, questions } = loadExam(examFile);
   const evidence = JSON.parse(fs.readFileSync(evidenceFile, 'utf8'));
@@ -228,7 +404,10 @@ export function validatePhysicalEvidence({ examFile, evidenceFile, stage }) {
   if (evidence.examSha256 !== examSha) issues.push('EVIDENCE_EXAM_SHA_MISMATCH');
   if (Number(evidence.questionCount) !== questions.length) issues.push('EVIDENCE_QUESTION_COUNT_MISMATCH');
 
-  const questionEvidence = checkQuestionRows(questions, evidence, issues);
+  checkFalseHoldAdjudications(examFile, source, questions, evidence, issues);
+  const questionOnlyAcceptedQids = checkQuestionOnlyReplacementAdjudications(examFile, source, questions, evidence, issues);
+
+  const questionEvidence = checkQuestionRows(questions, evidence, issues, questionOnlyAcceptedQids);
   const visual = checkVisualRows(examFile, questions, evidence, issues);
   const metaEvidence = checkMetaRows(questions, evidence, issues);
   issues.push(...validateSolutionCalibration({ examFile, questions, evidence, stage }));

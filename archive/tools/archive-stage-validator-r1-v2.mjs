@@ -14,6 +14,7 @@ function dispositionRequired(row) {
   return compareResult === 'MISMATCH'
     || row?.repairApplied === true
     || row?.sourceMode === 'AUDITED_REPAIR'
+    || row?.sourceMode === 'QUESTION_ONLY'
     || row?.sourceMode === 'ALIVE_REPLACEMENT';
 }
 

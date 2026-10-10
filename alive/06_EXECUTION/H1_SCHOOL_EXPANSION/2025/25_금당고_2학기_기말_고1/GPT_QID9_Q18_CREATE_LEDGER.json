@@ -1,0 +1,385 @@
+{
+  "schemaVersion": "GD25_Q18_CREATOR_SELF_REVIEW_V1",
+  "sourceQid": 18,
+  "sourceExamBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "candidateSourceJsBlobSha": "fba5a8b99f243e29721716fd34317cb32057d63e",
+  "mathSpecBlobSha": "9e61e94967b61786376fe9e2fe98500a1f6ee9fc",
+  "lockedPrimaryL3": "H1-RPM-219",
+  "candidateCount": 9,
+  "keep": 9,
+  "hold": 0,
+  "formalIndependentQualityReview": false,
+  "actualBrowserRender": "NOT_TESTED",
+  "mainMerged": false,
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 2,
+    "④": 2,
+    "⑤": 1
+  },
+  "visual": {
+    "problemSvgCount": 0,
+    "solutionSvgCount": 9,
+    "svgTreeSha": "00421c5f91a1cb168eb85939e82bb1a7c6ee937c",
+    "physicalCoordinateCheck": "CREATOR_STATIC_COORDINATE_PARITY_CHECKED; CHROME_NOT_TESTED",
+    "rendererExecuted": false,
+    "visualCorrection": "Clipped lines to plot view, added coordinate axes/center M/right-angle marker, rounded exact radius squared values"
+  },
+  "rows": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q18-A1",
+      "answer": "②",
+      "value": 11,
+      "reverseStemFinding": "최종 발문에서 두 점 A,B와 주어진 직선, 정수 k 조건을 읽어 탈레스 원을 만들고 직선-원 만남과 P≠A,B의 예외를 판정",
+      "rpmNecessity": "중심-직선 거리와 원의 교점 개수 판단이 유일한 결정 단계",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "접선 k=±5를 불가능하다고 잘못 제외하여 9"
+        },
+        {
+          "index": "③",
+          "mistake": "범위를 -6..6으로 넓혀 13"
+        },
+        {
+          "index": "④",
+          "mistake": "한 끝값을 실수로 제외하여 10"
+        },
+        {
+          "index": "⑤",
+          "mistake": "k=0을 중복 계산하여 12"
+        }
+      ],
+      "problemVisual": "EXEMPT_COORDINATE_STEM_SUFFICIENT",
+      "solutionVisual": "ADD_DIAMETER_CIRCLE_AND_LINE",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q18-A1-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ENUMERATION_NOT_INDEPENDENT",
+      "svgStaticEvidence": {
+        "circleCenterPixelParityDelta": 0,
+        "radialPixelParityDelta": 0,
+        "angleProductMathCoordinate": 0,
+        "actualCenterAndPointFacts": "PRIMITIVE_COORDINATES_REREAD_ON_PREPATCH_AND_REUSED_AFTER_COORDINATE_PRESERVING_FIX",
+        "plotLineClipped": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q18-A2",
+      "answer": "④",
+      "value": 13,
+      "reverseStemFinding": "최종 발문에서 두 점 A,B와 주어진 직선, 정수 k 조건을 읽어 탈레스 원을 만들고 직선-원 만남과 P≠A,B의 예외를 판정",
+      "rpmNecessity": "중심-직선 거리와 원의 교점 개수 판단이 유일한 결정 단계",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "-5..5로 범위를 축소해 11"
+        },
+        {
+          "index": "②",
+          "mistake": "-6 또는 6 중 하나를 빠뜨려 12"
+        },
+        {
+          "index": "③",
+          "mistake": "허용되지 않는 ±7 중 하나를 포함해 14"
+        },
+        {
+          "index": "⑤",
+          "mistake": "양쪽 ±7을 모두 포함해 15"
+        }
+      ],
+      "problemVisual": "EXEMPT_COORDINATE_STEM_SUFFICIENT",
+      "solutionVisual": "ADD_DIAMETER_CIRCLE_AND_LINE",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q18-A2-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ENUMERATION_NOT_INDEPENDENT",
+      "svgStaticEvidence": {
+        "circleCenterPixelParityDelta": 0,
+        "radialPixelParityDelta": 0,
+        "angleProductMathCoordinate": 1.7763568394002505e-15,
+        "actualCenterAndPointFacts": "PRIMITIVE_COORDINATES_REREAD_ON_PREPATCH_AND_REUSED_AFTER_COORDINATE_PRESERVING_FIX",
+        "plotLineClipped": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q18-A3",
+      "answer": "①",
+      "value": 9,
+      "reverseStemFinding": "최종 발문에서 두 점 A,B와 주어진 직선, 정수 k 조건을 읽어 탈레스 원을 만들고 직선-원 만남과 P≠A,B의 예외를 판정",
+      "rpmNecessity": "중심-직선 거리와 원의 교점 개수 판단이 유일한 결정 단계",
+      "distractorRoutes": [
+        {
+          "index": "②",
+          "mistake": "끝점 접선 두 개 중 하나만 제외해 10"
+        },
+        {
+          "index": "③",
+          "mistake": "접점 A,B에서도 각이 존재한다고 착각하여 11"
+        },
+        {
+          "index": "④",
+          "mistake": "k=0도 제외해 8"
+        },
+        {
+          "index": "⑤",
+          "mistake": "끝점 외에 ±4까지 제외해 7"
+        }
+      ],
+      "problemVisual": "EXEMPT_COORDINATE_STEM_SUFFICIENT",
+      "solutionVisual": "ADD_DIAMETER_CIRCLE_AND_LINE",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q18-A3-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ENUMERATION_NOT_INDEPENDENT",
+      "svgStaticEvidence": {
+        "circleCenterPixelParityDelta": 0,
+        "radialPixelParityDelta": 0,
+        "angleProductMathCoordinate": 0,
+        "actualCenterAndPointFacts": "PRIMITIVE_COORDINATES_REREAD_ON_PREPATCH_AND_REUSED_AFTER_COORDINATE_PRESERVING_FIX",
+        "plotLineClipped": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q18-B1",
+      "answer": "⑤",
+      "value": 11,
+      "reverseStemFinding": "최종 발문에서 두 점 A,B와 주어진 직선, 정수 k 조건을 읽어 탈레스 원을 만들고 직선-원 만남과 P≠A,B의 예외를 판정",
+      "rpmNecessity": "중심-직선 거리와 원의 교점 개수 판단이 유일한 결정 단계",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "중앙 범위를 9개만 셈"
+        },
+        {
+          "index": "②",
+          "mistake": "한 경계 정수 하나를 누락해 10"
+        },
+        {
+          "index": "③",
+          "mistake": "경계 밖 정수 하나를 넣어 12"
+        },
+        {
+          "index": "④",
+          "mistake": "범위를 두 값 넓혀 13"
+        }
+      ],
+      "problemVisual": "EXEMPT_COORDINATE_STEM_SUFFICIENT",
+      "solutionVisual": "ADD_DIAMETER_CIRCLE_AND_LINE",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q18-B1-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ENUMERATION_NOT_INDEPENDENT",
+      "svgStaticEvidence": {
+        "circleCenterPixelParityDelta": 0,
+        "radialPixelParityDelta": 0,
+        "angleProductMathCoordinate": 0,
+        "actualCenterAndPointFacts": "PRIMITIVE_COORDINATES_REREAD_ON_PREPATCH_AND_REUSED_AFTER_COORDINATE_PRESERVING_FIX",
+        "plotLineClipped": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q18-B2",
+      "answer": "③",
+      "value": 9,
+      "reverseStemFinding": "최종 발문에서 두 점 A,B와 주어진 직선, 정수 k 조건을 읽어 탈레스 원을 만들고 직선-원 만남과 P≠A,B의 예외를 판정",
+      "rpmNecessity": "중심-직선 거리와 원의 교점 개수 판단이 유일한 결정 단계",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "경계의 두 정수를 부당하게 제외해 7"
+        },
+        {
+          "index": "②",
+          "mistake": "경계 정수 하나를 누락해 8"
+        },
+        {
+          "index": "④",
+          "mistake": "닿지 않는 정수 하나를 포함해 10"
+        },
+        {
+          "index": "⑤",
+          "mistake": "닿지 않는 두 정수를 포함해 11"
+        }
+      ],
+      "problemVisual": "EXEMPT_COORDINATE_STEM_SUFFICIENT",
+      "solutionVisual": "ADD_DIAMETER_CIRCLE_AND_LINE",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q18-B2-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ENUMERATION_NOT_INDEPENDENT",
+      "svgStaticEvidence": {
+        "circleCenterPixelParityDelta": 0,
+        "radialPixelParityDelta": 0,
+        "angleProductMathCoordinate": -1.7763568394002505e-15,
+        "actualCenterAndPointFacts": "PRIMITIVE_COORDINATES_REREAD_ON_PREPATCH_AND_REUSED_AFTER_COORDINATE_PRESERVING_FIX",
+        "plotLineClipped": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q18-B3",
+      "answer": "②",
+      "value": 17,
+      "reverseStemFinding": "최종 발문에서 두 점 A,B와 주어진 직선, 정수 k 조건을 읽어 탈레스 원을 만들고 직선-원 만남과 P≠A,B의 예외를 판정",
+      "rpmNecessity": "중심-직선 거리와 원의 교점 개수 판단이 유일한 결정 단계",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "3의 배수 중 ±24를 빠뜨려 15"
+        },
+        {
+          "index": "③",
+          "mistake": "범위를 ±27까지 넓혀 19"
+        },
+        {
+          "index": "④",
+          "mistake": "±18까지만 세어 13"
+        },
+        {
+          "index": "⑤",
+          "mistake": "±30까지 넓혀 21"
+        }
+      ],
+      "problemVisual": "EXEMPT_COORDINATE_STEM_SUFFICIENT",
+      "solutionVisual": "ADD_DIAMETER_CIRCLE_AND_LINE",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q18-B3-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ENUMERATION_NOT_INDEPENDENT",
+      "svgStaticEvidence": {
+        "circleCenterPixelParityDelta": 0,
+        "radialPixelParityDelta": 0,
+        "angleProductMathCoordinate": 0,
+        "actualCenterAndPointFacts": "PRIMITIVE_COORDINATES_REREAD_ON_PREPATCH_AND_REUSED_AFTER_COORDINATE_PRESERVING_FIX",
+        "plotLineClipped": true,
+        "chrome": "NOT_TESTED"
+      },
+      "difficultyCorrectionRationale": "$|k|\\le25$에서 3의 배수를 −24부터 24까지 세면 17개다. 직선-원 거리 조건에 합동 조건을 한 번 적용하는 문제이므로 최상 난도보다는 중간 난도가 적절하다."
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q18-C1",
+      "answer": "④",
+      "value": 10,
+      "reverseStemFinding": "최종 발문에서 두 점 A,B와 주어진 직선, 정수 k 조건을 읽어 탈레스 원을 만들고 직선-원 만남과 P≠A,B의 예외를 판정",
+      "rpmNecessity": "중심-직선 거리와 원의 교점 개수 판단이 유일한 결정 단계",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "올바른 값에서 k 하나를 추가로 제외해 9"
+        },
+        {
+          "index": "②",
+          "mistake": "k=0에서 P가 A,B밖에 없음을 놓쳐 11"
+        },
+        {
+          "index": "③",
+          "mistake": "k=0을 중복 포함해 12"
+        },
+        {
+          "index": "⑤",
+          "mistake": "직선-원 거리를 잘못 계산하여 13"
+        }
+      ],
+      "problemVisual": "EXEMPT_COORDINATE_STEM_SUFFICIENT",
+      "solutionVisual": "ADD_DIAMETER_CIRCLE_AND_LINE",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q18-C1-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ENUMERATION_NOT_INDEPENDENT",
+      "svgStaticEvidence": {
+        "circleCenterPixelParityDelta": 0,
+        "radialPixelParityDelta": 0,
+        "angleProductMathCoordinate": 8.881784197001252e-16,
+        "actualCenterAndPointFacts": "PRIMITIVE_COORDINATES_REREAD_ON_PREPATCH_AND_REUSED_AFTER_COORDINATE_PRESERVING_FIX",
+        "plotLineClipped": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q18-C2",
+      "answer": "①",
+      "value": 17,
+      "reverseStemFinding": "최종 발문에서 두 점 A,B와 주어진 직선, 정수 k 조건을 읽어 탈레스 원을 만들고 직선-원 만남과 P≠A,B의 예외를 판정",
+      "rpmNecessity": "중심-직선 거리와 원의 교점 개수 판단이 유일한 결정 단계",
+      "distractorRoutes": [
+        {
+          "index": "②",
+          "mistake": "자연수 k=1을 놓쳐 16"
+        },
+        {
+          "index": "③",
+          "mistake": "끝점 B에서 접하는 k=18을 포함해 18"
+        },
+        {
+          "index": "④",
+          "mistake": "k=0과 접점 k=18도 포함해 19"
+        },
+        {
+          "index": "⑤",
+          "mistake": "양끝의 유효한 양의 정수 두 개를 추가로 제외해 15"
+        }
+      ],
+      "problemVisual": "EXEMPT_COORDINATE_STEM_SUFFICIENT",
+      "solutionVisual": "ADD_DIAMETER_CIRCLE_AND_LINE",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q18-C2-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ENUMERATION_NOT_INDEPENDENT",
+      "svgStaticEvidence": {
+        "circleCenterPixelParityDelta": 0,
+        "radialPixelParityDelta": 1.4210854715202004e-14,
+        "angleProductMathCoordinate": 0,
+        "actualCenterAndPointFacts": "PRIMITIVE_COORDINATES_REREAD_ON_PREPATCH_AND_REUSED_AFTER_COORDINATE_PRESERVING_FIX",
+        "plotLineClipped": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q18-C3",
+      "answer": "③",
+      "value": 15,
+      "reverseStemFinding": "최종 발문에서 두 점 A,B와 주어진 직선, 정수 k 조건을 읽어 탈레스 원을 만들고 직선-원 만남과 P≠A,B의 예외를 판정",
+      "rpmNecessity": "중심-직선 거리와 원의 교점 개수 판단이 유일한 결정 단계",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "끝점 통과 2,4 외에 둘을 더 제외해 13"
+        },
+        {
+          "index": "②",
+          "mistake": "17개 정수 중 끝점 통과 k=2,4와 함께 중심을 지나는 유효한 k=3 직선도 제외하여 14개로 셈"
+        },
+        {
+          "index": "④",
+          "mistake": "k=2 또는 4 한쪽만 제외하여 16"
+        },
+        {
+          "index": "⑤",
+          "mistake": "두 끝점 통과 경우를 전부 허용해 17"
+        }
+      ],
+      "problemVisual": "EXEMPT_COORDINATE_STEM_SUFFICIENT",
+      "solutionVisual": "ADD_DIAMETER_CIRCLE_AND_LINE",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q18-C3-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_ENUMERATION_NOT_INDEPENDENT",
+      "svgStaticEvidence": {
+        "circleCenterPixelParityDelta": 0,
+        "radialPixelParityDelta": 1.4210854715202004e-14,
+        "angleProductMathCoordinate": -7.105427357601002e-15,
+        "actualCenterAndPointFacts": "PRIMITIVE_COORDINATES_REREAD_ON_PREPATCH_AND_REUSED_AFTER_COORDINATE_PRESERVING_FIX",
+        "plotLineClipped": true,
+        "chrome": "NOT_TESTED"
+      },
+      "difficultyCorrectionRationale": "$|k−3|\\le\\sqrt{65}$의 정수 범위를 제곱수 비교로 정하고 A/B를 지나는 k=2,4를 더 제외한다. 비정수 경계와 기하 예외를 함께 판단하므로 상 수준은 유지하되 최고 bucket 5는 낮춘다."
+    }
+  ],
+  "metadataPinpointCorrection": "CC_TANGENCY retained only for A3/C2 with actual tangent-endpoint exclusion"
+}

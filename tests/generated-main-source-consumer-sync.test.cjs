@@ -1,0 +1,124 @@
+'use strict';
+const test=require('node:test');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const os=require('node:os');
+const path=require('node:path');
+const crypto=require('node:crypto');
+const {spawnSync}=require('node:child_process');
+
+const repo=path.resolve(__dirname,'..');
+const script=path.join(repo,'archive/tools/generated-meta/rebuild-main-source-consumer.mjs');
+const sha256=b=>crypto.createHash('sha256').update(b).digest('hex');
+const gitSha=b=>crypto.createHash('sha1').update(Buffer.concat([Buffer.from(`blob ${b.length}\0`),b])).digest('hex');
+const jsonBytes=x=>Buffer.from(JSON.stringify(x,null,2)+'\n');
+const contentFingerprint=q=>{
+ const value=JSON.stringify({content:q.content,choices:q.choices,answer:q.answer,solution:q.solution});let hash=14695981039346656037n;
+ for(let i=0;i<value.length;i++)hash=BigInt.asUintN(64,(hash^BigInt(value.charCodeAt(i)))*1099511628211n);
+ return `fnv1a64-utf16:${hash.toString(16).padStart(16,'0')}`;
+};
+const run=(root,flag)=>{
+ const out=spawnSync(process.execPath,[path.join(root,'archive/tools/generated-meta/rebuild-main-source-consumer.mjs'),flag],{cwd:root,encoding:'utf8'});
+ assert.equal(out.status,0,`${flag} failed: ${out.stderr}`);
+ return JSON.parse(out.stdout);
+};
+
+test('main source rebuild registers new UIDs, refreshes existing payload and hashes, preserves review history, and is idempotent',t=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'main-generated-sync-'));t.after(()=>fs.rmSync(root,{recursive:true,force:true}));
+ const put=(rel,bytes)=>{const file=path.join(root,rel);fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,bytes);return file;};
+ put('archive/tools/generated-meta/rebuild-main-source-consumer.mjs',fs.readFileSync(script));
+ const indexPath='archive/data/generated-lite-consumer/v1/index.json';
+ const sourcePath='archive/generated/lite/v1/2022/H1/TEST-UNIT/shards/hanbit-qid9.js';
+ const sourceMetaOnlyPath='archive/generated/lite/v1/2022/H1/TEST-UNIT/shards/saebyeol-qid9.js';
+ const examPath='archive/exams/original/high/h1/2final/26_한빛고_2학기_기말_고1_기출.js';
+ const metaOnlyExamPath='archive/exams/original/high/h1/1mid/26_새별고_1학기_중간_고1_기출.js';
+ const manifestPath='alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_한빛고_2학기_기말_고1/GPT_QID9_EXAM_MANIFEST.json';
+ const consumerPath='archive/data/generated-lite-consumer/v1/shards/TEST-UNIT/hanbit-qid9.json';
+ const metaPath='archive/generated/lite/v1/2022/H1/TEST-UNIT/metadata/hanbit-qid9.json';
+ const metaOnlyPath='archive/generated/lite/v1/2022/H1/TEST-UNIT/metadata/saebyeol-qid9.json';
+ const uid1='ALITE-HANBIT26-2FINAL-Q01-A1',uid2='ALITE-HANBIT26-2FINAL-Q01-A2',uid3='ALITE-SAEBYEOL26-1MID-Q01-A1';
+ const meta1={standardCourse:'공통수학2',standardUnitKey:'TEST-01',subUnitKey:'TEST-UNIT',problemTypeKey:'PT_FIXTURE_V1'};
+ const meta2={...meta1,problemTypeKey:'PT_FIXTURE_V2'};
+ const q=(uid,content,meta)=>({id:uid===uid1?1:2,uid,sourceQid:1,questionType:'객관식',standardCourse:'공통수학2',standardUnitKey:'TEST-01',subUnitKey:'TEST-UNIT',content,choices:['A','B','C','D','E'],answer:'①',solution:`풀이 ${content}`,meta});
+ const oldSource=Buffer.from(`window.questionBank = ${JSON.stringify([q(uid1,'이전 문항',meta1)])};\n`);
+ const oldSourceSha=gitSha(oldSource);
+ const oldMetaSha=sha256(Buffer.from(JSON.stringify(meta1)));
+ put(examPath,Buffer.from('window.questionBank = [{id:1},{id:2}];\n'));
+ const examSha=gitSha(fs.readFileSync(path.join(root,examPath)));
+ const sourceBytes=Buffer.from(`window.questionBank = ${JSON.stringify([q(uid1,'갱신 문항',meta2),q(uid2,'신규 문항',meta1)])};\n`);
+ put(sourcePath,sourceBytes);
+ put(metaPath,jsonBytes([{uid:uid1,meta:meta2},{uid:uid2,meta:meta1}]));
+ put(metaOnlyExamPath,Buffer.from('window.questionBank = [{id:1}];\n'));
+ const metaOnlyExamSha=gitSha(fs.readFileSync(path.join(root,metaOnlyExamPath)));
+ put(sourceMetaOnlyPath,Buffer.from(`window.questionBank = ${JSON.stringify([q(uid3,'학교 메타 원본 문항',meta1)])};\n`));
+ put(metaOnlyPath,jsonBytes({generatedQuestionUid:uid3,sourceKind:'generated',sourceExam:'26_새별고_1학기_중간_고1_기출',sourceQid:1,sourceBlobSha:metaOnlyExamSha,standardCourse:'공통수학1',sourceSchoolMarker:'새별고',meta:meta1}));
+ put(manifestPath,jsonBytes({schemaVersion:'ALIVE_EXAM_SINGLE_BRANCH_QID_COMMITS_v1',originalSourceExam:examPath,sourceBlobSha:examSha,sourceQidCount:2,qidLedger:[{sourceQid:1,uids:[uid1,uid2]}]}));
+ const oldFingerprint=contentFingerprint(q(uid1,'이전 문항',meta1));
+ const oldConsumer={schemaVersion:'ALIVE_GENERATED_CONSUMER_SHARD_V1',sourceShard:sourcePath,sourceShardGitSha:oldSourceSha,records:[{generatedUid:uid1,localOrdinal:1,sourceKind:'generated',sourceShard:sourcePath,sourceShardGitSha:oldSourceSha,reviewStatus:'FORMAL_REVIEW_PASS',approval:'REVIEW_APPROVED',question:q(uid1,'이전 문항',meta1),contentFingerprint:oldFingerprint,meta:meta1,sourceMetaSha256:oldMetaSha}]};
+ const oldConsumerBytes=jsonBytes(oldConsumer);put(consumerPath,oldConsumerBytes);
+ const oldRow={uid:uid1,school:'한빛고',year:2026,grade:'고1',subject:'공통수학2',sourceQid:1,sourceKind:'generated',sourceShard:sourcePath,sourceShardGitSha:oldSourceSha,sourceExamPath:'',sourceExamBlobSha:'',contentFingerprint:oldFingerprint,consumerSelectable:false,mainSourceAvailable:true,technicalStatus:'READY',technicalIssues:[],reviewStatus:'FORMAL_REVIEW_PASS',approval:'REVIEW_APPROVED',reviewApprovalReceipt:'review/evidence.json',meta:meta1,sourceMetaSha256:oldMetaSha,metaFinalSha256:oldMetaSha,metaVerification:{status:'VERIFIED_CURRENT_SOURCE',sourceShardGitSha:oldSourceSha},shard:consumerPath.replace(/^archive\//,''),localOrdinal:1,consumerShardGitSha:gitSha(oldConsumerBytes),shardGitBlobSha:gitSha(oldConsumerBytes),consumerShardSha256:sha256(oldConsumerBytes)};
+ put(indexPath,jsonBytes({schemaVersion:'ALIVE_GENERATED_CONSUMER_INDEX_V1',scope:'MAIN_RESIDENT_GENERATED_QUESTION_JS',sourceKind:'generated',recordCount:1,approvedCount:1,approvedBySchool:{'한빛고':1},records:[oldRow],userDisabledUids:[],withdrawnUids:[]}));
+
+ const written=run(root,'--write');assert.equal(written.registeredCount,3);assert.equal(written.diagnosticCount,0);
+ const index=JSON.parse(fs.readFileSync(path.join(root,indexPath),'utf8'));
+ assert.equal(index.records.length,3);assert.equal(new Set(index.records.map(r=>r.uid)).size,3);
+ const current=index.records.find(r=>r.uid===uid1),fresh=index.records.find(r=>r.uid===uid2),metaOnly=index.records.find(r=>r.uid===uid3);
+ assert.equal(current.school,'한빛고');assert.equal(current.year,2026);assert.equal(current.grade,'고1');assert.equal(current.subject,'공통수학2');
+ assert.equal(current.sourceExamPath,examPath);assert.equal(current.sourceExamBlobSha,examSha);assert.equal(current.sourceExamQuestionCount,2);
+ assert.equal(current.reviewStatus,'FORMAL_REVIEW_PASS');assert.equal(current.approval,'REVIEW_APPROVED');assert.equal(current.reviewApprovalReceipt,'review/evidence.json');
+ assert.equal(current.consumerSelectable,false,'review/history selectability flags are retained');assert.equal(current.mainSourceAvailable,true);
+ assert.equal(current.metaFinalSha256,undefined,'stale meta certification is cleared only after source meta bytes change');assert.equal(current.metaVerification,undefined);
+ assert.equal(fresh.school,'한빛고');assert.equal(fresh.year,2026);assert.equal(fresh.sourceExamQuestionCount,2);
+ assert.equal(metaOnly.school,'새별고');assert.equal(metaOnly.year,2026);assert.equal(metaOnly.grade,'고1');assert.equal(metaOnly.subject,'공통수학1');
+ assert.equal(metaOnly.sourceExamPath,metaOnlyExamPath);assert.equal(metaOnly.sourceExamBlobSha,metaOnlyExamSha);
+ const sourceSha=gitSha(fs.readFileSync(path.join(root,sourcePath))),consumerBytes=fs.readFileSync(path.join(root,consumerPath));
+ const consumerSha=gitSha(consumerBytes),consumer=JSON.parse(consumerBytes),consumerRows=consumer.records.filter(r=>[uid1,uid2].includes(r.generatedUid));
+ assert.equal(consumerRows.length,2);
+ for(const row of [current,fresh]){
+  assert.equal(row.sourceShardGitSha,sourceSha,row.uid);
+  assert.equal(row.consumerShardGitSha,consumerSha,row.uid);
+  assert.equal(row.shardGitBlobSha,consumerSha,row.uid);
+  assert.equal(row.consumerShardSha256,sha256(consumerBytes),row.uid);
+  const linked=consumerRows.find(r=>r.generatedUid===row.uid);
+  assert.equal(linked.sourceShardGitSha,sourceSha,row.uid);
+  assert.deepEqual(linked.meta,row.meta,row.uid);
+  assert.equal(linked.sourceMetaSha256,row.sourceMetaSha256,row.uid);
+  assert.equal(row.sourceMetaSha256,sha256(Buffer.from(JSON.stringify(row.meta))),row.uid);
+ }
+ assert.equal(consumerRows.find(r=>r.generatedUid===uid1).question.content,'갱신 문항');
+ assert.equal(consumerRows.find(r=>r.generatedUid===uid1).question.solution,'풀이 갱신 문항');
+ assert.equal(consumerRows.find(r=>r.generatedUid===uid1).approval,'REVIEW_APPROVED');
+ assert.equal(current.contentFingerprint,contentFingerprint(q(uid1,'갱신 문항',meta2)));
+ assert.equal(consumerRows.find(r=>r.generatedUid===uid1).contentFingerprint,current.contentFingerprint);
+ const metaOnlyRowPath=metaOnly.shard;
+ const metaOnlyConsumerPath=path.join(root,'archive',metaOnlyRowPath);
+ const metaOnlyConsumerBytes=fs.readFileSync(metaOnlyConsumerPath);
+ const metaOnlyConsumer=JSON.parse(metaOnlyConsumerBytes).records.find(r=>r.generatedUid===uid3);
+ assert.equal(metaOnlyConsumer.sourceExamPath,metaOnlyExamPath);assert.equal(metaOnlyConsumer.sourceExamBlobSha,metaOnlyExamSha);
+ assert.equal(metaOnlyConsumer.sourceShardGitSha,gitSha(fs.readFileSync(path.join(root,sourceMetaOnlyPath))));
+ assert.equal(metaOnlyConsumer.sourceMetaSha256,metaOnly.sourceMetaSha256);
+ const first=new Map([indexPath,sourcePath,sourceMetaOnlyPath,metaPath,metaOnlyPath,consumerPath].map(rel=>[rel,fs.readFileSync(path.join(root,rel))]));
+ run(root,'--write');
+ for(const [rel,bytes] of first)assert.deepEqual(fs.readFileSync(path.join(root,rel)),bytes,`repeat --write changed ${rel}`);
+ const checked=run(root,'--check');assert.equal(checked.status,'PASS');assert.equal(checked.diagnosticCount,0);
+});
+
+test('projection workflow uses a normal protected PR merge and avoids direct main pushes',()=>{
+ const yaml=fs.readFileSync(path.join(repo,'.github/workflows/auto-register-approved-qid9.yml'),'utf8');
+ assert.match(yaml,/gh pr merge .*--merge --delete-branch/);
+ assert.doesNotMatch(yaml,/--auto/);
+ assert.doesNotMatch(yaml,/gh pr merge .*--admin/);
+ assert.doesNotMatch(yaml,/git push origin (?:main|HEAD:main)/);
+ assert.match(yaml,/git diff --cached --quiet/,'the post-merge source-sync loop must stop on an idempotent diff');
+ const createLine=yaml.match(/^\s*(pr_url="\$\(gh pr create .*\)"\s*)$/m)?.[1];
+ assert.ok(createLine,'workflow should capture gh pr create standard-output URL');
+ assert.doesNotMatch(createLine,/--json|--jq/,'gh pr create does not support PR-view JSON flags');
+ const temp=fs.mkdtempSync(path.join(os.tmpdir(),'mock-gh-pr-create-'));
+ try{
+  const bin=path.join(temp,'bin');fs.mkdirSync(bin);
+  fs.writeFileSync(path.join(bin,'gh'),`#!/bin/sh\n[ "$1" = pr ] && [ "$2" = create ] || exit 10\nfor arg do [ "$arg" = --json ] && exit 11; [ "$arg" = --jq ] && exit 12; done\nprintf '%s\n' 'https://github.com/example/repo/pull/123'\n`,{mode:0o755});
+  const script=`branch=codex/mock-projection; ${createLine}; printf '%s' "$pr_url"`;
+  const result=spawnSync('bash',['-c',script],{encoding:'utf8',env:{...process.env,PATH:`${bin}:${process.env.PATH||''}`}});
+  assert.equal(result.status,0,result.stderr);assert.equal(result.stdout,'https://github.com/example/repo/pull/123');
+ }finally{fs.rmSync(temp,{recursive:true,force:true});}
+});

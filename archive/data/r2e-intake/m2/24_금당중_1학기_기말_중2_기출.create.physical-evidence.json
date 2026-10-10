@@ -3,8 +3,8 @@
   "stage": "CREATE",
   "generation": "M2_1_CREATE_FIRST_2026_10_03",
   "examPath": "archive/exams/original/middle/m2/1final/24_금당중_1학기_기말_중2_기출.js",
-  "examSha256": "sha256:53a9333ebf9caab43f4accb346fa5fdedcb67c091e7f5ae205ad24c807814a56",
-  "finalArtifactGitBlob": "8adf111c4e5ebc57a61c7f4ff3cd1e2b6e38f1a6",
+  "examSha256": "sha256:c05cd9d6990d680f3268228245417aa5ac33e8abfbb0e0dc083df0830118598b",
+  "finalArtifactGitBlob": "b862003aab287515b6cf007f9ec74bb7ebe09573",
   "questionCount": 25,
   "tagMetaAuditCount": "25/25",
   "tagMetaCompleteCount": "25/25",
@@ -1227,34 +1227,16 @@
     {
       "qid": 24,
       "sourceExact": {
-        "status": "HOLD",
-        "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b",
-        "holdEvidence": {
-          "reason": "SOURCE_HOLD",
-          "observedEvidence": "Current student text explicitly states AD∥BC, AO:OC=3:5, and asks why areas of OAB and ODC are equal; the opened q24 image shows trapezoid ABCD and diagonals AC, BD intersecting at O. Similar triangles give area ratio 9:25, contradicting equality. Baseline/current student payload SHA and q24 image SHA match exactly.",
-          "unresolvedPoint": "Whether “same areas” is the source wording or an extraction/transcription defect; q24 stored answer/solution has not been compared.",
-          "nextRequiredEvidenceOrCapability": "Original exam PDF/page for q24, with the printed parallel sides, ratio, triangle names, and exact requested relation legible.",
-          "repairAttempted": "Re-read the current extracted q24 student text, independently derived the similar-triangle area ratio, opened the current q24 image, verified baseline/current q24 student and asset parity, and searched the assigned worktree for a matching source PDF; no matching PDF candidate was found.",
-          "authorityLookupAttempted": "Applied Archive_Extracted_Source_First defect-only rule; compared baseline commit 861047419c7663c93604c9198b558869b2911e14 with the current source projection and opened current q24 asset. No original PDF or page mapping is present in the assigned worktree.",
-          "whyDeterministicClosureImpossible": "The extracted text and image are internally contradictory, and current assets cannot determine whether the source itself is erroneous or extraction changed the requested area relation. Choosing either reading without the original page would be a guess."
-        }
+        "status": "PASS",
+        "evidence": "q24 false HOLD cleared by hash-bound CREATE adjudication; see falseHoldAdjudications[0]"
       },
       "answerMath": {
         "status": "PASS",
         "evidence": "q24 independently recomputed; answer matches protected source"
       },
       "solutionMath": {
-        "status": "HOLD",
-        "evidence": "fresh CREATE solution recomputed and verified",
-        "holdEvidence": {
-          "reason": "SOURCE_HOLD",
-          "observedEvidence": "Current student text explicitly states AD∥BC, AO:OC=3:5, and asks why areas of OAB and ODC are equal; the opened q24 image shows trapezoid ABCD and diagonals AC, BD intersecting at O. Similar triangles give area ratio 9:25, contradicting equality. Baseline/current student payload SHA and q24 image SHA match exactly.",
-          "unresolvedPoint": "Whether “same areas” is the source wording or an extraction/transcription defect; q24 stored answer/solution has not been compared.",
-          "nextRequiredEvidenceOrCapability": "Original exam PDF/page for q24, with the printed parallel sides, ratio, triangle names, and exact requested relation legible.",
-          "repairAttempted": "Re-read the current extracted q24 student text, independently derived the similar-triangle area ratio, opened the current q24 image, verified baseline/current q24 student and asset parity, and searched the assigned worktree for a matching source PDF; no matching PDF candidate was found.",
-          "authorityLookupAttempted": "Applied Archive_Extracted_Source_First defect-only rule; compared baseline commit 861047419c7663c93604c9198b558869b2911e14 with the current source projection and opened current q24 asset. No original PDF or page mapping is present in the assigned worktree.",
-          "whyDeterministicClosureImpossible": "The extracted text and image are internally contradictory, and current assets cannot determine whether the source itself is erroneous or extraction changed the requested area relation. Choosing either reading without the original page would be a guess."
-        }
+        "status": "PASS",
+        "evidence": "q24 corrected proof adjudication; unchanged solution SHA bound; see falseHoldAdjudications[0]"
       },
       "smallBoard": {
         "status": "PASS",
@@ -1282,12 +1264,14 @@
       },
       "sourceRefreshReceiptRefs": [
         {
-          "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0.json",
-          "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-SOURCE_HOLD.json",
-          "sha256": "sha256:e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0",
+          "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.8abf7e4876a7349486668002356c94f8858339567716713e4995c8c0176aa4a1.json",
+          "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-R1-current-source-refresh-correction-review.v1.json",
+          "sha256": "sha256:8abf7e4876a7349486668002356c94f8858339567716713e4995c8c0176aa4a1",
           "qid": 24,
           "changedFields": [
-            "solution"
+            "solutionImage",
+            "solutionImageLayout",
+            "solutionImageSize"
           ]
         }
       ],
@@ -1299,6 +1283,16 @@
       "solutionMathSourceRefreshReceiptRef": {
         "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0.json",
         "sha256": "sha256:e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0",
+        "qid": 24
+      },
+      "sourceExactAdjudicationRef": {
+        "path": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-CREATE-false-hold-adjudication.v2.json",
+        "sha256": "733045649c378eed7117071deff175505a1efafa2bb8c1c068fb663b40355dbb",
+        "qid": 24
+      },
+      "solutionMathAdjudicationRef": {
+        "path": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-CREATE-false-hold-adjudication.v2.json",
+        "sha256": "733045649c378eed7117071deff175505a1efafa2bb8c1c068fb663b40355dbb",
         "qid": 24
       }
     },
@@ -1353,7 +1347,93 @@
       ]
     }
   ],
-  "visualRows": [],
+  "visualRows": [
+    {
+      "qid": 24,
+      "result": "PASS",
+      "assetPath": "assets/images/24_금당중_1학기_기말_중2_기출/q24-solution.svg",
+      "assetSha256": "sha256:271eac5b5998cb6f4181341afe61a77e82cdd3903733d09d4fa23d7fdb373d12",
+      "expectedFacts": [
+        {
+          "id": "parallel-bases",
+          "statement": "AD∥BC"
+        },
+        {
+          "id": "diagonal-ratio",
+          "statement": "AO:OC=3:5"
+        },
+        {
+          "id": "equal-large-triangles",
+          "statement": "S(ABC)=S(DBC) from common base BC and equal heights"
+        },
+        {
+          "id": "equal-opposite-triangles",
+          "statement": "S(OAB)=S(ODC) after subtracting common S(OBC)"
+        },
+        {
+          "id": "area-subdivision",
+          "statement": "S(OAB):S(OBC)=3:5"
+        },
+        {
+          "id": "target-area",
+          "statement": "S(OBC)=20cm²"
+        }
+      ],
+      "observedFacts": [
+        {
+          "id": "parallel-bases",
+          "observation": "AD and BC are horizontal in the model; slopes 0.0 and 0.0.",
+          "result": "PASS"
+        },
+        {
+          "id": "diagonal-intersection",
+          "observation": "Both displayed diagonals intersect at O=(17/8,5/2) in the model; panel 2 preserves the same point after translation.",
+          "result": "PASS"
+        },
+        {
+          "id": "AO-OC-ratio",
+          "observation": "Observed segment lengths on diagonal AC give AO/OC=3/5.",
+          "result": "PASS"
+        },
+        {
+          "id": "BO-OD-ratio",
+          "observation": "Observed segment lengths on diagonal BD give BO/OD=5/3.",
+          "result": "PASS"
+        },
+        {
+          "id": "opposite-triangle-area",
+          "observation": "Parsed SVG polygon areas for OAB and ODC have ratio 1.0.",
+          "result": "PASS"
+        },
+        {
+          "id": "3-to-5-area-partition",
+          "observation": "Parsed SVG polygon areas for OAB and OBC have ratio 0.6.",
+          "result": "PASS"
+        },
+        {
+          "id": "displayed-result",
+          "observation": "Actual SVG text contains S(OAB)=S(ODC)=12cm², S(ABC)=32, and S(OBC)=32−12=20cm².",
+          "result": "PASS"
+        }
+      ],
+      "checks": [
+        {
+          "method": "TOPOLOGY_COMPUTE",
+          "result": "PASS",
+          "predicate": "Hash-bound SVG primitives realize all expected geometric and area relations.",
+          "expected": "AD∥BC | AO:OC=3:5 | S(ABC)=S(DBC) from common base BC and equal heights | S(OAB)=S(ODC) after subtracting common S(OBC) | S(OAB):S(OBC)=3:5 | S(OBC)=20cm²",
+          "observed": "parallel-bases: AD and BC are horizontal in the model; slopes 0.0 and 0.0. | diagonal-intersection: Both displayed diagonals intersect at O=(17/8,5/2) in the model; panel 2 preserves the same point after translation. | AO-OC-ratio: Observed segment lengths on diagonal AC give AO/OC=3/5. | BO-OD-ratio: Observed segment lengths on diagonal BD give BO/OD=5/3. | opposite-triangle-area: Parsed SVG polygon areas for OAB and ODC have ratio 1.0. | 3-to-5-area-partition: Parsed SVG polygon areas for OAB and OBC have ratio 0.6. | displayed-result: Actual SVG text contains S(OAB)=S(ODC)=12cm², S(ABC)=32, and S(OBC)=32−12=20cm²."
+        },
+        {
+          "method": "TARGETED_RENDER",
+          "result": "PASS",
+          "predicate": "The q24 solution SVG is legible at the actual fullwidth desktop render with no clipping or MathJax errors.",
+          "expected": "solution SVG rendered at 514.28125×640 CSS px; no clipping; MathJax errors=0",
+          "observed": "solutionImageCssPixels=514.28125×640; clipping=NONE; MathJax errors=0; screenshotSha256=70def04cbe46ff7c7f9529264e790f1b9e929196526bfd0f29fbfed839a18b33"
+        }
+      ]
+    }
+  ],
   "solutionQualityCalibration": {
     "sampleReadBeforeWork": true,
     "calibrationStatus": "PASS",
@@ -1421,10 +1501,10 @@
   "summary": {
     "questionCount": 25,
     "questionEvidenceRows": 25,
-    "linkedSolutionVisualCount": 0,
-    "visualEvidenceRows": 0,
+    "linkedSolutionVisualCount": 1,
+    "visualEvidenceRows": 1,
     "metaEvidenceRows": 25,
-    "itemHoldCount": 1
+    "itemHoldCount": 0
   },
   "metaRows": [
     {
@@ -3226,6 +3306,1674 @@
             "durablePath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0.json"
           }
         ]
+      },
+      {
+        "baseline": {
+          "commit": "7bf7ac7d2e3f5c5ea9e61d432931ade290cc9543",
+          "sha256": "sha256:53a9333ebf9caab43f4accb346fa5fdedcb67c091e7f5ae205ad24c807814a56",
+          "gitBlobSha": "8adf111c4e5ebc57a61c7f4ff3cd1e2b6e38f1a6"
+        },
+        "current": {
+          "sha256": "sha256:c05cd9d6990d680f3268228245417aa5ac33e8abfbb0e0dc083df0830118598b",
+          "gitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573"
+        },
+        "preservedPriorEvidence": {
+          "examSha256": "sha256:53a9333ebf9caab43f4accb346fa5fdedcb67c091e7f5ae205ad24c807814a56",
+          "finalArtifactGitBlob": "8adf111c4e5ebc57a61c7f4ff3cd1e2b6e38f1a6",
+          "questionRows": [
+            {
+              "qid": 1,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q1 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no source visual dependency and no added solutionImage required"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-131 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 1,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            },
+            {
+              "qid": 2,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q2 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no source visual dependency and no added solutionImage required"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-130 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 2,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            },
+            {
+              "qid": 3,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q3 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no source visual dependency and no added solutionImage required"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-131 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 3,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            },
+            {
+              "qid": 4,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q4 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no source visual dependency and no added solutionImage required"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-132 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 4,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            },
+            {
+              "qid": 5,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q5 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no source visual dependency and no added solutionImage required"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-129 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 5,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            },
+            {
+              "qid": 6,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q6 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no source visual dependency and no added solutionImage required"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-136 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 1; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 6,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            },
+            {
+              "qid": 7,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q7 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no source visual dependency and no added solutionImage required"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-136 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 7,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            },
+            {
+              "qid": 8,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q8 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no source visual dependency and no added solutionImage required"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-138 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 8,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            },
+            {
+              "qid": 9,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q9 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no source visual dependency and no added solutionImage required"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-141 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 9,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            },
+            {
+              "qid": 10,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q10 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no source visual dependency and no added solutionImage required"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-139 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 10,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            },
+            {
+              "qid": 11,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q11 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "source problem image q11 direct pixel PASS; no separate solutionImage required for this solution"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-190 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 11,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            },
+            {
+              "qid": 12,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q12 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "source problem image q12 direct pixel PASS; no separate solutionImage required for this solution"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-190 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 1; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 12,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            },
+            {
+              "qid": 13,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q13 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "source problem image q13 direct pixel PASS; no separate solutionImage required for this solution"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-190 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 3; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 13,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            },
+            {
+              "qid": 14,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q14 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "source problem image q14 direct pixel PASS; no separate solutionImage required for this solution"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-192 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 14,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            },
+            {
+              "qid": 15,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q15 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no source visual dependency and no added solutionImage required"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-200 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 15,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            },
+            {
+              "qid": 16,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q16 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "source problem image q16 direct pixel PASS; no separate solutionImage required for this solution"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-196 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 16,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            },
+            {
+              "qid": 17,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q17 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "source problem image q17 direct pixel PASS; no separate solutionImage required for this solution"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-200 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 17,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            },
+            {
+              "qid": 18,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q18 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "source problem image q18 direct pixel PASS; no separate solutionImage required for this solution"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-196 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 18,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            },
+            {
+              "qid": 19,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q19 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no source visual dependency and no added solutionImage required"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-197 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 1; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              }
+            },
+            {
+              "qid": 20,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q20 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no source visual dependency and no added solutionImage required"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-201 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 1; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 20,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            },
+            {
+              "qid": 21,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q21 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "source problem image q21 direct pixel PASS; no separate solutionImage required for this solution"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-198 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 21,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            },
+            {
+              "qid": 22,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q22 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no source visual dependency and no added solutionImage required"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-133 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 22,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            },
+            {
+              "qid": 23,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q23 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no source visual dependency and no added solutionImage required"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-144 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 23,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            },
+            {
+              "qid": 24,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "q24 false HOLD cleared by hash-bound CREATE adjudication; see falseHoldAdjudications[0]"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q24 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q24 corrected proof adjudication; unchanged solution SHA bound; see falseHoldAdjudications[0]"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "source problem image q24 direct pixel PASS; no separate solutionImage required for this solution"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-194 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 3; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-SOURCE_HOLD.json",
+                  "sha256": "sha256:e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0",
+                  "qid": 24,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ],
+              "sourceExactSourceRefreshReceiptRef": {
+                "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0.json",
+                "sha256": "sha256:e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0",
+                "qid": 24
+              },
+              "solutionMathSourceRefreshReceiptRef": {
+                "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0.json",
+                "sha256": "sha256:e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0",
+                "qid": 24
+              },
+              "sourceExactAdjudicationRef": {
+                "path": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-CREATE-false-hold-adjudication.json",
+                "sha256": "74ce54ea2580fa9e26497887ff8a14bce7f5f3dcb4a45d44fb8cbea96530e880",
+                "qid": 24
+              },
+              "solutionMathAdjudicationRef": {
+                "path": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-CREATE-false-hold-adjudication.json",
+                "sha256": "74ce54ea2580fa9e26497887ff8a14bce7f5f3dcb4a45d44fb8cbea96530e880",
+                "qid": 24
+              }
+            },
+            {
+              "qid": 25,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q25 independently recomputed; answer matches protected source"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "fresh CREATE solution recomputed and verified"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "student-reproducible ordered steps with conclusion verified"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2022 middle2 or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "source problem image q25 direct pixel PASS; no separate solutionImage required for this solution"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-200 + explicit projection status; implicit null 0"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 3; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "fresh solution TeX/newline structure audited"
+              },
+              "sourceRefreshReceiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "qid": 25,
+                  "changedFields": [
+                    "solution"
+                  ]
+                }
+              ]
+            }
+          ],
+          "metaRows": [
+            {
+              "qid": 1,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "UNMATERIALIZED",
+              "primaryMethod": "괄호가 있는 다항식을 순서대로 전개하고 동류항을 정리한다.",
+              "decisiveStep": "A,B를 대입한 뒤 최종식이 $6x-9y$가 된다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 2,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "UNMATERIALIZED",
+              "primaryMethod": "잘못된 덧셈을 역산하여 원래 식을 찾고 올바른 뺄셈을 수행한다.",
+              "decisiveStep": "원래 식 $2x^2+3x-4$에서 다시 빼어 $-x^2+5x-9$를 얻는다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 3,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "UNMATERIALIZED",
+              "primaryMethod": "안쪽 괄호부터 풀어 동류항을 정리한다.",
+              "decisiveStep": "최종식 $6x-y$에서 $a=6,b=-1$을 얻는다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 4,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "UNMATERIALIZED",
+              "primaryMethod": "분배법칙으로 곱을 전개하고 항별 계수를 비교한다.",
+              "decisiveStep": "정리한 식이 $10x^2-11x$가 되어 $a+b=-1$이다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 5,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "UNMATERIALIZED",
+              "primaryMethod": "단항식으로 각 항을 나눈 뒤 지수법칙과 뺄셈을 적용한다.",
+              "decisiveStep": "두 몫을 빼면 $2x^2+3x-6$이다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 6,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "UNMATERIALIZED",
+              "primaryMethod": "부등호가 두 식의 대소 관계를 나타내는지 판별한다.",
+              "decisiveStep": "①은 부등호가 없고 ⑤는 등식이다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 7,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "UNMATERIALIZED",
+              "primaryMethod": "음수로 나눌 때 부등호 방향이 바뀌는 성질을 적용한다.",
+              "decisiveStep": "주어진 식에서 $a\\ge b$를 얻어 ⑤를 배제한다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 8,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "UNMATERIALIZED",
+              "primaryMethod": "일차부등식을 기본형으로 풀어 해의 범위를 구한다.",
+              "decisiveStep": "$x\\ge13/2$이므로 6만 해가 아니다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 9,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "UNMATERIALIZED",
+              "primaryMethod": "해의 경계값과 주어진 최대해를 일치시켜 계수를 결정한다.",
+              "decisiveStep": "$\\frac43(a-1)=8$에서 $a=7$이다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 10,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "UNMATERIALIZED",
+              "primaryMethod": "분수·소수 부등식을 각각 정리하고 같은 해의 경계를 비교한다.",
+              "decisiveStep": "두 경계 $-15$와 $(3-3a)/2$를 같게 두어 $a=11$이다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 11,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+              "primaryMethod": "평행사변형의 평행선과 삼각형 내각의 합을 이용한다.",
+              "decisiveStep": "$x=35^\\circ,y=50^\\circ$이므로 합은 $85^\\circ$이다.",
+              "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+              "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+              "nullReason": "PT/TPL values are materialized only as migration-gap evidence; no exact ACTIVE binding is claimed.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 12,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+              "primaryMethod": "평행사변형의 대변 길이와 둘레식을 이용한다.",
+              "decisiveStep": "$AB=3k,AD=4k$에서 $k=2$, $CD=6$이다.",
+              "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+              "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+              "nullReason": "PT/TPL values are materialized only as migration-gap evidence; no exact ACTIVE binding is claimed.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 13,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+              "primaryMethod": "각의 이등분선과 평행선으로 이등변삼각형을 만든다.",
+              "decisiveStep": "$BE=CF=x$를 얻어 $EF=2x-y$이다.",
+              "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+              "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+              "nullReason": "PT/TPL values are materialized only as migration-gap evidence; no exact ACTIVE binding is claimed.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 14,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+              "primaryMethod": "한 쌍의 대변이 평행하고 길이가 같은 평행사변형 판정 조건을 쓴다.",
+              "decisiveStep": "$A+B=180^\\circ$로 $AD\\parallel BC$, 또 $AD=BC$이다.",
+              "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+              "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+              "nullReason": "PT/TPL values are materialized only as migration-gap evidence; no exact ACTIVE binding is claimed.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 15,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+              "primaryMethod": "정사각형이 되기 위한 직사각형·마름모 조건을 동시에 점검한다.",
+              "decisiveStep": "②와 ③은 직사각형까지만 보장하고 정사각형은 보장하지 않는다.",
+              "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+              "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+              "nullReason": "PT/TPL values are materialized only as migration-gap evidence; no exact ACTIVE binding is claimed.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 16,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+              "primaryMethod": "접어 자른 뒤 펼칠 때의 선대칭으로 완성 사각형의 성질을 판정한다.",
+              "decisiveStep": "완성 도형은 일반 마름모라서 ①과 ⑤가 성립하지 않는다.",
+              "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+              "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+              "nullReason": "PT/TPL values are materialized only as migration-gap evidence; no exact ACTIVE binding is claimed.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 17,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+              "primaryMethod": "평행사변형 판정 후 대각선 수직 조건으로 마름모를 판정한다.",
+              "decisiveStep": "⑤는 평행사변형이면서 대각선이 수직이다.",
+              "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+              "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+              "nullReason": "PT/TPL values are materialized only as migration-gap evidence; no exact ACTIVE binding is claimed.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 18,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+              "primaryMethod": "평행사변형 이웃각의 이등분선 관계로 내부 사각형을 판정한다.",
+              "decisiveStep": "PQRS는 직사각형이므로 대각선 수직은 일반 성질이 아니다.",
+              "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+              "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+              "nullReason": "PT/TPL values are materialized only as migration-gap evidence; no exact ACTIVE binding is claimed.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 19,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+              "primaryMethod": "특수 사각형을 평행사변형 계열인지에 따라 분류한다.",
+              "decisiveStep": "평행사변형·정사각형·직사각형·마름모 4개가 해당한다.",
+              "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+              "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+              "nullReason": "PT/TPL values are materialized only as migration-gap evidence; no exact ACTIVE binding is claimed.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 20,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+              "primaryMethod": "각 변의 중점을 이은 사각형과 원래 대각선의 평행·길이 관계를 이용한다.",
+              "decisiveStep": "일반 평행사변형의 중점 사각형은 항상 직사각형이 아니므로 ①이다.",
+              "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+              "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+              "nullReason": "PT/TPL values are materialized only as migration-gap evidence; no exact ACTIVE binding is claimed.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 21,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+              "primaryMethod": "등변사다리꼴의 밑각과 평행선의 엇각을 이용한다.",
+              "decisiveStep": "$\\angle ADB=30^\\circ$에서 $\\angle BDC=90^\\circ$를 얻는다.",
+              "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+              "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+              "nullReason": "PT/TPL values are materialized only as migration-gap evidence; no exact ACTIVE binding is claimed.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 22,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "UNMATERIALIZED",
+              "primaryMethod": "다항식을 단항식으로 나눈 뒤 괄호를 정리하고 값을 대입한다.",
+              "decisiveStep": "(1) $-\\frac72x+6y$, (2) 10이다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 23,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "UNMATERIALIZED",
+              "primaryMethod": "거리÷속력으로 각 구간 시간을 세워 시간 제한 부등식을 푼다.",
+              "decisiveStep": "$x/8+1/6+(6-x)/4\\le1$에서 $x\\ge16/3$이다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 24,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "UNMATERIALIZED",
+              "primaryMethod": "평행선 사이 같은 높이와 공통부분 제거로 삼각형 넓이 관계를 만든다.",
+              "decisiveStep": "$[OAB]=12$이고 $AO:OC=3:5$로 $[OBC]=20$이다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            },
+            {
+              "qid": 25,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+              "primaryMethod": "평행사변형 대각선의 이등분 성질을 각 조건과 결합한다.",
+              "decisiveStep": "$a=b$이면 대각선 길이가 같아 직사각형, $a+b=90^\\circ$이면 대각선이 수직이라 마름모이다.",
+              "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+              "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+              "nullReason": "PT/TPL values are materialized only as migration-gap evidence; no exact ACTIVE binding is claimed.",
+              "lookupRefs": [
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+              ]
+            }
+          ],
+          "summary": {
+            "questionCount": 25,
+            "questionEvidenceRows": 25,
+            "linkedSolutionVisualCount": 0,
+            "visualEvidenceRows": 0,
+            "metaEvidenceRows": 25,
+            "itemHoldCount": 0
+          }
+        },
+        "receiptRefs": [
+          {
+            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-R1-current-source-refresh-correction-review.v1.json",
+            "sourceSha256": "sha256:8abf7e4876a7349486668002356c94f8858339567716713e4995c8c0176aa4a1",
+            "durablePath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.8abf7e4876a7349486668002356c94f8858339567716713e4995c8c0176aa4a1.json"
+          }
+        ]
       }
     ]
   },
@@ -3235,557 +4983,845 @@
     "scopeOnly": true,
     "fullExamR1Pass": false,
     "baseline": {
-      "commit": "861047419c7663c93604c9198b558869b2911e14",
-      "sha256": "sha256:6e5acad095a080d0b666353a753211b65531bcfd9c835986fe12f5ce683970e0",
-      "gitBlobSha": "2e218e645dfae1f573cf536cc761d18f572473e5"
+      "commit": "7bf7ac7d2e3f5c5ea9e61d432931ade290cc9543",
+      "sha256": "sha256:53a9333ebf9caab43f4accb346fa5fdedcb67c091e7f5ae205ad24c807814a56",
+      "gitBlobSha": "8adf111c4e5ebc57a61c7f4ff3cd1e2b6e38f1a6"
     },
     "current": {
       "examPath": "archive/exams/original/middle/m2/1final/24_금당중_1학기_기말_중2_기출.js",
-      "sha256": "sha256:53a9333ebf9caab43f4accb346fa5fdedcb67c091e7f5ae205ad24c807814a56",
-      "gitBlobSha": "8adf111c4e5ebc57a61c7f4ff3cd1e2b6e38f1a6",
+      "sha256": "sha256:c05cd9d6990d680f3268228245417aa5ac33e8abfbb0e0dc083df0830118598b",
+      "gitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
       "questionCount": 25
     },
     "exactUnchangedQids": [
-      19
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      25
     ],
     "studentPayloadUnchangedQids": [
-      19
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      25
     ],
     "changedQids": [
       {
-        "qid": 1,
+        "qid": 24,
         "changedFields": [
-          "solution"
+          "solutionImage",
+          "solutionImageLayout",
+          "solutionImageSize"
         ],
         "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+          "solutionImage": {
+            "status": "PASS",
+            "receiptSha256": "sha256:8abf7e4876a7349486668002356c94f8858339567716713e4995c8c0176aa4a1",
+            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.8abf7e4876a7349486668002356c94f8858339567716713e4995c8c0176aa4a1.json"
+          },
+          "solutionImageLayout": {
+            "status": "PASS",
+            "receiptSha256": "sha256:8abf7e4876a7349486668002356c94f8858339567716713e4995c8c0176aa4a1",
+            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.8abf7e4876a7349486668002356c94f8858339567716713e4995c8c0176aa4a1.json"
+          },
+          "solutionImageSize": {
+            "status": "PASS",
+            "receiptSha256": "sha256:8abf7e4876a7349486668002356c94f8858339567716713e4995c8c0176aa4a1",
+            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.8abf7e4876a7349486668002356c94f8858339567716713e4995c8c0176aa4a1.json"
           }
         },
         "receiptRefs": [
           {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.8abf7e4876a7349486668002356c94f8858339567716713e4995c8c0176aa4a1.json",
+            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-R1-current-source-refresh-correction-review.v1.json",
+            "sha256": "sha256:8abf7e4876a7349486668002356c94f8858339567716713e4995c8c0176aa4a1"
           }
         ]
-      },
+      }
+    ],
+    "openedAssets": [
       {
-        "qid": 2,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
-          }
-        ]
-      },
-      {
-        "qid": 3,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
-          }
-        ]
-      },
-      {
-        "qid": 4,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
-          }
-        ]
-      },
-      {
-        "qid": 5,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
-          }
-        ]
-      },
-      {
-        "qid": 6,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
-          }
-        ]
-      },
-      {
-        "qid": 7,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
-          }
-        ]
-      },
-      {
-        "qid": 8,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
-          }
-        ]
-      },
-      {
-        "qid": 9,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
-          }
-        ]
-      },
-      {
-        "qid": 10,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
-          }
-        ]
-      },
-      {
-        "qid": 11,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
-          }
-        ]
-      },
-      {
-        "qid": 12,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
-          }
-        ]
-      },
-      {
-        "qid": 13,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
-          }
-        ]
-      },
-      {
-        "qid": 14,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
-          }
-        ]
-      },
-      {
-        "qid": 15,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
-          }
-        ]
-      },
-      {
-        "qid": 16,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
-          }
-        ]
-      },
-      {
-        "qid": 17,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
-          }
-        ]
-      },
-      {
-        "qid": 18,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
-          }
-        ]
-      },
-      {
-        "qid": 20,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
-          }
-        ]
-      },
-      {
-        "qid": 21,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
-          }
-        ]
-      },
-      {
-        "qid": 22,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
-          }
-        ]
-      },
-      {
-        "qid": 23,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
-          }
-        ]
+        "qid": 24,
+        "path": "archive/assets/images/24_금당중_1학기_기말_중2_기출/q24.png",
+        "sha256": "sha256:46663e972c07a76aa6a6ee605fa1807a9b1bdf8a7770776a2f28e9fe6d0b943e"
       },
       {
         "qid": 24,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "HOLD",
-            "holdAxes": [
-              "sourceExact",
-              "solutionMath"
-            ],
-            "receiptSha256": "sha256:e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-SOURCE_HOLD.json",
-            "sha256": "sha256:e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0"
-          }
-        ]
+        "path": "archive/assets/images/24_금당중_1학기_기말_중2_기출/q24.png",
+        "sha256": "sha256:46663e972c07a76aa6a6ee605fa1807a9b1bdf8a7770776a2f28e9fe6d0b943e"
       },
       {
-        "qid": 25,
-        "changedFields": [
-          "solution"
-        ],
-        "fieldDispositions": {
-          "solution": {
-            "status": "REVIEWED_STATIC",
-            "renderStatus": "NOT_RUN",
-            "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
-          }
-        },
-        "receiptRefs": [
-          {
-            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-            "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-            "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
-          }
-        ]
+        "qid": 24,
+        "path": "archive/assets/images/24_금당중_1학기_기말_중2_기출/q24-solution.svg",
+        "sha256": "sha256:271eac5b5998cb6f4181341afe61a77e82cdd3903733d09d4fa23d7fdb373d12"
+      },
+      {
+        "qid": 24,
+        "path": "archive/assets/images/24_금당중_1학기_기말_중2_기출/q24-solution.svg",
+        "sha256": "sha256:271eac5b5998cb6f4181341afe61a77e82cdd3903733d09d4fa23d7fdb373d12"
       }
     ],
-    "openedAssets": [],
     "receipts": [
       {
-        "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
-        "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
-        "sourceSha256": "sha256:53a9333ebf9caab43f4accb346fa5fdedcb67c091e7f5ae205ad24c807814a56",
-        "sourceGitBlobSha": "8adf111c4e5ebc57a61c7f4ff3cd1e2b6e38f1a6",
-        "durablePath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
-        "schemaVersion": "JS_ARCHIVE_R1_SCOPED_SOURCE_REFRESH_REVIEW_V1"
-      },
-      {
-        "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-SOURCE_HOLD.json",
-        "sha256": "sha256:e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0",
-        "sourceSha256": "sha256:53a9333ebf9caab43f4accb346fa5fdedcb67c091e7f5ae205ad24c807814a56",
-        "sourceGitBlobSha": "8adf111c4e5ebc57a61c7f4ff3cd1e2b6e38f1a6",
-        "durablePath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0.json",
-        "schemaVersion": "JS_ARCHIVE_R1_SOURCE_HOLD_V1"
+        "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-R1-current-source-refresh-correction-review.v1.json",
+        "sha256": "sha256:8abf7e4876a7349486668002356c94f8858339567716713e4995c8c0176aa4a1",
+        "sourceSha256": "sha256:c05cd9d6990d680f3268228245417aa5ac33e8abfbb0e0dc083df0830118598b",
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "durablePath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.8abf7e4876a7349486668002356c94f8858339567716713e4995c8c0176aa4a1.json",
+        "schemaVersion": "M2_SCOPED_R1_CORRECTION_REVIEW_V1"
       }
     ],
-    "itemHoldQids": [
-      24
-    ],
+    "itemHoldQids": [],
     "unreviewedAxes": [
+      "SOLUTION",
       "RENDER",
-      "FULL_EXAM_R1",
-      "VISUAL_SVG"
+      "FULL_EXAM_R1"
+    ],
+    "history": [
+      {
+        "schemaVersion": "JS_ARCHIVE_SOURCE_REFRESH_REVIEW_HISTORY_V1",
+        "review": {
+          "schemaVersion": "JS_ARCHIVE_SOURCE_REFRESH_REVIEW_V1",
+          "disposition": "SCOPED_CHANGED_LOCI_REVIEW_BOUND_NOT_FULL_R1_PASS",
+          "scopeOnly": true,
+          "fullExamR1Pass": false,
+          "baseline": {
+            "commit": "861047419c7663c93604c9198b558869b2911e14",
+            "sha256": "sha256:6e5acad095a080d0b666353a753211b65531bcfd9c835986fe12f5ce683970e0",
+            "gitBlobSha": "2e218e645dfae1f573cf536cc761d18f572473e5"
+          },
+          "current": {
+            "examPath": "archive/exams/original/middle/m2/1final/24_금당중_1학기_기말_중2_기출.js",
+            "sha256": "sha256:53a9333ebf9caab43f4accb346fa5fdedcb67c091e7f5ae205ad24c807814a56",
+            "gitBlobSha": "8adf111c4e5ebc57a61c7f4ff3cd1e2b6e38f1a6",
+            "questionCount": 25
+          },
+          "exactUnchangedQids": [
+            19
+          ],
+          "studentPayloadUnchangedQids": [
+            19
+          ],
+          "changedQids": [
+            {
+              "qid": 1,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            },
+            {
+              "qid": 2,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            },
+            {
+              "qid": 3,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            },
+            {
+              "qid": 4,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            },
+            {
+              "qid": 5,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            },
+            {
+              "qid": 6,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            },
+            {
+              "qid": 7,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            },
+            {
+              "qid": 8,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            },
+            {
+              "qid": 9,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            },
+            {
+              "qid": 10,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            },
+            {
+              "qid": 11,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            },
+            {
+              "qid": 12,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            },
+            {
+              "qid": 13,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            },
+            {
+              "qid": 14,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            },
+            {
+              "qid": 15,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            },
+            {
+              "qid": 16,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            },
+            {
+              "qid": 17,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            },
+            {
+              "qid": 18,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            },
+            {
+              "qid": 20,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            },
+            {
+              "qid": 21,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            },
+            {
+              "qid": 22,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            },
+            {
+              "qid": 23,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            },
+            {
+              "qid": 24,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "HOLD",
+                  "holdAxes": [
+                    "sourceExact",
+                    "solutionMath"
+                  ],
+                  "receiptSha256": "sha256:e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-SOURCE_HOLD.json",
+                  "sha256": "sha256:e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0"
+                }
+              ]
+            },
+            {
+              "qid": 25,
+              "changedFields": [
+                "solution"
+              ],
+              "fieldDispositions": {
+                "solution": {
+                  "status": "REVIEWED_STATIC",
+                  "renderStatus": "NOT_RUN",
+                  "receiptSha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+                  "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json"
+                }
+              },
+              "receiptRefs": [
+                {
+                  "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+                  "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+                  "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f"
+                }
+              ]
+            }
+          ],
+          "openedAssets": [],
+          "receipts": [
+            {
+              "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/r1-scoped-review.json",
+              "sha256": "sha256:61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f",
+              "sourceSha256": "sha256:53a9333ebf9caab43f4accb346fa5fdedcb67c091e7f5ae205ad24c807814a56",
+              "sourceGitBlobSha": "8adf111c4e5ebc57a61c7f4ff3cd1e2b6e38f1a6",
+              "durablePath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.61e878a9b0a102148ff8dfd2d1e3396ef44d6b96608d54d9f38dad6111158c0f.json",
+              "schemaVersion": "JS_ARCHIVE_R1_SCOPED_SOURCE_REFRESH_REVIEW_V1"
+            },
+            {
+              "sourcePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-SOURCE_HOLD.json",
+              "sha256": "sha256:e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0",
+              "sourceSha256": "sha256:53a9333ebf9caab43f4accb346fa5fdedcb67c091e7f5ae205ad24c807814a56",
+              "sourceGitBlobSha": "8adf111c4e5ebc57a61c7f4ff3cd1e2b6e38f1a6",
+              "durablePath": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0.json",
+              "schemaVersion": "JS_ARCHIVE_R1_SOURCE_HOLD_V1"
+            }
+          ],
+          "itemHoldQids": [
+            24
+          ],
+          "unreviewedAxes": [
+            "RENDER",
+            "FULL_EXAM_R1",
+            "VISUAL_SVG"
+          ]
+        }
+      }
     ]
-  }
+  },
+  "falseHoldAdjudications": [
+    {
+      "schemaVersion": "JS_ARCHIVE_CREATE_FALSE_HOLD_HISTORY_V1",
+      "qid": 24,
+      "adjudicationPath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-CREATE-false-hold-adjudication.v2.json",
+      "adjudicationSha256": "733045649c378eed7117071deff175505a1efafa2bb8c1c068fb663b40355dbb",
+      "originalHold": {
+        "path": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-SOURCE_HOLD.json",
+        "sha256": "e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0"
+      },
+      "originalFreeze": {
+        "path": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/fresh-original-freeze.json",
+        "sha256": "499c835db35395e41a53737708f1f708f8bc33d7ad6f77baf66c3b5d0534b38d"
+      },
+      "durableReceiptCopy": null,
+      "currentSourceSha256": "c05cd9d6990d680f3268228245417aa5ac33e8abfbb0e0dc083df0830118598b",
+      "currentAssetSha256": "46663e972c07a76aa6a6ee605fa1807a9b1bdf8a7770776a2f28e9fe6d0b943e",
+      "clearedAxes": [
+        "sourceExact",
+        "solutionMath"
+      ],
+      "priorStatuses": {
+        "sourceExact": {
+          "status": "HOLD",
+          "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b",
+          "holdEvidence": {
+            "reason": "SOURCE_HOLD",
+            "observedEvidence": "Current student text explicitly states AD∥BC, AO:OC=3:5, and asks why areas of OAB and ODC are equal; the opened q24 image shows trapezoid ABCD and diagonals AC, BD intersecting at O. Similar triangles give area ratio 9:25, contradicting equality. Baseline/current student payload SHA and q24 image SHA match exactly.",
+            "unresolvedPoint": "Whether “same areas” is the source wording or an extraction/transcription defect; q24 stored answer/solution has not been compared.",
+            "nextRequiredEvidenceOrCapability": "Original exam PDF/page for q24, with the printed parallel sides, ratio, triangle names, and exact requested relation legible.",
+            "repairAttempted": "Re-read the current extracted q24 student text, independently derived the similar-triangle area ratio, opened the current q24 image, verified baseline/current q24 student and asset parity, and searched the assigned worktree for a matching source PDF; no matching PDF candidate was found.",
+            "authorityLookupAttempted": "Applied Archive_Extracted_Source_First defect-only rule; compared baseline commit 861047419c7663c93604c9198b558869b2911e14 with the current source projection and opened current q24 asset. No original PDF or page mapping is present in the assigned worktree.",
+            "whyDeterministicClosureImpossible": "The extracted text and image are internally contradictory, and current assets cannot determine whether the source itself is erroneous or extraction changed the requested area relation. Choosing either reading without the original page would be a guess."
+          }
+        },
+        "solutionMath": {
+          "status": "HOLD",
+          "evidence": "fresh CREATE solution recomputed and verified",
+          "holdEvidence": {
+            "reason": "SOURCE_HOLD",
+            "observedEvidence": "Current student text explicitly states AD∥BC, AO:OC=3:5, and asks why areas of OAB and ODC are equal; the opened q24 image shows trapezoid ABCD and diagonals AC, BD intersecting at O. Similar triangles give area ratio 9:25, contradicting equality. Baseline/current student payload SHA and q24 image SHA match exactly.",
+            "unresolvedPoint": "Whether “same areas” is the source wording or an extraction/transcription defect; q24 stored answer/solution has not been compared.",
+            "nextRequiredEvidenceOrCapability": "Original exam PDF/page for q24, with the printed parallel sides, ratio, triangle names, and exact requested relation legible.",
+            "repairAttempted": "Re-read the current extracted q24 student text, independently derived the similar-triangle area ratio, opened the current q24 image, verified baseline/current q24 student and asset parity, and searched the assigned worktree for a matching source PDF; no matching PDF candidate was found.",
+            "authorityLookupAttempted": "Applied Archive_Extracted_Source_First defect-only rule; compared baseline commit 861047419c7663c93604c9198b558869b2911e14 with the current source projection and opened current q24 asset. No original PDF or page mapping is present in the assigned worktree.",
+            "whyDeterministicClosureImpossible": "The extracted text and image are internally contradictory, and current assets cannot determine whether the source itself is erroneous or extraction changed the requested area relation. Choosing either reading without the original page would be a guess."
+          }
+        }
+      },
+      "supersededAdjudication": {
+        "path": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-CREATE-false-hold-adjudication.json",
+        "sha256": "74ce54ea2580fa9e26497887ff8a14bce7f5f3dcb4a45d44fb8cbea96530e880",
+        "v1PhysicalEntryHistory": {
+          "schemaVersion": "JS_ARCHIVE_CREATE_FALSE_HOLD_HISTORY_V1",
+          "qid": 24,
+          "adjudicationPath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-CREATE-false-hold-adjudication.json",
+          "adjudicationSha256": "74ce54ea2580fa9e26497887ff8a14bce7f5f3dcb4a45d44fb8cbea96530e880",
+          "originalHold": {
+            "path": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-SOURCE_HOLD.json",
+            "sha256": "e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0"
+          },
+          "originalFreeze": {
+            "path": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/fresh-original-freeze.json",
+            "sha256": "499c835db35395e41a53737708f1f708f8bc33d7ad6f77baf66c3b5d0534b38d"
+          },
+          "durableReceiptCopy": {
+            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/24_금당중_1학기_기말_중2_기출.e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0.json",
+            "declaredSha256": "sha256:e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0",
+            "actualSha256": "sha256:9467784890930e105c666609cf477effe5bfecd879ea796f7b90ec14270c6658",
+            "parity": "MISMATCH_PRESERVED"
+          },
+          "currentSourceSha256": "53a9333ebf9caab43f4accb346fa5fdedcb67c091e7f5ae205ad24c807814a56",
+          "currentAssetSha256": "46663e972c07a76aa6a6ee605fa1807a9b1bdf8a7770776a2f28e9fe6d0b943e",
+          "clearedAxes": [
+            "sourceExact",
+            "solutionMath"
+          ],
+          "priorStatuses": {
+            "sourceExact": {
+              "status": "HOLD",
+              "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b",
+              "holdEvidence": {
+                "reason": "SOURCE_HOLD",
+                "observedEvidence": "Current student text explicitly states AD∥BC, AO:OC=3:5, and asks why areas of OAB and ODC are equal; the opened q24 image shows trapezoid ABCD and diagonals AC, BD intersecting at O. Similar triangles give area ratio 9:25, contradicting equality. Baseline/current student payload SHA and q24 image SHA match exactly.",
+                "unresolvedPoint": "Whether “same areas” is the source wording or an extraction/transcription defect; q24 stored answer/solution has not been compared.",
+                "nextRequiredEvidenceOrCapability": "Original exam PDF/page for q24, with the printed parallel sides, ratio, triangle names, and exact requested relation legible.",
+                "repairAttempted": "Re-read the current extracted q24 student text, independently derived the similar-triangle area ratio, opened the current q24 image, verified baseline/current q24 student and asset parity, and searched the assigned worktree for a matching source PDF; no matching PDF candidate was found.",
+                "authorityLookupAttempted": "Applied Archive_Extracted_Source_First defect-only rule; compared baseline commit 861047419c7663c93604c9198b558869b2911e14 with the current source projection and opened current q24 asset. No original PDF or page mapping is present in the assigned worktree.",
+                "whyDeterministicClosureImpossible": "The extracted text and image are internally contradictory, and current assets cannot determine whether the source itself is erroneous or extraction changed the requested area relation. Choosing either reading without the original page would be a guess."
+              }
+            },
+            "solutionMath": {
+              "status": "HOLD",
+              "evidence": "fresh CREATE solution recomputed and verified",
+              "holdEvidence": {
+                "reason": "SOURCE_HOLD",
+                "observedEvidence": "Current student text explicitly states AD∥BC, AO:OC=3:5, and asks why areas of OAB and ODC are equal; the opened q24 image shows trapezoid ABCD and diagonals AC, BD intersecting at O. Similar triangles give area ratio 9:25, contradicting equality. Baseline/current student payload SHA and q24 image SHA match exactly.",
+                "unresolvedPoint": "Whether “same areas” is the source wording or an extraction/transcription defect; q24 stored answer/solution has not been compared.",
+                "nextRequiredEvidenceOrCapability": "Original exam PDF/page for q24, with the printed parallel sides, ratio, triangle names, and exact requested relation legible.",
+                "repairAttempted": "Re-read the current extracted q24 student text, independently derived the similar-triangle area ratio, opened the current q24 image, verified baseline/current q24 student and asset parity, and searched the assigned worktree for a matching source PDF; no matching PDF candidate was found.",
+                "authorityLookupAttempted": "Applied Archive_Extracted_Source_First defect-only rule; compared baseline commit 861047419c7663c93604c9198b558869b2911e14 with the current source projection and opened current q24 asset. No original PDF or page mapping is present in the assigned worktree.",
+                "whyDeterministicClosureImpossible": "The extracted text and image are internally contradictory, and current assets cannot determine whether the source itself is erroneous or extraction changed the requested area relation. Choosing either reading without the original page would be a guess."
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "falseHoldAdjudicationHistory": [
+    {
+      "schemaVersion": "JS_ARCHIVE_CREATE_FALSE_HOLD_HISTORY_V1",
+      "qid": 24,
+      "sourceExact": {
+        "status": "HOLD",
+        "evidence": "protected content/choices/answer/image exact vs 2218a75a7cb2f2642518803f8d0c9c97328c8b4b",
+        "holdEvidence": {
+          "reason": "SOURCE_HOLD",
+          "observedEvidence": "Current student text explicitly states AD∥BC, AO:OC=3:5, and asks why areas of OAB and ODC are equal; the opened q24 image shows trapezoid ABCD and diagonals AC, BD intersecting at O. Similar triangles give area ratio 9:25, contradicting equality. Baseline/current student payload SHA and q24 image SHA match exactly.",
+          "unresolvedPoint": "Whether “same areas” is the source wording or an extraction/transcription defect; q24 stored answer/solution has not been compared.",
+          "nextRequiredEvidenceOrCapability": "Original exam PDF/page for q24, with the printed parallel sides, ratio, triangle names, and exact requested relation legible.",
+          "repairAttempted": "Re-read the current extracted q24 student text, independently derived the similar-triangle area ratio, opened the current q24 image, verified baseline/current q24 student and asset parity, and searched the assigned worktree for a matching source PDF; no matching PDF candidate was found.",
+          "authorityLookupAttempted": "Applied Archive_Extracted_Source_First defect-only rule; compared baseline commit 861047419c7663c93604c9198b558869b2911e14 with the current source projection and opened current q24 asset. No original PDF or page mapping is present in the assigned worktree.",
+          "whyDeterministicClosureImpossible": "The extracted text and image are internally contradictory, and current assets cannot determine whether the source itself is erroneous or extraction changed the requested area relation. Choosing either reading without the original page would be a guess."
+        }
+      },
+      "solutionMath": {
+        "status": "HOLD",
+        "evidence": "fresh CREATE solution recomputed and verified",
+        "holdEvidence": {
+          "reason": "SOURCE_HOLD",
+          "observedEvidence": "Current student text explicitly states AD∥BC, AO:OC=3:5, and asks why areas of OAB and ODC are equal; the opened q24 image shows trapezoid ABCD and diagonals AC, BD intersecting at O. Similar triangles give area ratio 9:25, contradicting equality. Baseline/current student payload SHA and q24 image SHA match exactly.",
+          "unresolvedPoint": "Whether “same areas” is the source wording or an extraction/transcription defect; q24 stored answer/solution has not been compared.",
+          "nextRequiredEvidenceOrCapability": "Original exam PDF/page for q24, with the printed parallel sides, ratio, triangle names, and exact requested relation legible.",
+          "repairAttempted": "Re-read the current extracted q24 student text, independently derived the similar-triangle area ratio, opened the current q24 image, verified baseline/current q24 student and asset parity, and searched the assigned worktree for a matching source PDF; no matching PDF candidate was found.",
+          "authorityLookupAttempted": "Applied Archive_Extracted_Source_First defect-only rule; compared baseline commit 861047419c7663c93604c9198b558869b2911e14 with the current source projection and opened current q24 asset. No original PDF or page mapping is present in the assigned worktree.",
+          "whyDeterministicClosureImpossible": "The extracted text and image are internally contradictory, and current assets cannot determine whether the source itself is erroneous or extraction changed the requested area relation. Choosing either reading without the original page would be a guess."
+        }
+      },
+      "entrySha256": "8114a2e4da1bfcd816c91e38437c6beda89c991f9c12bb07dca33e8aafadcbf4"
+    }
+  ]
 }

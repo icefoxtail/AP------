@@ -2,7 +2,7 @@
   "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
   "stage": "CREATE",
   "examPath": "archive/exams/original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
-  "examSha256": "sha256:2a308dfd9a0f8c946fdf872e5751b668af9678744f84d5e6444b7d3220964792",
+  "examSha256": "sha256:add91ca1f15bfc17ab6ad5610d2d0d1aa330b7a61497973874d5e5dac3f70a76",
   "questionCount": 24,
   "questionRows": [
     {
@@ -754,112 +754,17 @@
     {
       "qid": 19,
       "sourceExact": {
-        "status": "HOLD",
-        "evidence": "Protected content/choices/answer/image unchanged from main; linked problem image directly inspected, blob 103bb2a6a0c4b5bdb6f6dbaf9945000d927af400.",
-        "holdEvidence": {
-          "reason": "The student-facing question asks which of the following linear functions avoid quadrant II and its choices combine ㉠–㉣, but no definitions of those four functions are present in any student-visible field/shared material. The opened q19 graph contains only the base descending line.",
-          "observedEvidence": {
-            "currentStudentPayloadSha256": "991e752242a40e08fb4b68f272a1ad5e841298ab6c7b77553895c2de0c18fb78",
-            "baselineStudentPayloadSha256": "991e752242a40e08fb4b68f272a1ad5e841298ab6c7b77553895c2de0c18fb78",
-            "studentPayloadParity": true,
-            "imageRef": "assets/images/22_연향중_1학기_기말_중2_기출/q19.png",
-            "imageSha256": "25fef042a2fd693b7a23ec7c18c7b02e952ff957a04834c9d0167a0499b295c3",
-            "imageActuallyOpened": true,
-            "imageObservation": "Opened actual q19.png at original resolution; it contains coordinate axes and a single descending line, no ㉠–㉣ formulas.",
-            "missingFields": [
-              "function definition ㉠",
-              "function definition ㉡",
-              "function definition ㉢",
-              "function definition ㉣"
-            ]
-          },
-          "unresolvedPoint": "Which four explicit linear functions are denoted by ㉠, ㉡, ㉢, ㉣, and thus which combination avoids quadrant II?",
-          "nextRequiredEvidenceOrCapability": "Provide the extracted qid 19 source region or a complete original scan/PDF region containing all four function definitions. Then run a separate clean qid 19 R1 freeze from the complete student-only payload.",
-          "repairAttempted": "No JS or physical evidence edited. Reviewed the complete current qid 19 student payload and opened its current graph; compared current and baseline student payload; no source reconstruction or answer/solution inference attempted.",
-          "authorityLookupAttempted": {
-            "sourceInputMode": "EXTRACTED_JS_ASSETS",
-            "pdfReviewMode": "DEFECT_ONLY",
-            "trigger": "qid 19 is underdetermined from current student input",
-            "exactScopedLookup": [
-              {
-                "command": "rg --files -g *.pdf",
-                "scope": "assigned worktree",
-                "result": "No matching source PDF listed."
-              },
-              {
-                "command": "Get-ChildItem -Path C:\\Users\\USER\\Desktop\\AP-------ci-fix -Filter *.pdf -File -Recurse",
-                "scope": "assigned worktree",
-                "result": "Only unrelated H1 generated PDF was found; no target exam PDF."
-              },
-              {
-                "path": "archive/data/r2e-intake/m2/22_연향중_1학기_기말_중2_기출.create.physical-evidence.json",
-                "inspection": "Root keys and PDF-named provenance fields only; no PDF/source-region reference. Answer-bearing questionRows were not inspected."
-              },
-              {
-                "path": "archive/data/r2e-intake/m2/22_연향중_1학기_기말_중2_기출.create.handoff.json",
-                "inspection": "Root keys and PDF-named provenance fields only; no PDF/source-region reference."
-              }
-            ],
-            "originalPdfActuallyReviewed": false
-          },
-          "whyDeterministicClosureImpossible": "The four function expressions determine the selected combination. They are absent from both baseline and current student-only source, and q19.png supplies only the reference graph. Without the missing expressions or the scoped original source region, any selected answer would be a guess."
-        }
+        "status": "QUESTION_ONLY_REPLACEMENT_ACCEPTED",
+        "evidence": "Authorized qid-only replacement verified by the strict CREATE validator. Original-source parity is not claimed.",
+        "sourceParityClaim": "NOT_APPLICABLE_QUESTION_ONLY_REPLACEMENT"
       },
       "answerMath": {
         "status": "PASS",
         "evidence": "Fresh recalculation: a<0,b>0에서 ㉡·㉣만 제2사분면 미통과."
       },
       "solutionMath": {
-        "status": "HOLD",
-        "evidence": "Fresh CREATE solution independently recalculated and rewritten for this qid.",
-        "holdEvidence": {
-          "reason": "The student-facing question asks which of the following linear functions avoid quadrant II and its choices combine ㉠–㉣, but no definitions of those four functions are present in any student-visible field/shared material. The opened q19 graph contains only the base descending line.",
-          "observedEvidence": {
-            "currentStudentPayloadSha256": "991e752242a40e08fb4b68f272a1ad5e841298ab6c7b77553895c2de0c18fb78",
-            "baselineStudentPayloadSha256": "991e752242a40e08fb4b68f272a1ad5e841298ab6c7b77553895c2de0c18fb78",
-            "studentPayloadParity": true,
-            "imageRef": "assets/images/22_연향중_1학기_기말_중2_기출/q19.png",
-            "imageSha256": "25fef042a2fd693b7a23ec7c18c7b02e952ff957a04834c9d0167a0499b295c3",
-            "imageActuallyOpened": true,
-            "imageObservation": "Opened actual q19.png at original resolution; it contains coordinate axes and a single descending line, no ㉠–㉣ formulas.",
-            "missingFields": [
-              "function definition ㉠",
-              "function definition ㉡",
-              "function definition ㉢",
-              "function definition ㉣"
-            ]
-          },
-          "unresolvedPoint": "Which four explicit linear functions are denoted by ㉠, ㉡, ㉢, ㉣, and thus which combination avoids quadrant II?",
-          "nextRequiredEvidenceOrCapability": "Provide the extracted qid 19 source region or a complete original scan/PDF region containing all four function definitions. Then run a separate clean qid 19 R1 freeze from the complete student-only payload.",
-          "repairAttempted": "No JS or physical evidence edited. Reviewed the complete current qid 19 student payload and opened its current graph; compared current and baseline student payload; no source reconstruction or answer/solution inference attempted.",
-          "authorityLookupAttempted": {
-            "sourceInputMode": "EXTRACTED_JS_ASSETS",
-            "pdfReviewMode": "DEFECT_ONLY",
-            "trigger": "qid 19 is underdetermined from current student input",
-            "exactScopedLookup": [
-              {
-                "command": "rg --files -g *.pdf",
-                "scope": "assigned worktree",
-                "result": "No matching source PDF listed."
-              },
-              {
-                "command": "Get-ChildItem -Path C:\\Users\\USER\\Desktop\\AP-------ci-fix -Filter *.pdf -File -Recurse",
-                "scope": "assigned worktree",
-                "result": "Only unrelated H1 generated PDF was found; no target exam PDF."
-              },
-              {
-                "path": "archive/data/r2e-intake/m2/22_연향중_1학기_기말_중2_기출.create.physical-evidence.json",
-                "inspection": "Root keys and PDF-named provenance fields only; no PDF/source-region reference. Answer-bearing questionRows were not inspected."
-              },
-              {
-                "path": "archive/data/r2e-intake/m2/22_연향중_1학기_기말_중2_기출.create.handoff.json",
-                "inspection": "Root keys and PDF-named provenance fields only; no PDF/source-region reference."
-              }
-            ],
-            "originalPdfActuallyReviewed": false
-          },
-          "whyDeterministicClosureImpossible": "The four function expressions determine the selected combination. They are absent from both baseline and current student-only source, and q19.png supplies only the reference graph. Without the missing expressions or the scoped original source region, any selected answer would be a guess."
-        }
+        "status": "PASS",
+        "evidence": "The replacement solution was independently checked: only ㉡ and ㉣ avoid quadrant II; the answer is uniquely ④."
       },
       "smallBoard": {
         "status": "PASS",
@@ -904,6 +809,16 @@
       "solutionMathSourceRefreshReceiptRef": {
         "path": "archive/data/r2e-intake/m2/source-refresh-receipts/22_연향중_1학기_기말_중2_기출.a24305c03c09743f5a593183e8583965aeab73aae92a0f176565ad6744f3eae2.json",
         "sha256": "sha256:a24305c03c09743f5a593183e8583965aeab73aae92a0f176565ad6744f3eae2",
+        "qid": 19
+      },
+      "sourceExactAdjudicationRef": {
+        "path": "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/q19-QID-only/q19-CREATE-question-only-replacement-adjudication.v1.json",
+        "sha256": "53ab2f5ba5e4bc8dd270c8b3d1d5629d19e53d0ace662b4fa1b9003649d4f18c",
+        "qid": 19
+      },
+      "solutionMathAdjudicationRef": {
+        "path": "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/q19-QID-only/q19-CREATE-question-only-replacement-adjudication.v1.json",
+        "sha256": "53ab2f5ba5e4bc8dd270c8b3d1d5629d19e53d0ace662b4fa1b9003649d4f18c",
         "qid": 19
       }
     },
@@ -1125,7 +1040,38 @@
       ]
     }
   ],
-  "visualRows": [],
+  "visualRows": [
+    {
+      "qid": 19,
+      "result": "PASS",
+      "assetPath": "assets/images/22_연향중_1학기_기말_중2_기출/q19-solution.svg",
+      "assetSha256": "sha256:5b044f57487a9cf1bff686d3b48a0a0944b4b6cb6edb1f11c106bbdc35cdffc2",
+      "expectedFacts": [
+        "Four displayed lines correspond to the four stated linear functions.",
+        "With a<0 and b>0, the ㉠ and ㉢ lines enter quadrant II; ㉡ and ㉣ stay below the x-axis for x<0."
+      ],
+      "observedFacts": [
+        "SVG contains four sign-case graphs and QII shading on ㉠/㉢ only.",
+        "R3 official Archive Engine decoded q19-solution.svg at 638.30x405.17 CSS px with Korean labels, no clipping, and no overflow."
+      ],
+      "checks": [
+        {
+          "method": "TOPOLOGY_COMPUTE",
+          "result": "PASS",
+          "predicate": "Check sign and quadrant membership for representative a=-1,b=2 across ㉠–㉣.",
+          "expected": "㉠/㉢ enter quadrant II; ㉡/㉣ do not.",
+          "observed": "Algebraic sign analysis and SVG line topology match the expected four cases."
+        },
+        {
+          "method": "TARGETED_RENDER",
+          "result": "PASS",
+          "predicate": "Render q19 solution in official Archive Engine desktop solution mode.",
+          "expected": "SVG and labels decoded without clipping or overflow.",
+          "observed": "R3 qid render passed; 638.30x405.17 CSS px; Korean labels legible."
+        }
+      ]
+    }
+  ],
   "metaRows": [
     {
       "qid": 1,
@@ -1563,10 +1509,10 @@
   "summary": {
     "questionCount": 24,
     "questionEvidenceRows": 24,
-    "linkedSolutionVisualCount": 0,
-    "visualEvidenceRows": 0,
+    "linkedSolutionVisualCount": 1,
+    "visualEvidenceRows": 1,
     "metaEvidenceRows": 24,
-    "itemHoldCount": 1
+    "itemHoldCount": 0
   },
   "tagMetaAuditCount": "24/24",
   "tagMetaCompleteCount": "24/24",
@@ -3168,5 +3114,25 @@
       "RENDER",
       "FULL_EXAM_R1"
     ]
-  }
+  },
+  "questionOnlyReplacementAdjudications": [
+    {
+      "schemaVersion": "JS_ARCHIVE_CREATE_QUESTION_ONLY_REPLACEMENT_HISTORY_V1",
+      "qid": 19,
+      "adjudicationPath": "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/q19-QID-only/q19-CREATE-question-only-replacement-adjudication.v1.json",
+      "adjudicationSha256": "53ab2f5ba5e4bc8dd270c8b3d1d5629d19e53d0ace662b4fa1b9003649d4f18c",
+      "currentSourceSha256": "add91ca1f15bfc17ab6ad5610d2d0d1aa330b7a61497973874d5e5dac3f70a76",
+      "currentAssetSha256": "25fef042a2fd693b7a23ec7c18c7b02e952ff957a04834c9d0167a0499b295c3",
+      "questionUid": "qid_v1_50ad9d7ca3a5a9b9bb98771d205ff88250f1de608f14e123d0ea1d3d1e26f758",
+      "priorStatuses": {
+        "sourceExact": {
+          "status": "HOLD"
+        },
+        "solutionMath": {
+          "status": "HOLD"
+        }
+      }
+    }
+  ],
+  "finalArtifactGitBlob": "40560d9f62a2bf414b2b9ab1c25a6b5dd263b764"
 }

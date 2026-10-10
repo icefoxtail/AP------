@@ -64,8 +64,12 @@ img.math-figure{display:block;max-width:100%;max-height:410px;object-fit:contain
  .paper-question{page-break-inside:avoid}
 }
 </style>
-<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]},svg:{fontCache:'global'},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script>
+var AP_VENDOR_BASE=new URL('vendor/',document.baseURI).href;
+window.MathJax={loader:{paths:{mathjax:AP_VENDOR_BASE+'mathjax','mathjax-tex':AP_VENDOR_BASE+'mathjax-tex-font'},load:['[tex]/boldsymbol']},tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']],packages:{'[+]':['ams','boldsymbol']}},output:{font:'mathjax-tex',displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:.2}},options:{enableMenu:false},startup:{typeset:false}};
+</script>
+<script defer src="vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js"></script>
+<script src="problem-bank-meta.js?v=20261010-main-source-availability-1"></script>
 <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
 <script src="archive2-output.js?v=20261010-sol-qpp1-atomicmath-2"></script>
 </head>
@@ -79,18 +83,18 @@ img.math-figure{display:block;max-width:100%;max-height:410px;object-fit:contain
 </section>
 <section class="section" aria-labelledby="generated-search-heading">
 <div class="section-head"><span class="step">G</span><h2 id="generated-search-heading">생성 문항 검색·선택</h2></div>
-<p class="summary-copy">학생 공급이 승인된 생성 문항만 검색하고 선택할 수 있습니다. 정답과 해설은 문제 보기 화면에 표시하지 않습니다.</p>
+<p class="summary-copy">메인에 등록된 생성문제를 검색하고 선택할 수 있습니다. 검수 상태는 문항별 기록으로 표시합니다.</p>
 <div class="generated-question-search">
 <label for="generated-search">학교명, 학년, 과목, 단원, 원본 문항 번호 또는 UID</label>
 <input id="generated-search" type="search" autocomplete="off" placeholder="예: 팔마고, 원의 방정식, q10">
 </div>
-<p id="generated-search-summary" class="generated-search-summary" role="status" aria-live="polite">승인된 생성 문항을 불러오는 중입니다.</p>
+<p id="generated-search-summary" class="generated-search-summary" role="status" aria-live="polite">생성문제를 불러오는 중입니다.</p>
 <div id="generated-results" class="exam-grid" aria-live="polite"></div>
 <div id="generated-preview" class="generated-preview" hidden></div>
 <p id="generated-selection-summary">선택된 문항이 없습니다.</p>
 <div id="generated-selection-list" class="generated-selection"></div>
 <div class="generated-actions">
-<button id="generated-print" class="primary" type="button" disabled>선택한 문항 인쇄</button>
+<button id="generated-print" class="primary" type="button" disabled>선택 문항 출력 미리보기</button>
 <button id="generated-clear" type="button" disabled>선택 초기화</button>
 </div>
 </section>
@@ -104,30 +108,15 @@ img.math-figure{display:block;max-width:100%;max-height:410px;object-fit:contain
 <script>
 "use strict";
 const INDEX="data/generated-lite-consumer/v1/index.json";
-// Exact original source JS counts, independently verified against 2026 main.
-const SOURCE_EXAMS=Object.freeze({
- "8266fa476906e9134b94f23e803bd3b2fb26ece4":{school:"복성고",year:2026,grade:"고1",subject:"공통수학1",semester:1,term:"기말",count:23},
- "69ad80ffa9ec80b2592bee26ffce247f8d7013d1":{school:"효천고",year:2026,grade:"고1",subject:"공통수학1",semester:1,term:"중간",count:26}
-});
 const UNIT_LABELS=Object.freeze({});
-let rows=[],selectableRows=[],searchableRows=[],excludedHoldUids=new Set(),examChoice=null,busy=false,generatedBusy=false,generatedPreviewToken=0;
+let rows=[],selectableRows=[],searchableRows=[],userDisabledUids=new Set(),examChoice=null,busy=false,generatedBusy=false,generatedPreviewToken=0;
 const selectedGenerated=new Map();
 const $=id=>document.getElementById(id),positions="①②③④⑤",cache=new Map();
 const status=message=>$("message").textContent=message;
 const unique=items=>new Set(items).size===items.length;
-// Six reviewed Palma B05/B06 historical source UIDs are preserved, not reissued.
-const APPROVED_LEGACY_PALMA_UIDS=new Set(["B05_Q04_C01_DISTANCE_SUM_MIN","B05_Q09_C01_CENTROID_RATIO_RECOVERY","B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY","B06_Q05_C01_TWO_POINT_LINE_INTERSECTION","B06_Q05_C02_INTERSECTION_PARALLEL_LINE","B06_Q23_C01_PARAMETER_INTERSECTION_EQUIDISTANCE"]);
-const validGeneratedUid=row=>/^ALITE-[A-Za-z0-9-]+$/.test(row.uid)||
- (APPROVED_LEGACY_PALMA_UIDS.has(row.uid)&&row.sourceKind==="generated"&&row.school==="팔마고"&&row.year===2025&&row.approval==="REVIEW_APPROVED"&&row.reviewStatus==="REVIEW_PASS");
+const validGeneratedUid=row=>typeof row?.uid==="string"&&row.uid.trim().length>0;
 const isSelectable=row=>{
- if(!row||row.sourceKind!=="generated"||row.consumerSelectable!==true||excludedHoldUids.has(row.uid))return false;
- const reviewed=row.approval==="REVIEW_APPROVED"&&row.reviewStatus==="REVIEW_PASS";
- const directed=row.approval==="USER_DIRECTED_OPERATING_APPROVED"&&(
-  String(row.reviewApprovalBasis||"").startsWith("USER_DIRECTED_OPERATING_APPROVAL_")||
-  row.reviewApprovalBasis==="USER_EXPLICIT_FIX_AND_MAIN_MERGE_20261008"
- );
- const userQuality=row.approval==="USER_DIRECTED_QUALITY_APPROVED"&&String(row.reviewApprovalBasis||"").startsWith("USER_DIRECTED_QUALITY_APPROVED");
- return reviewed||directed||userQuality;
+ return window.ProblemBankMeta?.isGeneratedSelectable(row,[...userDisabledUids])===true;
 };
 function isTeacherSession(){
  try{
@@ -148,7 +137,8 @@ async function readJson(path){
 function text(parent,value,tag="div",cls=""){const node=document.createElement(tag);if(cls)node.className=cls;node.textContent=String(value??"");parent.appendChild(node);return node;}
 async function math(){if(window.MathJax?.typesetPromise)try{await MathJax.typesetPromise();}catch(e){console.warn("수식 표시 확인 필요",e)}}
 async function questionFor(row){
- if(!isSelectable(row))throw Error("학생 선택 승인이 없는 생성 문항입니다.");
+ if(row?.technicalStatus==="ERROR")throw Error("문항 기술 오류: "+(row.technicalIssues||[]).join(" · "));
+ if(!isSelectable(row))throw Error("사용자가 비활성화했거나 사용할 수 없는 문항입니다.");
  if(!cache.has(row.shard)){
   cache.set(row.shard,readJson(row.shard).catch(e=>{cache.delete(row.shard);throw e}));
  }
@@ -164,7 +154,7 @@ async function questionFor(row){
 }
 function figure(parent,q){
  if(!q.image)return;
- if(!/^assets\/generated-lite\/ALITE-[A-Za-z0-9-]+\.svg$/.test(q.image))throw Error("승인 자산 경로 오류");
+ if(!/^assets\/generated-lite\/[A-Za-z0-9-]+\.svg$/.test(q.image))throw Error("문제 이미지 경로 오류");
  const img=document.createElement("img");img.src=q.image;img.alt=q.imageAlt||"문항 수학 시각자료";img.className="math-figure";parent.appendChild(img);
 }
 function questionStem(parent,value){
@@ -197,9 +187,26 @@ function questionMarkup(parent,q,row,answers=false){
 }
 
 function examTitle(e){return e.year+" "+e.school+" "+e.grade+" "+e.semester+"학기 "+e.term;}
-function examRows(e){return selectableRows.filter(r=>r.sourceExamBlobSha===e.sha&&r.school===e.school&&r.year===e.year&&r.grade===e.grade);}
+function examIdentity(row){
+ const path=String(row.sourceExamPath||"").split("/").pop();
+ const m=path.match(/^(\d{2,4})_([^_]+)_(\d+)학기_(중간|기말)_(고\d|중\d)/);
+ if(!m)return null;
+ const year=Number(m[1])<100?2000+Number(m[1]):Number(m[1]);
+ if(row.school!==m[2]||Number(row.year)!==year||row.grade!==m[5])return null;
+ return {year,school:m[2],grade:m[5],semester:Number(m[3]),term:m[4]};
+}
+function examRows(e){return e.rows;}
 function availableExams(){
- return Object.entries(SOURCE_EXAMS).map(([sha,e])=>({...e,sha})).filter(e=>examRows(e).length>=e.count);
+ const groups=new Map();
+ for(const row of selectableRows){
+  if(!/^[a-f0-9]{40}$/i.test(String(row.sourceExamBlobSha||""))||!Number.isInteger(Number(row.sourceQid))||Number(row.sourceQid)<1)continue;
+  const identity=examIdentity(row);if(!identity)continue;
+  const key=[row.sourceExamBlobSha,identity.school,identity.year,identity.grade,identity.semester,identity.term,row.subject].join("\n");
+  if(!groups.has(key))groups.set(key,{...identity,sha:row.sourceExamBlobSha,subject:row.subject,rows:[],sourceQids:new Set()});
+  const exam=groups.get(key);exam.rows.push(row);exam.sourceQids.add(Number(row.sourceQid));
+ }
+ return [...groups.values()].map(e=>({...e,count:e.sourceQids.size,sourceQids:[...e.sourceQids].sort((a,b)=>a-b)}))
+  .filter(e=>e.count>0).sort((a,b)=>a.year-b.year||a.school.localeCompare(b.school,"ko")||a.semester-b.semester||a.term.localeCompare(b.term,"ko"));
 }
 function displayExams(){
  const host=$("exam-cards");host.replaceChildren();
@@ -207,7 +214,7 @@ function displayExams(){
   const card=document.createElement("button");card.type="button";
   card.className="exam-card";card.setAttribute("aria-pressed",String(examChoice?.sha===e.sha));
   text(card,examTitle(e),"strong");
-  text(card,e.count+"문항 · "+e.subject,"small");
+  text(card,e.count+"개 원본 문항 · "+e.rows.length+"개 등록 후보 · "+e.subject,"small");
   card.onclick=()=>{examChoice=e;displayExams();updateSelection();};
   host.appendChild(card);
  }
@@ -218,7 +225,7 @@ function updateSelection(){
  const el=$("selection-summary");el.replaceChildren();
  if(!examChoice){el.textContent="출력할 시험지를 선택해 주세요.";return;}
  text(el,examTitle(examChoice),"strong");
- text(el,examChoice.count+"문항 · 시험지 원문과 동일한 문항 수","div");
+ text(el,examChoice.count+"개 원본 QID에서 등록된 Generated 문항을 하나씩 선택합니다.","div");
 }
 function chooseVariants(pool,count){
  // Prefer distinct source question numbers before taking additional variants.
@@ -247,15 +254,19 @@ function renderGeneratedSearch(){
  if(!host||!input||!summary)return;
  const query=String(input.value||"").trim().normalize("NFC").toLocaleLowerCase("ko-KR");
  host.replaceChildren();
- if(!query){summary.textContent=selectableRows.length+"개 승인 문항 중 검색어를 입력해 주세요.";return;}
+ if(!query){summary.textContent=selectableRows.length+"개 메인 등록 문항 중 검색어를 입력해 주세요.";return;}
  const terms=query.split(/\s+/).filter(Boolean);
  const matches=searchableRows.filter(item=>terms.every(term=>item.searchText.includes(term))).slice(0,50);
- summary.textContent=matches.length+"개 표시 (최대 50개) · 검색 대상 "+selectableRows.length+"개 승인 문항";
- if(!matches.length){text(host,"검색 조건에 맞는 승인 생성 문항이 없습니다.","p");return;}
+ summary.textContent=matches.length+"개 표시 (최대 50개) · 검색 대상 "+selectableRows.length+"개 메인 등록 문항";
+ if(!matches.length){text(host,"검색 조건에 맞는 생성문제가 없습니다.","p");return;}
  for(const item of matches){
   const row=item.row,card=document.createElement("article");card.className="exam-card generated-question-card";
   text(card,generatedTitle(row),"strong");
   text(card,"원본 문항 q"+row.sourceQid+" · "+row.uid,"small");
+  const provenance=document.createElement("small");
+  provenance.textContent="검수 상태: "+String(row.reviewStatus||"기록 없음")+" · 기술 상태: "+String(row.technicalStatus||"확인 필요");
+  card.appendChild(provenance);
+  if(row.technicalStatus==="ERROR")text(card,(row.technicalIssues||[]).join(" · "),"p","technical-error");
   const actions=document.createElement("div");actions.className="generated-actions";
   const open=document.createElement("button");open.type="button";open.textContent="문항 열기";open.addEventListener("click",()=>openGeneratedPreview(row));
   const add=document.createElement("button");add.type="button";add.className="primary";add.textContent=selectedGenerated.has(row.uid)?"추가됨":"시험지에 선택";add.disabled=selectedGenerated.has(row.uid);add.addEventListener("click",()=>addGeneratedQuestion(row));
@@ -305,7 +316,7 @@ async function openGeneratedSolution(row){
  }
 }
 function addGeneratedQuestion(row){
- if(!isSelectable(row)){status("학생 선택 승인이 없는 문항입니다.");return;}
+ if(!isSelectable(row)){status(row?.technicalIssues?.join(" · ")||"사용자가 비활성화한 문항입니다.");return;}
  if(!selectedGenerated.has(row.uid))selectedGenerated.set(row.uid,row);
  renderGeneratedSelection();renderGeneratedSearch();
 }
@@ -323,19 +334,27 @@ function renderGeneratedSelection(){
 }
 async function printGeneratedSelection(){
  if(generatedBusy||!selectedGenerated.size)return;
- generatedBusy=true;renderGeneratedSelection();const selected=[...selectedGenerated.values()];
+ generatedBusy=true;renderGeneratedSelection();const selected=[...selectedGenerated.values()];let popup=null,envelope=null;
  try{
-  if(!unique(selected.map(row=>row.uid))||selected.some(row=>!isSelectable(row)))throw Error("선택 문항 승인 상태를 확인하지 못했습니다.");
+  if(!unique(selected.map(row=>row.uid))||selected.some(row=>!isSelectable(row)))throw Error("선택 문항의 기술 상태 또는 사용자 비활성화 상태를 확인하지 못했습니다.");
+  popup=window.open("about:blank","_blank");if(!popup)throw Error("팝업을 허용한 뒤 선택 문항 미리보기를 여세요.");
   status("선택한 "+selected.length+"개 문항을 준비하고 있습니다.");
   const questions=await Promise.all(selected.map(questionFor));
-  const panel=$("paper-items"),fragment=document.createDocumentFragment();
-  for(let i=0;i<selected.length;i++){
-   const part=document.createElement("section");part.className="paper-question";
-   text(part,String(i+1)+".","div","paper-number");questionMarkup(part,questions[i],selected[i],false);fragment.appendChild(part);
-  }
-  panel.replaceChildren(fragment);$("paper-title").textContent="생성문제 · "+selected.length+"문항";
-  await math();status("선택한 "+selected.length+"개 문항 인쇄 화면을 엽니다.");window.print();
- }catch(error){status("선택 문항을 출력하지 못했습니다: "+error.message);}
+  if(popup.closed)throw Error("미리보기 창이 닫혔습니다.");
+  const output=window.Archive2Output;
+  if(!output?.publishOutputEnvelope||!output?.outputEnvelopeUrl)throw Error("문항 출력 미리보기 엔진을 불러오지 못했습니다.");
+  envelope=await output.publishOutputEnvelope({
+   sourceKind:"generated-bank",sourceId:selected.map(row=>row.uid).join(","),mode:"exam",questionCount:selected.length,
+   questionUids:selected.map(row=>row.uid),meta:{title:"생성문제 · "+selected.length+"문항",qpp:1,questionUids:selected.map(row=>row.uid)},questions
+  });
+  if(popup.closed){await output.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);return;}
+  const url=output.outputEnvelopeUrl("mixed_engine.html",location.href,envelope,{preview:true});
+  popup.location.href=url.href;status("선택한 "+selected.length+"개 문항의 출력 미리보기를 열었습니다.");
+ }catch(error){
+  if(envelope)try{await window.Archive2Output?.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);}catch{}
+  try{if(popup&&!popup.closed)popup.close();}catch{}
+  status("선택 문항 미리보기를 열지 못했습니다: "+(error.message||"오류"));
+ }
  finally{generatedBusy=false;renderGeneratedSelection();updateSelection();}
 }
 async function printExam(){
@@ -369,15 +388,16 @@ $("generated-clear").addEventListener("click",()=>{selectedGenerated.clear();ren
 (async()=>{
  try{
   const data=await readJson(INDEX);
-  if(data.schemaVersion!=="ALIVE_GENERATED_CONSUMER_INDEX_V1"||data.sourceKind!=="generated"||!Array.isArray(data.records)||data.records.length!==data.approvedCount||data.records.length<1)throw Error("문제지 데이터 확인 실패");
+  if(data.schemaVersion!=="ALIVE_GENERATED_CONSUMER_INDEX_V1"||data.sourceKind!=="generated"||!Array.isArray(data.records)||(data.recordCount??data.approvedCount)!==data.records.length||data.records.length<1)throw Error("문제지 데이터 확인 실패");
   const ids=data.records.map(r=>r.uid);
-  if(!Array.isArray(data.excludedHoldUids)||!unique(ids)||data.records.some(row=>!validGeneratedUid(row)||data.excludedHoldUids.includes(row.uid)))throw Error("문항 데이터 확인 실패");
-  rows=data.records;excludedHoldUids=new Set(data.excludedHoldUids);
+  if(!Array.isArray(data.userDisabledUids||[])||!unique(ids)||data.records.some(row=>typeof row.uid!=="string"||!row.uid.trim()))throw Error("문항 데이터 확인 실패");
+  rows=data.records;userDisabledUids=new Set(data.userDisabledUids||[]);
   selectableRows=rows.filter(isSelectable);
   searchableRows=selectableRows.map(row=>({row,searchText:generatedSearchText(row)}));
   const requestedUid=typeof location==='object'?new URLSearchParams(location.search).get('uid'):null;
   if(requestedUid&&selectableRows.some(row=>row.uid===requestedUid))$("generated-search").value=requestedUid;
-  displayExams();updateSelection();renderGeneratedSearch();renderGeneratedSelection();status("");
+  displayExams();updateSelection();renderGeneratedSearch();renderGeneratedSelection();
+  status(data.sourceSync?.errorCount?"일부 문항에서 기술 오류 "+data.sourceSync.errorCount+"건이 확인됐습니다. 문항별 오류를 확인하세요.":"");
  }catch(error){status("시험지를 불러오지 못했습니다: "+error.message);$("exam-cards").textContent="시험지 목록을 확인할 수 없습니다.";}
 })();
 </script>

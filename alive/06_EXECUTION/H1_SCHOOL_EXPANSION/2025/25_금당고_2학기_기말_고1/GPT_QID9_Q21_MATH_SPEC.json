@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "GD25_Q21_MATH_SPEC_V1",
+  "sourceQid": 21,
+  "lockedPrimaryL3": "H1-RPM-237",
+  "sourceExamBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "semanticInvariant": "A and B are disjoint iff A∩B is empty",
+  "creatorExecutedExactTests": {
+    "B1": true,
+    "B2": true,
+    "B3": true,
+    "C1": true,
+    "C2": true,
+    "C3": true
+  },
+  "answerDistribution": {
+    "①": 1,
+    "②": 1,
+    "③": 1,
+    "④": 1,
+    "⑤": 1
+  },
+  "enumeratedAllowedK": {
+    "B3": [
+      1,
+      3,
+      5,
+      7
+    ],
+    "C1": [
+      9,
+      10
+    ],
+    "C2": [
+      7,
+      9,
+      11
+    ],
+    "C3": [
+      4,
+      6,
+      8
+    ]
+  },
+  "objectiveAnswerValues": {
+    "B1": 10,
+    "B2": 4,
+    "B3": 16,
+    "C1": 19,
+    "C2": 27
+  },
+  "slots": [
+    {
+      "slot": "A1",
+      "answer": "$A\\cap B=\\varnothing$; 예: $\\{1,2\\}$와 $\\{3,4\\}$, $\\{2,4\\}$와 $\\{1,3\\}$",
+      "thoughtAxis": "정의와 서로소 집합 두 쌍의 구성",
+      "problemVisual": "NOT_REQUIRED",
+      "solutionVisual": "SVG_DISJOINT_REGIONS"
+    },
+    {
+      "slot": "A2",
+      "answer": "예: $A=\\{1,3\\},B=\\{2,4\\}$와 $C=\\{5,7\\},D=\\{6,8\\}$; 두 교집합 모두 $\\varnothing$",
+      "thoughtAxis": "유한 전체집합 안의 두 쌍 구성",
+      "problemVisual": "NOT_REQUIRED",
+      "solutionVisual": "SVG_DISJOINT_REGIONS"
+    },
+    {
+      "slot": "A3",
+      "answer": "$A\\cap B=\\varnothing$; 예: $C=\\{2,6\\}$",
+      "thoughtAxis": "서로소 판정과 새 집합 구성",
+      "problemVisual": "NOT_REQUIRED",
+      "solutionVisual": "SVG_DISJOINT_REGIONS"
+    },
+    {
+      "slot": "B1",
+      "answer": "③",
+      "thoughtAxis": "겹치는 원소 제거",
+      "problemVisual": "NOT_REQUIRED",
+      "solutionVisual": "SVG_DISJOINT_REGIONS"
+    },
+    {
+      "slot": "B2",
+      "answer": "⑤",
+      "thoughtAxis": "공배수 원소의 개수",
+      "problemVisual": "NOT_REQUIRED",
+      "solutionVisual": "SVG_DISJOINT_REGIONS"
+    },
+    {
+      "slot": "B3",
+      "answer": "①",
+      "thoughtAxis": "홀짝 조건으로 매개변수 판정",
+      "problemVisual": "NOT_REQUIRED",
+      "solutionVisual": "SVG_DISJOINT_REGIONS"
+    },
+    {
+      "slot": "C1",
+      "answer": "②",
+      "thoughtAxis": "세 집합의 쌍별 서로소 조건",
+      "problemVisual": "NOT_REQUIRED",
+      "solutionVisual": "SVG_DISJOINT_REGIONS"
+    },
+    {
+      "slot": "C2",
+      "answer": "④",
+      "thoughtAxis": "최소공배수 경계",
+      "problemVisual": "NOT_REQUIRED",
+      "solutionVisual": "SVG_DISJOINT_REGIONS"
+    },
+    {
+      "slot": "C3",
+      "answer": "$k=4,6,8$",
+      "thoughtAxis": "소수 원소와 일정 간격 집합 비교",
+      "problemVisual": "NOT_REQUIRED",
+      "solutionVisual": "SVG_DISJOINT_REGIONS"
+    }
+  ]
+}
