@@ -1,273 +1,54 @@
 # JS Archive 2.0 — GPT Scheduled Prompt Template v1
 
-status: CURRENT / GPT 2.0 COPY SOURCE ONLY
+status: CURRENT COPY SOURCE / POST-TRANSITION POLICY; operational transition pending
 qualityContractVersion: JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006
 currentCampaignId: H1_GPT2_20261006
 
-## 0. ABSOLUTE ROUTING HARD
+## 0. 적용 상태와 필독
 
-이 파일은 GPT 예약 2.0의 유일한 예약 prompt copy source다.
-새 GPT 2.0 worker는 legacy docs/rules/02_PIPELINES/JS_Archive_Scheduled_Worker_Prompt_Canonical_Template_v1.md를 읽거나 copy source로 사용하지 않는다.
+이 템플릿은 전환 후 GPT 예약 2.0 prompt copy source다. **문서 PR만으로 전환되지 않는다.** 현재 consumer/예약은 구방식이다. 신규 자격 대상 또는 다음 미완료 단계에서 예약 인수·저장·후속 인수·최종 마감을 확인하기 전에는 기존 지시를 따른다. 완료된 검수 반복이나 진행 중 시험지 재시작으로 실증하지 않는다.
 
-필독 순서:
-GPT 작업 전 필독 라우터
-→ Archive 2.0 / JS Archive 시작 페이지
-→ Archive 전체 작업 생명주기
-→ Notion JS Archive GPT 예약 2.0 — CURRENT
-→ Git JS_Archive_2.0_Common_Quality_Contract_v1.md
-→ Git JS_Archive_2.0_GPT_Campaign_Generation_v1.md
-→ Git JS_Archive_2.0_GPT_Scheduled_Execution_v1.md
-→ 이 파일의 자기 ROLE block
-→ 필요한 stage canonical
+전환 후 실행 authority는 Git의 Common Quality Contract, Campaign/Generation, Scheduled Execution 및 manifest다. Notion 매 run 조회·갱신은 prerequisite가 아니다. optional CANARY 문서는 새 기본 흐름의 필수 선행조건이 아니다.
 
-## 1. PLACEHOLDERS
-
-{SCOPE_LABEL}
-{SCOPE_DESCRIPTION}
-{CAMPAIGN_ID}
-{GENERATION_ROOT}
-{CAMPAIGN_MANIFEST}   # Git: archive/data/gpt-campaigns/H1_GPT2_20261006.json
-{SOURCE_AUTHORITY}
-{ROLE}
-{STREAM}
-{FIXED_MINUTE}
-
-ROLE = CREATE | R1 | R2 | R3 | MASTER
-STREAM = A | B | C
-
-새 15라인은 CREATE-A/R1-A/R2-A/R3-A/MASTER-A, B, C로 만든다.
-LANE_INDEX 1/2/3 공용-pool 방식은 GPT 2.0에서 사용하지 않는다.
-
-## 2. UNIVERSAL HEADER — COPY
+## 1. 고정 대상 및 공통 지시 — COPY
 
 {SCOPE_DESCRIPTION} 전용 GPT 예약 2.0 {ROLE}-{STREAM}.
 
 campaignId = {CAMPAIGN_ID}
 stream = {STREAM}
 generationRoot = {GENERATION_ROOT}
-campaignManifest = {CAMPAIGN_MANIFEST}  # latest main Git authority; Library mirror 불필요
+campaignManifest = {CAMPAIGN_MANIFEST}
 sourceAuthority = {SOURCE_AUTHORITY}
 qualityContractVersion = JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006
 executionLine = GPT_SCHEDULED
 
-매 run 시작 시 Notion CURRENT와 latest main의 Common Quality Contract → GPT Campaign Generation → GPT Scheduled Execution → GPT Scheduled Prompt Template 자기 ROLE block을 1회 읽고 바로 작업한다.
+- frozen manifest의 자기 stream 대상만 기존 순서대로 처리한다. A/B/C 배정은 바꾸거나 서로 가져오지 않는다.
+- 시험지별 Library 작업본 하나와 누적 검수기록 하나를 쓴다. Library file ID+version/revision으로 검수본을 식별한다. 과거 revision 재조회가 안 될 때만 필요한 snapshot을 보존하고, 추가 SHA는 최종검사나 실제 불일치 진단에 한정한다. 단계별 복사본, 별도 PASS 영수증/seal, 중간 Git branch, 반복 validator/원격 재조회를 만들지 않는다.
+- 한 시험지는 한 시점에 한 단계·한 실행자만 맡는다. 앞선 실행의 종료가 불확실하면 중복 시작하지 말고 상태를 확인한다.
+- 단계별 판단과 근거를 append-only 누적 검수기록에 추가하고 다음 단계의 Library file ID+revision을 기록한다. 현재 campaign에서 유효한 기존 완료 evidence는 링크로 승계하고 다음 미완료 단계부터 잇는다. 다른 generation 기록은 승계하지 않는다. 미실행은 완료/PASS로 꾸미지 않는다.
+- 단계별 Git/Notion 관문이나 global publication lease는 두지 않는다. 마지막에 한 번 최종 기술검사 후 게시한다.
+- force push, 무관 파일 변경, 다른 stream 대상 처리는 금지한다.
 
-legacy shared Scheduled Worker template는 GPT 2.0 authority/copy source로 사용하지 않는다.
+## 2. ROLE = CREATE — COPY
 
-HARD:
-- 자기 campaignId + 자기 stream만 처리
-- campaign-manifest에서 자기 stream에 배정된 examUid만 처리
-- 다른 stream target 선택 금지
-- old generation/PILOT PASS/evidence/continuation/MAIN_DONE 승계 금지
-- current generation 밖 PASS는 없는 것으로 간주
-- 한 run actual mutation/closure 최대 1시험지
-- lease key = campaignId + stream + examUid + stage + inputArtifactSha
-- 중간 stage Git/Notion 상태 write 0
-- self-disable/pause/delete 금지
-- force push / git add . / git add -A / unrelated mutation 금지
+전 qid의 source identity, 학생용 발문·choices·answer, QUESTION_LAYOUT, 작은칠판 해설, 의미 기반 Meta·difficulty, visual/SVG 필요성·정확성, engine-safe 결과를 완성한다. 실제 Golden/Negative와 필요한 그림을 사전에 확인하고 근거와 Library file ID+revision을 누적 기록에 남긴다. 품질 기준은 Scheduled Execution §§16–17을 따른다. 이 단계에서 별도 validator/PASS/seal을 만들지 않는다.
 
-partitionStatus가 FROZEN이 아니거나 manifest denominator/assignment가 불일치하면 production mutation을 시작하지 않고 activation error를 보고한다.
+## 3. ROLE = R1 — COPY
 
-## 3. ROLE = CREATE — COPY
+별도 세션에서 시작해 이전 정답·해설·타 검수자 답 없이 완전한 학생용 입력, 필요한 그림·표, 정답 없는 상태 요약만 읽는다. 누적기록의 기존 내용을 열지 않고 독립 답과 필요한 풀이 근거만 먼저 append·저장·고정한 다음에만 전체 기록과 저장 답·해설을 대조한다. 분리 순서를 보장하지 못하면 독립 검수 완료로 표시하지 않는다. CREATE 결론은 승계하지 않는다. 수정 후 변경 qid와 직접 영향만 확인하고 Library file ID+revision을 기록한다. 별도 validator/PASS/seal을 만들지 않는다.
 
-selector:
-campaignId 일치
-+ stream 일치
-+ manifest의 자기 stream examUid
-+ current generation CREATE PASS 없음
-+ current generation continuation 없음
-+ valid CREATE lease 없음
-→ manifest order의 첫 eligible.
+## 4. ROLE = R2 — COPY
 
-old pilot의 동일 examUid CREATE/R1 PASS는 selector에서 무시한다.
+R1과 별도의 새 세션에서 시작해, 이전 답·해설·타 검수자 답 없이 완전한 최신 학생용 입력(content, choices, 필요한 visual)과 정답 없는 상태 요약만 읽는다. 누적기록의 기존 내용을 열지 않고 전 qid 독립 답과 필요한 근거만 append·저장·고정한 후 전체 기록·저장 정답과 비교한다. 일치 항목은 닫고 불일치·의심·미해결·고위험만 조사한다. R1의 전수 품질 검사를 반복하지 않는다. 별도 validator/PASS/seal을 만들지 않는다.
 
-전 qid의 source/content/choices/answer, QUESTION_LAYOUT, 작은칠판 solution, Meta Foundation, difficulty 4필드, visual disposition/필요 asset, engine-safe final JS, artifact/evidence binding을 실제 완성한다.
+## 5. ROLE = R3 — COPY
 
-META SEMANTIC HARD — CREATE:
-- Meta Foundation은 필드 존재 확인이 아니라 전 qid semantic 판정 작업이다.
-- 각 qid에서 content + choices + final solution의 primaryMethod/decisiveStep을 읽고 L1/L2/L3/L4, RPM primary, crossConceptKeys[], conditionKeys[], integrationPattern, difficulty 4필드를 실제 판정한다.
-- 특히 crossConceptKeys / conditionKeys / integrationPattern은 생략 가능한 부가 필드가 아니다. 기존 값이나 빈 배열을 자동 승계하지 않는다.
-- crossConceptKeys=[]는 “검토하지 않음”이 아니라 실제 풀이의 결정 단계에 독립된 교차 개념이 없다고 판정한 결과여야 한다.
-- conditionKeys=[]도 실제 문제 조건을 전수 판독한 뒤 canonical Condition에 해당하는 조건이 없다고 판정한 결과여야 한다.
-- integrationPattern=NONE도 CrossConcept/Condition 결합 구조를 판독한 뒤 NONE이 맞다고 판정한 결과여야 한다.
-- 빈 배열/기존 NONE을 기본값으로 일괄 채우는 행위 금지. 반대로 개수 목표를 맞추기 위한 과잉 부여도 금지.
-- Meta semantic authority는 최신 Meta Foundation canonical/GPT Meta Foundation 실행 프로토콜을 따른다.
+누적 기록의 변경·미해결 항목과 직접 영향 범위만 확인하고 최종 구조를 확인한다. 전수 의미 재검을 하지 않는다. 구조 확인용 validator를 반복 실행하지 않는다. 최종 기술검사 실패가 있으면 실패 항목과 직접 영향 범위만 해당 단계로 되돌려 수정한다.
 
-evidence 최소 identity:
-qualityContractVersion
-campaignId
-stream
-examUid
-stage
-inputArtifactSha
-finalArtifactSha
-goldenCalibrationReviewed=true
-goldenCalibrationSet
-qid별 smallBoardContinuityStatus=PASS
-qid별 final solution solutionSha256
+## 6. ROLE = MASTER — COPY
 
-generic V2 validator + actual artifact gate 1회 PASS 뒤 current generation CREATE_COMPLETE/PASS 저장.
-R1/R2/R3/MAIN 금지.
+CREATE/R1/R2/R3의 완료기록 또는 유효한 승계 evidence를 확인한 뒤 현재 최종 revision에서 기술 validator를 한 번 실행하고, 필요한 자산·참조·identity를 확인한 다음 target-only 게시를 한 번 수행한다. 결과와 근거를 누적 검수기록에 남긴다. 동일 SHA 재조회, global publication lease, 단계별 Git branch, 학생용 자료 정책의 추가 승인 관문을 만들지 않는다. 실패 시 전체 시험지를 재검하지 말고 해당 문제의 직접 영향 범위만 수정하며 실패 전 기록을 보존한다.
 
-기술 closure 실패 시 같은 generation/stream continuation.json에 stage/examUid/inputArtifactSha/finalArtifactSha/evidenceRef/completedStep/firstMissingClosureStep/exactReason을 남기고 lease 해제.
+## 7. 생성 규칙
 
-## 4. ROLE = R1 — COPY
-
-selector:
-campaignId 일치
-+ stream 일치
-+ 자기 stream current generation CREATE PASS 있음
-+ current generation R1_QUALITY_SEALED 없음
-+ continuation 없음
-+ valid R1 lease 없음.
-
-전 qid 1회 deep:
-source identity,
-independent math/answer/cardinality,
-QUESTION_LAYOUT,
-SOLUTION_LAYOUT,
-SMALL_BOARD/BOARD_FLOW_CONTINUITY,
-Meta/difficulty,
-Visual necessity/semantic parity.
-
-META SEMANTIC HARD — R1:
-- CREATE의 Meta verdict를 자동 승계하지 않는다.
-- 전 qid에서 L3/L4, RPM primary, crossConceptKeys[], conditionKeys[], integrationPattern, difficulty를 content + final solution의 실제 결정 단계 기준으로 독립 재판정한다.
-- crossConceptKeys=[] / conditionKeys=[] / integrationPattern=NONE도 적극적인 NONE 판정으로 확인되어야 한다. “필드가 존재한다”는 이유만으로 PASS 금지.
-- 시험지 전체 relational Meta가 비정상적으로 전부 빈 배열/NONE인 경우 자동 FAIL시키지는 않되, 각 qid를 실제 판독했는지 다시 확인하고 semantic 근거 없이 일괄 기본값이면 수정한다.
-- 개수 quota/최소 비율은 두지 않는다. semantic truth만 판정한다.
-- Meta semantic 판정은 validator에 위임하지 않는다. validator는 structural binding만 담당한다.
-
-CREATE verdict 자동 승계 금지.
-repair는 same-stage 최소수정.
-repair 후 changed qid + direct dependency만 재확인.
-
-PASS 시 answer/solution/decisiveStep/Meta/visual/evidence와 campaignId/stream을 동일 finalArtifactSha에 결속.
-generic V2 validator + actual artifact gate 1회 PASS 뒤 current generation R1_QUALITY_SEALED 저장.
-
-## 5. ROLE = R2 — COPY
-
-selector:
-campaignId 일치
-+ stream 일치
-+ 자기 stream current generation R1_QUALITY_SEALED 있음
-+ current generation R2_VERIFIED 없음
-+ continuation 없음
-+ valid R2 lease 없음.
-
-BLIND HARD:
-current final source의 content/choices/problem visual만 먼저 읽고 stored answer/solution 공개 전 모든 qid independent answer freeze.
-
-freeze 후 MATCH/MISMATCH/SUSPICIOUS 비교.
-MATCH는 빠르게 닫고 mismatch/suspicious/open/high-risk만 깊게 처리.
-R1 전체 4축 반복 금지.
-
-학생 노출 artifact 변경 시 changed qid + direct dependency만 재확인 후 새 finalArtifactSha에 rebind.
-generic V2 validator + actual artifact gate 1회 PASS 뒤 current generation R2_VERIFIED 저장.
-
-## 6. ROLE = R3 — COPY
-
-selector:
-campaignId 일치
-+ stream 일치
-+ 자기 stream current generation R2_VERIFIED 있음
-+ current generation R3_RELEASE_READY 없음
-+ continuation 없음
-+ valid R3 lease 없음.
-
-open finding, changed locus, direct dependency, locked scope, release integrity만 targeted 확인.
-whole-exam semantic 재검 금지.
-
-전체 structural integrity:
-JS parse,
-required Meta/difficulty physical fields 또는 explicit debt,
-choices label 오염,
-TeX control escape/TAB,
-asset refs,
-artifact/evidence SHA.
-
-필요 수정은 same-stage 최소수정 후 해당 locus만 재확인.
-generic V2 validator + actual artifact gate 1회 PASS 뒤 current generation R3_RELEASE_READY 저장.
-
-main merge, render, Codex handoff 금지.
-
-## 7. ROLE = MASTER — COPY
-
-자기 campaignId + 자기 stream만 처리한다.
-다른 stream target을 절대 소비하지 않는다.
-신규 CREATE/R1/R2/R3 품질 target 선택 금지.
-
-selector priority:
-1. 자기 stream continuation.json
-2. 자기 stream current generation R3_RELEASE_READY + MAIN_DONE 없음 + valid global publish lease 없음
-
-continuation:
-firstMissingClosureStep부터 exact technical closure만 닫고 quality stage 전체 재실행 금지.
-
-publication:
-A/B/C 공통 global GPT publish lease 획득
-→ latest main 1회
-→ same-exam production canonical vs 자기 stream Library final overlap/drift
-→ 실제 충돌 locus만 최소 처리
-→ final JS/필요 asset만 production path 반영
-→ 대상 파일만 stage
-→ 시험지 1건=commit 1건
-→ non-force push/merge
-→ remote main blob+asset ref readback
-→ current generation/stream MAIN_DONE receipt
-→ lease/continuation 정리.
-
-R1/R2/R3 semantic 재검 금지.
-publication 중 student-facing bytes 변경 시 changed locus만 원 stage canonical으로 최소 재확인.
-actual engine render, NOT_RUN_CODEX_HANDOFF, RENDER_PASS를 prerequisite/완료상태/blocker로 만들지 않는다.
-
-## 8. COPY RULE
-
-새 15라인 생성 시:
-- UNIVERSAL HEADER + 해당 ROLE block만 복사
-- STREAM은 A/B/C 중 하나로 반드시 고정
-- CREATE-A/R1-A/R2-A/R3-A/MASTER-A처럼 동일 stream이 하나의 고정 conveyor를 이룸
-- legacy THANOS/MAIN/WATCHDOG/R2-targeted 템플릿 혼합 금지
-- 같은 examUid를 둘 이상의 stream에 넣지 않음
-- 특정 시험지명은 worker prompt에 박지 않고 frozen campaign-manifest가 소유
-
-## 9. MACHINE GATE HARD — COPY TO ALL 15 LANES
-
-모든 stage evidence/state/continuation은 `executionLine=GPT_SCHEDULED`, current `campaignId`, fixed `stream`을 유지한다.
-validator 호출은 `--quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006 --execution-line GPT_SCHEDULED --campaign-id {CAMPAIGN_ID} --stream {STREAM}`을 명시한다.
-
-CREATE/R1은 GPT calibration registry의 실제 Golden/Negative 파일을 읽고 file SHA + 대표 qid solution SHA + 필요한 visual SHA + observation을 evidence에 남긴다. 이름 목록/boolean만으로 PASS 금지.
-artifact gate가 요구하는 기본 schema, difficulty enum, actual asset/SVG dependency, examTitle, EXCLUDED/known-fail rejection을 우회하지 않는다.
-
-R3는 targeted rows와 full-artifact Meta disposition을 분리한다. 미변경 qid의 합법적 PT/TPL null debt는 `artifactDispositions.artifactSha == finalArtifactSha`인 별도 rows로 결속한다.
-
-MASTER MAIN_DONE은 `archive-gpt-closeout-v2` 계약과 같은 evidence를 만든다: R3 validation ref+SHA / artifactSha / asset SHA / productionPath / remoteMainSha. origin/main production blob 및 asset parity가 맞기 전 MAIN_DONE 금지.
-
-
-## 10. CREATE/R1 FOUR-CASE QUALITY HARD — 2026-10-08
-
-적용: CREATE-A/B/C 및 R1-A/B/C의 이후 작업. 24 매산여고(level 숫자형), 24 금당고(level null·짧은 해설), 24 매산고(layoutTag stack 다수), 24 여수고(짧은 서술형 해설)는 회귀 사례이지 정상 샘플이 아니다.
-
-CREATE:
-- 전 qid의 difficulty 4필드를 의미 기반 판정하고 legacy `level`은 반드시 `하|중|상` 문자열로 확정한다. `null`, 숫자 1/2/3, 필드 누락 금지. `difficultyBucket`은 독립 1~5 수치이고 `level`로 대체하지 않는다. 숫자→한글 일괄 치환만으로 난이도 판정을 완료했다고 주장하지 않는다.
-- QUESTION_LAYOUT은 실제 문장·수식·보기·표의 의미적 묶음을 기준으로 정한다. `layoutTag: "stack"`은 개수나 비율로 일괄 배정하지 않고 각 qid의 줄 구성 근거가 있을 때만 쓴다. 많은 stack이 발견되면 각 해당 qid를 다시 살핀다. 기계적 줄바꿈·줄마다 수식 분리 금지.
-- 해설은 짧은 정답 선언이나 식 한두 줄만으로 PASS 금지. 쉬운 문항에도 핵심 조건→식 설정→필요 중간 계산→정답 연결을 독자가 따라갈 수 있게 쓰고, 서술형은 결정적 논증 및 채점 가능한 전개를 누락하지 않는다. 글자수·평균길이만으로 PASS/FAIL 판정하지 않는다.
-- Meta와 조판·해설 품질은 qid별로 실제 확인하고 근거 없이 일괄 PASS 금지. 기존 Golden/engine 조판 규칙을 우선한다.
-
-R1 INDEPENDENT:
-- CREATE의 level·difficultyBucket·layoutTag·해설 완성도를 그대로 승인하지 말고 전 qid 별도 판정한다. `level` 타입/허용값 및 difficultyBucket 의미를 전수 확인한다.
-- 모든 `stack` 문항의 실제 문장·수식 묶음과 줄바꿈 의도를 확인한다. 과다 사용은 조사 신호이며 자동 FAIL 사유는 아니다.
-- 기본 문항 포함 학생이 해설만 보고 재현 가능한지, 서술형은 결정적 중간식/추론이 있는지를 확인한다. 평균 글자수로 면책하지 않는다.
-- 발견 결함은 same-stage MINIMAL_REPAIR, 필요시 ALIVE_REPLACEMENT 후 changed qid와 direct dependency만 재확인하고 evidence/SHA를 재결속한다. 전 시험지 중복 재검은 하지 않는다.
-- R1 PASS는 위 점검 결과를 전 qid verdict에 실제 반영했을 때만 발행한다.
-
-
-## 11. IMMEDIATE CREATE/R1 RUN PROMPT OVERRIDE — 2026-10-08
-
-For every active \`CREATE-{STREAM}\` and \`R1-{STREAM}\`, execute **Scheduled Execution §17 NEXT-RUN QUALITY FLOOR** after its existing role block. This overrides weaker generic wording; retain all original selector/stream/campaign/generation/validator/lease/one-exam/NONSTOP requirements.
-
-**CREATE executable short order:** source SHA+qid inventory → genuinely view GPT Golden+Negative actual qid/solution/visual before editing → all qids source/layout, math/answer/5 choices, small-board student solution, Meta/difficulty, visuals, curriculum → minimal repair → actual V2 raw validator/active artifact gate → SHA-bound CREATE PASS and concise qid findings. Never bulk fill \`level\`, \`integrationPattern=NONE\`, empty relational arrays, \`layoutTag=stack\`, or Unicode math notation. All formulas of nontrivial math use engine-safe LaTeX. Easy/subjective solutions must expose decisive intermediate reasoning, not merely a final answer.
-
-**R1 executable short order:** current student-only qid contents+choices+opened required pictures → pre-answer independent math result and real freeze if clean isolation exists → reveal stored answer/solution only afterwards → independent four-axis qid-by-qid quality judgment, including curriculum, semantic Meta, real stem layout, educational board flow and visual needs → fix changed qid/direct dependencies → raw validator/active artifact proof + SHA-bound R1 seal. Do not write an imaginary blind-freeze observation if answer was exposed; do not take CREATE's all-NONE/empty Meta as already judged. Check every \`level\` type/value and every actual \`stack\` usage.
-
-**Technical truth:** a manual checklist does not replace the generic V2 CLI/raw report. If executable verification or safe isolation truly unavailable, state the exact failed prerequisite and same-stage continuation; keep the lane ON and process the next eligible same-stream exam. Don't fabricate PASS, don't retroactively upgrade older PASS. Golden comparison is about student-facing presentation; school year/course canonical governs math methods and Meta. Codex separately handles optional actual render/capture, so GPT never waits for it or impersonates it.
+공통 지시와 실제 ROLE block만 복사하고 STREAM은 manifest 배정 A/B/C 중 하나로 고정한다. 시험지명은 prompt에 고정하지 않는다. `archive/tools/GPT2_ONE_SHOT_CLOSEOUT.md`와 `GPT2_CONNECTED_STDIO_HOST.md`는 opt-in CANARY이며 필수 선행조건이나 신규 기본 플랫폼이 아니다.
