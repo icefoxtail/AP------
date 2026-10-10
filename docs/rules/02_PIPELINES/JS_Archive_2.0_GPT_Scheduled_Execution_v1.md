@@ -34,6 +34,8 @@ campaign authority: JS_Archive_2.0_GPT_Campaign_Generation_v1.md
 
 누적 기록은 각 단계의 검토 완료와 유효한 선행 완료 기록의 링크를 보인다. 별도 PASS receipt/seal은 만들지 않는다. 다음 단계는 정확히 지정된 Library file ID+revision을 입력으로 받는다. 내용 변경 시 새 revision을 만들고 변경한 시험지의 영향 단계만 재개한다. 다른 시험지나 영향 없는 단계를 되돌리지 않는다.
 
+**B13 단일 예약 파일럿의 revision 미노출 예외(2026-10-11):** Files 제공자가 작업본 version/revision을 반환하지 않으면 값을 임의 생성하지 않고 `revisionUnavailable=true`로 표기한다. 정확한 Library file ID와 현재 실바이트 SHA-256, 변경 없는 이미 보존된 이전 단계 snapshot의 file ID·실바이트 동일성을 기록해 해당 파일을 검수본 witness로 참조한다. 현재 B13은 R1/R2 JS 각각 41,496바이트, SHA-256 `3a2724f945dc99a4de2211149692dc12bf569d8922265c2770dccc5441a35969`, Git blob `fb3e9dbb84fa0b85aa5332ab30d29ebb2f9ee089`가 같음을 확인했다. 이 경우에 한하여 다음 단계는 `current file ID + 동일바이트 witness file ID + SHA-256`을 실질 revision 인수 근거로 사용한다. 기존 snapshot이 사용 가능하면 새 복제본을 만들지 않는다. 학생용 본문이나 기존 완료 단계가 달라진 경우에는 이 예외를 적용하지 않으며 변경 범위만 다시 결속한다. 이 예외는 최종 기술 validator·게시 gate 또는 B13 외 시험지·예약 정책을 완화하지 않는다.
+
 ## 4. CREATE / R1 품질 역할
 
 CREATE는 Common Quality Contract와 아래 §16–17의 실제 품질 기준에 따라 전 qid의 source identity, 학생용 문항·보기·정답, QUESTION_LAYOUT, 해설/작은칠판 전개, 의미 기반 Meta·난이도, visual 필요성과 정확성, 엔진 사용 가능한 결과를 완성하고 Library file ID+revision과 근거를 누적 기록에 남긴다.
