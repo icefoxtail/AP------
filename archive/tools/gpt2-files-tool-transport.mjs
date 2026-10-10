@@ -3,14 +3,13 @@
  * This transport is NOT itself CAS: coordinate with gpt2-library-coordinated-adapter.
  */
 import fs from 'node:fs/promises';
-import os from 'node:os';
 import path from 'node:path';
 
 function response(item) {
   if (item?.status !== 'succeeded') throw Error('LIBRARY_CONNECTOR_MUTATION_FAILED:' + (item?.error_code || item?.message || 'UNKNOWN'));
   return item;
 }
-export function createFilesToolTransport({ files, fsApi = fs, scratchDirectory = os.tmpdir() } = {}) {
+export function createFilesToolTransport({ files, fsApi = fs, scratchDirectory = '/mnt/data' } = {}) {
   const ops = ['files__list', 'files__materialize', 'files__manage_library'];
   if (!files || ops.some(k => typeof files[k] !== 'function')) throw Error('FILES_CONNECTOR_TOOLS_REQUIRED');
   async function locate(p) {
