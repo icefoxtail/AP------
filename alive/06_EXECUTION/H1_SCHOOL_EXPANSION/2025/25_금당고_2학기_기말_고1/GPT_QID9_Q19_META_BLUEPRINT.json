@@ -3,8 +3,8 @@
   "sourceQid": 19,
   "sourceExamPath": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
   "sourceExamBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
-  "candidateJsBlobSha": "a735f665e66d550108355d23e9cbed992ed1a215",
-  "mathSpecBlobSha": "addd5914f30746fc6b98d06ae58516a0f8145e28",
+  "candidateJsBlobSha": "35249a7249fe7099388c4835e23c20b00f57435f",
+  "mathSpecBlobSha": "2234a0a7e5912ede633400c56026df6094c4b616",
   "lockedPrimaryL3": {
     "id": "H1-RPM-258",
     "label": "함수의 성질",
@@ -84,8 +84,8 @@
         "$5040$"
       ],
       "answer": "⑤",
-      "level": "상",
-      "difficultyBucket": 4,
+      "level": "중",
+      "difficultyBucket": 3,
       "parameters": {
         "h": -1,
         "d": 8,
@@ -95,7 +95,8 @@
       "decisiveInvariant": "0<k<d",
       "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
       "solutionVisual": "ADD_FOUR_INTERSECTION_GRAPH",
-      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-A3-solution.svg"
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-A3-solution.svg",
+      "difficultyRationale": "0<k<8로 일곱 정수를 얻어 곱하는 직접 계산형이므로 중/3으로 조정."
     },
     {
       "slot": "B1",
@@ -183,13 +184,13 @@
       "uid": "ALITE-GEUMDANG25-2FINAL-Q19-C1",
       "primaryL3": "H1-RPM-258",
       "chosenL4": "항등함수·상수함수",
-      "studentStem": "양의 정수 $k$에 대하여 방정식 $|(x-2)^2-9|=k$가 서로 다른 네 실근을 갖도록 하는 $k$의 개수는?",
+      "studentStem": "양의 정수 $k$에 대하여 방정식 $|(x-2)^2-9|=k$가 서로 다른 네 실근을 갖는다. 가능한 각 $k$에 대해 네 실근의 곱을 $P_k$라 할 때, 모든 가능한 $k$에 대한 $P_k$의 합은?",
       "choices": [
+        "$-4$",
+        "$4$",
         "$8$",
-        "$7$",
-        "$9$",
-        "$10$",
-        "$11$"
+        "$35$",
+        "$-60$"
       ],
       "answer": "①",
       "level": "상",
@@ -197,12 +198,12 @@
       "parameters": {
         "h": 2,
         "d": 9,
-        "mode": "count",
-        "value": 8
+        "mode": "sum_of_four_root_products",
+        "value": -4
       },
-      "decisiveInvariant": "0<k<d",
+      "decisiveInvariant": "0<k<9이고 Q²−k²의 상수항 25−k²가 네 근의 곱 Pₖ이다.",
       "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
-      "solutionVisual": "ADD_FOUR_INTERSECTION_GRAPH",
+      "solutionVisual": "NORMALIZED_FOUR_ROOT_GRAPH_AND_VIETA_PRODUCT",
       "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-C1-solution.svg"
     },
     {
