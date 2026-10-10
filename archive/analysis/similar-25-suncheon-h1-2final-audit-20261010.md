@@ -4,7 +4,7 @@
 
 - 앞선 감사에서 RPM/확장 메타 연결을 `NOT_VERIFIED`로만 남기고, canonical master에 이미 있는 개념 연결을 JS에 반영하지 않은 것은 누락이었다. 전용 branch에서 유사 JS 23개 객체에 `conceptClusterKey`를 추가했다. 각 값은 동일 문항의 `standardUnitKey + subUnitKey` 조합과 compiled master의 활성 `conceptClusterKey` 항목이 일치하는 키이며, 변경 수는 23/23이다.
 - 해당 JS 내 `content`, `choices`, `answer`, `solution`, id, 기존 UID/provenance 관련 상태, 원본 시험지는 바꾸지 않았다. 원본과 유사 문항의 q번호 쌍은 여전히 명시적 source pointer가 아닌 기존 내용·유형 대조에 따른 `INFERRED` 상태다.
-- `problemTypeKey` 및 `templateKey`는 현재 compiled master 전체 활성 키와 대조했으나 이 23개 H22-C2-06~09 개념군에 맞는 등록 키가 없다. 승인 master 등록 없이 새 키를 발명하거나 다른 단원의 키를 연결하지 않았다. 따라서 개념 메타 연결은 완료했지만 유형/템플릿 기반 RPM 자동추천 연결이나 정식 RPM linkage는 확인되지 않아 `NOT_VERIFIED`로 유지한다.
+- 당시 compiled tag master만으로 내린 “등록 키가 없다”는 판정은 잘못이었다. 아래의 현재 crosswalk 재대조 및 최종 메타 보정 절에서 바로잡았다. 새 키를 임의 생성하지 않았다.
 - 정본 master revision: `archive/data/master_tables/js_archive_tag_master.json` (branch에서 조회한 blob `f0dc633dfac792ffd2fb4d8cbd3c7cb82d725593`).
 
 ## 최종 감사 추가 기록 — 2026-10-10 KST
@@ -15,7 +15,7 @@
 - 문제 그림 q04/q10/q13 및 해설 SVG 7개를 실제 문자열 좌표·라벨·연결 경로로 검수했다. q04 대응값, q10의 문자 좌표 및 $y=x$, q13 점근선 $x=2,y=1$·영점 $(3,0)$, 해설 SVG 7개의 표기 교점·끝점·경계 표식을 확인했다. 브라우저/Chrome 실렌더는 실행하지 않았다.
 - q13.svg의 y=3 눈금 label baseline이 y=16, font-size 30으로 viewBox 상단에서 잘릴 수 있음을 정적 좌표로 확인해 그래프 전체에 세로 +20 translation을 적용했다. 모든 도형과 clipPath를 함께 이동해 좌표관계는 불변이고 텍스트 상단 여백만 복구된다. 수정 후 root/viewBox/clip/주요 x절편·점근선 선언을 정적 확인했다. SVG 변경 총 10개 경로: 기존 문제 SVG 3개 수정(q04/q10/q13), 해설 SVG 7개 추가(이번 보정은 q13 기존 경로의 최종본에 포함).
 - qid 1~23 tuple은 `sourceJsPath|examId|qid` 규칙에 따라 서로 고유하다. 파일에는 explicit `uid/sourceQid/sourceFile`가 없으므로 별도 UID를 새로 만들지 않았다. original qid↔similar id 대응은 순서·단원·문형 비교로 정합하나 저장된 source pointer가 없어 provenance 상태는 `INFERRED`다. cross-bank 전체 UID 중복 조회는 수행하지 않았다.
-- 최신 `archive/data/master_tables/js_archive_tag_master.json`에서 standardUnitKey/subUnitKey 조합은 23/23 일치했다. 다만 이 JS에는 RPM L1~L4, difficultyBucket, PT/TPL 연결 필드가 없고 개별 RPM linkage registry도 이 branch에서는 확인되지 않았다. canonical RPM H22-C2 concept와 문항 내용의 개념상 분류는 검토했지만, 저장된 정확한 RPM key 연결은 `NOT_VERIFIED`로 남긴다. 임의 키 생성·메타 이관은 이번 범위에 포함하지 않았다.
+- 이 시점의 baseline source에는 PT/TPL pair가 없었고 RPM 축은 정식 연결 전 상태였다. 이후 source 보정으로 PT/TPL 22쌍을 기록했으며 최신 결과는 아래 최종 메타 표를 따른다. L1~L4/difficulty 및 Consumer/index parity는 이번 source-only 확인으로 PASS 처리하지 않았다.
 - 최종 상태: 문항 품질 검수 표는 완료. production release 준비는 RPM 키/고유 provenance 확인이 남아 있고, 실렌더는 사용자 지정으로 금지되어 `NOT_TESTED`; 이 branch에서는 main 병합·배포·DB 변경을 수행하지 않는다.
 
 - 날짜: 2026-10-10 (KST). 작업형: 기존 유사문항 23개 검수·핀포인트 보정. **main 병합·DB 출고·배포 승인 없음**.
@@ -101,7 +101,7 @@
 
 ## 5. RPM / 출시 상태 / 남은 이슈
 
-- 23/23 canonical 표준단원·세부단원 parent/label 정합성 확인. **RPM L1~L4/Primary L3 링크는 이 레거시 유사 JS에 명시적 키가 없고 정본 RPM 데이터와의 개별 링크를 검증하지 못했으므로 `RPM_LINK=NOT_VERIFIED`**; 함부로 새 유형키나 PASS를 만들지 않았다.
+- 최초 보고 시점에는 RPM crosswalk 연결을 검증하지 못해 `RPM_LINK=NOT_VERIFIED`로 남겼다. 후속 재검에서 q별 crosswalk/PT/TPL source 연결을 확인·보정했으며, 최종 현황은 아래 표에 기록했다. resolver receipt와 Consumer/index parity는 미실행·미확인이다.
 - 개별 문항의 수학적 결과는 위 표대로 유지·수정했으나 정식 다른 세션 독립검수/Chrome·PNG 시각 일치/RPM 가맹 확정이 남아 있어 `FINAL_PRODUCTION_SEAL=BLOCKED`, `MAIN_MERGE=NOT_REQUESTED`, `DEPLOY=NOT_REQUESTED`.
 - 후속: 형님의 별도 출시 지시가 있기 전에는 브랜치 검수 산출물로 유지. 실제 Chrome 렌더·SVG geometry independent reviewer·RPM canonical junction 검증 뒤 출시 판단한다. 기존 UID / 원본을 바꾸거나 문제를 임의 대체하지 않는다.
 
@@ -109,7 +109,7 @@
 
 - 후속 지시에 따라 branch의 `AGENTS.md` 및 `docs/architecture/Archive_Correction_Owner_EndToEnd_Closeout_CURRENT_v1.md`를 다시 읽었다. Meta 검수는 generic tag master에서 멈추지 않고 current RPM L1~L4, ACTIVE projection, PT/TPL 및 UID 연결을 확인해야 한다.
 - 앞 절의 “이 23개 H22-C2 개념군에 맞는 PT/TPL 등록 키가 없다”는 진술은 `js_archive_tag_master.json`만 본 뒤 내린 잘못된 결론이다. current 정본은 `docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`와 `archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json`이며, 해당 crosswalk에는 H22-C2-06~09 관련 H1-RPM-243~272 경로가 있다.
-- 방금 JS에 추가한 `conceptClusterKey` 23/23은 subUnit canonical tag 연결만 완료한다. 이를 qid별 RPM L1~L4·PT/TPL resolver linkage 완료로 간주할 수 없다. q별 의미 경로·projection을 resolver evidence로 대조하지 않았으므로 RPM linkage는 아직 `NOT_VERIFIED`다. 이 재독 결과에 따라 이전의 “정본에 연결할 key가 없음”을 폐기하며, RPM 연결이 완료됐다고 표시하지 않는다.
+- 그 당시에는 conceptClusterKey만 추가된 상태였고 q별 PT/TPL source 보정 전이었다. 이후 current crosswalk를 재대조해 22쌍을 연결하고 10쌍을 crosswalk 지정값으로 수정했다. resolver 자체와 receipt validator는 실행하지 않았으며, 최종 source 대조 결과는 아래 표를 따른다.
 - 이 수정은 검수 branch만 대상으로 했다. main 병합·DB/runtime/index 변경은 하지 않았다.
 
 ## 최종 메타 연결 보정 — 2026-10-10 (재검 정정)
