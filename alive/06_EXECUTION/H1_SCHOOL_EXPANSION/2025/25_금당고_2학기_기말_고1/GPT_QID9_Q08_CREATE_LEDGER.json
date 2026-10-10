@@ -1,0 +1,326 @@
+{
+  "schemaVersion": "ALIVE_QID9_GEUMDANG25_Q08_CREATOR_SELF_REVIEW_V1",
+  "sourceQid": 8,
+  "sourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "lockedPrimaryL3": "H1-RPM-255",
+  "candidateCount": 9,
+  "keep": 9,
+  "revised": 0,
+  "hold": 0,
+  "answerDistribution": {
+    "①": 1,
+    "②": 2,
+    "③": 2,
+    "④": 2,
+    "⑤": 2
+  },
+  "mathChecks": {
+    "A1": 4,
+    "A2": 3,
+    "A3": 6,
+    "B1": 3,
+    "B2": -1,
+    "B3": 5,
+    "C1": {
+      "a": 3,
+      "b": 1,
+      "answer": 2
+    },
+    "C2": {
+      "fInverse0": "-1/2",
+      "fInverse5": "16/3",
+      "answer": "29/6"
+    },
+    "C3": {
+      "a": 2,
+      "b": -7,
+      "answer": 9
+    }
+  },
+  "pythonSymbolicCheck": {
+    "C2": "PASS_CALCULATED_VALUES",
+    "C3": "PASS_COEFFICIENT_SOLVE"
+  },
+  "formalIndependentGptReviewPerformed": false,
+  "realChromeRender": "NOT_TESTED",
+  "releaseStatus": "BRANCH_ONLY_NOT_RELEASED",
+  "visual": {
+    "problem": "EXEMPT_ALL",
+    "solution": {
+      "C3": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q08-C3-solution.svg",
+      "others": "EXEMPT"
+    }
+  },
+  "rows": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q08-A1",
+      "finalStem": "일차함수 $f(x)=2x-3$에 대하여 $f^{-1}(5)$의 값은?",
+      "reverseReadingFinding": "학생 발문만 다시 읽고 f와 역함수의 입력 출력 방향, 고유 정답 여부 및 수치 제약을 확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "value": "$2$",
+          "mistake": "$2x=8$의 나눗셈 실수로 2 선택"
+        },
+        {
+          "choice": "②",
+          "value": "$3$",
+          "mistake": "$2x=8$을 3으로 오산"
+        },
+        {
+          "choice": "④",
+          "value": "$5$",
+          "mistake": "역함수의 입력 5를 그대로 답으로 선택"
+        },
+        {
+          "choice": "⑤",
+          "value": "$6$",
+          "mistake": "$-3$ 이항 실수로 6 선택"
+        }
+      ],
+      "decision": "KEEP",
+      "remainingRisk": "독립검수 및 실렌더 미수행"
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q08-A2",
+      "finalStem": "일차함수 $f(x)=3x+1$에 대하여 $f^{-1}(10)$의 값은?",
+      "reverseReadingFinding": "학생 발문만 다시 읽고 f와 역함수의 입력 출력 방향, 고유 정답 여부 및 수치 제약을 확인",
+      "distractorPaths": [
+        {
+          "choice": "②",
+          "value": "$1$",
+          "mistake": "상수항 1을 답으로 오인"
+        },
+        {
+          "choice": "③",
+          "value": "$2$",
+          "mistake": "$3x=9$의 나눗셈 오산으로 2"
+        },
+        {
+          "choice": "④",
+          "value": "$4$",
+          "mistake": "$3x+1=10$에서 상수항 처리 실수로 4"
+        },
+        {
+          "choice": "⑤",
+          "value": "$5$",
+          "mistake": "$3x=9$를 5로 오산"
+        }
+      ],
+      "decision": "KEEP",
+      "remainingRisk": "독립검수 및 실렌더 미수행"
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q08-A3",
+      "finalStem": "일차함수 $f(x)=\\dfrac{x}{2}+4$에 대하여 $f^{-1}(7)$의 값은?",
+      "reverseReadingFinding": "학생 발문만 다시 읽고 f와 역함수의 입력 출력 방향, 고유 정답 여부 및 수치 제약을 확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "value": "$4$",
+          "mistake": "$x/2=3$에서 4라고 오산"
+        },
+        {
+          "choice": "②",
+          "value": "$5$",
+          "mistake": "$x/2=3$에서 5라고 오산"
+        },
+        {
+          "choice": "③",
+          "value": "$7$",
+          "mistake": "원래 출력 7을 답으로 착각"
+        },
+        {
+          "choice": "④",
+          "value": "$8$",
+          "mistake": "$x/2=3$에서 8이라고 오산"
+        }
+      ],
+      "decision": "KEEP",
+      "remainingRisk": "독립검수 및 실렌더 미수행"
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q08-B1",
+      "finalStem": "실수 $a$에 대하여 일차함수 $f(x)=ax+2$가 $f^{-1}(8)=2$를 만족한다. $a$의 값은?",
+      "reverseReadingFinding": "학생 발문만 다시 읽고 f와 역함수의 입력 출력 방향, 고유 정답 여부 및 수치 제약을 확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "value": "$1$",
+          "mistake": "$2a=6$을 1로 오산"
+        },
+        {
+          "choice": "②",
+          "value": "$2$",
+          "mistake": "$2a=6$을 2로 오산"
+        },
+        {
+          "choice": "③",
+          "value": "$4$",
+          "mistake": "$2a=6$에서 덧셈을 해 4"
+        },
+        {
+          "choice": "⑤",
+          "value": "$5$",
+          "mistake": "역함수와 원래 함수의 입력을 바꾸어 잘못 계산하여 5"
+        }
+      ],
+      "decision": "KEEP",
+      "remainingRisk": "독립검수 및 실렌더 미수행"
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q08-B2",
+      "finalStem": "실수 $b$에 대하여 일차함수 $f(x)=2x+b$가 $f^{-1}(7)=4$를 만족한다. $b$의 값은?",
+      "reverseReadingFinding": "학생 발문만 다시 읽고 f와 역함수의 입력 출력 방향, 고유 정답 여부 및 수치 제약을 확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "value": "$-3$",
+          "mistake": "$8+b=7$을 -3으로 오산"
+        },
+        {
+          "choice": "③",
+          "value": "$-2$",
+          "mistake": "8을 9로 잘못 계산하여 -2"
+        },
+        {
+          "choice": "④",
+          "value": "$0$",
+          "mistake": "상수항을 0으로 무시"
+        },
+        {
+          "choice": "⑤",
+          "value": "$1$",
+          "mistake": "7−8의 음의 부호를 버림"
+        }
+      ],
+      "decision": "KEEP",
+      "remainingRisk": "독립검수 및 실렌더 미수행"
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q08-B3",
+      "finalStem": "일차함수 $f(x)=3x-5$에 대하여 $f^{-1}(f(4))+f(f^{-1}(1))$의 값은?",
+      "reverseReadingFinding": "학생 발문만 다시 읽고 f와 역함수의 입력 출력 방향, 고유 정답 여부 및 수치 제약을 확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "value": "$3$",
+          "mistake": "$f^{-1}(f(4))$을 2로 오산하고 다른 항 1을 더해 3"
+        },
+        {
+          "choice": "②",
+          "value": "$4$",
+          "mistake": "두 번째 항 1을 누락하여 4"
+        },
+        {
+          "choice": "④",
+          "value": "$6$",
+          "mistake": "두 번째 항 1을 2로 잘못 보아 6"
+        },
+        {
+          "choice": "⑤",
+          "value": "$7$",
+          "mistake": "두 번째 항 1을 3으로 잘못 보아 7"
+        }
+      ],
+      "decision": "KEEP",
+      "remainingRisk": "독립검수 및 실렌더 미수행"
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q08-C1",
+      "finalStem": "일차함수 $f(x)=ax+b$가 $f(1)=4$, $f^{-1}(10)=3$을 만족한다. 실수 $a,b$에 대하여 $a-b$의 값은?",
+      "reverseReadingFinding": "학생 발문만 다시 읽고 f와 역함수의 입력 출력 방향, 고유 정답 여부 및 수치 제약을 확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "value": "$0$",
+          "mistake": "a와 b를 같다고 놓아 차 0"
+        },
+        {
+          "choice": "②",
+          "value": "$1$",
+          "mistake": "a=3,b=2로 오산하여 차 1"
+        },
+        {
+          "choice": "③",
+          "value": "$3$",
+          "mistake": "a=3만 답으로 보고 3"
+        },
+        {
+          "choice": "④",
+          "value": "$4$",
+          "mistake": "f(1)=4의 수치를 답으로 오인"
+        }
+      ],
+      "decision": "KEEP",
+      "remainingRisk": "독립검수 및 실렌더 미수행"
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q08-C2",
+      "finalStem": "정의역이 $x\\ne3$인 함수 $f(x)=\\dfrac{2x+1}{x-3}$에 대하여 $f^{-1}(0)+f^{-1}(5)$의 값은?",
+      "reverseReadingFinding": "학생 발문만 다시 읽고 f와 역함수의 입력 출력 방향, 고유 정답 여부 및 수치 제약을 확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "value": "$\\dfrac{23}{6}$",
+          "mistake": "$f^{-1}(5)=13/3$으로 오산해 합 23/6"
+        },
+        {
+          "choice": "②",
+          "value": "$\\dfrac{25}{6}$",
+          "mistake": "$f^{-1}(5)=14/3$으로 오산해 합 25/6"
+        },
+        {
+          "choice": "③",
+          "value": "$\\dfrac{27}{6}$",
+          "mistake": "$f^{-1}(5)=5$로 역함수 입력을 혼동하여 합 27/6"
+        },
+        {
+          "choice": "⑤",
+          "value": "$\\dfrac{31}{6}$",
+          "mistake": "$f^{-1}(5)=17/3$으로 오산해 합 31/6"
+        }
+      ],
+      "decision": "KEEP",
+      "remainingRisk": "독립검수 및 실렌더 미수행"
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q08-C3",
+      "finalStem": "일차함수 $f(x)=ax+b$ ($a\\ne0$), $g(x)=4x-1$에 대하여 모든 실수 $x$에서 $(f^{-1}\\circ g)(x)=2x+3$이다. $a-b$의 값은?",
+      "reverseReadingFinding": "학생 발문만 다시 읽고 f와 역함수의 입력 출력 방향, 고유 정답 여부 및 수치 제약을 확인",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "value": "$7$",
+          "mistake": "b=-5로 잘못 계산해 a-b=7"
+        },
+        {
+          "choice": "③",
+          "value": "$8$",
+          "mistake": "b=-6으로 잘못 계산해 a-b=8"
+        },
+        {
+          "choice": "④",
+          "value": "$10$",
+          "mistake": "b=-8로 잘못 계산해 a-b=10"
+        },
+        {
+          "choice": "⑤",
+          "value": "$11$",
+          "mistake": "b=-9로 잘못 계산해 a-b=11"
+        }
+      ],
+      "decision": "KEEP",
+      "remainingRisk": "독립검수 및 실렌더 미수행"
+    }
+  ]
+}
