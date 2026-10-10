@@ -1,0 +1,50 @@
+{
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "items": [
+          {
+            "qid": 2,
+            "observation": "Read the full student solution and verified the source values lead to its stated choice.",
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba"
+          },
+          {
+            "qid": 7,
+            "observation": "Read the full student derivation and checked the intermediate equations and conclusion.",
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d"
+          }
+        ],
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "items": [
+          {
+            "qid": 6,
+            "observation": "Read the full inclusion-exclusion derivation and opened the linked Venn SVG; confirmed the overlap and maximum conditions.",
+            "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+            "visualSha256": "70731ee9517c0fe8dbe87695f86f87061b123a0a98310b184e3793bfdbf05cfd"
+          },
+          {
+            "qid": 7,
+            "observation": "Read the complete student solution and verified its conclusion follows from the displayed counts.",
+            "solutionSha256": "093fba9886d141f2136ce98a7854553020ebdbf4320d9683427d51dd4032f373"
+          }
+        ],
+        "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b"
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Read the false-PASS regression README and opened/rendered the q20 bad SVG; its depicted line slope contradicts its label. Also reviewed the missing small-board and ACTIVE Meta-key regressions."
+    }
+  }
+}

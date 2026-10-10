@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "JS_ARCHIVE_QUESTION_ONLY_Q22_META_REVIEW_DRAFT_V1",
+  "examUid": "24_순천여고_1학기_중간_고2_확률과통계",
+  "qid": 22,
+  "candidateArtifactSha256": "d4e825968531c98218e744cc22d391bc5ce204a7cbb8d6842738bfd90acdc591",
+  "candidateGitBlobSha": "0c88fd74fc557e87464693c6703f934ba01baafd",
+  "sourceMode": "QUESTION_ONLY",
+  "reviewStatus": "DRAFT_WITH_EXACT_EVIDENCE_DEBT",
+  "fields": {
+    "standardCourse": "확률과 통계",
+    "standardUnitKey": "H15-PS-02",
+    "standardUnit": "이항정리",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+    "subUnit": "이항정리",
+    "problemTypeKey": "PT_BINOMIAL_THEOREM",
+    "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmL1": "경우의 수",
+    "rpmL2": "이항정리",
+    "rpmL3": null,
+    "rpmL4": null
+  },
+  "evidence": {
+    "curriculumBinding": "archive/data/meta-foundation/canonical/packs/probability-statistics/bindings.json; H15-PS-02 -> H15-PS-02-BINOMIAL_BASIC is ACTIVE for PT_BINOMIAL_THEOREM; both mathematical steps are within the 2015 binomial theorem curriculum.",
+    "template": "archive/data/meta-foundation/canonical/packs/probability-statistics/taxonomy.json; TPL_BINOMIAL_COEFFICIENT_IDENTITY is ACTIVE under PT_BINOMIAL_THEOREM.",
+    "rpmCrosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json; exact coefficient-identity rows H2-PS-RPM-009/010 are DIRECT_BINDING_GAP with bindingStatus MISSING; they specify coefficient identity / combination identity but lack active binding.",
+    "generatedOnlyRegistry": "Searched archive/generated/lite/v1/2022 and archive/data/meta-foundation for extension registries; no Generated-only L4 registry under H15-PS-02-BINOMIAL_BASIC was present."
+  },
+  "exactEvidenceDebt": "For qid22 replacement UID qid_v1_4e25e81fca268d29a0d15378271663cd5df1473edff935d268eec94742ea4d9c, the current high2 RPM registry has no ACTIVE L3/L4 binding for the candidate’s combined binomial-sum/coefficient-identity role (H2-PS-RPM-009/010 are DIRECT_BINDING_GAP/MISSING), and no authorized Generated-only L4 extension registry was found under H15-PS-02-BINOMIAL_BASIC. Keep rpmL3/rpmL4 unresolved; do not map to locked H2 rows. A generated-only L4 registration plus consumer/index projection is required before Generated curriculum search/eligibility can treat this candidate as fully classified; this debt does not change the written solution or answer.",
+  "requiresRootExtensionDecision": true
+}

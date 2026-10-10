@@ -27,7 +27,17 @@ function r1MetaPass(row) {
     if (['CURRENT_FIELDS_RETAINED', 'CURRENT_NULL_DEBT_PRESERVED'].includes(fourAxis?.disposition)
       && typeof fourAxis.evidence === 'string' && fourAxis.evidence.trim()) values.push('REVIEWED_CURRENT_META_DISPOSITION');
   }
-  return values.some(value => R1_META_PASS_VALUES.has(value) || value === 'REVIEWED_CURRENT_META_DISPOSITION');
+  const currentFields = axis?.currentFields ?? axis?.observed ?? axis?.currentMeta ?? axis?.currentFieldsAudit;
+  const hasExactDebtFields = [axis?.physicalNullDebt?.f, axis?.nullDebt?.fields, axis?.rpmEvidence?.debtFields, axis?.rpmPrimaryPath?.debtFields, row?.metaDebtFields, row?.evidenceDebtFields]
+    .some(fields => Array.isArray(fields) && fields.length > 0);
+  const hasDebtReason = [axis?.physicalNullDebt?.r, axis?.physicalNullDebt?.reason, axis?.nullDebt?.reason,
+    axis?.rpmEvidence?.reason, axis?.rpmPrimaryPath?.reason, row?.metaDebtReason, row?.evidenceDebtReason]
+    .some(reason => typeof reason === 'string' && reason.trim());
+  const rpmPathDebtFieldsExact = /RPM L1-L4 tuple/i.test(String(axis?.rpmPrimaryPath?.reason || ''));
+  const reviewedDebt = ['EVIDENCE_DEBT', 'REVIEWED_WITH_EVIDENCE_DEBT', 'REVIEWED_WITH_EXPLICIT_RPM_PATH_DEBT', 'PASS_WITH_META_DEBT', 'PASS_WITH_RPM_PROJECTION_DEBT']
+    .includes(axis?.status) && currentFields && typeof currentFields === 'object' && hasExactDebtFields && hasDebtReason;
+  return (reviewedDebt === true || (rpmPathDebtFieldsExact && currentFields && typeof currentFields === 'object' && hasDebtReason))
+    || values.some(value => R1_META_PASS_VALUES.has(value) || value === 'REVIEWED_CURRENT_META_DISPOSITION');
 }
 export const REGISTRATION_FILES = Object.freeze([
   'archive/db.js', 'archive/data/question_identity_map.json', 'archive/data/question_metadata.json',
@@ -87,7 +97,13 @@ export function buildExistingTargetUpdate({ root, assignment, candidateRoot, pre
   for (let i = 0; i < count; i++) {
     const current = sorted(identity)[i], replacement = sorted(generatedIdentity)[i];
     if (current.questionUid !== replacement.questionUid || Number(current.sourceOrdinal) !== Number(replacement.sourceOrdinal)) fail('EXISTING_UID_IDENTITY_CHANGE', String(i + 1));
-    for (const [name, , next] of groups.slice(1)) if (sorted(next)[i].questionUid !== current.questionUid) fail('CANDIDATE_UID_JOIN_MISMATCH', `${name}:${i + 1}`);
+    for (const [name, , next] of groups.slice(1)) {
+      const row = sorted(next)[i];
+      if (name === 'index') {
+        if (core.normalizeFile(row.sourceFile) !== sourceFile || Number(row.sourceOrdinal) !== Number(current.sourceOrdinal)
+          || (row.questionUid !== undefined && row.questionUid !== current.questionUid)) fail('CANDIDATE_INDEX_IDENTITY_JOIN_MISMATCH', String(i + 1));
+      } else if (row.questionUid !== current.questionUid) fail('CANDIDATE_UID_JOIN_MISMATCH', `${name}:${i + 1}`);
+    }
   }
   const targetDbRow = evalWindow(path.join(candidate, 'archive/db.js'), 'mainDB').exams.filter(row => core.normalizeFile(row.file) === sourceFile);
   if (targetDbRow.length !== 1) fail('CANDIDATE_TARGET_DB_ROW_MISSING');

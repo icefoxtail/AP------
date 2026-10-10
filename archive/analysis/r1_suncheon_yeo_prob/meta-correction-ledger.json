@@ -1,0 +1,20 @@
+{
+ "schemaVersion":"JS_ARCHIVE_R1_META_CORRECTION_LEDGER_V1",
+ "examUid":"24_순천여고_1학기_중간_고2_확률과통계",
+ "sourceBeforeRawSha256":"c0a092f5047e8e39c1c0d0de08551c473415c718e9b35eb9f1a9acaf33233a8b",
+ "sourceAfterRawSha256":"984e37c7fd5687866dc3eaf5faca82657fe0b5e84b6d57e7ed8b4688b9fca24c",
+ "changedQids":[11,14],
+ "studentBodyAndAssetsParity":"EXACT_ALL_23_QIDS; meta-repair-scope-plan.json records outsideScopeParity EXACT and unchanged payload SHA for q11/q14; postfreeze disclosure verifies q11/q14 against the original freeze.",
+ "corrections":[
+  {"qid":11,"fields":{"crossConceptKeys":{"before":[],"after":["CC_NUMBER_PARITY"]},"integrationPattern":{"before":"NONE","after":"INTERDEPENDENT"}},"basis":"The reviewed current student question counts X→X functions whose range-element sum is odd. Its solution explicitly partitions singleton/pair ranges by parity. The H15-PS-01 COUNTING_APPLICATION binding for PT_FUNCTION_COUNTING/TPL_CONSTRAINED_FUNCTION_COUNT exists ACTIVE/RESOLVED with CC_NUMBER_PARITY and INTERDEPENDENT in archive/data/meta-foundation/runtime/probability-statistics-v1.json. Reused existing keys; no new registry entry. RPM L3/L4 remain exact EVIDENCE_DEBT because H15-PS-01 locked RPM taxonomy contains no function-count leaf."},
+  {"qid":14,"fields":{"subUnitKey":{"before":"H15-PS-01-COUNTING_APPLICATION","after":"H15-PS-01-COMBINATION"},"subUnit":{"before":"경우의 수의 활용","after":"조합"}},"basis":"The reviewed source/solution counts monotone finite functions through strict intermediate choices; the current ACTIVE/RESOLVED H15-PS-01 binding for PT_FUNCTION_COUNTING/TPL_MONOTONE_FUNCTION_COUNT is registered under H15-PS-01-COMBINATION. Both key and label are in the current standard-unit master. The independently corrected answer is 126 and matches choice ①. RPM L3/L4 remain exact EVIDENCE_DEBT because the locked H15-PS-01 RPM tree has no function-count leaf."}
+ ],
+ "unchangedQidsDeepObjectParity":"PASS 21/21 outside changed qids",
+ "remainingExactMetaEvidenceDebts":[
+  {"qid":1,"fields":["rpmL3","rpmL4","problemTypeKey","templateKey"],"reason":"The value-comparison task spans combinations, permutations, repeated combinations and repeated arrangements; no unique primary semantic or PT/TPL can be assigned without arbitrary choice. Nulls retained."},
+  {"qid":11,"fields":["rpmL3","rpmL4"],"reason":"Current locked 2015 H15-PS-01 RPM Primary taxonomy has no function-count leaf. Existing ACTIVE PT/TPL compatibility binding does not itself create an RPM Primary semantic key."},
+  {"qid":14,"fields":["rpmL3","rpmL4"],"reason":"Current locked 2015 H15-PS-01 RPM Primary taxonomy has no function-count leaf. Existing ACTIVE PT/TPL compatibility binding does not itself create an RPM Primary semantic key."}
+ ],
+ "consumerAndIndex":"No global Consumer/index publication was performed in R1. archive/data/question_metadata.json has 23/23 target UID rows in registration_pending_semantic_review; source corrections must be carried into the later authorized registration producer before promotion. No pending status was promoted.",
+ "itemHold":{"qid":22,"status":"TRUE_ITEM_HOLD","reason":"Independent proof shows infinitely many integer tuples satisfy the exact source condition; original wording, stored HOLD and explicit examples preserved. Do not add a constraint."}
+}

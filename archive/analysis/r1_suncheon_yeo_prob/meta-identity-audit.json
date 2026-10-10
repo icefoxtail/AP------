@@ -1,0 +1,1371 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_META_IDENTITY_AUDIT_V1",
+  "reviewerId": "/root/r1_suncheon_yeo_prob",
+  "sourceRawSha256": "c0a092f5047e8e39c1c0d0de08551c473415c718e9b35eb9f1a9acaf33233a8b",
+  "qidCount": 23,
+  "authorityFiles": {
+    "standardUnitMaster": {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+      "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+    },
+    "rpmPrimaryH15": {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+      "sha256": "530821f597318962538a2fe593a62c86525cd7fdf77fe84f985865c5c23d7c1c"
+    },
+    "metaFoundationRuntime": {
+      "path": "archive/data/meta-foundation/runtime/probability-statistics-v1.json",
+      "sha256": "4b4271f5bdc83a1edb55c2978149184b3cb3e07d3b8eb38872f006371d9d6dde"
+    },
+    "identityMap": {
+      "path": "archive/data/question_identity_map.json",
+      "sha256": "e76f8b28a77e3c7542a652b0957c83375f7b5fc494085eb3223be65c9c845fed"
+    },
+    "questionMetadata": {
+      "path": "archive/data/question_metadata.json",
+      "sha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4"
+    }
+  },
+  "overall": {
+    "identityMapMatches": 23,
+    "metadataProjectionsPresent": 23,
+    "allMetadataProjectionStatuses": "registration_pending_semantic_review",
+    "itemHoldQids": [
+      22
+    ],
+    "exactMetaEvidenceDebts": [
+      {
+        "qid": 1,
+        "fields": [
+          "rpmL3",
+          "rpmL4",
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "reason": "Five expressions span several counting families; current pass cannot establish one primary type/template or one RPM L3/L4 path. Keep nulls and exact EVIDENCE_DEBT."
+      },
+      {
+        "qid": 11,
+        "fields": [
+          "rpmL3",
+          "rpmL4"
+        ],
+        "reason": "H15-PS-01 RPM Primary has no function-count L3/L4 leaf; retain exact EVIDENCE_DEBT. The active PT/TPL projection remains separately keyed."
+      },
+      {
+        "qid": 14,
+        "fields": [
+          "rpmL3",
+          "rpmL4"
+        ],
+        "reason": "H15-PS-01 RPM Primary has no function-count L3/L4 leaf; retain exact EVIDENCE_DEBT. The active monotone-function PT/TPL projection remains separately keyed."
+      }
+    ]
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "questionUid": "qid_v1_bed844a2bdfd3b1fb82e6d95dcfc37f0c0ffc6be8bd3fb2527f9bb8ee9733f24",
+      "sourceQid": 1,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 1,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-COUNTING_APPLICATION",
+        "label": "경우의 수의 활용",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "L3": null,
+        "L4": null,
+        "semanticStatus": "EVIDENCE_DEBT",
+        "reason": "Five expressions span combinations, permutations, repeated combinations and repeated arrangements; current exact lookup has no unique primary problem type/template or single RPM L3/L4 for the comparison task."
+      },
+      "projection": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "exactRuntimeBindingMatches": 0,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "EXEMPT_TEXT_COMPLETE",
+        "solution": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION"
+      },
+      "itemStatus": null
+    },
+    {
+      "qid": 2,
+      "questionUid": "qid_v1_29902069b36f2e65a7b932d9fdaa132d404f29610cd721fd0fac31ab81ad5475",
+      "sourceQid": 2,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 2,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-PERMUTATION",
+        "label": "순열",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "L3": "순열",
+        "L4": "중복·원순열",
+        "semanticStatus": "FINAL",
+        "reason": null
+      },
+      "projection": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_CIRCULAR_PERMUTATION",
+        "exactRuntimeBindingMatches": 5,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "EXEMPT_TEXT_COMPLETE",
+        "solution": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION"
+      },
+      "itemStatus": null
+    },
+    {
+      "qid": 3,
+      "questionUid": "qid_v1_a98e2fc8ea91689951dbc6ec8e0ff2702fc3f3c4a9a7781a26c667221add1744",
+      "sourceQid": 3,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 3,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-PERMUTATION",
+        "label": "순열",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "L3": "순열",
+        "L4": "일렬 배열",
+        "semanticStatus": "FINAL",
+        "reason": null
+      },
+      "projection": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+        "exactRuntimeBindingMatches": 4,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "상",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "EXEMPT_TEXT_COMPLETE",
+        "solution": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION"
+      },
+      "itemStatus": null
+    },
+    {
+      "qid": 4,
+      "questionUid": "qid_v1_d1af32b5607213a0164f1a3dae13714f7da376e05061248d33e0c2854400b6a6",
+      "sourceQid": 4,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 4,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-PERMUTATION",
+        "label": "순열",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "L3": "순열",
+        "L4": "일렬 배열",
+        "semanticStatus": "FINAL",
+        "reason": null
+      },
+      "projection": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+        "exactRuntimeBindingMatches": 4,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "EXEMPT_TEXT_COMPLETE",
+        "solution": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION"
+      },
+      "itemStatus": null
+    },
+    {
+      "qid": 5,
+      "questionUid": "qid_v1_226cc2c4c320eff82525a718016b0fdce27d06725a17be5660b29f35f6ab8a86",
+      "sourceQid": 5,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 5,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-02",
+        "label": "이항정리",
+        "order": 2,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-02-BINOMIAL_BASIC",
+        "label": "이항정리",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "이항정리",
+        "L3": "이항정리",
+        "L4": "특정 항의 계수",
+        "semanticStatus": "FINAL",
+        "reason": null
+      },
+      "projection": {
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+        "exactRuntimeBindingMatches": 12,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "EXEMPT_TEXT_COMPLETE",
+        "solution": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION"
+      },
+      "itemStatus": null
+    },
+    {
+      "qid": 6,
+      "questionUid": "qid_v1_7acc17e54275a1283abc17459066c0feb16ccf315d83b996e02d6447cc6248df",
+      "sourceQid": 6,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 6,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-COUNTING_APPLICATION",
+        "label": "경우의 수의 활용",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "L3": "조합",
+        "L4": "분할·분배",
+        "semanticStatus": "FINAL",
+        "reason": null
+      },
+      "projection": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "exactRuntimeBindingMatches": 0,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "EXEMPT_TEXT_COMPLETE",
+        "solution": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION"
+      },
+      "itemStatus": null
+    },
+    {
+      "qid": 7,
+      "questionUid": "qid_v1_688c3890d9b2e49f8b1860ab05baaee0e5dd6b947c1be2f85c106422553c36ae",
+      "sourceQid": 7,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 7,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-02",
+        "label": "이항정리",
+        "order": 2,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-02-BINOMIAL_BASIC",
+        "label": "이항정리",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "이항정리",
+        "L3": "이항정리",
+        "L4": "전개식의 항",
+        "semanticStatus": "FINAL",
+        "reason": null
+      },
+      "projection": {
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+        "exactRuntimeBindingMatches": 12,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "EXEMPT_TEXT_COMPLETE",
+        "solution": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION"
+      },
+      "itemStatus": null
+    },
+    {
+      "qid": 8,
+      "questionUid": "qid_v1_2f7c66f186d64d99302c7fcdff92da8d19bfdb1bb32cd8122e38543db5d59798",
+      "sourceQid": 8,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 8,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-02",
+        "label": "이항정리",
+        "order": 2,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-02-BINOMIAL_BASIC",
+        "label": "이항정리",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "이항정리",
+        "L3": "이항정리",
+        "L4": "특정 항의 계수",
+        "semanticStatus": "FINAL",
+        "reason": null
+      },
+      "projection": {
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+        "exactRuntimeBindingMatches": 12,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "EXEMPT_TEXT_COMPLETE",
+        "solution": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION"
+      },
+      "itemStatus": null
+    },
+    {
+      "qid": 9,
+      "questionUid": "qid_v1_0e416dfa3609d0fa8437241c508fbaae522f84a9aba49c2c076da3ef2a3c05b1",
+      "sourceQid": 9,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 9,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-COUNTING_APPLICATION",
+        "label": "경우의 수의 활용",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "L3": "조합",
+        "L4": "선택",
+        "semanticStatus": "FINAL",
+        "reason": null
+      },
+      "projection": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION",
+        "exactRuntimeBindingMatches": 0,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [
+        "CC_SET_CARDINALITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "level": "중",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "EXEMPT_TEXT_COMPLETE",
+        "solution": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION"
+      },
+      "itemStatus": null
+    },
+    {
+      "qid": 10,
+      "questionUid": "qid_v1_177521db07f399d914b51e843a1e06ee212133af2d5d706b3718d69295b99d17",
+      "sourceQid": 10,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 10,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-02",
+        "label": "이항정리",
+        "order": 2,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-02-BINOMIAL_BASIC",
+        "label": "이항정리",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "이항정리",
+        "L3": "이항계수",
+        "L4": "조합 항등식",
+        "semanticStatus": "FINAL",
+        "reason": null
+      },
+      "projection": {
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+        "exactRuntimeBindingMatches": 4,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "상",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "EXEMPT_TEXT_COMPLETE",
+        "solution": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION"
+      },
+      "itemStatus": null
+    },
+    {
+      "qid": 11,
+      "questionUid": "qid_v1_e7727d5d71a2ca167936c0cae49c908c3f37bbabc607d8ae2c226674384656fc",
+      "sourceQid": 11,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 11,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-COUNTING_APPLICATION",
+        "label": "경우의 수의 활용",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "L3": null,
+        "L4": null,
+        "semanticStatus": "EVIDENCE_DEBT",
+        "reason": "The exact active functions-graphs PT/TPL projection is reused for constrained function counting; the H15-PS-01 RPM Primary L3/L4 tree has no function-count leaf. Keep RPM leaf EVIDENCE_DEBT; do not invent a locked key."
+      },
+      "projection": {
+        "problemTypeKey": "PT_FUNCTION_COUNTING",
+        "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
+        "exactRuntimeBindingMatches": 0,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "EXEMPT_TEXT_COMPLETE",
+        "solution": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION"
+      },
+      "itemStatus": null
+    },
+    {
+      "qid": 12,
+      "questionUid": "qid_v1_ea3e1c7764844133ff64aee5151bf5745b088198d58307d16f7b83b00adba04f",
+      "sourceQid": 12,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 12,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-PERMUTATION",
+        "label": "순열",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "L3": "순열",
+        "L4": "중복·원순열",
+        "semanticStatus": "FINAL",
+        "reason": null
+      },
+      "projection": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_CIRCULAR_PERMUTATION",
+        "exactRuntimeBindingMatches": 0,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "level": "상",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "REQUIRED_SOURCE_ASSET",
+        "solution": "BENEFICIAL_SOLUTION_SVG"
+      },
+      "itemStatus": null
+    },
+    {
+      "qid": 13,
+      "questionUid": "qid_v1_94c85edbb729e3bf1a3e132ae49c3a1ebe5dcc3e65f07582b6610881be2b3bbc",
+      "sourceQid": 13,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 13,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-COMBINATION",
+        "label": "조합",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "L3": "중복조합",
+        "L4": "정수해 개수",
+        "semanticStatus": "FINAL",
+        "reason": null
+      },
+      "projection": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "exactRuntimeBindingMatches": 0,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "level": "중",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "EXEMPT_TEXT_COMPLETE",
+        "solution": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION"
+      },
+      "itemStatus": null
+    },
+    {
+      "qid": 14,
+      "questionUid": "qid_v1_1ac039cb31e0e7297cc1133dfa88f3b7868662c4351432776ebd832d2880720a",
+      "sourceQid": 14,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 14,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-COUNTING_APPLICATION",
+        "label": "경우의 수의 활용",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "L3": null,
+        "L4": null,
+        "semanticStatus": "EVIDENCE_DEBT",
+        "reason": "The solution uses monotone finite-function counting and matches ACTIVE PT_FUNCTION_COUNTING/TPL_MONOTONE_FUNCTION_COUNT; H15-PS-01 RPM Primary has no function-count L3/L4 leaf."
+      },
+      "projection": {
+        "problemTypeKey": "PT_FUNCTION_COUNTING",
+        "templateKey": "TPL_MONOTONE_FUNCTION_COUNT",
+        "exactRuntimeBindingMatches": 0,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "상",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "EXEMPT_TEXT_COMPLETE",
+        "solution": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION"
+      },
+      "itemStatus": null
+    },
+    {
+      "qid": 15,
+      "questionUid": "qid_v1_aa655aad3035bd59e0544ccf7d1ad4aec6d75698ac22aa84a35c92e81fb16d0e",
+      "sourceQid": 15,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 15,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-COMBINATION",
+        "label": "조합",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "L3": "중복조합",
+        "L4": "중복을 허용한 선택",
+        "semanticStatus": "FINAL",
+        "reason": null
+      },
+      "projection": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "exactRuntimeBindingMatches": 0,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [
+        "CC_NUMBER_PARITY"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "level": "상",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "EXEMPT_TEXT_COMPLETE",
+        "solution": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION"
+      },
+      "itemStatus": null
+    },
+    {
+      "qid": 16,
+      "questionUid": "qid_v1_0fc4e16d839e94cc493ce352886d985b9033db7fec306cd594409f3f781aece6",
+      "sourceQid": 16,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 16,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-PERMUTATION",
+        "label": "순열",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "L3": "순열",
+        "L4": "중복·원순열",
+        "semanticStatus": "FINAL",
+        "reason": null
+      },
+      "projection": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_CIRCULAR_PERMUTATION",
+        "exactRuntimeBindingMatches": 0,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "REINTERPRETATION",
+      "level": "중",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "REQUIRED_SOURCE_ASSET",
+        "solution": "BENEFICIAL_SOLUTION_SVG"
+      },
+      "itemStatus": null
+    },
+    {
+      "qid": 17,
+      "questionUid": "qid_v1_ce863dcb16c56384e9fc081e90feead4a1138bb63c58afedacf82e09f42f6934",
+      "sourceQid": 17,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 17,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-PERMUTATION",
+        "label": "순열",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "L3": "순열",
+        "L4": "중복·원순열",
+        "semanticStatus": "FINAL",
+        "reason": null
+      },
+      "projection": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_CIRCULAR_PERMUTATION",
+        "exactRuntimeBindingMatches": 0,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "level": "상",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "REQUIRED_SOURCE_ASSET",
+        "solution": "BENEFICIAL_SOLUTION_SVG"
+      },
+      "itemStatus": null
+    },
+    {
+      "qid": 18,
+      "questionUid": "qid_v1_8f08086f796fdea446a7275cb77940f9e5e60d040c14c61d22529236b7899a66",
+      "sourceQid": 18,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 18,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-PERMUTATION",
+        "label": "순열",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "L3": "순열",
+        "L4": "일렬 배열",
+        "semanticStatus": "FINAL",
+        "reason": null
+      },
+      "projection": {
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+        "exactRuntimeBindingMatches": 0,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "REINTERPRETATION",
+      "level": "상",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "EXEMPT_TEXT_COMPLETE",
+        "solution": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION"
+      },
+      "itemStatus": null
+    },
+    {
+      "qid": 19,
+      "questionUid": "qid_v1_d878a465f23f506ab46a81b242dea8393e4050077f845ed61d5d1db858708368",
+      "sourceQid": 19,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 19,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-PERMUTATION",
+        "label": "순열",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "L3": "순열",
+        "L4": "일렬 배열",
+        "semanticStatus": "FINAL",
+        "reason": null
+      },
+      "projection": {
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+        "exactRuntimeBindingMatches": 0,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "REINTERPRETATION",
+      "level": "상",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "EXEMPT_TEXT_COMPLETE",
+        "solution": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION"
+      },
+      "itemStatus": null
+    },
+    {
+      "qid": 20,
+      "questionUid": "qid_v1_53ba0758a814669641cda3100444b3100c97bbfdd89bd1e93906bef69ed6d0b4",
+      "sourceQid": 20,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 20,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-COUNTING_APPLICATION",
+        "label": "경우의 수의 활용",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "L3": "조합",
+        "L4": "선택",
+        "semanticStatus": "FINAL",
+        "reason": null
+      },
+      "projection": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION",
+        "exactRuntimeBindingMatches": 0,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "level": "상",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "REQUIRED_SOURCE_ASSET",
+        "solution": "BENEFICIAL_SOLUTION_SVG"
+      },
+      "itemStatus": null
+    },
+    {
+      "qid": 21,
+      "questionUid": "qid_v1_488375d3693f10845da3a03a52f891d743a15853ce0b52b157aaac2278747126",
+      "sourceQid": 21,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 21,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-PERMUTATION",
+        "label": "순열",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "L3": "순열",
+        "L4": "일렬 배열",
+        "semanticStatus": "FINAL",
+        "reason": null
+      },
+      "projection": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+        "exactRuntimeBindingMatches": 4,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "상",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "EXEMPT_TEXT_COMPLETE",
+        "solution": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION"
+      },
+      "itemStatus": null
+    },
+    {
+      "qid": 22,
+      "questionUid": "qid_v1_4e25e81fca268d29a0d15378271663cd5df1473edff935d268eec94742ea4d9c",
+      "sourceQid": 22,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 22,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-02",
+        "label": "이항정리",
+        "order": 2,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-02-BINOMIAL_BASIC",
+        "label": "이항정리",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "이항정리",
+        "L3": "이항계수",
+        "L4": "조합 항등식",
+        "semanticStatus": "FINAL",
+        "reason": "Exact source prompt supplies only integer a,b,c,n and a<b. The evaluated sum is 6815, and at least two distinct integer quadruples satisfy the equality, so no unique requested tuple exists."
+      },
+      "projection": {
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+        "exactRuntimeBindingMatches": 0,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "NONE",
+      "level": "상",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "low",
+        "boundary": "B34",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "EXEMPT_TEXT_COMPLETE",
+        "solution": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION"
+      },
+      "itemStatus": "HOLD"
+    },
+    {
+      "qid": 23,
+      "questionUid": "qid_v1_426cf4e70f56ebc0c2d6d776bedd8bd2deba2b5cd8ba27d6d4163c242e8a0310",
+      "sourceQid": 23,
+      "identityMap": {
+        "found": true,
+        "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+        "sourceOrdinal": 23,
+        "sourceMatch": true
+      },
+      "metadataProjection": {
+        "found": true,
+        "status": "registration_pending_semantic_review"
+      },
+      "course": "확률과 통계",
+      "unit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterRowFound": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-PERMUTATION",
+        "label": "순열",
+        "masterParentRowFound": true
+      },
+      "rpm": {
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "L3": "순열",
+        "L4": "중복·원순열",
+        "semanticStatus": "FINAL",
+        "reason": null
+      },
+      "projection": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_CIRCULAR_PERMUTATION",
+        "exactRuntimeBindingMatches": 0,
+        "uniqueActiveBinding": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "상",
+      "difficulty": {
+        "bucket": 5,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacy": "NORMAL"
+      },
+      "visual": {
+        "problem": "REQUIRED_SOURCE_ASSET",
+        "solution": "BENEFICIAL_SOLUTION_SVG"
+      },
+      "itemStatus": null
+    }
+  ]
+}

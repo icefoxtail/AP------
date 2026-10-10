@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "JS_ARCHIVE_QUESTION_ONLY_Q22_ORIGINAL_HOLD_HISTORY_V1",
+  "examUid": "24_순천여고_1학기_중간_고2_확률과통계",
+  "sourcePath": "archive/exams/original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+  "sourceRawSha256": "984e37c7fd5687866dc3eaf5faca82657fe0b5e84b6d57e7ed8b4688b9fca24c",
+  "question": {
+    "qid": 22,
+    "questionUid": "qid_v1_4e25e81fca268d29a0d15378271663cd5df1473edff935d268eec94742ea4d9c",
+    "sourceQuestion": "[서술형2] ${}_8\\mathrm{C}_1(2+1)+{}_8\\mathrm{C}_2(2^2+1)+{}_8\\mathrm{C}_3(2^3+1)+\\cdots+{}_8\\mathrm{C}_8(2^8+1)$ 값과 $a^n+b^n+c$ 값이 같을 때, 정수 $a, b, c, n$의 값을 구하시오. (단, $a<b$이다.) [7.0점]",
+    "sourceContent": "[서술형2] ${}_8\\mathrm{C}_1(2+1)+{}_8\\mathrm{C}_2(2^2+1)+{}_8\\mathrm{C}_3(2^3+1)+\\cdots+{}_8\\mathrm{C}_8(2^8+1)$ 값과 $a^n+b^n+c$ 값이 같을 때, 정수 $a, b, c, n$의 값을 구하시오. (단, $a<b$이다.) [7.0점]",
+    "choices": [],
+    "answer": "유일한 값이 정해지지 않음",
+    "solution": "문항의 조건만으로는 $a,b,c,n$이 유일하게 정해지지 않습니다. 왼쪽 합은\n$\\displaystyle \\sum_{k=1}^{8}\\binom8k(2^k+1)=(3^8-1)+(2^8-1)=6815$\n입니다. 예를 들어 $(a,b,c,n)=(2,3,-2,8)$도 등식을 만족하고, $(0,1,6814,1)$도 $a<b$와 정수 조건을 만족하며 $0^1+1^1+6814=6815$입니다. 두 값이 모두 가능하므로 유일한 정답을 정할 수 없습니다. 이 문항은 answer-cardinality 결함으로 HOLD합니다.",
+    "itemStatus": "HOLD",
+    "meta": {
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "level": "상",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "low"
+    },
+    "sourceParityClaimedForReplacement": false
+  }
+}

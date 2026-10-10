@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_GOLDEN_SAMPLE_PROVENANCE_REBIND_V1",
+  "stage": "R1",
+  "examUid": "24_순천여고_1학기_중간_고2_확률과통계",
+  "qidScope": "QID_ONLY:22",
+  "candidateRawSha256": "789e165fe1fb99aed5aa55634df1a557a7d9ac5348f3293a3b34ecd2407e6e93",
+  "correctionScope": "Current-main provenance rebind only; no target math review, candidate source, answer, or freeze changed.",
+  "currentGoldenSample": {
+    "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "previousSampleSha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+    "currentSampleSha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+    "openedQids": [
+      1,
+      2
+    ],
+    "solutions": {
+      "q1Sha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+      "q2Sha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2"
+    },
+    "q2SolutionSvgPath": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+    "previousSvgSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+    "currentSvgSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+    "observation": "Current Hyocheon q1/q2 solutions were reopened, and the current q02 solution SVG was rasterized and visually inspected. q1 shows the distance formula, coordinate substitution, and radical simplification. q2 applies perpendicular slope conditions to solve k; the two displayed lines and equations agree. Korean glyphs in the static raster use fallback boxes, but the plotted line geometry is legible. Calibration-only Golden review."
+  },
+  "priorFailedReports": [
+    {
+      "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/R1.generic.latest-main.json",
+      "sha256": "3589c4fa71a2290b084fda395f26b1b6defe478ff956024495599ab4b9b78389",
+      "disposition": "FAIL",
+      "issues": [
+        "ARTIFACT_GOLDEN_PROVENANCE_INVALID:NEGATIVE_SAMPLE_BINDING_REQUIRED"
+      ]
+    },
+    {
+      "path": "archive/analysis/r1_suncheon_yeo_prob/R1.q22.question-only.main-rebind.validator.stdout.json",
+      "sha256": "352d8de422f547368fc0a94360a0a788e80608254e5ad3aa4b82d83340de142f",
+      "disposition": "FAIL",
+      "issues": [
+        "ARTIFACT_GOLDEN_PROVENANCE_INVALID:FILE_SHA_MISMATCH"
+      ]
+    }
+  ],
+  "priorCorrection": {
+    "path": "archive/analysis/r1_suncheon_yeo_prob/R1.negative-sample-current-main-correction.json",
+    "sha256": "171aca08f9167c468f065e81daa39460666cb24f0f1b8cdd71e78b371009a950"
+  },
+  "newEvidence": {
+    "path": "archive/analysis/r1_suncheon_yeo_prob/R1.q22.question-only.combined-v2-evidence.main-rebind2.json",
+    "sha256": "20ff561e0389c78f42209cc6998a18a1c9a23e1892ccad64a44bfafec9eb70e3"
+  },
+  "sourceAndCandidateUnchanged": true,
+  "independentFreezeUnchanged": true,
+  "fullWhitelistedPayloadExact": false,
+  "actualTargetRenderPassClaimed": false
+}

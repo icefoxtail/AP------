@@ -1,0 +1,1 @@
+import fs from 'node:fs';const x=fs.readFileSync('archive/exams/original/high/h2/1mid/24_순천여고_1학기_중간_고2_수학I.js','utf8');const a=x.indexOf('window.questionBank'),o=x.indexOf('[',a);console.log(JSON.stringify({length:x.length,around:x.slice(o+45600,o+45680)}));
