@@ -1,0 +1,38 @@
+name: H1 GPT2 B14 R1 official validation only
+on:
+  push:
+    branches: ["validation/h1-gpt2-b14-r1-canonical-20261010"]
+permissions:
+  contents: read
+jobs:
+  validate-b14-r1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Execute official R1 V2 CLI and active artifact gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .validation-output
+          test "$(git hash-object archive/tools/archive-stage-validator.mjs)" = "e5d19bf201e16b5fd481c2bb0db4e6137cc9ccb9"
+          test "$(git hash-object archive/data/gpt-quality-calibration-registry-v2.json)" = "6da229ad4a57d93a791947bb63f668a1a81b16cc"
+          test "$(git hash-object 'archive/validation/gpt2/B14/19_금당고_1학기_중간_고1_기출.js')" = "0698f0139762e1a55208d19b618be2cdef899a74"
+          node archive/tools/gpt2-validate-and-seal.mjs \
+            --stage R1 \
+            --exam "$PWD/archive/validation/gpt2/B14/19_금당고_1학기_중간_고1_기출.js" \
+            --evidence "$PWD/archive/validation/gpt2/B14/R1_EVIDENCE.json" \
+            --asset-root "$PWD/archive" \
+            --output-root "$PWD/.validation-output" \
+            --campaign-id H1_GPT2_20261006 --stream B --exam-uid "19_금당고_1학기_중간_고1_기출" \
+            | tee .validation-output/B14_CLI_OUTPUT.json
+      - name: Preserve actual validator output (including FAIL)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: B14-R1-official-validator-run
+          path: .validation-output/
+          if-no-files-found: warn
