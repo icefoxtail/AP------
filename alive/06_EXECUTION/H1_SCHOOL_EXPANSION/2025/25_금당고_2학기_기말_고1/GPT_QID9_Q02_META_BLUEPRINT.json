@@ -1,0 +1,258 @@
+{
+  "schemaVersion": "ALIVE_QID9_BLUEPRINT_GEUMDANG25_Q02_V1",
+  "originalSourceExam": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+  "originalSourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "originalQid": 2,
+  "originalStem": "집합 A={2,4,6,8}의 부분집합이 아닌 것은?",
+  "primaryL3": {
+    "id": "H1-RPM-233",
+    "name": "부분집합",
+    "rpmL4": "부분집합 판정",
+    "invariant": "후보 집합의 모든 원소가 A에 포함되는가"
+  },
+  "existingLegacySimilar": "archive/exams/similar/high/h1/2final/25_금당고_2학기_기말_고1_유사.js (읽기전용)",
+  "slots": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-A1",
+      "blueprint": "직접 원소 포함 판정",
+      "primaryL3": "H1-RPM-233",
+      "l4": "부분집합 판정",
+      "l4Namespace": "RPM_EXISTING_DRAFT",
+      "studentStem": "집합 $A=\\{1,3,5,7\\}$의 부분집합이 아닌 것은?",
+      "choices": [
+        "$\\varnothing$",
+        "$\\{1,5\\}$",
+        "$\\{3,5,7\\}$",
+        "$\\{1,3,6\\}$",
+        "$\\{1,3,5,7\\}$"
+      ],
+      "answer": "④",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "SUBSET_A1",
+      "difficultyBucket": 1,
+      "level": "하"
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-A2",
+      "blueprint": "조건제시된 A의 부분집합 판정",
+      "primaryL3": "H1-RPM-233",
+      "l4": "부분집합 판정",
+      "l4Namespace": "RPM_EXISTING_DRAFT",
+      "studentStem": "집합 $A=\\{x\\mid x$는 $12$ 이하의 자연수 중 $3$의 배수$\\}$에 대하여 다음 중 $A$의 부분집합인 것은?",
+      "choices": [
+        "$\\{0,3\\}$",
+        "$\\{3,6,12\\}$",
+        "$\\{6,8\\}$",
+        "$\\{2,9\\}$",
+        "$\\{3,15\\}$"
+      ],
+      "answer": "②",
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "crossConceptKeys": [
+        "GEN_CC_MULTIPLES"
+      ],
+      "integrationPattern": "SUBSET_A2",
+      "difficultyBucket": 2,
+      "level": "하"
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-A3",
+      "blueprint": "공집합·진부분집합의 구별",
+      "primaryL3": "H1-RPM-233",
+      "l4": "EXT-GD25-C2-05-Q02-PROPER-SUBSET",
+      "l4Namespace": "GENERATED_EXT_L4",
+      "studentStem": "집합 $A=\\{1,2,3\\}$에 대하여 다음 중 옳은 것은? (단, $B\\subsetneq C$는 $B$가 $C$의 진부분집합임을 뜻한다.)",
+      "choices": [
+        "$\\varnothing\\not\\subseteq A$",
+        "$A\\subsetneq A$",
+        "$\\{1,3\\}\\subseteq A$",
+        "$\\{1,4\\}\\subseteq A$",
+        "$A\\subseteq\\{1,2\\}$"
+      ],
+      "answer": "③",
+      "conditionKeys": [
+        "GEN_COND_PROPER_INCLUSION"
+      ],
+      "crossConceptKeys": [
+        "GEN_CC_EMPTY_SET"
+      ],
+      "integrationPattern": "SUBSET_A3",
+      "difficultyBucket": 2,
+      "level": "중"
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-B1",
+      "blueprint": "두 원소를 동시에 포함시키는 매개변수",
+      "primaryL3": "H1-RPM-233",
+      "l4": "EXT-GD25-C2-05-Q02-PARAMETER-SUBSET",
+      "l4Namespace": "GENERATED_EXT_L4",
+      "studentStem": "집합 $A=\\{1,2,3,4,5\\}$와 자연수 $k$에 대하여 $B_k=\\{k-1,k+1\\}$이라 하자. $B_k\\subseteq A$를 만족시키는 모든 $k$의 값의 합은?",
+      "choices": [
+        "$5$",
+        "$6$",
+        "$7$",
+        "$9$",
+        "$14$"
+      ],
+      "answer": "④",
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "crossConceptKeys": [
+        "GEN_CC_LINEAR_INEQUALITIES"
+      ],
+      "integrationPattern": "SUBSET_B1",
+      "difficultyBucket": 3,
+      "level": "중"
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-B2",
+      "blueprint": "교집합 개수 조건과 포함관계",
+      "primaryL3": "H1-RPM-233",
+      "l4": "EXT-GD25-C2-05-Q02-INTERSECTION-CONSTRAINED-SUBSET",
+      "l4Namespace": "GENERATED_EXT_L4",
+      "studentStem": "집합 $A=\\{1,2,3,4,5,6\\}$, $B=\\{2,4,6\\}$과 자연수 $k$에 대하여 $C_k=\\{k-1,k,k+1\\}$이라 하자. $C_k\\subseteq A$이고 $C_k\\cap B$의 원소가 정확히 하나가 되도록 하는 모든 $k$의 값의 합은?",
+      "choices": [
+        "$2$",
+        "$4$",
+        "$6$",
+        "$9$",
+        "$14$"
+      ],
+      "answer": "③",
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "GEN_COND_INTERSECTION_COUNT_ONE"
+      ],
+      "crossConceptKeys": [
+        "CC_SET_CARDINALITY",
+        "GEN_CC_EVEN_NUMBER"
+      ],
+      "integrationPattern": "SUBSET_B2",
+      "difficultyBucket": 3,
+      "level": "중"
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-B3",
+      "blueprint": "차집합·교집합 계산 후 포함 판정",
+      "primaryL3": "H1-RPM-233",
+      "l4": "EXT-GD25-C2-05-Q02-SET-OPERATION-INCLUSION",
+      "l4Namespace": "GENERATED_EXT_L4",
+      "studentStem": "집합 $A=\\{1,2,3,4,5,6\\}$, $B=\\{2,4,6\\}$, $C=\\{1,2,3\\}$에 대하여 다음 중 옳은 것은?",
+      "choices": [
+        "$A\\setminus B\\subseteq C$",
+        "$B\\cap C\\subseteq A\\setminus B$",
+        "$B\\setminus C\\subseteq A\\setminus C$",
+        "$C\\subseteq A\\setminus B$",
+        "$A\\setminus C\\subseteq B$"
+      ],
+      "answer": "③",
+      "conditionKeys": [
+        "GEN_COND_SET_DIFFERENCE"
+      ],
+      "crossConceptKeys": [
+        "GEN_CC_SET_DIFFERENCE",
+        "CC_PROPOSITION"
+      ],
+      "integrationPattern": "SUBSET_B3",
+      "difficultyBucket": 3,
+      "level": "중"
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-C1",
+      "blueprint": "집합 포함과 비포함 조건의 결합",
+      "primaryL3": "H1-RPM-233",
+      "l4": "EXT-GD25-C2-05-Q02-DOUBLE-INCLUSION-PARAMETER",
+      "l4Namespace": "GENERATED_EXT_L4",
+      "studentStem": "집합 $A=\\{1,2,3,4,5,6\\}$, $C=\\{2,3,4,5\\}$와 자연수 $k$에 대하여 $B_k=\\{k-2,k,k+1\\}$이라 하자. $B_k\\subseteq A$이면서 $B_k\\not\\subseteq C$를 만족시키는 모든 $k$의 값의 합은?",
+      "choices": [
+        "$3$",
+        "$5$",
+        "$7$",
+        "$8$",
+        "$12$"
+      ],
+      "answer": "④",
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "GEN_COND_SUBSET_AND_NOT_SUBSET"
+      ],
+      "crossConceptKeys": [
+        "GEN_CC_SET_ELEMENT_OUTSIDE"
+      ],
+      "integrationPattern": "SUBSET_C1",
+      "difficultyBucket": 4,
+      "level": "상"
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-C2",
+      "blueprint": "이동 구간 포함과 제외",
+      "primaryL3": "H1-RPM-233",
+      "l4": "EXT-GD25-C2-05-Q02-SHIFTED-INTERVAL-INCLUSION",
+      "l4Namespace": "GENERATED_EXT_L4",
+      "studentStem": "집합 $A=\\{x\\in\\mathbb Z\\mid -2\\le x\\le8\\}$, $C=\\{2,3,4,5,6\\}$과 음이 아닌 정수 $k$에 대하여 $B_k=\\{x\\in\\mathbb Z\\mid |x-k|\\le2\\}$라 하자. $B_k\\subseteq A$이고 $B_k\\not\\subseteq C$를 만족시키는 모든 $k$의 값의 합은?",
+      "choices": [
+        "$11$",
+        "$15$",
+        "$17$",
+        "$20$",
+        "$21$"
+      ],
+      "answer": "③",
+      "conditionKeys": [
+        "COND_INTEGER",
+        "COND_RANGE",
+        "GEN_COND_SUBSET_AND_NOT_SUBSET"
+      ],
+      "crossConceptKeys": [
+        "GEN_CC_ABSOLUTE_INEQUALITY",
+        "GEN_CC_INTEGER_INTERVAL"
+      ],
+      "integrationPattern": "SUBSET_C2",
+      "difficultyBucket": 4,
+      "level": "상"
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q02-C3",
+      "blueprint": "약수·배수 집합의 진부분집합 연쇄",
+      "primaryL3": "H1-RPM-233",
+      "l4": "EXT-GD25-C2-05-Q02-DIVISIBILITY-PROPER-INCLUSION",
+      "l4Namespace": "GENERATED_EXT_L4",
+      "studentStem": "전체집합 $U=\\{1,2,\\ldots,18\\}$에서 $A$는 $2$의 배수의 집합, $B$는 $3$의 배수의 집합이라 하자. 자연수 $k$에 대하여 $C_k=\\{x\\in U\\mid x$는 $k$의 배수$\\}$라 할 때, $A\\cap B\\subsetneq C_k\\subsetneq A\\cup B$를 만족시키는 모든 $k$의 값의 합은?",
+      "choices": [
+        "$2$",
+        "$3$",
+        "$5$",
+        "$6$",
+        "$12$"
+      ],
+      "answer": "③",
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "GEN_COND_PROPER_INCLUSION"
+      ],
+      "crossConceptKeys": [
+        "GEN_CC_MULTIPLES",
+        "GEN_CC_DIVISIBILITY",
+        "GEN_CC_SET_INTERSECTION_UNION"
+      ],
+      "integrationPattern": "SUBSET_C3",
+      "difficultyBucket": 4,
+      "level": "상"
+    }
+  ]
+}

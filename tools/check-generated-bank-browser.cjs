@@ -78,6 +78,16 @@ async function main(){
 
     const table=await ev("(async()=>{const row=rows.find(x=>x.uid==='ALITE-BSG26-B04R2-Q23-S01');const q=await questionFor(row);const root=document.createElement('section');questionMarkup(root,q,row,true);return {table:root.querySelectorAll('table.question-table').length,rows:root.querySelectorAll('tr').length,noRaw:!root.textContent.includes('<table'),answer:root.textContent.includes('정답:')};})()");
     if(table.table!==1||table.rows!==3||!table.noRaw||!table.answer)throw Error('HTML table/subjective regression '+JSON.stringify(table));
+    const geumdang=await ev("(async()=>{const r=rows.filter(x=>x.uid.startsWith('ALITE-GEUMDANG25-2FINAL-Q02-'));const q=await Promise.all(r.map(questionFor));return {count:r.length,unique:new Set(r.map(x=>x.uid)).size,loaded:q.length,valid:q.every(x=>x.content&&x.choices.length===5&&x.answer&&x.solution),svgRefs:q.filter(x=>x.solutionImage).length};})()");
+    if(geumdang.count!==9||geumdang.unique!==9||geumdang.loaded!==9||!geumdang.valid||geumdang.svgRefs!==2)throw Error('Geumdang q02 actual Chrome student question lookup failed '+JSON.stringify(geumdang));
+    await ev("(()=>{const x=document.getElementById('generated-search');x.value='ALITE-GEUMDANG25-2FINAL-Q02-A1';x.dispatchEvent(new Event('input',{bubbles:true}));return true})()");
+    await wait("document.querySelectorAll('#generated-results .generated-question-card').length===1",'Geumdang q02 generated search');
+    await ev("(()=>{const card=document.querySelector('#generated-results .generated-question-card');const button=[...card.querySelectorAll('button')].find(x=>x.textContent.includes('시험지에 선택'));if(!button)throw Error('Geumdang q02 choose button missing');button.click();document.getElementById('generated-print').click();return true})()");
+    await wait("window.__paperPrintCount===3",'Geumdang q02 actual Chrome print call');
+    const geumdangPaper=await ev("(()=>({count:document.querySelectorAll('#paper-items .paper-question').length,title:document.getElementById('paper-title').textContent,body:document.getElementById('paper-items').textContent}))()");
+    if(geumdangPaper.count!==1||!geumdangPaper.title.includes('생성문제')||!geumdangPaper.body.includes('부분집합이 아닌 것은'))throw Error('Geumdang q02 Chrome search-select-print failed '+JSON.stringify(geumdangPaper));
+    const gdSvg=await ev("(async()=>{return await Promise.all(['C2','C3'].map(async slot=>{const url='assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q02-'+slot+'-solution.svg';const response=await fetch(url);const t=await response.text();return {slot,ok:response.ok,hasSvg:t.includes('<svg')&&t.includes('viewBox')};}));})()");
+    if(gdSvg.some(x=>!x.ok||!x.hasSvg))throw Error('Geumdang q02 SVG browser request failed '+JSON.stringify(gdSvg));
     console.log('GENERATED_BANK_REAL_CHROME_SMOKE_PASS '+JSON.stringify({screen:'exam-select-and-print-only',bokseongPrinted:23,hyocheonPrinted:26,registered:source.total,bokseongAvailable:191,hyocheonAvailable:92,palmaAvailable:source.palma,palmaNewLookupVerified:palmaQid9.count,holdExcluded:true,tableSubjective:true}));
   }finally{
     if(ws)ws.close();
