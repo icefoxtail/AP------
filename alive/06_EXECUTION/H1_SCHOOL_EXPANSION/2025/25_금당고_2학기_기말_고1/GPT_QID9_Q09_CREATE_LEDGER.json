@@ -406,7 +406,7 @@
     {
       "slot": "C3",
       "uid": "ALITE-GEUMDANG25-2FINAL-Q09-C3",
-      "finalStem": "유리함수 $y=\\dfrac{k}{x-p}+q$ ($k\\ne0$)의 점근선이 $x=1$, $y=-1$이고 그래프가 점 $(3,1)$을 지난다. 이 그래프와 직선 $y=x-2$의 두 교점의 $x$좌표의 합은?",
+      "finalStem": "유리함수 $y=\\dfrac{k}{x-p}+q$ ($k\\ne0$)의 점근선이 $x=1$, $y=-1$이고 그래프가 점 $(3,1)$을 지난다. 이 그래프와 직선 $y=x-2$의 두 교점의 $x$좌표의 곱은?",
       "reverseStemFinding": "실제 질문: 직선과 두 교점; 학생은 점근선/통과점으로 k,p,q의 필수값을 결정해야 함; 정의역 x≠1 확인",
       "primaryL3Necessity": "유리함수의 점근선 및 점 대입으로 함수식 복원 필수",
       "problemVisualVerdict": "EXEMPT: 좌표·조건을 모두 문장으로 제공하며 문제 그림은 답 누설 위험",
@@ -425,14 +425,19 @@
             -1,
             -3
           ]
-        ]
+        ],
+        "intersectionXCoordinates": [
+          -1,
+          3
+        ],
+        "intersectionXProduct": -3
       },
       "distractorIndexCoverage": "4/4",
       "distractorReproduction": "4/4",
       "distractorPaths": [
         {
           "choice": "①",
-          "calculationAndError": "두 교점의 합 대신 곱 $(-1)cdot3=-3$을 계산"
+          "calculationAndError": "두 교점의 곱 대신 합 $-1+3=2$를 계산"
         },
         {
           "choice": "②",
@@ -440,16 +445,25 @@
         },
         {
           "choice": "③",
-          "calculationAndError": "$(x-1)^2=4$에서 이동량 1을 무시하여 $x=pm2$, 합 0으로 처리"
+          "calculationAndError": "교점식 전개에서 상수항 −3을 빠뜨려 x(x−2)=0으로 잘못 만들고 근의 곱 0을 고름"
         },
         {
           "choice": "⑤",
-          "calculationAndError": "큰 교점의 $x$좌표 3만 선택"
+          "calculationAndError": "큰 교점의 $x$좌표 $3$만 선택"
         }
       ],
       "decision": "KEEP",
       "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
-      "remainingRisk": "독립 GPT 공개답 검수 및 실제 학생 Chrome/Consumer 미수행"
+      "remainingRisk": "독립 GPT 공개답 검수 및 실제 학생 Chrome/Consumer 미수행",
+      "answerValue": -3,
+      "answer": "④",
+      "choices": [
+        "$2$",
+        "$-1$",
+        "$0$",
+        "$-3$",
+        "$3$"
+      ]
     }
   ]
 }

@@ -141,28 +141,29 @@
     {
       "slot": "B3",
       "uid": "ALITE-GEUMDANG25-2FINAL-Q14-B3",
-      "finalStem": "집합 $X=\\{0,1,2,3,4,5\\}$에 대하여 함수 $f:X\\to X$의 함숫값은 $x^2+1$을 $6$으로 나누었을 때의 나머지이다. $f^{17}(0)+f^{18}(0)$의 값은? (단, $f^1=f$, $f^{n+1}=f\\circ f^n$이며 $n$은 자연수)",
+      "finalStem": "집합 $X=\\{0,1,2,3,4,5\\}$에 대하여 함수 $f:X\\to X$의 함숫값은 $x^2+1$을 $6$으로 나누었을 때의 나머지이다. $f^{18}(0)$의 값은? (단, $f^1=f$, $f^{n+1}=f\\circ f^n$이며 $n$은 자연수)",
       "lockedPrimaryL3": "H1-RPM-253",
       "l4": "EXT-GD25-Q14-TAIL-THEN-CYCLE",
       "answer": "②",
       "choices": [
         "$5$",
-        "$7$",
+        "$2$",
         "$6$",
         "$8$",
         "$10$"
       ],
-      "difficultyBucket": 4,
+      "difficultyBucket": 3,
       "crossConceptKeys": [
         "CC_NUMBER_PARITY"
       ],
       "conditionKeys": [],
       "problemTypeKey": "PT_COMPOSITION_EVALUATION",
       "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
-      "addedDecisiveStep": "tail 0→1→2 then alternating 5,2; n parity calculation",
+      "addedDecisiveStep": "초기 꼬리 0→1→2 뒤의 5,2 순환에서 18이 짝수 차수임을 판정",
       "problemVisualDecision": "EXEMPT_EXPRESSION_DEFINES_FUNCTION",
       "solutionVisualDecision": "ADD_ITERATION_PATH_SVG",
-      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q14-B3-solution.svg"
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q14-B3-solution.svg",
+      "level": "중"
     },
     {
       "slot": "C1",
@@ -196,28 +197,29 @@
     {
       "slot": "C2",
       "uid": "ALITE-GEUMDANG25-2FINAL-Q14-C2",
-      "finalStem": "집합 $X=\\{0,1,2,3,4,5,6\\}$에 대하여 함수 $f:X\\to X$의 함숫값은 $x^2$을 $7$로 나누었을 때의 나머지이다. $f^{2026}(3)+f^{2027}(3)$의 값은? (단, $f^1=f$, $f^{n+1}=f\\circ f^n$이며 $n$은 자연수)",
+      "finalStem": "집합 $X=\\{0,1,2,3,4,5,6\\}$에 대하여 함수 $f:X\\to X$의 함숫값은 $x^2$을 $7$로 나누었을 때의 나머지이다. $f^{2026}(3)$의 값은? (단, $f^1=f$, $f^{n+1}=f\\circ f^n$이며 $n$은 자연수)",
       "lockedPrimaryL3": "H1-RPM-253",
       "l4": "EXT-GD25-Q14-LONG-TWO-CYCLE",
       "answer": "①",
       "choices": [
-        "$6$",
         "$4$",
+        "$6$",
         "$2$",
         "$8$",
-        "$0$"
+        "$3$"
       ],
-      "difficultyBucket": 4,
+      "difficultyBucket": 3,
       "crossConceptKeys": [
         "CC_NUMBER_PARITY"
       ],
       "conditionKeys": [],
       "problemTypeKey": "PT_COMPOSITION_EVALUATION",
       "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
-      "addedDecisiveStep": "3→2→4→2; even/odd index parity",
+      "addedDecisiveStep": "3→2 진입 뒤 2,4의 주기에서 2026이 짝수 차수임을 판정",
       "problemVisualDecision": "EXEMPT_EXPRESSION_DEFINES_FUNCTION",
       "solutionVisualDecision": "ADD_ITERATION_PATH_SVG",
-      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q14-C2-solution.svg"
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q14-C2-solution.svg",
+      "level": "중"
     },
     {
       "slot": "C3",

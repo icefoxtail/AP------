@@ -240,25 +240,25 @@
       "uid": "ALITE-GEUMDANG25-2FINAL-Q14-B3",
       "slot": "B3",
       "answer": "②",
-      "correctValue": 7,
+      "correctValue": 2,
       "reverseStemCheck": "최종 발문에서 함수 정의, 초기 원소, 합성 차수, 요구값만으로 답을 다시 도출",
       "l3Required": "합성함수 반복 대입·순환이 결론 도출에 필수",
       "distractorPaths": [
         {
           "choice": "①",
-          "errorRoute": "f¹⁷(0)=5만 계산"
+          "errorRoute": "직전 항 $f^{17}(0)=5$를 묻는 값으로 혼동"
         },
         {
           "choice": "③",
-          "errorRoute": "1+5=6: f¹을 불필요하게 사용"
+          "errorRoute": "$f^1(0)=1$과 $f^{17}(0)=5$를 더해 6"
         },
         {
           "choice": "④",
-          "errorRoute": "1+5+2=8: f¹ 추가"
+          "errorRoute": "$f^{17}(0)+f^{18}(0)=7$에 초항 1을 더해 8"
         },
         {
           "choice": "⑤",
-          "errorRoute": "5+5=10: 주기에서 홀짝 무시"
+          "errorRoute": "순환에서 홀짝을 무시하고 5가 반복된다고 판단"
         }
       ],
       "problemVisual": "EXEMPT_TEXT_ONLY",
@@ -277,7 +277,16 @@
       "selfMathCheck": "PYTHON_REPEATED_EVALUATION_AND_ANSWER_SUBSTITUTION",
       "actualRender": "NOT_TESTED",
       "independentReview": "NOT_PERFORMED",
-      "decision": "KEEP"
+      "decision": "KEEP",
+      "difficultyBucket": 3,
+      "level": "중",
+      "choices": [
+        "$5$",
+        "$2$",
+        "$6$",
+        "$8$",
+        "$10$"
+      ]
     },
     {
       "uid": "ALITE-GEUMDANG25-2FINAL-Q14-C1",
@@ -326,25 +335,25 @@
       "uid": "ALITE-GEUMDANG25-2FINAL-Q14-C2",
       "slot": "C2",
       "answer": "①",
-      "correctValue": 6,
+      "correctValue": 4,
       "reverseStemCheck": "최종 발문에서 함수 정의, 초기 원소, 합성 차수, 요구값만으로 답을 다시 도출",
       "l3Required": "합성함수 반복 대입·순환이 결론 도출에 필수",
       "distractorPaths": [
         {
           "choice": "②",
-          "errorRoute": "f²⁰²⁶(3)=4만 계산"
+          "errorRoute": "두 순환값 2와 4를 합산해 6"
         },
         {
           "choice": "③",
-          "errorRoute": "f²⁰²⁷(3)=2만 계산"
+          "errorRoute": "짝수 차수에서 홀수 차수의 값 2를 선택"
         },
         {
           "choice": "④",
-          "errorRoute": "4+4=8: 홀짝 무시"
+          "errorRoute": "함수값 4를 두 번 더해 8"
         },
         {
           "choice": "⑤",
-          "errorRoute": "0+0=0: 합성과 나머지 혼동"
+          "errorRoute": "함수 반복을 하지 않고 초기값 3을 그대로 선택"
         }
       ],
       "problemVisual": "EXEMPT_TEXT_ONLY",
@@ -363,7 +372,16 @@
       "selfMathCheck": "PYTHON_REPEATED_EVALUATION_AND_ANSWER_SUBSTITUTION",
       "actualRender": "NOT_TESTED",
       "independentReview": "NOT_PERFORMED",
-      "decision": "KEEP"
+      "decision": "KEEP",
+      "difficultyBucket": 3,
+      "level": "중",
+      "choices": [
+        "$4$",
+        "$6$",
+        "$2$",
+        "$8$",
+        "$3$"
+      ]
     },
     {
       "uid": "ALITE-GEUMDANG25-2FINAL-Q14-C3",
@@ -379,7 +397,7 @@
         },
         {
           "choice": "②",
-          "errorRoute": "범위 밖 n=0을 포함해 9개"
+          "errorRoute": "n=0을 후보 주기 위치로 착각해 f^0(0)=0인데도 조건을 만족한다고 세어 정답 수 8개에 1개를 더해 9개"
         },
         {
           "choice": "④",

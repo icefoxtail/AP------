@@ -1,0 +1,344 @@
+{
+  "schemaVersion": "GEUMDANG_QID9_BOUNDED_TARGETED_REPAIR_20261010_V1",
+  "exam": "25_금당고_2학기_기말_고1",
+  "branch": "work/alive-25-geumdang-h1-2final-qid9",
+  "baseHeadBeforeRepair": "2509d2e2f4ae604a92c8172f8075d8312a880275",
+  "reviewBasis": "e752fcd8e631bbaebccf63fb2d337162a6ecd894",
+  "scope": "Only the user-listed Q09-Q17 findings and their direct source, metadata, ledger, registry, and SVG dependencies.",
+  "findingsApplied": [
+    {
+      "qid": 9,
+      "slots": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "change": "Moved x=p asymptote labels above the graph plotting area in the eight affected solution SVGs; A3 excluded as specified."
+    },
+    {
+      "qid": 10,
+      "slots": [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "B3",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "change": "Removed the unnecessary x=715.44 tick and text 12 from each viewBox 720 solution SVG."
+    },
+    {
+      "qid": 13,
+      "slots": [
+        "C2"
+      ],
+      "change": "Moved the 6 m label into clear interior whitespace away from the fence boundary."
+    },
+    {
+      "qid": 16,
+      "slots": [
+        "B1",
+        "B2",
+        "B3",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "change": "Wrapped the final quadrant annotation into two local tspan lines within the 680px viewBox."
+    },
+    {
+      "qid": 17,
+      "slots": [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "B3",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "change": "Moved each first data-row background below the header text; table values and math were preserved."
+    },
+    {
+      "qid": 14,
+      "slots": [
+        "C3"
+      ],
+      "change": "Replaced the false n=0-counting rationale with the reproducible mistake of wrongly adding n=0 although f^0(0)=0 does not meet the predicate."
+    },
+    {
+      "qid": 9,
+      "slots": [
+        "C3"
+      ],
+      "change": "Changed the asked intersection-root sum to product; answer stays ④ after reordering only this UID’s choices. Roots are −1 and 3, product −3."
+    },
+    {
+      "qid": 13,
+      "slots": [
+        "B1"
+      ],
+      "change": "Replaced the duplicate weighted product maximum with maximizing x(y+4); the fixed-sum complement rewrite and AM-GM equality feasibility are necessary. Updated answer, choices, solution, metadata, ledger, and its generated L4 definition."
+    },
+    {
+      "qid": 14,
+      "slots": [
+        "B3",
+        "C2"
+      ],
+      "change": "Changed each sum of consecutive iterates to a single iterate so parity determines the requested value; synchronized choices, answers, explanations, difficulty bucket 3/level medium, metadata, ledgers, and the two solution SVG conclusions."
+    }
+  ],
+  "protected": "No source content outside Q09-Q17 finding UIDs was edited. Q01-Q08 and Q18-Q22 content/assets, other schools, and the original exam are protected. Existing independent review artifacts were preserved.",
+  "executionBoundary": "No CREATE/R1/R2/R3 re-entry, no whole-exam or unchanged-item review, no unrelated CI repair, and no main merge.",
+  "verification": {
+    "sourceMathChoicesSolutionAndMetadata": "PASS: targeted source shards, answers, option positions, solution statements, and matching ledger/blueprint fields checked for Q09-C3, Q13-B1, Q14-B3/C2; iterates and Q14-C3 count independently recomputed.",
+    "svgStructureAndCoordinates": "PASS: XML parse and exact coordinate assertions on all 35 changed solution SVGs.",
+    "actualSvgRender": "PASS: Chromium headless via Playwright loaded and rendered 35 changed SVGs into /tmp/geumdang-svg-contact.png; contact sheet visually inspected.",
+    "gitDiffCheck": "PASS: git diff --check.",
+    "notRun": [
+      "CREATE/R1/R2/R3 re-entry",
+      "full exam/unchanged-UID review",
+      "unrelated CI",
+      "student consumer/browser release QA"
+    ]
+  },
+  "changedDependencyEvidence": [
+    {
+      "path": "archive/generated/lite/v1/2022/H1/H22-C2-08-FUNCTION_BASIC/shards/geumdang-2025-2final-qid9-q09.js",
+      "gitBlobSha1": "7872f0250996a5cac33ac5ea4ec2d82a61633377",
+      "sha256": "e89b2c0c338a77d3b9ab35d174ca7696405f6f831837ecc6f206aefea6149679"
+    },
+    {
+      "path": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/shards/geumdang-2025-2final-qid9-q13.js",
+      "gitBlobSha1": "b1f0803f88464ab785afa2a9c9182791547b47f0",
+      "sha256": "8fa96fd5da3fecc4ae320d377da449c651d3eea0a2def9d78932215154be3f05"
+    },
+    {
+      "path": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_COMPOSITION/shards/geumdang-2025-2final-qid9-q14.js",
+      "gitBlobSha1": "35fb615d76470df8f101d0983bc6f8171435efc3",
+      "sha256": "e52c521546a5a48261f36e2718eaa5252b4de85ce3c0515ba1a25b8e4902a315"
+    },
+    {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_금당고_2학기_기말_고1/GPT_QID9_Q09_CREATE_LEDGER.json",
+      "gitBlobSha1": "b26f76442519d911eeb2813c6eb00363c167ef7b",
+      "sha256": "08b24d2a0c180ff86c03def33f847572aac2e83c060e5cdcef7663638dbfbe5b"
+    },
+    {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_금당고_2학기_기말_고1/GPT_QID9_Q09_META_BLUEPRINT.json",
+      "gitBlobSha1": "ee0fd660daa48925998d2c3a8da196754e77d936",
+      "sha256": "5b57172115880459b794b41846d8638f0edfe548b2cbf87c2ba467882f6fd2f2"
+    },
+    {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_금당고_2학기_기말_고1/GPT_QID9_Q13_CREATE_LEDGER.json",
+      "gitBlobSha1": "90d8b6dc3cc51f5a0a84c7fa3062729b7edae25c",
+      "sha256": "774374e329e1950db9c68f92a727b19b0a0503951d404b4d7d2bebe5ea8107d3"
+    },
+    {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_금당고_2학기_기말_고1/GPT_QID9_Q13_META_BLUEPRINT.json",
+      "gitBlobSha1": "867582b85b9aaed6db79e5ca00f84c21966fae6e",
+      "sha256": "17f762e15317eb7b86c6749c42764597394db76414cc878113bc0185d18b05bc"
+    },
+    {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_금당고_2학기_기말_고1/GPT_QID9_Q14_CREATE_LEDGER.json",
+      "gitBlobSha1": "96a0c8f373f3e161effb1fbc274250d11e8dbf48",
+      "sha256": "966f9579ef405ea70e9c5792ff27657dbe03673db549ec6d4f8d5ea3c7d59704"
+    },
+    {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_금당고_2학기_기말_고1/GPT_QID9_Q14_META_BLUEPRINT.json",
+      "gitBlobSha1": "079e377ef2adf0fd34b49cafbf3715de4dc9d9d4",
+      "sha256": "a11590cc87be8830360d08308991489f37e2ec1703b80d6a55fcd4bd93650711"
+    },
+    {
+      "path": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/geumdang-2025-2final-q13-registry.json",
+      "gitBlobSha1": "d7506cf6dc60ef78d894eab27ac63ac1feaaa785",
+      "sha256": "9b1f3f2e90c59db60c749712be82bee2b632e127ce733115fe759be1152fdd2f"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q09-A1-solution.svg",
+      "gitBlobSha1": "464c308c38e2282d39ff47b714ee6a382ff8c662",
+      "sha256": "0fd75d8b5c7ab48e0d2ff7085b42bfe920333b2b967ff4ccd398ef934cc28951"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q09-A2-solution.svg",
+      "gitBlobSha1": "dd2ff46c4f474be5c75dabce3195aa0a5d112e7c",
+      "sha256": "d120fc60b0f21c21d7493fd0090ba11bcd7c9d25b332af01b07b3bc76298690a"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q09-B1-solution.svg",
+      "gitBlobSha1": "779ce3a92006bafb80bb857a2647f7397d65e35a",
+      "sha256": "a142358d6e803d71a83633c63502f04a03a2c9cd07c30d8260be7ec4d6191759"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q09-B2-solution.svg",
+      "gitBlobSha1": "3e7d4c77f77e82444d5328591585079b4cd03c9f",
+      "sha256": "6b43a5192a47376e0fd885772ccc48ab7229a2495a4de085e3202f99545b6a22"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q09-B3-solution.svg",
+      "gitBlobSha1": "ddfbd388c771c02c91987e38109af53e35d9afb5",
+      "sha256": "5821f731489b063c811ce5d1c0efb1169ddaeae824a49134a401627b4cfe2726"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q09-C1-solution.svg",
+      "gitBlobSha1": "c2370221914413bea7a98014a5760a22836c3e0f",
+      "sha256": "03983aeaf57b7a9b5f5bca06b4402afdb5752572477e882f519bf7dd410cdc25"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q09-C2-solution.svg",
+      "gitBlobSha1": "7bccfebf3d8a074005e0fdd961f6e5cde309febb",
+      "sha256": "183326b2778376cd6f86d091a5ca8ef76bc53f9166118253bf0b258a21f4bdbf"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q09-C3-solution.svg",
+      "gitBlobSha1": "e2dfbefdb8b3ffe075cc433f42e31e2e1dce8dc5",
+      "sha256": "0c08c91cfc550f0084e37161a32c48d6dba17971f05297ab0f39f5a44d0f890b"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q10-A1-solution.svg",
+      "gitBlobSha1": "755f372b50f9b47c6b6cc6b3970fce4a4b1d1cbf",
+      "sha256": "ada094a64787dbefdcaca951f622aecdb764f5ae1d4311a06e47107d6b530389"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q10-A2-solution.svg",
+      "gitBlobSha1": "d62967933d4ca74f70edbd2c1585a8c86aa2d917",
+      "sha256": "619bd852feed5aea7c7d51cc3a756e278ed1a2ae55231544b58c34ce5a256a1f"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q10-A3-solution.svg",
+      "gitBlobSha1": "918a072db84583e6edf41c8deb0281dba22772c0",
+      "sha256": "1e094ba0908cd28186292c4b92f900a510adc7c96b1fea5e4b780a8ad5af54a1"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q10-B1-solution.svg",
+      "gitBlobSha1": "de882e7ec0060ae7f32f04aa9df47836f7beec50",
+      "sha256": "58a442accfc89d021dec658c7bb01120546d5081a91f11e80f11c5cbbaa26820"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q10-B2-solution.svg",
+      "gitBlobSha1": "f8ddba2c077e1e8b02cfaded7f4744301841bedb",
+      "sha256": "145c78cdd418b62bf3adc3449873a15192592df2fed22a7da354a6f34dfd7ebf"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q10-B3-solution.svg",
+      "gitBlobSha1": "b5fb937adecbd9b2cfbf9ff2f40a765d188b071c",
+      "sha256": "68f8d063473feee183892828adc8820ac48902b17881d40e3af52fdf6ff89ac7"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q10-C1-solution.svg",
+      "gitBlobSha1": "924ef5d00c7027c9afad67c9aec9ad6ccc1b4290",
+      "sha256": "dbf7b15a4cc1b39cba38b65fe47294ad65400b65ee8f16b86c9be178beadbf98"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q10-C2-solution.svg",
+      "gitBlobSha1": "e4bfdf8ffa0416cc425c6d6ff648b4b6a6426cda",
+      "sha256": "664c62060d678b40246022ce9bddd7a8d93045d9f5f6509791c6db63492b89a3"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q10-C3-solution.svg",
+      "gitBlobSha1": "717e57007d73e8e7608ed335e4778df675d10d2f",
+      "sha256": "d09ace1d3073ef791066032b8cfe4ba202e3b3e0d2461e5936cce00b2dd6fd05"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q13-C2-solution.svg",
+      "gitBlobSha1": "dcdddad0a7094f7e3e8c7086bbd8c779b57e341b",
+      "sha256": "794135b41d12610769c544b979905ca8daa1b1aa0fd555c0ff459c8890af7100"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q14-B3-solution.svg",
+      "gitBlobSha1": "70daf96300c98aa61693ae721401e54761c30a06",
+      "sha256": "655fb1942d86a93a891242ea8192a84c9b75834ed4183da77c5b79e08a21f482"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q14-C2-solution.svg",
+      "gitBlobSha1": "042d7c6a7aaad04632a2e8adea78960074d7bdac",
+      "sha256": "26ba7a314ff6d3c002e4704ee4e9114a138c9c89d5441d6edd3380d72e36c743"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q16-B1-solution.svg",
+      "gitBlobSha1": "98140dfd4bb2571a1f2f9df2933b6ac523bead64",
+      "sha256": "27dba05873037a0519d32aee752b76acec4230b6c91f8887ea4a3047cd890a45"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q16-B2-solution.svg",
+      "gitBlobSha1": "8729cdb8719abc0bade8456f388667541947cb6a",
+      "sha256": "9a4c4efe63935e7f75ed0d6388ee5e1abce69e80ffcc77d583aae38255af61f8"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q16-B3-solution.svg",
+      "gitBlobSha1": "17e7fe00c295171574e040d96c45dfbba409497d",
+      "sha256": "29fe5d7cda280b769f03b235b8b08c31cf240c11bfa8fbe59220c268822e9258"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q16-C1-solution.svg",
+      "gitBlobSha1": "e2f98fe935cb50020a2b17327dd38c25835e04fe",
+      "sha256": "133cac63af57aa934ea8c196c81b323830cbe74e5fabb6429dfdc08255ed8560"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q16-C2-solution.svg",
+      "gitBlobSha1": "2e1e340299dd519bc0d585396b334a03781cf8ec",
+      "sha256": "d9b0b1b574906fda9fb712ef8d3dd456bd9ea6b962062fd493ee9fabd44ab847"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q16-C3-solution.svg",
+      "gitBlobSha1": "fa46da7858add6d31007640738a371776676b697",
+      "sha256": "78728bbaa0c5e9b608ddcf35a36e1740e52402324fb3e6cc89cba6cf4219dab4"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q17-A1-solution.svg",
+      "gitBlobSha1": "fd861a9179ccadd36f3f56da8fe6bd3e8f257298",
+      "sha256": "2a1edd46dd1efff9826aac18fe846d43b3a8a1c27fe3a04d58741335aa6c32bc"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q17-A2-solution.svg",
+      "gitBlobSha1": "17fea67091f9b97ffc0204912f2c414fb46a64b4",
+      "sha256": "edf39ad8cb29289b93f504bdff8b4aa34dd6275c69edfd47e88fcbd506051300"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q17-A3-solution.svg",
+      "gitBlobSha1": "7394a86ed2c2caed275692cf56fcd15ba36e6df8",
+      "sha256": "95f7e2409fafc8cb9967a4a1f5c76b6e58ac3609a2d5c8c240bc06a07a813631"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q17-B1-solution.svg",
+      "gitBlobSha1": "074773089844fbb0ba6ad2b9da19c108c908e5ad",
+      "sha256": "5defdf23a31ef1d78de6ae6a36a317762fdfbaacfc126f475da2b39c6d978bd2"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q17-B2-solution.svg",
+      "gitBlobSha1": "db202a4686b4e9d697178a2ad44a8ee3267bbcbc",
+      "sha256": "7132aaae406beef16ba7e83ac809e7ea0efe627ccdb9e72ae237fbaf84c819e6"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q17-B3-solution.svg",
+      "gitBlobSha1": "b02771e69395ef4157401372c9d4dfc1fa6d1eeb",
+      "sha256": "12f0a473199d26fc1f311127fa15f72efc1f939e8dd3e756987672fd1fddbc9b"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q17-C1-solution.svg",
+      "gitBlobSha1": "b76f473856860528d24a9a6f349055029e503ae7",
+      "sha256": "3db84412987fa16045141c67430cbfd8696631295ff40b0ddd49709a54f3f72b"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q17-C2-solution.svg",
+      "gitBlobSha1": "23b02a02b078535caeaf419557e5429db1e51c19",
+      "sha256": "c05a0eb389855656dcc9421546f945f40b3fb8a72ee5f617e41658138c93d4f4"
+    },
+    {
+      "path": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q17-C3-solution.svg",
+      "gitBlobSha1": "9af3b42615619f5a7302cf88fc7cb5928f4e343e",
+      "sha256": "ce56f66c66fdcbeaa6c03cddcaaefad90f2749492077400dd2ec47338a66bb52"
+    }
+  ],
+  "manifestPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_금당고_2학기_기말_고1/GPT_QID9_EXAM_MANIFEST.json"
+}
