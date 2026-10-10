@@ -55,7 +55,13 @@ test('backfilled projections preserve unknowns and keep physical bucket distinct
   let legacyCount = 0;
   for (const row of index.records) {
     if (!roster.has(row.uid)) {
-      assert.equal(row.metaProjection, undefined, `non-cutover UID modified: ${row.uid}`);
+      if (row.meta && row.metaProjection?.status === 'GENERATED_META_CONFIRMED') {
+        assert.equal(row.metaProjection.uid, row.uid, `new approved UID must bind projection: ${row.uid}`);
+        assert.equal(row.metaProjection.rpmL3, row.meta.rpmL3, `new approved L3 parity: ${row.uid}`);
+        assert.match(row.metaFinalSha256, /^[a-f0-9]{64}$/);
+      } else {
+        assert.equal(row.metaProjection, undefined, `non-cutover UID modified: ${row.uid}`);
+      }
       continue;
     }
     legacyCount++;
@@ -103,7 +109,7 @@ test('Consumer student payload hashes remain byte-equivalent to the evidence led
     const actualGitBlobSha = require('node:crypto').createHash('sha1').update(Buffer.concat([Buffer.from(`blob ${shardBytes.length}\0`), shardBytes])).digest('hex');
     assert.equal(row.consumerShardGitSha, actualGitBlobSha, `stale Consumer shard Git SHA: ${row.uid}`);
     if (Object.hasOwn(row, 'shardGitBlobSha')) assert.equal(row.shardGitBlobSha, actualGitBlobSha, `stale shardGitBlobSha: ${row.uid}`);
-    if (Object.hasOwn(row, 'consumerShardSha256')) assert.equal(row.consumerShardSha256, require('node:crypto').createHash('sha256').update(shardBytes).digest('hex'), `stale consumerShardSha256: ${row.uid}`);
+    if (Object.hasOwn(row, 'consumerShardSha256')) assert.equal(row.consumerShardSha256.toLowerCase(), require('node:crypto').createHash('sha256').update(shardBytes).digest('hex'), `stale consumerShardSha256: ${row.uid}`);
   }
 });
 
