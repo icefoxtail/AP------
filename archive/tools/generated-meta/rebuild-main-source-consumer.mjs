@@ -14,6 +14,12 @@ const indexRel=`${consumerRoot}/index.json`;
 const mode=process.argv.includes('--write')?'write':'check';
 const sha256=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
 const gitBlobSha=bytes=>crypto.createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
+const contentFingerprint=q=>{
+ const value=JSON.stringify({content:q.content,choices:q.choices,answer:q.answer,solution:q.solution});
+ let hash=14695981039346656037n;
+ for(let i=0;i<value.length;i++)hash=BigInt.asUintN(64,(hash^BigInt(value.charCodeAt(i)))*1099511628211n);
+ return `fnv1a64-utf16:${hash.toString(16).padStart(16,'0')}`;
+};
 const jsonBytes=value=>Buffer.from(JSON.stringify(value,null,2)+'\n','utf8');
 const readJson=rel=>JSON.parse(fs.readFileSync(path.join(root,rel),'utf8'));
 const exists=rel=>fs.existsSync(path.join(root,rel));
@@ -31,14 +37,28 @@ const normalizeQuestion=q=>{
 };
 const sourceExamInfo=sourcePath=>{
  const name=path.basename(sourcePath||'');
- const m=name.match(/^(\d{2,4})_([^_]+).*?(고\d|중\d)/);
+ const m=name.match(/^(\d{2,4})_([^_]+)_(\d+)학기_(중간|기말)_(고\d|중\d)/);
  if(!m)return {};
- const n=Number(m[1]);return {year:n<100?2000+n:n,school:m[2],grade:m[3]};
+ const n=Number(m[1]);return {year:n<100?2000+n:n,school:m[2],semester:Number(m[3]),term:m[4],grade:m[5]};
+};
+const normalizeSourceExamPath=sourcePath=>{
+ const raw=String(sourcePath||'').replace(/\\/g,'/').replace(/^\.\//,'');
+ if(!raw)return '';
+ if(raw.startsWith('archive/'))return raw;
+ const direct=raw.startsWith('exams/')?`archive/${raw}`:raw.startsWith('original/')?`archive/exams/${raw}`:'';
+ if(direct&&exists(direct))return direct;
+ const requested=path.basename(raw).replace(/\.js$/i,'');
+ const examFiles=filesUnder('archive/exams/original');
+ const exact=examFiles.filter(file=>path.basename(file).replace(/\.js$/i,'')===requested);
+ const matches=exact.length?exact:examFiles.filter(file=>path.basename(file).replace(/\.js$/i,'').startsWith(requested));
+ return matches.length===1?path.relative(root,matches[0]).split(path.sep).join('/'):raw;
 };
 const shaPattern=/^[a-f0-9]{40}$/i;
 const metadataFor=(question,sidecar,index,count)=>{
  const row=(Array.isArray(sidecar)&&sidecar.length===count?sidecar[index]:null)||
-  (Array.isArray(sidecar)&&question.uid?sidecar.find(x=>x?.uid===question.uid||x?.generatedQuestionUid===question.uid):null)||{};
+  (Array.isArray(sidecar)&&question.uid?sidecar.find(x=>x?.uid===question.uid||x?.generatedQuestionUid===question.uid):null)||
+  (Array.isArray(sidecar?.records)?sidecar.records.find(x=>x?.uid===question.uid||x?.generatedQuestionUid===question.uid):null)||
+  (sidecar&&typeof sidecar==='object'&&(!sidecar.uid&&!sidecar.generatedQuestionUid||sidecar.uid===question.uid||sidecar.generatedQuestionUid===question.uid)?sidecar:null)||{};
  return row&&typeof row==='object'?row:{};
 };
 const metadataPathFor=source=>source.replace('/shards/','/metadata/').replace(/\.js$/i,'.json');
@@ -84,7 +104,18 @@ const main=()=>{
  const disabled=new Set([...(current.userDisabledUids||[]),...(current.withdrawnUids||[])]);
  const manifests=new Map();
  for(const file of filesUnder('alive/06_EXECUTION'))if(path.basename(file)==='GPT_QID9_EXAM_MANIFEST.json'){
-  try{const doc=JSON.parse(fs.readFileSync(file,'utf8'));for(const q of doc.qidLedger||[])for(const uid of q.uids||[])manifests.set(uid,{school:'금당고',year:2025,grade:'고1',subject:'공통수학2',sourceQid:q.sourceQid??q.qid,sourceExamPath:doc.sourceExamPath,sourceExamBlobSha:q.sourceExamBlobSha||doc.sourceBlobSha});}catch{}
+  try{
+   const doc=JSON.parse(fs.readFileSync(file,'utf8'));
+   const sourceExamPath=normalizeSourceExamPath(doc.sourceExamPath||doc.originalSourceExam||doc.originalSourceArchiveFile||doc.sourceArchiveFile||'');
+   const identity=sourceExamInfo(sourceExamPath);
+   const sourceExamBlobSha=doc.sourceExamBlobSha||doc.sourceBlobSha||'';
+   const sourceExamQuestionCount=Number(doc.sourceQidCount)||0;
+   for(const q of doc.qidLedger||[])for(const uid of q.uids||[])manifests.set(uid,{
+    ...identity,school:doc.school||identity.school,year:Number(doc.year)||identity.year,grade:doc.grade||identity.grade,
+    subject:doc.subject||doc.standardCourse,sourceQid:q.sourceQid??q.qid,sourceExamPath,
+    sourceExamBlobSha:q.sourceExamBlobSha||sourceExamBlobSha,sourceExamQuestionCount
+   });
+  }catch{}
  }
  const candidates=[],errors=[],sourceFiles=filesUnder(sourceRoot).filter(file=>file.includes(`${path.sep}shards${path.sep}`)&&file.endsWith('.js'));
  for(const abs of sourceFiles){
@@ -100,25 +131,27 @@ const main=()=>{
    const m=metadataFor(raw,sidecar,i,questions.length),manifest=manifests.get(raw.uid||m.uid||m.generatedQuestionUid)||{};
    const old=previous.get(raw.uid||m.uid||m.generatedQuestionUid)||previousBySource.get(`${source}\n${raw.id??i+1}`)||null;
    const knownConsumer=old;
-   const qid=Number.isInteger(m.sourceQid)?m.sourceQid:Number.isInteger(m.sourceQuestionNo)?m.sourceQuestionNo:Number.isInteger(raw.sourceQid)?raw.sourceQid:Number.isInteger(manifest.sourceQid)?manifest.sourceQid:knownConsumer?.sourceQid??null;
-   const sourceExamPath=m.sourceArchiveFile||m.sourceExamPath||m.sourceExam||manifest.sourceExamPath||knownConsumer?.sourceExamPath||'';
+   const qid=Number.isInteger(m.sourceQid)?m.sourceQid:Number.isInteger(m.sourceQuestionNo)?m.sourceQuestionNo:Number.isInteger(m.source?.qid)?m.source.qid:Number.isInteger(raw.sourceQid)?raw.sourceQid:Number.isInteger(manifest.sourceQid)?manifest.sourceQid:knownConsumer?.sourceQid??null;
+   const sourceExamPath=normalizeSourceExamPath(m.sourceArchiveFile||m.sourceExamPath||m.sourceExam||m.source?.exam||m.source?.sourceExamPath||manifest.sourceExamPath||knownConsumer?.sourceExamPath||'');
    const sourceIdentity=sourceExamInfo(sourceExamPath);
    const uid=raw.uid||knownConsumer?.uid||m.uid||m.generatedQuestionUid||`ALITE-MAIN-${sha256(Buffer.from(`${source}\n${raw.id??i+1}\n${raw.content||''}`)).slice(0,24)}`;
    const prior=previous.get(uid);
    const uidManifest=manifests.get(uid)||manifest;
-   const school=prior?.school||m.sourceSchoolMarker||raw.school||uidManifest.school||sourceIdentity.school||'미분류';
-   const year=prior?.year||Number(m.year)||Number(raw.year)||uidManifest.year||sourceIdentity.year||0;
-   const grade=prior?.grade||m.grade||raw.grade||uidManifest.grade||sourceIdentity.grade||'미분류';
-   const subject=prior?.subject||m.standardCourse||raw.standardCourse||uidManifest.subject||'미분류';
+   const school=m.sourceSchoolMarker||m.source?.school||raw.school||uidManifest.school||sourceIdentity.school||prior?.school||'미분류';
+   const year=Number(m.year)||Number(raw.year)||uidManifest.year||sourceIdentity.year||prior?.year||0;
+   const grade=m.grade||raw.grade||uidManifest.grade||sourceIdentity.grade||prior?.grade||'미분류';
+   const subject=m.standardCourse||raw.standardCourse||uidManifest.subject||prior?.subject||'미분류';
    const sourceQidFinal=qid??(Number.isInteger(raw.sourceQid)?raw.sourceQid:Number.isInteger(raw.id)?raw.id:i+1);
    const bucket=raw.subUnitKey||raw.meta?.subUnitKey||m.subUnitKey||m.l2||prior?.l2||'UNCLASSIFIED';
    const folder=/^[A-Za-z0-9_-]+$/.test(bucket)?bucket:`UNCLASSIFIED-${sha256(Buffer.from(bucket)).slice(0,10)}`;
-   const consumerRel=`${consumerRoot}/shards/${folder}/${path.basename(source,'.js')}.json`;
-   const examSha=m.sourceBlobSha||m.sourceExamBlobSha||manifest.sourceExamBlobSha||prior?.sourceExamBlobSha||'';
+   const defaultConsumerRel=`${consumerRoot}/shards/${folder}/${path.basename(source,'.js')}.json`;
+   const consumerRel=prior?.shard?`archive/${prior.shard}`:defaultConsumerRel;
+   const examSha=m.sourceExamBlobSha||m.sourceBlobSha||m.source?.sourceExamBlobSha||m.source?.sourceBlobSha||manifest.sourceExamBlobSha||prior?.sourceExamBlobSha||'';
+   const sourceExamQuestionCount=Number(m.sourceExamQuestionCount)||manifest.sourceExamQuestionCount||Number(prior?.sourceExamQuestionCount)||0;
    const question=normalizeQuestion({...structuredClone(raw),uid});
    const issues=issueFor(question);
    if(examSha&&!shaPattern.test(examSha))issues.push('SOURCE_EXAM_BLOB_SHA_INVALID');
-   candidates.push({uid,source,sourceSha,sourceOrdinal:i+1,sourceQuestion:raw,question,metadata:m,meta:metaFor(raw,m),sourceExamPath,sourceExamBlobSha:examSha,sourceQid:sourceQidFinal,school,year,grade,subject,l2:bucket,folder,consumerRel,prior,qualityStatus:qualityState(raw,m,prior),issues});
+   candidates.push({uid,source,sourceSha,sourceOrdinal:i+1,sourceQuestion:raw,question,metadata:m,meta:metaFor(raw,m),sourceExamPath,sourceExamBlobSha:examSha,sourceExamQuestionCount,sourceQid:sourceQidFinal,school,year,grade,subject,l2:bucket,folder,consumerRel,prior,qualityStatus:qualityState(raw,m,prior),issues});
    if(Array.isArray(sidecar)&&!knownConsumer){
     stagedMetadata[i]={...(stagedMetadata[i]||{}),uid:raw.uid||((stagedMetadata[i]?.metaProjectionOrigin==='MAIN_SOURCE_QUESTION_JS')?uid:(stagedMetadata[i]?.uid||uid)),sourceQid:stagedMetadata[i]?.sourceQid??sourceQidFinal,sourceArchiveFile:stagedMetadata[i]?.sourceArchiveFile||sourceExamPath||undefined,sourceBlobSha:stagedMetadata[i]?.sourceBlobSha||examSha||undefined,sourceSchoolMarker:stagedMetadata[i]?.sourceSchoolMarker||school,meta:stagedMetadata[i]?.meta||metaFor(raw,m),metaProjectionOrigin:stagedMetadata[i]?.metaProjectionOrigin||'MAIN_SOURCE_QUESTION_JS',reviewApprovalStatus:stagedMetadata[i]?.reviewApprovalStatus||qualityState(raw,m,prior)};
    }else{
@@ -141,20 +174,7 @@ const main=()=>{
  }
  chosen.sort((a,b)=>a.source.localeCompare(b.source)||a.sourceOrdinal-b.sourceOrdinal);
  const groups=new Map();
- for(const c of chosen.filter(item=>!item.prior)){if(!groups.has(c.consumerRel))groups.set(c.consumerRel,[]);groups.get(c.consumerRel).push(c);}
- const chosenByUid=new Map(chosen.map(row=>[row.uid,row]));
- const existingUpdates=[];
- for(const row of current.records){
-  if(disabled.has(row.uid))continue;
-  const candidate=chosenByUid.get(row.uid);if(!candidate?.prior)continue;
-  const next=structuredClone(row),oldQuestion=priorConsumerByUid.get(row.uid)?.question||candidate.question;
-  const technicalIssues=issueFor(oldQuestion);
-  next.mainSourceAvailable=true;
-  next.sourceShard=next.sourceShard||candidate.source;
-  next.sourceShardGitSha=next.sourceShardGitSha||priorConsumerByUid.get(row.uid)?.sourceShardGitSha||candidate.sourceSha;
-  if(!next.technicalStatus||!Array.isArray(next.technicalIssues)){next.technicalStatus=technicalIssues.length?'ERROR':'READY';next.technicalIssues=technicalIssues;}
-  existingUpdates.push(next);
- }
+ for(const c of chosen){if(!groups.has(c.consumerRel))groups.set(c.consumerRel,[]);groups.get(c.consumerRel).push(c);}
  const newRows=[];
  for(const [consumerRel,items] of groups){
   const sourceShard=items[0].source,school=items[0].school;
@@ -165,16 +185,23 @@ const main=()=>{
   for(const c of items){
    const row=c.prior?structuredClone(c.prior):{};
    const meta=c.meta||{};
-   Object.assign(row,{uid:c.uid,school:c.school,year:c.year,grade:c.grade,subject:c.subject,sourceQid:c.sourceQid,l2:c.l2,l2Label:c.question.subUnit||c.metadata.subUnit||c.metadata.l2Label||row.l2Label||'',shard:consumerRel.replace(/^archive\//,''),localOrdinal:c.prior?.localOrdinal||c.sourceQuestion.id||c.sourceOrdinal,sourceKind:'generated',sourceShard:c.source,sourceShardGitSha:c.sourceSha,sourceExamPath:c.sourceExamPath||row.sourceExamPath||'',sourceExamBlobSha:c.sourceExamBlobSha||row.sourceExamBlobSha||'',consumerSelectable:c.prior?.consumerSelectable??c.metadata.consumerSelectable??c.sourceQuestion.consumerSelectable??true,technicalStatus:c.issues.length?'ERROR':'READY',technicalIssues:c.issues,mainSourceAvailable:true,qualityStatus:c.qualityStatus,reviewStatus:c.prior?.reviewStatus||c.metadata.reviewApprovalStatus||c.metadata.reviewStatus||c.sourceQuestion.reviewStatus||'NOT_REVIEWED',approval:c.prior?.approval||c.metadata.reviewApprovalStatus||c.metadata.reviewStatus||c.sourceQuestion.reviewStatus||'NOT_REVIEWED',meta,sourceMetaSha256:sha256(Buffer.from(JSON.stringify(meta)))});
+   const metaSha=sha256(Buffer.from(JSON.stringify(meta)));
+   const sourceChanged=!c.prior||c.prior.sourceShardGitSha!==c.sourceSha;
+   const sourceMetaChanged=!!c.prior?.sourceMetaSha256&&c.prior.sourceMetaSha256!==metaSha;
+   const technicalStatus=sourceChanged?(c.issues.length?'ERROR':'READY'):(c.prior.technicalStatus||'READY');
+   const technicalIssues=sourceChanged?c.issues:(Array.isArray(c.prior.technicalIssues)?c.prior.technicalIssues:[]);
+   Object.assign(row,{uid:c.uid,school:c.school,year:c.year,grade:c.grade,subject:c.subject,sourceQid:c.sourceQid,l2:c.l2,l2Label:c.question.subUnit||c.metadata.subUnit||c.metadata.l2Label||row.l2Label||'',shard:consumerRel.replace(/^archive\//,''),localOrdinal:c.prior?.localOrdinal||c.sourceQuestion.id||c.sourceOrdinal,sourceKind:'generated',sourceShard:c.source,sourceShardGitSha:c.sourceSha,sourceExamPath:c.sourceExamPath||row.sourceExamPath||'',sourceExamBlobSha:c.sourceExamBlobSha||row.sourceExamBlobSha||'',sourceExamQuestionCount:c.sourceExamQuestionCount||undefined,consumerSelectable:c.prior?.consumerSelectable??c.metadata.consumerSelectable??c.sourceQuestion.consumerSelectable??true,technicalStatus,technicalIssues,mainSourceAvailable:true,qualityStatus:c.prior?.qualityStatus??c.qualityStatus,reviewStatus:c.prior?.reviewStatus??c.metadata.reviewApprovalStatus??c.metadata.reviewStatus??c.sourceQuestion.reviewStatus??'NOT_REVIEWED',approval:c.prior?.approval??c.metadata.reviewApprovalStatus??c.metadata.reviewStatus??c.sourceQuestion.reviewStatus??'NOT_REVIEWED',meta,sourceMetaSha256:metaSha});
    row.userDisabled=disabled.has(c.uid);
-   const currentMetaSha=c.prior?.metaFinalSha256;
-   const sourceMetaHash=sha256(Buffer.from(JSON.stringify(meta)));
-   if(!currentMetaSha||!c.prior?.sourceShardGitSha||c.prior.sourceShardGitSha!==c.sourceSha){delete row.metaFinalSha256;delete row.metaVerification;}
+   const currentQuestionFingerprint=contentFingerprint(c.question);
+   if(sourceChanged&&c.prior&&Object.hasOwn(c.prior,'contentFingerprint'))row.contentFingerprint=currentQuestionFingerprint;
+   if(sourceMetaChanged){delete row.metaFinalSha256;delete row.metaVerification;}
+   else if(c.prior?.sourceShardGitSha&&c.prior.sourceShardGitSha!==c.sourceSha&&row.metaVerification){delete row.metaVerification;}
    if(c.metadata.reviewEvidenceBinding&&!row.reviewApprovalReceipt)row.reviewApprovalReceipt=c.metadata.reviewEvidenceBinding.path;
    const priorConsumerRecord=existingConsumerByUid.get(c.uid)||{};
-   const question=structuredClone(c.question);
+   const question=sourceChanged?structuredClone(c.question):structuredClone(priorConsumerRecord.question||c.question);
    if(row.metaProjection&&!question.metaProjection)question.metaProjection=structuredClone(row.metaProjection);
-   const consumerRecord={...structuredClone(priorConsumerRecord),generatedUid:c.uid,localOrdinal:row.localOrdinal,sourceKind:'generated',sourceExamPath:row.sourceExamPath,sourceExamBlobSha:row.sourceExamBlobSha,sourceQid:c.sourceQid,sourceShard:c.source,sourceShardGitSha:c.sourceSha,l2:c.l2,reviewStatus:row.reviewStatus,consumerSelectable:row.consumerSelectable,technicalStatus:row.technicalStatus,technicalIssues:row.technicalIssues,meta,question};
+   const consumerRecord={...structuredClone(priorConsumerRecord),generatedUid:c.uid,localOrdinal:row.localOrdinal,sourceKind:'generated',sourceExamPath:row.sourceExamPath,sourceExamBlobSha:row.sourceExamBlobSha,sourceExamQuestionCount:row.sourceExamQuestionCount,sourceQid:c.sourceQid,sourceShard:c.source,sourceShardGitSha:c.sourceSha,l2:c.l2,reviewStatus:row.reviewStatus,approval:row.approval,consumerSelectable:row.consumerSelectable,technicalStatus:row.technicalStatus,technicalIssues:row.technicalIssues,meta,sourceMetaSha256:metaSha,question};
+   if(sourceChanged&&(Object.hasOwn(priorConsumerRecord,'contentFingerprint')||Object.hasOwn(c.prior||{},'contentFingerprint')))consumerRecord.contentFingerprint=currentQuestionFingerprint;
    if(row.metaProjection&&!consumerRecord.metaProjection)consumerRecord.metaProjection=structuredClone(row.metaProjection);
    doc.records.push(consumerRecord);
    newRows.push(row);
@@ -185,9 +212,11 @@ const main=()=>{
   if(mode==='write'){fs.mkdirSync(path.dirname(consumerAbs),{recursive:true});fs.writeFileSync(consumerAbs,consumerBytes);}
   else if(!exists(consumerRel)||!fs.readFileSync(consumerAbs).equals(consumerBytes))errors.push({source:consumerRel,code:'CONSUMER_SHARD_STALE'});
  }
- const represented=new Set([...existingUpdates,...newRows].map(row=>row.uid));
+ const represented=new Set(newRows.map(row=>row.uid)),rebuiltByUid=new Map(newRows.map(row=>[row.uid,row]));
  const preserved=current.records.filter(row=>!represented.has(row.uid)&&!disabled.has(row.uid)&&!String(row.sourceShard||'').startsWith(`${sourceRoot}/`));
- const records=[...preserved,...existingUpdates,...newRows];
+ const existingUpdates=current.records.filter(row=>rebuiltByUid.has(row.uid)).map(row=>rebuiltByUid.get(row.uid));
+ const newRegistrations=newRows.filter(row=>!previous.has(row.uid));
+ const records=[...preserved,...existingUpdates,...newRegistrations];
  const ids=records.map(row=>row.uid);
  if(new Set(ids).size!==ids.length)errors.push({code:'DUPLICATE_CONSUMER_UID'});
  const counts={};for(const row of records)counts[row.school]=(counts[row.school]||0)+1;

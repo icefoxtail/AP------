@@ -33,9 +33,14 @@ async function main(){
   const solution=await evaluate("(()=>({title:document.body.innerText.includes('금당고'),svgImages:[...document.images].filter(x=>x.src.includes('Q02-C2-solution.svg')).map(x=>({loaded:x.complete&&x.naturalWidth>0,width:x.naturalWidth})),text:document.body.innerText.slice(0,260)}))()",session);
   if(!solution.title||!solution.svgImages.some(x=>x.loaded))throw Error('Solution SVG not rendered '+JSON.stringify(solution));
   await evaluate("document.querySelector('#generated-results article button.primary').click()");await wait("document.querySelector('#generated-selection-summary').innerText.includes('1개')",'question selection');
-  await evaluate("document.querySelector('#generated-print').click()");await wait("window.__printCount===1&&document.querySelectorAll('#paper-items .paper-question').length===1",'problem paper print preview');
+  await evaluate("document.querySelector('#generated-print').click()");
+  let problemOutput=null;for(let i=0;i<120;i++){const all=await send('Target.getTargets');problemOutput=all.targetInfos.find(t=>t.type==='page'&&t.url.includes('mixed_engine.html')&&t.url.includes('mode=exam')&&t.url.includes('preview=1'));if(problemOutput)break;await sleep(100);}if(!problemOutput)throw Error('Archive2 selected problem output preview did not open');
+  const problemAttached=await send('Target.attachToTarget',{targetId:problemOutput.targetId,flatten:true});const problemSession=problemAttached.sessionId;
+  await wait("document.body?.innerText.includes('생성문제')",'selected problem output preview',problemSession);
+  const problemOutputView=await evaluate("(()=>({title:document.body.innerText.includes('생성문제'),choiceCount:document.querySelectorAll('.choices').length,questionText:document.body.innerText.includes('모든')}))()",problemSession);
+  if(!problemOutputView.title||!problemOutputView.choiceCount||!problemOutputView.questionText)throw Error('Selected output preview content missing '+JSON.stringify(problemOutputView));
   await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});const mobile=await evaluate('document.documentElement.scrollWidth<=innerWidth');if(!mobile)throw Error('Mobile width horizontal overflow');
-  console.log('GEUMDANG_ARCHIVE2_CHROME_PASS '+JSON.stringify({searchUid:'ALITE-GEUMDANG25-2FINAL-Q02-C2',registered:roster.count,unique:roster.unique,perQid:9,problemChoices:problem.choices,mathRendered:problem.math>0,solutionSvgLoaded:solution.svgImages.some(x=>x.loaded),printPreview:true,mobileWidth:390,mobileOverflow:false}));
+  console.log('GEUMDANG_ARCHIVE2_CHROME_PASS '+JSON.stringify({searchUid:'ALITE-GEUMDANG25-2FINAL-Q02-C2',registered:roster.count,unique:roster.unique,perQid:9,problemChoices:problem.choices,mathRendered:problem.math>0,solutionSvgLoaded:solution.svgImages.some(x=>x.loaded),selectedProblemPreview:true,problemOutputView,mobileWidth:390,mobileOverflow:false}));
  }finally{if(ws)ws.close();proc.kill('SIGTERM');await new Promise(r=>server.close(r));try{fs.rmSync(temp,{recursive:true,force:true});}catch{}}
 }
 main().catch(e=>{console.error('GEUMDANG_ARCHIVE2_CHROME_FAIL',e);process.exitCode=1;});
