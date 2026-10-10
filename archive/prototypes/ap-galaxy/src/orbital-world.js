@@ -1,14 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-const PALETTES = [
-  [0x17294a, 0x507fbb, 0x83b986, 0x355c46], [0x302950, 0x7f65b5, 0xd0a66f, 0x745b50],
-  [0x133541, 0x4594a2, 0xc0bc86, 0x70845a], [0x38273e, 0xa44e63, 0xdca27b, 0x754c4d],
-  [0x1c3540, 0x3e7687, 0xb2b1a0, 0x696f78], [0x2e2b4d, 0x6f6fa9, 0xb7b17d, 0x667653],
-  [0x3e2d25, 0xa27753, 0xd4bd8d, 0x8e754b], [0x15354a, 0x426eae, 0x9bc7d0, 0x526b81],
-  [0x3c2537, 0x9b4567, 0xd2945a, 0x744752], [0x1b3340, 0x367880, 0x93ba8d, 0x526d4f],
-  [0x352c43, 0x7768a2, 0xceb485, 0x72604f], [0x202e4d, 0x557eaa, 0x9db8a5, 0x4d705c],
-];
 const ORBIT_COLORS = [0x698cbe, 0x9f8bc6, 0x63a9a6, 0xc49485, 0x8094bf, 0x8bb3a9, 0xbe9e70, 0x819cc0, 0xb887a1, 0x78a7a7, 0x9a8cc1, 0x82a6bd];
 const GOLDEN_ANGLE = Math.PI * (3 - Math.sqrt(5));
 
@@ -21,39 +13,19 @@ function randomFrom(seed) {
   let value = (seed >>> 0) || 1;
   return () => ((value = (value * 1664525 + 1013904223) >>> 0) / 4294967296);
 }
-function makePlanetTexture(index) {
-  const palette = PALETTES[index % PALETTES.length];
+function makeGalaxyNebulaTexture() {
   const canvas = document.createElement('canvas');
-  canvas.width = 384;
-  canvas.height = 192;
-  const context = canvas.getContext('2d', { willReadFrequently: true });
-  const image = context.createImageData(canvas.width, canvas.height);
-  const rgb = palette.map((hex) => [(hex >> 16) & 255, (hex >> 8) & 255, hex & 255]);
-  const random = randomFrom(index * 991 + 47);
-  const seed = random() * 7;
-  for (let y = 0; y < canvas.height; y += 1) {
-    const lat = (y / canvas.height - .5) * Math.PI;
-    for (let x = 0; x < canvas.width; x += 1) {
-      const lon = (x / canvas.width) * Math.PI * 2;
-      const waveA = Math.sin(lon * (2.1 + index % 3) + Math.sin(lat * 4.3 + seed) * 1.4);
-      const waveB = Math.cos(lon * 3.4 - lat * 5.6 + seed) * .46;
-      const waveC = Math.sin(lon * 7.2 + lat * 9.1 + seed * 2.4) * .19;
-      const continents = waveA + waveB + waveC;
-      const cloud = Math.sin(lon * 11.3 - lat * 3.2 + seed) + Math.cos(lon * 5.8 + lat * 8.2 - seed) * .55;
-      const ocean = continents > .66;
-      const color = rgb[!ocean && cloud > 1.08 ? 1 : ocean ? 0 : continents > .88 ? 3 : 2];
-      const shade = .76 + .24 * (Math.sin(lon * 3.2 + Math.cos(lat * 8 + seed)) * .5 + .5) + (random() - .5) * .07;
-      const ptr = (y * canvas.width + x) * 4;
-      image.data[ptr] = Math.min(255, color[0] * shade);
-      image.data[ptr + 1] = Math.min(255, color[1] * shade);
-      image.data[ptr + 2] = Math.min(255, color[2] * shade);
-      image.data[ptr + 3] = 255;
-    }
-  }
-  context.putImageData(image, 0, 0);
+  canvas.width = 64;
+  canvas.height = 64;
+  const context = canvas.getContext('2d');
+  const gradient = context.createRadialGradient(32, 32, 1, 32, 32, 32);
+  gradient.addColorStop(0, 'rgba(255,255,255,.62)');
+  gradient.addColorStop(.18, 'rgba(255,255,255,.3)');
+  gradient.addColorStop(.55, 'rgba(255,255,255,.07)');
+  gradient.addColorStop(1, 'rgba(255,255,255,0)');
+  context.fillStyle = gradient;
+  context.fillRect(0, 0, 64, 64);
   const texture = new THREE.CanvasTexture(canvas);
-  texture.colorSpace = THREE.SRGBColorSpace;
-  texture.anisotropy = 4;
   return texture;
 }
 function makeOrbit(radius, aspect, material, segments = 112) {
@@ -203,8 +175,8 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   const dataRoot = new THREE.Group();
   const constellationRoot = new THREE.Group();
   scene.add(groupRoot, dataRoot, constellationRoot);
-  const sharedPlanetGeometry = new THREE.SphereGeometry(1, 36, 24);
-  const sharedAtmosphereGeometry = new THREE.SphereGeometry(1, 28, 18);
+  const sharedGroupPickGeometry = new THREE.SphereGeometry(1.55, 16, 12);
+  const sharedGroupPickMaterial = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, colorWrite: false, depthWrite: false });
   const sharedDataStarGeometry = new THREE.SphereGeometry(.2, 14, 10);
   const sharedDataGlowGeometry = new THREE.SphereGeometry(.43, 14, 10);
   const sharedPaperGeometry = new THREE.PlaneGeometry(.68, .84);
@@ -213,8 +185,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     map: sharedPaperTexture, color: 0xffffff, roughness: .7, metalness: .01,
     side: THREE.DoubleSide, emissive: 0x201b2d, emissiveIntensity: .13,
   });
-  const planetMaterials = new Map();
-  const atmosphereMaterials = new Map();
+  const galaxyNebulaTexture = makeGalaxyNebulaTexture();
   const dataStarMaterials = new Map();
   const dataGlowMaterials = new Map();
   const groups = new Map();
@@ -245,22 +216,6 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   let pointerStart = null;
   const frameInterval = mobile ? 1000 / 24 : 1000 / 30;
 
-  function getPlanetMaterial(index) {
-    if (!planetMaterials.has(index)) {
-      const material = new THREE.MeshStandardMaterial({ map: makePlanetTexture(index), roughness: .82, metalness: .04 });
-      planetMaterials.set(index, material);
-    }
-    return planetMaterials.get(index);
-  }
-  function getAtmosphereMaterial(index) {
-    if (!atmosphereMaterials.has(index)) {
-      atmosphereMaterials.set(index, new THREE.MeshBasicMaterial({
-        color: ORBIT_COLORS[index % ORBIT_COLORS.length], transparent: true, opacity: .13,
-        side: THREE.BackSide, blending: THREE.AdditiveBlending, depthWrite: false,
-      }));
-    }
-    return atmosphereMaterials.get(index);
-  }
   function getDataStarMaterial(index) {
     if (!dataStarMaterials.has(index)) dataStarMaterials.set(index, new THREE.MeshBasicMaterial({ color: ORBIT_COLORS[index % ORBIT_COLORS.length] }));
     return dataStarMaterials.get(index);
@@ -278,8 +233,51 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   function groupOrbitRadius(index, groupCount) {
     return 10 + index * (72 / Math.max(1, groupCount - 1));
   }
+  function makeGalaxyDisc(data, palette) {
+    const random = randomFrom(hashText(data.id) ^ 0x61c88647);
+    const starCount = 84;
+    const positions = new Float32Array(starCount * 3);
+    const colors = new Float32Array(starCount * 3);
+    const baseColor = new THREE.Color(ORBIT_COLORS[palette]);
+    const white = new THREE.Color(0xe5f4ff);
+    for (let i = 0; i < starCount; i += 1) {
+      const arm = i % 3;
+      const spread = Math.sqrt(random());
+      const radius = .22 + spread * 1.72;
+      const angle = arm * Math.PI * 2 / 3 + radius * 1.72 + (random() - .5) * .48;
+      positions[i * 3] = Math.cos(angle) * radius;
+      positions[i * 3 + 1] = (random() - .5) * (.13 + radius * .045);
+      positions[i * 3 + 2] = Math.sin(angle) * radius * .7;
+      const color = baseColor.clone().lerp(white, Math.max(.08, (1 - spread) * .58 + random() * .12));
+      color.toArray(colors, i * 3);
+    }
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    return geometry;
+  }
+  function makeNebulaCloud(data, palette) {
+    const random = randomFrom(hashText(data.id) ^ 0x9e3779b9);
+    const count = 38;
+    const positions = new Float32Array(count * 3);
+    const colors = new Float32Array(count * 3);
+    const baseColor = new THREE.Color(ORBIT_COLORS[palette]);
+    for (let i = 0; i < count; i += 1) {
+      const radius = Math.sqrt(random()) * 1.95;
+      const angle = random() * Math.PI * 2;
+      positions[i * 3] = Math.cos(angle) * radius;
+      positions[i * 3 + 1] = (random() - .5) * .42;
+      positions[i * 3 + 2] = Math.sin(angle) * radius * .72;
+      const color = baseColor.clone().lerp(new THREE.Color(0xa9bfff), random() * .42);
+      color.toArray(colors, i * 3);
+    }
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    return geometry;
+  }
   function createGroupNode(data, index, reusing, groupCount) {
-    const palette = index % PALETTES.length;
+    const palette = hashText(data.id) % ORBIT_COLORS.length;
     const color = ORBIT_COLORS[palette];
     const root = reusing || new THREE.Group();
     if (reusing) {
@@ -287,25 +285,35 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     }
     root.name = data.id;
     const orbitRadius = groupOrbitRadius(index, groupCount);
-    const hubScale = data.mode === 'school' ? 1.08 : data.mode === 'grade' ? .88 : .78;
+    const hubScale = data.mode === 'school' ? 1 : data.mode === 'grade' ? .88 : .78;
     const hub = new THREE.Group();
     root.add(hub);
-    const globe = new THREE.Mesh(sharedPlanetGeometry, getPlanetMaterial(palette));
-    globe.scale.setScalar(hubScale);
+    hub.scale.setScalar(hubScale);
+    const cloud = new THREE.Points(makeNebulaCloud(data, palette), new THREE.PointsMaterial({
+      map: galaxyNebulaTexture, vertexColors: true, size: 2.45, sizeAttenuation: true,
+      transparent: true, opacity: .16, blending: THREE.AdditiveBlending, depthWrite: false, alphaTest: .008,
+    }));
+    cloud.rotation.x = -.18;
+    hub.add(cloud);
+    const galaxy = new THREE.Points(makeGalaxyDisc(data, palette), new THREE.PointsMaterial({
+      vertexColors: true, size: .145, sizeAttenuation: true, transparent: true,
+      opacity: .88, blending: THREE.AdditiveBlending, depthWrite: false,
+    }));
+    galaxy.rotation.x = -.18;
+    hub.add(galaxy);
+    const nucleusGlow = new THREE.Sprite(new THREE.SpriteMaterial({
+      map: galaxyNebulaTexture, color, transparent: true, opacity: .42,
+      blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false,
+    }));
+    nucleusGlow.scale.set(2.25, 1.55, 1);
+    hub.add(nucleusGlow);
+    const nucleus = new THREE.Mesh(sharedDataStarGeometry, new THREE.MeshBasicMaterial({ color: 0xf4eddd }));
+    nucleus.scale.setScalar(.78);
+    hub.add(nucleus);
+    const globe = new THREE.Mesh(sharedGroupPickGeometry, sharedGroupPickMaterial);
     globe.userData.kind = 'group';
     globe.userData.groupId = data.id;
     hub.add(globe);
-    const atmosphere = new THREE.Mesh(sharedAtmosphereGeometry, getAtmosphereMaterial(palette));
-    atmosphere.scale.setScalar(hubScale * 1.14);
-    hub.add(atmosphere);
-    const isSelectedDimension = data.mode === 'unit';
-    if (isSelectedDimension || data.mode === 'grade' || index % 4 === 1) {
-      const lens = new THREE.Mesh(new THREE.TorusGeometry(hubScale * 1.38, .035, 7, 72), new THREE.MeshBasicMaterial({
-        color, transparent: true, opacity: .68, blending: THREE.AdditiveBlending, depthWrite: false,
-      }));
-      lens.rotation.x = Math.PI / 2.6 + index * .1;
-      hub.add(lens);
-    }
     const shellMaterials = [];
     for (let shell = 0; shell < 3; shell += 1) {
       const material = new THREE.LineBasicMaterial({ color, transparent: true, opacity: .045 - shell * .006, depthWrite: false });
@@ -324,7 +332,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     const initialAngle = animateLayout ? hashAngle(data.id) : targetAngle;
     const transitionStart = performance.now();
     return {
-      id: data.id, name: data.name, mode: data.mode, count: data.count, root, hub, globe,
+      id: data.id, name: data.name, mode: data.mode, count: data.count, root, hub, globe, galaxy, cloud, nucleusGlow,
       orbitPath, palette, color, index, orbitRadius, targetRadius: orbitRadius,
       angle: initialAngle, layoutAngle: initialAngle, layoutFromAngle: initialAngle,
       targetAngle, layoutTransitionStart: transitionStart, layoutTransitionDuration: animateLayout ? 900 : 0, orbitPhase: 0,
@@ -339,8 +347,8 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     group.orbitPath.material.dispose();
     for (const material of group.shellMaterials) material.dispose();
     group.root.traverse((object) => {
-      if (object.geometry && object.geometry !== sharedPlanetGeometry && object.geometry !== sharedAtmosphereGeometry) object.geometry.dispose();
-      if (object.material && ![...planetMaterials.values(), ...atmosphereMaterials.values()].includes(object.material)) object.material.dispose();
+      if (object.geometry && object.geometry !== sharedGroupPickGeometry && object.geometry !== sharedDataStarGeometry) object.geometry.dispose();
+      if (object.material && object.material !== sharedGroupPickMaterial) object.material.dispose();
     });
   }
   function createDataNode(exam, groupId, slot) {
@@ -596,6 +604,9 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       const emphasized = group.id === focusedGroupId;
       group.orbitPath.material.opacity = emphasized ? .42 : .004;
       for (let i = 0; i < group.shellMaterials.length; i += 1) group.shellMaterials[i].opacity = emphasized ? .34 - i * .035 : .012 - i * .002;
+      group.galaxy.material.opacity = emphasized ? .98 : .82;
+      group.cloud.material.opacity = emphasized ? .24 : .15;
+      group.nucleusGlow.material.opacity = emphasized ? .58 : .38;
       const x = Math.cos(group.angle) * group.orbitRadius;
       const z = Math.sin(group.angle) * group.orbitRadius * .9;
       const y = Math.sin(group.angle * .72) * 1.25;
@@ -803,8 +814,9 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       for (const entity of entities.values()) removeDataNode(entity);
       disposeConstellations();
       starGeometry.dispose();
-      sharedPlanetGeometry.dispose();
-      sharedAtmosphereGeometry.dispose();
+      sharedGroupPickGeometry.dispose();
+      sharedGroupPickMaterial.dispose();
+      galaxyNebulaTexture.dispose();
       sharedDataStarGeometry.dispose();
       sharedDataGlowGeometry.dispose();
       sharedPaperGeometry.dispose();
@@ -813,11 +825,6 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       nebulaTexture.dispose();
       nebulaSky.geometry.dispose();
       nebulaSky.material.dispose();
-      for (const material of planetMaterials.values()) {
-        material.map?.dispose();
-        material.dispose();
-      }
-      for (const material of atmosphereMaterials.values()) material.dispose();
       for (const material of dataStarMaterials.values()) material.dispose();
       for (const material of dataGlowMaterials.values()) material.dispose();
       if (catalogPoints) {
