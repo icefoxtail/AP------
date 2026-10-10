@@ -104,15 +104,17 @@
     "doneAuthorDraftQids": [
       1,
       2,
-      3
+      3,
+      4
     ],
-    "questions": 27,
-    "svgFiles": 6,
+    "questions": 36,
+    "svgFiles": 12,
     "finishedIndependentReviewQids": [],
     "producedItemsByQid": {
       "q01": 9,
       "q02": 9,
-      "q03": 9
+      "q03": 9,
+      "q04": 9
     },
     "q01File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q01_CREATE_DRAFT.json",
     "q02File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q02_CREATE_DRAFT.json",
@@ -126,7 +128,6 @@
     "expectedSourceQidCount": 23,
     "expectedVariantsAtNineEach": 207,
     "remainingQids": [
-      4,
       5,
       6,
       7,
@@ -158,21 +159,28 @@
       "B3": "feaeee7cff7e1e6f0dd45de95df88ed5cab7b6ee",
       "C1": "431b9b02b191630dc7d4e176d6e2f23dade39ca9",
       "C3": "a2b50bcf8d8b2a598e13e25f6682a79f5957f335"
-    }
+    },
+    "q04File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q04_CREATE_DRAFT.json",
+    "q04SVGs": [
+      "assets/q04-A1-problem.svg",
+      "assets/q04-A2-problem.svg",
+      "assets/q04-A3-problem.svg",
+      "assets/q04-A3-solution.svg",
+      "assets/q04-C2-solution.svg",
+      "assets/q04-C3-solution.svg"
+    ]
   },
   "remainingGates": [
-    "q01/q02 independent GPT quality review not run",
-    "Actual end-to-end Chrome exam/solution/answer render not run",
-    "RPM numeric L3/L4 lookup still unresolved for q01/q02; semantic primary L3 frozen, canonical PT/TPL active",
-    "Original asset SVG semantic/render full review only when respective original qid is entered",
-    "q03 independent quality review not run",
-    "q03 RPM numeric ID unresolved (semantic L3 and ACTIVE PT/TPL verified)",
-    "q03 SVG CairoSVG image PASSED, but actual JS Archive student browser sol view NOT_TESTED"
+    "q01~q04 independent open-book GPT review NOT_RUN",
+    "q01~q04 student-facing Chrome exam/sol/ans NOT_RUN",
+    "q04 SVG6 xml/browser real render NOT_RUN (deterministic primitive only)",
+    "RPM numeric L3 ID unresolved; semantic path frozen and PT/TPL bound"
   ],
   "next": {
-    "qid": 4,
-    "action": "q04 image q4.png must be opened and visually reviewed; derive frozen Primary RPM L3, construct 9 and required SVG, qid-level commit on same branch, no main merge.",
-    "handoffPrompt": "순천고 QID9 브랜치 work/alive-25-suncheon-h1-2final-qid9; q01~q03 author drafts 27, SVG 6; SOURCE_QID9_PROGRESS.json 읽고 q04 시작. 원본/UID/기존 유사 보존, main 미병합."
+    "qid": 5,
+    "action": "Read q05 original, lock Primary RPM L3; design A1~C3, inspect required image problem/solution independently, commit q05 separately on same work branch. Do not merge or deploy.",
+    "handoffPrompt": "25 순천고 2학기 기말 고1 QID9: branch work/alive-25-suncheon-h1-2final-qid9; q01–q04 36 author drafts and 12 SVG; begin q05 from SOURCE_QID9_PROGRESS.json; source read-only, qid commit only, no main merge."
   },
-  "lastCompletedQid": 3
+  "lastCompletedQid": 3,
+  "lastUpdatedSourceQid": 4
 }
