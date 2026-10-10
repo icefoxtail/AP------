@@ -1,0 +1,189 @@
+{
+  "schemaVersion": "ALIVE_QID9_GEUMDANG25_Q04_SELF_REVIEW_V1",
+  "sourceQid": 4,
+  "sourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "branch": "work/alive-25-geumdang-h1-2final-qid9",
+  "candidateCount": 9,
+  "keep": 9,
+  "revised": 0,
+  "hold": 0,
+  "formalIndependentGptReviewPerformed": false,
+  "sourcePdfCompared": false,
+  "studentChromeVerified": false,
+  "printedSolutionRendered": false,
+  "qualityStatus": "CREATE_DRAFT_SELF_CHECKED",
+  "releaseStatus": "BRANCH_ONLY_UNRELEASED",
+  "originalPrimaryL3": "H1-RPM-244",
+  "originalStem": "명제 p→q가 거짓일 때 반드시 거짓인 명제",
+  "visual": {
+    "problemVisual": "NO_VISUAL",
+    "solutionVisual": "EXEMPT_LOGIC_TEXT_PROOF_SUFFICIENT",
+    "rationale": "진리값·반례·논리식의 직접 서술이 핵심이며 별도 기하 SVG에 교육적 사실 추가 없음"
+  },
+  "mathChecks": {
+    "A1": "p=T,q=F, only ② true",
+    "A2": "p=T,q=F, only ④ false",
+    "A3": "p=q=T,r=F, only ③ true",
+    "B1": "truthCount=2",
+    "B2": "p=F,q=T, only ② true",
+    "B3": "p=r=T,q=F, only ④ false",
+    "C1": "x={-2,-1} sum=-3",
+    "C2": "x={-2,-1} count=2",
+    "C3": "2^3−2=6"
+  },
+  "rows": [
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q04-A1",
+      "slot": "A1",
+      "originalStemOrIssue": "명제 $p\\to q$가 거짓일 때, 다음 중 반드시 참인 명제는?",
+      "reverseReadingFinding": "학생 발문만 보고 참/거짓 조건, 질문 방향, 전제·결론 분기와 선택지 유일성 재확인",
+      "decision": "KEEP",
+      "finalStem": "명제 $p\\to q$가 거짓일 때, 다음 중 반드시 참인 명제는?",
+      "affectedFields": [],
+      "distractorPaths": {
+        "①": "참인 전제로부터 거짓 결론이 나와도 참으로 처리",
+        "③": "대우라고 혼동하여 참으로 판단",
+        "④": "p가 참이라는 사실만으로 논리곱을 참으로 판단",
+        "⑤": "원래 명제와 동치인 논리합을 참으로 오해"
+      },
+      "check": "4/4",
+      "remainingRisk": "Separate GPT open-book quality review and real Chrome output not performed"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q04-A2",
+      "slot": "A2",
+      "originalStemOrIssue": "명제 $p\\to q$가 거짓일 때, 다음 중 거짓인 명제는?",
+      "reverseReadingFinding": "학생 발문만 보고 참/거짓 조건, 질문 방향, 전제·결론 분기와 선택지 유일성 재확인",
+      "decision": "KEEP",
+      "finalStem": "명제 $p\\to q$가 거짓일 때, 다음 중 거짓인 명제는?",
+      "affectedFields": [],
+      "distractorPaths": {
+        "①": "참 또는 거짓의 논리합이 거짓이라고 착각",
+        "②": "¬q가 참임을 놓치고 둘 다 거짓으로 착각",
+        "③": "거짓 전제의 조건명제를 거짓으로 착각",
+        "⑤": "q가 거짓인데 ¬q도 거짓이라 착각"
+      },
+      "check": "4/4",
+      "remainingRisk": "Separate GPT open-book quality review and real Chrome output not performed"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q04-A3",
+      "slot": "A3",
+      "originalStemOrIssue": "명제 $(p\\land q)\\to r$가 거짓일 때, 다음 중 반드시 참인 명제는?",
+      "reverseReadingFinding": "학생 발문만 보고 참/거짓 조건, 질문 방향, 전제·결론 분기와 선택지 유일성 재확인",
+      "decision": "KEEP",
+      "finalStem": "명제 $(p\\land q)\\to r$가 거짓일 때, 다음 중 반드시 참인 명제는?",
+      "affectedFields": [],
+      "distractorPaths": {
+        "①": "p가 참이면 모든 조건명제가 참이라고 오해",
+        "②": "q가 참이면 q→r도 참이라고 오해",
+        "④": "¬r이 참이므로 뒤도 참이라고 착각",
+        "⑤": "주어진 거짓 명제를 참으로 취급"
+      },
+      "check": "4/4",
+      "remainingRisk": "Separate GPT open-book quality review and real Chrome output not performed"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q04-B1",
+      "slot": "B1",
+      "originalStemOrIssue": "명제 $p\\to q$가 거짓이다. 다음 다섯 명제 $p\\to q$, $q\\to p$, $\\sim p\\to q$, $\\sim q\\to\\sim p$, $p\\leftrightarrow q$ 중 참인 명제의 개수는?",
+      "reverseReadingFinding": "학생 발문만 보고 참/거짓 조건, 질문 방향, 전제·결론 분기와 선택지 유일성 재확인",
+      "decision": "KEEP",
+      "finalStem": "명제 $p\\to q$가 거짓이다. 다음 다섯 명제 $p\\to q$, $q\\to p$, $\\sim p\\to q$, $\\sim q\\to\\sim p$, $p\\leftrightarrow q$ 중 참인 명제의 개수는?",
+      "affectedFields": [],
+      "distractorPaths": {
+        "①": "조건명제 전부 거짓으로 계산하여 0",
+        "②": "q→p만 참이라고 보고 1",
+        "④": "p↔q도 참이라고 착각하여 3",
+        "⑤": "거짓 전제인 두 명제에 p↔q까지 참으로 계산하여 4"
+      },
+      "check": "4/4",
+      "remainingRisk": "Separate GPT open-book quality review and real Chrome output not performed"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q04-B2",
+      "slot": "B2",
+      "originalStemOrIssue": "두 명제 $p\\to q$는 참이고 $q\\to p$는 거짓이다. 다음 중 반드시 참인 명제는?",
+      "reverseReadingFinding": "학생 발문만 보고 참/거짓 조건, 질문 방향, 전제·결론 분기와 선택지 유일성 재확인",
+      "decision": "KEEP",
+      "finalStem": "두 명제 $p\\to q$는 참이고 $q\\to p$는 거짓이다. 다음 중 반드시 참인 명제는?",
+      "affectedFields": [],
+      "distractorPaths": {
+        "①": "q가 참이므로 p도 참이라고 잘못 추론",
+        "③": "주어진 q→p의 거짓을 놓침",
+        "④": "q가 참인데 ¬q를 참으로 판단",
+        "⑤": "p→q의 참을 p↔q의 참으로 확대"
+      },
+      "check": "4/4",
+      "remainingRisk": "Separate GPT open-book quality review and real Chrome output not performed"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q04-B3",
+      "slot": "B3",
+      "originalStemOrIssue": "세 명제 $p,q,r$에 대하여 $p\\to q$는 거짓이고 $q\\lor r$는 참이다. 다음 중 거짓인 명제는?",
+      "reverseReadingFinding": "학생 발문만 보고 참/거짓 조건, 질문 방향, 전제·결론 분기와 선택지 유일성 재확인",
+      "decision": "KEEP",
+      "finalStem": "세 명제 $p,q,r$에 대하여 $p\\to q$는 거짓이고 $q\\lor r$는 참이다. 다음 중 거짓인 명제는?",
+      "affectedFields": [],
+      "distractorPaths": {
+        "①": "r가 거짓이라고 잘못 판단하여 p∧r을 거짓으로 계산",
+        "②": "q가 거짓이면 p∨q도 거짓이라고 오해",
+        "③": "r→p의 참·참을 거짓으로 처리",
+        "⑤": "q가 거짓이므로 ¬q도 거짓으로 오해"
+      },
+      "check": "4/4",
+      "remainingRisk": "Separate GPT open-book quality review and real Chrome output not performed"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q04-C1",
+      "slot": "C1",
+      "originalStemOrIssue": "실수 $x$가 집합 $\\{-2,-1,0,1,2\\}$의 원소일 때, 명제 '$x^2>0$이면 $x>0$이다.'가 거짓이 되도록 하는 모든 $x$의 값의 합은?",
+      "reverseReadingFinding": "학생 발문만 보고 참/거짓 조건, 질문 방향, 전제·결론 분기와 선택지 유일성 재확인",
+      "decision": "KEEP",
+      "finalStem": "실수 $x$가 집합 $\\{-2,-1,0,1,2\\}$의 원소일 때, 명제 '$x^2>0$이면 $x>0$이다.'가 거짓이 되도록 하는 모든 $x$의 값의 합은?",
+      "affectedFields": [],
+      "distractorPaths": {
+        "①": "-1만 반례로 세어 -1",
+        "②": "-2만 반례로 세어 -2",
+        "④": "0도 반례로 더했지만 합을 0이라고 잘못 계산",
+        "⑤": "양수 1,2를 반례로 택해 합 3"
+      },
+      "check": "4/4",
+      "remainingRisk": "Separate GPT open-book quality review and real Chrome output not performed"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q04-C2",
+      "slot": "C2",
+      "originalStemOrIssue": "정수 $x$가 $-3\\le x\\le3$을 만족한다. 명제 '$x^2\\le4$이면 $x\\ge0$이다.'가 거짓이 되는 정수 $x$의 개수는?",
+      "reverseReadingFinding": "학생 발문만 보고 참/거짓 조건, 질문 방향, 전제·결론 분기와 선택지 유일성 재확인",
+      "decision": "KEEP",
+      "finalStem": "정수 $x$가 $-3\\le x\\le3$을 만족한다. 명제 '$x^2\\le4$이면 $x\\ge0$이다.'가 거짓이 되는 정수 $x$의 개수는?",
+      "affectedFields": [],
+      "distractorPaths": {
+        "①": "모든 조건명제가 참이라고 오해해 0",
+        "②": "-2만 포함하고 -1을 놓쳐 1",
+        "③": "0도 음수에 포함시켜 3",
+        "⑤": "-3까지 포함시켜 4"
+      },
+      "check": "4/4",
+      "remainingRisk": "Separate GPT open-book quality review and real Chrome output not performed"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q04-C3",
+      "slot": "C3",
+      "originalStemOrIssue": "각각 참 또는 거짓인 명제 $p,q,r$에 대하여 세 명제 $p\\to q$, $q\\to r$, $r\\to p$ 중 정확히 하나만 거짓이 되는 $(p,q,r)$의 진리값 배정의 개수는?",
+      "reverseReadingFinding": "학생 발문만 보고 참/거짓 조건, 질문 방향, 전제·결론 분기와 선택지 유일성 재확인",
+      "decision": "KEEP",
+      "finalStem": "각각 참 또는 거짓인 명제 $p,q,r$에 대하여 세 명제 $p\\to q$, $q\\to r$, $r\\to p$ 중 정확히 하나만 거짓이 되는 $(p,q,r)$의 진리값 배정의 개수는?",
+      "affectedFields": [],
+      "distractorPaths": {
+        "①": "p→q 한 곳만 고려해 q와 r 두 경우를 세어 2",
+        "②": "참인 명제의 위치 3곳만 세고 나머지 진리값의 경우를 놓침",
+        "③": "8개에서 근거 없이 4개를 제외",
+        "④": "전체 8개에서 3개만 제외해 5"
+      },
+      "check": "4/4",
+      "remainingRisk": "Separate GPT open-book quality review and real Chrome output not performed"
+    }
+  ]
+}
