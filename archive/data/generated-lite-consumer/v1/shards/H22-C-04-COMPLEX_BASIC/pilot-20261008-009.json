@@ -1,10 +1,8 @@
 {
   "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
-  "school": "효천고",
-  "batchId": "MAIN_SOURCE_pilot-20261008-009",
-  "sourceKind": "generated",
   "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-04-COMPLEX_BASIC/shards/pilot-20261008-009.js",
   "sourceShardGitSha": "1e0a7b58499aa76d54df8ff3dd25d5cef10c11d3",
+  "repairShardGitSha": "95ee4742c2b86d58d89a49f314870cb40679cc06",
   "records": [
     {
       "generatedUid": "ALITE-20261008-HYC26-Q14-002",
@@ -22,7 +20,7 @@
         "l3": "복소수의 뜻",
         "l4": "실수부·허수부"
       },
-      "reviewStatus": "REVIEW_PASS",
+      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
       "question": {
         "id": 1,
         "level": "중",
@@ -31,12 +29,12 @@
         "originalCategory": "복소수의 뜻",
         "standardCourse": "공통수학1",
         "standardUnitKey": "H22-C-04",
-        "standardUnit": "복소수와 이차방정식",
+        "standardUnit": "복소수의 뜻",
         "standardUnitOrder": 4,
         "subUnitKey": "H22-C-04-COMPLEX_BASIC",
-        "subUnit": "복소수의 뜻과 표현",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
+        "subUnit": "복소수의 뜻",
+        "subUnitConfidence": "HIGH",
+        "subUnitClassificationDepth": "L2",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -57,7 +55,111 @@
         "solution": "[키포인트] 켤레복소수의 합과 곱으로 실수부와 허수부의 크기를 결정한다.\\n$z+\\overline z=2x=8$이므로 $x=4$이다. $(z-2)(\\overline z-2)=(x-2)^2+y^2=13$이므로 $y^2=9$, 따라서 $|y|=3$이다.",
         "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
         "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
-        "uid": "ALITE-20261008-HYC26-Q14-002"
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-20261008-HYC26-Q14-002",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-04",
+          "subUnitKey": "H22-C-04-COMPLEX_BASIC",
+          "rpmPrimaryRecordId": "H1-RPM-154",
+          "rpmL1": "방정식과 부등식",
+          "rpmL2": "복소수",
+          "rpmL3": "복소수의 뜻",
+          "rpmL4": "실수부·허수부",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+          "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+          "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "approval": "REVIEW_APPROVED",
+          "reviewStatus": "REVIEW_PASS",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-04-COMPLEX_BASIC",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EXACT_CROSSWALK"
+        }
       },
       "metaProjection": {
         "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
@@ -163,21 +265,6 @@
         "physicalStorageBucketKey": "H22-C-04-COMPLEX_BASIC",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
-      },
-      "consumerSelectable": true,
-      "technicalStatus": "READY",
-      "technicalIssues": [],
-      "meta": {
-        "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
-        "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
-        "crossConceptKeys": [],
-        "conditionKeys": [],
-        "integrationPattern": "NONE",
-        "difficultyBucket": 3,
-        "level": "중",
-        "standardCourse": "공통수학1",
-        "standardUnitKey": "H22-C-04",
-        "subUnitKey": "H22-C-04-COMPLEX_BASIC"
       }
     }
   ]
