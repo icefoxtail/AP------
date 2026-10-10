@@ -249,7 +249,7 @@
       "uid": "ALITE-GEUMDANG25-2FINAL-Q09-C3",
       "l4": "EXT-GD25-Q09-LINE-TWO-INTERSECTIONS",
       "primaryL3": "H1-RPM-263",
-      "addedDecision": "점근선·점으로 식을 결정한 뒤 교점 방정식의 서로 다른 두 근을 검증",
+      "addedDecision": "통과점 (3,1)로 복원한 k=4를 이용해 교점 방정식의 두 근을 구하고 그 곱을 산출",
       "crossConceptKeys": [
         "CC_ROOT_INTERSECTION_COUNT_FUNCTION"
       ],
@@ -259,12 +259,12 @@
       "integrationPattern": "RATIONAL_RECOVERY_C3",
       "difficultyBucket": 5,
       "level": "상",
-      "studentStem": "유리함수 $y=\\dfrac{k}{x-p}+q$ ($k\\ne0$)의 점근선이 $x=1$, $y=-1$이고 그래프가 점 $(3,1)$을 지난다. 이 그래프와 직선 $y=x-2$의 두 교점의 $x$좌표의 합은?",
+      "studentStem": "유리함수 $y=\\dfrac{k}{x-p}+q$ ($k\\ne0$)의 점근선이 $x=1$, $y=-1$이고 그래프가 점 $(3,1)$을 지난다. 이 그래프와 직선 $y=x-2$의 두 교점의 $x$좌표의 곱은?",
       "choices": [
-        "$-3$",
+        "$2$",
         "$-1$",
         "$0$",
-        "$2$",
+        "$-3$",
         "$3$"
       ],
       "answer": "④",
@@ -273,7 +273,8 @@
       "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q09-C3-solution.svg",
       "k": 4,
       "p": 1,
-      "q": -1
+      "q": -1,
+      "answerValue": -3
     }
   ],
   "status": "CREATOR_ONLY_BRANCH"

@@ -248,16 +248,16 @@ window.questionBank = [
       "산술기하평균"
     ],
     "wide": false,
-    "content": "두 양수 $x,y$에 대하여 $4x+y=20$일 때, $xy$의 최댓값은?",
+    "content": "양수 $x,y$에 대하여 $4x+y=20$일 때, $x(y+4)$의 최댓값은?",
     "choices": [
-      "$16$",
+      "$9$",
       "$20$",
-      "$40$",
-      "$50$",
-      "$25$"
+      "$25$",
+      "$32$",
+      "$36$"
     ],
     "answer": "⑤",
-    "solution": "양수 $4x$, $y$에 산술평균과 기하평균의 관계를 적용하면 $\\dfrac{4x+y}{2}\\ge\\sqrt{4xy}$이다.\n$4x+y=20$에서 $10\\ge2\\sqrt{xy}$이므로 $xy\\le25$이다.\n등호는 $4x=y$일 때 성립한다. $4x+y=20$과 함께 풀면 $x=\\dfrac52$, $y=10$이고 $xy=25$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "조건에서 $y+4=24−4x=4(6−x)$이므로 $x(y+4)=4x(6−x)$이다.\n양수 $x$와 $6−x$의 합은 6이므로 산술평균과 기하평균의 관계에서 $x(6−x)≤((x+6−x)/2)^2=9$이다.\n따라서 $x(y+4)≤36$이다. 등호는 $x=6−x$, 즉 $x=3$일 때 성립하고 이때 $y=8>0$이므로 최댓값은 36이다. 정답은 ⑤이다.",
     "sourceKind": "generated",
     "sourceType": "generated",
     "sourceExamPath": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
