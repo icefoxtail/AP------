@@ -316,7 +316,7 @@ window.questionBank = [
       "$1$"
     ],
     "answer": "④",
-    "solution": "$f(x)=2x+b$는 기울기가 $2$이므로 역함수가 존재한다. $f^{-1}(y)$는 $2x+b=y$를 풀어 $f^{-1}(y)=\\dfrac{y-b}{2}$이다.\\n따라서 $\\dfrac{7-b}{2}+\\dfrac{3-b}{2}=6$이다. 양변에 $2$를 곱하면 $10-2b=12$이므로 $-2b=2$, $b=-1$이다. 따라서 정답은 ④이다.",
+    "solution": "$f(x)=2x+b$는 기울기가 $2$이므로 역함수가 존재한다. $f^{-1}(y)$는 $2x+b=y$를 풀어 $f^{-1}(y)=\\dfrac{y-b}{2}$이다.\n따라서 $\\dfrac{7-b}{2}+\\dfrac{3-b}{2}=6$이다. 양변에 $2$를 곱하면 $10-2b=12$이므로 $-2b=2$, $b=-1$이다. 따라서 정답은 ④이다.",
     "sourceKind": "generated",
     "sourceType": "generated",
     "sourceExamPath": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
@@ -529,7 +529,7 @@ window.questionBank = [
       "$\\dfrac{31}{6}$"
     ],
     "answer": "④",
-    "solution": "원래 함수는 $f(x)=2+\\dfrac{7}{x-3}$이고 $x\\ne3$이므로 $f(x)\\ne2$이다. 공역이 치역과 같고 일대일 대응이므로 역함수가 존재한다.\\n역함수의 값을 구하려면 원래 함수가 주어진 출력값을 가지는 입력을 찾는다.\n$f(x)=0$일 때 $2x+1=0$이므로 $x=-\\dfrac12$이다. $f(x)=5$일 때 $2x+1=5(x-3)$이므로 $3x=16$에서 $x=\\dfrac{16}{3}$이다.\n두 입력은 정의역에서 제외되는 $3$이 아니므로 모두 허용된다.\n따라서 합은 $-\\dfrac12+\\dfrac{16}{3}=\\dfrac{-3+32}{6}=\\dfrac{29}{6}$이므로 정답은 ④이다.",
+    "solution": "원래 함수는 $f(x)=2+\\dfrac{7}{x-3}$이고 $x\\ne3$이므로 $f(x)\\ne2$이다. 공역이 치역과 같고 일대일 대응이므로 역함수가 존재한다.\n역함수의 값을 구하려면 원래 함수가 주어진 출력값을 가지는 입력을 찾는다.\n$f(x)=0$일 때 $2x+1=0$이므로 $x=-\\dfrac12$이다. $f(x)=5$일 때 $2x+1=5(x-3)$이므로 $3x=16$에서 $x=\\dfrac{16}{3}$이다.\n두 입력은 정의역에서 제외되는 $3$이 아니므로 모두 허용된다.\n따라서 합은 $-\\dfrac12+\\dfrac{16}{3}=\\dfrac{-3+32}{6}=\\dfrac{29}{6}$이므로 정답은 ④이다.",
     "sourceKind": "generated",
     "sourceType": "generated",
     "sourceExamPath": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
