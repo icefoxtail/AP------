@@ -1,3 +1,6 @@
+## CURRENT HARD — JS 신규·수정·검수 Meta 필수 확인 (2026-10-10)
+- 모든 기출·유사·Generated·교재/평가용 JS의 신규 제작·기존 수정·문항 검수에서 [JS Metadata 필수 계약](docs/architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md)을 적용한다. 해당 작업 UID의 standardUnit/subUnit·RPM L1~L4·CrossConcept/Condition/Integration/PT/TPL·level/1~5 난이도·UID/sourceQid/provenance·Consumer/index 정합을 확인한다. 미확정 근거는 정확한 EVIDENCE_DEBT로 기록하고 가짜 키/추정값/가짜 NONE으로 채우지 않는다. 핀포인트 작업의 범위를 무관한 문항 전수 재검으로 확대하지 않는다. 메타 변경은 필수 직접 dependency와 운영 검색 projection에 결속한다.
+
 ## CURRENT HARD — 최신 요청의 작업 범위·종료 조건 우선 (2026-10-10)
 
 - 먼저 최신 사용자 지시의 대상·작업 종류·종료 조건을 따른다. 아래 전수 생산·검수 규정은 명시적으로 맡긴 전체 작업에 적용하며, 기존 문항의 한정 수정 지시를 확대하는 근거가 아니다.
