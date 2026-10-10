@@ -1,0 +1,211 @@
+{
+  "schemaVersion": "ALIVE_QID9_GEUMDANG25_Q04_BLUEPRINT_V1",
+  "sourceQid": 4,
+  "sourceExamPath": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+  "sourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "primaryL3": {
+    "id": "H1-RPM-244",
+    "name": "명제와 조건",
+    "locked": true
+  },
+  "slots": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q04-A1",
+      "primaryL3": "H1-RPM-244",
+      "l4": "명제의 참·거짓",
+      "difficultyBucket": 1,
+      "level": "하",
+      "studentStem": "명제 $p\\to q$가 거짓일 때, 다음 중 반드시 참인 명제는?",
+      "choices": [
+        "$p\\to q$",
+        "$q\\to p$",
+        "$\\sim q\\to\\sim p$",
+        "$p\\land q$",
+        "$\\sim p\\lor q$"
+      ],
+      "answer": "②",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "PROP_FALSE_IMPLICATION"
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q04-A2",
+      "primaryL3": "H1-RPM-244",
+      "l4": "명제의 참·거짓",
+      "difficultyBucket": 2,
+      "level": "하",
+      "studentStem": "명제 $p\\to q$가 거짓일 때, 다음 중 거짓인 명제는?",
+      "choices": [
+        "$p\\lor q$",
+        "$\\sim p\\lor\\sim q$",
+        "$q\\to p$",
+        "$p\\leftrightarrow q$",
+        "$\\sim q$"
+      ],
+      "answer": "④",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "PROP_BICONDITIONAL_FALSE"
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q04-A3",
+      "primaryL3": "H1-RPM-244",
+      "l4": "명제의 참·거짓",
+      "difficultyBucket": 2,
+      "level": "중",
+      "studentStem": "명제 $(p\\land q)\\to r$가 거짓일 때, 다음 중 반드시 참인 명제는?",
+      "choices": [
+        "$p\\to r$",
+        "$q\\to r$",
+        "$r\\to p$",
+        "$\\sim r\\to\\sim q$",
+        "$(p\\land q)\\to r$"
+      ],
+      "answer": "③",
+      "conditionKeys": [
+        "GEN_COND_GD25_Q04_CONJUNCTION"
+      ],
+      "crossConceptKeys": [],
+      "integrationPattern": "PROP_NESTED_ANTECEDENT"
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q04-B1",
+      "primaryL3": "H1-RPM-244",
+      "l4": "명제의 참·거짓",
+      "difficultyBucket": 3,
+      "level": "중",
+      "studentStem": "명제 $p\\to q$가 거짓이다. 다음 다섯 명제 $p\\to q$, $q\\to p$, $\\sim p\\to q$, $\\sim q\\to\\sim p$, $p\\leftrightarrow q$ 중 참인 명제의 개수는?",
+      "choices": [
+        "$0$",
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$"
+      ],
+      "answer": "③",
+      "conditionKeys": [
+        "GEN_COND_GD25_Q04_COUNT"
+      ],
+      "crossConceptKeys": [],
+      "integrationPattern": "PROP_TRUE_COUNT"
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q04-B2",
+      "primaryL3": "H1-RPM-244",
+      "l4": "명제의 참·거짓",
+      "difficultyBucket": 3,
+      "level": "중",
+      "studentStem": "두 명제 $p\\to q$는 참이고 $q\\to p$는 거짓이다. 다음 중 반드시 참인 명제는?",
+      "choices": [
+        "$p\\land q$",
+        "$p\\to\\sim q$",
+        "$q\\to p$",
+        "$\\sim q$",
+        "$p\\leftrightarrow q$"
+      ],
+      "answer": "②",
+      "conditionKeys": [
+        "GEN_COND_GD25_Q04_TWO_DIRECTIONS"
+      ],
+      "crossConceptKeys": [],
+      "integrationPattern": "PROP_ASYMMETRIC_IMPLICATION"
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q04-B3",
+      "primaryL3": "H1-RPM-244",
+      "l4": "명제의 참·거짓",
+      "difficultyBucket": 3,
+      "level": "중",
+      "studentStem": "세 명제 $p,q,r$에 대하여 $p\\to q$는 거짓이고 $q\\lor r$는 참이다. 다음 중 거짓인 명제는?",
+      "choices": [
+        "$p\\land r$",
+        "$p\\lor q$",
+        "$r\\to p$",
+        "$p\\to q$",
+        "$\\sim q\\land r$"
+      ],
+      "answer": "④",
+      "conditionKeys": [
+        "GEN_COND_GD25_Q04_THREE_PROPS"
+      ],
+      "crossConceptKeys": [],
+      "integrationPattern": "PROP_OR_CONDITION"
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q04-C1",
+      "primaryL3": "H1-RPM-244",
+      "l4": "명제의 참·거짓",
+      "difficultyBucket": 4,
+      "level": "중",
+      "studentStem": "실수 $x$가 집합 $\\{-2,-1,0,1,2\\}$의 원소일 때, 명제 '$x^2>0$이면 $x>0$이다.'가 거짓이 되도록 하는 모든 $x$의 값의 합은?",
+      "choices": [
+        "$-1$",
+        "$-2$",
+        "$-3$",
+        "$0$",
+        "$3$"
+      ],
+      "answer": "③",
+      "conditionKeys": [
+        "GEN_COND_GD25_Q04_FINITE_DOMAIN"
+      ],
+      "crossConceptKeys": [
+        "GEN_CC_GD25_Q04_INEQUALITY"
+      ],
+      "integrationPattern": "PROP_FALSE_SET_SUM"
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q04-C2",
+      "primaryL3": "H1-RPM-244",
+      "l4": "명제의 참·거짓",
+      "difficultyBucket": 4,
+      "level": "상",
+      "studentStem": "정수 $x$가 $-3\\le x\\le3$을 만족한다. 명제 '$x^2\\le4$이면 $x\\ge0$이다.'가 거짓이 되는 정수 $x$의 개수는?",
+      "choices": [
+        "$0$",
+        "$1$",
+        "$3$",
+        "$2$",
+        "$4$"
+      ],
+      "answer": "④",
+      "conditionKeys": [
+        "GEN_COND_GD25_Q04_INTEGER_RANGE"
+      ],
+      "crossConceptKeys": [
+        "GEN_CC_GD25_Q04_QUADRATIC_RANGE"
+      ],
+      "integrationPattern": "PROP_FALSE_INTEGER_COUNT"
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q04-C3",
+      "primaryL3": "H1-RPM-244",
+      "l4": "명제의 참·거짓",
+      "difficultyBucket": 5,
+      "level": "상",
+      "studentStem": "각각 참 또는 거짓인 명제 $p,q,r$에 대하여 세 명제 $p\\to q$, $q\\to r$, $r\\to p$ 중 정확히 하나만 거짓이 되는 $(p,q,r)$의 진리값 배정의 개수는?",
+      "choices": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "answer": "⑤",
+      "conditionKeys": [
+        "GEN_COND_GD25_Q04_CYCLE"
+      ],
+      "crossConceptKeys": [],
+      "integrationPattern": "PROP_CYCLIC_TRUTH_CASES"
+    }
+  ]
+}
