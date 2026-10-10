@@ -151,3 +151,8 @@ branch `AGENTS.md`와 main의 Meta 필수 계약 및 수정 AI 책임 정본을 
 | 23 | `PT_FUNCTION_GRAPH_INTERSECTION` / `TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS` | H1-RPM-272 | 쌍 일치 · DIRECT_ACTIVE |
 
 정적 source 재확인: questionBank 23개, id 1–23 연속, PT/TPL 22쌍 완전쌍, conceptClusterKey 각 1개. 이번 정정으로 바꾼 qid는 10개이며 SVG 변경 0개다. Resolver와 receipt validator는 실행하지 않았다. Source pair readback 후에도 Consumer/index parity는 별도 미확인이다. main merge, 배포, DB 변경, Chrome 실렌더는 없었다.
+
+
+## 운영 main 반영 지시 — 2026-10-11 KST
+
+사용자의 추가 지시에 따라 본 전용 branch의 검수 산출물을 main에 병합한다. 병합 범위는 이 branch의 기존 12개 변경 파일(유사 JS, 관련 SVG 10개 경로, 검수 report)이며, 원본 시험지·DB/Consumer/index·배포는 변경 대상이 아니다. 앞선 사용자 지시의 Chrome/브라우저 실렌더 금지는 유지되어 해당 검사는 수행하지 않는다. 따라서 main 반영만으로 production MAIN_DONE 또는 학생 화면 QA 완료를 주장하지 않는다. main 반영 후 변경 파일과 원격 SHA를 readback한다.
