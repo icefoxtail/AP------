@@ -1,0 +1,23 @@
+✔ only exam selection and print appear; source counts match 23/26 (44.0886ms)
+✔ subjective HTML table is parsed as safe real table; unknown tags are escaped (1.7973ms)
+✔ student preview never exposes answers or solution SVG and cannot open solution mode (28.2555ms)
+✔ teacher solution preview uses approved Consumer question in shared single-column sol envelope (32.6317ms)
+✔ mixed solution renderer gives qpp=1 a full-width single column and retains default two-column layout (0.2959ms)
+✔ typeset failure keeps exact one-question TeX diagnostics and still fails closed (0.1145ms)
+✔ closing the teacher popup while its Consumer shard is loading cancels output publication (45.0585ms)
+✔ standalone readers expose only the compact mobile back/mode/more controls (1.0808ms)
+✔ preview stays embedded and mode actions do not reset an iframe (0.7154ms)
+✔ Finder, Saved Paper, and Assignment print URLs are standalone outputs (0.2091ms)
+✔ browser smoke can verify preview-only rendering inside an iframe (0.1059ms)
+✔ display math with BR/newline inside the delimiters remains one complete typeset atom (1.4837ms)
+✔ inline formulas stay atomic when neighboring prose is split into chunks (0.1588ms)
+✔ nested semantic markup and existing MathJax output remain intact (0.3721ms)
+✔ long plain solutions still page and the strict unrendered-math detector remains active (2.5824ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 255.3741

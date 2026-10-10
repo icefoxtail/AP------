@@ -1,0 +1,57 @@
+{
+  "evidenceType": "PALMA_SOLUTION_OUTPUT_POST_MERGE_TECHNICAL_RECEIPT",
+  "status": "STATIC_AND_RUNTIME_PASS_PHYSICAL_CHROME_PENDING",
+  "head": "9399b2ee1689723e0c1fcad82fd2383ee711596d",
+  "mergeParentMain": "450338e6855ae49e93b56a58abb181aabc77db91",
+  "trackedCodeSha256": {
+    "archive/engine.html": "8D6974F5F05F18231548183CFC415E1E2B95AC65B46D530FB540C605EC75D2F1",
+    "archive/mixed_engine.html": "F61FCB0FC1DA5599286873DCA67AA6D4CC301A6EBB9A612DCD6EB12A41C3F7A3",
+    "archive/archive2-output.js": "7110C184F40CA77A202FD33A4AF2E8645734027F89E27CBDB58630C47F149A2F",
+    "archive/common-fast-runtime.js": "FB6FB23AA1653F051B698BB1B5AE0D60BAE9E6A13F9404F3B905867EC9B4A099",
+    "archive/solution-render-executor.js": "779453C1BCABD9EE7EE099D8878F12AA3D245DE51ABB3E8D2224454E05E678BD",
+    "tests/archive2-generated-bank-subjective-table.test.cjs": "561CE1E5579B9582C0C3229F690EE24C64BE7096E277F85BECB11A553BBE043E",
+    "tests/archive2-solution-chunker.test.cjs": "AD59966A78E297783339F6EBACBBA5D18CCBCCB8AC33C04DE6C9749AFC65CDCF",
+    "tests/archive2-reader-controls.test.cjs": "0BBEA8E17ACF8DA343C00A92D9219E75BF42527C54C11D2516518060D5E6849D"
+  },
+  "focusedTests": {
+    "command": "node --test tests/archive2-generated-bank-subjective-table.test.cjs tests/archive2-solution-chunker.test.cjs tests/archive2-reader-controls.test.cjs",
+    "status": "PASS 15/15",
+    "exitCode": 0,
+    "rawLog": "focused-tests-post-main-merge.raw.txt",
+    "rawLogSha256": "F87CEA52BEC3B6AE6268D71E8AD73B8A837B85CBBA9039CAFBE71748065346B1"
+  },
+  "archive2RuntimeGuard": {
+    "command": "node tools/check-archive2-runtime.cjs",
+    "status": "PASS 42/42",
+    "exitCode": 0,
+    "rawLogSha256": "CBA7B9CCFAFC483F36ECF43D9BCCBB9CA678E9A0A2BDD1A76E8B6DA4AF56CB66",
+    "rawLog": "archive2-runtime-post-main-merge.raw.txt"
+  },
+  "physicalFixture": {
+    "serverScript": "serve-physical-preview-post-rebind.cjs",
+    "serverScriptSha256": "58DE9A84BBBB0651887482CAAAEC088E5EFDCC7558EF39E7B346A6190643BF0B",
+    "command": "node .tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/serve-physical-preview.cjs 41741 --manifest-path=.tmp/archive/palma-svg-speed-pilot-20261010/PALMA25_H1_2MID/revised-batch-v8/manifest.json --manifest-sha=931B258A337CD0EE81D5B5D76B8051291672A7A39C91742BB7BF48C4B6266736 --apply-receipt-sha=43261EA494B0C36003550131D2F48A6499B5E06FF98639ED3BE7AEB8C16BC655 --hash-rebind-receipt-sha=B8C4BF4DF5398D75A7D8647F389BAE3F5A52E3B6FA000A429D2E7A37211D648B",
+    "baseUrl": "http://127.0.0.1:41741/archive/",
+    "strictCandidateManifestDriftOverride": false,
+    "physicalSourceConsumerAssetMode": true,
+    "sourceCount": 10,
+    "consumerShardCount": 10,
+    "indexSha256": "55171B8A19F211674CDEC7809A6A702F231D041CFC88131C518DF89806975C4A",
+    "hashOnlyRebindReceiptSha256": "B8C4BF4DF5398D75A7D8647F389BAE3F5A52E3B6FA000A429D2E7A37211D648B",
+    "indexHttpStatus": 200,
+    "productionWritesByFixture": false
+  },
+  "physicalChromeAfterMerge": {
+    "status": "PENDING_REVIEWER",
+    "required": [
+      "all-10 qpp1 teacher solution and font gate",
+      "student no-leak and question-only print",
+      "qpp4 default two-column regression"
+    ]
+  },
+  "publication": {
+    "candidateManifestSha256": "931B258A337CD0EE81D5B5D76B8051291672A7A39C91742BB7BF48C4B6266736",
+    "publicationAuthorized": false,
+    "renderStatus": "NOT_RUN"
+  }
+}
