@@ -19,7 +19,7 @@ async function main(){
   await wait("document.querySelector('#generated-search')&&rows.length>=198",'consumer index ready');
   const roster=await evaluate("(()=>{const q=rows.filter(r=>r.school==='금당고'&&r.uid.startsWith('ALITE-GEUMDANG25-2FINAL-'));const counts=Array.from({length:22},(_,i)=>q.filter(r=>r.sourceQid===i+1).length);return {count:q.length,unique:new Set(q.map(r=>r.uid)).size,counts,errors:q.filter(r=>r.technicalStatus==='ERROR').length}})()");
   if(roster.count!==198||roster.unique!==198||roster.counts.some(n=>n!==9)||roster.errors!==0)throw Error('Geumdang source roster mismatch '+JSON.stringify(roster));
-  await evaluate("(()=>{const x=document.querySelector('#generated-search');x.value='ALITE-GEUMDANG25-2FINAL-Q02-C2';x.dispatchEvent(new Event('input',{bubbles:true}));return true})()");
+  await evaluate("(()=>{document.querySelector('#manual-section').open=true;const x=document.querySelector('#generated-search');x.value='ALITE-GEUMDANG25-2FINAL-Q02-C2';x.dispatchEvent(new Event('input',{bubbles:true}));return true})()");
   await wait("document.querySelectorAll('#generated-results article').length===1",'exact UID search');
   const search=await evaluate("(()=>({text:document.querySelector('#generated-results article').innerText,summary:document.querySelector('#generated-search-summary').innerText}))()");
   if(!search.text.includes('금당고')||!search.text.includes('ALITE-GEUMDANG25-2FINAL-Q02-C2')||!search.text.includes('기술 상태: READY'))throw Error('Search result not operational '+JSON.stringify(search));

@@ -342,13 +342,14 @@ async function main() {
       teacherNoteHidden:document.getElementById('teacher-output-note')?.hidden,
       teacherToolsHidden:document.getElementById('teacher-mock-tools')?.hidden,
       legacyCards:document.querySelectorAll('#exam-cards .exam-card').length,
+      expectedLegacyCards:availableExams().length,
       manualExists:!!document.querySelector('.manual-section')
     }))()`);
     assert(initial.fields['source-year'] === '2025' && initial.fields['source-school'] === '팔마고' &&
       initial.fields['source-grade'] === '고1' && initial.fields['source-subject'] === '공통수학2' &&
       initial.fields['source-semester'] === '2' && initial.fields['source-term'] === '중간', 'Wrong default source exam.', initial);
     assert(initial.coverage.includes('23/23') && initial.missing.includes('모든 원본'), 'Full source coverage is not visible.', initial);
-    assert(initial.purpose.every(item => item.checked) && initial.legacyCards === 2 && initial.manualExists &&
+    assert(initial.purpose.every(item => item.checked) && initial.legacyCards === initial.expectedLegacyCards && initial.expectedLegacyCards >= 4 && initial.manualExists &&
       initial.teacherNoteHidden === false && initial.teacherToolsHidden === true, 'Purpose defaults, teacher gating, or existing paths changed.', initial);
     const originalViewport = await evaluate('({width:window.innerWidth,height:window.innerHeight})');
     await send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 1100, deviceScaleFactor: 1, mobile: false });
@@ -402,7 +403,7 @@ async function main() {
         placeholders:[...document.querySelectorAll('.mock-question-body')].some(node=>node.textContent.includes('불러오는 중'))
       };})()`);
       assert(normalize(feedback.status).length > 0 || feedback.placeholders, 'Generate click had no immediate visible feedback.', feedback);
-      await waitFor(evaluate, "document.querySelectorAll('.mock-question-body[data-loaded=true]').length===document.querySelectorAll('.mock-question').length && document.querySelectorAll('.mock-question').length>0", 'loaded generated preview');
+      await waitFor(evaluate, "!mockBusy && document.querySelectorAll('.mock-question-body[data-loaded=true]').length===document.querySelectorAll('.mock-question').length && document.querySelectorAll('.mock-question').length>0", 'loaded generated preview');
       return evaluate(cardSnapshotExpression());
     };
     const checkRows = (cards, purposes, mode, difficulty, quotas = {}) => {
@@ -525,7 +526,7 @@ async function main() {
       'Locking a question recreated or removed already rendered math.', { before: mathBeforeLock, after: mathAfterLock });
     check('locking preserves already rendered MathJax nodes', { mathNodes: mathAfterLock.count });
     await evaluate("document.getElementById('regenerate-unlocked').click(); true");
-    await waitFor(evaluate, "document.querySelectorAll('.mock-question-body[data-loaded=true]').length===23", 'regenerated unlocked preview');
+    await waitFor(evaluate, "!mockBusy && document.querySelectorAll('.mock-question-body[data-loaded=true]').length===23", 'regenerated unlocked preview');
     let regenerated = await evaluate(cardSnapshotExpression());
     assert(regenerated[0].uid === beforeLock[0].uid && regenerated[0].lockPressed, 'Locked candidate changed during regeneration.', { before: beforeLock[0], after: regenerated[0] });
     assert(regenerated.slice(1).every(card => card.uid !== beforeLock[card.qid - 1].uid), 'An unlocked source question failed to switch to a different candidate.',
@@ -535,7 +536,7 @@ async function main() {
 
     const beforeReplace = regenerated[1];
     await evaluate("document.querySelector('.mock-question[data-source-qid=\"2\"] .mock-replace').click(); true");
-    await waitFor(evaluate, `document.querySelector('.mock-question[data-source-qid="2"]')?.dataset.uid!==${JSON.stringify(beforeReplace.uid)}`, 'individual replacement');
+    await waitFor(evaluate, `!mockBusy && document.querySelector('.mock-question[data-source-qid="2"]')?.dataset.uid!==${JSON.stringify(beforeReplace.uid)}`, 'individual replacement');
     regenerated = await evaluate(cardSnapshotExpression());
     assert(regenerated[1].qid === beforeReplace.qid && regenerated[1].uid !== beforeReplace.uid &&
       new Set(regenerated.map(card => card.uid)).size === SOURCE_COUNT, 'Individual replacement violated qid/UID constraints.', { before: beforeReplace, after: regenerated[1] });
@@ -567,7 +568,7 @@ async function main() {
       pendingState.message.includes('대체 후보') && pendingState.message.includes('불러옵니다'),
       'Source or condition controls stayed active while a replacement shard was loading.', pendingState);
     await evaluate(`(()=>{const release=window.__qaHeldShardReads.splice(0);window.__qaHoldShardReads=false;window.fetch=window.__qaOriginalFetch;release.forEach(resolve=>resolve());return true;})()`);
-    await waitFor(evaluate, `document.querySelector('.mock-question[data-source-qid="3"]')?.dataset.uid!==${JSON.stringify(beforeDelayedReplace.uid)} && document.querySelector('.mock-question[data-source-qid="3"] .mock-question-body[data-loaded=true]')`, 'delayed replacement completion');
+    await waitFor(evaluate, `!mockBusy && document.querySelector('.mock-question[data-source-qid="3"]')?.dataset.uid!==${JSON.stringify(beforeDelayedReplace.uid)} && document.querySelector('.mock-question[data-source-qid="3"] .mock-question-body[data-loaded=true]')`, 'delayed replacement completion');
     regenerated = await evaluate(cardSnapshotExpression());
     const afterDelayed = await evaluate(`(()=>({
       school:document.getElementById('source-school').value,
@@ -586,56 +587,40 @@ async function main() {
     const previewBeforePrint = regenerated.map(({ qid, uid, purpose, difficulty, stem, stemSource, choices, choiceSources, mathSources, renderedMathSources, images }) => ({
       qid, uid, purpose, difficulty, stem, stemSource, choices, choiceSources, mathSources, renderedMathSources, images
     }));
-    await evaluate(`(()=>{window.__qaPrintCount=0;window.__qaPrintedMockUids=[];window.print=()=>{window.__qaPrintCount++;window.__qaPrintedMockUids=mockItems.map(item=>item.row.uid);};return true;})()`);
     await evaluate("document.getElementById('print-mock').click(); true");
-    await waitFor(evaluate, 'window.__qaPrintCount===1', 'student question print invocation');
-    const paper = await evaluate(`(()=>({
-      title:document.getElementById('paper-title').textContent,
-      uids:window.__qaPrintedMockUids,
-      questions:[...document.querySelectorAll('#paper-items .paper-question')].map(node=>({
-        stem:(node.querySelector('.stem')?.innerText||'').replace(/\\s+/g,' ').trim(),
-        stemSource:node.querySelector('.stem')?.dataset.sourceText,
-        choices:[...node.querySelectorAll('.choice')].map(x=>x.innerText.replace(/\\s+/g,' ').trim()),
-        choiceSources:[...node.querySelectorAll('.choice')].map(x=>x.dataset.sourceText),
-        mathSources:[...node.querySelectorAll('.stem,.choice')].filter(x=>(x.dataset.sourceText||'').includes('$')).length,
-        renderedMathSources:[...node.querySelectorAll('.stem,.choice')].filter(x=>(x.dataset.sourceText||'').includes('$')&&x.querySelector('mjx-container')).length,
-        images:[...node.querySelectorAll('img')].map(x=>x.getAttribute('src'))
-      })),
-      mathNodes:document.querySelectorAll('#paper-items mjx-container').length,
-      answerBlocks:document.querySelectorAll('#paper-items .answer').length,
-      hasAnswerText:/정답\\s*:|해설/.test(document.getElementById('paper-items').innerText),
-      brokenImages:[...document.querySelectorAll('#paper-items img')].filter(img=>!img.complete||img.naturalWidth===0).map(img=>img.src)
+    const examTarget=await waitForPopup(session.port,session.targetId,'/archive/mixed_engine.html');
+    const examPage=await attachTarget(session.port,examTarget.id);
+    await waitFor(examPage.evaluate,"AppState?.mode==='exam' && document.querySelectorAll('#print-area .q-box').length===23",'mixer student exam render',60000);
+    const paper=await examPage.evaluate(`(()=>({
+      mode:AppState.mode,urlMode:new URLSearchParams(location.search).get('mode'),
+      preview:new URLSearchParams(location.search).get('preview'),
+      uids:(AppState.outputEnvelope||window.__AP_OUTPUT_ENVELOPE__)?.questionUids||[],
+      questions:AppState.data.map((q,i)=>({uid:q.uid,content:q.content,choices:q.choices,image:q.image,
+       sourceMath:Number(String(q.content).includes(String.fromCharCode(36)))+(q.choices||[]).filter(c=>String(c).includes(String.fromCharCode(36))).length,
+       renderedMathSources:Number(!![...document.querySelectorAll('#print-area .q-box')][i]?.querySelector('.q-content mjx-container'))+[...([...document.querySelectorAll('#print-area .q-box')][i]?.querySelectorAll('.choice-text')||[])].filter(c=>c.querySelector('mjx-container')).length,
+       renderedMath:[...document.querySelectorAll('#print-area .q-box')][i]?.querySelectorAll('mjx-container').length||0})),
+      boxes:document.querySelectorAll('#print-area .q-box').length,
+      mathNodes:document.querySelectorAll('#print-area mjx-container').length,
+      answerBlocks:document.querySelectorAll('#print-area .sol-box,#print-area .sol-meta,#print-area .ans-cell').length,
+      brokenImages:[...document.querySelectorAll('#print-area img')].filter(img=>!img.complete||img.naturalWidth===0).map(img=>img.src)
     }))()`);
-    assert(paper.questions.length === SOURCE_COUNT && paper.uids.length === SOURCE_COUNT &&
-      JSON.stringify(paper.uids) === JSON.stringify(previewBeforePrint.map(item => item.uid)), 'Printed UID order or question count differs from preview.', { paperCount: paper.questions.length, printUids: paper.uids });
-    assert(paper.answerBlocks === 0 && !paper.hasAnswerText, 'Question-only print contains an answer or solution block.');
-    assert(paper.mathNodes > 0, 'Printed questions left their math unrendered.', { mathNodes: paper.mathNodes });
-    for (let index = 0; index < SOURCE_COUNT; index += 1) {
-      const preview = previewBeforePrint[index], printed = paper.questions[index];
-      assert(preview.qid === index + 1 && preview.stemSource === printed.stemSource &&
-        JSON.stringify(preview.choiceSources) === JSON.stringify(printed.choiceSources) &&
-        preview.mathSources === preview.renderedMathSources && printed.mathSources === printed.renderedMathSources &&
-        preview.mathSources === printed.mathSources && JSON.stringify(preview.images) === JSON.stringify(printed.images),
-      'Printed question content/assets differ from preview or some source math was not typeset.', { qid: preview.qid, preview, printed });
+    assert(paper.mode==='exam'&&paper.urlMode==='exam'&&paper.preview==='1'&&paper.boxes===SOURCE_COUNT&&
+      JSON.stringify(paper.uids)===JSON.stringify(previewBeforePrint.map(q=>q.uid)),'Mixer exam mode, count or UID order mismatch.',paper);
+    const expectedQuestions=await evaluate("Promise.all(mockItems.map(item=>questionFor(item.row)))");
+    for(let index=0;index<SOURCE_COUNT;index++){
+      const q=expectedQuestions[index],printed=paper.questions[index];
+      assert(q.uid===printed.uid&&q.content===printed.content&&JSON.stringify(q.choices)===JSON.stringify(printed.choices)&&q.image===printed.image,
+        'Mixer changed frozen student input or assets.',{index,uid:q.uid});
+      if([q.content,...(q.choices||[])].some(text=>String(text).includes('$')))
+        assert(printed.renderedMath>0&&printed.sourceMath===printed.renderedMathSources,'Mixer left a mathematical student field untypeset.',{index,uid:q.uid});
     }
-    assert(paper.brokenImages.length === 0, 'A question image failed to load in the printed sheet.', paper.brokenImages);
-    await send('Emulation.setEmulatedMedia', { media: 'print' });
-    const printLayout = await evaluate(`(()=>(
-      {visible:getComputedStyle(document.getElementById('paper')).display!=='none',
-       questionCount:document.querySelectorAll('#paper-items .paper-question').length,
-       renderedMathNodes:document.querySelectorAll('#paper-items mjx-container').length,
-       answerBlocks:document.querySelectorAll('#paper-items .answer').length,
-       width:document.getElementById('paper').getBoundingClientRect().width}
-    ))()`);
-    assert(printLayout.visible && printLayout.questionCount === SOURCE_COUNT && printLayout.renderedMathNodes > 0 && printLayout.answerBlocks === 0,
-      'Print media did not show the complete question-only, typeset paper.', printLayout);
-    await saveScreenshot(send, output, 'student-print-output.png'); evidence.screenshots.push('student-print-output.png');
-    await send('Emulation.setEmulatedMedia', { media: 'screen' });
-    check('question print matches preview UID order/raw content/math/assets and excludes answers/solutions', {
-      count: paper.questions.length, title: paper.title, renderedMathNodes: paper.mathNodes, printLayout,
-      previewMathBeforePrint: mathAudit(previewBeforePrint),
-      printedQuestionMath: mathAudit(paper.questions.map((question, index) => ({ qid: index + 1, uid: paper.uids[index], ...question })))
-    });
+    assert(paper.answerBlocks===0&&paper.brokenImages.length===0&&paper.mathNodes>0,'Mixer student exam contains solution blocks, broken assets or unrendered math.',paper);
+    await examPage.send('Emulation.setEmulatedMedia',{media:'print'});
+    const printLayout=await examPage.evaluate("({visible:getComputedStyle(document.getElementById('print-area')).display!=='none',questionCount:document.querySelectorAll('#print-area .q-box').length})");
+    assert(printLayout.visible&&printLayout.questionCount===SOURCE_COUNT,'Mixer print media omits questions.',printLayout);
+    await saveScreenshot(examPage.send,output,'student-print-output.png');evidence.screenshots.push('student-print-output.png');
+    check('student mixer exam preserves exact source UID order/content/choices/assets and renders print media',{...paper,printLayout});
+    await examPage.evaluate('window.close(); true').catch(()=>{});examPage.socket.close();
 
     // The previous manual search/select entry point stays available and question-only.
     await evaluate("document.querySelector('.manual-section > summary').click(); true");
@@ -645,9 +630,10 @@ async function main() {
       count:document.querySelectorAll('#generated-results .generated-question-card').length,
       label:document.querySelector('#generated-results .generated-question-card')?.innerText,
       detailsOpen:document.querySelector('.manual-section')?.open===true,
-      legacyExamCards:document.querySelectorAll('#exam-cards .exam-card').length
+      legacyExamCards:document.querySelectorAll('#exam-cards .exam-card').length,
+      expectedLegacyCards:availableExams().length
     }))()`);
-    assert(manual.count === 1 && manual.detailsOpen && manual.legacyExamCards === 2 && manual.label.includes('ALITE-PALMA25-2MID-Q01-A1'),
+    assert(manual.count === 1 && manual.detailsOpen && manual.legacyExamCards === manual.expectedLegacyCards && manual.expectedLegacyCards >= 4 && manual.label.includes('ALITE-PALMA25-2MID-Q01-A1'),
       'Manual search/select or legacy school output path regressed.', manual);
     await evaluate("document.querySelector('#generated-results .generated-question-card button').click(); true");
     await waitFor(evaluate, "document.getElementById('generated-preview')?.hidden===false && document.querySelector('#generated-preview .paper-question')", 'manual student preview');

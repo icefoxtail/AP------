@@ -1,7 +1,7 @@
 {
   "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
   "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-04-COMPLEX_BASIC/shards/pilot-20261008-008.js",
-  "sourceShardGitSha": "7b0f46f1a0e3c5b5a19a359e36bc8c5fc08c0f3c",
+  "sourceShardGitSha": "a0117943e9178ed1b04037ac21a6d21f1c803db3",
   "repairShardGitSha": "3e7a3ea3b7cfdeb9aab31e2fddc240556e006a3f",
   "records": [
     {
@@ -11,7 +11,7 @@
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 13,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-04-COMPLEX_BASIC/shards/pilot-20261008-008.js",
-      "sourceShardGitSha": "7b0f46f1a0e3c5b5a19a359e36bc8c5fc08c0f3c",
+      "sourceShardGitSha": "a0117943e9178ed1b04037ac21a6d21f1c803db3",
       "repairShardGitSha": "3e7a3ea3b7cfdeb9aab31e2fddc240556e006a3f",
       "localOrdinal": 1,
       "l2": "H22-C-04-COMPLEX_BASIC",
@@ -33,9 +33,9 @@
         "standardUnit": "복소수와 이차방정식",
         "standardUnitOrder": 4,
         "subUnitKey": "H22-C-04-COMPLEX_BASIC",
-        "subUnit": "복소수의 뜻과 표현",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
+        "subUnit": "복소수와 이차방정식",
+        "subUnitConfidence": "HIGH",
+        "subUnitClassificationDepth": "L2",
         "questionType": "객관식",
         "layoutTag": "grid",
         "wide": false,
@@ -46,17 +46,16 @@
         ],
         "content": "방정식 $x^3=1$의 한 허근을 $\\omega$라 한다. 두 실수 $a,b$에 대하여 $a\\omega+b=2\\omega+5$가 성립할 때, $2a+b$의 값은?",
         "choices": [
-          "5",
           "7",
           "9",
           "11",
-          "13"
+          "13",
+          "15"
         ],
-        "answer": "③",
+        "answer": "②",
         "solution": "[키포인트] $\\omega$는 실수가 아니므로 실수계수와 허수계수의 차이를 이용해 두 미지수를 결정한다.\n$(a-2)\\omega+(b-5)=0$이고 $a-2$, $b-5$는 실수이다.\n$\\omega$가 허수이므로 이 등식이 성립하려면 $a-2=0$, $b-5=0$이어야 한다.\n따라서 $a=2$, $b=5$이고 $2a+b=9$이다.",
         "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
         "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
-        "uid": "ALITE-20261008-HYC26-Q13-004",
         "metaProjection": {
           "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
           "uid": "ALITE-20261008-HYC26-Q13-004",

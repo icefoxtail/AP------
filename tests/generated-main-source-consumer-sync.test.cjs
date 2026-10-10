@@ -5,7 +5,7 @@ const fs=require('node:fs');
 const os=require('node:os');
 const path=require('node:path');
 const crypto=require('node:crypto');
-const {spawnSync}=require('node:child_process');
+const {spawnSync,execFileSync}=require('node:child_process');
 
 const repo=path.resolve(__dirname,'..');
 const script=path.join(repo,'archive/tools/generated-meta/rebuild-main-source-consumer.mjs');
@@ -124,4 +124,37 @@ test('Pages release derives the complete source projection atomically without a 
  assert.match(release,/branches: \[main\]/);
  assert.match(release,/needs: build/,'deployment requires the complete build job');
  assert.doesNotMatch(release,/gh pr (?:create|merge)|git push origin (?:main|HEAD:main)/);
+});
+
+test('Windows CRLF source worktrees project the canonical Git blob SHA into Consumer rows',t=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'main-generated-crlf-sha-'));t.after(()=>fs.rmSync(root,{recursive:true,force:true}));
+ const gitInit=spawnSync('git',['init','-q'],{cwd:root,encoding:'utf8'});assert.equal(gitInit.status,0,gitInit.stderr);
+ const put=(rel,bytes)=>{const file=path.join(root,rel);fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,bytes);return file;};
+ put('.gitattributes',Buffer.from('*.js text eol=lf\n'));
+ put('archive/tools/generated-meta/rebuild-main-source-consumer.mjs',fs.readFileSync(script));
+ const uid='ALITE-CRLF26-2FINAL-Q01-A1';
+ const sourcePath='archive/generated/lite/v1/2022/H1/TEST-UNIT/shards/hanbit-qid9.js';
+ const metaPath='archive/generated/lite/v1/2022/H1/TEST-UNIT/metadata/hanbit-qid9.json';
+ const examPath='archive/exams/original/high/h1/2final/26_한빛고_2학기_기말_고1_기출.js';
+ const sourceExamSha='a'.repeat(40);
+ put(examPath,Buffer.from('window.questionBank = [{id:1}];\n'));
+ const question={id:1,uid,sourceQid:1,sourceKind:'generated',content:'조건을 적용한다.',choices:['1','2','3','4','5'],answer:'①',solution:'조건을 적용하여 답을 구한다.',standardCourse:'공통수학2',standardUnitKey:'TEST-01',subUnitKey:'TEST-UNIT',meta:{standardCourse:'공통수학2',standardUnitKey:'TEST-01',subUnitKey:'TEST-UNIT'}};
+ const sourceBytes=Buffer.from(('window.questionBank = '+JSON.stringify([question])+';\n').replace(/\n/g,'\r\n'));
+ put(sourcePath,sourceBytes);
+ put(metaPath,jsonBytes([{uid,sourceQid:1,sourceArchiveFile:examPath,sourceBlobSha:sourceExamSha,sourceSchoolMarker:'한빛고',standardCourse:'공통수학2',subUnitKey:'TEST-UNIT',meta:question.meta}]));
+ put('alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_한빛고_2학기_기말_고1/GPT_QID9_EXAM_MANIFEST.json',jsonBytes({
+  schemaVersion:'ALIVE_EXAM_SINGLE_BRANCH_QID_COMMITS_v1',originalSourceExam:examPath,sourceBlobSha:sourceExamSha,sourceQidCount:1,
+  school:'한빛고',year:2026,grade:'고1',subject:'공통수학2',qidLedger:[{sourceQid:1,uids:[uid]}]
+ }));
+ put('archive/data/generated-lite-consumer/v1/index.json',jsonBytes({schemaVersion:'ALIVE_GENERATED_CONSUMER_INDEX_V1',sourceKind:'generated',records:[],recordCount:0,approvedCount:0,userDisabledUids:[],withdrawnUids:[]}));
+ const rawSha=gitSha(sourceBytes);
+ const cleanSha=execFileSync('git',['hash-object',`--path=${sourcePath}`,path.join(root,sourcePath)],{cwd:root,encoding:'utf8'}).trim();
+ assert.notEqual(cleanSha,rawSha,'the fixture must distinguish CRLF working bytes from Git clean bytes');
+ const written=run(root,'--write');assert.equal(written.status,'PASS');assert.equal(written.registeredCount,1);
+ const index=JSON.parse(fs.readFileSync(path.join(root,'archive/data/generated-lite-consumer/v1/index.json'),'utf8'));
+ const row=index.records.find(record=>record.uid===uid);
+ const consumer=JSON.parse(fs.readFileSync(path.join(root,'archive',row.shard),'utf8'));
+ const consumerRow=consumer.records.find(record=>record.generatedUid===uid);
+ assert.equal(row.sourceShardGitSha,cleanSha);
+ assert.equal(consumerRow.sourceShardGitSha,cleanSha);
 });

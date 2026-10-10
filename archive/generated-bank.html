@@ -188,7 +188,7 @@ window.MathJax={loader:{paths:{mathjax:AP_VENDOR_BASE+'mathjax','mathjax-tex':AP
 <div id="mock-questions" class="mock-questions" aria-live="polite"></div>
 <div class="mock-toolbar">
 <button id="regenerate-unlocked" type="button" disabled>고정하지 않은 문항 다시 섞기</button>
-<button id="print-mock" type="button" class="primary" disabled>모의고사 인쇄</button>
+<button id="print-mock" type="button" class="primary" disabled>모의고사 출력 미리보기</button>
 </div>
 <p id="teacher-output-note" class="coverage-detail">교사용 정답표와 해설은 교사 로그인 후 사용할 수 있습니다.</p>
 <div id="teacher-mock-tools" class="mock-toolbar" hidden>
@@ -600,37 +600,21 @@ async function regenerateUnlocked(){
  catch(error){if(token===mockPreviewToken)status("문항을 다시 불러오지 못했습니다: "+(error.message||"오류"));}
  finally{mockBusy=false;setBuilderBusy(false);if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)updateBuilderReadiness();else syncMockActions(true);}
 }
-async function printMock(){
- if(mockBusy||!mockItems.length)return;
- const chosen=mockItems.map(item=>item.row),uids=chosen.map(row=>row.uid),qids=chosen.map(row=>row.sourceQid);
- if(!unique(uids)||!unique(qids)||chosen.some(row=>!isSelectable(row)||!belongsToSourceExam(row))){status("문항 승인 상태, 기준 시험지 결속 또는 원본 번호 중복을 확인하지 못했습니다.");return;}
- const configKey=mockConfigKey();
- if(generatedConfigKey!==configKey){status("출제 조건이 변경되었습니다. 새 조건으로 다시 생성한 뒤 인쇄해 주세요.");updateBuilderReadiness();return;}
- const token=mockPreviewToken,sourceSha=sourceExamChoice?.sha;
- mockBusy=true;setBuilderBusy(true);$("print-mock").disabled=true;
- try{
-  const questions=await Promise.all(chosen.map(questionFor)),panel=$("paper-items"),fragment=document.createDocumentFragment();
-  if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)throw Error("시험지 선택이 바뀌었습니다. 현재 조건으로 다시 생성해 주세요.");
-  for(let index=0;index<chosen.length;index++){const part=document.createElement("section");part.className="paper-question";text(part,String(index+1)+".","div","paper-number");questionMarkup(part,questions[index],chosen[index],false);fragment.appendChild(part);}
-  replacePaperItems(panel,fragment);$("paper-title").textContent=examTitle(sourceExamChoice)+" 모의고사 · "+chosen.length+"문항";
-  await typesetPaper(panel);status("정답과 해설을 제외한 "+chosen.length+"문항 시험지를 인쇄합니다.");window.print();
- }catch(error){status("모의고사 출력을 준비하지 못했습니다: "+(error.message||"오류"));}
- finally{mockBusy=false;setBuilderBusy(false);if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)updateBuilderReadiness();else syncMockActions(true);}
-}
+async function printMock(){return openMockOutput("exam");}
 async function openMockOutput(mode){
- if(!isTeacherSession()){status("교사 로그인 후 정답표와 해설을 확인할 수 있습니다.");return;}
- if(!["ans","sol"].includes(mode)||mockBusy||!mockItems.length)return;
+ if(mode!=="exam"&&!isTeacherSession()){status("교사 로그인 후 정답표와 해설을 확인할 수 있습니다.");return;}
+ if(!["exam","ans","sol"].includes(mode)||mockBusy||!mockItems.length)return;
  if(generatedConfigKey!==mockConfigKey()){status("출제 조건이 변경되었습니다. 새 조건으로 다시 생성해 주세요.");updateBuilderReadiness();return;}
  const chosen=mockItems.map(item=>item.row),questionUids=chosen.map(row=>row.uid),sourceQids=chosen.map(row=>row.sourceQid),sourceSha=sourceExamChoice?.sha,token=mockPreviewToken;
  if(!unique(questionUids)||!unique(sourceQids)||chosen.some(row=>!isSelectable(row)||!belongsToSourceExam(row))){status("선택한 문항 승인 상태, 기준 시험지 결속 또는 원본 번호 중복을 확인하지 못했습니다.");return;}
  const popup=window.open("about:blank","_blank");
- if(!popup){status("팝업을 허용한 뒤 교사용 자료를 열어 주세요.");return;}
- let envelope=null;mockBusy=true;setBuilderBusy(true);renderTeacherMockControls();status(mode==="ans"?"교사용 정답표를 준비합니다.":"교사용 해설지를 준비합니다.");
+ if(!popup){status("팝업을 허용한 뒤 출력 미리보기를 열어 주세요.");return;}
+ let envelope=null;mockBusy=true;setBuilderBusy(true);renderTeacherMockControls();status(mode==="exam"?"믹서 엔진에서 모의고사 시험지를 준비합니다.":mode==="ans"?"교사용 정답표를 준비합니다.":"교사용 해설지를 준비합니다.");
  try{
   const loaded=await Promise.all(chosen.map(questionFor));
   if(popup.closed)return;
   if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)throw Error("현재 모의고사 구성이 바뀌었습니다. 다시 생성해 주세요.");
-  if(!isTeacherSession())throw Error("교사 로그인을 확인한 뒤 다시 시도해 주세요.");
+  if(mode!=="exam"&&!isTeacherSession())throw Error("교사 로그인을 확인한 뒤 다시 시도해 주세요.");
   const output=window.Archive2Output;
   if(!output?.publishOutputEnvelope||!output?.outputEnvelopeUrl)throw Error("교사용 출력 엔진을 불러오지 못했습니다.");
   const questions=mode==="sol"?loaded.map(question=>({...question,solutionImageSize:"full",solutionImageLayout:"fullwidth"})):loaded;
@@ -640,9 +624,9 @@ async function openMockOutput(mode){
   });
   if(popup.closed){await output.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);return;}
   if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)throw Error("현재 모의고사 구성이 바뀌었습니다. 다시 생성해 주세요.");
-  const url=output.outputEnvelopeUrl("mixed_engine.html",location.href,envelope);
+  const url=output.outputEnvelopeUrl("mixed_engine.html",location.href,envelope,{preview:mode==="exam"});
   popup.location.href=url.href;
-  status(mode==="ans"?"교사용 정답표를 열었습니다.":"교사용 해설지를 열었습니다.");
+  status(mode==="exam"?"믹서 엔진에서 모의고사 출력 미리보기를 열었습니다.":mode==="ans"?"교사용 정답표를 열었습니다.":"교사용 해설지를 열었습니다.");
  }catch(error){
   if(envelope)try{await window.Archive2Output?.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);}catch{}
   try{if(!popup.closed)popup.close();}catch{}
@@ -793,27 +777,27 @@ async function printGeneratedSelection(){
 }
 async function printExam(){
  if(!examChoice||busy)return;
- const e=examChoice;
- const pool=examRows(e);
+ const e=examChoice,pool=examRows(e);
  if(pool.length<e.count){status("해당 시험지의 문항 수가 부족합니다.");return;}
- busy=true;updateSelection();status("모의고사 "+e.count+"문항을 준비하고 있습니다.");
+ const popup=window.open("about:blank","_blank");
+ if(!popup){status("팝업을 허용한 뒤 출력 미리보기를 열어 주세요.");return;}
+ let envelope=null;busy=true;updateSelection();status("믹서 엔진에서 모의고사 "+e.count+"문항을 준비합니다.");
  try{
-  const chosen=chooseVariants(pool,e.count);
-  if(chosen.length!==e.count||!unique(chosen.map(r=>r.uid)))throw Error("문항 수 또는 UID 구성 오류");
-  const questions=await Promise.all(chosen.map(r=>questionFor(r)));
-  const panel=$("paper-items"),fragment=document.createDocumentFragment();
-  for(let i=0;i<chosen.length;i++){
-   const part=document.createElement("section");part.className="paper-question";
-   text(part,String(i+1)+".","div","paper-number");questionMarkup(part,questions[i],chosen[i],false);
-   fragment.appendChild(part);
-  }
-  replacePaperItems(panel,fragment);
-  $("paper-title").textContent=examTitle(e)+" 모의고사";
-  await typesetPaper(panel);
-  status(e.count+"문항 인쇄 화면을 엽니다.");
-  window.print();
- }catch(error){status("출력을 준비하지 못했습니다: "+error.message);}
- finally{busy=false;updateSelection();}
+  const chosen=chooseVariants(pool,e.count),questionUids=chosen.map(row=>row.uid);
+  if(chosen.length!==e.count||!unique(questionUids))throw Error("문항 수 또는 UID 구성 오류");
+  const questions=await Promise.all(chosen.map(questionFor));
+  if(popup.closed)return;
+  const output=window.Archive2Output;
+  if(!output?.publishOutputEnvelope||!output?.outputEnvelopeUrl)throw Error("출력 엔진을 불러오지 못했습니다.");
+  envelope=await output.publishOutputEnvelope({sourceKind:"generated-mock",sourceId:"generated-mock-"+e.sha,mode:"exam",questionCount:questions.length,questionUids,meta:{title:examTitle(e)+" 모의고사",qpp:1,questionUids},questions});
+  if(popup.closed){await output.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);return;}
+  popup.location.href=output.outputEnvelopeUrl("mixed_engine.html",location.href,envelope,{preview:true}).href;
+  status("믹서 엔진에서 모의고사 출력 미리보기를 열었습니다.");
+ }catch(error){
+  if(envelope)try{await window.Archive2Output?.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);}catch{}
+  try{if(!popup.closed)popup.close();}catch{}
+  status("출력을 준비하지 못했습니다: "+error.message);
+ }finally{busy=false;updateSelection();}
 }
 $("print").addEventListener("click",printExam);
 $("generated-search").addEventListener("input",renderGeneratedSearch);
