@@ -1,0 +1,413 @@
+{
+  "schemaVersion": "ALIVE_QID9_GEUMDANG25_Q10_CREATOR_SELF_REVIEW_V1",
+  "sourceQid": 10,
+  "sourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "lockedPrimaryL3": "H1-RPM-268",
+  "candidateCount": 9,
+  "keep": 9,
+  "revised": 0,
+  "hold": 0,
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 2,
+    "④": 2,
+    "⑤": 1
+  },
+  "formalIndependentGptReviewPerformed": false,
+  "realChromeRender": "NOT_TESTED",
+  "releaseStatus": "BRANCH_ONLY_NOT_RELEASED",
+  "pythonEnumerationVerification": "All nine integer admissibility lists checked against inequalities, C1 a=2",
+  "rows": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q10-A1",
+      "finalStem": "두 무리식 $\\sqrt{x+2}$, $\\sqrt{4-x}$의 값이 모두 실수가 되도록 하는 정수 $x$의 개수는?",
+      "reverseStemFinding": "근호 안의 실수조건과 정수·끝점 포함 여부가 명확하며 조건을 모두 교집합으로 적용해야 정답 가능",
+      "primaryL3Necessity": "근호 실수 정의역을 부등식으로 결정하는 판단이 필수",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "②",
+          "actualWrongArithmetic": "양 끝 $-2,4$를 모두 제외하여 $-1$부터 $3$까지 5개"
+        },
+        {
+          "choice": "③",
+          "actualWrongArithmetic": "한쪽 끝점만 제외하여 $-1$부터 $4$까지 6개"
+        },
+        {
+          "choice": "④",
+          "actualWrongArithmetic": "$x=5$까지 포함해 $-2$부터 $5$까지 8개"
+        },
+        {
+          "choice": "⑤",
+          "actualWrongArithmetic": "$x=-3,5$를 모두 포함해 $-3$부터 $5$까지 9개"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 식으로 조건 완결",
+      "solutionVisualVerdict": "ADD: 끝점·구간 교집합·정수 개수를 보여주는 수직선",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q10-A1-solution.svg",
+      "expectedIntegerSet": [
+        -2,
+        -1,
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "독립 GPT 공개답 검수 및 Chrome 미수행"
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q10-A2",
+      "finalStem": "두 무리식 $\\sqrt{x-1}$, $\\sqrt{7-x}$의 값이 모두 실수가 되도록 하는 정수 $x$의 개수는?",
+      "reverseStemFinding": "근호 안의 실수조건과 정수·끝점 포함 여부가 명확하며 조건을 모두 교집합으로 적용해야 정답 가능",
+      "primaryL3Necessity": "근호 실수 정의역을 부등식으로 결정하는 판단이 필수",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "actualWrongArithmetic": "$x=1$인 경계 하나를 빠뜨려 2~7, 6개"
+        },
+        {
+          "choice": "③",
+          "actualWrongArithmetic": "두 끝을 제외하고 2~6, 5개"
+        },
+        {
+          "choice": "④",
+          "actualWrongArithmetic": "$x=0$도 허용된다고 착각해 0~7, 8개"
+        },
+        {
+          "choice": "⑤",
+          "actualWrongArithmetic": "$x=0,8$을 모두 포함해 9개"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 식으로 조건 완결",
+      "solutionVisualVerdict": "ADD: 끝점·구간 교집합·정수 개수를 보여주는 수직선",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q10-A2-solution.svg",
+      "expectedIntegerSet": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "독립 GPT 공개답 검수 및 Chrome 미수행"
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q10-A3",
+      "finalStem": "두 무리식 $\\sqrt{2x+6}$, $\\sqrt{12-2x}$의 값이 모두 실수가 되도록 하는 정수 $x$의 개수는?",
+      "reverseStemFinding": "근호 안의 실수조건과 정수·끝점 포함 여부가 명확하며 조건을 모두 교집합으로 적용해야 정답 가능",
+      "primaryL3Necessity": "근호 실수 정의역을 부등식으로 결정하는 판단이 필수",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "actualWrongArithmetic": "양 끝 $-3,6$을 제외하여 $-2$부터 $5$까지 8개"
+        },
+        {
+          "choice": "②",
+          "actualWrongArithmetic": "구간 길이 $6-(-3)=9$만 계산하고 $+1$ 누락"
+        },
+        {
+          "choice": "④",
+          "actualWrongArithmetic": "$x=7$까지 포함해 $-3$부터 $7$까지 11개"
+        },
+        {
+          "choice": "⑤",
+          "actualWrongArithmetic": "$-4$와 $7$을 포함하여 12개"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 식으로 조건 완결",
+      "solutionVisualVerdict": "ADD: 끝점·구간 교집합·정수 개수를 보여주는 수직선",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q10-A3-solution.svg",
+      "expectedIntegerSet": [
+        -3,
+        -2,
+        -1,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "독립 GPT 공개답 검수 및 Chrome 미수행"
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q10-B1",
+      "finalStem": "두 무리식 $\\sqrt{x+5}$, $\\sqrt{4-2x}$가 모두 실수가 되도록 하는 정수 $x$의 개수는?",
+      "reverseStemFinding": "근호 안의 실수조건과 정수·끝점 포함 여부가 명확하며 조건을 모두 교집합으로 적용해야 정답 가능",
+      "primaryL3Necessity": "근호 실수 정의역을 부등식으로 결정하는 판단이 필수",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "actualWrongArithmetic": "양 끝을 빼서 $-4$부터 $1$까지 6개"
+        },
+        {
+          "choice": "②",
+          "actualWrongArithmetic": "$x=2$를 빼고 $-5$부터 $1$까지 7개"
+        },
+        {
+          "choice": "③",
+          "actualWrongArithmetic": "$x=3$까지 포함하여 $-5$부터 $3$까지 9개"
+        },
+        {
+          "choice": "⑤",
+          "actualWrongArithmetic": "양쪽으로 한 정수씩 늘려 $-6$부터 $3$까지 10개"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 식으로 조건 완결",
+      "solutionVisualVerdict": "ADD: 끝점·구간 교집합·정수 개수를 보여주는 수직선",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q10-B1-solution.svg",
+      "expectedIntegerSet": [
+        -5,
+        -4,
+        -3,
+        -2,
+        -1,
+        0,
+        1,
+        2
+      ],
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "독립 GPT 공개답 검수 및 Chrome 미수행"
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q10-B2",
+      "finalStem": "두 무리식 $\\sqrt{x+3}$, $\\sqrt{13-2x}$의 값이 모두 실수가 되도록 하는 정수 $x$의 개수는?",
+      "reverseStemFinding": "근호 안의 실수조건과 정수·끝점 포함 여부가 명확하며 조건을 모두 교집합으로 적용해야 정답 가능",
+      "primaryL3Necessity": "근호 실수 정의역을 부등식으로 결정하는 판단이 필수",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "actualWrongArithmetic": "정수 $6$을 누락하여 $-3$부터 $5$까지 9개"
+        },
+        {
+          "choice": "②",
+          "actualWrongArithmetic": "$13/2$를 7까지 허용한다고 판단하여 $-3$부터 $7$까지 11개"
+        },
+        {
+          "choice": "③",
+          "actualWrongArithmetic": "왼쪽도 -4까지 허용하고 오른쪽도 7을 허용해 -4~7, 12개"
+        },
+        {
+          "choice": "④",
+          "actualWrongArithmetic": "경계 근처를 과도하게 제외하여 -2~5, 8개"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 식으로 조건 완결",
+      "solutionVisualVerdict": "ADD: 끝점·구간 교집합·정수 개수를 보여주는 수직선",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q10-B2-solution.svg",
+      "expectedIntegerSet": [
+        -3,
+        -2,
+        -1,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "독립 GPT 공개답 검수 및 Chrome 미수행"
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q10-B3",
+      "finalStem": "두 무리식 $\\sqrt{3x+2}$, $\\sqrt{14-2x}$의 값이 모두 실수가 되도록 하는 정수 $x$의 개수는?",
+      "reverseStemFinding": "근호 안의 실수조건과 정수·끝점 포함 여부가 명확하며 조건을 모두 교집합으로 적용해야 정답 가능",
+      "primaryL3Necessity": "근호 실수 정의역을 부등식으로 결정하는 판단이 필수",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "②",
+          "actualWrongArithmetic": "상한 $x=7$을 제외하고 0~6으로 7개"
+        },
+        {
+          "choice": "③",
+          "actualWrongArithmetic": "$-1$을 잘못 포함해 -1~7로 9개"
+        },
+        {
+          "choice": "④",
+          "actualWrongArithmetic": "두 끝을 제외한 1~6으로 6개"
+        },
+        {
+          "choice": "⑤",
+          "actualWrongArithmetic": "-1과 8을 잘못 포함하여 -1~8로 10개"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 식으로 조건 완결",
+      "solutionVisualVerdict": "ADD: 끝점·구간 교집합·정수 개수를 보여주는 수직선",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q10-B3-solution.svg",
+      "expectedIntegerSet": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "독립 GPT 공개답 검수 및 Chrome 미수행"
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q10-C1",
+      "finalStem": "자연수 $a$에 대하여 두 무리식 $\\sqrt{x+a}$, $\\sqrt{6-x}$의 값이 모두 실수가 되도록 하는 정수 $x$가 정확히 $9$개이다. $a$의 값은?",
+      "reverseStemFinding": "근호 안의 실수조건과 정수·끝점 포함 여부가 명확하며 조건을 모두 교집합으로 적용해야 정답 가능",
+      "primaryL3Necessity": "근호 실수 정의역을 부등식으로 결정하는 판단이 필수",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "actualWrongArithmetic": "양 끝 개수를 잘못 세어 $a+8=9$라고 두어 $a=1$"
+        },
+        {
+          "choice": "③",
+          "actualWrongArithmetic": "한쪽 끝점을 제외한 식 $a+6=9$로 두어 $a=3$"
+        },
+        {
+          "choice": "④",
+          "actualWrongArithmetic": "끝점 두 개를 빠뜨린 식 $a+5=9$로 두어 $a=4$"
+        },
+        {
+          "choice": "⑤",
+          "actualWrongArithmetic": "끝점 누락 및 시작 위치를 잘못 셈하여 $a+4=9$로 두어 $a=5$"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 식으로 조건 완결",
+      "solutionVisualVerdict": "ADD: 끝점·구간 교집합·정수 개수를 보여주는 수직선",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q10-C1-solution.svg",
+      "expectedIntegerSet": [
+        -2,
+        -1,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "독립 GPT 공개답 검수 및 Chrome 미수행"
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q10-C2",
+      "finalStem": "두 무리식 $\\sqrt{x+4}$, $\\sqrt{8-x}$의 값이 모두 실수가 되도록 하는 짝수인 정수 $x$의 개수는?",
+      "reverseStemFinding": "근호 안의 실수조건과 정수·끝점 포함 여부가 명확하며 조건을 모두 교집합으로 적용해야 정답 가능",
+      "primaryL3Necessity": "근호 실수 정의역을 부등식으로 결정하는 판단이 필수",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "actualWrongArithmetic": "양 끝 짝수 -4,8을 제외하여 -2,0,2,4,6의 5개"
+        },
+        {
+          "choice": "②",
+          "actualWrongArithmetic": "짝수 끝점 하나만 제외하여 6개"
+        },
+        {
+          "choice": "④",
+          "actualWrongArithmetic": "$10$도 허용된다고 하여 -4부터10까지 8개"
+        },
+        {
+          "choice": "⑤",
+          "actualWrongArithmetic": "-6과 10도 포함해 -6부터10까지 짝수 9개"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 식으로 조건 완결",
+      "solutionVisualVerdict": "ADD: 끝점·구간 교집합·정수 개수를 보여주는 수직선",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q10-C2-solution.svg",
+      "expectedIntegerSet": [
+        -4,
+        -2,
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "독립 GPT 공개답 검수 및 Chrome 미수행"
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q10-C3",
+      "finalStem": "세 무리식 $\\sqrt{(x-1)(x-5)}$, $\\sqrt{x+2}$, $\\sqrt{9-x}$의 값이 모두 실수가 되도록 하는 정수 $x$의 개수는?",
+      "reverseStemFinding": "근호 안의 실수조건과 정수·끝점 포함 여부가 명확하며 조건을 모두 교집합으로 적용해야 정답 가능",
+      "primaryL3Necessity": "근호 실수 정의역을 부등식으로 결정하는 판단이 필수",
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "actualWrongArithmetic": "각 구간에서 양 끝 하나씩 누락해 3+4=7개"
+        },
+        {
+          "choice": "②",
+          "actualWrongArithmetic": "왼쪽 끝 -2만 제외해 3+5=8개"
+        },
+        {
+          "choice": "③",
+          "actualWrongArithmetic": "제외해야 할 정수 4를 한 개 더 포함해 4+5+1=10개"
+        },
+        {
+          "choice": "⑤",
+          "actualWrongArithmetic": "제외해야 할 2,3을 더 포함해 4+5+2=11개"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 식으로 조건 완결",
+      "solutionVisualVerdict": "ADD: 끝점·구간 교집합·정수 개수를 보여주는 수직선",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q10-C3-solution.svg",
+      "expectedIntegerSet": [
+        -2,
+        -1,
+        0,
+        1,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "독립 GPT 공개답 검수 및 Chrome 미수행"
+    }
+  ]
+}
