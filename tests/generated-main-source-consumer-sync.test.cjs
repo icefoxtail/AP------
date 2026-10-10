@@ -110,4 +110,15 @@ test('projection workflow uses a normal protected PR merge and avoids direct mai
  assert.doesNotMatch(yaml,/gh pr merge .*--admin/);
  assert.doesNotMatch(yaml,/git push origin (?:main|HEAD:main)/);
  assert.match(yaml,/git diff --cached --quiet/,'the post-merge source-sync loop must stop on an idempotent diff');
+ const createLine=yaml.match(/^\s*(pr_url="\$\(gh pr create .*\)"\s*)$/m)?.[1];
+ assert.ok(createLine,'workflow should capture gh pr create standard-output URL');
+ assert.doesNotMatch(createLine,/--json|--jq/,'gh pr create does not support PR-view JSON flags');
+ const temp=fs.mkdtempSync(path.join(os.tmpdir(),'mock-gh-pr-create-'));
+ try{
+  const bin=path.join(temp,'bin');fs.mkdirSync(bin);
+  fs.writeFileSync(path.join(bin,'gh'),`#!/bin/sh\n[ "$1" = pr ] && [ "$2" = create ] || exit 10\nfor arg do [ "$arg" = --json ] && exit 11; [ "$arg" = --jq ] && exit 12; done\nprintf '%s\n' 'https://github.com/example/repo/pull/123'\n`,{mode:0o755});
+  const script=`branch=codex/mock-projection; ${createLine}; printf '%s' "$pr_url"`;
+  const result=spawnSync('bash',['-c',script],{encoding:'utf8',env:{...process.env,PATH:`${bin}:${process.env.PATH||''}`}});
+  assert.equal(result.status,0,result.stderr);assert.equal(result.stdout,'https://github.com/example/repo/pull/123');
+ }finally{fs.rmSync(temp,{recursive:true,force:true});}
 });
