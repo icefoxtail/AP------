@@ -489,13 +489,13 @@ window.generatedLiteQuestions.push(...[
     "wide": false,
     "content": "서로 다른 네 정수로 이루어진 집합 $X$에서 $f(x)=|(x-3)^2-5|$가 상수함수이다. 가능한 정수 함숫값 $k$의 합은?",
     "choices": [
-      "$2$",
-      "$3$",
+      "$1$",
+      "$4$",
       "$5$",
-      "$6$",
-      "$4$"
+      "$8$",
+      "$10$"
     ],
-    "answer": "⑤",
+    "answer": "②",
     "solution": "$f(x)=k$를 풀면 $(x-3)^2=5+k$ 또는 $(x-3)^2=5-k$이다. 네 서로 다른 실근을 위해 $0<k<5$이다. 네 근이 모두 정수이려면 5-k와 5+k가 서로 다른 양의 정수 제곱이어야 한다. 합이 10인 제곱수 쌍은 1과 9뿐이므로 k=4이다. 가능한 k의 합은 $4$이다.",
     "solutionImage": "assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-B3-solution.svg",
     "solutionImageAlt": "절댓값 이차함수와 네 교점을 표시한 해설 그래프",
