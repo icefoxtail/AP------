@@ -293,8 +293,7 @@ window.questionBank = [
       "problemTypeKey": "PT_SET_INCLUSION",
       "templateKey": "TPL_GD25_Q11_B1",
       "crossConceptKeys": [
-        "CC_NUMBER_DIVISOR_MULTIPLE",
-        "CC_SET_CARDINALITY"
+        "CC_NUMBER_DIVISOR_MULTIPLE"
       ],
       "conditionKeys": [
         "COND_NATURAL_NUMBER"
@@ -311,8 +310,7 @@ window.questionBank = [
     "problemTypeKey": "PT_SET_INCLUSION",
     "templateKey": "TPL_GD25_Q11_B1",
     "crossConceptKeys": [
-      "CC_NUMBER_DIVISOR_MULTIPLE",
-      "CC_SET_CARDINALITY"
+      "CC_NUMBER_DIVISOR_MULTIPLE"
     ],
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
@@ -459,8 +457,7 @@ window.questionBank = [
       "problemTypeKey": "PT_SET_INCLUSION",
       "templateKey": "TPL_GD25_Q11_B3",
       "crossConceptKeys": [
-        "CC_NUMBER_DIVISOR_MULTIPLE",
-        "CC_SET_CARDINALITY"
+        "CC_NUMBER_DIVISOR_MULTIPLE"
       ],
       "conditionKeys": [
         "COND_NATURAL_NUMBER"
@@ -477,8 +474,7 @@ window.questionBank = [
     "problemTypeKey": "PT_SET_INCLUSION",
     "templateKey": "TPL_GD25_Q11_B3",
     "crossConceptKeys": [
-      "CC_NUMBER_DIVISOR_MULTIPLE",
-      "CC_SET_CARDINALITY"
+      "CC_NUMBER_DIVISOR_MULTIPLE"
     ],
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
@@ -625,8 +621,7 @@ window.questionBank = [
       "problemTypeKey": "PT_SET_INCLUSION",
       "templateKey": "TPL_GD25_Q11_C2",
       "crossConceptKeys": [
-        "CC_NUMBER_DIVISOR_MULTIPLE",
-        "CC_SET_CARDINALITY"
+        "CC_NUMBER_DIVISOR_MULTIPLE"
       ],
       "conditionKeys": [
         "COND_NATURAL_NUMBER",
@@ -644,8 +639,7 @@ window.questionBank = [
     "problemTypeKey": "PT_SET_INCLUSION",
     "templateKey": "TPL_GD25_Q11_C2",
     "crossConceptKeys": [
-      "CC_NUMBER_DIVISOR_MULTIPLE",
-      "CC_SET_CARDINALITY"
+      "CC_NUMBER_DIVISOR_MULTIPLE"
     ],
     "conditionKeys": [
       "COND_NATURAL_NUMBER",
@@ -713,8 +707,7 @@ window.questionBank = [
       "problemTypeKey": "PT_SET_INCLUSION",
       "templateKey": "TPL_GD25_Q11_C3",
       "crossConceptKeys": [
-        "CC_NUMBER_DIVISOR_MULTIPLE",
-        "CC_SET_CARDINALITY"
+        "CC_NUMBER_DIVISOR_MULTIPLE"
       ],
       "conditionKeys": [
         "COND_NATURAL_NUMBER"
@@ -731,8 +724,7 @@ window.questionBank = [
     "problemTypeKey": "PT_SET_INCLUSION",
     "templateKey": "TPL_GD25_Q11_C3",
     "crossConceptKeys": [
-      "CC_NUMBER_DIVISOR_MULTIPLE",
-      "CC_SET_CARDINALITY"
+      "CC_NUMBER_DIVISOR_MULTIPLE"
     ],
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
