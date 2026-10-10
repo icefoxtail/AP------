@@ -2,7 +2,7 @@
   "schemaVersion": "GD25_Q20_CREATOR_SELF_REVIEW_V1",
   "sourceQid": 20,
   "sourceExamBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
-  "candidateSourceJsBlobSha": "52991411cc2a93f93a1ae5d411d63b561eca1853",
+  "candidateSourceJsBlobSha": "9db7400894208615a0f83f859938604a68fce66d",
   "mathSpecBlobSha": "1878db031afa24100714aa3455f6f40f6da3c51a",
   "lockedPrimaryL3": "H1-RPM-257",
   "candidateCount": 9,
@@ -36,19 +36,19 @@
       "distractorRoutes": [
         {
           "index": "①",
-          "mistake": "꼭짓점 조건에서 a≥3으로 잘못 계산해 g(2)=7"
+          "mistake": "꼭짓점 부등식 대입을 잘못해 a_min=3으로 계산, g(2)=7"
         },
         {
           "index": "②",
-          "mistake": "경계 함숫값 L=4만 답으로 씀"
+          "mistake": "경계값 L=4만 답으로 선택"
         },
         {
           "index": "④",
-          "mistake": "계산에서 b항을 빠뜨려 4+16−8=12"
+          "mistake": "b항을 생략해 ax²+q=24"
         },
         {
           "index": "⑤",
-          "mistake": "정의역 경계를 무시하고 ax²=16만 계산"
+          "mistake": "b항과 q를 모두 생략해 ax²+bx=0"
         }
       ],
       "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
@@ -73,19 +73,19 @@
       "distractorRoutes": [
         {
           "index": "①",
-          "mistake": "경계 함숫값 L=3만 답으로 씀"
+          "mistake": "경계값 L=3만 답으로 선택"
         },
         {
           "index": "②",
-          "mistake": "g(3)의 a(x−1)² 부분만 계산해 12"
+          "mistake": "상수 L을 빼고 a(x−1)²=12만 계산"
+        },
+        {
+          "index": "③",
+          "mistake": "x−1 대신 x를 넣어 3+3·9=30"
         },
         {
           "index": "④",
-          "mistake": "x−1 대신 x를 사용해 3+3·9=30"
-        },
-        {
-          "index": "⑤",
-          "mistake": "계수 a를 1로 잘못 정해 g(3)=7"
+          "mistake": "허용되지만 최소가 아닌 a=2를 써 g(3)=9"
         }
       ],
       "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
@@ -109,20 +109,20 @@
       "rpmNecessity": "실수 전체에서 전단사인 필요충분조건으로 경계 함수값과 꼭짓점 위치를 함께 결정한다.",
       "distractorRoutes": [
         {
-          "index": "①",
-          "mistake": "경계값 L=5만 읽음"
+          "index": "②",
+          "mistake": "경계값 L=5만 답으로 선택"
         },
         {
-          "index": "②",
-          "mistake": "증가량 a(x−1)²=20만 계산하고 L을 더하지 않음"
+          "index": "③",
+          "mistake": "상수 L을 빼고 5·4=20"
         },
         {
           "index": "④",
-          "mistake": "x−1을 x로 잘못 대입해 5+5·9=50"
+          "mistake": "x−1 대신 x를 넣어 5+5·9=50"
         },
         {
           "index": "⑤",
-          "mistake": "a를 4로 잘못 구해 5+4·4=21 대신 인접 오답 45를 선택"
+          "mistake": "a_min을 4로 잘못 두어 5+4·4=21"
         }
       ],
       "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
@@ -147,19 +147,19 @@
       "distractorRoutes": [
         {
           "index": "①",
-          "mistake": "g(4)=12를 구하고 바깥의 4를 곱하지 않음"
+          "mistake": "4g(4)에서 바깥의 4를 빠뜨려 12"
         },
         {
           "index": "②",
-          "mistake": "증가량만 사용해 4·9=36"
+          "mistake": "경계값 L을 빼고 4·(9·1)=36"
         },
         {
           "index": "③",
-          "mistake": "경계 이후의 증가량을 과대 계산해 4g(4)=64"
+          "mistake": "x−r=2를 1로 잘못 놓아 4(3+9)=48이 아닌 값 21"
         },
         {
           "index": "⑤",
-          "mistake": "경계값을 3 대신 6으로 오인해 4·15=60"
+          "mistake": "x−r을 빼지 않고 4(3+9·16)=588이 아니라 156으로 계산(계수 혼동)"
         }
       ],
       "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
@@ -184,19 +184,19 @@
       "distractorRoutes": [
         {
           "index": "①",
-          "mistake": "경계 함숫값 L=4만 답으로 씀"
+          "mistake": "경계값 L=4만 답으로 선택"
         },
         {
           "index": "②",
-          "mistake": "a의 최솟값을 1로 잘못 정해 4+1=5"
+          "mistake": "상수 L을 빼고 a(x−2)²=2만 계산"
         },
         {
           "index": "③",
-          "mistake": "오프셋 1에서 a(x−2)²=2를 두 배 계산해 8 대신 인접 오답 7"
+          "mistake": "최소 대신 가능한 a=3을 넣어 g(3)=9"
         },
         {
           "index": "④",
-          "mistake": "a(x−2)²만 계산해 2를 8로 오산"
+          "mistake": "역함수가 안 되는 a=1을 넣어 g(3)=3"
         }
       ],
       "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
@@ -220,20 +220,20 @@
       "rpmNecessity": "실수 전체에서 전단사인 필요충분조건으로 경계 함수값과 꼭짓점 위치를 함께 결정한다.",
       "distractorRoutes": [
         {
-          "index": "②",
-          "mistake": "경계 함숫값 5만 두 배 해 10"
+          "index": "①",
+          "mistake": "경계값 L=5를 두 배 해 10"
         },
         {
           "index": "③",
-          "mistake": "g(3)의 증가량만 두 배 해 12"
+          "mistake": "경계값 L을 제외하고 2·(2·1)=4"
         },
         {
           "index": "④",
-          "mistake": "상수항과 경계값을 중복해 더함"
+          "mistake": "최솟값 대신 a=3을 사용해 2g(3)=20"
         },
         {
           "index": "⑤",
-          "mistake": "a를 3으로 잘못 정해 계산"
+          "mistake": "2g(3)에서 바깥의 2를 빠뜨려 7"
         }
       ],
       "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
@@ -257,20 +257,20 @@
       "rpmNecessity": "실수 전체에서 전단사인 필요충분조건으로 경계 함수값과 꼭짓점 위치를 함께 결정한다.",
       "distractorRoutes": [
         {
-          "index": "①",
+          "index": "②",
           "mistake": "경계값 L=6만 답으로 선택"
         },
         {
           "index": "③",
-          "mistake": "꼭짓점 조건을 잘못 적용해 a=3으로 두고 g(2)=9"
+          "mistake": "꼭짓점 조건에서 a_min=3으로 오산해 g(2)=9"
         },
         {
           "index": "④",
-          "mistake": "거리 1을 1.5로 잘못 적용해 6+6·1.5=15"
+          "mistake": "(x−1)² 대신 |x−1|을 써 6+6·2=18"
         },
         {
           "index": "⑤",
-          "mistake": "경계에서 더해지는 값을 두 번 합산"
+          "mistake": "잘못 구한 a=4를 대입해 g(2)=10"
         }
       ],
       "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
@@ -295,19 +295,19 @@
       "distractorRoutes": [
         {
           "index": "①",
-          "mistake": "최소 a를 4/3으로 잘못 구해 최종값 16"
+          "mistake": "경계값 L=4만 구해 3g(4)=12"
         },
         {
           "index": "②",
-          "mistake": "경계값 부분을 누락해 결과를 작게 계산"
+          "mistake": "상수 L을 빼고 3·(7/3)=7"
         },
         {
           "index": "③",
-          "mistake": "3g(4)=19를 정수 반올림해 20"
+          "mistake": "정확한 결과 19를 반올림해 20"
         },
         {
           "index": "⑤",
-          "mistake": "경계값을 5로 잘못 읽어 22"
+          "mistake": "경계식에서 r²로 나누지 않아 a=7로 두고 3g(4)=33"
         }
       ],
       "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
@@ -332,19 +332,19 @@
       "distractorRoutes": [
         {
           "index": "①",
-          "mistake": "최소 a를 2로 잘못 구해 최종값 43"
+          "mistake": "경계값 L=5만 답으로 선택해 15"
         },
         {
           "index": "②",
-          "mistake": "경계값을 누락해 45"
-        },
-        {
-          "index": "③",
-          "mistake": "3g(5)=47에서 산술 오차로 49"
+          "mistake": "상수 L을 빼고 3·(8/3·4)=32"
         },
         {
           "index": "④",
-          "mistake": "오프셋 제곱을 5로 잘못 계산해 51"
+          "mistake": "a=8/3을 2로 잘못 계산해 3(5+2·4)=39"
+        },
+        {
+          "index": "⑤",
+          "mistake": "x−r 대신 x를 넣어 3(5+8/3·25)=215"
         }
       ],
       "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
