@@ -3,8 +3,8 @@
   "sourceQid": 20,
   "sourceExamPath": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
   "sourceExamBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
-  "candidateJsBlobSha": "9db7400894208615a0f83f859938604a68fce66d",
-  "mathSpecBlobSha": "1878db031afa24100714aa3455f6f40f6da3c51a",
+  "candidateJsBlobSha": "f2f49e3586473e8edb474361a7f39243a09fcaa0",
+  "mathSpecBlobSha": "af299a1b259cd61f552cf325b77ea8fae138fba0",
   "lockedPrimaryL3": {
     "id": "H1-RPM-257",
     "label": "함수의 성질",
@@ -114,137 +114,165 @@
       "uid": "ALITE-GEUMDANG25-2FINAL-Q20-B1",
       "primaryL3": "H1-RPM-257",
       "chosenL4": "일대일함수",
-      "studentStem": "정의역과 공역이 $\\mathbb R$인 함수 $f(x)=\\begin{cases}x+1&(x<2)\\\\ax^2+bx+12&(x\\ge2)\\end{cases}$가 역함수를 갖는다. 가능한 $a,b$ 중 $a$가 최소일 때의 함수를 $g$라 하자. $4g(4)$의 값은?",
+      "studentStem": "정의역과 공역이 $\\mathbb R$인 함수 $f(x)=\\begin{cases}x+1&(x<2)\\\\ax^2+bx+12&(x\\ge2)\\end{cases}$가 역함수를 갖는다. 가능한 $a,b$ 중 $a$가 최소일 때의 함수를 $g$라 하자. $g^{-1}(12)$의 값은?",
       "choices": [
         "$12$",
-        "$36$",
-        "$21$",
-        "$48$",
-        "$156$"
+        "$0$",
+        "$2$",
+        "$4$",
+        "$11$"
       ],
       "answer": "④",
-      "level": "중",
-      "difficultyBucket": 3,
+      "level": "상",
+      "difficultyBucket": 4,
       "parameters": {
         "r": 2,
         "c": 1,
         "q": 12,
-        "t": 4,
-        "multiplier": 4,
         "minA": 2.25,
+        "minAExact": "9/4",
         "minB": -9,
-        "correctValue": 48
+        "inverseTargets": [
+          12
+        ],
+        "inverseAnswers": [
+          "4"
+        ],
+        "correctValue": 4
       },
-      "decisiveInvariant": "branch ranges must meet at L=r+c, with right vertex ≤r",
+      "decisiveInvariant": "First reconstruct the boundary-matched minimal quadratic; then select each inverse value from the branch whose range contains its target.",
       "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
       "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
-      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-B1-solution.svg"
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-B1-solution.svg",
+      "difficultyRationale": "Bucket 4: reconstruct the minimum-a quadratic, select valid inverse branch value(s), and apply the requested operation."
     },
     {
       "slot": "B2",
       "uid": "ALITE-GEUMDANG25-2FINAL-Q20-B2",
       "primaryL3": "H1-RPM-257",
       "chosenL4": "일대일함수",
-      "studentStem": "함수 $f(x)=\\begin{cases}x+2&(x<2)\\\\ax^2+bx+12&(x\\ge2)\\end{cases}$의 정의역과 공역은 모두 실수 전체이다. $f$의 역함수가 존재하도록 하는 $a,b$에서 $a$의 최솟값일 때의 함수를 $g$라 하자. $g(3)$은?",
+      "studentStem": "정의역과 공역이 $\\mathbb R$인 함수 $f(x)=\\begin{cases}x+2&(x<2)\\\\ax^2+bx+12&(x\\ge2)\\end{cases}$가 역함수를 갖는다. 가능한 $a,b$ 중 $a$가 최소일 때의 함수를 $g$라 하자. $g^{-1}(10)$의 값은?",
       "choices": [
-        "$4$",
-        "$2$",
-        "$9$",
-        "$3$",
-        "$6$"
-      ],
-      "answer": "⑤",
-      "level": "중",
-      "difficultyBucket": 3,
-      "parameters": {
-        "r": 2,
-        "c": 2,
-        "q": 12,
-        "t": 3,
-        "multiplier": 1,
-        "minA": 2,
-        "minB": -8,
-        "correctValue": 6
-      },
-      "decisiveInvariant": "branch ranges must meet at L=r+c, with right vertex ≤r",
-      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
-      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
-      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-B2-solution.svg"
-    },
-    {
-      "slot": "B3",
-      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-B3",
-      "primaryL3": "H1-RPM-257",
-      "chosenL4": "일대일함수",
-      "studentStem": "실수 전체에서 실수 전체로 가는 함수 $f(x)=\\begin{cases}x+3&(x<2)\\\\ax^2+bx+13&(x\\ge2)\\end{cases}$가 역함수를 갖는다. $a$가 최소가 되도록 하는 $a,b$에서 얻은 함수를 $g$라 할 때, $2g(3)$은?",
-      "choices": [
+        "$2-\\sqrt3$",
+        "$2+\\sqrt3$",
+        "$\\sqrt3$",
         "$10$",
-        "$14$",
-        "$4$",
-        "$20$",
-        "$7$"
+        "$2+\\sqrt6$"
       ],
       "answer": "②",
       "level": "상",
       "difficultyBucket": 4,
       "parameters": {
         "r": 2,
-        "c": 3,
-        "q": 13,
-        "t": 3,
-        "multiplier": 2,
+        "c": 2,
+        "q": 12,
         "minA": 2,
+        "minAExact": "2",
         "minB": -8,
-        "correctValue": 14
+        "inverseTargets": [
+          10
+        ],
+        "inverseAnswers": [
+          "2+sqrt(3)"
+        ],
+        "correctValue": "2+sqrt(3)"
       },
-      "decisiveInvariant": "branch ranges must meet at L=r+c, with right vertex ≤r",
+      "decisiveInvariant": "First reconstruct the boundary-matched minimal quadratic; then select each inverse value from the branch whose range contains its target.",
       "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
       "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
-      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-B3-solution.svg"
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-B2-solution.svg",
+      "difficultyRationale": "Bucket 4: reconstruct the minimum-a quadratic, select valid inverse branch value(s), and apply the requested operation."
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q20-B3",
+      "primaryL3": "H1-RPM-257",
+      "chosenL4": "일대일함수",
+      "studentStem": "정의역과 공역이 $\\mathbb R$인 함수 $f(x)=\\begin{cases}x+3&(x<2)\\\\ax^2+bx+13&(x\\ge2)\\end{cases}$가 역함수를 갖는다. 가능한 $a,b$ 중 $a$가 최소일 때의 함수를 $g$라 하자. $g^{-1}(13)+g^{-1}(1)$의 값은?",
+      "choices": [
+        "$6$",
+        "$4$",
+        "$2$",
+        "$-2$",
+        "$14$"
+      ],
+      "answer": "③",
+      "level": "상",
+      "difficultyBucket": 4,
+      "parameters": {
+        "r": 2,
+        "c": 3,
+        "q": 13,
+        "minA": 2,
+        "minAExact": "2",
+        "minB": -8,
+        "inverseTargets": [
+          13,
+          1
+        ],
+        "inverseAnswers": [
+          "4",
+          "-2"
+        ],
+        "correctValue": 2
+      },
+      "decisiveInvariant": "First reconstruct the boundary-matched minimal quadratic; then select each inverse value from the branch whose range contains its target.",
+      "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
+      "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-B3-solution.svg",
+      "difficultyRationale": "Bucket 4: reconstruct the minimum-a quadratic, select valid inverse branch value(s), and apply the requested operation."
     },
     {
       "slot": "C1",
       "uid": "ALITE-GEUMDANG25-2FINAL-Q20-C1",
       "primaryL3": "H1-RPM-257",
       "chosenL4": "일대일함수",
-      "studentStem": "정의역과 공역이 모두 $\\mathbb R$인 함수 $f(x)=\\begin{cases}x+5&(x<1)\\\\ax^2+bx+12&(x\\ge1)\\end{cases}$에 역함수가 존재한다. $a$가 최소일 때의 함수를 $g$라 하자. $g(2)$의 값은?",
+      "studentStem": "정의역과 공역이 $\\mathbb R$인 함수 $f(x)=\\begin{cases}x+5&(x<1)\\\\ax^2+bx+12&(x\\ge1)\\end{cases}$가 역함수를 갖는다. 가능한 $a,b$ 중 $a$가 최소일 때의 함수를 $g$라 하자. $g^{-1}(6)-g^{-1}(5)$의 값은?",
       "choices": [
-        "$12$",
+        "$0$",
+        "$1$",
         "$6$",
-        "$9$",
-        "$18$",
-        "$10$"
+        "$-1$",
+        "$5$"
       ],
-      "answer": "①",
+      "answer": "②",
       "level": "상",
       "difficultyBucket": 4,
       "parameters": {
         "r": 1,
         "c": 5,
         "q": 12,
-        "t": 2,
-        "multiplier": 1,
         "minA": 6,
+        "minAExact": "6",
         "minB": -12,
-        "correctValue": 12
+        "inverseTargets": [
+          6,
+          5
+        ],
+        "inverseAnswers": [
+          "1",
+          "0"
+        ],
+        "correctValue": 1
       },
-      "decisiveInvariant": "branch ranges must meet at L=r+c, with right vertex ≤r",
+      "decisiveInvariant": "First reconstruct the boundary-matched minimal quadratic; then select each inverse value from the branch whose range contains its target.",
       "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
       "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
-      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-C1-solution.svg"
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-C1-solution.svg",
+      "difficultyRationale": "Bucket 4: reconstruct the minimum-a quadratic, select valid inverse branch value(s), and apply the requested operation."
     },
     {
       "slot": "C2",
       "uid": "ALITE-GEUMDANG25-2FINAL-Q20-C2",
       "primaryL3": "H1-RPM-257",
       "chosenL4": "일대일함수",
-      "studentStem": "함수 $f(x)=\\begin{cases}x+1&(x<3)\\\\ax^2+bx+25&(x\\ge3)\\end{cases}$의 정의역과 공역이 모두 $\\mathbb R$이고 $f^{-1}$가 존재한다. $a$를 최소로 하는 함수 $g$에 대하여 $3g(4)$의 값은?",
+      "studentStem": "정의역과 공역이 $\\mathbb R$인 함수 $f(x)=\\begin{cases}x+1&(x<3)\\\\ax^2+bx+25&(x\\ge3)\\end{cases}$가 역함수를 갖는다. 가능한 $a,b$ 중 $a$가 최소일 때의 함수를 $g$라 하자. $g^{-1}(\\frac{19}{3})$의 값은?",
       "choices": [
-        "$12$",
-        "$7$",
-        "$20$",
-        "$19$",
-        "$33$"
+        "$3$",
+        "$\\frac73$",
+        "$1$",
+        "$4$",
+        "$\\frac{19}{3}$"
       ],
       "answer": "④",
       "level": "상",
@@ -253,47 +281,61 @@
         "r": 3,
         "c": 1,
         "q": 25,
-        "t": 4,
-        "multiplier": 3,
         "minA": 2.3333333333333335,
+        "minAExact": "7/3",
         "minB": -14,
-        "correctValue": 19
+        "inverseTargets": [
+          "19/3"
+        ],
+        "inverseAnswers": [
+          "4"
+        ],
+        "correctValue": 4
       },
-      "decisiveInvariant": "branch ranges must meet at L=r+c, with right vertex ≤r",
+      "decisiveInvariant": "First reconstruct the boundary-matched minimal quadratic; then select each inverse value from the branch whose range contains its target.",
       "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
       "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
-      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-C2-solution.svg"
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-C2-solution.svg",
+      "difficultyRationale": "Bucket 4: reconstruct the minimum-a quadratic, select valid inverse branch value(s), and apply the requested operation."
     },
     {
       "slot": "C3",
       "uid": "ALITE-GEUMDANG25-2FINAL-Q20-C3",
       "primaryL3": "H1-RPM-257",
       "chosenL4": "일대일함수",
-      "studentStem": "정의역과 공역이 모두 실수 전체인 함수 $f(x)=\\begin{cases}x+2&(x<3)\\\\ax^2+bx+29&(x\\ge3)\\end{cases}$의 역함수가 존재한다. $a$가 최소일 때의 함수를 $g$라 할 때, $3g(5)$는?",
+      "studentStem": "정의역과 공역이 $\\mathbb R$인 함수 $f(x)=\\begin{cases}x+2&(x<3)\\\\ax^2+bx+29&(x\\ge3)\\end{cases}$가 역함수를 갖는다. 가능한 $a,b$ 중 $a$가 최소일 때의 함수를 $g$라 하자. $g^{-1}(13)+g^{-1}(1)$의 값은?",
       "choices": [
-        "$15$",
-        "$32$",
-        "$47$",
-        "$39$",
-        "$215$"
+        "$3+\\sqrt3$",
+        "$1+\\sqrt3$",
+        "$2-\\sqrt3$",
+        "$14$",
+        "$2+\\sqrt3$"
       ],
-      "answer": "③",
+      "answer": "⑤",
       "level": "상",
       "difficultyBucket": 4,
       "parameters": {
         "r": 3,
         "c": 2,
         "q": 29,
-        "t": 5,
-        "multiplier": 3,
         "minA": 2.6666666666666665,
+        "minAExact": "8/3",
         "minB": -16,
-        "correctValue": 47
+        "inverseTargets": [
+          13,
+          1
+        ],
+        "inverseAnswers": [
+          "3+sqrt(3)",
+          "-1"
+        ],
+        "correctValue": "2+sqrt(3)"
       },
-      "decisiveInvariant": "branch ranges must meet at L=r+c, with right vertex ≤r",
+      "decisiveInvariant": "First reconstruct the boundary-matched minimal quadratic; then select each inverse value from the branch whose range contains its target.",
       "problemVisual": "EXEMPT_STEM_PIECEWISE_RULE_COMPLETE",
       "solutionVisual": "ADD_PIECEWISE_RANGE_AND_VERTEX_GRAPH",
-      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-C3-solution.svg"
+      "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q20-C3-solution.svg",
+      "difficultyRationale": "Bucket 4: reconstruct the minimum-a quadratic, select valid inverse branch value(s), and apply the requested operation."
     }
   ]
 }

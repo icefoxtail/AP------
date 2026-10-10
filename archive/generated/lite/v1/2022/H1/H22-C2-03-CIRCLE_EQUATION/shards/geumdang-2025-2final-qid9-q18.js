@@ -1,4 +1,3 @@
-window.examTitle = "ALIVE_LITE_GEUMDANG25_H1_2FINAL_QID9_Q18_H22-C2-03-CIRCLE_EQUATION";
 window.questionBank = [
   {
     "id": 1,

@@ -249,7 +249,7 @@ window.generatedLiteQuestions.push(...[
       "$2$",
       "$3$",
       "$4$",
-      "$5$"
+      "무한히 많다"
     ],
     "answer": "②",
     "solution": "$t=\\sqrt{x-8}\\ge0$으로 놓으면 $x=t^2+8$이고 $t^2-8t+8(k+1)=0$이다. 두 근이 비음수일 조건은 근의 곱 $8(k+1)\\ge0$이므로 $k\\ge-1$이다. 판별식 $64-32(k+1)>0$에서 $k<1$이다. 따라서 가능한 정수 $k$는 $-1,0$으로 두 개이므로 정답은 ②이다.",
@@ -333,8 +333,8 @@ window.generatedLiteQuestions.push(...[
     "answer": "⑤",
     "solution": "$t=\\sqrt{x-4}\\ge0$으로 놓으면 $t^2-t+(k+4)=0$이다. $k<-4$일 때 근의 곱이 음수이므로 양의 근 하나만 허용되어 교점은 하나이다. $k=-4$이면 두 근은 $0,1$로 두 교점이 있다. $-4<k<-\\dfrac{15}{4}$이면 두 양의 근으로 두 교점이 있다. $k=-\\dfrac{15}{4}$에서는 중근 $t=\\dfrac12$만 있어 한 교점이고, 그보다 큰 $k$에서는 실근이 없다. 따라서 $k<-4$ 또는 $k=-\\dfrac{15}{4}$이므로 정답은 ⑤이다.",
     "solutionImage": "assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q22-B2-solution.svg",
-    "solutionImageAlt": "보조 변수 t에 대한 이차방정식과 비음수 근의 교점 해설 그래프",
-    "solutionImageCaption": "t≥0인 서로 다른 두 근이 원래 무리함수와 직선의 서로 다른 두 교점에 대응한다.",
+    "solutionImageAlt": "k<−4일 때 양의 근 하나와 k=−15/4일 때 양의 중근 하나가 각각 원래 그래프의 한 교점에 대응함을 비교하는 그림",
+    "solutionImageCaption": "왼쪽은 한 양의 근, 오른쪽은 양의 중근이며 두 경우 모두 원래 무리함수와 직선은 한 점에서 만난다.",
     "solutionImageSize": "full",
     "sourceKind": "generated",
     "sourceType": "generated",
@@ -480,16 +480,16 @@ window.generatedLiteQuestions.push(...[
       "그래프"
     ],
     "wide": false,
-    "content": "무리함수 $y=\\sqrt{x-20}$와 직선 $y=\\dfrac1{12}x+k$가 서로 다른 두 점에서 만나도록 하는 정수 $k$의 개수는?",
+    "content": "무리함수 $y=\\sqrt{x-20}$와 직선 $y=\\dfrac1{12}x+k$가 서로 다른 두 점에서 만나도록 하는 정수 $k$ 가운데, 두 교점의 $x$좌표의 합이 $150$보다 큰 $k$의 개수는?",
     "choices": [
-      "$3$",
+      "$1$",
+      "$0$",
       "$2$",
-      "$4$",
-      "$5$",
-      "$1$"
+      "$3$",
+      "무한히 많다"
     ],
     "answer": "①",
-    "solution": "$t=\\sqrt{x-20}\\ge0$으로 두면 $t^2-12t+(20+12k)=0$이다. 두 근의 합은 $12$이고 곱은 $20+12k$이므로 비음수 조건은 $k\\ge-\\dfrac53$이다. 판별식은 $144-4(20+12k)=64-48k$이므로 서로 다른 근 조건은 $k<\\dfrac43$이다. 이 범위에 속한 정수는 $-1,0,1$ 세 개이므로 정답은 ①이다.",
+    "solution": "$t=\\sqrt{x-20}\\ge0$으로 두면 $x=t^2+20$이고 교점 조건은 $t^2-12t+(20+12k)=0$이다. 두 서로 다른 비음수 근 조건에서 $-\\dfrac53\\le k<\\dfrac43$이므로 정수 $k=-1,0,1$이다. 근의 합은 $12$, 곱은 $20+12k$이므로 두 교점의 $x$좌표의 합은 $t_1^2+t_2^2+40=12^2-2(20+12k)+40=144-24k$이다. $k=-1,0,1$일 때 합은 각각 $168,144,120$이므로 $150$보다 큰 경우는 $k=-1$ 하나이다. 따라서 정답은 ①이다.",
     "solutionImage": "assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q22-C1-solution.svg",
     "solutionImageAlt": "보조 변수 t에 대한 이차방정식과 비음수 근의 교점 해설 그래프",
     "solutionImageCaption": "t≥0인 서로 다른 두 근이 원래 무리함수와 직선의 서로 다른 두 교점에 대응한다.",
@@ -538,8 +538,8 @@ window.generatedLiteQuestions.push(...[
   {
     "id": 8,
     "uid": "ALITE-GEUMDANG25-2FINAL-Q22-C2",
-    "level": "상",
-    "difficultyBucket": 4,
+    "level": "중",
+    "difficultyBucket": 3,
     "category": "무리함수와 직선의 교점",
     "originalCategory": "무리함수",
     "standardCourse": "공통수학2",
@@ -559,19 +559,19 @@ window.generatedLiteQuestions.push(...[
       "그래프"
     ],
     "wide": false,
-    "content": "무리함수 $y=\\sqrt{x-6}+2$와 직선 $y=\\dfrac16x+k$가 서로 다른 두 점에서 만나도록 하는 모든 정수 $k$의 합은?",
+    "content": "무리함수 $y=\\sqrt{x-6}+2$와 직선 $y=\\dfrac16x+k$가 서로 다른 두 점에서 만나는 정수 $k$에 대하여, 각 $k$에서 두 교점의 $x$좌표의 합을 구한다. 이렇게 얻은 값들의 합은?",
     "choices": [
-      "$1$",
-      "$2$",
-      "$3$",
-      "$4$",
-      "$5$"
+      "$48$",
+      "$36$",
+      "$84$",
+      "$60$",
+      "$3$"
     ],
     "answer": "③",
-    "solution": "$t=\\sqrt{x-6}\\ge0$이라 두면 $x=t^2+6$이므로 교점 조건 $t+2=\\dfrac16(t^2+6)+k$에서 $t^2-6t+6(k-1)=0$이다. 두 근의 합은 $6$, 곱은 $6(k-1)$이므로 비음수 조건은 $k\\ge1$이다. 판별식 $36-24(k-1)>0$에서 $k<\\dfrac52$이다. 따라서 가능한 정수 $k=1,2$의 합은 $3$이므로 정답은 ③이다.",
+    "solution": "$t=\\sqrt{x-6}\\ge0$으로 두면 교점 조건은 $t^2-6t+6(k-1)=0$이다. 서로 다른 두 비음수 근 조건은 $1\\le k<\\dfrac52$이므로 정수 $k=1,2$이다. 두 근의 합은 $6$, 곱은 $6(k-1)$이므로 각 k에서 두 교점 x좌표의 합은 $t_1^2+t_2^2+12=6^2-12(k-1)+12=60-12k$이다. k=1일 때는 48, k=2일 때는 36이므로 구하는 합은 $48+36=84$이다. 따라서 정답은 ③이다.",
     "solutionImage": "assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q22-C2-solution.svg",
-    "solutionImageAlt": "보조 변수 t에 대한 이차방정식과 비음수 근의 교점 해설 그래프",
-    "solutionImageCaption": "t≥0인 서로 다른 두 근이 원래 무리함수와 직선의 서로 다른 두 교점에 대응한다.",
+    "solutionImageAlt": "t=√(x−6)으로 치환한 이차방정식의 비음수 근과 두 교점 x좌표 합의 관계를 나타낸 해설 그림",
+    "solutionImageCaption": "정수 k=1,2에서 두 비음수 t근으로 교점을 대응하고, 각 x좌표 합을 계산한다.",
     "solutionImageSize": "full",
     "sourceKind": "generated",
     "sourceType": "generated",
@@ -606,8 +606,8 @@ window.generatedLiteQuestions.push(...[
         "CC_QUADRATIC_FUNCTION"
       ],
       "conditionKeys": [],
-      "difficultyBucket": 4,
-      "level": "상",
+      "difficultyBucket": 3,
+      "level": "중",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-09",
       "subUnitKey": "H22-C2-09-FUNCTION_BASIC",

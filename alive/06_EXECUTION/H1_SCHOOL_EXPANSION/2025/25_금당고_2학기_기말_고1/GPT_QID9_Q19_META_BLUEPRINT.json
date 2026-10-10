@@ -3,8 +3,8 @@
   "sourceQid": 19,
   "sourceExamPath": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
   "sourceExamBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
-  "candidateJsBlobSha": "47cbab1e7dd074351c4b7c3376ee71ad80f2fca0",
-  "mathSpecBlobSha": "12e0de1cf8ecc5024da29bf56681fdb1cbdae4fe",
+  "candidateJsBlobSha": "a735f665e66d550108355d23e9cbed992ed1a215",
+  "mathSpecBlobSha": "addd5914f30746fc6b98d06ae58516a0f8145e28",
   "lockedPrimaryL3": {
     "id": "H1-RPM-258",
     "label": "함수의 성질",
@@ -23,7 +23,7 @@
       "chosenL4": "항등함수·상수함수",
       "studentStem": "서로 다른 네 실수 $a,b,c,d$에서 $f(x)=|(x-3)^2-5|$가 상수함수일 때 가능한 정수 함숫값 $k$의 합은?",
       "choices": [
-        "$6$",
+        "$4$",
         "$9$",
         "$10$",
         "$11$",
@@ -52,9 +52,9 @@
       "choices": [
         "$14$",
         "$15$",
-        "$16$",
+        "$21$",
         "$20$",
-        "$21$"
+        "$5$"
       ],
       "answer": "②",
       "level": "중",
@@ -77,13 +77,13 @@
       "chosenL4": "항등함수·상수함수",
       "studentStem": "서로 다른 네 실수로 이루어진 집합 $X$에서 $f(x)=|(x+1)^2-8|$가 상수함수이다. 가능한 양의 정수 함숫값 $k$의 곱은?",
       "choices": [
-        "$5040$",
+        "$28$",
         "$720$",
-        "$5048$",
+        "$7$",
         "$40320$",
-        "$28$"
+        "$5040$"
       ],
-      "answer": "①",
+      "answer": "⑤",
       "level": "상",
       "difficultyBucket": 4,
       "parameters": {
@@ -104,7 +104,7 @@
       "chosenL4": "항등함수·상수함수",
       "studentStem": "방정식 $|(x-4)^2-4|=k$가 서로 다른 네 실근을 갖도록 하는 양의 정수 $k$의 개수는?",
       "choices": [
-        "$2$",
+        "$1$",
         "$4$",
         "$5$",
         "$3$",
@@ -129,13 +129,13 @@
       "uid": "ALITE-GEUMDANG25-2FINAL-Q19-B2",
       "primaryL3": "H1-RPM-258",
       "chosenL4": "항등함수·상수함수",
-      "studentStem": "서로 다른 네 실수에서 $f(x)=|(x-1)^2-7|$의 값이 같은 양의 정수 $k$가 되도록 한다. 가능한 모든 $k$의 합은?",
+      "studentStem": "함수 $f(x)=|(x-1)^2-7|$에 대하여, $0\\le k\\le8$인 정수 $k$ 중 방정식 $f(x)=k$가 서로 다른 두 실근을 갖도록 하는 모든 $k$의 합은?",
       "choices": [
+        "$7$",
         "$15$",
-        "$20$",
-        "$21$",
-        "$22$",
-        "$28$"
+        "$8$",
+        "$9$",
+        "$0$"
       ],
       "answer": "③",
       "level": "중",
@@ -143,10 +143,10 @@
       "parameters": {
         "h": 1,
         "d": 7,
-        "mode": "sum",
-        "value": 21
+        "mode": "bounded_two_roots_sum",
+        "value": 8
       },
-      "decisiveInvariant": "0<k<d",
+      "decisiveInvariant": "0≤k≤8에서 두 근인 경계는 k=0,8; k=7은 3근, 1≤k≤6은 4근",
       "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
       "solutionVisual": "ADD_FOUR_INTERSECTION_GRAPH",
       "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-B2-solution.svg"
@@ -158,13 +158,13 @@
       "chosenL4": "항등함수·상수함수",
       "studentStem": "서로 다른 네 정수로 이루어진 집합 $X$에서 $f(x)=|(x-3)^2-5|$가 상수함수이다. 가능한 정수 함숫값 $k$의 합은?",
       "choices": [
-        "$1$",
         "$4$",
-        "$5$",
+        "$1$",
+        "$9$",
         "$8$",
         "$10$"
       ],
-      "answer": "②",
+      "answer": "①",
       "level": "상",
       "difficultyBucket": 4,
       "parameters": {
@@ -214,7 +214,7 @@
       "choices": [
         "$4$",
         "$5$",
-        "$7$",
+        "$1$",
         "$8$",
         "$6$"
       ],
@@ -237,24 +237,24 @@
       "uid": "ALITE-GEUMDANG25-2FINAL-Q19-C3",
       "primaryL3": "H1-RPM-258",
       "chosenL4": "항등함수·상수함수",
-      "studentStem": "서로 다른 네 실수에서 $f(x)=|x^2-10x+13|$의 값이 같은 정수 $k$가 되도록 한다. 가능한 모든 $k$의 합은?",
+      "studentStem": "방정식 $|x^2-10x+13|=k$가 서로 다른 네 실근을 갖는 양의 정수 $k$를 모두 생각하자. 각 $k$에 대해 네 실근을 $\\alpha_1,\\alpha_2,\\alpha_3,\\alpha_4$라 할 때, 모든 가능한 $k$에 대한 $\\alpha_1^2+\\alpha_2^2+\\alpha_3^2+\\alpha_4^2$의 합은?",
       "choices": [
-        "$55$",
+        "$11$",
+        "$1480$",
         "$66$",
-        "$60$",
-        "$67$",
-        "$78$"
+        "$1628$",
+        "$148$"
       ],
-      "answer": "②",
+      "answer": "④",
       "level": "상",
       "difficultyBucket": 4,
       "parameters": {
         "h": 5,
         "d": 12,
-        "mode": "sum",
-        "value": 66
+        "mode": "sum_of_four_root_squares",
+        "value": 1628
       },
-      "decisiveInvariant": "0<k<d",
+      "decisiveInvariant": "각 0<k<12 수준에서 대칭근 제곱합은 148; 11개 k에 누적",
       "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
       "solutionVisual": "ADD_FOUR_INTERSECTION_GRAPH",
       "solutionSVG": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-C3-solution.svg"

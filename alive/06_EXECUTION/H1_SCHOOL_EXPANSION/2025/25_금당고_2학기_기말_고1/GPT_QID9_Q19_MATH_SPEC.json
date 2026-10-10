@@ -9,7 +9,8 @@
     "(x-h)^2=d+k gives two distinct roots.",
     "(x-h)^2=d-k gives two distinct roots iff k<d.",
     "k>0 ensures the root pairs do not coincide.",
-    "Four integer roots require d-k,d+k to be distinct positive perfect squares."
+    "Four integer roots require d-k,d+k to be distinct positive perfect squares.",
+    "For Q19-C3, with h=5,d=12, the four roots pair as h±√(d+k), h±√(d−k); their squared sum is 4h²+4d=148, independent of k, and k=1,…,11."
   ],
   "candidateParameters": [
     {
@@ -44,8 +45,8 @@
       "slot": "B2",
       "h": 1,
       "d": 7,
-      "mode": "sum",
-      "value": 21
+      "mode": "bounded_two_roots_sum",
+      "value": 8
     },
     {
       "slot": "B3",
@@ -72,8 +73,8 @@
       "slot": "C3",
       "h": 5,
       "d": 12,
-      "mode": "sum",
-      "value": 66
+      "mode": "sum_of_four_root_squares",
+      "value": 1628
     }
   ]
 }
