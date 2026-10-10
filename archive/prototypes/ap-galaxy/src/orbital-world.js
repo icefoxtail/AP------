@@ -105,10 +105,16 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.12;
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x050916);
-  scene.fog = new THREE.FogExp2(0x050916, .0002);
-  const camera = new THREE.PerspectiveCamera(52, 1, .1, 480);
-  camera.position.set(0, 48, 78);
+  scene.background = new THREE.Color(0x101026);
+  scene.fog = new THREE.FogExp2(0x101026, .000003);
+  const nebulaTexture = new THREE.TextureLoader().load(new URL('../assets/galaxy-atmosphere.png', import.meta.url).href);
+  nebulaTexture.colorSpace = THREE.SRGBColorSpace;
+  const nebulaSky = new THREE.Mesh(new THREE.SphereGeometry(340, 64, 40), new THREE.MeshBasicMaterial({
+    map: nebulaTexture, color: 0xaaa0d6, side: THREE.BackSide, transparent: true, opacity: .78, depthWrite: false,
+  }));
+  scene.add(nebulaSky);
+  const camera = new THREE.PerspectiveCamera(mobile ? 68 : 60, 1, .1, 480);
+  camera.position.set(0, 48, 92);
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.target.set(0, 0, 0);
   controls.enableDamping = true;
@@ -135,7 +141,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   const skyRandom = randomFrom(81802026);
   const starTints = [new THREE.Color(0xb1d5ff), new THREE.Color(0xf2d8b5), new THREE.Color(0xa7a3fa), new THREE.Color(0x9bf0df)];
   for (let i = 0; i < starCount; i += 1) {
-    const radius = 88 + skyRandom() * 180;
+    const radius = 150 + skyRandom() * 150;
     const phi = skyRandom() * Math.PI * 2;
     const z = skyRandom() * 2 - 1;
     const scale = Math.sqrt(1 - z * z);
@@ -151,7 +157,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   starGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
   starGeometry.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
   scene.add(new THREE.Points(starGeometry, new THREE.PointsMaterial({
-    size: mobile ? .42 : .56, sizeAttenuation: true, vertexColors: true, transparent: true, opacity: .8, depthWrite: false,
+    size: mobile ? .32 : .22, sizeAttenuation: true, vertexColors: true, transparent: true, opacity: .8, depthWrite: false,
   })));
 
   const sunRoot = new THREE.Group();
@@ -199,6 +205,8 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   scene.add(groupRoot, dataRoot, constellationRoot);
   const sharedPlanetGeometry = new THREE.SphereGeometry(1, 36, 24);
   const sharedAtmosphereGeometry = new THREE.SphereGeometry(1, 28, 18);
+  const sharedDataStarGeometry = new THREE.SphereGeometry(.2, 14, 10);
+  const sharedDataGlowGeometry = new THREE.SphereGeometry(.43, 14, 10);
   const sharedPaperGeometry = new THREE.PlaneGeometry(.68, .84);
   const sharedPaperTexture = makeDocumentTexture();
   const sharedPaperMaterial = new THREE.MeshStandardMaterial({
@@ -207,8 +215,15 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   });
   const planetMaterials = new Map();
   const atmosphereMaterials = new Map();
+  const dataStarMaterials = new Map();
+  const dataGlowMaterials = new Map();
   const groups = new Map();
   const entities = new Map();
+  let catalogPoints = null;
+  let catalogPointNodes = [];
+  let catalogPointFiles = [];
+  let catalogPointPositions = null;
+  let focusedGroupId = '';
   const constellations = [];
   let pendingLines = [];
   const raycaster = new THREE.Raycaster();
@@ -219,6 +234,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   const tempA = new THREE.Vector3();
   const tempB = new THREE.Vector3();
   const tempProjected = new THREE.Vector3();
+  const orbitAxis = new THREE.Vector3(1, 0, 0);
   let simTime = 0;
   let lastFrame = performance.now();
   let running = !matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -244,10 +260,24 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     }
     return atmosphereMaterials.get(index);
   }
+  function getDataStarMaterial(index) {
+    if (!dataStarMaterials.has(index)) dataStarMaterials.set(index, new THREE.MeshBasicMaterial({ color: ORBIT_COLORS[index % ORBIT_COLORS.length] }));
+    return dataStarMaterials.get(index);
+  }
+  function getDataGlowMaterial(index) {
+    if (!dataGlowMaterials.has(index)) dataGlowMaterials.set(index, new THREE.MeshBasicMaterial({
+      color: ORBIT_COLORS[index % ORBIT_COLORS.length], transparent: true, opacity: .22,
+      blending: THREE.AdditiveBlending, depthWrite: false,
+    }));
+    return dataGlowMaterials.get(index);
+  }
   function hashAngle(text) {
     return (hashText(text) % 100000) / 100000 * Math.PI * 2;
   }
-  function createGroupNode(data, index, reusing) {
+  function groupOrbitRadius(index, groupCount) {
+    return 10 + index * (72 / Math.max(1, groupCount - 1));
+  }
+  function createGroupNode(data, index, reusing, groupCount) {
     const palette = index % PALETTES.length;
     const color = ORBIT_COLORS[palette];
     const root = reusing || new THREE.Group();
@@ -255,7 +285,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       root.clear();
     }
     root.name = data.id;
-    const orbitRadius = 10.5 + index * 2.25;
+    const orbitRadius = groupOrbitRadius(index, groupCount);
     const hubScale = data.mode === 'school' ? 1.08 : data.mode === 'grade' ? .88 : .78;
     const hub = new THREE.Group();
     root.add(hub);
@@ -277,21 +307,26 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     }
     const shellMaterials = [];
     for (let shell = 0; shell < 3; shell += 1) {
-      const material = new THREE.LineBasicMaterial({ color, transparent: true, opacity: .29 - shell * .035, depthWrite: false });
+      const material = new THREE.LineBasicMaterial({ color, transparent: true, opacity: .045 - shell * .006, depthWrite: false });
       shellMaterials.push(material);
       const orbit = makeOrbit(2.8 + shell * 1.72, .8 + shell * .035, material, 80);
       orbit.rotation.x = .18 + shell * .21 + index * .035;
       orbit.rotation.z = (shell % 2 ? -1 : 1) * (.12 + index * .018);
       root.add(orbit);
     }
-    const orbitPath = makeOrbit(orbitRadius, .72 + index % 4 * .05, new THREE.LineBasicMaterial({
-      color, transparent: true, opacity: .23, depthWrite: false,
+    const orbitPath = makeOrbit(orbitRadius, .9 + index % 4 * .035, new THREE.LineBasicMaterial({
+      color, transparent: true, opacity: .075, depthWrite: false,
     }), 128);
     scene.add(orbitPath);
+    const animateLayout = running && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const targetAngle = index * GOLDEN_ANGLE;
+    const initialAngle = animateLayout ? hashAngle(data.id) : targetAngle;
+    const transitionStart = performance.now();
     return {
       id: data.id, name: data.name, mode: data.mode, count: data.count, root, hub, globe,
       orbitPath, palette, color, index, orbitRadius, targetRadius: orbitRadius,
-      angle: hashAngle(data.id), targetAngle: index * GOLDEN_ANGLE,
+      angle: initialAngle, layoutAngle: initialAngle, layoutFromAngle: initialAngle,
+      targetAngle, layoutTransitionStart: transitionStart, layoutTransitionDuration: animateLayout ? 900 : 0, orbitPhase: 0,
       speed: .034 + (hashText(data.id) % 7) * .006,
       shellMaterials, drawnFiles: data.files.slice(),
     };
@@ -308,14 +343,23 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     });
   }
   function createDataNode(exam, groupId, slot) {
-    const token = new THREE.Mesh(sharedPaperGeometry, sharedPaperMaterial);
-    token.scale.setScalar(.82);
+    const token = new THREE.Group();
+    const palette = hashText(exam.file) % ORBIT_COLORS.length;
+    const glow = new THREE.Mesh(sharedDataGlowGeometry, getDataGlowMaterial(palette));
+    const star = new THREE.Mesh(sharedDataStarGeometry, getDataStarMaterial(palette));
+    star.userData.file = exam.file;
+    star.userData.exam = exam;
+    star.userData.kind = 'exam';
+    const paper = new THREE.Mesh(sharedPaperGeometry, sharedPaperMaterial);
+    paper.scale.setScalar(.82);
+    paper.visible = false;
+    token.add(glow, star, paper);
     token.userData.file = exam.file;
     token.userData.exam = exam;
     token.userData.kind = 'exam';
     dataRoot.add(token);
     return {
-      file: exam.file, exam, groupId, slot, token, pickMesh: token,
+      file: exam.file, exam, groupId, slot, token, star, paper, pickMesh: star,
       position: new THREE.Vector3(), phase: hashAngle(exam.file), radius: 2.8 + (slot % 3) * 1.72,
       speed: .22 + (hashText(exam.file) % 13) * .025, targetReady: false,
     };
@@ -330,7 +374,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     return current + delta * factor;
   }
 
-  function setData({ groups: nextGroups, exams: nextExams, searching = false }) {
+  function setData({ groups: nextGroups, exams: nextExams, details = nextExams, searching = false }) {
     sharedPaperMaterial.emissiveIntensity = searching ? .58 : .13;
     document.body.classList.toggle('search-active', searching);
     const oldGroups = [...groups.values()];
@@ -351,36 +395,72 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
         }
       }
       if (group) clearGroupNode(group);
-      const next = createGroupNode(data, index, reused ? group.root : null);
+      const next = createGroupNode(data, index, reused ? group.root : null, nextGroups.length);
       if (reused) {
         next.angle = group.angle;
+        next.layoutAngle = group.layoutAngle;
+        next.orbitPhase = group.orbitPhase;
         next.orbitRadius = group.orbitRadius;
-        next.targetRadius = 10.5 + index * 2.25;
-        next.targetAngle = index * GOLDEN_ANGLE;
+        next.targetRadius = groupOrbitRadius(index, nextGroups.length);
+        const targetAngle = index * GOLDEN_ANGLE;
+        const animateLayout = running && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (Math.abs(smoothAngle(group.targetAngle, targetAngle, 1) - group.targetAngle) < .0001) {
+          next.layoutFromAngle = group.layoutFromAngle;
+          next.layoutTransitionStart = group.layoutTransitionStart;
+          next.layoutTransitionDuration = group.layoutTransitionDuration;
+        } else if (animateLayout) {
+          next.layoutFromAngle = group.layoutAngle;
+          next.layoutTransitionStart = performance.now();
+          next.layoutTransitionDuration = 900;
+        } else {
+          next.layoutFromAngle = targetAngle;
+          next.layoutAngle = targetAngle;
+          next.layoutTransitionStart = performance.now();
+          next.layoutTransitionDuration = 0;
+        }
+        next.targetAngle = targetAngle;
         next.speed = group.speed;
       }
       groupRoot.add(next.root);
-      next.root.position.set(Math.cos(next.angle) * next.orbitRadius, Math.sin(next.angle * .72) * 1.25, Math.sin(next.angle) * next.orbitRadius * .72);
+      next.root.position.set(Math.cos(next.angle) * next.orbitRadius, Math.sin(next.angle * .72) * 1.25, Math.sin(next.angle) * next.orbitRadius * .9);
       newGroupMap.set(data.id, next);
     }
     for (const group of unused) clearGroupNode(group);
     groups.clear();
     for (const [id, group] of newGroupMap) groups.set(id, group);
 
-    const selectedFiles = new Set(nextExams.map((exam) => exam.file));
+    const selectedFiles = new Set(details.map((exam) => exam.file));
     for (const [file, entity] of entities) {
       if (!selectedFiles.has(file)) {
         removeDataNode(entity);
         entities.delete(file);
       }
     }
-    const groupSlots = new Map();
-    for (const data of nextGroups) groupSlots.set(data.id, 0);
+    const groupByFile = new Map();
+    for (const group of nextGroups) for (const file of group.files) groupByFile.set(file, group.id);
+    const groupSlots = new Map(nextGroups.map((group) => [group.id, 0]));
+    catalogPointNodes = [];
+    catalogPointFiles = [];
+    const slotByFile = new Map();
     for (const exam of nextExams) {
-      const id = nextGroups.find((group) => group.files.includes(exam.file))?.id || nextGroups.find((group) => group.items?.some((item) => item.file === exam.file))?.id;
+      const id = groupByFile.get(exam.file);
       if (!id) continue;
       const slot = groupSlots.get(id) || 0;
       groupSlots.set(id, slot + 1);
+      slotByFile.set(exam.file, slot);
+      catalogPointNodes.push({
+        file: exam.file, groupId: id, slot, phase: hashAngle(exam.file),
+        radius: 2.8 + (slot % 3) * 1.72,
+        speed: .22 + (hashText(exam.file) % 13) * .025,
+        palette: hashText(exam.file) % ORBIT_COLORS.length,
+      });
+      catalogPointFiles.push(exam.file);
+    }
+    rebuildCatalogPoints();
+    for (const exam of details) {
+      const id = groupByFile.get(exam.file);
+      if (!id) continue;
+      const slot = slotByFile.get(exam.file) || 0;
       const existing = entities.get(exam.file);
       if (existing) {
         existing.exam = exam;
@@ -398,6 +478,32 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     examPicks.length = 0;
     for (const entity of entities.values()) examPicks.push(entity.pickMesh);
     createConstellations();
+  }
+
+  function rebuildCatalogPoints() {
+    if (catalogPoints) {
+      dataRoot.remove(catalogPoints);
+      catalogPoints.geometry.dispose();
+      catalogPoints.material.dispose();
+    }
+    const positions = new Float32Array(catalogPointNodes.length * 3);
+    const colors = new Float32Array(catalogPointNodes.length * 3);
+    for (let i = 0; i < catalogPointNodes.length; i += 1) {
+      new THREE.Color(ORBIT_COLORS[catalogPointNodes[i].palette % ORBIT_COLORS.length]).toArray(colors, i * 3);
+    }
+    const geometry = new THREE.BufferGeometry();
+    const positionAttribute = new THREE.BufferAttribute(positions, 3);
+    positionAttribute.setUsage(THREE.DynamicDrawUsage);
+    geometry.setAttribute('position', positionAttribute);
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    catalogPoints = new THREE.Points(geometry, new THREE.PointsMaterial({
+      size: mobile ? .2 : .14, sizeAttenuation: true, vertexColors: true,
+      transparent: true, opacity: .92, blending: THREE.AdditiveBlending, depthWrite: false,
+    }));
+    catalogPoints.userData.kind = 'catalog-points';
+    catalogPoints.userData.files = catalogPointFiles;
+    catalogPointPositions = positions;
+    dataRoot.add(catalogPoints);
   }
 
   function disposeConstellations() {
@@ -459,29 +565,50 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       rafId = requestAnimationFrame(setFrame);
       return;
     }
-    const dt = Math.min((now - lastFrame) / 1000, .08);
+    const elapsed = Math.max(0, (now - lastFrame) / 1000);
+    const dt = Math.min(elapsed, .08);
     lastFrame = now;
-    if (running && pageVisible) simTime += dt;
+    if (running && pageVisible) simTime += elapsed;
     const animate = running && pageVisible;
 
     for (const group of groups.values()) {
       group.orbitRadius += (group.targetRadius - group.orbitRadius) * Math.min(1, dt * 1.4);
-      group.targetAngle = group.index * GOLDEN_ANGLE;
-      group.angle = smoothAngle(group.angle, group.targetAngle, Math.min(1, dt * 1.1)) + (animate ? group.speed * dt : 0);
+      const layoutProgress = group.layoutTransitionDuration === 0 ? 1 : Math.min(1, (now - group.layoutTransitionStart) / group.layoutTransitionDuration);
+      const layoutEase = layoutProgress * layoutProgress * (3 - 2 * layoutProgress);
+      group.layoutAngle = smoothAngle(group.layoutFromAngle, group.targetAngle, layoutEase);
+      if (animate) group.orbitPhase += group.speed * elapsed;
+      group.angle = group.layoutAngle + group.orbitPhase;
+      const emphasized = group.id === focusedGroupId;
+      group.orbitPath.material.opacity = emphasized ? .42 : .004;
+      for (let i = 0; i < group.shellMaterials.length; i += 1) group.shellMaterials[i].opacity = emphasized ? .34 - i * .035 : .012 - i * .002;
       const x = Math.cos(group.angle) * group.orbitRadius;
-      const z = Math.sin(group.angle) * group.orbitRadius * .72;
+      const z = Math.sin(group.angle) * group.orbitRadius * .9;
       const y = Math.sin(group.angle * .72) * 1.25;
       group.root.position.set(x, y, z);
       group.hub.rotation.y = simTime * .14;
       group.orbitPath.scale.setScalar(group.orbitRadius / Math.max(group.targetRadius, 1));
     }
 
+    for (let i = 0; i < catalogPointNodes.length; i += 1) {
+      const node = catalogPointNodes[i];
+      const group = groups.get(node.groupId);
+      if (!group) continue;
+      const angle = node.phase + simTime * node.speed;
+      tempA.set(Math.cos(angle) * node.radius, Math.sin(angle * 1.45) * .65, Math.sin(angle) * node.radius * .82);
+      tempA.applyAxisAngle(orbitAxis, .16 + (node.slot % 3) * .22);
+      tempA.add(group.root.position);
+      catalogPointPositions[i * 3] = tempA.x;
+      catalogPointPositions[i * 3 + 1] = tempA.y;
+      catalogPointPositions[i * 3 + 2] = tempA.z;
+    }
+    if (catalogPoints) catalogPoints.geometry.attributes.position.needsUpdate = true;
+
     for (const entity of entities.values()) {
       const group = groups.get(entity.groupId);
       if (!group) continue;
       const orbitalAngle = entity.phase + simTime * entity.speed;
       tempA.set(Math.cos(orbitalAngle) * entity.radius, Math.sin(orbitalAngle * 1.45) * .65, Math.sin(orbitalAngle) * entity.radius * .82);
-      tempA.applyAxisAngle(new THREE.Vector3(1, 0, 0), .16 + (entity.slot % 3) * .22);
+      tempA.applyAxisAngle(orbitAxis, .16 + (entity.slot % 3) * .22);
       tempA.add(group.root.position);
       if (!entity.targetReady) {
         entity.position.copy(tempA);
@@ -492,20 +619,32 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       entity.token.position.copy(entity.position);
       entity.token.rotation.y = Math.sin(simTime * .6 + entity.phase) * .12;
       entity.token.rotation.z = Math.cos(simTime * .3 + entity.phase) * .045;
+      const nearPaper = entity.groupId === focusedGroupId || camera.position.distanceTo(entity.position) < 30;
+      entity.paper.visible = nearPaper;
+      entity.star.scale.setScalar(nearPaper ? .78 : 1.18);
     }
 
     sun.rotation.y = simTime * .022;
     sunHalo.rotation.y = simTime * .01;
     blackholeRoot.rotation.y = simTime * .035;
     disk.rotation.z = simTime * .075;
-    lensA.rotation.y += animate ? dt * .008 : 0;
-    lensB.rotation.y -= animate ? dt * .006 : 0;
+    lensA.rotation.y += animate ? elapsed * .008 : 0;
+    lensB.rotation.y -= animate ? elapsed * .006 : 0;
     if (cameraTransition) {
       const t = Math.min(1, (now - cameraTransition.start) / cameraTransition.duration);
       const eased = t * t * (3 - 2 * t);
       camera.position.lerpVectors(cameraTransition.fromPosition, cameraTransition.toPosition, eased);
       controls.target.lerpVectors(cameraTransition.fromTarget, cameraTransition.toTarget, eased);
       if (t >= 1) cameraTransition = null;
+    }
+    if (!cameraTransition && focusedGroupId) {
+      const focusedGroup = groups.get(focusedGroupId);
+      if (focusedGroup) {
+        focusedGroup.globe.getWorldPosition(tempB);
+        tempB.sub(controls.target);
+        camera.position.add(tempB);
+        controls.target.add(tempB);
+      }
     }
     controls.update();
     for (const relation of constellations) {
@@ -543,7 +682,8 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     blackholeLabel.style.display = holePoint.visible ? 'flex' : 'none';
     blackholeLabel.style.left = holePoint.x + 'px';
     blackholeLabel.style.top = (holePoint.y - 24) + 'px';
-    onFrame?.({ groups: groupPositions, exams: examPositions });
+    const groupAngles = new Map([...groups.values()].map((group) => [group.id, group.angle]));
+    onFrame?.({ groups: groupPositions, exams: examPositions, examFiles: catalogPointFiles, groupAngles, cameraPosition: camera.position.toArray() });
     renderer.render(scene, camera);
     rafId = requestAnimationFrame(setFrame);
   }
@@ -559,6 +699,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   function focusGroup(id) {
     const group = groups.get(id);
     if (!group) return;
+    focusedGroupId = id;
     const target = group.globe.getWorldPosition(new THREE.Vector3());
     const fromPosition = camera.position.clone();
     const fromTarget = controls.target.clone();
@@ -576,7 +717,8 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   }
   function resetCamera() {
     const toTarget = new THREE.Vector3(0, 0, 0);
-    const toPosition = new THREE.Vector3(0, 48, 78);
+    focusedGroupId = '';
+    const toPosition = new THREE.Vector3(0, 48, 92);
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
       camera.position.copy(toPosition);
       controls.target.copy(toTarget);
@@ -589,16 +731,26 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       toPosition, toTarget, start: performance.now(), duration: 980,
     };
   }
+  function settleGroupLayouts() {
+    const now = performance.now();
+    for (const group of groups.values()) {
+      group.layoutAngle = group.targetAngle;
+      group.layoutFromAngle = group.targetAngle;
+      group.layoutTransitionStart = now;
+      group.layoutTransitionDuration = 0;
+    }
+  }
   function raycastAt(event) {
     const rect = renderer.domElement.getBoundingClientRect();
     pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
     pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
     raycaster.setFromCamera(pointer, camera);
-    const hits = raycaster.intersectObjects([...planetPicks, ...examPicks, ...blackholePicks], false);
+    const hits = raycaster.intersectObjects([...planetPicks, ...examPicks, ...(catalogPoints ? [catalogPoints] : []), ...blackholePicks], false);
     if (!hits.length) return;
-    const hit = hits[0].object;
+    const { object: hit, index } = hits[0];
     if (hit.userData.kind === 'group') onGroup?.(hit.userData.groupId);
     else if (hit.userData.kind === 'exam') onExam?.(hit.userData.file);
+    else if (hit.userData.kind === 'catalog-points') onExam?.(hit.userData.files[index]);
     else if (hit.userData.kind === 'blackhole') onBlackhole?.();
   }
   function pointerDown(event) { pointerStart = { x: event.clientX, y: event.clientY, time: performance.now() }; }
@@ -624,11 +776,11 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     },
     focusGroup,
     resetCamera,
-    setMotion(value) { running = Boolean(value); lastFrame = performance.now(); return running; },
-    toggleMotion() { running = !running; lastFrame = performance.now(); return running; },
+    setMotion(value) { running = Boolean(value); if (!running) settleGroupLayouts(); lastFrame = performance.now(); return running; },
+    toggleMotion() { running = !running; if (!running) settleGroupLayouts(); lastFrame = performance.now(); return running; },
     setPageVisible(value) { pageVisible = Boolean(value); lastFrame = performance.now(); },
     resize: setSize,
-    clearFocus() {},
+    clearFocus() { resetCamera(); },
     dispose() {
       cancelAnimationFrame(rafId);
       canvas.removeEventListener('pointerdown', pointerDown);
@@ -641,14 +793,26 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       starGeometry.dispose();
       sharedPlanetGeometry.dispose();
       sharedAtmosphereGeometry.dispose();
+      sharedDataStarGeometry.dispose();
+      sharedDataGlowGeometry.dispose();
       sharedPaperGeometry.dispose();
       sharedPaperTexture.dispose();
       sharedPaperMaterial.dispose();
+      nebulaTexture.dispose();
+      nebulaSky.geometry.dispose();
+      nebulaSky.material.dispose();
       for (const material of planetMaterials.values()) {
         material.map?.dispose();
         material.dispose();
       }
       for (const material of atmosphereMaterials.values()) material.dispose();
+      for (const material of dataStarMaterials.values()) material.dispose();
+      for (const material of dataGlowMaterials.values()) material.dispose();
+      if (catalogPoints) {
+        dataRoot.remove(catalogPoints);
+        catalogPoints.geometry.dispose();
+        catalogPoints.material.dispose();
+      }
       renderer.dispose();
     },
   };
