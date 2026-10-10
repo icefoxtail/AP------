@@ -1,0 +1,199 @@
+{
+  "schemaVersion": "ALIVE_QID9_GEUMDANG25_Q03_SELF_REVIEW_V1",
+  "sourceQid": 3,
+  "sourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "branch": "work/alive-25-geumdang-h1-2final-qid9",
+  "candidateCount": 9,
+  "keep": 9,
+  "revised": 0,
+  "hold": 0,
+  "formalIndependentGptReviewPerformed": false,
+  "sourcePdfCompared": false,
+  "studentChromeVerified": false,
+  "printedSolutionRendered": false,
+  "releaseStatus": "BRANCH_ONLY_UNRELEASED",
+  "lockedPrimaryL3": "H1-RPM-235",
+  "primaryL3Name": "집합의 포함 관계",
+  "mappingRationale": "원본 상등 판정은 양방향 포함으로 귀속. RPM L3 별도 상등 노드 없음.",
+  "mathProofNotes": {
+    "A1": "a=1",
+    "A2": "b=6",
+    "A3": "k=2,4 sum6",
+    "B1": "a=5",
+    "B2": "a=1,3 sum4",
+    "B3": "a=-1,1 product-1",
+    "C1": "n=3",
+    "C2": "n=2,8 sum10",
+    "C3": "t=2,3 sum5"
+  },
+  "pythonVerified": [
+    "B2",
+    "B3",
+    "C2",
+    "C3"
+  ],
+  "visual": {
+    "problemVisual": "NONE_ALL_UID_STEMS_COMPLETE",
+    "solutionVisual": {
+      "C2": "ADD_NUMBER_LINE",
+      "C3": "ADD_NUMBER_LINE",
+      "others": "EXEMPT_DIRECT_SET_REASONING"
+    },
+    "svgCoordinateModel": "screenX=50+36*MathX; y=68; Python checked points 1,2,3,4,5,8"
+  },
+  "rows": [
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q03-A1",
+      "slot": "A1",
+      "originalStemOrIssue": "두 집합 $A=\\{2,5\\}$, $B=\\{a+1,5\\}$에 대하여 $A=B$일 때, 실수 $a$의 값은?",
+      "reverseReadingFinding": "최종 학생 발문만 재독해하여 원소 일치·변수 범위·질문 답형의 충분성 확인",
+      "decision": "KEEP",
+      "finalStem": "두 집합 $A=\\{2,5\\}$, $B=\\{a+1,5\\}$에 대하여 $A=B$일 때, 실수 $a$의 값은?",
+      "affectedFields": [],
+      "changedMathRecheck": "N/A",
+      "distractorPaths": {
+        "①": "$a+1=2$에서 $1$을 두 번 빼 $a=0$",
+        "③": "$+1$을 무시하여 $a=2$",
+        "④": "$a+1=5$만 풀어 $a=4$로 두어 원소 $2$ 누락",
+        "⑤": "$a+1=5$에서 $1$을 더하여 $a=6$"
+      },
+      "remainingRisk": "Independent quality review and real Chrome output not performed"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q03-A2",
+      "slot": "A2",
+      "originalStemOrIssue": "집합 $A=\\{1,4,7\\}$과 $B=\\{7,b-2,1\\}$이 서로 같을 때, 실수 $b$의 값은?",
+      "reverseReadingFinding": "최종 학생 발문만 재독해하여 원소 일치·변수 범위·질문 답형의 충분성 확인",
+      "decision": "KEEP",
+      "finalStem": "집합 $A=\\{1,4,7\\}$과 $B=\\{7,b-2,1\\}$이 서로 같을 때, 실수 $b$의 값은?",
+      "affectedFields": [],
+      "changedMathRecheck": "N/A",
+      "distractorPaths": {
+        "①": "$b-2=4$에서 $b=4-2=2$라고 이항",
+        "②": "$-2$를 무시해 $b=4$",
+        "③": "빠진 $4$를 $3$으로 잘못 보고 $b=5$",
+        "⑤": "$b-2=7$만 풀고 $4$의 누락을 놓쳐 $b=9$"
+      },
+      "remainingRisk": "Independent quality review and real Chrome output not performed"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q03-A3",
+      "slot": "A3",
+      "originalStemOrIssue": "자연수 $k$가 $5$ 이하일 때, 두 집합 $\\{2,4\\}$와 $\\{2,4,k\\}$가 서로 같아지도록 하는 모든 $k$의 값의 합은?",
+      "reverseReadingFinding": "최종 학생 발문만 재독해하여 원소 일치·변수 범위·질문 답형의 충분성 확인",
+      "decision": "KEEP",
+      "finalStem": "자연수 $k$가 $5$ 이하일 때, 두 집합 $\\{2,4\\}$와 $\\{2,4,k\\}$가 서로 같아지도록 하는 모든 $k$의 값의 합은?",
+      "affectedFields": [],
+      "changedMathRecheck": "N/A",
+      "distractorPaths": {
+        "②": "$k=2$만 계산",
+        "③": "$k=4$만 계산",
+        "④": "$2$를 두 번 더해 $2+2+4=8$",
+        "⑤": "$4$를 두 번 더해 $2+4+4=10$"
+      },
+      "remainingRisk": "Independent quality review and real Chrome output not performed"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q03-B1",
+      "slot": "B1",
+      "originalStemOrIssue": "실수 $a$에 대하여 두 집합 $\\{3,8\\}$과 $\\{a-2,a+3\\}$이 서로 같을 때, $a$의 값은?",
+      "reverseReadingFinding": "최종 학생 발문만 재독해하여 원소 일치·변수 범위·질문 답형의 충분성 확인",
+      "decision": "KEEP",
+      "finalStem": "실수 $a$에 대하여 두 집합 $\\{3,8\\}$과 $\\{a-2,a+3\\}$이 서로 같을 때, $a$의 값은?",
+      "affectedFields": [],
+      "changedMathRecheck": "N/A",
+      "distractorPaths": {
+        "①": "$a-2=3$에서 $a=2$로 오산",
+        "②": "$-2$를 빠뜨려 $a=3$",
+        "④": "$a+3=8$에서 $2$를 빼 $a=6$",
+        "⑤": "$a-2=8$로 대응하여 $a=10$만 구하고 다른 원소를 놓침"
+      },
+      "remainingRisk": "Independent quality review and real Chrome output not performed"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q03-B2",
+      "slot": "B2",
+      "originalStemOrIssue": "실수 $a$에 대하여 두 집합 $A=\\{a,a+2\\}$, $B=\\{3,2a-1\\}$이 서로 같아지도록 하는 모든 $a$의 값의 합은?",
+      "reverseReadingFinding": "최종 학생 발문만 재독해하여 원소 일치·변수 범위·질문 답형의 충분성 확인",
+      "decision": "KEEP",
+      "finalStem": "실수 $a$에 대하여 두 집합 $A=\\{a,a+2\\}$, $B=\\{3,2a-1\\}$이 서로 같아지도록 하는 모든 $a$의 값의 합은?",
+      "affectedFields": [],
+      "changedMathRecheck": "N/A",
+      "distractorPaths": {
+        "②": "뒤바뀐 대응 $a=1$만 계산",
+        "③": "같은 순서 대응 $a=3$만 계산",
+        "④": "가능한 $1,3$에 $1$을 중복 더해 $5$",
+        "⑤": "$a=3$을 두 번 더해 $6$"
+      },
+      "remainingRisk": "Independent quality review and real Chrome output not performed"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q03-B3",
+      "slot": "B3",
+      "originalStemOrIssue": "정수 $a$에 대하여 두 집합 $\\{1,4\\}$와 $\\{a^2,4\\}$가 서로 같아지도록 하는 모든 $a$의 값의 곱은?",
+      "reverseReadingFinding": "최종 학생 발문만 재독해하여 원소 일치·변수 범위·질문 답형의 충분성 확인",
+      "decision": "KEEP",
+      "finalStem": "정수 $a$에 대하여 두 집합 $\\{1,4\\}$와 $\\{a^2,4\\}$가 서로 같아지도록 하는 모든 $a$의 값의 곱은?",
+      "affectedFields": [],
+      "changedMathRecheck": "N/A",
+      "distractorPaths": {
+        "①": "$a^2=4$로 잘못 두어 $(-2)\times2=-4$",
+        "②": "곱이 아닌 합 $-1+1=0$을 계산",
+        "④": "음의 근을 버려 $a=1$만 남김",
+        "⑤": "$a^2=4$의 양의 근 $2$만 선택"
+      },
+      "remainingRisk": "Independent quality review and real Chrome output not performed"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q03-C1",
+      "slot": "C1",
+      "originalStemOrIssue": "집합 $A=\\{x\\mid (x-2)(x-5)=0,\\ x$는 자연수$\\}$와 $B=\\{n-1,2n-1\\}$에 대하여 $A=B$가 되도록 하는 자연수 $n$의 값은?",
+      "reverseReadingFinding": "최종 학생 발문만 재독해하여 원소 일치·변수 범위·질문 답형의 충분성 확인",
+      "decision": "KEEP",
+      "finalStem": "집합 $A=\\{x\\mid (x-2)(x-5)=0,\\ x$는 자연수$\\}$와 $B=\\{n-1,2n-1\\}$에 대하여 $A=B$가 되도록 하는 자연수 $n$의 값은?",
+      "affectedFields": [],
+      "changedMathRecheck": "N/A",
+      "distractorPaths": {
+        "①": "$n-1=2$에서 $-1$을 빠뜨려 $n=2$",
+        "③": "$2n-1=5$에서 $2n=8$로 잘못 이항",
+        "④": "$n-1=5$에서 $n=5$로 오산",
+        "⑤": "$n-1=5$로 대응해 $n=6$만 얻고 다른 원소 미확인"
+      },
+      "remainingRisk": "Independent quality review and real Chrome output not performed"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q03-C2",
+      "slot": "C2",
+      "originalStemOrIssue": "자연수 $n$에 대하여 $A=\\{1,2,3\\}$, $B=\\{1,2,|n-5|\\}$라 하자. $A=B$가 되도록 하는 모든 $n$의 값의 합은?",
+      "reverseReadingFinding": "최종 학생 발문만 재독해하여 원소 일치·변수 범위·질문 답형의 충분성 확인",
+      "decision": "KEEP",
+      "finalStem": "자연수 $n$에 대하여 $A=\\{1,2,3\\}$, $B=\\{1,2,|n-5|\\}$라 하자. $A=B$가 되도록 하는 모든 $n$의 값의 합은?",
+      "affectedFields": [],
+      "changedMathRecheck": "N/A",
+      "distractorPaths": {
+        "①": "$n=8$만 세고 음의 분기 누락",
+        "②": "$n=2,4$라고 잘못 취급해 합 $6$",
+        "③": "$n=4,8$이라고 잘못 취급해 합 $12$",
+        "⑤": "$n=6,8$이라고 잘못 취급해 합 $14$"
+      },
+      "remainingRisk": "Independent quality review and real Chrome output not performed"
+    },
+    {
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q03-C3",
+      "slot": "C3",
+      "originalStemOrIssue": "집합 $A=\\{x\\mid x^2-3x+2=0,\\ x$는 정수$\\}$와 $B_t=\\{|t-1|,|t-4|\\}$에 대하여, $A=B_t$가 되도록 하는 모든 정수 $t$의 값의 합은?",
+      "reverseReadingFinding": "최종 학생 발문만 재독해하여 원소 일치·변수 범위·질문 답형의 충분성 확인",
+      "decision": "KEEP",
+      "finalStem": "집합 $A=\\{x\\mid x^2-3x+2=0,\\ x$는 정수$\\}$와 $B_t=\\{|t-1|,|t-4|\\}$에 대하여, $A=B_t$가 되도록 하는 모든 정수 $t$의 값의 합은?",
+      "affectedFields": [],
+      "changedMathRecheck": "N/A",
+      "distractorPaths": {
+        "①": "$t=3$만 세어 합 대신 $3$",
+        "②": "$t=1,3$이라고 잘못 세어 합 $4$",
+        "③": "$t=2,4$라 잘못 세어 합 $6$",
+        "④": "$t=3,4$라 잘못 세어 합 $7$"
+      },
+      "remainingRisk": "Independent quality review and real Chrome output not performed"
+    }
+  ]
+}
