@@ -111,7 +111,8 @@
       "full exam/unchanged-UID review",
       "unrelated CI",
       "student consumer/browser release QA"
-    ]
+    ],
+    "q14B3Choice5DistractorRoute": "PASS: ledger route directly reproduces 10; source item, answer, and choices unchanged."
   },
   "changedDependencyEvidence": [
     {
@@ -151,8 +152,10 @@
     },
     {
       "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_금당고_2학기_기말_고1/GPT_QID9_Q14_CREATE_LEDGER.json",
-      "gitBlobSha1": "96a0c8f373f3e161effb1fbc274250d11e8dbf48",
-      "sha256": "966f9579ef405ea70e9c5792ff27657dbe03673db549ec6d4f8d5ea3c7d59704"
+      "gitBlobSha1": "40900fc47639029a3765948d6543372afb30c42e",
+      "sha256": "c64579360c866af8f6c1fa425d3a4a6e3cf416911bce7017014ed540a7f34653",
+      "previousGitBlobSha1": "96a0c8f373f3e161effb1fbc274250d11e8dbf48",
+      "previousSha256": "966f9579ef405ea70e9c5792ff27657dbe03673db549ec6d4f8d5ea3c7d59704"
     },
     {
       "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_금당고_2학기_기말_고1/GPT_QID9_Q14_META_BLUEPRINT.json",
@@ -340,5 +343,11 @@
       "sha256": "ce56f66c66fdcbeaa6c03cddcaaefad90f2749492077400dd2ec47338a66bb52"
     }
   ],
-  "manifestPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_금당고_2학기_기말_고1/GPT_QID9_EXAM_MANIFEST.json"
+  "manifestPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_금당고_2학기_기말_고1/GPT_QID9_EXAM_MANIFEST.json",
+  "followupCorrection": {
+    "finding": "Q14-B3 choice ⑤ value 10 was not reproducible from the prior ledger route.",
+    "correction": "Recorded the concrete route: misread the single-value prompt as f^17(0)+f^18(0), ignore parity, and calculate 5+5=10.",
+    "preservedHistoricalLedgerBlobSha1": "96a0c8f373f3e161effb1fbc274250d11e8dbf48",
+    "studentStemAnswerAndChoicesChanged": false
+  }
 }
