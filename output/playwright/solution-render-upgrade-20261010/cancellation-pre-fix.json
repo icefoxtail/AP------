@@ -1,0 +1,16 @@
+{
+  "tests": [
+    {
+      "name": "Canonical candidate schema and recursive immutability",
+      "status": "PASS"
+    },
+    {
+      "name": "PREPARE keeps DOM/state/URL/tab; late request wins and composes header delta",
+      "status": "FAIL",
+      "error": "page.evaluate: Error: DISCARDED_STALE\n    at switchOutputEnvelopeMode (http://127.0.0.1:8766/archive/engine.html?data=exams/test-fixtures/render-authority-golden.js&mode=exam&qpp=4&printDryRun=1&prewarm=0:1763:36)\n    at async Promise.all (index 0)\n    at async eval (eval at evaluate (:370:30), <anonymous>:11:39)\n    at async <anonymous>:396:30\n    at C:\\Users\\USER\\Desktop\\AP------\\tests\\archive-fast-engine-browser.cjs:41:35\n    at check (C:\\Users\\USER\\Desktop\\AP------\\tests\\archive-fast-engine-browser.cjs:28:21)\n    at C:\\Users\\USER\\Desktop\\AP------\\tests\\archive-fast-engine-browser.cjs:40:11"
+    }
+  ],
+  "errors": [],
+  "expectedPageErrors": [],
+  "posts": []
+}

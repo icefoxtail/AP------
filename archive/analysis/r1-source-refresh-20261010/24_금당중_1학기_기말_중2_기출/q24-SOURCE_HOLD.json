@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_SOURCE_HOLD_V1",
+  "stage": "R1",
+  "exam": "24_금당중_1학기_기말_중2_기출",
+  "qid": 24,
+  "status": "SOURCE_HOLD",
+  "scopeOnly": true,
+  "fullExamR1Pass": false,
+  "sourceBinding": {
+    "baselineCommit": "861047419c7663c93604c9198b558869b2911e14",
+    "baselineRawSha256": "6e5acad095a080d0b666353a753211b65531bcfd9c835986fe12f5ce683970e0",
+    "currentRawSha256": "53a9333ebf9caab43f4accb346fa5fdedcb67c091e7f5ae205ad24c807814a56",
+    "currentRawBufferBlobSha1": "8adf111c4e5ebc57a61c7f4ff3cd1e2b6e38f1a6"
+  },
+  "studentParity": {
+    "baselineStudentPayloadSha256": "5fef2939196300157adbb2f81bee14fb296871d02b0042114aa87844a77f14a3",
+    "currentStudentPayloadSha256": "5fef2939196300157adbb2f81bee14fb296871d02b0042114aa87844a77f14a3",
+    "exactParity": true,
+    "referencedImage": "assets/images/24_금당중_1학기_기말_중2_기출/q24.png",
+    "imageSha256": "46663e972c07a76aa6a6ee605fa1807a9b1bdf8a7770776a2f28e9fe6d0b943e",
+    "imageOpened": true,
+    "observed": "Trapezoid ABCD with AD parallel to BC; diagonals AC and BD meet at O."
+  },
+  "exactInconsistency": "The student text asks the reviewer to explain why areas of triangles OAB and ODC are equal while also stating AO:OC=3:5 in trapezoid ABCD with AD parallel to BC. The triangles are similar with corresponding linear ratio AO:OC=3:5, so their area ratio is 9:25, not 1:1. The displayed image is consistent with the student text and does not remove the contradiction.",
+  "frozenRowDisposition": {
+    "originalFreezePreserved": true,
+    "qid": 24,
+    "status": "PROVISIONAL_UNRESOLVED_SOURCE_DEPENDENT",
+    "reason": "The independent freeze contains a tentative inconsistency finding; no stored answer/solution comparison was performed for q24. Do not treat q24 as passed until original wording is checked."
+  },
+  "originalSourceReview": {
+    "policy": "EXTRACTED_JS_ASSETS / DEFECT_ONLY",
+    "reason": "This exact wording may reflect an extraction/transcription defect; original-source confirmation is needed for q24 only.",
+    "qid": 24,
+    "requestedFact": "On the source page, verify the parallel pair AD∥BC, AO:OC=3:5, the two triangle names OAB and ODC, and whether the prompt says their areas are equal or asks for a ratio.",
+    "scopedOriginalPdfAvailableInAssignedWorktree": false,
+    "matchingScopedPdfCandidates": [],
+    "pdfOpened": false,
+    "nextRequiredAction": "Obtain the original exam PDF/page for q24 and inspect only that region; then resolve the extraction-vs-source inconsistency before reviewing q24 stored answer/solution."
+  },
+  "reason": "SOURCE_HOLD",
+  "observedEvidence": "Current student text explicitly states AD∥BC, AO:OC=3:5, and asks why areas of OAB and ODC are equal; the opened q24 image shows trapezoid ABCD and diagonals AC, BD intersecting at O. Similar triangles give area ratio 9:25, contradicting equality. Baseline/current student payload SHA and q24 image SHA match exactly.",
+  "unresolvedPoint": "Whether “same areas” is the source wording or an extraction/transcription defect; q24 stored answer/solution has not been compared.",
+  "nextRequiredEvidenceOrCapability": "Original exam PDF/page for q24, with the printed parallel sides, ratio, triangle names, and exact requested relation legible.",
+  "repairAttempted": "Re-read the current extracted q24 student text, independently derived the similar-triangle area ratio, opened the current q24 image, verified baseline/current q24 student and asset parity, and searched the assigned worktree for a matching source PDF; no matching PDF candidate was found.",
+  "authorityLookupAttempted": "Applied Archive_Extracted_Source_First defect-only rule; compared baseline commit 861047419c7663c93604c9198b558869b2911e14 with the current source projection and opened current q24 asset. No original PDF or page mapping is present in the assigned worktree.",
+  "whyDeterministicClosureImpossible": "The extracted text and image are internally contradictory, and current assets cannot determine whether the source itself is erroneous or extraction changed the requested area relation. Choosing either reading without the original page would be a guess."
+}

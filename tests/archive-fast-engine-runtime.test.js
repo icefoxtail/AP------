@@ -33,8 +33,18 @@ function fixture(overrides = {}) {
 }
 const req = (type, payload) => ({ type, payload, foreground: true });
 
-test('production prewarm is opt-in while snapshot caching remains available', () => {
-    assert.match(screenRuntimeAdapter, /params\.get\('prewarm'\) !== '1'/);
+test('production prewarm runs after idle by default but honors explicit cache and route exclusions', () => {
+    assert.match(screenRuntimeAdapter, /params\.get\('prewarm'\) !== '0'/);
+    assert.match(screenRuntimeAdapter, /PREWARM_QUIET_MS/);
+    assert.match(screenRuntimeAdapter, /BACKGROUND_SOLUTION_STAGING_BATCH_SIZE = 1/);
+    assert.match(screenRuntimeAdapter, /BACKGROUND_SOLUTION_CHUNK_BATCH_SIZE = 8/);
+    assert.match(screenRuntimeAdapter, /typesetBackgroundBatches/);
+    assert.match(screenRuntimeAdapter, /requestIdleCallback/);
+    assert.match(screenRuntimeAdapter, /recordUserActivity/);
+    assert.match(screenRuntimeAdapter, /candidate\.source\?\.sourceKind === 'review-snapshot'/);
+    assert.match(screenRuntimeAdapter, /params\.get\('snapshotCache'\) !== '0'/);
+    assert.match(screenRuntimeAdapter, /params\.get\('qr'\) !== '1'/);
+    assert.match(screenRuntimeAdapter, /params\.get\('renderAuthorityDualRun'\) !== '1'/);
     assert.match(screenRuntimeAdapter, /cacheModes: new URLSearchParams\(location\.search\)\.get\('snapshotCache'\) === '0' \? \[\] : \['ans', 'sol', 'exam'\]/);
 });
 
@@ -57,6 +67,11 @@ test('keys include semantic changes and exclude pending session/request provenan
     assert.equal(N.computeSnapshotKey(a), N.computeSnapshotKey(b));
     assert.notEqual(N.computeSnapshotKey(a), N.computeSnapshotKey(candidate('one', 'ans')));
     assert.notEqual(N.computeSnapshotKey(a), N.computeSnapshotKey(N.createCandidate({ ...a, qpp: 6 })));
+    assert.notEqual(N.computeSnapshotKey(a), N.computeSnapshotKey(N.createCandidate({ ...a, source: { ...a.source, sourceArchiveFile: 'b.js' } })));
+    assert.notEqual(N.computeSnapshotKey(a), N.computeSnapshotKey(N.createCandidate({ ...a, source: { ...a.source, canonicalDataFingerprint: 'different-content' } })));
+    const reviewedRevisionA = N.createCandidate({ ...a, source: { ...a.source, sourceEpoch: 2, revision: 7 } });
+    const reviewedRevisionB = N.createCandidate({ ...a, source: { ...a.source, sourceEpoch: 2, revision: 8 } });
+    assert.notEqual(N.computeSnapshotKey(reviewedRevisionA), N.computeSnapshotKey(reviewedRevisionB));
 });
 
 test('structural sharing trusts only normalizer-owned transitive immutable graphs', () => {

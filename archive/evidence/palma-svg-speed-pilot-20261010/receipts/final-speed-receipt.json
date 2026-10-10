@@ -252,6 +252,386 @@
       "staticAuditStageNs": 0.9746877053791478,
       "actualChromeStageNs": 2.0206129538734623
     },
+    "engineInternalBuildNs": {
+      "A": {
+        "count": 3,
+        "valuesNs": [
+          72699800,
+          74782500,
+          88362200
+        ],
+        "meanNs": 78614833.33333333,
+        "medianNs": 74782500,
+        "minNs": 72699800,
+        "maxNs": 88362200
+      },
+      "B": {
+        "count": 3,
+        "valuesNs": [
+          32324700,
+          31456800,
+          33938500
+        ],
+        "meanNs": 32573333.333333332,
+        "medianNs": 32324700,
+        "minNs": 31456800,
+        "maxNs": 33938500
+      },
+      "rawPerTrial": [
+        {
+          "trial": 1,
+          "arm": "A",
+          "clock": "Python perf_counter_ns()",
+          "summedTenItemBuildNs": 72699800,
+          "perUid": [
+            {
+              "uid": "ALITE-PALMA25-2MID-Q03-A1",
+              "engineBuildNs": 6308000,
+              "engineSvgSha256": "DE5D82B1A235CD6A3EC4A593E6536773803BF93FEA27634FA29222F6DB786CAD"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q05-A1",
+              "engineBuildNs": 6602500,
+              "engineSvgSha256": "4525501D985730A059C222CB2B68C6F415DBD494FDA36EDB8B439454CAFD2F35"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q06-A1",
+              "engineBuildNs": 6198400,
+              "engineSvgSha256": "56C82FF96F8C33ABF3F85B6D49150D203BABD0EC9A85E052920216593F2FA52B"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q07-A1",
+              "engineBuildNs": 6041200,
+              "engineSvgSha256": "A2CAA27A51281C03DD16E60D7C3F6529B4348FD40010033236E0DFABB6AECD8B"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q09-A1",
+              "engineBuildNs": 7718300,
+              "engineSvgSha256": "A91139D9EDAFCBAC5051B349A11B8B988928768805CA271435306F153278B63F"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q12-A1",
+              "engineBuildNs": 6629200,
+              "engineSvgSha256": "73F2B5ACE4944964B4FB8D94ED50259E4CA31F39854CD273420C352ED89347CC"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q15-A1",
+              "engineBuildNs": 5687200,
+              "engineSvgSha256": "805109A44E88534EAC511E0CD5E51741A5850F9386024CAC522EB70DFD91272C"
+            },
+            {
+              "uid": "ALITE-PALMA25-B04-Q17-C01",
+              "engineBuildNs": 7253400,
+              "engineSvgSha256": "89424B66DDD3FE1EF8B152587A6F88F8630B547AAB86AC0E83C8A01FF9F3A0BB"
+            },
+            {
+              "uid": "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY",
+              "engineBuildNs": 8183100,
+              "engineSvgSha256": "23D616D4D9B748B5A9A5633B99B114039CF2FAA9C15B87028A935EC4C024D7BB"
+            },
+            {
+              "uid": "ALITE-B01-2025PALMA-0005",
+              "engineBuildNs": 12078500,
+              "engineSvgSha256": "BEDFBC5D0BF1623E2D107912091C624C9038EF26420F2F860AD0076F61754E43"
+            }
+          ]
+        },
+        {
+          "trial": 1,
+          "arm": "B",
+          "clock": "Python perf_counter_ns()",
+          "batchBuildLoopNs": 41154200,
+          "summedTenItemBuildNs": 32324700,
+          "perUid": [
+            {
+              "uid": "ALITE-PALMA25-2MID-Q03-A1",
+              "engineBuildNs": 6148800,
+              "engineSvgSha256": "DE5D82B1A235CD6A3EC4A593E6536773803BF93FEA27634FA29222F6DB786CAD"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q05-A1",
+              "engineBuildNs": 1727000,
+              "engineSvgSha256": "4525501D985730A059C222CB2B68C6F415DBD494FDA36EDB8B439454CAFD2F35"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q06-A1",
+              "engineBuildNs": 1491400,
+              "engineSvgSha256": "56C82FF96F8C33ABF3F85B6D49150D203BABD0EC9A85E052920216593F2FA52B"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q07-A1",
+              "engineBuildNs": 1564200,
+              "engineSvgSha256": "A2CAA27A51281C03DD16E60D7C3F6529B4348FD40010033236E0DFABB6AECD8B"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q09-A1",
+              "engineBuildNs": 3556200,
+              "engineSvgSha256": "A91139D9EDAFCBAC5051B349A11B8B988928768805CA271435306F153278B63F"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q12-A1",
+              "engineBuildNs": 3063100,
+              "engineSvgSha256": "73F2B5ACE4944964B4FB8D94ED50259E4CA31F39854CD273420C352ED89347CC"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q15-A1",
+              "engineBuildNs": 1707600,
+              "engineSvgSha256": "805109A44E88534EAC511E0CD5E51741A5850F9386024CAC522EB70DFD91272C"
+            },
+            {
+              "uid": "ALITE-PALMA25-B04-Q17-C01",
+              "engineBuildNs": 2582800,
+              "engineSvgSha256": "89424B66DDD3FE1EF8B152587A6F88F8630B547AAB86AC0E83C8A01FF9F3A0BB"
+            },
+            {
+              "uid": "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY",
+              "engineBuildNs": 3466500,
+              "engineSvgSha256": "23D616D4D9B748B5A9A5633B99B114039CF2FAA9C15B87028A935EC4C024D7BB"
+            },
+            {
+              "uid": "ALITE-B01-2025PALMA-0005",
+              "engineBuildNs": 7017100,
+              "engineSvgSha256": "BEDFBC5D0BF1623E2D107912091C624C9038EF26420F2F860AD0076F61754E43"
+            }
+          ]
+        },
+        {
+          "trial": 2,
+          "arm": "A",
+          "clock": "Python perf_counter_ns()",
+          "summedTenItemBuildNs": 74782500,
+          "perUid": [
+            {
+              "uid": "ALITE-PALMA25-2MID-Q03-A1",
+              "engineBuildNs": 5402300,
+              "engineSvgSha256": "DE5D82B1A235CD6A3EC4A593E6536773803BF93FEA27634FA29222F6DB786CAD"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q05-A1",
+              "engineBuildNs": 5915100,
+              "engineSvgSha256": "4525501D985730A059C222CB2B68C6F415DBD494FDA36EDB8B439454CAFD2F35"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q06-A1",
+              "engineBuildNs": 6029000,
+              "engineSvgSha256": "56C82FF96F8C33ABF3F85B6D49150D203BABD0EC9A85E052920216593F2FA52B"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q07-A1",
+              "engineBuildNs": 6213300,
+              "engineSvgSha256": "A2CAA27A51281C03DD16E60D7C3F6529B4348FD40010033236E0DFABB6AECD8B"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q09-A1",
+              "engineBuildNs": 7529700,
+              "engineSvgSha256": "A91139D9EDAFCBAC5051B349A11B8B988928768805CA271435306F153278B63F"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q12-A1",
+              "engineBuildNs": 7245800,
+              "engineSvgSha256": "73F2B5ACE4944964B4FB8D94ED50259E4CA31F39854CD273420C352ED89347CC"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q15-A1",
+              "engineBuildNs": 5761800,
+              "engineSvgSha256": "805109A44E88534EAC511E0CD5E51741A5850F9386024CAC522EB70DFD91272C"
+            },
+            {
+              "uid": "ALITE-PALMA25-B04-Q17-C01",
+              "engineBuildNs": 8478700,
+              "engineSvgSha256": "89424B66DDD3FE1EF8B152587A6F88F8630B547AAB86AC0E83C8A01FF9F3A0BB"
+            },
+            {
+              "uid": "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY",
+              "engineBuildNs": 8836900,
+              "engineSvgSha256": "23D616D4D9B748B5A9A5633B99B114039CF2FAA9C15B87028A935EC4C024D7BB"
+            },
+            {
+              "uid": "ALITE-B01-2025PALMA-0005",
+              "engineBuildNs": 13369900,
+              "engineSvgSha256": "BEDFBC5D0BF1623E2D107912091C624C9038EF26420F2F860AD0076F61754E43"
+            }
+          ]
+        },
+        {
+          "trial": 2,
+          "arm": "B",
+          "clock": "Python perf_counter_ns()",
+          "batchBuildLoopNs": 40314300,
+          "summedTenItemBuildNs": 31456800,
+          "perUid": [
+            {
+              "uid": "ALITE-PALMA25-2MID-Q03-A1",
+              "engineBuildNs": 5476400,
+              "engineSvgSha256": "DE5D82B1A235CD6A3EC4A593E6536773803BF93FEA27634FA29222F6DB786CAD"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q05-A1",
+              "engineBuildNs": 1650100,
+              "engineSvgSha256": "4525501D985730A059C222CB2B68C6F415DBD494FDA36EDB8B439454CAFD2F35"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q06-A1",
+              "engineBuildNs": 1539600,
+              "engineSvgSha256": "56C82FF96F8C33ABF3F85B6D49150D203BABD0EC9A85E052920216593F2FA52B"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q07-A1",
+              "engineBuildNs": 1536200,
+              "engineSvgSha256": "A2CAA27A51281C03DD16E60D7C3F6529B4348FD40010033236E0DFABB6AECD8B"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q09-A1",
+              "engineBuildNs": 3902300,
+              "engineSvgSha256": "A91139D9EDAFCBAC5051B349A11B8B988928768805CA271435306F153278B63F"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q12-A1",
+              "engineBuildNs": 2804500,
+              "engineSvgSha256": "73F2B5ACE4944964B4FB8D94ED50259E4CA31F39854CD273420C352ED89347CC"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q15-A1",
+              "engineBuildNs": 1605800,
+              "engineSvgSha256": "805109A44E88534EAC511E0CD5E51741A5850F9386024CAC522EB70DFD91272C"
+            },
+            {
+              "uid": "ALITE-PALMA25-B04-Q17-C01",
+              "engineBuildNs": 2549500,
+              "engineSvgSha256": "89424B66DDD3FE1EF8B152587A6F88F8630B547AAB86AC0E83C8A01FF9F3A0BB"
+            },
+            {
+              "uid": "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY",
+              "engineBuildNs": 3496300,
+              "engineSvgSha256": "23D616D4D9B748B5A9A5633B99B114039CF2FAA9C15B87028A935EC4C024D7BB"
+            },
+            {
+              "uid": "ALITE-B01-2025PALMA-0005",
+              "engineBuildNs": 6896100,
+              "engineSvgSha256": "BEDFBC5D0BF1623E2D107912091C624C9038EF26420F2F860AD0076F61754E43"
+            }
+          ]
+        },
+        {
+          "trial": 3,
+          "arm": "A",
+          "clock": "Python perf_counter_ns()",
+          "summedTenItemBuildNs": 88362200,
+          "perUid": [
+            {
+              "uid": "ALITE-PALMA25-2MID-Q03-A1",
+              "engineBuildNs": 5748900,
+              "engineSvgSha256": "DE5D82B1A235CD6A3EC4A593E6536773803BF93FEA27634FA29222F6DB786CAD"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q05-A1",
+              "engineBuildNs": 6309600,
+              "engineSvgSha256": "4525501D985730A059C222CB2B68C6F415DBD494FDA36EDB8B439454CAFD2F35"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q06-A1",
+              "engineBuildNs": 6828000,
+              "engineSvgSha256": "56C82FF96F8C33ABF3F85B6D49150D203BABD0EC9A85E052920216593F2FA52B"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q07-A1",
+              "engineBuildNs": 6851200,
+              "engineSvgSha256": "A2CAA27A51281C03DD16E60D7C3F6529B4348FD40010033236E0DFABB6AECD8B"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q09-A1",
+              "engineBuildNs": 11426200,
+              "engineSvgSha256": "A91139D9EDAFCBAC5051B349A11B8B988928768805CA271435306F153278B63F"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q12-A1",
+              "engineBuildNs": 9643600,
+              "engineSvgSha256": "73F2B5ACE4944964B4FB8D94ED50259E4CA31F39854CD273420C352ED89347CC"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q15-A1",
+              "engineBuildNs": 9743800,
+              "engineSvgSha256": "805109A44E88534EAC511E0CD5E51741A5850F9386024CAC522EB70DFD91272C"
+            },
+            {
+              "uid": "ALITE-PALMA25-B04-Q17-C01",
+              "engineBuildNs": 7651800,
+              "engineSvgSha256": "89424B66DDD3FE1EF8B152587A6F88F8630B547AAB86AC0E83C8A01FF9F3A0BB"
+            },
+            {
+              "uid": "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY",
+              "engineBuildNs": 11302600,
+              "engineSvgSha256": "23D616D4D9B748B5A9A5633B99B114039CF2FAA9C15B87028A935EC4C024D7BB"
+            },
+            {
+              "uid": "ALITE-B01-2025PALMA-0005",
+              "engineBuildNs": 12856500,
+              "engineSvgSha256": "BEDFBC5D0BF1623E2D107912091C624C9038EF26420F2F860AD0076F61754E43"
+            }
+          ]
+        },
+        {
+          "trial": 3,
+          "arm": "B",
+          "clock": "Python perf_counter_ns()",
+          "batchBuildLoopNs": 43429600,
+          "summedTenItemBuildNs": 33938500,
+          "perUid": [
+            {
+              "uid": "ALITE-PALMA25-2MID-Q03-A1",
+              "engineBuildNs": 6597800,
+              "engineSvgSha256": "DE5D82B1A235CD6A3EC4A593E6536773803BF93FEA27634FA29222F6DB786CAD"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q05-A1",
+              "engineBuildNs": 1711800,
+              "engineSvgSha256": "4525501D985730A059C222CB2B68C6F415DBD494FDA36EDB8B439454CAFD2F35"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q06-A1",
+              "engineBuildNs": 1463000,
+              "engineSvgSha256": "56C82FF96F8C33ABF3F85B6D49150D203BABD0EC9A85E052920216593F2FA52B"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q07-A1",
+              "engineBuildNs": 1662800,
+              "engineSvgSha256": "A2CAA27A51281C03DD16E60D7C3F6529B4348FD40010033236E0DFABB6AECD8B"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q09-A1",
+              "engineBuildNs": 3684600,
+              "engineSvgSha256": "A91139D9EDAFCBAC5051B349A11B8B988928768805CA271435306F153278B63F"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q12-A1",
+              "engineBuildNs": 3046900,
+              "engineSvgSha256": "73F2B5ACE4944964B4FB8D94ED50259E4CA31F39854CD273420C352ED89347CC"
+            },
+            {
+              "uid": "ALITE-PALMA25-2MID-Q15-A1",
+              "engineBuildNs": 1835000,
+              "engineSvgSha256": "805109A44E88534EAC511E0CD5E51741A5850F9386024CAC522EB70DFD91272C"
+            },
+            {
+              "uid": "ALITE-PALMA25-B04-Q17-C01",
+              "engineBuildNs": 2905000,
+              "engineSvgSha256": "89424B66DDD3FE1EF8B152587A6F88F8630B547AAB86AC0E83C8A01FF9F3A0BB"
+            },
+            {
+              "uid": "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY",
+              "engineBuildNs": 3713700,
+              "engineSvgSha256": "23D616D4D9B748B5A9A5633B99B114039CF2FAA9C15B87028A935EC4C024D7BB"
+            },
+            {
+              "uid": "ALITE-B01-2025PALMA-0005",
+              "engineBuildNs": 7317900,
+              "engineSvgSha256": "BEDFBC5D0BF1623E2D107912091C624C9038EF26420F2F860AD0076F61754E43"
+            }
+          ]
+        }
+      ],
+      "warning": "Inner engine timer sums the same 10 build() calls only; outer engine-stage timer includes Python process startup and output serialization."
+    },
     "countsPerArmPerRound": {
       "engineBuilds": 10,
       "postplacementPasses": 5,
@@ -746,7 +1126,7 @@
     },
     "postApplyParityRaw": {
       "path": ".tmp/archive/palma-svg-speed-pilot-20261010/root-intake/postapply-current-parity.raw.json",
-      "sha256": "AF2E6B734E40EE9DCF5654B85E6ECD4E69A8577CCEBCBAB6F468A51E237FEDA0"
+      "sha256": "AD08A16D0FD0ABEB77EF4A584F7EDB39F0D28A3DDAE0D045BF8B3F9D78D4EB18"
     },
     "historicalPreApplyReviewReceipt": {
       "path": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/final-review-receipt.json",

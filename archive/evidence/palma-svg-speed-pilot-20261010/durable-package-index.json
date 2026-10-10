@@ -1,14 +1,14 @@
 {
   "schemaVersion": "PALMA_SVG_SPEED_PILOT_DURABLE_REVIEW_PACKAGE_V1",
-  "status": "POST_APPLY_RETENTION_AND_PAYLOAD_PARITY_PASS",
+  "status": "POST_APPLY_RETENTION_PAYLOAD_PARITY_AND_VISUAL_REBIND_PASS",
   "createdAt": "2026-10-09T23:53:54.576Z",
   "candidateManifestSha256": "931B258A337CD0EE81D5B5D76B8051291672A7A39C91742BB7BF48C4B6266736",
   "historicalFinalReviewReceiptSha256": "AA7BD02F5496576C8A526530E210DD6C414E425F1DE81A9D75CD540B78C46F7D",
-  "speedReceiptSha256": "57BCFB357607BE93DB406EE96C7549DA8FBB6DAC69BC95924000976C58F41E54",
+  "speedReceiptSha256": "CD6ADFAEDFD045E5E84B33CACC2047B5EFAE957F444CAC58C769999865627F4C",
   "physicalQpp1ReportSha256": "30AD2508723D9531C9D73FF71B1DCDCCCEADEB6858B43A2F3D2C9083A9BEE111",
   "physicalQpp4ReportSha256": "7992AE27E4497AEC222DEF8FD5307F353D01BB054E389455540DCE9E3B27F8F9",
-  "fileCount": 352,
-  "totalBytes": 15021835,
+  "fileCount": 354,
+  "totalBytes": 15099033,
   "files": [
     {
       "path": "archive/evidence/palma-svg-speed-pilot-20261010/candidate/ALITE-B01-2025PALMA-0005/audit-report-v8.json",
@@ -1842,9 +1842,9 @@
     },
     {
       "path": "archive/evidence/palma-svg-speed-pilot-20261010/receipts/final-speed-receipt.json",
-      "sourcePath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/speed-ab/final-speed-receipt.json",
-      "sha256": "57BCFB357607BE93DB406EE96C7549DA8FBB6DAC69BC95924000976C58F41E54",
-      "bytes": 33302
+      "sourcePath": "archive/evidence/palma-svg-speed-pilot-20261010/receipts/final-speed-receipt.json",
+      "sha256": "CD6ADFAEDFD045E5E84B33CACC2047B5EFAE957F444CAC58C769999865627F4C",
+      "bytes": 48515
     },
     {
       "path": "archive/evidence/palma-svg-speed-pilot-20261010/receipts/generated-meta-retention-baseline-shadow-receipt.json",
@@ -2121,6 +2121,18 @@
       "sourcePath": ".tmp/archive/palma-svg-speed-pilot-20261010/palma-pilot/technical/physical-postapply-v8-qpp1-review/report.json",
       "sha256": "30AD2508723D9531C9D73FF71B1DCDCCCEADEB6858B43A2F3D2C9083A9BEE111",
       "bytes": 35094
+    },
+    {
+      "path": "archive/evidence/palma-svg-speed-pilot-20261010/receipts/final-postapply-review-rebind.json",
+      "sourcePath": "archive/evidence/palma-svg-speed-pilot-20261010/receipts/final-postapply-review-rebind.json",
+      "sha256": "AA48FD8FC6FA07619418737A4657F8ACCD68B3CA305A8001EE42273AD3A829D3",
+      "bytes": 38358
+    },
+    {
+      "path": "archive/evidence/palma-svg-speed-pilot-20261010/receipts/postapply-hashonly-invariance-review.json",
+      "sourcePath": "archive/evidence/palma-svg-speed-pilot-20261010/receipts/postapply-hashonly-invariance-review.json",
+      "sha256": "94291AF723C8974EF1F72B3D953CC0C2E6800BE46CEB104DFF0BC8C6494BA3FF",
+      "bytes": 23627
     }
   ],
   "postApplyRetentionGate": {
@@ -2149,11 +2161,14 @@
     "assets": 10
   },
   "hashRebind": {
-    "receiptPath": "archive/evidence/palma-svg-speed-pilot-20261010/receipts/hash-rebind-apply-receipt.json",
-    "receiptSha256": "B8C4BF4DF5398D75A7D8647F389BAE3F5A52E3B6FA000A429D2E7A37211D648B",
-    "proposalPath": "archive/evidence/palma-svg-speed-pilot-20261010/receipts/retention-hash-rebind-proposal.json",
-    "proposalSha256": "9465209494751E235941E7EFAF2AE2BC50C8ACB17B258C9B7619FF5980AF9B75",
-    "changedFiles": 2,
-    "updatedHashBindings": 32
-  }
+    "status": "APPLIED_EXACT_HASH_ONLY_REBIND",
+    "indexSha256": "55171B8A19F211674CDEC7809A6A702F231D041CFC88131C518DF89806975C4A",
+    "cutoverSha256": "FF4927A33A3E5A28D4DB995D6F836D0CB256B06627837E32824CF2FD769DDFDA",
+    "sourceConsumerUnchangedCount": 20,
+    "assetUnchangedCount": 10,
+    "indexChangedLeafCount": 20,
+    "cutoverChangedLeafCount": 12
+  },
+  "finalPostapplyReviewRebindReceiptSha256": "AA48FD8FC6FA07619418737A4657F8ACCD68B3CA305A8001EE42273AD3A829D3",
+  "postapplyHashonlyInvarianceReviewSha256": "94291AF723C8974EF1F72B3D953CC0C2E6800BE46CEB104DFF0BC8C6494BA3FF"
 }

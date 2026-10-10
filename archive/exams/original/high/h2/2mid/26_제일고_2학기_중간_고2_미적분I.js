@@ -463,7 +463,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "$x=0$에서 연속이지만 미분가능하지 않은 함수인 것만을 <보기>에서 모두 고른 것은? (4.2점)<br><div class=\"note-box\">&lt;보기&gt;<br>ㄱ. $f(x)=x|x|$<br>ㄴ. $f(x)=\\sqrt{x^2}$<br>ㄷ. $f(x)=|x^3|$<br>ㄹ. $f(x)=|x|-x</div>",
+    "content": "$x=0$에서 연속이지만 미분가능하지 않은 함수인 것만을 보기에서 모두 고른 것은? (4.2점)<br><div class=\"note-box\">&lt;보기&gt;<br>ㄱ. $f(x)=x|x|$<br>ㄴ. $f(x)=\\sqrt{x^2}$<br>ㄷ. $f(x)=|x^3|$<br>ㄹ. $f(x)=|x|-x</div>",
     "choices": [
       "ㄱ, ㄴ",
       "ㄱ, ㄷ",

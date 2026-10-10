@@ -30,7 +30,7 @@ const base = process.env.AP_ARCHIVE_BASE || 'http://127.0.0.1:8766';
         fs.writeFileSync(path.join(out, process.env.AP_BROWSER_REPORT || 'phase1a-browser.json'), JSON.stringify({ tests, errors, expectedPageErrors, posts }, null, 2));
     }
     await page.evaluate(() => {
-        window.saveState = () => ({ root: document.getElementById('print-area'), mode: AppState.mode, qpp: AppState.qpp, data: AppState.data, header: AppState.printHeaderOptions, url: location.href, session: archiveScreenRuntime.currentSession, snapshot: archiveScreenRuntime.activeSnapshot, tab: document.querySelector('.mode-tab.active')?.id });
+        window.saveState = () => ({ root: document.getElementById('print-area'), mode: AppState.mode, qpp: AppState.qpp, data: AppState.data, header: AppState.printHeaderOptions, url: location.href, session: archiveScreenRuntime.currentSession, snapshot: archiveScreenRuntime.activeSnapshot, tab: document.querySelector('.mode-tab.active')?.id, outputEnvelope: AppState.outputEnvelope || null, outputGlobal: window.__AP_OUTPUT_ENVELOPE__ || null, outputEnvelopeReady: window.__AP_OUTPUT_ENVELOPE_READY__ || null, outputRenderReady: window.__AP_OUTPUT_RENDER_READY__ || null });
         window.sameState = before => { const after = saveState(); return Object.keys(before).every(key => before[key] === after[key]) && after.snapshot.status === 'ACTIVE'; };
     });
     await check('Canonical candidate schema and recursive immutability', async () => {
@@ -48,12 +48,70 @@ const base = process.env.AP_ARCHIVE_BASE || 'http://127.0.0.1:8766';
             const second = switchMode('ans');
             const raw = { title: 'Final header' };
             const third = setPrintHeaderOptions(raw); raw.title = 'MUTATED OUTSIDE';
-            resume(); const results = await Promise.all([first, second, third]);
-            window.APSolutionRenderExecutor = executor;
-            return { preserved, results: results.map(r => ({ ok: r.ok, code: r.code || null })), mode: AppState.mode, title: AppState.printHeaderOptions.title, digestParity: archiveScreenRuntime.inspect().attempts.at(-1).keyBuildParity };
+            resume();
+            try {
+                const results = await Promise.all([first, second, third]);
+                const envelope = AppState.outputEnvelope;
+                const url = new URL(location.href);
+                return {
+                    preserved,
+                    results: results.map(r => ({ ok: r.ok, code: r.code || null })),
+                    mode: AppState.mode,
+                    title: AppState.printHeaderOptions.title,
+                    envelopeMode: envelope?.mode || null,
+                    envelopeTitle: envelope?.meta?.printHeaderOptions?.title || null,
+                    routeRequestId: url.searchParams.get('outputRequestId'),
+                    readyRequestId: window.__AP_OUTPUT_ENVELOPE_READY__?.outputRequestId || null,
+                    renderReadyRequestId: window.__AP_OUTPUT_RENDER_READY__?.outputRequestId || null,
+                    readerReady: document.getElementById('archive2-reader-controls')?.dataset.ready || null,
+                    digestParity: archiveScreenRuntime.inspect().attempts.at(-1).keyBuildParity,
+                };
+            } finally {
+                window.APSolutionRenderExecutor = executor;
+            }
         });
-        assert.equal(result.preserved, true); assert.equal(result.results[0].code, 'DISCARDED_STALE');
-        assert.equal(result.results[2].ok, true, JSON.stringify(result)); assert.equal(result.mode, 'ans'); assert.equal(result.title, 'Final header'); assert.equal(result.digestParity, true);
+        assert.equal(result.preserved, true, JSON.stringify(result));
+        assert.equal(result.results[0].code, 'DISCARDED_STALE', JSON.stringify(result));
+        assert.equal(result.results[1].code, 'DISCARDED_STALE', JSON.stringify(result));
+        assert.equal(result.results[2].ok, true, JSON.stringify(result));
+        assert.equal(result.mode, 'ans'); assert.equal(result.title, 'Final header');
+        assert.equal(result.envelopeMode, 'ans'); assert.equal(result.envelopeTitle, 'Final header');
+        assert.equal(result.routeRequestId, result.readyRequestId); assert.equal(result.readyRequestId, result.renderReadyRequestId);
+        assert.equal(result.readerReady, 'true'); assert.equal(result.digestParity, true);
+    });
+    await check('Committed mode envelope reload binds URL, snapshot and print readiness', async () => {
+        const outputUrl = await page.evaluate(() => location.href);
+        const other = await page.context().newPage();
+        const reloadErrors = [];
+        other.on('pageerror', error => reloadErrors.push(String(error.stack || error)));
+        try {
+            await other.goto(outputUrl);
+            await other.waitForFunction(() => {
+                const id = new URL(location.href).searchParams.get('outputRequestId');
+                return AppState.mode === 'ans' && window.__AP_OUTPUT_ENVELOPE__?.mode === 'ans' &&
+                    window.__AP_OUTPUT_RENDER_READY__?.outputRequestId === id &&
+                    document.getElementById('archive2-reader-controls')?.dataset.ready === 'true';
+            }, undefined, { timeout: 120000 });
+            await other.evaluate(async () => safePrint('vector'));
+            const result = await other.evaluate(() => ({
+                mode: AppState.mode,
+                envelopeMode: AppState.outputEnvelope?.mode || null,
+                routeId: new URL(location.href).searchParams.get('outputRequestId'),
+                readyId: window.__AP_OUTPUT_ENVELOPE_READY__?.outputRequestId || null,
+                renderReadyId: window.__AP_OUTPUT_RENDER_READY__?.outputRequestId || null,
+                pages: document.querySelectorAll('#print-area .page').length,
+                printReady: archiveReadinessTracker.snapshot().state === 'PRINT_READY' && archiveReadinessTracker.snapshot().ready,
+                dryRun: JSON.parse(document.documentElement.dataset.apPrintMetrics).dryRun,
+                unrenderedMath: APRenderLoop.unrenderedMathCount(document.getElementById('print-area')),
+            }));
+            assert.deepEqual(result, {
+                mode: 'ans', envelopeMode: 'ans', routeId: result.routeId, readyId: result.routeId,
+                renderReadyId: result.routeId, pages: 1, printReady: true, dryRun: true, unrenderedMath: 0,
+            });
+            assert.deepEqual(reloadErrors, []);
+        } finally {
+            await other.close();
+        }
     });
     await check('MathJax failure preserves active state and has no committed effects', async () => {
         const result = await page.evaluate(async () => {
@@ -113,8 +171,16 @@ const base = process.env.AP_ARCHIVE_BASE || 'http://127.0.0.1:8766';
             const before = saveState();
             const result = await archiveScreenRuntime.request({ type: 'SOURCE_CHANGE', payload: { safeDataUrl: 'exams/test-fixtures/render-authority-golden.js', mode: 'exam' } });
             const session = archiveScreenRuntime.currentSession, snapshot = archiveScreenRuntime.activeSnapshot;
-            return { ok: result.ok, changed: session.sessionId !== before.session.sessionId, status: session.status, oldStatus: before.session.status, detached: !before.root.isConnected, parity: session.sessionId === snapshot.sessionId && snapshot.sessionId === archiveScreenRuntime.committedCandidate.source.targetSessionId };
-        }); assert.deepEqual(result, { ok: true, changed: true, status: 'CURRENT', oldStatus: 'EVICTED', detached: true, parity: true });
+            return {
+                ok: result.ok,
+                changed: session.sessionId !== before.session.sessionId,
+                status: session.status,
+                oldStatus: before.session.status,
+                detached: !before.root.isConnected,
+                parity: session.sessionId === snapshot.sessionId && snapshot.sessionId === archiveScreenRuntime.committedCandidate.source.targetSessionId,
+                oldEnvelopeCleared: !AppState.outputEnvelope && !window.__AP_OUTPUT_ENVELOPE__ && !window.__AP_OUTPUT_ENVELOPE_READY__ && !window.__AP_OUTPUT_RENDER_READY__ && !new URL(location.href).searchParams.has('outputRequestId'),
+            };
+        }); assert.deepEqual(result, { ok: true, changed: true, status: 'CURRENT', oldStatus: 'EVICTED', detached: true, parity: true, oldEnvelopeCleared: true });
     });
     await check('Real bank top-level const helpers are isolated across repeated SOURCE_CHANGE', async () => {
         const result = await page.evaluate(async () => {

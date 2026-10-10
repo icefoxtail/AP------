@@ -1,0 +1,172 @@
+{
+  "schemaVersion": "ARCHIVE_SOLUTION_RENDER_PUBLICATION_CLOSEOUT_V1",
+  "reportPath": "C:\\Users\\USER\\Desktop\\AP------\\output\\playwright\\solution-render-upgrade-20261010\\archive-solution-render-publication-20261010.md",
+  "workspace": "C:\\Users\\USER\\Desktop\\AP------",
+  "branch": "main",
+  "implementationCommit": "518280f7f5ab73ae5c08f9e591fbe9274c131945",
+  "baseAfterRemoteFastForward": "3649f95201ef1a4cfa674bc6ec4ad6ecad45d62f",
+  "remoteReadbackHead": "518280f7f5ab73ae5c08f9e591fbe9274c131945",
+  "remoteReadbackReceipt": "output/playwright/solution-render-upgrade-20261010/remote-readback-518280f7f.json",
+  "remoteReadback": {
+    "implementationTreePathCount": 68,
+    "implementationTreeBlobParityCount": 68,
+    "directRemoteByteReadbackCount": 16,
+    "directRemoteByteReadbackAllEqual": true,
+    "remoteSourceAssetOverlayManifest": "output/playwright/solution-render-upgrade-20261010/post-main-source-asset-overlay.json",
+    "servedMainResourceReceipt": "output/playwright/solution-render-upgrade-20261010/post-main-final-chrome-resource-parity.json",
+    "servedMainResourceCount": 75,
+    "servedMainResourceSha256ParityCount": 75,
+    "servedMainResourcesAllMatch": true
+  },
+  "checks": [
+    {
+      "command": "node tools/check-archive2-runtime.cjs",
+      "exitCode": 0,
+      "result": "PASS 42/42",
+      "evidence": "output/playwright/solution-render-upgrade-20261010/archive2-runtime-guard-current-main.log"
+    },
+    {
+      "command": "node --test tests/archive-fast-engine-runtime.test.js tests/archive-render-authority-adapter.test.js tests/archive2-reader-controls.test.cjs tests/layout-authority.test.js tests/archive-solution-materializer-fit.test.cjs",
+      "exitCode": 0,
+      "result": "PASS 45/45",
+      "evidence": "output/playwright/solution-render-upgrade-20261010/archive-runtime-tests-current-main.log"
+    },
+    {
+      "command": "node tests/archive-solution-image.test.js",
+      "exitCode": 0,
+      "result": "PASS",
+      "evidence": "output/playwright/solution-render-upgrade-20261010/archive-solution-image-publication.log"
+    },
+    {
+      "command": "node tests/archive-fast-engine-browser.cjs",
+      "exitCode": 0,
+      "result": "PASS 20/20 actual Chrome tests including PREPARE late-mode latest-wins, committed-envelope reload, source-change invalidation, and print dry-run",
+      "evidence": [
+        "output/playwright/solution-render-upgrade-20261010/cancellation-current-main.json",
+        "output/playwright/solution-render-upgrade-20261010/cancellation-current-main-final.png",
+        "output/playwright/solution-render-upgrade-20261010/cancellation-current-main.log"
+      ]
+    },
+    {
+      "command": "node --check owned JS/browser helpers; engine inline JS extraction; git diff --check",
+      "exitCode": 0,
+      "result": "PASS",
+      "evidence": "output/playwright/solution-render-upgrade-20261010/archive-syntax-diff-current-main.log"
+    }
+  ],
+  "actualChrome": {
+    "browser": "Google Chrome 154.0.8037.98",
+    "headed": true,
+    "viewport": {
+      "width": 1280,
+      "height": 720,
+      "deviceScaleFactor": 1
+    },
+    "serving": "Local read-only HTTP overlay on 127.0.0.1:8767 using fetched main blobs for exam and referenced asset paths; runtime files equal implementation commit",
+    "smoke": "output/playwright/solution-render-upgrade-20261010/post-main-final-mode-output-smoke.json",
+    "screenshotPrefix": "output/playwright/solution-render-upgrade-20261010/post-main-final-"
+  },
+  "modeFlow": {
+    "B": {
+      "sourcePath": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+      "sourceSha256": "550d579f4470bf6d4613c7865fa3fc5da9175d999b50fc31a97377b28092afae",
+      "idlePrewarmModesReady": [
+        "sol",
+        "ans"
+      ],
+      "solutionClickCacheStatus": "HIT",
+      "solutionClickVisibleReadyMs": 73,
+      "solutionPagesHeaded": 7,
+      "solutionBoxes": 25,
+      "answers": 24,
+      "continuations": 2,
+      "bodyTextSha256": "0438732059795b03aaf76adb493344aaa473366a6f4658a5f3ca749514cb9497",
+      "clipped": 0,
+      "pageBodyOverflowPx": 0,
+      "unrenderedMath": 0,
+      "answerClickCacheStatus": "HIT",
+      "answerPages": 1,
+      "answerCells": 24,
+      "printReady": true,
+      "printReadyMs": 78.5,
+      "printDryRun": true,
+      "osPrintCalled": false
+    },
+    "sourceChangeToC": {
+      "remoteSourcePath": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "remoteSourceSha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "localWorktreeSourceSha256Preserved": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "sessionChanged": true,
+      "oldEnvelopeCleared": true,
+      "oldSolutionAndAnswerSnapshots": null,
+      "newSolutionCacheStatus": "MISS",
+      "solutionVisibleReadyMs": 10934,
+      "pages": 15,
+      "solutionBoxes": 30,
+      "answers": 23,
+      "continuations": 18,
+      "svgReady": 18,
+      "bodyTextSha256": "d8dc60dda8efdb705c0c9d219d853984c664ece6c8b257899851c8f8f71fb55",
+      "mathUnrendered": 0,
+      "clipped": 0,
+      "pageBodyOverflowPx": 0
+    },
+    "A": {
+      "sourcePath": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sourceSha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+      "visibleReadyMs": 19275,
+      "pagesHeaded": 21,
+      "solutionBoxes": 41,
+      "answers": 23,
+      "continuations": 34,
+      "svgReady": 12,
+      "bodyTextSha256": "8bec4e403bba634204ec3396a851488fb74e0ab515046047a0aa9fb350e584b3",
+      "fontWaitMs": 5.7,
+      "mathUnrendered": 0,
+      "clipped": 0,
+      "pageBodyOverflowPx": 2,
+      "printReady": true
+    },
+    "fullwidth": {
+      "sourcePath": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+      "sourceSha256": "6ae757501d3819612be07d8f14495cf6f016aa90b7693dbd3b62c8a309a7ed55",
+      "q9Page": 3,
+      "q10Page": 4,
+      "q11Page": 5,
+      "q10Fullwidth": true,
+      "svg": {
+        "remoteSha256": "a5f9eb8dad3f9e01a51d66453c58e28c357cd06ca2a5ab8bf239e7db34f19213",
+        "width": 390,
+        "height": 360,
+        "loaded": true,
+        "containedInSolutionBox": true
+      },
+      "totalPages": 10,
+      "mathUnrendered": 0,
+      "clipped": 0,
+      "pageBodyOverflowPx": 0,
+      "printReady": true
+    },
+    "consoleErrors": 0,
+    "pageErrors": 0
+  },
+  "sourceAssetPolicy": {
+    "unrelatedExamSourceAndAssetsCommitted": false,
+    "worktreeHyocheonSourceOverlaidFromMainForChromeOnly": true,
+    "overlayExamFileCount": 4,
+    "overlayReferencedAssetCount": 63,
+    "sourceAssetRemoteChromeResourceParity": "75/75",
+    "deploymentSmoke": "NOT_RUN; no verified deployment URL was present in repository configuration"
+  },
+  "changedPaths": [
+    "archive/engine.html",
+    "archive/solution-render-executor.js",
+    "archive/layout-materializer.js",
+    "archive/screen-runtime-adapter.js",
+    "tests/archive-fast-engine-browser.cjs",
+    "tests/archive-fast-engine-runtime.test.js",
+    "tests/archive-render-authority-adapter.test.js",
+    "tests/archive2-reader-controls.test.cjs",
+    "output/playwright/solution-render-upgrade-20261010/"
+  ]
+}
