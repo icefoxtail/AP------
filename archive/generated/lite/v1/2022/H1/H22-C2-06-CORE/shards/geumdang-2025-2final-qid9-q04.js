@@ -636,7 +636,8 @@ window.questionBank = [
     "tags": [
       "객관식",
       "명제",
-      "참거짓"
+      "참거짓",
+      "표"
     ],
     "wide": false,
     "content": "각각 참 또는 거짓인 명제 $p,q,r$에 대하여 세 명제 $p\\to q$, $q\\to r$, $r\\to p$ 중 정확히 하나만 거짓이 되는 $(p,q,r)$의 진리값 배정의 개수는?",
@@ -691,6 +692,10 @@ window.questionBank = [
     "integrationPattern": "PROP_CYCLIC_TRUTH_CASES",
     "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
     "studentSupplyEligible": false,
-    "consumerSelectable": false
+    "consumerSelectable": false,
+    "solutionImage": "assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q04-C3-solution.svg",
+    "solutionImageAlt": "세 명제 p q r의 여덟 가지 참거짓 조합, 세 조건명제의 진리값과 거짓인 명제 수를 비교하는 해설 진리표",
+    "solutionImageCaption": "모두 참 또는 모두 거짓인 두 경우를 제외한 6가지에서 정확히 한 명제만 거짓이다.",
+    "solutionImageSize": "full"
   }
 ];
