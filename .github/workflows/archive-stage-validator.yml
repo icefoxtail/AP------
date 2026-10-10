@@ -63,6 +63,20 @@ on:
         description: "Repository-relative evidence JSON path on target_ref"
         required: true
         type: string
+      execution_line:
+        description: "Execution authority for CURRENT V2 (CODEX or GPT_SCHEDULED)"
+        required: true
+        default: "CODEX"
+        type: choice
+        options: [CODEX, GPT_SCHEDULED]
+      campaign_id:
+        description: "Required when execution_line is GPT_SCHEDULED"
+        required: false
+        type: string
+      stream:
+        description: "A, B, or C; required when execution_line is GPT_SCHEDULED"
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -143,14 +157,54 @@ jobs:
           STAGE: ${{ inputs.stage }}
           EXAM: ${{ inputs.exam_path }}
           EVIDENCE: ${{ inputs.evidence_path }}
+          EXECUTION_LINE: ${{ inputs.execution_line }}
+          CAMPAIGN: ${{ inputs.campaign_id }}
+          STREAM: ${{ inputs.stream }}
         run: |
           set -euo pipefail
           quality_args=()
           if [[ "$QUALITY" != LEGACY ]]; then quality_args=(--quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006); fi
+          gpt_args=()
+          if [[ "$EXECUTION_LINE" == "GPT_SCHEDULED" ]]; then
+            [[ "$QUALITY" == "CURRENT" && "$CAMPAIGN" =~ ^[A-Za-z0-9_]+$ && "$STREAM" =~ ^[ABC]$ ]] || { echo "INVALID_GPT_DISPATCH_CONTEXT"; exit 1; }
+            gpt_args=(--execution-line GPT_SCHEDULED --campaign-id "$CAMPAIGN" --stream "$STREAM")
+          elif [[ "$EXECUTION_LINE" != "CODEX" ]]; then
+            echo "INVALID_EXECUTION_LINE"; exit 1
+          fi
           node validator-src/archive/tools/archive-stage-validator.mjs \
-            "${quality_args[@]}" --stage "$STAGE" \
+            "${quality_args[@]}" "${gpt_args[@]}" --stage "$STAGE" \
             --exam "$GITHUB_WORKSPACE/target/$EXAM" \
-            --evidence "$GITHUB_WORKSPACE/target/$EVIDENCE" --json
+            --evidence "$GITHUB_WORKSPACE/target/$EVIDENCE" \
+            --asset-root "$GITHUB_WORKSPACE/target/archive" --json
+
+      - name: Seal GPT dispatch stage with canonical V2 CLI
+        if: inputs.execution_line == 'GPT_SCHEDULED'
+        shell: bash
+        env:
+          STAGE: ${{ inputs.stage }}
+          EXAM: ${{ inputs.exam_path }}
+          EVIDENCE: ${{ inputs.evidence_path }}
+          CAMPAIGN: ${{ inputs.campaign_id }}
+          STREAM: ${{ inputs.stream }}
+        run: |
+          set -euo pipefail
+          exam_uid="$(basename "$EXAM" .js)"
+          node validator-src/archive/tools/gpt2-validate-and-seal.mjs \
+            --stage "$STAGE" \
+            --exam "$GITHUB_WORKSPACE/target/$EXAM" \
+            --evidence "$GITHUB_WORKSPACE/target/$EVIDENCE" \
+            --asset-root "$GITHUB_WORKSPACE/target/archive" \
+            --output-root "$RUNNER_TEMP/gpt2-seals" \
+            --campaign-id "$CAMPAIGN" --stream "$STREAM" --exam-uid "$exam_uid"
+
+      - name: Upload official GPT V2 seal and handoff
+        if: success() && inputs.execution_line == 'GPT_SCHEDULED'
+        uses: actions/upload-artifact@v4
+        with:
+          name: gpt2-dispatch-seal-${{ github.run_id }}
+          path: ${{ runner.temp }}/gpt2-seals
+          if-no-files-found: error
+          retention-days: 30
 
   validate-pr-comment:
     if: >-
