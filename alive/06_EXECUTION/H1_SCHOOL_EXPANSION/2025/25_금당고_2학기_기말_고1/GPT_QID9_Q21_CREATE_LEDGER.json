@@ -1,0 +1,309 @@
+{
+  "schemaVersion": "GD25_Q21_CREATOR_SELF_REVIEW_V1",
+  "sourceQid": 21,
+  "sourceExamBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "candidateSourceJsBlobSha": "4e8cd958d754bd7e5e4473b60fb81b6361bfe2c7",
+  "mathSpecBlobSha": "4ea614a55f1ef13b9e63112f5797b2e0c3960e62",
+  "metaBlueprintBlobSha": "02c68eec2395c4cdbf38a170b4c68947f4ccfd44",
+  "lockedPrimaryL3": "H1-RPM-237",
+  "candidateCount": 9,
+  "keep": 9,
+  "hold": 0,
+  "formalIndependentQualityReview": false,
+  "actualBrowserRender": "NOT_TESTED",
+  "mainMerged": false,
+  "answerDistributionForObjective": {
+    "①": 1,
+    "②": 1,
+    "③": 1,
+    "④": 1,
+    "⑤": 1
+  },
+  "creatorMathEnumeration": {
+    "B1": true,
+    "B2": true,
+    "B3": true,
+    "C1": true,
+    "C2": true,
+    "C3": true
+  },
+  "visual": {
+    "problemSvgCount": 0,
+    "solutionSvgCount": 9,
+    "geometry": "two or three disjoint circle regions",
+    "creatorStaticCoordinateCheck": "CENTERS_AND_RADII_NONOVERLAP",
+    "rendererExecuted": false,
+    "chrome": "NOT_TESTED"
+  },
+  "rows": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q21-A1",
+      "answer": "$A\\cap B=\\varnothing$; 예: $\\{1,2\\}$와 $\\{3,4\\}$, $\\{2,4\\}$와 $\\{1,3\\}$",
+      "reverseStemFinding": "정의와 서로소 집합 두 쌍의 구성",
+      "rpmNecessity": "서로소 ⇔ 공통 원소 없음 ⇔ 교집합 공집합",
+      "distractorRoutes": [],
+      "problemVisual": "EXEMPT_COMPLETE_TEXT_SETS",
+      "solutionVisual": "SET_EXPLANATION_SVG",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q21-A1-solution.svg",
+      "solutionSvgBlobSha": "8a1b5b88010f1c07c55d30e29a6f96e96a7d3af8",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_EXACT_SET_ENUMERATION",
+      "browser": "NOT_TESTED"
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q21-A2",
+      "answer": "예: $A=\\{1,3\\},B=\\{2,4\\}$와 $C=\\{5,7\\},D=\\{6,8\\}$; 두 교집합 모두 $\\varnothing$",
+      "reverseStemFinding": "유한 전체집합 안의 두 쌍 구성",
+      "rpmNecessity": "서로소 ⇔ 공통 원소 없음 ⇔ 교집합 공집합",
+      "distractorRoutes": [],
+      "problemVisual": "EXEMPT_COMPLETE_TEXT_SETS",
+      "solutionVisual": "SET_EXPLANATION_SVG",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q21-A2-solution.svg",
+      "solutionSvgBlobSha": "e9b3115558df25f43137d33e27b2d9687ccabb52",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_EXACT_SET_ENUMERATION",
+      "browser": "NOT_TESTED"
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q21-A3",
+      "answer": "$A\\cap B=\\varnothing$; 예: $C=\\{2,6\\}$",
+      "reverseStemFinding": "서로소 판정과 새 집합 구성",
+      "rpmNecessity": "서로소 ⇔ 공통 원소 없음 ⇔ 교집합 공집합",
+      "distractorRoutes": [],
+      "problemVisual": "EXEMPT_COMPLETE_TEXT_SETS",
+      "solutionVisual": "SET_EXPLANATION_SVG",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q21-A3-solution.svg",
+      "solutionSvgBlobSha": "251c7ebb0ad1196115c1b6ac023a7dd5c27badc3",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_EXACT_SET_ENUMERATION",
+      "browser": "NOT_TESTED"
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q21-B1",
+      "answer": "③",
+      "reverseStemFinding": "겹치는 원소 제거",
+      "rpmNecessity": "서로소 ⇔ 공통 원소 없음 ⇔ 교집합 공집합",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "value": 3,
+          "error": "3만 제거하여 7 누락"
+        },
+        {
+          "index": "②",
+          "value": 7,
+          "error": "7만 제거하여 3 누락"
+        },
+        {
+          "index": "③",
+          "value": 10,
+          "error": "CORRECT"
+        },
+        {
+          "index": "④",
+          "value": 9,
+          "error": "Mistake 7 for a common element with 6: 3+6=9."
+        },
+        {
+          "index": "⑤",
+          "value": 16,
+          "error": "3,6,7을 모두 공통으로 잘못 판단"
+        }
+      ],
+      "problemVisual": "EXEMPT_COMPLETE_TEXT_SETS",
+      "solutionVisual": "SET_EXPLANATION_SVG",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q21-B1-solution.svg",
+      "solutionSvgBlobSha": "3952032c30a6859c030969631331f927a35ba22c",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_EXACT_SET_ENUMERATION",
+      "browser": "NOT_TESTED"
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q21-B2",
+      "answer": "⑤",
+      "reverseStemFinding": "공배수 원소의 개수",
+      "rpmNecessity": "서로소 ⇔ 공통 원소 없음 ⇔ 교집합 공집합",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "value": 2,
+          "error": "12와24만 셈"
+        },
+        {
+          "index": "②",
+          "value": 3,
+          "error": "48을 누락"
+        },
+        {
+          "index": "③",
+          "value": 1,
+          "error": "최소공배수 12 하나만 셈"
+        },
+        {
+          "index": "④",
+          "value": 5,
+          "error": "범위 밖 60까지 포함"
+        },
+        {
+          "index": "⑤",
+          "value": 4,
+          "error": "CORRECT"
+        }
+      ],
+      "problemVisual": "EXEMPT_COMPLETE_TEXT_SETS",
+      "solutionVisual": "SET_EXPLANATION_SVG",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q21-B2-solution.svg",
+      "solutionSvgBlobSha": "ee3189b352eb93ccda3697b28f4b5b179841f734",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_EXACT_SET_ENUMERATION",
+      "browser": "NOT_TESTED"
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q21-B3",
+      "answer": "①",
+      "reverseStemFinding": "홀짝 조건으로 매개변수 판정",
+      "rpmNecessity": "서로소 ⇔ 공통 원소 없음 ⇔ 교집합 공집합",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "value": 16,
+          "error": "CORRECT"
+        },
+        {
+          "index": "②",
+          "value": 12,
+          "error": "짝수 k=2,4,6을 합산"
+        },
+        {
+          "index": "③",
+          "value": 9,
+          "error": "마지막 가능한 k=7 누락"
+        },
+        {
+          "index": "④",
+          "value": 25,
+          "error": "범위 밖 k=9 포함"
+        },
+        {
+          "index": "⑤",
+          "value": 10,
+          "error": "k=1,5 누락"
+        }
+      ],
+      "problemVisual": "EXEMPT_COMPLETE_TEXT_SETS",
+      "solutionVisual": "SET_EXPLANATION_SVG",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q21-B3-solution.svg",
+      "solutionSvgBlobSha": "68ef6b79e0dea2b4f2d561c16b09c9584316b29e",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_EXACT_SET_ENUMERATION",
+      "browser": "NOT_TESTED"
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q21-C1",
+      "answer": "②",
+      "reverseStemFinding": "세 집합의 쌍별 서로소 조건",
+      "rpmNecessity": "서로소 ⇔ 공통 원소 없음 ⇔ 교집합 공집합",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "value": 18,
+          "error": "k=8을 잘못 포함하고 9를 누락"
+        },
+        {
+          "index": "②",
+          "value": 19,
+          "error": "CORRECT"
+        },
+        {
+          "index": "③",
+          "value": 24,
+          "error": "k=7,8,9를 허용"
+        },
+        {
+          "index": "④",
+          "value": 16,
+          "error": "k=7,9만 허용"
+        },
+        {
+          "index": "⑤",
+          "value": 10,
+          "error": "k=9를 누락"
+        }
+      ],
+      "problemVisual": "EXEMPT_COMPLETE_TEXT_SETS",
+      "solutionVisual": "SET_EXPLANATION_SVG",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q21-C1-solution.svg",
+      "solutionSvgBlobSha": "d3a4d5fd673b31b80f635ae78d68bc6fccde5054",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_EXACT_SET_ENUMERATION",
+      "browser": "NOT_TESTED",
+      "difficultyCorrectionRationale": "Bucket 3: finite candidate scan / direct LCM cutoff, with no distinct extra reasoning beyond the B-slot operation."
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q21-C2",
+      "answer": "④",
+      "reverseStemFinding": "최소공배수 경계",
+      "rpmNecessity": "서로소 ⇔ 공통 원소 없음 ⇔ 교집합 공집합",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "value": 7,
+          "error": "처음 가능한 k=7만 선택"
+        },
+        {
+          "index": "②",
+          "value": 16,
+          "error": "k=11 누락"
+        },
+        {
+          "index": "③",
+          "value": 20,
+          "error": "k=7 누락"
+        },
+        {
+          "index": "④",
+          "value": 27,
+          "error": "CORRECT"
+        },
+        {
+          "index": "⑤",
+          "value": 32,
+          "error": "k=5의 공배수 20을 놓쳐 포함"
+        }
+      ],
+      "problemVisual": "EXEMPT_COMPLETE_TEXT_SETS",
+      "solutionVisual": "SET_EXPLANATION_SVG",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q21-C2-solution.svg",
+      "solutionSvgBlobSha": "80345d6c134e365366d113e16938e5805009d664",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_EXACT_SET_ENUMERATION",
+      "browser": "NOT_TESTED",
+      "difficultyCorrectionRationale": "Bucket 3: finite candidate scan / direct LCM cutoff, with no distinct extra reasoning beyond the B-slot operation."
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q21-C3",
+      "answer": "$k=4,6,8$",
+      "reverseStemFinding": "소수 원소와 일정 간격 집합 비교",
+      "rpmNecessity": "서로소 ⇔ 공통 원소 없음 ⇔ 교집합 공집합",
+      "distractorRoutes": [],
+      "problemVisual": "EXEMPT_COMPLETE_TEXT_SETS",
+      "solutionVisual": "SET_EXPLANATION_SVG",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q21-C3-solution.svg",
+      "solutionSvgBlobSha": "d9bd7321014d601818fb4c9a8c9ea55b215db52d",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_EXACT_SET_ENUMERATION",
+      "browser": "NOT_TESTED"
+    }
+  ],
+  "qualityConclusion": "CREATE_DRAFT_SELF_CHECKED_NOT_INDEPENDENT_REVIEW",
+  "protectedPriorQids": "Q01-Q20"
+}

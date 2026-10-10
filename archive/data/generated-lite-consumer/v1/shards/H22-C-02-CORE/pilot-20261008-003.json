@@ -1,13 +1,15 @@
 {
   "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
+  "school": "효천고",
+  "batchId": "MAIN_SOURCE_pilot-20261008-003",
+  "sourceKind": "generated",
   "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-02-CORE/shards/pilot-20261008-003.js",
   "sourceShardGitSha": "7b5e59e3184d7012de5d55407ed596c8218ebf49",
-  "repairShardGitSha": "ee57ffaa372206fdde0570ae292903e4a0a48119",
   "records": [
     {
       "generatedUid": "ALITE-20261008-HYC26-Q19-001",
       "sourceKind": "generated",
-      "sourceExamPath": "archive/exams/original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js",
+      "sourceExamPath": "26_효천고_1학기_중간_고1_기출",
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 19,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-02-CORE/shards/pilot-20261008-003.js",
@@ -21,18 +23,18 @@
         "l4": "미정계수 결정",
         "mappingStatus": "RPM_ONLY"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 1,
         "level": "하",
         "difficultyBucket": 2,
         "standardCourse": "공통수학1",
         "standardUnitKey": "H22-C-02",
-        "standardUnit": "항등식과 나머지정리",
+        "standardUnit": "항등식과 나머지 정리",
         "subUnitKey": "H22-C-02-CORE",
-        "subUnit": "항등식과 나머지정리",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "category": "인수정리",
         "originalCategory": "인수정리",
         "questionType": "객관식",
@@ -53,122 +55,8 @@
         ],
         "answer": "④",
         "solution": "[키포인트] 인수정리에 의해 $P(1)=0$이다. 따라서 $2+a-5+1=0$이므로 $a=2$이다.",
-        "metaProjection": {
-          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
-          "uid": "ALITE-20261008-HYC26-Q19-001",
-          "status": "LEGACY_NOT_RECERTIFIED",
-          "standardCourse": "공통수학1",
-          "standardUnitKey": "H22-C-02",
-          "subUnitKey": "H22-C-02-CORE",
-          "rpmPrimaryRecordId": "H1-RPM-145",
-          "rpmL1": "다항식",
-          "rpmL2": "항등식과 나머지정리",
-          "rpmL3": "인수정리",
-          "rpmL4": "미정계수 결정",
-          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
-          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
-          "problemTypeKey": null,
-          "templateKey": null,
-          "difficultyBucket": 2,
-          "level": "하",
-          "crossConceptKeys": [],
-          "conditionKeys": [],
-          "integrationPattern": "NONE",
-          "approval": "REVIEW_APPROVED",
-          "reviewStatus": "REVIEW_PASS",
-          "consumerSelectable": true,
-          "evidenceByField": {
-            "standardCourse": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "standardCourse"
-            },
-            "standardUnitKey": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "standardUnitKey"
-            },
-            "subUnitKey": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "subUnitKey"
-            },
-            "rpmPrimaryRecordId": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmPrimaryRecordId"
-            },
-            "rpmL1": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmL1"
-            },
-            "rpmL2": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmL2"
-            },
-            "rpmL3": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmL3"
-            },
-            "rpmL4": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmL4"
-            },
-            "rpmL4Namespace": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmL4Namespace"
-            },
-            "rpmDraftAuthorityRef": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmDraftAuthorityRef"
-            },
-            "rpmDraftAuthoritySha256": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmDraftAuthoritySha256"
-            },
-            "problemTypeKey": {
-              "status": "UNKNOWN",
-              "evidenceKey": "problemTypeKey"
-            },
-            "templateKey": {
-              "status": "UNKNOWN",
-              "evidenceKey": "templateKey"
-            },
-            "difficultyBucket": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "difficultyBucket"
-            },
-            "level": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "level"
-            },
-            "crossConceptKeys": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "crossConceptKeys"
-            },
-            "conditionKeys": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "conditionKeys"
-            },
-            "integrationPattern": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "integrationPattern"
-            }
-          },
-          "evidenceDebt": [
-            {
-              "field": "problemTypeKey",
-              "status": "EVIDENCE_DEBT",
-              "reason": "PROBLEMTYPEKEY_VALUE_MISSING"
-            },
-            {
-              "field": "templateKey",
-              "status": "EVIDENCE_DEBT",
-              "reason": "TEMPLATEKEY_VALUE_MISSING"
-            }
-          ],
-          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
-          "physicalStorageBucketKey": "H22-C-02-CORE",
-          "sourceKind": "generated",
-          "rpmMappingStatus": "EXACT_CROSSWALK"
-        }
+        "standardUnitOrder": 2,
+        "uid": "ALITE-20261008-HYC26-Q19-001"
       },
       "metaProjection": {
         "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
@@ -285,12 +173,27 @@
         "physicalStorageBucketKey": "H22-C-02-CORE",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
+      },
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "level": "하",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE"
       }
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q19-002",
       "sourceKind": "generated",
-      "sourceExamPath": "archive/exams/original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js",
+      "sourceExamPath": "26_효천고_1학기_중간_고1_기출",
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 19,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-02-CORE/shards/pilot-20261008-003.js",
@@ -304,18 +207,18 @@
         "l4": "미정계수 결정",
         "mappingStatus": "RPM_ONLY"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 2,
         "level": "하",
         "difficultyBucket": 2,
         "standardCourse": "공통수학1",
         "standardUnitKey": "H22-C-02",
-        "standardUnit": "항등식과 나머지정리",
+        "standardUnit": "항등식과 나머지 정리",
         "subUnitKey": "H22-C-02-CORE",
-        "subUnit": "항등식과 나머지정리",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "category": "인수정리",
         "originalCategory": "인수정리",
         "questionType": "객관식",
@@ -328,130 +231,16 @@
         "wide": false,
         "content": "다항식 $P(x)=x^3-kx^2+2x+4$가 $x+2$로 나누어떨어질 때, 실수 $k$의 값은?",
         "choices": [
-          "-6",
-          "-5",
           "-4",
           "-3",
-          "-2"
+          "-2",
+          "-1",
+          "0"
         ],
-        "answer": "⑤",
+        "answer": "③",
         "solution": "[키포인트] 인수정리에 의해 $P(-2)=0$이다. 따라서 $-8-4k-4+4=0$에서 $k=-2$이다.",
-        "metaProjection": {
-          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
-          "uid": "ALITE-20261008-HYC26-Q19-002",
-          "status": "LEGACY_NOT_RECERTIFIED",
-          "standardCourse": "공통수학1",
-          "standardUnitKey": "H22-C-02",
-          "subUnitKey": "H22-C-02-CORE",
-          "rpmPrimaryRecordId": "H1-RPM-145",
-          "rpmL1": "다항식",
-          "rpmL2": "항등식과 나머지정리",
-          "rpmL3": "인수정리",
-          "rpmL4": "미정계수 결정",
-          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
-          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
-          "problemTypeKey": null,
-          "templateKey": null,
-          "difficultyBucket": 2,
-          "level": "하",
-          "crossConceptKeys": [],
-          "conditionKeys": [],
-          "integrationPattern": "NONE",
-          "approval": "REVIEW_APPROVED",
-          "reviewStatus": "REVIEW_PASS",
-          "consumerSelectable": true,
-          "evidenceByField": {
-            "standardCourse": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "standardCourse"
-            },
-            "standardUnitKey": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "standardUnitKey"
-            },
-            "subUnitKey": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "subUnitKey"
-            },
-            "rpmPrimaryRecordId": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmPrimaryRecordId"
-            },
-            "rpmL1": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmL1"
-            },
-            "rpmL2": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmL2"
-            },
-            "rpmL3": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmL3"
-            },
-            "rpmL4": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmL4"
-            },
-            "rpmL4Namespace": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmL4Namespace"
-            },
-            "rpmDraftAuthorityRef": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmDraftAuthorityRef"
-            },
-            "rpmDraftAuthoritySha256": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmDraftAuthoritySha256"
-            },
-            "problemTypeKey": {
-              "status": "UNKNOWN",
-              "evidenceKey": "problemTypeKey"
-            },
-            "templateKey": {
-              "status": "UNKNOWN",
-              "evidenceKey": "templateKey"
-            },
-            "difficultyBucket": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "difficultyBucket"
-            },
-            "level": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "level"
-            },
-            "crossConceptKeys": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "crossConceptKeys"
-            },
-            "conditionKeys": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "conditionKeys"
-            },
-            "integrationPattern": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "integrationPattern"
-            }
-          },
-          "evidenceDebt": [
-            {
-              "field": "problemTypeKey",
-              "status": "EVIDENCE_DEBT",
-              "reason": "PROBLEMTYPEKEY_VALUE_MISSING"
-            },
-            {
-              "field": "templateKey",
-              "status": "EVIDENCE_DEBT",
-              "reason": "TEMPLATEKEY_VALUE_MISSING"
-            }
-          ],
-          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
-          "physicalStorageBucketKey": "H22-C-02-CORE",
-          "sourceKind": "generated",
-          "rpmMappingStatus": "EXACT_CROSSWALK"
-        }
+        "standardUnitOrder": 2,
+        "uid": "ALITE-20261008-HYC26-Q19-002"
       },
       "metaProjection": {
         "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
@@ -568,12 +357,27 @@
         "physicalStorageBucketKey": "H22-C-02-CORE",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
+      },
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "level": "하",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE"
       }
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q19-003",
       "sourceKind": "generated",
-      "sourceExamPath": "archive/exams/original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js",
+      "sourceExamPath": "26_효천고_1학기_중간_고1_기출",
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 19,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-02-CORE/shards/pilot-20261008-003.js",
@@ -587,18 +391,18 @@
         "l4": "미정계수 결정",
         "mappingStatus": "RPM_ONLY"
       },
-      "reviewStatus": "APPROVED_BASELINE_AND_CHOICE_PARITY",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 3,
         "level": "중",
         "difficultyBucket": 3,
         "standardCourse": "공통수학1",
         "standardUnitKey": "H22-C-02",
-        "standardUnit": "항등식과 나머지정리",
+        "standardUnit": "항등식과 나머지 정리",
         "subUnitKey": "H22-C-02-CORE",
-        "subUnit": "항등식과 나머지정리",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "category": "인수정리",
         "originalCategory": "인수정리",
         "questionType": "객관식",
@@ -619,122 +423,8 @@
         ],
         "answer": "⑤",
         "solution": "[키포인트] $P(1)=0$에서 $a+b=-3$, $P(-1)=0$에서 $a-b=-1$이다. 두 식을 풀면 $a=-2$, $b=-1$이므로 $ab=2$이다.",
-        "metaProjection": {
-          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
-          "uid": "ALITE-20261008-HYC26-Q19-003",
-          "status": "LEGACY_NOT_RECERTIFIED",
-          "standardCourse": "공통수학1",
-          "standardUnitKey": "H22-C-02",
-          "subUnitKey": "H22-C-02-CORE",
-          "rpmPrimaryRecordId": "H1-RPM-145",
-          "rpmL1": "다항식",
-          "rpmL2": "항등식과 나머지정리",
-          "rpmL3": "인수정리",
-          "rpmL4": "미정계수 결정",
-          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
-          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
-          "problemTypeKey": null,
-          "templateKey": null,
-          "difficultyBucket": 3,
-          "level": "중",
-          "crossConceptKeys": [],
-          "conditionKeys": [],
-          "integrationPattern": "NONE",
-          "approval": "REVIEW_APPROVED",
-          "reviewStatus": "REVIEW_PASS",
-          "consumerSelectable": true,
-          "evidenceByField": {
-            "standardCourse": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "standardCourse"
-            },
-            "standardUnitKey": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "standardUnitKey"
-            },
-            "subUnitKey": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "subUnitKey"
-            },
-            "rpmPrimaryRecordId": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmPrimaryRecordId"
-            },
-            "rpmL1": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmL1"
-            },
-            "rpmL2": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmL2"
-            },
-            "rpmL3": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmL3"
-            },
-            "rpmL4": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmL4"
-            },
-            "rpmL4Namespace": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmL4Namespace"
-            },
-            "rpmDraftAuthorityRef": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmDraftAuthorityRef"
-            },
-            "rpmDraftAuthoritySha256": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmDraftAuthoritySha256"
-            },
-            "problemTypeKey": {
-              "status": "UNKNOWN",
-              "evidenceKey": "problemTypeKey"
-            },
-            "templateKey": {
-              "status": "UNKNOWN",
-              "evidenceKey": "templateKey"
-            },
-            "difficultyBucket": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "difficultyBucket"
-            },
-            "level": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "level"
-            },
-            "crossConceptKeys": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "crossConceptKeys"
-            },
-            "conditionKeys": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "conditionKeys"
-            },
-            "integrationPattern": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "integrationPattern"
-            }
-          },
-          "evidenceDebt": [
-            {
-              "field": "problemTypeKey",
-              "status": "EVIDENCE_DEBT",
-              "reason": "PROBLEMTYPEKEY_VALUE_MISSING"
-            },
-            {
-              "field": "templateKey",
-              "status": "EVIDENCE_DEBT",
-              "reason": "TEMPLATEKEY_VALUE_MISSING"
-            }
-          ],
-          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
-          "physicalStorageBucketKey": "H22-C-02-CORE",
-          "sourceKind": "generated",
-          "rpmMappingStatus": "EXACT_CROSSWALK"
-        }
+        "standardUnitOrder": 2,
+        "uid": "ALITE-20261008-HYC26-Q19-003"
       },
       "metaProjection": {
         "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
@@ -851,12 +541,27 @@
         "physicalStorageBucketKey": "H22-C-02-CORE",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
+      },
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE"
       }
     },
     {
       "generatedUid": "ALITE-20261008-HYC26-Q19-004",
       "sourceKind": "generated",
-      "sourceExamPath": "archive/exams/original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js",
+      "sourceExamPath": "26_효천고_1학기_중간_고1_기출",
       "sourceExamBlobSha": "69ad80ffa9ec80b2592bee26ffce247f8d7013d1",
       "sourceQid": 19,
       "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-02-CORE/shards/pilot-20261008-003.js",
@@ -870,18 +575,18 @@
         "l4": "미정계수 결정",
         "mappingStatus": "RPM_ONLY"
       },
-      "reviewStatus": "PINPOINT_MATH_CORRECTED",
+      "reviewStatus": "REVIEW_PASS",
       "question": {
         "id": 4,
         "level": "중",
         "difficultyBucket": 3,
         "standardCourse": "공통수학1",
         "standardUnitKey": "H22-C-02",
-        "standardUnit": "항등식과 나머지정리",
+        "standardUnit": "항등식과 나머지 정리",
         "subUnitKey": "H22-C-02-CORE",
-        "subUnit": "항등식과 나머지정리",
-        "subUnitConfidence": "HIGH",
-        "subUnitClassificationDepth": "L2",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
         "category": "인수정리",
         "originalCategory": "인수정리",
         "questionType": "객관식",
@@ -894,130 +599,16 @@
         "wide": false,
         "content": "다항식 $P(x)=x^3+px^2+qx+6$이 $x-2$와 $x+1$로 모두 나누어떨어질 때, $p+q$의 값은?",
         "choices": [
+          "-5",
           "-4",
           "-3",
           "-2",
-          "-1",
-          "0"
+          "-1"
         ],
-        "answer": "②",
+        "answer": "④",
         "solution": "[키포인트] $P(2)=0$에서 $2p+q=-7$, $P(-1)=0$에서 $p-q=-5$이다. 두 식을 연립하면 $p=-4$, $q=1$이므로 $p+q=-3$이다.",
-        "metaProjection": {
-          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
-          "uid": "ALITE-20261008-HYC26-Q19-004",
-          "status": "LEGACY_NOT_RECERTIFIED",
-          "standardCourse": "공통수학1",
-          "standardUnitKey": "H22-C-02",
-          "subUnitKey": "H22-C-02-CORE",
-          "rpmPrimaryRecordId": "H1-RPM-145",
-          "rpmL1": "다항식",
-          "rpmL2": "항등식과 나머지정리",
-          "rpmL3": "인수정리",
-          "rpmL4": "미정계수 결정",
-          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
-          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
-          "problemTypeKey": null,
-          "templateKey": null,
-          "difficultyBucket": 3,
-          "level": "중",
-          "crossConceptKeys": [],
-          "conditionKeys": [],
-          "integrationPattern": "NONE",
-          "approval": "REVIEW_APPROVED",
-          "reviewStatus": "REVIEW_PASS",
-          "consumerSelectable": true,
-          "evidenceByField": {
-            "standardCourse": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "standardCourse"
-            },
-            "standardUnitKey": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "standardUnitKey"
-            },
-            "subUnitKey": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "subUnitKey"
-            },
-            "rpmPrimaryRecordId": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmPrimaryRecordId"
-            },
-            "rpmL1": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmL1"
-            },
-            "rpmL2": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmL2"
-            },
-            "rpmL3": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmL3"
-            },
-            "rpmL4": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmL4"
-            },
-            "rpmL4Namespace": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmL4Namespace"
-            },
-            "rpmDraftAuthorityRef": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmDraftAuthorityRef"
-            },
-            "rpmDraftAuthoritySha256": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "rpmDraftAuthoritySha256"
-            },
-            "problemTypeKey": {
-              "status": "UNKNOWN",
-              "evidenceKey": "problemTypeKey"
-            },
-            "templateKey": {
-              "status": "UNKNOWN",
-              "evidenceKey": "templateKey"
-            },
-            "difficultyBucket": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "difficultyBucket"
-            },
-            "level": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "level"
-            },
-            "crossConceptKeys": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "crossConceptKeys"
-            },
-            "conditionKeys": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "conditionKeys"
-            },
-            "integrationPattern": {
-              "status": "EXACT_SOURCE",
-              "evidenceKey": "integrationPattern"
-            }
-          },
-          "evidenceDebt": [
-            {
-              "field": "problemTypeKey",
-              "status": "EVIDENCE_DEBT",
-              "reason": "PROBLEMTYPEKEY_VALUE_MISSING"
-            },
-            {
-              "field": "templateKey",
-              "status": "EVIDENCE_DEBT",
-              "reason": "TEMPLATEKEY_VALUE_MISSING"
-            }
-          ],
-          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
-          "physicalStorageBucketKey": "H22-C-02-CORE",
-          "sourceKind": "generated",
-          "rpmMappingStatus": "EXACT_CROSSWALK"
-        }
+        "standardUnitOrder": 2,
+        "uid": "ALITE-20261008-HYC26-Q19-004"
       },
       "metaProjection": {
         "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
@@ -1134,6 +725,21 @@
         "physicalStorageBucketKey": "H22-C-02-CORE",
         "sourceKind": "generated",
         "rpmMappingStatus": "EXACT_CROSSWALK"
+      },
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE"
       }
     }
   ]

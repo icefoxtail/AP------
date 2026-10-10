@@ -1,0 +1,432 @@
+{
+  "schemaVersion": "ALIVE_QID9_GEUMDANG25_Q11_CREATOR_SELF_REVIEW_V1",
+  "sourceQid": 11,
+  "sourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "lockedPrimaryL3": "H1-RPM-235",
+  "candidateCount": 9,
+  "keep": 9,
+  "revised": 0,
+  "hold": 0,
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 2,
+    "④": 2,
+    "⑤": 1
+  },
+  "formalIndependentGptReviewPerformed": false,
+  "realChromeRender": "NOT_TESTED",
+  "releaseStatus": "BRANCH_ONLY_NOT_RELEASED",
+  "exactEnumeration": "Each candidate is a divisor of top and a multiple of base; additional filters applied before target calculations",
+  "rows": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q11-A1",
+      "finalStem": "자연수 $k$의 양의 약수 전체의 집합을 $A_k$라 하자. $A_6\\subseteq A_n\\subseteq A_{60}$을 만족하는 자연수 $n$의 개수는?",
+      "reverseStemFinding": "주어진 약수집합 포함관계를 배수·약수 관계로 환산해야 개수 결정 가능",
+      "primaryL3Necessity": "집합의 포함 방향을 실제 정수의 약수·배수 조건으로 번역",
+      "candidateSet": [
+        6,
+        12,
+        30,
+        60
+      ],
+      "afterExtraCondition": [
+        6,
+        12,
+        30,
+        60
+      ],
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "②",
+          "wrongCalculation": "최소와 최대인 $6,60$만 세어 2개로 판단"
+        },
+        {
+          "choice": "③",
+          "wrongCalculation": "중간 약수 $30$을 빼고 $6,12,60$만 세어 3개"
+        },
+        {
+          "choice": "④",
+          "wrongCalculation": "$n=10$도 포함된다고 착각해 $6,10,12,30,60$의 5개"
+        },
+        {
+          "choice": "⑤",
+          "wrongCalculation": "$n=10,15$도 허용한다고 착각해 $6,10,12,15,30,60$의 6개"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 집합 포함관계가 문자로 모두 주어짐",
+      "solutionVisualVerdict": "EXEMPT: 후보 나열과 짧은 계산에 그림 중복 효과 적음",
+      "solutionAsset": null,
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "GPT 독립 공개답 검수 및 실제 Chrome/Consumer 검증 미수행"
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q11-A2",
+      "finalStem": "자연수 $k$의 양의 약수 전체의 집합을 $A_k$라 하자. $A_4\\subseteq A_n\\subseteq A_{48}$을 만족하는 자연수 $n$의 개수는?",
+      "reverseStemFinding": "주어진 약수집합 포함관계를 배수·약수 관계로 환산해야 개수 결정 가능",
+      "primaryL3Necessity": "집합의 포함 방향을 실제 정수의 약수·배수 조건으로 번역",
+      "candidateSet": [
+        4,
+        8,
+        12,
+        16,
+        24,
+        48
+      ],
+      "afterExtraCondition": [
+        4,
+        8,
+        12,
+        16,
+        24,
+        48
+      ],
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "wrongCalculation": "$12,16$을 빠뜨려 $4,8,24,48$의 4개로 셈"
+        },
+        {
+          "choice": "③",
+          "wrongCalculation": "$16$을 빠뜨려 $4,8,12,24,48$의 5개"
+        },
+        {
+          "choice": "④",
+          "wrongCalculation": "조건에 맞지 않는 $n=6$을 추가하여 7개"
+        },
+        {
+          "choice": "⑤",
+          "wrongCalculation": "조건에 맞지 않는 $n=6,32$를 추가하여 8개"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 집합 포함관계가 문자로 모두 주어짐",
+      "solutionVisualVerdict": "EXEMPT: 후보 나열과 짧은 계산에 그림 중복 효과 적음",
+      "solutionAsset": null,
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "GPT 독립 공개답 검수 및 실제 Chrome/Consumer 검증 미수행"
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q11-A3",
+      "finalStem": "자연수 $k$의 양의 약수 전체의 집합을 $A_k$라 하자. $A_5\\subseteq A_n\\subseteq A_{75}$를 만족하는 자연수 $n$의 개수는?",
+      "reverseStemFinding": "주어진 약수집합 포함관계를 배수·약수 관계로 환산해야 개수 결정 가능",
+      "primaryL3Necessity": "집합의 포함 방향을 실제 정수의 약수·배수 조건으로 번역",
+      "candidateSet": [
+        5,
+        15,
+        25,
+        75
+      ],
+      "afterExtraCondition": [
+        5,
+        15,
+        25,
+        75
+      ],
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "wrongCalculation": "$5$와 $75$만 선택하여 2개"
+        },
+        {
+          "choice": "②",
+          "wrongCalculation": "$25$를 빠뜨려 $5,15,75$의 3개"
+        },
+        {
+          "choice": "④",
+          "wrongCalculation": "약수가 아닌 $10$을 추가하여 5개"
+        },
+        {
+          "choice": "⑤",
+          "wrongCalculation": "약수가 아닌 $10,30$을 추가하여 6개"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 집합 포함관계가 문자로 모두 주어짐",
+      "solutionVisualVerdict": "EXEMPT: 후보 나열과 짧은 계산에 그림 중복 효과 적음",
+      "solutionAsset": null,
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "GPT 독립 공개답 검수 및 실제 Chrome/Consumer 검증 미수행"
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q11-B1",
+      "finalStem": "자연수 $k$의 양의 약수 전체의 집합을 $A_k$라 하자. $A_4\\cap A_6\\subseteq A_n\\subseteq A_{18}\\cup A_{36}$을 만족하는 자연수 $n$의 최댓값과 최솟값의 합은?",
+      "reverseStemFinding": "주어진 약수집합 포함관계를 배수·약수 관계로 환산해야 최댓값과 최솟값의 합 결정 가능",
+      "primaryL3Necessity": "집합의 포함 방향을 실제 정수의 약수·배수 조건으로 번역",
+      "candidateSet": [
+        2,
+        4,
+        6,
+        12,
+        18,
+        36
+      ],
+      "afterExtraCondition": [
+        2,
+        4,
+        6,
+        12,
+        18,
+        36
+      ],
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "wrongCalculation": "최댓값 36만 구하고 최솟값을 더하지 않음"
+        },
+        {
+          "choice": "②",
+          "wrongCalculation": "$2$가 아닌 $4$를 최솟값으로 잘못 선택하여 $36+4=40$"
+        },
+        {
+          "choice": "③",
+          "wrongCalculation": "$2$가 아닌 $6$을 최솟값으로 잘못 선택하여 $36+6=42$"
+        },
+        {
+          "choice": "⑤",
+          "wrongCalculation": "최댓값을 두 번 더해 $36+36=72$"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 집합 포함관계가 문자로 모두 주어짐",
+      "solutionVisualVerdict": "ADD: 집합 연산/추가 조건의 후보 필터가 학생에게 식보다 직관적",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q11-B1-solution.svg",
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "GPT 독립 공개답 검수 및 실제 Chrome/Consumer 검증 미수행"
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q11-B2",
+      "finalStem": "자연수 $k$의 양의 약수 전체의 집합을 $A_k$라 하자. $A_8\\subseteq A_n\\subseteq A_{72}$를 만족하는 자연수 $n$의 최댓값과 최솟값의 곱은?",
+      "reverseStemFinding": "주어진 약수집합 포함관계를 배수·약수 관계로 환산해야 최댓값과 최솟값의 곱 결정 가능",
+      "primaryL3Necessity": "집합의 포함 방향을 실제 정수의 약수·배수 조건으로 번역",
+      "candidateSet": [
+        8,
+        24,
+        72
+      ],
+      "afterExtraCondition": [
+        8,
+        24,
+        72
+      ],
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "wrongCalculation": "최댓값 $72$만 답으로 적음"
+        },
+        {
+          "choice": "②",
+          "wrongCalculation": "중간 값 $24$를 최댓값으로 잘못 선택해 $8cdot24=192$"
+        },
+        {
+          "choice": "③",
+          "wrongCalculation": "가능한 수가 3개인 점을 최솟값과 혼동해 $3cdot72=216$"
+        },
+        {
+          "choice": "④",
+          "wrongCalculation": "최솟값 $8$의 절반인 $4$를 사용해 $4cdot72=288$"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 집합 포함관계가 문자로 모두 주어짐",
+      "solutionVisualVerdict": "EXEMPT: 후보 나열과 짧은 계산에 그림 중복 효과 적음",
+      "solutionAsset": null,
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "GPT 독립 공개답 검수 및 실제 Chrome/Consumer 검증 미수행"
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q11-B3",
+      "finalStem": "자연수 $k$의 양의 약수 전체의 집합을 $A_k$라 하자. $A_6\\cap A_{10}\\subseteq A_n\\subseteq A_{30}$을 만족하고 $3$의 배수인 자연수 $n$의 모든 값의 합은?",
+      "reverseStemFinding": "주어진 약수집합 포함관계를 배수·약수 관계로 환산해야 가능한 값의 합 결정 가능",
+      "primaryL3Necessity": "집합의 포함 방향을 실제 정수의 약수·배수 조건으로 번역",
+      "candidateSet": [
+        2,
+        6,
+        10,
+        30
+      ],
+      "afterExtraCondition": [
+        6,
+        30
+      ],
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "②",
+          "wrongCalculation": "최댓값 $30$만 합으로 취급"
+        },
+        {
+          "choice": "③",
+          "wrongCalculation": "추가 조건 $3$의 배수를 무시하고 $2+30=32$만 선택"
+        },
+        {
+          "choice": "④",
+          "wrongCalculation": "추가 조건을 잘못 적용해 $10+30=40$으로 계산"
+        },
+        {
+          "choice": "⑤",
+          "wrongCalculation": "$30$의 약수가 아닌 $36$을 포함해 $6+36=42$로 계산"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 집합 포함관계가 문자로 모두 주어짐",
+      "solutionVisualVerdict": "ADD: 집합 연산/추가 조건의 후보 필터가 학생에게 식보다 직관적",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q11-B3-solution.svg",
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "GPT 독립 공개답 검수 및 실제 Chrome/Consumer 검증 미수행"
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q11-C1",
+      "finalStem": "자연수 $k$의 양의 약수 전체의 집합을 $A_k$라 하자. $A_{12}\\subseteq A_n\\subseteq A_{180}$을 만족하는 모든 자연수 $n$의 값의 합은?",
+      "reverseStemFinding": "주어진 약수집합 포함관계를 배수·약수 관계로 환산해야 가능한 값의 합 결정 가능",
+      "primaryL3Necessity": "집합의 포함 방향을 실제 정수의 약수·배수 조건으로 번역",
+      "candidateSet": [
+        12,
+        36,
+        60,
+        180
+      ],
+      "afterExtraCondition": [
+        12,
+        36,
+        60,
+        180
+      ],
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "wrongCalculation": "최댓값 $180$만 답으로 적음"
+        },
+        {
+          "choice": "③",
+          "wrongCalculation": "$12$를 누락하여 $36+60+180=276$"
+        },
+        {
+          "choice": "④",
+          "wrongCalculation": "최솟값 $12$를 중복 계산하여 $288+12=300$"
+        },
+        {
+          "choice": "⑤",
+          "wrongCalculation": "$12,36$을 빼고 $60+180=240$만 더함"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 집합 포함관계가 문자로 모두 주어짐",
+      "solutionVisualVerdict": "EXEMPT: 후보 나열과 짧은 계산에 그림 중복 효과 적음",
+      "solutionAsset": null,
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "GPT 독립 공개답 검수 및 실제 Chrome/Consumer 검증 미수행"
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q11-C2",
+      "finalStem": "자연수 $k$의 양의 약수 전체의 집합을 $A_k$라 하자. $A_{12}\\cap A_{18}\\subseteq A_n\\subseteq A_{60}\\cup A_{120}$을 만족하고 $n\\gt20$인 모든 자연수 $n$의 값의 합은?",
+      "reverseStemFinding": "주어진 약수집합 포함관계를 배수·약수 관계로 환산해야 범위 조건을 만족하는 값의 합 결정 가능",
+      "primaryL3Necessity": "집합의 포함 방향을 실제 정수의 약수·배수 조건으로 번역",
+      "candidateSet": [
+        6,
+        12,
+        24,
+        30,
+        60,
+        120
+      ],
+      "afterExtraCondition": [
+        24,
+        30,
+        60,
+        120
+      ],
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "wrongCalculation": "$n=24$를 빠뜨려 $30+60+120=210$"
+        },
+        {
+          "choice": "②",
+          "wrongCalculation": "$n=24$를 제외하면서 대신 범위 밖의 $6$을 추가하여 $6+30+60+120=216$"
+        },
+        {
+          "choice": "④",
+          "wrongCalculation": "범위 밖의 $6$을 추가하여 $234+6=240$"
+        },
+        {
+          "choice": "⑤",
+          "wrongCalculation": "$120$의 약수가 아닌 $18$을 잘못 추가하여 $234+18=252$"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 집합 포함관계가 문자로 모두 주어짐",
+      "solutionVisualVerdict": "ADD: 집합 연산/추가 조건의 후보 필터가 학생에게 식보다 직관적",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q11-C2-solution.svg",
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "GPT 독립 공개답 검수 및 실제 Chrome/Consumer 검증 미수행"
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q11-C3",
+      "finalStem": "자연수 $k$의 양의 약수 전체의 집합을 $A_k$라 하자. $A_6\\cup A_{10}\\subseteq A_n\\subseteq A_{180}$을 만족하면서 $4$의 배수인 모든 자연수 $n$의 값의 합은?",
+      "reverseStemFinding": "주어진 약수집합 포함관계를 배수·약수 관계로 환산해야 범위 조건을 만족하는 값의 합 결정 가능",
+      "primaryL3Necessity": "집합의 포함 방향을 실제 정수의 약수·배수 조건으로 번역",
+      "candidateSet": [
+        30,
+        60,
+        90,
+        180
+      ],
+      "afterExtraCondition": [
+        60,
+        180
+      ],
+      "distractorIndexCoverage": "4/4",
+      "distractorReproduction": "4/4",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "wrongCalculation": "최댓값 $180$만 답으로 적음"
+        },
+        {
+          "choice": "②",
+          "wrongCalculation": "$4$의 배수가 아닌 $30$을 포함하여 $30+180=210$"
+        },
+        {
+          "choice": "③",
+          "wrongCalculation": "$4$의 배수가 아닌 $90$을 포함하여 $90+180=270$"
+        },
+        {
+          "choice": "⑤",
+          "wrongCalculation": "$180$을 두 번 더하여 $180+180=360$"
+        }
+      ],
+      "problemVisualVerdict": "EXEMPT: 집합 포함관계가 문자로 모두 주어짐",
+      "solutionVisualVerdict": "ADD: 집합 연산/추가 조건의 후보 필터가 학생에게 식보다 직관적",
+      "solutionAsset": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q11-C3-solution.svg",
+      "decision": "KEEP",
+      "evidenceFreshness": "CURRENT_CANDIDATE_SELF_CHECK",
+      "remainingRisk": "GPT 독립 공개답 검수 및 실제 Chrome/Consumer 검증 미수행"
+    }
+  ]
+}
