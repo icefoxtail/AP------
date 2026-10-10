@@ -1,7 +1,18 @@
 # 2025 순천고 고1 2학기 기말 기존 유사문항 23개 품질 정리 — 브랜치 감사 원장
 
+## 최종 감사 추가 기록 — 2026-10-10 KST
+
+- 최신 main `46c85bb17ae8bcf9861ae4a4346c89390fd0fbea`와 이 전용 branch의 시험지 파일을 각각 조회했다. 원본 q1~q23·유사 q1~q23 모두 23문항이며 id 연속성은 23/23이다. 현재 main에 들어온 이후 비대상 코드 변경은 있으나 원본 파일은 이 감사에서 수정하지 않았다.
+- 이 세션에서 23개 발문·보기·정답·해설을 다시 직접 대조·풀이했다. 기존 결과를 무비판적으로 승계하지 않았으며 수학 판정은 KEEP 12 / REPAIR 11 / HOLD 0으로 재확인했다. REPAIR는 이 branch의 앞선 핀포인트 수정 결과에 대한 분류이며, 이번 추가 감사에서 문항 본문·보기·answer를 새로 바꾸지 않았다.
+- q17 경계 검산: $t=\\sqrt{x+1}$. $k<-1$이면 구간 $0\\le t\\le2$에서 두 번째 근 $-1-1/k<0$라 허용되지 않고, $t\\ge2$에서는 $k(t^2-1)-t+3<0$이므로 교점이 하나뿐이다. $k=-1$에서는 $t=0,1$ 두 해가 유효하다. 따라서 최솟값 $k_0=-1$, 작은 $x=-1$, 합 $-2$로 기존 답 ②가 맞다.
+- 문제 그림 q04/q10/q13 및 해설 SVG 7개를 실제 문자열 좌표·라벨·연결 경로로 검수했다. q04 대응값, q10의 문자 좌표 및 $y=x$, q13 점근선 $x=2,y=1$·영점 $(3,0)$, 해설 SVG 7개의 표기 교점·끝점·경계 표식을 확인했다. 브라우저/Chrome 실렌더는 실행하지 않았다.
+- q13.svg의 y=3 눈금 label baseline이 y=16, font-size 30으로 viewBox 상단에서 잘릴 수 있음을 정적 좌표로 확인해 그래프 전체에 세로 +20 translation을 적용했다. 모든 도형과 clipPath를 함께 이동해 좌표관계는 불변이고 텍스트 상단 여백만 복구된다. 수정 후 root/viewBox/clip/주요 x절편·점근선 선언을 정적 확인했다. SVG 변경 총 10개 경로: 기존 문제 SVG 3개 수정(q04/q10/q13), 해설 SVG 7개 추가(이번 보정은 q13 기존 경로의 최종본에 포함).
+- qid 1~23 tuple은 `sourceJsPath|examId|qid` 규칙에 따라 서로 고유하다. 파일에는 explicit `uid/sourceQid/sourceFile`가 없으므로 별도 UID를 새로 만들지 않았다. original qid↔similar id 대응은 순서·단원·문형 비교로 정합하나 저장된 source pointer가 없어 provenance 상태는 `INFERRED`다. cross-bank 전체 UID 중복 조회는 수행하지 않았다.
+- 최신 `archive/data/master_tables/js_archive_tag_master.json`에서 standardUnitKey/subUnitKey 조합은 23/23 일치했다. 다만 이 JS에는 RPM L1~L4, difficultyBucket, PT/TPL 연결 필드가 없고 개별 RPM linkage registry도 이 branch에서는 확인되지 않았다. canonical RPM H22-C2 concept와 문항 내용의 개념상 분류는 검토했지만, 저장된 정확한 RPM key 연결은 `NOT_VERIFIED`로 남긴다. 임의 키 생성·메타 이관은 이번 범위에 포함하지 않았다.
+- 최종 상태: 문항 품질 검수 표는 완료. production release 준비는 RPM 키/고유 provenance 확인이 남아 있고, 실렌더는 사용자 지정으로 금지되어 `NOT_TESTED`; 이 branch에서는 main 병합·배포·DB 변경을 수행하지 않는다.
+
 - 날짜: 2026-10-10 (KST). 작업형: 기존 유사문항 23개 검수·핀포인트 보정. **main 병합·DB 출고·배포 승인 없음**.
-- 기준 Git main: `57d7fab7b9b47d8e142a496dfef3fe3524eb1bcb`; main tree: `f42f841e7f42a796e2ca53e1950be15fc47a4e58`.
+- 최초 브랜치 기준 main: `57d7fab7b9b47d8e142a496dfef3fe3524eb1bcb`. 최종 감사 시 최신 main `46c85bb17ae8bcf9861ae4a4346c89390fd0fbea`와 해당 main의 원본·정본을 재조회했다.
 - 유사 baseline: `archive/exams/similar/high/h1/2final/25_순천고_2학기_기말_고1_유사.js`, Git blob `ba1fd04de9fcd4fab20da916ddec471935a7c187`.
 - 원본 read only: `archive/exams/original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js`, Git blob `6159f478e8e3edf7074d3967ba1cb7456f7762a3`.
 - 변경 유사 final JS Git blob: `1cabaa3ccd227bcbb1f10fc777d9e20a2cd6b4b1`.
@@ -68,7 +79,7 @@
 |---|---|---|
 | KEEP 기존 문제 | q04.svg (title/desc 및 문자 가독성 보정) | 10a426dbe5d320582bd72b7c9b30356b5e06b3ad |
 | REBUILD 문제 | q10.svg | 8e9b1d77aeeab927ac38aece54c4ff410a07888e |
-| REPAIR 문제 | q13.svg | 12394d169cc85a907b13f5a34e2d60314d8bdfd5 |
+| REPAIR 문제 | q13.svg | 23b83b936053b51e35f6ba045c1921aadab8f54f |
 | ADD 해설 | q09-solution.svg | 3dc6f882f71584ce90c4246974b53a52504bda01 |
 | ADD 해설 | q14-solution.svg | 47fa3fb8c998d7e2abd28b8e687507488eb5405f |
 | ADD 해설 | q15-solution.svg | 57c556b2914e103f25d5e0b34bb137b78c92ec1f |
