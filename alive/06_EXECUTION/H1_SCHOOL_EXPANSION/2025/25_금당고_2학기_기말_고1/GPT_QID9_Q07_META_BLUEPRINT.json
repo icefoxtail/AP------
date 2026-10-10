@@ -28,7 +28,12 @@
       ],
       "answer": "③",
       "problemVisual": "EXEMPT_TEXT_INPUT",
-      "solutionVisual": "EXEMPT_DIRECT_ALGEBRA"
+      "solutionVisual": "EXEMPT_DIRECT_ALGEBRA",
+      "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "COMPOSE_A1"
     },
     {
       "slot": "A2",
@@ -47,7 +52,12 @@
       ],
       "answer": "⑤",
       "problemVisual": "EXEMPT_TEXT_INPUT",
-      "solutionVisual": "EXEMPT_DIRECT_ALGEBRA"
+      "solutionVisual": "EXEMPT_DIRECT_ALGEBRA",
+      "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "COMPOSE_A2"
     },
     {
       "slot": "A3",
@@ -66,7 +76,12 @@
       ],
       "answer": "②",
       "problemVisual": "EXEMPT_TEXT_INPUT",
-      "solutionVisual": "EXEMPT_DIRECT_ALGEBRA"
+      "solutionVisual": "EXEMPT_DIRECT_ALGEBRA",
+      "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "COMPOSE_A3"
     },
     {
       "slot": "B1",
@@ -85,7 +100,12 @@
       ],
       "answer": "④",
       "problemVisual": "EXEMPT_TEXT_INPUT",
-      "solutionVisual": "EXEMPT_DIRECT_ALGEBRA"
+      "solutionVisual": "EXEMPT_DIRECT_ALGEBRA",
+      "templateKey": "EXT-GD25-Q07-TPL-COMPOSITION-ORDER-DIFFERENCE",
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "COMPOSE_B1"
     },
     {
       "slot": "B2",
@@ -104,7 +124,12 @@
       ],
       "answer": "①",
       "problemVisual": "EXEMPT_TEXT_INPUT",
-      "solutionVisual": "EXEMPT_DIRECT_ALGEBRA"
+      "solutionVisual": "EXEMPT_DIRECT_ALGEBRA",
+      "templateKey": "EXT-GD25-Q07-TPL-COMPOSITION-QUADRATIC-PARAM",
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "COMPOSE_B2"
     },
     {
       "slot": "B3",
@@ -123,15 +148,20 @@
       ],
       "answer": "②",
       "problemVisual": "EXEMPT_TEXT_INPUT",
-      "solutionVisual": "EXEMPT_DIRECT_ALGEBRA"
+      "solutionVisual": "EXEMPT_DIRECT_ALGEBRA",
+      "templateKey": "EXT-GD25-Q07-TPL-TRIPLE-COMPOSITION",
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "COMPOSE_B3"
     },
     {
       "slot": "C1",
       "uid": "ALITE-GEUMDANG25-2FINAL-Q07-C1",
       "primaryL3": "H1-RPM-253",
       "l4": "EXT-GD25-Q07-L4-COMMUTING-VALUE",
-      "difficultyBucket": 4,
-      "level": "상",
+      "difficultyBucket": 3,
+      "level": "중",
       "studentStem": "두 함수 $f(x)=x+2$, $g(x)=x^2$에 대하여 실수 $t$가 $(f\\circ g)(t)=(g\\circ f)(t)$를 만족할 때, $t$의 값은?",
       "choices": [
         "$-2$",
@@ -142,7 +172,12 @@
       ],
       "answer": "④",
       "problemVisual": "EXEMPT_TEXT_INPUT",
-      "solutionVisual": "EXEMPT_DIRECT_ALGEBRA"
+      "solutionVisual": "EXEMPT_DIRECT_ALGEBRA",
+      "templateKey": "EXT-GD25-Q07-TPL-COMPOSITION-COMMUTING-VALUE",
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "COMPOSE_C1"
     },
     {
       "slot": "C2",
@@ -161,7 +196,16 @@
       ],
       "answer": "⑤",
       "problemVisual": "EXEMPT_TEXT_INPUT",
-      "solutionVisual": "EXEMPT_DIRECT_ALGEBRA"
+      "solutionVisual": "EXEMPT_DIRECT_ALGEBRA",
+      "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+      "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+      "conditionKeys": [
+        "EXT-GD25-Q07-COND-RADICAL-COMPOSITION-DOMAIN"
+      ],
+      "crossConceptKeys": [
+        "EXT-GD25-Q07-CC-RADICAL-DOMAIN"
+      ],
+      "integrationPattern": "COMPOSE_C2"
     },
     {
       "slot": "C3",
@@ -180,8 +224,18 @@
       ],
       "answer": "③",
       "problemVisual": "EXEMPT_TEXT_INPUT",
-      "solutionVisual": "ADD_SVG_TABLE"
+      "solutionVisual": "ADD_SVG_TABLE",
+      "templateKey": "EXT-GD25-Q07-TPL-COMPOSITION-IDENTITY-COEFFICIENT",
+      "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+      "conditionKeys": [
+        "EXT-GD25-Q07-COND-ALL-REAL-IDENTITY"
+      ],
+      "crossConceptKeys": [
+        "EXT-GD25-Q07-CC-COEFFICIENT-EQUALITY"
+      ],
+      "integrationPattern": "COMPOSE_C3"
     }
   ],
-  "release": "BRANCH_ONLY"
+  "release": "BRANCH_ONLY",
+  "reviewMetaProjection": "SOURCE_UID_EXACT_PARITY_20261010"
 }

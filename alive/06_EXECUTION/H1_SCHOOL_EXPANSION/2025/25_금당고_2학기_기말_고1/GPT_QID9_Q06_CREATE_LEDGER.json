@@ -5,13 +5,13 @@
   "originalPngSha": "1c1b846c7edd40c6203e19bae88d46f942b76aad",
   "originalImageViewed": true,
   "candidateCount": 9,
-  "keep": 9,
-  "revised": 0,
+  "keep": 5,
+  "revised": 4,
   "hold": 0,
   "answerDistribution": {
-    "①": 2,
+    "①": 1,
     "②": 2,
-    "③": 2,
+    "③": 3,
     "④": 2,
     "⑤": 1
   },
@@ -20,7 +20,7 @@
     "A2": "2,4,6 bijection",
     "A3": "1,0,1 non-injective",
     "B1": "3,1,4,2 bijection; inverse 4=3",
-    "B2": "a=2",
+    "B2": "X=Y={1,2,3,4,5}; outputs 1,2,a,4,5. Bijection exactly when a=3.",
     "B3": "1,2,3,3 onto not injective",
     "C1": "a in {2,3}; sum5",
     "C2": "3!=6",
@@ -163,28 +163,51 @@
     {
       "slot": "B2",
       "uid": "ALITE-GEUMDANG25-2FINAL-Q06-B2",
-      "finalStem": "집합 $X=Y=\\{1,2,3\\}$에서 $f:X\\to Y$가 $f(1)=1$, $f(2)=a$, $f(3)=3$으로 주어진다. $a\\in\\{1,2,3\\}$일 때 $f$의 역함수가 존재하도록 하는 $a$의 값은?",
+      "finalStem": "집합 $X=Y=\\{1,2,3,4,5\\}$에서 함수 $f:X\\to Y$가 $f(1)=1$, $f(2)=2$, $f(3)=a$, $f(4)=4$, $f(5)=5$로 주어진다. $a\\in\\{1,2,3,4,5\\}$일 때 $f$의 역함수가 존재하도록 하는 $a$의 값은?",
       "reverseReadingFinding": "최종 발문을 재독해하여 일대일 대응·역함수 존재와 선택지 단일성을 확인",
       "distractorPaths": [
         {
-          "choice": "②",
-          "reproducedError": "a=1의 중복 대응 놓침"
+          "choice": "①",
+          "reproducedError": "a=1은 f(1)=f(3)=1이므로 일대일 아님을 놓침"
         },
         {
-          "choice": "③",
-          "reproducedError": "a=3의 중복 대응 놓침"
+          "choice": "②",
+          "reproducedError": "a=2는 f(2)=f(3)=2로 중복됨을 놓침"
         },
         {
           "choice": "④",
-          "reproducedError": "허용범위 밖 4를 포함"
+          "reproducedError": "a=4는 f(3)=f(4)=4로 중복됨을 놓침"
         },
         {
           "choice": "⑤",
-          "reproducedError": "허용범위 밖 5를 포함"
+          "reproducedError": "a=5는 f(3)=f(5)=5로 중복됨을 놓침"
         }
       ],
-      "decision": "KEEP",
-      "remainingRisk": "별도 독립검수 및 실제 Chrome 렌더 미수행"
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행; 신규 문항 품질과 운영 출시는 구별",
+      "affectedFields": [
+        "content",
+        "choices",
+        "answer",
+        "solution",
+        "meta",
+        "templateKey"
+      ],
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "affectedFields": [
+          "content",
+          "choices",
+          "answer",
+          "solution",
+          "meta",
+          "templateKey"
+        ],
+        "beforeAnswer": "①",
+        "afterAnswer": "③",
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "함수는 a∈Y의 5개 후보 모두 성립하나, a=3 외에는 다른 함숫값과 중복. 정답 ③ 유일"
     },
     {
       "slot": "B3",
@@ -235,8 +258,27 @@
           "reproducedError": "a=4를 중복 합산해 8"
         }
       ],
-      "decision": "KEEP",
-      "remainingRisk": "별도 독립검수 및 실제 Chrome 렌더 미수행"
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행; 신규 문항 품질과 운영 출시는 구별",
+      "affectedFields": [
+        "level",
+        "difficultyBucket",
+        "meta",
+        "templateKey"
+      ],
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "affectedFields": [
+          "level",
+          "difficultyBucket",
+          "meta",
+          "templateKey"
+        ],
+        "beforeAnswer": "②",
+        "afterAnswer": "②",
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "a=2,3, 합5; 중/bucket3로 재판정"
     },
     {
       "slot": "C2",
@@ -261,8 +303,23 @@
           "reproducedError": "중복 출력을 부당 허용해 8"
         }
       ],
-      "decision": "KEEP",
-      "remainingRisk": "별도 독립검수 및 실제 Chrome 렌더 미수행"
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행; 신규 문항 품질과 운영 출시는 구별",
+      "affectedFields": [
+        "meta",
+        "templateKey"
+      ],
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "affectedFields": [
+          "meta",
+          "templateKey"
+        ],
+        "beforeAnswer": "④",
+        "afterAnswer": "④",
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "문항 수학 불변, 누락된 확장 Meta의 parent/UID/분류 근거만 검증"
     },
     {
       "slot": "C3",
@@ -287,8 +344,35 @@
           "reproducedError": "입력 후보를 단순 더해 6"
         }
       ],
-      "decision": "KEEP",
-      "remainingRisk": "별도 독립검수 및 실제 Chrome 렌더 미수행"
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행; 신규 문항 품질과 운영 출시는 구별",
+      "affectedFields": [
+        "meta",
+        "templateKey",
+        "conditionKeys"
+      ],
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "affectedFields": [
+          "meta",
+          "templateKey",
+          "conditionKeys"
+        ],
+        "beforeAnswer": "①",
+        "afterAnswer": "①",
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "문항 수학 불변, 누락된 확장 Meta의 parent/UID/분류 근거만 검증"
     }
-  ]
+  ],
+  "postIndependentReview": {
+    "source": "GPT round2 2026-10-10",
+    "correctedSlots": [
+      "B2",
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "status": "PINPOINT_CORRECTED_NOT_CHROME_TESTED"
+  }
 }

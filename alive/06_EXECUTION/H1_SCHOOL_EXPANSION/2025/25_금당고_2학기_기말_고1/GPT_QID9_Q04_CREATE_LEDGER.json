@@ -4,8 +4,8 @@
   "sourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
   "branch": "work/alive-25-geumdang-h1-2final-qid9",
   "candidateCount": 9,
-  "keep": 6,
-  "revised": 3,
+  "keep": 4,
+  "revised": 5,
   "hold": 0,
   "formalIndependentGptReviewPerformed": false,
   "sourcePdfCompared": false,
@@ -32,7 +32,7 @@
     "A3": "p=q=T,r=F, only ③ true",
     "B1": "truthCount=2",
     "B2": "p=F,q=T, only ② true",
-    "B3": "p=r=T,q=F, only ④ false",
+    "B3": "p=T q=F r=T; ①②③⑤ true, ④ p→¬r false; q∨r condition essential",
     "C1": "x={-2,-1} sum=-3",
     "C2": "x={-2,-1} count=2",
     "C3": "8 complete assignments; two equal-truth cases give 0 false, six others exactly 1 false"
@@ -130,10 +130,13 @@
       "uid": "ALITE-GEUMDANG25-2FINAL-Q04-B3",
       "slot": "B3",
       "originalStemOrIssue": "세 명제 $p,q,r$에 대하여 $p\\to q$는 거짓이고 $q\\lor r$는 참이다. 다음 중 거짓인 명제는?",
-      "reverseReadingFinding": "학생 발문만 보고 참/거짓 조건, 질문 방향, 전제·결론 분기와 선택지 유일성 재확인",
-      "decision": "KEEP",
+      "reverseReadingFinding": "주어진 p→q 거짓 명제를 정답 선지에 그대로 반복한 우회 풀이를 제거. 선지 ④를 p→¬r로 교체해 q∨r에서 r이 참임을 도출해야 오답 판정 가능",
+      "decision": "REVISED",
       "finalStem": "세 명제 $p,q,r$에 대하여 $p\\to q$는 거짓이고 $q\\lor r$는 참이다. 다음 중 거짓인 명제는?",
-      "affectedFields": [],
+      "affectedFields": [
+        "choices",
+        "solution"
+      ],
       "distractorPaths": {
         "①": "r가 거짓이라고 잘못 판단하여 p∧r을 거짓으로 계산",
         "②": "q가 거짓이면 p∨q도 거짓이라고 오해",
@@ -141,7 +144,18 @@
         "⑤": "q가 거짓이므로 ¬q도 거짓으로 오해"
       },
       "check": "4/4",
-      "remainingRisk": "Separate GPT open-book quality review and real Chrome output not performed"
+      "remainingRisk": "Separate GPT open-book quality review and real Chrome output not performed",
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 QID9 round1",
+        "beforeAnswer": "④",
+        "afterAnswer": "④",
+        "changedFields": [
+          "choices",
+          "solution"
+        ],
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "p=T,q=F,r=T. ① p∧r=T ② p∨q=T ③ r→p=T ④ p→¬r=F ⑤ ¬q∧r=T. 정답 ④ 유일, 조건 q∨r 필수."
     },
     {
       "uid": "ALITE-GEUMDANG25-2FINAL-Q04-C1",
@@ -168,17 +182,39 @@
       "slot": "C2",
       "originalStemOrIssue": "정수 $x$가 $-3\\le x\\le3$을 만족한다. 명제 '$x^2\\le4$이면 $x\\ge0$이다.'가 거짓이 되는 정수 $x$의 개수는?",
       "reverseReadingFinding": "학생 발문만 보고 참/거짓 조건, 질문 방향, 전제·결론 분기와 선택지 유일성 재확인",
-      "decision": "KEEP",
+      "decision": "REVISED",
       "finalStem": "정수 $x$가 $-3\\le x\\le3$을 만족한다. 명제 '$x^2\\le4$이면 $x\\ge0$이다.'가 거짓이 되는 정수 $x$의 개수는?",
-      "affectedFields": [],
+      "affectedFields": [
+        "level",
+        "difficultyBucket",
+        "choices",
+        "answer",
+        "solution",
+        "meta"
+      ],
       "distractorPaths": {
         "①": "모든 조건명제가 참이라고 오해해 0",
         "②": "-2만 포함하고 -1을 놓쳐 1",
-        "③": "0도 음수에 포함시켜 3",
+        "④": "0도 음수에 포함시켜 3",
         "⑤": "-3까지 포함시켜 4"
       },
       "check": "4/4",
-      "remainingRisk": "Separate GPT open-book quality review and real Chrome output not performed"
+      "remainingRisk": "Separate GPT open-book quality review and real Chrome output not performed",
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 QID9 round1",
+        "beforeAnswer": "④",
+        "afterAnswer": "③",
+        "changedFields": [
+          "level",
+          "difficultyBucket",
+          "choices",
+          "answer",
+          "solution",
+          "meta"
+        ],
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "정수 −3≤x≤3에서 조건명제 거짓의 반례는 −2, −1의 2개; 보기 오름차순 정렬 후 정답 ③ 및 해설 일치; 난이도 중/bucket3"
     },
     {
       "uid": "ALITE-GEUMDANG25-2FINAL-Q04-C3",
@@ -205,5 +241,13 @@
       "remainingRisk": "Separate GPT open-book quality review and real Chrome output not performed",
       "changedMathRecheck": "8개 전체 진리값 배정에서 거짓 0개 2건/거짓 1개 6건을 fresh enumeration 검증"
     }
-  ]
+  ],
+  "postIndependentReview": {
+    "source": "GPT round1 2026-10-10",
+    "changedUIDs": [
+      "ALITE-GEUMDANG25-2FINAL-Q04-B3",
+      "ALITE-GEUMDANG25-2FINAL-Q04-C2"
+    ],
+    "chromium": "NOT_TESTED"
+  }
 }

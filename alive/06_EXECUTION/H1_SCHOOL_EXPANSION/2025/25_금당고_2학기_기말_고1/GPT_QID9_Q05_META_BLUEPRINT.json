@@ -49,7 +49,9 @@
           18
         ],
         "relation": "P_PROPER_SUBSET_Q"
-      }
+      },
+      "templateKey": "TPL_NEC_SUFF_DIRECT_JUDGMENT",
+      "problemTypeKey": "PT_NEC_SUFF_RELATION"
     },
     {
       "slot": "A2",
@@ -88,7 +90,9 @@
           4
         ],
         "relation": "Q_PROPER_SUBSET_P"
-      }
+      },
+      "templateKey": "TPL_NEC_SUFF_DIRECT_JUDGMENT",
+      "problemTypeKey": "PT_NEC_SUFF_RELATION"
     },
     {
       "slot": "A3",
@@ -124,7 +128,9 @@
           5
         ],
         "relation": "P_EQUALS_Q"
-      }
+      },
+      "templateKey": "TPL_NEC_SUFF_DIRECT_JUDGMENT",
+      "problemTypeKey": "PT_NEC_SUFF_RELATION"
     },
     {
       "slot": "B1",
@@ -154,7 +160,9 @@
         "p": "x>0",
         "q": "x!=0",
         "relation": "P_PROPER_SUBSET_Q"
-      }
+      },
+      "templateKey": "TPL_NEC_SUFF_DIRECT_JUDGMENT",
+      "problemTypeKey": "PT_NEC_SUFF_RELATION"
     },
     {
       "slot": "B2",
@@ -196,7 +204,10 @@
           12
         ],
         "relation": "PARTIAL_INTERSECTION_NEITHER"
-      }
+      },
+      "templateKey": "EXT-GD25-Q05-TPL-TRUTHSET-OVERLAP",
+      "problemTypeKey": "PT_NEC_SUFF_RELATION",
+      "reviewCorrectedAnswer": "④"
     },
     {
       "slot": "B3",
@@ -226,7 +237,9 @@
         "p": "x<=-2",
         "q": "x>=3",
         "relation": "DISJOINT"
-      }
+      },
+      "templateKey": "EXT-GD25-Q05-TPL-TRUTHSET-DISJOINT",
+      "problemTypeKey": "PT_NEC_SUFF_RELATION"
     },
     {
       "slot": "C1",
@@ -262,7 +275,9 @@
           1
         ],
         "relation": "A_LESS_THAN_2"
-      }
+      },
+      "templateKey": "EXT-GD25-Q05-TPL-PARAM-NECESSITY-BOUNDARY",
+      "problemTypeKey": "PT_NEC_SUFF_RELATION"
     },
     {
       "slot": "C2",
@@ -297,7 +312,10 @@
           3
         ],
         "relation": "TRUTH_SET_EQUAL"
-      }
+      },
+      "templateKey": "EXT-GD25-Q05-TPL-QUADRATIC-ROOTSET-EQUIVALENCE",
+      "problemTypeKey": "PT_NEC_SUFF_RELATION",
+      "reviewCorrectedAnswer": "④"
     },
     {
       "slot": "C3",
@@ -351,9 +369,12 @@
           2
         ],
         "relation": "Q_SUBSET_P_PROPER"
-      }
+      },
+      "templateKey": "EXT-GD25-Q05-TPL-SHIFTED-INTERVAL-INCLUSION",
+      "problemTypeKey": "PT_NEC_SUFF_RELATION"
     }
   ],
   "status": "CREATOR_SELF_CHECK_ONLY",
-  "releaseStatus": "BRANCH_ONLY_NO_MAIN_MERGE"
+  "releaseStatus": "BRANCH_ONLY_NO_MAIN_MERGE",
+  "reviewMetaProjection": "SOURCE_UID_EXACT_PARITY_20261010"
 }
