@@ -1,8 +1,9 @@
 (function (global) {
     'use strict';
-    function columns(page, document, flex, columnClass = 'grid-col') {
+    function columns(page, document, flex, columnClass = 'grid-col', equalTracks = false) {
         const grid = document.createElement('div'); grid.className = 'grid-container';
         if (flex) grid.style.flex = flex;
+        if (equalTracks) grid.style.gridTemplateColumns = 'minmax(0, 1fr) minmax(0, 1fr)';
         const cols = [0, 1].map(() => { const col = document.createElement('div'); col.className = columnClass; grid.appendChild(col); return col; });
         page.body.appendChild(grid); return cols;
     }
@@ -10,6 +11,12 @@
         const grid = document.createElement('div'); grid.className = 'grid-container sol-fullwidth-grid';
         const col = document.createElement('div'); col.className = 'grid-col sol-grid-col sol-fullwidth-column';
         grid.appendChild(col); page.body.appendChild(grid); return col;
+    }
+    function hasHorizontalSolutionOverflow(node, container) {
+        const nodeWidth = Number(node?.clientWidth || 0);
+        const containerWidth = Number(container?.clientWidth || 0);
+        return (nodeWidth > 0 && Number(node.scrollWidth || 0) > nodeWidth + 2)
+            || (containerWidth > 0 && Number(container.scrollWidth || 0) > containerWidth + 2);
     }
     function assertQuestionImagesReady(root, deps) {
         const readiness = deps.validateQuestionImageReadiness?.(root);
@@ -81,7 +88,7 @@
         probe.style.cssText = 'position:absolute;left:-20000px;top:0;visibility:hidden;width:210mm;pointer-events:none;';
         document.body.appendChild(probe);
         const probePage = deps.makePage(probe, 'sol', 0);
-        const cols = columns(probePage, document, undefined, 'grid-col sol-grid-col');
+        const cols = columns(probePage, document, undefined, 'grid-col sol-grid-col', true);
         const wideCol = fullwidthColumn(probePage, document);
         const marker = document.createElement('div'); marker.style.cssText = 'flex:none;height:0;min-height:0;padding:0;margin:0;';
         const capacity = measuredSolutionCapacity(document, probePage);
@@ -94,11 +101,35 @@
         };
         try {
             boxes.forEach((box, index) => {
-                const fullWidth = box.dataset.solutionFullWidth === 'true' || blocks[index].fullWidth === true;
+                let fullWidth = box.dataset.solutionFullWidth === 'true' || blocks[index].fullWidth === true;
                 const originalStyle = box.style.cssText;
-                const rawHeight = flowHeight(box, fullWidth);
+                let rawHeight = flowHeight(box, fullWidth);
+                if (!fullWidth && hasHorizontalSolutionOverflow(box, cols[0])) {
+                    fullWidth = true;
+                    blocks[index].fullWidth = true;
+                    rawHeight = flowHeight(box, true);
+                }
+                if (fullWidth && hasHorizontalSolutionOverflow(box, wideCol)) {
+                    throw new Error(`SOLUTION_HORIZONTAL_OVERFLOW_FULL_WIDTH:${blocks[index].blockId}`);
+                }
                 deps.autoCompress(box);
-                const compressedHeight = flowHeight(box, fullWidth), compressedStyle = box.style.cssText;
+                let compressedHeight = flowHeight(box, fullWidth);
+                let compressedStyle = box.style.cssText;
+                if (!fullWidth && hasHorizontalSolutionOverflow(box, cols[0])) {
+                    fullWidth = true;
+                    blocks[index].fullWidth = true;
+                    box.style.cssText = originalStyle;
+                    rawHeight = flowHeight(box, true);
+                    if (hasHorizontalSolutionOverflow(box, wideCol)) {
+                        throw new Error(`SOLUTION_HORIZONTAL_OVERFLOW_FULL_WIDTH:${blocks[index].blockId}`);
+                    }
+                    deps.autoCompress(box);
+                    compressedHeight = flowHeight(box, true);
+                    compressedStyle = box.style.cssText;
+                }
+                if (fullWidth && hasHorizontalSolutionOverflow(box, wideCol)) {
+                    throw new Error(`SOLUTION_HORIZONTAL_OVERFLOW_FULL_WIDTH:${blocks[index].blockId}`);
+                }
                 box.style.cssText = originalStyle; deps.stagingHost.appendChild(box);
                 const sourceRef = box.dataset.sourceRef;
                 const measurement = { raw: rawHeight, tight: compressedHeight };
@@ -182,7 +213,7 @@
             for (const pagePlan of plan.pages) {
                 const page = deps.makePage(area, 'sol', pagePlan.pageNo);
                 const fullWidthPage = pagePlan.itemPlacements.some(item => item.columnSpan > 1);
-                const target = fullWidthPage ? [fullwidthColumn(page, document)] : columns(page, document, undefined, 'grid-col sol-grid-col');
+                const target = fullWidthPage ? [fullwidthColumn(page, document)] : columns(page, document, undefined, 'grid-col sol-grid-col', true);
                 for (const item of pagePlan.itemPlacements) {
                     const record = byId.get(item.blockId), sourceRef = record.box.dataset.sourceRef;
                     let node = record.box;
