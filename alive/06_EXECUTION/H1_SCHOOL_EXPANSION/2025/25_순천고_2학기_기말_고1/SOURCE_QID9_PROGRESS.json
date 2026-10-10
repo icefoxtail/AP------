@@ -105,16 +105,18 @@
       1,
       2,
       3,
-      4
+      4,
+      5
     ],
-    "questions": 36,
+    "questions": 45,
     "svgFiles": 12,
     "finishedIndependentReviewQids": [],
     "producedItemsByQid": {
       "q01": 9,
       "q02": 9,
       "q03": 9,
-      "q04": 9
+      "q04": 9,
+      "q05": 9
     },
     "q01File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q01_CREATE_DRAFT.json",
     "q02File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q02_CREATE_DRAFT.json",
@@ -128,7 +130,6 @@
     "expectedSourceQidCount": 23,
     "expectedVariantsAtNineEach": 207,
     "remainingQids": [
-      5,
       6,
       7,
       8,
@@ -168,19 +169,26 @@
       "assets/q04-A3-solution.svg",
       "assets/q04-C2-solution.svg",
       "assets/q04-C3-solution.svg"
-    ]
+    ],
+    "q05File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q05_CREATE_DRAFT.json",
+    "q05NoVisual": 9,
+    "q05ActivePT": 9,
+    "q05ActiveTPL": 7,
+    "q05GeneratedExtensionCandidates": 2
   },
   "remainingGates": [
-    "q01~q04 independent open-book GPT review NOT_RUN",
+    "q01~q05 independent open-book GPT review NOT_RUN",
+    "q05 template extensions 2 candidate entries; registration NOT_RUN",
+    "q05 student-facing Chrome exam/sol/ans NOT_RUN",
     "q01~q04 student-facing Chrome exam/sol/ans NOT_RUN",
     "q04 SVG6 xml/browser real render NOT_RUN (deterministic primitive only)",
     "RPM numeric L3 ID unresolved; semantic path frozen and PT/TPL bound"
   ],
   "next": {
-    "qid": 5,
-    "action": "Read q05 original, lock Primary RPM L3; design A1~C3, inspect required image problem/solution independently, commit q05 separately on same work branch. Do not merge or deploy.",
-    "handoffPrompt": "25 순천고 2학기 기말 고1 QID9: branch work/alive-25-suncheon-h1-2final-qid9; q01–q04 36 author drafts and 12 SVG; begin q05 from SOURCE_QID9_PROGRESS.json; source read-only, qid commit only, no main merge."
+    "qid": 6,
+    "action": "Read q06 original and lock RPM L3; design A1~C3 on same branch, one qid commit; leave q01~q05 author drafts untouched; no main deployment.",
+    "handoffPrompt": "25 순천고 2학기 기말 고1 QID9; work/alive-25-suncheon-h1-2final-qid9; q01~q05 45 author drafts, SVG 12; begin q06; q05 2 Generated-only template keys pending registration."
   },
-  "lastCompletedQid": 3,
-  "lastUpdatedSourceQid": 4
+  "lastCompletedQid": 5,
+  "lastUpdatedSourceQid": 5
 }
