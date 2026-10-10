@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "GD25_Q18_EXTENSION_L4_V2",
+  "status": "GENERATED_ACTIVE",
+  "sourceQid": 18,
+  "parentPrimaryL3": "H1-RPM-219",
+  "parentL3Label": "원과 직선",
+  "namespace": "GENERATED_ACTIVE",
+  "rpmLockedModified": false,
+  "existingProblemType": "PT_CIRCLE_LINE_RELATION",
+  "existingTemplate": "TM_CIRCLE_INTERSECTION_COUNT",
+  "extensions": [
+    {
+      "key": "EXT-GD25-Q18-TANGENCY-ENDPOINT-EXCLUSION",
+      "labelKo": "접선이 원의 지름 끝점에 닿으면 각을 만들 점이 없는 것을 판별",
+      "definition": "접선이 원의 지름 끝점에 닿으면 각을 만들 점이 없는 것을 판별",
+      "parentPrimaryL3": "H1-RPM-219",
+      "sourceUid": "ALITE-GEUMDANG25-2FINAL-Q18-A3",
+      "namespace": "GENERATED_ACTIVE",
+      "evidence": "Q18 final mathematical geometry spec and source qid18 candidate A3"
+    },
+    {
+      "key": "EXT-GD25-Q18-TRANSLATED-CIRCLE",
+      "labelKo": "원 중심 평행이동 후 중심-직선 거리와 정수 범위를 계산",
+      "definition": "원 중심 평행이동 후 중심-직선 거리와 정수 범위를 계산",
+      "parentPrimaryL3": "H1-RPM-219",
+      "sourceUid": "ALITE-GEUMDANG25-2FINAL-Q18-B1",
+      "namespace": "GENERATED_ACTIVE",
+      "evidence": "Q18 final mathematical geometry spec and source qid18 candidate B1"
+    },
+    {
+      "key": "EXT-GD25-Q18-NONINTEGER-TANGENCY",
+      "labelKo": "원과 직선 사이의 접촉 임계가 무리수임을 활용",
+      "definition": "원과 직선 사이의 접촉 임계가 무리수임을 활용",
+      "parentPrimaryL3": "H1-RPM-219",
+      "sourceUid": "ALITE-GEUMDANG25-2FINAL-Q18-B2",
+      "namespace": "GENERATED_ACTIVE",
+      "evidence": "Q18 final mathematical geometry spec and source qid18 candidate B2"
+    },
+    {
+      "key": "EXT-GD25-Q18-MULTIPLE-PARAMETER",
+      "labelKo": "직선의 k가 3의 배수라는 조건으로 교점 허용 구간을 다시 거름",
+      "definition": "직선의 k가 3의 배수라는 조건으로 교점 허용 구간을 다시 거름",
+      "parentPrimaryL3": "H1-RPM-219",
+      "sourceUid": "ALITE-GEUMDANG25-2FINAL-Q18-B3",
+      "namespace": "GENERATED_ACTIVE",
+      "evidence": "Q18 final mathematical geometry spec and source qid18 candidate B3"
+    },
+    {
+      "key": "EXT-GD25-Q18-DIAMETER-LINE-EXCLUSION",
+      "labelKo": "직선이 지름 AB 자체와 일치해 교점이 오직 A와 B인 경우를 제외",
+      "definition": "직선이 지름 AB 자체와 일치해 교점이 오직 A와 B인 경우를 제외",
+      "parentPrimaryL3": "H1-RPM-219",
+      "sourceUid": "ALITE-GEUMDANG25-2FINAL-Q18-C1",
+      "namespace": "GENERATED_ACTIVE",
+      "evidence": "Q18 final mathematical geometry spec and source qid18 candidate C1"
+    },
+    {
+      "key": "EXT-GD25-Q18-POSITIVE-INT-AND-ENDPOINT",
+      "labelKo": "k의 자연수 조건과 지름 끝점 접촉을 함께 거름",
+      "definition": "k의 자연수 조건과 지름 끝점 접촉을 함께 거름",
+      "parentPrimaryL3": "H1-RPM-219",
+      "sourceUid": "ALITE-GEUMDANG25-2FINAL-Q18-C2",
+      "namespace": "GENERATED_ACTIVE",
+      "evidence": "Q18 final mathematical geometry spec and source qid18 candidate C2"
+    },
+    {
+      "key": "EXT-GD25-Q18-BOTH-INTERSECTIONS-EXCLUDE-ENDPOINTS",
+      "labelKo": "서로 다른 두 직각점이 A,B 모두와 달라야 한다는 조건으로 끝점 포함 직선 두 개를 제외",
+      "definition": "서로 다른 두 직각점이 A,B 모두와 달라야 한다는 조건으로 끝점 포함 직선 두 개를 제외",
+      "parentPrimaryL3": "H1-RPM-219",
+      "sourceUid": "ALITE-GEUMDANG25-2FINAL-Q18-C3",
+      "namespace": "GENERATED_ACTIVE",
+      "evidence": "Q18 final mathematical geometry spec and source qid18 candidate C3"
+    }
+  ]
+}
