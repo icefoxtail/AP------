@@ -3,16 +3,16 @@
   "sourceQid": 5,
   "sourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
   "candidateCount": 9,
-  "keep": 8,
-  "revised": 1,
+  "keep": 4,
+  "revised": 5,
   "hold": 0,
   "lockedPrimaryL3": "H1-RPM-247",
   "answerDistribution": {
     "①": 2,
     "②": 1,
-    "③": 2,
-    "④": 2,
-    "⑤": 2
+    "③": 1,
+    "④": 4,
+    "⑤": 1
   },
   "formalIndependentGptReviewPerformed": false,
   "sourcePdfCompared": false,
@@ -258,22 +258,22 @@
         {
           "choice": "①",
           "choiceText": "충분조건이지만 필요조건은 아니다.",
-          "actualErrorPath": "① $x=1$ 반례를 놓쳐 충분조건으로 오인"
+          "actualErrorPath": "x=1에서 p 참, q 거짓인 반례를 누락해 충분조건 오판"
         },
         {
           "choice": "②",
           "choiceText": "필요조건이지만 충분조건은 아니다.",
-          "actualErrorPath": "② $x=9$ 반례를 놓쳐 필요조건으로 오인"
+          "actualErrorPath": "x=9에서 q 참, p 거짓인 반례를 누락해 필요조건 오판"
         },
         {
-          "choice": "④",
-          "choiceText": "필요조건도 충분조건도 아니다.",
-          "actualErrorPath": "④ 두 반례를 모두 무시해 동치라고 판단"
+          "choice": "③",
+          "choiceText": "필요충분조건이다.",
+          "actualErrorPath": "공통 원소 3,6,12 존재만으로 진리집합이 같다고 오판"
         },
         {
           "choice": "⑤",
           "choiceText": "두 조건을 동시에 만족시키는 값이 없다.",
-          "actualErrorPath": "⑤ 공통 원소 $3,6,12$를 놓쳐 공집합 교집합으로 판단"
+          "actualErrorPath": "공통 원소 3,6,12를 무시해 두 조건이 배반된다고 오판"
         }
       ],
       "mathCheck": {
@@ -291,10 +291,32 @@
           9,
           12
         ],
-        "relation": "PARTIAL_INTERSECTION_NEITHER"
+        "relation": "PARTIAL_INTERSECTION_NEITHER",
+        "actualAnswer": "④"
       },
-      "decision": "KEEP",
-      "remainingRisk": "학생용 실렌더·독립 리뷰 미실시, main 병합 금지"
+      "decision": "REVISED",
+      "remainingRisk": "학생용 Chrome 해설 렌더 및 Git 운영출시 별도 기술 확인 필요",
+      "affectedFields": [
+        "answer",
+        "solution",
+        "meta",
+        "templateKey"
+      ],
+      "changedMathRecheck": "p→q 거짓 반례 x=1, q→p 거짓 반례 x=9, 정답 보기 ④ 유일",
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "fields": [
+          "answer",
+          "solution",
+          "meta",
+          "templateKey"
+        ],
+        "oldAnswer": "③",
+        "newAnswer": "④",
+        "creatorSelfReviewNotAuthority": true,
+        "chrome": "NOT_TESTED"
+      },
+      "reverseStemFinding": "진리집합 두 방향 미포함은 맞게 구했으나 제작 원장에 ④를 오답으로 기록한 선지 매칭 오류 수정"
     },
     {
       "uid": "ALITE-GEUMDANG25-2FINAL-Q05-B3",
@@ -331,8 +353,24 @@
         "q": "x>=3",
         "relation": "DISJOINT"
       },
-      "decision": "KEEP",
-      "remainingRisk": "학생용 실렌더·독립 리뷰 미실시, main 병합 금지"
+      "decision": "REVISED",
+      "remainingRisk": "학생용 Chrome 해설 렌더 및 Git 운영출시 별도 기술 확인 필요",
+      "affectedFields": [
+        "meta",
+        "templateKey"
+      ],
+      "changedMathRecheck": "변경된 templateKey 와 해당 확장 registry parent/UID 정합성 확인; 수학 불변",
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "fields": [
+          "meta",
+          "templateKey"
+        ],
+        "oldAnswer": "①",
+        "newAnswer": "①",
+        "creatorSelfReviewNotAuthority": true,
+        "chrome": "NOT_TESTED"
+      }
     },
     {
       "uid": "ALITE-GEUMDANG25-2FINAL-Q05-C1",
@@ -373,8 +411,24 @@
         ],
         "relation": "A_LESS_THAN_2"
       },
-      "decision": "KEEP",
-      "remainingRisk": "학생용 실렌더·독립 리뷰 미실시, main 병합 금지"
+      "decision": "REVISED",
+      "remainingRisk": "학생용 Chrome 해설 렌더 및 Git 운영출시 별도 기술 확인 필요",
+      "affectedFields": [
+        "meta",
+        "templateKey"
+      ],
+      "changedMathRecheck": "변경된 templateKey 와 해당 확장 registry parent/UID 정합성 확인; 수학 불변",
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "fields": [
+          "meta",
+          "templateKey"
+        ],
+        "oldAnswer": "④",
+        "newAnswer": "④",
+        "creatorSelfReviewNotAuthority": true,
+        "chrome": "NOT_TESTED"
+      }
     },
     {
       "uid": "ALITE-GEUMDANG25-2FINAL-Q05-C2",
@@ -388,22 +442,22 @@
         {
           "choice": "①",
           "choiceText": "$1$",
-          "actualErrorPath": "① 근의 합을 1로 오산"
+          "actualErrorPath": "근의 합 대신 차 3−2=1을 계수로 오인"
         },
         {
           "choice": "②",
           "choiceText": "$2$",
-          "actualErrorPath": "② $x=2$만 보고 계수를 2라고 그대로 선택"
+          "actualErrorPath": "근 x=2를 계수 a의 값으로 오인"
         },
         {
           "choice": "③",
           "choiceText": "$3$",
-          "actualErrorPath": "③ $x=3$만 보고 계수를 3이라고 그대로 선택"
+          "actualErrorPath": "근 x=3을 계수 a의 값으로 오인"
         },
         {
-          "choice": "④",
-          "choiceText": "$4$",
-          "actualErrorPath": "④ 근의 합 $2+3$에서 1을 임의로 빼 4로 처리"
+          "choice": "⑤",
+          "choiceText": "$6$",
+          "actualErrorPath": "근의 합 5 대신 곱 2×3=6을 a로 오인"
         }
       ],
       "mathCheck": {
@@ -414,8 +468,30 @@
         ],
         "relation": "TRUTH_SET_EQUAL"
       },
-      "decision": "KEEP",
-      "remainingRisk": "학생용 실렌더·독립 리뷰 미실시, main 병합 금지"
+      "decision": "REVISED",
+      "remainingRisk": "학생용 Chrome 해설 렌더 및 Git 운영출시 별도 기술 확인 필요",
+      "affectedFields": [
+        "choices",
+        "answer",
+        "solution",
+        "meta",
+        "templateKey"
+      ],
+      "changedMathRecheck": "근 2,3에서 a=2+3=5, ⑤의 6은 곱 2×3 오개념; 정답 ④ 유일",
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "fields": [
+          "choices",
+          "answer",
+          "solution",
+          "meta",
+          "templateKey"
+        ],
+        "oldAnswer": "⑤",
+        "newAnswer": "④",
+        "creatorSelfReviewNotAuthority": true,
+        "chrome": "NOT_TESTED"
+      }
     },
     {
       "uid": "ALITE-GEUMDANG25-2FINAL-Q05-C3",
@@ -474,11 +550,37 @@
         "relation": "Q_SUBSET_P_PROPER"
       },
       "decision": "REVISED",
-      "remainingRisk": "학생용 실렌더·독립 리뷰 미실시, main 병합 금지",
+      "remainingRisk": "학생용 Chrome 해설 렌더 및 Git 운영출시 별도 기술 확인 필요",
       "affectedFields": [
-        "distractorPaths[⑤]"
+        "distractorPaths[⑤]",
+        "meta",
+        "templateKey",
+        "SVG background fill"
       ],
-      "changedMathRecheck": "원래 정수 t=-1,0,1 세 값/정답 ③/문항·해설·SVG 유지, 오답 ⑤의 범위 오류만 재현하도록 정정"
+      "changedMathRecheck": "변경된 templateKey 와 해당 확장 registry parent/UID 정합성 확인; 수학 불변",
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "fields": [
+          "meta",
+          "templateKey"
+        ],
+        "oldAnswer": "③",
+        "newAnswer": "③",
+        "creatorSelfReviewNotAuthority": true,
+        "chrome": "NOT_TESTED"
+      }
     }
-  ]
+  ],
+  "postIndependentReview": {
+    "source": "GPT round2 2026-10-10",
+    "correctedUids": [
+      "ALITE-GEUMDANG25-2FINAL-Q05-B2",
+      "ALITE-GEUMDANG25-2FINAL-Q05-B3",
+      "ALITE-GEUMDANG25-2FINAL-Q05-C1",
+      "ALITE-GEUMDANG25-2FINAL-Q05-C2",
+      "ALITE-GEUMDANG25-2FINAL-Q05-C3"
+    ],
+    "svgWhiteBgFixed": true,
+    "chrome": "NOT_TESTED"
+  }
 }

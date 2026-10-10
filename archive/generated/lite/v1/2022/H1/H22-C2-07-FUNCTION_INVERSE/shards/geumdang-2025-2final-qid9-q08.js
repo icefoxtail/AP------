@@ -240,12 +240,12 @@ window.questionBank = [
     "choices": [
       "$1$",
       "$2$",
-      "$4$",
       "$3$",
+      "$4$",
       "$5$"
     ],
-    "answer": "④",
-    "solution": "$f^{-1}(8)=2$는 $f(2)=8$이라는 뜻이다.\n따라서 $2a+2=8$이고 $2a=6$이므로 $a=3$이다. 기울기가 $0$이 아니어서 역함수도 실제로 존재한다.\n따라서 정답은 ④이다.",
+    "answer": "③",
+    "solution": "$f^{-1}(8)=2$는 $f(2)=8$이라는 뜻이다.\n따라서 $2a+2=8$이고 $2a=6$이므로 $a=3$이다. 기울기가 $0$이 아니어서 역함수도 실제로 존재한다.\n따라서 정답은 ③이다.",
     "sourceKind": "generated",
     "sourceType": "generated",
     "sourceExamPath": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
@@ -263,7 +263,7 @@ window.questionBank = [
       "rpmL4Namespace": "GENERATED_EXT_L4",
       "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
       "problemTypeKey": "PT_INVERSE_VALUE",
-      "templateKey": null,
+      "templateKey": "EXT-GD25-Q08-TPL-INVERSE-OUTPUT-PARAM",
       "crossConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "INVERSE_B1",
@@ -276,7 +276,7 @@ window.questionBank = [
       "generatedExtensionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_INVERSE/extension-l4/geumdang-2025-2final-q08-registry.json"
     },
     "problemTypeKey": "PT_INVERSE_VALUE",
-    "templateKey": null,
+    "templateKey": "EXT-GD25-Q08-TPL-INVERSE-OUTPUT-PARAM",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "INVERSE_B1",
@@ -307,16 +307,16 @@ window.questionBank = [
       "역함수"
     ],
     "wide": false,
-    "content": "실수 $b$에 대하여 일차함수 $f(x)=2x+b$가 $f^{-1}(7)=4$를 만족한다. $b$의 값은?",
+    "content": "실수 $b$에 대하여 일차함수 $f(x)=2x+b$가 $f^{-1}(7)+f^{-1}(3)=6$을 만족한다. $b$의 값은?",
     "choices": [
+      "$-5$",
       "$-3$",
-      "$-1$",
       "$-2$",
-      "$0$",
+      "$-1$",
       "$1$"
     ],
-    "answer": "②",
-    "solution": "역함수 조건을 원래 함수로 바꾸면 $f(4)=7$이다.\n즉 $2\\cdot4+b=7$이므로 $8+b=7$에서 $b=-1$이다. 기울기가 $2$이므로 역함수가 존재한다.\n따라서 정답은 ②이다.",
+    "answer": "④",
+    "solution": "$f(x)=2x+b$는 기울기가 $2$이므로 역함수가 존재한다. $f^{-1}(y)$는 $2x+b=y$를 풀어 $f^{-1}(y)=\\dfrac{y-b}{2}$이다.\\n따라서 $\\dfrac{7-b}{2}+\\dfrac{3-b}{2}=6$이다. 양변에 $2$를 곱하면 $10-2b=12$이므로 $-2b=2$, $b=-1$이다. 따라서 정답은 ④이다.",
     "sourceKind": "generated",
     "sourceType": "generated",
     "sourceExamPath": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
@@ -330,14 +330,14 @@ window.questionBank = [
       "rpmL1": "함수",
       "rpmL2": "함수",
       "rpmL3": "역함수",
-      "rpmL4": "EXT-GD25-Q08-INVERSE-PARAMETER",
+      "rpmL4": "EXT-GD25-Q08-INVERSE-TWO-VALUE-SUM",
       "rpmL4Namespace": "GENERATED_EXT_L4",
       "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
       "problemTypeKey": "PT_INVERSE_VALUE",
-      "templateKey": null,
+      "templateKey": "EXT-GD25-Q08-TPL-INVERSE-TWO-VALUE-SUM",
       "crossConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "INVERSE_B2",
+      "integrationPattern": "INVERSE_TWO_VALUE_SUM",
       "difficultyBucket": 3,
       "level": "중",
       "standardCourse": "공통수학2",
@@ -347,10 +347,10 @@ window.questionBank = [
       "generatedExtensionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_INVERSE/extension-l4/geumdang-2025-2final-q08-registry.json"
     },
     "problemTypeKey": "PT_INVERSE_VALUE",
-    "templateKey": null,
+    "templateKey": "EXT-GD25-Q08-TPL-INVERSE-TWO-VALUE-SUM",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "INVERSE_B2",
+    "integrationPattern": "INVERSE_TWO_VALUE_SUM",
     "reviewStatus": "CREATE_DRAFT_SELF_CHECKED",
     "studentSupplyEligible": false,
     "consumerSelectable": false
@@ -405,7 +405,7 @@ window.questionBank = [
       "rpmL4Namespace": "GENERATED_EXT_L4",
       "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
       "problemTypeKey": "PT_INVERSE_VALUE",
-      "templateKey": null,
+      "templateKey": "EXT-GD25-Q08-TPL-INVERSE-COMPOSITION-IDENTITY",
       "crossConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "INVERSE_B3",
@@ -418,7 +418,7 @@ window.questionBank = [
       "generatedExtensionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_INVERSE/extension-l4/geumdang-2025-2final-q08-registry.json"
     },
     "problemTypeKey": "PT_INVERSE_VALUE",
-    "templateKey": null,
+    "templateKey": "EXT-GD25-Q08-TPL-INVERSE-COMPOSITION-IDENTITY",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "INVERSE_B3",
@@ -429,8 +429,8 @@ window.questionBank = [
   {
     "id": 7,
     "uid": "ALITE-GEUMDANG25-2FINAL-Q08-C1",
-    "level": "상",
-    "difficultyBucket": 4,
+    "level": "중",
+    "difficultyBucket": 3,
     "category": "역함수",
     "originalCategory": "함수",
     "standardCourse": "공통수학2",
@@ -476,12 +476,12 @@ window.questionBank = [
       "rpmL4Namespace": "GENERATED_EXT_L4",
       "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
       "problemTypeKey": "PT_INVERSE_VALUE",
-      "templateKey": null,
+      "templateKey": "EXT-GD25-Q08-TPL-INVERSE-TWO-CONSTRAINTS",
       "crossConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "INVERSE_C1",
-      "difficultyBucket": 4,
-      "level": "상",
+      "difficultyBucket": 3,
+      "level": "중",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
@@ -489,7 +489,7 @@ window.questionBank = [
       "generatedExtensionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_INVERSE/extension-l4/geumdang-2025-2final-q08-registry.json"
     },
     "problemTypeKey": "PT_INVERSE_VALUE",
-    "templateKey": null,
+    "templateKey": "EXT-GD25-Q08-TPL-INVERSE-TWO-CONSTRAINTS",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "INVERSE_C1",
@@ -520,7 +520,7 @@ window.questionBank = [
       "역함수"
     ],
     "wide": false,
-    "content": "정의역이 $x\\ne3$인 함수 $f(x)=\\dfrac{2x+1}{x-3}$에 대하여 $f^{-1}(0)+f^{-1}(5)$의 값은?",
+    "content": "정의역이 $\\mathbb{R}\\setminus\\{3\\}$이고 공역이 $\\mathbb{R}\\setminus\\{2\\}$인 함수 $f(x)=\\dfrac{2x+1}{x-3}$에 대하여 $f^{-1}(0)+f^{-1}(5)$의 값은?",
     "choices": [
       "$\\dfrac{23}{6}$",
       "$\\dfrac{25}{6}$",
@@ -529,7 +529,7 @@ window.questionBank = [
       "$\\dfrac{31}{6}$"
     ],
     "answer": "④",
-    "solution": "역함수의 값을 구하려면 원래 함수가 주어진 출력값을 가지는 입력을 찾는다.\n$f(x)=0$일 때 $2x+1=0$이므로 $x=-\\dfrac12$이다. $f(x)=5$일 때 $2x+1=5(x-3)$이므로 $3x=16$에서 $x=\\dfrac{16}{3}$이다.\n두 입력은 정의역에서 제외되는 $3$이 아니므로 모두 허용된다.\n따라서 합은 $-\\dfrac12+\\dfrac{16}{3}=\\dfrac{-3+32}{6}=\\dfrac{29}{6}$이므로 정답은 ④이다.",
+    "solution": "원래 함수는 $f(x)=2+\\dfrac{7}{x-3}$이고 $x\\ne3$이므로 $f(x)\\ne2$이다. 공역이 치역과 같고 일대일 대응이므로 역함수가 존재한다.\\n역함수의 값을 구하려면 원래 함수가 주어진 출력값을 가지는 입력을 찾는다.\n$f(x)=0$일 때 $2x+1=0$이므로 $x=-\\dfrac12$이다. $f(x)=5$일 때 $2x+1=5(x-3)$이므로 $3x=16$에서 $x=\\dfrac{16}{3}$이다.\n두 입력은 정의역에서 제외되는 $3$이 아니므로 모두 허용된다.\n따라서 합은 $-\\dfrac12+\\dfrac{16}{3}=\\dfrac{-3+32}{6}=\\dfrac{29}{6}$이므로 정답은 ④이다.",
     "sourceKind": "generated",
     "sourceType": "generated",
     "sourceExamPath": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
@@ -547,11 +547,13 @@ window.questionBank = [
       "rpmL4Namespace": "GENERATED_EXT_L4",
       "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
       "problemTypeKey": "PT_INVERSE_VALUE",
-      "templateKey": null,
+      "templateKey": "EXT-GD25-Q08-TPL-RATIONAL-INVERSE-SUM",
       "crossConceptKeys": [
         "EXT-GD25-Q08-CC-RATIONAL"
       ],
-      "conditionKeys": [],
+      "conditionKeys": [
+        "EXT-GD25-Q08-COND-INVERSE-DOMAIN-EXCLUSION"
+      ],
       "integrationPattern": "INVERSE_C2",
       "difficultyBucket": 4,
       "level": "상",
@@ -562,11 +564,13 @@ window.questionBank = [
       "generatedExtensionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_INVERSE/extension-l4/geumdang-2025-2final-q08-registry.json"
     },
     "problemTypeKey": "PT_INVERSE_VALUE",
-    "templateKey": null,
+    "templateKey": "EXT-GD25-Q08-TPL-RATIONAL-INVERSE-SUM",
     "crossConceptKeys": [
       "EXT-GD25-Q08-CC-RATIONAL"
     ],
-    "conditionKeys": [],
+    "conditionKeys": [
+      "EXT-GD25-Q08-COND-INVERSE-DOMAIN-EXCLUSION"
+    ],
     "integrationPattern": "INVERSE_C2",
     "reviewStatus": "CREATE_DRAFT_SELF_CHECKED",
     "studentSupplyEligible": false,
@@ -626,8 +630,8 @@ window.questionBank = [
       "rpmL4": "EXT-GD25-Q08-INVERSE-COMPOSITION-IDENTITY",
       "rpmL4Namespace": "GENERATED_EXT_L4",
       "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
-      "problemTypeKey": "PT_INVERSE_VALUE",
-      "templateKey": null,
+      "problemTypeKey": "EXT-GD25-Q08-PT-INVERSE-COMPOSITION-COEFFICIENT",
+      "templateKey": "EXT-GD25-Q08-TPL-INVERSE-COMPOSITION-COEFFICIENT",
       "crossConceptKeys": [
         "EXT-GD25-Q08-CC-COMPOSITION"
       ],
@@ -643,8 +647,8 @@ window.questionBank = [
       "sourceKind": "generated",
       "generatedExtensionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_INVERSE/extension-l4/geumdang-2025-2final-q08-registry.json"
     },
-    "problemTypeKey": "PT_INVERSE_VALUE",
-    "templateKey": null,
+    "problemTypeKey": "EXT-GD25-Q08-PT-INVERSE-COMPOSITION-COEFFICIENT",
+    "templateKey": "EXT-GD25-Q08-TPL-INVERSE-COMPOSITION-COEFFICIENT",
     "crossConceptKeys": [
       "EXT-GD25-Q08-CC-COMPOSITION"
     ],

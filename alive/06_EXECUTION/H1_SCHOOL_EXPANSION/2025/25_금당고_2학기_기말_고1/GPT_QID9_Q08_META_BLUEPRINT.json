@@ -28,7 +28,12 @@
       ],
       "answer": "③",
       "problemVisual": "EXEMPT",
-      "solutionVisual": "EXEMPT"
+      "solutionVisual": "EXEMPT",
+      "templateKey": "TPL_INVERSE_FUNCTION_FORM",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "INVERSE_A1"
     },
     {
       "slot": "A2",
@@ -47,7 +52,12 @@
       ],
       "answer": "①",
       "problemVisual": "EXEMPT",
-      "solutionVisual": "EXEMPT"
+      "solutionVisual": "EXEMPT",
+      "templateKey": "TPL_INVERSE_FUNCTION_FORM",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "INVERSE_A2"
     },
     {
       "slot": "A3",
@@ -66,7 +76,12 @@
       ],
       "answer": "⑤",
       "problemVisual": "EXEMPT",
-      "solutionVisual": "EXEMPT"
+      "solutionVisual": "EXEMPT",
+      "templateKey": "TPL_INVERSE_FUNCTION_FORM",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "INVERSE_A3"
     },
     {
       "slot": "B1",
@@ -85,7 +100,12 @@
       ],
       "answer": "④",
       "problemVisual": "EXEMPT",
-      "solutionVisual": "EXEMPT"
+      "solutionVisual": "EXEMPT",
+      "templateKey": "EXT-GD25-Q08-TPL-INVERSE-OUTPUT-PARAM",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "INVERSE_B1"
     },
     {
       "slot": "B2",
@@ -104,7 +124,14 @@
       ],
       "answer": "②",
       "problemVisual": "EXEMPT",
-      "solutionVisual": "EXEMPT"
+      "solutionVisual": "EXEMPT",
+      "templateKey": "EXT-GD25-Q08-TPL-INVERSE-TWO-VALUE-SUM",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "rpmL4": "EXT-GD25-Q08-INVERSE-TWO-VALUE-SUM",
+      "integrationPattern": "INVERSE_TWO_VALUE_SUM",
+      "blueprint": "두 역함숫값의 합을 이용해 일차함수 매개변수 b를 결정하는 변형"
     },
     {
       "slot": "B3",
@@ -123,15 +150,20 @@
       ],
       "answer": "③",
       "problemVisual": "EXEMPT",
-      "solutionVisual": "EXEMPT"
+      "solutionVisual": "EXEMPT",
+      "templateKey": "EXT-GD25-Q08-TPL-INVERSE-COMPOSITION-IDENTITY",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "INVERSE_B3"
     },
     {
       "slot": "C1",
       "uid": "ALITE-GEUMDANG25-2FINAL-Q08-C1",
       "l4": "EXT-GD25-Q08-TWO-INVERSE-CONSTRAINTS",
       "primaryL3": "H1-RPM-255",
-      "difficultyBucket": 4,
-      "level": "상",
+      "difficultyBucket": 3,
+      "level": "중",
       "studentStem": "일차함수 $f(x)=ax+b$가 $f(1)=4$, $f^{-1}(10)=3$을 만족한다. 실수 $a,b$에 대하여 $a-b$의 값은?",
       "choices": [
         "$0$",
@@ -142,7 +174,12 @@
       ],
       "answer": "⑤",
       "problemVisual": "EXEMPT",
-      "solutionVisual": "EXEMPT"
+      "solutionVisual": "EXEMPT",
+      "templateKey": "EXT-GD25-Q08-TPL-INVERSE-TWO-CONSTRAINTS",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "INVERSE_C1"
     },
     {
       "slot": "C2",
@@ -161,7 +198,16 @@
       ],
       "answer": "④",
       "problemVisual": "EXEMPT",
-      "solutionVisual": "EXEMPT"
+      "solutionVisual": "EXEMPT",
+      "templateKey": "EXT-GD25-Q08-TPL-RATIONAL-INVERSE-SUM",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "conditionKeys": [
+        "EXT-GD25-Q08-COND-INVERSE-DOMAIN-EXCLUSION"
+      ],
+      "crossConceptKeys": [
+        "EXT-GD25-Q08-CC-RATIONAL"
+      ],
+      "integrationPattern": "INVERSE_C2"
     },
     {
       "slot": "C3",
@@ -180,8 +226,18 @@
       ],
       "answer": "②",
       "problemVisual": "EXEMPT",
-      "solutionVisual": "ADD_SVG_TABLE"
+      "solutionVisual": "ADD_SVG_TABLE",
+      "templateKey": "EXT-GD25-Q08-TPL-INVERSE-COMPOSITION-COEFFICIENT",
+      "problemTypeKey": "EXT-GD25-Q08-PT-INVERSE-COMPOSITION-COEFFICIENT",
+      "conditionKeys": [
+        "EXT-GD25-Q08-COND-IDENTITY"
+      ],
+      "crossConceptKeys": [
+        "EXT-GD25-Q08-CC-COMPOSITION"
+      ],
+      "integrationPattern": "INVERSE_C3"
     }
   ],
-  "status": "CREATOR_ONLY_BRANCH"
+  "status": "CREATOR_ONLY_BRANCH",
+  "reviewMetaProjection": "SOURCE_UID_EXACT_PARITY_20261010"
 }

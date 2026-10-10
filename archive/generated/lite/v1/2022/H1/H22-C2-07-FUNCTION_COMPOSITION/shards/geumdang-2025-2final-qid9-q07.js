@@ -263,7 +263,7 @@ window.questionBank = [
       "rpmL4Namespace": "GENERATED_EXT_L4",
       "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
       "problemTypeKey": "PT_COMPOSITION_EVALUATION",
-      "templateKey": null,
+      "templateKey": "EXT-GD25-Q07-TPL-COMPOSITION-ORDER-DIFFERENCE",
       "crossConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "COMPOSE_B1",
@@ -276,7 +276,7 @@ window.questionBank = [
       "generatedExtensionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_COMPOSITION/extension-l4/geumdang-2025-2final-q07-registry.json"
     },
     "problemTypeKey": "PT_COMPOSITION_EVALUATION",
-    "templateKey": null,
+    "templateKey": "EXT-GD25-Q07-TPL-COMPOSITION-ORDER-DIFFERENCE",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "COMPOSE_B1",
@@ -334,7 +334,7 @@ window.questionBank = [
       "rpmL4Namespace": "GENERATED_EXT_L4",
       "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
       "problemTypeKey": "PT_COMPOSITION_EVALUATION",
-      "templateKey": null,
+      "templateKey": "EXT-GD25-Q07-TPL-COMPOSITION-QUADRATIC-PARAM",
       "crossConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "COMPOSE_B2",
@@ -347,7 +347,7 @@ window.questionBank = [
       "generatedExtensionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_COMPOSITION/extension-l4/geumdang-2025-2final-q07-registry.json"
     },
     "problemTypeKey": "PT_COMPOSITION_EVALUATION",
-    "templateKey": null,
+    "templateKey": "EXT-GD25-Q07-TPL-COMPOSITION-QUADRATIC-PARAM",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "COMPOSE_B2",
@@ -405,7 +405,7 @@ window.questionBank = [
       "rpmL4Namespace": "GENERATED_EXT_L4",
       "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
       "problemTypeKey": "PT_COMPOSITION_EVALUATION",
-      "templateKey": null,
+      "templateKey": "EXT-GD25-Q07-TPL-TRIPLE-COMPOSITION",
       "crossConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "COMPOSE_B3",
@@ -418,7 +418,7 @@ window.questionBank = [
       "generatedExtensionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_COMPOSITION/extension-l4/geumdang-2025-2final-q07-registry.json"
     },
     "problemTypeKey": "PT_COMPOSITION_EVALUATION",
-    "templateKey": null,
+    "templateKey": "EXT-GD25-Q07-TPL-TRIPLE-COMPOSITION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "COMPOSE_B3",
@@ -429,8 +429,8 @@ window.questionBank = [
   {
     "id": 7,
     "uid": "ALITE-GEUMDANG25-2FINAL-Q07-C1",
-    "level": "상",
-    "difficultyBucket": 4,
+    "level": "중",
+    "difficultyBucket": 3,
     "category": "합성함수",
     "originalCategory": "함수",
     "standardCourse": "공통수학2",
@@ -476,12 +476,12 @@ window.questionBank = [
       "rpmL4Namespace": "GENERATED_EXT_L4",
       "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
       "problemTypeKey": "PT_COMPOSITION_EVALUATION",
-      "templateKey": null,
+      "templateKey": "EXT-GD25-Q07-TPL-COMPOSITION-COMMUTING-VALUE",
       "crossConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "COMPOSE_C1",
-      "difficultyBucket": 4,
-      "level": "상",
+      "difficultyBucket": 3,
+      "level": "중",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
@@ -489,7 +489,7 @@ window.questionBank = [
       "generatedExtensionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_COMPOSITION/extension-l4/geumdang-2025-2final-q07-registry.json"
     },
     "problemTypeKey": "PT_COMPOSITION_EVALUATION",
-    "templateKey": null,
+    "templateKey": "EXT-GD25-Q07-TPL-COMPOSITION-COMMUTING-VALUE",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "COMPOSE_C1",
@@ -551,7 +551,9 @@ window.questionBank = [
       "crossConceptKeys": [
         "EXT-GD25-Q07-CC-RADICAL-DOMAIN"
       ],
-      "conditionKeys": [],
+      "conditionKeys": [
+        "EXT-GD25-Q07-COND-RADICAL-COMPOSITION-DOMAIN"
+      ],
       "integrationPattern": "COMPOSE_C2",
       "difficultyBucket": 4,
       "level": "상",
@@ -566,7 +568,9 @@ window.questionBank = [
     "crossConceptKeys": [
       "EXT-GD25-Q07-CC-RADICAL-DOMAIN"
     ],
-    "conditionKeys": [],
+    "conditionKeys": [
+      "EXT-GD25-Q07-COND-RADICAL-COMPOSITION-DOMAIN"
+    ],
     "integrationPattern": "COMPOSE_C2",
     "reviewStatus": "CREATE_DRAFT_SELF_CHECKED",
     "studentSupplyEligible": false,
@@ -626,8 +630,8 @@ window.questionBank = [
       "rpmL4": "EXT-GD25-Q07-L4-COMMUTATION-IDENTITY",
       "rpmL4Namespace": "GENERATED_EXT_L4",
       "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
-      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
-      "templateKey": null,
+      "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+      "templateKey": "EXT-GD25-Q07-TPL-COMPOSITION-IDENTITY-COEFFICIENT",
       "crossConceptKeys": [
         "EXT-GD25-Q07-CC-COEFFICIENT-EQUALITY"
       ],
@@ -643,8 +647,8 @@ window.questionBank = [
       "sourceKind": "generated",
       "generatedExtensionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_COMPOSITION/extension-l4/geumdang-2025-2final-q07-registry.json"
     },
-    "problemTypeKey": "PT_COMPOSITION_EVALUATION",
-    "templateKey": null,
+    "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+    "templateKey": "EXT-GD25-Q07-TPL-COMPOSITION-IDENTITY-COEFFICIENT",
     "crossConceptKeys": [
       "EXT-GD25-Q07-CC-COEFFICIENT-EQUALITY"
     ],

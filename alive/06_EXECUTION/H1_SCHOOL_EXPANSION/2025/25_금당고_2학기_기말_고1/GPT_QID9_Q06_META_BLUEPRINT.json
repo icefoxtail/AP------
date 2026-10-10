@@ -28,7 +28,12 @@
       ],
       "answer": "④",
       "problemVisual": "NONE_COMPLETE_TEXT",
-      "solutionVisual": "EXEMPT_STRAIGHT_LOGIC"
+      "solutionVisual": "EXEMPT_STRAIGHT_LOGIC",
+      "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "BIJECTION_A1"
     },
     {
       "slot": "A2",
@@ -47,7 +52,12 @@
       ],
       "answer": "③",
       "problemVisual": "NONE_COMPLETE_TEXT",
-      "solutionVisual": "EXEMPT_STRAIGHT_LOGIC"
+      "solutionVisual": "EXEMPT_STRAIGHT_LOGIC",
+      "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "BIJECTION_A2"
     },
     {
       "slot": "A3",
@@ -66,7 +76,12 @@
       ],
       "answer": "⑤",
       "problemVisual": "NONE_COMPLETE_TEXT",
-      "solutionVisual": "EXEMPT_STRAIGHT_LOGIC"
+      "solutionVisual": "EXEMPT_STRAIGHT_LOGIC",
+      "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "BIJECTION_A3"
     },
     {
       "slot": "B1",
@@ -85,7 +100,12 @@
       ],
       "answer": "③",
       "problemVisual": "NONE_COMPLETE_TEXT",
-      "solutionVisual": "EXEMPT_STRAIGHT_LOGIC"
+      "solutionVisual": "EXEMPT_STRAIGHT_LOGIC",
+      "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "BIJECTION_B1"
     },
     {
       "slot": "B2",
@@ -104,7 +124,12 @@
       ],
       "answer": "①",
       "problemVisual": "NONE_COMPLETE_TEXT",
-      "solutionVisual": "EXEMPT_STRAIGHT_LOGIC"
+      "solutionVisual": "EXEMPT_STRAIGHT_LOGIC",
+      "templateKey": "EXT-GD25-Q06-TPL-BIJECTION-PARAMETER",
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "BIJECTION_B2"
     },
     {
       "slot": "B3",
@@ -123,15 +148,20 @@
       ],
       "answer": "②",
       "problemVisual": "NONE_COMPLETE_TEXT",
-      "solutionVisual": "SVG_TABLE_ADD"
+      "solutionVisual": "SVG_TABLE_ADD",
+      "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "BIJECTION_B3"
     },
     {
       "slot": "C1",
       "uid": "ALITE-GEUMDANG25-2FINAL-Q06-C1",
       "l4": "EXT-GD25-Q06-L4-PARAM-PERMUTATION",
       "primaryL3": "H1-RPM-257",
-      "level": "상",
-      "difficultyBucket": 4,
+      "level": "중",
+      "difficultyBucket": 3,
       "studentStem": "집합 $X=Y=\\{1,2,3,4\\}$에서 함수 $f:X\\to Y$가 $f(1)=1$, $f(2)=a$, $f(3)=5-a$, $f(4)=4$로 주어진다. $a\\in\\{1,2,3,4\\}$일 때 역함수가 존재하도록 하는 모든 $a$의 값의 합은?",
       "choices": [
         "$4$",
@@ -142,7 +172,12 @@
       ],
       "answer": "②",
       "problemVisual": "NONE_COMPLETE_TEXT",
-      "solutionVisual": "EXEMPT_STRAIGHT_LOGIC"
+      "solutionVisual": "EXEMPT_STRAIGHT_LOGIC",
+      "templateKey": "EXT-GD25-Q06-TPL-PARAMETRIC-BIJECTION-PERMUTATION",
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "BIJECTION_C1"
     },
     {
       "slot": "C2",
@@ -161,7 +196,12 @@
       ],
       "answer": "④",
       "problemVisual": "NONE_COMPLETE_TEXT",
-      "solutionVisual": "EXEMPT_STRAIGHT_LOGIC"
+      "solutionVisual": "EXEMPT_STRAIGHT_LOGIC",
+      "templateKey": "EXT-GD25-Q06-TPL-PARTIAL-MAPPING-BIJECTION-COUNT",
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "conditionKeys": [],
+      "crossConceptKeys": [],
+      "integrationPattern": "BIJECTION_C2"
     },
     {
       "slot": "C3",
@@ -180,8 +220,16 @@
       ],
       "answer": "①",
       "problemVisual": "NONE_COMPLETE_TEXT",
-      "solutionVisual": "SVG_TABLE_ADD"
+      "solutionVisual": "SVG_TABLE_ADD",
+      "templateKey": "EXT-GD25-Q06-TPL-RESTRICTED-DOMAIN-BIJECTION",
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "conditionKeys": [
+        "EXT-GD25-Q06-COND-RESTRICTED-DOMAIN-BIJECTION"
+      ],
+      "crossConceptKeys": [],
+      "integrationPattern": "BIJECTION_C3"
     }
   ],
-  "release": "BRANCH_ONLY"
+  "release": "BRANCH_ONLY",
+  "reviewMetaProjection": "SOURCE_UID_EXACT_PARITY_20261010"
 }

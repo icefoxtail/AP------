@@ -4,13 +4,13 @@
   "sourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
   "lockedPrimaryL3": "H1-RPM-255",
   "candidateCount": 9,
-  "keep": 9,
-  "revised": 0,
+  "keep": 3,
+  "revised": 6,
   "hold": 0,
   "answerDistribution": {
     "①": 1,
-    "②": 2,
-    "③": 2,
+    "②": 1,
+    "③": 3,
     "④": 2,
     "⑤": 2
   },
@@ -19,7 +19,11 @@
     "A2": 3,
     "A3": 6,
     "B1": 3,
-    "B2": -1,
+    "B2": {
+      "expression": "(7-b)/2+(3-b)/2=6",
+      "b": -1,
+      "choice": "④"
+    },
     "B3": 5,
     "C1": {
       "a": 3,
@@ -159,7 +163,7 @@
           "mistake": "$2a=6$을 2로 오산"
         },
         {
-          "choice": "③",
+          "choice": "④",
           "value": "$4$",
           "mistake": "$2a=6$에서 덧셈을 해 4"
         },
@@ -169,38 +173,84 @@
           "mistake": "역함수와 원래 함수의 입력을 바꾸어 잘못 계산하여 5"
         }
       ],
-      "decision": "KEEP",
-      "remainingRisk": "독립검수 및 실렌더 미수행"
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행·운영출시 상태 분리",
+      "affectedFields": [
+        "choices",
+        "answer",
+        "solution",
+        "meta",
+        "templateKey"
+      ],
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "changedFields": [
+          "choices",
+          "answer",
+          "solution",
+          "meta",
+          "templateKey"
+        ],
+        "beforeAnswer": "④",
+        "afterAnswer": "③",
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "템플릿 레지스트리+선지 정합 확인, 수학내용 정상"
     },
     {
       "slot": "B2",
       "uid": "ALITE-GEUMDANG25-2FINAL-Q08-B2",
-      "finalStem": "실수 $b$에 대하여 일차함수 $f(x)=2x+b$가 $f^{-1}(7)=4$를 만족한다. $b$의 값은?",
+      "finalStem": "실수 $b$에 대하여 일차함수 $f(x)=2x+b$가 $f^{-1}(7)+f^{-1}(3)=6$을 만족한다. $b$의 값은?",
       "reverseReadingFinding": "학생 발문만 다시 읽고 f와 역함수의 입력 출력 방향, 고유 정답 여부 및 수치 제약을 확인",
       "distractorPaths": [
         {
           "choice": "①",
+          "value": "$-5$",
+          "mistake": "두 번째 역함숫값을 놓치고 f⁻¹(7)=6으로 놓으면 (7−b)/2=6 ⇒ b=−5"
+        },
+        {
+          "choice": "②",
           "value": "$-3$",
-          "mistake": "$8+b=7$을 -3으로 오산"
+          "mistake": "두 역함숫값이 모두 3이라고 착각하여 f⁻¹(3)=3 ⇒ b=−3"
         },
         {
           "choice": "③",
           "value": "$-2$",
-          "mistake": "8을 9로 잘못 계산하여 -2"
-        },
-        {
-          "choice": "④",
-          "value": "$0$",
-          "mistake": "상수항을 0으로 무시"
+          "mistake": "역함수의 합을 f⁻¹(7+3)=6으로 잘못 결합하면 (10−b)/2=6 ⇒ b=−2"
         },
         {
           "choice": "⑤",
           "value": "$1$",
-          "mistake": "7−8의 음의 부호를 버림"
+          "mistake": "b=−1 도출 뒤 부호를 반대로 기재하면 b=1"
         }
       ],
-      "decision": "KEEP",
-      "remainingRisk": "독립검수 및 실렌더 미수행"
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행·운영출시 상태 분리",
+      "affectedFields": [
+        "content",
+        "choices",
+        "answer",
+        "solution",
+        "meta",
+        "templateKey",
+        "integrationPattern"
+      ],
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "changedFields": [
+          "content",
+          "choices",
+          "answer",
+          "solution",
+          "meta",
+          "templateKey",
+          "integrationPattern"
+        ],
+        "beforeAnswer": "②",
+        "afterAnswer": "④",
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "f⁻¹(7)=(7−b)/2, f⁻¹(3)=(3−b)/2, 합6 ⇒ b=−1, 선지④ 유일"
     },
     {
       "slot": "B3",
@@ -229,8 +279,23 @@
           "mistake": "두 번째 항 1을 3으로 잘못 보아 7"
         }
       ],
-      "decision": "KEEP",
-      "remainingRisk": "독립검수 및 실렌더 미수행"
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행·운영출시 상태 분리",
+      "affectedFields": [
+        "meta",
+        "templateKey"
+      ],
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "changedFields": [
+          "meta",
+          "templateKey"
+        ],
+        "beforeAnswer": "③",
+        "afterAnswer": "③",
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "템플릿 레지스트리+선지 정합 확인, 수학내용 정상"
     },
     {
       "slot": "C1",
@@ -259,13 +324,32 @@
           "mistake": "f(1)=4의 수치를 답으로 오인"
         }
       ],
-      "decision": "KEEP",
-      "remainingRisk": "독립검수 및 실렌더 미수행"
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행·운영출시 상태 분리",
+      "affectedFields": [
+        "level",
+        "difficultyBucket",
+        "meta",
+        "templateKey"
+      ],
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "changedFields": [
+          "level",
+          "difficultyBucket",
+          "meta",
+          "templateKey"
+        ],
+        "beforeAnswer": "⑤",
+        "afterAnswer": "⑤",
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "a=3,b=1,a−b=2로 계산량과 사고수준 중/bucket3 재판정"
     },
     {
       "slot": "C2",
       "uid": "ALITE-GEUMDANG25-2FINAL-Q08-C2",
-      "finalStem": "정의역이 $x\\ne3$인 함수 $f(x)=\\dfrac{2x+1}{x-3}$에 대하여 $f^{-1}(0)+f^{-1}(5)$의 값은?",
+      "finalStem": "정의역이 $\\mathbb{R}\\setminus\\{3\\}$이고 공역이 $\\mathbb{R}\\setminus\\{2\\}$인 함수 $f(x)=\\dfrac{2x+1}{x-3}$에 대하여 $f^{-1}(0)+f^{-1}(5)$의 값은?",
       "reverseReadingFinding": "학생 발문만 다시 읽고 f와 역함수의 입력 출력 방향, 고유 정답 여부 및 수치 제약을 확인",
       "distractorPaths": [
         {
@@ -289,8 +373,29 @@
           "mistake": "$f^{-1}(5)=17/3$으로 오산해 합 31/6"
         }
       ],
-      "decision": "KEEP",
-      "remainingRisk": "독립검수 및 실렌더 미수행"
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행·운영출시 상태 분리",
+      "affectedFields": [
+        "content",
+        "solution",
+        "meta",
+        "templateKey",
+        "conditionKeys"
+      ],
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "changedFields": [
+          "content",
+          "solution",
+          "meta",
+          "templateKey",
+          "conditionKeys"
+        ],
+        "beforeAnswer": "④",
+        "afterAnswer": "④",
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "분모제외 x≠3, 값 y≠2, 역함수 f⁻¹(0)=−1/2, f⁻¹(5)=16/3, 합 29/6"
     },
     {
       "slot": "C3",
@@ -319,8 +424,38 @@
           "mistake": "b=-9로 잘못 계산해 a-b=11"
         }
       ],
-      "decision": "KEEP",
-      "remainingRisk": "독립검수 및 실렌더 미수행"
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행·운영출시 상태 분리",
+      "affectedFields": [
+        "meta",
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT QID9 round2",
+        "changedFields": [
+          "meta",
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "beforeAnswer": "②",
+        "afterAnswer": "②",
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "함수합성 항등식 계수 결정형 Generated PT로 세분화, 답9 유지"
     }
-  ]
+  ],
+  "postIndependentReview": {
+    "source": "GPT round2 2026-10-10",
+    "changedSlots": [
+      "B1",
+      "B2",
+      "B3",
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "templatesRegistered": 6,
+    "chrome": "NOT_TESTED"
+  }
 }

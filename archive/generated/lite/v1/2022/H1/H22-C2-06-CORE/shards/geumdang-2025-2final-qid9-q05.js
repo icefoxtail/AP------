@@ -332,8 +332,8 @@ window.questionBank = [
       "필요조건도 충분조건도 아니다.",
       "두 조건을 동시에 만족시키는 값이 없다."
     ],
-    "answer": "③",
-    "solution": "$p$의 진리집합은 $P=\\{1,2,3,4,6,12\\}$이고 $q$의 진리집합은 $Q=\\{3,6,9,12\\}$이다.\n$x=1$이면 $p$는 참, $q$는 거짓이므로 $p\\to q$가 거짓이다. 따라서 $p$는 $q$의 충분조건이 아니다.\n$x=9$이면 $q$는 참, $p$는 거짓이므로 $q\\to p$도 거짓이다. 따라서 $p$는 $q$의 필요조건도 아니다.\n공통 원소 $3,6,12$는 존재하지만 어느 집합도 다른 집합에 포함되지 않는다. 따라서 정답은 ③이다.",
+    "answer": "④",
+    "solution": "$p$의 진리집합은 $P=\\{1,2,3,4,6,12\\}$이고 $q$의 진리집합은 $Q=\\{3,6,9,12\\}$이다.\n$x=1$이면 $p$는 참, $q$는 거짓이므로 $p\\to q$가 거짓이다. 따라서 $p$는 $q$의 충분조건이 아니다.\n$x=9$이면 $q$는 참, $p$는 거짓이므로 $q\\to p$도 거짓이다. 따라서 $p$는 $q$의 필요조건도 아니다.\n공통 원소 $3,6,12$는 존재하지만 어느 집합도 다른 집합에 포함되지 않는다. 따라서 정답은 ④이다.",
     "sourceKind": "generated",
     "sourceType": "generated",
     "sourceExamPath": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
@@ -351,7 +351,7 @@ window.questionBank = [
       "rpmL4Namespace": "GENERATED_EXT_L4",
       "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
       "problemTypeKey": "PT_NEC_SUFF_RELATION",
-      "templateKey": null,
+      "templateKey": "EXT-GD25-Q05-TPL-TRUTHSET-OVERLAP",
       "crossConceptKeys": [
         "EXT-GD25-Q05-CC-SET-OVERLAP"
       ],
@@ -367,7 +367,7 @@ window.questionBank = [
       "secondaryConceptKeys": []
     },
     "problemTypeKey": "PT_NEC_SUFF_RELATION",
-    "templateKey": null,
+    "templateKey": "EXT-GD25-Q05-TPL-TRUTHSET-OVERLAP",
     "crossConceptKeys": [
       "EXT-GD25-Q05-CC-SET-OVERLAP"
     ],
@@ -428,7 +428,7 @@ window.questionBank = [
       "rpmL4Namespace": "GENERATED_EXT_L4",
       "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
       "problemTypeKey": "PT_NEC_SUFF_RELATION",
-      "templateKey": null,
+      "templateKey": "EXT-GD25-Q05-TPL-TRUTHSET-DISJOINT",
       "crossConceptKeys": [
         "EXT-GD25-Q05-CC-SET-INTERSECTION"
       ],
@@ -444,7 +444,7 @@ window.questionBank = [
       "secondaryConceptKeys": []
     },
     "problemTypeKey": "PT_NEC_SUFF_RELATION",
-    "templateKey": null,
+    "templateKey": "EXT-GD25-Q05-TPL-TRUTHSET-DISJOINT",
     "crossConceptKeys": [
       "EXT-GD25-Q05-CC-SET-INTERSECTION"
     ],
@@ -505,7 +505,7 @@ window.questionBank = [
       "rpmL4Namespace": "RPM_EXISTING_DRAFT",
       "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
       "problemTypeKey": "PT_NEC_SUFF_RELATION",
-      "templateKey": null,
+      "templateKey": "EXT-GD25-Q05-TPL-PARAM-NECESSITY-BOUNDARY",
       "crossConceptKeys": [
         "EXT-GD25-Q05-CC-REAL-INEQUALITY"
       ],
@@ -523,7 +523,7 @@ window.questionBank = [
       "secondaryConceptKeys": []
     },
     "problemTypeKey": "PT_NEC_SUFF_RELATION",
-    "templateKey": null,
+    "templateKey": "EXT-GD25-Q05-TPL-PARAM-NECESSITY-BOUNDARY",
     "crossConceptKeys": [
       "EXT-GD25-Q05-CC-REAL-INEQUALITY"
     ],
@@ -564,11 +564,11 @@ window.questionBank = [
       "$1$",
       "$2$",
       "$3$",
-      "$4$",
-      "$5$"
+      "$5$",
+      "$6$"
     ],
-    "answer": "⑤",
-    "solution": "두 조건이 필요충분조건이면 진리집합이 같아야 한다. $q$의 진리집합은 $\\{2,3\\}$이므로 $x=2$와 $x=3$이 모두 $p$를 만족해야 한다.\n$x=2$를 $x^2-ax+6=0$에 대입하면 $4-2a+6=0$이므로 $a=5$이다.\n$x=3$을 대입하면 $9-3a+6=0$으로 역시 $a=5$이다.\n반대로 $a=5$이면 $x^2-5x+6=(x-2)(x-3)$이어서 해가 정확히 $2,3$이다. 두 조건의 진리집합이 같으므로 필요충분조건이 된다.\n따라서 정답은 ⑤이다.",
+    "answer": "④",
+    "solution": "두 조건이 필요충분조건이면 진리집합이 같아야 한다. $q$의 진리집합은 $\\{2,3\\}$이므로 $x=2$와 $x=3$이 모두 $p$를 만족해야 한다.\n$x=2$를 $x^2-ax+6=0$에 대입하면 $4-2a+6=0$이므로 $a=5$이다.\n$x=3$을 대입하면 $9-3a+6=0$으로 역시 $a=5$이다.\n반대로 $a=5$이면 $x^2-5x+6=(x-2)(x-3)$이어서 해가 정확히 $2,3$이다. 두 조건의 진리집합이 같으므로 필요충분조건이 된다.\n따라서 정답은 ④이다.",
     "sourceKind": "generated",
     "sourceType": "generated",
     "sourceExamPath": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
@@ -586,7 +586,7 @@ window.questionBank = [
       "rpmL4Namespace": "RPM_EXISTING_DRAFT",
       "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
       "problemTypeKey": "PT_NEC_SUFF_RELATION",
-      "templateKey": null,
+      "templateKey": "EXT-GD25-Q05-TPL-QUADRATIC-ROOTSET-EQUIVALENCE",
       "crossConceptKeys": [
         "EXT-GD25-Q05-CC-QUADRATIC-ROOTS"
       ],
@@ -604,7 +604,7 @@ window.questionBank = [
       "secondaryConceptKeys": []
     },
     "problemTypeKey": "PT_NEC_SUFF_RELATION",
-    "templateKey": null,
+    "templateKey": "EXT-GD25-Q05-TPL-QUADRATIC-ROOTSET-EQUIVALENCE",
     "crossConceptKeys": [
       "EXT-GD25-Q05-CC-QUADRATIC-ROOTS"
     ],
@@ -672,7 +672,7 @@ window.questionBank = [
       "rpmL4Namespace": "GENERATED_EXT_L4",
       "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
       "problemTypeKey": "PT_NEC_SUFF_RELATION",
-      "templateKey": null,
+      "templateKey": "EXT-GD25-Q05-TPL-SHIFTED-INTERVAL-INCLUSION",
       "crossConceptKeys": [
         "EXT-GD25-Q05-CC-ABSOLUTE-INEQUALITY"
       ],
@@ -691,7 +691,7 @@ window.questionBank = [
       "secondaryConceptKeys": []
     },
     "problemTypeKey": "PT_NEC_SUFF_RELATION",
-    "templateKey": null,
+    "templateKey": "EXT-GD25-Q05-TPL-SHIFTED-INTERVAL-INCLUSION",
     "crossConceptKeys": [
       "EXT-GD25-Q05-CC-ABSOLUTE-INEQUALITY"
     ],

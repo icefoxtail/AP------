@@ -4,8 +4,8 @@
   "sourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
   "lockedPrimaryL3": "H1-RPM-253",
   "candidateCount": 9,
-  "keep": 6,
-  "revised": 3,
+  "keep": 2,
+  "revised": 7,
   "hold": 0,
   "answerDistribution": {
     "①": 1,
@@ -153,8 +153,23 @@
           "errorPath": "$f(g(1))=-4$로 오산하여 18"
         }
       ],
-      "decision": "KEEP",
-      "remainingRisk": "독립검수/Chrome 시험지·해설지·답표 렌더 미완료"
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행; q07 답/해설의 수학값 원래 일치 유지",
+      "affectedFields": [
+        "meta",
+        "templateKey"
+      ],
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT round2",
+        "changedFields": [
+          "meta",
+          "templateKey"
+        ],
+        "oldAnswer": "④",
+        "newAnswer": "④",
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "해당 Generated templateKey와 parent/UID 등록 확인"
     },
     {
       "slot": "B2",
@@ -180,11 +195,23 @@
         }
       ],
       "decision": "REVISED",
-      "remainingRisk": "독립검수/Chrome 시험지·해설지·답표 렌더 미완료",
+      "remainingRisk": "실제 Chrome 미시행; q07 답/해설의 수학값 원래 일치 유지",
       "affectedFields": [
-        "distractorPaths"
+        "distractorPaths",
+        "meta",
+        "templateKey"
       ],
-      "changedMathRecheck": "발문·5보기·정답·해설 및 생성 JS 불변, 오답 실제 계산 경로만 정정"
+      "changedMathRecheck": "해당 Generated templateKey와 parent/UID 등록 확인",
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT round2",
+        "changedFields": [
+          "meta",
+          "templateKey"
+        ],
+        "oldAnswer": "①",
+        "newAnswer": "①",
+        "chrome": "NOT_TESTED"
+      }
     },
     {
       "slot": "B3",
@@ -210,11 +237,23 @@
         }
       ],
       "decision": "REVISED",
-      "remainingRisk": "독립검수/Chrome 시험지·해설지·답표 렌더 미완료",
+      "remainingRisk": "실제 Chrome 미시행; q07 답/해설의 수학값 원래 일치 유지",
       "affectedFields": [
-        "distractorPaths"
+        "distractorPaths",
+        "meta",
+        "templateKey"
       ],
-      "changedMathRecheck": "발문·5보기·정답·해설 및 생성 JS 불변, 오답 실제 계산 경로만 정정"
+      "changedMathRecheck": "해당 Generated templateKey와 parent/UID 등록 확인",
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT round2",
+        "changedFields": [
+          "meta",
+          "templateKey"
+        ],
+        "oldAnswer": "②",
+        "newAnswer": "②",
+        "chrome": "NOT_TESTED"
+      }
     },
     {
       "slot": "C1",
@@ -239,8 +278,27 @@
           "errorPath": "음의 부호를 누락하여 양의 절반으로 판단"
         }
       ],
-      "decision": "KEEP",
-      "remainingRisk": "독립검수/Chrome 시험지·해설지·답표 렌더 미완료"
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행; q07 답/해설의 수학값 원래 일치 유지",
+      "affectedFields": [
+        "level",
+        "difficultyBucket",
+        "meta",
+        "templateKey"
+      ],
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT round2",
+        "changedFields": [
+          "level",
+          "difficultyBucket",
+          "meta",
+          "templateKey"
+        ],
+        "oldAnswer": "④",
+        "newAnswer": "④",
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "합성식 차에서 t=-1/2 한 단계 일차방정식, 중/bucket3"
     },
     {
       "slot": "C2",
@@ -265,8 +323,23 @@
           "errorPath": "끝점 x=-2를 제외해 최소 정수를 -1로 선정"
         }
       ],
-      "decision": "KEEP",
-      "remainingRisk": "독립검수/Chrome 시험지·해설지·답표 렌더 미완료"
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행; q07 답/해설의 수학값 원래 일치 유지",
+      "affectedFields": [
+        "meta",
+        "conditionKeys"
+      ],
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT round2",
+        "changedFields": [
+          "meta",
+          "conditionKeys"
+        ],
+        "oldAnswer": "⑤",
+        "newAnswer": "⑤",
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "(f∘g) 전 실수, (g∘f) x≥-2; 근호 합성 정의역 조건 등록"
     },
     {
       "slot": "C3",
@@ -291,8 +364,38 @@
           "errorPath": "b=-5로 잘못 계산해 4-(-5)=9"
         }
       ],
-      "decision": "KEEP",
-      "remainingRisk": "독립검수/Chrome 시험지·해설지·답표 렌더 미완료"
+      "decision": "REVISED",
+      "remainingRisk": "실제 Chrome 미시행; q07 답/해설의 수학값 원래 일치 유지",
+      "affectedFields": [
+        "meta",
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "postIndependentReviewCorrection": {
+        "source": "2026-10-10 GPT round2",
+        "changedFields": [
+          "meta",
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "oldAnswer": "③",
+        "newAnswer": "③",
+        "chrome": "NOT_TESTED"
+      },
+      "changedMathRecheck": "항등식 계수비교형의 기존 ACTIVE PT_COMPOSITION_PROPERTIES로 정정, L3 합성함수 고정"
     }
-  ]
+  ],
+  "postIndependentReview": {
+    "source": "GPT round2 2026-10-10",
+    "revisedSlots": [
+      "B1",
+      "B2",
+      "B3",
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "registeredTemplates": 5,
+    "chrome": "NOT_TESTED"
+  }
 }
