@@ -1,0 +1,2773 @@
+{
+  "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
+  "school": "복성고",
+  "batchId": "MAIN_SOURCE_batch-BSG26-B04R2-q20",
+  "sourceKind": "generated",
+  "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_APPLICATION/shards/batch-BSG26-B04R2-q20.js",
+  "sourceShardGitSha": "33b448dc011dc425a4121afe1acdc4178f9f90f2",
+  "records": [
+    {
+      "generatedUid": "ALITE-BSG26-B04R2-Q20-S01",
+      "localOrdinal": 1,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQid": 20,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_APPLICATION/shards/batch-BSG26-B04R2-q20.js",
+      "sourceShardGitSha": "33b448dc011dc425a4121afe1acdc4178f9f90f2",
+      "l2": "H22-C-09-MATRIX_APPLICATION",
+      "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "rpmL3": "행렬의 성질",
+        "rpmL4": "조건을 만족하는 행렬",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION"
+      },
+      "question": {
+        "id": 1,
+        "uid": "ALITE-BSG26-B04R2-Q20-S01",
+        "level": "상",
+        "difficultyBucket": 4,
+        "category": "행렬의 성질",
+        "originalCategory": "행렬",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "standardUnit": "행렬과 그 연산",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+        "subUnit": "행렬의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "행렬"
+        ],
+        "wide": false,
+        "content": "$A=\\begin{pmatrix}2&0\\\\0&0\\end{pmatrix}$, $AB=CA$, $B+C=\\begin{pmatrix}0&-4\\\\2&5\\end{pmatrix}$인 이차정사각행렬 $B,C$에서 $C$의 $(1,1)$성분과 $(2,1)$성분은 같다. $B$의 모든 성분의 합이 $0$일 때, $C$의 모든 성분의 합은?",
+        "choices": [
+          "$0$",
+          "$1$",
+          "$2$",
+          "$3$",
+          "$6$"
+        ],
+        "answer": "④",
+        "solution": "$B=\\begin{pmatrix}b&c\\\\d&e\\end{pmatrix}$, $C=\\begin{pmatrix}f&g\\\\h&i\\end{pmatrix}$로 놓으면 $AB=CA$에서 $b=f$, $c=h=0$이다.\n$f=h$이므로 $b=f=h=0$이고, $B+C$를 대조하면 $d=2$, $g=-4$, $e+i=5$이다.\n$B$의 성분합이 $0$이므로 $2+e=0$, 즉 $e=-2$이고 $i=7$이다.\n따라서 $C$의 성분합은 $0-4+0+7=3$이다.\n따라서 정답은 ④이다.",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "sourceType": "generated",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-BSG26-B04R2-Q20-S01",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-09",
+          "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+          "rpmPrimaryRecordId": "H1-RPM-203",
+          "rpmL1": "행렬",
+          "rpmL2": "행렬",
+          "rpmL3": "행렬의 성질",
+          "rpmL4": "조건을 만족하는 행렬",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+          "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+          "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+          "difficultyBucket": 4,
+          "level": "상",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "USER_DIRECTED_OPERATING_APPROVED",
+          "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-09-MATRIX_APPLICATION",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EXACT_CROSSWALK"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-BSG26-B04R2-Q20-S01",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+        "rpmPrimaryRecordId": "H1-RPM-203",
+        "rpmL1": "행렬",
+        "rpmL2": "행렬",
+        "rpmL3": "행렬의 성질",
+        "rpmL4": "조건을 만족하는 행렬",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "approval": "USER_DIRECTED_OPERATING_APPROVED",
+        "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "UNKNOWN",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [
+          {
+            "field": "crossConceptKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "conditionKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "integrationPattern",
+            "status": "EVIDENCE_DEBT",
+            "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+          }
+        ],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-09-MATRIX_APPLICATION",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EXACT_CROSSWALK"
+      }
+    },
+    {
+      "generatedUid": "ALITE-BSG26-B04R2-Q20-S02",
+      "localOrdinal": 2,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQid": 20,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_APPLICATION/shards/batch-BSG26-B04R2-q20.js",
+      "sourceShardGitSha": "33b448dc011dc425a4121afe1acdc4178f9f90f2",
+      "l2": "H22-C-09-MATRIX_APPLICATION",
+      "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "rpmL3": "행렬의 성질",
+        "rpmL4": "조건을 만족하는 행렬",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION"
+      },
+      "question": {
+        "id": 2,
+        "uid": "ALITE-BSG26-B04R2-Q20-S02",
+        "level": "중",
+        "difficultyBucket": 3,
+        "category": "행렬의 성질",
+        "originalCategory": "행렬",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "standardUnit": "행렬과 그 연산",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+        "subUnit": "행렬의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "행렬"
+        ],
+        "wide": false,
+        "content": "$A=\\begin{pmatrix}3&0\\\\0&0\\end{pmatrix}$, $AB=CA$, $B+C=\\begin{pmatrix}0&1\\\\3&5\\end{pmatrix}$를 만족시키는 행렬 $B,C$에서 $C_{11}=C_{21}$이고 $C_{22}=4$이다. 행렬 $B$의 모든 성분의 합은?",
+        "choices": [
+          "$1$",
+          "$3$",
+          "$4$",
+          "$5$",
+          "$9$"
+        ],
+        "answer": "③",
+        "solution": "$AB=CA$의 대응 성분을 비교하면 $B_{11}=C_{11}$, $B_{12}=0$, $C_{21}=0$이다.\n$C_{11}=C_{21}$이므로 $B_{11}=C_{11}=0$이다.\n$B+C=\\begin{pmatrix}0&1\\\\3&5\\end{pmatrix}$에서 $B_{21}=3$이고 $B_{22}=5-C_{22}=1$이다.\n따라서 $B$의 성분합은 $0+0+3+1=4$이다.\n따라서 정답은 ③이다.",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "sourceType": "generated",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL",
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-BSG26-B04R2-Q20-S02",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-09",
+          "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+          "rpmPrimaryRecordId": "H1-RPM-203",
+          "rpmL1": "행렬",
+          "rpmL2": "행렬",
+          "rpmL3": "행렬의 성질",
+          "rpmL4": "조건을 만족하는 행렬",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+          "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+          "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "USER_DIRECTED_OPERATING_APPROVED",
+          "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-09-MATRIX_APPLICATION",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EXACT_CROSSWALK"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-BSG26-B04R2-Q20-S02",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+        "rpmPrimaryRecordId": "H1-RPM-203",
+        "rpmL1": "행렬",
+        "rpmL2": "행렬",
+        "rpmL3": "행렬의 성질",
+        "rpmL4": "조건을 만족하는 행렬",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "approval": "USER_DIRECTED_OPERATING_APPROVED",
+        "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "UNKNOWN",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [
+          {
+            "field": "crossConceptKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "conditionKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "integrationPattern",
+            "status": "EVIDENCE_DEBT",
+            "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+          }
+        ],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-09-MATRIX_APPLICATION",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EXACT_CROSSWALK"
+      }
+    },
+    {
+      "generatedUid": "ALITE-BSG26-B04R2-Q20-S03",
+      "localOrdinal": 3,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQid": 20,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_APPLICATION/shards/batch-BSG26-B04R2-q20.js",
+      "sourceShardGitSha": "33b448dc011dc425a4121afe1acdc4178f9f90f2",
+      "l2": "H22-C-09-MATRIX_APPLICATION",
+      "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "rpmL3": "행렬의 성질",
+        "rpmL4": "조건을 만족하는 행렬",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION"
+      },
+      "question": {
+        "id": 3,
+        "uid": "ALITE-BSG26-B04R2-Q20-S03",
+        "level": "중",
+        "difficultyBucket": 3,
+        "category": "행렬의 성질",
+        "originalCategory": "행렬",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "standardUnit": "행렬과 그 연산",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+        "subUnit": "행렬의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "행렬"
+        ],
+        "wide": false,
+        "content": "$A=\\begin{pmatrix}2&0\\\\0&1\\end{pmatrix}$인 이차정사각행렬에 대하여 $AB=BA$이다. $B$의 대각성분의 합이 $7$이고 $(1,1)$성분에서 $(2,2)$성분을 뺀 값이 $3$일 때, $B$의 $(1,1)$성분은?",
+        "choices": [
+          "$2$",
+          "$3$",
+          "$4$",
+          "$5$",
+          "$7$"
+        ],
+        "answer": "④",
+        "solution": "$B=\\begin{pmatrix}u&v\\\\w&z\\end{pmatrix}$로 두면 $AB=\\begin{pmatrix}2u&2v\\\\w&z\\end{pmatrix}$, $BA=\\begin{pmatrix}2u&v\\\\2w&z\\end{pmatrix}$이다.\n두 행렬이 같으므로 $2v=v$, $w=2w$이며 $v=w=0$이다.\n대각성분에 대해 $u+z=7$, $u-z=3$이다. 두 식을 더하면 $2u=10$이므로 $u=5$이다.\n따라서 정답은 ④이다.",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "sourceType": "generated",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-BSG26-B04R2-Q20-S03",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-09",
+          "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+          "rpmPrimaryRecordId": "H1-RPM-203",
+          "rpmL1": "행렬",
+          "rpmL2": "행렬",
+          "rpmL3": "행렬의 성질",
+          "rpmL4": "조건을 만족하는 행렬",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+          "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+          "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "USER_DIRECTED_OPERATING_APPROVED",
+          "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-09-MATRIX_APPLICATION",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EXACT_CROSSWALK"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-BSG26-B04R2-Q20-S03",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+        "rpmPrimaryRecordId": "H1-RPM-203",
+        "rpmL1": "행렬",
+        "rpmL2": "행렬",
+        "rpmL3": "행렬의 성질",
+        "rpmL4": "조건을 만족하는 행렬",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "approval": "USER_DIRECTED_OPERATING_APPROVED",
+        "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "UNKNOWN",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [
+          {
+            "field": "crossConceptKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "conditionKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "integrationPattern",
+            "status": "EVIDENCE_DEBT",
+            "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+          }
+        ],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-09-MATRIX_APPLICATION",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EXACT_CROSSWALK"
+      }
+    },
+    {
+      "generatedUid": "ALITE-BSG26-B04R2-Q20-S04",
+      "localOrdinal": 4,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQid": 20,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_APPLICATION/shards/batch-BSG26-B04R2-q20.js",
+      "sourceShardGitSha": "33b448dc011dc425a4121afe1acdc4178f9f90f2",
+      "l2": "H22-C-09-MATRIX_APPLICATION",
+      "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "rpmL3": "행렬의 성질",
+        "rpmL4": "조건을 만족하는 행렬",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION"
+      },
+      "question": {
+        "id": 4,
+        "uid": "ALITE-BSG26-B04R2-Q20-S04",
+        "level": "상",
+        "difficultyBucket": 4,
+        "category": "행렬의 성질",
+        "originalCategory": "행렬",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "standardUnit": "행렬과 그 연산",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+        "subUnit": "행렬의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "행렬"
+        ],
+        "wide": false,
+        "content": "$A=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$인 이차정사각행렬과 $AX=XA$를 만족하는 행렬 $X$가 있다. $X_{12}=3$이고 $X$의 모든 성분의 합이 $11$일 때, $X_{11}$의 값은?",
+        "choices": [
+          "$3$",
+          "$4$",
+          "$5$",
+          "$7$",
+          "$8$"
+        ],
+        "answer": "②",
+        "solution": "$X=\\begin{pmatrix}u&v\\\\w&z\\end{pmatrix}$라 두면 $AX=\\begin{pmatrix}u+w&v+z\\\\w&z\\end{pmatrix}$, $XA=\\begin{pmatrix}u&u+v\\\\w&w+z\\end{pmatrix}$이다.\n대응 성분을 비교하면 $w=0$, $z=u$이다.\n$v=3$이므로 $X$의 성분합은 $u+3+0+u=2u+3=11$이다.\n따라서 $u=4$이다.\n따라서 정답은 ②이다.",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "sourceType": "generated",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL",
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-BSG26-B04R2-Q20-S04",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-09",
+          "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+          "rpmPrimaryRecordId": "H1-RPM-203",
+          "rpmL1": "행렬",
+          "rpmL2": "행렬",
+          "rpmL3": "행렬의 성질",
+          "rpmL4": "조건을 만족하는 행렬",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+          "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+          "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+          "difficultyBucket": 4,
+          "level": "상",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "USER_DIRECTED_OPERATING_APPROVED",
+          "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-09-MATRIX_APPLICATION",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EXACT_CROSSWALK"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-BSG26-B04R2-Q20-S04",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+        "rpmPrimaryRecordId": "H1-RPM-203",
+        "rpmL1": "행렬",
+        "rpmL2": "행렬",
+        "rpmL3": "행렬의 성질",
+        "rpmL4": "조건을 만족하는 행렬",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "approval": "USER_DIRECTED_OPERATING_APPROVED",
+        "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "UNKNOWN",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [
+          {
+            "field": "crossConceptKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "conditionKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "integrationPattern",
+            "status": "EVIDENCE_DEBT",
+            "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+          }
+        ],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-09-MATRIX_APPLICATION",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EXACT_CROSSWALK"
+      }
+    },
+    {
+      "generatedUid": "ALITE-BSG26-B04R2-Q20-S05",
+      "localOrdinal": 5,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQid": 20,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_APPLICATION/shards/batch-BSG26-B04R2-q20.js",
+      "sourceShardGitSha": "33b448dc011dc425a4121afe1acdc4178f9f90f2",
+      "l2": "H22-C-09-MATRIX_APPLICATION",
+      "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "rpmL3": "행렬의 성질",
+        "rpmL4": "조건을 만족하는 행렬",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "difficultyBucket": 2,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION"
+      },
+      "question": {
+        "id": 5,
+        "uid": "ALITE-BSG26-B04R2-Q20-S05",
+        "level": "중",
+        "difficultyBucket": 2,
+        "category": "행렬의 성질",
+        "originalCategory": "행렬",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "standardUnit": "행렬과 그 연산",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+        "subUnit": "행렬의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "행렬"
+        ],
+        "wide": false,
+        "content": "$A=\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix}$인 이차정사각행렬과 행렬 $B$가 $AB=O$를 만족한다. $B_{21}=2$이고 $B$의 모든 성분의 합이 $7$일 때, $B_{22}$의 값은?",
+        "choices": [
+          "$2$",
+          "$3$",
+          "$5$",
+          "$7$",
+          "$9$"
+        ],
+        "answer": "③",
+        "solution": "$B=\\begin{pmatrix}u&v\\\\w&z\\end{pmatrix}$이면 $AB=\\begin{pmatrix}u&v\\\\0&0\\end{pmatrix}$이다.\n$AB=O$이므로 첫째 행의 두 성분 $u=v=0$이다.\n주어진 $w=2$와 성분합 $u+v+w+z=7$을 대입하면 $0+0+2+z=7$이다.\n따라서 $z=5$이다.\n따라서 정답은 ③이다.",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "sourceType": "generated",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-BSG26-B04R2-Q20-S05",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-09",
+          "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+          "rpmPrimaryRecordId": "H1-RPM-203",
+          "rpmL1": "행렬",
+          "rpmL2": "행렬",
+          "rpmL3": "행렬의 성질",
+          "rpmL4": "조건을 만족하는 행렬",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+          "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+          "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+          "difficultyBucket": 2,
+          "level": "중",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "USER_DIRECTED_OPERATING_APPROVED",
+          "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-09-MATRIX_APPLICATION",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EXACT_CROSSWALK"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-BSG26-B04R2-Q20-S05",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+        "rpmPrimaryRecordId": "H1-RPM-203",
+        "rpmL1": "행렬",
+        "rpmL2": "행렬",
+        "rpmL3": "행렬의 성질",
+        "rpmL4": "조건을 만족하는 행렬",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "difficultyBucket": 2,
+        "level": "중",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "approval": "USER_DIRECTED_OPERATING_APPROVED",
+        "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "UNKNOWN",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [
+          {
+            "field": "crossConceptKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "conditionKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "integrationPattern",
+            "status": "EVIDENCE_DEBT",
+            "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+          }
+        ],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-09-MATRIX_APPLICATION",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EXACT_CROSSWALK"
+      }
+    },
+    {
+      "generatedUid": "ALITE-BSG26-B04R2-Q20-S06",
+      "localOrdinal": 6,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQid": 20,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_APPLICATION/shards/batch-BSG26-B04R2-q20.js",
+      "sourceShardGitSha": "33b448dc011dc425a4121afe1acdc4178f9f90f2",
+      "l2": "H22-C-09-MATRIX_APPLICATION",
+      "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "rpmL3": "행렬의 성질",
+        "rpmL4": "조건을 만족하는 행렬",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "difficultyBucket": 2,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION"
+      },
+      "question": {
+        "id": 6,
+        "uid": "ALITE-BSG26-B04R2-Q20-S06",
+        "level": "중",
+        "difficultyBucket": 2,
+        "category": "행렬의 성질",
+        "originalCategory": "행렬",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "standardUnit": "행렬과 그 연산",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+        "subUnit": "행렬의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "행렬"
+        ],
+        "wide": false,
+        "content": "행렬 $A=\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}$와 $AX=\\begin{pmatrix}3&1\\\\8&4\\end{pmatrix}$를 만족하는 이차정사각행렬 $X$가 있다. $X_{21}+X_{22}$의 값은?",
+        "choices": [
+          "$2$",
+          "$3$",
+          "$4$",
+          "$5$",
+          "$6$"
+        ],
+        "answer": "③",
+        "solution": "$X=\\begin{pmatrix}u&v\\\\w&z\\end{pmatrix}$라 두면 $AX=\\begin{pmatrix}u&v\\\\2u+w&2v+z\\end{pmatrix}$이다.\n주어진 행렬과 비교하여 $u=3$, $v=1$, $2u+w=8$, $2v+z=4$이다.\n따라서 $w=2$, $z=2$이므로 $X_{21}+X_{22}=4$이다.\n따라서 정답은 ③이다.",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "sourceType": "generated",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-BSG26-B04R2-Q20-S06",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-09",
+          "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+          "rpmPrimaryRecordId": "H1-RPM-203",
+          "rpmL1": "행렬",
+          "rpmL2": "행렬",
+          "rpmL3": "행렬의 성질",
+          "rpmL4": "조건을 만족하는 행렬",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+          "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+          "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+          "difficultyBucket": 2,
+          "level": "중",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "USER_DIRECTED_OPERATING_APPROVED",
+          "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-09-MATRIX_APPLICATION",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EXACT_CROSSWALK"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-BSG26-B04R2-Q20-S06",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+        "rpmPrimaryRecordId": "H1-RPM-203",
+        "rpmL1": "행렬",
+        "rpmL2": "행렬",
+        "rpmL3": "행렬의 성질",
+        "rpmL4": "조건을 만족하는 행렬",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "difficultyBucket": 2,
+        "level": "중",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "approval": "USER_DIRECTED_OPERATING_APPROVED",
+        "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "UNKNOWN",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [
+          {
+            "field": "crossConceptKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "conditionKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "integrationPattern",
+            "status": "EVIDENCE_DEBT",
+            "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+          }
+        ],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-09-MATRIX_APPLICATION",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EXACT_CROSSWALK"
+      }
+    },
+    {
+      "generatedUid": "ALITE-BSG26-B04R2-Q20-S07",
+      "localOrdinal": 7,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQid": 20,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_APPLICATION/shards/batch-BSG26-B04R2-q20.js",
+      "sourceShardGitSha": "33b448dc011dc425a4121afe1acdc4178f9f90f2",
+      "l2": "H22-C-09-MATRIX_APPLICATION",
+      "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "rpmL3": "행렬의 성질",
+        "rpmL4": "조건을 만족하는 행렬",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "difficultyBucket": 2,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION"
+      },
+      "question": {
+        "id": 7,
+        "uid": "ALITE-BSG26-B04R2-Q20-S07",
+        "level": "중",
+        "difficultyBucket": 2,
+        "category": "행렬의 성질",
+        "originalCategory": "행렬",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "standardUnit": "행렬과 그 연산",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+        "subUnit": "행렬의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "행렬"
+        ],
+        "wide": false,
+        "content": "행렬 $A=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}$와 $XA=\\begin{pmatrix}3&7\\\\2&5\\end{pmatrix}$를 만족하는 이차정사각행렬 $X$가 있다. $X_{12}+X_{22}$의 값은?",
+        "choices": [
+          "$1$",
+          "$2$",
+          "$3$",
+          "$5$",
+          "$7$"
+        ],
+        "answer": "②",
+        "solution": "$X=\\begin{pmatrix}u&v\\\\w&z\\end{pmatrix}$라 놓으면 $XA=\\begin{pmatrix}u&2u+v\\\\w&2w+z\\end{pmatrix}$이다.\n성분 비교에서 $u=3$, $w=2$, $2u+v=7$, $2w+z=5$이므로 $v=1$, $z=1$이다.\n따라서 $X_{12}+X_{22}=1+1=2$이다.\n따라서 정답은 ②이다.",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "sourceType": "generated",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-BSG26-B04R2-Q20-S07",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-09",
+          "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+          "rpmPrimaryRecordId": "H1-RPM-203",
+          "rpmL1": "행렬",
+          "rpmL2": "행렬",
+          "rpmL3": "행렬의 성질",
+          "rpmL4": "조건을 만족하는 행렬",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+          "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+          "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+          "difficultyBucket": 2,
+          "level": "중",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "USER_DIRECTED_OPERATING_APPROVED",
+          "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-09-MATRIX_APPLICATION",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EXACT_CROSSWALK"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-BSG26-B04R2-Q20-S07",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+        "rpmPrimaryRecordId": "H1-RPM-203",
+        "rpmL1": "행렬",
+        "rpmL2": "행렬",
+        "rpmL3": "행렬의 성질",
+        "rpmL4": "조건을 만족하는 행렬",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "difficultyBucket": 2,
+        "level": "중",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "approval": "USER_DIRECTED_OPERATING_APPROVED",
+        "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "UNKNOWN",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [
+          {
+            "field": "crossConceptKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "conditionKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "integrationPattern",
+            "status": "EVIDENCE_DEBT",
+            "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+          }
+        ],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-09-MATRIX_APPLICATION",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EXACT_CROSSWALK"
+      }
+    },
+    {
+      "generatedUid": "ALITE-BSG26-B04R2-Q20-S08",
+      "localOrdinal": 8,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQid": 20,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_APPLICATION/shards/batch-BSG26-B04R2-q20.js",
+      "sourceShardGitSha": "33b448dc011dc425a4121afe1acdc4178f9f90f2",
+      "l2": "H22-C-09-MATRIX_APPLICATION",
+      "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "rpmL3": "행렬의 성질",
+        "rpmL4": "조건을 만족하는 행렬",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION"
+      },
+      "question": {
+        "id": 8,
+        "uid": "ALITE-BSG26-B04R2-Q20-S08",
+        "level": "중",
+        "difficultyBucket": 3,
+        "category": "행렬의 성질",
+        "originalCategory": "행렬",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "standardUnit": "행렬과 그 연산",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+        "subUnit": "행렬의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "행렬"
+        ],
+        "wide": false,
+        "content": "$A=\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}$와 $AX=XA$인 이차정사각행렬 $X$에서 대각성분의 합은 $12$, 모든 성분의 합은 $20$이다. $X_{12}$의 값은?",
+        "choices": [
+          "$4$",
+          "$6$",
+          "$8$",
+          "$10$",
+          "$12$"
+        ],
+        "answer": "①",
+        "solution": "$X=\\begin{pmatrix}u&v\\\\w&z\\end{pmatrix}$라 두면 $AX=\\begin{pmatrix}w&z\\\\u&v\\end{pmatrix}$, $XA=\\begin{pmatrix}v&u\\\\z&w\\end{pmatrix}$이다.\n따라서 $u=z$, $v=w$이므로 $X=\\begin{pmatrix}u&v\\\\v&u\\end{pmatrix}$이다.\n대각 성분의 합 $2u=12$에서 $u=6$, 전체 성분합 $2u+2v=20$에서 $2v=8$이다.\n따라서 $v=4$이다.\n따라서 정답은 ①이다.",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "sourceType": "generated",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL",
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-BSG26-B04R2-Q20-S08",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-09",
+          "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+          "rpmPrimaryRecordId": "H1-RPM-203",
+          "rpmL1": "행렬",
+          "rpmL2": "행렬",
+          "rpmL3": "행렬의 성질",
+          "rpmL4": "조건을 만족하는 행렬",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+          "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+          "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "USER_DIRECTED_OPERATING_APPROVED",
+          "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-09-MATRIX_APPLICATION",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EXACT_CROSSWALK"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-BSG26-B04R2-Q20-S08",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+        "rpmPrimaryRecordId": "H1-RPM-203",
+        "rpmL1": "행렬",
+        "rpmL2": "행렬",
+        "rpmL3": "행렬의 성질",
+        "rpmL4": "조건을 만족하는 행렬",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "approval": "USER_DIRECTED_OPERATING_APPROVED",
+        "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "UNKNOWN",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [
+          {
+            "field": "crossConceptKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "conditionKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "integrationPattern",
+            "status": "EVIDENCE_DEBT",
+            "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+          }
+        ],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-09-MATRIX_APPLICATION",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EXACT_CROSSWALK"
+      }
+    },
+    {
+      "generatedUid": "ALITE-BSG26-B04R2-Q20-S09",
+      "localOrdinal": 9,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQid": 20,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_APPLICATION/shards/batch-BSG26-B04R2-q20.js",
+      "sourceShardGitSha": "33b448dc011dc425a4121afe1acdc4178f9f90f2",
+      "l2": "H22-C-09-MATRIX_APPLICATION",
+      "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "rpmL3": "행렬의 성질",
+        "rpmL4": "조건을 만족하는 행렬",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION"
+      },
+      "question": {
+        "id": 9,
+        "uid": "ALITE-BSG26-B04R2-Q20-S09",
+        "level": "상",
+        "difficultyBucket": 4,
+        "category": "행렬의 성질",
+        "originalCategory": "행렬",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "standardUnit": "행렬과 그 연산",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+        "subUnit": "행렬의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "행렬"
+        ],
+        "wide": false,
+        "content": "$a\\ne0$, $A=\\begin{pmatrix}a&0\\\\0&0\\end{pmatrix}$이고 행렬 $B,C$가 $AB=CA$, $C_{11}=C_{21}$, $B+C=\\begin{pmatrix}t&2\\\\1&4\\end{pmatrix}$를 만족한다. 이와 같은 $B,C$가 존재하려면 실수 $t$의 값은?",
+        "choices": [
+          "$-2$",
+          "$-1$",
+          "$0$",
+          "$1$",
+          "$2$"
+        ],
+        "answer": "③",
+        "solution": "$AB=CA$에서 $a\\ne0$이므로 $B_{11}=C_{11}$, $B_{12}=0$, $C_{21}=0$이다.\n$C_{11}=C_{21}$에서 $C_{11}=B_{11}=0$이다.\n따라서 $B+C$의 $(1,1)$성분은 $0$이어야 하므로 $t=0$이다.\n역으로 $t=0$일 때 $B=\\begin{pmatrix}0&0\\\\1&0\\end{pmatrix}$, $C=\\begin{pmatrix}0&2\\\\0&4\\end{pmatrix}$를 택하면 조건을 모두 만족하므로 실제로 존재한다.\n따라서 정답은 ③이다.",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "sourceType": "generated",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-BSG26-B04R2-Q20-S09",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-09",
+          "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+          "rpmPrimaryRecordId": "H1-RPM-203",
+          "rpmL1": "행렬",
+          "rpmL2": "행렬",
+          "rpmL3": "행렬의 성질",
+          "rpmL4": "조건을 만족하는 행렬",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+          "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+          "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+          "difficultyBucket": 4,
+          "level": "상",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "USER_DIRECTED_OPERATING_APPROVED",
+          "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-09-MATRIX_APPLICATION",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EXACT_CROSSWALK"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-BSG26-B04R2-Q20-S09",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+        "rpmPrimaryRecordId": "H1-RPM-203",
+        "rpmL1": "행렬",
+        "rpmL2": "행렬",
+        "rpmL3": "행렬의 성질",
+        "rpmL4": "조건을 만족하는 행렬",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "approval": "USER_DIRECTED_OPERATING_APPROVED",
+        "reviewStatus": "USER_DIRECTED_OPERATING_APPROVAL_FORMAL_BLIND_NOT_CLAIMED",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "UNKNOWN",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [
+          {
+            "field": "crossConceptKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "conditionKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "integrationPattern",
+            "status": "EVIDENCE_DEBT",
+            "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+          }
+        ],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-09-MATRIX_APPLICATION",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EXACT_CROSSWALK"
+      }
+    }
+  ]
+}

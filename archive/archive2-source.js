@@ -63,9 +63,9 @@
       image: question.image,
     }));
   }
-  async function restoreGenerated(indexRow, shard, excludedHoldUids = []) {
+  async function restoreGenerated(indexRow, shard, disabledUids = []) {
     if (!problemBankMeta) throw new Error("PROBLEM_BANK_META_UNAVAILABLE");
-    if (!problemBankMeta.isGeneratedSelectable(indexRow, excludedHoldUids))
+    if (!problemBankMeta.isGeneratedSelectable(indexRow, disabledUids))
       throw new Error("GENERATED_QUESTION_NOT_SELECTABLE");
     if (!shard || shard.schemaVersion !== "ALIVE_GENERATED_CONSUMER_SHARD_V1" ||
         !Array.isArray(shard.records))
@@ -118,7 +118,7 @@
     if (indexRow.reviewFinalArtifactSha && consumerRecord.reviewApprovalMainSha &&
         indexRow.reviewFinalArtifactSha !== consumerRecord.reviewApprovalMainSha)
       throw new Error("GENERATED_REVIEW_ARTIFACT_CONFLICT");
-    const metaProjection = problemBankMeta.projectGenerated(indexRow, consumerRecord, excludedHoldUids);
+    const metaProjection = problemBankMeta.projectGenerated(indexRow, consumerRecord, disabledUids);
     return {
       ...question,
       uid: indexRow.uid,

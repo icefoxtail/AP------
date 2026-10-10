@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "ALIVE_GEUMDANG25_Q14_GENERATED_L4_V1",
+  "sourceExamPath": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+  "sourceExamBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "sourceQid": 14,
+  "namespace": "GENERATED_ACTIVE",
+  "rpmLockedModified": false,
+  "parentPrimaryL3": {
+    "id": "H1-RPM-253",
+    "label": "합성함수",
+    "rpmL4": "합성함수 계산",
+    "source": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+    "bindingStatus": "ACTIVE"
+  },
+  "extensions": [
+    {
+      "key": "EXT-GD25-Q14-LONG-PERIOD-WEIGHTED",
+      "labelKo": "긴 합성 지수의 순환주기",
+      "definition": "3-cycle: 0→1→2→0; weighted large-index computation",
+      "parentL3Id": "H1-RPM-253",
+      "sourceUid": "ALITE-GEUMDANG25-2FINAL-Q14-B1",
+      "namespace": "GENERATED_ACTIVE"
+    },
+    {
+      "key": "EXT-GD25-Q14-TWO-ORBIT-FIXED",
+      "labelKo": "독립 궤도와 고정점",
+      "definition": "4-cycle 0→1→3→2→0 plus separate fixed point f(4)=4",
+      "parentL3Id": "H1-RPM-253",
+      "sourceUid": "ALITE-GEUMDANG25-2FINAL-Q14-B2",
+      "namespace": "GENERATED_ACTIVE"
+    },
+    {
+      "key": "EXT-GD25-Q14-TAIL-THEN-CYCLE",
+      "labelKo": "과도 상태를 거친 순환",
+      "definition": "tail 0→1→2 then alternating 5,2; n parity calculation",
+      "parentL3Id": "H1-RPM-253",
+      "sourceUid": "ALITE-GEUMDANG25-2FINAL-Q14-B3",
+      "namespace": "GENERATED_ACTIVE"
+    },
+    {
+      "key": "EXT-GD25-Q14-PARAMETER-RECOVERY",
+      "labelKo": "매개변수 결정 뒤 반복합성",
+      "definition": "f_a²(0)=(a+1) mod5=3 implies unique a=2; four-cycle",
+      "parentL3Id": "H1-RPM-253",
+      "sourceUid": "ALITE-GEUMDANG25-2FINAL-Q14-C1",
+      "namespace": "GENERATED_ACTIVE"
+    },
+    {
+      "key": "EXT-GD25-Q14-LONG-TWO-CYCLE",
+      "labelKo": "순환주기와 홀짝 지수",
+      "definition": "3→2→4→2; even/odd index parity",
+      "parentL3Id": "H1-RPM-253",
+      "sourceUid": "ALITE-GEUMDANG25-2FINAL-Q14-C2",
+      "namespace": "GENERATED_ACTIVE"
+    },
+    {
+      "key": "EXT-GD25-Q14-ITERATE-INDEX-COUNT",
+      "labelKo": "반복합성 조건을 만족하는 지수 개수",
+      "definition": "0→1→3→2→0; count natural indices 1 mod4 in [1,30]",
+      "parentL3Id": "H1-RPM-253",
+      "sourceUid": "ALITE-GEUMDANG25-2FINAL-Q14-C3",
+      "namespace": "GENERATED_ACTIVE"
+    }
+  ],
+  "reusedTemplates": [
+    "TPL_COMPOSITION_VALUE_DIRECT"
+  ],
+  "derivedCrossConcepts": {
+    "A1": [],
+    "A2": [],
+    "A3": [],
+    "B1": [
+      "CC_NUMBER_DIVISOR_MULTIPLE"
+    ],
+    "B2": [
+      "CC_NUMBER_DIVISOR_MULTIPLE"
+    ],
+    "B3": [
+      "CC_NUMBER_PARITY"
+    ],
+    "C1": [
+      "CC_NUMBER_DIVISOR_MULTIPLE"
+    ],
+    "C2": [
+      "CC_NUMBER_PARITY"
+    ],
+    "C3": [
+      "CC_NUMBER_DIVISOR_MULTIPLE"
+    ]
+  },
+  "conditionRegistryRef": "archive/data/meta-foundation/canonical/condition_registry.json",
+  "generatedTemplates": [
+    {
+      "key": "GEN-TPL-GD25-Q14-PARAM-RECOVERY",
+      "parentProblemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "sourceUid": "ALITE-GEUMDANG25-2FINAL-Q14-C1",
+      "definition": "복수 후보 매개변수를 합성함숫값으로 유일하게 결정한 뒤 주기적 합성을 계산한다",
+      "namespace": "GENERATED_ACTIVE"
+    },
+    {
+      "key": "GEN-TPL-GD25-Q14-ITERATE-INDEX-COUNT",
+      "parentProblemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "sourceUid": "ALITE-GEUMDANG25-2FINAL-Q14-C3",
+      "definition": "반복합성 궤도의 주기로 지정된 구간 내 합성 차수의 개수를 구한다",
+      "namespace": "GENERATED_ACTIVE"
+    }
+  ]
+}

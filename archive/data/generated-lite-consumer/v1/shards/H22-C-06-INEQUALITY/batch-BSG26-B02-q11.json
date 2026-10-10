@@ -1,0 +1,3517 @@
+{
+  "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
+  "school": "복성고",
+  "batchId": "MAIN_SOURCE_batch-BSG26-B02-q11",
+  "sourceKind": "generated",
+  "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02-q11.js",
+  "sourceShardGitSha": "867ed8392983467abe083b88709a357145a70f6a",
+  "records": [
+    {
+      "generatedUid": "ALITE-BSG26-B02-Q11-A01",
+      "localOrdinal": 1,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQid": 11,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02-q11.js",
+      "sourceShardGitSha": "867ed8392983467abe083b88709a357145a70f6a",
+      "l2": "H22-C-06-INEQUALITY",
+      "reviewStatus": "REVIEW_PASS",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "rpmL4": null,
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "difficultyBucket": 2,
+        "level": "하",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-INEQUALITY"
+      },
+      "question": {
+        "id": 1,
+        "uid": "ALITE-BSG26-B02-Q11-A01",
+        "level": "하",
+        "difficultyBucket": 2,
+        "category": "절댓값을 포함한 부등식",
+        "originalCategory": "절댓값 부등식",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "subUnitConfidence": "INDEPENDENT_SEMANTIC_REVIEWED",
+        "subUnitClassificationDepth": "student_solution_decisive_step",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "절댓값",
+          "부등식",
+          "절댓값의 구간별 해법"
+        ],
+        "wide": false,
+        "content": "부등식 $|x-1|+|x-5|\\le6$을 만족시키는 정수 $x$는 모두 몇 개인가?",
+        "choices": [
+          "$3$",
+          "$5$",
+          "$6$",
+          "$7$",
+          "$9$"
+        ],
+        "answer": "④",
+        "solution": "[키포인트] 두 점 1과 5까지 거리의 합을 구간별로 계산한다.\n$1\\le x\\le5$에서는 거리합이 4이므로 모든 수가 조건을 만족한다.\n$x\\le1$이면 좌변은 $6-2x$이며 $6-2x\\le6$에서 $x\\ge0$이다.\n$x\\ge5$이면 좌변은 $2x-6$이며 $2x-6\\le6$에서 $x\\le6$이다.\n따라서 $0\\le x\\le6$이고 정수해는 $0,1,2,3,4,5,6$의 7개이다.\n따라서 정답은 ④이다.",
+        "sourceType": "generated",
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "extensionL3Id": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+        "extensionL3": "절댓값을 포함한 부등식",
+        "extensionL4Id": "EXT-H1-BSG26-ABS-DISTANCE-SUM-INTERVAL",
+        "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL",
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-BSG26-B02-Q11-A01",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-06",
+          "subUnitKey": "H22-C-06-INEQUALITY",
+          "rpmPrimaryRecordId": null,
+          "rpmL1": null,
+          "rpmL2": null,
+          "rpmL3": null,
+          "rpmL4": null,
+          "rpmL4Namespace": null,
+          "rpmDraftAuthorityRef": null,
+          "rpmDraftAuthoritySha256": null,
+          "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+          "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+          "difficultyBucket": 2,
+          "level": "하",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "REVIEW_APPROVED",
+          "reviewStatus": "REVIEW_PASS",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "rpmPrimaryRecordId",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL1",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL2",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL3",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4Namespace",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthorityRef",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthoritySha256",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-06-INEQUALITY",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EVIDENCE_DEBT"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-BSG26-B02-Q11-A01",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "rpmPrimaryRecordId": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmL4Namespace": null,
+        "rpmDraftAuthorityRef": null,
+        "rpmDraftAuthoritySha256": null,
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "difficultyBucket": 2,
+        "level": "하",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "approval": "REVIEW_APPROVED",
+        "reviewStatus": "REVIEW_PASS",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "UNKNOWN",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [
+          {
+            "field": "rpmPrimaryRecordId",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL1",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL2",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL3",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL4",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL4Namespace",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmDraftAuthorityRef",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmDraftAuthoritySha256",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "crossConceptKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "conditionKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "integrationPattern",
+            "status": "EVIDENCE_DEBT",
+            "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+          }
+        ],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-06-INEQUALITY",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EVIDENCE_DEBT"
+      }
+    },
+    {
+      "generatedUid": "ALITE-BSG26-B02-Q11-A02",
+      "localOrdinal": 2,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQid": 11,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02-q11.js",
+      "sourceShardGitSha": "867ed8392983467abe083b88709a357145a70f6a",
+      "l2": "H22-C-06-INEQUALITY",
+      "reviewStatus": "REVIEW_PASS",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "rpmL4": null,
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-INEQUALITY"
+      },
+      "question": {
+        "id": 2,
+        "uid": "ALITE-BSG26-B02-Q11-A02",
+        "level": "중",
+        "difficultyBucket": 3,
+        "category": "절댓값을 포함한 부등식",
+        "originalCategory": "절댓값 부등식",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "subUnitConfidence": "INDEPENDENT_SEMANTIC_REVIEWED",
+        "subUnitClassificationDepth": "student_solution_decisive_step",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "절댓값",
+          "부등식",
+          "절댓값의 구간별 해법"
+        ],
+        "wide": false,
+        "content": "부등식 $|x+2|+|x-4|\\le8$의 해가 $a\\le x\\le b$일 때, $a+b$의 값은?",
+        "choices": [
+          "$-2$",
+          "$0$",
+          "$1$",
+          "$2$",
+          "$8$"
+        ],
+        "answer": "④",
+        "solution": "[키포인트] 기준점 $-2$와 4를 경계로 양끝 해를 구한다.\n$-2\\le x\\le4$에서 거리합은 6이므로 조건을 만족한다.\n$x\\le-2$에서는 좌변이 $2-2x$이므로 $2-2x\\le8$에서 $x\\ge-3$이다.\n$x\\ge4$에서는 좌변이 $2x-2$이므로 $2x-2\\le8$에서 $x\\le5$이다.\n따라서 해는 $-3\\le x\\le5$이고 $a+b=-3+5=2$이다.\n따라서 정답은 ④이다.",
+        "sourceType": "generated",
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "extensionL3Id": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+        "extensionL3": "절댓값을 포함한 부등식",
+        "extensionL4Id": "EXT-H1-BSG26-ABS-DISTANCE-SUM-INTERVAL",
+        "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL",
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-BSG26-B02-Q11-A02",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-06",
+          "subUnitKey": "H22-C-06-INEQUALITY",
+          "rpmPrimaryRecordId": null,
+          "rpmL1": null,
+          "rpmL2": null,
+          "rpmL3": null,
+          "rpmL4": null,
+          "rpmL4Namespace": null,
+          "rpmDraftAuthorityRef": null,
+          "rpmDraftAuthoritySha256": null,
+          "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+          "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "REVIEW_APPROVED",
+          "reviewStatus": "REVIEW_PASS",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "rpmPrimaryRecordId",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL1",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL2",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL3",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4Namespace",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthorityRef",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthoritySha256",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-06-INEQUALITY",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EVIDENCE_DEBT"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-BSG26-B02-Q11-A02",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "rpmPrimaryRecordId": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmL4Namespace": null,
+        "rpmDraftAuthorityRef": null,
+        "rpmDraftAuthoritySha256": null,
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "approval": "REVIEW_APPROVED",
+        "reviewStatus": "REVIEW_PASS",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "UNKNOWN",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [
+          {
+            "field": "rpmPrimaryRecordId",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL1",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL2",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL3",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL4",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL4Namespace",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmDraftAuthorityRef",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmDraftAuthoritySha256",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "crossConceptKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "conditionKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "integrationPattern",
+            "status": "EVIDENCE_DEBT",
+            "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+          }
+        ],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-06-INEQUALITY",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EVIDENCE_DEBT"
+      }
+    },
+    {
+      "generatedUid": "ALITE-BSG26-B02-Q11-A03",
+      "localOrdinal": 3,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQid": 11,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02-q11.js",
+      "sourceShardGitSha": "867ed8392983467abe083b88709a357145a70f6a",
+      "l2": "H22-C-06-INEQUALITY",
+      "reviewStatus": "REVIEW_PASS",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "rpmL3": "부등식의 활용",
+        "rpmL4": "최대·최소",
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-INEQUALITY"
+      },
+      "question": {
+        "id": 3,
+        "uid": "ALITE-BSG26-B02-Q11-A03",
+        "level": "중",
+        "difficultyBucket": 3,
+        "category": "절댓값을 포함한 부등식",
+        "originalCategory": "절댓값 부등식",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "subUnitConfidence": "INDEPENDENT_SEMANTIC_REVIEWED",
+        "subUnitClassificationDepth": "student_solution_decisive_step",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "절댓값",
+          "부등식",
+          "절댓값의 구간별 해법"
+        ],
+        "wide": false,
+        "content": "부등식 $|x+2|+|x-4|<6$을 만족시키는 정수 $x$의 개수는?",
+        "choices": [
+          "$0$",
+          "$1$",
+          "$2$",
+          "$3$",
+          "$6$"
+        ],
+        "answer": "①",
+        "solution": "[키포인트] 두 점에 이르는 거리의 합은 두 점 사이의 거리보다 작을 수 없다.\n수직선의 두 기준점 $-2$와 4 사이 거리는 6이다.\n모든 실수 $x$에 대하여 삼각부등식으로 $|x+2|+|x-4|\\ge6$이다.\n따라서 거리합이 6보다 엄격하게 작은 실수해는 전혀 존재하지 않는다.\n실수해가 없으므로 정수해도 없고 개수는 0개이다.\n따라서 정답은 ①이다.",
+        "sourceType": "generated",
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "rpmRecordId": "H1-RPM-184",
+        "rpmL3": "부등식의 활용",
+        "rpmL4": "최대·최소",
+        "rpmSemanticSourceScope": "2022/공통수학1/H22-C-06-EQUATION_APPLICATION",
+        "semanticClassificationStatus": "EXISTING_RPM_REVIEW_APPROVED",
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-BSG26-B02-Q11-A03",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-06",
+          "subUnitKey": "H22-C-06-INEQUALITY",
+          "rpmPrimaryRecordId": null,
+          "rpmL1": null,
+          "rpmL2": null,
+          "rpmL3": null,
+          "rpmL4": null,
+          "rpmL4Namespace": null,
+          "rpmDraftAuthorityRef": null,
+          "rpmDraftAuthoritySha256": null,
+          "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+          "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "REVIEW_APPROVED",
+          "reviewStatus": "REVIEW_PASS",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "rpmPrimaryRecordId",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "rpmL1",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "rpmL2",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "rpmL3",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "rpmL4",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "rpmL4Namespace",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "rpmDraftAuthorityRef",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "rpmDraftAuthoritySha256",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-06-INEQUALITY",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EVIDENCE_DEBT"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-BSG26-B02-Q11-A03",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "rpmPrimaryRecordId": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmL4Namespace": null,
+        "rpmDraftAuthorityRef": null,
+        "rpmDraftAuthoritySha256": null,
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "approval": "REVIEW_APPROVED",
+        "reviewStatus": "REVIEW_PASS",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "UNKNOWN",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [
+          {
+            "field": "rpmPrimaryRecordId",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "rpmL1",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "rpmL2",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "rpmL3",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "rpmL4",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "rpmL4Namespace",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "rpmDraftAuthorityRef",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "rpmDraftAuthoritySha256",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "crossConceptKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "conditionKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "integrationPattern",
+            "status": "EVIDENCE_DEBT",
+            "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+          }
+        ],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-06-INEQUALITY",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EVIDENCE_DEBT"
+      }
+    },
+    {
+      "generatedUid": "ALITE-BSG26-B02-Q11-A04",
+      "localOrdinal": 4,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQid": 11,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02-q11.js",
+      "sourceShardGitSha": "867ed8392983467abe083b88709a357145a70f6a",
+      "l2": "H22-C-06-INEQUALITY",
+      "reviewStatus": "REVIEW_PASS",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "rpmL4": null,
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "difficultyBucket": 4,
+        "level": "상",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-INEQUALITY"
+      },
+      "question": {
+        "id": 4,
+        "uid": "ALITE-BSG26-B02-Q11-A04",
+        "level": "상",
+        "difficultyBucket": 4,
+        "category": "절댓값을 포함한 부등식",
+        "originalCategory": "절댓값 부등식",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "subUnitConfidence": "INDEPENDENT_SEMANTIC_REVIEWED",
+        "subUnitClassificationDepth": "student_solution_decisive_step",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "절댓값",
+          "부등식",
+          "절댓값의 구간별 해법"
+        ],
+        "wide": false,
+        "content": "부등식 $|x-1|-|x-5|\\ge2$를 만족시키는 정수 $x$ 중 가장 작은 값은?",
+        "choices": [
+          "$-1$",
+          "$1$",
+          "$2$",
+          "$3$",
+          "$4$"
+        ],
+        "answer": "⑤",
+        "solution": "[키포인트] 두 절댓값 속 식이 0이 되는 1과 5로 구간을 분할한다.\n$x\\le1$이면 좌변은 $-4$이므로 해가 없다.\n$1\\le x\\le5$이면 좌변이 $2x-6$이므로 $2x-6\\ge2$에서 $x\\ge4$이다.\n$x\\ge5$이면 좌변은 4로 조건을 항상 만족한다.\n전체 해는 $x\\ge4$이고 따라서 가장 작은 정수해는 4이다.\n따라서 정답은 ⑤이다.",
+        "sourceType": "generated",
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "extensionL3Id": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+        "extensionL3": "절댓값을 포함한 부등식",
+        "extensionL4Id": "EXT-H1-BSG26-ABS-DIFFERENCE-SIGN",
+        "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL",
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-BSG26-B02-Q11-A04",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-06",
+          "subUnitKey": "H22-C-06-INEQUALITY",
+          "rpmPrimaryRecordId": null,
+          "rpmL1": null,
+          "rpmL2": null,
+          "rpmL3": null,
+          "rpmL4": null,
+          "rpmL4Namespace": null,
+          "rpmDraftAuthorityRef": null,
+          "rpmDraftAuthoritySha256": null,
+          "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+          "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+          "difficultyBucket": 4,
+          "level": "상",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "REVIEW_APPROVED",
+          "reviewStatus": "REVIEW_PASS",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "rpmPrimaryRecordId",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL1",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL2",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL3",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4Namespace",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthorityRef",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthoritySha256",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-06-INEQUALITY",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EVIDENCE_DEBT"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-BSG26-B02-Q11-A04",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "rpmPrimaryRecordId": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmL4Namespace": null,
+        "rpmDraftAuthorityRef": null,
+        "rpmDraftAuthoritySha256": null,
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "difficultyBucket": 4,
+        "level": "상",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "approval": "REVIEW_APPROVED",
+        "reviewStatus": "REVIEW_PASS",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "UNKNOWN",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [
+          {
+            "field": "rpmPrimaryRecordId",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL1",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL2",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL3",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL4",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL4Namespace",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmDraftAuthorityRef",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmDraftAuthoritySha256",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "crossConceptKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "conditionKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "integrationPattern",
+            "status": "EVIDENCE_DEBT",
+            "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+          }
+        ],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-06-INEQUALITY",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EVIDENCE_DEBT"
+      }
+    },
+    {
+      "generatedUid": "ALITE-BSG26-B02-Q11-A05",
+      "localOrdinal": 5,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQid": 11,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02-q11.js",
+      "sourceShardGitSha": "867ed8392983467abe083b88709a357145a70f6a",
+      "l2": "H22-C-06-INEQUALITY",
+      "reviewStatus": "REVIEW_PASS",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "rpmL4": null,
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "difficultyBucket": 4,
+        "level": "상",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-INEQUALITY"
+      },
+      "question": {
+        "id": 5,
+        "uid": "ALITE-BSG26-B02-Q11-A05",
+        "level": "상",
+        "difficultyBucket": 4,
+        "category": "절댓값을 포함한 부등식",
+        "originalCategory": "절댓값 부등식",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "subUnitConfidence": "INDEPENDENT_SEMANTIC_REVIEWED",
+        "subUnitClassificationDepth": "student_solution_decisive_step",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "절댓값",
+          "부등식",
+          "절댓값의 구간별 해법"
+        ],
+        "wide": false,
+        "content": "부등식 $|2x-1|+|x+2|\\le7$을 만족시키는 정수 $x$의 개수는?",
+        "choices": [
+          "$3$",
+          "$4$",
+          "$5$",
+          "$6$",
+          "$7$"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] 두 기준점 $-2$와 $\\dfrac12$를 중심으로 세 구간을 살핀다.\n$x\\le-2$이면 좌변은 $-3x-1$이므로 $-3x-1\\le7$에서 $x\\ge-\\dfrac83$이다.\n$-2\\le x\\le\\dfrac12$이면 좌변은 $3-x$이므로 이 구간의 모든 수가 해이다.\n$x\\ge\\dfrac12$이면 좌변은 $3x+1$이므로 $x\\le2$이다.\n따라서 전체 해는 $-\\dfrac83\\le x\\le2$이고 정수는 $-2,-1,0,1,2$의 5개이다.\n따라서 정답은 ③이다.",
+        "sourceType": "generated",
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "extensionL3Id": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+        "extensionL3": "절댓값을 포함한 부등식",
+        "extensionL4Id": "EXT-H1-BSG26-ABS-DISTANCE-SUM-INTERVAL",
+        "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL",
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-BSG26-B02-Q11-A05",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-06",
+          "subUnitKey": "H22-C-06-INEQUALITY",
+          "rpmPrimaryRecordId": null,
+          "rpmL1": null,
+          "rpmL2": null,
+          "rpmL3": null,
+          "rpmL4": null,
+          "rpmL4Namespace": null,
+          "rpmDraftAuthorityRef": null,
+          "rpmDraftAuthoritySha256": null,
+          "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+          "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+          "difficultyBucket": 4,
+          "level": "상",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "REVIEW_APPROVED",
+          "reviewStatus": "REVIEW_PASS",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "rpmPrimaryRecordId",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL1",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL2",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL3",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4Namespace",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthorityRef",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthoritySha256",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-06-INEQUALITY",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EVIDENCE_DEBT"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-BSG26-B02-Q11-A05",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "rpmPrimaryRecordId": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmL4Namespace": null,
+        "rpmDraftAuthorityRef": null,
+        "rpmDraftAuthoritySha256": null,
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "difficultyBucket": 4,
+        "level": "상",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "approval": "REVIEW_APPROVED",
+        "reviewStatus": "REVIEW_PASS",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "UNKNOWN",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [
+          {
+            "field": "rpmPrimaryRecordId",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL1",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL2",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL3",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL4",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL4Namespace",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmDraftAuthorityRef",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmDraftAuthoritySha256",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "crossConceptKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "conditionKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "integrationPattern",
+            "status": "EVIDENCE_DEBT",
+            "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+          }
+        ],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-06-INEQUALITY",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EVIDENCE_DEBT"
+      }
+    },
+    {
+      "generatedUid": "ALITE-BSG26-B02-Q11-A06",
+      "localOrdinal": 6,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQid": 11,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02-q11.js",
+      "sourceShardGitSha": "867ed8392983467abe083b88709a357145a70f6a",
+      "l2": "H22-C-06-INEQUALITY",
+      "reviewStatus": "REVIEW_PASS",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "rpmL3": "부등식의 활용",
+        "rpmL4": "최대·최소",
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-INEQUALITY"
+      },
+      "question": {
+        "id": 6,
+        "uid": "ALITE-BSG26-B02-Q11-A06",
+        "level": "중",
+        "difficultyBucket": 3,
+        "category": "절댓값을 포함한 부등식",
+        "originalCategory": "절댓값 부등식",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "subUnitConfidence": "INDEPENDENT_SEMANTIC_REVIEWED",
+        "subUnitClassificationDepth": "student_solution_decisive_step",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "절댓값",
+          "부등식",
+          "절댓값의 구간별 해법"
+        ],
+        "wide": false,
+        "content": "자연수 $k$에 대하여 부등식 $|x-2|+|x+2|\\le2k$의 실수해가 존재하도록 하는 $k$의 최솟값은?",
+        "choices": [
+          "$1$",
+          "$2$",
+          "$3$",
+          "$4$",
+          "$6$"
+        ],
+        "answer": "②",
+        "solution": "[키포인트] 절댓값 거리합의 최솟값으로 해 존재 조건을 결정한다.\n두 기준점은 $-2$와 2이므로 두 점 사이의 거리는 4이다.\n모든 실수 $x$에서 $|x-2|+|x+2|\\ge4$이고, 두 점 사이에서는 정확히 4이다.\n따라서 부등식을 만족하는 실수해가 존재할 필요충분조건은 $2k\\ge4$이다.\n즉 $k\\ge2$이므로 자연수 $k$의 최솟값은 2이다.\n따라서 정답은 ②이다.",
+        "sourceType": "generated",
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "rpmRecordId": "H1-RPM-184",
+        "rpmL3": "부등식의 활용",
+        "rpmL4": "최대·최소",
+        "rpmSemanticSourceScope": "2022/공통수학1/H22-C-06-EQUATION_APPLICATION",
+        "semanticClassificationStatus": "EXISTING_RPM_REVIEW_APPROVED",
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-BSG26-B02-Q11-A06",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-06",
+          "subUnitKey": "H22-C-06-INEQUALITY",
+          "rpmPrimaryRecordId": null,
+          "rpmL1": null,
+          "rpmL2": null,
+          "rpmL3": null,
+          "rpmL4": null,
+          "rpmL4Namespace": null,
+          "rpmDraftAuthorityRef": null,
+          "rpmDraftAuthoritySha256": null,
+          "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+          "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "REVIEW_APPROVED",
+          "reviewStatus": "REVIEW_PASS",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "rpmPrimaryRecordId",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "rpmL1",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "rpmL2",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "rpmL3",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "rpmL4",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "rpmL4Namespace",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "rpmDraftAuthorityRef",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "rpmDraftAuthoritySha256",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-06-INEQUALITY",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EVIDENCE_DEBT"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-BSG26-B02-Q11-A06",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "rpmPrimaryRecordId": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmL4Namespace": null,
+        "rpmDraftAuthorityRef": null,
+        "rpmDraftAuthoritySha256": null,
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "approval": "REVIEW_APPROVED",
+        "reviewStatus": "REVIEW_PASS",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "UNKNOWN",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [
+          {
+            "field": "rpmPrimaryRecordId",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "rpmL1",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "rpmL2",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "rpmL3",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "rpmL4",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "rpmL4Namespace",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "rpmDraftAuthorityRef",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "rpmDraftAuthoritySha256",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "crossConceptKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "conditionKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "integrationPattern",
+            "status": "EVIDENCE_DEBT",
+            "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+          }
+        ],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-06-INEQUALITY",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EVIDENCE_DEBT"
+      }
+    },
+    {
+      "generatedUid": "ALITE-BSG26-B02-Q11-A07",
+      "localOrdinal": 7,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQid": 11,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02-q11.js",
+      "sourceShardGitSha": "867ed8392983467abe083b88709a357145a70f6a",
+      "l2": "H22-C-06-INEQUALITY",
+      "reviewStatus": "REVIEW_PASS",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "rpmL4": null,
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-INEQUALITY"
+      },
+      "question": {
+        "id": 7,
+        "uid": "ALITE-BSG26-B02-Q11-A07",
+        "level": "중",
+        "difficultyBucket": 3,
+        "category": "절댓값을 포함한 부등식",
+        "originalCategory": "절댓값 부등식",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "subUnitConfidence": "INDEPENDENT_SEMANTIC_REVIEWED",
+        "subUnitClassificationDepth": "student_solution_decisive_step",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "절댓값",
+          "부등식",
+          "절댓값의 구간별 해법"
+        ],
+        "wide": false,
+        "content": "부등식 $|x-1|+|x-5|\\le4$를 만족시키는 정수 $x$는 모두 몇 개인가?",
+        "choices": [
+          "$1$",
+          "$3$",
+          "$4$",
+          "$5$",
+          "$6$"
+        ],
+        "answer": "④",
+        "solution": "[키포인트] 두 점까지의 거리합의 최솟값과 같거나 작은 경우를 판단한다.\n두 기준점은 1과 5이고 이 둘 사이의 거리는 4이다.\n임의의 실수 $x$에 대해 $|x-1|+|x-5|\\ge4$가 성립한다.\n따라서 주어진 부등식 $|x-1|+|x-5|\\le4$가 성립하려면 거리합이 정확히 4여야 한다.\n이는 $1\\le x\\le5$인 경우이고 정수해는 $1,2,3,4,5$의 다섯 개이다.\n따라서 정답은 ④이다.",
+        "sourceType": "generated",
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "extensionL3Id": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+        "extensionL3": "절댓값을 포함한 부등식",
+        "extensionL4Id": "EXT-H1-BSG26-ABS-DISTANCE-SUM-INTERVAL",
+        "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL",
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-BSG26-B02-Q11-A07",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-06",
+          "subUnitKey": "H22-C-06-INEQUALITY",
+          "rpmPrimaryRecordId": null,
+          "rpmL1": null,
+          "rpmL2": null,
+          "rpmL3": null,
+          "rpmL4": null,
+          "rpmL4Namespace": null,
+          "rpmDraftAuthorityRef": null,
+          "rpmDraftAuthoritySha256": null,
+          "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+          "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "REVIEW_APPROVED",
+          "reviewStatus": "REVIEW_PASS",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "rpmPrimaryRecordId",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL1",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL2",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL3",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4Namespace",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthorityRef",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthoritySha256",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-06-INEQUALITY",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EVIDENCE_DEBT"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-BSG26-B02-Q11-A07",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "rpmPrimaryRecordId": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmL4Namespace": null,
+        "rpmDraftAuthorityRef": null,
+        "rpmDraftAuthoritySha256": null,
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "approval": "REVIEW_APPROVED",
+        "reviewStatus": "REVIEW_PASS",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "UNKNOWN",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [
+          {
+            "field": "rpmPrimaryRecordId",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL1",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL2",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL3",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL4",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL4Namespace",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmDraftAuthorityRef",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmDraftAuthoritySha256",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "crossConceptKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "conditionKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "integrationPattern",
+            "status": "EVIDENCE_DEBT",
+            "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+          }
+        ],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-06-INEQUALITY",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EVIDENCE_DEBT"
+      }
+    },
+    {
+      "generatedUid": "ALITE-BSG26-B02-Q11-A08",
+      "localOrdinal": 8,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQid": 11,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02-q11.js",
+      "sourceShardGitSha": "867ed8392983467abe083b88709a357145a70f6a",
+      "l2": "H22-C-06-INEQUALITY",
+      "reviewStatus": "REVIEW_PASS",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "rpmL4": null,
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-INEQUALITY"
+      },
+      "question": {
+        "id": 8,
+        "uid": "ALITE-BSG26-B02-Q11-A08",
+        "level": "중",
+        "difficultyBucket": 3,
+        "category": "절댓값을 포함한 부등식",
+        "originalCategory": "절댓값 부등식",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "subUnitConfidence": "INDEPENDENT_SEMANTIC_REVIEWED",
+        "subUnitClassificationDepth": "student_solution_decisive_step",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "절댓값",
+          "부등식",
+          "절댓값의 구간별 해법"
+        ],
+        "wide": false,
+        "content": "연립부등식 $\\begin{cases}|x-1|+|x+3|\\le6\\\\x\\ge0\\end{cases}$을 만족시키는 정수 $x$의 개수는?",
+        "choices": [
+          "$2$",
+          "$3$",
+          "$4$",
+          "$6$",
+          "$7$"
+        ],
+        "answer": "②",
+        "solution": "[키포인트] 절댓값 부등식 해집합과 주어진 일차조건의 교집합을 구한다.\n두 기준점은 $-3$과 1이고 두 점 사이에서는 거리합이 4이다.\n$x\\le-3$에서 거리합은 $-2x-2$이므로 $x\\ge-4$이다.\n$x\\ge1$에서 거리합은 $2x+2$이므로 $x\\le2$이다.\n따라서 첫 번째 부등식의 해는 $-4\\le x\\le2$이다.\n이를 $x\\ge0$과 교차하면 $0\\le x\\le2$이고 정수해는 $0,1,2$의 3개이다.\n따라서 정답은 ②이다.",
+        "sourceType": "generated",
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "extensionL3Id": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+        "extensionL3": "절댓값을 포함한 부등식",
+        "extensionL4Id": "EXT-H1-BSG26-ABS-DISTANCE-SUM-INTERVAL",
+        "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL",
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-BSG26-B02-Q11-A08",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-06",
+          "subUnitKey": "H22-C-06-INEQUALITY",
+          "rpmPrimaryRecordId": null,
+          "rpmL1": null,
+          "rpmL2": null,
+          "rpmL3": null,
+          "rpmL4": null,
+          "rpmL4Namespace": null,
+          "rpmDraftAuthorityRef": null,
+          "rpmDraftAuthoritySha256": null,
+          "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+          "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "REVIEW_APPROVED",
+          "reviewStatus": "REVIEW_PASS",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "rpmPrimaryRecordId",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL1",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL2",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL3",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmL4Namespace",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthorityRef",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "rpmDraftAuthoritySha256",
+              "status": "EVIDENCE_DEBT",
+              "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+            },
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-06-INEQUALITY",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EVIDENCE_DEBT"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-BSG26-B02-Q11-A08",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "rpmPrimaryRecordId": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmL4Namespace": null,
+        "rpmDraftAuthorityRef": null,
+        "rpmDraftAuthoritySha256": null,
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "approval": "REVIEW_APPROVED",
+        "reviewStatus": "REVIEW_PASS",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "UNKNOWN",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [
+          {
+            "field": "rpmPrimaryRecordId",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL1",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL2",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL3",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL4",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmL4Namespace",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmDraftAuthorityRef",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "rpmDraftAuthoritySha256",
+            "status": "EVIDENCE_DEBT",
+            "reason": "EXACT_RPM_CROSSWALK_NOT_FOUND"
+          },
+          {
+            "field": "crossConceptKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "conditionKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "integrationPattern",
+            "status": "EVIDENCE_DEBT",
+            "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+          }
+        ],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-06-INEQUALITY",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EVIDENCE_DEBT"
+      }
+    },
+    {
+      "generatedUid": "ALITE-BSG26-B02-Q11-A09",
+      "localOrdinal": 9,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQid": 11,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02-q11.js",
+      "sourceShardGitSha": "867ed8392983467abe083b88709a357145a70f6a",
+      "l2": "H22-C-06-INEQUALITY",
+      "reviewStatus": "REVIEW_PASS",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "meta": {
+        "rpmL3": "부등식의 활용",
+        "rpmL4": "계수 조건",
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "difficultyBucket": 4,
+        "level": "상",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-INEQUALITY"
+      },
+      "question": {
+        "id": 9,
+        "uid": "ALITE-BSG26-B02-Q11-A09",
+        "level": "상",
+        "difficultyBucket": 4,
+        "category": "절댓값을 포함한 부등식",
+        "originalCategory": "절댓값 부등식",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "subUnit": "여러 가지 부등식",
+        "subUnitConfidence": "INDEPENDENT_SEMANTIC_REVIEWED",
+        "subUnitClassificationDepth": "student_solution_decisive_step",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "절댓값",
+          "부등식",
+          "절댓값의 구간별 해법"
+        ],
+        "wide": false,
+        "content": "실수 $a$에 대하여 부등식 $|x-a|+|x-(a+4)|\\le6$의 해집합이 $p\\le x\\le q$이다. $p+q=10$일 때, $a$의 값은?",
+        "choices": [
+          "$1$",
+          "$2$",
+          "$3$",
+          "$4$",
+          "$5$"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] 거리합의 부등식으로 표현되는 해구간의 양끝을 문자 $a$로 나타낸다.\n$x\\le a$이면 좌변은 $2a+4-2x$이므로 $x\\ge a-1$이다.\n$x\\ge a+4$이면 좌변은 $2x-2a-4$이므로 $x\\le a+5$이다.\n두 기준점 사이에서는 거리합이 4로 조건을 만족한다.\n따라서 해집합은 $a-1\\le x\\le a+5$이고 $p+q=2a+4=10$이다.\n이를 풀면 $a=3$이다.\n따라서 정답은 ③이다.",
+        "sourceType": "generated",
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "rpmRecordId": "H1-RPM-185",
+        "rpmL3": "부등식의 활용",
+        "rpmL4": "계수 조건",
+        "rpmSemanticSourceScope": "2022/공통수학1/H22-C-06-EQUATION_APPLICATION",
+        "semanticClassificationStatus": "EXISTING_RPM_REVIEW_APPROVED",
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-BSG26-B02-Q11-A09",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-06",
+          "subUnitKey": "H22-C-06-INEQUALITY",
+          "rpmPrimaryRecordId": null,
+          "rpmL1": null,
+          "rpmL2": null,
+          "rpmL3": null,
+          "rpmL4": null,
+          "rpmL4Namespace": null,
+          "rpmDraftAuthorityRef": null,
+          "rpmDraftAuthoritySha256": null,
+          "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+          "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+          "difficultyBucket": 4,
+          "level": "상",
+          "crossConceptKeys": null,
+          "conditionKeys": null,
+          "integrationPattern": null,
+          "approval": "REVIEW_APPROVED",
+          "reviewStatus": "REVIEW_PASS",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "UNKNOWN",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "UNKNOWN",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "UNKNOWN",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [
+            {
+              "field": "rpmPrimaryRecordId",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "rpmL1",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "rpmL2",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "rpmL3",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "rpmL4",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "rpmL4Namespace",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "rpmDraftAuthorityRef",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "rpmDraftAuthoritySha256",
+              "status": "EVIDENCE_DEBT",
+              "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+            },
+            {
+              "field": "crossConceptKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "conditionKeys",
+              "status": "EVIDENCE_DEBT",
+              "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+            },
+            {
+              "field": "integrationPattern",
+              "status": "EVIDENCE_DEBT",
+              "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+            }
+          ],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-06-INEQUALITY",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EVIDENCE_DEBT"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-BSG26-B02-Q11-A09",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-INEQUALITY",
+        "rpmPrimaryRecordId": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmL4Namespace": null,
+        "rpmDraftAuthorityRef": null,
+        "rpmDraftAuthoritySha256": null,
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "difficultyBucket": 4,
+        "level": "상",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "approval": "REVIEW_APPROVED",
+        "reviewStatus": "REVIEW_PASS",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "UNKNOWN",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "UNKNOWN",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "UNKNOWN",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [
+          {
+            "field": "rpmPrimaryRecordId",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "rpmL1",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "rpmL2",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "rpmL3",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "rpmL4",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "rpmL4Namespace",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "rpmDraftAuthorityRef",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "rpmDraftAuthoritySha256",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM_CROSSWALK_PARENT_OR_LABEL_MISMATCH"
+          },
+          {
+            "field": "crossConceptKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CROSSCONCEPTKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "conditionKeys",
+            "status": "EVIDENCE_DEBT",
+            "reason": "CONDITIONKEYS_NO_EXACT_LEGACY_EVIDENCE"
+          },
+          {
+            "field": "integrationPattern",
+            "status": "EVIDENCE_DEBT",
+            "reason": "INTEGRATIONPATTERN_NO_EXACT_LEGACY_EVIDENCE"
+          }
+        ],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-06-INEQUALITY",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EVIDENCE_DEBT"
+      }
+    }
+  ]
+}
