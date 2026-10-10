@@ -19,7 +19,15 @@ export function createFilesToolTransport({ files, fsApi = fs, scratchDirectory =
       const args = { surface:'library', library_path:parent, include_folders:false, limit:100 };
       if (cursor) args.cursor=cursor;
       const page=await files.files__list(args);
-      if (page.warnings?.length) throw Error('LIBRARY_LIST_INCOMPLETE:' + page.warnings.join(';'));
+      if (page.warnings?.length) {
+        // A fresh examination has no TECHNICAL/GPT2_V2 directory yet. The
+        // connector reports this exact missing-parent warning, not an empty
+        // listing. Treat only that specific case as absent; never translate
+        // authorization failures or truncated listings into an empty folder.
+        if (!cursor && (!page.items || page.items.length === 0) && !page.next_cursor &&
+            page.warnings.every(w => w === 'Library path not found: ' + parent)) return null;
+        throw Error('LIBRARY_LIST_INCOMPLETE:' + page.warnings.join(';'));
+      }
       const found=page.items?.filter(x=>x.kind==='file'&&x.path===p)||[];
       if(found.length>1)throw Error('LIBRARY_NON_UNIQUE_CANONICAL_PATH');
       if(found.length===1)return found[0];

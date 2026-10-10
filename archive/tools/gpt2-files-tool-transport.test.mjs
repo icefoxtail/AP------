@@ -49,3 +49,40 @@ test('Files adapter refuses metadata in place of materialized remote bytes',asyn
  const t=createFilesToolTransport({files});
  await assert.rejects(()=>t.getRaw('/x/y.json'),/LIBRARY_MATERIALIZE_FAILED/);
 });
+
+
+test('Files transport treats only exact missing parent as absent and then creates it', async t => {
+  const tmp=await fs.mkdtemp(path.join(os.tmpdir(),'gpt2-fresh-'));
+  t.after(()=>fs.rm(tmp,{recursive:true,force:true}));
+  const target='/Archive2-GPT/generations/H1_GPT2_20261006/B/23_금당고_1학기_중간_고1_기출/TECHNICAL/GPT2_V2/handoffs/R3.json';
+  const parent=path.posix.dirname(target);
+  let present=false, bytes=null;
+  const files={
+    async files__list({library_path}) {
+      assert.equal(library_path,parent);
+      return present ? {items:[{kind:'file',path:target,file_id:'canary'}],warnings:[],next_cursor:null}
+        : {items:[],warnings:['Library path not found: '+parent],next_cursor:null};
+    },
+    async files__materialize() {const p=path.join(tmp,'remote.json');await fs.writeFile(p,bytes);return {artifacts:[{path:p}],warnings:[]};},
+    async files__manage_library({operations}) {
+      assert.equal(operations[0].operation,'create_folder');
+      assert.equal(operations[0].path,parent);
+      assert.equal(operations[1].operation,'upload');
+      bytes=await fs.readFile(operations[1].container_path);
+      present=true;
+      return {results:[{status:'succeeded'},{status:'succeeded',path:target,file_id:'canary'}]};
+    },
+  };
+  const a=createFilesToolTransport({files,scratchDirectory:tmp});
+  assert.equal(await a.getRaw(target),null);
+  assert.equal((await a.uploadCreateOnly(target,Buffer.from('B4 canary'))).path,target);
+  assert.deepEqual(await a.getRaw(target),Buffer.from('B4 canary'));
+});
+
+test('Files transport fails closed for access errors and mixed missing-parent warnings',async()=>{
+  const target='/x/remote.json';
+  for(const warnings of [['permission denied'],['Library path not found: /x','permission denied']]){
+    const files={files__list:async()=>({items:[],warnings,next_cursor:null}),files__materialize:async()=>{},files__manage_library:async()=>{}};
+    await assert.rejects(createFilesToolTransport({files}).getRaw(target),/LIBRARY_LIST_INCOMPLETE/);
+  }
+});
