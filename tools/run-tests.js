@@ -64,6 +64,10 @@ const requiredCommands = [
     args: ['--check', 'archive/tools/review-evidence-gate.mjs']
   },
   {
+    label: 'archive/tools/gpt2-one-shot-closeout.test.mjs',
+    args: ['--test', 'archive/tools/gpt2-one-shot-closeout.test.mjs']
+  },
+  {
     label: 'archive/tools/review-evidence-gate.test.mjs',
     args: ['--test', 'archive/tools/review-evidence-gate.test.mjs']
   },
