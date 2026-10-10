@@ -228,3 +228,32 @@ jobs:
             "${quality_args[@]}" "${gpt_args[@]}" --stage "$STAGE" \
             --exam "$GITHUB_WORKSPACE/target/$EXAM" \
             --evidence "$GITHUB_WORKSPACE/target/$EVIDENCE" --json
+
+      - name: Seal GPT stage with canonical V2 CLI
+        if: steps.args.outputs.execution_line == 'GPT_SCHEDULED'
+        shell: bash
+        env:
+          STAGE: ${{ steps.args.outputs.stage }}
+          EXAM: ${{ steps.args.outputs.exam }}
+          EVIDENCE: ${{ steps.args.outputs.evidence }}
+          CAMPAIGN: ${{ steps.args.outputs.campaign_id }}
+          STREAM: ${{ steps.args.outputs.stream }}
+        run: |
+          set -euo pipefail
+          exam_uid="$(basename "$EXAM" .js)"
+          node validator-src/archive/tools/gpt2-validate-and-seal.mjs \
+            --stage "$STAGE" \
+            --exam "$GITHUB_WORKSPACE/target/$EXAM" \
+            --evidence "$GITHUB_WORKSPACE/target/$EVIDENCE" \
+            --asset-root "$GITHUB_WORKSPACE/target/archive" \
+            --output-root "$RUNNER_TEMP/gpt2-seals" \
+            --campaign-id "$CAMPAIGN" --stream "$STREAM" --exam-uid "$exam_uid"
+
+      - name: Upload immutable GPT V2 seal and handoff
+        if: success() && steps.args.outputs.execution_line == 'GPT_SCHEDULED'
+        uses: actions/upload-artifact@v4
+        with:
+          name: gpt2-native-seal-${{ github.event.issue.number }}-${{ github.run_id }}
+          path: ${{ runner.temp }}/gpt2-seals
+          if-no-files-found: error
+          retention-days: 30
