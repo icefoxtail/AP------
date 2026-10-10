@@ -10,4 +10,4 @@ python3 -m http.server 4173
 
 Open `http://localhost:4173/archive/prototypes/ap-galaxy/`.
 
-The generated art in `assets/` is used as image assets. `design-reference.png` is an internal visual target, not a page background. Unit constellation links use actual catalog `L2` / `standardUnit` tags and are labeled as catalog exploration; tag presence does not mean review completion.
+The generated art in `assets/` is used as image assets. `design-reference.png` is an internal visual target, not a page background. The unit map draws a live line from the selected exam to other filtered schools that share the same actual catalog `L2` / `standardUnit` tag. The current catalog has no `L3` values, so the UI states that these are broader unit-tag links. Tag presence does not mean review completion, and changing grade, school, year, search, or unit filters recomputes the links.
