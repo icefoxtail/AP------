@@ -132,7 +132,8 @@
         "fourDistinctMarkedIntersections": true,
         "normalizedGraphExactForAnyHAndD": true,
         "chrome": "NOT_TESTED"
-      }
+      },
+      "difficultyCorrectionRationale": "0<k<8로 일곱 정수를 얻어 곱하는 직접 계산형이므로 중/3으로 조정."
     },
     {
       "slot": "B1",
@@ -246,35 +247,36 @@
       "slot": "C1",
       "uid": "ALITE-GEUMDANG25-2FINAL-Q19-C1",
       "answer": "①",
-      "value": 8,
-      "reverseStemFinding": "최종 발문에서 네 서로 다른 원상 조건을 읽고 |(x−h)^2−d|=k의 두 제곱방정식에서 각 근의 수를 역산했다.",
-      "rpmNecessity": "상수함숫값 k가 네 서로 다른 원상을 갖는 필요충분조건 판정이 결정 단계다.",
+      "value": -4,
+      "reverseStemFinding": "네 근 조건 0<k<9로 k=1,…,8을 정한 뒤, Q²−k²의 상수항을 비에타로 네 근의 곱에 연결하고 합산",
+      "rpmNecessity": "절댓값 방정식의 네 실근 조건과 사차식의 비에타 정리를 함께 적용해 Pₖ=25−k²를 유도",
       "distractorRoutes": [
         {
           "index": "②",
-          "mistake": "가장 큰 유효값 8을 빠뜨려 1부터 7까지 일곱 개로 셈"
+          "mistake": "25−k² 대신 k²−25로 부호를 바꾸어 합산: 204−200=4"
         },
         {
           "index": "③",
-          "mistake": "경계 k=d=9를 유효하다고 포함해 9개로 셈"
+          "mistake": "합산 대신 가능한 k의 개수 8을 답함"
         },
         {
           "index": "④",
-          "mistake": "0부터 9까지 경계를 모두 허용하여 열 개로 셈"
+          "mistake": "k=8 경계를 빠뜨려 k=1,…,7만 합산: 7·25−140=35"
         },
         {
           "index": "⑤",
-          "mistake": "양수 조건을 놓치고 −1부터 9까지 세어 11"
+          "mistake": "네 근 조건의 경계 k=9를 포함해 k=1,…,9를 합산: 9·25−285=−60"
         }
       ],
       "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
-      "solutionVisual": "ADD_FOUR_INTERSECTION_GRAPH",
+      "solutionVisual": "NORMALIZED_FOUR_ROOT_GRAPH_AND_VIETA_PRODUCT",
       "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-C1-solution.svg",
       "decision": "KEEP",
       "mathProofType": "CREATOR_CASE_ANALYSIS",
       "svgStaticEvidence": {
         "fourDistinctMarkedIntersections": true,
         "normalizedGraphExactForAnyHAndD": true,
+        "rootProductExampleK1": 24,
         "chrome": "NOT_TESTED"
       }
     },
@@ -300,7 +302,7 @@
         },
         {
           "index": "④",
-          "mistake": "d=10 대신 2d=20을 잘못 사용해 제곱수쌍 1,9를 고르고 차 9−1=8을 k로 사용"
+          "mistake": "d−k=4, d+k=16인 제곱수쌍을 찾은 뒤 k를 두 제곱근의 곱으로 착각하여 √4·√16=8"
         }
       ],
       "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
@@ -327,11 +329,11 @@
           "mistake": "모든 k의 네 근 제곱합 대신 가능한 k의 개수 11을 답함"
         },
         {
-          "index": "②",
+          "index": "③",
           "mistake": "근 제곱합 대신 가능한 k 자체의 합 1+…+11=66을 계산"
         },
         {
-          "index": "③",
+          "index": "②",
           "mistake": "k=11을 빠뜨려 10개의 k만 곱해 10·148=1480"
         },
         {

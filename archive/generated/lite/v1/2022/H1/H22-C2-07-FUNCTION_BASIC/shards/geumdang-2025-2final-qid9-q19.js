@@ -187,8 +187,8 @@ window.generatedLiteQuestions.push(...[
   {
     "id": 3,
     "uid": "ALITE-GEUMDANG25-2FINAL-Q19-A3",
-    "level": "상",
-    "difficultyBucket": 4,
+    "level": "중",
+    "difficultyBucket": 3,
     "category": "상수함수의 치역",
     "originalCategory": "함수",
     "standardCourse": "공통수학2",
@@ -268,8 +268,8 @@ window.generatedLiteQuestions.push(...[
         "COND_INTEGER",
         "COND_DISTINCT_ROOTS"
       ],
-      "difficultyBucket": 4,
-      "level": "상",
+      "difficultyBucket": 3,
+      "level": "중",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
@@ -312,7 +312,7 @@ window.generatedLiteQuestions.push(...[
       "$6$"
     ],
     "answer": "④",
-    "solution": "$f(x)=k$를 풀면 $(x-4)^2=4+k$ 또는 $(x-4)^2=4-k$이다. 첫 식은 두 실근을 갖고, 둘째 식은 $4-k>0$일 때 두 실근을 갖는다. 네 실근 조건은 $0<k<4$이다. 따라서 양의 정수 k는 1부터 3까지이고 개수는 $3$이다.",
+    "solution": "주어진 방정식을 풀면 $(x-4)^2=4+k$ 또는 $(x-4)^2=4-k$이다. 첫 식은 두 실근을 갖고, 둘째 식은 $4-k>0$일 때 두 실근을 갖는다. 네 실근 조건은 $0<k<4$이다. 따라서 양의 정수 k는 1부터 3까지이고 개수는 $3$이다.",
     "solutionImage": "assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-B1-solution.svg",
     "solutionImageAlt": "절댓값 이차함수와 네 교점을 표시한 해설 그래프",
     "solutionImageCaption": "0<k<d에서 수평선 y=k는 그래프와 네 점에서 만난다.",
@@ -579,19 +579,19 @@ window.generatedLiteQuestions.push(...[
       "서로 다른 네 실근"
     ],
     "wide": false,
-    "content": "양의 정수 $k$에 대하여 방정식 $|(x-2)^2-9|=k$가 서로 다른 네 실근을 갖도록 하는 $k$의 개수는?",
+    "content": "양의 정수 $k$에 대하여 방정식 $|(x-2)^2-9|=k$가 서로 다른 네 실근을 갖는다. 가능한 각 $k$에 대해 네 실근의 곱을 $P_k$라 할 때, 모든 가능한 $k$에 대한 $P_k$의 합은?",
     "choices": [
+      "$-4$",
+      "$4$",
       "$8$",
-      "$7$",
-      "$9$",
-      "$10$",
-      "$11$"
+      "$35$",
+      "$-60$"
     ],
     "answer": "①",
-    "solution": "$f(x)=k$를 풀면 $(x-2)^2=9+k$ 또는 $(x-2)^2=9-k$이다. 첫 식은 두 실근을 갖고, 둘째 식은 $9-k>0$일 때 두 실근을 갖는다. 네 실근 조건은 $0<k<9$이다. 따라서 양의 정수 k는 1부터 8까지이고 개수는 $8$이다.",
+    "solution": "$(x-2)^2-9$를 $Q$라 두면 $Q=\\pm k$이므로 네 근은 $Q^2-k^2=0$의 네 근이다. 네 실근을 얻으려면 $0<k<9$여서 가능한 정수는 $1,\\ldots,8$이다. $Q=x^2-4x-5$이므로 $Q^2-k^2$는 최고차항 계수가 1인 사차식이고 상수항은 $25-k^2$이다. 비에타 정리에 따라 네 근의 곱 $P_k=25-k^2$. 따라서 모든 곱의 합은 $8\\cdot25-(1^2+\\cdots+8^2)=200-204=-4$이다.",
     "solutionImage": "assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-C1-solution.svg",
-    "solutionImageAlt": "절댓값 이차함수와 네 교점을 표시한 해설 그래프",
-    "solutionImageCaption": "0<k<d에서 수평선 y=k는 그래프와 네 점에서 만난다.",
+    "solutionImageAlt": "정규화한 네 교점 그래프와 k=1에서 네 근의 곱 P₁=24, 전체 합 Σ(25−k²)=−4를 함께 보이는 그림",
+    "solutionImageCaption": "0<k<9에서 k=1,…,8이며, 비에타 정리로 Pₖ=25−k²를 합한다.",
     "solutionImageSize": "full",
     "sourceKind": "generated",
     "sourceType": "generated",

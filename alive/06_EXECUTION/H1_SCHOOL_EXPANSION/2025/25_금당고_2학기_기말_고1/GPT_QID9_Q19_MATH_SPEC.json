@@ -10,7 +10,8 @@
     "(x-h)^2=d-k gives two distinct roots iff k<d.",
     "k>0 ensures the root pairs do not coincide.",
     "Four integer roots require d-k,d+k to be distinct positive perfect squares.",
-    "For Q19-C3, with h=5,d=12, the four roots pair as h±√(d+k), h±√(d−k); their squared sum is 4h²+4d=148, independent of k, and k=1,…,11."
+    "For Q19-C3, with h=5,d=12, the four roots pair as h±√(d+k), h±√(d−k); their squared sum is 4h²+4d=148, independent of k, and k=1,…,11.",
+    "For Q19-C1, Q=(x−2)^2−9=x²−4x−5; the monic quartic Q²−k² has constant term 25−k², which equals the product of its four roots."
   ],
   "candidateParameters": [
     {
@@ -59,8 +60,8 @@
       "slot": "C1",
       "h": 2,
       "d": 9,
-      "mode": "count",
-      "value": 8
+      "mode": "sum_of_four_root_products",
+      "value": -4
     },
     {
       "slot": "C2",
