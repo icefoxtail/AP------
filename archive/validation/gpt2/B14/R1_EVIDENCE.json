@@ -1,0 +1,1264 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "kind": "R1_INDEPENDENT_QUALITY_REVIEW_AND_PINPOINT_REPAIR",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "GPT_SCHEDULED",
+  "campaignId": "H1_GPT2_20261006",
+  "stream": "B",
+  "examUid": "19_금당고_1학기_중간_고1_기출",
+  "stage": "R1",
+  "inputArtifactSha": "0698f0139762e1a55208d19b618be2cdef899a74",
+  "finalArtifactSha": "0698f0139762e1a55208d19b618be2cdef899a74",
+  "artifactSha": "0698f0139762e1a55208d19b618be2cdef899a74",
+  "artifactSha256": "6c89b4dd4480ce717f2bf626e0796dfe5e263fd5ad9fb89224fbc50eb8d2309f",
+  "denominator": 22,
+  "sourceAuthority": "codex/source-only-h1-1mid-2019-2024-except-gangnam-20261005@b152d00f8c1daa7ba7f926565fc51d8aa10fc4d3",
+  "sourceRef": "archive/exams/original/high/h1/1mid/19_금당고_1학기_중간_고1_기출.js",
+  "sourceGitBlobSha": "38b903b89272008ad03ea003e76141dd6c02361d",
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "registryPath": "archive/data/gpt-quality-calibration-registry-v2.json",
+    "registryGitBlobSha": "6da229ad4a57d93a791947bb63f668a1a81b16cc",
+    "registrySha256": "41796312be0f00a88d8f1eabb257a0b335cde31f851dc96084b14fde28e5bd64",
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949",
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "representativeQid": 1,
+        "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "observation": "내분점 P=(1,6), 중점 M=(3,8)을 따로 계산하고 거리 2√2까지 실제 계산식으로 연결. 단순 답만 제시하지 않음.",
+        "visual": {
+          "qid": 12,
+          "path": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q12-solution.svg",
+          "gitBlobSha": "4509f2fcb9b683cb8c2d3474d93d2c3231deb928",
+          "sha256": "5ffb4c6c9013f95bed608dc656f980001f175e4d0ceb12cd1b287ba747440555",
+          "observation": "원 접점과 반지름을 선분/축 실제 primitive에 대응. 실제 svg bytes fetched; render not rerun."
+        },
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "내분점 P=(1,6), 중점 M=(3,8)을 따로 계산하고 거리 2√2까지 실제 계산식으로 연결. 단순 답만 제시하지 않음.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE"
+            ]
+          },
+          {
+            "qid": 12,
+            "solutionSha256": "a555355216573e25a87a2b09d6164a6f02b0d688bc01e0bacac1eca42dead171",
+            "visualSha256": "5ffb4c6c9013f95bed608dc656f980001f175e4d0ceb12cd1b287ba747440555",
+            "observation": "원의 중심 (a,b)가 평행이동하면 (a-4,b-2)로 바뀌며, 원이 축에 접하는 조건을 실제 절댓값 식으로 연결했다. 원 접점과 반지름을 선분/축 실제 primitive에 대응. 실제 svg bytes fetched; render not rerun.",
+            "axes": [
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "representativeQid": 1,
+        "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "observation": "두 점 거리에서 좌표차 (-5,5) 제곱합=50, 거리 √50=5√2로 이어지는 수식.",
+        "visual": {
+          "qid": 2,
+          "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+          "gitBlobSha": "f82defa94ca5ec41e76f7bf5977fcfa37db888ca",
+          "sha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+          "observation": "직선 두 기울기 -1/3 및 k/2의 수직 관계를 실제 선 구조와 대조."
+        },
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "두 점 거리에서 좌표차 (-5,5) 제곱합=50, 거리 √50=5√2로 이어지는 수식.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE"
+            ]
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+            "observation": "기울기 -1/3 및 k/2의 수직 조건을 계산식 (-1/3)(k/2)=-1로 연결한다. 직선 두 기울기 -1/3 및 k/2의 수직 관계를 실제 선 구조와 대조.",
+            "axes": [
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12",
+        "sha256": "c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+        "representativeQid": 1,
+        "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+        "observation": "원소와 부분집합의 혼동이 일어나는 ①~⑤ 모두를 각각 검산.",
+        "visual": {
+          "qid": 6,
+          "path": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q06-solution.svg",
+          "gitBlobSha": "2c092797d422e16b8893a6fd19f188f2cb3e7125",
+          "sha256": "b561aec78467dac0c4783f00fef9eae8eab15ff38f77b0a0fa0e0a0096d09b88",
+          "observation": "전체 30, A 20, B 15의 Venn diagram에서 최소 교집합의 실제 영역을 구분. 제일고 q18 known geometry defect excluded."
+        },
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+            "observation": "원소와 부분집합의 혼동이 일어나는 ①~⑤ 모두를 각각 검산.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE"
+            ]
+          },
+          {
+            "qid": 6,
+            "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+            "visualSha256": "b561aec78467dac0c4783f00fef9eae8eab15ff38f77b0a0fa0e0a0096d09b88",
+            "observation": "포함배제 n(A∪B)=20+15-n(A∩B)≤30에서 교집합 최소 5를 얻고 Venn diagram에 반영한다. 전체 30, A 20, B 15의 Venn diagram에서 최소 교집합의 실제 영역을 구분. 제일고 q18 known geometry defect excluded.",
+            "axes": [
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ]
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "observation": "복성고 R2 false PASS/R3 reopening 기록에서 label/line coordinate mismatch, math decision-block omission, TeX escape, PT/TPL 부정확한 강제매핑을 피해야 함. README physically fetched."
+    },
+    "shaMethod": "Pinned actual GitHub file blob SHA, selected actual solution text and referenced SVG read via connector before current B14 authoring; SHA256 details corroborated against B13 current-generation evidence (not external PASS authority).",
+    "sampleReadBeforeWork": true,
+    "knownGoldenQ18VisualDefectExcluded": true
+  },
+  "artifactDispositions": {
+    "artifactSha": "0698f0139762e1a55208d19b618be2cdef899a74",
+    "rows": [
+      {
+        "qid": 2,
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "reason": "Do not invent an exact ACTIVE PT/TPL mapping; precise registry lookup must be completed before canonical validator closure. x-1 인수의 한 점 대입, 추가 조건 없음",
+        "metaDebtReason": "Do not invent an exact ACTIVE PT/TPL mapping; precise registry lookup must be completed before canonical validator closure. x-1 인수의 한 점 대입, 추가 조건 없음"
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "reason": "Do not invent an exact ACTIVE PT/TPL mapping; precise registry lookup must be completed before canonical validator closure. 중근 1로 차이식 -3(x-1)^2 도출; x=-1 대입",
+        "metaDebtReason": "Do not invent an exact ACTIVE PT/TPL mapping; precise registry lookup must be completed before canonical validator closure. 중근 1로 차이식 -3(x-1)^2 도출; x=-1 대입"
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "reason": "Do not invent an exact ACTIVE PT/TPL mapping; precise registry lookup must be completed before canonical validator closure. 기간 d는 ceil(N/r); 일일 생산량과 정수 자동차 대수",
+        "metaDebtReason": "Do not invent an exact ACTIVE PT/TPL mapping; precise registry lookup must be completed before canonical validator closure. 기간 d는 ceil(N/r); 일일 생산량과 정수 자동차 대수"
+      }
+    ]
+  },
+  "metaDebts": [
+    {
+      "qid": 2,
+      "metaDebtFields": [
+        "templateKey"
+      ],
+      "reason": "Do not invent an exact ACTIVE PT/TPL mapping; precise registry lookup must be completed before canonical validator closure. x-1 인수의 한 점 대입, 추가 조건 없음"
+    },
+    {
+      "qid": 19,
+      "metaDebtFields": [
+        "templateKey"
+      ],
+      "reason": "Do not invent an exact ACTIVE PT/TPL mapping; precise registry lookup must be completed before canonical validator closure. 중근 1로 차이식 -3(x-1)^2 도출; x=-1 대입"
+    },
+    {
+      "qid": 20,
+      "metaDebtFields": [
+        "templateKey"
+      ],
+      "reason": "Do not invent an exact ACTIVE PT/TPL mapping; precise registry lookup must be completed before canonical validator closure. 기간 d는 ceil(N/r); 일일 생산량과 정수 자동차 대수"
+    }
+  ],
+  "sourceProblemVisualBindings": [
+    {
+      "qid": 11,
+      "sourcePinnedPath": "archive/assets/images/19_금당고_1학기_중간_고1_기출/q11.png",
+      "productionRelativeRef": "assets/images/19_금당고_1학기_중간_고1_기출/q11.png",
+      "sourceGitBlobSha": "fcd6e034d5349c873e9dc46e2b45d8b567320e93",
+      "fetchedFromPinnedGit": true,
+      "visuallyRead": true,
+      "libraryFilePhysical": true,
+      "status": "SOURCE_ASSET_PRESENT_BLOB_VERIFIED"
+    },
+    {
+      "qid": 13,
+      "sourcePinnedPath": "archive/assets/images/19_금당고_1학기_중간_고1_기출/q13.png",
+      "productionRelativeRef": "assets/images/19_금당고_1학기_중간_고1_기출/q13.png",
+      "sourceGitBlobSha": "e1e2987e1a573f213bfda45d6ab8578dd296eb1d",
+      "fetchedFromPinnedGit": true,
+      "visuallyRead": true,
+      "libraryFilePhysical": true,
+      "status": "SOURCE_ASSET_PRESENT_BLOB_VERIFIED"
+    },
+    {
+      "qid": 15,
+      "sourcePinnedPath": "archive/assets/images/19_금당고_1학기_중간_고1_기출/q15.png",
+      "productionRelativeRef": "assets/images/19_금당고_1학기_중간_고1_기출/q15.png",
+      "sourceGitBlobSha": "fce2331c867cbcce51c3ad7a955ddd5b73a8b401",
+      "fetchedFromPinnedGit": true,
+      "visuallyRead": true,
+      "libraryFilePhysical": true,
+      "status": "SOURCE_ASSET_PRESENT_BLOB_VERIFIED"
+    },
+    {
+      "qid": 18,
+      "sourcePinnedPath": "archive/assets/images/19_금당고_1학기_중간_고1_기출/q18.png",
+      "productionRelativeRef": "assets/images/19_금당고_1학기_중간_고1_기출/q18.png",
+      "sourceGitBlobSha": "778761b10f0ada5974c19b7ef3d9a168396abf61",
+      "fetchedFromPinnedGit": true,
+      "visuallyRead": true,
+      "libraryFilePhysical": true,
+      "status": "SOURCE_ASSET_PRESENT_BLOB_VERIFIED"
+    },
+    {
+      "qid": 19,
+      "sourcePinnedPath": "archive/assets/images/19_금당고_1학기_중간_고1_기출/q19.png",
+      "productionRelativeRef": "assets/images/19_금당고_1학기_중간_고1_기출/q19.png",
+      "sourceGitBlobSha": "b9dc1e0c5d1d1595f6193d1dabffc56cbc871937",
+      "fetchedFromPinnedGit": true,
+      "visuallyRead": true,
+      "libraryFilePhysical": true,
+      "status": "SOURCE_ASSET_PRESENT_BLOB_VERIFIED"
+    },
+    {
+      "qid": 21,
+      "sourcePinnedPath": "archive/assets/images/19_금당고_1학기_중간_고1_기출/q21.png",
+      "productionRelativeRef": "assets/images/19_금당고_1학기_중간_고1_기출/q21.png",
+      "sourceGitBlobSha": "2317e60bc9c0aad32938f6152b2e37d4a61fcfd2",
+      "fetchedFromPinnedGit": true,
+      "visuallyRead": true,
+      "libraryFilePhysical": true,
+      "status": "SOURCE_ASSET_PRESENT_BLOB_VERIFIED"
+    }
+  ],
+  "solutionVisualBindings": [],
+  "independentAnswerFreeze": {
+    "originalReviewCandidate": "R1/independent-review-CANDIDATE-20261009.json",
+    "priorCleanQids": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "priorFreezeRef": "R1/independent-freeze-PARTIAL-20261009.json",
+    "priorFreezeSha256": "ca37bbd1f0e2bcff21ea6382a63637fd505c9198226085064387446d209a8222",
+    "freshQids": [
+      1,
+      2,
+      3
+    ],
+    "freshFreezeRef": "R1/R1-fresh-independent-freeze-q1-q3-20261009.json",
+    "freshFreezeSha256": "7be81f53811e91500351b55761ddf069cffbee11d52cba8e4e59b13a271f2439",
+    "reconciliationRef": "R1/R1-freeze-reconciliation-22of22-20261009.json",
+    "reconciliationSha256": "c882dee6b8d67e0def21b63104bdb35b5b027b9e3cbd0b6b8bb4b0bddab7e0e0",
+    "originalSessionPreviouslyExposedQids": [
+      1,
+      2,
+      3
+    ],
+    "freshSessionIsolatedBeforeReveal": true,
+    "combinedMatchCount": 22,
+    "combinedMismatchCount": 0,
+    "denominator": 22
+  },
+  "changedQids": [],
+  "directDependencyQids": [],
+  "rows": [
+    {
+      "qid": 1,
+      "sourceMode": "ORIGINAL",
+      "independentAnswer": "①",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "INDEPENDENT_R1_4AXIS_REVIEW_WITH_FROZEN_MATCH",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "independentFreezeRef": "R1/R1-fresh-independent-freeze-q1-q3-20261009.json",
+      "independentFreezeSha256": "7be81f53811e91500351b55761ddf069cffbee11d52cba8e4e59b13a271f2439",
+      "historicalPreviouslyExposed": true,
+      "freshIndependentFreezeRef": "R1/R1-fresh-independent-freeze-q1-q3-20261009.json",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "c1e19e1ebc4d7628d227526b04d00987d9452f4a59f7c441ba46213f5be015da",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "qualityAxes": {
+        "questionLayout": "KEEP: grid + auto layout, no mechanical forced line break identified",
+        "solutionSmallBoard": "KEEP: solution follows conditions to decisive formulas/intermediate computation, answer reproducible",
+        "metaDifficulty": {
+          "level": "하",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "primaryMethod": "다항식의 뺄셈",
+          "L3L4": "independently assessed against concept in problem and solution",
+          "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+          "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "visual": "NO_PROBLEM_IMAGE_NEEDED_FOR_THIS_STUDENT_INPUT",
+        "curriculum": "KEEP: high-1 2019 mathematics (polynomial, complex, quadratic), no advanced technique invoked",
+        "semanticAudit": "INDEPENDENT_REVIEW_PERFORMED_NO_DEFINITE_EXAM_DEFECT"
+      },
+      "sourceImageSha": null,
+      "cardinality": "OBJECTIVE_FIVE_CHOICES_ONE_ANSWER"
+    },
+    {
+      "qid": 2,
+      "sourceMode": "ORIGINAL",
+      "independentAnswer": "③",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "INDEPENDENT_R1_4AXIS_REVIEW_WITH_FROZEN_MATCH",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "independentFreezeRef": "R1/R1-fresh-independent-freeze-q1-q3-20261009.json",
+      "independentFreezeSha256": "7be81f53811e91500351b55761ddf069cffbee11d52cba8e4e59b13a271f2439",
+      "historicalPreviouslyExposed": true,
+      "freshIndependentFreezeRef": "R1/R1-fresh-independent-freeze-q1-q3-20261009.json",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "23368983869571850a1fd132b6cf6f55df795a167059eeb5a89e24009be9f877",
+      "metaDebtFields": [
+        "templateKey"
+      ],
+      "metaDebtReason": "Do not invent an exact ACTIVE PT/TPL mapping; precise registry lookup must be completed before canonical validator closure. x-1 인수의 한 점 대입, 추가 조건 없음",
+      "qualityAxes": {
+        "questionLayout": "KEEP: grid + auto layout, no mechanical forced line break identified",
+        "solutionSmallBoard": "KEEP: solution follows conditions to decisive formulas/intermediate computation, answer reproducible",
+        "metaDifficulty": {
+          "level": "하",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "primaryMethod": "나머지정리",
+          "L3L4": "independently assessed against concept in problem and solution",
+          "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "visual": "NO_PROBLEM_IMAGE_NEEDED_FOR_THIS_STUDENT_INPUT",
+        "curriculum": "KEEP: high-1 2019 mathematics (polynomial, complex, quadratic), no advanced technique invoked",
+        "semanticAudit": "INDEPENDENT_REVIEW_PERFORMED_NO_DEFINITE_EXAM_DEFECT"
+      },
+      "sourceImageSha": null,
+      "cardinality": "OBJECTIVE_FIVE_CHOICES_ONE_ANSWER"
+    },
+    {
+      "qid": 3,
+      "sourceMode": "ORIGINAL",
+      "independentAnswer": "⑤",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "INDEPENDENT_R1_4AXIS_REVIEW_WITH_FROZEN_MATCH",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "independentFreezeRef": "R1/R1-fresh-independent-freeze-q1-q3-20261009.json",
+      "independentFreezeSha256": "7be81f53811e91500351b55761ddf069cffbee11d52cba8e4e59b13a271f2439",
+      "historicalPreviouslyExposed": true,
+      "freshIndependentFreezeRef": "R1/R1-fresh-independent-freeze-q1-q3-20261009.json",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "4f49cd868bb0ad2826655cb291958d697da2ce816685b4ff4b5f85694139f4e2",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "qualityAxes": {
+        "questionLayout": "KEEP: grid + auto layout, no mechanical forced line break identified",
+        "solutionSmallBoard": "KEEP: solution follows conditions to decisive formulas/intermediate computation, answer reproducible",
+        "metaDifficulty": {
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "primaryMethod": "다항식의 인수분해",
+          "L3L4": "independently assessed against concept in problem and solution",
+          "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+          "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "integrationPattern": "SEQUENTIAL"
+        },
+        "visual": "NO_PROBLEM_IMAGE_NEEDED_FOR_THIS_STUDENT_INPUT",
+        "curriculum": "KEEP: high-1 2019 mathematics (polynomial, complex, quadratic), no advanced technique invoked",
+        "semanticAudit": "INDEPENDENT_REVIEW_PERFORMED_NO_DEFINITE_EXAM_DEFECT"
+      },
+      "sourceImageSha": null,
+      "cardinality": "OBJECTIVE_FIVE_CHOICES_ONE_ANSWER"
+    },
+    {
+      "qid": 4,
+      "sourceMode": "ORIGINAL",
+      "independentAnswer": "④",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "INDEPENDENT_R1_4AXIS_REVIEW_WITH_FROZEN_MATCH",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "independentFreezeRef": "R1/independent-freeze-PARTIAL-20261009.json",
+      "independentFreezeSha256": "ca37bbd1f0e2bcff21ea6382a63637fd505c9198226085064387446d209a8222",
+      "historicalPreviouslyExposed": false,
+      "freshIndependentFreezeRef": null,
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "86a2232152a806b127d138795f68ba0f4fb5e173b933c74b47d3c915b018cea6",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "qualityAxes": {
+        "questionLayout": "KEEP: grid + auto layout, no mechanical forced line break identified",
+        "solutionSmallBoard": "KEEP: solution follows conditions to decisive formulas/intermediate computation, answer reproducible",
+        "metaDifficulty": {
+          "level": "하",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "primaryMethod": "허수 단위의 거듭제곱",
+          "L3L4": "independently assessed against concept in problem and solution",
+          "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+          "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        },
+        "visual": "NO_PROBLEM_IMAGE_NEEDED_FOR_THIS_STUDENT_INPUT",
+        "curriculum": "KEEP: high-1 2019 mathematics (polynomial, complex, quadratic), no advanced technique invoked",
+        "semanticAudit": "INDEPENDENT_REVIEW_PERFORMED_NO_DEFINITE_EXAM_DEFECT"
+      },
+      "sourceImageSha": null,
+      "cardinality": "OBJECTIVE_FIVE_CHOICES_ONE_ANSWER"
+    },
+    {
+      "qid": 5,
+      "sourceMode": "ORIGINAL",
+      "independentAnswer": "①",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "INDEPENDENT_R1_4AXIS_REVIEW_WITH_FROZEN_MATCH",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "independentFreezeRef": "R1/independent-freeze-PARTIAL-20261009.json",
+      "independentFreezeSha256": "ca37bbd1f0e2bcff21ea6382a63637fd505c9198226085064387446d209a8222",
+      "historicalPreviouslyExposed": false,
+      "freshIndependentFreezeRef": null,
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "8d802e847a2ebb20039a43a073979414e7e161ffe4ccb7d497a7dd4d0d742f33",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "qualityAxes": {
+        "questionLayout": "KEEP: grid + auto layout, no mechanical forced line break identified",
+        "solutionSmallBoard": "KEEP: solution follows conditions to decisive formulas/intermediate computation, answer reproducible",
+        "metaDifficulty": {
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "primaryMethod": "이차방정식의 허근 조건",
+          "L3L4": "independently assessed against concept in problem and solution",
+          "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+          "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_NATURAL_NUMBER"
+          ],
+          "integrationPattern": "SEQUENTIAL"
+        },
+        "visual": "NO_PROBLEM_IMAGE_NEEDED_FOR_THIS_STUDENT_INPUT",
+        "curriculum": "KEEP: high-1 2019 mathematics (polynomial, complex, quadratic), no advanced technique invoked",
+        "semanticAudit": "INDEPENDENT_REVIEW_PERFORMED_NO_DEFINITE_EXAM_DEFECT"
+      },
+      "sourceImageSha": null,
+      "cardinality": "OBJECTIVE_FIVE_CHOICES_ONE_ANSWER"
+    },
+    {
+      "qid": 6,
+      "sourceMode": "ORIGINAL",
+      "independentAnswer": "③",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "INDEPENDENT_R1_4AXIS_REVIEW_WITH_FROZEN_MATCH",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "independentFreezeRef": "R1/independent-freeze-PARTIAL-20261009.json",
+      "independentFreezeSha256": "ca37bbd1f0e2bcff21ea6382a63637fd505c9198226085064387446d209a8222",
+      "historicalPreviouslyExposed": false,
+      "freshIndependentFreezeRef": null,
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "bc98685349711f9f541d21e19b6efca9328a19bd1def7f4d35b6eb732c096e2c",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "qualityAxes": {
+        "questionLayout": "KEEP: grid + auto layout, no mechanical forced line break identified",
+        "solutionSmallBoard": "KEEP: solution follows conditions to decisive formulas/intermediate computation, answer reproducible",
+        "metaDifficulty": {
+          "level": "하",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "primaryMethod": "근과 계수의 관계",
+          "L3L4": "independently assessed against concept in problem and solution",
+          "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+          "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        },
+        "visual": "NO_PROBLEM_IMAGE_NEEDED_FOR_THIS_STUDENT_INPUT",
+        "curriculum": "KEEP: high-1 2019 mathematics (polynomial, complex, quadratic), no advanced technique invoked",
+        "semanticAudit": "INDEPENDENT_REVIEW_PERFORMED_NO_DEFINITE_EXAM_DEFECT"
+      },
+      "sourceImageSha": null,
+      "cardinality": "OBJECTIVE_FIVE_CHOICES_ONE_ANSWER"
+    },
+    {
+      "qid": 7,
+      "sourceMode": "ORIGINAL",
+      "independentAnswer": "⑤",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "INDEPENDENT_R1_4AXIS_REVIEW_WITH_FROZEN_MATCH",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "independentFreezeRef": "R1/independent-freeze-PARTIAL-20261009.json",
+      "independentFreezeSha256": "ca37bbd1f0e2bcff21ea6382a63637fd505c9198226085064387446d209a8222",
+      "historicalPreviouslyExposed": false,
+      "freshIndependentFreezeRef": null,
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "7ac8e0e901e403f854a3134c844df1408a0f03d634a79d98c274de35da8867c5",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "qualityAxes": {
+        "questionLayout": "KEEP: grid + auto layout, no mechanical forced line break identified",
+        "solutionSmallBoard": "KEEP: solution follows conditions to decisive formulas/intermediate computation, answer reproducible",
+        "metaDifficulty": {
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "primaryMethod": "서로 다른 두 실근의 판별식",
+          "L3L4": "independently assessed against concept in problem and solution",
+          "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+          "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        },
+        "visual": "NO_PROBLEM_IMAGE_NEEDED_FOR_THIS_STUDENT_INPUT",
+        "curriculum": "KEEP: high-1 2019 mathematics (polynomial, complex, quadratic), no advanced technique invoked",
+        "semanticAudit": "INDEPENDENT_REVIEW_PERFORMED_NO_DEFINITE_EXAM_DEFECT"
+      },
+      "sourceImageSha": null,
+      "cardinality": "OBJECTIVE_FIVE_CHOICES_ONE_ANSWER"
+    },
+    {
+      "qid": 8,
+      "sourceMode": "ORIGINAL",
+      "independentAnswer": "①",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "INDEPENDENT_R1_4AXIS_REVIEW_WITH_FROZEN_MATCH",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "independentFreezeRef": "R1/independent-freeze-PARTIAL-20261009.json",
+      "independentFreezeSha256": "ca37bbd1f0e2bcff21ea6382a63637fd505c9198226085064387446d209a8222",
+      "historicalPreviouslyExposed": false,
+      "freshIndependentFreezeRef": null,
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "5c8092fccb17dd4beecd0f11ab60a4be40de92cc3cec1265f4fd902575a438cf",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "qualityAxes": {
+        "questionLayout": "KEEP: grid + auto layout, no mechanical forced line break identified",
+        "solutionSmallBoard": "KEEP: solution follows conditions to decisive formulas/intermediate computation, answer reproducible",
+        "metaDifficulty": {
+          "level": "상",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "primaryMethod": "매개변수 항등 판별식",
+          "L3L4": "independently assessed against concept in problem and solution",
+          "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+          "templateKey": "TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        },
+        "visual": "NO_PROBLEM_IMAGE_NEEDED_FOR_THIS_STUDENT_INPUT",
+        "curriculum": "KEEP: high-1 2019 mathematics (polynomial, complex, quadratic), no advanced technique invoked",
+        "semanticAudit": "INDEPENDENT_REVIEW_PERFORMED_NO_DEFINITE_EXAM_DEFECT"
+      },
+      "sourceImageSha": null,
+      "cardinality": "OBJECTIVE_FIVE_CHOICES_ONE_ANSWER"
+    },
+    {
+      "qid": 9,
+      "sourceMode": "ORIGINAL",
+      "independentAnswer": "⑤",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "INDEPENDENT_R1_4AXIS_REVIEW_WITH_FROZEN_MATCH",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "independentFreezeRef": "R1/independent-freeze-PARTIAL-20261009.json",
+      "independentFreezeSha256": "ca37bbd1f0e2bcff21ea6382a63637fd505c9198226085064387446d209a8222",
+      "historicalPreviouslyExposed": false,
+      "freshIndependentFreezeRef": null,
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "246b252e1eba24fb44388a6a8095d944889ad2dc57a03e38ee0d32a6ae3e4117",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "qualityAxes": {
+        "questionLayout": "KEEP: grid + auto layout, no mechanical forced line break identified",
+        "solutionSmallBoard": "KEEP: solution follows conditions to decisive formulas/intermediate computation, answer reproducible",
+        "metaDifficulty": {
+          "level": "상",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "primaryMethod": "음수 실근의 제곱근",
+          "L3L4": "independently assessed against concept in problem and solution",
+          "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+          "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+          "crossConceptKeys": [
+            "CC_ROOTS_COEFFICIENTS"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        },
+        "visual": "NO_PROBLEM_IMAGE_NEEDED_FOR_THIS_STUDENT_INPUT",
+        "curriculum": "KEEP: high-1 2019 mathematics (polynomial, complex, quadratic), no advanced technique invoked",
+        "semanticAudit": "INDEPENDENT_REVIEW_PERFORMED_NO_DEFINITE_EXAM_DEFECT"
+      },
+      "sourceImageSha": null,
+      "cardinality": "OBJECTIVE_FIVE_CHOICES_ONE_ANSWER"
+    },
+    {
+      "qid": 10,
+      "sourceMode": "ORIGINAL",
+      "independentAnswer": "②",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "INDEPENDENT_R1_4AXIS_REVIEW_WITH_FROZEN_MATCH",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "independentFreezeRef": "R1/independent-freeze-PARTIAL-20261009.json",
+      "independentFreezeSha256": "ca37bbd1f0e2bcff21ea6382a63637fd505c9198226085064387446d209a8222",
+      "historicalPreviouslyExposed": false,
+      "freshIndependentFreezeRef": null,
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "b4297936e848dfef6cb68bae2f6d29112ff8ac7a36779b8e55ccc1c9fa19464c",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "qualityAxes": {
+        "questionLayout": "KEEP: grid + auto layout, no mechanical forced line break identified",
+        "solutionSmallBoard": "KEEP: solution follows conditions to decisive formulas/intermediate computation, answer reproducible",
+        "metaDifficulty": {
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "primaryMethod": "역수를 근으로 갖는 방정식",
+          "L3L4": "independently assessed against concept in problem and solution",
+          "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+          "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_NONZERO"
+          ],
+          "integrationPattern": "SEQUENTIAL"
+        },
+        "visual": "NO_PROBLEM_IMAGE_NEEDED_FOR_THIS_STUDENT_INPUT",
+        "curriculum": "KEEP: high-1 2019 mathematics (polynomial, complex, quadratic), no advanced technique invoked",
+        "semanticAudit": "INDEPENDENT_REVIEW_PERFORMED_NO_DEFINITE_EXAM_DEFECT"
+      },
+      "sourceImageSha": null,
+      "cardinality": "OBJECTIVE_FIVE_CHOICES_ONE_ANSWER"
+    },
+    {
+      "qid": 11,
+      "sourceMode": "ORIGINAL",
+      "independentAnswer": "⑤",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "INDEPENDENT_R1_4AXIS_REVIEW_WITH_FROZEN_MATCH",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "independentFreezeRef": "R1/independent-freeze-PARTIAL-20261009.json",
+      "independentFreezeSha256": "ca37bbd1f0e2bcff21ea6382a63637fd505c9198226085064387446d209a8222",
+      "historicalPreviouslyExposed": false,
+      "freshIndependentFreezeRef": null,
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "5364c9d62c4fdbf9ff607ce3f3ecd7b04de3786e2ff88816526bd4fb2b438c98",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "qualityAxes": {
+        "questionLayout": "KEEP: punctuation/math/choices semantic boundaries checked from student text; stack only for actual condition/보기 block",
+        "solutionSmallBoard": "KEEP: solution follows conditions to decisive formulas/intermediate computation, answer reproducible",
+        "metaDifficulty": {
+          "level": "상",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "primaryMethod": "복소수 거듭제곱의 주기",
+          "L3L4": "independently assessed against concept in problem and solution",
+          "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+          "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH"
+        },
+        "visual": "PINNED_SOURCE_PROBLEM_IMAGE_OPENED",
+        "curriculum": "KEEP: high-1 2019 mathematics (polynomial, complex, quadratic), no advanced technique invoked",
+        "semanticAudit": "INDEPENDENT_REVIEW_PERFORMED_NO_DEFINITE_EXAM_DEFECT"
+      },
+      "sourceImageSha": "fcd6e034d5349c873e9dc46e2b45d8b567320e93",
+      "cardinality": "OBJECTIVE_FIVE_CHOICES_ONE_ANSWER"
+    },
+    {
+      "qid": 12,
+      "sourceMode": "ORIGINAL",
+      "independentAnswer": "④",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "INDEPENDENT_R1_4AXIS_REVIEW_WITH_FROZEN_MATCH",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "independentFreezeRef": "R1/independent-freeze-PARTIAL-20261009.json",
+      "independentFreezeSha256": "ca37bbd1f0e2bcff21ea6382a63637fd505c9198226085064387446d209a8222",
+      "historicalPreviouslyExposed": false,
+      "freshIndependentFreezeRef": null,
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "0cb7c4c94d33df166995f4deac92abbf4e7ddeb79ef2cc14972c84dd18f5892c",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "qualityAxes": {
+        "questionLayout": "KEEP: grid + auto layout, no mechanical forced line break identified",
+        "solutionSmallBoard": "KEEP: solution follows conditions to decisive formulas/intermediate computation, answer reproducible",
+        "metaDifficulty": {
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "primaryMethod": "근의 방정식 대입",
+          "L3L4": "independently assessed against concept in problem and solution",
+          "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+          "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        },
+        "visual": "NO_PROBLEM_IMAGE_NEEDED_FOR_THIS_STUDENT_INPUT",
+        "curriculum": "KEEP: high-1 2019 mathematics (polynomial, complex, quadratic), no advanced technique invoked",
+        "semanticAudit": "INDEPENDENT_REVIEW_PERFORMED_NO_DEFINITE_EXAM_DEFECT"
+      },
+      "sourceImageSha": null,
+      "cardinality": "OBJECTIVE_FIVE_CHOICES_ONE_ANSWER"
+    },
+    {
+      "qid": 13,
+      "sourceMode": "ORIGINAL",
+      "independentAnswer": "②",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "INDEPENDENT_R1_4AXIS_REVIEW_WITH_FROZEN_MATCH",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "independentFreezeRef": "R1/independent-freeze-PARTIAL-20261009.json",
+      "independentFreezeSha256": "ca37bbd1f0e2bcff21ea6382a63637fd505c9198226085064387446d209a8222",
+      "historicalPreviouslyExposed": false,
+      "freshIndependentFreezeRef": null,
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "0b2d19ca19a62c64abf24afc1cf28f24a5e86a1930c9a0a5cafb35e1cbd8a2ae",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "qualityAxes": {
+        "questionLayout": "KEEP: grid + auto layout, no mechanical forced line break identified",
+        "solutionSmallBoard": "KEEP: solution follows conditions to decisive formulas/intermediate computation, answer reproducible",
+        "metaDifficulty": {
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "primaryMethod": "포물선과 직선의 교점",
+          "L3L4": "independently assessed against concept in problem and solution",
+          "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+          "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+          "crossConceptKeys": [
+            "CC_ROOTS_COEFFICIENTS"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        },
+        "visual": "PINNED_SOURCE_PROBLEM_IMAGE_OPENED",
+        "curriculum": "KEEP: high-1 2019 mathematics (polynomial, complex, quadratic), no advanced technique invoked",
+        "semanticAudit": "INDEPENDENT_REVIEW_PERFORMED_NO_DEFINITE_EXAM_DEFECT"
+      },
+      "sourceImageSha": "e1e2987e1a573f213bfda45d6ab8578dd296eb1d",
+      "cardinality": "OBJECTIVE_FIVE_CHOICES_ONE_ANSWER"
+    },
+    {
+      "qid": 14,
+      "sourceMode": "ORIGINAL",
+      "independentAnswer": "①",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "INDEPENDENT_R1_4AXIS_REVIEW_WITH_FROZEN_MATCH",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "independentFreezeRef": "R1/independent-freeze-PARTIAL-20261009.json",
+      "independentFreezeSha256": "ca37bbd1f0e2bcff21ea6382a63637fd505c9198226085064387446d209a8222",
+      "historicalPreviouslyExposed": false,
+      "freshIndependentFreezeRef": null,
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "97515be4fed7dcfdf2d27646c8cf688543fad3f173a8fd270f76a80537aecfd9",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "qualityAxes": {
+        "questionLayout": "KEEP: grid + auto layout, no mechanical forced line break identified",
+        "solutionSmallBoard": "KEEP: solution follows conditions to decisive formulas/intermediate computation, answer reproducible",
+        "metaDifficulty": {
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "primaryMethod": "이차함수 대칭축과 구간 최댓값",
+          "L3L4": "independently assessed against concept in problem and solution",
+          "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+          "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "integrationPattern": "SEQUENTIAL"
+        },
+        "visual": "NO_PROBLEM_IMAGE_NEEDED_FOR_THIS_STUDENT_INPUT",
+        "curriculum": "KEEP: high-1 2019 mathematics (polynomial, complex, quadratic), no advanced technique invoked",
+        "semanticAudit": "INDEPENDENT_REVIEW_PERFORMED_NO_DEFINITE_EXAM_DEFECT"
+      },
+      "sourceImageSha": null,
+      "cardinality": "OBJECTIVE_FIVE_CHOICES_ONE_ANSWER"
+    },
+    {
+      "qid": 15,
+      "sourceMode": "ORIGINAL",
+      "independentAnswer": "④",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "INDEPENDENT_R1_4AXIS_REVIEW_WITH_FROZEN_MATCH",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "independentFreezeRef": "R1/independent-freeze-PARTIAL-20261009.json",
+      "independentFreezeSha256": "ca37bbd1f0e2bcff21ea6382a63637fd505c9198226085064387446d209a8222",
+      "historicalPreviouslyExposed": false,
+      "freshIndependentFreezeRef": null,
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "a923dd2bb7a28af797be994ad055aaedf78ee6205dd16c50e935bedf50adbf05",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "qualityAxes": {
+        "questionLayout": "KEEP: grid + auto layout, no mechanical forced line break identified",
+        "solutionSmallBoard": "KEEP: solution follows conditions to decisive formulas/intermediate computation, answer reproducible",
+        "metaDifficulty": {
+          "level": "상",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "primaryMethod": "두 이차함수 교점과 유리계수",
+          "L3L4": "independently assessed against concept in problem and solution",
+          "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+          "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+          "crossConceptKeys": [
+            "CC_ROOTS_COEFFICIENTS"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        },
+        "visual": "PINNED_SOURCE_PROBLEM_IMAGE_OPENED",
+        "curriculum": "KEEP: high-1 2019 mathematics (polynomial, complex, quadratic), no advanced technique invoked",
+        "semanticAudit": "INDEPENDENT_REVIEW_PERFORMED_NO_DEFINITE_EXAM_DEFECT"
+      },
+      "sourceImageSha": "fce2331c867cbcce51c3ad7a955ddd5b73a8b401",
+      "cardinality": "OBJECTIVE_FIVE_CHOICES_ONE_ANSWER"
+    },
+    {
+      "qid": 16,
+      "sourceMode": "ORIGINAL",
+      "independentAnswer": "②",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "INDEPENDENT_R1_4AXIS_REVIEW_WITH_FROZEN_MATCH",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "independentFreezeRef": "R1/independent-freeze-PARTIAL-20261009.json",
+      "independentFreezeSha256": "ca37bbd1f0e2bcff21ea6382a63637fd505c9198226085064387446d209a8222",
+      "historicalPreviouslyExposed": false,
+      "freshIndependentFreezeRef": null,
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "5cdef3768439fe7b83b7a5ed2d50ea20cc9bd3558abfd7f2770be357db679580",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "qualityAxes": {
+        "questionLayout": "KEEP: punctuation/math/choices semantic boundaries checked from student text; stack only for actual condition/보기 block",
+        "solutionSmallBoard": "KEEP: solution follows conditions to decisive formulas/intermediate computation, answer reproducible",
+        "metaDifficulty": {
+          "level": "상",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "primaryMethod": "켤레복소수 등식과 진술",
+          "L3L4": "independently assessed against concept in problem and solution",
+          "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+          "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_NONZERO"
+          ],
+          "integrationPattern": "CASE_BRANCH"
+        },
+        "visual": "NO_PROBLEM_IMAGE_NEEDED_FOR_THIS_STUDENT_INPUT",
+        "curriculum": "KEEP: high-1 2019 mathematics (polynomial, complex, quadratic), no advanced technique invoked",
+        "semanticAudit": "INDEPENDENT_REVIEW_PERFORMED_NO_DEFINITE_EXAM_DEFECT"
+      },
+      "sourceImageSha": null,
+      "cardinality": "OBJECTIVE_FIVE_CHOICES_ONE_ANSWER"
+    },
+    {
+      "qid": 17,
+      "sourceMode": "ORIGINAL",
+      "independentAnswer": "①",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "INDEPENDENT_R1_4AXIS_REVIEW_WITH_FROZEN_MATCH",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "independentFreezeRef": "R1/independent-freeze-PARTIAL-20261009.json",
+      "independentFreezeSha256": "ca37bbd1f0e2bcff21ea6382a63637fd505c9198226085064387446d209a8222",
+      "historicalPreviouslyExposed": false,
+      "freshIndependentFreezeRef": null,
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "4a906f3a4622352c7b83ff42afd529c406ab190b6d4995b7f4ff54902a0d09aa",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "qualityAxes": {
+        "questionLayout": "KEEP: grid + auto layout, no mechanical forced line break identified",
+        "solutionSmallBoard": "KEEP: solution follows conditions to decisive formulas/intermediate computation, answer reproducible",
+        "metaDifficulty": {
+          "level": "상",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "primaryMethod": "함수식 복원과 근·계수",
+          "L3L4": "independently assessed against concept in problem and solution",
+          "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+          "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+          "crossConceptKeys": [
+            "CC_ROOTS_COEFFICIENTS"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        },
+        "visual": "NO_PROBLEM_IMAGE_NEEDED_FOR_THIS_STUDENT_INPUT",
+        "curriculum": "KEEP: high-1 2019 mathematics (polynomial, complex, quadratic), no advanced technique invoked",
+        "semanticAudit": "INDEPENDENT_REVIEW_PERFORMED_NO_DEFINITE_EXAM_DEFECT"
+      },
+      "sourceImageSha": null,
+      "cardinality": "OBJECTIVE_FIVE_CHOICES_ONE_ANSWER"
+    },
+    {
+      "qid": 18,
+      "sourceMode": "AUDITED_REPAIR",
+      "independentAnswer": "③",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "INDEPENDENT_R1_4AXIS_REVIEW_WITH_FROZEN_MATCH",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "independentFreezeRef": "R1/independent-freeze-PARTIAL-20261009.json",
+      "independentFreezeSha256": "ca37bbd1f0e2bcff21ea6382a63637fd505c9198226085064387446d209a8222",
+      "historicalPreviouslyExposed": false,
+      "freshIndependentFreezeRef": null,
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "00e91dfac7c4a24e93ad32e59c27d6897ec41eec08dd12f98dc8dce91757214a",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "qualityAxes": {
+        "questionLayout": "KEEP: punctuation/math/choices semantic boundaries checked from student text; stack only for actual condition/보기 block",
+        "solutionSmallBoard": "KEEP: solution follows conditions to decisive formulas/intermediate computation, answer reproducible",
+        "metaDifficulty": {
+          "level": "상",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "primaryMethod": "두 영점과 구간 최댓값",
+          "L3L4": "independently assessed against concept in problem and solution",
+          "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+          "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "integrationPattern": "SEQUENTIAL"
+        },
+        "visual": "PINNED_SOURCE_PROBLEM_IMAGE_OPENED",
+        "curriculum": "KEEP: high-1 2019 mathematics (polynomial, complex, quadratic), no advanced technique invoked",
+        "semanticAudit": "INDEPENDENT_REVIEW_PERFORMED_NO_DEFINITE_EXAM_DEFECT"
+      },
+      "sourceImageSha": "778761b10f0ada5974c19b7ef3d9a168396abf61",
+      "cardinality": "OBJECTIVE_FIVE_CHOICES_ONE_ANSWER"
+    },
+    {
+      "qid": 19,
+      "sourceMode": "AUDITED_REPAIR",
+      "independentAnswer": "⑤",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "INDEPENDENT_R1_4AXIS_REVIEW_WITH_FROZEN_MATCH",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "independentFreezeRef": "R1/independent-freeze-PARTIAL-20261009.json",
+      "independentFreezeSha256": "ca37bbd1f0e2bcff21ea6382a63637fd505c9198226085064387446d209a8222",
+      "historicalPreviouslyExposed": false,
+      "freshIndependentFreezeRef": null,
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "cc31524b2bf9a457e3dd8e9474af953f473cb55bfab8ab8e8fa2d00b33fa4ccc",
+      "metaDebtFields": [
+        "templateKey"
+      ],
+      "metaDebtReason": "Do not invent an exact ACTIVE PT/TPL mapping; precise registry lookup must be completed before canonical validator closure. 중근 1로 차이식 -3(x-1)^2 도출; x=-1 대입",
+      "qualityAxes": {
+        "questionLayout": "KEEP: punctuation/math/choices semantic boundaries checked from student text; stack only for actual condition/보기 block",
+        "solutionSmallBoard": "KEEP: solution follows conditions to decisive formulas/intermediate computation, answer reproducible",
+        "metaDifficulty": {
+          "level": "상",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "primaryMethod": "중근과 나머지정리",
+          "L3L4": "independently assessed against concept in problem and solution",
+          "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+          "templateKey": null,
+          "crossConceptKeys": [
+            "CC_ZERO_MULTIPLICITY"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        },
+        "visual": "PINNED_SOURCE_PROBLEM_IMAGE_OPENED",
+        "curriculum": "KEEP: high-1 2019 mathematics (polynomial, complex, quadratic), no advanced technique invoked",
+        "semanticAudit": "INDEPENDENT_REVIEW_PERFORMED_NO_DEFINITE_EXAM_DEFECT"
+      },
+      "sourceImageSha": "b9dc1e0c5d1d1595f6193d1dabffc56cbc871937",
+      "cardinality": "OBJECTIVE_FIVE_CHOICES_ONE_ANSWER"
+    },
+    {
+      "qid": 20,
+      "sourceMode": "ORIGINAL",
+      "independentAnswer": "⑤",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "INDEPENDENT_R1_4AXIS_REVIEW_WITH_FROZEN_MATCH",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "independentFreezeRef": "R1/independent-freeze-PARTIAL-20261009.json",
+      "independentFreezeSha256": "ca37bbd1f0e2bcff21ea6382a63637fd505c9198226085064387446d209a8222",
+      "historicalPreviouslyExposed": false,
+      "freshIndependentFreezeRef": null,
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "a4ada085305734fb21cb2d5f6a1e9a06939e0ea00570778672253ef25f7837d4",
+      "metaDebtFields": [
+        "templateKey"
+      ],
+      "metaDebtReason": "Do not invent an exact ACTIVE PT/TPL mapping; precise registry lookup must be completed before canonical validator closure. 기간 d는 ceil(N/r); 일일 생산량과 정수 자동차 대수",
+      "qualityAxes": {
+        "questionLayout": "KEEP: grid + auto layout, no mechanical forced line break identified",
+        "solutionSmallBoard": "KEEP: solution follows conditions to decisive formulas/intermediate computation, answer reproducible",
+        "metaDifficulty": {
+          "level": "상",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "primaryMethod": "생산일수의 정수 상한",
+          "L3L4": "independently assessed against concept in problem and solution",
+          "problemTypeKey": "PT_H1_EQUATION_APPLICATION",
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_NATURAL_NUMBER",
+            "COND_RANGE"
+          ],
+          "integrationPattern": "SEQUENTIAL"
+        },
+        "visual": "NO_PROBLEM_IMAGE_NEEDED_FOR_THIS_STUDENT_INPUT",
+        "curriculum": "KEEP: high-1 2019 mathematics (polynomial, complex, quadratic), no advanced technique invoked",
+        "semanticAudit": "INDEPENDENT_REVIEW_PERFORMED_NO_DEFINITE_EXAM_DEFECT"
+      },
+      "sourceImageSha": null,
+      "cardinality": "OBJECTIVE_FIVE_CHOICES_ONE_ANSWER"
+    },
+    {
+      "qid": 21,
+      "sourceMode": "ORIGINAL",
+      "independentAnswer": "5",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "5",
+      "compareResult": "MATCH",
+      "verdict": "INDEPENDENT_R1_4AXIS_REVIEW_WITH_FROZEN_MATCH",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "independentFreezeRef": "R1/independent-freeze-PARTIAL-20261009.json",
+      "independentFreezeSha256": "ca37bbd1f0e2bcff21ea6382a63637fd505c9198226085064387446d209a8222",
+      "historicalPreviouslyExposed": false,
+      "freshIndependentFreezeRef": null,
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "6383e00c1a3e0673d3f1a6ad8cc392c6d4813a7bc5ce08d30b731a8d80eaffb9",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "qualityAxes": {
+        "questionLayout": "KEEP: punctuation/math/choices semantic boundaries checked from student text; stack only for actual condition/보기 block",
+        "solutionSmallBoard": "KEEP: solution follows conditions to decisive formulas/intermediate computation, answer reproducible",
+        "metaDifficulty": {
+          "level": "상",
+          "difficultyBucket": 5,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "primaryMethod": "교점과 구간 최솟값",
+          "L3L4": "independently assessed against concept in problem and solution",
+          "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+          "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+          "crossConceptKeys": [
+            "CC_POLYNOMIAL_FACTORIZATION"
+          ],
+          "conditionKeys": [
+            "COND_POSITIVE",
+            "COND_RANGE"
+          ],
+          "integrationPattern": "SEQUENTIAL"
+        },
+        "visual": "PINNED_SOURCE_PROBLEM_IMAGE_OPENED",
+        "curriculum": "KEEP: high-1 2019 mathematics (polynomial, complex, quadratic), no advanced technique invoked",
+        "semanticAudit": "INDEPENDENT_REVIEW_PERFORMED_NO_DEFINITE_EXAM_DEFECT"
+      },
+      "sourceImageSha": "2317e60bc9c0aad32938f6152b2e37d4a61fcfd2",
+      "cardinality": "SUBJECTIVE_SINGLE_ANSWER"
+    },
+    {
+      "qid": 22,
+      "sourceMode": "AUDITED_REPAIR",
+      "independentAnswer": "80",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "80",
+      "compareResult": "MATCH",
+      "verdict": "INDEPENDENT_R1_4AXIS_REVIEW_WITH_FROZEN_MATCH",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "independentFreezeRef": "R1/independent-freeze-PARTIAL-20261009.json",
+      "independentFreezeSha256": "ca37bbd1f0e2bcff21ea6382a63637fd505c9198226085064387446d209a8222",
+      "historicalPreviouslyExposed": false,
+      "freshIndependentFreezeRef": null,
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "b5aef152e263f3a753e7ffed79c433166b2721b8d453e445578f135ab4235fd9",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "qualityAxes": {
+        "questionLayout": "KEEP: grid + auto layout, no mechanical forced line break identified",
+        "solutionSmallBoard": "KEEP: solution follows conditions to decisive formulas/intermediate computation, answer reproducible",
+        "metaDifficulty": {
+          "level": "상",
+          "difficultyBucket": 5,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "primaryMethod": "복소수 근과 켤레근의 합",
+          "L3L4": "independently assessed against concept in problem and solution",
+          "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+          "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+          "crossConceptKeys": [
+            "CC_ROOT_COEFFICIENT_RELATION"
+          ],
+          "conditionKeys": [
+            "COND_NONZERO"
+          ],
+          "integrationPattern": "SEQUENTIAL"
+        },
+        "visual": "NO_PROBLEM_IMAGE_NEEDED_FOR_THIS_STUDENT_INPUT",
+        "curriculum": "KEEP: high-1 2019 mathematics (polynomial, complex, quadratic), no advanced technique invoked",
+        "semanticAudit": "INDEPENDENT_REVIEW_PERFORMED_NO_DEFINITE_EXAM_DEFECT"
+      },
+      "sourceImageSha": null,
+      "cardinality": "SUBJECTIVE_SINGLE_ANSWER"
+    }
+  ],
+  "candidateStatus": "NOT_PASS_OFFICIAL_R1_V2_CLI_AND_ACTIVE_ARTIFACT_GATE_NOT_EXECUTED",
+  "rawGenericV2Validator": {
+    "executed": false,
+    "disposition": "NOT_RUN"
+  },
+  "activeArtifactGate": {
+    "executed": false,
+    "disposition": "NOT_RUN"
+  },
+  "r1QualitySealed": false,
+  "assembledAtKst": "2026-10-10T11:39:29+09:00"
+}
