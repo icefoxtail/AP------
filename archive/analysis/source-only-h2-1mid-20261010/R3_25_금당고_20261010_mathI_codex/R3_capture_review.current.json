@@ -1,0 +1,243 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_R3_CAPTURE_REVIEW_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "captureReportSha256": "a9b11662a4212381de963451ecd039e7c0ff354e0e15712422955e5d9726d777",
+  "artifactSha": "8f687d5f823892c485ec1cba078a9695ba8d1bf4",
+  "reviewerIdentity": {
+    "role": "archive_r3",
+    "reviewerId": "/root/r3_geum_i"
+  },
+  "reviewedAt": "2026-10-10T08:17:25.222Z",
+  "reviewedFullQidOrder": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21
+  ],
+  "finalQidCoverage": {
+    "qid": 21,
+    "status": "PASS",
+    "allSixCases": true
+  },
+  "observations": [
+    "Reviewed all six current-source official Archive Engine screenshots from local HTTP/Chrome. Every capture covers qids 1–21 including final q21; all six reports have mechanical PASS, MathJax PASS, asset decode PASS, no page errors, and desktop/mobile document widths equal their viewport. q18 replacement SVG now loads/decode in both exam and solution modes at desktop/mobile. The solution view shows the same graph with S1/S2 and vertices; q10/q16/q20 solution diagrams remain visible. No clipping or horizontal overflow was observed."
+  ],
+  "cases": [
+    {
+      "id": "exam/desktop",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "reviewedCaptureSha256s": [
+        "ed9729194fa464841822f3a2da486cf4ae4fc8acd7eac84363aa3b7a447756ed"
+      ],
+      "layoutReviewStatus": "PASS",
+      "mathJaxStatus": "PASS",
+      "assetDecodeStatus": "PASS",
+      "observation": "Full 21-qid case inspected; q21 present; no clipping or horizontal overflow."
+    },
+    {
+      "id": "exam/mobile",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "reviewedCaptureSha256s": [
+        "3139f9ebf9dfb146f3708de676b6a7c0b9117f37f833b71179724c01addb78c9"
+      ],
+      "layoutReviewStatus": "PASS",
+      "mathJaxStatus": "PASS",
+      "assetDecodeStatus": "PASS",
+      "observation": "Full 21-qid case inspected; q21 present; no clipping or horizontal overflow."
+    },
+    {
+      "id": "sol/desktop",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "reviewedCaptureSha256s": [
+        "6b9bf91ca37af451d9f8fad82120b7fc6c7280537afd08d946cc51ab1fe3b5ac"
+      ],
+      "layoutReviewStatus": "PASS",
+      "mathJaxStatus": "PASS",
+      "assetDecodeStatus": "PASS",
+      "observation": "q18 solution graph loaded and displayed; graph labels/triangles and adjacent determinant solution remain readable, with no clipping. q10/q16/q20 solution visuals also display."
+    },
+    {
+      "id": "sol/mobile",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "reviewedCaptureSha256s": [
+        "db22cc8e23181d4cc13b682d23f0a427ef8d99ee38b0697b896db12e27416c26"
+      ],
+      "layoutReviewStatus": "PASS",
+      "mathJaxStatus": "PASS",
+      "assetDecodeStatus": "PASS",
+      "observation": "q18 solution graph loaded and displayed; graph labels/triangles and adjacent determinant solution remain readable, with no clipping. q10/q16/q20 solution visuals also display."
+    },
+    {
+      "id": "ans/desktop",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "reviewedCaptureSha256s": [
+        "90b2ded83bb6fe62d0cc4130abfbc8b3494b1dc475bb0668570f1eace3cd378d"
+      ],
+      "layoutReviewStatus": "PASS",
+      "mathJaxStatus": "PASS",
+      "assetDecodeStatus": "PASS",
+      "observation": "Full 21-qid case inspected; q21 present; no clipping or horizontal overflow."
+    },
+    {
+      "id": "ans/mobile",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "reviewedCaptureSha256s": [
+        "f79e368764f09d478fad64e125adb17cf8c4e094bf9278e64719ad6e1334af30"
+      ],
+      "layoutReviewStatus": "PASS",
+      "mathJaxStatus": "PASS",
+      "assetDecodeStatus": "PASS",
+      "observation": "Full 21-qid case inspected; q21 present; no clipping or horizontal overflow."
+    }
+  ]
+}

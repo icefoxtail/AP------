@@ -1,0 +1,38 @@
+META_V2 materializer unit PASS
+✔ tests\archive-meta-v2-materializer.test.mjs (97.6999ms)
+{
+  "recordCount": 13523,
+  "canonicalResolved": 13523,
+  "ordinalResolved": 13523,
+  "legacyUnambiguous": 13523,
+  "legacyAmbiguous": 0,
+  "status": "PASS"
+}
+✔ tests\archive-question-identity-contract.test.mjs (250.1594ms)
+{
+  "uidResolved": 13523,
+  "ordinalResolved": 13523,
+  "ambiguous": 0,
+  "runtimeBytes": 3445647,
+  "status": "PASS"
+}
+✔ tests\archive-question-identity-runtime.test.mjs (281.449ms)
+Archive2 META_V2 semantic authority PASS
+✔ tests\archive2-meta-v2-semantic-authority.test.cjs (1649.927ms)
+✔ parent-link refresh preserves valid L1/L2 evidence when release approval is unresolved (9.3702ms)
+✔ catalog assignment evidence follows the problem fingerprint, not the full release fingerprint (0.352ms)
+✔ reviewed path-and-ordinal scope links materialize verified UID assignments (3.644ms)
+✔ normal registration sync refreshes parent links and then rebuilds the bound catalog (1.1341ms)
+✔ parent-link generation binds stable authority inputs instead of its own final catalog hash (0.3787ms)
+✔ question denominator is source-specific, not hardcoded 24 (1.286ms)
+✔ unrelated records cannot enter a scoped package (0.5997ms)
+✔ missing baseline and duplicate ordinals fail before writes (0.2205ms)
+✔ different UID across projections fails closed (0.4572ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1724.2393

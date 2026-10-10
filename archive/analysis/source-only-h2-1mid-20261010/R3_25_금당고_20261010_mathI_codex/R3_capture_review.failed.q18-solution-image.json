@@ -1,0 +1,243 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_R3_CAPTURE_REVIEW_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "captureReportSha256": "b69a886df98f40dac32e9e4f7557af3cc61904e0e83d300d0887cc4351e6d94b",
+  "artifactSha": "366bab3886cc2fd037503f3870600c0cd9aca0c8",
+  "reviewerIdentity": {
+    "role": "archive_r3",
+    "reviewerId": "/root/r3_geum_i"
+  },
+  "reviewedAt": "2026-10-10T08:08:37.992Z",
+  "reviewedFullQidOrder": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21
+  ],
+  "finalQidCoverage": {
+    "qid": 21,
+    "status": "PASS",
+    "allSixCases": true
+  },
+  "observations": [
+    "Inspected all six actual official Archive Engine HTTP/Chrome screenshots. Every case covers qids 1–21, including q21. Desktop/mobile exam and solution pages show no horizontal overflow; MathJax and image decode are clean. q18 replacement SVG is present and decoded in exam desktop/mobile. It is absent and not displayed in sol desktop/mobile because current q18 has only image and no solutionImage; this contradicts the explicit q18 requirement to display the same graph in solution mode. Existing q10/q16/q20 solution visuals are visible and legible."
+  ],
+  "cases": [
+    {
+      "id": "exam/desktop",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "reviewedCaptureSha256s": [
+        "ed9729194fa464841822f3a2da486cf4ae4fc8acd7eac84363aa3b7a447756ed"
+      ],
+      "layoutReviewStatus": "PASS",
+      "mathJaxStatus": "PASS",
+      "assetDecodeStatus": "PASS",
+      "observation": "All qids 1–21 and page boundaries inspected; no clipping or horizontal overflow."
+    },
+    {
+      "id": "exam/mobile",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "reviewedCaptureSha256s": [
+        "655c334848a54c381007cfcebccaf7a288225547b9b1de382bb6b9aa9fb041df"
+      ],
+      "layoutReviewStatus": "PASS",
+      "mathJaxStatus": "PASS",
+      "assetDecodeStatus": "PASS",
+      "observation": "All qids 1–21 and page boundaries inspected; no clipping or horizontal overflow."
+    },
+    {
+      "id": "sol/desktop",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "reviewedCaptureSha256s": [
+        "1e918ae4cfa82aa4016c9864808ce9adf9bb1b59a7543211573ca0081b56ab18"
+      ],
+      "layoutReviewStatus": "FAIL",
+      "mathJaxStatus": "PASS",
+      "assetDecodeStatus": "FAIL",
+      "observation": "q18 replacement graph is missing from solution view. The capture report confirms q18 SVG is not loaded in this case; current q18 has no solutionImage reference."
+    },
+    {
+      "id": "sol/mobile",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "reviewedCaptureSha256s": [
+        "c090c9eff441b2164733421dbdf1ee485548398c33d0a64aa0fba7ac21f25027"
+      ],
+      "layoutReviewStatus": "FAIL",
+      "mathJaxStatus": "PASS",
+      "assetDecodeStatus": "FAIL",
+      "observation": "q18 replacement graph is missing from solution view. The capture report confirms q18 SVG is not loaded in this case; current q18 has no solutionImage reference."
+    },
+    {
+      "id": "ans/desktop",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "reviewedCaptureSha256s": [
+        "90b2ded83bb6fe62d0cc4130abfbc8b3494b1dc475bb0668570f1eace3cd378d"
+      ],
+      "layoutReviewStatus": "PASS",
+      "mathJaxStatus": "PASS",
+      "assetDecodeStatus": "PASS",
+      "observation": "All qids 1–21 and page boundaries inspected; no clipping or horizontal overflow."
+    },
+    {
+      "id": "ans/mobile",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "reviewedCaptureSha256s": [
+        "4941ac8a3da8f5dc6187442a7d81a041b45ff793edc82fe7e2819ddff796db50"
+      ],
+      "layoutReviewStatus": "PASS",
+      "mathJaxStatus": "PASS",
+      "assetDecodeStatus": "PASS",
+      "observation": "All qids 1–21 and page boundaries inspected; no clipping or horizontal overflow."
+    }
+  ]
+}
