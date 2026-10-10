@@ -66,3 +66,10 @@ node --test archive/tools/gpt2-library-coordinated-adapter.test.mjs archive/tool
 ```
 
 No production JS, question verdict, PR publication, MAIN_DONE, or global PUBLISH_LEASE is changed by this bridge.
+
+## Host bootstrap and separate-runner CAS test (2026-10-10)
+
+- A brand-new exam may have no `TECHNICAL/GPT2_V2` Library folder. `files__list` then reports `Library path not found: <exact parent>`. The Files transport treats **only** an empty listing with that exact warning as absent and creates the folder before uploading. Permission, partial list, and unexpected warnings still hard-fail.
+- An optional GitHub Actions smoke test is activated **only** by a repository owner's exact `/gpt2-cas-smoke` PR comment. It uses two independent hosted runners that race for one disposable key on the existing `ops/gpt2-cas` branch. The verify job checks exactly one winning writer, one losing writer, and rejects an update with a stale blob SHA; cleanup deletes the specific run's key and verifies absence.
+- Source: `.github/workflows/gpt2-cas-distributed-smoke.yml` and `archive/tools/gpt2-cas-distributed-smoke.mjs`. The GitHub job has `contents:write` exclusively for this smoke test. It never modifies `main`, student JS, or real Library exam paths.
+- **Scope of proof:** this tests CAS from two independent **GitHub Actions runners**. It is **not** an independent ChatGPT GPT-session or actual Files/Library host proof. The authorized `createHostClients()` runtime remains required before enabling the one-shot on any worker, and the 15 reservations remain unchanged until separate live host verification.

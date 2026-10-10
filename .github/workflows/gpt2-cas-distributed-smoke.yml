@@ -1,0 +1,76 @@
+name: GPT2 CAS Distributed Smoke
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+
+jobs:
+  race:
+    if: >-
+      github.event.issue.pull_request &&
+      github.event.comment.user.login == github.repository_owner &&
+      github.event.comment.body == '/gpt2-cas-smoke'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        actor: [A, B]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Compete on the same GitHub CAS key from this independent runner
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node archive/tools/gpt2-cas-distributed-smoke.mjs attempt ${{ matrix.actor }} attempt-${{ matrix.actor }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gpt2-cas-actor-${{ matrix.actor }}-${{ github.run_id }}
+          path: attempt-${{ matrix.actor }}.json
+          if-no-files-found: error
+          retention-days: 3
+
+  verify:
+    needs: [race]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: gpt2-cas-actor-*-${{ github.run_id }}
+          merge-multiple: true
+          path: artifacts
+      - name: Verify one winner, one loser, stale SHA rejection and immutable readback
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node archive/tools/gpt2-cas-distributed-smoke.mjs verify artifacts/attempt-A.json artifacts/attempt-B.json
+
+  cleanup:
+    if: always() && github.event.issue.pull_request && github.event.comment.user.login == github.repository_owner && github.event.comment.body == '/gpt2-cas-smoke'
+    needs: [race, verify]
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Delete only this run's temporary GitHub CAS key and read back absence
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node archive/tools/gpt2-cas-distributed-smoke.mjs cleanup
