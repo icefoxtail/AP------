@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
+  "school": "팔마고",
+  "batchId": "PALMA25_QID9_AUTO_21",
+  "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/shards/palma-2025-2mid-qid9-q21-A3.js",
+  "sourceShardGitSha": "9649698ddea499616fb9bf59cfe8c9ebfab06253",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "currentSourceExamBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e",
+  "approvedSourceSnapshot": {
+    "path": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+    "gitBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76"
+  },
+  "approvedPackage": {
+    "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q21_PACKAGE.json",
+    "sha256": "33de32e2fde2e574f1f841c312911204f306be57273d47b7fc4cbfbb2abca8ae",
+    "gitBlobSha1": "125fa58ecf7c1ca5e7944f51963fc659882e2812"
+  },
+  "approvalReceipt": {
+    "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json",
+    "sha256": "38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d",
+    "gitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2"
+  },
+  "records": [
+    {
+      "generatedUid": "ALITE-PALMA25-2MID-Q21-A3",
+      "localOrdinal": 1,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "sourceQid": 21,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/shards/palma-2025-2mid-qid9-q21-A3.js",
+      "currentSourceExamBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e",
+      "approvedSourceSnapshotBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "approvalReceiptSha256": "38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d",
+      "approvalReceiptGitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+      "approvedPackageSha256": "33de32e2fde2e574f1f841c312911204f306be57273d47b7fc4cbfbb2abca8ae",
+      "approvedPackageGitBlobSha1": "125fa58ecf7c1ca5e7944f51963fc659882e2812",
+      "l2": "H22-C2-06-CORE",
+      "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+      "reviewApprovalReceipt": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q21-A3.json",
+      "rpmPrimary": {
+        "recordId": "H1-RPM-247",
+        "l3": "필요조건·충분조건",
+        "l4": "조건 관계"
+      },
+      "question": {
+        "id": 1,
+        "uid": "ALITE-PALMA25-2MID-Q21-A3",
+        "level": "중",
+        "difficultyBucket": 2,
+        "category": "명제",
+        "originalCategory": "명제",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "서술형",
+        "layoutTag": "grid",
+        "tags": [
+          "서술형",
+          "명제"
+        ],
+        "wide": false,
+        "content": "실수 $x$에 대한 조건 $p:x^2+6x+5\\le0$, $q:|x-2|\\le1$이 있다. 조건 $r$과 $\\sim p$가 서로 필요충분조건일 때, 다음을 구하시오.<br>(1) $p,q$의 진리집합 $P,Q$를 각각 구하시오.<br>(2) $r$이 $q$이기 위한 필요조건인지 충분조건인지 판단하고, 그 이유를 서술하시오.",
+        "choices": [],
+        "answer": "(1) $P=[-5,-1],\\ Q=[1,3]$; (2) 필요조건(충분조건 아님)",
+        "solution": "$x^2+6x+5=(x+5)(x+1)$이므로 $P=[-5,-1]$이다. $|x-2|\\le1$을 풀면 $1\\le x\\le3$이므로 $Q=[1,3]$이다.\n$r$의 진리집합은 $R=\\mathbb{R}\\setminus P=(-\\infty,-5)\\cup(-1,\\infty)$이다. $Q\\subset R$이므로 $q\\Rightarrow r$이 성립한다.\n반면 $x=4$일 때 $r$은 참이지만 $q$는 거짓이므로 그 역은 거짓이다.\n따라서 (1) $P=[-5,-1]$, $Q=[1,3]$이고, (2) $r$은 $q$의 필요조건이지만 충분조건은 아니다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "sourceQid": 21,
+        "slot": "A3",
+        "purposeGroup": "A",
+        "meta": {
+          "rpmL1": "집합과 명제",
+          "rpmL2": "명제",
+          "rpmL3": "필요조건·충분조건",
+          "rpmL4": "조건 관계",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmPrimaryRecordId": "H1-RPM-247",
+          "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+          "secondaryConceptKeys": [],
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "crossConceptRegistryRef": null,
+          "conditionRegistryRef": null,
+          "sourceKind": "generated",
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "level": "중",
+          "problemTypeKey": "PT_NEC_SUFF_RELATION",
+          "templateKey": "TPL_NEC_SUFF_SET_RELATION",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-06",
+          "subUnitKey": "H22-C2-06-CORE"
+        },
+        "metaFinalSha256": "6d91ba1bc127f68760f43001b326640f1f7e090865d2eebf27709cec03e083ab",
+        "metaReviewEvidence": {
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q21-A3.json",
+          "sha256": "8afc993dc5c2c73d4991c79c72c2a2b47962331dead6d3635875ee1f313e1c26",
+          "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+          "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q17_Q23_63",
+          "scopeUids": [
+            "ALITE-PALMA25-2MID-Q21-A3"
+          ],
+          "approvalReceiptPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json",
+          "approvalReceiptSha256": "38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d",
+          "approvalReceiptGitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+          "approvedPackagePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q21_PACKAGE.json",
+          "approvedPackageSha256": "33de32e2fde2e574f1f841c312911204f306be57273d47b7fc4cbfbb2abca8ae",
+          "approvedPackageGitBlobSha1": "125fa58ecf7c1ca5e7944f51963fc659882e2812",
+          "approvedSourceSnapshot": {
+            "path": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+            "gitBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76"
+          },
+          "currentSource": {
+            "path": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+            "gitBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e"
+          },
+          "uid": "ALITE-PALMA25-2MID-Q21-A3"
+        },
+        "metaReviewEvidenceSha256": "8afc993dc5c2c73d4991c79c72c2a2b47962331dead6d3635875ee1f313e1c26",
+        "problemTypeKey": "PT_NEC_SUFF_RELATION",
+        "templateKey": "TPL_NEC_SUFF_SET_RELATION",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "필요조건·충분조건",
+        "rpmL4": "조건 관계",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmPrimaryRecordId": "H1-RPM-247",
+        "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "crossConceptRegistryRef": null,
+        "conditionRegistryRef": null,
+        "sourceKind": "generated",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "level": "중",
+        "problemTypeKey": "PT_NEC_SUFF_RELATION",
+        "templateKey": "TPL_NEC_SUFF_SET_RELATION",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE"
+      },
+      "metaFinalSha256": "6d91ba1bc127f68760f43001b326640f1f7e090865d2eebf27709cec03e083ab",
+      "metaReviewEvidence": {
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q21-A3.json",
+        "sha256": "8afc993dc5c2c73d4991c79c72c2a2b47962331dead6d3635875ee1f313e1c26",
+        "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+        "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q17_Q23_63",
+        "scopeUids": [
+          "ALITE-PALMA25-2MID-Q21-A3"
+        ],
+        "approvalReceiptPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json",
+        "approvalReceiptSha256": "38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d",
+        "approvalReceiptGitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+        "approvedPackagePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q21_PACKAGE.json",
+        "approvedPackageSha256": "33de32e2fde2e574f1f841c312911204f306be57273d47b7fc4cbfbb2abca8ae",
+        "approvedPackageGitBlobSha1": "125fa58ecf7c1ca5e7944f51963fc659882e2812",
+        "approvedSourceSnapshot": {
+          "path": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+          "gitBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76"
+        },
+        "currentSource": {
+          "path": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+          "gitBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e"
+        },
+        "uid": "ALITE-PALMA25-2MID-Q21-A3"
+      },
+      "metaReviewEvidenceSha256": "8afc993dc5c2c73d4991c79c72c2a2b47962331dead6d3635875ee1f313e1c26",
+      "sourceShardGitSha": "9649698ddea499616fb9bf59cfe8c9ebfab06253",
+      "sourceExamQuestionCount": 23,
+      "approval": "USER_DIRECTED_QUALITY_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "sourceMetaSha256": "f6d7c2aa6520c7dc68f90fdb7b12781dd26b76073381df5a5044b057238616d9"
+    }
+  ],
+  "sourceKind": "generated"
+}

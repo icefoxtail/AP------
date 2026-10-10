@@ -1,0 +1,46 @@
+window.examTitle = "PALMA_2025_QID9_17_C3";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q17-C3",
+    "level": "상",
+    "difficultyBucket": 5,
+    "category": "도형의 이동",
+    "originalCategory": "도형의 이동",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-C2-04-CORE",
+    "subUnit": "도형의 이동 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "도형의 이동"
+    ],
+    "wide": false,
+    "content": "자연수 $n$에 대하여 원 $x^2+y^2=n$ 위의 점 $A(\\sqrt n,0)$, $B(\\sqrt{\\dfrac n2},\\sqrt{\\dfrac n2})$를 잡는다. 작은 호 $AB$ 위의 점 $P$, 선분 $OB$ 위의 점 $Q$, 선분 $OA$ 위의 점 $R$이 움직일 때 삼각형 $PQR$ 둘레의 길이의 최솟값을 $m$이라 하자. $6<m\\le8$을 만족시키는 자연수 $n$의 개수는? (단, $O$는 원점이다.)",
+    "choices": [
+      "$7$",
+      "$13$",
+      "$14$",
+      "$15$",
+      "$28$"
+    ],
+    "answer": "③",
+    "solution": "점 $P$를 직선 $OB$에 대칭이동한 점을 $P_1$, 직선 $OA$에 대칭이동한 점을 $P_2$라 하자. $Q$는 $OB$ 위, $R$은 $OA$ 위이므로 $PQ=P_1Q$, $PR=P_2R$이다. 따라서 $PQ+QR+RP=P_1Q+QR+RP_2\\ge P_1P_2$이다. 반사 전후의 거리가 같고 $\\angle P_1OP_2=2\\angle AOB$이므로, $OP=r$일 때 $P_1P_2=2r\\sin\\angle AOB$이다. $0^\\circ<\\angle AOB<90^\\circ$인 이 문항에서는 $P$를 호 $AB$의 중점에 잡으면 직선 $P_1P_2$가 선분 $OB$, $OA$를 차례로 지나므로 $Q,R$을 두 교점으로 택하여 등호를 실현한다.\n$r=\\sqrt n$, $\\angle AOB=45^\\circ$이므로 두 직선에 대한 반사에 의해 $m=2\\sqrt n\\sin45^\\circ=\\sqrt{2n}$이다. 따라서 $6<\\sqrt{2n}\\le8$이고, 모두 양수이므로 제곱하여 $36<2n\\le64$, 즉 $18<n\\le32$이다. 가능한 자연수는 $19,20,\\ldots,32$로 $32-19+1=14$개이다. 따라서 정답은 ③이다.",
+    "solutionImage": "assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q17-C3-solution.svg",
+    "solutionImageAlt": "반사로 펼친 경로의 점 P₁, Q, R, P₂의 순서와 최솟값이 되는 선분을 나타낸 도형.",
+    "solutionImageSize": "medium",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 17,
+    "slot": "C3",
+    "purposeGroup": "C"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q17-C3");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q17-C3","meta":{"rpmL1":"도형의 방정식","rpmL2":"도형의 이동","rpmL3":"대칭이동","rpmL4":"직선에 대한 대칭","rpmL4Namespace":"RPM_EXISTING_DRAFT","rpmPrimaryRecordId":"H1-RPM-228","rpmDraftAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmDraftAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","secondaryConceptKeys":[],"crossConceptKeys":["CC_CIRCLE_CENTER_RADIUS"],"conditionKeys":["COND_INTEGER","COND_RANGE"],"crossConceptRegistryRef":null,"conditionRegistryRef":null,"sourceKind":"generated","integrationPattern":"SEQUENTIAL","difficultyBucket":5,"level":"상","problemTypeKey":"PT_MOVE_REFLECTION_SHORTEST","templateKey":"TT_SHORTEST_MULTI_LINE","standardCourse":"공통수학2","standardUnitKey":"H22-C2-04","subUnitKey":"H22-C2-04-CORE"},"metaFinalSha256":"9ae088c482e73e2e50c0e3102a0e6e9473bbc52e05c37555e1babe46c73510f5","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q17-C3.json","sha256":"474da1409d54cbf0a1aed19c9108d214bb56ebba99e6de5d32064f3e87b5e93b","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q17_Q23_63","scopeUids":["ALITE-PALMA25-2MID-Q17-C3"],"approvalReceiptPath":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json","approvalReceiptSha256":"38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d","approvalReceiptGitBlobSha1":"5813555d09e63d3afeb5c3c4e0d941bc2383b0d2","approvedPackagePath":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_PACKAGE.json","approvedPackageSha256":"38a8c50a999b48bae2f7c75df1116e87430606b21b1d89d2278ae20136169ba9","approvedPackageGitBlobSha1":"e06bd2f8373874aef7765f2cfe9da4dd496e3354","approvedSourceSnapshot":{"path":"archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js","gitBlobSha1":"4cfce909c023e5c4df4a759945c8cc3e0a63ec76"},"currentSource":{"path":"archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js","gitBlobSha1":"e7ead9fb1404f0fdb01dbfeafdee268f617b992e"},"uid":"ALITE-PALMA25-2MID-Q17-C3"},"metaReviewEvidenceSha256":"474da1409d54cbf0a1aed19c9108d214bb56ebba99e6de5d32064f3e87b5e93b","difficultyBucket":5,"level":"상","problemTypeKey":"PT_MOVE_REFLECTION_SHORTEST","templateKey":"TT_SHORTEST_MULTI_LINE","secondaryConceptKeys":[],"crossConceptKeys":["CC_CIRCLE_CENTER_RADIUS"],"conditionKeys":["COND_INTEGER","COND_RANGE"],"integrationPattern":"SEQUENTIAL"});})();

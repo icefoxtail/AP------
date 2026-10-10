@@ -1,0 +1,40 @@
+window.examTitle = "PALMA_2025_QID9_23_C3";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q23-C3",
+    "level": "상",
+    "difficultyBucket": 5,
+    "category": "직선의 방정식",
+    "originalCategory": "직선의 방정식",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-C2-02-RELATION",
+    "subUnit": "두 직선의 관계",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "직선의 방정식"
+    ],
+    "wide": false,
+    "content": "두 양의 정수 $a,b$가 $a+b=7$을 만족한다. 직선 $x=0$으로부터의 거리가 $a$, 직선 $y=\\dfrac34x$로부터의 거리가 $b$인 서로 다른 네 점을 꼭짓점으로 하는 사각형의 넓이를 $S$라 하자. $S$의 최솟값과 최댓값을 각각 구하시오.",
+    "choices": [],
+    "answer": "최솟값 $30$, 최댓값 $60$",
+    "solution": "첫 거리 조건에 따라 네 점은 $x=\\pm a$ 위에 있다.\n둘째 거리 조건은 $\\dfrac{|3x-4y|}{5}=b$이므로 같은 $x$ 위의 두 점 사이의 거리는 $\\dfrac{10b}{4}=\\dfrac{5b}{2}$이다.\n따라서 사각형의 넓이는 $S=2a\\times\\dfrac{5b}{2}=5ab$이다.\n$a,b$는 양의 정수이고 $a+b=7$이므로 $a=1,2,3,4,5,6$이고 $b=7-a$이다.\n곱 $ab$는 차례로 $6,10,12,12,10,6$이다. 이에 대응하는 넓이는 $30,50,60,60,50,30$이다.\n따라서 $S$의 최솟값은 $30$, 최댓값은 $60$이다.",
+    "solutionImage": "assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q23-C3-solution.svg",
+    "solutionImageAlt": "a=3, b=4인 대표 구성의 평행사변형이다. PS=10, 높이 HK=6이며, 내부의 60은 이 대표 구성의 넓이이다. 제목 정보에는 S=5ab와 a+b=7이 담겨 있다.",
+    "solutionImageSize": "medium",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 23,
+    "slot": "C3",
+    "purposeGroup": "C"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q23-C3");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q23-C3","meta":{"rpmL1":"도형의 방정식","rpmL2":"직선의 방정식","rpmL3":"점과 직선 사이의 거리","rpmL4":"EXT-H1-C2-02-Q23-STRIP-AREA-EXTREMA","rpmL4Namespace":"GENERATED_EXT_L4","rpmPrimaryRecordId":"H1-RPM-216","rpmL4Label":"거리 자취의 넓이 최적화","rpmAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","generatedL4RegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-02-RELATION/extension-l4/registry.json","generatedL4RegistrySha256":"7a8b3ef9e1549f689bc75fce5670b594745d9fe0a25cc6ed16ca5dea4ee71e79","generatedL4RegistryGitBlobSha1":"324d126ecb04315b887a517b7f8b0f1fa5f70438","secondaryConceptKeys":[],"crossConceptKeys":["EXT-CC-H1-PALMA-Q23-INTEGER-PRODUCT"],"conditionKeys":["EXT-COND-H1-PALMA-Q23-POSITIVE-INTEGER-SUM"],"crossConceptRegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-02-RELATION/extension-meta/palma-q23-cross-concepts-conditions.json","conditionRegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-02-RELATION/extension-meta/palma-q23-cross-concepts-conditions.json","sourceKind":"generated","integrationPattern":"CASE_BRANCH","difficultyBucket":5,"level":"상","problemTypeKey":"PT_POINT_LINE_DISTANCE","templateKey":"TPL_DISTANCE_AREA_APPLICATION","standardCourse":"공통수학2","standardUnitKey":"H22-C2-02","subUnitKey":"H22-C2-02-RELATION"},"metaFinalSha256":"4628c87a413943e20438ac47ed2c676f48dbc0d4285f724efba3240a1ff64601","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q23-C3.json","sha256":"2bc9ba29c76810d7315a8b5d6e6172a2e76e062ee5057b44655d10d64e305757","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q17_Q23_63","scopeUids":["ALITE-PALMA25-2MID-Q23-C3"],"approvalReceiptPath":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json","approvalReceiptSha256":"38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d","approvalReceiptGitBlobSha1":"5813555d09e63d3afeb5c3c4e0d941bc2383b0d2","approvedPackagePath":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q23_PACKAGE.json","approvedPackageSha256":"35bc07b4c58ec211da164f163799ade285d78fc72d2a478b8bdc40c62a5a6c22","approvedPackageGitBlobSha1":"bf8028c151f991592631e399459171363e59ec0a","approvedSourceSnapshot":{"path":"archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js","gitBlobSha1":"4cfce909c023e5c4df4a759945c8cc3e0a63ec76"},"currentSource":{"path":"archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js","gitBlobSha1":"e7ead9fb1404f0fdb01dbfeafdee268f617b992e"},"uid":"ALITE-PALMA25-2MID-Q23-C3"},"metaReviewEvidenceSha256":"2bc9ba29c76810d7315a8b5d6e6172a2e76e062ee5057b44655d10d64e305757","difficultyBucket":5,"level":"상","problemTypeKey":"PT_POINT_LINE_DISTANCE","templateKey":"TPL_DISTANCE_AREA_APPLICATION","secondaryConceptKeys":[],"crossConceptKeys":["EXT-CC-H1-PALMA-Q23-INTEGER-PRODUCT"],"conditionKeys":["EXT-COND-H1-PALMA-Q23-POSITIVE-INTEGER-SUM"],"integrationPattern":"CASE_BRANCH"});})();

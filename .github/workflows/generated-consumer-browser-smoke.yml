@@ -1,28 +1,22 @@
-name: Generated Consumer Browser Smoke
+name: Generated Consumer browser smoke
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'archive/generated-bank.html'
-      - 'archive/problem-bank-meta.js'
-      - 'archive/archive2-source.js'
-      - 'archive/problem-bank-search.html'
-      - 'archive/data/generated-lite-consumer/**'
-      - 'archive/generated/lite/v1/**'
-      - 'archive/tools/generated-meta/rebuild-main-source-consumer.mjs'
-      - 'tools/check-geumdang-qid9-browser.cjs'
-      - '.github/workflows/generated-consumer-browser-smoke.yml'
   pull_request:
     branches: [main]
     paths:
       - 'archive/generated-bank.html'
+      - 'archive/generated-mock-selection.js'
+      - 'archive/data/generated-lite-consumer/**'
+      - 'archive/generated/lite/v1/**'
       - 'archive/problem-bank-meta.js'
       - 'archive/archive2-source.js'
       - 'archive/problem-bank-search.html'
-      - 'archive/data/generated-lite-consumer/**'
-      - 'archive/generated/lite/v1/**'
       - 'archive/tools/generated-meta/rebuild-main-source-consumer.mjs'
+      - 'tests/archive2-generated-bank-registration.test.js'
+      - 'tests/archive2-generated-bank-subjective-table.test.cjs'
+      - 'tests/archive2-generated-mock-selection.test.cjs'
+      - 'tests/generated-main-source-consumer-sync.test.cjs'
+      - 'tools/check-generated-bank-browser.cjs'
       - 'tools/check-geumdang-qid9-browser.cjs'
       - '.github/workflows/generated-consumer-browser-smoke.yml'
   workflow_dispatch:
@@ -30,23 +24,43 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: generated-consumer-browser-smoke-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
-  smoke:
-    name: Archive2 Geumdang search and output
+  browser-smoke:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Verify main source to Generated Consumer projection
-        run: node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --check
+      - name: Derive the branch Consumer from every main-resident Generated source
+        run: |
+          node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --write
+          node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --check
+      - name: Verify source projection, source availability, Palma selection, and output structure
+        run: >-
+          node --test
+          tests/generated-main-source-consumer-sync.test.cjs
+          tests/problem-bank-meta.test.cjs
+          tests/archive2-generated-bank-registration.test.js
+          tests/archive2-generated-bank-subjective-table.test.cjs
+          tests/archive2-generated-mock-selection.test.cjs
       - uses: browser-actions/setup-chrome@v1
         id: chrome
         with:
           chrome-version: stable
-      - name: Search, select, render problem and solution, and open print preview
+      - name: Verify Palma student lookup, preview, and print
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+        run: node tools/check-generated-bank-browser.cjs
+      - name: Verify Geumdang source output and student rendering
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
         run: node tools/check-geumdang-qid9-browser.cjs

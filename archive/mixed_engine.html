@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
     <script src="archive2-review.js"></script>
+    <script src="generated-mock-selection.js"></script>
     <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
     <script src="archive2-output.js?v=20261010-sol-qpp1-atomicmath-2"></script>
     <script src="archive2-pdf-readiness.js?v=20261002-output-envelope-v3"></script>
@@ -1592,7 +1593,9 @@ function renderChoicesHTML(q) {
     if (isSubjective) return '<div class="answer-box"></div>';
     const mode = detectChoiceRenderMode(q.choices);
     const itemsHTML = q.choices.map((c, ci) => {
-        const text = wrapLatex(stripChoicePrefix(extractChoice(c)));
+        const raw = stripChoicePrefix(extractChoice(c));
+        const display = window.GeneratedMockSelection?.formatChoiceForDisplay(raw) ?? raw;
+        const text = wrapLatex(display);
         return `<div class="choice-item"><span class="choice-no">${circled[ci] || ''}</span><span class="choice-text">${text}</span></div>`;
     }).join('');
     return `<div class="choices choices-${mode}">${itemsHTML}</div>`;

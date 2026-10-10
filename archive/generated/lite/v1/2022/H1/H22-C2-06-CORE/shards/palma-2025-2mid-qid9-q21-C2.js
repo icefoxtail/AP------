@@ -1,0 +1,37 @@
+window.examTitle = "PALMA_2025_QID9_21_C2";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q21-C2",
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "명제",
+    "originalCategory": "명제",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE",
+    "subUnit": "명제 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "명제"
+    ],
+    "wide": false,
+    "content": "실수 $x$에 대한 조건 $p:(x+2)(x-3)\\le0$이 있고, $r$은 $\\sim p$와 동치이다. 실수 $t$에 대하여 조건 $q:|x-t|\\ge2$를 정의하자. $r$이 $q$이기 위한 충분조건이 되도록 하는 모든 실수 $t$의 범위를 구하시오.",
+    "choices": [],
+    "answer": "$0\\le t\\le1$",
+    "solution": "$P=[-2,3]$이므로 $R=(-\\infty,-2)\\cup(3,\\infty)$이다. 또한 $q$의 진리집합은 $Q=(-\\infty,t-2]\\cup[t+2,\\infty)$이다.\n$r$이 $q$의 충분조건이려면 $R\\subset Q$이어야 한다. 이는 $q$가 거짓인 열린구간 $(t-2,t+2)$이 모두 $P=[-2,3]$ 안에 포함되는 것과 같다.\n따라서 $t-2\\ge-2$, $t+2\\le3$을 동시에 만족해야 한다. 각각 $t\\ge0$, $t\\le1$이다. 양 끝점에서는 $R$의 경계인 $-2,3$이 $r$에 포함되지 않으므로 모두 가능하다.\n따라서 $0\\le t\\le1$이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 21,
+    "slot": "C2",
+    "purposeGroup": "C"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q21-C2");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q21-C2","meta":{"rpmL1":"집합과 명제","rpmL2":"명제","rpmL3":"필요조건·충분조건","rpmL4":"매개변수","rpmL4Namespace":"RPM_EXISTING_DRAFT","rpmPrimaryRecordId":"H1-RPM-248","rpmDeclaredRecordIds":["H1-RPM-247"],"rpmRecordResolution":{"path":"archive/analysis/palma-mock-builder-20261010/Q21_RPM_RECORD_RESOLUTION/ALITE-PALMA25-2MID-Q21-C2.json","sha256":"f4b7750d44d28a456e3194b9372fd70bf7276b4ce42d4ee40c1808fa0728edde","gitBlobSha1":"a98f4ab11e099e4cc0b61af359cffb3f0028eda3","declaredRecordIds":["H1-RPM-247"],"selectedRecordId":"H1-RPM-248","selectionBasis":"EXACT_ACTIVE_UNIT_SUBUNIT_L3_L4_AND_TEMPLATE"},"rpmDraftAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmDraftAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","secondaryConceptKeys":[],"crossConceptKeys":[],"conditionKeys":["COND_RANGE"],"crossConceptRegistryRef":null,"conditionRegistryRef":null,"sourceKind":"generated","integrationPattern":"SEQUENTIAL","difficultyBucket":4,"level":"상","problemTypeKey":"PT_NEC_SUFF_RELATION","templateKey":"TPL_NEC_SUFF_INTERVAL_PARAMETER","standardCourse":"공통수학2","standardUnitKey":"H22-C2-06","subUnitKey":"H22-C2-06-CORE"},"metaFinalSha256":"ea797b4f46bc6d52ad86de9814833300251d7a11d511c6f2e45b97f08960f418","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q21-C2.json","sha256":"e7d4d85d904e4f13ac64f0f4c4f2dd33ea90b3fb8d0fac9642216f969f10b507","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q17_Q23_63","scopeUids":["ALITE-PALMA25-2MID-Q21-C2"],"approvalReceiptPath":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json","approvalReceiptSha256":"38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d","approvalReceiptGitBlobSha1":"5813555d09e63d3afeb5c3c4e0d941bc2383b0d2","approvedPackagePath":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q21_PACKAGE.json","approvedPackageSha256":"33de32e2fde2e574f1f841c312911204f306be57273d47b7fc4cbfbb2abca8ae","approvedPackageGitBlobSha1":"125fa58ecf7c1ca5e7944f51963fc659882e2812","approvedSourceSnapshot":{"path":"archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js","gitBlobSha1":"4cfce909c023e5c4df4a759945c8cc3e0a63ec76"},"currentSource":{"path":"archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js","gitBlobSha1":"e7ead9fb1404f0fdb01dbfeafdee268f617b992e"},"uid":"ALITE-PALMA25-2MID-Q21-C2"},"metaReviewEvidenceSha256":"e7d4d85d904e4f13ac64f0f4c4f2dd33ea90b3fb8d0fac9642216f969f10b507","difficultyBucket":4,"level":"상","problemTypeKey":"PT_NEC_SUFF_RELATION","templateKey":"TPL_NEC_SUFF_INTERVAL_PARAMETER","secondaryConceptKeys":[],"crossConceptKeys":[],"conditionKeys":["COND_RANGE"],"integrationPattern":"SEQUENTIAL"});})();

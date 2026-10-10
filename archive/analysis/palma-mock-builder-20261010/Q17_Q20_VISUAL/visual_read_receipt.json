@@ -1,0 +1,429 @@
+{
+  "schemaVersion": "PALMA_Q17_Q20_VISUAL_READ_RECEIPT_V1",
+  "taskScope": {
+    "sourceQids": [
+      17,
+      18,
+      19,
+      20
+    ],
+    "uidCount": 36,
+    "surfaces": [
+      "PROBLEM",
+      "SOLUTION"
+    ],
+    "packageBytesFrozen": true,
+    "mathTextRewritesAuthorized": false
+  },
+  "worktree": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\palma-mock-builder\\AP------",
+    "headSha": "238815597ab6515fd1efa1222806a364c93430f4"
+  },
+  "requiredRead": [
+    {
+      "path": ".codex/skills/apmath-visual-upgrade/SKILL.md",
+      "sha256": "97B3BB081455810017FD0BF51E28C6E8DD487F6215253160396E78FAF88029EF",
+      "sectionsRead": "0 through 16, full file"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md",
+      "sha256": "48A0CDD5A0D22B07C25937A1D4B9B0B4B910DBA2CB9A61E30EEFC2AFA7E8A974"
+    },
+    {
+      "path": "docs/rules/04_VISUAL/도형추출.md",
+      "sha256": "86B40E2DCDC88E18556749BEDBFF9B6E04556CCCDE676F3B1DD1EBF7AA39C863"
+    },
+    {
+      "path": "docs/rules/04_VISUAL/Problem_Bank_All_Items_Problem_And_Solution_Visual_Gate_CURRENT_v1.md",
+      "sha256": "F2BBE5C9BEFD9E1ACB1B63CD849930517F18E3C701E919C6E27062E773767965"
+    },
+    {
+      "path": "docs/rules/04_VISUAL/Problem_Bank_Per_Item_Problem_Solution_SVG_Full_Audit_CURRENT_v1.md",
+      "sha256": "807C386188FE7822226CE573743E6C51517374792A54FEB70B6E02D7FC0CFDC1"
+    },
+    {
+      "path": "docs/rules/04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md",
+      "sha256": "6888FB6C390B565891C50449CC0275919884E038D452E024EB64FC044F730F26"
+    },
+    {
+      "path": "docs/rules/04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md",
+      "sha256": "0155ABCB370AFDCF0D177FECE9AFA8F66B3CDFD7BE619AF5FED71E725A919E3B"
+    },
+    {
+      "path": "alive/04_VISUAL/ALIVE_VISUAL_SPEC_v0.1.md",
+      "sha256": "6815C912D2067D3B1423F4A333AC48FE55C2C0FB99896471A20D99DF47E53AEB"
+    },
+    {
+      "path": "alive/04_VISUAL/ALIVE_SIMILAR_ADVANCED_VISUAL_REGEN_SPEC_v1.0.md",
+      "sha256": "508C232DC8C8530E1A55869E52996457172E4A7E239CE3693407CC22ED5EB7B4"
+    },
+    {
+      "path": "alive/engine/visual_renderer.py",
+      "sha256": "0497B788CDFD362DF6729BBF8F73FE2F9EDD94DC0F71E50E2325B2500CFBECA6",
+      "rendererVersion": "0.5.2-circle-geometry-label-layout",
+      "visualSpecVersion": "0.1",
+      "supportedTypes": [
+        "coordinate_plane",
+        "simple_function_graph",
+        "segment_geometry",
+        "polygon",
+        "circle",
+        "circle_geometry",
+        "table"
+      ],
+      "supportedCurves": "curves[].points polyline sampling; native semicircle-arc primitive unsupported"
+    }
+  ],
+  "calibration": {
+    "status": "PASS",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:fd3c36a833a08b4970579e85d296821b1ba175b64982c497f6eadc98bae948b1",
+        "gitBlobSha": "462f7f23ae4468b58c002ee548465aff202251ed"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "sha256:b6f550df83f474d16431d980a0ad80c1a13b0f222e58b1109343c35c42c64f18",
+        "solutionExcerpt": "PA=PA'",
+        "observation": "The reflection solution states PA=PA′ and uses the straight segment A′B as the lower bound; its solution SVG depicts the reflected point and decisive line."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "qid": 9,
+        "solutionSha256": "sha256:25421d8ac704b7506d2f4053b6e916238197d77033f2c87f720914fed2919c7b",
+        "solutionExcerpt": "AG:GM=2:1",
+        "observation": "The centroid visual binds the order A–G–M and the 2:1 division to actual coordinates, making the coordinate recovery step visible."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "qid": 17,
+        "solutionSha256": "sha256:2f4d68be9b52d86333f857cc942bf73dcae93629b30194e17d4670bef3ca6c76",
+        "solutionExcerpt": "공통점을 지나는 직선",
+        "observation": "The common-chord solution ties the circle intersection relation to an actual line primitive rather than relying on the equation label alone."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+        "solutionExcerpt": "완전제곱식",
+        "observation": "The circle center and radius from standard form are shown at their actual coordinate location with a radius segment; the existing PNG is clear and readable."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 4,
+        "solutionSha256": "sha256:acdb76bc6092e60c215baaf235516b6fd1a7777ffc9d20cb1f134a95a7043cdf",
+        "solutionExcerpt": "두 접선은",
+        "observation": "Two parallel tangent lines and their symmetric y-intercepts are decisive; the SVG bytes were inspected for the circle/tangent/center structure."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "solutionExcerpt": "(-3,1)",
+        "observation": "The translation then origin-reflection solution is shown as three actual circle centers in sequence; the screenshot is legible overall, with a few subscript glyphs boxed."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 12,
+        "solutionSha256": "sha256:a555355216573e25a87a2b09d6164a6f02b0d688bc01e0bacac1eca42dead171",
+        "solutionExcerpt": "|a-4|=a",
+        "observation": "The tangency conditions are tied to both coordinate axes and the moved circle; the source SVG asset and solution bytes were read."
+      }
+    ],
+    "visualSampleAssetBytes": [
+      {
+        "path": "archive/assets/images/25_순천여고_2학기_중간_고1_기출/q06-solution.svg",
+        "sha256": "A9892A7A9E14557BC4F1713894D39628ABAD9D9B479D4B74EA52164686FF85EF",
+        "gitBlobSha1": "6baab337496a6758a36322b4f80800868aac8c89",
+        "sizeBytes": 4994
+      },
+      {
+        "path": "archive/assets/images/25_순천여고_2학기_중간_고1_기출/q09-solution.svg",
+        "sha256": "81EAC5FA90F9B9893E9FF174ABF435CBC9B7BB5B405FA41A68A7B486A90525EF",
+        "gitBlobSha1": "6c1f5b6f710de0d3ac1b02ff88a87e18fb80dcfb",
+        "sizeBytes": 2487
+      },
+      {
+        "path": "archive/assets/images/25_순천여고_2학기_중간_고1_기출/q17-solution.svg",
+        "sha256": "6A00186262692770EDB1F6031694C5B5D0CCFFF89A4E8D32221F575C27CC4F30",
+        "gitBlobSha1": "5190a8f70c3fce90b53cb99d71df58252f92aace",
+        "sizeBytes": 6722
+      },
+      {
+        "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg",
+        "sha256": "752CEC51F255CB4BFC7DFB6A5E8CD83FD2A4184BB08AB40CABC20DB55AD0C28C",
+        "gitBlobSha1": "323b2910c006305ef098e4bf8e61406eb4702f3f",
+        "sizeBytes": 2148
+      },
+      {
+        "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q04-solution.svg",
+        "sha256": "C1B3B1604763FA3528BBEF03BC6C76F956F58D02267F4470E1D036F71C52176B",
+        "gitBlobSha1": "395d9a40761cfb6de2f5a3fa165be6c28d222a7a",
+        "sizeBytes": 2773
+      },
+      {
+        "path": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+        "sha256": "6A0FC9A55F1D1AA365366F2DDF784550FEB1DF78AC01571DCC84DBD288F0BA7D",
+        "gitBlobSha1": "145bb00f7bbe034d259877b9d7a34c9e70bf8728",
+        "sizeBytes": 3700
+      },
+      {
+        "path": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q12-solution.svg",
+        "sha256": "67D04157729407BB19BC50D68AD0F68B72044088C1E6F599DF82C7C6428E56DF",
+        "gitBlobSha1": "8e20c9ec936393448def970c0994bf43b3170a81",
+        "sizeBytes": 3395
+      }
+    ],
+    "viewedPreexistingScreenshots": [
+      {
+        "path": "archive/analysis/16_매산고_2학기_중간_고2_기하와벡터_기출/codex-archive2-h2-math2-geometry-20261007/preflight/golden/25-hyocheon-q3.png",
+        "sha256": "6A7CA1E1B3A2DDCEC924545EF984E50F522BC4797ACF5BCC4BBB2660CCBC29CD",
+        "gitBlobSha1": "96bc8c1e8911e650a7a1fc39421c21176006a9b1",
+        "sizeBytes": 25390,
+        "observation": "Pre-existing frozen visual preflight PNG opened with view_image; actual circle, center, radius segment and labels are legible."
+      },
+      {
+        "path": "archive/analysis/16_매산고_2학기_중간_고2_기하와벡터_기출/codex-archive2-h2-math2-geometry-20261007/preflight/golden/25-masan-q7.png",
+        "sha256": "EA9DA417978D747549A5D524941B91F1938A96D39F5FAC55891B6CDBECE7E5B5",
+        "gitBlobSha1": "70f89ed21058808abcff47c70249af5a9ec6ffe9",
+        "sizeBytes": 58790,
+        "observation": "Pre-existing frozen visual preflight PNG opened with view_image; center movement and before/after circle topology are visible; a few subscript glyphs render as boxes."
+      },
+      {
+        "path": "archive/analysis/16_매산고_2학기_중간_고2_기하와벡터_기출/codex-archive2-h2-math2-geometry-20261007/preflight/golden/25-hyocheon-q2.png",
+        "sha256": "403A7322C92C1C154FF275A4273EDBF2B7888DACB77E0CF7BF5CE49C461FC973",
+        "gitBlobSha1": "39b2fae95e02ac22b33981d87cb056d3cd544bec",
+        "sizeBytes": 34344,
+        "observation": "Read as caution only, not selected as Golden: multiple glyphs are rendered as square boxes in labels and explanatory text."
+      },
+      {
+        "path": "archive/analysis/qualification-20261006/20_매산고_2학기_기말_고2_수학II/R1-calibration-renders/negative-bokseong-q20.png",
+        "sha256": "65DEEFE378345161A0C500FFFD1A7EDAB28E9339955BF881D5F5042183D2E08E",
+        "gitBlobSha1": "1d1df7b4cae42f6d9028bbee4b6981bed77b7265",
+        "sizeBytes": 5830,
+        "observation": "Pre-existing frozen negative sample screenshot opened with view_image; the equation label and actual line do not match, illustrating why SVG primitives must be checked."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "39C03A074003C240075547AAC15421694B6B90181F5A91135D7927C90E3DB3F8",
+        "gitBlobSha1": "9775c4993d7e148a9da816ae36acdf652bc69906",
+        "sizeBytes": 3114
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q20-solution.bad.svg",
+        "sha256": "9715C6A819EB4D16379087A759F73523442F59BD46ED761011FC0A6680AB98C8",
+        "gitBlobSha1": "61f30e0564efd58af8dc188f01673d07ef10946e",
+        "sizeBytes": 1267
+      },
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-29/03_25_왕운중_2학기_중간_중2_수학_q24_COORDINATE_SEMANTIC_FAIL.svg",
+        "sha256": "4DA854C7792D01052D3DCF3F1591E604C67DD4070FE6BBA424703074366CBD0E",
+        "gitBlobSha1": "3a821e6be551dd4d0ad507004f43a6aa67f18f0f",
+        "sizeBytes": 2147
+      }
+    ],
+    "note": "The Hyochen q02 screenshot is recorded as a glyph-render caution, not a Golden quality sample.",
+    "gateReportPath": "archive/analysis/palma-mock-builder-20261010/Q17_Q20_VISUAL/visual_solution_calibration_preflight.raw.json",
+    "gateReportSha256": "9A79A648FC4C224E5259B5FA6D1434C38B00BE0132828F6F2C225FA9F706E0C3"
+  },
+  "browserAccess": {
+    "status": "LOCAL_GOLDEN_FILE_URL_REJECTED",
+    "action": "Attempted to open one pre-existing local Golden SVG in Chrome through cua_repl createBrowserTab using a file:// URL.",
+    "exactToolResponse": "Browser Use rejected this action due to browser security policy. Reason: The browser URL policy blocks this action. Browser use cannot visit the requested page. The requested URL protocol is not allowed. Allowed protocols: \"http:\", \"https:\". The agent must not attempt to achieve the same outcome via workaround, indirect execution, raw CDP or browser commands, alternate browser surfaces, or policy circumvention. Proceed only with a materially safer alternative that does not require this blocked browser action; if none exists, stop and request user input."
+  },
+  "approvalBinding": {
+    "receipt": {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json",
+      "sha256": "38BEFC817FB0FC07659BA35F13709C54F07C12715D7680975A3955DAE39C2B2D",
+      "gitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+      "sizeBytes": 9445
+    },
+    "approvalStatus": "USER_DIRECTED_QUALITY_APPROVED",
+    "approvalHeadSha": "a0ea9f1178a5638f6fe9db92a1e2bdd9d2c51226",
+    "approvedSourceExamBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+    "currentHeadSourceExamBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e",
+    "packageIntegrity": [
+      {
+        "sourceQid": 17,
+        "packagePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_PACKAGE.json",
+        "approvedCanonicalSha256": "38a8c50a999b48bae2f7c75df1116e87430606b21b1d89d2278ae20136169ba9",
+        "approvedGitBlobSha1": "e06bd2f8373874aef7765f2cfe9da4dd496e3354",
+        "currentWorktreeFileSha256": "209F680690A967BC06009C0FF5FFAAD5217E55DADBD8B01D505EBA234E9861F6",
+        "currentWorktreeRawGitBlobSha1": "0bb7e2bbeedbdf25f711e8f5acf66a729090c8b7",
+        "currentHeadGitBlobSha1": "e06bd2f8373874aef7765f2cfe9da4dd496e3354",
+        "sourceExamBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+        "uidCount": 9,
+        "itemUids": [
+          "ALITE-PALMA25-2MID-Q17-A1",
+          "ALITE-PALMA25-2MID-Q17-A2",
+          "ALITE-PALMA25-2MID-Q17-A3",
+          "ALITE-PALMA25-2MID-Q17-B1",
+          "ALITE-PALMA25-2MID-Q17-B2",
+          "ALITE-PALMA25-2MID-Q17-B3",
+          "ALITE-PALMA25-2MID-Q17-C1",
+          "ALITE-PALMA25-2MID-Q17-C2",
+          "ALITE-PALMA25-2MID-Q17-C3"
+        ]
+      },
+      {
+        "sourceQid": 18,
+        "packagePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q18_PACKAGE.json",
+        "approvedCanonicalSha256": "b22ff7c9cd28c16acf761a1a89c788bfcc1d58205fd894bded55901ea4e5d021",
+        "approvedGitBlobSha1": "90617d697f2e49369ec6edf583d0cacb83b739b3",
+        "currentWorktreeFileSha256": "FD0FAAFE76F480BC5ACC04312EE7DC7B167D08D10A87E2F3439B72C123ED7D59",
+        "currentWorktreeRawGitBlobSha1": "5f50c2f62544fea144dc70cd1aeb87acf2cac24e",
+        "currentHeadGitBlobSha1": "90617d697f2e49369ec6edf583d0cacb83b739b3",
+        "sourceExamBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+        "uidCount": 9,
+        "itemUids": [
+          "ALITE-PALMA25-2MID-Q18-A1",
+          "ALITE-PALMA25-2MID-Q18-A2",
+          "ALITE-PALMA25-2MID-Q18-A3",
+          "ALITE-PALMA25-2MID-Q18-B1",
+          "ALITE-PALMA25-2MID-Q18-B2",
+          "ALITE-PALMA25-2MID-Q18-B3",
+          "ALITE-PALMA25-2MID-Q18-C1",
+          "ALITE-PALMA25-2MID-Q18-C2",
+          "ALITE-PALMA25-2MID-Q18-C3"
+        ]
+      },
+      {
+        "sourceQid": 19,
+        "packagePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q19_PACKAGE.json",
+        "approvedCanonicalSha256": "4fe6a3e4a884682c5b8e02258d426fa22b5cbf786778cf7ae4591840c6ef501f",
+        "approvedGitBlobSha1": "4a4636fe6f7412520b9752b82ebef14ea2f4fd3a",
+        "currentWorktreeFileSha256": "CCA9D8A93E10FCE4428C817F6FDA2CC9533F58E3F9427E3854AB2A5D6464EFC9",
+        "currentWorktreeRawGitBlobSha1": "5b1af10be968fa2050af8f9000bb9e9f6b2f1616",
+        "currentHeadGitBlobSha1": "4a4636fe6f7412520b9752b82ebef14ea2f4fd3a",
+        "sourceExamBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+        "uidCount": 9,
+        "itemUids": [
+          "ALITE-PALMA25-2MID-Q19-A1",
+          "ALITE-PALMA25-2MID-Q19-A2",
+          "ALITE-PALMA25-2MID-Q19-A3",
+          "ALITE-PALMA25-2MID-Q19-B1",
+          "ALITE-PALMA25-2MID-Q19-B2",
+          "ALITE-PALMA25-2MID-Q19-B3",
+          "ALITE-PALMA25-2MID-Q19-C1",
+          "ALITE-PALMA25-2MID-Q19-C2",
+          "ALITE-PALMA25-2MID-Q19-C3"
+        ]
+      },
+      {
+        "sourceQid": 20,
+        "packagePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q20_PACKAGE.json",
+        "approvedCanonicalSha256": "4763022a03626ed815a3a043263f9192117b8d00b12dde9b5b6712d626a6dbdf",
+        "approvedGitBlobSha1": "64005c59f8c425588396f4c28dde6e39245ccc2b",
+        "currentWorktreeFileSha256": "C9D6059C78D63E1E8B8770AB67A6DB85C24000317FF083CE5B37E37D687AFB17",
+        "currentWorktreeRawGitBlobSha1": "c226105d86c4964dbdfb4e3d4b0b4c8746a16046",
+        "currentHeadGitBlobSha1": "64005c59f8c425588396f4c28dde6e39245ccc2b",
+        "sourceExamBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+        "uidCount": 9,
+        "itemUids": [
+          "ALITE-PALMA25-2MID-Q20-A1",
+          "ALITE-PALMA25-2MID-Q20-A2",
+          "ALITE-PALMA25-2MID-Q20-A3",
+          "ALITE-PALMA25-2MID-Q20-B1",
+          "ALITE-PALMA25-2MID-Q20-B2",
+          "ALITE-PALMA25-2MID-Q20-B3",
+          "ALITE-PALMA25-2MID-Q20-C1",
+          "ALITE-PALMA25-2MID-Q20-C2",
+          "ALITE-PALMA25-2MID-Q20-C3"
+        ]
+      }
+    ]
+  },
+  "targetBaseline": {
+    "packages": [
+      {
+        "sourceQid": 17,
+        "approvalCanonicalSha256": "38a8c50a999b48bae2f7c75df1116e87430606b21b1d89d2278ae20136169ba9",
+        "approvalGitBlobSha1": "e06bd2f8373874aef7765f2cfe9da4dd496e3354",
+        "currentWorktreeFileSha256": "209F680690A967BC06009C0FF5FFAAD5217E55DADBD8B01D505EBA234E9861F6",
+        "itemUids": [
+          "ALITE-PALMA25-2MID-Q17-A1",
+          "ALITE-PALMA25-2MID-Q17-A2",
+          "ALITE-PALMA25-2MID-Q17-A3",
+          "ALITE-PALMA25-2MID-Q17-B1",
+          "ALITE-PALMA25-2MID-Q17-B2",
+          "ALITE-PALMA25-2MID-Q17-B3",
+          "ALITE-PALMA25-2MID-Q17-C1",
+          "ALITE-PALMA25-2MID-Q17-C2",
+          "ALITE-PALMA25-2MID-Q17-C3"
+        ]
+      },
+      {
+        "sourceQid": 18,
+        "approvalCanonicalSha256": "b22ff7c9cd28c16acf761a1a89c788bfcc1d58205fd894bded55901ea4e5d021",
+        "approvalGitBlobSha1": "90617d697f2e49369ec6edf583d0cacb83b739b3",
+        "currentWorktreeFileSha256": "FD0FAAFE76F480BC5ACC04312EE7DC7B167D08D10A87E2F3439B72C123ED7D59",
+        "itemUids": [
+          "ALITE-PALMA25-2MID-Q18-A1",
+          "ALITE-PALMA25-2MID-Q18-A2",
+          "ALITE-PALMA25-2MID-Q18-A3",
+          "ALITE-PALMA25-2MID-Q18-B1",
+          "ALITE-PALMA25-2MID-Q18-B2",
+          "ALITE-PALMA25-2MID-Q18-B3",
+          "ALITE-PALMA25-2MID-Q18-C1",
+          "ALITE-PALMA25-2MID-Q18-C2",
+          "ALITE-PALMA25-2MID-Q18-C3"
+        ]
+      },
+      {
+        "sourceQid": 19,
+        "approvalCanonicalSha256": "4fe6a3e4a884682c5b8e02258d426fa22b5cbf786778cf7ae4591840c6ef501f",
+        "approvalGitBlobSha1": "4a4636fe6f7412520b9752b82ebef14ea2f4fd3a",
+        "currentWorktreeFileSha256": "CCA9D8A93E10FCE4428C817F6FDA2CC9533F58E3F9427E3854AB2A5D6464EFC9",
+        "itemUids": [
+          "ALITE-PALMA25-2MID-Q19-A1",
+          "ALITE-PALMA25-2MID-Q19-A2",
+          "ALITE-PALMA25-2MID-Q19-A3",
+          "ALITE-PALMA25-2MID-Q19-B1",
+          "ALITE-PALMA25-2MID-Q19-B2",
+          "ALITE-PALMA25-2MID-Q19-B3",
+          "ALITE-PALMA25-2MID-Q19-C1",
+          "ALITE-PALMA25-2MID-Q19-C2",
+          "ALITE-PALMA25-2MID-Q19-C3"
+        ]
+      },
+      {
+        "sourceQid": 20,
+        "approvalCanonicalSha256": "4763022a03626ed815a3a043263f9192117b8d00b12dde9b5b6712d626a6dbdf",
+        "approvalGitBlobSha1": "64005c59f8c425588396f4c28dde6e39245ccc2b",
+        "currentWorktreeFileSha256": "C9D6059C78D63E1E8B8770AB67A6DB85C24000317FF083CE5B37E37D687AFB17",
+        "itemUids": [
+          "ALITE-PALMA25-2MID-Q20-A1",
+          "ALITE-PALMA25-2MID-Q20-A2",
+          "ALITE-PALMA25-2MID-Q20-A3",
+          "ALITE-PALMA25-2MID-Q20-B1",
+          "ALITE-PALMA25-2MID-Q20-B2",
+          "ALITE-PALMA25-2MID-Q20-B3",
+          "ALITE-PALMA25-2MID-Q20-C1",
+          "ALITE-PALMA25-2MID-Q20-C2",
+          "ALITE-PALMA25-2MID-Q20-C3"
+        ]
+      }
+    ],
+    "problemVisualMarker": "Recorded in package as studentVisual only; not used as solution surface authority.",
+    "solutionImageBaseline": "All Q17–Q20 solutionVisual/solutionImage values inspected as absent."
+  },
+  "materialization": {
+    "started": false
+  }
+}

@@ -1,0 +1,1894 @@
+{
+  "schemaVersion": "PALMA_Q17_SCOPED_EXPECTED_FACT_REFRESH_V1",
+  "scope": {
+    "sourceQid": 17,
+    "uidCount": 9
+  },
+  "approvedSource": {
+    "packagePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_PACKAGE.json",
+    "packageSha256": "38A8C50A999B48BAE2F7C75DF1116E87430606B21B1D89D2278AE20136169BA9",
+    "packageGitBlobSha1": "e06bd2f8373874aef7765f2cfe9da4dd496e3354",
+    "packageWorktreeRawSha256": "209F680690A967BC06009C0FF5FFAAD5217E55DADBD8B01D505EBA234E9861F6",
+    "packageWorktreeRawGitBlobSha1": "0bb7e2bbeedbdf25f711e8f5acf66a729090c8b7",
+    "packageWorktreeCleanGitBlobSha1": "e06bd2f8373874aef7765f2cfe9da4dd496e3354",
+    "approvalReceiptPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json",
+    "approvalReceiptSha256": "38BEFC817FB0FC07659BA35F13709C54F07C12715D7680975A3955DAE39C2B2D",
+    "approvalReceiptGitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2"
+  },
+  "preexistingFreeze": {
+    "path": "archive/analysis/palma-mock-builder-20261010/Q17_Q20_VISUAL/expected-facts-freeze.json",
+    "sha256": "615025738DBDB283BFE54B00BCB853EBFCBA2B21127291B145B93D472C524CA3",
+    "triagePath": "archive/analysis/palma-mock-builder-20261010/Q17_Q20_VISUAL/visual-triage-freeze.json",
+    "triageSha256": "5C81C37FB0A0A51147806EB0DDC04A611DB9D1ECC201DD2005940AED973D5910",
+    "readReceiptPath": "archive/analysis/palma-mock-builder-20261010/Q17_Q20_VISUAL/visual_read_receipt.json",
+    "readReceiptSha256": "F3DEB87551CFD81103AC066B1738C9E6F6ACDA7827FD1C6FD469068A1E980FF9",
+    "preservedUnmodified": true
+  },
+  "sourceQ17Items": {
+    "ALITE-PALMA25-2MID-Q17-A1": {
+      "uid": "ALITE-PALMA25-2MID-Q17-A1",
+      "slot": "A1",
+      "r": 3.0,
+      "thetaRadians": 0.7853981633974483,
+      "thetaDegrees": 45,
+      "coordinateProvenance": "CONSTRUCTED_REALIZATION",
+      "coordinateConstruction": {
+        "rationale": "Take source OA/OB radius from the approved stem; choose a source-valid equality point P at the minor-arc midpoint with the minimizing radius, reflect P across OB and OA, then calculate Q and R as exact boundary intersections.",
+        "origin": [
+          0,
+          0
+        ],
+        "xAxisDirection": [
+          1,
+          0
+        ],
+        "unitScale": 1,
+        "pointCoordinates": {
+          "O": [
+            0.0,
+            0.0
+          ],
+          "A": [
+            3.0,
+            0.0
+          ],
+          "B": [
+            2.121320343559643,
+            2.121320343559643
+          ],
+          "P": [
+            2.77163859753386,
+            1.1480502970952693
+          ],
+          "P1": [
+            1.1480502970952695,
+            2.77163859753386
+          ],
+          "P2": [
+            2.77163859753386,
+            -1.1480502970952693
+          ],
+          "Q": [
+            1.623588300438591,
+            1.6235883004385911
+          ],
+          "R": [
+            2.2961005941905386,
+            0.0
+          ]
+        },
+        "constructionConditions": {
+          "OA=OB=sourceRadius": 3.0,
+          "OP=minimizingRadius": 3.0,
+          "angle_AOB_deg": 45,
+          "P_direction_deg": 22.5,
+          "P1_direction_deg": 67.5,
+          "P2_direction_deg": -22.5,
+          "Q_boundary": "OB",
+          "R_boundary": "OA",
+          "pathOrder": "P1-Q-R-P2"
+        },
+        "residuals": {
+          "|OA|-sourceRadius": 0.0,
+          "|OB|-sourceRadius": 4.440892098500626e-16,
+          "|OP|-minimizingRadius": -4.440892098500626e-16,
+          "OB_reflection_parallel": 0.0,
+          "OB_reflection_perpendicular": 2.220446049250313e-16,
+          "OA_reflection_x": 0.0,
+          "OA_reflection_perpendicular": 0.0,
+          "Q_on_OB": -4.440892098500626e-16,
+          "Q_positive_on_OB": 6.888301782571617,
+          "R_on_OA": 0.0,
+          "R_positive_on_OA": 2.2961005941905386,
+          "Q_collinear": -2.220446049250313e-16,
+          "R_collinear": -8.881784197001252e-16,
+          "Q_parameter": 0.29289321881345237,
+          "R_parameter": 0.7071067811865475
+        },
+        "degeneracyChecks": {
+          "radiusPositive": true,
+          "outerRadiusAtLeastMinimizingRadius": true,
+          "angleStrictlyBetweenZeroAndNinety": true,
+          "chordNonzero": true,
+          "rayIntersectionsNonparallel": true,
+          "strictInteriorOrder": true
+        }
+      },
+      "expectedFacts": [
+        {
+          "fact": "A on OA at source radius",
+          "role": "GIVEN",
+          "point": [
+            3.0,
+            0.0
+          ],
+          "expectedRadius": 3.0
+        },
+        {
+          "fact": "B on OB at source radius",
+          "role": "GIVEN",
+          "point": [
+            2.121320343559643,
+            2.121320343559643
+          ],
+          "expectedRadius": 3.0
+        },
+        {
+          "fact": "selected equality point P",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.77163859753386,
+            1.1480502970952693
+          ],
+          "expectedRadius": 3.0
+        },
+        {
+          "fact": "reflection P1 across OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            1.1480502970952695,
+            2.77163859753386
+          ]
+        },
+        {
+          "fact": "reflection P2 across OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.77163859753386,
+            -1.1480502970952693
+          ]
+        },
+        {
+          "fact": "Q intersection on OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            1.623588300438591,
+            1.6235883004385911
+          ]
+        },
+        {
+          "fact": "R intersection on OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.2961005941905386,
+            0.0
+          ]
+        },
+        {
+          "fact": "minor angle wedge from OA to OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "rayOA": [
+            3.0,
+            0.0
+          ],
+          "rayOB": [
+            2.121320343559643,
+            2.121320343559643
+          ],
+          "radians": 0.7853981633974483
+        },
+        {
+          "fact": "P1-Q-R-P2 collinear and ordered",
+          "role": "CONCLUSION",
+          "parameters": [
+            0.29289321881345237,
+            0.7071067811865475
+          ]
+        },
+        {
+          "fact": "folded chord length",
+          "role": "CONCLUSION",
+          "expected": 4.242640687119286,
+          "observedFromConstruction": 4.242640687119285
+        }
+      ],
+      "sourceConditionCoverage": [
+        "Source center, OA/OB endpoints and circle radius",
+        "P arc/sector locus or fixed point and allowed radial interval",
+        "reflections across both source boundary rays",
+        "Q/R intersections lie on their named boundary rays",
+        "Q and R are strict interior points in P1-Q-R-P2 order",
+        "folded path lower bound and equality realization"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "relation": {
+        "formula": "P1P2=2·OP·sin(theta)",
+        "answerRelation": "2r·sin45°=3√2",
+        "expectedMinimum": 4.242640687119286,
+        "computedChordLength": 4.242640687119285,
+        "delta": -8.881784197001252e-16,
+        "extra": {
+          "slot": "A1",
+          "relation": "2r·sin45°=3√2"
+        }
+      },
+      "sourceProblemSha256": "sha256:6744e476c912c56ca819115d655ec86103e428649848535496a05869f2f9c7a6",
+      "sourceSolutionSha256": "sha256:457ad1faefbc19f1e824b6f57797316b400a001d643daf41f6d63b8b477ef1f1"
+    },
+    "ALITE-PALMA25-2MID-Q17-A2": {
+      "uid": "ALITE-PALMA25-2MID-Q17-A2",
+      "slot": "A2",
+      "r": 4.0,
+      "thetaRadians": 0.5235987755982988,
+      "thetaDegrees": 30,
+      "coordinateProvenance": "CONSTRUCTED_REALIZATION",
+      "coordinateConstruction": {
+        "rationale": "Take source OA/OB radius from the approved stem; choose a source-valid equality point P at the minor-arc midpoint with the minimizing radius, reflect P across OB and OA, then calculate Q and R as exact boundary intersections.",
+        "origin": [
+          0,
+          0
+        ],
+        "xAxisDirection": [
+          1,
+          0
+        ],
+        "unitScale": 1,
+        "pointCoordinates": {
+          "O": [
+            0.0,
+            0.0
+          ],
+          "A": [
+            4.0,
+            0.0
+          ],
+          "B": [
+            3.464101615137755,
+            1.9999999999999998
+          ],
+          "P": [
+            3.8637033051562732,
+            1.035276180410083
+          ],
+          "P1": [
+            2.8284271247461903,
+            2.8284271247461903
+          ],
+          "P2": [
+            3.8637033051562732,
+            -1.035276180410083
+          ],
+          "Q": [
+            3.1058285412302493,
+            1.7931509443361069
+          ],
+          "R": [
+            3.586301888672214,
+            0.0
+          ]
+        },
+        "constructionConditions": {
+          "OA=OB=sourceRadius": 4.0,
+          "OP=minimizingRadius": 4.0,
+          "angle_AOB_deg": 30,
+          "P_direction_deg": 15.0,
+          "P1_direction_deg": 45.0,
+          "P2_direction_deg": -15.0,
+          "Q_boundary": "OB",
+          "R_boundary": "OA",
+          "pathOrder": "P1-Q-R-P2"
+        },
+        "residuals": {
+          "|OA|-sourceRadius": 0.0,
+          "|OB|-sourceRadius": 0.0,
+          "|OP|-minimizingRadius": 0.0,
+          "OB_reflection_parallel": -4.440892098500626e-16,
+          "OB_reflection_perpendicular": 0.0,
+          "OA_reflection_x": 0.0,
+          "OA_reflection_perpendicular": 0.0,
+          "Q_on_OB": 0.0,
+          "Q_positive_on_OB": 14.345207554688857,
+          "R_on_OA": 0.0,
+          "R_positive_on_OA": 3.586301888672214,
+          "Q_collinear": 2.220446049250313e-16,
+          "R_collinear": 4.440892098500626e-16,
+          "Q_parameter": 0.2679491924311228,
+          "R_parameter": 0.7320508075688774
+        },
+        "degeneracyChecks": {
+          "radiusPositive": true,
+          "outerRadiusAtLeastMinimizingRadius": true,
+          "angleStrictlyBetweenZeroAndNinety": true,
+          "chordNonzero": true,
+          "rayIntersectionsNonparallel": true,
+          "strictInteriorOrder": true
+        }
+      },
+      "expectedFacts": [
+        {
+          "fact": "A on OA at source radius",
+          "role": "GIVEN",
+          "point": [
+            4.0,
+            0.0
+          ],
+          "expectedRadius": 4.0
+        },
+        {
+          "fact": "B on OB at source radius",
+          "role": "GIVEN",
+          "point": [
+            3.464101615137755,
+            1.9999999999999998
+          ],
+          "expectedRadius": 4.0
+        },
+        {
+          "fact": "selected equality point P",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            3.8637033051562732,
+            1.035276180410083
+          ],
+          "expectedRadius": 4.0
+        },
+        {
+          "fact": "reflection P1 across OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.8284271247461903,
+            2.8284271247461903
+          ]
+        },
+        {
+          "fact": "reflection P2 across OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            3.8637033051562732,
+            -1.035276180410083
+          ]
+        },
+        {
+          "fact": "Q intersection on OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            3.1058285412302493,
+            1.7931509443361069
+          ]
+        },
+        {
+          "fact": "R intersection on OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            3.586301888672214,
+            0.0
+          ]
+        },
+        {
+          "fact": "minor angle wedge from OA to OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "rayOA": [
+            4.0,
+            0.0
+          ],
+          "rayOB": [
+            3.464101615137755,
+            1.9999999999999998
+          ],
+          "radians": 0.5235987755982988
+        },
+        {
+          "fact": "P1-Q-R-P2 collinear and ordered",
+          "role": "CONCLUSION",
+          "parameters": [
+            0.2679491924311228,
+            0.7320508075688774
+          ]
+        },
+        {
+          "fact": "folded chord length",
+          "role": "CONCLUSION",
+          "expected": 4.0,
+          "observedFromConstruction": 4.0
+        }
+      ],
+      "sourceConditionCoverage": [
+        "Source center, OA/OB endpoints and circle radius",
+        "P arc/sector locus or fixed point and allowed radial interval",
+        "reflections across both source boundary rays",
+        "Q/R intersections lie on their named boundary rays",
+        "Q and R are strict interior points in P1-Q-R-P2 order",
+        "folded path lower bound and equality realization"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "relation": {
+        "formula": "P1P2=2·OP·sin(theta)",
+        "answerRelation": "2r·sin30°=4",
+        "expectedMinimum": 4.0,
+        "computedChordLength": 4.0,
+        "delta": 0.0,
+        "extra": {
+          "slot": "A2",
+          "relation": "2r·sin30°=4"
+        }
+      },
+      "sourceProblemSha256": "sha256:f98f991d4d24aa96675149a12d3c69adca20dcb8691276bb822bc4221bf3156c",
+      "sourceSolutionSha256": "sha256:c639b7f79eef424fd261994ea52f68b60943629a528a7b1a07be0f07337ce7db"
+    },
+    "ALITE-PALMA25-2MID-Q17-A3": {
+      "uid": "ALITE-PALMA25-2MID-Q17-A3",
+      "slot": "A3",
+      "r": 3.0,
+      "thetaRadians": 1.0471975511965976,
+      "thetaDegrees": 60,
+      "coordinateProvenance": "CONSTRUCTED_REALIZATION",
+      "coordinateConstruction": {
+        "rationale": "Take source OA/OB radius from the approved stem; choose a source-valid equality point P at the minor-arc midpoint with the minimizing radius, reflect P across OB and OA, then calculate Q and R as exact boundary intersections.",
+        "origin": [
+          0,
+          0
+        ],
+        "xAxisDirection": [
+          1,
+          0
+        ],
+        "unitScale": 1,
+        "pointCoordinates": {
+          "O": [
+            0.0,
+            0.0
+          ],
+          "A": [
+            3.0,
+            0.0
+          ],
+          "B": [
+            1.5000000000000004,
+            2.598076211353316
+          ],
+          "P": [
+            2.598076211353316,
+            1.4999999999999998
+          ],
+          "P1": [
+            1.8369701987210297e-16,
+            3.0
+          ],
+          "P2": [
+            2.598076211353316,
+            -1.4999999999999998
+          ],
+          "Q": [
+            0.866025403784439,
+            1.4999999999999998
+          ],
+          "R": [
+            1.7320508075688774,
+            0.0
+          ]
+        },
+        "constructionConditions": {
+          "OA=OB=sourceRadius": 3.0,
+          "OP=minimizingRadius": 3.0,
+          "angle_AOB_deg": 60,
+          "P_direction_deg": 30.0,
+          "P1_direction_deg": 90.0,
+          "P2_direction_deg": -30.0,
+          "Q_boundary": "OB",
+          "R_boundary": "OA",
+          "pathOrder": "P1-Q-R-P2"
+        },
+        "residuals": {
+          "|OA|-sourceRadius": 0.0,
+          "|OB|-sourceRadius": 4.440892098500626e-16,
+          "|OP|-minimizingRadius": 0.0,
+          "OB_reflection_parallel": -4.440892098500626e-16,
+          "OB_reflection_perpendicular": -2.220446049250313e-16,
+          "OA_reflection_x": 0.0,
+          "OA_reflection_perpendicular": 0.0,
+          "Q_on_OB": 4.440892098500626e-16,
+          "Q_positive_on_OB": 5.196152422706632,
+          "R_on_OA": 0.0,
+          "R_positive_on_OA": 1.7320508075688774,
+          "Q_collinear": -4.440892098500626e-16,
+          "R_collinear": 8.881784197001252e-16,
+          "Q_parameter": 0.3333333333333334,
+          "R_parameter": 0.6666666666666666
+        },
+        "degeneracyChecks": {
+          "radiusPositive": true,
+          "outerRadiusAtLeastMinimizingRadius": true,
+          "angleStrictlyBetweenZeroAndNinety": true,
+          "chordNonzero": true,
+          "rayIntersectionsNonparallel": true,
+          "strictInteriorOrder": true
+        }
+      },
+      "expectedFacts": [
+        {
+          "fact": "A on OA at source radius",
+          "role": "GIVEN",
+          "point": [
+            3.0,
+            0.0
+          ],
+          "expectedRadius": 3.0
+        },
+        {
+          "fact": "B on OB at source radius",
+          "role": "GIVEN",
+          "point": [
+            1.5000000000000004,
+            2.598076211353316
+          ],
+          "expectedRadius": 3.0
+        },
+        {
+          "fact": "selected equality point P",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.598076211353316,
+            1.4999999999999998
+          ],
+          "expectedRadius": 3.0
+        },
+        {
+          "fact": "reflection P1 across OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            1.8369701987210297e-16,
+            3.0
+          ]
+        },
+        {
+          "fact": "reflection P2 across OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.598076211353316,
+            -1.4999999999999998
+          ]
+        },
+        {
+          "fact": "Q intersection on OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            0.866025403784439,
+            1.4999999999999998
+          ]
+        },
+        {
+          "fact": "R intersection on OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            1.7320508075688774,
+            0.0
+          ]
+        },
+        {
+          "fact": "minor angle wedge from OA to OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "rayOA": [
+            3.0,
+            0.0
+          ],
+          "rayOB": [
+            1.5000000000000004,
+            2.598076211353316
+          ],
+          "radians": 1.0471975511965976
+        },
+        {
+          "fact": "P1-Q-R-P2 collinear and ordered",
+          "role": "CONCLUSION",
+          "parameters": [
+            0.3333333333333334,
+            0.6666666666666666
+          ]
+        },
+        {
+          "fact": "folded chord length",
+          "role": "CONCLUSION",
+          "expected": 5.196152422706632,
+          "observedFromConstruction": 5.196152422706632
+        }
+      ],
+      "sourceConditionCoverage": [
+        "Source center, OA/OB endpoints and circle radius",
+        "P arc/sector locus or fixed point and allowed radial interval",
+        "reflections across both source boundary rays",
+        "Q/R intersections lie on their named boundary rays",
+        "Q and R are strict interior points in P1-Q-R-P2 order",
+        "folded path lower bound and equality realization"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "relation": {
+        "formula": "P1P2=2·OP·sin(theta)",
+        "answerRelation": "2r·sin60°=3√3",
+        "expectedMinimum": 5.196152422706632,
+        "computedChordLength": 5.196152422706632,
+        "delta": 0.0,
+        "extra": {
+          "slot": "A3",
+          "relation": "2r·sin60°=3√3"
+        }
+      },
+      "sourceProblemSha256": "sha256:64b31bc570b9a4a45a529adce3322a69d9565f175c6fc411bee72683280f5363",
+      "sourceSolutionSha256": "sha256:6b0005cb53477e582624d80e5dab5d3bec774516a08affb5f5d79607e4ee9eea"
+    },
+    "ALITE-PALMA25-2MID-Q17-B1": {
+      "uid": "ALITE-PALMA25-2MID-Q17-B1",
+      "slot": "B1",
+      "r": 4.0,
+      "thetaRadians": 0.7853981633974483,
+      "thetaDegrees": 45,
+      "coordinateProvenance": "CONSTRUCTED_REALIZATION",
+      "coordinateConstruction": {
+        "rationale": "Take source OA/OB radius from the approved stem; choose a source-valid equality point P at the minor-arc midpoint with the minimizing radius, reflect P across OB and OA, then calculate Q and R as exact boundary intersections.",
+        "origin": [
+          0,
+          0
+        ],
+        "xAxisDirection": [
+          1,
+          0
+        ],
+        "unitScale": 1,
+        "pointCoordinates": {
+          "O": [
+            0.0,
+            0.0
+          ],
+          "A": [
+            4.0,
+            0.0
+          ],
+          "B": [
+            2.8284271247461903,
+            2.8284271247461903
+          ],
+          "P": [
+            3.695518130045147,
+            1.5307337294603591
+          ],
+          "P1": [
+            1.5307337294603593,
+            3.695518130045147
+          ],
+          "P2": [
+            3.695518130045147,
+            -1.5307337294603591
+          ],
+          "Q": [
+            2.164784400584788,
+            2.164784400584788
+          ],
+          "R": [
+            3.061467458920718,
+            0.0
+          ]
+        },
+        "constructionConditions": {
+          "OA=OB=sourceRadius": 4.0,
+          "OP=minimizingRadius": 4.0,
+          "angle_AOB_deg": 45,
+          "P_direction_deg": 22.5,
+          "P1_direction_deg": 67.5,
+          "P2_direction_deg": -22.5,
+          "Q_boundary": "OB",
+          "R_boundary": "OA",
+          "pathOrder": "P1-Q-R-P2"
+        },
+        "residuals": {
+          "|OA|-sourceRadius": 0.0,
+          "|OB|-sourceRadius": 0.0,
+          "|OP|-minimizingRadius": 0.0,
+          "OB_reflection_parallel": 0.0,
+          "OB_reflection_perpendicular": 0.0,
+          "OA_reflection_x": 0.0,
+          "OA_reflection_perpendicular": 0.0,
+          "Q_on_OB": 0.0,
+          "Q_positive_on_OB": 12.245869835682875,
+          "R_on_OA": 0.0,
+          "R_positive_on_OA": 3.061467458920718,
+          "Q_collinear": -4.440892098500626e-16,
+          "R_collinear": 8.881784197001252e-16,
+          "Q_parameter": 0.2928932188134524,
+          "R_parameter": 0.7071067811865475
+        },
+        "degeneracyChecks": {
+          "radiusPositive": true,
+          "outerRadiusAtLeastMinimizingRadius": true,
+          "angleStrictlyBetweenZeroAndNinety": true,
+          "chordNonzero": true,
+          "rayIntersectionsNonparallel": true,
+          "strictInteriorOrder": true
+        }
+      },
+      "expectedFacts": [
+        {
+          "fact": "A on OA at source radius",
+          "role": "GIVEN",
+          "point": [
+            4.0,
+            0.0
+          ],
+          "expectedRadius": 4.0
+        },
+        {
+          "fact": "B on OB at source radius",
+          "role": "GIVEN",
+          "point": [
+            2.8284271247461903,
+            2.8284271247461903
+          ],
+          "expectedRadius": 4.0
+        },
+        {
+          "fact": "selected equality point P",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            3.695518130045147,
+            1.5307337294603591
+          ],
+          "expectedRadius": 4.0
+        },
+        {
+          "fact": "reflection P1 across OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            1.5307337294603593,
+            3.695518130045147
+          ]
+        },
+        {
+          "fact": "reflection P2 across OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            3.695518130045147,
+            -1.5307337294603591
+          ]
+        },
+        {
+          "fact": "Q intersection on OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.164784400584788,
+            2.164784400584788
+          ]
+        },
+        {
+          "fact": "R intersection on OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            3.061467458920718,
+            0.0
+          ]
+        },
+        {
+          "fact": "minor angle wedge from OA to OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "rayOA": [
+            4.0,
+            0.0
+          ],
+          "rayOB": [
+            2.8284271247461903,
+            2.8284271247461903
+          ],
+          "radians": 0.7853981633974483
+        },
+        {
+          "fact": "P1-Q-R-P2 collinear and ordered",
+          "role": "CONCLUSION",
+          "parameters": [
+            0.2928932188134524,
+            0.7071067811865475
+          ]
+        },
+        {
+          "fact": "folded chord length",
+          "role": "CONCLUSION",
+          "expected": 5.656854249492381,
+          "observedFromConstruction": 5.656854249492381
+        }
+      ],
+      "sourceConditionCoverage": [
+        "Source center, OA/OB endpoints and circle radius",
+        "P arc/sector locus or fixed point and allowed radial interval",
+        "reflections across both source boundary rays",
+        "Q/R intersections lie on their named boundary rays",
+        "Q and R are strict interior points in P1-Q-R-P2 order",
+        "folded path lower bound and equality realization"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "relation": {
+        "formula": "P1P2=2·OP·sin(theta)",
+        "answerRelation": "√(2k)=4√2 ⇒ k=16",
+        "expectedMinimum": 5.656854249492381,
+        "computedChordLength": 5.656854249492381,
+        "delta": 0.0,
+        "extra": {
+          "slot": "B1",
+          "relation": "√(2k)=4√2 ⇒ k=16"
+        }
+      },
+      "sourceProblemSha256": "sha256:6d418bce1de96b94dbc138463b2651b7d9ea135ecbb666d9fda53c5e32fe8b65",
+      "sourceSolutionSha256": "sha256:8ebcfa689fc65a2f1e86a99d673042fbd2f2e8f2a4455462b3ea097009b1885b"
+    },
+    "ALITE-PALMA25-2MID-Q17-B2": {
+      "uid": "ALITE-PALMA25-2MID-Q17-B2",
+      "slot": "B2",
+      "r": 1.7320508075688772,
+      "thetaRadians": 1.0471975511965976,
+      "thetaDegrees": 60,
+      "coordinateProvenance": "CONSTRUCTED_REALIZATION",
+      "coordinateConstruction": {
+        "rationale": "Take source OA/OB radius from the approved stem; choose a source-valid equality point P at the minor-arc midpoint with the minimizing radius, reflect P across OB and OA, then calculate Q and R as exact boundary intersections.",
+        "origin": [
+          0,
+          0
+        ],
+        "xAxisDirection": [
+          1,
+          0
+        ],
+        "unitScale": 1,
+        "pointCoordinates": {
+          "O": [
+            0.0,
+            0.0
+          ],
+          "A": [
+            1.7320508075688772,
+            0.0
+          ],
+          "B": [
+            0.8660254037844388,
+            1.4999999999999998
+          ],
+          "P": [
+            1.5,
+            0.8660254037844385
+          ],
+          "P1": [
+            1.0605752387249068e-16,
+            1.7320508075688772
+          ],
+          "P2": [
+            1.5,
+            -0.8660254037844385
+          ],
+          "Q": [
+            0.5000000000000001,
+            0.8660254037844386
+          ],
+          "R": [
+            1.0,
+            0.0
+          ]
+        },
+        "constructionConditions": {
+          "OA=OB=sourceRadius": 1.7320508075688772,
+          "OP=minimizingRadius": 1.7320508075688772,
+          "angle_AOB_deg": 60,
+          "P_direction_deg": 30.0,
+          "P1_direction_deg": 90.0,
+          "P2_direction_deg": -30.0,
+          "Q_boundary": "OB",
+          "R_boundary": "OA",
+          "pathOrder": "P1-Q-R-P2"
+        },
+        "residuals": {
+          "|OA|-sourceRadius": 0.0,
+          "|OB|-sourceRadius": 0.0,
+          "|OP|-minimizingRadius": 0.0,
+          "OB_reflection_parallel": 0.0,
+          "OB_reflection_perpendicular": -2.220446049250313e-16,
+          "OA_reflection_x": 0.0,
+          "OA_reflection_perpendicular": 0.0,
+          "Q_on_OB": -1.1102230246251565e-16,
+          "Q_positive_on_OB": 1.7320508075688772,
+          "R_on_OA": 0.0,
+          "R_positive_on_OA": 1.0,
+          "Q_collinear": 2.220446049250313e-16,
+          "R_collinear": 8.881784197001252e-16,
+          "Q_parameter": 0.33333333333333337,
+          "R_parameter": 0.6666666666666667
+        },
+        "degeneracyChecks": {
+          "radiusPositive": true,
+          "outerRadiusAtLeastMinimizingRadius": true,
+          "angleStrictlyBetweenZeroAndNinety": true,
+          "chordNonzero": true,
+          "rayIntersectionsNonparallel": true,
+          "strictInteriorOrder": true
+        }
+      },
+      "expectedFacts": [
+        {
+          "fact": "A on OA at source radius",
+          "role": "GIVEN",
+          "point": [
+            1.7320508075688772,
+            0.0
+          ],
+          "expectedRadius": 1.7320508075688772
+        },
+        {
+          "fact": "B on OB at source radius",
+          "role": "GIVEN",
+          "point": [
+            0.8660254037844388,
+            1.4999999999999998
+          ],
+          "expectedRadius": 1.7320508075688772
+        },
+        {
+          "fact": "selected equality point P",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            1.5,
+            0.8660254037844385
+          ],
+          "expectedRadius": 1.7320508075688772
+        },
+        {
+          "fact": "reflection P1 across OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            1.0605752387249068e-16,
+            1.7320508075688772
+          ]
+        },
+        {
+          "fact": "reflection P2 across OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            1.5,
+            -0.8660254037844385
+          ]
+        },
+        {
+          "fact": "Q intersection on OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            0.5000000000000001,
+            0.8660254037844386
+          ]
+        },
+        {
+          "fact": "R intersection on OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "fact": "minor angle wedge from OA to OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "rayOA": [
+            1.7320508075688772,
+            0.0
+          ],
+          "rayOB": [
+            0.8660254037844388,
+            1.4999999999999998
+          ],
+          "radians": 1.0471975511965976
+        },
+        {
+          "fact": "P1-Q-R-P2 collinear and ordered",
+          "role": "CONCLUSION",
+          "parameters": [
+            0.33333333333333337,
+            0.6666666666666667
+          ]
+        },
+        {
+          "fact": "folded chord length",
+          "role": "CONCLUSION",
+          "expected": 3.0,
+          "observedFromConstruction": 2.9999999999999996
+        }
+      ],
+      "sourceConditionCoverage": [
+        "Source center, OA/OB endpoints and circle radius",
+        "P arc/sector locus or fixed point and allowed radial interval",
+        "reflections across both source boundary rays",
+        "Q/R intersections lie on their named boundary rays",
+        "Q and R are strict interior points in P1-Q-R-P2 order",
+        "folded path lower bound and equality realization"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "relation": {
+        "formula": "P1P2=2·OP·sin(theta)",
+        "answerRelation": "Q=(1/2,√3/2), R=(1,0), QR=1",
+        "expectedMinimum": 3.0,
+        "computedChordLength": 2.9999999999999996,
+        "delta": -4.440892098500626e-16,
+        "extra": {
+          "slot": "B2",
+          "relation": "Q=(1/2,√3/2), R=(1,0), QR=1",
+          "qr": 1.0
+        }
+      },
+      "sourceProblemSha256": "sha256:7dc75b9da0c5e6623eec6fed1449f74b805ddc7b4c40cf335c53290c4ef01b69",
+      "sourceSolutionSha256": "sha256:b5aec67eaed036315bf8bfc872a04d31bd199ed4b97c87399ed834d14af7757c"
+    },
+    "ALITE-PALMA25-2MID-Q17-B3": {
+      "uid": "ALITE-PALMA25-2MID-Q17-B3",
+      "slot": "B3",
+      "r": 5.0,
+      "thetaRadians": 0.6435011087932844,
+      "thetaDegrees": 36.86989764584402,
+      "coordinateProvenance": "CONSTRUCTED_REALIZATION",
+      "coordinateConstruction": {
+        "rationale": "Take source OA/OB radius from the approved stem; choose a source-valid equality point P at the minor-arc midpoint with the minimizing radius, reflect P across OB and OA, then calculate Q and R as exact boundary intersections.",
+        "origin": [
+          0,
+          0
+        ],
+        "xAxisDirection": [
+          1,
+          0
+        ],
+        "unitScale": 1,
+        "pointCoordinates": {
+          "O": [
+            0.0,
+            0.0
+          ],
+          "A": [
+            5.0,
+            0.0
+          ],
+          "B": [
+            4.0,
+            3.0
+          ],
+          "P": [
+            4.743416490252569,
+            1.5811388300841898
+          ],
+          "P1": [
+            2.846049894151541,
+            4.110960958218893
+          ],
+          "P2": [
+            4.743416490252569,
+            -1.5811388300841898
+          ],
+          "Q": [
+            3.3730961708462712,
+            2.529822128134703
+          ],
+          "R": [
+            4.216370213557839,
+            0.0
+          ]
+        },
+        "constructionConditions": {
+          "OA=OB=sourceRadius": 5.0,
+          "OP=minimizingRadius": 5.0,
+          "angle_AOB_deg": 36.86989764584402,
+          "P_direction_deg": 18.43494882292201,
+          "P1_direction_deg": 55.30484646876603,
+          "P2_direction_deg": -18.43494882292201,
+          "Q_boundary": "OB",
+          "R_boundary": "OA",
+          "pathOrder": "P1-Q-R-P2"
+        },
+        "residuals": {
+          "|OA|-sourceRadius": 0.0,
+          "|OB|-sourceRadius": 0.0,
+          "|OP|-minimizingRadius": 0.0,
+          "OB_reflection_parallel": -8.881784197001252e-16,
+          "OB_reflection_perpendicular": -6.661338147750939e-16,
+          "OA_reflection_x": 0.0,
+          "OA_reflection_perpendicular": 0.0,
+          "Q_on_OB": 1.7763568394002505e-15,
+          "Q_positive_on_OB": 21.081851067789195,
+          "R_on_OA": 0.0,
+          "R_positive_on_OA": 4.216370213557839,
+          "Q_collinear": -4.440892098500626e-16,
+          "R_collinear": -1.7763568394002505e-15,
+          "Q_parameter": 0.2777777777777778,
+          "R_parameter": 0.7222222222222222
+        },
+        "degeneracyChecks": {
+          "radiusPositive": true,
+          "outerRadiusAtLeastMinimizingRadius": true,
+          "angleStrictlyBetweenZeroAndNinety": true,
+          "chordNonzero": true,
+          "rayIntersectionsNonparallel": true,
+          "strictInteriorOrder": true
+        }
+      },
+      "expectedFacts": [
+        {
+          "fact": "A on OA at source radius",
+          "role": "GIVEN",
+          "point": [
+            5.0,
+            0.0
+          ],
+          "expectedRadius": 5.0
+        },
+        {
+          "fact": "B on OB at source radius",
+          "role": "GIVEN",
+          "point": [
+            4.0,
+            3.0
+          ],
+          "expectedRadius": 5.0
+        },
+        {
+          "fact": "selected equality point P",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            4.743416490252569,
+            1.5811388300841898
+          ],
+          "expectedRadius": 5.0
+        },
+        {
+          "fact": "reflection P1 across OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.846049894151541,
+            4.110960958218893
+          ]
+        },
+        {
+          "fact": "reflection P2 across OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            4.743416490252569,
+            -1.5811388300841898
+          ]
+        },
+        {
+          "fact": "Q intersection on OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            3.3730961708462712,
+            2.529822128134703
+          ]
+        },
+        {
+          "fact": "R intersection on OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            4.216370213557839,
+            0.0
+          ]
+        },
+        {
+          "fact": "minor angle wedge from OA to OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "rayOA": [
+            5.0,
+            0.0
+          ],
+          "rayOB": [
+            4.0,
+            3.0
+          ],
+          "radians": 0.6435011087932844
+        },
+        {
+          "fact": "P1-Q-R-P2 collinear and ordered",
+          "role": "CONCLUSION",
+          "parameters": [
+            0.2777777777777778,
+            0.7222222222222222
+          ]
+        },
+        {
+          "fact": "folded chord length",
+          "role": "CONCLUSION",
+          "expected": 6.0,
+          "observedFromConstruction": 6.0
+        }
+      ],
+      "sourceConditionCoverage": [
+        "Source center, OA/OB endpoints and circle radius",
+        "P arc/sector locus or fixed point and allowed radial interval",
+        "reflections across both source boundary rays",
+        "Q/R intersections lie on their named boundary rays",
+        "Q and R are strict interior points in P1-Q-R-P2 order",
+        "folded path lower bound and equality realization"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "relation": {
+        "formula": "P1P2=2·OP·sin(theta)",
+        "answerRelation": "sinθ=3/5 ⇒ B=(4,3)",
+        "expectedMinimum": 6.0,
+        "computedChordLength": 6.0,
+        "delta": 0.0,
+        "extra": {
+          "slot": "B3",
+          "relation": "sinθ=3/5 ⇒ B=(4,3)",
+          "B": [
+            4.0,
+            3.0
+          ]
+        }
+      },
+      "sourceProblemSha256": "sha256:fb65c7f067f9404ae0099089c669d32f65fa5d11cd7c0bfb7e7bc6bdcc9b737b",
+      "sourceSolutionSha256": "sha256:70ac42f239b5163b670fbe2da4e9c8e31370369cb4163cbf533ec05433f47698"
+    },
+    "ALITE-PALMA25-2MID-Q17-C1": {
+      "uid": "ALITE-PALMA25-2MID-Q17-C1",
+      "slot": "C1",
+      "r": 5.0,
+      "thetaRadians": 0.9272952180016122,
+      "thetaDegrees": 53.13010235415598,
+      "coordinateProvenance": "CONSTRUCTED_REALIZATION",
+      "coordinateConstruction": {
+        "rationale": "Take source OA/OB radius from the approved stem; choose a source-valid equality point P at the minor-arc midpoint with the minimizing radius, reflect P across OB and OA, then calculate Q and R as exact boundary intersections.",
+        "origin": [
+          0,
+          0
+        ],
+        "xAxisDirection": [
+          1,
+          0
+        ],
+        "unitScale": 1,
+        "pointCoordinates": {
+          "O": [
+            0.0,
+            0.0
+          ],
+          "A": [
+            5.0,
+            0.0
+          ],
+          "B": [
+            3.0000000000000004,
+            3.9999999999999996
+          ],
+          "P": [
+            4.47213595499958,
+            2.23606797749979
+          ],
+          "P1": [
+            0.8944271909999164,
+            4.919349550499537
+          ],
+          "P2": [
+            4.47213595499958,
+            -2.23606797749979
+          ],
+          "Q": [
+            2.0124611797498115,
+            2.683281572999747
+          ],
+          "R": [
+            3.3541019662496847,
+            0.0
+          ]
+        },
+        "constructionConditions": {
+          "OA=OB=sourceRadius": 5.0,
+          "OP=minimizingRadius": 5.0,
+          "angle_AOB_deg": 53.13010235415598,
+          "P_direction_deg": 26.56505117707799,
+          "P1_direction_deg": 79.69515353123397,
+          "P2_direction_deg": -26.56505117707799,
+          "Q_boundary": "OB",
+          "R_boundary": "OA",
+          "pathOrder": "P1-Q-R-P2"
+        },
+        "residuals": {
+          "|OA|-sourceRadius": 0.0,
+          "|OB|-sourceRadius": 0.0,
+          "|OP|-minimizingRadius": 0.0,
+          "OB_reflection_parallel": 0.0,
+          "OB_reflection_perpendicular": -4.440892098500626e-16,
+          "OA_reflection_x": 0.0,
+          "OA_reflection_perpendicular": 0.0,
+          "Q_on_OB": 3.552713678800501e-15,
+          "Q_positive_on_OB": 16.77050983124842,
+          "R_on_OA": 0.0,
+          "R_positive_on_OA": 3.3541019662496847,
+          "Q_collinear": -1.7763568394002505e-15,
+          "R_collinear": 3.552713678800501e-15,
+          "Q_parameter": 0.3125000000000001,
+          "R_parameter": 0.6875
+        },
+        "degeneracyChecks": {
+          "radiusPositive": true,
+          "outerRadiusAtLeastMinimizingRadius": true,
+          "angleStrictlyBetweenZeroAndNinety": true,
+          "chordNonzero": true,
+          "rayIntersectionsNonparallel": true,
+          "strictInteriorOrder": true
+        }
+      },
+      "expectedFacts": [
+        {
+          "fact": "A on OA at source radius",
+          "role": "GIVEN",
+          "point": [
+            5.0,
+            0.0
+          ],
+          "expectedRadius": 5.0
+        },
+        {
+          "fact": "B on OB at source radius",
+          "role": "GIVEN",
+          "point": [
+            3.0000000000000004,
+            3.9999999999999996
+          ],
+          "expectedRadius": 5.0
+        },
+        {
+          "fact": "selected equality point P",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            4.47213595499958,
+            2.23606797749979
+          ],
+          "expectedRadius": 5.0
+        },
+        {
+          "fact": "reflection P1 across OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            0.8944271909999164,
+            4.919349550499537
+          ]
+        },
+        {
+          "fact": "reflection P2 across OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            4.47213595499958,
+            -2.23606797749979
+          ]
+        },
+        {
+          "fact": "Q intersection on OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.0124611797498115,
+            2.683281572999747
+          ]
+        },
+        {
+          "fact": "R intersection on OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            3.3541019662496847,
+            0.0
+          ]
+        },
+        {
+          "fact": "minor angle wedge from OA to OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "rayOA": [
+            5.0,
+            0.0
+          ],
+          "rayOB": [
+            3.0000000000000004,
+            3.9999999999999996
+          ],
+          "radians": 0.9272952180016122
+        },
+        {
+          "fact": "P1-Q-R-P2 collinear and ordered",
+          "role": "CONCLUSION",
+          "parameters": [
+            0.3125000000000001,
+            0.6875
+          ]
+        },
+        {
+          "fact": "folded chord length",
+          "role": "CONCLUSION",
+          "expected": 8.0,
+          "observedFromConstruction": 8.0
+        }
+      ],
+      "sourceConditionCoverage": [
+        "Source center, OA/OB endpoints and circle radius",
+        "P arc/sector locus or fixed point and allowed radial interval",
+        "reflections across both source boundary rays",
+        "Q/R intersections lie on their named boundary rays",
+        "Q and R are strict interior points in P1-Q-R-P2 order",
+        "folded path lower bound and equality realization"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "relation": {
+        "formula": "P1P2=2·OP·sin(theta)",
+        "answerRelation": "B=(3,4), sinθ=4/5",
+        "expectedMinimum": 8.0,
+        "computedChordLength": 8.0,
+        "delta": 0.0,
+        "extra": {
+          "slot": "C1",
+          "relation": "B=(3,4), sinθ=4/5"
+        }
+      },
+      "sourceProblemSha256": "sha256:262143d400e998e627e8ce57fa552421dd91ad5b6167ff4d9035f0ad0a8e08c1",
+      "sourceSolutionSha256": "sha256:4cb687a794ddcb7b3b78dbc291f200f9e7fbc69bddf6576250a999871753807a"
+    },
+    "ALITE-PALMA25-2MID-Q17-C2": {
+      "uid": "ALITE-PALMA25-2MID-Q17-C2",
+      "slot": "C2",
+      "r": 3.0,
+      "thetaRadians": 0.7853981633974483,
+      "thetaDegrees": 45,
+      "coordinateProvenance": "CONSTRUCTED_REALIZATION",
+      "coordinateConstruction": {
+        "rationale": "Take source OA/OB radius from the approved stem; choose a source-valid equality point P at the minor-arc midpoint with the minimizing radius, reflect P across OB and OA, then calculate Q and R as exact boundary intersections.",
+        "origin": [
+          0,
+          0
+        ],
+        "xAxisDirection": [
+          1,
+          0
+        ],
+        "unitScale": 1,
+        "pointCoordinates": {
+          "O": [
+            0.0,
+            0.0
+          ],
+          "A": [
+            5.0,
+            0.0
+          ],
+          "B": [
+            3.5355339059327378,
+            3.5355339059327378
+          ],
+          "P": [
+            2.77163859753386,
+            1.1480502970952693
+          ],
+          "P1": [
+            1.1480502970952695,
+            2.77163859753386
+          ],
+          "P2": [
+            2.77163859753386,
+            -1.1480502970952693
+          ],
+          "Q": [
+            1.623588300438591,
+            1.6235883004385911
+          ],
+          "R": [
+            2.2961005941905386,
+            0.0
+          ]
+        },
+        "constructionConditions": {
+          "OA=OB=sourceRadius": 5.0,
+          "OP=minimizingRadius": 3.0,
+          "angle_AOB_deg": 45,
+          "P_direction_deg": 22.5,
+          "P1_direction_deg": 67.5,
+          "P2_direction_deg": -22.5,
+          "Q_boundary": "OB",
+          "R_boundary": "OA",
+          "pathOrder": "P1-Q-R-P2"
+        },
+        "residuals": {
+          "|OA|-sourceRadius": 0.0,
+          "|OB|-sourceRadius": 0.0,
+          "|OP|-minimizingRadius": -4.440892098500626e-16,
+          "OB_reflection_parallel": 0.0,
+          "OB_reflection_perpendicular": 2.220446049250313e-16,
+          "OA_reflection_x": 0.0,
+          "OA_reflection_perpendicular": 0.0,
+          "Q_on_OB": -8.881784197001252e-16,
+          "Q_positive_on_OB": 11.480502970952696,
+          "R_on_OA": 0.0,
+          "R_positive_on_OA": 2.2961005941905386,
+          "Q_collinear": -2.220446049250313e-16,
+          "R_collinear": -8.881784197001252e-16,
+          "Q_parameter": 0.29289321881345237,
+          "R_parameter": 0.7071067811865475
+        },
+        "degeneracyChecks": {
+          "radiusPositive": true,
+          "outerRadiusAtLeastMinimizingRadius": true,
+          "angleStrictlyBetweenZeroAndNinety": true,
+          "chordNonzero": true,
+          "rayIntersectionsNonparallel": true,
+          "strictInteriorOrder": true
+        }
+      },
+      "expectedFacts": [
+        {
+          "fact": "A on OA at source radius",
+          "role": "GIVEN",
+          "point": [
+            5.0,
+            0.0
+          ],
+          "expectedRadius": 5.0
+        },
+        {
+          "fact": "B on OB at source radius",
+          "role": "GIVEN",
+          "point": [
+            3.5355339059327378,
+            3.5355339059327378
+          ],
+          "expectedRadius": 5.0
+        },
+        {
+          "fact": "selected equality point P",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.77163859753386,
+            1.1480502970952693
+          ],
+          "expectedRadius": 3.0
+        },
+        {
+          "fact": "reflection P1 across OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            1.1480502970952695,
+            2.77163859753386
+          ]
+        },
+        {
+          "fact": "reflection P2 across OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.77163859753386,
+            -1.1480502970952693
+          ]
+        },
+        {
+          "fact": "Q intersection on OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            1.623588300438591,
+            1.6235883004385911
+          ]
+        },
+        {
+          "fact": "R intersection on OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.2961005941905386,
+            0.0
+          ]
+        },
+        {
+          "fact": "minor angle wedge from OA to OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "rayOA": [
+            5.0,
+            0.0
+          ],
+          "rayOB": [
+            3.5355339059327378,
+            3.5355339059327378
+          ],
+          "radians": 0.7853981633974483
+        },
+        {
+          "fact": "P1-Q-R-P2 collinear and ordered",
+          "role": "CONCLUSION",
+          "parameters": [
+            0.29289321881345237,
+            0.7071067811865475
+          ]
+        },
+        {
+          "fact": "folded chord length",
+          "role": "CONCLUSION",
+          "expected": 4.242640687119286,
+          "observedFromConstruction": 4.242640687119285
+        }
+      ],
+      "sourceConditionCoverage": [
+        "Source center, OA/OB endpoints and circle radius",
+        "P arc/sector locus or fixed point and allowed radial interval",
+        "reflections across both source boundary rays",
+        "Q/R intersections lie on their named boundary rays",
+        "Q and R are strict interior points in P1-Q-R-P2 order",
+        "folded path lower bound and equality realization"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "relation": {
+        "formula": "P1P2=2·OP·sin(theta)",
+        "answerRelation": "OP=3에서 등호; 3≤OP≤5",
+        "expectedMinimum": 4.242640687119286,
+        "computedChordLength": 4.242640687119285,
+        "delta": -8.881784197001252e-16,
+        "extra": {
+          "slot": "C2",
+          "relation": "OP=3에서 등호; 3≤OP≤5",
+          "radial": [
+            3.0,
+            5.0
+          ]
+        }
+      },
+      "sourceProblemSha256": "sha256:41b59971ee0d5df367090d5aeb64167b0865adf75043217594da6e574e827ca8",
+      "sourceSolutionSha256": "sha256:29725ba4f3efcdc990d8d0f5d309ed980cec7d56ee636c47664f9389e3cd940f"
+    },
+    "ALITE-PALMA25-2MID-Q17-C3": {
+      "uid": "ALITE-PALMA25-2MID-Q17-C3",
+      "slot": "C3",
+      "r": 1.0,
+      "thetaRadians": 0.7853981633974483,
+      "thetaDegrees": 45,
+      "coordinateProvenance": "CONSTRUCTED_REALIZATION",
+      "coordinateConstruction": {
+        "rationale": "Take source OA/OB radius from the approved stem; choose a source-valid equality point P at the minor-arc midpoint with the minimizing radius, reflect P across OB and OA, then calculate Q and R as exact boundary intersections.",
+        "origin": [
+          0,
+          0
+        ],
+        "xAxisDirection": [
+          1,
+          0
+        ],
+        "unitScale": 1,
+        "pointCoordinates": {
+          "O": [
+            0.0,
+            0.0
+          ],
+          "A": [
+            1.0,
+            0.0
+          ],
+          "B": [
+            0.7071067811865476,
+            0.7071067811865476
+          ],
+          "P": [
+            0.9238795325112867,
+            0.3826834323650898
+          ],
+          "P1": [
+            0.38268343236508984,
+            0.9238795325112867
+          ],
+          "P2": [
+            0.9238795325112867,
+            -0.3826834323650898
+          ],
+          "Q": [
+            0.541196100146197,
+            0.541196100146197
+          ],
+          "R": [
+            0.7653668647301795,
+            0.0
+          ]
+        },
+        "constructionConditions": {
+          "OA=OB=sourceRadius": 1.0,
+          "OP=minimizingRadius": 1.0,
+          "angle_AOB_deg": 45,
+          "P_direction_deg": 22.5,
+          "P1_direction_deg": 67.5,
+          "P2_direction_deg": -22.5,
+          "Q_boundary": "OB",
+          "R_boundary": "OA",
+          "pathOrder": "P1-Q-R-P2"
+        },
+        "residuals": {
+          "|OA|-sourceRadius": 0.0,
+          "|OB|-sourceRadius": 0.0,
+          "|OP|-minimizingRadius": 0.0,
+          "OB_reflection_parallel": 0.0,
+          "OB_reflection_perpendicular": 0.0,
+          "OA_reflection_x": 0.0,
+          "OA_reflection_perpendicular": 0.0,
+          "Q_on_OB": 0.0,
+          "Q_positive_on_OB": 0.7653668647301797,
+          "R_on_OA": 0.0,
+          "R_positive_on_OA": 0.7653668647301795,
+          "Q_collinear": -2.7755575615628914e-17,
+          "R_collinear": 5.551115123125783e-17,
+          "Q_parameter": 0.2928932188134524,
+          "R_parameter": 0.7071067811865475
+        },
+        "degeneracyChecks": {
+          "radiusPositive": true,
+          "outerRadiusAtLeastMinimizingRadius": true,
+          "angleStrictlyBetweenZeroAndNinety": true,
+          "chordNonzero": true,
+          "rayIntersectionsNonparallel": true,
+          "strictInteriorOrder": true
+        }
+      },
+      "expectedFacts": [
+        {
+          "fact": "A on OA at source radius",
+          "role": "GIVEN",
+          "point": [
+            1.0,
+            0.0
+          ],
+          "expectedRadius": 1.0
+        },
+        {
+          "fact": "B on OB at source radius",
+          "role": "GIVEN",
+          "point": [
+            0.7071067811865476,
+            0.7071067811865476
+          ],
+          "expectedRadius": 1.0
+        },
+        {
+          "fact": "selected equality point P",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            0.9238795325112867,
+            0.3826834323650898
+          ],
+          "expectedRadius": 1.0
+        },
+        {
+          "fact": "reflection P1 across OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            0.38268343236508984,
+            0.9238795325112867
+          ]
+        },
+        {
+          "fact": "reflection P2 across OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            0.9238795325112867,
+            -0.3826834323650898
+          ]
+        },
+        {
+          "fact": "Q intersection on OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            0.541196100146197,
+            0.541196100146197
+          ]
+        },
+        {
+          "fact": "R intersection on OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            0.7653668647301795,
+            0.0
+          ]
+        },
+        {
+          "fact": "minor angle wedge from OA to OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "rayOA": [
+            1.0,
+            0.0
+          ],
+          "rayOB": [
+            0.7071067811865476,
+            0.7071067811865476
+          ],
+          "radians": 0.7853981633974483
+        },
+        {
+          "fact": "P1-Q-R-P2 collinear and ordered",
+          "role": "CONCLUSION",
+          "parameters": [
+            0.2928932188134524,
+            0.7071067811865475
+          ]
+        },
+        {
+          "fact": "folded chord length",
+          "role": "CONCLUSION",
+          "expected": 1.4142135623730951,
+          "observedFromConstruction": 1.4142135623730951
+        }
+      ],
+      "sourceConditionCoverage": [
+        "Source center, OA/OB endpoints and circle radius",
+        "P arc/sector locus or fixed point and allowed radial interval",
+        "reflections across both source boundary rays",
+        "Q/R intersections lie on their named boundary rays",
+        "Q and R are strict interior points in P1-Q-R-P2 order",
+        "folded path lower bound and equality realization"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "relation": {
+        "formula": "P1P2=2·OP·sin(theta)",
+        "answerRelation": "6<√(2n)≤8 ⇒ n=19,…,32 (14개)",
+        "expectedMinimum": 1.4142135623730951,
+        "computedChordLength": 1.4142135623730951,
+        "delta": 0.0,
+        "extra": {
+          "slot": "C3",
+          "relation": "6<√(2n)≤8 ⇒ n=19,…,32 (14개)",
+          "normalized": true
+        }
+      },
+      "sourceProblemSha256": "sha256:2c6d88bea9dd79b2d5d3b2cfb1baa041227bd9a6727cdb7b7c8337e95045235c",
+      "sourceSolutionSha256": "sha256:e63529bfdfdc40c8294bb72d5f6186d28c2933c0db8fb81787553ae42abdecd7"
+    }
+  },
+  "discrepancyResolution": {
+    "uid": "ALITE-PALMA25-2MID-Q17-C2",
+    "oldFreezeSourceRadius": 3.0,
+    "approvedSourceRadiusOAOB": 5.0,
+    "approvedSolutionMinimizingOP": 3.0,
+    "resolution": "Keep source OA=OB=5 and selected equality minimizer OP=3 as distinct facts. The chord minimum 2·OP·sin(45°)=3√2 occurs at OP=3 within 3≤OP≤5.",
+    "recomputedFinalChordLength": 4.242640687119285,
+    "expectedMinimum": 4.242640687119286,
+    "delta": -8.881784197001252e-16
+  }
+}

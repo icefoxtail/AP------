@@ -56,6 +56,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive2-output-transport.test.cjs']
   },
   {
+    label: 'tests/archive2-generated-mock-selection.test.cjs',
+    args: ['--test', 'tests/archive2-generated-mock-selection.test.cjs']
+  },
+  {
     label: 'archive/tools/solution-calibration-gate.mjs syntax',
     args: ['--check', 'archive/tools/solution-calibration-gate.mjs']
   },

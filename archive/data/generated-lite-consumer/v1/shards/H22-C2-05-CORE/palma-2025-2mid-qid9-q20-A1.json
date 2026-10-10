@@ -1,0 +1,204 @@
+{
+  "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
+  "school": "팔마고",
+  "batchId": "PALMA25_QID9_AUTO_20",
+  "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/shards/palma-2025-2mid-qid9-q20-A1.js",
+  "sourceShardGitSha": "54984001c093972692dafb68a3522a9cf8ccd657",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "currentSourceExamBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e",
+  "approvedSourceSnapshot": {
+    "path": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+    "gitBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76"
+  },
+  "approvedPackage": {
+    "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q20_PACKAGE.json",
+    "sha256": "4763022a03626ed815a3a043263f9192117b8d00b12dde9b5b6712d626a6dbdf",
+    "gitBlobSha1": "64005c59f8c425588396f4c28dde6e39245ccc2b"
+  },
+  "approvalReceipt": {
+    "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json",
+    "sha256": "38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d",
+    "gitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2"
+  },
+  "records": [
+    {
+      "generatedUid": "ALITE-PALMA25-2MID-Q20-A1",
+      "localOrdinal": 1,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "sourceQid": 20,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/shards/palma-2025-2mid-qid9-q20-A1.js",
+      "currentSourceExamBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e",
+      "approvedSourceSnapshotBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "approvalReceiptSha256": "38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d",
+      "approvalReceiptGitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+      "approvedPackageSha256": "4763022a03626ed815a3a043263f9192117b8d00b12dde9b5b6712d626a6dbdf",
+      "approvedPackageGitBlobSha1": "64005c59f8c425588396f4c28dde6e39245ccc2b",
+      "l2": "H22-C2-05-CORE",
+      "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+      "reviewApprovalReceipt": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q20-A1.json",
+      "rpmPrimary": {
+        "recordId": "H1-RPM-238",
+        "l3": "교집합과 합집합",
+        "l4": "원소 개수"
+      },
+      "question": {
+        "id": 1,
+        "uid": "ALITE-PALMA25-2MID-Q20-A1",
+        "level": "중",
+        "difficultyBucket": 2,
+        "category": "집합",
+        "originalCategory": "집합",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "standardUnit": "집합",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C2-05-CORE",
+        "subUnit": "집합 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "서술형",
+        "layoutTag": "grid",
+        "tags": [
+          "서술형",
+          "집합"
+        ],
+        "wide": false,
+        "content": "한 학급 학생 32명 중 영어 학원에 다니는 학생이 19명, 수학 학원에 다니는 학생이 21명이다. 두 학원에 모두 다니는 학생 수의 최솟값과 최댓값을 구하고 그 과정을 서술하시오.",
+        "choices": [],
+        "answer": "최솟값 $8$명, 최댓값 $19$명",
+        "solution": "두 모임에 모두 속한 학생을 $x$명이라 하자.\n합집합 크기는 $19+21-x=40-x$이고, 전체가 $32$명이므로 $40-x\\le32$이다.\n또한 $0\\le x\\le\\min(19,21)=19$이다.\n위의 모든 조건을 풀어 교집합의 가능한 범위 $8\\le x\\le19$를 얻는다.\n$x=8$일 때 네 영역(두 모임 모두/첫째 모임에만/둘째 모임에만/어느 모임에도 속하지 않음)의 인원은 8/11/13/0명, $x=19$일 때는 19/0/2/11명이다. 네 영역 모두 음수가 아닌 정수이고 추가 조건까지 만족하므로 두 끝값은 실제로 가능하다.\n따라서 교집합 인원수의 최솟값은 $8$명, 최댓값은 $19$명이다.",
+        "solutionImage": "assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q20-A1-solution.svg",
+        "solutionImageAlt": "영어학원와 집합 B의 네 소속 영역, 합집합, 전체 인원을 정확히 비교한 표(구역 / 교집합 최소 사례 / 교집합 최대 사례).",
+        "solutionImageSize": "medium",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "sourceQid": 20,
+        "slot": "A1",
+        "purposeGroup": "A",
+        "meta": {
+          "rpmL1": "집합과 명제",
+          "rpmL2": "집합의 연산",
+          "rpmL3": "교집합과 합집합",
+          "rpmL4": "원소 개수",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmPrimaryRecordId": "H1-RPM-238",
+          "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+          "secondaryConceptKeys": [],
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q20-cross-concepts-conditions.json",
+          "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q20-cross-concepts-conditions.json",
+          "sourceKind": "generated",
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "level": "중",
+          "problemTypeKey": "PT_SET_CARDINALITY",
+          "templateKey": "TPL_OPERATION_CARDINALITY_COMPOSITE",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-05",
+          "subUnitKey": "H22-C2-05-CORE"
+        },
+        "metaFinalSha256": "f34a4587b98aaf19c163c2a1897bd90d30d29bb97439d8077d361a6522000b88",
+        "metaReviewEvidence": {
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q20-A1.json",
+          "sha256": "5e63bf8c9443abebbc8d5b6ffa4643a94dca7f7583df855cc88a0bc7ea893adb",
+          "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+          "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q17_Q23_63",
+          "scopeUids": [
+            "ALITE-PALMA25-2MID-Q20-A1"
+          ],
+          "approvalReceiptPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json",
+          "approvalReceiptSha256": "38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d",
+          "approvalReceiptGitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+          "approvedPackagePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q20_PACKAGE.json",
+          "approvedPackageSha256": "4763022a03626ed815a3a043263f9192117b8d00b12dde9b5b6712d626a6dbdf",
+          "approvedPackageGitBlobSha1": "64005c59f8c425588396f4c28dde6e39245ccc2b",
+          "approvedSourceSnapshot": {
+            "path": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+            "gitBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76"
+          },
+          "currentSource": {
+            "path": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+            "gitBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e"
+          },
+          "uid": "ALITE-PALMA25-2MID-Q20-A1"
+        },
+        "metaReviewEvidenceSha256": "5e63bf8c9443abebbc8d5b6ffa4643a94dca7f7583df855cc88a0bc7ea893adb",
+        "problemTypeKey": "PT_SET_CARDINALITY",
+        "templateKey": "TPL_OPERATION_CARDINALITY_COMPOSITE",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 연산",
+        "rpmL3": "교집합과 합집합",
+        "rpmL4": "원소 개수",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmPrimaryRecordId": "H1-RPM-238",
+        "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q20-cross-concepts-conditions.json",
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q20-cross-concepts-conditions.json",
+        "sourceKind": "generated",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "level": "중",
+        "problemTypeKey": "PT_SET_CARDINALITY",
+        "templateKey": "TPL_OPERATION_CARDINALITY_COMPOSITE",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "subUnitKey": "H22-C2-05-CORE"
+      },
+      "metaFinalSha256": "f34a4587b98aaf19c163c2a1897bd90d30d29bb97439d8077d361a6522000b88",
+      "metaReviewEvidence": {
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q20-A1.json",
+        "sha256": "5e63bf8c9443abebbc8d5b6ffa4643a94dca7f7583df855cc88a0bc7ea893adb",
+        "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+        "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q17_Q23_63",
+        "scopeUids": [
+          "ALITE-PALMA25-2MID-Q20-A1"
+        ],
+        "approvalReceiptPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json",
+        "approvalReceiptSha256": "38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d",
+        "approvalReceiptGitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+        "approvedPackagePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q20_PACKAGE.json",
+        "approvedPackageSha256": "4763022a03626ed815a3a043263f9192117b8d00b12dde9b5b6712d626a6dbdf",
+        "approvedPackageGitBlobSha1": "64005c59f8c425588396f4c28dde6e39245ccc2b",
+        "approvedSourceSnapshot": {
+          "path": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+          "gitBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76"
+        },
+        "currentSource": {
+          "path": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+          "gitBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e"
+        },
+        "uid": "ALITE-PALMA25-2MID-Q20-A1"
+      },
+      "metaReviewEvidenceSha256": "5e63bf8c9443abebbc8d5b6ffa4643a94dca7f7583df855cc88a0bc7ea893adb",
+      "sourceShardGitSha": "54984001c093972692dafb68a3522a9cf8ccd657",
+      "sourceExamQuestionCount": 23,
+      "approval": "USER_DIRECTED_QUALITY_APPROVED",
+      "consumerSelectable": true,
+      "technicalStatus": "READY",
+      "technicalIssues": [],
+      "sourceMetaSha256": "b60c20a87ac4d00a394041c8929e028738427773b0b9465dce5dc7b44481cb07"
+    }
+  ],
+  "sourceKind": "generated"
+}

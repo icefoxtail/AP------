@@ -1,0 +1,156 @@
+{
+  "task": "Q18 solution visual construction preflight",
+  "stage": "VISUAL_REPAIR",
+  "preflightReceipt": {
+    "sampleReadBeforeCandidateAuthoring": true,
+    "authoringStarted": false,
+    "existingQ18PackageAndApprovalReadOnly": true,
+    "readOrderNote": "Golden and Negative solution bytes were read and SHA-bound before any Q18 solution SVG was authored."
+  },
+  "sourceAuthority": {
+    "package": {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q18_PACKAGE.json",
+      "sha256": "sha256:fd0faafe76f480bc5acc04312ee7dc7b167d08d10a87e2f3439b72c123ed7d59",
+      "gitBlobSha": "5f50c2f62544fea144dc70cd1aeb87acf2cac24e"
+    },
+    "packageApprovedReceiptRef": null,
+    "approvalReceipt": {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json",
+      "sha256": "sha256:38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d",
+      "gitBlobSha": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2"
+    },
+    "packageHeadGitBlobSha": "90617d697f2e49369ec6edf583d0cacb83b739b3",
+    "packageHeadSha256": "sha256:b22ff7c9cd28c16acf761a1a89c788bfcc1d58205fd894bded55901ea4e5d021",
+    "packageHeadMatchesApproval": null,
+    "packageWorkingByteSha256": "sha256:fd0faafe76f480bc5acc04312ee7dc7b167d08d10a87e2f3439b72c123ed7d59",
+    "packageWorkingRawBlobSha1": "5f50c2f62544fea144dc70cd1aeb87acf2cac24e",
+    "packageWorkingBytesMatchApprovedSha256": null,
+    "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+    "packageDeclaredSourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+    "sourceCurrentHeadGitBlobSha": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e",
+    "sourceCurrentHeadMatchesPackageLockedBlob": false,
+    "sourceWorkingByteSha256": "sha256:60049ec6a7def1ec9d1e15a6319ecfcf916fc3ba63f4bfc55e128d3a05cb12a1",
+    "sourceWorkingRawBlobSha1": "dd6eb8aeb7de12ad655e9d7ef086a751a40a6096",
+    "sourceHeadSha256": "sha256:c79a95233b2f7666abd9b586cbe03e25036281fa7d52c20ff3c92b412842b0f1",
+    "sourceIdentityParity": "NOT_CLAIMED_CURRENT_HEAD_DIFFERS_FROM_PACKAGE_LOCK",
+    "sourceQid": 18,
+    "uids": [
+      "ALITE-PALMA25-2MID-Q18-A1",
+      "ALITE-PALMA25-2MID-Q18-A2",
+      "ALITE-PALMA25-2MID-Q18-A3",
+      "ALITE-PALMA25-2MID-Q18-B1",
+      "ALITE-PALMA25-2MID-Q18-B2",
+      "ALITE-PALMA25-2MID-Q18-B3",
+      "ALITE-PALMA25-2MID-Q18-C1",
+      "ALITE-PALMA25-2MID-Q18-C2",
+      "ALITE-PALMA25-2MID-Q18-C3"
+    ]
+  },
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 15,
+        "solutionSha256": "sha256:4bec2ff701e8d84cef228175b4c01be8f28417e7ac0e3e8a89f530e9b5ff472c",
+        "solutionExcerpt": "세 직선이 만드는 삼각형의 모양부터 확인한다.",
+        "observation": "Actual solution SVG shows right-triangle vertices O/P/Q, perpendicular legs, circumcircle, and the resulting hypotenuse-diameter relation.",
+        "solutionImage": "assets/images/25_매산여고_2학기_중간_고1_기출/q15-solution.svg"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 16,
+        "solutionSha256": "sha256:bda43b9c32df1594830feca3bf94c90cd78767872f4663de16b432ffa9a9a84c",
+        "solutionExcerpt": "먼저 점 $A$를 중심으로 하는 원의 반지름을 구한다.",
+        "observation": "Actual solution SVG separates the reflection step from the tangent-chord area geometry and binds PH and CD to the second panel.",
+        "solutionImage": "assets/images/25_매산여고_2학기_중간_고1_기출/q16-solution.svg"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 15,
+        "solutionSha256": "sha256:9726199ae74e6339f7629a963850c12d6f6431af82dbe1087212ddf88672a5ed",
+        "solutionExcerpt": "$DE\\parallel BC$이므로 삼각형 $ADE$와 $ABC$는 닮음이다.",
+        "observation": "Actual solution SVG preserves ABC with D/E on AB/AC, the parallel DE relation, and the 1:9 area to 1:3 similarity reduction.",
+        "solutionImage": "assets/images/25_제일고_2학기_중간_고1_기출/q15-solution.svg"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 16,
+        "solutionSha256": "sha256:73a8ce3fe706022c3aa0a8ea090b4f569d291e70452cdc45680e92c65f452642",
+        "solutionExcerpt": "두 직선의 방정식을 기울기-절편 꼴로 나타내면",
+        "observation": "Actual solution SVG displays the right triangle, outer circumcircle, centroid condition and area comparison in the coordinate geometry solution.",
+        "solutionImage": "assets/images/25_제일고_2학기_중간_고1_기출/q16-solution.svg"
+      }
+    ],
+    "goldenVisualAssetRefs": [
+      {
+        "path": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q15-solution.svg",
+        "sha256": "sha256:64c2538e2bcf43c8b3ab2eebfdd50d4b3bff1b567f2eabbc57b7ed166d282f80",
+        "gitBlobSha": "22159fc7d07817fc5d17c500da0031992afeaaed",
+        "observation": "Actual final SVG bytes inspected for viewBox, visible labels, and geometry primitives; no source coordinates or solution logic copied."
+      },
+      {
+        "path": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q16-solution.svg",
+        "sha256": "sha256:2c81c4efdb6ede8f5663737f1b488dee193e1a26e6b878ddd5478a562bd1c5e5",
+        "gitBlobSha": "22243a9820abafe484634056b9784576a68363a2",
+        "observation": "Actual final SVG bytes inspected for viewBox, visible labels, and geometry primitives; no source coordinates or solution logic copied."
+      },
+      {
+        "path": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q15-solution.svg",
+        "sha256": "sha256:69d77e49eaaba69e2ab31218b4dc3d6869c49055eb513dac8ebc33e153bc7324",
+        "gitBlobSha": "5f1ac87c1d7c317f15bee65d0a8f2dd3e11d6041",
+        "observation": "Actual final SVG bytes inspected for viewBox, visible labels, and geometry primitives; no source coordinates or solution logic copied."
+      },
+      {
+        "path": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q16-solution.svg",
+        "sha256": "sha256:96455e2ce1b5d062b00c6b284b2d58986e6fd8c832fc613eca9b705ab6a0cfae",
+        "gitBlobSha": "8a640070c53b8964f5ea73d510e95cda4141b858",
+        "observation": "Actual final SVG bytes inspected for viewBox, visible labels, and geometry primitives; no source coordinates or solution logic copied."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+      },
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+        "sha256": "sha256:4074b3b63494a7ea9258b06000498d0af3abf329595e14f94f488abbea3537a8",
+        "gitBlobSha": "6184b4f2da7e098575b19cc8bac5c61fe9c513c7"
+      },
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-29/01_25_왕운중_2학기_중간_중2_수학_q7_MISSING_OWNER_RAY_FAIL.svg",
+        "sha256": "sha256:3dcb627ce00a783096a04c65f45f65b4bddf3e72eaa60227c9718bdb8e0b4c9f",
+        "gitBlobSha": "74d146e75f756584458c7a4b30af84c4696559bd"
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR",
+    "observations": [
+      "Golden compare favors showing actual triangle topology and the decisive relation inside it, with short calculation steps in a separate clear panel.",
+      "Negative q7 regression: a correct angle label is insufficient when one of its owner rays or sides is absent; all source point/line relations must be visible in primitives.",
+      "Bokseong false-pass calibration: verify final primitive coordinates and topology independently of labels or self-reported counts."
+    ]
+  }
+}
