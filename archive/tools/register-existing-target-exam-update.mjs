@@ -715,6 +715,24 @@ export async function buildExistingTargetMerge({ root, assignment, plan, candida
     const decision = metaDelta.changes[index], metadata = metaDelta.rows[index];
     const physicalChanged = new Set(decision.changedFields);
     const allowedCatalogChanges = new Set([...catalogIdentityFields, ...catalogComputedFields]);
+    // A current R1-bound candidate can repair a stale catalog projection even when
+    // the physical source metadata already matches the target metadata row.
+    for (const [catalogField, metadataField] of catalogMetaMap) {
+      const candidateValue = candidate[catalogField];
+      const blankOrRetained = candidateValue === '' || candidateValue === null || candidateValue === undefined
+        || (Array.isArray(candidateValue) && candidateValue.length === 0) || deep(candidateValue, old[catalogField]);
+      const pendingDisplayUnavailable = candidate.metaProjectionStatus === 'DISPLAY_PROJECTION_UNAVAILABLE'
+        && ['DISPLAY_PROJECTION_PARENT_MISSING', 'DISPLAY_PROJECTION_COURSE_NOT_ALLOWED'].includes(candidate.metaProjectionFailureReason)
+        && blankOrRetained && ['approved_partial_with_explicit_holds', 'registration_pending_semantic_review'].includes(metadata.metadataStatus)
+        && (metadata.reviewStatus === 'review_required' || Object.values(metadata.fieldStatus || {}).includes('manual_review_pending'));
+      const unchangedDisplayOnlyProjection = candidate.metaProjectionStatus === 'DISPLAY_ONLY_SOURCE_BOUND'
+        && blankOrRetained && !physicalChanged.has(metadataField)
+        && (metadata.reviewStatus === 'review_required' || Object.values(metadata.fieldStatus || {}).includes('manual_review_pending'));
+      if (decision.r1MetaPass && Object.prototype.hasOwnProperty.call(candidate, catalogField)
+        && Object.prototype.hasOwnProperty.call(metadata, metadataField)
+        && (deep(candidateValue, metadata[metadataField]) || pendingDisplayUnavailable)) allowedCatalogChanges.add(catalogField);
+      else if ((pendingDisplayUnavailable && !physicalChanged.has(metadataField)) || unchangedDisplayOnlyProjection) allowedCatalogChanges.add(catalogField);
+    }
     const sourceLevel = source.bank[index]?.level;
     const legacyLevelSourceParity = Object.prototype.hasOwnProperty.call(candidate, 'legacyLevel')
       && Object.prototype.hasOwnProperty.call(source.bank[index], 'level')
