@@ -102,15 +102,15 @@
 ## 5. RPM / 출시 상태 / 남은 이슈
 
 - 최초 보고 시점에는 RPM crosswalk 연결을 검증하지 못해 `RPM_LINK=NOT_VERIFIED`로 남겼다. 후속 재검에서 q별 crosswalk/PT/TPL source 연결을 확인·보정했으며, 최종 현황은 아래 표에 기록했다. resolver receipt와 Consumer/index parity는 미실행·미확인이다.
-- 개별 문항의 수학적 결과는 위 표대로 유지·수정했으나 정식 다른 세션 독립검수/Chrome·PNG 시각 일치/RPM 가맹 확정이 남아 있어 `FINAL_PRODUCTION_SEAL=BLOCKED`, `MAIN_MERGE=NOT_REQUESTED`, `DEPLOY=NOT_REQUESTED`.
-- 후속: 형님의 별도 출시 지시가 있기 전에는 브랜치 검수 산출물로 유지. 실제 Chrome 렌더·SVG geometry independent reviewer·RPM canonical junction 검증 뒤 출시 판단한다. 기존 UID / 원본을 바꾸거나 문제를 임의 대체하지 않는다.
+- 개별 문항의 수학적 결과는 위 표대로 유지·수정했다. 정식 다른 세션 독립검수/PNG 시각 일치/Consumer·index parity가 남아 있어 `FINAL_PRODUCTION_SEAL=BLOCKED`; main 반영은 아래 PR #382에서 완료했고 `DEPLOY=NOT_REQUESTED`다.
+- 위 문장은 최초 감사 종료 시점의 계획이었다. 이후 별도 사용자 지시로 이 검수 산출물을 main에 병합했다. 대상 문항/SVG의 Chrome 렌더, PNG parity, Consumer/index 반영 및 배포는 수행하지 않았고 MAIN_DONE/production release로 표시하지 않는다.
 
 ## AGENTS.md / RPM resolver 정정 — 2026-10-10 KST
 
 - 후속 지시에 따라 branch의 `AGENTS.md` 및 `docs/architecture/Archive_Correction_Owner_EndToEnd_Closeout_CURRENT_v1.md`를 다시 읽었다. Meta 검수는 generic tag master에서 멈추지 않고 current RPM L1~L4, ACTIVE projection, PT/TPL 및 UID 연결을 확인해야 한다.
 - 앞 절의 “이 23개 H22-C2 개념군에 맞는 PT/TPL 등록 키가 없다”는 진술은 `js_archive_tag_master.json`만 본 뒤 내린 잘못된 결론이다. current 정본은 `docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`와 `archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json`이며, 해당 crosswalk에는 H22-C2-06~09 관련 H1-RPM-243~272 경로가 있다.
 - 그 당시에는 conceptClusterKey만 추가된 상태였고 q별 PT/TPL source 보정 전이었다. 이후 current crosswalk를 재대조해 22쌍을 연결하고 10쌍을 crosswalk 지정값으로 수정했다. resolver 자체와 receipt validator는 실행하지 않았으며, 최종 source 대조 결과는 아래 표를 따른다.
-- 이 수정은 검수 branch만 대상으로 했다. main 병합·DB/runtime/index 변경은 하지 않았다.
+- 당시 메타 보정은 검수 branch에만 반영했고 main·DB/runtime/index는 변경하지 않았다. 후속 main 병합 및 현재 제한은 아래 closeout 절을 따른다.
 
 ## 최종 메타 연결 보정 — 2026-10-10 (재검 정정)
 
@@ -153,6 +153,10 @@ branch `AGENTS.md`와 main의 Meta 필수 계약 및 수정 AI 책임 정본을 
 정적 source 재확인: questionBank 23개, id 1–23 연속, PT/TPL 22쌍 완전쌍, conceptClusterKey 각 1개. 이번 정정으로 바꾼 qid는 10개이며 SVG 변경 0개다. Resolver와 receipt validator는 실행하지 않았다. Source pair readback 후에도 Consumer/index parity는 별도 미확인이다. main merge, 배포, DB 변경, Chrome 실렌더는 없었다.
 
 
-## 운영 main 반영 지시 — 2026-10-11 KST
+## 운영 main 반영 완료 — 2026-10-11 KST
 
-사용자의 추가 지시에 따라 본 전용 branch의 검수 산출물을 main에 병합한다. 병합 범위는 이 branch의 기존 12개 변경 파일(유사 JS, 관련 SVG 10개 경로, 검수 report)이며, 원본 시험지·DB/Consumer/index·배포는 변경 대상이 아니다. 앞선 사용자 지시의 Chrome/브라우저 실렌더 금지는 유지되어 해당 검사는 수행하지 않는다. 따라서 main 반영만으로 production MAIN_DONE 또는 학생 화면 QA 완료를 주장하지 않는다. main 반영 후 변경 파일과 원격 SHA를 readback한다.
+- 사용자 추가 지시에 따라 PR [#382](https://github.com/icefoxtail/AP------/pull/382)을 main에 병합했다. merge commit은 `a7df965eb41f06efec44618f319c66d48e52b31d`이며, merge 시 main base는 `3cc491eb512b979b3b42fdc5503444b32bf4e2ff`였다.
+- merge 후 main readback: 유사 JS blob `8119ce12e1d45998e82a8396a76e0d274e96f7eb`, 원본 JS blob `6159f478e8e3edf7074d3967ba1cb7456f7762a3`(불변), SVG 10개 경로 모두 존재·조회 성공. 검수 보고서도 main에서 확인했다.
+- PR 검사 4개(CI, Archive2 Runtime Guard, Archive Registration Sync, Problem Bank Shared Meta)는 모두 성공했다. 공통 CI가 Archive2 runtime 및 shared Meta용 generic Chrome smoke를 자동 실행했으나 순천고 문항/SVG는 브라우저 실렌더하지 않았다.
+- main merge commit에는 `[skip ci]`를 포함해 push-triggered registration sync를 건너뛰었다. DB/Consumer/index는 변경하지 않았고 배포도 하지 않았다. PR의 Archive Registration Sync는 임시 PR 검사로 실행됐으며 main에 생성물을 출판하지 않았다.
+- 그러므로 `MAIN_MERGE=COMPLETED`, `DB/CONSUMER/INDEX=UNCHANGED`, `DEPLOY=NOT_REQUESTED`, `TARGET_QUESTION_BROWSER_RENDER=NOT_RUN`, `MAIN_DONE=NOT_CLAIMED`다. Source→Consumer/index parity와 학생 화면 QA는 미완료로 남긴다.
