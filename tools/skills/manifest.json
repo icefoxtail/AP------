@@ -84,6 +84,28 @@
       ],
       "scope": "similar-question-adaptive-comparison",
       "status": "experimental"
+    },
+    {
+      "name": "apmath-source-intake-pipeline",
+      "path": ".agents/skills/apmath-source-intake-pipeline",
+      "entrypoint": "SKILL.md",
+      "requiredFiles": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "scope": "source-only-exam-intake",
+      "status": "active"
+    },
+    {
+      "name": "gemini-multimodal-intake-pipeline",
+      "path": ".agents/skills/gemini-multimodal-intake-pipeline",
+      "entrypoint": "SKILL.md",
+      "requiredFiles": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "scope": "gemini-multimodal-source-intake",
+      "status": "active"
     }
   ]
 }

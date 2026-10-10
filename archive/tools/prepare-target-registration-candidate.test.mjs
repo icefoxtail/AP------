@@ -662,7 +662,7 @@ test('normalizes only explicit positive META evidence fields from heterogeneous 
       { verdict: 'PASS', axisEvidence: { meta: { status: 'PASS' } } },
       { verdict: 'PASS', axisEvidence: { META: { status: 'CURRENT_FIELDS_RECORDED_NO_SEMANTIC_RECLASSIFICATION' } } },
       { verdict: 'PASS_AFTER_ADJUDICATION', metaStatus: 'PASS', axisEvidence: { META: { status: 'PASS_CURRENT_FIELDS_AND_RPM_PROOF' } } },
-      { verdict: 'PASS', fourAxisReview: { META: { disposition: 'CURRENT_NULL_DEBT_PRESERVED', evidence: 'explicit current null-debt review proof' } } },
+      { verdict: 'PASS', fourAxisReview: { META: { disposition: 'CURRENT_NULL_DEBT_PRESERVED', evidence: 'Exact recorded evidence debt: [{"fields":["problemTypeKey"],"reason":"Preserve the explicit source null until reviewed."}]' } } },
     ];
     for (let index = 0; index < variants.length; index += 1) {
       const examUid = `22_테스트고_1학기_중간_고2_기하_기출`;
@@ -683,6 +683,43 @@ test('normalizes only explicit positive META evidence fields from heterogeneous 
   }
 });
 
+test('accepts reviewed recorded projection debts only when the exact source fields remain null', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-r1-recorded-projection-debt-'));
+  try {
+    const examUid = '22_테스트고_1학기_중간_고2_기하_기출';
+    const evidencePath = 'archive/analysis/recorded-debt/R1.evidence.json';
+    const validationPath = 'archive/analysis/recorded-debt/R1.validation.json';
+    const reason = 'No safe active PT/TPL mapping exists; preserve the explicit null projection.';
+    const row = {
+      verdict: 'PASS',
+      metaDebtFields: ['problemTypeKey', 'templateKey'],
+      metaDebtReason: reason,
+      axisEvidence: { META: { status: 'REVIEWED_WITH_RECORDED_PROJECTION_DEBT', observation: reason } },
+    };
+    const fixture = writeR1Chain(root, { evidencePath, validationPath, examUid, row });
+    const accepted = verifyR1EvidenceBinding({
+      root, evidencePath, validationPath, assignment: fixture.assignment, examUid,
+      bank: [{ id: 1, problemTypeKey: null, templateKey: null }],
+    });
+    assert.equal(accepted.validation.disposition, 'PASS');
+    assert.deepEqual(accepted.metaDebtRows, [{
+      qid: 1,
+      metaDebtFields: ['problemTypeKey', 'templateKey'],
+      metaDebtReason: 'problemTypeKey: No safe active PT/TPL mapping exists; preserve the explicit null projection. | templateKey: No safe active PT/TPL mapping exists; preserve the explicit null projection.',
+      metaDebtReasons: [
+        { field: 'problemTypeKey', reason },
+        { field: 'templateKey', reason },
+      ],
+    }]);
+    const invalid = writeR1Chain(root, { evidencePath, validationPath, examUid, row });
+    assert.throws(() => verifyR1EvidenceBinding({
+      root, evidencePath, validationPath, assignment: invalid.assignment, examUid,
+      bank: [{ id: 1, problemTypeKey: 'PT_UNREVIEWED', templateKey: null }],
+    }), /R1_META_PROOF_META_PASS_REQUIRED/);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
 test('accepts PASS_WITH_META_ONLY_DEBT only for an explicit approved template null-debt matching physical null', () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-r1-template-null-debt-'));
   try {

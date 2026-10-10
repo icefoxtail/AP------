@@ -342,6 +342,8 @@ for (const exam of exams) {
       sourceFile: file,
       identitySourceFile: id?.sourceArchiveFile,
     });
+    const registrationPending = meta?.registrationUpdateState?.schemaVersion === "JS_ARCHIVE_EXISTING_TARGET_META_DELTA_POLICY_V1" &&
+      ["PHYSICAL_META_UPDATED_REVIEW_RESET_PENDING", "R1_RPM_DEBT_EVIDENCE_BOUND_REVIEW_PENDING"].includes(meta.registrationUpdateState.disposition);
     const assignmentResult = identityStatus === "VERIFIED" && sourceGradeEvidence.status === "VALID"
       ? verifiedBasicAssignment({
           id,
@@ -382,7 +384,7 @@ for (const exam of exams) {
       sourceFingerprint: fingerprint,
       assignmentFingerprint,
       rawQuestionHash: hash(JSON.stringify(question)),
-      approvedSourceFingerprint: meta?.sourceFingerprint || "",
+      approvedSourceFingerprint: registrationPending ? "" : (meta?.sourceFingerprint || ""),
       metadataAssignmentEvidence: meta ? {
         questionUid: meta.questionUid,
         sourceFile: core.normalizeFile(meta.sourceArchiveFile),
@@ -394,13 +396,26 @@ for (const exam of exams) {
         evidenceRefs: meta.approvalEvidence || [],
         evidenceDigest: metadata.sourceDigests?.completeClassification || "",
         metadataRevision: meta.metadataRevision || "",
+        ...( ["archive-registration-target-source-rpm-projection-v1", "archive-registration-target-r1-rpm-debt-v1"].includes(meta.rpmProjectionRevision)
+          ? { rpmMetadata: Object.fromEntries(["rpmL1", "rpmL2", "rpmL3", "rpmL4", "rpmCurriculum", "rpmSemanticStatus", "rpmSemanticReason", "rpmEvidenceDebtFields", "rpmProjectionRevision"]
+            .filter(field => Object.prototype.hasOwnProperty.call(meta, field)).map(field => [field, meta[field]])) } : {}),
+        ...(registrationPending ? { registrationUpdateReviewProof: {
+          r1EvidenceRef: meta.registrationUpdateState.r1EvidenceRef,
+          r1EvidenceSha256: meta.registrationUpdateState.r1EvidenceSha256,
+          r1MetaPass: meta.registrationUpdateState.r1MetaPass,
+          changedFields: meta.registrationUpdateState.changedFields,
+          currentPhysicalMeta: meta.registrationUpdateState.currentPhysicalMeta,
+          currentPhysicalMetaSha256: meta.registrationUpdateState.currentPhysicalMetaSha256,
+          disposition: meta.registrationUpdateState.disposition === "R1_RPM_DEBT_EVIDENCE_BOUND_REVIEW_PENDING"
+            ? "R1_RPM_DEBT_EVIDENCE_BOUND_REVIEW_PENDING" : "PHYSICAL_META_VALUES_BOUND_REVIEW_RESET_PENDING",
+        } } : {}),
       } : null,
       sourceStatus:
         validJoin && meta.sourceFingerprint === fingerprint
           ? "VERIFIED"
           : "HOLD",
       // RPM Primary semantic confirmation is independent of PT/TPL projection materialization.
-      taxonomyStatus: node ? "CONFIRMED" : "UNKNOWN",
+      taxonomyStatus: registrationPending ? "UNKNOWN" : (node ? "CONFIRMED" : "UNKNOWN"),
       ...(foundationScoped ? { foundationTaxonomyStatus: meta?.foundationTaxonomyStatus === "HOLD" ? "HOLD" : (foundationValid === true ? "CONFIRMED" : (meta?.foundationTaxonomyStatus || "HOLD")) } : {}),
       metadataConflicts,
       gradeConflict: sourceGradeEvidence.status !== "VALID",
@@ -413,7 +428,7 @@ for (const exam of exams) {
         L4: meta?.L4 || "",
       },
       assignmentEvidence: assignmentResult.assignment,
-      canonicalAssignmentReasons: assignmentResult.reason ? [assignmentResult.reason] : [],
+      canonicalAssignmentReasons: registrationPending ? ["registration_update_meta_pending"] : (assignmentResult.reason ? [assignmentResult.reason] : []),
       courseFamilies: [
         ...new Set(
           (exam.courseRanges || [])
@@ -421,6 +436,7 @@ for (const exam of exams) {
             .filter(Boolean),
         ),
       ],
+      ...(registrationPending ? { semanticDisposition: "HOLD", defaultSelectable: false } : {}),
     };
     if (validJoin && meta && (meta.standardCourse || meta.standardUnitKey || meta.subUnitKey)) {
       const displayResult = problemBankMeta.createSourceBoundDisplayProjection({
@@ -454,8 +470,11 @@ for (const exam of exams) {
         record[field] = assignmentResult.assignment[field] || "";
     } else {
       for (const field of core.PATH_FIELDS) record[field] = "";
-      for (const field of ["standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit"])
-        record[field] = "";
+      record.standardCourse = meta?.standardCourse || question.standardCourse || "";
+      record.standardUnitKey = meta?.standardUnitKey || question.standardUnitKey || "";
+      record.standardUnit = meta?.standardUnit || question.standardUnit || "";
+      record.subUnitKey = meta?.subUnitKey || question.subUnitKey || "";
+      record.subUnit = meta?.subUnit || question.subUnit || "";
     }
     if (
       !record.courseFamilies.length &&

@@ -72,6 +72,14 @@ const requiredCommands = [
     args: ['--test', 'archive/tools/gpt2-one-shot-closeout.test.mjs']
   },
   {
+    label: 'archive/tools/gpt2-connected-stdio-host.test.mjs',
+    args: ['--test', 'archive/tools/gpt2-connected-stdio-host.test.mjs']
+  },
+  {
+    label: 'archive/tools/gpt2-cas-distributed-smoke.test.mjs',
+    args: ['--test', 'archive/tools/gpt2-cas-distributed-smoke.test.mjs']
+  },
+  {
     label: 'archive/tools/gpt2-library-coordinated-adapter.test.mjs',
     args: ['--test', 'archive/tools/gpt2-library-coordinated-adapter.test.mjs']
   },

@@ -16,7 +16,7 @@ CODEX는 `Archive_Extracted_Source_First_v1.md`를 따른다. 최초 PDF source 
 JS Archive 2.0 keeps one product-quality contract and separates execution into two lines.
 
 - **Codex execution line:** ROOT + stage subagent conveyor, R3 actual render or ROOT-authorized static completion, production publication, Git MAIN_DONE.
-- **GPT scheduled execution line:** scheduled stage workers + selector/lease/Library handoff. `CREATE → R1 → R2 → R3 → MASTER → MAIN_DONE`. GPT 예약라인은 실제 engine render를 실행조건이나 완료상태로 두지 않는다. MASTER가 R3 완료 artifact를 target-only로 production/main에 반영하고 MAIN_DONE을 닫는다.
+- **GPT scheduled execution line:** transition 전에는 현 consumer의 scheduled worker + selector/lease/Library handoff를 따른다. 전환 후에는 `CREATE → R1 → R2 → R3 → 최종 기술검사·게시`를 한 Library 작업본과 누적 검수기록으로 수행한다. 실제 전환 시점과 조건은 GPT Scheduled Execution §0이다. GPT 예약라인은 실제 engine render를 실행조건이나 완료상태로 두지 않는다.
 
 A PASS in one execution line is not automatically inherited or invalidated by the other line. Artifact bytes, evidence, and the current contract decide.
 
@@ -97,7 +97,7 @@ R1 is the one deep full-qid integrated seal:
 
 After repair, recheck only changed qid + direct dependency.
 If content/choices/problem visual changes, re-evaluate whether the previous independent freeze is still valid.
-PASS binds answer, solution, decisiveStep, Meta, visual, and evidence to one final artifact SHA.
+Legacy PASS binds answer, solution, decisiveStep, Meta, visual, and evidence to one final artifact SHA. After transition, the cumulative record identifies the exact reviewed Library file ID+revision and links eligible current-campaign completion evidence; do not repeat completed stages.
 
 ## 9. R2 and R3
 
@@ -122,7 +122,7 @@ Mechanical checks include:
 - control-character damage such as TAB/form-feed escape corruption
 - answer presence when choices exist
 - CREATE/R1 Golden provenance
-- CREATE/R1 small-board verdict bound to the exact final solution SHA-256
+- CREATE/R1 small-board verdict bound to the exact final solution revision (legacy validator receipts use SHA-256; post-transition GPT records use Library file ID+revision)
 
 The artifact gate does **not** decide mathematical multiple-answer equivalence, solution logic quality, Meta semantics, or SVG mathematical truth. Those remain worker responsibilities.
 
@@ -136,12 +136,12 @@ The artifact gate does **not** decide mathematical multiple-answer equivalence, 
 - `MAIN_DONE`
 - `RENDER_PASS` — Codex 실행라인에서만 사용하는 별도 상태
 
-Do not collapse these into one generic PASS. GPT 예약라인에서는 `NOT_RUN_CODEX_HANDOFF`를 사용하지 않으며 render 상태는 completion prerequisite가 아니다.
+위 GPT stage state는 간소화 정책 전환 전의 현재 consumer가 사용하는 기록이다. 전환 후에는 같은 품질 역할을 시험지별 append-only 검수기록에 기록하고, 별도 PASS receipt/seal을 만들지 않는다. Library file ID+version/revision으로 검수본을 식별하며 과거 revision 재조회 불가 시에만 snapshot을 보존한다. 현재 campaign에서 검수본·수정범위가 유효한 기존 완료 기록은 링크로 승계하고 다음 미완료 단계부터 잇는다. 최종 기술검사와 게시 결과는 GPT Scheduled Execution §6에 따라 한 번 기록한다. 품질 판단의 독립성·범위 및 다른 generation 증거의 비승계 원칙은 유지한다. GPT 예약라인에서는 `NOT_RUN_CODEX_HANDOFF`를 사용하지 않으며 render 상태는 completion prerequisite가 아니다.
 
 ## 12. Existing artifacts
 
 A new qualityContractVersion does not automatically delete or invalidate old artifacts.
-Keep prior artifacts/evidence, calculate the missing axes under the new contract, repair only the missing/defective locus, and rebind the changed final artifact to the required seal.
+Keep prior artifacts/evidence, calculate the missing axes under the new contract, repair only the missing/defective locus, and rebind the changed final artifact to the required seal. For GPT scheduled work after transition, link valid completion evidence from the current campaign and continue at the next incomplete stage; do not repeat completed review. Preserve other-generation evidence as history without promoting it. Identify reviewed versions by Library file ID+revision; snapshot only if old revisions cannot be retrieved. Do not manufacture stage seals; use the cumulative review record and final technical check described in Scheduled Execution.
 
 ## 13. Codex 구현 연결 보강 — 2026-10-06
 
@@ -151,18 +151,20 @@ Keep prior artifacts/evidence, calculate the missing axes under the new contract
 - artifact gate는 기본 schema/필드 타입, L1/L2의 물리 필드, nullable PT/TPL debt, difficulty 허용값, 모든 stage의 answer/solution, 실제 자산과 SVG 외부 의존성을 검사한다. 단, H2·2015 교육과정·기하(표준 과목 라벨 `기하` 또는 `기하와 벡터`)에서 RPM Primary 의미가 FINAL이고 `high2-geometry.json`이 해당 L2를 `RPM_ONLY`/`subUnitKey:null`로 고정한 경우에만 `subUnitKey:null`을 호환 projection debt로 수납한다. `artifactDispositions`의 `metaDebtFields`에 `subUnitKey`를 기록하고, `rpmOnlyNullSubUnitProjection`에 resolver input/evidence/validator receipt를 SHA 결속해 넣어야 한다. V2 validator는 resolver를 현재 canonical authority로 재계산하고 artifact의 content/choices/image-ref/solution hash와 학년·교육과정·과목·L1 결속을 확인한다. H15-GV 표준 L1의 non-null child key는 현재 RPM crosswalk에서 해당 child projection이 없고 production metadata에도 등록되지 않은 경우 FAIL이다. `subUnitKey == standardUnitKey`인 기존 호환 값과 등록된 legacy key는 유지한다. 임의 null, 누락 필드, 다른 과목·교육과정의 null은 계속 FAIL이며 qualityContractVersion은 바뀌지 않는다. 학생 bank의 EXCLUDED marker는 완제품으로 통과시키지 않는다.
 - `artifactDispositions={artifactSha,rows:[...]}`는 현재 artifact에 결속된 Meta disposition이다. R3의 `rows`는 변경/open/direct dependency scope만 유지하고, 미변경 문항의 합법적인 null debt는 별도 disposition에서 인계한다. 전수 의미 검수를 반복하는 구조가 아니다.
 - Codex Golden registry: `archive/data/codex-quality-calibration-registry-v2.json`. 사용자가 고정한 세 Golden을 모든 Codex 과정의 판서/조판/시각 표현 floor로 사용한다. 고1의 풀이 방법·Meta·difficulty를 중등/다른 과목에 복사하지 않는다. 교과별 방법은 해당 교육과정 정본으로 판정한다.
-- 실제 Golden 파일/대표 문항 solution/필요 SVG/Negative sample의 SHA와 판독 observation을 남긴다. boolean이나 파일명 목록만으로 preflight를 대신하지 않는다. 알려진 Golden visual 예외는 모델로 복제하지 않는다.
+- Golden 파일/대표 문항 solution/필요 SVG/Negative sample의 실제 version과 판독 observation을 남긴다. 전환 후 GPT 예약에서는 Library file/version 식별을 쓰며 추가 SHA는 최종 기술검사 또는 실제 불일치 진단에 한정한다. boolean이나 파일명 목록만으로 preflight를 대신하지 않는다. 알려진 Golden visual 예외는 모델로 복제하지 않는다.
 - actual render와 MAIN_DONE의 physical receipt는 `archive/tools/archive-codex-closeout-v2.mjs`로 소비한다. 품질 수학 판정은 worker의 책임이며 이 helper는 증거·파일·SHA·범위·remote parity만 검사한다.
 
 신규 evidence에는 `executionLine:CODEX` 또는 `executionLine:GPT_SCHEDULED`를 명시한다. Codex CURRENT CLI는 CODEX를 강제하며, 공통 qualityContractVersion만 보고 GPT R3를 RENDER로 전환하지 않는다. render/MAIN_DONE receipt 및 저장된 R3 validation report도 executionLine:CODEX로 결속한다. GPT 예약 라인은 별도 CURRENT에 따라 `R3_RELEASE_READY → MASTER publication → MAIN_DONE`으로 독립 완결하며 Codex handoff를 만들지 않는다.
 
 ## 14. GPT 예약 구현 연결 보강 — 2026-10-06
 
-- 신규 GPT evidence는 `executionLine:GPT_SCHEDULED` + current `campaignId` + fixed `stream=A|B|C`를 모두 결속한다. validator/state/continuation은 이 identity를 유지하며 cross-generation/cross-stream 승계를 거부한다.
-- GPT CREATE/R1은 기본 schema·difficulty enum·실제 production asset/SVG dependency·Golden/Negative provenance의 실제 SHA와 observation을 공통 artifact floor로 사용하되 GPT 전용 registry `archive/data/gpt-quality-calibration-registry-v2.json`을 사용한다.
-- R3 targeted rows는 open/changed/direct dependency만 유지하고, 전 문항 Meta null/debt disposition은 `artifactDispositions={artifactSha,rows:[...]}`에 별도 결속한다. 이것은 R3 전수 의미 재검이 아니다.
-- GPT stage validator 호출은 `--quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006 --execution-line GPT_SCHEDULED --campaign-id <campaign> --stream <A|B|C>`를 명시한다.
-- GPT는 render를 수행하지 않는다. 대신 MASTER의 MAIN_DONE은 `archive/tools/archive-gpt-closeout-v2.mjs`로 R3 validation SHA, final artifact SHA, asset SHA, production path, origin/main remote parity를 결속한다.
+이 절의 stage validator 및 evidence receipt 요구는 간소화 정책 전환 전 현 consumer에 적용된다. 전환 후에는 consumer/예약 지시 변경과 예약 한 건 실증이 완료된 뒤, 단계별 validator/PASS/seal을 만들지 않고 `JS_Archive_2.0_GPT_Scheduled_Execution_v1.md` §6의 최종 기술검사에서 validator와 게시 근거를 한 번 기록한다. 그 외 아래 의미 품질·독립 검수 원칙과 최종 기술검사의 artifact SHA 결속은 유지한다.
+
+- GPT 실행 identity는 `executionLine:GPT_SCHEDULED` + current `campaignId` + fixed `stream=A|B|C`를 유지하며 cross-generation/cross-stream 작업을 거부한다. 전환 전에는 이를 validator/state/continuation에 결속하고, 전환 후에는 단일 Library 작업본·누적 검수기록과 각 review revision에 결속한다.
+- GPT CREATE/R1은 기본 schema·difficulty enum·실제 production asset/SVG dependency·Golden/Negative provenance의 실제 파일/version과 판독 observation을 품질 기준으로 사용하되 GPT 전용 registry `archive/data/gpt-quality-calibration-registry-v2.json`을 사용한다. 추가 SHA는 최종 기술검사 또는 실제 불일치 진단에 한정한다.
+- 전환 전 R3 artifact evidence는 open/changed/direct dependency targeted rows를 사용하고, 전 문항 Meta null/debt disposition은 `artifactDispositions={artifactSha,rows:[...]}`에 결속한다. 전환 후에도 R3의 변경·미해결·직접 영향 범위와 최종 구조 확인을 유지하되 전수 의미 재검이나 stage별 machine receipt는 만들지 않는다.
+- 전환 전 GPT stage validator 호출은 `--quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006 --execution-line GPT_SCHEDULED --campaign-id <campaign> --stream <A|B|C>`를 명시한다. 전환 후 이 validator는 §14 첫 문단에 따라 최종 기술검사에서 한 번 호출한다.
+- GPT는 render를 수행하지 않는다. 전환 전 MASTER의 MAIN_DONE은 `archive/tools/archive-gpt-closeout-v2.mjs` 계약에 따라 R3 validation SHA와 production/remote parity를 결속한다. 전환 후에는 이 도구의 단계 receipt를 필수로 두지 않고, Scheduled Execution §6의 최종 기술검사·게시 근거를 누적 검수기록에 남긴다.
 
 
 ## Codex ownership clarification — 2026-10-07

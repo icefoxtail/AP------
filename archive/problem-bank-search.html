@@ -27,7 +27,7 @@ body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#
 <script src="mixer-selector.js?v=20261009-meta1"></script>
 <script src="archive2-canonical.js?v=20261009-meta1"></script>
 <script src="archive2-core.js?v=20261009-meta1"></script>
-<script src="problem-bank-meta.js?v=20261009-meta3"></script>
+<script src="problem-bank-meta.js?v=20261011-rpm-debt-projection1"></script>
 <script src="archive2-source.js?v=20261009-meta1"></script>
 <script>
 'use strict';
@@ -71,6 +71,11 @@ function render(){
   const subUnit=row.subUnit?`${row.subUnit}${row.subUnitKey?` (${row.subUnitKey})`:''}`:'미지정';
   info.textContent=[row.standardCourse||'과목 미지정',row.L1||'L1 미지정',row.L2||'L2 미지정',`표준단원 ${unit}`,`세부분류 ${subUnit}`,row.L3||'L3 미지정',row.L4||'L4 미지정',`난이도 ${row.difficultyBucket??'미지정'}`].join(' / ');
   card.append(title,info);
+  const pendingMeta=Object.entries(row.metadataAssignmentEvidence?.fieldStatus||{}).filter(([,status])=>status==='manual_review_pending').map(([field])=>field);
+  if(pendingMeta.length){const pending=document.createElement('p');pending.textContent=`메타 검토 대기: ${pendingMeta.join(', ')}`;card.append(pending);}
+  if(row.rpmSemanticStatus&&row.rpmSemanticStatus!=='FINAL'){
+   const rpm=document.createElement('p');rpm.textContent=`RPM 메타 ${row.rpmSemanticStatus}${row.rpmSemanticReason?` · ${row.rpmSemanticReason}`:''}`;card.append(rpm);
+  }
   if(row.sourceKind==='generated'){
    const preview=document.createElement('button');preview.textContent='문제 보기';preview.onclick=()=>previewGenerated(row,preview);card.append(preview);
    const select=document.createElement('a');select.textContent=' 생성 문항 선택';select.href='generated-bank.html?uid='+encodeURIComponent(row.uid);card.append(select);

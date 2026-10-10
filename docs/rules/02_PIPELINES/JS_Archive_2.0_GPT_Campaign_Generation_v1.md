@@ -4,25 +4,21 @@ status: CURRENT / GPT 2.0 GENERATION AUTHORITY
 currentCampaignId: H1_GPT2_20261006
 qualityContractVersion: JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006
 
-## 1. 목적
+## 1. 목적과 적용 상태
 
-GPT 예약 2.0의 과거 PASS 재사용과 stream 혼합을 구조적으로 차단한다.
+GPT 예약 2.0의 시험지 대상 배정과 generation identity를 고정한다. 현재 generation은 H1_GPT2_20261006이다. 이전 H1 pilot Library와 PASS는 HISTORY로 보존한다.
 
-한 campaign은 독립 generation이다.
-현재 generation은 H1_GPT2_20261006이다.
+문서상 간소화 정책은 `JS_Archive_2.0_GPT_Scheduled_Execution_v1.md`에 정의한다. consumer/예약 지시를 갱신한 뒤, 신규 자격 대상 또는 다음 미완료 단계에서 예약 인수·저장·후속 인수와 최종 마감을 실증하고 적용 담당자가 전환을 선언한다. 이미 완료된 검수는 실증 목적으로 반복하지 않는다. 그 전까지 현 consumer의 기존 Library 경로·PASS/evidence 규칙이 유효하다.
 
-이전 H1 pilot Library와 PASS는 HISTORY로 보존하지만 현재 generation 상태 계산에는 사용하지 않는다.
+## 2. Generation Library와 시험지 기록
 
-## 2. Generation namespace
+현재 generation root는 `Archive2-GPT/generations/H1_GPT2_20261006/`이다. 대상별 고정 stream namespace는 유지한다.
 
-현재 root:
+**전환 전:** 현 consumer와 예약이 사용하는 stage별 경로·artifact/evidence/PASS 체계를 따른다. 문서 준비만으로 이를 제거하지 않는다.
 
-Archive2-GPT/generations/H1_GPT2_20261006/
+**전환 후:** 시험지별 Library 작업본 하나와 append-only 누적 검수기록 하나를 둔다. Library file ID+version/revision으로 검수본을 식별하며 과거 revision 재조회가 불가능할 때만 필요한 snapshot을 보존한다. 각 기록에는 stage, 실행자, 시각, input/output revision, 범위와 결과를 남긴다. 추가 SHA는 최종검사 또는 실제 불일치 진단에 한정한다. 별도 stage PASS/seal 없이 판단을 누적하고, 최종검사·게시 증거만 남긴다.
 
-이 root 밖의 artifact/evidence/PASS/continuation/MAIN_DONE은 현재 campaign authority가 아니다.
-
-동일 examUid라도 과거 generation PASS는 새 generation PASS로 승계하지 않는다.
-source bytes만 source authority에서 새 generation source/로 가져올 수 있다.
+현재 campaign에서 검수본·수정범위가 유효한 기존 완료 기록은 링크로 승계하고 다음 미완료 단계부터 계속한다. 다른 generation의 증거는 승계하지 않는다. 기존 증거는 삭제·덮어쓰기·소급 변경하지 않는다.
 
 ## 3. Campaign manifest
 
@@ -61,52 +57,29 @@ frozen campaign manifest의 **정본은 Git** `archive/data/gpt-campaigns/H1_GPT
 배정 순서는 activation 전에 latest-year-first inventory를 기준으로 고정한다.
 부하 균형을 위해 A/B/C에 분산할 수 있으나, 일단 frozen이면 실행 중 재배치하지 않는다.
 
-## 5. Stream conveyor
+## 5. Stream과 시험지 소유권
 
-A:
-CREATE-A → R1-A → R2-A → R3-A → MASTER-A
+A/B/C의 CREATE → R1 → R2 → R3 → 최종 기술검사·게시 역할과 시험지별 고정 배정은 유지한다. 한 시험지는 한 시점에 한 단계·한 작성자/실행자만 처리한다. 앞선 실행이 끝났는지 불확실하면 중복 시작하지 말고 상태를 확인한다. 다음 단계는 누적 기록이 지정한 정확한 Library file ID+revision을 이어받는다.
 
-B:
-CREATE-B → R1-B → R2-B → R3-B → MASTER-B
+각 worker는 자기 frozen stream만 처리하며 다른 stream에서 가져오기, 재배정, 배정 변경을 하지 않는다. 진행 중 시험지를 전환만으로 재시작하지 않는다.
 
-C:
-CREATE-C → R1-C → R2-C → R3-C → MASTER-C
+## 6. Generation identity
 
-CREATE-A가 A1을 R1-A에 넘기면 CREATE-A는 A2를 시작한다.
-R1-A는 A stream만 처리한다.
-B/C도 동일하다.
+전환 후 Library 작업본과 누적 검수기록은 `executionLine=GPT_SCHEDULED`, `campaignId`, `stream`, `examUid`, `qualityContractVersion`을 유지한다. 각 검수 기록은 `stage`, 실행자, Library file ID+input/output revision을 식별한다. campaignId 또는 stream이 다르면 현재 대상 작업으로 소비하지 않는다.
 
-다른 stream이 비어 있어도 가져오지 않는다.
+전환 전에는 기존 consumer가 요구하는 stage artifact/evidence identity를 따른다.
 
-## 6. Generation identity in artifacts
+## 7. 이전 pilot 및 기존 증거
 
-현재 generation의 stage artifact/evidence/PASS/continuation/MAIN_DONE은 최소:
-- executionLine = GPT_SCHEDULED
-- campaignId
-- stream
-- examUid
-- stage
-- qualityContractVersion
-- inputArtifactSha
-- finalArtifactSha
-를 가진다.
+다른 generation의 pilot·PASS·FAIL·검수 evidence는 삭제하거나 덮어쓰지 않고 HISTORY로 보존하며 current campaign 완료로 승계하지 않는다. current campaign에서 검수본과 수정범위가 유효한 완료 기록은 링크로 승계해 다음 미완료 단계부터 진행한다. 새 generation은 고유 namespace와 현재 manifest identity를 따른다. 진행 중/완료 작업은 전환을 이유로 재시작하거나 기록을 소급 변경하지 않는다.
 
-campaignId 또는 stream이 다르면 current selector에서 무효다.
+## 8. Reservation transition
 
-## 7. Old pilot handling
+아래는 기존 배정을 바꾸는 gate가 아니다. 15개 consumer/예약은 현재 적용 상태이며 문서 변경만으로 재구성하거나 켜고 끄지 않는다. 적용 담당자는 consumer와 예약 지시를 새 §2/§5/§6 정책에 맞게 최소 갱신하고, 신규 자격 대상 또는 다음 미완료 단계에서 실제 예약 인수·저장·후속 인수·최종 마감을 확인한 뒤 새 정책으로 전환한다. 이미 완료된 검수는 반복하지 않는다. 실증 전에는 구 consumer 지시가 유효하다. 현재 작업/기존 증거는 보존한다.
 
-기존 pilot:
-- 삭제 금지
-- overwrite 금지
-- HISTORY 보존
-- 현재 generation으로 PASS/evidence copy 금지
-- current generation selector에서 무시
+## 9. Activation gate
 
-새 generation을 시작할 때 old Library를 빈 것처럼 취급하는 것이 아니라, 아예 별도 namespace에서 새 Library를 생성한다.
-
-## 8. Activation gate
-
-15라인 생성/ON 전에:
+기존 campaign roster/예약을 새로 생성하거나 ON할 경우에만:
 1. generation root 존재
 2. Git `archive/data/gpt-campaigns/H1_GPT2_20261006.json` 존재
 3. campaignId 정확
@@ -120,7 +93,8 @@ campaignId 또는 stream이 다르면 current selector에서 무효다.
 
 이 gate가 닫힌 뒤에만 예약 생성/가동으로 넘어간다.
 
-## 9. Machine identity gate
+## 10. Machine identity gate
 
-current generation의 모든 validator/state/continuation/MAIN_DONE receipt는 `executionLine=GPT_SCHEDULED`, `campaignId=H1_GPT2_20261006`, manifest-fixed stream을 함께 가진다.
-세 값 중 하나라도 누락/불일치하면 current generation artifact로 인정하지 않는다.
+전환 전 consumer의 validator/state/continuation/MAIN_DONE receipt는 `executionLine=GPT_SCHEDULED`, `campaignId=H1_GPT2_20261006`, manifest-fixed stream을 함께 가진다. 세 값 중 하나라도 누락/불일치하면 current generation artifact로 인정하지 않는다.
+
+전환 후 같은 identity는 Library 작업본·누적 검수기록에 결속하며 각 stage review의 Library file ID+revision을 구별한다. 단계별 validator/state/PASS receipt는 만들지 않는다. 최종 기술검사·게시의 결과에만 해당 technical receipt와 remote reference를 기록한다.
