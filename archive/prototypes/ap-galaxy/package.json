@@ -1,0 +1,14 @@
+{
+  "name": "ap-archive-orbital-prototype",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "esbuild src/orbital-world.js --bundle --format=esm --minify --legal-comments=none --outfile=assets/orbital-world.js"
+  },
+  "dependencies": {
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}
