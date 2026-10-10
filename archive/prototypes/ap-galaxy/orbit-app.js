@@ -540,8 +540,8 @@
     } catch (error) {
       ui.status.textContent = '우주를 열지 못했습니다.';
       $('worldFallback').hidden = false;
-      $('worldFallback').querySelector('strong').textContent = error.message || '3D catalog를 시작할 수 없습니다.';
-      $('worldFallback').querySelector('span').textContent = '검색과 목록 대체 보기를 계속 사용할 수 있습니다.';
+      $('worldFallback').querySelector('strong').textContent = '3D 장면을 시작할 수 없습니다.';
+      $('worldFallback').querySelector('span').textContent = '검색, 목록, 문항 미리보기는 계속 이용할 수 있습니다.';
       console.error(error);
       createAccessibleList();
       toggleList(true);
