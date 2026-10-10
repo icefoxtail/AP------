@@ -1,0 +1,161 @@
+{
+  "schema": "SUNcheon_QID9_PROGRESS_v1",
+  "schoolExam": "25_순천고_2학기_기말_고1_기출",
+  "scope": "QID9 author-only branch; no main merge, deployment or student consumer",
+  "branch": "work/alive-25-suncheon-h1-2final-qid9",
+  "baselineSource": {
+    "path": "archive/exams/original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
+    "blob": "6159f478e8e3edf7074d3967ba1cb7456f7762a3",
+    "questionIds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "qidCount": 23,
+    "protected": true
+  },
+  "assets": {
+    "repoDirectory": "archive/assets/images/25_순천고_2학기_기말_고1_기출/",
+    "allReferencedAssetBlobsChecked": true,
+    "items": [
+      {
+        "file": "q4.png",
+        "gitBlobSha1": "7ec591ec157eb69d860de516f7de4727a4687976",
+        "existenceVerified": true,
+        "visualInspection": "BY_QID_WHEN_USED"
+      },
+      {
+        "file": "q10.png",
+        "gitBlobSha1": "9cbb0167f6144c1bc89e6b63fdca05852fcf964a",
+        "existenceVerified": true,
+        "visualInspection": "BY_QID_WHEN_USED"
+      },
+      {
+        "file": "q13.png",
+        "gitBlobSha1": "6bd16b58938f6897a6301f76a40fe27a6b63eb23",
+        "existenceVerified": true,
+        "visualInspection": "BY_QID_WHEN_USED"
+      },
+      {
+        "file": "q16.png",
+        "gitBlobSha1": "349aff0411269bc4b903ff359620d6c667d36416",
+        "existenceVerified": true,
+        "visualInspection": "BY_QID_WHEN_USED"
+      },
+      {
+        "file": "q13-solution.svg",
+        "gitBlobSha1": "775ca822713c3098ea2396c157ec20296c525167",
+        "existenceVerified": true,
+        "visualInspection": "BY_QID_WHEN_USED"
+      },
+      {
+        "file": "q14-solution.svg",
+        "gitBlobSha1": "b91ec598d2cc74a28e940f4f57e486088a5b5121",
+        "existenceVerified": true,
+        "visualInspection": "BY_QID_WHEN_USED"
+      },
+      {
+        "file": "q15-solution.svg",
+        "gitBlobSha1": "047df4122761a7359700020070123cd6ba89535f",
+        "existenceVerified": true,
+        "visualInspection": "BY_QID_WHEN_USED"
+      },
+      {
+        "file": "q17-solution.svg",
+        "gitBlobSha1": "11e61f38b365a8028ed3b3a5ac6335aaffb7bc0b",
+        "existenceVerified": true,
+        "visualInspection": "BY_QID_WHEN_USED"
+      },
+      {
+        "file": "q18-solution.svg",
+        "gitBlobSha1": "8d0e0f1b7491d15320f414547204e9c807adfadb",
+        "existenceVerified": true,
+        "visualInspection": "BY_QID_WHEN_USED"
+      },
+      {
+        "file": "q23-solution.svg",
+        "gitBlobSha1": "32845ac91467dc077b16dd0b0159bfba1c45eb93",
+        "existenceVerified": true,
+        "visualInspection": "BY_QID_WHEN_USED"
+      }
+    ]
+  },
+  "generated": {
+    "doneAuthorDraftQids": [
+      1,
+      2
+    ],
+    "questions": 18,
+    "svgFiles": 3,
+    "finishedIndependentReviewQids": [],
+    "producedItemsByQid": {
+      "q01": 9,
+      "q02": 9
+    },
+    "q01File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q01_CREATE_DRAFT.json",
+    "q02File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q02_CREATE_DRAFT.json",
+    "q01SVGs": [
+      "assets/q01-C2-solution.svg",
+      "assets/q01-C3-solution.svg"
+    ],
+    "q02SVGs": [
+      "assets/q02-C3-solution.svg"
+    ],
+    "expectedSourceQidCount": 23,
+    "expectedVariantsAtNineEach": 207,
+    "remainingQids": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ]
+  },
+  "remainingGates": [
+    "q01/q02 independent GPT quality review not run",
+    "Actual end-to-end Chrome exam/solution/answer render not run",
+    "RPM numeric L3/L4 lookup still unresolved for q01/q02; semantic primary L3 frozen, canonical PT/TPL active",
+    "Original asset SVG semantic/render full review only when respective original qid is entered"
+  ],
+  "next": {
+    "qid": 3,
+    "action": "Fetch q03 student content and any dependencies, freeze its own Primary RPM L3 from current canonical master, create and check A1-C3 with necessary problem+solution SVG, commit exactly once onto the existing branch; never merge main.",
+    "handoffPrompt": "2025 순천고 고1 2학기 기말 QID9 전용 브랜치 work/alive-25-suncheon-h1-2final-qid9. SOURCE_QID9_PROGRESS.json 및 q01/q02 산출물 재조회 후 q03부터 9개+Meta+해설+필요 SVG 제작. 원본 read only, qid당 커밋, main 미병합·미배포."
+  }
+}

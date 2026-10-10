@@ -1,0 +1,847 @@
+{
+  "schemaVersion": "ALIVE_QID9_AUTHOR_DRAFT_v1",
+  "source": {
+    "path": "archive/exams/original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
+    "examTitle": "25_순천고_2학기_기말_고1_기출",
+    "qid": 2,
+    "sourceUid": "archive/exams/original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js|25_순천고_2학기_기말_고1_기출|q2",
+    "gitBlobSha1": "6159f478e8e3edf7074d3967ba1cb7456f7762a3",
+    "originalContent": "두 조건 p:x≥a, q:x²+x−2=0일 때, 명제 p→q의 역이 참이 되도록 하는 정수 a의 최댓값은? [3.2점]",
+    "originalImage": null,
+    "originalAnswer": "①",
+    "readOnly": true
+  },
+  "authority": {
+    "mainObservedBeforeQ02": "46c85bb17ae8bcf9861ae4a4346c89390fd0fbea",
+    "rpmPrimaryL3": "역·이·대우",
+    "locked": true,
+    "authorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "authorityBlob": "a4ecfca14d45b5537357b8fbc65998a4e9c3bb11",
+    "canonicalPTTPLTaxonomyBlob": "638a3afa57245bb93ddbaa0c5e1aef12e8c25963",
+    "canonicalPTTPLBindingBlob": "10ffb4bc3792df84033da3475ce2264b53c41a71"
+  },
+  "summary": {
+    "authorDraftItems": 9,
+    "answerDistribution": {
+      "①": 2,
+      "②": 2,
+      "③": 2,
+      "④": 2,
+      "⑤": 1
+    },
+    "wrongOptionRoutes": 36,
+    "problemVisualsAdded": 0,
+    "solutionVisualsAdded": 1,
+    "solutionSvgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q02-C3-solution.svg",
+    "svgPythonGeometryCheck": "PASS",
+    "svgPNGPreview": "PASS",
+    "browserRender": "NOT_RUN",
+    "independentGPTQualityReview": "NOT_RUN",
+    "activePTTPL": "9/9",
+    "rpmNumericL3Id": "PENDING_CANONICAL_RESOLUTION",
+    "generatedConsumer": "NOT_REGISTERED_BY_USER_SCOPE",
+    "nextQid": 3,
+    "approvalStatus": "AUTHOR_DRAFT_ONLY",
+    "svgLabelRepaired": "C3 parameter label a → t; Python XML+bitmap+numeric parity rechecked"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q02-A1",
+      "sourceQid": 2,
+      "slot": "A1",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "하",
+      "category": "명제",
+      "originalCategory": "명제의 역",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "rule_inferred",
+      "subUnitClassificationDepth": "complete_rule",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [],
+      "wide": false,
+      "content": "두 조건 $p:x\\ge a$, $q:(x+4)(x-1)=0$에 대하여 명제 $p\\to q$의 역이 참이 되게 하는 정수 $a$의 최댓값은?",
+      "choices": [
+        "$-3$",
+        "$-4$",
+        "$-2$",
+        "$1$",
+        "$4$"
+      ],
+      "answer": "②",
+      "solution": "명제 $p\\to q$의 역은 $q\\to p$이다. $q$가 참인 값은 $x=-4$ 또는 $x=1$이다. 두 값 모두 $p:x\\ge a$를 만족해야 하므로 $-4\\ge a$이고 $1\\ge a$이다. 결국 $a\\le-4$이므로 가능한 정수 중 가장 큰 값은 $-4$이다. 따라서 정답은 ②이다.",
+      "meta": {
+        "primaryRPM_L3": "역·이·대우",
+        "primaryRPM_L3Lock": "2022/high/공통수학2/집합과 명제/명제/역·이·대우",
+        "primaryRPM_L3NumericKeyStatus": "NOT_RESOLVED",
+        "rpmL4SemanticLabel": "명제 변환",
+        "rpmL4KeyStatus": "NOT_RESOLVED",
+        "experienceAxis": "두 근과 역의 하한",
+        "difficultyBucket": 2,
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_ROOT_PARAMETER",
+        "PTTPLStatus": "ACTIVE_CANONICAL_PARENT_AND_CURRICULUM_BINDING_VERIFIED",
+        "bindingAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/bindings.json"
+      },
+      "review": {
+        "mathSelfCheckEvidence": "roots -4,1 => both >= a iff a<=-4.",
+        "reverseStem": "KEEP",
+        "distractorRoutes": [
+          {
+            "choice": "①",
+            "misconceptionToResult": "$x+4=0$을 $x=-3$으로 계산하는 인수 근 오류 → $a=-3$"
+          },
+          {
+            "choice": "③",
+            "misconceptionToResult": "두 근의 평균을 기준으로 잘못 상한을 판단하여 $a=-2$를 선택"
+          },
+          {
+            "choice": "④",
+            "misconceptionToResult": "큰 근 $1$만 확인하여 $a=1$까지 허용"
+          },
+          {
+            "choice": "⑤",
+            "misconceptionToResult": "$x+4=0$의 근을 부호를 바꾸지 않고 $4$라고 읽어 $a=4$"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "명제·방정식 정보가 발문에 수식으로 충분히 제공됨"
+        },
+        "solutionVisual": {
+          "status": "EXEMPT",
+          "reason": "두 근의 대입과 단일 비교가 해설에서 명확해 별도 시각표현의 결정적 이득 없음"
+        },
+        "independentReview": "NOT_RUN",
+        "browserRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q02-A2",
+      "sourceQid": 2,
+      "slot": "A2",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "하",
+      "category": "명제",
+      "originalCategory": "명제의 역",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "rule_inferred",
+      "subUnitClassificationDepth": "complete_rule",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [],
+      "wide": false,
+      "content": "두 조건 $p:x\\le a$, $q:(x-2)(x-5)=0$에 대하여 명제 $p\\to q$의 역이 참이 되게 하는 정수 $a$의 최솟값은?",
+      "choices": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "answer": "④",
+      "solution": "명제의 역은 $q\\to p$이다. $q$를 만족하는 $x$는 $2,5$이므로 이 두 수가 모두 $x\\le a$를 만족해야 한다. 따라서 $2\\le a$, $5\\le a$이고 결국 $a\\ge5$이다. 정수 $a$의 최솟값은 $5$이다. 따라서 정답은 ④이다.",
+      "meta": {
+        "primaryRPM_L3": "역·이·대우",
+        "primaryRPM_L3Lock": "2022/high/공통수학2/집합과 명제/명제/역·이·대우",
+        "primaryRPM_L3NumericKeyStatus": "NOT_RESOLVED",
+        "rpmL4SemanticLabel": "명제 변환",
+        "rpmL4KeyStatus": "NOT_RESOLVED",
+        "experienceAxis": "두 근과 역의 상한",
+        "difficultyBucket": 2,
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_ROOT_PARAMETER",
+        "PTTPLStatus": "ACTIVE_CANONICAL_PARENT_AND_CURRICULUM_BINDING_VERIFIED",
+        "bindingAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/bindings.json"
+      },
+      "review": {
+        "mathSelfCheckEvidence": "roots 2,5 => a≥5.",
+        "reverseStem": "KEEP",
+        "distractorRoutes": [
+          {
+            "choice": "①",
+            "misconceptionToResult": "작은 근 $2$만 확인해 $a=2$"
+          },
+          {
+            "choice": "②",
+            "misconceptionToResult": "두 근의 차 $5-2=3$을 경계값으로 잘못 사용"
+          },
+          {
+            "choice": "③",
+            "misconceptionToResult": "두 근의 평균 $3.5$를 올림하여 $a=4$"
+          },
+          {
+            "choice": "⑤",
+            "misconceptionToResult": "$x\\le a$를 $x<a$로 잘못 해석해 최소 $a=6$"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "명제·방정식 정보가 발문에 수식으로 충분히 제공됨"
+        },
+        "solutionVisual": {
+          "status": "EXEMPT",
+          "reason": "두 근의 대입과 단일 비교가 해설에서 명확해 별도 시각표현의 결정적 이득 없음"
+        },
+        "independentReview": "NOT_RUN",
+        "browserRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q02-A3",
+      "sourceQid": 2,
+      "slot": "A3",
+      "purpose": "A",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제의 역",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "rule_inferred",
+      "subUnitClassificationDepth": "complete_rule",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [],
+      "wide": false,
+      "content": "두 조건 $p:x>a$, $q:(x+1)(x-3)=0$에 대하여 명제 $p\\to q$의 역이 참이 되게 하는 정수 $a$의 최댓값은?",
+      "choices": [
+        "$-2$",
+        "$-1$",
+        "$0$",
+        "$2$",
+        "$3$"
+      ],
+      "answer": "①",
+      "solution": "역은 $q\\to p$이다. $q$의 참이 되는 값은 $x=-1,3$이므로 $-1>a$, $3>a$를 모두 만족해야 한다. 더 작은 근 $-1$이 결정적인 경계이므로 $a<-1$이다. $a$가 정수이므로 최대는 $-2$이다. 따라서 정답은 ①이다.",
+      "meta": {
+        "primaryRPM_L3": "역·이·대우",
+        "primaryRPM_L3Lock": "2022/high/공통수학2/집합과 명제/명제/역·이·대우",
+        "primaryRPM_L3NumericKeyStatus": "NOT_RESOLVED",
+        "rpmL4SemanticLabel": "명제 변환",
+        "rpmL4KeyStatus": "NOT_RESOLVED",
+        "experienceAxis": "엄격한 부등호의 정수 경계",
+        "difficultyBucket": 3,
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_BOUND_PARAMETER",
+        "PTTPLStatus": "ACTIVE_CANONICAL_PARENT_AND_CURRICULUM_BINDING_VERIFIED",
+        "bindingAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/bindings.json"
+      },
+      "review": {
+        "mathSelfCheckEvidence": "roots -1,3 => a<-1; max integer -2.",
+        "reverseStem": "KEEP",
+        "distractorRoutes": [
+          {
+            "choice": "②",
+            "misconceptionToResult": "엄격한 $>$를 $\\ge$로 읽어 경계 $a=-1$을 포함"
+          },
+          {
+            "choice": "③",
+            "misconceptionToResult": "두 근의 평균 $1$을 경계로 잘못 사용해 $a<1$의 최대 정수 $0$"
+          },
+          {
+            "choice": "④",
+            "misconceptionToResult": "큰 근 $3$만 보고 $a<3$의 최대 정수 $2$"
+          },
+          {
+            "choice": "⑤",
+            "misconceptionToResult": "큰 근 $3$만 선택하고 등호까지 허용해 $a=3$"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "명제·방정식 정보가 발문에 수식으로 충분히 제공됨"
+        },
+        "solutionVisual": {
+          "status": "EXEMPT",
+          "reason": "두 근의 대입과 단일 비교가 해설에서 명확해 별도 시각표현의 결정적 이득 없음"
+        },
+        "independentReview": "NOT_RUN",
+        "browserRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q02-B1",
+      "sourceQid": 2,
+      "slot": "B1",
+      "purpose": "B",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제의 역",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "rule_inferred",
+      "subUnitClassificationDepth": "complete_rule",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [],
+      "wide": false,
+      "content": "$1\\le a\\le6$인 정수 $a$에 대하여 두 조건 $p:x\\ge a$, $q:(x-2)(x-4)=0$이 있다. 명제 $p\\to q$의 역이 참이 되게 하는 $a$의 개수는?",
+      "choices": [
+        "$1$",
+        "$3$",
+        "$4$",
+        "$5$",
+        "$2$"
+      ],
+      "answer": "⑤",
+      "solution": "$q$를 만족하는 수는 $x=2,4$이다. 역 $q\\to p$가 참이려면 이 두 값에서 $x\\ge a$이어야 하므로 $a\\le2$이다. $1\\le a\\le6$인 정수 가운데 $a=1,2$만 해당한다. 따라서 정답은 ⑤이다.",
+      "meta": {
+        "primaryRPM_L3": "역·이·대우",
+        "primaryRPM_L3Lock": "2022/high/공통수학2/집합과 명제/명제/역·이·대우",
+        "primaryRPM_L3NumericKeyStatus": "NOT_RESOLVED",
+        "rpmL4SemanticLabel": "명제 변환",
+        "rpmL4KeyStatus": "NOT_RESOLVED",
+        "experienceAxis": "정수 매개변수 역의 참 개수",
+        "difficultyBucket": 3,
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_BOUND_PARAMETER",
+        "PTTPLStatus": "ACTIVE_CANONICAL_PARENT_AND_CURRICULUM_BINDING_VERIFIED",
+        "bindingAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/bindings.json"
+      },
+      "review": {
+        "mathSelfCheckEvidence": "q roots 2,4; reverse true integers a 1,2.",
+        "reverseStem": "KEEP",
+        "distractorRoutes": [
+          {
+            "choice": "①",
+            "misconceptionToResult": "경계 $a=1$을 빠뜨리고 $a=2$ 한 개만 계산"
+          },
+          {
+            "choice": "②",
+            "misconceptionToResult": "작은 근 $2$를 $3$으로 오산하여 $a=1,2,3$의 세 개"
+          },
+          {
+            "choice": "③",
+            "misconceptionToResult": "더 큰 근 $4$만 확인해 $a=1,2,3,4$의 네 개"
+          },
+          {
+            "choice": "④",
+            "misconceptionToResult": "더 큰 근 $4$의 경계를 하나 더 늘려 $a=1,2,3,4,5$의 다섯 개"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "명제·방정식 정보가 발문에 수식으로 충분히 제공됨"
+        },
+        "solutionVisual": {
+          "status": "EXEMPT",
+          "reason": "두 근의 대입과 단일 비교가 해설에서 명확해 별도 시각표현의 결정적 이득 없음"
+        },
+        "independentReview": "NOT_RUN",
+        "browserRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q02-B2",
+      "sourceQid": 2,
+      "slot": "B2",
+      "purpose": "B",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제의 역",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "rule_inferred",
+      "subUnitClassificationDepth": "complete_rule",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [],
+      "wide": false,
+      "content": "두 조건 $p:x<k$, $q:(x+1)(x-4)=0$에 대하여 명제 $p\\to q$의 역이 참이 되게 하는 정수 $k$의 최솟값은?",
+      "choices": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$",
+        "$1$"
+      ],
+      "answer": "③",
+      "solution": "$q$가 참이면 $x=-1$ 또는 $x=4$이다. 역 $q\\to p$가 항상 참이려면 $-1<k$와 $4<k$가 동시에 성립해야 한다. 따라서 $k>4$이고, $k$가 정수이므로 최솟값은 $5$이다. 따라서 정답은 ③이다.",
+      "meta": {
+        "primaryRPM_L3": "역·이·대우",
+        "primaryRPM_L3Lock": "2022/high/공통수학2/집합과 명제/명제/역·이·대우",
+        "primaryRPM_L3NumericKeyStatus": "NOT_RESOLVED",
+        "rpmL4SemanticLabel": "명제 변환",
+        "rpmL4KeyStatus": "NOT_RESOLVED",
+        "experienceAxis": "반대 방향의 엄격 경계 최솟값",
+        "difficultyBucket": 3,
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_ROOT_PARAMETER",
+        "PTTPLStatus": "ACTIVE_CANONICAL_PARENT_AND_CURRICULUM_BINDING_VERIFIED",
+        "bindingAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/bindings.json"
+      },
+      "review": {
+        "mathSelfCheckEvidence": "roots -1,4 => k>4 integer min5.",
+        "reverseStem": "KEEP",
+        "distractorRoutes": [
+          {
+            "choice": "①",
+            "misconceptionToResult": "두 번째 근 $4$를 $2$로 오산하고 $k>2$라 판단해 $3$"
+          },
+          {
+            "choice": "②",
+            "misconceptionToResult": "엄격한 $x<k$의 경계 등호를 허용하여 $k=4$"
+          },
+          {
+            "choice": "④",
+            "misconceptionToResult": "필요한 $k>4$를 $k>5$로 한 단계 과도하게 제한해 $6$"
+          },
+          {
+            "choice": "⑤",
+            "misconceptionToResult": "큰 근 $4$를 누락하고 작은 근 $-1$만 본 후 임의 양의 정수 $1$ 선택"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "명제·방정식 정보가 발문에 수식으로 충분히 제공됨"
+        },
+        "solutionVisual": {
+          "status": "EXEMPT",
+          "reason": "두 근의 대입과 단일 비교가 해설에서 명확해 별도 시각표현의 결정적 이득 없음"
+        },
+        "independentReview": "NOT_RUN",
+        "browserRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q02-B3",
+      "sourceQid": 2,
+      "slot": "B3",
+      "purpose": "B",
+      "modeCandidate": "TYPE_BANK",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "명제의 역",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "rule_inferred",
+      "subUnitClassificationDepth": "complete_rule",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [],
+      "wide": false,
+      "content": "$0\\le a\\le6$인 정수 $a$에 대하여 두 조건 $p:x\\le a$, $q:(x-1)(x-4)=0$이 있다. 명제 $p\\to q$의 역이 거짓이 되도록 하는 $a$의 개수는?",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "answer": "④",
+      "solution": "$q$의 참이 되는 값은 $x=1$ 또는 $4$이다. 역 $q\\to p$가 참인 것은 두 값이 모두 $x\\le a$를 만족할 때, 즉 $a\\ge4$일 때이다. 따라서 역이 거짓이 되는 경우는 $a<4$이다. 주어진 범위의 정수는 $0,1,2,3$ 네 개이다. 따라서 정답은 ④이다.",
+      "meta": {
+        "primaryRPM_L3": "역·이·대우",
+        "primaryRPM_L3Lock": "2022/high/공통수학2/집합과 명제/명제/역·이·대우",
+        "primaryRPM_L3NumericKeyStatus": "NOT_RESOLVED",
+        "rpmL4SemanticLabel": "명제 변환",
+        "rpmL4KeyStatus": "NOT_RESOLVED",
+        "experienceAxis": "역이 거짓인 정수 매개변수의 개수",
+        "difficultyBucket": 3,
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_CONVERSE_FALSE_PARAMETER_COUNT",
+        "PTTPLStatus": "ACTIVE_CANONICAL_PARENT_AND_CURRICULUM_BINDING_VERIFIED",
+        "bindingAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/bindings.json"
+      },
+      "review": {
+        "mathSelfCheckEvidence": "q roots 1,4; false for a=0,1,2,3 four.",
+        "reverseStem": "KEEP",
+        "distractorRoutes": [
+          {
+            "choice": "①",
+            "misconceptionToResult": "$a=3$만 반례로 남겨 $1$개 계산"
+          },
+          {
+            "choice": "②",
+            "misconceptionToResult": "$a=2,3$만 반례로 남겨 $2$개 계산"
+          },
+          {
+            "choice": "③",
+            "misconceptionToResult": "$a=1,2,3$만 세고 $a=0$을 빠뜨려 $3$개"
+          },
+          {
+            "choice": "⑤",
+            "misconceptionToResult": "$a=4$에서도 $q\\to p$가 거짓이라고 경계 부등호를 뒤집어 $0$부터 $4$까지 $5$개"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "명제·방정식 정보가 발문에 수식으로 충분히 제공됨"
+        },
+        "solutionVisual": {
+          "status": "EXEMPT",
+          "reason": "두 근의 대입과 단일 비교가 해설에서 명확해 별도 시각표현의 결정적 이득 없음"
+        },
+        "independentReview": "NOT_RUN",
+        "browserRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q02-C1",
+      "sourceQid": 2,
+      "slot": "C1",
+      "purpose": "C",
+      "modeCandidate": "TYPE_BANK",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "명제의 역",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "rule_inferred",
+      "subUnitClassificationDepth": "complete_rule",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [],
+      "wide": false,
+      "content": "$0\\le a\\le6$인 정수 $a$에 대하여 두 조건 $p:|x|\\le a$, $q:x^2-9=0$이 있다. 명제 $p\\to q$의 역이 참이 되게 하는 $a$의 개수는?",
+      "choices": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "answer": "③",
+      "solution": "$q:x^2-9=0$의 근은 $x=-3,3$이다. 역 $q\\to p$가 참이려면 두 근에 대해 $|x|\\le a$이어야 한다. $|-3|=|3|=3$이므로 $a\\ge3$이다. $0\\le a\\le6$인 정수에서 $a=3,4,5,6$의 네 개이다. 따라서 정답은 ③이다.",
+      "meta": {
+        "primaryRPM_L3": "역·이·대우",
+        "primaryRPM_L3Lock": "2022/high/공통수학2/집합과 명제/명제/역·이·대우",
+        "primaryRPM_L3NumericKeyStatus": "NOT_RESOLVED",
+        "rpmL4SemanticLabel": "명제 변환",
+        "rpmL4KeyStatus": "NOT_RESOLVED",
+        "experienceAxis": "절댓값과 양쪽 근을 동시에 확인하는 정수 범위",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [
+          "CC_INEQUALITY_ABSOLUTE_VALUE"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_COMPOSITE_PARAMETER",
+        "PTTPLStatus": "ACTIVE_CANONICAL_PARENT_AND_CURRICULUM_BINDING_VERIFIED",
+        "bindingAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/bindings.json"
+      },
+      "review": {
+        "mathSelfCheckEvidence": "q roots ±3; |x|≤a requires a≥3, a 3..6=4.",
+        "reverseStem": "KEEP",
+        "distractorRoutes": [
+          {
+            "choice": "①",
+            "misconceptionToResult": "$a=5,6$만 세고 더 작은 가능한 $a=3,4$를 누락 → $2$"
+          },
+          {
+            "choice": "②",
+            "misconceptionToResult": "$a=4,5,6$만 세고 경계 $a=3$을 제외 → $3$"
+          },
+          {
+            "choice": "④",
+            "misconceptionToResult": "$a=2,3,4,5,6$으로 절댓값 조건의 경계를 $2$로 잘못 읽어 $5$"
+          },
+          {
+            "choice": "⑤",
+            "misconceptionToResult": "$a=1$도 허용한다고 착각하여 $1$부터 $6$까지 $6$개"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "명제·방정식 정보가 발문에 수식으로 충분히 제공됨"
+        },
+        "solutionVisual": {
+          "status": "EXEMPT",
+          "reason": "두 근의 대입과 단일 비교가 해설에서 명확해 별도 시각표현의 결정적 이득 없음"
+        },
+        "independentReview": "NOT_RUN",
+        "browserRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q02-C2",
+      "sourceQid": 2,
+      "slot": "C2",
+      "purpose": "C",
+      "modeCandidate": "TYPE_BANK",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "명제의 역",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "rule_inferred",
+      "subUnitClassificationDepth": "complete_rule",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [],
+      "wide": false,
+      "content": "$1\\le a\\le8$인 정수 $a$에 대하여 두 조건 $p:x^2\\ge a$, $q:(x-2)(x-3)=0$이 있다. 명제 $p\\to q$의 역이 참이 되게 하는 $a$의 개수는?",
+      "choices": [
+        "$4$",
+        "$3$",
+        "$5$",
+        "$2$",
+        "$6$"
+      ],
+      "answer": "①",
+      "solution": "역 $q\\to p$가 참이려면 $q$의 두 근 $2,3$에서 모두 $x^2\\ge a$이어야 한다. $x=2$에서는 $4\\ge a$, $x=3$에서는 $9\\ge a$이다. 따라서 더 작은 제곱값 $4$가 경계이므로 $1\\le a\\le4$이다. 가능한 정수 $a$는 $1,2,3,4$ 네 개이다. 따라서 정답은 ①이다.",
+      "meta": {
+        "primaryRPM_L3": "역·이·대우",
+        "primaryRPM_L3Lock": "2022/high/공통수학2/집합과 명제/명제/역·이·대우",
+        "primaryRPM_L3NumericKeyStatus": "NOT_RESOLVED",
+        "rpmL4SemanticLabel": "명제 변환",
+        "rpmL4KeyStatus": "NOT_RESOLVED",
+        "experienceAxis": "역의 참과 제곱 조건이 결합한 매개변수 범위",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_ROOT_PARAMETER",
+        "PTTPLStatus": "ACTIVE_CANONICAL_PARENT_AND_CURRICULUM_BINDING_VERIFIED",
+        "bindingAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/bindings.json"
+      },
+      "review": {
+        "mathSelfCheckEvidence": "q roots 2,3, squared 4,9; a 1..4 => four.",
+        "reverseStem": "KEEP",
+        "distractorRoutes": [
+          {
+            "choice": "②",
+            "misconceptionToResult": "$a=4$의 등호를 누락해 $a=1,2,3$의 세 개"
+          },
+          {
+            "choice": "③",
+            "misconceptionToResult": "더 작은 제곱값 $4$ 대신 $5$를 경계로 잘못 올려 $1$부터 $5$까지 다섯 개"
+          },
+          {
+            "choice": "④",
+            "misconceptionToResult": "$x^2\\ge a$를 $x\\ge a$로 읽고 더 작은 근 $2$만 사용하여 $a=1,2$ 두 개"
+          },
+          {
+            "choice": "⑤",
+            "misconceptionToResult": "두 제곱값 평균 $(4+9)/2$를 버림한 $6$을 경계로 잘못 사용해 여섯 개"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "명제·방정식 정보가 발문에 수식으로 충분히 제공됨"
+        },
+        "solutionVisual": {
+          "status": "EXEMPT",
+          "reason": "두 근의 대입과 단일 비교가 해설에서 명확해 별도 시각표현의 결정적 이득 없음"
+        },
+        "independentReview": "NOT_RUN",
+        "browserRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q02-C3",
+      "sourceQid": 2,
+      "slot": "C3",
+      "purpose": "C",
+      "modeCandidate": "TYPE_BANK",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "명제의 역",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "rule_inferred",
+      "subUnitClassificationDepth": "complete_rule",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [],
+      "wide": false,
+      "content": "$0\\le t\\le6$인 정수 $t$에 대하여 두 조건 $p:(x-t)^2\\le9$, $q:(x-1)(x-5)=0$이 있다. 명제 $p\\to q$의 역이 참이 되게 하는 $t$의 개수는?",
+      "choices": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$",
+        "$1$"
+      ],
+      "answer": "②",
+      "solution": "역 $q\\to p$가 참이려면 $q$의 근 $x=1,5$가 모두 $(x-t)^2\\le9$를 만족해야 한다. 먼저 $x=1$을 대입하면 $|1-t|\\le3$이므로 $-2\\le t\\le4$이다. $x=5$를 대입하면 $|5-t|\\le3$이므로 $2\\le t\\le8$이다. 두 구간의 공통부분은 $2\\le t\\le4$이고 처음에 주어진 $0\\le t\\le6$과도 일치하는 후보는 $2,3,4$ 세 개이다. 따라서 정답은 ②이다.",
+      "meta": {
+        "primaryRPM_L3": "역·이·대우",
+        "primaryRPM_L3Lock": "2022/high/공통수학2/집합과 명제/명제/역·이·대우",
+        "primaryRPM_L3NumericKeyStatus": "NOT_RESOLVED",
+        "rpmL4SemanticLabel": "명제 변환",
+        "rpmL4KeyStatus": "NOT_RESOLVED",
+        "experienceAxis": "두 근의 거리 제한과 정수 매개변수 교집합",
+        "difficultyBucket": 5,
+        "crossConceptKeys": [
+          "CC_INEQUALITY_ABSOLUTE_VALUE"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_COMPOSITE_PARAMETER",
+        "PTTPLStatus": "ACTIVE_CANONICAL_PARENT_AND_CURRICULUM_BINDING_VERIFIED",
+        "bindingAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/bindings.json"
+      },
+      "review": {
+        "mathSelfCheckEvidence": "q roots1,5; |1-t|≤3 interval [-2,4], |5-t|≤3 interval [2,8], intersect [2,4] integers 2,3,4.",
+        "reverseStem": "KEEP",
+        "distractorRoutes": [
+          {
+            "choice": "①",
+            "misconceptionToResult": "공통 구간의 양 끝 $2,4$ 중 하나를 누락해 $2$개만 계산"
+          },
+          {
+            "choice": "③",
+            "misconceptionToResult": "두 구간 교집합에 $t=1$을 잘못 추가해 $1,2,3,4$ 네 개"
+          },
+          {
+            "choice": "④",
+            "misconceptionToResult": "$x=5$에서의 조건을 빠뜨려 첫 조건의 $t=0,1,2,3,4$ 다섯 개"
+          },
+          {
+            "choice": "⑤",
+            "misconceptionToResult": "두 조건을 모두 만족하는 값은 중심 $t=3$만 된다고 잘못 판단하여 한 개"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "명제·방정식 정보가 발문에 수식으로 충분히 제공됨"
+        },
+        "solutionVisual": {
+          "status": "ADD",
+          "necessity": "VISUAL_OPTIONAL",
+          "reason": "근 1과 근 5 각각의 정수 허용 구간과 공통부분을 수직선형 점 도표로 명확히 시각화",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q02-C3-solution.svg",
+          "svgSha256": "10c7e976b0bfad3b878879ce412b5ab98acd398a5132e0bd7cd037abf5248b8c",
+          "gitBlobSha1": "10c6cb4264913b5bd2a2743a61db17263c790826",
+          "pythonNumericFacts": "PASS",
+          "svgPrimitiveParity": "PASS",
+          "cairoSvgPng": "PASS",
+          "studentBrowser": "NOT_RUN",
+          "ownerLabelVerified": "t; matches stem variable t"
+        },
+        "independentReview": "NOT_RUN",
+        "browserRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q02-C3-solution.svg"
+    }
+  ]
+}
