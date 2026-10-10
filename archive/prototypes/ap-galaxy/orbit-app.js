@@ -82,7 +82,7 @@
     return [...groups.values()].sort((a, b) => (b.exams.length - a.exams.length) || a.name.localeCompare(b.name, 'ko'));
   };
   const selectVisibleData = (allGroups) => {
-    const groups = allGroups.slice(0, 12);
+    const groups = allGroups;
     const visibleExams = [];
     const cursors = new Map(groups.map((group) => [group.id, 0]));
     const maxNodes = window.innerWidth < 760 ? 54 : 96;
@@ -105,7 +105,7 @@
       drawnByGroup.get(key.id).push(exam);
     }
     for (const group of groups) group.items = drawnByGroup.get(group.id) || [];
-    return { groups: groups.filter((group) => group.items.length), visibleExams };
+    return { groups, visibleExams };
   };
 
   function sourceUrl(exam) {
@@ -236,8 +236,7 @@
         button.append(label, quantity);
         button.addEventListener('click', () => {
           openExam(exam);
-          ui.listPanel.classList.remove('open');
-          ui.listPanel.setAttribute('aria-hidden', 'true');
+          toggleList(false);
         });
         examRows.append(button);
       }
@@ -311,7 +310,7 @@
     state.groupLabels.clear();
     for (const group of state.visibleGroups) makeGroupLabel(group);
 
-    if (!state.groupsById.has(state.focusedGroupId)) {
+    if (state.focusedGroupId && !state.groupsById.has(state.focusedGroupId)) {
       state.focusedGroupId = '';
       state.world?.clearFocus();
       renderSatelliteLabels();
@@ -320,15 +319,17 @@
     state.world?.setData({
       mode: state.groupMode,
       searching: Boolean(ui.search.value.trim()),
-      groups: state.visibleGroups.map((group) => ({ id: group.id, name: group.name, count: group.exams.length, files: group.items.map((exam) => exam.file) })),
-      exams: state.visibleExams,
+      groups: state.visibleGroups.map((group) => ({ id: group.id, name: group.name, mode: group.mode, count: group.exams.length, files: group.exams.map((exam) => exam.file), items: group.items })),
+      exams: state.filtered,
+      details: state.visibleExams,
     });
+    renderSatelliteLabels();
     setFilterSummary();
     createAccessibleList();
     updateConstellations();
     const schoolCount = new Set(state.filtered.map((exam) => exam.school)).size;
-    $('sceneCount').textContent = '우주 안 자료 노드 ' + state.visibleExams.length.toLocaleString() + ' / ' +
-      state.filtered.length.toLocaleString() + ' · ' + state.visibleGroups.length + '개 작은 은하';
+    $('sceneCount').textContent = '별 자료 노드 ' + state.filtered.length.toLocaleString() + ' / ' +
+      state.filtered.length.toLocaleString() + ' · 종이 상세 ' + state.visibleExams.length.toLocaleString() + ' · ' + state.visibleGroups.length + '개 작은 은하';
     $('sceneInstruction').textContent = state.visibleGroups.length
       ? '시험지마다 고유 자료 노드 하나가 있습니다. 학교·학년·단원 은하를 바꿔 같은 원본의 다른 공간 배치를 둘러보세요.'
       : '조건에 맞는 은하가 없습니다. 필터를 풀거나 검색어를 바꿔 보세요.';
@@ -392,16 +393,40 @@
       },
       onBlackhole: () => window.open('../../generated-bank.html', '_blank', 'noopener'),
       onFrame: (positions) => {
-        for (const [id, label] of state.groupLabels) {
-          const point = positions.groups.get(id);
-          if (!point || !point.visible) { label.style.opacity = '0'; continue; }
-          label.style.opacity = '1';
+        const reservedRects = [...document.querySelectorAll('.topbar,.scene-heading,.scene-hud,.scene-footer,.entry-chip,.filter-panel:not([hidden]),.list-panel.open,.drawer.open')]
+          .filter((element) => element.getClientRects().length)
+          .map((element) => element.getBoundingClientRect());
+        const overlapsChrome = (point, halfWidth, halfHeight) => reservedRects.some((rect) =>
+          point.x + halfWidth > rect.left && point.x - halfWidth < rect.right &&
+          point.y + halfHeight > rect.top && point.y - halfHeight < rect.bottom,
+        );
+        for (const label of state.groupLabels.values()) label.style.display = 'none';
+        const labelCandidates = [...state.groupLabels].map(([id, label]) => ({ id, label, point: positions.groups.get(id) }))
+          .filter(({ point }) => point?.visible)
+          .sort((a, b) => Number(b.id === state.focusedGroupId) - Number(a.id === state.focusedGroupId) || a.point.depth - b.point.depth);
+        const occupiedGroupLabels = [];
+        let shownGroupLabels = 0;
+        for (const { id, label, point } of labelCandidates) {
+          const selected = id === state.focusedGroupId;
+          const crowded = occupiedGroupLabels.some((used) => Math.abs(used.x - point.x) < 122 && Math.abs(used.y - point.y) < 42);
+          if ((!selected && (point.depth > 132 || crowded || shownGroupLabels >= 5)) || overlapsChrome(point, 74, 22)) { label.style.display = 'none'; continue; }
+          label.style.display = 'block';
+          occupiedGroupLabels.push(point);
+          shownGroupLabels += 1;
           label.style.left = point.x + 'px';
           label.style.top = (point.y - 22) + 'px';
         }
-        for (const [file, button] of state.satelliteButtons) {
-          const point = positions.exams.get(file);
-          if (!point || !point.visible) { button.style.display = 'none'; continue; }
+        for (const button of state.satelliteButtons.values()) button.style.display = 'none';
+        const satelliteCandidates = [...state.satelliteButtons].map(([file, button]) => ({ file, button, point: positions.exams.get(file) }))
+          .filter(({ point }) => point?.visible && point.depth < 38)
+          .sort((a, b) => a.point.depth - b.point.depth);
+        const occupiedSatellites = [];
+        let shownSatellites = 0;
+        for (const { button, point } of satelliteCandidates) {
+          const crowded = occupiedSatellites.some((used) => Math.abs(used.x - point.x) < 112 && Math.abs(used.y - point.y) < 42);
+          if (crowded || shownSatellites >= 5 || overlapsChrome(point, 92, 18)) { button.style.display = 'none'; continue; }
+          occupiedSatellites.push(point);
+          shownSatellites += 1;
           button.style.display = 'flex';
           button.style.left = point.x + 'px';
           button.style.top = point.y + 'px';
