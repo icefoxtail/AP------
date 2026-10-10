@@ -46,7 +46,7 @@ jobs:
           node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --check
       - name: Validate Archive 2.0 technical integrity and search/output flow
         run: node --test tests/problem-bank-meta.test.cjs
-      - name: Create and auto-merge the normal projection PR
+      - name: Create and normally merge the projection PR
         if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ github.token }}
@@ -70,6 +70,6 @@ jobs:
             echo 'Could not create or resolve the normal projection PR.' >&2
             exit 1
           fi
-          # Respect branch protections and merge queues. This enables automatic merge when
-          # repository requirements are satisfied; it never uses administrator bypass.
-          gh pr merge "$pr_url" --auto --merge --delete-branch
+          # Perform an ordinary merge through GitHub. Repository protections still apply;
+          # no administrator bypass, merge-queue override, or direct main push is used.
+          gh pr merge "$pr_url" --merge --delete-branch

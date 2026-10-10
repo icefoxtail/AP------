@@ -103,9 +103,10 @@ test('main source rebuild registers new UIDs, refreshes existing payload and has
  const checked=run(root,'--check');assert.equal(checked.status,'PASS');assert.equal(checked.diagnosticCount,0);
 });
 
-test('projection workflow enables normal protected auto-merge and avoids direct main pushes',()=>{
+test('projection workflow uses a normal protected PR merge and avoids direct main pushes',()=>{
  const yaml=fs.readFileSync(path.join(repo,'.github/workflows/auto-register-approved-qid9.yml'),'utf8');
- assert.match(yaml,/gh pr merge .*--auto --merge --delete-branch/);
+ assert.match(yaml,/gh pr merge .*--merge --delete-branch/);
+ assert.doesNotMatch(yaml,/--auto/);
  assert.doesNotMatch(yaml,/gh pr merge .*--admin/);
  assert.doesNotMatch(yaml,/git push origin (?:main|HEAD:main)/);
  assert.match(yaml,/git diff --cached --quiet/,'the post-merge source-sync loop must stop on an idempotent diff');
