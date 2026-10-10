@@ -1,0 +1,203 @@
+{
+  "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
+  "school": "팔마고",
+  "batchId": "PALMA25_QID9_AUTO_19",
+  "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-INTERSECTION/shards/palma-2025-2mid-qid9-q19-B3.js",
+  "sourceShardGitSha": "8a4221bbc40a5cde08330b8afc07d65db1feef2a",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "currentSourceExamBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e",
+  "approvedSourceSnapshot": {
+    "path": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+    "gitBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76"
+  },
+  "approvedPackage": {
+    "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q19_PACKAGE.json",
+    "sha256": "4fe6a3e4a884682c5b8e02258d426fa22b5cbf786778cf7ae4591840c6ef501f",
+    "gitBlobSha1": "4a4636fe6f7412520b9752b82ebef14ea2f4fd3a"
+  },
+  "approvalReceipt": {
+    "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json",
+    "sha256": "38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d",
+    "gitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2"
+  },
+  "records": [
+    {
+      "generatedUid": "ALITE-PALMA25-2MID-Q19-B3",
+      "localOrdinal": 1,
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "sourceQid": 19,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-INTERSECTION/shards/palma-2025-2mid-qid9-q19-B3.js",
+      "currentSourceExamBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e",
+      "approvedSourceSnapshotBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "approvalReceiptSha256": "38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d",
+      "approvalReceiptGitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+      "approvedPackageSha256": "4fe6a3e4a884682c5b8e02258d426fa22b5cbf786778cf7ae4591840c6ef501f",
+      "approvedPackageGitBlobSha1": "4a4636fe6f7412520b9752b82ebef14ea2f4fd3a",
+      "l2": "H22-C2-03-INTERSECTION",
+      "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+      "reviewApprovalReceipt": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q19-B3.json",
+      "rpmPrimary": {
+        "recordId": "H1-RPM-219",
+        "l3": "원과 직선",
+        "l4": "교점 개수"
+      },
+      "question": {
+        "id": 1,
+        "uid": "ALITE-PALMA25-2MID-Q19-B3",
+        "level": "상",
+        "difficultyBucket": 4,
+        "category": "원의 방정식",
+        "originalCategory": "원의 방정식",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-INTERSECTION",
+        "subUnit": "원과 직선·원의 관계",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "원의 방정식"
+        ],
+        "wide": false,
+        "content": "큰 원 $C:(x-1)^2+y^2=25$, 아래쪽 반원호 $S_1:(x+2)^2+y^2=4\\ (y\\le0)$, 위쪽 반원호 $S_2:(x-4)^2+y^2=4\\ (y\\ge0)$이 있다. 직선 $y=m(x+2)$가 세 곡선의 합집합과 서로 다른 다섯 점에서 만나게 되는 $m$의 범위는?",
+        "choices": [
+          "$0<m<\\dfrac16$",
+          "$0<m\\le\\dfrac1{\\sqrt8}$",
+          "$0<m<\\dfrac1{\\sqrt8}$",
+          "$0<m<\\dfrac1{\\sqrt{35}}$",
+          "$0<m<\\dfrac1{\\sqrt3}$"
+        ],
+        "answer": "③",
+        "solution": "직선은 큰 원의 내부점 $(-2,0)$을 지나므로 큰 원과 항상 두 점에서 만난다. $m>0$이면 아래쪽 반원호와 한 점에서 만나며, 위쪽 반원호와 두 점에서 만나야 한다. 위쪽 중심 $(4,0)$까지의 거리 $d=\\dfrac{6m}{\\sqrt{1+m^2}}$가 반지름 $2$보다 작을 조건은 $36m^2<4(1+m^2)$, 즉 $m^2<1/8$이다. 수평선의 끝점 중복과 접점 한 개를 제외하므로 $0<m<\\dfrac1{\\sqrt8}$이고 정답은 ③이다.",
+        "solutionImage": "assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q19-B3-solution.svg",
+        "solutionImageAlt": "큰 원과 두 반원호, 직선 m=1/5: 5개, 반지름: C 5, S₁ 2, S₂ 2; 접선과 끝점 중복 경계를 구분한 도형.",
+        "solutionImageSize": "medium",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "sourceQid": 19,
+        "slot": "B3",
+        "purposeGroup": "B",
+        "meta": {
+          "rpmL1": "도형의 방정식",
+          "rpmL2": "원의 방정식",
+          "rpmL3": "원과 직선",
+          "rpmL4": "교점 개수",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmPrimaryRecordId": "H1-RPM-219",
+          "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+          "secondaryConceptKeys": [],
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "crossConceptRegistryRef": null,
+          "conditionRegistryRef": null,
+          "sourceKind": "generated",
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 4,
+          "level": "상",
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-03",
+          "subUnitKey": "H22-C2-03-INTERSECTION"
+        },
+        "metaFinalSha256": "cf885f6b70e7cfe7adc9b130bc97bada3c50ffa0bfa67d377466f42dece0b59b",
+        "metaReviewEvidence": {
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q19-B3.json",
+          "sha256": "17f558f96e188d5c4b27a56ac095f87e762afe94dc560e795ece39bcd3d4f1d1",
+          "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+          "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q17_Q23_63",
+          "scopeUids": [
+            "ALITE-PALMA25-2MID-Q19-B3"
+          ],
+          "approvalReceiptPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json",
+          "approvalReceiptSha256": "38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d",
+          "approvalReceiptGitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+          "approvedPackagePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q19_PACKAGE.json",
+          "approvedPackageSha256": "4fe6a3e4a884682c5b8e02258d426fa22b5cbf786778cf7ae4591840c6ef501f",
+          "approvedPackageGitBlobSha1": "4a4636fe6f7412520b9752b82ebef14ea2f4fd3a",
+          "approvedSourceSnapshot": {
+            "path": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+            "gitBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76"
+          },
+          "currentSource": {
+            "path": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+            "gitBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e"
+          },
+          "uid": "ALITE-PALMA25-2MID-Q19-B3"
+        },
+        "metaReviewEvidenceSha256": "17f558f96e188d5c4b27a56ac095f87e762afe94dc560e795ece39bcd3d4f1d1",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원과 직선",
+        "rpmL4": "교점 개수",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmPrimaryRecordId": "H1-RPM-219",
+        "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "crossConceptRegistryRef": null,
+        "conditionRegistryRef": null,
+        "sourceKind": "generated",
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "level": "상",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "subUnitKey": "H22-C2-03-INTERSECTION"
+      },
+      "metaFinalSha256": "cf885f6b70e7cfe7adc9b130bc97bada3c50ffa0bfa67d377466f42dece0b59b",
+      "metaReviewEvidence": {
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q19-B3.json",
+        "sha256": "17f558f96e188d5c4b27a56ac095f87e762afe94dc560e795ece39bcd3d4f1d1",
+        "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+        "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q17_Q23_63",
+        "scopeUids": [
+          "ALITE-PALMA25-2MID-Q19-B3"
+        ],
+        "approvalReceiptPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json",
+        "approvalReceiptSha256": "38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d",
+        "approvalReceiptGitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+        "approvedPackagePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q19_PACKAGE.json",
+        "approvedPackageSha256": "4fe6a3e4a884682c5b8e02258d426fa22b5cbf786778cf7ae4591840c6ef501f",
+        "approvedPackageGitBlobSha1": "4a4636fe6f7412520b9752b82ebef14ea2f4fd3a",
+        "approvedSourceSnapshot": {
+          "path": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+          "gitBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76"
+        },
+        "currentSource": {
+          "path": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+          "gitBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e"
+        },
+        "uid": "ALITE-PALMA25-2MID-Q19-B3"
+      },
+      "metaReviewEvidenceSha256": "17f558f96e188d5c4b27a56ac095f87e762afe94dc560e795ece39bcd3d4f1d1",
+      "sourceShardGitSha": "8a4221bbc40a5cde08330b8afc07d65db1feef2a"
+    }
+  ]
+}

@@ -1,3 +1,8 @@
+## CURRENT HARD — 승인 프로덕션에서 학생 조회 데이터 자동 생성·출시 결속 (2026-10-10 사용자 직접 지시)
+- 승인된 Generated 프로덕션 문항과 학생 사용 가능 문항을 별도 수동 등록 상태로 관리하지 않는다. 문항 프로덕션 파일과 UID별 승인 기록이 authority이며, 학생 검색 index/Consumer는 여기서 자동 생성하는 조회 데이터다. 승인 문항을 다시 승인하거나 `NOT_REGISTERED` 보고만 남기고 종료하지 않는다.
+- 실행 정본: `docs/architecture/Approved_Generated_Source_Derived_Student_Projection_RELEASE_CURRENT_v1.md`. 지원되는 QID9 생산 형식은 main 출시 빌드에서 자동 projection 생성 → 승인 UID 누락 0·Source/Meta/asset 결속 검증 → 실제 Chrome·runtime 검사 → 검증된 사이트 배포를 모두 닫는다. 미지원 승인 형식을 조용히 누락하지 말고 해당 compiler를 보강한다.
+- Git 병합과 학생 사이트 배포를 구분한다. 승인 파일만 main에 들어갔다는 이유로 완료하지 않으며, 실패한 빌드는 기존 정상 사이트를 유지한다. 정확한 main SHA, 실제 배포 run, 학생 조회·선택·출력 evidence가 있어야 출시 완료다. 조회 파일을 수동으로 수정해 승인 authority와 분리하거나 실패 gate를 약화하여 통과시키지 않는다.
+
 ## CURRENT HARD — 다음 학교부터 ALIVE CREATE 중 해설 SVG 동시 제작 (2026-10-10 원장 지시)
 - **적용: 팔마고 다음에 신규 착수하는 모든 학교 시험지의 ALIVE Generated 생산**(QID9/LITE 의미확장 공통). 제작자/작업자는 학교 작업 최초 진입에 기존 `.codex/skills/apmath-visual-upgrade/SKILL.md`, GPT Visual Contract, `도형추출.md`, 도형의방정식 해설 SVG 규정, **사용할 renderer schema/지원범위**를 필독하고 read receipt를 남긴다.
 - **문항·발문·해설 작성 중** 문제용 시각정보와 해설용 SVG를 각각 결정하고, SVG 필요 시 같은 원본 qid의 CREATE closure 안에서 기존 엔진으로 사실 동결→spec→실파일 제작→좌표/semantic QA→UID/asset 결속을 완료한다. 도형의 방정식 H22-C2-01~04는 시각화 기본 필수, 예외는 수학적으로 좁게 기록. SVG 누락인데 TEXT_ONLY라고 정상완료 금지.

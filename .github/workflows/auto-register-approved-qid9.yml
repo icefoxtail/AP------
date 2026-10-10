@@ -5,6 +5,9 @@ on:
     paths:
       - 'alive/06_EXECUTION/H1_SCHOOL_EXPANSION/**/GPT_QID9_EXAM_MANIFEST.json'
       - 'alive/06_EXECUTION/H1_SCHOOL_EXPANSION/**/GPT_QID9_Q*_PACKAGE.json'
+      - 'alive/06_EXECUTION/H1_SCHOOL_EXPANSION/**/GPT_QID9_*_USER_DIRECTED_APPROVAL_*.json'
+      - 'archive/analysis/palma-mock-builder-20261010/**'
+      - 'archive/assets/generated-lite/ALITE-PALMA25-2MID-Q*-*.svg'
       - 'archive/tools/generated-meta/auto-register-approved-qid9.mjs'
       - 'tools/check-generated-bank-browser.cjs'
       - 'archive/generated/lite/v1/2022/H1/**/extension-l4/**'
@@ -22,7 +25,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: approved-qid9-auto-register-main
@@ -37,7 +40,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: true
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -46,7 +49,7 @@ jobs:
       - name: Validate complete approved Meta and student Consumer
         run: |
           node archive/tools/generated-meta-retention-gate.cjs
-          node --test tests/generated-meta-retention.test.cjs tests/archive2-generated-bank-registration.test.js tests/problem-bank-meta.test.cjs tests/generated-meta-backfill.test.cjs
+          node --test archive/tools/generated-meta/register-approved-generated-meta.test.mjs archive/tools/generated-meta/auto-register-approved-qid9.test.mjs tests/generated-meta-retention.test.cjs tests/archive2-generated-bank-registration.test.js tests/problem-bank-meta.test.cjs tests/generated-meta-backfill.test.cjs
       - name: Install real Chrome
         uses: browser-actions/setup-chrome@v1
         id: chrome
@@ -56,15 +59,3 @@ jobs:
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
         run: node tools/check-generated-bank-browser.cjs
-      - name: Commit generated artifacts without touching unrelated files
-        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
-        run: |
-          git add -A -- archive/generated/lite/v1/2022/H1 archive/data/generated-lite-consumer/v1/index.json archive/data/generated-lite-consumer/v1/shards alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE
-          if git diff --cached --quiet; then
-            echo "No new approval to publish"
-            exit 0
-          fi
-          git fetch origin main
-          test "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" || { echo "Main moved; abort stale write"; exit 1; }
-          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m "chore(alive): auto-register approved Generated QID9 and Meta"
-          git push origin HEAD:main

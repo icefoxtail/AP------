@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "PALMA_Q17_Q20_VISUAL_PREFLIGHT_V1",
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:fd3c36a833a08b4970579e85d296821b1ba175b64982c497f6eadc98bae948b1",
+        "gitBlobSha": "462f7f23ae4468b58c002ee548465aff202251ed"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "sha256:b6f550df83f474d16431d980a0ad80c1a13b0f222e58b1109343c35c42c64f18",
+        "solutionExcerpt": "PA=PA'",
+        "observation": "The reflection solution states PA=PA′ and uses the straight segment A′B as the lower bound; its solution SVG depicts the reflected point and decisive line."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "qid": 9,
+        "solutionSha256": "sha256:25421d8ac704b7506d2f4053b6e916238197d77033f2c87f720914fed2919c7b",
+        "solutionExcerpt": "AG:GM=2:1",
+        "observation": "The centroid visual binds the order A–G–M and the 2:1 division to actual coordinates, making the coordinate recovery step visible."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "qid": 17,
+        "solutionSha256": "sha256:2f4d68be9b52d86333f857cc942bf73dcae93629b30194e17d4670bef3ca6c76",
+        "solutionExcerpt": "공통점을 지나는 직선",
+        "observation": "The common-chord solution ties the circle intersection relation to an actual line primitive rather than relying on the equation label alone."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+        "solutionExcerpt": "완전제곱식",
+        "observation": "The circle center and radius from standard form are shown at their actual coordinate location with a radius segment; the existing PNG is clear and readable."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 4,
+        "solutionSha256": "sha256:acdb76bc6092e60c215baaf235516b6fd1a7777ffc9d20cb1f134a95a7043cdf",
+        "solutionExcerpt": "두 접선은",
+        "observation": "Two parallel tangent lines and their symmetric y-intercepts are decisive; the SVG bytes were inspected for the circle/tangent/center structure."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "solutionExcerpt": "(-3,1)",
+        "observation": "The translation then origin-reflection solution is shown as three actual circle centers in sequence; the screenshot is legible overall, with a few subscript glyphs boxed."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 12,
+        "solutionSha256": "sha256:a555355216573e25a87a2b09d6164a6f02b0d688bc01e0bacac1eca42dead171",
+        "solutionExcerpt": "|a-4|=a",
+        "observation": "The tangency conditions are tied to both coordinate axes and the moved circle; the source SVG asset and solution bytes were read."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR"
+  }
+}

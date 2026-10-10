@@ -1,0 +1,114 @@
+name: Archive Pages Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build and verify the student release
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Create release evidence context
+        env:
+          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+        run: |
+          mkdir -p "$RELEASE_EVIDENCE_DIR"
+          {
+            printf 'source_sha='; git rev-parse HEAD
+            printf 'event=%s\n' "$GITHUB_EVENT_NAME"
+            printf 'run_id=%s\n' "$GITHUB_RUN_ID"
+            printf 'run_attempt=%s\n' "$GITHUB_RUN_ATTEMPT"
+            printf 'workflow_ref=%s\n' "$GITHUB_WORKFLOW_REF"
+            printf 'workflow_run_url=%s/%s/actions/runs/%s\n' "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID"
+          } > "$RELEASE_EVIDENCE_DIR/context.txt"
+
+      - name: Compile student projection from approved production sources
+        env:
+          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+        run: node archive/tools/generated-meta/auto-register-approved-qid9.mjs --write 2>&1 | tee "$RELEASE_EVIDENCE_DIR/projection-write.log"
+
+      - name: Check approved UID completeness and projection parity
+        env:
+          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+        run: node archive/tools/generated-meta/auto-register-approved-qid9.mjs --check 2>&1 | tee "$RELEASE_EVIDENCE_DIR/projection-check.log"
+
+      - name: Enforce generated Meta retention
+        env:
+          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+        run: node archive/tools/generated-meta-retention-gate.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/meta-retention.log"
+
+      - name: Verify registration and generated mock selection contracts
+        env:
+          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+        run: node --test archive/tools/generated-meta/register-approved-generated-meta.test.mjs archive/tools/generated-meta/auto-register-approved-qid9.test.mjs tests/generated-meta-retention.test.cjs tests/archive2-generated-bank-registration.test.js tests/archive2-generated-mock-selection.test.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/selection-tests.log"
+
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+
+      - name: Verify actual generated-bank lookup, preview, and print
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+        run: node tools/check-generated-bank-browser.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/generated-bank-chrome.log"
+
+      - name: Verify complete generated mock selection, preview, print, answer, and solution flow
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+        run: node tools/check-generated-mock-qa.cjs --out-dir "$RELEASE_EVIDENCE_DIR/mock-qa" 2>&1 | tee "$RELEASE_EVIDENCE_DIR/generated-mock-qa.log"
+
+      - name: Verify Archive 2.0 runtime contract
+        env:
+          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+        run: node tools/check-archive2-runtime.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/archive2-runtime.log"
+
+      - name: Upload release diagnostics, including failed runs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-pages-release-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/archive-pages-release-evidence/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Upload the verified student site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+  deploy:
+    name: Deploy the verified student release
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy Pages artifact
+        id: deployment
+        uses: actions/deploy-pages@v4

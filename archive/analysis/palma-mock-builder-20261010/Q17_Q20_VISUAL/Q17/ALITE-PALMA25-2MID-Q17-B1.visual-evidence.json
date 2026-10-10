@@ -1,0 +1,718 @@
+{
+  "schemaVersion": "PALMA_Q17_VISUAL_PHYSICAL_EVIDENCE_V1",
+  "uid": "ALITE-PALMA25-2MID-Q17-B1",
+  "sourceQid": 17,
+  "need": "BENEFICIAL",
+  "problemNeed": "EXEMPT",
+  "assetAction": "NEW_SVG",
+  "sourcePackagePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_PACKAGE.json",
+  "approvedSourcePackageSha256": "38A8C50A999B48BAE2F7C75DF1116E87430606B21B1D89D2278AE20136169BA9",
+  "approvedSourcePackageGitBlobSha1": "e06bd2f8373874aef7765f2cfe9da4dd496e3354",
+  "currentWorktreePackageRawSha256": "209F680690A967BC06009C0FF5FFAAD5217E55DADBD8B01D505EBA234E9861F6",
+  "currentWorktreePackageRawGitBlobSha1": "0bb7e2bbeedbdf25f711e8f5acf66a729090c8b7",
+  "currentWorktreePackageCleanGitBlobSha1": "e06bd2f8373874aef7765f2cfe9da4dd496e3354",
+  "worktreePackageRawEol": "CRLF; canonical clean blob matches approved receipt",
+  "sourceExamBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "approvalReceiptPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json",
+  "approvalReceiptSha256": "38BEFC817FB0FC07659BA35F13709C54F07C12715D7680975A3955DAE39C2B2D",
+  "approvalReceiptGitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+  "sourceProblemSha256": "sha256:6d418bce1de96b94dbc138463b2651b7d9ea135ecbb666d9fda53c5e32fe8b65",
+  "sourceSolutionSha256": "sha256:8ebcfa689fc65a2f1e86a99d673042fbd2f2e8f2a4455462b3ea097009b1885b",
+  "expectedFactsFreezePath": "archive/analysis/palma-mock-builder-20261010/Q17_Q20_VISUAL/Q17/Q17.expected-facts-freeze.json",
+  "expectedFactsFreezeSha256": "8604F77465A87031711275A4E5C55A4A92765B1D9E3513931695008715861CFE",
+  "expectedFactsFreezeGitBlobSha1": "9872c81ed91939588623db93d81b58e8864e5e29",
+  "preexistingExpectedFactsFreezePath": "archive/analysis/palma-mock-builder-20261010/Q17_Q20_VISUAL/expected-facts-freeze.json",
+  "preexistingExpectedFactsFreezeSha256": "615025738DBDB283BFE54B00BCB853EBFCBA2B21127291B145B93D472C524CA3",
+  "sourceConditionCoverage": [
+    "Source center, OA/OB endpoints and circle radius",
+    "P arc/sector locus or fixed point and allowed radial interval",
+    "reflections across both source boundary rays",
+    "Q/R intersections lie on their named boundary rays",
+    "Q and R are strict interior points in P1-Q-R-P2 order",
+    "folded path lower bound and equality realization"
+  ],
+  "expectedFactCompletenessStatus": "PASS",
+  "uncoveredCriticalConditions": [],
+  "decisiveRelationCovered": true,
+  "coordinateEvidence": {
+    "rationale": "Take source OA/OB radius from the approved stem; choose a source-valid equality point P at the minor-arc midpoint with the minimizing radius, reflect P across OB and OA, then calculate Q and R as exact boundary intersections.",
+    "origin": [
+      0,
+      0
+    ],
+    "xAxisDirection": [
+      1,
+      0
+    ],
+    "unitScale": 1,
+    "pointCoordinates": {
+      "O": [
+        0.0,
+        0.0
+      ],
+      "A": [
+        4.0,
+        0.0
+      ],
+      "B": [
+        2.8284271247461903,
+        2.8284271247461903
+      ],
+      "P": [
+        3.695518130045147,
+        1.5307337294603591
+      ],
+      "P1": [
+        1.5307337294603593,
+        3.695518130045147
+      ],
+      "P2": [
+        3.695518130045147,
+        -1.5307337294603591
+      ],
+      "Q": [
+        2.164784400584788,
+        2.164784400584788
+      ],
+      "R": [
+        3.061467458920718,
+        0.0
+      ]
+    },
+    "constructionConditions": {
+      "OA=OB=sourceRadius": 4.0,
+      "OP=minimizingRadius": 4.0,
+      "angle_AOB_deg": 45,
+      "P_direction_deg": 22.5,
+      "P1_direction_deg": 67.5,
+      "P2_direction_deg": -22.5,
+      "Q_boundary": "OB",
+      "R_boundary": "OA",
+      "pathOrder": "P1-Q-R-P2"
+    },
+    "residuals": {
+      "|OA|-sourceRadius": 0.0,
+      "|OB|-sourceRadius": 0.0,
+      "|OP|-minimizingRadius": 0.0,
+      "OB_reflection_parallel": 0.0,
+      "OB_reflection_perpendicular": 0.0,
+      "OA_reflection_x": 0.0,
+      "OA_reflection_perpendicular": 0.0,
+      "Q_on_OB": 0.0,
+      "Q_positive_on_OB": 12.245869835682875,
+      "R_on_OA": 0.0,
+      "R_positive_on_OA": 3.061467458920718,
+      "Q_collinear": -4.440892098500626e-16,
+      "R_collinear": 8.881784197001252e-16,
+      "Q_parameter": 0.2928932188134524,
+      "R_parameter": 0.7071067811865475
+    },
+    "degeneracyChecks": {
+      "radiusPositive": true,
+      "outerRadiusAtLeastMinimizingRadius": true,
+      "angleStrictlyBetweenZeroAndNinety": true,
+      "chordNonzero": true,
+      "rayIntersectionsNonparallel": true,
+      "strictInteriorOrder": true
+    }
+  },
+  "expectedFacts": [
+    {
+      "fact": "A on OA at source radius",
+      "role": "GIVEN",
+      "point": [
+        4.0,
+        0.0
+      ],
+      "expectedRadius": 4.0
+    },
+    {
+      "fact": "B on OB at source radius",
+      "role": "GIVEN",
+      "point": [
+        2.8284271247461903,
+        2.8284271247461903
+      ],
+      "expectedRadius": 4.0
+    },
+    {
+      "fact": "selected equality point P",
+      "role": "DERIVED_INTERMEDIATE",
+      "point": [
+        3.695518130045147,
+        1.5307337294603591
+      ],
+      "expectedRadius": 4.0
+    },
+    {
+      "fact": "reflection P1 across OB",
+      "role": "DERIVED_INTERMEDIATE",
+      "point": [
+        1.5307337294603593,
+        3.695518130045147
+      ]
+    },
+    {
+      "fact": "reflection P2 across OA",
+      "role": "DERIVED_INTERMEDIATE",
+      "point": [
+        3.695518130045147,
+        -1.5307337294603591
+      ]
+    },
+    {
+      "fact": "Q intersection on OB",
+      "role": "DERIVED_INTERMEDIATE",
+      "point": [
+        2.164784400584788,
+        2.164784400584788
+      ]
+    },
+    {
+      "fact": "R intersection on OA",
+      "role": "DERIVED_INTERMEDIATE",
+      "point": [
+        3.061467458920718,
+        0.0
+      ]
+    },
+    {
+      "fact": "minor angle wedge from OA to OB",
+      "role": "DERIVED_INTERMEDIATE",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "rayOA": [
+        4.0,
+        0.0
+      ],
+      "rayOB": [
+        2.8284271247461903,
+        2.8284271247461903
+      ],
+      "radians": 0.7853981633974483
+    },
+    {
+      "fact": "P1-Q-R-P2 collinear and ordered",
+      "role": "CONCLUSION",
+      "parameters": [
+        0.2928932188134524,
+        0.7071067811865475
+      ]
+    },
+    {
+      "fact": "folded chord length",
+      "role": "CONCLUSION",
+      "expected": 5.656854249492381,
+      "observedFromConstruction": 5.656854249492381
+    }
+  ],
+  "pythonInputs": {
+    "minimizingRadius": 4.0,
+    "sourceOuterRadius": 4.0,
+    "thetaDegrees": 45,
+    "formula": "P₁P₂=2·OP·sin(θ)"
+  },
+  "pythonCalculatedOutputs": {
+    "minimumLength": 5.656854249492381,
+    "chordLength": 5.656854249492381,
+    "Q": [
+      2.164784400584788,
+      2.164784400584788
+    ],
+    "R": [
+      3.061467458920718,
+      0.0
+    ]
+  },
+  "coordinateModel": {
+    "origin": [
+      0,
+      0
+    ],
+    "xAxis": "OA",
+    "scale": "equal x/y",
+    "xRange": [
+      -6.48,
+      6.48
+    ],
+    "yRange": [
+      -6.48,
+      6.48
+    ],
+    "screenTransform": "screenX=32+(x-xLow)*(width-64)/(xHigh-xLow); screenY=height-32-(y-yLow)*(height-64)/(yHigh-yLow)"
+  },
+  "actualSvgPrimitives": {
+    "points": {
+      "A": [
+        4.000000006451613,
+        0.0
+      ],
+      "B": [
+        2.8284271374193555,
+        2.8284271374193555
+      ],
+      "P": [
+        3.695518132258064,
+        1.530733740967742
+      ],
+      "P1": [
+        1.530733740967742,
+        3.695518132258064
+      ],
+      "P2": [
+        3.695518132258064,
+        -1.530733740967742
+      ],
+      "Q": [
+        2.1647843912903237,
+        2.1647843912903237
+      ],
+      "R": [
+        3.0614674558064525,
+        0.0
+      ]
+    },
+    "circles": [
+      {
+        "center": [
+          0.0,
+          0.0
+        ],
+        "radius": 4.0000000064516135
+      }
+    ],
+    "segments": [
+      {
+        "from": [
+          0.0,
+          0.0
+        ],
+        "to": [
+          4.000000006451613,
+          0.0
+        ],
+        "class": "radius"
+      },
+      {
+        "from": [
+          0.0,
+          0.0
+        ],
+        "to": [
+          2.8284271374193555,
+          2.8284271374193555
+        ],
+        "class": "radius"
+      },
+      {
+        "from": [
+          1.530733740967742,
+          3.695518132258064
+        ],
+        "to": [
+          3.695518132258064,
+          -1.530733740967742
+        ],
+        "class": "shape"
+      },
+      {
+        "from": [
+          3.695518132258064,
+          1.530733740967742
+        ],
+        "to": [
+          2.1647843912903237,
+          2.1647843912903237
+        ],
+        "class": "guide"
+      },
+      {
+        "from": [
+          3.695518132258064,
+          1.530733740967742
+        ],
+        "to": [
+          3.0614674558064525,
+          0.0
+        ],
+        "class": "guide"
+      }
+    ],
+    "arcs": [
+      {
+        "sampleCount": 33,
+        "first": [
+          4.000000006451613,
+          0.0
+        ],
+        "last": [
+          2.8284271374193555,
+          2.8284271374193555
+        ]
+      },
+      {
+        "sampleCount": 33,
+        "first": [
+          1.120000012258065,
+          0.0
+        ],
+        "last": [
+          0.7919596016129038,
+          0.7919596016129038
+        ]
+      }
+    ],
+    "texts": [
+      "OA",
+      "OB",
+      "최소 4√2",
+      "A",
+      "B",
+      "P",
+      "P₁",
+      "P₂",
+      "Q",
+      "R",
+      "O",
+      "∠AOB=45°"
+    ]
+  },
+  "observedFacts": {
+    "pointCoordinates": {
+      "A": [
+        4.000000006451613,
+        0.0
+      ],
+      "B": [
+        2.8284271374193555,
+        2.8284271374193555
+      ],
+      "P": [
+        3.695518132258064,
+        1.530733740967742
+      ],
+      "P1": [
+        1.530733740967742,
+        3.695518132258064
+      ],
+      "P2": [
+        3.695518132258064,
+        -1.530733740967742
+      ],
+      "Q": [
+        2.1647843912903237,
+        2.1647843912903237
+      ],
+      "R": [
+        3.0614674558064525,
+        0.0
+      ]
+    },
+    "circleRadii": [
+      4.0000000064516135
+    ],
+    "foldedChordLength": 5.656854258611446,
+    "labelOwnerBindings": [
+      {
+        "text": "A",
+        "expectedOwner": "A",
+        "observedNearestPoint": "A",
+        "anchorDistancePx": 8.48528137423857,
+        "result": "PASS"
+      },
+      {
+        "text": "B",
+        "expectedOwner": "B",
+        "observedNearestPoint": "B",
+        "anchorDistancePx": 8.48528137423857,
+        "result": "PASS"
+      },
+      {
+        "text": "P",
+        "expectedOwner": "P",
+        "observedNearestPoint": "P",
+        "anchorDistancePx": 8.48528137423861,
+        "result": "PASS"
+      },
+      {
+        "text": "P₁",
+        "expectedOwner": "P1",
+        "observedNearestPoint": "P1",
+        "anchorDistancePx": 8.48528137423863,
+        "result": "PASS"
+      },
+      {
+        "text": "P₂",
+        "expectedOwner": "P2",
+        "observedNearestPoint": "P2",
+        "anchorDistancePx": 8.48528137423861,
+        "result": "PASS"
+      },
+      {
+        "text": "Q",
+        "expectedOwner": "Q",
+        "observedNearestPoint": "Q",
+        "anchorDistancePx": 8.48528137423855,
+        "result": "PASS"
+      },
+      {
+        "text": "R",
+        "expectedOwner": "R",
+        "observedNearestPoint": "R",
+        "anchorDistancePx": 8.48528137423857,
+        "result": "PASS"
+      },
+      {
+        "text": "O",
+        "expectedOwner": "O",
+        "observedNearestPoint": "O",
+        "anchorDistancePx": 8.48528137423857,
+        "result": "PASS"
+      }
+    ],
+    "circleScaleEqual": true
+  },
+  "deltaTolerance": {
+    "coordinates": 1e-06,
+    "radius": 1e-06,
+    "chordLength": 1e-06
+  },
+  "labelOwnerBindings": [
+    {
+      "text": "A",
+      "expectedOwner": "A",
+      "observedNearestPoint": "A",
+      "anchorDistancePx": 8.48528137423857,
+      "result": "PASS"
+    },
+    {
+      "text": "B",
+      "expectedOwner": "B",
+      "observedNearestPoint": "B",
+      "anchorDistancePx": 8.48528137423857,
+      "result": "PASS"
+    },
+    {
+      "text": "P",
+      "expectedOwner": "P",
+      "observedNearestPoint": "P",
+      "anchorDistancePx": 8.48528137423861,
+      "result": "PASS"
+    },
+    {
+      "text": "P₁",
+      "expectedOwner": "P1",
+      "observedNearestPoint": "P1",
+      "anchorDistancePx": 8.48528137423863,
+      "result": "PASS"
+    },
+    {
+      "text": "P₂",
+      "expectedOwner": "P2",
+      "observedNearestPoint": "P2",
+      "anchorDistancePx": 8.48528137423861,
+      "result": "PASS"
+    },
+    {
+      "text": "Q",
+      "expectedOwner": "Q",
+      "observedNearestPoint": "Q",
+      "anchorDistancePx": 8.48528137423855,
+      "result": "PASS"
+    },
+    {
+      "text": "R",
+      "expectedOwner": "R",
+      "observedNearestPoint": "R",
+      "anchorDistancePx": 8.48528137423857,
+      "result": "PASS"
+    },
+    {
+      "text": "O",
+      "expectedOwner": "O",
+      "observedNearestPoint": "O",
+      "anchorDistancePx": 8.48528137423857,
+      "result": "PASS"
+    }
+  ],
+  "sourceSemanticIdentity": {
+    "applicable": true,
+    "checks": [
+      {
+        "semanticRole": "source center",
+        "sourceLabel": "O",
+        "artifactLabel": "O",
+        "result": "PASS"
+      },
+      {
+        "semanticRole": "source ray point",
+        "sourceLabel": "A",
+        "artifactLabel": "A",
+        "result": "PASS"
+      },
+      {
+        "semanticRole": "source ray point",
+        "sourceLabel": "B",
+        "artifactLabel": "B",
+        "result": "PASS"
+      },
+      {
+        "semanticRole": "source point",
+        "sourceLabel": "P",
+        "artifactLabel": "P",
+        "result": "PASS"
+      },
+      {
+        "semanticRole": "reflected point",
+        "sourceLabel": "P₁",
+        "artifactLabel": "P₁",
+        "result": "PASS"
+      },
+      {
+        "semanticRole": "reflected point",
+        "sourceLabel": "P₂",
+        "artifactLabel": "P₂",
+        "result": "PASS"
+      },
+      {
+        "semanticRole": "source boundary intersection",
+        "sourceLabel": "Q",
+        "artifactLabel": "Q",
+        "result": "PASS"
+      },
+      {
+        "semanticRole": "source boundary intersection",
+        "sourceLabel": "R",
+        "artifactLabel": "R",
+        "result": "PASS"
+      }
+    ]
+  },
+  "factVisualizations": [
+    {
+      "fact": "OA/OB source boundaries",
+      "role": "GIVEN",
+      "encoding": "radius segments and source circle"
+    },
+    {
+      "fact": "P₁/P₂ reflections and Q/R intersections",
+      "role": "DERIVED_INTERMEDIATE",
+      "encoding": "labeled points, dashed unfolded legs, solid P₁P₂ chord"
+    },
+    {
+      "fact": "straightened minimum path",
+      "role": "CONCLUSION",
+      "encoding": "P₁-Q-R-P₂ collinear ordered path"
+    }
+  ],
+  "xmlParse": "PASS",
+  "styleFloorStatus": "STATIC_READY_RENDER_PENDING",
+  "styleVersion": "visual_renderer_0.5.2-circle-geometry-label-layout",
+  "semanticGeometryPreserved": true,
+  "visualSpecPath": "archive/analysis/palma-mock-builder-20261010/Q17_Q20_VISUAL/Q17/ALITE-PALMA25-2MID-Q17-B1.visual-spec.json",
+  "visualSpecSha256": "55FCACB4207933CF4EB208C2423D45034C3EEB03F6E113C2BF51AE2D76C5CA79",
+  "rendererReportPath": "archive/analysis/palma-mock-builder-20261010/Q17_Q20_VISUAL/Q17/ALITE-PALMA25-2MID-Q17-B1.render-report.json",
+  "rendererReportSha256": "17538FDFB4570D977FDA6C5BADE19914046217DA514D99CF1A1E8E22B25E039B",
+  "sourceSvgPath": "archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q17-B1-solution.svg",
+  "sourceSvgSha256": "5E2D1C9D8A64214250E99C4F3795C5EB23FA47DF259F449F6ADE4FE436E7A92A",
+  "sourceSvgGitBlobSha1": "1d857035e1145ca73fd1aa991803aabda0eea849",
+  "browserRenderEvidence": {
+    "status": "RENDER_PENDING",
+    "reason": "Actual HTTP Archive student solution render follows projection; no local file URL or synthetic browser evidence was used."
+  },
+  "consumerReference": "PENDING_STUDENT_PROJECTION",
+  "newVisualInformation": [
+    {
+      "fact": "A on OA at source radius",
+      "role": "GIVEN",
+      "point": [
+        4.0,
+        0.0
+      ],
+      "expectedRadius": 4.0
+    },
+    {
+      "fact": "B on OB at source radius",
+      "role": "GIVEN",
+      "point": [
+        2.8284271247461903,
+        2.8284271247461903
+      ],
+      "expectedRadius": 4.0
+    },
+    {
+      "fact": "selected equality point P",
+      "role": "DERIVED_INTERMEDIATE",
+      "point": [
+        3.695518130045147,
+        1.5307337294603591
+      ],
+      "expectedRadius": 4.0
+    },
+    {
+      "fact": "reflection P1 across OB",
+      "role": "DERIVED_INTERMEDIATE",
+      "point": [
+        1.5307337294603593,
+        3.695518130045147
+      ]
+    },
+    {
+      "fact": "reflection P2 across OA",
+      "role": "DERIVED_INTERMEDIATE",
+      "point": [
+        3.695518130045147,
+        -1.5307337294603591
+      ]
+    },
+    {
+      "fact": "Q intersection on OB",
+      "role": "DERIVED_INTERMEDIATE",
+      "point": [
+        2.164784400584788,
+        2.164784400584788
+      ]
+    },
+    {
+      "fact": "R intersection on OA",
+      "role": "DERIVED_INTERMEDIATE",
+      "point": [
+        3.061467458920718,
+        0.0
+      ]
+    },
+    {
+      "fact": "minor angle wedge from OA to OB",
+      "role": "DERIVED_INTERMEDIATE",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "rayOA": [
+        4.0,
+        0.0
+      ],
+      "rayOB": [
+        2.8284271247461903,
+        2.8284271247461903
+      ],
+      "radians": 0.7853981633974483
+    },
+    {
+      "fact": "P1-Q-R-P2 collinear and ordered",
+      "role": "CONCLUSION",
+      "parameters": [
+        0.2928932188134524,
+        0.7071067811865475
+      ]
+    },
+    {
+      "fact": "folded chord length",
+      "role": "CONCLUSION",
+      "expected": 5.656854249492381,
+      "observedFromConstruction": 5.656854249492381
+    }
+  ]
+}
