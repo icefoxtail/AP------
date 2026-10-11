@@ -42,14 +42,19 @@
     "independentQualityReview": "NOT_RUN",
     "browserEngineModes": "NOT_RUN",
     "releaseStatus": "NOT_AUTHORIZED",
-    "nextSourceQid": 10
+    "nextSourceQid": 10,
+    "selfReview": "7_KEEP_2_REVISED"
   },
   "selfReviewLedger": [
     {
       "uid": "ALITE-SUNCHEON25-2FINAL-Q09-A1",
-      "candidateSnapshot": "SUN-Q09-A1-v1",
-      "decision": "KEEP",
-      "distractorCoverage": "4/4"
+      "candidateSnapshot": "SUN-Q09-A1-v2",
+      "decision": "REVISED",
+      "distractorCoverage": "4/4",
+      "changedFields": [
+        "meta.conditionKeys",
+        "meta.conditionSemantics"
+      ]
     },
     {
       "uid": "ALITE-SUNCHEON25-2FINAL-Q09-A2",
@@ -83,9 +88,12 @@
     },
     {
       "uid": "ALITE-SUNCHEON25-2FINAL-Q09-C1",
-      "candidateSnapshot": "SUN-Q09-C1-v1",
-      "decision": "KEEP",
-      "distractorCoverage": "4/4"
+      "candidateSnapshot": "SUN-Q09-C1-v2",
+      "decision": "REVISED",
+      "distractorCoverage": "4/4",
+      "changedFields": [
+        "review.distractors.⑤.derivation"
+      ]
     },
     {
       "uid": "ALITE-SUNCHEON25-2FINAL-Q09-C2",
@@ -189,20 +197,24 @@
         "difficultyReason": "조각별 단사·전사 조건과 치역 경계 판정",
         "crossConceptKeys": [],
         "crossConceptReasons": [],
-        "conditionKeys": [],
-        "conditionSemantics": [],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "conditionSemantics": [
+          "두 매개변수가 정수이므로 양의 계수 최소값이 정해짐"
+        ],
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "integrationPattern": "두 치역 계산 → 겹침·공백 제거 → 값 확정",
         "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
       },
       "review": {
-        "reverseStemDisposition": "KEEP",
-        "reverseStemFinding": "실수 전체의 역함수 존재 조건이 핵심",
+        "reverseStemDisposition": "REVISED",
+        "reverseStemFinding": "명시된 정수 조건을 canonical Condition 키에 직접 연결",
         "primaryL3Necessity": "각 조각에서 일대일이고 치역이 실수 전체를 겹침 없이 덮는 판정",
         "studentMentalPath": "단조성 → 치역 → 경계 → 목표값",
         "finalStudentStem": "두 정수 $a$, $b$에 대하여 $f(x)=\\begin{cases}a(x-1)^2+b&(x<1)\\\\-x+6&(x\\ge1)\\end{cases}$가 실수 전체에서 정의된 역함수를 갖는다. $a+b$의 최솟값은?",
-        "finalCandidateSnapshot": "SUN-Q09-A1-v1",
+        "finalCandidateSnapshot": "SUN-Q09-A1-v2",
         "distractors": [
           {
             "choice": "②",
@@ -227,7 +239,7 @@
         ],
         "wrongRouteCoverage": "4/4_AUTHOR_EXPLAINED",
         "answerUniqueness": "AUTHOR_MATH_CHECK",
-        "evidenceFreshness": "CURRENT_CANDIDATE_v1",
+        "evidenceFreshness": "CURRENT_CANDIDATE_v2",
         "problemVisual": {
           "decision": "NO_VISUAL",
           "reason": "함수식과 구간 모두 제시"
@@ -891,12 +903,12 @@
         "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
       },
       "review": {
-        "reverseStemDisposition": "KEEP",
-        "reverseStemFinding": "실수 전체의 역함수 존재 조건이 핵심",
+        "reverseStemDisposition": "REVISED",
+        "reverseStemFinding": "오답 ⑤를 실제 오류 계산으로 재현하는 경로를 추가",
         "primaryL3Necessity": "각 조각에서 일대일이고 치역이 실수 전체를 겹침 없이 덮는 판정",
         "studentMentalPath": "단조성 → 치역 → 경계 → 목표값",
         "finalStudentStem": "두 정수 $a$, $b$에 대하여 $f(x)=\\begin{cases}a(x-2)^2+b&(x<2)\\\\6-\\sqrt{x-2}&(x\\ge2)\\end{cases}$가 실수 전체에서 정의된 역함수를 갖고 $f(0)=18$이다. $f^{-1}(33)$의 값은?",
-        "finalCandidateSnapshot": "SUN-Q09-C1-v1",
+        "finalCandidateSnapshot": "SUN-Q09-C1-v2",
         "distractors": [
           {
             "choice": "①",
@@ -916,12 +928,12 @@
           {
             "choice": "⑤",
             "choiceValue": "$4$",
-            "derivation": "x=4는 왼쪽 식에 넣어도 18이므로 33이 아니다"
+            "derivation": "$(x-2)^2=9$에서 $\\sqrt9=2$로 잘못 계산한 뒤 양의 부호를 택하면 $x-2=2$, $x=4$가 된다. 실제 $\\sqrt9=3$이고 $x<2$의 제한도 확인해야 한다."
           }
         ],
         "wrongRouteCoverage": "4/4_AUTHOR_EXPLAINED",
         "answerUniqueness": "AUTHOR_MATH_CHECK",
-        "evidenceFreshness": "CURRENT_CANDIDATE_v1",
+        "evidenceFreshness": "CURRENT_CANDIDATE_v2",
         "problemVisual": {
           "decision": "NO_VISUAL",
           "reason": "함수식과 구간 모두 제시"
