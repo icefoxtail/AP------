@@ -43,7 +43,77 @@
     "browserEngineModes": "NOT_RUN",
     "releaseStatus": "NOT_AUTHORIZED",
     "nextSourceQid": 10,
-    "selfReview": "7_KEEP_2_REVISED"
+    "selfReview": "7_KEEP_2_REVISED",
+    "gptOpenBookReviewSecondBatch": "CONTENT_REVIEWED_META_PATCHED_BROWSER_NOT_TESTED",
+    "gptOpenBookCorrections": [
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q09-A1",
+        "axis": "learningLevel",
+        "from": "하",
+        "to": "중"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q09-A1",
+        "axis": "crossConceptKeys",
+        "reason": "조각함수의 왼쪽 포물선 가지의 치역 및 단조성 필요"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q09-A2",
+        "axis": "crossConceptKeys",
+        "reason": "조각함수의 왼쪽 포물선 가지의 치역 및 단조성 필요"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q09-A3",
+        "axis": "crossConceptKeys",
+        "reason": "조각함수의 왼쪽 포물선 가지의 치역 및 단조성 필요"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q09-A3",
+        "axis": "solutionImage",
+        "reason": "실제 원격 Git 실파일 경로에 연결; 공개 student asset 경로 별도 후속"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q09-B1",
+        "axis": "crossConceptKeys",
+        "reason": "조각함수의 왼쪽 포물선 가지의 치역 및 단조성 필요"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q09-B1",
+        "axis": "solutionImage",
+        "reason": "실제 원격 Git 실파일 경로에 연결; 공개 student asset 경로 별도 후속"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q09-B2",
+        "axis": "solutionImage",
+        "reason": "실제 원격 Git 실파일 경로에 연결; 공개 student asset 경로 별도 후속"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q09-B3",
+        "axis": "solutionImage",
+        "reason": "실제 원격 Git 실파일 경로에 연결; 공개 student asset 경로 별도 후속"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q09-C1",
+        "axis": "solutionImage",
+        "reason": "실제 원격 Git 실파일 경로에 연결; 공개 student asset 경로 별도 후속"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q09-C2",
+        "axis": "solutionImage",
+        "reason": "실제 원격 Git 실파일 경로에 연결; 공개 student asset 경로 별도 후속"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q09-C3",
+        "axis": "difficultyBucket",
+        "from": 5,
+        "to": 4
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q09-C3",
+        "axis": "solutionImage",
+        "reason": "실제 원격 Git 실파일 경로에 연결; 공개 student asset 경로 별도 후속"
+      }
+    ]
   },
   "selfReviewLedger": [
     {
@@ -153,7 +223,7 @@
       "slot": "A1",
       "purpose": "A",
       "modeCandidate": "STRICT_VARIANT",
-      "level": "하",
+      "level": "중",
       "category": "함수",
       "originalCategory": "역함수의 존재 조건",
       "standardCourse": "공통수학2",
@@ -195,7 +265,10 @@
         "PTTPLBinding": "ACTIVE_CURRENT",
         "difficultyBucket": 2,
         "difficultyReason": "조각별 단사·전사 조건과 치역 경계 판정",
-        "crossConceptKeys": [],
+        "crossConceptKeys": [
+          "CC_QUADRATIC_FUNCTION",
+          "CC_FUNCTION_MONOTONICITY"
+        ],
         "crossConceptReasons": [],
         "conditionKeys": [
           "COND_INTEGER"
@@ -205,8 +278,9 @@
         ],
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
-        "integrationPattern": "두 치역 계산 → 겹침·공백 제거 → 값 확정",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "두 치역 계산 → 겹침·공백 제거 → 값 확정"
       },
       "review": {
         "reverseStemDisposition": "REVISED",
@@ -251,7 +325,11 @@
         },
         "authorMathCheck": "AUTHOR_MATH_BOUNDARY_CHECK",
         "independentQualityReview": "NOT_RUN",
-        "browserRender": "NOT_RUN"
+        "browserRender": "NOT_RUN",
+        "independentLearningLevelBasis": "기계적 A/B/C 등급보다 실제 풀이의 개념결합·분기·검산 단계로 재판정",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -303,7 +381,10 @@
         "PTTPLBinding": "ACTIVE_CURRENT",
         "difficultyBucket": 2,
         "difficultyReason": "조각별 단사·전사 조건과 치역 경계 판정",
-        "crossConceptKeys": [],
+        "crossConceptKeys": [
+          "CC_QUADRATIC_FUNCTION",
+          "CC_FUNCTION_MONOTONICITY"
+        ],
         "crossConceptReasons": [],
         "conditionKeys": [
           "COND_INTEGER"
@@ -313,8 +394,9 @@
         ],
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
-        "integrationPattern": "두 치역 계산 → 겹침·공백 제거 → 값 확정",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "두 치역 계산 → 겹침·공백 제거 → 값 확정"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -359,7 +441,10 @@
         },
         "authorMathCheck": "AUTHOR_MATH_BOUNDARY_CHECK",
         "independentQualityReview": "NOT_RUN",
-        "browserRender": "NOT_RUN"
+        "browserRender": "NOT_RUN",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -413,7 +498,10 @@
         "PTTPLBinding": "ACTIVE_CURRENT",
         "difficultyBucket": 2,
         "difficultyReason": "조각별 단사·전사 조건과 치역 경계 판정",
-        "crossConceptKeys": [],
+        "crossConceptKeys": [
+          "CC_QUADRATIC_FUNCTION",
+          "CC_FUNCTION_MONOTONICITY"
+        ],
         "crossConceptReasons": [],
         "conditionKeys": [
           "COND_INTEGER"
@@ -423,8 +511,9 @@
         ],
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
-        "integrationPattern": "두 치역 계산 → 겹침·공백 제거 → 값 확정",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "두 치역 계산 → 겹침·공백 제거 → 값 확정"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -469,9 +558,12 @@
         },
         "authorMathCheck": "AUTHOR_MATH_BOUNDARY_CHECK",
         "independentQualityReview": "NOT_RUN",
-        "browserRender": "NOT_RUN"
+        "browserRender": "NOT_RUN",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       },
-      "solutionImage": "assets/q09-A3-solution.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q09-A3-solution.svg",
       "solutionImageAlt": "두 구간의 치역과 닫힌 경계를 보여주는 해설 그래프",
       "solutionImageCaption": "단사성과 전사성을 위해 두 치역의 겹침과 공백을 없앤다.",
       "solutionImageSize": "medium"
@@ -528,7 +620,8 @@
         "difficultyBucket": 3,
         "difficultyReason": "조각별 단사·전사 조건과 치역 경계 판정",
         "crossConceptKeys": [
-          "CC_FUNCTION_MONOTONICITY"
+          "CC_FUNCTION_MONOTONICITY",
+          "CC_QUADRATIC_FUNCTION"
         ],
         "crossConceptReasons": [
           "CC_FUNCTION_MONOTONICITY 사용: 단조성과 치역 결정"
@@ -541,8 +634,9 @@
         ],
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
-        "integrationPattern": "두 치역 계산 → 겹침·공백 제거 → 값 확정",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "두 치역 계산 → 겹침·공백 제거 → 값 확정"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -587,9 +681,12 @@
         },
         "authorMathCheck": "AUTHOR_MATH_BOUNDARY_CHECK",
         "independentQualityReview": "NOT_RUN",
-        "browserRender": "NOT_RUN"
+        "browserRender": "NOT_RUN",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       },
-      "solutionImage": "assets/q09-B1-solution.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q09-B1-solution.svg",
       "solutionImageAlt": "두 구간의 치역과 닫힌 경계를 보여주는 해설 그래프",
       "solutionImageCaption": "단사성과 전사성을 위해 두 치역의 겹침과 공백을 없앤다.",
       "solutionImageSize": "medium"
@@ -659,8 +756,9 @@
         ],
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
-        "integrationPattern": "두 치역 계산 → 겹침·공백 제거 → 값 확정",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "두 치역 계산 → 겹침·공백 제거 → 값 확정"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -705,9 +803,12 @@
         },
         "authorMathCheck": "AUTHOR_MATH_BOUNDARY_CHECK",
         "independentQualityReview": "NOT_RUN",
-        "browserRender": "NOT_RUN"
+        "browserRender": "NOT_RUN",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       },
-      "solutionImage": "assets/q09-B2-solution.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q09-B2-solution.svg",
       "solutionImageAlt": "두 구간의 치역과 닫힌 경계를 보여주는 해설 그래프",
       "solutionImageCaption": "단사성과 전사성을 위해 두 치역의 겹침과 공백을 없앤다.",
       "solutionImageSize": "medium"
@@ -779,8 +880,9 @@
         ],
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
-        "integrationPattern": "두 치역 계산 → 겹침·공백 제거 → 값 확정",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "두 치역 계산 → 겹침·공백 제거 → 값 확정"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -825,9 +927,12 @@
         },
         "authorMathCheck": "AUTHOR_MATH_BOUNDARY_CHECK",
         "independentQualityReview": "NOT_RUN",
-        "browserRender": "NOT_RUN"
+        "browserRender": "NOT_RUN",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       },
-      "solutionImage": "assets/q09-B3-solution.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q09-B3-solution.svg",
       "solutionImageAlt": "두 구간의 치역과 닫힌 경계를 보여주는 해설 그래프",
       "solutionImageCaption": "단사성과 전사성을 위해 두 치역의 겹침과 공백을 없앤다.",
       "solutionImageSize": "medium"
@@ -884,7 +989,8 @@
         "difficultyBucket": 4,
         "difficultyReason": "조각별 단사·전사 조건과 치역 경계 판정",
         "crossConceptKeys": [
-          "CC_RADICAL_FUNCTION"
+          "CC_RADICAL_FUNCTION",
+          "CC_QUADRATIC_FUNCTION"
         ],
         "crossConceptReasons": [
           "CC_RADICAL_FUNCTION 사용: 단조성과 치역 결정"
@@ -899,8 +1005,9 @@
         ],
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
-        "integrationPattern": "두 치역 계산 → 겹침·공백 제거 → 값 확정",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "두 치역 계산 → 겹침·공백 제거 → 값 확정"
       },
       "review": {
         "reverseStemDisposition": "REVISED",
@@ -945,9 +1052,12 @@
         },
         "authorMathCheck": "AUTHOR_MATH_BOUNDARY_CHECK",
         "independentQualityReview": "NOT_RUN",
-        "browserRender": "NOT_RUN"
+        "browserRender": "NOT_RUN",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       },
-      "solutionImage": "assets/q09-C1-solution.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q09-C1-solution.svg",
       "solutionImageAlt": "두 구간의 치역과 닫힌 경계를 보여주는 해설 그래프",
       "solutionImageCaption": "단사성과 전사성을 위해 두 치역의 겹침과 공백을 없앤다.",
       "solutionImageSize": "medium"
@@ -1019,8 +1129,9 @@
         ],
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
-        "integrationPattern": "두 치역 계산 → 겹침·공백 제거 → 값 확정",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "두 치역 계산 → 겹침·공백 제거 → 값 확정"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -1065,9 +1176,12 @@
         },
         "authorMathCheck": "AUTHOR_MATH_BOUNDARY_CHECK",
         "independentQualityReview": "NOT_RUN",
-        "browserRender": "NOT_RUN"
+        "browserRender": "NOT_RUN",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       },
-      "solutionImage": "assets/q09-C2-solution.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q09-C2-solution.svg",
       "solutionImageAlt": "두 구간의 치역과 닫힌 경계를 보여주는 해설 그래프",
       "solutionImageCaption": "단사성과 전사성을 위해 두 치역의 겹침과 공백을 없앤다.",
       "solutionImageSize": "medium"
@@ -1121,7 +1235,7 @@
         "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
         "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
         "PTTPLBinding": "ACTIVE_CURRENT",
-        "difficultyBucket": 5,
+        "difficultyBucket": 4,
         "difficultyReason": "조각별 단사·전사 조건과 치역 경계 판정",
         "crossConceptKeys": [
           "CC_QUADRATIC_FUNCTION",
@@ -1141,8 +1255,9 @@
         ],
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
-        "integrationPattern": "두 치역 계산 → 겹침·공백 제거 → 값 확정",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "두 치역 계산 → 겹침·공백 제거 → 값 확정"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -1187,9 +1302,12 @@
         },
         "authorMathCheck": "AUTHOR_MATH_BOUNDARY_CHECK",
         "independentQualityReview": "NOT_RUN",
-        "browserRender": "NOT_RUN"
+        "browserRender": "NOT_RUN",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       },
-      "solutionImage": "assets/q09-C3-solution.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q09-C3-solution.svg",
       "solutionImageAlt": "두 구간의 치역과 닫힌 경계를 보여주는 해설 그래프",
       "solutionImageCaption": "단사성과 전사성을 위해 두 치역의 겹침과 공백을 없앤다.",
       "solutionImageSize": "medium"
