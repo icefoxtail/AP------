@@ -32,7 +32,11 @@ for(const entry of spec.roots){
  let count=0;const qids=new Set();
  for(const name of drafts){
   const doc=JSON.parse(fs.readFileSync(path.join(abs,name),'utf8'));
-  const originalSha=doc.source?.gitBlobSha1||doc.source?.gitBlob;
+  const gitBlob=doc.source?.gitBlob;
+  const gitBlobSha1=doc.source?.gitBlobSha1;
+  if(gitBlob!==undefined&&gitBlobSha1!==undefined&&gitBlob!==gitBlobSha1)throw Error('QID9_SOURCE_HASH_CONFLICT:'+name);
+  const originalSha=gitBlobSha1??gitBlob;
+  if(originalSha!==undefined&&!/^[0-9a-f]{40}$/.test(originalSha))throw Error('QID9_SOURCE_HASH_INVALID:'+name);
   if(!doc.source?.path||!originalSha||!Array.isArray(doc.questions)||doc.questions.length!==9)throw Error('QID9_SOURCE_SHAPE_INVALID:'+name);
   if(!/^archive\/exams\/original\/.+\.js$/.test(doc.source.path))throw Error('QID9_SOURCE_EXAM_PATH_INVALID:'+name);
   const qid=Number(doc.source.qid),match=name.match(/Q(\d{2})_/);
