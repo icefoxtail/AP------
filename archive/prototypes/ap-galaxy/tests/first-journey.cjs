@@ -201,9 +201,28 @@ async function main(){
     if(new URL(printPage.url()).searchParams.has('preview'))throw Error('Standalone print uses preview=1');
     const printButton=printPage.locator('#btn-print');
     if(!await printButton.isEnabled())throw Error('Standalone print button is disabled');
+    // Do not count a clickable print button as proof that the original exam rendered.
+    // The standalone, non-preview engine must finish rendering all 24 source questions.
+    await printPage.waitForFunction(() => {
+      const nums=[...document.querySelectorAll('#print-area .q-box .q-num')]
+        .map(n=>n.textContent.trim());
+      const grid=document.querySelector('#print-area .grid-container');
+      return document.readyState==='complete' && nums.length===24 &&
+        nums[0]==='1.' && nums[23]==='24.' &&
+        !!grid && getComputedStyle(grid).display==='grid';
+    },null,{timeout:45000});
+    const standaloneExam=await printPage.evaluate(() => {
+      const nums=[...document.querySelectorAll('#print-area .q-box .q-num')]
+        .map(n=>n.textContent.trim());
+      return {renderedQuestionCount:nums.length,firstQuestion:nums[0],
+        lastQuestion:nums[nums.length-1],
+        pageCount:document.querySelectorAll('#print-area .page').length,
+        layout: getComputedStyle(document.querySelector('#print-area .grid-container')).display};
+    });
+    if(standaloneExam.pageCount<1)throw Error('Standalone original exam has no rendered pages');
     await printButton.click({trial:true,timeout:20000});
     report.printRoute={url:printPage.url(),visible:await printButton.isVisible(),
-      enabled:await printButton.isEnabled(),pointerTrial:true,physicalPrinter:false};
+      enabled:await printButton.isEnabled(),pointerTrial:true,standaloneExam,printOutputVerified:false,physicalPrinter:false};
     await printPage.screenshot({path:path.join(out,'journey-8-print-ready.png')});
     await printPage.close();
     await page.locator('#wholeExam').click();
@@ -222,6 +241,15 @@ async function main(){
         doc.defaultView.getComputedStyle(doc.querySelector('#print-area .grid-container')).display === 'grid';
     }).catch(()=>false);
     if(!report.fullExam.layoutRestored)throw Error('Whole exam did not restore paginated layout');
+    const restored=await page.evaluate(()=>{
+      const d=document.getElementById('examFrame').contentDocument;
+      const nums=[...d.querySelectorAll('#print-area .q-box .q-num')].map(n=>n.textContent.trim());
+      return {modeExam:d.getElementById('btn-exam')?.classList.contains('active'),
+        count:nums.length,first:nums[0],last:nums[nums.length-1]};
+    });
+    if(!restored.modeExam||restored.count!==24||restored.first!=='1.'||restored.last!=='24.')
+      throw Error('Whole exam did not restore all 24 source questions: '+JSON.stringify(restored));
+    report.fullExam.rendered=restored;
     await page.screenshot({path:path.join(out,'journey-6-full-exam.png')});
     await page.locator('#closeDrawer').click();
     await page.waitForFunction(()=>!document.getElementById('examDrawer').classList.contains('open'),null,{timeout:5000});
