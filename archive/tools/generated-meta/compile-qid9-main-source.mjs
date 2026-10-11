@@ -32,7 +32,8 @@ for(const entry of spec.roots){
  let count=0;const qids=new Set();
  for(const name of drafts){
   const doc=JSON.parse(fs.readFileSync(path.join(abs,name),'utf8'));
-  if(!doc.source?.path||!doc.source?.gitBlobSha1||!Array.isArray(doc.questions)||doc.questions.length!==9)throw Error('QID9_SOURCE_SHAPE_INVALID:'+name);
+  const originalSha=doc.source?.gitBlobSha1||doc.source?.gitBlob;
+  if(!doc.source?.path||!originalSha||!Array.isArray(doc.questions)||doc.questions.length!==9)throw Error('QID9_SOURCE_SHAPE_INVALID:'+name);
   if(!/^archive\/exams\/original\/.+\.js$/.test(doc.source.path))throw Error('QID9_SOURCE_EXAM_PATH_INVALID:'+name);
   const qid=Number(doc.source.qid),match=name.match(/Q(\d{2})_/);
   if(!Number.isInteger(qid)||qid!==Number(match?.[1])||qids.has(qid))throw Error('QID9_SOURCE_QID_DUPLICATE:'+name);
@@ -41,10 +42,10 @@ for(const entry of spec.roots){
   for(const [i,item] of doc.questions.entries()){
    if(!item||!/^ALITE-[A-Z0-9-]+-Q\d{2}-[ABC][123]$/.test(item.uid||'')||item.sourceQid!==qid||!item.content||!item.solution||item.choices?.length!==5||!item.answer)throw Error('QID9_ITEM_INVALID:'+name+':'+i);
    if(seen.has(item.uid))throw Error('QID9_DUPLICATE_UID:'+item.uid);seen.add(item.uid);
-   if(item.provenance?.sourceOriginalGitBlobSha&&item.provenance.sourceOriginalGitBlobSha!==doc.source.gitBlobSha1)throw Error('QID9_PROVENANCE_DRIFT:'+item.uid);
+   if(item.provenance?.sourceOriginalGitBlobSha&&item.provenance.sourceOriginalGitBlobSha!==originalSha)throw Error('QID9_PROVENANCE_DRIFT:'+item.uid);
    const copy=structuredClone(item);
    copy.sourceExamPath=doc.source.path;
-   copy.sourceExamBlobSha=doc.source.gitBlobSha1;
+   copy.sourceExamBlobSha=originalSha;
    copy.sourceArchiveFile=doc.source.path;
    for(const field of ['image','solutionImage']){
     if(!copy[field])continue;
@@ -68,7 +69,7 @@ for(const entry of spec.roots){
   const meta=dirOut+'/metadata/'+stem+'.json';
   const js='window.examTitle = '+JSON.stringify('QID9_'+(doc.source.examTitle||stem))+';\nwindow.questionBank = '+JSON.stringify(student,null,2)+';\n';
   const sidecar=student.map(v=>({
-   uid:v.uid,sourceQid:v.sourceQid,sourceArchiveFile:doc.source.path,sourceBlobSha:doc.source.gitBlobSha1,
+   uid:v.uid,sourceQid:v.sourceQid,sourceArchiveFile:doc.source.path,sourceBlobSha:originalSha,
    sourceSchoolMarker:(doc.source.examTitle||'').split('_')[1]||'',year:2000+Number((doc.source.examTitle||'').slice(0,2)),
    grade:'고1',standardCourse:v.standardCourse,subUnitKey:v.subUnitKey,meta:v.meta,
    provenance:v.provenance,reviewApprovalStatus:v.review?.approval||'NOT_REVIEWED',metaProjectionOrigin:'MAIN_SOURCE_QUESTION_JS'
