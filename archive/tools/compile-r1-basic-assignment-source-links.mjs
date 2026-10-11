@@ -24,8 +24,15 @@ const readJson = relative => JSON.parse(readBytes(relative).toString('utf8').rep
 const writeJson = (relative, value) => fs.writeFileSync(path.resolve(root, relative), `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 const ensure = (condition, code, detail = '') => { if (!condition) throw new Error(detail ? `${code}:${detail}` : code); };
 const toRepoPath = value => {
-  const absolute = path.resolve(value);
-  const relative = path.relative(root, absolute);
+  const normalized = String(value).replaceAll('\\', '/');
+  let absolute = path.resolve(root, normalized);
+  let relative = path.relative(root, absolute);
+  if (relative === '..' || relative.startsWith(`..${path.sep}`) || path.isAbsolute(relative)) {
+    const match = /(?:^|\/)(archive|docs)\/(.+)$/.exec(normalized);
+    ensure(match, 'PATH_OUTSIDE_REPOSITORY', value);
+    absolute = path.resolve(root, match[1], match[2]);
+    relative = path.relative(root, absolute);
+  }
   ensure(relative !== '..' && !relative.startsWith(`..${path.sep}`) && !path.isAbsolute(relative), 'PATH_OUTSIDE_REPOSITORY', value);
   return relative.split(path.sep).join('/');
 };
