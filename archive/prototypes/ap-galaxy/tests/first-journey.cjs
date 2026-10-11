@@ -165,6 +165,8 @@ async function main(){
     const video=page.video();
     await context.close();
     await video.saveAs(path.join(out,'journey-real-content.webm'));
+    const temporaryVideo = await video.path();
+    if (temporaryVideo !== path.join(out,'journey-real-content.webm') && fs.existsSync(temporaryVideo)) fs.unlinkSync(temporaryVideo);
     // Reduced motion and forced immediate travel.
     const reduced=await launch(browser,{motion:'reduce'});
     await groupFocus(reduced.page);
@@ -216,7 +218,7 @@ async function main(){
     const fail=await launch(browser,{motion:'reduce'});
     await groupFocus(fail.page);
     const expectedErrorsStart=errors.length;
-    const broken='**/26_삼산중_1학기_중간_중3_기출.js*';
+    const broken=url=>decodeURIComponent(url.pathname).endsWith('/26_삼산중_1학기_중간_중3_기출.js');
     const failRoute=route=>route.abort('failed');
     await fail.page.route(broken,failRoute);
     await fail.page.locator('.satellite-hit').filter({hasText:'2026 · 1학기 중간'}).first().evaluate(el=>el.click());
