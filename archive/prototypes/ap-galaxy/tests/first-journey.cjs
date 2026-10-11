@@ -252,15 +252,21 @@ async function main(){
     await mid.evaluate(el=>el.click());
     await rapid.page.waitForFunction(()=>document.querySelectorAll('.question-orbit-node').length===24 &&
       document.getElementById('examTitle').textContent.includes('중간고사'),null,{timeout:35000});
-    await rapid.page.locator('[data-question-id="2"]').click({timeout:18000});
-    await rapid.page.locator('[data-question-id="3"]').click({timeout:18000});
-    await rapid.page.waitForFunction(() => document.querySelector('#questionStatus')?.textContent==='문항 3 · 문제',null,{timeout:32000});
+    const rapidNodes=rapid.page.locator('.question-orbit-node:visible');
+    await rapid.page.waitForFunction(()=>document.querySelectorAll('.question-orbit-node:not([style*="display: none"])').length>=2,null,{timeout:18000});
+    const rapidFirst=await rapidNodes.first().getAttribute('data-question-id');
+    const rapidLast=await rapidNodes.last().getAttribute('data-question-id');
+    if(rapidFirst===rapidLast)throw Error('Not enough clickable orbit questions');
+    await rapid.page.locator('[data-question-id="'+rapidFirst+'"]').click({timeout:18000});
+    await rapid.page.locator('[data-question-id="'+rapidLast+'"]').click({timeout:18000});
+    await rapid.page.waitForFunction(id=>document.querySelector('#questionStatus')?.textContent==='문항 '+id+' · 문제',
+      rapidLast,{timeout:32000});
     const lastQuick=await rapid.page.evaluate(()=>{
       const d=document.getElementById('examFrame').contentDocument;
       return {file:new URL(d.location.href).searchParams.get('data'),
         number:d.querySelector('#print-area .ap-galaxy-selected-question .q-num')?.textContent.trim()};
     });
-    if(lastQuick.number!=='3.'||!lastQuick.file?.includes('1학기_중간'))throw Error('Latest rapid question selected wrong content: '+JSON.stringify(lastQuick));
+    if(lastQuick.number!==rapidLast+'.'||!lastQuick.file?.includes('1학기_중간'))throw Error('Latest rapid question selected wrong content: '+JSON.stringify(lastQuick));
     report.latestSelectionWins={file:'26_삼산중_1학기_중간_중3_기출.js',count:24,lastQuestion:lastQuick};
     await final.evaluate(el=>el.click());
     await rapid.page.waitForFunction(()=>document.querySelectorAll('.question-orbit-node').length>0 &&
@@ -318,27 +324,35 @@ async function main(){
     });
     await delayed.page.locator('.satellite-hit').filter({hasText:'2026 · 1학기 중간'}).first().evaluate(el=>el.click());
     await delayed.page.waitForFunction(()=>document.querySelectorAll('.question-orbit-node').length===24,null,{timeout:30000});
-    await delayed.page.locator('[data-question-id="2"]').click({timeout:15000});
-    await delayed.page.locator('[data-question-id="3"]').click({timeout:15000});
-    await delayed.page.waitForFunction(()=>document.querySelector('#questionStatus')?.textContent==='문항 3 · 문제',null,{timeout:35000});
+    const earlyNodes=delayed.page.locator('.question-orbit-node:visible');
+    await delayed.page.waitForFunction(()=>document.querySelectorAll('.question-orbit-node:not([style*="display: none"])').length>=2,null,{timeout:15000});
+    const earlyFirst=await earlyNodes.first().getAttribute('data-question-id');
+    const earlyLast=await earlyNodes.last().getAttribute('data-question-id');
+    if(earlyFirst===earlyLast)throw Error('Not enough visible early question controls');
+    await delayed.page.locator('[data-question-id="'+earlyFirst+'"]').click({timeout:15000});
+    await delayed.page.locator('[data-question-id="'+earlyLast+'"]').click({timeout:15000});
+    await delayed.page.waitForFunction(id=>document.querySelector('#questionStatus')?.textContent==='문항 '+id+' · 문제',
+      earlyLast,{timeout:35000});
     report.delayedEngine=await delayed.page.evaluate(()=>{
       const d=document.getElementById('examFrame').contentDocument;
       return {file:new URL(d.location.href).searchParams.get('data'),
         number:d.querySelector('#print-area .ap-galaxy-selected-question .q-num')?.textContent.trim()};
     });
-    if(!report.delayedEngine.file?.includes('1학기_중간')||report.delayedEngine.number!=='3.')
+    if(!report.delayedEngine.file?.includes('1학기_중간')||report.delayedEngine.number!==earlyLast+'.')
       throw Error('Early click during slow iframe selected stale document: '+JSON.stringify(report.delayedEngine));
     await delayed.page.locator('.satellite-hit').filter({hasText:'2026 · 1학기 기말'}).first().evaluate(el=>el.click());
     await delayed.page.waitForFunction(()=>document.getElementById('examTitle').textContent.includes('기말고사')&&
       document.querySelectorAll('.question-orbit-node').length===24,null,{timeout:35000});
-    await delayed.page.locator('[data-question-id="1"]').click({timeout:15000});
-    await delayed.page.waitForFunction(()=>document.querySelector('#questionStatus')?.textContent==='문항 1 · 문제',null,{timeout:35000});
+    const finalFirst=await delayed.page.locator('.question-orbit-node:visible').first().getAttribute('data-question-id');
+    await delayed.page.locator('[data-question-id="'+finalFirst+'"]').click({timeout:15000});
+    await delayed.page.waitForFunction(id=>document.querySelector('#questionStatus')?.textContent==='문항 '+id+' · 문제',
+      finalFirst,{timeout:35000});
     report.delayedSwitch=await delayed.page.evaluate(()=>{
       const d=document.getElementById('examFrame').contentDocument;
       return {file:new URL(d.location.href).searchParams.get('data'),
         number:d.querySelector('#print-area .ap-galaxy-selected-question .q-num')?.textContent.trim()};
     });
-    if(!report.delayedSwitch.file?.includes('1학기_기말')||report.delayedSwitch.number!=='1.')
+    if(!report.delayedSwitch.file?.includes('1학기_기말')||report.delayedSwitch.number!==finalFirst+'.')
       throw Error('A/B switch returned prior exam content: '+JSON.stringify(report.delayedSwitch));
     await delayed.context.close();
     report.errors=errors;
