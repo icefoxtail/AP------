@@ -69,6 +69,11 @@ jobs:
           node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --write 2>&1 | tee "$RELEASE_EVIDENCE_DIR/main-source-projection-write.log"
           node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --check 2>&1 | tee "$RELEASE_EVIDENCE_DIR/main-source-projection-check.log"
 
+      - name: Verify exact QID9 source to student Consumer parity
+        env:
+          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+        run: node archive/tools/generated-meta/verify-qid9-main-source-projection.mjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/qid9-consumer-parity.log"
+
       - name: Verify approved UID Meta, complete source inventory, and selection contracts
         env:
           RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
