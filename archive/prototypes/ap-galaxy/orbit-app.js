@@ -23,6 +23,20 @@
     const semester = exam.semester ? exam.semester + '학기 ' : '';
     return [exam.year ? exam.year + '년' : '', semester + type, exam.school, exam.grade, exam.subject].filter(Boolean).join(' · ');
   };
+  const satelliteLabelLines = (exam) => {
+    const year = clean(exam.year);
+    const semester = clean(exam.semester);
+    const examType = clean(exam.examType);
+    const semesterLabel = semester === '1' || semester === '2' ? semester + '학기' : semester;
+    const examTypeLabel = examType === 'mid' ? '중간' : examType === 'final' ? '기말' : examType;
+    const period = [year, [semesterLabel, examTypeLabel].filter(Boolean).join(' ')].filter(Boolean).join(' · ');
+    const school = clean(exam.school);
+    const grade = clean(exam.grade);
+    const subject = clean(exam.subject);
+    const subjectLabel = grade && subject.startsWith(grade) ? subject.slice(grade.length).trim() : subject;
+    const identity = [school, grade, subjectLabel].filter(Boolean).join(' · ');
+    return { period, identity };
+  };
   const examTags = (exam) => [...(state.tagsByFile.get(exam.file) || [])];
   const normalizedField = (value) => clean(value).toLocaleLowerCase('ko');
   const showToast = (message) => {
@@ -184,10 +198,14 @@
       button.type = 'button';
       button.dataset.examFile = exam.file;
       button.title = 'catalog source: ' + exam.file;
-      button.setAttribute('aria-label', examTitle(exam) + ' 원본 자료 노드 열기');
-      const title = document.createElement('b');
-      title.textContent = String(exam.year || '') + ' · ' + (exam.school || '') + ' · ' + (exam.subject || '시험지');
-      button.append(title);
+      const lines = satelliteLabelLines(exam);
+      button.setAttribute('aria-label', [lines.period, lines.identity, '원본 자료 노드 열기'].filter(Boolean).join(' · '));
+      const period = document.createElement('span');
+      period.className = 'satellite-period';
+      period.textContent = lines.period;
+      const identity = document.createElement('b');
+      identity.textContent = lines.identity;
+      button.append(period, identity);
       button.addEventListener('click', () => openExam(exam));
       ui.satelliteLabels.append(button);
       state.satelliteButtons.set(exam.file, button);
