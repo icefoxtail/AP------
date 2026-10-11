@@ -157,13 +157,11 @@
   function makeGroupLabel(group) {
     const label = document.createElement('div');
     label.className = 'planet-label';
-    const dot = document.createElement('span');
-    dot.className = 'planet-dot';
     const title = document.createElement('b');
     title.textContent = group.name;
     const meta = document.createElement('small');
     meta.textContent = group.exams.length.toLocaleString() + '개 자료 노드';
-    label.append(dot, title, meta);
+    label.append(title, meta);
     ui.labels.append(label);
     state.groupLabels.set(group.id, label);
   }
@@ -187,12 +185,9 @@
       button.dataset.examFile = exam.file;
       button.title = 'catalog source: ' + exam.file;
       button.setAttribute('aria-label', examTitle(exam) + ' 원본 자료 노드 열기');
-      const icon = document.createElement('span');
-      icon.className = 'mini-paper';
-      icon.setAttribute('aria-hidden', 'true');
       const title = document.createElement('b');
       title.textContent = String(exam.year || '') + ' · ' + (exam.school || '') + ' · ' + (exam.subject || '시험지');
-      button.append(icon, title);
+      button.append(title);
       button.addEventListener('click', () => openExam(exam));
       ui.satelliteLabels.append(button);
       state.satelliteButtons.set(exam.file, button);
