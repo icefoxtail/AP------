@@ -1,0 +1,58 @@
+name: AP Galaxy star-only visual evidence
+on:
+  push:
+    branches:
+      - codex/ap-galaxy-visual-quality
+    paths:
+      - ".github/workflows/ap-galaxy-star-evidence.yml"
+      - "archive/prototypes/ap-galaxy/tests/star-evidence.cjs"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  star-qa:
+    if: github.ref == 'refs/heads/codex/ap-galaxy-visual-quality'
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 20
+          filter: blob:none
+          sparse-checkout: |
+            archive/prototypes/ap-galaxy
+            archive/data/archive2-catalog.json
+            archive/archive2-core.js
+            archive/engine.html
+            docs/reviews/ap-galaxy-visual-polish-20261011
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Rebuild existing Three.js bundle and syntax-check
+        run: |
+          npm ci --prefix archive/prototypes/ap-galaxy
+          npm run build --prefix archive/prototypes/ap-galaxy
+          node --check archive/prototypes/ap-galaxy/orbit-app.js
+          node --check archive/prototypes/ap-galaxy/assets/orbital-world.js
+      - name: Install isolated Playwright runner
+        run: |
+          npm install --prefix /tmp/ap-galaxy-playwright --no-save playwright@1.55.0
+          /tmp/ap-galaxy-playwright/node_modules/.bin/playwright install chromium --with-deps
+      - name: Compare matched baseline and updated scene in Chromium
+        run: node archive/prototypes/ap-galaxy/tests/star-evidence.cjs
+      - name: Preserve built bundle and new evidence on this PR branch only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- archive/prototypes/ap-galaxy/assets/orbital-world.js docs/reviews/ap-galaxy-visual-polish-20261011/star-v2-*
+          if ! git diff --cached --quiet; then
+            git commit -m "test(ap-galaxy): attach same-environment star visual and performance evidence"
+            git push origin HEAD:codex/ap-galaxy-visual-quality
+          fi
+      - name: Preserve evidence as workflow artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ap-galaxy-star-v2-review
+          path: docs/reviews/ap-galaxy-visual-polish-20261011/star-v2-*
+          if-no-files-found: warn
