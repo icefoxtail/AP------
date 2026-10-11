@@ -16,13 +16,14 @@ for(const entry of spec.roots){
  if(names.length!==entry.expectedSourceQidCount)throw Error('PROJECTION_SOURCE_QID_COUNT:'+names.length);
  for(const name of names){
   const doc=JSON.parse(fs.readFileSync(path.join(dir,name),'utf8'));
+  const originalSha=doc.source?.gitBlobSha1||doc.source?.gitBlob;
   if(doc.questions?.length!==9)throw Error('PROJECTION_SOURCE_9_SLOTS:'+name);
   for(const q of doc.questions){
    const rows=byUid.get(q.uid)||[];
    if(rows.length!==1)throw Error('PROJECTION_UID_MISSING_OR_DUPLICATE:'+q.uid+':'+rows.length);
    const r=rows[0];
    if(!r.mainSourceAvailable||r.technicalStatus!=='READY'||r.consumerSelectable===false||r.userDisabled)throw Error('PROJECTION_NOT_STUDENT_AVAILABLE:'+q.uid+':'+r.technicalStatus);
-   if(r.sourceQid!==q.sourceQid||r.sourceExamPath!==doc.source.path||r.sourceExamBlobSha!==doc.source.gitBlobSha1)throw Error('PROJECTION_SOURCE_BINDING:'+q.uid);
+   if(r.sourceQid!==q.sourceQid||r.sourceExamPath!==doc.source.path||r.sourceExamBlobSha!==originalSha)throw Error('PROJECTION_SOURCE_BINDING:'+q.uid);
    if(!eq(r.meta,q.meta))throw Error('PROJECTION_METADATA_PARITY:'+q.uid);
    if(!r.sourceShard.startsWith('archive/generated/lite/v1/')||!r.sourceShard.endsWith('.js'))throw Error('PROJECTION_SOURCE_SHARD:'+q.uid);
    const consumer=read('archive/'+r.shard),records=(consumer.records||[]).filter(x=>x.generatedUid===q.uid);
