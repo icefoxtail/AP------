@@ -1,12 +1,12 @@
 # AP Galaxy first journey — real canonical item workflow
 
 - Base: 3da5863ad453f84568ec55538c8b9e2a7f292df7
-- New head: 83a8f51c85124d8d28b19cd4e6c9b0f8bfd8f1dc
+- New head: de0dd3f4854a8132e0acf752909b6b209df29887
 - Browser: Chromium headless with SwiftShader software WebGL, 1600×900 DPR1.
 - Single sample: 2026 삼산중 1학기 중간, canonical JS source, 24 declared IDs. No exam/solution/answer iframe stub.
 - Workflow: galaxy → exam star → 24-node orbit → q2 problem → answer → solution → full exam/print control → close/restore.
 - Real content screenshot sequence: journey-1 through journey-7; journey-real-content.webm.
-- Before/after WebGL clear-call frame proxy (3×2.5s): before 5.6, 5.2, 5.6; after 5.59, 5.19, 5.2. Same software renderer, not physical PC GPU throughput.
+- Before/after WebGL clear-call frame proxy (3×2.5s): before 4.8, 4.39, 4.4; after 3.59, 4, 4. Same software renderer, not physical PC GPU throughput.
 - Reduced motion: {"isWarp":false,"motionPressed":"true"}
 - Rapid latest-wins/switching: [{"file":"26_삼산중_1학기_중간_중3_기출.js","count":24},{"latest":"26_삼산중_1학기_기말_중3_기출.js","count":24}]
 - Movement cancellation: {"moving":false,"selectedGroup":false,"query":"삼산중"}
