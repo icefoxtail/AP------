@@ -721,6 +721,29 @@ test("T17 transient packet is absent from final target tree", (t) => {
 
 test("T18 R2 production asset copy has a main-only automatic push trigger", () => {
   const workflow = fs.readFileSync(path.join(projectRoot, ".github/workflows/r2-archive-assets-copy.yml"), "utf8");
-  assert.match(workflow, /workflow_dispatch:\s*\n\s*push:\s*\n\s*branches:\s*\[main\]/);
-  assert.match(workflow, /archive\/assets\/images\/\*\*/);
+  const lines = workflow.split(/\r?\n/);
+  const eventBlock = (eventName) => {
+    const start = lines.findIndex((line) => line === `  ${eventName}:`);
+    assert.notEqual(start, -1, `workflow must define the ${eventName} event`);
+    let end = lines.length;
+    for (let index = start + 1; index < lines.length; index += 1) {
+      if (/^  [A-Za-z0-9_-]+:\s*$/.test(lines[index]) || /^[^\s#]/.test(lines[index])) {
+        end = index;
+        break;
+      }
+    }
+    return lines.slice(start + 1, end).join("\n");
+  };
+
+  const dispatch = eventBlock("workflow_dispatch");
+  assert.match(dispatch, /^    inputs:\s*$/m);
+  assert.match(dispatch, /^      mode:\s*$/m);
+  assert.match(dispatch, /^        required:\s*true\s*$/m);
+  assert.match(dispatch, /^        type:\s*choice\s*$/m);
+  assert.match(dispatch, /^          - bootstrap\s*$/m);
+
+  const push = eventBlock("push");
+  assert.match(push, /^    branches:\s*\[\s*main\s*\]\s*$/m);
+  assert.match(push, /^    paths:\s*$/m);
+  assert.match(push, /^      -\s*["']?archive\/assets\/images\/\*\*["']?\s*$/m);
 });

@@ -55,5 +55,8 @@ jobs:
       - name: Verify Git-managed project skills
         run: node tools/skills/verify-skills.mjs --json
 
+      - name: Run R2 archive asset sync regression tests
+        run: node --test --test-concurrency=4 .github/scripts/r2-archive-assets-copy.test.mjs
+
       - name: Run tests
         run: node tools/run-tests.js
