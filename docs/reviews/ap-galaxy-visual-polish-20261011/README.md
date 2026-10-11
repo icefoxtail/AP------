@@ -9,12 +9,15 @@ These captures show the same AP Galaxy prototype before and after the close-up s
 - Close-up pair: focused on the same school group, 삼산중, then zoomed in with the mouse wheel.
 - Full-scene pair: school view with orbital motion paused.
 - Motion clip: focused scene with orbital motion resumed, followed by a drag rotation and wheel zoom.
-- Label-only comparison: `labels-before-*` shows the PR branch before the label change; `labels-after-*` shows the label-only update at the same viewport. The close-up pair uses 삼산중.
+- Label comparison: `labels-before-*` shows the PR branch before the two-line exam labels; `labels-after-*` shows the update at the same viewport. The close-up pair uses 삼산중 and distinguishes its 2026 first-term midterm, first-term final, and second-term midterm.
 
 ## Label-only screenshots
 
 - `labels-before-full.png` and `labels-after-full.png`: label readability across the full school view.
-- `labels-before-close.png` and `labels-after-close.png`: text-only school and exam labels at the focused close-up.
+- `labels-before-close.png` and `labels-after-close.png`: same-school, same-year exams in the focused close-up.
+- `labels-click-result.png`: clicking `2026 · 1학기 중간` opens the matching original `1mid` exam in the existing drawer and preview.
+
+The first line uses the catalog's `year`, `semester`, and `examType` fields; the second uses `school`, `grade`, and `subject`. Known `mid`/`final` values are translated, unknown non-empty enum values remain literal, and missing values are omitted. If the subject already starts with the catalog grade, that repeated prefix is shown once.
 
 ## Performance sample
 
