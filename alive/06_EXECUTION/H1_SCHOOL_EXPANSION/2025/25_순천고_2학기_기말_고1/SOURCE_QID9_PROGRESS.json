@@ -117,10 +117,11 @@
       13,
       14,
       16,
-      17
+      17,
+      18
     ],
-    "questions": 144,
-    "svgFiles": 68,
+    "questions": 153,
+    "svgFiles": 77,
     "finishedIndependentReviewQids": [],
     "producedItemsByQid": {
       "q01": 9,
@@ -138,7 +139,8 @@
       "q13": 9,
       "q14": 9,
       "q16": 9,
-      "q17": 9
+      "q17": 9,
+      "q18": 9
     },
     "q01File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q01_CREATE_DRAFT.json",
     "q02File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q02_CREATE_DRAFT.json",
@@ -153,7 +155,6 @@
     "expectedVariantsAtNineEach": 207,
     "remainingQids": [
       15,
-      18,
       19,
       20,
       21,
@@ -191,7 +192,7 @@
     "q06ActivePT": 9,
     "q06ActiveTPL": 9,
     "q06ConditionKeyDebt": 0,
-    "rpmRecordIdsResolved": 144,
+    "rpmRecordIdsResolved": 153,
     "rpmRecordNumericDebt": 0,
     "rpmRecordCrosswalkGitBlob": "904b3768b69b300607e52217cad05bf71e34f221",
     "rpmIdCorrectionAuditPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/Q01_Q06_RPM_ID_REBIND_AUDIT.json",
@@ -289,7 +290,7 @@
     "q13InlineProblemSVGs": 9,
     "q13InlineSolutionSVGs": 9,
     "svgInlineTotalNew": 36,
-    "svgAuthoredTotalIncludingInline": 95,
+    "svgAuthoredTotalIncludingInline": 104,
     "q13ActivePT": 9,
     "q13ActiveTPL": 9,
     "q13RpmId": "H1-RPM-259",
@@ -317,7 +318,7 @@
     "q16QualityReview": "NOT_RUN",
     "q16RealBrowserRender": "NOT_RUN",
     "q15Status": "LOCAL_AUTHOR_DRAFT_AND_LIBRARY_ONLY_NOT_IN_GIT",
-    "svgTotalAppearancesAcrossStandaloneAndInline": 113,
+    "svgTotalAppearancesAcrossStandaloneAndInline": 122,
     "q16SVGsCountUnique": 9,
     "q17File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q17_CREATE_DRAFT.json",
     "q17SVGs": [
@@ -337,7 +338,26 @@
     "q17QualityReview": "NOT_RUN",
     "q17RealBrowserRender": "NOT_RUN",
     "q17ConditionKeyDebt": 9,
-    "q17AuthorRevision": "A1-A3 correction to original-faithful slope minimum, q17 v2 candidate; formal review NOT_RUN"
+    "q17AuthorRevision": "A1-A3 correction to original-faithful slope minimum, q17 v2 candidate; formal review NOT_RUN",
+    "q18File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q18_CREATE_DRAFT.json",
+    "q18SVGs": [
+      "assets/q18-A1-solution.svg",
+      "assets/q18-A2-solution.svg",
+      "assets/q18-A3-solution.svg",
+      "assets/q18-B1-solution.svg",
+      "assets/q18-B2-solution.svg",
+      "assets/q18-B3-solution.svg",
+      "assets/q18-C1-solution.svg",
+      "assets/q18-C2-solution.svg",
+      "assets/q18-C3-solution.svg"
+    ],
+    "q18RpmId": "H1-RPM-265",
+    "q18MappingStatus": "DIRECT_BINDING_GAP",
+    "q18QualityReview": "NOT_RUN",
+    "q18RealBrowserRender": "NOT_RUN",
+    "q18ActivePT": 9,
+    "q18ActiveTPL": 9,
+    "q18MetadataDebt": "RPM 265 exact binding; canonical circle CrossConcept; integrationPattern key"
   },
   "remainingGates": [
     "q02 RPM record H1-RPM-246 exists but semantic PT/TPL direct binding gap status retained (no false ACTIVE assertion)",
@@ -349,10 +369,10 @@
     "q04 SVG6 xml/browser real render NOT_RUN (deterministic primitive only)"
   ],
   "next": {
-    "qid": 18,
-    "action": "Continue q18 production; q15 has existing Git draft/witness but source progress closure not reconciled. Do not reauthor completed parts. q17 self-reviewed draft only; formal review/consumer/main not run.",
-    "handoffPrompt": "Suncheon QID9 branch: q01~q14 and q16~q17 complete author draft in source progress =144/207. q15 JSON/witness exists on branch but excluded from completion count pending q15 stage closure review. q17 source original unchanged, 9 variants, 9 physical solution SVG and inline references, RPM H1-RPM-272 DIRECT_ACTIVE. Independent review/Chrome/consumer/main NOT_RUN."
+    "qid": 19,
+    "action": "Proceed q19; q15 Git draft+witness exists but its complete 9-slot status is not yet reconciled. q18 nine author-only candidate variants and nine solution SVG blobs staged; review/consumer/main/Chrome not run.",
+    "handoffPrompt": "Suncheon QID9 q01-14 and q16-18 author drafts=153/207. q15 JSON+math witness Git exists but author closure unresolved. q18 is RPM H1-RPM-265 DIRECT_BINDING_GAP, PT/TPL exist, 9 SVG, formal review and student release NOT_RUN."
   },
-  "lastCompletedQid": 17,
-  "lastUpdatedSourceQid": 17
+  "lastCompletedQid": 18,
+  "lastUpdatedSourceQid": 18
 }
