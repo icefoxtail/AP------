@@ -106,7 +106,8 @@ async function clickExamByTitle(page,title){
       const f=document.getElementById('examFrame');
       const doc=f?.contentDocument;
       const text=doc?.getElementById('print-area')?.innerText||'';
-      return Boolean(f?.contentWindow?.questionBank?.length>0
+      return Boolean(doc?.querySelectorAll('#print-area .page').length>0
+        && doc?.querySelectorAll('#print-area .q-num').length>0
         && text.includes('다음 중 옳은 것은?'));
     },null,{timeout:45000,polling:500});
     await wait(900);
@@ -116,7 +117,7 @@ async function clickExamByTitle(page,title){
       const drawer=document.getElementById('examDrawer');
       const rect=title.getBoundingClientRect(),bounds=drawer.getBoundingClientRect();
       return {drawerTitle:title.textContent,engineTitle:doc.getElementById('ctrl-title').innerText,
-        questionCount:iframe.contentWindow.questionBank.length,
+        renderedQuestionCount:doc.querySelectorAll('#print-area .q-num').length,
         firstQuestionVisible:doc.getElementById('print-area').innerText.includes('다음 중 옳은 것은?'),
         bodyExcerpt:doc.getElementById('print-area').innerText.slice(0,340),
         drawerTitleRect:{left:rect.left,right:rect.right,width:rect.width},
@@ -125,7 +126,7 @@ async function clickExamByTitle(page,title){
         iframeUrl:iframe.contentWindow.location.href
       };
     });
-    if(!preview.firstQuestionVisible||preview.questionCount<10||preview.renderError)throw Error('Actual engine content failed: '+JSON.stringify(preview));
+    if(!preview.firstQuestionVisible||preview.renderedQuestionCount<10||preview.renderError)throw Error('Actual engine content failed: '+JSON.stringify(preview));
     if(preview.drawerTitleRect.left<preview.drawerRect.left||preview.drawerTitleRect.right>preview.drawerRect.right)throw Error('Drawer title is clipped beyond panel: '+JSON.stringify(preview.drawerTitleRect));
     await page.screenshot({path:path.join(evidence,'star-v3-real-preview.png')});
     const result={status:'PASS',target:actualFile,selectionProof:{
@@ -143,13 +144,13 @@ async function clickExamByTitle(page,title){
       '- Actual engine URL: '+preview.iframeUrl+'\n'+
       '- Actual drawer title: '+preview.drawerTitle+'\n'+
       '- Actual engine title: '+preview.engineTitle+'\n'+
-      '- Actual source JS questionBank count: '+preview.questionCount+'\n'+
+      '- Actually rendered question numbers: '+preview.renderedQuestionCount+'\n'+
       '- Real rendered question 1 found: '+preview.firstQuestionVisible+'\n'+
       '- No engine iframe stub for final screenshot. The off-budget selection test alone used a route stub because the non-screenshot fixture is absent from sparse checkout.\n'+
       '- UI screenshot: star-v3-real-preview.png (1600×900, DPR 1)\n'+
       '- Browser page errors: '+pageErrors.length+'; console errors: '+consoleErrors.length+'; HTTP >=400: '+failedRequests.length+'\n'+
       '- Page/console/request details and DOM geometry are in star-v3-review.json.\n');
-    console.log(JSON.stringify({status:'PASS',detail:selected.ids.length,title:preview.drawerTitle,exam:preview.engineTitle,questions:preview.questionCount,consoleErrors:consoleErrors.length,requestsFailed:failedRequests.length}));
+    console.log(JSON.stringify({status:'PASS',detail:selected.ids.length,title:preview.drawerTitle,exam:preview.engineTitle,questions:preview.renderedQuestionCount,consoleErrors:consoleErrors.length,requestsFailed:failedRequests.length}));
   }catch(error){
     try{await page.screenshot({path:path.join(evidence,'star-v3-debug.png')})}catch{}
     console.error('FAILED',error.stack||String(error),JSON.stringify({pageErrors,consoleErrors,failedRequests}).slice(0,12000));
