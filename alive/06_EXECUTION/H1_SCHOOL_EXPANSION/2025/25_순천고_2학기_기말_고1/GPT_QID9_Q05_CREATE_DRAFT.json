@@ -56,7 +56,8 @@
       "H1-RPM-244"
     ],
     "metaExtensionRegistry": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/suncheon-2025-2final-q05-template-extensions.json",
-    "metadataReviewStatus": "CORRECTED_Q05_TPL_AND_INTEGRATION_ON_REVIEW_BRANCH"
+    "metadataReviewStatus": "CORRECTED_Q05_TPL_AND_INTEGRATION_ON_REVIEW_BRANCH",
+    "metaCanonicalCrossConceptAuthority": "archive/data/meta-foundation/canonical/concepts/algebra.json@bac94c0e7899b9a23e36d5c4f30178a490211f7a"
   },
   "metadataExtensionCandidates": [
     {
@@ -654,8 +655,10 @@
         "PTTPLBinding": "ACTIVE_CURRENT",
         "difficultyBucket": 3,
         "difficultyReason": "존재명제 부정과 이차식 완전제곱 최솟값",
-        "crossConceptKeys": [],
-        "crossConceptNotes": "이차식의 최솟값",
+        "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE"
+        ],
+        "crossConceptNotes": "이차식을 (x+1)²+a−1로 완전제곱하여 모든 x의 부정 조건을 판단",
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
         "unresolvedMeta": null,
@@ -972,10 +975,11 @@
         "difficultyBucket": 4,
         "difficultyReason": "전칭명제 부정 + 완전제곱 + 이차부등식 매개변수 범위",
         "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE",
           "CC_INEQUALITY_QUADRATIC",
           "CC_POLYNOMIAL_FACTORIZATION"
         ],
-        "crossConceptNotes": "현재 발문의 이차부등식 해판정에 실제로 사용된 보조 개념",
+        "crossConceptNotes": "x에 대해 완전제곱하여 최솟값을 얻고 a에 대한 이차부등식의 해를 인수분해로 결정",
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
         "unresolvedMeta": null,
