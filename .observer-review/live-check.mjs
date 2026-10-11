@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import {githubClient,executeOnce,collectEvidence} from '../archive/tools/archive-progress-observer.mjs';
 const checkout=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
-const expected=process.env.GITHUB_SHA;
+const expected=process.env.OBSERVER_EXPECTED_SHA;
 console.log('OBSERVER_CHECKOUT_SHA='+checkout);
 if(!/^[0-9a-f]{40}$/.test(expected||'')||checkout!==expected)
  throw Error('PINNED_SHA_MISMATCH: checkout='+checkout+' expected='+expected);
