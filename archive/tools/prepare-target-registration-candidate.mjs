@@ -494,6 +494,10 @@ export function makeTargetMetadataRows({ sourceFile, bank, identityRows, r1Evide
     for (const optional of ['subUnitConfidence', 'subUnitClassificationDepth', 'conceptClusterKey', 'curriculumKey', 'courseKey', 'L1', 'L2', 'L3', 'L4', 'secondaryConceptKeys', 'curriculumApplicability', 'defaultSelectable', 'reviewStatus', 'rpmL1', 'rpmL2', 'rpmL3', 'rpmL4', 'rpmCurriculum', 'rpmSemanticStatus', 'rpmSemanticReason']) {
       if (hasOwn(question, optional)) row[optional] = jsonClone(question[optional]);
     }
+    if (admittedDebt) {
+      row.reviewStatus = 'manual_review';
+      row.defaultSelectable = false;
+    }
     return row;
   });
 }
@@ -515,7 +519,8 @@ export function serializeR1MetaProofSummary(binding, evidence) {
     allMetaAxesPass: metaDebtRows.length === 0,
     ...(metaDebtRows.length ? {
       metaDebtQids: metaDebtRows.map(row => row.qid),
-      coreMetaFieldsPass: true,
+      coreMetaFieldsPass: Boolean(binding.metaDebtAdmission) || metaDebtRows.every(row =>
+        (row.metaDebtFields || []).every(field => ['questionUid', 'uid', 'sourceQid', 'provenance', 'studentConsumerIndexParity'].includes(field))),
       metaDebtAdmission: binding.metaDebtAdmission,
       semanticPassClaim: false,
     } : {}),
@@ -1057,6 +1062,7 @@ function parseEmbeddedExactMetaDebts(evidence) {
 
 function exactMetaDebtEntries(row, question = null) {
   const axis = row?.axisEvidence?.META ?? row?.axisEvidence?.meta;
+  const nestedReview = row?.metaReview ?? row?.metaAudit;
   const currentFieldMatches = (field, captured, allowEmptyArray = false) => {
     if (!question) return true;
     if (!hasOwn(question, field) || !captured || !hasOwn(captured, field)
@@ -1095,6 +1101,39 @@ function exactMetaDebtEntries(row, question = null) {
       && axis.currentSourceFields && typeof axis.currentSourceFields === 'object' ? [] : null;
   }
   if (axis?.status === 'EVIDENCE_DEBT') {
+    // Current R1 v2 evidence records detailed Meta debt under metaReview and
+    // repeats it under axisEvidence.META. The top-level metaDebtFields may be
+    // empty; it is not authoritative for this evidence shape.
+    if (nestedReview?.status === 'EVIDENCE_DEBT') {
+      const fields = nestedReview.metaDebtFields;
+      const reasons = nestedReview.metaDebtReason;
+      const confirmed = nestedReview.confirmed;
+      if (!Array.isArray(fields) || fields.length === 0 || fields.some(field => typeof field !== 'string' || !field.trim())
+        || new Set(fields).size !== fields.length || !Array.isArray(reasons) || reasons.length === 0
+        || reasons.some(reason => typeof reason !== 'string' || !reason.trim())
+        || JSON.stringify(axis.metaDebtFields) !== JSON.stringify(fields)
+        || JSON.stringify(axis.metaDebtReason) !== JSON.stringify(reasons)
+        || !confirmed || typeof confirmed !== 'object' || Array.isArray(confirmed)) return null;
+
+      const projectionIdentityFields = new Set(['uid', 'sourceQid', 'provenance', 'studentConsumerIndexParity']);
+      const identityReason = reasons.find(reason => /no qid-level uid, sourceQid, or provenance fields/i.test(reason)
+        && /identity map\/catalog\/index lookups/i.test(reason));
+      const entries = [];
+      for (const field of fields) {
+        if (projectionIdentityFields.has(field)) {
+          if (!identityReason || (question && hasOwn(question, field) && question[field] !== null && question[field] !== undefined)) return null;
+          entries.push({ field, reason: identityReason.trim() });
+          continue;
+        }
+        const reason = field === 'difficultyBoundaryFlag' && confirmed[field] === 'NONE'
+          ? reasons.find(value => /source field is NONE/i.test(value))
+          : reasons.find(value => value.includes(field));
+        if (!reason || !hasOwn(confirmed, field)
+          || (question && (!hasOwn(question, field) || JSON.stringify(question[field]) !== JSON.stringify(confirmed[field])))) return null;
+        entries.push({ field, reason: reason.trim() });
+      }
+      return entries;
+    }
     const currentFields = axis.currentEvidenceDebtFields;
     const currentReason = axis.currentEvidenceDebtReason;
     if (Array.isArray(currentFields) && currentFields.length > 0) {
@@ -1168,6 +1207,7 @@ function exactMetaDebtEntries(row, question = null) {
 
 function unresolvedR1MetaDebtRows(evidence, bank) {
   const rows = [];
+  const projectionResolvedIdentityFields = new Set(['uid', 'sourceQid', 'provenance', 'studentConsumerIndexParity', 'questionUid']);
   for (const row of evidence.rows) {
     const question = bank[Number(row.qid) - 1];
     const axisMeta = row?.axisEvidence?.META ?? row?.axisEvidence?.meta;
@@ -1175,7 +1215,10 @@ function unresolvedR1MetaDebtRows(evidence, bank) {
     if (exactDebts === null) throw new Error('R1_META_PROOF_EXACT_DEBT_INVALID:' + row.qid);
     // Candidate registration creates the stable source-file/ordinal identity mapping.
     // The original identity debt remains in bound R1 evidence, but is resolved for this projection.
-    const unresolved = exactDebts.filter(debt => debt.field !== 'questionUid');
+    // The canonical registration identity projection binds source file and
+    // ordinal, then creates questionUid/uid/sourceQid/provenance/index parity.
+    // Preserve all source-valued Meta debt as explicit metadata holds.
+    const unresolved = exactDebts.filter(debt => !projectionResolvedIdentityFields.has(debt.field));
     if (unresolved.length === 0) continue;
     const metaDebtFields = [...new Set(unresolved.map(debt => debt.field))];
     const metaDebtReason = unresolved.map(debt => `${debt.field}: ${debt.reason}`).join(' | ');

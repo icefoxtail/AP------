@@ -720,6 +720,59 @@ test('accepts reviewed recorded projection debts only when the exact source fiel
     fs.rmSync(root, { recursive: true, force: true });
   }
 });
+test('binds nested current R1 EVIDENCE_DEBT and resolves only registration-generated identity projection fields', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-r1-nested-meta-debt-'));
+  try {
+    const examUid = '17_효천고_1학기_중간_고2_확률과통계';
+    const evidencePath = 'archive/analysis/nested-debt/R1.evidence.json';
+    const validationPath = 'archive/analysis/nested-debt/R1.validation.json';
+    const identityReason = 'Current JS exposes qid/questionNumber/sourceType but has no qid-level uid, sourceQid, or provenance fields; exact question-identity evidence is absent from the targeted current identity map/catalog/index lookups.';
+    const legacyReason = 'legacyLevelCompatibility is UNKNOWN in the current artifact and no current adjudication proves a compatibility value.';
+    const boundaryReason = 'Current level 하 with bucket 2 is a B12 compatibility candidate; source field is NONE and legacyLevelCompatibility UNKNOWN, so preserve and request adjudication evidence rather than guess.';
+    const fields = ['uid', 'sourceQid', 'provenance', 'studentConsumerIndexParity', 'legacyLevelCompatibility', 'difficultyBoundaryFlag'];
+    const reasons = [identityReason, legacyReason, boundaryReason];
+    const confirmed = { legacyLevelCompatibility: 'UNKNOWN', difficultyBoundaryFlag: 'NONE' };
+    const row = {
+      verdict: 'PASS', metaDebtFields: [], metaDebtReason: 'No unresolved top-level Meta debt was projected.',
+      metaReview: { status: 'EVIDENCE_DEBT', confirmed, metaDebtFields: fields, metaDebtReason: reasons },
+      axisEvidence: { META: { status: 'EVIDENCE_DEBT', confirmed, metaDebtFields: fields, metaDebtReason: reasons } },
+    };
+    const fixture = writeR1Chain(root, { evidencePath, validationPath, examUid, row });
+    const bank = [{ id: 1, legacyLevelCompatibility: 'UNKNOWN', difficultyBoundaryFlag: 'NONE', difficultyBucket: 2 }];
+    const accepted = verifyR1EvidenceBinding({ root, evidencePath, validationPath, assignment: fixture.assignment, examUid, bank });
+    assert.equal(accepted.validation.disposition, 'PASS');
+    assert.deepEqual(accepted.metaDebtRows.map(debt => debt.metaDebtFields), [['legacyLevelCompatibility', 'difficultyBoundaryFlag']]);
+    assert.deepEqual(accepted.metaDebtRows[0].metaDebtReasons, [
+      { field: 'legacyLevelCompatibility', reason: legacyReason },
+      { field: 'difficultyBoundaryFlag', reason: boundaryReason },
+    ]);
+    const sourceFile = 'original/high/h2/1mid/17_효천고_1학기_중간_고2_확률과통계.js';
+    const identityRows = makeTargetIdentityRows(sourceFile, bank);
+    const projected = makeTargetMetadataRows({ sourceFile, bank, identityRows, r1EvidencePath: evidencePath, r1MetaDebtRows: accepted.metaDebtRows })[0];
+    assert.equal(projected.questionUid, identityRows[0].questionUid);
+    assert.deepEqual(projected.metaDebtFields, ['legacyLevelCompatibility', 'difficultyBoundaryFlag']);
+    assert.equal(projected.metaDebtReason, `legacyLevelCompatibility: ${legacyReason} | difficultyBoundaryFlag: ${boundaryReason}`);
+    assert.equal(projected.legacyLevelCompatibility, 'UNKNOWN');
+    assert.equal(projected.difficultyBoundaryFlag, 'NONE');
+    assert.equal(projected.metadataStatus, 'approved_partial_with_explicit_holds');
+    assert.equal(projected.reviewStatus, 'manual_review');
+    assert.equal(projected.defaultSelectable, false);
+    const proofSummary = serializeR1MetaProofSummary(accepted, fixture.evidence);
+    assert.equal(proofSummary.allMetaAxesPass, false);
+    assert.equal(proofSummary.coreMetaFieldsPass, false);
+    assert.equal(proofSummary.semanticPassClaim, false);
+
+    const sourceMismatch = { legacyLevelCompatibility: 'NORMAL', difficultyBoundaryFlag: 'NONE', difficultyBucket: 2 };
+    const invalid = writeR1Chain(root, { evidencePath, validationPath, examUid, row });
+    assert.throws(() => verifyR1EvidenceBinding({ root, evidencePath, validationPath, assignment: invalid.assignment, examUid, bank: [sourceMismatch] }), /R1_META_PROOF_META_PASS_REQUIRED/);
+    const malformedIdentity = structuredClone(row);
+    malformedIdentity.metaReview.metaDebtFields[0] = 'questionUid';
+    malformedIdentity.axisEvidence.META.metaDebtFields[0] = 'questionUid';
+    const invalidIdentity = writeR1Chain(root, { evidencePath, validationPath, examUid, row: malformedIdentity });
+    assert.throws(() => verifyR1EvidenceBinding({ root, evidencePath, validationPath, assignment: invalidIdentity.assignment, examUid, bank }), /R1_META_PROOF_META_PASS_REQUIRED/);
+  } finally { fs.rmSync(root, { recursive: true, force: true }); }
+});
+
 test('accepts PASS_WITH_META_ONLY_DEBT only for an explicit approved template null-debt matching physical null', () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-r1-template-null-debt-'));
   try {
