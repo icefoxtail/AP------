@@ -116,10 +116,11 @@
       12,
       13,
       14,
-      16
+      16,
+      17
     ],
-    "questions": 135,
-    "svgFiles": 59,
+    "questions": 144,
+    "svgFiles": 68,
     "finishedIndependentReviewQids": [],
     "producedItemsByQid": {
       "q01": 9,
@@ -136,7 +137,8 @@
       "q12": 9,
       "q13": 9,
       "q14": 9,
-      "q16": 9
+      "q16": 9,
+      "q17": 9
     },
     "q01File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q01_CREATE_DRAFT.json",
     "q02File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q02_CREATE_DRAFT.json",
@@ -151,7 +153,6 @@
     "expectedVariantsAtNineEach": 207,
     "remainingQids": [
       15,
-      17,
       18,
       19,
       20,
@@ -190,7 +191,7 @@
     "q06ActivePT": 9,
     "q06ActiveTPL": 9,
     "q06ConditionKeyDebt": 0,
-    "rpmRecordIdsResolved": 135,
+    "rpmRecordIdsResolved": 144,
     "rpmRecordNumericDebt": 0,
     "rpmRecordCrosswalkGitBlob": "904b3768b69b300607e52217cad05bf71e34f221",
     "rpmIdCorrectionAuditPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/Q01_Q06_RPM_ID_REBIND_AUDIT.json",
@@ -288,7 +289,7 @@
     "q13InlineProblemSVGs": 9,
     "q13InlineSolutionSVGs": 9,
     "svgInlineTotalNew": 36,
-    "svgAuthoredTotalIncludingInline": 86,
+    "svgAuthoredTotalIncludingInline": 95,
     "q13ActivePT": 9,
     "q13ActiveTPL": 9,
     "q13RpmId": "H1-RPM-259",
@@ -316,8 +317,26 @@
     "q16QualityReview": "NOT_RUN",
     "q16RealBrowserRender": "NOT_RUN",
     "q15Status": "LOCAL_AUTHOR_DRAFT_AND_LIBRARY_ONLY_NOT_IN_GIT",
-    "svgTotalAppearancesAcrossStandaloneAndInline": 95,
-    "q16SVGsCountUnique": 9
+    "svgTotalAppearancesAcrossStandaloneAndInline": 113,
+    "q16SVGsCountUnique": 9,
+    "q17File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q17_CREATE_DRAFT.json",
+    "q17SVGs": [
+      "assets/q17-A1-solution.svg",
+      "assets/q17-A2-solution.svg",
+      "assets/q17-A3-solution.svg",
+      "assets/q17-B1-solution.svg",
+      "assets/q17-B2-solution.svg",
+      "assets/q17-B3-solution.svg",
+      "assets/q17-C1-solution.svg",
+      "assets/q17-C2-solution.svg",
+      "assets/q17-C3-solution.svg"
+    ],
+    "q17RpmId": "H1-RPM-272",
+    "q17ActivePT": 9,
+    "q17ActiveTPL": 9,
+    "q17QualityReview": "NOT_RUN",
+    "q17RealBrowserRender": "NOT_RUN",
+    "q17ConditionKeyDebt": 9
   },
   "remainingGates": [
     "q02 RPM record H1-RPM-246 exists but semantic PT/TPL direct binding gap status retained (no false ACTIVE assertion)",
@@ -329,10 +348,10 @@
     "q04 SVG6 xml/browser real render NOT_RUN (deterministic primitive only)"
   ],
   "next": {
-    "qid": 15,
-    "action": "Resolve q15 completed local/Library draft Git handoff, then continue q17 source. q16 newly saved and independently not yet quality released.",
-    "handoffPrompt": "Suncheon 2025 H1 2final branch work/alive-25-suncheon-h1-2final-qid9: q01-q14 Git drafts 126; q16 Git draft 9 = 135; q15 local ZIP 9 NOT yet mirrored in Git. Unique Git-authored SVG 86 = standalone SVG 59 (including q16 9) + q13 inline 18 + q14 inline 9; q16 also duplicates its physical 9 in solution, so standalone+inline appearance count 95. q16 SVG readback 9/9 parity. Formal review, student Chrome, Consumer and main NOT_RUN. Next: q15 Git catch-up, then q17."
+    "qid": 18,
+    "action": "Continue q18 production; q15 has existing Git draft/witness but source progress closure not reconciled. Do not reauthor completed parts. q17 self-reviewed draft only; formal review/consumer/main not run.",
+    "handoffPrompt": "Suncheon QID9 branch: q01~q14 and q16~q17 complete author draft in source progress =144/207. q15 JSON/witness exists on branch but excluded from completion count pending q15 stage closure review. q17 source original unchanged, 9 variants, 9 physical solution SVG and inline references, RPM H1-RPM-272 DIRECT_ACTIVE. Independent review/Chrome/consumer/main NOT_RUN."
   },
-  "lastCompletedQid": 16,
-  "lastUpdatedSourceQid": 16
+  "lastCompletedQid": 17,
+  "lastUpdatedSourceQid": 17
 }
