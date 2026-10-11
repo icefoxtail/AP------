@@ -18645,6 +18645,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "확률과통계"
+    },
+    {
+      "file": "original/high/h2/1mid/18_매산고_1학기_중간_고2_확률과통계.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2018,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "확률과통계",
+      "contentType": "기출",
+      "qCount": 18,
+      "rangeStartUnitKey": "H15-PS-01",
+      "rangeStartUnit": "순열과 조합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-PS-04",
+      "rangeEndUnit": "조건부확률",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-01",
+          "rangeStartUnit": "순열과 조합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-PS-04",
+          "rangeEndUnit": "조건부확률",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "확률과통계"
     }
   ]
 };
