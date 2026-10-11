@@ -2,7 +2,7 @@ name: Archive Progress Review Installer (isolated)
 on:
   push:
     branches: [review/archive-progress-live-20261011]
-    paths: [.observer-review/archive-progress-source.zip]
+    paths: [.observer-review/archive-progress-source.zip, .observer-review/install-trigger.txt]
 permissions:
   contents: write
 jobs:
@@ -22,7 +22,6 @@ jobs:
           unzip -q .observer-review/archive-progress-source.zip -d "$RUNNER_TEMP/observer-src"
           src="$RUNNER_TEMP/observer-src/archive_progress_v1"
           paths=(
-            .github/workflows/archive-progress-observer.yml
             .github/scripts/archive-progress-evidence.mjs
             .github/scripts/archive-progress-site-snapshot.py
             archive/tools/archive-progress-core.mjs
