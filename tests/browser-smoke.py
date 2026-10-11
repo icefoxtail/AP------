@@ -57,8 +57,10 @@ with sync_playwright() as p:
   page.locator('#refresh').click()
   page.wait_for_function('()=>document.querySelector("#rows").textContent.includes("25_샘플고") && document.querySelector("#updated").textContent.includes("04:15")')
   assert '완료' in row.locator('td').nth(5).inner_text()
+  requests_before_timer=page.evaluate('window.__calls')
   page.clock.fast_forward(60000)
-  page.wait_for_function('()=>window.__calls>=5')
+  page.wait_for_function('(before)=>window.__calls>before',arg=requests_before_timer)
+  assert page.evaluate('window.__calls')>requests_before_timer
   print('PASS Chromium: deploy job success + file unknown; latest mismatch + old normal; failed refresh retains view; refresh recovery; periodic 60s')
   print('browser requests:',page.evaluate('window.__calls'))
  finally:browser.close()
