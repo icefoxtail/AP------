@@ -49,7 +49,7 @@
     "problemSvgAdded": 0,
     "solutionSvgAdded": 4,
     "visualDecision": "4_ADD_NEW_VISUAL_5_NO_VISUAL",
-    "selfReview": "9/9_KEEP",
+    "selfReview": "8/9_KEEP_1/9_REVISED",
     "independentQualityReview": "NOT_RUN",
     "browserEngineModes": "NOT_RUN",
     "releaseStatus": "NOT_AUTHORIZED",
@@ -117,12 +117,14 @@
     "B3": {
       "inputEndpoint": 3,
       "outputEndpoint": -4,
-      "slope": -3,
-      "intercept": 5,
       "extraPoint": [
         1,
         2
-      ]
+      ],
+      "slope": -3,
+      "intercept": 5,
+      "askedQuantity": "a",
+      "answer": -3
     },
     "C1": {
       "vertexX": 1,
@@ -254,13 +256,27 @@
     },
     {
       "uid": "ALITE-SUNCHEON25-2FINAL-Q08-B3",
-      "candidateSnapshot": "SUN-Q08-B3-v1",
-      "decision": "KEEP",
-      "reverseStemFinding": "반직선 방향과 함숫값을 결합해 계수 결정",
+      "candidateSnapshot": "SUN-Q08-B3-v2",
+      "decision": "REVISED",
+      "reverseStemFinding": "기존 질문 a+b는 f(1)=2를 읽기만 해도 풀리는 우회 경로였음; 최종 질문을 a로 변경",
       "primaryL3Necessity": "단사성과 치역=공역을 함께 확인하는 일대일대응 판정이 정답의 결정적 근거",
       "distractorCoverage": "4/4",
-      "evidenceFreshness": "CURRENT_CANDIDATE_v1",
-      "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+      "evidenceFreshness": "CURRENT_CANDIDATE_v2",
+      "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+      "changedFields": [
+        "content",
+        "choices",
+        "solution",
+        "review.finalStudentStem",
+        "review.distractors",
+        "meta.integrationPattern",
+        "meta.difficultyReason"
+      ],
+      "supersededEvidence": [
+        "SUN-Q08-B3-v1 choice/answer derivation",
+        "SUN-Q08-B3-v1 distractors/solution"
+      ],
+      "actualRecheck": "New stem requires 3a+b=-4 and a+b=2; a=-3; five choices unique; wrong-option derivation 4/4."
     },
     {
       "uid": "ALITE-SUNCHEON25-2FINAL-Q08-C1",
@@ -952,16 +968,16 @@
         "그래프"
       ],
       "wide": false,
-      "content": "함수 $f(x)=ax+b$가 집합 $A=\\{x\\mid x\\le3\\}$에서 집합 $B=\\{y\\mid y\\ge-4\\}$로의 일대일대응이고 $f(1)=2$이다. $a+b$의 값은?",
+      "content": "함수 $f(x)=ax+b$가 집합 $A=\\{x\\mid x\\le3\\}$에서 집합 $B=\\{y\\mid y\\ge-4\\}$로의 일대일대응이고 $f(1)=2$이다. $a$의 값은?",
       "choices": [
-        "$2$",
         "$-3$",
-        "$5$",
         "$-2$",
-        "$8$"
+        "$-4$",
+        "$3$",
+        "$5$"
       ],
       "answer": "①",
-      "solution": "정의역은 위로 유계이고 공역은 아래로 유계이므로 일차함수의 기울기는 음수여야 한다. 따라서 정의역 오른쪽 끝 $x=3$이 치역의 최솟값 $-4$에 대응한다. $f(3)=3a+b=-4$이고, 주어진 조건에서 $f(1)=a+b=2$이다. 두 식을 빼면 $2a=-6$, $a=-3$이므로 $b=5$이다. 따라서 $a+b=-3+5=2$이다. 따라서 정답은 ①이다.",
+      "solution": "함수 $f(x)=ax+b$의 정의역은 $x\\le3$이고 공역은 $y\\ge-4$이다. 일대일대응이 되려면 치역이 이 공역과 일치해야 하므로 기울기는 음수이고, 정의역의 최댓값 $x=3$에서 함숫값이 $-4$여야 한다. 따라서 $3a+b=-4$이다. 또 $f(1)=2$이므로 $a+b=2$이다. 두 식을 빼면 $2a=-6$이므로 $a=-3$이다. 따라서 정답은 ①이다.",
       "solutionImage": "assets/q08-B3-solution.svg",
       "solutionImageAlt": "B3 일대일대응의 정의역과 치역을 비교하는 그래프",
       "solutionImageCaption": "B3 정의역 끝점과 치역 끝점의 대응을 확인한다.",
@@ -982,7 +998,7 @@
         "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
         "PTTPLBinding": "ACTIVE_CURRENT",
         "difficultyBucket": 3,
-        "difficultyReason": "반직선 방향과 함숫값을 결합해 계수 결정",
+        "difficultyReason": "일대일대응의 치역·공역 일치와 단조감소 방향으로 기울기 결정",
         "crossConceptKeys": [
           "CC_FUNCTION_MONOTONICITY"
         ],
@@ -997,42 +1013,42 @@
         ],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "서로 방향이 다른 반직선의 일대일대응에서 음의 기울기 추론",
+        "integrationPattern": "반직선 정의역·공역의 방향 차이로 기울기 부호를 결정하고 두 함숫값에서 기울기 계산",
         "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
       },
       "review": {
-        "reverseStemDisposition": "KEEP",
-        "reverseStemFinding": "반직선 방향과 함숫값을 결합해 계수 결정",
-        "studentMentalPath": "서로 방향이 다른 반직선의 일대일대응에서 음의 기울기 추론",
+        "reverseStemDisposition": "REVISED",
+        "reverseStemFinding": "기존 질문 a+b는 f(1)=2를 읽기만 해도 풀리는 우회 경로였음; 최종 질문을 a로 변경",
+        "studentMentalPath": "치역의 하한을 f(3)에 결속하여 f(1)과 연립, 기울기 확정",
         "primaryL3Necessity": "단사성과 치역=공역을 함께 확인하는 일대일대응 판정이 정답의 결정적 근거",
-        "finalStudentStem": "함수 $f(x)=ax+b$가 집합 $A=\\{x\\mid x\\le3\\}$에서 집합 $B=\\{y\\mid y\\ge-4\\}$로의 일대일대응이고 $f(1)=2$이다. $a+b$의 값은?",
-        "finalCandidateSnapshot": "SUN-Q08-B3-v1",
+        "finalStudentStem": "함수 $f(x)=ax+b$가 집합 $A=\\{x\\mid x\\le3\\}$에서 집합 $B=\\{y\\mid y\\ge-4\\}$로의 일대일대응이고 $f(1)=2$이다. $a$의 값은?",
+        "finalCandidateSnapshot": "SUN-Q08-B3-v2",
         "distractors": [
           {
             "choice": "②",
-            "choiceValue": "$-3$",
-            "derivation": "기울기 $a=-3$만 구하고 요구한 $a+b$를 계산하지 않으면 $-3$을 선택한다."
+            "choiceValue": "$-2$",
+            "derivation": "치역 최솟값을 실제 $-4$가 아닌 $-2$로 잘못 놓으면 $f(3)=-2$, $f(1)=2$에서 $2a=-4$, $a=-2$가 된다."
           },
           {
             "choice": "③",
-            "choiceValue": "$5$",
-            "derivation": "절편 $b=5$만 구하고 요구한 $a+b$를 계산하지 않으면 $5$를 선택한다."
+            "choiceValue": "$-4$",
+            "derivation": "치역 최솟값을 실제 $-4$가 아닌 $-6$으로 놓으면 $f(3)=-6$, $f(1)=2$에서 $2a=-8$, $a=-4$가 된다."
           },
           {
             "choice": "④",
-            "choiceValue": "$-2$",
-            "derivation": "$f(1)=2$를 $f(1)=-2$로 잘못 읽으면 $a=-3$을 유지할 때 $b=1$, 따라서 $a+b=-2$로 틀린다."
+            "choiceValue": "$3$",
+            "derivation": "기울기 변화량의 순서를 뒤집어 $​\\dfrac{2-(-4)}{3-1}=3$으로 계산하였다. 실제는 $​\\dfrac{-4-2}{3-1}=-3$이다."
           },
           {
             "choice": "⑤",
-            "choiceValue": "$8$",
-            "derivation": "$a+b$가 아니라 $b-a$를 구하면 $5-(-3)=8$이다."
+            "choiceValue": "$5$",
+            "derivation": "$a=-3$에서 $a+b=2$를 이용해 $b=5$를 구하고, 묻는 기울기 $a$ 대신 절편을 답하였다."
           }
         ],
         "wrongRouteCoverage": "4/4_AUTHOR_PATHS_RECORDED",
         "distractorReproduction": "4/4_AUTHOR_EXPLANATIONS",
         "answerUniqueness": "AUTHOR_MATH_CHECK",
-        "evidenceFreshness": "CURRENT_CANDIDATE_v1",
+        "evidenceFreshness": "CURRENT_CANDIDATE_v2",
         "problemVisual": {
           "decision": "NO_VISUAL",
           "reason": "문제의 모든 대응 관계와 정의역·공역 정보가 발문 수식에 충분히 제시되어 그림 불필요"
@@ -1042,7 +1058,7 @@
           "assetPath": "assets/q08-B3-solution.svg",
           "reason": "증가·감소·대칭축·절댓값 분기에 따른 정의역/치역 대응을 그림으로 시각화"
         },
-        "authorMathCheck": "AUTHOR_ALGEBRA_RANGE_AND_BIJECTION_CHECK",
+        "authorMathCheck": "AUTHOR_RECHECK_AFTER_REVERSE_STEM_REPAIR",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
         "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
