@@ -735,6 +735,11 @@
     });
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
+        // A focused search input would otherwise clear itself *after* we restore
+        // the saved query, violating navigation return state.
+        if (ui.drawer.classList.contains('open') || state.focusedGroupId || state.list ||
+            !ui.filterPanel.hidden || $('universe').classList.contains('travel-warp') ||
+            $('universe').classList.contains('travel-flight')) event.preventDefault();
         if (ui.drawer.classList.contains('open')) {
           if (state.selectedQuestion) showWholeExam();
           else closeExam();
