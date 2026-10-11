@@ -96,6 +96,12 @@ jobs:
           RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
         run: node tools/check-geumdang-qid9-browser.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/geumdang-source-chrome.log"
 
+      - name: Verify imported QID9 student lookup selection exam answer and solution in actual Chrome
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+        run: node tools/check-qid9-main-source-browser.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/qid9-student-chrome.log"
+
       - name: Verify complete generated mock selection, preview, print, answer, and solution flow
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
