@@ -108,10 +108,11 @@
       4,
       5,
       6,
-      7
+      7,
+      8
     ],
-    "questions": 63,
-    "svgFiles": 14,
+    "questions": 72,
+    "svgFiles": 18,
     "finishedIndependentReviewQids": [],
     "producedItemsByQid": {
       "q01": 9,
@@ -120,7 +121,8 @@
       "q04": 9,
       "q05": 9,
       "q06": 9,
-      "q07": 9
+      "q07": 9,
+      "q08": 9
     },
     "q01File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q01_CREATE_DRAFT.json",
     "q02File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q02_CREATE_DRAFT.json",
@@ -134,7 +136,6 @@
     "expectedSourceQidCount": 23,
     "expectedVariantsAtNineEach": 207,
     "remainingQids": [
-      8,
       9,
       10,
       11,
@@ -182,7 +183,7 @@
     "q06ActivePT": 9,
     "q06ActiveTPL": 9,
     "q06ConditionKeyDebt": 0,
-    "rpmRecordIdsResolved": 63,
+    "rpmRecordIdsResolved": 72,
     "rpmRecordNumericDebt": 0,
     "rpmRecordCrosswalkGitBlob": "904b3768b69b300607e52217cad05bf71e34f221",
     "rpmIdCorrectionAuditPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/Q01_Q06_RPM_ID_REBIND_AUDIT.json",
@@ -196,7 +197,19 @@
     "q07ActiveTPL": 9,
     "q07ConditionKeyDebt": 0,
     "q07QualityReview": "NOT_RUN",
-    "q07RealBrowserRender": "NOT_RUN"
+    "q07RealBrowserRender": "NOT_RUN",
+    "q08File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q08_CREATE_DRAFT.json",
+    "q08SVGs": [
+      "assets/q08-B2-solution.svg",
+      "assets/q08-B3-solution.svg",
+      "assets/q08-C1-solution.svg",
+      "assets/q08-C3-solution.svg"
+    ],
+    "q08ActivePT": 9,
+    "q08ActiveTPL": 9,
+    "q08ConditionKeyDebt": 0,
+    "q08QualityReview": "NOT_RUN",
+    "q08RealBrowserRender": "NOT_RUN"
   },
   "remainingGates": [
     "q02 RPM record H1-RPM-246 exists but semantic PT/TPL direct binding gap status retained (no false ACTIVE assertion)",
@@ -208,10 +221,10 @@
     "q04 SVG6 xml/browser real render NOT_RUN (deterministic primitive only)"
   ],
   "next": {
-    "qid": 8,
-    "action": "Read q08 protected source; generate A1-C3 nine slots; include student-facing solution SVG when educationally needed; commit q08 on same branch. Existing q01~q07 untouched.",
-    "handoffPrompt": "Suncheon 25 H1 2final branch work/alive-25-suncheon-h1-2final-qid9. q01~q07 CREATE drafts 63 questions, 14 SVG. Continue from q08; no prior QID recertification."
+    "qid": 9,
+    "action": "Read q09 protected source; generate A1~C3 nine variants with current RPM PT/TPL and educational SVG when warranted; commit q09 to same Suncheon branch. Existing q01~q08 unchanged.",
+    "handoffPrompt": "Suncheon 25 H1 2final, work/alive-25-suncheon-h1-2final-qid9. q01~q08 are 72 author drafts, 18 solution/problem SVG. Next q09. Existing drafts not independently reviewed or released."
   },
-  "lastCompletedQid": 7,
-  "lastUpdatedSourceQid": 7
+  "lastCompletedQid": 8,
+  "lastUpdatedSourceQid": 8
 }
