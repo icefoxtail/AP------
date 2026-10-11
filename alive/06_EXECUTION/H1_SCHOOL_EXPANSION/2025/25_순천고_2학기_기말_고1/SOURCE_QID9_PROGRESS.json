@@ -115,10 +115,11 @@
       11,
       12,
       13,
-      14
+      14,
+      16
     ],
-    "questions": 126,
-    "svgFiles": 50,
+    "questions": 135,
+    "svgFiles": 59,
     "finishedIndependentReviewQids": [],
     "producedItemsByQid": {
       "q01": 9,
@@ -134,7 +135,8 @@
       "q11": 9,
       "q12": 9,
       "q13": 9,
-      "q14": 9
+      "q14": 9,
+      "q16": 9
     },
     "q01File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q01_CREATE_DRAFT.json",
     "q02File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q02_CREATE_DRAFT.json",
@@ -149,7 +151,6 @@
     "expectedVariantsAtNineEach": 207,
     "remainingQids": [
       15,
-      16,
       17,
       18,
       19,
@@ -189,7 +190,7 @@
     "q06ActivePT": 9,
     "q06ActiveTPL": 9,
     "q06ConditionKeyDebt": 0,
-    "rpmRecordIdsResolved": 126,
+    "rpmRecordIdsResolved": 135,
     "rpmRecordNumericDebt": 0,
     "rpmRecordCrosswalkGitBlob": "904b3768b69b300607e52217cad05bf71e34f221",
     "rpmIdCorrectionAuditPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/Q01_Q06_RPM_ID_REBIND_AUDIT.json",
@@ -286,8 +287,8 @@
     "q13File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q13_CREATE_DRAFT.json",
     "q13InlineProblemSVGs": 9,
     "q13InlineSolutionSVGs": 9,
-    "svgInlineTotalNew": 27,
-    "svgAuthoredTotalIncludingInline": 77,
+    "svgInlineTotalNew": 36,
+    "svgAuthoredTotalIncludingInline": 95,
     "q13ActivePT": 9,
     "q13ActiveTPL": 9,
     "q13RpmId": "H1-RPM-259",
@@ -305,7 +306,17 @@
     "q14RpmId": "H1-RPM-262",
     "q14ConditionKeyDebt": 0,
     "q14QualityReview": "NOT_RUN",
-    "q14RealBrowserRender": "NOT_RUN"
+    "q14RealBrowserRender": "NOT_RUN",
+    "q16File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q16_CREATE_DRAFT.json",
+    "q16SVGs": 9,
+    "q16ActivePT": 9,
+    "q16ActiveTPL": 9,
+    "q16RpmId": "H1-RPM-249",
+    "q16ConditionKeyStatus": "EVIDENCE_DEBT_KEY_MAPPING",
+    "q16QualityReview": "NOT_RUN",
+    "q16RealBrowserRender": "NOT_RUN",
+    "q15Status": "LOCAL_AUTHOR_DRAFT_AND_LIBRARY_ONLY_NOT_IN_GIT",
+    "q15LibraryPath": "/Archive2-GPT/generations/25_suncheon_q15"
   },
   "remainingGates": [
     "q02 RPM record H1-RPM-246 exists but semantic PT/TPL direct binding gap status retained (no false ACTIVE assertion)",
@@ -318,9 +329,9 @@
   ],
   "next": {
     "qid": 15,
-    "action": "Read protected q15 source and create A1~C3 nine variants, validate meta and problem/solution visual decisions, and preserve q01~q14.",
-    "handoffPrompt": "Suncheon 2025 H1 2final work/alive-25-suncheon-h1-2final-qid9. q01~q14 126 CREATE drafts. Standalone SVG files 50, q13 solution/problem inline 18, q14 solution inline 9; total authored 77. Formal review/Chrome/main NOT_RUN. Next q15."
+    "action": "Resolve q15 completed local/Library draft Git handoff, then continue q17 source. q16 newly saved and independently not yet quality released.",
+    "handoffPrompt": "Suncheon 2025 H1 2final branch work/alive-25-suncheon-h1-2final-qid9: q01-q14 Git drafts 126, q16 Git draft 9 =135, q15 local ZIP 9 NOT mirrored in Git. Standalone SVGs59 plus q13 18 inline q14 9 inline q16 9 inline =95 authored SVG. q16 static QA pass; independent review, student Chrome, Consumer and main not run."
   },
-  "lastCompletedQid": 14,
-  "lastUpdatedSourceQid": 14
+  "lastCompletedQid": 16,
+  "lastUpdatedSourceQid": 16
 }
