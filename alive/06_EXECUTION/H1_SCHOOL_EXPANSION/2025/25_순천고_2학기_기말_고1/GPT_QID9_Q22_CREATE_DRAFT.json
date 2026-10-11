@@ -249,7 +249,7 @@
       "standardUnitOrder": 7,
       "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
       "subUnit": "합성함수",
-      "subUnitConfidence": "CONTENT_AND_ACTIVE_RPM",
+      "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "questionType": "객관식",
       "layoutTag": "grid",
@@ -269,7 +269,7 @@
       ],
       "answer": "③",
       "solution": "$x\\lt-2$에서 $f(x)=x+3$이고, $f(x)=-2$를 만족하는 입력은 $x=-5$이다. $x\\lt-5$에서 바깥 함수는 첫 식을 사용하므로 $f(f(x))=x+6$이다. $-5\\le x\\lt-2$에서는 바깥 함수의 둘째 식을 사용하여 $2(x+3)+5=2x+11$이다. $x\\ge-2$에서는 $f(x)=2x+5\\ge1$이므로 $f(f(x))=2(2x+5)+5=4x+15$이다. 따라서 경계값은 $a=-5$, $b=-2$이고 그 합은 $-7$이다.\n따라서 정답은 ③이다.",
-      "solutionImage": "assets/q22-A1-solution.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q22-A1-solution.svg",
       "solutionImageAlt": "A1 조각함수 2회 합성의 실제 구간 경계 및 구간별 식 도식",
       "solutionImageCaption": "합성함수의 각 구간 경계는 오른쪽 구간에 포함되며, 구간별 식은 반복 대입으로 확인했다.",
       "meta": {
@@ -292,15 +292,11 @@
           "COND_RANGE"
         ],
         "conditionStatus": "CANONICAL_ACTIVE",
-        "integrationPattern": "PIECEWISE_ITERATED_COMPOSITION_BRANCH_PARTITION",
-        "integrationPatternStatus": "SEMANTIC_ONLY_EXACT_KEY_UNVERIFIED",
+        "integrationPattern": "CASE_BRANCH",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
         "difficultyBucket": 3,
-        "metadataDebt": [
-          {
-            "field": "integrationPattern",
-            "reason": "No verified registered Integration pattern key for piecewise iterated composition; exact mathematical evidence recorded"
-          }
-        ]
+        "metadataDebt": [],
+        "integrationPatternReason": "PIECEWISE_ITERATED_COMPOSITION_BRANCH_PARTITION"
       },
       "provenance": {
         "kind": "ALIVE_QID9_NEW",
@@ -342,7 +338,7 @@
         },
         "solutionVisual": {
           "decision": "ADD_NEW_VISUAL",
-          "physicalPath": "assets/q22-A1-solution.svg",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q22-A1-solution.svg",
           "expectedFacts": {
             "t": -2,
             "c": 3,
@@ -379,7 +375,7 @@
       "standardUnitOrder": 7,
       "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
       "subUnit": "합성함수",
-      "subUnitConfidence": "CONTENT_AND_ACTIVE_RPM",
+      "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "questionType": "객관식",
       "layoutTag": "grid",
@@ -399,7 +395,7 @@
       ],
       "answer": "④",
       "solution": "$f(0)=2$이고 $2\\ge1$이므로 $f(f(0))=f(2)=2\\cdot2+1=5$이다. 또 $f(1)=3$이므로 $f(f(1))=f(3)=2\\cdot3+1=7$이다. 따라서 합은 $5+7=12$이다. 주의할 점은 바깥 함수를 적용할 때 원래 입력이 아닌 $f(x)$의 값을 기준으로 구간을 선택하는 것이다.\n따라서 정답은 ④이다.",
-      "solutionImage": "assets/q22-A2-solution.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q22-A2-solution.svg",
       "solutionImageAlt": "A2 조각함수 2회 합성의 실제 구간 경계 및 구간별 식 도식",
       "solutionImageCaption": "합성함수의 각 구간 경계는 오른쪽 구간에 포함되며, 구간별 식은 반복 대입으로 확인했다.",
       "meta": {
@@ -422,15 +418,11 @@
           "COND_RANGE"
         ],
         "conditionStatus": "CANONICAL_ACTIVE",
-        "integrationPattern": "PIECEWISE_ITERATED_COMPOSITION_BRANCH_PARTITION",
-        "integrationPatternStatus": "SEMANTIC_ONLY_EXACT_KEY_UNVERIFIED",
+        "integrationPattern": "CASE_BRANCH",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
         "difficultyBucket": 3,
-        "metadataDebt": [
-          {
-            "field": "integrationPattern",
-            "reason": "No verified registered Integration pattern key for piecewise iterated composition; exact mathematical evidence recorded"
-          }
-        ]
+        "metadataDebt": [],
+        "integrationPatternReason": "PIECEWISE_ITERATED_COMPOSITION_BRANCH_PARTITION"
       },
       "provenance": {
         "kind": "ALIVE_QID9_NEW",
@@ -472,7 +464,7 @@
         },
         "solutionVisual": {
           "decision": "ADD_NEW_VISUAL",
-          "physicalPath": "assets/q22-A2-solution.svg",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q22-A2-solution.svg",
           "expectedFacts": {
             "t": 1,
             "c": 2,
@@ -509,7 +501,7 @@
       "standardUnitOrder": 7,
       "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
       "subUnit": "합성함수",
-      "subUnitConfidence": "CONTENT_AND_ACTIVE_RPM",
+      "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "questionType": "객관식",
       "layoutTag": "grid",
@@ -529,7 +521,7 @@
       ],
       "answer": "②",
       "solution": "$x\\lt0$에서 $f(x)=x+4$이고, 바깥 함수의 경계 조건 $f(x)=0$을 풀면 $x=-4$이다. 따라서 합성함수의 구간 경계는 $-4,0$이어서 $a=-4$이다. $f(2)=2\\cdot2+4=8$, $f(f(2))=f(8)=2\\cdot8+4=20$이므로 $a+f(f(2))=-4+20=16$이다.\n따라서 정답은 ②이다.",
-      "solutionImage": "assets/q22-A3-solution.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q22-A3-solution.svg",
       "solutionImageAlt": "A3 조각함수 2회 합성의 실제 구간 경계 및 구간별 식 도식",
       "solutionImageCaption": "합성함수의 각 구간 경계는 오른쪽 구간에 포함되며, 구간별 식은 반복 대입으로 확인했다.",
       "meta": {
@@ -552,15 +544,11 @@
           "COND_RANGE"
         ],
         "conditionStatus": "CANONICAL_ACTIVE",
-        "integrationPattern": "PIECEWISE_ITERATED_COMPOSITION_BRANCH_PARTITION",
-        "integrationPatternStatus": "SEMANTIC_ONLY_EXACT_KEY_UNVERIFIED",
+        "integrationPattern": "CASE_BRANCH",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
         "difficultyBucket": 3,
-        "metadataDebt": [
-          {
-            "field": "integrationPattern",
-            "reason": "No verified registered Integration pattern key for piecewise iterated composition; exact mathematical evidence recorded"
-          }
-        ]
+        "metadataDebt": [],
+        "integrationPatternReason": "PIECEWISE_ITERATED_COMPOSITION_BRANCH_PARTITION"
       },
       "provenance": {
         "kind": "ALIVE_QID9_NEW",
@@ -602,7 +590,7 @@
         },
         "solutionVisual": {
           "decision": "ADD_NEW_VISUAL",
-          "physicalPath": "assets/q22-A3-solution.svg",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q22-A3-solution.svg",
           "expectedFacts": {
             "t": 0,
             "c": 4,
@@ -630,7 +618,7 @@
       "slot": "B1",
       "purpose": "B",
       "modeCandidate": "FOLLOWUP",
-      "level": "상",
+      "level": "중",
       "category": "함수",
       "originalCategory": "합성함수",
       "standardCourse": "공통수학2",
@@ -639,7 +627,7 @@
       "standardUnitOrder": 7,
       "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
       "subUnit": "합성함수",
-      "subUnitConfidence": "CONTENT_AND_ACTIVE_RPM",
+      "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "questionType": "객관식",
       "layoutTag": "grid",
@@ -659,7 +647,7 @@
       ],
       "answer": "⑤",
       "solution": "$-4\\lt-2$이므로 $f(-4)=-4+3=-1$이다. 이제 바깥 함수에 넣을 값은 $-1$이다. $-1\\ge-2$이므로 두 번째 식을 사용하여 $f(-1)=2(-1)+5=3$이다. 따라서 $f(f(-4))=3$이다.\n따라서 정답은 ⑤이다.",
-      "solutionImage": "assets/q22-B1-solution.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q22-B1-solution.svg",
       "solutionImageAlt": "B1 조각함수 2회 합성의 실제 구간 경계 및 구간별 식 도식",
       "solutionImageCaption": "합성함수의 각 구간 경계는 오른쪽 구간에 포함되며, 구간별 식은 반복 대입으로 확인했다.",
       "meta": {
@@ -682,15 +670,11 @@
           "COND_RANGE"
         ],
         "conditionStatus": "CANONICAL_ACTIVE",
-        "integrationPattern": "PIECEWISE_ITERATED_COMPOSITION_BRANCH_PARTITION",
-        "integrationPatternStatus": "SEMANTIC_ONLY_EXACT_KEY_UNVERIFIED",
+        "integrationPattern": "CASE_BRANCH",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
         "difficultyBucket": 4,
-        "metadataDebt": [
-          {
-            "field": "integrationPattern",
-            "reason": "No verified registered Integration pattern key for piecewise iterated composition; exact mathematical evidence recorded"
-          }
-        ]
+        "metadataDebt": [],
+        "integrationPatternReason": "PIECEWISE_ITERATED_COMPOSITION_BRANCH_PARTITION"
       },
       "provenance": {
         "kind": "ALIVE_QID9_NEW",
@@ -732,7 +716,7 @@
         },
         "solutionVisual": {
           "decision": "ADD_NEW_VISUAL",
-          "physicalPath": "assets/q22-B1-solution.svg",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q22-B1-solution.svg",
           "expectedFacts": {
             "t": -2,
             "c": 3,
@@ -760,7 +744,7 @@
       "slot": "B2",
       "purpose": "B",
       "modeCandidate": "FOLLOWUP",
-      "level": "상",
+      "level": "중",
       "category": "함수",
       "originalCategory": "합성함수",
       "standardCourse": "공통수학2",
@@ -769,7 +753,7 @@
       "standardUnitOrder": 7,
       "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
       "subUnit": "합성함수",
-      "subUnitConfidence": "CONTENT_AND_ACTIVE_RPM",
+      "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "questionType": "객관식",
       "layoutTag": "grid",
@@ -789,7 +773,7 @@
       ],
       "answer": "①",
       "solution": "$f(-2)=1\\lt2$이므로 $f(f(-2))=f(1)=4$이다. $f(0)=3\\ge2$이므로 $f(f(0))=f(3)=7$이다. $f(3)=7\\ge2$이므로 $f(f(3))=f(7)=15$이다. 따라서 전체 합은 $4+7+15=26$이다.\n따라서 정답은 ①이다.",
-      "solutionImage": "assets/q22-B2-solution.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q22-B2-solution.svg",
       "solutionImageAlt": "B2 조각함수 2회 합성의 실제 구간 경계 및 구간별 식 도식",
       "solutionImageCaption": "합성함수의 각 구간 경계는 오른쪽 구간에 포함되며, 구간별 식은 반복 대입으로 확인했다.",
       "meta": {
@@ -812,15 +796,11 @@
           "COND_RANGE"
         ],
         "conditionStatus": "CANONICAL_ACTIVE",
-        "integrationPattern": "PIECEWISE_ITERATED_COMPOSITION_BRANCH_PARTITION",
-        "integrationPatternStatus": "SEMANTIC_ONLY_EXACT_KEY_UNVERIFIED",
+        "integrationPattern": "CASE_BRANCH",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
         "difficultyBucket": 4,
-        "metadataDebt": [
-          {
-            "field": "integrationPattern",
-            "reason": "No verified registered Integration pattern key for piecewise iterated composition; exact mathematical evidence recorded"
-          }
-        ]
+        "metadataDebt": [],
+        "integrationPatternReason": "PIECEWISE_ITERATED_COMPOSITION_BRANCH_PARTITION"
       },
       "provenance": {
         "kind": "ALIVE_QID9_NEW",
@@ -862,7 +842,7 @@
         },
         "solutionVisual": {
           "decision": "ADD_NEW_VISUAL",
-          "physicalPath": "assets/q22-B2-solution.svg",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q22-B2-solution.svg",
           "expectedFacts": {
             "t": 2,
             "c": 3,
@@ -890,7 +870,7 @@
       "slot": "B3",
       "purpose": "B",
       "modeCandidate": "FOLLOWUP",
-      "level": "상",
+      "level": "중",
       "category": "함수",
       "originalCategory": "합성함수",
       "standardCourse": "공통수학2",
@@ -899,7 +879,7 @@
       "standardUnitOrder": 7,
       "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
       "subUnit": "합성함수",
-      "subUnitConfidence": "CONTENT_AND_ACTIVE_RPM",
+      "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "questionType": "객관식",
       "layoutTag": "grid",
@@ -919,7 +899,7 @@
       ],
       "answer": "③",
       "solution": "$x\\lt-1$에서 $f(x)=x+p$이므로 바깥 함수의 경계를 만드는 조건은 $x+p=-1$, 즉 $x=-p-1$이다. 다른 경계가 $x=-1$이고 $p$는 자연수이므로 작은 경계는 $-p-1=-5$이다. 따라서 $p=4$이다. 이제 $f(1)=2+4+1=7$이고 $f(7)=14+4+1=19$이다.\n따라서 정답은 ③이다.",
-      "solutionImage": "assets/q22-B3-solution.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q22-B3-solution.svg",
       "solutionImageAlt": "B3 조각함수 2회 합성의 실제 구간 경계 및 구간별 식 도식",
       "solutionImageCaption": "자연수 p=4로 결정된 경우의 구간 경계 및 각 구간의 합성식이다.",
       "meta": {
@@ -943,15 +923,11 @@
           "COND_RANGE"
         ],
         "conditionStatus": "CANONICAL_ACTIVE",
-        "integrationPattern": "PIECEWISE_ITERATED_COMPOSITION_BRANCH_PARTITION",
-        "integrationPatternStatus": "SEMANTIC_ONLY_EXACT_KEY_UNVERIFIED",
+        "integrationPattern": "CASE_BRANCH",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
         "difficultyBucket": 4,
-        "metadataDebt": [
-          {
-            "field": "integrationPattern",
-            "reason": "No verified registered Integration pattern key for piecewise iterated composition; exact mathematical evidence recorded"
-          }
-        ]
+        "metadataDebt": [],
+        "integrationPatternReason": "PIECEWISE_ITERATED_COMPOSITION_BRANCH_PARTITION"
       },
       "provenance": {
         "kind": "ALIVE_QID9_NEW",
@@ -993,7 +969,7 @@
         },
         "solutionVisual": {
           "decision": "ADD_NEW_VISUAL",
-          "physicalPath": "assets/q22-B3-solution.svg",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q22-B3-solution.svg",
           "expectedFacts": {
             "t": -1,
             "c": 4,
@@ -1030,7 +1006,7 @@
       "standardUnitOrder": 7,
       "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
       "subUnit": "합성함수",
-      "subUnitConfidence": "CONTENT_AND_ACTIVE_RPM",
+      "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "questionType": "객관식",
       "layoutTag": "grid",
@@ -1050,7 +1026,7 @@
       ],
       "answer": "①",
       "solution": "첫 함수의 경계는 $x=-1$이다. $f(x)=-1$을 만드는 입력은 $x=-3$이고, $f(f(x))=-1$을 만드는 입력은 $x=-5$이다. 실제로 $x\\lt-5$에서 $F(x)=x+6$, $-5\\le x\\lt-3$에서 $F(x)=2x+11$, $-3\\le x\\lt-1$에서 $F(x)=4x+17$, $x\\ge-1$에서 $F(x)=8x+21$이다. 따라서 경계값은 $-5,-3,-1$이고 합은 $-9$이다.\n따라서 정답은 ①이다.",
-      "solutionImage": "assets/q22-C1-solution.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q22-C1-solution.svg",
       "solutionImageAlt": "C1 조각함수 3회 합성의 실제 구간 경계 및 구간별 식 도식",
       "solutionImageCaption": "합성함수의 각 구간 경계는 오른쪽 구간에 포함되며, 구간별 식은 반복 대입으로 확인했다.",
       "meta": {
@@ -1073,15 +1049,11 @@
           "COND_RANGE"
         ],
         "conditionStatus": "CANONICAL_ACTIVE",
-        "integrationPattern": "PIECEWISE_ITERATED_COMPOSITION_BRANCH_PARTITION",
-        "integrationPatternStatus": "SEMANTIC_ONLY_EXACT_KEY_UNVERIFIED",
+        "integrationPattern": "CASE_BRANCH",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
         "difficultyBucket": 5,
-        "metadataDebt": [
-          {
-            "field": "integrationPattern",
-            "reason": "No verified registered Integration pattern key for piecewise iterated composition; exact mathematical evidence recorded"
-          }
-        ]
+        "metadataDebt": [],
+        "integrationPatternReason": "PIECEWISE_ITERATED_COMPOSITION_BRANCH_PARTITION"
       },
       "provenance": {
         "kind": "ALIVE_QID9_NEW",
@@ -1123,7 +1095,7 @@
         },
         "solutionVisual": {
           "decision": "ADD_NEW_VISUAL",
-          "physicalPath": "assets/q22-C1-solution.svg",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q22-C1-solution.svg",
           "expectedFacts": {
             "t": -1,
             "c": 2,
@@ -1152,7 +1124,7 @@
       "slot": "C2",
       "purpose": "C",
       "modeCandidate": "EXAM_FOLLOWUP",
-      "level": "상",
+      "level": "중",
       "category": "함수",
       "originalCategory": "합성함수",
       "standardCourse": "공통수학2",
@@ -1161,7 +1133,7 @@
       "standardUnitOrder": 7,
       "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
       "subUnit": "합성함수",
-      "subUnitConfidence": "CONTENT_AND_ACTIVE_RPM",
+      "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "questionType": "객관식",
       "layoutTag": "grid",
@@ -1181,7 +1153,7 @@
       ],
       "answer": "②",
       "solution": "$f(-2)=0$, $f(0)=2$, $f(2)=5$이므로 $F(-2)=5$이다. 또 $f(2)=5$, $f(5)=11$, $f(11)=23$이므로 $F(2)=23$이다. 따라서 합은 $5+23=28$이다. 각 단계마다 함수에 들어가는 수가 경계 $1$보다 작은지 다시 확인해야 한다.\n따라서 정답은 ②이다.",
-      "solutionImage": "assets/q22-C2-solution.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q22-C2-solution.svg",
       "solutionImageAlt": "C2 조각함수 3회 합성의 실제 구간 경계 및 구간별 식 도식",
       "solutionImageCaption": "합성함수의 각 구간 경계는 오른쪽 구간에 포함되며, 구간별 식은 반복 대입으로 확인했다.",
       "meta": {
@@ -1204,15 +1176,11 @@
           "COND_RANGE"
         ],
         "conditionStatus": "CANONICAL_ACTIVE",
-        "integrationPattern": "PIECEWISE_ITERATED_COMPOSITION_BRANCH_PARTITION",
-        "integrationPatternStatus": "SEMANTIC_ONLY_EXACT_KEY_UNVERIFIED",
+        "integrationPattern": "CASE_BRANCH",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
         "difficultyBucket": 5,
-        "metadataDebt": [
-          {
-            "field": "integrationPattern",
-            "reason": "No verified registered Integration pattern key for piecewise iterated composition; exact mathematical evidence recorded"
-          }
-        ]
+        "metadataDebt": [],
+        "integrationPatternReason": "PIECEWISE_ITERATED_COMPOSITION_BRANCH_PARTITION"
       },
       "provenance": {
         "kind": "ALIVE_QID9_NEW",
@@ -1254,7 +1222,7 @@
         },
         "solutionVisual": {
           "decision": "ADD_NEW_VISUAL",
-          "physicalPath": "assets/q22-C2-solution.svg",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q22-C2-solution.svg",
           "expectedFacts": {
             "t": 1,
             "c": 2,
@@ -1283,7 +1251,7 @@
       "slot": "C3",
       "purpose": "C",
       "modeCandidate": "EXAM_FOLLOWUP",
-      "level": "상",
+      "level": "중",
       "category": "함수",
       "originalCategory": "합성함수",
       "standardCourse": "공통수학2",
@@ -1292,7 +1260,7 @@
       "standardUnitOrder": 7,
       "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
       "subUnit": "합성함수",
-      "subUnitConfidence": "CONTENT_AND_ACTIVE_RPM",
+      "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "questionType": "객관식",
       "layoutTag": "grid",
@@ -1312,7 +1280,7 @@
       ],
       "answer": "⑤",
       "solution": "$f(-3)=-1$, $f(-1)=1$, $f(1)=5$이므로 $F(-3)=5$이다. $f(1)=5$, $f(5)=17$, $f(17)=53$이므로 $F(1)=53$이다. 따라서 $F(-3)+F(1)=5+53=58$이다.\n따라서 정답은 ⑤이다.",
-      "solutionImage": "assets/q22-C3-solution.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q22-C3-solution.svg",
       "solutionImageAlt": "C3 조각함수 3회 합성의 실제 구간 경계 및 구간별 식 도식",
       "solutionImageCaption": "합성함수의 각 구간 경계는 오른쪽 구간에 포함되며, 구간별 식은 반복 대입으로 확인했다.",
       "meta": {
@@ -1335,15 +1303,11 @@
           "COND_RANGE"
         ],
         "conditionStatus": "CANONICAL_ACTIVE",
-        "integrationPattern": "PIECEWISE_ITERATED_COMPOSITION_BRANCH_PARTITION",
-        "integrationPatternStatus": "SEMANTIC_ONLY_EXACT_KEY_UNVERIFIED",
+        "integrationPattern": "CASE_BRANCH",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
         "difficultyBucket": 5,
-        "metadataDebt": [
-          {
-            "field": "integrationPattern",
-            "reason": "No verified registered Integration pattern key for piecewise iterated composition; exact mathematical evidence recorded"
-          }
-        ]
+        "metadataDebt": [],
+        "integrationPatternReason": "PIECEWISE_ITERATED_COMPOSITION_BRANCH_PARTITION"
       },
       "provenance": {
         "kind": "ALIVE_QID9_NEW",
@@ -1385,7 +1349,7 @@
         },
         "solutionVisual": {
           "decision": "ADD_NEW_VISUAL",
-          "physicalPath": "assets/q22-C3-solution.svg",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q22-C3-solution.svg",
           "expectedFacts": {
             "t": 0,
             "c": 2,
