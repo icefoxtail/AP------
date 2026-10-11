@@ -44,8 +44,8 @@
     "activePT": "9/9",
     "activeTPL": "9/9",
     "problemSvgAdded": 0,
-    "solutionSvgAdded": 0,
-    "visualDecision": "NO_VISUAL_9",
+    "solutionSvgAdded": 1,
+    "visualDecision": "1_ADD_NEW_SOLUTION_VISUAL_8_SOLUTION_EXEMPT_9_PROBLEM_EXEMPT",
     "canonicalCrossConceptItems": 5,
     "conditionSemanticsRecorded": 6,
     "conditionKeyRegistryPending": 0,
@@ -59,7 +59,51 @@
       "H1-RPM-247",
       "H1-RPM-248"
     ],
-    "canonicalConditionKeyCoverage": "9/9 (including genuinely non-applicable)"
+    "canonicalConditionKeyCoverage": "9/9 (including genuinely non-applicable)",
+    "gptOpenBookReviewSecondBatch": "CONTENT_REVIEWED_META_PATCHED_BROWSER_NOT_TESTED",
+    "gptOpenBookCorrections": [
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q06-B1",
+        "axis": "conditionKeys",
+        "reason": "원소 수 이외에 수/구간 제한이 없는 문항"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q06-C1",
+        "axis": "learningLevel",
+        "from": "상",
+        "to": "중"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q06-C1",
+        "axis": "difficultyBucket",
+        "from": 4,
+        "to": 3
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q06-C2",
+        "axis": "learningLevel",
+        "from": "상",
+        "to": "중"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q06-C2",
+        "axis": "difficultyBucket",
+        "from": 4,
+        "to": 2
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q06-C3",
+        "axis": "learningLevel",
+        "from": "상",
+        "to": "중"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q06-C3",
+        "axis": "difficultyBucket",
+        "from": 4,
+        "to": 3
+      }
+    ]
   },
   "authorMathWitness": {
     "B1": {
@@ -280,14 +324,15 @@
         "conditionKeys": [],
         "conditionSemantics": [],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
-        "integrationPattern": "충분조건을 진리집합의 포함과 교집합으로 바꾸기",
+        "integrationPattern": "NONE",
         "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
         "rpmRecordId": "H1-RPM-247",
         "rpmRecordIdSemantics": "RPM_L3_L4_PATH_RECORD_ID",
         "rpmRecordMappingStatus": "DIRECT_ACTIVE",
         "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "conditionReason": ""
+        "conditionReason": "",
+        "integrationPatternReason": "충분조건을 진리집합의 포함과 교집합으로 바꾸기"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -332,7 +377,10 @@
         "authorMathCheck": "AUTHOR_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "NONE"
+        "remainingRisk": "NONE",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -385,14 +433,15 @@
         "conditionKeys": [],
         "conditionSemantics": [],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
-        "integrationPattern": "필요조건에서 함의의 방향 반전",
+        "integrationPattern": "NONE",
         "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
         "rpmRecordId": "H1-RPM-247",
         "rpmRecordIdSemantics": "RPM_L3_L4_PATH_RECORD_ID",
         "rpmRecordMappingStatus": "DIRECT_ACTIVE",
         "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "conditionReason": ""
+        "conditionReason": "",
+        "integrationPatternReason": "필요조건에서 함의의 방향 반전"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -437,7 +486,10 @@
         "authorMathCheck": "AUTHOR_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "NONE"
+        "remainingRisk": "NONE",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -490,14 +542,15 @@
         "conditionKeys": [],
         "conditionSemantics": [],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
-        "integrationPattern": "필요·충분 두 방향을 함께 확인",
+        "integrationPattern": "NONE",
         "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
         "rpmRecordId": "H1-RPM-247",
         "rpmRecordIdSemantics": "RPM_L3_L4_PATH_RECORD_ID",
         "rpmRecordMappingStatus": "DIRECT_ACTIVE",
         "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "conditionReason": ""
+        "conditionReason": "",
+        "integrationPatternReason": "필요·충분 두 방향을 함께 확인"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -542,7 +595,10 @@
         "authorMathCheck": "AUTHOR_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "NONE"
+        "remainingRisk": "NONE",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -599,21 +655,20 @@
             "reason": "충분조건 포함관계를 원소 수 계산과 결합"
           }
         ],
-        "conditionKeys": [
-          "COND_RANGE"
-        ],
+        "conditionKeys": [],
         "conditionSemantics": [
           "FINITE_TRUTHSET_CARDINALITY"
         ],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
-        "integrationPattern": "충분조건 포함관계를 원소 수 계산과 결합",
+        "integrationPattern": "SEQUENTIAL",
         "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
         "rpmRecordId": "H1-RPM-247",
         "rpmRecordIdSemantics": "RPM_L3_L4_PATH_RECORD_ID",
         "rpmRecordMappingStatus": "DIRECT_ACTIVE",
         "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "conditionReason": "유한 원소 범위에서 교집합의 원소 수를 결정"
+        "conditionReason": "유한 원소 범위에서 교집합의 원소 수를 결정",
+        "integrationPatternReason": "충분조건 포함관계를 원소 수 계산과 결합"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -658,7 +713,10 @@
         "authorMathCheck": "AUTHOR_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "NONE"
+        "remainingRisk": "NONE",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -724,14 +782,15 @@
           "CLOSED_INTERVAL"
         ],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
-        "integrationPattern": "이동 구간 두 끝의 포함과 정수 매개변수 개수",
+        "integrationPattern": "SEQUENTIAL",
         "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
         "rpmRecordId": "H1-RPM-248",
         "rpmRecordIdSemantics": "RPM_L3_L4_PATH_RECORD_ID",
         "rpmRecordMappingStatus": "FAMILY_ACTIVE",
         "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "conditionReason": "INTEGER_PARAMETER, CLOSED_INTERVAL"
+        "conditionReason": "INTEGER_PARAMETER, CLOSED_INTERVAL",
+        "integrationPatternReason": "이동 구간 두 끝의 포함과 정수 매개변수 개수"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -776,7 +835,10 @@
         "authorMathCheck": "AUTHOR_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "NONE"
+        "remainingRisk": "NONE",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -841,14 +903,15 @@
           "ROOT_SET_INCLUSION"
         ],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
-        "integrationPattern": "이차방정식 두 근 모두에 필요조건 적용",
+        "integrationPattern": "SEQUENTIAL",
         "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
         "rpmRecordId": "H1-RPM-248",
         "rpmRecordIdSemantics": "RPM_L3_L4_PATH_RECORD_ID",
         "rpmRecordMappingStatus": "FAMILY_ACTIVE",
         "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "conditionReason": "INTEGER_PARAMETER, ROOT_SET_INCLUSION"
+        "conditionReason": "INTEGER_PARAMETER, ROOT_SET_INCLUSION",
+        "integrationPatternReason": "이차방정식 두 근 모두에 필요조건 적용"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -893,7 +956,10 @@
         "authorMathCheck": "AUTHOR_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "NONE"
+        "remainingRisk": "NONE",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -903,7 +969,7 @@
       "slot": "C1",
       "purpose": "C",
       "modeCandidate": "EXAM_FOLLOWUP",
-      "level": "상",
+      "level": "중",
       "category": "명제",
       "originalCategory": "필요조건과 충분조건",
       "standardCourse": "공통수학2",
@@ -939,7 +1005,7 @@
         "problemTypeKey": "PT_NEC_SUFF_RELATION",
         "templateKey": "TPL_NEC_SUFF_INTERVAL_PARAMETER",
         "PTTPLBinding": "ACTIVE_CURRENT",
-        "difficultyBucket": 4,
+        "difficultyBucket": 3,
         "difficultyReason": "절댓값 조건을 구간으로 변환하고 이동 구간 포함 판정",
         "crossConceptKeys": [
           "CC_INEQUALITY_ABSOLUTE_VALUE",
@@ -965,14 +1031,15 @@
           "SHIFTED_INTERVAL"
         ],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
-        "integrationPattern": "절댓값 조건을 구간으로 변환하고 이동 구간 포함 판정",
+        "integrationPattern": "INTERDEPENDENT",
         "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
         "rpmRecordId": "H1-RPM-248",
         "rpmRecordIdSemantics": "RPM_L3_L4_PATH_RECORD_ID",
         "rpmRecordMappingStatus": "FAMILY_ACTIVE",
         "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "conditionReason": "INTEGER_PARAMETER, CLOSED_INTERVAL, SHIFTED_INTERVAL"
+        "conditionReason": "INTEGER_PARAMETER, CLOSED_INTERVAL, SHIFTED_INTERVAL",
+        "integrationPatternReason": "절댓값 조건을 구간으로 변환하고 이동 구간 포함 판정"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -1011,14 +1078,52 @@
           "reason": "명제·집합과 구간이 완전한 학생용 수식으로 제시됨"
         },
         "solutionVisual": {
-          "decision": "NO_VISUAL",
-          "reason": "필요/충분 방향 및 포함관계를 본문 해설로 재현 가능"
+          "decision": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_OPTIONAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q06-C1-solution.svg",
+          "verifiedBlobSha1": "37c48c39b8fc65458cbc4f52bdd7f2c3da8ef969",
+          "expectedFacts": {
+            "pInterval": [
+              -1,
+              3
+            ],
+            "validIntegers": [
+              -3,
+              -2,
+              -1
+            ],
+            "coveringIntervals": [
+              [
+                -3,
+                3
+              ],
+              [
+                -2,
+                4
+              ],
+              [
+                -1,
+                5
+              ]
+            ]
+          },
+          "pythonCoordinateFactsVerified": "P=(-1,3), x0=150, 40px/unit, exact endpoints and all covering intervals verified",
+          "studentBrowserRender": "NOT_TESTED",
+          "reason": "3개의 이동구간에 원래 진리집합이 포함되는 이유를 식뿐 아니라 수직선으로 직접 대조"
         },
         "authorMathCheck": "AUTHOR_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "NONE"
-      }
+        "remainingRisk": "NONE",
+        "independentLearningLevelBasis": "기계적 A/B/C 등급보다 실제 풀이의 개념결합·분기·검산 단계로 재판정",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q06-C1-solution.svg",
+      "solutionImageAlt": "[-1,3]을 포함하는 길이 6인 구간 [a,a+6]을 a=-3,-2,-1별로 수직선에 표시한 해설 그림",
+      "solutionImageCaption": "세 정수 a=-3,-2,-1에서 모두 조건의 진리집합을 포함한다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 8,
@@ -1027,7 +1132,7 @@
       "slot": "C2",
       "purpose": "C",
       "modeCandidate": "EXAM_FOLLOWUP",
-      "level": "상",
+      "level": "중",
       "category": "명제",
       "originalCategory": "필요조건과 충분조건",
       "standardCourse": "공통수학2",
@@ -1063,7 +1168,7 @@
         "problemTypeKey": "PT_NEC_SUFF_RELATION",
         "templateKey": "TPL_NEC_SUFF_CHAIN",
         "PTTPLBinding": "ACTIVE_CURRENT",
-        "difficultyBucket": 4,
+        "difficultyBucket": 2,
         "difficultyReason": "공통의 필요조건과 나머지 두 조건 사이의 관계 미결정 구별",
         "crossConceptKeys": [],
         "crossConceptReasons": [],
@@ -1072,14 +1177,15 @@
           "TWO_SUFFICIENT_CONDITIONS"
         ],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
-        "integrationPattern": "공통의 필요조건과 나머지 두 조건 사이의 관계 미결정 구별",
+        "integrationPattern": "SEQUENTIAL",
         "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
         "rpmRecordId": "H1-RPM-247",
         "rpmRecordIdSemantics": "RPM_L3_L4_PATH_RECORD_ID",
         "rpmRecordMappingStatus": "DIRECT_ACTIVE",
         "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "conditionReason": "관계 자체는 RPM L3/L4 판단 대상이며 독립 Condition 제한키가 아님"
+        "conditionReason": "관계 자체는 RPM L3/L4 판단 대상이며 독립 Condition 제한키가 아님",
+        "integrationPatternReason": "공통의 필요조건과 나머지 두 조건 사이의 관계 미결정 구별"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -1124,7 +1230,11 @@
         "authorMathCheck": "AUTHOR_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "NONE"
+        "remainingRisk": "NONE",
+        "independentLearningLevelBasis": "기계적 A/B/C 등급보다 실제 풀이의 개념결합·분기·검산 단계로 재판정",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -1134,7 +1244,7 @@
       "slot": "C3",
       "purpose": "C",
       "modeCandidate": "EXAM_FOLLOWUP",
-      "level": "상",
+      "level": "중",
       "category": "명제",
       "originalCategory": "필요조건과 충분조건",
       "standardCourse": "공통수학2",
@@ -1170,7 +1280,7 @@
         "problemTypeKey": "PT_NEC_SUFF_RELATION",
         "templateKey": "TPL_NEC_SUFF_POLYNOMIAL_PARAMETER",
         "PTTPLBinding": "ACTIVE_CURRENT",
-        "difficultyBucket": 4,
+        "difficultyBucket": 3,
         "difficultyReason": "이차방정식의 해집합으로 충분하지만 필요하지 않은 관계 판별",
         "crossConceptKeys": [
           "CC_QUADRATIC_EQUATION"
@@ -1187,14 +1297,15 @@
           "DOUBLE_ROOT_DEGENERATION"
         ],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
-        "integrationPattern": "이차방정식의 해집합으로 충분하지만 필요하지 않은 관계 판별",
+        "integrationPattern": "INTERDEPENDENT",
         "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
         "rpmRecordId": "H1-RPM-248",
         "rpmRecordIdSemantics": "RPM_L3_L4_PATH_RECORD_ID",
         "rpmRecordMappingStatus": "FAMILY_ACTIVE",
         "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "conditionReason": "관계 자체는 RPM L3/L4 판단 대상이며 독립 Condition 제한키가 아님"
+        "conditionReason": "관계 자체는 RPM L3/L4 판단 대상이며 독립 Condition 제한키가 아님",
+        "integrationPatternReason": "이차방정식의 해집합으로 충분하지만 필요하지 않은 관계 판별"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -1239,7 +1350,11 @@
         "authorMathCheck": "AUTHOR_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "NONE"
+        "remainingRisk": "NONE",
+        "independentLearningLevelBasis": "기계적 A/B/C 등급보다 실제 풀이의 개념결합·분기·검산 단계로 재판정",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     }
   ],

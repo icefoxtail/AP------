@@ -51,7 +51,44 @@
     "independentQualityReview": "NOT_RUN",
     "browserEngineModes": "NOT_RUN",
     "releaseStatus": "NOT_AUTHORIZED",
-    "nextSourceQid": 8
+    "nextSourceQid": 8,
+    "gptOpenBookReviewSecondBatch": "CONTENT_REVIEWED_META_PATCHED_BROWSER_NOT_TESTED",
+    "gptOpenBookCorrections": [
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q07-B1",
+        "axis": "solutionImage",
+        "reason": "실제 원격 Git 실파일 경로에 연결; 공개 student asset 경로 별도 후속"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q07-C2",
+        "axis": "learningLevel",
+        "from": "상",
+        "to": "중"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q07-C2",
+        "axis": "difficultyBucket",
+        "from": 4,
+        "to": 3
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q07-C3",
+        "axis": "learningLevel",
+        "from": "상",
+        "to": "중"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q07-C3",
+        "axis": "difficultyBucket",
+        "from": 4,
+        "to": 3
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q07-C3",
+        "axis": "solutionImage",
+        "reason": "실제 원격 Git 실파일 경로에 연결; 공개 student asset 경로 별도 후속"
+      }
+    ]
   },
   "authorMathWitness": {
     "A1": {
@@ -281,9 +318,10 @@
         "conditionSemantics": [],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "근호 내부 0 이상 및 수직 이동",
+        "integrationPattern": "NONE",
         "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
-        "conditionReason": "실제 별도 조건 키 해당 없음"
+        "conditionReason": "실제 별도 조건 키 해당 없음",
+        "integrationPatternReason": "근호 내부 0 이상 및 수직 이동"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -329,7 +367,10 @@
         "authorMathCheck": "AUTHOR_EQUATION_AND_BOUNDARY_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -389,9 +430,10 @@
         "conditionSemantics": [],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "일차부등식 정리 후 제곱근 범위",
+        "integrationPattern": "NONE",
         "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
-        "conditionReason": "실제 별도 조건 키 해당 없음"
+        "conditionReason": "실제 별도 조건 키 해당 없음",
+        "integrationPatternReason": "일차부등식 정리 후 제곱근 범위"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -437,7 +479,10 @@
         "authorMathCheck": "AUTHOR_EQUATION_AND_BOUNDARY_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -497,9 +542,10 @@
         "conditionSemantics": [],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "음의 계수에 따른 최댓값과 상한 판별",
+        "integrationPattern": "NONE",
         "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
-        "conditionReason": "실제 별도 조건 키 해당 없음"
+        "conditionReason": "실제 별도 조건 키 해당 없음",
+        "integrationPatternReason": "음의 계수에 따른 최댓값과 상한 판별"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -545,7 +591,10 @@
         "authorMathCheck": "AUTHOR_EQUATION_AND_BOUNDARY_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -582,7 +631,7 @@
       ],
       "answer": "①",
       "solution": "$\\sqrt{x+2}$는 $x$가 커질수록 커지므로 $f(x)$도 주어진 구간에서 증가한다. $x=-2$일 때 $f(-2)=\\sqrt0-3=-3$이므로 최솟값은 $-3$이다. $x=7$일 때 $f(7)=\\sqrt9-3=0$이므로 최댓값은 $0$이다. 따라서 두 값의 합은 $-3+0=-3$이다. 따라서 정답은 ①이다.",
-      "solutionImage": "assets/q07-B1-solution.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q07-B1-solution.svg",
       "solutionImageAlt": "B1 무리함수의 제한 정의역과 치역의 양 끝값",
       "solutionImageCaption": "B1 정의역의 양 끝점에 대응하는 치역의 최솟값과 최댓값",
       "meta": {
@@ -614,9 +663,10 @@
         ],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "닫힌 구간의 양 끝에서 무리함수 치역 확인",
+        "integrationPattern": "SEQUENTIAL",
         "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
-        "conditionReason": "결정적 범위 또는 정수 개수 판정"
+        "conditionReason": "결정적 범위 또는 정수 개수 판정",
+        "integrationPatternReason": "닫힌 구간의 양 끝에서 무리함수 치역 확인"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -663,7 +713,10 @@
         "authorMathCheck": "AUTHOR_EQUATION_AND_BOUNDARY_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -723,9 +776,10 @@
         "conditionSemantics": [],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "정의역·치역에서 계수 역으로 복원",
+        "integrationPattern": "SEQUENTIAL",
         "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
-        "conditionReason": "실제 별도 조건 키 해당 없음"
+        "conditionReason": "실제 별도 조건 키 해당 없음",
+        "integrationPatternReason": "정의역·치역에서 계수 역으로 복원"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -771,7 +825,10 @@
         "authorMathCheck": "AUTHOR_EQUATION_AND_BOUNDARY_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -831,9 +888,10 @@
         "conditionSemantics": [],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "함숫값 조건으로 시작점 결정하고 치역 하한 확정",
+        "integrationPattern": "SEQUENTIAL",
         "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
-        "conditionReason": "실제 별도 조건 키 해당 없음"
+        "conditionReason": "실제 별도 조건 키 해당 없음",
+        "integrationPatternReason": "함숫값 조건으로 시작점 결정하고 치역 하한 확정"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -879,7 +937,10 @@
         "authorMathCheck": "AUTHOR_EQUATION_AND_BOUNDARY_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -939,9 +1000,10 @@
         "conditionSemantics": [],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "정의역 시작점 → 통과점 → 치역 하한",
+        "integrationPattern": "SEQUENTIAL",
         "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
-        "conditionReason": "실제 별도 조건 키 해당 없음"
+        "conditionReason": "실제 별도 조건 키 해당 없음",
+        "integrationPatternReason": "정의역 시작점 → 통과점 → 치역 하한"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -987,7 +1049,10 @@
         "authorMathCheck": "AUTHOR_EQUATION_AND_BOUNDARY_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -997,7 +1062,7 @@
       "slot": "C2",
       "purpose": "C",
       "modeCandidate": "EXAM_FOLLOWUP",
-      "level": "상",
+      "level": "중",
       "category": "무리함수",
       "originalCategory": "무리함수의 정의역과 치역",
       "standardCourse": "공통수학2",
@@ -1037,7 +1102,7 @@
         "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
         "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_DIRECT",
         "PTTPLBinding": "ACTIVE_CURRENT",
-        "difficultyBucket": 4,
+        "difficultyBucket": 3,
         "difficultyReason": "정수 범위와 치역 원소 판정",
         "crossConceptKeys": [],
         "crossConceptReasons": [
@@ -1053,9 +1118,10 @@
         ],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "정수 입력 범위에서 완전제곱수 조건으로 치역 정수 원소 필터",
+        "integrationPattern": "SEQUENTIAL",
         "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
-        "conditionReason": "결정적 범위 또는 정수 개수 판정"
+        "conditionReason": "결정적 범위 또는 정수 개수 판정",
+        "integrationPatternReason": "정수 입력 범위에서 완전제곱수 조건으로 치역 정수 원소 필터"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -1101,7 +1167,11 @@
         "authorMathCheck": "AUTHOR_EQUATION_AND_BOUNDARY_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "independentLearningLevelBasis": "기계적 A/B/C 등급보다 실제 풀이의 개념결합·분기·검산 단계로 재판정",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -1111,7 +1181,7 @@
       "slot": "C3",
       "purpose": "C",
       "modeCandidate": "EXAM_FOLLOWUP",
-      "level": "상",
+      "level": "중",
       "category": "무리함수",
       "originalCategory": "무리함수의 정의역과 치역",
       "standardCourse": "공통수학2",
@@ -1138,7 +1208,7 @@
       ],
       "answer": "④",
       "solution": "$\\sqrt{x+1}$은 $x$가 커질수록 증가하므로 $f(x)$는 정의역의 왼쪽 끝에서 최솟값, 오른쪽 끝에서 최댓값을 갖는다. 따라서 $f(a)=0$, $f(b)=2$이다. $\\sqrt{a+1}-2=0$에서 $\\sqrt{a+1}=2$, $a+1=4$이므로 $a=3$이다. 또 $\\sqrt{b+1}-2=2$에서 $\\sqrt{b+1}=4$, $b+1=16$이므로 $b=15$이다. 따라서 $b-a=15-3=12$이다. 따라서 정답은 ④이다.",
-      "solutionImage": "assets/q07-C3-solution.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q07-C3-solution.svg",
       "solutionImageAlt": "C3 무리함수의 제한 정의역과 치역의 양 끝값",
       "solutionImageCaption": "C3 정의역의 양 끝점에 대응하는 치역의 최솟값과 최댓값",
       "meta": {
@@ -1156,7 +1226,7 @@
         "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
         "templateKey": "TPL_GRAPH_ORDER_INTERVAL",
         "PTTPLBinding": "ACTIVE_CURRENT",
-        "difficultyBucket": 4,
+        "difficultyBucket": 3,
         "difficultyReason": "치역으로 제한 정의역 복원",
         "crossConceptKeys": [],
         "crossConceptReasons": [
@@ -1170,9 +1240,10 @@
         ],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "주어진 치역의 양 끝에서 정의역 끝점 역산",
+        "integrationPattern": "INTERDEPENDENT",
         "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
-        "conditionReason": "결정적 범위 또는 정수 개수 판정"
+        "conditionReason": "결정적 범위 또는 정수 개수 판정",
+        "integrationPatternReason": "주어진 치역의 양 끝에서 정의역 끝점 역산"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -1219,7 +1290,11 @@
         "authorMathCheck": "AUTHOR_EQUATION_AND_BOUNDARY_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "independentLearningLevelBasis": "기계적 A/B/C 등급보다 실제 풀이의 개념결합·분기·검산 단계로 재판정",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     }
   ],
