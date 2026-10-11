@@ -1,0 +1,1847 @@
+{
+  "schema": "SUN_QID9_OPENBOOK_REVIEW_BATCH_20261011_v1",
+  "exam": "25_순천고_2학기_기말_고1",
+  "date": "2026-10-11",
+  "stage": 4,
+  "scope": "q16~q20 A1~C3",
+  "baseAuthoringCommit": "1b105cb702bebfe426d0d4f0e66a0ff5f3376797",
+  "reviewBranch": "work/review-25-suncheon-h1-2final-q16-q20-20261011",
+  "summary": {
+    "originalQids": 5,
+    "questionUIDs": 45,
+    "choices": 225,
+    "distractors": 180,
+    "confirmedFinalAnswerCorrections": 0,
+    "studentMathSolutionCorrections": 4,
+    "learningDifficultyAdjustments": 11,
+    "normalizedIntegration": 45,
+    "noncanonicalSubunitConfidenceCorrections": 9,
+    "fullPathSolutionSvgLinks": 27,
+    "studentSvgLocalization": 36,
+    "solutionSbgFileExistence": 45,
+    "exact801PointGraphCorrections": 9,
+    "openMetaEvidenceDebtUIDs": 36,
+    "chromeExamSolutionAnswer": "NOT_TESTED",
+    "mainConsumerIndexAndDeployment": "NOT_RUN",
+    "nextBatch": "q21~q23 (27UID)"
+  },
+  "repairs": [
+    "q16 A1~A3 false residue 1/0 replaced with 0/1/3 mod4 rule",
+    "q17 C2 newline escape corrected to LaTex ne",
+    "q17 9 physical and inline SVG localized/exact slope",
+    "q18/19/20 27 solutionImage paths reconciled and SVG student labels localized",
+    "q19 nine sample curves regenerated 801 each after Python math/pixel calibration",
+    "q20 A1/A2/A3 SVG shown answer label corrected to ⑤/③/①",
+    "q20 B2/C3 redundant explanation removed",
+    "learning level adjustments 11, Meta enum and canonical confidence corrections 45/9"
+  ],
+  "checks": [
+    "9/9 q20 flip patterns explicitly enumerated via bitmask in separate calculation",
+    "q19 9/9 graph endpoints match old graph to <=0.01px; actual browser NOT_TESTED",
+    "All 45 answer choice values manually checked against math derivations; note this is not R1/R2 blind review",
+    "Existing q01~q15 and original exam protected"
+  ],
+  "sourceFiles": [
+    {
+      "sourceQid": 16,
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q16_CREATE_DRAFT.json",
+      "gitBlobSha": "c95a9e62f4f6b404f6f41712510ee0e1e24c7c78",
+      "count": 9
+    },
+    {
+      "sourceQid": 17,
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q17_CREATE_DRAFT.json",
+      "gitBlobSha": "ea9f8efddc95a59d6eafa1e5258102263a3c6e4d",
+      "count": 9
+    },
+    {
+      "sourceQid": 18,
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q18_CREATE_DRAFT.json",
+      "gitBlobSha": "26bb95b489b1a9c3c93328ac48791ddca559f334",
+      "count": 9
+    },
+    {
+      "sourceQid": 19,
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q19_CREATE_DRAFT.json",
+      "gitBlobSha": "ae73536746569cd6a852decf8c7fdbe67a80b570",
+      "count": 9
+    },
+    {
+      "sourceQid": 20,
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q20_CREATE_DRAFT.json",
+      "gitBlobSha": "239b98fa6b064f7d7d11b5612c69c833a4196281",
+      "count": 9
+    }
+  ],
+  "items": [
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q16-A1",
+      "sourceQid": 16,
+      "slot": "A1",
+      "answer": "②",
+      "independentlyExpectedChoiceValue": "$280$",
+      "mathEvidence": "56a+14a at a=4 → 280",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnitConfidence": "rule_inferred",
+        "rpmL3": "증명",
+        "rpmL4": "귀류법",
+        "rpmRecordId": "H1-RPM-249",
+        "pt": "PT_CONTRADICTION_PROOF",
+        "tpl": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "level": "중",
+        "difficultyBucket": 2,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "metadataDebt": [
+          {
+            "field": "conditionKeys",
+            "reason": "생성문항 조건축 홀짝·배수·모듈러 정본 식별자 존재 및 parent 검증 미실행"
+          }
+        ]
+      },
+      "solutionImage": null,
+      "inlineSvg": true,
+      "currentSourceBlob": "c95a9e62f4f6b404f6f41712510ee0e1e24c7c78",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q16-A2",
+      "sourceQid": 16,
+      "slot": "A2",
+      "answer": "⑤",
+      "independentlyExpectedChoiceValue": "$120$",
+      "mathEvidence": "24a+6a at a=4 → 120",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnitConfidence": "rule_inferred",
+        "rpmL3": "증명",
+        "rpmL4": "귀류법",
+        "rpmRecordId": "H1-RPM-249",
+        "pt": "PT_CONTRADICTION_PROOF",
+        "tpl": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "level": "중",
+        "difficultyBucket": 2,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "metadataDebt": [
+          {
+            "field": "conditionKeys",
+            "reason": "생성문항 조건축 홀짝·배수·모듈러 정본 식별자 존재 및 parent 검증 미실행"
+          }
+        ]
+      },
+      "solutionImage": null,
+      "inlineSvg": true,
+      "currentSourceBlob": "c95a9e62f4f6b404f6f41712510ee0e1e24c7c78",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q16-A3",
+      "sourceQid": 16,
+      "slot": "A3",
+      "answer": "③",
+      "independentlyExpectedChoiceValue": "$200$",
+      "mathEvidence": "40a+10a at a=4 → 200",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnitConfidence": "rule_inferred",
+        "rpmL3": "증명",
+        "rpmL4": "귀류법",
+        "rpmRecordId": "H1-RPM-249",
+        "pt": "PT_CONTRADICTION_PROOF",
+        "tpl": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "level": "중",
+        "difficultyBucket": 3,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "metadataDebt": [
+          {
+            "field": "conditionKeys",
+            "reason": "생성문항 조건축 홀짝·배수·모듈러 정본 식별자 존재 및 parent 검증 미실행"
+          }
+        ]
+      },
+      "solutionImage": null,
+      "inlineSvg": true,
+      "currentSourceBlob": "c95a9e62f4f6b404f6f41712510ee0e1e24c7c78",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q16-B1",
+      "sourceQid": 16,
+      "slot": "B1",
+      "answer": "④",
+      "independentlyExpectedChoiceValue": "$12$",
+      "mathEvidence": "odd square mod8 → 4+8=12",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnitConfidence": "rule_inferred",
+        "rpmL3": "증명",
+        "rpmL4": "귀류법",
+        "rpmRecordId": "H1-RPM-249",
+        "pt": "PT_CONTRADICTION_PROOF",
+        "tpl": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "level": "중",
+        "difficultyBucket": 3,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "metadataDebt": [
+          {
+            "field": "conditionKeys",
+            "reason": "생성문항 조건축 홀짝·배수·모듈러 정본 식별자 존재 및 parent 검증 미실행"
+          }
+        ]
+      },
+      "solutionImage": null,
+      "inlineSvg": true,
+      "currentSourceBlob": "c95a9e62f4f6b404f6f41712510ee0e1e24c7c78",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q16-B2",
+      "sourceQid": 16,
+      "slot": "B2",
+      "answer": "①",
+      "independentlyExpectedChoiceValue": "$20$",
+      "mathEvidence": "odd square mod8 → 12+8=20",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnitConfidence": "rule_inferred",
+        "rpmL3": "증명",
+        "rpmL4": "귀류법",
+        "rpmRecordId": "H1-RPM-249",
+        "pt": "PT_CONTRADICTION_PROOF",
+        "tpl": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "level": "중",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "metadataDebt": [
+          {
+            "field": "conditionKeys",
+            "reason": "생성문항 조건축 홀짝·배수·모듈러 정본 식별자 존재 및 parent 검증 미실행"
+          }
+        ]
+      },
+      "solutionImage": null,
+      "inlineSvg": true,
+      "currentSourceBlob": "c95a9e62f4f6b404f6f41712510ee0e1e24c7c78",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q16-B3",
+      "sourceQid": 16,
+      "slot": "B3",
+      "answer": "⑤",
+      "independentlyExpectedChoiceValue": "$28$",
+      "mathEvidence": "odd square mod8 →20+8=28",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnitConfidence": "rule_inferred",
+        "rpmL3": "증명",
+        "rpmL4": "귀류법",
+        "rpmRecordId": "H1-RPM-249",
+        "pt": "PT_CONTRADICTION_PROOF",
+        "tpl": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "level": "중",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "metadataDebt": [
+          {
+            "field": "conditionKeys",
+            "reason": "생성문항 조건축 홀짝·배수·모듈러 정본 식별자 존재 및 parent 검증 미실행"
+          }
+        ]
+      },
+      "solutionImage": null,
+      "inlineSvg": true,
+      "currentSourceBlob": "c95a9e62f4f6b404f6f41712510ee0e1e24c7c78",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q16-C1",
+      "sourceQid": 16,
+      "slot": "C1",
+      "answer": "①",
+      "independentlyExpectedChoiceValue": "$4$",
+      "mathEvidence": "t odd among 1..7 → 4",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnitConfidence": "rule_inferred",
+        "rpmL3": "증명",
+        "rpmL4": "귀류법",
+        "rpmRecordId": "H1-RPM-249",
+        "pt": "PT_CONTRADICTION_PROOF",
+        "tpl": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "level": "상",
+        "difficultyBucket": 5,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "metadataDebt": [
+          {
+            "field": "conditionKeys",
+            "reason": "생성문항 조건축 홀짝·배수·모듈러 정본 식별자 존재 및 parent 검증 미실행"
+          }
+        ]
+      },
+      "solutionImage": null,
+      "inlineSvg": true,
+      "currentSourceBlob": "c95a9e62f4f6b404f6f41712510ee0e1e24c7c78",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q16-C2",
+      "sourceQid": 16,
+      "slot": "C2",
+      "answer": "③",
+      "independentlyExpectedChoiceValue": "$25$",
+      "mathEvidence": "sum odd t∈1..9 →25",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnitConfidence": "rule_inferred",
+        "rpmL3": "증명",
+        "rpmL4": "귀류법",
+        "rpmRecordId": "H1-RPM-249",
+        "pt": "PT_CONTRADICTION_PROOF",
+        "tpl": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "level": "상",
+        "difficultyBucket": 5,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "metadataDebt": [
+          {
+            "field": "conditionKeys",
+            "reason": "생성문항 조건축 홀짝·배수·모듈러 정본 식별자 존재 및 parent 검증 미실행"
+          }
+        ]
+      },
+      "solutionImage": null,
+      "inlineSvg": true,
+      "currentSourceBlob": "c95a9e62f4f6b404f6f41712510ee0e1e24c7c78",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q16-C3",
+      "sourceQid": 16,
+      "slot": "C3",
+      "answer": "④",
+      "independentlyExpectedChoiceValue": "$3$",
+      "mathEvidence": "r/4≡2 (mod4) →8,24,40; count3",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnitConfidence": "rule_inferred",
+        "rpmL3": "증명",
+        "rpmL4": "귀류법",
+        "rpmRecordId": "H1-RPM-249",
+        "pt": "PT_CONTRADICTION_PROOF",
+        "tpl": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "level": "상",
+        "difficultyBucket": 5,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "metadataDebt": [
+          {
+            "field": "conditionKeys",
+            "reason": "생성문항 조건축 홀짝·배수·모듈러 정본 식별자 존재 및 parent 검증 미실행"
+          }
+        ]
+      },
+      "solutionImage": null,
+      "inlineSvg": true,
+      "currentSourceBlob": "c95a9e62f4f6b404f6f41712510ee0e1e24c7c78",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q17-A1",
+      "sourceQid": 17,
+      "slot": "A1",
+      "answer": "④",
+      "independentlyExpectedChoiceValue": "$-\\dfrac14$",
+      "mathEvidence": "branch endpoint t=0 at k=−1/4",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-09",
+        "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "무리함수의 활용",
+        "rpmL4": "무리함수의 교점",
+        "rpmRecordId": "H1-RPM-272",
+        "pt": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "tpl": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "level": "상",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "metadataDebt": [
+          {
+            "field": "conditionKeys",
+            "reason": "Canonical active condition-key binding not independently proven; preserve verified semantics only."
+          }
+        ]
+      },
+      "solutionImage": null,
+      "inlineSvg": true,
+      "currentSourceBlob": "ea9f8efddc95a59d6eafa1e5258102263a3c6e4d",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q17-A2",
+      "sourceQid": 17,
+      "slot": "A2",
+      "answer": "②",
+      "independentlyExpectedChoiceValue": "$-\\dfrac34$",
+      "mathEvidence": "scaled slope k=−3/4",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-09",
+        "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "무리함수의 활용",
+        "rpmL4": "무리함수의 교점",
+        "rpmRecordId": "H1-RPM-272",
+        "pt": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "tpl": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "level": "상",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "metadataDebt": [
+          {
+            "field": "conditionKeys",
+            "reason": "Canonical active condition-key binding not independently proven; preserve verified semantics only."
+          }
+        ]
+      },
+      "solutionImage": null,
+      "inlineSvg": true,
+      "currentSourceBlob": "ea9f8efddc95a59d6eafa1e5258102263a3c6e4d",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q17-A3",
+      "sourceQid": 17,
+      "slot": "A3",
+      "answer": "⑤",
+      "independentlyExpectedChoiceValue": "$-1$",
+      "mathEvidence": "scaled slope k=−1",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-09",
+        "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "무리함수의 활용",
+        "rpmL4": "무리함수의 교점",
+        "rpmRecordId": "H1-RPM-272",
+        "pt": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "tpl": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "level": "상",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "metadataDebt": [
+          {
+            "field": "conditionKeys",
+            "reason": "Canonical active condition-key binding not independently proven; preserve verified semantics only."
+          }
+        ]
+      },
+      "solutionImage": null,
+      "inlineSvg": true,
+      "currentSourceBlob": "ea9f8efddc95a59d6eafa1e5258102263a3c6e4d",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q17-B1",
+      "sourceQid": 17,
+      "slot": "B1",
+      "answer": "①",
+      "independentlyExpectedChoiceValue": "$2$",
+      "mathEvidence": "0<h≤2 integer h=1,2",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-09",
+        "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "무리함수의 활용",
+        "rpmL4": "무리함수의 교점",
+        "rpmRecordId": "H1-RPM-272",
+        "pt": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "tpl": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "level": "중",
+        "difficultyBucket": 3,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "metadataDebt": [
+          {
+            "field": "conditionKeys",
+            "reason": "Canonical active condition-key binding not independently proven; preserve verified semantics only."
+          }
+        ]
+      },
+      "solutionImage": null,
+      "inlineSvg": true,
+      "currentSourceBlob": "ea9f8efddc95a59d6eafa1e5258102263a3c6e4d",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q17-B2",
+      "sourceQid": 17,
+      "slot": "B2",
+      "answer": "③",
+      "independentlyExpectedChoiceValue": "$5$",
+      "mathEvidence": "n=3+t with 0≤t<3; max5",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-09",
+        "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "무리함수의 활용",
+        "rpmL4": "무리함수의 교점",
+        "rpmRecordId": "H1-RPM-272",
+        "pt": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "tpl": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "level": "중",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "metadataDebt": [
+          {
+            "field": "conditionKeys",
+            "reason": "Canonical active condition-key binding not independently proven; preserve verified semantics only."
+          }
+        ]
+      },
+      "solutionImage": null,
+      "inlineSvg": true,
+      "currentSourceBlob": "ea9f8efddc95a59d6eafa1e5258102263a3c6e4d",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q17-B3",
+      "sourceQid": 17,
+      "slot": "B3",
+      "answer": "②",
+      "independentlyExpectedChoiceValue": "$6$",
+      "mathEvidence": "n>4 within1..10 →6",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-09",
+        "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "무리함수의 활용",
+        "rpmL4": "무리함수의 교점",
+        "rpmRecordId": "H1-RPM-272",
+        "pt": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "tpl": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "level": "중",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "metadataDebt": [
+          {
+            "field": "conditionKeys",
+            "reason": "Canonical active condition-key binding not independently proven; preserve verified semantics only."
+          }
+        ]
+      },
+      "solutionImage": null,
+      "inlineSvg": true,
+      "currentSourceBlob": "ea9f8efddc95a59d6eafa1e5258102263a3c6e4d",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q17-C1",
+      "sourceQid": 17,
+      "slot": "C1",
+      "answer": "③",
+      "independentlyExpectedChoiceValue": "$3$",
+      "mathEvidence": "x±=(a±2)^2, difference 8a=24",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-09",
+        "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "무리함수의 활용",
+        "rpmL4": "무리함수의 교점",
+        "rpmRecordId": "H1-RPM-272",
+        "pt": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "tpl": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "level": "중",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "metadataDebt": [
+          {
+            "field": "conditionKeys",
+            "reason": "Canonical active condition-key binding not independently proven; preserve verified semantics only."
+          }
+        ]
+      },
+      "solutionImage": null,
+      "inlineSvg": true,
+      "currentSourceBlob": "ea9f8efddc95a59d6eafa1e5258102263a3c6e4d",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q17-C2",
+      "sourceQid": 17,
+      "slot": "C2",
+      "answer": "⑤",
+      "independentlyExpectedChoiceValue": "$7$",
+      "mathEvidence": "at x=9: 7/n=1 → n7",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-09",
+        "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "무리함수의 활용",
+        "rpmL4": "무리함수의 교점",
+        "rpmRecordId": "H1-RPM-272",
+        "pt": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "tpl": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "level": "중",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "metadataDebt": [
+          {
+            "field": "conditionKeys",
+            "reason": "Canonical active condition-key binding not independently proven; preserve verified semantics only."
+          }
+        ]
+      },
+      "solutionImage": null,
+      "inlineSvg": true,
+      "currentSourceBlob": "ea9f8efddc95a59d6eafa1e5258102263a3c6e4d",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q17-C3",
+      "sourceQid": 17,
+      "slot": "C3",
+      "answer": "①",
+      "independentlyExpectedChoiceValue": "$7$",
+      "mathEvidence": "0≤4−a<a gives a3,4 →sum7",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-09",
+        "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "무리함수의 활용",
+        "rpmL4": "무리함수의 교점",
+        "rpmRecordId": "H1-RPM-272",
+        "pt": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "tpl": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "level": "상",
+        "difficultyBucket": 5,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "metadataDebt": [
+          {
+            "field": "conditionKeys",
+            "reason": "Canonical active condition-key binding not independently proven; preserve verified semantics only."
+          }
+        ]
+      },
+      "solutionImage": null,
+      "inlineSvg": true,
+      "currentSourceBlob": "ea9f8efddc95a59d6eafa1e5258102263a3c6e4d",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q18-A1",
+      "sourceQid": 18,
+      "slot": "A1",
+      "answer": "①",
+      "independentlyExpectedChoiceValue": "$\\sqrt{42}$",
+      "mathEvidence": "2(S−2a)=42",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-08",
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "유리함수의 활용",
+        "rpmL4": "유리함수와 그래프의 교점",
+        "rpmRecordId": "H1-RPM-265",
+        "pt": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "tpl": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "level": "중",
+        "difficultyBucket": 3,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordExactBinding",
+            "reason": "H1-RPM-265 DIRECT_BINDING_GAP"
+          },
+          {
+            "field": "crossConceptKey",
+            "reason": "원의 방정식 CrossConcept 정본 키 근거 확인 필요"
+          }
+        ]
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q18-A1-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "26bb95b489b1a9c3c93328ac48791ddca559f334",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q18-A2",
+      "sourceQid": 18,
+      "slot": "A2",
+      "answer": "④",
+      "independentlyExpectedChoiceValue": "$\\sqrt{38}$",
+      "mathEvidence": "2(25−6)=38",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-08",
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "유리함수의 활용",
+        "rpmL4": "유리함수와 그래프의 교점",
+        "rpmRecordId": "H1-RPM-265",
+        "pt": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "tpl": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "level": "중",
+        "difficultyBucket": 3,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordExactBinding",
+            "reason": "H1-RPM-265 DIRECT_BINDING_GAP"
+          },
+          {
+            "field": "crossConceptKey",
+            "reason": "원의 방정식 CrossConcept 정본 키 근거 확인 필요"
+          }
+        ]
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q18-A2-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "26bb95b489b1a9c3c93328ac48791ddca559f334",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q18-A3",
+      "sourceQid": 18,
+      "slot": "A3",
+      "answer": "②",
+      "independentlyExpectedChoiceValue": "$2\\sqrt{14}$",
+      "mathEvidence": "2(36−8)=56",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-08",
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "유리함수의 활용",
+        "rpmL4": "유리함수와 그래프의 교점",
+        "rpmRecordId": "H1-RPM-265",
+        "pt": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "tpl": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "level": "중",
+        "difficultyBucket": 3,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordExactBinding",
+            "reason": "H1-RPM-265 DIRECT_BINDING_GAP"
+          },
+          {
+            "field": "crossConceptKey",
+            "reason": "원의 방정식 CrossConcept 정본 키 근거 확인 필요"
+          }
+        ]
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q18-A3-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "26bb95b489b1a9c3c93328ac48791ddca559f334",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q18-B1",
+      "sourceQid": 18,
+      "slot": "B1",
+      "answer": "③",
+      "independentlyExpectedChoiceValue": "$14$",
+      "mathEvidence": "D²=2(m−6)=16→m14",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-08",
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "유리함수의 활용",
+        "rpmL4": "유리함수와 그래프의 교점",
+        "rpmRecordId": "H1-RPM-265",
+        "pt": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "tpl": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "level": "중",
+        "difficultyBucket": 3,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordExactBinding",
+            "reason": "H1-RPM-265 DIRECT_BINDING_GAP"
+          },
+          {
+            "field": "crossConceptKey",
+            "reason": "원의 방정식 CrossConcept 정본 키 근거 확인 필요"
+          }
+        ]
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q18-B1-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "26bb95b489b1a9c3c93328ac48791ddca559f334",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q18-B2",
+      "sourceQid": 18,
+      "slot": "B2",
+      "answer": "⑤",
+      "independentlyExpectedChoiceValue": "$2$",
+      "mathEvidence": "2(20−2a)=32→a2",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-08",
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "유리함수의 활용",
+        "rpmL4": "유리함수와 그래프의 교점",
+        "rpmRecordId": "H1-RPM-265",
+        "pt": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "tpl": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "level": "중",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordExactBinding",
+            "reason": "H1-RPM-265 DIRECT_BINDING_GAP"
+          },
+          {
+            "field": "crossConceptKey",
+            "reason": "원의 방정식 CrossConcept 정본 키 근거 확인 필요"
+          }
+        ]
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q18-B2-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "26bb95b489b1a9c3c93328ac48791ddca559f334",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q18-B3",
+      "sourceQid": 18,
+      "slot": "B3",
+      "answer": "④",
+      "independentlyExpectedChoiceValue": "$6$",
+      "mathEvidence": "12≤50−4a<36 → a4..9, 6 items",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-08",
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "유리함수의 활용",
+        "rpmL4": "유리함수와 그래프의 교점",
+        "rpmRecordId": "H1-RPM-265",
+        "pt": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "tpl": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "level": "상",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordExactBinding",
+            "reason": "H1-RPM-265 DIRECT_BINDING_GAP"
+          },
+          {
+            "field": "crossConceptKey",
+            "reason": "원의 방정식 CrossConcept 정본 키 근거 확인 필요"
+          }
+        ]
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q18-B3-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "26bb95b489b1a9c3c93328ac48791ddca559f334",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q18-C1",
+      "sourceQid": 18,
+      "slot": "C1",
+      "answer": "⑤",
+      "independentlyExpectedChoiceValue": "$11$",
+      "mathEvidence": "u1+u2=√(41+8)=7; shift sum=11",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-08",
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "유리함수의 활용",
+        "rpmL4": "유리함수와 그래프의 교점",
+        "rpmRecordId": "H1-RPM-265",
+        "pt": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "tpl": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "level": "중",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordExactBinding",
+            "reason": "H1-RPM-265 DIRECT_BINDING_GAP"
+          },
+          {
+            "field": "crossConceptKey",
+            "reason": "원의 방정식 CrossConcept 정본 키 근거 확인 필요"
+          }
+        ]
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q18-C1-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "26bb95b489b1a9c3c93328ac48791ddca559f334",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q18-C2",
+      "sourceQid": 18,
+      "slot": "C2",
+      "answer": "②",
+      "independentlyExpectedChoiceValue": "$8$",
+      "mathEvidence": "u1+u2=√(19+6)=5; x+y=8",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-08",
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "유리함수의 활용",
+        "rpmL4": "유리함수와 그래프의 교점",
+        "rpmRecordId": "H1-RPM-265",
+        "pt": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "tpl": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "level": "중",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordExactBinding",
+            "reason": "H1-RPM-265 DIRECT_BINDING_GAP"
+          },
+          {
+            "field": "crossConceptKey",
+            "reason": "원의 방정식 CrossConcept 정본 키 근거 확인 필요"
+          }
+        ]
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q18-C2-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "26bb95b489b1a9c3c93328ac48791ddca559f334",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q18-C3",
+      "sourceQid": 18,
+      "slot": "C3",
+      "answer": "③",
+      "independentlyExpectedChoiceValue": "$4$",
+      "mathEvidence": "(u1+u2)²=49,(u1−u2)²=33 →a4",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-08",
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "유리함수의 활용",
+        "rpmL4": "유리함수와 그래프의 교점",
+        "rpmRecordId": "H1-RPM-265",
+        "pt": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "tpl": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "level": "상",
+        "difficultyBucket": 5,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordExactBinding",
+            "reason": "H1-RPM-265 DIRECT_BINDING_GAP"
+          },
+          {
+            "field": "crossConceptKey",
+            "reason": "원의 방정식 CrossConcept 정본 키 근거 확인 필요"
+          }
+        ]
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q18-C3-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "26bb95b489b1a9c3c93328ac48791ddca559f334",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q19-A1",
+      "sourceQid": 19,
+      "slot": "A1",
+      "answer": "③",
+      "independentlyExpectedChoiceValue": "$\\dfrac{22}{7}$",
+      "mathEvidence": "t=2 and 1/7 =>22/7",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-08",
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "유리함수의 활용",
+        "rpmL4": "유리함수의 최대·최소",
+        "rpmRecordId": "H1-RPM-264",
+        "pt": "PT_FUNCTION_EXTREMUM",
+        "tpl": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordId",
+            "reason": "H1-RPM-264 remains RPM_ONLY; PT_FUNCTION_EXTREMUM has 2022 binding but exact RPM L3/L4 path is not mapped"
+          },
+          {
+            "field": "templateKey",
+            "reason": "Chosen from active family by approximate decisive step; exact A family AMGM pattern may require Generated-only template registration"
+          },
+          {
+            "field": "crossConceptKeys",
+            "reason": "Registered CrossConcept for quadratic/perfect-square/interval model still needs source-master evidence."
+          }
+        ]
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q19-A1-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "ae73536746569cd6a852decf8c7fdbe67a80b570",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q19-A2",
+      "sourceQid": 19,
+      "slot": "A2",
+      "answer": "①",
+      "independentlyExpectedChoiceValue": "$\\dfrac{41}{8}$",
+      "mathEvidence": "t=3,x=5,fmax1/8→41/8",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-08",
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "유리함수의 활용",
+        "rpmL4": "유리함수의 최대·최소",
+        "rpmRecordId": "H1-RPM-264",
+        "pt": "PT_FUNCTION_EXTREMUM",
+        "tpl": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordId",
+            "reason": "H1-RPM-264 remains RPM_ONLY; PT_FUNCTION_EXTREMUM has 2022 binding but exact RPM L3/L4 path is not mapped"
+          },
+          {
+            "field": "templateKey",
+            "reason": "Chosen from active family by approximate decisive step; exact A family AMGM pattern may require Generated-only template registration"
+          },
+          {
+            "field": "crossConceptKeys",
+            "reason": "Registered CrossConcept for quadratic/perfect-square/interval model still needs source-master evidence."
+          }
+        ]
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q19-A2-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "ae73536746569cd6a852decf8c7fdbe67a80b570",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q19-A3",
+      "sourceQid": 19,
+      "slot": "A3",
+      "answer": "④",
+      "independentlyExpectedChoiceValue": "$\\dfrac{73}{9}$",
+      "mathEvidence": "t=4,x=8,fmax1/9→73/9",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-08",
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "유리함수의 활용",
+        "rpmL4": "유리함수의 최대·최소",
+        "rpmRecordId": "H1-RPM-264",
+        "pt": "PT_FUNCTION_EXTREMUM",
+        "tpl": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordId",
+            "reason": "H1-RPM-264 remains RPM_ONLY; PT_FUNCTION_EXTREMUM has 2022 binding but exact RPM L3/L4 path is not mapped"
+          },
+          {
+            "field": "templateKey",
+            "reason": "Chosen from active family by approximate decisive step; exact A family AMGM pattern may require Generated-only template registration"
+          },
+          {
+            "field": "crossConceptKeys",
+            "reason": "Registered CrossConcept for quadratic/perfect-square/interval model still needs source-master evidence."
+          }
+        ]
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q19-A3-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "ae73536746569cd6a852decf8c7fdbe67a80b570",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q19-B1",
+      "sourceQid": 19,
+      "slot": "B1",
+      "answer": "⑤",
+      "independentlyExpectedChoiceValue": "$\\dfrac{70}{17}$",
+      "mathEvidence": "restricted max at x4 and 2/17",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-08",
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "유리함수의 활용",
+        "rpmL4": "유리함수의 최대·최소",
+        "rpmRecordId": "H1-RPM-264",
+        "pt": "PT_FUNCTION_EXTREMUM",
+        "tpl": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+        "level": "중",
+        "difficultyBucket": 3,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordId",
+            "reason": "H1-RPM-264 remains RPM_ONLY; PT_FUNCTION_EXTREMUM has 2022 binding but exact RPM L3/L4 path is not mapped"
+          },
+          {
+            "field": "templateKey",
+            "reason": "Chosen from active family by approximate decisive step; exact A family AMGM pattern may require Generated-only template registration"
+          },
+          {
+            "field": "crossConceptKeys",
+            "reason": "Registered CrossConcept for quadratic/perfect-square/interval model still needs source-master evidence."
+          }
+        ]
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q19-B1-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "ae73536746569cd6a852decf8c7fdbe67a80b570",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q19-B2",
+      "sourceQid": 19,
+      "slot": "B2",
+      "answer": "②",
+      "independentlyExpectedChoiceValue": "$10$",
+      "mathEvidence": "c6 and a4→10",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-08",
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "유리함수의 활용",
+        "rpmL4": "유리함수의 최대·최소",
+        "rpmRecordId": "H1-RPM-264",
+        "pt": "PT_FUNCTION_EXTREMUM",
+        "tpl": "TPL_FUNCTION_EXTREMUM_BOUND_COEFFICIENT",
+        "level": "상",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordId",
+            "reason": "H1-RPM-264 remains RPM_ONLY; PT_FUNCTION_EXTREMUM has 2022 binding but exact RPM L3/L4 path is not mapped"
+          },
+          {
+            "field": "templateKey",
+            "reason": "Chosen from active family by approximate decisive step; exact A family AMGM pattern may require Generated-only template registration"
+          },
+          {
+            "field": "crossConceptKeys",
+            "reason": "Registered CrossConcept for quadratic/perfect-square/interval model still needs source-master evidence."
+          }
+        ]
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q19-B2-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "ae73536746569cd6a852decf8c7fdbe67a80b570",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q19-B3",
+      "sourceQid": 19,
+      "slot": "B3",
+      "answer": "①",
+      "independentlyExpectedChoiceValue": "$2$",
+      "mathEvidence": "k3,4 satisfy both thresholds; 2",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-08",
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "유리함수의 활용",
+        "rpmL4": "유리함수의 최대·최소",
+        "rpmRecordId": "H1-RPM-264",
+        "pt": "PT_FUNCTION_EXTREMUM",
+        "tpl": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordId",
+            "reason": "H1-RPM-264 remains RPM_ONLY; PT_FUNCTION_EXTREMUM has 2022 binding but exact RPM L3/L4 path is not mapped"
+          },
+          {
+            "field": "templateKey",
+            "reason": "Chosen from active family by approximate decisive step; exact A family AMGM pattern may require Generated-only template registration"
+          },
+          {
+            "field": "crossConceptKeys",
+            "reason": "Registered CrossConcept for quadratic/perfect-square/interval model still needs source-master evidence."
+          }
+        ]
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q19-B3-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "ae73536746569cd6a852decf8c7fdbe67a80b570",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q19-C1",
+      "sourceQid": 19,
+      "slot": "C1",
+      "answer": "②",
+      "independentlyExpectedChoiceValue": "$6$",
+      "mathEvidence": "[m,m+2] intersects[3,6] for m=1..6",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-08",
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "유리함수의 활용",
+        "rpmL4": "유리함수의 최대·최소",
+        "rpmRecordId": "H1-RPM-264",
+        "pt": "PT_FUNCTION_EXTREMUM",
+        "tpl": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+        "level": "중",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordId",
+            "reason": "H1-RPM-264 remains RPM_ONLY; PT_FUNCTION_EXTREMUM has 2022 binding but exact RPM L3/L4 path is not mapped"
+          },
+          {
+            "field": "templateKey",
+            "reason": "Chosen from active family by approximate decisive step; exact A family AMGM pattern may require Generated-only template registration"
+          },
+          {
+            "field": "crossConceptKeys",
+            "reason": "Registered CrossConcept for quadratic/perfect-square/interval model still needs source-master evidence."
+          }
+        ]
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q19-C1-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "ae73536746569cd6a852decf8c7fdbe67a80b570",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q19-C2",
+      "sourceQid": 19,
+      "slot": "C2",
+      "answer": "④",
+      "independentlyExpectedChoiceValue": "$3$",
+      "mathEvidence": "endpoint t2 corresponds k3 and 1/13",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-08",
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "유리함수의 활용",
+        "rpmL4": "유리함수의 최대·최소",
+        "rpmRecordId": "H1-RPM-264",
+        "pt": "PT_FUNCTION_EXTREMUM",
+        "tpl": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+        "level": "상",
+        "difficultyBucket": 5,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordId",
+            "reason": "H1-RPM-264 remains RPM_ONLY; PT_FUNCTION_EXTREMUM has 2022 binding but exact RPM L3/L4 path is not mapped"
+          },
+          {
+            "field": "templateKey",
+            "reason": "Chosen from active family by approximate decisive step; exact A family AMGM pattern may require Generated-only template registration"
+          },
+          {
+            "field": "crossConceptKeys",
+            "reason": "Registered CrossConcept for quadratic/perfect-square/interval model still needs source-master evidence."
+          }
+        ]
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q19-C2-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "ae73536746569cd6a852decf8c7fdbe67a80b570",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q19-C3",
+      "sourceQid": 19,
+      "slot": "C3",
+      "answer": "⑤",
+      "independentlyExpectedChoiceValue": "$18$",
+      "mathEvidence": "t=4 implies q16, maximum 1/10 yields p2 →18",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-08",
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "유리함수의 활용",
+        "rpmL4": "유리함수의 최대·최소",
+        "rpmRecordId": "H1-RPM-264",
+        "pt": "PT_FUNCTION_EXTREMUM",
+        "tpl": "TPL_FUNCTION_EXTREMUM_BOUND_COEFFICIENT",
+        "level": "상",
+        "difficultyBucket": 5,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordId",
+            "reason": "H1-RPM-264 remains RPM_ONLY; PT_FUNCTION_EXTREMUM has 2022 binding but exact RPM L3/L4 path is not mapped"
+          },
+          {
+            "field": "templateKey",
+            "reason": "Chosen from active family by approximate decisive step; exact A family AMGM pattern may require Generated-only template registration"
+          },
+          {
+            "field": "crossConceptKeys",
+            "reason": "Registered CrossConcept for quadratic/perfect-square/interval model still needs source-master evidence."
+          }
+        ]
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q19-C3-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "ae73536746569cd6a852decf8c7fdbe67a80b570",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-A1",
+      "sourceQid": 20,
+      "slot": "A1",
+      "answer": "⑤",
+      "independentlyExpectedChoiceValue": "$17$",
+      "mathEvidence": "legal {}=10 and {1,4}=17 →17",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "명제와 조건",
+        "rpmL4": "명제의 참·거짓",
+        "rpmRecordId": "H1-RPM-244",
+        "pt": "PT_PROPOSITION_JUDGMENT",
+        "tpl": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+        "level": "중",
+        "difficultyBucket": 3,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "metadataDebt": []
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-A1-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "239b98fa6b064f7d7d11b5612c69c833a4196281",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-A2",
+      "sourceQid": 20,
+      "slot": "A2",
+      "answer": "③",
+      "independentlyExpectedChoiceValue": "$20$",
+      "mathEvidence": "legal {}=10 and {1,4}=20 →20",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "명제와 조건",
+        "rpmL4": "명제의 참·거짓",
+        "rpmRecordId": "H1-RPM-244",
+        "pt": "PT_PROPOSITION_JUDGMENT",
+        "tpl": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+        "level": "중",
+        "difficultyBucket": 3,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "metadataDebt": []
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-A2-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "239b98fa6b064f7d7d11b5612c69c833a4196281",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-A3",
+      "sourceQid": 20,
+      "slot": "A3",
+      "answer": "①",
+      "independentlyExpectedChoiceValue": "$23$",
+      "mathEvidence": "legal {}=10 and {1,4}=23 →23",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "명제와 조건",
+        "rpmL4": "명제의 참·거짓",
+        "rpmRecordId": "H1-RPM-244",
+        "pt": "PT_PROPOSITION_JUDGMENT",
+        "tpl": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+        "level": "중",
+        "difficultyBucket": 3,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "metadataDebt": []
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-A3-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "239b98fa6b064f7d7d11b5612c69c833a4196281",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-B1",
+      "sourceQid": 20,
+      "slot": "B1",
+      "answer": "②",
+      "independentlyExpectedChoiceValue": "$21$",
+      "mathEvidence": "legal {},{2,3},{1,4} sums10,21,19 →21",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "명제와 조건",
+        "rpmL4": "명제의 참·거짓",
+        "rpmRecordId": "H1-RPM-244",
+        "pt": "PT_PROPOSITION_JUDGMENT",
+        "tpl": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+        "level": "중",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "metadataDebt": []
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-B1-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "239b98fa6b064f7d7d11b5612c69c833a4196281",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-B2",
+      "sourceQid": 20,
+      "slot": "B2",
+      "answer": "④",
+      "independentlyExpectedChoiceValue": "$8$",
+      "mathEvidence": "legal {},{1,4} and max=k+10=18→k8",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "명제와 조건",
+        "rpmL4": "명제의 참·거짓",
+        "rpmRecordId": "H1-RPM-244",
+        "pt": "PT_PROPOSITION_JUDGMENT",
+        "tpl": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+        "level": "상",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "metadataDebt": []
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-B2-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "239b98fa6b064f7d7d11b5612c69c833a4196281",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-B3",
+      "sourceQid": 20,
+      "slot": "B3",
+      "answer": "③",
+      "independentlyExpectedChoiceValue": "$20$",
+      "mathEvidence": "legal nonempty {2,3}=21, {1,4}=20 →20",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "명제와 조건",
+        "rpmL4": "명제의 참·거짓",
+        "rpmRecordId": "H1-RPM-244",
+        "pt": "PT_PROPOSITION_JUDGMENT",
+        "tpl": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+        "level": "중",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "metadataDebt": []
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-B3-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "239b98fa6b064f7d7d11b5612c69c833a4196281",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-C1",
+      "sourceQid": 20,
+      "slot": "C1",
+      "answer": "④",
+      "independentlyExpectedChoiceValue": "$37$",
+      "mathEvidence": "legal {},{1,2,3}=36,{2,3,5}=37 →37",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "명제와 조건",
+        "rpmL4": "명제의 참·거짓",
+        "rpmRecordId": "H1-RPM-244",
+        "pt": "PT_PROPOSITION_JUDGMENT",
+        "tpl": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+        "level": "상",
+        "difficultyBucket": 5,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "metadataDebt": []
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-C1-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "239b98fa6b064f7d7d11b5612c69c833a4196281",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-C2",
+      "sourceQid": 20,
+      "slot": "C2",
+      "answer": "①",
+      "independentlyExpectedChoiceValue": "$7$",
+      "mathEvidence": "legal {2,3}=26,{1,2,3}=33 →difference7",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "명제와 조건",
+        "rpmL4": "명제의 참·거짓",
+        "rpmRecordId": "H1-RPM-244",
+        "pt": "PT_PROPOSITION_JUDGMENT",
+        "tpl": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+        "level": "상",
+        "difficultyBucket": 5,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "metadataDebt": []
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-C2-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "239b98fa6b064f7d7d11b5612c69c833a4196281",
+      "chrome": "NOT_TESTED"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-C3",
+      "sourceQid": 20,
+      "slot": "C3",
+      "answer": "②",
+      "independentlyExpectedChoiceValue": "$13$",
+      "mathEvidence": "legal {2,3}=26,{1,2,3}=k+25=38 →k13",
+      "choicesChecked": 5,
+      "distractorsConsidered": 4,
+      "reviewMode": "OPENBOOK_STEM_ANSWER_SOLUTION_WITH_INDEPENDENT_MATH_FACTS",
+      "contentDisposition": "KEEP_OR_TARGETED_REPAIR",
+      "meta": {
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnitConfidence": "candidate_evidence",
+        "rpmL3": "명제와 조건",
+        "rpmL4": "명제의 참·거짓",
+        "rpmRecordId": "H1-RPM-244",
+        "pt": "PT_PROPOSITION_JUDGMENT",
+        "tpl": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+        "level": "상",
+        "difficultyBucket": 5,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "metadataDebt": []
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-C3-solution.svg",
+      "inlineSvg": false,
+      "currentSourceBlob": "239b98fa6b064f7d7d11b5612c69c833a4196281",
+      "chrome": "NOT_TESTED"
+    }
+  ]
+}
