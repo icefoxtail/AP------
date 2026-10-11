@@ -13,7 +13,7 @@
 - 인덱스 크기: 14818156 bytes
 - 로드 실패 파일: 0
 
-> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(13762)" 기준이다.
+> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(13878)" 기준이다.
 
 ## 표준단원키 분류 (공식 마스터 143개 기준)
 
@@ -28,7 +28,7 @@
 
 - 누락 id: 0
 - 누락 content: 0
-- 누락 choices: 26
+- 누락 choices: 5
 - 누락 level: 474
 - 누락 standardUnit: 0
 - 누락 standardUnitKey: 0
@@ -38,9 +38,9 @@
 ## 시각요소 집계 (최종 인덱스 기준)
 
 - q.image 보유: 3046
-- content 내부 <img>: 37
+- content 내부 <img>: 44
 - content 내부 <svg>: 77
-- content 내부 <table>: 183
+- content 내부 <table>: 184
 - 시각요소 보유(hasImage=true, OR 합산): 3335
 
 ## 누락 예시
