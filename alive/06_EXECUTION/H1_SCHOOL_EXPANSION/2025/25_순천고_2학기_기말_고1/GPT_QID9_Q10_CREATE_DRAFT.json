@@ -46,7 +46,52 @@
     "browserEngineModes": "NOT_RUN",
     "releaseStatus": "NOT_AUTHORIZED",
     "nextSourceQid": 11,
-    "selfReview": "3_REVISED_6_KEEP_AFTER_REVERSE_STEM"
+    "selfReview": "3_REVISED_6_KEEP_AFTER_REVERSE_STEM",
+    "gptOpenBookReviewSecondBatch": "CONTENT_REVIEWED_META_PATCHED_BROWSER_NOT_TESTED",
+    "gptOpenBookCorrections": [
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q10-B3",
+        "axis": "learningLevel",
+        "from": "상",
+        "to": "중"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q10-C1",
+        "axis": "learningLevel",
+        "from": "상",
+        "to": "중"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q10-C1",
+        "axis": "difficultyBucket",
+        "from": 4,
+        "to": 3
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q10-C2",
+        "axis": "learningLevel",
+        "from": "상",
+        "to": "중"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q10-C2",
+        "axis": "difficultyBucket",
+        "from": 4,
+        "to": 3
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q10-C3",
+        "axis": "learningLevel",
+        "from": "상",
+        "to": "중"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q10-C3",
+        "axis": "difficultyBucket",
+        "from": 5,
+        "to": 3
+      }
+    ]
   },
   "authorMathWitness": {
     "A1": {
@@ -800,8 +845,9 @@
         "conditionSemantics": [],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "두 단계의 증가 함수 연쇄 추적",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "SEQUENTIAL",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "두 단계의 증가 함수 연쇄 추적"
       },
       "review": {
         "reverseStemDisposition": "REVISED",
@@ -848,7 +894,10 @@
         "authorMathCheck": "AUTHOR_FIVE_CHOICES_RECOMPUTED",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -915,8 +964,9 @@
         "conditionSemantics": [],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "감소 함수의 두 단계 역추적",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "SEQUENTIAL",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "증가함수의 합성 2회 추적이며 기존 '감소 함수' 서술은 잘못됨"
       },
       "review": {
         "reverseStemDisposition": "REVISED",
@@ -963,7 +1013,10 @@
         "authorMathCheck": "AUTHOR_FIVE_CHOICES_RECOMPUTED",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -1030,8 +1083,9 @@
         "conditionSemantics": [],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "목표 출력이 달라진 합성함수 그래프",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "SEQUENTIAL",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "목표 출력이 달라진 합성함수 그래프"
       },
       "review": {
         "reverseStemDisposition": "REVISED",
@@ -1078,7 +1132,10 @@
         "authorMathCheck": "AUTHOR_FIVE_CHOICES_RECOMPUTED",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -1145,8 +1202,9 @@
         "conditionSemantics": [],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "감소함수를 두 번 적용하는 합성 구조",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "SEQUENTIAL",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "감소함수를 두 번 적용하는 합성 구조"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -1194,7 +1252,10 @@
         "authorMathCheck": "AUTHOR_FIVE_CHOICES_RECOMPUTED",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -1261,8 +1322,9 @@
         "conditionSemantics": [],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "비단조함수의 이차 합성",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "SEQUENTIAL",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "비단조함수의 이차 합성"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -1310,7 +1372,10 @@
         "authorMathCheck": "AUTHOR_FIVE_CHOICES_RECOMPUTED",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -1320,7 +1385,7 @@
       "slot": "B3",
       "purpose": "B",
       "modeCandidate": "EXAM_FOLLOWUP",
-      "level": "상",
+      "level": "중",
       "category": "함수",
       "originalCategory": "합성함수의 그래프 해석",
       "standardCourse": "공통수학2",
@@ -1377,8 +1442,9 @@
         "conditionSemantics": [],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "비단조함수의 삼차 합성",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "SEQUENTIAL",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "비단조함수의 삼차 합성"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -1426,7 +1492,11 @@
         "authorMathCheck": "AUTHOR_FIVE_CHOICES_RECOMPUTED",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "independentLearningLevelBasis": "기계적 A/B/C 등급보다 실제 풀이의 개념결합·분기·검산 단계로 재판정",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -1436,7 +1506,7 @@
       "slot": "C1",
       "purpose": "C",
       "modeCandidate": "EXAM_FOLLOWUP",
-      "level": "상",
+      "level": "중",
       "category": "함수",
       "originalCategory": "합성함수의 그래프 해석",
       "standardCourse": "공통수학2",
@@ -1485,7 +1555,7 @@
         "problemTypeKey": "PT_COMPOSITION_EVALUATION",
         "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
         "PTTPLBinding": "ACTIVE_CURRENT",
-        "difficultyBucket": 4,
+        "difficultyBucket": 3,
         "difficultyReason": "삼단계 합성의 역추적",
         "crossConceptKeys": [],
         "crossConceptReasons": [],
@@ -1493,8 +1563,9 @@
         "conditionSemantics": [],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "삼단계 합성의 역추적",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "SEQUENTIAL",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "삼단계 합성의 역추적"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -1542,7 +1613,11 @@
         "authorMathCheck": "AUTHOR_FIVE_CHOICES_RECOMPUTED",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "independentLearningLevelBasis": "기계적 A/B/C 등급보다 실제 풀이의 개념결합·분기·검산 단계로 재판정",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -1552,7 +1627,7 @@
       "slot": "C2",
       "purpose": "C",
       "modeCandidate": "EXAM_FOLLOWUP",
-      "level": "상",
+      "level": "중",
       "category": "함수",
       "originalCategory": "합성함수의 그래프 해석",
       "standardCourse": "공통수학2",
@@ -1601,7 +1676,7 @@
         "problemTypeKey": "PT_COMPOSITION_EVALUATION",
         "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
         "PTTPLBinding": "ACTIVE_CURRENT",
-        "difficultyBucket": 4,
+        "difficultyBucket": 3,
         "difficultyReason": "먼저 목표 f(e)를 계산하는 합성",
         "crossConceptKeys": [],
         "crossConceptReasons": [],
@@ -1609,8 +1684,9 @@
         "conditionSemantics": [],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "먼저 목표 f(e)를 계산하는 합성",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "먼저 목표 f(e)를 계산하는 합성"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -1658,7 +1734,11 @@
         "authorMathCheck": "AUTHOR_FIVE_CHOICES_RECOMPUTED",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "independentLearningLevelBasis": "기계적 A/B/C 등급보다 실제 풀이의 개념결합·분기·검산 단계로 재판정",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -1668,7 +1748,7 @@
       "slot": "C3",
       "purpose": "C",
       "modeCandidate": "EXAM_FOLLOWUP",
-      "level": "상",
+      "level": "중",
       "category": "함수",
       "originalCategory": "합성함수의 그래프 해석",
       "standardCourse": "공통수학2",
@@ -1717,7 +1797,7 @@
         "problemTypeKey": "PT_COMPOSITION_EVALUATION",
         "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
         "PTTPLBinding": "ACTIVE_CURRENT",
-        "difficultyBucket": 5,
+        "difficultyBucket": 3,
         "difficultyReason": "삼단계 합성의 단계 누락 방지",
         "crossConceptKeys": [],
         "crossConceptReasons": [],
@@ -1725,8 +1805,9 @@
         "conditionSemantics": [],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "삼단계 합성의 단계 누락 방지",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "SEQUENTIAL",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "삼단계 합성의 단계 누락 방지"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -1774,7 +1855,11 @@
         "authorMathCheck": "AUTHOR_FIVE_CHOICES_RECOMPUTED",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "independentLearningLevelBasis": "기계적 A/B/C 등급보다 실제 풀이의 개념결합·분기·검산 단계로 재판정",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     }
   ],
