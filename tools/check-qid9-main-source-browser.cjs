@@ -4,7 +4,7 @@ const {spawn}=require('node:child_process');
 const root=path.resolve(__dirname,'..'),sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const spec=JSON.parse(fs.readFileSync(path.join(root,'archive/data/generated-source-import-roots-v1.json'),'utf8'));
 const first=spec.roots[0],firstJson=JSON.parse(fs.readFileSync(path.join(root,first.directory,'GPT_QID9_Q01_CREATE_DRAFT.json'),'utf8'));
-const prefix=firstJson.questions[0].uid.replace(/Q\\d{2}-[ABC][123]$/,'');
+const prefix=firstJson.questions[0].uid.replace(/Q\d{2}-[ABC][123]$/,'');
 const expectedCount=spec.expectedTotalUids,qidCount=first.expectedSourceQidCount;
 const sampleUid=prefix+'Q'+String(qidCount-2).padStart(2,'0')+'-A1';
 const school=firstJson.source.examTitle.split('_')[1];
