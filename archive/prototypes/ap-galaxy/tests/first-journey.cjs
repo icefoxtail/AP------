@@ -76,6 +76,28 @@ async function groupFocus(page){
   }
   throw Error('School canvas target could not be focused after 5 projected picks');
 }
+async function clickActionableOrbit(page, excluded = []) {
+  await page.waitForFunction(() => [...document.querySelectorAll('.question-orbit-node')]
+    .some(el => getComputedStyle(el).display !== 'none'), null, {timeout:25000});
+  // Orbit projections and camera easing are dynamic: choose a currently
+  // pointer-actionable control, not a hidden ID and not a DOM .click() shim.
+  for (let attempt=0;attempt<5;attempt++) {
+    await wait(300);
+    const candidates=page.locator('.question-orbit-node:visible');
+    const count=await candidates.count();
+    for(let i=0;i<count;i++){
+      const candidate=candidates.nth(i);
+      const id=await candidate.getAttribute('data-question-id').catch(()=>null);
+      if(!id||excluded.includes(id))continue;
+      try{
+        await candidate.click({trial:true,timeout:550});
+        await candidate.click({timeout:4500});
+        return id;
+      }catch(_){ /* Try a different projected pointer target. */ }
+    }
+  }
+  throw Error('No visible orbit question was actually pointer-clickable');
+}
 async function fps(page){
   await page.locator('#motionToggle').evaluate(el=>{if(el.getAttribute('aria-pressed')==='true')el.click()});
   await wait(250);
@@ -258,13 +280,9 @@ async function main(){
     await mid.evaluate(el=>el.click());
     await rapid.page.waitForFunction(()=>document.querySelectorAll('.question-orbit-node').length===24 &&
       document.getElementById('examTitle').textContent.includes('중간고사'),null,{timeout:35000});
-    const rapidNodes=rapid.page.locator('.question-orbit-node:visible');
-    await rapid.page.waitForFunction(()=>document.querySelectorAll('.question-orbit-node:not([style*="display: none"])').length>=2,null,{timeout:18000});
-    const rapidFirst=await rapidNodes.first().getAttribute('data-question-id');
-    const rapidLast=await rapidNodes.last().getAttribute('data-question-id');
-    if(rapidFirst===rapidLast)throw Error('Not enough clickable orbit questions');
-    await rapid.page.locator('[data-question-id="'+rapidFirst+'"]').click({timeout:18000});
-    await rapid.page.locator('[data-question-id="'+rapidLast+'"]').click({timeout:18000});
+    await wait(900);
+    const rapidFirst=await clickActionableOrbit(rapid.page);
+    const rapidLast=await clickActionableOrbit(rapid.page,[rapidFirst]);
     await rapid.page.waitForFunction(id=>document.querySelector('#questionStatus')?.textContent==='문항 '+id+' · 문제',
       rapidLast,{timeout:32000});
     const lastQuick=await rapid.page.evaluate(()=>{
@@ -330,13 +348,9 @@ async function main(){
     });
     await delayed.page.locator('.satellite-hit').filter({hasText:'2026 · 1학기 중간'}).first().evaluate(el=>el.click());
     await delayed.page.waitForFunction(()=>document.querySelectorAll('.question-orbit-node').length===24,null,{timeout:30000});
-    const earlyNodes=delayed.page.locator('.question-orbit-node:visible');
-    await delayed.page.waitForFunction(()=>document.querySelectorAll('.question-orbit-node:not([style*="display: none"])').length>=2,null,{timeout:15000});
-    const earlyFirst=await earlyNodes.first().getAttribute('data-question-id');
-    const earlyLast=await earlyNodes.last().getAttribute('data-question-id');
-    if(earlyFirst===earlyLast)throw Error('Not enough visible early question controls');
-    await delayed.page.locator('[data-question-id="'+earlyFirst+'"]').click({timeout:15000});
-    await delayed.page.locator('[data-question-id="'+earlyLast+'"]').click({timeout:15000});
+    await wait(900);
+    const earlyFirst=await clickActionableOrbit(delayed.page);
+    const earlyLast=await clickActionableOrbit(delayed.page,[earlyFirst]);
     await delayed.page.waitForFunction(id=>document.querySelector('#questionStatus')?.textContent==='문항 '+id+' · 문제',
       earlyLast,{timeout:35000});
     report.delayedEngine=await delayed.page.evaluate(()=>{
@@ -349,8 +363,8 @@ async function main(){
     await delayed.page.locator('.satellite-hit').filter({hasText:'2026 · 1학기 기말'}).first().evaluate(el=>el.click());
     await delayed.page.waitForFunction(()=>document.getElementById('examTitle').textContent.includes('기말고사')&&
       document.querySelectorAll('.question-orbit-node').length===24,null,{timeout:35000});
-    const finalFirst=await delayed.page.locator('.question-orbit-node:visible').first().getAttribute('data-question-id');
-    await delayed.page.locator('[data-question-id="'+finalFirst+'"]').click({timeout:15000});
+    await wait(900);
+    const finalFirst=await clickActionableOrbit(delayed.page);
     await delayed.page.waitForFunction(id=>document.querySelector('#questionStatus')?.textContent==='문항 '+id+' · 문제',
       finalFirst,{timeout:35000});
     report.delayedSwitch=await delayed.page.evaluate(()=>{
