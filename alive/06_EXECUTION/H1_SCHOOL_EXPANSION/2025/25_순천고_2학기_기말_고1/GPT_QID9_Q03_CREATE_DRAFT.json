@@ -73,7 +73,10 @@
     "unresolvedVisual": [
       "Actual JS Archive browser sol view NOT_TESTED; CairoSVG PNG is not browser/engine render"
     ],
-    "rpmRecordIdBinding": "9/9_EXISTING_RPM_CROSSWALK"
+    "rpmRecordIdBinding": "9/9_EXISTING_RPM_CROSSWALK",
+    "independentDifficultyCorrections": [
+      "C2"
+    ]
   },
   "questions": [
     {
@@ -851,7 +854,7 @@
       "slot": "C2",
       "purpose": "C",
       "modeCandidate": "TYPE_BANK",
-      "level": "상",
+      "level": "중",
       "difficultyBucket": 4,
       "category": "무리함수",
       "originalCategory": "무리식의 정의역",
@@ -947,7 +950,9 @@
         },
         "independentGPT": "NOT_RUN",
         "browser": "NOT_TESTED",
-        "publication": "DRAFT_ONLY"
+        "publication": "DRAFT_ONLY",
+        "independentDifficultyRationale": "끝점이 정수인 두 근호 구간의 개수 역산 후 네 정수 합을 구하는 직선적 풀이",
+        "independentDifficultyDisposition": "CORRECT_LEVEL_ONLY_BUCKET_INDEPENDENT"
       }
     },
     {
