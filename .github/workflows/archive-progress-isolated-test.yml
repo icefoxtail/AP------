@@ -39,6 +39,9 @@ jobs:
           gh api /repos/icefoxtail/AP------/actions/artifacts/11691357897/zip > "$RUNNER_TEMP/b15-release-diagnostics.zip"
           unzip -t "$RUNNER_TEMP/b15-release-diagnostics.zip" >/dev/null
           test "$(stat -c%s "$RUNNER_TEMP/b15-release-diagnostics.zip")" -lt 8388608
+      - name: Restore original ZIP installer for regression fixtures only
+        shell: bash
+        run: unzip -p .observer-review/archive-progress-source.zip archive_progress_v1/apply.py > apply.py
       - name: Existing regression tests with physical B15 evidence
         env:
           B15_DIAGNOSTIC_ZIP: ${{ runner.temp }}/b15-release-diagnostics.zip
