@@ -1,0 +1,1123 @@
+{
+  "schemaVersion": "ALIVE_QID9_AUTHOR_DRAFT_v1",
+  "source": {
+    "path": "archive/exams/original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
+    "examTitle": "25_순천고_2학기_기말_고1_기출",
+    "qid": 18,
+    "sourceUid": "archive/exams/original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js|25_순천고_2학기_기말_고1_기출|q18",
+    "gitBlobSha1": "6159f478e8e3edf7074d3967ba1cb7456f7762a3",
+    "originalReadOnly": true
+  },
+  "authority": {
+    "rpmPrimaryL3": "유리함수의 활용",
+    "rpmPrimaryL4": "유리함수와 그래프의 교점",
+    "rpmRecordIds": [
+      "H1-RPM-265"
+    ],
+    "rpmCrosswalkGitBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+    "PT": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "TPL": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+    "mappingStatus": "DIRECT_BINDING_GAP",
+    "subUnitKey": "H22-C2-08-FUNCTION_BASIC"
+  },
+  "summary": {
+    "qid": 18,
+    "createdSlots": 9,
+    "answerDistribution": {
+      "①": 2,
+      "②": 2,
+      "③": 2,
+      "④": 1,
+      "⑤": 2
+    },
+    "choiceCount": 45,
+    "distractorRoutes": 36,
+    "solutions": 9,
+    "solutionSvgFiles": 9,
+    "solutionSvgInline": 0,
+    "problemSvgFiles": 0,
+    "mathValidation": "SYMPY_EXACT_NUMERIC_INTERSECTIONS_AUTHOR_CHECK",
+    "status": "AUTHOR_DRAFT_ONLY",
+    "independentQualityReview": "NOT_RUN",
+    "actualBrowserRender": "NOT_RUN",
+    "nextSourceQid": 19,
+    "authorCorrection": "LATEX_BACKSLASH_AND_2A_MULTIPLICATION_FIXED"
+  },
+  "authorMathWitness": {
+    "identity": "u=x-h, y-b=A/u; u1u2=A, u1²+u2²=S, D²=2(S−2A)",
+    "condition": "A>0 and S>2A",
+    "B3": "a=4..9",
+    "C3": "a=4,m=41"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q18-A1",
+      "sourceQid": 18,
+      "slot": "A1",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "유리함수",
+      "originalCategory": "유리함수와 원의 교점",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $y=\\dfrac2{x-1}+2\\;(x\\gt1)$의 그래프와 원 $(x-1)^2+(y-2)^2=25$가 만나는 두 점 사이의 거리는?",
+      "choices": [
+        "$5\\sqrt2$",
+        "$\\sqrt{46}$",
+        "$\\sqrt{42}$",
+        "$\\sqrt{21}$",
+        "$\\sqrt{34}$"
+      ],
+      "answer": "③",
+      "solution": "$u=x-(1)>0$라 놓으면 $y-(2)=\\dfrac{2}u$이다. 두 교점에 대응하는 양수 $u_1,u_2$는 $u_1^2+u_2^2=25$, $u_1u_2=2$를 만족한다. 원에 대입하여 $v=u^2$로 치환하면 $v^2-25v+2^2=0$이다. 두 점의 상대좌표는 $(u_1,u_2)$, $(u_2,u_1)$이므로 $D^2=2(u_1-u_2)^2=2(25-2\\cdot2)$이다.\n이 값은 $2(25-2\\cdot2)=42$이므로 두 점 사이 거리는 $\\sqrt{42}$이다. $25>2\\cdot2$이므로 교점은 실제로 서로 다른 두 점이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "assets/q18-A1-solution.svg",
+      "solutionImageAlt": "A1 원·유리함수와 교점 P,Q·현 PQ 그래프",
+      "solutionImageCaption": "두 교점의 대칭 좌표와 거리·현을 표시한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "유리함수와 그래프의 교점",
+        "rpmRecordId": "H1-RPM-265",
+        "rpmRecordMappingStatus": "DIRECT_BINDING_GAP",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "templateBinding": "PT_TPL_ACTIVE_EXACT_BINDING_GAP",
+        "crossConceptKeys": [],
+        "crossConceptEvidence": "원의 방정식과 유리함수의 교점 결합",
+        "crossConceptApplicability": "EVIDENCE_DEBT_KEY",
+        "conditionKeys": [],
+        "integrationPattern": "RATIONAL_CIRCLE_CHORD_INVARIANTS",
+        "integrationPatternStatus": "SEMANTIC_ONLY",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          {
+            "field": "rpmRecordExactBinding",
+            "reason": "H1-RPM-265 DIRECT_BINDING_GAP"
+          },
+          {
+            "field": "crossConceptKey",
+            "reason": "원의 방정식 CrossConcept 정본 키 근거 확인 필요"
+          },
+          {
+            "field": "integrationPattern",
+            "reason": "활성 등록 키 미확인"
+          }
+        ]
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "유리함수와 원의 두 교점 관계가 풀이 핵심",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$5\\sqrt2$",
+            "wrongStepAndActualResult": "곱항을 누락하여 D²=50"
+          },
+          {
+            "choice": "②",
+            "choiceValue": "$\\sqrt{46}$",
+            "wrongStepAndActualResult": "한쪽 곱만 반영해 D²=46"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$\\sqrt{21}$",
+            "wrongStepAndActualResult": "좌표 한 방향만 반영해 D²=21"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$\\sqrt{34}$",
+            "wrongStepAndActualResult": "곱항을 두 번 더 빼 D²=34"
+          }
+        ],
+        "answerUniqueness": "AUTHOR_EXACT_TWO_POSITIVE_ROOTS",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "원과 유리함수의 수식·정의역이 주어져 그림 없이 조건 충분"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "assets/q18-A1-solution.svg",
+          "expectedFacts": {
+            "A": 2,
+            "S": 25,
+            "center": [
+              1,
+              2
+            ],
+            "distanceSquared": 42
+          },
+          "actualBrowser": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q18-A2",
+      "sourceQid": 18,
+      "slot": "A2",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "유리함수",
+      "originalCategory": "유리함수와 원의 교점",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $y=\\dfrac3{x+1}-3\\;(x\\gt-1)$의 그래프와 원 $(x+1)^2+(y+3)^2=25$가 만나는 두 점 사이의 거리는?",
+      "choices": [
+        "$\\sqrt{38}$",
+        "$5\\sqrt2$",
+        "$2\\sqrt{11}$",
+        "$\\sqrt{19}$",
+        "$\\sqrt{26}$"
+      ],
+      "answer": "①",
+      "solution": "$u=x-(-1)>0$라 놓으면 $y-(-3)=\\dfrac{3}u$이다. 두 교점에 대응하는 양수 $u_1,u_2$는 $u_1^2+u_2^2=25$, $u_1u_2=3$를 만족한다. 원에 대입하여 $v=u^2$로 치환하면 $v^2-25v+3^2=0$이다. 두 점의 상대좌표는 $(u_1,u_2)$, $(u_2,u_1)$이므로 $D^2=2(u_1-u_2)^2=2(25-2\\cdot3)$이다.\n이 값은 $2(25-2\\cdot3)=38$이므로 두 점 사이 거리는 $\\sqrt{38}$이다. $25>2\\cdot3$이므로 교점은 실제로 서로 다른 두 점이다.\n따라서 정답은 ①이다.",
+      "solutionImage": "assets/q18-A2-solution.svg",
+      "solutionImageAlt": "A2 원·유리함수와 교점 P,Q·현 PQ 그래프",
+      "solutionImageCaption": "두 교점의 대칭 좌표와 거리·현을 표시한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "유리함수와 그래프의 교점",
+        "rpmRecordId": "H1-RPM-265",
+        "rpmRecordMappingStatus": "DIRECT_BINDING_GAP",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "templateBinding": "PT_TPL_ACTIVE_EXACT_BINDING_GAP",
+        "crossConceptKeys": [],
+        "crossConceptEvidence": "원의 방정식과 유리함수의 교점 결합",
+        "crossConceptApplicability": "EVIDENCE_DEBT_KEY",
+        "conditionKeys": [],
+        "integrationPattern": "RATIONAL_CIRCLE_CHORD_INVARIANTS",
+        "integrationPatternStatus": "SEMANTIC_ONLY",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          {
+            "field": "rpmRecordExactBinding",
+            "reason": "H1-RPM-265 DIRECT_BINDING_GAP"
+          },
+          {
+            "field": "crossConceptKey",
+            "reason": "원의 방정식 CrossConcept 정본 키 근거 확인 필요"
+          },
+          {
+            "field": "integrationPattern",
+            "reason": "활성 등록 키 미확인"
+          }
+        ]
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "유리함수와 원의 두 교점 관계가 풀이 핵심",
+        "distractors": [
+          {
+            "choice": "②",
+            "choiceValue": "$5\\sqrt2$",
+            "wrongStepAndActualResult": "곱항을 누락하여 D²=50"
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$2\\sqrt{11}$",
+            "wrongStepAndActualResult": "곱항을 한 번만 빼 D²=44"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$\\sqrt{19}$",
+            "wrongStepAndActualResult": "두 좌표 차이 중 하나만 계산해 D²=19"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$\\sqrt{26}$",
+            "wrongStepAndActualResult": "곱항을 중복 적용해 D²=26"
+          }
+        ],
+        "answerUniqueness": "AUTHOR_EXACT_TWO_POSITIVE_ROOTS",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "원과 유리함수의 수식·정의역이 주어져 그림 없이 조건 충분"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "assets/q18-A2-solution.svg",
+          "expectedFacts": {
+            "A": 3,
+            "S": 25,
+            "center": [
+              -1,
+              -3
+            ],
+            "distanceSquared": 38
+          },
+          "actualBrowser": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q18-A3",
+      "sourceQid": 18,
+      "slot": "A3",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "유리함수",
+      "originalCategory": "유리함수와 원의 교점",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $y=\\dfrac4{x-2}-1\\;(x\\gt2)$의 그래프와 원 $(x-2)^2+(y+1)^2=36$이 만나는 두 점 사이의 거리는?",
+      "choices": [
+        "$6\\sqrt2$",
+        "$8$",
+        "$2\\sqrt7$",
+        "$2\\sqrt{10}$",
+        "$2\\sqrt{14}$"
+      ],
+      "answer": "⑤",
+      "solution": "$u=x-(2)>0$라 놓으면 $y-(-1)=\\dfrac{4}u$이다. 두 교점에 대응하는 양수 $u_1,u_2$는 $u_1^2+u_2^2=36$, $u_1u_2=4$를 만족한다. 원에 대입하여 $v=u^2$로 치환하면 $v^2-36v+4^2=0$이다. 두 점의 상대좌표는 $(u_1,u_2)$, $(u_2,u_1)$이므로 $D^2=2(u_1-u_2)^2=2(36-2\\cdot4)$이다.\n이 값은 $2(36-2\\cdot4)=56$이므로 두 점 사이 거리는 $2\\sqrt{14}$이다. $36>2\\cdot4$이므로 교점은 실제로 서로 다른 두 점이다.\n따라서 정답은 ⑤이다.",
+      "solutionImage": "assets/q18-A3-solution.svg",
+      "solutionImageAlt": "A3 원·유리함수와 교점 P,Q·현 PQ 그래프",
+      "solutionImageCaption": "두 교점의 대칭 좌표와 거리·현을 표시한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "유리함수와 그래프의 교점",
+        "rpmRecordId": "H1-RPM-265",
+        "rpmRecordMappingStatus": "DIRECT_BINDING_GAP",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "templateBinding": "PT_TPL_ACTIVE_EXACT_BINDING_GAP",
+        "crossConceptKeys": [],
+        "crossConceptEvidence": "원의 방정식과 유리함수의 교점 결합",
+        "crossConceptApplicability": "EVIDENCE_DEBT_KEY",
+        "conditionKeys": [],
+        "integrationPattern": "RATIONAL_CIRCLE_CHORD_INVARIANTS",
+        "integrationPatternStatus": "SEMANTIC_ONLY",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          {
+            "field": "rpmRecordExactBinding",
+            "reason": "H1-RPM-265 DIRECT_BINDING_GAP"
+          },
+          {
+            "field": "crossConceptKey",
+            "reason": "원의 방정식 CrossConcept 정본 키 근거 확인 필요"
+          },
+          {
+            "field": "integrationPattern",
+            "reason": "활성 등록 키 미확인"
+          }
+        ]
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "유리함수와 원의 두 교점 관계가 풀이 핵심",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$6\\sqrt2$",
+            "wrongStepAndActualResult": "교점 곱을 빼지 않아 D²=72"
+          },
+          {
+            "choice": "②",
+            "choiceValue": "$8$",
+            "wrongStepAndActualResult": "곱항을 한 번만 빼 D²=64"
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$2\\sqrt7$",
+            "wrongStepAndActualResult": "가로 좌표만 반영해 D²=28"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$2\\sqrt{10}$",
+            "wrongStepAndActualResult": "곱항을 두 번 빼 D²=40"
+          }
+        ],
+        "answerUniqueness": "AUTHOR_EXACT_TWO_POSITIVE_ROOTS",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "원과 유리함수의 수식·정의역이 주어져 그림 없이 조건 충분"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "assets/q18-A3-solution.svg",
+          "expectedFacts": {
+            "A": 4,
+            "S": 36,
+            "center": [
+              2,
+              -1
+            ],
+            "distanceSquared": 56
+          },
+          "actualBrowser": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q18-B1",
+      "sourceQid": 18,
+      "slot": "B1",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "유리함수",
+      "originalCategory": "유리함수와 원의 교점",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $y=\\dfrac3{x-1}+2\\;(x\\gt1)$와 원 $(x-1)^2+(y-2)^2=m$이 서로 다른 두 점에서 만난다. 두 교점 사이의 거리가 $4$일 때, $m$은?",
+      "choices": [
+        "$8$",
+        "$11$",
+        "$14$",
+        "$17$",
+        "$22$"
+      ],
+      "answer": "③",
+      "solution": "$u=x-(1)>0$라 놓으면 $y-(2)=\\dfrac{3}u$이다. 두 교점에 대응하는 양수 $u_1,u_2$는 $u_1^2+u_2^2=m$, $u_1u_2=3$를 만족한다. 원에 대입하여 $v=u^2$로 치환하면 $v^2-mv+3^2=0$이다. 두 점의 상대좌표는 $(u_1,u_2)$, $(u_2,u_1)$이므로 $D^2=2(u_1-u_2)^2=2(m-2\\cdot3)$이다.\n$D=4$를 대입하면 $16=2(m-6)$으로 $m=14$이다. $14>6$이므로 두 교점이 실제로 존재한다.\n따라서 정답은 ③이다.",
+      "solutionImage": "assets/q18-B1-solution.svg",
+      "solutionImageAlt": "B1 원·유리함수와 교점 P,Q·현 PQ 그래프",
+      "solutionImageCaption": "두 교점의 대칭 좌표와 거리·현을 표시한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "유리함수와 그래프의 교점",
+        "rpmRecordId": "H1-RPM-265",
+        "rpmRecordMappingStatus": "DIRECT_BINDING_GAP",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "templateBinding": "PT_TPL_ACTIVE_EXACT_BINDING_GAP",
+        "crossConceptKeys": [],
+        "crossConceptEvidence": "원의 방정식과 유리함수의 교점 결합",
+        "crossConceptApplicability": "EVIDENCE_DEBT_KEY",
+        "conditionKeys": [],
+        "integrationPattern": "RATIONAL_CIRCLE_CHORD_INVARIANTS",
+        "integrationPatternStatus": "SEMANTIC_ONLY",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          {
+            "field": "rpmRecordExactBinding",
+            "reason": "H1-RPM-265 DIRECT_BINDING_GAP"
+          },
+          {
+            "field": "crossConceptKey",
+            "reason": "원의 방정식 CrossConcept 정본 키 근거 확인 필요"
+          },
+          {
+            "field": "integrationPattern",
+            "reason": "활성 등록 키 미확인"
+          }
+        ]
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "유리함수와 원의 두 교점 관계가 풀이 핵심",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$8$",
+            "wrongStepAndActualResult": "m=D²/2로 오인"
+          },
+          {
+            "choice": "②",
+            "choiceValue": "$11$",
+            "wrongStepAndActualResult": "m=D²/2+A로 오인"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$17$",
+            "wrongStepAndActualResult": "m=D²/2+3A로 오인"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$22$",
+            "wrongStepAndActualResult": "거리제곱식의 계수 2를 누락"
+          }
+        ],
+        "answerUniqueness": "AUTHOR_EXACT_TWO_POSITIVE_ROOTS",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "원과 유리함수의 수식·정의역이 주어져 그림 없이 조건 충분"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "assets/q18-B1-solution.svg",
+          "expectedFacts": {
+            "A": 3,
+            "S": 14,
+            "center": [
+              1,
+              2
+            ],
+            "distanceSquared": 16
+          },
+          "actualBrowser": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q18-B2",
+      "sourceQid": 18,
+      "slot": "B2",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "상",
+      "category": "유리함수",
+      "originalCategory": "유리함수와 원의 교점",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "양수 $a$에 대하여 함수 $y=\\dfrac a{x+2}-1\\;(x\\gt-2)$와 원 $(x+2)^2+(y+1)^2=20$이 서로 다른 두 점에서 만난다. 거리가 $4\\sqrt2$일 때, $a$는?",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$4$",
+        "$6$",
+        "$8$"
+      ],
+      "answer": "②",
+      "solution": "$u=x-(-2)>0$라 놓으면 $y-(-1)=\\dfrac{a}u$이다. 두 교점에 대응하는 양수 $u_1,u_2$는 $u_1^2+u_2^2=20$, $u_1u_2=a$를 만족한다. 원에 대입하여 $v=u^2$로 치환하면 $v^2-20v+a^2=0$이다. 두 점의 상대좌표는 $(u_1,u_2)$, $(u_2,u_1)$이므로 $D^2=2(u_1-u_2)^2=2(20-2\\cdota)$이다.\n$D^2=(4\\sqrt2)^2=32$이므로 $32=2(20-2a)$에서 $a=2$이다. $20>2a=4$로 서로 다른 두 교점이다.\n따라서 정답은 ②이다.",
+      "solutionImage": "assets/q18-B2-solution.svg",
+      "solutionImageAlt": "B2 원·유리함수와 교점 P,Q·현 PQ 그래프",
+      "solutionImageCaption": "두 교점의 대칭 좌표와 거리·현을 표시한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "유리함수와 그래프의 교점",
+        "rpmRecordId": "H1-RPM-265",
+        "rpmRecordMappingStatus": "DIRECT_BINDING_GAP",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "templateBinding": "PT_TPL_ACTIVE_EXACT_BINDING_GAP",
+        "crossConceptKeys": [],
+        "crossConceptEvidence": "원의 방정식과 유리함수의 교점 결합",
+        "crossConceptApplicability": "EVIDENCE_DEBT_KEY",
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "RATIONAL_CIRCLE_CHORD_INVARIANTS",
+        "integrationPatternStatus": "SEMANTIC_ONLY",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          {
+            "field": "rpmRecordExactBinding",
+            "reason": "H1-RPM-265 DIRECT_BINDING_GAP"
+          },
+          {
+            "field": "crossConceptKey",
+            "reason": "원의 방정식 CrossConcept 정본 키 근거 확인 필요"
+          },
+          {
+            "field": "integrationPattern",
+            "reason": "활성 등록 키 미확인"
+          }
+        ]
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "유리함수와 원의 두 교점 관계가 풀이 핵심",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$1$",
+            "wrongStepAndActualResult": "(40−32)/8로 오인"
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$4$",
+            "wrongStepAndActualResult": "40−2a=32로 오인"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$6$",
+            "wrongStepAndActualResult": "(4√2)²=16으로 오인"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$8$",
+            "wrongStepAndActualResult": "40−a=32로 오인"
+          }
+        ],
+        "answerUniqueness": "AUTHOR_EXACT_TWO_POSITIVE_ROOTS",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "원과 유리함수의 수식·정의역이 주어져 그림 없이 조건 충분"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "assets/q18-B2-solution.svg",
+          "expectedFacts": {
+            "A": 2,
+            "S": 20,
+            "center": [
+              -2,
+              -1
+            ],
+            "distanceSquared": 32
+          },
+          "actualBrowser": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q18-B3",
+      "sourceQid": 18,
+      "slot": "B3",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "상",
+      "category": "유리함수",
+      "originalCategory": "유리함수와 원의 교점",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "자연수 $a$가 $1\\le a\\le12$이다. 함수 $y=\\dfrac a{x-1}+2\\;(x\\gt1)$와 원 $(x-1)^2+(y-2)^2=25$의 두 교점 사이 거리가 $D$일 때, $2\\sqrt3\\le D\\lt6$을 만족하는 $a$의 개수는?",
+      "choices": [
+        "$4$",
+        "$5$",
+        "$7$",
+        "$6$",
+        "$9$"
+      ],
+      "answer": "④",
+      "solution": "$u=x-(1)>0$라 놓으면 $y-(2)=\\dfrac{a}u$이다. 두 교점에 대응하는 양수 $u_1,u_2$는 $u_1^2+u_2^2=25$, $u_1u_2=a$를 만족한다. 원에 대입하여 $v=u^2$로 치환하면 $v^2-25v+a^2=0$이다. 두 점의 상대좌표는 $(u_1,u_2)$, $(u_2,u_1)$이므로 $D^2=2(u_1-u_2)^2=2(25-2\\cdota)$이다.\n$1\\le a\\le12$이면 $25>2a$라서 서로 다른 두 교점이 존재한다. $D^2=50-4a$이므로 $12\\le50-4a\\lt36$, 즉 $\\dfrac72\\lt a\\le\\dfrac{19}2$이다. 자연수 $a=4,5,6,7,8,9$로 6개이다.\n따라서 정답은 ④이다.",
+      "solutionImage": "assets/q18-B3-solution.svg",
+      "solutionImageAlt": "B3 원·유리함수와 교점 P,Q·현 PQ 그래프",
+      "solutionImageCaption": "a=6일 때의 그래프 예시. 전체 자연수 구간은 해설의 부등식으로 판정한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "유리함수와 그래프의 교점",
+        "rpmRecordId": "H1-RPM-265",
+        "rpmRecordMappingStatus": "DIRECT_BINDING_GAP",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "templateBinding": "PT_TPL_ACTIVE_EXACT_BINDING_GAP",
+        "crossConceptKeys": [],
+        "crossConceptEvidence": "원의 방정식과 유리함수의 교점 결합",
+        "crossConceptApplicability": "EVIDENCE_DEBT_KEY",
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "RATIONAL_CIRCLE_CHORD_INVARIANTS",
+        "integrationPatternStatus": "SEMANTIC_ONLY",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          {
+            "field": "rpmRecordExactBinding",
+            "reason": "H1-RPM-265 DIRECT_BINDING_GAP"
+          },
+          {
+            "field": "crossConceptKey",
+            "reason": "원의 방정식 CrossConcept 정본 키 근거 확인 필요"
+          },
+          {
+            "field": "integrationPattern",
+            "reason": "활성 등록 키 미확인"
+          }
+        ]
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "유리함수와 원의 두 교점 관계가 풀이 핵심",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$4$",
+            "wrongStepAndActualResult": "끝값 4와 9를 모두 제외"
+          },
+          {
+            "choice": "②",
+            "choiceValue": "$5$",
+            "wrongStepAndActualResult": "a=9를 경계라 잘못 제외"
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$7$",
+            "wrongStepAndActualResult": "a=3을 포함해 3~9를 셈"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$9$",
+            "wrongStepAndActualResult": "아래 거리 제한을 생략하여 4~12를 셈"
+          }
+        ],
+        "answerUniqueness": "AUTHOR_EXACT_TWO_POSITIVE_ROOTS",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "원과 유리함수의 수식·정의역이 주어져 그림 없이 조건 충분"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "assets/q18-B3-solution.svg",
+          "expectedFacts": {
+            "A": 6,
+            "S": 25,
+            "center": [
+              1,
+              2
+            ],
+            "distanceSquared": 26
+          },
+          "actualBrowser": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q18-C1",
+      "sourceQid": 18,
+      "slot": "C1",
+      "purpose": "C",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "유리함수",
+      "originalCategory": "유리함수와 원의 교점",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $y=\\dfrac4{x-2}+1\\;(x\\gt2)$와 원 $(x-2)^2+(y-1)^2=41$이 만나는 두 점의 $x$좌표의 합은?",
+      "choices": [
+        "$7$",
+        "$9$",
+        "$13$",
+        "$15$",
+        "$11$"
+      ],
+      "answer": "⑤",
+      "solution": "$u=x-(2)>0$라 놓으면 $y-(1)=\\dfrac{4}u$이다. 두 교점에 대응하는 양수 $u_1,u_2$는 $u_1^2+u_2^2=41$, $u_1u_2=4$를 만족한다. 원에 대입하여 $v=u^2$로 치환하면 $v^2-41v+4^2=0$이다. 두 점의 상대좌표는 $(u_1,u_2)$, $(u_2,u_1)$이므로 $D^2=2(u_1-u_2)^2=2(41-2\\cdot4)$이다.\n$(u_1+u_2)^2=41+2\\cdot4=49$이고 $u_i>0$이므로 $u_1+u_2=7$이다. 실제 $x$좌표 두 개는 각각 $u_1+2$, $u_2+2$이므로 합은 $7+4=11$이다.\n따라서 정답은 ⑤이다.",
+      "solutionImage": "assets/q18-C1-solution.svg",
+      "solutionImageAlt": "C1 원·유리함수와 교점 P,Q·현 PQ 그래프",
+      "solutionImageCaption": "두 교점의 대칭 좌표와 거리·현을 표시한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "유리함수와 그래프의 교점",
+        "rpmRecordId": "H1-RPM-265",
+        "rpmRecordMappingStatus": "DIRECT_BINDING_GAP",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "templateBinding": "PT_TPL_ACTIVE_EXACT_BINDING_GAP",
+        "crossConceptKeys": [],
+        "crossConceptEvidence": "원의 방정식과 유리함수의 교점 결합",
+        "crossConceptApplicability": "EVIDENCE_DEBT_KEY",
+        "conditionKeys": [],
+        "integrationPattern": "RATIONAL_CIRCLE_CHORD_INVARIANTS",
+        "integrationPatternStatus": "SEMANTIC_ONLY",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          {
+            "field": "rpmRecordExactBinding",
+            "reason": "H1-RPM-265 DIRECT_BINDING_GAP"
+          },
+          {
+            "field": "crossConceptKey",
+            "reason": "원의 방정식 CrossConcept 정본 키 근거 확인 필요"
+          },
+          {
+            "field": "integrationPattern",
+            "reason": "활성 등록 키 미확인"
+          }
+        ]
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "유리함수와 원의 두 교점 관계가 풀이 핵심",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$7$",
+            "wrongStepAndActualResult": "두 좌표의 이동을 모두 누락"
+          },
+          {
+            "choice": "②",
+            "choiceValue": "$9$",
+            "wrongStepAndActualResult": "이동량 2를 한 번만 더함"
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$13$",
+            "wrongStepAndActualResult": "이동량 2를 세 번 더함"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$15$",
+            "wrongStepAndActualResult": "이동량 2를 네 번 더함"
+          }
+        ],
+        "answerUniqueness": "AUTHOR_EXACT_TWO_POSITIVE_ROOTS",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "원과 유리함수의 수식·정의역이 주어져 그림 없이 조건 충분"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "assets/q18-C1-solution.svg",
+          "expectedFacts": {
+            "A": 4,
+            "S": 41,
+            "center": [
+              2,
+              1
+            ],
+            "distanceSquared": 66
+          },
+          "actualBrowser": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q18-C2",
+      "sourceQid": 18,
+      "slot": "C2",
+      "purpose": "C",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "유리함수",
+      "originalCategory": "유리함수와 원의 교점",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $y=\\dfrac3{x-1}+2\\;(x\\gt1)$와 원 $(x-1)^2+(y-2)^2=19$이 서로 다른 두 점 $P,Q$에서 만난다. 직선 $PQ$가 $x+y=c$일 때 $c$는?",
+      "choices": [
+        "$8$",
+        "$5$",
+        "$6$",
+        "$7$",
+        "$9$"
+      ],
+      "answer": "①",
+      "solution": "$u=x-(1)>0$라 놓으면 $y-(2)=\\dfrac{3}u$이다. 두 교점에 대응하는 양수 $u_1,u_2$는 $u_1^2+u_2^2=19$, $u_1u_2=3$를 만족한다. 원에 대입하여 $v=u^2$로 치환하면 $v^2-19v+3^2=0$이다. 두 점의 상대좌표는 $(u_1,u_2)$, $(u_2,u_1)$이므로 $D^2=2(u_1-u_2)^2=2(19-2\\cdot3)$이다.\n두 교점은 $(1+u_1,2+u_2)$, $(1+u_2,2+u_1)$이다. 따라서 같은 직선 $x+y=3+u_1+u_2$ 위에 있다. $(u_1+u_2)^2=19+6=25$이므로 $u_1+u_2=5$, 따라서 $c=8$이다.\n따라서 정답은 ①이다.",
+      "solutionImage": "assets/q18-C2-solution.svg",
+      "solutionImageAlt": "C2 원·유리함수와 교점 P,Q·현 PQ 그래프",
+      "solutionImageCaption": "두 교점의 대칭 좌표와 거리·현을 표시한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "유리함수와 그래프의 교점",
+        "rpmRecordId": "H1-RPM-265",
+        "rpmRecordMappingStatus": "DIRECT_BINDING_GAP",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "templateBinding": "PT_TPL_ACTIVE_EXACT_BINDING_GAP",
+        "crossConceptKeys": [],
+        "crossConceptEvidence": "원의 방정식과 유리함수의 교점 결합",
+        "crossConceptApplicability": "EVIDENCE_DEBT_KEY",
+        "conditionKeys": [],
+        "integrationPattern": "RATIONAL_CIRCLE_CHORD_INVARIANTS",
+        "integrationPatternStatus": "SEMANTIC_ONLY",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          {
+            "field": "rpmRecordExactBinding",
+            "reason": "H1-RPM-265 DIRECT_BINDING_GAP"
+          },
+          {
+            "field": "crossConceptKey",
+            "reason": "원의 방정식 CrossConcept 정본 키 근거 확인 필요"
+          },
+          {
+            "field": "integrationPattern",
+            "reason": "활성 등록 키 미확인"
+          }
+        ]
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "유리함수와 원의 두 교점 관계가 풀이 핵심",
+        "distractors": [
+          {
+            "choice": "②",
+            "choiceValue": "$5$",
+            "wrongStepAndActualResult": "원 중심의 이동량 1+2를 누락"
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$6$",
+            "wrongStepAndActualResult": "x만 평행이동"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$7$",
+            "wrongStepAndActualResult": "y만 평행이동"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$9$",
+            "wrongStepAndActualResult": "중심의 x=1을 y=2로 오인"
+          }
+        ],
+        "answerUniqueness": "AUTHOR_EXACT_TWO_POSITIVE_ROOTS",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "원과 유리함수의 수식·정의역이 주어져 그림 없이 조건 충분"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "assets/q18-C2-solution.svg",
+          "expectedFacts": {
+            "A": 3,
+            "S": 19,
+            "center": [
+              1,
+              2
+            ],
+            "distanceSquared": 26
+          },
+          "actualBrowser": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q18-C3",
+      "sourceQid": 18,
+      "slot": "C3",
+      "purpose": "C",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "유리함수",
+      "originalCategory": "유리함수와 원의 교점",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "양수 $a,m$에 대하여 함수 $y=\\dfrac a{x-1}+2\\;(x\\gt1)$와 원 $(x-1)^2+(y-2)^2=m$이 두 점 $P,Q$에서 만난다. $PQ$는 직선 $x+y=10$ 위에 있고 길이는 $\\sqrt{66}$이다. $a$는?",
+      "choices": [
+        "$1$",
+        "$4$",
+        "$8$",
+        "$16$",
+        "$41$"
+      ],
+      "answer": "②",
+      "solution": "$u=x-(1)>0$라 놓으면 $y-(2)=\\dfrac{a}u$이다. 두 교점에 대응하는 양수 $u_1,u_2$는 $u_1^2+u_2^2=m$, $u_1u_2=a$를 만족한다. 원에 대입하여 $v=u^2$로 치환하면 $v^2-mv+a^2=0$이다. 두 점의 상대좌표는 $(u_1,u_2)$, $(u_2,u_1)$이므로 $D^2=2(u_1-u_2)^2=2(m-2\\cdota)$이다.\n직선 $x+y=10$에서 $u_1+u_2=7$이다. 거리 조건에 의해 $(u_1-u_2)^2=66/2=33$이다. 따라서 $4a=(u_1+u_2)^2-(u_1-u_2)^2=49-33=16$이고 $a=4$이다. $m=u_1^2+u_2^2=41$로 검산되며 서로 다른 양수 교점이 존재한다.\n따라서 정답은 ②이다.",
+      "solutionImage": "assets/q18-C3-solution.svg",
+      "solutionImageAlt": "C3 원·유리함수와 교점 P,Q·현 PQ 그래프",
+      "solutionImageCaption": "두 교점의 대칭 좌표와 거리·현을 표시한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "유리함수와 그래프의 교점",
+        "rpmRecordId": "H1-RPM-265",
+        "rpmRecordMappingStatus": "DIRECT_BINDING_GAP",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "templateBinding": "PT_TPL_ACTIVE_EXACT_BINDING_GAP",
+        "crossConceptKeys": [],
+        "crossConceptEvidence": "원의 방정식과 유리함수의 교점 결합",
+        "crossConceptApplicability": "EVIDENCE_DEBT_KEY",
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "RATIONAL_CIRCLE_CHORD_INVARIANTS",
+        "integrationPatternStatus": "SEMANTIC_ONLY",
+        "difficultyBucket": 5,
+        "metadataDebt": [
+          {
+            "field": "rpmRecordExactBinding",
+            "reason": "H1-RPM-265 DIRECT_BINDING_GAP"
+          },
+          {
+            "field": "crossConceptKey",
+            "reason": "원의 방정식 CrossConcept 정본 키 근거 확인 필요"
+          },
+          {
+            "field": "integrationPattern",
+            "reason": "활성 등록 키 미확인"
+          }
+        ]
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "유리함수와 원의 두 교점 관계가 풀이 핵심",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$1$",
+            "wrongStepAndActualResult": "차이 제곱 16을 16으로 나눔"
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$8$",
+            "wrongStepAndActualResult": "16을 2로 나눔"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$16$",
+            "wrongStepAndActualResult": "4로 나누지 않음"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$41$",
+            "wrongStepAndActualResult": "원의 m=41을 a와 혼동"
+          }
+        ],
+        "answerUniqueness": "AUTHOR_EXACT_TWO_POSITIVE_ROOTS",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "원과 유리함수의 수식·정의역이 주어져 그림 없이 조건 충분"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "assets/q18-C3-solution.svg",
+          "expectedFacts": {
+            "A": 4,
+            "S": 41,
+            "center": [
+              1,
+              2
+            ],
+            "distanceSquared": 66
+          },
+          "actualBrowser": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    }
+  ]
+}
