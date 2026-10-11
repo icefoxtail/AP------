@@ -180,22 +180,25 @@
     "q06NoVisual": 9,
     "q06ActivePT": 9,
     "q06ActiveTPL": 9,
-    "q06ConditionKeyDebt": 6
+    "q06ConditionKeyDebt": 0,
+    "rpmRecordIdsResolved": 54,
+    "rpmRecordNumericDebt": 0,
+    "rpmRecordCrosswalkGitBlob": "904b3768b69b300607e52217cad05bf71e34f221",
+    "rpmIdCorrectionCommit": "THIS_COMMIT"
   },
   "remainingGates": [
+    "q02 RPM record H1-RPM-246 exists but semantic PT/TPL direct binding gap status retained (no false ACTIVE assertion)",
     "q01~q06 independent open-book GPT review NOT_RUN",
-    "q06 condition semantic key binding 5 UID EVIDENCE_DEBT",
     "q06 student Chrome exam/sol/ans NOT_RUN",
     "q05 template extensions 2 candidate entries; registration NOT_RUN",
     "q05 student-facing Chrome exam/sol/ans NOT_RUN",
     "q01~q04 student-facing Chrome exam/sol/ans NOT_RUN",
-    "q04 SVG6 xml/browser real render NOT_RUN (deterministic primitive only)",
-    "RPM numeric L3 ID unresolved; semantic path frozen and PT/TPL bound"
+    "q04 SVG6 xml/browser real render NOT_RUN (deterministic primitive only)"
   ],
   "next": {
     "qid": 7,
     "action": "Start q07 from protected source, generate A1~C3 on same Suncheon work branch and commit q07 alone; no main deployment.",
-    "handoffPrompt": "2025 순천고 2학기 기말 고1, branch work/alive-25-suncheon-h1-2final-qid9. q01~q06 54 QID9 author drafts with 12 SVG. Read q07 and continue."
+    "handoffPrompt": "2025 순천고 2학기 기말 고1, branch work/alive-25-suncheon-h1-2final-qid9. q01~q06 54 QID9 author drafts with 12 SVG. Read q07 and continue. RPM IDs q01~q06 resolved 54/54 via official high1 crosswalk."
   },
   "lastCompletedQid": 6,
   "lastUpdatedSourceQid": 6
