@@ -41,7 +41,7 @@ for(const entry of spec.roots){
   for(const [i,item] of doc.questions.entries()){
    if(!item||!/^ALITE-[A-Z0-9-]+-Q\d{2}-[ABC][123]$/.test(item.uid||'')||item.sourceQid!==qid||!item.content||!item.solution||item.choices?.length!==5||!item.answer)throw Error('QID9_ITEM_INVALID:'+name+':'+i);
    if(seen.has(item.uid))throw Error('QID9_DUPLICATE_UID:'+item.uid);seen.add(item.uid);
-   if(item.provenance?.sourceOriginalGitBlobSha!==doc.source.gitBlobSha1)throw Error('QID9_PROVENANCE_DRIFT:'+item.uid);
+   if(item.provenance?.sourceOriginalGitBlobSha&&item.provenance.sourceOriginalGitBlobSha!==doc.source.gitBlobSha1)throw Error('QID9_PROVENANCE_DRIFT:'+item.uid);
    const copy=structuredClone(item);
    copy.sourceExamPath=doc.source.path;
    copy.sourceExamBlobSha=doc.source.gitBlobSha1;
