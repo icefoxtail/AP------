@@ -47,13 +47,19 @@ async function launch(browser,{baseline=false,video=false,motion='no-preference'
   const url='http://127.0.0.1:'+server.address().port+'/archive/prototypes/ap-galaxy/index.html';
   await page.goto(url,{waitUntil:'domcontentloaded'});
   await page.waitForFunction(()=>document.getElementById('sceneCount')?.textContent.includes('별 자료 노드'),null,{timeout:35000});
-  await page.waitForTimeout(650);
+  await page.waitForFunction(() =>
+    [...document.querySelectorAll('.planet-label')].some(el => Number.isFinite(parseFloat(el.style.left))),
+    null,{timeout:30000});
   return {page,context};
 }
 async function groupFocus(page){
   await page.locator('#search').fill('삼산중');await wait(550);
   const label=page.locator('.planet-label').filter({hasText:'삼산중'}).first();
   await label.waitFor({state:'attached'});
+  await page.waitForFunction(() => {
+    const el=[...document.querySelectorAll('.planet-label')].find(node=>node.textContent.includes('삼산중'));
+    return el && Number.isFinite(parseFloat(el.style.left));
+  },null,{timeout:30000});
   const loc=await label.evaluate(el=>({x:parseFloat(el.style.left),y:parseFloat(el.style.top)+22}));
   if(!Number.isFinite(loc.x))throw Error('School position not projected');
   await page.evaluate(({x,y})=>{
