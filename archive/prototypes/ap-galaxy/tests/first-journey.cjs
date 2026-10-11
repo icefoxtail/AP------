@@ -92,12 +92,15 @@ async function main(){
     browser:'Playwright Chromium SwiftShader headless (CI runner; not physical user PC)',
     scopes:{realExam:true,fullPrintRoutePreserved:true,physicalPC:false}};
   try{
-    const baseline=await launch(browser,{baseline:true,motion:'reduce'});
+    const baseline=await launch(browser,{baseline:true,motion:'no-preference'});
     await groupFocus(baseline.page);
+    await wait(1400);
     report.beforeFps=await fps(baseline.page);
     await baseline.context.close();
     const {page,context}=await launch(browser,{video:true});
     await groupFocus(page);
+    await wait(1400);
+    report.afterFps=await fps(page);
     await page.screenshot({path:path.join(out,'journey-1-galaxy.png')});
     const button=page.locator('.satellite-hit').filter({hasText:'2026 · 1학기 중간'}).first();
     await button.waitFor({state:'attached',timeout:10000});
@@ -159,7 +162,6 @@ async function main(){
     }));
     if(report.returned.selectedQuestionCount!==0||report.returned.search!=='삼산중')throw Error('Navigation restoration or question cleanup failed');
     await page.screenshot({path:path.join(out,'journey-7-return.png')});
-    report.afterFps=await fps(page);
     const video=page.video();
     await context.close();
     await video.saveAs(path.join(out,'journey-real-content.webm'));
@@ -174,8 +176,66 @@ async function main(){
     await reduced.page.locator('#instantTravel').click();
     if(await reduced.page.locator('#instantTravel').getAttribute('aria-pressed')!=='true')throw Error('Instant travel toggle failed');
     await reduced.context.close();
+    // Rapid consecutive exam selection: the most recent real source must own
+    // the question orbit; switching back must discard the previous node set.
+    const rapid=await launch(browser,{motion:'reduce'});
+    await groupFocus(rapid.page);
+    const final=rapid.page.locator('.satellite-hit').filter({hasText:'2026 · 1학기 기말'}).first();
+    const mid=rapid.page.locator('.satellite-hit').filter({hasText:'2026 · 1학기 중간'}).first();
+    await final.evaluate(el=>el.click());
+    await mid.evaluate(el=>el.click());
+    await rapid.page.waitForFunction(()=>document.querySelectorAll('.question-orbit-node').length===24 &&
+      document.getElementById('examTitle').textContent.includes('중간고사'),null,{timeout:35000});
+    report.latestSelectionWins={file:'26_삼산중_1학기_중간_중3_기출.js',count:24};
+    await final.evaluate(el=>el.click());
+    await rapid.page.waitForFunction(()=>document.querySelectorAll('.question-orbit-node').length>0 &&
+      document.getElementById('examTitle').textContent.includes('기말고사'),null,{timeout:35000});
+    report.examSwitch={latest:'26_삼산중_1학기_기말_중3_기출.js',
+      count:await rapid.page.locator('.question-orbit-node').count()};
+    if(report.examSwitch.count>96||report.examSwitch.count<1)throw Error('Exam switching failed');
+    await rapid.page.locator('#closeDrawer').click();
+    await rapid.context.close();
+
+    // Escape during movement cancels the in-flight camera path and restores
+    // the previous search/group context without triggering a new destination.
+    const cancelled=await launch(browser);
+    await groupFocus(cancelled.page);
+    await cancelled.page.keyboard.press('Escape');
+    report.motionCancellation=await cancelled.page.evaluate(()=>({
+      moving:document.getElementById('universe').classList.contains('travel-warp')
+        ||document.getElementById('universe').classList.contains('travel-flight'),
+      selectedGroup:!document.getElementById('focusedChip').hidden,
+      query:document.getElementById('search').value
+    }));
+    if(report.motionCancellation.moving||report.motionCancellation.selectedGroup ||
+      report.motionCancellation.query!=='삼산중')throw Error('Escape cancellation did not restore exploration');
+    await cancelled.context.close();
+
+    // On-demand source failure must show an explicit error and zero invented
+    // orbit labels; remove the injected network failure and retry the same source.
+    const fail=await launch(browser,{motion:'reduce'});
+    await groupFocus(fail.page);
+    const expectedErrorsStart=errors.length;
+    const broken='**/26_삼산중_1학기_중간_중3_기출.js*';
+    const failRoute=route=>route.abort('failed');
+    await fail.page.route(broken,failRoute);
+    await fail.page.locator('.satellite-hit').filter({hasText:'2026 · 1학기 중간'}).first().evaluate(el=>el.click());
+    await fail.page.waitForFunction(() =>
+      document.getElementById('questionStatus')?.textContent.includes('문항 궤도를 열지 못했습니다'),
+      null,{timeout:20000});
+    const failedCount=await fail.page.locator('.question-orbit-node').count();
+    if(failedCount!==0)throw Error('Failure injected but fabricated question nodes appeared');
+    await fail.page.unroute(broken,failRoute);
+    report.sourceFailure={explicitStatus:true,fabricatedNodes:failedCount,
+      expectedBrowserErrors:errors.splice(expectedErrorsStart)};
+    await fail.page.locator('.satellite-hit').filter({hasText:'2026 · 1학기 중간'}).first().evaluate(el=>el.click());
+    await fail.page.waitForFunction(() =>
+      document.querySelectorAll('.question-orbit-node').length===24,
+      null,{timeout:30000});
+    report.sourceFailure.recoveryCount=await fail.page.locator('.question-orbit-node').count();
+    await fail.context.close();
     report.errors=errors;
-    if(errors.length)throw Error('Unexpected browser errors: '+JSON.stringify(errors));
+    if(errors.length)throw Error('Unexpected browser errors outside intentional failure test: '+JSON.stringify(errors));
     report.status='PASS';
     fs.writeFileSync(path.join(out,'journey-qa.json'),JSON.stringify(report,null,2)+'\n');
     fs.writeFileSync(path.join(out,'README.md'),[
@@ -189,8 +249,11 @@ async function main(){
       '- Real content screenshot sequence: journey-1 through journey-7; journey-real-content.webm.',
       '- Before/after WebGL clear-call frame proxy (3×2.5s): before '+report.beforeFps.samples.join(', ')+
         '; after '+report.afterFps.samples.join(', ')+'. Same software renderer, not physical PC GPU throughput.',
-      '- Reduced motion initial test: '+JSON.stringify(report.reducedMotion),
-      '- Browser page/console errors: '+errors.length,
+      '- Reduced motion: '+JSON.stringify(report.reducedMotion),
+      '- Rapid latest-wins/switching: '+JSON.stringify([report.latestSelectionWins,report.examSwitch]),
+      '- Movement cancellation: '+JSON.stringify(report.motionCancellation),
+      '- Injected source failure and recovery: '+JSON.stringify(report.sourceFailure),
+      '- Browser page/console errors outside intentional failure injection: '+errors.length,
       '- Known gaps: GPU performance on the actual PC, mobile 54-star browser test, browser history outside this tab, real physical printer were not verified.',
       ''].join('\n'));
     console.log(JSON.stringify({status:'PASS',orbitIds:report.orbitIds.length,answer:report.answer,solution:report.solution,before:report.beforeFps,after:report.afterFps}));
