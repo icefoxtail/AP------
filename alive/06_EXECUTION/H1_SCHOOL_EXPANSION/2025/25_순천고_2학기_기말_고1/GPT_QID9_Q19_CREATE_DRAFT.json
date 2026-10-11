@@ -29,8 +29,8 @@
     "answerDistribution": {
       "①": 2,
       "②": 2,
-      "③": 2,
-      "④": 1,
+      "③": 1,
+      "④": 2,
       "⑤": 2
     },
     "choiceCount": 45,
@@ -488,11 +488,11 @@
         "$\\dfrac{37}{9}$",
         "$\\dfrac{65}{8}$",
         "$\\dfrac{82}{9}$",
-        "$\\dfrac{227}{28}$",
-        "$\\dfrac{73}{9}$"
+        "$\\dfrac{73}{9}$",
+        "$\\dfrac{227}{28}$"
       ],
-      "answer": "⑤",
-      "solution": "$t=x-4>0$이라 두면 $\\dfrac{t}{t^2+t+16}$이다. $(t-4)^2\\ge0$이므로 $t^2+16\\ge8t$이며 $t^2+t+16\\ge9t$이다.\n따라서 최댓값은 $\\dfrac19$이고 등호는 $t=4$, 즉 $x=8$에서 성립한다.\n그러므로 $a+b=8+\\dfrac19=\\dfrac{73}{9}$이다.\n따라서 정답은 ⑤이다.",
+      "answer": "④",
+      "solution": "$t=x-4>0$이라 두면 $\\dfrac{t}{t^2+t+16}$이다. $(t-4)^2\\ge0$이므로 $t^2+16\\ge8t$이며 $t^2+t+16\\ge9t$이다.\n따라서 최댓값은 $\\dfrac19$이고 등호는 $t=4$, 즉 $x=8$에서 성립한다.\n그러므로 $a+b=8+\\dfrac19=\\dfrac{73}{9}$이다.\n따라서 정답은 ④이다.",
       "solutionImage": "assets/q19-A3-solution.svg",
       "solutionImageAlt": "A3 분수함수의 최댓값과 그 위치, 구간 제한을 표현한 해설 그래프",
       "solutionImageCaption": "분모의 완전제곱식과 등호 성립 위치를 시각화한다.",
@@ -553,7 +553,7 @@
             "wrongStepAndActualResult": "최대 위치 x=8을 x=9로 착각하여 9+1/9"
           },
           {
-            "choice": "④",
+            "choice": "⑤",
             "choiceValue": "$\\dfrac{227}{28}$",
             "wrongStepAndActualResult": "t=4에서 최댓값을 얻지만 t=3의 함수값 3/28을 대입해 8+3/28"
           }
@@ -609,13 +609,13 @@
       "content": "$2\\lt x\\le4$에서 함수 $f(x)=\\dfrac{x-2}{x^2-2x+9}$가 $x=a$에서 최댓값 $b$를 갖는다. $a+b$의 값은?",
       "choices": [
         "$\\dfrac{36}{17}$",
-        "$\\dfrac{70}{17}$",
+        "$\\dfrac{62}{15}$",
         "$\\dfrac{33}{8}$",
         "$\\dfrac{41}{8}$",
-        "$\\dfrac{62}{15}$"
+        "$\\dfrac{70}{17}$"
       ],
-      "answer": "②",
-      "solution": "$t=x-2$로 놓으면 $0\\lt t\\le2$이고 $f(x)=\\dfrac{t}{t^2+2t+9}$이다.\n$t>0$에서 $\\dfrac2{17}-f(x)=\\dfrac{2(t^2+2t+9)-17t}{17(t^2+2t+9)}=\\dfrac{(2-t)(9-2t)}{17(t^2+2t+9)}$이다.\n$0\\lt t\\le2$이면 $2-t\\ge0$, $9-2t>0$이므로 차는 $0$ 이상이다. 등호는 $t=2$일 때 성립하므로 제한된 정의역에서 최댓값은 $\\dfrac2{17}$이고 그때 $x=4$이다.\n따라서 $a+b=4+\\dfrac2{17}=\\dfrac{70}{17}$이다.\n따라서 정답은 ②이다.",
+      "answer": "⑤",
+      "solution": "$t=x-2$로 놓으면 $0\\lt t\\le2$이고 $f(x)=\\dfrac{t}{t^2+2t+9}$이다.\n$t>0$에서 $\\dfrac2{17}-f(x)=\\dfrac{2(t^2+2t+9)-17t}{17(t^2+2t+9)}=\\dfrac{(2-t)(9-2t)}{17(t^2+2t+9)}$이다.\n$0\\lt t\\le2$이면 $2-t\\ge0$, $9-2t>0$이므로 차는 $0$ 이상이다. 등호는 $t=2$일 때 성립하므로 제한된 정의역에서 최댓값은 $\\dfrac2{17}$이고 그때 $x=4$이다.\n따라서 $a+b=4+\\dfrac2{17}=\\dfrac{70}{17}$이다.\n따라서 정답은 ⑤이다.",
       "solutionImage": "assets/q19-B1-solution.svg",
       "solutionImageAlt": "B1 분수함수의 최댓값과 그 위치, 구간 제한을 표현한 해설 그래프",
       "solutionImageCaption": "전체 그래프의 꼭짓점과 제한된 구간에서의 끝점 최댓값을 구분한다.",
@@ -678,7 +678,7 @@
             "wrongStepAndActualResult": "정의역 제한을 무시하고 전체 최대 위치 x=5와 최대 1/8을 사용"
           },
           {
-            "choice": "⑤",
+            "choice": "②",
             "choiceValue": "$\\dfrac{62}{15}$",
             "wrongStepAndActualResult": "분모의 2t를 t로 잘못 보아 t=2에서 f=2/15로 계산"
           }
@@ -734,13 +734,13 @@
       "content": "실수 $c\\ge0$에 대하여 $x\\gt1$에서 함수 $f(x)=\\dfrac{x-1}{x^2+2x+c}$의 최댓값이 $\\dfrac1{10}$이다. 최댓값을 갖는 $x$의 값을 $a$라 할 때, $a+c$의 값은?",
       "choices": [
         "$6$",
-        "$8$",
-        "$9$",
         "$10$",
+        "$9$",
+        "$8$",
         "$13$"
       ],
-      "answer": "④",
-      "solution": "$t=x-1>0$이라 하면 분모는 $t^2+4t+c+3$이다. $c\\ge0$이므로 $c+3>0$이다.\n$(t-\\sqrt{c+3})^2\\ge0$에서 $t^2+c+3\\ge2t\\sqrt{c+3}$이므로 $f(x)\\le\\dfrac1{4+2\\sqrt{c+3}}$이다.\n등호는 $t=\\sqrt{c+3}$에서 성립한다. 최댓값이 $\\dfrac1{10}$이므로 $4+2\\sqrt{c+3}=10$, $\\sqrt{c+3}=3$에서 $c=6$이다.\n이때 $t=3$이고 $a=x=4$이다. 따라서 $a+c=4+6=10$이다.\n따라서 정답은 ④이다.",
+      "answer": "②",
+      "solution": "$t=x-1>0$이라 하면 분모는 $t^2+4t+c+3$이다. $c\\ge0$이므로 $c+3>0$이다.\n$(t-\\sqrt{c+3})^2\\ge0$에서 $t^2+c+3\\ge2t\\sqrt{c+3}$이므로 $f(x)\\le\\dfrac1{4+2\\sqrt{c+3}}$이다.\n등호는 $t=\\sqrt{c+3}$에서 성립한다. 최댓값이 $\\dfrac1{10}$이므로 $4+2\\sqrt{c+3}=10$, $\\sqrt{c+3}=3$에서 $c=6$이다.\n이때 $t=3$이고 $a=x=4$이다. 따라서 $a+c=4+6=10$이다.\n따라서 정답은 ②이다.",
       "solutionImage": "assets/q19-B2-solution.svg",
       "solutionImageAlt": "B2 분수함수의 최댓값과 그 위치, 구간 제한을 표현한 해설 그래프",
       "solutionImageCaption": "분모의 완전제곱식과 등호 성립 위치를 시각화한다.",
@@ -793,7 +793,7 @@
             "wrongStepAndActualResult": "최댓값을 주는 x값을 더하지 않고 c=6만 답함"
           },
           {
-            "choice": "②",
+            "choice": "④",
             "choiceValue": "$8$",
             "wrongStepAndActualResult": "최대 위치 x=4를 x=2로 오인하여 2+6"
           },
@@ -985,13 +985,13 @@
       "content": "자연수 $m$은 $1\\le m\\le8$이다. 함수 $f(x)=\\dfrac{x-1}{x^2+x+8}$의 정의역을 $m\\le x\\le m+2$로 제한할 때, 최댓값이 $\\dfrac1{10}$ 이상이 되는 $m$의 개수는?",
       "choices": [
         "$4$",
-        "$5$",
         "$6$",
+        "$5$",
         "$7$",
         "$8$"
       ],
-      "answer": "③",
-      "solution": "$t=x-1\\ge0$이라 하면 $f(x)=\\dfrac{t}{t^2+3t+10}$이다. 이 분모는 모든 $t\\ge0$에서 양수이다.\n$f(x)\\ge\\dfrac1{10}$은 $10t\\ge t^2+3t+10$과 동치이고, $t^2-7t+10\\le0$에서 $(t-2)(t-5)\\le0$이다. 따라서 $2\\le t\\le5$, 즉 $3\\le x\\le6$에서만 해당 값 이상이다.\n닫힌 구간 $[m,m+2]$ 위의 최댓값이 $\\dfrac1{10}$ 이상일 필요충분조건은 그 구간이 $[3,6]$과 적어도 한 점에서 겹치는 것이다.\n따라서 $m\\le6$이고 $m+2\\ge3$, 즉 $1\\le m\\le6$이다. 가능한 자연수 $m$은 $6$개이다.\n따라서 정답은 ③이다.",
+      "answer": "②",
+      "solution": "$t=x-1\\ge0$이라 하면 $f(x)=\\dfrac{t}{t^2+3t+10}$이다. 이 분모는 모든 $t\\ge0$에서 양수이다.\n$f(x)\\ge\\dfrac1{10}$은 $10t\\ge t^2+3t+10$과 동치이고, $t^2-7t+10\\le0$에서 $(t-2)(t-5)\\le0$이다. 따라서 $2\\le t\\le5$, 즉 $3\\le x\\le6$에서만 해당 값 이상이다.\n닫힌 구간 $[m,m+2]$ 위의 최댓값이 $\\dfrac1{10}$ 이상일 필요충분조건은 그 구간이 $[3,6]$과 적어도 한 점에서 겹치는 것이다.\n따라서 $m\\le6$이고 $m+2\\ge3$, 즉 $1\\le m\\le6$이다. 가능한 자연수 $m$은 $6$개이다.\n따라서 정답은 ②이다.",
       "solutionImage": "assets/q19-C1-solution.svg",
       "solutionImageAlt": "C1 분수함수의 최댓값과 그 위치, 구간 제한을 표현한 해설 그래프",
       "solutionImageCaption": "m=3일 때의 제한구간을 예시로 표시한다. 모든 m의 판단은 본문 부등식에 따른다.",
@@ -1044,7 +1044,7 @@
             "wrongStepAndActualResult": "제한구간의 왼쪽 끝점 m 자체가 [3,6] 안에 있어야 한다고 잘못 판단하여 m=3,4,5,6만 세어 4개를 얻음"
           },
           {
-            "choice": "②",
+            "choice": "③",
             "choiceValue": "$5$",
             "wrongStepAndActualResult": "구간의 오른쪽 끝이 x=3인 m=1을 제외해 2~6만 셈"
           },
@@ -1112,11 +1112,11 @@
         "$2$",
         "$4$",
         "$5$",
-        "$9$",
-        "$3$"
+        "$3$",
+        "$9$"
       ],
-      "answer": "⑤",
-      "solution": "$t=x-1$이라 놓으면 $0\\lt t\\le k-1$에서 $f(x)=\\dfrac{t}{t^2+3t+16}$이다. $(t-4)^2\\ge0$에서 $t^2+16\\ge8t$이므로 전체 $t>0$에서 최댓값은 $\\dfrac1{11}$이고 $t=4$에서 성립한다.\n$k\\ge5$이면 $t=4$가 정의역에 포함되어 최댓값이 $\\dfrac1{11}>\\dfrac1{13}$이므로 불가능하다.\n따라서 $2\\le k<5$이다. $0\\lt t\\le k-1<4$인 구간에서 두 수 $0<t<u<4$에 대하여\n$\\dfrac{u}{u^2+3u+16}-\\dfrac{t}{t^2+3t+16}=\\dfrac{(u-t)(16-tu)}{(u^2+3u+16)(t^2+3t+16)}>0$이다. 그러므로 최댓값은 오른쪽 끝점 $t=k-1$에서 얻는다.\n$\\dfrac{t}{t^2+3t+16}=\\dfrac1{13}$을 풀면 $t^2-10t+16=(t-2)(t-8)=0$이다. $t<4$이므로 $t=2$만 가능하고 $k=t+1=3$이다.\n따라서 정답은 ⑤이다.",
+      "answer": "④",
+      "solution": "$t=x-1$이라 놓으면 $0\\lt t\\le k-1$에서 $f(x)=\\dfrac{t}{t^2+3t+16}$이다. $(t-4)^2\\ge0$에서 $t^2+16\\ge8t$이므로 전체 $t>0$에서 최댓값은 $\\dfrac1{11}$이고 $t=4$에서 성립한다.\n$k\\ge5$이면 $t=4$가 정의역에 포함되어 최댓값이 $\\dfrac1{11}>\\dfrac1{13}$이므로 불가능하다.\n따라서 $2\\le k<5$이다. $0\\lt t\\le k-1<4$인 구간에서 두 수 $0<t<u<4$에 대하여\n$\\dfrac{u}{u^2+3u+16}-\\dfrac{t}{t^2+3t+16}=\\dfrac{(u-t)(16-tu)}{(u^2+3u+16)(t^2+3t+16)}>0$이다. 그러므로 최댓값은 오른쪽 끝점 $t=k-1$에서 얻는다.\n$\\dfrac{t}{t^2+3t+16}=\\dfrac1{13}$을 풀면 $t^2-10t+16=(t-2)(t-8)=0$이다. $t<4$이므로 $t=2$만 가능하고 $k=t+1=3$이다.\n따라서 정답은 ④이다.",
       "solutionImage": "assets/q19-C2-solution.svg",
       "solutionImageAlt": "C2 분수함수의 최댓값과 그 위치, 구간 제한을 표현한 해설 그래프",
       "solutionImageCaption": "전체 그래프의 꼭짓점과 제한된 구간에서의 끝점 최댓값을 구분한다.",
@@ -1179,7 +1179,7 @@
             "wrongStepAndActualResult": "전체 정의역의 최대 위치 x=5를 조건을 무시하고 답으로 선택"
           },
           {
-            "choice": "④",
+            "choice": "⑤",
             "choiceValue": "$9$",
             "wrongStepAndActualResult": "등식 f(k)=1/13의 다른 해 t=8을 사용하고 끝점이 항상 최대라고 오판"
           }
@@ -1235,13 +1235,13 @@
       "content": "양의 정수 $p,q$에 대하여 $x\\gt1$에서 함수 $f(x)=\\dfrac{x-1}{(x-1)^2+p(x-1)+q}$가 $x=5$에서 최댓값 $\\dfrac1{10}$을 갖는다. $p+q$의 값은?",
       "choices": [
         "$10$",
-        "$18$",
+        "$26$",
         "$20$",
         "$16$",
-        "$26$"
+        "$18$"
       ],
-      "answer": "②",
-      "solution": "$t=x-1>0$이라 놓으면 $f(x)=\\dfrac{t}{t^2+pt+q}$이다. $p,q$가 양의 정수이므로 분모는 항상 양수이다.\n$(t-\\sqrt q)^2\\ge0$에서 $t^2+q\\ge2t\\sqrt q$이고, 따라서 $f(x)\\le\\dfrac1{p+2\\sqrt q}$이다. 등호는 $t=\\sqrt q$일 때 성립한다.\n최댓값을 갖는 $x$가 $5$이므로 $t=4$이고 $\\sqrt q=4$, 따라서 $q=16$이다.\n최댓값이 $\\dfrac1{10}$이므로 $\\dfrac1{p+8}=\\dfrac1{10}$에서 $p=2$이다. 따라서 $p+q=18$이다.\n따라서 정답은 ②이다.",
+      "answer": "⑤",
+      "solution": "$t=x-1>0$이라 놓으면 $f(x)=\\dfrac{t}{t^2+pt+q}$이다. $p,q$가 양의 정수이므로 분모는 항상 양수이다.\n$(t-\\sqrt q)^2\\ge0$에서 $t^2+q\\ge2t\\sqrt q$이고, 따라서 $f(x)\\le\\dfrac1{p+2\\sqrt q}$이다. 등호는 $t=\\sqrt q$일 때 성립한다.\n최댓값을 갖는 $x$가 $5$이므로 $t=4$이고 $\\sqrt q=4$, 따라서 $q=16$이다.\n최댓값이 $\\dfrac1{10}$이므로 $\\dfrac1{p+8}=\\dfrac1{10}$에서 $p=2$이다. 따라서 $p+q=18$이다.\n따라서 정답은 ⑤이다.",
       "solutionImage": "assets/q19-C3-solution.svg",
       "solutionImageAlt": "C3 분수함수의 최댓값과 그 위치, 구간 제한을 표현한 해설 그래프",
       "solutionImageCaption": "분모의 완전제곱식과 등호 성립 위치를 시각화한다.",
@@ -1305,7 +1305,7 @@
             "wrongStepAndActualResult": "q=16만 답하여 p를 누락"
           },
           {
-            "choice": "⑤",
+            "choice": "②",
             "choiceValue": "$26$",
             "wrongStepAndActualResult": "최댓값 역수 10을 p라고 오인하여 10+16을 계산"
           }
@@ -1334,5 +1334,12 @@
         "studentBrowserRender": "NOT_RUN"
       }
     }
-  ]
+  ],
+  "answerPositionRebalance": {
+    "policy": "QID9_COLUMN_4_OF_20",
+    "previousBlob": "125e9b723b565d6226d367f9476be9a303cdf9ce",
+    "stemAndCorrectValuesPreserved": true,
+    "choiceLocationOnly": true,
+    "quality": "AUTHOR_DRAFT_ONLY"
+  }
 }

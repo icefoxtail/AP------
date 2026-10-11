@@ -56,8 +56,8 @@
       "①": 2,
       "②": 2,
       "③": 2,
-      "④": 2,
-      "⑤": 1
+      "④": 1,
+      "⑤": 2
     },
     "originalUIDPreserved": true,
     "wrongRoutes": "36/36",
@@ -170,14 +170,14 @@
       "wide": false,
       "content": "다음 그림은 두 함수 $f:X\\to Y$, $g:Y\\to Z$를 나타낸 것이다. $(g\\circ f)(2)$의 값은?",
       "choices": [
-        "$9$",
-        "$7$",
         "$8$",
+        "$7$",
+        "$9$",
         "$4$",
         "$5$"
       ],
-      "answer": "①",
-      "solution": "합성함수 $(g\\circ f)(2)$는 $f(2)$를 먼저 구한 후 그 결과에 $g$를 적용한다. 그림에서 $f(2)=4$이고 $g(4)=9$이다. 따라서 $(g\\circ f)(2)=g(4)=9$이다. 따라서 정답은 ①이다.",
+      "answer": "③",
+      "solution": "합성함수 $(g\\circ f)(2)$는 $f(2)$를 먼저 구한 후 그 결과에 $g$를 적용한다. 그림에서 $f(2)=4$이고 $g(4)=9$이다. 따라서 $(g\\circ f)(2)=g(4)=9$이다. 따라서 정답은 ③이다.",
       "meta": {
         "primaryRPM_L3": "합성함수",
         "primaryRPM_L3SemanticPath": "2022/high/공통수학2/함수/함수/합성함수",
@@ -210,7 +210,7 @@
             "derivation": "입력 2가 아닌 3을 선택하여 $f(3)=5$, $g(5)=7$을 계산"
           },
           {
-            "choice": "③",
+            "choice": "①",
             "choiceValue": "8",
             "derivation": "입력 2가 아닌 1을 선택하여 $f(1)=6$, $g(6)=8$을 계산"
           },
@@ -270,13 +270,13 @@
       "content": "다음 그림은 두 함수 $f:X\\to Y$, $g:Y\\to Z$를 나타낸 것이다. $(g\\circ f)(1)$의 값은?",
       "choices": [
         "$5$",
-        "$7$",
+        "$3$",
         "$6$",
         "$8$",
-        "$3$"
+        "$7$"
       ],
-      "answer": "②",
-      "solution": "$(g\\circ f)(1)=g(f(1))$이므로 먼저 $f$를 적용한다. 그림에서 $f(1)=5$이고 다음으로 $g(5)=7$이다. 따라서 $(g\\circ f)(1)=7$이다. 따라서 정답은 ②이다.",
+      "answer": "⑤",
+      "solution": "$(g\\circ f)(1)=g(f(1))$이므로 먼저 $f$를 적용한다. 그림에서 $f(1)=5$이고 다음으로 $g(5)=7$이다. 따라서 $(g\\circ f)(1)=7$이다. 따라서 정답은 ⑤이다.",
       "meta": {
         "primaryRPM_L3": "합성함수",
         "primaryRPM_L3SemanticPath": "2022/high/공통수학2/함수/함수/합성함수",
@@ -319,7 +319,7 @@
             "derivation": "입력 2를 잘못 따라 $f(2)=3$, $g(3)=8$을 계산"
           },
           {
-            "choice": "⑤",
+            "choice": "②",
             "choiceValue": "3",
             "derivation": "입력 2의 중간값 $f(2)=3$을 최종값으로 제출"
           }
@@ -368,14 +368,14 @@
       "wide": false,
       "content": "다음 그림은 두 함수 $f:X\\to Y$, $g:Y\\to Z$를 나타낸 것이다. $(g\\circ f)(1)+(g\\circ f)(3)$의 값은?",
       "choices": [
-        "$11$",
+        "$16$",
         "$13$",
         "$14$",
-        "$16$",
+        "$11$",
         "$18$"
       ],
-      "answer": "④",
-      "solution": "$f(1)=5$, $g(5)=9$이므로 $(g\\circ f)(1)=9$이다. 또 $f(3)=6$, $g(6)=7$이므로 $(g\\circ f)(3)=7$이다. 두 합성함숫값을 더하면 $9+7=16$이다. 따라서 정답은 ④이다.",
+      "answer": "①",
+      "solution": "$f(1)=5$, $g(5)=9$이므로 $(g\\circ f)(1)=9$이다. 또 $f(3)=6$, $g(6)=7$이므로 $(g\\circ f)(3)=7$이다. 두 합성함숫값을 더하면 $9+7=16$이다. 따라서 정답은 ①이다.",
       "meta": {
         "primaryRPM_L3": "합성함수",
         "primaryRPM_L3SemanticPath": "2022/high/공통수학2/함수/함수/합성함수",
@@ -403,7 +403,7 @@
         "originalPNGBlobSha1": "7ec591ec157eb69d860de516f7de4727a4687976",
         "distractors": [
           {
-            "choice": "①",
+            "choice": "④",
             "choiceValue": "11",
             "derivation": "$g$를 한 번도 적용하지 않아 $f(1)+f(3)=5+6=11$로 계산"
           },
@@ -474,13 +474,13 @@
       "content": "두 함수 $f:X\\to Y$, $g:Y\\to Z$의 대응이 다음 표와 같을 때, $(g\\circ f)(x)=5$를 만족하는 $x\\in X$의 개수는?\n<table class=\"question-table\" style=\"border-collapse:collapse;font-size:9pt\"><thead><tr><th style=\"border:1px solid #888;padding:3px 5px\">$x$</th><th style=\"border:1px solid #888;padding:3px 5px\">$-2$</th><th style=\"border:1px solid #888;padding:3px 5px\">$0$</th><th style=\"border:1px solid #888;padding:3px 5px\">$2$</th><th style=\"border:1px solid #888;padding:3px 5px\">$4$</th></tr></thead><tbody><tr><td style=\"border:1px solid #888;padding:3px 5px\">$f(x)$</td><td style=\"border:1px solid #888;padding:3px 5px\">$1$</td><td style=\"border:1px solid #888;padding:3px 5px\">$3$</td><td style=\"border:1px solid #888;padding:3px 5px\">$1$</td><td style=\"border:1px solid #888;padding:3px 5px\">$2$</td></tr></tbody></table>\n<table class=\"question-table\" style=\"border-collapse:collapse;font-size:9pt\"><thead><tr><th style=\"border:1px solid #888;padding:3px 5px\">$y$</th><th style=\"border:1px solid #888;padding:3px 5px\">$1$</th><th style=\"border:1px solid #888;padding:3px 5px\">$2$</th><th style=\"border:1px solid #888;padding:3px 5px\">$3$</th></tr></thead><tbody><tr><td style=\"border:1px solid #888;padding:3px 5px\">$g(y)$</td><td style=\"border:1px solid #888;padding:3px 5px\">$5$</td><td style=\"border:1px solid #888;padding:3px 5px\">$6$</td><td style=\"border:1px solid #888;padding:3px 5px\">$5$</td></tr></tbody></table>",
       "choices": [
         "$1$",
-        "$2$",
         "$3$",
+        "$2$",
         "$4$",
         "$0$"
       ],
-      "answer": "③",
-      "solution": "$g(f(x))$를 입력 $x$마다 구한다. $x=-2$이면 $f(-2)=1$, $g(1)=5$이고, $x=0$이면 $f(0)=3$, $g(3)=5$이다. $x=2$에서도 $f(2)=1$, $g(1)=5$이다. 그러나 $x=4$이면 $f(4)=2$, $g(2)=6$이므로 제외한다. 따라서 $x=-2,0,2$의 세 개이다. 따라서 정답은 ③이다.",
+      "answer": "②",
+      "solution": "$g(f(x))$를 입력 $x$마다 구한다. $x=-2$이면 $f(-2)=1$, $g(1)=5$이고, $x=0$이면 $f(0)=3$, $g(3)=5$이다. $x=2$에서도 $f(2)=1$, $g(1)=5$이다. 그러나 $x=4$이면 $f(4)=2$, $g(2)=6$이므로 제외한다. 따라서 $x=-2,0,2$의 세 개이다. 따라서 정답은 ②이다.",
       "meta": {
         "primaryRPM_L3": "합성함수",
         "primaryRPM_L3SemanticPath": "2022/high/공통수학2/함수/함수/합성함수",
@@ -514,7 +514,7 @@
             "derivation": "$g(3)=5$를 만드는 $x=0$ 한 개만 확인하고 $g(1)=5$ 경로를 누락"
           },
           {
-            "choice": "②",
+            "choice": "③",
             "choiceValue": "2",
             "derivation": "$f(x)=1$인 $x=-2,2$만 세고 $f(0)=3$에서도 $g(3)=5$인 사실을 누락"
           },
@@ -568,13 +568,13 @@
       "content": "두 함수 $f(x)=x+2$, $g(x)=x^2-1$에 대하여 $(g\\circ f)(-1)-(f\\circ g)(-1)$의 값은?",
       "choices": [
         "$-3$",
-        "$-2$",
-        "$0$",
         "$2$",
+        "$0$",
+        "$-2$",
         "$4$"
       ],
-      "answer": "②",
-      "solution": "$(g\\circ f)(-1)=g(f(-1))$이고 $f(-1)=1$이므로 $g(1)=1^2-1=0$이다. $(f\\circ g)(-1)=f(g(-1))$이고 $g(-1)=(-1)^2-1=0$이므로 $f(0)=2$이다. 따라서 두 합성값의 차는 $0-2=-2$이다. 따라서 정답은 ②이다.",
+      "answer": "④",
+      "solution": "$(g\\circ f)(-1)=g(f(-1))$이고 $f(-1)=1$이므로 $g(1)=1^2-1=0$이다. $(f\\circ g)(-1)=f(g(-1))$이고 $g(-1)=(-1)^2-1=0$이므로 $f(0)=2$이다. 따라서 두 합성값의 차는 $0-2=-2$이다. 따라서 정답은 ④이다.",
       "meta": {
         "primaryRPM_L3": "합성함수",
         "primaryRPM_L3SemanticPath": "2022/high/공통수학2/함수/함수/합성함수",
@@ -613,7 +613,7 @@
             "derivation": "$g\\circ f$와 $f\\circ g$의 값을 항상 같다고 오인해 차를 $0$으로 계산"
           },
           {
-            "choice": "④",
+            "choice": "②",
             "choiceValue": "2",
             "derivation": "두 합성값의 뺄셈 순서를 거꾸로 하여 $2-0=2$로 계산"
           },
@@ -759,14 +759,14 @@
       "wide": false,
       "content": "두 함수 $f:X\\to Y$, $g:Y\\to Z$의 대응이 다음 표와 같다. $(g\\circ f)(x)=8$을 만족하는 모든 $x\\in X$의 합은?\n<table class=\"question-table\" style=\"border-collapse:collapse;font-size:9pt\"><thead><tr><th style=\"border:1px solid #888;padding:3px 5px\">$x$</th><th style=\"border:1px solid #888;padding:3px 5px\">$1$</th><th style=\"border:1px solid #888;padding:3px 5px\">$2$</th><th style=\"border:1px solid #888;padding:3px 5px\">$3$</th><th style=\"border:1px solid #888;padding:3px 5px\">$4$</th></tr></thead><tbody><tr><td style=\"border:1px solid #888;padding:3px 5px\">$f(x)$</td><td style=\"border:1px solid #888;padding:3px 5px\">$5$</td><td style=\"border:1px solid #888;padding:3px 5px\">$6$</td><td style=\"border:1px solid #888;padding:3px 5px\">$7$</td><td style=\"border:1px solid #888;padding:3px 5px\">$6$</td></tr></tbody></table>\n<table class=\"question-table\" style=\"border-collapse:collapse;font-size:9pt\"><thead><tr><th style=\"border:1px solid #888;padding:3px 5px\">$y$</th><th style=\"border:1px solid #888;padding:3px 5px\">$5$</th><th style=\"border:1px solid #888;padding:3px 5px\">$6$</th><th style=\"border:1px solid #888;padding:3px 5px\">$7$</th></tr></thead><tbody><tr><td style=\"border:1px solid #888;padding:3px 5px\">$g(y)$</td><td style=\"border:1px solid #888;padding:3px 5px\">$8$</td><td style=\"border:1px solid #888;padding:3px 5px\">$9$</td><td style=\"border:1px solid #888;padding:3px 5px\">$8$</td></tr></tbody></table>",
       "choices": [
-        "$4$",
-        "$1$",
         "$2$",
+        "$1$",
+        "$4$",
         "$3$",
         "$5$"
       ],
-      "answer": "①",
-      "solution": "$g(5)=8$, $g(7)=8$이므로 $f(x)$가 $5$ 또는 $7$이면 합성값이 $8$이다. 표에서 $f(1)=5$, $f(3)=7$이므로 $x=1,3$이 조건을 만족한다. 반면 $x=2,4$이면 $f(x)=6$이어서 합성값이 $9$가 된다. 따라서 가능한 모든 입력의 합은 $1+3=4$이다. 따라서 정답은 ①이다.",
+      "answer": "③",
+      "solution": "$g(5)=8$, $g(7)=8$이므로 $f(x)$가 $5$ 또는 $7$이면 합성값이 $8$이다. 표에서 $f(1)=5$, $f(3)=7$이므로 $x=1,3$이 조건을 만족한다. 반면 $x=2,4$이면 $f(x)=6$이어서 합성값이 $9$가 된다. 따라서 가능한 모든 입력의 합은 $1+3=4$이다. 따라서 정답은 ③이다.",
       "meta": {
         "primaryRPM_L3": "합성함수",
         "primaryRPM_L3SemanticPath": "2022/high/공통수학2/함수/함수/합성함수",
@@ -800,7 +800,7 @@
             "derivation": "입력 $x=1$ 경로만 추적하고 $x=3$을 빠뜨려 합을 $1$이라고 제출"
           },
           {
-            "choice": "③",
+            "choice": "①",
             "choiceValue": "2",
             "derivation": "두 입력 $1,3$의 합이 아니라 입력의 개수 $2$를 답으로 제출"
           },
@@ -853,14 +853,14 @@
       "wide": false,
       "content": "두 함수 $f(x)=|x-1|$, $g(t)=t^2-4$에 대하여 $-3\\le x\\le5$인 정수 $x$ 중 $(g\\circ f)(x)\\le0$을 만족하는 것의 개수는?",
       "choices": [
-        "$3$",
-        "$4$",
         "$5$",
+        "$4$",
+        "$3$",
         "$6$",
         "$7$"
       ],
-      "answer": "③",
-      "solution": "$g(f(x))=|x-1|^2-4=(x-1)^2-4$이다. 따라서 $(g\\circ f)(x)\\le0$이려면 $(x-1)^2\\le4$, 즉 $|x-1|\\le2$이다. $-2\\le x-1\\le2$이므로 $-1\\le x\\le3$이다. 이 구간에 속하는 정수는 $-1,0,1,2,3$의 $5$개이다. 양 끝점에서 합성값은 $0$이므로 포함한다. 따라서 정답은 ③이다.",
+      "answer": "①",
+      "solution": "$g(f(x))=|x-1|^2-4=(x-1)^2-4$이다. 따라서 $(g\\circ f)(x)\\le0$이려면 $(x-1)^2\\le4$, 즉 $|x-1|\\le2$이다. $-2\\le x-1\\le2$이므로 $-1\\le x\\le3$이다. 이 구간에 속하는 정수는 $-1,0,1,2,3$의 $5$개이다. 양 끝점에서 합성값은 $0$이므로 포함한다. 따라서 정답은 ①이다.",
       "meta": {
         "primaryRPM_L3": "합성함수",
         "primaryRPM_L3SemanticPath": "2022/high/공통수학2/함수/함수/합성함수",
@@ -894,7 +894,7 @@
         "independentMathAuthorOracle": 5,
         "distractors": [
           {
-            "choice": "①",
+            "choice": "③",
             "choiceValue": "3",
             "derivation": "등호를 누락해 열린구간 $-1<x<3$의 정수 $0,1,2$만 계산"
           },
@@ -961,13 +961,13 @@
       "content": "세 함수 $f:X\\to Y$, $g:Y\\to Z$, $h:Z\\to W$의 대응이 다음 표와 같다. $(h\\circ g\\circ f)(1)+(h\\circ g\\circ f)(3)$의 값은?\n<table class=\"question-table\" style=\"border-collapse:collapse;font-size:9pt\"><thead><tr><th style=\"border:1px solid #888;padding:3px 5px\">$x$</th><th style=\"border:1px solid #888;padding:3px 5px\">$1$</th><th style=\"border:1px solid #888;padding:3px 5px\">$2$</th><th style=\"border:1px solid #888;padding:3px 5px\">$3$</th></tr></thead><tbody><tr><td style=\"border:1px solid #888;padding:3px 5px\">$f(x)$</td><td style=\"border:1px solid #888;padding:3px 5px\">$5$</td><td style=\"border:1px solid #888;padding:3px 5px\">$6$</td><td style=\"border:1px solid #888;padding:3px 5px\">$4$</td></tr></tbody></table>\n<table class=\"question-table\" style=\"border-collapse:collapse;font-size:9pt\"><thead><tr><th style=\"border:1px solid #888;padding:3px 5px\">$y$</th><th style=\"border:1px solid #888;padding:3px 5px\">$4$</th><th style=\"border:1px solid #888;padding:3px 5px\">$5$</th><th style=\"border:1px solid #888;padding:3px 5px\">$6$</th></tr></thead><tbody><tr><td style=\"border:1px solid #888;padding:3px 5px\">$g(y)$</td><td style=\"border:1px solid #888;padding:3px 5px\">$9$</td><td style=\"border:1px solid #888;padding:3px 5px\">$7$</td><td style=\"border:1px solid #888;padding:3px 5px\">$8$</td></tr></tbody></table>\n<table class=\"question-table\" style=\"border-collapse:collapse;font-size:9pt\"><thead><tr><th style=\"border:1px solid #888;padding:3px 5px\">$z$</th><th style=\"border:1px solid #888;padding:3px 5px\">$7$</th><th style=\"border:1px solid #888;padding:3px 5px\">$8$</th><th style=\"border:1px solid #888;padding:3px 5px\">$9$</th></tr></thead><tbody><tr><td style=\"border:1px solid #888;padding:3px 5px\">$h(z)$</td><td style=\"border:1px solid #888;padding:3px 5px\">$12$</td><td style=\"border:1px solid #888;padding:3px 5px\">$10$</td><td style=\"border:1px solid #888;padding:3px 5px\">$11$</td></tr></tbody></table>",
       "choices": [
         "$9$",
-        "$11$",
-        "$12$",
         "$23$",
+        "$12$",
+        "$11$",
         "$16$"
       ],
-      "answer": "④",
-      "solution": "$h\\circ g\\circ f$는 먼저 $f$, 다음 $g$, 마지막 $h$를 적용한다. $x=1$에서 $f(1)=5$, $g(5)=7$, $h(7)=12$이다. $x=3$에서는 $f(3)=4$, $g(4)=9$, $h(9)=11$이다. 따라서 두 합성함숫값의 합은 $12+11=23$이다. 따라서 정답은 ④이다.",
+      "answer": "②",
+      "solution": "$h\\circ g\\circ f$는 먼저 $f$, 다음 $g$, 마지막 $h$를 적용한다. $x=1$에서 $f(1)=5$, $g(5)=7$, $h(7)=12$이다. $x=3$에서는 $f(3)=4$, $g(4)=9$, $h(9)=11$이다. 따라서 두 합성함숫값의 합은 $12+11=23$이다. 따라서 정답은 ②이다.",
       "meta": {
         "primaryRPM_L3": "합성함수",
         "primaryRPM_L3SemanticPath": "2022/high/공통수학2/함수/함수/합성함수",
@@ -1001,7 +1001,7 @@
             "derivation": "$g$와 $h$를 모두 적용하지 않고 $f(1)+f(3)=5+4=9$만 계산"
           },
           {
-            "choice": "②",
+            "choice": "④",
             "choiceValue": "11",
             "derivation": "첫 입력의 합성값을 누락하고 두 번째 입력의 최종값 $11$만 선택"
           },
@@ -1036,5 +1036,12 @@
       "solutionImageAlt": "두 입력 1과 3을 함수 f, g, h에 차례로 적용하여 각각 12와 11을 얻는 경로",
       "solutionImageCaption": "합성 순서는 f → g → h이며, 두 결과의 합은 23이다."
     }
-  ]
+  ],
+  "answerPositionRebalance": {
+    "policy": "QID9_COLUMN_4_OF_20",
+    "previousBlob": "0610bdcaea49e02379e9f2cc33cd04e34f195e4c",
+    "stemAndCorrectValuesPreserved": true,
+    "choiceLocationOnly": true,
+    "quality": "AUTHOR_DRAFT_ONLY"
+  }
 }
