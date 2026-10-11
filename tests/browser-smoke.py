@@ -17,7 +17,7 @@ base={
   'lastSuccessfulRelease':None,'lastFailure':None}}
 }
 with sync_playwright() as p:
- browser=p.chromium.launch(headless=True,executable_path='/usr/bin/chromium',args=['--no-sandbox','--disable-dev-shm-usage'])
+ browser=p.chromium.launch(headless=True,args=['--no-sandbox','--disable-dev-shm-usage'])
  try:
   page=browser.new_page(viewport={'width':1330,'height':800});page.clock.install()
   page.set_content((root/'archive/progress.html').read_text().replace('<script src="progress.js"></script>',''))
