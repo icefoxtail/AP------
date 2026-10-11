@@ -738,7 +738,10 @@
         if (ui.drawer.classList.contains('open')) {
           if (state.selectedQuestion) showWholeExam();
           else closeExam();
-        } else if ($('universe').classList.contains('travel-warp') || $('universe').classList.contains('travel-flight')) {
+        } else if (state.focusedGroupId || $('universe').classList.contains('travel-warp') ||
+            $('universe').classList.contains('travel-flight')) {
+          // Escape is a reliable back action both during the journey and
+          // after arrival; never require the animation to still be running.
           state.world?.cancelTravel();
           restoreNavigation(state.entrySnapshot);
           state.entrySnapshot = null;
