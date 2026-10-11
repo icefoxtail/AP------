@@ -39,11 +39,12 @@ async function main(){
   await wait("document.body?.innerText.includes('정답 및 해설')",'solution preview',session);
   const solution=await evaluate("(()=>({title:document.body.innerText.includes('금당고'),svgImages:[...document.images].filter(x=>x.src.includes('Q02-C2-solution.svg')).map(x=>({loaded:x.complete&&x.naturalWidth>0,width:x.naturalWidth})),text:document.body.innerText.slice(0,260)}))()",session);
   if(!solution.title||!solution.svgImages.some(x=>x.loaded))throw Error('Solution SVG not rendered '+JSON.stringify(solution));
-  // Answer-view real browser probe: same rendered selection envelope, mode=ans.
-  await send('Page.navigate',{url:sol.url.replace('mode=sol','mode=ans')},session);
-  await wait("document.body?.innerText.includes('정답')",'answer output',session);
-  const answerView=await evaluate("(()=>({hasAnswer:document.body.innerText.includes('정답'),textLength:document.body.innerText.length}))()",session);
-  if(!answerView.hasAnswer||answerView.textLength<30)throw Error('QID9 answer output missing '+JSON.stringify(answerView));
+  // Actual output-envelope mode transition, not a URL-only rewrite.
+  const answerSwitch=await evaluate("switchMode('ans')",session);
+  if(answerSwitch?.ok===false)throw Error('QID9 answer mode switch rejected '+JSON.stringify(answerSwitch));
+  await wait("AppState?.mode==='ans' && document.querySelector('#print-area .ans-cell')",'answer output',session);
+  const answerView=await evaluate("(()=>({mode:AppState.mode,answerCells:document.querySelectorAll('#print-area .ans-cell:not(.ans-cell-empty)').length,rows:AppState.data.length}))()",session);
+  if(answerView.mode!=='ans'||answerView.answerCells<1||answerView.rows<1)throw Error('QID9 answer output missing '+JSON.stringify(answerView));
   await evaluate("document.querySelector('#generated-results article button.primary').click()");await wait("document.querySelector('#generated-selection-summary').innerText.includes('1개')",'question selection');
   await evaluate("document.querySelector('#generated-print').click()");
   let problemOutput=null;for(let i=0;i<120;i++){const all=await send('Target.getTargets');problemOutput=all.targetInfos.find(t=>t.type==='page'&&t.url.includes('mixed_engine.html')&&t.url.includes('mode=exam')&&t.url.includes('preview=1'));if(problemOutput)break;await sleep(100);}if(!problemOutput)throw Error('Archive2 selected problem output preview did not open');
