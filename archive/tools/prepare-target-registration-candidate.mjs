@@ -882,7 +882,7 @@ export function verifyR1MetaCoreDebtAdmission({ admission, evidence, assignment,
 }
 
 function isAcceptedR1Verdict(value) {
-  return value === 'PASS' || value === 'PASS_AFTER_ADJUDICATION' || value === 'PASS_AFTER_SAME_STAGE_SOURCE_FIGURE_ADJUDICATION' || value === 'PASS_AFTER_REPAIR' || value === 'PASS_AFTER_ITEM_RECOVERY' || value === 'PASS_WITH_EXACT_DECLARED_META_DEBT';
+  return value === 'PASS' || value === 'PASS_AFTER_ADJUDICATION' || value === 'PASS_AFTER_SAME_STAGE_SOURCE_FIGURE_ADJUDICATION' || value === 'PASS_AFTER_REPAIR' || value === 'PASS_AFTER_ITEM_RECOVERY' || value === 'PASS_WITH_EXACT_DECLARED_META_DEBT' || value === 'PASS_WITH_EXPLICIT_META_EVIDENCE_DEBT';
 }
 
 function verifyR1ItemRecoveryProof({ row, examUid, bank, root, assignment }) {
@@ -1057,6 +1057,32 @@ function parseEmbeddedExactMetaDebts(evidence) {
 
 function exactMetaDebtEntries(row, question = null) {
   const axis = row?.axisEvidence?.META ?? row?.axisEvidence?.meta;
+  const currentFieldMatches = (field, captured, allowEmptyArray = false) => {
+    if (!question) return true;
+    if (!hasOwn(question, field) || !captured || !hasOwn(captured, field)
+      || JSON.stringify(question[field]) !== JSON.stringify(captured[field])) return false;
+    return question[field] === null || question[field] === undefined
+      || (allowEmptyArray && Array.isArray(question[field]) && question[field].length === 0);
+  };
+  if (axis?.status === 'PASS_WITH_EVIDENCE_DEBT') {
+    const fields = row?.metaDebtFields, reason = row?.metaDebtReason;
+    const observed = axis.observedFields;
+    if (!Array.isArray(fields) || fields.length === 0 || typeof reason !== 'string' || !reason.trim()
+      || axis.actualMetaSourceCurrent !== true || !observed || typeof observed !== 'object'
+      || JSON.stringify(observed.metaDebtFields) !== JSON.stringify(fields)
+      || observed.metaDebtReason !== reason
+      || fields.some(field => typeof field !== 'string' || !field.trim() || !currentFieldMatches(field.trim(), observed))) return null;
+    return fields.map(field => ({ field: field.trim(), reason: reason.trim() }));
+  }
+  if (axis?.status === 'PASS_WITH_EXISTING_EVIDENCE_DEBT') {
+    const fields = axis.exactExistingDebtFields, reason = axis.exactExistingDebtReason;
+    if (!Array.isArray(fields) || fields.length === 0 || typeof reason !== 'string' || !reason.trim()
+      || JSON.stringify(fields) !== JSON.stringify(row?.metaDebtFields)
+      || row?.metaDebtReason !== reason
+      || axis.problemTypeTemplateProjection?.status !== 'EVIDENCE_DEBT'
+      || fields.some(field => typeof field !== 'string' || !field.trim() || !currentFieldMatches(field.trim(), axis))) return null;
+    return fields.map(field => ({ field: field.trim(), reason: reason.trim() }));
+  }
   if (axis?.status === 'REVIEWED_WITH_EXACT_DECLARED_DEBT') {
     const fields = row?.metaDebtFields, reason = row?.metaDebtReason, current = axis.currentSourceFields || {};
     if (!Array.isArray(fields) || fields.length === 0 || typeof reason !== 'string' || !reason.trim() || !current || typeof current !== 'object') return null;
@@ -1069,11 +1095,25 @@ function exactMetaDebtEntries(row, question = null) {
       && axis.currentSourceFields && typeof axis.currentSourceFields === 'object' ? [] : null;
   }
   if (axis?.status === 'EVIDENCE_DEBT') {
+    const currentFields = axis.currentEvidenceDebtFields;
+    const currentReason = axis.currentEvidenceDebtReason;
+    if (Array.isArray(currentFields) && currentFields.length > 0) {
+      if (typeof currentReason !== 'string' || !currentReason.trim()
+        || row?.metaDebtReason !== currentReason
+        || !Array.isArray(row?.metaDebtFields) || !row.metaDebtFields.length
+        || row.metaDebtFields.some(field => !currentFields.includes(field))
+        || currentFields.some(field => typeof field !== 'string' || !field.trim()
+          || !currentFieldMatches(field.trim(), axis, true))) return null;
+      return currentFields.map(field => ({ field: field.trim(), reason: currentReason.trim() }));
+    }
     const fields = row?.metaDebtFields, reason = row?.metaDebtReason;
     if (!Array.isArray(fields) || fields.length === 0 || typeof reason !== 'string' || !reason.trim()
-      || typeof axis.note !== 'string' || axis.note.trim() !== reason.trim()) return null;
-    if (question && fields.some(field => typeof field !== 'string' || !field.trim()
-      || (field === 'templateKey' && question.templateKey !== null && question.templateKey !== undefined))) return null;
+      || (typeof axis.note === 'string' ? axis.note.trim() !== reason.trim()
+        : (axis.reason ?? axis.metaDebtReason) !== reason)) return null;
+    if (fields.some(field => {
+      if (typeof field !== 'string' || !field.trim()) return true;
+      return !!question && (!hasOwn(question, field) || (question[field] !== null && question[field] !== undefined));
+    })) return null;
     return fields.map(field => ({ field: field.trim(), reason: reason.trim() }));
   }
   if (axis?.status === 'PROJECTION_BINDING_PENDING') {
@@ -1173,7 +1213,7 @@ function hasAcceptedMetaDisposition(row, question) {
   const values = metaProofValues(row);
   if (values.some(value => acceptedMetaPassValues.has(value) || value === 'REVIEWED_CURRENT_META_DISPOSITION')) return true;
   const axis = row?.axisEvidence?.META ?? row?.axisEvidence?.meta;
-  if (['PASS_WITH_EXPLICIT_EVIDENCE_DEBT', 'REVIEWED_WITH_RECORDED_PROJECTION_DEBT', 'EVIDENCE_DEBT', 'PROJECTION_BINDING_PENDING', 'REVIEWED_WITH_EXACT_DECLARED_DEBT', 'REVIEWED'].includes(axis?.status)) return exactMetaDebtEntries(row, question) !== null;
+  if (['PASS_WITH_EXPLICIT_EVIDENCE_DEBT', 'PASS_WITH_EVIDENCE_DEBT', 'PASS_WITH_EXISTING_EVIDENCE_DEBT', 'REVIEWED_WITH_RECORDED_PROJECTION_DEBT', 'EVIDENCE_DEBT', 'PROJECTION_BINDING_PENDING', 'REVIEWED_WITH_EXACT_DECLARED_DEBT', 'REVIEWED'].includes(axis?.status)) return exactMetaDebtEntries(row, question) !== null;
   if (axis?.status !== 'PASS_WITH_META_ONLY_DEBT') return false;
   const debtFields = axis.nullDebt?.fields;
   const rowDebtFields = row?.metaDebtFields;
