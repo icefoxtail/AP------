@@ -597,7 +597,7 @@
             button.style.top = point.y + 'px';
           }
         }
-        const labelCandidates = [...state.groupLabels].map(([id, label]) => ({ id, label, point: positions.groups.get(id) }))
+        const labelCandidates = (state.selectedExam ? [] : [...state.groupLabels]).map(([id, label]) => ({ id, label, point: positions.groups.get(id) }))
           .filter(({ point }) => point?.visible)
           .sort((a, b) => Number(b.id === state.focusedGroupId) - Number(a.id === state.focusedGroupId) || a.point.depth - b.point.depth);
         const occupiedGroupLabels = [];
@@ -613,7 +613,7 @@
           label.style.top = (point.y - 22) + 'px';
         }
         for (const button of state.satelliteButtons.values()) button.style.display = 'none';
-        const satelliteCandidates = [...state.satelliteButtons].map(([file, button]) => ({ file, button, point: positions.exams.get(file) }))
+        const satelliteCandidates = (state.selectedExam ? [] : [...state.satelliteButtons]).map(([file, button]) => ({ file, button, point: positions.exams.get(file) }))
           .filter(({ point }) => point?.visible && point.depth < 38)
           .sort((a, b) => a.point.depth - b.point.depth);
         const occupiedSatellites = [];
