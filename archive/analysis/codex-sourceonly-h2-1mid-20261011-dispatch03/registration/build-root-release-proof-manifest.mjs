@@ -32,8 +32,15 @@ const relative = file => path.relative(root, file).split(path.sep).join('/');
 const selected = new Set();
 const addPath = value => {
   if (typeof value !== 'string' || !value.trim()) return;
-  const absolute = path.resolve(root, value);
-  const rel = path.relative(root, absolute);
+  let absolute = path.resolve(root, value);
+  let rel = path.relative(root, absolute);
+  if (rel === '..' || rel.startsWith(`..${path.sep}`) || path.isAbsolute(rel)) {
+    const normalized = value.replaceAll('\\', '/');
+    const match = /(?:^|\/)(archive|docs)\/(.+)$/.exec(normalized);
+    if (!match) return;
+    absolute = path.resolve(root, match[1], match[2]);
+    rel = path.relative(root, absolute);
+  }
   if (rel === '..' || rel.startsWith(`..${path.sep}`) || path.isAbsolute(rel) || !fs.existsSync(absolute) || !fs.statSync(absolute).isFile()) return;
   selected.add(absolute);
 };
