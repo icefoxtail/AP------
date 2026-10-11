@@ -1,0 +1,68 @@
+{
+  "status": "PASS",
+  "baselineCommit": "d7c008eec8c25e2f3e31d59428d9b5c055dd11b3",
+  "updatedCommit": "7fa9b2457ec5a6826a16a1ca44501e37d94f08ca",
+  "viewport": "1600×900",
+  "dpr": 1,
+  "screenshotMotion": "prefers-reduced-motion: reduce",
+  "browser": "Playwright Chromium headless, SwiftShader WebGL",
+  "selectionPreviewScope": "Route/iframe only; actual student engine output NOT_TESTED",
+  "baseline": {
+    "focus": {
+      "school": "삼산중",
+      "zoomWheel": -650,
+      "position": {
+        "x": 1088.33,
+        "y": 450
+      }
+    },
+    "fps": {
+      "samples": [
+        4.66,
+        4,
+        4
+      ],
+      "median": 4,
+      "method": "WebGL clear calls per elapsed second",
+      "durationSeconds": 3,
+      "repeats": 3
+    },
+    "errors": []
+  },
+  "updated": {
+    "focus": {
+      "school": "삼산중",
+      "zoomWheel": -650,
+      "position": {
+        "x": 1088.33,
+        "y": 450
+      }
+    },
+    "fps": {
+      "samples": [
+        5.33,
+        5,
+        5
+      ],
+      "median": 5,
+      "method": "WebGL clear calls per elapsed second",
+      "durationSeconds": 3,
+      "repeats": 3
+    },
+    "errors": [],
+    "selection": {
+      "files": [
+        "original/middle/m3/1final/26_삼산중_1학기_기말_중3_기출.js",
+        "original/middle/m3/1mid/26_삼산중_1학기_중간_중3_기출.js"
+      ],
+      "drawerSwitchAndClose": true,
+      "previewUrlOnly": true,
+      "fullPreviewTested": false
+    },
+    "groupSwitch": {
+      "grade": true,
+      "unit": true,
+      "school": true
+    }
+  }
+}
