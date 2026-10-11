@@ -35,11 +35,11 @@
     "qid": 11,
     "createdSlots": 9,
     "answerDistribution": {
-      "①": 2,
+      "①": 1,
       "②": 2,
       "③": 2,
       "④": 2,
-      "⑤": 1
+      "⑤": 2
     },
     "wrongRoutes": "36/36_REPRODUCIBLE",
     "finalQuestionDrafts": 9,
@@ -397,14 +397,14 @@
       "wide": false,
       "content": "전체집합 $U$에서 세 조건 $p,q,r$의 진리집합이 각각 $P,Q,R$일 때, $(P-R)\\cup(Q-R^c)=\\varnothing$이다. 다음 보기에서 항상 참인 명제만을 있는 대로 고른 것은?\n<div class=\"q-box\">&lt;보기&gt;<br>ㄱ. $p\\to r$<br>ㄴ. $q\\to r$<br>ㄷ. $q\\to\\neg p$</div>",
       "choices": [
-        "ㄱ",
-        "ㄷ",
         "ㄱ, ㄷ",
+        "ㄷ",
+        "ㄱ",
         "ㄱ, ㄴ",
         "ㄱ, ㄴ, ㄷ"
       ],
-      "answer": "③",
-      "solution": "$P\\subseteq R$, $Q\\subseteq R^c$이므로 $P\\cap Q=\\varnothing$이다. 따라서 ㄱ과 ㄷ은 항상 참이고, ㄴ은 보장되지 않는다.\nㄴ은 주어진 조건하에서도 $U=\\{u\\}$, $P=\\varnothing$, $Q=\\{u\\}$, $R=\\varnothing$인 반례가 있으므로 항상 참이라고 할 수 없다.\n따라서 항상 참인 것은 ㄱ, ㄷ이고 정답은 ③이다.",
+      "answer": "①",
+      "solution": "$P\\subseteq R$, $Q\\subseteq R^c$이므로 $P\\cap Q=\\varnothing$이다. 따라서 ㄱ과 ㄷ은 항상 참이고, ㄴ은 보장되지 않는다.\nㄴ은 주어진 조건하에서도 $U=\\{u\\}$, $P=\\varnothing$, $Q=\\{u\\}$, $R=\\varnothing$인 반례가 있으므로 항상 참이라고 할 수 없다.\n따라서 항상 참인 것은 ㄱ, ㄷ이고 정답은 ①이다.",
       "meta": {
         "rpmL1": "집합과 명제",
         "rpmL2": "명제",
@@ -444,7 +444,7 @@
         "finalCandidateSnapshot": "SUN-Q11-A1-v1",
         "distractors": [
           {
-            "choice": "①",
+            "choice": "③",
             "choiceValue": "ㄱ",
             "derivation": "ㄷ은 항상 참인데 선택에서 빠뜨렸다."
           },
@@ -506,14 +506,14 @@
       "wide": false,
       "content": "전체집합 $U$에서 세 조건 $p,q,r$의 진리집합이 각각 $P,Q,R$일 때, $(P-R^c)\\cup(Q-R)=\\varnothing$이다. 다음 보기에서 항상 참인 명제만을 있는 대로 고른 것은?\n<div class=\"q-box\">&lt;보기&gt;<br>ㄱ. $p\\to\\neg r$<br>ㄴ. $q\\to\\neg p$<br>ㄷ. $p\\to r$</div>",
       "choices": [
-        "ㄱ, ㄴ",
         "ㄱ",
+        "ㄱ, ㄴ",
         "ㄴ",
         "ㄱ, ㄷ",
         "ㄱ, ㄴ, ㄷ"
       ],
-      "answer": "①",
-      "solution": "$P\\subseteq R^c$, $Q\\subseteq R$이므로 $P\\cap Q=\\varnothing$이다. ㄱ과 ㄴ은 참이지만 ㄷ은 반드시 참이 아니다.\nㄷ은 주어진 조건하에서도 $U=\\{u\\}$, $P=\\{u\\}$, $Q=\\varnothing$, $R=\\varnothing$인 반례가 있으므로 항상 참이라고 할 수 없다.\n따라서 항상 참인 것은 ㄱ, ㄴ이고 정답은 ①이다.",
+      "answer": "②",
+      "solution": "$P\\subseteq R^c$, $Q\\subseteq R$이므로 $P\\cap Q=\\varnothing$이다. ㄱ과 ㄴ은 참이지만 ㄷ은 반드시 참이 아니다.\nㄷ은 주어진 조건하에서도 $U=\\{u\\}$, $P=\\{u\\}$, $Q=\\varnothing$, $R=\\varnothing$인 반례가 있으므로 항상 참이라고 할 수 없다.\n따라서 항상 참인 것은 ㄱ, ㄴ이고 정답은 ②이다.",
       "meta": {
         "rpmL1": "집합과 명제",
         "rpmL2": "명제",
@@ -553,7 +553,7 @@
         "finalCandidateSnapshot": "SUN-Q11-A2-v1",
         "distractors": [
           {
-            "choice": "②",
+            "choice": "①",
             "choiceValue": "ㄱ",
             "derivation": "ㄴ은 항상 참인데 선택에서 빠뜨렸다."
           },
@@ -616,13 +616,13 @@
       "content": "전체집합 $U$에서 세 조건 $p,q,r$의 진리집합이 각각 $P,Q,R$일 때, $(R-P)\\cup(R-Q)=\\varnothing$이다. 다음 보기에서 항상 참인 명제만을 있는 대로 고른 것은?\n<div class=\"q-box\">&lt;보기&gt;<br>ㄱ. $r\\to p$<br>ㄴ. $r\\to q$<br>ㄷ. $p\\to r$</div>",
       "choices": [
         "ㄱ",
-        "ㄱ, ㄴ",
+        "ㄱ, ㄴ, ㄷ",
         "ㄴ",
         "ㄱ, ㄷ",
-        "ㄱ, ㄴ, ㄷ"
+        "ㄱ, ㄴ"
       ],
-      "answer": "②",
-      "solution": "$R\\subseteq P$이고 $R\\subseteq Q$이다. 따라서 ㄱ과 ㄴ은 항상 참이다. 반대로 $P\\subseteq R$은 도출되지 않아 ㄷ은 보장되지 않는다.\nㄷ은 주어진 조건하에서도 $U=\\{u\\}$, $P=\\{u\\}$, $Q=\\varnothing$, $R=\\varnothing$인 반례가 있으므로 항상 참이라고 할 수 없다.\n따라서 항상 참인 것은 ㄱ, ㄴ이고 정답은 ②이다.",
+      "answer": "⑤",
+      "solution": "$R\\subseteq P$이고 $R\\subseteq Q$이다. 따라서 ㄱ과 ㄴ은 항상 참이다. 반대로 $P\\subseteq R$은 도출되지 않아 ㄷ은 보장되지 않는다.\nㄷ은 주어진 조건하에서도 $U=\\{u\\}$, $P=\\{u\\}$, $Q=\\varnothing$, $R=\\varnothing$인 반례가 있으므로 항상 참이라고 할 수 없다.\n따라서 항상 참인 것은 ㄱ, ㄴ이고 정답은 ⑤이다.",
       "meta": {
         "rpmL1": "집합과 명제",
         "rpmL2": "명제",
@@ -677,7 +677,7 @@
             "derivation": "ㄴ은 항상 참인데 선택에서 빠뜨렸다. ㄷ을 항상 참으로 오판했다. 그러나 $U=\\{u\\}$, $P=\\{u\\}$, $Q=\\varnothing$, $R=\\varnothing$이면 그 명제가 거짓이다."
           },
           {
-            "choice": "⑤",
+            "choice": "②",
             "choiceValue": "ㄱ, ㄴ, ㄷ",
             "derivation": "ㄷ을 항상 참으로 오판했다. 그러나 $U=\\{u\\}$, $P=\\{u\\}$, $Q=\\varnothing$, $R=\\varnothing$이면 그 명제가 거짓이다."
           }
@@ -832,12 +832,12 @@
       "choices": [
         "ㄱ",
         "ㄷ",
-        "ㄱ, ㄴ",
+        "ㄱ, ㄷ",
         "ㄴ, ㄷ",
-        "ㄱ, ㄷ"
+        "ㄱ, ㄴ"
       ],
-      "answer": "⑤",
-      "solution": "$P\\cup Q\\subseteq R$에서 $P\\subseteq R$이므로 ㄱ은 참이다. $P\\cap Q=\\varnothing$이므로 ㄷ도 참이다. $R\\subseteq Q$는 주어지지 않아 ㄴ은 보장되지 않는다.\nㄴ은 주어진 조건하에서도 $U=\\{u\\}$, $P=\\varnothing$, $Q=\\varnothing$, $R=\\{u\\}$인 반례가 있으므로 항상 참이라고 할 수 없다.\n따라서 항상 참인 것은 ㄱ, ㄷ이고 정답은 ⑤이다.",
+      "answer": "③",
+      "solution": "$P\\cup Q\\subseteq R$에서 $P\\subseteq R$이므로 ㄱ은 참이다. $P\\cap Q=\\varnothing$이므로 ㄷ도 참이다. $R\\subseteq Q$는 주어지지 않아 ㄴ은 보장되지 않는다.\nㄴ은 주어진 조건하에서도 $U=\\{u\\}$, $P=\\varnothing$, $Q=\\varnothing$, $R=\\{u\\}$인 반례가 있으므로 항상 참이라고 할 수 없다.\n따라서 항상 참인 것은 ㄱ, ㄷ이고 정답은 ③이다.",
       "meta": {
         "rpmL1": "집합과 명제",
         "rpmL2": "명제",
@@ -887,7 +887,7 @@
             "derivation": "ㄱ은 항상 참인데 선택에서 빠뜨렸다."
           },
           {
-            "choice": "③",
+            "choice": "⑤",
             "choiceValue": "ㄱ, ㄴ",
             "derivation": "ㄷ은 항상 참인데 선택에서 빠뜨렸다. ㄴ을 항상 참으로 오판했다. 그러나 $U=\\{u\\}$, $P=\\varnothing$, $Q=\\varnothing$, $R=\\{u\\}$이면 그 명제가 거짓이다."
           },
@@ -940,14 +940,14 @@
       "wide": false,
       "content": "전체집합 $U$에서 세 조건 $p,q,r$의 진리집합이 각각 $P,Q,R$일 때, $P\\subseteq Q$이고 $P\\cap Q\\cap R=\\varnothing$이다. 다음 보기에서 항상 참인 명제만을 있는 대로 고른 것은?\n<div class=\"q-box\">&lt;보기&gt;<br>ㄱ. $p\\to q$<br>ㄴ. $p\\to\\neg r$<br>ㄷ. $q\\to\\neg r$</div>",
       "choices": [
-        "ㄱ, ㄴ",
+        "ㄱ, ㄴ, ㄷ",
         "ㄱ",
         "ㄴ",
         "ㄱ, ㄷ",
-        "ㄱ, ㄴ, ㄷ"
+        "ㄱ, ㄴ"
       ],
-      "answer": "①",
-      "solution": "$P\\subseteq Q$이므로 $P\\cap Q=P$이다. 따라서 $P\\cap Q\\cap R=\\varnothing$은 $P\\cap R=\\varnothing$과 같아 ㄱ과 ㄴ은 참이다. $Q\\cap R$이 공집합일 필요는 없으므로 ㄷ은 보장되지 않는다.\nㄷ은 주어진 조건하에서도 $U=\\{u\\}$, $P=\\varnothing$, $Q=\\{u\\}$, $R=\\{u\\}$인 반례가 있으므로 항상 참이라고 할 수 없다.\n따라서 항상 참인 것은 ㄱ, ㄴ이고 정답은 ①이다.",
+      "answer": "⑤",
+      "solution": "$P\\subseteq Q$이므로 $P\\cap Q=P$이다. 따라서 $P\\cap Q\\cap R=\\varnothing$은 $P\\cap R=\\varnothing$과 같아 ㄱ과 ㄴ은 참이다. $Q\\cap R$이 공집합일 필요는 없으므로 ㄷ은 보장되지 않는다.\nㄷ은 주어진 조건하에서도 $U=\\{u\\}$, $P=\\varnothing$, $Q=\\{u\\}$, $R=\\{u\\}$인 반례가 있으므로 항상 참이라고 할 수 없다.\n따라서 항상 참인 것은 ㄱ, ㄴ이고 정답은 ⑤이다.",
       "meta": {
         "rpmL1": "집합과 명제",
         "rpmL2": "명제",
@@ -1002,7 +1002,7 @@
             "derivation": "ㄴ은 항상 참인데 선택에서 빠뜨렸다. ㄷ을 항상 참으로 오판했다. 그러나 $U=\\{u\\}$, $P=\\varnothing$, $Q=\\{u\\}$, $R=\\{u\\}$이면 그 명제가 거짓이다."
           },
           {
-            "choice": "⑤",
+            "choice": "①",
             "choiceValue": "ㄱ, ㄴ, ㄷ",
             "derivation": "ㄷ을 항상 참으로 오판했다. 그러나 $U=\\{u\\}$, $P=\\varnothing$, $Q=\\{u\\}$, $R=\\{u\\}$이면 그 명제가 거짓이다."
           }
@@ -1051,13 +1051,13 @@
       "content": "실수 $x$에 대한 세 조건이 $p:(x-1)(x-5)\\le0$, $q:|x-4|\\lt2$, $r:x(x-6)\\le0$이다. 다음 보기에서 항상 참인 명제만을 있는 대로 고른 것은?\n<div class=\"q-box\">&lt;보기&gt;<br>ㄱ. $p\\to r$<br>ㄴ. $q\\to r$<br>ㄷ. $q\\to\\neg p$</div>",
       "choices": [
         "ㄱ",
-        "ㄱ, ㄴ",
         "ㄴ",
+        "ㄱ, ㄴ",
         "ㄱ, ㄷ",
         "ㄱ, ㄴ, ㄷ"
       ],
-      "answer": "②",
-      "solution": "$p$의 진리집합은 $P=[1,5]$, $q$의 진리집합은 $Q=(2,6)$, $r$의 진리집합은 $R=[0,6]$이다. $P\\subseteq R$, $Q\\subseteq R$이므로 ㄱ과 ㄴ은 참이다. $x=4$일 때 $q$와 $p$가 모두 참이므로 ㄷ은 거짓이다.\n따라서 항상 참인 것은 ㄱ, ㄴ이고 정답은 ②이다.",
+      "answer": "③",
+      "solution": "$p$의 진리집합은 $P=[1,5]$, $q$의 진리집합은 $Q=(2,6)$, $r$의 진리집합은 $R=[0,6]$이다. $P\\subseteq R$, $Q\\subseteq R$이므로 ㄱ과 ㄴ은 참이다. $x=4$일 때 $q$와 $p$가 모두 참이므로 ㄷ은 거짓이다.\n따라서 항상 참인 것은 ㄱ, ㄴ이고 정답은 ③이다.",
       "meta": {
         "rpmL1": "집합과 명제",
         "rpmL2": "명제",
@@ -1106,7 +1106,7 @@
             "derivation": "ㄴ은 항상 참인데 선택에서 빠뜨렸다."
           },
           {
-            "choice": "③",
+            "choice": "②",
             "choiceValue": "ㄴ",
             "derivation": "ㄱ은 항상 참인데 선택에서 빠뜨렸다."
           },
@@ -1165,13 +1165,13 @@
       "content": "전체집합 $U$에서 세 조건 $p,q,r$의 진리집합이 각각 $P,Q,R$일 때, $P\\subseteq Q\\cup R$이고 $P\\cap R=\\varnothing$이다. 다음 보기에서 항상 참인 명제만을 있는 대로 고른 것은?\n<div class=\"q-box\">&lt;보기&gt;<br>ㄱ. $p\\to q$<br>ㄴ. $\\neg q\\to\\neg p$<br>ㄷ. $r\\to\\neg p$</div>",
       "choices": [
         "ㄱ, ㄴ",
-        "ㄴ, ㄷ",
         "ㄱ, ㄴ, ㄷ",
+        "ㄴ, ㄷ",
         "ㄱ, ㄷ",
         "ㄱ"
       ],
-      "answer": "③",
-      "solution": "$P\\subseteq Q\\cup R$이고 $P\\cap R=\\varnothing$이므로 $P$의 원소는 $Q$에만 속할 수 있다. 즉 $P\\subseteq Q$이므로 ㄱ이 참이고 그 대우인 ㄴ도 참이다. $P\\cap R=\\varnothing$에서 ㄷ까지 참이다.\n따라서 항상 참인 것은 ㄱ, ㄴ, ㄷ이고 정답은 ③이다.",
+      "answer": "②",
+      "solution": "$P\\subseteq Q\\cup R$이고 $P\\cap R=\\varnothing$이므로 $P$의 원소는 $Q$에만 속할 수 있다. 즉 $P\\subseteq Q$이므로 ㄱ이 참이고 그 대우인 ㄴ도 참이다. $P\\cap R=\\varnothing$에서 ㄷ까지 참이다.\n따라서 항상 참인 것은 ㄱ, ㄴ, ㄷ이고 정답은 ②이다.",
       "meta": {
         "rpmL1": "집합과 명제",
         "rpmL2": "명제",
@@ -1212,7 +1212,7 @@
             "derivation": "ㄷ은 항상 참인데 선택에서 빠뜨렸다."
           },
           {
-            "choice": "②",
+            "choice": "③",
             "choiceValue": "ㄴ, ㄷ",
             "derivation": "ㄱ은 항상 참인데 선택에서 빠뜨렸다."
           },
@@ -1356,5 +1356,12 @@
         "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
       }
     }
-  ]
+  ],
+  "answerPositionRebalance": {
+    "policy": "QID9_COLUMN_4_OF_20",
+    "previousBlob": "6449465f011b3b4976df61e48ff3e05daed16e14",
+    "stemAndCorrectValuesPreserved": true,
+    "choiceLocationOnly": true,
+    "quality": "AUTHOR_DRAFT_ONLY"
+  }
 }
