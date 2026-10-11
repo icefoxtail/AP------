@@ -17,7 +17,7 @@ jobs:
       - name: Checkout exact review event SHA (never main)
         uses: actions/checkout@v4
         with:
-          ref: 2690cfb557665d098a3c4588746f7ca6f8e51281
+          ref: 16b1a860ed8052d5467a579e1d15a1938a883e26
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
@@ -28,7 +28,7 @@ jobs:
           set -euo pipefail
           actual="$(git rev-parse HEAD)"
           echo "OBSERVER_CHECKOUT_SHA=$actual"
-          test "$actual" = "2690cfb557665d098a3c4588746f7ca6f8e51281"
+          test "$actual" = "16b1a860ed8052d5467a579e1d15a1938a883e26"
           test -f archive/tools/archive-progress-observer.mjs
       - name: Download only B15 small diagnostic ZIP (never Pages ZIP)
         env:
@@ -49,7 +49,7 @@ jobs:
       - name: Live GitHub API collection and isolated state-branch roundtrip
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          GITHUB_SHA: 2690cfb557665d098a3c4588746f7ca6f8e51281
+          OBSERVER_EXPECTED_SHA: 16b1a860ed8052d5467a579e1d15a1938a883e26
         run: node .observer-review/live-check.mjs
       - name: Chromium test with real remote-readback JSON
         shell: bash
