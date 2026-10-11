@@ -14,11 +14,11 @@ test('archive/exams inline image inventory covers every content img and validate
   const { generatedAt: _reportDate, ...reportData } = report;
   const { generatedAt: _generatedDate, ...generatedData } = generated;
 
-  assert.equal(generated.total, 42);
-  assert.equal(generated.productionTotal, 38);
+  assert.equal(generated.total, 49);
+  assert.equal(generated.productionTotal, 45);
   assert.equal(generated.testFixtureTotal, 4);
-  assert.deepEqual(generated.extensionCounts, { '.png': 41, '.svg': 1 });
-  assert.equal(generated.qImageAndInlineTotal, 3);
+  assert.deepEqual(generated.extensionCounts, { '.png': 48, '.svg': 1 });
+  assert.equal(generated.qImageAndInlineTotal, 10);
   assert.deepEqual(generated.validation, {
     relativePathInvalidCount: 0,
     missingProductionAssetCount: 0,
@@ -54,6 +54,13 @@ test('archive/exams inline image inventory covers every content img and validate
   assert.equal(q8?.assetExists, true);
 
   assert.deepEqual(generated.records.filter(record => record.qImagePresent).map(({ file, questionId }) => [file, questionId]), [
+    ['original/high/h2/1mid/19_순천여고_1학기_중간_고2_수학I.js', 7],
+    ['original/high/h2/1mid/19_순천여고_1학기_중간_고2_수학I.js', 12],
+    ['original/high/h2/1mid/19_순천여고_1학기_중간_고2_수학I.js', 17],
+    ['original/high/h2/1mid/19_순천여고_1학기_중간_고2_수학I.js', 20],
+    ['original/high/h2/1mid/20_매산고_1학기_중간_고2_수학I.js', 7],
+    ['original/high/h2/1mid/20_매산고_1학기_중간_고2_수학I.js', 11],
+    ['original/high/h2/1mid/20_매산고_1학기_중간_고2_수학I.js', 15],
     ['original/high/h2/1mid/24_순천고_1학기_중간_고2_확률과통계.js', 5],
     ['original/high/h2/1mid/24_순천고_1학기_중간_고2_확률과통계.js', 6],
     ['test-fixtures/inline-image-readiness.js', 3],
