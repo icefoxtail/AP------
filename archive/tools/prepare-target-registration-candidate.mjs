@@ -491,12 +491,15 @@ export function makeTargetMetadataRows({ sourceFile, bank, identityRows, r1Evide
         ? { rpmProjectionRevision: 'archive-registration-target-source-rpm-projection-v1' } : {}),
       approvalEvidence: [...new Set([...(Array.isArray(question.approvalEvidence) ? question.approvalEvidence.filter(nonempty) : []), r1EvidencePath])],
     };
-    for (const optional of ['subUnitConfidence', 'subUnitClassificationDepth', 'conceptClusterKey', 'curriculumKey', 'courseKey', 'L1', 'L2', 'L3', 'L4', 'secondaryConceptKeys', 'curriculumApplicability', 'defaultSelectable', 'reviewStatus', 'rpmL1', 'rpmL2', 'rpmL3', 'rpmL4', 'rpmCurriculum', 'rpmSemanticStatus', 'rpmSemanticReason']) {
+    for (const optional of ['subUnitConfidence', 'subUnitClassificationDepth', 'conceptClusterKey', 'curriculumKey', 'courseKey', 'L1', 'L2', 'L3', 'L4', 'secondaryConceptKeys', 'curriculumApplicability', 'defaultSelectable', 'reviewStatus', 'rpmL1', 'rpmL2', 'rpmL3', 'rpmL4', 'rpmCurriculum', 'rpmSemanticStatus', 'rpmSemanticReason', 'tags']) {
       if (hasOwn(question, optional)) row[optional] = jsonClone(question[optional]);
     }
     if (admittedDebt) {
       row.reviewStatus = 'manual_review';
       row.defaultSelectable = false;
+      for (const field of admittedDebt.metaDebtFields || []) {
+        if (/^rpmL[1-4]$/.test(field) && !hasOwn(row, field)) row[field] = null;
+      }
     }
     return row;
   });
@@ -609,6 +612,13 @@ function verifyR1MetaProof(evidence, assignment, examUid, bank, root, admission 
   assert(JSON.stringify(actual) === JSON.stringify(expected), 'R1_META_PROOF_QID_SET_MISMATCH');
   const admittedRows = admission ? verifyR1MetaCoreDebtAdmission({ admission, evidence, assignment, examUid, bank, root }) : [];
   const admittedQids = new Set(admittedRows.map(row => Number(row.qid)));
+  for (const row of evidence.rows) {
+    const identity = row?.axisEvidence?.META?.sourceIdentity ?? row?.axisEvidence?.meta?.sourceIdentity;
+    if (identity?.uidResolutionStatus === 'EVIDENCE_DEBT') {
+      assert(identity.sourceArchiveFile === assignment.productionRelativePath
+        && Number(identity.sourceQid) === Number(row.qid), 'R1_META_PROOF_SOURCE_IDENTITY_BINDING_MISMATCH');
+    }
+  }
   assert(evidence.rows.every(row => (isAcceptedR1Verdict(row.verdict) || (admittedQids.has(Number(row.qid)) && row.verdict === 'PASS_WITH_META_DEBT'))
     && (admittedQids.has(Number(row.qid)) || hasAcceptedMetaDisposition(row, bank[Number(row.qid) - 1]))), 'R1_META_PROOF_META_PASS_REQUIRED');
   const metaDebtRows = unresolvedR1MetaDebtRows(evidence, bank);
@@ -887,7 +897,7 @@ export function verifyR1MetaCoreDebtAdmission({ admission, evidence, assignment,
 }
 
 function isAcceptedR1Verdict(value) {
-  return value === 'PASS' || value === 'PASS_AFTER_ADJUDICATION' || value === 'PASS_AFTER_SAME_STAGE_SOURCE_FIGURE_ADJUDICATION' || value === 'PASS_AFTER_REPAIR' || value === 'PASS_AFTER_ITEM_RECOVERY' || value === 'PASS_WITH_EXACT_DECLARED_META_DEBT' || value === 'PASS_WITH_EXPLICIT_META_EVIDENCE_DEBT';
+  return value === 'PASS' || value === 'PASS_AFTER_ADJUDICATION' || value === 'PASS_AFTER_SAME_STAGE_SOURCE_FIGURE_ADJUDICATION' || value === 'PASS_AFTER_REPAIR' || value === 'PASS_AFTER_ITEM_RECOVERY' || value === 'PASS_WITH_EXACT_DECLARED_META_DEBT' || value === 'PASS_WITH_EXPLICIT_META_EVIDENCE_DEBT' || value === 'REVIEWED_WITH_EVIDENCE_DEBT' || value === 'PASS_WITH_EXPLICIT_EVIDENCE_DEBT' || value === 'PASS_AFTER_SOURCE_CORRECTION' || value === 'TARGETED_Q12_CORRECTION_REVIEWED';
 }
 
 function verifyR1ItemRecoveryProof({ row, examUid, bank, root, assignment }) {
@@ -1063,6 +1073,37 @@ function parseEmbeddedExactMetaDebts(evidence) {
 function exactMetaDebtEntries(row, question = null) {
   const axis = row?.axisEvidence?.META ?? row?.axisEvidence?.meta;
   const nestedReview = row?.metaReview ?? row?.metaAudit;
+  const declaredNullProjectionDebts = () => {
+    const fields = row?.metaDebtFields;
+    const reason = row?.metaDebtReason;
+    const rationale = [reason, axis?.evidence, axis?.reason].filter(value => typeof value === 'string').join(' ');
+    const allowed = new Set(['problemTypeKey', 'templateKey']);
+      if (!Array.isArray(fields) || fields.length === 0 || fields.some(field => !allowed.has(field))
+      || new Set(fields).size !== fields.length || typeof reason !== 'string' || !reason.trim()
+      || !(axis?.status === 'EVIDENCE_DEBT' || axis?.debtDisposition === 'EVIDENCE_DEBT')
+      || !/preserve null|do not guess|do not invent|not reused|no key inferred/i.test(rationale)
+      || !/no exact|no qid-specific|did not produce a unique|no exact .*binding/i.test(reason)) return null;
+    if (axis?.metaDebtFields !== undefined && JSON.stringify(axis.metaDebtFields) !== JSON.stringify(fields)) return null;
+    if (axis?.metaDebtReason !== undefined && axis.metaDebtReason !== reason) return null;
+    if (question && fields.some(field => !hasOwn(question, field) || question[field] !== null)) return null;
+    return fields.map(field => ({ field, reason: reason.trim() }));
+  };
+  const registrationIdentityDebts = () => {
+    const identity = axis?.sourceIdentity;
+    const reason = identity?.uidResolutionReason;
+    if (identity?.uidResolutionStatus !== 'EVIDENCE_DEBT' || identity.questionUid !== null
+      || !Number.isInteger(Number(identity.sourceQid)) || Number(identity.sourceQid) !== Number(row?.qid)
+      || typeof identity.sourceArchiveFile !== 'string' || !identity.sourceArchiveFile.endsWith('.js')
+      || typeof reason !== 'string' || !/no canonical per-question uid/i.test(reason)
+      || !/do not fabricate/i.test(reason) || identity.consumerIndexParity !== undefined && identity.consumerIndexParity !== 'NOT_TESTED_R1_SCOPE') return null;
+    if (question && Number(question.id ?? question.questionNumber) !== Number(row.qid)) return null;
+    return [
+      { field: 'questionUid', reason: reason.trim() },
+      { field: 'uid', reason: reason.trim() },
+      { field: 'provenance', reason: reason.trim() },
+      { field: 'studentConsumerIndexParity', reason: reason.trim() },
+    ];
+  };
   const currentFieldMatches = (field, captured, allowEmptyArray = false) => {
     if (!question) return true;
     if (!hasOwn(question, field) || !captured || !hasOwn(captured, field)
@@ -1105,6 +1146,14 @@ function exactMetaDebtEntries(row, question = null) {
     // repeats it under axisEvidence.META. The top-level metaDebtFields may be
     // empty; it is not authoritative for this evidence shape.
     if (nestedReview?.status === 'EVIDENCE_DEBT') {
+      if (axis.projectionStatus === 'PROJECTION_BINDING_PENDING'
+        && nestedReview.projectionStatus === 'PROJECTION_BINDING_PENDING'
+        && typeof nestedReview.projectionBindingDebt === 'string' && nestedReview.projectionBindingDebt.includes('ADVANCED_META_CURRICULUM_BINDING_INVALID')
+        && typeof axis.exactBindingDebt === 'string' && axis.exactBindingDebt.includes('DIRECT_BINDING_GAP')
+        && /active curriculum binding row is missing/i.test(axis.exactBindingDebt)
+        && axis.observation === 'Fresh semantic fields and active L3/L4 keys are coherent; retain the binding debt without inventing a row.') {
+        return [{ field: 'question_metadata_projection', reason: axis.exactBindingDebt.trim() }];
+      }
       const fields = nestedReview.metaDebtFields;
       const reasons = nestedReview.metaDebtReason;
       const confirmed = nestedReview.confirmed;
@@ -1118,6 +1167,16 @@ function exactMetaDebtEntries(row, question = null) {
       const projectionIdentityFields = new Set(['uid', 'sourceQid', 'provenance', 'studentConsumerIndexParity']);
       const identityReason = reasons.find(reason => /no qid-level uid, sourceQid, or provenance fields/i.test(reason)
         && /identity map\/catalog\/index lookups/i.test(reason));
+      const rpmFields = ['rpmL1', 'rpmL2', 'rpmL3', 'rpmL4'];
+      const hasRpmDebt = rpmFields.some(field => fields.includes(field));
+      const rpmReason = reasons.find(reason => /multiple distinct current crosswalk rpm paths match/i.test(reason)
+        || /no exact current high2 probability-statistics crosswalk row binds/i.test(reason));
+      const rpmPathCount = Number(nestedReview.rpmCrosswalkUniquePathCount);
+      if (hasRpmDebt && (rpmFields.some(field => !fields.includes(field)
+          || hasOwn(confirmed, field) || (question && hasOwn(question, field))
+          || !Number.isFinite(rpmPathCount) || (rpmPathCount !== 0 && rpmPathCount <= 1))
+        || !rpmReason || Number(axis.rpmCrosswalkUniquePathCount) !== rpmPathCount
+        || Number(axis.rpmCrosswalkMatchCount) !== Number(nestedReview.rpmCrosswalkMatchCount))) return null;
       const entries = [];
       for (const field of fields) {
         if (projectionIdentityFields.has(field)) {
@@ -1125,14 +1184,46 @@ function exactMetaDebtEntries(row, question = null) {
           entries.push({ field, reason: identityReason.trim() });
           continue;
         }
-        const reason = field === 'difficultyBoundaryFlag' && confirmed[field] === 'NONE'
-          ? reasons.find(value => /source field is NONE/i.test(value))
-          : reasons.find(value => value.includes(field));
+        const isRpmField = rpmFields.includes(field);
+        const reason = isRpmField ? rpmReason
+          : field === 'difficultyBoundaryFlag' && confirmed[field] === 'NONE'
+            ? reasons.find(value => /source field is NONE/i.test(value))
+            : field === 'conditionKeys'
+              ? reasons.find(value => /condition (?:registry|key)/i.test(value))
+              : field === 'crossConceptKeys'
+                ? reasons.find(value => /crossconcept key|cross-concept key/i.test(value))
+                : field === 'integrationPattern'
+                  ? reasons.find(value => /integrationPattern/i.test(value))
+                  : field === 'tags'
+                    ? reasons.find(value => /tags? (?:only|binding|canonical)/i.test(value))
+                    : reasons.find(value => value.includes(field));
+        if (isRpmField) {
+          if (!reason || (question && hasOwn(question, field))) return null;
+          entries.push({ field, reason: reason.trim() });
+          continue;
+        }
         if (!reason || !hasOwn(confirmed, field)
           || (question && (!hasOwn(question, field) || JSON.stringify(question[field]) !== JSON.stringify(confirmed[field])))) return null;
         entries.push({ field, reason: reason.trim() });
       }
       return entries;
+    }
+    if (axis?.sourceIdentity?.uidResolutionStatus === 'EVIDENCE_DEBT') {
+      const identityDebts = registrationIdentityDebts();
+      return identityDebts || null;
+    }
+    if (Array.isArray(row?.metaDebtFields) && row.metaDebtFields.length > 0) {
+      const debts = declaredNullProjectionDebts();
+      if (!debts) return null;
+      if (['REVIEWED_WITH_EVIDENCE_DEBT', 'TARGETED_Q12_CORRECTION_REVIEWED'].includes(row.verdict)
+        && typeof axis.evidence === 'string' && axis.evidence.includes('EVIDENCE_DEBT')) return debts;
+      if (axis.result === 'PASS' && typeof axis.reason === 'string'
+        && axis.reason === row.metaDebtReason && axis.reason.includes('did not produce a unique canonical projection')) return debts;
+      if (axis.metaDebtFields !== undefined && axis.metaDebtReason === row.metaDebtReason) return debts;
+      return null;
+    }
+    if (row?.verdict === 'PASS_WITH_EXPLICIT_EVIDENCE_DEBT' && axis.sourceIdentity?.uidResolutionStatus === 'EVIDENCE_DEBT') {
+      return registrationIdentityDebts() || null;
     }
     const currentFields = axis.currentEvidenceDebtFields;
     const currentReason = axis.currentEvidenceDebtReason;
@@ -1154,6 +1245,9 @@ function exactMetaDebtEntries(row, question = null) {
       return !!question && (!hasOwn(question, field) || (question[field] !== null && question[field] !== undefined));
     })) return null;
     return fields.map(field => ({ field: field.trim(), reason: reason.trim() }));
+  }
+  if (axis?.status === 'PASS' && axis.debtDisposition === 'EVIDENCE_DEBT') {
+    return declaredNullProjectionDebts() || null;
   }
   if (axis?.status === 'PROJECTION_BINDING_PENDING') {
     const note = axis.note;
