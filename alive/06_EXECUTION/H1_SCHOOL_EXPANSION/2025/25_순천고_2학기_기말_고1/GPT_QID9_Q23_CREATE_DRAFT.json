@@ -1,0 +1,1890 @@
+{
+  "schemaVersion": "ALIVE_QID9_AUTHOR_DRAFT_v1",
+  "source": {
+    "path": "archive/exams/original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
+    "examTitle": "25_순천고_2학기_기말_고1_기출",
+    "qid": 23,
+    "gitBlobSha1": "6159f478e8e3edf7074d3967ba1cb7456f7762a3",
+    "originalReadOnly": true,
+    "sourceAnswer": "k=1"
+  },
+  "authority": {
+    "rpmPrimaryL3": "무리함수의 활용",
+    "rpmPrimaryL4": "무리함수의 교점",
+    "rpmRecordIds": [
+      "H1-RPM-272"
+    ],
+    "rpmCrosswalkGitBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+    "PT": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "TPL": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+    "mappingStatus": "DIRECT_ACTIVE",
+    "subUnitKey": "H22-C2-09-FUNCTION_BASIC"
+  },
+  "summary": {
+    "qid": 23,
+    "createdSlots": 9,
+    "choiceCount": 45,
+    "distractorRoutes": 36,
+    "solutions": 9,
+    "solutionSvgFiles": 9,
+    "problemSvgFiles": 0,
+    "answerDistribution": {
+      "①": 1,
+      "②": 2,
+      "③": 4,
+      "④": 1,
+      "⑤": 1
+    },
+    "ascendingNumericChoices": "PASS_9_OF_9",
+    "optionPositionPolicy": "ASCENDING_PRIORITY_OVER_DISTRIBUTION",
+    "status": "AUTHOR_DRAFT_ONLY",
+    "mathValidation": "EXACT_ROOT_DISCRIMINANT_AND_DOMAIN_WITH_INTEGER_ENUMERATION",
+    "independentQualityReview": "NOT_RUN",
+    "actualBrowserRender": "NOT_RUN",
+    "nextSourceQid": null,
+    "authorStemTypographicPolish": "A2 sqrt(0-x) simplified to sqrt(-x); C2 0-2sqrt simplified to -2sqrt; no mathematics or answer changed."
+  },
+  "authorMathWitness": {
+    "method": "Left t=sqrt(H-x)>=0 gives t²-dt+(U-H-k)=0; two distinct nonnegative roots iff U-H-d²/4<k<=U-H. Right s=sqrt(x-J)>=0 gives s²-ds+(k-(V-J))=0; two roots iff V-J<=k<V-J+d²/4. H<J ensures four points distinct.",
+    "slots": [
+      {
+        "slot": "A1",
+        "H": 1,
+        "J": 3,
+        "U": 2,
+        "V": 4,
+        "d": 1,
+        "leftKRange": [
+          0.75,
+          1
+        ],
+        "rightKRange": [
+          1,
+          1.25
+        ],
+        "validNaturalK": [
+          1
+        ],
+        "exampleK": 1,
+        "fourPoints": {
+          "left": [
+            {
+              "x": 1,
+              "y": 2
+            },
+            {
+              "x": 0,
+              "y": 1
+            }
+          ],
+          "right": [
+            {
+              "x": 3,
+              "y": 4
+            },
+            {
+              "x": 4,
+              "y": 5
+            }
+          ],
+          "sumx": 8,
+          "sumy": 12
+        },
+        "answer": 1
+      },
+      {
+        "slot": "A2",
+        "H": 0,
+        "J": 2,
+        "U": 3,
+        "V": 5,
+        "d": 1,
+        "leftKRange": [
+          2.75,
+          3
+        ],
+        "rightKRange": [
+          3,
+          3.25
+        ],
+        "validNaturalK": [
+          3
+        ],
+        "exampleK": 3,
+        "fourPoints": {
+          "left": [
+            {
+              "x": 0,
+              "y": 3
+            },
+            {
+              "x": -1,
+              "y": 2
+            }
+          ],
+          "right": [
+            {
+              "x": 2,
+              "y": 5
+            },
+            {
+              "x": 3,
+              "y": 6
+            }
+          ],
+          "sumx": 4,
+          "sumy": 16
+        },
+        "answer": 3
+      },
+      {
+        "slot": "A3",
+        "H": -2,
+        "J": 2,
+        "U": 3,
+        "V": 7,
+        "d": 1,
+        "leftKRange": [
+          4.75,
+          5
+        ],
+        "rightKRange": [
+          5,
+          5.25
+        ],
+        "validNaturalK": [
+          5
+        ],
+        "exampleK": 5,
+        "fourPoints": {
+          "left": [
+            {
+              "x": -2,
+              "y": 3
+            },
+            {
+              "x": -3,
+              "y": 2
+            }
+          ],
+          "right": [
+            {
+              "x": 2,
+              "y": 7
+            },
+            {
+              "x": 3,
+              "y": 8
+            }
+          ],
+          "sumx": 0,
+          "sumy": 20
+        },
+        "answer": 5
+      },
+      {
+        "slot": "B1",
+        "H": 0,
+        "J": 2,
+        "U": 4,
+        "V": 5,
+        "d": 3,
+        "leftKRange": [
+          1.75,
+          4
+        ],
+        "rightKRange": [
+          3,
+          5.25
+        ],
+        "validNaturalK": [
+          3,
+          4
+        ],
+        "exampleK": 3,
+        "fourPoints": {
+          "left": [
+            {
+              "x": -0.1458980337503154,
+              "y": 2.8541019662496847
+            },
+            {
+              "x": -6.854101966249685,
+              "y": -3.8541019662496847
+            }
+          ],
+          "right": [
+            {
+              "x": 2,
+              "y": 5
+            },
+            {
+              "x": 11,
+              "y": 14
+            }
+          ],
+          "sumx": 6,
+          "sumy": 18
+        },
+        "answer": 2
+      },
+      {
+        "slot": "B2",
+        "H": 1,
+        "J": 4,
+        "U": 7,
+        "V": 7,
+        "d": 4,
+        "leftKRange": [
+          2,
+          6
+        ],
+        "rightKRange": [
+          3,
+          7
+        ],
+        "validNaturalK": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "exampleK": 4,
+        "fourPoints": {
+          "left": [
+            {
+              "x": 0.6568542494923804,
+              "y": 4.656854249492381
+            },
+            {
+              "x": -10.65685424949238,
+              "y": -6.65685424949238
+            }
+          ],
+          "right": [
+            {
+              "x": 4.071796769724491,
+              "y": 8.071796769724491
+            },
+            {
+              "x": 17.928203230275507,
+              "y": 21.928203230275507
+            }
+          ],
+          "sumx": 11.999999999999998,
+          "sumy": 28
+        },
+        "answer": 18
+      },
+      {
+        "slot": "B3",
+        "H": 2,
+        "J": 5,
+        "U": 8,
+        "V": 10,
+        "d": 3,
+        "leftKRange": [
+          3.75,
+          6
+        ],
+        "rightKRange": [
+          5,
+          7.25
+        ],
+        "validNaturalK": [
+          5,
+          6
+        ],
+        "exampleK": 5,
+        "fourPoints": {
+          "left": [
+            {
+              "x": 1.8541019662496847,
+              "y": 6.854101966249685
+            },
+            {
+              "x": -4.854101966249685,
+              "y": 0.1458980337503153
+            }
+          ],
+          "right": [
+            {
+              "x": 5,
+              "y": 10
+            },
+            {
+              "x": 14,
+              "y": 19
+            }
+          ],
+          "sumx": 16,
+          "sumy": 36
+        },
+        "answer": 11
+      },
+      {
+        "slot": "C1",
+        "H": 1,
+        "J": 3,
+        "U": 3,
+        "V": 5,
+        "d": 1,
+        "leftKRange": [
+          1.75,
+          2
+        ],
+        "rightKRange": [
+          2,
+          2.25
+        ],
+        "validNaturalK": [
+          2
+        ],
+        "exampleK": 2,
+        "fourPoints": {
+          "left": [
+            {
+              "x": 1,
+              "y": 3
+            },
+            {
+              "x": 0,
+              "y": 2
+            }
+          ],
+          "right": [
+            {
+              "x": 3,
+              "y": 5
+            },
+            {
+              "x": 4,
+              "y": 6
+            }
+          ],
+          "sumx": 8,
+          "sumy": 16
+        },
+        "answer": 8
+      },
+      {
+        "slot": "C2",
+        "H": -1,
+        "J": 4,
+        "U": 0,
+        "V": 5,
+        "d": 2,
+        "leftKRange": [
+          0,
+          1
+        ],
+        "rightKRange": [
+          1,
+          2
+        ],
+        "validNaturalK": [
+          1
+        ],
+        "exampleK": 1,
+        "fourPoints": {
+          "left": [
+            {
+              "x": -1,
+              "y": 0
+            },
+            {
+              "x": -5,
+              "y": -4
+            }
+          ],
+          "right": [
+            {
+              "x": 4,
+              "y": 5
+            },
+            {
+              "x": 8,
+              "y": 9
+            }
+          ],
+          "sumx": 6,
+          "sumy": 10
+        },
+        "answer": 10
+      },
+      {
+        "slot": "C3",
+        "H": 1,
+        "J": 5,
+        "U": 5,
+        "V": 8,
+        "d": 3,
+        "leftKRange": [
+          1.75,
+          4
+        ],
+        "rightKRange": [
+          3,
+          5.25
+        ],
+        "validNaturalK": [
+          3,
+          4
+        ],
+        "exampleK": 3,
+        "fourPoints": {
+          "left": [
+            {
+              "x": 0.8541019662496846,
+              "y": 3.8541019662496847
+            },
+            {
+              "x": -5.854101966249685,
+              "y": -2.8541019662496847
+            }
+          ],
+          "right": [
+            {
+              "x": 5,
+              "y": 8
+            },
+            {
+              "x": 14,
+              "y": 17
+            }
+          ],
+          "sumx": 14,
+          "sumy": 26
+        },
+        "answer": 4
+      }
+    ]
+  },
+  "selfReviewLedger": [
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q23-A1",
+      "slot": "A1",
+      "answer": "②",
+      "options": "5_NUMERIC_ASCENDING",
+      "wrongRoutes": 4,
+      "solutionSvg": "ADD_NEW",
+      "quality": "AUTHOR_DRAFT_ONLY"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q23-A2",
+      "slot": "A2",
+      "answer": "③",
+      "options": "5_NUMERIC_ASCENDING",
+      "wrongRoutes": 4,
+      "solutionSvg": "ADD_NEW",
+      "quality": "AUTHOR_DRAFT_ONLY"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q23-A3",
+      "slot": "A3",
+      "answer": "③",
+      "options": "5_NUMERIC_ASCENDING",
+      "wrongRoutes": 4,
+      "solutionSvg": "ADD_NEW",
+      "quality": "AUTHOR_DRAFT_ONLY"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q23-B1",
+      "slot": "B1",
+      "answer": "②",
+      "options": "5_NUMERIC_ASCENDING",
+      "wrongRoutes": 4,
+      "solutionSvg": "ADD_NEW",
+      "quality": "AUTHOR_DRAFT_ONLY"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q23-B2",
+      "slot": "B2",
+      "answer": "⑤",
+      "options": "5_NUMERIC_ASCENDING",
+      "wrongRoutes": 4,
+      "solutionSvg": "ADD_NEW",
+      "quality": "AUTHOR_DRAFT_ONLY"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q23-B3",
+      "slot": "B3",
+      "answer": "①",
+      "options": "5_NUMERIC_ASCENDING",
+      "wrongRoutes": 4,
+      "solutionSvg": "ADD_NEW",
+      "quality": "AUTHOR_DRAFT_ONLY"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q23-C1",
+      "slot": "C1",
+      "answer": "③",
+      "options": "5_NUMERIC_ASCENDING",
+      "wrongRoutes": 4,
+      "solutionSvg": "ADD_NEW",
+      "quality": "AUTHOR_DRAFT_ONLY"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q23-C2",
+      "slot": "C2",
+      "answer": "③",
+      "options": "5_NUMERIC_ASCENDING",
+      "wrongRoutes": 4,
+      "solutionSvg": "ADD_NEW",
+      "quality": "AUTHOR_DRAFT_ONLY"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q23-C3",
+      "slot": "C3",
+      "answer": "④",
+      "options": "5_NUMERIC_ASCENDING",
+      "wrongRoutes": 4,
+      "solutionSvg": "ADD_NEW",
+      "quality": "AUTHOR_DRAFT_ONLY"
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q23-A1",
+      "sourceQid": 23,
+      "slot": "A1",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "무리함수",
+      "originalCategory": "무리함수와 직선의 교점",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "CONTENT_AND_CANONICAL",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "무리함수",
+        "교점",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\begin{cases}2-\\sqrt{1-x}&(x\\le1)\\\\\\sqrt{x-3}+4&(x\\ge3)\\end{cases}$의 그래프와 직선 $y=x+k$에 대하여, 서로 다른 네 점에서 만나도록 하는 실수 $k$의 값은?",
+      "choices": [
+        "$0$",
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$"
+      ],
+      "answer": "②",
+      "solution": "왼쪽 가지에서는 $t=\\sqrt{1-x}\\ge0$이라 두면 $t^2-1t+(1-k)=0$이다. 서로 다른 두 비음수 근을 가지려면 $0\\le1-k<0.25$이므로 $0.75<k\\le1$이다. 오른쪽 가지에서는 $s=\\sqrt{x-3}\\ge0$이라 두면 $s^2-1s+(k-1)=0$이다. 마찬가지로 두 비음수 근 조건은 $0\\le k-1<0.25$, 즉 $1\\le k<1.25$이다. 두 정의역은 겹치지 않으므로 두 조건을 모두 만족하면 네 교점이 서로 다르다.\n두 범위의 교집합은 $k=1$ 하나이다.\n따라서 정답은 ②이다.",
+      "solutionImage": "assets/q23-A1-solution.svg",
+      "solutionImageAlt": "A1 두 무리함수 가지·직선·네 교점의 수학적 그래프",
+      "solutionImageCaption": "예시 k=1에서 양쪽 두 교점 및 정의역 끝점을 표시한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "primaryRPM_L3": "무리함수의 활용",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "무리함수의 교점",
+        "rpmRecordId": "H1-RPM-272",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "templateBinding": "ACTIVE",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_OTHER_CANONICAL_CROSS_CONCEPT_REQUIRED",
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "conditionStatus": "ACTIVE",
+        "integrationPattern": "TWO_RADICAL_BRANCH_LINE_FOUR_INTERSECTIONS",
+        "integrationPatternStatus": "SEMANTIC_UNREGISTERED",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          {
+            "field": "integrationPattern",
+            "reason": "Exact generated-only integration key unverified; mathematical pattern documented without inventing a key"
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 23,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3"
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "양쪽 분리된 무리함수 그래프가 직선과 두 번씩 만나는 교점 조건을 직접 검토해야 정답 유일",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$0$",
+            "wrongStepAndActualResult": "k=0도 왼쪽에 두 교점이 생긴다고 잘못 판단"
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$2$",
+            "wrongStepAndActualResult": "오른쪽 가지의 허용 상한을 무시해 k=2"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$3$",
+            "wrongStepAndActualResult": "오른쪽 교점의 개수를 세지 않고 k=3"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$4$",
+            "wrongStepAndActualResult": "양쪽 조건을 모두 확인하지 않고 k=4"
+          }
+        ],
+        "distractorCoverage": "4/4_EXPLICIT",
+        "answerUniqueness": "EXACT_QUADRATIC_NONNEGATIVE_ROOTS_AND_INTEGER_ENUMERATION",
+        "ascendingNumericOptions": "STRICT_PASS",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "정의역이 분리된 두 함수식을 발문에 완결적으로 명시함"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "assets/q23-A1-solution.svg",
+          "expectedFacts": {
+            "H": 1,
+            "J": 3,
+            "U": 2,
+            "V": 4,
+            "d": 1,
+            "exampleK": 1,
+            "fourPoints": {
+              "left": [
+                {
+                  "x": 1,
+                  "y": 2
+                },
+                {
+                  "x": 0,
+                  "y": 1
+                }
+              ],
+              "right": [
+                {
+                  "x": 3,
+                  "y": 4
+                },
+                {
+                  "x": 4,
+                  "y": 5
+                }
+              ],
+              "sumx": 8,
+              "sumy": 12
+            },
+            "validK": [
+              1
+            ]
+          },
+          "actualSvgRaster": "NOT_RUN",
+          "actualChrome": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q23-A2",
+      "sourceQid": 23,
+      "slot": "A2",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "무리함수",
+      "originalCategory": "무리함수와 직선의 교점",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "CONTENT_AND_CANONICAL",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "무리함수",
+        "교점",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\begin{cases}3-\\sqrt{-x}&(x\\le0)\\\\\\sqrt{x-2}+5&(x\\ge2)\\end{cases}$의 그래프와 직선 $y=x+k$에 대하여, 서로 다른 네 점에서 만나도록 하는 실수 $k$의 값은?",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "answer": "③",
+      "solution": "왼쪽 가지에서는 $t=\\sqrt{0-x}\\ge0$이라 두면 $t^2-1t+(3-k)=0$이다. 서로 다른 두 비음수 근을 가지려면 $0\\le3-k<0.25$이므로 $2.75<k\\le3$이다. 오른쪽 가지에서는 $s=\\sqrt{x-2}\\ge0$이라 두면 $s^2-1s+(k-3)=0$이다. 마찬가지로 두 비음수 근 조건은 $0\\le k-3<0.25$, 즉 $3\\le k<3.25$이다. 두 정의역은 겹치지 않으므로 두 조건을 모두 만족하면 네 교점이 서로 다르다.\n두 범위의 교집합은 $k=3$ 하나이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "assets/q23-A2-solution.svg",
+      "solutionImageAlt": "A2 두 무리함수 가지·직선·네 교점의 수학적 그래프",
+      "solutionImageCaption": "예시 k=3에서 양쪽 두 교점 및 정의역 끝점을 표시한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "primaryRPM_L3": "무리함수의 활용",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "무리함수의 교점",
+        "rpmRecordId": "H1-RPM-272",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "templateBinding": "ACTIVE",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_OTHER_CANONICAL_CROSS_CONCEPT_REQUIRED",
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "conditionStatus": "ACTIVE",
+        "integrationPattern": "TWO_RADICAL_BRANCH_LINE_FOUR_INTERSECTIONS",
+        "integrationPatternStatus": "SEMANTIC_UNREGISTERED",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          {
+            "field": "integrationPattern",
+            "reason": "Exact generated-only integration key unverified; mathematical pattern documented without inventing a key"
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 23,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3"
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "양쪽 분리된 무리함수 그래프가 직선과 두 번씩 만나는 교점 조건을 직접 검토해야 정답 유일",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$1$",
+            "wrongStepAndActualResult": "k의 평행이동 기준을 두 단위 낮춰 k=1"
+          },
+          {
+            "choice": "②",
+            "choiceValue": "$2$",
+            "wrongStepAndActualResult": "양쪽 가지 시작 좌표 차이를 잘못 계산해 k=2"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$4$",
+            "wrongStepAndActualResult": "왼쪽 가지의 범위를 한 단위 넓혀 k=4"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$5$",
+            "wrongStepAndActualResult": "한 가지 판별식만 보고 k=5"
+          }
+        ],
+        "distractorCoverage": "4/4_EXPLICIT",
+        "answerUniqueness": "EXACT_QUADRATIC_NONNEGATIVE_ROOTS_AND_INTEGER_ENUMERATION",
+        "ascendingNumericOptions": "STRICT_PASS",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "정의역이 분리된 두 함수식을 발문에 완결적으로 명시함"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "assets/q23-A2-solution.svg",
+          "expectedFacts": {
+            "H": 0,
+            "J": 2,
+            "U": 3,
+            "V": 5,
+            "d": 1,
+            "exampleK": 3,
+            "fourPoints": {
+              "left": [
+                {
+                  "x": 0,
+                  "y": 3
+                },
+                {
+                  "x": -1,
+                  "y": 2
+                }
+              ],
+              "right": [
+                {
+                  "x": 2,
+                  "y": 5
+                },
+                {
+                  "x": 3,
+                  "y": 6
+                }
+              ],
+              "sumx": 4,
+              "sumy": 16
+            },
+            "validK": [
+              3
+            ]
+          },
+          "actualSvgRaster": "NOT_RUN",
+          "actualChrome": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q23-A3",
+      "sourceQid": 23,
+      "slot": "A3",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "무리함수",
+      "originalCategory": "무리함수와 직선의 교점",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "CONTENT_AND_CANONICAL",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "무리함수",
+        "교점",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\begin{cases}3-\\sqrt{-2-x}&(x\\le-2)\\\\\\sqrt{x-2}+7&(x\\ge2)\\end{cases}$의 그래프와 직선 $y=x+k$에 대하여, 서로 다른 네 점에서 만나도록 하는 실수 $k$의 값은?",
+      "choices": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$",
+        "$7$"
+      ],
+      "answer": "③",
+      "solution": "왼쪽 가지에서는 $t=\\sqrt{-2-x}\\ge0$이라 두면 $t^2-1t+(5-k)=0$이다. 서로 다른 두 비음수 근을 가지려면 $0\\le5-k<0.25$이므로 $4.75<k\\le5$이다. 오른쪽 가지에서는 $s=\\sqrt{x-2}\\ge0$이라 두면 $s^2-1s+(k-5)=0$이다. 마찬가지로 두 비음수 근 조건은 $0\\le k-5<0.25$, 즉 $5\\le k<5.25$이다. 두 정의역은 겹치지 않으므로 두 조건을 모두 만족하면 네 교점이 서로 다르다.\n두 범위의 교집합은 $k=5$ 하나이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "assets/q23-A3-solution.svg",
+      "solutionImageAlt": "A3 두 무리함수 가지·직선·네 교점의 수학적 그래프",
+      "solutionImageCaption": "예시 k=5에서 양쪽 두 교점 및 정의역 끝점을 표시한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "primaryRPM_L3": "무리함수의 활용",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "무리함수의 교점",
+        "rpmRecordId": "H1-RPM-272",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "templateBinding": "ACTIVE",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_OTHER_CANONICAL_CROSS_CONCEPT_REQUIRED",
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "conditionStatus": "ACTIVE",
+        "integrationPattern": "TWO_RADICAL_BRANCH_LINE_FOUR_INTERSECTIONS",
+        "integrationPatternStatus": "SEMANTIC_UNREGISTERED",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          {
+            "field": "integrationPattern",
+            "reason": "Exact generated-only integration key unverified; mathematical pattern documented without inventing a key"
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 23,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3"
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "양쪽 분리된 무리함수 그래프가 직선과 두 번씩 만나는 교점 조건을 직접 검토해야 정답 유일",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$3$",
+            "wrongStepAndActualResult": "끝점의 음수 좌표 이동을 무시해 k=3"
+          },
+          {
+            "choice": "②",
+            "choiceValue": "$4$",
+            "wrongStepAndActualResult": "왼쪽 가지의 기준값을 4로 잘못 구함"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$6$",
+            "wrongStepAndActualResult": "오른쪽 가지의 상한을 무시해 k=6"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$7$",
+            "wrongStepAndActualResult": "두 가지 조건을 따로 비교하지 않고 k=7"
+          }
+        ],
+        "distractorCoverage": "4/4_EXPLICIT",
+        "answerUniqueness": "EXACT_QUADRATIC_NONNEGATIVE_ROOTS_AND_INTEGER_ENUMERATION",
+        "ascendingNumericOptions": "STRICT_PASS",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "정의역이 분리된 두 함수식을 발문에 완결적으로 명시함"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "assets/q23-A3-solution.svg",
+          "expectedFacts": {
+            "H": -2,
+            "J": 2,
+            "U": 3,
+            "V": 7,
+            "d": 1,
+            "exampleK": 5,
+            "fourPoints": {
+              "left": [
+                {
+                  "x": -2,
+                  "y": 3
+                },
+                {
+                  "x": -3,
+                  "y": 2
+                }
+              ],
+              "right": [
+                {
+                  "x": 2,
+                  "y": 7
+                },
+                {
+                  "x": 3,
+                  "y": 8
+                }
+              ],
+              "sumx": 0,
+              "sumy": 20
+            },
+            "validK": [
+              5
+            ]
+          },
+          "actualSvgRaster": "NOT_RUN",
+          "actualChrome": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q23-B1",
+      "sourceQid": 23,
+      "slot": "B1",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "상",
+      "category": "무리함수",
+      "originalCategory": "무리함수와 직선의 교점",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "CONTENT_AND_CANONICAL",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "무리함수",
+        "교점",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\begin{cases}4-3\\sqrt{0-x}&(x\\le0)\\\\3\\sqrt{x-2}+5&(x\\ge2)\\end{cases}$의 그래프와 직선 $y=x+k$에 대하여, 서로 다른 네 점에서 만나도록 하는 자연수 $k$의 개수는?",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "answer": "②",
+      "solution": "왼쪽 가지에서는 $t=\\sqrt{0-x}\\ge0$이라 두면 $t^2-3t+(4-k)=0$이다. 서로 다른 두 비음수 근을 가지려면 $0\\le4-k<2.25$이므로 $1.75<k\\le4$이다. 오른쪽 가지에서는 $s=\\sqrt{x-2}\\ge0$이라 두면 $s^2-3s+(k-3)=0$이다. 마찬가지로 두 비음수 근 조건은 $0\\le k-3<2.25$, 즉 $3\\le k<5.25$이다. 두 정의역은 겹치지 않으므로 두 조건을 모두 만족하면 네 교점이 서로 다르다.\n공통 범위에 속하는 자연수는 $3,4$로 총 2개이다.\n따라서 정답은 ②이다.",
+      "solutionImage": "assets/q23-B1-solution.svg",
+      "solutionImageAlt": "B1 두 무리함수 가지·직선·네 교점의 수학적 그래프",
+      "solutionImageCaption": "예시 k=3에서 양쪽 두 교점 및 정의역 끝점을 표시한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "primaryRPM_L3": "무리함수의 활용",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "무리함수의 교점",
+        "rpmRecordId": "H1-RPM-272",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "templateBinding": "ACTIVE",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_OTHER_CANONICAL_CROSS_CONCEPT_REQUIRED",
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "conditionStatus": "ACTIVE",
+        "integrationPattern": "TWO_RADICAL_BRANCH_LINE_FOUR_INTERSECTIONS",
+        "integrationPatternStatus": "SEMANTIC_UNREGISTERED",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          {
+            "field": "integrationPattern",
+            "reason": "Exact generated-only integration key unverified; mathematical pattern documented without inventing a key"
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 23,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3"
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "양쪽 분리된 무리함수 그래프가 직선과 두 번씩 만나는 교점 조건을 직접 검토해야 정답 유일",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$1$",
+            "wrongStepAndActualResult": "k=3의 0인 제곱근을 제외해 한 개로 계산"
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$3$",
+            "wrongStepAndActualResult": "k=5의 왼쪽 한 교점을 두 개로 오인해 3개"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$4$",
+            "wrongStepAndActualResult": "k=2,5까지 허용해 4개"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$5$",
+            "wrongStepAndActualResult": "1부터 5까지 모두 허용해 5개"
+          }
+        ],
+        "distractorCoverage": "4/4_EXPLICIT",
+        "answerUniqueness": "EXACT_QUADRATIC_NONNEGATIVE_ROOTS_AND_INTEGER_ENUMERATION",
+        "ascendingNumericOptions": "STRICT_PASS",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "정의역이 분리된 두 함수식을 발문에 완결적으로 명시함"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "assets/q23-B1-solution.svg",
+          "expectedFacts": {
+            "H": 0,
+            "J": 2,
+            "U": 4,
+            "V": 5,
+            "d": 3,
+            "exampleK": 3,
+            "fourPoints": {
+              "left": [
+                {
+                  "x": -0.1458980337503154,
+                  "y": 2.8541019662496847
+                },
+                {
+                  "x": -6.854101966249685,
+                  "y": -3.8541019662496847
+                }
+              ],
+              "right": [
+                {
+                  "x": 2,
+                  "y": 5
+                },
+                {
+                  "x": 11,
+                  "y": 14
+                }
+              ],
+              "sumx": 6,
+              "sumy": 18
+            },
+            "validK": [
+              3,
+              4
+            ]
+          },
+          "actualSvgRaster": "NOT_RUN",
+          "actualChrome": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q23-B2",
+      "sourceQid": 23,
+      "slot": "B2",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "상",
+      "category": "무리함수",
+      "originalCategory": "무리함수와 직선의 교점",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "CONTENT_AND_CANONICAL",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "무리함수",
+        "교점",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\begin{cases}7-4\\sqrt{1-x}&(x\\le1)\\\\4\\sqrt{x-4}+7&(x\\ge4)\\end{cases}$의 그래프와 직선 $y=x+k$에 대하여, 서로 다른 네 점에서 만나도록 하는 모든 자연수 $k$의 합은?",
+      "choices": [
+        "$14$",
+        "$15$",
+        "$16$",
+        "$17$",
+        "$18$"
+      ],
+      "answer": "⑤",
+      "solution": "왼쪽 가지에서는 $t=\\sqrt{1-x}\\ge0$이라 두면 $t^2-4t+(6-k)=0$이다. 서로 다른 두 비음수 근을 가지려면 $0\\le6-k<4$이므로 $2<k\\le6$이다. 오른쪽 가지에서는 $s=\\sqrt{x-4}\\ge0$이라 두면 $s^2-4s+(k-3)=0$이다. 마찬가지로 두 비음수 근 조건은 $0\\le k-3<4$, 즉 $3\\le k<7$이다. 두 정의역은 겹치지 않으므로 두 조건을 모두 만족하면 네 교점이 서로 다르다.\n공통 범위에 속하는 자연수는 $3,4,5,6$이고 합은 $3+4+5+6=18$이다.\n따라서 정답은 ⑤이다.",
+      "solutionImage": "assets/q23-B2-solution.svg",
+      "solutionImageAlt": "B2 두 무리함수 가지·직선·네 교점의 수학적 그래프",
+      "solutionImageCaption": "예시 k=4에서 양쪽 두 교점 및 정의역 끝점을 표시한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "primaryRPM_L3": "무리함수의 활용",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "무리함수의 교점",
+        "rpmRecordId": "H1-RPM-272",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "templateBinding": "ACTIVE",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_OTHER_CANONICAL_CROSS_CONCEPT_REQUIRED",
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "conditionStatus": "ACTIVE",
+        "integrationPattern": "TWO_RADICAL_BRANCH_LINE_FOUR_INTERSECTIONS",
+        "integrationPatternStatus": "SEMANTIC_UNREGISTERED",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          {
+            "field": "integrationPattern",
+            "reason": "Exact generated-only integration key unverified; mathematical pattern documented without inventing a key"
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 23,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3"
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "양쪽 분리된 무리함수 그래프가 직선과 두 번씩 만나는 교점 조건을 직접 검토해야 정답 유일",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$14$",
+            "wrongStepAndActualResult": "k=4를 누락해 3+5+6=14"
+          },
+          {
+            "choice": "②",
+            "choiceValue": "$15$",
+            "wrongStepAndActualResult": "k=3을 누락해 4+5+6=15"
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$16$",
+            "wrongStepAndActualResult": "3+4+5+6의 합을 16으로 덧셈 오류"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$17$",
+            "wrongStepAndActualResult": "3+4+5+6의 합을 17로 덧셈 오류"
+          }
+        ],
+        "distractorCoverage": "4/4_EXPLICIT",
+        "answerUniqueness": "EXACT_QUADRATIC_NONNEGATIVE_ROOTS_AND_INTEGER_ENUMERATION",
+        "ascendingNumericOptions": "STRICT_PASS",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "정의역이 분리된 두 함수식을 발문에 완결적으로 명시함"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "assets/q23-B2-solution.svg",
+          "expectedFacts": {
+            "H": 1,
+            "J": 4,
+            "U": 7,
+            "V": 7,
+            "d": 4,
+            "exampleK": 4,
+            "fourPoints": {
+              "left": [
+                {
+                  "x": 0.6568542494923804,
+                  "y": 4.656854249492381
+                },
+                {
+                  "x": -10.65685424949238,
+                  "y": -6.65685424949238
+                }
+              ],
+              "right": [
+                {
+                  "x": 4.071796769724491,
+                  "y": 8.071796769724491
+                },
+                {
+                  "x": 17.928203230275507,
+                  "y": 21.928203230275507
+                }
+              ],
+              "sumx": 11.999999999999998,
+              "sumy": 28
+            },
+            "validK": [
+              3,
+              4,
+              5,
+              6
+            ]
+          },
+          "actualSvgRaster": "NOT_RUN",
+          "actualChrome": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q23-B3",
+      "sourceQid": 23,
+      "slot": "B3",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "상",
+      "category": "무리함수",
+      "originalCategory": "무리함수와 직선의 교점",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "CONTENT_AND_CANONICAL",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "무리함수",
+        "교점",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\begin{cases}8-3\\sqrt{2-x}&(x\\le2)\\\\3\\sqrt{x-5}+10&(x\\ge5)\\end{cases}$의 그래프와 직선 $y=x+k$에 대하여, 서로 다른 네 점에서 만나도록 하는 모든 자연수 $k$의 합은?",
+      "choices": [
+        "$11$",
+        "$12$",
+        "$13$",
+        "$14$",
+        "$15$"
+      ],
+      "answer": "①",
+      "solution": "왼쪽 가지에서는 $t=\\sqrt{2-x}\\ge0$이라 두면 $t^2-3t+(6-k)=0$이다. 서로 다른 두 비음수 근을 가지려면 $0\\le6-k<2.25$이므로 $3.75<k\\le6$이다. 오른쪽 가지에서는 $s=\\sqrt{x-5}\\ge0$이라 두면 $s^2-3s+(k-5)=0$이다. 마찬가지로 두 비음수 근 조건은 $0\\le k-5<2.25$, 즉 $5\\le k<7.25$이다. 두 정의역은 겹치지 않으므로 두 조건을 모두 만족하면 네 교점이 서로 다르다.\n공통 범위에 속하는 자연수는 $5,6$이고 합은 $5+6=11$이다.\n따라서 정답은 ①이다.",
+      "solutionImage": "assets/q23-B3-solution.svg",
+      "solutionImageAlt": "B3 두 무리함수 가지·직선·네 교점의 수학적 그래프",
+      "solutionImageCaption": "예시 k=5에서 양쪽 두 교점 및 정의역 끝점을 표시한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "primaryRPM_L3": "무리함수의 활용",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "무리함수의 교점",
+        "rpmRecordId": "H1-RPM-272",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "templateBinding": "ACTIVE",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_OTHER_CANONICAL_CROSS_CONCEPT_REQUIRED",
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "conditionStatus": "ACTIVE",
+        "integrationPattern": "TWO_RADICAL_BRANCH_LINE_FOUR_INTERSECTIONS",
+        "integrationPatternStatus": "SEMANTIC_UNREGISTERED",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          {
+            "field": "integrationPattern",
+            "reason": "Exact generated-only integration key unverified; mathematical pattern documented without inventing a key"
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 23,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3"
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "양쪽 분리된 무리함수 그래프가 직선과 두 번씩 만나는 교점 조건을 직접 검토해야 정답 유일",
+        "distractors": [
+          {
+            "choice": "②",
+            "choiceValue": "$12$",
+            "wrongStepAndActualResult": "k=7도 가능하다고 잘못 보아 5+7=12"
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$13$",
+            "wrongStepAndActualResult": "k=5 대신 7을 택해 6+7=13"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$14$",
+            "wrongStepAndActualResult": "k=8을 허용해 6+8=14"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$15$",
+            "wrongStepAndActualResult": "k=4까지 허용해 4+5+6=15"
+          }
+        ],
+        "distractorCoverage": "4/4_EXPLICIT",
+        "answerUniqueness": "EXACT_QUADRATIC_NONNEGATIVE_ROOTS_AND_INTEGER_ENUMERATION",
+        "ascendingNumericOptions": "STRICT_PASS",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "정의역이 분리된 두 함수식을 발문에 완결적으로 명시함"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "assets/q23-B3-solution.svg",
+          "expectedFacts": {
+            "H": 2,
+            "J": 5,
+            "U": 8,
+            "V": 10,
+            "d": 3,
+            "exampleK": 5,
+            "fourPoints": {
+              "left": [
+                {
+                  "x": 1.8541019662496847,
+                  "y": 6.854101966249685
+                },
+                {
+                  "x": -4.854101966249685,
+                  "y": 0.1458980337503153
+                }
+              ],
+              "right": [
+                {
+                  "x": 5,
+                  "y": 10
+                },
+                {
+                  "x": 14,
+                  "y": 19
+                }
+              ],
+              "sumx": 16,
+              "sumy": 36
+            },
+            "validK": [
+              5,
+              6
+            ]
+          },
+          "actualSvgRaster": "NOT_RUN",
+          "actualChrome": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q23-C1",
+      "sourceQid": 23,
+      "slot": "C1",
+      "purpose": "C",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "무리함수",
+      "originalCategory": "무리함수와 직선의 교점",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "CONTENT_AND_CANONICAL",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "무리함수",
+        "교점",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\begin{cases}3-\\sqrt{1-x}&(x\\le1)\\\\\\sqrt{x-3}+5&(x\\ge3)\\end{cases}$의 그래프와 직선 $y=x+k$에 대하여, 네 교점에서 만나는 실수 $k$를 정했을 때, 네 교점의 $x$좌표의 합은?",
+      "choices": [
+        "$6$",
+        "$7$",
+        "$8$",
+        "$9$",
+        "$10$"
+      ],
+      "answer": "③",
+      "solution": "왼쪽 가지에서는 $t=\\sqrt{1-x}\\ge0$이라 두면 $t^2-1t+(2-k)=0$이다. 서로 다른 두 비음수 근을 가지려면 $0\\le2-k<0.25$이므로 $1.75<k\\le2$이다. 오른쪽 가지에서는 $s=\\sqrt{x-3}\\ge0$이라 두면 $s^2-1s+(k-2)=0$이다. 마찬가지로 두 비음수 근 조건은 $0\\le k-2<0.25$, 즉 $2\\le k<2.25$이다. 두 정의역은 겹치지 않으므로 두 조건을 모두 만족하면 네 교점이 서로 다르다.\n$k=2$일 때 네 교점의 좌표는 $(0,2)$, $(1,3)$, $(3,5)$, $(4,6)$이다. 따라서 $x$좌표의 합은 $0+1+3+4=8$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "assets/q23-C1-solution.svg",
+      "solutionImageAlt": "C1 두 무리함수 가지·직선·네 교점의 수학적 그래프",
+      "solutionImageCaption": "예시 k=2에서 양쪽 두 교점 및 정의역 끝점을 표시한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "primaryRPM_L3": "무리함수의 활용",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "무리함수의 교점",
+        "rpmRecordId": "H1-RPM-272",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "templateBinding": "ACTIVE",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_OTHER_CANONICAL_CROSS_CONCEPT_REQUIRED",
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "conditionStatus": "ACTIVE",
+        "integrationPattern": "TWO_RADICAL_BRANCH_LINE_FOUR_INTERSECTIONS",
+        "integrationPatternStatus": "SEMANTIC_UNREGISTERED",
+        "difficultyBucket": 5,
+        "metadataDebt": [
+          {
+            "field": "integrationPattern",
+            "reason": "Exact generated-only integration key unverified; mathematical pattern documented without inventing a key"
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 23,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3"
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "양쪽 분리된 무리함수 그래프가 직선과 두 번씩 만나는 교점 조건을 직접 검토해야 정답 유일",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$6$",
+            "wrongStepAndActualResult": "x=4인 끝점을 x=2로 오산해 0+1+3+2=6"
+          },
+          {
+            "choice": "②",
+            "choiceValue": "$7$",
+            "wrongStepAndActualResult": "끝점 4를 3으로 오산해 0+1+3+3=7"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$9$",
+            "wrongStepAndActualResult": "끝점 0을 1로 오산해 1+1+3+4=9"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$10$",
+            "wrongStepAndActualResult": "끝점 0을 2로 오산해 2+1+3+4=10"
+          }
+        ],
+        "distractorCoverage": "4/4_EXPLICIT",
+        "answerUniqueness": "EXACT_QUADRATIC_NONNEGATIVE_ROOTS_AND_INTEGER_ENUMERATION",
+        "ascendingNumericOptions": "STRICT_PASS",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "정의역이 분리된 두 함수식을 발문에 완결적으로 명시함"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "assets/q23-C1-solution.svg",
+          "expectedFacts": {
+            "H": 1,
+            "J": 3,
+            "U": 3,
+            "V": 5,
+            "d": 1,
+            "exampleK": 2,
+            "fourPoints": {
+              "left": [
+                {
+                  "x": 1,
+                  "y": 3
+                },
+                {
+                  "x": 0,
+                  "y": 2
+                }
+              ],
+              "right": [
+                {
+                  "x": 3,
+                  "y": 5
+                },
+                {
+                  "x": 4,
+                  "y": 6
+                }
+              ],
+              "sumx": 8,
+              "sumy": 16
+            },
+            "validK": [
+              2
+            ]
+          },
+          "actualSvgRaster": "NOT_RUN",
+          "actualChrome": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q23-C2",
+      "sourceQid": 23,
+      "slot": "C2",
+      "purpose": "C",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "무리함수",
+      "originalCategory": "무리함수와 직선의 교점",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "CONTENT_AND_CANONICAL",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "무리함수",
+        "교점",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\begin{cases}-2\\sqrt{-1-x}&(x\\le-1)\\\\2\\sqrt{x-4}+5&(x\\ge4)\\end{cases}$의 그래프와 직선 $y=x+k$에 대하여, 네 교점에서 만나는 실수 $k$를 정했을 때, 네 교점의 $y$좌표의 합은?",
+      "choices": [
+        "$8$",
+        "$9$",
+        "$10$",
+        "$11$",
+        "$12$"
+      ],
+      "answer": "③",
+      "solution": "왼쪽 가지에서는 $t=\\sqrt{-1-x}\\ge0$이라 두면 $t^2-2t+(1-k)=0$이다. 서로 다른 두 비음수 근을 가지려면 $0\\le1-k<1$이므로 $0<k\\le1$이다. 오른쪽 가지에서는 $s=\\sqrt{x-4}\\ge0$이라 두면 $s^2-2s+(k-1)=0$이다. 마찬가지로 두 비음수 근 조건은 $0\\le k-1<1$, 즉 $1\\le k<2$이다. 두 정의역은 겹치지 않으므로 두 조건을 모두 만족하면 네 교점이 서로 다르다.\n$k=1$일 때 네 교점의 좌표는 $(-5,-4)$, $(-1,0)$, $(4,5)$, $(8,9)$이다. 따라서 $y$좌표의 합은 $-4+0+5+9=10$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "assets/q23-C2-solution.svg",
+      "solutionImageAlt": "C2 두 무리함수 가지·직선·네 교점의 수학적 그래프",
+      "solutionImageCaption": "예시 k=1에서 양쪽 두 교점 및 정의역 끝점을 표시한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "primaryRPM_L3": "무리함수의 활용",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "무리함수의 교점",
+        "rpmRecordId": "H1-RPM-272",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "templateBinding": "ACTIVE",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_OTHER_CANONICAL_CROSS_CONCEPT_REQUIRED",
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "conditionStatus": "ACTIVE",
+        "integrationPattern": "TWO_RADICAL_BRANCH_LINE_FOUR_INTERSECTIONS",
+        "integrationPatternStatus": "SEMANTIC_UNREGISTERED",
+        "difficultyBucket": 5,
+        "metadataDebt": [
+          {
+            "field": "integrationPattern",
+            "reason": "Exact generated-only integration key unverified; mathematical pattern documented without inventing a key"
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 23,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3"
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "양쪽 분리된 무리함수 그래프가 직선과 두 번씩 만나는 교점 조건을 직접 검토해야 정답 유일",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$8$",
+            "wrongStepAndActualResult": "y=-4인 끝점을 -6으로 오산해 합 8"
+          },
+          {
+            "choice": "②",
+            "choiceValue": "$9$",
+            "wrongStepAndActualResult": "끝점 -4를 -5로 오산해 합 9"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$11$",
+            "wrongStepAndActualResult": "시작점 y=5를 6으로 오산해 합 11"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$12$",
+            "wrongStepAndActualResult": "끝점 y=9를 11로 오산해 합 12"
+          }
+        ],
+        "distractorCoverage": "4/4_EXPLICIT",
+        "answerUniqueness": "EXACT_QUADRATIC_NONNEGATIVE_ROOTS_AND_INTEGER_ENUMERATION",
+        "ascendingNumericOptions": "STRICT_PASS",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "정의역이 분리된 두 함수식을 발문에 완결적으로 명시함"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "assets/q23-C2-solution.svg",
+          "expectedFacts": {
+            "H": -1,
+            "J": 4,
+            "U": 0,
+            "V": 5,
+            "d": 2,
+            "exampleK": 1,
+            "fourPoints": {
+              "left": [
+                {
+                  "x": -1,
+                  "y": 0
+                },
+                {
+                  "x": -5,
+                  "y": -4
+                }
+              ],
+              "right": [
+                {
+                  "x": 4,
+                  "y": 5
+                },
+                {
+                  "x": 8,
+                  "y": 9
+                }
+              ],
+              "sumx": 6,
+              "sumy": 10
+            },
+            "validK": [
+              1
+            ]
+          },
+          "actualSvgRaster": "NOT_RUN",
+          "actualChrome": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q23-C3",
+      "sourceQid": 23,
+      "slot": "C3",
+      "purpose": "C",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "무리함수",
+      "originalCategory": "무리함수와 직선의 교점",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "CONTENT_AND_CANONICAL",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "무리함수",
+        "교점",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\begin{cases}5-3\\sqrt{1-x}&(x\\le1)\\\\3\\sqrt{x-5}+8&(x\\ge5)\\end{cases}$의 그래프와 직선 $y=x+k$에 대하여, 서로 다른 네 점에서 만나도록 하는 자연수 $k$에 대하여 네 교점의 $x$좌표 합을 $S_k$라 한다. 가능한 두 자연수 $k$에서 $S_k$의 차(큰 값에서 작은 값을 뺀 값)는?",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "answer": "④",
+      "solution": "왼쪽 가지에서는 $t=\\sqrt{1-x}\\ge0$이라 두면 $t^2-3t+(4-k)=0$이다. 서로 다른 두 비음수 근을 가지려면 $0\\le4-k<2.25$이므로 $1.75<k\\le4$이다. 오른쪽 가지에서는 $s=\\sqrt{x-5}\\ge0$이라 두면 $s^2-3s+(k-3)=0$이다. 마찬가지로 두 비음수 근 조건은 $0\\le k-3<2.25$, 즉 $3\\le k<5.25$이다. 두 정의역은 겹치지 않으므로 두 조건을 모두 만족하면 네 교점이 서로 다르다.\n허용 자연수는 $k=3,4$이다. 왼쪽 두 교점의 $x$좌표 합은 $2(1)-(3^2-2(4-k))$, 오른쪽 두 교점의 합은 $2(5)+(3^2-2(k-3))$이다. 따라서 $S_k=2(1+5)+2((4-k)-(k-3))$이다. $S_3=14$, $S_4=10$이므로 차는 $4$이다.\n따라서 정답은 ④이다.",
+      "solutionImage": "assets/q23-C3-solution.svg",
+      "solutionImageAlt": "C3 두 무리함수 가지·직선·네 교점의 수학적 그래프",
+      "solutionImageCaption": "예시 k=3에서 양쪽 두 교점 및 정의역 끝점을 표시한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "primaryRPM_L3": "무리함수의 활용",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "무리함수의 교점",
+        "rpmRecordId": "H1-RPM-272",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "templateBinding": "ACTIVE",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_OTHER_CANONICAL_CROSS_CONCEPT_REQUIRED",
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "conditionStatus": "ACTIVE",
+        "integrationPattern": "TWO_RADICAL_BRANCH_LINE_FOUR_INTERSECTIONS",
+        "integrationPatternStatus": "SEMANTIC_UNREGISTERED",
+        "difficultyBucket": 5,
+        "metadataDebt": [
+          {
+            "field": "integrationPattern",
+            "reason": "Exact generated-only integration key unverified; mathematical pattern documented without inventing a key"
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 23,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3"
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "양쪽 분리된 무리함수 그래프가 직선과 두 번씩 만나는 교점 조건을 직접 검토해야 정답 유일",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$1$",
+            "wrongStepAndActualResult": "k=4인 경우 합 10을 13으로 오산해 차 1"
+          },
+          {
+            "choice": "②",
+            "choiceValue": "$2$",
+            "wrongStepAndActualResult": "k=4일 때 합을 12로 오산해 차 2"
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$3$",
+            "wrongStepAndActualResult": "k=3의 합 14를 13으로 오산해 차 3"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$5$",
+            "wrongStepAndActualResult": "k=4의 합 10을 9로 오산해 차 5"
+          }
+        ],
+        "distractorCoverage": "4/4_EXPLICIT",
+        "answerUniqueness": "EXACT_QUADRATIC_NONNEGATIVE_ROOTS_AND_INTEGER_ENUMERATION",
+        "ascendingNumericOptions": "STRICT_PASS",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "정의역이 분리된 두 함수식을 발문에 완결적으로 명시함"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "assets/q23-C3-solution.svg",
+          "expectedFacts": {
+            "H": 1,
+            "J": 5,
+            "U": 5,
+            "V": 8,
+            "d": 3,
+            "exampleK": 3,
+            "fourPoints": {
+              "left": [
+                {
+                  "x": 0.8541019662496846,
+                  "y": 3.8541019662496847
+                },
+                {
+                  "x": -5.854101966249685,
+                  "y": -2.8541019662496847
+                }
+              ],
+              "right": [
+                {
+                  "x": 5,
+                  "y": 8
+                },
+                {
+                  "x": 14,
+                  "y": 17
+                }
+              ],
+              "sumx": 14,
+              "sumy": 26
+            },
+            "validK": [
+              3,
+              4
+            ]
+          },
+          "actualSvgRaster": "NOT_RUN",
+          "actualChrome": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    }
+  ]
+}
