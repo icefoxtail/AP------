@@ -1,7 +1,7 @@
 {
   "schemaVersion": "archive-question-metadata-v1",
   "metadataRevision": "archive-metadata-v1-phase1b-20260825+H1_FOUNDATION@1.0.0",
-  "generatedAt": "2026-10-11T23:15:11.058Z",
+  "generatedAt": "2026-10-11T23:17:42.317Z",
   "approvalStatus": "APPROVED_SEMANTIC_RECHECKED_WITH_L4_GAPS",
   "promotionPolicy": {
     "candidateOnlyTagsPromoted": false,
@@ -13,7 +13,7 @@
     "l4GapRecordsDefaultSelectable": false
   },
   "sourceDigests": {
-    "identityMap": "90a6059ba70a5af4145aa60b6da59435bf2c59022b5d0e40aebbf14a0734c071",
+    "identityMap": "caa73ae950267f9d4ac060c775591fa683d65657578090aecfc62769091f5f52",
     "completeClassification": "24dc74f6c4a8a4ef588941ddcec9c139bb601d65a642c259eab4a87fe5cb7b2b",
     "tagMaster": "68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a"
   },
@@ -486,12 +486,12 @@
   },
   "reviewedPassCount": 3189,
   "counts": {
-    "records": 13974,
+    "records": 13996,
     "uidUnique": true,
     "sourceJoinUnique": true,
-    "semanticallyReviewed": 3216,
-    "explicitProblemTypeHolds": 9703,
-    "explicitTemplateHolds": 9731,
+    "semanticallyReviewed": 3217,
+    "explicitProblemTypeHolds": 9704,
+    "explicitTemplateHolds": 9732,
     "explicitDifficultyHolds": 999,
     "m3FoundationV2AppliedRecords": 1644,
     "m3Direct2HFinalized": 700,
@@ -15096,6 +15096,53 @@
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
       ],
       "difficultyBucket": 1
+    },
+    {
+      "questionUid": "qid_v1_04fc4a98719c75dbe268ea36a3613ac574849ccd127d76368b5021a40c69eb64",
+      "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 4,
+      "sourceQuestionNo": "4",
+      "sourceFingerprint": "f1b1cd14633892b678a9e0859abe7a0bc6a11e80ab1c51ffe1df720f623c8c5c",
+      "contentFingerprint": "2a5fc2e357cd307c048894d6e8458baf1b3a9613251bed59b325a77524d89ce6",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "conceptClusterKey": null,
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "tagConfidence": "medium",
+      "tagStatus": "manual_review",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "approved_source",
+        "template": "approved_source",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "approvalEvidence": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q12/R1_qid_review/R1_q12_evidence.status-meta.rev1.bound.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "tags": [
+        "경우의 수",
+        "순열"
+      ]
     },
     {
       "questionUid": "qid_v1_04fe773c25f0b187909e8c32bb5dc3c416dacb602bf946eebfc3f07a3dd4a5d8",
@@ -59455,6 +59502,53 @@
       "metadataRevision": "archive-metadata-v1-phase1b-20260825",
       "approvalEvidence": [
         "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_1498df207cbf0098d3105628ef594bfcd8df2a962b2b64c1740542fe7c218d79",
+      "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 10,
+      "sourceQuestionNo": "10",
+      "sourceFingerprint": "830ae5ca9d24df4e5726c11d8a2aba6ef6ff3bb12e116ff2fffb977113fa77ec",
+      "contentFingerprint": "bb6782147de47e08c3160bed6f657c56d204e4f7781e522b9bc6c4834fc26441",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": null,
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "REINTERPRETATION",
+      "tagConfidence": "medium",
+      "tagStatus": "manual_review",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "approved_source",
+        "template": "approved_source",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "approvalEvidence": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q12/R1_qid_review/R1_q12_evidence.status-meta.rev1.bound.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "tags": [
+        "경우의 수",
+        "조합"
       ]
     },
     {
@@ -117287,6 +117381,55 @@
       }
     },
     {
+      "questionUid": "qid_v1_293761f35d9f6e7d6f2cc8388eee4ed861c224ac2944b8b9fd67c9e3bd0157f4",
+      "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 15,
+      "sourceQuestionNo": "15",
+      "sourceFingerprint": "45e7159e40afd23f7eca5493b35ea867bb3915973a13d3f092acdd3cbbd45fc7",
+      "contentFingerprint": "d112fe73fa0ed5e6bf7397b12677cb3538a07202fbc78d4bc67b3ad4352c6418",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": null,
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "tagConfidence": "medium",
+      "tagStatus": "manual_review",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "approved_source",
+        "template": "approved_source",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "approvalEvidence": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q12/R1_qid_review/R1_q12_evidence.status-meta.rev1.bound.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "tags": [
+        "경우의 수",
+        "조합"
+      ]
+    },
+    {
       "questionUid": "qid_v1_293854007307c2d69f1c1f7aa64b26a1311d47251dcb5ab9eea8a4486241204b",
       "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
       "sourceOrdinal": 11,
@@ -124747,6 +124890,53 @@
         "independentRecheck": "independent_recheck.json",
         "representationRole": "not visually dependent"
       }
+    },
+    {
+      "questionUid": "qid_v1_2b77ba039ab9dd1c60ff03a18b14fd4e6528fe8a6f3dc0dba411b2034610e07e",
+      "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 13,
+      "sourceQuestionNo": "13",
+      "sourceFingerprint": "37b66253edad3fb731ef5e0fec29072cbc34b49e92e5bb4538fa7635c1b9e274",
+      "contentFingerprint": "623551261b77be65e8dffb10a800df63fed05ce911a98ee9580f7787dbc0c374",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": null,
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "tagConfidence": "medium",
+      "tagStatus": "manual_review",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "approved_source",
+        "template": "approved_source",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "approvalEvidence": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q12/R1_qid_review/R1_q12_evidence.status-meta.rev1.bound.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "tags": [
+        "경우의 수",
+        "조합"
+      ]
     },
     {
       "questionUid": "qid_v1_2b78a9428e5a4cb168b06245f39b81c1e496b1c7a4227d5559196e8bf28c362d",
@@ -139058,6 +139248,53 @@
       "metaFoundationPackVersion": "1.0.0",
       "metaFoundationHoldReason": null,
       "legacyLevelCompatibilityEvidence": "REUSED_ACCEPTED_METADATA_PAIR"
+    },
+    {
+      "questionUid": "qid_v1_30e2dc05559d108edfc618209f1eae36cf01d9608fc39a7270b393153f8a49c8",
+      "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 8,
+      "sourceQuestionNo": "8",
+      "sourceFingerprint": "82fe706cbd88e819db39dbc420f9533a3a11d8ac9bf3e281eccb087f3ef8cf20",
+      "contentFingerprint": "a658a436727ecb26e377d6d9ca95e30f6d01d9c9073060c8fcdc45e1c95e0a25",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+      "subUnit": "경우의 수의 활용",
+      "conceptClusterKey": null,
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "medium",
+      "tagStatus": "manual_review",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "approved_source",
+        "template": "approved_source",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "approvalEvidence": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q12/R1_qid_review/R1_q12_evidence.status-meta.rev1.bound.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "tags": [
+        "경우의 수",
+        "경우의 수의 활용"
+      ]
     },
     {
       "questionUid": "qid_v1_30e2ec05fa5b1a97f2c59bcfaacd7899a50b880baf021b930b7adf9de3c30487",
@@ -176786,6 +177023,53 @@
       ]
     },
     {
+      "questionUid": "qid_v1_3ca09ffbef41148d24a54a6f12b9f8eb224bd1bb95e5ec86a499a409fe0fa0e5",
+      "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 5,
+      "sourceQuestionNo": "5",
+      "sourceFingerprint": "d2ab5ba22300f5d7502e7b603e1215001da076ffc5eaba9d74460c130542316d",
+      "contentFingerprint": "83c839b2619c232a02ed1e508a85fb250b13bfcdacc5dbd8ba823c66cd3b6dd9",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "conceptClusterKey": null,
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "tagConfidence": "medium",
+      "tagStatus": "manual_review",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "approved_source",
+        "template": "approved_source",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "approvalEvidence": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q12/R1_qid_review/R1_q12_evidence.status-meta.rev1.bound.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "tags": [
+        "경우의 수",
+        "순열"
+      ]
+    },
+    {
       "questionUid": "qid_v1_3ca2c4d7dfe1a49deeaef9dca917d18e413f069e65493e1b808c03b85890df4a",
       "sourceArchiveFile": "types/high/h2/25_제일고_1학기_중간_고2_확률과통계_유형확인.js",
       "sourceOrdinal": 11,
@@ -191208,6 +191492,53 @@
       "status": "DIRECT_TAGGED",
       "statusReason": "The source translates a line and then imposes an intersection condition; B's primary names the actual transformation being solved.",
       "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL"
+    },
+    {
+      "questionUid": "qid_v1_41a2bb08bec7b603322f7a8b445c5b1cf73266bb980eade534f44f82805c9b98",
+      "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": "20",
+      "sourceFingerprint": "fc5f583e05e7565b4d39b6a0faf94b3f31074af1f099a67642b99e5f05312ae6",
+      "contentFingerprint": "e440f690f8880b3d5272e7a78e88e6740021c8285c698230ded572017dd5f13f",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "conceptClusterKey": null,
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "tagConfidence": "medium",
+      "tagStatus": "manual_review",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "approved_source",
+        "template": "approved_source",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "approvalEvidence": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q12/R1_qid_review/R1_q12_evidence.status-meta.rev1.bound.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "tags": [
+        "경우의 수",
+        "순열"
+      ]
     },
     {
       "questionUid": "qid_v1_41aef2bd32e0e368271815b09a36a033f8ed9dc22f6f048b1602cb02e187ec06",
@@ -297732,6 +298063,53 @@
       ]
     },
     {
+      "questionUid": "qid_v1_66ed502cd6b2fcb7575077f9a41a0cd8bb11ee1c004088b1c12120a4f63597bf",
+      "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 1,
+      "sourceQuestionNo": "1",
+      "sourceFingerprint": "c409e898d67e47810b07e47c8b37bf0b22f5e53359897a316d42dde3e7e9ed59",
+      "contentFingerprint": "f1c998e3d583581665458fc0094579244ae5cfb6705bede6ab58f5043883737c",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+      "subUnit": "경우의 수의 활용",
+      "conceptClusterKey": null,
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "tagConfidence": "medium",
+      "tagStatus": "manual_review",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "approved_source",
+        "template": "approved_source",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "approvalEvidence": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q12/R1_qid_review/R1_q12_evidence.status-meta.rev1.bound.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "tags": [
+        "경우의 수",
+        "경우의 수의 활용"
+      ]
+    },
+    {
       "questionUid": "qid_v1_66f49237cc08e28b2a1eb1303de668a1c1d334ac9ca1a3c499d0074af1cb24b7",
       "sourceArchiveFile": "original/middle/m3/1mid/25_신흥중_1학기_중간_중3_기출.js",
       "sourceOrdinal": 8,
@@ -309460,6 +309838,55 @@
       "metadataRevision": "archive-metadata-v1-phase1b-20260825",
       "approvalEvidence": [
         "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6ab5913d5c073a51cf1bc5c6789a5bce986609ed505855eac0b441f82f6c0184",
+      "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 11,
+      "sourceQuestionNo": "11",
+      "sourceFingerprint": "0acf369f3e0017e6857c341d7fd9d3ef4415eacbfb0b0382ffea047e81af5c62",
+      "contentFingerprint": "e9ae45b2502b365b608f6c6a307d067a3dbe0bd55358efb074276b6b974406aa",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": null,
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "REINTERPRETATION",
+      "tagConfidence": "medium",
+      "tagStatus": "manual_review",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "approved_source",
+        "template": "approved_source",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "approvalEvidence": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q12/R1_qid_review/R1_q12_evidence.status-meta.rev1.bound.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "tags": [
+        "경우의 수",
+        "조합"
       ]
     },
     {
@@ -351768,6 +352195,70 @@
       ]
     },
     {
+      "questionUid": "qid_v1_7955be25ce24a5478cb90ef242d7e672513748ada6dd885b88d50d4df8aa1f7e",
+      "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 2,
+      "sourceQuestionNo": "2",
+      "sourceFingerprint": "efc687715cafdca10050da09092242bf9a3430ecda7196af3c66b090d98f14f2",
+      "contentFingerprint": "cad68b431fa006f926668cf03deb30578980553cc769402f5e04ca9cefb6bc5b",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+      "subUnit": "경우의 수의 활용",
+      "conceptClusterKey": null,
+      "problemTypeKey": null,
+      "templateKey": null,
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "problemTypeKey: Current q2 uses the product rule over three nonidentical factor choice sets. The exact H15-PS-01 COUNTING_APPLICATION ACTIVE PT/TPL lookup did not produce a unique canonical projection for this product-rule structure; selection/distribution and repeated-assignment candidates do not exactly describe the current decisive step. Preserve nulls; do not invent a key. | templateKey: Current q2 uses the product rule over three nonidentical factor choice sets. The exact H15-PS-01 COUNTING_APPLICATION ACTIVE PT/TPL lookup did not produce a unique canonical projection for this product-rule structure; selection/distribution and repeated-assignment candidates do not exactly describe the current decisive step. Preserve nulls; do not invent a key.",
+      "metaDebtReasons": [
+        {
+          "field": "problemTypeKey",
+          "reason": "Current q2 uses the product rule over three nonidentical factor choice sets. The exact H15-PS-01 COUNTING_APPLICATION ACTIVE PT/TPL lookup did not produce a unique canonical projection for this product-rule structure; selection/distribution and repeated-assignment candidates do not exactly describe the current decisive step. Preserve nulls; do not invent a key."
+        },
+        {
+          "field": "templateKey",
+          "reason": "Current q2 uses the product rule over three nonidentical factor choice sets. The exact H15-PS-01 COUNTING_APPLICATION ACTIVE PT/TPL lookup did not produce a unique canonical projection for this product-rule structure; selection/distribution and repeated-assignment candidates do not exactly describe the current decisive step. Preserve nulls; do not invent a key."
+        }
+      ],
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "medium",
+      "tagStatus": "manual_review",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "approvalEvidence": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q12/R1_qid_review/R1_q12_evidence.status-meta.rev1.bound.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "tags": [
+        "경우의 수",
+        "경우의 수의 활용"
+      ],
+      "reviewStatus": "manual_review",
+      "defaultSelectable": false
+    },
+    {
       "questionUid": "qid_v1_7955e716154a8720d2788d299cc7b33d0a42cb25a45e5258612d9c927f548047",
       "sourceArchiveFile": "types/middle/m1/중1_1학기_문자의사용.js",
       "sourceOrdinal": 11,
@@ -384560,6 +385051,54 @@
       "curriculumApplicability": "CORE"
     },
     {
+      "questionUid": "qid_v1_83967237607f112def548f96926a5307a483aa9a51fc133eff132d9adf7c7c0f",
+      "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 3,
+      "sourceQuestionNo": "3",
+      "sourceFingerprint": "86844ee8105ca7dc627014899a26e7602c560c120de04edaa568a30c42c92491",
+      "contentFingerprint": "95e436311bc591f5e36fd11ea177d75c66c7f979654da04799636cf356074fd2",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+      "subUnit": "경우의 수의 활용",
+      "conceptClusterKey": null,
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "tagConfidence": "medium",
+      "tagStatus": "manual_review",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "approved_source",
+        "template": "approved_source",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "approvalEvidence": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q12/R1_qid_review/R1_q12_evidence.status-meta.rev1.bound.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "tags": [
+        "경우의 수",
+        "경우의 수의 활용",
+        "도형"
+      ]
+    },
+    {
       "questionUid": "qid_v1_83970cf45ac91ac176b2ec6e90988edd6b903f4bc1bde02434afb46ec202471e",
       "sourceArchiveFile": "original/high/h2/2final/23_제일고_2학기_기말_고2_수학II.js",
       "sourceOrdinal": 19,
@@ -384800,6 +385339,55 @@
       "metadataRevision": "archive-metadata-v1-phase1b-20260825",
       "approvalEvidence": [
         "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_83b0da679764b50db97b1c4a5b419f3e08f9ae97025708d04dd4221dbf0b9425",
+      "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 19,
+      "sourceQuestionNo": "19",
+      "sourceFingerprint": "5284d66c54f992ba49b46c96b9af7b0918b4104ecd96491c15620b95dac3f62f",
+      "contentFingerprint": "3b7f6c9225b5fc7ea48b3ae6a1d6a2ab35967a43273201f8a3f57126789c83ab",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": null,
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "tagConfidence": "medium",
+      "tagStatus": "manual_review",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "approved_source",
+        "template": "approved_source",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "approvalEvidence": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q12/R1_qid_review/R1_q12_evidence.status-meta.rev1.bound.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "tags": [
+        "경우의 수",
+        "조합"
       ]
     },
     {
@@ -420446,6 +421034,54 @@
       "curriculum": "2022"
     },
     {
+      "questionUid": "qid_v1_8f83221f312c377dd4bbfed0445ebfd1fe20543d6dc254ea9459fee432999dd2",
+      "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 21,
+      "sourceQuestionNo": "21",
+      "sourceFingerprint": "7bfd4bd6c755df779300c44f69513519e32fa2e8f934eda701eb17ca3c9cc4f1",
+      "contentFingerprint": "d0439e8bea87b4b945d17be1d63de354fb0e46dc07aa75d6f295a854f61904e4",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": null,
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "tagConfidence": "medium",
+      "tagStatus": "manual_review",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "approved_source",
+        "template": "approved_source",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "approvalEvidence": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q12/R1_qid_review/R1_q12_evidence.status-meta.rev1.bound.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "tags": [
+        "경우의 수",
+        "조합",
+        "도형"
+      ]
+    },
+    {
       "questionUid": "qid_v1_8f838ff81d0016d03899baf1278762b4fc66c02f765a9007501451472c810c98",
       "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
       "sourceOrdinal": 2,
@@ -433865,6 +434501,53 @@
       "rpmL2": null,
       "rpmL3": null,
       "rpmL4": null
+    },
+    {
+      "questionUid": "qid_v1_9389b4e77fa367305d5ed640d8eeb8f3c6d9edccc9214e894a3acf2034a8cced",
+      "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 12,
+      "sourceQuestionNo": "12",
+      "sourceFingerprint": "595f379fa21d854280f110900ece36f74bb1fdd3db72bc53ab21fa4a09b41dc4",
+      "contentFingerprint": "59cd0c44dbbba3ac7176b5d1b303bfa9f9e057218534d58c97f8d078c9c3a5f8",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": "COMBINATION",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "high",
+      "tagStatus": "manual_review",
+      "metadataStatus": "approved_source",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "approved_source",
+        "problemType": "approved_source",
+        "template": "approved_source",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "approvalEvidence": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q12/R1_qid_review/R1_q12_evidence.status-meta.rev1.bound.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "reviewStatus": "reviewed_pass",
+      "tags": [
+        "경우의 수",
+        "순열",
+        "조합"
+      ]
     },
     {
       "questionUid": "qid_v1_939260a8118cadfd9f76a7cad037a42784facb8c02e496a257bbd0a112261799",
@@ -536615,6 +537298,57 @@
       ]
     },
     {
+      "questionUid": "qid_v1_b56388449bc1f03f14a6d216dfd5360fe80d36200e9dd57c417c7548b9aab863",
+      "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 16,
+      "sourceQuestionNo": "16",
+      "sourceFingerprint": "4e1e6f093e086ba238fbceb54a2b9410dce53c27e9b8ae11ffc8bc3541f8b6e6",
+      "contentFingerprint": "1106a9e7b0f4f2e72561f450a0ca3bbef6d33ee2d1c4582dc752302c68c2e86a",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": null,
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING",
+        "CC_NUMBER_PARITY"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "tagConfidence": "medium",
+      "tagStatus": "manual_review",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "approved_source",
+        "template": "approved_source",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "approvalEvidence": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q12/R1_qid_review/R1_q12_evidence.status-meta.rev1.bound.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "tags": [
+        "경우의 수",
+        "조합"
+      ]
+    },
+    {
       "questionUid": "qid_v1_b567c919568594d155f5c999175faa5a8ed0cbf7aea1e9b2bb9d53ee0f8da9a2",
       "sourceArchiveFile": "original/high/h2/1mid/23_한영고_1학기_중간_고2_대수.js",
       "sourceOrdinal": 1,
@@ -536960,6 +537694,54 @@
       "status": "DIRECT_TAGGED",
       "statusReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
       "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL"
+    },
+    {
+      "questionUid": "qid_v1_b59b7ffceea8d64c60da58d6c667db271c6afb4af93c73f477bfd40773c3bf95",
+      "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 6,
+      "sourceQuestionNo": "6",
+      "sourceFingerprint": "a461db7e352804ceefc47075959e2214a16a28476e23b4f733f3b44765f62fdd",
+      "contentFingerprint": "f0f5f8a383cbb2e66dbe8c9ecfc3f3e4f36632e0bf65f51e0323556ee450622f",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "conceptClusterKey": null,
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "tagConfidence": "medium",
+      "tagStatus": "manual_review",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "approved_source",
+        "template": "approved_source",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "approvalEvidence": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q12/R1_qid_review/R1_q12_evidence.status-meta.rev1.bound.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "tags": [
+        "경우의 수",
+        "순열",
+        "도형"
+      ]
     },
     {
       "questionUid": "qid_v1_b59e1dc68c1b196ab80fb3dbd37a6b0a4f9524e52e2c03e8aa911641b42c793c",
@@ -573340,6 +574122,55 @@
       ]
     },
     {
+      "questionUid": "qid_v1_c13545ec1ea74c24b0492aca8e969188c122a42bfeb6269238420dbe08eb7357",
+      "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 9,
+      "sourceQuestionNo": "9",
+      "sourceFingerprint": "b109723b6265554b7ace5ea2a70f066f5ea4acd9b866f3a8d4411a5ff19f45b0",
+      "contentFingerprint": "c8a4e6cee86568a81fff9093f6d080b3fb552d05e247ae69b297291b231fd43a",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": null,
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "REINTERPRETATION",
+      "tagConfidence": "medium",
+      "tagStatus": "manual_review",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "approved_source",
+        "template": "approved_source",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "approvalEvidence": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q12/R1_qid_review/R1_q12_evidence.status-meta.rev1.bound.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "tags": [
+        "경우의 수",
+        "조합"
+      ]
+    },
+    {
       "questionUid": "qid_v1_c1366697d776433903fe0c5c8fa320409b820abb382eab452a1b2c8b3015e921",
       "sourceArchiveFile": "original/middle/m2/2mid/25_삼산중_2학기_중간_중2_수학.js",
       "sourceOrdinal": 19,
@@ -591004,6 +591835,53 @@
       "status": "DIRECT_TAGGED",
       "statusReason": "The source uses the 45-degree slope and a point to determine a second point; B's primary states the slope operation.",
       "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL"
+    },
+    {
+      "questionUid": "qid_v1_c75883e7d433e80825a6024f2e06430fdbd9e2208260d585a24462a48479faa6",
+      "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 18,
+      "sourceQuestionNo": "18",
+      "sourceFingerprint": "48ec55f49edc10c92d251376bc6610a915558c63e51148a7c035ae65d636feac",
+      "contentFingerprint": "58dc856226aa9735893daedc49ee89295e84d887906f6bb72f189466eb4562ec",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "conceptClusterKey": null,
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "medium",
+      "tagStatus": "manual_review",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "approved_source",
+        "template": "approved_source",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "approvalEvidence": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q12/R1_qid_review/R1_q12_evidence.status-meta.rev1.bound.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "tags": [
+        "경우의 수",
+        "순열"
+      ]
     },
     {
       "questionUid": "qid_v1_c7608dfdab860c14a63532405d818283fbebe5329492321f5125a7fd29be505d",
@@ -612768,6 +613646,56 @@
       "metadataRevision": "archive-metadata-v1-phase1b-20260825",
       "approvalEvidence": [
         "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_cedd3ce6c3973cbe4905dd538c511d745c5fcb33c53fd9ad1a35b30e26a49daf",
+      "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": "17",
+      "sourceFingerprint": "3196276fc6821e8fae8564c6d5877da87a21171eb28dc91a24fce895001f7262",
+      "contentFingerprint": "3ca875ec49a352dc08a91799b0f3f614e887552f2cba71cae29801fb98ac81e1",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": null,
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "REINTERPRETATION",
+      "tagConfidence": "medium",
+      "tagStatus": "manual_review",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "approved_source",
+        "template": "approved_source",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "approvalEvidence": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q12/R1_qid_review/R1_q12_evidence.status-meta.rev1.bound.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "tags": [
+        "경우의 수",
+        "조합"
       ]
     },
     {
@@ -643151,6 +644079,55 @@
       }
     },
     {
+      "questionUid": "qid_v1_d9f61ff7027d495a6d6a2ffe3ea36609c1f1fb0a4fefde1df5159cfc8dc26b96",
+      "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 22,
+      "sourceQuestionNo": "22",
+      "sourceFingerprint": "5135f46864dd1217011612cb19ee30b89979d45585b32aaacf328852503a774a",
+      "contentFingerprint": "9dca8e53075a1e87c3ef3eed7b8f91dac22643b06ab85641f66d9931589e5f21",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+      "subUnit": "경우의 수의 활용",
+      "conceptClusterKey": null,
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": "TPL_MONOTONE_FUNCTION_COUNT",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING",
+        "CC_ONE_TO_ONE_FUNCTION",
+        "CC_FUNCTION_MONOTONICITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "tagConfidence": "medium",
+      "tagStatus": "manual_review",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "approved_source",
+        "template": "approved_source",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "approvalEvidence": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q12/R1_qid_review/R1_q12_evidence.status-meta.rev1.bound.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "tags": [
+        "경우의 수",
+        "경우의 수의 활용"
+      ]
+    },
+    {
       "questionUid": "qid_v1_d9fb232f1b8c9ca469eac2aadf504e8d2e7365ade20ab1d82ef62df6865a6d51",
       "sourceArchiveFile": "original/high/h1/1mid/23_충무고_1학기_중간_고1_기출.js",
       "sourceOrdinal": 10,
@@ -658631,6 +659608,55 @@
       "metadataRevision": "archive-metadata-v1-phase1b-20260825",
       "approvalEvidence": [
         "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_dfbaa5aea26c6f672c886815b8dd9d75826fc8539d2a4c890806164e9a7d40f2",
+      "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 14,
+      "sourceQuestionNo": "14",
+      "sourceFingerprint": "78bf25244c2862d6f399472390906da025a75698dd989b413e68b9656534e75e",
+      "contentFingerprint": "36861f5a11b6a255e683114e33cd345ad4dbc17bfae589bff816459c92115434",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": null,
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "tagConfidence": "medium",
+      "tagStatus": "manual_review",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "approved_source",
+        "template": "approved_source",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "approvalEvidence": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q12/R1_qid_review/R1_q12_evidence.status-meta.rev1.bound.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "tags": [
+        "경우의 수",
+        "조합"
       ]
     },
     {
@@ -713829,6 +714855,54 @@
       "taxonomyDisposition": "CURRENT_CANONICAL_PATH_RETAINED"
     },
     {
+      "questionUid": "qid_v1_f192850a3d5e005f12da740b5177d11cd82d9321bf22d7879e70037a4745deb5",
+      "sourceArchiveFile": "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 7,
+      "sourceQuestionNo": "7",
+      "sourceFingerprint": "5b2bfd0851c0801ba4b3ae499654b3f322f1e29876b717f84eaf18dccbc5a77c",
+      "contentFingerprint": "cf2ab6cc0241412ec702ebfdf2eaea9efdf5b7e90fbb4cd9c56a813a5852bd7a",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+      "subUnit": "경우의 수의 활용",
+      "conceptClusterKey": null,
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "medium",
+      "tagStatus": "manual_review",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "approved_source",
+        "template": "approved_source",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "approvalEvidence": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q12/R1_qid_review/R1_q12_evidence.status-meta.rev1.bound.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "tags": [
+        "경우의 수",
+        "경우의 수의 활용",
+        "도형"
+      ]
+    },
+    {
       "questionUid": "qid_v1_f196fed52ef3a8edc30b8f35b2bec1237f61c8b0f329b1847a84cfbb47981e2b",
       "sourceArchiveFile": "types/middle/m1/중1_1학기_식의값.js",
       "sourceOrdinal": 13,
@@ -756954,9 +758028,9 @@
   "productionWriteAllowed": true,
   "registrationSync": {
     "schemaVersion": "archive-registration-metadata-sync-v2",
-    "added": 18,
+    "added": 22,
     "addedFiles": [
-      "original/high/h2/1mid/18_매산고_1학기_중간_고2_확률과통계.js"
+      "original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js"
     ],
     "relocated": 0,
     "relocatedFiles": []
@@ -756995,5 +758069,5 @@
       "archive/data/r2e-intake/m3/26_왕운중_1학기_중간_중3_기출c.meta-review2.meta-v2.payload.json"
     ]
   },
-  "digest": "089f33c3739e7505fb2533516f458652270516508cc1f654b064af3f1ace799e"
+  "digest": "a05f879bba6540898c28623e43d2eb7bdc6f3ebfab09e67c955ae2209dd51796"
 }
