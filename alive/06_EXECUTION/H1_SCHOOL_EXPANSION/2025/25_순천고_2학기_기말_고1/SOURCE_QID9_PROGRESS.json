@@ -110,10 +110,11 @@
       6,
       7,
       8,
-      9
+      9,
+      10
     ],
-    "questions": 81,
-    "svgFiles": 25,
+    "questions": 90,
+    "svgFiles": 40,
     "finishedIndependentReviewQids": [],
     "producedItemsByQid": {
       "q01": 9,
@@ -124,7 +125,8 @@
       "q06": 9,
       "q07": 9,
       "q08": 9,
-      "q09": 9
+      "q09": 9,
+      "q10": 9
     },
     "q01File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q01_CREATE_DRAFT.json",
     "q02File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q02_CREATE_DRAFT.json",
@@ -138,7 +140,6 @@
     "expectedSourceQidCount": 23,
     "expectedVariantsAtNineEach": 207,
     "remainingQids": [
-      10,
       11,
       12,
       13,
@@ -184,7 +185,7 @@
     "q06ActivePT": 9,
     "q06ActiveTPL": 9,
     "q06ConditionKeyDebt": 0,
-    "rpmRecordIdsResolved": 81,
+    "rpmRecordIdsResolved": 90,
     "rpmRecordNumericDebt": 0,
     "rpmRecordCrosswalkGitBlob": "904b3768b69b300607e52217cad05bf71e34f221",
     "rpmIdCorrectionAuditPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/Q01_Q06_RPM_ID_REBIND_AUDIT.json",
@@ -225,7 +226,33 @@
     "q09ActiveTPL": 9,
     "q09ConditionKeyDebt": 0,
     "q09QualityReview": "NOT_RUN",
-    "q09RealBrowserRender": "NOT_RUN"
+    "q09RealBrowserRender": "NOT_RUN",
+    "q10File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q10_CREATE_DRAFT.json",
+    "q10ProblemSVGs": [
+      "assets/q10-A1-problem.svg",
+      "assets/q10-A2-problem.svg",
+      "assets/q10-A3-problem.svg",
+      "assets/q10-B1-problem.svg",
+      "assets/q10-B2-problem.svg",
+      "assets/q10-B3-problem.svg",
+      "assets/q10-C1-problem.svg",
+      "assets/q10-C2-problem.svg",
+      "assets/q10-C3-problem.svg"
+    ],
+    "q10SolutionSVGs": [
+      "assets/q10-B1-solution.svg",
+      "assets/q10-B2-solution.svg",
+      "assets/q10-B3-solution.svg",
+      "assets/q10-C1-solution.svg",
+      "assets/q10-C2-solution.svg",
+      "assets/q10-C3-solution.svg"
+    ],
+    "q10ActivePT": 9,
+    "q10ActiveTPL": 9,
+    "q10RpmId": "H1-RPM-253",
+    "q10ConditionKeyDebt": 0,
+    "q10QualityReview": "NOT_RUN",
+    "q10RealBrowserRender": "NOT_RUN"
   },
   "remainingGates": [
     "q02 RPM record H1-RPM-246 exists but semantic PT/TPL direct binding gap status retained (no false ACTIVE assertion)",
@@ -237,10 +264,10 @@
     "q04 SVG6 xml/browser real render NOT_RUN (deterministic primitive only)"
   ],
   "next": {
-    "qid": 10,
-    "action": "Read q10 original and q10.png; produce QID9 variants A1-C3 on same branch with current Meta and required SVG, without modifying q01-q09.",
-    "handoffPrompt": "Suncheon 2025 H1 final work/alive-25-suncheon-h1-2final-qid9 q01-q09 81 author drafts, 25 SVG. Next q10 after inspect its source image. No independent review or release."
+    "qid": 11,
+    "action": "Read q11 original and create nine variants including required assets on same branch, preserving q01~q10.",
+    "handoffPrompt": "2025 Suncheon H1 final author drafts q01~q10 90 items 40 SVG; next q11. No main."
   },
-  "lastCompletedQid": 9,
-  "lastUpdatedSourceQid": 9
+  "lastCompletedQid": 10,
+  "lastUpdatedSourceQid": 10
 }
