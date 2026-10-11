@@ -89,13 +89,27 @@ async function clickExamByTitle(page,title){
     if(!visibleTitle||!visibleTitle.includes('삼산중'))throw Error('Drawer title not populated: '+visibleTitle);
     const frame=page.frameLocator('#examFrame');
     await frame.locator('#print-area').waitFor({state:'attached',timeout:45000});
+    await wait(7000);
+    const frameDebug=await page.evaluate(()=>{
+      const f=document.getElementById('examFrame');
+      const cw=f?.contentWindow,doc=f?.contentDocument;
+      return {url: cw?.location?.href, readyState:doc?.readyState, questionBankCount:cw?.questionBank?.length,
+        engineTitle:doc?.getElementById('ctrl-title')?.innerText,
+        printAreaText:doc?.getElementById('print-area')?.innerText?.slice(0,500),
+        printAreaHtml:doc?.getElementById('print-area')?.innerHTML?.slice(0,350),
+        bodyExcerpt:doc?.body?.innerText?.slice(0,600),
+        renderError:doc?.documentElement?.dataset?.apRenderError,
+        mathjaxSource:cw?.__AP_MATHJAX_SOURCE__};
+    });
+    console.log('REAL_ENGINE_DIAGNOSTIC',JSON.stringify(frameDebug));
     await page.waitForFunction(()=>{
       const f=document.getElementById('examFrame');
       const doc=f?.contentDocument;
+      const text=doc?.getElementById('print-area')?.innerText||'';
       return Boolean(f?.contentWindow?.questionBank?.length>0
-        && doc?.getElementById('print-area')?.innerText.includes('다음 중 옳은 것은?'));
-    },null,{timeout:110000,polling:500});
-    await wait(1500);
+        && text.includes('다음 중 옳은 것은?'));
+    },null,{timeout:45000,polling:500});
+    await wait(900);
     preview=await page.evaluate(()=>{
       const iframe=document.getElementById('examFrame');
       const doc=iframe.contentDocument, title=document.getElementById('examTitle');
