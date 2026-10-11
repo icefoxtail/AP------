@@ -76,38 +76,6 @@ function makeOrbit(radius, aspect, material, segments = 112) {
   }
   return new THREE.Line(new THREE.BufferGeometry().setFromPoints(points), material);
 }
-function makeDocumentTexture() {
-  const canvas = document.createElement('canvas');
-  canvas.width = 128;
-  canvas.height = 160;
-  const ctx = canvas.getContext('2d');
-  ctx.fillStyle = '#fffdf7';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.strokeStyle = '#d5deeb';
-  ctx.lineWidth = 2;
-  ctx.strokeRect(3, 3, 122, 154);
-  ctx.fillStyle = '#344663';
-  ctx.fillRect(18, 22, 47, 5);
-  ctx.fillStyle = '#a9b8ce';
-  ctx.fillRect(18, 38, 90, 2);
-  ctx.fillRect(18, 47, 74, 2);
-  ctx.fillRect(18, 62, 93, 2);
-  ctx.fillRect(18, 72, 82, 2);
-  ctx.fillRect(18, 82, 88, 2);
-  ctx.fillRect(18, 102, 58, 2);
-  ctx.fillRect(18, 112, 88, 2);
-  ctx.fillRect(18, 122, 74, 2);
-  ctx.strokeStyle = '#b9a0dc';
-  ctx.lineWidth = 3;
-  ctx.beginPath();
-  ctx.arc(96, 137, 10, 0, Math.PI * 2);
-  ctx.stroke();
-  const texture = new THREE.CanvasTexture(canvas);
-  texture.colorSpace = THREE.SRGBColorSpace;
-  texture.anisotropy = 2;
-  return texture;
-}
-
 export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame }) {
   const mobile = window.innerWidth < 760;
   const starSpriteTexture = makeStarSpriteTexture();
@@ -220,13 +188,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   scene.add(groupRoot, dataRoot, constellationRoot);
   const sharedGroupPickGeometry = new THREE.SphereGeometry(1.55, 16, 12);
   const sharedGroupPickMaterial = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, colorWrite: false, depthWrite: false });
-  const sharedDataStarGeometry = new THREE.SphereGeometry(.18, 24, 18);
-  const sharedPaperGeometry = new THREE.PlaneGeometry(.68, .84);
-  const sharedPaperTexture = makeDocumentTexture();
-  const sharedPaperMaterial = new THREE.MeshStandardMaterial({
-    map: sharedPaperTexture, color: 0xffffff, roughness: .7, metalness: .01,
-    side: THREE.DoubleSide, emissive: 0x201b2d, emissiveIntensity: .13,
-  });
+  const sharedDataStarGeometry = new THREE.SphereGeometry(.2, 24, 18);
   const galaxyNebulaTexture = makeGalaxyNebulaTexture();
   const sharedCoreGlowTexture = coreGlowTexture;
   const sharedStarSpriteTexture = starSpriteTexture;
@@ -240,6 +202,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   let visibleCatalogPointFiles = [];
   let catalogPointPositions = null;
   let focusedGroupId = '';
+  let selectedExamFile = '';
   const constellations = [];
   let pendingLines = [];
   const raycaster = new THREE.Raycaster();
@@ -260,23 +223,26 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   let pointerStart = null;
   const frameInterval = mobile ? 1000 / 24 : 1000 / 30;
 
-  function getDataStarMaterial(index) {
-    if (!dataStarMaterials.has(index)) {
+  function getDataStarMaterial(index, bright) {
+    const key = index * 2 + bright;
+    if (!dataStarMaterials.has(key)) {
       const color = new THREE.Color(ORBIT_COLORS[index % ORBIT_COLORS.length]);
-      dataStarMaterials.set(index, new THREE.MeshStandardMaterial({
-        color: color.clone().multiplyScalar(.82), emissive: color, emissiveIntensity: .72,
-        roughness: .38, metalness: .015, toneMapped: false,
+      dataStarMaterials.set(key, new THREE.MeshStandardMaterial({
+        color: color.clone().lerp(new THREE.Color(0xffffff), .16),
+        emissive: color, emissiveIntensity: bright ? .44 : .34,
+        roughness: .54, metalness: .02, toneMapped: false,
       }));
     }
-    return dataStarMaterials.get(index);
+    return dataStarMaterials.get(key);
   }
-  function getDataGlowMaterial(index) {
-    if (!dataGlowMaterials.has(index)) dataGlowMaterials.set(index, new THREE.SpriteMaterial({
-      map: sharedStarSpriteTexture, color: ORBIT_COLORS[index % ORBIT_COLORS.length],
-      transparent: true, opacity: .42, alphaTest: .012,
+  function getDataGlowMaterial(index, bright) {
+    const key = index * 2 + bright;
+    if (!dataGlowMaterials.has(key)) dataGlowMaterials.set(key, new THREE.SpriteMaterial({
+      map: sharedCoreGlowTexture, color: ORBIT_COLORS[index % ORBIT_COLORS.length],
+      transparent: true, opacity: bright ? .34 : .27, alphaTest: .012,
       blending: THREE.AdditiveBlending, depthWrite: false, depthTest: true, toneMapped: false,
     }));
-    return dataGlowMaterials.get(index);
+    return dataGlowMaterials.get(key);
   }
   function hashAngle(text) {
     return (hashText(text) % 100000) / 100000 * Math.PI * 2;
@@ -408,35 +374,30 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   }
   function createDataNode(exam, groupId, slot) {
     const token = new THREE.Group();
-    const palette = hashText(exam.file) % ORBIT_COLORS.length;
-    const glow = new THREE.Sprite(getDataGlowMaterial(palette));
-    glow.scale.setScalar(.76);
-    const star = new THREE.Mesh(sharedDataStarGeometry, getDataStarMaterial(palette));
-    star.scale.setScalar(.96);
+    const signature = hashText(exam.file);
+    const palette = signature % ORBIT_COLORS.length;
+    const bright = (signature >>> 11) & 1;
+    const size = .92 + ((signature >>> 17) % 7) * .03;
+    const glow = new THREE.Sprite(getDataGlowMaterial(palette, bright));
+    glow.scale.setScalar(.76 * size);
+    const star = new THREE.Mesh(sharedDataStarGeometry, getDataStarMaterial(palette, bright));
+    star.scale.setScalar(.96 * size);
     star.userData.file = exam.file;
     star.userData.exam = exam;
     star.userData.kind = 'exam';
-    const paper = new THREE.Mesh(sharedPaperGeometry, sharedPaperMaterial);
-    paper.material = sharedPaperMaterial.clone();
-    paper.material.transparent = true;
-    paper.material.depthWrite = false;
-    paper.material.opacity = 0;
-    paper.scale.setScalar(.82);
-    paper.visible = false;
-    token.add(glow, star, paper);
+    token.add(glow, star);
     token.userData.file = exam.file;
     token.userData.exam = exam;
     token.userData.kind = 'exam';
     dataRoot.add(token);
     return {
-      file: exam.file, exam, groupId, slot, token, glow, star, paper, pickMesh: star,
+      file: exam.file, exam, groupId, slot, token, glow, star, pickMesh: star, size, selectedMix: 0,
       position: new THREE.Vector3(), phase: hashAngle(exam.file), radius: 2.8 + (slot % 3) * 1.72,
       speed: .22 + (hashText(exam.file) % 13) * .025,
     };
   }
   function removeDataNode(entity) {
     dataRoot.remove(entity.token);
-    entity.paper.material.dispose();
   }
   function smoothAngle(current, target, factor) {
     let delta = (target - current + Math.PI) % (Math.PI * 2);
@@ -446,8 +407,6 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   }
 
   function setData({ groups: nextGroups, exams: nextExams, details = nextExams, searching = false }) {
-    sharedPaperMaterial.emissiveIntensity = searching ? .58 : .13;
-    for (const entity of entities.values()) entity.paper.material.emissiveIntensity = sharedPaperMaterial.emissiveIntensity;
     document.body.classList.toggle('search-active', searching);
     const oldGroups = [...groups.values()];
     const oldGroupsById = new Map(oldGroups.map((group) => [group.id, group]));
@@ -707,10 +666,11 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       entity.token.rotation.y = Math.sin(simTime * .6 + entity.phase) * .12;
       entity.token.rotation.z = Math.cos(simTime * .3 + entity.phase) * .045;
       const distance = camera.position.distanceTo(entity.position);
-      const detail = 1 - smoothStep(22, 38, distance);
-      entity.paper.visible = detail > .004;
-      entity.paper.material.opacity = detail;
-      entity.glow.scale.setScalar(.7 + (1 - smoothStep(26, 52, distance)) * .2);
+      const selected = entity.file === selectedExamFile ? 1 : 0;
+      entity.selectedMix += (selected - entity.selectedMix) * Math.min(1, dt * 10);
+      const nearGlow = 1 - smoothStep(26, 52, distance);
+      entity.star.scale.setScalar(.96 * entity.size * (1 + entity.selectedMix * .045));
+      entity.glow.scale.setScalar((.7 + nearGlow * .16) * entity.size * (1 + entity.selectedMix * .23));
     }
 
     sun.rotation.y = simTime * .022;
@@ -858,6 +818,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
 
   return {
     setData,
+    setSelectedExam(file) { selectedExamFile = typeof file === 'string' ? file : ''; },
     setConstellations(anchorFile, relatedFiles, color) {
       pendingLines.length = 0;
       if (anchorFile) for (const file of relatedFiles) pendingLines.push({ from: anchorFile, to: file, color });
@@ -886,9 +847,6 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       sharedCoreGlowTexture.dispose();
       sharedStarSpriteTexture.dispose();
       sharedDataStarGeometry.dispose();
-      sharedPaperGeometry.dispose();
-      sharedPaperTexture.dispose();
-      sharedPaperMaterial.dispose();
       nebulaTexture.dispose();
       nebulaSky.geometry.dispose();
       nebulaSky.material.dispose();

@@ -137,6 +137,7 @@
   function openExam(exam) {
     if (!exam) return;
     state.selectedExam = exam;
+    state.world?.setSelectedExam(exam.file);
     const url = sourceUrl(exam);
     ui.title.textContent = examTitle(exam);
     ui.meta.replaceChildren();
@@ -164,6 +165,7 @@
     ui.drawer.setAttribute('aria-hidden', 'true');
     ui.frame.src = 'about:blank';
     state.selectedExam = null;
+    state.world?.setSelectedExam(null);
     const focusedButton = openedExam && state.satelliteButtons.get(openedExam.file);
     if (focusedButton) focusedButton.focus({ preventScroll: true });
   }
@@ -342,7 +344,7 @@
     updateConstellations();
     const schoolCount = new Set(state.filtered.map((exam) => exam.school)).size;
     $('sceneCount').textContent = '별 자료 노드 ' + state.filtered.length.toLocaleString() + ' / ' +
-      state.filtered.length.toLocaleString() + ' · 종이 상세 ' + state.visibleExams.length.toLocaleString() + ' · ' + state.visibleGroups.length + '개 작은 은하';
+      state.filtered.length.toLocaleString() + ' · 입체 별 상세 ' + state.visibleExams.length.toLocaleString() + ' · ' + state.visibleGroups.length + '개 작은 은하';
     $('sceneInstruction').textContent = state.visibleGroups.length
       ? '시험지마다 고유 자료 노드 하나가 있습니다. 학교·학년·단원 은하를 바꿔 같은 원본의 다른 공간 배치를 둘러보세요.'
       : '조건에 맞는 은하가 없습니다. 필터를 풀거나 검색어를 바꿔 보세요.';
