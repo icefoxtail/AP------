@@ -111,7 +111,7 @@ async function main(){
     if(report.orbitIds.join(',')!==Array.from({length:24},(_,i)=>''+(i+1)).join(','))throw Error('Canonical 1..24 IDs do not match source');
     await wait(1200);
     await page.screenshot({path:path.join(out,'journey-2-orbit.png')});
-    await page.locator('[data-question-id="2"]').evaluate(el=>el.click());
+    await page.locator('[data-question-id="2"]').click({timeout:15000});
     await page.waitForFunction(()=>document.querySelector('#questionStatus')?.textContent==='문항 2 · 문제',null,{timeout:32000});
     report.problem=await page.evaluate(()=>{
       const frame=document.getElementById('examFrame').contentDocument;
@@ -122,6 +122,26 @@ async function main(){
         content:focused?.innerText.slice(0,160),source:frame.location?.href};
     });
     if(report.problem.focusedNumber!=='2.'||!report.problem.content?.includes('다음 중'))throw Error('Real selected question not displayed: '+JSON.stringify(report.problem));
+    report.readerLayout=await page.evaluate(()=>{
+      const d=document.getElementById('examFrame').contentDocument;
+      const q=d.querySelector('.ap-galaxy-selected-question');
+      const area=d.getElementById('print-area');
+      const grid=q?.closest('.grid-container');
+      const bb=q?.getBoundingClientRect();
+      return {reading:d.body.classList.contains('ap-galaxy-reading'),
+        font:parseFloat(d.defaultView.getComputedStyle(q).fontSize),
+        grid:grid?d.defaultView.getComputedStyle(grid).display:null,
+        transform:d.defaultView.getComputedStyle(area).transform,
+        width:bb?.width,frameWidth:d.documentElement.clientWidth,
+        overflow:q?.scrollWidth>q?.clientWidth+3,
+        visualOverflow:[...(q?.querySelectorAll('svg,img')||[])].some(el=>{
+          const rect=el.getBoundingClientRect();return rect.right>bb.right+3||rect.left<bb.left-3;
+        })};
+    });
+    if(!report.readerLayout.reading||report.readerLayout.font<15||report.readerLayout.grid!=='block'||
+      report.readerLayout.transform!=='none'||report.readerLayout.overflow||
+      report.readerLayout.visualOverflow||report.readerLayout.width>report.readerLayout.frameWidth+3)
+      throw Error('Selected reader must be readable single-column without clipping: '+JSON.stringify(report.readerLayout));
     await page.screenshot({path:path.join(out,'journey-3-question.png')});
     await page.locator('[data-reader-mode="ans"]').click();
     await page.waitForFunction(()=>document.querySelector('#questionStatus')?.textContent==='문항 2 · 정답',null,{timeout:35000});
@@ -143,6 +163,21 @@ async function main(){
     });
     if(report.solution.number!=='2.'||!report.solution.answer)throw Error('Real selected solution missing');
     await page.screenshot({path:path.join(out,'journey-5-solution.png')});
+    // This is an actual new-window pointer click; verify the print control in the
+    // independent non-preview engine is visible, enabled and pointer-actionable.
+    const [printPage]=await Promise.all([
+      context.waitForEvent('page'),page.locator('#printOriginal').click()
+    ]);
+    await printPage.waitForLoadState('domcontentloaded');
+    await printPage.locator('#btn-print').waitFor({state:'visible',timeout:35000});
+    if(new URL(printPage.url()).searchParams.has('preview'))throw Error('Standalone print uses preview=1');
+    const printButton=printPage.locator('#btn-print');
+    if(!await printButton.isEnabled())throw Error('Standalone print button is disabled');
+    await printButton.click({trial:true,timeout:20000});
+    report.printRoute={url:printPage.url(),visible:await printButton.isVisible(),
+      enabled:await printButton.isEnabled(),pointerTrial:true,physicalPrinter:false};
+    await printPage.screenshot({path:path.join(out,'journey-8-print-ready.png')});
+    await printPage.close();
     await page.locator('#wholeExam').click();
     await page.waitForFunction(()=>document.getElementById('questionToolbar').hidden,null,{timeout:13000});
     report.fullExam=await page.evaluate(()=>{
@@ -150,7 +185,15 @@ async function main(){
       return {printButton:!!d.getElementById('btn-print'),source:document.getElementById('openOriginal').href,
         firstQuestion:d.getElementById('print-area')?.innerText.includes('다음 중 옳은 것은?')};
     });
-    if(!report.fullExam.printButton||!report.fullExam.firstQuestion)throw Error('Full original exam / print path not preserved');
+    if(!report.fullExam.printButton||!report.fullExam.firstQuestion||
+      new URL(report.fullExam.source).searchParams.has('preview'))throw Error('Full exam / independent print path not restored');
+    report.fullExam.layoutRestored=await page.evaluate(()=>{
+      const doc=document.getElementById('examFrame').contentDocument;
+      return !doc.body.classList.contains('ap-galaxy-reading') &&
+        doc.querySelector('#print-area .grid-container') &&
+        doc.defaultView.getComputedStyle(doc.querySelector('#print-area .grid-container')).display === 'grid';
+    }).catch(()=>false);
+    if(!report.fullExam.layoutRestored)throw Error('Whole exam did not restore paginated layout');
     await page.screenshot({path:path.join(out,'journey-6-full-exam.png')});
     await page.locator('#closeDrawer').click();
     await page.waitForFunction(()=>!document.getElementById('examDrawer').classList.contains('open'),null,{timeout:5000});
@@ -178,6 +221,27 @@ async function main(){
     await reduced.page.locator('#instantTravel').click();
     if(await reduced.page.locator('#instantTravel').getAttribute('aria-pressed')!=='true')throw Error('Instant travel toggle failed');
     await reduced.context.close();
+    // Turn on instant travel during an actual active camera flight, without
+    // reduced-motion shortcuts; it must finish at the stored destination.
+    const flying=await launch(browser,{motion:'no-preference'});
+    await flying.page.locator('#search').fill('삼산중');await wait(550);
+    await groupFocus(flying.page);
+    await flying.page.waitForFunction(()=>document.querySelector('.travel-flight,.travel-warp'),null,{timeout:2000});
+    await flying.page.locator('#instantTravel').click();
+    report.flightFinish=await flying.page.evaluate(()=>({
+      moving:!!document.querySelector('.travel-flight,.travel-warp'),
+      focused:!document.getElementById('focusedChip').hidden,
+      instant:document.getElementById('instantTravel').getAttribute('aria-pressed')
+    }));
+    if(report.flightFinish.moving||!report.flightFinish.focused||report.flightFinish.instant!=='true')
+      throw Error('Instant toggle did not complete active flight: '+JSON.stringify(report.flightFinish));
+    await wait(1450);
+    if(await flying.page.locator('.travel-flight,.travel-warp').count())
+      throw Error('A stale transition resumed after instant arrival');
+    await flying.page.keyboard.press('Escape');
+    if(await flying.page.locator('.travel-flight,.travel-warp').count())
+      throw Error('Back navigation restarted a cancelled transition');
+    await flying.context.close();
     // Rapid consecutive exam selection: the most recent real source must own
     // the question orbit; switching back must discard the previous node set.
     const rapid=await launch(browser,{motion:'reduce'});
@@ -188,7 +252,16 @@ async function main(){
     await mid.evaluate(el=>el.click());
     await rapid.page.waitForFunction(()=>document.querySelectorAll('.question-orbit-node').length===24 &&
       document.getElementById('examTitle').textContent.includes('중간고사'),null,{timeout:35000});
-    report.latestSelectionWins={file:'26_삼산중_1학기_중간_중3_기출.js',count:24};
+    await rapid.page.locator('[data-question-id="2"]').click({timeout:18000});
+    await rapid.page.locator('[data-question-id="3"]').click({timeout:18000});
+    await rapid.page.waitForFunction(() => document.querySelector('#questionStatus')?.textContent==='문항 3 · 문제',null,{timeout:32000});
+    const lastQuick=await rapid.page.evaluate(()=>{
+      const d=document.getElementById('examFrame').contentDocument;
+      return {file:new URL(d.location.href).searchParams.get('data'),
+        number:d.querySelector('#print-area .ap-galaxy-selected-question .q-num')?.textContent.trim()};
+    });
+    if(lastQuick.number!=='3.'||!lastQuick.file?.includes('1학기_중간'))throw Error('Latest rapid question selected wrong content: '+JSON.stringify(lastQuick));
+    report.latestSelectionWins={file:'26_삼산중_1학기_중간_중3_기출.js',count:24,lastQuestion:lastQuick};
     await final.evaluate(el=>el.click());
     await rapid.page.waitForFunction(()=>document.querySelectorAll('.question-orbit-node').length>0 &&
       document.getElementById('examTitle').textContent.includes('기말고사'),null,{timeout:35000});
@@ -236,6 +309,38 @@ async function main(){
       null,{timeout:30000});
     report.sourceFailure.recoveryCount=await fail.page.locator('.question-orbit-node').count();
     await fail.context.close();
+    // Question IDs may finish before the engine document. Two early clicks,
+    // followed by switching exam during an unresolved document load, are latest-wins.
+    const delayed=await launch(browser,{motion:'reduce'});
+    await groupFocus(delayed.page);
+    await delayed.page.route('**/archive/engine.html?*',async route=>{
+      await wait(4500);await route.continue();
+    });
+    await delayed.page.locator('.satellite-hit').filter({hasText:'2026 · 1학기 중간'}).first().evaluate(el=>el.click());
+    await delayed.page.waitForFunction(()=>document.querySelectorAll('.question-orbit-node').length===24,null,{timeout:30000});
+    await delayed.page.locator('[data-question-id="2"]').click({timeout:15000});
+    await delayed.page.locator('[data-question-id="3"]').click({timeout:15000});
+    await delayed.page.waitForFunction(()=>document.querySelector('#questionStatus')?.textContent==='문항 3 · 문제',null,{timeout:35000});
+    report.delayedEngine=await delayed.page.evaluate(()=>{
+      const d=document.getElementById('examFrame').contentDocument;
+      return {file:new URL(d.location.href).searchParams.get('data'),
+        number:d.querySelector('#print-area .ap-galaxy-selected-question .q-num')?.textContent.trim()};
+    });
+    if(!report.delayedEngine.file?.includes('1학기_중간')||report.delayedEngine.number!=='3.')
+      throw Error('Early click during slow iframe selected stale document: '+JSON.stringify(report.delayedEngine));
+    await delayed.page.locator('.satellite-hit').filter({hasText:'2026 · 1학기 기말'}).first().evaluate(el=>el.click());
+    await delayed.page.waitForFunction(()=>document.getElementById('examTitle').textContent.includes('기말고사')&&
+      document.querySelectorAll('.question-orbit-node').length===24,null,{timeout:35000});
+    await delayed.page.locator('[data-question-id="1"]').click({timeout:15000});
+    await delayed.page.waitForFunction(()=>document.querySelector('#questionStatus')?.textContent==='문항 1 · 문제',null,{timeout:35000});
+    report.delayedSwitch=await delayed.page.evaluate(()=>{
+      const d=document.getElementById('examFrame').contentDocument;
+      return {file:new URL(d.location.href).searchParams.get('data'),
+        number:d.querySelector('#print-area .ap-galaxy-selected-question .q-num')?.textContent.trim()};
+    });
+    if(!report.delayedSwitch.file?.includes('1학기_기말')||report.delayedSwitch.number!=='1.')
+      throw Error('A/B switch returned prior exam content: '+JSON.stringify(report.delayedSwitch));
+    await delayed.context.close();
     report.errors=errors;
     if(errors.length)throw Error('Unexpected browser errors outside intentional failure test: '+JSON.stringify(errors));
     report.status='PASS';
@@ -247,13 +352,14 @@ async function main(){
       '- New head: '+report.head,
       '- Browser: Chromium headless with SwiftShader software WebGL, 1600×900 DPR1.',
       '- Single sample: 2026 삼산중 1학기 중간, canonical JS source, 24 declared IDs. No exam/solution/answer iframe stub.',
-      '- Workflow: galaxy → exam star → 24-node orbit → q2 problem → answer → solution → full exam/print control → close/restore.',
+      '- Workflow: galaxy → real exam → q2 single-column problem/answer/solution → full layout → standalone print pointer-ready → close/restore.',
       '- Real content screenshot sequence: journey-1 through journey-7; journey-real-content.webm.',
       '- Before/after WebGL clear-call frame proxy (3×2.5s): before '+report.beforeFps.samples.join(', ')+
         '; after '+report.afterFps.samples.join(', ')+'. Same software renderer, not physical PC GPU throughput.',
       '- Reduced motion: '+JSON.stringify(report.reducedMotion),
       '- Rapid latest-wins/switching: '+JSON.stringify([report.latestSelectionWins,report.examSwitch]),
-      '- Movement cancellation: '+JSON.stringify(report.motionCancellation),
+      '- Movement cancellation and flight finish: '+JSON.stringify([report.motionCancellation,report.flightFinish]),
+       '- Reader, print and loading-race tests: '+JSON.stringify([report.readerLayout,report.printRoute,report.delayedEngine,report.delayedSwitch]),
       '- Injected source failure and recovery: '+JSON.stringify(report.sourceFailure),
       '- Browser page/console errors outside intentional failure injection: '+errors.length,
       '- Known gaps: GPU performance on the actual PC, mobile 54-star browser test, browser history outside this tab, real physical printer were not verified.',

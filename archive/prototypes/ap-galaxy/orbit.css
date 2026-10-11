@@ -84,3 +84,7 @@ body.search-active .planet-label{color:#fff;text-shadow:0 1px 2px #000}
   .question-toolbar{gap:4px;padding:7px 8px}.question-toolbar button{padding:5px 7px}}
 @media(prefers-reduced-motion:reduce){.warp-trails{display:none}.travel-warp .warp-trails span{animation:none}
   .question-orbit-node{transition:none}}
+
+/* Reader print route is a true link; keep a pointer-sized clickable area. */
+.question-toolbar #printOriginal{display:inline-flex;align-items:center;min-height:32px;padding:6px 10px;border:1px solid #87b1d24a;border-radius:8px;color:#d5efff;text-decoration:none;font-size:10px;background:#102339}
+.question-toolbar #printOriginal:hover,.question-toolbar #printOriginal:focus-visible{border-color:#ccf0ffb0;background:#193a57}

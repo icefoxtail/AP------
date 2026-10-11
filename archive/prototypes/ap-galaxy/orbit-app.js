@@ -7,7 +7,7 @@
     grade: $('gradeFilter'), school: $('schoolFilter'), year: $('yearFilter'), unit: $('unitFilter'),
     filterPanel: $('filterPanel'), filterToggle: $('filterToggle'), focusedChip: $('focusedChip'),
     drawer: $('examDrawer'), frame: $('examFrame'), title: $('examTitle'), meta: $('examMeta'), source: $('examSource'),
-    openOriginal: $('openOriginal'), labels: $('planetLabels'), satelliteLabels: $('satelliteLabels'),
+    openOriginal: $('openOriginal'), printOriginal: $('printOriginal'), labels: $('planetLabels'), satelliteLabels: $('satelliteLabels'),
     focusName: $('focusedSchoolName'), focusMeta: $('focusedSchoolMeta'), toast: $('toast'),
     listPanel: $('listPanel'), listGroups: $('listGroups'),
     questionOrbit: $('questionOrbit'), questionStatus: $('questionStatus'),
@@ -20,7 +20,7 @@
     world: null, tagsByFile: new Map(), filesByTag: new Map(), groupsById: new Map(),
     groupLabels: new Map(), satelliteButtons: new Map(), toastTimer: 0, searchTimer: 0,
     questionRows: [], selectedQuestion: null, readerMode: 'exam', readerGeneration: 0,
-    examGeneration: 0, entrySnapshot: null, pendingExamFocus: '', instant: false,
+    examGeneration: 0, frameGeneration: 0, entrySnapshot: null, pendingExamFocus: '', instant: false,
     examsByFile: new Map(),
   };
   const clean = (value) => String(value ?? '').normalize('NFC').trim();
@@ -148,12 +148,15 @@
     return { groups, visibleExams };
   };
 
-  function sourceUrl(exam) {
+  function sourceUrl(exam, { preview = true, loadGeneration = 0 } = {}) {
     const url = new URL('../../engine.html', location.href);
     const params = new URLSearchParams();
     params.set('data', 'exams/' + exam.file);
     params.set('mode', 'exam');
-    params.set('preview', '1');
+    if (preview) {
+      params.set('preview', '1');
+      params.set('ap_galaxy_load', String(loadGeneration));
+    }
     params.set('title', examTitle(exam));
     params.set('subject', exam.subject || '');
     if (exam.qCount) params.set('q', String(exam.qCount));
@@ -216,6 +219,9 @@
     const row = state.selectedQuestion;
     if (!row || !state.selectedExam) return;
     const token = ++state.readerGeneration;
+    const examToken = state.examGeneration;
+    const frameToken = state.frameGeneration;
+    const file = state.selectedExam.file;
     state.readerMode = mode;
     ui.readerTitle.textContent = '문항 ' + row.id + ' · ' + modeName(mode);
     ui.readerToolbar.querySelectorAll('[data-reader-mode]').forEach(button =>
@@ -223,7 +229,10 @@
     setQuestionStatus('문항 ' + row.id + ' ' + modeName(mode) + '를 여는 중…');
     try {
       const result = await window.APOrbitQuestionReader.focus(ui.frame, row, mode,
-        () => state.readerGeneration === token && state.selectedQuestion === row);
+        { file, loadGeneration: frameToken },
+        () => state.readerGeneration === token && state.examGeneration === examToken &&
+          state.frameGeneration === frameToken && state.selectedExam?.file === file &&
+          state.selectedQuestion === row);
       if (state.readerGeneration !== token) return;
       setQuestionStatus('문항 ' + row.id + ' · ' + modeName(mode));
       return result;
@@ -274,7 +283,9 @@
     const wasDetailed = state.visibleExams.some(item => item.file === exam.file);
     state.selectedExam = exam;
     state.world?.setSelectedExam(exam.file);
-    const url = sourceUrl(exam);
+    const frameToken = ++state.frameGeneration;
+    const url = sourceUrl(exam, { loadGeneration: frameToken });
+    const printableUrl = sourceUrl(exam, { preview: false });
     ui.title.textContent = examTitle(exam);
     ui.meta.replaceChildren();
     for (const value of [
@@ -290,7 +301,8 @@
     ui.source.textContent = 'catalog source · ' + exam.file;
     ui.source.title = exam.file;
     ui.frame.src = url;
-    ui.openOriginal.href = url;
+    ui.openOriginal.href = printableUrl;
+    ui.printOriginal.href = printableUrl;
     ui.drawer.classList.add('open');
     ui.drawer.setAttribute('aria-hidden', 'false');
     $('drawerBack').focus({ preventScroll: true });
@@ -317,6 +329,7 @@
   function closeExam({ restore = true } = {}) {
     const openedExam = state.selectedExam;
     ++state.examGeneration;
+    ++state.frameGeneration;
     ++state.readerGeneration;
     window.APOrbitQuestionReader?.abort();
     clearQuestionOrbit();
@@ -723,7 +736,7 @@
       state.instant = !state.instant;
       ui.instantTravel.setAttribute('aria-pressed', String(state.instant));
       state.world?.setInstantTravel(state.instant || matchMedia('(prefers-reduced-motion: reduce)').matches);
-      if (state.instant) state.world?.cancelTravel();
+      if (state.instant) state.world?.finishTravel();
     });
     $('closeList').addEventListener('click', () => toggleList(false));
     ui.search.addEventListener('input', () => {

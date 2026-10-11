@@ -811,6 +811,14 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     focusedGroupId = '';
     travelTo(new THREE.Vector3(), 92, 0);
   }
+  function finishTravel() {
+    if (!cameraTransition) return;
+    camera.position.copy(cameraTransition.toPosition);
+    controls.target.copy(cameraTransition.toTarget);
+    cameraTransition = null;
+    controls.update();
+    onTravel?.('');
+  }
   function snapshotNavigation() {
     return { position: camera.position.toArray(), target: controls.target.toArray(), focusedGroupId };
   }
@@ -919,7 +927,8 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     snapshotNavigation,
     restoreNavigation,
     cancelTravel() { cameraTransition = null; onTravel?.(''); },
-    setInstantTravel(value) { instantTravel = Boolean(value); },
+    finishTravel,
+    setInstantTravel(value) { instantTravel = Boolean(value); if (instantTravel) finishTravel(); },
     setConstellations(anchorFile, relatedFiles, color) {
       pendingLines.length = 0;
       if (anchorFile) for (const file of relatedFiles) pendingLines.push({ from: anchorFile, to: file, color });

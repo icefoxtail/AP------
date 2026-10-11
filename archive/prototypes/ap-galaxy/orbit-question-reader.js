@@ -97,43 +97,136 @@
     }) || null;
   }
 
-  async function focus(iframe, row, mode, isCurrent) {
-    if (!row || !['exam','ans','sol'].includes(mode)) throw new Error('INVALID_QUESTION_MODE');
-    const win = iframe.contentWindow;
-    const doc = iframe.contentDocument;
-    if (!win || !doc || win.location.origin !== location.origin) throw new Error('ENGINE_NOT_AVAILABLE');
-    const tab = doc.getElementById('btn-' + mode);
-    if (!tab) throw new Error('ENGINE_MODE_NOT_AVAILABLE');
-    doc.querySelectorAll('.ap-galaxy-selected-question').forEach(node => node.classList.remove('ap-galaxy-selected-question'));
-    if (!doc.getElementById('ap-galaxy-question-focus-style')) {
-      const style = doc.createElement('style');
-      style.id = 'ap-galaxy-question-focus-style';
-      style.textContent = '.ap-galaxy-selected-question{outline:2px solid #67a7e9!important;outline-offset:3px!important;scroll-margin-top:64px!important;background:rgba(140,196,255,.05)!important}';
-      doc.head.appendChild(style);
+  // Screen-only view of the same engine DOM. Print rules and shared math rendering stay untouched.
+  const READER_STYLE = `
+    @media screen {
+      body.ap-galaxy-reading { overflow-x:hidden!important; padding-top:44px!important; }
+      body.ap-galaxy-reading #print-area {
+        display:block!important; width:100%!important; max-width:100%!important;
+        margin:0!important; padding:14px!important; box-sizing:border-box!important;
+        transform:none!important; min-height:0!important;
+      }
+      body.ap-galaxy-reading #print-area .page {
+        display:contents!important; width:auto!important; height:auto!important;
+        min-height:0!important; overflow:visible!important; box-shadow:none!important;
+      }
+      body.ap-galaxy-reading #print-area .page-header,
+      body.ap-galaxy-reading #print-area .page-exam-frame,
+      body.ap-galaxy-reading #print-area .page-footer,
+      body.ap-galaxy-reading #print-area .grid-container::after { display:none!important; }
+      body.ap-galaxy-reading #print-area .grid-container {
+        display:block!important; width:100%!important; min-height:0!important;
+        grid-template-columns:minmax(0,1fr)!important;
+      }
+      body.ap-galaxy-reading #print-area .grid-col {
+        display:block!important; width:100%!important; height:auto!important;
+        min-height:0!important; padding:0!important; overflow:visible!important;
+      }
+      body.ap-galaxy-reading #print-area .q-box,
+      body.ap-galaxy-reading #print-area .ans-cell { display:none!important; }
+      body.ap-galaxy-reading #print-area .q-box.ap-galaxy-selected-question {
+        display:flex!important; flex:none!important; width:100%!important; max-width:100%!important;
+        min-height:0!important; padding:18px 12px!important; margin:0!important;
+        height:auto!important; overflow:visible!important; font-size:16px!important;
+        line-height:1.7!important; box-sizing:border-box!important;
+      }
+      body.ap-galaxy-reading #print-area .q-box.ap-galaxy-selected-question .q-content,
+      body.ap-galaxy-reading #print-area .q-box.ap-galaxy-selected-question .choices,
+      body.ap-galaxy-reading #print-area .q-box.ap-galaxy-selected-question .sol-exp {
+        font-size:16px!important; line-height:1.7!important; max-width:100%!important;
+      }
+      body.ap-galaxy-reading #print-area .choices-compact,
+      body.ap-galaxy-reading #print-area .choices-grid {
+        display:flex!important; flex-direction:column!important; flex-wrap:nowrap!important;
+      }
+      body.ap-galaxy-reading #print-area .choice-item { width:100%!important; min-width:0!important; }
+      body.ap-galaxy-reading #print-area .ans-grid {
+        display:block!important; width:100%!important;
+      }
+      body.ap-galaxy-reading #print-area .ans-cell.ap-galaxy-selected-question {
+        display:flex!important; width:100%!important; min-height:70px!important;
+        padding:18px 14px!important; font-size:18px!important; box-sizing:border-box!important;
+      }
+      body.ap-galaxy-reading #print-area .ap-galaxy-selected-question img,
+      body.ap-galaxy-reading #print-area .ap-galaxy-selected-question svg,
+      body.ap-galaxy-reading #print-area .ap-galaxy-selected-question mjx-container {
+        max-width:100%!important;
+      }
+      body.ap-galaxy-reading #print-area .ap-galaxy-selected-question {
+        outline:2px solid #67a7e9!important; outline-offset:-2px!important;
+        scroll-margin-top:58px!important; background:#f2f8ff!important;
+        overflow-wrap:anywhere!important;
+      }
     }
-    if (!tab.classList.contains('active')) tab.click();
+  `;
+
+  function currentEngineDocument(iframe, expected) {
+    try {
+      const win = iframe.contentWindow;
+      const doc = iframe.contentDocument;
+      if (!win || !doc || win.location.origin !== location.origin) return null;
+      const url = new URL(win.location.href);
+      if (!url.pathname.endsWith('/archive/engine.html') ||
+          url.searchParams.get('data') !== 'exams/' + expected.file ||
+          url.searchParams.get('ap_galaxy_load') !== String(expected.loadGeneration) ||
+          url.searchParams.get('preview') !== '1' || doc.readyState !== 'complete') return null;
+      if (!doc.getElementById('print-area')) throw new Error('ENGINE_DOCUMENT_INVALID');
+      return doc;
+    } catch (error) {
+      if (error.message === 'ENGINE_DOCUMENT_INVALID') throw error;
+      return null;
+    }
+  }
+
+  async function focus(iframe, row, mode, expected, isCurrent) {
+    if (!row || !['exam','ans','sol'].includes(mode)) throw new Error('INVALID_QUESTION_MODE');
+    if (!expected || !expected.file || !Number.isInteger(expected.loadGeneration) ||
+        typeof isCurrent !== 'function') throw new Error('INVALID_ENGINE_SELECTION');
     const deadline = performance.now() + 20000;
+    let readyDocument = null;
+    let modeClicked = false;
     while (performance.now() < deadline) {
+      if (!isCurrent()) throw new Error('STALE_QUESTION_SELECTION');
+      const doc = currentEngineDocument(iframe, expected);
+      if (!doc) {
+        await new Promise(r => setTimeout(r, 100));
+        continue;
+      }
+      if (readyDocument !== doc) { readyDocument = doc; modeClicked = false; }
+      const tab = doc.getElementById('btn-' + mode);
+      if (!tab) throw new Error('ENGINE_MODE_NOT_AVAILABLE');
+      if (!modeClicked) {
+        if (!tab.classList.contains('active')) tab.click();
+        modeClicked = true;
+      }
       if (!isCurrent()) throw new Error('STALE_QUESTION_SELECTION');
       const target = resolveRenderedItem(doc, row, mode);
       const correctMode = doc.getElementById('btn-' + mode)?.classList.contains('active');
-      const readyMode = mode === 'ans' ? target?.classList.contains('ans-cell')
-        : mode === 'sol' ? target?.classList.contains('sol-box')
-          : target?.classList.contains('q-box') && !target.classList.contains('sol-box');
-      if (correctMode && readyMode && target?.isConnected) {
+      if (correctMode && target?.isConnected) {
+        if (!doc.getElementById('ap-galaxy-question-focus-style')) {
+          const style = doc.createElement('style');
+          style.id = 'ap-galaxy-question-focus-style';
+          style.textContent = READER_STYLE;
+          doc.head.appendChild(style);
+        }
+        doc.querySelectorAll('.ap-galaxy-selected-question').forEach(node =>
+          node.classList.remove('ap-galaxy-selected-question'));
         target.classList.add('ap-galaxy-selected-question');
-        target.scrollIntoView({ block: 'start', behavior: 'instant' });
-        return { ordinal: row.ordinal, id: row.id, mode, text: target.innerText.slice(0, 160) };
+        doc.body.classList.add('ap-galaxy-reading');
+        target.scrollIntoView({block:'start',behavior:'instant'});
+        return {ordinal:row.ordinal,id:row.id,mode,text:target.innerText.slice(0,160)};
       }
       if (doc.documentElement?.dataset?.apRenderError) throw new Error('ENGINE_RENDER_FAILED');
       await new Promise(r => setTimeout(r, 150));
     }
-    throw new Error('QUESTION_RENDER_TIMEOUT');
+    throw new Error('ENGINE_OR_QUESTION_LOAD_TIMEOUT');
   }
 
   function clearFocus(iframe) {
     try {
-      iframe.contentDocument?.querySelectorAll('.ap-galaxy-selected-question').forEach(
+      const doc = iframe.contentDocument;
+      doc?.body?.classList.remove('ap-galaxy-reading');
+      doc?.querySelectorAll('.ap-galaxy-selected-question').forEach(
         node => node.classList.remove('ap-galaxy-selected-question'));
     } catch (_) { /* closed or navigating iframe */ }
   }
