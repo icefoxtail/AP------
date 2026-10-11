@@ -53,7 +53,30 @@
     "independentQualityReview": "NOT_RUN",
     "browserEngineModes": "NOT_RUN",
     "releaseStatus": "NOT_AUTHORIZED",
-    "nextSourceQid": 9
+    "nextSourceQid": 9,
+    "gptOpenBookReviewSecondBatch": "CONTENT_REVIEWED_META_PATCHED_BROWSER_NOT_TESTED",
+    "gptOpenBookCorrections": [
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q08-B2",
+        "axis": "solutionImage",
+        "reason": "실제 원격 Git 실파일 경로에 연결; 공개 student asset 경로 별도 후속"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q08-B3",
+        "axis": "solutionImage",
+        "reason": "실제 원격 Git 실파일 경로에 연결; 공개 student asset 경로 별도 후속"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q08-C1",
+        "axis": "solutionImage",
+        "reason": "실제 원격 Git 실파일 경로에 연결; 공개 student asset 경로 별도 후속"
+      },
+      {
+        "uid": "ALITE-SUNCHEON25-2FINAL-Q08-C3",
+        "axis": "solutionImage",
+        "reason": "실제 원격 Git 실파일 경로에 연결; 공개 student asset 경로 별도 후속"
+      }
+    ]
   },
   "authorMathWitness": {
     "A1": {
@@ -439,8 +462,9 @@
         "conditionSemantics": [],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "양의 기울기와 왼쪽 무한구간의 오른쪽 끝을 일치시킴",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "NONE",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "양의 기울기와 왼쪽 무한구간의 오른쪽 끝을 일치시킴"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -486,7 +510,10 @@
         "authorMathCheck": "AUTHOR_ALGEBRA_RANGE_AND_BIJECTION_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -544,8 +571,9 @@
         "conditionSemantics": [],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "오른쪽 무한구간에서 정의역·치역의 왼쪽 끝 비교",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "NONE",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "오른쪽 무한구간에서 정의역·치역의 왼쪽 끝 비교"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -591,7 +619,10 @@
         "authorMathCheck": "AUTHOR_ALGEBRA_RANGE_AND_BIJECTION_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -657,8 +688,9 @@
         ],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "감소함수의 양 끝값이 서로 뒤바뀐다는 판단",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "NONE",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "감소함수의 양 끝값이 서로 뒤바뀐다는 판단"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -704,7 +736,10 @@
         "authorMathCheck": "AUTHOR_ALGEBRA_RANGE_AND_BIJECTION_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -772,8 +807,9 @@
         ],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "구간 양끝 대응·양의 기울기에서 매개변수 동시 결정",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "SEQUENTIAL",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "구간 양끝 대응·양의 기울기에서 매개변수 동시 결정"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -819,7 +855,10 @@
         "authorMathCheck": "AUTHOR_ALGEBRA_RANGE_AND_BIJECTION_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -856,7 +895,7 @@
       ],
       "answer": "④",
       "solution": "$a<0$이므로 함수는 감소한다. 따라서 정의역의 왼쪽 끝 $-3$은 치역의 오른쪽 끝 $10$에, 정의역의 오른쪽 끝 $1$은 치역의 왼쪽 끝 $2$에 대응한다. 즉 $-3a+b=10$, $a+b=2$이다. 두 식을 빼면 $-4a=8$이므로 $a=-2$이고 $b=4$이다. 따라서 $a+b=-2+4=2$이다. 따라서 정답은 ④이다.",
-      "solutionImage": "assets/q08-B2-solution.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q08-B2-solution.svg",
       "solutionImageAlt": "B2 일대일대응의 정의역과 치역을 비교하는 그래프",
       "solutionImageCaption": "B2 정의역 끝점과 치역 끝점의 대응을 확인한다.",
       "solutionImageSize": "medium",
@@ -893,8 +932,9 @@
         ],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "음의 기울기 때문에 끝점 대응 방향이 반전됨",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "SEQUENTIAL",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "음의 기울기 때문에 끝점 대응 방향이 반전됨"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -941,7 +981,10 @@
         "authorMathCheck": "AUTHOR_ALGEBRA_RANGE_AND_BIJECTION_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -978,7 +1021,7 @@
       ],
       "answer": "⑤",
       "solution": "함수 $f(x)=ax+b$의 정의역은 $x\\le3$이고 공역은 $y\\ge-4$이다. 일대일대응이 되려면 치역이 이 공역과 일치해야 하므로 기울기는 음수이고, 정의역의 최댓값 $x=3$에서 함숫값이 $-4$여야 한다. 따라서 $3a+b=-4$이다. 또 $f(1)=2$이므로 $a+b=2$이다. 두 식을 빼면 $2a=-6$이므로 $a=-3$이다. 따라서 정답은 ⑤이다.",
-      "solutionImage": "assets/q08-B3-solution.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q08-B3-solution.svg",
       "solutionImageAlt": "B3 일대일대응의 정의역과 치역을 비교하는 그래프",
       "solutionImageCaption": "B3 정의역 끝점과 치역 끝점의 대응을 확인한다.",
       "solutionImageSize": "medium",
@@ -1013,8 +1056,9 @@
         ],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "반직선 정의역·공역의 방향 차이로 기울기 부호를 결정하고 두 함숫값에서 기울기 계산",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "SEQUENTIAL",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "반직선 정의역·공역의 방향 차이로 기울기 부호를 결정하고 두 함숫값에서 기울기 계산"
       },
       "review": {
         "reverseStemDisposition": "REVISED",
@@ -1061,7 +1105,10 @@
         "authorMathCheck": "AUTHOR_RECHECK_AFTER_REVERSE_STEM_REPAIR",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -1098,7 +1145,7 @@
       ],
       "answer": "④",
       "solution": "$f(x)=(x-a)^2+b$가 $x\\ge2$에서 일대일함수가 되려면 꼭짓점의 $x$좌표가 $2$보다 크면 안 된다. 따라서 $a\\le2$이며, 이 구간에서 함수는 증가한다. 치역의 최솟값이 공역의 최솟값 $1$과 같아야 하므로 $f(2)=(2-a)^2+b=1$이다. 또한 $f(4)=(4-a)^2+b=9$이다. 두 식을 빼면 $(4-a)^2-(2-a)^2=8$이다. 좌변을 전개하면 $(16-8a+a^2)-(4-4a+a^2)=12-4a$이므로 $12-4a=8$, $a=1$이다. 첫 식에 대입하면 $1+b=1$, $b=0$이다. 실제로 $a=1\\le2$이므로 일대일대응 조건도 성립한다. 따라서 $a+b=1$이다. 따라서 정답은 ④이다.",
-      "solutionImage": "assets/q08-C1-solution.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q08-C1-solution.svg",
       "solutionImageAlt": "C1 일대일대응의 정의역과 치역을 비교하는 그래프",
       "solutionImageCaption": "C1 정의역 끝점과 치역 끝점의 대응을 확인한다.",
       "solutionImageSize": "medium",
@@ -1135,8 +1182,9 @@
         ],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "꼭짓점의 위치로 단사 여부 확인하고 치역 경계·함숫값 동시 적용",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "꼭짓점의 위치로 단사 여부 확인하고 치역 경계·함숫값 동시 적용"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -1183,7 +1231,10 @@
         "authorMathCheck": "AUTHOR_ALGEBRA_RANGE_AND_BIJECTION_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -1249,8 +1300,9 @@
         ],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "유한집합에서 정의역 모든 입력의 출력이 공역과 정확히 일치하는지 검토",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "CASE_BRANCH",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "유한집합에서 정의역 모든 입력의 출력이 공역과 정확히 일치하는지 검토"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -1296,7 +1348,10 @@
         "authorMathCheck": "AUTHOR_ALGEBRA_RANGE_AND_BIJECTION_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     },
     {
@@ -1333,7 +1388,7 @@
       ],
       "answer": "①",
       "solution": "$-2<a<2$이면 $x=a$가 정의역 안에 들어와 $f(a)=0$이므로 치역이 $[1,5]$와 같을 수 없고, 일대일함수도 아니다. 따라서 $a\\le-2$ 또는 $a\\ge2$여야 한다. $a\\ge2$일 때 $f(x)=a-x$는 $[-2,2]$에서 감소하여 치역이 $[a-2,a+2]$이다. 이것이 $[1,5]$와 같으려면 $a-2=1$, $a+2=5$에서 $a=3$이다. $a\\le-2$일 때는 $f(x)=x-a$로 증가하여 치역이 $[-2-a,2-a]$이다. $-2-a=1$, $2-a=5$를 만족하는 $a=-3$을 얻는다. 두 경우 모두 일대일대응이다. 따라서 구하는 제곱의 합은 $3^2+(-3)^2=18$이다. 따라서 정답은 ①이다.",
-      "solutionImage": "assets/q08-C3-solution.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q08-C3-solution.svg",
       "solutionImageAlt": "C3 일대일대응의 정의역과 치역을 비교하는 그래프",
       "solutionImageCaption": "C3 정의역 끝점과 치역 끝점의 대응을 확인한다.",
       "solutionImageSize": "medium",
@@ -1370,8 +1425,9 @@
         ],
         "conditionKeyStatus": "RESOLVED_CANONICAL_OR_NOT_APPLICABLE",
         "conditionKeyBinding": "ACTIVE_CONDITION_CORE",
-        "integrationPattern": "절댓값 꺾이는 점을 정의역 밖으로 내보내고 양방향 치역을 분리 검토",
-        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY"
+        "integrationPattern": "CASE_BRANCH",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "integrationPatternReason": "절댓값 꺾이는 점을 정의역 밖으로 내보내고 양방향 치역을 분리 검토"
       },
       "review": {
         "reverseStemDisposition": "KEEP",
@@ -1418,7 +1474,10 @@
         "authorMathCheck": "AUTHOR_ALGEBRA_RANGE_AND_BIJECTION_CHECK",
         "independentQualityReview": "NOT_RUN",
         "browserRender": "NOT_RUN",
-        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING"
+        "remainingRisk": "FORMAL_OPEN_BOOK_REVIEW_PENDING",
+        "gptOpenBookContentReview": "STEM_OPTIONS_ANSWER_SOLUTION_TRACED",
+        "gptOpenBookMathResult": "NO_CONFIRMED_MATH_ANSWER_CONFLICT",
+        "releaseBrowserVerification": "NOT_TESTED"
       }
     }
   ],
