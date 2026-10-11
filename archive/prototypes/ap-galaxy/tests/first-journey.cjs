@@ -79,24 +79,24 @@ async function groupFocus(page){
 async function clickActionableOrbit(page, excluded = []) {
   await page.waitForFunction(() => [...document.querySelectorAll('.question-orbit-node')]
     .some(el => getComputedStyle(el).display !== 'none'), null, {timeout:25000});
-  // Orbit projections and camera easing are dynamic: choose a currently
-  // pointer-actionable control, not a hidden ID and not a DOM .click() shim.
+  // A physical pointer can click a moving 3D projection; locator.click() would
+  // refuse moving targets as "not stable". Always hit the visible screen box
+  // with real mouse input and verify the exact selected source ID afterward.
   for (let attempt=0;attempt<5;attempt++) {
-    await wait(300);
+    await wait(200);
     const candidates=page.locator('.question-orbit-node:visible');
     const count=await candidates.count();
     for(let i=0;i<count;i++){
       const candidate=candidates.nth(i);
       const id=await candidate.getAttribute('data-question-id').catch(()=>null);
       if(!id||excluded.includes(id))continue;
-      try{
-        await candidate.click({trial:true,timeout:550});
-        await candidate.click({timeout:4500});
-        return id;
-      }catch(_){ /* Try a different projected pointer target. */ }
+      const rect=await candidate.boundingBox().catch(()=>null);
+      if(!rect||rect.width<10||rect.height<10)continue;
+      await page.mouse.click(rect.x+rect.width/2,rect.y+rect.height/2);
+      if(await page.locator('.question-orbit-node.selected[data-question-id="'+id+'"]').count())return id;
     }
   }
-  throw Error('No visible orbit question was actually pointer-clickable');
+  throw Error('No visible orbit question accepted a real pointer click');
 }
 async function fps(page){
   await page.locator('#motionToggle').evaluate(el=>{if(el.getAttribute('aria-pressed')==='true')el.click()});
