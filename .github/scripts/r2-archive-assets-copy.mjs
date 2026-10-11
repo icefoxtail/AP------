@@ -95,13 +95,15 @@ function isAncestor(repoRoot, older, newer) {
 
 function deletionCommit(repoRoot, baseline, target, gitPath) {
   const result = runGit(repoRoot, [
-    'log', '-1', '--format=%H', '--diff-filter=D', `${baseline}..${target}`, '--', `:(literal)${gitPath}`,
+    'log', '-1', '--full-history', '-m', '--no-renames', '--format=%H', '--diff-filter=D',
+    `${baseline}..${target}`, '--', `:(literal)${gitPath}`,
   ], { allowFailure: true });
   if (result.status !== 0) {
     const stderr = decodeUtf8(result.stderr, 'Git stderr').trim();
     throw new Error(`Could not confirm deletion for ${JSON.stringify(gitPath)}${stderr ? `: ${stderr}` : ''}`);
   }
-  return decodeUtf8(result.stdout, 'Git deletion commit').trim();
+  const commits = [...new Set(decodeUtf8(result.stdout, 'Git deletion commit').split(/\r?\n/).filter(Boolean))];
+  return commits[0] || '';
 }
 
 function assertTrackedImagePath(gitPath) {
@@ -154,7 +156,7 @@ export function buildDeltaPlan({ repoRoot, baseline: baselineInput, target: targ
     // --no-renames records both the old and new paths. Current-tree filtering
     // below uploads only the new key and reports the removed key as retained.
     const raw = runGit(repoRoot, [
-      'diff-tree', '--root', '--no-commit-id', '--name-only', '-r', '-z', '--no-renames', '-m', commit,
+      'diff-tree', '--root', '--no-commit-id', '--name-only', '-r', '-z', '-m', '--no-renames', commit,
     ]).stdout;
     for (const gitPath of splitNul(raw, `image paths for ${commit}`)) {
       if (assertTrackedImagePath(gitPath)) changed.add(gitPath);
@@ -361,6 +363,7 @@ export function runCopy({
   rclone = createRcloneAdapter(),
   now = new Date().toISOString(),
   log = message => console.log(message),
+  stats = {},
 }) {
   if (!['delta', 'bootstrap'].includes(mode)) throw new Error(`Unsupported R2 sync mode: ${mode}`);
   if (ref !== 'refs/heads/main') throw new Error(`R2 writes are restricted to refs/heads/main (received ${ref}).`);
@@ -374,7 +377,18 @@ export function runCopy({
 
   const sourceRoot = path.resolve(repoRoot, ...IMAGE_ROOT.split('/'));
   const remotePrefix = `r2-ap-assets:${bucket}/exams/images`;
-  const counts = { uploaded: 0, verified: 0, unchanged: 0, deletedRetained: 0 };
+  const counts = Object.assign(stats, {
+    mode,
+    processedCommit: target,
+    baseline: null,
+    uploaded: 0,
+    verified: 0,
+    unchanged: 0,
+    deletedRetained: 0,
+    comparisonTargets: 0,
+    verificationFailures: 0,
+    fullPrefixOperations: 0,
+  });
 
   if (mode === 'bootstrap') {
     if (eventName !== 'workflow_dispatch') {
@@ -383,19 +397,14 @@ export function runCopy({
     const priorState = loadBaseline(rclone, bucket, repoRoot, { allowMissing: true });
     if (priorState) {
       const priorBaseline = priorState.lastSuccessfulCommit;
+      counts.baseline = priorBaseline;
       log(`baseline_commit=${priorBaseline}`);
       if (!isAncestor(repoRoot, priorBaseline, target)) {
         if (isAncestor(repoRoot, target, priorBaseline)) {
           log(`stale_bootstrap_skipped=${target} baseline_commit=${priorBaseline}; no R2 writes performed`);
           return {
-            mode,
+            ...counts,
             status: 'stale-skipped',
-            baseline: priorBaseline,
-            processedCommit: target,
-            uploaded: 0,
-            verified: 0,
-            deletedRetained: 0,
-            fullPrefixOperations: 0,
             message: 'Bootstrap target is older than the successful R2 baseline; no R2 writes performed.',
           };
         }
@@ -406,41 +415,40 @@ export function runCopy({
       }
     }
     const localFiles = listLocalImages(sourceRoot);
+    counts.comparisonTargets = localFiles.length;
+    counts.uploaded = null;
+    counts.unchanged = null;
+    counts.fullPrefixOperations = 2;
     log(`bootstrap_local_files=${localFiles.length} remote_prefix=${remotePrefix}`);
     rcloneCall(rclone, ['copy', sourceRoot, remotePrefix, '--transfers', '16', '--checkers', '32'], 'Manual full upload');
-    rcloneCall(rclone, ['check', sourceRoot, remotePrefix, '--one-way', '--download', '--checkers', '32'], 'Manual full verification');
+    try {
+      rcloneCall(rclone, ['check', sourceRoot, remotePrefix, '--one-way', '--download', '--checkers', '32'], 'Manual full verification');
+    } catch (error) {
+      counts.verificationFailures += 1;
+      throw error;
+    }
     counts.verified = localFiles.length;
     writeBaseline(rclone, bucket, makeState(target, 'bootstrap', counts, now));
+    counts.baseline = target;
+    log(`r2_sync_counts comparison_targets=${counts.comparisonTargets} identical=${counts.unchanged ?? 'unknown'} uploaded=${counts.uploaded ?? 'see rclone output'} verified=${counts.verified} verification_failures=${counts.verificationFailures}`);
     return {
-      mode,
+      ...counts,
       status: 'success',
-      baseline: null,
-      processedCommit: target,
-      uploaded: null,
-      verified: counts.verified,
-      unchanged: counts.unchanged,
-      deletedRetained: counts.deletedRetained,
-      fullPrefixOperations: 2,
-      message: 'Manual full upload and one-way content verification succeeded.',
+      message: 'Manual full upload and one-way download verification succeeded.',
     };
   }
 
   const priorState = loadBaseline(rclone, bucket, repoRoot);
   const baseline = priorState.lastSuccessfulCommit;
+  counts.baseline = baseline;
   log(`baseline_commit=${baseline}`);
+  log('delta_request_scope=existing selected keys are read in full for SHA-256; a missing exact key may use a limited LIST; mock tests do not establish Cloudflare API methods or request counts');
   if (!isAncestor(repoRoot, baseline, target)) {
     if (isAncestor(repoRoot, target, baseline)) {
       log(`stale_target_skipped=${target} baseline_commit=${baseline}; no R2 writes performed`);
       return {
-        mode,
+        ...counts,
         status: 'stale-skipped',
-        baseline,
-        processedCommit: target,
-        uploaded: 0,
-        verified: 0,
-        unchanged: 0,
-        deletedRetained: 0,
-        fullPrefixOperations: 0,
         message: 'Target commit is older than the successful R2 baseline; no R2 writes performed.',
       };
     }
@@ -451,6 +459,7 @@ export function runCopy({
   }
 
   const plan = buildDeltaPlan({ repoRoot, baseline, target });
+  counts.comparisonTargets = plan.files.length;
   counts.deletedRetained = plan.deleted.length;
   for (const item of plan.deleted) {
     log(`deleted_path_retained=${JSON.stringify(item.path)} deleted_at=${item.deletedAt}`);
@@ -459,8 +468,16 @@ export function runCopy({
   for (const item of plan.files) {
     const remotePath = imageObject(bucket, item.path);
     log(`checking_exact_key=${JSON.stringify(item.path)} remote=${remotePath}`);
-    if (remoteExists(rclone, remotePath)) {
-      const remoteHash = hashBytes(readRemoteBytes(rclone, remotePath, `Read exact image key ${item.path}`));
+    let remoteHash = null;
+    try {
+      if (remoteExists(rclone, remotePath)) {
+        remoteHash = hashBytes(readRemoteBytes(rclone, remotePath, `Read exact image key ${item.path}`));
+      }
+    } catch (error) {
+      counts.verificationFailures += 1;
+      throw error;
+    }
+    if (remoteHash !== null) {
       if (remoteHash === item.sha256) {
         counts.unchanged += 1;
         counts.verified += 1;
@@ -475,14 +492,21 @@ export function runCopy({
       ['copyto', item.sourcePath, remotePath, '--ignore-times'],
       `Upload exact image key ${item.path}`
     );
-    const verifiedHash = hashBytes(readRemoteBytes(rclone, remotePath, `Verify exact image key ${item.path}`));
+    counts.uploaded += 1;
+    let verifiedHash;
+    try {
+      verifiedHash = hashBytes(readRemoteBytes(rclone, remotePath, `Verify exact image key ${item.path}`));
+    } catch (error) {
+      counts.verificationFailures += 1;
+      throw error;
+    }
     if (verifiedHash !== item.sha256) {
+      counts.verificationFailures += 1;
       throw new Error(
         `Uploaded bytes failed SHA-256 verification for ${JSON.stringify(item.path)}: ` +
         `expected ${item.sha256}, received ${verifiedHash}.`
       );
     }
-    counts.uploaded += 1;
     counts.verified += 1;
   }
 
@@ -490,23 +514,21 @@ export function runCopy({
   // changed current object has been uploaded or content-verified.
   if (target !== baseline) {
     writeBaseline(rclone, bucket, makeState(target, 'delta', counts, now));
+    counts.baseline = target;
   }
 
+  log(`r2_sync_counts comparison_targets=${counts.comparisonTargets} identical=${counts.unchanged} uploaded=${counts.uploaded} verified=${counts.verified} verification_failures=${counts.verificationFailures}`);
   return {
-    mode,
+    ...counts,
     status: target === baseline ? 'already-current' : 'success',
-    baseline,
-    processedCommit: target,
-    uploaded: counts.uploaded,
-    verified: counts.verified,
-    unchanged: counts.unchanged,
-    deletedRetained: counts.deletedRetained,
-    fullPrefixOperations: 0,
     message: `Exact-key delta processed ${plan.files.length} current image path(s); no full-prefix listing performed.`,
   };
 }
 
 function formatSummary(result, status = result.status, error = '') {
+  const requestNote = result.mode === 'bootstrap'
+    ? 'Manual bootstrap performs a full-prefix copy and --one-way --download content verification for every local image; use only for initial preparation or an explicitly reviewed reconciliation.'
+    : 'Delta SHA-256 comparison reads full contents of selected existing objects; a missing exact key may cause a limited LIST. Mock tests do not establish Cloudflare API methods or request counts.';
   return [
     '## R2 archive image copy',
     '',
@@ -514,11 +536,14 @@ function formatSummary(result, status = result.status, error = '') {
     `- Mode: ${result.mode}`,
     `- Processed commit: \`${result.processedCommit}\``,
     `- Baseline commit: \`${result.baseline || '(not applicable)'}\``,
-    `- Uploaded: ${result.uploaded ?? 'see rclone transfer log (manual bootstrap)'}`,
-    `- Current image keys verified: ${result.verified}`,
-    `- Identical content skipped: ${result.unchanged}`,
+    `- Comparison targets: ${result.comparisonTargets ?? 0}`,
+    `- Identical content skipped: ${result.unchanged ?? 'see rclone output (manual bootstrap)'}`,
+    `- Uploaded: ${result.uploaded ?? 'see rclone output (manual bootstrap)'}`,
+    `- Current image keys verified: ${result.verified ?? 0}`,
+    `- Verification failures: ${result.verificationFailures ?? 0}`,
     `- Deleted local paths retained remotely: ${result.deletedRetained}`,
     `- Full-prefix commands (manual bootstrap only): ${result.fullPrefixOperations}`,
+    `- Request behavior: ${requestNote}`,
     ...(error ? [`- Error: ${error}`] : []),
     '',
     result.message,
@@ -536,24 +561,32 @@ function cli() {
     repoRoot: process.cwd(),
     bucket: env.R2_BUCKET,
   };
+  const stats = {
+    mode: base.mode,
+    processedCommit: String(base.target || '(unavailable)'),
+    baseline: null,
+    uploaded: 0,
+    verified: 0,
+    unchanged: 0,
+    deletedRetained: 0,
+    comparisonTargets: 0,
+    verificationFailures: 0,
+    fullPrefixOperations: 0,
+  };
   try {
-    const result = runCopy(base);
+    const result = runCopy({ ...base, stats });
     const summary = formatSummary(result);
     if (env.GITHUB_STEP_SUMMARY) appendFileSync(env.GITHUB_STEP_SUMMARY, `${summary}\n`);
     console.log(summary);
   } catch (error) {
     const message = String(error?.message || error);
     const failure = {
+      ...stats,
       mode: base.mode,
       status: 'failed',
       processedCommit: String(base.target || '(unavailable)'),
-      baseline: '(see step log; cursor advances only after image verification)',
-      uploaded: null,
-      verified: null,
-      unchanged: null,
-      deletedRetained: null,
-      fullPrefixOperations: 0,
-      message: 'A failed delta may have uploaded some exact keys; retry from the unchanged cursor. If the failure occurred during the final cursor write/readback, inspect that exact marker key.',
+      baseline: stats.baseline || '(unchanged unless final marker write succeeded; see step log)',
+      message: 'A failed delta may have partially uploaded exact keys; retry from the stored cursor. If final marker readback failed, inspect that exact marker key.',
     };
     const summary = formatSummary(failure, 'failed', message);
     if (env.GITHUB_STEP_SUMMARY) appendFileSync(env.GITHUB_STEP_SUMMARY, `${summary}\n`);

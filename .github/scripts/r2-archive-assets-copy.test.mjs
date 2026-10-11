@@ -28,7 +28,7 @@ function createRepo(t, files = {}) {
     writeRepoFile(root, `${IMAGE_ROOT}/${relative}`, value);
   }
   git(root, ['add', '--all']);
-  git(root, ['commit', '-m', 'baseline']);
+  git(root, Object.keys(files).length ? ['commit', '-m', 'baseline'] : ['commit', '--allow-empty', '-m', 'baseline']);
   const baseline = git(root, ['rev-parse', 'HEAD']);
   t.after(() => rmSync(root, { recursive: true, force: true }));
   return { root, baseline };
@@ -201,9 +201,12 @@ test('one changed image causes only exact-key R2 requests and zero exams/images 
   writeRepoFile(root, `${IMAGE_ROOT}/exam/one.png`, 'after');
   const target = commit(root, 'change one image');
 
-  const result = runDelta(root, target, rclone);
+  const logLines = [];
+  const result = runDelta(root, target, rclone, { log: message => logLines.push(message) });
   assert.equal(result.uploaded, 1);
   assert.equal(result.fullPrefixOperations, 0);
+  assert.equal(logLines.some(line => line === 'r2_sync_counts comparison_targets=1 identical=0 uploaded=1 verified=1 verification_failures=0'), true);
+  assert.equal(logLines.some(line => line.includes('existing selected keys are read in full') && line.includes('missing exact key may use a limited LIST')), true);
   const imageCalls = rclone.calls.filter(args =>
     args.some(value => typeof value === 'string' && value.includes('/exams/images/'))
   );
@@ -248,6 +251,67 @@ test('delete-only delta retains the remote object and reports the deletion', t =
   assert.equal(rclone.calls.some(args => ['delete', 'purge', 'sync'].includes(args[0])), false);
 });
 
+test('image added then deleted on another branch before merge is treated as a normal deletion', t => {
+  const { root, baseline } = createRepo(t);
+  const gitPath = `${IMAGE_ROOT}/exam/branch-only.png`;
+  git(root, ['checkout', '-b', 'feature-image']);
+  writeRepoFile(root, gitPath, 'temporary image');
+  commit(root, 'add image on feature branch');
+  unlinkSync(path.join(root, ...gitPath.split('/')));
+  const deletion = commit(root, 'delete image on feature branch');
+  git(root, ['checkout', 'main']);
+  git(root, ['merge', '--no-ff', 'feature-image', '-m', 'merge feature image history']);
+  const target = git(root, ['rev-parse', 'HEAD']);
+
+  const plan = buildDeltaPlan({ repoRoot: root, baseline, target });
+  assert.deepEqual(plan.files, []);
+  assert.deepEqual(plan.deleted.map(item => item.path), ['exam/branch-only.png']);
+  assert.equal(plan.deleted[0].deletedAt, deletion);
+
+  const rclone = fakeRclone();
+  seedRemote(rclone, baseline, {});
+  const result = runDelta(root, target, rclone);
+  assert.equal(result.deletedRetained, 1);
+  assert.equal(result.uploaded, 0);
+  assert.equal(JSON.parse(rclone.objects.get(MARKER_KEY).toString('utf8')).lastSuccessfulCommit, target);
+  assert.equal(rclone.calls.some(args => ['delete', 'purge', 'sync'].includes(args[0])), false);
+});
+
+test('merge result deletion is found when both parents contain the image', t => {
+  const { root, baseline } = createRepo(t, { 'exam/conflict.png': 'base bytes' });
+  const gitPath = `${IMAGE_ROOT}/exam/conflict.png`;
+  writeRepoFile(root, gitPath, 'main parent bytes');
+  commit(root, 'change image on main');
+  git(root, ['checkout', '-b', 'feature-delete-resolution', baseline]);
+  writeRepoFile(root, gitPath, 'feature parent bytes');
+  commit(root, 'change image on feature');
+  git(root, ['checkout', 'main']);
+  assert.throws(
+    () => execFileSync('git', ['merge', '--no-commit', '--no-ff', 'feature-delete-resolution'], { cwd: root, stdio: 'ignore' }),
+    error => error.status === 1
+  );
+  git(root, ['rm', '-f', '--', gitPath]);
+  const target = commit(root, 'merge resolution deletes image');
+
+  const parents = git(root, ['show', '-s', '--format=%P', target]).split(/\s+/).filter(Boolean);
+  assert.equal(parents.length, 2, 'the target must be a two-parent merge commit');
+  assert.notEqual(parents[0], parents[1]);
+  assert.equal(git(root, ['cat-file', '-e', `${target}^1:${gitPath}`]) === '', true);
+  assert.equal(git(root, ['cat-file', '-e', `${target}^2:${gitPath}`]) === '', true);
+
+  const plan = buildDeltaPlan({ repoRoot: root, baseline, target });
+  assert.deepEqual(plan.files, []);
+  assert.deepEqual(plan.deleted.map(item => item.path), ['exam/conflict.png']);
+  assert.equal(plan.deleted[0].deletedAt, target);
+
+  const rclone = fakeRclone();
+  seedRemote(rclone, baseline, { 'exam/conflict.png': 'base bytes' });
+  const result = runDelta(root, target, rclone);
+  assert.equal(result.deletedRetained, 1);
+  assert.equal(JSON.parse(rclone.objects.get(MARKER_KEY).toString('utf8')).lastSuccessfulCommit, target);
+  assert.deepEqual(rclone.objects.get(imagePath('exam/conflict.png')), Buffer.from('base bytes'));
+});
+
 test('rename uploads the new key and preserves the old remote key', t => {
   const oldName = `${IMAGE_ROOT}/시험지/old name.png`;
   const newName = `${IMAGE_ROOT}/시험지/new name.png`;
@@ -289,7 +353,11 @@ test('partial upload failure leaves baseline unchanged; retry uploads only the m
   const target = commit(root, 'change two images');
   rclone.setFailPut(imagePath('exam/b.png'));
 
-  assert.throws(() => runDelta(root, target, rclone), /simulated partial upload failure/);
+  const failureStats = {};
+  assert.throws(() => runDelta(root, target, rclone, { stats: failureStats }), /simulated partial upload failure/);
+  assert.equal(failureStats.comparisonTargets, 2);
+  assert.equal(failureStats.uploaded, 1);
+  assert.equal(failureStats.verificationFailures, 0);
   assert.equal(JSON.parse(rclone.objects.get(MARKER_KEY).toString('utf8')).lastSuccessfulCommit, baseline);
   assert.deepEqual(rclone.objects.get(imagePath('exam/a.png')), Buffer.from('a1'));
   assert.deepEqual(rclone.objects.get(imagePath('exam/b.png')), Buffer.from('b0'));
