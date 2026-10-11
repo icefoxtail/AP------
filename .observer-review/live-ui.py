@@ -29,7 +29,7 @@ with sync_playwright() as p:
         page.screenshot(path=str(root/'observer-live-screenshot.png'),full_page=True)
         first=page.evaluate('window.__requests')
         page.locator('#refresh').click()
-        page.wait_for_function('(n)=>window.__requests>n',first)
+        page.wait_for_function('(n)=>window.__requests>n',arg=first)
         before=page.locator('#rows').inner_text()
         page.evaluate('window.__networkFailure=true')
         page.locator('#refresh').click()
@@ -40,7 +40,7 @@ with sync_playwright() as p:
         page.locator('#refresh').click()
         page.wait_for_function('()=>document.querySelector("#updated").textContent.includes("조회 성공")')
         page.clock.fast_forward(60000)
-        page.wait_for_function('(n)=>window.__requests>n',first+2)
+        page.wait_for_function('(n)=>window.__requests>n',arg=first+2)
         assert page.locator('#rows tr').count()==actual_count
         print('CHROMIUM_LIVE_STATE_PASS: '+str(actual_count)+' rows, manual, auto 60s, last-good-on-error, recovery')
     finally: browser.close()
