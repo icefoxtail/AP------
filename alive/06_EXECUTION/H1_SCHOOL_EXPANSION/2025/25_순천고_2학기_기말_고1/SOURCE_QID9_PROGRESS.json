@@ -119,10 +119,11 @@
       16,
       17,
       18,
-      19
+      19,
+      20
     ],
-    "questions": 162,
-    "svgFiles": 86,
+    "questions": 171,
+    "svgFiles": 95,
     "finishedIndependentReviewQids": [],
     "producedItemsByQid": {
       "q01": 9,
@@ -142,7 +143,8 @@
       "q16": 9,
       "q17": 9,
       "q18": 9,
-      "q19": 9
+      "q19": 9,
+      "q20": 9
     },
     "q01File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q01_CREATE_DRAFT.json",
     "q02File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q02_CREATE_DRAFT.json",
@@ -157,7 +159,6 @@
     "expectedVariantsAtNineEach": 207,
     "remainingQids": [
       15,
-      20,
       21,
       22,
       23
@@ -193,7 +194,7 @@
     "q06ActivePT": 9,
     "q06ActiveTPL": 9,
     "q06ConditionKeyDebt": 0,
-    "rpmRecordIdsResolved": 162,
+    "rpmRecordIdsResolved": 171,
     "rpmRecordNumericDebt": 0,
     "rpmRecordCrosswalkGitBlob": "904b3768b69b300607e52217cad05bf71e34f221",
     "rpmIdCorrectionAuditPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/Q01_Q06_RPM_ID_REBIND_AUDIT.json",
@@ -291,7 +292,7 @@
     "q13InlineProblemSVGs": 9,
     "q13InlineSolutionSVGs": 9,
     "svgInlineTotalNew": 36,
-    "svgAuthoredTotalIncludingInline": 113,
+    "svgAuthoredTotalIncludingInline": 122,
     "q13ActivePT": 9,
     "q13ActiveTPL": 9,
     "q13RpmId": "H1-RPM-259",
@@ -319,7 +320,7 @@
     "q16QualityReview": "NOT_RUN",
     "q16RealBrowserRender": "NOT_RUN",
     "q15Status": "LOCAL_AUTHOR_DRAFT_AND_LIBRARY_ONLY_NOT_IN_GIT",
-    "svgTotalAppearancesAcrossStandaloneAndInline": 131,
+    "svgTotalAppearancesAcrossStandaloneAndInline": 140,
     "q16SVGsCountUnique": 9,
     "q17File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q17_CREATE_DRAFT.json",
     "q17SVGs": [
@@ -376,7 +377,25 @@
     "q19ActivePT": 9,
     "q19TPLSelectionActiveFamily": 9,
     "q19QualityReview": "NOT_RUN",
-    "q19RealBrowserRender": "NOT_RUN"
+    "q19RealBrowserRender": "NOT_RUN",
+    "q20File": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/GPT_QID9_Q20_CREATE_DRAFT.json",
+    "q20SVGs": [
+      "assets/q20-A1-solution.svg",
+      "assets/q20-A2-solution.svg",
+      "assets/q20-A3-solution.svg",
+      "assets/q20-B1-solution.svg",
+      "assets/q20-B2-solution.svg",
+      "assets/q20-B3-solution.svg",
+      "assets/q20-C1-solution.svg",
+      "assets/q20-C2-solution.svg",
+      "assets/q20-C3-solution.svg"
+    ],
+    "q20RpmId": "H1-RPM-244",
+    "q20MappingStatus": "DIRECT_ACTIVE",
+    "q20ActivePT": 9,
+    "q20ActiveTPL": 9,
+    "q20QualityReview": "NOT_RUN",
+    "q20RealBrowserRender": "NOT_RUN"
   },
   "remainingGates": [
     "q02 RPM record H1-RPM-246 exists but semantic PT/TPL direct binding gap status retained (no false ACTIVE assertion)",
@@ -388,10 +407,10 @@
     "q04 SVG6 xml/browser real render NOT_RUN (deterministic primitive only)"
   ],
   "next": {
-    "qid": 20,
-    "action": "Produce q20 next. q15 JSON/witness exists but its closure has not been adjudicated; avoid re-authoring. q19 candidate+SVG committed author-only; independent GPT review, Chrome, Consumer/index/main NOT_RUN.",
-    "handoffPrompt": "Suncheon 2025 2final QID9 branch: completed author draft q01~14 and q16~19 =162/207, q15 Git draft/witness present yet excluded until adjudicated, remaining 15+20-23. q19 RPM H1-RPM-264 RPM_ONLY; PT_FUNCTION_EXTREMUM ACTIVE and selected TPL active family, not falsely bound. 9 new solution SVG, source unmodified, Chrome and consumer/main NOT_RUN."
+    "qid": 21,
+    "action": "Proceed q21; q15 Git draft+witness already exists but source ledger completion unresolved. q20 card condition 9-slot generated AUTHOR_DRAFT_ONLY and nine solution SVG physical blobs; review and Chrome/consumer/main NOT_RUN.",
+    "handoffPrompt": "Suncheon 2025 2final: q01-q14 and q16-q20 171/207 author drafts; q15 exists but pending closure. q20 H1-RPM-244 DIRECT_ACTIVE PT_PROPOSITION_JUDGMENT/TPL_PROPOSITION_TRUTH_JUDGMENT and PT_LOGIC_CHAIN/TPL_IMPLICATION_CHAIN; 9 variants 9 SVG; exhaustive 16/32 flip masks; upcoming q21. Independent quality review, student Chrome/Consumer/main NOT_RUN."
   },
-  "lastCompletedQid": 19,
-  "lastUpdatedSourceQid": 19
+  "lastCompletedQid": 20,
+  "lastUpdatedSourceQid": 20
 }
