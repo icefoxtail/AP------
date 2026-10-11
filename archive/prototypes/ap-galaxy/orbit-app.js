@@ -112,13 +112,33 @@
       }
       if (!advanced) break;
     }
+    // A selection from the full list or point LOD must occupy an existing
+    // detailed-star slot, without raising the desktop/mobile 96/54 budget.
+    const featuredFile = state.selectedExam?.file;
+    if (featuredFile && !visibleExams.some((exam) => exam.file === featuredFile)) {
+      const featuredGroup = groups.find((group) => group.exams.some((exam) => exam.file === featuredFile));
+      const featuredExam = featuredGroup?.exams.find((exam) => exam.file === featuredFile);
+      if (featuredExam) {
+        const replaceIndex = visibleExams.findLastIndex((exam) => groupKeyForExam(exam).id === featuredGroup.id);
+        if (visibleExams.length < maxNodes) visibleExams.push(featuredExam);
+        else if (replaceIndex >= 0) visibleExams[replaceIndex] = featuredExam;
+        else visibleExams[visibleExams.length - 1] = featuredExam;
+      }
+    }
     const drawnByGroup = new Map();
     for (const exam of visibleExams) {
       const key = groupKeyForExam(exam);
       if (!drawnByGroup.has(key.id)) drawnByGroup.set(key.id, []);
       drawnByGroup.get(key.id).push(exam);
     }
-    for (const group of groups) group.items = drawnByGroup.get(group.id) || [];
+    for (const group of groups) {
+      const items = drawnByGroup.get(group.id) || [];
+      // The existing 12-label limit remains; keep the active detailed node
+      // among the visible labels when its group is focused.
+      const selectedIndex = items.findIndex((exam) => exam.file === featuredFile);
+      if (selectedIndex > 0) items.unshift(...items.splice(selectedIndex, 1));
+      group.items = items;
+    }
     return { groups, visibleExams };
   };
 
@@ -136,6 +156,7 @@
   }
   function openExam(exam) {
     if (!exam) return;
+    const wasDetailed = state.visibleExams.some((item) => item.file === exam.file);
     state.selectedExam = exam;
     state.world?.setSelectedExam(exam.file);
     const url = sourceUrl(exam);
@@ -158,6 +179,13 @@
     ui.drawer.classList.add('open');
     ui.drawer.setAttribute('aria-hidden', 'false');
     $('drawerBack').focus({ preventScroll: true });
+    if (!wasDetailed) {
+      // Open the existing preview first, then promote the selected catalog
+      // point/list item on the next paint. Ignore superseded selections.
+      requestAnimationFrame(() => {
+        if (state.selectedExam?.file === exam.file) renderScene();
+      });
+    }
   }
   function closeExam() {
     const openedExam = state.selectedExam;
