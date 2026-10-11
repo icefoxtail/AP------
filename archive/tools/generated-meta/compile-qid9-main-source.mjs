@@ -62,7 +62,7 @@ for(const entry of spec.roots){
    student.push(copy);
   }
   const unit=student[0].subUnitKey;
-  if(!unit||student.some(v=>v.subUnitKey!==unit)||!/^H22-[A-Z0-9-]+$/.test(unit))throw Error('QID9_UNIT_MISMATCH:'+name);
+  if(!unit||student.some(v=>v.subUnitKey!==unit)||!/^H22-[A-Z0-9_-]+$/.test(unit))throw Error('QID9_UNIT_MISMATCH:'+name);
   const digest=sha256(doc.source.path).slice(0,12),stem='qid9-'+digest+'-q'+String(qid).padStart(2,'0');
   const dirOut=outSource+'/'+unit;
   const shard=dirOut+'/shards/'+stem+'.js';
