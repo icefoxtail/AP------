@@ -60,15 +60,21 @@ async function groupFocus(page){
     const el=[...document.querySelectorAll('.planet-label')].find(node=>node.textContent.includes('삼산중'));
     return el && Number.isFinite(parseFloat(el.style.left));
   },null,{timeout:30000});
-  const loc=await label.evaluate(el=>({x:parseFloat(el.style.left),y:parseFloat(el.style.top)+22}));
-  if(!Number.isFinite(loc.x))throw Error('School position not projected');
-  await page.evaluate(({x,y})=>{
-    const c=document.getElementById('space');
-    c.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true,clientX:x,clientY:y,pointerId:1}));
-    c.dispatchEvent(new PointerEvent('pointerup',{bubbles:true,clientX:x,clientY:y,pointerId:1}));
-  },loc);
-  await page.waitForFunction(()=>!document.getElementById('focusedChip').hidden,null,{timeout:15000});
-  return loc;
+  // A rotating world can move the group raycast target between projection
+  // and pointerdown; refresh projection and retry the real canvas pick.
+  let loc=null;
+  for(let attempt=0;attempt<5;attempt++){
+    loc=await label.evaluate(el=>({x:parseFloat(el.style.left),y:parseFloat(el.style.top)+22}));
+    if(!Number.isFinite(loc.x)||!Number.isFinite(loc.y))throw Error('School position not projected');
+    await page.evaluate(({x,y})=>{
+      const c=document.getElementById('space');
+      c.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true,clientX:x,clientY:y,pointerId:1}));
+      c.dispatchEvent(new PointerEvent('pointerup',{bubbles:true,clientX:x,clientY:y,pointerId:1}));
+    },loc);
+    await wait(650);
+    if(await page.evaluate(()=>!document.getElementById('focusedChip').hidden))return loc;
+  }
+  throw Error('School canvas target could not be focused after 5 projected picks');
 }
 async function fps(page){
   await page.locator('#motionToggle').evaluate(el=>{if(el.getAttribute('aria-pressed')==='true')el.click()});
