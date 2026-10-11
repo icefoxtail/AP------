@@ -257,3 +257,57 @@ jobs:
           path: ${{ runner.temp }}/gpt2-seals
           if-no-files-found: error
           retention-days: 30
+
+  bundle-b13-official-runner:
+    # A PR-scoped transport job, never a substitute validator or release.
+    if: github.event_name == 'pull_request' && github.head_ref == 'ops/b13-official-validator-bundle-20261011'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout exact canonical source and runtime data
+        uses: actions/checkout@v4
+        with:
+          ref: e7d14c31e4a627698aff6a26c5448c44375407ac
+          path: authority
+          sparse-checkout: |
+            archive/tools
+            archive/data
+            archive/fixtures
+            archive/exams/original/high/h1/2mid
+            archive/assets/images/25_매산여고_2학기_중간_고1_기출
+            archive/assets/images/25_효천고_2학기_중간_고1_기출
+            archive/assets/images/25_제일고_2학기_중간_고1_기출
+            docs/rules/01_CANONICAL
+      - name: Package real official validator tree and baseline files
+        shell: bash
+        env:
+          PINNED_SHA: e7d14c31e4a627698aff6a26c5448c44375407ac
+        run: |
+          set -euo pipefail
+          actual="$(git -C authority rev-parse HEAD)"
+          test "$actual" = "$PINNED_SHA"
+          test -f authority/archive/tools/archive-stage-validator.mjs
+          test -f authority/archive/tools/archive-stage-validator-artifact-v2.mjs
+          test -f authority/archive/tools/meta-foundation/active-registry.mjs
+          test -f authority/archive/data/gpt-quality-calibration-registry-v2.json
+          test -f authority/archive/data/meta-foundation/canonical/registry_index.json
+          test -f authority/archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json
+          test -f authority/archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js
+          test -f authority/archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md
+          mkdir -p authority/.git
+          printf '%s\n' "$PINNED_SHA" > authority/BUNDLE_PINNED_COMMIT.txt
+          (
+            cd authority
+            find archive docs -type f -print0 | sort -z | xargs -0 sha256sum > BUNDLE_SHA256SUMS.txt
+          )
+          tar -czf "$RUNNER_TEMP/b13-official-validator-e7d14c31.tar.gz" -C authority --exclude='./.git' .
+          ls -lh "$RUNNER_TEMP/b13-official-validator-e7d14c31.tar.gz"
+      - name: Upload pinned official Node22 runner bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: b13-official-validator-e7d14c31
+          path: ${{ runner.temp }}/b13-official-validator-e7d14c31.tar.gz
+          if-no-files-found: error
+          retention-days: 7
