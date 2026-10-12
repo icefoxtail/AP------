@@ -61,13 +61,24 @@ async function main(){
   for(const mode of ['exam','ans','sol']){
    exceptions.length=0;
    await send('Page.navigate',{url:base+'&mode='+mode});
-   let ready=false;
-   for(let i=0;i<1200;i++){
-    const r=await evaluate("(()=>({mode:window.AppState?.mode,done:!!window.__AP_RENDER_METRICS__?.finishedAt,pages:document.querySelectorAll('#print-area .page').length,root:!!document.getElementById('print-area')}))()");
-    if(r.mode===mode&&r.done&&r.pages>0&&r.root){ready=true;break;}
+   let ready=false, lastObserved=null;
+   for(let i=0;i<600;i++){
+    try {
+     const r=await evaluate("(()=>({mode:window.AppState?.mode,legacyDone:!!window.__AP_RENDER_METRICS__?.finishedAt,snapshotMode:window.archiveScreenRuntime?.activeSnapshot?.mode||null,snapshotReady:!!window.archiveScreenRuntime?.activeSnapshot,pages:document.querySelectorAll('#print-area .page').length,root:!!document.getElementById('print-area'),error:document.querySelector('.error-message')?.textContent||''}))()");
+     lastObserved=r;
+     if(r.mode===mode && r.root && r.pages>0 && (r.legacyDone || (r.snapshotReady && r.snapshotMode===mode))){
+      const idle=await evaluate("(async()=>{const r=window.archiveScreenRuntime?await window.archiveScreenRuntime.whenIdle():await window.__AP_RENDER_READY__;return {ok:r?.ok??null,pages:r?.pages??null}})()");
+      if(idle.ok===true){ready=true;break;}
+      lastObserved={...r,idle};
+     }
+    }catch(err){lastObserved={...lastObserved,transientEvaluationError:String(err)};}
     await sleep(100);
    }
-   if(!ready)throw Error('Chrome '+mode+' render never became ready');
+   if(!ready){
+    fs.writeFileSync(path.join(out,'debug-'+mode+'.json'),JSON.stringify({lastObserved,exceptions},null,2));
+    try{const snap=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true});fs.writeFileSync(path.join(out,'debug-'+mode+'.png'),Buffer.from(snap.data,'base64'));}catch(_){}
+    throw Error('Chrome '+mode+' render not ready: '+JSON.stringify(lastObserved));
+   }
    const state=await evaluate("(()=>{const p=document.getElementById('print-area'),pages=[...p.querySelectorAll('.page')];const images=[...p.querySelectorAll('img')];return {mode:window.AppState?.mode,visibleChars:p.innerText?.length||p.textContent.length,text:p.innerText||p.textContent,pages:pages.length,questionBoxes:p.querySelectorAll('.q-box').length,solutionBoxes:p.querySelectorAll('.sol-box').length,svgCount:p.querySelectorAll('svg').length,images:images.map(x=>({src:x.getAttribute('src'),loaded:x.complete&&x.naturalWidth>0})),unrenderedMath:window.APRenderLoop?.unrenderedMathCount?.(p)??null,metrics:window.__AP_RENDER_METRICS__}})()");
    assert(state.pages>0,mode+' no printed pages');
    assert(state.visibleChars>(mode==='ans'?70:400),mode+' output blank');
@@ -89,6 +100,6 @@ async function main(){
    console.log('CHROME_PRINT_PASS',mode,'pages='+state.pages,'qboxes='+state.questionBoxes,'solboxes='+state.solutionBoxes,'images='+state.images.length,'pdfBytes='+bytes.length);
   }
   fs.writeFileSync(path.join(out,'receipt.json'),JSON.stringify({target:exam,chromeExecutable:chrome,sourceQuestionCount:questions.length,results},null,2)+'\n');
- }finally{ws?.close();proc.kill('SIGTERM');server.close();fs.rmSync(temp,{recursive:true,force:true});}
+ }finally{ws?.close();proc.kill('SIGTERM');server.close();try{fs.rmSync(temp,{recursive:true,force:true,maxRetries:5,retryDelay:250});}catch(e){console.warn('Chrome temp cleanup deferred:',e.code);}}
 }
 main().catch(err=>{console.error(err);process.exitCode=1;});
