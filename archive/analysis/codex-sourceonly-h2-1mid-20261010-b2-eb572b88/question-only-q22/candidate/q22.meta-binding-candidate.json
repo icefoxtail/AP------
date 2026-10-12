@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "JS_ARCHIVE_GENERATED_ONLY_BINDING_CANDIDATE_V1",
+  "target": {
+    "examUid": "24_순천여고_1학기_중간_고2_확률과통계",
+    "qid": 22,
+    "questionUid": "qid_v1_4e25e81fca268d29a0d15378271663cd5df1473edff935d268eec94742ea4d9c",
+    "sourceMode": "QUESTION_ONLY"
+  },
+  "artifact": {
+    "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/candidate/24_순천여고_1학기_중간_고2_확률과통계.q22-candidate.js",
+    "sha256": "789e165fe1fb99aed5aa55634df1a557a7d9ac5348f3293a3b34ecd2407e6e93",
+    "gitBlobSha": "a21567853ee8a2e173dd37ef10f5bfea4dead5c1"
+  },
+  "scope": {
+    "onlyThisCandidateQid": true,
+    "targetUidCount": 1,
+    "qids": [
+      22
+    ],
+    "replacementMode": "QUESTION_ONLY"
+  },
+  "authorityRef": {
+    "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/ROOT.q22-authority.json",
+    "sha256": "7d311acc8ef06a678d879ef405a26a493c7c1ce283486e133cbc0c7d92afcd3f"
+  },
+  "replacedItemMetaCopied": false,
+  "reviewStatus": "CANDIDATE_WITH_EXACT_RPM_EVIDENCE_DEBT",
+  "metadata": {
+    "standardCourse": "확률과 통계",
+    "standardUnitKey": "H15-PS-02",
+    "standardUnit": "이항정리",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+    "subUnit": "이항정리",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_BINOMIAL_THEOREM",
+    "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "level": "상",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE"
+  },
+  "canonicalEvidence": {
+    "curriculumBinding": {
+      "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/bindings.json",
+      "status": "ACTIVE",
+      "mapping": "2015; H15-PS-02 / H15-PS-02-BINOMIAL_BASIC; PT_BINOMIAL_THEOREM"
+    },
+    "problemType": {
+      "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/taxonomy.json",
+      "key": "PT_BINOMIAL_THEOREM",
+      "status": "ACTIVE"
+    },
+    "template": {
+      "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/taxonomy.json",
+      "key": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "parentProblemTypeKey": "PT_BINOMIAL_THEOREM",
+      "status": "ACTIVE"
+    },
+    "conditions": {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+      "keys": [
+        {
+          "key": "COND_NATURAL_NUMBER",
+          "supports": "n is natural and r is an integer index in the natural range"
+        },
+        {
+          "key": "COND_RANGE",
+          "supports": "1<=r<n is necessary to delimit the five tested indices"
+        }
+      ]
+    }
+  },
+  "rpmEvidenceDebt": {
+    "status": "EVIDENCE_DEBT",
+    "l1": "경우의 수",
+    "l2": "이항정리",
+    "l3": null,
+    "l4": null,
+    "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+    "records": [
+      {
+        "id": "H2-PS-RPM-009",
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "bindingStatus": "MISSING",
+        "rpmL3": "이항계수",
+        "rpmL4": "이항계수의 성질"
+      },
+      {
+        "id": "H2-PS-RPM-010",
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "bindingStatus": "MISSING",
+        "rpmL3": "이항계수",
+        "rpmL4": "조합 항등식"
+      }
+    ],
+    "exactReason": "The replacement combines a weighted binomial sum with an adjacent binomial-coefficient identity. Current locked high2 RPM rows 009/010 have DIRECT_BINDING_GAP and MISSING binding; no authorized Generated-only L4 registry under the H15-PS-02-BINOMIAL_BASIC parent is present. Preserve L3/L4 as unresolved and do not assign a guessed or Generated RPM key to this original exam slot.",
+    "downstreamDependency": "Generated curriculum search/index projection and eligibility that require a bound RPM L3/L4 remain unresolved until ROOT routes an authorized extension path; the canonical 2015 curriculum unit, active PT/TPL, condition metadata, math answer, and current q22 item candidate are independently evidenced."
+  }
+}

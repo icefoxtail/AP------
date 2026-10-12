@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_CALIBRATION_PREFLIGHT_V1",
+  "stage": "R1",
+  "examUid": "25_금당고_1학기_중간_고2_수학I",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "performedBeforeR1Evidence": true,
+  "observedAt": "2026-10-10T02:08:49.897Z",
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+      "items": [
+        {
+          "qid": 7,
+          "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+          "observation": "Actual solution text separates completing the square, applying translation to the center, then origin symmetry; rendered SVG shows the two intermediate centers and final center (5,-2) with radius 3.",
+          "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+          "visualRead": {
+            "opened": true,
+            "method": "sharp SVG raster + functions.view_image",
+            "ref": "assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+            "sha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d"
+          }
+        },
+        {
+          "qid": 8,
+          "solutionSha256": "7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+          "observation": "Actual solution text derives coefficient signs from the displayed source graph then infers the new line intercepts/quadrants; actual problem PNG and solution SVG sign-flow panel were opened.",
+          "visualSha256": "e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430",
+          "visualRead": {
+            "opened": true,
+            "method": "sharp SVG raster + functions.view_image",
+            "ref": "assets/images/25_매산여고_2학기_중간_고1_기출/q8-solution.svg",
+            "sha256": "e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430"
+          },
+          "problemAssetRead": {
+            "opened": true,
+            "ref": "assets/images/25_매산여고_2학기_중간_고1_기출/q8.png",
+            "sha256": "adf33b45581c72f08efb4ea6c3b0d9f2a141b9b66b6384bf6507ccf64c62b999",
+            "sourceFidelity": "EXACT_EXTRACTED_IMAGE"
+          }
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "items": [
+        {
+          "qid": 2,
+          "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+          "observation": "Actual solution obtains slopes -1/3 and k/2 then solves k=6; rendered SVG line slopes -1/3 and 3 are perpendicular.",
+          "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+          "visualRead": {
+            "opened": true,
+            "method": "sharp SVG raster + functions.view_image",
+            "ref": "assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+            "sha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4"
+          }
+        },
+        {
+          "qid": 3,
+          "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+          "observation": "Actual solution completes squares to center (-1,3), radius 2; rendered circle centers at (-1,3) and passes through (1,3), exactly radius 2.",
+          "visualSha256": "752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c",
+          "visualRead": {
+            "opened": true,
+            "method": "sharp SVG raster + functions.view_image",
+            "ref": "assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg",
+            "sha256": "752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c"
+          }
+        }
+      ]
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+    "observation": "Read the fixed false-PASS regression: labels alone are insufficient; recompute geometry from primitives, and check solution board structure plus metadata lookup. In the actual q3 bad SVG, labeled 7x+y-15=0 has positive-slope primitive, while P(-1,2) to H(9/5,12/5) has slope 1/7, so it is not perpendicular."
+  },
+  "negativeSvgRead": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q3-solution.bad.svg",
+    "sha256": "d54d2d297072ff1fcb53f4f60b7ebb2516eaa286f1afee04e8b8ba47caeddaf2",
+    "renderPath": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010\\R1_25_금당고_20261010_codex\\negative-bokseong-q3.png",
+    "renderSha256": "5e7d4ccd91998aefbf832699d35978f3bb45ea40bde7ea488aafb6a2ad910764",
+    "opened": true,
+    "observation": "Rendered actual negative SVG and inspected coordinates/line orientation; positive slope contradicts the stated negative slope and perpendicular relation."
+  }
+}

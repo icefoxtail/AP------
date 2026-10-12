@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_TECHNICAL_AND_PROCESS_ATTEMPTS_V1",
+  "executionLine": "CODEX",
+  "examUid": "24_매산여고_1학기_중간_고2_수학I",
+  "attempts": [
+    {
+      "attempt": "initial-freeze",
+      "status": "FAILED_BEFORE_FREEZE_WRITE",
+      "reason": "PowerShell serialized a one-item assetReads acknowledgement as an object; stage kit raised assetReads.some is not a function.",
+      "correction": "Preserved the failed attempt and rewrote the acknowledgement as a JSON array."
+    },
+    {
+      "attempt": "second-freeze",
+      "status": "FAILED_BEFORE_FREEZE_WRITE",
+      "reason": "PowerShell array handling produced a nested array; the acknowledgement did not match ref/sha256/opened.",
+      "correction": "Wrote an explicit one-level Node JSON array."
+    },
+    {
+      "attempt": "freeze-final",
+      "status": "SUCCESS",
+      "ref": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-1mid-20261010\\AP------\\archive\\analysis\\24_매산여고_1학기_중간_고2_수학I\\r1-clean-20261011\\r1-original-freeze.json",
+      "sha256": "4688639cb7a4abedba707b70014787d45ff2ae9c44231e724066295e273e9d15"
+    },
+    {
+      "attempt": "postfreeze-diagnostic-read",
+      "status": "FAILED_AFTER_DISCLOSURE_WRITE",
+      "reason": "A follow-up diagnostic used a mistyped Unicode path after the postfreeze disclosure was already written.",
+      "correction": "Corrected the path; printed the qid/stored-answer rows. Disclosure integrity was intact."
+    },
+    {
+      "attempt": "q18-meta-repair-first-ledger-write",
+      "status": "MUTATION_APPLIED_LEDGER_WRITE_FAILED",
+      "reason": "The five exact q18 metadata changes were applied and student parity passed, then a typo referenced beforeRawSha256 instead of beforeSha256 at the final ledger write.",
+      "correction": "Preserved the q18 before snapshot and reconstructed a durable ledger from current bytes; see r1-q18-meta-repair-evidence-v2.json."
+    },
+    {
+      "attempt": "q18-meta-repair-ledger-recovery-first-path",
+      "status": "FAILED_BEFORE_LEDGER_WRITE",
+      "reason": "Recovery script used a mistyped bundle folder segment.",
+      "correction": "Corrected to the exact assigned evidence directory; parity then passed and ledger was written."
+    },
+    {
+      "attempt": "q14-svg-entity-precheck",
+      "status": "FAILED_BEFORE_ASSET_WRITE",
+      "reason": "Expected five double-escaped less-than entities; actual exact count was four.",
+      "correction": "Updated exact-count guard to four; next guard then confirmed no double-escaped greater-than entity, so only actual double-escaped less-than entities were repaired."
+    },
+    {
+      "attempt": "difficulty-first-pass",
+      "status": "FAILED_DIFFICULTY_BLIND_ORDER",
+      "reason": "Current-source level and difficultyBucket values were exposed before the canonical difficulty first-pass.",
+      "correction": "Do not claim difficulty PASS. ROOT dispatches a clean full-qid difficulty-only review; all 24 remain pending."
+    },
+    {
+      "attempt": "clean-difficulty-level-source-write-ledger-summary",
+      "status": "MUTATION_APPLIED_LEDGER_WRITE_FAILED",
+      "reason": "All 14 clean difficulty bucket edits and four independently adjudicated level edits were written to source and current student parity passed; final script summary then raised ReferenceError because it used studentParity instead of parity.",
+      "correction": "Preserved source-before snapshot and reconstructed application ledger from current source plus clean freeze/comparison evidence; see r1-difficulty-level-application-ledger.json."
+    },
+    {
+      "attempt": "generic-r1-validator-invocation-unknown-output-flag",
+      "status": "FAILED_BEFORE_VALIDATION",
+      "reason": "First CLI invocation supplied unsupported --output; validator rejected argument before reading evidence or producing a report.",
+      "correction": "Use the supported --json mode with shell redirection to preserve the raw JSON report."
+    },
+    {
+      "attempt": "generic-r1-validator-initial-evidence-v1",
+      "status": "FAILED_EVIDENCE_SCHEMA",
+      "reportRef": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r1-clean-20261011/r1-stage-validator.raw.json",
+      "reason": "Raw V2 validator found missing examUid and per-row independentAnswerFrozenBeforeStoredAnswer fields across q1–q24; artifact contract itself passed.",
+      "correction": "Added exact exam UID, freeze-order flags, and explicit repair dispositions for changed qids; rebound evidence to the same current source and reran validator."
+    },
+    {
+      "attempt": "generic-r1-validator-cli-correction",
+      "status": "FAILED_BEFORE_VALIDATION",
+      "reportRef": null,
+      "reason": "Unsupported --output argument rejected before validation.",
+      "correction": "Reran supported --json validator with shell redirection to preserve the raw report."
+    },
+    {
+      "attempt": "generic-r1-validator-final",
+      "status": "PASS",
+      "reportRef": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r1-clean-20261011/r1-stage-validator.raw.v2.json",
+      "reportSha256": "e88269b38eda944207265f2094a567a75509d2834971b072c73bc6e1fbc5011b",
+      "evidenceRef": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r1-clean-20261011/r1-final-evidence.v2.json",
+      "evidenceSha256": "45575c2497325ff2a5464c4ecf2c09039284b15ad8ab03f1a39ded2d6b298c21",
+      "qidCount": 24,
+      "issues": []
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "correction": "Rewrote r1-asset-reads.json with ConvertTo-Json -AsArray; no freeze was emitted or replaced.",
+    "status": "FAILED_BEFORE_FREEZE_WRITE",
+    "at": "2026-10-10T15:38:22.4351732Z",
+    "reason": "PowerShell serialized one-element assetReads array as object; stage kit received a non-array",
+    "attempt": "initial-freeze"
+  },
+  {
+    "at": "2026-10-10T15:38:41.654Z",
+    "attempt": "second-freeze",
+    "status": "FAILED_BEFORE_FREEZE_WRITE",
+    "reason": "PowerShell array nesting produced a nested one-element array; assetReads did not match acknowledgement schema",
+    "correction": "Replaced asset acknowledgement with explicit Node JSON array; no freeze was emitted or replaced."
+  },
+  {
+    "at": "2026-10-10T15:40:30.642Z",
+    "attempt": "postfreeze-answer-display",
+    "status": "FAILED_AFTER_DISCLOSURE_WRITE",
+    "reason": "Follow-on diagnostic read used an incorrectly typed path; postfreeze disclosure itself completed with exact freeze/bundle/source binding",
+    "correction": "Corrected the path and printed only qid plus stored answer for comparison."
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "JS_ARCHIVE_FREEZE_ADJUDICATION_V1",
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\r2_suncheon_yeo_prob\\original-freeze.json",
+    "sha256": "150f07af9311b4cfabc6331345bd554aa8bd0d3be5f3eaa4253a91922a449981"
+  },
+  "createdAt": "2026-10-10T17:11:49.524Z",
+  "corrections": [
+    {
+      "qid": 22,
+      "correctedAnswer": "TRUE_ITEM_HOLD_NONUNIQUE_INTEGER_TUPLE",
+      "reason": "Independent post-freeze cardinality adjudication: the binomial sum equals (3^8-1)+(2^8-1)=6815. The exact prompt gives only integer a,b,c,n and a<b. Both (0,1,6814,1) and (2,3,-2,8) satisfy a^n+b^n+c=6815 and a<b, so the requested tuple is not unique. Preserve the exact student source and record q22 item HOLD; do not invent a condition.",
+      "originalAnswer": "6815; no unique (a,b,c,n)"
+    }
+  ],
+  "originalFreezeMutated": false
+}

@@ -1,0 +1,260 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_STATIC_SOLUTION_VISUAL_AUDIT_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "24_\uac15\ub0a8\uc5ec\uace0_1\ud559\uae30_\uc911\uac04_\uace02_\ud655\ub960\uacfc\ud1b5\uacc4",
+  "artifactRawSha256": "7597f74e213a7bffab8a30fab9eb23e5b438f159772c95f4c99841b0fb03fa25",
+  "artifactGitBlobSha1": "09db9c01375f237bb782ca013ceefb087336256a",
+  "expectedFactsRef": "archive/analysis/24_\uac15\ub0a8\uc5ec\uace0_1\ud559\uae30_\uc911\uac04_\uace02_\ud655\ub960\uacfc\ud1b5\uacc4/r1/r1-solution-visual-expected-facts-frozen.json",
+  "expectedFactsSha256": "349da21f6259a87170ca635b77db89fef176a38c799833148b811c4f02fb8d71",
+  "rows": [
+    {
+      "qid": 6,
+      "assetRef": "assets/images/24_\uac15\ub0a8\uc5ec\uace0_1\ud559\uae30_\uc911\uac04_\uace02_\ud655\ub960\uacfc\ud1b5\uacc4/q06-solution.svg",
+      "sourceRawSha256": "7597f74e213a7bffab8a30fab9eb23e5b438f159772c95f4c99841b0fb03fa25",
+      "solutionSha256": "179b3666c572dc7322b52877c0e72dc26bc0f277e82bcdc09724dad7a504ed37",
+      "svgSha256": "3c6eb3db063b537e580f14619e5b20e545ed3d48018ee577b79e3e95bec846cb",
+      "svgGitBlobSha1": "232affc03a5e61fd5a87bc11e57bfdd89218d086",
+      "staticPreviewSha256": "b18456e254b7a1472efa16a6c8bf85e338274c6a5bf3a2b0c31cf146ff675358",
+      "expectedFacts": [
+        {
+          "fact": "five distinct students occupy a circle and define five cyclic gaps",
+          "role": "GIVEN",
+          "value": 5
+        },
+        {
+          "fact": "three distinct teachers occupy three different gaps",
+          "role": "DERIVED_INTERMEDIATE",
+          "value": 3
+        },
+        {
+          "fact": "every two teacher positions have at least one student position between them",
+          "role": "CONCLUSION",
+          "value": true
+        }
+      ],
+      "observedFacts": {
+        "xmlParse": "PASS",
+        "primitiveCounts": {
+          "circle": 6,
+          "rect": 6,
+          "polygon": 0,
+          "line": 0
+        },
+        "recomputed": {
+          "studentSeatLabels": 5,
+          "teacherLabels": 3,
+          "unselectedGapLabels": 2,
+          "alternatingSlotsTotal": 10
+        }
+      },
+      "staticPreviewRenderer": "ImageMagick 7.1.2; human-opened",
+      "actualArchiveBrowserRender": "NOT_RUN_R1_RENDER_PENDING_R3",
+      "semanticParity": "STATIC_PASS",
+      "renderStatus": "RENDER_PENDING_R3"
+    },
+    {
+      "qid": 9,
+      "assetRef": "assets/images/24_\uac15\ub0a8\uc5ec\uace0_1\ud559\uae30_\uc911\uac04_\uace02_\ud655\ub960\uacfc\ud1b5\uacc4/q09-solution.svg",
+      "sourceRawSha256": "7597f74e213a7bffab8a30fab9eb23e5b438f159772c95f4c99841b0fb03fa25",
+      "solutionSha256": "59abfe4a05887b8f4908288177c0485baf0a9f6bb3453cee70db1c69c4a025ef",
+      "svgSha256": "825d1a21545bf9bd33f8f6a7e263bd0ef55babb8e970eb99918874bc23623a9a",
+      "svgGitBlobSha1": "3b247ce44240cf43f78797b276720868ff6a3922",
+      "staticPreviewSha256": "906e73ce6c4f65604b6128878cbc789b4e016ed1734cc6e889613057e4ac75da",
+      "expectedFacts": [
+        {
+          "fact": "road network vertex coordinates available",
+          "x": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "y": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "role": "GIVEN"
+        },
+        {
+          "fact": "edge topology",
+          "horizontalRows": [
+            "x0..x4@y0",
+            "x0..x5@y1",
+            "x1..x5@y2",
+            "x1..x5@y3"
+          ],
+          "role": "GIVEN",
+          "verticalColumns": [
+            "x0@y0..y1",
+            "x1@y0..y3",
+            "x2@y0..y3",
+            "x3@y0..y3",
+            "x4@y0..y3",
+            "x5@y1..y3"
+          ]
+        },
+        {
+          "fact": "shortest-path count at each valid vertex is sum of left and above",
+          "role": "DERIVED_INTERMEDIATE",
+          "value": "DP recurrence"
+        },
+        {
+          "fact": "count at B(x5,y3)",
+          "role": "CONCLUSION",
+          "value": 49
+        }
+      ],
+      "observedFacts": {
+        "xmlParse": "PASS",
+        "primitiveCounts": {
+          "circle": 21,
+          "rect": 1,
+          "polygon": 0,
+          "line": 32
+        },
+        "recomputed": {
+          "intersectionNodes": 21,
+          "roadSegments": 32,
+          "horizontalSegments": 17,
+          "verticalSegments": 15,
+          "allVertexCountsMatchLeftPlusAboveDP": true,
+          "BCountFromActualNetwork": 49,
+          "BLabel": true
+        }
+      },
+      "staticPreviewRenderer": "ImageMagick 7.1.2; human-opened",
+      "actualArchiveBrowserRender": "NOT_RUN_R1_RENDER_PENDING_R3",
+      "semanticParity": "STATIC_PASS",
+      "renderStatus": "RENDER_PENDING_R3"
+    },
+    {
+      "qid": 11,
+      "assetRef": "assets/images/24_\uac15\ub0a8\uc5ec\uace0_1\ud559\uae30_\uc911\uac04_\uace02_\ud655\ub960\uacfc\ud1b5\uacc4/q11-solution.svg",
+      "sourceRawSha256": "7597f74e213a7bffab8a30fab9eb23e5b438f159772c95f4c99841b0fb03fa25",
+      "solutionSha256": "db839db07b949efde9ce716e7499f4f36733f8a23f891ad36fe1d37763d7118a",
+      "svgSha256": "daf37b2c3f8407c40e60e3bbcd2ad342ea7ca667f4d86a86f9d0cf32794eafc2",
+      "svgGitBlobSha1": "7a3e8d44cdb581c7adce01482a7ab59c188df3ca",
+      "staticPreviewSha256": "6a89dbe3c760752683a67e0069f71e9d403f71c8bd546b8cdb3b85a68ab50629",
+      "expectedFacts": [
+        {
+          "distribution": "2 on each of 6 sides",
+          "fact": "hexagonal table seats",
+          "role": "GIVEN",
+          "value": 12
+        },
+        {
+          "rotation": "60 degrees",
+          "fact": "hex table distinct rotational symmetries",
+          "role": "DERIVED_INTERMEDIATE",
+          "value": 6
+        },
+        {
+          "distribution": "3 on each long side and 2 on each short side",
+          "fact": "rectangular table seats",
+          "role": "GIVEN",
+          "value": 10
+        },
+        {
+          "rotation": "180 degrees",
+          "fact": "rectangle distinct rotational symmetries",
+          "role": "DERIVED_INTERMEDIATE",
+          "value": 2
+        },
+        {
+          "formula": "(12!/6)/(10!/2)",
+          "fact": "arrangement ratio",
+          "role": "CONCLUSION",
+          "value": 44
+        }
+      ],
+      "observedFacts": {
+        "xmlParse": "PASS",
+        "primitiveCounts": {
+          "circle": 22,
+          "rect": 2,
+          "polygon": 1,
+          "line": 1
+        },
+        "recomputed": {
+          "seatMarkers": 22,
+          "hexagonSides": 6,
+          "sixfoldRotationLabel": true,
+          "twofoldRotationLabel": true,
+          "ratio44": true
+        }
+      },
+      "staticPreviewRenderer": "ImageMagick 7.1.2; human-opened",
+      "actualArchiveBrowserRender": "NOT_RUN_R1_RENDER_PENDING_R3",
+      "semanticParity": "STATIC_PASS",
+      "renderStatus": "RENDER_PENDING_R3"
+    },
+    {
+      "qid": 18,
+      "assetRef": "assets/images/24_\uac15\ub0a8\uc5ec\uace0_1\ud559\uae30_\uc911\uac04_\uace02_\ud655\ub960\uacfc\ud1b5\uacc4/q18-solution.svg",
+      "sourceRawSha256": "7597f74e213a7bffab8a30fab9eb23e5b438f159772c95f4c99841b0fb03fa25",
+      "solutionSha256": "06df92d0cbaab07c7018687dfc202ef1058e5cc426de9f44f0b2a3a654e68f84",
+      "svgSha256": "83cf0cce38e7c3485126666772eb7ae7cf887f60193dc2032cd8a967781ffdc1",
+      "svgGitBlobSha1": "485696bfb34933d2e793dc8923b022fd8b089f07",
+      "staticPreviewSha256": "dc20a5f37189f47b0fee28e808fa0bdb565e943f581e6857a9788bcd49ed85e8",
+      "expectedFacts": [
+        {
+          "fact": "seven distinct students occupy a circle",
+          "role": "GIVEN",
+          "value": 7
+        },
+        {
+          "fact": "two first-year students form one adjacent block",
+          "internalOrders": 2,
+          "role": "DERIVED_INTERMEDIATE",
+          "value": 1
+        },
+        {
+          "fact": "two neighbors of the first-year block must be second-year students",
+          "role": "DERIVED_INTERMEDIATE",
+          "value": 2
+        },
+        {
+          "fact": "remaining three seats contain one second-year and two third-year students",
+          "role": "GIVEN",
+          "counts": {
+            "grade3": 2,
+            "grade2": 1
+          }
+        },
+        {
+          "formula": "2 * 3P2 * 3!",
+          "fact": "arrangement count",
+          "role": "CONCLUSION",
+          "value": 72
+        }
+      ],
+      "observedFacts": {
+        "xmlParse": "PASS",
+        "primitiveCounts": {
+          "circle": 1,
+          "rect": 8,
+          "polygon": 0,
+          "line": 0
+        },
+        "recomputed": {
+          "seatSlots": 7,
+          "grade1Slots": 2,
+          "grade2Slots": 3,
+          "grade3Slots": 2,
+          "count72": true
+        }
+      },
+      "staticPreviewRenderer": "ImageMagick 7.1.2; human-opened",
+      "actualArchiveBrowserRender": "NOT_RUN_R1_RENDER_PENDING_R3",
+      "semanticParity": "STATIC_PASS",
+      "renderStatus": "RENDER_PENDING_R3"
+    }
+  ],
+  "actualArchiveBrowserRender": "NOT_RUN_R1_RENDER_PENDING_R3",
+  "actualRenderPassAsserted": false
+}

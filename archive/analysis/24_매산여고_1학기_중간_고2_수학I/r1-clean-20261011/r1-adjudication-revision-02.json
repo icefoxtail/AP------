@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "JS_ARCHIVE_FREEZE_ADJUDICATION_V1",
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-1mid-20261010\\AP------\\archive\\analysis\\24_매산여고_1학기_중간_고2_수학I\\r1-clean-20261011\\r1-original-freeze.json",
+    "sha256": "4688639cb7a4abedba707b70014787d45ff2ae9c44231e724066295e273e9d15"
+  },
+  "createdAt": "2026-10-10T15:41:42.407Z",
+  "corrections": [
+    {
+      "qid": 6,
+      "correctedAnswer": "7 (choice ②)",
+      "reason": "The original freeze misread the graph's lower intersection. At integer x values the opened raster shows f(2)>g(2), f(3)<g(3), f(4)<g(4), and x=5 is an equality point. Since 0<2/3<1, the exponential inequality is equivalent to f(x)<g(x); satisfying natural numbers are 3 and 4, sum 7. Original freeze preserved.",
+      "originalAnswer": "9 (choice ④)"
+    },
+    {
+      "qid": 18,
+      "correctedAnswer": "55 (choice ①)",
+      "reason": "The original freeze miscounted the overlap ranges. The branch intersection ranges are n=1..9, 5..99, 50..999. Exactly two branches intersect for n=5..9 or 50..99, giving 5+50=55. Original freeze preserved.",
+      "originalAnswer": "45 (choice ③)"
+    },
+    {
+      "qid": 22,
+      "correctedAnswer": "−63√15/256",
+      "reason": "The original freeze incorrectly factored sin^6−cos^6 as (sin²−cos²)(sin²+cos²). Correctly, with s+c=√3/2, sc=−1/8, and quadrant IV: s−c=−√5/2; s²−c²=−√15/4; s^4+s²c²+c^4=(s²+c²)^2−s²c²=63/64. Product is −63√15/256. Original freeze preserved.",
+      "originalAnswer": "−√15/4"
+    },
+    {
+      "qid": 24,
+      "correctedAnswer": "344",
+      "reason": "The original freeze miscomputed x=4. For a=3,b=4,c=7, f(4)=2^3+3=11 and g(4)=7.5−16=−8.5, giving 20 integer y-values (−8 through 11); x=5,6,7 contribute 44,92,188. Total 344. Original freeze preserved.",
+      "originalAnswer": "333"
+    }
+  ],
+  "originalFreezeMutated": false
+}

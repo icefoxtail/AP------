@@ -1,0 +1,356 @@
+{
+  "schemaVersion": "GD25_Q19_CREATOR_SELF_REVIEW_V1",
+  "sourceQid": 19,
+  "sourceExamBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "candidateSourceJsBlobSha": "35249a7249fe7099388c4835e23c20b00f57435f",
+  "mathSpecBlobSha": "2234a0a7e5912ede633400c56026df6094c4b616",
+  "lockedPrimaryL3": "H1-RPM-258",
+  "candidateCount": 9,
+  "keep": 9,
+  "hold": 0,
+  "formalIndependentQualityReview": false,
+  "actualBrowserRender": "NOT_TESTED",
+  "mainMerged": false,
+  "answerDistribution": {
+    "①": 2,
+    "②": 1,
+    "③": 2,
+    "④": 2,
+    "⑤": 2
+  },
+  "visual": {
+    "problemSvgCount": 0,
+    "solutionSvgCount": 9,
+    "physicalCoordinateCheck": "NORMALIZED_SVG_PATH_AND_FOUR_INTERSECTION_COORDINATES_STATIC_CHECKED; CHROME_NOT_TESTED",
+    "rendererExecuted": false,
+    "visualCorrection": "The plotted normalized function is |t²−1| and the horizontal line is y/d=0.42, guaranteeing four distinct real intersections."
+  },
+  "rows": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q19-A1",
+      "answer": "③",
+      "value": 10,
+      "reverseStemFinding": "최종 발문에서 네 서로 다른 원상 조건을 읽고 |(x−h)^2−d|=k의 두 제곱방정식에서 각 근의 수를 역산했다.",
+      "rpmNecessity": "상수함숫값 k가 네 서로 다른 원상을 갖는 필요충분조건 판정이 결정 단계다.",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "가능한 k는 1,2,3,4 네 개이므로 합 대신 개수를 답해 4"
+        },
+        {
+          "index": "②",
+          "mistake": "가장 작은 유효값 k=1을 빠뜨려 2+3+4=9"
+        },
+        {
+          "index": "④",
+          "mistake": "올바른 합 10에 k=1을 한 번 더 더해 11"
+        },
+        {
+          "index": "⑤",
+          "mistake": "경계 k=d=5까지 잘못 포함하여 1+2+3+4+5=15"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
+      "solutionVisual": "ADD_FOUR_INTERSECTION_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-A1-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_CASE_ANALYSIS",
+      "svgStaticEvidence": {
+        "fourDistinctMarkedIntersections": true,
+        "normalizedGraphExactForAnyHAndD": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q19-A2",
+      "answer": "②",
+      "value": 15,
+      "reverseStemFinding": "최종 발문에서 네 서로 다른 원상 조건을 읽고 |(x−h)^2−d|=k의 두 제곱방정식에서 각 근의 수를 역산했다.",
+      "rpmNecessity": "상수함숫값 k가 네 서로 다른 원상을 갖는 필요충분조건 판정이 결정 단계다.",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "k=1을 빠뜨려 2+3+4+5=14"
+        },
+        {
+          "index": "③",
+          "mistake": "경계 k=d=6까지 포함하여 1+2+3+4+5+6=21"
+        },
+        {
+          "index": "④",
+          "mistake": "유효한 가장 큰 값 k=5를 중복 더해 15+5=20"
+        },
+        {
+          "index": "⑤",
+          "mistake": "유효한 k가 1,2,3,4,5 다섯 개임을 세고 합 대신 개수를 답해 5"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
+      "solutionVisual": "ADD_FOUR_INTERSECTION_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-A2-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_CASE_ANALYSIS",
+      "svgStaticEvidence": {
+        "fourDistinctMarkedIntersections": true,
+        "normalizedGraphExactForAnyHAndD": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q19-A3",
+      "answer": "⑤",
+      "value": 5040,
+      "reverseStemFinding": "최종 발문에서 네 서로 다른 원상 조건을 읽고 |(x−h)^2−d|=k의 두 제곱방정식에서 각 근의 수를 역산했다.",
+      "rpmNecessity": "상수함숫값 k가 네 서로 다른 원상을 갖는 필요충분조건 판정이 결정 단계다.",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "1부터 7까지 곱하지 않고 합으로 바꾸어 28"
+        },
+        {
+          "index": "②",
+          "mistake": "마지막 인수 7을 빠뜨려 1·2·3·4·5·6=720"
+        },
+        {
+          "index": "③",
+          "mistake": "곱을 구하지 않고 가능한 k의 개수 7을 답함"
+        },
+        {
+          "index": "④",
+          "mistake": "경계 k=8을 포함하여 8!=40320"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
+      "solutionVisual": "ADD_FOUR_INTERSECTION_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-A3-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_CASE_ANALYSIS",
+      "svgStaticEvidence": {
+        "fourDistinctMarkedIntersections": true,
+        "normalizedGraphExactForAnyHAndD": true,
+        "chrome": "NOT_TESTED"
+      },
+      "difficultyCorrectionRationale": "0<k<8로 일곱 정수를 얻어 곱하는 직접 계산형이므로 중/3으로 조정."
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q19-B1",
+      "answer": "④",
+      "value": 3,
+      "reverseStemFinding": "최종 발문에서 네 서로 다른 원상 조건을 읽고 |(x−h)^2−d|=k의 두 제곱방정식에서 각 근의 수를 역산했다.",
+      "rpmNecessity": "상수함숫값 k가 네 서로 다른 원상을 갖는 필요충분조건 판정이 결정 단계다.",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "가능한 값 중 k=1만 확인해 답함"
+        },
+        {
+          "index": "②",
+          "mistake": "경계 k=4까지 포함하여 1,2,3,4의 네 개로 셈"
+        },
+        {
+          "index": "③",
+          "mistake": "0≤k≤4의 모든 정수를 세어 두 경계를 잘못 포함해 5"
+        },
+        {
+          "index": "⑤",
+          "mistake": "양수 조건을 놓치고 −3,−2,−1,1,2,3을 세어 6"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
+      "solutionVisual": "ADD_FOUR_INTERSECTION_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-B1-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_CASE_ANALYSIS",
+      "svgStaticEvidence": {
+        "fourDistinctMarkedIntersections": true,
+        "normalizedGraphExactForAnyHAndD": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q19-B2",
+      "answer": "③",
+      "value": 8,
+      "reverseStemFinding": "0≤k≤8에서 절댓값 이차함수의 수평선 교점 수를 경계 k=0,7,8별로 판별",
+      "rpmNecessity": "경계에서 실제 서로 다른 근 개수를 판정: k=0은 2개, k=7은 3개, k=8은 2개",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "k=7의 접선 경우를 두 실근으로 오인하고 k=0,8을 놓쳐 7만 답함"
+        },
+        {
+          "index": "②",
+          "mistake": "k=7도 두 실근이라고 잘못 보고 k=0을 빠뜨려 7+8=15"
+        },
+        {
+          "index": "④",
+          "mistake": "정답 집합 {0,8}에 네 실근인 k=1을 잘못 더해 0+1+8=9"
+        },
+        {
+          "index": "⑤",
+          "mistake": "k=0만 확인하고 k=8을 빠뜨림"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
+      "solutionVisual": "ADD_FOUR_INTERSECTION_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-B2-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_CASE_ANALYSIS",
+      "svgStaticEvidence": {
+        "fourDistinctMarkedIntersections": true,
+        "normalizedGraphExactForAnyHAndD": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q19-B3",
+      "answer": "①",
+      "value": 4,
+      "reverseStemFinding": "최종 발문에서 네 서로 다른 원상 조건을 읽고 |(x−h)^2−d|=k의 두 제곱방정식에서 각 근의 수를 역산했다.",
+      "rpmNecessity": "상수함숫값 k가 네 서로 다른 원상을 갖는 필요충분조건 판정이 결정 단계다.",
+      "distractorRoutes": [
+        {
+          "index": "②",
+          "mistake": "d−k=4만 제곱수인지 보고 k=1을 후보로 잘못 남김"
+        },
+        {
+          "index": "③",
+          "mistake": "경계 k=5를 유효하다고 포함해 4+5=9"
+        },
+        {
+          "index": "④",
+          "mistake": "제곱수 쌍 1,9의 차 9−1=8을 k로 사용"
+        },
+        {
+          "index": "⑤",
+          "mistake": "제곱수 쌍 1,9의 합 1+9=10을 k로 사용"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
+      "solutionVisual": "ADD_FOUR_INTERSECTION_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-B3-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_CASE_ANALYSIS",
+      "svgStaticEvidence": {
+        "fourDistinctMarkedIntersections": true,
+        "normalizedGraphExactForAnyHAndD": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q19-C1",
+      "answer": "①",
+      "value": -4,
+      "reverseStemFinding": "네 근 조건 0<k<9로 k=1,…,8을 정한 뒤, Q²−k²의 상수항을 비에타로 네 근의 곱에 연결하고 합산",
+      "rpmNecessity": "절댓값 방정식의 네 실근 조건과 사차식의 비에타 정리를 함께 적용해 Pₖ=25−k²를 유도",
+      "distractorRoutes": [
+        {
+          "index": "②",
+          "mistake": "25−k² 대신 k²−25로 부호를 바꾸어 합산: 204−200=4"
+        },
+        {
+          "index": "③",
+          "mistake": "합산 대신 가능한 k의 개수 8을 답함"
+        },
+        {
+          "index": "④",
+          "mistake": "k=8 경계를 빠뜨려 k=1,…,7만 합산: 7·25−140=35"
+        },
+        {
+          "index": "⑤",
+          "mistake": "네 근 조건의 경계 k=9를 포함해 k=1,…,9를 합산: 9·25−285=−60"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
+      "solutionVisual": "NORMALIZED_FOUR_ROOT_GRAPH_AND_VIETA_PRODUCT",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-C1-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_CASE_ANALYSIS",
+      "svgStaticEvidence": {
+        "fourDistinctMarkedIntersections": true,
+        "normalizedGraphExactForAnyHAndD": true,
+        "rootProductExampleK1": 24,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q19-C2",
+      "answer": "⑤",
+      "value": 6,
+      "reverseStemFinding": "최종 발문에서 네 서로 다른 원상 조건을 읽고 |(x−h)^2−d|=k의 두 제곱방정식에서 각 근의 수를 역산했다.",
+      "rpmNecessity": "상수함숫값 k가 네 서로 다른 원상을 갖는 필요충분조건 판정이 결정 단계다.",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "작은 제곱수 4를 k로 착각함"
+        },
+        {
+          "index": "②",
+          "mistake": "k=d/2로 잘못 놓아 5"
+        },
+        {
+          "index": "③",
+          "mistake": "가능한 k 한 개를 세고 합 대신 개수를 답해 1"
+        },
+        {
+          "index": "④",
+          "mistake": "d−k=4, d+k=16인 제곱수쌍을 찾은 뒤 k를 두 제곱근의 곱으로 착각하여 √4·√16=8"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
+      "solutionVisual": "ADD_FOUR_INTERSECTION_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-C2-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_CASE_ANALYSIS",
+      "svgStaticEvidence": {
+        "fourDistinctMarkedIntersections": true,
+        "normalizedGraphExactForAnyHAndD": true,
+        "chrome": "NOT_TESTED"
+      }
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q19-C3",
+      "answer": "④",
+      "value": 1628,
+      "reverseStemFinding": "네 근의 대칭쌍 제곱합이 k와 무관함을 보여 모든 admissible k에 대해 누적",
+      "rpmNecessity": "대칭근 쌍 (5±s)의 제곱합으로 k를 소거하고 가능한 11개 수준에 불변량을 누적",
+      "distractorRoutes": [
+        {
+          "index": "①",
+          "mistake": "모든 k의 네 근 제곱합 대신 가능한 k의 개수 11을 답함"
+        },
+        {
+          "index": "③",
+          "mistake": "근 제곱합 대신 가능한 k 자체의 합 1+…+11=66을 계산"
+        },
+        {
+          "index": "②",
+          "mistake": "k=11을 빠뜨려 10개의 k만 곱해 10·148=1480"
+        },
+        {
+          "index": "⑤",
+          "mistake": "한 k에서의 네 근 제곱합 148만 구하고 11개 k에 대해 합산하지 않음"
+        }
+      ],
+      "problemVisual": "EXEMPT_STEM_ALGEBRA_COMPLETE",
+      "solutionVisual": "ADD_FOUR_INTERSECTION_GRAPH",
+      "solutionImage": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q19-C3-solution.svg",
+      "decision": "KEEP",
+      "mathProofType": "CREATOR_CASE_ANALYSIS",
+      "svgStaticEvidence": {
+        "fourDistinctMarkedIntersections": true,
+        "normalizedGraphExactForAnyHAndD": true,
+        "chrome": "NOT_TESTED"
+      }
+    }
+  ]
+}

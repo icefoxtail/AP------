@@ -1,0 +1,20 @@
+{
+ "schemaVersion":"JS_ARCHIVE_R1_SOLUTION_GOLDEN_NEGATIVE_PREFLIGHT_V2",
+ "reviewerId":"/root/r1_suncheon_yeo_prob",
+ "performedBeforeTargetSolutionDisclosure":true,
+ "targetExamUid":"24_순천여고_1학기_중간_고2_확률과통계",
+ "authority":"docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md CURRENT 2026-10-01; sample sources from archive/data/codex-quality-calibration-registry-v2.json. Referenced Archive_작업전_Golden_Sample_Calibration_v1.md was not present in this worktree.",
+ "axes":["STUDENT_REPRODUCIBILITY","SMALL_BOARD_STRUCTURE","EXPLANATION_DENSITY","VISUAL_SEMANTIC_PARITY","VISUAL_READABILITY"],
+ "goldenSamples":[
+  {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","sha256":"80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c","items":[
+   {"qid":1,"solutionSha256":"027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682","observation":"States the distance formula, substitutes both coordinate differences, and verifies the radical simplification."},
+   {"qid":2,"solutionSha256":"84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2","visualSha256":"cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4","observation":"Introduces the slope method, applies perpendicularity, solves k, and ends with an explicit conclusion; the opened line diagram agrees with the equations."}
+  ]},
+  {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","sha256":"7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156","items":[
+   {"qid":2,"solutionSha256":"b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba","observation":"Identifies the parallel slope, applies the point condition, and computes the requested sum in a reproducible order."},
+   {"qid":7,"solutionSha256":"0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9","visualSha256":"6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d","observation":"Tracks the initial circle center/radius through translation and reflection; the opened SVG preview agrees with each center and final equation."}
+  ]}
+ ],
+ "negativeSample":{"path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md","sha256":"39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8","observation":"Read the canonical false-PASS q20 geometry regression and opened the associated failed render; the label line has slope -3/4 but the actual line primitive has positive 3/4 slope, so it is not perpendicular to the displayed PH."},
+ "targetReviewRule":"After this preflight, judge the frozen independent target solution first, then compare the stored solution. Check reproducibility, decisive steps, condition use, conclusion, structural flow, and visual parity without copying sample wording."
+}

@@ -1,0 +1,179 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_R3_RENDER_BLOCKER_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "24_매산여고_1학기_중간_고2_확률과통계",
+  "artifactSha": "82b7d51ead0c02646f10637784204f4c61a54ffb",
+  "artifactRawSha256": "e74bf69589c0c36663803c6016c15c056dad56e810b89fd55c5ea1f02eec651a",
+  "reviewerIdentity": {
+    "role": "archive_r3",
+    "reviewerId": "maesan_prob_r3"
+  },
+  "officialCapture": {
+    "path": ".tmp/archive/h2-1mid-20261011/24_매산여고_1학기_중간_고2_확률과통계/r3-capture-q8-q9-revision3b/machine-capture.json",
+    "sha256": "a40cf4d4aa379a73eba81d9e00dc8575ee73cb4ec01b4c551aa47673d23b960d",
+    "status": "CAPTURE_BLOCKED",
+    "qpp": 4,
+    "fit": "screen",
+    "preview": true,
+    "cases": [
+      {
+        "id": "exam/desktop",
+        "status": "CAPTURED_REVIEW_REQUIRED",
+        "viewport": {
+          "width": 1280,
+          "height": 1000
+        },
+        "qidCount": 23,
+        "mathErrors": 0,
+        "scrollWidth": 1280,
+        "captureSha256s": [
+          "cdc41df53ec2936cd6db78cfef87839bc4567d42649454633680ef6d000f4216"
+        ]
+      },
+      {
+        "id": "exam/mobile",
+        "status": "CAPTURED_REVIEW_REQUIRED",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "qidCount": 23,
+        "mathErrors": 0,
+        "scrollWidth": 390,
+        "captureSha256s": [
+          "cee606f419689d5af3b0be30477dd0caac30c98e348e253a0832e74c8ded8f8c"
+        ]
+      }
+    ],
+    "blocker": {
+      "code": "CAPTURE_ERROR",
+      "reason": "page.waitForFunction: Timeout 60000ms exceeded."
+    }
+  },
+  "directOfficialEngine": {
+    "view": "sol/desktop",
+    "status": "BLOCKED",
+    "gate": "SNAPSHOT_COMMON_HARD_GATE:S12",
+    "diagnosticInstrumentation": "Temporary in-memory logging hook only; engine/source/assets unchanged.",
+    "page": 2,
+    "bodyClientHeight": 958,
+    "bodyScrollHeight": 1114,
+    "overflowX": true,
+    "overflowY": true,
+    "columns": [
+      {
+        "qids": [
+          7
+        ],
+        "boxHeights": [
+          834
+        ],
+        "clientHeight": 958,
+        "scrollHeight": 958
+      },
+      {
+        "qids": [
+          8,
+          9
+        ],
+        "boxHeights": [
+          396,
+          690
+        ],
+        "clientHeight": 958,
+        "scrollHeight": 1114
+      }
+    ],
+    "captureQuery": {
+      "preview": true,
+      "fit": "screen",
+      "qpp": 4,
+      "mode": "sol",
+      "desktopViewport": {
+        "width": 1280,
+        "height": 1000
+      }
+    },
+    "sourceQidsUnchangedFromPriorArtifact": true
+  },
+  "directOfficialEngineMobile": {
+    "view": "sol/mobile",
+    "status": "BLOCKED",
+    "gate": "SNAPSHOT_COMMON_HARD_GATE:S12",
+    "diagnosticScreenshot": {
+      "path": ".tmp/archive/h2-1mid-20261011/24_매산여고_1학기_중간_고2_확률과통계/r3-capture-q8-q9-revision3b/sol-mobile-direct-blocked.png",
+      "sha256": "81caa23feddb4d1110017dcd388cd2c026dbe59c12d7c53dece33b359b7ae731"
+    },
+    "page": 2,
+    "bodyClientHeight": 958,
+    "bodyScrollHeight": 1114,
+    "overflowX": true,
+    "overflowY": true,
+    "columns": [
+      {
+        "qids": [
+          7
+        ],
+        "boxHeights": [
+          834
+        ],
+        "clientHeight": 958,
+        "scrollHeight": 958
+      },
+      {
+        "qids": [
+          8,
+          9
+        ],
+        "boxHeights": [
+          396,
+          690
+        ],
+        "clientHeight": 958,
+        "scrollHeight": 1114
+      }
+    ],
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "captureQuery": {
+      "preview": true,
+      "fit": "screen",
+      "qpp": 4,
+      "mode": "sol"
+    },
+    "note": "Direct view is a diagnostic failure screenshot and is not an official six-case capture PASS."
+  },
+  "remainingOfficialCases": [
+    {
+      "id": "sol/mobile",
+      "status": "NOT_RUN_BY_SIX_CASE_COLLECTOR"
+    },
+    {
+      "id": "ans/desktop",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "ans/mobile",
+      "status": "NOT_RUN"
+    }
+  ],
+  "priorBlockedFailure": {
+    "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r3-recovery-q11-q22-20261011/R3.render-continuation.blocked.json",
+    "sha256": "0192b673c941b40e2c4f76062eb14208027a1d3c72c89e535e230f6ec7534a21",
+    "capturePath": ".tmp/archive/h2-1mid-20261011/24_매산여고_1학기_중간_고2_확률과통계/r3-capture-recovered-q11-q22/machine-capture.json",
+    "captureSha256": "b5831bb87165308d08810574ddcfa09208eace4de879ba019c8f2a45d8c0b32c",
+    "sourceSha256": "18d9cefae333cf0fec077ee91fdd694ef1cdfcc7b15bbfd602d41f0d86ce7c1d",
+    "issue": "Prior S12 at 1149px overflow (q8 396px + q9 725px + gap); preserve as history."
+  },
+  "engineFieldFinding": {
+    "officialQpp": 4,
+    "perQuestionSolutionPageOrColumnBreak": "NOT_FOUND_IN_CURRENT_JS_RENDERER",
+    "solutionImageLayoutFullwidth": "SUPPORTED_FOR_SOLUTION_IMAGE_LAYOUT_AND_AUTHORITY_PLANNER_FULLWIDTH_FLAG; not verified as per-item page/column break in this official collector path",
+    "globalQppOneColumn": "SUPPORTED_BUT_GLOBAL_AND_NOT_APPLIED",
+    "questionLayoutTagWide": "EXAM_LAYOUT_FIELDS_NOT_SOLUTION_ONLY_OVERRIDE"
+  },
+  "nextAction": "Root-routed shared solution-mode pagination fix; do not rerender until engine patch is ready."
+}

@@ -1,0 +1,2169 @@
+{
+  "schemaVersion": "PALMA_Q17_Q20_EXPECTED_FACT_FREEZE_V1",
+  "sourceExamBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "approvalReceiptSha256": "38BEFC817FB0FC07659BA35F13709C54F07C12715D7680975A3955DAE39C2B2D",
+  "packages": [
+    {
+      "sourceQid": 17,
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_PACKAGE.json",
+      "approvedCanonicalSha256": "38a8c50a999b48bae2f7c75df1116e87430606b21b1d89d2278ae20136169ba9",
+      "approvedGitBlobSha1": "e06bd2f8373874aef7765f2cfe9da4dd496e3354",
+      "currentWorktreeRawSha256": "209F680690A967BC06009C0FF5FFAAD5217E55DADBD8B01D505EBA234E9861F6",
+      "currentWorktreeRawGitBlobSha1": "0bb7e2bbeedbdf25f711e8f5acf66a729090c8b7"
+    },
+    {
+      "sourceQid": 18,
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q18_PACKAGE.json",
+      "approvedCanonicalSha256": "b22ff7c9cd28c16acf761a1a89c788bfcc1d58205fd894bded55901ea4e5d021",
+      "approvedGitBlobSha1": "90617d697f2e49369ec6edf583d0cacb83b739b3",
+      "currentWorktreeRawSha256": "FD0FAAFE76F480BC5ACC04312EE7DC7B167D08D10A87E2F3439B72C123ED7D59",
+      "currentWorktreeRawGitBlobSha1": "5f50c2f62544fea144dc70cd1aeb87acf2cac24e"
+    },
+    {
+      "sourceQid": 19,
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q19_PACKAGE.json",
+      "approvedCanonicalSha256": "4fe6a3e4a884682c5b8e02258d426fa22b5cbf786778cf7ae4591840c6ef501f",
+      "approvedGitBlobSha1": "4a4636fe6f7412520b9752b82ebef14ea2f4fd3a",
+      "currentWorktreeRawSha256": "CCA9D8A93E10FCE4428C817F6FDA2CC9533F58E3F9427E3854AB2A5D6464EFC9",
+      "currentWorktreeRawGitBlobSha1": "5b1af10be968fa2050af8f9000bb9e9f6b2f1616"
+    },
+    {
+      "sourceQid": 20,
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q20_PACKAGE.json",
+      "approvedCanonicalSha256": "4763022a03626ed815a3a043263f9192117b8d00b12dde9b5b6712d626a6dbdf",
+      "approvedGitBlobSha1": "64005c59f8c425588396f4c28dde6e39245ccc2b",
+      "currentWorktreeRawSha256": "C9D6059C78D63E1E8B8770AB67A6DB85C24000317FF083CE5B37E37D687AFB17",
+      "currentWorktreeRawGitBlobSha1": "c226105d86c4964dbdfb4e3d4b0b4c8746a16046"
+    }
+  ],
+  "q17": {
+    "ALITE-PALMA25-2MID-Q17-A1": {
+      "uid": "ALITE-PALMA25-2MID-Q17-A1",
+      "slot": "A1",
+      "r": 3.0,
+      "thetaRadians": 0.7853981633974483,
+      "thetaDegrees": 45,
+      "coordinateProvenance": "CONSTRUCTED_REALIZATION",
+      "coordinateConstruction": {
+        "rationale": "Set O=(0,0), OA as the x-axis, choose the equality point P at the minor-arc midpoint, reflect P across OB and OA, then calculate Q and R as exact boundary intersections.",
+        "origin": [
+          0,
+          0
+        ],
+        "xAxisDirection": [
+          1,
+          0
+        ],
+        "unitScale": 1,
+        "pointCoordinates": {
+          "O": [
+            0.0,
+            0.0
+          ],
+          "A": [
+            3.0,
+            0.0
+          ],
+          "B": [
+            2.121320343559643,
+            2.121320343559643
+          ],
+          "P": [
+            2.77163859753386,
+            1.1480502970952693
+          ],
+          "P1": [
+            1.1480502970952695,
+            2.77163859753386
+          ],
+          "P2": [
+            2.77163859753386,
+            -1.1480502970952693
+          ],
+          "Q": [
+            1.623588300438591,
+            1.6235883004385911
+          ],
+          "R": [
+            2.2961005941905386,
+            0.0
+          ]
+        },
+        "constructionConditions": {
+          "OP=OA=OB": 3.0,
+          "angle_AOB_deg": 45,
+          "P_direction_deg": 22.5,
+          "P1_direction_deg": 67.5,
+          "P2_direction_deg": -22.5,
+          "Q_boundary": "OB",
+          "R_boundary": "OA"
+        },
+        "residuals": {
+          "|OA|-r": 0.0,
+          "|OB|-r": 4.440892098500626e-16,
+          "|OP|-r": -4.440892098500626e-16,
+          "Q_collinear": -2.220446049250313e-16,
+          "R_collinear": -8.881784197001252e-16,
+          "Q_parameter": 0.29289321881345237,
+          "R_parameter": 0.7071067811865475
+        }
+      },
+      "expectedFacts": [
+        {
+          "fact": "A on OA radius",
+          "role": "GIVEN",
+          "point": [
+            3.0,
+            0.0
+          ]
+        },
+        {
+          "fact": "B on OB radius",
+          "role": "GIVEN",
+          "point": [
+            2.121320343559643,
+            2.121320343559643
+          ]
+        },
+        {
+          "fact": "selected equality point P",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.77163859753386,
+            1.1480502970952693
+          ]
+        },
+        {
+          "fact": "reflection P1 across OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            1.1480502970952695,
+            2.77163859753386
+          ]
+        },
+        {
+          "fact": "reflection P2 across OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.77163859753386,
+            -1.1480502970952693
+          ]
+        },
+        {
+          "fact": "Q intersection on OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            1.623588300438591,
+            1.6235883004385911
+          ]
+        },
+        {
+          "fact": "R intersection on OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.2961005941905386,
+            0.0
+          ]
+        },
+        {
+          "fact": "P1-Q-R-P2 collinear and ordered",
+          "role": "CONCLUSION",
+          "parameters": [
+            0.29289321881345237,
+            0.7071067811865475
+          ]
+        },
+        {
+          "fact": "folded chord length",
+          "role": "CONCLUSION",
+          "expected": 4.242640687119286,
+          "observedFromConstruction": 4.242640687119285
+        }
+      ],
+      "sourceConditionCoverage": [
+        "Source circle center/radius and A/B direction",
+        "P locus or fixed P direction",
+        "reflection across both boundary lines",
+        "Q/R segment constraints",
+        "straightened path order and equality"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "relation": {
+        "formula": "P1P2=2r·sin(theta)",
+        "answerRelation": "2r·sin45°=3√2",
+        "expectedMinimum": 4.242640687119286,
+        "computedChordLength": 4.242640687119285,
+        "delta": -8.881784197001252e-16,
+        "extra": {
+          "slot": "A1",
+          "relation": "2r·sin45°=3√2"
+        }
+      },
+      "sourceProblemSha256": "sha256:6744e476c912c56ca819115d655ec86103e428649848535496a05869f2f9c7a6",
+      "sourceSolutionSha256": "sha256:457ad1faefbc19f1e824b6f57797316b400a001d643daf41f6d63b8b477ef1f1"
+    },
+    "ALITE-PALMA25-2MID-Q17-A2": {
+      "uid": "ALITE-PALMA25-2MID-Q17-A2",
+      "slot": "A2",
+      "r": 4.0,
+      "thetaRadians": 0.5235987755982988,
+      "thetaDegrees": 30,
+      "coordinateProvenance": "CONSTRUCTED_REALIZATION",
+      "coordinateConstruction": {
+        "rationale": "Set O=(0,0), OA as the x-axis, choose the equality point P at the minor-arc midpoint, reflect P across OB and OA, then calculate Q and R as exact boundary intersections.",
+        "origin": [
+          0,
+          0
+        ],
+        "xAxisDirection": [
+          1,
+          0
+        ],
+        "unitScale": 1,
+        "pointCoordinates": {
+          "O": [
+            0.0,
+            0.0
+          ],
+          "A": [
+            4.0,
+            0.0
+          ],
+          "B": [
+            3.464101615137755,
+            1.9999999999999998
+          ],
+          "P": [
+            3.8637033051562732,
+            1.035276180410083
+          ],
+          "P1": [
+            2.8284271247461903,
+            2.8284271247461903
+          ],
+          "P2": [
+            3.8637033051562732,
+            -1.035276180410083
+          ],
+          "Q": [
+            3.1058285412302493,
+            1.7931509443361069
+          ],
+          "R": [
+            3.586301888672214,
+            0.0
+          ]
+        },
+        "constructionConditions": {
+          "OP=OA=OB": 4.0,
+          "angle_AOB_deg": 30,
+          "P_direction_deg": 15.0,
+          "P1_direction_deg": 45.0,
+          "P2_direction_deg": -15.0,
+          "Q_boundary": "OB",
+          "R_boundary": "OA"
+        },
+        "residuals": {
+          "|OA|-r": 0.0,
+          "|OB|-r": 0.0,
+          "|OP|-r": 0.0,
+          "Q_collinear": 2.220446049250313e-16,
+          "R_collinear": 4.440892098500626e-16,
+          "Q_parameter": 0.2679491924311228,
+          "R_parameter": 0.7320508075688774
+        }
+      },
+      "expectedFacts": [
+        {
+          "fact": "A on OA radius",
+          "role": "GIVEN",
+          "point": [
+            4.0,
+            0.0
+          ]
+        },
+        {
+          "fact": "B on OB radius",
+          "role": "GIVEN",
+          "point": [
+            3.464101615137755,
+            1.9999999999999998
+          ]
+        },
+        {
+          "fact": "selected equality point P",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            3.8637033051562732,
+            1.035276180410083
+          ]
+        },
+        {
+          "fact": "reflection P1 across OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.8284271247461903,
+            2.8284271247461903
+          ]
+        },
+        {
+          "fact": "reflection P2 across OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            3.8637033051562732,
+            -1.035276180410083
+          ]
+        },
+        {
+          "fact": "Q intersection on OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            3.1058285412302493,
+            1.7931509443361069
+          ]
+        },
+        {
+          "fact": "R intersection on OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            3.586301888672214,
+            0.0
+          ]
+        },
+        {
+          "fact": "P1-Q-R-P2 collinear and ordered",
+          "role": "CONCLUSION",
+          "parameters": [
+            0.2679491924311228,
+            0.7320508075688774
+          ]
+        },
+        {
+          "fact": "folded chord length",
+          "role": "CONCLUSION",
+          "expected": 4.0,
+          "observedFromConstruction": 4.0
+        }
+      ],
+      "sourceConditionCoverage": [
+        "Source circle center/radius and A/B direction",
+        "P locus or fixed P direction",
+        "reflection across both boundary lines",
+        "Q/R segment constraints",
+        "straightened path order and equality"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "relation": {
+        "formula": "P1P2=2r·sin(theta)",
+        "answerRelation": "2r·sin30°=4",
+        "expectedMinimum": 4.0,
+        "computedChordLength": 4.0,
+        "delta": 0.0,
+        "extra": {
+          "slot": "A2",
+          "relation": "2r·sin30°=4"
+        }
+      },
+      "sourceProblemSha256": "sha256:f98f991d4d24aa96675149a12d3c69adca20dcb8691276bb822bc4221bf3156c",
+      "sourceSolutionSha256": "sha256:c639b7f79eef424fd261994ea52f68b60943629a528a7b1a07be0f07337ce7db"
+    },
+    "ALITE-PALMA25-2MID-Q17-A3": {
+      "uid": "ALITE-PALMA25-2MID-Q17-A3",
+      "slot": "A3",
+      "r": 3.0,
+      "thetaRadians": 1.0471975511965976,
+      "thetaDegrees": 60,
+      "coordinateProvenance": "CONSTRUCTED_REALIZATION",
+      "coordinateConstruction": {
+        "rationale": "Set O=(0,0), OA as the x-axis, choose the equality point P at the minor-arc midpoint, reflect P across OB and OA, then calculate Q and R as exact boundary intersections.",
+        "origin": [
+          0,
+          0
+        ],
+        "xAxisDirection": [
+          1,
+          0
+        ],
+        "unitScale": 1,
+        "pointCoordinates": {
+          "O": [
+            0.0,
+            0.0
+          ],
+          "A": [
+            3.0,
+            0.0
+          ],
+          "B": [
+            1.5000000000000004,
+            2.598076211353316
+          ],
+          "P": [
+            2.598076211353316,
+            1.4999999999999998
+          ],
+          "P1": [
+            1.8369701987210297e-16,
+            3.0
+          ],
+          "P2": [
+            2.598076211353316,
+            -1.4999999999999998
+          ],
+          "Q": [
+            0.866025403784439,
+            1.4999999999999998
+          ],
+          "R": [
+            1.7320508075688774,
+            0.0
+          ]
+        },
+        "constructionConditions": {
+          "OP=OA=OB": 3.0,
+          "angle_AOB_deg": 60,
+          "P_direction_deg": 30.0,
+          "P1_direction_deg": 90.0,
+          "P2_direction_deg": -30.0,
+          "Q_boundary": "OB",
+          "R_boundary": "OA"
+        },
+        "residuals": {
+          "|OA|-r": 0.0,
+          "|OB|-r": 4.440892098500626e-16,
+          "|OP|-r": 0.0,
+          "Q_collinear": -4.440892098500626e-16,
+          "R_collinear": 8.881784197001252e-16,
+          "Q_parameter": 0.3333333333333334,
+          "R_parameter": 0.6666666666666666
+        }
+      },
+      "expectedFacts": [
+        {
+          "fact": "A on OA radius",
+          "role": "GIVEN",
+          "point": [
+            3.0,
+            0.0
+          ]
+        },
+        {
+          "fact": "B on OB radius",
+          "role": "GIVEN",
+          "point": [
+            1.5000000000000004,
+            2.598076211353316
+          ]
+        },
+        {
+          "fact": "selected equality point P",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.598076211353316,
+            1.4999999999999998
+          ]
+        },
+        {
+          "fact": "reflection P1 across OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            1.8369701987210297e-16,
+            3.0
+          ]
+        },
+        {
+          "fact": "reflection P2 across OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.598076211353316,
+            -1.4999999999999998
+          ]
+        },
+        {
+          "fact": "Q intersection on OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            0.866025403784439,
+            1.4999999999999998
+          ]
+        },
+        {
+          "fact": "R intersection on OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            1.7320508075688774,
+            0.0
+          ]
+        },
+        {
+          "fact": "P1-Q-R-P2 collinear and ordered",
+          "role": "CONCLUSION",
+          "parameters": [
+            0.3333333333333334,
+            0.6666666666666666
+          ]
+        },
+        {
+          "fact": "folded chord length",
+          "role": "CONCLUSION",
+          "expected": 5.196152422706632,
+          "observedFromConstruction": 5.196152422706632
+        }
+      ],
+      "sourceConditionCoverage": [
+        "Source circle center/radius and A/B direction",
+        "P locus or fixed P direction",
+        "reflection across both boundary lines",
+        "Q/R segment constraints",
+        "straightened path order and equality"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "relation": {
+        "formula": "P1P2=2r·sin(theta)",
+        "answerRelation": "2r·sin60°=3√3",
+        "expectedMinimum": 5.196152422706632,
+        "computedChordLength": 5.196152422706632,
+        "delta": 0.0,
+        "extra": {
+          "slot": "A3",
+          "relation": "2r·sin60°=3√3"
+        }
+      },
+      "sourceProblemSha256": "sha256:64b31bc570b9a4a45a529adce3322a69d9565f175c6fc411bee72683280f5363",
+      "sourceSolutionSha256": "sha256:6b0005cb53477e582624d80e5dab5d3bec774516a08affb5f5d79607e4ee9eea"
+    },
+    "ALITE-PALMA25-2MID-Q17-B1": {
+      "uid": "ALITE-PALMA25-2MID-Q17-B1",
+      "slot": "B1",
+      "r": 4.0,
+      "thetaRadians": 0.7853981633974483,
+      "thetaDegrees": 45,
+      "coordinateProvenance": "CONSTRUCTED_REALIZATION",
+      "coordinateConstruction": {
+        "rationale": "Set O=(0,0), OA as the x-axis, choose the equality point P at the minor-arc midpoint, reflect P across OB and OA, then calculate Q and R as exact boundary intersections.",
+        "origin": [
+          0,
+          0
+        ],
+        "xAxisDirection": [
+          1,
+          0
+        ],
+        "unitScale": 1,
+        "pointCoordinates": {
+          "O": [
+            0.0,
+            0.0
+          ],
+          "A": [
+            4.0,
+            0.0
+          ],
+          "B": [
+            2.8284271247461903,
+            2.8284271247461903
+          ],
+          "P": [
+            3.695518130045147,
+            1.5307337294603591
+          ],
+          "P1": [
+            1.5307337294603593,
+            3.695518130045147
+          ],
+          "P2": [
+            3.695518130045147,
+            -1.5307337294603591
+          ],
+          "Q": [
+            2.164784400584788,
+            2.164784400584788
+          ],
+          "R": [
+            3.061467458920718,
+            0.0
+          ]
+        },
+        "constructionConditions": {
+          "OP=OA=OB": 4.0,
+          "angle_AOB_deg": 45,
+          "P_direction_deg": 22.5,
+          "P1_direction_deg": 67.5,
+          "P2_direction_deg": -22.5,
+          "Q_boundary": "OB",
+          "R_boundary": "OA"
+        },
+        "residuals": {
+          "|OA|-r": 0.0,
+          "|OB|-r": 0.0,
+          "|OP|-r": 0.0,
+          "Q_collinear": -4.440892098500626e-16,
+          "R_collinear": 8.881784197001252e-16,
+          "Q_parameter": 0.2928932188134524,
+          "R_parameter": 0.7071067811865475
+        }
+      },
+      "expectedFacts": [
+        {
+          "fact": "A on OA radius",
+          "role": "GIVEN",
+          "point": [
+            4.0,
+            0.0
+          ]
+        },
+        {
+          "fact": "B on OB radius",
+          "role": "GIVEN",
+          "point": [
+            2.8284271247461903,
+            2.8284271247461903
+          ]
+        },
+        {
+          "fact": "selected equality point P",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            3.695518130045147,
+            1.5307337294603591
+          ]
+        },
+        {
+          "fact": "reflection P1 across OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            1.5307337294603593,
+            3.695518130045147
+          ]
+        },
+        {
+          "fact": "reflection P2 across OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            3.695518130045147,
+            -1.5307337294603591
+          ]
+        },
+        {
+          "fact": "Q intersection on OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.164784400584788,
+            2.164784400584788
+          ]
+        },
+        {
+          "fact": "R intersection on OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            3.061467458920718,
+            0.0
+          ]
+        },
+        {
+          "fact": "P1-Q-R-P2 collinear and ordered",
+          "role": "CONCLUSION",
+          "parameters": [
+            0.2928932188134524,
+            0.7071067811865475
+          ]
+        },
+        {
+          "fact": "folded chord length",
+          "role": "CONCLUSION",
+          "expected": 5.656854249492381,
+          "observedFromConstruction": 5.656854249492381
+        }
+      ],
+      "sourceConditionCoverage": [
+        "Source circle center/radius and A/B direction",
+        "P locus or fixed P direction",
+        "reflection across both boundary lines",
+        "Q/R segment constraints",
+        "straightened path order and equality"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "relation": {
+        "formula": "P1P2=2r·sin(theta)",
+        "answerRelation": "√(2k)=4√2 ⇒ k=16",
+        "expectedMinimum": 5.656854249492381,
+        "computedChordLength": 5.656854249492381,
+        "delta": 0.0,
+        "extra": {
+          "slot": "B1",
+          "relation": "√(2k)=4√2 ⇒ k=16"
+        }
+      },
+      "sourceProblemSha256": "sha256:6d418bce1de96b94dbc138463b2651b7d9ea135ecbb666d9fda53c5e32fe8b65",
+      "sourceSolutionSha256": "sha256:8ebcfa689fc65a2f1e86a99d673042fbd2f2e8f2a4455462b3ea097009b1885b"
+    },
+    "ALITE-PALMA25-2MID-Q17-B2": {
+      "uid": "ALITE-PALMA25-2MID-Q17-B2",
+      "slot": "B2",
+      "r": 1.7320508075688772,
+      "thetaRadians": 1.0471975511965976,
+      "thetaDegrees": 60,
+      "coordinateProvenance": "CONSTRUCTED_REALIZATION",
+      "coordinateConstruction": {
+        "rationale": "Set O=(0,0), OA as the x-axis, choose the equality point P at the minor-arc midpoint, reflect P across OB and OA, then calculate Q and R as exact boundary intersections.",
+        "origin": [
+          0,
+          0
+        ],
+        "xAxisDirection": [
+          1,
+          0
+        ],
+        "unitScale": 1,
+        "pointCoordinates": {
+          "O": [
+            0.0,
+            0.0
+          ],
+          "A": [
+            1.7320508075688772,
+            0.0
+          ],
+          "B": [
+            0.8660254037844388,
+            1.4999999999999998
+          ],
+          "P": [
+            1.5,
+            0.8660254037844385
+          ],
+          "P1": [
+            1.0605752387249068e-16,
+            1.7320508075688772
+          ],
+          "P2": [
+            1.5,
+            -0.8660254037844385
+          ],
+          "Q": [
+            0.5000000000000001,
+            0.8660254037844386
+          ],
+          "R": [
+            1.0,
+            0.0
+          ]
+        },
+        "constructionConditions": {
+          "OP=OA=OB": 1.7320508075688772,
+          "angle_AOB_deg": 60,
+          "P_direction_deg": 30.0,
+          "P1_direction_deg": 90.0,
+          "P2_direction_deg": -30.0,
+          "Q_boundary": "OB",
+          "R_boundary": "OA"
+        },
+        "residuals": {
+          "|OA|-r": 0.0,
+          "|OB|-r": 0.0,
+          "|OP|-r": 0.0,
+          "Q_collinear": 2.220446049250313e-16,
+          "R_collinear": 8.881784197001252e-16,
+          "Q_parameter": 0.33333333333333337,
+          "R_parameter": 0.6666666666666667
+        }
+      },
+      "expectedFacts": [
+        {
+          "fact": "A on OA radius",
+          "role": "GIVEN",
+          "point": [
+            1.7320508075688772,
+            0.0
+          ]
+        },
+        {
+          "fact": "B on OB radius",
+          "role": "GIVEN",
+          "point": [
+            0.8660254037844388,
+            1.4999999999999998
+          ]
+        },
+        {
+          "fact": "selected equality point P",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            1.5,
+            0.8660254037844385
+          ]
+        },
+        {
+          "fact": "reflection P1 across OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            1.0605752387249068e-16,
+            1.7320508075688772
+          ]
+        },
+        {
+          "fact": "reflection P2 across OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            1.5,
+            -0.8660254037844385
+          ]
+        },
+        {
+          "fact": "Q intersection on OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            0.5000000000000001,
+            0.8660254037844386
+          ]
+        },
+        {
+          "fact": "R intersection on OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "fact": "P1-Q-R-P2 collinear and ordered",
+          "role": "CONCLUSION",
+          "parameters": [
+            0.33333333333333337,
+            0.6666666666666667
+          ]
+        },
+        {
+          "fact": "folded chord length",
+          "role": "CONCLUSION",
+          "expected": 3.0,
+          "observedFromConstruction": 2.9999999999999996
+        }
+      ],
+      "sourceConditionCoverage": [
+        "Source circle center/radius and A/B direction",
+        "P locus or fixed P direction",
+        "reflection across both boundary lines",
+        "Q/R segment constraints",
+        "straightened path order and equality"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "relation": {
+        "formula": "P1P2=2r·sin(theta)",
+        "answerRelation": "Q=(1/2,√3/2), R=(1,0), QR=1",
+        "expectedMinimum": 3.0,
+        "computedChordLength": 2.9999999999999996,
+        "delta": -4.440892098500626e-16,
+        "extra": {
+          "slot": "B2",
+          "relation": "Q=(1/2,√3/2), R=(1,0), QR=1",
+          "qr": 1.0
+        }
+      },
+      "sourceProblemSha256": "sha256:7dc75b9da0c5e6623eec6fed1449f74b805ddc7b4c40cf335c53290c4ef01b69",
+      "sourceSolutionSha256": "sha256:b5aec67eaed036315bf8bfc872a04d31bd199ed4b97c87399ed834d14af7757c"
+    },
+    "ALITE-PALMA25-2MID-Q17-B3": {
+      "uid": "ALITE-PALMA25-2MID-Q17-B3",
+      "slot": "B3",
+      "r": 5.0,
+      "thetaRadians": 0.6435011087932844,
+      "thetaDegrees": 36.86989764584402,
+      "coordinateProvenance": "CONSTRUCTED_REALIZATION",
+      "coordinateConstruction": {
+        "rationale": "Set O=(0,0), OA as the x-axis, choose the equality point P at the minor-arc midpoint, reflect P across OB and OA, then calculate Q and R as exact boundary intersections.",
+        "origin": [
+          0,
+          0
+        ],
+        "xAxisDirection": [
+          1,
+          0
+        ],
+        "unitScale": 1,
+        "pointCoordinates": {
+          "O": [
+            0.0,
+            0.0
+          ],
+          "A": [
+            5.0,
+            0.0
+          ],
+          "B": [
+            4.0,
+            3.0
+          ],
+          "P": [
+            4.743416490252569,
+            1.5811388300841898
+          ],
+          "P1": [
+            2.846049894151541,
+            4.110960958218893
+          ],
+          "P2": [
+            4.743416490252569,
+            -1.5811388300841898
+          ],
+          "Q": [
+            3.3730961708462712,
+            2.529822128134703
+          ],
+          "R": [
+            4.216370213557839,
+            0.0
+          ]
+        },
+        "constructionConditions": {
+          "OP=OA=OB": 5.0,
+          "angle_AOB_deg": 36.86989764584402,
+          "P_direction_deg": 18.43494882292201,
+          "P1_direction_deg": 55.30484646876603,
+          "P2_direction_deg": -18.43494882292201,
+          "Q_boundary": "OB",
+          "R_boundary": "OA"
+        },
+        "residuals": {
+          "|OA|-r": 0.0,
+          "|OB|-r": 0.0,
+          "|OP|-r": 0.0,
+          "Q_collinear": -4.440892098500626e-16,
+          "R_collinear": -1.7763568394002505e-15,
+          "Q_parameter": 0.2777777777777778,
+          "R_parameter": 0.7222222222222222
+        }
+      },
+      "expectedFacts": [
+        {
+          "fact": "A on OA radius",
+          "role": "GIVEN",
+          "point": [
+            5.0,
+            0.0
+          ]
+        },
+        {
+          "fact": "B on OB radius",
+          "role": "GIVEN",
+          "point": [
+            4.0,
+            3.0
+          ]
+        },
+        {
+          "fact": "selected equality point P",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            4.743416490252569,
+            1.5811388300841898
+          ]
+        },
+        {
+          "fact": "reflection P1 across OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.846049894151541,
+            4.110960958218893
+          ]
+        },
+        {
+          "fact": "reflection P2 across OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            4.743416490252569,
+            -1.5811388300841898
+          ]
+        },
+        {
+          "fact": "Q intersection on OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            3.3730961708462712,
+            2.529822128134703
+          ]
+        },
+        {
+          "fact": "R intersection on OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            4.216370213557839,
+            0.0
+          ]
+        },
+        {
+          "fact": "P1-Q-R-P2 collinear and ordered",
+          "role": "CONCLUSION",
+          "parameters": [
+            0.2777777777777778,
+            0.7222222222222222
+          ]
+        },
+        {
+          "fact": "folded chord length",
+          "role": "CONCLUSION",
+          "expected": 6.0,
+          "observedFromConstruction": 6.0
+        }
+      ],
+      "sourceConditionCoverage": [
+        "Source circle center/radius and A/B direction",
+        "P locus or fixed P direction",
+        "reflection across both boundary lines",
+        "Q/R segment constraints",
+        "straightened path order and equality"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "relation": {
+        "formula": "P1P2=2r·sin(theta)",
+        "answerRelation": "sinθ=3/5 ⇒ B=(4,3)",
+        "expectedMinimum": 6.0,
+        "computedChordLength": 6.0,
+        "delta": 0.0,
+        "extra": {
+          "slot": "B3",
+          "relation": "sinθ=3/5 ⇒ B=(4,3)",
+          "B": [
+            4.0,
+            3.0
+          ]
+        }
+      },
+      "sourceProblemSha256": "sha256:fb65c7f067f9404ae0099089c669d32f65fa5d11cd7c0bfb7e7bc6bdcc9b737b",
+      "sourceSolutionSha256": "sha256:70ac42f239b5163b670fbe2da4e9c8e31370369cb4163cbf533ec05433f47698"
+    },
+    "ALITE-PALMA25-2MID-Q17-C1": {
+      "uid": "ALITE-PALMA25-2MID-Q17-C1",
+      "slot": "C1",
+      "r": 5.0,
+      "thetaRadians": 0.9272952180016122,
+      "thetaDegrees": 53.13010235415598,
+      "coordinateProvenance": "CONSTRUCTED_REALIZATION",
+      "coordinateConstruction": {
+        "rationale": "Set O=(0,0), OA as the x-axis, choose the equality point P at the minor-arc midpoint, reflect P across OB and OA, then calculate Q and R as exact boundary intersections.",
+        "origin": [
+          0,
+          0
+        ],
+        "xAxisDirection": [
+          1,
+          0
+        ],
+        "unitScale": 1,
+        "pointCoordinates": {
+          "O": [
+            0.0,
+            0.0
+          ],
+          "A": [
+            5.0,
+            0.0
+          ],
+          "B": [
+            3.0000000000000004,
+            3.9999999999999996
+          ],
+          "P": [
+            4.47213595499958,
+            2.23606797749979
+          ],
+          "P1": [
+            0.8944271909999164,
+            4.919349550499537
+          ],
+          "P2": [
+            4.47213595499958,
+            -2.23606797749979
+          ],
+          "Q": [
+            2.0124611797498115,
+            2.683281572999747
+          ],
+          "R": [
+            3.3541019662496847,
+            0.0
+          ]
+        },
+        "constructionConditions": {
+          "OP=OA=OB": 5.0,
+          "angle_AOB_deg": 53.13010235415598,
+          "P_direction_deg": 26.56505117707799,
+          "P1_direction_deg": 79.69515353123397,
+          "P2_direction_deg": -26.56505117707799,
+          "Q_boundary": "OB",
+          "R_boundary": "OA"
+        },
+        "residuals": {
+          "|OA|-r": 0.0,
+          "|OB|-r": 0.0,
+          "|OP|-r": 0.0,
+          "Q_collinear": -1.7763568394002505e-15,
+          "R_collinear": 3.552713678800501e-15,
+          "Q_parameter": 0.3125000000000001,
+          "R_parameter": 0.6875
+        }
+      },
+      "expectedFacts": [
+        {
+          "fact": "A on OA radius",
+          "role": "GIVEN",
+          "point": [
+            5.0,
+            0.0
+          ]
+        },
+        {
+          "fact": "B on OB radius",
+          "role": "GIVEN",
+          "point": [
+            3.0000000000000004,
+            3.9999999999999996
+          ]
+        },
+        {
+          "fact": "selected equality point P",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            4.47213595499958,
+            2.23606797749979
+          ]
+        },
+        {
+          "fact": "reflection P1 across OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            0.8944271909999164,
+            4.919349550499537
+          ]
+        },
+        {
+          "fact": "reflection P2 across OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            4.47213595499958,
+            -2.23606797749979
+          ]
+        },
+        {
+          "fact": "Q intersection on OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.0124611797498115,
+            2.683281572999747
+          ]
+        },
+        {
+          "fact": "R intersection on OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            3.3541019662496847,
+            0.0
+          ]
+        },
+        {
+          "fact": "P1-Q-R-P2 collinear and ordered",
+          "role": "CONCLUSION",
+          "parameters": [
+            0.3125000000000001,
+            0.6875
+          ]
+        },
+        {
+          "fact": "folded chord length",
+          "role": "CONCLUSION",
+          "expected": 8.0,
+          "observedFromConstruction": 8.0
+        }
+      ],
+      "sourceConditionCoverage": [
+        "Source circle center/radius and A/B direction",
+        "P locus or fixed P direction",
+        "reflection across both boundary lines",
+        "Q/R segment constraints",
+        "straightened path order and equality"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "relation": {
+        "formula": "P1P2=2r·sin(theta)",
+        "answerRelation": "B=(3,4), sinθ=4/5",
+        "expectedMinimum": 8.0,
+        "computedChordLength": 8.0,
+        "delta": 0.0,
+        "extra": {
+          "slot": "C1",
+          "relation": "B=(3,4), sinθ=4/5"
+        }
+      },
+      "sourceProblemSha256": "sha256:262143d400e998e627e8ce57fa552421dd91ad5b6167ff4d9035f0ad0a8e08c1",
+      "sourceSolutionSha256": "sha256:4cb687a794ddcb7b3b78dbc291f200f9e7fbc69bddf6576250a999871753807a"
+    },
+    "ALITE-PALMA25-2MID-Q17-C2": {
+      "uid": "ALITE-PALMA25-2MID-Q17-C2",
+      "slot": "C2",
+      "r": 3.0,
+      "thetaRadians": 0.7853981633974483,
+      "thetaDegrees": 45,
+      "coordinateProvenance": "CONSTRUCTED_REALIZATION",
+      "coordinateConstruction": {
+        "rationale": "Set O=(0,0), OA as the x-axis, choose the equality point P at the minor-arc midpoint, reflect P across OB and OA, then calculate Q and R as exact boundary intersections.",
+        "origin": [
+          0,
+          0
+        ],
+        "xAxisDirection": [
+          1,
+          0
+        ],
+        "unitScale": 1,
+        "pointCoordinates": {
+          "O": [
+            0.0,
+            0.0
+          ],
+          "A": [
+            3.0,
+            0.0
+          ],
+          "B": [
+            2.121320343559643,
+            2.121320343559643
+          ],
+          "P": [
+            2.77163859753386,
+            1.1480502970952693
+          ],
+          "P1": [
+            1.1480502970952695,
+            2.77163859753386
+          ],
+          "P2": [
+            2.77163859753386,
+            -1.1480502970952693
+          ],
+          "Q": [
+            1.623588300438591,
+            1.6235883004385911
+          ],
+          "R": [
+            2.2961005941905386,
+            0.0
+          ]
+        },
+        "constructionConditions": {
+          "OP=OA=OB": 3.0,
+          "angle_AOB_deg": 45,
+          "P_direction_deg": 22.5,
+          "P1_direction_deg": 67.5,
+          "P2_direction_deg": -22.5,
+          "Q_boundary": "OB",
+          "R_boundary": "OA"
+        },
+        "residuals": {
+          "|OA|-r": 0.0,
+          "|OB|-r": 4.440892098500626e-16,
+          "|OP|-r": -4.440892098500626e-16,
+          "Q_collinear": -2.220446049250313e-16,
+          "R_collinear": -8.881784197001252e-16,
+          "Q_parameter": 0.29289321881345237,
+          "R_parameter": 0.7071067811865475
+        }
+      },
+      "expectedFacts": [
+        {
+          "fact": "A on OA radius",
+          "role": "GIVEN",
+          "point": [
+            3.0,
+            0.0
+          ]
+        },
+        {
+          "fact": "B on OB radius",
+          "role": "GIVEN",
+          "point": [
+            2.121320343559643,
+            2.121320343559643
+          ]
+        },
+        {
+          "fact": "selected equality point P",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.77163859753386,
+            1.1480502970952693
+          ]
+        },
+        {
+          "fact": "reflection P1 across OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            1.1480502970952695,
+            2.77163859753386
+          ]
+        },
+        {
+          "fact": "reflection P2 across OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.77163859753386,
+            -1.1480502970952693
+          ]
+        },
+        {
+          "fact": "Q intersection on OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            1.623588300438591,
+            1.6235883004385911
+          ]
+        },
+        {
+          "fact": "R intersection on OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            2.2961005941905386,
+            0.0
+          ]
+        },
+        {
+          "fact": "P1-Q-R-P2 collinear and ordered",
+          "role": "CONCLUSION",
+          "parameters": [
+            0.29289321881345237,
+            0.7071067811865475
+          ]
+        },
+        {
+          "fact": "folded chord length",
+          "role": "CONCLUSION",
+          "expected": 4.242640687119286,
+          "observedFromConstruction": 4.242640687119285
+        }
+      ],
+      "sourceConditionCoverage": [
+        "Source circle center/radius and A/B direction",
+        "P locus or fixed P direction",
+        "reflection across both boundary lines",
+        "Q/R segment constraints",
+        "straightened path order and equality"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "relation": {
+        "formula": "P1P2=2r·sin(theta)",
+        "answerRelation": "OP=3에서 등호; 3≤OP≤5",
+        "expectedMinimum": 4.242640687119286,
+        "computedChordLength": 4.242640687119285,
+        "delta": -8.881784197001252e-16,
+        "extra": {
+          "slot": "C2",
+          "relation": "OP=3에서 등호; 3≤OP≤5",
+          "radial": [
+            3.0,
+            5.0
+          ]
+        }
+      },
+      "sourceProblemSha256": "sha256:41b59971ee0d5df367090d5aeb64167b0865adf75043217594da6e574e827ca8",
+      "sourceSolutionSha256": "sha256:29725ba4f3efcdc990d8d0f5d309ed980cec7d56ee636c47664f9389e3cd940f"
+    },
+    "ALITE-PALMA25-2MID-Q17-C3": {
+      "uid": "ALITE-PALMA25-2MID-Q17-C3",
+      "slot": "C3",
+      "r": 1.0,
+      "thetaRadians": 0.7853981633974483,
+      "thetaDegrees": 45,
+      "coordinateProvenance": "CONSTRUCTED_REALIZATION",
+      "coordinateConstruction": {
+        "rationale": "Set O=(0,0), OA as the x-axis, choose the equality point P at the minor-arc midpoint, reflect P across OB and OA, then calculate Q and R as exact boundary intersections.",
+        "origin": [
+          0,
+          0
+        ],
+        "xAxisDirection": [
+          1,
+          0
+        ],
+        "unitScale": 1,
+        "pointCoordinates": {
+          "O": [
+            0.0,
+            0.0
+          ],
+          "A": [
+            1.0,
+            0.0
+          ],
+          "B": [
+            0.7071067811865476,
+            0.7071067811865476
+          ],
+          "P": [
+            0.9238795325112867,
+            0.3826834323650898
+          ],
+          "P1": [
+            0.38268343236508984,
+            0.9238795325112867
+          ],
+          "P2": [
+            0.9238795325112867,
+            -0.3826834323650898
+          ],
+          "Q": [
+            0.541196100146197,
+            0.541196100146197
+          ],
+          "R": [
+            0.7653668647301795,
+            0.0
+          ]
+        },
+        "constructionConditions": {
+          "OP=OA=OB": 1.0,
+          "angle_AOB_deg": 45,
+          "P_direction_deg": 22.5,
+          "P1_direction_deg": 67.5,
+          "P2_direction_deg": -22.5,
+          "Q_boundary": "OB",
+          "R_boundary": "OA"
+        },
+        "residuals": {
+          "|OA|-r": 0.0,
+          "|OB|-r": 0.0,
+          "|OP|-r": 0.0,
+          "Q_collinear": -2.7755575615628914e-17,
+          "R_collinear": 5.551115123125783e-17,
+          "Q_parameter": 0.2928932188134524,
+          "R_parameter": 0.7071067811865475
+        }
+      },
+      "expectedFacts": [
+        {
+          "fact": "A on OA radius",
+          "role": "GIVEN",
+          "point": [
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "fact": "B on OB radius",
+          "role": "GIVEN",
+          "point": [
+            0.7071067811865476,
+            0.7071067811865476
+          ]
+        },
+        {
+          "fact": "selected equality point P",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            0.9238795325112867,
+            0.3826834323650898
+          ]
+        },
+        {
+          "fact": "reflection P1 across OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            0.38268343236508984,
+            0.9238795325112867
+          ]
+        },
+        {
+          "fact": "reflection P2 across OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            0.9238795325112867,
+            -0.3826834323650898
+          ]
+        },
+        {
+          "fact": "Q intersection on OB",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            0.541196100146197,
+            0.541196100146197
+          ]
+        },
+        {
+          "fact": "R intersection on OA",
+          "role": "DERIVED_INTERMEDIATE",
+          "point": [
+            0.7653668647301795,
+            0.0
+          ]
+        },
+        {
+          "fact": "P1-Q-R-P2 collinear and ordered",
+          "role": "CONCLUSION",
+          "parameters": [
+            0.2928932188134524,
+            0.7071067811865475
+          ]
+        },
+        {
+          "fact": "folded chord length",
+          "role": "CONCLUSION",
+          "expected": 1.4142135623730951,
+          "observedFromConstruction": 1.4142135623730951
+        }
+      ],
+      "sourceConditionCoverage": [
+        "Source circle center/radius and A/B direction",
+        "P locus or fixed P direction",
+        "reflection across both boundary lines",
+        "Q/R segment constraints",
+        "straightened path order and equality"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "relation": {
+        "formula": "P1P2=2r·sin(theta)",
+        "answerRelation": "6<√(2n)≤8 ⇒ n=19,…,32 (14개)",
+        "expectedMinimum": 1.4142135623730951,
+        "computedChordLength": 1.4142135623730951,
+        "delta": 0.0,
+        "extra": {
+          "slot": "C3",
+          "relation": "6<√(2n)≤8 ⇒ n=19,…,32 (14개)",
+          "normalized": true
+        }
+      },
+      "sourceProblemSha256": "sha256:2c6d88bea9dd79b2d5d3b2cfb1baa041227bd9a6727cdb7b7c8337e95045235c",
+      "sourceSolutionSha256": "sha256:e63529bfdfdc40c8294bb72d5f6186d28c2933c0db8fb81787553ae42abdecd7"
+    }
+  },
+  "q20": {
+    "ALITE-PALMA25-2MID-Q20-A1": {
+      "uid": "ALITE-PALMA25-2MID-Q20-A1",
+      "slot": "A1",
+      "sourceConditionCoverage": [
+        "Set sizes A/B and total N are taken from the stem.",
+        "The solution's interval or fixed intersection value is frozen from its text.",
+        "Each displayed witness assigns nonnegative counts to R11, R10, R01, R00.",
+        "The region counts sum to N and recover both set cardinalities."
+      ],
+      "setNames": {
+        "A": "영어학원",
+        "B": "수학학원"
+      },
+      "canonicalRegionMap": {
+        "A∩B": "R11",
+        "A만": "R10",
+        "B만": "R01",
+        "둘 다 아님": "R00"
+      },
+      "typedFacts": {
+        "cardinalityByRegion": [
+          {
+            "R11": 8,
+            "R10": 11,
+            "R01": 13,
+            "R00": 0
+          },
+          {
+            "R11": 19,
+            "R10": 0,
+            "R01": 2,
+            "R00": 11
+          }
+        ],
+        "intersection": [
+          8,
+          19
+        ],
+        "union": [
+          32,
+          21
+        ],
+        "outside": [
+          0,
+          11
+        ],
+        "total": 32
+      },
+      "witnesses": [
+        {
+          "intersection": 8,
+          "aOnly": 11,
+          "bOnly": 13,
+          "neither": 0,
+          "union": 32,
+          "exclusive": 24,
+          "total": 32
+        },
+        {
+          "intersection": 19,
+          "aOnly": 0,
+          "bOnly": 2,
+          "neither": 11,
+          "union": 21,
+          "exclusive": 2,
+          "total": 32
+        }
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "sourceProblemSha256": "sha256:ebcc14c5c1aa34b912b64454e3c0e5209630041eecfd5cefa689b8c16d5a56e0",
+      "sourceSolutionSha256": "sha256:81f7f53c0ed7e6c17f3c51263f886a9b74700a1e41048e6afda99f9f0111cfb1"
+    },
+    "ALITE-PALMA25-2MID-Q20-A2": {
+      "uid": "ALITE-PALMA25-2MID-Q20-A2",
+      "slot": "A2",
+      "sourceConditionCoverage": [
+        "Set sizes A/B and total N are taken from the stem.",
+        "The solution's interval or fixed intersection value is frozen from its text.",
+        "Each displayed witness assigns nonnegative counts to R11, R10, R01, R00.",
+        "The region counts sum to N and recover both set cardinalities."
+      ],
+      "setNames": {
+        "A": "한국사 학습반",
+        "B": "영어 학습반"
+      },
+      "canonicalRegionMap": {
+        "A∩B": "R11",
+        "A만": "R10",
+        "B만": "R01",
+        "둘 다 아님": "R00"
+      },
+      "typedFacts": {
+        "cardinalityByRegion": [
+          {
+            "R11": 15,
+            "R10": 9,
+            "R01": 16,
+            "R00": 0
+          },
+          {
+            "R11": 24,
+            "R10": 0,
+            "R01": 7,
+            "R00": 9
+          }
+        ],
+        "intersection": [
+          15,
+          24
+        ],
+        "union": [
+          40,
+          31
+        ],
+        "outside": [
+          0,
+          9
+        ],
+        "total": 40
+      },
+      "witnesses": [
+        {
+          "intersection": 15,
+          "aOnly": 9,
+          "bOnly": 16,
+          "neither": 0,
+          "union": 40,
+          "exclusive": 25,
+          "total": 40
+        },
+        {
+          "intersection": 24,
+          "aOnly": 0,
+          "bOnly": 7,
+          "neither": 9,
+          "union": 31,
+          "exclusive": 7,
+          "total": 40
+        }
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "sourceProblemSha256": "sha256:c25deca706918c648c923f4e5c820c1c4a7c8dcab52d294c6b80407405a2dc9b",
+      "sourceSolutionSha256": "sha256:53ca8e6147f8df99eedb561197fc6368af00a2acb76d676f1fe148d57e8459d1"
+    },
+    "ALITE-PALMA25-2MID-Q20-A3": {
+      "uid": "ALITE-PALMA25-2MID-Q20-A3",
+      "slot": "A3",
+      "sourceConditionCoverage": [
+        "Set sizes A/B and total N are taken from the stem.",
+        "The solution's interval or fixed intersection value is frozen from its text.",
+        "Each displayed witness assigns nonnegative counts to R11, R10, R01, R00.",
+        "The region counts sum to N and recover both set cardinalities."
+      ],
+      "setNames": {
+        "A": "독서 동아리",
+        "B": "토론 동아리"
+      },
+      "canonicalRegionMap": {
+        "A∩B": "R11",
+        "A만": "R10",
+        "B만": "R01",
+        "둘 다 아님": "R00"
+      },
+      "typedFacts": {
+        "cardinalityByRegion": [
+          {
+            "R11": 7,
+            "R10": 18,
+            "R01": 11,
+            "R00": 0
+          },
+          {
+            "R11": 18,
+            "R10": 7,
+            "R01": 0,
+            "R00": 11
+          }
+        ],
+        "intersection": [
+          7,
+          18
+        ],
+        "union": [
+          36,
+          25
+        ],
+        "outside": [
+          0,
+          11
+        ],
+        "total": 36
+      },
+      "witnesses": [
+        {
+          "intersection": 7,
+          "aOnly": 18,
+          "bOnly": 11,
+          "neither": 0,
+          "union": 36,
+          "exclusive": 29,
+          "total": 36
+        },
+        {
+          "intersection": 18,
+          "aOnly": 7,
+          "bOnly": 0,
+          "neither": 11,
+          "union": 25,
+          "exclusive": 7,
+          "total": 36
+        }
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "sourceProblemSha256": "sha256:b7e716952965316e150f80e0efe66e3aa63f9fda7431de590345531e90f19ad5",
+      "sourceSolutionSha256": "sha256:9768200814811a86d884fed19010dffdab5e7a8fd212364874a5673ff0bd2b1f"
+    },
+    "ALITE-PALMA25-2MID-Q20-B1": {
+      "uid": "ALITE-PALMA25-2MID-Q20-B1",
+      "slot": "B1",
+      "sourceConditionCoverage": [
+        "Set sizes A/B and total N are taken from the stem.",
+        "The solution's interval or fixed intersection value is frozen from its text.",
+        "Each displayed witness assigns nonnegative counts to R11, R10, R01, R00.",
+        "The region counts sum to N and recover both set cardinalities."
+      ],
+      "setNames": {
+        "A": "미술 동아리",
+        "B": "체육 동아리"
+      },
+      "canonicalRegionMap": {
+        "A∩B": "R11",
+        "A만": "R10",
+        "B만": "R01",
+        "둘 다 아님": "R00"
+      },
+      "typedFacts": {
+        "cardinalityByRegion": [
+          {
+            "R11": 14,
+            "R10": 13,
+            "R01": 15,
+            "R00": 6
+          }
+        ],
+        "intersection": [
+          14
+        ],
+        "union": [
+          42
+        ],
+        "outside": [
+          6
+        ],
+        "total": 48
+      },
+      "witnesses": [
+        {
+          "intersection": 14,
+          "aOnly": 13,
+          "bOnly": 15,
+          "neither": 6,
+          "union": 42,
+          "exclusive": 28,
+          "total": 48
+        }
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "sourceProblemSha256": "sha256:713fadce9f7cc324c188f23dac8dfb68b69cd272b20caab27fd43744156e7c57",
+      "sourceSolutionSha256": "sha256:7ed38b1cd14023705a9661b72fbd9952777f5e86c12a62f00a2c128461ef6c51"
+    },
+    "ALITE-PALMA25-2MID-Q20-B2": {
+      "uid": "ALITE-PALMA25-2MID-Q20-B2",
+      "slot": "B2",
+      "sourceConditionCoverage": [
+        "Set sizes A/B and total N are taken from the stem.",
+        "The solution's interval or fixed intersection value is frozen from its text.",
+        "Each displayed witness assigns nonnegative counts to R11, R10, R01, R00.",
+        "The region counts sum to N and recover both set cardinalities."
+      ],
+      "setNames": {
+        "A": "과학 동아리",
+        "B": "봉사 동아리"
+      },
+      "canonicalRegionMap": {
+        "A∩B": "R11",
+        "A만": "R10",
+        "B만": "R01",
+        "둘 다 아님": "R00"
+      },
+      "typedFacts": {
+        "cardinalityByRegion": [
+          {
+            "R11": 11,
+            "R10": 15,
+            "R01": 19,
+            "R00": 0
+          },
+          {
+            "R11": 19,
+            "R10": 7,
+            "R01": 11,
+            "R00": 8
+          }
+        ],
+        "intersection": [
+          11,
+          19
+        ],
+        "union": [
+          45,
+          37
+        ],
+        "outside": [
+          0,
+          8
+        ],
+        "total": 45
+      },
+      "witnesses": [
+        {
+          "intersection": 11,
+          "aOnly": 15,
+          "bOnly": 19,
+          "neither": 0,
+          "union": 45,
+          "exclusive": 34,
+          "total": 45
+        },
+        {
+          "intersection": 19,
+          "aOnly": 7,
+          "bOnly": 11,
+          "neither": 8,
+          "union": 37,
+          "exclusive": 18,
+          "total": 45
+        }
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "sourceProblemSha256": "sha256:68ca80073893f9be49e2d7e35a7608e2e80c87d236096fbcb2c30a282f047c16",
+      "sourceSolutionSha256": "sha256:479e1e16a59078908ff9d5ba7786c29a7cb6a0d8e89c85640f01e59d1543ba20"
+    },
+    "ALITE-PALMA25-2MID-Q20-B3": {
+      "uid": "ALITE-PALMA25-2MID-Q20-B3",
+      "slot": "B3",
+      "sourceConditionCoverage": [
+        "Set sizes A/B and total N are taken from the stem.",
+        "The solution's interval or fixed intersection value is frozen from its text.",
+        "Each displayed witness assigns nonnegative counts to R11, R10, R01, R00.",
+        "The region counts sum to N and recover both set cardinalities."
+      ],
+      "setNames": {
+        "A": "축구 동아리",
+        "B": "배드민턴 동아리"
+      },
+      "canonicalRegionMap": {
+        "A∩B": "R11",
+        "A만": "R10",
+        "B만": "R01",
+        "둘 다 아님": "R00"
+      },
+      "typedFacts": {
+        "cardinalityByRegion": [
+          {
+            "R11": 15,
+            "R10": 8,
+            "R01": 13,
+            "R00": 2
+          }
+        ],
+        "intersection": [
+          15
+        ],
+        "union": [
+          36
+        ],
+        "outside": [
+          2
+        ],
+        "total": 38
+      },
+      "witnesses": [
+        {
+          "intersection": 15,
+          "aOnly": 8,
+          "bOnly": 13,
+          "neither": 2,
+          "union": 36,
+          "exclusive": 21,
+          "total": 38
+        }
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "sourceProblemSha256": "sha256:045684c974e8213176f64c4353ecb37c7112f69ddb60ec90ac7ebc0a3e791bd8",
+      "sourceSolutionSha256": "sha256:a003b4245b874cba33a476c0e58c2e0673fae63580b2fe06acf6b00ea9b5b601"
+    },
+    "ALITE-PALMA25-2MID-Q20-C1": {
+      "uid": "ALITE-PALMA25-2MID-Q20-C1",
+      "slot": "C1",
+      "sourceConditionCoverage": [
+        "Set sizes A/B and total N are taken from the stem.",
+        "The solution's interval or fixed intersection value is frozen from its text.",
+        "Each displayed witness assigns nonnegative counts to R11, R10, R01, R00.",
+        "The region counts sum to N and recover both set cardinalities."
+      ],
+      "setNames": {
+        "A": "독서 동아리",
+        "B": "과학 동아리"
+      },
+      "canonicalRegionMap": {
+        "A∩B": "R11",
+        "A만": "R10",
+        "B만": "R01",
+        "둘 다 아님": "R00"
+      },
+      "typedFacts": {
+        "cardinalityByRegion": [
+          {
+            "R11": 15,
+            "R10": 19,
+            "R01": 26,
+            "R00": 0
+          },
+          {
+            "R11": 25,
+            "R10": 9,
+            "R01": 16,
+            "R00": 10
+          }
+        ],
+        "intersection": [
+          15,
+          25
+        ],
+        "union": [
+          60,
+          50
+        ],
+        "outside": [
+          0,
+          10
+        ],
+        "total": 60
+      },
+      "witnesses": [
+        {
+          "intersection": 15,
+          "aOnly": 19,
+          "bOnly": 26,
+          "neither": 0,
+          "union": 60,
+          "exclusive": 45,
+          "total": 60
+        },
+        {
+          "intersection": 25,
+          "aOnly": 9,
+          "bOnly": 16,
+          "neither": 10,
+          "union": 50,
+          "exclusive": 25,
+          "total": 60
+        }
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "sourceProblemSha256": "sha256:27837fea4721b117c20997167780273fed359434bd5db12b913eae87897cd654",
+      "sourceSolutionSha256": "sha256:5d2f8778335ee151fb6830edcf91c5417ac296a68d062445eebfab4cf3bddb2a"
+    },
+    "ALITE-PALMA25-2MID-Q20-C2": {
+      "uid": "ALITE-PALMA25-2MID-Q20-C2",
+      "slot": "C2",
+      "sourceConditionCoverage": [
+        "Set sizes A/B and total N are taken from the stem.",
+        "The solution's interval or fixed intersection value is frozen from its text.",
+        "Each displayed witness assigns nonnegative counts to R11, R10, R01, R00.",
+        "The region counts sum to N and recover both set cardinalities."
+      ],
+      "setNames": {
+        "A": "활동 A",
+        "B": "활동 B"
+      },
+      "canonicalRegionMap": {
+        "A∩B": "R11",
+        "A만": "R10",
+        "B만": "R01",
+        "둘 다 아님": "R00"
+      },
+      "typedFacts": {
+        "cardinalityByRegion": [
+          {
+            "R11": 17,
+            "R10": 15,
+            "R01": 12,
+            "R00": 6
+          },
+          {
+            "R11": 23,
+            "R10": 9,
+            "R01": 6,
+            "R00": 12
+          }
+        ],
+        "intersection": [
+          17,
+          23
+        ],
+        "union": [
+          44,
+          38
+        ],
+        "outside": [
+          6,
+          12
+        ],
+        "total": 50
+      },
+      "witnesses": [
+        {
+          "intersection": 17,
+          "aOnly": 15,
+          "bOnly": 12,
+          "neither": 6,
+          "union": 44,
+          "exclusive": 27,
+          "total": 50
+        },
+        {
+          "intersection": 23,
+          "aOnly": 9,
+          "bOnly": 6,
+          "neither": 12,
+          "union": 38,
+          "exclusive": 15,
+          "total": 50
+        }
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "sourceProblemSha256": "sha256:6e7f444089b1eaa818112ea96aa6597b7481b56923fdd95e0cb63e2fd66bd849",
+      "sourceSolutionSha256": "sha256:ace828c54efdb201c73aeb05c8b46569051ccc1e7d6ed6c2fbefe39ab6b8f814"
+    },
+    "ALITE-PALMA25-2MID-Q20-C3": {
+      "uid": "ALITE-PALMA25-2MID-Q20-C3",
+      "slot": "C3",
+      "sourceConditionCoverage": [
+        "Set sizes A/B and total N are taken from the stem.",
+        "The solution's interval or fixed intersection value is frozen from its text.",
+        "Each displayed witness assigns nonnegative counts to R11, R10, R01, R00.",
+        "The region counts sum to N and recover both set cardinalities."
+      ],
+      "setNames": {
+        "A": "음악 동아리",
+        "B": "미술 동아리"
+      },
+      "canonicalRegionMap": {
+        "A∩B": "R11",
+        "A만": "R10",
+        "B만": "R01",
+        "둘 다 아님": "R00"
+      },
+      "typedFacts": {
+        "cardinalityByRegion": [
+          {
+            "R11": 21,
+            "R10": 17,
+            "R01": 26,
+            "R00": 8
+          },
+          {
+            "R11": 25,
+            "R10": 13,
+            "R01": 22,
+            "R00": 12
+          }
+        ],
+        "intersection": [
+          21,
+          25
+        ],
+        "union": [
+          64,
+          60
+        ],
+        "outside": [
+          8,
+          12
+        ],
+        "total": 72
+      },
+      "witnesses": [
+        {
+          "intersection": 21,
+          "aOnly": 17,
+          "bOnly": 26,
+          "neither": 8,
+          "union": 64,
+          "exclusive": 43,
+          "total": 72
+        },
+        {
+          "intersection": 25,
+          "aOnly": 13,
+          "bOnly": 22,
+          "neither": 12,
+          "union": 60,
+          "exclusive": 35,
+          "total": 72
+        }
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "sourceProblemSha256": "sha256:382a4f8a8d71e4635d4497efe46cde126f01120ef4569e839e68c4e6f1fd03ef",
+      "sourceSolutionSha256": "sha256:36c314aebcf58fa35065751455f6baef68e19844df2ff993253a60dbd65df735"
+    }
+  },
+  "frozenBeforeCandidateBytes": true
+}

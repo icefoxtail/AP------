@@ -1,0 +1,9 @@
+### Result
+"{\"mode\":\"sol\",\"questions\":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22],\"questionCount\":22,\"answerBlocks\":22,\"solutionBlocks\":22,\"assetCount\":5,\"failedAssets\":[],\"bodyText\":\"1)\\n이다. log⁡(2⁢𝑥 −1) ≠0\\n이므로 양변을 나누어 log⁡(𝑥2 +3⁢𝑥) =1\\n을 얻는다.\\n\\n따라서 𝑥2 +3⁢𝑥 =10\\n, 즉 (𝑥 +5)⁢(𝑥 −2) =0\\n이다. 𝑥 =−5\\n는 𝑥 >\\n1\\n2\\n에 어긋나고, 𝑥 =2\\n는 조건을 만족한다.\\n\\n따라서 모든 근은 𝑥 =1,2\\n이다.\\n- 7 -\"}"
+### Ran Playwright code
+```js
+await page.evaluate('() => { const questions=[...new Set([...document.querySelectorAll(".q-num")].map(e=>Number((e.innerText.match(/\\d+/)||[])[0])).filter(Number.isFinite))].sort((a,b)=>a-b); const assets=[...document.querySelectorAll("img")].filter(i=>i.getAttribute("src")?.includes("assets/")); return JSON.stringify({mode:new URLSearchParams(location.search).get("mode"),questions,questionCount:questions.length,answerBlocks:document.querySelectorAll(".sol-ans").length,solutionBlocks:document.querySelectorAll(".sol-exp").length,assetCount:assets.length,failedAssets:assets.filter(i=>!i.complete||i.naturalWidth===0).map(i=>i.getAttribute("src")),bodyText:document.body.innerText.slice(-180)}); }');
+```
+### Page
+- Page URL: http://127.0.0.1:8991/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1mid%2F24_%EC%88%9C%EC%B2%9C%EC%97%AC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol&qpp=4
+- Page Title: JS아카이브 엔진 - Stage E v1.7.5 (AP Header + Submit QR)

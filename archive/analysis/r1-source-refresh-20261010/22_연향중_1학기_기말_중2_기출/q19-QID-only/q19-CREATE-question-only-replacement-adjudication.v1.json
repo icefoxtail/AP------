@@ -1,0 +1,161 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_QUESTION_ONLY_REPLACEMENT_ADJUDICATION_V1",
+  "status": "QUESTION_ONLY_REPLACEMENT_ACCEPTED",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "22_연향중_1학기_기말_중2_기출",
+  "qid": 19,
+  "stage": "CREATE",
+  "scopeOnly": true,
+  "fullExamCreateComplete": false,
+  "sourceParityClaim": "NOT_APPLICABLE_QUESTION_ONLY_REPLACEMENT",
+  "currentCandidate": {
+    "path": "archive/exams/original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
+    "rawSha256": "add91ca1f15bfc17ab6ad5610d2d0d1aa330b7a61497973874d5e5dac3f70a76",
+    "gitBlobSha1": "40560d9f62a2bf414b2b9ab1c25a6b5dd263b764"
+  },
+  "sourceIdentity": {
+    "questionUid": "qid_v1_50ad9d7ca3a5a9b9bb98771d205ff88250f1de608f14e123d0ea1d3d1e26f758",
+    "sourceOrdinal": 19
+  },
+  "targetPayload": {
+    "contentSha256": "2226ead1b8539ec94cf39ec5a77c86f45022ddd738d666be0fbd816c452b1020",
+    "choicesSha256": "053e1f66d9620a6250f29b45bfca8d9df27b9af02c98ad22bcc90cbdeeaa5388",
+    "answerSha256": "6958a3e7105064751a96bf1e52cd5e9916d71e127193b12ffae234c0fddac50f",
+    "solutionSha256": "6e6f35b73a8712da8792bd80ac131fd510341be651fa05bf579e05a4ce25f3c7",
+    "problemImageRef": "assets/images/22_연향중_1학기_기말_중2_기출/q19.png",
+    "problemImageSha256": "25fef042a2fd693b7a23ec7c18c7b02e952ff957a04834c9d0167a0499b295c3",
+    "solutionImageRef": "assets/images/22_연향중_1학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageSha256": "sha256:5b044f57487a9cf1bff686d3b48a0a0944b4b6cb6edb1f11c106bbdc35cdffc2"
+  },
+  "authorityRef": {
+    "path": "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/question-only-replacement-authorization.v3.json",
+    "sha256": "94f447abf6c73662445c63cbe726cbff96f110e507ce649ed1e989b958741bfa"
+  },
+  "createValidatorRef": {
+    "path": "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/q19-QID-only/q19-create-question-only-validator.pass.json",
+    "sha256": "57cb68624584b85ef723dd9f2b8a81c9c6dd37daf1401bf8be50cb1462f05554"
+  },
+  "r1Ref": {
+    "path": "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/q19-QID-only/q19-r1-review-evidence.revision03.json",
+    "sha256": "38cb27ed0995aa2d45861832f78f5b1f9ca0181db58b18422a5d5c6a3d947e2c"
+  },
+  "r2Ref": {
+    "path": "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/q19-QID-only/q19-r2-postfreeze-rebind.json",
+    "sha256": "4a12669809ed12bdb76e3f973b18e5bd78ccd990479996b17776ecd2511a5904"
+  },
+  "r3Ref": {
+    "path": "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/R3-q19-target/r3-qid19-physical-render-review.json",
+    "sha256": "7ea4b2ee73f5267e0736671692e579205b882cd1cebc490d8afe7efaf66e0fd3"
+  },
+  "priorStatuses": {
+    "sourceExact": {
+      "status": "HOLD",
+      "evidence": "Protected content/choices/answer/image unchanged from main; linked problem image directly inspected, blob 103bb2a6a0c4b5bdb6f6dbaf9945000d927af400.",
+      "holdEvidence": {
+        "reason": "The student-facing question asks which of the following linear functions avoid quadrant II and its choices combine ㉠–㉣, but no definitions of those four functions are present in any student-visible field/shared material. The opened q19 graph contains only the base descending line.",
+        "observedEvidence": {
+          "currentStudentPayloadSha256": "991e752242a40e08fb4b68f272a1ad5e841298ab6c7b77553895c2de0c18fb78",
+          "baselineStudentPayloadSha256": "991e752242a40e08fb4b68f272a1ad5e841298ab6c7b77553895c2de0c18fb78",
+          "studentPayloadParity": true,
+          "imageRef": "assets/images/22_연향중_1학기_기말_중2_기출/q19.png",
+          "imageSha256": "25fef042a2fd693b7a23ec7c18c7b02e952ff957a04834c9d0167a0499b295c3",
+          "imageActuallyOpened": true,
+          "imageObservation": "Opened actual q19.png at original resolution; it contains coordinate axes and a single descending line, no ㉠–㉣ formulas.",
+          "missingFields": [
+            "function definition ㉠",
+            "function definition ㉡",
+            "function definition ㉢",
+            "function definition ㉣"
+          ]
+        },
+        "unresolvedPoint": "Which four explicit linear functions are denoted by ㉠, ㉡, ㉢, ㉣, and thus which combination avoids quadrant II?",
+        "nextRequiredEvidenceOrCapability": "Provide the extracted qid 19 source region or a complete original scan/PDF region containing all four function definitions. Then run a separate clean qid 19 R1 freeze from the complete student-only payload.",
+        "repairAttempted": "No JS or physical evidence edited. Reviewed the complete current qid 19 student payload and opened its current graph; compared current and baseline student payload; no source reconstruction or answer/solution inference attempted.",
+        "authorityLookupAttempted": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "trigger": "qid 19 is underdetermined from current student input",
+          "exactScopedLookup": [
+            {
+              "command": "rg --files -g *.pdf",
+              "scope": "assigned worktree",
+              "result": "No matching source PDF listed."
+            },
+            {
+              "command": "Get-ChildItem -Path C:\\Users\\USER\\Desktop\\AP-------ci-fix -Filter *.pdf -File -Recurse",
+              "scope": "assigned worktree",
+              "result": "Only unrelated H1 generated PDF was found; no target exam PDF."
+            },
+            {
+              "path": "archive/data/r2e-intake/m2/22_연향중_1학기_기말_중2_기출.create.physical-evidence.json",
+              "inspection": "Root keys and PDF-named provenance fields only; no PDF/source-region reference. Answer-bearing questionRows were not inspected."
+            },
+            {
+              "path": "archive/data/r2e-intake/m2/22_연향중_1학기_기말_중2_기출.create.handoff.json",
+              "inspection": "Root keys and PDF-named provenance fields only; no PDF/source-region reference."
+            }
+          ],
+          "originalPdfActuallyReviewed": false
+        },
+        "whyDeterministicClosureImpossible": "The four function expressions determine the selected combination. They are absent from both baseline and current student-only source, and q19.png supplies only the reference graph. Without the missing expressions or the scoped original source region, any selected answer would be a guess."
+      }
+    },
+    "solutionMath": {
+      "status": "HOLD",
+      "evidence": "Fresh CREATE solution independently recalculated and rewritten for this qid.",
+      "holdEvidence": {
+        "reason": "The student-facing question asks which of the following linear functions avoid quadrant II and its choices combine ㉠–㉣, but no definitions of those four functions are present in any student-visible field/shared material. The opened q19 graph contains only the base descending line.",
+        "observedEvidence": {
+          "currentStudentPayloadSha256": "991e752242a40e08fb4b68f272a1ad5e841298ab6c7b77553895c2de0c18fb78",
+          "baselineStudentPayloadSha256": "991e752242a40e08fb4b68f272a1ad5e841298ab6c7b77553895c2de0c18fb78",
+          "studentPayloadParity": true,
+          "imageRef": "assets/images/22_연향중_1학기_기말_중2_기출/q19.png",
+          "imageSha256": "25fef042a2fd693b7a23ec7c18c7b02e952ff957a04834c9d0167a0499b295c3",
+          "imageActuallyOpened": true,
+          "imageObservation": "Opened actual q19.png at original resolution; it contains coordinate axes and a single descending line, no ㉠–㉣ formulas.",
+          "missingFields": [
+            "function definition ㉠",
+            "function definition ㉡",
+            "function definition ㉢",
+            "function definition ㉣"
+          ]
+        },
+        "unresolvedPoint": "Which four explicit linear functions are denoted by ㉠, ㉡, ㉢, ㉣, and thus which combination avoids quadrant II?",
+        "nextRequiredEvidenceOrCapability": "Provide the extracted qid 19 source region or a complete original scan/PDF region containing all four function definitions. Then run a separate clean qid 19 R1 freeze from the complete student-only payload.",
+        "repairAttempted": "No JS or physical evidence edited. Reviewed the complete current qid 19 student payload and opened its current graph; compared current and baseline student payload; no source reconstruction or answer/solution inference attempted.",
+        "authorityLookupAttempted": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "trigger": "qid 19 is underdetermined from current student input",
+          "exactScopedLookup": [
+            {
+              "command": "rg --files -g *.pdf",
+              "scope": "assigned worktree",
+              "result": "No matching source PDF listed."
+            },
+            {
+              "command": "Get-ChildItem -Path C:\\Users\\USER\\Desktop\\AP-------ci-fix -Filter *.pdf -File -Recurse",
+              "scope": "assigned worktree",
+              "result": "Only unrelated H1 generated PDF was found; no target exam PDF."
+            },
+            {
+              "path": "archive/data/r2e-intake/m2/22_연향중_1학기_기말_중2_기출.create.physical-evidence.json",
+              "inspection": "Root keys and PDF-named provenance fields only; no PDF/source-region reference. Answer-bearing questionRows were not inspected."
+            },
+            {
+              "path": "archive/data/r2e-intake/m2/22_연향중_1학기_기말_중2_기출.create.handoff.json",
+              "inspection": "Root keys and PDF-named provenance fields only; no PDF/source-region reference."
+            }
+          ],
+          "originalPdfActuallyReviewed": false
+        },
+        "whyDeterministicClosureImpossible": "The four function expressions determine the selected combination. They are absent from both baseline and current student-only source, and q19.png supplies only the reference graph. Without the missing expressions or the scoped original source region, any selected answer would be a guess."
+      }
+    }
+  },
+  "replacementReason": {
+    "sourceParityClaimed": false,
+    "text": "User-authorized question-only replacement supplies the missing ㉠–㉣ definitions; the original printed page remains unavailable, so no original-source parity is claimed."
+  }
+}

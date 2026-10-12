@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_QID_POSTFREEZE_REPAIR_ADJUDICATION_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "examUid": "24_매산여고_1학기_중간_고2_확률과통계",
+  "qid": 11,
+  "reviewerIdentity": {
+    "role": "archive_r1",
+    "reviewerId": "/root/maesan_prob_r1_merge"
+  },
+  "source": {
+    "path": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+    "rawSha256": "18d9cefae333cf0fec077ee91fdd694ef1cdfcc7b15bbfd602d41f0d86ce7c1d",
+    "rawBufferGitBlobSha1": "e1f9ac02d7f6635f3b850acc46210067f386ad2c",
+    "studentBodyAndChoices": "UNCHANGED_FROM_ORIGINAL_FREEZE"
+  },
+  "originalFreeze": {
+    "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/R1.original-freeze.json",
+    "sha256": "7dc5690c8f65e15490c675a23339633776b70d82710100eaea29e11a2a9b33c8",
+    "independentAnswer": "44 (②)",
+    "freezeReused": true
+  },
+  "currentStored": {
+    "answer": "②",
+    "solutionSha256": "7de95717dac6c35f89c04f2f38ab00652f76a928a3d61a9072f94f7bd40027c1",
+    "solution": "함수의 값 네 개 중 3의 개수에 따라 나누어 센다.\n\n3이 하나도 없으면 네 값은 1 또는 2이다. 곱이 10 이상이 되려면 네 값이 모두 2여야 하므로 $1$가지이다.\n\n3이 한 개이면 그 위치를 정하는 방법은 $4$가지이다. 나머지 세 값의 곱에 3을 곱해 10 이상이 되려면 2가 적어도 두 개 있어야 한다. 따라서 나머지 세 값의 선택은 $\\binom32+\\binom33=4$가지이고, 이 경우는 $4\\cdot4=16$가지이다.\n\n3이 두 개이면 그 위치를 정하는 방법은 $\\binom42=6$가지이다. 나머지 두 값의 곱이 1이면 전체 곱은 9이므로 조건을 만족하지 않는다. 나머지 두 값 중 적어도 하나가 2인 선택은 $2^2-1=3$가지이므로 이 경우는 $6\\cdot3=18$가지이다.\n\n3이 세 개이면 그 위치를 정하는 방법은 $\\binom43=4$가지이다. 남은 한 값은 1 또는 2 모두 가능하므로 $4\\cdot2=8$가지이다.\n\n3이 네 개이면 $1$가지이다.\n\n따라서 조건을 만족하는 함수는 $1+16+18+8+1=44$개이다. 정답은 ②이다."
+  },
+  "adjudication": {
+    "answerDisposition": "MATCH",
+    "reason": "The unchanged original independent freeze is 44 (②). The repaired current solution groups by number of 3s and gives 1+16+18+8+1=44; stored answer ② matches.",
+    "itemStatus": "READY",
+    "itemHoldCleared": true
+  },
+  "repairAuthority": {
+    "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/ITEM_RECOVERY.q11.false-hold-disposition.json",
+    "sha256": "5c19db9e8d7f0a69709a046bad5ec11bf052eac76d8e3ba3a4d451cf04f4eb4c"
+  },
+  "solutionCalibrationPreflight": {
+    "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/ITEM_RECOVERY.calibration.json",
+    "sha256": "b921fadc047b1665fe1baf8facb57a3373077d4ffdd4b5ff07b50e3666620c49",
+    "status": "PASS",
+    "samplesReadBeforeRepair": true
+  },
+  "historicalFailedDisposition": {
+    "path": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/r1-clean-20261011/R1.postfreeze-adjudication-final.json",
+    "sha256": "80bed4e23ab9f3f25ab5d1a686978e9267b8e15b6d9035e3ff5a6b53d5766c66",
+    "preserved": true,
+    "reason": "Earlier postfreeze count 40 was incorrect; this q11-only correction review supersedes it without mutating the original freeze."
+  },
+  "scope": "q11 answer and repaired solution only; no student body, choices, Meta, or assets changed"
+}

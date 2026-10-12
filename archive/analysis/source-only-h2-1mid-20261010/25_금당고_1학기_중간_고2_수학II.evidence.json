@@ -1,0 +1,133 @@
+{
+  "contractVersion": "source-only-intake-v1",
+  "generatedAt": "2026-10-10T10:19:58.082018",
+  "source": {
+    "pdfPath": "C:\\Users\\USER\\Desktop\\기출정리 파일\\(1)1중간\\수2\\2025_금당고2_수2_1중간.pdf",
+    "pdfSha256": "1954f8c5c336d8fa3c049301090c743dcc028311e90b12f04f0b39d8d45a4961",
+    "dpi": 300
+  },
+  "exam": {
+    "title": "25_금당고_1학기_중간_고2_수학II",
+    "grade": "고2",
+    "subject": "수학II",
+    "targetJs": "archive/exams/original/high/h2/1mid/25_금당고_1학기_중간_고2_수학II.js"
+  },
+  "inventory": {
+    "totalQuestions": 20,
+    "choiceCount": 15,
+    "essayCount": 5,
+    "imageCount": 2
+  },
+  "images": [
+    {
+      "path": "archive/assets/images/25_금당고_1학기_중간_고2_수학II/q12.png",
+      "sha256": "5844b40b85279c63dcfa03b7c6d8e40064925e3cc80f63661bdcbe0d6ca6b33c"
+    },
+    {
+      "path": "archive/assets/images/25_금당고_1학기_중간_고2_수학II/q13.png",
+      "sha256": "7f0f154d02b89ddf3795897b69af9a2324f4486ed154143ae46982abb9e23a20"
+    }
+  ],
+  "validation": {
+    "vmExecution": "PASS",
+    "choiceLengthCheck": "PASS",
+    "answerBlankCheck": "PASS",
+    "solutionBlankCheck": "PASS",
+    "assetExistenceCheck": "PASS"
+  },
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "CREATE",
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "assignmentVariance": {
+    "statedQidCount": 21,
+    "actualSourceQidCount": 20,
+    "actualSourceIds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "resolution": "Use actual current source and intake denominator 20; do not create qid 21."
+  },
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.",
+        "observation": "The board flow first completes the square, records the original center/radius, then traces each translation/reflection as explicit coordinate updates. Read q7-solution.svg bytes (SHA-256 6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d; blob 145bb00f7bbe034d259877b9d7a34c9e70bf8728) and checked C0=(-3,1)→C1=(-5,2)→C2=(5,-2), radius 3."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 9,
+        "solutionSha256": "sha256:9d9a8678a8390eefc9dfdda5f6f88d772c24fa8a0a166ecf309bdc00b668bf96",
+        "solutionExcerpt": "$m=2$이다.",
+        "observation": "The explanation isolates the two line slopes and writes the perpendicular condition as their product -1 before solving m; its intermediate transformations are visible."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 13,
+        "solutionSha256": "sha256:18595ac39feb9304040eb8eaa40ff3b24c076379e0be9fea26ffea4caebf32f8",
+        "solutionExcerpt": "$|k-10|=10$이다.",
+        "observation": "The center-to-line distance is set equal to the radius, the absolute-value equation is split into both values, and the product is then evaluated."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 15,
+        "solutionSha256": "sha256:9726199ae74e6339f7629a963850c12d6f6431af82dbe1087212ddf88672a5ed",
+        "solutionExcerpt": "$DE\\parallel BC$이므로 삼각형 $ADE$와 $ABC$는 닮음이다.",
+        "observation": "The board flow derives the length ratio from the area ratio, computes D and E with displayed coordinates, then writes and evaluates the line equation. Read q15-solution.svg bytes (SHA-256 69d77e49eaaba69e2ab31218b4dc3d6869c49055eb513dac8ebc33e153bc7324; blob 5f1ac87c1d7c317f15bee65d0a8f2dd3e11d6041) and checked D=(1,3), E=(10/3,2/3), DE: y=-x+4."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+        "observation": "Read the full fixture: rendered geometry must be reverse-calculated from actual primitives; enumerated statements need separate board blocks; Meta must use exact active taxonomy matches; runtime JS strings must be checked after VM evaluation."
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "SOURCE_ONLY_CREATE",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE"
+  }
+}

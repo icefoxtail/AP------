@@ -1,0 +1,9 @@
+### Result
+"{\"mode\":\"sol\",\"questions\":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],\"questionCount\":23,\"answerBlocks\":23,\"solutionBlocks\":23,\"assetCount\":5,\"failedAssets\":[],\"q22AnswerConfirmed\":false,\"bodyText\":\"개뿐이어서 불가능합니다. 따라서 각 변에 남학생이 적어도 한 명 앉는 자리 선택은\\n126 −3 ×6 =108\\n\\n가지입니다. 사람을 배치하는 방법은 5!4!\\n가지이고, 삼각형의 회전 세 가지는 같은 배열이므로 3으로 나눕니다.\\n\\n108×5!×4!\\n3\\n =103680 =144 ×6!\\n\\n따라서 𝑛 =144\\n입니다.\\n- 7 -\"}"
+### Ran Playwright code
+```js
+await page.evaluate('() => { const mode=new URLSearchParams(location.search).get("mode"); const nums=mode==="ans"?document.body.innerText.split(/\\n/).filter(x=>/^\\d+\\.$/.test(x)).map(x=>Number(x.slice(0,-1))):[...document.querySelectorAll(".q-num")].map(e=>Number((e.innerText.match(/\\d+/)||[])[0])).filter(Number.isFinite); const questions=[...new Set(nums)].sort((a,b)=>a-b); const assets=[...document.querySelectorAll("img")].filter(i=>i.getAttribute("src")?.includes("assets/")); return JSON.stringify({mode,questions,questionCount:questions.length,answerBlocks:document.querySelectorAll(".sol-ans").length,solutionBlocks:document.querySelectorAll(".sol-exp").length,assetCount:assets.length,failedAssets:assets.filter(i=>!i.complete||i.naturalWidth===0).map(i=>i.getAttribute("src")),q22AnswerConfirmed:mode==="ans"&&/22\\.\\s*\\n\\(6,\\s*3\\)/.test(document.body.innerText),bodyText:document.body.innerText.slice(-180)}); }');
+```
+### Page
+- Page URL: http://127.0.0.1:8991/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1mid%2F24_%EC%88%9C%EC%B2%9C%EC%97%AC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%ED%99%95%EB%A5%A0%EA%B3%BC%ED%86%B5%EA%B3%84.js&mode=sol&qpp=4
+- Page Title: JS아카이브 엔진 - Stage E v1.7.5 (AP Header + Submit QR)

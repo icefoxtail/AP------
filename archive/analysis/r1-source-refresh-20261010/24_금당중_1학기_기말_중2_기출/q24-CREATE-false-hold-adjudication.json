@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_FALSE_HOLD_ADJUDICATION_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "stage": "CREATE",
+  "examUid": "24_금당중_1학기_기말_중2_기출",
+  "qid": 24,
+  "status": "FALSE_HOLD_CLEARED",
+  "scopeOnly": true,
+  "fullExamCreateComplete": false,
+  "studentSourceMutated": false,
+  "solutionMutated": false,
+  "sourceBinding": {
+    "path": "archive/exams/original/middle/m2/1final/24_금당중_1학기_기말_중2_기출.js",
+    "worktreeHead": "9ab4720081c1e0794054999619a3f47068667b6b",
+    "rawSha256": "53a9333ebf9caab43f4accb346fa5fdedcb67c091e7f5ae205ad24c807814a56",
+    "rawBufferGitBlobSha1": "8adf111c4e5ebc57a61c7f4ff3cd1e2b6e38f1a6",
+    "baselineStudentPayloadSha256": "5fef2939196300157adbb2f81bee14fb296871d02b0042114aa87844a77f14a3",
+    "currentStudentPayloadSha256": "5fef2939196300157adbb2f81bee14fb296871d02b0042114aa87844a77f14a3",
+    "studentPayloadExactParity": true,
+    "qidContentSha256": "d4921edeb3c7cb838dda6815799d8934da3bb09dd775178b71cf240bed6053c1",
+    "qidChoicesSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "qidAnswerSha256": "99c6e3805fb9dca27be39ae56ebd2c2afd410b2baaf2a093b92476a42526c39a",
+    "qidSolutionSha256": "745221b032b1ae721285a9bef6e69443f89b290176c80f26c0da33e31aee8050"
+  },
+  "assetBinding": {
+    "ref": "assets/images/24_금당중_1학기_기말_중2_기출/q24.png",
+    "sha256": "46663e972c07a76aa6a6ee605fa1807a9b1bdf8a7770776a2f28e9fe6d0b943e",
+    "opened": true,
+    "observed": "Trapezoid ABCD with AD parallel to BC; diagonals AC and BD intersect at O."
+  },
+  "sourceReference": {
+    "policy": "EXTRACTED_JS_ASSETS / DEFECT_ONLY",
+    "originalPageAvailableInAssignedWorktree": false,
+    "pdfOpened": false,
+    "sourceExactParityClaimed": false,
+    "decision": "The extracted student item is internally coherent; no source-dependent defect remains to justify PDF lookup or question replacement."
+  },
+  "falseHoldAdjudication": {
+    "priorHoldPath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-SOURCE_HOLD.json",
+    "priorHoldSha256": "e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0",
+    "priorHoldPreservedUnchanged": true,
+    "originalFreezePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/fresh-original-freeze.json",
+    "originalFreezeSha256": "499c835db35395e41a53737708f1f708f8bc33d7ad6f77baf66c3b5d0534b38d",
+    "originalFreezePreservedUnchanged": true,
+    "supersededPriorInference": {
+      "preservedInOriginalFreeze": true,
+      "claim": "△OAB and △ODC are similar, so AO:OC=3:5 gives area ratio 9:25 and contradicts equality.",
+      "whyInvalid": "The compared triangles △OAB and △ODC are not established as similar by AD∥BC. The valid similar pair is △AOD and △COB. Applying its side ratio directly as an area ratio for △OAB and △ODC is an invalid pair substitution."
+    },
+    "proof": [
+      "AD∥BC, so △ABC and △DBC have common base BC and equal altitudes; hence [ABC]=[DBC].",
+      "The diagonals meet at interior point O, so [ABC]=[OAB]+[OBC] and [DBC]=[ODC]+[OBC]. Subtracting the common [OBC] yields [OAB]=[ODC].",
+      "For (2), △OAB and △OBC have bases AO and OC on line AC and share the altitude from B; therefore [OAB]:[OBC]=AO:OC=3:5. Since [ODC]=12 and [OAB]=[ODC], [OBC]=12×5/3=20 cm²."
+    ],
+    "answerSolutionDisposition": "Current answer and solution are mathematically consistent with the extracted stem and opened figure; q24 answer HOLD is cleared without changing student or solution fields."
+  },
+  "visualAxes": {
+    "problemVisual": {
+      "need": "REQUIRED",
+      "action": "KEEP_EXISTING_VERIFIED_RASTER",
+      "reason": "Vertex order, parallel bases, and diagonal intersection are source visual facts needed to interpret the geometry; the opened original q24 PNG supplies them without reconstruction.",
+      "renderStatus": "NOT_REVIEWED_IN_THIS_SCOPED_CREATE_ADJUDICATION"
+    },
+    "solutionVisual": {
+      "need": "BENEFICIAL",
+      "action": "OPEN_FOR_SERIAL_R1_REVIEW",
+      "reason": "A solution diagram highlighting the equal-area subtraction and the 3:5 subdivision would improve spatial reproducibility. Archive engine sol mode renders solutionImage, not the question image, and q24 has no solutionImage. No student source or asset change was authorized in this false-HOLD-only closure.",
+      "renderStatus": "NOT_RUN",
+      "nextOwner": "serial R1 worker"
+    }
+  },
+  "remainingStatus": {
+    "q24ItemHold": false,
+    "examQualityStatus": "NOT_COMPLETE",
+    "nextRequiredAction": "Route the unchanged source to the serial R1 worker for independent q24 review and the full assigned R1 scope; resolve q24 SOLUTION_VISUAL disposition there."
+  }
+}

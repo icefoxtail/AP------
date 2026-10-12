@@ -1,0 +1,2145 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "CREATE",
+  "examUid": "26_동산중_1학기_중간_중2_기출",
+  "artifactSha": "4202c40b8f3c41468217295d4d7a98c3412f8c50",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "sourceInput": {
+    "sourceInputMode": "EXTRACTED_JS_ASSETS",
+    "pdfReviewMode": "DEFECT_ONLY",
+    "userDirectedScanReviewPath": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\CREATE.scan-review.json",
+    "userDirectedScanReviewSha256": "7f1b38d9d644807d24988116047ed4352886f6f4fb912a3808b703ca37973e0d",
+    "sourceReferencePolicyPath": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\CREATE.source-reference-policy.json",
+    "sourceReferencePolicySha256": "4d14aeb4b470f39f6cd15b7a60ddcfcc4d9154dbad7a692437beec26d4e698fd",
+    "initialStudentBundlePreserved": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\CREATE.initial-student-bundle.json",
+    "finalStudentBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\CREATE.final-student-bundle.json",
+    "finalStudentBundleSha256": "ba15cf3365dfe31f14bfe73e462bd51f66cc2bc3d1a4aa097ad0b485b3c69fa2",
+    "finalStudentBundleSourceRawSha256": "6c8549be3768a232a3ed77e50ceb9557be2ed0e9d35a45d495d6790c1dd1cbe2"
+  },
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a",
+        "items": [
+          {
+            "qid": 7,
+            "observation": "Read the full solution and opened the current solution SVG; checked the geometry labels against the explanation.",
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다.\n$x^2+y^2+6x-2y+1=0",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+            "visualObservation": "Opened and rasterized the actual SVG; reviewed geometry and student readability."
+          },
+          {
+            "qid": 8,
+            "observation": "Read the full solution and opened the current solution SVG; checked the geometry labels against the explanation.",
+            "solutionSha256": "7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+            "solutionExcerpt": "먼저 주어진 그래프에서 원래 직선 $ax+by+c=0$의 정보를 하나씩 읽는다.\n그래프는 오른쪽으로 갈수록 위로 올라가므로\n기울기는 양수이다.\n또 $y$축과 만나는 점이 원점보다 아래에 있으므로\n$y$절편은 음수이다",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "visualSha256": "e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430",
+            "visualObservation": "Opened and rasterized the actual SVG; reviewed geometry and student readability."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d",
+        "items": [
+          {
+            "qid": 2,
+            "observation": "Read the full solution and opened the current solution SVG; checked the geometry labels against the explanation.",
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfrac23$이므로\n첫째 직선의 기울기는 ",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+            "visualObservation": "Opened and rasterized the actual SVG; reviewed geometry and student readability."
+          },
+          {
+            "qid": 3,
+            "observation": "Read the full solution and opened the current solution SVG; checked the geometry labels against the explanation.",
+            "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+            "solutionExcerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.\n주어진 식은\n$x^2+y^2+2x-6y+6=0$이다.\n$x$에 대한 항과 $y$에 대한 항을 각각 완전제곱식으로 만든다.\n$x^2+2x=(x+1)^",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "visualSha256": "752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c",
+            "visualObservation": "Opened and rasterized the actual SVG; reviewed geometry and student readability."
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+      "observation": "Read the false-PASS regression and opened/rasterized its q7 failed SVG; checked that actual primitives must match labeled facts and calculation-layout claims need physical structure."
+    }
+  },
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.\n내분점 공식에서는 한쪽 끝점의 좌표에 반대쪽의 비를 곱한다.\n따라서 $A(9,14)$의 좌",
+        "observation": "Read full q1 solution; checked explanation sequencing, computation trail, and student-facing conclusion."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.\n직선이 $y=mx+n$ 꼴로 주어지면 $x$의 계수 $m$이 기울기이다.\n주어진 직선\n$y=-3x+\\dfrac73$\n의 기울기는 $-3$",
+        "observation": "Read full q2 solution; checked explanation sequencing, computation trail, and student-facing conclusion."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(3,0)$에 대하여\n$x$좌표의 차는\n$3-(-2)=5$이고,\n$y$좌표",
+        "observation": "Read full q1 solution; checked explanation sequencing, computation trail, and student-facing conclusion."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfra",
+        "observation": "Read full q2 solution; checked explanation sequencing, computation trail, and student-facing conclusion."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "FRESH_REWRITE_CREATE",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "qualityCompareCount": "24/24"
+  },
+  "summary": {
+    "questionCount": 24,
+    "sourceRepairCount": 3,
+    "assetRebuildCount": 3,
+    "itemHoldCount": 0
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0020.jpg",
+        "scanSha256": "861b4f94c676a91dcbd0c4905534263b577f12f8047ca3225e6722aaad6819d8",
+        "sourceDisposition": "EXACT_MATCH",
+        "detail": "Printed stem, choices, figure/table where present, school and consecutive page footer match the current extracted source."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Printed stem/choice/shared material order matches the inspected scan; kept source order and default grid layout.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Existing solution reviewed against the printed source and checked independently; kept without cosmetic rewrite.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_CURRENT_SOURCE_DERIVED_META",
+          "reason": "Read current course, L1/L2, subunit, conditions, integration and difficulty fields; retained source-supported values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "No visual condition or decisive spatial relation; text/algebra fully states the item."
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "The existing stepwise algebra/arithmetic solution introduces no spatial relation that a visual would clarify."
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [],
+          "assets": [],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "userDirectedScanReview": "All four supplied pages opened for this assigned repair; qid stem/choices and printed assets checked.",
+          "scanPage": "S28BW-826101011330_0020.jpg",
+          "scanSha256": "861b4f94c676a91dcbd0c4905534263b577f12f8047ca3225e6722aaad6819d8",
+          "qid": 1,
+          "sourceDisposition": "EXACT_MATCH"
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0020.jpg",
+        "scanSha256": "861b4f94c676a91dcbd0c4905534263b577f12f8047ca3225e6722aaad6819d8",
+        "sourceDisposition": "EXACT_MATCH",
+        "detail": "Printed stem, choices, figure/table where present, school and consecutive page footer match the current extracted source."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Printed stem/choice/shared material order matches the inspected scan; kept source order and default grid layout.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Existing solution reviewed against the printed source and checked independently; kept without cosmetic rewrite.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_CURRENT_SOURCE_DERIVED_META",
+          "reason": "Read current course, L1/L2, subunit, conditions, integration and difficulty fields; retained source-supported values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "No visual condition or decisive spatial relation; text/algebra fully states the item."
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "The existing stepwise algebra/arithmetic solution introduces no spatial relation that a visual would clarify."
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [],
+          "assets": [],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "userDirectedScanReview": "All four supplied pages opened for this assigned repair; qid stem/choices and printed assets checked.",
+          "scanPage": "S28BW-826101011330_0020.jpg",
+          "scanSha256": "861b4f94c676a91dcbd0c4905534263b577f12f8047ca3225e6722aaad6819d8",
+          "qid": 2,
+          "sourceDisposition": "EXACT_MATCH"
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0020.jpg",
+        "scanSha256": "861b4f94c676a91dcbd0c4905534263b577f12f8047ca3225e6722aaad6819d8",
+        "sourceDisposition": "EXACT_MATCH",
+        "detail": "Printed stem, choices, figure/table where present, school and consecutive page footer match the current extracted source."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Printed stem/choice/shared material order matches the inspected scan; kept source order and default grid layout.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Existing solution reviewed against the printed source and checked independently; kept without cosmetic rewrite.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_CURRENT_SOURCE_DERIVED_META",
+          "reason": "Read current course, L1/L2, subunit, conditions, integration and difficulty fields; retained source-supported values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "No visual condition or decisive spatial relation; text/algebra fully states the item."
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "The existing stepwise algebra/arithmetic solution introduces no spatial relation that a visual would clarify."
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [],
+          "assets": [],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "userDirectedScanReview": "All four supplied pages opened for this assigned repair; qid stem/choices and printed assets checked.",
+          "scanPage": "S28BW-826101011330_0020.jpg",
+          "scanSha256": "861b4f94c676a91dcbd0c4905534263b577f12f8047ca3225e6722aaad6819d8",
+          "qid": 3,
+          "sourceDisposition": "EXACT_MATCH"
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0020.jpg",
+        "scanSha256": "861b4f94c676a91dcbd0c4905534263b577f12f8047ca3225e6722aaad6819d8",
+        "sourceDisposition": "EXACT_MATCH",
+        "detail": "Printed stem, choices, figure/table where present, school and consecutive page footer match the current extracted source."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Printed stem/choice/shared material order matches the inspected scan; kept source order and default grid layout.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Existing solution reviewed against the printed source and checked independently; kept without cosmetic rewrite.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_CURRENT_SOURCE_DERIVED_META",
+          "reason": "Read current course, L1/L2, subunit, conditions, integration and difficulty fields; retained source-supported values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "No visual condition or decisive spatial relation; text/algebra fully states the item."
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "The existing stepwise algebra/arithmetic solution introduces no spatial relation that a visual would clarify."
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [],
+          "assets": [],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "userDirectedScanReview": "All four supplied pages opened for this assigned repair; qid stem/choices and printed assets checked.",
+          "scanPage": "S28BW-826101011330_0020.jpg",
+          "scanSha256": "861b4f94c676a91dcbd0c4905534263b577f12f8047ca3225e6722aaad6819d8",
+          "qid": 4,
+          "sourceDisposition": "EXACT_MATCH"
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0020.jpg",
+        "scanSha256": "861b4f94c676a91dcbd0c4905534263b577f12f8047ca3225e6722aaad6819d8",
+        "sourceDisposition": "EXACT_MATCH",
+        "detail": "Printed stem, choices, figure/table where present, school and consecutive page footer match the current extracted source."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Printed stem/choice/shared material order matches the inspected scan; kept source order and default grid layout.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Existing solution reviewed against the printed source and checked independently; kept without cosmetic rewrite.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_CURRENT_SOURCE_DERIVED_META",
+          "reason": "Read current course, L1/L2, subunit, conditions, integration and difficulty fields; retained source-supported values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "No visual condition or decisive spatial relation; text/algebra fully states the item."
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "The existing stepwise algebra/arithmetic solution introduces no spatial relation that a visual would clarify."
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [],
+          "assets": [],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "userDirectedScanReview": "All four supplied pages opened for this assigned repair; qid stem/choices and printed assets checked.",
+          "scanPage": "S28BW-826101011330_0020.jpg",
+          "scanSha256": "861b4f94c676a91dcbd0c4905534263b577f12f8047ca3225e6722aaad6819d8",
+          "qid": 5,
+          "sourceDisposition": "EXACT_MATCH"
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0020.jpg",
+        "scanSha256": "861b4f94c676a91dcbd0c4905534263b577f12f8047ca3225e6722aaad6819d8",
+        "sourceDisposition": "EXACT_MATCH",
+        "detail": "Printed stem, choices, figure/table where present, school and consecutive page footer match the current extracted source."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Printed stem/choice/shared material order matches the inspected scan; kept source order and default grid layout.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Existing solution reviewed against the printed source and checked independently; kept without cosmetic rewrite.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_CURRENT_SOURCE_DERIVED_META",
+          "reason": "Read current course, L1/L2, subunit, conditions, integration and difficulty fields; retained source-supported values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "No visual condition or decisive spatial relation; text/algebra fully states the item."
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "The existing stepwise algebra/arithmetic solution introduces no spatial relation that a visual would clarify."
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [],
+          "assets": [],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "userDirectedScanReview": "All four supplied pages opened for this assigned repair; qid stem/choices and printed assets checked.",
+          "scanPage": "S28BW-826101011330_0020.jpg",
+          "scanSha256": "861b4f94c676a91dcbd0c4905534263b577f12f8047ca3225e6722aaad6819d8",
+          "qid": 6,
+          "sourceDisposition": "EXACT_MATCH"
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0021.jpg",
+        "scanSha256": "870f0861ad51723a7dc5d0b68c24ed3b150a0a588695b812b295d435ca21d24f",
+        "sourceDisposition": "EXACT_MATCH",
+        "detail": "Printed stem, choices, figure/table where present, school and consecutive page footer match the current extracted source."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Printed stem/choice/shared material order matches the inspected scan; kept source order and default grid layout.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Existing solution reviewed against the printed source and checked independently; kept without cosmetic rewrite.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_CURRENT_SOURCE_DERIVED_META",
+          "reason": "Read current course, L1/L2, subunit, conditions, integration and difficulty fields; retained source-supported values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "No visual condition or decisive spatial relation; text/algebra fully states the item."
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "The existing stepwise algebra/arithmetic solution introduces no spatial relation that a visual would clarify."
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [],
+          "assets": [],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "userDirectedScanReview": "All four supplied pages opened for this assigned repair; qid stem/choices and printed assets checked.",
+          "scanPage": "S28BW-826101011330_0021.jpg",
+          "scanSha256": "870f0861ad51723a7dc5d0b68c24ed3b150a0a588695b812b295d435ca21d24f",
+          "qid": 7,
+          "sourceDisposition": "EXACT_MATCH"
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0021.jpg",
+        "scanSha256": "870f0861ad51723a7dc5d0b68c24ed3b150a0a588695b812b295d435ca21d24f",
+        "sourceDisposition": "EXACT_MATCH",
+        "detail": "Printed stem, choices, figure/table where present, school and consecutive page footer match the current extracted source."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Printed stem/choice/shared material order matches the inspected scan; kept source order and default grid layout.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Existing solution reviewed against the printed source and checked independently; kept without cosmetic rewrite.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_CURRENT_SOURCE_DERIVED_META",
+          "reason": "Read current course, L1/L2, subunit, conditions, integration and difficulty fields; retained source-supported values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "No visual condition or decisive spatial relation; text/algebra fully states the item."
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "The existing stepwise algebra/arithmetic solution introduces no spatial relation that a visual would clarify."
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [],
+          "assets": [],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "userDirectedScanReview": "All four supplied pages opened for this assigned repair; qid stem/choices and printed assets checked.",
+          "scanPage": "S28BW-826101011330_0021.jpg",
+          "scanSha256": "870f0861ad51723a7dc5d0b68c24ed3b150a0a588695b812b295d435ca21d24f",
+          "qid": 8,
+          "sourceDisposition": "EXACT_MATCH"
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0021.jpg",
+        "scanSha256": "870f0861ad51723a7dc5d0b68c24ed3b150a0a588695b812b295d435ca21d24f",
+        "sourceDisposition": "EXACT_MATCH",
+        "detail": "Printed stem, choices, figure/table where present, school and consecutive page footer match the current extracted source."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Printed stem/choice/shared material order matches the inspected scan; kept source order and default grid layout.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Existing solution reviewed against the printed source and checked independently; kept without cosmetic rewrite.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_CURRENT_SOURCE_DERIVED_META",
+          "reason": "Read current course, L1/L2, subunit, conditions, integration and difficulty fields; retained source-supported values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "No visual condition or decisive spatial relation; text/algebra fully states the item."
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "The existing stepwise algebra/arithmetic solution introduces no spatial relation that a visual would clarify."
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [],
+          "assets": [],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "userDirectedScanReview": "All four supplied pages opened for this assigned repair; qid stem/choices and printed assets checked.",
+          "scanPage": "S28BW-826101011330_0021.jpg",
+          "scanSha256": "870f0861ad51723a7dc5d0b68c24ed3b150a0a588695b812b295d435ca21d24f",
+          "qid": 9,
+          "sourceDisposition": "EXACT_MATCH"
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0021.jpg",
+        "scanSha256": "870f0861ad51723a7dc5d0b68c24ed3b150a0a588695b812b295d435ca21d24f",
+        "sourceDisposition": "EXACT_MATCH",
+        "detail": "Printed stem, choices, figure/table where present, school and consecutive page footer match the current extracted source."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Printed stem/choice/shared material order matches the inspected scan; kept source order and default grid layout.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Existing solution reviewed against the printed source and checked independently; kept without cosmetic rewrite.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_CURRENT_SOURCE_DERIVED_META",
+          "reason": "Read current course, L1/L2, subunit, conditions, integration and difficulty fields; retained source-supported values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "No visual condition or decisive spatial relation; text/algebra fully states the item."
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "The existing stepwise algebra/arithmetic solution introduces no spatial relation that a visual would clarify."
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [],
+          "assets": [],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "userDirectedScanReview": "All four supplied pages opened for this assigned repair; qid stem/choices and printed assets checked.",
+          "scanPage": "S28BW-826101011330_0021.jpg",
+          "scanSha256": "870f0861ad51723a7dc5d0b68c24ed3b150a0a588695b812b295d435ca21d24f",
+          "qid": 10,
+          "sourceDisposition": "EXACT_MATCH"
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0021.jpg",
+        "scanSha256": "870f0861ad51723a7dc5d0b68c24ed3b150a0a588695b812b295d435ca21d24f",
+        "sourceDisposition": "EXACT_MATCH",
+        "detail": "Printed stem, choices, figure/table where present, school and consecutive page footer match the current extracted source."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Printed stem/choice/shared material order matches the inspected scan; kept source order and default grid layout.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Existing solution reviewed against the printed source and checked independently; kept without cosmetic rewrite.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_CURRENT_SOURCE_DERIVED_META",
+          "reason": "Read current course, L1/L2, subunit, conditions, integration and difficulty fields; retained source-supported values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "No visual condition or decisive spatial relation; text/algebra fully states the item."
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "The existing stepwise algebra/arithmetic solution introduces no spatial relation that a visual would clarify."
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [],
+          "assets": [],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "userDirectedScanReview": "All four supplied pages opened for this assigned repair; qid stem/choices and printed assets checked.",
+          "scanPage": "S28BW-826101011330_0021.jpg",
+          "scanSha256": "870f0861ad51723a7dc5d0b68c24ed3b150a0a588695b812b295d435ca21d24f",
+          "qid": 11,
+          "sourceDisposition": "EXACT_MATCH"
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0021.jpg",
+        "scanSha256": "870f0861ad51723a7dc5d0b68c24ed3b150a0a588695b812b295d435ca21d24f",
+        "sourceDisposition": "EXACT_MATCH",
+        "detail": "Printed stem, choices, figure/table where present, school and consecutive page footer match the current extracted source."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Printed stem/choice/shared material order matches the inspected scan; kept source order and default grid layout.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Existing solution reviewed against the printed source and checked independently; kept without cosmetic rewrite.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_CURRENT_SOURCE_DERIVED_META",
+          "reason": "Read current course, L1/L2, subunit, conditions, integration and difficulty fields; retained source-supported values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "No visual condition or decisive spatial relation; text/algebra fully states the item."
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "The existing stepwise algebra/arithmetic solution introduces no spatial relation that a visual would clarify."
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [],
+          "assets": [],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "userDirectedScanReview": "All four supplied pages opened for this assigned repair; qid stem/choices and printed assets checked.",
+          "scanPage": "S28BW-826101011330_0021.jpg",
+          "scanSha256": "870f0861ad51723a7dc5d0b68c24ed3b150a0a588695b812b295d435ca21d24f",
+          "qid": 12,
+          "sourceDisposition": "EXACT_MATCH"
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0022.jpg",
+        "scanSha256": "cf92621ac5b85137211fb0ac99c7e5065f3ef3d68f1fa5674877be16a5233b62",
+        "sourceDisposition": "EXACT_MATCH",
+        "detail": "Printed stem, choices, figure/table where present, school and consecutive page footer match the current extracted source."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Printed stem/choice/shared material order matches the inspected scan; kept source order and default grid layout.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Existing solution reviewed against the printed source and checked independently; kept without cosmetic rewrite.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_CURRENT_SOURCE_DERIVED_META",
+          "reason": "Read current course, L1/L2, subunit, conditions, integration and difficulty fields; retained source-supported values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "No visual condition or decisive spatial relation; text/algebra fully states the item."
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "The existing stepwise algebra/arithmetic solution introduces no spatial relation that a visual would clarify."
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [],
+          "assets": [],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "userDirectedScanReview": "All four supplied pages opened for this assigned repair; qid stem/choices and printed assets checked.",
+          "scanPage": "S28BW-826101011330_0022.jpg",
+          "scanSha256": "cf92621ac5b85137211fb0ac99c7e5065f3ef3d68f1fa5674877be16a5233b62",
+          "qid": 13,
+          "sourceDisposition": "EXACT_MATCH"
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0022.jpg",
+        "scanSha256": "cf92621ac5b85137211fb0ac99c7e5065f3ef3d68f1fa5674877be16a5233b62",
+        "sourceDisposition": "EXACT_MATCH",
+        "detail": "Printed stem, choices, figure/table where present, school and consecutive page footer match the current extracted source."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Printed stem/choice/shared material order matches the inspected scan; kept source order and default grid layout.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Existing solution reviewed against the printed source and checked independently; kept without cosmetic rewrite.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_CURRENT_SOURCE_DERIVED_META",
+          "reason": "Read current course, L1/L2, subunit, conditions, integration and difficulty fields; retained source-supported values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "No visual condition or decisive spatial relation; text/algebra fully states the item."
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "The existing stepwise algebra/arithmetic solution introduces no spatial relation that a visual would clarify."
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [],
+          "assets": [],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "userDirectedScanReview": "All four supplied pages opened for this assigned repair; qid stem/choices and printed assets checked.",
+          "scanPage": "S28BW-826101011330_0022.jpg",
+          "scanSha256": "cf92621ac5b85137211fb0ac99c7e5065f3ef3d68f1fa5674877be16a5233b62",
+          "qid": 14,
+          "sourceDisposition": "EXACT_MATCH"
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0022.jpg",
+        "scanSha256": "cf92621ac5b85137211fb0ac99c7e5065f3ef3d68f1fa5674877be16a5233b62",
+        "sourceDisposition": "EXACT_MATCH",
+        "detail": "Printed stem, choices, figure/table where present, school and consecutive page footer match the current extracted source."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Printed stem/choice/shared material order matches the inspected scan; kept source order and default grid layout.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Existing solution reviewed against the printed source and checked independently; kept without cosmetic rewrite.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_CURRENT_SOURCE_DERIVED_META",
+          "reason": "Read current course, L1/L2, subunit, conditions, integration and difficulty fields; retained source-supported values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "No visual condition or decisive spatial relation; text/algebra fully states the item."
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "The existing stepwise algebra/arithmetic solution introduces no spatial relation that a visual would clarify."
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [],
+          "assets": [],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "userDirectedScanReview": "All four supplied pages opened for this assigned repair; qid stem/choices and printed assets checked.",
+          "scanPage": "S28BW-826101011330_0022.jpg",
+          "scanSha256": "cf92621ac5b85137211fb0ac99c7e5065f3ef3d68f1fa5674877be16a5233b62",
+          "qid": 15,
+          "sourceDisposition": "EXACT_MATCH"
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0022.jpg",
+        "scanSha256": "cf92621ac5b85137211fb0ac99c7e5065f3ef3d68f1fa5674877be16a5233b62",
+        "sourceDisposition": "EXACT_MATCH",
+        "detail": "Printed stem, choices, figure/table where present, school and consecutive page footer match the current extracted source."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Printed stem/choice/shared material order matches the inspected scan; kept source order and default grid layout.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Existing solution reviewed against the printed source and checked independently; kept without cosmetic rewrite.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_CURRENT_SOURCE_DERIVED_META",
+          "reason": "Read current course, L1/L2, subunit, conditions, integration and difficulty fields; retained source-supported values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "No visual condition or decisive spatial relation; text/algebra fully states the item."
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "The existing stepwise algebra/arithmetic solution introduces no spatial relation that a visual would clarify."
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [],
+          "assets": [],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "userDirectedScanReview": "All four supplied pages opened for this assigned repair; qid stem/choices and printed assets checked.",
+          "scanPage": "S28BW-826101011330_0022.jpg",
+          "scanSha256": "cf92621ac5b85137211fb0ac99c7e5065f3ef3d68f1fa5674877be16a5233b62",
+          "qid": 16,
+          "sourceDisposition": "EXACT_MATCH"
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0022.jpg",
+        "scanSha256": "cf92621ac5b85137211fb0ac99c7e5065f3ef3d68f1fa5674877be16a5233b62",
+        "sourceDisposition": "EXACT_MATCH",
+        "detail": "Printed stem, choices, figure/table where present, school and consecutive page footer match the current extracted source."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Printed stem/choice/shared material order matches the inspected scan; kept source order and default grid layout.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Existing solution reviewed against the printed source and checked independently; kept without cosmetic rewrite.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_CURRENT_SOURCE_DERIVED_META",
+          "reason": "Read current course, L1/L2, subunit, conditions, integration and difficulty fields; retained source-supported values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "No visual condition or decisive spatial relation; text/algebra fully states the item."
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "The existing stepwise algebra/arithmetic solution introduces no spatial relation that a visual would clarify."
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [],
+          "assets": [],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "userDirectedScanReview": "All four supplied pages opened for this assigned repair; qid stem/choices and printed assets checked.",
+          "scanPage": "S28BW-826101011330_0022.jpg",
+          "scanSha256": "cf92621ac5b85137211fb0ac99c7e5065f3ef3d68f1fa5674877be16a5233b62",
+          "qid": 17,
+          "sourceDisposition": "EXACT_MATCH"
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0022.jpg",
+        "scanSha256": "cf92621ac5b85137211fb0ac99c7e5065f3ef3d68f1fa5674877be16a5233b62",
+        "sourceDisposition": "EXACT_MATCH",
+        "detail": "Printed stem, choices, figure/table where present, school and consecutive page footer match the current extracted source."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Printed stem/choice/shared material order matches the inspected scan; kept source order and default grid layout.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Existing solution reviewed against the printed source and checked independently; kept without cosmetic rewrite.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_CURRENT_SOURCE_DERIVED_META",
+          "reason": "Read current course, L1/L2, subunit, conditions, integration and difficulty fields; retained source-supported values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "No visual condition or decisive spatial relation; text/algebra fully states the item."
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "The existing stepwise algebra/arithmetic solution introduces no spatial relation that a visual would clarify."
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [],
+          "assets": [],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "userDirectedScanReview": "All four supplied pages opened for this assigned repair; qid stem/choices and printed assets checked.",
+          "scanPage": "S28BW-826101011330_0022.jpg",
+          "scanSha256": "cf92621ac5b85137211fb0ac99c7e5065f3ef3d68f1fa5674877be16a5233b62",
+          "qid": 18,
+          "sourceDisposition": "EXACT_MATCH"
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "sourceMode": "AUDITED_REPAIR",
+      "beforeDisposition": "REPAIR",
+      "finalDisposition": "REPAIRED_FROM_USER_SCAN",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0023.jpg",
+        "scanSha256": "a7964a243236e535613766e9517a39eeafbfd6efb192f48c10d86b54bc8b80c2",
+        "sourceDisposition": "CORRECTED_FROM_SCAN",
+        "detail": "Scan confirms stem 3x+8≥5x+4 with five number-line choices; solve gives x≤2 and option ③."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "SOURCE_MISMATCH",
+          "finalDisposition": "REPAIRED_FROM_USER_SCAN",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Replaced only the incorrect extracted student input with the exact printed stem/choices; no wording/layout normalization beyond source repair.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "SOLUTION_DEPENDENCY_INVALID",
+          "finalDisposition": "REWRITTEN_FROM_REPAIRED_TRUTH",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Re-solved from corrected scan-backed source and wrote each algebra step needed to reproduce the result.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "OLD_SOURCE_META_INVALID",
+          "finalDisposition": "REASSESS_AND_UPDATE",
+          "reason": "Updated topic/subunit/difficulty to the corrected source problem; all unchanged metadata fields were checked against current canonical values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "REQUIRED",
+            "reason": "The answer options are number-line diagrams; students must read endpoint inclusion and ray direction.",
+            "assetAction": "NEW_SVG",
+            "ref": "assets/images/26_동산중_1학기_중간_중2_기출/q19-options.svg"
+          },
+          "solutionVisual": {
+            "need": "BENEFICIAL",
+            "reason": "The solved boundary x≤2 is clearer as a closed endpoint with the left ray.",
+            "assetAction": "NEW_SVG",
+            "ref": "assets/images/26_동산중_1학기_중간_중2_기출/q19-solution.svg"
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [
+            "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\CREATE.visual-render\\q19-options.svg.png",
+            "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\CREATE.visual-render\\q19-solution.svg.png"
+          ],
+          "assets": [
+            {
+              "surface": "PROBLEM",
+              "ref": "assets/images/26_동산중_1학기_중간_중2_기출/q19-options.svg",
+              "path": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\assets\\images\\26_동산중_1학기_중간_중2_기출\\q19-options.svg",
+              "sha256": "1f06eaabe9ca6427acf4e0c21beafb32eef8ee7b72702fc62fde6896c3a8fa82"
+            },
+            {
+              "surface": "SOLUTION",
+              "ref": "assets/images/26_동산중_1학기_중간_중2_기출/q19-solution.svg",
+              "path": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\assets\\images\\26_동산중_1학기_중간_중2_기출\\q19-solution.svg",
+              "sha256": "d6e8183e107e3506bab2bbeb1238ed4843116a339f67e10d426ebf4120a7a47c"
+            }
+          ],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "repair": {
+          "type": "USER_DIRECTED_SCAN_CORRECTION",
+          "scanReviewPath": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\CREATE.scan-review.json",
+          "scanReviewSha256": "7f1b38d9d644807d24988116047ed4352886f6f4fb912a3808b703ca37973e0d",
+          "baselineRawSha256": "7fc07bb80f658023d14cde9b96dc2115095823ab35f7893318e307471a81855a",
+          "baselineQid": 19,
+          "incorrectExtractedInput": "The existing q19–q21 rows described different questions than the scan."
+        },
+        "repairedTruth": {
+          "qid": 19,
+          "scanPage": "S28BW-826101011330_0023.jpg",
+          "printedFact": "Scan confirms stem 3x+8≥5x+4 with five number-line choices; solve gives x≤2 and option ③.",
+          "answerAuthority": "independent algebra from printed condition; handwritten student marks excluded"
+        }
+      },
+      "assetDisposition": {
+        "problemAsset": {
+          "need": "REQUIRED",
+          "reason": "The answer options are number-line diagrams; students must read endpoint inclusion and ray direction.",
+          "assetAction": "NEW_SVG",
+          "ref": "assets/images/26_동산중_1학기_중간_중2_기출/q19-options.svg"
+        },
+        "solutionAsset": {
+          "need": "BENEFICIAL",
+          "reason": "The solved boundary x≤2 is clearer as a closed endpoint with the left ray.",
+          "assetAction": "NEW_SVG",
+          "ref": "assets/images/26_동산중_1학기_중간_중2_기출/q19-solution.svg"
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "sourceMode": "AUDITED_REPAIR",
+      "beforeDisposition": "REPAIR",
+      "finalDisposition": "REPAIRED_FROM_USER_SCAN",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0023.jpg",
+        "scanSha256": "a7964a243236e535613766e9517a39eeafbfd6efb192f48c10d86b54bc8b80c2",
+        "sourceDisposition": "CORRECTED_FROM_SCAN",
+        "detail": "Scan confirms 1/5 < x/2 ≤ 0.3(x+4); this gives x>2/5 and x≤6, so natural x are 1..6 and their sum is 21."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "SOURCE_MISMATCH",
+          "finalDisposition": "REPAIRED_FROM_USER_SCAN",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Replaced only the incorrect extracted student input with the exact printed stem/choices; no wording/layout normalization beyond source repair.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "SOLUTION_DEPENDENCY_INVALID",
+          "finalDisposition": "REWRITTEN_FROM_REPAIRED_TRUTH",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Re-solved from corrected scan-backed source and wrote each algebra step needed to reproduce the result.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "OLD_SOURCE_META_INVALID",
+          "finalDisposition": "REASSESS_AND_UPDATE",
+          "reason": "Updated topic/subunit/difficulty to the corrected source problem; all unchanged metadata fields were checked against current canonical values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "All conditions are stated algebraically and no source figure carries additional facts."
+          },
+          "solutionVisual": {
+            "need": "BENEFICIAL",
+            "reason": "Showing the natural-number candidates 1 through 6 makes the finite set and sum easier to verify.",
+            "assetAction": "NEW_SVG",
+            "ref": "assets/images/26_동산중_1학기_중간_중2_기출/q20-solution.svg"
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [
+            "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\CREATE.visual-render\\q20-solution.svg.png"
+          ],
+          "assets": [
+            {
+              "surface": "SOLUTION",
+              "ref": "assets/images/26_동산중_1학기_중간_중2_기출/q20-solution.svg",
+              "path": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\assets\\images\\26_동산중_1학기_중간_중2_기출\\q20-solution.svg",
+              "sha256": "e486b190ec0215e32fec4926468d0bf2ec9c21fb40bb12c6348790c6a4e5239d"
+            }
+          ],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "repair": {
+          "type": "USER_DIRECTED_SCAN_CORRECTION",
+          "scanReviewPath": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\CREATE.scan-review.json",
+          "scanReviewSha256": "7f1b38d9d644807d24988116047ed4352886f6f4fb912a3808b703ca37973e0d",
+          "baselineRawSha256": "7fc07bb80f658023d14cde9b96dc2115095823ab35f7893318e307471a81855a",
+          "baselineQid": 20,
+          "incorrectExtractedInput": "The existing q19–q21 rows described different questions than the scan."
+        },
+        "repairedTruth": {
+          "qid": 20,
+          "scanPage": "S28BW-826101011330_0023.jpg",
+          "printedFact": "Scan confirms 1/5 < x/2 ≤ 0.3(x+4); this gives x>2/5 and x≤6, so natural x are 1..6 and their sum is 21.",
+          "answerAuthority": "independent algebra from printed condition; handwritten student marks excluded"
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "sourceMode": "AUDITED_REPAIR",
+      "beforeDisposition": "REPAIR",
+      "finalDisposition": "REPAIRED_FROM_USER_SCAN",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0023.jpg",
+        "scanSha256": "a7964a243236e535613766e9517a39eeafbfd6efb192f48c10d86b54bc8b80c2",
+        "sourceDisposition": "CORRECTED_FROM_SCAN",
+        "detail": "Scan confirms an inequality-selection prompt with scenario cost 10000원, 20% discount, profit at least 30% of cost; 0.8x−10000≥3000 is choice ③."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "SOURCE_MISMATCH",
+          "finalDisposition": "REPAIRED_FROM_USER_SCAN",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Replaced only the incorrect extracted student input with the exact printed stem/choices; no wording/layout normalization beyond source repair.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "SOLUTION_DEPENDENCY_INVALID",
+          "finalDisposition": "REWRITTEN_FROM_REPAIRED_TRUTH",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Re-solved from corrected scan-backed source and wrote each algebra step needed to reproduce the result.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "OLD_SOURCE_META_INVALID",
+          "finalDisposition": "REASSESS_AND_UPDATE",
+          "reason": "Updated topic/subunit/difficulty to the corrected source problem; all unchanged metadata fields were checked against current canonical values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "The scenario and requested inequality are completely stated in text and choices."
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "The translation is a short algebraic inequality; a second diagram adds no decisive information."
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [],
+          "assets": [],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "repair": {
+          "type": "USER_DIRECTED_SCAN_CORRECTION",
+          "scanReviewPath": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\CREATE.scan-review.json",
+          "scanReviewSha256": "7f1b38d9d644807d24988116047ed4352886f6f4fb912a3808b703ca37973e0d",
+          "baselineRawSha256": "7fc07bb80f658023d14cde9b96dc2115095823ab35f7893318e307471a81855a",
+          "baselineQid": 21,
+          "incorrectExtractedInput": "The existing q19–q21 rows described different questions than the scan."
+        },
+        "repairedTruth": {
+          "qid": 21,
+          "scanPage": "S28BW-826101011330_0023.jpg",
+          "printedFact": "Scan confirms an inequality-selection prompt with scenario cost 10000원, 20% discount, profit at least 30% of cost; 0.8x−10000≥3000 is choice ③.",
+          "answerAuthority": "independent algebra from printed condition; handwritten student marks excluded"
+        }
+      }
+    },
+    {
+      "qid": 22,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0023.jpg",
+        "scanSha256": "a7964a243236e535613766e9517a39eeafbfd6efb192f48c10d86b54bc8b80c2",
+        "sourceDisposition": "EXACT_MATCH",
+        "detail": "Printed stem, choices, figure/table where present, school and consecutive page footer match the current extracted source."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Printed stem/choice/shared material order matches the inspected scan; kept source order and default grid layout.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Existing solution reviewed against the printed source and checked independently; kept without cosmetic rewrite.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_CURRENT_SOURCE_DERIVED_META",
+          "reason": "Read current course, L1/L2, subunit, conditions, integration and difficulty fields; retained source-supported values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "No visual condition or decisive spatial relation; text/algebra fully states the item."
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "The existing stepwise algebra/arithmetic solution introduces no spatial relation that a visual would clarify."
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [],
+          "assets": [],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "userDirectedScanReview": "All four supplied pages opened for this assigned repair; qid stem/choices and printed assets checked.",
+          "scanPage": "S28BW-826101011330_0023.jpg",
+          "scanSha256": "a7964a243236e535613766e9517a39eeafbfd6efb192f48c10d86b54bc8b80c2",
+          "qid": 22,
+          "sourceDisposition": "EXACT_MATCH"
+        }
+      }
+    },
+    {
+      "qid": 23,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "ASSET_REVIEW",
+      "finalDisposition": "KEEP_STEM_REPLACE_MARKED_ASSET",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0023.jpg",
+        "scanSha256": "a7964a243236e535613766e9517a39eeafbfd6efb192f48c10d86b54bc8b80c2",
+        "sourceDisposition": "EXACT_MATCH",
+        "detail": "Printed stem, choices, figure/table where present, school and consecutive page footer match the current extracted source."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_STEM_REPLACE_MARKED_ASSET",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Printed stem/choice/shared material order matches the inspected scan; kept source order and default grid layout.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Existing solution reviewed against the printed source and checked independently; kept without cosmetic rewrite.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_CURRENT_SOURCE_DERIVED_META",
+          "reason": "Read current course, L1/L2, subunit, conditions, integration and difficulty fields; retained source-supported values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "REQUIRED",
+            "reason": "The cylinder/cone shape and radius/height labels are part of the source conditions.",
+            "assetAction": "REBUILD_CLEAN_SOURCE_SVG",
+            "ref": "assets/images/26_동산중_1학기_중간_중2_기출/q23-clean.svg"
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "The rebuilt source figure already shows both vessels, labeled dimensions and transfer; repeating the same geometry adds no new relation."
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [
+            "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\CREATE.visual-render\\q23-clean.svg.png"
+          ],
+          "assets": [
+            {
+              "surface": "PROBLEM",
+              "ref": "assets/images/26_동산중_1학기_중간_중2_기출/q23-clean.svg",
+              "path": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\assets\\images\\26_동산중_1학기_중간_중2_기출\\q23-clean.svg",
+              "sha256": "562582b53365d42a1caf296d9b7abdd1301afb872399db83e0ff93cd6259098f"
+            }
+          ],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "userDirectedScanReview": "All four supplied pages opened for this assigned repair; qid stem/choices and printed assets checked.",
+          "scanPage": "S28BW-826101011330_0023.jpg",
+          "scanSha256": "a7964a243236e535613766e9517a39eeafbfd6efb192f48c10d86b54bc8b80c2",
+          "qid": 23,
+          "sourceDisposition": "EXACT_MATCH"
+        }
+      },
+      "assetDisposition": {
+        "problemAsset": {
+          "need": "REQUIRED",
+          "reason": "The cylinder/cone shape and radius/height labels are part of the source conditions.",
+          "assetAction": "REBUILD_CLEAN_SOURCE_SVG",
+          "ref": "assets/images/26_동산중_1학기_중간_중2_기출/q23-clean.svg"
+        },
+        "solutionAsset": {
+          "need": "EXEMPT",
+          "reason": "The rebuilt source figure already shows both vessels, labeled dimensions and transfer; repeating the same geometry adds no new relation."
+        }
+      }
+    },
+    {
+      "qid": 24,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "ASSET_REVIEW",
+      "finalDisposition": "KEEP_STEM_REPLACE_MARKED_ASSET",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceScanReview": {
+        "scanPage": "S28BW-826101011330_0023.jpg",
+        "scanSha256": "a7964a243236e535613766e9517a39eeafbfd6efb192f48c10d86b54bc8b80c2",
+        "sourceDisposition": "EXACT_MATCH",
+        "detail": "Printed stem, choices, figure/table where present, school and consecutive page footer match the current extracted source."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_STEM_REPLACE_MARKED_ASSET",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Printed stem/choice/shared material order matches the inspected scan; kept source order and default grid layout.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Existing solution reviewed against the printed source and checked independently; kept without cosmetic rewrite.",
+          "actualArchiveRenderStatus": "NOT_RUN_R3"
+        },
+        "meta": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_CURRENT_SOURCE_DERIVED_META",
+          "reason": "Read current course, L1/L2, subunit, conditions, integration and difficulty fields; retained source-supported values."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "REQUIRED",
+            "reason": "The per-photo prices and delivery fee are supplied only by the table.",
+            "assetAction": "REBUILD_CLEAN_SOURCE_SVG",
+            "ref": "assets/images/26_동산중_1학기_중간_중2_기출/q24-clean.svg"
+          },
+          "solutionVisual": {
+            "need": "BENEFICIAL",
+            "reason": "A cost graph displays the crossover x=250/11 and why the first qualifying natural count is 23.",
+            "assetAction": "NEW_SVG",
+            "ref": "assets/images/26_동산중_1학기_중간_중2_기출/q24-solution.svg"
+          },
+          "staticAssetInspection": "PASS",
+          "staticRasterRender": "PASS where referenced; no asset for EXEMPT surface",
+          "actualArchiveStudentRender": "NOT_RUN_R3",
+          "renderRefs": [
+            "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\CREATE.visual-render\\q24-clean.svg.png",
+            "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\CREATE.visual-render\\q24-solution.svg.png"
+          ],
+          "assets": [
+            {
+              "surface": "PROBLEM",
+              "ref": "assets/images/26_동산중_1학기_중간_중2_기출/q24-clean.svg",
+              "path": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\assets\\images\\26_동산중_1학기_중간_중2_기출\\q24-clean.svg",
+              "sha256": "fe53c858ab38f51eef21ed49355abf68cc0e2b4390a02c7ff7bd7f625d228486"
+            },
+            {
+              "surface": "SOLUTION",
+              "ref": "assets/images/26_동산중_1학기_중간_중2_기출/q24-solution.svg",
+              "path": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\assets\\images\\26_동산중_1학기_중간_중2_기출\\q24-solution.svg",
+              "sha256": "2f009c486210966bce45c46a9047de35ca30f68f8faa9ce4b3f2ba5e875fd5f7"
+            }
+          ],
+          "assetRenderMethod": "sharp/libvips SVG rasterization"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputMode": "EXTRACTED_JS_ASSETS",
+          "pdfReviewMode": "DEFECT_ONLY",
+          "userDirectedScanReview": "All four supplied pages opened for this assigned repair; qid stem/choices and printed assets checked.",
+          "scanPage": "S28BW-826101011330_0023.jpg",
+          "scanSha256": "a7964a243236e535613766e9517a39eeafbfd6efb192f48c10d86b54bc8b80c2",
+          "qid": 24,
+          "sourceDisposition": "EXACT_MATCH"
+        }
+      },
+      "assetDisposition": {
+        "problemAsset": {
+          "need": "REQUIRED",
+          "reason": "The per-photo prices and delivery fee are supplied only by the table.",
+          "assetAction": "REBUILD_CLEAN_SOURCE_SVG",
+          "ref": "assets/images/26_동산중_1학기_중간_중2_기출/q24-clean.svg"
+        },
+        "solutionAsset": {
+          "need": "BENEFICIAL",
+          "reason": "A cost graph displays the crossover x=250/11 and why the first qualifying natural count is 23.",
+          "assetAction": "NEW_SVG",
+          "ref": "assets/images/26_동산중_1학기_중간_중2_기출/q24-solution.svg"
+        }
+      }
+    }
+  ],
+  "visualRenderEvidence": {
+    "scope": "changed q19/q20/q23/q24 SVG assets",
+    "method": "actual SVG rasterization with sharp/libvips, then visual opening of each output",
+    "consumerRenderStatus": "NOT_RUN_R3_ACTUAL_ARCHIVE_ENGINE_RENDER",
+    "files": [
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\CREATE.visual-render\\q19-options.svg.png",
+        "sha256": "6a79b901879b927cc51fd56808c9304fb4f346dbdd218b9d91795a4d12b8d097",
+        "renderMethod": "sharp/libvips SVG rasterization",
+        "consumerArchiveRender": "NOT_RUN_R3_ACTUAL_ENGINE_RENDER"
+      },
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\CREATE.visual-render\\q19-solution.svg.png",
+        "sha256": "8f5dcb9d1fe7926306ceeb5b8a3cce413cebeaf5c90a3228c99e255e1286c794",
+        "renderMethod": "sharp/libvips SVG rasterization",
+        "consumerArchiveRender": "NOT_RUN_R3_ACTUAL_ENGINE_RENDER"
+      },
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\CREATE.visual-render\\q20-solution.svg.png",
+        "sha256": "8634f49e259f1fc61c7a8f3ffec2b5755963898188ea190fe991f3253d0f7a95",
+        "renderMethod": "sharp/libvips SVG rasterization",
+        "consumerArchiveRender": "NOT_RUN_R3_ACTUAL_ENGINE_RENDER"
+      },
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\CREATE.visual-render\\q23-clean.svg.png",
+        "sha256": "4da9fcedd55eb07f657166c4e8a928279e286a853df4233fadf1bddcdfcd7199",
+        "renderMethod": "sharp/libvips SVG rasterization",
+        "consumerArchiveRender": "NOT_RUN_R3_ACTUAL_ENGINE_RENDER"
+      },
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\CREATE.visual-render\\q24-clean.svg.png",
+        "sha256": "86d53efe7e2a283af78bdf4276040cf488f0ceaba98704a16a7ddb3f9cd3b57e",
+        "renderMethod": "sharp/libvips SVG rasterization",
+        "consumerArchiveRender": "NOT_RUN_R3_ACTUAL_ENGINE_RENDER"
+      },
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\CREATE.visual-render\\q24-solution.svg.png",
+        "sha256": "3de306e7e12a700ac39b863e966ecd76ef42a6b1cb0eda45e3a21262f7bafe3e",
+        "renderMethod": "sharp/libvips SVG rasterization",
+        "consumerArchiveRender": "NOT_RUN_R3_ACTUAL_ENGINE_RENDER"
+      }
+    ]
+  },
+  "sourceScanReviewRef": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\CREATE.scan-review.json",
+    "sha256": "7f1b38d9d644807d24988116047ed4352886f6f4fb912a3808b703ca37973e0d",
+    "rawScanManifestPath": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\ROOT.scan-input-manifest.json",
+    "rawScanManifestSha256": "f67c59100151e1cd2ff75c8b5086e24f405d2d6fb4d8fa5896dc24b994d352cc",
+    "actualScanPages": [
+      {
+        "fileName": "S28BW-826101011330_0020.jpg",
+        "sha256": "861b4f94c676a91dcbd0c4905534263b577f12f8047ca3225e6722aaad6819d8"
+      },
+      {
+        "fileName": "S28BW-826101011330_0021.jpg",
+        "sha256": "870f0861ad51723a7dc5d0b68c24ed3b150a0a588695b812b295d435ca21d24f"
+      },
+      {
+        "fileName": "S28BW-826101011330_0022.jpg",
+        "sha256": "cf92621ac5b85137211fb0ac99c7e5065f3ef3d68f1fa5674877be16a5233b62"
+      },
+      {
+        "fileName": "S28BW-826101011330_0023.jpg",
+        "sha256": "a7964a243236e535613766e9517a39eeafbfd6efb192f48c10d86b54bc8b80c2"
+      }
+    ],
+    "studentMarksExcluded": true
+  },
+  "preflightEvidence": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\CREATE.preflight.json",
+    "sha256": "b976a7daf1aae8aeb128ec95b0a409a3ec8eb8ae4add448f5012f3b671bea5ed",
+    "adjudicationPath": "C:\\Users\\USER\\.codex\\worktrees\\school-scan-repair-2026\\AP------\\archive\\analysis\\school-scan-correction-20261010\\26_동산중_1학기_중간_중2_기출\\CREATE.preflight-adjudication.json",
+    "adjudicationSha256": "cb4c8070f24536d86fcccc45a7e1d4580a94b9e64e525c99a3b571b1c14048dd",
+    "disposition": "REVIEWED_SOURCE_IMAGE_CHOICES"
+  },
+  "artifactDispositions": {
+    "artifactSha": "4202c40b8f3c41468217295d4d7a98c3412f8c50",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 23,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      },
+      {
+        "qid": 24,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Preserved the existing current source fields problemTypeKey:null and templateKey:null as explicit Meta projection debt; no semantic reclassification was performed in this CREATE correction."
+      }
+    ]
+  }
+}

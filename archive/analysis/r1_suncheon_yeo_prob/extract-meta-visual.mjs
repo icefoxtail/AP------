@@ -1,0 +1,10 @@
+import {readExam} from '../../tools/archive-codex-artifact-io.mjs';
+const source='C:/Users/USER/Desktop/AP------/archive/exams/original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js';
+const e=readExam(source); const expected='c0a092f5047e8e39c1c0d0de08551c473415c718e9b35eb9f1a9acaf33233a8b';
+if(e.rawSha256!==expected) throw new Error('SOURCE_SHA_DRIFT');
+const fields=['id','level','category','originalCategory','standardCourse','standardUnitKey','standardUnit','standardUnitOrder','subUnitKey','subUnit','subUnitConfidence','subUnitClassificationDepth','questionType','layoutTag','tags','wide','problemTypeKey','templateKey','crossConceptKeys','conditionKeys','integrationPattern','difficultyBucket','difficultyConfidence','difficultyBoundaryFlag','legacyLevelCompatibility','sourceExamUid','sourceQid','sourceJsPath','sourceMode','sourceType','sourcePdfSha256','sourceIntakeEvidencePath','sourceIntakeEvidenceSha256','rpmL1','rpmL2','rpmL3','rpmL4','rpmCurriculum','rpmSemanticStatus','rpmSemanticReason','problemVisualDisposition','solutionVisualDisposition','visualDisposition','questionUid','sourceIdentity','provenance','itemStatus','image','solutionImage'];
+const qids=Array.from({length:23},(_,i)=>i+1);
+const rows=e.questions.filter(q=>qids.includes(Number(q.id??q.qid))).map(q=>({qid:Number(q.id??q.qid),fields:Object.fromEntries(fields.filter(k=>Object.hasOwn(q,k)).map(k=>[k,q[k]]))}));
+if(rows.length!==23) throw new Error('QID_SCOPE_DENOMINATOR');
+const out={schemaVersion:'JS_ARCHIVE_R1_POSTFREEZE_META_VISUAL_PROJECTION_V1',sourceRawSha256:e.rawSha256,qids,rows};
+const fs=await import('node:fs'); fs.writeFileSync('archive/analysis/r1_suncheon_yeo_prob/meta-visual-projection.json',JSON.stringify(out,null,2),'utf8'); console.log(JSON.stringify({schemaVersion:out.schemaVersion,sourceRawSha256:e.rawSha256,qidCount:rows.length,output:'archive/analysis/r1_suncheon_yeo_prob/meta-visual-projection.json'}));

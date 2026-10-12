@@ -1,0 +1,201 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_SOLUTION_VISUAL_FACT_FREEZE_V1",
+  "examUid": "24_강남여고_1학기_중간_고2_확률과통계",
+  "sourceRawSha256": "e98a7e01584de492574abf9139cd7dca0056c572b8ae0e742a4c43a17c64d4cd",
+  "items": [
+    {
+      "qid": 6,
+      "expectedFacts": [
+        {
+          "fact": "five distinct students occupy a circle and define five cyclic gaps",
+          "role": "GIVEN",
+          "value": 5
+        },
+        {
+          "fact": "three distinct teachers occupy three different gaps",
+          "role": "DERIVED_INTERMEDIATE",
+          "value": 3
+        },
+        {
+          "fact": "every two teacher positions have at least one student position between them",
+          "role": "CONCLUSION",
+          "value": true
+        }
+      ],
+      "solutionSha256": "179b3666c572dc7322b52877c0e72dc26bc0f277e82bcdc09724dad7a504ed37",
+      "newVisualInformation": "Alternating student seats and five gap slots show why distinct gaps guarantee no teacher adjacency.",
+      "countIdentity": "4! * C(5,3) * 3! = 1440",
+      "questionUid": "qid_v1_df920c3c0f3a2dd860336cca9c9903646eea19237dd569453f6c9048ab247b66"
+    },
+    {
+      "problemImageRef": "assets/images/24_강남여고_1학기_중간_고2_확률과통계/q09.png",
+      "newVisualInformation": "The source grid is annotated with the recurrence values on their actual vertices, revealing the cumulative path count at B.",
+      "problemImageSha256": "e929fbcad0241fe8fc83b449ff3ec003da131eeb11c9b39580df8eafa67138c5",
+      "questionUid": "qid_v1_e0abe08d9d7f4756f0da7b302901b3f58ef9b9b21005dcb0ae63c4dd95b3c51b",
+      "solutionSha256": "59abfe4a05887b8f4908288177c0485baf0a9f6bb3453cee70db1c69c4a025ef",
+      "qid": 9,
+      "nodeCounts": {
+        "y0": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null
+        ],
+        "y3": [
+          null,
+          2,
+          7,
+          16,
+          30,
+          49
+        ],
+        "y2": [
+          null,
+          2,
+          5,
+          9,
+          14,
+          19
+        ],
+        "y1": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          5
+        ]
+      },
+      "expectedFacts": [
+        {
+          "fact": "road network vertex coordinates available",
+          "x": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "y": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "role": "GIVEN"
+        },
+        {
+          "fact": "edge topology",
+          "horizontalRows": [
+            "x0..x4@y0",
+            "x0..x5@y1",
+            "x1..x5@y2",
+            "x1..x5@y3"
+          ],
+          "role": "GIVEN",
+          "verticalColumns": [
+            "x0@y0..y1",
+            "x1@y0..y3",
+            "x2@y0..y3",
+            "x3@y0..y3",
+            "x4@y0..y3",
+            "x5@y1..y3"
+          ]
+        },
+        {
+          "fact": "shortest-path count at each valid vertex is sum of left and above",
+          "role": "DERIVED_INTERMEDIATE",
+          "value": "DP recurrence"
+        },
+        {
+          "fact": "count at B(x5,y3)",
+          "role": "CONCLUSION",
+          "value": 49
+        }
+      ]
+    },
+    {
+      "qid": 11,
+      "problemImageRef": "assets/images/24_강남여고_1학기_중간_고2_확률과통계/q11.png",
+      "solutionSha256": "db839db07b949efde9ce716e7499f4f36733f8a23f891ad36fe1d37763d7118a",
+      "problemImageSha256": "09f27fa12d36a3a813846cd1d23f17a5a977bd42bcbcbdbbc31f6f26dfc833bd",
+      "expectedFacts": [
+        {
+          "distribution": "2 on each of 6 sides",
+          "fact": "hexagonal table seats",
+          "role": "GIVEN",
+          "value": 12
+        },
+        {
+          "rotation": "60 degrees",
+          "fact": "hex table distinct rotational symmetries",
+          "role": "DERIVED_INTERMEDIATE",
+          "value": 6
+        },
+        {
+          "distribution": "3 on each long side and 2 on each short side",
+          "fact": "rectangular table seats",
+          "role": "GIVEN",
+          "value": 10
+        },
+        {
+          "rotation": "180 degrees",
+          "fact": "rectangle distinct rotational symmetries",
+          "role": "DERIVED_INTERMEDIATE",
+          "value": 2
+        },
+        {
+          "formula": "(12!/6)/(10!/2)",
+          "fact": "arrangement ratio",
+          "role": "CONCLUSION",
+          "value": 44
+        }
+      ],
+      "newVisualInformation": "Two rotation arrows tie sixfold versus twofold table symmetry to the divisors in a and b.",
+      "questionUid": "qid_v1_4d97dcac9c37e7a4b12059cc4da3d19df22361d73f287112bf74d9894e2e39df"
+    },
+    {
+      "qid": 18,
+      "expectedFacts": [
+        {
+          "fact": "seven distinct students occupy a circle",
+          "role": "GIVEN",
+          "value": 7
+        },
+        {
+          "fact": "two first-year students form one adjacent block",
+          "internalOrders": 2,
+          "role": "DERIVED_INTERMEDIATE",
+          "value": 1
+        },
+        {
+          "fact": "two neighbors of the first-year block must be second-year students",
+          "role": "DERIVED_INTERMEDIATE",
+          "value": 2
+        },
+        {
+          "fact": "remaining three seats contain one second-year and two third-year students",
+          "role": "GIVEN",
+          "counts": {
+            "grade3": 2,
+            "grade2": 1
+          }
+        },
+        {
+          "formula": "2 * 3P2 * 3!",
+          "fact": "arrangement count",
+          "role": "CONCLUSION",
+          "value": 72
+        }
+      ],
+      "questionUid": "qid_v1_47ae856bb08eb48b7fd1e1e06582d8af1a3885d7eac0f40b9beaea5dd938aa16",
+      "solutionSha256": "06df92d0cbaab07c7018687dfc202ef1058e5cc426de9f44f0b2a3a654e68f84",
+      "newVisualInformation": "The cyclic seat diagram shows the first-year block and the two grade-2 flank seats that enforce the non-adjacency condition."
+    }
+  ],
+  "factsFrozenBeforeSvgGeneration": true,
+  "renderStatus": "PENDING_R3_BROWSER"
+}

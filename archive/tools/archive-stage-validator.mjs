@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import path from 'node:path';
 import vm from 'node:vm';
 import { pathToFileURL, fileURLToPath } from 'node:url';
@@ -41,6 +42,7 @@ function parseArgs(argv) {
     else if (arg === '--campaign-id') out.campaignId = argv[++i];
     else if (arg === '--stream') out.stream = String(argv[++i] || '').toUpperCase();
     else if (arg === '--asset-root') out.assetRoot = argv[++i];
+    else if (arg === '--question-only-authority') out.questionOnlyAuthority = argv[++i];
     else if (arg === '--json') out.json = true;
     else throw new Error(`UNKNOWN_ARGUMENT:${arg}`);
   }
@@ -67,12 +69,37 @@ function loadV2ExamBinding(examFile) {
   };
 }
 
-function validateV2Evidence({ evidence, evidenceFile, examFile, stage, repoRoot, assetRoot, goldenRoot }) {
+function validateV2Evidence({ evidence, evidenceFile, examFile, stage, repoRoot, assetRoot, goldenRoot, questionOnlyAuthorityFile }) {
   const normalizedStage = String(stage || '').toUpperCase();
   const validator = V2_VALIDATORS[normalizedStage];
   if (!validator) return null;
 
   const binding = loadV2ExamBinding(examFile);
+  const evidenceRows = Array.isArray(evidence?.rows) ? evidence.rows : [];
+  const isQuestionOnly = normalizedStage === 'CREATE' && evidenceRows.some(row => String(row?.sourceMode || '').toUpperCase() === 'QUESTION_ONLY'
+    || String(row?.replacementMode || '').toUpperCase() === 'QUESTION_ONLY'
+    || Boolean(row?.provenanceEvidence?.questionOnlyReplacement))
+    || (normalizedStage === 'CREATE' && (evidence?.replacementEvidenceScope?.fullExamStageClosure === false
+      || evidence?.sourceParity?.status === 'NOT_APPLICABLE_QUESTION_ONLY_REPLACEMENT'));
+  let questionOnlyAuthority = null, questionOnlyAuthorityRef = null;
+  if (isQuestionOnly) {
+    const boundRef = evidence?.questionOnlyReplacementAuthorityRef
+      || evidenceRows.find(row => String(row?.sourceMode || '').toUpperCase() === 'QUESTION_ONLY')?.questionOnlyReplacementAuthorityRef;
+    let authorityPath;
+    if (questionOnlyAuthorityFile) authorityPath = path.resolve(questionOnlyAuthorityFile);
+    else if (boundRef?.path && !path.isAbsolute(boundRef.path)) authorityPath = path.resolve(repoRoot, ...normalize(boundRef.path).split('/'));
+    if (!authorityPath) {
+      questionOnlyAuthorityRef = null;
+    } else {
+      const rel = normalize(path.relative(repoRoot, authorityPath));
+      if (rel === '..' || rel.startsWith('../') || path.isAbsolute(rel)) throw new Error('QUESTION_ONLY_AUTHORITY_OUTSIDE_REPO');
+      const bytes = fs.readFileSync(authorityPath);
+      questionOnlyAuthority = JSON.parse(bytes.toString('utf8'));
+      questionOnlyAuthorityRef = { path: rel, sha256: crypto.createHash('sha256').update(bytes).digest('hex') };
+    }
+  }
+  const artifactBytes = fs.readFileSync(examFile);
+  const actualArtifactRawSha256 = crypto.createHash('sha256').update(artifactBytes).digest('hex');
   const stageReport = validator({
     examUid: evidence?.examUid,
     artifactSha: evidence?.artifactSha,
@@ -80,15 +107,37 @@ function validateV2Evidence({ evidence, evidenceFile, examFile, stage, repoRoot,
     evidenceRef: normalize(evidenceFile),
     evidence,
     expectedQids: binding.expectedQids,
+    questions: binding.questions,
+    repoRoot,
+    assetRoot: assetRoot || path.join(repoRoot, 'archive'),
+    actualArtifactRawSha256,
+    questionOnlyAuthority,
+    questionOnlyAuthorityRef,
   });
 
-  const artifactContract = validateArtifactContract({
-    stage: normalizedStage,
-    evidence,
-    questions: binding.questions,
-    repoRoot: goldenRoot || repoRoot,
-    assetRoot: assetRoot || path.join(repoRoot, 'archive'),
-  });
+  let artifactContract;
+  if (isQuestionOnly) {
+    const targetQid = Number(evidenceRows[0]?.qid);
+    const targetQuestion = binding.questions.find(question => Number(question.id) === targetQid);
+    const targetCreate = validateArtifactContract({
+      stage: 'CREATE', evidence, questions: targetQuestion ? [targetQuestion] : [], repoRoot: goldenRoot || repoRoot,
+      assetRoot: assetRoot || path.join(repoRoot, 'archive'),
+    });
+    artifactContract = {
+      validatorLayer: 'ARTIFACT_CONTRACT_V2_QUESTION_ONLY_SCOPED', active: targetCreate.active,
+      qualityContractVersion: evidence.qualityContractVersion,
+      scope: { qids: targetQuestion ? [targetQid] : [], fullArtifactDenominator: binding.questions.length, unchangedQidsParityChecked: true, fullExamStageClosure: false },
+      issues: [...targetCreate.issues],
+    };
+  } else {
+    artifactContract = validateArtifactContract({
+      stage: normalizedStage,
+      evidence,
+      questions: binding.questions,
+      repoRoot: goldenRoot || repoRoot,
+      assetRoot: assetRoot || path.join(repoRoot, 'archive'),
+    });
+  }
   if (!artifactContract.active) return stageReport;
 
   const issues = [...stageReport.issues, ...artifactContract.issues];
@@ -113,7 +162,7 @@ function findSourceRoot(examFile) {
   }
 }
 
-export function validateStageEvidence({ examFile, evidenceFile, stage, qualityContractVersion, executionLine = qualityContractVersion ? 'CODEX' : undefined, campaignId, stream, repoRoot = findSourceRoot(examFile), assetRoot, goldenRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..') }) {
+export function validateStageEvidence({ examFile, evidenceFile, stage, qualityContractVersion, executionLine = qualityContractVersion ? 'CODEX' : undefined, campaignId, stream, repoRoot = findSourceRoot(examFile), assetRoot, goldenRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..'), questionOnlyAuthorityFile }) {
   const evidence = JSON.parse(fs.readFileSync(evidenceFile, 'utf8'));
   const version = evidence?.qualityContractVersion;
   const contractIssues = [];
@@ -139,7 +188,7 @@ export function validateStageEvidence({ examFile, evidenceFile, stage, qualityCo
   if (compatibility) return compatibility;
 
   if (evidence?.schemaVersion === V2_EVIDENCE_SCHEMA) {
-    const v2 = validateV2Evidence({ evidence, evidenceFile, examFile, stage, repoRoot, assetRoot, goldenRoot });
+    const v2 = validateV2Evidence({ evidence, evidenceFile, examFile, stage, repoRoot, assetRoot, goldenRoot, questionOnlyAuthorityFile });
     if (v2) return v2;
     return {
       ok: false,
@@ -173,6 +222,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
       campaignId: args.campaignId,
       stream: args.stream,
       assetRoot: args.assetRoot && path.resolve(args.assetRoot),
+      questionOnlyAuthorityFile: args.questionOnlyAuthority && path.resolve(args.questionOnlyAuthority),
     });
     console.log(JSON.stringify(report, null, 2));
     process.exitCode = report.ok ? 0 : 1;

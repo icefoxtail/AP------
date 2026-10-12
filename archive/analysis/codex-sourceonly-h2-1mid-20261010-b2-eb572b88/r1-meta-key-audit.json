@@ -1,0 +1,1158 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_META_KEY_AUDIT_V1",
+  "reviewerId": "/root/r1_suncheon_hs_prob",
+  "examUid": "24_순천고_1학기_중간_고2_확률과통계",
+  "artifactRawSha256": "14b783057f3c1b0b1735c23cf748c1fcf99ff93abba00a3ecb2cdac355328f5e",
+  "sourceQuestionCount": 23,
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "rpmCrosswalk": {
+    "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+    "sha256": "09a62de1afe1e47d901635d73c00dcfc2d82a97f8748950df3250f0ebea4e431",
+    "status": "ACTIVE_REFERENCE",
+    "rpmAuthorityStatus": "LOCKED"
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-PERMUTATION",
+        "label": "순열",
+        "activeBindingFound": true
+      },
+      "rpmCrosswalk": {
+        "status": "EVIDENCE_DEBT",
+        "recordId": null,
+        "debtFields": [
+          "L3",
+          "L4"
+        ],
+        "debtReason": "No single locked path for sum of repeated permutation and repeated combination."
+      },
+      "problemType": {
+        "key": null,
+        "active": null
+      },
+      "template": {
+        "key": null,
+        "active": null,
+        "parent": null
+      },
+      "crossConcepts": [],
+      "conditions": [],
+      "integrationPattern": {
+        "value": "NONE",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    },
+    {
+      "qid": 2,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-PERMUTATION",
+        "label": "순열",
+        "activeBindingFound": true
+      },
+      "rpmCrosswalk": {
+        "status": "MAPPED",
+        "recordId": "H2-PS-RPM-002",
+        "debtFields": [],
+        "debtReason": ""
+      },
+      "problemType": {
+        "key": "PT_COUNTING_ARRANGEMENT",
+        "active": true
+      },
+      "template": {
+        "key": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+        "active": true,
+        "parent": "PT_COUNTING_ARRANGEMENT"
+      },
+      "crossConcepts": [],
+      "conditions": [],
+      "integrationPattern": {
+        "value": "NONE",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    },
+    {
+      "qid": 3,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-COMBINATION",
+        "label": "조합",
+        "activeBindingFound": true
+      },
+      "rpmCrosswalk": {
+        "status": "MAPPED",
+        "recordId": "H2-PS-RPM-006",
+        "debtFields": [],
+        "debtReason": ""
+      },
+      "problemType": {
+        "key": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "active": true
+      },
+      "template": {
+        "key": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "active": true,
+        "parent": "PT_COUNTING_SELECTION_DISTRIBUTION"
+      },
+      "crossConcepts": [],
+      "conditions": [
+        {
+          "key": "COND_INTEGER",
+          "active": true
+        }
+      ],
+      "integrationPattern": {
+        "value": "NONE",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    },
+    {
+      "qid": 4,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-COMBINATION",
+        "label": "조합",
+        "activeBindingFound": true
+      },
+      "rpmCrosswalk": {
+        "status": "MAPPED",
+        "recordId": "H2-PS-RPM-005",
+        "debtFields": [],
+        "debtReason": ""
+      },
+      "problemType": {
+        "key": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "active": true
+      },
+      "template": {
+        "key": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "active": true,
+        "parent": "PT_COUNTING_SELECTION_DISTRIBUTION"
+      },
+      "crossConcepts": [],
+      "conditions": [],
+      "integrationPattern": {
+        "value": "NONE",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    },
+    {
+      "qid": 5,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-PERMUTATION",
+        "label": "순열",
+        "activeBindingFound": true
+      },
+      "rpmCrosswalk": {
+        "status": "MAPPED",
+        "recordId": "H2-PS-RPM-001",
+        "debtFields": [],
+        "debtReason": ""
+      },
+      "problemType": {
+        "key": "PT_COUNTING_ARRANGEMENT",
+        "active": true
+      },
+      "template": {
+        "key": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "active": true,
+        "parent": "PT_COUNTING_ARRANGEMENT"
+      },
+      "crossConcepts": [],
+      "conditions": [
+        {
+          "key": "COND_RANGE",
+          "active": true
+        }
+      ],
+      "integrationPattern": {
+        "value": "NONE",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    },
+    {
+      "qid": 6,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-PERMUTATION",
+        "label": "순열",
+        "activeBindingFound": true
+      },
+      "rpmCrosswalk": {
+        "status": "MAPPED",
+        "recordId": "H2-PS-RPM-001",
+        "debtFields": [],
+        "debtReason": ""
+      },
+      "problemType": {
+        "key": "PT_COUNTING_ARRANGEMENT",
+        "active": true
+      },
+      "template": {
+        "key": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "active": true,
+        "parent": "PT_COUNTING_ARRANGEMENT"
+      },
+      "crossConcepts": [],
+      "conditions": [
+        {
+          "key": "COND_RANGE",
+          "active": true
+        }
+      ],
+      "integrationPattern": {
+        "value": "NONE",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    },
+    {
+      "qid": 7,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-COMBINATION",
+        "label": "조합",
+        "activeBindingFound": true
+      },
+      "rpmCrosswalk": {
+        "status": "MAPPED",
+        "recordId": "H2-PS-RPM-006",
+        "debtFields": [],
+        "debtReason": ""
+      },
+      "problemType": {
+        "key": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "active": true
+      },
+      "template": {
+        "key": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "active": true,
+        "parent": "PT_COUNTING_SELECTION_DISTRIBUTION"
+      },
+      "crossConcepts": [],
+      "conditions": [
+        {
+          "key": "COND_INTEGER",
+          "active": true
+        },
+        {
+          "key": "COND_RANGE",
+          "active": true
+        }
+      ],
+      "integrationPattern": {
+        "value": "NONE",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    },
+    {
+      "qid": 8,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-PERMUTATION",
+        "label": "순열",
+        "activeBindingFound": true
+      },
+      "rpmCrosswalk": {
+        "status": "MAPPED",
+        "recordId": "H2-PS-RPM-002",
+        "debtFields": [],
+        "debtReason": ""
+      },
+      "problemType": {
+        "key": "PT_COUNTING_ARRANGEMENT",
+        "active": true
+      },
+      "template": {
+        "key": "TPL_CIRCULAR_PERMUTATION",
+        "active": true,
+        "parent": "PT_COUNTING_ARRANGEMENT"
+      },
+      "crossConcepts": [],
+      "conditions": [],
+      "integrationPattern": {
+        "value": "NONE",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    },
+    {
+      "qid": 9,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-PERMUTATION",
+        "label": "순열",
+        "activeBindingFound": true
+      },
+      "rpmCrosswalk": {
+        "status": "MAPPED",
+        "recordId": "H2-PS-RPM-002",
+        "debtFields": [],
+        "debtReason": ""
+      },
+      "problemType": {
+        "key": "PT_COUNTING_ARRANGEMENT",
+        "active": true
+      },
+      "template": {
+        "key": "TPL_CIRCULAR_PERMUTATION",
+        "active": true,
+        "parent": "PT_COUNTING_ARRANGEMENT"
+      },
+      "crossConcepts": [],
+      "conditions": [
+        {
+          "key": "COND_RANGE",
+          "active": true
+        }
+      ],
+      "integrationPattern": {
+        "value": "SEQUENTIAL",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    },
+    {
+      "qid": 10,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-02",
+        "label": "이항정리",
+        "order": 2,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-02-BINOMIAL_BASIC",
+        "label": "이항정리",
+        "activeBindingFound": true
+      },
+      "rpmCrosswalk": {
+        "status": "MAPPED",
+        "recordId": "H2-PS-RPM-008",
+        "debtFields": [],
+        "debtReason": ""
+      },
+      "problemType": {
+        "key": "PT_BINOMIAL_THEOREM",
+        "active": true
+      },
+      "template": {
+        "key": "TPL_BINOMIAL_TERM_COEFFICIENT",
+        "active": true,
+        "parent": "PT_BINOMIAL_THEOREM"
+      },
+      "crossConcepts": [],
+      "conditions": [
+        {
+          "key": "COND_POSITIVE",
+          "active": true
+        }
+      ],
+      "integrationPattern": {
+        "value": "NONE",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    },
+    {
+      "qid": 11,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-02",
+        "label": "이항정리",
+        "order": 2,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-02-BINOMIAL_BASIC",
+        "label": "이항정리",
+        "activeBindingFound": true
+      },
+      "rpmCrosswalk": {
+        "status": "MAPPED",
+        "recordId": "H2-PS-RPM-008",
+        "debtFields": [],
+        "debtReason": ""
+      },
+      "problemType": {
+        "key": "PT_BINOMIAL_THEOREM",
+        "active": true
+      },
+      "template": {
+        "key": "TPL_BINOMIAL_TERM_COEFFICIENT",
+        "active": true,
+        "parent": "PT_BINOMIAL_THEOREM"
+      },
+      "crossConcepts": [],
+      "conditions": [],
+      "integrationPattern": {
+        "value": "SEQUENTIAL",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    },
+    {
+      "qid": 12,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-02",
+        "label": "이항정리",
+        "order": 2,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-02-BINOMIAL_APPLICATION",
+        "label": "이항정리의 활용",
+        "activeBindingFound": false
+      },
+      "rpmCrosswalk": {
+        "status": "EVIDENCE_DEBT",
+        "recordId": null,
+        "debtFields": [
+          "L3",
+          "L4"
+        ],
+        "debtReason": "No H15-PS-02-BINOMIAL_APPLICATION RPM path in current H2 crosswalk."
+      },
+      "problemType": {
+        "key": "PT_BINOMIAL_THEOREM",
+        "active": true
+      },
+      "template": {
+        "key": null,
+        "active": null,
+        "parent": null
+      },
+      "crossConcepts": [],
+      "conditions": [],
+      "integrationPattern": {
+        "value": "NONE",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    },
+    {
+      "qid": 13,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-COMBINATION",
+        "label": "조합",
+        "activeBindingFound": true
+      },
+      "rpmCrosswalk": {
+        "status": "MAPPED",
+        "recordId": "H2-PS-RPM-006",
+        "debtFields": [],
+        "debtReason": ""
+      },
+      "problemType": {
+        "key": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "active": true
+      },
+      "template": {
+        "key": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "active": true,
+        "parent": "PT_COUNTING_SELECTION_DISTRIBUTION"
+      },
+      "crossConcepts": [],
+      "conditions": [
+        {
+          "key": "COND_NATURAL_NUMBER",
+          "active": true
+        },
+        {
+          "key": "COND_RANGE",
+          "active": true
+        }
+      ],
+      "integrationPattern": {
+        "value": "SEQUENTIAL",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    },
+    {
+      "qid": 14,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-03",
+        "label": "확률의 뜻과 활용",
+        "order": 3,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-03-PROBABILITY_BASIC",
+        "label": "확률의 뜻과 활용",
+        "activeBindingFound": true
+      },
+      "rpmCrosswalk": {
+        "status": "MAPPED",
+        "recordId": "H2-PS-RPM-012",
+        "debtFields": [],
+        "debtReason": ""
+      },
+      "problemType": {
+        "key": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "active": true
+      },
+      "template": {
+        "key": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "active": true,
+        "parent": "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      },
+      "crossConcepts": [
+        {
+          "key": "CC_COMBINATORICS_COUNTING",
+          "active": true
+        }
+      ],
+      "conditions": [],
+      "integrationPattern": {
+        "value": "SEQUENTIAL",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    },
+    {
+      "qid": 15,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-03",
+        "label": "확률의 뜻과 활용",
+        "order": 3,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-03-PROBABILITY_BASIC",
+        "label": "확률의 뜻과 활용",
+        "activeBindingFound": true
+      },
+      "rpmCrosswalk": {
+        "status": "MAPPED",
+        "recordId": "H2-PS-RPM-012",
+        "debtFields": [],
+        "debtReason": ""
+      },
+      "problemType": {
+        "key": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "active": true
+      },
+      "template": {
+        "key": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "active": true,
+        "parent": "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      },
+      "crossConcepts": [
+        {
+          "key": "CC_COMBINATORICS_COUNTING",
+          "active": true
+        }
+      ],
+      "conditions": [],
+      "integrationPattern": {
+        "value": "SEQUENTIAL",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "confidence": "medium",
+        "boundary": "B12",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    },
+    {
+      "qid": 16,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-03",
+        "label": "확률의 뜻과 활용",
+        "order": 3,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-03-PROBABILITY_BASIC",
+        "label": "확률의 뜻과 활용",
+        "activeBindingFound": true
+      },
+      "rpmCrosswalk": {
+        "status": "MAPPED",
+        "recordId": "H2-PS-RPM-012",
+        "debtFields": [],
+        "debtReason": ""
+      },
+      "problemType": {
+        "key": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "active": true
+      },
+      "template": {
+        "key": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "active": true,
+        "parent": "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      },
+      "crossConcepts": [
+        {
+          "key": "CC_COMBINATORICS_COUNTING",
+          "active": true
+        }
+      ],
+      "conditions": [],
+      "integrationPattern": {
+        "value": "SEQUENTIAL",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    },
+    {
+      "qid": 17,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-PERMUTATION",
+        "label": "순열",
+        "activeBindingFound": true
+      },
+      "rpmCrosswalk": {
+        "status": "MAPPED",
+        "recordId": "H2-PS-RPM-002",
+        "debtFields": [],
+        "debtReason": ""
+      },
+      "problemType": {
+        "key": "PT_COUNTING_ARRANGEMENT",
+        "active": true
+      },
+      "template": {
+        "key": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+        "active": true,
+        "parent": "PT_COUNTING_ARRANGEMENT"
+      },
+      "crossConcepts": [],
+      "conditions": [
+        {
+          "key": "COND_INTEGER",
+          "active": true
+        }
+      ],
+      "integrationPattern": {
+        "value": "CASE_BRANCH",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    },
+    {
+      "qid": 18,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-COMBINATION",
+        "label": "조합",
+        "activeBindingFound": true
+      },
+      "rpmCrosswalk": {
+        "status": "MAPPED",
+        "recordId": "H2-PS-RPM-006",
+        "debtFields": [],
+        "debtReason": ""
+      },
+      "problemType": {
+        "key": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "active": true
+      },
+      "template": {
+        "key": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "active": true,
+        "parent": "PT_COUNTING_SELECTION_DISTRIBUTION"
+      },
+      "crossConcepts": [],
+      "conditions": [
+        {
+          "key": "COND_RANGE",
+          "active": true
+        }
+      ],
+      "integrationPattern": {
+        "value": "SEQUENTIAL",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    },
+    {
+      "qid": 19,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-PERMUTATION",
+        "label": "순열",
+        "activeBindingFound": true
+      },
+      "rpmCrosswalk": {
+        "status": "MAPPED",
+        "recordId": "H2-PS-RPM-001",
+        "debtFields": [],
+        "debtReason": ""
+      },
+      "problemType": {
+        "key": "PT_COUNTING_ARRANGEMENT",
+        "active": true
+      },
+      "template": {
+        "key": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "active": true,
+        "parent": "PT_COUNTING_ARRANGEMENT"
+      },
+      "crossConcepts": [],
+      "conditions": [
+        {
+          "key": "COND_RANGE",
+          "active": true
+        }
+      ],
+      "integrationPattern": {
+        "value": "CASE_BRANCH",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    },
+    {
+      "qid": 20,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-03",
+        "label": "확률의 뜻과 활용",
+        "order": 3,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-03-PROBABILITY_BASIC",
+        "label": "확률의 뜻과 활용",
+        "activeBindingFound": true
+      },
+      "rpmCrosswalk": {
+        "status": "MAPPED",
+        "recordId": "H2-PS-RPM-012",
+        "debtFields": [],
+        "debtReason": ""
+      },
+      "problemType": {
+        "key": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "active": true
+      },
+      "template": {
+        "key": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "active": true,
+        "parent": "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      },
+      "crossConcepts": [
+        {
+          "key": "CC_COMBINATORICS_COUNTING",
+          "active": true
+        },
+        {
+          "key": "CC_NUMBER_DIVISOR_MULTIPLE",
+          "active": true
+        }
+      ],
+      "conditions": [
+        {
+          "key": "COND_NATURAL_NUMBER",
+          "active": true
+        },
+        {
+          "key": "COND_RANGE",
+          "active": true
+        }
+      ],
+      "integrationPattern": {
+        "value": "CASE_BRANCH",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "medium",
+        "boundary": "B34",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    },
+    {
+      "qid": 21,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-COUNTING_APPLICATION",
+        "label": "경우의 수의 활용",
+        "activeBindingFound": true
+      },
+      "rpmCrosswalk": {
+        "status": "EVIDENCE_DEBT",
+        "recordId": null,
+        "debtFields": [
+          "L3",
+          "L4"
+        ],
+        "debtReason": "No H15-PS-01-COUNTING_APPLICATION constrained-function RPM path."
+      },
+      "problemType": {
+        "key": "PT_FUNCTION_COUNTING",
+        "active": true
+      },
+      "template": {
+        "key": "TPL_CONSTRAINED_FUNCTION_COUNT",
+        "active": true,
+        "parent": "PT_FUNCTION_COUNTING"
+      },
+      "crossConcepts": [],
+      "conditions": [
+        {
+          "key": "COND_RANGE",
+          "active": true
+        }
+      ],
+      "integrationPattern": {
+        "value": "NONE",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    },
+    {
+      "qid": 22,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-02",
+        "label": "이항정리",
+        "order": 2,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-02-BINOMIAL_COEFFICIENT",
+        "label": "이항계수와 계수 비교",
+        "activeBindingFound": false
+      },
+      "rpmCrosswalk": {
+        "status": "MAPPED",
+        "recordId": "H2-PS-RPM-009",
+        "debtFields": [],
+        "debtReason": ""
+      },
+      "problemType": {
+        "key": "PT_BINOMIAL_THEOREM",
+        "active": true
+      },
+      "template": {
+        "key": null,
+        "active": null,
+        "parent": null
+      },
+      "crossConcepts": [],
+      "conditions": [
+        {
+          "key": "COND_NATURAL_NUMBER",
+          "active": true
+        },
+        {
+          "key": "COND_POSITIVE",
+          "active": true
+        },
+        {
+          "key": "COND_RANGE",
+          "active": true
+        }
+      ],
+      "integrationPattern": {
+        "value": "SEQUENTIAL",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "medium",
+        "boundary": "B34",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    },
+    {
+      "qid": 23,
+      "questionUid": null,
+      "standardUnit": {
+        "key": "H15-PS-01",
+        "label": "순열과 조합",
+        "order": 1,
+        "masterOrderVerified": true
+      },
+      "subUnit": {
+        "key": "H15-PS-01-COUNTING_APPLICATION",
+        "label": "경우의 수의 활용",
+        "activeBindingFound": true
+      },
+      "rpmCrosswalk": {
+        "status": "EVIDENCE_DEBT",
+        "recordId": null,
+        "debtFields": [
+          "L3",
+          "L4"
+        ],
+        "debtReason": "No H15-PS-01-COUNTING_APPLICATION constrained-function RPM path."
+      },
+      "problemType": {
+        "key": "PT_FUNCTION_COUNTING",
+        "active": true
+      },
+      "template": {
+        "key": "TPL_MONOTONE_FUNCTION_COUNT",
+        "active": true,
+        "parent": "PT_FUNCTION_COUNTING"
+      },
+      "crossConcepts": [],
+      "conditions": [
+        {
+          "key": "COND_INTEGER",
+          "active": true
+        },
+        {
+          "key": "COND_RANGE",
+          "active": true
+        }
+      ],
+      "integrationPattern": {
+        "value": "SEQUENTIAL",
+        "canonical": true
+      },
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "medium",
+        "boundary": "B34",
+        "legacyCompatibility": "NORMAL",
+        "independentlyReviewed": true
+      }
+    }
+  ]
+}

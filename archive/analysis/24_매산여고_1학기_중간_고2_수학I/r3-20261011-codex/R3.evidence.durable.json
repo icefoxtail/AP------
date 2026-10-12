@@ -1,0 +1,1643 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R3",
+  "examUid": "24_매산여고_1학기_중간_고2_수학I",
+  "artifactSha": "8a1ff234d287e74217c6b79625ff2c9d152518fb",
+  "artifactRawSha256": "423e6dcffb163b7372d2e75a9ae63796661ab94852f7c84a199100af179a0f46",
+  "reviewerIdentity": {
+    "role": "archive_r3",
+    "reviewerId": "r3_maesan_math1"
+  },
+  "lockedRosterBinding": {
+    "path": "archive/analysis/h2-1mid-20261010-codex/ROOT.locked-roster.json",
+    "sha256": "508d9f8afd2314489379b8ee303e8fc56d9018f31acf6608954cfaf350685166",
+    "runId": "codex-h2-1mid-20261010-batch-20261011",
+    "expectedHead": "c41ab67a46ae1e5b6a8639bd3d804be1032a876f",
+    "lockedInputSourceRawSha256": "E9A6ACEC105C7D3C9DE7D5E7D98641544809CB473F724BE2D6E4123E29CB9F2F",
+    "currentArtifactRawSha256": "423e6dcffb163b7372d2e75a9ae63796661ab94852f7c84a199100af179a0f46",
+    "currentArtifactBlobSha1": "8a1ff234d287e74217c6b79625ff2c9d152518fb",
+    "productionPath": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+    "sourceOnlyEvidence": {
+      "path": "archive/analysis/source-only-h2-1mid-20261010/24_매산여고_1학기_중간_고2_수학I.evidence.json",
+      "sha256": "D2635CF6EB7E86D2AEEB7C25A91A2FB8B9E8B5BC0CD8FB66F1F81E07462434F1"
+    }
+  },
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "routinePdfComparison": "NOT_PERFORMED",
+  "targetedScope": {
+    "openFindingQids": [],
+    "changedQids": [
+      2,
+      6,
+      8,
+      18,
+      21,
+      22,
+      24
+    ],
+    "directDependencyQids": [
+      2,
+      6,
+      8,
+      18,
+      21,
+      22,
+      24
+    ],
+    "currentR3RevisionChangedQids": [
+      21
+    ],
+    "resolvedOpenFindingQids": [
+      21
+    ]
+  },
+  "rows": [
+    {
+      "qid": 2,
+      "verdict": "PASS",
+      "changedOpenDependencyReview": {
+        "status": "PASS",
+        "repairApplied": false,
+        "solutionSha256": "7c217f5422ac6ed4bc63490902001a4f7cd520d313ee65dfdbdd29922a5ea794",
+        "review": "The R1-only correction is the TeX non-equality token in q2 solution. Current solution digest matches R1 PASS; stored answer and choices still match the preserved freeze."
+      },
+      "directDependencyReview": {
+        "status": "PASS",
+        "assetRefs": []
+      }
+    },
+    {
+      "qid": 6,
+      "verdict": "PASS",
+      "changedOpenDependencyReview": {
+        "status": "PASS",
+        "repairApplied": false,
+        "solutionSha256": "120934c2836ab5c572f3c9df882c5b7ee6f579942f761786ed56bbac74bc9ca9",
+        "review": "The opened q06 source graph and solution number-line asset support the postfreeze correction. R2 adjudication records answer ② (7); R1/R2 current rows PASS and the original freeze remains immutable."
+      },
+      "directDependencyReview": {
+        "status": "PASS",
+        "assetRefs": [
+          "assets/images/24_매산여고_1학기_중간_고2_수학I/q06.png",
+          "assets/images/24_매산여고_1학기_중간_고2_수학I/q06-solution.svg"
+        ]
+      }
+    },
+    {
+      "qid": 8,
+      "verdict": "PASS",
+      "changedOpenDependencyReview": {
+        "status": "PASS",
+        "repairApplied": false,
+        "solutionSha256": "a7aa77d71af41454cb612e5b1e6117123c39de0b477ce8add1ba067e0cfd1607",
+        "review": "The R1-only correction is the TeX non-equality token in q8 solution. Current solution digest matches R1 PASS; stored answer and choices still match the preserved freeze."
+      },
+      "directDependencyReview": {
+        "status": "PASS",
+        "assetRefs": []
+      }
+    },
+    {
+      "qid": 18,
+      "verdict": "PASS",
+      "changedOpenDependencyReview": {
+        "status": "PASS",
+        "repairApplied": false,
+        "solutionSha256": "717e65b90db7daab0cce5489f9b7ca832903a78c86314121662c71bc466227f8",
+        "review": "The R1-reviewed source metadata locus is H15-M1-04 / H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION. Current row has zero META debt and matches final physical metadata; no additional semantic reclassification is made."
+      },
+      "directDependencyReview": {
+        "status": "PASS",
+        "assetRefs": []
+      }
+    },
+    {
+      "qid": 21,
+      "verdict": "PASS",
+      "changedOpenDependencyReview": {
+        "status": "PASS",
+        "repairApplied": false,
+        "solutionSha256": "564b732d18111c6468e5e5e4861ae8d462952522c79e30016930978409424569",
+        "answer": "④",
+        "upstreamR1": {
+          "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r1-fresh-q21-20261011/r1-final-evidence.revision2.json",
+          "sha256": "f6c9fabb28b4e79343ba229923978e602bbc3efa7471f5dbb3425b0f53b845b0",
+          "verdict": "PASS",
+          "compareResult": "MATCH"
+        },
+        "upstreamR2": {
+          "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r2-fresh-q21-20261011/r2-final-evidence.current.json",
+          "sha256": "1b9dec5f5ccef77a25ebe97d5962d0d839b0b15717adb1e6b2940c4912a9a581",
+          "verdict": "PASS",
+          "compareResult": "MATCH"
+        },
+        "review": "The former q21 HOLD is closed by the ROOT-authorized direct replacement. Fresh q21 R1 and R2 full-denominator PASS rows independently agree on choice ④ (40). Current source hold status is clear; no source or asset edit was made by R3."
+      },
+      "directDependencyReview": {
+        "status": "PASS",
+        "assetRefs": [
+          "assets/images/24_매산여고_1학기_중간_고2_수학I/q21-solution-recovery.svg"
+        ],
+        "assetSha256": "6e91d4e7caf3fec5f900dcdbeba0bd00d9a4d84c0a54fd27a4de558fe388e35e",
+        "decodedInCases": [
+          "sol/desktop",
+          "sol/mobile"
+        ]
+      }
+    },
+    {
+      "qid": 22,
+      "verdict": "PASS",
+      "changedOpenDependencyReview": {
+        "status": "PASS",
+        "repairApplied": false,
+        "solutionSha256": "d7b664f3e79371e0713b25c8bd45ee8fbe68ed15665b2f19f0ba04b0c778fbaa",
+        "review": "The postfreeze correction retained the original freeze and corrected the stored expression to −63√15/256. R1 and R2 current rows both PASS; solution SVG decodes in sol cases."
+      },
+      "directDependencyReview": {
+        "status": "PASS",
+        "assetRefs": [
+          "assets/images/24_매산여고_1학기_중간_고2_수학I/q22-solution.svg"
+        ]
+      }
+    },
+    {
+      "qid": 24,
+      "verdict": "PASS",
+      "changedOpenDependencyReview": {
+        "status": "PASS",
+        "repairApplied": false,
+        "solutionSha256": "b03cf07bde67a598d4d623f185fb17dae44a3253f92b97267f190b55f49ae8d6",
+        "review": "The postfreeze correction retained the original freeze and corrected the stored count to 344. R1 and R2 current rows both PASS; solution SVG decodes in sol cases."
+      },
+      "directDependencyReview": {
+        "status": "PASS",
+        "assetRefs": [
+          "assets/images/24_매산여고_1학기_중간_고2_수학I/q24-solution.svg"
+        ]
+      }
+    }
+  ],
+  "lockedScopeIntegrity": true,
+  "releaseIntegrity": true,
+  "structureReview": {
+    "status": "PASS",
+    "qidCount": 24,
+    "orderedQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "lastQid": 24,
+    "syntax": "PASS",
+    "requiredFields": "PASS",
+    "difficultyFields": "PASS",
+    "controlCharacters": "PASS",
+    "choicesLabels": "PASS",
+    "pngSvgXmlCodeDependencies": "PASS",
+    "assetReferencesAndHashes": "PASS",
+    "itemHolds": 0,
+    "review": "Full-denominator structural integrity scan; semantic review remains limited to prior R3 changed/open/dependency qids and the q21 recovery locus. Q1–q20 and q22–q24 source objects match the preserved pre-recovery source exactly."
+  },
+  "assetReview": {
+    "status": "PASS",
+    "assets": [
+      {
+        "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q04-solution.svg",
+        "sha256": "5f9765a0b5c7ac527111373461d8dcb00986f3d9aa1ff37bbef561721cbcc4fa",
+        "bytes": 1602,
+        "format": "svg"
+      },
+      {
+        "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q05-solution.svg",
+        "sha256": "870f95375e552ea731dc375e716e7f2188c4c25d16713ba9ff03f0cf8fd0badc",
+        "bytes": 1604,
+        "format": "svg"
+      },
+      {
+        "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q06-solution.svg",
+        "sha256": "713953f8412e1f9f306125e129fe0408b68b1acead5c78bf2122555aa89a4a0f",
+        "bytes": 1586,
+        "format": "svg"
+      },
+      {
+        "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q06.png",
+        "sha256": "2a755e38969c20fc2676201de3f4b7051c4a4c57ba34d02b60ddc6a658ced390",
+        "bytes": 58856,
+        "format": "png"
+      },
+      {
+        "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q09-solution.svg",
+        "sha256": "260241c2e1b91199d6328f17b67df2975317cb40dbcb70c037d39858ce6c1729",
+        "bytes": 1384,
+        "format": "svg"
+      },
+      {
+        "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q14-solution.svg",
+        "sha256": "2c338ecce987a0b0075490dc39613fea627d05f615b7b7f60f7578b95220fca9",
+        "bytes": 2897,
+        "format": "svg"
+      },
+      {
+        "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q15-solution.svg",
+        "sha256": "15a0116a450ae6533897d43dc3c0b2465c24b8df8070600e109622b7d04a64a2",
+        "bytes": 2172,
+        "format": "svg"
+      },
+      {
+        "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q16-solution.svg",
+        "sha256": "e42b56bfde4acadadf0b2b26175a4ebecba9ef23a886f7bd5cff0aa5e813c333",
+        "bytes": 1305,
+        "format": "svg"
+      },
+      {
+        "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q18-solution.svg",
+        "sha256": "b966cbad25d83009efcc5ba9b36f588920e77b9c411a8daa695830fb3ebbf580",
+        "bytes": 1924,
+        "format": "svg"
+      },
+      {
+        "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q19-solution.svg",
+        "sha256": "3faa26bbf2f2d9b64599a602ad5883c63fc91f364a535433284ca8a02d936d9d",
+        "bytes": 3267,
+        "format": "svg"
+      },
+      {
+        "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q20-solution.svg",
+        "sha256": "935c69d6ad655d2510b1eb35e6e6af7d9afbf9bb1b9c11d35c7fb0001bdb495b",
+        "bytes": 1513,
+        "format": "svg"
+      },
+      {
+        "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q21-solution-recovery.svg",
+        "sha256": "6e91d4e7caf3fec5f900dcdbeba0bd00d9a4d84c0a54fd27a4de558fe388e35e",
+        "bytes": 7562,
+        "format": "svg"
+      },
+      {
+        "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q22-solution.svg",
+        "sha256": "eab82a1dfd84713a0a1eef52fc5428157a9452ae5db9306c922bcc094355fe50",
+        "bytes": 1518,
+        "format": "svg"
+      },
+      {
+        "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q24-solution.svg",
+        "sha256": "062dd990f27009dcf12c6be1f15424f6ba90e1e0f46330e0e8ad5a461e0f5f30",
+        "bytes": 4797,
+        "format": "svg"
+      }
+    ]
+  },
+  "upstreamBindings": {
+    "CREATE": {
+      "evidence": {
+        "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/CREATE_20261010_CODEX/CREATE.evidence.json",
+        "sha256": "14c47289e6aefcc3f6fdb68f82d621456b74e821ce6b703f436ff8d282ed1714"
+      },
+      "validatorReport": {
+        "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/CREATE_20261010_CODEX/CREATE.archive-stage-validator.raw.json",
+        "sha256": "fc6757959a2a305c8edfe21593cca07b48e7f0df4eb5f55d884f960aa2c18d0b",
+        "status": "PASS",
+        "denominator": 24
+      },
+      "completion": {
+        "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/CREATE_20261010_CODEX/CREATE.completion.sealed.json",
+        "sha256": "960ff750a5051b1e5014481478dad6f9fb5b6fb1433c5c18370016cd2348b698"
+      },
+      "artifactSha": "4770e724f620319ca46eaef8c326bafa30dc887c"
+    },
+    "R1": {
+      "evidence": {
+        "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r1-fresh-q21-20261011/r1-final-evidence.revision2.json",
+        "sha256": "f6c9fabb28b4e79343ba229923978e602bbc3efa7471f5dbb3425b0f53b845b0"
+      },
+      "validatorReport": {
+        "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r1-fresh-q21-20261011/r1-stage-validator.revision2.raw.v2.json",
+        "sha256": "671179db7748755055b601129065f08d1ea7b6e915996a9f630e1911d279636f",
+        "status": "PASS",
+        "denominator": 24
+      },
+      "completion": {
+        "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r1-fresh-q21-20261011/r1-completion.sealed.revision2.json",
+        "sha256": "92121dcd62ef2f5ef3f80367dc90d6b13395df8a8b102c406d3b76ef6ab339bf"
+      },
+      "artifactSha": "8a1ff234d287e74217c6b79625ff2c9d152518fb"
+    },
+    "R2": {
+      "evidence": {
+        "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r2-fresh-q21-20261011/r2-final-evidence.current.json",
+        "sha256": "1b9dec5f5ccef77a25ebe97d5962d0d839b0b15717adb1e6b2940c4912a9a581"
+      },
+      "validatorReport": {
+        "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r2-fresh-q21-20261011/r2-stage-validator.raw.v2.json",
+        "sha256": "ad054c593e8bcd03e74e85bcf638f888506a022aa4912a53b77627572bb70533",
+        "status": "PASS",
+        "denominator": 24
+      },
+      "completion": {
+        "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r2-fresh-q21-20261011/r2-completion.current.sealed.json",
+        "sha256": "032a58e6d9f9838a51b6c69d92006a31fa9bd207fd7576fd5add594e004b7108"
+      },
+      "artifactSha": "8a1ff234d287e74217c6b79625ff2c9d152518fb"
+    }
+  },
+  "artifactDispositions": {
+    "artifactSha": "8a1ff234d287e74217c6b79625ff2c9d152518fb",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H2-M1-RPM-003 is RPM_ONLY for rational exponent; no safe active PT/TPL mapping exists.",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-01",
+          "standardUnit": "지수의 뜻과 성질",
+          "standardUnitOrder": 1,
+          "subUnitKey": "H15-M1-01-EXPONENT",
+          "subUnit": "지수의 뜻과 성질",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H2-M1-RPM-008 is RPM_ONLY for logarithm base/argument conditions; preserve null PT/TPL.",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-02",
+          "standardUnit": "로그의 뜻과 성질",
+          "standardUnitOrder": 2,
+          "subUnitKey": "H15-M1-02-LOGARITHM",
+          "subUnit": "로그의 뜻과 성질",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_POSITIVE"
+          ],
+          "integrationPattern": "SEQUENTIAL",
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H2-M1-RPM-005 is RPM_ONLY for exponent-law calculation; preserve null PT/TPL.",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-01",
+          "standardUnit": "지수의 뜻과 성질",
+          "standardUnitOrder": 1,
+          "subUnitKey": "H15-M1-01-EXPONENT",
+          "subUnit": "지수의 뜻과 성질",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_POSITIVE"
+          ],
+          "integrationPattern": "SEQUENTIAL",
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [],
+        "metaDebtReason": "",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-04",
+          "standardUnit": "로그함수",
+          "standardUnitOrder": 4,
+          "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+          "subUnit": "로그함수의 그래프",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_POSITIVE"
+          ],
+          "integrationPattern": "SEQUENTIAL",
+          "level": "중",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+        }
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [],
+        "metaDebtReason": "",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-03",
+          "standardUnit": "지수함수",
+          "standardUnitOrder": 3,
+          "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+          "subUnit": "지수함수의 활용",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "integrationPattern": "SEQUENTIAL",
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [],
+        "metaDebtReason": "",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-03",
+          "standardUnit": "지수함수",
+          "standardUnitOrder": 3,
+          "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+          "subUnit": "지수함수의 활용",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+          "crossConceptKeys": [
+            "CC_QUADRATIC_FUNCTION"
+          ],
+          "conditionKeys": [
+            "COND_NATURAL_NUMBER"
+          ],
+          "integrationPattern": "INTERDEPENDENT",
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H2-M1-RPM-029 and -030 are RPM_ONLY; the list checks both general-angle coterminality and radian conversion, with no safe active projection.",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-05",
+          "standardUnit": "삼각함수의 뜻과 값",
+          "standardUnitOrder": 5,
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+          "subUnit": "삼각함수의 뜻과 값",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H2-M1-RPM-036 is RPM_ONLY for roots in a periodic interval; preserve null PT/TPL.",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-07",
+          "standardUnit": "삼각방정식과 삼각부등식",
+          "standardUnitOrder": 7,
+          "subUnitKey": "H15-M1-07-TRIGONOMETRIC_EQUATION",
+          "subUnit": "삼각방정식",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "integrationPattern": "SEQUENTIAL",
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current RPM crosswalk for the reviewed H15 Math-I semantic path has no safe active mapping (RPM_ONLY) or no unique L3/L4 projection; preserve null and record this exact path as evidence debt.",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-07",
+          "standardUnit": "삼각방정식과 삼각부등식",
+          "standardUnitOrder": 7,
+          "subUnitKey": "H15-M1-07-TRIGONOMETRIC_INEQUALITY",
+          "subUnit": "삼각부등식",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "integrationPattern": "INTERDEPENDENT",
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H2-M1-RPM-009 and -010 are RPM_ONLY; source asks a multi-statement judgment across log laws/change of base, with no unique safe PT/TPL projection.",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-02",
+          "standardUnit": "로그의 뜻과 성질",
+          "standardUnitOrder": 2,
+          "subUnitKey": "H15-M1-02-LOGARITHM",
+          "subUnit": "로그의 뜻과 성질",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_POSITIVE"
+          ],
+          "integrationPattern": "CASE_BRANCH",
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H2-M1-RPM-005 is RPM_ONLY for exponent-law calculation. CC_ROOTS_COEFFICIENTS is a distinct active cross-concept; no safe active PT/TPL projection is established.",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-01",
+          "standardUnit": "지수의 뜻과 성질",
+          "standardUnitOrder": 1,
+          "subUnitKey": "H15-M1-01-EXPONENT",
+          "subUnit": "지수의 뜻과 성질",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [
+            "CC_ROOTS_COEFFICIENTS"
+          ],
+          "conditionKeys": [
+            "COND_NONZERO"
+          ],
+          "integrationPattern": "SEQUENTIAL",
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "The H15 RPM application records H2-M1-RPM-019 (max/min) and -020 (graph intersection) do not encode doubling-time/growth-threshold solving; no exact L4 or safe active PT/TPL projection is established.",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-02",
+          "standardUnit": "로그의 뜻과 성질",
+          "standardUnitOrder": 2,
+          "subUnitKey": "H15-M1-02-EXPONENT_LOG_APPLICATION",
+          "subUnit": "지수와 로그의 활용",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_NATURAL_NUMBER",
+            "COND_POSITIVE"
+          ],
+          "integrationPattern": "SEQUENTIAL",
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H2-M1-RPM-016 is RPM_ONLY for substitution in an exponential equation; preserve null PT/TPL.",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-03",
+          "standardUnit": "지수함수",
+          "standardUnitOrder": 3,
+          "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+          "subUnit": "지수함수의 활용",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [
+            "CC_QUADRATIC_EQUATION"
+          ],
+          "conditionKeys": [
+            "COND_POSITIVE"
+          ],
+          "integrationPattern": "CASE_BRANCH",
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "The source compares a logarithmic expression and exponential/quadratic growth over a range; H2-M1-RPM-027/-028 cover max/min or graph intersections, not a unique magnitude-order path. Preserve null PT/TPL pending exact semantic projection evidence.",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-04",
+          "standardUnit": "로그함수",
+          "standardUnitOrder": 4,
+          "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+          "subUnit": "로그함수의 활용",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_RANGE",
+            "COND_POSITIVE"
+          ],
+          "integrationPattern": "INTERDEPENDENT",
+          "level": "상",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B34",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [],
+        "metaDebtReason": "",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-06",
+          "standardUnit": "삼각함수의 그래프",
+          "standardUnitOrder": 6,
+          "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+          "subUnit": "삼각함수의 그래프",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+          "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "level": "하",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H2-M1-RPM-036 is RPM_ONLY for trig-equation roots on a periodic interval; preserve null PT/TPL.",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-07",
+          "standardUnit": "삼각방정식과 삼각부등식",
+          "standardUnitOrder": 7,
+          "subUnitKey": "H15-M1-07-TRIGONOMETRIC_EQUATION",
+          "subUnit": "삼각방정식",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "integrationPattern": "SEQUENTIAL",
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "The source uses a half-life decay model; H2-M1-RPM-019 (max/min) and -020 (graph intersection) do not encode this model-solving L4. Preserve null PT/TPL.",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-03",
+          "standardUnit": "지수함수",
+          "standardUnitOrder": 3,
+          "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+          "subUnit": "지수함수의 활용",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_NATURAL_NUMBER",
+            "COND_POSITIVE"
+          ],
+          "integrationPattern": "SEQUENTIAL",
+          "level": "하",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [],
+        "metaDebtReason": "",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-04",
+          "standardUnit": "로그함수",
+          "standardUnitOrder": 4,
+          "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+          "subUnit": "로그함수의 활용",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_NATURAL_NUMBER",
+            "COND_RANGE"
+          ],
+          "integrationPattern": "CASE_BRANCH",
+          "level": "상",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B34",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [],
+        "metaDebtReason": "",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-03",
+          "standardUnit": "지수함수",
+          "standardUnitOrder": 3,
+          "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+          "subUnit": "지수함수의 활용",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+          "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_NATURAL_NUMBER",
+            "COND_RANGE"
+          ],
+          "integrationPattern": "CASE_BRANCH",
+          "level": "상",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H2-M1-RPM-029 is RPM_ONLY for general angles; the paired ray-reflection congruences have no safe active PT/TPL mapping.",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-05",
+          "standardUnit": "삼각함수의 뜻과 값",
+          "standardUnitOrder": 5,
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+          "subUnit": "삼각함수의 뜻과 값",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_RANGE",
+            "COND_NATURAL_NUMBER"
+          ],
+          "integrationPattern": "INTERDEPENDENT",
+          "level": "상",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+        }
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [],
+        "metaDebtReason": "현재 question_metadata.json UID 행은 registration_pending_semantic_review이며 standardUnit/subUnit/concept/problemType/template/difficulty가 manual_review_pending 또는 blank다. archive2-catalog의 curriculumKey/courseKey/L1-L4도 blank이고, active functions-graphs runtime pack에서 현재 UID가 PT_FUNCTION_GRAPH_PROPERTIES, TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT, COND_RANGE 목록에 결속되지 않았다. 기존 source 값을 보존하고 RPM L1-L4 또는 crosswalk를 추정하지 않는다.",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "catalogPath": "archive/data/archive2-catalog.json",
+          "catalogRawSha256": "0d4c3edfbdb031ad6b645a24923bec99a25b21ea75e14245d92e916a03b4566b",
+          "metadataStatus": "registration_pending_semantic_review",
+          "catalogMetadataStatus": "registration_pending_semantic_review",
+          "reason": "Existing source-only values are reviewed; unified metadata/catalog projection and current UID runtime mapping remain pending. ROOT-owned global projection gap is preserved without source mutation or guessed semantic remap."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-06",
+          "standardUnit": "삼각함수의 그래프",
+          "standardUnitOrder": 6,
+          "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+          "subUnit": "삼각함수의 그래프",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "integrationPattern": "SEQUENTIAL",
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H2-M1-RPM-034 is RPM_ONLY for trig-function relationships; preserve null PT/TPL.",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-05",
+          "standardUnit": "삼각함수의 뜻과 값",
+          "standardUnitOrder": 5,
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+          "subUnit": "삼각함수의 관계",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "integrationPattern": "SEQUENTIAL",
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 23,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "The source combines a common exponential value, logarithm laws, and a ratio constraint; current RPM rows do not provide a unique exact L4 for this compound decisive step. Preserve null PT/TPL and record this exact gap.",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-02",
+          "standardUnit": "로그의 뜻과 성질",
+          "standardUnitOrder": 2,
+          "subUnitKey": "H15-M1-02-EXPONENT_LOG_APPLICATION",
+          "subUnit": "지수와 로그의 활용",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_POSITIVE"
+          ],
+          "integrationPattern": "SEQUENTIAL",
+          "level": "상",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 24,
+        "metaDebtFields": [],
+        "metaDebtReason": "",
+        "sourceProjectionDebt": {
+          "status": "NO_CURRENT_PARITY",
+          "path": "archive/data/question_metadata.json",
+          "rawSha256": "d454355f6ea7044adac342ade82bbf5131e4481e334d47aabee7a8ddb08ecaf4",
+          "reason": "ROOT owns global projection update; source JS metadata was reviewed and is not changed here."
+        },
+        "reviewedSourceMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-03",
+          "standardUnit": "지수함수",
+          "standardUnitOrder": 3,
+          "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+          "subUnit": "지수함수의 활용",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_INTEGER",
+            "COND_RANGE"
+          ],
+          "integrationPattern": "SEQUENTIAL",
+          "level": "상",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      }
+    ]
+  },
+  "captureReview": {
+    "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/render/r3-q21-revision2/R3.capture-review.json",
+    "sha256": "b75d3e0b2212a26e7a8f6ef48367678f71bcbd60bbb4c8598d9c60b4d1303723",
+    "status": "PASS",
+    "coverageQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "caseCount": 6,
+    "changedQids": [
+      21
+    ],
+    "preservedUnchangedCoverage": {
+      "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r3-20261011-codex/R3.capture-review.revision2.json",
+      "sha256": "fcc830560296485872bcdc5eff11008f099e78e5e0fb9ca536701871d79454e5"
+    }
+  },
+  "captureReport": {
+    "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/render/r3-q21-revision2/machine-capture.json",
+    "sha256": "b87b42f568d288c5075d7ba1f87b775b344bc3bbb28861b2fcdcb4ad23af4851",
+    "status": "CAPTURED_REVIEW_REQUIRED",
+    "actualCaseIds": [
+      "exam/desktop",
+      "exam/mobile",
+      "sol/desktop",
+      "sol/mobile",
+      "ans/desktop",
+      "ans/mobile"
+    ],
+    "loadedJs": {
+      "path": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "sha256": "423e6dcffb163b7372d2e75a9ae63796661ab94852f7c84a199100af179a0f46"
+    },
+    "originalCaptureReportSha256": "f5877fec67715a9e939a0e7fcc778a5a416f6e07c68c91d4faaf44d3aafa3ac0",
+    "durableCases": [
+      {
+        "id": "exam/desktop",
+        "viewport": {
+          "width": 1280,
+          "height": 1000
+        },
+        "capturePaths": [
+          "archive/analysis/24_매산여고_1학기_중간_고2_수학I/render/r3-q21-revision2/exam-desktop.png"
+        ],
+        "captureSha256s": [
+          "78b198366bb99ebdf41ba651b5d9d25cb87014207d3f3d78e023f6758816db96"
+        ],
+        "loadedAssets": [
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q06.png",
+            "sha256": "2a755e38969c20fc2676201de3f4b7051c4a4c57ba34d02b60ddc6a658ced390"
+          }
+        ],
+        "qidCount": 24,
+        "mathErrors": 0,
+        "scrollWidth": 1280,
+        "mechanicalStatus": "PASS"
+      },
+      {
+        "id": "exam/mobile",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "capturePaths": [
+          "archive/analysis/24_매산여고_1학기_중간_고2_수학I/render/r3-q21-revision2/exam-mobile.png"
+        ],
+        "captureSha256s": [
+          "f1e7b5caef07fbb4a99870d09a57e5655c026c42281b1f66f248983e2ccf1853"
+        ],
+        "loadedAssets": [
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q06.png",
+            "sha256": "2a755e38969c20fc2676201de3f4b7051c4a4c57ba34d02b60ddc6a658ced390"
+          }
+        ],
+        "qidCount": 24,
+        "mathErrors": 0,
+        "scrollWidth": 390,
+        "mechanicalStatus": "PASS"
+      },
+      {
+        "id": "sol/desktop",
+        "viewport": {
+          "width": 1280,
+          "height": 1000
+        },
+        "capturePaths": [
+          "archive/analysis/24_매산여고_1학기_중간_고2_수학I/render/r3-q21-revision2/sol-desktop.png"
+        ],
+        "captureSha256s": [
+          "ef67a5980159a5f88cd61c07bf7526bb86715300b2bd021011857cef68de2f38"
+        ],
+        "loadedAssets": [
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q04-solution.svg",
+            "sha256": "5f9765a0b5c7ac527111373461d8dcb00986f3d9aa1ff37bbef561721cbcc4fa"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q05-solution.svg",
+            "sha256": "870f95375e552ea731dc375e716e7f2188c4c25d16713ba9ff03f0cf8fd0badc"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q06-solution.svg",
+            "sha256": "713953f8412e1f9f306125e129fe0408b68b1acead5c78bf2122555aa89a4a0f"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q09-solution.svg",
+            "sha256": "260241c2e1b91199d6328f17b67df2975317cb40dbcb70c037d39858ce6c1729"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q14-solution.svg",
+            "sha256": "2c338ecce987a0b0075490dc39613fea627d05f615b7b7f60f7578b95220fca9"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q15-solution.svg",
+            "sha256": "15a0116a450ae6533897d43dc3c0b2465c24b8df8070600e109622b7d04a64a2"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q16-solution.svg",
+            "sha256": "e42b56bfde4acadadf0b2b26175a4ebecba9ef23a886f7bd5cff0aa5e813c333"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q18-solution.svg",
+            "sha256": "b966cbad25d83009efcc5ba9b36f588920e77b9c411a8daa695830fb3ebbf580"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q19-solution.svg",
+            "sha256": "3faa26bbf2f2d9b64599a602ad5883c63fc91f364a535433284ca8a02d936d9d"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q20-solution.svg",
+            "sha256": "935c69d6ad655d2510b1eb35e6e6af7d9afbf9bb1b9c11d35c7fb0001bdb495b"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q21-solution-recovery.svg",
+            "sha256": "6e91d4e7caf3fec5f900dcdbeba0bd00d9a4d84c0a54fd27a4de558fe388e35e"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q22-solution.svg",
+            "sha256": "eab82a1dfd84713a0a1eef52fc5428157a9452ae5db9306c922bcc094355fe50"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q24-solution.svg",
+            "sha256": "062dd990f27009dcf12c6be1f15424f6ba90e1e0f46330e0e8ad5a461e0f5f30"
+          }
+        ],
+        "qidCount": 24,
+        "mathErrors": 0,
+        "scrollWidth": 1280,
+        "mechanicalStatus": "PASS"
+      },
+      {
+        "id": "sol/mobile",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "capturePaths": [
+          "archive/analysis/24_매산여고_1학기_중간_고2_수학I/render/r3-q21-revision2/sol-mobile.png"
+        ],
+        "captureSha256s": [
+          "d2a188ce3df46a03dca88c1d3127a23efe0afd416e9768bd947d877d63d68f69"
+        ],
+        "loadedAssets": [
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q04-solution.svg",
+            "sha256": "5f9765a0b5c7ac527111373461d8dcb00986f3d9aa1ff37bbef561721cbcc4fa"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q05-solution.svg",
+            "sha256": "870f95375e552ea731dc375e716e7f2188c4c25d16713ba9ff03f0cf8fd0badc"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q06-solution.svg",
+            "sha256": "713953f8412e1f9f306125e129fe0408b68b1acead5c78bf2122555aa89a4a0f"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q09-solution.svg",
+            "sha256": "260241c2e1b91199d6328f17b67df2975317cb40dbcb70c037d39858ce6c1729"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q14-solution.svg",
+            "sha256": "2c338ecce987a0b0075490dc39613fea627d05f615b7b7f60f7578b95220fca9"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q15-solution.svg",
+            "sha256": "15a0116a450ae6533897d43dc3c0b2465c24b8df8070600e109622b7d04a64a2"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q16-solution.svg",
+            "sha256": "e42b56bfde4acadadf0b2b26175a4ebecba9ef23a886f7bd5cff0aa5e813c333"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q18-solution.svg",
+            "sha256": "b966cbad25d83009efcc5ba9b36f588920e77b9c411a8daa695830fb3ebbf580"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q19-solution.svg",
+            "sha256": "3faa26bbf2f2d9b64599a602ad5883c63fc91f364a535433284ca8a02d936d9d"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q20-solution.svg",
+            "sha256": "935c69d6ad655d2510b1eb35e6e6af7d9afbf9bb1b9c11d35c7fb0001bdb495b"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q21-solution-recovery.svg",
+            "sha256": "6e91d4e7caf3fec5f900dcdbeba0bd00d9a4d84c0a54fd27a4de558fe388e35e"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q22-solution.svg",
+            "sha256": "eab82a1dfd84713a0a1eef52fc5428157a9452ae5db9306c922bcc094355fe50"
+          },
+          {
+            "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q24-solution.svg",
+            "sha256": "062dd990f27009dcf12c6be1f15424f6ba90e1e0f46330e0e8ad5a461e0f5f30"
+          }
+        ],
+        "qidCount": 24,
+        "mathErrors": 0,
+        "scrollWidth": 390,
+        "mechanicalStatus": "PASS"
+      },
+      {
+        "id": "ans/desktop",
+        "viewport": {
+          "width": 1280,
+          "height": 1000
+        },
+        "capturePaths": [
+          "archive/analysis/24_매산여고_1학기_중간_고2_수학I/render/r3-q21-revision2/ans-desktop.png"
+        ],
+        "captureSha256s": [
+          "12538d8110683b1477d9ea70f372e921f9da336833b804c981a020890f7ae424"
+        ],
+        "loadedAssets": [],
+        "qidCount": 24,
+        "mathErrors": 0,
+        "scrollWidth": 1280,
+        "mechanicalStatus": "PASS"
+      },
+      {
+        "id": "ans/mobile",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "capturePaths": [
+          "archive/analysis/24_매산여고_1학기_중간_고2_수학I/render/r3-q21-revision2/ans-mobile.png"
+        ],
+        "captureSha256s": [
+          "b103b32d38b5ca5b43e0355cfb165923e9dde9d7c1678b15a370ed5e1b5231ab"
+        ],
+        "loadedAssets": [],
+        "qidCount": 24,
+        "mathErrors": 0,
+        "scrollWidth": 390,
+        "mechanicalStatus": "PASS"
+      }
+    ]
+  },
+  "actualRenderStatus": "RENDER_PASS",
+  "technicalHashes": {
+    "rawSha256": "423e6dcffb163b7372d2e75a9ae63796661ab94852f7c84a199100af179a0f46",
+    "validatorRawBufferBlobSha1": "8a1ff234d287e74217c6b79625ff2c9d152518fb",
+    "gitCleanFilterBlobSha1": "8a1ff234d287e74217c6b79625ff2c9d152518fb"
+  },
+  "reviewedFromPreviousR3": {
+    "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r3-20261011-codex/R3.evidence.final.json",
+    "sha256": "b85583b244d1c5db5ca6a4fa38ab157e3488355b0b26f84215f03f0f368d1939",
+    "previousFail": {
+      "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r3-20261011-codex/R3.validator.raw.json",
+      "sha256": "0548828884acb85092268b209801506ba318aea90c49ec680e48967f8fade1ae",
+      "issue": "ARTIFACT_UNRESOLVED_ITEM_HOLD:q21"
+    },
+    "previousFullReview": {
+      "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r3-20261011-codex/R3.capture-review.json",
+      "sha256": "2551cf3727692bdf3e824482fac8e6335a7e9888f87b60e7dc7e538290dd1a87",
+      "coverageQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ]
+    }
+  },
+  "actualRenderReviewStatus": "PASS",
+  "itemHoldCount": 0,
+  "r3Q21Recovery": {
+    "status": "CLOSED",
+    "recoveryScope": [
+      21
+    ],
+    "r1Evidence": {
+      "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r1-fresh-q21-20261011/r1-final-evidence.revision2.json",
+      "sha256": "f6c9fabb28b4e79343ba229923978e602bbc3efa7471f5dbb3425b0f53b845b0"
+    },
+    "r2Evidence": {
+      "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r2-fresh-q21-20261011/r2-final-evidence.current.json",
+      "sha256": "1b9dec5f5ccef77a25ebe97d5962d0d839b0b15717adb1e6b2940c4912a9a581"
+    },
+    "solutionAsset": {
+      "ref": "assets/images/24_매산여고_1학기_중간_고2_수학I/q21-solution-recovery.svg",
+      "sha256": "6e91d4e7caf3fec5f900dcdbeba0bd00d9a4d84c0a54fd27a4de558fe388e35e"
+    },
+    "preservedEarlierFailure": {
+      "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r3-20261011-codex/R3.validator.raw.json",
+      "sha256": "0548828884acb85092268b209801506ba318aea90c49ec680e48967f8fade1ae"
+    }
+  },
+  "sourceR3Evidence": {
+    "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r3-20261011-codex/R3.evidence.revision2.json",
+    "sha256": "5b203d80f53e54965fd0101ec28c4d06b65621413316492d8d86719acd002ea4"
+  },
+  "durableCaptureBinding": {
+    "status": "BYTE_IDENTICAL_REBIND",
+    "captureReportPath": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/render/r3-q21-revision2/machine-capture.json",
+    "captureReportSha256": "b87b42f568d288c5075d7ba1f87b775b344bc3bbb28861b2fcdcb4ad23af4851",
+    "reviewPath": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/render/r3-q21-revision2/R3.capture-review.json",
+    "reviewSha256": "b75d3e0b2212a26e7a8f6ef48367678f71bcbd60bbb4c8598d9c60b4d1303723",
+    "cases": [
+      {
+        "id": "exam/desktop",
+        "captures": [
+          {
+            "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/render/r3-q21-revision2/exam-desktop.png",
+            "sha256": "78b198366bb99ebdf41ba651b5d9d25cb87014207d3f3d78e023f6758816db96"
+          }
+        ]
+      },
+      {
+        "id": "exam/mobile",
+        "captures": [
+          {
+            "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/render/r3-q21-revision2/exam-mobile.png",
+            "sha256": "f1e7b5caef07fbb4a99870d09a57e5655c026c42281b1f66f248983e2ccf1853"
+          }
+        ]
+      },
+      {
+        "id": "sol/desktop",
+        "captures": [
+          {
+            "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/render/r3-q21-revision2/sol-desktop.png",
+            "sha256": "ef67a5980159a5f88cd61c07bf7526bb86715300b2bd021011857cef68de2f38"
+          }
+        ]
+      },
+      {
+        "id": "sol/mobile",
+        "captures": [
+          {
+            "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/render/r3-q21-revision2/sol-mobile.png",
+            "sha256": "d2a188ce3df46a03dca88c1d3127a23efe0afd416e9768bd947d877d63d68f69"
+          }
+        ]
+      },
+      {
+        "id": "ans/desktop",
+        "captures": [
+          {
+            "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/render/r3-q21-revision2/ans-desktop.png",
+            "sha256": "12538d8110683b1477d9ea70f372e921f9da336833b804c981a020890f7ae424"
+          }
+        ]
+      },
+      {
+        "id": "ans/mobile",
+        "captures": [
+          {
+            "path": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/render/r3-q21-revision2/ans-mobile.png",
+            "sha256": "b103b32d38b5ca5b43e0355cfb165923e9dde9d7c1678b15a370ed5e1b5231ab"
+          }
+        ]
+      }
+    ]
+  }
+}

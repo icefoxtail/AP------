@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
+import { applyReviewedLegacySimilarLedgers } from './apply-reviewed-legacy-similar-ledgers.mjs';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const archiveDir = path.resolve(scriptDir, '../..');
@@ -89,6 +90,8 @@ function pendingRecord(identityRecord, question) {
 }
 
 function main() {
+  const legacyReviewed = applyReviewedLegacySimilarLedgers();
+  if (legacyReviewed.status !== 'NO_LEDGER' && legacyReviewed.status !== 'ALREADY_BOUND') console.log(JSON.stringify({ reviewedLegacySimilar: legacyReviewed }));
   const identityRaw = fs.readFileSync(identityPath, 'utf8');
   const identity = JSON.parse(identityRaw);
   const metadata = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));

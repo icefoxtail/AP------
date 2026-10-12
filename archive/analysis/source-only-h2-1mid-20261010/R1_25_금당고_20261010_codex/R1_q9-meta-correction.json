@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_META_CORRECTION_EVIDENCE_V1",
+  "stage": "R1",
+  "examUid": "25_금당고_1학기_중간_고2_수학I",
+  "createdAt": "2026-10-10T02:18:03.114Z",
+  "qid": 9,
+  "sourceBefore": {
+    "rawSha256": "ad34dce9767312c856457cc30530ecdc97a553b985cddafc01ba0cd53bdfcbda",
+    "gitBlobSha1": "85f311e5098eb5bed52336953c62b25d534f7ba4"
+  },
+  "sourceAfter": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\exams\\original\\high\\h2\\1mid\\25_금당고_1학기_중간_고2_수학I.js",
+    "rawSha256": "cde60982661aa31193e437e9797528e2a8cee782a72704346c079a6779961e66"
+  },
+  "changedLocus": {
+    "field": "templateKey",
+    "before": null,
+    "after": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+    "reason": "q9 asks for maxima on a closed interval; its final solution selects interval endpoints by monotonicity. The ACTIVE template definition and current H15-M1-03 crosswalk candidate match that exact decisive step."
+  },
+  "authority": {
+    "taxonomyRelativePath": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+    "taxonomySha256": "c1188bf7542d2f23e91b2880de050c5a48b23ece3a4ce165656f41e738a58ab4",
+    "taxonomyRecord": {
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "parentProblemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "status": "ACTIVE",
+      "canonicalLabelKo": "구간 끝점과 함수의 최댓값·최솟값",
+      "definition": "`함수의 최댓값·최솟값` 안에서 '구간 끝점과 함수의 최댓값·최솟값'을 핵심 풀이 골격으로 사용하는 유형."
+    },
+    "crosswalkRelativePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+    "crosswalkSha256": "ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+    "crosswalkRecord": {
+      "id": "H2-M1-RPM-019",
+      "curriculum": "2015",
+      "standardUnitKey": "H15-M1-03",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+          "templateLabelKo": "구간 끝점과 함수의 최댓값·최솟값"
+        },
+        {
+          "templateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+          "templateLabelKo": "매개변수 함수의 최댓값·최솟값"
+        },
+        {
+          "templateKey": "TPL_FUNCTION_EXTREMUM_BOUND_COEFFICIENT",
+          "templateLabelKo": "범위 조건으로 계수의 최댓값·최솟값 구하기"
+        }
+      ],
+      "selectionRule": "정의역 끝점/매개변수 모델/계수범위 중 final solution decisive step에 맞는 listed template 선택",
+      "mappingStatus": "FAMILY_BINDING_GAP",
+      "bindingStatus": "MISSING"
+    }
+  },
+  "studentAndSolutionParity": {
+    "frozenStudentPayloadSha256": "631424f344c69468e39a155700b3152702cb592647121714c283273ad13f4e30",
+    "currentStudentPayloadSha256": "631424f344c69468e39a155700b3152702cb592647121714c283273ad13f4e30",
+    "studentPayloadUnchanged": true,
+    "solutionSha256Before": "55507a2e1dc6836d6132ba9f2ce66fdc07bb9c3d999bce977e5053f4f4ff954b",
+    "solutionSha256After": "55507a2e1dc6836d6132ba9f2ce66fdc07bb9c3d999bce977e5053f4f4ff954b",
+    "solutionUnchanged": true
+  },
+  "freezePreserved": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010\\R1_25_금당고_20261010_codex\\R1_original-independent-freeze.json",
+    "sha256": "7f2faf053b0005f223700807a774a4802d99891b23a7ba52d5077449f4da45ca",
+    "sourceRawSha256": "ba3987db5cce4987c4c7555b770edef5351a1931046246f00b4142b03b68b279",
+    "mutated": false
+  },
+  "currentStudentParityStatus": "EXACT"
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": "PALMA_Q19_VISUAL_CALIBRATION_PREFLIGHT_v1",
+  "stage": "Q19 solution SVG authoring",
+  "sampleReadBeforeTargetArtifactAuthoring": true,
+  "preflightOrderNote": "The frozen target package/source was read to identify the approved scope and source facts before authoring. No Q19 target SVG, visualSpec or target evidence artifact existed or was written before this Golden/Negative preflight.",
+  "calibrationStatus": "PASS_FOR_AUTHORING",
+  "calibrationAxes": [
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY",
+    "STUDENT_REPRODUCIBILITY",
+    "DECISIVE_STEP_VISIBILITY",
+    "BLACK_AND_WHITE_SURVIVABILITY"
+  ],
+  "goldenSamples": [
+    {
+      "name": "2025 효천고 고1 2학기 중간",
+      "exam": {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha1": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      },
+      "representatives": [
+        {
+          "qid": 4,
+          "solutionSha256": "acdb76bc6092e60c215baaf235516b6fd1a7777ffc9d20cb1f134a95a7043cdf",
+          "solutionExcerpt": "기울기가 $1$인 직선을\n$y=x+b$\n라고 하자.\n이를 일반형으로 쓰면\n$x-y+b=0$이다.\n원 $x^2+y^2=5$의 중심은 $O(0,0)$이고 반지름은 $\\sqrt5$이다.\n직선이 원에 접하려면 원의 중심에서 직선까지의 거리가 반지름과 같아야 한다.\n원점에서 직선 $x-y+b=0$까지의 거리는\n$\\dfrac{|b|}{\\sqrt{1^2+(-1)^2}}$\n$=\\dfrac{|b|}{\\sqrt2}$이다.\n따라서\n$\\dfrac{|b|}{\\sqrt2}=\\sqrt5$이다.\n양변에 $\\sqrt2$를 곱하면\n$|b|=\\sqrt{10}$이므로\n$b=\\sqrt{10}$ 또는 $b=-\\sqrt{10}$이다.\n따라서 두 접선은\n$y=x+\\sqrt{10}",
+          "observation": "Read the complete solution and q04-solution.svg. The circle r=√5, two parallel tangent lines, actual contact points and y-intercepts A/B are shown; values are anchored to the circle/axis geometry.",
+          "solutionVisual": {
+            "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q04-solution.svg",
+            "sha256": "c1b3b1604763fa3528bbef03bc6c76f956f58d02267f4470e1d036f71c52176b",
+            "gitBlobSha1": "a1bf345018eb777c9337dde50697eced178e1272"
+          },
+          "solutionImageAlt": "반지름이 루트 5인 원에 기울기 1인 두 접선과 y절편 A, B를 나타낸 그림",
+          "solutionImageCaption": "두 접선은 서로 평행하고, y절편 A와 B는 y축 위에서 원점에 대칭이다."
+        },
+        {
+          "qid": 11,
+          "solutionSha256": "9f367d34825e18314d4a2e007296c98c5753fbaf0cfe7e26eb2ee6ef7ebd8abd",
+          "solutionExcerpt": "원의 중심은 $C(a,a)$이고 반지름은 $\\dfrac13$이다.\n직선\n$y=-x+3$\n을 일반형으로 바꾸면\n$x+y-3=0$이다.\n원이 이 직선과 만나려면 원의 중심에서 직선까지의 거리가 반지름보다 크지 않아야 한다.\n접하는 경우도 한 점에서 만나는 경우이므로 포함한다.\n중심 $C(a,a)$에서 직선 $x+y-3=0$까지의 거리는\n$\\dfrac{|a+a-3|}{\\sqrt{1^2+1^2}}$\n$=\\dfrac{|2a-3|}{\\sqrt2}$이다.\n따라서\n$\\dfrac{|2a-3|}{\\sqrt2}\\le\\dfrac13$이다.\n양변에 $\\sqrt2$를 곱하면\n$|2a-3|\\le\\dfrac{\\sqrt2}{3}$이다.\n절댓값 부등식을 풀면\n$-\\df",
+          "observation": "Read the complete solution and q11-solution.svg. The moving center C(a,a), fixed line x+y=3, two equal-radius boundary circles and shared contact T show the closed interval where intersection exists; the boundary tangencies are visually distinct.",
+          "solutionVisual": {
+            "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q11-solution.svg",
+            "sha256": "8b2a452c03e1ef52e2af44f1e0c6d6f59351ebee724978f1db300b855d0c37df",
+            "gitBlobSha1": "0659d358be9d5e023840e934aa688ab59c55f2b4"
+          },
+          "solutionImageAlt": "중심 C(a, a)가 y=x 위를 움직일 때 원이 직선 x+y=3에 접하는 두 경계 위치의 그림",
+          "solutionImageCaption": "두 경계에서는 접하고, 그 사이의 a에서는 원과 직선이 두 점에서 만난다."
+        }
+      ]
+    },
+    {
+      "name": "2025 매산여고 고1 2학기 중간",
+      "exam": {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha1": "95f7e733fd3f786b6bcb98f9662a6ae568f82949"
+      },
+      "representatives": [
+        {
+          "qid": 9,
+          "solutionSha256": "9d9a8678a8390eefc9dfdda5f6f88d772c24fa8a0a166ecf309bdc00b668bf96",
+          "solutionExcerpt": "먼저 점 $(3,2)$에서 원에 그은 접선의 기울기를 구한다.\n원 $x^2+y^2=13$ 위의 점 $(x_1,y_1)$에서의 접선은\n$x_1x+y_1y=13$으로 나타낼 수 있다.\n점이 $(3,2)$이므로 접선의 방정식은\n$3x+2y=13$이다.\n이를 $y$에 대하여 정리하면\n$2y=-3x+13$\n$y=-\\dfrac32x+\\dfrac{13}{2}$이다.\n따라서 이 접선의 기울기는 $-\\dfrac32$이다.\n\n이제 직선 $mx-3y+7=0$의 기울기를 구한다.\n$-3y=-mx-7$\n$y=\\dfrac m3x+\\dfrac73$이므로\n기울기는 $\\dfrac m3$이다.\n두 직선이 수직이므로 기울기의 곱은 $-1$이다.\n$-\\dfrac32\\cdo",
+          "observation": "Read the complete solution and q9-solution.svg. The actual radius to P, tangent line 3x+2y=13, second perpendicular line and slope comparison m=2 are separated into geometry and calculation roles.",
+          "solutionVisual": {
+            "path": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q9-solution.svg",
+            "sha256": "0d8a7ead822386b5191ccf3dd4c1123556ee8fcd407aded9218312f8a97f8112",
+            "gitBlobSha1": "1d602351c8ac21f3be0eb9081324fd75a4612c18"
+          },
+          "solutionImageAlt": "원 x²+y²=13과 점 P(3,2)의 접선, 수직인 다른 직선의 기울기 관계를 나타낸 그림",
+          "solutionImageCaption": "반지름과 접선의 관계 및 두 직선의 수직 조건에서 m=2를 확인한다."
+        },
+        {
+          "qid": 16,
+          "solutionSha256": "bda43b9c32df1594830feca3bf94c90cd78767872f4663de16b432ffa9a9a84c",
+          "solutionExcerpt": "먼저 점 $A$를 중심으로 하는 원의 반지름을 구한다.\n점 $A(-4,-3)$에서 $x$축까지의 거리는 $3$이므로\n이 원의 반지름은 $3$이다.\n\n이제 $\\overline{BP}+\\overline{PQ}$가 최소가 되는 점 $P$의 위치를 찾는다.\n점 $P$는 $y$축 위를 움직인다.\n점 $A$에서 $y$축까지의 거리만 해도 $4$이므로\n모든 $P$에 대하여 $PA>3$이고 $P$는 항상 원의 밖에 있다.\n고정된 점 $P$에서 원 위의 점 $Q$까지의 가장 짧은 거리는\n점 $P$와 원의 중심 $A$를 잇는 방향에서 생긴다.\n따라서\n$PQ$의 최솟값은\n$PA-3$이다.\n그러므로\n$BP+PQ$를 최소로 하는 것은\n$BP+(PA-3)$,\n즉",
+          "observation": "Read the complete solution and q16-solution.svg. The two panels separate reflection for the minimum path from the circle tangent-chord geometry; P, C, D, H and PH/CD are attached to the actual construction.",
+          "solutionVisual": {
+            "path": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q16-solution.svg",
+            "sha256": "2c81c4efdb6ede8f5663737f1b488dee193e1a26e6b878ddd5478a562bd1c5e5",
+            "gitBlobSha1": "fd9d4280daddf013ff34e41ec1f8f3bffdbad117"
+          },
+          "solutionImageAlt": "반사로 최단거리의 점 P를 정하는 과정과 원의 접점현 CD를 이용한 넓이 계산을 나란히 나타낸 그림",
+          "solutionImageCaption": "P=(0,0)을 정한 뒤 PH=16/5, CD=24/5를 이용해 삼각형 PCD의 넓이를 계산한다."
+        }
+      ]
+    }
+  ],
+  "negativeSamples": [
+    {
+      "readme": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "artifact": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q8-solution.bad.svg",
+      "observation": "The frozen SVG text says the tangent is 7x+y−20=0 and names P(3,−1), T(14/5,2/5), but the actual line endpoint coordinates do not represent that equation or pass through the labeled points. Recompute line/point parity from primitives; labels are not evidence.",
+      "readmeEvidence": {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha1": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      },
+      "artifactEvidence": {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q8-solution.bad.svg",
+        "sha256": "d053c5a22193029c675069fe6aa22e1014f96bb3821788f1095180c350681a41",
+        "gitBlobSha1": "04aeff3b443b94c68a714b27eddd8321ece9bd52"
+      }
+    },
+    {
+      "readme": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+      "artifact": "archive/fixtures/visual-negative-regressions/2026-09-29/02_25_왕운중_2학기_중간_중2_수학_q21_ANGLE_LABEL_OWNER_BINDING_FAIL.svg",
+      "observation": "The frozen bad SVG places angle values away from their actual owner wedges. Numerical labels alone do not bind an angle to a vertex and its two rays; this Q19 review treats endpoint/center/tangent marker roles as explicit owners and rechecks their coordinates.",
+      "readmeEvidence": {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+        "sha256": "4074b3b63494a7ea9258b06000498d0af3abf329595e14f94f488abbea3537a8",
+        "gitBlobSha1": "f7440339f2532f6e7ea357541c2a09b05847af59"
+      },
+      "artifactEvidence": {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-29/02_25_왕운중_2학기_중간_중2_수학_q21_ANGLE_LABEL_OWNER_BINDING_FAIL.svg",
+        "sha256": "3282a28115e28b0b7dc36a2a19998abfc8c4094a13fc03b7618c04f806ff75f3",
+        "gitBlobSha1": "88fd27642b3319c213cfa3f5a3c2502f69792bec"
+      }
+    }
+  ],
+  "rulesRead": [
+    {
+      "path": "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md",
+      "sha256": "48a0cdd5a0d22b07c25937a1d4b9b0b4b910dba2cb9a61e30eefc2afa7e8a974",
+      "gitBlobSha1": "693c7ed76dbd643dedd204bbcec9f707bbc2e2f2"
+    },
+    {
+      "path": "docs/rules/04_VISUAL/도형추출.md",
+      "sha256": "86b40e2dcdc88e18556749bedbff9b6e04556cccde676f3b1dd1ebf7aa39c863",
+      "gitBlobSha1": "ff5a66292cd4c6c131141ab3a2dff5aa832b7ef9"
+    },
+    {
+      "path": "docs/rules/04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md",
+      "sha256": "6888fb6c390b565891c50449cc0275919884e038d452e024eb64fc044f730f26",
+      "gitBlobSha1": "7bf5cee39e6ff1d8e0f4caddeaea364046102ab9"
+    },
+    {
+      "path": "docs/rules/04_VISUAL/JS_Archive_GPT_Visual_Production_Contract_v1.md",
+      "sha256": "aca7c23683f3fb75c7b8fc93eda7ef6267091be2f1aea1a53dc3fefc26fce4e4",
+      "gitBlobSha1": "87929597314d32950a391af3acdaf99699bb0bd3"
+    },
+    {
+      "path": "docs/rules/04_VISUAL/Problem_Bank_All_Items_Problem_And_Solution_Visual_Gate_CURRENT_v1.md",
+      "sha256": "f2bbe5c9befd9e1acb1b63cd849930517f18e3c701e919c6e27062e773767965",
+      "gitBlobSha1": "6b209291731867f4a6b633a86a6c670440414a5f"
+    },
+    {
+      "path": "docs/rules/04_VISUAL/Problem_Bank_Per_Item_Problem_Solution_SVG_Full_Audit_CURRENT_v1.md",
+      "sha256": "807c386188fe7822226ce573743e6c51517374792a54feb70b6e02d7fc0cfdc1",
+      "gitBlobSha1": "05ef68454fa2ba7e43beba74926dc7f1982cd5d5"
+    },
+    {
+      "path": "alive/engine/visual_renderer.py",
+      "sha256": "0497b788cdfd362df6729bbf8f73fe2f9edd94dc0f71e50e2325b2500cfbeca6",
+      "gitBlobSha1": "6221c4da203135c6358c3ed3a6d243103eba29b3"
+    },
+    {
+      "path": "alive/engine/tests/test_visual_renderer.py",
+      "sha256": "369358c7762bb20b698983ef53df496003ac988f33b801a82c3ebad1d3f74229",
+      "gitBlobSha1": "819edfb3c42709681f1c29048867ae980ca4f9eb"
+    }
+  ],
+  "sourceAndFrozenApproval": {
+    "sourceExam": {
+      "path": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sha256": "60049ec6a7def1ec9d1e15a6319ecfcf916fc3ba63f4bfc55e128d3a05cb12a1",
+      "gitBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e"
+    },
+    "sourceQid": 19,
+    "sourceQ19ContentSha256": "6986b7a9817498ce54dd416ff383f06dc3d3276f53a68e225d7b9512db68e2ab",
+    "sourceQ19SolutionSha256": "171699eaf7cbbb05a371f85d23c1027b5ceb949e74a6df7d0c7c8f912bc9af97",
+    "sourceQ19StemExcerpt": "그림과 같이 좌표평면 위에 원 $x^2+y^2=16$과 반지름의 길이가 $2$인 반원 두 개로 이루어진 태극문양이 있다. 태극문양과 직선 $y=m(x+2)$이 서로 다른 다섯 개의 점에서 만나게 되는 실수 $m$의 값의 범위는? [5.2점]",
+    "package": {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q19_PACKAGE.json",
+      "sha256": "cca9d8a93e10fce4428c817f6fda2cc9533f58e3f9427e3854ab2a5d6464efc9",
+      "gitBlobSha1": "4a4636fe6f7412520b9752b82ebef14ea2f4fd3a"
+    },
+    "packageCanonicalHeadBytesSha256": "4fe6a3e4a884682c5b8e02258d426fa22b5cbf786778cf7ae4591840c6ef501f",
+    "packageCanonicalHeadBlobSha1": "4a4636fe6f7412520b9752b82ebef14ea2f4fd3a",
+    "approvalReceipt": {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json",
+      "sha256": "38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d",
+      "gitBlobSha1": "2b5290107e4c204ceb76a88468c19104e5074089"
+    },
+    "approvalStatus": "USER_DIRECTED_QUALITY_APPROVED",
+    "approvalPackageRow": {
+      "sourceQid": 19,
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q19_PACKAGE.json",
+      "sha256": "4fe6a3e4a884682c5b8e02258d426fa22b5cbf786778cf7ae4591840c6ef501f",
+      "gitBlobSha1": "4a4636fe6f7412520b9752b82ebef14ea2f4fd3a",
+      "uids": [
+        "ALITE-PALMA25-2MID-Q19-A1",
+        "ALITE-PALMA25-2MID-Q19-A2",
+        "ALITE-PALMA25-2MID-Q19-A3",
+        "ALITE-PALMA25-2MID-Q19-B1",
+        "ALITE-PALMA25-2MID-Q19-B2",
+        "ALITE-PALMA25-2MID-Q19-B3",
+        "ALITE-PALMA25-2MID-Q19-C1",
+        "ALITE-PALMA25-2MID-Q19-C2",
+        "ALITE-PALMA25-2MID-Q19-C3"
+      ]
+    },
+    "approvalPackageCanonicalShaMatches": true,
+    "approvalPackageBlobMatches": true,
+    "lockedPackageSourceGitBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+    "currentSourceExamGitBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e",
+    "sourceBlobReferenceParity": "WHOLE_FILE_BLOB_DIFFERS; FROZEN AND CURRENT Q19 CONTENT/SOLUTION BYTES MATCH",
+    "sourceQ19BlobParity": {
+      "lockedSourceGitBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "currentSourceGitBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e",
+      "wholeSourceFileBlobEqual": false,
+      "lockedQ19ContentSha256": "6986b7a9817498ce54dd416ff383f06dc3d3276f53a68e225d7b9512db68e2ab",
+      "currentQ19ContentSha256": "6986b7a9817498ce54dd416ff383f06dc3d3276f53a68e225d7b9512db68e2ab",
+      "lockedQ19SolutionSha256": "171699eaf7cbbb05a371f85d23c1027b5ceb949e74a6df7d0c7c8f912bc9af97",
+      "currentQ19SolutionSha256": "171699eaf7cbbb05a371f85d23c1027b5ceb949e74a6df7d0c7c8f912bc9af97",
+      "q19ContentEqual": true,
+      "q19SolutionEqual": true,
+      "q19ImageRefEqual": true,
+      "status": "Q19_SOURCE_CONTENT_AND_SOLUTION_PARITY_PASS"
+    }
+  },
+  "rendererSupportRead": {
+    "path": "alive/engine/visual_renderer.py",
+    "visualSpecVersion": "0.1",
+    "rendererVersion": "0.5.2-circle-geometry-label-layout",
+    "types": [
+      "coordinate_plane",
+      "simple_function_graph",
+      "segment_geometry",
+      "polygon",
+      "circle",
+      "circle_geometry",
+      "table"
+    ],
+    "relevantPrimitives": [
+      "circles[]",
+      "lines[]",
+      "curves[].points",
+      "points[]",
+      "annotations[]"
+    ],
+    "arcSupport": "NO_NATIVE_ARC; Q19 semicircle arcs are to be Python-sampled into curves[].points and endpoint/sign filtered before rendering. Exact family smoke test remains required before artifact authoring.",
+    "circleAspectRule": "circle geometry requires equal x/y units; xRange/yRange chosen to make renderer x_scale == y_scale",
+    "implementationSourceRead": "render_visual_spec and render_visual_file plus tests/test_visual_renderer.py read"
+  },
+  "browserPolicyOutcome": {
+    "actualArchiveDesktopRender": "RENDER_PENDING",
+    "reason": "Chrome browser policy rejected local file:// SVG navigation and explicitly prohibited workarounds; no local browser render is claimed.",
+    "browserDirectFileNavigation": "BLOCKED_BY_BROWSER_URL_POLICY",
+    "workaround": "NOT_ATTEMPTED"
+  }
+}

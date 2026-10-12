@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_QID_LIMITED_POSTFREEZE_DISCLOSURE_V1",
+  "qid": 22,
+  "candidateRawSha256": "789e165fe1fb99aed5aa55634df1a557a7d9ac5348f3293a3b34ecd2407e6e93",
+  "candidateRawBufferBlobSha1": "a21567853ee8a2e173dd37ef10f5bfea4dead5c1",
+  "candidateQuestionCount": 23,
+  "originalFreezePath": "archive/analysis/r1_suncheon_yeo_prob/candidate-q22-independent-freeze.fresh-root-r1.json",
+  "originalFreezeSha256": "b08458fea5c6518caf02ebabc8e857f22236303a0250ab50b61d89eb4bdd091e",
+  "sourceStudentProjection": {
+    "candidateCurrent": {
+      "id": 22,
+      "content": "[서술형2] 자연수 $n,r$ ($1\\le r<n$)가 다음 두 조건을 만족시킨다.\n\n(가) $\\displaystyle \\sum_{k=0}^{n}\\binom{n}{k}2^k=729$\n\n(나) $\\displaystyle \\binom{n}{r}+2\\binom{n}{r+1}=50$\n\n순서쌍 $(n,r)$을 구하시오. [7.0점]",
+      "question": "[서술형2] 자연수 $n,r$ ($1\\le r<n$)가 다음 두 조건을 만족시킨다.\n\n(가) $\\displaystyle \\sum_{k=0}^{n}\\binom{n}{k}2^k=729$\n\n(나) $\\displaystyle \\binom{n}{r}+2\\binom{n}{r+1}=50$\n\n순서쌍 $(n,r)$을 구하시오. [7.0점]",
+      "choices": [],
+      "layoutTag": "grid",
+      "wide": false
+    },
+    "frozenStudent": {
+      "id": 22,
+      "question": "[서술형2] 자연수 $n,r$ ($1\\le r<n$)가 다음 두 조건을 만족시킨다.\n\n(가) $\\displaystyle \\sum_{k=0}^{n}\\binom{n}{k}2^k=729$\n\n(나) $\\displaystyle \\binom{n}{r}+2\\binom{n}{r+1}=50$\n\n순서쌍 $(n,r)$을 구하시오. [7.0점]",
+      "choices": [],
+      "image": null
+    },
+    "handoffStudentItem": {
+      "id": 22,
+      "questionType": "short_answer",
+      "question": "[서술형2] 자연수 $n,r$ ($1\\le r<n$)가 다음 두 조건을 만족시킨다.\n\n(가) $\\displaystyle \\sum_{k=0}^{n}\\binom{n}{k}2^k=729$\n\n(나) $\\displaystyle \\binom{n}{r}+2\\binom{n}{r+1}=50$\n\n순서쌍 $(n,r)$을 구하시오. [7.0점]",
+      "choices": [],
+      "image": null
+    },
+    "mathInputParity": {
+      "questionExact": true,
+      "choicesExact": true,
+      "problemAssetsExact": true,
+      "handoffQuestionExact": true,
+      "fullWhitelistedPayloadExact": false
+    },
+    "fieldPresenceDifference": {
+      "frozenKeys": [
+        "choices",
+        "id",
+        "image",
+        "question"
+      ],
+      "currentKeys": [
+        "choices",
+        "content",
+        "id",
+        "layoutTag",
+        "question",
+        "wide"
+      ],
+      "onlyFrozen": [
+        "image"
+      ],
+      "onlyCurrent": [
+        "content",
+        "layoutTag",
+        "wide"
+      ]
+    }
+  },
+  "storedAnswer": "(6, 3)",
+  "storedSolution": "이항정리에 의해\n$\\displaystyle \\sum_{k=0}^{n}\\binom{n}{k}2^k=(1+2)^n=3^n$\n이므로 $3^n=729=3^6$에서 $n=6$입니다.\n\n이제 $1\\le r<6$이므로 $r=1,2,3,4,5$를 확인합니다.\n\n$r=1$: $\\binom61+2\\binom62=6+30=36$\n$r=2$: $\\binom62+2\\binom63=15+40=55$\n$r=3$: $\\binom63+2\\binom64=20+30=50$\n$r=4$: $\\binom64+2\\binom65=15+12=27$\n$r=5$: $\\binom65+2\\binom66=6+2=8$\n\n둘째 조건을 만족하는 값은 $r=3$뿐입니다. 따라서 구하는 순서쌍은 $\\boxed{(n,r)=(6,3)}$입니다.",
+  "storedSolutionSha256": "e66f7284782f1a81bd569e9a6ef31d07334bd91c482a5fca727e9bbe49a5ecf4",
+  "meta": {
+    "level": "상",
+    "category": "확률과 통계",
+    "originalCategory": "확률과 통계",
+    "standardCourse": "확률과 통계",
+    "standardUnitKey": "H15-PS-02",
+    "standardUnit": "이항정리",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+    "subUnit": "이항정리",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_BINOMIAL_THEOREM",
+    "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceExamUid": "24_순천여고_1학기_중간_고2_확률과통계",
+    "sourceQid": 22,
+    "sourceJsPath": "archive/exams/original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+    "sourceMode": "QUESTION_ONLY",
+    "sourceType": "ORIGINAL",
+    "sourcePdfSha256": "BD5002EC7ABE21FEEDCEC9D05E25152ABA915F74DDA466C5A06686DD192013AD",
+    "sourceIntakeEvidencePath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/intake-repair/source-intake-repair.evidence.json",
+    "sourceIntakeEvidenceSha256": "4D536AE905F1AFDFF2DFB278CF99578F356D86841323E1B290889A18C3859EE3",
+    "rpmL1": "경우의 수",
+    "rpmL2": "이항정리",
+    "rpmL3": null,
+    "rpmL4": null,
+    "rpmCurriculum": "2015",
+    "rpmSemanticStatus": "EVIDENCE_DEBT",
+    "rpmSemanticReason": "이 후보는 이항정리의 가중합과 이항계수의 인접항 항등식을 결합한다. current high2-probability-statistics RPM crosswalk H2-PS-RPM-009/010은 해당 계수 항등식에 대해 mappingStatus=DIRECT_BINDING_GAP, bindingStatus=MISSING이며, H15-PS-02-BINOMIAL_BASIC 부모의 승인된 Generated-only L4 registry를 확인하지 못했다. 따라서 L3/L4 binding을 강제하지 않는다.",
+    "problemVisualDisposition": "EXEMPT_TEXT_COMPLETE",
+    "solutionVisualDisposition": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION",
+    "visualDisposition": {
+      "problem": "EXEMPT_TEXT_COMPLETE",
+      "solution": "EXEMPT_NO_DECISIVE_SPATIAL_RELATION"
+    },
+    "questionUid": "qid_v1_4e25e81fca268d29a0d15378271663cd5df1473edff935d268eec94742ea4d9c",
+    "sourceIdentity": {
+      "questionUid": "qid_v1_4e25e81fca268d29a0d15378271663cd5df1473edff935d268eec94742ea4d9c",
+      "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 22,
+      "sourceQuestionNo": 22,
+      "identityAlgorithm": "qid_v1",
+      "identityMapPath": "archive/data/question_identity_map.json"
+    },
+    "provenance": {
+      "sourceInputMode": "QUESTION_ONLY_REPLACEMENT",
+      "pdfReviewMode": "DEFECT_ONLY",
+      "sourcePdfSha256": "BD5002EC7ABE21FEEDCEC9D05E25152ABA915F74DDA466C5A06686DD192013AD",
+      "sourceIntakeEvidencePath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/intake-repair/source-intake-repair.evidence.json",
+      "sourceIntakeEvidenceSha256": "4D536AE905F1AFDFF2DFB278CF99578F356D86841323E1B290889A18C3859EE3",
+      "sourceOrdinal": 22,
+      "sourcePage": 4,
+      "scopedOriginalReview": null,
+      "sourceParityClaim": "NOT_APPLICABLE_QUESTION_ONLY_REPLACEMENT",
+      "sourceParityVerified": false,
+      "sourceParityReason": "이 문항은 원문 문항이 정답 유일성 결함으로 보류된 뒤 독립 대체 후보로 새로 작성됨. 원문 발문·정답과 일치 여부를 주장하지 않는다."
+    }
+  },
+  "answerBearingFieldsSelected": [
+    "answer",
+    "solution",
+    "decisiveStep"
+  ],
+  "disclosedAfterIndependentFreeze": true
+}

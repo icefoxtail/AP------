@@ -8,7 +8,7 @@ body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#
 <main>
 <nav><a href="workspace.html?view=compose">문제지 만들기</a><a href="generated-bank.html">생성 문항 선택·인쇄</a></nav>
 <h1>공통 Meta 문항 검색</h1>
-<p>기출과 승인된 생성 문항을 같은 분류·난이도로 찾습니다. 미확정 정보는 미지정으로 표시합니다.</p>
+<p>메인에 등록된 기출과 생성문제를 같은 분류·난이도로 찾습니다. 검수 상태와 미지정 정보는 문항별 기록을 따릅니다.</p>
 <div class="filters">
 <label>출처<select id="source"><option value="">전체</option><option value="original">기출</option><option value="generated">생성</option><option value="archive">기타 아카이브</option></select></label>
 <label>과목<select id="course"><option value="">전체</option></select></label>
@@ -27,7 +27,7 @@ body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#
 <script src="mixer-selector.js?v=20261009-meta1"></script>
 <script src="archive2-canonical.js?v=20261009-meta1"></script>
 <script src="archive2-core.js?v=20261009-meta1"></script>
-<script src="problem-bank-meta.js?v=20261009-meta3"></script>
+<script src="problem-bank-meta.js?v=20261011-rpm-debt-projection1"></script>
 <script src="archive2-source.js?v=20261009-meta1"></script>
 <script>
 'use strict';
@@ -71,6 +71,11 @@ function render(){
   const subUnit=row.subUnit?`${row.subUnit}${row.subUnitKey?` (${row.subUnitKey})`:''}`:'미지정';
   info.textContent=[row.standardCourse||'과목 미지정',row.L1||'L1 미지정',row.L2||'L2 미지정',`표준단원 ${unit}`,`세부분류 ${subUnit}`,row.L3||'L3 미지정',row.L4||'L4 미지정',`난이도 ${row.difficultyBucket??'미지정'}`].join(' / ');
   card.append(title,info);
+  const pendingMeta=Object.entries(row.metadataAssignmentEvidence?.fieldStatus||{}).filter(([,status])=>status==='manual_review_pending').map(([field])=>field);
+  if(pendingMeta.length){const pending=document.createElement('p');pending.textContent=`메타 검토 대기: ${pendingMeta.join(', ')}`;card.append(pending);}
+  if(row.rpmSemanticStatus&&row.rpmSemanticStatus!=='FINAL'){
+   const rpm=document.createElement('p');rpm.textContent=`RPM 메타 ${row.rpmSemanticStatus}${row.rpmSemanticReason?` · ${row.rpmSemanticReason}`:''}`;card.append(rpm);
+  }
   if(row.sourceKind==='generated'){
    const preview=document.createElement('button');preview.textContent='문제 보기';preview.onclick=()=>previewGenerated(row,preview);card.append(preview);
    const select=document.createElement('a');select.textContent=' 생성 문항 선택';select.href='generated-bank.html?uid='+encodeURIComponent(row.uid);card.append(select);
@@ -124,7 +129,7 @@ el('more').onclick=()=>{limit+=40;render();};
  try{
   const [catalog,index]=await Promise.all(['data/archive2-catalog.json','data/generated-lite-consumer/v1/index.json'].map(async p=>{const r=await fetch(p,{cache:'no-cache'});if(!r.ok)throw Error('검색 데이터 로드 실패');return r.json();}));
   coreMetaFilterOptions=catalog.coreMetaFilterOptions||{};
-  holds=index.excludedHoldUids||[];inventory=ProblemBankMeta.buildIndex(Archive2Core.decodeCatalog(catalog).records,index.records,{excludedHoldUids:holds});
+  holds=index.userDisabledUids||[];inventory=ProblemBankMeta.buildIndex(Archive2Core.decodeCatalog(catalog).records,index.records,{excludedHoldUids:holds});
   options('course','standardCourse',inventory);
   refreshCoreMetaKeyOptions();
   for(const k of ['L1','L2','L3','L4'])options(k,k,inventory);render();

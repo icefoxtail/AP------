@@ -1,0 +1,270 @@
+{
+  "schemaVersion": "JS_ARCHIVE_Q24_ONLY_SOURCE_DELTA_V1",
+  "revision": 2,
+  "supersedes": {
+    "path": ".tmp/archive/r1-q24-closeout-20261010/24_금당중_1학기_기말_중2_기출/q24-visual-repair/q24-only-source-delta-manifest.json",
+    "sha256": "c720f00d075f0662455119e260cb048f995ce12204b07af31ddc1fd13c94e24d"
+  },
+  "examUid": "24_금당중_1학기_기말_중2_기출",
+  "scope": "CREATE q24 display correction; only q24 solutionImage fields differ from original source",
+  "productionSourceWritten": false,
+  "wholeExamStagePassClaimed": false,
+  "baseline": {
+    "path": "archive/exams/original/middle/m2/1final/24_금당중_1학기_기말_중2_기출.js",
+    "sha256": "53a9333ebf9caab43f4accb346fa5fdedcb67c091e7f5ae205ad24c807814a56",
+    "gitBlobSha": "8adf111c4e5ebc57a61c7f4ff3cd1e2b6e38f1a6"
+  },
+  "candidate": {
+    "path": ".tmp/archive/r1-q24-closeout-20261010/24_금당중_1학기_기말_중2_기출/q24-visual-repair/candidate-q24-only-displayfix/24_금당중_1학기_기말_중2_기출.js",
+    "sha256": "c05cd9d6990d680f3268228245417aa5ac33e8abfbb0e0dc083df0830118598b",
+    "gitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+    "questionCount": 25
+  },
+  "displayFields": {
+    "qid": 24,
+    "originalValues": {
+      "solutionImage": {
+        "present": false
+      },
+      "solutionImageSize": {
+        "present": false
+      },
+      "solutionImageLayout": {
+        "present": false
+      }
+    },
+    "candidateValues": {
+      "solutionImage": "assets/images/24_금당중_1학기_기말_중2_기출/q24-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageLayout": "fullwidth"
+    },
+    "changedFields": [
+      "solutionImage",
+      "solutionImageSize",
+      "solutionImageLayout"
+    ]
+  },
+  "engineDisplaySupport": {
+    "path": "archive/engine.html",
+    "sha256": "8d6974f5f05f18231548183cfc415e1e2b95ac65b46d530fb540c605ec75d2f1",
+    "gitBlobSha": "62d728f5132ac3f49d0bde41e465aed8c45934b7",
+    "verified": {
+      "solutionImageSize": {
+        "value": "full",
+        "acceptedBy": "['small','medium','large','full'].includes(q.solutionImageSize)",
+        "default": "medium"
+      },
+      "solutionImageLayout": {
+        "value": "fullwidth",
+        "acceptedBy": "q.solutionImageLayout === 'fullwidth'",
+        "renderClass": "layout-fullwidth"
+      },
+      "css": {
+        "imageFull": ".sol-image-wrap.image-full img { max-width: 100%; max-height: none; }",
+        "layoutFullwidth": ".sol-image-wrap.layout-fullwidth img { max-height: 640px; }"
+      }
+    }
+  },
+  "assets": {
+    "solutionSvg": {
+      "path": ".tmp/archive/r1-q24-closeout-20261010/24_금당중_1학기_기말_중2_기출/q24-visual-repair/candidate-q24-only-displayfix/assets/images/24_금당중_1학기_기말_중2_기출/q24-solution.svg",
+      "sha256": "271eac5b5998cb6f4181341afe61a77e82cdd3903733d09d4fa23d7fdb373d12",
+      "gitBlobSha": "e87df5c69272ed6780ce8b9d7859b2c1a61cf137",
+      "sourceSha256": "271eac5b5998cb6f4181341afe61a77e82cdd3903733d09d4fa23d7fdb373d12",
+      "byteExactCopy": true
+    },
+    "originalProblemPng": {
+      "path": ".tmp/archive/r1-q24-closeout-20261010/24_금당중_1학기_기말_중2_기출/q24-visual-repair/candidate-q24-only-displayfix/assets/images/24_금당중_1학기_기말_중2_기출/q24.png",
+      "sha256": "46663e972c07a76aa6a6ee605fa1807a9b1bdf8a7770776a2f28e9fe6d0b943e",
+      "gitBlobSha": "0908812b9d78528fdf166706efb0f63550414b6d",
+      "sourceSha256": "46663e972c07a76aa6a6ee605fa1807a9b1bdf8a7770776a2f28e9fe6d0b943e",
+      "byteExactCopy": true
+    },
+    "onlyQ24AssetsCopied": true
+  },
+  "rawSourceDelta": {
+    "changedByteCount": 168,
+    "removedBytes": 0,
+    "insertedBytes": 168,
+    "textReplacementCount": 0,
+    "insertedLines": [
+      "\"solutionImage\": \"assets/images/24_금당중_1학기_기말_중2_기출/q24-solution.svg\",",
+      "\"solutionImageSize\": \"full\",",
+      "\"solutionImageLayout\": \"fullwidth\","
+    ],
+    "changedLocation": "q24 immediately after image property",
+    "removingAllThreeInsertedLinesRestoresBaselineByteForByte": true,
+    "strippedCandidateSha256": "53a9333ebf9caab43f4accb346fa5fdedcb67c091e7f5ae205ad24c807814a56"
+  },
+  "semanticDiff": {
+    "qidCount": 25,
+    "changedQids": [
+      24
+    ],
+    "rows": [
+      {
+        "qid": 1,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 2,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 3,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 4,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 5,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 6,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 7,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 8,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 9,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 10,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 11,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 12,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 13,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 14,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 15,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 16,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 17,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 18,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 19,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 20,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 21,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 22,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 23,
+        "changedFields": [],
+        "result": "PASS"
+      },
+      {
+        "qid": 24,
+        "changedFields": [
+          "solutionImage",
+          "solutionImageSize",
+          "solutionImageLayout"
+        ],
+        "before": {
+          "solutionImage": {
+            "present": false
+          },
+          "solutionImageSize": {
+            "present": false
+          },
+          "solutionImageLayout": {
+            "present": false
+          }
+        },
+        "after": {
+          "solutionImage": "assets/images/24_금당중_1학기_기말_중2_기출/q24-solution.svg",
+          "solutionImageSize": "full",
+          "solutionImageLayout": "fullwidth"
+        },
+        "result": "PASS"
+      },
+      {
+        "qid": 25,
+        "changedFields": [],
+        "result": "PASS"
+      }
+    ]
+  },
+  "machineDiffChecks": {
+    "allQidsSameOrder": true,
+    "allNonTargetQidsDeepEqual": true,
+    "q24AllOtherFieldsDeepEqual": true,
+    "q24ProblemImageReferenceUnchanged": true,
+    "q24ContentChoicesAnswerSolutionUnchanged": true,
+    "onlyThreeSolutionImageFieldsAdded": true,
+    "solutionSvgAndProblemPngByteExact": true,
+    "allChecksPass": true,
+    "rawDiffExactlyThreeLines": true
+  },
+  "provenance": {
+    "repairedSvgSha256": "271eac5b5998cb6f4181341afe61a77e82cdd3903733d09d4fa23d7fdb373d12",
+    "repairedSvgGitBlobSha": "e87df5c69272ed6780ce8b9d7859b2c1a61cf137",
+    "sourceExamSha256": "53a9333ebf9caab43f4accb346fa5fdedcb67c091e7f5ae205ad24c807814a56",
+    "r1r2RebindRequired": true,
+    "r3FinalRenderRequired": true
+  }
+}

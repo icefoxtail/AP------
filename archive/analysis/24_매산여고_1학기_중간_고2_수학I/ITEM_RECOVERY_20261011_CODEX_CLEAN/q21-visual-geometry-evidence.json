@@ -1,0 +1,210 @@
+{
+  "schemaVersion": "ITEM_RECOVERY_Q21_VISUAL_GEOMETRY_EVIDENCE_V1",
+  "qid": 21,
+  "sourceRawSha256": "fd53c2297a0984ca7d0a1c72cfbc27b207e77c0ee9f63418ef71f2103c862b04",
+  "solutionSha256": "564b732d18111c6468e5e5e4861ae8d462952522c79e30016930978409424569",
+  "svgPath": "assets/images/24_매산여고_1학기_중간_고2_수학I/q21-solution-recovery.svg",
+  "svgSha256": "6e91d4e7caf3fec5f900dcdbeba0bd00d9a4d84c0a54fd27a4de558fe388e35e",
+  "svgByteLength": 7562,
+  "xmlParse": "PASS",
+  "visualDisposition": "ADD_NEW_VISUAL",
+  "pythonInputs": {
+    "A": 3,
+    "B": 2,
+    "omega": "pi/2",
+    "phaseShift": 1,
+    "domain": [
+      4,
+      8
+    ],
+    "sampleCount": 160,
+    "canvas": [
+      760,
+      400
+    ]
+  },
+  "pythonCalculatedOutputs": {
+    "maxPoint": [
+      5,
+      5
+    ],
+    "minPoint": [
+      7,
+      1
+    ],
+    "endpointValues": [
+      3,
+      3
+    ],
+    "period": 4,
+    "maxChordErrorBoundPx": 0.015421256876702125
+  },
+  "coordinateModel": {
+    "px": "100 + 120*(x-3.5)",
+    "py": "320 - 40*y",
+    "originX": 100,
+    "originY": 320,
+    "sx": 120,
+    "sy": 40,
+    "xWindow": [
+      3.5,
+      8.5
+    ],
+    "yWindow": [
+      0,
+      6
+    ]
+  },
+  "sourceConditionCoverage": [
+    "exact formula h(x)=3+2cos(pi/2*(x-1))",
+    "closed interval 4<=x<=8",
+    "amplitude 2 and centerline 3"
+  ],
+  "decisiveRelationCovered": true,
+  "uncoveredCriticalConditions": [],
+  "expectedFactCompletenessStatus": "PASS",
+  "expectedFacts": [
+    {
+      "role": "GIVEN",
+      "fact": "h(4)=3",
+      "coordinate": [
+        4,
+        3
+      ]
+    },
+    {
+      "role": "CONCLUSION",
+      "fact": "unique maximum h(5)=5",
+      "coordinate": [
+        5,
+        5
+      ]
+    },
+    {
+      "role": "DERIVED_INTERMEDIATE",
+      "fact": "h(6)=3",
+      "coordinate": [
+        6,
+        3
+      ]
+    },
+    {
+      "role": "CONCLUSION",
+      "fact": "unique minimum h(7)=1",
+      "coordinate": [
+        7,
+        1
+      ]
+    },
+    {
+      "role": "GIVEN",
+      "fact": "h(8)=3",
+      "coordinate": [
+        8,
+        3
+      ]
+    }
+  ],
+  "actualSvgPrimitives": {
+    "functionPathSamples": 161,
+    "functionPathD": "M 160.000 200.000 L 163.000 196.859 L 166.000 193.723 L 169.000 190.597 L 172.000 187.485 L 175.000 184.393 L 178.000 181.324 L 181.000 178.285 L 184.000 175.279 L 187.000 172.311 L 190.000 169.385 L 193.000 166.507 L 196.000 163.681 L 199.000 160.910 L 202.000 158.200 L 205.000 155.554 L 208.000 152.977 L 211.000 150.472 L 214.000 148.044 L 217.000 145.696 L 220.000 143.431 L 223.000 141.254 L 226.000 139.168 L 229.000 137.175 L 232.000 135.279 L 235.000 133.482 L 238.000 131.789 L 241.000 130.200 L 244.000 128.719 L 247.000 127.349 L 250.000 126.090 L 253.000 124.945 L 256.000 123.915 L 259.000 123.004 L 262.000 122.210 L 265.000 121.537 L 268.000 120.985 L 271.000 120.555 L 274.000 120.247 L 277.000 120.062 L 280.000 120.000 L 283.000 120.062 L 286.000 120.247 L 289.000 120.555 L 292.000 120.985 L 295.000 121.537 L 298.000 122.210 L 301.000 123.004 L 304.000 123.915 L 307.000 124.945 L 310.000 126.090 L 313.000 127.349 L 316.000 128.719 L 319.000 130.200 L 322.000 131.789 L 325.000 133.482 L 328.000 135.279 L 331.000 137.175 L 334.000 139.168 L 337.000 141.254 L 340.000 143.431 L 343.000 145.696 L 346.000 148.044 L 349.000 150.472 L 352.000 152.977 L 355.000 155.554 L 358.000 158.200 L 361.000 160.910 L 364.000 163.681 L 367.000 166.507 L 370.000 169.385 L 373.000 172.311 L 376.000 175.279 L 379.000 178.285 L 382.000 181.324 L 385.000 184.393 L 388.000 187.485 L 391.000 190.597 L 394.000 193.723 L 397.000 196.859 L 400.000 200.000 L 403.000 203.141 L 406.000 206.277 L 409.000 209.403 L 412.000 212.515 L 415.000 215.607 L 418.000 218.676 L 421.000 221.715 L 424.000 224.721 L 427.000 227.689 L 430.000 230.615 L 433.000 233.493 L 436.000 236.319 L 439.000 239.090 L 442.000 241.800 L 445.000 244.446 L 448.000 247.023 L 451.000 249.528 L 454.000 251.956 L 457.000 254.304 L 460.000 256.569 L 463.000 258.746 L 466.000 260.832 L 469.000 262.825 L 472.000 264.721 L 475.000 266.518 L 478.000 268.211 L 481.000 269.800 L 484.000 271.281 L 487.000 272.651 L 490.000 273.910 L 493.000 275.055 L 496.000 276.085 L 499.000 276.996 L 502.000 277.790 L 505.000 278.463 L 508.000 279.015 L 511.000 279.445 L 514.000 279.753 L 517.000 279.938 L 520.000 280.000 L 523.000 279.938 L 526.000 279.753 L 529.000 279.445 L 532.000 279.015 L 535.000 278.463 L 538.000 277.790 L 541.000 276.996 L 544.000 276.085 L 547.000 275.055 L 550.000 273.910 L 553.000 272.651 L 556.000 271.281 L 559.000 269.800 L 562.000 268.211 L 565.000 266.518 L 568.000 264.721 L 571.000 262.825 L 574.000 260.832 L 577.000 258.746 L 580.000 256.569 L 583.000 254.304 L 586.000 251.956 L 589.000 249.528 L 592.000 247.023 L 595.000 244.446 L 598.000 241.800 L 601.000 239.090 L 604.000 236.319 L 607.000 233.493 L 610.000 230.615 L 613.000 227.689 L 616.000 224.721 L 619.000 221.715 L 622.000 218.676 L 625.000 215.607 L 628.000 212.515 L 631.000 209.403 L 634.000 206.277 L 637.000 203.141 L 640.000 200.000",
+    "extremumMarkers": [
+      {
+        "id": "maximum-5-5",
+        "cx": 280.0,
+        "cy": 120.0
+      },
+      {
+        "id": "minimum-7-1",
+        "cx": 520.0,
+        "cy": 280.0
+      }
+    ],
+    "endpointMarkers": [
+      {
+        "id": "endpoint-4",
+        "cx": 160.0,
+        "cy": 200.0
+      },
+      {
+        "id": "endpoint-8",
+        "cx": 640.0,
+        "cy": 200.0
+      }
+    ]
+  },
+  "observedFacts": [
+    {
+      "fact": "maximum sample",
+      "observed": [
+        5.0,
+        5.0
+      ],
+      "expected": [
+        5,
+        5
+      ],
+      "delta": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "fact": "minimum sample",
+      "observed": [
+        7.0,
+        1.0
+      ],
+      "expected": [
+        7,
+        1
+      ],
+      "delta": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "fact": "equal endpoint heights",
+      "observed": [
+        2.9999999999999996,
+        2.999999999999999
+      ],
+      "expected": [
+        3,
+        3
+      ],
+      "delta": [
+        0,
+        0
+      ]
+    }
+  ],
+  "factVisualizations": [
+    {
+      "fact": "given domain",
+      "role": "GIVEN",
+      "encoding": "interval x=4..8"
+    },
+    {
+      "fact": "maximum at (5,5)",
+      "role": "CONCLUSION",
+      "encoding": "orange point plus vertical dashed guide"
+    },
+    {
+      "fact": "minimum at (7,1)",
+      "role": "CONCLUSION",
+      "encoding": "green point plus vertical dashed guide"
+    },
+    {
+      "fact": "endpoint values both 3",
+      "role": "DERIVED_INTERMEDIATE",
+      "encoding": "open outlined endpoint markers on curve"
+    }
+  ],
+  "sourceSemanticIdentity": {
+    "applicable": false,
+    "checks": []
+  },
+  "actualRender": "NOT_RUN_ITEM_RECOVERY; next R3 owns student-engine render review"
+}

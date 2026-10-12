@@ -1,0 +1,40 @@
+window.examTitle = "PALMA_2025_QID9_23_C2";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q23-C2",
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "직선의 방정식",
+    "originalCategory": "직선의 방정식",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-C2-02-RELATION",
+    "subUnit": "두 직선의 관계",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "직선의 방정식"
+    ],
+    "wide": false,
+    "content": "두 직선 $x=0$과 $y=\\dfrac34x$로부터의 거리가 각각 $2$인 점은 서로 다른 네 개이다. 이 네 점을 꼭짓점으로 하는 사각형의 둘레의 길이를 구하시오.",
+    "choices": [],
+    "answer": "$20$",
+    "solution": "두 거리 조건은 $x=\\pm2$와 $3x-4y=\\pm10$이다.\n같은 수직선 $x=2$ 위의 두 꼭짓점 사이의 길이는 $\\dfrac{20}{4}=5$이다.\n또 한 직선 $3x-4y=10$ 위에서 $x=-2$인 점과 $x=2$인 점의 $x$좌표 차는 $4$이고 $y$좌표 차는 $3$이다.\n따라서 그 변의 길이는 $\\sqrt{4^2+3^2}=5$이다.\n사각형은 두 쌍의 평행선으로 이루어진 평행사변형이므로 둘레는 $2(5+5)=20$이다.\n따라서 구하는 둘레의 길이는 $20$이다.",
+    "solutionImage": "assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q23-C2-solution.svg",
+    "solutionImageAlt": "P, Q, R, S로 표시한 평행사변형이다. PS와 PQ의 길이는 각각 5, 높이 HK는 4이며, 내부에 넓이 20이 표시되어 있다. 둘레 계산에 쓰는 두 변를 읽을 수 있다.",
+    "solutionImageSize": "medium",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 23,
+    "slot": "C2",
+    "purposeGroup": "C"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q23-C2");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q23-C2","meta":{"rpmL1":"도형의 방정식","rpmL2":"직선의 방정식","rpmL3":"점과 직선 사이의 거리","rpmL4":"EXT-H1-C2-02-Q23-STRIP-PERIMETER","rpmL4Namespace":"GENERATED_EXT_L4","rpmPrimaryRecordId":"H1-RPM-216","rpmL4Label":"거리 자취의 사각형 둘레","rpmAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","generatedL4RegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-02-RELATION/extension-l4/registry.json","generatedL4RegistrySha256":"7a8b3ef9e1549f689bc75fce5670b594745d9fe0a25cc6ed16ca5dea4ee71e79","generatedL4RegistryGitBlobSha1":"324d126ecb04315b887a517b7f8b0f1fa5f70438","secondaryConceptKeys":[],"crossConceptKeys":[],"conditionKeys":[],"crossConceptRegistryRef":null,"conditionRegistryRef":null,"sourceKind":"generated","integrationPattern":"SEQUENTIAL","difficultyBucket":4,"level":"상","problemTypeKey":"PT_POINT_LINE_DISTANCE","templateKey":"TPL_DISTANCE_AREA_APPLICATION","standardCourse":"공통수학2","standardUnitKey":"H22-C2-02","subUnitKey":"H22-C2-02-RELATION"},"metaFinalSha256":"6647eff80ba30a440a690f1ef7ea11271c8746017d2d9ae4311bab9496de5282","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q23-C2.json","sha256":"bcb6779d55114a3277e4b64aad3fb6dd35b50d2b99fccf369f3c84911cd63d87","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q17_Q23_63","scopeUids":["ALITE-PALMA25-2MID-Q23-C2"],"approvalReceiptPath":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json","approvalReceiptSha256":"38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d","approvalReceiptGitBlobSha1":"5813555d09e63d3afeb5c3c4e0d941bc2383b0d2","approvedPackagePath":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q23_PACKAGE.json","approvedPackageSha256":"35bc07b4c58ec211da164f163799ade285d78fc72d2a478b8bdc40c62a5a6c22","approvedPackageGitBlobSha1":"bf8028c151f991592631e399459171363e59ec0a","approvedSourceSnapshot":{"path":"archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js","gitBlobSha1":"4cfce909c023e5c4df4a759945c8cc3e0a63ec76"},"currentSource":{"path":"archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js","gitBlobSha1":"e7ead9fb1404f0fdb01dbfeafdee268f617b992e"},"uid":"ALITE-PALMA25-2MID-Q23-C2"},"metaReviewEvidenceSha256":"bcb6779d55114a3277e4b64aad3fb6dd35b50d2b99fccf369f3c84911cd63d87","difficultyBucket":4,"level":"상","problemTypeKey":"PT_POINT_LINE_DISTANCE","templateKey":"TPL_DISTANCE_AREA_APPLICATION","secondaryConceptKeys":[],"crossConceptKeys":[],"conditionKeys":[],"integrationPattern":"SEQUENTIAL"});})();

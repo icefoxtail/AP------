@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POSTFREEZE_DISCLOSURE_V2",
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\codex-r1-24-suncheon-math1-20261011\\R1.original-freeze.json",
+    "sha256": "5bc4df228fa5904fdb537358bdf9a68b6a3fc9648db5ed99fe9f5d113f2f8eec"
+  },
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\codex-r1-24-suncheon-math1-20261011\\student-only.current.json",
+    "sha256": "7de99035e48137509c061d98e4005c5bedd4913bcee4408122da8374e7d41b3e"
+  },
+  "sourceRawSha256": "e16023f0c78d19e8193dd2f14d585d1443d013ad45da1054985f5480268869f3",
+  "originalFreezeSourceRawSha256": "005e32598224801ad64958725cd2fde129c254c2295d3d674efbf2fdf5b12768",
+  "studentParity": "EXACT",
+  "rows": [
+    {
+      "qid": 20,
+      "answer": "$0<x\\le2$",
+      "solution": "첫째 부등식에서 $\\frac43=(\\frac34)^{-1}$이므로 $(\\frac34)^{2x-1}\\ge(\\frac34)^{5-x}$이다. 밑이 $0$과 $1$ 사이이므로 지수를 비교할 때 부등호가 바뀐다.\n\n$2x-1\\le5-x$, 따라서 $x\\le2$이다.\n\n둘째 부등식의 정의역은 $x>0$이다. 로그의 합을 곱으로 합치면 $\\log_2(x(x+4))\\le5$이므로 $x(x+4)\\le32$이다.\n\n$x^2+4x-32\\le0$, 즉 $(x+8)(x-4)\\le0$에서 $-8\\le x\\le4$이다. 정의역을 적용하면 $0<x\\le4$이다.\n\n두 범위의 공통 부분은 $0<x\\le2$이다.",
+      "solutionImage": "assets/images/24_순천여고_1학기_중간_고2_수학I/q20-solution.svg",
+      "solutionImageAlt": "연립부등식의 두 해집합과 교집합",
+      "solutionImageCaption": "E는 지수 부등식의 해집합, L은 로그 부등식의 해집합이다.",
+      "solutionImageSize": "medium"
+    }
+  ],
+  "disclosedAt": "2026-10-10T16:26:30.198Z"
+}

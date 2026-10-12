@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_R3_QID_CORRECTION_CALIBRATION_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "reviewerIdentity": {
+    "reviewerId": "/root/r3_suncheon_yeo_math1",
+    "role": "archive_r3"
+  },
+  "createdAt": "2026-10-10T16:59:58.9202947Z",
+  "purpose": "q07 question-layout correction review before the authorized source edit",
+  "currentSourceRawSha256": "fc271e819e782fa9aece137aec4e9b5f985657a307166b89cedd91cf37df301b",
+  "finding": {
+    "observation": "The unmodified official Archive Engine visibly prints literal <p> and </p> tokens around the otherwise decoded q07 image in exam and solution desktop/mobile captures.",
+    "calibrationCriterion": "Preserve all Korean prompt wording, labels/marks, image src/ref and bytes, choices, and answer/solution; remove only the unsupported paragraph wrapper tokens if this exact wrapper is the sole escaped presentation locus.",
+    "captureReport": {
+      "path": ".tmp\\archive\\r3-24-suncheon-math1-20261011\\capture-01\\machine-capture.json",
+      "sha256": "481e4c252e0f41ffe49a80d2aeaf1f412f6128aeba822f264f50c43b7b5b8ffc"
+    },
+    "qid": 7
+  },
+  "goldenRead": {
+    "path": "archive\\exams\\original\\high\\h1\\2mid\\25_매산여고_2학기_중간_고1_기출.js",
+    "items": [
+      {
+        "observation": "Read: point division, midpoint, distance formula and exact result are separated into reproducible statements and equations.",
+        "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "qid": 1
+      },
+      {
+        "observation": "Read: set equality criterion is stated first and then applied in small sequential steps.",
+        "solutionSha256": "5e4868f8a81c3f06fa1ba0b6a8ee6a0d9dca62bcb3569d35a0cae8ae5d87ad77",
+        "qid": 5
+      }
+    ],
+    "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156"
+  },
+  "negativeRead": {
+    "observation": "Read: runtime escape regressions require inspection of sandbox-evaluated questionBank fields; visual/SVG claims need actual geometry and failed examples must not be promoted by self-reported counts.",
+    "path": "archive\\fixtures\\review-negative-regressions\\2026-10-01-bokseong\\README.md",
+    "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8"
+  },
+  "sourceIntakeEvidence": {
+    "path": "archive\\analysis\\source-only-h2-1mid-20261010-b2\\24_순천여고_1학기_중간_고2_수학I.evidence.json",
+    "provenance": "Reused source-intake evidence for q07 crop/identity; no PDF reopen or new original-source parity claim.",
+    "sha256": "fd3b7f91ada06919b22f51f1dba4593c6910e01e121c493fb5638f21bc9c37fa"
+  },
+  "q07Image": {
+    "path": "archive\\assets\\images\\24_순천여고_1학기_중간_고2_수학I\\q07.png",
+    "openedByR2": true,
+    "sha256": "44c1550aeacd43a28bab8bf7617de7700e0fb77b8fe10d85e296027aa7648610",
+    "ref": "assets/images/24_순천여고_1학기_중간_고2_수학I/q07.png"
+  },
+  "preRepairStudentPacket": {
+    "sourceRawSha256": "fc271e819e782fa9aece137aec4e9b5f985657a307166b89cedd91cf37df301b",
+    "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/R3_24_순천여고_고2_수학I/q07-student-before.json",
+    "sha256": "e5ee5b9d5cb966b2ef3419ffc1d2bdce8cd3a48dd51f52d69a7d8806f58a9b50"
+  },
+  "preflightDisposition": "READ_BEFORE_EDIT",
+  "notBackdated": true
+}

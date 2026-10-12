@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_SOLUTION_GOLDEN_NEGATIVE_PREFLIGHT_V1",
+  "reviewerId": "/root/r1_suncheon_yeo_prob",
+  "performedBeforeTargetSolutionDisclosure": true,
+  "targetExamUid": "24_순천여고_1학기_중간_고2_확률과통계",
+  "authority": "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md (2026-10-01 CURRENT overrides), direct reading; referenced Archive_작업전_Golden_Sample_Calibration_v1.md was not present in this worktree.",
+  "criteriaApplied": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenSamples": [
+    {
+      "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/golden-hyocheon-q2-solution.png",
+      "sha256": "def11e93c3d31060d0a41ffd8203bfbb0a861a96efbcc776bf4e0e9bfb3da844",
+      "observed": "A complete graph-based worked example pairs a diagram with equations and an explicit conclusion; graph labels and relation should agree with the calculations."
+    },
+    {
+      "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/golden-maesan-q7-solution.png",
+      "sha256": "bf20199fd5455e2a6cab5d673f05168c2df6feee0ae869e95281ad821c6febe3",
+      "observed": "The solution states the center movement, tracks successive centers, gives intermediate coordinate relations, and ends with a clearly identified final equation."
+    }
+  ],
+  "negativeSamples": [
+    {
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "observed": "The fixture documents q20 as a false PASS: label 3x+4y-8=0 has slope -3/4, while the actual line primitive has positive 3/4 slope, so it is not perpendicular to the shown PH. I opened the associated negative render and checked that geometry mismatch."
+    },
+    {
+      "sha256": "20e8059ac2f6c1177cbf79376ce707965964aceb3276b44d7a1619f71458eedf",
+      "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/negative-bokseong-q20.png",
+      "observed": "Visual witness of the specific line-slope/perpendicularity mismatch described in the canonical negative fixture."
+    }
+  ],
+  "targetReviewRule": "After this preflight, judge each frozen independent solution against the exact current qid content, choices, and required assets; verify reproducibility, decisive steps, condition use, conclusion, and visual parity. Sample wording is not copied."
+}

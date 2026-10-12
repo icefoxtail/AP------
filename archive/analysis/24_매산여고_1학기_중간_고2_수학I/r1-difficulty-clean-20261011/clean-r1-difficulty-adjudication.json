@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_CLEAN_DIFFICULTY_ADJUDICATION_V1",
+  "executionLine": "CODEX",
+  "scope": "Difficulty-only clean review of qids 1–24; no source edits and no full R1 claim.",
+  "sourceRawSha256": "9ae75468d939e39533c539d01d4440127a423d4d7ceaed790e2692985dec6dbe",
+  "studentBundle": {"path":"archive/analysis/24_매산여고_1학기_중간_고2_수학I/r1-difficulty-clean-20261011/current-student-only.bundle.json","sha256":"81a83d65aeb5dabc280ebcf2caf80348a13f5b3b35d01f818ddebde422f19ed7"},
+  "firstPassFreeze": {"path":"archive/analysis/24_매산여고_1학기_중간_고2_수학I/r1-difficulty-clean-20261011/clean-r1-difficulty-freeze.json","sha256":"e3afc4a8e8a18648e1fb089f5f561abf75b7bb24dc76217a2e5af7f96bc95b41"},
+  "postfreezeDisclosure": {"path":"archive/analysis/24_매산여고_1학기_중간_고2_수학I/r1-difficulty-clean-20261011/clean-r1-difficulty-postfreeze-disclosure.json","sha256":"b59499e65a50368210f493365be04c6cdbe436707fc0810d91347147acd27390","studentParity":"EXACT","metadataDisclosed":false},
+  "actualVisualReads": {
+    "studentAssets": [{"ref":"assets/images/24_매산여고_1학기_중간_고2_수학I/q06.png","sha256":"2a755e38969c20fc2676201de3f4b7051c4a4c57ba34d02b60ddc6a658ced390","openedBeforeFreeze":true}],
+    "solutionSvgRefs": ["q04","q05","q06","q09","q14","q15","q16","q18","q19","q20","q21","q22","q24"],
+    "renderedContactSheet": {"path":"archive/analysis/24_매산여고_1학기_중간_고2_수학I/r1-difficulty-clean-20261011/solution-svg-renders/contact-sheet.png","sha256":"38ac54d98b84f47a32648a1e1d1da4f513e1e78f4afbf6b599dd3754af2d2f"}
+  },
+  "currentSourceMetadataComparison": "NOT_DISCLOSED_BY_APPROVED_POSTFREEZE_HELPER; no current level/difficulty or prior verdict was read. First-pass-to-final differences are explicit per qid.",
+  "rows": [
+    {"qid":1,"firstPassBucket":1,"finalBucket":2,"confidence":"medium","boundary":"B12","difference":"1→2","rationale":"정답 해설 확인 후 근호 지수를 두 수에 각각 적용한 뒤 (ab)^12로 결합하는 두 개념 실행임을 반영했다. 풀이법은 직접적이나 단일 기본 대입보다는 조건·표현 해석이 한 번 더 있어 1↔2 경계에서 2가 우세하다."},
+    {"qid":2,"firstPassBucket":2,"finalBucket":2,"confidence":"high","boundary":"NONE","difference":"none","rationale":"밑의 정의역과 진수 양수 조건을 따로 세우고, 이차식 부호구간과 교집합을 찾는다. 해설도 표준 조건 적용을 확인해 주며 전략 선택 부담은 낮다."},
+    {"qid":3,"firstPassBucket":2,"finalBucket":2,"confidence":"high","boundary":"NONE","difference":"none","rationale":"t=2^x 치환으로 분수식을 이차식으로 정리한 뒤 목표를 대입한다. 해설이 한 번의 익숙한 치환과 계산으로 닫힘을 확인했다."},
+    {"qid":4,"firstPassBucket":1,"finalBucket":1,"confidence":"high","boundary":"NONE","difference":"none","rationale":"로그함수의 정의역·점근선·단조성·치역을 확인한다. 해설의 그래프도 기본 성질 판별을 보조할 뿐 추가 추론을 요구하지 않는다."},
+    {"qid":5,"firstPassBucket":2,"finalBucket":2,"confidence":"high","boundary":"NONE","difference":"none","rationale":"제3사분면 조건을 x<0에서의 y 부호로 바꾸고 지수함수의 경계값 k=-5를 판정한다. 해설의 엄격한 경계 비교까지 포함해도 표준 범위 해석이다."},
+    {"qid":6,"firstPassBucket":3,"finalBucket":3,"confidence":"high","boundary":"NONE","difference":"none","rationale":"밑이 0과 1 사이여서 부등호를 뒤집고, 실제 그래프의 교점 구간에서 자연수를 골라 합한다. 두 전략의 결합과 그래프 판독이 필수다."},
+    {"qid":7,"firstPassBucket":2,"finalBucket":2,"confidence":"high","boundary":"NONE","difference":"none","rationale":"세 진술을 도-라디안 변환, 동경의 사분면, 일반각 동치로 각각 확인한다. 해설대로 각 검사는 직접적이고 서로 다른 발상은 필요하지 않다."},
+    {"qid":8,"firstPassBucket":2,"finalBucket":2,"confidence":"high","boundary":"NONE","difference":"none","rationale":"cos x=0 예외를 확인하고 tan x=√3으로 바꿔 한 주기의 근을 합한다. 표준 변환·구간 근 선택이다."},
+    {"qid":9,"firstPassBucket":2,"finalBucket":2,"confidence":"high","boundary":"NONE","difference":"none","rationale":"[0,π)에서 코사인의 단조성을 이용해 두 조건을 교집합하고 끝점 포함 여부를 정한다. 풀이 구조가 해설과 일치한다."},
+    {"qid":10,"firstPassBucket":2,"finalBucket":2,"confidence":"high","boundary":"NONE","difference":"none","rationale":"네 로그 명제를 기본 항등식과 비교한다. 문항 수는 여러 개지만 각 판단은 직접 확인으로 끝난다."},
+    {"qid":11,"firstPassBucket":3,"finalBucket":3,"confidence":"high","boundary":"NONE","difference":"none","rationale":"근의 방정식을 이용해 분모를 3α, 3β로 바꾸고 근과 계수 관계로 역수 합을 계산한다. 두 표현 사이의 구조 선택이 중심이다."},
+    {"qid":12,"firstPassBucket":2,"finalBucket":2,"confidence":"high","boundary":"NONE","difference":"none","rationale":"증가율을 거듭제곱으로 놓아 로그 부등식을 만들고 최소 정수를 취한다. 주어진 로그 근삿값으로 경계 판단은 단순하다."},
+    {"qid":13,"firstPassBucket":3,"finalBucket":3,"confidence":"high","boundary":"NONE","difference":"none","rationale":"t=2^x>0 치환 후 한 실근 조건을 양의 중근 조건과 연결한다. 해설의 부호 및 판별식 처리는 중간 변별 수준의 표준 조건 분석이다."},
+    {"qid":14,"firstPassBucket":4,"finalBucket":4,"confidence":"medium","boundary":"B34","difference":"none","rationale":"t=log_a x로 바꾸면 log_a t<t<t²를 얻고, 남은 핵심은 1<t<2에서 2^t>t²임을 비교해 t²<x를 보이는 것이다. solution SVG가 이 함수 비교를 드러낸다. 숨은 비교가 필요해 4가 우세하나 표준 부등식/그래프 해석과 3 사이 경계 가능성이 남는다."},
+    {"qid":15,"firstPassBucket":1,"finalBucket":1,"confidence":"high","boundary":"NONE","difference":"none","rationale":"사인 최댓값과 주기 공식을 직접 적용해 a+b를 계산한다. 해설도 기본 공식 두 개의 대입뿐이다."},
+    {"qid":16,"firstPassBucket":3,"finalBucket":3,"confidence":"high","boundary":"NONE","difference":"none","rationale":"u=2x−π/6의 전체 범위를 구하고 두 일반해 갈래에서 해당 구간의 근을 걸러낸다. 근 분기와 범위 변환을 모두 요구한다."},
+    {"qid":17,"firstPassBucket":1,"finalBucket":1,"confidence":"high","boundary":"NONE","difference":"none","rationale":"비율 1/16을 네 번의 반감기로 읽어 300을 곱한다. 모형에 공식을 직접 대입한다."},
+    {"qid":18,"firstPassBucket":4,"finalBucket":4,"confidence":"medium","boundary":"B34","difference":"none","rationale":"소수부분 로그의 세 decade 조각마다 감소 직선과 만나는 조건을 세우고, 그중 정확히 두 조건을 만족하는 자연수 구간을 센다. solution SVG와 해설이 구간별 교점 및 두 구간 중첩 카운팅을 확인한다. 분기·정수계수 부담이 있어 4가 우세하나 표준 그래프 분할과 3 사이 경계다."},
+    {"qid":19,"firstPassBucket":4,"finalBucket":4,"confidence":"high","boundary":"NONE","difference":"none","rationale":"조각함수의 증가·감소와 극값을 확인한 뒤 길이 2 구간이 최대점을 포함하는 t를 세고, f≥1 영역과 닫힌 구간 끝점을 이용해 가능한 s를 찾는다. 두 구간 조건의 연쇄지만 구조가 명확하고 해설·그림이 이를 확인한다."},
+    {"qid":20,"firstPassBucket":3,"finalBucket":3,"confidence":"high","boundary":"NONE","difference":"none","rationale":"두 대칭 조건을 각각 6θ≡π, 8θ≡0 (mod 2π)으로 바꾸고 후보집합의 교집합을 취한다. 합동각 구조 분석은 필요하지만 전형적이다."},
+    {"qid":21,"firstPassBucket":3,"finalBucket":3,"confidence":"high","boundary":"NONE","difference":"none","rationale":"f(x−2)=f(x+2)에서 주기 4를 읽고 h(x)=f(x−1)로 단순화한 뒤 한 주기의 최댓값·최솟값을 옮긴다. 조건 관계 연결이 필요한 표준 유형이다."},
+    {"qid":22,"firstPassBucket":3,"finalBucket":3,"confidence":"high","boundary":"NONE","difference":"none","rationale":"합 조건에서 sinθ cosθ, 사분면에서 sinθ−cosθ의 부호를 정하고 제곱합의 인수분해로 값을 만든다. 여러 표준 항등식 연결은 필요하나 비정형 발상은 없다."},
+    {"qid":23,"firstPassBucket":4,"finalBucket":4,"confidence":"high","boundary":"NONE","difference":"none","rationale":"공통 지수값에서 x/y의 로그비를 도출하고 로그 조건을 z의 유리식으로 바꿔 x/z를 소거한 뒤 a^3을 계산한다. 다변수 관계의 연쇄 구조화가 풀이 중심이다."},
+    {"qid":24,"firstPassBucket":4,"finalBucket":4,"confidence":"high","boundary":"NONE","difference":"none","rationale":"두 지수함수의 치역 교집합에서 정수 n을 네 개 갖는 a를 짝수·홀수로 분기해 결정한 뒤, x=b…c에서 곡선 사이 정수 y를 네 번 센다. solution SVG가 격자 카운팅 구조를 확인한다. 여러 단계지만 분기·합산으로 접근 가능한 고난도라 4이며 결정적 재구성형 5 근거는 없다."}
+  ]
+}

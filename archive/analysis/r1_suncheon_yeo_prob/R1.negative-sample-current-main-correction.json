@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_NEGATIVE_SAMPLE_PROVENANCE_REBIND_V1",
+  "stage": "R1",
+  "examUid": "24_순천여고_1학기_중간_고2_확률과통계",
+  "qidScope": "QID_ONLY:22",
+  "candidateRawSha256": "789e165fe1fb99aed5aa55634df1a557a7d9ac5348f3293a3b34ecd2407e6e93",
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "registryApproved": true,
+    "previousReadmeSha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+    "currentReadmeSha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+    "currentFailedRenderPath": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q20-solution.bad.svg",
+    "currentFailedRenderSha256": "89debcfed249f581602aa9c77fb54390866dccb4a95fe21f59ec1ee6fac82cb7",
+    "currentStaticPreviewPath": "archive/analysis/r1_suncheon_yeo_prob/negative-sample-current/q20-solution.bad.png",
+    "currentStaticPreviewSha256": "ea642867e45544c8f2a5c3ab5f1e9236c4c98bb8f5fe59861e5db3d1f0855f69",
+    "observation": "Current origin/main bytes were opened and the linked failed q20 SVG was actually rendered for inspection. The label 3x+4y-8=0 has slope -3/4, while the displayed actual black line primitive rises with slope +3/4; the shown PH segment has slope 4/3. The actual line/PH slope product is 1, not -1, so the depicted line is not perpendicular to PH. This confirms the current README regression description; this is a calibration-only negative sample, not target content or a render PASS."
+  },
+  "priorFailedValidatorReport": {
+    "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/R1.generic.latest-main.json",
+    "sha256": "3589c4fa71a2290b084fda395f26b1b6defe478ff956024495599ab4b9b78389",
+    "disposition": "FAIL",
+    "issue": "ARTIFACT_GOLDEN_PROVENANCE_INVALID:NEGATIVE_SAMPLE_BINDING_REQUIRED"
+  },
+  "priorBoundEvidence": {
+    "path": "archive/analysis/r1_suncheon_yeo_prob/R1.q22.question-only.combined-v2-evidence.bound.json",
+    "sha256": "6f0fc7720de210e48f3a049f2617ef732625e7fe0f08f57d5d6a7d9508981ecb"
+  },
+  "newR1Evidence": {
+    "path": "archive/analysis/r1_suncheon_yeo_prob/R1.q22.question-only.combined-v2-evidence.main-rebind.json",
+    "sha256": "ca8c428f401ee132273e619bc5ccef3cde0f89810a71e9d275e1bada03355c2c"
+  },
+  "candidateSourceUnchanged": true,
+  "freezeUnchanged": true,
+  "onlyEvidenceCorrection": "Updated approved negative README SHA and observation to bind current main bytes and the linked failed SVG visual review; no target/candidate/source/answer freeze changed.",
+  "actualTargetRenderPassClaimed": false
+}

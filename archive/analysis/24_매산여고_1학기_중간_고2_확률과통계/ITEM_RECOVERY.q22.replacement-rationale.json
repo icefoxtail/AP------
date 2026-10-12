@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_REPLACEMENT_RATIONALE_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "24_매산여고_1학기_중간_고2_확률과통계",
+  "qid": 22,
+  "recoveryType": "QUESTION_REPLACEMENT",
+  "method": "CODEX_DIRECT_AUTHORING",
+  "replacementScope": "QUESTION_ONLY",
+  "reason": "원문은 a^6=64에서 실수 a=±2를 허용해 요구값이 유일하지 않다. 원문 수치/기호만 패치해 원문 복원처럼 제시하지 않고, 같은 H15 이항정리의 전개항 계수 비교와 서술형 응답을 유지한 새 문항을 설계했다.",
+  "solutionFirstSequence": [
+    "핵심 개념·난도 역할: 이항정리 일반항으로 두 항의 계수를 비교하는 H15-PS-02 문항, 중간 수준 서술형.",
+    "조건·목표: (x+a)^8에서 x^3 계수 1792로 실수 a를 정하고 x^5 계수 b를 구해 a+b를 계산.",
+    "직접 풀이: x^3 항은 r=5라 56a^5=1792, 따라서 a=2. x^5 항은 r=3라 b=56·2^3=448.",
+    "존재·유일성: a^5=32는 실수해 a=2만 가진다. 두 요구 계수는 각기 한 개의 이항정리 일반항에서 나온다.",
+    "정답 동결: a+b=450.",
+    "보기 검토: 서술형 문항으로 choices=[]; 객관식 보기 대상 아님.",
+    "학생용 해설 작성 후 blind re-solve: 일반항 지수 8−r에 r=5,3을 각각 대입해 동일한 450 확인."
+  ],
+  "content": "[주관식2 (서술형)] [7점] (부분점수 있음)<br>$(x+a)^8$의 전개식에서 $x^3$의 계수가 $1792$이고 $x^5$의 계수가 $b$일 때, $a+b$를 구하는 풀이 과정과 답을 쓰시오. (단, $a, b$는 실수 상수)",
+  "answer": "450",
+  "solution": "$(x+a)^8$의 일반항은 $\\binom8r x^{8-r}a^r$이다.\n\n$x^3$항은 $8-r=3$, 즉 $r=5$일 때이므로 그 계수는 $\\binom85a^5=56a^5$이다. 따라서 $56a^5=1792$에서 $a^5=32$이고, 실수 $a$는 $2$이다.\n\n$x^5$항은 $8-r=5$, 즉 $r=3$일 때이므로 $b=\\binom83a^3=56\\cdot2^3=448$이다.\n\n따라서 $a+b=2+448=450$이다.",
+  "metaRef": "archive/analysis/24_매산여고_1학기_중간_고2_확률과통계/ITEM_RECOVERY.q22.meta-fresh-evidence.json",
+  "metaSha256": "5f1b98dac9e8c25eb6d4cbb979ff8850840e8e631a54073c46a0fe5185b33412",
+  "visual": {
+    "problemNeed": "EXEMPT",
+    "solutionNeed": "EXEMPT",
+    "reason": "표현 대상은 대수 전개항뿐이며 풀이의 두 항 매칭을 식으로 충분히 확인할 수 있다."
+  },
+  "assetsChanged": [],
+  "pdfActuallyReviewedThisRun": false,
+  "sourceProvenance": {
+    "originalQuestionSourceQid": 22,
+    "originalSourceSha256": "552df3d4c1a1c103957b1d89bf28ef0505e2b3eda0097661b2f0a546eaa197e2",
+    "originalSourceBlobSha1": "96183c85985b5164a22288f92c124325bb33dae6",
+    "sourceTruthBasis": "REUSED_R1_SCOPED_PDF_FINDING; this run authors a replacement, not an original-text restoration."
+  }
+}

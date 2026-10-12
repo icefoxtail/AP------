@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_FALSE_HOLD_ADJUDICATION_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "stage": "CREATE",
+  "examUid": "24_금당중_1학기_기말_중2_기출",
+  "qid": 24,
+  "status": "FALSE_HOLD_CLEARED",
+  "scopeOnly": true,
+  "fullExamCreateComplete": false,
+  "studentSourceMutated": false,
+  "solutionMutated": false,
+  "sourceBinding": {
+    "path": "archive/exams/original/middle/m2/1final/24_금당중_1학기_기말_중2_기출.js",
+    "worktreeHead": "7bf7ac7d2e3f5c5ea9e61d432931ade290cc9543",
+    "rawSha256": "c05cd9d6990d680f3268228245417aa5ac33e8abfbb0e0dc083df0830118598b",
+    "rawBufferGitBlobSha1": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+    "baselineStudentPayloadSha256": "5fef2939196300157adbb2f81bee14fb296871d02b0042114aa87844a77f14a3",
+    "currentStudentPayloadSha256": "5fef2939196300157adbb2f81bee14fb296871d02b0042114aa87844a77f14a3",
+    "studentPayloadExactParity": true,
+    "qidContentSha256": "d4921edeb3c7cb838dda6815799d8934da3bb09dd775178b71cf240bed6053c1",
+    "qidChoicesSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "qidAnswerSha256": "99c6e3805fb9dca27be39ae56ebd2c2afd410b2baaf2a093b92476a42526c39a",
+    "qidSolutionSha256": "745221b032b1ae721285a9bef6e69443f89b290176c80f26c0da33e31aee8050"
+  },
+  "assetBinding": {
+    "ref": "assets/images/24_금당중_1학기_기말_중2_기출/q24.png",
+    "sha256": "46663e972c07a76aa6a6ee605fa1807a9b1bdf8a7770776a2f28e9fe6d0b943e",
+    "opened": true,
+    "observed": "Trapezoid ABCD with AD parallel to BC; diagonals AC and BD intersect at O."
+  },
+  "sourceReference": {
+    "policy": "EXTRACTED_JS_ASSETS / DEFECT_ONLY",
+    "originalPageAvailableInAssignedWorktree": false,
+    "pdfOpened": false,
+    "sourceExactParityClaimed": false,
+    "decision": "The extracted student item is internally coherent; no source-dependent defect remains to justify PDF lookup or question replacement."
+  },
+  "falseHoldAdjudication": {
+    "priorHoldPath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-SOURCE_HOLD.json",
+    "priorHoldSha256": "e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0",
+    "priorHoldPreservedUnchanged": true,
+    "originalFreezePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/fresh-original-freeze.json",
+    "originalFreezeSha256": "499c835db35395e41a53737708f1f708f8bc33d7ad6f77baf66c3b5d0534b38d",
+    "originalFreezePreservedUnchanged": true,
+    "supersededPriorInference": {
+      "preservedInOriginalFreeze": true,
+      "claim": "△OAB and △ODC are similar, so AO:OC=3:5 gives area ratio 9:25 and contradicts equality.",
+      "whyInvalid": "The compared triangles △OAB and △ODC are not established as similar by AD∥BC. The valid similar pair is △AOD and △COB. Applying its side ratio directly as an area ratio for △OAB and △ODC is an invalid pair substitution."
+    },
+    "proof": [
+      "AD∥BC, so △ABC and △DBC have common base BC and equal altitudes; hence [ABC]=[DBC].",
+      "The diagonals meet at interior point O, so [ABC]=[OAB]+[OBC] and [DBC]=[ODC]+[OBC]. Subtracting the common [OBC] yields [OAB]=[ODC].",
+      "For (2), △OAB and △OBC have bases AO and OC on line AC and share the altitude from B; therefore [OAB]:[OBC]=AO:OC=3:5. Since [ODC]=12 and [OAB]=[ODC], [OBC]=12×5/3=20 cm²."
+    ],
+    "answerSolutionDisposition": "Current answer and solution are mathematically consistent with the extracted stem and opened figure; q24 answer HOLD is cleared without changing student or solution fields."
+  },
+  "visualAxes": {
+    "problemVisual": {
+      "need": "REQUIRED",
+      "action": "KEEP_EXISTING_VERIFIED_RASTER",
+      "reason": "Vertex order, parallel bases, and diagonal intersection are source visual facts needed to interpret the geometry; the opened original q24 PNG supplies them without reconstruction.",
+      "renderStatus": "NOT_REVIEWED_IN_THIS_SCOPED_CREATE_ADJUDICATION"
+    },
+    "solutionVisual": {
+      "need": "BENEFICIAL",
+      "action": "NEW_SVG",
+      "ref": "assets/images/24_금당중_1학기_기말_중2_기출/q24-solution.svg",
+      "sha256": "271eac5b5998cb6f4181341afe61a77e82cdd3903733d09d4fa23d7fdb373d12",
+      "geometryEvidencePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-solution-svg-physical-evidence.json",
+      "geometryEvidenceSha256": "a74fc70ec777e0877378b98fac0e51e3374b42bfae0d7c11abc9b37d876cea1b",
+      "r1Verdict": "PASS",
+      "r3Verdict": "PASS_QID_24_SOLUTION_DESKTOP",
+      "r3ScreenshotSha256": "70def04cbe46ff7c7f9529264e790f1b9e929196526bfd0f29fbfed839a18b33",
+      "fontAndLabelReadability": "PASS",
+      "clipping": "NONE",
+      "mathJaxErrors": 0,
+      "sourceProblemImageUnchanged": true
+    }
+  },
+  "remainingStatus": {
+    "q24ItemHold": false,
+    "examQualityStatus": "NOT_COMPLETE",
+    "nextRequiredAction": "Target q24 correction closure is complete; no whole-exam R1/R2/R3 pass is claimed."
+  },
+  "supersedes": {
+    "path": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-CREATE-false-hold-adjudication.json",
+    "sha256": "74ce54ea2580fa9e26497887ff8a14bce7f5f3dcb4a45d44fb8cbea96530e880",
+    "reason": "Only q24.solutionImage, solutionImageSize, and solutionImageLayout were added after the false-hold math adjudication; q24 content/choices/answer/solution and problem PNG remain exact."
+  },
+  "sourceDeltaBinding": {
+    "manifestPath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-only-source-delta-manifest.v2.json",
+    "manifestSha256": "d314f0568a1be79074e59d05f63eb3480e0926d53530b41a1b0e3ceb2a9b8a57",
+    "baselineSourceRawSha256": "53a9333ebf9caab43f4accb346fa5fdedcb67c091e7f5ae205ad24c807814a56",
+    "currentSourceRawSha256": "c05cd9d6990d680f3268228245417aa5ac33e8abfbb0e0dc083df0830118598b",
+    "currentSourceGitBlobSha1": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+    "changedQids": [
+      24
+    ],
+    "changedFields": [
+      "solutionImage",
+      "solutionImageSize",
+      "solutionImageLayout"
+    ],
+    "allOtherQidsDeepEqual": true,
+    "q24QuestionChoicesAnswerSolutionUnchanged": true
+  },
+  "reviewBindings": {
+    "r1": {
+      "path": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-R1-fresh/q24-r1-targeted-review-v5.json",
+      "sha256": "c963c1bb0a5547a7746454e0be2c5b9a30d9c5476d3c5a6d33a6dd4c3b3b9360"
+    },
+    "r2": {
+      "path": "evidence/codex/r2/24_금당중_M2_1학기_기말_q24/q24-postfreeze-visual-rebind-v2.json",
+      "sha256": "9197b35fb061b074b740484a0e54f1918a84fffe49a35670a1c68262c606c356"
+    },
+    "r3": {
+      "path": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/R3-q24-target/R3-q24-displayfix-v2-sol-review.json",
+      "sha256": "d77786ddd3f7907f78e1af5d084b33f98098991d07c3f5733f90aa476a606b66"
+    },
+    "physicalEvidenceRebind": {
+      "path": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-R1-current-source-refresh-correction-review.v1.json",
+      "sha256": "8abf7e4876a7349486668002356c94f8858339567716713e4995c8c0176aa4a1"
+    }
+  },
+  "revision": 2
+}

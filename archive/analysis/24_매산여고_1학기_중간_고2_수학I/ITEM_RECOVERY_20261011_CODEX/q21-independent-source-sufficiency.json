@@ -1,0 +1,52 @@
+{
+  "examUid": "24_매산여고_1학기_중간_고2_수학I",
+  "qid": 21,
+  "stage": "ITEM_RECOVERY",
+  "executionLine": "CODEX",
+  "sourceSufficiencyDecision": {
+    "decision": "CONTAMINATED_REVALIDATION_REQUIRES_FRESH_SESSION",
+    "method": "independent current JS and referenced-asset inspection before upstream review evidence",
+    "currentArtifact": {
+      "path": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "gitBlobSha": "ff175c0ca217b873c194b75d0744d6b21c6502ec",
+      "sha256": "fd53c2297a0984ca7d0a1c72cfbc27b207e77c0ee9f63418ef71f2103c862b04"
+    },
+    "studentFieldsObserved": [
+      "content states period-4 symmetry and a maximum value 5 at x=1 / minimum value -1 at x=3 on [0,4], without uniqueness or an exhaustive graph",
+      "choices are 31, 32, 33, 34, 35",
+      "stored answer and solution were excluded from the sufficiency inference"
+    ],
+    "referencedAsset": {
+      "path": "archive/assets/images/24_매산여고_1학기_중간_고2_수학I/q21-solution.svg",
+      "role": "solutionImage only; no problem image is referenced",
+      "observation": "depicts only u=1 as max and u=3 as min and therefore assumes the very uniqueness not stated by the student source; it cannot independently supply the missing source fact"
+    },
+    "decisiveMissingFacts": [
+      "whether the stated maximum/minimum locations are unique, or whether the original provides a graph/other condition that fixes every extremum location needed to define a and c"
+    ],
+    "alternativeEvidenceChecked": [
+      "current q21 content and all five choices",
+      "referenced q21 solution SVG bytes and labels",
+      "no q21 problem image reference exists"
+    ],
+    "whyTruthStillNonDeterministicFromCurrentStudentInput": "For arbitrary period-4 f, the given max/min values are attained at x=1 and x=3 but may also be attained elsewhere in [0,4]. Then h(x)=f(x-1) on [5,9] may have multiple maximizing/minimizing x-values; a and c, hence ad+bc, are not uniquely fixed.",
+    "upstreamEvidenceViewed": true,
+    "sourcePdfCheck": "SCOPED_PDF_Q21_PAGE6_CONFIRMED_NO_UNIQUENESS_CLAUSE_OR_GRAPH",
+    "fullPageLookupResult": {
+      "path": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/수1/2024_매여고2_수1_1중간.pdf",
+      "page": 6,
+      "pdfSha256": "5332ac375ccd364e2d0eaea7d23d3967412dff7dae2bca8aff254eb6534b98f8",
+      "renderPath": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/ITEM_RECOVERY_20261011_CODEX/source-page06-q21.png",
+      "lookupResult": "q21 condition box states only f(x) has maximum 5 at x=1 and minimum -1 at x=3 on [0,4]; no uniqueness language and no graph/visual appears",
+      "sourceParity": "current JS matches these q21 facts and five choices; PDF does not provide deterministic missing fact"
+    },
+    "whyTruthStillNonDeterministic": "The source permits period-4 functions with additional points attaining the same max/min in [0,4]. Therefore a,c (the extremum locations on [5,9]) are not uniquely specified and ad+bc is not determined. The solution SVG asserts one location each but is downstream solution art, not an original source constraint.",
+    "upstreamEvidenceExposure": {
+      "source": "current JS q21 itemHoldReason field",
+      "exposedText": "The original source only states that f has a maximum 5 at x=1 and a minimum −1 at x=3 on [0,4], and period 4. It does not state that these extrema locations are unique or provide a graph. For an arbitrary period-4 function, tied extrema can give multiple maximizing/minimizing x values for h on [5,9], so a and c (and ad+bc) are not uniquely determined. Scoped PDF page 6 q21 visual check (PDF SHA 5332ac375ccd364e2d0eaea7d23d3967412dff7dae2bca8aff254eb6534b98f8) confirmed exact parity and no omitted uniqueness clause/figure; do not add an assumption absent from source.",
+      "otherReviewerReportsOpened": false,
+      "exposureBeforeIndependentDecisionWasPersisted": true
+    },
+    "cleanOrderStatus": "FAILED_CONTAMINATED"
+  }
+}

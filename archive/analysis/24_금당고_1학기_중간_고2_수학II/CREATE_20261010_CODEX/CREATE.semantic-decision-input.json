@@ -1,0 +1,501 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_SEMANTIC_DECISION_INPUT_V1",
+  "examUid": "24_금당고_1학기_중간_고2_수학II",
+  "stage": "CREATE",
+  "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+  "artifactRawSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "candidateOrPriorVerdictFieldsIncluded": false,
+  "rows": [
+    {
+      "questionUid": "qid_v1_3d31c7d7297a2d267020db7d4ab38e64be01ba9a02cb868de09853a1c7bc1585",
+      "qid": 1,
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+        "questionUid": "qid_v1_3d31c7d7297a2d267020db7d4ab38e64be01ba9a02cb868de09853a1c7bc1585",
+        "sourceOrdinal": 1,
+        "contentHash": "sha256:cd26287e397b122ed4eb1a9cb79c740e9f9785f746b353958cae079632b82be2",
+        "choicesHash": "sha256:b2dce4869e92fc2335bc796bdd505c5af58138012dd66bfe9e4d1daa5d140c27",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36"
+      },
+      "studentFields": {
+        "content": "다음 중 극한값이 틀린 것은? [3.5점]",
+        "choices": [
+          "$\\lim_{x\\to 2} (3x+2)=8$",
+          "$\\lim_{x\\to 2} \\frac{\\sqrt{x+2}-2}{x-2}=\\frac{1}{2}$",
+          "$\\lim_{x\\to 1} \\frac{x^2+x-2}{x-1}=3$",
+          "$\\lim_{x\\to \\infty} \\left(\\frac{1}{x}+\\frac{1}{x+2}\\right)=0$",
+          "$\\lim_{x\\to \\infty} \\frac{2x^2-x+3}{x^2+x-2}=2$"
+        ],
+        "questionType": "객관식",
+        "image": ""
+      },
+      "solution": "각 선택지의 극한값을 확인한다.\n\n① $x=2$를 대입하면 $3\\cdot2+2=8$이므로 옳다.\n\n② 분자와 분모를 각각 유리화하면\n$$\\frac{\\sqrt{x+2}-2}{x-2}=\\frac{1}{\\sqrt{x+2}+2}$$\n이므로 극한값은 $\\frac14$이다. 보기의 $\\frac12$와 다르므로 틀렸다.\n\n③ $x^2+x-2=(x-1)(x+2)$이므로 극한값은 $1+2=3$이다.\n\n④ 두 항은 각각 $0$으로 수렴하므로 합도 $0$이다.\n\n⑤ 분자와 분모를 $x^2$으로 나누면 최고차항의 계수비 $2$로 수렴한다.\n\n따라서 틀린 것은 ②이다.",
+      "solutionSha256": "8c6838a1fd5c6ae0900ce6e45fcf05e76249ea06705ea9858d4f3f85c380f131",
+      "finalAnswer": "②"
+    },
+    {
+      "questionUid": "qid_v1_c079ea030890ac890e45b6a8dce51dda8ab85634c12f2671c52c8a5e37b2f8b1",
+      "qid": 2,
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+        "questionUid": "qid_v1_c079ea030890ac890e45b6a8dce51dda8ab85634c12f2671c52c8a5e37b2f8b1",
+        "sourceOrdinal": 2,
+        "contentHash": "sha256:ee87e7e49d5d9fc06289eaafb862f101a6cda4ade22697343ec251508eb266af",
+        "choicesHash": "sha256:7548b1dbe2f2064eff1553763daf35f8224402311621976e5f597235871dd18b",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36"
+      },
+      "studentFields": {
+        "content": "두 함수 $f(x), g(x)$가 $\\lim_{x\\to 0}\\frac{f(x)}{x^2}=1$, $\\lim_{x\\to 0}\\frac{g(x)}{x}=2$를 만족시킬 때, 극한값 $\\lim_{x\\to 0}\\frac{f(x)+x}{g(x)+x}$의 값은? [3.5점]",
+        "choices": [
+          "$3$",
+          "$2$",
+          "$\\frac{2}{3}$",
+          "$\\frac{1}{2}$",
+          "$\\frac{1}{3}$"
+        ],
+        "questionType": "객관식",
+        "image": ""
+      },
+      "solution": "주어진 조건에서\n$$\\frac{f(x)}x=\\frac{f(x)}{x^2}\\,x\\longrightarrow 1\\cdot0=0,$$\n$$\\frac{g(x)}x\\longrightarrow2$$\n이다.\n\n구하려는 식의 분자와 분모를 $x$로 나누면\n$$\\frac{f(x)+x}{g(x)+x}=\\frac{\\frac{f(x)}x+1}{\\frac{g(x)}x+1}.$$\n따라서 분자는 $1$, 분모는 $3$으로 수렴한다.\n\n그러므로 극한값은 $\\frac13$이고 정답은 ⑤이다.",
+      "solutionSha256": "de7586d73f440f2736c025a65b0c0244b9934ee79deb7b32fda9cf208a960a1f",
+      "finalAnswer": "⑤"
+    },
+    {
+      "questionUid": "qid_v1_6d13adc0d44be58c381b871672a76263081084697db8ac5b573901a60574be7d",
+      "qid": 3,
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+        "questionUid": "qid_v1_6d13adc0d44be58c381b871672a76263081084697db8ac5b573901a60574be7d",
+        "sourceOrdinal": 3,
+        "contentHash": "sha256:124fb8e23457da5e2ffd5472c5357bbdb9650402ad6883ea82c937380b73b75e",
+        "choicesHash": "sha256:7e25e80ba0ada9906f6f7c4417b6c78320626a2263c02c5540330620c47b5bec",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36"
+      },
+      "studentFields": {
+        "content": "함수 $f(x)=\\begin{cases} \\frac{x^2-mx+3}{x-3} & (x \\neq 3) \\\\ n & (x = 3) \\end{cases}$가 실수 전체의 집합에서 연속이 되도록 하는 상수 $m, n$에 대하여 $m+n$의 값은? [3.8점]",
+        "choices": [
+          "$1$",
+          "$2$",
+          "$3$",
+          "$6$",
+          "$12$"
+        ],
+        "questionType": "객관식",
+        "image": ""
+      },
+      "solution": "$x=3$에서 연속이려면 분자의 값이 $0$이어야 한다.\n$$9-3m+3=0$$\n따라서 $m=4$이다.\n\n이때 $x^2-4x+3=(x-3)(x-1)$이므로 $x\\ne3$에서\n$$f(x)=x-1.$$\n따라서\n$$\\lim_{x\\to3}f(x)=2$$\n이고 연속 조건에서 $n=f(3)=2$이다.\n\n그러므로 $m+n=4+2=6$이며 정답은 ④이다.",
+      "solutionSha256": "06dfe2ff84ba66b151252c97d88cb6592c921ecb1d649cc3219430e53c7b5cd1",
+      "finalAnswer": "④"
+    },
+    {
+      "questionUid": "qid_v1_a9d883d90d84cbe8e05ed05401b361266e4894244d7e8bd6f5e1ab9d60a47a3c",
+      "qid": 4,
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+        "questionUid": "qid_v1_a9d883d90d84cbe8e05ed05401b361266e4894244d7e8bd6f5e1ab9d60a47a3c",
+        "sourceOrdinal": 4,
+        "contentHash": "sha256:1a91579660567a0d8dc2ed23f1e1720d44d0c1372c1b52fd6813e258788449c8",
+        "choicesHash": "sha256:4c9daefc3af3c64319dd112ac321e423f898c9a4c4ba82e59edc26ad8a0c7180",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36"
+      },
+      "studentFields": {
+        "content": "$x \\ge 1$인 모든 실수 $x$에서 연속인 함수 $f(x)$가 $(x-2)f(x)=\\sqrt{x-1}-1$을 만족시킬 때, $f(2)$의 값은? [3.8점]",
+        "choices": [
+          "$\\frac{1}{2}$",
+          "$1$",
+          "$\\frac{3}{2}$",
+          "$2$",
+          "$\\frac{5}{2}$"
+        ],
+        "questionType": "객관식",
+        "image": ""
+      },
+      "solution": "$x\\ne2$에서 식을 정리하기 위해 분자와 분모에 $\\sqrt{x-1}+1$을 곱한다.\n$$f(x)=\\frac{\\sqrt{x-1}-1}{x-2}=\\frac{1}{\\sqrt{x-1}+1}.$$\n\n$f$가 $x=2$에서 연속이므로\n$$f(2)=\\lim_{x\\to2}f(x)=\\frac{1}{\\sqrt{1}+1}=\\frac12.$$\n\n따라서 정답은 ①이다.",
+      "solutionSha256": "ca84bbed1bd149933916c10a17fbdb6c74547cce7e9ae826369a1bcdde968131",
+      "finalAnswer": "①"
+    },
+    {
+      "questionUid": "qid_v1_ecd0fba605ec021967aa42bd6fc49cfff7184ce2a5d2bd747d2c15f5bafdc309",
+      "qid": 5,
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+        "questionUid": "qid_v1_ecd0fba605ec021967aa42bd6fc49cfff7184ce2a5d2bd747d2c15f5bafdc309",
+        "sourceOrdinal": 5,
+        "contentHash": "sha256:f8bde886efbb33f5b7625c74904846f56fc314229236836365a213bce4a45de1",
+        "choicesHash": "sha256:a542e66ad81f031f8f5d3e15cfe9e984acaa339ba072265d7d3ec072665042a9",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36"
+      },
+      "studentFields": {
+        "content": "함수 $f(x)=\\begin{cases} \\frac{x^2+3x-10}{x-2} & (x \\neq 2) \\\\ m+1 & (x = 2) \\end{cases}$가 $x=2$에서 미분가능할 때, 상수 $m$의 값은? [4점]",
+        "choices": [
+          "$4$",
+          "$5$",
+          "$6$",
+          "$7$",
+          "$8$"
+        ],
+        "questionType": "객관식",
+        "image": ""
+      },
+      "solution": "분자를 인수분해하면\n$$x^2+3x-10=(x-2)(x+5)$$\n이므로 $x\\ne2$에서 $f(x)=x+5$이다.\n\n미분가능한 함수는 연속이므로\n$$m+1=f(2)=\\lim_{x\\to2}(x+5)=7.$$\n따라서 $m=6$이고 정답은 ③이다.",
+      "solutionSha256": "7b859055e7aa8152138c3e95afbf9099bce1fe05bc43dbc76630b68485b675a9",
+      "finalAnswer": "③"
+    },
+    {
+      "questionUid": "qid_v1_ac1fe26448de71a6ed6e1a6c630c259d6926e53b7dbd2ed9497677e9008e4955",
+      "qid": 6,
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+        "questionUid": "qid_v1_ac1fe26448de71a6ed6e1a6c630c259d6926e53b7dbd2ed9497677e9008e4955",
+        "sourceOrdinal": 6,
+        "contentHash": "sha256:eb022cffff35aa3d939796b66b0f66f53268d0d8284993930e6cfaccc225a9e6",
+        "choicesHash": "sha256:e0a2d515b9432b7ce272fe4d09d2234810d327b803650316fda86b74a012a5e6",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36"
+      },
+      "studentFields": {
+        "content": "함수 $f(x)$가 $x=0$에서 연속이고 $\\lim_{x\\to 0-}f(x)=1-2k$, $\\lim_{x\\to 0+}f(x)=k-5$를 만족시킬 때, $k+f(0)$의 값은? [4점]",
+        "choices": [
+          "$-2$",
+          "$-1$",
+          "$0$",
+          "$1$",
+          "$2$"
+        ],
+        "questionType": "객관식",
+        "image": ""
+      },
+      "solution": "$x=0$에서 연속이므로 좌극한과 우극한이 같다.\n$$1-2k=k-5$$\n따라서 $k=2$이다.\n\n연속성에 의해\n$$f(0)=\\lim_{x\\to0}f(x)=1-2\\cdot2=-3.$$\n그러므로 $k+f(0)=2+(-3)=-1$이고 정답은 ②이다.",
+      "solutionSha256": "5a3e344fe9cdaa34dc8b626aa9a2248e80c2e2e8c9df528d34ee16382f0e64ab",
+      "finalAnswer": "②"
+    },
+    {
+      "questionUid": "qid_v1_5403952b1f7574bfbf6fe60748a72309d2afe3aac0abc2f2d57de9adcb6b8781",
+      "qid": 7,
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+        "questionUid": "qid_v1_5403952b1f7574bfbf6fe60748a72309d2afe3aac0abc2f2d57de9adcb6b8781",
+        "sourceOrdinal": 7,
+        "contentHash": "sha256:a7be23eeeb893bdb6fb0c847448874c86dca20cb367d9034c78166c55569e2db",
+        "choicesHash": "sha256:60dffc9ed9471bb5421ed2761383752993cb684269061d8bab3690e64d595bde",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36"
+      },
+      "studentFields": {
+        "content": "곡선 $y=x^2-x+5$에 접하고 기울기가 $1$인 접선의 방정식은? [4점]",
+        "choices": [
+          "$y=x-4$",
+          "$y=x-1$",
+          "$y=x+1$",
+          "$y=x+4$",
+          "$y=x+6$"
+        ],
+        "questionType": "객관식",
+        "image": ""
+      },
+      "solution": "곡선의 접선 기울기는 도함수값이므로\n$$f'(x)=2x-1=1$$\n을 풀면 접점의 $x$좌표는 $1$이다.\n\n$f(1)=1-1+5=5$이므로 접점은 $(1,5)$이다. 점 $(1,5)$를 지나고 기울기가 $1$인 직선은\n$$y-5=x-1,$$\n즉 $y=x+4$이다.\n\n따라서 정답은 ④이다.",
+      "solutionSha256": "ecb59a4837a8750053eff05eb8e9952a5f86e1fafb5bac508a2ff2ef7830cb17",
+      "finalAnswer": "④"
+    },
+    {
+      "questionUid": "qid_v1_d72113efde33be7e6f4cd05fc2d6021b9d96b272fe93a94308297db9979aea04",
+      "qid": 8,
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+        "questionUid": "qid_v1_d72113efde33be7e6f4cd05fc2d6021b9d96b272fe93a94308297db9979aea04",
+        "sourceOrdinal": 8,
+        "contentHash": "sha256:bc8691b8cfbb78d9ec9a74c60042691b01fb876f53de913015cd00a51fedb9ee",
+        "choicesHash": "sha256:ff10562d79245710d5119fe483218ab8afb74a6e2c64a893baf4a6028fc0081f",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36"
+      },
+      "studentFields": {
+        "content": "함수 $f(x)=-2x^2+x+1$에 대하여 닫힌구간 $[1, 2]$에서 평균값 정리를 만족시키는 실수 $c$의 값은? [4점]",
+        "choices": [
+          "$1$",
+          "$\\frac{5}{4}$",
+          "$\\frac{3}{2}$",
+          "$\\frac{7}{4}$",
+          "$2$"
+        ],
+        "questionType": "객관식",
+        "image": ""
+      },
+      "solution": "평균값 정리에 따라\n$$f'(c)=\\frac{f(2)-f(1)}{2-1}.$$\n$f(2)=-5$, $f(1)=0$이므로 평균변화율은 $-5$이다.\n\n한편 $f'(x)=-4x+1$이므로\n$$-4c+1=-5,$$\n따라서 $c=\\frac32$이다. 정답은 ③이다.",
+      "solutionSha256": "78fa3e798dc0757967a373a907aeccb2e6113319e10a199184427969175adb25",
+      "finalAnswer": "③"
+    },
+    {
+      "questionUid": "qid_v1_4f2b222a36ca53a7ee6db814164dcad63158787af3da8dd9f52a871342d71bf7",
+      "qid": 9,
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+        "questionUid": "qid_v1_4f2b222a36ca53a7ee6db814164dcad63158787af3da8dd9f52a871342d71bf7",
+        "sourceOrdinal": 9,
+        "contentHash": "sha256:1e616d6f94649a900d1316f2e2c085c4c9dd118e6a8bb13305d11c37ce0c29ee",
+        "choicesHash": "sha256:3d9362c6964136e307bbad950d4e3c8be5e4184d45bcaed01c1fca5ee7a12269",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36"
+      },
+      "studentFields": {
+        "content": "두 함수 $f(x), g(x)$에 대하여 다음 <보기> 중 옳은 것을 모두 고른 것은? [4.3점]\n\n<보기>\nㄱ. $\\lim_{x\\to a}\\{f(x)+2g(x)\\}$와 $\\lim_{x\\to a}\\{2g(x)\\}$의 값이 존재하면 $\\lim_{x\\to a}f(x)$의 값도 존재한다.\nㄴ. $\\lim_{x\\to a}f(x)$와 $\\lim_{x\\to a}g(x)$의 값이 존재하면 $\\lim_{x\\to a}g(f(x))$의 값도 존재한다.\nㄷ. $\\lim_{x\\to a}\\{f(x)+g(x)\\}$와 $\\lim_{x\\to a}\\{f(x)-g(x)\\}$의 값이 존재하면 $\\lim_{x\\to a}\\frac{f(x)}{f(x)-g(x)}$ 값도 존재한다.(단, $f(x) \\neq g(x)$)\nㄹ. $\\lim_{x\\to a}f(x)$와 $\\lim_{x\\to a}g(x)$의 값이 모두 존재하지 않으면 $\\lim_{x\\to a}\\{f(x)-g(x)\\}$의 값도 존재하지 않는다.",
+        "choices": [
+          "ㄱ",
+          "ㄱ, ㄴ",
+          "ㄱ, ㄷ",
+          "ㄴ, ㄹ",
+          "ㄴ, ㄷ, ㄹ"
+        ],
+        "questionType": "객관식",
+        "image": ""
+      },
+      "solution": "각 진술을 따로 확인한다.\n\n**ㄱ.** 두 극한이 존재하면\n$$f(x)=\\{f(x)+2g(x)\\}-2g(x)$$\n의 극한도 존재한다. 참이다.\n\n**ㄴ.** $a=0$에서 $f(x)=1+x$로 두고, $t\\ne1$일 때 $g(t)=\\sin\\frac1{t-1}$, $g(1)=0$으로 두자. $x\\to0$일 때 $f(x)\\to1$, $g(x)\\to\\sin(-1)$이므로 두 극한은 존재한다. 그러나 $g(f(x))=\\sin(1/x)$는 극한이 없다. 거짓이다.\n\n**ㄷ.** $f(x)=1$, $g(x)=1+x$로 두면 $f(x)+g(x)=2+x$, $f(x)-g(x)=-x$의 극한은 모두 존재하고 $f(x)\\ne g(x)$ $(x\\ne0)$이다. 그러나\n$$\\frac{f(x)}{f(x)-g(x)}=-\\frac1x$$\n의 유한한 극한은 존재하지 않는다. 거짓이다.\n\n**ㄹ.** $f(x)=g(x)=\\sin(1/x)$ $(x\\ne0)$이면 각각의 극한은 없지만 $f(x)-g(x)=0$의 극한은 존재한다. 거짓이다.\n\n따라서 ㄱ만 참이고 정답은 ①이다.",
+      "solutionSha256": "6575253bd58e3a53915bab41c50cb890a37efe7538769473d6c84f134ea70ddc",
+      "finalAnswer": "①"
+    },
+    {
+      "questionUid": "qid_v1_c4a21f6159bc1a92a78e65ade28eb8c917ea907dcaee2ee68827fff58889e3f5",
+      "qid": 10,
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+        "questionUid": "qid_v1_c4a21f6159bc1a92a78e65ade28eb8c917ea907dcaee2ee68827fff58889e3f5",
+        "sourceOrdinal": 10,
+        "contentHash": "sha256:f63ca1017c0a103cb7ffb09965b83dfde83da2c01d97f83930ce28e85020406d",
+        "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36"
+      },
+      "studentFields": {
+        "content": "함수 $f(x)=x^3+mx^2-4x+1$이 $\\lim_{h\\to 0}\\frac{f(1+h)-f(1-3h)}{2h}=6$을 만족시킬 때, 상수 $m$의 값은? [4.3점]",
+        "choices": [],
+        "questionType": "단답형",
+        "image": ""
+      },
+      "solution": "$h\\to0$에서 두 입력 $1+h$, $1-3h$는 모두 $1$로 간다. 미분계수의 정의에 따라\n$$\\lim_{h\\to0}\\frac{f(1+h)-f(1-3h)}{2h}=2f'(1).$$\n따라서 $f'(1)=3$이다.\n\n$f'(x)=3x^2+2mx-4$이므로\n$$f'(1)=3+2m-4=2m-1=3.$$\n따라서 $m=2$이다.",
+      "solutionSha256": "090e11e1c95b1ee44b0f74802269f36174fdc64b9b7b8e9156cdaae0e3ca791b",
+      "finalAnswer": "2"
+    },
+    {
+      "questionUid": "qid_v1_1142794d960c08e4af62a7771afd06ef72c1b13cff48a6629233f43e7e40d8f5",
+      "qid": 11,
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+        "questionUid": "qid_v1_1142794d960c08e4af62a7771afd06ef72c1b13cff48a6629233f43e7e40d8f5",
+        "sourceOrdinal": 11,
+        "contentHash": "sha256:a4bcefd00aca9d53bacf2d1b97591d9d99ebb307ee03c6e941f29e59c81e452e",
+        "choicesHash": "sha256:e167dc2124349cb78df60afc167a37a0000408871eadc3f716a608e49be00de9",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36"
+      },
+      "studentFields": {
+        "content": "미분가능한 함수 $f(x)$가 모든 실수 $x, y$에 대하여\n$$f(x+y)=f(x)+f(y)+6xy$$\n를 만족시키고 $f'(0)=4$일 때, $f'(x)$는? [4.3점]",
+        "choices": [
+          "$x+6$",
+          "$3x+2$",
+          "$2x+3$",
+          "$6x+1$",
+          "$6x+4$"
+        ],
+        "questionType": "객관식",
+        "image": ""
+      },
+      "solution": "주어진 식을 $x$에 대하여 미분하면\n$$f'(x+y)=f'(x)+6y$$\n이다.\n\n여기에 $x=0$을 대입하고 $f'(0)=4$를 사용하면\n$$f'(y)=4+6y.$$\n문제의 변수로 바꾸어 쓰면 $f'(x)=6x+4$이므로 정답은 ⑤이다.",
+      "solutionSha256": "ab95b64fa4c3dd8729a7b202fe7db0606525985eb807eca0c19e55f3866e0c92",
+      "finalAnswer": "⑤"
+    },
+    {
+      "questionUid": "qid_v1_0126d0b732ff028782275b526f8e09b3bddff73369710f145776fccf0274c225",
+      "qid": 12,
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+        "questionUid": "qid_v1_0126d0b732ff028782275b526f8e09b3bddff73369710f145776fccf0274c225",
+        "sourceOrdinal": 12,
+        "contentHash": "sha256:983252807eadc9caf6ef0876329972af92372c0a41545491ef0d36b541f372f8",
+        "choicesHash": "sha256:61dccf3c4223ccc6f0b685e22e675827557c9bcb8a0d23e1a978f1269669bb61",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36"
+      },
+      "studentFields": {
+        "content": "곡선 $y=x^3-3x^2+3x+1$에 접하고 직선 $3x-y+1=0$에 평행한 두 직선 사이의 거리는? [4.5점]",
+        "choices": [
+          "$\\frac{3}{\\sqrt{10}}$",
+          "$\\frac{4}{\\sqrt{10}}$",
+          "$\\frac{5}{\\sqrt{10}}$",
+          "$\\frac{6}{\\sqrt{10}}$",
+          "$\\frac{7}{\\sqrt{10}}$"
+        ],
+        "questionType": "객관식",
+        "image": ""
+      },
+      "solution": "곡선의 도함수는\n$$f'(x)=3x^2-6x+3=3(x-1)^2$$\n이다. 주어진 직선의 기울기는 $3$이므로 접점의 $x$좌표는\n$$3(x-1)^2=3,$$\n즉 $x=0$ 또는 $x=2$이다.\n\n$f(0)=1$, $f(2)=3$이므로 접점은 $(0,1)$, $(2,3)$이다. 각 접선은\n$$y=3x+1,\\qquad y=3x-3$$\n이다.\n\n두 평행선 사이의 거리는\n$$\\frac{|1-(-3)|}{\\sqrt{3^2+(-1)^2}}=\\frac4{\\sqrt{10}}.$$\n따라서 정답은 ②이다.",
+      "solutionSha256": "fb62b16a027277a4e77aadf3e51792fd0132fb83768b6f4f22b3ff7dafa81417",
+      "finalAnswer": "②"
+    },
+    {
+      "questionUid": "qid_v1_f31dc61870836c04d065746a8d59f124751c7b4e2534448526c429b993b80388",
+      "qid": 13,
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+        "questionUid": "qid_v1_f31dc61870836c04d065746a8d59f124751c7b4e2534448526c429b993b80388",
+        "sourceOrdinal": 13,
+        "contentHash": "sha256:c56aaf393a08b768d24a7d02c6cd810e577c063784335b6a4bda23786a89fbfd",
+        "choicesHash": "sha256:ff782081a4cc25de5ebd8fdb3b10e93e0a2a8b181fb4cabb15c6d4c8f83c7224",
+        "imageRefHash": "sha256:56dca624a0dbebd898467cef0e837afccea5c05d06e027ac7a51f93eafc4e744"
+      },
+      "studentFields": {
+        "content": "다항함수 $y=f(x)$의 그래프가 다음과 같을 때, 닫힌구간 $[-2, 4]$에서 평균값 정리를 만족시키는 상수 $c$의 개수는? [4.5점]",
+        "choices": [
+          "$1$",
+          "$2$",
+          "$3$",
+          "$4$",
+          "$5$"
+        ],
+        "questionType": "객관식",
+        "image": "assets/images/24_금당고_1학기_중간_고2_수학II/q13.png"
+      },
+      "solution": "평균값 정리에 의해 구하는 $c$는 양 끝점 $(-2,f(-2))$, $(4,f(4))$를 잇는 할선과 접선의 기울기가 같은 점의 $x$좌표이다.\n\n그래프에서 이 할선은 오른쪽으로 갈수록 내려가는 직선이다. 따라서 같은 기울기의 접선은 그래프가 내려가는 구간들에서 센다. 첫 번째 내려가는 부분에서는 1개, 두 개의 봉우리 사이의 내려가는 부분마다 각각 2개씩 나타난다.\n\n모두 $1+2+2=5$개이므로 정답은 ⑤이다.",
+      "solutionSha256": "54f4a5d6243648ed80419f573ccdc750b4f448388e8e689c3c3123d908a0581b",
+      "finalAnswer": "⑤"
+    },
+    {
+      "questionUid": "qid_v1_49a9b8af4efb02e870a3628e7276d59b36e8c8f353c1f838e8e2564a1c706707",
+      "qid": 14,
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+        "questionUid": "qid_v1_49a9b8af4efb02e870a3628e7276d59b36e8c8f353c1f838e8e2564a1c706707",
+        "sourceOrdinal": 14,
+        "contentHash": "sha256:fcf08b7d583f7fa7d3a9b6324c317056030d34c404e64d2a4dea57fc2bf7b86f",
+        "choicesHash": "sha256:c62f61bb53616c81af3f560a8c050d806f00b3baf21ea4f99ea3d8fe120112e8",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36"
+      },
+      "studentFields": {
+        "content": "최고차항의 계수가 $1$인 삼차함수 $f(x)$에 대하여 함수 $y=f(x)$의 그래프를 $x$축 방향으로 $p$만큼 평행이동시킨 함수를 $y=g(x)$라 하자.\n$$\\lim_{x\\to 0}\\frac{f(x)}{xg(x)}=p, \\quad \\lim_{x\\to p}\\frac{g(x)}{(x-p)f(x)}=0$$\n일 때, $g(2)$의 값은? (단, $p>0$이다.) [5.5점]",
+        "choices": [
+          "$2$",
+          "$1$",
+          "$0$",
+          "$-1$",
+          "$-2$"
+        ],
+        "questionType": "객관식",
+        "image": ""
+      },
+      "solution": "$x$축 방향으로 오른쪽으로 $p$만큼 옮겼으므로 $g(x)=f(x-p)$이다.\n\n첫째 극한이 유한하므로 $f(0)=0$이다. 둘째 극한에서 $t=x-p$로 놓으면\n$$\\lim_{t\\to0}\\frac{f(t)}{t f(t+p)}=0.$$\n만약 $f(p)=0$이라면 $f$는 서로 다른 두 점 $0,p$에서 영점을 갖는다. 원점과 $p$에서의 영점 차수를 각각 $m,n$이라 하면 $m+n\\le3$이다. 위 분수는 $t=0$ 근방에서 분자 차수가 $m$, 분모 차수가 $n+1$이므로 극한이 0이 되려면 $m>n+1$이어야 한다. 정수 $m,n\\ge1$에서 이는 $m+n\\ge4$를 뜻해 모순이다. 따라서 $f(p)\\ne0$이다. 이때 둘째 극한이 0이려면 $f'(0)=0$이어야 한다.\n\n최고차항 계수가 1인 삼차함수이고 $f(0)=f'(0)=0$이므로 $f(x)=x^2(x-a)$ 꼴이다. 첫째 극한이 양수 $p$이므로 $f(-p)=0$이어야 한다. 이에 따라 $a=-p$이고 $f(x)=x^2(x+p)$이다. 이때\n$$\\lim_{x\\to0}\\frac{f(x)}{xg(x)}=\\lim_{x\\to0}\\frac{x+p}{(x-p)^2}=\\frac1p.$$\n따라서 $1/p=p$이고 $p>0$이므로 $p=1$이다.\n\n그러면 $g(2)=f(1)=1^2(1+1)=2$이다. 정답은 ①이다.",
+      "solutionSha256": "0ba82df06707c767714e277f6667311ada9cf57440d9ec686d210c75a9e06c55",
+      "finalAnswer": "①"
+    },
+    {
+      "questionUid": "qid_v1_0a102be412dda8e1a4d24cf024040f2ae171b0b6dce898f1c6ba58f174ec7848",
+      "qid": 15,
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+        "questionUid": "qid_v1_0a102be412dda8e1a4d24cf024040f2ae171b0b6dce898f1c6ba58f174ec7848",
+        "sourceOrdinal": 15,
+        "contentHash": "sha256:e0ef23cef5d8c36cbf984088ce4a72415973620cdfc1faeb0e2a1d7ccf495f89",
+        "choicesHash": "sha256:da4804e9c49e7d49093c63ebdfa0b86ebc8b2c6da6ca857a5dd6c3cc7be2ecbb",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36"
+      },
+      "studentFields": {
+        "content": "좌표평면 위의 세 점 $\\mathrm{O}(0, 0)$, $\\mathrm{A}(4, 0)$, $\\mathrm{B}(0, 3)$을 꼭짓점으로 하는 삼각형의 세 변과 원 $x^2+y^2=r^2$ ($r>0$)이 만나는 서로 다른 점의 개수를 $f(r)$라 할 때, 함수 $f(r)$의 불연속점들의 $r$값들의 합은? [6점]",
+        "choices": [
+          "$\\frac{27}{5}$",
+          "$\\frac{32}{5}$",
+          "$\\frac{42}{5}$",
+          "$\\frac{47}{5}$",
+          "$\\frac{52}{5}$"
+        ],
+        "questionType": "객관식",
+        "image": ""
+      },
+      "solution": "각 변과 원점 $O$ 사이의 거리가 원의 반지름이 될 때 교점 수가 바뀐다.\n\n**변 $OA$, $OB$**의 점들은 원점에서의 거리가 각각 $[0,4]$, $[0,3]$의 모든 값을 갖는다.\n\n**변 $AB$**의 직선식은 $3x+4y=12$이다. 원점에서 이 직선까지의 거리는\n$$\\frac{12}{\\sqrt{3^2+4^2}}=\\frac{12}{5}.$$\n이 거리는 선분 $AB$ 안에서 수선의 발을 이루므로 $r=\\frac{12}{5}$에서 접하고, $\\frac{12}{5}<r<3$에서는 두 점에서 만난다. 그 다음 $r=3$에서는 꼭짓점 $B$에서, $r=4$에서는 꼭짓점 $A$에서 교점 수가 다시 바뀐다.\n\n따라서 불연속점은 $\\frac{12}{5},3,4$이고 합은\n$$\\frac{12}{5}+3+4=\\frac{47}{5}.$$\n정답은 ④이다.",
+      "solutionSha256": "b8acdf902218f3641c2775a95615b22b7bb015637cbb784ec8747d2e28c5c206",
+      "finalAnswer": "④"
+    },
+    {
+      "questionUid": "qid_v1_ca905b9dfb035eaf7ed3d38fa1b89cf9bbe1cbce32826bdca9163b2a3990b39f",
+      "qid": 16,
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+        "questionUid": "qid_v1_ca905b9dfb035eaf7ed3d38fa1b89cf9bbe1cbce32826bdca9163b2a3990b39f",
+        "sourceOrdinal": 16,
+        "contentHash": "sha256:65208a6e3e21380b3b9781faed4b19e6993d96c73a0380cb7bf13886c6cea04f",
+        "choicesHash": "sha256:15a83276ae5c6d400b93d2ac36fee07ff50cc143dbc6adcc8dfb090cb1f22720",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36"
+      },
+      "studentFields": {
+        "content": "두 양수 $p, q$에 대하여 실수 전체의 집합에서 미분가능한 함수\n$$f(x)=\\begin{cases} x^2+ax+b & (x \\le -1) \\\\ -x^2+cx+d & (x > -1) \\end{cases}$$\n가 다음 조건을 만족시킨다.\n\n(가) 함수 $|f(x)-p|$는 실수 전체 집합에서 미분 가능하다.\n(나) 함수 $|f(x+q)|$는 $x=0$에서만 미분가능하지 않다.\n\n$f(p)=-21$일 때, $f'(q)$의 값은? (단, $a, b, c, d$는 상수) [6점]",
+        "choices": [
+          "$4$",
+          "$2$",
+          "$-2$",
+          "$-4$",
+          "$-6$"
+        ],
+        "questionType": "객관식",
+        "image": ""
+      },
+      "solution": "왼쪽 식은 위로 열린 이차함수이고 오른쪽 식은 아래로 열린 이차함수이다. $f$가 $x=-1$에서 미분가능하므로 두 도함수값이 같다.\n$$-2+a=2+c,\\qquad a-c=4.$$\n\n$|f(x)-p|$가 모든 실수에서 미분가능하려면 $f(x)-p$의 부호가 바뀌는 영점에서 뾰족점이 생기지 않아야 한다. $f(x)-p$는 $x\\to-\\infty$에서 양수이고 $x\\to\\infty$에서 음수이므로 부호가 바뀌는 영점이 적어도 하나 있다. 각 이차식 내부의 꼭짓점에서 생기는 영점은 부호가 바뀌지 않으므로, 부호가 바뀌는 영점은 이음점 $x=-1$이어야 한다. 따라서\n$$f(-1)=p,\\qquad f'(-1)=0.$$\n이로부터 $a=2$, $c=-2$, $b=p+1$, $d=p-1$이다. 즉 $x\\le-1$에서는 $f(x)=(x+1)^2+p$이고, $x>-1$에서는 $f(x)=-(x+1)^2+p$이다.\n\n$f(x)=0$은 오른쪽 가지에서 $x=-1+\\sqrt p$일 때만 성립한다. $|f(x+q)|$가 $x=0$에서만 미분가능하지 않으므로 이 영점은 $x+q=-1+\\sqrt p$일 때 나타난다. 따라서 $q=-1+\\sqrt p$이다.\n\n$p>0$이므로 $p$는 오른쪽 식에 대입되어\n$$f(p)=-(p+1)^2+p=-p^2-p-1=-21.$$\n따라서 $p^2+p-20=0$이고 양수 조건에서 $p=4$이다. 그러면 $q=1$이고\n$$f'(q)=-2(q+1)=-4.$$\n정답은 ④이다.",
+      "solutionSha256": "8e4fd3fd8b3e8b4706b6e54605e56711ed6f238451cfb19f99917c493619fba0",
+      "finalAnswer": "④"
+    },
+    {
+      "questionUid": "qid_v1_90aeaab74418489eefd7ec7ce010ef4f96ed6e51a2ca1ba07374ab46581a1ba8",
+      "qid": 17,
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+        "questionUid": "qid_v1_90aeaab74418489eefd7ec7ce010ef4f96ed6e51a2ca1ba07374ab46581a1ba8",
+        "sourceOrdinal": 17,
+        "contentHash": "sha256:8e15f4e2a8d4e929c958b9d45dcfca43df13213523c68d6cb2b3c48ddbbc896e",
+        "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36"
+      },
+      "studentFields": {
+        "content": "<서·논술형1>\n함수 $f(x)=4x^3+x-5$에 대하여 $f'(2)$의 값을 미분계수의 정의를 이용하여 서술하시오. [6점]",
+        "choices": [],
+        "questionType": "서술형",
+        "image": ""
+      },
+      "solution": "미분계수의 정의에 따라\n$$f'(2)=\\lim_{h\\to0}\\frac{f(2+h)-f(2)}h.$$\n$f(x)=4x^3+x-5$를 대입하면\n$$\\frac{f(2+h)-f(2)}h=\\frac{4\\{(2+h)^3-8\\}+h}{h}=49+24h+4h^2.$$\n따라서 $f'(2)=49$이다. 답은 49이다.",
+      "solutionSha256": "008efb8fb6344bb63fd144aec50235e776fc82b21e7e44538346ed983d7a67b5",
+      "finalAnswer": "49"
+    },
+    {
+      "questionUid": "qid_v1_85b7e4100473f6081ef7cd83a2726259f8991619fe3e512234a1f44086a7f838",
+      "qid": 18,
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+        "questionUid": "qid_v1_85b7e4100473f6081ef7cd83a2726259f8991619fe3e512234a1f44086a7f838",
+        "sourceOrdinal": 18,
+        "contentHash": "sha256:3277c2c24396b997780efe6230911f4dfe0116835a83486c1f1ca49343864f79",
+        "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36"
+      },
+      "studentFields": {
+        "content": "<서·논술형2>\n다음 조건을 만족시키는 모든 다항함수 $f(x)$에 대하여 $f(2)$의 최댓값과 최솟값의 합을 풀이과정과 함께 상세하게 서술하시오. [12점]\n\n(가) 함수 $f(x)$의 모든 항의 계수는 정수이다.\n(나) $\\lim_{x\\to \\infty}\\frac{f(x)-x^2}{x}=f(-4)$\n(다) 함수 $\\frac{x}{f(x)}$은 실수 전체의 집합에서 연속이다.",
+        "choices": [],
+        "questionType": "서술형",
+        "image": ""
+      },
+      "solution": "무한대에서\n$$\\frac{f(x)-x^2}{x}$$\n가 유한한 값으로 수렴하므로 $f(x)-x^2$의 차수는 1 이하이다. 따라서 정수 $a,b$에 대해\n$$f(x)=x^2+ax+b$$\n로 쓸 수 있다.\n\n주어진 극한은 $a$이고,\n$$f(-4)=16-4a+b$$\n이므로 $a=16-4a+b$, 즉 $b=5a-16$이다.\n\n함수 $x/f(x)$가 모든 실수에서 연속이려면 $f(x)$가 실근을 가져서는 안 된다. 판별식은\n$$D=a^2-4b=a^2-20a+64=(a-4)(a-16)$$\n이다. $D<0$이어야 하므로 $4<a<16$. 정수 조건으로 $a=5,6,\\ldots,15$이다.\n\n$f(2)=4+2a+b=7a-12$이므로 최솟값은 $23$, 최댓값은 $93$이다. 두 값의 합은 $116$이다.",
+      "solutionSha256": "d52d3afb804cf38a615b3180c45c9a4164e66ae84b52015fb8852617092216f9",
+      "finalAnswer": "116"
+    },
+    {
+      "questionUid": "qid_v1_6d52526c79e92bd101cf8a54b1cada5eed348c170145d60c818621d83dd8c4db",
+      "qid": 19,
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+        "questionUid": "qid_v1_6d52526c79e92bd101cf8a54b1cada5eed348c170145d60c818621d83dd8c4db",
+        "sourceOrdinal": 19,
+        "contentHash": "sha256:8011f2ea7cb63677ff2024504428e8a51992ea4efc9b15928d9f59bb5319b742",
+        "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36"
+      },
+      "studentFields": {
+        "content": "<서·논술형3>\n실수 전체의 집합에서 미분가능한 함수 $f(x)$에 대하여 곡선 $y=(x^2-3)f(x)$ 위의 점 $\\mathrm{P}(1, 4)$에서의 접선을 $l$이라 하고 점 $\\mathrm{P}$를 지나고 직선 $l$과 $x$축에 동시에 접하고 중심이 제1사분면에 있는 원을 $\\mathrm{C}$라 하자. $f'(1)=-3$일 때, 원 $\\mathrm{C}$의 넓이를 풀이과정과 함께 상세하게 서술하시오. [12점]",
+        "choices": [],
+        "questionType": "서술형",
+        "image": ""
+      },
+      "solution": "곡선 위의 점 $P(1,4)$이므로\n$$(-2)f(1)=4,\\qquad f(1)=-2.$$\n곡선을 미분하면\n$$\\frac{d}{dx}\\{(x^2-3)f(x)\\}=2xf(x)+(x^2-3)f'(x).$$\n따라서 $x=1$에서 접선의 기울기는\n$$2f(1)-2f'(1)=-4+6=2.$$\n그러므로 $l$은 $y-4=2(x-1)$, 즉 $y=2x+2$이다.\n\n$l$의 법선 방향벡터는 $(2,-1)$이다. 원의 중심을 $C=P+t(2,-1)=(1+2t,4-t)$라 하자. 원이 $x$축에 접하므로 반지름은 $r=4-t$이고, $P$에서 $l$에 접하므로 $CP=r$이다. 따라서\n$$\\sqrt5|t|=4-t.$$\n$t<0$인 경우 $t=\\frac4{1-\\sqrt5}=-1-\\sqrt5$이고 중심의 $x$좌표 $1+2t<0$이므로 제1사분면 조건에 어긋난다. 따라서 $t>0$이고\n$$t=\\frac4{1+\\sqrt5}=\\sqrt5-1.$$\n따라서 $r=4-t=5-\\sqrt5$이다.\n\n원의 넓이는\n$$\\pi r^2=\\pi(5-\\sqrt5)^2=\\pi(30-10\\sqrt5).$$",
+      "solutionSha256": "7338bbafa88294a5293f5257da43e382a6c0c0c717382679580dad811966f578",
+      "finalAnswer": "$\\pi(30-10\\sqrt5)$"
+    }
+  ]
+}

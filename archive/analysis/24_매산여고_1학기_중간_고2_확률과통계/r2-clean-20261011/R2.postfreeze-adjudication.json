@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "JS_ARCHIVE_FREEZE_ADJUDICATION_V1",
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-1mid-20261010\\AP------\\archive\\analysis\\24_매산여고_1학기_중간_고2_확률과통계\\r2-clean-20261011\\R2.original-freeze.json",
+    "sha256": "347894e19bdfc604193de9f71190d65d2b44fc6ac3a4afd242cf470cd06bf2fb"
+  },
+  "createdAt": "2026-10-10T17:26:23.692Z",
+  "corrections": [
+    {
+      "qid": 7,
+      "correctedAnswer": "④ $78$",
+      "reason": "Postfreeze topological count uses the opened q07 road asset. Correct lattice DP from A (bottom-left) to B (top-right) is 78; original blind computation used the wrong vertical-edge traversal and gave 72. Stored answer is ④.",
+      "originalAnswer": "① $72$"
+    },
+    {
+      "qid": 12,
+      "correctedAnswer": "② $625$",
+      "reason": "There are three paired input classes (1,6), (2,5), (3,4), plus singleton 7, giving 5^4=625. Original blind count incorrectly treated four pairs.",
+      "originalAnswer": "⑤ $3125$"
+    },
+    {
+      "qid": 16,
+      "correctedAnswer": "③ $3/10$",
+      "reason": "18 favorable ordered 3-permutations out of 60: hundreds 3 gives 3, hundreds 4 gives 9, hundreds 5 gives 6. Original blind count omitted hundreds digit 3 cases.",
+      "originalAnswer": "① $1/4$"
+    },
+    {
+      "qid": 22,
+      "correctedAnswer": "HOLD: for real a, a=2 or -2 gives a+b=258 or -130; no unique value",
+      "reason": "Postfreeze source solution establishes a^6=64 and both real roots, so the student condition does not uniquely determine a+b. Preserve the existing item hold.",
+      "originalAnswer": "$258$"
+    },
+    {
+      "qid": 23,
+      "correctedAnswer": "147",
+      "reason": "Enumerating valid nondecreasing first triples by final value gives counts 1,1,1,5,2 for t=1..5, weighted by C(9-t,4), totaling 70+35+15+25+2=147. Original blind enumeration double-counted (1,1,1).",
+      "originalAnswer": "$182$"
+    }
+  ],
+  "originalFreezeMutated": false
+}

@@ -70,7 +70,8 @@ test('backfilled projections preserve unknowns and keep physical bucket distinct
       assert.match(p.rpmDraftAuthorityRef, /^docs\/rules\/01_CANONICAL\/taxonomy\/rpm-primary-v1\.0\//);
       assert.match(p.rpmDraftAuthoritySha256, /^[a-f0-9]{64}$/);
     }
-    assert.equal(Object.hasOwn(row, 'meta'), false, 'legacy partial projection must not masquerade as approved full meta');
+    assert.equal(row.metaProjection.status, 'LEGACY_NOT_RECERTIFIED', 'source metadata remains distinct from historical quality status');
+    assert.equal(row.mainSourceAvailable, true, 'main-resident source membership is independent of historical quality projection');
     for (const field of ['crossConceptKeys', 'conditionKeys', 'integrationPattern']) {
       if (p.evidenceByField[field].status === 'UNKNOWN') {
         assert.equal(p[field], null);
@@ -103,7 +104,7 @@ test('Consumer student payload hashes remain byte-equivalent to the evidence led
     const actualGitBlobSha = require('node:crypto').createHash('sha1').update(Buffer.concat([Buffer.from(`blob ${shardBytes.length}\0`), shardBytes])).digest('hex');
     assert.equal(row.consumerShardGitSha, actualGitBlobSha, `stale Consumer shard Git SHA: ${row.uid}`);
     if (Object.hasOwn(row, 'shardGitBlobSha')) assert.equal(row.shardGitBlobSha, actualGitBlobSha, `stale shardGitBlobSha: ${row.uid}`);
-    if (Object.hasOwn(row, 'consumerShardSha256')) assert.equal(row.consumerShardSha256, require('node:crypto').createHash('sha256').update(shardBytes).digest('hex'), `stale consumerShardSha256: ${row.uid}`);
+    if (Object.hasOwn(row, 'consumerShardSha256')) assert.equal(row.consumerShardSha256.toLowerCase(), require('node:crypto').createHash('sha256').update(shardBytes).digest('hex'), `stale consumerShardSha256: ${row.uid}`);
   }
 });
 

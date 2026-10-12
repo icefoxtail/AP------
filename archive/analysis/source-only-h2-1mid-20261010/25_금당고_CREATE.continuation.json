@@ -1,0 +1,164 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_CREATE_ITEM_HOLD_CONTINUATION_V1",
+  "status": "CREATE_ITEM_HOLD_CARRIED",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "25_금당고_1학기_중간_고2_수학I",
+  "stage": "CREATE",
+  "reviewerIdentity": {
+    "role": "archive_create",
+    "reviewerId": "/root/create_geum_i"
+  },
+  "worktreeRootAbsolute": "C:\\Users\\USER\\Desktop\\AP------",
+  "workingJsAbsolute": "C:\\Users\\USER\\Desktop\\AP------\\archive\\exams\\original\\high\\h2\\1mid\\25_금당고_1학기_중간_고2_수학I.js",
+  "evidenceRootAbsolute": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010",
+  "assetRootAbsolute": "C:\\Users\\USER\\Desktop\\AP------\\archive",
+  "worktreeHead": "b3772c15c14f68e7caa6a0c6fc8e9a6508b4fc70",
+  "source": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\exams\\original\\high\\h2\\1mid\\25_금당고_1학기_중간_고2_수학I.js",
+    "rawSha256": "ba3987db5cce4987c4c7555b770edef5351a1931046246f00b4142b03b68b279",
+    "rawBufferGitBlobSha1": "451399fdca7fbe17de0c1a51b982bafad1166639",
+    "assignedStartingRawSha256": "6E643984983EB58C066F103AFC63178669E8891B0709D64F5F0ADCFCF1FF0C36",
+    "qidCount": 21,
+    "observedQidCount": 21
+  },
+  "finalStageEvidence": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010\\25_금당고_CREATE_evidence.bound4.json",
+    "sha256": "fdc3ff7ea543c5fb1c2564ea1c27542d0ed0fc7f715242d8943eec4420b98a26"
+  },
+  "studentOnlyBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010\\25_금당고_student-only-bundle.json",
+    "sha256": "8efd67aae145d3f6e8d6e21d6b01a6887084c373538b9672226dd31d466cfe31",
+    "sourceRawSha256": "ba3987db5cce4987c4c7555b770edef5351a1931046246f00b4142b03b68b279",
+    "questionCount": 21,
+    "qids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "sourceProjection": "actual current JS via archive-codex-handoff prepare-student",
+    "imageAssetCount": 6
+  },
+  "createPreflight": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010\\25_금당고_CREATE_preflight.report.json",
+    "sha256": "ca5d48de7ab91d4b3252a43c439aa3965f0563420f9b26355e796b4da1f65b0e",
+    "status": "CARRY_ITEM_HOLD",
+    "denominator": 21,
+    "itemHoldCount": 1,
+    "holds": [
+      {
+        "qid": 18,
+        "reason": "PDF page 3 confirms the extracted formulas and options exactly, but S1+S2=32/3−8/(3 ln 3)≈8.24, outside every listed choice; no source-backed answer can be selected."
+      }
+    ],
+    "findings": []
+  },
+  "rawGenericReport": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010\\25_금당고_CREATE_generic.final4.report.json",
+    "sha256": "3c028c5269193f86a080b76a21e9042e3eb092dc9b80e2b0c2e8ac8d68fa614e",
+    "validatorMode": "CREATE_V2",
+    "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+    "executionLine": "CODEX",
+    "disposition": "FAIL",
+    "ok": false,
+    "denominator": 21,
+    "issues": [
+      "ARTIFACT_VALUE_REQUIRED:solution:q18",
+      "ARTIFACT_ANSWER_REQUIRED:q18",
+      "ARTIFACT_ANSWER_REQUIRED_WITH_CHOICES:q18",
+      "ARTIFACT_SOLUTION_REQUIRED:q18"
+    ],
+    "technicalBindingIssues": []
+  },
+  "itemHolds": [
+    {
+      "qid": 18,
+      "reason": "scoped PDF matches JS, while exact area sum 32/3−8/(3 ln 3)≈8.24 is outside options 14/3, 5, 16/3, 17/3, 6.",
+      "sourcePdfPath": "C:\\Users\\USER\\Desktop\\기출정리 파일\\(1)1중간\\수1\\2025_금당고2_수1_1중간.pdf",
+      "sourcePdfSha256": "db22b02f9bf1a2869c401a580c468334de1ce53bd1d6329fd00d59fca0900616",
+      "scopedPage": 3,
+      "scopedPageCropAbsolute": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010\\pdf-q18-scoped\\page3-q18.png",
+      "scopedPageCropSha256": "7f3358a993edf4d9ee00d7cfe9bac9e2a7c7777396439b330e7dc13e364c1e25",
+      "decisiveMissingFacts": "No option matches the source-defined value.",
+      "alternateEvidenceChecked": [
+        "current JS and q18 PNG",
+        "independent area calculation",
+        "scoped PDF page 3"
+      ],
+      "repairAttempted": "No source edit: PDF confirms extraction parity; changing condition or selecting an option would invent truth.",
+      "whyDeterministicClosureImpossible": "All five choices contradict the confirmed source conditions.",
+      "requiredNextEvidenceOrCapability": "R1/R2 blind assessment from full current student input; ROOT qid-only recovery after true HOLD confirmation."
+    }
+  ],
+  "completedStep": {
+    "status": "CREATE_ITEM_HOLD_CARRIED",
+    "summary": "Fresh source-based answers/solutions and per-qid Meta/L1-L2/RPM/difficulty, question/solution layout, independent problem/solution visual triage completed for the 21-qid denominator. q10/q16/q20 solution SVGs generated by alive.engine.visual_renderer v0.5.2 and connected in JS; current student-only bundle and all referenced problem/solution assets are SHA-bound. q18 remains an exact source-confirmed choices contradiction. Final generic report is preserved as FAIL; no quality PASS or STAGE_COMPLETE asserted.",
+    "denominator": "21/21 reviewed, 20 answer/solution completed, 1 true item HOLD",
+    "problemVisualsOpened": 6,
+    "solutionSvgCount": 3,
+    "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+    "executionLine": "CODEX"
+  },
+  "validatorRepairHistory": [
+    {
+      "report": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010\\25_금당고_CREATE_generic.report.json",
+      "sha256": "676ff29ceee94fac3c511f1032fa00a3c96fbf57fc117e867f99f6b1fe553ca0",
+      "disposition": "FAIL",
+      "repair": "added physical Golden visual SHA evidence and post-authoring correction review"
+    },
+    {
+      "report": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010\\25_금당고_CREATE_generic.revision2.report.json",
+      "sha256": "1987a2ab17b3dd8579388db7c1fde0358939924ef052624c8868c0cd0bec2683",
+      "disposition": "FAIL",
+      "repair": "read and bound Maesan q7 actual solution SVG; correction-review q10/q16/q20"
+    },
+    {
+      "report": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010\\25_금당고_CREATE_generic.final4.report.json",
+      "sha256": "3c028c5269193f86a080b76a21e9042e3eb092dc9b80e2b0c2e8ac8d68fa614e",
+      "disposition": "FAIL",
+      "remainingIssues": [
+        "ARTIFACT_VALUE_REQUIRED:solution:q18",
+        "ARTIFACT_ANSWER_REQUIRED:q18",
+        "ARTIFACT_ANSWER_REQUIRED_WITH_CHOICES:q18",
+        "ARTIFACT_SOLUTION_REQUIRED:q18"
+      ]
+    }
+  ],
+  "firstMissingClosureStep": "ROOT_ITEM_HOLD_ROUTING: R1 fresh independent review of all 21 qids from the current student-only bundle and opened problem assets; q18 must be independently reassessed without upstream answer/solution. Generic CREATE PASS and stable completion seal are unavailable while q18 answer/solution are unresolved.",
+  "nextRequiredAction": "ROOT starts a fresh archive_r1 full-qid session using the exact current student-only bundle, complete source figures and R1 scope. Keep q18 answer/solution hidden until its independent decision; if the true HOLD survives R1/R2, ROOT performs qid-only replacement/recovery under the standing authority.",
+  "handoff": {
+    "to": "ROOT",
+    "dispatchStatus": "ROOT_ITEM_HOLD_ROUTING_REQUIRED",
+    "createSlotDisposition": "HANDOFF_TO_ROOT",
+    "nextStage": "R1",
+    "stableCompletionEvent": null,
+    "stableCompletionSha256": null,
+    "stageComplete": false,
+    "passClaimed": false,
+    "actualRenderPassAsserted": false,
+    "actualBrowserRender": "NOT_RUN_R3_OWNER"
+  },
+  "sourceIdentityRegistration": {
+    "status": "UID_MAP_MISSING_FOR_NEW_SOURCE",
+    "identityMapPath": "archive/data/question_identity_map.json",
+    "registrationDependency": "post-R3 target-only identity registration; CREATE does not edit canonical identity map"
+  }
+}

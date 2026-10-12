@@ -1,0 +1,28 @@
+{
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","sha256":"sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156","gitBlobSha":"95f7e733fd3f786b6bcb98f9662a6ae568f82949"},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","sha256":"sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c","gitBlobSha":"f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"},
+      {"path":"archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js","sha256":"sha256:17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b","gitBlobSha":"639acb54459718fdeb83a1a281f33483bc81edb4"}
+    ],
+    "goldenSampleQuestionRefs": [
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","qid":1,"solutionSha256":"sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3","solutionExcerpt":"먼저 내분점 $P$의 좌표를 구한다.","observation":"Coordinate ratio is unpacked step by step, with intermediate arithmetic laid out so students can reproduce the section formula."},
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","qid":3,"solutionSha256":"sha256:77b762f1e35e5f530421cb7eb1d987ec0935ad0b9e2058a665c07fe6f930e5f0","solutionExcerpt":"원의 중심과 반지름을 읽으려면 주어진 식을 원의 표준형으로 바꾸어야 한다.","observation":"Completing-square transformations are sequenced explicitly and arithmetic is externalized instead of skipped."},
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","qid":5,"solutionSha256":"sha256:5cec67e22a9be1c7667c879d80ae639baf011e44574e6963243d3d987324554f","solutionExcerpt":"$A\\subset B$이고 $B\\subset A$이므로 두 집합은 서로 같은 집합이다.","observation":"Set equality is converted into a reusable element-membership condition before substitution."},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","qid":1,"solutionSha256":"sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682","solutionExcerpt":"두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.","observation":"Distance computation shows coordinate differences, substitution, simplification and exact radical form in distinct lines."},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","qid":3,"solutionSha256":"sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370","solutionExcerpt":"원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.","observation":"Both squared terms are completed separately and constants are balanced visibly before reading the radius."},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","qid":5,"solutionSha256":"sha256:8e1a0f149d821431abc022690f63b1b99c675d8373a575c92dc4d1688dc4b109","solutionExcerpt":"두 집합 $A$, $B$가 같으므로 두 집합에 들어 있는 원소가 정확히 같아야 한다.","observation":"The solution establishes a necessary membership test, then substitutes and checks the remaining elements."},
+      {"path":"archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js","qid":1,"solutionSha256":"sha256:452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9","solutionExcerpt":"집합 $A$의 원소는 $1$, $2$, $\\{1\\}$이다.","observation":"Membership and subset relations are distinguished and each choice receives its own reasoned block."},
+      {"path":"archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js","qid":3,"solutionSha256":"sha256:e664fd207ce80863250fa1281dfe247a5bbe1284ec2f37d87f3e38e034d00deb","solutionExcerpt":"부분집합에 $a$, $b$를 모두 포함하지 않으므로 나머지 원소 $c,d,e,f$만 선택하면 된다.","observation":"Independent binary choices are counted directly and the subset restriction is tied back to proper-subset status."},
+      {"path":"archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js","qid":5,"solutionSha256":"sha256:5e4868f8a81c3f06c5319c07a69299fbc6dcb8a93594f408afc7c5da9343aa8e","solutionExcerpt":"ㄱ. 차집합은 교집합으로 나타내면","observation":"Enumerated statements are reviewed separately, with a counterexample for the false claim and laws named for the true claims."}
+    ],
+    "negativeSampleRefs": [
+      {"path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md","sha256":"sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8","gitBlobSha":"9775c4993d7e148a9da816ae36acdf652bc69906","observation":"Reviewed all four false-PASS families, especially runtime TeX escape defects; runtime strings must be checked after sandbox evaluation, not inferred from source notation."}
+    ],
+    "calibrationAxes":["STUDENT_REPRODUCIBILITY","SMALL_BOARD_STRUCTURE","EXPLANATION_DENSITY","VISUAL_SEMANTIC_PARITY","VISUAL_READABILITY"],
+    "sampleReadBeforeWork":true,
+    "calibrationStatus":"PASS",
+    "solutionWorkMode":"INDEPENDENT_REVIEW",
+    "calibrationOrder":"SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE"
+  }
+}

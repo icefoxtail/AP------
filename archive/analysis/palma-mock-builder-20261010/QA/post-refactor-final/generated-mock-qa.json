@@ -1,0 +1,453 @@
+{
+  "schemaVersion": "PALMA_GENERATED_MOCK_REAL_CHROME_QA_V1",
+  "status": "PASS",
+  "startedAt": "2026-10-10T13:24:29.565Z",
+  "baseUrl": "http://127.0.0.1:62829/archive/generated-bank.html",
+  "source": {
+    "exam": "2025 팔마고 고1 공통수학2 2학기 중간",
+    "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+    "sourceCount": 23
+  },
+  "registeredCandidateCount": 207,
+  "registeredSourceQids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "registeredQuestionForms": {
+    "objectiveFiveChoice": 171,
+    "descriptiveZeroChoice": 36
+  },
+  "referencedProblemImageCount": 0,
+  "referencedSolutionImageCount": 61,
+  "checks": [
+    {
+      "name": "complete source and builder controls fit in a 1280x1100 desktop viewport",
+      "status": "PASS",
+      "width": 1280,
+      "height": 1100,
+      "controls": [
+        {
+          "id": "source-year",
+          "bottom": 360
+        },
+        {
+          "id": "source-school",
+          "bottom": 360
+        },
+        {
+          "id": "source-grade",
+          "bottom": 360
+        },
+        {
+          "id": "source-subject",
+          "bottom": 360
+        },
+        {
+          "id": "source-semester",
+          "bottom": 360
+        },
+        {
+          "id": "source-term",
+          "bottom": 444
+        },
+        {
+          "id": "purpose-cards",
+          "bottom": 847
+        },
+        {
+          "id": "difficulty-mode-random",
+          "bottom": 952
+        },
+        {
+          "id": "difficulty-mode-specified",
+          "bottom": 952
+        },
+        {
+          "id": "difficulty-mode-mixed",
+          "bottom": 952
+        },
+        {
+          "id": "generate-mock",
+          "bottom": 1066
+        }
+      ]
+    },
+    {
+      "name": "exact Palma source selected and legacy/manual paths remain present",
+      "status": "PASS",
+      "fields": {
+        "source-year": "2025",
+        "source-school": "팔마고",
+        "source-grade": "고1",
+        "source-subject": "공통수학2",
+        "source-semester": "2",
+        "source-term": "중간"
+      },
+      "title": "2025 팔마고 고1 2학기 중간",
+      "coverage": "기준 시험지 23문항 · 목적별 유사문항 준비 23/23개 원본 문항",
+      "missing": "모든 원본 문항에 유사문항이 준비되어 있습니다.",
+      "purpose": [
+        {
+          "key": "A",
+          "checked": true
+        },
+        {
+          "key": "B",
+          "checked": true
+        },
+        {
+          "key": "C",
+          "checked": true
+        }
+      ],
+      "teacherNoteHidden": false,
+      "teacherToolsHidden": true,
+      "legacyCards": 2,
+      "manualExists": true
+    },
+    {
+      "name": "incomplete coverage names every missing source question",
+      "status": "PASS",
+      "coverage": "기준 시험지 23문항 · 목적별 유사문항 준비 16/23개 원본 문항",
+      "missing": "유사문항이 아직 준비되지 않은 원본 문항: q17, q18, q19, q20, q21, q22, q23"
+    },
+    {
+      "name": "cascading filters preserve the exact school/year/source exam tuple",
+      "status": "PASS",
+      "yearOptions": [
+        "2025",
+        "2026"
+      ],
+      "schoolOptions2025": [
+        "팔마고"
+      ],
+      "changedYear": {
+        "year": "2026",
+        "school": "효천고",
+        "schools": [
+          "복성고",
+          "효천고"
+        ],
+        "term": "중간",
+        "title": "2026 효천고 고1 1학기 중간"
+      }
+    },
+    {
+      "name": "random mode honors purpose A",
+      "status": "PASS",
+      "count": 23
+    },
+    {
+      "name": "random mode honors purpose B",
+      "status": "PASS",
+      "count": 23
+    },
+    {
+      "name": "random mode honors purpose C",
+      "status": "PASS",
+      "count": 23
+    },
+    {
+      "name": "random mode selects one ordered, unique candidate per source question",
+      "status": "PASS",
+      "count": 23
+    },
+    {
+      "name": "condition changes label the snapshot and block stale print/regeneration",
+      "status": "PASS",
+      "noteHidden": false,
+      "note": "출제 조건이 바뀌었습니다. 새 조건으로 다시 생성한 뒤 인쇄해 주세요.",
+      "printDisabled": true,
+      "regenerateDisabled": true,
+      "resultCount": 23
+    },
+    {
+      "name": "fixed numeric difficulty uses metadata and reports sparse coverage",
+      "status": "PASS",
+      "purpose": "C",
+      "bucket": 3,
+      "qids": [
+        4,
+        10,
+        12
+      ],
+      "missing": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ]
+    },
+    {
+      "name": "mixed mode satisfies exact quotas on distinct source questions",
+      "status": "PASS",
+      "quotas": {
+        "1": 2
+      },
+      "actual": [
+        {
+          "qid": 4,
+          "difficulty": 1
+        },
+        {
+          "qid": 5,
+          "difficulty": 1
+        }
+      ]
+    },
+    {
+      "name": "impossible mixed quota is reported and disabled",
+      "status": "PASS",
+      "ready": "난이도별 문항 수 합계가 기준 시험지의 23문항보다 1문항 많습니다.",
+      "disabled": true
+    },
+    {
+      "name": "empty purpose selection is reported and disabled",
+      "status": "PASS",
+      "disabled": true,
+      "readiness": "학습 목적을 하나 이상 골라 주세요."
+    },
+    {
+      "name": "locking preserves already rendered MathJax nodes",
+      "status": "PASS",
+      "mathNodes": 246
+    },
+    {
+      "name": "locked row survives regeneration and every unlocked row changes",
+      "status": "PASS",
+      "lockedUid": "ALITE-PALMA25-2MID-Q01-C2",
+      "unlockedChanged": 22
+    },
+    {
+      "name": "individual replacement stays in its source-qid slot",
+      "status": "PASS",
+      "before": "ALITE-PALMA25-2MID-Q02-A3",
+      "after": "ALITE-PALMA25-2MID-Q02-B3"
+    },
+    {
+      "name": "async replacement keeps source controls locked and commits to the same source qid",
+      "status": "PASS",
+      "pendingState": {
+        "sourceControls": true,
+        "purposeControls": true,
+        "printDisabled": true,
+        "message": "원본 q3의 대체 후보를 불러옵니다.",
+        "qid": "3",
+        "sourceTitle": "2025 팔마고 고1 2학기 중간"
+      },
+      "after": {
+        "school": "팔마고",
+        "title": "2025 팔마고 고1 2학기 중간",
+        "qids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "printDisabled": false
+      }
+    },
+    {
+      "name": "question print matches preview UID order/raw content/math/assets and excludes answers/solutions",
+      "status": "PASS",
+      "count": 23,
+      "title": "2025 팔마고 고1 2학기 중간 모의고사 · 23문항",
+      "renderedMathNodes": 235,
+      "printLayout": {
+        "visible": true,
+        "questionCount": 23,
+        "renderedMathNodes": 235,
+        "answerBlocks": 0,
+        "width": 749
+      }
+    },
+    {
+      "name": "manual search/select remains available with question-only preview",
+      "status": "PASS",
+      "matchCount": 1,
+      "legacyExamCards": 2
+    },
+    {
+      "name": "teacher answer output preserves ans mode and all source-ordered UIDs",
+      "status": "PASS",
+      "mode": "ans",
+      "urlMode": "ans",
+      "count": 23,
+      "uids": [
+        "ALITE-PALMA25-2MID-Q01-A3",
+        "ALITE-PALMA25-2MID-Q02-B3",
+        "ALITE-PALMA25-2MID-Q03-B2",
+        "ALITE-PALMA25-2MID-Q04-B2",
+        "ALITE-PALMA25-2MID-Q05-B1",
+        "ALITE-PALMA25-2MID-Q06-B1",
+        "ALITE-PALMA25-2MID-Q07-C3",
+        "ALITE-PALMA25-2MID-Q08-C1",
+        "ALITE-PALMA25-2MID-Q09-A3",
+        "ALITE-PALMA25-2MID-Q10-A3",
+        "ALITE-PALMA25-2MID-Q11-C3",
+        "ALITE-PALMA25-2MID-Q12-A2",
+        "ALITE-PALMA25-2MID-Q13-B3",
+        "ALITE-PALMA25-2MID-Q14-C1",
+        "ALITE-PALMA25-2MID-Q15-C3",
+        "ALITE-PALMA25-2MID-Q16-A1",
+        "ALITE-PALMA25-2MID-Q17-B3",
+        "ALITE-PALMA25-2MID-Q18-A3",
+        "ALITE-PALMA25-2MID-Q19-B1",
+        "ALITE-PALMA25-2MID-Q20-B3",
+        "ALITE-PALMA25-2MID-Q21-A2",
+        "ALITE-PALMA25-2MID-Q22-B1",
+        "ALITE-PALMA25-2MID-Q23-C2"
+      ],
+      "answerValues": true,
+      "answerCells": 23,
+      "title": "2025 팔마고 고1 2학기 중간 모의고사"
+    },
+    {
+      "name": "teacher solution output preserves sol mode, UID order, and each referenced solution image",
+      "status": "PASS",
+      "mode": "sol",
+      "urlMode": "sol",
+      "count": 23,
+      "uids": [
+        "ALITE-PALMA25-2MID-Q01-A3",
+        "ALITE-PALMA25-2MID-Q02-B3",
+        "ALITE-PALMA25-2MID-Q03-B2",
+        "ALITE-PALMA25-2MID-Q04-B2",
+        "ALITE-PALMA25-2MID-Q05-B1",
+        "ALITE-PALMA25-2MID-Q06-B1",
+        "ALITE-PALMA25-2MID-Q07-C3",
+        "ALITE-PALMA25-2MID-Q08-C1",
+        "ALITE-PALMA25-2MID-Q09-A3",
+        "ALITE-PALMA25-2MID-Q10-A3",
+        "ALITE-PALMA25-2MID-Q11-C3",
+        "ALITE-PALMA25-2MID-Q12-A2",
+        "ALITE-PALMA25-2MID-Q13-B3",
+        "ALITE-PALMA25-2MID-Q14-C1",
+        "ALITE-PALMA25-2MID-Q15-C3",
+        "ALITE-PALMA25-2MID-Q16-A1",
+        "ALITE-PALMA25-2MID-Q17-B3",
+        "ALITE-PALMA25-2MID-Q18-A3",
+        "ALITE-PALMA25-2MID-Q19-B1",
+        "ALITE-PALMA25-2MID-Q20-B3",
+        "ALITE-PALMA25-2MID-Q21-A2",
+        "ALITE-PALMA25-2MID-Q22-B1",
+        "ALITE-PALMA25-2MID-Q23-C2"
+      ],
+      "solutions": true,
+      "solutionBoxes": 23,
+      "expectedSolutionImages": [
+        "/archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q17-B3-solution.svg",
+        "/archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q18-A3-solution.svg",
+        "/archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q19-B1-solution.svg",
+        "/archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q20-B3-solution.svg",
+        "/archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q22-B1-solution.svg",
+        "/archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q23-C2-solution.svg"
+      ],
+      "renderedSolutionImages": [
+        "/archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q17-B3-solution.svg",
+        "/archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q18-A3-solution.svg",
+        "/archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q19-B1-solution.svg",
+        "/archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q20-B3-solution.svg",
+        "/archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q22-B1-solution.svg",
+        "/archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q23-C2-solution.svg"
+      ],
+      "brokenImages": [],
+      "title": "2025 팔마고 고1 2학기 중간 모의고사",
+      "everyRegisteredImageLoaded": 61,
+      "registeredImageCount": 61
+    },
+    {
+      "name": "mobile preview has no horizontal overflow",
+      "status": "PASS",
+      "viewport": 390,
+      "documentWidth": 390,
+      "bodyWidth": 390,
+      "questionCount": 23,
+      "horizontalOverflow": false
+    },
+    {
+      "name": "index loading is visible while generated records are pending",
+      "status": "PASS",
+      "exams": "시험지 목록을 불러오는 중입니다.",
+      "generated": "승인된 생성 문항을 불러오는 중입니다.",
+      "source": "시험지와 승인된 유사문항을 불러오는 중입니다.",
+      "blank": false
+    },
+    {
+      "name": "index failure leaves a visible error state instead of a blank page",
+      "status": "PASS",
+      "message": "시험지를 불러오지 못했습니다: 등록 데이터 로드 실패: 503",
+      "examList": "시험지 목록을 확인할 수 없습니다.",
+      "blank": false
+    }
+  ],
+  "screenshots": [
+    "desktop-builder-controls.png",
+    "desktop-source-and-controls.png",
+    "desktop-random-preview.png",
+    "desktop-locks-and-replacements.png",
+    "student-print-output.png",
+    "teacher-answer-output.png",
+    "teacher-solution-output.png",
+    "mobile-preview.png",
+    "desktop-loading-state.png",
+    "desktop-error-state.png"
+  ],
+  "completedAt": "2026-10-10T13:24:56.314Z"
+}

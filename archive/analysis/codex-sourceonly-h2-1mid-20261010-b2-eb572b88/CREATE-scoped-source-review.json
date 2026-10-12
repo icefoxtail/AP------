@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_SCOPED_SOURCE_REVIEW_V1",
+  "examUid": "24_순천여고_1학기_중간_고2_수학I",
+  "sourceReferencePolicy": {
+    "sourceInputMode": "EXTRACTED_JS_ASSETS",
+    "pdfReviewMode": "DEFECT_ONLY"
+  },
+  "intakeEvidence": {
+    "path": "archive/analysis/source-only-h2-1mid-20261010-b2/24_순천여고_1학기_중간_고2_수학I.evidence.json",
+    "expectedSha256": "FD3B7F91ADA06919B22F51F1DBA4593C6910E01E121C493FB5638F21BC9C37FA",
+    "reusedForNonDefectQids": true
+  },
+  "originalPdf": {
+    "path": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/수1/2024_순여고2_수1_1중간.pdf",
+    "sha256": "cb13b61c80be34859c7506b2c2688fb4ee4bc294a4725e91d1a230b8a566388b"
+  },
+  "reviewedQids": [
+    3,
+    9
+  ],
+  "scope": "QID_ONLY",
+  "reviewedAt": "2026-10-10T14:35:15.010Z",
+  "reviewerId": "/root/create_suncheon_yeo_math1",
+  "items": [
+    {
+      "qid": 3,
+      "page": 1,
+      "defect": "Extracted JS used incorrect nested radical indices and omitted b^5, making its computed answer inconsistent with choices.",
+      "beforeContent": "$\\sqrt[3]{\\sqrt[4]{a^2 b}} \\times \\sqrt[3]{\\sqrt[4]{a^4 b^7}} = a^x b^y$일 때, $x+y$의 값은? (단, $a>0, b>0$) [3.7점]",
+      "pdfEvidence": {
+        "cropPath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/q03-scoped-pdf-crop-final.png",
+        "cropSha256": "1513D0F683D98633DC4BF2DD158F17D9F41D6E8A42CE601347D3053051373E05",
+        "factConfirmed": "∛√(a²b⁵) × √∛(a⁴b⁷); choice ③ is 3."
+      },
+      "afterContent": "$\\sqrt[3]{\\sqrt{a^2 b^5}} \\times \\sqrt{\\sqrt[3]{a^4 b^7}} = a^x b^y$일 때, $x+y$의 값은? (단, $a>0, b>0$) [3.7점]",
+      "answerDerivation": "Each nested radical contributes exponent 1/6; total a exponent=1 and b exponent=2, so x+y=3.",
+      "choicesExactParity": true,
+      "finalArtifactRawSha256": "005e32598224801ad64958725cd2fde129c254c2295d3d674efbf2fdf5b12768"
+    },
+    {
+      "qid": 9,
+      "page": 2,
+      "defect": "Extracted JS used logarithm base b/5, which is 1 when b=5 and makes the displayed logarithm undefined.",
+      "beforeContent": "1이 아닌 두 양수 $a, b$에 대하여 $\\log_{\\sqrt{5}} a = 4$, $\\log_b \\dfrac{1}{25} = -2$일 때, $\\log_{\\frac{b}{5}} a + \\log_{a^2} b$의 값은? [4.1점]",
+      "pdfEvidence": {
+        "cropPath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/q09-scoped-pdf-crop-600dpi.png",
+        "cropSha256": "EE5A4D691EA1E15BCE634C73C17F1EA9437F7B4654B15205E562D1F061DAE32C",
+        "factConfirmed": "The first logarithm base is b²; the resulting value is 5/4, choice ③."
+      },
+      "afterContent": "1이 아닌 두 양수 $a, b$에 대하여 $\\log_{\\sqrt{5}} a = 4$, $\\log_b \\dfrac{1}{25} = -2$일 때, $\\log_{b^2} a + \\log_{a^2} b$의 값은? [4.1점]",
+      "answerDerivation": "a=25, b=5; log_(b²)a + log_(a²)b = 1+1/4=5/4.",
+      "choicesExactParity": true,
+      "finalArtifactRawSha256": "005e32598224801ad64958725cd2fde129c254c2295d3d674efbf2fdf5b12768"
+    }
+  ],
+  "extractedBaseline": {
+    "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/CREATE.extracted-baseline.js",
+    "expectedRawSha256": "E54AC13DD57A18950F98A0C1FDDBDA1F0FB31A5D57108BB063CD2C89F837795C",
+    "actualRawSha256": "e54ac13dd57a18950f98a0c1fddbda1f0fb31a5d57108bb063cd2c89f837795c",
+    "recoveredFromCommit": "c41ab67a46ae1e5b6a8639bd3d804be1032a876f",
+    "expectedShaMatched": true
+  },
+  "finalArtifact": {
+    "path": "archive/exams/original/high/h2/1mid/24_순천여고_1학기_중간_고2_수학I.js",
+    "rawSha256": "005e32598224801ad64958725cd2fde129c254c2295d3d674efbf2fdf5b12768"
+  }
+}

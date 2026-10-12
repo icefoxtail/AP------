@@ -1,0 +1,808 @@
+{
+  "schemaVersion": "ALIVE_GD25_Q17_CREATE_LEDGER_V1",
+  "sourceQid": 17,
+  "sourceExamBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "candidateJsBlobSha": "294c0f67a0ad000197ce39ffaef79e5e21509c17",
+  "mathSpecBlobSha": "f32002c9ca0d84e957b89f99189f8ed4bf54eb25",
+  "lockedPrimaryL3": "H1-RPM-238",
+  "candidateCount": 9,
+  "keep": 9,
+  "revised": 0,
+  "hold": 0,
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 2,
+    "④": 2,
+    "⑤": 1
+  },
+  "formalIndependentReviewPerformed": false,
+  "actualChromeRender": "NOT_TESTED",
+  "mainMerged": false,
+  "studentConsumerReleased": false,
+  "visual": {
+    "problemSvgCount": 0,
+    "solutionSvgCount": 9,
+    "issue": "svg coordinate/structure static QA performed, actual browser render not performed"
+  },
+  "rows": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q17-A1",
+      "lockedPrimaryL3": "H1-RPM-238",
+      "reverseStemCheck": "발문만 역독해: 집합 A의 소수, k의 소수 약수 원소의 합, 배수집합과 합집합 원소 수를 함께 만족시키는 자연수 k 전부를 구하여 합산",
+      "decisiveStep": "교집합 소수 선택을 정한 뒤 합집합의 원소 수로 k 범위를 제한하고 두 조건을 동시에 교차 검증",
+      "allEligibleK": [
+        {
+          "k": 21,
+          "selected": [
+            3,
+            7
+          ],
+          "nunion": 7
+        },
+        {
+          "k": 30,
+          "selected": [
+            2,
+            3,
+            5
+          ],
+          "nunion": 9
+        }
+      ],
+      "allowedPrimeSubsets": [
+        [
+          2,
+          3,
+          5
+        ],
+        [
+          3,
+          7
+        ]
+      ],
+      "answerValue": 51,
+      "answer": "③",
+      "choices": [
+        21,
+        30,
+        51,
+        81,
+        114
+      ],
+      "studentProblemVisualVerdict": "EXEMPT: 모든 입력이 집합의 정의와 두 조건으로 완결",
+      "solutionVisualVerdict": "ADD: 교집합 원소와 합집합 개수의 독립 검산을 후보 k별 표로 시각화",
+      "solutionSvg": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q17-A1-solution.svg",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "value": 21,
+          "route": "$21$만 합산하여 $30$ 누락"
+        },
+        {
+          "choice": "②",
+          "value": 30,
+          "route": "$30$만 합산하여 $21$ 누락"
+        },
+        {
+          "choice": "④",
+          "value": 81,
+          "route": "$30$을 두 번 세어 $21+30+30=81$"
+        },
+        {
+          "choice": "⑤",
+          "value": 114,
+          "route": "상한을 잘못 적용해 부적합한 $63$을 포함, $21+30+63=114$"
+        }
+      ],
+      "visualFacts": {
+        "primes": [
+          2,
+          3,
+          5,
+          7
+        ],
+        "multiple": 5,
+        "intersectionSum": 10,
+        "unionLow": 7,
+        "unionHigh": 9
+      },
+      "decision": "KEEP",
+      "reviewType": "CREATOR_SELF_RECHECK_ONLY"
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q17-A2",
+      "lockedPrimaryL3": "H1-RPM-238",
+      "reverseStemCheck": "발문만 역독해: 집합 A의 소수, k의 소수 약수 원소의 합, 배수집합과 합집합 원소 수를 함께 만족시키는 자연수 k 전부를 구하여 합산",
+      "decisiveStep": "교집합 소수 선택을 정한 뒤 합집합의 원소 수로 k 범위를 제한하고 두 조건을 동시에 교차 검증",
+      "allEligibleK": [
+        {
+          "k": 7,
+          "selected": [
+            7
+          ],
+          "nunion": 6
+        },
+        {
+          "k": 10,
+          "selected": [
+            2,
+            5
+          ],
+          "nunion": 8
+        }
+      ],
+      "allowedPrimeSubsets": [
+        [
+          2,
+          5
+        ],
+        [
+          7
+        ]
+      ],
+      "answerValue": 17,
+      "answer": "①",
+      "choices": [
+        17,
+        7,
+        10,
+        24,
+        20
+      ],
+      "studentProblemVisualVerdict": "EXEMPT: 모든 입력이 집합의 정의와 두 조건으로 완결",
+      "solutionVisualVerdict": "ADD: 교집합 원소와 합집합 개수의 독립 검산을 후보 k별 표로 시각화",
+      "solutionSvg": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q17-A2-solution.svg",
+      "distractorPaths": [
+        {
+          "choice": "②",
+          "value": 7,
+          "route": "$7$만 세고 $10$ 누락"
+        },
+        {
+          "choice": "③",
+          "value": 10,
+          "route": "$10$만 세고 $7$ 누락"
+        },
+        {
+          "choice": "④",
+          "value": 24,
+          "route": "$7$을 두 번 세어 $7+7+10=24$"
+        },
+        {
+          "choice": "⑤",
+          "value": 20,
+          "route": "$10$을 두 번 세어 $10+10=20$"
+        }
+      ],
+      "visualFacts": {
+        "primes": [
+          2,
+          3,
+          5,
+          7
+        ],
+        "multiple": 2,
+        "intersectionSum": 7,
+        "unionLow": 6,
+        "unionHigh": 8
+      },
+      "decision": "KEEP",
+      "reviewType": "CREATOR_SELF_RECHECK_ONLY"
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q17-A3",
+      "lockedPrimaryL3": "H1-RPM-238",
+      "reverseStemCheck": "발문만 역독해: 집합 A의 소수, k의 소수 약수 원소의 합, 배수집합과 합집합 원소 수를 함께 만족시키는 자연수 k 전부를 구하여 합산",
+      "decisiveStep": "교집합 소수 선택을 정한 뒤 합집합의 원소 수로 k 범위를 제한하고 두 조건을 동시에 교차 검증",
+      "allEligibleK": [
+        {
+          "k": 18,
+          "selected": [
+            2,
+            3
+          ],
+          "nunion": 9
+        },
+        {
+          "k": 24,
+          "selected": [
+            2,
+            3
+          ],
+          "nunion": 11
+        },
+        {
+          "k": 25,
+          "selected": [
+            5
+          ],
+          "nunion": 11
+        }
+      ],
+      "allowedPrimeSubsets": [
+        [
+          2,
+          3
+        ],
+        [
+          5
+        ]
+      ],
+      "answerValue": 67,
+      "answer": "⑤",
+      "choices": [
+        18,
+        24,
+        25,
+        42,
+        67
+      ],
+      "studentProblemVisualVerdict": "EXEMPT: 모든 입력이 집합의 정의와 두 조건으로 완결",
+      "solutionVisualVerdict": "ADD: 교집합 원소와 합집합 개수의 독립 검산을 후보 k별 표로 시각화",
+      "solutionSvg": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q17-A3-solution.svg",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "value": 18,
+          "route": "$18$만 계산"
+        },
+        {
+          "choice": "②",
+          "value": 24,
+          "route": "$24$만 계산"
+        },
+        {
+          "choice": "③",
+          "value": 25,
+          "route": "$25$만 계산"
+        },
+        {
+          "choice": "④",
+          "value": 42,
+          "route": "$25$를 빠뜨려 $18+24=42$"
+        }
+      ],
+      "visualFacts": {
+        "primes": [
+          2,
+          3,
+          5,
+          7
+        ],
+        "multiple": 3,
+        "intersectionSum": 5,
+        "unionLow": 9,
+        "unionHigh": 11
+      },
+      "decision": "KEEP",
+      "reviewType": "CREATOR_SELF_RECHECK_ONLY"
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q17-B1",
+      "lockedPrimaryL3": "H1-RPM-238",
+      "reverseStemCheck": "발문만 역독해: 집합 A의 소수, k의 소수 약수 원소의 합, 배수집합과 합집합 원소 수를 함께 만족시키는 자연수 k 전부를 구하여 합산",
+      "decisiveStep": "교집합 소수 선택을 정한 뒤 합집합의 원소 수로 k 범위를 제한하고 두 조건을 동시에 교차 검증",
+      "allEligibleK": [
+        {
+          "k": 35,
+          "selected": [
+            5,
+            7
+          ],
+          "nunion": 8
+        },
+        {
+          "k": 42,
+          "selected": [
+            2,
+            3,
+            7
+          ],
+          "nunion": 9
+        }
+      ],
+      "allowedPrimeSubsets": [
+        [
+          2,
+          3,
+          7
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "answerValue": 77,
+      "answer": "②",
+      "choices": [
+        35,
+        77,
+        42,
+        112,
+        84
+      ],
+      "studentProblemVisualVerdict": "EXEMPT: 모든 입력이 집합의 정의와 두 조건으로 완결",
+      "solutionVisualVerdict": "ADD: 교집합 원소와 합집합 개수의 독립 검산을 후보 k별 표로 시각화",
+      "solutionSvg": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q17-B1-solution.svg",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "value": 35,
+          "route": "$35$만 계산"
+        },
+        {
+          "choice": "③",
+          "value": 42,
+          "route": "$42$만 계산"
+        },
+        {
+          "choice": "④",
+          "value": 112,
+          "route": "$35$ 중복 합산: $35+35+42=112$"
+        },
+        {
+          "choice": "⑤",
+          "value": 84,
+          "route": "$42$를 두 번 합산해 $84$"
+        }
+      ],
+      "visualFacts": {
+        "primes": [
+          2,
+          3,
+          5,
+          7
+        ],
+        "multiple": 7,
+        "intersectionSum": 12,
+        "unionLow": 7,
+        "unionHigh": 9
+      },
+      "decision": "KEEP",
+      "reviewType": "CREATOR_SELF_RECHECK_ONLY"
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q17-B2",
+      "lockedPrimaryL3": "H1-RPM-238",
+      "reverseStemCheck": "발문만 역독해: 집합 A의 소수, k의 소수 약수 원소의 합, 배수집합과 합집합 원소 수를 함께 만족시키는 자연수 k 전부를 구하여 합산",
+      "decisiveStep": "교집합 소수 선택을 정한 뒤 합집합의 원소 수로 k 범위를 제한하고 두 조건을 동시에 교차 검증",
+      "allEligibleK": [
+        {
+          "k": 36,
+          "selected": [
+            2,
+            3
+          ],
+          "nunion": 13
+        },
+        {
+          "k": 48,
+          "selected": [
+            2,
+            3
+          ],
+          "nunion": 16
+        }
+      ],
+      "allowedPrimeSubsets": [
+        [
+          2,
+          3
+        ],
+        [
+          5
+        ]
+      ],
+      "answerValue": 84,
+      "answer": "④",
+      "choices": [
+        36,
+        48,
+        96,
+        84,
+        132
+      ],
+      "studentProblemVisualVerdict": "EXEMPT: 모든 입력이 집합의 정의와 두 조건으로 완결",
+      "solutionVisualVerdict": "ADD: 교집합 원소와 합집합 개수의 독립 검산을 후보 k별 표로 시각화",
+      "solutionSvg": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q17-B2-solution.svg",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "value": 36,
+          "route": "$36$만 계산"
+        },
+        {
+          "choice": "②",
+          "value": 48,
+          "route": "$48$만 계산"
+        },
+        {
+          "choice": "③",
+          "value": 96,
+          "route": "$48$을 중복 합산하여 $96$"
+        },
+        {
+          "choice": "⑤",
+          "value": 132,
+          "route": "$48$을 두 번 합산해 $36+48+48=132$"
+        }
+      ],
+      "visualFacts": {
+        "primes": [
+          2,
+          3,
+          5,
+          7
+        ],
+        "multiple": 4,
+        "intersectionSum": 5,
+        "unionLow": 13,
+        "unionHigh": 16
+      },
+      "decision": "KEEP",
+      "reviewType": "CREATOR_SELF_RECHECK_ONLY"
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q17-B3",
+      "lockedPrimaryL3": "H1-RPM-238",
+      "reverseStemCheck": "발문만 역독해: 집합 A의 소수, k의 소수 약수 원소의 합, 배수집합과 합집합 원소 수를 함께 만족시키는 자연수 k 전부를 구하여 합산",
+      "decisiveStep": "교집합 소수 선택을 정한 뒤 합집합의 원소 수로 k 범위를 제한하고 두 조건을 동시에 교차 검증",
+      "allEligibleK": [
+        {
+          "k": 25,
+          "selected": [
+            5
+          ],
+          "nunion": 9
+        },
+        {
+          "k": 36,
+          "selected": [
+            2,
+            3
+          ],
+          "nunion": 11
+        }
+      ],
+      "allowedPrimeSubsets": [
+        [
+          2,
+          3
+        ],
+        [
+          5
+        ]
+      ],
+      "answerValue": 61,
+      "answer": "①",
+      "choices": [
+        61,
+        25,
+        36,
+        86,
+        72
+      ],
+      "studentProblemVisualVerdict": "EXEMPT: 모든 입력이 집합의 정의와 두 조건으로 완결",
+      "solutionVisualVerdict": "ADD: 교집합 원소와 합집합 개수의 독립 검산을 후보 k별 표로 시각화",
+      "solutionSvg": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q17-B3-solution.svg",
+      "distractorPaths": [
+        {
+          "choice": "②",
+          "value": 25,
+          "route": "$25$만 계산"
+        },
+        {
+          "choice": "③",
+          "value": 36,
+          "route": "$36$만 계산"
+        },
+        {
+          "choice": "④",
+          "value": 86,
+          "route": "$25$ 중복 합산: $25+25+36=86$"
+        },
+        {
+          "choice": "⑤",
+          "value": 72,
+          "route": "$36$을 중복 합산해 $72$"
+        }
+      ],
+      "visualFacts": {
+        "primes": [
+          2,
+          3,
+          5,
+          7,
+          11
+        ],
+        "multiple": 5,
+        "intersectionSum": 5,
+        "unionLow": 9,
+        "unionHigh": 11
+      },
+      "decision": "KEEP",
+      "reviewType": "CREATOR_SELF_RECHECK_ONLY"
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q17-C1",
+      "lockedPrimaryL3": "H1-RPM-238",
+      "reverseStemCheck": "발문만 역독해: 집합 A의 소수, k의 소수 약수 원소의 합, 배수집합과 합집합 원소 수를 함께 만족시키는 자연수 k 전부를 구하여 합산",
+      "decisiveStep": "교집합 소수 선택을 정한 뒤 합집합의 원소 수로 k 범위를 제한하고 두 조건을 동시에 교차 검증",
+      "allEligibleK": [
+        {
+          "k": 22,
+          "selected": [
+            2,
+            11
+          ],
+          "nunion": 7
+        },
+        {
+          "k": 44,
+          "selected": [
+            2,
+            11
+          ],
+          "nunion": 10
+        }
+      ],
+      "allowedPrimeSubsets": [
+        [
+          2,
+          11
+        ]
+      ],
+      "answerValue": 66,
+      "answer": "③",
+      "choices": [
+        22,
+        44,
+        66,
+        88,
+        110
+      ],
+      "studentProblemVisualVerdict": "EXEMPT: 모든 입력이 집합의 정의와 두 조건으로 완결",
+      "solutionVisualVerdict": "ADD: 교집합 원소와 합집합 개수의 독립 검산을 후보 k별 표로 시각화",
+      "solutionSvg": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q17-C1-solution.svg",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "value": 22,
+          "route": "$22$만 계산"
+        },
+        {
+          "choice": "②",
+          "value": 44,
+          "route": "$44$만 계산"
+        },
+        {
+          "choice": "④",
+          "value": 88,
+          "route": "$44$를 두 번 합산해 $88$"
+        },
+        {
+          "choice": "⑤",
+          "value": 110,
+          "route": "$44$ 중복 합산: $22+44+44=110$"
+        }
+      ],
+      "visualFacts": {
+        "primes": [
+          2,
+          3,
+          5,
+          7,
+          11
+        ],
+        "multiple": 7,
+        "intersectionSum": 13,
+        "unionLow": 7,
+        "unionHigh": 10
+      },
+      "decision": "KEEP",
+      "reviewType": "CREATOR_SELF_RECHECK_ONLY"
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q17-C2",
+      "lockedPrimaryL3": "H1-RPM-238",
+      "reverseStemCheck": "발문만 역독해: 집합 A의 소수, k의 소수 약수 원소의 합, 배수집합과 합집합 원소 수를 함께 만족시키는 자연수 k 전부를 구하여 합산",
+      "decisiveStep": "교집합 소수 선택을 정한 뒤 합집합의 원소 수로 k 범위를 제한하고 두 조건을 동시에 교차 검증",
+      "allEligibleK": [
+        {
+          "k": 39,
+          "selected": [
+            3,
+            13
+          ],
+          "nunion": 12
+        },
+        {
+          "k": 55,
+          "selected": [
+            5,
+            11
+          ],
+          "nunion": 15
+        }
+      ],
+      "allowedPrimeSubsets": [
+        [
+          2,
+          3,
+          11
+        ],
+        [
+          5,
+          11
+        ],
+        [
+          3,
+          13
+        ]
+      ],
+      "answerValue": 94,
+      "answer": "④",
+      "choices": [
+        39,
+        55,
+        133,
+        94,
+        110
+      ],
+      "studentProblemVisualVerdict": "EXEMPT: 모든 입력이 집합의 정의와 두 조건으로 완결",
+      "solutionVisualVerdict": "ADD: 교집합 원소와 합집합 개수의 독립 검산을 후보 k별 표로 시각화",
+      "solutionSvg": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q17-C2-solution.svg",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "value": 39,
+          "route": "$39$만 계산"
+        },
+        {
+          "choice": "②",
+          "value": 55,
+          "route": "$55$만 계산"
+        },
+        {
+          "choice": "③",
+          "value": 133,
+          "route": "$39$ 중복 합산: $39+39+55=133$"
+        },
+        {
+          "choice": "⑤",
+          "value": 110,
+          "route": "$55$를 두 번 합산하여 $110$"
+        }
+      ],
+      "visualFacts": {
+        "primes": [
+          2,
+          3,
+          5,
+          7,
+          11,
+          13
+        ],
+        "multiple": 6,
+        "intersectionSum": 16,
+        "unionLow": 12,
+        "unionHigh": 15
+      },
+      "decision": "KEEP",
+      "reviewType": "CREATOR_SELF_RECHECK_ONLY"
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-GEUMDANG25-2FINAL-Q17-C3",
+      "lockedPrimaryL3": "H1-RPM-238",
+      "reverseStemCheck": "발문만 역독해: 집합 A의 소수, k의 소수 약수 원소의 합, 배수집합과 합집합 원소 수를 함께 만족시키는 자연수 k 전부를 구하여 합산",
+      "decisiveStep": "교집합 소수 선택을 정한 뒤 합집합의 원소 수로 k 범위를 제한하고 두 조건을 동시에 교차 검증",
+      "allEligibleK": [
+        {
+          "k": 65,
+          "selected": [
+            5,
+            13
+          ],
+          "nunion": 14
+        },
+        {
+          "k": 77,
+          "selected": [
+            7,
+            11
+          ],
+          "nunion": 16
+        },
+        {
+          "k": 78,
+          "selected": [
+            2,
+            3,
+            13
+          ],
+          "nunion": 16
+        }
+      ],
+      "allowedPrimeSubsets": [
+        [
+          2,
+          5,
+          11
+        ],
+        [
+          7,
+          11
+        ],
+        [
+          2,
+          3,
+          13
+        ],
+        [
+          5,
+          13
+        ]
+      ],
+      "answerValue": 220,
+      "answer": "②",
+      "choices": [
+        65,
+        220,
+        77,
+        142,
+        155
+      ],
+      "studentProblemVisualVerdict": "EXEMPT: 모든 입력이 집합의 정의와 두 조건으로 완결",
+      "solutionVisualVerdict": "ADD: 교집합 원소와 합집합 개수의 독립 검산을 후보 k별 표로 시각화",
+      "solutionSvg": "archive/assets/generated-lite/ALITE-GEUMDANG25-2FINAL-Q17-C3-solution.svg",
+      "distractorPaths": [
+        {
+          "choice": "①",
+          "value": 65,
+          "route": "$65$만 계산"
+        },
+        {
+          "choice": "③",
+          "value": 77,
+          "route": "$77$만 계산"
+        },
+        {
+          "choice": "④",
+          "value": 142,
+          "route": "$78$을 빠뜨려 $65+77=142$"
+        },
+        {
+          "choice": "⑤",
+          "value": 155,
+          "route": "$65$를 빠뜨려 $77+78=155$"
+        }
+      ],
+      "visualFacts": {
+        "primes": [
+          2,
+          3,
+          5,
+          7,
+          11,
+          13
+        ],
+        "multiple": 7,
+        "intersectionSum": 18,
+        "unionLow": 13,
+        "unionHigh": 16
+      },
+      "decision": "KEEP",
+      "reviewType": "CREATOR_SELF_RECHECK_ONLY"
+    }
+  ]
+}
