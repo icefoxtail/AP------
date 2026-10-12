@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-12T14:35:35.689Z",
+  "updatedAt": "2026-10-12T14:44:00.406Z",
   "coverage": "GitHub PR/Actions only; Library/GPT completion not observed",
   "history": {
     "complete": false,
     "scope": "recent",
-    "oldestObservedAt": "2026-10-09T02:10:48Z",
+    "oldestObservedAt": "2026-10-09T02:10:49Z",
     "seenRegistrationRuns": 24,
     "seenReleaseRuns": 24,
     "runScanIsPartial": true
@@ -285,6 +285,29 @@
         "stage": "배포 작업",
         "attempt": 1
       },
+      "lastSuccessfulRelease": null,
+      "lastFailure": null
+    },
+    "20_순천여고_1학기_중간_고1_기출": {
+      "exam": "20_순천여고_1학기_중간_고1_기출",
+      "check": null,
+      "main": {
+        "result": "완료",
+        "sha": "eae68b09e22280af39686259101931271f30a969",
+        "run": "https://github.com/icefoxtail/AP------/pull/422",
+        "at": "2026-10-12T14:35:13Z"
+      },
+      "registration": {
+        "result": "미확인",
+        "sha": "eae68b09e22280af39686259101931271f30a969",
+        "run": "https://github.com/icefoxtail/AP------/actions/runs/38264009321",
+        "at": "2026-10-12T14:38:22Z",
+        "stage": "등록",
+        "reason": "현재 실행 차수 증거 없음",
+        "attempt": 1
+      },
+      "deployment": null,
+      "deploymentJob": null,
       "lastSuccessfulRelease": null,
       "lastFailure": null
     },
@@ -2689,7 +2712,6 @@
       "key": "registration:38260122085:1:49029bf41cce35f2b5cc8d1b33212c8f0f3e6faa",
       "status": "unverified",
       "attempts": 3,
-      "reason": "현재 실행 차수 증거 없음",
       "run": {
         "id": 38260122085,
         "attempt": 1,
@@ -2700,13 +2722,30 @@
         "event": "push",
         "branch": "main"
       },
+      "reason": "현재 실행 차수 증거 없음",
       "nextRetryAt": "2026-10-12T14:55:22.061Z"
+    },
+    "registration:38264009321:1:eae68b09e22280af39686259101931271f30a969": {
+      "key": "registration:38264009321:1:eae68b09e22280af39686259101931271f30a969",
+      "status": "unverified",
+      "attempts": 1,
+      "reason": "현재 실행 차수 증거 없음",
+      "run": {
+        "id": 38264009321,
+        "attempt": 1,
+        "sha": "eae68b09e22280af39686259101931271f30a969",
+        "at": "2026-10-12T14:38:22Z",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/38264009321",
+        "conclusion": "success",
+        "event": "push",
+        "branch": "main"
+      },
+      "nextRetryAt": "2026-10-12T14:48:55.140Z"
     },
     "registration:38262355241:1:acf9393c1522b6bedb96e40a4223d01de6c40d8f": {
       "key": "registration:38262355241:1:acf9393c1522b6bedb96e40a4223d01de6c40d8f",
       "status": "unverified",
       "attempts": 2,
-      "reason": "현재 실행 차수 증거 없음",
       "run": {
         "id": 38262355241,
         "attempt": 1,
@@ -2717,14 +2756,13 @@
         "event": "push",
         "branch": "main"
       },
+      "reason": "현재 실행 차수 증거 없음",
       "nextRetryAt": "2026-10-12T14:45:18.818Z"
     },
     "release:38262355276:1:acf9393c1522b6bedb96e40a4223d01de6c40d8f": {
       "key": "release:38262355276:1:acf9393c1522b6bedb96e40a4223d01de6c40d8f",
       "status": "partial",
-      "fileProofState": "permanent",
       "attempts": 1,
-      "verifiedAt": "2026-10-12T14:35:34.258Z",
       "run": {
         "id": 38262355276,
         "attempt": 1,
@@ -2745,6 +2783,8 @@
         "fileProofReason": "Pages ZIP 크기 초과",
         "exams": {}
       },
+      "fileProofState": "permanent",
+      "verifiedAt": "2026-10-12T14:35:34.258Z",
       "checkedExamIds": [
         "19_금당고_1학기_중간_고1_기출",
         "19_매산고_1학기_중간_고1_기출",
@@ -12327,7 +12367,6 @@
       "key": "registration:38256717801:1:17467ceba45949daeb1d0ca7131cbff48e226d22",
       "status": "unverified",
       "attempts": 4,
-      "reason": "현재 실행 차수 증거 없음",
       "run": {
         "id": 38256717801,
         "attempt": 1,
@@ -12338,13 +12377,13 @@
         "event": "push",
         "branch": "main"
       },
+      "reason": "현재 실행 차수 증거 없음",
       "retryExhausted": true
     },
     "registration:38257063296:1:20cd443ced24b2fd04d39c6abc11e09bc794f02a": {
       "key": "registration:38257063296:1:20cd443ced24b2fd04d39c6abc11e09bc794f02a",
       "status": "unverified",
       "attempts": 4,
-      "reason": "현재 실행 차수 증거 없음",
       "run": {
         "id": 38257063296,
         "attempt": 1,
@@ -12355,6 +12394,7 @@
         "event": "push",
         "branch": "main"
       },
+      "reason": "현재 실행 차수 증거 없음",
       "retryExhausted": true
     },
     "registration:38254718222:1:c506e8d89a49c609b2efd2dae2efe7480e2efc57": {
