@@ -1,0 +1,1277 @@
+{
+  "schemaVersion": "ALIVE_QID9_Q14_CREATE_DRAFT_v1",
+  "source": {
+    "path": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+    "examTitle": "25_제일고_2학기_기말_고1_기출",
+    "qid": 14,
+    "sourceUid": "qid_v1_31143d74bf891a3e10a6c8c34665ac054450c573ec48c3ab37d2eddf99d68a48",
+    "gitBlobSha1": "252c1cc9a687cadd961183b56ea10d21bf1976b4",
+    "preservedReadOnly": true
+  },
+  "authority": {
+    "rpmPrimaryL3": "H1-RPM-261 점근선과 위치",
+    "originalMetaFoundationL3": "유리함수의 점근선",
+    "originalMetaFoundationL4": "점근선과 도형 관계",
+    "browser": "NOT_RUN"
+  },
+  "summary": {
+    "authorDraftItems": 9,
+    "mathSelfChecks": 9,
+    "wrongChoiceCalculationChecks": 36,
+    "answerSequence": [
+      "①",
+      "⑤",
+      "④",
+      "②",
+      "⑤",
+      "①",
+      "④",
+      "②",
+      "③"
+    ],
+    "answerDistribution": {
+      "①": 2,
+      "②": 2,
+      "③": 1,
+      "④": 2,
+      "⑤": 2
+    },
+    "reverseKeep": 9,
+    "reverseRevised": 0,
+    "reverseHold": 0,
+    "problemSvgCreated": 0,
+    "solutionSvgCreated": 9,
+    "svgBrowserRendered": "NOT_RUN",
+    "externalOpenBookReview": "NOT_RUN",
+    "studentRelease": "NOT_AUTHORIZED",
+    "status": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+    "nextQid": 15
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-JEIL25-2FINAL-Q14-A1",
+      "sourceQid": 14,
+      "sourceUid": "qid_v1_31143d74bf891a3e10a6c8c34665ac054450c573ec48c3ab37d2eddf99d68a48",
+      "slot": "A1",
+      "purpose": "A",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q14",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "유리함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프",
+        "점근선",
+        "넓이"
+      ],
+      "wide": false,
+      "content": "두 유리함수 $y=\\dfrac3{x-k}$, $y=\\dfrac{kx-2}{x-2}$의 그래프의 점근선으로 둘러싸인 부분의 넓이가 $15$일 때, 양수 $k$의 값은?",
+      "choices": [
+        "$5$",
+        "$2$",
+        "$3$",
+        "$15$",
+        "$-3$"
+      ],
+      "answer": "①",
+      "solution": "첫째 유리함수의 점근선은 $x=k$, $y=0$이다. 둘째 함수는 $k+\\dfrac{2k-2}{x-2}$이므로 점근선은 $x=2$, $y=k$이다. 넓이는 $k|k-2|=15$이다. $0<k<2$에서 $k(2-k)\\le1$이므로 불가능하다. 따라서 $k>2$이고 $k(k-2)=15$, 즉 $(k-5)(k+3)=0$이다. 양수 해는 $k=5$이므로 정답은 ①이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q14/A1-solution.svg",
+      "solutionImageAlt": "A1 점근선으로 둘러싸인 직사각형",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "primaryRPM_L3": "점근선과 위치",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-261",
+        "rpmRecordId": "H1-RPM-261",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "sourceMetaFoundationL3": "유리함수의 점근선",
+        "sourceMetaFoundationL4": "점근선과 도형 관계",
+        "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+        "templateKey": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+        "effectiveL4Id": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [],
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_CANONICAL"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "원본과 같은 매개변수 역산; 학생 발문 조건 충분성·교과 적합성 점검",
+        "mathSelfCheckEvidence": {
+          "rectangle": {
+            "x": [
+              2,
+              5
+            ],
+            "y": [
+              0,
+              5
+            ]
+          },
+          "area": 15,
+          "k": 5,
+          "roots": [
+            5,
+            -3
+          ],
+          "correctChoiceIndex": 1,
+          "answer": "①"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "②",
+            "offeredValue": "$2$",
+            "incorrectCalculation": "두 번째 함수의 수직 점근선 $x=2$를 곧 매개변수 $k$의 값으로 오인하여 $k=2$를 고른다.",
+            "correctChoice": "①"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "$3$",
+            "incorrectCalculation": "$(k-5)(k+3)=0$에서 음수 해 $-3$에 절댓값을 취해 $3$으로 계산한다.",
+            "correctChoice": "①"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$15$",
+            "incorrectCalculation": "점근선 간 가로 간격을 $1$로 잘못 가정하고 $1\\times k=15$에서 $k=15$를 구한다.",
+            "correctChoice": "①"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$-3$",
+            "incorrectCalculation": "이차방정식의 음수 해 $k=-3$을 양수 조건을 무시하고 선택한다.",
+            "correctChoice": "①"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_OPTIONAL",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q14/A1-solution.svg",
+          "mathExpected": {
+            "x": [
+              2,
+              5
+            ],
+            "y": [
+              0,
+              5
+            ]
+          },
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED"
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-JEIL25-2FINAL-Q14-A2",
+      "sourceQid": 14,
+      "sourceUid": "qid_v1_31143d74bf891a3e10a6c8c34665ac054450c573ec48c3ab37d2eddf99d68a48",
+      "slot": "A2",
+      "purpose": "A",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q14",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "유리함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프",
+        "점근선",
+        "넓이"
+      ],
+      "wide": false,
+      "content": "두 유리함수 $y=\\dfrac{-2}{x-k}$, $y=\\dfrac{kx+1}{x-3}$의 그래프의 점근선으로 둘러싸인 부분의 넓이가 $28$일 때, 양수 $k$의 값은?",
+      "choices": [
+        "$-4$",
+        "$4$",
+        "$3$",
+        "$28$",
+        "$7$"
+      ],
+      "answer": "⑤",
+      "solution": "첫째 함수의 점근선은 $x=k$, $y=0$이다. 둘째 함수는 $k+\\dfrac{3k+1}{x-3}$이므로 점근선은 $x=3$, $y=k$이다. 넓이 $k|k-3|=28$을 만족한다. $0<k<3$에서 $k(3-k)\\le\\dfrac94$이므로 불가능하고, $k>3$에서 $k(k-3)=28$, $(k-7)(k+4)=0$이다. 양수 해 $k=7$이므로 정답은 ⑤이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q14/A2-solution.svg",
+      "solutionImageAlt": "A2 점근선으로 둘러싸인 직사각형",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "primaryRPM_L3": "점근선과 위치",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-261",
+        "rpmRecordId": "H1-RPM-261",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "sourceMetaFoundationL3": "유리함수의 점근선",
+        "sourceMetaFoundationL4": "점근선과 도형 관계",
+        "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+        "templateKey": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+        "effectiveL4Id": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [],
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_CANONICAL"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "수직 점근선의 이동 수치변형; 학생 발문 조건 충분성·교과 적합성 점검",
+        "mathSelfCheckEvidence": {
+          "rectangle": {
+            "x": [
+              3,
+              7
+            ],
+            "y": [
+              0,
+              7
+            ]
+          },
+          "area": 28,
+          "k": 7,
+          "roots": [
+            7,
+            -4
+          ],
+          "correctChoiceIndex": 5,
+          "answer": "⑤"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "$-4$",
+            "incorrectCalculation": "이차방정식의 음수 해 $k=-4$를 양수 조건을 무시하고 선택한다.",
+            "correctChoice": "⑤"
+          },
+          {
+            "choice": "②",
+            "offeredValue": "$4$",
+            "incorrectCalculation": "음수 해 $-4$에 절댓값을 취하여 $4$라고 고른다.",
+            "correctChoice": "⑤"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "$3$",
+            "incorrectCalculation": "두 번째 함수의 수직 점근선 $x=3$을 $k=3$으로 오인한다.",
+            "correctChoice": "⑤"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$28$",
+            "incorrectCalculation": "점근선 사이 가로 간격을 $1$이라고 착각해 $k=28$을 고른다.",
+            "correctChoice": "⑤"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_OPTIONAL",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q14/A2-solution.svg",
+          "mathExpected": {
+            "x": [
+              3,
+              7
+            ],
+            "y": [
+              0,
+              7
+            ]
+          },
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED"
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-JEIL25-2FINAL-Q14-A3",
+      "sourceQid": 14,
+      "sourceUid": "qid_v1_31143d74bf891a3e10a6c8c34665ac054450c573ec48c3ab37d2eddf99d68a48",
+      "slot": "A3",
+      "purpose": "A",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q14",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "유리함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프",
+        "점근선",
+        "넓이"
+      ],
+      "wide": false,
+      "content": "두 유리함수 $y=1+\\dfrac4{x-k}$, $y=\\dfrac{-kx+1}{x-4}$의 그래프의 점근선으로 둘러싸인 부분의 넓이가 $14$일 때, 양수 $k$의 값은?",
+      "choices": [
+        "$-3$",
+        "$3$",
+        "$4$",
+        "$6$",
+        "$14$"
+      ],
+      "answer": "④",
+      "solution": "첫째 함수의 점근선은 $x=k$, $y=1$이다. 둘째 식은 $-k+\\dfrac{1-4k}{x-4}$이므로 점근선은 $x=4$, $y=-k$이다. 넓이는 $(k+1)|k-4|=14$이다. $0<k<4$에서는 $(k+1)(4-k)\\le\\dfrac{25}{4}<14$이므로 $k>4$이다. $(k+1)(k-4)=14$에서 $(k-6)(k+3)=0$이고 양수인 해 $k=6$이므로 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q14/A3-solution.svg",
+      "solutionImageAlt": "A3 점근선으로 둘러싸인 직사각형",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "primaryRPM_L3": "점근선과 위치",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-261",
+        "rpmRecordId": "H1-RPM-261",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "sourceMetaFoundationL3": "유리함수의 점근선",
+        "sourceMetaFoundationL4": "점근선과 도형 관계",
+        "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+        "templateKey": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+        "effectiveL4Id": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [],
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_CANONICAL"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "수평 점근선 부호 반전 변형; 학생 발문 조건 충분성·교과 적합성 점검",
+        "mathSelfCheckEvidence": {
+          "rectangle": {
+            "x": [
+              4,
+              6
+            ],
+            "y": [
+              -6,
+              1
+            ]
+          },
+          "area": 14,
+          "k": 6,
+          "roots": [
+            6,
+            -3
+          ],
+          "correctChoiceIndex": 4,
+          "answer": "④"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "$-3$",
+            "incorrectCalculation": "음수 해 $k=-3$을 양수 조건 검토 없이 고른다.",
+            "correctChoice": "④"
+          },
+          {
+            "choice": "②",
+            "offeredValue": "$3$",
+            "incorrectCalculation": "음수 해 $-3$을 임의로 양수로 고쳐 $3$을 답한다.",
+            "correctChoice": "④"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "$4$",
+            "incorrectCalculation": "두 번째 함수의 수직 점근선 $x=4$를 매개변수 $k$의 값으로 오해한다.",
+            "correctChoice": "④"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$14$",
+            "incorrectCalculation": "가로 길이가 $1$이고 세로 길이가 $k$라고 잘못 계산해 $k=14$로 둔다.",
+            "correctChoice": "④"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_OPTIONAL",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q14/A3-solution.svg",
+          "mathExpected": {
+            "x": [
+              4,
+              6
+            ],
+            "y": [
+              -6,
+              1
+            ]
+          },
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED"
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-JEIL25-2FINAL-Q14-B1",
+      "sourceQid": 14,
+      "sourceUid": "qid_v1_31143d74bf891a3e10a6c8c34665ac054450c573ec48c3ab37d2eddf99d68a48",
+      "slot": "B1",
+      "purpose": "B",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q14",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "유리함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프",
+        "점근선",
+        "넓이"
+      ],
+      "wide": false,
+      "content": "$k>3$일 때, 두 유리함수 $y=2+\\dfrac3{x-(k+1)}$, $y=\\dfrac{(k-1)x+5}{x-2}$의 그래프의 점근선으로 둘러싸인 직사각형의 넓이가 $8$이다. 이 직사각형의 둘레의 길이는?",
+      "choices": [
+        "$6$",
+        "$12$",
+        "$8$",
+        "$16$",
+        "$10$"
+      ],
+      "answer": "②",
+      "solution": "첫째 함수의 점근선은 $x=k+1$, $y=2$이고 둘째 함수의 점근선은 $x=2$, $y=k-1$이다. $k>3$에서 가로는 $k-1$, 세로는 $k-3$이므로 $(k-1)(k-3)=8$, 즉 $(k-5)(k+1)=0$이다. $k=5$에서 가로 $4$, 세로 $2$이므로 둘레는 $2(4+2)=12$이다. 따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q14/B1-solution.svg",
+      "solutionImageAlt": "B1 점근선으로 둘러싸인 직사각형",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "primaryRPM_L3": "점근선과 위치",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-261",
+        "rpmRecordId": "H1-RPM-261",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "sourceMetaFoundationL3": "유리함수의 점근선",
+        "sourceMetaFoundationL4": "점근선과 도형 관계",
+        "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+        "templateKey": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+        "effectiveL4Id": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [],
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_CANONICAL"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "넓이 역산 후 둘레; 학생 발문 조건 충분성·교과 적합성 점검",
+        "mathSelfCheckEvidence": {
+          "rectangle": {
+            "x": [
+              2,
+              6
+            ],
+            "y": [
+              2,
+              4
+            ]
+          },
+          "area": 8,
+          "perimeter": 12,
+          "k": 5,
+          "correctChoiceIndex": 2,
+          "answer": "②"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "$6$",
+            "incorrectCalculation": "가로와 세로를 $4+2=6$만 더하고 두 배를 누락한다.",
+            "correctChoice": "②"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "$8$",
+            "incorrectCalculation": "주어진 넓이 $8$을 둘레라고 착각해 그대로 답한다.",
+            "correctChoice": "②"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$16$",
+            "incorrectCalculation": "세로도 가로처럼 $4$라 오인하여 $2(4+4)=16$으로 계산한다.",
+            "correctChoice": "②"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$10$",
+            "incorrectCalculation": "수직 점근선 $x=2,6$의 간격을 $3$으로 잘못 읽어 $2(3+2)=10$으로 계산한다.",
+            "correctChoice": "②"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_OPTIONAL",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q14/B1-solution.svg",
+          "mathExpected": {
+            "x": [
+              2,
+              6
+            ],
+            "y": [
+              2,
+              4
+            ]
+          },
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED"
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-JEIL25-2FINAL-Q14-B2",
+      "sourceQid": 14,
+      "sourceUid": "qid_v1_31143d74bf891a3e10a6c8c34665ac054450c573ec48c3ab37d2eddf99d68a48",
+      "slot": "B2",
+      "purpose": "B",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q14",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "유리함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프",
+        "점근선",
+        "넓이"
+      ],
+      "wide": false,
+      "content": "$k>2$일 때, 두 유리함수 $y=1-\\dfrac4{x-2k}$, $y=\\dfrac{(k+2)x+3}{x-4}$의 그래프의 점근선으로 둘러싸인 직사각형의 둘레가 $18$이다. 이 직사각형의 넓이는?",
+      "choices": [
+        "$9$",
+        "$18$",
+        "$16$",
+        "$25$",
+        "$20$"
+      ],
+      "answer": "⑤",
+      "solution": "첫째 함수의 점근선은 $x=2k$, $y=1$이고 둘째 함수의 점근선은 $x=4$, $y=k+2$이다. $k>2$에서 가로는 $2k-4$, 세로는 $k+1$이다. $2((2k-4)+(k+1))=18$이므로 $6k-6=18$, $k=4$이다. 가로 $4$, 세로 $5$가 되어 넓이는 $4\\times5=20$이다. 따라서 정답은 ⑤이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q14/B2-solution.svg",
+      "solutionImageAlt": "B2 점근선으로 둘러싸인 직사각형",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "primaryRPM_L3": "점근선과 위치",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-261",
+        "rpmRecordId": "H1-RPM-261",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "sourceMetaFoundationL3": "유리함수의 점근선",
+        "sourceMetaFoundationL4": "점근선과 도형 관계",
+        "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+        "templateKey": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+        "effectiveL4Id": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [],
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_CANONICAL"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "둘레에서 매개변수 역산 후 넓이; 학생 발문 조건 충분성·교과 적합성 점검",
+        "mathSelfCheckEvidence": {
+          "rectangle": {
+            "x": [
+              4,
+              8
+            ],
+            "y": [
+              1,
+              6
+            ]
+          },
+          "area": 20,
+          "perimeter": 18,
+          "k": 4,
+          "correctChoiceIndex": 5,
+          "answer": "⑤"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "$9$",
+            "incorrectCalculation": "둘레 $18$을 절반으로 나눈 $9$를 넓이로 착각한다.",
+            "correctChoice": "⑤"
+          },
+          {
+            "choice": "②",
+            "offeredValue": "$18$",
+            "incorrectCalculation": "둘레 $18$을 넓이와 혼동해 그대로 답한다.",
+            "correctChoice": "⑤"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "$16$",
+            "incorrectCalculation": "세로 길이도 $4$라고 오인하여 $4\\times4=16$으로 계산한다.",
+            "correctChoice": "⑤"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$25$",
+            "incorrectCalculation": "가로 길이도 $5$라고 오인하여 $5\\times5=25$로 계산한다.",
+            "correctChoice": "⑤"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_OPTIONAL",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q14/B2-solution.svg",
+          "mathExpected": {
+            "x": [
+              4,
+              8
+            ],
+            "y": [
+              1,
+              6
+            ]
+          },
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED"
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-JEIL25-2FINAL-Q14-B3",
+      "sourceQid": 14,
+      "sourceUid": "qid_v1_31143d74bf891a3e10a6c8c34665ac054450c573ec48c3ab37d2eddf99d68a48",
+      "slot": "B3",
+      "purpose": "B",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q14",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "유리함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프",
+        "점근선",
+        "넓이"
+      ],
+      "wide": false,
+      "content": "$k>2$일 때, 두 유리함수 $y=1+\\dfrac{k-2}{x-(k+1)}$, $y=\\dfrac{(k-1)x+2}{x-1}$의 그래프의 점근선으로 둘러싸인 직사각형의 넓이는 $24$이다. 이 직사각형의 중심의 좌표는?",
+      "choices": [
+        "$(4,3)$",
+        "$(3,4)$",
+        "$(7,5)$",
+        "$(1,1)$",
+        "$(6,4)$"
+      ],
+      "answer": "①",
+      "solution": "첫째 함수의 점근선은 $x=k+1$, $y=1$이고 둘째 함수의 점근선은 $x=1$, $y=k-1$이다. $k>2$에서 가로 $k$, 세로 $k-2$이므로 $k(k-2)=24$, $(k-6)(k+4)=0$에서 $k=6$이다. 점근선 $x=1,7$, $y=1,5$가 만드는 직사각형의 중심은 $\\left(\\dfrac{1+7}{2},\\dfrac{1+5}{2}\\right)=(4,3)$이다. 따라서 정답은 ①이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q14/B3-solution.svg",
+      "solutionImageAlt": "B3 점근선으로 둘러싸인 직사각형",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "primaryRPM_L3": "점근선과 위치",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-261",
+        "rpmRecordId": "H1-RPM-261",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "sourceMetaFoundationL3": "유리함수의 점근선",
+        "sourceMetaFoundationL4": "점근선과 도형 관계",
+        "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+        "templateKey": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+        "effectiveL4Id": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [],
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_CANONICAL"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "점근선 직사각형 중심 좌표; 학생 발문 조건 충분성·교과 적합성 점검",
+        "mathSelfCheckEvidence": {
+          "rectangle": {
+            "x": [
+              1,
+              7
+            ],
+            "y": [
+              1,
+              5
+            ]
+          },
+          "area": 24,
+          "center": [
+            4,
+            3
+          ],
+          "k": 6,
+          "correctChoiceIndex": 1,
+          "answer": "①"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "②",
+            "offeredValue": "$(3,4)$",
+            "incorrectCalculation": "중심좌표 $(4,3)$의 두 성분을 뒤바꿔 $(3,4)$를 택한다.",
+            "correctChoice": "①"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "$(7,5)$",
+            "incorrectCalculation": "중심 대신 오른쪽 위 꼭짓점 $(7,5)$를 선택한다.",
+            "correctChoice": "①"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$(1,1)$",
+            "incorrectCalculation": "중심 대신 왼쪽 아래 꼭짓점 $(1,1)$을 선택한다.",
+            "correctChoice": "①"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$(6,4)$",
+            "incorrectCalculation": "가로·세로 길이인 $6,4$를 중심의 좌표로 혼동하여 $(6,4)$를 고른다.",
+            "correctChoice": "①"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_OPTIONAL",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q14/B3-solution.svg",
+          "mathExpected": {
+            "x": [
+              1,
+              7
+            ],
+            "y": [
+              1,
+              5
+            ]
+          },
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED"
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-JEIL25-2FINAL-Q14-C1",
+      "sourceQid": 14,
+      "sourceUid": "qid_v1_31143d74bf891a3e10a6c8c34665ac054450c573ec48c3ab37d2eddf99d68a48",
+      "slot": "C1",
+      "purpose": "C",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q14",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "유리함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프",
+        "점근선",
+        "넓이"
+      ],
+      "wide": false,
+      "content": "$k>4$일 때, 두 유리함수 $y=1+\\dfrac3{x-k}$, $y=\\dfrac{(k-2)x+5}{x-1}$의 그래프의 점근선으로 둘러싸인 직사각형의 넓이가 $15$이다. 이 직사각형의 대각선의 길이는?",
+      "choices": [
+        "$\\sqrt{15}$",
+        "$\\sqrt{20}$",
+        "$8$",
+        "$\\sqrt{34}$",
+        "$\\sqrt{68}$"
+      ],
+      "answer": "④",
+      "solution": "두 함수의 점근선은 각각 $x=k$, $y=1$과 $x=1$, $y=k-2$이다. $k>4$이므로 가로는 $k-1$, 세로는 $k-3$이다. 넓이 $(k-1)(k-3)=15$에서 $(k-6)(k+2)=0$이므로 $k=6$이다. 가로 $5$, 세로 $3$인 직사각형에서 대각선은 피타고라스 정리에 의해 $\\sqrt{5^2+3^2}=\\sqrt{34}$이다. 따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q14/C1-solution.svg",
+      "solutionImageAlt": "C1 점근선으로 둘러싸인 직사각형",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "primaryRPM_L3": "점근선과 위치",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-261",
+        "rpmRecordId": "H1-RPM-261",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "sourceMetaFoundationL3": "유리함수의 점근선",
+        "sourceMetaFoundationL4": "점근선과 도형 관계",
+        "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+        "templateKey": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+        "effectiveL4Id": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "metadataDebt": [],
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_CANONICAL"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "넓이 역산 후 직사각형 대각선; 학생 발문 조건 충분성·교과 적합성 점검",
+        "mathSelfCheckEvidence": {
+          "rectangle": {
+            "x": [
+              1,
+              6
+            ],
+            "y": [
+              1,
+              4
+            ]
+          },
+          "area": 15,
+          "diagonalSquare": 34,
+          "k": 6,
+          "correctChoiceIndex": 4,
+          "answer": "④"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "$\\sqrt{15}$",
+            "incorrectCalculation": "가로·세로의 곱인 넓이 $15$를 대각선의 제곱으로 오인해 $\\sqrt{15}$를 구한다.",
+            "correctChoice": "④"
+          },
+          {
+            "choice": "②",
+            "offeredValue": "$\\sqrt{20}$",
+            "incorrectCalculation": "가로·세로를 각각 1씩 적게 읽어 $\\sqrt{4^2+2^2}=\\sqrt{20}$으로 구한다.",
+            "correctChoice": "④"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "$8$",
+            "incorrectCalculation": "대각선을 가로·세로 길이 합인 $5+3=8$로 착각한다.",
+            "correctChoice": "④"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$\\sqrt{68}$",
+            "incorrectCalculation": "대각선 길이에 잘못된 $\\sqrt2$를 곱해 $\\sqrt{2(5^2+3^2)}=\\sqrt{68}$을 구한다.",
+            "correctChoice": "④"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_OPTIONAL",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q14/C1-solution.svg",
+          "mathExpected": {
+            "x": [
+              1,
+              6
+            ],
+            "y": [
+              1,
+              4
+            ]
+          },
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED"
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-JEIL25-2FINAL-Q14-C2",
+      "sourceQid": 14,
+      "sourceUid": "qid_v1_31143d74bf891a3e10a6c8c34665ac054450c573ec48c3ab37d2eddf99d68a48",
+      "slot": "C2",
+      "purpose": "C",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q14",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "유리함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프",
+        "점근선",
+        "넓이"
+      ],
+      "wide": false,
+      "content": "$k>2$일 때, 두 유리함수 $y=2-\\dfrac4{x-(2k+1)}$, $y=\\dfrac{(k+3)x+1}{x-3}$의 그래프의 점근선으로 둘러싸인 직사각형의 넓이가 $48$이다. 이 직사각형의 둘레의 길이는?",
+      "choices": [
+        "$14$",
+        "$28$",
+        "$24$",
+        "$48$",
+        "$30$"
+      ],
+      "answer": "②",
+      "solution": "첫째 함수의 점근선은 $x=2k+1$, $y=2$이고 둘째 함수의 점근선은 $x=3$, $y=k+3$이다. $k>2$이므로 가로는 $2k-2$, 세로는 $k+1$이다. 넓이에서 $(2k-2)(k+1)=48$이므로 $2(k^2-1)=48$, $k=5$이다. 가로 $8$, 세로 $6$이어서 둘레는 $2(8+6)=28$이다. 따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q14/C2-solution.svg",
+      "solutionImageAlt": "C2 점근선으로 둘러싸인 직사각형",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "primaryRPM_L3": "점근선과 위치",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-261",
+        "rpmRecordId": "H1-RPM-261",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "sourceMetaFoundationL3": "유리함수의 점근선",
+        "sourceMetaFoundationL4": "점근선과 도형 관계",
+        "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+        "templateKey": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+        "effectiveL4Id": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "metadataDebt": [],
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_CANONICAL"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "점근선 2k+1 이동과 넓이에서 둘레; 학생 발문 조건 충분성·교과 적합성 점검",
+        "mathSelfCheckEvidence": {
+          "rectangle": {
+            "x": [
+              3,
+              11
+            ],
+            "y": [
+              2,
+              8
+            ]
+          },
+          "area": 48,
+          "perimeter": 28,
+          "k": 5,
+          "correctChoiceIndex": 2,
+          "answer": "②"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "$14$",
+            "incorrectCalculation": "가로와 세로를 단순히 더해 $8+6=14$로 답한다.",
+            "correctChoice": "②"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "$24$",
+            "incorrectCalculation": "$2k+1$을 $2k-1$로 잘못 읽어 가로를 $6$으로 얻고 $2(6+6)=24$로 계산한다.",
+            "correctChoice": "②"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$48$",
+            "incorrectCalculation": "넓이 $48$을 둘레로 오해해 그대로 답한다.",
+            "correctChoice": "②"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$30$",
+            "incorrectCalculation": "가로를 $8$ 대신 $9$로 잘못 읽어 $2(9+6)=30$으로 계산한다.",
+            "correctChoice": "②"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_OPTIONAL",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q14/C2-solution.svg",
+          "mathExpected": {
+            "x": [
+              3,
+              11
+            ],
+            "y": [
+              2,
+              8
+            ]
+          },
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED"
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-JEIL25-2FINAL-Q14-C3",
+      "sourceQid": 14,
+      "sourceUid": "qid_v1_31143d74bf891a3e10a6c8c34665ac054450c573ec48c3ab37d2eddf99d68a48",
+      "slot": "C3",
+      "purpose": "C",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q14",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "유리함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프",
+        "점근선",
+        "넓이"
+      ],
+      "wide": false,
+      "content": "$a>1$, $b>1$인 실수 $a,b$에 대하여 두 유리함수 $y=1+\\dfrac2{x-a}$, $y=\\dfrac{bx+1}{x-1}$의 점근선으로 둘러싸인 직사각형의 넓이가 $18$이다. 이 직사각형의 가로 길이가 세로 길이보다 $3$만큼 길 때, $a+b$의 값은?",
+      "choices": [
+        "$9$",
+        "$10$",
+        "$11$",
+        "$12$",
+        "$13$"
+      ],
+      "answer": "③",
+      "solution": "첫째 함수의 점근선은 $x=a$, $y=1$이고 둘째 함수의 점근선은 $x=1$, $y=b$이다. $a,b>1$이므로 가로는 $a-1$, 세로는 $b-1$이다. 이를 $u,v$라 하면 $uv=18$, $u-v=3$이다. $u=v+3$을 대입해 $v(v+3)=18$, $(v-3)(v+6)=0$이므로 길이가 양수인 $v=3$, $u=6$이다. 따라서 $a=7$, $b=4$이고 $a+b=11$이다. 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q14/C3-solution.svg",
+      "solutionImageAlt": "C3 점근선으로 둘러싸인 직사각형",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "primaryRPM_L3": "점근선과 위치",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-261",
+        "rpmRecordId": "H1-RPM-261",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "sourceMetaFoundationL3": "유리함수의 점근선",
+        "sourceMetaFoundationL4": "점근선과 도형 관계",
+        "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+        "templateKey": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+        "effectiveL4Id": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CONJUNCTIVE",
+        "difficultyBucket": 4,
+        "metadataDebt": [],
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_CANONICAL"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "두 매개변수와 직사각형 두 조건 결합; 학생 발문 조건 충분성·교과 적합성 점검",
+        "mathSelfCheckEvidence": {
+          "rectangle": {
+            "x": [
+              1,
+              7
+            ],
+            "y": [
+              1,
+              4
+            ]
+          },
+          "area": 18,
+          "sideDiff": 3,
+          "answer": "③",
+          "a": 7,
+          "b": 4,
+          "correctChoiceIndex": 3
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "$9$",
+            "incorrectCalculation": "가로·세로 길이 $u=6$, $v=3$의 합만 더해 $9$를 답한다.",
+            "correctChoice": "③"
+          },
+          {
+            "choice": "②",
+            "offeredValue": "$10$",
+            "incorrectCalculation": "$a=u+1=7$은 구하지만 $b=v+1$을 누락하여 $7+3=10$을 답한다.",
+            "correctChoice": "③"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$12$",
+            "incorrectCalculation": "$a$를 $u+2$로 잘못 복원해 $(6+2)+(3+1)=12$를 답한다.",
+            "correctChoice": "③"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$13$",
+            "incorrectCalculation": "수직·수평 점근선 이동을 각각 2로 착각해 $(6+2)+(3+2)=13$으로 답한다.",
+            "correctChoice": "③"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_OPTIONAL",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q14/C3-solution.svg",
+          "mathExpected": {
+            "x": [
+              1,
+              7
+            ],
+            "y": [
+              1,
+              4
+            ]
+          },
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED"
+      }
+    }
+  ]
+}
