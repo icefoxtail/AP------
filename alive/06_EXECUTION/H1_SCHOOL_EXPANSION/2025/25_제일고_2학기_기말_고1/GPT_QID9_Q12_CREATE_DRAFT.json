@@ -1,0 +1,1305 @@
+{
+  "schemaVersion": "ALIVE_QID9_AUTHOR_DRAFT_v1",
+  "source": {
+    "path": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+    "examTitle": "25_제일고_2학기_기말_고1_기출",
+    "qid": 12,
+    "sourceUid": "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+    "gitBlobSha1": "252c1cc9a687cadd961183b56ea10d21bf1976b4",
+    "preservedReadOnly": true
+  },
+  "authority": {
+    "runtime": "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+    "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "sourceMetaL3": "역함수 구하기와 함수값"
+  },
+  "summary": {
+    "authorDraftItems": 9,
+    "problemSvgCreated": 9,
+    "solutionSvgCreated": 9,
+    "externalOpenBookReview": "NOT_RUN",
+    "studentRelease": "NOT_AUTHORIZED",
+    "status": "AUTHOR_DRAFT_ONLY",
+    "nextQid": 13
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-JEIL25-2FINAL-Q12-A1",
+      "sourceQid": 12,
+      "sourceUid": "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+      "slot": "A1",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f:[0,10]\\to\\mathbb R$의 그래프와 직선 $y=x$가 그림과 같다. 함수 $f$는 일대일함수이며, 그래프의 표시된 점은 $(2,3)$, $(5,6)$, $(8,9)$이다. $f(2)+f^{-1}(9)$의 값은?",
+      "choices": [
+        "$5$",
+        "$8$",
+        "$10$",
+        "$11$",
+        "$12$"
+      ],
+      "answer": "④",
+      "solution": "그래프의 점 $(2,3)$에서 $f(2)=3$이다. 또 $(8,9)$을 지나므로 $f(8)=9$이고, 일대일함수이므로 $f^{-1}(9)=8$이다.\\n따라서 $f(2)+f^{-1}(9)=3+8=11$이다.\n따라서 정답은 ④이다.",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A1-problem.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A1-solution.svg",
+      "solutionImageAlt": "함수 그래프의 점과 역함수로 읽는 x좌표의 관계",
+      "solutionImageCaption": "그래프에서 f(x)=y이면 역함수의 값은 f⁻¹(y)=x이다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "역함수 구하기와 함수값",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_GRAPH_VALUE",
+        "metaFoundationL3": "역함수 구하기와 함수값",
+        "metaFoundationL4": "그래프·대응도에서 역함숫값 읽기",
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-255는 역함수 식, H1-RPM-256은 그래프 대칭으로 원본 그래프에서 역함숫값 읽기 exact L4와 일치하지 않음"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 정의역, 일대일 조건, 그래프 점과 역함수 입력/출력이 모두 명시되어 그래프를 실제로 읽어야 답이 도출됨",
+        "mathSelfCheckEvidence": {
+          "domain": [
+            0,
+            10
+          ],
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              5,
+              6
+            ],
+            [
+              8,
+              9
+            ],
+            [
+              10,
+              12
+            ]
+          ],
+          "strictlyIncreasing": true,
+          "f2": 3,
+          "f5": 6,
+          "f8": 9,
+          "inverse5": 5,
+          "inverse8": 8,
+          "inverse2": 2,
+          "computedAnswer": 11,
+          "correctChoice": 4
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 5,
+            "reason": "f^{-1}(9)에서 x좌표 8 대신 2를 읽음"
+          },
+          {
+            "choice": "②",
+            "offeredValue": 8,
+            "reason": "역함숫값의 x좌표 8을 점 (5,6)의 x좌표 5로 착각"
+          },
+          {
+            "choice": "③",
+            "offeredValue": 10,
+            "reason": "f(2)를 y좌표 3가 아닌 x좌표 2로 잘못 읽음"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 12,
+            "reason": "역함숫값 8 대신 함숫값 f(8)=9을 대입"
+          }
+        ],
+        "problemVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A1-problem.svg",
+          "reason": "원본 그래프 정보가 필요하며 표시된 점의 x/y 위치를 해석해야 함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A1-solution.svg",
+          "reason": "그래프의 수평/수직 값 읽기와 역함수 변환을 보조"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-JEIL25-2FINAL-Q12-A2",
+      "sourceQid": 12,
+      "sourceUid": "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+      "slot": "A2",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f:[0,10]\\to\\mathbb R$의 그래프와 직선 $y=x$가 그림과 같다. 함수 $f$는 일대일함수이며, 그래프의 표시된 점은 $(2,4)$, $(5,7)$, $(8,11)$이다. $f(2)+f^{-1}(11)$의 값은?",
+      "choices": [
+        "$6$",
+        "$9$",
+        "$10$",
+        "$12$",
+        "$15$"
+      ],
+      "answer": "④",
+      "solution": "그래프의 점 $(2,4)$에서 $f(2)=4$이다. 또 $(8,11)$을 지나므로 $f(8)=11$이고, 일대일함수이므로 $f^{-1}(11)=8$이다.\\n따라서 $f(2)+f^{-1}(11)=4+8=12$이다.\n따라서 정답은 ④이다.",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A2-problem.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A2-solution.svg",
+      "solutionImageAlt": "함수 그래프의 점과 역함수로 읽는 x좌표의 관계",
+      "solutionImageCaption": "그래프에서 f(x)=y이면 역함수의 값은 f⁻¹(y)=x이다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "역함수 구하기와 함수값",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_GRAPH_VALUE",
+        "metaFoundationL3": "역함수 구하기와 함수값",
+        "metaFoundationL4": "그래프·대응도에서 역함숫값 읽기",
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-255는 역함수 식, H1-RPM-256은 그래프 대칭으로 원본 그래프에서 역함숫값 읽기 exact L4와 일치하지 않음"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 정의역, 일대일 조건, 그래프 점과 역함수 입력/출력이 모두 명시되어 그래프를 실제로 읽어야 답이 도출됨",
+        "mathSelfCheckEvidence": {
+          "domain": [
+            0,
+            10
+          ],
+          "points": [
+            [
+              0,
+              1
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              8,
+              11
+            ],
+            [
+              10,
+              13
+            ]
+          ],
+          "strictlyIncreasing": true,
+          "f2": 4,
+          "f5": 7,
+          "f8": 11,
+          "inverse5": 5,
+          "inverse8": 8,
+          "inverse2": 2,
+          "computedAnswer": 12,
+          "correctChoice": 4
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 6,
+            "reason": "f^{-1}(11)에서 x좌표 8 대신 2를 읽음"
+          },
+          {
+            "choice": "②",
+            "offeredValue": 9,
+            "reason": "역함숫값의 x좌표 8을 점 (5,7)의 x좌표 5로 착각"
+          },
+          {
+            "choice": "③",
+            "offeredValue": 10,
+            "reason": "f(2)를 y좌표 4가 아닌 x좌표 2로 잘못 읽음"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 15,
+            "reason": "역함숫값 8 대신 함숫값 f(8)=11을 대입"
+          }
+        ],
+        "problemVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A2-problem.svg",
+          "reason": "원본 그래프 정보가 필요하며 표시된 점의 x/y 위치를 해석해야 함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A2-solution.svg",
+          "reason": "그래프의 수평/수직 값 읽기와 역함수 변환을 보조"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-JEIL25-2FINAL-Q12-A3",
+      "sourceQid": 12,
+      "sourceUid": "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+      "slot": "A3",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f:[0,10]\\to\\mathbb R$의 그래프와 직선 $y=x$가 그림과 같다. 함수 $f$는 일대일함수이며, 그래프의 표시된 점은 $(2,5)$, $(5,8)$, $(8,13)$이다. $f(2)+f^{-1}(13)$의 값은?",
+      "choices": [
+        "$7$",
+        "$10$",
+        "$13$",
+        "$16$",
+        "$18$"
+      ],
+      "answer": "③",
+      "solution": "그래프의 점 $(2,5)$에서 $f(2)=5$이다. 또 $(8,13)$을 지나므로 $f(8)=13$이고, 일대일함수이므로 $f^{-1}(13)=8$이다.\\n따라서 $f(2)+f^{-1}(13)=5+8=13$이다.\n따라서 정답은 ③이다.",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A3-problem.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A3-solution.svg",
+      "solutionImageAlt": "함수 그래프의 점과 역함수로 읽는 x좌표의 관계",
+      "solutionImageCaption": "그래프에서 f(x)=y이면 역함수의 값은 f⁻¹(y)=x이다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "역함수 구하기와 함수값",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_GRAPH_VALUE",
+        "metaFoundationL3": "역함수 구하기와 함수값",
+        "metaFoundationL4": "그래프·대응도에서 역함숫값 읽기",
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-255는 역함수 식, H1-RPM-256은 그래프 대칭으로 원본 그래프에서 역함숫값 읽기 exact L4와 일치하지 않음"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 정의역, 일대일 조건, 그래프 점과 역함수 입력/출력이 모두 명시되어 그래프를 실제로 읽어야 답이 도출됨",
+        "mathSelfCheckEvidence": {
+          "domain": [
+            0,
+            10
+          ],
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              5,
+              8
+            ],
+            [
+              8,
+              13
+            ],
+            [
+              10,
+              15
+            ]
+          ],
+          "strictlyIncreasing": true,
+          "f2": 5,
+          "f5": 8,
+          "f8": 13,
+          "inverse5": 5,
+          "inverse8": 8,
+          "inverse2": 2,
+          "computedAnswer": 13,
+          "correctChoice": 3
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 7,
+            "reason": "f^{-1}(13)에서 x좌표 8 대신 2를 읽음"
+          },
+          {
+            "choice": "②",
+            "offeredValue": 10,
+            "reason": "역함숫값의 x좌표 8을 점 (5,8)의 x좌표 5로 착각"
+          },
+          {
+            "choice": "④",
+            "offeredValue": 16,
+            "reason": "f(2) 대신 f(5)=8를 선택"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 18,
+            "reason": "역함숫값 8 대신 함숫값 f(8)=13을 대입"
+          }
+        ],
+        "problemVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A3-problem.svg",
+          "reason": "원본 그래프 정보가 필요하며 표시된 점의 x/y 위치를 해석해야 함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A3-solution.svg",
+          "reason": "그래프의 수평/수직 값 읽기와 역함수 변환을 보조"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-JEIL25-2FINAL-Q12-B1",
+      "sourceQid": 12,
+      "sourceUid": "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+      "slot": "B1",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f:[0,10]\\to\\mathbb R$의 그래프와 직선 $y=x$가 그림과 같다. 함수 $f$는 일대일함수이며, 표시된 점은 $(2,4)$, $(5,10)$, $(8,15)$이다. $f(5)+f^{-1}(15)-f^{-1}(4)$의 값은?",
+      "choices": [
+        "$13$",
+        "$14$",
+        "$16$",
+        "$18$",
+        "$23$"
+      ],
+      "answer": "③",
+      "solution": "그래프에서 $f(5)=10$이다. $f(8)=15$이므로 $f^{-1}(15)=8$이고, $f(2)=4$이므로 $f^{-1}(4)=2$이다.\\n따라서 $10+8-2=16$이다.\n따라서 정답은 ③이다.",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B1-problem.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B1-solution.svg",
+      "solutionImageAlt": "함수 그래프의 점과 역함수로 읽는 x좌표의 관계",
+      "solutionImageCaption": "그래프에서 f(x)=y이면 역함수의 값은 f⁻¹(y)=x이다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "역함수 구하기와 함수값",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_GRAPH_VALUE",
+        "metaFoundationL3": "역함수 구하기와 함수값",
+        "metaFoundationL4": "그래프·대응도에서 역함숫값 읽기",
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-255는 역함수 식, H1-RPM-256은 그래프 대칭으로 원본 그래프에서 역함숫값 읽기 exact L4와 일치하지 않음"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 정의역, 일대일 조건, 그래프 점과 역함수 입력/출력이 모두 명시되어 그래프를 실제로 읽어야 답이 도출됨",
+        "mathSelfCheckEvidence": {
+          "domain": [
+            0,
+            10
+          ],
+          "points": [
+            [
+              0,
+              1
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              5,
+              10
+            ],
+            [
+              8,
+              15
+            ],
+            [
+              10,
+              17
+            ]
+          ],
+          "strictlyIncreasing": true,
+          "f2": 4,
+          "f5": 10,
+          "f8": 15,
+          "inverse5": 5,
+          "inverse8": 8,
+          "inverse2": 2,
+          "computedAnswer": 16,
+          "correctChoice": 3
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 13,
+            "reason": "f^{-1}(15)=8을 중간 점의 x좌표 5로 오독"
+          },
+          {
+            "choice": "②",
+            "offeredValue": 14,
+            "reason": "역함수 입력값 4와 역함숫값 2를 혼동"
+          },
+          {
+            "choice": "④",
+            "offeredValue": 18,
+            "reason": "마지막 항 -f^{-1}(4)=-2를 빼먹음"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 23,
+            "reason": "역함숫값 8 대신 원래 함숫값 15을 사용"
+          }
+        ],
+        "problemVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B1-problem.svg",
+          "reason": "원본 그래프 정보가 필요하며 표시된 점의 x/y 위치를 해석해야 함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B1-solution.svg",
+          "reason": "그래프의 수평/수직 값 읽기와 역함수 변환을 보조"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-JEIL25-2FINAL-Q12-B2",
+      "sourceQid": 12,
+      "sourceUid": "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+      "slot": "B2",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f:[0,10]\\to\\mathbb R$의 그래프와 직선 $y=x$가 그림과 같다. 함수 $f$는 일대일함수이며, 표시된 점은 $(2,3)$, $(5,8)$, $(8,12)$이다. $f(5)+f^{-1}(12)-f^{-1}(3)$의 값은?",
+      "choices": [
+        "$11$",
+        "$13$",
+        "$14$",
+        "$16$",
+        "$18$"
+      ],
+      "answer": "③",
+      "solution": "그래프에서 $f(5)=8$이다. $f(8)=12$이므로 $f^{-1}(12)=8$이고, $f(2)=3$이므로 $f^{-1}(3)=2$이다.\\n따라서 $8+8-2=14$이다.\n따라서 정답은 ③이다.",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B2-problem.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B2-solution.svg",
+      "solutionImageAlt": "함수 그래프의 점과 역함수로 읽는 x좌표의 관계",
+      "solutionImageCaption": "그래프에서 f(x)=y이면 역함수의 값은 f⁻¹(y)=x이다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "역함수 구하기와 함수값",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_GRAPH_VALUE",
+        "metaFoundationL3": "역함수 구하기와 함수값",
+        "metaFoundationL4": "그래프·대응도에서 역함숫값 읽기",
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-255는 역함수 식, H1-RPM-256은 그래프 대칭으로 원본 그래프에서 역함숫값 읽기 exact L4와 일치하지 않음"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 정의역, 일대일 조건, 그래프 점과 역함수 입력/출력이 모두 명시되어 그래프를 실제로 읽어야 답이 도출됨",
+        "mathSelfCheckEvidence": {
+          "domain": [
+            0,
+            10
+          ],
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              5,
+              8
+            ],
+            [
+              8,
+              12
+            ],
+            [
+              10,
+              15
+            ]
+          ],
+          "strictlyIncreasing": true,
+          "f2": 3,
+          "f5": 8,
+          "f8": 12,
+          "inverse5": 5,
+          "inverse8": 8,
+          "inverse2": 2,
+          "computedAnswer": 14,
+          "correctChoice": 3
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 11,
+            "reason": "f^{-1}(12)=8을 중간 점의 x좌표 5로 오독"
+          },
+          {
+            "choice": "②",
+            "offeredValue": 13,
+            "reason": "역함수 입력값 3와 역함숫값 2를 혼동"
+          },
+          {
+            "choice": "④",
+            "offeredValue": 16,
+            "reason": "마지막 항 -f^{-1}(3)=-2를 빼먹음"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 18,
+            "reason": "역함숫값 8 대신 원래 함숫값 12을 사용"
+          }
+        ],
+        "problemVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B2-problem.svg",
+          "reason": "원본 그래프 정보가 필요하며 표시된 점의 x/y 위치를 해석해야 함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B2-solution.svg",
+          "reason": "그래프의 수평/수직 값 읽기와 역함수 변환을 보조"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-JEIL25-2FINAL-Q12-B3",
+      "sourceQid": 12,
+      "sourceUid": "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+      "slot": "B3",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f:[0,10]\\to\\mathbb R$의 그래프와 직선 $y=x$가 그림과 같다. 함수 $f$는 일대일함수이며, 표시된 점은 $(2,6)$, $(5,11)$, $(8,17)$이다. $f(5)+f^{-1}(17)-f^{-1}(6)$의 값은?",
+      "choices": [
+        "$13$",
+        "$14$",
+        "$17$",
+        "$19$",
+        "$26$"
+      ],
+      "answer": "③",
+      "solution": "그래프에서 $f(5)=11$이다. $f(8)=17$이므로 $f^{-1}(17)=8$이고, $f(2)=6$이므로 $f^{-1}(6)=2$이다.\\n따라서 $11+8-2=17$이다.\n따라서 정답은 ③이다.",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B3-problem.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B3-solution.svg",
+      "solutionImageAlt": "함수 그래프의 점과 역함수로 읽는 x좌표의 관계",
+      "solutionImageCaption": "그래프에서 f(x)=y이면 역함수의 값은 f⁻¹(y)=x이다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "역함수 구하기와 함수값",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_GRAPH_VALUE",
+        "metaFoundationL3": "역함수 구하기와 함수값",
+        "metaFoundationL4": "그래프·대응도에서 역함숫값 읽기",
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-255는 역함수 식, H1-RPM-256은 그래프 대칭으로 원본 그래프에서 역함숫값 읽기 exact L4와 일치하지 않음"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 정의역, 일대일 조건, 그래프 점과 역함수 입력/출력이 모두 명시되어 그래프를 실제로 읽어야 답이 도출됨",
+        "mathSelfCheckEvidence": {
+          "domain": [
+            0,
+            10
+          ],
+          "points": [
+            [
+              0,
+              2
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              5,
+              11
+            ],
+            [
+              8,
+              17
+            ],
+            [
+              10,
+              18
+            ]
+          ],
+          "strictlyIncreasing": true,
+          "f2": 6,
+          "f5": 11,
+          "f8": 17,
+          "inverse5": 5,
+          "inverse8": 8,
+          "inverse2": 2,
+          "computedAnswer": 17,
+          "correctChoice": 3
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 13,
+            "reason": "역함수 입력값 6와 역함숫값 2를 혼동"
+          },
+          {
+            "choice": "②",
+            "offeredValue": 14,
+            "reason": "f^{-1}(17)=8을 중간 점의 x좌표 5로 오독"
+          },
+          {
+            "choice": "④",
+            "offeredValue": 19,
+            "reason": "마지막 항 -f^{-1}(6)=-2를 빼먹음"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 26,
+            "reason": "역함숫값 8 대신 원래 함숫값 17을 사용"
+          }
+        ],
+        "problemVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B3-problem.svg",
+          "reason": "원본 그래프 정보가 필요하며 표시된 점의 x/y 위치를 해석해야 함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B3-solution.svg",
+          "reason": "그래프의 수평/수직 값 읽기와 역함수 변환을 보조"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-JEIL25-2FINAL-Q12-C1",
+      "sourceQid": 12,
+      "sourceUid": "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+      "slot": "C1",
+      "purpose": "C",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f:[0,10]\\to\\mathbb R$의 그래프와 직선 $y=x$가 그림과 같다. 함수 $f$는 일대일함수이며, 표시된 점은 $(2,4)$, $(5,9)$, $(8,14)$이다. $f(2)+f^{-1}(9)+f^{-1}(14)$의 값은?",
+      "choices": [
+        "$14$",
+        "$17$",
+        "$20$",
+        "$21$",
+        "$23$"
+      ],
+      "answer": "②",
+      "solution": "표시된 세 점에서 $f(2)=4$, $f(5)=9$, $f(8)=14$임을 읽는다. 따라서 $f^{-1}(9)=5$, $f^{-1}(14)=8$이다.\\n그러므로 $4+5+8=17$이다.\n따라서 정답은 ②이다.",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C1-problem.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C1-solution.svg",
+      "solutionImageAlt": "함수 그래프의 점과 역함수로 읽는 x좌표의 관계",
+      "solutionImageCaption": "그래프에서 f(x)=y이면 역함수의 값은 f⁻¹(y)=x이다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "역함수 구하기와 함수값",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_GRAPH_VALUE",
+        "metaFoundationL3": "역함수 구하기와 함수값",
+        "metaFoundationL4": "그래프·대응도에서 역함숫값 읽기",
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-255는 역함수 식, H1-RPM-256은 그래프 대칭으로 원본 그래프에서 역함숫값 읽기 exact L4와 일치하지 않음"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 정의역, 일대일 조건, 그래프 점과 역함수 입력/출력이 모두 명시되어 그래프를 실제로 읽어야 답이 도출됨",
+        "mathSelfCheckEvidence": {
+          "domain": [
+            0,
+            10
+          ],
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              5,
+              9
+            ],
+            [
+              8,
+              14
+            ],
+            [
+              10,
+              18
+            ]
+          ],
+          "strictlyIncreasing": true,
+          "f2": 4,
+          "f5": 9,
+          "f8": 14,
+          "inverse5": 5,
+          "inverse8": 8,
+          "inverse2": 2,
+          "computedAnswer": 17,
+          "correctChoice": 2
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 14,
+            "reason": "f^{-1}(14)의 x좌표 8을 5로 오독"
+          },
+          {
+            "choice": "③",
+            "offeredValue": 20,
+            "reason": "f^{-1}(9)의 x좌표 5를 8로 오독"
+          },
+          {
+            "choice": "④",
+            "offeredValue": 21,
+            "reason": "첫 번째 역함숫값 5 대신 f(5)=9를 사용"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 23,
+            "reason": "두 번째 역함숫값 8 대신 f(8)=14을 사용"
+          }
+        ],
+        "problemVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C1-problem.svg",
+          "reason": "원본 그래프 정보가 필요하며 표시된 점의 x/y 위치를 해석해야 함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C1-solution.svg",
+          "reason": "그래프의 수평/수직 값 읽기와 역함수 변환을 보조"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-JEIL25-2FINAL-Q12-C2",
+      "sourceQid": 12,
+      "sourceUid": "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+      "slot": "C2",
+      "purpose": "C",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f:[0,10]\\to\\mathbb R$의 그래프와 직선 $y=x$가 그림과 같다. 함수 $f$는 일대일함수이며, 표시된 점은 $(2,5)$, $(5,11)$, $(8,16)$이다. $f(2)+f^{-1}(11)+f^{-1}(16)$의 값은?",
+      "choices": [
+        "$15$",
+        "$18$",
+        "$21$",
+        "$24$",
+        "$26$"
+      ],
+      "answer": "②",
+      "solution": "표시된 세 점에서 $f(2)=5$, $f(5)=11$, $f(8)=16$임을 읽는다. 따라서 $f^{-1}(11)=5$, $f^{-1}(16)=8$이다.\\n그러므로 $5+5+8=18$이다.\n따라서 정답은 ②이다.",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C2-problem.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C2-solution.svg",
+      "solutionImageAlt": "함수 그래프의 점과 역함수로 읽는 x좌표의 관계",
+      "solutionImageCaption": "그래프에서 f(x)=y이면 역함수의 값은 f⁻¹(y)=x이다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "역함수 구하기와 함수값",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_GRAPH_VALUE",
+        "metaFoundationL3": "역함수 구하기와 함수값",
+        "metaFoundationL4": "그래프·대응도에서 역함숫값 읽기",
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-255는 역함수 식, H1-RPM-256은 그래프 대칭으로 원본 그래프에서 역함숫값 읽기 exact L4와 일치하지 않음"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 정의역, 일대일 조건, 그래프 점과 역함수 입력/출력이 모두 명시되어 그래프를 실제로 읽어야 답이 도출됨",
+        "mathSelfCheckEvidence": {
+          "domain": [
+            0,
+            10
+          ],
+          "points": [
+            [
+              0,
+              2
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              5,
+              11
+            ],
+            [
+              8,
+              16
+            ],
+            [
+              10,
+              19
+            ]
+          ],
+          "strictlyIncreasing": true,
+          "f2": 5,
+          "f5": 11,
+          "f8": 16,
+          "inverse5": 5,
+          "inverse8": 8,
+          "inverse2": 2,
+          "computedAnswer": 18,
+          "correctChoice": 2
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 15,
+            "reason": "f^{-1}(16)의 x좌표 8을 5로 오독"
+          },
+          {
+            "choice": "③",
+            "offeredValue": 21,
+            "reason": "f^{-1}(11)의 x좌표 5를 8로 오독"
+          },
+          {
+            "choice": "④",
+            "offeredValue": 24,
+            "reason": "첫 번째 역함숫값 5 대신 f(5)=11를 사용"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 26,
+            "reason": "두 번째 역함숫값 8 대신 f(8)=16을 사용"
+          }
+        ],
+        "problemVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C2-problem.svg",
+          "reason": "원본 그래프 정보가 필요하며 표시된 점의 x/y 위치를 해석해야 함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C2-solution.svg",
+          "reason": "그래프의 수평/수직 값 읽기와 역함수 변환을 보조"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-JEIL25-2FINAL-Q12-C3",
+      "sourceQid": 12,
+      "sourceUid": "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+      "slot": "C3",
+      "purpose": "C",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f:[0,10]\\to\\mathbb R$의 그래프와 직선 $y=x$가 그림과 같다. 함수 $f$는 일대일함수이며, 표시된 점은 $(2,6)$, $(5,12)$, $(8,18)$이다. $f(2)+f^{-1}(12)+f^{-1}(18)$의 값은?",
+      "choices": [
+        "$16$",
+        "$19$",
+        "$22$",
+        "$26$",
+        "$29$"
+      ],
+      "answer": "②",
+      "solution": "표시된 세 점에서 $f(2)=6$, $f(5)=12$, $f(8)=18$임을 읽는다. 따라서 $f^{-1}(12)=5$, $f^{-1}(18)=8$이다.\\n그러므로 $6+5+8=19$이다.\n따라서 정답은 ②이다.",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C3-problem.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C3-solution.svg",
+      "solutionImageAlt": "함수 그래프의 점과 역함수로 읽는 x좌표의 관계",
+      "solutionImageCaption": "그래프에서 f(x)=y이면 역함수의 값은 f⁻¹(y)=x이다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "역함수 구하기와 함수값",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_GRAPH_VALUE",
+        "metaFoundationL3": "역함수 구하기와 함수값",
+        "metaFoundationL4": "그래프·대응도에서 역함숫값 읽기",
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-255는 역함수 식, H1-RPM-256은 그래프 대칭으로 원본 그래프에서 역함숫값 읽기 exact L4와 일치하지 않음"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 정의역, 일대일 조건, 그래프 점과 역함수 입력/출력이 모두 명시되어 그래프를 실제로 읽어야 답이 도출됨",
+        "mathSelfCheckEvidence": {
+          "domain": [
+            0,
+            10
+          ],
+          "points": [
+            [
+              0,
+              1
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              5,
+              12
+            ],
+            [
+              8,
+              18
+            ],
+            [
+              10,
+              20
+            ]
+          ],
+          "strictlyIncreasing": true,
+          "f2": 6,
+          "f5": 12,
+          "f8": 18,
+          "inverse5": 5,
+          "inverse8": 8,
+          "inverse2": 2,
+          "computedAnswer": 19,
+          "correctChoice": 2
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 16,
+            "reason": "f^{-1}(18)의 x좌표 8을 5로 오독"
+          },
+          {
+            "choice": "③",
+            "offeredValue": 22,
+            "reason": "f^{-1}(12)의 x좌표 5를 8로 오독"
+          },
+          {
+            "choice": "④",
+            "offeredValue": 26,
+            "reason": "첫 번째 역함숫값 5 대신 f(5)=12를 사용"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 29,
+            "reason": "두 번째 역함숫값 8 대신 f(8)=18을 사용"
+          }
+        ],
+        "problemVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C3-problem.svg",
+          "reason": "원본 그래프 정보가 필요하며 표시된 점의 x/y 위치를 해석해야 함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C3-solution.svg",
+          "reason": "그래프의 수평/수직 값 읽기와 역함수 변환을 보조"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    }
+  ]
+}
