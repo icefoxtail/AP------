@@ -20,8 +20,13 @@
     "solutionSvgCreated": 9,
     "externalOpenBookReview": "NOT_RUN",
     "studentRelease": "NOT_AUTHORIZED",
-    "status": "AUTHOR_DRAFT_ONLY",
-    "nextQid": 11
+    "status": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+    "nextQid": 11,
+    "selfRecheckStatus": "SELF_RECHECK_COMPLETE",
+    "selfRecheckedItems": 9,
+    "wrongChoiceCalculationChecks": 36,
+    "svgStaticParity": "18_OF_18_MAPPING_AND_PATH",
+    "browserRender": "NOT_RUN"
   },
   "questions": [
     {
@@ -58,7 +63,7 @@
         "$5$"
       ],
       "answer": "④",
-      "solution": "대응도에서 $f(1)=2$, $f(2)=4$임을 읽는다.\\n따라서 $(f\\circ f)(1)=f^{2}(1)=4$이다.\n따라서 정답은 ④이다.",
+      "solution": "대응도에서 $f(1)=2$, $f(2)=4$임을 차례로 읽는다.\n따라서 $(f\\circ f)(1)=f(f(1))=4$이다.\n따라서 정답은 ④이다.",
       "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q10/A1-problem.svg",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q10/A1-solution.svg",
       "solutionImageAlt": "대응도에서 합성함수의 입력과 출력을 차례대로 따라간 경로",
@@ -126,22 +131,26 @@
           {
             "choice": "①",
             "offeredValue": 1,
-            "reason": "1에서 함수 적용 횟수를 0회로 잘못 세어 1을 답으로 선택"
+            "reason": "함수를 0회 적용하는 오류",
+            "calculation": "1 (0회, 결과 1)"
           },
           {
             "choice": "②",
             "offeredValue": 2,
-            "reason": "1에서 함수 적용 횟수를 1회로 잘못 세어 1→2을 답으로 선택"
+            "reason": "함수를 1회 적용하는 오류",
+            "calculation": "1→2 (1회, 결과 2)"
           },
           {
             "choice": "③",
             "offeredValue": 3,
-            "reason": "1에서 함수 적용 횟수를 4회로 잘못 세어 1→2→4→5→3을 답으로 선택"
+            "reason": "함수를 4회 적용하는 오류",
+            "calculation": "1→2→4→5→3 (4회, 결과 3)"
           },
           {
             "choice": "⑤",
             "offeredValue": 5,
-            "reason": "1에서 함수 적용 횟수를 3회로 잘못 세어 1→2→4→5을 답으로 선택"
+            "reason": "함수를 3회 적용하는 오류",
+            "calculation": "1→2→4→5 (3회, 결과 5)"
           }
         ],
         "problemVisual": {
@@ -157,7 +166,7 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY",
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
         "stemRevision": {
           "before": "$(f\\circ f)$(1)$",
           "after": "$(f\\circ f)(1)$",
@@ -166,6 +175,20 @@
             "solution"
           ],
           "mathRechecked": "SAME_FUNCTION_SEQUENCE"
+        },
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reverseReading": "학생용 대응도와 문항의 입력·합성 순서·질문값에 모호성이 없고 실제 반복 합성 계산이 필요함",
+          "lockedPrimaryL3": "H1-RPM-253",
+          "correctValue": 4,
+          "correctChoice": "④",
+          "distractorRoutes": "4/4_EXACT_NUMERIC",
+          "problemSvg": "STATIC_MAPPING_PARITY",
+          "solutionSvg": "STATIC_PATH_PARITY",
+          "browserRender": "NOT_RUN",
+          "externalReview": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED",
+          "difficultyReason": "2회 순차 함수 대입"
         }
       }
     },
@@ -203,7 +226,7 @@
         "$5$"
       ],
       "answer": "②",
-      "solution": "대응도에서 $f(3)=5$, $f(5)=2$임을 읽는다.\\n따라서 $(f\\circ f)(3)=f^{2}(3)=2$이다.\n따라서 정답은 ②이다.",
+      "solution": "대응도에서 $f(3)=5$, $f(5)=2$임을 차례로 읽는다.\n따라서 $(f\\circ f)(3)=f(f(3))=2$이다.\n따라서 정답은 ②이다.",
       "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q10/A2-problem.svg",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q10/A2-solution.svg",
       "solutionImageAlt": "대응도에서 합성함수의 입력과 출력을 차례대로 따라간 경로",
@@ -271,22 +294,26 @@
           {
             "choice": "①",
             "offeredValue": 1,
-            "reason": "3에서 함수 적용 횟수를 4회로 잘못 세어 3→5→2→4→1을 답으로 선택"
+            "reason": "함수를 4회 적용하는 오류",
+            "calculation": "3→5→2→4→1 (4회, 결과 1)"
           },
           {
             "choice": "③",
             "offeredValue": 3,
-            "reason": "3에서 함수 적용 횟수를 0회로 잘못 세어 3을 답으로 선택"
+            "reason": "함수를 0회 적용하는 오류",
+            "calculation": "3 (0회, 결과 3)"
           },
           {
             "choice": "④",
             "offeredValue": 4,
-            "reason": "3에서 함수 적용 횟수를 3회로 잘못 세어 3→5→2→4을 답으로 선택"
+            "reason": "함수를 3회 적용하는 오류",
+            "calculation": "3→5→2→4 (3회, 결과 4)"
           },
           {
             "choice": "⑤",
             "offeredValue": 5,
-            "reason": "3에서 함수 적용 횟수를 1회로 잘못 세어 3→5을 답으로 선택"
+            "reason": "함수를 1회 적용하는 오류",
+            "calculation": "3→5 (1회, 결과 5)"
           }
         ],
         "problemVisual": {
@@ -302,7 +329,7 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY",
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
         "stemRevision": {
           "before": "$(f\\circ f)$(3)$",
           "after": "$(f\\circ f)(3)$",
@@ -311,6 +338,20 @@
             "solution"
           ],
           "mathRechecked": "SAME_FUNCTION_SEQUENCE"
+        },
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reverseReading": "학생용 대응도와 문항의 입력·합성 순서·질문값에 모호성이 없고 실제 반복 합성 계산이 필요함",
+          "lockedPrimaryL3": "H1-RPM-253",
+          "correctValue": 2,
+          "correctChoice": "②",
+          "distractorRoutes": "4/4_EXACT_NUMERIC",
+          "problemSvg": "STATIC_MAPPING_PARITY",
+          "solutionSvg": "STATIC_PATH_PARITY",
+          "browserRender": "NOT_RUN",
+          "externalReview": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED",
+          "difficultyReason": "2회 순차 함수 대입"
         }
       }
     },
@@ -348,7 +389,7 @@
         "$5$"
       ],
       "answer": "③",
-      "solution": "대응도에서 $f(2)=5$, $f(5)=3$임을 읽는다.\\n따라서 $(f\\circ f)(2)=f^{2}(2)=3$이다.\n따라서 정답은 ③이다.",
+      "solution": "대응도에서 $f(2)=5$, $f(5)=3$임을 차례로 읽는다.\n따라서 $(f\\circ f)(2)=f(f(2))=3$이다.\n따라서 정답은 ③이다.",
       "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q10/A3-problem.svg",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q10/A3-solution.svg",
       "solutionImageAlt": "대응도에서 합성함수의 입력과 출력을 차례대로 따라간 경로",
@@ -416,22 +457,26 @@
           {
             "choice": "①",
             "offeredValue": 1,
-            "reason": "2에서 함수 적용 횟수를 3회로 잘못 세어 2→5→3→1을 답으로 선택"
+            "reason": "함수를 3회 적용하는 오류",
+            "calculation": "2→5→3→1 (3회, 결과 1)"
           },
           {
             "choice": "②",
             "offeredValue": 2,
-            "reason": "2에서 함수 적용 횟수를 0회로 잘못 세어 2을 답으로 선택"
+            "reason": "함수를 0회 적용하는 오류",
+            "calculation": "2 (0회, 결과 2)"
           },
           {
             "choice": "④",
             "offeredValue": 4,
-            "reason": "2에서 함수 적용 횟수를 4회로 잘못 세어 2→5→3→1→4을 답으로 선택"
+            "reason": "함수를 4회 적용하는 오류",
+            "calculation": "2→5→3→1→4 (4회, 결과 4)"
           },
           {
             "choice": "⑤",
             "offeredValue": 5,
-            "reason": "2에서 함수 적용 횟수를 1회로 잘못 세어 2→5을 답으로 선택"
+            "reason": "함수를 1회 적용하는 오류",
+            "calculation": "2→5 (1회, 결과 5)"
           }
         ],
         "problemVisual": {
@@ -447,7 +492,7 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY",
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
         "stemRevision": {
           "before": "$(f\\circ f)$(2)$",
           "after": "$(f\\circ f)(2)$",
@@ -456,6 +501,20 @@
             "solution"
           ],
           "mathRechecked": "SAME_FUNCTION_SEQUENCE"
+        },
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reverseReading": "학생용 대응도와 문항의 입력·합성 순서·질문값에 모호성이 없고 실제 반복 합성 계산이 필요함",
+          "lockedPrimaryL3": "H1-RPM-253",
+          "correctValue": 3,
+          "correctChoice": "③",
+          "distractorRoutes": "4/4_EXACT_NUMERIC",
+          "problemSvg": "STATIC_MAPPING_PARITY",
+          "solutionSvg": "STATIC_PATH_PARITY",
+          "browserRender": "NOT_RUN",
+          "externalReview": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED",
+          "difficultyReason": "2회 순차 함수 대입"
         }
       }
     },
@@ -493,7 +552,7 @@
         "$5$"
       ],
       "answer": "⑤",
-      "solution": "대응도에서 $f(4)=3$, $f(3)=2$, $f(2)=5$임을 읽는다.\\n따라서 $(f\\circ f\\circ f)(4)=f^{3}(4)=5$이다.\n따라서 정답은 ⑤이다.",
+      "solution": "대응도에서 $f(4)=3$, $f(3)=2$, $f(2)=5$임을 차례로 읽는다.\n따라서 $(f\\circ f\\circ f)(4)=f(f(f(4)))=5$이다.\n따라서 정답은 ⑤이다.",
       "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q10/B1-problem.svg",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q10/B1-solution.svg",
       "solutionImageAlt": "대응도에서 합성함수의 입력과 출력을 차례대로 따라간 경로",
@@ -562,22 +621,26 @@
           {
             "choice": "①",
             "offeredValue": 1,
-            "reason": "4에서 함수 적용 횟수를 4회로 잘못 세어 4→3→2→5→1을 답으로 선택"
+            "reason": "함수를 4회 적용하는 오류",
+            "calculation": "4→3→2→5→1 (4회, 결과 1)"
           },
           {
             "choice": "②",
             "offeredValue": 2,
-            "reason": "4에서 함수 적용 횟수를 2회로 잘못 세어 4→3→2을 답으로 선택"
+            "reason": "함수를 2회 적용하는 오류",
+            "calculation": "4→3→2 (2회, 결과 2)"
           },
           {
             "choice": "③",
             "offeredValue": 3,
-            "reason": "4에서 함수 적용 횟수를 1회로 잘못 세어 4→3을 답으로 선택"
+            "reason": "함수를 1회 적용하는 오류",
+            "calculation": "4→3 (1회, 결과 3)"
           },
           {
             "choice": "④",
             "offeredValue": 4,
-            "reason": "4에서 함수 적용 횟수를 0회로 잘못 세어 4을 답으로 선택"
+            "reason": "함수를 0회 적용하는 오류",
+            "calculation": "4 (0회, 결과 4)"
           }
         ],
         "problemVisual": {
@@ -593,7 +656,7 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY",
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
         "stemRevision": {
           "before": "$(f\\circ f\\circ f)$(4)$",
           "after": "$(f\\circ f\\circ f)(4)$",
@@ -602,6 +665,20 @@
             "solution"
           ],
           "mathRechecked": "SAME_FUNCTION_SEQUENCE"
+        },
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reverseReading": "학생용 대응도와 문항의 입력·합성 순서·질문값에 모호성이 없고 실제 반복 합성 계산이 필요함",
+          "lockedPrimaryL3": "H1-RPM-253",
+          "correctValue": 5,
+          "correctChoice": "⑤",
+          "distractorRoutes": "4/4_EXACT_NUMERIC",
+          "problemSvg": "STATIC_MAPPING_PARITY",
+          "solutionSvg": "STATIC_PATH_PARITY",
+          "browserRender": "NOT_RUN",
+          "externalReview": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED",
+          "difficultyReason": "3회 순차 함수 대입"
         }
       }
     },
@@ -639,7 +716,7 @@
         "$5$"
       ],
       "answer": "①",
-      "solution": "대응도에서 $f(5)=4$, $f(4)=2$, $f(2)=1$임을 읽는다.\\n따라서 $(f\\circ f\\circ f)(5)=f^{3}(5)=1$이다.\n따라서 정답은 ①이다.",
+      "solution": "대응도에서 $f(5)=4$, $f(4)=2$, $f(2)=1$임을 차례로 읽는다.\n따라서 $(f\\circ f\\circ f)(5)=f(f(f(5)))=1$이다.\n따라서 정답은 ①이다.",
       "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q10/B2-problem.svg",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q10/B2-solution.svg",
       "solutionImageAlt": "대응도에서 합성함수의 입력과 출력을 차례대로 따라간 경로",
@@ -708,22 +785,26 @@
           {
             "choice": "②",
             "offeredValue": 2,
-            "reason": "5에서 함수 적용 횟수를 2회로 잘못 세어 5→4→2을 답으로 선택"
+            "reason": "함수를 2회 적용하는 오류",
+            "calculation": "5→4→2 (2회, 결과 2)"
           },
           {
             "choice": "③",
             "offeredValue": 3,
-            "reason": "5에서 함수 적용 횟수를 4회로 잘못 세어 5→4→2→1→3을 답으로 선택"
+            "reason": "함수를 4회 적용하는 오류",
+            "calculation": "5→4→2→1→3 (4회, 결과 3)"
           },
           {
             "choice": "④",
             "offeredValue": 4,
-            "reason": "5에서 함수 적용 횟수를 1회로 잘못 세어 5→4을 답으로 선택"
+            "reason": "함수를 1회 적용하는 오류",
+            "calculation": "5→4 (1회, 결과 4)"
           },
           {
             "choice": "⑤",
             "offeredValue": 5,
-            "reason": "5에서 함수 적용 횟수를 0회로 잘못 세어 5을 답으로 선택"
+            "reason": "함수를 0회 적용하는 오류",
+            "calculation": "5 (0회, 결과 5)"
           }
         ],
         "problemVisual": {
@@ -739,7 +820,7 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY",
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
         "stemRevision": {
           "before": "$(f\\circ f\\circ f)$(5)$",
           "after": "$(f\\circ f\\circ f)(5)$",
@@ -748,6 +829,20 @@
             "solution"
           ],
           "mathRechecked": "SAME_FUNCTION_SEQUENCE"
+        },
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reverseReading": "학생용 대응도와 문항의 입력·합성 순서·질문값에 모호성이 없고 실제 반복 합성 계산이 필요함",
+          "lockedPrimaryL3": "H1-RPM-253",
+          "correctValue": 1,
+          "correctChoice": "①",
+          "distractorRoutes": "4/4_EXACT_NUMERIC",
+          "problemSvg": "STATIC_MAPPING_PARITY",
+          "solutionSvg": "STATIC_PATH_PARITY",
+          "browserRender": "NOT_RUN",
+          "externalReview": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED",
+          "difficultyReason": "3회 순차 함수 대입"
         }
       }
     },
@@ -784,8 +879,8 @@
         "$4$",
         "$5$"
       ],
-      "answer": "④",
-      "solution": "대응도에서 $f(3)=1$, $f(1)=5$, $f(5)=4$임을 읽는다.\\n따라서 $(f\\circ f\\circ f)(3)=f^{3}(3)=4$이다.\n따라서 정답은 ④이다.",
+      "answer": "⑤",
+      "solution": "대응도에서 $f(3)=1$, $f(1)=4$, $f(4)=5$임을 차례로 읽는다.\n따라서 $(f\\circ f\\circ f)(3)=f(f(f(3)))=5$이다.\n따라서 정답은 ⑤이다.",
       "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q10/B3-problem.svg",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q10/B3-solution.svg",
       "solutionImageAlt": "대응도에서 합성함수의 입력과 출력을 차례대로 따라간 경로",
@@ -822,26 +917,26 @@
         "crossConceptApplicabilityStatus": "NOT_APPLICABLE"
       },
       "review": {
-        "reverseStem": "REVISED: 합성함수 괄호와 입력값을 하나의 수식으로 결속하여 중복 달러 구분 오류를 수정; 입력·합성 순서 불변",
+        "reverseStem": "REVISED: 함수 대응의 다섯 순환 원소를 재배치해 3회 합성 결과와 5지 선지 번호·문제/해설 SVG를 정합화",
         "mathSelfCheckEvidence": {
           "mapping": {
-            "1": 5,
+            "1": 4,
             "2": 3,
             "3": 1,
-            "4": 2,
-            "5": 4
+            "4": 5,
+            "5": 2
           },
           "sourceInput": 3,
           "paths": [
             [
               3,
               1,
-              5,
-              4
+              4,
+              5
             ]
           ],
-          "answer": 4,
-          "uniqueChoice": 4,
+          "answer": 5,
+          "uniqueChoice": 5,
           "allMappedOutputs": [
             1,
             2,
@@ -854,22 +949,26 @@
           {
             "choice": "①",
             "offeredValue": 1,
-            "reason": "3에서 함수 적용 횟수를 1회로 잘못 세어 3→1을 답으로 선택"
+            "reason": "함수를 1회 적용하는 오류",
+            "calculation": "3→1 (1회, 결과 1)"
           },
           {
             "choice": "②",
             "offeredValue": 2,
-            "reason": "3에서 함수 적용 횟수를 4회로 잘못 세어 3→1→5→4→2을 답으로 선택"
+            "reason": "함수를 4회 적용하는 오류",
+            "calculation": "3→1→4→5→2 (4회, 결과 2)"
           },
           {
             "choice": "③",
             "offeredValue": 3,
-            "reason": "3에서 함수 적용 횟수를 0회로 잘못 세어 3을 답으로 선택"
+            "reason": "함수를 0회 적용하는 오류",
+            "calculation": "3 (0회, 결과 3)"
           },
           {
-            "choice": "⑤",
-            "offeredValue": 5,
-            "reason": "3에서 함수 적용 횟수를 2회로 잘못 세어 3→1→5을 답으로 선택"
+            "choice": "④",
+            "offeredValue": 4,
+            "reason": "함수를 2회 적용하는 오류",
+            "calculation": "3→1→4 (2회, 결과 4)"
           }
         ],
         "problemVisual": {
@@ -885,7 +984,7 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY",
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
         "stemRevision": {
           "before": "$(f\\circ f\\circ f)$(3)$",
           "after": "$(f\\circ f\\circ f)(3)$",
@@ -894,6 +993,20 @@
             "solution"
           ],
           "mathRechecked": "SAME_FUNCTION_SEQUENCE"
+        },
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reverseReading": "학생용 대응도와 문항의 입력·합성 순서·질문값에 모호성이 없고 실제 반복 합성 계산이 필요함",
+          "lockedPrimaryL3": "H1-RPM-253",
+          "correctValue": 5,
+          "correctChoice": "⑤",
+          "distractorRoutes": "4/4_EXACT_NUMERIC",
+          "problemSvg": "STATIC_MAPPING_PARITY",
+          "solutionSvg": "STATIC_PATH_PARITY",
+          "browserRender": "NOT_RUN",
+          "externalReview": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED",
+          "difficultyReason": "3회 순차 함수 대입"
         }
       }
     },
@@ -905,7 +1018,7 @@
       "slot": "C1",
       "purpose": "C",
       "modeCandidate": "PLUS_ONE",
-      "level": "상",
+      "level": "중",
       "category": "함수",
       "originalCategory": "함수",
       "standardCourse": "공통수학2",
@@ -931,7 +1044,7 @@
         "$9$"
       ],
       "answer": "②",
-      "solution": "첫째 합성값은 대응도에서 5→2→3→4을 따라 $f(f(f(5)))=4$이다.\\n둘째 합성값은 3→4→1을 따라 $f(f(3))=1$이다.\\n따라서 두 합은 $4+1=5$이다.\n따라서 정답은 ②이다.",
+      "solution": "첫째 항의 대응은 $f(5)=2$, $f(2)=3$, $f(3)=4$이므로 $f(f(f(5)))=4$이다.\n둘째 항의 대응은 $f(3)=4$, $f(4)=1$이므로 $f(f(3))=1$이다.\n따라서 두 항의 합은 $4+1=5$이다.\n따라서 정답은 ②이다.",
       "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q10/C1-problem.svg",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q10/C1-solution.svg",
       "solutionImageAlt": "대응도에서 합성함수의 입력과 출력을 차례대로 따라간 경로",
@@ -953,7 +1066,7 @@
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 4,
+        "difficultyBucket": 3,
         "metadataDebt": [],
         "effectiveL4Authority": "RPM_LOCKED_L4_WITH_ACTIVE_PT_TPL",
         "effectiveL4Id": "H1-RPM-253",
@@ -968,7 +1081,7 @@
         "crossConceptApplicabilityStatus": "NOT_APPLICABLE"
       },
       "review": {
-        "reverseStem": "KEEP: 입력·대응도가 명확하고 합성 순서를 판단해야 답을 얻는다",
+        "reverseStem": "REVISED: 복잡한 경우분기 없이 두 합성함숫값의 순차 계산 및 덧셈만 요구하므로 난이도 중/평가3 재판정",
         "mathSelfCheckEvidence": {
           "mapping": {
             "1": 5,
@@ -977,7 +1090,7 @@
             "4": 1,
             "5": 2
           },
-          "sourceInput": 4,
+          "sourceInput": 5,
           "paths": [
             [
               5,
@@ -1005,22 +1118,26 @@
           {
             "choice": "①",
             "offeredValue": 4,
-            "reason": "첫째 함수에서 마지막 합성 1회를 누락"
+            "reason": "첫째 항을 한 번 덜 적용",
+            "calculation": "3+1=4"
           },
           {
             "choice": "③",
             "offeredValue": 7,
-            "reason": "두 함수 모두 마지막 합성 1회를 누락"
+            "reason": "두 항 모두 한 번 덜 적용",
+            "calculation": "3+4=7"
           },
           {
             "choice": "④",
             "offeredValue": 8,
-            "reason": "둘째 함수에서 합성 1회를 누락"
+            "reason": "둘째 항을 한 번 덜 적용",
+            "calculation": "4+4=8"
           },
           {
             "choice": "⑤",
             "offeredValue": 9,
-            "reason": "둘째 함수에 합성 1회를 과하게 적용"
+            "reason": "둘째 항을 한 번 더 적용",
+            "calculation": "4+5=9"
           }
         ],
         "problemVisual": {
@@ -1036,7 +1153,21 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reverseReading": "학생용 대응도와 문항의 입력·합성 순서·질문값에 모호성이 없고 실제 반복 합성 계산이 필요함",
+          "lockedPrimaryL3": "H1-RPM-253",
+          "correctValue": 5,
+          "correctChoice": "②",
+          "distractorRoutes": "4/4_EXACT_NUMERIC",
+          "problemSvg": "STATIC_MAPPING_PARITY",
+          "solutionSvg": "STATIC_PATH_PARITY",
+          "browserRender": "NOT_RUN",
+          "externalReview": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED",
+          "difficultyReason": "두 합성 경로를 독립 계산 후 합산; 상 수준 복합 판단 없음"
+        }
       }
     },
     {
@@ -1047,7 +1178,7 @@
       "slot": "C2",
       "purpose": "C",
       "modeCandidate": "PLUS_ONE",
-      "level": "상",
+      "level": "중",
       "category": "함수",
       "originalCategory": "함수",
       "standardCourse": "공통수학2",
@@ -1073,7 +1204,7 @@
         "$9$"
       ],
       "answer": "③",
-      "solution": "첫째 합성값은 대응도에서 1→3→5→2을 따라 $f(f(f(1)))=2$이다.\\n둘째 합성값은 5→2→4을 따라 $f(f(5))=4$이다.\\n따라서 두 합은 $2+4=6$이다.\n따라서 정답은 ③이다.",
+      "solution": "첫째 항의 대응은 $f(1)=3$, $f(3)=5$, $f(5)=2$이므로 $f(f(f(1)))=2$이다.\n둘째 항의 대응은 $f(5)=2$, $f(2)=4$이므로 $f(f(5))=4$이다.\n따라서 두 항의 합은 $2+4=6$이다.\n따라서 정답은 ③이다.",
       "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q10/C2-problem.svg",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q10/C2-solution.svg",
       "solutionImageAlt": "대응도에서 합성함수의 입력과 출력을 차례대로 따라간 경로",
@@ -1095,7 +1226,7 @@
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 4,
+        "difficultyBucket": 3,
         "metadataDebt": [],
         "effectiveL4Authority": "RPM_LOCKED_L4_WITH_ACTIVE_PT_TPL",
         "effectiveL4Id": "H1-RPM-253",
@@ -1110,7 +1241,7 @@
         "crossConceptApplicabilityStatus": "NOT_APPLICABLE"
       },
       "review": {
-        "reverseStem": "KEEP: 입력·대응도가 명확하고 합성 순서를 판단해야 답을 얻는다",
+        "reverseStem": "REVISED: 복잡한 경우분기 없이 두 합성함숫값의 순차 계산 및 덧셈만 요구하므로 난이도 중/평가3 재판정",
         "mathSelfCheckEvidence": {
           "mapping": {
             "1": 3,
@@ -1119,7 +1250,7 @@
             "4": 1,
             "5": 2
           },
-          "sourceInput": 4,
+          "sourceInput": 1,
           "paths": [
             [
               1,
@@ -1147,22 +1278,26 @@
           {
             "choice": "①",
             "offeredValue": 3,
-            "reason": "둘째 함수에 합성 1회를 과하게 적용"
+            "reason": "둘째 항을 한 번 더 적용",
+            "calculation": "2+1=3"
           },
           {
             "choice": "②",
             "offeredValue": 4,
-            "reason": "둘째 함수에서 합성 1회를 누락"
+            "reason": "둘째 항을 한 번 덜 적용",
+            "calculation": "2+2=4"
           },
           {
             "choice": "④",
             "offeredValue": 7,
-            "reason": "두 함수 모두 마지막 합성 1회를 누락"
+            "reason": "두 항 모두 한 번 덜 적용",
+            "calculation": "5+2=7"
           },
           {
             "choice": "⑤",
             "offeredValue": 9,
-            "reason": "첫째 함수에서 마지막 합성 1회를 누락"
+            "reason": "첫째 항을 한 번 덜 적용",
+            "calculation": "5+4=9"
           }
         ],
         "problemVisual": {
@@ -1178,7 +1313,21 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reverseReading": "학생용 대응도와 문항의 입력·합성 순서·질문값에 모호성이 없고 실제 반복 합성 계산이 필요함",
+          "lockedPrimaryL3": "H1-RPM-253",
+          "correctValue": 6,
+          "correctChoice": "③",
+          "distractorRoutes": "4/4_EXACT_NUMERIC",
+          "problemSvg": "STATIC_MAPPING_PARITY",
+          "solutionSvg": "STATIC_PATH_PARITY",
+          "browserRender": "NOT_RUN",
+          "externalReview": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED",
+          "difficultyReason": "두 합성 경로를 독립 계산 후 합산; 상 수준 복합 판단 없음"
+        }
       }
     },
     {
@@ -1189,7 +1338,7 @@
       "slot": "C3",
       "purpose": "C",
       "modeCandidate": "PLUS_ONE",
-      "level": "상",
+      "level": "중",
       "category": "함수",
       "originalCategory": "함수",
       "standardCourse": "공통수학2",
@@ -1215,7 +1364,7 @@
         "$7$"
       ],
       "answer": "④",
-      "solution": "첫째 합성값은 대응도에서 3→4→2→1을 따라 $f(f(f(3)))=1$이다.\\n둘째 합성값은 2→1→5을 따라 $f(f(2))=5$이다.\\n따라서 두 합은 $1+5=6$이다.\n따라서 정답은 ④이다.",
+      "solution": "첫째 항의 대응은 $f(3)=4$, $f(4)=2$, $f(2)=1$이므로 $f(f(f(3)))=1$이다.\n둘째 항의 대응은 $f(2)=1$, $f(1)=5$이므로 $f(f(2))=5$이다.\n따라서 두 항의 합은 $1+5=6$이다.\n따라서 정답은 ④이다.",
       "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q10/C3-problem.svg",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q10/C3-solution.svg",
       "solutionImageAlt": "대응도에서 합성함수의 입력과 출력을 차례대로 따라간 경로",
@@ -1237,7 +1386,7 @@
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 4,
+        "difficultyBucket": 3,
         "metadataDebt": [],
         "effectiveL4Authority": "RPM_LOCKED_L4_WITH_ACTIVE_PT_TPL",
         "effectiveL4Id": "H1-RPM-253",
@@ -1252,7 +1401,7 @@
         "crossConceptApplicabilityStatus": "NOT_APPLICABLE"
       },
       "review": {
-        "reverseStem": "KEEP: 입력·대응도가 명확하고 합성 순서를 판단해야 답을 얻는다",
+        "reverseStem": "REVISED: 복잡한 경우분기 없이 두 합성함숫값의 순차 계산 및 덧셈만 요구하므로 난이도 중/평가3 재판정",
         "mathSelfCheckEvidence": {
           "mapping": {
             "1": 5,
@@ -1289,22 +1438,26 @@
           {
             "choice": "①",
             "offeredValue": 2,
-            "reason": "둘째 함수에서 합성 1회를 누락"
+            "reason": "둘째 항을 한 번 덜 적용",
+            "calculation": "1+1=2"
           },
           {
             "choice": "②",
             "offeredValue": 3,
-            "reason": "두 함수 모두 마지막 합성 1회를 누락"
+            "reason": "두 항 모두 한 번 덜 적용",
+            "calculation": "2+1=3"
           },
           {
             "choice": "③",
             "offeredValue": 4,
-            "reason": "둘째 함수에 합성 1회를 과하게 적용"
+            "reason": "둘째 항을 한 번 더 적용",
+            "calculation": "1+3=4"
           },
           {
             "choice": "⑤",
             "offeredValue": 7,
-            "reason": "첫째 함수에서 마지막 합성 1회를 누락"
+            "reason": "첫째 항을 한 번 덜 적용",
+            "calculation": "2+5=7"
           }
         ],
         "problemVisual": {
@@ -1320,7 +1473,21 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reverseReading": "학생용 대응도와 문항의 입력·합성 순서·질문값에 모호성이 없고 실제 반복 합성 계산이 필요함",
+          "lockedPrimaryL3": "H1-RPM-253",
+          "correctValue": 6,
+          "correctChoice": "④",
+          "distractorRoutes": "4/4_EXACT_NUMERIC",
+          "problemSvg": "STATIC_MAPPING_PARITY",
+          "solutionSvg": "STATIC_PATH_PARITY",
+          "browserRender": "NOT_RUN",
+          "externalReview": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED",
+          "difficultyReason": "두 합성 경로를 독립 계산 후 합산; 상 수준 복합 판단 없음"
+        }
       }
     }
   ]
