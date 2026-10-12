@@ -89,5 +89,20 @@ description: Execute 7-exam batch Source-Only intake from D: drive past exam PDF
 node .agents/skills/apmath-source-intake-batch/scripts/validate_batch.cjs "C:\Users\USER\Downloads\스캔_인테이크_산출물\<target_id>"
 ```
 
-### Step 4: 완료 보고
-7개 시험지 각각의 문항 수, 배점 합계(100.0점), 추출 에셋 수, 검증 PASS 여부를 깔끔한 테이블 형태로 사용자에게 보고합니다.
+### Step 4: 원장 및 로스터 갱신
+- 해당 7개 시험지의 `.agents/skills/apmath-source-intake-batch/roster.json` `done` 항목을 `true`로 갱신.
+- `middle_exams_unworked_ledger.md` 대장의 해당 행에 `✅ 완료 (100.0점 PASS, 에셋 X개)` 기록.
+
+### Step 5: 산출물 저장소 반영 및 깃 커밋·푸시
+1. `C:\Users\USER\Downloads\스캔_인테이크_산출물`에서 이번 배치에 생성된 7개 시험지 폴더를 저장소 루트의 `스캔_인테이크_산출물/` 아래로 복사.
+2. `codex/scan-intake-deliverables-20261012` 브랜치 확인.
+3. 스테이징 및 커밋:
+   ```powershell
+   git add "스캔_인테이크_산출물" "middle_exams_unworked_ledger.md" ".agents/skills/apmath-source-intake-batch/roster.json"
+   git commit -m "feat(intake): add <Batch_ID> source-only deliverables (<학교 목록>)"
+   git push origin codex/scan-intake-deliverables-20261012
+   ```
+
+### Step 6: 완료 보고
+7개 시험지 각각의 문항 수, 배점 합계(100.0점), 추출 에셋 수, 검증 PASS 여부 및 깃 커밋·푸시 결과를 깔끔한 테이블 형태로 사용자에게 보고합니다.
+
