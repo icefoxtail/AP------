@@ -27,8 +27,15 @@ test('reviewed 22 stable legacy UIDs remain fully discoverable and individually 
     assert.equal(row.difficultyBucket, frozen.independentDifficulty1to5);
     assert.equal(row.difficultyConfidence, 'medium');
     assert.ok(row.assignmentEvidence, 'required canonical basic parent ' + frozen.qid);
-    const eligibility = core.eligibility(row, { canonicalAuthority: catalog.canonicalAuthority });
-    assert.equal(row.automatic, true, 'basic-selectable source q' + frozen.qid + ': ' + eligibility.reasons.join(','));
+    assert.equal(row.automatic, true, 'basic-selectable source q' + frozen.qid + ': ' + JSON.stringify({
+      assignmentReasons: row.canonicalAssignmentReasons || [],
+      conflicts: row.metadataConflicts || [],
+      reviewStatus: row.reviewStatus,
+      applicability: row.basicScopeApplicability || row.curriculumApplicability || '',
+      defaultSelectable: row.basicScopeDefaultSelectable,
+      sourceIssueHold: row.sourceIssueHold,
+      sourceQualityDisposition: row.sourceQualityDisposition,
+    }));
     assert.equal(identity.records.filter((r) => r.questionUid === frozen.questionUid).length, 1);
     assert.equal(metadata.records.filter((r) => r.questionUid === frozen.questionUid).length, 1);
     if (frozen.problemTypeKey) {
