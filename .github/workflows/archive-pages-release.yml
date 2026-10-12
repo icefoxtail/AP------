@@ -77,7 +77,7 @@ jobs:
       - name: Verify approved UID Meta, complete source inventory, and selection contracts
         env:
           RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
-        run: node --test archive/tools/generated-meta/register-approved-generated-meta.test.mjs archive/tools/generated-meta/auto-register-approved-qid9.test.mjs tests/generated-meta-retention.test.cjs tests/generated-main-source-consumer-sync.test.cjs tests/problem-bank-meta.test.cjs tests/archive2-generated-bank-registration.test.js tests/archive2-generated-mock-selection.test.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/selection-tests.log"
+        run: node --test archive/tools/generated-meta/register-approved-generated-meta.test.mjs archive/tools/generated-meta/auto-register-approved-qid9.test.mjs archive/tools/generated-meta/auto-register-source-rebind.test.mjs tests/generated-source-svg-namespace.test.cjs tests/generated-meta-retention.test.cjs tests/generated-main-source-consumer-sync.test.cjs tests/problem-bank-meta.test.cjs tests/archive2-generated-bank-registration.test.js tests/archive2-generated-mock-selection.test.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/selection-tests.log"
 
       - uses: browser-actions/setup-chrome@v1
         id: chrome

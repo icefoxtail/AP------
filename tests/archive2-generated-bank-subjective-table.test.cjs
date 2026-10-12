@@ -94,7 +94,10 @@ test('source problem PNG and SVG paths render exactly while asset traversal fail
  const {context}=runFixture(),parent=new Node();context.__parent=parent;
  for(const image of ['assets/images/26_복성고_1학기_기말_고1_기출/q18.png','assets/images/26_복성고_ALITE_B06/q18-through-prism.svg']){
   context.__image=image;vm.runInContext('figure(__parent,{image:__image})',context,{timeout:2000});
-  assert.equal(parent.children.at(-1).src,image);
+  const wrap=parent.children.at(-1);
+  assert.equal(wrap.className,'q-image-wrap');
+  assert.equal(wrap.children.length,1);
+  assert.equal(wrap.children[0].src,image);
  }
  context.__image='assets/images/../../private.png';
  assert.throws(()=>vm.runInContext('figure(__parent,{image:__image})',context,{timeout:2000}),/문제 이미지 경로 오류/);
