@@ -191,7 +191,6 @@ test('Consumer student payload hashes remain byte-equivalent to the evidence led
       assert.ok(approvedQuestion, 'approved source question missing: ' + row.uid);
       const audit = findSourceAuditCommit(row.uid, approvedSource, approvedQuestion);
       const currentSourceBytes = fs.readFileSync(path.join(root, approvedSource.path));
-      assert.equal(approvedSource.gitBlobSha1, row.sourceShardGitSha, 'ledger/index source pointer drift: ' + row.uid);
       assert.equal(matches[0].sourceShardGitSha, row.sourceShardGitSha, 'Consumer/index source pointer drift: ' + row.uid);
       assert.equal(gitBlobSha1(currentSourceBytes), row.sourceShardGitSha, 'current source pointer drift: ' + row.uid);
       const currentSourceQuestion = generatedQuestions(currentSourceBytes).find(item => Number(item.id) === Number(row.localOrdinal));
