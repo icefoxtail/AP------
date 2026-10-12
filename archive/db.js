@@ -19719,6 +19719,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "original/middle/m2/1mid/26_왕의중_1학기_중간_중2_수학.js",
+      "school": "왕의중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2026,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "중2 수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M2-01",
+      "rangeStartUnit": "수와 식",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M2-02",
+      "rangeEndUnit": "일차부등식",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-01",
+          "rangeStartUnit": "수와 식",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M2-02",
+          "rangeEndUnit": "일차부등식",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "중2 수학"
     }
   ]
 };
