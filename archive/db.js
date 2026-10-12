@@ -10330,6 +10330,47 @@ window.mainDB = {
       "primaryStandardCourse": "수학(상)"
     },
     {
+      "file": "original/high/h1/1mid/23_제일고_1학기_중간_고1_기출.js",
+      "school": "제일고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2023,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "공통수학1",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C-04",
+          "rangeEndUnit": "복소수와 이차방정식",
+          "rangeEndUnitOrder": 4
+        },
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-01",
+          "rangeStartUnit": "평면좌표",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C2-02",
+          "rangeEndUnit": "직선의 방정식",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": ""
+    },
+    {
       "file": "original/high/h1/1mid/23_충무고_1학기_중간_고1_기출.js",
       "school": "충무고",
       "topic": "",
@@ -12333,6 +12374,37 @@ window.mainDB = {
       "primaryStandardCourse": "수학(상)"
     },
     {
+      "file": "original/high/h1/1mid/22_매산고_1학기_중간_고1_기출.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2022,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "공통수학1",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H22-C-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C-06",
+      "rangeEndUnit": "여러 가지 방정식과 부등식",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C-06",
+          "rangeEndUnit": "여러 가지 방정식과 부등식",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "공통수학1"
+    },
+    {
       "file": "original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js",
       "school": "매산고",
       "topic": "",
@@ -12519,6 +12591,37 @@ window.mainDB = {
       "primaryStandardCourse": "수학(하)"
     },
     {
+      "file": "original/high/h1/1mid/22_복성고_1학기_중간_고1_기출.js",
+      "school": "복성고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2022,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SA-09",
+      "rangeEndUnit": "평면좌표",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SA-09",
+          "rangeEndUnit": "평면좌표",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
       "file": "original/high/h1/2final/22_순천여고_2학기_기말_고1_기출.js",
       "school": "순천여고",
       "topic": "",
@@ -12632,6 +12735,37 @@ window.mainDB = {
       "primaryStandardCourse": ""
     },
     {
+      "file": "original/high/h1/1mid/22_순천여고_1학기_중간_고1_기출.js",
+      "school": "순천여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2022,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H15-SA-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SA-08",
+      "rangeEndUnit": "여러 가지 부등식",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SA-08",
+          "rangeEndUnit": "여러 가지 부등식",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
       "file": "original/high/h1/1final/22_제일고_1학기_기말_고1_기출.js",
       "school": "제일고",
       "topic": "",
@@ -12712,6 +12846,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": ""
+    },
+    {
+      "file": "original/high/h1/1mid/22_제일고_1학기_중간_고1_기출.js",
+      "school": "제일고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2022,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "공통수학1",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H22-C-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C-06",
+      "rangeEndUnit": "여러 가지 방정식과 부등식",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C-06",
+          "rangeEndUnit": "여러 가지 방정식과 부등식",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "공통수학1"
     },
     {
       "file": "original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js",
@@ -12959,6 +13124,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": ""
+    },
+    {
+      "file": "original/high/h1/1mid/22_효천고_1학기_중간_고1_기출.js",
+      "school": "효천고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2022,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SA-07",
+      "rangeEndUnit": "여러 가지 방정식",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SA-07",
+          "rangeEndUnit": "여러 가지 방정식",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
     },
     {
       "file": "original/middle/m3/2final/22_매산중_2학기_기말_중3_기출.js",
@@ -13839,6 +14035,37 @@ window.mainDB = {
       "primaryStandardCourse": "수학(하)"
     },
     {
+      "file": "original/high/h1/1mid/21_매산고_1학기_중간_고1_기출.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2021,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H15-SA-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SA-07",
+      "rangeEndUnit": "여러 가지 방정식",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SA-07",
+          "rangeEndUnit": "여러 가지 방정식",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
       "file": "original/high/h1/1final/21_매산여고_1학기_기말_고1_기출.js",
       "school": "매산여고",
       "topic": "",
@@ -14074,6 +14301,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": ""
+    },
+    {
+      "file": "original/high/h1/1mid/21_순천고_1학기_중간_고1_기출.js",
+      "school": "순천고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2021,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SA-08",
+      "rangeEndUnit": "여러 가지 부등식",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SA-08",
+          "rangeEndUnit": "여러 가지 부등식",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
     },
     {
       "file": "original/high/h1/2final/21_제일고_2학기_기말_고1_기출.js",
@@ -15870,6 +16128,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "확률과통계"
+    },
+    {
+      "file": "original/high/h1/1mid/19_금당고_1학기_중간_고1_기출.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2019,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SA-05",
+      "rangeEndUnit": "이차방정식",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SA-05",
+          "rangeEndUnit": "이차방정식",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
     },
     {
       "file": "original/high/h1/1mid/19_매산고_1학기_중간_고1_기출.js",
