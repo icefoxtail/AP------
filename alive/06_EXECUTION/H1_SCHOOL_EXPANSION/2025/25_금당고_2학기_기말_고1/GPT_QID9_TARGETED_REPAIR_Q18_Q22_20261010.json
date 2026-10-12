@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "ALIVE_QID_TARGETED_REPAIR_VALIDATION_v1",
+  "date": "2026-10-10",
+  "repository": "icefoxtail/AP------",
+  "branch": "work/alive-25-geumdang-h1-2final-qid9",
+  "baseCommit": "c1d45b452412504e95914b98b372c968fc81a57c",
+  "scope": "Only flagged Q18-Q22 UIDs and their directly dependent metadata/assets.",
+  "reviewBasis": "User-directed Q18-Q22 findings; existing review records preserved.",
+  "corrections": {
+    "Q18": [
+      "C3 distractor route made reproducible; answer remains ③=15."
+    ],
+    "Q19": [
+      "A2 explanation function name corrected; B1/C1 stems define f(x)=k; ledger routes corrected; B2/B1/C1/C3 reasoning adjusted; all nine solution graphs revised."
+    ],
+    "Q20": [
+      "B1-C3 use distinct inverse-value reasoning tasks after the minimum quadratic is reconstructed; answers, distractors, solutions, metadata and all nine diagrams synchronized."
+    ],
+    "Q21": [
+      "B1 distractor ledger corrected; C3 cross-concept removed; C1/C2 repeated reasoning reduced and difficulty aligned; B3/C2 diagrams clarified."
+    ],
+    "Q22": [
+      "B1/B3/C2 distractor routes corrected; C1/C2 reasoning upgraded; all nine diagrams synchronized, including two one-intersection cases for B2."
+    ]
+  },
+  "validation": {
+    "sourceShards": "Five changed Q18-Q22 shard files passed node --check.",
+    "metadata": "12 changed JSON files parsed successfully.",
+    "svg": "29 targeted SVGs rendered in Chromium and visually inspected: Q19 all 9, Q20 all 9, Q21 B3/C2, Q22 all 9.",
+    "math": "Changed answer keys, solution steps, and metadata linkage were checked against the edited variants; no answer key or unique-answer defect was reported.",
+    "excluded": "No full CREATE/R1/R2/R3 re-entry, unrelated CI, consumer QA, or formal independent review was performed."
+  },
+  "changedSlots": {
+    "18": [
+      "C3"
+    ],
+    "19": [
+      "A1",
+      "A2",
+      "A3",
+      "B1",
+      "B2",
+      "B3",
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "20": [
+      "A1",
+      "A2",
+      "A3",
+      "B1",
+      "B2",
+      "B3",
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "21": [
+      "B1",
+      "B3",
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "22": [
+      "A1",
+      "A2",
+      "A3",
+      "B1",
+      "B2",
+      "B3",
+      "C1",
+      "C2",
+      "C3"
+    ]
+  }
+}

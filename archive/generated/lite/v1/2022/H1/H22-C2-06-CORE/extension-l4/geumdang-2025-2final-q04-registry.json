@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "ALIVE_GEUMDANG_Q04_GENERATED_META_EXTENSION_V1",
+  "sourceQid": 4,
+  "sourceExamPath": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+  "sourceBlobSha": "44b8dc33534f3e40990bbebf9fc113d37d7f51ae",
+  "rpmPrimaryL3": "H1-RPM-244",
+  "rpmLockedChanged": false,
+  "generatedOnly": true,
+  "conditions": [
+    {
+      "key": "GEN_COND_GD25_Q04_CONJUNCTION",
+      "label": "논리곱이 전제",
+      "parent": "H22-C2-06-CORE",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q04-A3"
+      ]
+    },
+    {
+      "key": "GEN_COND_GD25_Q04_COUNT",
+      "label": "다섯 명제 참 개수",
+      "parent": "H22-C2-06-CORE",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q04-B1"
+      ]
+    },
+    {
+      "key": "GEN_COND_GD25_Q04_TWO_DIRECTIONS",
+      "label": "원명제와 역의 서로 다른 참거짓",
+      "parent": "H22-C2-06-CORE",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q04-B2"
+      ]
+    },
+    {
+      "key": "GEN_COND_GD25_Q04_THREE_PROPS",
+      "label": "세 명제 논리합 연결",
+      "parent": "H22-C2-06-CORE",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q04-B3"
+      ]
+    },
+    {
+      "key": "GEN_COND_GD25_Q04_FINITE_DOMAIN",
+      "label": "유한 실수 집합",
+      "parent": "H22-C2-06-CORE",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q04-C1"
+      ]
+    },
+    {
+      "key": "GEN_COND_GD25_Q04_INTEGER_RANGE",
+      "label": "정수 범위 조건",
+      "parent": "H22-C2-06-CORE",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q04-C2"
+      ]
+    },
+    {
+      "key": "GEN_COND_GD25_Q04_CYCLE",
+      "label": "세 명제 순환 연결",
+      "parent": "H22-C2-06-CORE",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q04-C3"
+      ]
+    }
+  ],
+  "crossConcepts": [
+    {
+      "key": "GEN_CC_GD25_Q04_INEQUALITY",
+      "label": "부등식 참거짓",
+      "parent": "H22-C2-06-CORE",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q04-C1"
+      ]
+    },
+    {
+      "key": "GEN_CC_GD25_Q04_QUADRATIC_RANGE",
+      "label": "이차부등식 정수 해석",
+      "parent": "H22-C2-06-CORE",
+      "evidenceUids": [
+        "ALITE-GEUMDANG25-2FINAL-Q04-C2"
+      ]
+    }
+  ],
+  "integrationPatterns": [
+    {
+      "key": "PROP_FALSE_IMPLICATION",
+      "parent": "H1-RPM-244",
+      "evidenceUid": "ALITE-GEUMDANG25-2FINAL-Q04-A1"
+    },
+    {
+      "key": "PROP_BICONDITIONAL_FALSE",
+      "parent": "H1-RPM-244",
+      "evidenceUid": "ALITE-GEUMDANG25-2FINAL-Q04-A2"
+    },
+    {
+      "key": "PROP_NESTED_ANTECEDENT",
+      "parent": "H1-RPM-244",
+      "evidenceUid": "ALITE-GEUMDANG25-2FINAL-Q04-A3"
+    },
+    {
+      "key": "PROP_TRUE_COUNT",
+      "parent": "H1-RPM-244",
+      "evidenceUid": "ALITE-GEUMDANG25-2FINAL-Q04-B1"
+    },
+    {
+      "key": "PROP_ASYMMETRIC_IMPLICATION",
+      "parent": "H1-RPM-244",
+      "evidenceUid": "ALITE-GEUMDANG25-2FINAL-Q04-B2"
+    },
+    {
+      "key": "PROP_OR_CONDITION",
+      "parent": "H1-RPM-244",
+      "evidenceUid": "ALITE-GEUMDANG25-2FINAL-Q04-B3"
+    },
+    {
+      "key": "PROP_FALSE_SET_SUM",
+      "parent": "H1-RPM-244",
+      "evidenceUid": "ALITE-GEUMDANG25-2FINAL-Q04-C1"
+    },
+    {
+      "key": "PROP_FALSE_INTEGER_COUNT",
+      "parent": "H1-RPM-244",
+      "evidenceUid": "ALITE-GEUMDANG25-2FINAL-Q04-C2"
+    },
+    {
+      "key": "PROP_CYCLIC_TRUTH_CASES",
+      "parent": "H1-RPM-244",
+      "evidenceUid": "ALITE-GEUMDANG25-2FINAL-Q04-C3"
+    }
+  ]
+}

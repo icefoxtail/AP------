@@ -1,0 +1,37 @@
+window.examTitle = "PALMA_2025_QID9_21_B3";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q21-B3",
+    "level": "상",
+    "difficultyBucket": 3,
+    "category": "명제",
+    "originalCategory": "명제",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE",
+    "subUnit": "명제 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "명제"
+    ],
+    "wide": false,
+    "content": "실수 $x$에 대한 조건 $p:(x+3)(x-1)\\le0$, $q:|x|<2$가 있다. 조건 $r$이 $\\sim p$와 동치라고 하자. $r$이 $q$이기 위한 필요조건 또는 충분조건에 해당하는지 판단하고, 성립하지 않는 함의마다 반례를 들어 설명하시오.",
+    "choices": [],
+    "answer": "필요조건도 충분조건도 아님",
+    "solution": "$P=[-3,1]$이므로 $R=(-\\infty,-3)\\cup(1,\\infty)$이다. 또 $|x|<2$에서 $Q=(-2,2)$이다.\n$x=0$은 $Q$에는 속하지만 $P$에도 속하므로 $r$은 거짓이다. 따라서 $q\\Rightarrow r$은 거짓이다.\n반대로 $x=3$은 $R$에 속하지만 $Q$에 속하지 않으므로 $r\\Rightarrow q$도 거짓이다.\n따라서 $r$은 $q$이기 위한 필요조건도 충분조건도 아니다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 21,
+    "slot": "B3",
+    "purposeGroup": "B"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q21-B3");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q21-B3","meta":{"rpmL1":"집합과 명제","rpmL2":"명제","rpmL3":"필요조건·충분조건","rpmL4":"조건 관계","rpmL4Namespace":"RPM_EXISTING_DRAFT","rpmPrimaryRecordId":"H1-RPM-247","rpmDraftAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmDraftAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","secondaryConceptKeys":[],"crossConceptKeys":[],"conditionKeys":[],"crossConceptRegistryRef":null,"conditionRegistryRef":null,"sourceKind":"generated","integrationPattern":"SEQUENTIAL","difficultyBucket":3,"level":"상","problemTypeKey":"PT_NEC_SUFF_RELATION","templateKey":"TPL_NEC_SUFF_SET_RELATION","standardCourse":"공통수학2","standardUnitKey":"H22-C2-06","subUnitKey":"H22-C2-06-CORE"},"metaFinalSha256":"ad7eb285763e4ba21a3010dd85dfbc0eed1e938b2ea1590b24dd599a5c1a39d5","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q21-B3.json","sha256":"5e232e42e6a8bb198a85fdce440555172c1a08722b22e52b9a368c6aa2b60f09","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q17_Q23_63","scopeUids":["ALITE-PALMA25-2MID-Q21-B3"],"approvalReceiptPath":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json","approvalReceiptSha256":"38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d","approvalReceiptGitBlobSha1":"5813555d09e63d3afeb5c3c4e0d941bc2383b0d2","approvedPackagePath":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q21_PACKAGE.json","approvedPackageSha256":"33de32e2fde2e574f1f841c312911204f306be57273d47b7fc4cbfbb2abca8ae","approvedPackageGitBlobSha1":"125fa58ecf7c1ca5e7944f51963fc659882e2812","approvedSourceSnapshot":{"path":"archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js","gitBlobSha1":"4cfce909c023e5c4df4a759945c8cc3e0a63ec76"},"currentSource":{"path":"archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js","gitBlobSha1":"e7ead9fb1404f0fdb01dbfeafdee268f617b992e"},"uid":"ALITE-PALMA25-2MID-Q21-B3"},"metaReviewEvidenceSha256":"5e232e42e6a8bb198a85fdce440555172c1a08722b22e52b9a368c6aa2b60f09","difficultyBucket":3,"level":"상","problemTypeKey":"PT_NEC_SUFF_RELATION","templateKey":"TPL_NEC_SUFF_SET_RELATION","secondaryConceptKeys":[],"crossConceptKeys":[],"conditionKeys":[],"integrationPattern":"SEQUENTIAL"});})();

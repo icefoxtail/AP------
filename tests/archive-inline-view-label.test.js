@@ -32,6 +32,38 @@ test('archive has no inline bracketed view labels', () => {
   assert.equal(report.failures, 0);
 });
 
+test('lint follows the renderer block boundary and ignores ordinary inline references', async () => {
+  const { findInlineViewLabels } = await import('../archive/tools/view-label-lint.mjs');
+  const normalInline = [
+    '다음 <보기>에서 옳은 것을 고르시오.',
+    '다음 <보기> 중 옳은 것을 고르시오.',
+    '옳은 것을 [보기]에서 고르시오.',
+    '옳은 것을 &lt;보기&gt;에서 고르시오.'
+  ];
+  for (const content of normalInline) {
+    assert.deepEqual(findInlineViewLabels(content), [], content);
+  }
+
+  const promotedAtBlockBoundary = [
+    '<보기>에서 이 설명은 보기 블록 안의 긴 문장으로 렌더링되어 표지의 잘못된 위치를 찾게 한다. 조건과 결론을 포함하여 화면에서 박스 승격 여부를 검증하는 충분한 길이의 내용이다.',
+    '발문\n<보기> 중 이 설명은 보기 블록 안의 긴 문장으로 렌더링되어 표지의 잘못된 위치를 찾게 한다. 조건과 결론을 포함하여 화면에서 박스 승격 여부를 검증하는 충분한 길이의 내용이다.',
+    '발문<br><보기>에서 이 설명은 보기 블록 안의 긴 문장으로 렌더링되어 표지의 잘못된 위치를 찾게 한다. 조건과 결론을 포함하여 화면에서 박스 승격 여부를 검증하는 충분한 길이의 내용이다.',
+    '발문<br />[보기]에서 이 설명은 보기 블록 안의 긴 문장으로 렌더링되어 표지의 잘못된 위치를 찾게 한다. 조건과 결론을 포함하여 화면에서 박스 승격 여부를 검증하는 충분한 길이의 내용이다.'
+  ];
+  for (const content of promotedAtBlockBoundary) {
+    assert.equal(findInlineViewLabels(content).length, 1, content);
+  }
+
+  assert.deepEqual(findInlineViewLabels('<보기>에서 짧은 문장.'), []);
+
+  // A div's own label stays inside its explicit authored box; its preceding
+  // inline reference is not a block boundary and must not be flagged.
+  assert.deepEqual(
+    findInlineViewLabels('다음 <보기>에서 고르시오.<div class="box-content"><b><보 기></b></div>'),
+    []
+  );
+});
+
 test('protocol distinguishes inline words from standalone view labels', () => {
   assert.match(protocol, /INLINE VIEW LABEL LOCK/);
   assert.match(protocol, /조사가 붙어 문장 성분으로 쓰인 경우[^\n]*평문 `보기`/);

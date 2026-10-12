@@ -56,12 +56,44 @@ const requiredCommands = [
     args: ['--test', 'tests/archive2-output-transport.test.cjs']
   },
   {
+    label: 'tests/archive2-generated-mock-selection.test.cjs',
+    args: ['--test', 'tests/archive2-generated-mock-selection.test.cjs']
+  },
+  {
     label: 'archive/tools/solution-calibration-gate.mjs syntax',
     args: ['--check', 'archive/tools/solution-calibration-gate.mjs']
   },
   {
     label: 'archive/tools/review-evidence-gate.mjs syntax',
     args: ['--check', 'archive/tools/review-evidence-gate.mjs']
+  },
+  {
+    label: 'archive/tools/gpt2-one-shot-closeout.test.mjs',
+    args: ['--test', 'archive/tools/gpt2-one-shot-closeout.test.mjs']
+  },
+  {
+    label: 'archive/tools/gpt2-connected-stdio-host.test.mjs',
+    args: ['--test', 'archive/tools/gpt2-connected-stdio-host.test.mjs']
+  },
+  {
+    label: 'archive/tools/gpt2-cas-distributed-smoke.test.mjs',
+    args: ['--test', 'archive/tools/gpt2-cas-distributed-smoke.test.mjs']
+  },
+  {
+    label: 'archive/tools/gpt2-library-coordinated-adapter.test.mjs',
+    args: ['--test', 'archive/tools/gpt2-library-coordinated-adapter.test.mjs']
+  },
+  {
+    label: 'archive/tools/gpt2-github-cas-ledger.test.mjs',
+    args: ['--test', 'archive/tools/gpt2-github-cas-ledger.test.mjs']
+  },
+  {
+    label: 'archive/tools/gpt2-files-tool-transport.test.mjs',
+    args: ['--test', 'archive/tools/gpt2-files-tool-transport.test.mjs']
+  },
+  {
+    label: 'archive/tools/gpt2-connected-host-adapter.test.mjs',
+    args: ['--test', 'archive/tools/gpt2-connected-host-adapter.test.mjs']
   },
   {
     label: 'archive/tools/review-evidence-gate.test.mjs',

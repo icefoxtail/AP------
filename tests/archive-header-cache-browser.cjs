@@ -10,7 +10,7 @@ const runtimeScripts = ['mathjax_render_loop', 'layout-authority', 'layout-mater
 const runtimeVersions = Object.freeze({
     mathjax_render_loop: '20260911.5',
     'layout-authority': '20260911.5',
-    'layout-materializer': '20261003.2',
+    'layout-materializer': '20261011.5',
     'solution-render-executor': '20260914.1',
     'exam-render-executor': '20260914.1',
     'render-state-normalizer': '20260911.5',
