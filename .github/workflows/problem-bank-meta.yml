@@ -25,7 +25,6 @@ jobs:
           node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --check
           node archive/tools/build-generated-meta-browse-aliases.cjs
       - name: Meta persistence, recovery and shared consumer contracts
-      - name: Meta persistence, recovery and shared consumer contracts
         run: node --test tests/problem-bank-meta.test.cjs tests/problem-bank-meta-consumers.test.cjs tests/generated-meta-backfill.test.cjs tests/generated-meta-browse-aliases.test.cjs
       - uses: browser-actions/setup-chrome@v1
         id: chrome
