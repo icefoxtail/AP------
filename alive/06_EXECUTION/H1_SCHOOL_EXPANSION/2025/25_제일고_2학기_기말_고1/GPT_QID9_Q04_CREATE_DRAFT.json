@@ -26,21 +26,28 @@
       "④": 0,
       "⑤": 1
     },
-    "explicitMetaDebtUids": 9,
+    "explicitMetaDebtUids": 0,
     "externalQualityReview": "NOT_RUN",
     "studentRelease": "NOT_AUTHORIZED",
     "status": "AUTHOR_DRAFT_ONLY",
     "nextQid": 5,
-    "distractorRouteRecheck": "36 per-option calculation or boundary-error routes revised by author; separate open-book review NOT_RUN",
-    "authorSelfRecheck": "9_OF_9_COMPLETE_20261012",
+    "distractorRouteRecheck": "36/36 final explicit number/choice mapping checked on final candidate",
+    "authorSelfRecheck": "9_OF_9_COMPLETE_TARGETED_REPAIR_20261012",
     "wrongRoutesRechecked": 36,
     "contentPinpointRepair": [
-      "B1 wording and grammar"
+      "B1 grammar (previous commit retained)",
+      "C2 universal quantifier clarified",
+      "C3 question grammar clarified"
     ],
     "reviewRouteRepairs": [
-      "B2 explicit wrong answers",
-      "C2 incorrect distractor provenance"
-    ]
+      "B1 exact arithmetic paths",
+      "B2 actual wrong computations",
+      "C2 boundary route",
+      "C3 option ① = 15 exact omission"
+    ],
+    "selfRecheckStatus": "SELF_RECHECK_COMPLETE",
+    "historicalMetaDebtBeforeRepair": 9,
+    "svgDisposition": "NO_SVG_VISUAL_EXEMPT_9_9"
   },
   "questions": [
     {
@@ -168,7 +175,15 @@
           "problemVisual": "VISUAL_EXEMPT",
           "solutionVisual": "VISUAL_EXEMPT",
           "sourceMetaKey": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
-          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED"
+          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED",
+          "finalAlgebraCondition": "k≥4",
+          "calculatedNumericAnswer": 4,
+          "allFourWrongValuesRechecked": true,
+          "correctChoiceUnique": true,
+          "finalStudentSourceChecked": true,
+          "actualSvgBrowser": "NOT_APPLICABLE_NO_SVG",
+          "archiveEngine": "NOT_RUN",
+          "externalQualityReview": "NOT_RUN"
         }
       }
     },
@@ -297,7 +312,15 @@
           "problemVisual": "VISUAL_EXEMPT",
           "solutionVisual": "VISUAL_EXEMPT",
           "sourceMetaKey": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
-          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED"
+          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED",
+          "finalAlgebraCondition": "k≥-1",
+          "calculatedNumericAnswer": -1,
+          "allFourWrongValuesRechecked": true,
+          "correctChoiceUnique": true,
+          "finalStudentSourceChecked": true,
+          "actualSvgBrowser": "NOT_APPLICABLE_NO_SVG",
+          "archiveEngine": "NOT_RUN",
+          "externalQualityReview": "NOT_RUN"
         }
       }
     },
@@ -426,7 +449,15 @@
           "problemVisual": "VISUAL_EXEMPT",
           "solutionVisual": "VISUAL_EXEMPT",
           "sourceMetaKey": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
-          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED"
+          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED",
+          "finalAlgebraCondition": "k≥2",
+          "calculatedNumericAnswer": 2,
+          "allFourWrongValuesRechecked": true,
+          "correctChoiceUnique": true,
+          "finalStudentSourceChecked": true,
+          "actualSvgBrowser": "NOT_APPLICABLE_NO_SVG",
+          "archiveEngine": "NOT_RUN",
+          "externalQualityReview": "NOT_RUN"
         }
       }
     },
@@ -512,22 +543,22 @@
           {
             "choice": "①",
             "offeredValue": 2,
-            "reason": "$k=5,6$만 세어 $k=3,4$ 누락"
+            "reason": "부정한 결론의 실제 $x\\ge4$를 $x\\ge2$로 오인하면 $x+y\\ge k+4$, 곧 $k\\ge5$라 계산하여 $5,6$만 세어 $2$를 얻는다."
           },
           {
             "choice": "②",
             "offeredValue": 3,
-            "reason": "$k=4,5,6$만 세어 $k=3$ 누락"
+            "reason": "실제 $x\\ge4$를 $x\\ge3$으로 오인하면 $x+y\\ge k+5$, 곧 $k\\ge4$라 계산하여 $4,5,6$ 세 개를 얻는다."
           },
           {
             "choice": "④",
             "offeredValue": 5,
-            "reason": "$k=2,3,4,5,6$으로 세어 조건에 맞지 않는 $k=2$ 포함"
+            "reason": "실제 $x\\ge4$를 $x\\ge5$로 오인하면 $x+y\\ge k+7$, 곧 $k\\ge2$라 계산하여 $2,3,4,5,6$ 다섯 개를 얻는다."
           },
           {
             "choice": "⑤",
             "offeredValue": 6,
-            "reason": "$k=1,2,3,4,5,6$으로 세어 $k=1,2$ 포함"
+            "reason": "실제 $x\\ge4$를 $x\\ge6$으로 오인하면 $x+y\\ge k+8$, 곧 $k\\ge1$이라 계산하여 $1,2,3,4,5,6$ 여섯 개를 얻는다."
           }
         ],
         "problemVisual": {
@@ -555,7 +586,15 @@
           "problemVisual": "VISUAL_EXEMPT",
           "solutionVisual": "VISUAL_EXEMPT",
           "sourceMetaKey": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
-          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED"
+          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED",
+          "finalAlgebraCondition": "k=3,4,5,6",
+          "calculatedNumericAnswer": 4,
+          "allFourWrongValuesRechecked": true,
+          "correctChoiceUnique": true,
+          "finalStudentSourceChecked": true,
+          "actualSvgBrowser": "NOT_APPLICABLE_NO_SVG",
+          "archiveEngine": "NOT_RUN",
+          "externalQualityReview": "NOT_RUN"
         }
       }
     },
@@ -641,7 +680,7 @@
           {
             "choice": "①",
             "offeredValue": 1,
-            "reason": "두 조건의 임계값 $k\\ge3$, $k\\ge2$ 중 첫째 경계 3을 1로 잘못 계산하면 $k=1$을 택한다. 하지만 $k=1$일 때 (가)에서 $(x,y)=(3,2)$는 반례다."
+            "reason": "(나)의 부정 $y\\ge k+3$을 $y\\ge k+4$로 잘못 바꾸면 $x+y\\ge k+9$에서 $k\\ge1$을 얻고, (가)의 조건을 누락하여 $1$로 답한다."
           },
           {
             "choice": "②",
@@ -651,7 +690,7 @@
           {
             "choice": "④",
             "offeredValue": 4,
-            "reason": "교집합의 경계 $k\\ge3$을 필요 이상으로 $k\\ge4$로 강화하여 4를 택한 오답이다. 실제 $k=3$도 두 명제를 모두 참으로 만든다."
+            "reason": "(가)의 결론 부정 $x\\ge3$을 $x\\ge2$로 잘못 바꾸면 $x+y\\ge k+3$, 즉 $k\\ge4$라 계산한다. (나)의 $k\\ge2$와 교집합을 구해 $4$를 고른다."
           },
           {
             "choice": "⑤",
@@ -684,7 +723,15 @@
           "problemVisual": "VISUAL_EXEMPT",
           "solutionVisual": "VISUAL_EXEMPT",
           "sourceMetaKey": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
-          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED"
+          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED",
+          "finalAlgebraCondition": "k≥3",
+          "calculatedNumericAnswer": 3,
+          "allFourWrongValuesRechecked": true,
+          "correctChoiceUnique": true,
+          "finalStudentSourceChecked": true,
+          "actualSvgBrowser": "NOT_APPLICABLE_NO_SVG",
+          "archiveEngine": "NOT_RUN",
+          "externalQualityReview": "NOT_RUN"
         }
       }
     },
@@ -813,7 +860,15 @@
           "problemVisual": "VISUAL_EXEMPT",
           "solutionVisual": "VISUAL_EXEMPT",
           "sourceMetaKey": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
-          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED"
+          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED",
+          "finalAlgebraCondition": "k>3, integer",
+          "calculatedNumericAnswer": 4,
+          "allFourWrongValuesRechecked": true,
+          "correctChoiceUnique": true,
+          "finalStudentSourceChecked": true,
+          "actualSvgBrowser": "NOT_APPLICABLE_NO_SVG",
+          "archiveEngine": "NOT_RUN",
+          "externalQualityReview": "NOT_RUN"
         }
       }
     },
@@ -942,7 +997,15 @@
           "problemVisual": "VISUAL_EXEMPT",
           "solutionVisual": "VISUAL_EXEMPT",
           "sourceMetaKey": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
-          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED"
+          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED",
+          "finalAlgebraCondition": "k≥4",
+          "calculatedNumericAnswer": 4,
+          "allFourWrongValuesRechecked": true,
+          "correctChoiceUnique": true,
+          "finalStudentSourceChecked": true,
+          "actualSvgBrowser": "NOT_APPLICABLE_NO_SVG",
+          "archiveEngine": "NOT_RUN",
+          "externalQualityReview": "NOT_RUN"
         }
       }
     },
@@ -968,7 +1031,7 @@
       "layoutTag": "grid",
       "tags": [],
       "wide": false,
-      "content": "다음 두 명제의 참과 거짓을 조사한다.\n(가) “$x+y\\lt8$이면 $x\\lt3$ 또는 $y\\lt k+2$이다”\n(나) “$x+y\\lt10$이면 $x\\lt3$ 또는 $y\\lt k+2$이다”\n첫째 명제는 참이고 둘째 명제는 거짓이 되도록 하는 모든 정수 $k$의 합은?",
+      "content": "모든 실수 $x,y$에 대하여 다음 두 명제를 생각하자.\n(가) “$x+y\\lt8$이면 $x\\lt3$ 또는 $y\\lt k+2$이다”\n(나) “$x+y\\lt10$이면 $x\\lt3$ 또는 $y\\lt k+2$이다”\n첫째 명제는 참이고 둘째 명제는 거짓이 되도록 하는 모든 정수 $k$의 합은?",
       "choices": [
         "$3$",
         "$5$",
@@ -1033,7 +1096,7 @@
           {
             "choice": "②",
             "offeredValue": 5,
-            "reason": "$k=5$만 사용하나 둘째 명제가 참이므로 조건을 위반"
+            "reason": "둘째 명제가 거짓인 조건 $k<5$를 잘못 뒤집어 $k\\ge5$로 계산하고 경계 정수 $k=5$만 택하면 합을 $5$로 잘못 얻는다."
           },
           {
             "choice": "④",
@@ -1071,7 +1134,15 @@
           "problemVisual": "VISUAL_EXEMPT",
           "solutionVisual": "VISUAL_EXEMPT",
           "sourceMetaKey": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
-          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED"
+          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED",
+          "finalAlgebraCondition": "k=3,4, sum=7",
+          "calculatedNumericAnswer": 7,
+          "allFourWrongValuesRechecked": true,
+          "correctChoiceUnique": true,
+          "finalStudentSourceChecked": true,
+          "actualSvgBrowser": "NOT_APPLICABLE_NO_SVG",
+          "archiveEngine": "NOT_RUN",
+          "externalQualityReview": "NOT_RUN"
         }
       }
     },
@@ -1097,9 +1168,9 @@
       "layoutTag": "grid",
       "tags": [],
       "wide": false,
-      "content": "모든 자연수 $x,y$에 대하여 명제 “$x+y\\le9$이면 $x\\le3$ 또는 $y\\le k+1$이다”가 참이 되도록 하는 $1\\le k\\le7$인 자연수 $k$ 중 명제가 참이 되도록 하는 모든 값의 합을 구하면?",
+      "content": "모든 자연수 $x,y$에 대하여 명제 “$x+y\\le9$이면 $x\\le3$ 또는 $y\\le k+1$이다”가 참이 되도록 하는 $1\\le k\\le7$인 자연수 $k$의 값의 합은?",
       "choices": [
-        "$12$",
+        "$15$",
         "$16$",
         "$18$",
         "$20$",
@@ -1157,8 +1228,8 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredValue": 12,
-            "reason": "가능한 $k=4,5,6,7$ 중 $5,7$만 더해 12로 계산"
+            "offeredValue": 15,
+            "reason": "허용되는 $k=4,5,6,7$에서 범위의 상한 $k=7$을 빠뜨리면 $4+5+6=15$로 계산한다."
           },
           {
             "choice": "②",
@@ -1201,7 +1272,15 @@
           "problemVisual": "VISUAL_EXEMPT",
           "solutionVisual": "VISUAL_EXEMPT",
           "sourceMetaKey": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
-          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED"
+          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED",
+          "finalAlgebraCondition": "k=4,5,6,7, sum=22",
+          "calculatedNumericAnswer": 22,
+          "allFourWrongValuesRechecked": true,
+          "correctChoiceUnique": true,
+          "finalStudentSourceChecked": true,
+          "actualSvgBrowser": "NOT_APPLICABLE_NO_SVG",
+          "archiveEngine": "NOT_RUN",
+          "externalQualityReview": "NOT_RUN"
         }
       }
     }
