@@ -22,6 +22,11 @@ window.questionBank = [
       "원의 방정식"
     ],
     "wide": false,
+    "image": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q12-C3-problem.svg",
+    "imageSize": "large",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q12-C3-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth",
     "content": "원 $x^2+y^2=r^2$ $(0<r<8)$ 밖의 점 $A(8,0)$에서 이 원에 그은 두 접선의 접점을 각각 $P,Q$라 한다. 원점 $O$에서 직선 $PQ$까지의 거리를 $d$, 선분 $AP$의 길이를 $\\ell$이라 하자. $d+\\ell=\\dfrac{19}{2}$일 때, 가능한 모든 $r^2$의 값의 합은?",
     "choices": [
       "$28$",

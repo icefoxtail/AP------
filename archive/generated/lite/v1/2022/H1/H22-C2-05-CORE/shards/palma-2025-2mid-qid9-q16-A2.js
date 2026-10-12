@@ -22,6 +22,9 @@ window.questionBank = [
       "집합"
     ],
     "wide": false,
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q16-A2-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth",
     "content": "전체집합 $U$의 부분집합 $A,B$가 $A\\subseteq U-(B^c\\cup A^c)$를 만족한다. 다음 보기에서 항상 옳은 것만을 있는 대로 고른 것은?<br><br>〈보기〉<br>ㄱ. $A\\cup B=B$<br>ㄴ. $(A\\cup B)^c=A^c$<br>ㄷ. $A-B=\\varnothing$<br>ㄹ. $B\\cap A^c=\\varnothing$",
     "choices": [
       "ㄱ, ㄴ",

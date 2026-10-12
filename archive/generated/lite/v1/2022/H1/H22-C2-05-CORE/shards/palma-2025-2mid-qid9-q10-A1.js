@@ -22,6 +22,11 @@ window.questionBank = [
       "집합"
     ],
     "wide": false,
+    "image": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q10-A1-problem.svg",
+    "imageSize": "large",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q10-A1-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth",
     "content": "다음은 전체집합 $U$의 부분집합 $A,B,C$를 나타낸 벤다이어그램이다. 색칠한 부분과 같은 집합은?",
     "choices": [
       "$A\\cap (C-B)$",

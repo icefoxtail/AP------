@@ -444,7 +444,7 @@ window.questionBank = [
     "image": "assets/images/26_복성고_1학기_기말_고1_기출/q19.png",
     "sourceType": "generated"
   },
-  {
+    {
     "id": 13,
     "uid": "ALITE-BSG26-B06-Q19-S13",
     "level": "상",
@@ -479,8 +479,12 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 원본과 달리 B-D도 인접하게 된 새 그림의 경계선을 다시 확인한다.\n새 그림에서는 $A,B,C,D$의 여섯 쌍 $AB,AC,AD,BC,BD,CD$가 모두 경계선을 공유한다. 따라서 네 영역 모두 서로 다른 색을 써야 한다.\n$A$에 6가지, $B$에 나머지 5가지, $C$에 나머지 4가지, $D$에 나머지 3가지이다.\n전체는 $6\\cdot5\\cdot4\\cdot3=360$가지이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/26_복성고_ALITE_B06/q19-added-BD-edge.svg",
-    "sourceType": "generated"
+    "image": "assets/generated-lite/palma-svg-repair/ALITE-BSG26-B06-Q19-S13-problem.svg",
+    "sourceType": "generated",
+    "imageSize": "medium",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-BSG26-B06-Q19-S13-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 14,
