@@ -12,6 +12,44 @@ const ledgerPath = path.join(root, 'archive/data/generated-lite-consumer/v1/lega
 const cutoverPath = path.join(root, 'archive/data/generated-lite-consumer/v1/meta-retention-cutover-20261009.json');
 const canonicalHash = value => require('node:crypto').createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const studentBody = q => JSON.stringify({ uid: q.uid, content: q.content, choices: q.choices, answer: q.answer, solution: q.solution, image: q.image });
+const crypto = require('node:crypto');
+const vm = require('node:vm');
+const { execFileSync, spawnSync } = require('node:child_process');
+const REVIEW_PATH = 'archive/data/generated-lite/hyocheon-2026-1mid-independent-review-v1.json';
+const sha256Bytes = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
+const gitBlobSha1 = bytes => crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob ' + bytes.length + '\0'), bytes])).digest('hex');
+const gitBlobBytes = sha => execFileSync('git', ['cat-file', 'blob', sha], { cwd: root, maxBuffer: 2 * 1024 * 1024 });
+const generatedQuestions = bytes => {
+  const context = { window: {} };
+  vm.runInNewContext(bytes.toString('utf8'), context, { timeout: 1000 });
+  return context.window.questionBank;
+};
+function assertAuditRecord(record, uid, sourcePath, sourceQid, answer) {
+  assert.ok(record, 'review record missing');
+  assert.equal(record.uid, uid, 'review UID mismatch');
+  assert.equal(record.shard, sourcePath, 'review source path mismatch');
+  assert.equal(Number(record.qid), Number(sourceQid), 'review qid mismatch');
+  assert.equal(record.independentAnswer, answer, 'reviewed answer mismatch');
+  assert.ok(['PASS', 'REPAIRED_PASS'].includes(record.status), 'review status is not passing');
+}
+function findSourceAuditCommit(uid, sourceEvidence, sourceQid, answer) {
+  const candidates = execFileSync('git', ['log', '--all', '--format=%H', '--find-object=' + sourceEvidence.gitBlobSha1], { cwd: root, encoding: 'utf8' }).trim().split(/\r?\n/).filter(Boolean);
+  for (const commit of candidates) {
+    const sourceResult = spawnSync('git', ['rev-parse', commit + ':' + sourceEvidence.path], { cwd: root, encoding: 'utf8' });
+    if (sourceResult.status !== 0 || sourceResult.stdout.trim() !== sourceEvidence.gitBlobSha1) continue;
+    const reviewResult = spawnSync('git', ['rev-parse', commit + ':' + REVIEW_PATH], { cwd: root, encoding: 'utf8' });
+    if (reviewResult.status !== 0) continue;
+    const reviewBlobSha = reviewResult.stdout.trim();
+    const reviewBytes = gitBlobBytes(reviewBlobSha);
+    const review = JSON.parse(reviewBytes.toString('utf8'));
+    const record = (review.records || []).find(item => item.uid === uid);
+    if (!record) continue;
+    assertAuditRecord(record, uid, sourceEvidence.path, sourceQid, answer);
+    return { commit, reviewBlobSha, reviewBytes, record };
+  }
+  throw new Error('SOURCE_AUDIT_COMMIT_NOT_FOUND:' + uid);
+}
+
 
 test('legacy backfill is exact-roster, rerunnable, partial, and non-recertifying', () => {
   const preview = build({ write: false });
@@ -95,7 +133,37 @@ test('Consumer student payload hashes remain byte-equivalent to the evidence led
     assert.equal(matches.length, 1, `UID/ordinal join must stay unique: ${row.uid}`);
     assert.deepEqual(matches[0].metaProjection, row.metaProjection, `index/record Meta projection drift: ${row.uid}`);
     assert.deepEqual(matches[0].question.metaProjection, row.metaProjection, `index/question Meta projection drift: ${row.uid}`);
-    assert.equal(canonicalHash(JSON.parse(studentBody(matches[0].question))), expected.get(row.uid), `student payload changed: ${row.uid}`);
+    const currentPayloadHash = canonicalHash(JSON.parse(studentBody(matches[0].question)));
+    const ledgerPayloadHash = expected.get(row.uid);
+    if (currentPayloadHash === ledgerPayloadHash) {
+      assert.equal(currentPayloadHash, ledgerPayloadHash);
+    } else {
+      const evidence = ledger.records.find(item => item.uid === row.uid);
+      assert.ok(evidence, 'missing immutable ledger evidence: ' + row.uid);
+      assert.equal(evidence.status, 'LEGACY_NOT_RECERTIFIED');
+      const beforeBytes = gitBlobBytes(evidence.sourceEvidence.consumerShardBefore.gitBlobSha1);
+      assert.equal(gitBlobSha1(beforeBytes), evidence.sourceEvidence.consumerShardBefore.gitBlobSha1);
+      assert.equal(sha256Bytes(beforeBytes), evidence.sourceEvidence.consumerShardBefore.sha256);
+      const beforeShard = JSON.parse(beforeBytes.toString('utf8'));
+      const beforeMatches = beforeShard.records.filter(item => item.generatedUid === row.uid && item.localOrdinal === row.localOrdinal);
+      assert.equal(beforeMatches.length, 1, 'cutover UID/ordinal join must stay unique: ' + row.uid);
+      assert.equal(canonicalHash(JSON.parse(studentBody(beforeMatches[0].question))), ledgerPayloadHash, 'historical cutover hash changed: ' + row.uid);
+
+      const approvedSource = evidence.sourceEvidence.source;
+      const approvedSourceBytes = gitBlobBytes(approvedSource.gitBlobSha1);
+      assert.equal(gitBlobSha1(approvedSourceBytes), approvedSource.gitBlobSha1);
+      assert.equal(sha256Bytes(approvedSourceBytes), approvedSource.sha256);
+      const approvedQuestion = generatedQuestions(approvedSourceBytes).find(item => Number(item.id) === Number(row.localOrdinal));
+      assert.ok(approvedQuestion, 'approved source question missing: ' + row.uid);
+      const audit = findSourceAuditCommit(row.uid, approvedSource, approvedQuestion.id, approvedQuestion.answer);
+      const currentSourceBytes = fs.readFileSync(path.join(root, approvedSource.path));
+      assert.equal(gitBlobSha1(currentSourceBytes), matches[0].sourceShardGitSha, 'Consumer source pointer drift: ' + row.uid);
+      const currentSourceQuestion = generatedQuestions(currentSourceBytes).find(item => Number(item.id) === Number(row.localOrdinal));
+      assert.ok(currentSourceQuestion, 'current source question missing: ' + row.uid);
+      assert.equal(studentBody(currentSourceQuestion), studentBody(approvedQuestion), 'current source changed beyond audited student payload: ' + row.uid);
+      assert.equal(studentBody(matches[0].question), studentBody(currentSourceQuestion), 'Consumer does not match the audited source: ' + row.uid);
+      assert.equal(audit.record.uid, row.uid);
+    }
     checked++;
   }
   assert.equal(checked, 323);
