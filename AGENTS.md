@@ -90,3 +90,11 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 ## ROOT production 완성·예외·HOLD 해제 권한
 
 CURRENT Execution v1.3 §25를 따른다. ROOT는 승인 범위에서 캡처/실제 render 조건을 근거 있게 면제하고 최소 수정·true item HOLD의 문항 대체·기술 복구·HOLD 해제·publication을 자율 결정한다. 같은 적용 여부를 반복 요청하지 않는다. 완료 기준은 JS/정답/해설/Meta/이미지/SVG, 유효한 R1/R2 및 R3 static integrity, zero item HOLD, 실제 production·remote readback·closeout이다. 캡처만 없다는 이유로 최종 HOLD를 만들지 않는다. ROOT 결정은 ROOT_DELEGATED/ROOT_DIRECTED_STATIC_COMPLETE/NOT_RUN_ROOT_WAIVER와 범위·사유·대체 검수·SHA를 기록한다. actual RENDER_PASS를 가장하지 않으며 알려진 품질 결함을 면제하지 않는다. 일반 ROOT 경로는 archive-codex-root-waiver-intake.mjs 및 RootWaived static/MAIN_DONE validators·stage consumers로 수납한다. 새로운 예외 기능이 미지원일 때만 MASTER의 exact 기술 continuation으로 결속을 보완한다. 원 정상/실패/freeze/capture/권한 provenance는 보존한다.
+
+## 작업 종료 시 worktree·브랜치·임시 복제본 정리 — 사용자 지시 2026-10-12
+
+- 매 작업 종료 시 본인 작업이 만든 worktree, 로컬·원격 브랜치, 임시 clone/복제본을 확인해 불필요한 항목을 정리한다. 다른 작업자나 활성 작업의 경로·브랜치·ref는 건드리지 않는다. 소유자가 불명확하면 보존하고 이유를 보고한다.
+- 제거 전 staged/unstaged 변경, untracked·ignored 파일, 본 작업 고유 변경, 미푸시 커밋, 필요한 검수·복구 증거를 확인한다. 진행 중 작업, 공유 Git common dir·objects·refs, junction/symlink/reparse point의 최종 대상이 걸린 경로는 삭제 대상으로 삼지 않는다.
+- 필요한 고유 변경과 증거는 최소 복구본(예: patch, commit 또는 snapshot)으로 안전한 위치에 보존하고 실제 복구 가능성을 검증한 뒤 원본을 정리한다. 작은 고유 변경을 보존할 최소 복구본이 충분하면 전체 clone/worktree를 무기한 보유하지 않는다. 복구 검증 전 삭제는 금지한다.
+- 본인이 만든 불필요한 로컬 브랜치·worktree·clone처럼 안전하게 정리 가능한 대상만 정리한다. 데이터의 파괴적 삭제와 원격 브랜치 삭제·기타 원격 변경은 해당 작업에 대한 명시적 승인이 있을 때만 실행한다. 승인이나 복구 조건이 없으면 삭제하지 말고 blocker로 기록한다.
+- closeout에는 확인한 저장 위치, 제거한 항목, 남긴 항목과 이유, 복구 검증, 실측 확보 공간(byte)과 측정 기준을 보고한다. 제거하지 않았다면 확보량 0을 기록한다. 필수 정리가 끝나지 않았으면 완료라고 보고하지 말고 미완료 사유를 적는다. 정리 과정에 작업 범위 밖의 품질 검수 단계를 추가하지 않는다.
