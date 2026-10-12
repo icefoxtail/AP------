@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+const out='archive/analysis/24_매산여고_1학기_중간_고2_수학I/ITEM_RECOVERY_20261011_CODEX/RESTORED.q21-solution.svg';
+const css=`<style>text{font-family:"Noto Sans KR","Malgun Gothic",sans-serif;fill:#111827;font-size:17px}.title{font-weight:700;font-size:22px}.axis{stroke:#334155;stroke-width:2}.guide{stroke:#94a3b8;stroke-width:1.5;stroke-dasharray:6 5}.curve{fill:none;stroke:#2563eb;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.curve2{fill:none;stroke:#ea580c;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.accent{stroke:#16a34a;stroke-width:9;stroke-linecap:round}.dot{fill:#dc2626;stroke:white;stroke-width:2}.panel{fill:#f8fafc;stroke:#cbd5e1;stroke-width:1.5}.small{font-size:14px}.math{font-family:"STIX Two Math","Cambria Math","Times New Roman",serif}</style>`;
+const esc=v=>String(v).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+const wrap=(title,inner,w=760,h=360)=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-label="${esc(title)}">${css}<rect width="100%" height="100%" fill="#fff"/><text x="28" y="34" class="title">${esc(title)}</text>${inner}</svg>`;
+const original=wrap('주기 4와 입력 x−1의 극값 이동',`<text x="54" y="95" fill="#2563eb">f의 한 주기 [0,4]</text><line x1="115" y1="148" x2="330" y2="148" class="axis"/><circle cx="169" cy="148" r="7" class="dot"/><circle cx="277" cy="148" r="7" fill="#2563eb"/><text x="153" y="128">max u=1</text><text x="260" y="178">min u=3</text><text x="378" y="95" fill="#16a34a">u=x−1 ∈[4,8]</text><line x1="395" y1="148" x2="665" y2="148" class="axis"/><circle cx="462" cy="148" r="7" class="dot"/><circle cx="598" cy="148" r="7" fill="#2563eb"/><text x="444" y="128">u=5</text><text x="583" y="178">u=7</text><text x="432" y="237">x=u+1 → 최대 x=6, 최소 x=8</text><text x="345" y="300" class="small">f(x+4)=f(x)</text>`);
+fs.writeFileSync(out,original,'utf8');
+console.log(JSON.stringify({path:out,bytes:Buffer.byteLength(original),sha256:crypto.createHash('sha256').update(original).digest('hex')}));
+

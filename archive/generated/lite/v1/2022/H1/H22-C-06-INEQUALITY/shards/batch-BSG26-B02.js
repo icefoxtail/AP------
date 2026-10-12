@@ -1,6 +1,6 @@
 window.examTitle = "ALIVE_LITE_BSG26_B02_QUADRATIC_INEQUALITY";
 window.questionBank = [
-  {
+    {
     "id": 1,
     "uid": "ALITE-BSG26-B02-Q05-I01",
     "level": "하",
@@ -32,9 +32,12 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 엄격한 부등식이므로 두 근은 해집합에 포함하지 않는다.\n두 근은 $x=2$와 $x=5$이고, 두 인수의 곱이 음수인 구간은 $2<x<5$이다.\n이 범위의 정수는 $3,4$의 두 개뿐이다.\n따라서 구하는 정수해의 개수는 2개이다.\n따라서 정답은 ①이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-BSG26-B02-Q05-I01-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
-  {
+    {
     "id": 2,
     "uid": "ALITE-BSG26-B02-Q05-I02",
     "level": "중",
@@ -66,9 +69,12 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 이차식의 곱이 양수인 두 바깥구간을 주어진 정수 범위와 교차한다.\n$(x-2)(x-7)>0$의 해는 $x<2$ 또는 $x>7$이다.\n$1\\le x\\le10$인 정수 중 해당하는 수는 $1,8,9,10$이다.\n따라서 정수해는 모두 4개이다.\n따라서 정답은 ④이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-BSG26-B02-Q05-I02-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
-  {
+    {
     "id": 3,
     "uid": "ALITE-BSG26-B02-Q05-I03",
     "level": "하",
@@ -100,9 +106,12 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 부등식 양변에 $-1$을 곱하면 부등호의 방향을 바꾸어야 한다.\n주어진 부등식은 $(x-1)(x-5)\\le0$과 같다.\n따라서 두 근 사이인 $1\\le x\\le5$가 해집합이다.\n이 구간의 정수는 $1,2,3,4,5$의 5개이다.\n따라서 정답은 ⑤이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-BSG26-B02-Q05-I03-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
-  {
+    {
     "id": 4,
     "uid": "ALITE-BSG26-B02-Q05-I04",
     "level": "중",
@@ -134,9 +143,12 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 두 근이 연속된 정수 세 개를 결정한다.\n두 근은 $k$와 $k+2$이므로 해집합은 $k\\le x\\le k+2$이다.\n따라서 정수해는 $k,k+1,k+2$이고, 합은 $3k+3$이다.\n$3k+3=12$를 풀면 $k=3$이다.\n따라서 정답은 ③이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-BSG26-B02-Q05-I04-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
-  {
+    {
     "id": 5,
     "uid": "ALITE-BSG26-B02-Q05-I05",
     "level": "상",
@@ -168,9 +180,12 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 최고차항 계수가 양수인 이차식이 모든 실수에서 엄격히 양수이려면 판별식이 음수여야 한다.\n판별식은 $D=(a-2)^2-16$이다.\n$D<0$이므로 $(a-2)^2<16$, 즉 $-4<a-2<4$이다.\n따라서 $-2<a<6$이고 해당 정수는 $-1,0,1,2,3,4,5$의 7개이다.\n따라서 정답은 ④이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-BSG26-B02-Q05-I05-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
-  {
+    {
     "id": 6,
     "uid": "ALITE-BSG26-B02-Q05-I06",
     "level": "중",
@@ -202,9 +217,12 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 완전제곱식으로 고쳐 좌변의 최솟값을 확인한다.\n$x^2-4x+k=(x-2)^2+k-4$이다.\n$(x-2)^2$의 최솟값은 0이므로 좌변의 최솟값은 $k-4$이다.\n부등식의 실수해가 없으려면 이 최솟값이 양수여야 하므로 $k-4>0$, 즉 $k>4$이다.\n따라서 정수 $k$의 최솟값은 5이다.\n따라서 정답은 ③이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-BSG26-B02-Q05-I06-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
-  {
+    {
     "id": 7,
     "uid": "ALITE-BSG26-B02-Q05-I07",
     "level": "중",
@@ -236,9 +254,12 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 이차부등식의 해와 일차부등식의 해를 각각 구해 교집합을 취한다.\n$(x-1)(x-6)\\le0$에서 $1\\le x\\le6$이다.\n나머지 부등식 $x\\ge4$와 함께 만족하는 해는 $4\\le x\\le6$이다.\n따라서 가능한 정수는 $4,5,6$의 3개이다.\n따라서 정답은 ②이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-BSG26-B02-Q05-I07-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
-  {
+    {
     "id": 8,
     "uid": "ALITE-BSG26-B02-Q05-I08",
     "level": "중",
@@ -270,6 +291,9 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 해집합이 주어진 구간 전체를 포함하려면 왼쪽 끝점을 먼저 확인한다.\n$a<6$이므로 주어진 이차부등식의 해는 $a\\le x\\le6$이다.\n$[2,5]$가 이 해집합에 포함되기 위해서는 $a\\le2$여야 한다. 오른쪽 끝점 5는 이미 6보다 작다.\n따라서 가능한 정수 $a$의 최댓값은 2이다.\n따라서 정답은 ①이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-BSG26-B02-Q05-I08-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   }
 ];

@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import vm from 'node:vm';
+import {execFileSync} from 'node:child_process';
 import { registerApprovedGeneratedMeta, withdrawGeneratedUid, metaSha256, sha256Bytes, gitBlobSha } from './register-approved-generated-meta.mjs';
 import gate from '../generated-meta-retention-gate.cjs';
 import problemBankMeta from '../../problem-bank-meta.js';
@@ -68,8 +69,61 @@ function fixture({ unregistered = false } = {}) {
   const expectedSha256 = Object.fromEntries(Object.entries(paths).map(([key, value]) => [key, sha256Bytes(fs.readFileSync(path.join(root, value)))]));
   const newRegistration = unregistered ? { indexRow: { school: '시험학교', year: 2026, grade: '고1', subject: '공통수학1', sourceQid: 1, localOrdinal: 1, sourceKind: 'generated', l2: 'H1-PHYSICAL', approval: 'REVIEW_APPROVED', reviewStatus: 'REVIEW_PASS', reviewApprovalBasis: 'FIXTURE_REVIEW', shard: rel.consumerShard.replace(/^archive\//, '') } } : undefined;
   const args = { root, uid: question.uid, meta, approval: { status: 'REVIEW_PASS' }, reviewEvidence: { path: rel.evidence, sha256: sha256Bytes(evidenceBytes), reviewStatus: 'REVIEW_PASS' }, paths, expectedSha256, ...(newRegistration ? { newRegistration } : {}) };
-  return { root, rel, args, question, meta };
+  return { root, rel, args, question, meta, sourceExamPath, sourceExamBytes };
 }
+
+function historicalApprovalFixture(){
+  const f=fixture({unregistered:true}),historicalBytes=Buffer.from('window.questionBank=[{"id":1,"stem":"approved historical source"}];\n','utf8');
+  execFileSync('git',['init','--quiet'],{cwd:f.root});
+  execFileSync('git',['config','core.autocrlf','false'],{cwd:f.root});
+  const historicalSourceBlobSha1=execFileSync('git',['hash-object','-w','--stdin'],{cwd:f.root,input:historicalBytes,encoding:'utf8'}).trim();
+  const currentBytes=Buffer.from('window.questionBank=[{"id":1,"stem":"current source bytes"}];\n','utf8');
+  fs.writeFileSync(path.join(f.root,f.sourceExamPath),currentBytes);
+  const currentSourceBlobSha1=execFileSync('git',['hash-object','--path='+f.sourceExamPath,'--stdin'],{cwd:f.root,input:currentBytes,encoding:'utf8'}).trim();
+  const receiptPath='alive/06_EXECUTION/test/approval.json',packagePath='alive/06_EXECUTION/test/package.json';
+  const packageDoc={sourceExamPath:f.sourceExamPath,sourceGitBlobSha:historicalSourceBlobSha1,sourceQid:1,items:[{uid:f.question.uid,stem:f.question.content,choices:f.question.choices,answer:f.question.answer,solution:f.question.solution}]};
+  const packageBytes=Buffer.from(JSON.stringify(packageDoc,null,2)+'\n','utf8');
+  const packageGitBlobSha1=execFileSync('git',['hash-object','-w','--stdin'],{cwd:f.root,input:packageBytes,encoding:'utf8'}).trim();
+  const packageSha256=sha256Bytes(packageBytes);
+  const approvalBasis='USER_DIRECTED_QUALITY_APPROVED_TEST_HISTORICAL_SOURCE';
+  const receiptDoc={schemaVersion:'ALIVE_QID9_USER_DIRECTED_APPROVAL_V1',status:'USER_DIRECTED_QUALITY_APPROVED',approvalBasis,
+    source:{path:f.sourceExamPath,gitBlobSha1:historicalSourceBlobSha1},scope:{uids:[f.question.uid]},
+    packages:[{sourceQid:1,path:packagePath,sha256:packageSha256,gitBlobSha1:packageGitBlobSha1,uids:[f.question.uid]}]};
+  const receiptBytes=Buffer.from(JSON.stringify(receiptDoc,null,2)+'\n','utf8');
+  const receiptGitBlobSha1=execFileSync('git',['hash-object','-w','--stdin'],{cwd:f.root,input:receiptBytes,encoding:'utf8'}).trim();
+  const receiptSha256=sha256Bytes(receiptBytes);
+  for(const [rel,bytes] of [[packagePath,packageBytes],[receiptPath,receiptBytes]]){fs.mkdirSync(path.dirname(path.join(f.root,rel)),{recursive:true});fs.writeFileSync(path.join(f.root,rel),bytes);}
+  const sourceMetadataPath=path.join(f.root,f.rel.sourceMetadata),sourceMetadata=JSON.parse(fs.readFileSync(sourceMetadataPath,'utf8'));
+  sourceMetadata[0].sourceBlobSha=historicalSourceBlobSha1;sourceMetadata[0].approvedSourceBlobSha=historicalSourceBlobSha1;
+  sourceMetadata[0].currentSourceExamBlobSha1=currentSourceBlobSha1;
+  sourceMetadata[0].reviewApprovalStatus='USER_DIRECTED_QUALITY_APPROVED';
+  fs.writeFileSync(sourceMetadataPath,JSON.stringify(sourceMetadata,null,2)+'\n');
+  const consumerPath=path.join(f.root,f.rel.consumerShard),consumer=JSON.parse(fs.readFileSync(consumerPath,'utf8'));
+  consumer.sourceExamBlobSha=historicalSourceBlobSha1;consumer.currentSourceExamBlobSha1=currentSourceBlobSha1;
+  consumer.approvedSourceSnapshot={path:f.sourceExamPath,gitBlobSha1:historicalSourceBlobSha1};
+  fs.writeFileSync(consumerPath,JSON.stringify(consumer,null,2)+'\n');
+  const evidenceDoc={schemaVersion:'GENERATED_META_REVIEW_EVIDENCE_V1',approvalReceiptPath:receiptPath,approvalReceiptSha256:receiptSha256,approvalReceiptGitBlobSha1:receiptGitBlobSha1,
+    approvedPackagePath:packagePath,approvedPackageSha256:packageSha256,approvedPackageGitBlobSha1:packageGitBlobSha1,
+    approvedSourceSnapshot:{path:f.sourceExamPath,gitBlobSha1:historicalSourceBlobSha1},currentSource:{path:f.sourceExamPath,gitBlobSha1:currentSourceBlobSha1},
+    items:[{uid:f.question.uid,reviewStatus:'USER_DIRECTED_QUALITY_APPROVED',metaFinalSha256:metaSha256(f.meta),approvalBasis,scopeUids:[f.question.uid]}]};
+  const evidenceBytes=Buffer.from(JSON.stringify(evidenceDoc,null,2)+'\n','utf8');
+  fs.writeFileSync(path.join(f.root,f.rel.evidence),evidenceBytes);
+  f.args.approval.status='USER_DIRECTED_QUALITY_APPROVED';
+  f.args.reviewEvidence={path:f.rel.evidence,sha256:sha256Bytes(evidenceBytes),reviewStatus:'USER_DIRECTED_QUALITY_APPROVED'};
+  f.args.expectedSha256=Object.fromEntries(Object.entries(f.args.paths).map(([key,rel])=>[key,sha256Bytes(fs.readFileSync(path.join(f.root,rel)))]));
+  Object.assign(f.args.newRegistration.indexRow,{approval:'USER_DIRECTED_QUALITY_APPROVED',reviewStatus:'USER_DIRECTED_QUALITY_APPROVED',reviewApprovalBasis:approvalBasis,
+    sourceExamBlobSha:historicalSourceBlobSha1,currentSourceExamBlobSha1:currentSourceBlobSha1,approvedSourceSnapshotBlobSha1:historicalSourceBlobSha1});
+  Object.assign(f.args.newRegistration,{sourceExamPath:f.sourceExamPath,sourceExamBlobSha:historicalSourceBlobSha1,currentSourceBlobSha1,
+    approvedSourceSnapshot:{sourcePath:f.sourceExamPath,sourceBlobSha1:historicalSourceBlobSha1,currentSourceBlobSha1,approvalReceiptPath:receiptPath,approvalReceiptSha256:receiptSha256,approvalReceiptGitBlobSha1:receiptGitBlobSha1,
+      approvedPackagePath:packagePath,approvedPackageSha256:packageSha256,approvedPackageGitBlobSha1:packageGitBlobSha1}});
+  execFileSync('git',['config','user.name','Fixture'],{cwd:f.root});
+  execFileSync('git',['config','user.email','fixture@example.invalid'],{cwd:f.root});
+  execFileSync('git',['add','--',f.sourceExamPath,receiptPath,packagePath],{cwd:f.root});
+  execFileSync('git',['commit','--quiet','-m','fixture historical approval'],{cwd:f.root});
+  return {...f,historicalSourceBlobSha1,currentSourceBlobSha1,receiptPath,packagePath,receiptSha256,receiptGitBlobSha1,packageSha256,packageGitBlobSha1};
+}
+
+function historicalTargetBytes(f){return [f.rel.sourceShard,f.rel.sourceMetadata,f.rel.consumerShard,f.rel.consumerIndex].map(rel=>fs.readFileSync(path.join(f.root,rel)));}
 
 test('registration writes identical approved Meta and byte-bound evidence to all projections', () => {
   const f = fixture();
@@ -288,6 +342,51 @@ test('new approval creates a previously absent UID from source bytes, passes gat
     assert.equal(audit(f.root).status, 'PASS_NEW_UID_SCOPE_ONLY');
     assert.equal(JSON.parse(fs.readFileSync(indexPath, 'utf8')).approvedCount, 323);
   } finally { fs.rmSync(f.root, { recursive: true, force: true }); }
+});
+
+test('an exact UID-scoped receipt and package authorize a historical source blob while the current source remains separately bound', () => {
+  const f=historicalApprovalFixture();
+  try {
+    const result=registerApprovedGeneratedMeta(f.args);
+    assert.equal(result.status,'REGISTERED');
+    const index=JSON.parse(fs.readFileSync(path.join(f.root,f.rel.consumerIndex),'utf8')).records[0];
+    const consumerDoc=JSON.parse(fs.readFileSync(path.join(f.root,f.rel.consumerShard),'utf8'));
+    const consumer=consumerDoc.records[0];
+    const sourceQuestion={window:{}};
+    vm.runInNewContext(fs.readFileSync(path.join(f.root,f.rel.sourceShard),'utf8'),sourceQuestion);
+    assert.equal(index.sourceExamBlobSha,f.historicalSourceBlobSha1);
+    assert.equal(index.approvedSourceSnapshotBlobSha1,f.historicalSourceBlobSha1);
+    assert.equal(index.currentSourceExamBlobSha1,f.currentSourceBlobSha1);
+    assert.equal(consumer.sourceExamBlobSha,f.historicalSourceBlobSha1);
+    assert.equal(consumer.currentSourceExamBlobSha1,f.currentSourceBlobSha1);
+    assert.equal(consumerDoc.sourceExamBlobSha,f.historicalSourceBlobSha1);
+    assert.equal(sourceQuestion.window.questionBank[0].uid,f.question.uid);
+  } finally { fs.rmSync(f.root,{recursive:true,force:true}); }
+});
+
+test('historical source registration fails closed on missing or mismatched receipt, package, and source blob before writes', () => {
+  const cases=[
+    ['missing historical receipt binding',f=>{delete f.args.newRegistration.approvedSourceSnapshot;},/NEW_UID_SOURCE_EXAM_BYTES_MISMATCH/],
+    ['mismatched receipt bytes',f=>{f.args.newRegistration.approvedSourceSnapshot.approvalReceiptSha256='0'.repeat(64);},/HISTORICAL_SOURCE_RECEIPT_OR_PACKAGE_BYTES_MISMATCH/],
+    ['mismatched package bytes',f=>{f.args.newRegistration.approvedSourceSnapshot.approvedPackageSha256='0'.repeat(64);},/HISTORICAL_SOURCE_RECEIPT_OR_PACKAGE_BYTES_MISMATCH/],
+    ['mismatched historical source blob',f=>{f.args.newRegistration.approvedSourceSnapshot.sourceBlobSha1='0'.repeat(40);},/HISTORICAL_SOURCE_IDENTITY_BINDING_MISMATCH/],
+    ['mismatched current source blob',f=>{f.args.newRegistration.approvedSourceSnapshot.currentSourceBlobSha1='0'.repeat(40);},/HISTORICAL_SOURCE_CURRENT_SOURCE_BINDING_MISMATCH/],
+    ['source student body differs from the receipt-bound package',f=>{
+      const source={window:{}};vm.runInNewContext(fs.readFileSync(path.join(f.root,f.rel.sourceShard),'utf8'),source);
+      source.window.questionBank[0].content='altered after approval';
+      fs.writeFileSync(path.join(f.root,f.rel.sourceShard),`window.examTitle="fixture";window.questionBank=${JSON.stringify(source.window.questionBank)};`);
+      f.args.expectedSha256.sourceShard=sha256Bytes(fs.readFileSync(path.join(f.root,f.rel.sourceShard)));
+    },/HISTORICAL_SOURCE_PACKAGE_BODY_MISMATCH/]
+  ];
+  for(const [name,mutate,error] of cases){
+    const f=historicalApprovalFixture();
+    try{
+      mutate(f);
+      const before=historicalTargetBytes(f);
+      assert.throws(()=>registerApprovedGeneratedMeta(f.args),error,name);
+      assert.deepEqual(historicalTargetBytes(f),before,name+' must not write any projection');
+    }finally{fs.rmSync(f.root,{recursive:true,force:true});}
+  }
 });
 
 test('scoped user-directed quality authority registers without claiming an independent GPT verdict', () => {

@@ -8,6 +8,7 @@ const fs=require('node:fs');
 const path=require('node:path');
 const vm=require('node:vm');
 const crypto=require('node:crypto');
+const {execFileSync}=require('node:child_process');
 
 const sortValue=v=>Array.isArray(v)?v.map(sortValue):v&&typeof v==='object'
   ?Object.fromEntries(Object.keys(v).sort().map(k=>[k,sortValue(v[k])])):v;
@@ -15,6 +16,20 @@ const canonical=v=>JSON.stringify(sortValue(v));
 const sha256=v=>crypto.createHash('sha256').update(canonical(v)).digest('hex');
 const sha256Bytes=v=>crypto.createHash('sha256').update(v).digest('hex');
 const gitBlobSha=v=>crypto.createHash('sha1').update(`blob ${v.length}\0`).update(v).digest('hex');
+function trackedCanonicalBlob(root,relative){
+ let blobRef;
+ try{blobRef=execFileSync('git',['rev-parse',`HEAD:${relative}`],{cwd:root,encoding:'utf8',stdio:['ignore','pipe','ignore']}).trim();}
+ catch{
+  try{blobRef=execFileSync('git',['rev-parse',`:${relative}`],{cwd:root,encoding:'utf8',stdio:['ignore','pipe','ignore']}).trim();}
+  catch{return null;}
+ }
+ const file=path.resolve(root,relative),working=fs.readFileSync(file);
+ const bytes=execFileSync('git',['cat-file','blob',blobRef],{cwd:root,maxBuffer:32*1024*1024});
+ if(gitBlobSha(bytes).toLowerCase()!==blobRef.toLowerCase())throw Error('TRACKED_GIT_BLOB_SHA_MISMATCH:'+relative);
+ const normalize=value=>Buffer.from(value.toString('utf8').replace(/\r\n/g,'\n').replace(/\r/g,'\n'),'utf8');
+ if(!normalize(working).equals(normalize(bytes)))throw Error('TRACKED_WORKTREE_SEMANTIC_DRIFT:'+relative);
+ return {bytes,blobSha1:blobRef,sha256:sha256Bytes(bytes)};
+}
 const nonempty=v=>typeof v==='string'&&v.trim()!==''&&v===v.trim();
 const sha64=v=>typeof v==='string'&&/^[a-f0-9]{64}$/i.test(v);
 const uniqueStrings=a=>Array.isArray(a)&&a.every(nonempty)&&new Set(a).size===a.length;
@@ -73,7 +88,7 @@ function validateReviewBinding(root,binding,uid,expectedMetaSha,expectedStatus){
  const evidencePrefix=['alive/06_EXECUTION/','archive/analysis/'].find(prefix=>binding.path.startsWith(prefix));
  if(!evidencePrefix)return ['REVIEW_EVIDENCE_PATH_OUT_OF_SCOPE'];
  const evidenceFile=contained(root,binding.path,evidencePrefix);
-  const bytes=fs.readFileSync(evidenceFile);
+   const bytes=trackedCanonicalBlob(root,binding.path)?.bytes||fs.readFileSync(evidenceFile);
   if(sha256Bytes(bytes).toLowerCase()!==binding.sha256.toLowerCase())issues.push('REVIEW_EVIDENCE_BYTES_MISMATCH');
   const doc=JSON.parse(bytes.toString('utf8'));
   if(doc.schemaVersion!=='GENERATED_META_REVIEW_EVIDENCE_V1'||!Array.isArray(doc.items))return [...issues,'REVIEW_EVIDENCE_SCHEMA_INVALID'];
@@ -109,8 +124,34 @@ function validateMetaTaxonomyBindings(root,meta,primaryRecord=null,uid=null){
    const ref=family==='crossConcepts'?meta.crossConceptRegistryRef:meta.conditionRegistryRef;
    if(typeof ref!=='string'||!ref.startsWith('archive/generated/lite/v1/'))return false;
    const ext=readJson(contained(root,ref,'archive/generated/lite/v1/'));
-   const matches=(ext[family]||[]).filter(row=>
-     row.id===key&&/ACTIVE/.test(String(row.status||''))&&Array.isArray(row.exampleUids)&&row.exampleUids.includes(uid));
+    const field=family==='crossConcepts'?'crossConceptDefinitions':'conditionDefinitions';
+    const definitions=ext[family]||ext[field]||[];
+    const matches=definitions.filter(row=>{
+      const scoped=(row.exampleUids||[]).includes(uid)||row.evidenceUid===uid||(row.scopeUids||[]).includes(uid);
+      const l3=ext.primaryL3||ext.parentRpmL3||ext.lockedParentL3;
+      const unit=row.parentStandardUnitKey||ext.standardUnitKey;
+      if((l3&&l3!==authorityLabel(meta.rpmL3))||(unit&&unit!==meta.standardUnitKey))return false;
+      if((row.id||row.key)!==key||!/ACTIVE/.test(String(row.status||''))||!scoped)return false;
+      if(row.reviewStatus!=='USER_DIRECTED_QUALITY_APPROVED')return true;
+      try{
+       contained(root,row.approvalReceiptPath,'alive/06_EXECUTION/');
+       const receiptBlob=trackedCanonicalBlob(root,row.approvalReceiptPath);
+       if(!receiptBlob||receiptBlob.sha256.toLowerCase()!==String(row.approvalReceiptSha256||'').toLowerCase()||
+          receiptBlob.blobSha1.toLowerCase()!==String(row.approvalReceiptGitBlobSha1||'').toLowerCase())return false;
+       const receipt=JSON.parse(receiptBlob.bytes.toString('utf8'));
+       if(
+          receipt.status!=='USER_DIRECTED_QUALITY_APPROVED'||receipt.approvalBasis!==row.approvalBasis||!receipt.scope?.uids?.includes(uid))return false;
+       contained(root,row.approvedPackagePath,'alive/06_EXECUTION/');
+       const packageBlob=trackedCanonicalBlob(root,row.approvedPackagePath);
+       if(!packageBlob||packageBlob.sha256.toLowerCase()!==String(row.approvedPackageSha256||'').toLowerCase()||
+          packageBlob.blobSha1.toLowerCase()!==String(row.approvedPackageGitBlobSha1||'').toLowerCase())return false;
+       const packageDoc=JSON.parse(packageBlob.bytes.toString('utf8'));
+       if(
+          !receipt.packages?.some(item=>item.path===row.approvedPackagePath&&item.sha256===row.approvedPackageSha256&&item.gitBlobSha1===row.approvedPackageGitBlobSha1&&item.uids?.includes(uid))||
+          !packageDoc.items?.some(item=>item.uid===uid))return false;
+       return true;
+      }catch{return false;}
+    });
    return matches.length===1;
   };
   const problemType=meta.problemTypeKey==null?null:(taxonomy.problemTypes||[]).filter(row=>row.problemTypeKey===meta.problemTypeKey);
@@ -163,7 +204,7 @@ function validateAuthorityBinding(root,meta,question,uid){
   if(!nonempty(meta?.rpmPrimaryRecordId)||!nonempty(authorityRef)||!sha64(authoritySha))
    return {issues:['RPM_AUTHORITY_BINDING_REQUIRED'],primaryRecord:null};
   const authorityFile=contained(root,authorityRef,'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/');
-  const authorityBytes=fs.readFileSync(authorityFile);
+   const authorityBytes=trackedCanonicalBlob(root,authorityRef)?.bytes||fs.readFileSync(authorityFile);
   if(crypto.createHash('sha256').update(authorityBytes).digest('hex').toLowerCase()!==authoritySha.toLowerCase())issues.push('RPM_AUTHORITY_BYTES_MISMATCH');
   const authority=JSON.parse(authorityBytes.toString('utf8'));
   if(authority.rpmAuthority?.status&&authority.rpmAuthority.status!=='LOCKED')issues.push('RPM_AUTHORITY_NOT_LOCKED');
@@ -182,7 +223,7 @@ function validateAuthorityBinding(root,meta,question,uid){
     if(meta.rpmCanonicalMasterRef!==canonicalRef||!sha64(meta.rpmCanonicalMasterSha256))issues.push('RPM_CANONICAL_MASTER_BINDING_REQUIRED');
     else{
      const masterFile=contained(root,meta.rpmCanonicalMasterRef,'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/');
-     const masterBytes=fs.readFileSync(masterFile);
+   const masterBytes=trackedCanonicalBlob(root,meta.rpmCanonicalMasterRef)?.bytes||fs.readFileSync(masterFile);
      if(crypto.createHash('sha256').update(masterBytes).digest('hex').toLowerCase()!==meta.rpmCanonicalMasterSha256.toLowerCase())issues.push('RPM_CANONICAL_MASTER_BYTES_MISMATCH');
      const master=JSON.parse(masterBytes.toString('utf8'));
      if(master.authorityStatus!=='LOCKED')issues.push('RPM_CANONICAL_MASTER_NOT_LOCKED');
@@ -209,29 +250,34 @@ function validateAuthorityBinding(root,meta,question,uid){
    if(!nonempty(registryRel)||!sha64(meta.generatedL4RegistrySha256))issues.push('GENERATED_L4_REGISTRY_BINDING_REQUIRED');
    else{
     const registryFile=contained(root,registryRel,'archive/generated/lite/v1/');
-    const registryBytes=fs.readFileSync(registryFile);
-    if(crypto.createHash('sha256').update(registryBytes).digest('hex').toLowerCase()!==meta.generatedL4RegistrySha256.toLowerCase())issues.push('GENERATED_L4_REGISTRY_BYTES_MISMATCH');
+     const canonicalRegistry=trackedCanonicalBlob(root,registryRel);
+     const registryBytes=canonicalRegistry?.bytes||fs.readFileSync(registryFile);
+     const registryBlob=canonicalRegistry?.blobSha1||gitBlobSha(registryBytes);
+    if(sha256Bytes(registryBytes).toLowerCase()!==meta.generatedL4RegistrySha256.toLowerCase())issues.push('GENERATED_L4_REGISTRY_BYTES_MISMATCH');
+    if(meta.generatedL4RegistryGitBlobSha1&&registryBlob.toLowerCase()!==meta.generatedL4RegistryGitBlobSha1.toLowerCase())issues.push('GENERATED_L4_REGISTRY_GIT_BLOB_MISMATCH');
     const registry=JSON.parse(registryBytes.toString('utf8'));
-    const candidates=registry.entries||registry.proposals||registry.candidates||registry.records||[];
+     const candidates=[registry.entries,registry.proposals,registry.candidates,registry.records,registry.extensions]
+      .find(rows=>Array.isArray(rows)&&rows.length>0)||[];
     const key=meta.rpmL4;
-    const candidateMatches=candidates.filter(row=>(row.candidateL4Id||row.key||row.id)===key||row.label===authorityLabel(key)||row.labelKo===authorityLabel(key));
+     const candidateMatches=candidates.filter(row=>(row.candidateL4Id||row.generatedExtL4Id||row.key||row.id)===key||row.label===authorityLabel(key)||row.labelKo===authorityLabel(key));
     if(candidateMatches.length!==1)issues.push('GENERATED_L4_CANDIDATE_NOT_UNIQUE');
     else{
      const candidate=candidateMatches[0];
-     const parent=candidate.proposedParentRPMPrimaryL3||candidate.parentRPMPrimaryL3||candidate.parentPrimaryL3||candidate.parentL3;
-     const parentRecordId=candidate.parentPrimaryL3RecordId||candidate.parentRPMPrimaryL3RecordId||
-       candidate.parentRpmL3RecordId||registry.parentPrimaryL3RecordId||registry.parentRPMPrimaryL3RecordId;
+      const parent=candidate.proposedParentRPMPrimaryL3||candidate.parentRPMPrimaryL3||candidate.parentPrimaryL3||candidate.parentL3||candidate.parentLockedPrimaryL3;
+      const parentRecordIds=[candidate.parentPrimaryL3RecordId,candidate.parentRPMPrimaryL3RecordId,candidate.parentRpmL3RecordId,
+        ...(candidate.parentRpmL3RecordIds||[]),registry.parentPrimaryL3RecordId,registry.parentRPMPrimaryL3RecordId,
+        ...(registry.parentRpmL3RecordIds||[])].filter(Boolean);
      if(parent!==meta.rpmL3&&parent!==authorityCode(meta.rpmL3)&&parent!==authorityLabel(meta.rpmL3)&&
-        parent!==primaryRecord?.rpmPath?.l3&&parentRecordId!==meta.rpmPrimaryRecordId)
+         parent!==primaryRecord?.rpmPath?.l3&&!parentRecordIds.includes(meta.rpmPrimaryRecordId))
       issues.push('GENERATED_L4_PARENT_L3_MISMATCH');
      if(candidate.sourceUid&&candidate.sourceUid!==uid&&!(candidate.exampleUids||[]).includes(uid))issues.push('GENERATED_L4_UID_SCOPE_MISMATCH');
      if(!candidate.sourceUid&&!(candidate.exampleUids||[]).includes(uid)&&candidate.consumerSelectable!==true&&candidate.canonicalPromoted!==true)
       issues.push('GENERATED_L4_UID_SCOPE_UNPROVEN');
-     const course=registry.course||candidate.course;
-     const bucket=registry.targetL2||candidate.targetL2;
+      const course=registry.course||registry.standardCourse||candidate.course;
+      const bucket=registry.targetL2||registry.subUnitKey||candidate.targetL2;
      if(course&&course!==question.standardCourse)issues.push('GENERATED_L4_COURSE_MISMATCH');
      if(bucket&&bucket!==question.subUnitKey)issues.push('GENERATED_L4_UNIT_BUCKET_MISMATCH');
-     const status=String(candidate.reviewStatus||registry.status||'');
+      const status=String(candidate.status||registry.status||candidate.reviewStatus||'');
      if(!/APPROVED|REVIEW_PASS|GENERATED_ACTIVE/i.test(status))issues.push('GENERATED_L4_NOT_APPROVED');
     }
    }
@@ -239,12 +285,15 @@ function validateAuthorityBinding(root,meta,question,uid){
  }catch(e){issues.push('META_AUTHORITY_INSPECTION_ERROR:'+e.message);}
  return {issues,primaryRecord};
 }
-function audit(root){
+function audit(root,{uidScope}={}){
  const consumerPrefix='archive/data/generated-lite-consumer/v1/';
  const sourcePrefix='archive/generated/lite/v1/';
  const idx=readJson(path.join(root,consumerPrefix,'index.json'));
  const cutover=readJson(path.join(root,consumerPrefix,'meta-retention-cutover-20261009.json'));
  const errors=[];
+ const scopedUids=uidScope===undefined?null:new Set(Array.isArray(uidScope)?uidScope:[]);
+ if(uidScope!==undefined&&(!Array.isArray(uidScope)||!uidScope.length||scopedUids.size!==uidScope.length||uidScope.some(uid=>!nonempty(uid))))
+  errors.push('UID_SCOPE_INVALID');
  if(cutover.schemaVersion!=='GENERATED_META_RETENTION_CUTOVER_V1'||cutover.legacyCount!==323||
    cutover.legacyUids?.length!==323||new Set(cutover.legacyUids).size!==323)
   errors.push('LEGACY_CUTOVER_ROSTER_INVALID');
@@ -266,7 +315,9 @@ function audit(root){
   const uid=row.uid;
   if(!nonempty(uid)||seen.has(uid)){errors.push(String(uid)+':DUPLICATE_OR_INVALID_UID');continue;}
   seen.add(uid);
-  if(holds.has(uid))errors.push(uid+':HOLD_EXPOSED');
+  const inScope=scopedUids===null||scopedUids.has(uid);
+  if(inScope&&holds.has(uid))errors.push(uid+':HOLD_EXPOSED');
+  if(!inScope)continue;
   if(legacy.has(uid)){exempt++;continue;}
   checked++;
   const issue=(code)=>errors.push(uid+':'+code);
@@ -294,8 +345,9 @@ function audit(root){
     source=sandbox.window.questionBank;
     sourceCache.set(sourceRel,source);
    }
-   const sourceBytes=fs.readFileSync(sourceFile);
-   const sourceBlob=gitBlobSha(sourceBytes);
+    const canonicalSource=trackedCanonicalBlob(root,sourceRel);
+    const sourceBytes=canonicalSource?.bytes||fs.readFileSync(sourceFile);
+    const sourceBlob=canonicalSource?.blobSha1||gitBlobSha(sourceBytes);
    if(row.sourceShardGitSha!==sourceBlob||record.sourceShardGitSha!==sourceBlob)
     issue('SOURCE_SHARD_BYTES_SHA_MISMATCH');
    const sourceQs=source.filter(x=>x.uid===uid);
@@ -345,9 +397,9 @@ function audit(root){
       q.standardUnitKey!==sourceQs[0].standardUnitKey||q.subUnitKey!==sourceQs[0].subUnitKey)
     issue('SOURCE_QUESTION_STANDARD_OR_DIFFICULTY_MISMATCH');
    if(m.meta?.rpmL4Namespace==='RPM_EXISTING_DRAFT'){
-    const ref=contained(root,m.meta.rpmDraftAuthorityRef,'archive/data/meta-foundation/');
+     const ref=contained(root,m.meta.rpmDraftAuthorityRef,'archive/data/meta-foundation/');
     if(!fs.existsSync(ref))issue('RPM_DRAFT_SOURCE_MISSING');
-    else if(crypto.createHash('sha256').update(fs.readFileSync(ref)).digest('hex').toLowerCase()!==
+     else if((trackedCanonicalBlob(root,m.meta.rpmDraftAuthorityRef)?.sha256||crypto.createHash('sha256').update(fs.readFileSync(ref)).digest('hex')).toLowerCase()!==
       m.meta.rpmDraftAuthoritySha256.toLowerCase())issue('RPM_DRAFT_AUTHORITY_BYTES_MISMATCH');
    }
    if(m.meta?.rpmL4Namespace==='GENERATED_EXT_L4'){
@@ -356,16 +408,16 @@ function audit(root){
    }
   }catch(e){issue('INSPECTION_ERROR:'+e.message);}
  }
- return {status:errors.length?'FAIL':'PASS_NEW_UID_SCOPE_ONLY',
-   legacyExemptNotRecertified:exempt,newUidChecked:checked,total:seen.size,
+ if(scopedUids)for(const uid of scopedUids)if(!seen.has(uid))errors.push(uid+':UID_SCOPE_MISSING_FROM_INDEX');
+ return {status:errors.length?'FAIL':scopedUids?'PASS_APPROVED_UID_SCOPE_ONLY':'PASS_NEW_UID_SCOPE_ONLY',
+   uidScope:scopedUids?[...scopedUids].sort():undefined,
+   legacyExemptNotRecertified:exempt,newUidChecked:checked,total:scopedUids?scopedUids.size:seen.size,
    failures:errors.length,errors};
 }
 function bindingDigestMismatch(row,record,q,sourceQuestion,approved,binding){
- const stable={path:binding.path,sha256:binding.sha256.toLowerCase(),reviewStatus:binding.reviewStatus,uid:row.uid};
- if(binding.approvalBasis!==undefined)stable.approvalBasis=binding.approvalBasis;
- if(binding.scopeUids!==undefined)stable.scopeUids=binding.scopeUids;
+ const expected={...binding,sha256:String(binding.sha256||'').toLowerCase(),uid:row.uid};
  return [row.metaReviewEvidence,record.metaReviewEvidence,q.metaReviewEvidence,sourceQuestion.metaReviewEvidence]
-  .some(value=>canonical(value)!==canonical(stable));
+  .some(value=>canonical(value)!==canonical(expected));
 }
 if(require.main===module){
  const result=audit(path.resolve(__dirname,'../..'));

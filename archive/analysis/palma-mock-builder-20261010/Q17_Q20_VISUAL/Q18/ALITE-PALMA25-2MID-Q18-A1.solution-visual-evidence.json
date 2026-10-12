@@ -1,0 +1,1136 @@
+{
+  "schemaVersion": "PALMA_Q18_SOLUTION_VISUAL_EVIDENCE_V1",
+  "uid": "ALITE-PALMA25-2MID-Q18-A1",
+  "sourceQid": 18,
+  "stage": "VISUAL_REPAIR",
+  "disposition": "ADD_BENEFICIAL",
+  "purpose": "Show the angle-bisector division point H and centroid height relation, then make the shared-height area comparison [GHC]/[GHB] spatially visible.",
+  "sourceAuthority": {
+    "packagePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q18_PACKAGE.json",
+    "approvedPackageSha256": "b22ff7c9cd28c16acf761a1a89c788bfcc1d58205fd894bded55901ea4e5d021",
+    "approvedPackageGitBlobSha1": "90617d697f2e49369ec6edf583d0cacb83b739b3",
+    "approvedPackageCommit": "a0ea9f1178a5638f6fe9db92a1e2bdd9d2c51226",
+    "packageCurrentWorktreeRawSha256": "fd0faafe76f480bc5acc04312ee7dc7b167d08d10a87e2f3439b72c123ed7d59",
+    "packageCurrentWorktreeRawGitBlobSha1": "5f50c2f62544fea144dc70cd1aeb87acf2cac24e",
+    "packageWorktreeMatchesApproval": false,
+    "approvalReceiptPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json",
+    "approvalReceiptSha256": "38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d",
+    "approvalReceiptGitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+    "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+    "sourceExamDeclaredGitBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+    "sourceExamCurrentWorktreeSha256": "60049ec6a7def1ec9d1e15a6319ecfcf916fc3ba63f4bfc55e128d3a05cb12a1",
+    "sourceExamCurrentWorktreeGitBlobSha1": "dd6eb8aeb7de12ad655e9d7ef086a751a40a6096",
+    "sourceExamCurrentHeadGitBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e",
+    "preflightPath": "archive/analysis/palma-mock-builder-20261010/Q17_Q20_VISUAL/Q18/Q18.solution-visual-calibration.preflight.json",
+    "preflightSha256": "09e9c4ad4057e7429eb5d9dd82de3c192126ffcb4dbe79480c838b4408e8ecf0",
+    "preflightGitBlobSha1": "cf92c07aba75760f427183e18237aa8d01f001b0",
+    "preflightPackageWorkingSha256": "sha256:fd0faafe76f480bc5acc04312ee7dc7b167d08d10a87e2f3439b72c123ed7d59",
+    "preflightPackageHeadSha256": "sha256:b22ff7c9cd28c16acf761a1a89c788bfcc1d58205fd894bded55901ea4e5d021",
+    "sourceItemSha256": "be89aeadc70586cc240e5f037396af08de370ce2284084cd4cd6e639c0c5d6c9"
+  },
+  "renderBackend": {
+    "name": "alive.engine.visual_renderer.render_visual_spec",
+    "version": "0.5.2-circle-geometry-label-layout",
+    "sourcePath": "alive/engine/visual_renderer.py",
+    "sourceSha256": "0497b788cdfd362df6729bbf8f73fe2f9edd94dc0f71e50e2325b2500cfbeca6",
+    "specType": "segment_geometry",
+    "rawRendererOutputSha256": "f0153073abd44eb4dedde11c2e4d4e505d7ddb16b497dd7f858f7e9713f49e85",
+    "rendererOutputUsedFor": "all seven geometric segments and nine point markers",
+    "rendererLimitation": "The listed polygon type is accepted but current renderer has no polygon rendering branch; two requested area fills are added as native SVG polygon primitives after engine geometry emission.",
+    "generativeModelUsed": false
+  },
+  "coordinateModel": {
+    "provenance": "SOURCE_COORDINATES",
+    "coordinateSystem": "Cartesian source coordinates; isotropic display scale; no y-axis or grid because they are not decisive.",
+    "transform": {
+      "screenX": "32 + (x-xmin)*sx",
+      "screenY": "height-32-(y-ymin)*sy",
+      "sx": 71.66666666666667,
+      "sy": 71.66666666666666,
+      "xRange": [
+        -2.0767441860465112,
+        7.076744186046511
+      ],
+      "yRange": [
+        -0.018604651162791086,
+        8.018604651162791
+      ]
+    },
+    "points": {
+      "A": [
+        1,
+        1
+      ],
+      "B": [
+        4,
+        1
+      ],
+      "C": [
+        1,
+        7
+      ],
+      "I": [
+        2.1458980337503153,
+        2.1458980337503153
+      ],
+      "H": [
+        3.0,
+        3.0
+      ],
+      "M": [
+        2.5,
+        4.0
+      ],
+      "G": [
+        2.0,
+        3.0
+      ],
+      "D": [
+        3.4,
+        2.2
+      ],
+      "E": [
+        2.8,
+        3.4000000000000004
+      ]
+    },
+    "constructionLedger": {
+      "provenance": "SOURCE_COORDINATES",
+      "rationale": {
+        "givenCoordinates": true
+      },
+      "originNormalization": "A is chosen as origin only for constructed/derived realizations; source-coordinate variants retain their exact supplied A,B,C.",
+      "xAxisNormalization": "positive x direction follows AB; coordinates are otherwise kept in source orientation.",
+      "unitScaleNormalization": "one coordinate unit is rendered with isotropic x/y pixel scale.",
+      "allPointCoordinates": {
+        "A": [
+          1,
+          1
+        ],
+        "B": [
+          4,
+          1
+        ],
+        "C": [
+          1,
+          7
+        ],
+        "I": [
+          2.1458980337503153,
+          2.1458980337503153
+        ],
+        "H": [
+          3.0,
+          3.0
+        ],
+        "M": [
+          2.5,
+          4.0
+        ],
+        "G": [
+          2.0,
+          3.0
+        ],
+        "D": [
+          3.4,
+          2.2
+        ],
+        "E": [
+          2.8,
+          3.4000000000000004
+        ]
+      },
+      "freeVariables": "none; determined by source coordinates/derived parameter",
+      "geometryConditions": [
+        {
+          "condition": "AB:AC=BH:HC",
+          "residual": -6.976745292597286e-10,
+          "tolerance": 1e-06,
+          "withinTolerance": true
+        },
+        {
+          "condition": "G is centroid coordinate",
+          "residual": 6.577737809966005e-09,
+          "tolerance": 1e-06,
+          "withinTolerance": true
+        },
+        {
+          "condition": "G lies on AM and AG:GM=2:1",
+          "residual": -5.581395345899409e-09,
+          "tolerance": 1e-06,
+          "withinTolerance": true
+        },
+        {
+          "condition": "GE/AD=1/3",
+          "residual": -7.751939090638871e-10,
+          "tolerance": 1e-06,
+          "withinTolerance": true
+        },
+        {
+          "condition": "H lies on BC",
+          "residual": 4.1860467092647013e-08,
+          "tolerance": 1e-06,
+          "withinTolerance": true
+        },
+        {
+          "condition": "I lies on angle bisector AH",
+          "residual": 4.440892098500626e-16,
+          "tolerance": 1e-06,
+          "withinTolerance": true
+        },
+        {
+          "condition": "I is equidistant from triangle sides",
+          "residual": 1.3683001398590022e-08,
+          "tolerance": 1e-06,
+          "withinTolerance": true
+        },
+        {
+          "condition": "right angle at A",
+          "residual": 0.0,
+          "tolerance": 1e-06,
+          "withinTolerance": true
+        },
+        {
+          "condition": "common-height area ratio equals HC/BH",
+          "residual": 6.976744959530379e-09,
+          "tolerance": 1e-06,
+          "withinTolerance": true
+        },
+        {
+          "condition": "triangle is nondegenerate",
+          "residual": 0,
+          "tolerance": 1e-08,
+          "withinTolerance": true
+        },
+        {
+          "condition": "D and E are on BC",
+          "residual": 0,
+          "tolerance": 1e-08,
+          "withinTolerance": true
+        },
+        {
+          "condition": "H strictly inside BC",
+          "residual": 0,
+          "tolerance": 1e-08,
+          "withinTolerance": true
+        }
+      ],
+      "degeneracyChecks": {
+        "areaABC": 9.0,
+        "BCLength": 6.708203932499369,
+        "BHLength": 2.23606797749979,
+        "HCLength": 4.47213595499958,
+        "allPositive": true
+      }
+    }
+  },
+  "expectedFacts": [
+    {
+      "fact": "AB:AC side ratio matches BH:HC",
+      "type": "INTERNAL_DIVISION_RATIO",
+      "value": 0.5,
+      "role": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "fact": "G lies on median AM with AG:GM=2:1",
+      "type": "CENTROID_MEDIAN",
+      "value": 2.0,
+      "role": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "fact": "GE=AD/3 for distances to BC",
+      "type": "CENTROID_ALTITUDE_RATIO",
+      "value": 0.3333333333333333,
+      "role": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "fact": "I is equidistant from sides and lies on AH",
+      "type": "INCENTER_CONDITION",
+      "value": 0.0,
+      "role": "GIVEN"
+    },
+    {
+      "fact": "AB is perpendicular to AC at A",
+      "type": "RIGHT_ANGLE",
+      "value": 0.0,
+      "role": "GIVEN"
+    },
+    {
+      "fact": "[GHC]/[GHB]=HC/BH",
+      "type": "AREA_RATIO_SHARED_HEIGHT",
+      "value": 2.0,
+      "role": "CONCLUSION"
+    },
+    {
+      "fact": "[ABC]",
+      "type": "TRIANGLE_AREA",
+      "value": 9.0,
+      "role": "GIVEN"
+    }
+  ],
+  "pythonInputs": {
+    "vertices": {
+      "A": [
+        1,
+        1
+      ],
+      "B": [
+        4,
+        1
+      ],
+      "C": [
+        1,
+        7
+      ]
+    },
+    "condition": "BH:HC=AB:AC; G=(A+B+C)/3; M=(B+C)/2; D/E perpendicular projections to BC",
+    "tolerance": 1e-08,
+    "serializedPrimitiveRoundTripTolerance": 1e-06
+  },
+  "pythonCalculatedOutputs": {
+    "sourceCoordinates": {
+      "A": [
+        1,
+        1
+      ],
+      "B": [
+        4,
+        1
+      ],
+      "C": [
+        1,
+        7
+      ]
+    },
+    "sideLengths": {
+      "AB": 3.0,
+      "AC": 6.0,
+      "BC": 6.708203932499369
+    },
+    "angleBisectorPointH": [
+      3.0,
+      3.0
+    ],
+    "medianMidpointM": [
+      2.5,
+      4.0
+    ],
+    "centroidG": [
+      2.0,
+      3.0
+    ],
+    "incenterI": [
+      2.1458980337503153,
+      2.1458980337503153
+    ],
+    "altitudeFootD": [
+      3.4,
+      2.2
+    ],
+    "centroidAltitudeFootE": [
+      2.8,
+      3.4000000000000004
+    ],
+    "areaABC": 9.0,
+    "areaGHC": 2.0,
+    "areaGHB": 1.0,
+    "areaRatioGHC_GHB": 2.0,
+    "hcFraction": 0.6666666666666666,
+    "bhFraction": 0.3333333333333333,
+    "altitudeRatioGE_AD": 0.3333333333333333
+  },
+  "sourceConditionCoverage": [
+    {
+      "condition": "A,B,C are the triangle vertices and remain labeled",
+      "result": "COVERED"
+    },
+    {
+      "condition": "ABC is right angled at A",
+      "result": "COVERED"
+    },
+    {
+      "condition": "I is the incenter on AI",
+      "result": "COVERED"
+    },
+    {
+      "condition": "H lies on BC and BH:HC=AB:AC",
+      "result": "COVERED"
+    },
+    {
+      "condition": "G is the centroid on median AM",
+      "result": "COVERED"
+    },
+    {
+      "condition": "G-to-BC altitude is one-third A-to-BC altitude",
+      "result": "COVERED"
+    },
+    {
+      "condition": "GHC and GHB regions are shown on the common BC base",
+      "result": "COVERED"
+    }
+  ],
+  "decisiveRelationCovered": true,
+  "uncoveredCriticalConditions": [],
+  "expectedFactCompletenessStatus": "PASS",
+  "sourceSemanticIdentity": {
+    "applicable": true,
+    "checks": [
+      {
+        "semanticRole": "source vertex",
+        "sourceLabel": "A",
+        "artifactLabel": "A",
+        "result": "PASS"
+      },
+      {
+        "semanticRole": "source vertex",
+        "sourceLabel": "B",
+        "artifactLabel": "B",
+        "result": "PASS"
+      },
+      {
+        "semanticRole": "source vertex",
+        "sourceLabel": "C",
+        "artifactLabel": "C",
+        "result": "PASS"
+      },
+      {
+        "semanticRole": "source incenter",
+        "sourceLabel": "I",
+        "artifactLabel": "I",
+        "result": "PASS"
+      },
+      {
+        "semanticRole": "source angle-bisector intersection",
+        "sourceLabel": "H",
+        "artifactLabel": "H",
+        "result": "PASS"
+      },
+      {
+        "semanticRole": "source centroid",
+        "sourceLabel": "G",
+        "artifactLabel": "G",
+        "result": "PASS"
+      }
+    ]
+  },
+  "factVisualizations": [
+    {
+      "fact": "BH:HC=AB:AC",
+      "role": "DERIVED_INTERMEDIATE",
+      "encoding": "DERIVED_STYLE",
+      "visual": "explicit relation plus computed H on BC"
+    },
+    {
+      "fact": "I lies on AH and is equidistant from the three sides",
+      "role": "GIVEN",
+      "encoding": "GIVEN_STYLE",
+      "visual": "I point lies on AH; side distances independently recalculated from final SVG primitives"
+    },
+    {
+      "fact": "AG:GM=2:1",
+      "role": "DERIVED_INTERMEDIATE",
+      "encoding": "DERIVED_STYLE",
+      "visual": "median AM passes through G"
+    },
+    {
+      "fact": "GE=AD/3",
+      "role": "DERIVED_INTERMEDIATE",
+      "encoding": "DERIVED_STYLE",
+      "visual": "paired perpendicular altitude segments, dashed/ochre"
+    },
+    {
+      "fact": "[GHC]/[GHB]=HC/BH",
+      "role": "CONCLUSION",
+      "encoding": "CONCLUSION_STYLE",
+      "visual": "GHC/GHB polygon regions; requested target focus=GHC; no equal marks or numeric answer"
+    }
+  ],
+  "actualSvgPrimitives": [
+    {
+      "tag": "polygon",
+      "id": "region-GHB",
+      "dataOwner": null,
+      "attributes": {
+        "id": "region-GHB",
+        "points": "324.166667,391.666667 395.833333,391.666667 467.5,535",
+        "fill": "#e9a23b",
+        "fill-opacity": "0.055",
+        "stroke": "none",
+        "data-area-role": "GHC"
+      }
+    },
+    {
+      "tag": "polygon",
+      "id": "region-GHC",
+      "dataOwner": null,
+      "attributes": {
+        "id": "region-GHC",
+        "points": "324.166667,391.666667 395.833333,391.666667 252.5,105",
+        "fill": "#2474a6",
+        "fill-opacity": "0.16",
+        "stroke": "none",
+        "data-area-role": "GHC"
+      }
+    },
+    {
+      "tag": "line",
+      "id": "segment-AB",
+      "dataOwner": null,
+      "attributes": {
+        "x1": "252.5",
+        "y1": "535",
+        "x2": "467.5",
+        "y2": "535",
+        "class": "shape",
+        "id": "segment-AB"
+      }
+    },
+    {
+      "tag": "line",
+      "id": "segment-AC",
+      "dataOwner": null,
+      "attributes": {
+        "x1": "252.5",
+        "y1": "535",
+        "x2": "252.5",
+        "y2": "105",
+        "class": "shape",
+        "id": "segment-AC"
+      }
+    },
+    {
+      "tag": "line",
+      "id": "segment-BC",
+      "dataOwner": null,
+      "attributes": {
+        "x1": "467.5",
+        "y1": "535",
+        "x2": "252.5",
+        "y2": "105",
+        "class": "shape",
+        "id": "segment-BC"
+      }
+    },
+    {
+      "tag": "line",
+      "id": "segment-AH",
+      "dataOwner": null,
+      "attributes": {
+        "x1": "252.5",
+        "y1": "535",
+        "x2": "395.833333",
+        "y2": "391.666667",
+        "class": "bisector",
+        "id": "segment-AH"
+      }
+    },
+    {
+      "tag": "line",
+      "id": "segment-AM",
+      "dataOwner": null,
+      "attributes": {
+        "x1": "252.5",
+        "y1": "535",
+        "x2": "360",
+        "y2": "320",
+        "class": "guide",
+        "id": "segment-AM"
+      }
+    },
+    {
+      "tag": "line",
+      "id": "segment-AD",
+      "dataOwner": null,
+      "attributes": {
+        "x1": "252.5",
+        "y1": "535",
+        "x2": "424.5",
+        "y2": "449",
+        "class": "perpendicular",
+        "id": "segment-AD"
+      }
+    },
+    {
+      "tag": "line",
+      "id": "segment-GE",
+      "dataOwner": null,
+      "attributes": {
+        "x1": "324.166667",
+        "y1": "391.666667",
+        "x2": "381.5",
+        "y2": "363",
+        "class": "perpendicular",
+        "id": "segment-GE"
+      }
+    },
+    {
+      "tag": "circle",
+      "id": "point-A",
+      "dataOwner": "A",
+      "attributes": {
+        "cx": "252.5",
+        "cy": "535",
+        "r": "3",
+        "class": "point",
+        "id": "point-A",
+        "data-owner": "A"
+      }
+    },
+    {
+      "tag": "circle",
+      "id": "point-B",
+      "dataOwner": "B",
+      "attributes": {
+        "cx": "467.5",
+        "cy": "535",
+        "r": "3",
+        "class": "point",
+        "id": "point-B",
+        "data-owner": "B"
+      }
+    },
+    {
+      "tag": "circle",
+      "id": "point-C",
+      "dataOwner": "C",
+      "attributes": {
+        "cx": "252.5",
+        "cy": "105",
+        "r": "3",
+        "class": "point",
+        "id": "point-C",
+        "data-owner": "C"
+      }
+    },
+    {
+      "tag": "circle",
+      "id": "point-H",
+      "dataOwner": "H",
+      "attributes": {
+        "cx": "395.833333",
+        "cy": "391.666667",
+        "r": "3",
+        "class": "point",
+        "id": "point-H",
+        "data-owner": "H"
+      }
+    },
+    {
+      "tag": "circle",
+      "id": "point-M",
+      "dataOwner": "M",
+      "attributes": {
+        "cx": "360",
+        "cy": "320",
+        "r": "3",
+        "class": "point",
+        "id": "point-M",
+        "data-owner": "M"
+      }
+    },
+    {
+      "tag": "circle",
+      "id": "point-G",
+      "dataOwner": "G",
+      "attributes": {
+        "cx": "324.166667",
+        "cy": "391.666667",
+        "r": "3",
+        "class": "point",
+        "id": "point-G",
+        "data-owner": "G"
+      }
+    },
+    {
+      "tag": "circle",
+      "id": "point-I",
+      "dataOwner": "I",
+      "attributes": {
+        "cx": "334.622692",
+        "cy": "452.877308",
+        "r": "3",
+        "class": "point",
+        "id": "point-I",
+        "data-owner": "I"
+      }
+    },
+    {
+      "tag": "circle",
+      "id": "point-D",
+      "dataOwner": "D",
+      "attributes": {
+        "cx": "424.5",
+        "cy": "449",
+        "r": "3",
+        "class": "point",
+        "id": "point-D",
+        "data-owner": "D"
+      }
+    },
+    {
+      "tag": "circle",
+      "id": "point-E",
+      "dataOwner": "E",
+      "attributes": {
+        "cx": "381.5",
+        "cy": "363",
+        "r": "3",
+        "class": "point",
+        "id": "point-E",
+        "data-owner": "E"
+      }
+    },
+    {
+      "tag": "polyline",
+      "id": null,
+      "dataOwner": null,
+      "attributes": {
+        "points": "261.5,535 261.5,526 252.5,526",
+        "class": "right-angle"
+      }
+    },
+    {
+      "tag": "polyline",
+      "id": null,
+      "dataOwner": null,
+      "attributes": {
+        "points": "416.450155,453.024922 420.475078,461.074767 428.524922,457.049845",
+        "class": "right-angle"
+      }
+    },
+    {
+      "tag": "polyline",
+      "id": null,
+      "dataOwner": null,
+      "attributes": {
+        "points": "373.450155,367.024922 377.475078,375.074767 385.524922,371.049845",
+        "class": "right-angle"
+      }
+    }
+  ],
+  "observedFacts": [
+    {
+      "fact": "sourceTriangleArea",
+      "value": 9.000000000000002,
+      "expected": 9.0,
+      "delta": 1.7763568394002505e-15,
+      "tolerance": 1e-06,
+      "method": "recomputed from serialized SVG point circle centers and polygon vertices"
+    },
+    {
+      "fact": "BH_over_HC",
+      "value": 0.49999999930232547,
+      "expected": 0.5,
+      "delta": -6.976745292597286e-10,
+      "tolerance": 1e-06,
+      "method": "recomputed from serialized SVG point circle centers and polygon vertices"
+    },
+    {
+      "fact": "AB_over_AC",
+      "value": 0.49999999999999994,
+      "expected": 0.5,
+      "delta": -5.551115123125783e-17,
+      "tolerance": 1e-06,
+      "method": "recomputed from serialized SVG point circle centers and polygon vertices"
+    },
+    {
+      "fact": "G_on_median_AM_crossRatio_AG_GM",
+      "value": 1.9999999944186047,
+      "expected": 2.0,
+      "delta": -5.581395345899409e-09,
+      "tolerance": 1e-06,
+      "method": "recomputed from serialized SVG point circle centers and polygon vertices"
+    },
+    {
+      "fact": "G_centroidCoordinateResidual",
+      "value": 6.577737809966005e-09,
+      "expected": 0.0,
+      "delta": 6.577737809966005e-09,
+      "tolerance": 1e-06,
+      "method": "recomputed from serialized SVG point circle centers and polygon vertices"
+    },
+    {
+      "fact": "altitudeRatio_GE_AD",
+      "value": 0.3333333325581394,
+      "expected": 0.3333333333333333,
+      "delta": -7.751939090638871e-10,
+      "tolerance": 1e-06,
+      "method": "recomputed from serialized SVG point circle centers and polygon vertices"
+    },
+    {
+      "fact": "H_on_BC_crossResidual",
+      "value": 4.1860467092647013e-08,
+      "expected": 0.0,
+      "delta": 4.1860467092647013e-08,
+      "tolerance": 1e-06,
+      "method": "recomputed from serialized SVG point circle centers and polygon vertices"
+    },
+    {
+      "fact": "I_on_AH_crossResidual",
+      "value": 4.440892098500626e-16,
+      "expected": 0.0,
+      "delta": 4.440892098500626e-16,
+      "tolerance": 1e-06,
+      "method": "recomputed from serialized SVG point circle centers and polygon vertices"
+    },
+    {
+      "fact": "incenterDistanceAB_minus_AC",
+      "value": 2.220446049250313e-16,
+      "expected": 0.0,
+      "delta": 2.220446049250313e-16,
+      "tolerance": 1e-06,
+      "method": "recomputed from serialized SVG point circle centers and polygon vertices"
+    },
+    {
+      "fact": "incenterDistanceAB_minus_BC",
+      "value": -1.3683001398590022e-08,
+      "expected": 0.0,
+      "delta": -1.3683001398590022e-08,
+      "tolerance": 1e-06,
+      "method": "recomputed from serialized SVG point circle centers and polygon vertices"
+    },
+    {
+      "fact": "regionGHC_area",
+      "value": 1.99999998372093,
+      "expected": 2.0,
+      "delta": -1.6279070091940184e-08,
+      "tolerance": 1e-06,
+      "method": "recomputed from serialized SVG point circle centers and polygon vertices"
+    },
+    {
+      "fact": "regionGHB_area",
+      "value": 0.9999999883720926,
+      "expected": 1.0,
+      "delta": -1.1627907414712979e-08,
+      "tolerance": 1e-06,
+      "method": "recomputed from serialized SVG point circle centers and polygon vertices"
+    },
+    {
+      "fact": "regionAreaRatioGHC_GHB",
+      "value": 2.000000006976745,
+      "expected": 2.0,
+      "delta": 6.976744959530379e-09,
+      "tolerance": 1e-06,
+      "method": "recomputed from serialized SVG point circle centers and polygon vertices"
+    },
+    {
+      "fact": "rightAngleA_normalizedDot",
+      "value": 0.0,
+      "expected": 0.0,
+      "delta": 0.0,
+      "tolerance": 1e-06,
+      "method": "recomputed from serialized SVG point circle centers and polygon vertices"
+    }
+  ],
+  "labelOwnerBindings": [
+    {
+      "label": "A",
+      "sourceLabel": "A",
+      "artifactLabel": "A",
+      "semanticRole": "source vertex",
+      "svgOwnerId": "point-A",
+      "binding": "POINT_CENTER_AND_TEXT_OFFSET",
+      "result": "PASS"
+    },
+    {
+      "label": "B",
+      "sourceLabel": "B",
+      "artifactLabel": "B",
+      "semanticRole": "source vertex",
+      "svgOwnerId": "point-B",
+      "binding": "POINT_CENTER_AND_TEXT_OFFSET",
+      "result": "PASS"
+    },
+    {
+      "label": "C",
+      "sourceLabel": "C",
+      "artifactLabel": "C",
+      "semanticRole": "source vertex",
+      "svgOwnerId": "point-C",
+      "binding": "POINT_CENTER_AND_TEXT_OFFSET",
+      "result": "PASS"
+    },
+    {
+      "label": "I",
+      "sourceLabel": "I",
+      "artifactLabel": "I",
+      "semanticRole": "source incenter",
+      "svgOwnerId": "point-I",
+      "binding": "POINT_CENTER_AND_TEXT_OFFSET",
+      "result": "PASS"
+    },
+    {
+      "label": "H",
+      "sourceLabel": "H",
+      "artifactLabel": "H",
+      "semanticRole": "source angle-bisector intersection",
+      "svgOwnerId": "point-H",
+      "binding": "POINT_CENTER_AND_TEXT_OFFSET",
+      "result": "PASS"
+    },
+    {
+      "label": "G",
+      "sourceLabel": "G",
+      "artifactLabel": "G",
+      "semanticRole": "source centroid",
+      "svgOwnerId": "point-G",
+      "binding": "POINT_CENTER_AND_TEXT_OFFSET",
+      "result": "PASS"
+    },
+    {
+      "label": "M",
+      "sourceLabel": "M",
+      "artifactLabel": "M",
+      "semanticRole": "derived midpoint",
+      "svgOwnerId": "point-M",
+      "binding": "POINT_CENTER_AND_TEXT_OFFSET",
+      "result": "PASS"
+    },
+    {
+      "label": "D",
+      "sourceLabel": "D",
+      "artifactLabel": "D",
+      "semanticRole": "derived altitude foot",
+      "svgOwnerId": "point-D",
+      "binding": "POINT_CENTER_AND_TEXT_OFFSET",
+      "result": "PASS"
+    },
+    {
+      "label": "E",
+      "sourceLabel": "E",
+      "artifactLabel": "E",
+      "semanticRole": "derived centroid-altitude foot",
+      "svgOwnerId": "point-E",
+      "binding": "POINT_CENTER_AND_TEXT_OFFSET",
+      "result": "PASS"
+    },
+    {
+      "label": "[GHC]",
+      "sourceLabel": "triangle GHC area",
+      "artifactLabel": "[GHC]",
+      "semanticRole": "derived area region",
+      "svgOwnerId": "region-GHC",
+      "binding": "INTERIOR_OF_POLYGON_GHC",
+      "result": "PASS"
+    },
+    {
+      "label": "[GHB]",
+      "sourceLabel": "triangle GHB area",
+      "artifactLabel": "[GHB]",
+      "semanticRole": "derived area region",
+      "svgOwnerId": "region-GHB",
+      "binding": "INTERIOR_OF_POLYGON_GHB",
+      "result": "PASS"
+    },
+    {
+      "label": "BH:HC=AB:AC",
+      "sourceLabel": "angle-bisector theorem relation",
+      "artifactLabel": "BH : HC = AB : AC",
+      "semanticRole": "derived relation",
+      "svgOwnerId": "BC,AH,AB,AC",
+      "binding": "FORMULA_PLUS_FINAL_PRIMITIVE_RECOMPUTATION",
+      "result": "PASS"
+    },
+    {
+      "label": "AB:AC numeric side ratio",
+      "sourceLabel": "AB and AC side lengths",
+      "artifactLabel": "AB : AC = 3 : 6",
+      "semanticRole": "source or derived side length relation",
+      "svgOwnerId": "segment-AB,segment-AC",
+      "binding": "FORMULA_PLUS_SEGMENT_LENGTHS_FROM_FINAL_PRIMITIVES",
+      "result": "PASS"
+    },
+    {
+      "label": "shared height area ratio",
+      "sourceLabel": "[GHC]/[GHB] area comparison",
+      "artifactLabel": "공통 높이: [GHC] / [GHB] = HC / BH",
+      "semanticRole": "derived area ratio",
+      "svgOwnerId": "regions-GHC-GHB;segment-BC",
+      "binding": "FORMULA_PLUS_FINAL_POLYGON_AREA_RECOMPUTATION",
+      "result": "PASS"
+    }
+  ],
+  "actualTextLabels": [
+    {
+      "label": "A",
+      "owner": "point-A",
+      "x": 239.5,
+      "y": 552.0,
+      "text": "A"
+    },
+    {
+      "label": "B",
+      "owner": "point-B",
+      "x": 478.5,
+      "y": 553.0,
+      "text": "B"
+    },
+    {
+      "label": "C",
+      "owner": "point-C",
+      "x": 238.5,
+      "y": 95.0,
+      "text": "C"
+    },
+    {
+      "label": "H",
+      "owner": "point-H",
+      "x": 403.833333,
+      "y": 409.666667,
+      "text": "H"
+    },
+    {
+      "label": "M",
+      "owner": "point-M",
+      "x": 369.0,
+      "y": 336.0,
+      "text": "M"
+    },
+    {
+      "label": "G",
+      "owner": "point-G",
+      "x": 307.166667,
+      "y": 382.666667,
+      "text": "G"
+    },
+    {
+      "label": "I",
+      "owner": "point-I",
+      "x": 342.622692,
+      "y": 445.877308,
+      "text": "I"
+    },
+    {
+      "label": "D",
+      "owner": "point-D",
+      "x": 408.5,
+      "y": 463.0,
+      "text": "D"
+    },
+    {
+      "label": "E",
+      "owner": "point-E",
+      "x": 390.5,
+      "y": 356.0,
+      "text": "E"
+    },
+    {
+      "label": "area-GHB",
+      "owner": "region-GHB",
+      "x": 395.833333,
+      "y": 439.444444,
+      "text": "[GHB]"
+    },
+    {
+      "label": "area-GHC",
+      "owner": "region-GHC",
+      "x": 324.166667,
+      "y": 296.111111,
+      "text": "[GHC]"
+    },
+    {
+      "label": "side-ratio",
+      "owner": "segment-AB,segment-AC",
+      "x": 360.0,
+      "y": 74.0,
+      "text": "AB : AC = 3 : 6"
+    },
+    {
+      "label": "shared-height-area-ratio",
+      "owner": "regions-GHC-GHB;segment-BC",
+      "x": 36.0,
+      "y": 620.0,
+      "text": "공통 높이:  [GHC] / [GHB] = HC / BH"
+    }
+  ],
+  "constructionConditionChecks": [
+    {
+      "condition": "AB:AC=BH:HC",
+      "residual": -6.976745292597286e-10,
+      "tolerance": 1e-06,
+      "withinTolerance": true
+    },
+    {
+      "condition": "G is centroid coordinate",
+      "residual": 6.577737809966005e-09,
+      "tolerance": 1e-06,
+      "withinTolerance": true
+    },
+    {
+      "condition": "G lies on AM and AG:GM=2:1",
+      "residual": -5.581395345899409e-09,
+      "tolerance": 1e-06,
+      "withinTolerance": true
+    },
+    {
+      "condition": "GE/AD=1/3",
+      "residual": -7.751939090638871e-10,
+      "tolerance": 1e-06,
+      "withinTolerance": true
+    },
+    {
+      "condition": "H lies on BC",
+      "residual": 4.1860467092647013e-08,
+      "tolerance": 1e-06,
+      "withinTolerance": true
+    },
+    {
+      "condition": "I lies on angle bisector AH",
+      "residual": 4.440892098500626e-16,
+      "tolerance": 1e-06,
+      "withinTolerance": true
+    },
+    {
+      "condition": "I is equidistant from triangle sides",
+      "residual": 1.3683001398590022e-08,
+      "tolerance": 1e-06,
+      "withinTolerance": true
+    },
+    {
+      "condition": "right angle at A",
+      "residual": 0.0,
+      "tolerance": 1e-06,
+      "withinTolerance": true
+    },
+    {
+      "condition": "common-height area ratio equals HC/BH",
+      "residual": 6.976744959530379e-09,
+      "tolerance": 1e-06,
+      "withinTolerance": true
+    },
+    {
+      "condition": "triangle is nondegenerate",
+      "residual": 0,
+      "tolerance": 1e-08,
+      "withinTolerance": true
+    },
+    {
+      "condition": "D and E are on BC",
+      "residual": 0,
+      "tolerance": 1e-08,
+      "withinTolerance": true
+    },
+    {
+      "condition": "H strictly inside BC",
+      "residual": 0,
+      "tolerance": 1e-08,
+      "withinTolerance": true
+    }
+  ],
+  "xmlParse": {
+    "result": "PASS",
+    "rootTag": "svg",
+    "parseMethod": "xml.etree.ElementTree.fromstring(final bytes)"
+  },
+  "assetPath": "archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q18-A1-solution.svg",
+  "finalSvgSha256": "da95fddb3e1888aa9912a2590c4c28379aae92ee9e4ee97303fdc2a476582e80",
+  "finalSvgGitBlobSha1": "06ffc0ee75a6f483c6ba53e79b45936ea9a4c827",
+  "renderState": "RENDER_PENDING",
+  "renderRequirement": "Actual HTTP Archive mode=sol browser QA after student projection, with final asset SHA bound; this build has no browser PASS claim.",
+  "staticChecks": {
+    "allConstructionConditionsWithinTolerance": true,
+    "allSourceSemanticLabelsPreserved": true,
+    "svgWellFormed": true,
+    "finalAssetHashBound": true
+  }
+}

@@ -662,7 +662,7 @@ test('normalizes only explicit positive META evidence fields from heterogeneous 
       { verdict: 'PASS', axisEvidence: { meta: { status: 'PASS' } } },
       { verdict: 'PASS', axisEvidence: { META: { status: 'CURRENT_FIELDS_RECORDED_NO_SEMANTIC_RECLASSIFICATION' } } },
       { verdict: 'PASS_AFTER_ADJUDICATION', metaStatus: 'PASS', axisEvidence: { META: { status: 'PASS_CURRENT_FIELDS_AND_RPM_PROOF' } } },
-      { verdict: 'PASS', fourAxisReview: { META: { disposition: 'CURRENT_NULL_DEBT_PRESERVED', evidence: 'explicit current null-debt review proof' } } },
+      { verdict: 'PASS', fourAxisReview: { META: { disposition: 'CURRENT_NULL_DEBT_PRESERVED', evidence: 'Exact recorded evidence debt: [{"fields":["problemTypeKey"],"reason":"Preserve the explicit source null until reviewed."}]' } } },
     ];
     for (let index = 0; index < variants.length; index += 1) {
       const examUid = `22_테스트고_1학기_중간_고2_기하_기출`;
@@ -680,6 +680,169 @@ test('normalizes only explicit positive META evidence fields from heterogeneous 
     assert.throws(() => verifyR1EvidenceBinding({ root, evidencePath: invalidPath, validationPath: invalidValidationPath, assignment: missingValidation, examUid: invalid.evidence.examUid, bank: [{ id: 1 }] }), /ASSIGNMENT_R1_VALIDATION_SHA256_MISMATCH/);
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('accepts reviewed recorded projection debts only when the exact source fields remain null', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-r1-recorded-projection-debt-'));
+  try {
+    const examUid = '22_테스트고_1학기_중간_고2_기하_기출';
+    const evidencePath = 'archive/analysis/recorded-debt/R1.evidence.json';
+    const validationPath = 'archive/analysis/recorded-debt/R1.validation.json';
+    const reason = 'No safe active PT/TPL mapping exists; preserve the explicit null projection.';
+    const row = {
+      verdict: 'PASS',
+      metaDebtFields: ['problemTypeKey', 'templateKey'],
+      metaDebtReason: reason,
+      axisEvidence: { META: { status: 'REVIEWED_WITH_RECORDED_PROJECTION_DEBT', observation: reason } },
+    };
+    const fixture = writeR1Chain(root, { evidencePath, validationPath, examUid, row });
+    const accepted = verifyR1EvidenceBinding({
+      root, evidencePath, validationPath, assignment: fixture.assignment, examUid,
+      bank: [{ id: 1, problemTypeKey: null, templateKey: null }],
+    });
+    assert.equal(accepted.validation.disposition, 'PASS');
+    assert.deepEqual(accepted.metaDebtRows, [{
+      qid: 1,
+      metaDebtFields: ['problemTypeKey', 'templateKey'],
+      metaDebtReason: 'problemTypeKey: No safe active PT/TPL mapping exists; preserve the explicit null projection. | templateKey: No safe active PT/TPL mapping exists; preserve the explicit null projection.',
+      metaDebtReasons: [
+        { field: 'problemTypeKey', reason },
+        { field: 'templateKey', reason },
+      ],
+    }]);
+    const invalid = writeR1Chain(root, { evidencePath, validationPath, examUid, row });
+    assert.throws(() => verifyR1EvidenceBinding({
+      root, evidencePath, validationPath, assignment: invalid.assignment, examUid,
+      bank: [{ id: 1, problemTypeKey: 'PT_UNREVIEWED', templateKey: null }],
+    }), /R1_META_PROOF_META_PASS_REQUIRED/);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+test('binds nested current R1 EVIDENCE_DEBT and resolves only registration-generated identity projection fields', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-r1-nested-meta-debt-'));
+  try {
+    const examUid = '17_효천고_1학기_중간_고2_확률과통계';
+    const evidencePath = 'archive/analysis/nested-debt/R1.evidence.json';
+    const validationPath = 'archive/analysis/nested-debt/R1.validation.json';
+    const identityReason = 'Current JS exposes qid/questionNumber/sourceType but has no qid-level uid, sourceQid, or provenance fields; exact question-identity evidence is absent from the targeted current identity map/catalog/index lookups.';
+    const legacyReason = 'legacyLevelCompatibility is UNKNOWN in the current artifact and no current adjudication proves a compatibility value.';
+    const boundaryReason = 'Current level 하 with bucket 2 is a B12 compatibility candidate; source field is NONE and legacyLevelCompatibility UNKNOWN, so preserve and request adjudication evidence rather than guess.';
+    const rpmReason = 'Multiple distinct current crosswalk RPM paths match; do not select a level path without qid-specific authority.';
+    const conditionReason = 'The active condition registry has no exact parity key; current empty conditionKeys cannot be promoted to a fabricated key.';
+    const crossConceptReason = 'No exact qid-bound CrossConcept key is evidenced; current empty value is preserved.';
+    const integrationReason = 'Current integrationPattern NONE is not supported by a qid-specific integration review.';
+    const tagsReason = 'No canonical tags binding was found for this source UID; preserve current tags.';
+    const fields = ['uid', 'sourceQid', 'provenance', 'studentConsumerIndexParity', 'legacyLevelCompatibility', 'difficultyBoundaryFlag', 'rpmL1', 'rpmL2', 'rpmL3', 'rpmL4', 'conditionKeys', 'crossConceptKeys', 'integrationPattern', 'tags'];
+    const reasons = [identityReason, legacyReason, boundaryReason, rpmReason, conditionReason, crossConceptReason, integrationReason, tagsReason];
+    const confirmed = {
+      legacyLevelCompatibility: 'UNKNOWN', difficultyBoundaryFlag: 'NONE', conditionKeys: [],
+      crossConceptKeys: [], integrationPattern: 'NONE', tags: ['서술형'],
+    };
+    const row = {
+      verdict: 'PASS', metaDebtFields: [], metaDebtReason: 'No unresolved top-level Meta debt was projected.',
+      metaReview: { status: 'EVIDENCE_DEBT', confirmed, rpmCrosswalkMatchCount: 2, rpmCrosswalkUniquePathCount: 2, metaDebtFields: fields, metaDebtReason: reasons },
+      axisEvidence: { META: { status: 'EVIDENCE_DEBT', confirmed, rpmCrosswalkMatchCount: 2, rpmCrosswalkUniquePathCount: 2, metaDebtFields: fields, metaDebtReason: reasons } },
+    };
+    const fixture = writeR1Chain(root, { evidencePath, validationPath, examUid, row });
+    const bank = [{ id: 1, legacyLevelCompatibility: 'UNKNOWN', difficultyBoundaryFlag: 'NONE', difficultyBucket: 2, conditionKeys: [], crossConceptKeys: [], integrationPattern: 'NONE', tags: ['서술형'] }];
+    const accepted = verifyR1EvidenceBinding({ root, evidencePath, validationPath, assignment: fixture.assignment, examUid, bank });
+    assert.equal(accepted.validation.disposition, 'PASS');
+    const unresolvedSourceFields = ['legacyLevelCompatibility', 'difficultyBoundaryFlag', 'rpmL1', 'rpmL2', 'rpmL3', 'rpmL4', 'conditionKeys', 'crossConceptKeys', 'integrationPattern', 'tags'];
+    assert.deepEqual(accepted.metaDebtRows.map(debt => debt.metaDebtFields), [unresolvedSourceFields]);
+    assert.deepEqual(accepted.metaDebtRows[0].metaDebtReasons, [
+      { field: 'legacyLevelCompatibility', reason: legacyReason },
+      { field: 'difficultyBoundaryFlag', reason: boundaryReason },
+      { field: 'rpmL1', reason: rpmReason }, { field: 'rpmL2', reason: rpmReason },
+      { field: 'rpmL3', reason: rpmReason }, { field: 'rpmL4', reason: rpmReason },
+      { field: 'conditionKeys', reason: conditionReason }, { field: 'crossConceptKeys', reason: crossConceptReason },
+      { field: 'integrationPattern', reason: integrationReason }, { field: 'tags', reason: tagsReason },
+    ]);
+    const sourceFile = 'original/high/h2/1mid/17_효천고_1학기_중간_고2_확률과통계.js';
+    const identityRows = makeTargetIdentityRows(sourceFile, bank);
+    const projected = makeTargetMetadataRows({ sourceFile, bank, identityRows, r1EvidencePath: evidencePath, r1MetaDebtRows: accepted.metaDebtRows })[0];
+    assert.equal(projected.questionUid, identityRows[0].questionUid);
+    assert.deepEqual(projected.metaDebtFields, unresolvedSourceFields);
+    assert.equal(projected.metaDebtReason, unresolvedSourceFields.map((field, index) => `${field}: ${accepted.metaDebtRows[0].metaDebtReasons[index].reason}`).join(' | '));
+    assert.equal(projected.legacyLevelCompatibility, 'UNKNOWN');
+    assert.equal(projected.difficultyBoundaryFlag, 'NONE');
+    for (const field of ['rpmL1', 'rpmL2', 'rpmL3', 'rpmL4']) assert.equal(projected[field], null);
+    assert.deepEqual(projected.conditionKeys, []);
+    assert.deepEqual(projected.crossConceptKeys, []);
+    assert.equal(projected.integrationPattern, 'NONE');
+    assert.deepEqual(projected.tags, ['서술형']);
+    assert.equal(projected.metadataStatus, 'approved_partial_with_explicit_holds');
+    assert.equal(projected.reviewStatus, 'manual_review');
+    assert.equal(projected.defaultSelectable, false);
+    const proofSummary = serializeR1MetaProofSummary(accepted, fixture.evidence);
+    assert.equal(proofSummary.allMetaAxesPass, false);
+    assert.equal(proofSummary.coreMetaFieldsPass, false);
+    assert.equal(proofSummary.semanticPassClaim, false);
+
+    const sourceMismatch = { legacyLevelCompatibility: 'NORMAL', difficultyBoundaryFlag: 'NONE', difficultyBucket: 2 };
+    const invalid = writeR1Chain(root, { evidencePath, validationPath, examUid, row });
+    assert.throws(() => verifyR1EvidenceBinding({ root, evidencePath, validationPath, assignment: invalid.assignment, examUid, bank: [sourceMismatch] }), /R1_META_PROOF_META_PASS_REQUIRED/);
+    const malformedIdentity = structuredClone(row);
+    malformedIdentity.metaReview.metaDebtFields[0] = 'questionUid';
+    malformedIdentity.axisEvidence.META.metaDebtFields[0] = 'questionUid';
+    const invalidIdentity = writeR1Chain(root, { evidencePath, validationPath, examUid, row: malformedIdentity });
+    assert.throws(() => verifyR1EvidenceBinding({ root, evidencePath, validationPath, assignment: invalidIdentity.assignment, examUid, bank }), /R1_META_PROOF_META_PASS_REQUIRED/);
+    const unrelatedAbsent = structuredClone(row);
+    unrelatedAbsent.metaReview.metaDebtFields.push('unrelatedMissingField');
+    unrelatedAbsent.axisEvidence.META.metaDebtFields.push('unrelatedMissingField');
+    const unrelated = writeR1Chain(root, { evidencePath, validationPath, examUid, row: unrelatedAbsent });
+    assert.throws(() => verifyR1EvidenceBinding({ root, evidencePath, validationPath, assignment: unrelated.assignment, examUid, bank }), /R1_META_PROOF_META_PASS_REQUIRED/);
+    const falselyUniqueRpm = structuredClone(row);
+    falselyUniqueRpm.metaReview.rpmCrosswalkUniquePathCount = 1;
+    falselyUniqueRpm.axisEvidence.META.rpmCrosswalkUniquePathCount = 1;
+    const unique = writeR1Chain(root, { evidencePath, validationPath, examUid, row: falselyUniqueRpm });
+    assert.throws(() => verifyR1EvidenceBinding({ root, evidencePath, validationPath, assignment: unique.assignment, examUid, bank }), /R1_META_PROOF_META_PASS_REQUIRED/);
+  } finally { fs.rmSync(root, { recursive: true, force: true }); }
+});
+
+test('binds the locked current R1 evidence for all five H2 probability-statistics targets without applying registration', () => {
+  const root = process.cwd();
+  const rosterPath = 'archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/ROOT_PUBLICATION/ROOT.registration-roster.locked.rev1.json';
+  const roster = JSON.parse(fs.readFileSync(path.join(root, rosterPath), 'utf8'));
+  assert.equal(roster.rows.length, 5);
+  for (const rosterRow of roster.rows) {
+    const sourceBytes = fs.readFileSync(path.join(root, rosterRow.productionPath));
+    const sourceRawSha256 = crypto.createHash('sha256').update(sourceBytes).digest('hex');
+    const sourceGitBlobSha1 = crypto.createHash('sha1').update(Buffer.concat([Buffer.from(`blob ${sourceBytes.length}\0`), sourceBytes])).digest('hex');
+    assert.equal(sourceRawSha256, rosterRow.sourceRawSha256, rosterRow.examUid);
+    assert.equal(sourceGitBlobSha1, rosterRow.sourceGitBlobSha1, rosterRow.examUid);
+    const context = { window: {}, console: { log() {}, warn() {}, error() {} } };
+    context.globalThis = context;
+    vm.createContext(context);
+    vm.runInContext(sourceBytes.toString('utf8'), context, { filename: rosterRow.productionPath, timeout: 5000 });
+    const bank = context.window.questionBank || context.window.questions || context.questionBank || context.questions;
+    assert.ok(Array.isArray(bank), `${rosterRow.examUid}: source bank missing`);
+    const r1Proof = rosterRow.stageProofs.R1;
+    const r1Validation = JSON.parse(fs.readFileSync(path.join(root, r1Proof.validation.path), 'utf8'));
+    const assignment = {
+      productionRelativePath: rosterRow.productionPath,
+      artifactRawSha256: rosterRow.sourceRawSha256,
+      validatorRawBufferBlobSha1: rosterRow.sourceGitBlobSha1,
+      r1EvidencePath: r1Proof.evidence.path,
+      r1EvidenceSha256: r1Proof.evidence.sha256,
+      r1ValidationPath: r1Proof.validation.path,
+      r1ValidationSha256: r1Proof.validation.sha256,
+      r1EvidenceReferencePath: r1Validation.evidenceRef,
+    };
+    let binding;
+    try {
+      binding = verifyR1EvidenceBinding({
+        root, evidencePath: assignment.r1EvidencePath, validationPath: assignment.r1ValidationPath,
+        assignment, examUid: rosterRow.examUid, bank,
+      });
+    } catch (error) {
+      error.message = `${rosterRow.examUid}: ${error.message}`;
+      throw error;
+    }
+    assert.equal(binding.evidence.rows.length, rosterRow.questionCount, `${rosterRow.examUid}: full denominator`);
+    assert.equal(binding.validation.disposition, 'PASS', `${rosterRow.examUid}: active R1 V2 report`);
+    assert.ok(Array.isArray(binding.metaDebtRows), `${rosterRow.examUid}: normalized debt rows`);
   }
 });
 
@@ -743,6 +906,12 @@ test('admits only ROOT-bound Maesan q1 and q6-q9 PT/TPL projection debt while ke
     r1MetaCoreDebtAdmissionPath: admissionPath,
     r1MetaCoreDebtAdmissionSha256: crypto.createHash('sha256').update(admissionBytes).digest('hex'),
   };
+  const canonicalEvidenceSuffix = evidencePath.replace(/\//g, path.win32.sep);
+  assert.ok(path.win32.normalize(validation.evidenceRef).toLowerCase().endsWith(canonicalEvidenceSuffix.toLowerCase()), 'MAESAN_R1_VALIDATION_EVIDENCE_REF_SCOPE_MISMATCH');
+  // This frozen R1 report points at the original producer checkout. Bind that
+  // exact reference explicitly while the test reads its hash-identical copy
+  // from the release worktree; verifyR1EvidenceBinding still checks both refs.
+  assignment.r1EvidenceReferencePath = validation.evidenceRef;
   const bound = verifyR1EvidenceBinding({ root, evidencePath, validationPath, assignment, examUid, bank });
   assert.equal(bound.validation.disposition, 'PASS');
   assert.deepEqual(bound.metaDebtRows.map(row => row.qid), [1, 6, 7, 8, 9]);

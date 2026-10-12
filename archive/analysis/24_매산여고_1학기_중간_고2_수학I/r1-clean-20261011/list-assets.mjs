@@ -1,0 +1,3 @@
+import fs from 'node:fs';import vm from 'node:vm';import crypto from 'node:crypto';
+const w={};vm.runInNewContext(fs.readFileSync('archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js','utf8'),{window:w});
+for(const q of w.questionBank)for(const k of ['image','solutionImage'])if(q[k]){const p='archive/'+q[k],b=fs.readFileSync(p),text=b.toString('utf8');console.log(JSON.stringify({qid:q.id,kind:k,ref:q[k],sha256:crypto.createHash('sha256').update(b).digest('hex'),bytes:b.length,isSvg:p.endsWith('.svg'),externalRefs:[...text.matchAll(/(?:href|xlink:href)=["']([^"']+)/g)].map(m=>m[1])}));}

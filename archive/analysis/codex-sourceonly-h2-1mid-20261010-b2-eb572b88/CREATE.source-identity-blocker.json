@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_CREATE_SOURCE_IDENTITY_BLOCKER_V1",
+  "examUid": "24_순천여고_1학기_중간_고2_확률과통계",
+  "stage": "CREATE",
+  "result": "HOLD_SOURCE_INTAKE_IDENTITY_REPAIR",
+  "executionLine": "CODEX",
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "assignmentPath": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\codex-sourceonly-h2-1mid-20261010-b2-eb572b88\\target-03.assignment.corrected.json",
+  "workingJsAbsolute": "C:\\Users\\USER\\Desktop\\AP------\\archive\\exams\\original\\high\\h2\\1mid\\24_순천여고_1학기_중간_고2_확률과통계.js",
+  "workingJsRawSha256": "913497D714046583CE092A4F072F84B160DB1E2BA8869FF4FC8ACB6D09DFB362",
+  "expectedJsRawSha256": "913497D714046583CE092A4F072F84B160DB1E2BA8869FF4FC8ACB6D09DFB362",
+  "intakeEvidenceAbsolute": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010-b2\\24_순천여고_1학기_중간_고2_확률과통계.evidence.json",
+  "intakeEvidenceRawSha256": "D2F08A6F8EA85E1DFF99DEA27EB148516B0C8D9C01A0B03990F3CDB74A885AB8",
+  "expectedIntakeRawSha256": "D2F08A6F8EA85E1DFF99DEA27EB148516B0C8D9C01A0B03990F3CDB74A885AB8",
+  "pdfReview": {
+    "renderAbsolute": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\codex-sourceonly-h2-1mid-20261010-b2-eb572b88\\q03-q06-scoped-page1.png",
+    "expectedPdfSha256": "bd5002ec7abe21feedcec9d05e25152aba915f74dda466c5a06686dd192013ad",
+    "actualPagesRendered": [
+      1
+    ],
+    "pdfSha256": "BD5002EC7ABE21FEEDCEC9D05E25152ABA915F74DDA466C5A06686DD192013AD",
+    "qidScope": [
+      3,
+      6
+    ],
+    "renderSha256": "0E1501E70761AC833070F3B84D6C21248B171C7F9B0EE7484D2B72B9A960F127",
+    "pdfAbsolute": "C:\\Users\\USER\\Desktop\\기출정리 파일\\(1)1중간\\확률과통계\\2024_순여고2_확통_1중간.PDF",
+    "observation": "Rendered page 1 has a 2024 Suncheon Girls High exam header, but visible Q1-Q6 are materially different from assigned JS Q1-Q6. PDF Q3 is an EMERGENCY letter-arrangement problem and PDF Q6 is a candy-distribution problem; assigned JS Q3 is a balls probability problem and JS Q6 is spring letter arrangement. Thus the assignment intake PDF provenance does not identify the assigned JS question sequence. No PDF pages beyond page 1 were rendered or examined."
+  },
+  "specificDefects": [
+    {
+      "qid": 3,
+      "sourceFactToVerify": "Confirm the true question text and choices for the assigned exam q3 using corrected source-intake identity.",
+      "finding": "Assigned JS yields 10/21 for exactly two black balls among four draws from 5 black and 4 white, but no supplied choice equals 10/21."
+    },
+    {
+      "qid": 6,
+      "sourceFactToVerify": "Confirm the true letter set/condition and choices for the assigned exam q6 using corrected source-intake identity.",
+      "finding": "Assigned JS says letters s,p,r,i,n,g; only i is a vowel, so requiring a vowel at both ends yields zero, absent from supplied choices."
+    }
+  ],
+  "calibrationPreflight": "PASS with actual bound Golden/Negative bytes before any solution writing",
+  "createDisposition": "No question/answer/solution/Meta/visual mutation made. CREATE generic validator and completion seal not run because source identity is unresolved.",
+  "firstMissingClosureStep": "SOURCE_INTAKE_IDENTITY_REPAIR_FOR_ASSIGNED_EXAM",
+  "nextRequiredAction": "Resolve the source PDF identity for this exact exam and regenerate/repair the intake JS and evidence if necessary; then ROOT may route a clean CREATE on the verified assigned source."
+}

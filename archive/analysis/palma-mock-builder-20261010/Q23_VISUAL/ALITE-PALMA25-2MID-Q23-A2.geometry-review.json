@@ -1,0 +1,430 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "47705f656a71798aa116e41586fad36bea0feb5d497dfdc304da282f0aa3a163",
+  "solutionSha256": "93e2835a0965868200fd11eeeec7138a20caa92f0d6ee7aa8cb50817530faa89",
+  "coordinateModel": {
+    "originX": 88.97087378640778,
+    "originY": 262.97087378640776,
+    "sx": 18.990291262135926,
+    "sy": 18.990291262135926
+  },
+  "points": [
+    {
+      "id": "P0",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "P"
+    },
+    {
+      "id": "P1",
+      "at": [
+        2.5,
+        6.0
+      ],
+      "name": "Q"
+    },
+    {
+      "id": "P2",
+      "at": [
+        11.166666666666666,
+        6.0
+      ],
+      "name": "R"
+    },
+    {
+      "id": "P3",
+      "at": [
+        8.666666666666666,
+        0.0
+      ],
+      "name": "S"
+    },
+    {
+      "id": "H0",
+      "at": [
+        5.583333333333333,
+        0.0
+      ],
+      "name": "H"
+    },
+    {
+      "id": "H1",
+      "at": [
+        5.583333333333333,
+        6.0
+      ],
+      "name": "K"
+    }
+  ],
+  "segments": [
+    {
+      "id": "edge-P0-P1",
+      "points": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "edge-P1-P2",
+      "points": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "edge-P2-P3",
+      "points": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "edge-P0-P3",
+      "points": [
+        "P0",
+        "P3"
+      ]
+    },
+    {
+      "id": "height-H0-H1",
+      "points": [
+        "H0",
+        "H1"
+      ]
+    }
+  ],
+  "circles": [],
+  "arcs": [],
+  "incidences": [],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "baseLength",
+      "segment": "edge-P0-P3",
+      "value": 8.666666666666666,
+      "text": "26/3",
+      "unit": "",
+      "mode": "DIMENSION",
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "stripWidth",
+      "segment": "height-H0-H1",
+      "value": 6.0,
+      "text": "6",
+      "unit": "",
+      "mode": "DIMENSION",
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "regions": [
+    {
+      "id": "parallelogramArea",
+      "points": [
+        "P0",
+        "P1",
+        "P2",
+        "P3"
+      ],
+      "value": 52.0,
+      "text": "52",
+      "factRole": "CONCLUSION"
+    }
+  ],
+  "otherLabels": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Original coordinates are intersections of the two stated distance-locus line pairs. The diagram uses a rigid translation/reflection of those four exact intersections so the first base lies on the positive x-axis; perpendicular strip width, both parallel side pairs, exact side lengths, and area are preserved. These are constructed coordinates, not source coordinate claims.",
+    "normalization": {
+      "originPoint": "P0",
+      "xAxisPoint": "P3",
+      "unitScale": 8.666666666666666
+    },
+    "freeVariables": [
+      {
+        "id": "a",
+        "value": 3
+      },
+      {
+        "id": "b",
+        "value": 4
+      },
+      {
+        "id": "lineCoefficients0",
+        "value": 5
+      },
+      {
+        "id": "lineCoefficients1",
+        "value": -12
+      },
+      {
+        "id": "lineCoefficients2",
+        "value": 0
+      },
+      {
+        "id": "normalLength",
+        "value": 13
+      },
+      {
+        "id": "offsetD",
+        "value": 52
+      }
+    ],
+    "pointCoordinates": {
+      "P0": [
+        0.0,
+        0.0
+      ],
+      "P1": [
+        2.5,
+        6.0
+      ],
+      "P2": [
+        11.166666666666666,
+        6.0
+      ],
+      "P3": [
+        8.666666666666666,
+        0.0
+      ],
+      "H0": [
+        5.583333333333333,
+        0.0
+      ],
+      "H1": [
+        5.583333333333333,
+        6.0
+      ]
+    },
+    "conditions": [
+      {
+        "id": "base-side-length",
+        "kind": "DISTANCE",
+        "refs": [
+          "P0",
+          "P3"
+        ],
+        "tolerance": 1e-09,
+        "expected": 8.666666666666666
+      },
+      {
+        "id": "opposite-base-side-length",
+        "kind": "DISTANCE",
+        "refs": [
+          "P1",
+          "P2"
+        ],
+        "tolerance": 1e-09,
+        "expected": 8.666666666666666
+      },
+      {
+        "id": "first-oblique-side-length",
+        "kind": "DISTANCE",
+        "refs": [
+          "P0",
+          "P1"
+        ],
+        "tolerance": 1e-09,
+        "expected": 6.5
+      },
+      {
+        "id": "opposite-oblique-side-length",
+        "kind": "DISTANCE",
+        "refs": [
+          "P3",
+          "P2"
+        ],
+        "tolerance": 1e-09,
+        "expected": 6.5
+      },
+      {
+        "id": "strip-height-length",
+        "kind": "DISTANCE",
+        "refs": [
+          "H0",
+          "H1"
+        ],
+        "tolerance": 1e-09,
+        "expected": 6.0
+      },
+      {
+        "id": "parallel-base-sides",
+        "kind": "PARALLEL",
+        "refs": [
+          "P0",
+          "P3",
+          "P1",
+          "P2"
+        ],
+        "tolerance": 1e-09
+      },
+      {
+        "id": "parallel-oblique-sides",
+        "kind": "PARALLEL",
+        "refs": [
+          "P0",
+          "P1",
+          "P3",
+          "P2"
+        ],
+        "tolerance": 1e-09
+      },
+      {
+        "id": "height-perpendicular-to-base",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "P0",
+          "P3",
+          "H0",
+          "H1"
+        ],
+        "tolerance": 1e-09
+      },
+      {
+        "id": "height-foot-on-base",
+        "kind": "COLLINEAR",
+        "refs": [
+          "P0",
+          "P3",
+          "H0"
+        ],
+        "tolerance": 1e-09
+      },
+      {
+        "id": "height-head-on-opposite-base",
+        "kind": "COLLINEAR",
+        "refs": [
+          "P1",
+          "P2",
+          "H1"
+        ],
+        "tolerance": 1e-09
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-p0",
+        "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+        "output": "P0",
+        "inputs": []
+      },
+      {
+        "id": "construct-p1",
+        "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+        "output": "P1",
+        "inputs": []
+      },
+      {
+        "id": "construct-p2",
+        "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+        "output": "P2",
+        "inputs": []
+      },
+      {
+        "id": "construct-p3",
+        "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+        "output": "P3",
+        "inputs": []
+      },
+      {
+        "id": "construct-height-foot",
+        "operation": "PERPENDICULAR_HEIGHT_FOOT",
+        "output": "H0",
+        "inputs": [
+          "P0",
+          "P3",
+          "P1",
+          "P2"
+        ]
+      },
+      {
+        "id": "construct-height-head",
+        "operation": "PARALLEL_SIDE_HEIGHT_HEAD",
+        "output": "H1",
+        "inputs": [
+          "P1",
+          "P2",
+          "H0"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "base-side-length",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      },
+      {
+        "conditionId": "opposite-base-side-length",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      },
+      {
+        "conditionId": "first-oblique-side-length",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      },
+      {
+        "conditionId": "opposite-oblique-side-length",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      },
+      {
+        "conditionId": "strip-height-length",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      },
+      {
+        "conditionId": "parallel-base-sides",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      },
+      {
+        "conditionId": "parallel-oblique-sides",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      },
+      {
+        "conditionId": "height-perpendicular-to-base",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      },
+      {
+        "conditionId": "height-foot-on-base",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      },
+      {
+        "conditionId": "height-head-on-opposite-base",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "parallelogram-nondegenerate",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "P0",
+          "P1",
+          "P3"
+        ],
+        "observed": 0.9230769230769231,
+        "minimum": 1e-08
+      },
+      {
+        "id": "height-endpoints-distinct",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "H0",
+          "H1"
+        ],
+        "observed": 6.0,
+        "minimum": 1e-08
+      }
+    ]
+  }
+}

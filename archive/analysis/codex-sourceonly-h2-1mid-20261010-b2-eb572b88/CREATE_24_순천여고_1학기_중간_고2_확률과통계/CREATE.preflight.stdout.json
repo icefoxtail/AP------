@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_PREFLIGHT_V1",
+  "status": "REVIEW_REQUIRED",
+  "questionCount": 23,
+  "itemHoldCount": 1,
+  "holds": [
+    {
+      "qid": 22,
+      "reason": "정확한 원문 조건 a,b,c,n∈Z 및 a<b 아래에서 6815를 만드는 서로 다른 정수 사중항이 복수 존재한다."
+    }
+  ],
+  "findings": [
+    {
+      "qid": 10,
+      "field": "content",
+      "code": "TEX_MATH_DELIMITER_UNPAIRED",
+      "locus": {
+        "start": 408,
+        "end": 409,
+        "text": "$"
+      },
+      "reason": "Opening math delimiter has no matching closer."
+    },
+    {
+      "qid": 14,
+      "field": "content",
+      "code": "TEX_MATH_DELIMITER_UNPAIRED",
+      "locus": {
+        "start": 131,
+        "end": 133,
+        "text": "$$"
+      },
+      "reason": "Opening math delimiter has no matching closer."
+    }
+  ],
+  "unitOrder": {
+    "authority": {
+      "path": "C:\\Users\\USER\\Desktop\\AP------\\docs\\rules\\01_CANONICAL\\JS아카이브_표준단원키_마스터테이블.md",
+      "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+    },
+    "findings": [],
+    "semanticReclassification": false,
+    "sourceMutation": false
+  },
+  "semanticApproval": false,
+  "sourceMutation": false,
+  "artifactRawSha256": "1723ccb69408afba6436b28c3b2e36ba7c9fbe12f01d0d003d6860e8bce4545e",
+  "artifactSha": "38250be9c7d9824147a585ebc360cd86003372d7"
+}

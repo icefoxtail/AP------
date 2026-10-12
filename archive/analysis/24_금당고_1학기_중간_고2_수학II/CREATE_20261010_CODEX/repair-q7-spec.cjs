@@ -1,0 +1,1 @@
+const fs=require("node:fs"),path=require("node:path"),p=path.join(__dirname,"q7-solution.json"),j=JSON.parse(fs.readFileSync(p,"utf8"));j.lines[0].from={x:-2,y:2};j.lines[0].to={x:4,y:8};fs.writeFileSync(p,JSON.stringify(j,null,2)+"\n","utf8");

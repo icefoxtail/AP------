@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_QID_META_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "24_매산여고_1학기_중간_고2_확률과통계",
+  "stage": "ITEM_RECOVERY",
+  "qid": 22,
+  "scope": "QID_ONLY_FRESH_META_FOR_REPLACEMENT",
+  "artifact": {
+    "path": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+    "rawSha256": "18d9cefae333cf0fec077ee91fdd694ef1cdfcc7b15bbfd602d41f0d86ce7c1d",
+    "blobSha1": "e1f9ac02d7f6635f3b850acc46210067f386ad2c"
+  },
+  "sourceIdentity": {
+    "questionUid": "qid_v1_2b1183aabc0e7ed9657bb6342cc55411cfaec9f6c2c36c19bf7eb9b273228df6",
+    "sourceQid": 22,
+    "sourceType": "ORIGINAL",
+    "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+    "sourceIdentityFingerprintPreserved": "1aaac299f42e639cab8c8b7997f7dccf21950125340ae221f911eefa1b428527",
+    "pdfReviewMode": "DEFECT_ONLY",
+    "pdfActuallyReviewedThisRun": false,
+    "replacementMode": "QUESTION_REPLACEMENT",
+    "sourceInputMode": "EXTRACTED_JS_ASSETS",
+    "originalSourceTextRecovered": false,
+    "originalQuestionExactParityClaimed": false
+  },
+  "solution": {
+    "sha256": "239199c7421e01fa95a2c9cece42d8ec83c37f84f0eaa52bfa3f49630580ca94",
+    "answer": "450",
+    "independentDerivation": "Using the binomial general term C(8,r)x^(8-r)a^r: the x^3 coefficient is C(8,5)a^5=56a^5=1792, so real a=2. The x^5 coefficient is b=C(8,3)a^3=56·8=448, hence a+b=450."
+  },
+  "semantic": {
+    "standardCourse": "확률과 통계",
+    "curriculum": "2015",
+    "standardUnitKey": "H15-PS-02",
+    "standardUnit": "이항정리",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+    "subUnit": "이항정리",
+    "category": "이항정리",
+    "originalCategory": "이항정리",
+    "rpmL1": "경우의 수",
+    "rpmL2": "이항정리",
+    "rpmL3": "이항정리",
+    "rpmL4": "특정 항의 계수",
+    "rpmSemanticStatus": "FINAL",
+    "problemTypeKey": "PT_BINOMIAL_THEOREM",
+    "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "level": "중",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "tags": [
+      "서술형",
+      "이항정리"
+    ]
+  },
+  "authority": {
+    "unitMaster": {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+      "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+    },
+    "taxonomy": {
+      "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/taxonomy.json",
+      "sha256": "2a748f5915a359b35b5e68e9473c49027c73993290ed1726a80a487694624e15"
+    },
+    "binding": {
+      "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/bindings.json",
+      "sha256": "4eff69359603d13a96e08c7d1b933acf36aeb62c6d37065d122812e2fd5aeaf2"
+    },
+    "rpmCrosswalk": {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json",
+      "sha256": "09a62de1afe1e47d901635d73c00dcfc2d82a97f8748950df3250f0ebea4e431"
+    },
+    "problemType": {
+      "key": "PT_BINOMIAL_THEOREM",
+      "label": "이항정리",
+      "status": "ACTIVE"
+    },
+    "template": {
+      "key": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "label": "전개식의 항·계수",
+      "status": "ACTIVE",
+      "parentProblemTypeKey": "PT_BINOMIAL_THEOREM"
+    },
+    "bindingRecord": {
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "curriculum": "2015",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+      "status": "ACTIVE"
+    },
+    "rpmRecord": {
+      "id": "H2-PS-RPM-008",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "이항정리",
+        "l3": "이항정리",
+        "l4": "특정 항의 계수"
+      },
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "bindingStatus": "ACTIVE"
+    }
+  },
+  "visual": {
+    "problemNeed": "EXEMPT",
+    "solutionNeed": "EXEMPT",
+    "reason": "The replacement is a symbolic binomial coefficient problem fully represented by algebra."
+  },
+  "metaDebtFields": [],
+  "metaDebtReason": null,
+  "difficultyReview": {
+    "basis": "Fresh current-pass review of the replacement problem and verified solution; previous bucket was not used as authority.",
+    "level": "中",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "reason": "The item identifies a from one binomial coefficient, then applies the same general-term rule to a second power. It uses one unique fifth root and routine coefficient arithmetic in a short sequence, without branching or an additional concept."
+  }
+}

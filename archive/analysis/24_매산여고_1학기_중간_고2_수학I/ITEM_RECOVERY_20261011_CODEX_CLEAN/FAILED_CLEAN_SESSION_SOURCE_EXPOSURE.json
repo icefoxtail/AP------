@@ -1,0 +1,12 @@
+{
+  "recordType": "FAILED_CLEAN_SESSION_SOURCE_EXPOSURE",
+  "examUid": "24_매산여고_1학기_중간_고2_수학I",
+  "qid": 21,
+  "stage": "ITEM_RECOVERY",
+  "expectedWorkingJsSha256": "fd53c2297a0984ca7d0a1c72cfbc27b207e77c0ee9f63418ef71f2103c862b04",
+  "actualWorkingJsSha256": "fd53c2297a0984ca7d0a1c72cfbc27b207e77c0ee9f63418ef71f2103c862b04",
+  "incident": "During setup, a command requested the full current JS instead of extracting only q21 student-facing fields. The tool output exposed q21 answer, solution, itemStatus, itemHoldReason, reviewStatus, and other exam item contents before the clean student-only input was built. This session is contaminated and must not make a source-sufficiency decision, author, or claim independent HOLD revalidation.",
+  "preservedPriorContaminatedTrace": "not opened",
+  "requiredRecovery": "Preserve this failed session and restart in a fresh isolated ITEM_RECOVERY session. First inspect assignment paths/SHA, extract only q21 student content/choices/referenced visuals, write source-sufficiency decision, then read any prior trace only if authorized by protocol.",
+  "timestampUtc": "2026-10-10T18:01:40.6699470Z"
+}

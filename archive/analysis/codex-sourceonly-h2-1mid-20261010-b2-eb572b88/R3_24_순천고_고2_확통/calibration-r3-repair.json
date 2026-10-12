@@ -1,0 +1,25 @@
+{
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR",
+    "calibrationAxes": ["STUDENT_REPRODUCIBILITY", "SMALL_BOARD_STRUCTURE", "EXPLANATION_DENSITY", "VISUAL_SEMANTIC_PARITY", "VISUAL_READABILITY"],
+    "goldenSampleRefs": [
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","sha256":"sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156","gitBlobSha":"95f7e733fd3f786b6bcb98f9662a6ae568f82949"},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","sha256":"sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c","gitBlobSha":"f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"},
+      {"path":"archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js","sha256":"sha256:17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b","gitBlobSha":"639acb54459718fdeb83a1a281f33483bc81edb4"}
+    ],
+    "goldenSampleQuestionRefs": [
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","qid":2,"solutionSha256":"sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba","solutionExcerpt":"두 직선이 평행하므로 기울기가 서로 같다.","observation":"The opening states the relation, then defines the needed coefficient, substitutes the point, and isolates m+n in successive complete steps. The final answer is separated after a paragraph break."},
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","qid":5,"solutionSha256":"sha256:5cec67e22a9be1c7667c879d80ae639baf011e44574e6963243d3d987324554f","solutionExcerpt":"$A\\subset B$이고 $B\\subset A$이므로 두 집합은 서로 같은 집합이다.","observation":"The solution isolates the equality A=B, names the shared element argument, and places each resulting equation on its own display line; no chained calculation is hidden in prose."},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","qid":2,"solutionSha256":"sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2","solutionExcerpt":"두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.","observation":"Each line is transformed in a separate sequence; the two slopes and perpendicularity equation are separated so the reader can track the dependency."},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","qid":5,"solutionSha256":"sha256:8e1a0f149d821431abc022690f63b1b99c675d8373a575c92dc4d1688dc4b109","solutionExcerpt":"두 집합 $A$, $B$가 같으므로 두 집합에 들어 있는 원소가 정확히 같아야 한다.","observation":"The equality condition leads to one element match at a time; equations a=1 and b=8 are explicitly surfaced before their final sum."},
+      {"path":"archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js","qid":3,"solutionSha256":"sha256:e664fd207ce80863250fa1281dfe247a5bbe1284ec2f37d87f3e38e034d00deb","solutionExcerpt":"부분집합에 $a$, $b$를 모두 포함하지 않으므로 나머지 원소 $c,d,e,f$만 선택하면 된다.","observation":"The four independent include/exclude choices are represented as a product and the resulting subset property is stated before the answer."},
+      {"path":"archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js","qid":4,"solutionSha256":"sha256:f644427bc93e3b5853d0d6c597d3e5b56dde904ce78f0615e45edeb595097083","solutionExcerpt":"차집합을 교집합으로 바꾸고 드모르간의 법칙을 적용하여 보기들을 같은 꼴로 나타낸다.","observation":"The five alternatives are compared in separate numbered expressions; the shared form is visible before the distinct fifth option is concluded."}
+    ],
+    "negativeSampleRefs": [
+      {"path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md","sha256":"sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8","gitBlobSha":"9775c4993d7e148a9da816ae36acdf652bc69906","observation":"Read the complete regression README. It warns against relying on prior aggregate audits, hidden calculation jumps, equation/source encoding drift, and false visual approval from labels without actual geometry. This target repair is limited to expression-boundary layout; no math, source text, answers, or assets will be changed."}
+    ]
+  }
+}

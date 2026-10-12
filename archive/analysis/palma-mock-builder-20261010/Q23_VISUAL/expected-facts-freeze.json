@@ -1,0 +1,4350 @@
+{
+  "schemaVersion": "PALMA_Q23_EXPECTED_FACTS_FREEZE_V1",
+  "createdBeforeSvgConstruction": true,
+  "freezeBasis": "APPROVED_Q23_PACKAGE_CURRENT_HEAD_BLOB_AND_APPROVAL_RECEIPT; ORIGINAL_Q23_SOURCE_SVG_READ; EXACT_DISTANCE_INTERSECTION_RECOMPUTATION",
+  "sourceIdentity": {
+    "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+    "approvedSourceExamGitBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+    "approvedSourceExamBlobSha256": "1c7c2c331464aa214331d844e32f9378c86654b1b8e495c8c3cdf759b26beaef",
+    "currentWorkingSourceExamSha256": "60049ec6a7def1ec9d1e15a6319ecfcf916fc3ba63f4bfc55e128d3a05cb12a1",
+    "currentWorkingSourceExamRawBlobObjectSha1": "dd6eb8aeb7de12ad655e9d7ef086a751a40a6096",
+    "currentWorkingSourceExamGitBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e",
+    "sourceSvgPath": "archive/assets/images/25_팔마고_2학기_중간_고1_기출/q23-solution.svg",
+    "sourceSvgSha256": "d3ff24683f3e2d88d1fb39ed9d938ad6b032f1d55b7a2d46be8132df8a765c17",
+    "sourceSvgGitBlobSha1": "8524bc9834a1b5417b20dc018a062a800b62eecd"
+  },
+  "packageIdentity": {
+    "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q23_PACKAGE.json",
+    "approvedHeadCanonicalSha256": "35bc07b4c58ec211da164f163799ade285d78fc72d2a478b8bdc40c62a5a6c22",
+    "approvedGitBlobSha1": "bf8028c151f991592631e399459171363e59ec0a",
+    "currentWorkingRawSha256": "57d8cbf6870aad23169695ae16b00a209a220dfd65e1fca646db47618117d8da",
+    "currentWorkingRawBlobObjectSha1": "550719b037e6e01b5a71f1ad0764bde2986a649a",
+    "currentWorkingGitBlobSha1": "bf8028c151f991592631e399459171363e59ec0a",
+    "approvalReceiptPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json",
+    "approvalReceiptSha256": "38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d",
+    "approvalReceiptWorkingRawBlobObjectSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+    "approvalReceiptGitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+    "packageMutation": "NONE"
+  },
+  "visualTriage": {
+    "problem": "NO_VISUAL for all nine UID because the distance conditions are fully stated and no source diagram is required to read the task.",
+    "solution": "BENEFICIAL for all nine UID because the intersections, parallel sides, strip width, and owner-bound dimensions materially clarify the area/perimeter relation.",
+    "sourceOriginalSvgRelation": "Original Q23 has a different numerical/orientation diagram (x=±2, 4x−3y=±10, area 80/3). It is preserved and is not treated as absent or reused for generated variants."
+  },
+  "items": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-PALMA25-2MID-Q23-A1",
+      "mode": "VERTICAL_X_STRIP",
+      "distanceParameters": {
+        "a": 3,
+        "b": 2,
+        "lineCoefficients": [
+          3,
+          -4,
+          0
+        ],
+        "normalLength": 5,
+        "offsetD": 10
+      },
+      "sourceEquation": {
+        "first": "x=±a",
+        "second": "3x-4y+0=±10"
+      },
+      "sourceIntersectionCoordinates": {
+        "P0": [
+          "-3",
+          "-19/4"
+        ],
+        "P1": [
+          "3",
+          "-1/4"
+        ],
+        "P2": [
+          "3",
+          "19/4"
+        ],
+        "P3": [
+          "-3",
+          "1/4"
+        ]
+      },
+      "sourceConditionResiduals": [
+        {
+          "pointId": "P0",
+          "xFromVerticalLine": "3",
+          "expectedXDistance": "3",
+          "xDistanceResidual": 0.0,
+          "lineValue": "10",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "2",
+          "observedLineDistance": "2",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P1",
+          "xFromVerticalLine": "3",
+          "expectedXDistance": "3",
+          "xDistanceResidual": 0.0,
+          "lineValue": "10",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "2",
+          "observedLineDistance": "2",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P2",
+          "xFromVerticalLine": "3",
+          "expectedXDistance": "3",
+          "xDistanceResidual": 0.0,
+          "lineValue": "-10",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "2",
+          "observedLineDistance": "2",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P3",
+          "xFromVerticalLine": "3",
+          "expectedXDistance": "3",
+          "xDistanceResidual": 0.0,
+          "lineValue": "-10",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "2",
+          "observedLineDistance": "2",
+          "lineDistanceResidual": 0.0
+        }
+      ],
+      "pointCoordinates": {
+        "P0": [
+          0.0,
+          0.0
+        ],
+        "P1": [
+          4.5,
+          6.0
+        ],
+        "P2": [
+          9.5,
+          6.0
+        ],
+        "P3": [
+          5.0,
+          0.0
+        ],
+        "H0": [
+          4.75,
+          0.0
+        ],
+        "H1": [
+          4.75,
+          6.0
+        ]
+      },
+      "pointCoordinatesExact": {
+        "P0": [
+          "0",
+          "0"
+        ],
+        "P1": [
+          "9/2",
+          "6"
+        ],
+        "P2": [
+          "19/2",
+          "6"
+        ],
+        "P3": [
+          "5",
+          "0"
+        ],
+        "H0": [
+          "19/4",
+          "0"
+        ],
+        "H1": [
+          "19/4",
+          "6"
+        ]
+      },
+      "sideLengths": {
+        "verticalSide": 5.0,
+        "slantedSide": 7.5,
+        "perpendicularStripWidth": 6.0
+      },
+      "exactSideLengths": {
+        "verticalSide": "5",
+        "perpendicularStripWidth": "6",
+        "slantedSide": "15/2"
+      },
+      "area": 30.0,
+      "areaExact": "30",
+      "perimeter": 25.0,
+      "heightOwnerPoints": [
+        "H0",
+        "H1"
+      ],
+      "normalizationOrigin": "P0",
+      "normalizationXAxisPoint": "P3",
+      "normalizationUnitScale": 5.0,
+      "approvedSolutionWitnessValidation": {
+        "kind": "DIRECT_AREA_WITNESS",
+        "value": 30,
+        "verified": true
+      },
+      "packageSolutionSha256": "96cd58f65a3f8dee5b5093374b34f6525dee1d4ebee82b863dd739f40123f11c",
+      "packageStemSha256": "07828eae3194b23c2f1938bd2ecaaadfc6f8e9f7404dd2453041c4d27e201f6d",
+      "problemVisualDecision": "NO_VISUAL",
+      "solutionVisualDecision": "SOLUTION_SVG_BENEFICIAL_SEPARATE_PALMA_LINE",
+      "problemVisualReason": "문제는 거리식만으로 완결되지만 해설은 네 교점과 평행사변형 높이 관계의 SVG가 교육적으로 유익함",
+      "solutionVisualReason": "The four distance-locus intersections form a parallelogram; owner-bound base/strip dimensions make the area or perimeter relation easier to see while the solution prose retains the algebra and conclusion.",
+      "coordinateEvidence": {
+        "mode": "CONSTRUCTED_REALIZATION",
+        "rationale": "Original coordinates are intersections of the two stated distance-locus line pairs. The diagram uses a rigid translation/reflection of those four exact intersections so the first base lies on the positive x-axis; perpendicular strip width, both parallel side pairs, exact side lengths, and area are preserved. These are constructed coordinates, not source coordinate claims.",
+        "normalization": {
+          "originPoint": "P0",
+          "xAxisPoint": "P3",
+          "unitScale": 5.0
+        },
+        "freeVariables": [
+          {
+            "id": "a",
+            "value": 3
+          },
+          {
+            "id": "b",
+            "value": 2
+          },
+          {
+            "id": "lineCoefficients0",
+            "value": 3
+          },
+          {
+            "id": "lineCoefficients1",
+            "value": -4
+          },
+          {
+            "id": "lineCoefficients2",
+            "value": 0
+          },
+          {
+            "id": "normalLength",
+            "value": 5
+          },
+          {
+            "id": "offsetD",
+            "value": 10
+          }
+        ],
+        "pointCoordinates": {
+          "P0": [
+            0.0,
+            0.0
+          ],
+          "P1": [
+            4.5,
+            6.0
+          ],
+          "P2": [
+            9.5,
+            6.0
+          ],
+          "P3": [
+            5.0,
+            0.0
+          ],
+          "H0": [
+            4.75,
+            0.0
+          ],
+          "H1": [
+            4.75,
+            6.0
+          ]
+        },
+        "conditions": [
+          {
+            "id": "base-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P0",
+              "P3"
+            ],
+            "tolerance": 1e-09,
+            "expected": 5.0
+          },
+          {
+            "id": "opposite-base-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P1",
+              "P2"
+            ],
+            "tolerance": 1e-09,
+            "expected": 5.0
+          },
+          {
+            "id": "first-oblique-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P0",
+              "P1"
+            ],
+            "tolerance": 1e-09,
+            "expected": 7.5
+          },
+          {
+            "id": "opposite-oblique-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P3",
+              "P2"
+            ],
+            "tolerance": 1e-09,
+            "expected": 7.5
+          },
+          {
+            "id": "strip-height-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "H0",
+              "H1"
+            ],
+            "tolerance": 1e-09,
+            "expected": 6.0
+          },
+          {
+            "id": "parallel-base-sides",
+            "kind": "PARALLEL",
+            "refs": [
+              "P0",
+              "P3",
+              "P1",
+              "P2"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "parallel-oblique-sides",
+            "kind": "PARALLEL",
+            "refs": [
+              "P0",
+              "P1",
+              "P3",
+              "P2"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-perpendicular-to-base",
+            "kind": "PERPENDICULAR",
+            "refs": [
+              "P0",
+              "P3",
+              "H0",
+              "H1"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-foot-on-base",
+            "kind": "COLLINEAR",
+            "refs": [
+              "P0",
+              "P3",
+              "H0"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-head-on-opposite-base",
+            "kind": "COLLINEAR",
+            "refs": [
+              "P1",
+              "P2",
+              "H1"
+            ],
+            "tolerance": 1e-09
+          }
+        ],
+        "constructionSteps": [
+          {
+            "id": "construct-p0",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P0",
+            "inputs": []
+          },
+          {
+            "id": "construct-p1",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P1",
+            "inputs": []
+          },
+          {
+            "id": "construct-p2",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P2",
+            "inputs": []
+          },
+          {
+            "id": "construct-p3",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P3",
+            "inputs": []
+          },
+          {
+            "id": "construct-height-foot",
+            "operation": "PERPENDICULAR_HEIGHT_FOOT",
+            "output": "H0",
+            "inputs": [
+              "P0",
+              "P3",
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "id": "construct-height-head",
+            "operation": "PARALLEL_SIDE_HEIGHT_HEAD",
+            "output": "H1",
+            "inputs": [
+              "P1",
+              "P2",
+              "H0"
+            ]
+          }
+        ],
+        "residualChecks": [
+          {
+            "conditionId": "base-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "opposite-base-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "first-oblique-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "opposite-oblique-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "strip-height-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "parallel-base-sides",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "parallel-oblique-sides",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-perpendicular-to-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-foot-on-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-head-on-opposite-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          }
+        ],
+        "degeneracyChecks": [
+          {
+            "id": "parallelogram-nondegenerate",
+            "kind": "NONCOLLINEAR",
+            "refs": [
+              "P0",
+              "P1",
+              "P3"
+            ],
+            "observed": 0.8,
+            "minimum": 1e-08
+          },
+          {
+            "id": "height-endpoints-distinct",
+            "kind": "DISTINCT_POINTS",
+            "refs": [
+              "H0",
+              "H1"
+            ],
+            "observed": 6.0,
+            "minimum": 1e-08
+          }
+        ]
+      },
+      "sourceConditionCoverage": [
+        "첫 번째 거리 조건의 두 평행 경계와 그 위 네 교점",
+        "두 번째 점-직선 거리 조건의 ± 경계와 그 위 네 교점",
+        "두 평행선 쌍이 만드는 단순·비퇴화 평행사변형",
+        "면적·둘레 또는 매개변수에 직접 쓰이는 base/strip 치수"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "factRoles": {
+        "distanceLoci": "GIVEN",
+        "oppositeParallelSides": "DERIVED_INTERMEDIATE",
+        "perpendicularStripWidth": "DERIVED_INTERMEDIATE",
+        "areaOrPerimeterRelation": "CONCLUSION"
+      }
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-PALMA25-2MID-Q23-A2",
+      "mode": "VERTICAL_X_STRIP",
+      "distanceParameters": {
+        "a": 3,
+        "b": 4,
+        "lineCoefficients": [
+          5,
+          -12,
+          0
+        ],
+        "normalLength": 13,
+        "offsetD": 52
+      },
+      "sourceEquation": {
+        "first": "x=±a",
+        "second": "5x-12y+0=±52"
+      },
+      "sourceIntersectionCoordinates": {
+        "P0": [
+          "-3",
+          "-67/12"
+        ],
+        "P1": [
+          "3",
+          "-37/12"
+        ],
+        "P2": [
+          "3",
+          "67/12"
+        ],
+        "P3": [
+          "-3",
+          "37/12"
+        ]
+      },
+      "sourceConditionResiduals": [
+        {
+          "pointId": "P0",
+          "xFromVerticalLine": "3",
+          "expectedXDistance": "3",
+          "xDistanceResidual": 0.0,
+          "lineValue": "52",
+          "lineNormalLength": 13,
+          "expectedLineDistance": "4",
+          "observedLineDistance": "4",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P1",
+          "xFromVerticalLine": "3",
+          "expectedXDistance": "3",
+          "xDistanceResidual": 0.0,
+          "lineValue": "52",
+          "lineNormalLength": 13,
+          "expectedLineDistance": "4",
+          "observedLineDistance": "4",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P2",
+          "xFromVerticalLine": "3",
+          "expectedXDistance": "3",
+          "xDistanceResidual": 0.0,
+          "lineValue": "-52",
+          "lineNormalLength": 13,
+          "expectedLineDistance": "4",
+          "observedLineDistance": "4",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P3",
+          "xFromVerticalLine": "3",
+          "expectedXDistance": "3",
+          "xDistanceResidual": 0.0,
+          "lineValue": "-52",
+          "lineNormalLength": 13,
+          "expectedLineDistance": "4",
+          "observedLineDistance": "4",
+          "lineDistanceResidual": 0.0
+        }
+      ],
+      "pointCoordinates": {
+        "P0": [
+          0.0,
+          0.0
+        ],
+        "P1": [
+          2.5,
+          6.0
+        ],
+        "P2": [
+          11.166666666666666,
+          6.0
+        ],
+        "P3": [
+          8.666666666666666,
+          0.0
+        ],
+        "H0": [
+          5.583333333333333,
+          0.0
+        ],
+        "H1": [
+          5.583333333333333,
+          6.0
+        ]
+      },
+      "pointCoordinatesExact": {
+        "P0": [
+          "0",
+          "0"
+        ],
+        "P1": [
+          "5/2",
+          "6"
+        ],
+        "P2": [
+          "67/6",
+          "6"
+        ],
+        "P3": [
+          "26/3",
+          "0"
+        ],
+        "H0": [
+          "67/12",
+          "0"
+        ],
+        "H1": [
+          "67/12",
+          "6"
+        ]
+      },
+      "sideLengths": {
+        "verticalSide": 8.666666666666666,
+        "slantedSide": 6.5,
+        "perpendicularStripWidth": 6.0
+      },
+      "exactSideLengths": {
+        "verticalSide": "26/3",
+        "perpendicularStripWidth": "6",
+        "slantedSide": "13/2"
+      },
+      "area": 52.0,
+      "areaExact": "52",
+      "perimeter": 30.333333333333332,
+      "heightOwnerPoints": [
+        "H0",
+        "H1"
+      ],
+      "normalizationOrigin": "P0",
+      "normalizationXAxisPoint": "P3",
+      "normalizationUnitScale": 8.666666666666666,
+      "approvedSolutionWitnessValidation": {
+        "kind": "DIRECT_AREA_WITNESS",
+        "value": 52,
+        "verified": true
+      },
+      "packageSolutionSha256": "93e2835a0965868200fd11eeeec7138a20caa92f0d6ee7aa8cb50817530faa89",
+      "packageStemSha256": "47705f656a71798aa116e41586fad36bea0feb5d497dfdc304da282f0aa3a163",
+      "problemVisualDecision": "NO_VISUAL",
+      "solutionVisualDecision": "SOLUTION_SVG_BENEFICIAL_SEPARATE_PALMA_LINE",
+      "problemVisualReason": "문제는 거리식만으로 완결되지만 해설은 네 교점과 평행사변형 높이 관계의 SVG가 교육적으로 유익함",
+      "solutionVisualReason": "The four distance-locus intersections form a parallelogram; owner-bound base/strip dimensions make the area or perimeter relation easier to see while the solution prose retains the algebra and conclusion.",
+      "coordinateEvidence": {
+        "mode": "CONSTRUCTED_REALIZATION",
+        "rationale": "Original coordinates are intersections of the two stated distance-locus line pairs. The diagram uses a rigid translation/reflection of those four exact intersections so the first base lies on the positive x-axis; perpendicular strip width, both parallel side pairs, exact side lengths, and area are preserved. These are constructed coordinates, not source coordinate claims.",
+        "normalization": {
+          "originPoint": "P0",
+          "xAxisPoint": "P3",
+          "unitScale": 8.666666666666666
+        },
+        "freeVariables": [
+          {
+            "id": "a",
+            "value": 3
+          },
+          {
+            "id": "b",
+            "value": 4
+          },
+          {
+            "id": "lineCoefficients0",
+            "value": 5
+          },
+          {
+            "id": "lineCoefficients1",
+            "value": -12
+          },
+          {
+            "id": "lineCoefficients2",
+            "value": 0
+          },
+          {
+            "id": "normalLength",
+            "value": 13
+          },
+          {
+            "id": "offsetD",
+            "value": 52
+          }
+        ],
+        "pointCoordinates": {
+          "P0": [
+            0.0,
+            0.0
+          ],
+          "P1": [
+            2.5,
+            6.0
+          ],
+          "P2": [
+            11.166666666666666,
+            6.0
+          ],
+          "P3": [
+            8.666666666666666,
+            0.0
+          ],
+          "H0": [
+            5.583333333333333,
+            0.0
+          ],
+          "H1": [
+            5.583333333333333,
+            6.0
+          ]
+        },
+        "conditions": [
+          {
+            "id": "base-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P0",
+              "P3"
+            ],
+            "tolerance": 1e-09,
+            "expected": 8.666666666666666
+          },
+          {
+            "id": "opposite-base-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P1",
+              "P2"
+            ],
+            "tolerance": 1e-09,
+            "expected": 8.666666666666666
+          },
+          {
+            "id": "first-oblique-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P0",
+              "P1"
+            ],
+            "tolerance": 1e-09,
+            "expected": 6.5
+          },
+          {
+            "id": "opposite-oblique-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P3",
+              "P2"
+            ],
+            "tolerance": 1e-09,
+            "expected": 6.5
+          },
+          {
+            "id": "strip-height-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "H0",
+              "H1"
+            ],
+            "tolerance": 1e-09,
+            "expected": 6.0
+          },
+          {
+            "id": "parallel-base-sides",
+            "kind": "PARALLEL",
+            "refs": [
+              "P0",
+              "P3",
+              "P1",
+              "P2"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "parallel-oblique-sides",
+            "kind": "PARALLEL",
+            "refs": [
+              "P0",
+              "P1",
+              "P3",
+              "P2"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-perpendicular-to-base",
+            "kind": "PERPENDICULAR",
+            "refs": [
+              "P0",
+              "P3",
+              "H0",
+              "H1"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-foot-on-base",
+            "kind": "COLLINEAR",
+            "refs": [
+              "P0",
+              "P3",
+              "H0"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-head-on-opposite-base",
+            "kind": "COLLINEAR",
+            "refs": [
+              "P1",
+              "P2",
+              "H1"
+            ],
+            "tolerance": 1e-09
+          }
+        ],
+        "constructionSteps": [
+          {
+            "id": "construct-p0",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P0",
+            "inputs": []
+          },
+          {
+            "id": "construct-p1",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P1",
+            "inputs": []
+          },
+          {
+            "id": "construct-p2",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P2",
+            "inputs": []
+          },
+          {
+            "id": "construct-p3",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P3",
+            "inputs": []
+          },
+          {
+            "id": "construct-height-foot",
+            "operation": "PERPENDICULAR_HEIGHT_FOOT",
+            "output": "H0",
+            "inputs": [
+              "P0",
+              "P3",
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "id": "construct-height-head",
+            "operation": "PARALLEL_SIDE_HEIGHT_HEAD",
+            "output": "H1",
+            "inputs": [
+              "P1",
+              "P2",
+              "H0"
+            ]
+          }
+        ],
+        "residualChecks": [
+          {
+            "conditionId": "base-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "opposite-base-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "first-oblique-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "opposite-oblique-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "strip-height-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "parallel-base-sides",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "parallel-oblique-sides",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-perpendicular-to-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-foot-on-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-head-on-opposite-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          }
+        ],
+        "degeneracyChecks": [
+          {
+            "id": "parallelogram-nondegenerate",
+            "kind": "NONCOLLINEAR",
+            "refs": [
+              "P0",
+              "P1",
+              "P3"
+            ],
+            "observed": 0.9230769230769231,
+            "minimum": 1e-08
+          },
+          {
+            "id": "height-endpoints-distinct",
+            "kind": "DISTINCT_POINTS",
+            "refs": [
+              "H0",
+              "H1"
+            ],
+            "observed": 6.0,
+            "minimum": 1e-08
+          }
+        ]
+      },
+      "sourceConditionCoverage": [
+        "첫 번째 거리 조건의 두 평행 경계와 그 위 네 교점",
+        "두 번째 점-직선 거리 조건의 ± 경계와 그 위 네 교점",
+        "두 평행선 쌍이 만드는 단순·비퇴화 평행사변형",
+        "면적·둘레 또는 매개변수에 직접 쓰이는 base/strip 치수"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "factRoles": {
+        "distanceLoci": "GIVEN",
+        "oppositeParallelSides": "DERIVED_INTERMEDIATE",
+        "perpendicularStripWidth": "DERIVED_INTERMEDIATE",
+        "areaOrPerimeterRelation": "CONCLUSION"
+      }
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-PALMA25-2MID-Q23-A3",
+      "mode": "VERTICAL_X_STRIP",
+      "distanceParameters": {
+        "a": 5,
+        "b": 3,
+        "lineCoefficients": [
+          8,
+          -15,
+          0
+        ],
+        "normalLength": 17,
+        "offsetD": 51
+      },
+      "sourceEquation": {
+        "first": "x=±a",
+        "second": "8x-15y+0=±51"
+      },
+      "sourceIntersectionCoordinates": {
+        "P0": [
+          "-5",
+          "-91/15"
+        ],
+        "P1": [
+          "5",
+          "-11/15"
+        ],
+        "P2": [
+          "5",
+          "91/15"
+        ],
+        "P3": [
+          "-5",
+          "11/15"
+        ]
+      },
+      "sourceConditionResiduals": [
+        {
+          "pointId": "P0",
+          "xFromVerticalLine": "5",
+          "expectedXDistance": "5",
+          "xDistanceResidual": 0.0,
+          "lineValue": "51",
+          "lineNormalLength": 17,
+          "expectedLineDistance": "3",
+          "observedLineDistance": "3",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P1",
+          "xFromVerticalLine": "5",
+          "expectedXDistance": "5",
+          "xDistanceResidual": 0.0,
+          "lineValue": "51",
+          "lineNormalLength": 17,
+          "expectedLineDistance": "3",
+          "observedLineDistance": "3",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P2",
+          "xFromVerticalLine": "5",
+          "expectedXDistance": "5",
+          "xDistanceResidual": 0.0,
+          "lineValue": "-51",
+          "lineNormalLength": 17,
+          "expectedLineDistance": "3",
+          "observedLineDistance": "3",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P3",
+          "xFromVerticalLine": "5",
+          "expectedXDistance": "5",
+          "xDistanceResidual": 0.0,
+          "lineValue": "-51",
+          "lineNormalLength": 17,
+          "expectedLineDistance": "3",
+          "observedLineDistance": "3",
+          "lineDistanceResidual": 0.0
+        }
+      ],
+      "pointCoordinates": {
+        "P0": [
+          0.0,
+          0.0
+        ],
+        "P1": [
+          5.333333333333333,
+          10.0
+        ],
+        "P2": [
+          12.133333333333333,
+          10.0
+        ],
+        "P3": [
+          6.8,
+          0.0
+        ],
+        "H0": [
+          6.066666666666666,
+          0.0
+        ],
+        "H1": [
+          6.066666666666666,
+          10.0
+        ]
+      },
+      "pointCoordinatesExact": {
+        "P0": [
+          "0",
+          "0"
+        ],
+        "P1": [
+          "16/3",
+          "10"
+        ],
+        "P2": [
+          "182/15",
+          "10"
+        ],
+        "P3": [
+          "34/5",
+          "0"
+        ],
+        "H0": [
+          "91/15",
+          "0"
+        ],
+        "H1": [
+          "91/15",
+          "10"
+        ]
+      },
+      "sideLengths": {
+        "verticalSide": 6.8,
+        "slantedSide": 11.333333333333334,
+        "perpendicularStripWidth": 10.0
+      },
+      "exactSideLengths": {
+        "verticalSide": "34/5",
+        "perpendicularStripWidth": "10",
+        "slantedSide": "34/3"
+      },
+      "area": 68.0,
+      "areaExact": "68",
+      "perimeter": 36.266666666666666,
+      "heightOwnerPoints": [
+        "H0",
+        "H1"
+      ],
+      "normalizationOrigin": "P0",
+      "normalizationXAxisPoint": "P3",
+      "normalizationUnitScale": 6.8,
+      "approvedSolutionWitnessValidation": {
+        "kind": "DIRECT_AREA_WITNESS",
+        "value": 68,
+        "verified": true
+      },
+      "packageSolutionSha256": "e8b1ae671096e69395f7a4ebc5b28a6a7cf4a787a93d4954b0c98e23f1a4312a",
+      "packageStemSha256": "b469f1500b288bd5fa95568b1436d073445761a5e2c4966af192b0cfe82bac57",
+      "problemVisualDecision": "NO_VISUAL",
+      "solutionVisualDecision": "SOLUTION_SVG_BENEFICIAL_SEPARATE_PALMA_LINE",
+      "problemVisualReason": "문제는 거리식만으로 완결되지만 해설은 네 교점과 평행사변형 높이 관계의 SVG가 교육적으로 유익함",
+      "solutionVisualReason": "The four distance-locus intersections form a parallelogram; owner-bound base/strip dimensions make the area or perimeter relation easier to see while the solution prose retains the algebra and conclusion.",
+      "coordinateEvidence": {
+        "mode": "CONSTRUCTED_REALIZATION",
+        "rationale": "Original coordinates are intersections of the two stated distance-locus line pairs. The diagram uses a rigid translation/reflection of those four exact intersections so the first base lies on the positive x-axis; perpendicular strip width, both parallel side pairs, exact side lengths, and area are preserved. These are constructed coordinates, not source coordinate claims.",
+        "normalization": {
+          "originPoint": "P0",
+          "xAxisPoint": "P3",
+          "unitScale": 6.8
+        },
+        "freeVariables": [
+          {
+            "id": "a",
+            "value": 5
+          },
+          {
+            "id": "b",
+            "value": 3
+          },
+          {
+            "id": "lineCoefficients0",
+            "value": 8
+          },
+          {
+            "id": "lineCoefficients1",
+            "value": -15
+          },
+          {
+            "id": "lineCoefficients2",
+            "value": 0
+          },
+          {
+            "id": "normalLength",
+            "value": 17
+          },
+          {
+            "id": "offsetD",
+            "value": 51
+          }
+        ],
+        "pointCoordinates": {
+          "P0": [
+            0.0,
+            0.0
+          ],
+          "P1": [
+            5.333333333333333,
+            10.0
+          ],
+          "P2": [
+            12.133333333333333,
+            10.0
+          ],
+          "P3": [
+            6.8,
+            0.0
+          ],
+          "H0": [
+            6.066666666666666,
+            0.0
+          ],
+          "H1": [
+            6.066666666666666,
+            10.0
+          ]
+        },
+        "conditions": [
+          {
+            "id": "base-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P0",
+              "P3"
+            ],
+            "tolerance": 1e-09,
+            "expected": 6.8
+          },
+          {
+            "id": "opposite-base-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P1",
+              "P2"
+            ],
+            "tolerance": 1e-09,
+            "expected": 6.8
+          },
+          {
+            "id": "first-oblique-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P0",
+              "P1"
+            ],
+            "tolerance": 1e-09,
+            "expected": 11.333333333333334
+          },
+          {
+            "id": "opposite-oblique-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P3",
+              "P2"
+            ],
+            "tolerance": 1e-09,
+            "expected": 11.333333333333334
+          },
+          {
+            "id": "strip-height-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "H0",
+              "H1"
+            ],
+            "tolerance": 1e-09,
+            "expected": 10.0
+          },
+          {
+            "id": "parallel-base-sides",
+            "kind": "PARALLEL",
+            "refs": [
+              "P0",
+              "P3",
+              "P1",
+              "P2"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "parallel-oblique-sides",
+            "kind": "PARALLEL",
+            "refs": [
+              "P0",
+              "P1",
+              "P3",
+              "P2"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-perpendicular-to-base",
+            "kind": "PERPENDICULAR",
+            "refs": [
+              "P0",
+              "P3",
+              "H0",
+              "H1"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-foot-on-base",
+            "kind": "COLLINEAR",
+            "refs": [
+              "P0",
+              "P3",
+              "H0"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-head-on-opposite-base",
+            "kind": "COLLINEAR",
+            "refs": [
+              "P1",
+              "P2",
+              "H1"
+            ],
+            "tolerance": 1e-09
+          }
+        ],
+        "constructionSteps": [
+          {
+            "id": "construct-p0",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P0",
+            "inputs": []
+          },
+          {
+            "id": "construct-p1",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P1",
+            "inputs": []
+          },
+          {
+            "id": "construct-p2",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P2",
+            "inputs": []
+          },
+          {
+            "id": "construct-p3",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P3",
+            "inputs": []
+          },
+          {
+            "id": "construct-height-foot",
+            "operation": "PERPENDICULAR_HEIGHT_FOOT",
+            "output": "H0",
+            "inputs": [
+              "P0",
+              "P3",
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "id": "construct-height-head",
+            "operation": "PARALLEL_SIDE_HEIGHT_HEAD",
+            "output": "H1",
+            "inputs": [
+              "P1",
+              "P2",
+              "H0"
+            ]
+          }
+        ],
+        "residualChecks": [
+          {
+            "conditionId": "base-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "opposite-base-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "first-oblique-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "opposite-oblique-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "strip-height-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "parallel-base-sides",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "parallel-oblique-sides",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-perpendicular-to-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-foot-on-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-head-on-opposite-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          }
+        ],
+        "degeneracyChecks": [
+          {
+            "id": "parallelogram-nondegenerate",
+            "kind": "NONCOLLINEAR",
+            "refs": [
+              "P0",
+              "P1",
+              "P3"
+            ],
+            "observed": 0.8823529411764707,
+            "minimum": 1e-08
+          },
+          {
+            "id": "height-endpoints-distinct",
+            "kind": "DISTINCT_POINTS",
+            "refs": [
+              "H0",
+              "H1"
+            ],
+            "observed": 10.0,
+            "minimum": 1e-08
+          }
+        ]
+      },
+      "sourceConditionCoverage": [
+        "첫 번째 거리 조건의 두 평행 경계와 그 위 네 교점",
+        "두 번째 점-직선 거리 조건의 ± 경계와 그 위 네 교점",
+        "두 평행선 쌍이 만드는 단순·비퇴화 평행사변형",
+        "면적·둘레 또는 매개변수에 직접 쓰이는 base/strip 치수"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "factRoles": {
+        "distanceLoci": "GIVEN",
+        "oppositeParallelSides": "DERIVED_INTERMEDIATE",
+        "perpendicularStripWidth": "DERIVED_INTERMEDIATE",
+        "areaOrPerimeterRelation": "CONCLUSION"
+      }
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-PALMA25-2MID-Q23-B1",
+      "mode": "HORIZONTAL_Y_STRIP",
+      "distanceParameters": {
+        "horizontalDistance": 2,
+        "obliqueDistance": 3,
+        "lineCoefficients": [
+          3,
+          4,
+          0
+        ],
+        "normalLength": 5,
+        "offsetD": 15
+      },
+      "sourceEquation": {
+        "first": "y=±h",
+        "second": "3x+4y=±15"
+      },
+      "sourceIntersectionCoordinates": {
+        "P0": [
+          "-23/3",
+          "2"
+        ],
+        "P1": [
+          "7/3",
+          "2"
+        ],
+        "P2": [
+          "23/3",
+          "-2"
+        ],
+        "P3": [
+          "-7/3",
+          "-2"
+        ]
+      },
+      "sourceConditionResiduals": [
+        {
+          "pointId": "P0",
+          "yFromHorizontalLine": "2",
+          "expectedYDistance": "2",
+          "yDistanceResidual": 0.0,
+          "lineValue": "-15",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "3",
+          "observedLineDistance": "3",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P1",
+          "yFromHorizontalLine": "2",
+          "expectedYDistance": "2",
+          "yDistanceResidual": 0.0,
+          "lineValue": "15",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "3",
+          "observedLineDistance": "3",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P2",
+          "yFromHorizontalLine": "2",
+          "expectedYDistance": "2",
+          "yDistanceResidual": 0.0,
+          "lineValue": "15",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "3",
+          "observedLineDistance": "3",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P3",
+          "yFromHorizontalLine": "2",
+          "expectedYDistance": "2",
+          "yDistanceResidual": 0.0,
+          "lineValue": "-15",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "3",
+          "observedLineDistance": "3",
+          "lineDistanceResidual": 0.0
+        }
+      ],
+      "pointCoordinates": {
+        "P0": [
+          0.0,
+          0.0
+        ],
+        "P1": [
+          10.0,
+          0.0
+        ],
+        "P2": [
+          15.333333333333334,
+          -4.0
+        ],
+        "P3": [
+          5.333333333333333,
+          -4.0
+        ],
+        "H0": [
+          7.666666666666667,
+          0.0
+        ],
+        "H1": [
+          7.666666666666667,
+          -4.0
+        ]
+      },
+      "pointCoordinatesExact": {
+        "P0": [
+          "0",
+          "0"
+        ],
+        "P1": [
+          "10",
+          "0"
+        ],
+        "P2": [
+          "46/3",
+          "-4"
+        ],
+        "P3": [
+          "16/3",
+          "-4"
+        ],
+        "H0": [
+          "23/3",
+          "0"
+        ],
+        "H1": [
+          "23/3",
+          "-4"
+        ]
+      },
+      "sideLengths": {
+        "horizontalSide": 10.0,
+        "slantedSide": 6.666666666666666,
+        "perpendicularStripWidth": 4.0
+      },
+      "exactSideLengths": {
+        "horizontalSide": "10",
+        "perpendicularStripWidth": "4"
+      },
+      "area": 40.0,
+      "areaExact": "40",
+      "heightOwnerPoints": [
+        "H0",
+        "H1"
+      ],
+      "normalizationOrigin": "P0",
+      "normalizationXAxisPoint": "P1",
+      "normalizationUnitScale": 10.0,
+      "approvedSolutionWitnessValidation": {
+        "kind": "DIRECT_AREA_WITNESS",
+        "value": 40,
+        "verified": true
+      },
+      "packageSolutionSha256": "138cae43b2a40d733d98679a023d0f5782996f84d078f3bca73f111d9b5e8736",
+      "packageStemSha256": "c394c3c2e43182f08a2a35d3e894ee5ea5a6d2aab4ae7f642c9448160f5da0b3",
+      "problemVisualDecision": "NO_VISUAL",
+      "solutionVisualDecision": "SOLUTION_SVG_BENEFICIAL_SEPARATE_PALMA_LINE",
+      "problemVisualReason": "정확한 좌표 관계·평행사변형 변 또는 넓이 구조가 해설 SVG에서 드러남",
+      "solutionVisualReason": "The four distance-locus intersections form a parallelogram; owner-bound base/strip dimensions make the area or perimeter relation easier to see while the solution prose retains the algebra and conclusion.",
+      "coordinateEvidence": {
+        "mode": "CONSTRUCTED_REALIZATION",
+        "rationale": "Original coordinates are intersections of the two stated distance-locus line pairs. The diagram uses a rigid translation/reflection of those four exact intersections so the first base lies on the positive x-axis; perpendicular strip width, both parallel side pairs, exact side lengths, and area are preserved. These are constructed coordinates, not source coordinate claims.",
+        "normalization": {
+          "originPoint": "P0",
+          "xAxisPoint": "P1",
+          "unitScale": 10.0
+        },
+        "freeVariables": [
+          {
+            "id": "horizontalDistance",
+            "value": 2
+          },
+          {
+            "id": "obliqueDistance",
+            "value": 3
+          },
+          {
+            "id": "lineCoefficients0",
+            "value": 3
+          },
+          {
+            "id": "lineCoefficients1",
+            "value": 4
+          },
+          {
+            "id": "lineCoefficients2",
+            "value": 0
+          },
+          {
+            "id": "normalLength",
+            "value": 5
+          },
+          {
+            "id": "offsetD",
+            "value": 15
+          }
+        ],
+        "pointCoordinates": {
+          "P0": [
+            0.0,
+            0.0
+          ],
+          "P1": [
+            10.0,
+            0.0
+          ],
+          "P2": [
+            15.333333333333334,
+            -4.0
+          ],
+          "P3": [
+            5.333333333333333,
+            -4.0
+          ],
+          "H0": [
+            7.666666666666667,
+            0.0
+          ],
+          "H1": [
+            7.666666666666667,
+            -4.0
+          ]
+        },
+        "conditions": [
+          {
+            "id": "base-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P0",
+              "P1"
+            ],
+            "tolerance": 1e-09,
+            "expected": 10.0
+          },
+          {
+            "id": "opposite-base-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P3",
+              "P2"
+            ],
+            "tolerance": 1e-09,
+            "expected": 10.0
+          },
+          {
+            "id": "first-oblique-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P1",
+              "P2"
+            ],
+            "tolerance": 1e-09,
+            "expected": 6.666666666666666
+          },
+          {
+            "id": "opposite-oblique-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P3",
+              "P0"
+            ],
+            "tolerance": 1e-09,
+            "expected": 6.666666666666666
+          },
+          {
+            "id": "strip-height-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "H0",
+              "H1"
+            ],
+            "tolerance": 1e-09,
+            "expected": 4.0
+          },
+          {
+            "id": "parallel-base-sides",
+            "kind": "PARALLEL",
+            "refs": [
+              "P0",
+              "P1",
+              "P3",
+              "P2"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "parallel-oblique-sides",
+            "kind": "PARALLEL",
+            "refs": [
+              "P1",
+              "P2",
+              "P0",
+              "P3"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-perpendicular-to-base",
+            "kind": "PERPENDICULAR",
+            "refs": [
+              "P0",
+              "P1",
+              "H0",
+              "H1"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-foot-on-base",
+            "kind": "COLLINEAR",
+            "refs": [
+              "P0",
+              "P1",
+              "H0"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-head-on-opposite-base",
+            "kind": "COLLINEAR",
+            "refs": [
+              "P3",
+              "P2",
+              "H1"
+            ],
+            "tolerance": 1e-09
+          }
+        ],
+        "constructionSteps": [
+          {
+            "id": "construct-p0",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P0",
+            "inputs": []
+          },
+          {
+            "id": "construct-p1",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P1",
+            "inputs": []
+          },
+          {
+            "id": "construct-p2",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P2",
+            "inputs": []
+          },
+          {
+            "id": "construct-p3",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P3",
+            "inputs": []
+          },
+          {
+            "id": "construct-height-foot",
+            "operation": "PERPENDICULAR_HEIGHT_FOOT",
+            "output": "H0",
+            "inputs": [
+              "P0",
+              "P3",
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "id": "construct-height-head",
+            "operation": "PARALLEL_SIDE_HEIGHT_HEAD",
+            "output": "H1",
+            "inputs": [
+              "P1",
+              "P2",
+              "H0"
+            ]
+          }
+        ],
+        "residualChecks": [
+          {
+            "conditionId": "base-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "opposite-base-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "first-oblique-side-length",
+            "residual": 8.881784197001252e-16,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "opposite-oblique-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "strip-height-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "parallel-base-sides",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "parallel-oblique-sides",
+            "residual": 7.993605777301127e-17,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-perpendicular-to-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-foot-on-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-head-on-opposite-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          }
+        ],
+        "degeneracyChecks": [
+          {
+            "id": "parallelogram-nondegenerate",
+            "kind": "NONCOLLINEAR",
+            "refs": [
+              "P0",
+              "P1",
+              "P3"
+            ],
+            "observed": 0.6000000000000001,
+            "minimum": 1e-08
+          },
+          {
+            "id": "height-endpoints-distinct",
+            "kind": "DISTINCT_POINTS",
+            "refs": [
+              "H0",
+              "H1"
+            ],
+            "observed": 4.0,
+            "minimum": 1e-08
+          }
+        ]
+      },
+      "sourceConditionCoverage": [
+        "첫 번째 거리 조건의 두 평행 경계와 그 위 네 교점",
+        "두 번째 점-직선 거리 조건의 ± 경계와 그 위 네 교점",
+        "두 평행선 쌍이 만드는 단순·비퇴화 평행사변형",
+        "면적·둘레 또는 매개변수에 직접 쓰이는 base/strip 치수"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "factRoles": {
+        "distanceLoci": "GIVEN",
+        "oppositeParallelSides": "DERIVED_INTERMEDIATE",
+        "perpendicularStripWidth": "DERIVED_INTERMEDIATE",
+        "areaOrPerimeterRelation": "CONCLUSION"
+      }
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-PALMA25-2MID-Q23-B2",
+      "mode": "VERTICAL_X_STRIP",
+      "distanceParameters": {
+        "a": 3,
+        "b": 4,
+        "lineCoefficients": [
+          3,
+          -4,
+          0
+        ],
+        "normalLength": 5,
+        "offsetD": 20
+      },
+      "sourceEquation": {
+        "first": "x=±a",
+        "second": "3x-4y+0=±20"
+      },
+      "sourceIntersectionCoordinates": {
+        "P0": [
+          "-3",
+          "-29/4"
+        ],
+        "P1": [
+          "3",
+          "-11/4"
+        ],
+        "P2": [
+          "3",
+          "29/4"
+        ],
+        "P3": [
+          "-3",
+          "11/4"
+        ]
+      },
+      "sourceConditionResiduals": [
+        {
+          "pointId": "P0",
+          "xFromVerticalLine": "3",
+          "expectedXDistance": "3",
+          "xDistanceResidual": 0.0,
+          "lineValue": "20",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "4",
+          "observedLineDistance": "4",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P1",
+          "xFromVerticalLine": "3",
+          "expectedXDistance": "3",
+          "xDistanceResidual": 0.0,
+          "lineValue": "20",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "4",
+          "observedLineDistance": "4",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P2",
+          "xFromVerticalLine": "3",
+          "expectedXDistance": "3",
+          "xDistanceResidual": 0.0,
+          "lineValue": "-20",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "4",
+          "observedLineDistance": "4",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P3",
+          "xFromVerticalLine": "3",
+          "expectedXDistance": "3",
+          "xDistanceResidual": 0.0,
+          "lineValue": "-20",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "4",
+          "observedLineDistance": "4",
+          "lineDistanceResidual": 0.0
+        }
+      ],
+      "pointCoordinates": {
+        "P0": [
+          0.0,
+          0.0
+        ],
+        "P1": [
+          4.5,
+          6.0
+        ],
+        "P2": [
+          14.5,
+          6.0
+        ],
+        "P3": [
+          10.0,
+          0.0
+        ],
+        "H0": [
+          7.25,
+          0.0
+        ],
+        "H1": [
+          7.25,
+          6.0
+        ]
+      },
+      "pointCoordinatesExact": {
+        "P0": [
+          "0",
+          "0"
+        ],
+        "P1": [
+          "9/2",
+          "6"
+        ],
+        "P2": [
+          "29/2",
+          "6"
+        ],
+        "P3": [
+          "10",
+          "0"
+        ],
+        "H0": [
+          "29/4",
+          "0"
+        ],
+        "H1": [
+          "29/4",
+          "6"
+        ]
+      },
+      "sideLengths": {
+        "verticalSide": 10.0,
+        "slantedSide": 7.5,
+        "perpendicularStripWidth": 6.0
+      },
+      "exactSideLengths": {
+        "verticalSide": "10",
+        "perpendicularStripWidth": "6",
+        "slantedSide": "15/2"
+      },
+      "area": 60.0,
+      "areaExact": "60",
+      "perimeter": 35.0,
+      "heightOwnerPoints": [
+        "H0",
+        "H1"
+      ],
+      "normalizationOrigin": "P0",
+      "normalizationXAxisPoint": "P3",
+      "normalizationUnitScale": 10.0,
+      "approvedSolutionWitnessValidation": {
+        "kind": "INVERSE_DISTANCE_TARGET_AREA",
+        "expression": "15t",
+        "t": 4,
+        "targetArea": 60,
+        "verified": true
+      },
+      "packageSolutionSha256": "7f3838bf28618eec5fdaf861cc59c6ffcbe579b10450bee0d7e5c262066ae8e4",
+      "packageStemSha256": "e5dee4e91d14ec477cc21ef39e37f7800da51b5920a62a74884696844ae4c018",
+      "problemVisualDecision": "NO_VISUAL",
+      "solutionVisualDecision": "SOLUTION_SVG_BENEFICIAL_SEPARATE_PALMA_LINE",
+      "problemVisualReason": "정확한 좌표 관계·평행사변형 변 또는 넓이 구조가 해설 SVG에서 드러남",
+      "solutionVisualReason": "The four distance-locus intersections form a parallelogram; owner-bound base/strip dimensions make the area or perimeter relation easier to see while the solution prose retains the algebra and conclusion.",
+      "coordinateEvidence": {
+        "mode": "CONSTRUCTED_REALIZATION",
+        "rationale": "Original coordinates are intersections of the two stated distance-locus line pairs. The diagram uses a rigid translation/reflection of those four exact intersections so the first base lies on the positive x-axis; perpendicular strip width, both parallel side pairs, exact side lengths, and area are preserved. These are constructed coordinates, not source coordinate claims.",
+        "normalization": {
+          "originPoint": "P0",
+          "xAxisPoint": "P3",
+          "unitScale": 10.0
+        },
+        "freeVariables": [
+          {
+            "id": "a",
+            "value": 3
+          },
+          {
+            "id": "b",
+            "value": 4
+          },
+          {
+            "id": "lineCoefficients0",
+            "value": 3
+          },
+          {
+            "id": "lineCoefficients1",
+            "value": -4
+          },
+          {
+            "id": "lineCoefficients2",
+            "value": 0
+          },
+          {
+            "id": "normalLength",
+            "value": 5
+          },
+          {
+            "id": "offsetD",
+            "value": 20
+          }
+        ],
+        "pointCoordinates": {
+          "P0": [
+            0.0,
+            0.0
+          ],
+          "P1": [
+            4.5,
+            6.0
+          ],
+          "P2": [
+            14.5,
+            6.0
+          ],
+          "P3": [
+            10.0,
+            0.0
+          ],
+          "H0": [
+            7.25,
+            0.0
+          ],
+          "H1": [
+            7.25,
+            6.0
+          ]
+        },
+        "conditions": [
+          {
+            "id": "base-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P0",
+              "P3"
+            ],
+            "tolerance": 1e-09,
+            "expected": 10.0
+          },
+          {
+            "id": "opposite-base-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P1",
+              "P2"
+            ],
+            "tolerance": 1e-09,
+            "expected": 10.0
+          },
+          {
+            "id": "first-oblique-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P0",
+              "P1"
+            ],
+            "tolerance": 1e-09,
+            "expected": 7.5
+          },
+          {
+            "id": "opposite-oblique-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P3",
+              "P2"
+            ],
+            "tolerance": 1e-09,
+            "expected": 7.5
+          },
+          {
+            "id": "strip-height-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "H0",
+              "H1"
+            ],
+            "tolerance": 1e-09,
+            "expected": 6.0
+          },
+          {
+            "id": "parallel-base-sides",
+            "kind": "PARALLEL",
+            "refs": [
+              "P0",
+              "P3",
+              "P1",
+              "P2"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "parallel-oblique-sides",
+            "kind": "PARALLEL",
+            "refs": [
+              "P0",
+              "P1",
+              "P3",
+              "P2"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-perpendicular-to-base",
+            "kind": "PERPENDICULAR",
+            "refs": [
+              "P0",
+              "P3",
+              "H0",
+              "H1"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-foot-on-base",
+            "kind": "COLLINEAR",
+            "refs": [
+              "P0",
+              "P3",
+              "H0"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-head-on-opposite-base",
+            "kind": "COLLINEAR",
+            "refs": [
+              "P1",
+              "P2",
+              "H1"
+            ],
+            "tolerance": 1e-09
+          }
+        ],
+        "constructionSteps": [
+          {
+            "id": "construct-p0",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P0",
+            "inputs": []
+          },
+          {
+            "id": "construct-p1",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P1",
+            "inputs": []
+          },
+          {
+            "id": "construct-p2",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P2",
+            "inputs": []
+          },
+          {
+            "id": "construct-p3",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P3",
+            "inputs": []
+          },
+          {
+            "id": "construct-height-foot",
+            "operation": "PERPENDICULAR_HEIGHT_FOOT",
+            "output": "H0",
+            "inputs": [
+              "P0",
+              "P3",
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "id": "construct-height-head",
+            "operation": "PARALLEL_SIDE_HEIGHT_HEAD",
+            "output": "H1",
+            "inputs": [
+              "P1",
+              "P2",
+              "H0"
+            ]
+          }
+        ],
+        "residualChecks": [
+          {
+            "conditionId": "base-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "opposite-base-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "first-oblique-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "opposite-oblique-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "strip-height-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "parallel-base-sides",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "parallel-oblique-sides",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-perpendicular-to-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-foot-on-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-head-on-opposite-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          }
+        ],
+        "degeneracyChecks": [
+          {
+            "id": "parallelogram-nondegenerate",
+            "kind": "NONCOLLINEAR",
+            "refs": [
+              "P0",
+              "P1",
+              "P3"
+            ],
+            "observed": 0.8,
+            "minimum": 1e-08
+          },
+          {
+            "id": "height-endpoints-distinct",
+            "kind": "DISTINCT_POINTS",
+            "refs": [
+              "H0",
+              "H1"
+            ],
+            "observed": 6.0,
+            "minimum": 1e-08
+          }
+        ]
+      },
+      "sourceConditionCoverage": [
+        "첫 번째 거리 조건의 두 평행 경계와 그 위 네 교점",
+        "두 번째 점-직선 거리 조건의 ± 경계와 그 위 네 교점",
+        "두 평행선 쌍이 만드는 단순·비퇴화 평행사변형",
+        "면적·둘레 또는 매개변수에 직접 쓰이는 base/strip 치수"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "factRoles": {
+        "distanceLoci": "GIVEN",
+        "oppositeParallelSides": "DERIVED_INTERMEDIATE",
+        "perpendicularStripWidth": "DERIVED_INTERMEDIATE",
+        "areaOrPerimeterRelation": "GIVEN"
+      }
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-PALMA25-2MID-Q23-B3",
+      "mode": "VERTICAL_X_STRIP",
+      "distanceParameters": {
+        "a": 2,
+        "b": 3,
+        "lineCoefficients": [
+          3,
+          -4,
+          7
+        ],
+        "normalLength": 5,
+        "offsetD": 15
+      },
+      "sourceEquation": {
+        "first": "x=±a",
+        "second": "3x-4y+7=±15"
+      },
+      "sourceIntersectionCoordinates": {
+        "P0": [
+          "-2",
+          "-7/2"
+        ],
+        "P1": [
+          "2",
+          "-1/2"
+        ],
+        "P2": [
+          "2",
+          "7"
+        ],
+        "P3": [
+          "-2",
+          "4"
+        ]
+      },
+      "sourceConditionResiduals": [
+        {
+          "pointId": "P0",
+          "xFromVerticalLine": "2",
+          "expectedXDistance": "2",
+          "xDistanceResidual": 0.0,
+          "lineValue": "15",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "3",
+          "observedLineDistance": "3",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P1",
+          "xFromVerticalLine": "2",
+          "expectedXDistance": "2",
+          "xDistanceResidual": 0.0,
+          "lineValue": "15",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "3",
+          "observedLineDistance": "3",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P2",
+          "xFromVerticalLine": "2",
+          "expectedXDistance": "2",
+          "xDistanceResidual": 0.0,
+          "lineValue": "-15",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "3",
+          "observedLineDistance": "3",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P3",
+          "xFromVerticalLine": "2",
+          "expectedXDistance": "2",
+          "xDistanceResidual": 0.0,
+          "lineValue": "-15",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "3",
+          "observedLineDistance": "3",
+          "lineDistanceResidual": 0.0
+        }
+      ],
+      "pointCoordinates": {
+        "P0": [
+          0.0,
+          0.0
+        ],
+        "P1": [
+          3.0,
+          4.0
+        ],
+        "P2": [
+          10.5,
+          4.0
+        ],
+        "P3": [
+          7.5,
+          0.0
+        ],
+        "H0": [
+          5.25,
+          0.0
+        ],
+        "H1": [
+          5.25,
+          4.0
+        ]
+      },
+      "pointCoordinatesExact": {
+        "P0": [
+          "0",
+          "0"
+        ],
+        "P1": [
+          "3",
+          "4"
+        ],
+        "P2": [
+          "21/2",
+          "4"
+        ],
+        "P3": [
+          "15/2",
+          "0"
+        ],
+        "H0": [
+          "21/4",
+          "0"
+        ],
+        "H1": [
+          "21/4",
+          "4"
+        ]
+      },
+      "sideLengths": {
+        "verticalSide": 7.5,
+        "slantedSide": 5.0,
+        "perpendicularStripWidth": 4.0
+      },
+      "exactSideLengths": {
+        "verticalSide": "15/2",
+        "perpendicularStripWidth": "4",
+        "slantedSide": "5"
+      },
+      "area": 30.0,
+      "areaExact": "30",
+      "perimeter": 25.0,
+      "heightOwnerPoints": [
+        "H0",
+        "H1"
+      ],
+      "normalizationOrigin": "P0",
+      "normalizationXAxisPoint": "P3",
+      "normalizationUnitScale": 7.5,
+      "approvedSolutionWitnessValidation": {
+        "kind": "DIRECT_AREA_WITNESS",
+        "value": 30,
+        "verified": true
+      },
+      "packageSolutionSha256": "5016904589a4930c3459831b297d8bd66ac54c0e246712cda7f2db7c87d0ad88",
+      "packageStemSha256": "2db5544467056c3494a10301a695424b262c3d717f5b06ee38224f1e0ee5797d",
+      "problemVisualDecision": "NO_VISUAL",
+      "solutionVisualDecision": "SOLUTION_SVG_BENEFICIAL_SEPARATE_PALMA_LINE",
+      "problemVisualReason": "정확한 좌표 관계·평행사변형 변 또는 넓이 구조가 해설 SVG에서 드러남",
+      "solutionVisualReason": "The four distance-locus intersections form a parallelogram; owner-bound base/strip dimensions make the area or perimeter relation easier to see while the solution prose retains the algebra and conclusion.",
+      "coordinateEvidence": {
+        "mode": "CONSTRUCTED_REALIZATION",
+        "rationale": "Original coordinates are intersections of the two stated distance-locus line pairs. The diagram uses a rigid translation/reflection of those four exact intersections so the first base lies on the positive x-axis; perpendicular strip width, both parallel side pairs, exact side lengths, and area are preserved. These are constructed coordinates, not source coordinate claims.",
+        "normalization": {
+          "originPoint": "P0",
+          "xAxisPoint": "P3",
+          "unitScale": 7.5
+        },
+        "freeVariables": [
+          {
+            "id": "a",
+            "value": 2
+          },
+          {
+            "id": "b",
+            "value": 3
+          },
+          {
+            "id": "lineCoefficients0",
+            "value": 3
+          },
+          {
+            "id": "lineCoefficients1",
+            "value": -4
+          },
+          {
+            "id": "lineCoefficients2",
+            "value": 7
+          },
+          {
+            "id": "normalLength",
+            "value": 5
+          },
+          {
+            "id": "offsetD",
+            "value": 15
+          }
+        ],
+        "pointCoordinates": {
+          "P0": [
+            0.0,
+            0.0
+          ],
+          "P1": [
+            3.0,
+            4.0
+          ],
+          "P2": [
+            10.5,
+            4.0
+          ],
+          "P3": [
+            7.5,
+            0.0
+          ],
+          "H0": [
+            5.25,
+            0.0
+          ],
+          "H1": [
+            5.25,
+            4.0
+          ]
+        },
+        "conditions": [
+          {
+            "id": "base-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P0",
+              "P3"
+            ],
+            "tolerance": 1e-09,
+            "expected": 7.5
+          },
+          {
+            "id": "opposite-base-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P1",
+              "P2"
+            ],
+            "tolerance": 1e-09,
+            "expected": 7.5
+          },
+          {
+            "id": "first-oblique-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P0",
+              "P1"
+            ],
+            "tolerance": 1e-09,
+            "expected": 5.0
+          },
+          {
+            "id": "opposite-oblique-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P3",
+              "P2"
+            ],
+            "tolerance": 1e-09,
+            "expected": 5.0
+          },
+          {
+            "id": "strip-height-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "H0",
+              "H1"
+            ],
+            "tolerance": 1e-09,
+            "expected": 4.0
+          },
+          {
+            "id": "parallel-base-sides",
+            "kind": "PARALLEL",
+            "refs": [
+              "P0",
+              "P3",
+              "P1",
+              "P2"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "parallel-oblique-sides",
+            "kind": "PARALLEL",
+            "refs": [
+              "P0",
+              "P1",
+              "P3",
+              "P2"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-perpendicular-to-base",
+            "kind": "PERPENDICULAR",
+            "refs": [
+              "P0",
+              "P3",
+              "H0",
+              "H1"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-foot-on-base",
+            "kind": "COLLINEAR",
+            "refs": [
+              "P0",
+              "P3",
+              "H0"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-head-on-opposite-base",
+            "kind": "COLLINEAR",
+            "refs": [
+              "P1",
+              "P2",
+              "H1"
+            ],
+            "tolerance": 1e-09
+          }
+        ],
+        "constructionSteps": [
+          {
+            "id": "construct-p0",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P0",
+            "inputs": []
+          },
+          {
+            "id": "construct-p1",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P1",
+            "inputs": []
+          },
+          {
+            "id": "construct-p2",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P2",
+            "inputs": []
+          },
+          {
+            "id": "construct-p3",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P3",
+            "inputs": []
+          },
+          {
+            "id": "construct-height-foot",
+            "operation": "PERPENDICULAR_HEIGHT_FOOT",
+            "output": "H0",
+            "inputs": [
+              "P0",
+              "P3",
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "id": "construct-height-head",
+            "operation": "PARALLEL_SIDE_HEIGHT_HEAD",
+            "output": "H1",
+            "inputs": [
+              "P1",
+              "P2",
+              "H0"
+            ]
+          }
+        ],
+        "residualChecks": [
+          {
+            "conditionId": "base-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "opposite-base-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "first-oblique-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "opposite-oblique-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "strip-height-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "parallel-base-sides",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "parallel-oblique-sides",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-perpendicular-to-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-foot-on-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-head-on-opposite-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          }
+        ],
+        "degeneracyChecks": [
+          {
+            "id": "parallelogram-nondegenerate",
+            "kind": "NONCOLLINEAR",
+            "refs": [
+              "P0",
+              "P1",
+              "P3"
+            ],
+            "observed": 0.8,
+            "minimum": 1e-08
+          },
+          {
+            "id": "height-endpoints-distinct",
+            "kind": "DISTINCT_POINTS",
+            "refs": [
+              "H0",
+              "H1"
+            ],
+            "observed": 4.0,
+            "minimum": 1e-08
+          }
+        ]
+      },
+      "sourceConditionCoverage": [
+        "첫 번째 거리 조건의 두 평행 경계와 그 위 네 교점",
+        "두 번째 점-직선 거리 조건의 ± 경계와 그 위 네 교점",
+        "두 평행선 쌍이 만드는 단순·비퇴화 평행사변형",
+        "면적·둘레 또는 매개변수에 직접 쓰이는 base/strip 치수"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "factRoles": {
+        "distanceLoci": "GIVEN",
+        "oppositeParallelSides": "DERIVED_INTERMEDIATE",
+        "perpendicularStripWidth": "DERIVED_INTERMEDIATE",
+        "areaOrPerimeterRelation": "CONCLUSION"
+      }
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-PALMA25-2MID-Q23-C1",
+      "mode": "VERTICAL_X_STRIP",
+      "distanceParameters": {
+        "a": 2,
+        "b": 2,
+        "lineCoefficients": [
+          3,
+          -4,
+          0
+        ],
+        "normalLength": 5,
+        "offsetD": 10
+      },
+      "sourceEquation": {
+        "first": "x=±a",
+        "second": "3x-4y+0=±10"
+      },
+      "sourceIntersectionCoordinates": {
+        "P0": [
+          "-2",
+          "-4"
+        ],
+        "P1": [
+          "2",
+          "-1"
+        ],
+        "P2": [
+          "2",
+          "4"
+        ],
+        "P3": [
+          "-2",
+          "1"
+        ]
+      },
+      "sourceConditionResiduals": [
+        {
+          "pointId": "P0",
+          "xFromVerticalLine": "2",
+          "expectedXDistance": "2",
+          "xDistanceResidual": 0.0,
+          "lineValue": "10",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "2",
+          "observedLineDistance": "2",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P1",
+          "xFromVerticalLine": "2",
+          "expectedXDistance": "2",
+          "xDistanceResidual": 0.0,
+          "lineValue": "10",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "2",
+          "observedLineDistance": "2",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P2",
+          "xFromVerticalLine": "2",
+          "expectedXDistance": "2",
+          "xDistanceResidual": 0.0,
+          "lineValue": "-10",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "2",
+          "observedLineDistance": "2",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P3",
+          "xFromVerticalLine": "2",
+          "expectedXDistance": "2",
+          "xDistanceResidual": 0.0,
+          "lineValue": "-10",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "2",
+          "observedLineDistance": "2",
+          "lineDistanceResidual": 0.0
+        }
+      ],
+      "pointCoordinates": {
+        "P0": [
+          0.0,
+          0.0
+        ],
+        "P1": [
+          3.0,
+          4.0
+        ],
+        "P2": [
+          8.0,
+          4.0
+        ],
+        "P3": [
+          5.0,
+          0.0
+        ],
+        "H0": [
+          4.0,
+          0.0
+        ],
+        "H1": [
+          4.0,
+          4.0
+        ]
+      },
+      "pointCoordinatesExact": {
+        "P0": [
+          "0",
+          "0"
+        ],
+        "P1": [
+          "3",
+          "4"
+        ],
+        "P2": [
+          "8",
+          "4"
+        ],
+        "P3": [
+          "5",
+          "0"
+        ],
+        "H0": [
+          "4",
+          "0"
+        ],
+        "H1": [
+          "4",
+          "4"
+        ]
+      },
+      "sideLengths": {
+        "verticalSide": 5.0,
+        "slantedSide": 5.0,
+        "perpendicularStripWidth": 4.0
+      },
+      "exactSideLengths": {
+        "verticalSide": "5",
+        "perpendicularStripWidth": "4",
+        "slantedSide": "5"
+      },
+      "area": 20.0,
+      "areaExact": "20",
+      "perimeter": 20.0,
+      "heightOwnerPoints": [
+        "H0",
+        "H1"
+      ],
+      "normalizationOrigin": "P0",
+      "normalizationXAxisPoint": "P3",
+      "normalizationUnitScale": 5.0,
+      "approvedSolutionWitnessValidation": {
+        "kind": "SLOPE_INVERSE_TARGET_AREA",
+        "expression": "16sqrt(k^2+1)",
+        "k": "3/4",
+        "targetArea": 20,
+        "verified": true
+      },
+      "packageSolutionSha256": "40eaeffd97f90ec886702d3776b04e07d17fc4147a242c9177474eb20b0135ba",
+      "packageStemSha256": "820e09efee8923202e4cfa3a95490bd51fdc8c36811f597d2d15d104e41ba46d",
+      "problemVisualDecision": "NO_VISUAL",
+      "solutionVisualDecision": "SOLUTION_SVG_BENEFICIAL_SEPARATE_PALMA_LINE",
+      "problemVisualReason": "정확한 좌표 관계·평행사변형 변 또는 넓이 구조가 해설 SVG에서 드러남",
+      "solutionVisualReason": "The four distance-locus intersections form a parallelogram; owner-bound base/strip dimensions make the area or perimeter relation easier to see while the solution prose retains the algebra and conclusion.",
+      "coordinateEvidence": {
+        "mode": "CONSTRUCTED_REALIZATION",
+        "rationale": "Original coordinates are intersections of the two stated distance-locus line pairs. The diagram uses a rigid translation/reflection of those four exact intersections so the first base lies on the positive x-axis; perpendicular strip width, both parallel side pairs, exact side lengths, and area are preserved. These are constructed coordinates, not source coordinate claims.",
+        "normalization": {
+          "originPoint": "P0",
+          "xAxisPoint": "P3",
+          "unitScale": 5.0
+        },
+        "freeVariables": [
+          {
+            "id": "a",
+            "value": 2
+          },
+          {
+            "id": "b",
+            "value": 2
+          },
+          {
+            "id": "lineCoefficients0",
+            "value": 3
+          },
+          {
+            "id": "lineCoefficients1",
+            "value": -4
+          },
+          {
+            "id": "lineCoefficients2",
+            "value": 0
+          },
+          {
+            "id": "normalLength",
+            "value": 5
+          },
+          {
+            "id": "offsetD",
+            "value": 10
+          }
+        ],
+        "pointCoordinates": {
+          "P0": [
+            0.0,
+            0.0
+          ],
+          "P1": [
+            3.0,
+            4.0
+          ],
+          "P2": [
+            8.0,
+            4.0
+          ],
+          "P3": [
+            5.0,
+            0.0
+          ],
+          "H0": [
+            4.0,
+            0.0
+          ],
+          "H1": [
+            4.0,
+            4.0
+          ]
+        },
+        "conditions": [
+          {
+            "id": "base-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P0",
+              "P3"
+            ],
+            "tolerance": 1e-09,
+            "expected": 5.0
+          },
+          {
+            "id": "opposite-base-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P1",
+              "P2"
+            ],
+            "tolerance": 1e-09,
+            "expected": 5.0
+          },
+          {
+            "id": "first-oblique-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P0",
+              "P1"
+            ],
+            "tolerance": 1e-09,
+            "expected": 5.0
+          },
+          {
+            "id": "opposite-oblique-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P3",
+              "P2"
+            ],
+            "tolerance": 1e-09,
+            "expected": 5.0
+          },
+          {
+            "id": "strip-height-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "H0",
+              "H1"
+            ],
+            "tolerance": 1e-09,
+            "expected": 4.0
+          },
+          {
+            "id": "parallel-base-sides",
+            "kind": "PARALLEL",
+            "refs": [
+              "P0",
+              "P3",
+              "P1",
+              "P2"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "parallel-oblique-sides",
+            "kind": "PARALLEL",
+            "refs": [
+              "P0",
+              "P1",
+              "P3",
+              "P2"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-perpendicular-to-base",
+            "kind": "PERPENDICULAR",
+            "refs": [
+              "P0",
+              "P3",
+              "H0",
+              "H1"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-foot-on-base",
+            "kind": "COLLINEAR",
+            "refs": [
+              "P0",
+              "P3",
+              "H0"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-head-on-opposite-base",
+            "kind": "COLLINEAR",
+            "refs": [
+              "P1",
+              "P2",
+              "H1"
+            ],
+            "tolerance": 1e-09
+          }
+        ],
+        "constructionSteps": [
+          {
+            "id": "construct-p0",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P0",
+            "inputs": []
+          },
+          {
+            "id": "construct-p1",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P1",
+            "inputs": []
+          },
+          {
+            "id": "construct-p2",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P2",
+            "inputs": []
+          },
+          {
+            "id": "construct-p3",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P3",
+            "inputs": []
+          },
+          {
+            "id": "construct-height-foot",
+            "operation": "PERPENDICULAR_HEIGHT_FOOT",
+            "output": "H0",
+            "inputs": [
+              "P0",
+              "P3",
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "id": "construct-height-head",
+            "operation": "PARALLEL_SIDE_HEIGHT_HEAD",
+            "output": "H1",
+            "inputs": [
+              "P1",
+              "P2",
+              "H0"
+            ]
+          }
+        ],
+        "residualChecks": [
+          {
+            "conditionId": "base-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "opposite-base-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "first-oblique-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "opposite-oblique-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "strip-height-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "parallel-base-sides",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "parallel-oblique-sides",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-perpendicular-to-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-foot-on-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-head-on-opposite-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          }
+        ],
+        "degeneracyChecks": [
+          {
+            "id": "parallelogram-nondegenerate",
+            "kind": "NONCOLLINEAR",
+            "refs": [
+              "P0",
+              "P1",
+              "P3"
+            ],
+            "observed": 0.8,
+            "minimum": 1e-08
+          },
+          {
+            "id": "height-endpoints-distinct",
+            "kind": "DISTINCT_POINTS",
+            "refs": [
+              "H0",
+              "H1"
+            ],
+            "observed": 4.0,
+            "minimum": 1e-08
+          }
+        ]
+      },
+      "sourceConditionCoverage": [
+        "첫 번째 거리 조건의 두 평행 경계와 그 위 네 교점",
+        "두 번째 점-직선 거리 조건의 ± 경계와 그 위 네 교점",
+        "두 평행선 쌍이 만드는 단순·비퇴화 평행사변형",
+        "면적·둘레 또는 매개변수에 직접 쓰이는 base/strip 치수"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "factRoles": {
+        "distanceLoci": "GIVEN",
+        "oppositeParallelSides": "DERIVED_INTERMEDIATE",
+        "perpendicularStripWidth": "DERIVED_INTERMEDIATE",
+        "areaOrPerimeterRelation": "GIVEN"
+      }
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-PALMA25-2MID-Q23-C2",
+      "mode": "VERTICAL_X_STRIP",
+      "distanceParameters": {
+        "a": 2,
+        "b": 2,
+        "lineCoefficients": [
+          3,
+          -4,
+          0
+        ],
+        "normalLength": 5,
+        "offsetD": 10
+      },
+      "sourceEquation": {
+        "first": "x=±a",
+        "second": "3x-4y+0=±10"
+      },
+      "sourceIntersectionCoordinates": {
+        "P0": [
+          "-2",
+          "-4"
+        ],
+        "P1": [
+          "2",
+          "-1"
+        ],
+        "P2": [
+          "2",
+          "4"
+        ],
+        "P3": [
+          "-2",
+          "1"
+        ]
+      },
+      "sourceConditionResiduals": [
+        {
+          "pointId": "P0",
+          "xFromVerticalLine": "2",
+          "expectedXDistance": "2",
+          "xDistanceResidual": 0.0,
+          "lineValue": "10",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "2",
+          "observedLineDistance": "2",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P1",
+          "xFromVerticalLine": "2",
+          "expectedXDistance": "2",
+          "xDistanceResidual": 0.0,
+          "lineValue": "10",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "2",
+          "observedLineDistance": "2",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P2",
+          "xFromVerticalLine": "2",
+          "expectedXDistance": "2",
+          "xDistanceResidual": 0.0,
+          "lineValue": "-10",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "2",
+          "observedLineDistance": "2",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P3",
+          "xFromVerticalLine": "2",
+          "expectedXDistance": "2",
+          "xDistanceResidual": 0.0,
+          "lineValue": "-10",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "2",
+          "observedLineDistance": "2",
+          "lineDistanceResidual": 0.0
+        }
+      ],
+      "pointCoordinates": {
+        "P0": [
+          0.0,
+          0.0
+        ],
+        "P1": [
+          3.0,
+          4.0
+        ],
+        "P2": [
+          8.0,
+          4.0
+        ],
+        "P3": [
+          5.0,
+          0.0
+        ],
+        "H0": [
+          4.0,
+          0.0
+        ],
+        "H1": [
+          4.0,
+          4.0
+        ]
+      },
+      "pointCoordinatesExact": {
+        "P0": [
+          "0",
+          "0"
+        ],
+        "P1": [
+          "3",
+          "4"
+        ],
+        "P2": [
+          "8",
+          "4"
+        ],
+        "P3": [
+          "5",
+          "0"
+        ],
+        "H0": [
+          "4",
+          "0"
+        ],
+        "H1": [
+          "4",
+          "4"
+        ]
+      },
+      "sideLengths": {
+        "verticalSide": 5.0,
+        "slantedSide": 5.0,
+        "perpendicularStripWidth": 4.0
+      },
+      "exactSideLengths": {
+        "verticalSide": "5",
+        "perpendicularStripWidth": "4",
+        "slantedSide": "5"
+      },
+      "area": 20.0,
+      "areaExact": "20",
+      "perimeter": 20.0,
+      "heightOwnerPoints": [
+        "H0",
+        "H1"
+      ],
+      "normalizationOrigin": "P0",
+      "normalizationXAxisPoint": "P3",
+      "normalizationUnitScale": 5.0,
+      "approvedSolutionWitnessValidation": {
+        "kind": "PERIMETER_AND_PARALLELOGRAM_AREA",
+        "sideLengths": [
+          5,
+          5
+        ],
+        "perimeter": 20,
+        "area": 20,
+        "verified": true
+      },
+      "packageSolutionSha256": "c33e78c44ab8e38296bb5e8c4c4804c611cecef2effb42676048f865e2df95a7",
+      "packageStemSha256": "66fdc56bab215a281259fd3873752e69654d1c9a920a53406eafb5b36aa3a5a8",
+      "problemVisualDecision": "NO_VISUAL",
+      "solutionVisualDecision": "SOLUTION_SVG_BENEFICIAL_SEPARATE_PALMA_LINE",
+      "problemVisualReason": "정확한 좌표 관계·평행사변형 변 또는 넓이 구조가 해설 SVG에서 드러남",
+      "solutionVisualReason": "The four distance-locus intersections form a parallelogram; owner-bound base/strip dimensions make the area or perimeter relation easier to see while the solution prose retains the algebra and conclusion.",
+      "coordinateEvidence": {
+        "mode": "CONSTRUCTED_REALIZATION",
+        "rationale": "Original coordinates are intersections of the two stated distance-locus line pairs. The diagram uses a rigid translation/reflection of those four exact intersections so the first base lies on the positive x-axis; perpendicular strip width, both parallel side pairs, exact side lengths, and area are preserved. These are constructed coordinates, not source coordinate claims.",
+        "normalization": {
+          "originPoint": "P0",
+          "xAxisPoint": "P3",
+          "unitScale": 5.0
+        },
+        "freeVariables": [
+          {
+            "id": "a",
+            "value": 2
+          },
+          {
+            "id": "b",
+            "value": 2
+          },
+          {
+            "id": "lineCoefficients0",
+            "value": 3
+          },
+          {
+            "id": "lineCoefficients1",
+            "value": -4
+          },
+          {
+            "id": "lineCoefficients2",
+            "value": 0
+          },
+          {
+            "id": "normalLength",
+            "value": 5
+          },
+          {
+            "id": "offsetD",
+            "value": 10
+          }
+        ],
+        "pointCoordinates": {
+          "P0": [
+            0.0,
+            0.0
+          ],
+          "P1": [
+            3.0,
+            4.0
+          ],
+          "P2": [
+            8.0,
+            4.0
+          ],
+          "P3": [
+            5.0,
+            0.0
+          ],
+          "H0": [
+            4.0,
+            0.0
+          ],
+          "H1": [
+            4.0,
+            4.0
+          ]
+        },
+        "conditions": [
+          {
+            "id": "base-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P0",
+              "P3"
+            ],
+            "tolerance": 1e-09,
+            "expected": 5.0
+          },
+          {
+            "id": "opposite-base-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P1",
+              "P2"
+            ],
+            "tolerance": 1e-09,
+            "expected": 5.0
+          },
+          {
+            "id": "first-oblique-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P0",
+              "P1"
+            ],
+            "tolerance": 1e-09,
+            "expected": 5.0
+          },
+          {
+            "id": "opposite-oblique-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P3",
+              "P2"
+            ],
+            "tolerance": 1e-09,
+            "expected": 5.0
+          },
+          {
+            "id": "strip-height-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "H0",
+              "H1"
+            ],
+            "tolerance": 1e-09,
+            "expected": 4.0
+          },
+          {
+            "id": "parallel-base-sides",
+            "kind": "PARALLEL",
+            "refs": [
+              "P0",
+              "P3",
+              "P1",
+              "P2"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "parallel-oblique-sides",
+            "kind": "PARALLEL",
+            "refs": [
+              "P0",
+              "P1",
+              "P3",
+              "P2"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-perpendicular-to-base",
+            "kind": "PERPENDICULAR",
+            "refs": [
+              "P0",
+              "P3",
+              "H0",
+              "H1"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-foot-on-base",
+            "kind": "COLLINEAR",
+            "refs": [
+              "P0",
+              "P3",
+              "H0"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-head-on-opposite-base",
+            "kind": "COLLINEAR",
+            "refs": [
+              "P1",
+              "P2",
+              "H1"
+            ],
+            "tolerance": 1e-09
+          }
+        ],
+        "constructionSteps": [
+          {
+            "id": "construct-p0",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P0",
+            "inputs": []
+          },
+          {
+            "id": "construct-p1",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P1",
+            "inputs": []
+          },
+          {
+            "id": "construct-p2",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P2",
+            "inputs": []
+          },
+          {
+            "id": "construct-p3",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P3",
+            "inputs": []
+          },
+          {
+            "id": "construct-height-foot",
+            "operation": "PERPENDICULAR_HEIGHT_FOOT",
+            "output": "H0",
+            "inputs": [
+              "P0",
+              "P3",
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "id": "construct-height-head",
+            "operation": "PARALLEL_SIDE_HEIGHT_HEAD",
+            "output": "H1",
+            "inputs": [
+              "P1",
+              "P2",
+              "H0"
+            ]
+          }
+        ],
+        "residualChecks": [
+          {
+            "conditionId": "base-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "opposite-base-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "first-oblique-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "opposite-oblique-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "strip-height-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "parallel-base-sides",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "parallel-oblique-sides",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-perpendicular-to-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-foot-on-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-head-on-opposite-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          }
+        ],
+        "degeneracyChecks": [
+          {
+            "id": "parallelogram-nondegenerate",
+            "kind": "NONCOLLINEAR",
+            "refs": [
+              "P0",
+              "P1",
+              "P3"
+            ],
+            "observed": 0.8,
+            "minimum": 1e-08
+          },
+          {
+            "id": "height-endpoints-distinct",
+            "kind": "DISTINCT_POINTS",
+            "refs": [
+              "H0",
+              "H1"
+            ],
+            "observed": 4.0,
+            "minimum": 1e-08
+          }
+        ]
+      },
+      "sourceConditionCoverage": [
+        "첫 번째 거리 조건의 두 평행 경계와 그 위 네 교점",
+        "두 번째 점-직선 거리 조건의 ± 경계와 그 위 네 교점",
+        "두 평행선 쌍이 만드는 단순·비퇴화 평행사변형",
+        "면적·둘레 또는 매개변수에 직접 쓰이는 base/strip 치수"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "factRoles": {
+        "distanceLoci": "GIVEN",
+        "oppositeParallelSides": "DERIVED_INTERMEDIATE",
+        "perpendicularStripWidth": "DERIVED_INTERMEDIATE",
+        "areaOrPerimeterRelation": "DERIVED_INTERMEDIATE"
+      }
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-PALMA25-2MID-Q23-C3",
+      "mode": "VERTICAL_X_STRIP",
+      "distanceParameters": {
+        "a": 3,
+        "b": 4,
+        "lineCoefficients": [
+          3,
+          -4,
+          0
+        ],
+        "normalLength": 5,
+        "offsetD": 20
+      },
+      "sourceEquation": {
+        "first": "x=±a",
+        "second": "3x-4y+0=±20"
+      },
+      "sourceIntersectionCoordinates": {
+        "P0": [
+          "-3",
+          "-29/4"
+        ],
+        "P1": [
+          "3",
+          "-11/4"
+        ],
+        "P2": [
+          "3",
+          "29/4"
+        ],
+        "P3": [
+          "-3",
+          "11/4"
+        ]
+      },
+      "sourceConditionResiduals": [
+        {
+          "pointId": "P0",
+          "xFromVerticalLine": "3",
+          "expectedXDistance": "3",
+          "xDistanceResidual": 0.0,
+          "lineValue": "20",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "4",
+          "observedLineDistance": "4",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P1",
+          "xFromVerticalLine": "3",
+          "expectedXDistance": "3",
+          "xDistanceResidual": 0.0,
+          "lineValue": "20",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "4",
+          "observedLineDistance": "4",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P2",
+          "xFromVerticalLine": "3",
+          "expectedXDistance": "3",
+          "xDistanceResidual": 0.0,
+          "lineValue": "-20",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "4",
+          "observedLineDistance": "4",
+          "lineDistanceResidual": 0.0
+        },
+        {
+          "pointId": "P3",
+          "xFromVerticalLine": "3",
+          "expectedXDistance": "3",
+          "xDistanceResidual": 0.0,
+          "lineValue": "-20",
+          "lineNormalLength": 5,
+          "expectedLineDistance": "4",
+          "observedLineDistance": "4",
+          "lineDistanceResidual": 0.0
+        }
+      ],
+      "pointCoordinates": {
+        "P0": [
+          0.0,
+          0.0
+        ],
+        "P1": [
+          4.5,
+          6.0
+        ],
+        "P2": [
+          14.5,
+          6.0
+        ],
+        "P3": [
+          10.0,
+          0.0
+        ],
+        "H0": [
+          7.25,
+          0.0
+        ],
+        "H1": [
+          7.25,
+          6.0
+        ]
+      },
+      "pointCoordinatesExact": {
+        "P0": [
+          "0",
+          "0"
+        ],
+        "P1": [
+          "9/2",
+          "6"
+        ],
+        "P2": [
+          "29/2",
+          "6"
+        ],
+        "P3": [
+          "10",
+          "0"
+        ],
+        "H0": [
+          "29/4",
+          "0"
+        ],
+        "H1": [
+          "29/4",
+          "6"
+        ]
+      },
+      "sideLengths": {
+        "verticalSide": 10.0,
+        "slantedSide": 7.5,
+        "perpendicularStripWidth": 6.0
+      },
+      "exactSideLengths": {
+        "verticalSide": "10",
+        "perpendicularStripWidth": "6",
+        "slantedSide": "15/2"
+      },
+      "area": 60.0,
+      "areaExact": "60",
+      "perimeter": 35.0,
+      "heightOwnerPoints": [
+        "H0",
+        "H1"
+      ],
+      "normalizationOrigin": "P0",
+      "normalizationXAxisPoint": "P3",
+      "normalizationUnitScale": 10.0,
+      "representativeConfiguration": {
+        "a": 3,
+        "b": 4,
+        "constraint": "a+b=7",
+        "selectedFromAllowedPositiveIntegerPairs": true
+      },
+      "allAllowedConfigurations": [
+        {
+          "a": 1,
+          "b": 6,
+          "area": 30
+        },
+        {
+          "a": 2,
+          "b": 5,
+          "area": 50
+        },
+        {
+          "a": 3,
+          "b": 4,
+          "area": 60
+        },
+        {
+          "a": 4,
+          "b": 3,
+          "area": 60
+        },
+        {
+          "a": 5,
+          "b": 2,
+          "area": 50
+        },
+        {
+          "a": 6,
+          "b": 1,
+          "area": 30
+        }
+      ],
+      "approvedSolutionWitnessValidation": {
+        "kind": "EXHAUSTIVE_POSITIVE_INTEGER_PAIRS",
+        "formula": "5ab",
+        "allowedAreas": [
+          30,
+          50,
+          60,
+          60,
+          50,
+          30
+        ],
+        "minimum": 30,
+        "maximum": 60,
+        "representativeArea": 60,
+        "verified": true
+      },
+      "packageSolutionSha256": "e9029c8fbce96f9e4de9a66b424974e4869f791cc92a924697e0a62d0ab14b56",
+      "packageStemSha256": "2e44aa2d6582c2654735d0d4ff19843b6463787d4d676ce7fd77f210b925e883",
+      "problemVisualDecision": "NO_VISUAL",
+      "solutionVisualDecision": "SOLUTION_SVG_BENEFICIAL_SEPARATE_PALMA_LINE",
+      "problemVisualReason": "정확한 좌표 관계·평행사변형 변 또는 넓이 구조가 해설 SVG에서 드러남",
+      "solutionVisualReason": "The four distance-locus intersections form a parallelogram; owner-bound base/strip dimensions make the area or perimeter relation easier to see while the solution prose retains the algebra and conclusion.",
+      "coordinateEvidence": {
+        "mode": "CONSTRUCTED_REALIZATION",
+        "rationale": "Original coordinates are intersections of the two stated distance-locus line pairs. The diagram uses a rigid translation/reflection of those four exact intersections so the first base lies on the positive x-axis; perpendicular strip width, both parallel side pairs, exact side lengths, and area are preserved. These are constructed coordinates, not source coordinate claims.",
+        "normalization": {
+          "originPoint": "P0",
+          "xAxisPoint": "P3",
+          "unitScale": 10.0
+        },
+        "freeVariables": [
+          {
+            "id": "a",
+            "value": 3
+          },
+          {
+            "id": "b",
+            "value": 4
+          },
+          {
+            "id": "lineCoefficients0",
+            "value": 3
+          },
+          {
+            "id": "lineCoefficients1",
+            "value": -4
+          },
+          {
+            "id": "lineCoefficients2",
+            "value": 0
+          },
+          {
+            "id": "normalLength",
+            "value": 5
+          },
+          {
+            "id": "offsetD",
+            "value": 20
+          }
+        ],
+        "pointCoordinates": {
+          "P0": [
+            0.0,
+            0.0
+          ],
+          "P1": [
+            4.5,
+            6.0
+          ],
+          "P2": [
+            14.5,
+            6.0
+          ],
+          "P3": [
+            10.0,
+            0.0
+          ],
+          "H0": [
+            7.25,
+            0.0
+          ],
+          "H1": [
+            7.25,
+            6.0
+          ]
+        },
+        "conditions": [
+          {
+            "id": "base-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P0",
+              "P3"
+            ],
+            "tolerance": 1e-09,
+            "expected": 10.0
+          },
+          {
+            "id": "opposite-base-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P1",
+              "P2"
+            ],
+            "tolerance": 1e-09,
+            "expected": 10.0
+          },
+          {
+            "id": "first-oblique-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P0",
+              "P1"
+            ],
+            "tolerance": 1e-09,
+            "expected": 7.5
+          },
+          {
+            "id": "opposite-oblique-side-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "P3",
+              "P2"
+            ],
+            "tolerance": 1e-09,
+            "expected": 7.5
+          },
+          {
+            "id": "strip-height-length",
+            "kind": "DISTANCE",
+            "refs": [
+              "H0",
+              "H1"
+            ],
+            "tolerance": 1e-09,
+            "expected": 6.0
+          },
+          {
+            "id": "parallel-base-sides",
+            "kind": "PARALLEL",
+            "refs": [
+              "P0",
+              "P3",
+              "P1",
+              "P2"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "parallel-oblique-sides",
+            "kind": "PARALLEL",
+            "refs": [
+              "P0",
+              "P1",
+              "P3",
+              "P2"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-perpendicular-to-base",
+            "kind": "PERPENDICULAR",
+            "refs": [
+              "P0",
+              "P3",
+              "H0",
+              "H1"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-foot-on-base",
+            "kind": "COLLINEAR",
+            "refs": [
+              "P0",
+              "P3",
+              "H0"
+            ],
+            "tolerance": 1e-09
+          },
+          {
+            "id": "height-head-on-opposite-base",
+            "kind": "COLLINEAR",
+            "refs": [
+              "P1",
+              "P2",
+              "H1"
+            ],
+            "tolerance": 1e-09
+          }
+        ],
+        "constructionSteps": [
+          {
+            "id": "construct-p0",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P0",
+            "inputs": []
+          },
+          {
+            "id": "construct-p1",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P1",
+            "inputs": []
+          },
+          {
+            "id": "construct-p2",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P2",
+            "inputs": []
+          },
+          {
+            "id": "construct-p3",
+            "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+            "output": "P3",
+            "inputs": []
+          },
+          {
+            "id": "construct-height-foot",
+            "operation": "PERPENDICULAR_HEIGHT_FOOT",
+            "output": "H0",
+            "inputs": [
+              "P0",
+              "P3",
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "id": "construct-height-head",
+            "operation": "PARALLEL_SIDE_HEIGHT_HEAD",
+            "output": "H1",
+            "inputs": [
+              "P1",
+              "P2",
+              "H0"
+            ]
+          }
+        ],
+        "residualChecks": [
+          {
+            "conditionId": "base-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "opposite-base-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "first-oblique-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "opposite-oblique-side-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "strip-height-length",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "parallel-base-sides",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "parallel-oblique-sides",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-perpendicular-to-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-foot-on-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          },
+          {
+            "conditionId": "height-head-on-opposite-base",
+            "residual": 0.0,
+            "tolerance": 1e-09
+          }
+        ],
+        "degeneracyChecks": [
+          {
+            "id": "parallelogram-nondegenerate",
+            "kind": "NONCOLLINEAR",
+            "refs": [
+              "P0",
+              "P1",
+              "P3"
+            ],
+            "observed": 0.8,
+            "minimum": 1e-08
+          },
+          {
+            "id": "height-endpoints-distinct",
+            "kind": "DISTINCT_POINTS",
+            "refs": [
+              "H0",
+              "H1"
+            ],
+            "observed": 6.0,
+            "minimum": 1e-08
+          }
+        ]
+      },
+      "sourceConditionCoverage": [
+        "첫 번째 거리 조건의 두 평행 경계와 그 위 네 교점",
+        "두 번째 점-직선 거리 조건의 ± 경계와 그 위 네 교점",
+        "두 평행선 쌍이 만드는 단순·비퇴화 평행사변형",
+        "면적·둘레 또는 매개변수에 직접 쓰이는 base/strip 치수",
+        "양의 정수 a+b=7의 여섯 허용쌍; 도형은 (a,b)=(3,4) 대표 구성"
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "factRoles": {
+        "distanceLoci": "GIVEN",
+        "oppositeParallelSides": "DERIVED_INTERMEDIATE",
+        "perpendicularStripWidth": "DERIVED_INTERMEDIATE",
+        "areaOrPerimeterRelation": "CONCLUSION"
+      }
+    }
+  ]
+}

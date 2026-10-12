@@ -1,0 +1,7 @@
+[
+ {"qid":7,"correctedAnswer":"④ $78$","reason":"Postfreeze topological count uses the opened q07 road asset. Correct lattice DP from A (bottom-left) to B (top-right) is 78; original blind computation used the wrong vertical-edge traversal and gave 72. Stored answer is ④."},
+ {"qid":12,"correctedAnswer":"② $625$","reason":"There are three paired input classes (1,6), (2,5), (3,4), plus singleton 7, giving 5^4=625. Original blind count incorrectly treated four pairs."},
+ {"qid":16,"correctedAnswer":"③ $3/10$","reason":"18 favorable ordered 3-permutations out of 60: hundreds 3 gives 3, hundreds 4 gives 9, hundreds 5 gives 6. Original blind count omitted hundreds digit 3 cases."},
+ {"qid":22,"correctedAnswer":"HOLD: for real a, a=2 or -2 gives a+b=258 or -130; no unique value","reason":"Postfreeze source solution establishes a^6=64 and both real roots, so the student condition does not uniquely determine a+b. Preserve the existing item hold."},
+ {"qid":23,"correctedAnswer":"147","reason":"Enumerating valid nondecreasing first triples by final value gives counts 1,1,1,5,2 for t=1..5, weighted by C(9-t,4), totaling 70+35+15+25+2=147. Original blind enumeration double-counted (1,1,1)."}
+]

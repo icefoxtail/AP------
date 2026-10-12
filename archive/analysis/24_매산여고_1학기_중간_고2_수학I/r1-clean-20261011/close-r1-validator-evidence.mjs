@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+const d='archive/analysis/24_매산여고_1학기_중간_고2_수학I/r1-clean-20261011/';
+const p=d+'r1-technical-attempts-v2.json',a=JSON.parse(fs.readFileSync(p,'utf8'));
+const add=(x)=>{if(!a.attempts.some(y=>y.attempt===x.attempt))a.attempts.push(x)};
+add({attempt:'generic-r1-validator-initial-evidence-v1',status:'FAILED_EVIDENCE_SCHEMA',reportRef:d+'r1-stage-validator.raw.json',reason:'Raw V2 validator found missing examUid and per-row independentAnswerFrozenBeforeStoredAnswer fields across q1–q24; artifact contract itself passed.',correction:'Added exact exam UID, freeze-order flags, and explicit repair dispositions for changed qids; rebound evidence to the same current source and reran validator.'});
+add({attempt:'generic-r1-validator-cli-correction',status:'FAILED_BEFORE_VALIDATION',reportRef:null,reason:'Unsupported --output argument rejected before validation.',correction:'Reran supported --json validator with shell redirection to preserve the raw report.'});
+add({attempt:'generic-r1-validator-final',status:'PASS',reportRef:d+'r1-stage-validator.raw.v2.json',reportSha256:'',evidenceRef:d+'r1-final-evidence.v2.json',evidenceSha256:'45575c2497325ff2a5464c4ecf2c09039284b15ad8ab03f1a39ded2d6b298c21',qidCount:24,issues:[]});
+fs.writeFileSync(p,JSON.stringify(a,null,2)+'\n');
+const cpath=d+'r1-nondifficulty-checkpoint.json',c=JSON.parse(fs.readFileSync(cpath,'utf8'));
+const ledgerBytes=fs.readFileSync(d+'r1-difficulty-level-application-ledger.json');
+const reportBytes=fs.readFileSync(d+'r1-stage-validator.raw.v2.json');
+const evidenceBytes=fs.readFileSync(d+'r1-final-evidence.v2.json');
+const attemptsBytes=fs.readFileSync(p);
+const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+import crypto from 'node:crypto';
+c.difficultyAxis.applicationLedgerSha256=hash(ledgerBytes);
+c.validation={genericR1Validator:'PASS',reportRef:d+'r1-stage-validator.raw.v2.json',reportSha256:hash(reportBytes),evidenceRef:d+'r1-final-evidence.v2.json',evidenceSha256:hash(evidenceBytes),technicalAttemptLogRef:d+'r1-technical-attempts-v2.json',technicalAttemptLogSha256:hash(attemptsBytes),completionSeal:'PENDING_STABLE_SEAL',nextStageAfterClosure:'R2'};
+fs.writeFileSync(cpath,JSON.stringify(c,null,2)+'\n');

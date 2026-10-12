@@ -1,0 +1,14 @@
+import fs from 'node:fs';import path from 'node:path';import {createHash} from 'node:crypto';
+const root=process.cwd(),uid='24_매산여고_1학기_중간_고2_수학I',base=`archive/analysis/${uid}`,r3dir=`${base}/r3-20261011-codex`,renderDir=`${base}/render/r3-q21-revision2`;
+const evidencePath=`${r3dir}/R3.evidence.revision2.json`,capturePath=`${renderDir}/machine-capture.json`,reviewPath=`${renderDir}/R3.capture-review.json`;
+const read=p=>fs.readFileSync(path.resolve(root,p)),json=p=>JSON.parse(read(p)),sha=b=>createHash('sha256').update(b).digest('hex');
+const ev=structuredClone(json(evidencePath)),captureBytes=read(capturePath),capture=json(capturePath),reviewBytes=read(reviewPath),review=json(reviewPath);
+if(capture.artifactSha!=='8a1ff234d287e74217c6b79625ff2c9d152518fb'||review.captureReportSha256!==sha(captureBytes)||!review.cases.every(c=>c.reviewedCaptureSha256s.length===1))throw Error('DURABLE_CAPTURE_REVIEW_BINDING_MISMATCH');
+const previousR3EvidenceSha=sha(read(evidencePath));
+ev.sourceR3Evidence={path:evidencePath,sha256:previousR3EvidenceSha};
+if(ev.reviewedFromPreviousR3)delete ev.reviewedFromPreviousR3.previousFullCapture;
+ev.captureReport={path:capturePath,sha256:sha(captureBytes),status:capture.status,actualCaseIds:capture.cases.map(c=>c.id),loadedJs:capture.loadedJs,originalCaptureReportSha256:'f5877fec67715a9e939a0e7fcc778a5a416f6e07c68c91d4faaf44d3aafa3ac0',durableCases:capture.cases.map(c=>({id:c.id,viewport:c.viewport,capturePaths:c.captures.map(x=>x.image.path),captureSha256s:c.captures.map(x=>x.image.sha256),loadedAssets:c.loadedAssets.map(a=>({ref:a.ref,sha256:a.sha256})),qidCount:c.captures.reduce((n,x)=>n+(x.qids||[]).length,0),mathErrors:c.metrics.mathErrors,scrollWidth:c.metrics.scrollWidth,mechanicalStatus:c.mechanicalStatus}))};
+ev.captureReview={path:reviewPath,sha256:sha(reviewBytes),status:'PASS',coverageQids:Array.from({length:24},(_,i)=>i+1),caseCount:6,changedQids:[21],preservedUnchangedCoverage:{path:`${r3dir}/R3.capture-review.revision2.json`,sha256:sha(read(`${r3dir}/R3.capture-review.revision2.json`))}};
+ev.durableCaptureBinding={status:'BYTE_IDENTICAL_REBIND',captureReportPath:capturePath,captureReportSha256:sha(captureBytes),reviewPath,reviewSha256:sha(reviewBytes),cases:capture.cases.map(c=>({id:c.id,captures:c.captures.map(x=>({path:x.image.path,sha256:x.image.sha256}))}))};
+const str=JSON.stringify(ev);if(str.includes('.tmp'))throw Error('DURABLE_EVIDENCE_CONTAINS_TMP_REFERENCE');
+const out=`${r3dir}/R3.evidence.durable.json`;const outAbs=path.resolve(root,out);if(fs.existsSync(outAbs))throw Error('FRESH_DURABLE_EVIDENCE_REQUIRED');fs.writeFileSync(outAbs,JSON.stringify(ev,null,2)+'\n');console.log(JSON.stringify({path:out,sha256:sha(read(out)),previousEvidence:{path:evidencePath,sha256:previousR3EvidenceSha},captureReport:{path:capturePath,sha256:sha(captureBytes)},review:{path:reviewPath,sha256:sha(reviewBytes)},tmpReferences:JSON.stringify(ev).includes('.tmp')},null,2));

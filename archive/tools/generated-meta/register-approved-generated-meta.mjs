@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
+import {execFileSync} from 'node:child_process';
 import { pathToFileURL } from 'node:url';
 import gate from '../generated-meta-retention-gate.cjs';
 
@@ -77,8 +78,67 @@ function verifyReviewEvidence(root, binding, uid, metaDigest) {
   if (status === 'USER_DIRECTED_QUALITY_APPROVED' && (!Array.isArray(item.scopeUids) || !item.scopeUids.includes(uid) || typeof item.approvalBasis !== 'string' || !item.approvalBasis.startsWith('USER_DIRECTED_QUALITY_APPROVED'))) throw new Error('USER_DIRECTED_APPROVAL_SCOPE_BINDING_INVALID');
   return {
     path: binding.path, sha256: binding.sha256.toLowerCase(), reviewStatus: status,
-    ...(status === 'USER_DIRECTED_QUALITY_APPROVED' ? { approvalBasis: item.approvalBasis, scopeUids: item.scopeUids } : {})
+    ...(status === 'USER_DIRECTED_QUALITY_APPROVED' ? { approvalBasis: item.approvalBasis, scopeUids: item.scopeUids } : {}),
+    ...(evidence.approvalReceiptPath ? { approvalReceiptPath: evidence.approvalReceiptPath, approvalReceiptSha256: evidence.approvalReceiptSha256, approvalReceiptGitBlobSha1: evidence.approvalReceiptGitBlobSha1 } : {}),
+    ...(evidence.approvedPackagePath ? { approvedPackagePath: evidence.approvedPackagePath, approvedPackageSha256: evidence.approvedPackageSha256, approvedPackageGitBlobSha1: evidence.approvedPackageGitBlobSha1 } : {}),
+    ...(evidence.approvedSourceSnapshot ? { approvedSourceSnapshot: evidence.approvedSourceSnapshot } : {}),
+    ...(evidence.currentSource ? { currentSource: evidence.currentSource } : {})
   };
+}
+
+function gitBlobBytes(root, blobSha, label) {
+  if (!HEX40.test(blobSha || '')) throw new Error(`${label}_GIT_BLOB_SHA_REQUIRED`);
+  let bytes;
+  try { bytes = execFileSync('git', ['cat-file', 'blob', blobSha], { cwd: root, maxBuffer: 32 * 1024 * 1024 }); }
+  catch { throw new Error(`${label}_GIT_BLOB_MISSING`); }
+  if (gitBlobSha(bytes).toLowerCase() !== blobSha.toLowerCase()) throw new Error(`${label}_GIT_BLOB_INVALID`);
+  return bytes;
+}
+
+function trackedPathBlob(root, relative, label) {
+  const file = repoFile(root, relative, label);
+  const working = fs.readFileSync(file);
+  let blobSha;
+  try { blobSha = execFileSync('git', ['rev-parse', `HEAD:${relative}`], { cwd: root, encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 }).trim(); }
+  catch { throw new Error(`${label}_GIT_PATH_NOT_IN_HEAD`); }
+  const bytes = gitBlobBytes(root, blobSha, label);
+  const normalizedWorking = Buffer.from(working.toString('utf8').replace(/\r\n/g, '\n').replace(/\r/g, '\n'), 'utf8');
+  const normalizedGit = Buffer.from(bytes.toString('utf8').replace(/\r\n/g, '\n').replace(/\r/g, '\n'), 'utf8');
+  if (!normalizedWorking.equals(normalizedGit)) throw new Error(`${label}_WORKTREE_BYTES_MISMATCH`);
+  return { blobSha1: blobSha, bytes, sha256: sha256Bytes(bytes) };
+}
+
+function verifyHistoricalSourceApproval(root, { uid, approval, authority, proposed, binding, evidence, currentSourceBlobSha1, sourceQuestion }) {
+  if (!binding || typeof binding !== 'object') throw new Error('HISTORICAL_SOURCE_APPROVAL_BINDING_REQUIRED');
+  const sourcePath = authority.sourceArchiveFile || authority.sourceExamPath || binding.sourcePath;
+  const historicalSha = authority.sourceBlobSha || authority.sourceExamBlobSha || binding.sourceBlobSha1;
+  if (binding.sourcePath !== sourcePath || binding.sourceBlobSha1 !== historicalSha || !HEX40.test(historicalSha || '')) throw new Error('HISTORICAL_SOURCE_IDENTITY_BINDING_MISMATCH');
+  if (approval.status !== 'USER_DIRECTED_QUALITY_APPROVED' || proposed.reviewStatus !== approval.status || proposed.reviewApprovalBasis !== evidence.approvalBasis) throw new Error('HISTORICAL_SOURCE_USER_APPROVAL_REQUIRED');
+  const currentBlob=trackedPathBlob(root,sourcePath,'CURRENT_SOURCE_EXAM').blobSha1;
+  if (currentBlob === historicalSha.toLowerCase() || binding.currentSourceBlobSha1 !== currentBlob || currentSourceBlobSha1 !== currentBlob || evidence.currentSource?.path !== sourcePath || evidence.currentSource?.gitBlobSha1 !== currentBlob) throw new Error('HISTORICAL_SOURCE_CURRENT_SOURCE_BINDING_MISMATCH');
+  gitBlobBytes(root, historicalSha, 'HISTORICAL_SOURCE');
+
+  const receiptPath = binding.approvalReceiptPath;
+  const packagePath = binding.approvedPackagePath;
+  if (typeof receiptPath !== 'string' || !receiptPath.startsWith('alive/06_EXECUTION/') || typeof packagePath !== 'string' || !packagePath.startsWith('alive/06_EXECUTION/')) throw new Error('HISTORICAL_SOURCE_APPROVAL_PATH_INVALID');
+  const receipt = trackedPathBlob(root, receiptPath, 'APPROVAL_RECEIPT');
+  const packageBlob = trackedPathBlob(root, packagePath, 'APPROVED_PACKAGE');
+  if (receipt.sha256 !== binding.approvalReceiptSha256 || receipt.blobSha1 !== binding.approvalReceiptGitBlobSha1 || packageBlob.sha256 !== binding.approvedPackageSha256 || packageBlob.blobSha1 !== binding.approvedPackageGitBlobSha1) throw new Error('HISTORICAL_SOURCE_RECEIPT_OR_PACKAGE_BYTES_MISMATCH');
+  if (evidence.approvalReceiptPath !== receiptPath || evidence.approvalReceiptSha256 !== receipt.sha256 || evidence.approvalReceiptGitBlobSha1 !== receipt.blobSha1 || evidence.approvedPackagePath !== packagePath || evidence.approvedPackageSha256 !== packageBlob.sha256 || evidence.approvedPackageGitBlobSha1 !== packageBlob.blobSha1 || evidence.approvedSourceSnapshot?.path !== sourcePath || evidence.approvedSourceSnapshot?.gitBlobSha1 !== historicalSha) throw new Error('HISTORICAL_SOURCE_REVIEW_EVIDENCE_BINDING_MISMATCH');
+  let receiptDoc, packageDoc;
+  try { receiptDoc = JSON.parse(receipt.bytes.toString('utf8')); packageDoc = JSON.parse(packageBlob.bytes.toString('utf8')); }
+  catch { throw new Error('HISTORICAL_SOURCE_RECEIPT_OR_PACKAGE_JSON_INVALID'); }
+  if (receiptDoc.status !== approval.status || receiptDoc.approvalBasis !== proposed.reviewApprovalBasis || receiptDoc.source?.path !== sourcePath || receiptDoc.source?.gitBlobSha1 !== historicalSha || !receiptDoc.scope?.uids?.includes(uid)) throw new Error('HISTORICAL_SOURCE_RECEIPT_SCOPE_MISMATCH');
+  const sourceQid = authority.sourceQid ?? authority.qid ?? proposed.sourceQid;
+  const packageEntry = receiptDoc.packages?.filter(row => row.path === packagePath && row.sourceQid === sourceQid);
+  if (packageEntry?.length !== 1 || packageEntry[0].sha256 !== packageBlob.sha256 || packageEntry[0].gitBlobSha1 !== packageBlob.blobSha1 || !packageEntry[0].uids?.includes(uid)) throw new Error('HISTORICAL_SOURCE_RECEIPT_PACKAGE_BINDING_MISMATCH');
+  if (packageDoc.sourceQid !== sourceQid || packageDoc.sourceExamPath !== sourcePath || packageDoc.sourceGitBlobSha !== historicalSha) throw new Error('HISTORICAL_SOURCE_PACKAGE_IDENTITY_MISMATCH');
+  const packageItems = packageDoc.items?.filter(item => item.uid === uid) || [];
+  if (packageItems.length !== 1) throw new Error('HISTORICAL_SOURCE_PACKAGE_UID_NOT_UNIQUE');
+  const packageItem = packageItems[0];
+  if (packageItem.stem !== sourceQuestion?.content || JSON.stringify(packageItem.choices) !== JSON.stringify(sourceQuestion?.choices) || packageItem.answer !== sourceQuestion?.answer || packageItem.solution !== sourceQuestion?.solution) throw new Error('HISTORICAL_SOURCE_PACKAGE_BODY_MISMATCH');
+  if (evidence.scopeUids?.includes(uid) !== true) throw new Error('HISTORICAL_SOURCE_REVIEW_UID_SCOPE_MISMATCH');
+  return { sourcePath, sourceBlobSha: historicalSha, currentSourceBlobSha1: currentBlob, approvalReceipt: receipt, approvedPackage: packageBlob, sourceQid };
 }
 
 function writeJson(value) { return Buffer.from(`${JSON.stringify(value, null, 2)}\n`, 'utf8'); }
@@ -183,13 +243,28 @@ export function registerApprovedGeneratedMeta({ root, uid, meta, reviewEvidence,
     if (!nonempty(sourceExamPath) || !sourceExamPath.startsWith('archive/exams/') || !HEX40.test(sourceExamBlobSha || '') || !Number.isInteger(sourceQid) || sourceQid < 1) throw new Error('NEW_UID_SOURCE_PROVENANCE_REQUIRED');
     if (proposed.sourceQid !== sourceQid) throw new Error('NEW_UID_SOURCE_QID_MISMATCH');
     const sourceExamBytes = fs.readFileSync(repoFile(root, sourceExamPath, 'SOURCE_EXAM'));
-    if (gitBlobSha(sourceExamBytes).toLowerCase() !== sourceExamBlobSha.toLowerCase()) throw new Error('NEW_UID_SOURCE_EXAM_BYTES_MISMATCH');
+    let historicalBinding = null;
+    if (gitBlobSha(sourceExamBytes).toLowerCase() !== sourceExamBlobSha.toLowerCase()) {
+      if (!newRegistration.approvedSourceSnapshot) throw new Error('NEW_UID_SOURCE_EXAM_BYTES_MISMATCH');
+      historicalBinding = verifyHistoricalSourceApproval(root, {
+        uid, approval, authority, proposed, sourceQuestion,
+        binding: newRegistration.approvedSourceSnapshot,
+        evidence,currentSourceBlobSha1:newRegistration.currentSourceBlobSha1
+      });
+      if (historicalBinding.sourceBlobSha.toLowerCase() !== sourceExamBlobSha.toLowerCase()) throw new Error('NEW_UID_SOURCE_EXAM_BYTES_MISMATCH');
+      if (authority.currentSourceExamBlobSha1 !== historicalBinding.currentSourceBlobSha1 || authority.approvedSourceBlobSha !== historicalBinding.sourceBlobSha || proposed.sourceExamBlobSha !== historicalBinding.sourceBlobSha || proposed.currentSourceExamBlobSha1 !== historicalBinding.currentSourceBlobSha1 || proposed.approvedSourceSnapshotBlobSha1 !== historicalBinding.sourceBlobSha) throw new Error('HISTORICAL_SOURCE_PROJECTION_BINDING_MISMATCH');
+    } else if (newRegistration.currentSourceBlobSha1 && newRegistration.currentSourceBlobSha1.toLowerCase() !== sourceExamBlobSha.toLowerCase()) {
+      throw new Error('CURRENT_SOURCE_EXAM_SHA_BINDING_MISMATCH');
+    }
     if (consumerDoc.sourceShard !== paths.sourceShard || consumerDoc.school && consumerDoc.school !== proposed.school) throw new Error('NEW_UID_PREPARED_SHARD_IDENTITY_MISMATCH');
+    if (historicalBinding && (consumerDoc.sourceExamBlobSha !== historicalBinding.sourceBlobSha || consumerDoc.currentSourceExamBlobSha1 !== historicalBinding.currentSourceBlobSha1 || consumerDoc.approvedSourceSnapshot?.gitBlobSha1 !== historicalBinding.sourceBlobSha)) throw new Error('HISTORICAL_SOURCE_CONSUMER_DOCUMENT_BINDING_MISMATCH');
     if (authority.sourceSchoolMarker && authority.sourceSchoolMarker !== proposed.school) throw new Error('NEW_UID_SOURCE_SCHOOL_MISMATCH');
     indexRow = { ...proposed, uid, sourceKind: 'generated', consumerSelectable: true, shard: paths.consumerShard.replace(/^archive\//, ''), sourceQid, sourceExamBlobSha, reviewStatus: approval.status };
     consumerRecord = {
       generatedUid: uid, localOrdinal: proposed.localOrdinal, sourceKind: 'generated',
       sourceExamPath, sourceExamBlobSha, sourceQid, sourceShard: paths.sourceShard,
+      currentSourceExamBlobSha1: historicalBinding?.currentSourceBlobSha1 || sourceExamBlobSha,
+      ...(historicalBinding ? { approvedSourceSnapshotBlobSha1: historicalBinding.sourceBlobSha, approvalReceiptSha256: historicalBinding.approvalReceipt.sha256, approvalReceiptGitBlobSha1: historicalBinding.approvalReceipt.blobSha1, approvedPackageSha256: historicalBinding.approvedPackage.sha256, approvedPackageGitBlobSha1: historicalBinding.approvedPackage.blobSha1 } : {}),
       l2: proposed.l2, reviewStatus: approval.status,
       reviewApprovalReceipt: reviewEvidence.path,
       rpmPrimary: { recordId: parentRecord.id || parentRecord.recordId, l3: labelOf(meta.rpmL3), l4: labelOf(meta.rpmL4) },

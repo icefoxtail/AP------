@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SCOPED_SOURCE_REVIEW_V1",
+  "reviewerId": "/root/r1_suncheon_hs_prob",
+  "scope": "QID_ONLY",
+  "sourceReviewMode": "DEFECT_ONLY",
+  "pdf": {
+    "absolutePath": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/확률과통계/2024_순천고2_확통_1중간.pdf",
+    "expectedSha256": "8a689cf10b3384545056e3593ed129a86bc694a20915f43be251fe74ff0f5718",
+    "actualSha256": "8a689cf10b3384545056e3593ed129a86bc694a20915f43be251fe74ff0f5718",
+    "shaMatch": true
+  },
+  "render": {
+    "tool": "pdftoppm",
+    "dpi": 600,
+    "commands": [
+      "pdftoppm -f 1 -l 1 -r 600 -png -singlefile <bound-pdf> <page-01-prefix>",
+      "pdftoppm -f 2 -l 2 -r 600 -png -singlefile <bound-pdf> <page-02-prefix>"
+    ],
+    "pages": [
+      {
+        "page": 1,
+        "path": "C:/Users/USER/Desktop/AP------/archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/r1-pdf-scope-verified/page-01.png",
+        "sha256": "a410d90de4fea26f4f41676efb91ca7109125a03ec087e55e880156fcec72d6b"
+      },
+      {
+        "page": 2,
+        "path": "C:/Users/USER/Desktop/AP------/archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/r1-pdf-scope-verified/page-02.png",
+        "sha256": "608d6c062e0e4ec75cc9074774ed29947abb6d67e9ca396d9b5d4d857ad1e5b4"
+      }
+    ]
+  },
+  "cropCommand": "magick <bound-rendered-page-png> -crop <geometry> +repage <fresh-crop-png>",
+  "rows": [
+    {
+      "qid": 3,
+      "page": 1,
+      "pdfPageCropGeometry": "2200x1050+250+4650",
+      "cropPath": "C:/Users/USER/Desktop/AP------/archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/r1-pdf-scope-verified/bound-pdf-q03-crop-v4.png",
+      "cropSha256": "2b72853cd993633b0a5a43cf702bd6633e7a3cbcb7424ecea8081dc696e6be0b",
+      "observedFact": "Bound PDF q03 asks the number of nonnegative integer solutions x+y+z+w=6; choices are 72, 76, 80, 84, 88.",
+      "currentStudentInputParity": "EXACT_TO_CURRENT_JS_AND_INTAKE_BASELINE",
+      "pdfVsCurrentJs": "MATCH",
+      "qidScopedCropOpened": true
+    },
+    {
+      "qid": 9,
+      "page": 2,
+      "pdfPageCropGeometry": "2400x2250+0+3750",
+      "cropPath": "C:/Users/USER/Desktop/AP------/archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/r1-pdf-scope-verified/bound-pdf-q09-crop-final.png",
+      "cropSha256": "f93aefb7810ba287bc6e33bfcaab88bc27c19f4d616c705c1d88d03671a7bcf6",
+      "observedFact": "Bound PDF q09 asks for choosing five of seven students including A,B for circular-table seating with A and B adjacent; diagram and choices 120, 135, 150, 165, 180 match current JS.",
+      "currentStudentInputParity": "EXACT_TO_CURRENT_JS_AND_INTAKE_BASELINE",
+      "pdfVsCurrentJs": "MATCH",
+      "qidScopedCropOpened": true
+    }
+  ],
+  "priorUnverifiedArtifacts": [
+    {
+      "path": "C:/Users/USER/Desktop/AP------/archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/q03-scoped-pdf-crop-600dpi.png",
+      "reason": "No recorded source PDF path/hash; unverified locators/crops were not used for the bound source decision."
+    },
+    {
+      "path": "C:/Users/USER/Desktop/AP------/archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/q03-scoped-pdf-crop-final.png",
+      "reason": "No recorded source PDF path/hash; unverified locators/crops were not used for the bound source decision."
+    },
+    {
+      "path": "C:/Users/USER/Desktop/AP------/archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/q03-scoped-pdf-page1.png",
+      "reason": "No recorded source PDF path/hash; unverified locators/crops were not used for the bound source decision."
+    },
+    {
+      "path": "C:/Users/USER/Desktop/AP------/archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/q09-scoped-pdf-crop-600dpi.png",
+      "reason": "No recorded source PDF path/hash; unverified locators/crops were not used for the bound source decision."
+    },
+    {
+      "path": "C:/Users/USER/Desktop/AP------/archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/q09-locator-page2.png",
+      "reason": "No recorded source PDF path/hash; unverified locators/crops were not used for the bound source decision."
+    }
+  ],
+  "studentInputChanged": false,
+  "freezeValidityForAffectedQids": "VALID",
+  "result": "BOUND_SOURCE_CROP_QID_CONTENT_PARITY_CONFIRMED"
+}

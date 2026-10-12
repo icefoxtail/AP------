@@ -1,0 +1,469 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R2",
+  "examUid": "24_순천여고_1학기_중간_고2_확률과통계",
+  "runId": "r2_suncheon_yeo_prob-q22-question-only-replacement",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "artifactSha": "a21567853ee8a2e173dd37ef10f5bfea4dead5c1",
+  "artifactRawSha256": "789e165fe1fb99aed5aa55634df1a557a7d9ac5348f3293a3b34ecd2407e6e93",
+  "artifactRawBufferBlobSha1": "a21567853ee8a2e173dd37ef10f5bfea4dead5c1",
+  "gitCleanFilterBlobSha1": "a21567853ee8a2e173dd37ef10f5bfea4dead5c1",
+  "studentBundleSha256": "d9545c42a3e233e6c7c57a4784c8cd6681c56d72f08482205d7e5a7f1a4fb3b8",
+  "freeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\r2_suncheon_yeo_prob\\original-freeze.json",
+    "sha256": "150f07af9311b4cfabc6331345bd554aa8bd0d3be5f3eaa4253a91922a449981",
+    "status": "FROZEN_BEFORE_STORED_ANSWER_DISCLOSURE",
+    "qidCount": 23,
+    "sourceRawSha256": "984e37c7fd5687866dc3eaf5faca82657fe0b5e84b6d57e7ed8b4688b9fca24c",
+    "assetReadsPath": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\r2_suncheon_yeo_prob\\asset-reads.json",
+    "assetReadsSha256": "3b3e453af186e941b1cd946ff87b7b28cf40394b64b738a3660235fea5b205e5"
+  },
+  "postfreezeDisclosure": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\r2_suncheon_yeo_prob\\postfreeze-disclosure.json",
+    "sha256": "1c60b91f94518389b3d53b5955550766800a0d7b4b0cc78093c16396b9206039",
+    "sourceRawSha256": "984e37c7fd5687866dc3eaf5faca82657fe0b5e84b6d57e7ed8b4688b9fca24c",
+    "status": "COMPLETE_AFTER_FREEZE",
+    "qidCount": 23
+  },
+  "postfreezeAdjudication": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\r2_suncheon_yeo_prob\\postfreeze-adjudication.json",
+    "sha256": "ee73dd225c348b63f7e3c1630afe30b152a6bd72fac13c282b603463bfbfaa3a",
+    "originalFreezeMutated": false,
+    "qids": [
+      22
+    ]
+  },
+  "r1Evidence": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\r1_suncheon_yeo_prob\\R1.evidence.json",
+    "sha256": "c5e93bb8275f91897fce37eec3a38608d5eee9dfb0edffcbe8721885056c6a7a",
+    "artifactSha": "4428950e0794ad1d6f32da603e4978083f18a2cc",
+    "itemHoldQids": [
+      22
+    ]
+  },
+  "studentParity": {
+    "status": "PASS",
+    "sourceRawSha256": "984e37c7fd5687866dc3eaf5faca82657fe0b5e84b6d57e7ed8b4688b9fca24c",
+    "studentBundleSha256": "d9545c42a3e233e6c7c57a4784c8cd6681c56d72f08482205d7e5a7f1a4fb3b8",
+    "postfreezeExtractionSha256": "1c60b91f94518389b3d53b5955550766800a0d7b4b0cc78093c16396b9206039",
+    "qidCount": 23,
+    "allQids": "MATCH"
+  },
+  "sourceReferencePolicy": {
+    "sourceInputMode": "EXTRACTED_JS_ASSETS",
+    "pdfReviewMode": "DEFECT_ONLY",
+    "sourceIntakeEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\codex-sourceonly-h2-1mid-20261010-b2-eb572b88\\intake-repair\\source-intake-repair.evidence.json",
+    "sourceIntakeEvidenceSha256": "4d536ae905f1afdff2dfb278cf99578f356d86841323e1b290889a18c3859ee3",
+    "pdfActuallyReviewedByR2": false,
+    "sourceBaselineParity": "current student fields/assets bound to current JS SHA; intake evidence reused; no additional PDF comparison"
+  },
+  "changedQids": [
+    22
+  ],
+  "directDependencyQids": [
+    22
+  ],
+  "itemHoldQids": [],
+  "rows": [
+    {
+      "qid": 1,
+      "blindAnswer": "2 (84)",
+      "blindReasoning": "Combinations with repetition: 2H8=C(9,8)=9; 7H3=C(9,3)=84; C(6,3)=20; P(4,3)=24; 3^4=81. The maximum is 84.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "②",
+      "r1StoredAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "inheritedMetaEvidenceDebtFields": [
+        "rpmL3",
+        "rpmL4",
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "inheritedMetaEvidenceDebtReason": "Five expressions span combinations, permutations, repeated combinations and repeated arrangements; current exact lookup has no unique primary problem type/template or single RPM L3/L4 for the comparison task.",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Five expressions span combinations, permutations, repeated combinations and repeated arrangements; current exact lookup has no unique primary problem type/template or single RPM L3/L4 for the comparison task."
+    },
+    {
+      "qid": 2,
+      "blindAnswer": "120",
+      "blindReasoning": "Choose the other three students in C(5,3)=10 ways. Seat the A-B block and three selected students around a circle in 3! ways, and order A,B within the block in 2 ways: 10*6*2=120.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "④",
+      "r1StoredAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 3,
+      "blindAnswer": "2240",
+      "blindReasoning": "Treat adjacent RG/GR as a block: 2*8!/3!=13440 arrangements. The relative order of distinct M,N,C is uniform; exactly one of six orders satisfies M<N<C, giving 2240.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "③",
+      "r1StoredAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 4,
+      "blindAnswer": "12 (choice 3)",
+      "blindReasoning": "The multiset b,b,c has 3!/2!=3 arrangements. These create four gaps; choose three gaps for the a characters in C(4,3)=4 ways. Total 3*4=12.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "③",
+      "r1StoredAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 5,
+      "blindAnswer": "240",
+      "blindReasoning": "For k factors chosen from -2/x, the exponent is 2(6-k)-k=12-3k. Set it to zero: k=4, coefficient C(6,4)*(-2)^4=240.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "r1StoredAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 6,
+      "blindAnswer": "243",
+      "blindReasoning": "Distribute four identical cookies positively among three people in C(3,2)=3 ways. Each of four distinct candies independently goes to one of three people, giving 3^4=81. Product 243.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "④",
+      "r1StoredAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 7,
+      "blindAnswer": "5",
+      "blindReasoning": "The number of monomials in four variables of total degree at most n is C(n+3,3). C(n+3,3)=56=C(8,3), so n=5.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "r1StoredAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 8,
+      "blindAnswer": "660",
+      "blindReasoning": "The x^2 coefficient is sum_{k=2}^{10} 4*C(k,2)=4*C(11,3)=660.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "①",
+      "r1StoredAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 9,
+      "blindAnswer": "325",
+      "blindReasoning": "Choose the 4-element union in C(5,4)=5 ways. Each union element belongs to A only, B only, or both, giving 3^4 assignments; subtract 2^4 with empty intersection. 5*(81-16)=325.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "②",
+      "r1StoredAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 10,
+      "blindAnswer": "ㄴ, ㄷ (choice 4)",
+      "blindReasoning": "The target is 2^10-1=1023. The even-indexed C(11,k) sum excluding k=0 is 2^10-1=1023. By symmetry C(11,1)+...+C(11,5)=2^10-1=1023. The odd-indexed sum is 2^10=1024.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "④",
+      "r1StoredAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 11,
+      "blindAnswer": "14",
+      "blindReasoning": "The range must have odd sum. Singleton ranges {1},{3} give one constant function each. The two 2-element ranges with odd sum, {1,2},{2,3}, each give 2^3-2=6 surjections. Total 1+1+6+6=14.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "②",
+      "r1StoredAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "inheritedMetaEvidenceDebtFields": [
+        "rpmL3",
+        "rpmL4"
+      ],
+      "inheritedMetaEvidenceDebtReason": "The exact active functions-graphs PT/TPL projection is reused for constrained function counting; the H15-PS-01 RPM Primary L3/L4 tree has no function-count leaf. Keep RPM leaf EVIDENCE_DEBT; do not invent a locked key."
+    },
+    {
+      "qid": 12,
+      "blindAnswer": "84",
+      "blindReasoning": "There are 5!=120 circular orders. The only forbidden adjacent pairs summing to at least 10 are {4,6} and {5,6}. Fix 6; its two neighboring seats must be chosen from 1,2,3 in 3*2 ways, and the remaining three labels fill the other seats in 3! ways: 36 avoiding orders. 120-36=84.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "r1StoredAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 13,
+      "blindAnswer": "27",
+      "blindReasoning": "Set x=X, y=Y+2, z=Z+1, w=W+1. Then X+Y+Z+3W=5. For W=0 there are C(7,2)=21 triples; for W=1 there are C(4,2)=6. Total 27.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "①",
+      "r1StoredAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 14,
+      "blindAnswer": "126",
+      "blindReasoning": "For strict middle values u=f(2)<v=f(3)<w=f(4), there are u choices for f(1)<=u and 8-w choices for f(5)>=w. Sum over 1<=u<v<w<=7 of u(8-w)=126.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "①",
+      "r1StoredAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "inheritedMetaEvidenceDebtFields": [
+        "rpmL3",
+        "rpmL4"
+      ],
+      "inheritedMetaEvidenceDebtReason": "The solution uses monotone finite-function counting and matches ACTIVE PT_FUNCTION_COUNTING/TPL_MONOTONE_FUNCTION_COUNT; H15-PS-01 RPM Primary has no function-count L3/L4 leaf."
+    },
+    {
+      "qid": 15,
+      "blindAnswer": "201",
+      "blindReasoning": "Possible endpoint pairs (a,e) are (1,10),(2,5). For (1,10), nondecreasing b,c,d from 1..10: C(12,3)=220; all-odd triples: C(7,3)=35; valid 185. For (2,5), there are C(6,3)=20 multisets from 2..5; all-odd choices from {3,5}: C(4,3)=4; valid 16. Total 201.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "③",
+      "r1StoredAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 16,
+      "blindAnswer": "6",
+      "blindReasoning": "Four distinct colors occupy four cells in 4!=24 ways. Rotation acts freely on these arrangements, so 24/4=6.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "①",
+      "r1StoredAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 17,
+      "blindAnswer": "24",
+      "blindReasoning": "Choose the two colors in C(4,2)=6 ways. For a fixed pair, binary colorings using both colors modulo square rotations have 4 orbits: Burnside fixed counts are 14 for identity, 2 for half-turn, 0 for quarter-turns; (14+2)/4=4. Total 24.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "r1StoredAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 18,
+      "blindAnswer": "250",
+      "blindReasoning": "Before 2000 there are 4 one-digit, 20 two-digit, 100 three-digit numbers, and 125 four-digit numbers beginning with 1. Including 2000 gives 4+20+100+125+1=250.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "④",
+      "r1StoredAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 19,
+      "blindAnswer": "1300",
+      "blindReasoning": "There are 4+20+100=124 admissible numbers of 1-3 digits. The 200th is the 76th four-digit number; zero-based suffix rank 75 is 300 in base 5, giving 1300.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "③",
+      "r1StoredAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 20,
+      "blindAnswer": "20",
+      "blindReasoning": "The diagram is a 4-by-4 grid with three diagonal shortcuts at (1,3),(2,2),(3,1). A shortest path uses exactly one such diagonal; two cannot chain because their locations are antichain-ordered against an up/right path. Counts through them are respectively C(4,1)*1=4, C(4,2)*C(2,1)=12, and C(4,3)*1=4. Total 20.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "②",
+      "r1StoredAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 21,
+      "blindAnswer": "30",
+      "blindReasoning": "Inclusion-exclusion on the three same-letter adjacency events: 6!/2!^3 - 3*(5!/2!^2) + 3*(4!/2!) - 3! = 90-90+36-6=30.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "30",
+      "r1StoredAnswer": "30",
+      "compareResult": "MATCH",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 22,
+      "blindAnswer": "(n,r)=(6,3)",
+      "blindReasoning": "By the binomial theorem, Σ_{k=0}^n C(n,k)2^k=(1+2)^n=3^n=729=3^6, so n=6. For r=1,2,3,4,5, C(6,r)+2C(6,r+1) equals 36,55,50,27,8 respectively. Thus the unique admissible r is 3 and the requested ordered pair is (6,3).",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "(6, 3)",
+      "r1StoredAnswer": null,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "Fresh blind answer matches the current question-only candidate; n=6 from 3^n=729 and exhaustive admissible r check yields unique r=3.",
+      "scope": {
+        "coverage": "QID_ONLY",
+        "qid": 22
+      },
+      "currentCandidate": {
+        "sha256": "789e165fe1fb99aed5aa55634df1a557a7d9ac5348f3293a3b34ecd2407e6e93",
+        "blob": "a21567853ee8a2e173dd37ef10f5bfea4dead5c1"
+      },
+      "studentInputParity": {
+        "disposition": "EXACT",
+        "sourceRawSha256": "789e165fe1fb99aed5aa55634df1a557a7d9ac5348f3293a3b34ecd2407e6e93",
+        "studentBundleSha256": "c472e883399eb927a90c93cb4cae3bf2dfdd65dfcbd8d53f5fcb24fefc534439",
+        "studentPayloadSha256": "2067d193ec64bb6d3906a0d9c322a178fae2d13b8204611ab42613440445869f",
+        "assetRefs": []
+      },
+      "postfreezeDecision": {
+        "answerRecomputed": true,
+        "answerFreezeReused": false,
+        "originalFreezePath": "C:/Users/USER/Desktop/AP------/archive/analysis/r2_suncheon_yeo_prob/q22-candidate-original-freeze.json",
+        "originalFreezeSha256": "7050c7a5654ceffebff47a6660f3af148bec2afab83ed470981b4202d98382c1",
+        "postfreezeDisclosurePath": "C:/Users/USER/Desktop/AP------/archive/analysis/r2_suncheon_yeo_prob/q22-candidate-postfreeze-disclosure.json",
+        "postfreezeDisclosureSha256": "d274a7e102fb51ec8c8f95e2801228dfd23d0d2e08f789e9d01cb1e795bd1ed8"
+      }
+    },
+    {
+      "qid": 23,
+      "blindAnswer": "144",
+      "blindReasoning": "Choose five male seats among 9 with each side's block of three nonempty: C(9,5)-3*C(6,5)=126-18=108 (two empty sides are impossible). Arrange distinct people in 5!*4! ways, then quotient by the 3 rotations: 108*5!*4!/3=144*6!.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "144",
+      "r1StoredAnswer": "144",
+      "compareResult": "MATCH",
+      "verdict": "PASS"
+    }
+  ],
+  "focusedReview": {
+    "qid14": {
+      "independentAnswer": "126",
+      "storedAnswer": "①",
+      "disposition": "MATCH; independently recounted sum 5+16+30+40+35=126; R1 prior 70 freeze preserved in its own adjudication and no R2 correction required."
+    },
+    "qid22": {
+      "independentAnswer": "6815; requested tuple nonunique",
+      "distinctWitnessTuples": [
+        [
+          0,
+          1,
+          6814,
+          1
+        ],
+        [
+          2,
+          3,
+          -2,
+          8
+        ]
+      ],
+      "disposition": "TRUE_ITEM_HOLD_NONUNIQUE"
+    }
+  },
+  "questionCount": 23,
+  "scope": {
+    "coverage": "QID_ONLY",
+    "qid": 22
+  },
+  "currentCandidate": {
+    "path": "C:/Users/USER/Desktop/AP------/archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/candidate/24_순천여고_1학기_중간_고2_확률과통계.q22-candidate.js",
+    "sha256": "789e165fe1fb99aed5aa55634df1a557a7d9ac5348f3293a3b34ecd2407e6e93",
+    "blob": "a21567853ee8a2e173dd37ef10f5bfea4dead5c1"
+  },
+  "studentInputParity": {
+    "disposition": "EXACT",
+    "qid": 22,
+    "studentBundlePath": "C:/Users/USER/Desktop/AP------/archive/analysis/r2_suncheon_yeo_prob/q22-candidate-student-only.json",
+    "studentBundleSha256": "c472e883399eb927a90c93cb4cae3bf2dfdd65dfcbd8d53f5fcb24fefc534439",
+    "sourceRawSha256": "789e165fe1fb99aed5aa55634df1a557a7d9ac5348f3293a3b34ecd2407e6e93",
+    "studentPayloadSha256": "2067d193ec64bb6d3906a0d9c322a178fae2d13b8204611ab42613440445869f",
+    "assetRefs": []
+  },
+  "postfreezeDecision": {
+    "qid": 22,
+    "answerRecomputed": true,
+    "answerFreezeReused": false,
+    "freezePath": "C:/Users/USER/Desktop/AP------/archive/analysis/r2_suncheon_yeo_prob/q22-candidate-original-freeze.json",
+    "freezeSha256": "7050c7a5654ceffebff47a6660f3af148bec2afab83ed470981b4202d98382c1",
+    "disclosurePath": "C:/Users/USER/Desktop/AP------/archive/analysis/r2_suncheon_yeo_prob/q22-candidate-postfreeze-disclosure.json",
+    "disclosureSha256": "d274a7e102fb51ec8c8f95e2801228dfd23d0d2e08f789e9d01cb1e795bd1ed8"
+  },
+  "previousR2": {
+    "evidencePath": "C:/Users/USER/Desktop/AP------/archive/analysis/r2_suncheon_yeo_prob/R2.evidence.json",
+    "evidenceSha256": "84126bd0be65a4cd50734aac632427f567eb106373712f2f84c93ab564fedd89",
+    "freezePath": "C:/Users/USER/Desktop/AP------/archive/analysis/r2_suncheon_yeo_prob/original-freeze.json",
+    "freezeSha256": "150f07af9311b4cfabc6331345bd554aa8bd0d3be5f3eaa4253a91922a449981",
+    "reusedUnchangedQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      23
+    ],
+    "previousQ22Disposition": "SUPERSEDED_BY_FRESH_QUESTION_ONLY_Q22_R2"
+  },
+  "q22IndependentFreeze": {
+    "path": "C:/Users/USER/Desktop/AP------/archive/analysis/r2_suncheon_yeo_prob/q22-candidate-original-freeze.json",
+    "sha256": "7050c7a5654ceffebff47a6660f3af148bec2afab83ed470981b4202d98382c1",
+    "qidCount": 1
+  },
+  "responseForm": "SHORT_ANSWER",
+  "writtenAnswerAudit": {
+    "status": "PASS",
+    "answerSha256": "2df816c759867173859cb5cadc29145490c15853ba1c761a1495ba6bfac902ad",
+    "answerCardinality": 1,
+    "noDistinctAlternative": true,
+    "uniquenessReason": "The binomial identity fixes n=6. For every admissible r=1..5, the second expression is respectively 36, 55, 50, 27, 8; only r=3 equals 50. Thus the written ordered pair (6,3) is unique."
+  },
+  "q22DirectReviewRef": {
+    "path": "C:/Users/USER/Desktop/AP------/archive/analysis/r2_suncheon_yeo_prob/q22-candidate-r2-direct-review.json",
+    "sha256": "ba9021c2395f16a015df351a1895398b164e57cb95add0cae4e8269d08c89997"
+  },
+  "directReviewBindings": {
+    "targetedEvidence": {
+      "path": "C:/Users/USER/Desktop/AP------/archive/analysis/r2_suncheon_yeo_prob/q22-candidate-targeted-r2-evidence.json",
+      "sha256": "a2a9d700233b4c367d398f11a1f5f8827bb1857934f0e59d3b258dc1606782d1"
+    },
+    "targetedReport": {
+      "path": "C:/Users/USER/Desktop/AP------/archive/analysis/r2_suncheon_yeo_prob/q22-candidate-targeted-r2-report-final.json",
+      "sha256": "7e9f45a50f3a4d29c2293131c327bfd20a2074f7d22f417598f00349cbc67d85"
+    },
+    "freeze": {
+      "path": "C:/Users/USER/Desktop/AP------/archive/analysis/r2_suncheon_yeo_prob/q22-candidate-original-freeze.json",
+      "sha256": "7050c7a5654ceffebff47a6660f3af148bec2afab83ed470981b4202d98382c1"
+    },
+    "studentBundle": {
+      "path": "C:/Users/USER/Desktop/AP------/archive/analysis/r2_suncheon_yeo_prob/q22-candidate-student-only.json",
+      "sha256": "c472e883399eb927a90c93cb4cae3bf2dfdd65dfcbd8d53f5fcb24fefc534439"
+    },
+    "disclosure": {
+      "path": "C:/Users/USER/Desktop/AP------/archive/analysis/r2_suncheon_yeo_prob/q22-candidate-postfreeze-disclosure.json",
+      "sha256": "d274a7e102fb51ec8c8f95e2801228dfd23d0d2e08f789e9d01cb1e795bd1ed8"
+    }
+  }
+}

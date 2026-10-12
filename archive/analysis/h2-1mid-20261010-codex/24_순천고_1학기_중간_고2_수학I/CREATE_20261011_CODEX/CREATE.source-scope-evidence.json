@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SCOPED_PDF_SOURCE_CONFIRMATION_V1",
+  "reason": "archive-create-preflight flagged q11/q18 TeX delimiter / command candidates that required checking whether extracted student text was damaged.",
+  "scope": {
+    "qids": [
+      11,
+      18
+    ],
+    "factsToConfirm": [
+      "q11 function and subquestion inequality notation",
+      "q18 piecewise inequalities and exponent fraction delimiters"
+    ],
+    "otherQidsOpenedOrCompared": false
+  },
+  "sourcePdf": {
+    "path": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/수1/2024_순천고2_수1_1중간.pdf",
+    "sha256": "6e71cd69397f39c995d5bc2794e31bddc2a0aa02ae188ead5441fdbf2da55523",
+    "matchesIntakeSha256": "6e71cd69397f39c995d5bc2794e31bddc2a0aa02ae188ead5441fdbf2da55523"
+  },
+  "render": {
+    "tool": "Poppler pdftoppm",
+    "dpi": 300,
+    "pages": [
+      2,
+      4
+    ],
+    "pageCountNotReaudited": "NOT_NEEDED"
+  },
+  "checks": [
+    {
+      "qid": 11,
+      "page": 2,
+      "file": "source-page-2.png",
+      "facts": [
+        "함수 y=-4^{-x-1}+3",
+        "정의역은 실수 전체집합",
+        "치역은 y< (ㄱ)",
+        "점근선과 수평이동·x축 대칭·수직이동 빈칸"
+      ],
+      "renderedPageRef": "archive/analysis/h2-1mid-20261010-codex/24_순천고_1학기_중간_고2_수학I/CREATE_20261011_CODEX/source-pdf-check/source-page-2.png",
+      "renderedPageSha256": "9a7cf833783778a650cd5528c75f01c88d82441ea5946c8b1afd9580b3773900",
+      "visualComparison": "PASS_QID_REGION_MATCHED_TO_EXTRACTED_CONTENT"
+    },
+    {
+      "qid": 18,
+      "page": 4,
+      "file": "source-page-4.png",
+      "facts": [
+        "정의역 -7≤x≤7",
+        "x≥0 조각함수 세 구간",
+        "f(-x)=f(x)",
+        "지수함수 y=2^{-x/3}"
+      ],
+      "renderedPageRef": "archive/analysis/h2-1mid-20261010-codex/24_순천고_1학기_중간_고2_수학I/CREATE_20261011_CODEX/source-pdf-check/source-page-4.png",
+      "renderedPageSha256": "2df52cde089c7ce6802e66c2e8c404cbd8f885c3b826e252b66aa1e3674c90be",
+      "visualComparison": "PASS_QID_REGION_MATCHED_TO_EXTRACTED_CONTENT"
+    }
+  ],
+  "preflightFindingAdjudication": [
+    {
+      "qid": 11,
+      "reportedIssue": "TEX_MATH_DELIMITER_UNPAIRED at content offset 377",
+      "adjudication": "FALSE_POSITIVE_HTML_LESS_THAN_MASK",
+      "evidence": "The balanced math contains y < \\fbox{ (ㄱ) }; generic /<[^>]*>/ masks from the comparison sign through a later HTML tag and swallows a real closing dollar."
+    },
+    {
+      "qid": 18,
+      "reportedIssues": [
+        "TEX_MATH_DELIMITER_UNPAIRED at content offset 264",
+        "TEX_COMMAND_OUTSIDE_MATH for \\frac at offset 252"
+      ],
+      "adjudication": "FALSE_POSITIVE_HTML_LESS_THAN_MASK",
+      "evidence": "The balanced piecewise math includes 1 < x < 5 and y=2^{-\\frac{x}{3}}. The HTML-stripping regex treats the comparison sign as a tag opener, then masks through </div>, causing the later valid closing dollar and frac command to be misclassified."
+    }
+  ],
+  "independentRuntimeDollarCounts": {
+    "qid11": 24,
+    "qid18": 14,
+    "bothEven": true
+  },
+  "studentSourceDisposition": "KEEP_EXACT_SOURCE_TEXT",
+  "sourceMutation": false,
+  "itemHold": false
+}

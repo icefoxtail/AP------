@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_SOURCE_REFERENCE_ASSIGNMENT_V1",
+  "sourceReferencePolicy": {
+    "schemaVersion": "JS_ARCHIVE_SOURCE_REFERENCE_POLICY_V1",
+    "stage": "R1",
+    "sourceInputMode": "EXTRACTED_JS_ASSETS",
+    "pdfReviewMode": "DEFECT_ONLY",
+    "sourceParityBasis": "EXTRACTED_INPUT_BASELINE",
+    "reusedIntakeEvidence": null,
+    "pdfActuallyReviewed": true,
+    "originalSourceReviewEvidence": {
+      "originalPdf": {
+        "path": "C:\\Users\\USER\\Desktop\\기출정리 파일\\(1)1중간\\확률과통계\\2024_매여고2_확통_1중간.pdf",
+        "sha256": "81da2951bb6cfb2053fe0814396331df8657ba694c8b6bb823587c9c3fa6c27d"
+      },
+      "evidence": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-1mid-20261010\\AP------\\archive\\analysis\\24_매산여고_1학기_중간_고2_확률과통계\\r1-clean-20261011\\R1.original-source-review.json",
+        "sha256": "1aa453d36491551fd1cbc9dc5865878cb4ff554ce89425fada591fbf08972c88"
+      },
+      "reviewedQids": [
+        11,
+        22
+      ],
+      "reviewerId": "/root/r1_maesan_probability",
+      "reviewedAt": "2026-10-11T02:02:49+09:00",
+      "physicalPdfSha256Verified": true,
+      "pdfByteInspection": "SHA256_ONLY",
+      "readingAttestationBasis": "REVIEWER_EVIDENCE"
+    },
+    "sourceDefect": {
+      "category": "UNCLEAR_CONDITION",
+      "qids": [
+        11,
+        22
+      ],
+      "scope": "QID_ONLY",
+      "reason": "After postfreeze findings, only q11 answer-choice inconsistency and q22 missing a-sign/domain constraint were checked against the original source. Both are original-source content defects rather than JS extraction mismatches.",
+      "findings": [
+        {
+          "qid": 11,
+          "detail": "Original q11 choices 43,44,45,46,47 exclude the mathematically correct count 40."
+        },
+        {
+          "qid": 22,
+          "detail": "Original q22 states only that a,b are constants; it does not choose between real a=2 and a=-2, which produce distinct a+b."
+        }
+      ]
+    },
+    "originalReferencePlan": {
+      "required": false,
+      "scope": "QID_ONLY",
+      "qids": [
+        11,
+        22
+      ],
+      "category": "UNCLEAR_CONDITION",
+      "reason": "After postfreeze findings, only q11 answer-choice inconsistency and q22 missing a-sign/domain constraint were checked against the original source. Both are original-source content defects rather than JS extraction mismatches.",
+      "findings": [
+        {
+          "qid": 11,
+          "detail": "Original q11 choices 43,44,45,46,47 exclude the mathematically correct count 40."
+        },
+        {
+          "qid": 22,
+          "detail": "Original q22 states only that a,b are constants; it does not choose between real a=2 and a=-2, which produce distinct a+b."
+        }
+      ],
+      "evidenceRequirement": "ACTUAL_ORIGINAL_SOURCE_SHA_AND_QID_SCOPED_REVIEW_FINDINGS"
+    },
+    "semanticVerdictCreated": false
+  }
+}

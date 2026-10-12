@@ -1,0 +1,162 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "CREATE",
+  "examUid": "24_순천여고_1학기_중간_고2_확률과통계",
+  "artifactSha": "0c88fd74fc557e87464693c6703f934ba01baafd",
+  "artifactRawSha256": "d4e825968531c98218e744cc22d391bc5ce204a7cbb8d6842738bfd90acdc591",
+  "sourceIdentity": {
+    "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+    "sourceOrdinal": 22,
+    "baselineSourceRawSha256": "984e37c7fd5687866dc3eaf5faca82657fe0b5e84b6d57e7ed8b4688b9fca24c",
+    "currentCandidateQuestionUidStatus": "RECOMPUTE_AT_REGISTRATION"
+  },
+  "replacementEvidenceScope": {
+    "qids": [
+      22
+    ],
+    "fullExamStageClosure": false
+  },
+  "targetScope": {
+    "qid": 22,
+    "qids": [
+      22
+    ],
+    "replacementOnly": true,
+    "candidateNotProduction": true,
+    "fullExamStageClosure": false
+  },
+  "sourceParity": {
+    "qid": 22,
+    "status": "NOT_APPLICABLE_QUESTION_ONLY_REPLACEMENT",
+    "sourceLiteralParityClaimed": false
+  },
+  "replacementProvenance": {
+    "mode": "QUESTION_ONLY",
+    "preservedHistoryLedger": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/question-only-replacement-ledger.json"
+  },
+  "questionOnlyReplacementAuthorityRef": {
+    "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/ROOT.q22-authority.json",
+    "sha256": "afca021725cfbb38c1e02d6632348df9b0263f09f588311fd3728f3704fe0ebe"
+  },
+  "rows": [
+    {
+      "qid": 22,
+      "sourceMode": "QUESTION_ONLY",
+      "replacementMode": "QUESTION_ONLY",
+      "sourceSlotUid": "qid_v1_4e25e81fca268d29a0d15378271663cd5df1473edff935d268eec94742ea4d9c",
+      "sourceOrdinal": 22,
+      "questionOnlyReplacementAuthorityRef": {
+        "path": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/ROOT.q22-authority.json",
+        "sha256": "afca021725cfbb38c1e02d6632348df9b0263f09f588311fd3728f3704fe0ebe"
+      },
+      "provenanceEvidence": {
+        "questionOnlyReplacement": {
+          "originalSourceSha256": "984e37c7fd5687866dc3eaf5faca82657fe0b5e84b6d57e7ed8b4688b9fca24c",
+          "originalSourceGitBlobSha": "4428950e0794ad1d6f32da603e4978083f18a2cc",
+          "originalTextRecovered": false,
+          "pdfReviewed": false,
+          "reason": "Original q22 is a true non-unique-answer hold confirmed independently by R1/R2. Replacement is a new binomial-identity parameter problem, with no original-prompt parity claim.",
+          "preservedHistoryLedger": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/question-only-replacement-ledger.json"
+        }
+      },
+      "answerAudit": {
+        "answer": "(6, 3)",
+        "choices": [],
+        "cardinality": "ONE_UNIQUE_WRITTEN_PAIR",
+        "responseForm": "SHORT_ANSWER",
+        "evidenceRef": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/candidate/q22.answer-audit.json"
+      },
+      "solutionSha256": "e66f7284782f1a81bd569e9a6ef31d07334bd91c482a5fca727e9bbe49a5ecf4",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "REVIEWED_CANDIDATE",
+          "disposition": "QUESTION_ONLY_REPLACEMENT",
+          "evidenceRef": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/candidate/q22.capture-observation.json",
+          "reason": "Candidate prompt uses the written-response slot and presents its two algebraic conditions in separate labeled lines; captured desktop view shows all conditions and the ordered-pair request."
+        },
+        "solutionLayout": {
+          "status": "REPLACEMENT_CANDIDATE",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "e66f7284782f1a81bd569e9a6ef31d07334bd91c482a5fca727e9bbe49a5ecf4",
+          "preflightRef": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/ITEM_RECOVERY.calibration-preflight.json",
+          "structure": "identity and determine n; list all five allowed r cases; compare with 50; state unique ordered pair"
+        },
+        "meta": {
+          "standardCourse": "확률과 통계",
+          "standardUnitKey": "H15-PS-02",
+          "standardUnit": "이항정리",
+          "standardUnitOrder": 2,
+          "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+          "subUnit": "이항정리",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_BINOMIAL_THEOREM",
+          "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_NATURAL_NUMBER",
+            "COND_RANGE"
+          ],
+          "integrationPattern": "SEQUENTIAL",
+          "disposition": "GENERATED_ONLY_BINDING_CANDIDATE_WITH_RPM_EVIDENCE_DEBT",
+          "extensionRef": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/candidate/q22.meta-binding-candidate.json"
+        },
+        "visualSvg": {
+          "problem": {
+            "necessity": "VISUAL_EXEMPT",
+            "ref": null,
+            "sha256": null,
+            "disposition": "EXEMPT",
+            "reason": "The prompt is entirely symbolic/algebraic; no spatial relation, graph, table, or source image contributes information needed to state or solve it."
+          },
+          "solution": {
+            "necessity": "VISUAL_EXEMPT",
+            "ref": null,
+            "sha256": null,
+            "disposition": "EXEMPT",
+            "reason": "The solution uses a binomial theorem identity and a finite five-value coefficient check. A graphic adds no educational distinction; the compact written case list is the decisive representation."
+          }
+        }
+      },
+      "visual": {
+        "problem": {
+          "necessity": "VISUAL_EXEMPT",
+          "disposition": "EXEMPT",
+          "ref": null,
+          "sha256": null,
+          "reason": "The two algebraic conditions are complete in text and contain no geometry, graph, table, or spatial data."
+        },
+        "solution": {
+          "necessity": "VISUAL_EXEMPT",
+          "disposition": "EXEMPT",
+          "ref": null,
+          "sha256": null,
+          "reason": "The decisive steps are symbolic identity and five explicit coefficient evaluations; no spatial relation needs depiction."
+        }
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "evidenceRef": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/candidate/q22.difficulty-review.json"
+      },
+      "actualRender": {
+        "status": "CAPTURED_REVIEW_REQUIRED",
+        "renderPassAsserted": false,
+        "r3LayoutReviewStatus": "PENDING",
+        "creatorScreenInspection": "ACTUALLY_OPENED_AND_INSPECTED_Q22",
+        "captureReport": ".tmp/archive/suncheon-yeo-q22-replacement-candidate-rev3-workspace/machine-capture.json",
+        "captureReportSha256": "24bc397729953948d0bc344eedab0b3e27d2707c09063a2b415b43730c0b9662",
+        "desktopSolutionScreenshot": ".tmp/archive/suncheon-yeo-q22-replacement-candidate-rev3-workspace/sol-desktop.png"
+      },
+      "replacementParity": {
+        "evidenceRef": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/question-only-q22/candidate/q22.non-target-parity.json"
+      }
+    }
+  ]
+}

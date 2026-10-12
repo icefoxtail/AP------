@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_GOLDEN_NEGATIVE_PREFLIGHT_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "reviewerIdentity": {
+    "role": "archive_r1",
+    "reviewerId": "/root/r1_maesan_probability"
+  },
+  "performedBeforeTargetSolutionReview": true,
+  "registry": {
+    "path": "archive/data/codex-quality-calibration-registry-v2.json",
+    "appliesTo": "high/h2",
+    "goldenPaths": [
+      "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+    ],
+    "negativePaths": [
+      "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md"
+    ]
+  },
+  "goldenCalibrationSet": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+          "observation": "내분점 좌표에서 거리까지 각 사실과 변환을 짧은 행으로 이어 학생이 계산 경로를 추적 가능."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+          "observation": "거리공식의 좌표차·대입·제곱근 정리를 단계별로 분리해 식의 흐름을 보존."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sha256": "c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+          "observation": "각 선택지의 집합 원소/부분집합 주장을 독립 문단으로 판정하고 마지막에 답을 회수."
+        }
+      ]
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+    "observation": "실제 좌표·위상 미검증 SVG false PASS, 열거 판단을 한 문단에 붙인 small-board, active PT/TPL 누락, sandbox 후 runtime escape 오류를 negative regression으로 확인."
+  },
+  "pdfActuallyReviewed": false
+}

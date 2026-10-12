@@ -20,7 +20,7 @@ function closingTag(source,start,tag){
 }
 function parseTopLevel(source){
  const nodes=[];let text='',i=0;
- const flush=()=>{if(text){nodes.push({nodeType:3,textContent:text});text='';}};
+ const flush=()=>{if(text){nodes.push({nodeType:3,textContent:text.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&')});text='';}};
  while(i<source.length){
   const rest=source.slice(i),br=/^<br\s*\/?>/i.exec(rest);
   if(br){flush();nodes.push({nodeType:1,tagName:'BR',outerHTML:br[0]});i+=br[0].length;continue;}
@@ -47,6 +47,17 @@ const document={createElement(tag){
 }};
 const chunkContext=vm.createContext({document,Node:{TEXT_NODE:3,ELEMENT_NODE:1}});
 const makeSolutionHtmlChunks=vm.runInContext(`(${chunkerSource})`,chunkContext,{timeout:2000});
+const wrapBegin=mixed.indexOf('function wrapLatexPreserveBlocks(text) {');
+const wrapEnd=mixed.indexOf('\nfunction wrapLatex(text)',wrapBegin);
+const wrapLatexPreserveBlocks=vm.runInNewContext(`(${mixed.slice(wrapBegin,wrapEnd)})`,{}, {timeout:2000});
+
+test('source newline inside inline TeX stays one complete formula before prose wrapping',()=>{
+ const formula="$G'=\\left(\\dfrac{4+2}{3},\\dfrac{6+\\frac{9}{k+1}}{3}\\right)\n=\\left(2,2+\\dfrac{3}{k+1}\\right)$";
+ const result=wrapLatexPreserveBlocks('앞 문장\n'+formula+'\n뒤 문장');
+ assert.ok(result.includes(formula.replace('\n',' ')));
+ assert.equal((result.match(/\$/g)||[]).length,2);
+ assert.equal((result.match(/<br>/g)||[]).length,2);
+});
 
 test('display math with BR/newline inside the delimiters remains one complete typeset atom',()=>{
  const display='$$(x+2)^2+m^2x^2=4<br>\\Longleftrightarrow x\\bigl((1+m^2)x+4\\bigr)=0.$$';
@@ -62,6 +73,16 @@ test('inline formulas stay atomic when neighboring prose is split into chunks',(
  const chunks=makeSolutionHtmlChunks('앞 문장 $a+b$ 뒤 문장');
  assert.ok(chunks.includes('$a+b$'));
  assert.equal(chunks.join('').includes('$a+b$'),true);
+});
+
+test('decoded inline inequalities remain text after chunk reinsertion',()=>{
+ const chunks=makeSolutionHtmlChunks('따라서 $2&lt;a&lt;4$이고 $a&gt;2$이다. $A&amp;B$');
+ assert.ok(chunks.includes('$2&lt;a&lt;4$'));
+ assert.ok(chunks.includes('$a&gt;2$'));
+ assert.ok(chunks.includes('$A&amp;B$'));
+ const reparsed=parseTopLevel(chunks.join(''));
+ assert.equal(reparsed.some(node=>node.tagName==='A'),false);
+ assert.equal(parseTopLevel(chunks.find(chunk=>chunk==='$2&lt;a&lt;4$'))[0].textContent,'$2<a<4$');
 });
 
 test('nested semantic markup and existing MathJax output remain intact',()=>{

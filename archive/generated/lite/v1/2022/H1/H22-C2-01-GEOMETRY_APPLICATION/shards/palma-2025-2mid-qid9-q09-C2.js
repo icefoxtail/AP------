@@ -22,6 +22,11 @@ window.questionBank = [
       "평면좌표"
     ],
     "wide": false,
+    "image": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q09-C2-problem.svg",
+    "imageSize": "large",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q09-C2-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth",
     "content": "삼각형 $OAB$의 꼭짓점은 $O(0,0)$, $A(12,0)$, $B(p,9)$이다. 점 $C$는 선분 $OA$의 중점, 점 $D$는 선분 $AB$를 $AD:DB=1:2$로 내분하는 점, 점 $E$는 선분 $BO$를 $BE:EO=2:1$로 내분하는 점이다. 삼각형 $CDE$의 무게중심이 직선 $x+y=8$ 위에 있을 때, 선분 $AB$의 길이는?",
     "choices": [
       "$3\\sqrt{13}$",

@@ -1,0 +1,389 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_SVG_PARITY_V1",
+  "examUid": "24_금당고_1학기_중간_고2_수학II",
+  "qid": 13,
+  "sourceRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+  "frozenSourceRawSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+  "solutionSha256": "54f4a5d6243648ed80419f573ccdc750b4f448388e8e689c3c3123d908a0581b",
+  "sourceImageSha256": "f026e37dfc703c8bc0315b3aabcd50e5bd745af0756637622da3b5d80d126610",
+  "finalSvgSha256": "57ec6aa9aa6b6ba25a5c3ea4a7a6a34ab4b8997be622d40d449fd3a732c9570c",
+  "finalSvgGitBlobSha": "793cb53305259bb89d837c69c386cd3579891034",
+  "solutionAnswer": "⑤",
+  "solutionFact": "negative secant direction and 1+2+2 equal-slope tangent locations",
+  "coordinateModel": "CONSTRUCTED_REALIZATION schematic; x=-2 maps x=105, x=0 maps x=305, x=4 maps x=705; unitless schematic y values; source raster immutable",
+  "pythonInputs": {
+    "screenSlope": 0.075,
+    "endpointsScreen": {
+      "left": [
+        105.0,
+        235.0
+      ],
+      "right": [
+        705.0,
+        280.0
+      ]
+    },
+    "adaptiveChordErrorPxMax": 0.2
+  },
+  "pythonCalculatedOutputs": {
+    "contactCount": 5,
+    "branchCounts": {
+      "first-descent": 1,
+      "descent-2": 2,
+      "descent-3": 2
+    },
+    "mathematicalSecantSlope": -0.075,
+    "tangentMathSlopes": [
+      -0.07499999999999957,
+      -0.07499999999999993,
+      -0.07500000000000029,
+      -0.07499999999999993,
+      -0.07500000000000029
+    ]
+  },
+  "actualSvgPrimitives": {
+    "xmlTagCounts": {
+      "line": 10,
+      "polyline": 6,
+      "circle": 7,
+      "text": 22
+    },
+    "secant": {
+      "role": "secant",
+      "contact": null,
+      "branch": null,
+      "slope": 0.075,
+      "primitive": [
+        105.0,
+        235.0,
+        705.0,
+        280.0
+      ]
+    },
+    "tangents": [
+      {
+        "role": "tangent",
+        "contact": "1",
+        "branch": "first-descent",
+        "slope": 0.07499999999999957,
+        "primitive": [
+          182.702561129,
+          366.951034815,
+          260.702561129,
+          372.801034815
+        ]
+      },
+      {
+        "role": "tangent",
+        "contact": "2",
+        "branch": "descent-2",
+        "slope": 0.07499999999999993,
+        "primitive": [
+          286.534774734,
+          117.095089993,
+          364.534774734,
+          122.945089993
+        ]
+      },
+      {
+        "role": "tangent",
+        "contact": "3",
+        "branch": "descent-2",
+        "slope": 0.07500000000000029,
+        "primitive": [
+          385.465225266,
+          352.054910007,
+          463.465225266,
+          357.904910007
+        ]
+      },
+      {
+        "role": "tangent",
+        "contact": "4",
+        "branch": "descent-3",
+        "slope": 0.07499999999999993,
+        "primitive": [
+          466.373839977,
+          127.089040939,
+          544.373839977,
+          132.939040939
+        ]
+      },
+      {
+        "role": "tangent",
+        "contact": "5",
+        "branch": "descent-3",
+        "slope": 0.07500000000000029,
+        "primitive": [
+          545.626160023,
+          342.060959061,
+          623.626160023,
+          347.910959061
+        ]
+      }
+    ],
+    "contacts": [
+      {
+        "branch": "first-descent",
+        "t": 0.972521342744205,
+        "x": 221.7025611293046,
+        "y": 369.87603481498064,
+        "screenSlope": 0.07500000000000019,
+        "mathSlope": -0.07500000000000019
+      },
+      {
+        "branch": "descent-2",
+        "t": 0.005347747337753513,
+        "x": 325.5347747337748,
+        "y": 120.02008999271766,
+        "screenSlope": 0.07499999999999998,
+        "mathSlope": -0.07499999999999998
+      },
+      {
+        "branch": "descent-2",
+        "t": 0.9946522526622465,
+        "x": 424.4652252662252,
+        "y": 354.97991000728234,
+        "screenSlope": 0.07499999999999911,
+        "mathSlope": -0.07499999999999911
+      },
+      {
+        "branch": "descent-3",
+        "t": 0.004672999717058968,
+        "x": 505.3738399773652,
+        "y": 130.01404093860057,
+        "screenSlope": 0.07499999999999998,
+        "mathSlope": -0.07499999999999998
+      },
+      {
+        "branch": "descent-3",
+        "t": 0.9953270002829411,
+        "x": 584.6261600226347,
+        "y": 344.9859590613994,
+        "screenSlope": 0.07499999999999928,
+        "mathSlope": -0.07499999999999928
+      }
+    ],
+    "axisFrame": {
+      "xAxis": [
+        "75",
+        "430",
+        "730",
+        "430"
+      ],
+      "yAxis": [
+        "305",
+        "112",
+        "305",
+        "455"
+      ]
+    },
+    "adaptivePolylinePointCounts": {
+      "first-descent": 513,
+      "rise-1": 513,
+      "descent-2": 513,
+      "rise-2": 513,
+      "descent-3": 513,
+      "rise-3": 513
+    }
+  },
+  "observedFacts": [
+    {
+      "fact": "secant slopes down mathematically",
+      "observedMathSlope": -0.075,
+      "status": "PASS"
+    },
+    {
+      "fact": "all five tangent line primitives parallel secant",
+      "observedMathSlopes": [
+        -0.07499999999999957,
+        -0.07499999999999993,
+        -0.07500000000000029,
+        -0.07499999999999993,
+        -0.07500000000000029
+      ],
+      "maxDelta": 4.3021142204224816e-16,
+      "tolerance": 1e-09,
+      "status": "PASS"
+    },
+    {
+      "fact": "curve polyline tangent samples align with each tangent contact",
+      "rows": [
+        {
+          "contact": 1,
+          "branch": "first-descent",
+          "expectedPoint": [
+            221.7025611293046,
+            369.87603481498064
+          ],
+          "nearestPolylinePoint": [
+            221.71875,
+            369.877246
+          ],
+          "screenTangentSlopeExpected": 0.075,
+          "screenLocalPolylineSlopeObserved": 0.0746325333333516,
+          "delta": 0.0003674666666484,
+          "tolerance": 0.025
+        },
+        {
+          "contact": 2,
+          "branch": "descent-2",
+          "expectedPoint": [
+            325.5347747337748,
+            120.02008999271766
+          ],
+          "nearestPolylinePoint": [
+            325.585937,
+            120.02411
+          ],
+          "screenTangentSlopeExpected": 0.075,
+          "screenLocalPolylineSlopeObserved": 0.08211712000000261,
+          "delta": 0.007117120000002614,
+          "tolerance": 0.025
+        },
+        {
+          "contact": 3,
+          "branch": "descent-2",
+          "expectedPoint": [
+            424.4652252662252,
+            354.97991000728234
+          ],
+          "nearestPolylinePoint": [
+            424.414063,
+            354.97589
+          ],
+          "screenTangentSlopeExpected": 0.075,
+          "screenLocalPolylineSlopeObserved": 0.08211711999989348,
+          "delta": 0.007117119999893479,
+          "tolerance": 0.025
+        },
+        {
+          "contact": 4,
+          "branch": "descent-3",
+          "expectedPoint": [
+            505.3738399773652,
+            130.01404093860057
+          ],
+          "nearestPolylinePoint": [
+            505.3125,
+            130.009816
+          ],
+          "screenTangentSlopeExpected": 0.075,
+          "screenLocalPolylineSlopeObserved": 0.06272319999998217,
+          "delta": 0.012276800000017823,
+          "tolerance": 0.025
+        },
+        {
+          "contact": 5,
+          "branch": "descent-3",
+          "expectedPoint": [
+            584.6261600226347,
+            344.9859590613994
+          ],
+          "nearestPolylinePoint": [
+            584.6875,
+            344.990184
+          ],
+          "screenTangentSlopeExpected": 0.075,
+          "screenLocalPolylineSlopeObserved": 0.06272320000007311,
+          "delta": 0.012276799999926882,
+          "tolerance": 0.025
+        }
+      ],
+      "maxDelta": 0.012276800000017823,
+      "tolerance": 0.025,
+      "status": "PASS"
+    }
+  ],
+  "sourceConditionCoverage": [
+    {
+      "sourceCondition": "x=-2 and x=4 endpoints",
+      "artifact": "endpoint marks and labels",
+      "status": "PASS"
+    },
+    {
+      "sourceCondition": "x=0 y-axis and graph frame",
+      "artifact": "orthogonal axis primitives share origin (305,430)",
+      "status": "PASS"
+    },
+    {
+      "sourceCondition": "three descending graph branches",
+      "artifact": "first-descent, descent-2, descent-3 sampled polylines",
+      "status": "PASS"
+    },
+    {
+      "sourceCondition": "parallel tangent count 1+2+2",
+      "artifact": "five contact points and five line primitives",
+      "status": "PASS"
+    }
+  ],
+  "sourceSemanticIdentity": {
+    "applicable": true,
+    "checks": [
+      {
+        "semanticRole": "interval-left endpoint",
+        "sourceLabel": "−2",
+        "artifactLabel": "−2",
+        "result": "PASS"
+      },
+      {
+        "semanticRole": "interval-right endpoint",
+        "sourceLabel": "4",
+        "artifactLabel": "4",
+        "result": "PASS"
+      },
+      {
+        "semanticRole": "function graph",
+        "sourceLabel": "y=f(x)",
+        "artifactLabel": "y=f(x)",
+        "result": "PASS"
+      }
+    ]
+  },
+  "factVisualizations": [
+    {
+      "fact": "endpoint secant",
+      "role": "DERIVED_INTERMEDIATE",
+      "encoding": "dashed slate line"
+    },
+    {
+      "fact": "five same-slope tangent locations",
+      "role": "DERIVED_INTERMEDIATE",
+      "encoding": "five red tangent segments with numbered contact markers"
+    },
+    {
+      "fact": "count 5",
+      "role": "CONCLUSION",
+      "encoding": "separate count card"
+    }
+  ],
+  "decisiveRelationCovered": true,
+  "uncoveredCriticalConditions": [],
+  "expectedFactCompletenessStatus": "PASS",
+  "labelOwnerBindings": [
+    {
+      "label": "−2",
+      "owner": "left interval endpoint",
+      "status": "PASS"
+    },
+    {
+      "label": "4",
+      "owner": "right interval endpoint",
+      "status": "PASS"
+    },
+    {
+      "labels": "1–5",
+      "owners": "five separate tangent contact circles",
+      "status": "PASS"
+    },
+    {
+      "label": "1+2+2=5",
+      "owner": "branch count panel",
+      "status": "PASS"
+    }
+  ],
+  "xmlParse": "PASS",
+  "browserRenderEvidence": "NOT_RUN_R1_R3_OWNER",
+  "rendererSupport": "Archive engine renderSolutionImageHTML loads solutionImage through ordinary img src with cache-buster; SVG extension accepted by existing source refs/validator. Actual browser dimensions, clipping, fonts and student screen remain R3.",
+  "svgPath": "archive/assets/images/24_금당고_1학기_중간_고2_수학II/q13-solution.svg"
+}

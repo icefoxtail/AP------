@@ -5,7 +5,7 @@ const fs=require('node:fs');
 const os=require('node:os');
 const path=require('node:path');
 const crypto=require('node:crypto');
-const {spawnSync}=require('node:child_process');
+const {spawnSync,execFileSync}=require('node:child_process');
 
 const repo=path.resolve(__dirname,'..');
 const script=path.join(repo,'archive/tools/generated-meta/rebuild-main-source-consumer.mjs');
@@ -103,22 +103,58 @@ test('main source rebuild registers new UIDs, refreshes existing payload and has
  const checked=run(root,'--check');assert.equal(checked.status,'PASS');assert.equal(checked.diagnosticCount,0);
 });
 
-test('projection workflow uses a normal protected PR merge and avoids direct main pushes',()=>{
- const yaml=fs.readFileSync(path.join(repo,'.github/workflows/auto-register-approved-qid9.yml'),'utf8');
- assert.match(yaml,/gh pr merge .*--merge --delete-branch/);
- assert.doesNotMatch(yaml,/--auto/);
- assert.doesNotMatch(yaml,/gh pr merge .*--admin/);
- assert.doesNotMatch(yaml,/git push origin (?:main|HEAD:main)/);
- assert.match(yaml,/git diff --cached --quiet/,'the post-merge source-sync loop must stop on an idempotent diff');
- const createLine=yaml.match(/^\s*(pr_url="\$\(gh pr create .*\)"\s*)$/m)?.[1];
- assert.ok(createLine,'workflow should capture gh pr create standard-output URL');
- assert.doesNotMatch(createLine,/--json|--jq/,'gh pr create does not support PR-view JSON flags');
- const temp=fs.mkdtempSync(path.join(os.tmpdir(),'mock-gh-pr-create-'));
- try{
-  const bin=path.join(temp,'bin');fs.mkdirSync(bin);
-  fs.writeFileSync(path.join(bin,'gh'),`#!/bin/sh\n[ "$1" = pr ] && [ "$2" = create ] || exit 10\nfor arg do [ "$arg" = --json ] && exit 11; [ "$arg" = --jq ] && exit 12; done\nprintf '%s\n' 'https://github.com/example/repo/pull/123'\n`,{mode:0o755});
-  const script=`branch=codex/mock-projection; ${createLine}; printf '%s' "$pr_url"`;
-  const result=spawnSync('bash',['-c',script],{encoding:'utf8',env:{...process.env,PATH:`${bin}:${process.env.PATH||''}`}});
-  assert.equal(result.status,0,result.stderr);assert.equal(result.stdout,'https://github.com/example/repo/pull/123');
- }finally{fs.rmSync(temp,{recursive:true,force:true});}
+test('Pages release derives the complete source projection atomically without a bot projection PR loop',()=>{
+ const registration=fs.readFileSync(path.join(repo,'.github/workflows/auto-register-approved-qid9.yml'),'utf8');
+ const release=fs.readFileSync(path.join(repo,'.github/workflows/archive-pages-release.yml'),'utf8');
+ assert.match(registration,/contents: read/);
+ assert.doesNotMatch(registration,/^  push:/m,'main pushes are handled by the atomic Pages release');
+ assert.doesNotMatch(registration,/contents:\s*write|pull-requests:\s*write|gh pr (?:create|merge)|git push/);
+ const approvedWrite=release.indexOf('auto-register-approved-qid9.mjs --write');
+ const approvedCheck=release.indexOf('auto-register-approved-qid9.mjs --check');
+ const sourceWrite=release.indexOf('rebuild-main-source-consumer.mjs --write');
+ const sourceCheck=release.indexOf('rebuild-main-source-consumer.mjs --check');
+ const sourceTests=release.indexOf('tests/generated-main-source-consumer-sync.test.cjs');
+ const palmaChrome=release.indexOf('node tools/check-generated-bank-browser.cjs');
+ const geumdangChrome=release.indexOf('node tools/check-geumdang-qid9-browser.cjs');
+ const artifactUpload=release.indexOf('actions/upload-pages-artifact@v3');
+ assert.ok(approvedWrite>=0&&approvedWrite<approvedCheck,'approved source is compiled and checked');
+ assert.ok(approvedCheck<sourceWrite&&sourceWrite<sourceCheck,'the complete main source projection follows the approved QID9 compiler');
+ assert.ok(sourceCheck<sourceTests&&sourceTests<palmaChrome&&palmaChrome<geumdangChrome&&geumdangChrome<artifactUpload,
+  'source, tests, and student browser checks finish before the Pages artifact is uploaded');
+ assert.match(release,/branches: \[main\]/);
+ assert.match(release,/needs: build/,'deployment requires the complete build job');
+ assert.doesNotMatch(release,/gh pr (?:create|merge)|git push origin (?:main|HEAD:main)/);
+});
+
+test('Windows CRLF source worktrees project the canonical Git blob SHA into Consumer rows',t=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'main-generated-crlf-sha-'));t.after(()=>fs.rmSync(root,{recursive:true,force:true}));
+ const gitInit=spawnSync('git',['init','-q'],{cwd:root,encoding:'utf8'});assert.equal(gitInit.status,0,gitInit.stderr);
+ const put=(rel,bytes)=>{const file=path.join(root,rel);fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,bytes);return file;};
+ put('.gitattributes',Buffer.from('*.js text eol=lf\n'));
+ put('archive/tools/generated-meta/rebuild-main-source-consumer.mjs',fs.readFileSync(script));
+ const uid='ALITE-CRLF26-2FINAL-Q01-A1';
+ const sourcePath='archive/generated/lite/v1/2022/H1/TEST-UNIT/shards/hanbit-qid9.js';
+ const metaPath='archive/generated/lite/v1/2022/H1/TEST-UNIT/metadata/hanbit-qid9.json';
+ const examPath='archive/exams/original/high/h1/2final/26_한빛고_2학기_기말_고1_기출.js';
+ const sourceExamSha='a'.repeat(40);
+ put(examPath,Buffer.from('window.questionBank = [{id:1}];\n'));
+ const question={id:1,uid,sourceQid:1,sourceKind:'generated',content:'조건을 적용한다.',choices:['1','2','3','4','5'],answer:'①',solution:'조건을 적용하여 답을 구한다.',standardCourse:'공통수학2',standardUnitKey:'TEST-01',subUnitKey:'TEST-UNIT',meta:{standardCourse:'공통수학2',standardUnitKey:'TEST-01',subUnitKey:'TEST-UNIT'}};
+ const sourceBytes=Buffer.from(('window.questionBank = '+JSON.stringify([question])+';\n').replace(/\n/g,'\r\n'));
+ put(sourcePath,sourceBytes);
+ put(metaPath,jsonBytes([{uid,sourceQid:1,sourceArchiveFile:examPath,sourceBlobSha:sourceExamSha,sourceSchoolMarker:'한빛고',standardCourse:'공통수학2',subUnitKey:'TEST-UNIT',meta:question.meta}]));
+ put('alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_한빛고_2학기_기말_고1/GPT_QID9_EXAM_MANIFEST.json',jsonBytes({
+  schemaVersion:'ALIVE_EXAM_SINGLE_BRANCH_QID_COMMITS_v1',originalSourceExam:examPath,sourceBlobSha:sourceExamSha,sourceQidCount:1,
+  school:'한빛고',year:2026,grade:'고1',subject:'공통수학2',qidLedger:[{sourceQid:1,uids:[uid]}]
+ }));
+ put('archive/data/generated-lite-consumer/v1/index.json',jsonBytes({schemaVersion:'ALIVE_GENERATED_CONSUMER_INDEX_V1',sourceKind:'generated',records:[],recordCount:0,approvedCount:0,userDisabledUids:[],withdrawnUids:[]}));
+ const rawSha=gitSha(sourceBytes);
+ const cleanSha=execFileSync('git',['hash-object',`--path=${sourcePath}`,path.join(root,sourcePath)],{cwd:root,encoding:'utf8'}).trim();
+ assert.notEqual(cleanSha,rawSha,'the fixture must distinguish CRLF working bytes from Git clean bytes');
+ const written=run(root,'--write');assert.equal(written.status,'PASS');assert.equal(written.registeredCount,1);
+ const index=JSON.parse(fs.readFileSync(path.join(root,'archive/data/generated-lite-consumer/v1/index.json'),'utf8'));
+ const row=index.records.find(record=>record.uid===uid);
+ const consumer=JSON.parse(fs.readFileSync(path.join(root,'archive',row.shard),'utf8'));
+ const consumerRow=consumer.records.find(record=>record.generatedUid===uid);
+ assert.equal(row.sourceShardGitSha,cleanSha);
+ assert.equal(consumerRow.sourceShardGitSha,cleanSha);
 });

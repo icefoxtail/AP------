@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
+import {execFileSync} from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../..');
@@ -14,6 +15,13 @@ const indexRel=`${consumerRoot}/index.json`;
 const mode=process.argv.includes('--write')?'write':'check';
 const sha256=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
 const gitBlobSha=bytes=>crypto.createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
+const sourceGitBlobSha=(relative,absolute,bytes)=>{
+ try{
+  const sha=execFileSync('git',['hash-object',`--path=${relative}`,absolute],{cwd:root,encoding:'utf8',stdio:['ignore','pipe','ignore']}).trim();
+  if(/^[a-f0-9]{40}$/i.test(sha))return sha;
+ }catch{}
+ return gitBlobSha(bytes);
+};
 const contentFingerprint=q=>{
  const value=JSON.stringify({content:q.content,choices:q.choices,answer:q.answer,solution:q.solution});
  let hash=14695981039346656037n;
@@ -66,6 +74,16 @@ const metaFor=(q,m)=>q.meta||m.meta||m.metaProjection||Object.fromEntries(
  ['rpmL1','rpmL2','rpmL3','rpmL4','rpmPrimaryRecordId','rpmL4Namespace','rpmDraftAuthorityRef','rpmDraftAuthoritySha256','generatedL4RegistryRef','generatedL4RegistrySha256','problemTypeKey','templateKey','secondaryConceptKeys','crossConceptKeys','conditionKeys','integrationPattern','difficultyBucket','level','standardCourse','standardUnitKey','subUnitKey'].filter(k=>q[k]!==undefined||m[k]!==undefined).map(k=>[k,q[k]??m[k]])
 );
 const qualityState=(q,m,old)=>old?.reviewStatus??m.reviewApprovalStatus??m.reviewStatus??q.reviewStatus??'NOT_REVIEWED';
+function hasSvgDocumentRoot(svg){
+ const match=/<((?:[A-Za-z_][\w.-]*:)?svg)\b([^>]*)>/i.exec(svg);
+ if(!match)return false;
+ const name=match[1],escaped=name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+ if(!new RegExp('</'+escaped+'\\s*>','i').test(svg))return false;
+ const prefix=name.includes(':')?name.split(':')[0]:null;
+ if(!prefix)return true;
+ const namespace=new RegExp('\\bxmlns:'+prefix.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\s*=\\s*(["\\\'])http://www\\.w3\\.org/2000/svg\\1');
+ return namespace.test(match[2]);
+}
 const issueFor=(q)=>{
  const issues=[];
  if(typeof q.content!=='string'||!q.content.trim())issues.push('QUESTION_TEXT_MISSING');
@@ -79,7 +97,7 @@ const issueFor=(q)=>{
   if(!exists(rel))issues.push(`${key.toUpperCase()}_FILE_MISSING:${ref}`);
   else if(/\.svg$/i.test(ref)){
    const svg=fs.readFileSync(path.join(root,rel),'utf8');
-   if(!/<svg\b/i.test(svg)||!/<\/svg\s*>/i.test(svg))issues.push(`${key.toUpperCase()}_SVG_INVALID:${ref}`);
+   if(!hasSvgDocumentRoot(svg))issues.push(`${key.toUpperCase()}_SVG_INVALID:${ref}`);
   }
  }
  return issues;
@@ -119,7 +137,7 @@ const main=()=>{
  }
  const candidates=[],errors=[],sourceFiles=filesUnder(sourceRoot).filter(file=>file.includes(`${path.sep}shards${path.sep}`)&&file.endsWith('.js'));
  for(const abs of sourceFiles){
-  const source=path.relative(root,abs).split(path.sep).join('/'),bytes=fs.readFileSync(abs),sourceSha=gitBlobSha(bytes);
+  const source=path.relative(root,abs).split(path.sep).join('/'),bytes=fs.readFileSync(abs),sourceSha=sourceGitBlobSha(source,abs,bytes);
   let questions;
   try{const sandbox={window:{}};vm.runInNewContext(bytes.toString('utf8'),sandbox,{timeout:2000,filename:source});questions=sandbox.window.questionBank||sandbox.window.generatedLiteQuestions;if(!Array.isArray(questions))throw Error('QUESTION_BANK_NOT_ARRAY');}
   catch(error){errors.push({source,code:'SOURCE_PARSE_ERROR',detail:String(error.message||error)});continue;}
@@ -188,8 +206,10 @@ const main=()=>{
    const metaSha=sha256(Buffer.from(JSON.stringify(meta)));
    const sourceChanged=!c.prior||c.prior.sourceShardGitSha!==c.sourceSha;
    const sourceMetaChanged=!!c.prior?.sourceMetaSha256&&c.prior.sourceMetaSha256!==metaSha;
-   const technicalStatus=sourceChanged?(c.issues.length?'ERROR':'READY'):(c.prior.technicalStatus||'READY');
-   const technicalIssues=sourceChanged?c.issues:(Array.isArray(c.prior.technicalIssues)?c.prior.technicalIssues:[]);
+   // Technical availability is derived from current Source/assets and validator,
+   // even when the question JS itself has not changed.
+   const technicalStatus=c.issues.length?'ERROR':'READY';
+   const technicalIssues=c.issues;
    Object.assign(row,{uid:c.uid,school:c.school,year:c.year,grade:c.grade,subject:c.subject,sourceQid:c.sourceQid,l2:c.l2,l2Label:c.question.subUnit||c.metadata.subUnit||c.metadata.l2Label||row.l2Label||'',shard:consumerRel.replace(/^archive\//,''),localOrdinal:c.prior?.localOrdinal||c.sourceQuestion.id||c.sourceOrdinal,sourceKind:'generated',sourceShard:c.source,sourceShardGitSha:c.sourceSha,sourceExamPath:c.sourceExamPath||row.sourceExamPath||'',sourceExamBlobSha:c.sourceExamBlobSha||row.sourceExamBlobSha||'',sourceExamQuestionCount:c.sourceExamQuestionCount||undefined,consumerSelectable:c.prior?.consumerSelectable??c.metadata.consumerSelectable??c.sourceQuestion.consumerSelectable??true,technicalStatus,technicalIssues,mainSourceAvailable:true,qualityStatus:c.prior?.qualityStatus??c.qualityStatus,reviewStatus:c.prior?.reviewStatus??c.metadata.reviewApprovalStatus??c.metadata.reviewStatus??c.sourceQuestion.reviewStatus??'NOT_REVIEWED',approval:c.prior?.approval??c.metadata.reviewApprovalStatus??c.metadata.reviewStatus??c.sourceQuestion.reviewStatus??'NOT_REVIEWED',meta,sourceMetaSha256:metaSha});
    row.userDisabled=disabled.has(c.uid);
    const currentQuestionFingerprint=contentFingerprint(c.question);

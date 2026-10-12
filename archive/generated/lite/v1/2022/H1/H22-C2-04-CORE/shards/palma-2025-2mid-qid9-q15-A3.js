@@ -22,6 +22,9 @@ window.questionBank = [
       "도형의 이동"
     ],
     "wide": false,
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q15-A3-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth",
     "content": "두 다항식 $f(x,y)=(x-3)^2+(y-1)^2-5$, $g(x,y)=(x+2)^2+(y-4)^2-5$에 대하여 다음 보기에서 옳은 것을 모두 고른 것은?<br><br>〈보기〉<br>ㄱ. $g(x,y)=f(x+4,y-3)$<br>ㄴ. $g(x,y)=f(-x+1,-y+5)$<br>ㄷ. $g(x,y)=f(y-1,x+3)$",
     "choices": [
       "ㄱ",

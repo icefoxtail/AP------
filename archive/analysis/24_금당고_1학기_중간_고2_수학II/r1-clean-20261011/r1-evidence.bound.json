@@ -1,0 +1,3214 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R1",
+  "examUid": "24_금당고_1학기_중간_고2_수학II",
+  "artifactSha": "3622f4482a1ecc3cd34d862a2238951c087565eb",
+  "artifactRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "denominator": 19,
+  "qids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "rows": [
+    {
+      "qid": 1,
+      "independentAnswer": "②",
+      "independentAnswerOriginalFreeze": "②",
+      "independentReasoning": "Rationalizing choice ② gives 1/(sqrt(x+2)+2)→1/4, not 1/2. The other four limits evaluate to 8, 3, 0, and 2 respectively, so exactly choice ② is false.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": {
+        "path": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/r1-independent-freeze.json",
+        "sha256": "4d6fa27f4ed1381d6bb1e0a741eb10311b6db2cb4cac9b1048d963e79bed7ea0"
+      },
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "compareBasis": "Independent answer agrees with stored answer.",
+      "answerCardinality": {
+        "studentAnswerCount": 1,
+        "uniqueCorrectChoiceCount": 1,
+        "choiceCount": 5
+      },
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "8c6838a1fd5c6ae0900ce6e45fcf05e76249ea06705ea9858d4f3f85c380f131",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "layoutTag": "grid",
+          "wide": false,
+          "studentPayloadParity": {
+            "studentPayloadSha256": "8d84afc322018de7335b0dff77f1e49e7b437ff8fad944377ce69dfca14c6107",
+            "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+            "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+            "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+            "studentFieldsPreserved": true
+          },
+          "reason": "No source-only visual field is required; text/MathJax content and choices are exact.",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "solutionIdentity": {
+            "examFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceOrdinal": 1,
+            "studentPayloadSha256": "8d84afc322018de7335b0dff77f1e49e7b437ff8fad944377ce69dfca14c6107",
+            "solutionSha256": "8c6838a1fd5c6ae0900ce6e45fcf05e76249ea06705ea9858d4f3f85c380f131"
+          },
+          "smallBoardContinuityStatus": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardObservation": "Explanation, decisive equation(s), conditions and answer conclusion are separated in student-readable line/paragraph blocks.",
+          "goldenQualityCompare": "PASS",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "META": {
+          "status": "PASS_WITH_EXPLICIT_EVIDENCE_DEBT",
+          "category": "함수의 극한값 계산",
+          "originalCategory": "함수의 극한",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-01",
+          "standardUnit": "함수의 극한",
+          "standardUnitOrder": 1,
+          "subUnitKey": "H15-M2-01-LIMIT",
+          "subUnit": "함수의 극한",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "questionType": "객관식",
+          "tagsCurrent": [
+            "객관식",
+            "함수의 극한",
+            "함수의 극한에 대한 성질"
+          ],
+          "visualTagCheck": {
+            "requiredTag": null,
+            "present": true
+          },
+          "levelCurrent": "하",
+          "independentLevel": "하",
+          "independentLevelReason": "한 극한 계산에서 틀린 명제를 고르는 기본 수치 확인",
+          "difficultyBucketCurrent": 1,
+          "difficultyConfidenceCurrent": "high",
+          "difficultyBoundaryFlagCurrent": "NONE",
+          "legacyLevelCompatibilityCurrent": "NORMAL",
+          "difficultyDisposition": "KEEP",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+          "templateKey": "TPL_LIMIT_RATIONALIZATION",
+          "rpm": {
+            "status": "FAMILY_ACTIVE",
+            "crosswalkIds": [
+              "H2-M2-RPM-002"
+            ],
+            "l1": "함수의 극한과 연속",
+            "l2": "함수의 극한",
+            "l3": "함수의 극한값 계산",
+            "l4": "극한값 계산",
+            "selection": "active family candidates include the exact TPL_LIMIT_RATIONALIZATION"
+          },
+          "identity": {
+            "sourceArchiveFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+            "sourceOrdinal": 1,
+            "sourceQidBasis": "current JS id 1 equals the current student-bundle qid 1",
+            "questionUidFieldPresent": false,
+            "stableQuestionUid": "EVIDENCE_DEBT: no current stable questionUid field or UID registry record for this assignment",
+            "provenance": "current source path/raw SHA + qid + referenced asset hashes bound; original intake page-level provenance is not in the current bundle/evidence root"
+          },
+          "sourceConsumerIndexParity": "NOT_TESTED: target has no current exact UID registration/readback in this branch; R1 does not publish or claim consumer/index parity",
+          "exactDebts": [
+            {
+              "field": "questionUid",
+              "reason": "Current JS and current assignment records do not provide a stable per-item questionUid/UID registry mapping."
+            }
+          ]
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "극한 보기만 있고 공간·그래프 관계가 없어 별도 문제/해설 그림은 새 결정 정보를 만들지 않는다.",
+            "assetAction": "EXEMPT",
+            "asset": null
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "다섯 극한값의 대수 계산만 있고 해설에 독립적인 공간·구조 관계가 없다.",
+            "assetAction": "EXEMPT",
+            "asset": null,
+            "staticParity": null
+          },
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER",
+          "rendererSupport": "Archive solutionImage path is loaded as ordinary image src in engine.html; SVG served through current asset-ref contract; final six-case Archive browser render is assigned to R3."
+        }
+      },
+      "metaDebtFields": [],
+      "studentBodyParity": {
+        "studentPayloadSha256": "8d84afc322018de7335b0dff77f1e49e7b437ff8fad944377ce69dfca14c6107",
+        "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+        "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+        "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+        "studentFieldsPreserved": true
+      },
+      "expectedSourceQid": 1
+    },
+    {
+      "qid": 2,
+      "independentAnswer": "⑤",
+      "independentAnswerOriginalFreeze": "⑤",
+      "independentReasoning": "As x→0, f(x)=x²(1+o(1)) and g(x)=x(2+o(1)). Thus (f+x)/(g+x)=x(1+o(1))/(x(3+o(1)))→1/3, choice ⑤.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": {
+        "path": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/r1-independent-freeze.json",
+        "sha256": "4d6fa27f4ed1381d6bb1e0a741eb10311b6db2cb4cac9b1048d963e79bed7ea0"
+      },
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "compareBasis": "Independent answer agrees with stored answer.",
+      "answerCardinality": {
+        "studentAnswerCount": 1,
+        "uniqueCorrectChoiceCount": 1,
+        "choiceCount": 5
+      },
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "de7586d73f440f2736c025a65b0c0244b9934ee79deb7b32fda9cf208a960a1f",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "layoutTag": "grid",
+          "wide": false,
+          "studentPayloadParity": {
+            "studentPayloadSha256": "ccde1174861f0644b9404d47f772d67a0d3d89b2e76981e5b601bd98f7f167f7",
+            "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+            "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+            "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+            "studentFieldsPreserved": true
+          },
+          "reason": "No source-only visual field is required; text/MathJax content and choices are exact.",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "solutionIdentity": {
+            "examFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceOrdinal": 2,
+            "studentPayloadSha256": "ccde1174861f0644b9404d47f772d67a0d3d89b2e76981e5b601bd98f7f167f7",
+            "solutionSha256": "de7586d73f440f2736c025a65b0c0244b9934ee79deb7b32fda9cf208a960a1f"
+          },
+          "smallBoardContinuityStatus": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardObservation": "Explanation, decisive equation(s), conditions and answer conclusion are separated in student-readable line/paragraph blocks.",
+          "goldenQualityCompare": "PASS",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "META": {
+          "status": "PASS_WITH_EXPLICIT_EVIDENCE_DEBT",
+          "category": "함수의 극한의 계산",
+          "originalCategory": "함수의 극한",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-01",
+          "standardUnit": "함수의 극한",
+          "standardUnitOrder": 1,
+          "subUnitKey": "H15-M2-01-LIMIT",
+          "subUnit": "함수의 극한",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "questionType": "객관식",
+          "tagsCurrent": [
+            "객관식",
+            "함수의 극한",
+            "함수의 극한의 계산"
+          ],
+          "visualTagCheck": {
+            "requiredTag": null,
+            "present": true
+          },
+          "levelCurrent": "중",
+          "independentLevel": "중",
+          "independentLevelReason": "차수 조건을 극한식에 적용해 비를 정리",
+          "difficultyBucketCurrent": 2,
+          "difficultyConfidenceCurrent": "high",
+          "difficultyBoundaryFlagCurrent": "NONE",
+          "legacyLevelCompatibilityCurrent": "NORMAL",
+          "difficultyDisposition": "KEEP",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+          "templateKey": "TPL_LIMIT_OPERATION_LAWS",
+          "rpm": {
+            "status": "DIRECT_ACTIVE",
+            "crosswalkIds": [
+              "H2-M2-RPM-003"
+            ],
+            "l1": "함수의 극한과 연속",
+            "l2": "함수의 극한",
+            "l3": "극한의 성질",
+            "l4": "대수적 계산"
+          },
+          "identity": {
+            "sourceArchiveFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+            "sourceOrdinal": 2,
+            "sourceQidBasis": "current JS id 2 equals the current student-bundle qid 2",
+            "questionUidFieldPresent": false,
+            "stableQuestionUid": "EVIDENCE_DEBT: no current stable questionUid field or UID registry record for this assignment",
+            "provenance": "current source path/raw SHA + qid + referenced asset hashes bound; original intake page-level provenance is not in the current bundle/evidence root"
+          },
+          "sourceConsumerIndexParity": "NOT_TESTED: target has no current exact UID registration/readback in this branch; R1 does not publish or claim consumer/index parity",
+          "exactDebts": [
+            {
+              "field": "questionUid",
+              "reason": "Current JS and current assignment records do not provide a stable per-item questionUid/UID registry mapping."
+            }
+          ]
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "함수 극한의 계수 조건과 대수적 극한으로 완결되며 도식이 중간 관계를 추가하지 않는다.",
+            "assetAction": "EXEMPT",
+            "asset": null
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "극한의 차수 비교만으로 재현되며 시각적 분기나 접점이 없다.",
+            "assetAction": "EXEMPT",
+            "asset": null,
+            "staticParity": null
+          },
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER",
+          "rendererSupport": "Archive solutionImage path is loaded as ordinary image src in engine.html; SVG served through current asset-ref contract; final six-case Archive browser render is assigned to R3."
+        }
+      },
+      "metaDebtFields": [],
+      "studentBodyParity": {
+        "studentPayloadSha256": "ccde1174861f0644b9404d47f772d67a0d3d89b2e76981e5b601bd98f7f167f7",
+        "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+        "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+        "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+        "studentFieldsPreserved": true
+      },
+      "expectedSourceQid": 2
+    },
+    {
+      "qid": 3,
+      "independentAnswer": "④",
+      "independentAnswerOriginalFreeze": "④",
+      "independentReasoning": "Continuity requires 9−3m+3=0, so m=4. Then (x²−4x+3)/(x−3)=x−1 for x≠3, giving limiting value n=2. Hence m+n=6, choice ④.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": {
+        "path": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/r1-independent-freeze.json",
+        "sha256": "4d6fa27f4ed1381d6bb1e0a741eb10311b6db2cb4cac9b1048d963e79bed7ea0"
+      },
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "compareBasis": "Independent answer agrees with stored answer.",
+      "answerCardinality": {
+        "studentAnswerCount": 1,
+        "uniqueCorrectChoiceCount": 1,
+        "choiceCount": 5
+      },
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "06dfe2ff84ba66b151252c97d88cb6592c921ecb1d649cc3219430e53c7b5cd1",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "layoutTag": "grid",
+          "wide": false,
+          "studentPayloadParity": {
+            "studentPayloadSha256": "4ab0162f2e81ac2a026e15705905a0378faa67377fdf1e457388b39a2a72bb41",
+            "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+            "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+            "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+            "studentFieldsPreserved": true
+          },
+          "reason": "No source-only visual field is required; text/MathJax content and choices are exact.",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "solutionIdentity": {
+            "examFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceOrdinal": 3,
+            "studentPayloadSha256": "4ab0162f2e81ac2a026e15705905a0378faa67377fdf1e457388b39a2a72bb41",
+            "solutionSha256": "06dfe2ff84ba66b151252c97d88cb6592c921ecb1d649cc3219430e53c7b5cd1"
+          },
+          "smallBoardContinuityStatus": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardObservation": "Explanation, decisive equation(s), conditions and answer conclusion are separated in student-readable line/paragraph blocks.",
+          "goldenQualityCompare": "PASS",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "META": {
+          "status": "PASS_WITH_EXPLICIT_EVIDENCE_DEBT",
+          "category": "구간별 함수의 연속 조건",
+          "originalCategory": "함수의 연속",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-02",
+          "standardUnit": "함수의 연속",
+          "standardUnitOrder": 2,
+          "subUnitKey": "H15-M2-02-CONTINUITY",
+          "subUnit": "함수의 연속",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "questionType": "객관식",
+          "tagsCurrent": [
+            "객관식",
+            "함수의 연속",
+            "함수의 연속"
+          ],
+          "visualTagCheck": {
+            "requiredTag": null,
+            "present": true
+          },
+          "levelCurrent": "중",
+          "independentLevel": "중",
+          "independentLevelReason": "연속 조건으로 두 계수를 순차 결정",
+          "difficultyBucketCurrent": 2,
+          "difficultyConfidenceCurrent": "high",
+          "difficultyBoundaryFlagCurrent": "NONE",
+          "legacyLevelCompatibilityCurrent": "NORMAL",
+          "difficultyDisposition": "KEEP",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "problemTypeKey": "PT_CONTINUITY_CONDITION",
+          "templateKey": "TPL_CONTINUITY_FACTOR_CONDITION",
+          "rpm": {
+            "status": "FAMILY_ACTIVE",
+            "crosswalkIds": [
+              "H2-M2-RPM-009"
+            ],
+            "l1": "함수의 극한과 연속",
+            "l2": "함수의 연속",
+            "l3": "연속 조건",
+            "l4": "미정계수"
+          },
+          "identity": {
+            "sourceArchiveFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+            "sourceOrdinal": 3,
+            "sourceQidBasis": "current JS id 3 equals the current student-bundle qid 3",
+            "questionUidFieldPresent": false,
+            "stableQuestionUid": "EVIDENCE_DEBT: no current stable questionUid field or UID registry record for this assignment",
+            "provenance": "current source path/raw SHA + qid + referenced asset hashes bound; original intake page-level provenance is not in the current bundle/evidence root"
+          },
+          "sourceConsumerIndexParity": "NOT_TESTED: target has no current exact UID registration/readback in this branch; R1 does not publish or claim consumer/index parity",
+          "exactDebts": [
+            {
+              "field": "questionUid",
+              "reason": "Current JS and current assignment records do not provide a stable per-item questionUid/UID registry mapping."
+            }
+          ]
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "인수분해와 연속 조건으로 충분하고 공간·그래프 topology가 없다.",
+            "assetAction": "EXEMPT",
+            "asset": null
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "연속 조건식과 인수분해만 사용한다.",
+            "assetAction": "EXEMPT",
+            "asset": null,
+            "staticParity": null
+          },
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER",
+          "rendererSupport": "Archive solutionImage path is loaded as ordinary image src in engine.html; SVG served through current asset-ref contract; final six-case Archive browser render is assigned to R3."
+        }
+      },
+      "metaDebtFields": [],
+      "studentBodyParity": {
+        "studentPayloadSha256": "4ab0162f2e81ac2a026e15705905a0378faa67377fdf1e457388b39a2a72bb41",
+        "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+        "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+        "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+        "studentFieldsPreserved": true
+      },
+      "expectedSourceQid": 3
+    },
+    {
+      "qid": 4,
+      "independentAnswer": "①",
+      "independentAnswerOriginalFreeze": "①",
+      "independentReasoning": "For x≠2, f(x)=(sqrt(x−1)−1)/(x−2)=1/(sqrt(x−1)+1). Continuity gives f(2)=1/2, choice ①.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": {
+        "path": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/r1-independent-freeze.json",
+        "sha256": "4d6fa27f4ed1381d6bb1e0a741eb10311b6db2cb4cac9b1048d963e79bed7ea0"
+      },
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "compareBasis": "Independent answer agrees with stored answer.",
+      "answerCardinality": {
+        "studentAnswerCount": 1,
+        "uniqueCorrectChoiceCount": 1,
+        "choiceCount": 5
+      },
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "ca84bbed1bd149933916c10a17fbdb6c74547cce7e9ae826369a1bcdde968131",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "layoutTag": "grid",
+          "wide": false,
+          "studentPayloadParity": {
+            "studentPayloadSha256": "3a2c664363edc7b918aa662712c87b54cc6a1a1cc050b55e387782f9f75f407e",
+            "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+            "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+            "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+            "studentFieldsPreserved": true
+          },
+          "reason": "No source-only visual field is required; text/MathJax content and choices are exact.",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "solutionIdentity": {
+            "examFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceOrdinal": 4,
+            "studentPayloadSha256": "3a2c664363edc7b918aa662712c87b54cc6a1a1cc050b55e387782f9f75f407e",
+            "solutionSha256": "ca84bbed1bd149933916c10a17fbdb6c74547cce7e9ae826369a1bcdde968131"
+          },
+          "smallBoardContinuityStatus": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardObservation": "Explanation, decisive equation(s), conditions and answer conclusion are separated in student-readable line/paragraph blocks.",
+          "goldenQualityCompare": "PASS",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "META": {
+          "status": "PASS_WITH_EXPLICIT_EVIDENCE_DEBT",
+          "category": "연속함숫값의 결정",
+          "originalCategory": "함수의 연속",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-02",
+          "standardUnit": "함수의 연속",
+          "standardUnitOrder": 2,
+          "subUnitKey": "H15-M2-02-CONTINUITY",
+          "subUnit": "함수의 연속",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "questionType": "객관식",
+          "tagsCurrent": [
+            "객관식",
+            "함수의 연속",
+            "함수의 연속의 성질"
+          ],
+          "visualTagCheck": {
+            "requiredTag": null,
+            "present": true
+          },
+          "levelCurrent": "중",
+          "independentLevel": "중",
+          "independentLevelReason": "유리화와 연속성 적용",
+          "difficultyBucketCurrent": 2,
+          "difficultyConfidenceCurrent": "high",
+          "difficultyBoundaryFlagCurrent": "NONE",
+          "legacyLevelCompatibilityCurrent": "NORMAL",
+          "difficultyDisposition": "KEEP",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "problemTypeKey": "PT_CONTINUITY_CONDITION",
+          "templateKey": "TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION",
+          "rpm": {
+            "status": "EVIDENCE_DEBT",
+            "crosswalkIds": [],
+            "debt": "No exact H15-M2-02 + PT_CONTINUITY_CONDITION + TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION row in current high2-math2-calculus1 crosswalk; do not invent L3/L4 binding."
+          },
+          "identity": {
+            "sourceArchiveFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+            "sourceOrdinal": 4,
+            "sourceQidBasis": "current JS id 4 equals the current student-bundle qid 4",
+            "questionUidFieldPresent": false,
+            "stableQuestionUid": "EVIDENCE_DEBT: no current stable questionUid field or UID registry record for this assignment",
+            "provenance": "current source path/raw SHA + qid + referenced asset hashes bound; original intake page-level provenance is not in the current bundle/evidence root"
+          },
+          "sourceConsumerIndexParity": "NOT_TESTED: target has no current exact UID registration/readback in this branch; R1 does not publish or claim consumer/index parity",
+          "exactDebts": [
+            {
+              "field": "RPM_L1-L4",
+              "reason": "No exact H15-M2-02 + PT_CONTINUITY_CONDITION + TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION row in current high2-math2-calculus1 crosswalk; do not invent L3/L4 binding."
+            },
+            {
+              "field": "questionUid",
+              "reason": "Current JS and current assignment records do not provide a stable per-item questionUid/UID registry mapping."
+            }
+          ]
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "유리화 뒤 연속값을 구하는 단일 대수 관계라 추가 그림이 필요하지 않다.",
+            "assetAction": "EXEMPT",
+            "asset": null
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "유리화와 한 점의 극한 계산만 필요하다.",
+            "assetAction": "EXEMPT",
+            "asset": null,
+            "staticParity": null
+          },
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER",
+          "rendererSupport": "Archive solutionImage path is loaded as ordinary image src in engine.html; SVG served through current asset-ref contract; final six-case Archive browser render is assigned to R3."
+        }
+      },
+      "metaDebtFields": [],
+      "studentBodyParity": {
+        "studentPayloadSha256": "3a2c664363edc7b918aa662712c87b54cc6a1a1cc050b55e387782f9f75f407e",
+        "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+        "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+        "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+        "studentFieldsPreserved": true
+      },
+      "expectedSourceQid": 4
+    },
+    {
+      "qid": 5,
+      "independentAnswer": "③",
+      "independentAnswerOriginalFreeze": "③",
+      "independentReasoning": "For x≠2, f(x)=(x+5). Differentiability at 2 requires continuity, so m+1=f(2)=7; therefore m=6, choice ③.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": {
+        "path": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/r1-independent-freeze.json",
+        "sha256": "4d6fa27f4ed1381d6bb1e0a741eb10311b6db2cb4cac9b1048d963e79bed7ea0"
+      },
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "compareBasis": "Independent answer agrees with stored answer.",
+      "answerCardinality": {
+        "studentAnswerCount": 1,
+        "uniqueCorrectChoiceCount": 1,
+        "choiceCount": 5
+      },
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "7b859055e7aa8152138c3e95afbf9099bce1fe05bc43dbc76630b68485b675a9",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "layoutTag": "grid",
+          "wide": false,
+          "studentPayloadParity": {
+            "studentPayloadSha256": "776d699001ab3b5420666ee80e9c7d77f23f7d9ba8f6b0d0139e5fa4506e3399",
+            "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+            "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+            "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+            "studentFieldsPreserved": true
+          },
+          "reason": "No source-only visual field is required; text/MathJax content and choices are exact.",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "solutionIdentity": {
+            "examFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceOrdinal": 5,
+            "studentPayloadSha256": "776d699001ab3b5420666ee80e9c7d77f23f7d9ba8f6b0d0139e5fa4506e3399",
+            "solutionSha256": "7b859055e7aa8152138c3e95afbf9099bce1fe05bc43dbc76630b68485b675a9"
+          },
+          "smallBoardContinuityStatus": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardObservation": "Explanation, decisive equation(s), conditions and answer conclusion are separated in student-readable line/paragraph blocks.",
+          "goldenQualityCompare": "PASS",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "META": {
+          "status": "PASS_WITH_EXPLICIT_EVIDENCE_DEBT",
+          "category": "미분가능 조건으로 계수 결정",
+          "originalCategory": "미분계수와 도함수",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-04",
+          "standardUnit": "도함수",
+          "standardUnitOrder": 4,
+          "subUnitKey": "H15-M2-04-DERIVATIVE",
+          "subUnit": "도함수",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "questionType": "객관식",
+          "tagsCurrent": [
+            "객관식",
+            "미분계수와 도함수",
+            "미분가능성과 연속성"
+          ],
+          "visualTagCheck": {
+            "requiredTag": null,
+            "present": true
+          },
+          "levelCurrent": "중",
+          "independentLevel": "중",
+          "independentLevelReason": "미분가능성의 필요조건 연속성을 적용",
+          "difficultyBucketCurrent": 2,
+          "difficultyConfidenceCurrent": "high",
+          "difficultyBoundaryFlagCurrent": "NONE",
+          "legacyLevelCompatibilityCurrent": "NORMAL",
+          "difficultyDisposition": "KEEP",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+          "templateKey": "TPL_DIFFERENTIABILITY_POINT_CONDITION",
+          "rpm": {
+            "status": "DIRECT_BINDING_GAP",
+            "crosswalkIds": [
+              "H2-M2-RPM-017"
+            ],
+            "l1": "미분",
+            "l2": "미분계수와 도함수",
+            "l3": "미분가능성과 연속",
+            "l4": "미분가능 조건",
+            "debt": "Current canonical crosswalk marks bindingStatus=MISSING for this exact unit/PT/TPL row."
+          },
+          "identity": {
+            "sourceArchiveFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+            "sourceOrdinal": 5,
+            "sourceQidBasis": "current JS id 5 equals the current student-bundle qid 5",
+            "questionUidFieldPresent": false,
+            "stableQuestionUid": "EVIDENCE_DEBT: no current stable questionUid field or UID registry record for this assignment",
+            "provenance": "current source path/raw SHA + qid + referenced asset hashes bound; original intake page-level provenance is not in the current bundle/evidence root"
+          },
+          "sourceConsumerIndexParity": "NOT_TESTED: target has no current exact UID registration/readback in this branch; R1 does not publish or claim consumer/index parity",
+          "exactDebts": [
+            {
+              "field": "RPM_L1-L4",
+              "reason": "Current canonical crosswalk marks bindingStatus=MISSING for this exact unit/PT/TPL row."
+            },
+            {
+              "field": "questionUid",
+              "reason": "Current JS and current assignment records do not provide a stable per-item questionUid/UID registry mapping."
+            }
+          ]
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "인수분해와 미분가능성에서 연속성 사용만으로 충분하며 공간 구조가 없다.",
+            "assetAction": "EXEMPT",
+            "asset": null
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "인수분해 후 연속성으로 값 하나를 정하는 대수 전개다.",
+            "assetAction": "EXEMPT",
+            "asset": null,
+            "staticParity": null
+          },
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER",
+          "rendererSupport": "Archive solutionImage path is loaded as ordinary image src in engine.html; SVG served through current asset-ref contract; final six-case Archive browser render is assigned to R3."
+        }
+      },
+      "metaDebtFields": [],
+      "studentBodyParity": {
+        "studentPayloadSha256": "776d699001ab3b5420666ee80e9c7d77f23f7d9ba8f6b0d0139e5fa4506e3399",
+        "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+        "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+        "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+        "studentFieldsPreserved": true
+      },
+      "expectedSourceQid": 5
+    },
+    {
+      "qid": 6,
+      "independentAnswer": "②",
+      "independentAnswerOriginalFreeze": "②",
+      "independentReasoning": "Continuity equates the one-sided limits: 1−2k=k−5, so k=2. Then f(0)=−3 and k+f(0)=−1, choice ②.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": {
+        "path": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/r1-independent-freeze.json",
+        "sha256": "4d6fa27f4ed1381d6bb1e0a741eb10311b6db2cb4cac9b1048d963e79bed7ea0"
+      },
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "compareBasis": "Independent answer agrees with stored answer.",
+      "answerCardinality": {
+        "studentAnswerCount": 1,
+        "uniqueCorrectChoiceCount": 1,
+        "choiceCount": 5
+      },
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "5a3e344fe9cdaa34dc8b626aa9a2248e80c2e2e8c9df528d34ee16382f0e64ab",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "layoutTag": "grid",
+          "wide": false,
+          "studentPayloadParity": {
+            "studentPayloadSha256": "8db1aec6fa7dbec5bb60e335f172c46a63223c28c54093eb9f5e6013ba0f6dce",
+            "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+            "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+            "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+            "studentFieldsPreserved": true
+          },
+          "reason": "No source-only visual field is required; text/MathJax content and choices are exact.",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "solutionIdentity": {
+            "examFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceOrdinal": 6,
+            "studentPayloadSha256": "8db1aec6fa7dbec5bb60e335f172c46a63223c28c54093eb9f5e6013ba0f6dce",
+            "solutionSha256": "5a3e344fe9cdaa34dc8b626aa9a2248e80c2e2e8c9df528d34ee16382f0e64ab"
+          },
+          "smallBoardContinuityStatus": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardObservation": "Explanation, decisive equation(s), conditions and answer conclusion are separated in student-readable line/paragraph blocks.",
+          "goldenQualityCompare": "PASS",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "META": {
+          "status": "PASS_WITH_EXPLICIT_EVIDENCE_DEBT",
+          "category": "좌우극한을 이용한 연속 조건",
+          "originalCategory": "함수의 연속",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-02",
+          "standardUnit": "함수의 연속",
+          "standardUnitOrder": 2,
+          "subUnitKey": "H15-M2-02-CONTINUITY",
+          "subUnit": "함수의 연속",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "questionType": "객관식",
+          "tagsCurrent": [
+            "객관식",
+            "함수의 연속",
+            "함수의 연속"
+          ],
+          "visualTagCheck": {
+            "requiredTag": null,
+            "present": true
+          },
+          "levelCurrent": "하",
+          "independentLevel": "하",
+          "independentLevelReason": "좌우극한의 1차방정식",
+          "difficultyBucketCurrent": 1,
+          "difficultyConfidenceCurrent": "high",
+          "difficultyBoundaryFlagCurrent": "NONE",
+          "legacyLevelCompatibilityCurrent": "NORMAL",
+          "difficultyDisposition": "KEEP",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "problemTypeKey": "PT_CONTINUITY_CONDITION",
+          "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+          "rpm": {
+            "status": "DIRECT_ACTIVE",
+            "crosswalkIds": [
+              "H2-M2-RPM-010"
+            ],
+            "l1": "함수의 극한과 연속",
+            "l2": "함수의 연속",
+            "l3": "연속 조건",
+            "l4": "구간별 함수"
+          },
+          "identity": {
+            "sourceArchiveFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+            "sourceOrdinal": 6,
+            "sourceQidBasis": "current JS id 6 equals the current student-bundle qid 6",
+            "questionUidFieldPresent": false,
+            "stableQuestionUid": "EVIDENCE_DEBT: no current stable questionUid field or UID registry record for this assignment",
+            "provenance": "current source path/raw SHA + qid + referenced asset hashes bound; original intake page-level provenance is not in the current bundle/evidence root"
+          },
+          "sourceConsumerIndexParity": "NOT_TESTED: target has no current exact UID registration/readback in this branch; R1 does not publish or claim consumer/index parity",
+          "exactDebts": [
+            {
+              "field": "questionUid",
+              "reason": "Current JS and current assignment records do not provide a stable per-item questionUid/UID registry mapping."
+            }
+          ]
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "좌우극한의 수식 비교가 전부이며 별도 그림은 조건을 반복한다.",
+            "assetAction": "EXEMPT",
+            "asset": null
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "좌우 극한을 등식으로 놓는 단일 수식 판정이다.",
+            "assetAction": "EXEMPT",
+            "asset": null,
+            "staticParity": null
+          },
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER",
+          "rendererSupport": "Archive solutionImage path is loaded as ordinary image src in engine.html; SVG served through current asset-ref contract; final six-case Archive browser render is assigned to R3."
+        }
+      },
+      "metaDebtFields": [],
+      "studentBodyParity": {
+        "studentPayloadSha256": "8db1aec6fa7dbec5bb60e335f172c46a63223c28c54093eb9f5e6013ba0f6dce",
+        "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+        "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+        "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+        "studentFieldsPreserved": true
+      },
+      "expectedSourceQid": 6
+    },
+    {
+      "qid": 7,
+      "independentAnswer": "④",
+      "independentAnswerOriginalFreeze": "④",
+      "independentReasoning": "The derivative is 2x−1. Setting the tangent slope equal to 1 gives x=1 and y=5; the tangent is y−5=x−1, i.e. y=x+4, choice ④.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": {
+        "path": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/r1-independent-freeze.json",
+        "sha256": "4d6fa27f4ed1381d6bb1e0a741eb10311b6db2cb4cac9b1048d963e79bed7ea0"
+      },
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "compareBasis": "Independent answer agrees with stored answer.",
+      "answerCardinality": {
+        "studentAnswerCount": 1,
+        "uniqueCorrectChoiceCount": 1,
+        "choiceCount": 5
+      },
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "ecb59a4837a8750053eff05eb8e9952a5f86e1fafb5bac508a2ff2ef7830cb17",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "layoutTag": "grid",
+          "wide": false,
+          "studentPayloadParity": {
+            "studentPayloadSha256": "0464c98aa9bf6aac7e265f23630be2e2326e8853075746928fb4d51d9d6de427",
+            "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+            "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+            "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+            "studentFieldsPreserved": true
+          },
+          "reason": "No source-only visual field is required; text/MathJax content and choices are exact.",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "solutionIdentity": {
+            "examFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceOrdinal": 7,
+            "studentPayloadSha256": "0464c98aa9bf6aac7e265f23630be2e2326e8853075746928fb4d51d9d6de427",
+            "solutionSha256": "ecb59a4837a8750053eff05eb8e9952a5f86e1fafb5bac508a2ff2ef7830cb17"
+          },
+          "smallBoardContinuityStatus": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardObservation": "Explanation, decisive equation(s), conditions and answer conclusion are separated in student-readable line/paragraph blocks.",
+          "goldenQualityCompare": "PASS",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "META": {
+          "status": "PASS_WITH_EXPLICIT_EVIDENCE_DEBT",
+          "category": "기울기가 주어진 접선의 방정식",
+          "originalCategory": "도함수의 활용",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-05",
+          "standardUnit": "접선의 방정식",
+          "standardUnitOrder": 5,
+          "subUnitKey": "H15-M2-05-TANGENT",
+          "subUnit": "접선의 방정식",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "questionType": "객관식",
+          "tagsCurrent": [
+            "객관식",
+            "도함수의 활용",
+            "접선의 방정식",
+            "그래프"
+          ],
+          "visualTagCheck": {
+            "needed": "assets/images/24_금당고_1학기_중간_고2_수학II/q7-solution.svg",
+            "requiredTag": "그래프",
+            "present": true
+          },
+          "levelCurrent": "중",
+          "independentLevel": "중",
+          "independentLevelReason": "도함수로 접점을 구하고 접선식 설정",
+          "difficultyBucketCurrent": 2,
+          "difficultyConfidenceCurrent": "high",
+          "difficultyBoundaryFlagCurrent": "NONE",
+          "legacyLevelCompatibilityCurrent": "NORMAL",
+          "difficultyDisposition": "KEEP",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+          "templateKey": "TPL_TANGENT_CONSTRUCTION",
+          "rpm": {
+            "status": "DIRECT_ACTIVE",
+            "crosswalkIds": [
+              "H2-M2-RPM-019"
+            ],
+            "l1": "미분",
+            "l2": "도함수의 활용(1)",
+            "l3": "접선",
+            "l4": "접선의 방정식"
+          },
+          "identity": {
+            "sourceArchiveFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+            "sourceOrdinal": 7,
+            "sourceQidBasis": "current JS id 7 equals the current student-bundle qid 7",
+            "questionUidFieldPresent": false,
+            "stableQuestionUid": "EVIDENCE_DEBT: no current stable questionUid field or UID registry record for this assignment",
+            "provenance": "current source path/raw SHA + qid + referenced asset hashes bound; original intake page-level provenance is not in the current bundle/evidence root"
+          },
+          "sourceConsumerIndexParity": "NOT_TESTED: target has no current exact UID registration/readback in this branch; R1 does not publish or claim consumer/index parity",
+          "exactDebts": [
+            {
+              "field": "questionUid",
+              "reason": "Current JS and current assignment records do not provide a stable per-item questionUid/UID registry mapping."
+            }
+          ]
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "문제 발문과 함수식이 접점/기울기를 완전히 정하며 문제 그림은 새로운 조건을 주지 않는다.",
+            "assetAction": "EXEMPT",
+            "asset": null
+          },
+          "solutionVisual": {
+            "need": "BENEFICIAL",
+            "reason": "접점 (1,5)에서 주어진 기울기 1의 접선을 곡선 위에서 보면 접점-접선 관계를 바로 재현할 수 있고 현재 solution SVG의 curve/line primitive가 일치한다.",
+            "assetAction": "KEEP_EXISTING_VERIFIED",
+            "asset": {
+              "ref": "assets/images/24_금당고_1학기_중간_고2_수학II/q7-solution.svg",
+              "sha256": "98fdf0b5bb307cd5d3fccb8dfe1ba52dd7ba8fbd3b3bc8343f516866011ee015",
+              "opened": true,
+              "actualRenderer": "Archive engine renderSolutionImageHTML uses ordinary img src and cache-buster; SVG reference accepted by current asset contract",
+              "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+            },
+            "staticParity": null
+          },
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER",
+          "rendererSupport": "Archive solutionImage path is loaded as ordinary image src in engine.html; SVG served through current asset-ref contract; final six-case Archive browser render is assigned to R3."
+        }
+      },
+      "metaDebtFields": [],
+      "studentBodyParity": {
+        "studentPayloadSha256": "0464c98aa9bf6aac7e265f23630be2e2326e8853075746928fb4d51d9d6de427",
+        "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+        "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+        "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+        "studentFieldsPreserved": true
+      },
+      "expectedSourceQid": 7
+    },
+    {
+      "qid": 8,
+      "independentAnswer": "③",
+      "independentAnswerOriginalFreeze": "③",
+      "independentReasoning": "The secant slope on [1,2] is (−5−0)/(2−1)=−5. Since f'(x)=−4x+1, the equation f'(c)=−5 gives c=3/2, choice ③.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": {
+        "path": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/r1-independent-freeze.json",
+        "sha256": "4d6fa27f4ed1381d6bb1e0a741eb10311b6db2cb4cac9b1048d963e79bed7ea0"
+      },
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "compareBasis": "Independent answer agrees with stored answer.",
+      "answerCardinality": {
+        "studentAnswerCount": 1,
+        "uniqueCorrectChoiceCount": 1,
+        "choiceCount": 5
+      },
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "78fa3e798dc0757967a373a907aeccb2e6113319e10a199184427969175adb25",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "layoutTag": "grid",
+          "wide": false,
+          "studentPayloadParity": {
+            "studentPayloadSha256": "9c1b39831d89ed79c26ef9f42c7dfb3877b4a57ec6365c62a485705a2800a2d3",
+            "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+            "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+            "finalPostfreezeParity": "EXACT",
+            "studentFieldsPreserved": true
+          },
+          "reason": "No source-only visual field is required; text/MathJax content and choices are exact.",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "solutionIdentity": {
+            "examFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceOrdinal": 8,
+            "studentPayloadSha256": "9c1b39831d89ed79c26ef9f42c7dfb3877b4a57ec6365c62a485705a2800a2d3",
+            "solutionSha256": "78fa3e798dc0757967a373a907aeccb2e6113319e10a199184427969175adb25"
+          },
+          "smallBoardContinuityStatus": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardObservation": "Explanation, decisive equation(s), conditions and answer conclusion are separated in student-readable line/paragraph blocks.",
+          "goldenQualityCompare": "PASS",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "META": {
+          "status": "PASS_WITH_EXPLICIT_EVIDENCE_DEBT",
+          "category": "평균값 정리의 값 결정",
+          "originalCategory": "도함수의 활용",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "standardUnit": "도함수의 활용",
+          "standardUnitOrder": 6,
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "subUnit": "도함수의 활용",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "questionType": "객관식",
+          "tagsCurrent": [
+            "객관식",
+            "도함수의 활용",
+            "평균값 정리",
+            "그래프"
+          ],
+          "visualTagCheck": {
+            "needed": "assets/images/24_금당고_1학기_중간_고2_수학II/q8-solution.svg",
+            "requiredTag": "그래프",
+            "present": true
+          },
+          "levelCurrent": "중",
+          "independentLevel": "중",
+          "independentLevelReason": "평균값 정리와 1차 도함수 등식",
+          "difficultyBucketCurrent": 2,
+          "difficultyConfidenceCurrent": "high",
+          "difficultyBoundaryFlagCurrent": "NONE",
+          "legacyLevelCompatibilityCurrent": "NORMAL",
+          "difficultyDisposition": "KEEP",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "problemTypeKey": "PT_MEAN_VALUE_THEOREM",
+          "templateKey": "TPL_MVT_ROLLE_DIRECT",
+          "rpm": {
+            "status": "DIRECT_ACTIVE",
+            "crosswalkIds": [
+              "H2-M2-RPM-022"
+            ],
+            "l1": "미분",
+            "l2": "도함수의 활용(1)",
+            "l3": "평균값 정리 기초",
+            "l4": "기울기 조건",
+            "selection": "Source asks for c satisfying f′(c)=the interval secant slope."
+          },
+          "identity": {
+            "sourceArchiveFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+            "sourceOrdinal": 8,
+            "sourceQidBasis": "current JS id 8 equals the current student-bundle qid 8",
+            "questionUidFieldPresent": false,
+            "stableQuestionUid": "EVIDENCE_DEBT: no current stable questionUid field or UID registry record for this assignment",
+            "provenance": "current source path/raw SHA + qid + referenced asset hashes bound; original intake page-level provenance is not in the current bundle/evidence root"
+          },
+          "sourceConsumerIndexParity": "NOT_TESTED: target has no current exact UID registration/readback in this branch; R1 does not publish or claim consumer/index parity",
+          "exactDebts": [
+            {
+              "field": "questionUid",
+              "reason": "Current JS and current assignment records do not provide a stable per-item questionUid/UID registry mapping."
+            }
+          ]
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "함수식과 닫힌구간이 모두 주어져 문제 풀이에 숨은 그래프 정보가 없다.",
+            "assetAction": "EXEMPT",
+            "asset": null
+          },
+          "solutionVisual": {
+            "need": "BENEFICIAL",
+            "reason": "MVT의 결정 관계인 끝점 할선 기울기 −5와 c=3/2 접선 기울기 −5를 같은 함수 그래프 위에서 확인하게 한다. 신규 SVG 추가/정적 parity 완료.",
+            "assetAction": "NEW_SVG",
+            "asset": {
+              "ref": "assets/images/24_금당고_1학기_중간_고2_수학II/q8-solution.svg",
+              "sha256": "fff7d3eb588d590499ced7de5476a81c7c12d46d231e83db62d94c9407ef0455",
+              "opened": true,
+              "actualRenderer": "Archive engine renderSolutionImageHTML uses ordinary img src and cache-buster; SVG reference accepted by current asset contract",
+              "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+            },
+            "staticParity": {
+              "path": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/q8-solution-visual-parity.json",
+              "sha256": "75d974b53dc72630e5ba9ba8e3a5f06c98103a75b77963324d91933b71a405ed",
+              "svgSha256": "fff7d3eb588d590499ced7de5476a81c7c12d46d231e83db62d94c9407ef0455",
+              "xmlParse": "PASS",
+              "observedFacts": [
+                {
+                  "fact": "secant and tangent line primitive math slopes both -5",
+                  "expected": -5,
+                  "observed": [
+                    -5,
+                    -5
+                  ],
+                  "maxDelta": 0,
+                  "tolerance": 1e-9,
+                  "status": "PASS"
+                },
+                {
+                  "fact": "curve polyline includes actual function points",
+                  "rows": [
+                    {
+                      "mathPoint": [
+                        1,
+                        0
+                      ],
+                      "screenExpected": [
+                        320,
+                        170
+                      ],
+                      "screenObserved": [
+                        320,
+                        170
+                      ],
+                      "deltaPx": 0
+                    },
+                    {
+                      "mathPoint": [
+                        1.5,
+                        -2
+                      ],
+                      "screenExpected": [
+                        440,
+                        260
+                      ],
+                      "screenObserved": [
+                        440,
+                        260
+                      ],
+                      "deltaPx": 0
+                    },
+                    {
+                      "mathPoint": [
+                        2,
+                        -5
+                      ],
+                      "screenExpected": [
+                        560,
+                        395
+                      ],
+                      "screenObserved": [
+                        560,
+                        395
+                      ],
+                      "deltaPx": 0
+                    }
+                  ],
+                  "maxDeltaPx": 0,
+                  "tolerancePx": 0.001,
+                  "status": "PASS"
+                }
+              ],
+              "decisiveRelationCovered": true,
+              "expectedFactCompletenessStatus": "PASS"
+            }
+          },
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER",
+          "rendererSupport": "Archive solutionImage path is loaded as ordinary image src in engine.html; SVG served through current asset-ref contract; final six-case Archive browser render is assigned to R3."
+        }
+      },
+      "metaDebtFields": [],
+      "studentBodyParity": {
+        "studentPayloadSha256": "9c1b39831d89ed79c26ef9f42c7dfb3877b4a57ec6365c62a485705a2800a2d3",
+        "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+        "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+        "finalPostfreezeParity": "EXACT",
+        "studentFieldsPreserved": true
+      },
+      "expectedSourceQid": 8
+    },
+    {
+      "qid": 9,
+      "independentAnswer": "①",
+      "independentAnswerOriginalFreeze": "①",
+      "independentReasoning": "ㄱ is true by subtracting the two existing finite limits. ㄴ fails because existence of lim g(x) near a says nothing about continuity of g at lim f(x). ㄷ can fail when the denominator limit is zero, e.g. the resulting quotient diverges. ㄹ fails for f=sin(1/(x−a)), g=f−1, whose difference is constant. Only ㄱ is true: choice ①.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": {
+        "path": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/r1-independent-freeze.json",
+        "sha256": "4d6fa27f4ed1381d6bb1e0a741eb10311b6db2cb4cac9b1048d963e79bed7ea0"
+      },
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "compareBasis": "Independent answer agrees with stored answer.",
+      "answerCardinality": {
+        "studentAnswerCount": 1,
+        "uniqueCorrectChoiceCount": 1,
+        "choiceCount": 5
+      },
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "6575253bd58e3a53915bab41c50cb890a37efe7538769473d6c84f134ea70ddc",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "layoutTag": "grid",
+          "wide": false,
+          "studentPayloadParity": {
+            "studentPayloadSha256": "dd76f655d15d77523718418b42c500c94b00af11ae857b85576a2f1308c3fa43",
+            "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+            "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+            "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+            "studentFieldsPreserved": true
+          },
+          "reason": "No source-only visual field is required; text/MathJax content and choices are exact.",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "solutionIdentity": {
+            "examFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceOrdinal": 9,
+            "studentPayloadSha256": "dd76f655d15d77523718418b42c500c94b00af11ae857b85576a2f1308c3fa43",
+            "solutionSha256": "6575253bd58e3a53915bab41c50cb890a37efe7538769473d6c84f134ea70ddc"
+          },
+          "smallBoardContinuityStatus": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardObservation": "ㄱ/ㄴ/ㄷ/ㄹ are separated into distinct labelled paragraphs, each with a truth judgment or counterexample.",
+          "goldenQualityCompare": "PASS",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "META": {
+          "status": "PASS_WITH_EXPLICIT_EVIDENCE_DEBT",
+          "category": "함수의 극한에 대한 명제 판정",
+          "originalCategory": "함수의 극한",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-01",
+          "standardUnit": "함수의 극한",
+          "standardUnitOrder": 1,
+          "subUnitKey": "H15-M2-01-LIMIT",
+          "subUnit": "함수의 극한",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "questionType": "객관식",
+          "tagsCurrent": [
+            "객관식",
+            "함수의 극한",
+            "함수의 극한에 대한 성질"
+          ],
+          "visualTagCheck": {
+            "requiredTag": null,
+            "present": true
+          },
+          "levelCurrent": "상",
+          "independentLevel": "상",
+          "independentLevelReason": "합성함수 극한과 세 반례를 구분하는 논리 검증",
+          "difficultyBucketCurrent": 4,
+          "difficultyConfidenceCurrent": "high",
+          "difficultyBoundaryFlagCurrent": "NONE",
+          "legacyLevelCompatibilityCurrent": "NORMAL",
+          "difficultyDisposition": "KEEP",
+          "crossConceptKeys": [
+            "CC_COUNTEREXAMPLE"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "CASE_BRANCH",
+          "problemTypeKey": "PT_LIMIT_STATEMENT_LOGIC",
+          "templateKey": "TPL_LIMIT_STATEMENT_COUNTEREXAMPLE",
+          "rpm": {
+            "status": "EVIDENCE_DEBT",
+            "crosswalkIds": [],
+            "debt": "No exact PT_LIMIT_STATEMENT_LOGIC + TPL_LIMIT_STATEMENT_COUNTEREXAMPLE row in current RPM crosswalk; current CC_COUNTEREXAMPLE is active but does not establish L3/L4."
+          },
+          "identity": {
+            "sourceArchiveFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+            "sourceOrdinal": 9,
+            "sourceQidBasis": "current JS id 9 equals the current student-bundle qid 9",
+            "questionUidFieldPresent": false,
+            "stableQuestionUid": "EVIDENCE_DEBT: no current stable questionUid field or UID registry record for this assignment",
+            "provenance": "current source path/raw SHA + qid + referenced asset hashes bound; original intake page-level provenance is not in the current bundle/evidence root"
+          },
+          "sourceConsumerIndexParity": "NOT_TESTED: target has no current exact UID registration/readback in this branch; R1 does not publish or claim consumer/index parity",
+          "exactDebts": [
+            {
+              "field": "RPM_L1-L4",
+              "reason": "No exact PT_LIMIT_STATEMENT_LOGIC + TPL_LIMIT_STATEMENT_COUNTEREXAMPLE row in current RPM crosswalk; current CC_COUNTEREXAMPLE is active but does not establish L3/L4."
+            },
+            {
+              "field": "questionUid",
+              "reason": "Current JS and current assignment records do not provide a stable per-item questionUid/UID registry mapping."
+            }
+          ]
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "극한 명제의 참·거짓 논리와 반례 구조가 핵심이며 도형·그래프 표현이 없다.",
+            "assetAction": "EXEMPT",
+            "asset": null
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "네 논리 진술은 solution에서 각각 별도 문단·반례로 분리되어 있고 도형·그래프 관계가 없다.",
+            "assetAction": "EXEMPT",
+            "asset": null,
+            "staticParity": null
+          },
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER",
+          "rendererSupport": "Archive solutionImage path is loaded as ordinary image src in engine.html; SVG served through current asset-ref contract; final six-case Archive browser render is assigned to R3."
+        }
+      },
+      "metaDebtFields": [],
+      "studentBodyParity": {
+        "studentPayloadSha256": "dd76f655d15d77523718418b42c500c94b00af11ae857b85576a2f1308c3fa43",
+        "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+        "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+        "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+        "studentFieldsPreserved": true
+      },
+      "expectedSourceQid": 9
+    },
+    {
+      "qid": 10,
+      "independentAnswer": "2",
+      "independentAnswerOriginalFreeze": "2",
+      "independentReasoning": "The increment from 1−3h to 1+h is 4h, so the quotient tends to 2f'(1). Thus f'(1)=3. Since f'(1)=3+2m−4=2m−1, m=2.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": {
+        "path": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/r1-independent-freeze.json",
+        "sha256": "4d6fa27f4ed1381d6bb1e0a741eb10311b6db2cb4cac9b1048d963e79bed7ea0"
+      },
+      "storedAnswer": "2",
+      "compareResult": "MATCH",
+      "compareBasis": "Independent answer agrees with stored answer.",
+      "answerCardinality": {
+        "studentAnswerCount": 1,
+        "uniqueCorrectChoiceCount": null,
+        "choiceCount": 0
+      },
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "090e11e1c95b1ee44b0f74802269f36174fdc64b9b7b8e9156cdaae0e3ca791b",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "layoutTag": "grid",
+          "wide": false,
+          "studentPayloadParity": {
+            "studentPayloadSha256": "35675cd83d6753a95c1ec29ce89b2f37281815c13539091812b176cde705a05b",
+            "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+            "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+            "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+            "studentFieldsPreserved": true
+          },
+          "reason": "No source-only visual field is required; text/MathJax content and choices are exact.",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "solutionIdentity": {
+            "examFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceOrdinal": 10,
+            "studentPayloadSha256": "35675cd83d6753a95c1ec29ce89b2f37281815c13539091812b176cde705a05b",
+            "solutionSha256": "090e11e1c95b1ee44b0f74802269f36174fdc64b9b7b8e9156cdaae0e3ca791b"
+          },
+          "smallBoardContinuityStatus": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardObservation": "Explanation, decisive equation(s), conditions and answer conclusion are separated in student-readable line/paragraph blocks.",
+          "goldenQualityCompare": "PASS",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "META": {
+          "status": "PASS_WITH_EXPLICIT_EVIDENCE_DEBT",
+          "category": "차분극한으로 미분계수 결정",
+          "originalCategory": "미분계수와 도함수",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-03",
+          "standardUnit": "미분계수",
+          "standardUnitOrder": 3,
+          "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
+          "subUnit": "미분계수",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "questionType": "단답형",
+          "tagsCurrent": [
+            "단답형",
+            "미분계수와 도함수",
+            "미분계수"
+          ],
+          "visualTagCheck": {
+            "requiredTag": null,
+            "present": true
+          },
+          "levelCurrent": "중",
+          "independentLevel": "중",
+          "independentLevelReason": "차분 입력의 비율을 도함수로 환원",
+          "difficultyBucketCurrent": 3,
+          "difficultyConfidenceCurrent": "high",
+          "difficultyBoundaryFlagCurrent": "NONE",
+          "legacyLevelCompatibilityCurrent": "NORMAL",
+          "difficultyDisposition": "KEEP",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+          "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+          "rpm": {
+            "status": "DIRECT_ACTIVE",
+            "crosswalkIds": [
+              "H2-M2-RPM-014"
+            ],
+            "l1": "미분",
+            "l2": "미분계수와 도함수",
+            "l3": "미분계수",
+            "l4": "정의로 미분계수"
+          },
+          "identity": {
+            "sourceArchiveFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+            "sourceOrdinal": 10,
+            "sourceQidBasis": "current JS id 10 equals the current student-bundle qid 10",
+            "questionUidFieldPresent": false,
+            "stableQuestionUid": "EVIDENCE_DEBT: no current stable questionUid field or UID registry record for this assignment",
+            "provenance": "current source path/raw SHA + qid + referenced asset hashes bound; original intake page-level provenance is not in the current bundle/evidence root"
+          },
+          "sourceConsumerIndexParity": "NOT_TESTED: target has no current exact UID registration/readback in this branch; R1 does not publish or claim consumer/index parity",
+          "exactDebts": [
+            {
+              "field": "questionUid",
+              "reason": "Current JS and current assignment records do not provide a stable per-item questionUid/UID registry mapping."
+            }
+          ]
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "차분극한 대수식으로 닫히고 시각적 위치 관계가 없다.",
+            "assetAction": "EXEMPT",
+            "asset": null
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "미분계수의 선형성 환원과 m 계산뿐이며 도식이 결정 관계를 추가하지 않는다.",
+            "assetAction": "EXEMPT",
+            "asset": null,
+            "staticParity": null
+          },
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER",
+          "rendererSupport": "Archive solutionImage path is loaded as ordinary image src in engine.html; SVG served through current asset-ref contract; final six-case Archive browser render is assigned to R3."
+        }
+      },
+      "metaDebtFields": [],
+      "studentBodyParity": {
+        "studentPayloadSha256": "35675cd83d6753a95c1ec29ce89b2f37281815c13539091812b176cde705a05b",
+        "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+        "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+        "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+        "studentFieldsPreserved": true
+      },
+      "expectedSourceQid": 10
+    },
+    {
+      "qid": 11,
+      "independentAnswer": "⑤",
+      "independentAnswerOriginalFreeze": "⑤",
+      "independentReasoning": "Differentiate f(x+y)=f(x)+f(y)+6xy with respect to y and set y=0: f'(x)=f'(0)+6x=4+6x, choice ⑤.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": {
+        "path": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/r1-independent-freeze.json",
+        "sha256": "4d6fa27f4ed1381d6bb1e0a741eb10311b6db2cb4cac9b1048d963e79bed7ea0"
+      },
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "compareBasis": "Independent answer agrees with stored answer.",
+      "answerCardinality": {
+        "studentAnswerCount": 1,
+        "uniqueCorrectChoiceCount": 1,
+        "choiceCount": 5
+      },
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "ab95b64fa4c3dd8729a7b202fe7db0606525985eb807eca0c19e55f3866e0c92",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "layoutTag": "grid",
+          "wide": false,
+          "studentPayloadParity": {
+            "studentPayloadSha256": "97f3a7ec602c73371f11ec4037bd0b52b5e18f7d63e482ded0becbd93e7a59da",
+            "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+            "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+            "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+            "studentFieldsPreserved": true
+          },
+          "reason": "No source-only visual field is required; text/MathJax content and choices are exact.",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "solutionIdentity": {
+            "examFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceOrdinal": 11,
+            "studentPayloadSha256": "97f3a7ec602c73371f11ec4037bd0b52b5e18f7d63e482ded0becbd93e7a59da",
+            "solutionSha256": "ab95b64fa4c3dd8729a7b202fe7db0606525985eb807eca0c19e55f3866e0c92"
+          },
+          "smallBoardContinuityStatus": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardObservation": "Explanation, decisive equation(s), conditions and answer conclusion are separated in student-readable line/paragraph blocks.",
+          "goldenQualityCompare": "PASS",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "META": {
+          "status": "PASS_WITH_EXPLICIT_EVIDENCE_DEBT",
+          "category": "함수 관계식에서 도함수 결정",
+          "originalCategory": "미분계수와 도함수",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-04",
+          "standardUnit": "도함수",
+          "standardUnitOrder": 4,
+          "subUnitKey": "H15-M2-04-DERIVATIVE",
+          "subUnit": "도함수",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "questionType": "객관식",
+          "tagsCurrent": [
+            "객관식",
+            "미분계수와 도함수",
+            "도함수의 정의"
+          ],
+          "visualTagCheck": {
+            "requiredTag": null,
+            "present": true
+          },
+          "levelCurrent": "중",
+          "independentLevel": "중",
+          "independentLevelReason": "함수 관계식을 미분해 도함수를 결정",
+          "difficultyBucketCurrent": 3,
+          "difficultyConfidenceCurrent": "high",
+          "difficultyBoundaryFlagCurrent": "NONE",
+          "legacyLevelCompatibilityCurrent": "NORMAL",
+          "difficultyDisposition": "KEEP",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "problemTypeKey": "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+          "templateKey": "TPL_DERIVATIVE_RELATION_FUNCTION_DETERMINE",
+          "rpm": {
+            "status": "EVIDENCE_DEBT",
+            "crosswalkIds": [],
+            "debt": "No exact H15-M2-04 + PT_DERIVATIVE_FUNCTION_DETERMINATION + TPL_DERIVATIVE_RELATION_FUNCTION_DETERMINE row in current RPM crosswalk."
+          },
+          "identity": {
+            "sourceArchiveFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+            "sourceOrdinal": 11,
+            "sourceQidBasis": "current JS id 11 equals the current student-bundle qid 11",
+            "questionUidFieldPresent": false,
+            "stableQuestionUid": "EVIDENCE_DEBT: no current stable questionUid field or UID registry record for this assignment",
+            "provenance": "current source path/raw SHA + qid + referenced asset hashes bound; original intake page-level provenance is not in the current bundle/evidence root"
+          },
+          "sourceConsumerIndexParity": "NOT_TESTED: target has no current exact UID registration/readback in this branch; R1 does not publish or claim consumer/index parity",
+          "exactDebts": [
+            {
+              "field": "RPM_L1-L4",
+              "reason": "No exact H15-M2-04 + PT_DERIVATIVE_FUNCTION_DETERMINATION + TPL_DERIVATIVE_RELATION_FUNCTION_DETERMINE row in current RPM crosswalk."
+            },
+            {
+              "field": "questionUid",
+              "reason": "Current JS and current assignment records do not provide a stable per-item questionUid/UID registry mapping."
+            }
+          ]
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "함수 관계식의 미분으로 답을 얻으며 그래프 구조가 주어지지 않는다.",
+            "assetAction": "EXEMPT",
+            "asset": null
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "함수 관계식을 미분한 뒤 값 대입하는 대수 풀이로 충분하다.",
+            "assetAction": "EXEMPT",
+            "asset": null,
+            "staticParity": null
+          },
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER",
+          "rendererSupport": "Archive solutionImage path is loaded as ordinary image src in engine.html; SVG served through current asset-ref contract; final six-case Archive browser render is assigned to R3."
+        }
+      },
+      "metaDebtFields": [],
+      "studentBodyParity": {
+        "studentPayloadSha256": "97f3a7ec602c73371f11ec4037bd0b52b5e18f7d63e482ded0becbd93e7a59da",
+        "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+        "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+        "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+        "studentFieldsPreserved": true
+      },
+      "expectedSourceQid": 11
+    },
+    {
+      "qid": 12,
+      "independentAnswer": "②",
+      "independentAnswerOriginalFreeze": "②",
+      "independentReasoning": "f'(x)=3(x−1)², so the two tangency points of slope 3 occur at x=0,2. The tangents are y=3x+1 and y=3x−3. Their distance is 4/sqrt(3²+1²)=4/sqrt(10), choice ②.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": {
+        "path": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/r1-independent-freeze.json",
+        "sha256": "4d6fa27f4ed1381d6bb1e0a741eb10311b6db2cb4cac9b1048d963e79bed7ea0"
+      },
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "compareBasis": "Independent answer agrees with stored answer.",
+      "answerCardinality": {
+        "studentAnswerCount": 1,
+        "uniqueCorrectChoiceCount": 1,
+        "choiceCount": 5
+      },
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "fb62b16a027277a4e77aadf3e51792fd0132fb83768b6f4f22b3ff7dafa81417",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "layoutTag": "grid",
+          "wide": false,
+          "studentPayloadParity": {
+            "studentPayloadSha256": "3ded5693783b62ef19542d1df77132937414a9e244ec34dd3ebe7583227a0689",
+            "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+            "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+            "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+            "studentFieldsPreserved": true
+          },
+          "reason": "No source-only visual field is required; text/MathJax content and choices are exact.",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "solutionIdentity": {
+            "examFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceOrdinal": 12,
+            "studentPayloadSha256": "3ded5693783b62ef19542d1df77132937414a9e244ec34dd3ebe7583227a0689",
+            "solutionSha256": "fb62b16a027277a4e77aadf3e51792fd0132fb83768b6f4f22b3ff7dafa81417"
+          },
+          "smallBoardContinuityStatus": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardObservation": "Explanation, decisive equation(s), conditions and answer conclusion are separated in student-readable line/paragraph blocks.",
+          "goldenQualityCompare": "PASS",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "META": {
+          "status": "PASS_WITH_EXPLICIT_EVIDENCE_DEBT",
+          "category": "평행한 두 접선 사이의 거리",
+          "originalCategory": "도함수의 활용",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-05",
+          "standardUnit": "접선의 방정식",
+          "standardUnitOrder": 5,
+          "subUnitKey": "H15-M2-05-TANGENT",
+          "subUnit": "접선의 방정식",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "questionType": "객관식",
+          "tagsCurrent": [
+            "객관식",
+            "도함수의 활용",
+            "접선의 방정식",
+            "그래프"
+          ],
+          "visualTagCheck": {
+            "needed": "assets/images/24_금당고_1학기_중간_고2_수학II/q12-solution.svg",
+            "requiredTag": "그래프",
+            "present": true
+          },
+          "levelCurrent": "중",
+          "independentLevel": "중",
+          "independentLevelReason": "서로 다른 두 접점을 구해 평행선 거리를 계산",
+          "difficultyBucketCurrent": 3,
+          "difficultyConfidenceCurrent": "high",
+          "difficultyBoundaryFlagCurrent": "NONE",
+          "legacyLevelCompatibilityCurrent": "NORMAL",
+          "difficultyDisposition": "KEEP",
+          "crossConceptKeys": [
+            "CC_PARALLEL_LINE_DISTANCE"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+          "templateKey": "TPL_TANGENCY_RELATION_GEOMETRY",
+          "rpm": {
+            "status": "DIRECT_ACTIVE",
+            "crosswalkIds": [
+              "H2-M2-RPM-020"
+            ],
+            "l1": "미분",
+            "l2": "도함수의 활용(1)",
+            "l3": "접선",
+            "l4": "접점 조건"
+          },
+          "identity": {
+            "sourceArchiveFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+            "sourceOrdinal": 12,
+            "sourceQidBasis": "current JS id 12 equals the current student-bundle qid 12",
+            "questionUidFieldPresent": false,
+            "stableQuestionUid": "EVIDENCE_DEBT: no current stable questionUid field or UID registry record for this assignment",
+            "provenance": "current source path/raw SHA + qid + referenced asset hashes bound; original intake page-level provenance is not in the current bundle/evidence root"
+          },
+          "sourceConsumerIndexParity": "NOT_TESTED: target has no current exact UID registration/readback in this branch; R1 does not publish or claim consumer/index parity",
+          "exactDebts": [
+            {
+              "field": "questionUid",
+              "reason": "Current JS and current assignment records do not provide a stable per-item questionUid/UID registry mapping."
+            }
+          ]
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "함수와 평행선 조건이 완전히 수식으로 주어져 문제 그림이 새로운 조건을 추가하지 않는다.",
+            "assetAction": "EXEMPT",
+            "asset": null
+          },
+          "solutionVisual": {
+            "need": "BENEFICIAL",
+            "reason": "두 평행 접선의 접점과 간격을 하나의 좌표계에서 시각화하면 거리 공식의 대상이 분명해진다. 기존 solution SVG의 두 접선 기울기와 접점 좌표를 확인했다.",
+            "assetAction": "KEEP_EXISTING_VERIFIED",
+            "asset": {
+              "ref": "assets/images/24_금당고_1학기_중간_고2_수학II/q12-solution.svg",
+              "sha256": "69e81c376b2e0eebdec0d7847b5752fae3b23b4d10c9cb474f6825bd27d46d07",
+              "opened": true,
+              "actualRenderer": "Archive engine renderSolutionImageHTML uses ordinary img src and cache-buster; SVG reference accepted by current asset contract",
+              "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+            },
+            "staticParity": null
+          },
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER",
+          "rendererSupport": "Archive solutionImage path is loaded as ordinary image src in engine.html; SVG served through current asset-ref contract; final six-case Archive browser render is assigned to R3."
+        }
+      },
+      "metaDebtFields": [],
+      "studentBodyParity": {
+        "studentPayloadSha256": "3ded5693783b62ef19542d1df77132937414a9e244ec34dd3ebe7583227a0689",
+        "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+        "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+        "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+        "studentFieldsPreserved": true
+      },
+      "expectedSourceQid": 12
+    },
+    {
+      "qid": 13,
+      "independentAnswer": "⑤",
+      "independentAnswerOriginalFreeze": "③",
+      "independentReasoning": "From the opened graph, f(−2)>f(4), so the secant slope is negative. The curve has three descending branches between the interval endpoints; each contributes one tangent parallel to that secant, while the increasing branches contribute none. Thus there are 3 values of c, choice ③.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": {
+        "path": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/r1-independent-freeze.json",
+        "sha256": "4d6fa27f4ed1381d6bb1e0a741eb10311b6db2cb4cac9b1048d963e79bed7ea0"
+      },
+      "adjudicationRef": {
+        "path": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/r1-adjudication.json",
+        "sha256": "49f9bfdb1b037cc7bd8e88917a2e346df16c4cf1d2be96235ab63ff141b7ebdf",
+        "reason": "The frozen first pass undercounted tangents on the two interior descending lobes. For the negative secant slope, the first descending branch contributes one tangent; on each of the two interior peak-to-trough branches the derivative falls below and rises back above that fixed negative slope, contributing two each. Total 1+2+2=5. Original freeze is preserved; no source change.",
+        "originalFreezeAnswer": "③",
+        "correctedAnswer": "⑤"
+      },
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "compareBasis": "Initial freeze value ③ was preserved; separate q13 adjudication corrected the undercount to ⑤ before answer comparison; stored answer is ⑤.",
+      "answerCardinality": {
+        "studentAnswerCount": 1,
+        "uniqueCorrectChoiceCount": 1,
+        "choiceCount": 5
+      },
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "54f4a5d6243648ed80419f573ccdc750b4f448388e8e689c3c3123d908a0581b",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "layoutTag": "grid",
+          "wide": false,
+          "studentPayloadParity": {
+            "studentPayloadSha256": "88d69e9a8db0050aa10398f6f2d1f9fd8fb502c3c803b5b09daf618c0a407f49",
+            "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+            "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+            "finalPostfreezeParity": "EXACT",
+            "studentFieldsPreserved": true
+          },
+          "reason": "content/image/choices order follows engine schema; graph image is an independent student input asset.",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "solutionIdentity": {
+            "examFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceOrdinal": 13,
+            "studentPayloadSha256": "88d69e9a8db0050aa10398f6f2d1f9fd8fb502c3c803b5b09daf618c0a407f49",
+            "solutionSha256": "54f4a5d6243648ed80419f573ccdc750b4f448388e8e689c3c3123d908a0581b"
+          },
+          "smallBoardContinuityStatus": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardObservation": "Explanation, decisive equation(s), conditions and answer conclusion are separated in student-readable line/paragraph blocks.",
+          "goldenQualityCompare": "PASS",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "META": {
+          "status": "PASS_WITH_EXPLICIT_EVIDENCE_DEBT",
+          "category": "그래프에서 평균값 정리의 값 개수",
+          "originalCategory": "도함수의 활용",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "standardUnit": "도함수의 활용",
+          "standardUnitOrder": 6,
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "subUnit": "도함수의 활용",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "questionType": "객관식",
+          "tagsCurrent": [
+            "객관식",
+            "도함수의 활용",
+            "평균값 정리",
+            "그래프"
+          ],
+          "visualTagCheck": {
+            "needed": "assets/images/24_금당고_1학기_중간_고2_수학II/q13.png",
+            "requiredTag": "그래프",
+            "present": true
+          },
+          "levelCurrent": "상",
+          "independentLevel": "상",
+          "independentLevelReason": "주어진 그래프의 하강 topology에서 접선 위치를 다섯 번 세기",
+          "difficultyBucketCurrent": 4,
+          "difficultyConfidenceCurrent": "high",
+          "difficultyBoundaryFlagCurrent": "NONE",
+          "legacyLevelCompatibilityCurrent": "NORMAL",
+          "difficultyDisposition": "KEEP",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "problemTypeKey": "PT_MEAN_VALUE_THEOREM",
+          "templateKey": "TPL_MVT_ROLLE_DIRECT",
+          "rpm": {
+            "status": "DIRECT_ACTIVE",
+            "crosswalkIds": [
+              "H2-M2-RPM-022"
+            ],
+            "l1": "미분",
+            "l2": "도함수의 활용(1)",
+            "l3": "평균값 정리 기초",
+            "l4": "기울기 조건",
+            "selection": "MVT secant-slope equality is the decisive relation, independently verified from graph."
+          },
+          "identity": {
+            "sourceArchiveFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+            "sourceOrdinal": 13,
+            "sourceQidBasis": "current JS id 13 equals the current student-bundle qid 13",
+            "questionUidFieldPresent": false,
+            "stableQuestionUid": "EVIDENCE_DEBT: no current stable questionUid field or UID registry record for this assignment",
+            "provenance": "current source path/raw SHA + qid + referenced asset hashes bound; original intake page-level provenance is not in the current bundle/evidence root"
+          },
+          "sourceConsumerIndexParity": "NOT_TESTED: target has no current exact UID registration/readback in this branch; R1 does not publish or claim consumer/index parity",
+          "exactDebts": [
+            {
+              "field": "questionUid",
+              "reason": "Current JS and current assignment records do not provide a stable per-item questionUid/UID registry mapping."
+            }
+          ]
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "REQUIRED",
+            "reason": "평균값 정리를 만족하는 c의 개수는 원문 그래프의 곡선 topology에서만 판독되므로 원본 PNG가 문제 조건 자체다.",
+            "assetAction": "KEEP_EXISTING_VERIFIED_RASTER",
+            "asset": {
+              "ref": "assets/images/24_금당고_1학기_중간_고2_수학II/q13.png",
+              "sha256": "f026e37dfc703c8bc0315b3aabcd50e5bd745af0756637622da3b5d80d126610",
+              "opened": true,
+              "actualRenderer": "Archive engine renderSolutionImageHTML uses ordinary img src and cache-buster; SVG reference accepted by current asset contract",
+              "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+            }
+          },
+          "solutionVisual": {
+            "need": "BENEFICIAL",
+            "reason": "할선과 같은 기울기의 접선 위치가 첫 하강구간 1개, 두 내부 하강구간 각 2개임을 구간별로 보이게 한다. 신규 SVG 추가/정적 parity 완료.",
+            "assetAction": "NEW_SVG",
+            "asset": {
+              "ref": "assets/images/24_금당고_1학기_중간_고2_수학II/q13-solution.svg",
+              "sha256": "57ec6aa9aa6b6ba25a5c3ea4a7a6a34ab4b8997be622d40d449fd3a732c9570c",
+              "opened": true,
+              "actualRenderer": "Archive engine renderSolutionImageHTML uses ordinary img src and cache-buster; SVG reference accepted by current asset contract",
+              "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+            },
+            "staticParity": {
+              "path": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/q13-solution-visual-parity.json",
+              "sha256": "eee9e4f652a6ab9cf2432b3f10a55166db602a9483918218a4525212e9b50353",
+              "svgSha256": "57ec6aa9aa6b6ba25a5c3ea4a7a6a34ab4b8997be622d40d449fd3a732c9570c",
+              "xmlParse": "PASS",
+              "observedFacts": [
+                {
+                  "fact": "secant slopes down mathematically",
+                  "observedMathSlope": -0.075,
+                  "status": "PASS"
+                },
+                {
+                  "fact": "all five tangent line primitives parallel secant",
+                  "observedMathSlopes": [
+                    -0.07499999999999957,
+                    -0.07499999999999993,
+                    -0.07500000000000029,
+                    -0.07499999999999993,
+                    -0.07500000000000029
+                  ],
+                  "maxDelta": 4.3021142204224816e-16,
+                  "tolerance": 1e-9,
+                  "status": "PASS"
+                },
+                {
+                  "fact": "curve polyline tangent samples align with each tangent contact",
+                  "rows": [
+                    {
+                      "contact": 1,
+                      "branch": "first-descent",
+                      "expectedPoint": [
+                        221.7025611293046,
+                        369.87603481498064
+                      ],
+                      "nearestPolylinePoint": [
+                        221.71875,
+                        369.877246
+                      ],
+                      "screenTangentSlopeExpected": 0.075,
+                      "screenLocalPolylineSlopeObserved": 0.0746325333333516,
+                      "delta": 0.0003674666666484,
+                      "tolerance": 0.025
+                    },
+                    {
+                      "contact": 2,
+                      "branch": "descent-2",
+                      "expectedPoint": [
+                        325.5347747337748,
+                        120.02008999271766
+                      ],
+                      "nearestPolylinePoint": [
+                        325.585937,
+                        120.02411
+                      ],
+                      "screenTangentSlopeExpected": 0.075,
+                      "screenLocalPolylineSlopeObserved": 0.08211712000000261,
+                      "delta": 0.007117120000002614,
+                      "tolerance": 0.025
+                    },
+                    {
+                      "contact": 3,
+                      "branch": "descent-2",
+                      "expectedPoint": [
+                        424.4652252662252,
+                        354.97991000728234
+                      ],
+                      "nearestPolylinePoint": [
+                        424.414063,
+                        354.97589
+                      ],
+                      "screenTangentSlopeExpected": 0.075,
+                      "screenLocalPolylineSlopeObserved": 0.08211711999989348,
+                      "delta": 0.007117119999893479,
+                      "tolerance": 0.025
+                    },
+                    {
+                      "contact": 4,
+                      "branch": "descent-3",
+                      "expectedPoint": [
+                        505.3738399773652,
+                        130.01404093860057
+                      ],
+                      "nearestPolylinePoint": [
+                        505.3125,
+                        130.009816
+                      ],
+                      "screenTangentSlopeExpected": 0.075,
+                      "screenLocalPolylineSlopeObserved": 0.06272319999998217,
+                      "delta": 0.012276800000017823,
+                      "tolerance": 0.025
+                    },
+                    {
+                      "contact": 5,
+                      "branch": "descent-3",
+                      "expectedPoint": [
+                        584.6261600226347,
+                        344.9859590613994
+                      ],
+                      "nearestPolylinePoint": [
+                        584.6875,
+                        344.990184
+                      ],
+                      "screenTangentSlopeExpected": 0.075,
+                      "screenLocalPolylineSlopeObserved": 0.06272320000007311,
+                      "delta": 0.012276799999926882,
+                      "tolerance": 0.025
+                    }
+                  ],
+                  "maxDelta": 0.012276800000017823,
+                  "tolerance": 0.025,
+                  "status": "PASS"
+                }
+              ],
+              "decisiveRelationCovered": true,
+              "expectedFactCompletenessStatus": "PASS"
+            }
+          },
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER",
+          "rendererSupport": "Archive solutionImage path is loaded as ordinary image src in engine.html; SVG served through current asset-ref contract; final six-case Archive browser render is assigned to R3."
+        }
+      },
+      "metaDebtFields": [],
+      "studentBodyParity": {
+        "studentPayloadSha256": "88d69e9a8db0050aa10398f6f2d1f9fd8fb502c3c803b5b09daf618c0a407f49",
+        "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+        "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+        "finalPostfreezeParity": "EXACT",
+        "studentFieldsPreserved": true
+      },
+      "expectedSourceQid": 13
+    },
+    {
+      "qid": 14,
+      "independentAnswer": "①",
+      "independentAnswerOriginalFreeze": "①",
+      "independentReasoning": "With the right shift g(x)=f(x−p), the second limit forces f(0)=f'(0)=0; the first finite positive limit then forces f(−p)=0. Since f is monic cubic, f(x)=x²(x+p). The first limit becomes 1/p and equals p, so p=1. Therefore g(2)=f(1)=2, choice ①.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": {
+        "path": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/r1-independent-freeze.json",
+        "sha256": "4d6fa27f4ed1381d6bb1e0a741eb10311b6db2cb4cac9b1048d963e79bed7ea0"
+      },
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "compareBasis": "Independent answer agrees with stored answer.",
+      "answerCardinality": {
+        "studentAnswerCount": 1,
+        "uniqueCorrectChoiceCount": 1,
+        "choiceCount": 5
+      },
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "0ba82df06707c767714e277f6667311ada9cf57440d9ec686d210c75a9e06c55",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "layoutTag": "grid",
+          "wide": false,
+          "studentPayloadParity": {
+            "studentPayloadSha256": "7dfa362bf67b109f8174166247272d444c3c479186ecac0d04d95d3699683148",
+            "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+            "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+            "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+            "studentFieldsPreserved": true
+          },
+          "reason": "No source-only visual field is required; text/MathJax content and choices are exact.",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "solutionIdentity": {
+            "examFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceOrdinal": 14,
+            "studentPayloadSha256": "7dfa362bf67b109f8174166247272d444c3c479186ecac0d04d95d3699683148",
+            "solutionSha256": "0ba82df06707c767714e277f6667311ada9cf57440d9ec686d210c75a9e06c55"
+          },
+          "smallBoardContinuityStatus": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardObservation": "Explanation, decisive equation(s), conditions and answer conclusion are separated in student-readable line/paragraph blocks.",
+          "goldenQualityCompare": "PASS",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "META": {
+          "status": "PASS_WITH_EXPLICIT_EVIDENCE_DEBT",
+          "category": "극한 조건으로 다항함수 결정",
+          "originalCategory": "함수의 극한",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-01",
+          "standardUnit": "함수의 극한",
+          "standardUnitOrder": 1,
+          "subUnitKey": "H15-M2-01-LIMIT",
+          "subUnit": "함수의 극한",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "questionType": "객관식",
+          "tagsCurrent": [
+            "객관식",
+            "함수의 극한",
+            "함수의 극한의 응용"
+          ],
+          "visualTagCheck": {
+            "requiredTag": null,
+            "present": true
+          },
+          "levelCurrent": "상",
+          "independentLevel": "상",
+          "independentLevelReason": "극한 영점 차수 조건으로 삼차함수를 구조적으로 결정",
+          "difficultyBucketCurrent": 4,
+          "difficultyConfidenceCurrent": "high",
+          "difficultyBoundaryFlagCurrent": "NONE",
+          "legacyLevelCompatibilityCurrent": "NORMAL",
+          "difficultyDisposition": "KEEP",
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_POSITIVE"
+          ],
+          "integrationPattern": "INTERDEPENDENT",
+          "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+          "templateKey": "TPL_LIMIT_FINITE_CONDITION_PARAMETER",
+          "rpm": {
+            "status": "DIRECT_ACTIVE",
+            "crosswalkIds": [
+              "H2-M2-RPM-004"
+            ],
+            "l1": "함수의 극한과 연속",
+            "l2": "함수의 극한",
+            "l3": "극한의 성질",
+            "l4": "미정계수"
+          },
+          "identity": {
+            "sourceArchiveFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+            "sourceOrdinal": 14,
+            "sourceQidBasis": "current JS id 14 equals the current student-bundle qid 14",
+            "questionUidFieldPresent": false,
+            "stableQuestionUid": "EVIDENCE_DEBT: no current stable questionUid field or UID registry record for this assignment",
+            "provenance": "current source path/raw SHA + qid + referenced asset hashes bound; original intake page-level provenance is not in the current bundle/evidence root"
+          },
+          "sourceConsumerIndexParity": "NOT_TESTED: target has no current exact UID registration/readback in this branch; R1 does not publish or claim consumer/index parity",
+          "exactDebts": [
+            {
+              "field": "questionUid",
+              "reason": "Current JS and current assignment records do not provide a stable per-item questionUid/UID registry mapping."
+            }
+          ]
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "평행이동과 극한으로 다항식 계수를 결정하는 대수 문제이며 그림은 추가 정보를 주지 않는다.",
+            "assetAction": "EXEMPT",
+            "asset": null
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "극한의 영점 차수 조건과 다항식 계수 비교의 대수 풀이이며 독립 공간 관계가 없다.",
+            "assetAction": "EXEMPT",
+            "asset": null,
+            "staticParity": null
+          },
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER",
+          "rendererSupport": "Archive solutionImage path is loaded as ordinary image src in engine.html; SVG served through current asset-ref contract; final six-case Archive browser render is assigned to R3."
+        }
+      },
+      "metaDebtFields": [],
+      "studentBodyParity": {
+        "studentPayloadSha256": "7dfa362bf67b109f8174166247272d444c3c479186ecac0d04d95d3699683148",
+        "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+        "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+        "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+        "studentFieldsPreserved": true
+      },
+      "expectedSourceQid": 14
+    },
+    {
+      "qid": 15,
+      "independentAnswer": "④",
+      "independentAnswerOriginalFreeze": "④",
+      "independentReasoning": "On OA and OB the circle intersections appear for radii through 4 and 3; on AB the minimum radius is the altitude 12/5 and maximum is 4. The distinct-intersection count jumps at r=12/5, 3, and 4 (vertex coincidences included), so the sum is 12/5+3+4=47/5, choice ④.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": {
+        "path": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/r1-independent-freeze.json",
+        "sha256": "4d6fa27f4ed1381d6bb1e0a741eb10311b6db2cb4cac9b1048d963e79bed7ea0"
+      },
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "compareBasis": "Independent answer agrees with stored answer.",
+      "answerCardinality": {
+        "studentAnswerCount": 1,
+        "uniqueCorrectChoiceCount": 1,
+        "choiceCount": 5
+      },
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "b8acdf902218f3641c2775a95615b22b7bb015637cbb784ec8747d2e28c5c206",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "layoutTag": "grid",
+          "wide": false,
+          "studentPayloadParity": {
+            "studentPayloadSha256": "1b82f34b0a89c21c07ba17e2dd8d09c6a20f1d84a3b6e881aa6ecaf0eb9f22f7",
+            "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+            "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+            "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+            "studentFieldsPreserved": true
+          },
+          "reason": "No source-only visual field is required; text/MathJax content and choices are exact.",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "solutionIdentity": {
+            "examFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceOrdinal": 15,
+            "studentPayloadSha256": "1b82f34b0a89c21c07ba17e2dd8d09c6a20f1d84a3b6e881aa6ecaf0eb9f22f7",
+            "solutionSha256": "b8acdf902218f3641c2775a95615b22b7bb015637cbb784ec8747d2e28c5c206"
+          },
+          "smallBoardContinuityStatus": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardObservation": "OA/OB and AB cases are separated; threshold radii and the requested sum each receive their own equation/result.",
+          "goldenQualityCompare": "PASS",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "META": {
+          "status": "PASS_WITH_EXPLICIT_EVIDENCE_DEBT",
+          "category": "교점 개수 함수의 불연속",
+          "originalCategory": "함수의 연속",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-02",
+          "standardUnit": "함수의 연속",
+          "standardUnitOrder": 2,
+          "subUnitKey": "H15-M2-02-CONTINUITY",
+          "subUnit": "함수의 연속",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "questionType": "객관식",
+          "tagsCurrent": [
+            "객관식",
+            "함수의 연속",
+            "함수의 연속의 활용",
+            "도형"
+          ],
+          "visualTagCheck": {
+            "needed": "assets/images/24_금당고_1학기_중간_고2_수학II/q15-solution.svg",
+            "requiredTag": "도형",
+            "present": true
+          },
+          "levelCurrent": "상",
+          "independentLevel": "상",
+          "independentLevelReason": "선분과 원의 접촉/끝점 통과에서 교점 개수 변화를 추적",
+          "difficultyBucketCurrent": 4,
+          "difficultyConfidenceCurrent": "high",
+          "difficultyBoundaryFlagCurrent": "NONE",
+          "legacyLevelCompatibilityCurrent": "NORMAL",
+          "difficultyDisposition": "KEEP",
+          "crossConceptKeys": [
+            "CC_CIRCLE_TANGENCY"
+          ],
+          "conditionKeys": [
+            "COND_POSITIVE"
+          ],
+          "integrationPattern": "CASE_BRANCH",
+          "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+          "templateKey": "TPL_COUNT_FUNCTION_DISCONTINUITY_FIND",
+          "rpm": {
+            "status": "EVIDENCE_DEBT",
+            "crosswalkIds": [],
+            "debt": "No exact H15-M2-02 + PT_CONTINUITY_JUDGMENT + TPL_COUNT_FUNCTION_DISCONTINUITY_FIND row in current RPM crosswalk; active cross-concept CC_CIRCLE_TANGENCY does not establish L3/L4."
+          },
+          "identity": {
+            "sourceArchiveFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+            "sourceOrdinal": 15,
+            "sourceQidBasis": "current JS id 15 equals the current student-bundle qid 15",
+            "questionUidFieldPresent": false,
+            "stableQuestionUid": "EVIDENCE_DEBT: no current stable questionUid field or UID registry record for this assignment",
+            "provenance": "current source path/raw SHA + qid + referenced asset hashes bound; original intake page-level provenance is not in the current bundle/evidence root"
+          },
+          "sourceConsumerIndexParity": "NOT_TESTED: target has no current exact UID registration/readback in this branch; R1 does not publish or claim consumer/index parity",
+          "exactDebts": [
+            {
+              "field": "RPM_L1-L4",
+              "reason": "No exact H15-M2-02 + PT_CONTINUITY_JUDGMENT + TPL_COUNT_FUNCTION_DISCONTINUITY_FIND row in current RPM crosswalk; active cross-concept CC_CIRCLE_TANGENCY does not establish L3/L4."
+            },
+            {
+              "field": "questionUid",
+              "reason": "Current JS and current assignment records do not provide a stable per-item questionUid/UID registry mapping."
+            }
+          ]
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "O,A,B의 좌표가 삼각형을 완전히 결정하고 숨은 길이·눈금·표시가 없다. 원문에 없는 원을 문제 그림으로 미리 제시하지 않는다.",
+            "assetAction": "EXEMPT",
+            "asset": null
+          },
+          "solutionVisual": {
+            "need": "REQUIRED",
+            "reason": "삼각형 변과 중심 O의 원 사이 최소거리·끝점 통과 시 교점 수가 바뀌는 geometry가 풀이의 핵심이다. 기존 SVG에서 수선발 12/5, BO=3, OA=4, 세 원의 반지름을 확인했다.",
+            "assetAction": "KEEP_EXISTING_VERIFIED",
+            "asset": {
+              "ref": "assets/images/24_금당고_1학기_중간_고2_수학II/q15-solution.svg",
+              "sha256": "fb947477172d800408b808cfc89e7d15f40fb562c73bdda79618c99d8fce63da",
+              "opened": true,
+              "actualRenderer": "Archive engine renderSolutionImageHTML uses ordinary img src and cache-buster; SVG reference accepted by current asset contract",
+              "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+            },
+            "staticParity": null
+          },
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER",
+          "rendererSupport": "Archive solutionImage path is loaded as ordinary image src in engine.html; SVG served through current asset-ref contract; final six-case Archive browser render is assigned to R3."
+        }
+      },
+      "metaDebtFields": [],
+      "studentBodyParity": {
+        "studentPayloadSha256": "1b82f34b0a89c21c07ba17e2dd8d09c6a20f1d84a3b6e881aa6ecaf0eb9f22f7",
+        "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+        "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+        "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+        "studentFieldsPreserved": true
+      },
+      "expectedSourceQid": 15
+    },
+    {
+      "qid": 16,
+      "independentAnswer": "④",
+      "independentAnswerOriginalFreeze": "④",
+      "independentReasoning": "C1 matching at x=−1 gives c=a−4 and d=b−2. For |f−p| to be differentiable, the two unbounded quadratic branches must touch level p at their vertices; equating vertex values yields a=2 and p=b−1, so f=p+(x+1)² on the left and f=p−(x+1)² on the right. The sole zero is at x=−1+sqrt(p), which must equal q because |f(x+q)| has its only cusp at x=0. From f(p)=p−(p+1)²=−21, p=4, q=1, and f'(q)=−4, choice ④.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": {
+        "path": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/r1-independent-freeze.json",
+        "sha256": "4d6fa27f4ed1381d6bb1e0a741eb10311b6db2cb4cac9b1048d963e79bed7ea0"
+      },
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "compareBasis": "Independent answer agrees with stored answer.",
+      "answerCardinality": {
+        "studentAnswerCount": 1,
+        "uniqueCorrectChoiceCount": 1,
+        "choiceCount": 5
+      },
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "8e4fd3fd8b3e8b4706b6e54605e56711ed6f238451cfb19f99917c493619fba0",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "layoutTag": "grid",
+          "wide": false,
+          "studentPayloadParity": {
+            "studentPayloadSha256": "6e7d9aad00003aacd022886a7637ebd5edf99f1b8fb0dd99392e4063de4ad2f9",
+            "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+            "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+            "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+            "studentFieldsPreserved": true
+          },
+          "reason": "No source-only visual field is required; text/MathJax content and choices are exact.",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "solutionIdentity": {
+            "examFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceOrdinal": 16,
+            "studentPayloadSha256": "6e7d9aad00003aacd022886a7637ebd5edf99f1b8fb0dd99392e4063de4ad2f9",
+            "solutionSha256": "8e4fd3fd8b3e8b4706b6e54605e56711ed6f238451cfb19f99917c493619fba0"
+          },
+          "smallBoardContinuityStatus": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardObservation": "C1 matching, |f-p| condition, root location, p/q determination and conclusion are in separate logical blocks.",
+          "goldenQualityCompare": "PASS",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "META": {
+          "status": "PASS_WITH_EXPLICIT_EVIDENCE_DEBT",
+          "category": "절댓값 함수의 미분가능 조건",
+          "originalCategory": "미분계수와 도함수",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-04",
+          "standardUnit": "도함수",
+          "standardUnitOrder": 4,
+          "subUnitKey": "H15-M2-04-DERIVATIVE",
+          "subUnit": "도함수",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "questionType": "객관식",
+          "tagsCurrent": [
+            "객관식",
+            "미분계수와 도함수",
+            "미분가능성",
+            "그래프"
+          ],
+          "visualTagCheck": {
+            "needed": "assets/images/24_금당고_1학기_중간_고2_수학II/q16-solution.svg",
+            "requiredTag": "그래프",
+            "present": true
+          },
+          "levelCurrent": "상",
+          "independentLevel": "상",
+          "independentLevelReason": "절댓값 미분가능성을 두 이차 가지/근 구조와 결합",
+          "difficultyBucketCurrent": 5,
+          "difficultyConfidenceCurrent": "high",
+          "difficultyBoundaryFlagCurrent": "NONE",
+          "legacyLevelCompatibilityCurrent": "NORMAL",
+          "difficultyDisposition": "KEEP",
+          "crossConceptKeys": [
+            "CC_ABSOLUTE_VALUE_FUNCTION"
+          ],
+          "conditionKeys": [
+            "COND_POSITIVE"
+          ],
+          "integrationPattern": "INTERDEPENDENT",
+          "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+          "templateKey": "TPL_NONDIFFERENTIABILITY_STRUCTURE",
+          "rpm": {
+            "status": "DIRECT_BINDING_GAP",
+            "crosswalkIds": [
+              "H2-M2-RPM-018"
+            ],
+            "l1": "미분",
+            "l2": "미분계수와 도함수",
+            "l3": "미분가능성과 연속",
+            "l4": "그래프에서 판정",
+            "debt": "Exact row is DIRECT_BINDING_GAP / bindingStatus MISSING; source is an absolute-value differentiability structure problem without a given graph, so L4 fit also needs canonical reclassification evidence."
+          },
+          "identity": {
+            "sourceArchiveFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+            "sourceOrdinal": 16,
+            "sourceQidBasis": "current JS id 16 equals the current student-bundle qid 16",
+            "questionUidFieldPresent": false,
+            "stableQuestionUid": "EVIDENCE_DEBT: no current stable questionUid field or UID registry record for this assignment",
+            "provenance": "current source path/raw SHA + qid + referenced asset hashes bound; original intake page-level provenance is not in the current bundle/evidence root"
+          },
+          "sourceConsumerIndexParity": "NOT_TESTED: target has no current exact UID registration/readback in this branch; R1 does not publish or claim consumer/index parity",
+          "exactDebts": [
+            {
+              "field": "RPM_L1-L4",
+              "reason": "Exact row is DIRECT_BINDING_GAP / bindingStatus MISSING; source is an absolute-value differentiability structure problem without a given graph, so L4 fit also needs canonical reclassification evidence."
+            },
+            {
+              "field": "questionUid",
+              "reason": "Current JS and current assignment records do not provide a stable per-item questionUid/UID registry mapping."
+            }
+          ]
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "계수 미정의 구간별 식을 수식으로 제시하며 고정된 그래프를 문제에 그리면 미지 조건을 시각적으로 선결정하게 된다.",
+            "assetAction": "EXEMPT",
+            "asset": null
+          },
+          "solutionVisual": {
+            "need": "BENEFICIAL",
+            "reason": "절댓값 미분가능성은 두 포물선 가지와 이음점/유일한 단순근의 topology를 시각화하면 부호변화 논리가 선명해진다. 기존 SVG의 join/root와 식 방향을 확인했다.",
+            "assetAction": "KEEP_EXISTING_VERIFIED",
+            "asset": {
+              "ref": "assets/images/24_금당고_1학기_중간_고2_수학II/q16-solution.svg",
+              "sha256": "3a5f283cafea39348fa007c3ef7550f8fde9b4e76bd9d1f415ec0668992c83e3",
+              "opened": true,
+              "actualRenderer": "Archive engine renderSolutionImageHTML uses ordinary img src and cache-buster; SVG reference accepted by current asset contract",
+              "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+            },
+            "staticParity": null
+          },
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER",
+          "rendererSupport": "Archive solutionImage path is loaded as ordinary image src in engine.html; SVG served through current asset-ref contract; final six-case Archive browser render is assigned to R3."
+        }
+      },
+      "metaDebtFields": [],
+      "studentBodyParity": {
+        "studentPayloadSha256": "6e7d9aad00003aacd022886a7637ebd5edf99f1b8fb0dd99392e4063de4ad2f9",
+        "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+        "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+        "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+        "studentFieldsPreserved": true
+      },
+      "expectedSourceQid": 16
+    },
+    {
+      "qid": 17,
+      "independentAnswer": "49",
+      "independentAnswerOriginalFreeze": "49",
+      "independentReasoning": "By the derivative definition, f'(2)=12(2)²+1=49; directly expanding [f(2+h)−f(2)]/h also gives 49 in the limit.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": {
+        "path": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/r1-independent-freeze.json",
+        "sha256": "4d6fa27f4ed1381d6bb1e0a741eb10311b6db2cb4cac9b1048d963e79bed7ea0"
+      },
+      "storedAnswer": "49",
+      "compareResult": "MATCH",
+      "compareBasis": "Independent answer agrees with stored answer.",
+      "answerCardinality": {
+        "studentAnswerCount": 1,
+        "uniqueCorrectChoiceCount": null,
+        "choiceCount": 0
+      },
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "008efb8fb6344bb63fd144aec50235e776fc82b21e7e44538346ed983d7a67b5",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "layoutTag": "grid",
+          "wide": false,
+          "studentPayloadParity": {
+            "studentPayloadSha256": "717cf3f1bb2f492cf02c80991f4416284032f4fa6fbadb201b348698e9b058fd",
+            "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+            "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+            "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+            "studentFieldsPreserved": true
+          },
+          "reason": "No source-only visual field is required; text/MathJax content and choices are exact.",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "solutionIdentity": {
+            "examFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceOrdinal": 17,
+            "studentPayloadSha256": "717cf3f1bb2f492cf02c80991f4416284032f4fa6fbadb201b348698e9b058fd",
+            "solutionSha256": "008efb8fb6344bb63fd144aec50235e776fc82b21e7e44538346ed983d7a67b5"
+          },
+          "smallBoardContinuityStatus": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardObservation": "Explanation, decisive equation(s), conditions and answer conclusion are separated in student-readable line/paragraph blocks.",
+          "goldenQualityCompare": "PASS",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "META": {
+          "status": "PASS_WITH_EXPLICIT_EVIDENCE_DEBT",
+          "category": "미분계수의 정의를 이용한 계산",
+          "originalCategory": "미분계수와 도함수",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-03",
+          "standardUnit": "미분계수",
+          "standardUnitOrder": 3,
+          "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
+          "subUnit": "미분계수",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "questionType": "서술형",
+          "tagsCurrent": [
+            "서술형",
+            "미분계수와 도함수",
+            "미분계수의 정의"
+          ],
+          "visualTagCheck": {
+            "requiredTag": null,
+            "present": true
+          },
+          "levelCurrent": "중",
+          "independentLevel": "중",
+          "independentLevelReason": "미분계수 정의를 직접 전개",
+          "difficultyBucketCurrent": 2,
+          "difficultyConfidenceCurrent": "high",
+          "difficultyBoundaryFlagCurrent": "NONE",
+          "legacyLevelCompatibilityCurrent": "NORMAL",
+          "difficultyDisposition": "KEEP",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+          "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+          "rpm": {
+            "status": "DIRECT_ACTIVE",
+            "crosswalkIds": [
+              "H2-M2-RPM-014"
+            ],
+            "l1": "미분",
+            "l2": "미분계수와 도함수",
+            "l3": "미분계수",
+            "l4": "정의로 미분계수"
+          },
+          "identity": {
+            "sourceArchiveFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+            "sourceOrdinal": 17,
+            "sourceQidBasis": "current JS id 17 equals the current student-bundle qid 17",
+            "questionUidFieldPresent": false,
+            "stableQuestionUid": "EVIDENCE_DEBT: no current stable questionUid field or UID registry record for this assignment",
+            "provenance": "current source path/raw SHA + qid + referenced asset hashes bound; original intake page-level provenance is not in the current bundle/evidence root"
+          },
+          "sourceConsumerIndexParity": "NOT_TESTED: target has no current exact UID registration/readback in this branch; R1 does not publish or claim consumer/index parity",
+          "exactDebts": [
+            {
+              "field": "questionUid",
+              "reason": "Current JS and current assignment records do not provide a stable per-item questionUid/UID registry mapping."
+            }
+          ]
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "미분계수 정의에 따른 다항식 전개만 있고 공간 관계가 없다.",
+            "assetAction": "EXEMPT",
+            "asset": null
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "미분계수 정의에 따른 전개·극한 계산만 있고 새 그래프/공간 관계가 없다.",
+            "assetAction": "EXEMPT",
+            "asset": null,
+            "staticParity": null
+          },
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER",
+          "rendererSupport": "Archive solutionImage path is loaded as ordinary image src in engine.html; SVG served through current asset-ref contract; final six-case Archive browser render is assigned to R3."
+        }
+      },
+      "metaDebtFields": [],
+      "studentBodyParity": {
+        "studentPayloadSha256": "717cf3f1bb2f492cf02c80991f4416284032f4fa6fbadb201b348698e9b058fd",
+        "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+        "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+        "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+        "studentFieldsPreserved": true
+      },
+      "expectedSourceQid": 17
+    },
+    {
+      "qid": 18,
+      "independentAnswer": "116",
+      "independentAnswerOriginalFreeze": "116",
+      "independentReasoning": "The finite limit forces f(x)=x²+ax+b with integers a,b. The condition gives a=f(−4)=16−4a+b, hence b=5a−16. Since x/f(x) must be continuous for all real x, f has no real zero, so the discriminant (a−4)(a−16)<0 and integer a is 5 through 15. Then f(2)=7a−12 ranges from 23 to 93, whose sum is 116.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": {
+        "path": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/r1-independent-freeze.json",
+        "sha256": "4d6fa27f4ed1381d6bb1e0a741eb10311b6db2cb4cac9b1048d963e79bed7ea0"
+      },
+      "storedAnswer": "116",
+      "compareResult": "MATCH",
+      "compareBasis": "Independent answer agrees with stored answer.",
+      "answerCardinality": {
+        "studentAnswerCount": 1,
+        "uniqueCorrectChoiceCount": null,
+        "choiceCount": 0
+      },
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "d52d3afb804cf38a615b3180c45c9a4164e66ae84b52015fb8852617092216f9",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "layoutTag": "grid",
+          "wide": false,
+          "studentPayloadParity": {
+            "studentPayloadSha256": "cfb490b3c3c131aadc13a149968996b8f2d0ffe582d7554adb9f3422dbe4f3e8",
+            "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+            "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+            "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+            "studentFieldsPreserved": true
+          },
+          "reason": "No source-only visual field is required; text/MathJax content and choices are exact.",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "solutionIdentity": {
+            "examFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceOrdinal": 18,
+            "studentPayloadSha256": "cfb490b3c3c131aadc13a149968996b8f2d0ffe582d7554adb9f3422dbe4f3e8",
+            "solutionSha256": "d52d3afb804cf38a615b3180c45c9a4164e66ae84b52015fb8852617092216f9"
+          },
+          "smallBoardContinuityStatus": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardObservation": "Explanation, decisive equation(s), conditions and answer conclusion are separated in student-readable line/paragraph blocks.",
+          "goldenQualityCompare": "PASS",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "META": {
+          "status": "PASS_WITH_EXPLICIT_EVIDENCE_DEBT",
+          "category": "극한과 연속 조건으로 다항함수 결정",
+          "originalCategory": "함수의 극한",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-01",
+          "standardUnit": "함수의 극한",
+          "standardUnitOrder": 1,
+          "subUnitKey": "H15-M2-01-LIMIT",
+          "subUnit": "함수의 극한",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "questionType": "서술형",
+          "tagsCurrent": [
+            "서술형",
+            "함수의 극한",
+            "함수의 극한과 연속"
+          ],
+          "visualTagCheck": {
+            "requiredTag": null,
+            "present": true
+          },
+          "levelCurrent": "상",
+          "independentLevel": "상",
+          "independentLevelReason": "정수 계수·연속성·판별식으로 정수 범위를 결정",
+          "difficultyBucketCurrent": 4,
+          "difficultyConfidenceCurrent": "high",
+          "difficultyBoundaryFlagCurrent": "NONE",
+          "legacyLevelCompatibilityCurrent": "NORMAL",
+          "difficultyDisposition": "KEEP",
+          "crossConceptKeys": [
+            "CC_DISCRIMINANT"
+          ],
+          "conditionKeys": [
+            "COND_INTEGER",
+            "COND_NONZERO"
+          ],
+          "integrationPattern": "INTERDEPENDENT",
+          "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+          "templateKey": "TPL_LIMIT_FINITE_CONDITION_PARAMETER",
+          "rpm": {
+            "status": "DIRECT_ACTIVE",
+            "crosswalkIds": [
+              "H2-M2-RPM-004"
+            ],
+            "l1": "함수의 극한과 연속",
+            "l2": "함수의 극한",
+            "l3": "극한의 성질",
+            "l4": "미정계수"
+          },
+          "identity": {
+            "sourceArchiveFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+            "sourceOrdinal": 18,
+            "sourceQidBasis": "current JS id 18 equals the current student-bundle qid 18",
+            "questionUidFieldPresent": false,
+            "stableQuestionUid": "EVIDENCE_DEBT: no current stable questionUid field or UID registry record for this assignment",
+            "provenance": "current source path/raw SHA + qid + referenced asset hashes bound; original intake page-level provenance is not in the current bundle/evidence root"
+          },
+          "sourceConsumerIndexParity": "NOT_TESTED: target has no current exact UID registration/readback in this branch; R1 does not publish or claim consumer/index parity",
+          "exactDebts": [
+            {
+              "field": "questionUid",
+              "reason": "Current JS and current assignment records do not provide a stable per-item questionUid/UID registry mapping."
+            }
+          ]
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "정수 계수·극한·연속 조건의 판별식 풀이로 완결되며 그래프가 새 조건을 제공하지 않는다.",
+            "assetAction": "EXEMPT",
+            "asset": null
+          },
+          "solutionVisual": {
+            "need": "EXEMPT",
+            "reason": "판별식과 정수 범위 결정으로 충분하며 근이 없는 포물선 그림은 설명에 새 결정 단계를 추가하지 않는다.",
+            "assetAction": "EXEMPT",
+            "asset": null,
+            "staticParity": null
+          },
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER",
+          "rendererSupport": "Archive solutionImage path is loaded as ordinary image src in engine.html; SVG served through current asset-ref contract; final six-case Archive browser render is assigned to R3."
+        }
+      },
+      "metaDebtFields": [],
+      "studentBodyParity": {
+        "studentPayloadSha256": "cfb490b3c3c131aadc13a149968996b8f2d0ffe582d7554adb9f3422dbe4f3e8",
+        "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+        "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+        "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+        "studentFieldsPreserved": true
+      },
+      "expectedSourceQid": 18
+    },
+    {
+      "qid": 19,
+      "independentAnswer": "30π−10√5π",
+      "independentAnswerOriginalFreeze": "30π−10√5π",
+      "independentReasoning": "Since f(1)=−2 and f'(1)=−3, the tangent to y=(x²−3)f(x) at P is y=2x+2. The circle's center lies on the normal through P, C=(1,4)+t(2,−1), radius |t|sqrt(5). Tangency to x-axis requires radius 4−t; the first-quadrant solution is t=sqrt(5)−1, giving r=5−sqrt(5). Its area is π(5−sqrt(5))²=π(30−10sqrt(5)).",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": {
+        "path": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/r1-independent-freeze.json",
+        "sha256": "4d6fa27f4ed1381d6bb1e0a741eb10311b6db2cb4cac9b1048d963e79bed7ea0"
+      },
+      "storedAnswer": "$\\pi(30-10\\sqrt5)$",
+      "compareResult": "MATCH",
+      "compareBasis": "Mathematical equivalence: frozen 30π−10√5π equals stored π(30−10√5); one scalar answer.",
+      "answerCardinality": {
+        "studentAnswerCount": 1,
+        "uniqueCorrectChoiceCount": null,
+        "choiceCount": 0
+      },
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "7338bbafa88294a5293f5257da43e382a6c0c0c717382679580dad811966f578",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "layoutTag": "grid",
+          "wide": false,
+          "studentPayloadParity": {
+            "studentPayloadSha256": "381bcd83e8dc890800f4bee5ecc73294a23e74b2cca5b874163e0e451c15b3c0",
+            "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+            "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+            "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+            "studentFieldsPreserved": true
+          },
+          "reason": "No source-only visual field is required; text/MathJax content and choices are exact.",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "solutionIdentity": {
+            "examFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceOrdinal": 19,
+            "studentPayloadSha256": "381bcd83e8dc890800f4bee5ecc73294a23e74b2cca5b874163e0e451c15b3c0",
+            "solutionSha256": "7338bbafa88294a5293f5257da43e382a6c0c0c717382679580dad811966f578"
+          },
+          "smallBoardContinuityStatus": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardObservation": "Explanation, decisive equation(s), conditions and answer conclusion are separated in student-readable line/paragraph blocks.",
+          "goldenQualityCompare": "PASS",
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+        },
+        "META": {
+          "status": "PASS_WITH_EXPLICIT_EVIDENCE_DEBT",
+          "category": "도함수와 원의 접선 조건",
+          "originalCategory": "도함수의 활용",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-05",
+          "standardUnit": "접선의 방정식",
+          "standardUnitOrder": 5,
+          "subUnitKey": "H15-M2-05-TANGENT",
+          "subUnit": "접선의 방정식",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "questionType": "서술형",
+          "tagsCurrent": [
+            "서술형",
+            "도함수의 활용",
+            "접선의 방정식",
+            "도형"
+          ],
+          "visualTagCheck": {
+            "needed": "assets/images/24_금당고_1학기_중간_고2_수학II/q19-solution.svg",
+            "requiredTag": "도형",
+            "present": true
+          },
+          "levelCurrent": "상",
+          "independentLevel": "상",
+          "independentLevelReason": "곡선 접선의 법선과 두 접선 원을 함께 결합",
+          "difficultyBucketCurrent": 4,
+          "difficultyConfidenceCurrent": "high",
+          "difficultyBoundaryFlagCurrent": "NONE",
+          "legacyLevelCompatibilityCurrent": "NORMAL",
+          "difficultyDisposition": "KEEP",
+          "crossConceptKeys": [
+            "CC_CIRCLE_TANGENCY"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "INTERDEPENDENT",
+          "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+          "templateKey": "TPL_TANGENCY_RELATION_GEOMETRY",
+          "rpm": {
+            "status": "DIRECT_ACTIVE",
+            "crosswalkIds": [
+              "H2-M2-RPM-020"
+            ],
+            "l1": "미분",
+            "l2": "도함수의 활용(1)",
+            "l3": "접선",
+            "l4": "접점 조건"
+          },
+          "identity": {
+            "sourceArchiveFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+            "sourceRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+            "sourceOrdinal": 19,
+            "sourceQidBasis": "current JS id 19 equals the current student-bundle qid 19",
+            "questionUidFieldPresent": false,
+            "stableQuestionUid": "EVIDENCE_DEBT: no current stable questionUid field or UID registry record for this assignment",
+            "provenance": "current source path/raw SHA + qid + referenced asset hashes bound; original intake page-level provenance is not in the current bundle/evidence root"
+          },
+          "sourceConsumerIndexParity": "NOT_TESTED: target has no current exact UID registration/readback in this branch; R1 does not publish or claim consumer/index parity",
+          "exactDebts": [
+            {
+              "field": "questionUid",
+              "reason": "Current JS and current assignment records do not provide a stable per-item questionUid/UID registry mapping."
+            }
+          ]
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisual": {
+            "need": "EXEMPT",
+            "reason": "점·접선·x축·원 중심 조건을 발문이 명시한다. 문제용 schematic은 계산된 접선/중심을 선공개할 위험이 있고 추가 입력 사실은 없다.",
+            "assetAction": "EXEMPT",
+            "asset": null
+          },
+          "solutionVisual": {
+            "need": "BENEFICIAL",
+            "reason": "P에서 접하는 직선, 법선 방향 중심 C, x축 접점 T의 동시 관계가 원의 반지름을 결정한다. 기존 SVG의 실제 좌표/수선 표시를 확인했다.",
+            "assetAction": "KEEP_EXISTING_VERIFIED",
+            "asset": {
+              "ref": "assets/images/24_금당고_1학기_중간_고2_수학II/q19-solution.svg",
+              "sha256": "7edc55be1b148c103484d97e53f03e0dd94b1c5dcc0937b3baad9d65af44d9c7",
+              "opened": true,
+              "actualRenderer": "Archive engine renderSolutionImageHTML uses ordinary img src and cache-buster; SVG reference accepted by current asset contract",
+              "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER"
+            },
+            "staticParity": null
+          },
+          "actualArchiveRenderStatus": "NOT_RUN_R1_R3_OWNER",
+          "rendererSupport": "Archive solutionImage path is loaded as ordinary image src in engine.html; SVG served through current asset-ref contract; final six-case Archive browser render is assigned to R3."
+        }
+      },
+      "metaDebtFields": [],
+      "studentBodyParity": {
+        "studentPayloadSha256": "381bcd83e8dc890800f4bee5ecc73294a23e74b2cca5b874163e0e451c15b3c0",
+        "originalFreezeBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+        "studentBundleSourceSha256": "31ad97508f78d98c79d7f492d7887ab2212b437f30fedaf7f387319aec8443d2",
+        "finalPostfreezeParity": "EXACT_FROM_FULL_BUNDLE_AND_POSTFREEZE_CHECK",
+        "studentFieldsPreserved": true
+      },
+      "expectedSourceQid": 19
+    }
+  ],
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationOrder": [
+      "stage assignment and fixed scope",
+      "Golden samples 2-3 + related Negative sample",
+      "target independent answer freeze",
+      "postfreeze answer/solution disclosure",
+      "target R1 review",
+      "quality compare"
+    ],
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW; solution text unchanged; q8/q13 solutionImage additions only",
+    "qualityCompareCount": "19/19",
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "solutionExcerpt": "내분점 P의 좌표를 구한 뒤 중점 M과 거리를 차례로 계산한다.",
+            "observation": "각 단계에서 공식의 계수 배치를 설명하고 좌표·거리 계산을 블록으로 나눠 학생이 재현 가능."
+          },
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+            "solutionExcerpt": "중심 C₀→C₁→C₂ 이동과 반지름 보존을 설명한다.",
+            "observation": "이동 단계별로 좌표 중심을 독립 표시하고 기존 원/최종 원의 실제 동일 반지름을 도형 primitive로 보인다."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "solutionExcerpt": "두 점의 좌표 차를 거리 공식에 넣는다.",
+            "observation": "좌표차의 부호와 제곱·제곱근 계산을 순서대로 전개한다."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+            "solutionExcerpt": "두 직선의 기울기 곱을 −1로 두어 k를 구한다.",
+            "observation": "두 실제 직선식의 line primitive 기울기 −1/3, 3이 수직 조건과 일치하고 계산 패널이 결과를 보조한다."
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+      "observation": "actual SVG coordinates/topology가 label 문구와 불일치하는 false PASS, 열거식 풀이의 실제 block 분리 누락, active Meta null-but-resolvable, runtime escape drift를 반드시 직접 점검."
+    }
+  },
+  "assetReads": [
+    {
+      "qid": 13,
+      "ref": "assets/images/24_금당고_1학기_중간_고2_수학II/q13.png",
+      "sha256": "f026e37dfc703c8bc0315b3aabcd50e5bd745af0756637622da3b5d80d126610",
+      "opened": true
+    }
+  ],
+  "sourceIdentityReview": {
+    "examFile": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_수학II.js",
+    "sourceRawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+    "sourceRawBlobSha1": "3622f4482a1ecc3cd34d862a2238951c087565eb",
+    "studentBundlePath": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/current-student-only.bundle.json",
+    "studentBundleSha256": "64364b14d386f3ea29f701f0c1b5e9011988f99bcaa7a227bbbdd830ef30f8f6",
+    "freezePath": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/r1-independent-freeze.json",
+    "freezeSha256": "4d6fa27f4ed1381d6bb1e0a741eb10311b6db2cb4cac9b1048d963e79bed7ea0",
+    "currentFinalStudentParity": "EXACT",
+    "postfreezeQidScope": [
+      8,
+      13
+    ],
+    "postfreezeDisclosurePath": "archive/analysis/24_금당고_1학기_중간_고2_수학II/r1-clean-20261011/r1-postfreeze-qid-8-13-final-v2.json",
+    "postfreezeDisclosureSha256": "b911d0678ebdc32478408b0d60c2ae9fc12d3d2a3feaf04cbfc3593a77a2052e"
+  },
+  "summary": {
+    "answerMatches": 19,
+    "answerMismatchesAfterAdjudication": 0,
+    "questionLayoutPass": 19,
+    "solutionLayoutPass": 19,
+    "metaRowsWithExactEvidenceDebt": 19,
+    "visualTwoAxisRows": 19,
+    "problemVisualRequired": 1,
+    "solutionVisualRequired": 1,
+    "solutionVisualBeneficial": 6,
+    "solutionVisualExempt": 12,
+    "itemHolds": 0,
+    "questionLayoutRender": "NOT_RUN_R1_R3_OWNER",
+    "solutionRender": "NOT_RUN_R1_R3_OWNER",
+    "sourcePdfCompared": false,
+    "sourcePdfReason": "No specific extraction/source-text defect identified; extracted JS/student bundle and actual q13 PNG are the current inputs."
+  },
+  "technicalHashes": {
+    "rawSha256": "d5d28573ce24627b2ca0adca505c18bc583ba3705b5e1fe0518617ddc639a4ac",
+    "validatorRawBufferBlobSha1": "3622f4482a1ecc3cd34d862a2238951c087565eb",
+    "gitCleanFilterBlobSha1": "3622f4482a1ecc3cd34d862a2238951c087565eb"
+  }
+}

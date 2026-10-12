@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_PREFLIGHT_PROCESS_CAPTURE_V1",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "archive/tools/archive-create-preflight.mjs",
+    "--root",
+    ".",
+    "--exam",
+    "archive/exams/original/high/h2/1mid/24_순천고_1학기_중간_고2_확률과통계.js",
+    "--evidence",
+    "archive/analysis/source-only-h2-1mid-20261010-b2/CREATE.q08-source-asset-repair-20261011.evidence.json"
+  ],
+  "exitCode": 1,
+  "signal": null,
+  "reportPath": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010-b2\\CREATE.q08-source-asset-repair-20261011.preflight.raw.json",
+  "reportSha256": "a3cef575628a6b1d6897329691a93557d759e934db454c07885c7e105a490674",
+  "stderrPath": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\source-only-h2-1mid-20261010-b2\\CREATE.q08-source-asset-repair-20261011.preflight.stderr.txt",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "status": "REVIEW_REQUIRED",
+  "findings": [
+    {
+      "qid": 21,
+      "field": "content",
+      "code": "TEX_MATH_DELIMITER_UNPAIRED",
+      "locus": {
+        "start": 146,
+        "end": 147,
+        "text": "$"
+      },
+      "reason": "Opening math delimiter has no matching closer."
+    },
+    {
+      "qid": 23,
+      "field": "content",
+      "code": "TEX_MATH_DELIMITER_UNPAIRED",
+      "locus": {
+        "start": 269,
+        "end": 270,
+        "text": "$"
+      },
+      "reason": "Opening math delimiter has no matching closer."
+    }
+  ],
+  "itemHoldCount": 0,
+  "unitOrderFindings": []
+}

@@ -1,47 +1,47 @@
 # question-index 생성 리포트
 
 - 인덱싱 범위(SCOPE): git-tracked + db-listed production (parity-gated) (git 등재 시험지만; textbook 교재은행·미추적 _pro 드래프트 제외)
-- 시험지 수(db.js): 577
-- 시험지 파일 수: 577
-- 원본 문항 수(중복 제거 전): 13717
-- 최종 인덱스 문항 수(중복 제거 후): 13717
+- 시험지 수(db.js): 589
+- 시험지 파일 수: 589
+- 원본 문항 수(중복 제거 전): 13988
+- 최종 인덱스 문항 수(중복 제거 후): 13988
 - 중복 qKey로 제외된 레코드: 0 (그룹 0)
 - 최종 인덱스 중복 qKey: 0
 - undefined/비객체 문항 skip: 0
-- db.js 크기: 572913 bytes
-- 시험지 JS 총 크기: 23918566 bytes
-- 인덱스 크기: 14603182 bytes
+- db.js 크기: 584847 bytes
+- 시험지 JS 총 크기: 25044474 bytes
+- 인덱스 크기: 14933167 bytes
 - 로드 실패 파일: 0
 
-> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(13717)" 기준이다.
+> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(13988)" 기준이다.
 
 ## 표준단원키 분류 (공식 마스터 143개 기준)
 
-- 공식(official): 13441
+- 공식(official): 13894
 - RAW-(임시 규약, 허용): 0 (distinct 0)
 - 비공식(invalid): 94 (distinct 21)
-- 빈 키(empty): 182
+- 빈 키(empty): 0
 
 상세 비공식 키 목록은 question-index-audit.md 참조.
 
 ## 필드 누락 (최종 인덱스 기준)
 
 - 누락 id: 0
-- 누락 content: 70
+- 누락 content: 0
 - 누락 choices: 5
-- 누락 level: 656
-- 누락 standardUnit: 182
-- 누락 standardUnitKey: 182
-- 누락 standardCourse: 194
+- 누락 level: 474
+- 누락 standardUnit: 0
+- 누락 standardUnitKey: 0
+- 누락 standardCourse: 12
 - 누락 tags: 0
 
 ## 시각요소 집계 (최종 인덱스 기준)
 
-- q.image 보유: 3011
-- content 내부 <img>: 29
+- q.image 보유: 3047
+- content 내부 <img>: 55
 - content 내부 <svg>: 77
-- content 내부 <table>: 182
-- 시각요소 보유(hasImage=true, OR 합산): 3292
+- content 내부 <table>: 184
+- 시각요소 보유(hasImage=true, OR 합산): 3347
 
 ## 누락 예시
 
@@ -49,14 +49,7 @@
   - 없음
 
 ### content
-  - original/high/h2/1mid/24_순천고_1학기_중간_고2_수학I.js#1
-  - original/high/h2/1mid/24_순천고_1학기_중간_고2_수학I.js#2
-  - original/high/h2/1mid/24_순천고_1학기_중간_고2_수학I.js#3
-  - original/high/h2/1mid/24_순천고_1학기_중간_고2_수학I.js#4
-  - original/high/h2/1mid/24_순천고_1학기_중간_고2_수학I.js#5
-  - original/high/h2/1mid/24_순천고_1학기_중간_고2_수학I.js#6
-  - original/high/h2/1mid/24_순천고_1학기_중간_고2_수학I.js#7
-  - original/high/h2/1mid/24_순천고_1학기_중간_고2_수학I.js#8
+  - 없음
 
 ### choices
   - original/high/h1/1mid/23_매산여고_1학기_중간_고1_기출.js#19
@@ -76,34 +69,20 @@
   - original/high/h1/1mid/24_금당고_1학기_중간_고1_기출.js#8
 
 ### standardUnit
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#1
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#2
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#3
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#4
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#5
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#6
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#7
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#8
+  - 없음
 
 ### standardUnitKey
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#1
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#2
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#3
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#4
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#5
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#6
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#7
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#8
+  - 없음
 
 ### standardCourse
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#1
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#2
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#3
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#4
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#5
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#6
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#7
-  - original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js#8
+  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#13
+  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#14
+  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#15
+  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#16
+  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#17
+  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#18
+  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#19
+  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#20
 
 ### tags
   - 없음
