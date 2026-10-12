@@ -16,7 +16,9 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   assert.match(engine, /canonicalData: \[\]/);
   assert.match(engine, /AppState\.canonicalData = buildArchiveCanonicalData\(sourceArchiveFile\)/);
   assert.match(engine, /renderAuthorityDualRun/);
-  assert.match(engine, /\.sol-image-wrap\.layout-fullwidth img \{ max-height: 640px; \}/);
+  const fullwidthRule = engine.match(/\.sol-image-wrap\.layout-fullwidth img\s*\{([^}]*)\}/);
+  assert.ok(fullwidthRule, 'fullwidth solution image rule missing');
+  assert.match(fullwidthRule[1], /(?:^|;)\s*max-height\s*:\s*640px\s*;?/);
   assert.match(engine, /prepareArchiveCanonicalContent/);
   assert.match(engine, /prepareArchiveCanonicalSolution/);
   assert.match(engine, /compareAnswerSemantics/);
