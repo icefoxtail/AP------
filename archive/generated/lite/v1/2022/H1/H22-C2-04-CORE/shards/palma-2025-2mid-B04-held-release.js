@@ -55,7 +55,12 @@ window.questionBank = [
         "templateKey": "RPM FAMILY_ACTIVE has no single exact consumer template"
       }
     },
-    "metaFinalSha256": "4edb121b78b94152b8ae2ce5714ae7bfc2dc300d33758f7bebc2f5c2dd915bf2"
+    "metaFinalSha256": "4edb121b78b94152b8ae2ce5714ae7bfc2dc300d33758f7bebc2f5c2dd915bf2",
+    "image": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-B04-Q07-C01-problem.svg",
+    "imageSize": "large",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-B04-Q07-C01-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 2,
@@ -112,7 +117,12 @@ window.questionBank = [
         "templateKey": "RPM FAMILY_ACTIVE has no single exact consumer template"
       }
     },
-    "metaFinalSha256": "85b55b89e39f21eb1a966e51c7e9c6aa32acdaf87d017bf8f5fa5ca32afaa30a"
+    "metaFinalSha256": "85b55b89e39f21eb1a966e51c7e9c6aa32acdaf87d017bf8f5fa5ca32afaa30a",
+    "image": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-B04-Q15-C01-problem.svg",
+    "imageSize": "large",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-B04-Q15-C01-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 3,

@@ -120,7 +120,11 @@ window.questionBank = [
         "rpmBinding": "Direct RPM crosswalk binding gap retained as evidence; no false ACTIVE claim"
       }
     },
-    "metaFinalSha256": "bb95eb82fa88a4640410e9b9533dc340a2fb660e41c58488c384aa72cf6260a2"
+    "metaFinalSha256": "bb95eb82fa88a4640410e9b9533dc340a2fb660e41c58488c384aa72cf6260a2",
+    "image": "assets/generated-lite/palma-svg-repair/B05_Q09_C01_CENTROID_RATIO_RECOVERY-problem.svg",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/B05_Q09_C01_CENTROID_RATIO_RECOVERY-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 3,
@@ -190,3 +194,5 @@ window.questionBank = [
     "solutionImageCaption": "두 길이비와 GHC 영역의 넓이 관계를 확인한다."
   }
 ];
+
+;(()=>{const bank=window.questionBank;if(!Array.isArray(bank))throw Error('VISUAL_BIND_BANK_MISSING');const patches={"B05_Q04_C01_DISTANCE_SUM_MIN":{"image":"assets/generated-lite/palma-svg-repair/B05_Q04_C01_DISTANCE_SUM_MIN-problem.svg","imageSize":"large","solutionImage":"assets/generated-lite/palma-svg-repair/B05_Q04_C01_DISTANCE_SUM_MIN-solution.svg","solutionImageSize":"full","solutionImageLayout":"fullwidth"}};for(const [uid,fields] of Object.entries(patches)){const rows=bank.filter(q=>q.uid===uid);if(rows.length!==1)throw Error('VISUAL_BIND_UID_NOT_UNIQUE:'+uid);Object.assign(rows[0],fields);}})();

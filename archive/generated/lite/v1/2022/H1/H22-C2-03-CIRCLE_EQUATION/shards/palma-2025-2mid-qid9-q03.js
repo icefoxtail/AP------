@@ -266,6 +266,11 @@ window.questionBank = [
       "원의 방정식"
     ],
     "wide": false,
+    "image": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q03-C1-problem.svg",
+    "imageSize": "large",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q03-C1-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth",
     "content": "원 $C:x^2+y^2-2x+4y-4=0$을 $(2,-1)$만큼 평행이동한 후 직선 $y=x$에 대하여 대칭이동하였다. 최종적으로 얻은 원의 방정식은?",
     "choices": [
       "$(x-3)^2+(y+3)^2=9$",
@@ -365,3 +370,9 @@ window.questionBank = [
     "generatedL4": "QID9 C3 생성 유형"
   }
 ];
+
+;(()=>{const bank=window.questionBank;if(!Array.isArray(bank))throw Error('VISUAL_BIND_BANK_MISSING');const patches={"ALITE-PALMA25-2MID-Q03-A3":{"image":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q03-A3-problem.svg","imageSize":"large","solutionImage":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q03-A3-solution.svg","solutionImageSize":"full","solutionImageLayout":"fullwidth"},"ALITE-PALMA25-2MID-Q03-B1":{"image":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q03-B1-problem.svg","imageSize":"large","solutionImage":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q03-B1-solution.svg","solutionImageSize":"full","solutionImageLayout":"fullwidth"},"ALITE-PALMA25-2MID-Q03-B2":{"image":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q03-B2-problem.svg","imageSize":"large","solutionImage":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q03-B2-solution.svg","solutionImageSize":"full","solutionImageLayout":"fullwidth"}};for(const [uid,fields] of Object.entries(patches)){const rows=bank.filter(q=>q.uid===uid);if(rows.length!==1)throw Error('VISUAL_BIND_UID_NOT_UNIQUE:'+uid);Object.assign(rows[0],fields);}})();
+
+;(()=>{const bank=window.questionBank;if(!Array.isArray(bank))throw Error('VISUAL_BIND_BANK_MISSING');const patches={"ALITE-PALMA25-2MID-Q03-C3":{"image":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q03-C3-problem.svg","imageSize":"large","solutionImage":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q03-C3-solution.svg","solutionImageSize":"full","solutionImageLayout":"fullwidth"}};for(const [uid,fields] of Object.entries(patches)){const rows=bank.filter(q=>q.uid===uid);if(rows.length!==1)throw Error('VISUAL_BIND_UID_NOT_UNIQUE:'+uid);Object.assign(rows[0],fields);}})();
+
+;(()=>{const bank=window.questionBank;if(!Array.isArray(bank))throw Error('VISUAL_BIND_BANK_MISSING');const patches={"ALITE-PALMA25-2MID-Q03-C2":{"image":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q03-C2-problem.svg","imageSize":"large","solutionImage":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q03-C2-solution.svg","solutionImageSize":"full","solutionImageLayout":"fullwidth"}};for(const [uid,fields] of Object.entries(patches)){const rows=bank.filter(q=>q.uid===uid);if(rows.length!==1)throw Error('VISUAL_BIND_UID_NOT_UNIQUE:'+uid);Object.assign(rows[0],fields);}})();

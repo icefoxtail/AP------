@@ -22,6 +22,9 @@ window.questionBank = [
       "원"
     ],
     "wide": false,
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-B01-2025PALMA-0001-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth",
     "content": "서로 다른 두 점 $A(-3,1)$, $B(3,1)$을 지나는 원의 중심은 $y$축 위에 있고 선분 $AB$보다 위쪽에 있다. 이 원의 반지름의 길이가 $5$일 때, 이 원의 방정식은?",
     "choices": [
       "$x^2+(y-1)^2=25$",
@@ -192,6 +195,11 @@ window.questionBank = [
       "원"
     ],
     "wide": false,
+    "image": "assets/generated-lite/palma-svg-repair/ALITE-B01-2025PALMA-0004-problem.svg",
+    "imageSize": "large",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-B01-2025PALMA-0004-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth",
     "content": "원의 방정식 $x^2+y^2=25$의 바깥에 있는 점 $T(t,2t)\\;(t>0)$에서 이 원에 그은 두 접선이 원과 만나는 점을 각각 $P,Q$라 하자. 직선 $PQ$와 원의 중심 $O$ 사이의 거리가 $\\sqrt5$일 때, $OT$의 길이는?",
     "choices": [
       "$5$",
@@ -338,3 +346,7 @@ window.questionBank = [
     "metaFinalSha256": "e93c91f813d3c86c780f284d47985608695cba51058de5bd66b0fe55d612583c"
   }
 ];
+
+;(()=>{const bank=window.questionBank;if(!Array.isArray(bank))throw Error('VISUAL_BIND_BANK_MISSING');const patches={"ALITE-B01-2025PALMA-0003":{"image":"assets/generated-lite/palma-svg-repair/ALITE-B01-2025PALMA-0003-problem.svg","imageSize":"large","solutionImage":"assets/generated-lite/palma-svg-repair/ALITE-B01-2025PALMA-0003-solution.svg","solutionImageSize":"full","solutionImageLayout":"fullwidth"},"ALITE-B01-2025PALMA-0006":{"image":"assets/generated-lite/palma-svg-repair/ALITE-B01-2025PALMA-0006-problem.svg","imageSize":"large"}};for(const [uid,fields] of Object.entries(patches)){const rows=bank.filter(q=>q.uid===uid);if(rows.length!==1)throw Error('VISUAL_BIND_UID_NOT_UNIQUE:'+uid);Object.assign(rows[0],fields);}})();
+
+;(()=>{const bank=window.questionBank;if(!Array.isArray(bank))throw Error('VISUAL_BIND_BANK_MISSING');const patches={"ALITE-B01-2025PALMA-0006":{"solutionImage":"assets/generated-lite/palma-svg-repair/ALITE-B01-2025PALMA-0006-solution.svg","solutionImageSize":"full","solutionImageLayout":"fullwidth"}};for(const [uid,fields] of Object.entries(patches)){const rows=bank.filter(q=>q.uid===uid);if(rows.length!==1)throw Error('VISUAL_BIND_UID_NOT_UNIQUE:'+uid);Object.assign(rows[0],fields);}})();

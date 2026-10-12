@@ -1,6 +1,6 @@
 window.examTitle = "ALIVE_LITE_BSG26_B02_ABSOLUTE_VALUE_INEQUALITIES";
 window.questionBank = [
-  {
+    {
     "id": 1,
     "uid": "ALITE-BSG26-B02-Q11-A01",
     "level": "하",
@@ -40,9 +40,14 @@ window.questionBank = [
     "extensionL3Id": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
     "extensionL3": "절댓값을 포함한 부등식",
     "extensionL4Id": "EXT-H1-BSG26-ABS-DISTANCE-SUM-INTERVAL",
-    "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL"
+    "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL",
+    "image": "assets/generated-lite/palma-svg-repair/ALITE-BSG26-B02-Q11-A01-problem.svg",
+    "imageSize": "large",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-BSG26-B02-Q11-A01-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
-  {
+    {
     "id": 2,
     "uid": "ALITE-BSG26-B02-Q11-A02",
     "level": "중",
@@ -82,9 +87,14 @@ window.questionBank = [
     "extensionL3Id": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
     "extensionL3": "절댓값을 포함한 부등식",
     "extensionL4Id": "EXT-H1-BSG26-ABS-DISTANCE-SUM-INTERVAL",
-    "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL"
+    "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL",
+    "image": "assets/generated-lite/palma-svg-repair/ALITE-BSG26-B02-Q11-A02-problem.svg",
+    "imageSize": "large",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-BSG26-B02-Q11-A02-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
-  {
+    {
     "id": 3,
     "uid": "ALITE-BSG26-B02-Q11-A03",
     "level": "중",
@@ -125,9 +135,12 @@ window.questionBank = [
     "rpmL3": "부등식의 활용",
     "rpmL4": "최대·최소",
     "rpmSemanticSourceScope": "2022/공통수학1/H22-C-06-EQUATION_APPLICATION",
-    "semanticClassificationStatus": "EXISTING_RPM_REVIEW_APPROVED"
+    "semanticClassificationStatus": "EXISTING_RPM_REVIEW_APPROVED",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-BSG26-B02-Q11-A03-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
-  {
+    {
     "id": 4,
     "uid": "ALITE-BSG26-B02-Q11-A04",
     "level": "상",
@@ -167,9 +180,12 @@ window.questionBank = [
     "extensionL3Id": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
     "extensionL3": "절댓값을 포함한 부등식",
     "extensionL4Id": "EXT-H1-BSG26-ABS-DIFFERENCE-SIGN",
-    "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL"
+    "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-BSG26-B02-Q11-A04-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
-  {
+    {
     "id": 5,
     "uid": "ALITE-BSG26-B02-Q11-A05",
     "level": "상",
@@ -209,9 +225,12 @@ window.questionBank = [
     "extensionL3Id": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
     "extensionL3": "절댓값을 포함한 부등식",
     "extensionL4Id": "EXT-H1-BSG26-ABS-DISTANCE-SUM-INTERVAL",
-    "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL"
+    "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-BSG26-B02-Q11-A05-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
-  {
+    {
     "id": 6,
     "uid": "ALITE-BSG26-B02-Q11-A06",
     "level": "중",
@@ -252,9 +271,12 @@ window.questionBank = [
     "rpmL3": "부등식의 활용",
     "rpmL4": "최대·최소",
     "rpmSemanticSourceScope": "2022/공통수학1/H22-C-06-EQUATION_APPLICATION",
-    "semanticClassificationStatus": "EXISTING_RPM_REVIEW_APPROVED"
+    "semanticClassificationStatus": "EXISTING_RPM_REVIEW_APPROVED",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-BSG26-B02-Q11-A06-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
-  {
+    {
     "id": 7,
     "uid": "ALITE-BSG26-B02-Q11-A07",
     "level": "중",
@@ -294,9 +316,12 @@ window.questionBank = [
     "extensionL3Id": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
     "extensionL3": "절댓값을 포함한 부등식",
     "extensionL4Id": "EXT-H1-BSG26-ABS-DISTANCE-SUM-INTERVAL",
-    "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL"
+    "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-BSG26-B02-Q11-A07-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
-  {
+    {
     "id": 8,
     "uid": "ALITE-BSG26-B02-Q11-A08",
     "level": "중",
@@ -336,7 +361,10 @@ window.questionBank = [
     "extensionL3Id": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
     "extensionL3": "절댓값을 포함한 부등식",
     "extensionL4Id": "EXT-H1-BSG26-ABS-DISTANCE-SUM-INTERVAL",
-    "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL"
+    "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-BSG26-B02-Q11-A08-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 9,

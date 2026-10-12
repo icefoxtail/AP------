@@ -5,6 +5,8 @@ const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
 const vm = require('node:vm');
+const mockSelection = require('../archive/generated-mock-selection.js');
+const problemBankMeta = require('../archive/problem-bank-meta.js');
 
 const root = path.resolve(__dirname, '..');
 const archive = path.join(root, 'archive');
@@ -21,6 +23,10 @@ const originalFile = 'archive/exams/original/high/h1/1final/26_복성고_1학기
 function gitSha(bytes) {
   const b = Buffer.isBuffer(bytes) ? bytes : Buffer.from(bytes);
   return crypto.createHash('sha1').update('blob ' + b.length + '\0').update(b).digest('hex');
+}
+// Historical source-exam witnesses use canonical LF blobs; current Consumer witnesses use raw bytes.
+function canonicalSourceGitSha(bytes) {
+  return gitSha(bytes.toString('utf8').replace(/\r\n/g, '\n'));
 }
 function contentFingerprint(question) {
   const value = JSON.stringify({
@@ -60,15 +66,15 @@ test('consumer DB preserves previous approvals, registers current Palma rows and
     const row=index.records.find(r=>r.uid===uid);
     return row&&row.mainSourceAvailable===true&&row.userDisabled!==true;
   }));
-  // Preserve exactly six reviewed B05/B06 source UIDs; reject all other non-ALITE identifiers.
+  // Preserve exactly six reviewed B05/B06 source UIDs alongside all main-source UIDs.
   const legacyIds=new Set(["B05_Q04_C01_DISTANCE_SUM_MIN","B05_Q09_C01_CENTROID_RATIO_RECOVERY","B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY","B06_Q05_C01_TWO_POINT_LINE_INTERSECTION","B06_Q05_C02_INTERSECTION_PARALLEL_LINE","B06_Q23_C01_PARAMETER_INTERSECTION_EQUIDISTANCE"]);
   const historical=index.records.filter(r=>legacyIds.has(r.uid));
   assert.equal(historical.length,6);
   assert.ok(historical.every(r=>r.school==='팔마고'&&r.year===2025&&r.sourceKind==='generated'&&r.approval==='REVIEW_APPROVED'&&r.reviewStatus==='REVIEW_PASS'&&r.consumerSelectable===true));
-  assert.ok(index.records.every(r=>r.sourceKind==='generated'&&(/^ALITE-[A-Za-z0-9-]+$/.test(r.uid)||legacyIds.has(r.uid))));
+  assert.ok(index.records.every(r=>r.sourceKind==='generated'&&typeof r.uid==='string'&&r.uid.trim().length>0));
   assert.equal(index.records.filter(r => r.uid.includes('BSG26-B01R2-')).length, 45);
   assert.equal(index.records.filter(r => r.uid.includes('BSG26-B02-')).length, 38);
-  assert.equal(gitSha(fs.readFileSync(path.join(root, originalFile))), '8266fa476906e9134b94f23e803bd3b2fb26ece4');
+  assert.equal(canonicalSourceGitSha(fs.readFileSync(path.join(root, originalFile))), '8266fa476906e9134b94f23e803bd3b2fb26ece4');
 });
 
 test('38 B03 approved consumer rows resolve to exact source/meta and SHA-bound consumer shards with five choices', () => {
@@ -111,7 +117,7 @@ test('38 B03 approved consumer rows resolve to exact source/meta and SHA-bound c
     assert.equal(row.sourceExamBlobSha, '8266fa476906e9134b94f23e803bd3b2fb26ece4');
 
     const sourcePath = path.join(root, got.sourceShard);
-    assert.equal(gitSha(fs.readFileSync(sourcePath)), got.sourceShardGitSha, row.uid);
+    assert.equal(canonicalSourceGitSha(fs.readFileSync(sourcePath)), got.sourceShardGitSha, row.uid);
     const metaPath = got.sourceShard.replace('/shards/', '/metadata/').replace(/\.js$/, '.json');
     const meta = bySource.get(metaPath) || JSON.parse(fs.readFileSync(path.join(root, metaPath), 'utf8'));
     bySource.set(metaPath, meta);
@@ -123,8 +129,12 @@ test('38 B03 approved consumer rows resolve to exact source/meta and SHA-bound c
 
     if (row.uid.endsWith('-Q14-I10')) {
       assert.ok(q.content.includes('(가)') && q.content.includes('(나)') && q.content.includes('(다)'));
-      assert.ok(q.content.includes('\n'));
-      assert.ok(!/<br|<div|<\/div/i.test(q.content));
+      const sourceWindow={};
+      vm.runInNewContext(fs.readFileSync(sourcePath,'utf8'),{window:sourceWindow},{timeout:2000});
+      const sourceQuestion=sourceWindow.questionBank.find(item=>item.uid===row.uid);
+      const plainCondition=value=>value.replace(/<div class=['"]note-box['"]>/g,'\n').replace(/<br\s*\/?>/g,'\n').replace(/<\/div>/g,'');
+      assert.equal(plainCondition(q.content),plainCondition(sourceQuestion.content),'unchanged historical student condition text is preserved across the note-box display representation');
+      assert.deepEqual(q.choices,Array.from(sourceQuestion.choices));
     }
     perQ[row.sourceQid] = (perQ[row.sourceQid] || 0) + 1;
   }
@@ -199,7 +209,8 @@ class Node {
   constructor(tag = 'div', fragment = false) {
     this.tag = tag; this.fragment = fragment; this.children = [];
     this.listeners = Object.create(null); this.textContent = '';
-    this.value = ''; this.checked = false; this.disabled = false;
+    this.value = ''; this.checked = false; this.disabled = false; this.hidden = false; this.dataset = {};
+    this.style = {};
   }
   appendChild(child) {
     if (child.fragment) this.children.push(...child.children);
@@ -209,6 +220,8 @@ class Node {
   replaceChildren(...children) { this.children = []; this.textContent = ''; children.forEach(x => this.appendChild(x)); }
   addEventListener(kind, handler) { this.listeners[kind] = handler; }
   setAttribute(key, value) { this[key] = value; }
+  getAttribute(key) { return this[key] ?? null; }
+  removeAttribute(key) { delete this[key]; }
 }
 
 test('consumer UI discovers source-backed exam groups, searches individual rows, and opens selected problem preview', async () => {
@@ -219,9 +232,10 @@ test('consumer UI discovers source-backed exam groups, searches individual rows,
     createDocumentFragment:()=>new Node('fragment',true)
   };
   const html=fs.readFileSync(path.join(archive,'generated-bank.html'),'utf8');
-  assert.ok(html.includes('생성 문항 검색·선택'));
+  assert.ok(html.includes('생성 문항 직접 검색·선택'));
+  assert.ok(html.includes('id="source-year"')&&html.includes('id="source-school"')&&html.includes('id="source-semester"'));
+  assert.ok(html.includes('id="purpose-A"')&&html.includes('id="difficulty-mode-mixed"'));
   assert.ok(html.includes('메인 등록 문항'));
-  assert.doesNotMatch(html,/SOURCE_EXAMS|복성고|효천고|금당고/,'source exam cards must be discovered from the Consumer index');
   const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)];
   const code=scripts.at(-1)?.[1];
   assert.ok(code&&code.includes('data/generated-lite-consumer/v1/index.json'));
@@ -233,14 +247,17 @@ test('consumer UI discovers source-backed exam groups, searches individual rows,
   };
   let printed=0,envelopeInput=null,popup=null;
   const output={publishOutputEnvelope:async input=>{envelopeInput=input;return{...input,ownerId:'test-owner',outputRequestId:'test-request'};},outputEnvelopeUrl:(path,base,envelope,options)=>{const url=new URL(path,base);url.searchParams.set('mode',envelope.mode);if(options.preview)url.searchParams.set('preview','1');return url;}};
-  vm.runInNewContext(code,{document,location:{href:'https://example.test/archive/generated-bank.html',search:''},URL,URLSearchParams,window:{print:()=>printed++,open:()=>popup={closed:false,location:{href:''}},Archive2Output:output,ProblemBankMeta:{isGeneratedSelectable:row=>row?.technicalStatus!=='ERROR'&&row?.userDisabled!==true&&(row?.mainSourceAvailable===true||row?.consumerSelectable===true)}},fetch:fetchStub,console,Map,Set,Promise},{timeout:2000});
   const el=id=>document.getElementById(id);
+  el('purpose-A').checked=true;
+  el('difficulty-mode-random').checked=true;
+  const mathJax={typesetPromise:async()=>{}};
+  vm.runInNewContext(code,{document,location:{href:'https://example.test/archive/generated-bank.html',search:''},URL,URLSearchParams,MathJax:mathJax,window:{print:()=>printed++,open:()=>popup={closed:false,location:{href:''}},Archive2Output:output,ProblemBankMeta:problemBankMeta,GeneratedMockSelection:mockSelection,MathJax:mathJax},fetch:fetchStub,console,Map,Set,Promise},{timeout:2000});
   // An index of hundreds of questions can take longer than a fixed 25ms VM fixture delay.
   for(let attempt=0;attempt<150&&el('exam-cards').children.length<3;attempt++){
     await new Promise(resolve=>setTimeout(resolve,20));
   }
   const cards=el('exam-cards').children;
-  assert.ok(cards.length>=3);
+  assert.ok(cards.length>=3,el('message').textContent);
   assert.equal(el('print').disabled,true);
   const bok=cards.find(x=>x.children[0].textContent.includes('복성고'));
   const hyo=cards.find(x=>x.children[0].textContent.includes('효천고'));
@@ -248,11 +265,24 @@ test('consumer UI discovers source-backed exam groups, searches individual rows,
   assert.ok(bok);
   assert.ok(hyo);
   assert.ok(geumdang,'exam cards must discover newly registered schools from the index');
+  assert.match(el('source-exam-title').textContent,/2025 팔마고/);
+  assert.match(el('source-coverage').textContent,/기준 시험지 23문항/,'Palma builder keeps its fixed source roster independently of dynamic exam cards');
+  assert.equal(el('builder-controls').hidden,false);
+  assert.equal(el('generate-mock').disabled,false);
   assert.match(bok.children[1].textContent,/22개 원본 문항/);
-  bok.onclick();await el('print').listeners.click();
-  assert.equal(printed,1);
-  assert.equal(el('paper-items').children.length,22,'the exam card composes the source QIDs currently represented by selectable rows');
-  assert.match(el('paper-title').textContent,/복성고/);
+  bok.onclick();await el('print').listeners.click();const legacyExamEnvelope=envelopeInput;
+  assert.equal(printed,0,el('message').textContent);
+  assert.equal(envelopeInput.questionCount,22,'the mixer envelope composes the source QIDs currently represented by selectable rows');
+  assert.match(envelopeInput.meta.title,/복성고/);assert.match(popup.location.href,/mixed_engine\.html.*mode=exam.*preview=1/);
+  await el('generate-mock').listeners.click();
+  const mockCards=el('mock-questions').children;
+  assert.ok(mockCards.length>0,el('message').textContent);
+  assert.equal(new Set(mockCards.map(card=>card.dataset.sourceQid)).size,mockCards.length);
+  for(const card of mockCards){
+    const row=index.records.find(item=>item.uid===card.dataset.uid);
+    assert.equal(row?.school,'팔마고','choosing a dynamic Bokseong exam must not change the Palma builder source');
+    assert.equal(row.sourceExamBlobSha,'4cfce909c023e5c4df4a759945c8cc3e0a63ec76');
+  }
   const search=el('generated-search');
   search.value='효천고';search.listeners.input();
   assert.ok(el('generated-results').children.filter(x=>x.tag==='article').length>0);
@@ -267,11 +297,12 @@ test('consumer UI discovers source-backed exam groups, searches individual rows,
   choose.listeners.click();
   assert.match(el('generated-selection-summary').textContent,/1개 문항/);
   await el('generated-print').listeners.click();
-  assert.equal(printed,1,'selected problem preview must not send a print job');
+  assert.equal(printed,0,'selected problem preview must not send a print job');
   assert.equal(envelopeInput.mode,'exam');
   assert.equal(envelopeInput.questions.length,1);
+  const firstSelectedUid=envelopeInput.questionUids[0];
   assert.match(popup.location.href,/mixed_engine\.html.*mode=exam.*preview=1/);
-  assert.equal(el('paper-items').children.length,22,'the separate exam preview remains intact');
+  assert.equal(legacyExamEnvelope.questionCount,22,'the separate mixer exam envelope remains intact');
   const textOf=node=>String(node.textContent||'')+node.children.map(textOf).join('');
   assert.ok(!textOf(el('paper-items')).includes('정답:'));
   assert.ok(index.records.length>=382);
@@ -292,4 +323,17 @@ test('consumer UI discovers source-backed exam groups, searches individual rows,
   // B07 BP03 is now reviewed and released; its exact UID must be searchable.
   search.value='ALITE-PALMA25-H1-2MID-B07-Q13-BP03';search.listeners.input();
   assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,1);
+  search.value='B05_Q04_C01_DISTANCE_SUM_MIN';search.listeners.input();
+  assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,1,'approved legacy Palma UIDs remain searchable');
+  const unreviewed=index.records.find(row=>row.mainSourceAvailable===true&&row.consumerSelectable===false&&row.reviewStatus!=='REVIEW_PASS'&&row.technicalStatus!=='ERROR'&&!index.userDisabledUids?.includes(row.uid));
+  assert.ok(unreviewed,'source authority fixture includes an available, unreviewed question');
+  search.value=unreviewed.uid;search.listeners.input();
+  const unreviewedCards=el('generated-results').children.filter(x=>x.tag==='article');
+  assert.equal(unreviewedCards.length,1,'review status must not hide available main-source questions from search');
+  const unreviewedActions=unreviewedCards[0].children.find(x=>x.className==='generated-actions');
+  unreviewedActions.children.find(x=>x.textContent==='시험지에 선택').listeners.click();
+  assert.match(el('generated-selection-summary').textContent,/2개 문항/,'an available but unreviewed question remains selectable');
+  await el('generated-print').listeners.click();
+  assert.deepEqual(Array.from(envelopeInput.questionUids),[firstSelectedUid,unreviewed.uid]);
+  assert.equal(envelopeInput.questions.length,2,'source-backed unreviewed questions resolve through the same output path');
 });

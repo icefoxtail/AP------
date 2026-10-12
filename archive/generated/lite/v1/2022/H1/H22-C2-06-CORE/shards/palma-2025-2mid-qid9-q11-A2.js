@@ -22,6 +22,9 @@ window.questionBank = [
       "명제"
     ],
     "wide": false,
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q11-A2-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth",
     "content": "자연수 $n$에 관한 두 조건 $p$, $q$가 다음과 같을 때, $p$가 $q$이기 위한 필요조건이지만 충분조건은 아닌 것은?",
     "choices": [
       "p: $n$은 $12$의 배수\nq: $n$은 $6$의 배수",
