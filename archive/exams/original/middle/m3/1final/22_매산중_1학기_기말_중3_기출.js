@@ -665,7 +665,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "low",
     "difficultyBoundaryFlag": "NEEDS_CANONICAL_REVIEW",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_매산중_1학기_기말_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "1단계부터 3단계까지 배열과 n(n+2)=440의 식",
+    "solutionImageCaption": "1단계부터 3단계까지 배열과 n(n+2)=440의 식",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -759,7 +763,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "low",
     "difficultyBoundaryFlag": "NEEDS_CANONICAL_REVIEW",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_매산중_1학기_기말_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "서답형 2-② 도형 A 넓이를 나눈 B의 가로 2x+1",
+    "solutionImageCaption": "서답형 2-② 도형 A 넓이를 나눈 B의 가로 2x+1",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -818,6 +826,10 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "low",
     "difficultyBoundaryFlag": "NEEDS_CANONICAL_REVIEW",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_매산중_1학기_기말_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "서답형 4-② 가로 20cm 세로 13cm가 되는 카드 배열",
+    "solutionImageCaption": "서답형 4-② 가로 20cm 세로 13cm가 되는 카드 배열",
+    "solutionImageSize": "full"
   }
 ];
