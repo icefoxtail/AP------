@@ -14,10 +14,10 @@ test('archive/exams inline image inventory covers every content img and validate
   const { generatedAt: _reportDate, ...reportData } = report;
   const { generatedAt: _generatedDate, ...generatedData } = generated;
 
-  assert.equal(generated.total, 49);
-  assert.equal(generated.productionTotal, 45);
+  assert.equal(generated.total, 60);
+  assert.equal(generated.productionTotal, 56);
   assert.equal(generated.testFixtureTotal, 4);
-  assert.deepEqual(generated.extensionCounts, { '.png': 48, '.svg': 1 });
+  assert.deepEqual(generated.extensionCounts, { '.png': 59, '.svg': 1 });
   assert.equal(generated.qImageAndInlineTotal, 10);
   assert.deepEqual(generated.validation, {
     relativePathInvalidCount: 0,
