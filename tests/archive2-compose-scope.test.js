@@ -537,7 +537,7 @@ test('all changed browser scripts use new cache versions', () => {
     ['archive2-workspace.js', '20261009-common-meta-compose-1'],
   ])
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
-  assert.match(html, /problem-bank-meta\.js\?v=20261009-meta-view-1/);
+  assert.match(html, /problem-bank-meta\.js\?v=20261011-rpm-debt-projection1/);
   assert.match(html, /archive2-source\.js\?v=20261009-generated-meta-restore-1/);
   assert.match(html, /archive2-library\.js\?v=20261003-navigation-s5-3/);
   assert.match(html, /archive2\.css\?v=20261008-finder-filter-row-1/);
