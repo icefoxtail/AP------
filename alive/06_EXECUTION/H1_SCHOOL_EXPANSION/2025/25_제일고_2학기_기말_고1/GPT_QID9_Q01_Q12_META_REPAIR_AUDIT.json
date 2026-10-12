@@ -12,7 +12,7 @@
   "registries": {
     "newGeneratedL3": 2,
     "newGeneratedL4": 15,
-    "newGeneratedCondition": 2,
+    "newGeneratedCondition": 3,
     "newGeneratedBinding": 2,
     "reusedGeneratedL4": 1,
     "physicalRegistryFiles": [
@@ -1656,11 +1656,12 @@
       "crossConceptKeys": [],
       "conditionKeys": [
         "EXT-COND-JEIL25-Q08-EXACT-LIAR-COUNT",
-        "EXT-COND-JEIL25-Q08-UNIQUE-WINNER"
+        "EXT-COND-JEIL25-Q08-UNIQUE-WINNER",
+        "EXT-COND-JEIL25-Q08-META-SPEAKER-LIAR"
       ],
       "integrationPattern": "CASE_BRANCH",
-      "level": "상",
-      "difficultyBucket": 4,
+      "level": "중",
+      "difficultyBucket": 3,
       "formerDebtCount": 2,
       "metaStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED"
     },
@@ -1682,11 +1683,12 @@
       "crossConceptKeys": [],
       "conditionKeys": [
         "EXT-COND-JEIL25-Q08-EXACT-LIAR-COUNT",
-        "EXT-COND-JEIL25-Q08-UNIQUE-WINNER"
+        "EXT-COND-JEIL25-Q08-UNIQUE-WINNER",
+        "EXT-COND-JEIL25-Q08-META-SPEAKER-LIAR"
       ],
       "integrationPattern": "CASE_BRANCH",
-      "level": "상",
-      "difficultyBucket": 4,
+      "level": "중",
+      "difficultyBucket": 3,
       "formerDebtCount": 2,
       "metaStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED"
     },
@@ -1708,11 +1710,12 @@
       "crossConceptKeys": [],
       "conditionKeys": [
         "EXT-COND-JEIL25-Q08-EXACT-LIAR-COUNT",
-        "EXT-COND-JEIL25-Q08-UNIQUE-WINNER"
+        "EXT-COND-JEIL25-Q08-UNIQUE-WINNER",
+        "EXT-COND-JEIL25-Q08-META-SPEAKER-LIAR"
       ],
       "integrationPattern": "CASE_BRANCH",
-      "level": "상",
-      "difficultyBucket": 4,
+      "level": "중",
+      "difficultyBucket": 3,
       "formerDebtCount": 2,
       "metaStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED"
     },
@@ -1737,8 +1740,8 @@
         "EXT-COND-JEIL25-Q08-UNIQUE-WINNER"
       ],
       "integrationPattern": "CASE_BRANCH",
-      "level": "상",
-      "difficultyBucket": 5,
+      "level": "중",
+      "difficultyBucket": 4,
       "formerDebtCount": 2,
       "metaStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED"
     },
@@ -1763,8 +1766,8 @@
         "EXT-COND-JEIL25-Q08-UNIQUE-WINNER"
       ],
       "integrationPattern": "CASE_BRANCH",
-      "level": "상",
-      "difficultyBucket": 5,
+      "level": "중",
+      "difficultyBucket": 4,
       "formerDebtCount": 2,
       "metaStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED"
     },
@@ -1789,8 +1792,8 @@
         "EXT-COND-JEIL25-Q08-UNIQUE-WINNER"
       ],
       "integrationPattern": "CASE_BRANCH",
-      "level": "상",
-      "difficultyBucket": 5,
+      "level": "중",
+      "difficultyBucket": 4,
       "formerDebtCount": 2,
       "metaStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED"
     },
@@ -2785,7 +2788,27 @@
       },
       {
         "qid": 8,
-        "draftBlobSha": "05af740d5b6af112f766972174468f444a3b1657"
+        "draftBlobSha": "47ce9fc9f85a30ffca2c525ab16cdbc47a437754",
+        "previousDraftBlobSha": "05af740d5b6af112f766972174468f444a3b1657",
+        "authorSelfRecheck": "9_OF_9_COMPLETE_TRUTH_TABLES",
+        "wrongRoutes": "36_OF_36_EXACT_BOOLEAN_REASONING",
+        "svgStaticGeometry": "9_OF_9_TRUTH_TABLE_PARITY",
+        "svgRebuilt": [
+          "C1",
+          "C2",
+          "C3"
+        ],
+        "externalQuality": "NOT_RUN",
+        "svgBrowser": "NOT_RUN",
+        "studentEngine": "NOT_RUN",
+        "reclassifiedLevels": [
+          "B1",
+          "B2",
+          "B3",
+          "C1",
+          "C2",
+          "C3"
+        ]
       },
       {
         "qid": 9,
@@ -2804,6 +2827,6 @@
         "draftBlobSha": "e9fbe5af9e01e045ff2c19be739a0c3bfad2421f"
       }
     ],
-    "note": "2026-10-12 q06: author self-check 9/9 original answers; 36/36 option-value matched concrete error calculations, all choices reconstructed, C2 explanation brings reflected A' and unrestricted optimum vs n>=4, C1/C2/C3 learning level and bucket evidence revised. Prior q01-q05 & other qids untouched. Nine existing SVG current Git coordinate static verification; independent GPT and actual Chrome/Archive engine NOT_RUN.\n2026-10-12 q07: 9/9 author self recheck, 36/36 concrete wrong routes; q07 C1-C3 level/bucket parity; nine SVG actual geometry static parity. q01-q06/q08-q12 unchanged; Chromium, independent reviewer, student release NOT_RUN."
+    "note": "2026-10-12 q06: author self-check 9/9 original answers; 36/36 option-value matched concrete error calculations, all choices reconstructed, C2 explanation brings reflected A' and unrestricted optimum vs n>=4, C1/C2/C3 learning level and bucket evidence revised. Prior q01-q05 & other qids untouched. Nine existing SVG current Git coordinate static verification; independent GPT and actual Chrome/Archive engine NOT_RUN.\n2026-10-12 q07: 9/9 author self recheck, 36/36 concrete wrong routes; q07 C1-C3 level/bucket parity; nine SVG actual geometry static parity. q01-q06/q08-q12 unchanged; Chromium, independent reviewer, student release NOT_RUN.\n2026-10-12 q08 SELF_RECHECK_COMPLETE: nine full truth tables, 36 actual wrong-route explanations, fixed B1-B3 direct answer shortcuts via EXT-COND, fixed C1/C2 two-eligible-winner defect and added E to C1/C2/C3 candidate truth tables/SVG. 9/9 unique current math; B1-C3 level/bucket corrected, current registry/progress SHA parity; Chromium/independent/consumer NOT_RUN. q01-q07/q09-q12 unchanged."
   }
 }
