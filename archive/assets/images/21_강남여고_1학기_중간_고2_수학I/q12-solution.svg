@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title desc" data-visual-type="solution-geometry" data-geometry-style-version="AP_GEOMETRY_PRINT_V1_0_DRAFT" data-geometry-preset="GEOMETRY_STANDARD" data-axis-scale-mode="NOT_APPLICABLE" data-visual-provenance="current-source-solution-facts; deterministic-standard-svg">
+<title id="title">단위원에서 두 부등식의 공통 범위</title>
+<desc id="desc">사인값이 1/2보다 큰 열린 호와 코사인값이 음수인 열린 호, 두 범위의 교집합을 표시한다.</desc>
+<style>
+.text{font-family:"Noto Sans KR","Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;fill:#111}
+.math{font-family:"STIX Two Math","Cambria Math","Times New Roman",serif;fill:#111}
+.title{font-family:"Noto Sans KR","Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:22px;font-weight:700;fill:#111}
+.body{font-family:"Noto Sans KR","Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:18px;fill:#222}
+.label{font-family:"STIX Two Math","Cambria Math","Times New Roman",serif;font-size:17px;fill:#111}
+.small{font-family:"Noto Sans KR","Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:15px;fill:#444}
+</style>
+<rect width="960" height="520" fill="#fff"/>
+<text x="34" y="42" class="title">단위원에서 두 부등식의 공통 범위</text>
+<g id="unit-circle" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="280" cy="280" r="155" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <line x1="110" y1="280" x2="450" y2="280" stroke="#94a3b8" stroke-width="1.4"/>
+  <line x1="280" y1="450" x2="280" y2="110" stroke="#94a3b8" stroke-width="1.4"/>
+  <path id="sine-positive-arc" d="M 414.233937586588 202.5 A 155 155 0 0 0 145.766062413412 202.5" stroke="#2563eb" stroke-width="10"/>
+  <path id="cosine-negative-arc" d="M 280 125 A 155 155 0 0 0 280 435" stroke="#8b5cf6" stroke-width="7" stroke-dasharray="7 5"/>
+  <path id="intersection-arc" d="M 280 125 A 155 155 0 0 0 145.766062413412 202.5" stroke="#ea580c" stroke-width="12"/>
+</g>
+<g id="open-boundaries" fill="#fff" stroke-width="3">
+  <circle id="boundary-pi-six" cx="414.233937586588" cy="202.5" r="7" fill="#fff" stroke="#2563eb"/>
+  <circle id="boundary-pi-half" cx="280" cy="125" r="8" fill="#fff" stroke="#ea580c"/>
+  <circle id="boundary-five-pi-six" cx="145.766062413412" cy="202.5" r="8" fill="#fff" stroke="#ea580c"/>
+  <circle id="boundary-three-pi-half" cx="280" cy="435" r="7" fill="#fff" stroke="#8b5cf6"/>
+</g>
+<g class="label">
+  <text id="label-pi-six" x="426" y="177">π/6</text>
+  <text id="label-pi-half" x="291" y="118">π/2</text>
+  <text id="label-five-pi-six" x="54" y="190">5π/6</text>
+  <text id="label-three-pi-half" x="291" y="461">3π/2</text>
+  <text id="label-sine-threshold" x="294" y="231" class="small">sin θ = 1/2</text>
+</g>
+<g id="interval-summary">
+  <rect x="500" y="82" width="425" height="366" rx="14" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="528" y="122" class="title" style="font-size:20px">각의 범위</text>
+  <text x="528" y="170" class="body">sin θ &gt; 1/2</text>
+  <text x="552" y="202" class="label">π/6 &lt; θ &lt; 5π/6</text>
+  <line x1="528" y1="222" x2="895" y2="222" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="528" y="258" class="body">cos θ &lt; 0</text>
+  <text x="552" y="290" class="label">π/2 &lt; θ &lt; 3π/2</text>
+  <line x1="528" y1="310" x2="895" y2="310" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="528" y="346" class="body">교집합</text>
+  <text x="552" y="378" class="label" fill="#c2410c">π/2 &lt; θ &lt; 5π/6</text>
+  <text x="528" y="420" class="body">a + b = 1/2 + 5/6 = 4/3</text>
+</g>
+<g id="legend" class="small">
+  <line x1="48" y1="485" x2="78" y2="485" stroke="#2563eb" stroke-width="7" stroke-linecap="round"/><text x="88" y="490">sin 조건</text>
+  <line x1="186" y1="485" x2="216" y2="485" stroke="#8b5cf6" stroke-width="6" stroke-dasharray="6 4" stroke-linecap="round"/><text x="226" y="490">cos 조건</text>
+  <line x1="337" y1="485" x2="367" y2="485" stroke="#ea580c" stroke-width="8" stroke-linecap="round"/><text x="377" y="490">공통 범위</text>
+</g>
+</svg>
+
