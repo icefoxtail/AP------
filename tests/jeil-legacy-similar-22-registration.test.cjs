@@ -27,7 +27,8 @@ test('reviewed 22 stable legacy UIDs remain fully discoverable and individually 
     assert.equal(row.difficultyBucket, frozen.independentDifficulty1to5);
     assert.equal(row.difficultyConfidence, 'medium');
     assert.ok(row.assignmentEvidence, 'required canonical basic parent ' + frozen.qid);
-    assert.equal(row.automatic, true, 'basic-selectable source q' + frozen.qid + ': ' + (row.canonicalAssignmentReasons || []).join(','));
+    const eligibility = core.eligibility(row, { canonicalAuthority: catalog.canonicalAuthority });
+    assert.equal(row.automatic, true, 'basic-selectable source q' + frozen.qid + ': ' + eligibility.reasons.join(','));
     assert.equal(identity.records.filter((r) => r.questionUid === frozen.questionUid).length, 1);
     assert.equal(metadata.records.filter((r) => r.questionUid === frozen.questionUid).length, 1);
     if (frozen.problemTypeKey) {
@@ -52,6 +53,6 @@ test('legacy data and index share the exact original question count and source i
   vm.runInContext(fs.readFileSync(path.join(root, 'archive/question-index.js'), 'utf8'), indexContext, { timeout: 20000 });
   const indexRows = indexContext.window.questionIndex.filter((r) => r.sourceFile === source);
   assert.equal(indexRows.length, 22);
-  assert.deepEqual(indexRows.map((r) => r.sourceOrdinal).sort((a, b) => a - b),
+  assert.deepEqual(Array.from(indexRows, (r) => r.sourceOrdinal).sort((a, b) => a - b),
     Array.from({ length: 22 }, (_, i) => i + 1));
 });
