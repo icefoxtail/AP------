@@ -115,6 +115,10 @@ export function applyReviewedLegacySimilarLedgers() {
         conditionKeys: row.conditionKeys || [],
         integrationPattern: row.integrationPattern || '',
         difficultyBucket: row.independentDifficulty1to5,
+        difficultyConfidence: 'medium',
+        difficultyBoundaryFlag: row.qid === 7 ? 'B34' : 'NONE',
+        legacyLevelCompatibility: row.qid === 7 ? 'BORDERLINE_ACCEPTABLE' : 'NORMAL',
+        sourceType: 'LEGACY_SIMILAR',
         reviewStatus: 'reviewed_pass',
         metadataStatus: row.metaDebt.length ? 'approved_partial_with_explicit_holds' : 'approved_semantic_review',
         fieldStatus: {
