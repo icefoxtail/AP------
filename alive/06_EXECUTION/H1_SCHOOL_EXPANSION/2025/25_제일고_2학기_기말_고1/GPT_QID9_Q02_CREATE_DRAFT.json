@@ -40,12 +40,21 @@
     "status": "AUTHOR_DRAFT_ONLY",
     "nextQid": 3,
     "firstMissingClosureStep": "GPT_OPEN_BOOK_REVIEW",
-    "authorSelfCheck": "9/9 MATH_META_SVG_STATIC_RECHECK_20261012_REQUIRES_BROWSER",
-    "selfRecheckStatus": "QID_INCOMPLETE",
+    "authorSelfCheck": "9/9 SELF_RECHECK_COMPLETE; NOT_INDEPENDENT",
+    "selfRecheckStatus": "SELF_RECHECK_COMPLETE",
     "incorrectRoutesRechecked": 36,
     "solutionSvgStaticRechecked": "9/9(4 changed; 5 existing)",
-    "actualBrowserSvgRender": "NOT_RUN",
-    "answerDistributionDisposition": "KEEP_NUMERIC_SORTED_CHOICES; NO_ARTIFICIAL_ANSWER_POSITION_SHUFFLE"
+    "actualBrowserSvgRender": "9/9_STANDALONE_CHROMIUM_560_390",
+    "answerDistributionDisposition": "KEEP_NUMERIC_SORTED_CHOICES; NO_ARTIFICIAL_ANSWER_POSITION_SHUFFLE",
+    "browserOverlapClipping": "0/9_BOTH_VIEWPORTS",
+    "svgBrowserRepairedAdditional": [
+      "A1",
+      "A2",
+      "B1",
+      "B3",
+      "C3"
+    ],
+    "studentEngineRender": "NOT_RUN"
   },
   "questions": [
     {
@@ -178,7 +187,7 @@
         },
         "authorSelfCheck": "CHECKED_BY_AUTHOR_PYTHON_FACTS_VERIFIED",
         "externalOpenBookReview": "NOT_RUN",
-        "realEngineRender": "NOT_RUN",
+        "realEngineRender": "NOT_RUN_ARCHIVE_ENGINE",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_ONLY",
         "originalStemOrIssue": "원본 q02 점의 평행이동 L3 및 이동량 동일 적용 보존. A는 수치/부호, B는 역산·중점·공통량, C는 합성이동·직선·좌표축 조건으로 수학적 사고 확장.",
@@ -188,10 +197,10 @@
           "review.wrongRoutes",
           "review.selfRecheck20261012"
         ],
-        "changedMathRecheck": "학생용 정답/풀이/5지 유지, 4개 오답 수치 정확 대응 확인. 기존 해설의 x/y 계산 및 현재 SVG geometry parity 재계산.",
+        "changedMathRecheck": "SVG point geometry original facts unchanged; coordinate label/or legend only",
         "remainingRisk": "변경 SVG의 실제 브라우저 렌더 NOT_RUN; QID_INCOMPLETE 보존. 별도 GPT 검수와 학생 출시는 NOT_RUN.",
         "selfRecheck20261012": {
-          "status": "QID_INCOMPLETE",
+          "status": "SELF_RECHECK_COMPLETE",
           "decision": "REVISED",
           "reviewRole": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT",
           "actualAnswer": "②",
@@ -223,20 +232,29 @@
           "actualSVGPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/A1-solution.svg",
           "svgFileVerified": "YES_FILE_READ",
           "svgCoordinates": "STATIC_COORDINATE_PARITY_ALL_POINTS",
-          "browserRender": "NOT_RUN",
+          "browserRender": "PASS_STANDALONE_CHROMIUM_SVG_560PX_AND_390PX",
           "newVisualCorrections": "SVG_VISUAL_EXISTING",
           "defect": "기존 wrongRoutes 중 계산-보기 연결 누락/오류; B1/B2/C1 라벨 겹침, C2 절편 시각 누락은 대상 SVG에서 수정",
           "repairs": "정확한 오답 4개 수식 및 영향 SVG만 변경",
           "rechecked": "답 및 4지별 계산/학년 교육과정, 변경 SVG 실제 point(x,y) 좌표 parity",
           "notExecuted": [
-            "실제 브라우저 SVG 렌더",
-            "후속 독립 GPT 검수",
-            "Consumer/index/main 출시"
+            "별도 독립 GPT 품질검수",
+            "학생용 Archive 엔진과 Consumer/index/main 등록·출시"
           ],
           "uncertainty": [
-            "실제 렌더에서 라벨 가독성 및 겹침 최종 확인"
-          ]
-        }
+            "학생용 실제 통합 렌더·배포 미실행"
+          ],
+          "browserGeometry": "ORIGINAL_POINT_COORDINATES_UNCHANGED, XML_AND_COORDINATE_PARITY",
+          "browserLabels": "ZERO_LABEL_OVERLAPS_AND_ZERO_CLIPPING_BOTH_VIEWPORTS",
+          "screenshotHashes": {
+            "desktop": "596eb3cc8eca56555098d2fcc8e3a7d191856411013ae4276c93015453af2386",
+            "mobile": "7cd68b2119dcac08beeeff7c26e4a9023c038ee58ec1b8dd5b00b4b7867bff30"
+          },
+          "actualSVGFinalBlob": "17ae4a7f9e6c7b7260371536b23bc282464a9fd0",
+          "studentEngine": "NOT_RUN; standalone SVG does not prove Archive engine exam/solution/answer or Consumer index"
+        },
+        "browserRender": "PASS_STANDALONE_SVG_CHROMIUM",
+        "newVisualCorrections": "CHROME_PINPOINT_SVG_REPAIR"
       }
     },
     {
@@ -369,7 +387,7 @@
         },
         "authorSelfCheck": "CHECKED_BY_AUTHOR_PYTHON_FACTS_VERIFIED",
         "externalOpenBookReview": "NOT_RUN",
-        "realEngineRender": "NOT_RUN",
+        "realEngineRender": "NOT_RUN_ARCHIVE_ENGINE",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_ONLY",
         "originalStemOrIssue": "원본 q02 점의 평행이동 L3 및 이동량 동일 적용 보존. A는 수치/부호, B는 역산·중점·공통량, C는 합성이동·직선·좌표축 조건으로 수학적 사고 확장.",
@@ -379,10 +397,10 @@
           "review.wrongRoutes",
           "review.selfRecheck20261012"
         ],
-        "changedMathRecheck": "학생용 정답/풀이/5지 유지, 4개 오답 수치 정확 대응 확인. 기존 해설의 x/y 계산 및 현재 SVG geometry parity 재계산.",
+        "changedMathRecheck": "SVG point geometry original facts unchanged; coordinate label/or legend only",
         "remainingRisk": "변경 SVG의 실제 브라우저 렌더 NOT_RUN; QID_INCOMPLETE 보존. 별도 GPT 검수와 학생 출시는 NOT_RUN.",
         "selfRecheck20261012": {
-          "status": "QID_INCOMPLETE",
+          "status": "SELF_RECHECK_COMPLETE",
           "decision": "REVISED",
           "reviewRole": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT",
           "actualAnswer": "③",
@@ -414,20 +432,29 @@
           "actualSVGPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/A2-solution.svg",
           "svgFileVerified": "YES_FILE_READ",
           "svgCoordinates": "STATIC_COORDINATE_PARITY_ALL_POINTS",
-          "browserRender": "NOT_RUN",
+          "browserRender": "PASS_STANDALONE_CHROMIUM_SVG_560PX_AND_390PX",
           "newVisualCorrections": "SVG_VISUAL_EXISTING",
           "defect": "기존 wrongRoutes 중 계산-보기 연결 누락/오류; B1/B2/C1 라벨 겹침, C2 절편 시각 누락은 대상 SVG에서 수정",
           "repairs": "정확한 오답 4개 수식 및 영향 SVG만 변경",
           "rechecked": "답 및 4지별 계산/학년 교육과정, 변경 SVG 실제 point(x,y) 좌표 parity",
           "notExecuted": [
-            "실제 브라우저 SVG 렌더",
-            "후속 독립 GPT 검수",
-            "Consumer/index/main 출시"
+            "별도 독립 GPT 품질검수",
+            "학생용 Archive 엔진과 Consumer/index/main 등록·출시"
           ],
           "uncertainty": [
-            "실제 렌더에서 라벨 가독성 및 겹침 최종 확인"
-          ]
-        }
+            "학생용 실제 통합 렌더·배포 미실행"
+          ],
+          "browserGeometry": "ORIGINAL_POINT_COORDINATES_UNCHANGED, XML_AND_COORDINATE_PARITY",
+          "browserLabels": "ZERO_LABEL_OVERLAPS_AND_ZERO_CLIPPING_BOTH_VIEWPORTS",
+          "screenshotHashes": {
+            "desktop": "62b7fbd195b02c98f5801772ac24908631a097c7e6bc4d2c524e8a31ddc86c9e",
+            "mobile": "7bc7e04bec4049b9702e6d3f3a436623d124028fc62794674ce1dfbb2e9042ff"
+          },
+          "actualSVGFinalBlob": "fb48278669d6c9d7a07b71e94ac0c9cb43729d3a",
+          "studentEngine": "NOT_RUN; standalone SVG does not prove Archive engine exam/solution/answer or Consumer index"
+        },
+        "browserRender": "PASS_STANDALONE_SVG_CHROMIUM",
+        "newVisualCorrections": "CHROME_PINPOINT_SVG_REPAIR"
       }
     },
     {
@@ -560,7 +587,7 @@
         },
         "authorSelfCheck": "CHECKED_BY_AUTHOR_PYTHON_FACTS_VERIFIED",
         "externalOpenBookReview": "NOT_RUN",
-        "realEngineRender": "NOT_RUN",
+        "realEngineRender": "NOT_RUN_ARCHIVE_ENGINE",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_ONLY",
         "originalStemOrIssue": "원본 q02 점의 평행이동 L3 및 이동량 동일 적용 보존. A는 수치/부호, B는 역산·중점·공통량, C는 합성이동·직선·좌표축 조건으로 수학적 사고 확장.",
@@ -573,7 +600,7 @@
         "changedMathRecheck": "학생용 정답/풀이/5지 유지, 4개 오답 수치 정확 대응 확인. 기존 해설의 x/y 계산 및 현재 SVG geometry parity 재계산.",
         "remainingRisk": "변경 SVG의 실제 브라우저 렌더 NOT_RUN; QID_INCOMPLETE 보존. 별도 GPT 검수와 학생 출시는 NOT_RUN.",
         "selfRecheck20261012": {
-          "status": "QID_INCOMPLETE",
+          "status": "SELF_RECHECK_COMPLETE",
           "decision": "REVISED",
           "reviewRole": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT",
           "actualAnswer": "③",
@@ -605,20 +632,28 @@
           "actualSVGPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/A3-solution.svg",
           "svgFileVerified": "YES_FILE_READ",
           "svgCoordinates": "STATIC_COORDINATE_PARITY_ALL_POINTS",
-          "browserRender": "NOT_RUN",
+          "browserRender": "PASS_STANDALONE_CHROMIUM_SVG_560PX_AND_390PX",
           "newVisualCorrections": "SVG_VISUAL_EXISTING",
           "defect": "기존 wrongRoutes 중 계산-보기 연결 누락/오류; B1/B2/C1 라벨 겹침, C2 절편 시각 누락은 대상 SVG에서 수정",
           "repairs": "정확한 오답 4개 수식 및 영향 SVG만 변경",
           "rechecked": "답 및 4지별 계산/학년 교육과정, 변경 SVG 실제 point(x,y) 좌표 parity",
           "notExecuted": [
-            "실제 브라우저 SVG 렌더",
-            "후속 독립 GPT 검수",
-            "Consumer/index/main 출시"
+            "별도 독립 GPT 품질검수",
+            "학생용 Archive 엔진과 Consumer/index/main 등록·출시"
           ],
           "uncertainty": [
-            "실제 렌더에서 라벨 가독성 및 겹침 최종 확인"
-          ]
-        }
+            "학생용 실제 통합 렌더·배포 미실행"
+          ],
+          "browserGeometry": "ORIGINAL_POINT_COORDINATES_UNCHANGED, XML_AND_COORDINATE_PARITY",
+          "browserLabels": "ZERO_LABEL_OVERLAPS_AND_ZERO_CLIPPING_BOTH_VIEWPORTS",
+          "screenshotHashes": {
+            "desktop": "d1cbd27c3c042799960007474fde99beec178e87369a7e425cd978a3af178463",
+            "mobile": "19e7aab3df4661401c9bbedbdcb361930357b994123ff317e25ff13cd6b901e8"
+          },
+          "actualSVGFinalBlob": null,
+          "studentEngine": "NOT_RUN; standalone SVG does not prove Archive engine exam/solution/answer or Consumer index"
+        },
+        "browserRender": "PASS_STANDALONE_SVG_CHROMIUM"
       }
     },
     {
@@ -751,7 +786,7 @@
         },
         "authorSelfCheck": "CHECKED_BY_AUTHOR_PYTHON_FACTS_VERIFIED",
         "externalOpenBookReview": "NOT_RUN",
-        "realEngineRender": "NOT_RUN",
+        "realEngineRender": "NOT_RUN_ARCHIVE_ENGINE",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_ONLY",
         "originalStemOrIssue": "원본 q02 점의 평행이동 L3 및 이동량 동일 적용 보존. A는 수치/부호, B는 역산·중점·공통량, C는 합성이동·직선·좌표축 조건으로 수학적 사고 확장.",
@@ -762,10 +797,10 @@
           "review.selfRecheck20261012",
           "existing solutionImage SVG"
         ],
-        "changedMathRecheck": "학생용 정답/풀이/5지 유지, 4개 오답 수치 정확 대응 확인. 기존 해설의 x/y 계산 및 현재 SVG geometry parity 재계산.",
+        "changedMathRecheck": "SVG point geometry original facts unchanged; coordinate label/or legend only",
         "remainingRisk": "변경 SVG의 실제 브라우저 렌더 NOT_RUN; QID_INCOMPLETE 보존. 별도 GPT 검수와 학생 출시는 NOT_RUN.",
         "selfRecheck20261012": {
-          "status": "QID_INCOMPLETE",
+          "status": "SELF_RECHECK_COMPLETE",
           "decision": "REVISED",
           "reviewRole": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT",
           "actualAnswer": "②",
@@ -797,20 +832,29 @@
           "actualSVGPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/B1-solution.svg",
           "svgFileVerified": "YES_FILE_READ",
           "svgCoordinates": "STATIC_COORDINATE_PARITY_ALL_POINTS",
-          "browserRender": "NOT_RUN",
+          "browserRender": "PASS_STANDALONE_CHROMIUM_SVG_560PX_AND_390PX",
           "newVisualCorrections": "SVG_VISUAL_REPAIRED",
           "defect": "기존 wrongRoutes 중 계산-보기 연결 누락/오류; B1/B2/C1 라벨 겹침, C2 절편 시각 누락은 대상 SVG에서 수정",
           "repairs": "정확한 오답 4개 수식 및 영향 SVG만 변경",
           "rechecked": "답 및 4지별 계산/학년 교육과정, 변경 SVG 실제 point(x,y) 좌표 parity",
           "notExecuted": [
-            "실제 브라우저 SVG 렌더",
-            "후속 독립 GPT 검수",
-            "Consumer/index/main 출시"
+            "별도 독립 GPT 품질검수",
+            "학생용 Archive 엔진과 Consumer/index/main 등록·출시"
           ],
           "uncertainty": [
-            "실제 렌더에서 라벨 가독성 및 겹침 최종 확인"
-          ]
-        }
+            "학생용 실제 통합 렌더·배포 미실행"
+          ],
+          "browserGeometry": "ORIGINAL_POINT_COORDINATES_UNCHANGED, XML_AND_COORDINATE_PARITY",
+          "browserLabels": "ZERO_LABEL_OVERLAPS_AND_ZERO_CLIPPING_BOTH_VIEWPORTS",
+          "screenshotHashes": {
+            "desktop": "afa7df9a8d9300d48ca8ad5215e7302f148b444f12cbcfa4992fcdcda66b2c5f",
+            "mobile": "58bf14f49e91fd70981e08ae9c07a849d14325e5a8482cb5986fb9ad3c0e9cdb"
+          },
+          "actualSVGFinalBlob": "92720ce8dff505b240f44257bde1cc17a213d479",
+          "studentEngine": "NOT_RUN; standalone SVG does not prove Archive engine exam/solution/answer or Consumer index"
+        },
+        "browserRender": "PASS_STANDALONE_SVG_CHROMIUM",
+        "newVisualCorrections": "CHROME_PINPOINT_SVG_REPAIR"
       }
     },
     {
@@ -955,7 +999,7 @@
         },
         "authorSelfCheck": "CHECKED_BY_AUTHOR_PYTHON_FACTS_VERIFIED",
         "externalOpenBookReview": "NOT_RUN",
-        "realEngineRender": "NOT_RUN",
+        "realEngineRender": "NOT_RUN_ARCHIVE_ENGINE",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_ONLY",
         "originalStemOrIssue": "원본 q02 점의 평행이동 L3 및 이동량 동일 적용 보존. A는 수치/부호, B는 역산·중점·공통량, C는 합성이동·직선·좌표축 조건으로 수학적 사고 확장.",
@@ -969,7 +1013,7 @@
         "changedMathRecheck": "학생용 정답/풀이/5지 유지, 4개 오답 수치 정확 대응 확인. 기존 해설의 x/y 계산 및 현재 SVG geometry parity 재계산.",
         "remainingRisk": "변경 SVG의 실제 브라우저 렌더 NOT_RUN; QID_INCOMPLETE 보존. 별도 GPT 검수와 학생 출시는 NOT_RUN.",
         "selfRecheck20261012": {
-          "status": "QID_INCOMPLETE",
+          "status": "SELF_RECHECK_COMPLETE",
           "decision": "REVISED",
           "reviewRole": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT",
           "actualAnswer": "②",
@@ -1003,20 +1047,28 @@
           "actualSVGPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/B2-solution.svg",
           "svgFileVerified": "YES_FILE_READ",
           "svgCoordinates": "STATIC_COORDINATE_PARITY_ALL_POINTS",
-          "browserRender": "NOT_RUN",
+          "browserRender": "PASS_STANDALONE_CHROMIUM_SVG_560PX_AND_390PX",
           "newVisualCorrections": "SVG_VISUAL_REPAIRED",
           "defect": "기존 wrongRoutes 중 계산-보기 연결 누락/오류; B1/B2/C1 라벨 겹침, C2 절편 시각 누락은 대상 SVG에서 수정",
           "repairs": "정확한 오답 4개 수식 및 영향 SVG만 변경",
           "rechecked": "답 및 4지별 계산/학년 교육과정, 변경 SVG 실제 point(x,y) 좌표 parity",
           "notExecuted": [
-            "실제 브라우저 SVG 렌더",
-            "후속 독립 GPT 검수",
-            "Consumer/index/main 출시"
+            "별도 독립 GPT 품질검수",
+            "학생용 Archive 엔진과 Consumer/index/main 등록·출시"
           ],
           "uncertainty": [
-            "실제 렌더에서 라벨 가독성 및 겹침 최종 확인"
-          ]
-        }
+            "학생용 실제 통합 렌더·배포 미실행"
+          ],
+          "browserGeometry": "ORIGINAL_POINT_COORDINATES_UNCHANGED, XML_AND_COORDINATE_PARITY",
+          "browserLabels": "ZERO_LABEL_OVERLAPS_AND_ZERO_CLIPPING_BOTH_VIEWPORTS",
+          "screenshotHashes": {
+            "desktop": "ab80561a6e855e67c8ffb6aa7a1702fccacd73f6fec31bbf0a317007e57ab4a2",
+            "mobile": "6a7fdf3a5e71e6eca05cc6342e6f98fe21059103497466038f55743ec0725232"
+          },
+          "actualSVGFinalBlob": null,
+          "studentEngine": "NOT_RUN; standalone SVG does not prove Archive engine exam/solution/answer or Consumer index"
+        },
+        "browserRender": "PASS_STANDALONE_SVG_CHROMIUM"
       }
     },
     {
@@ -1149,7 +1201,7 @@
         },
         "authorSelfCheck": "CHECKED_BY_AUTHOR_PYTHON_FACTS_VERIFIED",
         "externalOpenBookReview": "NOT_RUN",
-        "realEngineRender": "NOT_RUN",
+        "realEngineRender": "NOT_RUN_ARCHIVE_ENGINE",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_ONLY",
         "originalStemOrIssue": "원본 q02 점의 평행이동 L3 및 이동량 동일 적용 보존. A는 수치/부호, B는 역산·중점·공통량, C는 합성이동·직선·좌표축 조건으로 수학적 사고 확장.",
@@ -1159,10 +1211,10 @@
           "review.wrongRoutes",
           "review.selfRecheck20261012"
         ],
-        "changedMathRecheck": "학생용 정답/풀이/5지 유지, 4개 오답 수치 정확 대응 확인. 기존 해설의 x/y 계산 및 현재 SVG geometry parity 재계산.",
+        "changedMathRecheck": "SVG point geometry original facts unchanged; coordinate label/or legend only",
         "remainingRisk": "변경 SVG의 실제 브라우저 렌더 NOT_RUN; QID_INCOMPLETE 보존. 별도 GPT 검수와 학생 출시는 NOT_RUN.",
         "selfRecheck20261012": {
-          "status": "QID_INCOMPLETE",
+          "status": "SELF_RECHECK_COMPLETE",
           "decision": "REVISED",
           "reviewRole": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT",
           "actualAnswer": "④",
@@ -1194,20 +1246,29 @@
           "actualSVGPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/B3-solution.svg",
           "svgFileVerified": "YES_FILE_READ",
           "svgCoordinates": "STATIC_COORDINATE_PARITY_ALL_POINTS",
-          "browserRender": "NOT_RUN",
+          "browserRender": "PASS_STANDALONE_CHROMIUM_SVG_560PX_AND_390PX",
           "newVisualCorrections": "SVG_VISUAL_EXISTING",
           "defect": "기존 wrongRoutes 중 계산-보기 연결 누락/오류; B1/B2/C1 라벨 겹침, C2 절편 시각 누락은 대상 SVG에서 수정",
           "repairs": "정확한 오답 4개 수식 및 영향 SVG만 변경",
           "rechecked": "답 및 4지별 계산/학년 교육과정, 변경 SVG 실제 point(x,y) 좌표 parity",
           "notExecuted": [
-            "실제 브라우저 SVG 렌더",
-            "후속 독립 GPT 검수",
-            "Consumer/index/main 출시"
+            "별도 독립 GPT 품질검수",
+            "학생용 Archive 엔진과 Consumer/index/main 등록·출시"
           ],
           "uncertainty": [
-            "실제 렌더에서 라벨 가독성 및 겹침 최종 확인"
-          ]
-        }
+            "학생용 실제 통합 렌더·배포 미실행"
+          ],
+          "browserGeometry": "ORIGINAL_POINT_COORDINATES_UNCHANGED, XML_AND_COORDINATE_PARITY",
+          "browserLabels": "ZERO_LABEL_OVERLAPS_AND_ZERO_CLIPPING_BOTH_VIEWPORTS",
+          "screenshotHashes": {
+            "desktop": "b33ab03b1a43627a07ac7d048a24aabccee573bc9d446d0681b04115a63c0c62",
+            "mobile": "f85e6a9cf79ba320a1cb0fe691418f7adb7466253126ab99811e38761b6b8d2a"
+          },
+          "actualSVGFinalBlob": "ca9a5b9643c603bab000db33e3f9d3bedf6c5a4b",
+          "studentEngine": "NOT_RUN; standalone SVG does not prove Archive engine exam/solution/answer or Consumer index"
+        },
+        "browserRender": "PASS_STANDALONE_SVG_CHROMIUM",
+        "newVisualCorrections": "CHROME_PINPOINT_SVG_REPAIR"
       }
     },
     {
@@ -1335,7 +1396,7 @@
         },
         "authorSelfCheck": "CHECKED_BY_AUTHOR_PYTHON_FACTS_VERIFIED",
         "externalOpenBookReview": "NOT_RUN",
-        "realEngineRender": "NOT_RUN",
+        "realEngineRender": "NOT_RUN_ARCHIVE_ENGINE",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_ONLY",
         "originalStemOrIssue": "원본 q02 점의 평행이동 L3 및 이동량 동일 적용 보존. A는 수치/부호, B는 역산·중점·공통량, C는 합성이동·직선·좌표축 조건으로 수학적 사고 확장.",
@@ -1349,7 +1410,7 @@
         "changedMathRecheck": "학생용 정답/풀이/5지 유지, 4개 오답 수치 정확 대응 확인. 기존 해설의 x/y 계산 및 현재 SVG geometry parity 재계산.",
         "remainingRisk": "변경 SVG의 실제 브라우저 렌더 NOT_RUN; QID_INCOMPLETE 보존. 별도 GPT 검수와 학생 출시는 NOT_RUN.",
         "selfRecheck20261012": {
-          "status": "QID_INCOMPLETE",
+          "status": "SELF_RECHECK_COMPLETE",
           "decision": "REVISED",
           "reviewRole": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT",
           "actualAnswer": "③",
@@ -1381,20 +1442,28 @@
           "actualSVGPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/C1-solution.svg",
           "svgFileVerified": "YES_FILE_READ",
           "svgCoordinates": "STATIC_COORDINATE_PARITY_ALL_POINTS",
-          "browserRender": "NOT_RUN",
+          "browserRender": "PASS_STANDALONE_CHROMIUM_SVG_560PX_AND_390PX",
           "newVisualCorrections": "SVG_VISUAL_REPAIRED",
           "defect": "기존 wrongRoutes 중 계산-보기 연결 누락/오류; B1/B2/C1 라벨 겹침, C2 절편 시각 누락은 대상 SVG에서 수정",
           "repairs": "정확한 오답 4개 수식 및 영향 SVG만 변경",
           "rechecked": "답 및 4지별 계산/학년 교육과정, 변경 SVG 실제 point(x,y) 좌표 parity",
           "notExecuted": [
-            "실제 브라우저 SVG 렌더",
-            "후속 독립 GPT 검수",
-            "Consumer/index/main 출시"
+            "별도 독립 GPT 품질검수",
+            "학생용 Archive 엔진과 Consumer/index/main 등록·출시"
           ],
           "uncertainty": [
-            "실제 렌더에서 라벨 가독성 및 겹침 최종 확인"
-          ]
-        }
+            "학생용 실제 통합 렌더·배포 미실행"
+          ],
+          "browserGeometry": "ORIGINAL_POINT_COORDINATES_UNCHANGED, XML_AND_COORDINATE_PARITY",
+          "browserLabels": "ZERO_LABEL_OVERLAPS_AND_ZERO_CLIPPING_BOTH_VIEWPORTS",
+          "screenshotHashes": {
+            "desktop": "53f42de4ec0c9f53624d4ee30c3c4905a858a030db4b5dd78b3a3b8a354556ef",
+            "mobile": "1c6a28a18fc62bc62da7cd3299e1b97afff86e1bd025fed3edb2f11e7e33a5f1"
+          },
+          "actualSVGFinalBlob": null,
+          "studentEngine": "NOT_RUN; standalone SVG does not prove Archive engine exam/solution/answer or Consumer index"
+        },
+        "browserRender": "PASS_STANDALONE_SVG_CHROMIUM"
       }
     },
     {
@@ -1529,7 +1598,7 @@
         },
         "authorSelfCheck": "CHECKED_BY_AUTHOR_PYTHON_FACTS_VERIFIED",
         "externalOpenBookReview": "NOT_RUN",
-        "realEngineRender": "NOT_RUN",
+        "realEngineRender": "NOT_RUN_ARCHIVE_ENGINE",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_ONLY",
         "originalStemOrIssue": "원본 q02 점의 평행이동 L3 및 이동량 동일 적용 보존. A는 수치/부호, B는 역산·중점·공통량, C는 합성이동·직선·좌표축 조건으로 수학적 사고 확장.",
@@ -1543,7 +1612,7 @@
         "changedMathRecheck": "학생용 정답/풀이/5지 유지, 4개 오답 수치 정확 대응 확인. 기존 해설의 x/y 계산 및 현재 SVG geometry parity 재계산.",
         "remainingRisk": "변경 SVG의 실제 브라우저 렌더 NOT_RUN; QID_INCOMPLETE 보존. 별도 GPT 검수와 학생 출시는 NOT_RUN.",
         "selfRecheck20261012": {
-          "status": "QID_INCOMPLETE",
+          "status": "SELF_RECHECK_COMPLETE",
           "decision": "REVISED",
           "reviewRole": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT",
           "actualAnswer": "④",
@@ -1577,20 +1646,28 @@
           "actualSVGPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/C2-solution.svg",
           "svgFileVerified": "YES_FILE_READ",
           "svgCoordinates": "STATIC_COORDINATE_PARITY_ALL_POINTS",
-          "browserRender": "NOT_RUN",
+          "browserRender": "PASS_STANDALONE_CHROMIUM_SVG_560PX_AND_390PX",
           "newVisualCorrections": "SVG_VISUAL_REPAIRED",
           "defect": "기존 wrongRoutes 중 계산-보기 연결 누락/오류; B1/B2/C1 라벨 겹침, C2 절편 시각 누락은 대상 SVG에서 수정",
           "repairs": "정확한 오답 4개 수식 및 영향 SVG만 변경",
           "rechecked": "답 및 4지별 계산/학년 교육과정, 변경 SVG 실제 point(x,y) 좌표 parity",
           "notExecuted": [
-            "실제 브라우저 SVG 렌더",
-            "후속 독립 GPT 검수",
-            "Consumer/index/main 출시"
+            "별도 독립 GPT 품질검수",
+            "학생용 Archive 엔진과 Consumer/index/main 등록·출시"
           ],
           "uncertainty": [
-            "실제 렌더에서 라벨 가독성 및 겹침 최종 확인"
-          ]
-        }
+            "학생용 실제 통합 렌더·배포 미실행"
+          ],
+          "browserGeometry": "ORIGINAL_POINT_COORDINATES_UNCHANGED, XML_AND_COORDINATE_PARITY",
+          "browserLabels": "ZERO_LABEL_OVERLAPS_AND_ZERO_CLIPPING_BOTH_VIEWPORTS",
+          "screenshotHashes": {
+            "desktop": "ca24fec77f7b1e70afd7c4de75dd83f805c711cb870b824b2a6c8c0d0fee2f9e",
+            "mobile": "14b6e8ba09d2e385d7e7d55e3c1e7c7b04365e311c8ef1476050e7a9c77fb02b"
+          },
+          "actualSVGFinalBlob": null,
+          "studentEngine": "NOT_RUN; standalone SVG does not prove Archive engine exam/solution/answer or Consumer index"
+        },
+        "browserRender": "PASS_STANDALONE_SVG_CHROMIUM"
       }
     },
     {
@@ -1735,7 +1812,7 @@
         },
         "authorSelfCheck": "CHECKED_BY_AUTHOR_PYTHON_FACTS_VERIFIED",
         "externalOpenBookReview": "NOT_RUN",
-        "realEngineRender": "NOT_RUN",
+        "realEngineRender": "NOT_RUN_ARCHIVE_ENGINE",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_ONLY",
         "originalStemOrIssue": "원본 q02 점의 평행이동 L3 및 이동량 동일 적용 보존. A는 수치/부호, B는 역산·중점·공통량, C는 합성이동·직선·좌표축 조건으로 수학적 사고 확장.",
@@ -1745,10 +1822,10 @@
           "review.wrongRoutes",
           "review.selfRecheck20261012"
         ],
-        "changedMathRecheck": "학생용 정답/풀이/5지 유지, 4개 오답 수치 정확 대응 확인. 기존 해설의 x/y 계산 및 현재 SVG geometry parity 재계산.",
+        "changedMathRecheck": "SVG point geometry original facts unchanged; coordinate label/or legend only",
         "remainingRisk": "변경 SVG의 실제 브라우저 렌더 NOT_RUN; QID_INCOMPLETE 보존. 별도 GPT 검수와 학생 출시는 NOT_RUN.",
         "selfRecheck20261012": {
-          "status": "QID_INCOMPLETE",
+          "status": "SELF_RECHECK_COMPLETE",
           "decision": "REVISED",
           "reviewRole": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT",
           "actualAnswer": "②",
@@ -1782,20 +1859,29 @@
           "actualSVGPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/C3-solution.svg",
           "svgFileVerified": "YES_FILE_READ",
           "svgCoordinates": "STATIC_COORDINATE_PARITY_ALL_POINTS",
-          "browserRender": "NOT_RUN",
+          "browserRender": "PASS_STANDALONE_CHROMIUM_SVG_560PX_AND_390PX",
           "newVisualCorrections": "SVG_VISUAL_EXISTING",
           "defect": "기존 wrongRoutes 중 계산-보기 연결 누락/오류; B1/B2/C1 라벨 겹침, C2 절편 시각 누락은 대상 SVG에서 수정",
           "repairs": "정확한 오답 4개 수식 및 영향 SVG만 변경",
           "rechecked": "답 및 4지별 계산/학년 교육과정, 변경 SVG 실제 point(x,y) 좌표 parity",
           "notExecuted": [
-            "실제 브라우저 SVG 렌더",
-            "후속 독립 GPT 검수",
-            "Consumer/index/main 출시"
+            "별도 독립 GPT 품질검수",
+            "학생용 Archive 엔진과 Consumer/index/main 등록·출시"
           ],
           "uncertainty": [
-            "실제 렌더에서 라벨 가독성 및 겹침 최종 확인"
-          ]
-        }
+            "학생용 실제 통합 렌더·배포 미실행"
+          ],
+          "browserGeometry": "ORIGINAL_POINT_COORDINATES_UNCHANGED, XML_AND_COORDINATE_PARITY",
+          "browserLabels": "ZERO_LABEL_OVERLAPS_AND_ZERO_CLIPPING_BOTH_VIEWPORTS",
+          "screenshotHashes": {
+            "desktop": "cd73fff833bd2938d7f4bf270c93bb79bde22b016f3de16eea69eaf902cf17d6",
+            "mobile": "7979c4169031389f49bc60ecdaa36d48f8f7d74bd6e8ad12f735561dffa0d5b6"
+          },
+          "actualSVGFinalBlob": "1500ecff22491bc2ea9cae8c4d7ecf4cbe7ebe82",
+          "studentEngine": "NOT_RUN; standalone SVG does not prove Archive engine exam/solution/answer or Consumer index"
+        },
+        "browserRender": "PASS_STANDALONE_SVG_CHROMIUM",
+        "newVisualCorrections": "CHROME_PINPOINT_SVG_REPAIR"
       }
     }
   ]

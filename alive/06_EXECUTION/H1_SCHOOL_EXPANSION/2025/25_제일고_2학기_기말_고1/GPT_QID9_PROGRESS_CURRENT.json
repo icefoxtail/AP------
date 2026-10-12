@@ -4,7 +4,7 @@
   "sourceBlobSha": "252c1cc9a687cadd961183b56ea10d21bf1976b4",
   "workspaceBranch": "work/alive-25-jeil-h1-2final-qid9",
   "githubBaselineMainAtStart": "816c5602976d858b9705a44483992da6c95e4a11",
-  "branchHeadBeforeProgressRecord": "96ecaba1c8b24dcea075ded4af720e52583f8e36",
+  "branchHeadBeforeProgressRecord": "d35f224946e824ada2347577e0bec0de6c956085",
   "summary": {
     "sourceQids": 22,
     "targetSlotsPerSource": 9,
@@ -27,12 +27,11 @@
     "metaAuditPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q01_Q12_META_REPAIR_AUDIT.json",
     "metaStaticValidation": "PASS_AUTHOR_META_STATIC_108",
     "selfRecheckCompletedQids": [
-      1
-    ],
-    "nextSelfRecheckQid": 2,
-    "selfRecheckIncompleteQids": [
+      1,
       2
-    ]
+    ],
+    "nextSelfRecheckQid": 3,
+    "selfRecheckIncompleteQids": []
   },
   "sourceQids": [
     {
@@ -93,7 +92,7 @@
       "studentConsumerCount": 0,
       "draftPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q02_CREATE_DRAFT.json",
       "sourceRPMPrimaryL3": "평행이동",
-      "disposition": "AUTHOR_DRAFT_REVISED_QID_INCOMPLETE_BROWSER",
+      "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
       "metaEvidenceDebt": [],
       "svgFilesExpectedAndStored": 9,
       "externalOpenBookReview": "NOT_RUN",
@@ -102,14 +101,21 @@
       "distractorPathEvidence": "36/36_CONCRETE_CALCULATED",
       "metaStatus": "AUTHOR_META_REGISTERED_NEEDS_OPENBOOK_QUALITY_REVIEW",
       "metaRegistryPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_GENERATED_META_REGISTRY_v1.json",
-      "draftBlobSha": "1a2a5d3665d67c34d20bef05b9c1ee1d0ffbbb1e",
-      "metaCurrentSourceSha": "1a2a5d3665d67c34d20bef05b9c1ee1d0ffbbb1e",
-      "previousDraftBlobSha": "3b8d4d631b522cb94d25908c770e158609d68f85",
-      "selfRecheckStatus": "QID_INCOMPLETE",
+      "draftBlobSha": "22fb9c326eb708cc807c4ff7209a80eb2cc7b317",
+      "metaCurrentSourceSha": "22fb9c326eb708cc807c4ff7209a80eb2cc7b317",
+      "previousDraftBlobSha": "1a2a5d3665d67c34d20bef05b9c1ee1d0ffbbb1e",
+      "selfRecheckStatus": "SELF_RECHECK_COMPLETE",
       "selfRecheckUidCount": 9,
       "solutionSvgStaticRecheck": "9/9; patched B1/B2/C1/C2",
-      "visualBrowserRender": "NOT_RUN",
-      "selfRecheckNote": "Math 9, wrong choice paths 36, original/student Meta protected; all actual SVG geometric points match 17.5px coordinate mapping, browser SVG screenshot missing; no release."
+      "visualBrowserRender": "PASS_9_OF_9_STANDALONE_CHROMIUM_560_390",
+      "selfRecheckNote": "Actual Chromium standalone SVG 9/9, exact original Git SHA reconstruction (changed SVG five after current visual correction), desktop/mobile checks no text overlap or clip. Self recheck only; student Archive engine and external approval NOT_RUN.",
+      "svgRepairedAdditional": [
+        "A1",
+        "A2",
+        "B1",
+        "B3",
+        "C3"
+      ]
     },
     {
       "qid": 3,
