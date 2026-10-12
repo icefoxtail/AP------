@@ -30,10 +30,35 @@
     "geometryFormulaSelfCheck": "9/9",
     "externalOpenBookReview": "NOT_RUN",
     "studentRelease": "NOT_AUTHORIZED",
-    "status": "AUTHOR_DRAFT_ONLY",
+    "status": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_EXTERNAL_PASS",
     "nextQid": 7,
-    "metadataDebtUids": 9,
-    "distractorRouteRecheck": "9UID still candidate distractor-path review; do not certify 36 verified routes"
+    "metadataDebtUids": 0,
+    "distractorRouteRecheck": "9UID still candidate distractor-path review; do not certify 36 verified routes",
+    "incorrectRoutesRechecked": 36,
+    "selfRecheckStatus": "SELF_RECHECK_COMPLETE",
+    "authorSelfCheck": "9_ANSWERS_36_CONCRETE_DISTRACTORS_AND_SVG_STATIC_20261012",
+    "sourceMetaDebtUidCount": 0,
+    "existingMetaStaticDebtResolvedPreviously": 9,
+    "svgStaticCoordinateParity": "9_OF_9",
+    "svgNewCount": 0,
+    "svgBrowser": "NOT_RUN",
+    "difficultyReclassified": [
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "choicesRebuiltSlots": [
+      "A1",
+      "A2",
+      "A3",
+      "B1",
+      "B2",
+      "B3",
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "sourceQid": 6
   },
   "questions": [
     {
@@ -62,11 +87,11 @@
       "wide": false,
       "content": "두 점 $A(2,1)$, $B(5,4)$와 직선 $y=x$ 위의 점 $P$에 대하여 $AP+BP$의 최솟값은?",
       "choices": [
-        "$\\sqrt{13}$",
-        "$2\\sqrt{5}$",
-        "$5$",
-        "$3\\sqrt{5}$",
-        "$2\\sqrt{13}$"
+        "$3\\sqrt2$",
+        "$2\\sqrt5$",
+        "$4$",
+        "$6$",
+        "$4\\sqrt5$"
       ],
       "answer": "②",
       "solution": "$A$를 직선 $y=x$에 대하여 대칭이동한 점을 $A'=(1,2)$라 하자. $P$가 $y=x$ 위에 있으므로 $AP=A'P$이다.\n따라서 $AP+BP=A'P+BP\\ge A'B=\\sqrt{(5-1)^2+(4-2)^2}=\\sqrt{20}=2\\sqrt5$이다. 선분 $A'B$는 $y=x$와 $(3,3)$에서 만나므로 이때 등호가 성립한다.\n따라서 정답은 ②이다.",
@@ -118,7 +143,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_SHORTEST_TEMPLATE"
       },
       "review": {
-        "reverseStem": "KEEP: point positions, reflection line and answer target defined; final student question independently reconstructed",
+        "reverseStem": "REVISED: 최종 발문에서 대칭이동·최단거리 판단 복원. 현재 선택지 4개는 각각 구체적 오류식→실제 보기 값으로 재계산",
         "mathSelfCheckEvidence": {
           "A": [
             2,
@@ -144,23 +169,23 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredOption": "$\\sqrt{13}$",
-            "reason": "대칭을 하지 않고 원래 두 점의 거리 또는 한 구간 거리만 구하는 오류"
+            "offeredOption": "$3\\sqrt2$",
+            "reason": "대칭이동을 생략하고 원래 두 점 사이 거리 $AB=\\sqrt{3^2+3^2}=3\\sqrt2$를 최소 경로로 잘못 택했다."
           },
           {
             "choice": "③",
-            "offeredOption": "$5$",
-            "reason": "수선 거리 또는 한 축 좌표차만 사용하는 오류"
+            "offeredOption": "$4$",
+            "reason": "대칭점 $A'=(1,2)$에서 $B(5,4)$까지의 가로 성분 $|5-1|=4$만 계산하고 세로 성분을 빠뜨렸다."
           },
           {
             "choice": "④",
-            "offeredOption": "$3\\sqrt{5}$",
-            "reason": "대칭 후 두 성분의 길이제곱·근호 계산에 생기는 오류"
+            "offeredOption": "$6$",
+            "reason": "대칭점에서 $B$까지의 직선거리가 아닌 좌표차의 합 $|5-1|+|4-2|=4+2=6$을 구했다."
           },
           {
             "choice": "⑤",
-            "offeredOption": "$2\\sqrt{13}$",
-            "reason": "정수·교점 조건 또는 답형을 누락하여 길이/좌표의 다른 양을 택하는 오류"
+            "offeredOption": "$4\\sqrt5$",
+            "reason": "대칭점까지의 최단거리 $2\\sqrt5$를 구한 후, 두 거리의 합이라는 이유로 다시 2배하여 $4\\sqrt5$로 계산했다."
           }
         ],
         "problemVisual": {
@@ -172,12 +197,30 @@
           "reason": "원래 꺾인 경로의 반사와 최단선분을 보여주는 도형이 실질적 학습에 필요",
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/A1-solution.svg"
         },
-        "authorSelfCheck": "CHECKED_WITH_EXACT_GEOMETRY_RECOMPUTATION",
+        "authorSelfCheck": "SELF_RECHECK_COMPLETE_20261012",
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_ONLY",
-        "distractorPathStatus": "AUTHOR_PROPOSED_REQUIRES_EXACT_NUMERIC_ERROR_PATH_OPENBOOK"
+        "distractorPathStatus": "AUTHOR_EXACT_4_OF_4_FINAL_CHOICES",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reviewRole": "AUTHOR_NOT_INDEPENDENT",
+          "mathCorrectAnswer": "②",
+          "distractorRoutes": "4_OF_4_EXACT_CALC",
+          "changedFields": [
+            "choices",
+            "review.wrongRoutes"
+          ],
+          "previousWrongRoutes": "STALE_SUPERSEDED",
+          "primaryL3Decisive": "대칭이동을 이용한 최단거리",
+          "problemVisual": "EXEMPT_INPUT_COORDINATES_SUFFICIENT",
+          "solutionVisual": "REUSE_EXISTING_SVG_STATIC_COORDINATE_PARITY",
+          "svgBrowser": "NOT_RUN",
+          "archiveEngine": "NOT_RUN",
+          "externalQuality": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        }
       }
     },
     {
@@ -206,11 +249,11 @@
       "wide": false,
       "content": "두 점 $A(3,1)$, $B(6,2)$와 직선 $y=x$ 위의 점 $P$에 대하여 $AP+BP$의 최솟값은?",
       "choices": [
-        "$\\sqrt{17}$",
+        "$\\sqrt{10}$",
         "$5$",
         "$\\sqrt{26}$",
-        "$\\sqrt{29}$",
-        "$6$"
+        "$6$",
+        "$\\sqrt{29}$"
       ],
       "answer": "③",
       "solution": "$A$를 $y=x$에 대하여 대칭이동하면 $A'=(1,3)$이다. $AP=A'P$이므로 $AP+BP\\ge A'B$이다.\n$A'B=\\sqrt{(6-1)^2+(2-3)^2}=\\sqrt{26}$이다.\n$A'B$ 위의 점을 $(1+5t,3-t)$라 두면 $y=x$와의 교점은 $1+5t=3-t$에서 $t=\\dfrac13$, 즉 $P=\\left(\\dfrac83,\\dfrac83\\right)$이다. 선분 내부이므로 등호가 성립한다.\n따라서 정답은 ③이다.",
@@ -262,7 +305,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_SHORTEST_TEMPLATE"
       },
       "review": {
-        "reverseStem": "KEEP: point positions, reflection line and answer target defined; final student question independently reconstructed",
+        "reverseStem": "REVISED: 최종 발문에서 대칭이동·최단거리 판단 복원. 현재 선택지 4개는 각각 구체적 오류식→실제 보기 값으로 재계산",
         "mathSelfCheckEvidence": {
           "A": [
             3,
@@ -288,23 +331,23 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredOption": "$\\sqrt{17}$",
-            "reason": "대칭을 하지 않고 원래 두 점의 거리 또는 한 구간 거리만 구하는 오류"
+            "offeredOption": "$\\sqrt{10}$",
+            "reason": "반사점 $A'=(1,3)$ 대신 원래 점 $A=(3,1)$을 그대로 써서 $AB=\\sqrt{3^2+1^2}=\\sqrt{10}$으로 계산했다."
           },
           {
             "choice": "②",
             "offeredOption": "$5$",
-            "reason": "수선 거리 또는 한 축 좌표차만 사용하는 오류"
+            "reason": "반사점 $A'=(1,3)$과 $B(6,2)$의 가로 차 $|6-1|=5$만 반영했다."
           },
           {
             "choice": "④",
-            "offeredOption": "$\\sqrt{29}$",
-            "reason": "대칭 후 두 성분의 길이제곱·근호 계산에 생기는 오류"
+            "offeredOption": "$6$",
+            "reason": "반사점과 $B$의 두 좌표차를 제곱합이 아닌 절댓값 합 $5+1=6$으로 계산했다."
           },
           {
             "choice": "⑤",
-            "offeredOption": "$6$",
-            "reason": "정수·교점 조건 또는 답형을 누락하여 길이/좌표의 다른 양을 택하는 오류"
+            "offeredOption": "$\\sqrt{29}$",
+            "reason": "$A'B$의 세로 차 $2-3=-1$의 크기를 2로 잘못 읽어 $\\sqrt{5^2+2^2}=\\sqrt{29}$를 얻었다."
           }
         ],
         "problemVisual": {
@@ -316,12 +359,30 @@
           "reason": "원래 꺾인 경로의 반사와 최단선분을 보여주는 도형이 실질적 학습에 필요",
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/A2-solution.svg"
         },
-        "authorSelfCheck": "CHECKED_WITH_EXACT_GEOMETRY_RECOMPUTATION",
+        "authorSelfCheck": "SELF_RECHECK_COMPLETE_20261012",
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_ONLY",
-        "distractorPathStatus": "AUTHOR_PROPOSED_REQUIRES_EXACT_NUMERIC_ERROR_PATH_OPENBOOK"
+        "distractorPathStatus": "AUTHOR_EXACT_4_OF_4_FINAL_CHOICES",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reviewRole": "AUTHOR_NOT_INDEPENDENT",
+          "mathCorrectAnswer": "③",
+          "distractorRoutes": "4_OF_4_EXACT_CALC",
+          "changedFields": [
+            "choices",
+            "review.wrongRoutes"
+          ],
+          "previousWrongRoutes": "STALE_SUPERSEDED",
+          "primaryL3Decisive": "대칭이동을 이용한 최단거리",
+          "problemVisual": "EXEMPT_INPUT_COORDINATES_SUFFICIENT",
+          "solutionVisual": "REUSE_EXISTING_SVG_STATIC_COORDINATE_PARITY",
+          "svgBrowser": "NOT_RUN",
+          "archiveEngine": "NOT_RUN",
+          "externalQuality": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        }
       }
     },
     {
@@ -350,11 +411,11 @@
       "wide": false,
       "content": "두 점 $A(2,1)$, $B(3,5)$와 $y$축 위의 점 $P$에 대하여 $AP+BP$의 최솟값은?",
       "choices": [
+        "$\\sqrt{17}$",
         "$5$",
-        "$6$",
         "$\\sqrt{41}$",
-        "$7$",
-        "$8$"
+        "$9$",
+        "$5\\sqrt2$"
       ],
       "answer": "③",
       "solution": "$A$를 $y$축에 대하여 대칭이동하면 $A'=(-2,1)$이다. $P$가 $y$축 위에 있으므로 $AP=A'P$이다.\n$A'P+PB\\ge A'B=\\sqrt{(3+2)^2+(5-1)^2}=\\sqrt{41}$이다.\n$A'$와 $B$가 $y$축의 서로 다른 쪽에 있으므로 선분 $A'B$는 $y$축과 만난다. 그 교점이 최솟값을 만든다.\n따라서 정답은 ③이다.",
@@ -406,7 +467,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_SHORTEST_TEMPLATE"
       },
       "review": {
-        "reverseStem": "KEEP: point positions, reflection line and answer target defined; final student question independently reconstructed",
+        "reverseStem": "REVISED: 최종 발문에서 대칭이동·최단거리 판단 복원. 현재 선택지 4개는 각각 구체적 오류식→실제 보기 값으로 재계산",
         "mathSelfCheckEvidence": {
           "A": [
             2,
@@ -432,23 +493,23 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredOption": "$5$",
-            "reason": "대칭을 하지 않고 원래 두 점의 거리 또는 한 구간 거리만 구하는 오류"
+            "offeredOption": "$\\sqrt{17}$",
+            "reason": "$y$축 대칭점 $A'=(-2,1)$을 사용하지 않고 $AB=\\sqrt{(3-2)^2+(5-1)^2}=\\sqrt{17}$을 구했다."
           },
           {
             "choice": "②",
-            "offeredOption": "$6$",
-            "reason": "수선 거리 또는 한 축 좌표차만 사용하는 오류"
+            "offeredOption": "$5$",
+            "reason": "대칭점 $A'=(-2,1)$부터 $B(3,5)$까지의 가로 차 $3-(-2)=5$만 거리로 사용했다."
           },
           {
             "choice": "④",
-            "offeredOption": "$7$",
-            "reason": "대칭 후 두 성분의 길이제곱·근호 계산에 생기는 오류"
+            "offeredOption": "$9$",
+            "reason": "두 성분의 차를 피타고라스 대신 합으로 더해 $|3+2|+|5-1|=5+4=9$로 계산했다."
           },
           {
             "choice": "⑤",
-            "offeredOption": "$8$",
-            "reason": "정수·교점 조건 또는 답형을 누락하여 길이/좌표의 다른 양을 택하는 오류"
+            "offeredOption": "$5\\sqrt2$",
+            "reason": "세로 차 $5-1=4$를 5로 착각해 $\\sqrt{5^2+5^2}=5\\sqrt2$로 계산했다."
           }
         ],
         "problemVisual": {
@@ -460,12 +521,30 @@
           "reason": "원래 꺾인 경로의 반사와 최단선분을 보여주는 도형이 실질적 학습에 필요",
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/A3-solution.svg"
         },
-        "authorSelfCheck": "CHECKED_WITH_EXACT_GEOMETRY_RECOMPUTATION",
+        "authorSelfCheck": "SELF_RECHECK_COMPLETE_20261012",
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_ONLY",
-        "distractorPathStatus": "AUTHOR_PROPOSED_REQUIRES_EXACT_NUMERIC_ERROR_PATH_OPENBOOK"
+        "distractorPathStatus": "AUTHOR_EXACT_4_OF_4_FINAL_CHOICES",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reviewRole": "AUTHOR_NOT_INDEPENDENT",
+          "mathCorrectAnswer": "③",
+          "distractorRoutes": "4_OF_4_EXACT_CALC",
+          "changedFields": [
+            "choices",
+            "review.wrongRoutes"
+          ],
+          "previousWrongRoutes": "STALE_SUPERSEDED",
+          "primaryL3Decisive": "대칭이동을 이용한 최단거리",
+          "problemVisual": "EXEMPT_INPUT_COORDINATES_SUFFICIENT",
+          "solutionVisual": "REUSE_EXISTING_SVG_STATIC_COORDINATE_PARITY",
+          "svgBrowser": "NOT_RUN",
+          "archiveEngine": "NOT_RUN",
+          "externalQuality": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        }
       }
     },
     {
@@ -494,11 +573,11 @@
       "wide": false,
       "content": "두 점 $A(1,2)$, $B(6,3)$와 $x$축 위의 점 $P$에 대하여 $AP+BP$의 최솟값은?",
       "choices": [
+        "$\\sqrt{26}$",
         "$5$",
-        "$\\sqrt{41}$",
-        "$7$",
+        "$10$",
         "$5\\sqrt2$",
-        "$8$"
+        "$\\sqrt{61}$"
       ],
       "answer": "④",
       "solution": "$A$를 $x$축에 대하여 대칭이동하면 $A'=(1,-2)$이다. 따라서 $AP+BP=A'P+PB\\ge A'B$이다.\n$A'B=\\sqrt{(6-1)^2+(3+2)^2}=\\sqrt{50}=5\\sqrt2$이다.\n선분 $A'B$는 $x$축과 교차하므로 그 교점 $P=(3,0)$에서 등호가 성립한다.\n따라서 정답은 ④이다.",
@@ -550,7 +629,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_SHORTEST_TEMPLATE"
       },
       "review": {
-        "reverseStem": "KEEP: point positions, reflection line and answer target defined; final student question independently reconstructed",
+        "reverseStem": "REVISED: 최종 발문에서 대칭이동·최단거리 판단 복원. 현재 선택지 4개는 각각 구체적 오류식→실제 보기 값으로 재계산",
         "mathSelfCheckEvidence": {
           "A": [
             1,
@@ -576,23 +655,23 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredOption": "$5$",
-            "reason": "대칭을 하지 않고 원래 두 점의 거리 또는 한 구간 거리만 구하는 오류"
+            "offeredOption": "$\\sqrt{26}$",
+            "reason": "$x$축 반사점 $(1,-2)$ 대신 원래 점 $A=(1,2)$를 사용해 $AB=\\sqrt{5^2+1^2}=\\sqrt{26}$을 구했다."
           },
           {
             "choice": "②",
-            "offeredOption": "$\\sqrt{41}$",
-            "reason": "수선 거리 또는 한 축 좌표차만 사용하는 오류"
+            "offeredOption": "$5$",
+            "reason": "반사점 $A'=(1,-2)$부터 $B(6,3)$까지의 가로 차 5만 거리로 택했다."
           },
           {
             "choice": "③",
-            "offeredOption": "$7$",
-            "reason": "대칭 후 두 성분의 길이제곱·근호 계산에 생기는 오류"
+            "offeredOption": "$10$",
+            "reason": "두 좌표차 5, 5의 절댓값을 더해 $5+5=10$으로 계산했다."
           },
           {
             "choice": "⑤",
-            "offeredOption": "$8$",
-            "reason": "정수·교점 조건 또는 답형을 누락하여 길이/좌표의 다른 양을 택하는 오류"
+            "offeredOption": "$\\sqrt{61}$",
+            "reason": "반사 후 세로 차 $3-(-2)=5$를 6으로 잘못 계산해 $\\sqrt{5^2+6^2}=\\sqrt{61}$을 얻었다."
           }
         ],
         "problemVisual": {
@@ -604,12 +683,30 @@
           "reason": "원래 꺾인 경로의 반사와 최단선분을 보여주는 도형이 실질적 학습에 필요",
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/B1-solution.svg"
         },
-        "authorSelfCheck": "CHECKED_WITH_EXACT_GEOMETRY_RECOMPUTATION",
+        "authorSelfCheck": "SELF_RECHECK_COMPLETE_20261012",
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_ONLY",
-        "distractorPathStatus": "AUTHOR_PROPOSED_REQUIRES_EXACT_NUMERIC_ERROR_PATH_OPENBOOK"
+        "distractorPathStatus": "AUTHOR_EXACT_4_OF_4_FINAL_CHOICES",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reviewRole": "AUTHOR_NOT_INDEPENDENT",
+          "mathCorrectAnswer": "④",
+          "distractorRoutes": "4_OF_4_EXACT_CALC",
+          "changedFields": [
+            "choices",
+            "review.wrongRoutes"
+          ],
+          "previousWrongRoutes": "STALE_SUPERSEDED",
+          "primaryL3Decisive": "대칭이동을 이용한 최단거리",
+          "problemVisual": "EXEMPT_INPUT_COORDINATES_SUFFICIENT",
+          "solutionVisual": "REUSE_EXISTING_SVG_STATIC_COORDINATE_PARITY",
+          "svgBrowser": "NOT_RUN",
+          "archiveEngine": "NOT_RUN",
+          "externalQuality": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        }
       }
     },
     {
@@ -638,11 +735,11 @@
       "wide": false,
       "content": "두 점 $A(3,1)$, $B(4,2)$와 직선 $y=-x$ 위의 점 $P$에 대하여 $AP+BP$의 최솟값은?",
       "choices": [
+        "$\\sqrt2$",
         "$5$",
-        "$\\sqrt{34}$",
-        "$7$",
+        "$10$",
         "$5\\sqrt2$",
-        "$8$"
+        "$\\sqrt{61}$"
       ],
       "answer": "④",
       "solution": "점 $(x,y)$를 직선 $y=-x$에 대하여 대칭이동하면 $(-y,-x)$가 된다. 따라서 $A'=(-1,-3)$이다.\n$AP+PB=A'P+PB\\ge A'B=\\sqrt{(4+1)^2+(2+3)^2}=5\\sqrt2$이다.\n$A'B$는 $y=-x$와 $(1,-1)$에서 만나므로 등호가 성립한다.\n따라서 정답은 ④이다.",
@@ -694,7 +791,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_SHORTEST_TEMPLATE"
       },
       "review": {
-        "reverseStem": "KEEP: point positions, reflection line and answer target defined; final student question independently reconstructed",
+        "reverseStem": "REVISED: 최종 발문에서 대칭이동·최단거리 판단 복원. 현재 선택지 4개는 각각 구체적 오류식→실제 보기 값으로 재계산",
         "mathSelfCheckEvidence": {
           "A": [
             3,
@@ -720,23 +817,23 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredOption": "$5$",
-            "reason": "대칭을 하지 않고 원래 두 점의 거리 또는 한 구간 거리만 구하는 오류"
+            "offeredOption": "$\\sqrt2$",
+            "reason": "$y=-x$의 대칭점 $A'=(-1,-3)$을 구하지 않고 원래 두 점 사이 거리 $AB=\\sqrt{(4-3)^2+(2-1)^2}=\\sqrt2$를 구했다."
           },
           {
             "choice": "②",
-            "offeredOption": "$\\sqrt{34}$",
-            "reason": "수선 거리 또는 한 축 좌표차만 사용하는 오류"
+            "offeredOption": "$5$",
+            "reason": "반사점 $A'=(-1,-3)$과 $B(4,2)$ 사이의 가로 차 5만 구했다."
           },
           {
             "choice": "③",
-            "offeredOption": "$7$",
-            "reason": "대칭 후 두 성분의 길이제곱·근호 계산에 생기는 오류"
+            "offeredOption": "$10$",
+            "reason": "반사점과 $B$ 사이의 가로·세로 차 5,5를 각각 더해 $5+5=10$으로 계산했다."
           },
           {
             "choice": "⑤",
-            "offeredOption": "$8$",
-            "reason": "정수·교점 조건 또는 답형을 누락하여 길이/좌표의 다른 양을 택하는 오류"
+            "offeredOption": "$\\sqrt{61}$",
+            "reason": "세로 좌표차 $2-(-3)=5$를 6으로 잘못 계산하여 $\\sqrt{5^2+6^2}=\\sqrt{61}$을 얻었다."
           }
         ],
         "problemVisual": {
@@ -748,12 +845,30 @@
           "reason": "원래 꺾인 경로의 반사와 최단선분을 보여주는 도형이 실질적 학습에 필요",
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/B2-solution.svg"
         },
-        "authorSelfCheck": "CHECKED_WITH_EXACT_GEOMETRY_RECOMPUTATION",
+        "authorSelfCheck": "SELF_RECHECK_COMPLETE_20261012",
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_ONLY",
-        "distractorPathStatus": "AUTHOR_PROPOSED_REQUIRES_EXACT_NUMERIC_ERROR_PATH_OPENBOOK"
+        "distractorPathStatus": "AUTHOR_EXACT_4_OF_4_FINAL_CHOICES",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reviewRole": "AUTHOR_NOT_INDEPENDENT",
+          "mathCorrectAnswer": "④",
+          "distractorRoutes": "4_OF_4_EXACT_CALC",
+          "changedFields": [
+            "choices",
+            "review.wrongRoutes"
+          ],
+          "previousWrongRoutes": "STALE_SUPERSEDED",
+          "primaryL3Decisive": "대칭이동을 이용한 최단거리",
+          "problemVisual": "EXEMPT_INPUT_COORDINATES_SUFFICIENT",
+          "solutionVisual": "REUSE_EXISTING_SVG_STATIC_COORDINATE_PARITY",
+          "svgBrowser": "NOT_RUN",
+          "archiveEngine": "NOT_RUN",
+          "externalQuality": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        }
       }
     },
     {
@@ -782,11 +897,11 @@
       "wide": false,
       "content": "두 점 $A(4,1)$, $B(5,2)$와 직선 $y=x$ 위의 점 $P$에 대하여 $AP+BP$가 최소가 되는 점 $P=(a,b)$의 $a+b$는?",
       "choices": [
+        "$2$",
         "$4$",
-        "$5$",
         "$6$",
-        "$7$",
-        "$8$"
+        "$8$",
+        "$10$"
       ],
       "answer": "③",
       "solution": "$A$의 대칭점은 $A'=(1,4)$이다. 최소 경로는 직선 $A'B$가 $y=x$와 만나는 점에서 얻는다.\n선분 $A'B$ 위의 점을 $(1+4t,4-2t)$ ($0\\le t\\le1$)라 두면 $y=x$에서 $1+4t=4-2t$, 즉 $t=\\dfrac12$이다.\n따라서 $P=(3,3)$이고 $a+b=6$이다.\n따라서 정답은 ③이다.",
@@ -838,7 +953,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_SHORTEST_TEMPLATE"
       },
       "review": {
-        "reverseStem": "KEEP: point positions, reflection line and answer target defined; final student question independently reconstructed",
+        "reverseStem": "REVISED: 최종 발문에서 대칭이동·최단거리 판단 복원. 현재 선택지 4개는 각각 구체적 오류식→실제 보기 값으로 재계산",
         "mathSelfCheckEvidence": {
           "A": [
             4,
@@ -864,23 +979,23 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredOption": "$4$",
-            "reason": "대칭을 하지 않고 원래 두 점의 거리 또는 한 구간 거리만 구하는 오류"
+            "offeredOption": "$2$",
+            "reason": "대칭점 $A'=(1,4)$의 가로좌표만 사용하여 $P=(1,1)$로 오판하고 $a+b=1+1=2$로 계산했다."
           },
           {
             "choice": "②",
-            "offeredOption": "$5$",
-            "reason": "수선 거리 또는 한 축 좌표차만 사용하는 오류"
+            "offeredOption": "$4$",
+            "reason": "대칭점 $A'=(1,4)$에서 $B=(5,2)$까지의 직선 매개변수 $t=1/2$를 $t=1/4$로 잘못 풀면 $x=1+4(1/4)=2$이고, 이 $x$를 두 좌표로 착각해 $2+2=4$라고 답한다."
           },
           {
             "choice": "④",
-            "offeredOption": "$7$",
-            "reason": "대칭 후 두 성분의 길이제곱·근호 계산에 생기는 오류"
+            "offeredOption": "$8$",
+            "reason": "교점 매개변수 $t=1/2$를 $t=3/4$로 잘못 잡아 $x=1+4(3/4)=4$를 두 좌표에 대입하면 $4+4=8$을 얻는다."
           },
           {
             "choice": "⑤",
-            "offeredOption": "$8$",
-            "reason": "정수·교점 조건 또는 답형을 누락하여 길이/좌표의 다른 양을 택하는 오류"
+            "offeredOption": "$10$",
+            "reason": "교점 대신 끝점 $B$의 가로좌표 5를 그대로 $y=x$에 대입해 $P=(5,5)$라고 착각하면 $a+b=10$이다."
           }
         ],
         "problemVisual": {
@@ -892,12 +1007,30 @@
           "reason": "원래 꺾인 경로의 반사와 최단선분을 보여주는 도형이 실질적 학습에 필요",
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/B3-solution.svg"
         },
-        "authorSelfCheck": "CHECKED_WITH_EXACT_GEOMETRY_RECOMPUTATION",
+        "authorSelfCheck": "SELF_RECHECK_COMPLETE_20261012",
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_ONLY",
-        "distractorPathStatus": "AUTHOR_PROPOSED_REQUIRES_EXACT_NUMERIC_ERROR_PATH_OPENBOOK"
+        "distractorPathStatus": "AUTHOR_EXACT_4_OF_4_FINAL_CHOICES",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reviewRole": "AUTHOR_NOT_INDEPENDENT",
+          "mathCorrectAnswer": "③",
+          "distractorRoutes": "4_OF_4_EXACT_CALC",
+          "changedFields": [
+            "choices",
+            "review.wrongRoutes"
+          ],
+          "previousWrongRoutes": "STALE_SUPERSEDED",
+          "primaryL3Decisive": "대칭이동을 이용한 최단거리",
+          "problemVisual": "EXEMPT_INPUT_COORDINATES_SUFFICIENT",
+          "solutionVisual": "REUSE_EXISTING_SVG_STATIC_COORDINATE_PARITY",
+          "svgBrowser": "NOT_RUN",
+          "archiveEngine": "NOT_RUN",
+          "externalQuality": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        }
       }
     },
     {
@@ -907,7 +1040,7 @@
       "slot": "C1",
       "purpose": "C",
       "modeCandidate": "TYPE_BANK",
-      "level": "상",
+      "level": "중",
       "category": "도형의 이동",
       "originalCategory": "도형의 이동",
       "standardCourse": "공통수학2",
@@ -982,7 +1115,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_SHORTEST_TEMPLATE"
       },
       "review": {
-        "reverseStem": "KEEP: point positions, reflection line and answer target defined; final student question independently reconstructed",
+        "reverseStem": "REVISED: 최종 발문에서 대칭이동·최단거리 판단 복원. 현재 선택지 4개는 각각 구체적 오류식→실제 보기 값으로 재계산",
         "mathSelfCheckEvidence": {
           "A": [
             5,
@@ -1009,22 +1142,22 @@
           {
             "choice": "①",
             "offeredOption": "$2$",
-            "reason": "대칭을 하지 않고 원래 두 점의 거리 또는 한 구간 거리만 구하는 오류"
+            "reason": "반사점 $A'=(1,5)$에서 $B=(7,3)$로 가는 직선 $y=5-(x-1)/3$에 $x=2$를 잘못 대입해 교점으로 취급했다. 실제 $y=14/3\\ne2$이므로 $y=x$ 위 교점이 아니다."
           },
           {
             "choice": "②",
             "offeredOption": "$3$",
-            "reason": "수선 거리 또는 한 축 좌표차만 사용하는 오류"
+            "reason": "반사점과 $B$를 잇는 직선에 $x=3$을 잘못 교점으로 판단했다. 이때 $y=5-2/3=13/3\\ne3$이다."
           },
           {
             "choice": "④",
             "offeredOption": "$5$",
-            "reason": "대칭 후 두 성분의 길이제곱·근호 계산에 생기는 오류"
+            "reason": "직선 위에서 $x=5$일 때 $y=5-4/3=11/3\\ne5$인데 $y=x$ 위의 점으로 착각했다."
           },
           {
             "choice": "⑤",
             "offeredOption": "$6$",
-            "reason": "정수·교점 조건 또는 답형을 누락하여 길이/좌표의 다른 양을 택하는 오류"
+            "reason": "직선 위에서 $x=6$일 때 $y=5-5/3=10/3\\ne6$인데 교점으로 잘못 선택했다."
           }
         ],
         "problemVisual": {
@@ -1036,12 +1169,32 @@
           "reason": "원래 꺾인 경로의 반사와 최단선분을 보여주는 도형이 실질적 학습에 필요",
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/C1-solution.svg"
         },
-        "authorSelfCheck": "CHECKED_WITH_EXACT_GEOMETRY_RECOMPUTATION",
+        "authorSelfCheck": "SELF_RECHECK_COMPLETE_20261012",
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_ONLY",
-        "distractorPathStatus": "AUTHOR_PROPOSED_REQUIRES_EXACT_NUMERIC_ERROR_PATH_OPENBOOK"
+        "distractorPathStatus": "AUTHOR_EXACT_4_OF_4_FINAL_CHOICES",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reviewRole": "AUTHOR_NOT_INDEPENDENT",
+          "mathCorrectAnswer": "③",
+          "distractorRoutes": "4_OF_4_EXACT_CALC",
+          "changedFields": [
+            "choices",
+            "review.wrongRoutes",
+            "level",
+            "meta.difficultyBucket"
+          ],
+          "previousWrongRoutes": "STALE_SUPERSEDED",
+          "primaryL3Decisive": "대칭이동을 이용한 최단거리",
+          "problemVisual": "EXEMPT_INPUT_COORDINATES_SUFFICIENT",
+          "solutionVisual": "REUSE_EXISTING_SVG_STATIC_COORDINATE_PARITY",
+          "svgBrowser": "NOT_RUN",
+          "archiveEngine": "NOT_RUN",
+          "externalQuality": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        }
       }
     },
     {
@@ -1051,7 +1204,7 @@
       "slot": "C2",
       "purpose": "C",
       "modeCandidate": "TYPE_BANK",
-      "level": "상",
+      "level": "중",
       "category": "도형의 이동",
       "originalCategory": "도형의 이동",
       "standardCourse": "공통수학2",
@@ -1073,14 +1226,14 @@
         "$\\sqrt{10}$",
         "$\\sqrt{13}$",
         "$1+\\sqrt{13}$",
-        "$\\sqrt{26}$",
+        "$\\sqrt{14}$",
         "$2+\\sqrt{13}$"
       ],
       "answer": "③",
-      "solution": "자연수 $n\\ge4$에 대하여 $AP^2=(n-2)^2+(n-1)^2$, $BP^2=(n-5)^2+(n-4)^2$이다.\n$n\\ge4$에서 $(n-2)^2$와 $(n-1)^2$는 각각 증가하므로 $AP$는 증가한다. 또한 $n=4,5$일 때 $BP=1$이며 $n\\ge6$이면 $BP>1$이다.\n따라서 $AP+BP$는 $n=4$에서 최소이다. 이때 $AP=\\sqrt{(4-2)^2+(4-1)^2}=\\sqrt{13}$, $BP=1$이므로 최솟값은 $1+\\sqrt{13}$이다.\n따라서 정답은 ③이다.",
+      "solution": "점을 직선 $y=x$에 대하여 대칭이동하면 $A(2,1)$의 대칭점은 $A'=(1,2)$이다. 직선 위의 점 $P=(n,n)$에 대해 $AP=A'P$이므로 거리합은 $A'P+BP$로 생각할 수 있다.\\n실수 전체에서의 최단 경로는 $A',P_0,B$가 일직선인 경우이고, 교점은 $P_0=(3,3)$이다. 하지만 문제에서는 자연수 $n\\ge4$이므로 이 점을 선택할 수 없다.\\n$n\\ge4$일 때 $AP=\\sqrt{(n-1)^2+(n-2)^2}$는 $n$이 증가할수록 커진다. 또 $BP^2=(n-5)^2+(n-4)^2$는 $n=4,5$에서 1이고 $n\\ge6$일 때 1보다 크다. 따라서 $n=4$에서 거리합이 가장 작다.\\n그때 $AP=\\sqrt{13}$, $BP=1$이므로 최솟값은 $1+\\sqrt{13}$이다.\\n따라서 정답은 ③이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/C2-solution.svg",
       "solutionImageAlt": "y=x에 대칭한 점, A에서 P를 거쳐 B로 가는 길이와 최단경로",
-      "solutionImageCaption": "대칭점과 최단경로의 관계를 비교한다.",
+      "solutionImageCaption": "제한이 없으면 P₀(3,3)이 최적이지만, 자연수 n≥4에서는 P(4,4)가 최소 거리합을 만든다.",
       "solutionImageSize": "medium",
       "meta": {
         "rpmL1": "도형의 방정식",
@@ -1103,7 +1256,7 @@
           "COND_RANGE"
         ],
         "integrationPattern": "INTERDEPENDENT",
-        "difficultyBucket": 4,
+        "difficultyBucket": 3,
         "experienceAxis": "정수 격자점 제한으로 무제약 최적점과 달라지는 경계",
         "metadataDebt": [],
         "generatedExtL4Id": "EXT-L4-JEIL25-Q06-REFLECT-MIN-DIST",
@@ -1129,7 +1282,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_SHORTEST_TEMPLATE"
       },
       "review": {
-        "reverseStem": "KEEP: point positions, reflection line and answer target defined; final student question independently reconstructed",
+        "reverseStem": "REVISED: 최종 발문에서 대칭이동·최단거리 판단 복원. 현재 선택지 4개는 각각 구체적 오류식→실제 보기 값으로 재계산",
         "mathSelfCheckEvidence": {
           "A": [
             2,
@@ -1156,22 +1309,22 @@
           {
             "choice": "①",
             "offeredOption": "$\\sqrt{10}$",
-            "reason": "대칭을 하지 않고 원래 두 점의 거리 또는 한 구간 거리만 구하는 오류"
+            "reason": "$P=(4,4)$에서 $AP=\\sqrt{(4-2)^2+(4-1)^2}=\\sqrt{13}$를 계산할 때 가로 차 $4-2=2$를 1로 착각해 $\\sqrt{1^2+3^2}=\\sqrt{10}$만 구했다."
           },
           {
             "choice": "②",
             "offeredOption": "$\\sqrt{13}$",
-            "reason": "수선 거리 또는 한 축 좌표차만 사용하는 오류"
+            "reason": "$n=4$에서 $AP=\\sqrt{13}$은 구했지만 $BP=\\sqrt{(5-4)^2+(4-4)^2}=1$을 더하지 않아 $\\sqrt{13}$만 답했다."
           },
           {
             "choice": "④",
-            "offeredOption": "$\\sqrt{26}$",
-            "reason": "대칭 후 두 성분의 길이제곱·근호 계산에 생기는 오류"
+            "offeredOption": "$\\sqrt{14}$",
+            "reason": "$n=4$에서 $AP^2=13$, $BP^2=1$을 구한 뒤 길이의 합 대신 $\\sqrt{AP^2+BP^2}=\\sqrt{13+1}=\\sqrt{14}$를 적용했다."
           },
           {
             "choice": "⑤",
             "offeredOption": "$2+\\sqrt{13}$",
-            "reason": "정수·교점 조건 또는 답형을 누락하여 길이/좌표의 다른 양을 택하는 오류"
+            "reason": "$n=4$에서 $AP=\\sqrt{13}$, $BP=1$을 구했지만 $BP$를 한 번 더 더해 $AP+2BP=\\sqrt{13}+2$를 계산했다."
           }
         ],
         "problemVisual": {
@@ -1183,12 +1336,34 @@
           "reason": "원래 꺾인 경로의 반사와 최단선분을 보여주는 도형이 실질적 학습에 필요",
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/C2-solution.svg"
         },
-        "authorSelfCheck": "CHECKED_WITH_EXACT_GEOMETRY_RECOMPUTATION",
+        "authorSelfCheck": "SELF_RECHECK_COMPLETE_20261012",
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_ONLY",
-        "distractorPathStatus": "AUTHOR_PROPOSED_REQUIRES_EXACT_NUMERIC_ERROR_PATH_OPENBOOK"
+        "distractorPathStatus": "AUTHOR_EXACT_4_OF_4_FINAL_CHOICES",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reviewRole": "AUTHOR_NOT_INDEPENDENT",
+          "mathCorrectAnswer": "③",
+          "distractorRoutes": "4_OF_4_EXACT_CALC",
+          "changedFields": [
+            "choices",
+            "review.wrongRoutes",
+            "solution",
+            "solutionImageCaption",
+            "level",
+            "meta.difficultyBucket"
+          ],
+          "previousWrongRoutes": "STALE_SUPERSEDED",
+          "primaryL3Decisive": "A의 대칭점 A'로 unrestricted optimum P0 계산 후 n≥4 경계 반영; alternate direct monotonic method also exists",
+          "problemVisual": "EXEMPT_INPUT_COORDINATES_SUFFICIENT",
+          "solutionVisual": "REUSE_EXISTING_SVG_STATIC_COORDINATE_PARITY",
+          "svgBrowser": "NOT_RUN",
+          "archiveEngine": "NOT_RUN",
+          "externalQuality": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        }
       }
     },
     {
@@ -1198,7 +1373,7 @@
       "slot": "C3",
       "purpose": "C",
       "modeCandidate": "TYPE_BANK",
-      "level": "상",
+      "level": "중",
       "category": "도형의 이동",
       "originalCategory": "도형의 이동",
       "standardCourse": "공통수학2",
@@ -1250,7 +1425,7 @@
           "COND_RANGE"
         ],
         "integrationPattern": "INTERDEPENDENT",
-        "difficultyBucket": 4,
+        "difficultyBucket": 3,
         "experienceAxis": "대칭 최소화와 유한 정수 매개변수를 순서대로 최적화",
         "metadataDebt": [],
         "generatedExtL4Id": "EXT-L4-JEIL25-Q06-REFLECT-MIN-DIST",
@@ -1276,7 +1451,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_SHORTEST_TEMPLATE"
       },
       "review": {
-        "reverseStem": "KEEP: point positions, reflection line and answer target defined; final student question independently reconstructed",
+        "reverseStem": "REVISED: 최종 발문에서 대칭이동·최단거리 판단 복원. 현재 선택지 4개는 각각 구체적 오류식→실제 보기 값으로 재계산",
         "mathSelfCheckEvidence": {
           "A": [
             2,
@@ -1303,22 +1478,22 @@
           {
             "choice": "①",
             "offeredOption": "$\\sqrt{13}$",
-            "reason": "대칭을 하지 않고 원래 두 점의 거리 또는 한 구간 거리만 구하는 오류"
+            "reason": "허용된 $k=4$에서 반사점 $A'=(1,2)$와 $B=(5,4)$의 가로 차 4를 3으로 착각하여 $\\sqrt{3^2+2^2}=\\sqrt{13}$을 얻었다."
           },
           {
             "choice": "③",
             "offeredOption": "$\\sqrt{17}$",
-            "reason": "수선 거리 또는 한 축 좌표차만 사용하는 오류"
+            "reason": "허용된 $k=1$ 또는 $k=3$만 검사하여 $A'B=\\sqrt{4^2+1^2}=\\sqrt{17}$을 얻고 더 작은 $k=2$를 빠뜨렸다."
           },
           {
             "choice": "④",
             "offeredOption": "$2\\sqrt5$",
-            "reason": "대칭 후 두 성분의 길이제곱·근호 계산에 생기는 오류"
+            "reason": "허용된 $k=4$만 검사해 $A'B=\\sqrt{4^2+2^2}=\\sqrt{20}=2\\sqrt5$로 답하고 $k=2$를 빼먹었다."
           },
           {
             "choice": "⑤",
             "offeredOption": "$5$",
-            "reason": "정수·교점 조건 또는 답형을 누락하여 길이/좌표의 다른 양을 택하는 오류"
+            "reason": "범위를 넘어선 $k=5$까지 잘못 허용하면 $A'B=\\sqrt{4^2+3^2}=5$를 얻는다."
           }
         ],
         "problemVisual": {
@@ -1330,12 +1505,32 @@
           "reason": "원래 꺾인 경로의 반사와 최단선분을 보여주는 도형이 실질적 학습에 필요",
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/C3-solution.svg"
         },
-        "authorSelfCheck": "CHECKED_WITH_EXACT_GEOMETRY_RECOMPUTATION",
+        "authorSelfCheck": "SELF_RECHECK_COMPLETE_20261012",
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_ONLY",
-        "distractorPathStatus": "AUTHOR_PROPOSED_REQUIRES_EXACT_NUMERIC_ERROR_PATH_OPENBOOK"
+        "distractorPathStatus": "AUTHOR_EXACT_4_OF_4_FINAL_CHOICES",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reviewRole": "AUTHOR_NOT_INDEPENDENT",
+          "mathCorrectAnswer": "②",
+          "distractorRoutes": "4_OF_4_EXACT_CALC",
+          "changedFields": [
+            "choices",
+            "review.wrongRoutes",
+            "level",
+            "meta.difficultyBucket"
+          ],
+          "previousWrongRoutes": "STALE_SUPERSEDED",
+          "primaryL3Decisive": "대칭이동을 이용한 최단거리",
+          "problemVisual": "EXEMPT_INPUT_COORDINATES_SUFFICIENT",
+          "solutionVisual": "REUSE_EXISTING_SVG_STATIC_COORDINATE_PARITY",
+          "svgBrowser": "NOT_RUN",
+          "archiveEngine": "NOT_RUN",
+          "externalQuality": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        }
       }
     }
   ]
