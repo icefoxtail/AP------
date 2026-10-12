@@ -20,8 +20,21 @@
     "problemSvgCreated": 0,
     "externalOpenBookReview": "NOT_RUN",
     "studentRelease": "NOT_AUTHORIZED",
-    "status": "AUTHOR_DRAFT_ONLY",
-    "nextQid": 12
+    "status": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+    "nextQid": 12,
+    "selfRecheckStatus": "SELF_RECHECK_COMPLETE",
+    "selfRecheckedItems": 9,
+    "wrongChoiceCalculationChecks": 36,
+    "solutionSvgStaticChecks": "9_OF_9_POINT_ANCHORS_AND_401_SAMPLES",
+    "answerDistribution": {
+      "①": 2,
+      "②": 2,
+      "③": 2,
+      "④": 2,
+      "⑤": 1
+    },
+    "browserRender": "NOT_RUN",
+    "nextSelfRecheckQid": 12
   },
   "questions": [
     {
@@ -51,14 +64,14 @@
       "wide": false,
       "content": "무리함수 $y=\\sqrt{-x-1}-2$의 그래프가 지나는 사분면을 모두 고른 것은?",
       "choices": [
-        "제1, 2사분면",
         "제1, 3, 4사분면",
-        "제1, 4사분면",
+        "제2, 3사분면",
         "제2, 3, 4사분면",
-        "제2, 3사분면"
+        "제3사분면",
+        "제2사분면"
       ],
-      "answer": "⑤",
-      "solution": "$t=\\sqrt{-x-1}\\ge0$으로 놓으면 $x=-1-t^2$, $y=-2+t$이다.\\n정의역은 $x\\le-1$이고, $y=0$인 점은 $x=-5$이다.\\n$t=2.25$인 경우 $x=-6.0625,\\ y=0.25$이므로 제2사분면을 지난다.\n$t=0.25$인 경우 $x=-1.0625,\\ y=-1.75$이므로 제3사분면을 지난다.\\n따라서 그래프가 지나는 사분면은 제2, 제3사분면이다.\\n따라서 정답은 ⑤이다.",
+      "answer": "②",
+      "solution": "근호의 값을 $t$로 두면 $t\\ge0$이고, $x=-1-t^2$, $y=-2+t$이다.\n$t=2$일 때 $y=0$이므로 $x=-5$이다.\n$t=1$이면 $(x,y)=(-2,-1)$이므로 제3사분면을 지난다.\n$t=3$이면 $(x,y)=(-10,1)$이므로 제2사분면을 지난다.\n$x$, $y$의 부호가 바뀌는 경계는 위 경우뿐이므로 그래프가 지나는 사분면은 제2, 3사분면뿐이다.\n따라서 정답은 ②이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/A1-solution.svg",
       "solutionImageAlt": "무리함수의 정의역 끝점과 x절편 및 그래프가 지나는 사분면",
       "solutionImageCaption": "정의역의 부호와 함숫값의 부호를 구별하여 사분면을 판단한다.",
@@ -104,7 +117,7 @@
         "legacyRpmRecordMappingStatus": "FAMILY_ACTIVE_NOT_EXACT_QUADRANT_L4"
       },
       "review": {
-        "reverseStem": "KEEP: 함수식의 정의역·수평방향·수직이동이 발문에 모두 주어지고 사분면의 기준이 명확",
+        "reverseStem": "REVISED: 학생용 함수식→경계점→지나는 사분면을 역독해. 실제 정답은 보존하고 4개 오답을 수평/가로방향/근호상하/세로이동 부호 오류로 재설계; 모든 보기의 오답 사분면 집합을 해당 잘못된 식으로 산출했다.",
         "mathSelfCheckEvidence": {
           "h": -1,
           "sx": -1,
@@ -116,40 +129,140 @@
           ],
           "witness": {
             "2": {
-              "t": 2.25,
-              "x": -6.0625,
-              "y": 0.25
+              "t": 3,
+              "x": -10,
+              "y": 1,
+              "quadrant": 2
             },
             "3": {
-              "t": 0.25,
-              "x": -1.0625,
-              "y": -1.75
+              "t": 1,
+              "x": -2,
+              "y": -1,
+              "quadrant": 3
             }
           },
           "domain": "x\\le-1",
           "xIntercept": -5,
-          "uniqueCorrectChoice": 5
+          "uniqueCorrectChoice": 2,
+          "xAxisT": 2,
+          "yAxisT": null
         },
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredOption": "제1, 2사분면",
-            "reason": "제3사분면의 실제 점 (-1.0625,-1.75)을 누락"
-          },
-          {
-            "choice": "②",
             "offeredOption": "제1, 3, 4사분면",
-            "reason": "제2사분면의 실제 점 (-6.0625,0.25)을 누락"
+            "reason": "가로 진행 방향의 부호를 반대로 해석",
+            "incorrectParametricModel": "t≥0, x=-1+t², y=-2+t",
+            "signBoundaryCalculation": {
+              "xAxisT": 2,
+              "yAxisT": 1
+            },
+            "derivedQuadrants": [
+              1,
+              3,
+              4
+            ],
+            "quadrantCoordinateCalculations": {
+              "1": {
+                "t": 3,
+                "x": 8,
+                "y": 1,
+                "quadrant": 1
+              },
+              "3": {
+                "t": 0.5,
+                "x": -0.75,
+                "y": -1.5,
+                "quadrant": 3
+              },
+              "4": {
+                "t": 1.5,
+                "x": 1.25,
+                "y": -0.5,
+                "quadrant": 4
+              }
+            },
+            "producedOption": "제1, 3, 4사분면"
           },
           {
             "choice": "③",
-            "offeredOption": "제1, 4사분면",
-            "reason": "제2,3사분면의 실제 점 (-6.0625,0.25)·(-1.0625,-1.75)을 누락"
+            "offeredOption": "제2, 3, 4사분면",
+            "reason": "수평이동 기준점의 부호를 반대로 대입",
+            "incorrectParametricModel": "t≥0, x=1-t², y=-2+t",
+            "signBoundaryCalculation": {
+              "xAxisT": 2,
+              "yAxisT": 1
+            },
+            "derivedQuadrants": [
+              2,
+              3,
+              4
+            ],
+            "quadrantCoordinateCalculations": {
+              "2": {
+                "t": 3,
+                "x": -8,
+                "y": 1,
+                "quadrant": 2
+              },
+              "3": {
+                "t": 1.5,
+                "x": -1.25,
+                "y": -0.5,
+                "quadrant": 3
+              },
+              "4": {
+                "t": 0.5,
+                "x": 0.75,
+                "y": -1.5,
+                "quadrant": 4
+              }
+            },
+            "producedOption": "제2, 3, 4사분면"
           },
           {
             "choice": "④",
-            "offeredOption": "제2, 3, 4사분면",
-            "reason": "제4사분면을 지나지 않는데 정의역의 x부호 또는 근호의 y부호를 거꾸로 판단"
+            "offeredOption": "제3사분면",
+            "reason": "근호항의 상하 방향 부호를 반대로 해석",
+            "incorrectParametricModel": "t≥0, x=-1-t², y=-2-t",
+            "signBoundaryCalculation": {
+              "xAxisT": null,
+              "yAxisT": null
+            },
+            "derivedQuadrants": [
+              3
+            ],
+            "quadrantCoordinateCalculations": {
+              "3": {
+                "t": 1,
+                "x": -2,
+                "y": -3,
+                "quadrant": 3
+              }
+            },
+            "producedOption": "제3사분면"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "제2사분면",
+            "reason": "세로 평행이동 상수의 부호를 반대로 대입",
+            "incorrectParametricModel": "t≥0, x=-1-t², y=2+t",
+            "signBoundaryCalculation": {
+              "xAxisT": null,
+              "yAxisT": null
+            },
+            "derivedQuadrants": [
+              2
+            ],
+            "quadrantCoordinateCalculations": {
+              "2": {
+                "t": 1,
+                "x": -2,
+                "y": 3,
+                "quadrant": 2
+              }
+            },
+            "producedOption": "제2사분면"
           }
         ],
         "problemVisual": {
@@ -164,7 +277,48 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "decision": "REVISED",
+          "reason": "5지의 정답 번호 과밀과 기존 오답의 계산 경로 증거 부족을 수정",
+          "uid": "ALITE-JEIL25-2FINAL-Q11-A1",
+          "sourceQid": 11,
+          "primaryL3": "H1-RPM-266",
+          "finalTruth": [
+            2,
+            3
+          ],
+          "finalChoice": "②",
+          "checkedDistractors": 4,
+          "wrongRouteCalculationCoverage": "4/4",
+          "witness": [
+            {
+              "t": 1,
+              "x": -2,
+              "y": -1,
+              "quadrant": 3
+            },
+            {
+              "t": 3,
+              "x": -10,
+              "y": 1,
+              "quadrant": 2
+            }
+          ],
+          "problemVisual": "EXEMPT_MATH_SUFFICIENT",
+          "solutionVisual": "EXISTING_SVG_STATIC_ANCHORS_AND_401_POINT_CURVE",
+          "calculationRechecked": "CURRENT_FINAL_CHOICES",
+          "priorEvidence": "SUPERSEDED_WRONG_ROUTES_ANSWER_AND_SOLUTION",
+          "oldLevel": "중",
+          "newLevel": "중",
+          "oldDifficulty": 2,
+          "newDifficulty": 2,
+          "difficultyReason": "정의역과 y부호 분석 중 난도",
+          "externalGPT": "NOT_RUN",
+          "studentEngine": "NOT_RUN",
+          "browser": "NOT_RUN"
+        }
       }
     },
     {
@@ -194,14 +348,14 @@
       "wide": false,
       "content": "무리함수 $y=\\sqrt{-x-2}-3$의 그래프가 지나는 사분면을 모두 고른 것은?",
       "choices": [
-        "제1, 2, 3사분면",
-        "제1, 3, 4사분면",
-        "제1, 4사분면",
         "제2, 3, 4사분면",
-        "제2, 3사분면"
+        "제1, 3, 4사분면",
+        "제3사분면",
+        "제2, 3사분면",
+        "제2사분면"
       ],
-      "answer": "⑤",
-      "solution": "$t=\\sqrt{-x-2}\\ge0$으로 놓으면 $x=-2-t^2$, $y=-3+t$이다.\\n정의역은 $x\\le-2$이고, $y=0$인 점은 $x=-11$이다.\\n$t=3.25$인 경우 $x=-12.5625,\\ y=0.25$이므로 제2사분면을 지난다.\n$t=0.25$인 경우 $x=-2.0625,\\ y=-2.75$이므로 제3사분면을 지난다.\\n따라서 그래프가 지나는 사분면은 제2, 제3사분면이다.\\n따라서 정답은 ⑤이다.",
+      "answer": "④",
+      "solution": "근호의 값을 $t$로 두면 $t\\ge0$이고, $x=-2-t^2$, $y=-3+t$이다.\n$t=3$일 때 $y=0$이므로 $x=-11$이다.\n$t=1$이면 $(x,y)=(-3,-2)$이므로 제3사분면을 지난다.\n$t=4$이면 $(x,y)=(-18,1)$이므로 제2사분면을 지난다.\n$x$, $y$의 부호가 바뀌는 경계는 위 경우뿐이므로 그래프가 지나는 사분면은 제2, 3사분면뿐이다.\n따라서 정답은 ④이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/A2-solution.svg",
       "solutionImageAlt": "무리함수의 정의역 끝점과 x절편 및 그래프가 지나는 사분면",
       "solutionImageCaption": "정의역의 부호와 함숫값의 부호를 구별하여 사분면을 판단한다.",
@@ -247,7 +401,7 @@
         "legacyRpmRecordMappingStatus": "FAMILY_ACTIVE_NOT_EXACT_QUADRANT_L4"
       },
       "review": {
-        "reverseStem": "KEEP: 함수식의 정의역·수평방향·수직이동이 발문에 모두 주어지고 사분면의 기준이 명확",
+        "reverseStem": "REVISED: 학생용 함수식→경계점→지나는 사분면을 역독해. 실제 정답은 보존하고 4개 오답을 수평/가로방향/근호상하/세로이동 부호 오류로 재설계; 모든 보기의 오답 사분면 집합을 해당 잘못된 식으로 산출했다.",
         "mathSelfCheckEvidence": {
           "h": -2,
           "sx": -1,
@@ -259,40 +413,140 @@
           ],
           "witness": {
             "2": {
-              "t": 3.25,
-              "x": -12.5625,
-              "y": 0.25
+              "t": 4,
+              "x": -18,
+              "y": 1,
+              "quadrant": 2
             },
             "3": {
-              "t": 0.25,
-              "x": -2.0625,
-              "y": -2.75
+              "t": 1,
+              "x": -3,
+              "y": -2,
+              "quadrant": 3
             }
           },
           "domain": "x\\le-2",
           "xIntercept": -11,
-          "uniqueCorrectChoice": 5
+          "uniqueCorrectChoice": 4,
+          "xAxisT": 3,
+          "yAxisT": null
         },
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredOption": "제1, 2, 3사분면",
-            "reason": "제1사분면을 지나지 않는데 정의역의 x부호 또는 근호의 y부호를 거꾸로 판단"
+            "offeredOption": "제2, 3, 4사분면",
+            "reason": "수평이동 기준점의 부호를 반대로 대입",
+            "incorrectParametricModel": "t≥0, x=2-t², y=-3+t",
+            "signBoundaryCalculation": {
+              "xAxisT": 3,
+              "yAxisT": 1.414214
+            },
+            "derivedQuadrants": [
+              2,
+              3,
+              4
+            ],
+            "quadrantCoordinateCalculations": {
+              "2": {
+                "t": 4,
+                "x": -14,
+                "y": 1,
+                "quadrant": 2
+              },
+              "3": {
+                "t": 2.207107,
+                "x": -2.87132,
+                "y": -0.792893,
+                "quadrant": 3
+              },
+              "4": {
+                "t": 0.707107,
+                "x": 1.5,
+                "y": -2.292893,
+                "quadrant": 4
+              }
+            },
+            "producedOption": "제2, 3, 4사분면"
           },
           {
             "choice": "②",
             "offeredOption": "제1, 3, 4사분면",
-            "reason": "제2사분면의 실제 점 (-12.5625,0.25)을 누락"
+            "reason": "가로 진행 방향의 부호를 반대로 해석",
+            "incorrectParametricModel": "t≥0, x=-2+t², y=-3+t",
+            "signBoundaryCalculation": {
+              "xAxisT": 3,
+              "yAxisT": 1.414214
+            },
+            "derivedQuadrants": [
+              1,
+              3,
+              4
+            ],
+            "quadrantCoordinateCalculations": {
+              "1": {
+                "t": 4,
+                "x": 14,
+                "y": 1,
+                "quadrant": 1
+              },
+              "3": {
+                "t": 0.707107,
+                "x": -1.5,
+                "y": -2.292893,
+                "quadrant": 3
+              },
+              "4": {
+                "t": 2.207107,
+                "x": 2.87132,
+                "y": -0.792893,
+                "quadrant": 4
+              }
+            },
+            "producedOption": "제1, 3, 4사분면"
           },
           {
             "choice": "③",
-            "offeredOption": "제1, 4사분면",
-            "reason": "제2,3사분면의 실제 점 (-12.5625,0.25)·(-2.0625,-2.75)을 누락"
+            "offeredOption": "제3사분면",
+            "reason": "근호항의 상하 방향 부호를 반대로 해석",
+            "incorrectParametricModel": "t≥0, x=-2-t², y=-3-t",
+            "signBoundaryCalculation": {
+              "xAxisT": null,
+              "yAxisT": null
+            },
+            "derivedQuadrants": [
+              3
+            ],
+            "quadrantCoordinateCalculations": {
+              "3": {
+                "t": 1,
+                "x": -3,
+                "y": -4,
+                "quadrant": 3
+              }
+            },
+            "producedOption": "제3사분면"
           },
           {
-            "choice": "④",
-            "offeredOption": "제2, 3, 4사분면",
-            "reason": "제4사분면을 지나지 않는데 정의역의 x부호 또는 근호의 y부호를 거꾸로 판단"
+            "choice": "⑤",
+            "offeredOption": "제2사분면",
+            "reason": "세로 평행이동 상수의 부호를 반대로 대입",
+            "incorrectParametricModel": "t≥0, x=-2-t², y=3+t",
+            "signBoundaryCalculation": {
+              "xAxisT": null,
+              "yAxisT": null
+            },
+            "derivedQuadrants": [
+              2
+            ],
+            "quadrantCoordinateCalculations": {
+              "2": {
+                "t": 1,
+                "x": -3,
+                "y": 4,
+                "quadrant": 2
+              }
+            },
+            "producedOption": "제2사분면"
           }
         ],
         "problemVisual": {
@@ -307,7 +561,48 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "decision": "REVISED",
+          "reason": "5지의 정답 번호 과밀과 기존 오답의 계산 경로 증거 부족을 수정",
+          "uid": "ALITE-JEIL25-2FINAL-Q11-A2",
+          "sourceQid": 11,
+          "primaryL3": "H1-RPM-266",
+          "finalTruth": [
+            2,
+            3
+          ],
+          "finalChoice": "④",
+          "checkedDistractors": 4,
+          "wrongRouteCalculationCoverage": "4/4",
+          "witness": [
+            {
+              "t": 1,
+              "x": -3,
+              "y": -2,
+              "quadrant": 3
+            },
+            {
+              "t": 4,
+              "x": -18,
+              "y": 1,
+              "quadrant": 2
+            }
+          ],
+          "problemVisual": "EXEMPT_MATH_SUFFICIENT",
+          "solutionVisual": "EXISTING_SVG_STATIC_ANCHORS_AND_401_POINT_CURVE",
+          "calculationRechecked": "CURRENT_FINAL_CHOICES",
+          "priorEvidence": "SUPERSEDED_WRONG_ROUTES_ANSWER_AND_SOLUTION",
+          "oldLevel": "중",
+          "newLevel": "중",
+          "oldDifficulty": 2,
+          "newDifficulty": 2,
+          "difficultyReason": "정의역과 y부호 분석 중 난도",
+          "externalGPT": "NOT_RUN",
+          "studentEngine": "NOT_RUN",
+          "browser": "NOT_RUN"
+        }
       }
     },
     {
@@ -337,14 +632,14 @@
       "wide": false,
       "content": "무리함수 $y=\\sqrt{-x-3}-1$의 그래프가 지나는 사분면을 모두 고른 것은?",
       "choices": [
-        "제1, 2사분면",
-        "제1, 3, 4사분면",
-        "제1, 4사분면",
-        "제2, 3, 4사분면",
+        "제1, 2, 4사분면",
+        "제1, 2, 3사분면",
+        "제3사분면",
+        "제2사분면",
         "제2, 3사분면"
       ],
       "answer": "⑤",
-      "solution": "$t=\\sqrt{-x-3}\\ge0$으로 놓으면 $x=-3-t^2$, $y=-1+t$이다.\\n정의역은 $x\\le-3$이고, $y=0$인 점은 $x=-4$이다.\\n$t=1.25$인 경우 $x=-4.5625,\\ y=0.25$이므로 제2사분면을 지난다.\n$t=0.25$인 경우 $x=-3.0625,\\ y=-0.75$이므로 제3사분면을 지난다.\\n따라서 그래프가 지나는 사분면은 제2, 제3사분면이다.\\n따라서 정답은 ⑤이다.",
+      "solution": "근호의 값을 $t$로 두면 $t\\ge0$이고, $x=-3-t^2$, $y=-1+t$이다.\n$t=1$일 때 $y=0$이므로 $x=-4$이다.\n$t=0$이면 $(x,y)=(-3,-1)$이므로 제3사분면을 지난다.\n$t=2$이면 $(x,y)=(-7,1)$이므로 제2사분면을 지난다.\n$x$, $y$의 부호가 바뀌는 경계는 위 경우뿐이므로 그래프가 지나는 사분면은 제2, 3사분면뿐이다.\n따라서 정답은 ⑤이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/A3-solution.svg",
       "solutionImageAlt": "무리함수의 정의역 끝점과 x절편 및 그래프가 지나는 사분면",
       "solutionImageCaption": "정의역의 부호와 함숫값의 부호를 구별하여 사분면을 판단한다.",
@@ -390,7 +685,7 @@
         "legacyRpmRecordMappingStatus": "FAMILY_ACTIVE_NOT_EXACT_QUADRANT_L4"
       },
       "review": {
-        "reverseStem": "KEEP: 함수식의 정의역·수평방향·수직이동이 발문에 모두 주어지고 사분면의 기준이 명확",
+        "reverseStem": "REVISED: 학생용 함수식→경계점→지나는 사분면을 역독해. 실제 정답은 보존하고 4개 오답을 수평/가로방향/근호상하/세로이동 부호 오류로 재설계; 모든 보기의 오답 사분면 집합을 해당 잘못된 식으로 산출했다.",
         "mathSelfCheckEvidence": {
           "h": -3,
           "sx": -1,
@@ -402,40 +697,140 @@
           ],
           "witness": {
             "2": {
-              "t": 1.25,
-              "x": -4.5625,
-              "y": 0.25
+              "t": 2,
+              "x": -7,
+              "y": 1,
+              "quadrant": 2
             },
             "3": {
-              "t": 0.25,
-              "x": -3.0625,
-              "y": -0.75
+              "t": 0,
+              "x": -3,
+              "y": -1,
+              "quadrant": 3
             }
           },
           "domain": "x\\le-3",
           "xIntercept": -4,
-          "uniqueCorrectChoice": 5
+          "uniqueCorrectChoice": 5,
+          "xAxisT": 1,
+          "yAxisT": null
         },
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredOption": "제1, 2사분면",
-            "reason": "제3사분면의 실제 점 (-3.0625,-0.75)을 누락"
+            "offeredOption": "제1, 2, 4사분면",
+            "reason": "수평이동 기준점의 부호를 반대로 대입",
+            "incorrectParametricModel": "t≥0, x=3-t², y=-1+t",
+            "signBoundaryCalculation": {
+              "xAxisT": 1,
+              "yAxisT": 1.732051
+            },
+            "derivedQuadrants": [
+              1,
+              2,
+              4
+            ],
+            "quadrantCoordinateCalculations": {
+              "1": {
+                "t": 1.366025,
+                "x": 1.133975,
+                "y": 0.366025,
+                "quadrant": 1
+              },
+              "2": {
+                "t": 2.732051,
+                "x": -4.464102,
+                "y": 1.732051,
+                "quadrant": 2
+              },
+              "4": {
+                "t": 0.5,
+                "x": 2.75,
+                "y": -0.5,
+                "quadrant": 4
+              }
+            },
+            "producedOption": "제1, 2, 4사분면"
           },
           {
             "choice": "②",
-            "offeredOption": "제1, 3, 4사분면",
-            "reason": "제2사분면의 실제 점 (-4.5625,0.25)을 누락"
+            "offeredOption": "제1, 2, 3사분면",
+            "reason": "가로 진행 방향의 부호를 반대로 해석",
+            "incorrectParametricModel": "t≥0, x=-3+t², y=-1+t",
+            "signBoundaryCalculation": {
+              "xAxisT": 1,
+              "yAxisT": 1.732051
+            },
+            "derivedQuadrants": [
+              1,
+              2,
+              3
+            ],
+            "quadrantCoordinateCalculations": {
+              "1": {
+                "t": 2.732051,
+                "x": 4.464102,
+                "y": 1.732051,
+                "quadrant": 1
+              },
+              "2": {
+                "t": 1.366025,
+                "x": -1.133975,
+                "y": 0.366025,
+                "quadrant": 2
+              },
+              "3": {
+                "t": 0.5,
+                "x": -2.75,
+                "y": -0.5,
+                "quadrant": 3
+              }
+            },
+            "producedOption": "제1, 2, 3사분면"
           },
           {
             "choice": "③",
-            "offeredOption": "제1, 4사분면",
-            "reason": "제2,3사분면의 실제 점 (-4.5625,0.25)·(-3.0625,-0.75)을 누락"
+            "offeredOption": "제3사분면",
+            "reason": "근호항의 상하 방향 부호를 반대로 해석",
+            "incorrectParametricModel": "t≥0, x=-3-t², y=-1-t",
+            "signBoundaryCalculation": {
+              "xAxisT": null,
+              "yAxisT": null
+            },
+            "derivedQuadrants": [
+              3
+            ],
+            "quadrantCoordinateCalculations": {
+              "3": {
+                "t": 1,
+                "x": -4,
+                "y": -2,
+                "quadrant": 3
+              }
+            },
+            "producedOption": "제3사분면"
           },
           {
             "choice": "④",
-            "offeredOption": "제2, 3, 4사분면",
-            "reason": "제4사분면을 지나지 않는데 정의역의 x부호 또는 근호의 y부호를 거꾸로 판단"
+            "offeredOption": "제2사분면",
+            "reason": "세로 평행이동 상수의 부호를 반대로 대입",
+            "incorrectParametricModel": "t≥0, x=-3-t², y=1+t",
+            "signBoundaryCalculation": {
+              "xAxisT": null,
+              "yAxisT": null
+            },
+            "derivedQuadrants": [
+              2
+            ],
+            "quadrantCoordinateCalculations": {
+              "2": {
+                "t": 1,
+                "x": -4,
+                "y": 2,
+                "quadrant": 2
+              }
+            },
+            "producedOption": "제2사분면"
           }
         ],
         "problemVisual": {
@@ -450,7 +845,48 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "decision": "REVISED",
+          "reason": "5지의 정답 번호 과밀과 기존 오답의 계산 경로 증거 부족을 수정",
+          "uid": "ALITE-JEIL25-2FINAL-Q11-A3",
+          "sourceQid": 11,
+          "primaryL3": "H1-RPM-266",
+          "finalTruth": [
+            2,
+            3
+          ],
+          "finalChoice": "⑤",
+          "checkedDistractors": 4,
+          "wrongRouteCalculationCoverage": "4/4",
+          "witness": [
+            {
+              "t": 0,
+              "x": -3,
+              "y": -1,
+              "quadrant": 3
+            },
+            {
+              "t": 2,
+              "x": -7,
+              "y": 1,
+              "quadrant": 2
+            }
+          ],
+          "problemVisual": "EXEMPT_MATH_SUFFICIENT",
+          "solutionVisual": "EXISTING_SVG_STATIC_ANCHORS_AND_401_POINT_CURVE",
+          "calculationRechecked": "CURRENT_FINAL_CHOICES",
+          "priorEvidence": "SUPERSEDED_WRONG_ROUTES_ANSWER_AND_SOLUTION",
+          "oldLevel": "중",
+          "newLevel": "중",
+          "oldDifficulty": 2,
+          "newDifficulty": 2,
+          "difficultyReason": "정의역과 y부호 분석 중 난도",
+          "externalGPT": "NOT_RUN",
+          "studentEngine": "NOT_RUN",
+          "browser": "NOT_RUN"
+        }
       }
     },
     {
@@ -480,14 +916,14 @@
       "wide": false,
       "content": "무리함수 $y=\\sqrt{x-2}-2$의 그래프가 지나는 사분면을 모두 고른 것은?",
       "choices": [
-        "제1, 2, 3사분면",
-        "제1, 3, 4사분면",
         "제1, 4사분면",
+        "제1, 3, 4사분면",
         "제2, 3, 4사분면",
-        "제2, 3사분면"
+        "제4사분면",
+        "제1사분면"
       ],
-      "answer": "③",
-      "solution": "$t=\\sqrt{x-2}\\ge0$으로 놓으면 $x=2+t^2$, $y=-2+t$이다.\\n정의역은 $x\\ge2$이고, $y=0$인 점은 $x=6$이다.\\n$t=2.25$인 경우 $x=7.0625,\\ y=0.25$이므로 제1사분면을 지난다.\n$t=0.25$인 경우 $x=2.0625,\\ y=-1.75$이므로 제4사분면을 지난다.\\n따라서 그래프가 지나는 사분면은 제1, 제4사분면이다.\\n따라서 정답은 ③이다.",
+      "answer": "①",
+      "solution": "근호의 값을 $t$로 두면 $t\\ge0$이고, $x=2+t^2$, $y=-2+t$이다.\n$t=2$일 때 $y=0$이므로 $x=6$이다.\n$t=1$이면 $(x,y)=(3,-1)$이므로 제4사분면을 지난다.\n$t=3$이면 $(x,y)=(11,1)$이므로 제1사분면을 지난다.\n$x$, $y$의 부호가 바뀌는 경계는 위 경우뿐이므로 그래프가 지나는 사분면은 제1, 4사분면뿐이다.\n따라서 정답은 ①이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/B1-solution.svg",
       "solutionImageAlt": "무리함수의 정의역 끝점과 x절편 및 그래프가 지나는 사분면",
       "solutionImageCaption": "정의역의 부호와 함숫값의 부호를 구별하여 사분면을 판단한다.",
@@ -508,7 +944,7 @@
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 3,
+        "difficultyBucket": 2,
         "metadataDebt": [],
         "generatedExtL4Id": "EXT-L4-JEIL25-Q11-RADICAL-QUADRANTS",
         "effectiveL4Id": "EXT-L4-JEIL25-Q11-RADICAL-QUADRANTS",
@@ -533,7 +969,7 @@
         "legacyRpmRecordMappingStatus": "FAMILY_ACTIVE_NOT_EXACT_QUADRANT_L4"
       },
       "review": {
-        "reverseStem": "KEEP: 함수식의 정의역·수평방향·수직이동이 발문에 모두 주어지고 사분면의 기준이 명확",
+        "reverseStem": "REVISED: 학생용 함수식→경계점→지나는 사분면을 역독해. 실제 정답은 보존하고 4개 오답을 수평/가로방향/근호상하/세로이동 부호 오류로 재설계; 모든 보기의 오답 사분면 집합을 해당 잘못된 식으로 산출했다.",
         "mathSelfCheckEvidence": {
           "h": 2,
           "sx": 1,
@@ -545,40 +981,140 @@
           ],
           "witness": {
             "1": {
-              "t": 2.25,
-              "x": 7.0625,
-              "y": 0.25
+              "t": 3,
+              "x": 11,
+              "y": 1,
+              "quadrant": 1
             },
             "4": {
-              "t": 0.25,
-              "x": 2.0625,
-              "y": -1.75
+              "t": 1,
+              "x": 3,
+              "y": -1,
+              "quadrant": 4
             }
           },
           "domain": "x\\ge2",
           "xIntercept": 6,
-          "uniqueCorrectChoice": 3
+          "uniqueCorrectChoice": 1,
+          "xAxisT": 2,
+          "yAxisT": null
         },
         "wrongRoutes": [
           {
-            "choice": "①",
-            "offeredOption": "제1, 2, 3사분면",
-            "reason": "제4사분면의 실제 점 (2.0625,-1.75)을 누락"
-          },
-          {
             "choice": "②",
             "offeredOption": "제1, 3, 4사분면",
-            "reason": "제3사분면을 지나지 않는데 정의역의 x부호 또는 근호의 y부호를 거꾸로 판단"
+            "reason": "수평이동 기준점의 부호를 반대로 대입",
+            "incorrectParametricModel": "t≥0, x=-2+t², y=-2+t",
+            "signBoundaryCalculation": {
+              "xAxisT": 2,
+              "yAxisT": 1.414214
+            },
+            "derivedQuadrants": [
+              1,
+              3,
+              4
+            ],
+            "quadrantCoordinateCalculations": {
+              "1": {
+                "t": 3,
+                "x": 7,
+                "y": 1,
+                "quadrant": 1
+              },
+              "3": {
+                "t": 0.707107,
+                "x": -1.5,
+                "y": -1.292893,
+                "quadrant": 3
+              },
+              "4": {
+                "t": 1.707107,
+                "x": 0.914214,
+                "y": -0.292893,
+                "quadrant": 4
+              }
+            },
+            "producedOption": "제1, 3, 4사분면"
+          },
+          {
+            "choice": "③",
+            "offeredOption": "제2, 3, 4사분면",
+            "reason": "가로 진행 방향의 부호를 반대로 해석",
+            "incorrectParametricModel": "t≥0, x=2-t², y=-2+t",
+            "signBoundaryCalculation": {
+              "xAxisT": 2,
+              "yAxisT": 1.414214
+            },
+            "derivedQuadrants": [
+              2,
+              3,
+              4
+            ],
+            "quadrantCoordinateCalculations": {
+              "2": {
+                "t": 3,
+                "x": -7,
+                "y": 1,
+                "quadrant": 2
+              },
+              "3": {
+                "t": 1.707107,
+                "x": -0.914214,
+                "y": -0.292893,
+                "quadrant": 3
+              },
+              "4": {
+                "t": 0.707107,
+                "x": 1.5,
+                "y": -1.292893,
+                "quadrant": 4
+              }
+            },
+            "producedOption": "제2, 3, 4사분면"
           },
           {
             "choice": "④",
-            "offeredOption": "제2, 3, 4사분면",
-            "reason": "제1사분면의 실제 점 (7.0625,0.25)을 누락"
+            "offeredOption": "제4사분면",
+            "reason": "근호항의 상하 방향 부호를 반대로 해석",
+            "incorrectParametricModel": "t≥0, x=2+t², y=-2-t",
+            "signBoundaryCalculation": {
+              "xAxisT": null,
+              "yAxisT": null
+            },
+            "derivedQuadrants": [
+              4
+            ],
+            "quadrantCoordinateCalculations": {
+              "4": {
+                "t": 1,
+                "x": 3,
+                "y": -3,
+                "quadrant": 4
+              }
+            },
+            "producedOption": "제4사분면"
           },
           {
             "choice": "⑤",
-            "offeredOption": "제2, 3사분면",
-            "reason": "제1,4사분면의 실제 점 (7.0625,0.25)·(2.0625,-1.75)을 누락"
+            "offeredOption": "제1사분면",
+            "reason": "세로 평행이동 상수의 부호를 반대로 대입",
+            "incorrectParametricModel": "t≥0, x=2+t², y=2+t",
+            "signBoundaryCalculation": {
+              "xAxisT": null,
+              "yAxisT": null
+            },
+            "derivedQuadrants": [
+              1
+            ],
+            "quadrantCoordinateCalculations": {
+              "1": {
+                "t": 1,
+                "x": 3,
+                "y": 3,
+                "quadrant": 1
+              }
+            },
+            "producedOption": "제1사분면"
           }
         ],
         "problemVisual": {
@@ -593,7 +1129,48 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "decision": "REVISED",
+          "reason": "5지의 정답 번호 과밀과 기존 오답의 계산 경로 증거 부족을 수정",
+          "uid": "ALITE-JEIL25-2FINAL-Q11-B1",
+          "sourceQid": 11,
+          "primaryL3": "H1-RPM-266",
+          "finalTruth": [
+            1,
+            4
+          ],
+          "finalChoice": "①",
+          "checkedDistractors": 4,
+          "wrongRouteCalculationCoverage": "4/4",
+          "witness": [
+            {
+              "t": 1,
+              "x": 3,
+              "y": -1,
+              "quadrant": 4
+            },
+            {
+              "t": 3,
+              "x": 11,
+              "y": 1,
+              "quadrant": 1
+            }
+          ],
+          "problemVisual": "EXEMPT_MATH_SUFFICIENT",
+          "solutionVisual": "EXISTING_SVG_STATIC_ANCHORS_AND_401_POINT_CURVE",
+          "calculationRechecked": "CURRENT_FINAL_CHOICES",
+          "priorEvidence": "SUPERSEDED_WRONG_ROUTES_ANSWER_AND_SOLUTION",
+          "oldLevel": "중",
+          "newLevel": "중",
+          "oldDifficulty": 3,
+          "newDifficulty": 2,
+          "difficultyReason": "가로/세로 부호를 확인하는 직접적 중 난도",
+          "externalGPT": "NOT_RUN",
+          "studentEngine": "NOT_RUN",
+          "browser": "NOT_RUN"
+        }
       }
     },
     {
@@ -623,14 +1200,14 @@
       "wide": false,
       "content": "무리함수 $y=-\\sqrt{x-3}+2$의 그래프가 지나는 사분면을 모두 고른 것은?",
       "choices": [
-        "제1, 2사분면",
-        "제1, 3, 4사분면",
+        "제1, 2, 3사분면",
+        "제1, 2, 4사분면",
         "제1, 4사분면",
-        "제2, 3, 4사분면",
-        "제2, 3사분면"
+        "제1사분면",
+        "제4사분면"
       ],
       "answer": "③",
-      "solution": "$t=\\sqrt{x-3}\\ge0$으로 놓으면 $x=3+t^2$, $y=2-t$이다.\\n정의역은 $x\\ge3$이고, $y=0$인 점은 $x=7$이다.\\n$t=0.25$인 경우 $x=3.0625,\\ y=1.75$이므로 제1사분면을 지난다.\n$t=2.25$인 경우 $x=8.0625,\\ y=-0.25$이므로 제4사분면을 지난다.\\n따라서 그래프가 지나는 사분면은 제1, 제4사분면이다.\\n따라서 정답은 ③이다.",
+      "solution": "근호의 값을 $t$로 두면 $t\\ge0$이고, $x=3+t^2$, $y=2-t$이다.\n$t=2$일 때 $y=0$이므로 $x=7$이다.\n$t=1$이면 $(x,y)=(4,1)$이므로 제1사분면을 지난다.\n$t=3$이면 $(x,y)=(12,-1)$이므로 제4사분면을 지난다.\n$x$, $y$의 부호가 바뀌는 경계는 위 경우뿐이므로 그래프가 지나는 사분면은 제1, 4사분면뿐이다.\n따라서 정답은 ③이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/B2-solution.svg",
       "solutionImageAlt": "무리함수의 정의역 끝점과 x절편 및 그래프가 지나는 사분면",
       "solutionImageCaption": "정의역의 부호와 함숫값의 부호를 구별하여 사분면을 판단한다.",
@@ -651,7 +1228,7 @@
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 3,
+        "difficultyBucket": 2,
         "metadataDebt": [],
         "generatedExtL4Id": "EXT-L4-JEIL25-Q11-RADICAL-QUADRANTS",
         "effectiveL4Id": "EXT-L4-JEIL25-Q11-RADICAL-QUADRANTS",
@@ -676,7 +1253,7 @@
         "legacyRpmRecordMappingStatus": "FAMILY_ACTIVE_NOT_EXACT_QUADRANT_L4"
       },
       "review": {
-        "reverseStem": "KEEP: 함수식의 정의역·수평방향·수직이동이 발문에 모두 주어지고 사분면의 기준이 명확",
+        "reverseStem": "REVISED: 학생용 함수식→경계점→지나는 사분면을 역독해. 실제 정답은 보존하고 4개 오답을 수평/가로방향/근호상하/세로이동 부호 오류로 재설계; 모든 보기의 오답 사분면 집합을 해당 잘못된 식으로 산출했다.",
         "mathSelfCheckEvidence": {
           "h": 3,
           "sx": 1,
@@ -688,40 +1265,140 @@
           ],
           "witness": {
             "1": {
-              "t": 0.25,
-              "x": 3.0625,
-              "y": 1.75
+              "t": 1,
+              "x": 4,
+              "y": 1,
+              "quadrant": 1
             },
             "4": {
-              "t": 2.25,
-              "x": 8.0625,
-              "y": -0.25
+              "t": 3,
+              "x": 12,
+              "y": -1,
+              "quadrant": 4
             }
           },
           "domain": "x\\ge3",
           "xIntercept": 7,
-          "uniqueCorrectChoice": 3
+          "uniqueCorrectChoice": 3,
+          "xAxisT": 2,
+          "yAxisT": null
         },
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredOption": "제1, 2사분면",
-            "reason": "제4사분면의 실제 점 (8.0625,-0.25)을 누락"
+            "offeredOption": "제1, 2, 3사분면",
+            "reason": "가로 진행 방향의 부호를 반대로 해석",
+            "incorrectParametricModel": "t≥0, x=3-t², y=2-t",
+            "signBoundaryCalculation": {
+              "xAxisT": 2,
+              "yAxisT": 1.732051
+            },
+            "derivedQuadrants": [
+              1,
+              2,
+              3
+            ],
+            "quadrantCoordinateCalculations": {
+              "1": {
+                "t": 0.866025,
+                "x": 2.25,
+                "y": 1.133975,
+                "quadrant": 1
+              },
+              "2": {
+                "t": 1.866025,
+                "x": -0.482051,
+                "y": 0.133975,
+                "quadrant": 2
+              },
+              "3": {
+                "t": 3,
+                "x": -6,
+                "y": -1,
+                "quadrant": 3
+              }
+            },
+            "producedOption": "제1, 2, 3사분면"
           },
           {
             "choice": "②",
-            "offeredOption": "제1, 3, 4사분면",
-            "reason": "제3사분면을 지나지 않는데 정의역의 x부호 또는 근호의 y부호를 거꾸로 판단"
+            "offeredOption": "제1, 2, 4사분면",
+            "reason": "수평이동 기준점의 부호를 반대로 대입",
+            "incorrectParametricModel": "t≥0, x=-3+t², y=2-t",
+            "signBoundaryCalculation": {
+              "xAxisT": 2,
+              "yAxisT": 1.732051
+            },
+            "derivedQuadrants": [
+              1,
+              2,
+              4
+            ],
+            "quadrantCoordinateCalculations": {
+              "1": {
+                "t": 1.866025,
+                "x": 0.482051,
+                "y": 0.133975,
+                "quadrant": 1
+              },
+              "2": {
+                "t": 0.866025,
+                "x": -2.25,
+                "y": 1.133975,
+                "quadrant": 2
+              },
+              "4": {
+                "t": 3,
+                "x": 6,
+                "y": -1,
+                "quadrant": 4
+              }
+            },
+            "producedOption": "제1, 2, 4사분면"
           },
           {
             "choice": "④",
-            "offeredOption": "제2, 3, 4사분면",
-            "reason": "제1사분면의 실제 점 (3.0625,1.75)을 누락"
+            "offeredOption": "제1사분면",
+            "reason": "근호항의 상하 방향 부호를 반대로 해석",
+            "incorrectParametricModel": "t≥0, x=3+t², y=2+t",
+            "signBoundaryCalculation": {
+              "xAxisT": null,
+              "yAxisT": null
+            },
+            "derivedQuadrants": [
+              1
+            ],
+            "quadrantCoordinateCalculations": {
+              "1": {
+                "t": 1,
+                "x": 4,
+                "y": 3,
+                "quadrant": 1
+              }
+            },
+            "producedOption": "제1사분면"
           },
           {
             "choice": "⑤",
-            "offeredOption": "제2, 3사분면",
-            "reason": "제1,4사분면의 실제 점 (3.0625,1.75)·(8.0625,-0.25)을 누락"
+            "offeredOption": "제4사분면",
+            "reason": "세로 평행이동 상수의 부호를 반대로 대입",
+            "incorrectParametricModel": "t≥0, x=3+t², y=-2-t",
+            "signBoundaryCalculation": {
+              "xAxisT": null,
+              "yAxisT": null
+            },
+            "derivedQuadrants": [
+              4
+            ],
+            "quadrantCoordinateCalculations": {
+              "4": {
+                "t": 1,
+                "x": 4,
+                "y": -3,
+                "quadrant": 4
+              }
+            },
+            "producedOption": "제4사분면"
           }
         ],
         "problemVisual": {
@@ -736,7 +1413,48 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "decision": "REVISED",
+          "reason": "5지의 정답 번호 과밀과 기존 오답의 계산 경로 증거 부족을 수정",
+          "uid": "ALITE-JEIL25-2FINAL-Q11-B2",
+          "sourceQid": 11,
+          "primaryL3": "H1-RPM-266",
+          "finalTruth": [
+            1,
+            4
+          ],
+          "finalChoice": "③",
+          "checkedDistractors": 4,
+          "wrongRouteCalculationCoverage": "4/4",
+          "witness": [
+            {
+              "t": 1,
+              "x": 4,
+              "y": 1,
+              "quadrant": 1
+            },
+            {
+              "t": 3,
+              "x": 12,
+              "y": -1,
+              "quadrant": 4
+            }
+          ],
+          "problemVisual": "EXEMPT_MATH_SUFFICIENT",
+          "solutionVisual": "EXISTING_SVG_STATIC_ANCHORS_AND_401_POINT_CURVE",
+          "calculationRechecked": "CURRENT_FINAL_CHOICES",
+          "priorEvidence": "SUPERSEDED_WRONG_ROUTES_ANSWER_AND_SOLUTION",
+          "oldLevel": "중",
+          "newLevel": "중",
+          "oldDifficulty": 3,
+          "newDifficulty": 2,
+          "difficultyReason": "가로/세로 부호를 확인하는 직접적 중 난도",
+          "externalGPT": "NOT_RUN",
+          "studentEngine": "NOT_RUN",
+          "browser": "NOT_RUN"
+        }
       }
     },
     {
@@ -766,15 +1484,299 @@
       "wide": false,
       "content": "무리함수 $y=\\sqrt{x-1}-3$의 그래프가 지나는 사분면을 모두 고른 것은?",
       "choices": [
-        "제1, 2, 3사분면",
         "제1, 3, 4사분면",
-        "제1, 4사분면",
         "제2, 3, 4사분면",
-        "제2, 3사분면"
+        "제4사분면",
+        "제1, 4사분면",
+        "제1사분면"
       ],
-      "answer": "③",
-      "solution": "$t=\\sqrt{x-1}\\ge0$으로 놓으면 $x=1+t^2$, $y=-3+t$이다.\\n정의역은 $x\\ge1$이고, $y=0$인 점은 $x=10$이다.\\n$t=3.25$인 경우 $x=11.5625,\\ y=0.25$이므로 제1사분면을 지난다.\n$t=0.25$인 경우 $x=1.0625,\\ y=-2.75$이므로 제4사분면을 지난다.\\n따라서 그래프가 지나는 사분면은 제1, 제4사분면이다.\\n따라서 정답은 ③이다.",
+      "answer": "④",
+      "solution": "근호의 값을 $t$로 두면 $t\\ge0$이고, $x=1+t^2$, $y=-3+t$이다.\n$t=3$일 때 $y=0$이므로 $x=10$이다.\n$t=1$이면 $(x,y)=(2,-2)$이므로 제4사분면을 지난다.\n$t=4$이면 $(x,y)=(17,1)$이므로 제1사분면을 지난다.\n$x$, $y$의 부호가 바뀌는 경계는 위 경우뿐이므로 그래프가 지나는 사분면은 제1, 4사분면뿐이다.\n따라서 정답은 ④이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/B3-solution.svg",
+      "solutionImageAlt": "무리함수의 정의역 끝점과 x절편 및 그래프가 지나는 사분면",
+      "solutionImageCaption": "정의역의 부호와 함숫값의 부호를 구별하여 사분면을 판단한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "primaryRPM_L3": "무리함수의 그래프",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "함수 그래프와 사분면",
+        "rpmRecordId": "H1-RPM-266",
+        "rpmL4SemanticLabel": "기본 그래프",
+        "rpmRecordMappingStatus": "GENERATED_L4_ACTIVE_RPM_PARENT",
+        "metaFoundationL3": "함수 그래프와 사분면",
+        "metaFoundationL4": "함수 그래프가 지나는 사분면",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+        "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 2,
+        "metadataDebt": [],
+        "generatedExtL4Id": "EXT-L4-JEIL25-Q11-RADICAL-QUADRANTS",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q11-RADICAL-QUADRANTS",
+        "effectiveL4Authority": "GENERATED_ACTIVE_NEW",
+        "rpmReferenceRole": "CANONICAL_PARENT_RPM_NOT_EXACT_L4",
+        "primaryL3Id": "H1-RPM-266",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "primaryL3DecisiveSemantic": "함수 그래프와 사분면",
+        "rpmL4ReferenceId": "H1-RPM-266",
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED",
+        "metaRegistryAuthority": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_GENERATED_META_REGISTRY_v1.json",
+        "canonicalPtTplStatus": "ACTIVE_CANONICAL_BOTH",
+        "conditionApplicabilityStatus": "NOT_APPLICABLE",
+        "crossConceptApplicabilityStatus": "NOT_APPLICABLE",
+        "previousMetadataDebtResolved": {
+          "priorFields": [
+            "RPM_EXACT_L3_L4_BINDING"
+          ],
+          "resolution": "GENERATED_EXT_L4_OR_CANONICAL_ALIGNMENT",
+          "sourceStage": "CREATE_AUTHOR_META_REPAIR"
+        },
+        "legacyRpmRecordMappingStatus": "FAMILY_ACTIVE_NOT_EXACT_QUADRANT_L4"
+      },
+      "review": {
+        "reverseStem": "REVISED: 학생용 함수식→경계점→지나는 사분면을 역독해. 실제 정답은 보존하고 4개 오답을 수평/가로방향/근호상하/세로이동 부호 오류로 재설계; 모든 보기의 오답 사분면 집합을 해당 잘못된 식으로 산출했다.",
+        "mathSelfCheckEvidence": {
+          "h": 1,
+          "sx": 1,
+          "sy": 1,
+          "k": -3,
+          "quadrants": [
+            1,
+            4
+          ],
+          "witness": {
+            "1": {
+              "t": 4,
+              "x": 17,
+              "y": 1,
+              "quadrant": 1
+            },
+            "4": {
+              "t": 1,
+              "x": 2,
+              "y": -2,
+              "quadrant": 4
+            }
+          },
+          "domain": "x\\ge1",
+          "xIntercept": 10,
+          "uniqueCorrectChoice": 4,
+          "xAxisT": 3,
+          "yAxisT": null
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "제1, 3, 4사분면",
+            "reason": "수평이동 기준점의 부호를 반대로 대입",
+            "incorrectParametricModel": "t≥0, x=-1+t², y=-3+t",
+            "signBoundaryCalculation": {
+              "xAxisT": 3,
+              "yAxisT": 1
+            },
+            "derivedQuadrants": [
+              1,
+              3,
+              4
+            ],
+            "quadrantCoordinateCalculations": {
+              "1": {
+                "t": 4,
+                "x": 15,
+                "y": 1,
+                "quadrant": 1
+              },
+              "3": {
+                "t": 0.5,
+                "x": -0.75,
+                "y": -2.5,
+                "quadrant": 3
+              },
+              "4": {
+                "t": 2,
+                "x": 3,
+                "y": -1,
+                "quadrant": 4
+              }
+            },
+            "producedOption": "제1, 3, 4사분면"
+          },
+          {
+            "choice": "②",
+            "offeredOption": "제2, 3, 4사분면",
+            "reason": "가로 진행 방향의 부호를 반대로 해석",
+            "incorrectParametricModel": "t≥0, x=1-t², y=-3+t",
+            "signBoundaryCalculation": {
+              "xAxisT": 3,
+              "yAxisT": 1
+            },
+            "derivedQuadrants": [
+              2,
+              3,
+              4
+            ],
+            "quadrantCoordinateCalculations": {
+              "2": {
+                "t": 4,
+                "x": -15,
+                "y": 1,
+                "quadrant": 2
+              },
+              "3": {
+                "t": 2,
+                "x": -3,
+                "y": -1,
+                "quadrant": 3
+              },
+              "4": {
+                "t": 0.5,
+                "x": 0.75,
+                "y": -2.5,
+                "quadrant": 4
+              }
+            },
+            "producedOption": "제2, 3, 4사분면"
+          },
+          {
+            "choice": "③",
+            "offeredOption": "제4사분면",
+            "reason": "근호항의 상하 방향 부호를 반대로 해석",
+            "incorrectParametricModel": "t≥0, x=1+t², y=-3-t",
+            "signBoundaryCalculation": {
+              "xAxisT": null,
+              "yAxisT": null
+            },
+            "derivedQuadrants": [
+              4
+            ],
+            "quadrantCoordinateCalculations": {
+              "4": {
+                "t": 1,
+                "x": 2,
+                "y": -4,
+                "quadrant": 4
+              }
+            },
+            "producedOption": "제4사분면"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "제1사분면",
+            "reason": "세로 평행이동 상수의 부호를 반대로 대입",
+            "incorrectParametricModel": "t≥0, x=1+t², y=3+t",
+            "signBoundaryCalculation": {
+              "xAxisT": null,
+              "yAxisT": null
+            },
+            "derivedQuadrants": [
+              1
+            ],
+            "quadrantCoordinateCalculations": {
+              "1": {
+                "t": 1,
+                "x": 2,
+                "y": 4,
+                "quadrant": 1
+              }
+            },
+            "producedOption": "제1사분면"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "함수식 자체로 모든 부호 조건이 명확하므로 문제용 그래프 불필요"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/B3-solution.svg",
+          "reason": "끝점, 좌표축 경계, 사분면 경로를 실제 그래프로 제시"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "decision": "REVISED",
+          "reason": "5지의 정답 번호 과밀과 기존 오답의 계산 경로 증거 부족을 수정",
+          "uid": "ALITE-JEIL25-2FINAL-Q11-B3",
+          "sourceQid": 11,
+          "primaryL3": "H1-RPM-266",
+          "finalTruth": [
+            1,
+            4
+          ],
+          "finalChoice": "④",
+          "checkedDistractors": 4,
+          "wrongRouteCalculationCoverage": "4/4",
+          "witness": [
+            {
+              "t": 1,
+              "x": 2,
+              "y": -2,
+              "quadrant": 4
+            },
+            {
+              "t": 4,
+              "x": 17,
+              "y": 1,
+              "quadrant": 1
+            }
+          ],
+          "problemVisual": "EXEMPT_MATH_SUFFICIENT",
+          "solutionVisual": "EXISTING_SVG_STATIC_ANCHORS_AND_401_POINT_CURVE",
+          "calculationRechecked": "CURRENT_FINAL_CHOICES",
+          "priorEvidence": "SUPERSEDED_WRONG_ROUTES_ANSWER_AND_SOLUTION",
+          "oldLevel": "중",
+          "newLevel": "중",
+          "oldDifficulty": 3,
+          "newDifficulty": 2,
+          "difficultyReason": "가로/세로 부호를 확인하는 직접적 중 난도",
+          "externalGPT": "NOT_RUN",
+          "studentEngine": "NOT_RUN",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-JEIL25-2FINAL-Q11-C1",
+      "sourceQid": 11,
+      "sourceUid": "qid_v1_fcd1380af2d103f9f78c297bf77ffa804e47dc0a0fbd3ce5507c40dd087018e2",
+      "slot": "C1",
+      "purpose": "C",
+      "modeCandidate": "PLUS_ONE",
+      "level": "중",
+      "category": "무리함수",
+      "originalCategory": "무리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "무리함수 $y=\\sqrt{2-x}-3$의 그래프가 지나는 사분면을 모두 고른 것은?",
+      "choices": [
+        "제2, 3사분면",
+        "제2, 3, 4사분면",
+        "제1, 4사분면",
+        "제3, 4사분면",
+        "제1, 2사분면"
+      ],
+      "answer": "②",
+      "solution": "근호의 값을 $t$로 두면 $t\\ge0$이고, $x=2-t^2$, $y=-3+t$이다.\n$t=3$일 때 $y=0$이므로 $x=-7$이다.\n또한 $t=\\sqrt{2}$일 때 $x=0$이므로 이 값을 기준으로 좌우를 구분한다.\n$t=1$이면 $(x,y)=(1,-2)$이므로 제4사분면을 지난다.\n$t=2$이면 $(x,y)=(-2,-1)$이므로 제3사분면을 지난다.\n$t=4$이면 $(x,y)=(-14,1)$이므로 제2사분면을 지난다.\n$x$, $y$의 부호가 바뀌는 경계는 위 경우뿐이므로 그래프가 지나는 사분면은 제2, 3, 4사분면뿐이다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/C1-solution.svg",
       "solutionImageAlt": "무리함수의 정의역 끝점과 x절편 및 그래프가 지나는 사분면",
       "solutionImageCaption": "정의역의 부호와 함숫값의 부호를 구별하여 사분면을 판단한다.",
       "solutionImageSize": "medium",
@@ -819,150 +1821,7 @@
         "legacyRpmRecordMappingStatus": "FAMILY_ACTIVE_NOT_EXACT_QUADRANT_L4"
       },
       "review": {
-        "reverseStem": "KEEP: 함수식의 정의역·수평방향·수직이동이 발문에 모두 주어지고 사분면의 기준이 명확",
-        "mathSelfCheckEvidence": {
-          "h": 1,
-          "sx": 1,
-          "sy": 1,
-          "k": -3,
-          "quadrants": [
-            1,
-            4
-          ],
-          "witness": {
-            "1": {
-              "t": 3.25,
-              "x": 11.5625,
-              "y": 0.25
-            },
-            "4": {
-              "t": 0.25,
-              "x": 1.0625,
-              "y": -2.75
-            }
-          },
-          "domain": "x\\ge1",
-          "xIntercept": 10,
-          "uniqueCorrectChoice": 3
-        },
-        "wrongRoutes": [
-          {
-            "choice": "①",
-            "offeredOption": "제1, 2, 3사분면",
-            "reason": "제4사분면의 실제 점 (1.0625,-2.75)을 누락"
-          },
-          {
-            "choice": "②",
-            "offeredOption": "제1, 3, 4사분면",
-            "reason": "제3사분면을 지나지 않는데 정의역의 x부호 또는 근호의 y부호를 거꾸로 판단"
-          },
-          {
-            "choice": "④",
-            "offeredOption": "제2, 3, 4사분면",
-            "reason": "제1사분면의 실제 점 (11.5625,0.25)을 누락"
-          },
-          {
-            "choice": "⑤",
-            "offeredOption": "제2, 3사분면",
-            "reason": "제1,4사분면의 실제 점 (11.5625,0.25)·(1.0625,-2.75)을 누락"
-          }
-        ],
-        "problemVisual": {
-          "status": "EXEMPT",
-          "reason": "함수식 자체로 모든 부호 조건이 명확하므로 문제용 그래프 불필요"
-        },
-        "solutionVisual": {
-          "status": "ADD_NEW_VISUAL",
-          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/B3-solution.svg",
-          "reason": "끝점, 좌표축 경계, 사분면 경로를 실제 그래프로 제시"
-        },
-        "externalOpenBookReview": "NOT_RUN",
-        "realEngineRender": "NOT_RUN",
-        "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
-      }
-    },
-    {
-      "id": 7,
-      "uid": "ALITE-JEIL25-2FINAL-Q11-C1",
-      "sourceQid": 11,
-      "sourceUid": "qid_v1_fcd1380af2d103f9f78c297bf77ffa804e47dc0a0fbd3ce5507c40dd087018e2",
-      "slot": "C1",
-      "purpose": "C",
-      "modeCandidate": "PLUS_ONE",
-      "level": "상",
-      "category": "무리함수",
-      "originalCategory": "무리함수",
-      "standardCourse": "공통수학2",
-      "standardUnitKey": "H22-C2-09",
-      "standardUnit": "무리함수",
-      "standardUnitOrder": 9,
-      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
-      "subUnit": "함수의 뜻과 그래프",
-      "subUnitConfidence": "candidate_evidence",
-      "subUnitClassificationDepth": "complete_candidate",
-      "questionType": "객관식",
-      "layoutTag": "grid",
-      "tags": [
-        "그래프"
-      ],
-      "wide": false,
-      "content": "무리함수 $y=\\sqrt{2-x}-3$의 그래프가 지나는 사분면을 모두 고른 것은?",
-      "choices": [
-        "제1, 2사분면",
-        "제1, 3, 4사분면",
-        "제1, 4사분면",
-        "제2, 3, 4사분면",
-        "제2, 3사분면"
-      ],
-      "answer": "④",
-      "solution": "$t=\\sqrt{2-x}\\ge0$으로 놓으면 $x=2-t^2$, $y=-3+t$이다.\\n정의역은 $x\\le2$이고, $y=0$인 점은 $x=-7$이다.\\n$t=3.25$인 경우 $x=-8.5625,\\ y=0.25$이므로 제2사분면을 지난다.\n$t=1.5$인 경우 $x=-0.25,\\ y=-1.5$이므로 제3사분면을 지난다.\n$t=0.25$인 경우 $x=1.9375,\\ y=-2.75$이므로 제4사분면을 지난다.\\n따라서 그래프가 지나는 사분면은 제2, 제3, 제4사분면이다.\\n따라서 정답은 ④이다.",
-      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/C1-solution.svg",
-      "solutionImageAlt": "무리함수의 정의역 끝점과 x절편 및 그래프가 지나는 사분면",
-      "solutionImageCaption": "정의역의 부호와 함숫값의 부호를 구별하여 사분면을 판단한다.",
-      "solutionImageSize": "medium",
-      "meta": {
-        "rpmL1": "함수",
-        "rpmL2": "무리함수",
-        "primaryRPM_L3": "무리함수의 그래프",
-        "primaryRPM_L3Frozen": true,
-        "sourcePrimaryL3Semantic": "함수 그래프와 사분면",
-        "rpmRecordId": "H1-RPM-266",
-        "rpmL4SemanticLabel": "기본 그래프",
-        "rpmRecordMappingStatus": "GENERATED_L4_ACTIVE_RPM_PARENT",
-        "metaFoundationL3": "함수 그래프와 사분면",
-        "metaFoundationL4": "함수 그래프가 지나는 사분면",
-        "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
-        "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
-        "crossConceptKeys": [],
-        "conditionKeys": [],
-        "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 4,
-        "metadataDebt": [],
-        "generatedExtL4Id": "EXT-L4-JEIL25-Q11-RADICAL-QUADRANTS",
-        "effectiveL4Id": "EXT-L4-JEIL25-Q11-RADICAL-QUADRANTS",
-        "effectiveL4Authority": "GENERATED_ACTIVE_NEW",
-        "rpmReferenceRole": "CANONICAL_PARENT_RPM_NOT_EXACT_L4",
-        "primaryL3Id": "H1-RPM-266",
-        "primaryL3Authority": "RPM_LOCKED_PARENT",
-        "primaryL3DecisiveSemantic": "함수 그래프와 사분면",
-        "rpmL4ReferenceId": "H1-RPM-266",
-        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED",
-        "metaRegistryAuthority": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_GENERATED_META_REGISTRY_v1.json",
-        "canonicalPtTplStatus": "ACTIVE_CANONICAL_BOTH",
-        "conditionApplicabilityStatus": "NOT_APPLICABLE",
-        "crossConceptApplicabilityStatus": "NOT_APPLICABLE",
-        "previousMetadataDebtResolved": {
-          "priorFields": [
-            "RPM_EXACT_L3_L4_BINDING"
-          ],
-          "resolution": "GENERATED_EXT_L4_OR_CANONICAL_ALIGNMENT",
-          "sourceStage": "CREATE_AUTHOR_META_REPAIR"
-        },
-        "legacyRpmRecordMappingStatus": "FAMILY_ACTIVE_NOT_EXACT_QUADRANT_L4"
-      },
-      "review": {
-        "reverseStem": "KEEP: 함수식의 정의역·수평방향·수직이동이 발문에 모두 주어지고 사분면의 기준이 명확",
+        "reverseStem": "REVISED: 학생용 함수식→경계점→지나는 사분면을 역독해. 실제 정답은 보존하고 4개 오답을 수평/가로방향/근호상하/세로이동 부호 오류로 재설계; 모든 보기의 오답 사분면 집합을 해당 잘못된 식으로 산출했다.",
         "mathSelfCheckEvidence": {
           "h": 2,
           "sx": -1,
@@ -975,45 +1834,146 @@
           ],
           "witness": {
             "2": {
-              "t": 3.25,
-              "x": -8.5625,
-              "y": 0.25
+              "t": 4,
+              "x": -14,
+              "y": 1,
+              "quadrant": 2
             },
             "3": {
-              "t": 1.5,
-              "x": -0.25,
-              "y": -1.5
+              "t": 2,
+              "x": -2,
+              "y": -1,
+              "quadrant": 3
             },
             "4": {
-              "t": 0.25,
-              "x": 1.9375,
-              "y": -2.75
+              "t": 1,
+              "x": 1,
+              "y": -2,
+              "quadrant": 4
             }
           },
           "domain": "x\\le2",
           "xIntercept": -7,
-          "uniqueCorrectChoice": 4
+          "uniqueCorrectChoice": 2,
+          "xAxisT": 3,
+          "yAxisT": 1.414214
         },
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredOption": "제1, 2사분면",
-            "reason": "제3,4사분면의 실제 점 (-0.25,-1.5)·(1.9375,-2.75)을 누락"
-          },
-          {
-            "choice": "②",
-            "offeredOption": "제1, 3, 4사분면",
-            "reason": "제2사분면의 실제 점 (-8.5625,0.25)을 누락"
+            "offeredOption": "제2, 3사분면",
+            "reason": "수평이동 기준점의 부호를 반대로 대입",
+            "incorrectParametricModel": "t≥0, x=-2-t², y=-3+t",
+            "signBoundaryCalculation": {
+              "xAxisT": 3,
+              "yAxisT": null
+            },
+            "derivedQuadrants": [
+              2,
+              3
+            ],
+            "quadrantCoordinateCalculations": {
+              "2": {
+                "t": 4,
+                "x": -18,
+                "y": 1,
+                "quadrant": 2
+              },
+              "3": {
+                "t": 1.5,
+                "x": -4.25,
+                "y": -1.5,
+                "quadrant": 3
+              }
+            },
+            "producedOption": "제2, 3사분면"
           },
           {
             "choice": "③",
             "offeredOption": "제1, 4사분면",
-            "reason": "제2,3사분면의 실제 점 (-8.5625,0.25)·(-0.25,-1.5)을 누락"
+            "reason": "가로 진행 방향의 부호를 반대로 해석",
+            "incorrectParametricModel": "t≥0, x=2+t², y=-3+t",
+            "signBoundaryCalculation": {
+              "xAxisT": 3,
+              "yAxisT": null
+            },
+            "derivedQuadrants": [
+              1,
+              4
+            ],
+            "quadrantCoordinateCalculations": {
+              "1": {
+                "t": 4,
+                "x": 18,
+                "y": 1,
+                "quadrant": 1
+              },
+              "4": {
+                "t": 1.5,
+                "x": 4.25,
+                "y": -1.5,
+                "quadrant": 4
+              }
+            },
+            "producedOption": "제1, 4사분면"
+          },
+          {
+            "choice": "④",
+            "offeredOption": "제3, 4사분면",
+            "reason": "근호항의 상하 방향 부호를 반대로 해석",
+            "incorrectParametricModel": "t≥0, x=2-t², y=-3-t",
+            "signBoundaryCalculation": {
+              "xAxisT": null,
+              "yAxisT": 1.414214
+            },
+            "derivedQuadrants": [
+              3,
+              4
+            ],
+            "quadrantCoordinateCalculations": {
+              "3": {
+                "t": 2.414214,
+                "x": -3.828427,
+                "y": -5.414214,
+                "quadrant": 3
+              },
+              "4": {
+                "t": 0.707107,
+                "x": 1.5,
+                "y": -3.707107,
+                "quadrant": 4
+              }
+            },
+            "producedOption": "제3, 4사분면"
           },
           {
             "choice": "⑤",
-            "offeredOption": "제2, 3사분면",
-            "reason": "제4사분면의 실제 점 (1.9375,-2.75)을 누락"
+            "offeredOption": "제1, 2사분면",
+            "reason": "세로 평행이동 상수의 부호를 반대로 대입",
+            "incorrectParametricModel": "t≥0, x=2-t², y=3+t",
+            "signBoundaryCalculation": {
+              "xAxisT": null,
+              "yAxisT": 1.414214
+            },
+            "derivedQuadrants": [
+              1,
+              2
+            ],
+            "quadrantCoordinateCalculations": {
+              "1": {
+                "t": 0.707107,
+                "x": 1.5,
+                "y": 3.707107,
+                "quadrant": 1
+              },
+              "2": {
+                "t": 2.414214,
+                "x": -3.828427,
+                "y": 5.414214,
+                "quadrant": 2
+              }
+            },
+            "producedOption": "제1, 2사분면"
           }
         ],
         "problemVisual": {
@@ -1028,7 +1988,55 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "decision": "REVISED",
+          "reason": "5지의 정답 번호 과밀과 기존 오답의 계산 경로 증거 부족을 수정",
+          "uid": "ALITE-JEIL25-2FINAL-Q11-C1",
+          "sourceQid": 11,
+          "primaryL3": "H1-RPM-266",
+          "finalTruth": [
+            2,
+            3,
+            4
+          ],
+          "finalChoice": "②",
+          "checkedDistractors": 4,
+          "wrongRouteCalculationCoverage": "4/4",
+          "witness": [
+            {
+              "t": 1,
+              "x": 1,
+              "y": -2,
+              "quadrant": 4
+            },
+            {
+              "t": 2,
+              "x": -2,
+              "y": -1,
+              "quadrant": 3
+            },
+            {
+              "t": 4,
+              "x": -14,
+              "y": 1,
+              "quadrant": 2
+            }
+          ],
+          "problemVisual": "EXEMPT_MATH_SUFFICIENT",
+          "solutionVisual": "EXISTING_SVG_STATIC_ANCHORS_AND_401_POINT_CURVE",
+          "calculationRechecked": "CURRENT_FINAL_CHOICES",
+          "priorEvidence": "SUPERSEDED_WRONG_ROUTES_ANSWER_AND_SOLUTION",
+          "oldLevel": "상",
+          "newLevel": "중",
+          "oldDifficulty": 4,
+          "newDifficulty": 3,
+          "difficultyReason": "x,y 양 축의 부호 전환 판정이나 독립 2개 경계만 비교하는 중 난도",
+          "externalGPT": "NOT_RUN",
+          "studentEngine": "NOT_RUN",
+          "browser": "NOT_RUN"
+        }
       }
     },
     {
@@ -1039,7 +2047,7 @@
       "slot": "C2",
       "purpose": "C",
       "modeCandidate": "PLUS_ONE",
-      "level": "상",
+      "level": "중",
       "category": "무리함수",
       "originalCategory": "무리함수",
       "standardCourse": "공통수학2",
@@ -1058,14 +2066,14 @@
       "wide": false,
       "content": "무리함수 $y=\\sqrt{x+2}-3$의 그래프가 지나는 사분면을 모두 고른 것은?",
       "choices": [
-        "제1, 2, 3사분면",
         "제1, 3, 4사분면",
         "제1, 4사분면",
-        "제2, 3, 4사분면",
-        "제2, 3사분면"
+        "제2, 3사분면",
+        "제3, 4사분면",
+        "제1, 2사분면"
       ],
-      "answer": "②",
-      "solution": "$t=\\sqrt{x+2}\\ge0$으로 놓으면 $x=-2+t^2$, $y=-3+t$이다.\\n정의역은 $x\\ge-2$이고, $y=0$인 점은 $x=7$이다.\\n$t=3.25$인 경우 $x=8.5625,\\ y=0.25$이므로 제1사분면을 지난다.\n$t=0.25$인 경우 $x=-1.9375,\\ y=-2.75$이므로 제3사분면을 지난다.\n$t=1.5$인 경우 $x=0.25,\\ y=-1.5$이므로 제4사분면을 지난다.\\n따라서 그래프가 지나는 사분면은 제1, 제3, 제4사분면이다.\\n따라서 정답은 ②이다.",
+      "answer": "①",
+      "solution": "근호의 값을 $t$로 두면 $t\\ge0$이고, $x=-2+t^2$, $y=-3+t$이다.\n$t=3$일 때 $y=0$이므로 $x=7$이다.\n또한 $t=\\sqrt{2}$일 때 $x=0$이므로 이 값을 기준으로 좌우를 구분한다.\n$t=1$이면 $(x,y)=(-1,-2)$이므로 제3사분면을 지난다.\n$t=2$이면 $(x,y)=(2,-1)$이므로 제4사분면을 지난다.\n$t=4$이면 $(x,y)=(14,1)$이므로 제1사분면을 지난다.\n$x$, $y$의 부호가 바뀌는 경계는 위 경우뿐이므로 그래프가 지나는 사분면은 제1, 3, 4사분면뿐이다.\n따라서 정답은 ①이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/C2-solution.svg",
       "solutionImageAlt": "무리함수의 정의역 끝점과 x절편 및 그래프가 지나는 사분면",
       "solutionImageCaption": "정의역의 부호와 함숫값의 부호를 구별하여 사분면을 판단한다.",
@@ -1086,7 +2094,7 @@
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 4,
+        "difficultyBucket": 3,
         "metadataDebt": [],
         "generatedExtL4Id": "EXT-L4-JEIL25-Q11-RADICAL-QUADRANTS",
         "effectiveL4Id": "EXT-L4-JEIL25-Q11-RADICAL-QUADRANTS",
@@ -1111,7 +2119,7 @@
         "legacyRpmRecordMappingStatus": "FAMILY_ACTIVE_NOT_EXACT_QUADRANT_L4"
       },
       "review": {
-        "reverseStem": "KEEP: 함수식의 정의역·수평방향·수직이동이 발문에 모두 주어지고 사분면의 기준이 명확",
+        "reverseStem": "REVISED: 학생용 함수식→경계점→지나는 사분면을 역독해. 실제 정답은 보존하고 4개 오답을 수평/가로방향/근호상하/세로이동 부호 오류로 재설계; 모든 보기의 오답 사분면 집합을 해당 잘못된 식으로 산출했다.",
         "mathSelfCheckEvidence": {
           "h": -2,
           "sx": 1,
@@ -1124,45 +2132,146 @@
           ],
           "witness": {
             "1": {
-              "t": 3.25,
-              "x": 8.5625,
-              "y": 0.25
+              "t": 4,
+              "x": 14,
+              "y": 1,
+              "quadrant": 1
             },
             "3": {
-              "t": 0.25,
-              "x": -1.9375,
-              "y": -2.75
+              "t": 1,
+              "x": -1,
+              "y": -2,
+              "quadrant": 3
             },
             "4": {
-              "t": 1.5,
-              "x": 0.25,
-              "y": -1.5
+              "t": 2,
+              "x": 2,
+              "y": -1,
+              "quadrant": 4
             }
           },
           "domain": "x\\ge-2",
           "xIntercept": 7,
-          "uniqueCorrectChoice": 2
+          "uniqueCorrectChoice": 1,
+          "xAxisT": 3,
+          "yAxisT": 1.414214
         },
         "wrongRoutes": [
           {
-            "choice": "①",
-            "offeredOption": "제1, 2, 3사분면",
-            "reason": "제4사분면의 실제 점 (0.25,-1.5)을 누락"
+            "choice": "②",
+            "offeredOption": "제1, 4사분면",
+            "reason": "수평이동 기준점의 부호를 반대로 대입",
+            "incorrectParametricModel": "t≥0, x=2+t², y=-3+t",
+            "signBoundaryCalculation": {
+              "xAxisT": 3,
+              "yAxisT": null
+            },
+            "derivedQuadrants": [
+              1,
+              4
+            ],
+            "quadrantCoordinateCalculations": {
+              "1": {
+                "t": 4,
+                "x": 18,
+                "y": 1,
+                "quadrant": 1
+              },
+              "4": {
+                "t": 1.5,
+                "x": 4.25,
+                "y": -1.5,
+                "quadrant": 4
+              }
+            },
+            "producedOption": "제1, 4사분면"
           },
           {
             "choice": "③",
-            "offeredOption": "제1, 4사분면",
-            "reason": "제3사분면의 실제 점 (-1.9375,-2.75)을 누락"
+            "offeredOption": "제2, 3사분면",
+            "reason": "가로 진행 방향의 부호를 반대로 해석",
+            "incorrectParametricModel": "t≥0, x=-2-t², y=-3+t",
+            "signBoundaryCalculation": {
+              "xAxisT": 3,
+              "yAxisT": null
+            },
+            "derivedQuadrants": [
+              2,
+              3
+            ],
+            "quadrantCoordinateCalculations": {
+              "2": {
+                "t": 4,
+                "x": -18,
+                "y": 1,
+                "quadrant": 2
+              },
+              "3": {
+                "t": 1.5,
+                "x": -4.25,
+                "y": -1.5,
+                "quadrant": 3
+              }
+            },
+            "producedOption": "제2, 3사분면"
           },
           {
             "choice": "④",
-            "offeredOption": "제2, 3, 4사분면",
-            "reason": "제1사분면의 실제 점 (8.5625,0.25)을 누락"
+            "offeredOption": "제3, 4사분면",
+            "reason": "근호항의 상하 방향 부호를 반대로 해석",
+            "incorrectParametricModel": "t≥0, x=-2+t², y=-3-t",
+            "signBoundaryCalculation": {
+              "xAxisT": null,
+              "yAxisT": 1.414214
+            },
+            "derivedQuadrants": [
+              3,
+              4
+            ],
+            "quadrantCoordinateCalculations": {
+              "3": {
+                "t": 0.707107,
+                "x": -1.5,
+                "y": -3.707107,
+                "quadrant": 3
+              },
+              "4": {
+                "t": 2.414214,
+                "x": 3.828427,
+                "y": -5.414214,
+                "quadrant": 4
+              }
+            },
+            "producedOption": "제3, 4사분면"
           },
           {
             "choice": "⑤",
-            "offeredOption": "제2, 3사분면",
-            "reason": "제1,4사분면의 실제 점 (8.5625,0.25)·(0.25,-1.5)을 누락"
+            "offeredOption": "제1, 2사분면",
+            "reason": "세로 평행이동 상수의 부호를 반대로 대입",
+            "incorrectParametricModel": "t≥0, x=-2+t², y=3+t",
+            "signBoundaryCalculation": {
+              "xAxisT": null,
+              "yAxisT": 1.414214
+            },
+            "derivedQuadrants": [
+              1,
+              2
+            ],
+            "quadrantCoordinateCalculations": {
+              "1": {
+                "t": 2.414214,
+                "x": 3.828427,
+                "y": 5.414214,
+                "quadrant": 1
+              },
+              "2": {
+                "t": 0.707107,
+                "x": -1.5,
+                "y": 3.707107,
+                "quadrant": 2
+              }
+            },
+            "producedOption": "제1, 2사분면"
           }
         ],
         "problemVisual": {
@@ -1177,7 +2286,55 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "decision": "REVISED",
+          "reason": "5지의 정답 번호 과밀과 기존 오답의 계산 경로 증거 부족을 수정",
+          "uid": "ALITE-JEIL25-2FINAL-Q11-C2",
+          "sourceQid": 11,
+          "primaryL3": "H1-RPM-266",
+          "finalTruth": [
+            1,
+            3,
+            4
+          ],
+          "finalChoice": "①",
+          "checkedDistractors": 4,
+          "wrongRouteCalculationCoverage": "4/4",
+          "witness": [
+            {
+              "t": 1,
+              "x": -1,
+              "y": -2,
+              "quadrant": 3
+            },
+            {
+              "t": 2,
+              "x": 2,
+              "y": -1,
+              "quadrant": 4
+            },
+            {
+              "t": 4,
+              "x": 14,
+              "y": 1,
+              "quadrant": 1
+            }
+          ],
+          "problemVisual": "EXEMPT_MATH_SUFFICIENT",
+          "solutionVisual": "EXISTING_SVG_STATIC_ANCHORS_AND_401_POINT_CURVE",
+          "calculationRechecked": "CURRENT_FINAL_CHOICES",
+          "priorEvidence": "SUPERSEDED_WRONG_ROUTES_ANSWER_AND_SOLUTION",
+          "oldLevel": "상",
+          "newLevel": "중",
+          "oldDifficulty": 4,
+          "newDifficulty": 3,
+          "difficultyReason": "x,y 양 축의 부호 전환 판정이나 독립 2개 경계만 비교하는 중 난도",
+          "externalGPT": "NOT_RUN",
+          "studentEngine": "NOT_RUN",
+          "browser": "NOT_RUN"
+        }
       }
     },
     {
@@ -1188,7 +2345,7 @@
       "slot": "C3",
       "purpose": "C",
       "modeCandidate": "PLUS_ONE",
-      "level": "상",
+      "level": "중",
       "category": "무리함수",
       "originalCategory": "무리함수",
       "standardCourse": "공통수학2",
@@ -1207,14 +2364,14 @@
       "wide": false,
       "content": "무리함수 $y=-\\sqrt{2-x}+3$의 그래프가 지나는 사분면을 모두 고른 것은?",
       "choices": [
+        "제2, 3사분면",
+        "제1, 4사분면",
         "제1, 2, 3사분면",
         "제1, 2사분면",
-        "제1, 4사분면",
-        "제2, 3, 4사분면",
-        "제2, 3사분면"
+        "제3, 4사분면"
       ],
-      "answer": "①",
-      "solution": "$t=\\sqrt{2-x}\\ge0$으로 놓으면 $x=2-t^2$, $y=3-t$이다.\\n정의역은 $x\\le2$이고, $y=0$인 점은 $x=-7$이다.\\n$t=0.25$인 경우 $x=1.9375,\\ y=2.75$이므로 제1사분면을 지난다.\n$t=1.5$인 경우 $x=-0.25,\\ y=1.5$이므로 제2사분면을 지난다.\n$t=3.25$인 경우 $x=-8.5625,\\ y=-0.25$이므로 제3사분면을 지난다.\\n따라서 그래프가 지나는 사분면은 제1, 제2, 제3사분면이다.\\n따라서 정답은 ①이다.",
+      "answer": "③",
+      "solution": "근호의 값을 $t$로 두면 $t\\ge0$이고, $x=2-t^2$, $y=3-t$이다.\n$t=3$일 때 $y=0$이므로 $x=-7$이다.\n또한 $t=\\sqrt{2}$일 때 $x=0$이므로 이 값을 기준으로 좌우를 구분한다.\n$t=1$이면 $(x,y)=(1,2)$이므로 제1사분면을 지난다.\n$t=2$이면 $(x,y)=(-2,1)$이므로 제2사분면을 지난다.\n$t=4$이면 $(x,y)=(-14,-1)$이므로 제3사분면을 지난다.\n$x$, $y$의 부호가 바뀌는 경계는 위 경우뿐이므로 그래프가 지나는 사분면은 제1, 2, 3사분면뿐이다.\n따라서 정답은 ③이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/C3-solution.svg",
       "solutionImageAlt": "무리함수의 정의역 끝점과 x절편 및 그래프가 지나는 사분면",
       "solutionImageCaption": "정의역의 부호와 함숫값의 부호를 구별하여 사분면을 판단한다.",
@@ -1235,7 +2392,7 @@
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 4,
+        "difficultyBucket": 3,
         "metadataDebt": [],
         "generatedExtL4Id": "EXT-L4-JEIL25-Q11-RADICAL-QUADRANTS",
         "effectiveL4Id": "EXT-L4-JEIL25-Q11-RADICAL-QUADRANTS",
@@ -1260,7 +2417,7 @@
         "legacyRpmRecordMappingStatus": "FAMILY_ACTIVE_NOT_EXACT_QUADRANT_L4"
       },
       "review": {
-        "reverseStem": "KEEP: 함수식의 정의역·수평방향·수직이동이 발문에 모두 주어지고 사분면의 기준이 명확",
+        "reverseStem": "REVISED: 학생용 함수식→경계점→지나는 사분면을 역독해. 실제 정답은 보존하고 4개 오답을 수평/가로방향/근호상하/세로이동 부호 오류로 재설계; 모든 보기의 오답 사분면 집합을 해당 잘못된 식으로 산출했다.",
         "mathSelfCheckEvidence": {
           "h": 2,
           "sx": -1,
@@ -1273,45 +2430,146 @@
           ],
           "witness": {
             "1": {
-              "t": 0.25,
-              "x": 1.9375,
-              "y": 2.75
+              "t": 1,
+              "x": 1,
+              "y": 2,
+              "quadrant": 1
             },
             "2": {
-              "t": 1.5,
-              "x": -0.25,
-              "y": 1.5
+              "t": 2,
+              "x": -2,
+              "y": 1,
+              "quadrant": 2
             },
             "3": {
-              "t": 3.25,
-              "x": -8.5625,
-              "y": -0.25
+              "t": 4,
+              "x": -14,
+              "y": -1,
+              "quadrant": 3
             }
           },
           "domain": "x\\le2",
           "xIntercept": -7,
-          "uniqueCorrectChoice": 1
+          "uniqueCorrectChoice": 3,
+          "xAxisT": 3,
+          "yAxisT": 1.414214
         },
         "wrongRoutes": [
           {
-            "choice": "②",
-            "offeredOption": "제1, 2사분면",
-            "reason": "제3사분면의 실제 점 (-8.5625,-0.25)을 누락"
+            "choice": "①",
+            "offeredOption": "제2, 3사분면",
+            "reason": "수평이동 기준점의 부호를 반대로 대입",
+            "incorrectParametricModel": "t≥0, x=-2-t², y=3-t",
+            "signBoundaryCalculation": {
+              "xAxisT": 3,
+              "yAxisT": null
+            },
+            "derivedQuadrants": [
+              2,
+              3
+            ],
+            "quadrantCoordinateCalculations": {
+              "2": {
+                "t": 1.5,
+                "x": -4.25,
+                "y": 1.5,
+                "quadrant": 2
+              },
+              "3": {
+                "t": 4,
+                "x": -18,
+                "y": -1,
+                "quadrant": 3
+              }
+            },
+            "producedOption": "제2, 3사분면"
           },
           {
-            "choice": "③",
+            "choice": "②",
             "offeredOption": "제1, 4사분면",
-            "reason": "제2,3사분면의 실제 점 (-0.25,1.5)·(-8.5625,-0.25)을 누락"
+            "reason": "가로 진행 방향의 부호를 반대로 해석",
+            "incorrectParametricModel": "t≥0, x=2+t², y=3-t",
+            "signBoundaryCalculation": {
+              "xAxisT": 3,
+              "yAxisT": null
+            },
+            "derivedQuadrants": [
+              1,
+              4
+            ],
+            "quadrantCoordinateCalculations": {
+              "1": {
+                "t": 1.5,
+                "x": 4.25,
+                "y": 1.5,
+                "quadrant": 1
+              },
+              "4": {
+                "t": 4,
+                "x": 18,
+                "y": -1,
+                "quadrant": 4
+              }
+            },
+            "producedOption": "제1, 4사분면"
           },
           {
             "choice": "④",
-            "offeredOption": "제2, 3, 4사분면",
-            "reason": "제1사분면의 실제 점 (1.9375,2.75)을 누락"
+            "offeredOption": "제1, 2사분면",
+            "reason": "근호항의 상하 방향 부호를 반대로 해석",
+            "incorrectParametricModel": "t≥0, x=2-t², y=3+t",
+            "signBoundaryCalculation": {
+              "xAxisT": null,
+              "yAxisT": 1.414214
+            },
+            "derivedQuadrants": [
+              1,
+              2
+            ],
+            "quadrantCoordinateCalculations": {
+              "1": {
+                "t": 0.707107,
+                "x": 1.5,
+                "y": 3.707107,
+                "quadrant": 1
+              },
+              "2": {
+                "t": 2.414214,
+                "x": -3.828427,
+                "y": 5.414214,
+                "quadrant": 2
+              }
+            },
+            "producedOption": "제1, 2사분면"
           },
           {
             "choice": "⑤",
-            "offeredOption": "제2, 3사분면",
-            "reason": "제1사분면의 실제 점 (1.9375,2.75)을 누락"
+            "offeredOption": "제3, 4사분면",
+            "reason": "세로 평행이동 상수의 부호를 반대로 대입",
+            "incorrectParametricModel": "t≥0, x=2-t², y=-3-t",
+            "signBoundaryCalculation": {
+              "xAxisT": null,
+              "yAxisT": 1.414214
+            },
+            "derivedQuadrants": [
+              3,
+              4
+            ],
+            "quadrantCoordinateCalculations": {
+              "3": {
+                "t": 2.414214,
+                "x": -3.828427,
+                "y": -5.414214,
+                "quadrant": 3
+              },
+              "4": {
+                "t": 0.707107,
+                "x": 1.5,
+                "y": -3.707107,
+                "quadrant": 4
+              }
+            },
+            "producedOption": "제3, 4사분면"
           }
         ],
         "problemVisual": {
@@ -1326,7 +2584,55 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "decision": "REVISED",
+          "reason": "5지의 정답 번호 과밀과 기존 오답의 계산 경로 증거 부족을 수정",
+          "uid": "ALITE-JEIL25-2FINAL-Q11-C3",
+          "sourceQid": 11,
+          "primaryL3": "H1-RPM-266",
+          "finalTruth": [
+            1,
+            2,
+            3
+          ],
+          "finalChoice": "③",
+          "checkedDistractors": 4,
+          "wrongRouteCalculationCoverage": "4/4",
+          "witness": [
+            {
+              "t": 1,
+              "x": 1,
+              "y": 2,
+              "quadrant": 1
+            },
+            {
+              "t": 2,
+              "x": -2,
+              "y": 1,
+              "quadrant": 2
+            },
+            {
+              "t": 4,
+              "x": -14,
+              "y": -1,
+              "quadrant": 3
+            }
+          ],
+          "problemVisual": "EXEMPT_MATH_SUFFICIENT",
+          "solutionVisual": "EXISTING_SVG_STATIC_ANCHORS_AND_401_POINT_CURVE",
+          "calculationRechecked": "CURRENT_FINAL_CHOICES",
+          "priorEvidence": "SUPERSEDED_WRONG_ROUTES_ANSWER_AND_SOLUTION",
+          "oldLevel": "상",
+          "newLevel": "중",
+          "oldDifficulty": 4,
+          "newDifficulty": 3,
+          "difficultyReason": "x,y 양 축의 부호 전환 판정이나 독립 2개 경계만 비교하는 중 난도",
+          "externalGPT": "NOT_RUN",
+          "studentEngine": "NOT_RUN",
+          "browser": "NOT_RUN"
+        }
       }
     }
   ]
