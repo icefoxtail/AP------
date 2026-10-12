@@ -19,8 +19,12 @@
     "wrongRouteCount": 36,
     "externalOpenBookReview": "NOT_RUN",
     "studentRelease": "NOT_AUTHORIZED",
-    "status": "AUTHOR_DRAFT_ONLY",
-    "nextQid": 8
+    "status": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+    "nextQid": 8,
+    "selfRecheckComplete": 9,
+    "correctMathCount": 9,
+    "svgStaticGeometryCount": 9,
+    "realEngineRender": "NOT_RUN"
   },
   "questions": [
     {
@@ -57,7 +61,7 @@
         "$\\dfrac{15}{8}$"
       ],
       "answer": "⑤",
-      "solution": "접선을 $y-4=m(x--3)$로 두면 중심 $(0,0)$에서 접선까지의 거리는 반지름 1과 같다.\\n$\\dfrac{|3m+4|}{\\sqrt{m^2+1}}=1$이므로\\n$(8)m^2+24m+(15)=0$이다.\\n두 실근이 두 접선의 기울기이며 수직선 $x=-3$는 중심과의 거리가 3이므로 접선이 아니다.\\n근과 계수의 관계에서 $m_1+m_2=-3$, $m_1m_2=\\dfrac{15}{8}$이다.\n따라서 두 기울기의 곱을 선택한다.\n따라서 정답은 ⑤이다.",
+      "solution": "원의 중심은 $C(0,0)$, 반지름은 $1$이다. 외부점 $P(-3,4)$를 지나는 접선을 $y-4=m(x+3)$라 놓는다. 수직선 $x=-3$는 중심에서의 거리가 $3$로 반지름보다 크므로 접선이 아니다.\n중심에서 접선까지의 거리가 반지름과 같으므로\n$\\dfrac{|3m+4|}{\\sqrt{m^2+1}}=1$이다.\n양변을 제곱하면 $8m^2+24m+15=0$이다. 점 $P$가 원 밖에 있으므로 두 접선이 존재하고, 두 기울기 $m_1,m_2$는 이 방정식의 서로 다른 두 실근이다.\n근과 계수의 관계에서\n$m_1+m_2=-3$, $m_1m_2=\\dfrac{15}{8}$이다.\n구하는 두 접선 기울기의 곱은 $m_1m_2=\\dfrac{15}{8}$이다.\n따라서 정답은 ⑤이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/A1-solution.svg",
       "solutionImageAlt": "원 밖의 점에서 그은 두 접선과 반지름의 수직 관계",
       "solutionImageCaption": "중심에서 접선까지의 거리가 반지름과 같다는 조건으로 기울기를 구한다.",
@@ -105,7 +109,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_EXACT_L4_DEBT"
       },
       "review": {
-        "reverseStem": "KEEP: 외부점·원의 중심·반지름·두 접선·답형을 발문만으로 재구성 가능",
+        "reverseStem": "REVISED: 최종 발문만으로 외부점·원 중심/반지름·두 접선 및 질문의 값을 재구성했고 접선 거리 조건이 풀이에 필수임을 확인. 조건 불충분·우회 소거 없음.",
         "mathSelfCheckEvidence": {
           "u": 3,
           "v": 4,
@@ -118,31 +122,38 @@
             -3,
             4
           ],
-          "slopeSum": "-3/1",
-          "slopeProduct": "15/8",
-          "answer": "15/8",
-          "uniqueTrueChoice": 5
+          "slopeSum": "-3",
+          "slopeProduct": "\\dfrac{15}{8}",
+          "answer": "\\dfrac{15}{8}",
+          "uniqueTrueChoice": 5,
+          "quadraticCoefficients": [
+            8,
+            24,
+            15
+          ],
+          "wrongChoiceReproduced": 4,
+          "wrongChoiceUnique": 4
         },
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredValue": "$\\dfrac{8}{15}$",
-            "reason": "근과 계수의 관계에서 분자·분모를 바꾸어 계산"
+            "offeredOption": "$\\dfrac{8}{15}$",
+            "reason": "근의 곱에서 최고차항과 상수항을 거꾸로 나누어 $\\dfrac{8}{15}=\\dfrac{8}{15}$로 계산했다."
           },
           {
             "choice": "②",
-            "offeredValue": "$\\dfrac{3}{2}$",
-            "reason": "분모의 반지름 항 부호를 잘못 적용"
+            "offeredOption": "$\\dfrac{3}{2}$",
+            "reason": "최고차항의 반지름 제곱을 빼지 않고 더하여 $\\dfrac{15}{9+1}=\\dfrac{3}{2}$로 계산했다."
           },
           {
             "choice": "③",
-            "offeredValue": "$\\dfrac{17}{10}$",
-            "reason": "접선거리 제곱식의 감산을 덧셈으로 계산"
+            "offeredOption": "$\\dfrac{17}{10}$",
+            "reason": "상수항과 최고차항의 반지름 제곱을 모두 잘못 더하여 $\\dfrac{16+1}{9+1}=\\dfrac{17}{10}$로 계산했다."
           },
           {
             "choice": "④",
-            "offeredValue": "$\\dfrac{16}{9}$",
-            "reason": "반지름 항을 빼지 않고 기울기 곱을 계산"
+            "offeredOption": "$\\dfrac{16}{9}$",
+            "reason": "접선 조건에서 반지름 제곱을 생략하여 $\\dfrac{16}{9}=\\dfrac{16}{9}$로 계산했다."
           }
         ],
         "problemVisual": {
@@ -157,7 +168,8 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "distractorTraceStatus": "4_OF_4_CONCRETE_ERROR_CALCULATIONS"
       }
     },
     {
@@ -194,7 +206,7 @@
         "$\\dfrac{12}{5}$"
       ],
       "answer": "②",
-      "solution": "접선을 $y-2=m(x--3)$로 두면 중심 $(1,-1)$에서 접선까지의 거리는 반지름 2과 같다.\\n$\\dfrac{|4m+3|}{\\sqrt{m^2+1}}=2$이므로\\n$(12)m^2+24m+(5)=0$이다.\\n두 실근이 두 접선의 기울기이며 수직선 $x=-3$는 중심과의 거리가 4이므로 접선이 아니다.\\n근과 계수의 관계에서 $m_1+m_2=-2$, $m_1m_2=\\dfrac{5}{12}$이다.\n따라서 두 기울기의 곱을 선택한다.\n따라서 정답은 ②이다.",
+      "solution": "원의 중심은 $C(1,-1)$, 반지름은 $2$이다. 외부점 $P(-3,2)$를 지나는 접선을 $y-2=m(x+3)$라 놓는다. 수직선 $x=-3$는 중심에서의 거리가 $4$로 반지름보다 크므로 접선이 아니다.\n중심에서 접선까지의 거리가 반지름과 같으므로\n$\\dfrac{|4m+3|}{\\sqrt{m^2+1}}=2$이다.\n양변을 제곱하면 $12m^2+24m+5=0$이다. 점 $P$가 원 밖에 있으므로 두 접선이 존재하고, 두 기울기 $m_1,m_2$는 이 방정식의 서로 다른 두 실근이다.\n근과 계수의 관계에서\n$m_1+m_2=-2$, $m_1m_2=\\dfrac{5}{12}$이다.\n구하는 두 접선 기울기의 곱은 $m_1m_2=\\dfrac{5}{12}$이다.\n따라서 정답은 ②이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/A2-solution.svg",
       "solutionImageAlt": "원 밖의 점에서 그은 두 접선과 반지름의 수직 관계",
       "solutionImageCaption": "중심에서 접선까지의 거리가 반지름과 같다는 조건으로 기울기를 구한다.",
@@ -242,7 +254,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_EXACT_L4_DEBT"
       },
       "review": {
-        "reverseStem": "KEEP: 외부점·원의 중심·반지름·두 접선·답형을 발문만으로 재구성 가능",
+        "reverseStem": "REVISED: 최종 발문만으로 외부점·원 중심/반지름·두 접선 및 질문의 값을 재구성했고 접선 거리 조건이 풀이에 필수임을 확인. 조건 불충분·우회 소거 없음.",
         "mathSelfCheckEvidence": {
           "u": 4,
           "v": 3,
@@ -255,31 +267,38 @@
             -3,
             2
           ],
-          "slopeSum": "-2/1",
-          "slopeProduct": "5/12",
-          "answer": "5/12",
-          "uniqueTrueChoice": 2
+          "slopeSum": "-2",
+          "slopeProduct": "\\dfrac{5}{12}",
+          "answer": "\\dfrac{5}{12}",
+          "uniqueTrueChoice": 2,
+          "quadraticCoefficients": [
+            12,
+            24,
+            5
+          ],
+          "wrongChoiceReproduced": 4,
+          "wrongChoiceUnique": 4
         },
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredValue": "$\\dfrac{1}{4}$",
-            "reason": "분모의 반지름 항 부호를 잘못 적용"
+            "offeredOption": "$\\dfrac{1}{4}$",
+            "reason": "최고차항의 반지름 제곱을 빼지 않고 더하여 $\\dfrac{5}{16+4}=\\dfrac{1}{4}$로 계산했다."
           },
           {
             "choice": "③",
-            "offeredValue": "$\\dfrac{9}{16}$",
-            "reason": "반지름 항을 빼지 않고 기울기 곱을 계산"
+            "offeredOption": "$\\dfrac{9}{16}$",
+            "reason": "접선 조건에서 반지름 제곱을 생략하여 $\\dfrac{9}{16}=\\dfrac{9}{16}$로 계산했다."
           },
           {
             "choice": "④",
-            "offeredValue": "$\\dfrac{13}{20}$",
-            "reason": "접선거리 제곱식의 감산을 덧셈으로 계산"
+            "offeredOption": "$\\dfrac{13}{20}$",
+            "reason": "상수항과 최고차항의 반지름 제곱을 모두 잘못 더하여 $\\dfrac{9+4}{16+4}=\\dfrac{13}{20}$로 계산했다."
           },
           {
             "choice": "⑤",
-            "offeredValue": "$\\dfrac{12}{5}$",
-            "reason": "근과 계수의 관계에서 분자·분모를 바꾸어 계산"
+            "offeredOption": "$\\dfrac{12}{5}$",
+            "reason": "근의 곱에서 최고차항과 상수항을 거꾸로 나누어 $\\dfrac{12}{5}=\\dfrac{12}{5}$로 계산했다."
           }
         ],
         "problemVisual": {
@@ -294,7 +313,8 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "distractorTraceStatus": "4_OF_4_CONCRETE_ERROR_CALCULATIONS"
       }
     },
     {
@@ -331,7 +351,7 @@
         "$\\dfrac{16}{7}$"
       ],
       "answer": "②",
-      "solution": "접선을 $y-5=m(x--6)$로 두면 중심 $(-1,1)$에서 접선까지의 거리는 반지름 3과 같다.\\n$\\dfrac{|5m+4|}{\\sqrt{m^2+1}}=3$이므로\\n$(16)m^2+40m+(7)=0$이다.\\n두 실근이 두 접선의 기울기이며 수직선 $x=-6$는 중심과의 거리가 5이므로 접선이 아니다.\\n근과 계수의 관계에서 $m_1+m_2=-\\dfrac{5}{2}$, $m_1m_2=\\dfrac{7}{16}$이다.\n따라서 두 기울기의 곱을 선택한다.\n따라서 정답은 ②이다.",
+      "solution": "원의 중심은 $C(-1,1)$, 반지름은 $3$이다. 외부점 $P(-6,5)$를 지나는 접선을 $y-5=m(x+6)$라 놓는다. 수직선 $x=-6$는 중심에서의 거리가 $5$로 반지름보다 크므로 접선이 아니다.\n중심에서 접선까지의 거리가 반지름과 같으므로\n$\\dfrac{|5m+4|}{\\sqrt{m^2+1}}=3$이다.\n양변을 제곱하면 $16m^2+40m+7=0$이다. 점 $P$가 원 밖에 있으므로 두 접선이 존재하고, 두 기울기 $m_1,m_2$는 이 방정식의 서로 다른 두 실근이다.\n근과 계수의 관계에서\n$m_1+m_2=-\\dfrac{5}{2}$, $m_1m_2=\\dfrac{7}{16}$이다.\n구하는 두 접선 기울기의 곱은 $m_1m_2=\\dfrac{7}{16}$이다.\n따라서 정답은 ②이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/A3-solution.svg",
       "solutionImageAlt": "원 밖의 점에서 그은 두 접선과 반지름의 수직 관계",
       "solutionImageCaption": "중심에서 접선까지의 거리가 반지름과 같다는 조건으로 기울기를 구한다.",
@@ -379,7 +399,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_EXACT_L4_DEBT"
       },
       "review": {
-        "reverseStem": "KEEP: 외부점·원의 중심·반지름·두 접선·답형을 발문만으로 재구성 가능",
+        "reverseStem": "REVISED: 최종 발문만으로 외부점·원 중심/반지름·두 접선 및 질문의 값을 재구성했고 접선 거리 조건이 풀이에 필수임을 확인. 조건 불충분·우회 소거 없음.",
         "mathSelfCheckEvidence": {
           "u": 5,
           "v": 4,
@@ -392,31 +412,38 @@
             -6,
             5
           ],
-          "slopeSum": "-5/2",
-          "slopeProduct": "7/16",
-          "answer": "7/16",
-          "uniqueTrueChoice": 2
+          "slopeSum": "-\\dfrac{5}{2}",
+          "slopeProduct": "\\dfrac{7}{16}",
+          "answer": "\\dfrac{7}{16}",
+          "uniqueTrueChoice": 2,
+          "quadraticCoefficients": [
+            16,
+            40,
+            7
+          ],
+          "wrongChoiceReproduced": 4,
+          "wrongChoiceUnique": 4
         },
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredValue": "$\\dfrac{7}{34}$",
-            "reason": "분모의 반지름 항 부호를 잘못 적용"
+            "offeredOption": "$\\dfrac{7}{34}$",
+            "reason": "최고차항의 반지름 제곱을 빼지 않고 더하여 $\\dfrac{7}{25+9}=\\dfrac{7}{34}$로 계산했다."
           },
           {
             "choice": "③",
-            "offeredValue": "$\\dfrac{16}{25}$",
-            "reason": "반지름 항을 빼지 않고 기울기 곱을 계산"
+            "offeredOption": "$\\dfrac{16}{25}$",
+            "reason": "접선 조건에서 반지름 제곱을 생략하여 $\\dfrac{16}{25}=\\dfrac{16}{25}$로 계산했다."
           },
           {
             "choice": "④",
-            "offeredValue": "$\\dfrac{25}{34}$",
-            "reason": "접선거리 제곱식의 감산을 덧셈으로 계산"
+            "offeredOption": "$\\dfrac{25}{34}$",
+            "reason": "상수항과 최고차항의 반지름 제곱을 모두 잘못 더하여 $\\dfrac{16+9}{25+9}=\\dfrac{25}{34}$로 계산했다."
           },
           {
             "choice": "⑤",
-            "offeredValue": "$\\dfrac{16}{7}$",
-            "reason": "근과 계수의 관계에서 분자·분모를 바꾸어 계산"
+            "offeredOption": "$\\dfrac{16}{7}$",
+            "reason": "근의 곱에서 최고차항과 상수항을 거꾸로 나누어 $\\dfrac{16}{7}=\\dfrac{16}{7}$로 계산했다."
           }
         ],
         "problemVisual": {
@@ -431,7 +458,8 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "distractorTraceStatus": "4_OF_4_CONCRETE_ERROR_CALCULATIONS"
       }
     },
     {
@@ -468,7 +496,7 @@
         "$\\dfrac{8}{3}$"
       ],
       "answer": "①",
-      "solution": "접선을 $y-4=m(x--2)$로 두면 중심 $(2,-1)$에서 접선까지의 거리는 반지름 1과 같다.\\n$\\dfrac{|4m+5|}{\\sqrt{m^2+1}}=1$이므로\\n$(15)m^2+40m+(24)=0$이다.\\n두 실근이 두 접선의 기울기이며 수직선 $x=-2$는 중심과의 거리가 4이므로 접선이 아니다.\\n근과 계수의 관계에서 $m_1+m_2=-\\dfrac{8}{3}$, $m_1m_2=\\dfrac{8}{5}$이다.\n따라서 두 기울기의 합을 선택한다.\n따라서 정답은 ①이다.",
+      "solution": "원의 중심은 $C(2,-1)$, 반지름은 $1$이다. 외부점 $P(-2,4)$를 지나는 접선을 $y-4=m(x+2)$라 놓는다. 수직선 $x=-2$는 중심에서의 거리가 $4$로 반지름보다 크므로 접선이 아니다.\n중심에서 접선까지의 거리가 반지름과 같으므로\n$\\dfrac{|4m+5|}{\\sqrt{m^2+1}}=1$이다.\n양변을 제곱하면 $15m^2+40m+24=0$이다. 점 $P$가 원 밖에 있으므로 두 접선이 존재하고, 두 기울기 $m_1,m_2$는 이 방정식의 서로 다른 두 실근이다.\n근과 계수의 관계에서\n$m_1+m_2=-\\dfrac{8}{3}$, $m_1m_2=\\dfrac{8}{5}$이다.\n구하는 두 접선 기울기의 합은 $m_1+m_2=-\\dfrac{8}{3}$이다.\n따라서 정답은 ①이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/B1-solution.svg",
       "solutionImageAlt": "원 밖의 점에서 그은 두 접선과 반지름의 수직 관계",
       "solutionImageCaption": "중심에서 접선까지의 거리가 반지름과 같다는 조건으로 기울기를 구한다.",
@@ -516,7 +544,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_EXACT_L4_DEBT"
       },
       "review": {
-        "reverseStem": "KEEP: 외부점·원의 중심·반지름·두 접선·답형을 발문만으로 재구성 가능",
+        "reverseStem": "REVISED: 최종 발문만으로 외부점·원 중심/반지름·두 접선 및 질문의 값을 재구성했고 접선 거리 조건이 풀이에 필수임을 확인. 조건 불충분·우회 소거 없음.",
         "mathSelfCheckEvidence": {
           "u": 4,
           "v": 5,
@@ -529,31 +557,38 @@
             -2,
             4
           ],
-          "slopeSum": "-8/3",
-          "slopeProduct": "8/5",
-          "answer": "-8/3",
-          "uniqueTrueChoice": 1
+          "slopeSum": "-\\dfrac{8}{3}",
+          "slopeProduct": "\\dfrac{8}{5}",
+          "answer": "-\\dfrac{8}{3}",
+          "uniqueTrueChoice": 1,
+          "quadraticCoefficients": [
+            15,
+            40,
+            24
+          ],
+          "wrongChoiceReproduced": 4,
+          "wrongChoiceUnique": 4
         },
         "wrongRoutes": [
           {
             "choice": "②",
-            "offeredValue": "$-\\dfrac{40}{17}$",
-            "reason": "반지름 제곱을 덧셈으로 잘못 적용"
+            "offeredOption": "$-\\dfrac{40}{17}$",
+            "reason": "근의 합에서 최고차항을 $u^2+r^2$로 잘못 두어 $-\\dfrac{40}{16+1}=-\\dfrac{40}{17}$로 계산했다."
           },
           {
             "choice": "③",
-            "offeredValue": "$-\\dfrac{5}{3}$",
-            "reason": "근의 합에서 최고차항 계수를 잘못 선택"
+            "offeredOption": "$-\\dfrac{5}{3}$",
+            "reason": "근의 합의 분모에 최고차항 대신 상수항을 넣어 $-\\dfrac{40}{24}=-\\dfrac{5}{3}$로 계산했다."
           },
           {
             "choice": "④",
-            "offeredValue": "$-\\dfrac{4}{3}$",
-            "reason": "이차방정식의 일차항 계수에서 2를 누락"
+            "offeredOption": "$-\\dfrac{4}{3}$",
+            "reason": "근의 합에서 일차항 계수 $2uv$의 2를 누락하여 $-\\dfrac{20}{15}=-\\dfrac{4}{3}$로 계산했다."
           },
           {
             "choice": "⑤",
-            "offeredValue": "$\\dfrac{8}{3}$",
-            "reason": "근의 합 부호를 반대로 계산"
+            "offeredOption": "$\\dfrac{8}{3}$",
+            "reason": "근과 계수의 관계에 붙는 음수 부호를 빠뜨려 $\\dfrac{40}{15}=\\dfrac{8}{3}$로 계산했다."
           }
         ],
         "problemVisual": {
@@ -568,7 +603,8 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "distractorTraceStatus": "4_OF_4_CONCRETE_ERROR_CALCULATIONS"
       }
     },
     {
@@ -605,7 +641,7 @@
         "$6$"
       ],
       "answer": "①",
-      "solution": "접선을 $y-5=m(x--7)$로 두면 중심 $(-2,2)$에서 접선까지의 거리는 반지름 2과 같다.\\n$\\dfrac{|5m+3|}{\\sqrt{m^2+1}}=2$이므로\\n$(21)m^2+30m+(5)=0$이다.\\n두 실근이 두 접선의 기울기이며 수직선 $x=-7$는 중심과의 거리가 5이므로 접선이 아니다.\\n근과 계수의 관계에서 $m_1+m_2=-\\dfrac{10}{7}$, $m_1m_2=\\dfrac{5}{21}$이다.\n역수의 합은 $\\dfrac{m_1+m_2}{m_1m_2}=-6$이다.\n따라서 정답은 ①이다.",
+      "solution": "원의 중심은 $C(-2,2)$, 반지름은 $2$이다. 외부점 $P(-7,5)$를 지나는 접선을 $y-5=m(x+7)$라 놓는다. 수직선 $x=-7$는 중심에서의 거리가 $5$로 반지름보다 크므로 접선이 아니다.\n중심에서 접선까지의 거리가 반지름과 같으므로\n$\\dfrac{|5m+3|}{\\sqrt{m^2+1}}=2$이다.\n양변을 제곱하면 $21m^2+30m+5=0$이다. 점 $P$가 원 밖에 있으므로 두 접선이 존재하고, 두 기울기 $m_1,m_2$는 이 방정식의 서로 다른 두 실근이다.\n근과 계수의 관계에서\n$m_1+m_2=-\\dfrac{10}{7}$, $m_1m_2=\\dfrac{5}{21}$이다.\n$m_1m_2=\\dfrac{5}{21}\\ne0$이므로\n$\\dfrac1{m_1}+\\dfrac1{m_2}=\\dfrac{m_1+m_2}{m_1m_2}=\\dfrac{-\\dfrac{10}{7}}{\\dfrac{5}{21}}=-6$이다.\n따라서 정답은 ①이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/B2-solution.svg",
       "solutionImageAlt": "원 밖의 점에서 그은 두 접선과 반지름의 수직 관계",
       "solutionImageCaption": "중심에서 접선까지의 거리가 반지름과 같다는 조건으로 기울기를 구한다.",
@@ -653,7 +689,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_EXACT_L4_DEBT"
       },
       "review": {
-        "reverseStem": "KEEP: 외부점·원의 중심·반지름·두 접선·답형을 발문만으로 재구성 가능",
+        "reverseStem": "REVISED: 최종 발문만으로 외부점·원 중심/반지름·두 접선 및 질문의 값을 재구성했고 접선 거리 조건이 풀이에 필수임을 확인. 조건 불충분·우회 소거 없음.",
         "mathSelfCheckEvidence": {
           "u": 5,
           "v": 3,
@@ -666,31 +702,38 @@
             -7,
             5
           ],
-          "slopeSum": "-10/7",
-          "slopeProduct": "5/21",
-          "answer": "-6/1",
-          "uniqueTrueChoice": 1
+          "slopeSum": "-\\dfrac{10}{7}",
+          "slopeProduct": "\\dfrac{5}{21}",
+          "answer": "-6",
+          "uniqueTrueChoice": 1,
+          "quadraticCoefficients": [
+            21,
+            30,
+            5
+          ],
+          "wrongChoiceReproduced": 4,
+          "wrongChoiceUnique": 4
         },
         "wrongRoutes": [
           {
             "choice": "②",
-            "offeredValue": "$-3$",
-            "reason": "두 근의 합 공식에서 계수 2를 누락"
+            "offeredOption": "$-3$",
+            "reason": "역수의 합 $-B/C$에서 불필요하게 다시 2로 나누어 $-\\dfrac{30}{2\\cdot 5}=-3$로 계산했다."
           },
           {
             "choice": "③",
-            "offeredValue": "$-\\dfrac{30}{13}$",
-            "reason": "반지름 제곱을 덧셈으로 적용"
+            "offeredOption": "$-\\dfrac{30}{13}$",
+            "reason": "역수의 합에서 상수항 $v^2-r^2$를 $v^2+r^2$로 잘못 바꾸어 $-\\dfrac{30}{9+4}=-\\dfrac{30}{13}$로 계산했다."
           },
           {
             "choice": "④",
-            "offeredValue": "$-\\dfrac{10}{7}$",
-            "reason": "역수의 합 대신 기울기의 합을 계산"
+            "offeredOption": "$-\\dfrac{10}{7}$",
+            "reason": "두 기울기의 역수의 합 대신 두 기울기의 합을 계산하여 $-\\dfrac{30}{21}=-\\dfrac{10}{7}$로 계산했다."
           },
           {
             "choice": "⑤",
-            "offeredValue": "$6$",
-            "reason": "두 근의 역수의 합 부호를 반대로 계산"
+            "offeredOption": "$6$",
+            "reason": "역수의 합에서 음수 부호를 누락하여 $\\dfrac{30}{5}=6$로 계산했다."
           }
         ],
         "problemVisual": {
@@ -705,7 +748,8 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "distractorTraceStatus": "4_OF_4_CONCRETE_ERROR_CALCULATIONS"
       }
     },
     {
@@ -742,7 +786,7 @@
         "$\\dfrac{3}{2}$"
       ],
       "answer": "②",
-      "solution": "접선을 $y-5=m(x--5)$로 두면 중심 $(1,1)$에서 접선까지의 거리는 반지름 2과 같다.\\n$\\dfrac{|6m+4|}{\\sqrt{m^2+1}}=2$이므로\\n$(32)m^2+48m+(12)=0$이다.\\n두 실근이 두 접선의 기울기이며 수직선 $x=-5$는 중심과의 거리가 6이므로 접선이 아니다.\\n근과 계수의 관계에서 $m_1+m_2=-\\dfrac{3}{2}$, $m_1m_2=\\dfrac{3}{8}$이다.\n따라서 두 기울기의 합을 선택한다.\n따라서 정답은 ②이다.",
+      "solution": "원의 중심은 $C(1,1)$, 반지름은 $2$이다. 외부점 $P(-5,5)$를 지나는 접선을 $y-5=m(x+5)$라 놓는다. 수직선 $x=-5$는 중심에서의 거리가 $6$로 반지름보다 크므로 접선이 아니다.\n중심에서 접선까지의 거리가 반지름과 같으므로\n$\\dfrac{|6m+4|}{\\sqrt{m^2+1}}=2$이다.\n양변을 제곱하면 $32m^2+48m+12=0$이다. 점 $P$가 원 밖에 있으므로 두 접선이 존재하고, 두 기울기 $m_1,m_2$는 이 방정식의 서로 다른 두 실근이다.\n근과 계수의 관계에서\n$m_1+m_2=-\\dfrac{3}{2}$, $m_1m_2=\\dfrac{3}{8}$이다.\n구하는 두 접선 기울기의 합은 $m_1+m_2=-\\dfrac{3}{2}$이다.\n따라서 정답은 ②이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/B3-solution.svg",
       "solutionImageAlt": "원 밖의 점에서 그은 두 접선과 반지름의 수직 관계",
       "solutionImageCaption": "중심에서 접선까지의 거리가 반지름과 같다는 조건으로 기울기를 구한다.",
@@ -790,7 +834,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_EXACT_L4_DEBT"
       },
       "review": {
-        "reverseStem": "KEEP: 외부점·원의 중심·반지름·두 접선·답형을 발문만으로 재구성 가능",
+        "reverseStem": "REVISED: 최종 발문만으로 외부점·원 중심/반지름·두 접선 및 질문의 값을 재구성했고 접선 거리 조건이 풀이에 필수임을 확인. 조건 불충분·우회 소거 없음.",
         "mathSelfCheckEvidence": {
           "u": 6,
           "v": 4,
@@ -803,31 +847,38 @@
             -5,
             5
           ],
-          "slopeSum": "-3/2",
-          "slopeProduct": "3/8",
-          "answer": "-3/2",
-          "uniqueTrueChoice": 2
+          "slopeSum": "-\\dfrac{3}{2}",
+          "slopeProduct": "\\dfrac{3}{8}",
+          "answer": "-\\dfrac{3}{2}",
+          "uniqueTrueChoice": 2,
+          "quadraticCoefficients": [
+            32,
+            48,
+            12
+          ],
+          "wrongChoiceReproduced": 4,
+          "wrongChoiceUnique": 4
         },
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredValue": "$-4$",
-            "reason": "근의 합에서 최고차항 계수를 잘못 선택"
+            "offeredOption": "$-4$",
+            "reason": "근의 합의 분모에 최고차항 대신 상수항을 넣어 $-\\dfrac{48}{12}=-4$로 계산했다."
           },
           {
             "choice": "③",
-            "offeredValue": "$-\\dfrac{6}{5}$",
-            "reason": "반지름 제곱을 덧셈으로 잘못 적용"
+            "offeredOption": "$-\\dfrac{6}{5}$",
+            "reason": "근의 합에서 최고차항을 $u^2+r^2$로 잘못 두어 $-\\dfrac{48}{36+4}=-\\dfrac{6}{5}$로 계산했다."
           },
           {
             "choice": "④",
-            "offeredValue": "$-\\dfrac{3}{4}$",
-            "reason": "이차방정식의 일차항 계수에서 2를 누락"
+            "offeredOption": "$-\\dfrac{3}{4}$",
+            "reason": "근의 합에서 일차항 계수 $2uv$의 2를 누락하여 $-\\dfrac{24}{32}=-\\dfrac{3}{4}$로 계산했다."
           },
           {
             "choice": "⑤",
-            "offeredValue": "$\\dfrac{3}{2}$",
-            "reason": "근의 합 부호를 반대로 계산"
+            "offeredOption": "$\\dfrac{3}{2}$",
+            "reason": "근과 계수의 관계에 붙는 음수 부호를 빠뜨려 $\\dfrac{48}{32}=\\dfrac{3}{2}$로 계산했다."
           }
         ],
         "problemVisual": {
@@ -842,7 +893,8 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "distractorTraceStatus": "4_OF_4_CONCRETE_ERROR_CALCULATIONS"
       }
     },
     {
@@ -853,7 +905,7 @@
       "slot": "C1",
       "purpose": "C",
       "modeCandidate": "PLUS_ONE",
-      "level": "상",
+      "level": "중",
       "category": "원의 방정식",
       "originalCategory": "원의 방정식",
       "standardCourse": "공통수학2",
@@ -879,7 +931,7 @@
         "$\\dfrac{33}{2}$"
       ],
       "answer": "①",
-      "solution": "접선을 $y-4=m(x-0)$로 두면 중심 $(3,0)$에서 접선까지의 거리는 반지름 1과 같다.\\n$\\dfrac{|3m+4|}{\\sqrt{m^2+1}}=1$이므로\\n$(8)m^2+24m+(15)=0$이다.\\n두 실근이 두 접선의 기울기이며 수직선 $x=0$는 중심과의 거리가 3이므로 접선이 아니다.\\n근과 계수의 관계에서 $m_1+m_2=-3$, $m_1m_2=\\dfrac{15}{8}$이다.\n두 기울기의 차의 제곱은 $(m_1+m_2)^2-4m_1m_2=\\dfrac{3}{2}$이다.\n따라서 정답은 ①이다.",
+      "solution": "원의 중심은 $C(3,0)$, 반지름은 $1$이다. 외부점 $P(0,4)$를 지나는 접선을 $y-4=m(x)$라 놓는다. 수직선 $x=0$는 중심에서의 거리가 $3$로 반지름보다 크므로 접선이 아니다.\n중심에서 접선까지의 거리가 반지름과 같으므로\n$\\dfrac{|3m+4|}{\\sqrt{m^2+1}}=1$이다.\n양변을 제곱하면 $8m^2+24m+15=0$이다. 점 $P$가 원 밖에 있으므로 두 접선이 존재하고, 두 기울기 $m_1,m_2$는 이 방정식의 서로 다른 두 실근이다.\n근과 계수의 관계에서\n$m_1+m_2=-3$, $m_1m_2=\\dfrac{15}{8}$이다.\n두 기울기 차의 제곱은\n$(m_1-m_2)^2=(m_1+m_2)^2-4m_1m_2=(-3)^2-4\\cdot\\dfrac{15}{8}=\\dfrac{3}{2}$이다.\n따라서 정답은 ①이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/C1-solution.svg",
       "solutionImageAlt": "원 밖의 점에서 그은 두 접선과 반지름의 수직 관계",
       "solutionImageCaption": "중심에서 접선까지의 거리가 반지름과 같다는 조건으로 기울기를 구한다.",
@@ -902,7 +954,7 @@
         ],
         "conditionKeys": [],
         "integrationPattern": "REINTERPRETATION",
-        "difficultyBucket": 4,
+        "difficultyBucket": 3,
         "metadataDebt": [],
         "generatedExtL4Id": "EXT-L4-JEIL25-Q07-TWO-TANGENT-SQUARES",
         "effectiveL4Id": "EXT-L4-JEIL25-Q07-TWO-TANGENT-SQUARES",
@@ -927,7 +979,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_EXACT_L4_DEBT"
       },
       "review": {
-        "reverseStem": "KEEP: 외부점·원의 중심·반지름·두 접선·답형을 발문만으로 재구성 가능",
+        "reverseStem": "REVISED: 최종 발문만으로 외부점·원 중심/반지름·두 접선 및 질문의 값을 재구성했고 접선 거리 조건이 풀이에 필수임을 확인. 조건 불충분·우회 소거 없음.",
         "mathSelfCheckEvidence": {
           "u": 3,
           "v": 4,
@@ -940,31 +992,38 @@
             0,
             4
           ],
-          "slopeSum": "-3/1",
-          "slopeProduct": "15/8",
-          "answer": "3/2",
-          "uniqueTrueChoice": 1
+          "slopeSum": "-3",
+          "slopeProduct": "\\dfrac{15}{8}",
+          "answer": "\\dfrac{3}{2}",
+          "uniqueTrueChoice": 1,
+          "quadraticCoefficients": [
+            8,
+            24,
+            15
+          ],
+          "wrongChoiceReproduced": 4,
+          "wrongChoiceUnique": 4
         },
         "wrongRoutes": [
           {
             "choice": "②",
-            "offeredValue": "$\\dfrac{21}{4}$",
-            "reason": "근의 곱에 곱하는 2 또는 4를 바꾸어 계산"
+            "offeredOption": "$\\dfrac{21}{4}$",
+            "reason": "제곱의 합/차 공식에서 두 근의 곱에 곱할 계수 -4 대신 -2을 잘못 적용해 $(-3)^2-2\\cdot\\dfrac{15}{8}=\\dfrac{21}{4}$로 계산했다."
           },
           {
             "choice": "③",
-            "offeredValue": "$\\dfrac{57}{8}$",
-            "reason": "두 근의 곱에 필요한 계수를 누락"
+            "offeredOption": "$\\dfrac{57}{8}$",
+            "reason": "제곱의 합/차 공식에서 두 근의 곱에 곱할 계수 -4 대신 -1을 잘못 적용해 $(-3)^2-\\dfrac{15}{8}=\\dfrac{57}{8}$로 계산했다."
           },
           {
             "choice": "④",
-            "offeredValue": "$\\dfrac{87}{8}$",
-            "reason": "두 근의 곱 항의 부호와 계수를 모두 잘못 사용"
+            "offeredOption": "$\\dfrac{87}{8}$",
+            "reason": "제곱의 합/차 공식에서 두 근의 곱에 곱할 계수 -4 대신 1을 잘못 적용해 $(-3)^2+\\dfrac{15}{8}=\\dfrac{87}{8}$로 계산했다."
           },
           {
             "choice": "⑤",
-            "offeredValue": "$\\dfrac{33}{2}$",
-            "reason": "근의 곱 항의 부호를 잘못 적용"
+            "offeredOption": "$\\dfrac{33}{2}$",
+            "reason": "제곱의 합/차 공식에서 두 근의 곱에 곱할 계수 -4 대신 4을 잘못 적용해 $(-3)^2+4\\cdot\\dfrac{15}{8}=\\dfrac{33}{2}$로 계산했다."
           }
         ],
         "problemVisual": {
@@ -979,7 +1038,8 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "distractorTraceStatus": "4_OF_4_CONCRETE_ERROR_CALCULATIONS"
       }
     },
     {
@@ -990,7 +1050,7 @@
       "slot": "C2",
       "purpose": "C",
       "modeCandidate": "PLUS_ONE",
-      "level": "상",
+      "level": "중",
       "category": "원의 방정식",
       "originalCategory": "원의 방정식",
       "standardCourse": "공통수학2",
@@ -1016,7 +1076,7 @@
         "$\\dfrac{370}{147}$"
       ],
       "answer": "②",
-      "solution": "접선을 $y-1=m(x--3)$로 두면 중심 $(2,-2)$에서 접선까지의 거리는 반지름 2과 같다.\\n$\\dfrac{|5m+3|}{\\sqrt{m^2+1}}=2$이므로\\n$(21)m^2+30m+(5)=0$이다.\\n두 실근이 두 접선의 기울기이며 수직선 $x=-3$는 중심과의 거리가 5이므로 접선이 아니다.\\n근과 계수의 관계에서 $m_1+m_2=-\\dfrac{10}{7}$, $m_1m_2=\\dfrac{5}{21}$이다.\n두 제곱의 합은 $(m_1+m_2)^2-2m_1m_2=\\dfrac{230}{147}$이다.\n따라서 정답은 ②이다.",
+      "solution": "원의 중심은 $C(2,-2)$, 반지름은 $2$이다. 외부점 $P(-3,1)$를 지나는 접선을 $y-1=m(x+3)$라 놓는다. 수직선 $x=-3$는 중심에서의 거리가 $5$로 반지름보다 크므로 접선이 아니다.\n중심에서 접선까지의 거리가 반지름과 같으므로\n$\\dfrac{|5m+3|}{\\sqrt{m^2+1}}=2$이다.\n양변을 제곱하면 $21m^2+30m+5=0$이다. 점 $P$가 원 밖에 있으므로 두 접선이 존재하고, 두 기울기 $m_1,m_2$는 이 방정식의 서로 다른 두 실근이다.\n근과 계수의 관계에서\n$m_1+m_2=-\\dfrac{10}{7}$, $m_1m_2=\\dfrac{5}{21}$이다.\n두 기울기의 제곱의 합은\n$m_1^2+m_2^2=(m_1+m_2)^2-2m_1m_2=(-\\dfrac{10}{7})^2-2\\cdot\\dfrac{5}{21}=\\dfrac{230}{147}$이다.\n따라서 정답은 ②이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/C2-solution.svg",
       "solutionImageAlt": "원 밖의 점에서 그은 두 접선과 반지름의 수직 관계",
       "solutionImageCaption": "중심에서 접선까지의 거리가 반지름과 같다는 조건으로 기울기를 구한다.",
@@ -1039,7 +1099,7 @@
         ],
         "conditionKeys": [],
         "integrationPattern": "REINTERPRETATION",
-        "difficultyBucket": 4,
+        "difficultyBucket": 3,
         "metadataDebt": [],
         "generatedExtL4Id": "EXT-L4-JEIL25-Q07-TWO-TANGENT-SQUARES",
         "effectiveL4Id": "EXT-L4-JEIL25-Q07-TWO-TANGENT-SQUARES",
@@ -1064,7 +1124,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_EXACT_L4_DEBT"
       },
       "review": {
-        "reverseStem": "KEEP: 외부점·원의 중심·반지름·두 접선·답형을 발문만으로 재구성 가능",
+        "reverseStem": "REVISED: 최종 발문만으로 외부점·원 중심/반지름·두 접선 및 질문의 값을 재구성했고 접선 거리 조건이 풀이에 필수임을 확인. 조건 불충분·우회 소거 없음.",
         "mathSelfCheckEvidence": {
           "u": 5,
           "v": 3,
@@ -1077,31 +1137,38 @@
             -3,
             1
           ],
-          "slopeSum": "-10/7",
-          "slopeProduct": "5/21",
-          "answer": "230/147",
-          "uniqueTrueChoice": 2
+          "slopeSum": "-\\dfrac{10}{7}",
+          "slopeProduct": "\\dfrac{5}{21}",
+          "answer": "\\dfrac{230}{147}",
+          "uniqueTrueChoice": 2,
+          "quadraticCoefficients": [
+            21,
+            30,
+            5
+          ],
+          "wrongChoiceReproduced": 4,
+          "wrongChoiceUnique": 4
         },
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredValue": "$\\dfrac{160}{147}$",
-            "reason": "근의 곱에 곱하는 2 또는 4를 바꾸어 계산"
+            "offeredOption": "$\\dfrac{160}{147}$",
+            "reason": "제곱의 합/차 공식에서 두 근의 곱에 곱할 계수 -2 대신 -4을 잘못 적용해 $(-\\dfrac{10}{7})^2-4\\cdot\\dfrac{5}{21}=\\dfrac{160}{147}$로 계산했다."
           },
           {
             "choice": "③",
-            "offeredValue": "$\\dfrac{265}{147}$",
-            "reason": "두 근의 곱에 필요한 계수를 누락"
+            "offeredOption": "$\\dfrac{265}{147}$",
+            "reason": "제곱의 합/차 공식에서 두 근의 곱에 곱할 계수 -2 대신 -1을 잘못 적용해 $(-\\dfrac{10}{7})^2-\\dfrac{5}{21}=\\dfrac{265}{147}$로 계산했다."
           },
           {
             "choice": "④",
-            "offeredValue": "$\\dfrac{335}{147}$",
-            "reason": "두 근의 곱 항의 부호와 계수를 모두 잘못 사용"
+            "offeredOption": "$\\dfrac{335}{147}$",
+            "reason": "제곱의 합/차 공식에서 두 근의 곱에 곱할 계수 -2 대신 1을 잘못 적용해 $(-\\dfrac{10}{7})^2+\\dfrac{5}{21}=\\dfrac{335}{147}$로 계산했다."
           },
           {
             "choice": "⑤",
-            "offeredValue": "$\\dfrac{370}{147}$",
-            "reason": "근의 곱 항의 부호를 잘못 적용"
+            "offeredOption": "$\\dfrac{370}{147}$",
+            "reason": "제곱의 합/차 공식에서 두 근의 곱에 곱할 계수 -2 대신 2을 잘못 적용해 $(-\\dfrac{10}{7})^2+2\\cdot\\dfrac{5}{21}=\\dfrac{370}{147}$로 계산했다."
           }
         ],
         "problemVisual": {
@@ -1116,7 +1183,8 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "distractorTraceStatus": "4_OF_4_CONCRETE_ERROR_CALCULATIONS"
       }
     },
     {
@@ -1127,7 +1195,7 @@
       "slot": "C3",
       "purpose": "C",
       "modeCandidate": "PLUS_ONE",
-      "level": "상",
+      "level": "중",
       "category": "원의 방정식",
       "originalCategory": "원의 방정식",
       "standardCourse": "공통수학2",
@@ -1153,7 +1221,7 @@
         "$\\dfrac{163}{9}$"
       ],
       "answer": "①",
-      "solution": "접선을 $y-3=m(x--5)$로 두면 중심 $(-1,-2)$에서 접선까지의 거리는 반지름 2과 같다.\\n$\\dfrac{|4m+5|}{\\sqrt{m^2+1}}=2$이므로\\n$(12)m^2+40m+(21)=0$이다.\\n두 실근이 두 접선의 기울기이며 수직선 $x=-5$는 중심과의 거리가 4이므로 접선이 아니다.\\n근과 계수의 관계에서 $m_1+m_2=-\\dfrac{10}{3}$, $m_1m_2=\\dfrac{7}{4}$이다.\n두 기울기의 차의 제곱은 $(m_1+m_2)^2-4m_1m_2=\\dfrac{37}{9}$이다.\n따라서 정답은 ①이다.",
+      "solution": "원의 중심은 $C(-1,-2)$, 반지름은 $2$이다. 외부점 $P(-5,3)$를 지나는 접선을 $y-3=m(x+5)$라 놓는다. 수직선 $x=-5$는 중심에서의 거리가 $4$로 반지름보다 크므로 접선이 아니다.\n중심에서 접선까지의 거리가 반지름과 같으므로\n$\\dfrac{|4m+5|}{\\sqrt{m^2+1}}=2$이다.\n양변을 제곱하면 $12m^2+40m+21=0$이다. 점 $P$가 원 밖에 있으므로 두 접선이 존재하고, 두 기울기 $m_1,m_2$는 이 방정식의 서로 다른 두 실근이다.\n근과 계수의 관계에서\n$m_1+m_2=-\\dfrac{10}{3}$, $m_1m_2=\\dfrac{7}{4}$이다.\n두 기울기 차의 제곱은\n$(m_1-m_2)^2=(m_1+m_2)^2-4m_1m_2=(-\\dfrac{10}{3})^2-4\\cdot\\dfrac{7}{4}=\\dfrac{37}{9}$이다.\n따라서 정답은 ①이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/C3-solution.svg",
       "solutionImageAlt": "원 밖의 점에서 그은 두 접선과 반지름의 수직 관계",
       "solutionImageCaption": "중심에서 접선까지의 거리가 반지름과 같다는 조건으로 기울기를 구한다.",
@@ -1176,7 +1244,7 @@
         ],
         "conditionKeys": [],
         "integrationPattern": "REINTERPRETATION",
-        "difficultyBucket": 4,
+        "difficultyBucket": 3,
         "metadataDebt": [],
         "generatedExtL4Id": "EXT-L4-JEIL25-Q07-TWO-TANGENT-SQUARES",
         "effectiveL4Id": "EXT-L4-JEIL25-Q07-TWO-TANGENT-SQUARES",
@@ -1201,7 +1269,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_EXACT_L4_DEBT"
       },
       "review": {
-        "reverseStem": "KEEP: 외부점·원의 중심·반지름·두 접선·답형을 발문만으로 재구성 가능",
+        "reverseStem": "REVISED: 최종 발문만으로 외부점·원 중심/반지름·두 접선 및 질문의 값을 재구성했고 접선 거리 조건이 풀이에 필수임을 확인. 조건 불충분·우회 소거 없음.",
         "mathSelfCheckEvidence": {
           "u": 4,
           "v": 5,
@@ -1214,31 +1282,38 @@
             -5,
             3
           ],
-          "slopeSum": "-10/3",
-          "slopeProduct": "7/4",
-          "answer": "37/9",
-          "uniqueTrueChoice": 1
+          "slopeSum": "-\\dfrac{10}{3}",
+          "slopeProduct": "\\dfrac{7}{4}",
+          "answer": "\\dfrac{37}{9}",
+          "uniqueTrueChoice": 1,
+          "quadraticCoefficients": [
+            12,
+            40,
+            21
+          ],
+          "wrongChoiceReproduced": 4,
+          "wrongChoiceUnique": 4
         },
         "wrongRoutes": [
           {
             "choice": "②",
-            "offeredValue": "$\\dfrac{137}{18}$",
-            "reason": "근의 곱에 곱하는 2 또는 4를 바꾸어 계산"
+            "offeredOption": "$\\dfrac{137}{18}$",
+            "reason": "제곱의 합/차 공식에서 두 근의 곱에 곱할 계수 -4 대신 -2을 잘못 적용해 $(-\\dfrac{10}{3})^2-2\\cdot\\dfrac{7}{4}=\\dfrac{137}{18}$로 계산했다."
           },
           {
             "choice": "③",
-            "offeredValue": "$\\dfrac{337}{36}$",
-            "reason": "두 근의 곱에 필요한 계수를 누락"
+            "offeredOption": "$\\dfrac{337}{36}$",
+            "reason": "제곱의 합/차 공식에서 두 근의 곱에 곱할 계수 -4 대신 -1을 잘못 적용해 $(-\\dfrac{10}{3})^2-\\dfrac{7}{4}=\\dfrac{337}{36}$로 계산했다."
           },
           {
             "choice": "④",
-            "offeredValue": "$\\dfrac{463}{36}$",
-            "reason": "두 근의 곱 항의 부호와 계수를 모두 잘못 사용"
+            "offeredOption": "$\\dfrac{463}{36}$",
+            "reason": "제곱의 합/차 공식에서 두 근의 곱에 곱할 계수 -4 대신 1을 잘못 적용해 $(-\\dfrac{10}{3})^2+\\dfrac{7}{4}=\\dfrac{463}{36}$로 계산했다."
           },
           {
             "choice": "⑤",
-            "offeredValue": "$\\dfrac{163}{9}$",
-            "reason": "근의 곱 항의 부호를 잘못 적용"
+            "offeredOption": "$\\dfrac{163}{9}$",
+            "reason": "제곱의 합/차 공식에서 두 근의 곱에 곱할 계수 -4 대신 4을 잘못 적용해 $(-\\dfrac{10}{3})^2+4\\cdot\\dfrac{7}{4}=\\dfrac{163}{9}$로 계산했다."
           }
         ],
         "problemVisual": {
@@ -1253,7 +1328,8 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "distractorTraceStatus": "4_OF_4_CONCRETE_ERROR_CALCULATIONS"
       }
     }
   ]
