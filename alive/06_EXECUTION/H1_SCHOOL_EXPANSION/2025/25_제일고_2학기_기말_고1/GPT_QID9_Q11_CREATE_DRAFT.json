@@ -1,0 +1,1198 @@
+{
+  "schemaVersion": "ALIVE_QID9_AUTHOR_DRAFT_v1",
+  "source": {
+    "path": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+    "examTitle": "25_제일고_2학기_기말_고1_기출",
+    "qid": 11,
+    "sourceUid": "qid_v1_fcd1380af2d103f9f78c297bf77ffa804e47dc0a0fbd3ce5507c40dd087018e2",
+    "gitBlobSha1": "252c1cc9a687cadd961183b56ea10d21bf1976b4",
+    "preservedReadOnly": true
+  },
+  "authority": {
+    "runtime": "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+    "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "sourceMetaL3": "함수 그래프와 사분면",
+    "rpmL3": "무리함수의 그래프"
+  },
+  "summary": {
+    "authorDraftItems": 9,
+    "solutionSvgCreated": 9,
+    "problemSvgCreated": 0,
+    "externalOpenBookReview": "NOT_RUN",
+    "studentRelease": "NOT_AUTHORIZED",
+    "status": "AUTHOR_DRAFT_ONLY",
+    "nextQid": 12
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-JEIL25-2FINAL-Q11-A1",
+      "sourceQid": 11,
+      "sourceUid": "qid_v1_fcd1380af2d103f9f78c297bf77ffa804e47dc0a0fbd3ce5507c40dd087018e2",
+      "slot": "A1",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "무리함수",
+      "originalCategory": "무리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "무리함수 $y=\\sqrt{-x-1}-2$의 그래프가 지나는 사분면을 모두 고른 것은?",
+      "choices": [
+        "제1, 2사분면",
+        "제1, 3, 4사분면",
+        "제1, 4사분면",
+        "제2, 3, 4사분면",
+        "제2, 3사분면"
+      ],
+      "answer": "⑤",
+      "solution": "$t=\\sqrt{-x-1}\\ge0$으로 놓으면 $x=-1-t^2$, $y=-2+t$이다.\\n정의역은 $x\\le-1$이고, $y=0$인 점은 $x=-5$이다.\\n$t=2.25$인 경우 $x=-6.0625,\\ y=0.25$이므로 제2사분면을 지난다.\n$t=0.25$인 경우 $x=-1.0625,\\ y=-1.75$이므로 제3사분면을 지난다.\\n따라서 그래프가 지나는 사분면은 제2, 제3사분면이다.\\n따라서 정답은 ⑤이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/A1-solution.svg",
+      "solutionImageAlt": "무리함수의 정의역 끝점과 x절편 및 그래프가 지나는 사분면",
+      "solutionImageCaption": "정의역의 부호와 함숫값의 부호를 구별하여 사분면을 판단한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "primaryRPM_L3": "무리함수의 그래프",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "함수 그래프와 사분면",
+        "rpmRecordId": "H1-RPM-266",
+        "rpmL4SemanticLabel": "기본 그래프",
+        "rpmRecordMappingStatus": "FAMILY_ACTIVE_NOT_EXACT_QUADRANT_L4",
+        "metaFoundationL3": "함수 그래프와 사분면",
+        "metaFoundationL4": "함수 그래프가 지나는 사분면",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+        "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-266은 무리함수 그래프/기본 그래프, source Meta Foundation은 사분면 판정; 동일 exact L4 registry key 미확정"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 함수식의 정의역·수평방향·수직이동이 발문에 모두 주어지고 사분면의 기준이 명확",
+        "mathSelfCheckEvidence": {
+          "h": -1,
+          "sx": -1,
+          "sy": 1,
+          "k": -2,
+          "quadrants": [
+            2,
+            3
+          ],
+          "witness": {
+            "2": {
+              "t": 2.25,
+              "x": -6.0625,
+              "y": 0.25
+            },
+            "3": {
+              "t": 0.25,
+              "x": -1.0625,
+              "y": -1.75
+            }
+          },
+          "domain": "x\\le-1",
+          "xIntercept": -5,
+          "uniqueCorrectChoice": 5
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "제1, 2사분면",
+            "reason": "제3사분면의 실제 점 (-1.0625,-1.75)을 누락"
+          },
+          {
+            "choice": "②",
+            "offeredOption": "제1, 3, 4사분면",
+            "reason": "제2사분면의 실제 점 (-6.0625,0.25)을 누락"
+          },
+          {
+            "choice": "③",
+            "offeredOption": "제1, 4사분면",
+            "reason": "제2,3사분면의 실제 점 (-6.0625,0.25)·(-1.0625,-1.75)을 누락"
+          },
+          {
+            "choice": "④",
+            "offeredOption": "제2, 3, 4사분면",
+            "reason": "제4사분면을 지나지 않는데 정의역의 x부호 또는 근호의 y부호를 거꾸로 판단"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "함수식 자체로 모든 부호 조건이 명확하므로 문제용 그래프 불필요"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/A1-solution.svg",
+          "reason": "끝점, 좌표축 경계, 사분면 경로를 실제 그래프로 제시"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-JEIL25-2FINAL-Q11-A2",
+      "sourceQid": 11,
+      "sourceUid": "qid_v1_fcd1380af2d103f9f78c297bf77ffa804e47dc0a0fbd3ce5507c40dd087018e2",
+      "slot": "A2",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "무리함수",
+      "originalCategory": "무리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "무리함수 $y=\\sqrt{-x-2}-3$의 그래프가 지나는 사분면을 모두 고른 것은?",
+      "choices": [
+        "제1, 2, 3사분면",
+        "제1, 3, 4사분면",
+        "제1, 4사분면",
+        "제2, 3, 4사분면",
+        "제2, 3사분면"
+      ],
+      "answer": "⑤",
+      "solution": "$t=\\sqrt{-x-2}\\ge0$으로 놓으면 $x=-2-t^2$, $y=-3+t$이다.\\n정의역은 $x\\le-2$이고, $y=0$인 점은 $x=-11$이다.\\n$t=3.25$인 경우 $x=-12.5625,\\ y=0.25$이므로 제2사분면을 지난다.\n$t=0.25$인 경우 $x=-2.0625,\\ y=-2.75$이므로 제3사분면을 지난다.\\n따라서 그래프가 지나는 사분면은 제2, 제3사분면이다.\\n따라서 정답은 ⑤이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/A2-solution.svg",
+      "solutionImageAlt": "무리함수의 정의역 끝점과 x절편 및 그래프가 지나는 사분면",
+      "solutionImageCaption": "정의역의 부호와 함숫값의 부호를 구별하여 사분면을 판단한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "primaryRPM_L3": "무리함수의 그래프",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "함수 그래프와 사분면",
+        "rpmRecordId": "H1-RPM-266",
+        "rpmL4SemanticLabel": "기본 그래프",
+        "rpmRecordMappingStatus": "FAMILY_ACTIVE_NOT_EXACT_QUADRANT_L4",
+        "metaFoundationL3": "함수 그래프와 사분면",
+        "metaFoundationL4": "함수 그래프가 지나는 사분면",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+        "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-266은 무리함수 그래프/기본 그래프, source Meta Foundation은 사분면 판정; 동일 exact L4 registry key 미확정"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 함수식의 정의역·수평방향·수직이동이 발문에 모두 주어지고 사분면의 기준이 명확",
+        "mathSelfCheckEvidence": {
+          "h": -2,
+          "sx": -1,
+          "sy": 1,
+          "k": -3,
+          "quadrants": [
+            2,
+            3
+          ],
+          "witness": {
+            "2": {
+              "t": 3.25,
+              "x": -12.5625,
+              "y": 0.25
+            },
+            "3": {
+              "t": 0.25,
+              "x": -2.0625,
+              "y": -2.75
+            }
+          },
+          "domain": "x\\le-2",
+          "xIntercept": -11,
+          "uniqueCorrectChoice": 5
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "제1, 2, 3사분면",
+            "reason": "제1사분면을 지나지 않는데 정의역의 x부호 또는 근호의 y부호를 거꾸로 판단"
+          },
+          {
+            "choice": "②",
+            "offeredOption": "제1, 3, 4사분면",
+            "reason": "제2사분면의 실제 점 (-12.5625,0.25)을 누락"
+          },
+          {
+            "choice": "③",
+            "offeredOption": "제1, 4사분면",
+            "reason": "제2,3사분면의 실제 점 (-12.5625,0.25)·(-2.0625,-2.75)을 누락"
+          },
+          {
+            "choice": "④",
+            "offeredOption": "제2, 3, 4사분면",
+            "reason": "제4사분면을 지나지 않는데 정의역의 x부호 또는 근호의 y부호를 거꾸로 판단"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "함수식 자체로 모든 부호 조건이 명확하므로 문제용 그래프 불필요"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/A2-solution.svg",
+          "reason": "끝점, 좌표축 경계, 사분면 경로를 실제 그래프로 제시"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-JEIL25-2FINAL-Q11-A3",
+      "sourceQid": 11,
+      "sourceUid": "qid_v1_fcd1380af2d103f9f78c297bf77ffa804e47dc0a0fbd3ce5507c40dd087018e2",
+      "slot": "A3",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "무리함수",
+      "originalCategory": "무리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "무리함수 $y=\\sqrt{-x-3}-1$의 그래프가 지나는 사분면을 모두 고른 것은?",
+      "choices": [
+        "제1, 2사분면",
+        "제1, 3, 4사분면",
+        "제1, 4사분면",
+        "제2, 3, 4사분면",
+        "제2, 3사분면"
+      ],
+      "answer": "⑤",
+      "solution": "$t=\\sqrt{-x-3}\\ge0$으로 놓으면 $x=-3-t^2$, $y=-1+t$이다.\\n정의역은 $x\\le-3$이고, $y=0$인 점은 $x=-4$이다.\\n$t=1.25$인 경우 $x=-4.5625,\\ y=0.25$이므로 제2사분면을 지난다.\n$t=0.25$인 경우 $x=-3.0625,\\ y=-0.75$이므로 제3사분면을 지난다.\\n따라서 그래프가 지나는 사분면은 제2, 제3사분면이다.\\n따라서 정답은 ⑤이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/A3-solution.svg",
+      "solutionImageAlt": "무리함수의 정의역 끝점과 x절편 및 그래프가 지나는 사분면",
+      "solutionImageCaption": "정의역의 부호와 함숫값의 부호를 구별하여 사분면을 판단한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "primaryRPM_L3": "무리함수의 그래프",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "함수 그래프와 사분면",
+        "rpmRecordId": "H1-RPM-266",
+        "rpmL4SemanticLabel": "기본 그래프",
+        "rpmRecordMappingStatus": "FAMILY_ACTIVE_NOT_EXACT_QUADRANT_L4",
+        "metaFoundationL3": "함수 그래프와 사분면",
+        "metaFoundationL4": "함수 그래프가 지나는 사분면",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+        "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-266은 무리함수 그래프/기본 그래프, source Meta Foundation은 사분면 판정; 동일 exact L4 registry key 미확정"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 함수식의 정의역·수평방향·수직이동이 발문에 모두 주어지고 사분면의 기준이 명확",
+        "mathSelfCheckEvidence": {
+          "h": -3,
+          "sx": -1,
+          "sy": 1,
+          "k": -1,
+          "quadrants": [
+            2,
+            3
+          ],
+          "witness": {
+            "2": {
+              "t": 1.25,
+              "x": -4.5625,
+              "y": 0.25
+            },
+            "3": {
+              "t": 0.25,
+              "x": -3.0625,
+              "y": -0.75
+            }
+          },
+          "domain": "x\\le-3",
+          "xIntercept": -4,
+          "uniqueCorrectChoice": 5
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "제1, 2사분면",
+            "reason": "제3사분면의 실제 점 (-3.0625,-0.75)을 누락"
+          },
+          {
+            "choice": "②",
+            "offeredOption": "제1, 3, 4사분면",
+            "reason": "제2사분면의 실제 점 (-4.5625,0.25)을 누락"
+          },
+          {
+            "choice": "③",
+            "offeredOption": "제1, 4사분면",
+            "reason": "제2,3사분면의 실제 점 (-4.5625,0.25)·(-3.0625,-0.75)을 누락"
+          },
+          {
+            "choice": "④",
+            "offeredOption": "제2, 3, 4사분면",
+            "reason": "제4사분면을 지나지 않는데 정의역의 x부호 또는 근호의 y부호를 거꾸로 판단"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "함수식 자체로 모든 부호 조건이 명확하므로 문제용 그래프 불필요"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/A3-solution.svg",
+          "reason": "끝점, 좌표축 경계, 사분면 경로를 실제 그래프로 제시"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-JEIL25-2FINAL-Q11-B1",
+      "sourceQid": 11,
+      "sourceUid": "qid_v1_fcd1380af2d103f9f78c297bf77ffa804e47dc0a0fbd3ce5507c40dd087018e2",
+      "slot": "B1",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "무리함수",
+      "originalCategory": "무리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "무리함수 $y=\\sqrt{x-2}-2$의 그래프가 지나는 사분면을 모두 고른 것은?",
+      "choices": [
+        "제1, 2, 3사분면",
+        "제1, 3, 4사분면",
+        "제1, 4사분면",
+        "제2, 3, 4사분면",
+        "제2, 3사분면"
+      ],
+      "answer": "③",
+      "solution": "$t=\\sqrt{x-2}\\ge0$으로 놓으면 $x=2+t^2$, $y=-2+t$이다.\\n정의역은 $x\\ge2$이고, $y=0$인 점은 $x=6$이다.\\n$t=2.25$인 경우 $x=7.0625,\\ y=0.25$이므로 제1사분면을 지난다.\n$t=0.25$인 경우 $x=2.0625,\\ y=-1.75$이므로 제4사분면을 지난다.\\n따라서 그래프가 지나는 사분면은 제1, 제4사분면이다.\\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/B1-solution.svg",
+      "solutionImageAlt": "무리함수의 정의역 끝점과 x절편 및 그래프가 지나는 사분면",
+      "solutionImageCaption": "정의역의 부호와 함숫값의 부호를 구별하여 사분면을 판단한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "primaryRPM_L3": "무리함수의 그래프",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "함수 그래프와 사분면",
+        "rpmRecordId": "H1-RPM-266",
+        "rpmL4SemanticLabel": "기본 그래프",
+        "rpmRecordMappingStatus": "FAMILY_ACTIVE_NOT_EXACT_QUADRANT_L4",
+        "metaFoundationL3": "함수 그래프와 사분면",
+        "metaFoundationL4": "함수 그래프가 지나는 사분면",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+        "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-266은 무리함수 그래프/기본 그래프, source Meta Foundation은 사분면 판정; 동일 exact L4 registry key 미확정"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 함수식의 정의역·수평방향·수직이동이 발문에 모두 주어지고 사분면의 기준이 명확",
+        "mathSelfCheckEvidence": {
+          "h": 2,
+          "sx": 1,
+          "sy": 1,
+          "k": -2,
+          "quadrants": [
+            1,
+            4
+          ],
+          "witness": {
+            "1": {
+              "t": 2.25,
+              "x": 7.0625,
+              "y": 0.25
+            },
+            "4": {
+              "t": 0.25,
+              "x": 2.0625,
+              "y": -1.75
+            }
+          },
+          "domain": "x\\ge2",
+          "xIntercept": 6,
+          "uniqueCorrectChoice": 3
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "제1, 2, 3사분면",
+            "reason": "제4사분면의 실제 점 (2.0625,-1.75)을 누락"
+          },
+          {
+            "choice": "②",
+            "offeredOption": "제1, 3, 4사분면",
+            "reason": "제3사분면을 지나지 않는데 정의역의 x부호 또는 근호의 y부호를 거꾸로 판단"
+          },
+          {
+            "choice": "④",
+            "offeredOption": "제2, 3, 4사분면",
+            "reason": "제1사분면의 실제 점 (7.0625,0.25)을 누락"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "제2, 3사분면",
+            "reason": "제1,4사분면의 실제 점 (7.0625,0.25)·(2.0625,-1.75)을 누락"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "함수식 자체로 모든 부호 조건이 명확하므로 문제용 그래프 불필요"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/B1-solution.svg",
+          "reason": "끝점, 좌표축 경계, 사분면 경로를 실제 그래프로 제시"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-JEIL25-2FINAL-Q11-B2",
+      "sourceQid": 11,
+      "sourceUid": "qid_v1_fcd1380af2d103f9f78c297bf77ffa804e47dc0a0fbd3ce5507c40dd087018e2",
+      "slot": "B2",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "무리함수",
+      "originalCategory": "무리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "무리함수 $y=-\\sqrt{x-3}+2$의 그래프가 지나는 사분면을 모두 고른 것은?",
+      "choices": [
+        "제1, 2사분면",
+        "제1, 3, 4사분면",
+        "제1, 4사분면",
+        "제2, 3, 4사분면",
+        "제2, 3사분면"
+      ],
+      "answer": "③",
+      "solution": "$t=\\sqrt{x-3}\\ge0$으로 놓으면 $x=3+t^2$, $y=2-t$이다.\\n정의역은 $x\\ge3$이고, $y=0$인 점은 $x=7$이다.\\n$t=0.25$인 경우 $x=3.0625,\\ y=1.75$이므로 제1사분면을 지난다.\n$t=2.25$인 경우 $x=8.0625,\\ y=-0.25$이므로 제4사분면을 지난다.\\n따라서 그래프가 지나는 사분면은 제1, 제4사분면이다.\\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/B2-solution.svg",
+      "solutionImageAlt": "무리함수의 정의역 끝점과 x절편 및 그래프가 지나는 사분면",
+      "solutionImageCaption": "정의역의 부호와 함숫값의 부호를 구별하여 사분면을 판단한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "primaryRPM_L3": "무리함수의 그래프",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "함수 그래프와 사분면",
+        "rpmRecordId": "H1-RPM-266",
+        "rpmL4SemanticLabel": "기본 그래프",
+        "rpmRecordMappingStatus": "FAMILY_ACTIVE_NOT_EXACT_QUADRANT_L4",
+        "metaFoundationL3": "함수 그래프와 사분면",
+        "metaFoundationL4": "함수 그래프가 지나는 사분면",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+        "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-266은 무리함수 그래프/기본 그래프, source Meta Foundation은 사분면 판정; 동일 exact L4 registry key 미확정"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 함수식의 정의역·수평방향·수직이동이 발문에 모두 주어지고 사분면의 기준이 명확",
+        "mathSelfCheckEvidence": {
+          "h": 3,
+          "sx": 1,
+          "sy": -1,
+          "k": 2,
+          "quadrants": [
+            1,
+            4
+          ],
+          "witness": {
+            "1": {
+              "t": 0.25,
+              "x": 3.0625,
+              "y": 1.75
+            },
+            "4": {
+              "t": 2.25,
+              "x": 8.0625,
+              "y": -0.25
+            }
+          },
+          "domain": "x\\ge3",
+          "xIntercept": 7,
+          "uniqueCorrectChoice": 3
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "제1, 2사분면",
+            "reason": "제4사분면의 실제 점 (8.0625,-0.25)을 누락"
+          },
+          {
+            "choice": "②",
+            "offeredOption": "제1, 3, 4사분면",
+            "reason": "제3사분면을 지나지 않는데 정의역의 x부호 또는 근호의 y부호를 거꾸로 판단"
+          },
+          {
+            "choice": "④",
+            "offeredOption": "제2, 3, 4사분면",
+            "reason": "제1사분면의 실제 점 (3.0625,1.75)을 누락"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "제2, 3사분면",
+            "reason": "제1,4사분면의 실제 점 (3.0625,1.75)·(8.0625,-0.25)을 누락"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "함수식 자체로 모든 부호 조건이 명확하므로 문제용 그래프 불필요"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/B2-solution.svg",
+          "reason": "끝점, 좌표축 경계, 사분면 경로를 실제 그래프로 제시"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-JEIL25-2FINAL-Q11-B3",
+      "sourceQid": 11,
+      "sourceUid": "qid_v1_fcd1380af2d103f9f78c297bf77ffa804e47dc0a0fbd3ce5507c40dd087018e2",
+      "slot": "B3",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "무리함수",
+      "originalCategory": "무리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "무리함수 $y=\\sqrt{x-1}-3$의 그래프가 지나는 사분면을 모두 고른 것은?",
+      "choices": [
+        "제1, 2, 3사분면",
+        "제1, 3, 4사분면",
+        "제1, 4사분면",
+        "제2, 3, 4사분면",
+        "제2, 3사분면"
+      ],
+      "answer": "③",
+      "solution": "$t=\\sqrt{x-1}\\ge0$으로 놓으면 $x=1+t^2$, $y=-3+t$이다.\\n정의역은 $x\\ge1$이고, $y=0$인 점은 $x=10$이다.\\n$t=3.25$인 경우 $x=11.5625,\\ y=0.25$이므로 제1사분면을 지난다.\n$t=0.25$인 경우 $x=1.0625,\\ y=-2.75$이므로 제4사분면을 지난다.\\n따라서 그래프가 지나는 사분면은 제1, 제4사분면이다.\\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/B3-solution.svg",
+      "solutionImageAlt": "무리함수의 정의역 끝점과 x절편 및 그래프가 지나는 사분면",
+      "solutionImageCaption": "정의역의 부호와 함숫값의 부호를 구별하여 사분면을 판단한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "primaryRPM_L3": "무리함수의 그래프",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "함수 그래프와 사분면",
+        "rpmRecordId": "H1-RPM-266",
+        "rpmL4SemanticLabel": "기본 그래프",
+        "rpmRecordMappingStatus": "FAMILY_ACTIVE_NOT_EXACT_QUADRANT_L4",
+        "metaFoundationL3": "함수 그래프와 사분면",
+        "metaFoundationL4": "함수 그래프가 지나는 사분면",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+        "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-266은 무리함수 그래프/기본 그래프, source Meta Foundation은 사분면 판정; 동일 exact L4 registry key 미확정"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 함수식의 정의역·수평방향·수직이동이 발문에 모두 주어지고 사분면의 기준이 명확",
+        "mathSelfCheckEvidence": {
+          "h": 1,
+          "sx": 1,
+          "sy": 1,
+          "k": -3,
+          "quadrants": [
+            1,
+            4
+          ],
+          "witness": {
+            "1": {
+              "t": 3.25,
+              "x": 11.5625,
+              "y": 0.25
+            },
+            "4": {
+              "t": 0.25,
+              "x": 1.0625,
+              "y": -2.75
+            }
+          },
+          "domain": "x\\ge1",
+          "xIntercept": 10,
+          "uniqueCorrectChoice": 3
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "제1, 2, 3사분면",
+            "reason": "제4사분면의 실제 점 (1.0625,-2.75)을 누락"
+          },
+          {
+            "choice": "②",
+            "offeredOption": "제1, 3, 4사분면",
+            "reason": "제3사분면을 지나지 않는데 정의역의 x부호 또는 근호의 y부호를 거꾸로 판단"
+          },
+          {
+            "choice": "④",
+            "offeredOption": "제2, 3, 4사분면",
+            "reason": "제1사분면의 실제 점 (11.5625,0.25)을 누락"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "제2, 3사분면",
+            "reason": "제1,4사분면의 실제 점 (11.5625,0.25)·(1.0625,-2.75)을 누락"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "함수식 자체로 모든 부호 조건이 명확하므로 문제용 그래프 불필요"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/B3-solution.svg",
+          "reason": "끝점, 좌표축 경계, 사분면 경로를 실제 그래프로 제시"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-JEIL25-2FINAL-Q11-C1",
+      "sourceQid": 11,
+      "sourceUid": "qid_v1_fcd1380af2d103f9f78c297bf77ffa804e47dc0a0fbd3ce5507c40dd087018e2",
+      "slot": "C1",
+      "purpose": "C",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "무리함수",
+      "originalCategory": "무리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "무리함수 $y=\\sqrt{2-x}-3$의 그래프가 지나는 사분면을 모두 고른 것은?",
+      "choices": [
+        "제1, 2사분면",
+        "제1, 3, 4사분면",
+        "제1, 4사분면",
+        "제2, 3, 4사분면",
+        "제2, 3사분면"
+      ],
+      "answer": "④",
+      "solution": "$t=\\sqrt{2-x}\\ge0$으로 놓으면 $x=2-t^2$, $y=-3+t$이다.\\n정의역은 $x\\le2$이고, $y=0$인 점은 $x=-7$이다.\\n$t=3.25$인 경우 $x=-8.5625,\\ y=0.25$이므로 제2사분면을 지난다.\n$t=1.5$인 경우 $x=-0.25,\\ y=-1.5$이므로 제3사분면을 지난다.\n$t=0.25$인 경우 $x=1.9375,\\ y=-2.75$이므로 제4사분면을 지난다.\\n따라서 그래프가 지나는 사분면은 제2, 제3, 제4사분면이다.\\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/C1-solution.svg",
+      "solutionImageAlt": "무리함수의 정의역 끝점과 x절편 및 그래프가 지나는 사분면",
+      "solutionImageCaption": "정의역의 부호와 함숫값의 부호를 구별하여 사분면을 판단한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "primaryRPM_L3": "무리함수의 그래프",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "함수 그래프와 사분면",
+        "rpmRecordId": "H1-RPM-266",
+        "rpmL4SemanticLabel": "기본 그래프",
+        "rpmRecordMappingStatus": "FAMILY_ACTIVE_NOT_EXACT_QUADRANT_L4",
+        "metaFoundationL3": "함수 그래프와 사분면",
+        "metaFoundationL4": "함수 그래프가 지나는 사분면",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+        "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-266은 무리함수 그래프/기본 그래프, source Meta Foundation은 사분면 판정; 동일 exact L4 registry key 미확정"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 함수식의 정의역·수평방향·수직이동이 발문에 모두 주어지고 사분면의 기준이 명확",
+        "mathSelfCheckEvidence": {
+          "h": 2,
+          "sx": -1,
+          "sy": 1,
+          "k": -3,
+          "quadrants": [
+            2,
+            3,
+            4
+          ],
+          "witness": {
+            "2": {
+              "t": 3.25,
+              "x": -8.5625,
+              "y": 0.25
+            },
+            "3": {
+              "t": 1.5,
+              "x": -0.25,
+              "y": -1.5
+            },
+            "4": {
+              "t": 0.25,
+              "x": 1.9375,
+              "y": -2.75
+            }
+          },
+          "domain": "x\\le2",
+          "xIntercept": -7,
+          "uniqueCorrectChoice": 4
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "제1, 2사분면",
+            "reason": "제3,4사분면의 실제 점 (-0.25,-1.5)·(1.9375,-2.75)을 누락"
+          },
+          {
+            "choice": "②",
+            "offeredOption": "제1, 3, 4사분면",
+            "reason": "제2사분면의 실제 점 (-8.5625,0.25)을 누락"
+          },
+          {
+            "choice": "③",
+            "offeredOption": "제1, 4사분면",
+            "reason": "제2,3사분면의 실제 점 (-8.5625,0.25)·(-0.25,-1.5)을 누락"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "제2, 3사분면",
+            "reason": "제4사분면의 실제 점 (1.9375,-2.75)을 누락"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "함수식 자체로 모든 부호 조건이 명확하므로 문제용 그래프 불필요"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/C1-solution.svg",
+          "reason": "끝점, 좌표축 경계, 사분면 경로를 실제 그래프로 제시"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-JEIL25-2FINAL-Q11-C2",
+      "sourceQid": 11,
+      "sourceUid": "qid_v1_fcd1380af2d103f9f78c297bf77ffa804e47dc0a0fbd3ce5507c40dd087018e2",
+      "slot": "C2",
+      "purpose": "C",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "무리함수",
+      "originalCategory": "무리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "무리함수 $y=\\sqrt{x+2}-3$의 그래프가 지나는 사분면을 모두 고른 것은?",
+      "choices": [
+        "제1, 2, 3사분면",
+        "제1, 3, 4사분면",
+        "제1, 4사분면",
+        "제2, 3, 4사분면",
+        "제2, 3사분면"
+      ],
+      "answer": "②",
+      "solution": "$t=\\sqrt{x+2}\\ge0$으로 놓으면 $x=-2+t^2$, $y=-3+t$이다.\\n정의역은 $x\\ge-2$이고, $y=0$인 점은 $x=7$이다.\\n$t=3.25$인 경우 $x=8.5625,\\ y=0.25$이므로 제1사분면을 지난다.\n$t=0.25$인 경우 $x=-1.9375,\\ y=-2.75$이므로 제3사분면을 지난다.\n$t=1.5$인 경우 $x=0.25,\\ y=-1.5$이므로 제4사분면을 지난다.\\n따라서 그래프가 지나는 사분면은 제1, 제3, 제4사분면이다.\\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/C2-solution.svg",
+      "solutionImageAlt": "무리함수의 정의역 끝점과 x절편 및 그래프가 지나는 사분면",
+      "solutionImageCaption": "정의역의 부호와 함숫값의 부호를 구별하여 사분면을 판단한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "primaryRPM_L3": "무리함수의 그래프",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "함수 그래프와 사분면",
+        "rpmRecordId": "H1-RPM-266",
+        "rpmL4SemanticLabel": "기본 그래프",
+        "rpmRecordMappingStatus": "FAMILY_ACTIVE_NOT_EXACT_QUADRANT_L4",
+        "metaFoundationL3": "함수 그래프와 사분면",
+        "metaFoundationL4": "함수 그래프가 지나는 사분면",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+        "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-266은 무리함수 그래프/기본 그래프, source Meta Foundation은 사분면 판정; 동일 exact L4 registry key 미확정"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 함수식의 정의역·수평방향·수직이동이 발문에 모두 주어지고 사분면의 기준이 명확",
+        "mathSelfCheckEvidence": {
+          "h": -2,
+          "sx": 1,
+          "sy": 1,
+          "k": -3,
+          "quadrants": [
+            1,
+            3,
+            4
+          ],
+          "witness": {
+            "1": {
+              "t": 3.25,
+              "x": 8.5625,
+              "y": 0.25
+            },
+            "3": {
+              "t": 0.25,
+              "x": -1.9375,
+              "y": -2.75
+            },
+            "4": {
+              "t": 1.5,
+              "x": 0.25,
+              "y": -1.5
+            }
+          },
+          "domain": "x\\ge-2",
+          "xIntercept": 7,
+          "uniqueCorrectChoice": 2
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "제1, 2, 3사분면",
+            "reason": "제4사분면의 실제 점 (0.25,-1.5)을 누락"
+          },
+          {
+            "choice": "③",
+            "offeredOption": "제1, 4사분면",
+            "reason": "제3사분면의 실제 점 (-1.9375,-2.75)을 누락"
+          },
+          {
+            "choice": "④",
+            "offeredOption": "제2, 3, 4사분면",
+            "reason": "제1사분면의 실제 점 (8.5625,0.25)을 누락"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "제2, 3사분면",
+            "reason": "제1,4사분면의 실제 점 (8.5625,0.25)·(0.25,-1.5)을 누락"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "함수식 자체로 모든 부호 조건이 명확하므로 문제용 그래프 불필요"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/C2-solution.svg",
+          "reason": "끝점, 좌표축 경계, 사분면 경로를 실제 그래프로 제시"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-JEIL25-2FINAL-Q11-C3",
+      "sourceQid": 11,
+      "sourceUid": "qid_v1_fcd1380af2d103f9f78c297bf77ffa804e47dc0a0fbd3ce5507c40dd087018e2",
+      "slot": "C3",
+      "purpose": "C",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "무리함수",
+      "originalCategory": "무리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "무리함수 $y=-\\sqrt{2-x}+3$의 그래프가 지나는 사분면을 모두 고른 것은?",
+      "choices": [
+        "제1, 2, 3사분면",
+        "제1, 2사분면",
+        "제1, 4사분면",
+        "제2, 3, 4사분면",
+        "제2, 3사분면"
+      ],
+      "answer": "①",
+      "solution": "$t=\\sqrt{2-x}\\ge0$으로 놓으면 $x=2-t^2$, $y=3-t$이다.\\n정의역은 $x\\le2$이고, $y=0$인 점은 $x=-7$이다.\\n$t=0.25$인 경우 $x=1.9375,\\ y=2.75$이므로 제1사분면을 지난다.\n$t=1.5$인 경우 $x=-0.25,\\ y=1.5$이므로 제2사분면을 지난다.\n$t=3.25$인 경우 $x=-8.5625,\\ y=-0.25$이므로 제3사분면을 지난다.\\n따라서 그래프가 지나는 사분면은 제1, 제2, 제3사분면이다.\\n따라서 정답은 ①이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/C3-solution.svg",
+      "solutionImageAlt": "무리함수의 정의역 끝점과 x절편 및 그래프가 지나는 사분면",
+      "solutionImageCaption": "정의역의 부호와 함숫값의 부호를 구별하여 사분면을 판단한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "primaryRPM_L3": "무리함수의 그래프",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "함수 그래프와 사분면",
+        "rpmRecordId": "H1-RPM-266",
+        "rpmL4SemanticLabel": "기본 그래프",
+        "rpmRecordMappingStatus": "FAMILY_ACTIVE_NOT_EXACT_QUADRANT_L4",
+        "metaFoundationL3": "함수 그래프와 사분면",
+        "metaFoundationL4": "함수 그래프가 지나는 사분면",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+        "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-266은 무리함수 그래프/기본 그래프, source Meta Foundation은 사분면 판정; 동일 exact L4 registry key 미확정"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 함수식의 정의역·수평방향·수직이동이 발문에 모두 주어지고 사분면의 기준이 명확",
+        "mathSelfCheckEvidence": {
+          "h": 2,
+          "sx": -1,
+          "sy": -1,
+          "k": 3,
+          "quadrants": [
+            1,
+            2,
+            3
+          ],
+          "witness": {
+            "1": {
+              "t": 0.25,
+              "x": 1.9375,
+              "y": 2.75
+            },
+            "2": {
+              "t": 1.5,
+              "x": -0.25,
+              "y": 1.5
+            },
+            "3": {
+              "t": 3.25,
+              "x": -8.5625,
+              "y": -0.25
+            }
+          },
+          "domain": "x\\le2",
+          "xIntercept": -7,
+          "uniqueCorrectChoice": 1
+        },
+        "wrongRoutes": [
+          {
+            "choice": "②",
+            "offeredOption": "제1, 2사분면",
+            "reason": "제3사분면의 실제 점 (-8.5625,-0.25)을 누락"
+          },
+          {
+            "choice": "③",
+            "offeredOption": "제1, 4사분면",
+            "reason": "제2,3사분면의 실제 점 (-0.25,1.5)·(-8.5625,-0.25)을 누락"
+          },
+          {
+            "choice": "④",
+            "offeredOption": "제2, 3, 4사분면",
+            "reason": "제1사분면의 실제 점 (1.9375,2.75)을 누락"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "제2, 3사분면",
+            "reason": "제1사분면의 실제 점 (1.9375,2.75)을 누락"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "함수식 자체로 모든 부호 조건이 명확하므로 문제용 그래프 불필요"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q11/C3-solution.svg",
+          "reason": "끝점, 좌표축 경계, 사분면 경로를 실제 그래프로 제시"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    }
+  ]
+}
