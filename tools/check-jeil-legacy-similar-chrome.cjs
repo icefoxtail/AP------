@@ -64,7 +64,7 @@ async function main(){
    let ready=false, lastObserved=null;
    for(let i=0;i<600;i++){
     try {
-     const r=await evaluate("(()=>({mode:window.AppState?.mode,legacyDone:!!window.__AP_RENDER_METRICS__?.finishedAt,snapshotMode:window.archiveScreenRuntime?.activeSnapshot?.mode||null,snapshotReady:!!window.archiveScreenRuntime?.activeSnapshot,pages:document.querySelectorAll('#print-area .page').length,root:!!document.getElementById('print-area'),error:document.querySelector('.error-message')?.textContent||''}))()");
+     const r=await evaluate("(()=>({mode:typeof AppState!=='undefined'?AppState.mode:null,legacyDone:!!window.__AP_RENDER_METRICS__?.finishedAt,snapshotMode:window.archiveScreenRuntime?.activeSnapshot?.mode||null,snapshotReady:!!window.archiveScreenRuntime?.activeSnapshot,pages:document.querySelectorAll('#print-area .page').length,root:!!document.getElementById('print-area'),error:document.querySelector('.error-message')?.textContent||''}))()");
      lastObserved=r;
      if(r.mode===mode && r.root && r.pages>0 && (r.legacyDone || (r.snapshotReady && r.snapshotMode===mode))){
       const idle=await evaluate("(async()=>{const r=window.archiveScreenRuntime?await window.archiveScreenRuntime.whenIdle():await window.__AP_RENDER_READY__;return {ok:r?.ok??null,pages:r?.pages??null}})()");
@@ -79,7 +79,7 @@ async function main(){
     try{const snap=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true});fs.writeFileSync(path.join(out,'debug-'+mode+'.png'),Buffer.from(snap.data,'base64'));}catch(_){}
     throw Error('Chrome '+mode+' render not ready: '+JSON.stringify(lastObserved));
    }
-   const state=await evaluate("(()=>{const p=document.getElementById('print-area'),pages=[...p.querySelectorAll('.page')];const images=[...p.querySelectorAll('img')];return {mode:window.AppState?.mode,visibleChars:p.innerText?.length||p.textContent.length,text:p.innerText||p.textContent,pages:pages.length,questionBoxes:p.querySelectorAll('.q-box').length,solutionBoxes:p.querySelectorAll('.sol-box').length,svgCount:p.querySelectorAll('svg').length,images:images.map(x=>({src:x.getAttribute('src'),loaded:x.complete&&x.naturalWidth>0})),unrenderedMath:window.APRenderLoop?.unrenderedMathCount?.(p)??null,metrics:window.__AP_RENDER_METRICS__}})()");
+   const state=await evaluate("(()=>{const p=document.getElementById('print-area'),pages=[...p.querySelectorAll('.page')];const images=[...p.querySelectorAll('img')];return {mode:typeof AppState!=='undefined'?AppState.mode:null,visibleChars:p.innerText?.length||p.textContent.length,text:p.innerText||p.textContent,pages:pages.length,questionBoxes:p.querySelectorAll('.q-box').length,solutionBoxes:p.querySelectorAll('.sol-box').length,svgCount:p.querySelectorAll('svg').length,images:images.map(x=>({src:x.getAttribute('src'),loaded:x.complete&&x.naturalWidth>0})),unrenderedMath:window.APRenderLoop?.unrenderedMathCount?.(p)??null,metrics:window.__AP_RENDER_METRICS__}})()");
    assert(state.pages>0,mode+' no printed pages');
    assert(state.visibleChars>(mode==='ans'?70:400),mode+' output blank');
    assert(state.images.every(x=>x.loaded),mode+' image decode failure: '+JSON.stringify(state.images.filter(x=>!x.loaded)));
