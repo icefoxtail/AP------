@@ -15,7 +15,6 @@ const studentBody = q => JSON.stringify({ uid: q.uid, content: q.content, choice
 const crypto = require('node:crypto');
 const vm = require('node:vm');
 const { execFileSync, spawnSync } = require('node:child_process');
-const REVIEW_PATH = 'archive/data/generated-lite/hyocheon-2026-1mid-independent-review-v1.json';
 const sha256Bytes = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const gitBlobSha1 = bytes => crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob ' + bytes.length + '\0'), bytes])).digest('hex');
 const gitBlobBytes = sha => execFileSync('git', ['cat-file', 'blob', sha], { cwd: root, maxBuffer: 2 * 1024 * 1024 });
@@ -24,30 +23,65 @@ const generatedQuestions = bytes => {
   vm.runInNewContext(bytes.toString('utf8'), context, { timeout: 1000 });
   return context.window.questionBank;
 };
-function assertAuditRecord(record, uid, sourcePath, sourceQid, answer) {
-  assert.ok(record, 'review record missing');
-  assert.equal(record.uid, uid, 'review UID mismatch');
-  assert.equal(record.shard, sourcePath, 'review source path mismatch');
-  assert.equal(Number(record.qid), Number(sourceQid), 'review qid mismatch');
-  assert.equal(record.independentAnswer, answer, 'reviewed answer mismatch');
-  assert.ok(['PASS', 'REPAIRED_PASS'].includes(record.status), 'review status is not passing');
+function validateExistingSourceAudit(doc, uid, sourceEvidence, sourceQuestion) {
+  if (doc.schemaVersion === 'ALIVE_LITE_HYOCHEON_REVIEW_MAIN_v1') {
+    const records = (doc.records || []).filter(item => item.uid === uid);
+    if (!records.length) return null;
+    assert.equal(records.length, 1, 'Hyocheon review UID must be unique: ' + uid);
+    const record = records[0];
+    assert.equal(record.shard, sourceEvidence.path, 'review source path mismatch');
+    assert.equal(Number(record.qid), Number(sourceQuestion.id), 'review qid mismatch');
+    assert.equal(record.independentAnswer, sourceQuestion.answer, 'reviewed answer mismatch');
+    assert.ok(['PASS', 'REPAIRED_PASS'].includes(record.status), 'review status is not passing');
+    return { kind: 'hyocheon-independent-review', record };
+  }
+
+  if (doc.schemaVersion === 'B06_REVIEW_MATH_META_REPAIRED_RELEASE_GATE_V1') {
+    const rows = (doc.sourceFileRows || []).filter(item => item.uid === uid);
+    if (!rows.length) return null;
+    assert.equal(rows.length, 1, 'B06 review UID must be unique: ' + uid);
+    const sourceMatch = sourceEvidence.path.match(/\/shards\/batch-(BSG\d+-B\d+)-q(\d+)\.js$/);
+    assert.ok(sourceMatch, 'B06 review shard path is unrecognized: ' + sourceEvidence.path);
+    const uidMatch = uid.match(new RegExp('^ALITE-' + sourceMatch[1] + '-Q' + String(Number(sourceMatch[2])).padStart(2, '0') + '-S(\\d+)$'));
+    assert.ok(uidMatch, 'B06 UID does not identify the reviewed shard: ' + uid);
+    assert.equal(Number(uidMatch[1]), Number(sourceQuestion.id), 'B06 reviewed source ordinal mismatch');
+    assert.equal(doc.finalSourceSha?.['q' + Number(sourceMatch[2])], sourceEvidence.gitBlobSha1, 'B06 final source SHA mismatch');
+    const total = doc.count?.total;
+    assert.ok(Number.isInteger(total) && total > 0, 'B06 review total is invalid');
+    assert.equal(doc.count.independentMathRecomputed, total, 'B06 math recomputation is incomplete');
+    assert.equal(doc.count.allMetaStudentParity, total, 'B06 metadata/student parity is incomplete');
+    assert.equal(doc.gates?.math, 'PASS_' + total, 'B06 math gate is not a full pass');
+    assert.equal(doc.gates?.meta, 'PASS_' + total + '_EXISTING_ACTIVE_KEYS', 'B06 Meta gate is not a full pass');
+    assert.equal(doc.A2Compare?.all25OriginalMathMatches, true, 'B06 independent original comparison is incomplete');
+    const row = rows[0];
+    assert.equal(row.studentFormat, 'PASS', 'B06 reviewed student format is not passing');
+    assert.equal(row.mathDisposition, 'A1_FROZEN_A2_STORED_MATCH', 'B06 math disposition is not approved');
+    return { kind: 'b06-independent-math-meta-gate', record: row };
+  }
+  return null;
 }
-function findSourceAuditCommit(uid, sourceEvidence, sourceQid, answer) {
+function findSourceAuditCommit(uid, sourceEvidence, sourceQuestion) {
   const candidates = execFileSync('git', ['log', '--all', '--format=%H', '--find-object=' + sourceEvidence.gitBlobSha1], { cwd: root, encoding: 'utf8' }).trim().split(/\r?\n/).filter(Boolean);
+  const accepted = new Map();
   for (const commit of candidates) {
     const sourceResult = spawnSync('git', ['rev-parse', commit + ':' + sourceEvidence.path], { cwd: root, encoding: 'utf8' });
     if (sourceResult.status !== 0 || sourceResult.stdout.trim() !== sourceEvidence.gitBlobSha1) continue;
-    const reviewResult = spawnSync('git', ['rev-parse', commit + ':' + REVIEW_PATH], { cwd: root, encoding: 'utf8' });
-    if (reviewResult.status !== 0) continue;
-    const reviewBlobSha = reviewResult.stdout.trim();
-    const reviewBytes = gitBlobBytes(reviewBlobSha);
-    const review = JSON.parse(reviewBytes.toString('utf8'));
-    const record = (review.records || []).find(item => item.uid === uid);
-    if (!record) continue;
-    assertAuditRecord(record, uid, sourceEvidence.path, sourceQid, answer);
-    return { commit, reviewBlobSha, reviewBytes, record };
+    const grepResult = spawnSync('git', ['grep', '-l', '-F', uid, commit, '--', '*.json'], { cwd: root, encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 });
+    if (grepResult.status === 1) continue;
+    if (grepResult.status !== 0) throw new Error('SOURCE_AUDIT_SEARCH_FAILED:' + uid);
+    const reviewPaths = [...new Set(grepResult.stdout.split(/\r?\n/).filter(Boolean).map(line => line.includes(':') ? line.slice(line.indexOf(':') + 1) : line))]
+      .filter(filePath => /review|audit|gate|evidence/i.test(filePath));
+    for (const reviewPath of reviewPaths) {
+      const reviewResult = spawnSync('git', ['rev-parse', commit + ':' + reviewPath], { cwd: root, encoding: 'utf8' });
+      if (reviewResult.status !== 0) throw new Error('SOURCE_AUDIT_BLOB_MISSING:' + uid);
+      const reviewBlobSha = reviewResult.stdout.trim();
+      const review = JSON.parse(gitBlobBytes(reviewBlobSha).toString('utf8'));
+      const validated = validateExistingSourceAudit(review, uid, sourceEvidence, sourceQuestion);
+      if (validated) accepted.set(reviewPath + ':' + reviewBlobSha, { commit, reviewPath, reviewBlobSha, ...validated });
+    }
   }
-  throw new Error('SOURCE_AUDIT_COMMIT_NOT_FOUND:' + uid);
+  assert.equal(accepted.size, 1, 'exactly one co-committed approved source review must exist: ' + uid);
+  return [...accepted.values()][0];
 }
 
 
@@ -155,9 +189,11 @@ test('Consumer student payload hashes remain byte-equivalent to the evidence led
       assert.equal(sha256Bytes(approvedSourceBytes), approvedSource.sha256);
       const approvedQuestion = generatedQuestions(approvedSourceBytes).find(item => Number(item.id) === Number(row.localOrdinal));
       assert.ok(approvedQuestion, 'approved source question missing: ' + row.uid);
-      const audit = findSourceAuditCommit(row.uid, approvedSource, approvedQuestion.id, approvedQuestion.answer);
+      const audit = findSourceAuditCommit(row.uid, approvedSource, approvedQuestion);
       const currentSourceBytes = fs.readFileSync(path.join(root, approvedSource.path));
-      assert.equal(gitBlobSha1(currentSourceBytes), matches[0].sourceShardGitSha, 'Consumer source pointer drift: ' + row.uid);
+      assert.equal(approvedSource.gitBlobSha1, row.sourceShardGitSha, 'ledger/index source pointer drift: ' + row.uid);
+      assert.equal(matches[0].sourceShardGitSha, row.sourceShardGitSha, 'Consumer/index source pointer drift: ' + row.uid);
+      assert.equal(gitBlobSha1(currentSourceBytes), row.sourceShardGitSha, 'current source pointer drift: ' + row.uid);
       const currentSourceQuestion = generatedQuestions(currentSourceBytes).find(item => Number(item.id) === Number(row.localOrdinal));
       assert.ok(currentSourceQuestion, 'current source question missing: ' + row.uid);
       assert.equal(studentBody(currentSourceQuestion), studentBody(approvedQuestion), 'current source changed beyond audited student payload: ' + row.uid);

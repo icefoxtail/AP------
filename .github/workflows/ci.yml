@@ -55,5 +55,16 @@ jobs:
       - name: Verify Git-managed project skills
         run: node tools/skills/verify-skills.mjs --json
 
+      - name: Materialize canonical Generated source projections for contract tests
+        run: |
+          node archive/tools/generated-meta/compile-qid9-main-source.mjs --write
+          node archive/tools/generated-meta/compile-qid9-main-source.mjs --check
+          node archive/tools/generated-meta/auto-register-approved-qid9.mjs --write
+          node archive/tools/generated-meta/auto-register-approved-qid9.mjs --check
+          node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --write
+          node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --check
+          node archive/tools/build-generated-meta-browse-aliases.cjs --write
+          node archive/tools/build-generated-meta-browse-aliases.cjs
+
       - name: Run tests
         run: node tools/run-tests.js
