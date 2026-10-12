@@ -1,0 +1,1679 @@
+{
+  "schemaVersion": "ALIVE_QID9_AUTHOR_DRAFT_v1",
+  "source": {
+    "path": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+    "qid": 8,
+    "sourceUid": "qid_v1_cc7005ff1c74273573c3c79993e6ab94ae7cef23e47291e546563acf344cb2a2",
+    "gitBlobSha1": "252c1cc9a687cadd961183b56ea10d21bf1976b4",
+    "preservedReadOnly": true
+  },
+  "authority": {
+    "rpmCrosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "sourceRuntime": "archive/data/meta-foundation/runtime/sets-propositions-v1.json",
+    "originalPrimaryL3": "논리 관계와 추론",
+    "originalMetaL4": "논리 조건을 이용한 추론"
+  },
+  "summary": {
+    "authorDraftItems": 9,
+    "svgCreated": 9,
+    "truthTablesChecked": 9,
+    "uniqueAnswerCount": 9,
+    "externalOpenBookReview": "NOT_RUN",
+    "studentRelease": "NOT_AUTHORIZED",
+    "status": "AUTHOR_DRAFT_ONLY",
+    "nextQid": 9
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-JEIL25-2FINAL-Q08-A1",
+      "sourceQid": 8,
+      "sourceUid": "qid_v1_cc7005ff1c74273573c3c79993e6ab94ae7cef23e47291e546563acf344cb2a2",
+      "slot": "A1",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "표"
+      ],
+      "wide": false,
+      "content": "4명의 학생 A, B, C, D 중 정확히 한 명만 당첨금을 가지고 있다. 각 학생의 말은 다음과 같다.<br><div class=\"question-note-box\">A: B가 당첨금을 가지고 있다.<br>B: C는 당첨금을 가지고 있지 않다.<br>C: D가 당첨금을 가지고 있다.<br>D: A의 말은 거짓이다.</div>이 중 정확히 1명의 말이 거짓이다. 거짓말한 학생과 당첨금을 가진 학생을 바르게 짝지은 것은?",
+      "choices": [
+        "A·C(거짓말) / A(당첨)",
+        "C·D(거짓말) / B(당첨)",
+        "A·B·C(거짓말) / C(당첨)",
+        "A(거짓말) / D(당첨)",
+        "A·D(거짓말) / D(당첨)"
+      ],
+      "answer": "④",
+      "solution": "A와 D의 말은 서로 반대이므로 두 사람 중 반드시 한 명만 거짓말한다.\\n당첨자 후보를 한 명씩 가정해 나머지 진술의 참·거짓을 판정한다.\\nA가 당첨자라면 거짓말은 A, C로 2명.\nB가 당첨자라면 거짓말은 C, D로 2명.\nC가 당첨자라면 거짓말은 A, B, C로 3명.\nD가 당첨자라면 거짓말은 A로 1명.\\n따라서 조건을 모두 만족하는 당첨자는 D이며, 거짓말한 사람은 A이다.\\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/A1-solution.svg",
+      "solutionImageAlt": "당첨자를 각각 가정했을 때 학생들의 진술 참·거짓을 보여주는 진리표",
+      "solutionImageCaption": "각 경우의 거짓 진술 수를 세어 주어진 조건을 모두 만족하는 경우를 선택한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "primaryRPM_L3": "명제와 조건",
+        "sourcePrimaryL3Semantic": "논리 관계와 추론",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-244",
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_SOURCE_LOGIC_CHAIN",
+        "metaFoundationL3": "논리 관계와 추론",
+        "metaFoundationL4": "논리 조건을 이용한 추론",
+        "problemTypeKey": "PT_LOGIC_CHAIN",
+        "templateKey": "TPL_LOGIC_CONSTRAINT_PUZZLE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-244는 명제와 조건/참·거짓 판정이며 원본 Meta Foundation 논리 관계와 추론/연쇄 진술 유형의 direct exact binding은 확인되지 않음."
+          },
+          {
+            "field": "CONDITION_EXACT_FALSE_COUNT",
+            "status": "EVIDENCE_DEBT",
+            "reason": "정확히 1/2/3명 거짓 진술 수 제약의 별도 canonical Condition key 미확정; 없는 키 임의 생성하지 않음."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 학생별 진술, 당첨자 유일성, 거짓 진술 수와 추가 조건으로 학생 관점에서 추론 가능",
+        "mathSelfCheckEvidence": {
+          "truthTable": [
+            {
+              "winner": "A",
+              "truths": [
+                false,
+                true,
+                false,
+                true
+              ],
+              "liars": [
+                "A",
+                "C"
+              ],
+              "count": 2,
+              "eligible": false,
+              "extraGood": true
+            },
+            {
+              "winner": "B",
+              "truths": [
+                true,
+                true,
+                false,
+                false
+              ],
+              "liars": [
+                "C",
+                "D"
+              ],
+              "count": 2,
+              "eligible": false,
+              "extraGood": true
+            },
+            {
+              "winner": "C",
+              "truths": [
+                false,
+                false,
+                false,
+                true
+              ],
+              "liars": [
+                "A",
+                "B",
+                "C"
+              ],
+              "count": 3,
+              "eligible": false,
+              "extraGood": true
+            },
+            {
+              "winner": "D",
+              "truths": [
+                false,
+                true,
+                true,
+                true
+              ],
+              "liars": [
+                "A"
+              ],
+              "count": 1,
+              "eligible": true,
+              "extraGood": true
+            }
+          ],
+          "uniqueEligibleCount": 1,
+          "correctHolder": "D",
+          "liars": [
+            "A"
+          ]
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "A·C(거짓말) / A(당첨)",
+            "reason": "당첨자가 A일 때 거짓말한 사람은 A·C(2명)이며 추가 참·거짓 조건에 맞는다"
+          },
+          {
+            "choice": "②",
+            "offeredOption": "C·D(거짓말) / B(당첨)",
+            "reason": "당첨자가 B일 때 거짓말한 사람은 C·D(2명)이며 추가 참·거짓 조건에 맞는다"
+          },
+          {
+            "choice": "③",
+            "offeredOption": "A·B·C(거짓말) / C(당첨)",
+            "reason": "당첨자가 C일 때 거짓말한 사람은 A·B·C(3명)이며 추가 참·거짓 조건에 맞는다"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "A·D(거짓말) / D(당첨)",
+            "reason": "실제 당첨자가 D이면 거짓말한 사람은 A이므로 A·D로 판정한 진리값 집계가 틀림"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "모든 학생의 진술을 발문 조건박스에 완전 제공"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/A1-solution.svg",
+          "reason": "각 당첨 후보별 거짓 진술 수와 추가 조건을 비교하는 표가 추론의 경우를 명료화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-JEIL25-2FINAL-Q08-A2",
+      "sourceQid": 8,
+      "sourceUid": "qid_v1_cc7005ff1c74273573c3c79993e6ab94ae7cef23e47291e546563acf344cb2a2",
+      "slot": "A2",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "표"
+      ],
+      "wide": false,
+      "content": "4명의 학생 C, D, A, B 중 정확히 한 명만 당첨금을 가지고 있다. 각 학생의 말은 다음과 같다.<br><div class=\"question-note-box\">C: D가 당첨금을 가지고 있다.<br>D: A는 당첨금을 가지고 있지 않다.<br>A: B가 당첨금을 가지고 있다.<br>B: C의 말은 거짓이다.</div>이 중 정확히 1명의 말이 거짓이다. 거짓말한 학생과 당첨금을 가진 학생을 바르게 짝지은 것은?",
+      "choices": [
+        "C·D·A(거짓말) / A(당첨)",
+        "C(거짓말) / B(당첨)",
+        "C·B(거짓말) / B(당첨)",
+        "C·A(거짓말) / C(당첨)",
+        "A·B(거짓말) / D(당첨)"
+      ],
+      "answer": "②",
+      "solution": "C와 B의 말은 서로 반대이므로 두 사람 중 반드시 한 명만 거짓말한다.\\n당첨자 후보를 한 명씩 가정해 나머지 진술의 참·거짓을 판정한다.\\nC가 당첨자라면 거짓말은 C, A로 2명.\nD가 당첨자라면 거짓말은 A, B로 2명.\nA가 당첨자라면 거짓말은 C, D, A로 3명.\nB가 당첨자라면 거짓말은 C로 1명.\\n따라서 조건을 모두 만족하는 당첨자는 B이며, 거짓말한 사람은 C이다.\\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/A2-solution.svg",
+      "solutionImageAlt": "당첨자를 각각 가정했을 때 학생들의 진술 참·거짓을 보여주는 진리표",
+      "solutionImageCaption": "각 경우의 거짓 진술 수를 세어 주어진 조건을 모두 만족하는 경우를 선택한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "primaryRPM_L3": "명제와 조건",
+        "sourcePrimaryL3Semantic": "논리 관계와 추론",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-244",
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_SOURCE_LOGIC_CHAIN",
+        "metaFoundationL3": "논리 관계와 추론",
+        "metaFoundationL4": "논리 조건을 이용한 추론",
+        "problemTypeKey": "PT_LOGIC_CHAIN",
+        "templateKey": "TPL_LOGIC_CONSTRAINT_PUZZLE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-244는 명제와 조건/참·거짓 판정이며 원본 Meta Foundation 논리 관계와 추론/연쇄 진술 유형의 direct exact binding은 확인되지 않음."
+          },
+          {
+            "field": "CONDITION_EXACT_FALSE_COUNT",
+            "status": "EVIDENCE_DEBT",
+            "reason": "정확히 1/2/3명 거짓 진술 수 제약의 별도 canonical Condition key 미확정; 없는 키 임의 생성하지 않음."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 학생별 진술, 당첨자 유일성, 거짓 진술 수와 추가 조건으로 학생 관점에서 추론 가능",
+        "mathSelfCheckEvidence": {
+          "truthTable": [
+            {
+              "winner": "C",
+              "truths": [
+                false,
+                true,
+                false,
+                true
+              ],
+              "liars": [
+                "C",
+                "A"
+              ],
+              "count": 2,
+              "eligible": false,
+              "extraGood": true
+            },
+            {
+              "winner": "D",
+              "truths": [
+                true,
+                true,
+                false,
+                false
+              ],
+              "liars": [
+                "A",
+                "B"
+              ],
+              "count": 2,
+              "eligible": false,
+              "extraGood": true
+            },
+            {
+              "winner": "A",
+              "truths": [
+                false,
+                false,
+                false,
+                true
+              ],
+              "liars": [
+                "C",
+                "D",
+                "A"
+              ],
+              "count": 3,
+              "eligible": false,
+              "extraGood": true
+            },
+            {
+              "winner": "B",
+              "truths": [
+                false,
+                true,
+                true,
+                true
+              ],
+              "liars": [
+                "C"
+              ],
+              "count": 1,
+              "eligible": true,
+              "extraGood": true
+            }
+          ],
+          "uniqueEligibleCount": 1,
+          "correctHolder": "B",
+          "liars": [
+            "C"
+          ]
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "C·D·A(거짓말) / A(당첨)",
+            "reason": "당첨자가 A일 때 거짓말한 사람은 C·D·A(3명)이며 추가 참·거짓 조건에 맞는다"
+          },
+          {
+            "choice": "③",
+            "offeredOption": "C·B(거짓말) / B(당첨)",
+            "reason": "실제 당첨자가 B이면 거짓말한 사람은 C이므로 C·B로 판정한 진리값 집계가 틀림"
+          },
+          {
+            "choice": "④",
+            "offeredOption": "C·A(거짓말) / C(당첨)",
+            "reason": "당첨자가 C일 때 거짓말한 사람은 C·A(2명)이며 추가 참·거짓 조건에 맞는다"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "A·B(거짓말) / D(당첨)",
+            "reason": "당첨자가 D일 때 거짓말한 사람은 A·B(2명)이며 추가 참·거짓 조건에 맞는다"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "모든 학생의 진술을 발문 조건박스에 완전 제공"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/A2-solution.svg",
+          "reason": "각 당첨 후보별 거짓 진술 수와 추가 조건을 비교하는 표가 추론의 경우를 명료화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-JEIL25-2FINAL-Q08-A3",
+      "sourceQid": 8,
+      "sourceUid": "qid_v1_cc7005ff1c74273573c3c79993e6ab94ae7cef23e47291e546563acf344cb2a2",
+      "slot": "A3",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "표"
+      ],
+      "wide": false,
+      "content": "4명의 학생 B, C, D, A 중 정확히 한 명만 당첨금을 가지고 있다. 각 학생의 말은 다음과 같다.<br><div class=\"question-note-box\">B: C가 당첨금을 가지고 있다.<br>C: D는 당첨금을 가지고 있지 않다.<br>D: A가 당첨금을 가지고 있다.<br>A: B의 말은 거짓이다.</div>이 중 정확히 1명의 말이 거짓이다. 거짓말한 학생과 당첨금을 가진 학생을 바르게 짝지은 것은?",
+      "choices": [
+        "B·A(거짓말) / A(당첨)",
+        "B·D(거짓말) / B(당첨)",
+        "D·A(거짓말) / C(당첨)",
+        "B·C·D(거짓말) / D(당첨)",
+        "B(거짓말) / A(당첨)"
+      ],
+      "answer": "⑤",
+      "solution": "B와 A의 말은 서로 반대이므로 두 사람 중 반드시 한 명만 거짓말한다.\\n당첨자 후보를 한 명씩 가정해 나머지 진술의 참·거짓을 판정한다.\\nB가 당첨자라면 거짓말은 B, D로 2명.\nC가 당첨자라면 거짓말은 D, A로 2명.\nD가 당첨자라면 거짓말은 B, C, D로 3명.\nA가 당첨자라면 거짓말은 B로 1명.\\n따라서 조건을 모두 만족하는 당첨자는 A이며, 거짓말한 사람은 B이다.\\n따라서 정답은 ⑤이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/A3-solution.svg",
+      "solutionImageAlt": "당첨자를 각각 가정했을 때 학생들의 진술 참·거짓을 보여주는 진리표",
+      "solutionImageCaption": "각 경우의 거짓 진술 수를 세어 주어진 조건을 모두 만족하는 경우를 선택한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "primaryRPM_L3": "명제와 조건",
+        "sourcePrimaryL3Semantic": "논리 관계와 추론",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-244",
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_SOURCE_LOGIC_CHAIN",
+        "metaFoundationL3": "논리 관계와 추론",
+        "metaFoundationL4": "논리 조건을 이용한 추론",
+        "problemTypeKey": "PT_LOGIC_CHAIN",
+        "templateKey": "TPL_LOGIC_CONSTRAINT_PUZZLE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-244는 명제와 조건/참·거짓 판정이며 원본 Meta Foundation 논리 관계와 추론/연쇄 진술 유형의 direct exact binding은 확인되지 않음."
+          },
+          {
+            "field": "CONDITION_EXACT_FALSE_COUNT",
+            "status": "EVIDENCE_DEBT",
+            "reason": "정확히 1/2/3명 거짓 진술 수 제약의 별도 canonical Condition key 미확정; 없는 키 임의 생성하지 않음."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 학생별 진술, 당첨자 유일성, 거짓 진술 수와 추가 조건으로 학생 관점에서 추론 가능",
+        "mathSelfCheckEvidence": {
+          "truthTable": [
+            {
+              "winner": "B",
+              "truths": [
+                false,
+                true,
+                false,
+                true
+              ],
+              "liars": [
+                "B",
+                "D"
+              ],
+              "count": 2,
+              "eligible": false,
+              "extraGood": true
+            },
+            {
+              "winner": "C",
+              "truths": [
+                true,
+                true,
+                false,
+                false
+              ],
+              "liars": [
+                "D",
+                "A"
+              ],
+              "count": 2,
+              "eligible": false,
+              "extraGood": true
+            },
+            {
+              "winner": "D",
+              "truths": [
+                false,
+                false,
+                false,
+                true
+              ],
+              "liars": [
+                "B",
+                "C",
+                "D"
+              ],
+              "count": 3,
+              "eligible": false,
+              "extraGood": true
+            },
+            {
+              "winner": "A",
+              "truths": [
+                false,
+                true,
+                true,
+                true
+              ],
+              "liars": [
+                "B"
+              ],
+              "count": 1,
+              "eligible": true,
+              "extraGood": true
+            }
+          ],
+          "uniqueEligibleCount": 1,
+          "correctHolder": "A",
+          "liars": [
+            "B"
+          ]
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "B·A(거짓말) / A(당첨)",
+            "reason": "실제 당첨자가 A이면 거짓말한 사람은 B이므로 B·A로 판정한 진리값 집계가 틀림"
+          },
+          {
+            "choice": "②",
+            "offeredOption": "B·D(거짓말) / B(당첨)",
+            "reason": "당첨자가 B일 때 거짓말한 사람은 B·D(2명)이며 추가 참·거짓 조건에 맞는다"
+          },
+          {
+            "choice": "③",
+            "offeredOption": "D·A(거짓말) / C(당첨)",
+            "reason": "당첨자가 C일 때 거짓말한 사람은 D·A(2명)이며 추가 참·거짓 조건에 맞는다"
+          },
+          {
+            "choice": "④",
+            "offeredOption": "B·C·D(거짓말) / D(당첨)",
+            "reason": "당첨자가 D일 때 거짓말한 사람은 B·C·D(3명)이며 추가 참·거짓 조건에 맞는다"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "모든 학생의 진술을 발문 조건박스에 완전 제공"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/A3-solution.svg",
+          "reason": "각 당첨 후보별 거짓 진술 수와 추가 조건을 비교하는 표가 추론의 경우를 명료화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-JEIL25-2FINAL-Q08-B1",
+      "sourceQid": 8,
+      "sourceUid": "qid_v1_cc7005ff1c74273573c3c79993e6ab94ae7cef23e47291e546563acf344cb2a2",
+      "slot": "B1",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "표"
+      ],
+      "wide": false,
+      "content": "4명의 학생 A, B, C, D 중 정확히 한 명만 당첨금을 가지고 있다. 각 학생의 말은 다음과 같다.<br><div class=\"question-note-box\">A: B가 당첨금을 가지고 있다.<br>B: C는 당첨금을 가지고 있지 않다.<br>C: D가 당첨금을 가지고 있다.<br>D: A의 말은 거짓이다.</div>이 중 정확히 2명의 말이 거짓이다. 또 A의 말은 참이라고 한다. 거짓말한 학생과 당첨금을 가진 학생을 바르게 짝지은 것은?",
+      "choices": [
+        "C·D(거짓말) / B(당첨)",
+        "A·B·C(거짓말) / C(당첨)",
+        "A(거짓말) / D(당첨)",
+        "A·D(거짓말) / B(당첨)",
+        "A·C(거짓말) / A(당첨)"
+      ],
+      "answer": "①",
+      "solution": "A와 D의 말은 서로 반대이므로 두 사람 중 반드시 한 명만 거짓말한다.\\n당첨자 후보를 한 명씩 가정해 나머지 진술의 참·거짓을 판정한다.\\nA가 당첨자라면 거짓말은 A, C로 2명, 추가로 A의 말은 거짓.\nB가 당첨자라면 거짓말은 C, D로 2명, 추가로 A의 말은 참.\nC가 당첨자라면 거짓말은 A, B, C로 3명, 추가로 A의 말은 거짓.\nD가 당첨자라면 거짓말은 A로 1명, 추가로 A의 말은 거짓.\\n따라서 조건을 모두 만족하는 당첨자는 B이며, 거짓말한 사람은 C, D이다.\\n따라서 정답은 ①이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/B1-solution.svg",
+      "solutionImageAlt": "당첨자를 각각 가정했을 때 학생들의 진술 참·거짓을 보여주는 진리표",
+      "solutionImageCaption": "각 경우의 거짓 진술 수를 세어 주어진 조건을 모두 만족하는 경우를 선택한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "primaryRPM_L3": "명제와 조건",
+        "sourcePrimaryL3Semantic": "논리 관계와 추론",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-244",
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_SOURCE_LOGIC_CHAIN",
+        "metaFoundationL3": "논리 관계와 추론",
+        "metaFoundationL4": "논리 조건을 이용한 추론",
+        "problemTypeKey": "PT_LOGIC_CHAIN",
+        "templateKey": "TPL_LOGIC_CONSTRAINT_PUZZLE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-244는 명제와 조건/참·거짓 판정이며 원본 Meta Foundation 논리 관계와 추론/연쇄 진술 유형의 direct exact binding은 확인되지 않음."
+          },
+          {
+            "field": "CONDITION_EXACT_FALSE_COUNT",
+            "status": "EVIDENCE_DEBT",
+            "reason": "정확히 1/2/3명 거짓 진술 수 제약의 별도 canonical Condition key 미확정; 없는 키 임의 생성하지 않음."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 학생별 진술, 당첨자 유일성, 거짓 진술 수와 추가 조건으로 학생 관점에서 추론 가능",
+        "mathSelfCheckEvidence": {
+          "truthTable": [
+            {
+              "winner": "A",
+              "truths": [
+                false,
+                true,
+                false,
+                true
+              ],
+              "liars": [
+                "A",
+                "C"
+              ],
+              "count": 2,
+              "eligible": false,
+              "extraGood": false
+            },
+            {
+              "winner": "B",
+              "truths": [
+                true,
+                true,
+                false,
+                false
+              ],
+              "liars": [
+                "C",
+                "D"
+              ],
+              "count": 2,
+              "eligible": true,
+              "extraGood": true
+            },
+            {
+              "winner": "C",
+              "truths": [
+                false,
+                false,
+                false,
+                true
+              ],
+              "liars": [
+                "A",
+                "B",
+                "C"
+              ],
+              "count": 3,
+              "eligible": false,
+              "extraGood": false
+            },
+            {
+              "winner": "D",
+              "truths": [
+                false,
+                true,
+                true,
+                true
+              ],
+              "liars": [
+                "A"
+              ],
+              "count": 1,
+              "eligible": false,
+              "extraGood": false
+            }
+          ],
+          "uniqueEligibleCount": 1,
+          "correctHolder": "B",
+          "liars": [
+            "C",
+            "D"
+          ]
+        },
+        "wrongRoutes": [
+          {
+            "choice": "②",
+            "offeredOption": "A·B·C(거짓말) / C(당첨)",
+            "reason": "당첨자가 C일 때 거짓말한 사람은 A·B·C(3명)이며 별도 참·거짓 조건에 어긋난다"
+          },
+          {
+            "choice": "③",
+            "offeredOption": "A(거짓말) / D(당첨)",
+            "reason": "당첨자가 D일 때 거짓말한 사람은 A(1명)이며 별도 참·거짓 조건에 어긋난다"
+          },
+          {
+            "choice": "④",
+            "offeredOption": "A·D(거짓말) / B(당첨)",
+            "reason": "실제 당첨자가 B이면 거짓말한 사람은 C·D이므로 A·D로 판정한 진리값 집계가 틀림"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "A·C(거짓말) / A(당첨)",
+            "reason": "당첨자가 A일 때 거짓말한 사람은 A·C(2명)이며 별도 참·거짓 조건에 어긋난다"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "모든 학생의 진술을 발문 조건박스에 완전 제공"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/B1-solution.svg",
+          "reason": "각 당첨 후보별 거짓 진술 수와 추가 조건을 비교하는 표가 추론의 경우를 명료화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-JEIL25-2FINAL-Q08-B2",
+      "sourceQid": 8,
+      "sourceUid": "qid_v1_cc7005ff1c74273573c3c79993e6ab94ae7cef23e47291e546563acf344cb2a2",
+      "slot": "B2",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "표"
+      ],
+      "wide": false,
+      "content": "4명의 학생 B, C, D, A 중 정확히 한 명만 당첨금을 가지고 있다. 각 학생의 말은 다음과 같다.<br><div class=\"question-note-box\">B: C가 당첨금을 가지고 있다.<br>C: D는 당첨금을 가지고 있지 않다.<br>D: A가 당첨금을 가지고 있다.<br>A: B의 말은 거짓이다.</div>이 중 정확히 2명의 말이 거짓이다. 또 B의 말은 참이라고 한다. 거짓말한 학생과 당첨금을 가진 학생을 바르게 짝지은 것은?",
+      "choices": [
+        "B(거짓말) / A(당첨)",
+        "B·A(거짓말) / C(당첨)",
+        "B·D(거짓말) / B(당첨)",
+        "D·A(거짓말) / C(당첨)",
+        "B·C·D(거짓말) / D(당첨)"
+      ],
+      "answer": "④",
+      "solution": "B와 A의 말은 서로 반대이므로 두 사람 중 반드시 한 명만 거짓말한다.\\n당첨자 후보를 한 명씩 가정해 나머지 진술의 참·거짓을 판정한다.\\nB가 당첨자라면 거짓말은 B, D로 2명, 추가로 B의 말은 거짓.\nC가 당첨자라면 거짓말은 D, A로 2명, 추가로 B의 말은 참.\nD가 당첨자라면 거짓말은 B, C, D로 3명, 추가로 B의 말은 거짓.\nA가 당첨자라면 거짓말은 B로 1명, 추가로 B의 말은 거짓.\\n따라서 조건을 모두 만족하는 당첨자는 C이며, 거짓말한 사람은 D, A이다.\\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/B2-solution.svg",
+      "solutionImageAlt": "당첨자를 각각 가정했을 때 학생들의 진술 참·거짓을 보여주는 진리표",
+      "solutionImageCaption": "각 경우의 거짓 진술 수를 세어 주어진 조건을 모두 만족하는 경우를 선택한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "primaryRPM_L3": "명제와 조건",
+        "sourcePrimaryL3Semantic": "논리 관계와 추론",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-244",
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_SOURCE_LOGIC_CHAIN",
+        "metaFoundationL3": "논리 관계와 추론",
+        "metaFoundationL4": "논리 조건을 이용한 추론",
+        "problemTypeKey": "PT_LOGIC_CHAIN",
+        "templateKey": "TPL_LOGIC_CONSTRAINT_PUZZLE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-244는 명제와 조건/참·거짓 판정이며 원본 Meta Foundation 논리 관계와 추론/연쇄 진술 유형의 direct exact binding은 확인되지 않음."
+          },
+          {
+            "field": "CONDITION_EXACT_FALSE_COUNT",
+            "status": "EVIDENCE_DEBT",
+            "reason": "정확히 1/2/3명 거짓 진술 수 제약의 별도 canonical Condition key 미확정; 없는 키 임의 생성하지 않음."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 학생별 진술, 당첨자 유일성, 거짓 진술 수와 추가 조건으로 학생 관점에서 추론 가능",
+        "mathSelfCheckEvidence": {
+          "truthTable": [
+            {
+              "winner": "B",
+              "truths": [
+                false,
+                true,
+                false,
+                true
+              ],
+              "liars": [
+                "B",
+                "D"
+              ],
+              "count": 2,
+              "eligible": false,
+              "extraGood": false
+            },
+            {
+              "winner": "C",
+              "truths": [
+                true,
+                true,
+                false,
+                false
+              ],
+              "liars": [
+                "D",
+                "A"
+              ],
+              "count": 2,
+              "eligible": true,
+              "extraGood": true
+            },
+            {
+              "winner": "D",
+              "truths": [
+                false,
+                false,
+                false,
+                true
+              ],
+              "liars": [
+                "B",
+                "C",
+                "D"
+              ],
+              "count": 3,
+              "eligible": false,
+              "extraGood": false
+            },
+            {
+              "winner": "A",
+              "truths": [
+                false,
+                true,
+                true,
+                true
+              ],
+              "liars": [
+                "B"
+              ],
+              "count": 1,
+              "eligible": false,
+              "extraGood": false
+            }
+          ],
+          "uniqueEligibleCount": 1,
+          "correctHolder": "C",
+          "liars": [
+            "D",
+            "A"
+          ]
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "B(거짓말) / A(당첨)",
+            "reason": "당첨자가 A일 때 거짓말한 사람은 B(1명)이며 별도 참·거짓 조건에 어긋난다"
+          },
+          {
+            "choice": "②",
+            "offeredOption": "B·A(거짓말) / C(당첨)",
+            "reason": "실제 당첨자가 C이면 거짓말한 사람은 D·A이므로 B·A로 판정한 진리값 집계가 틀림"
+          },
+          {
+            "choice": "③",
+            "offeredOption": "B·D(거짓말) / B(당첨)",
+            "reason": "당첨자가 B일 때 거짓말한 사람은 B·D(2명)이며 별도 참·거짓 조건에 어긋난다"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "B·C·D(거짓말) / D(당첨)",
+            "reason": "당첨자가 D일 때 거짓말한 사람은 B·C·D(3명)이며 별도 참·거짓 조건에 어긋난다"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "모든 학생의 진술을 발문 조건박스에 완전 제공"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/B2-solution.svg",
+          "reason": "각 당첨 후보별 거짓 진술 수와 추가 조건을 비교하는 표가 추론의 경우를 명료화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-JEIL25-2FINAL-Q08-B3",
+      "sourceQid": 8,
+      "sourceUid": "qid_v1_cc7005ff1c74273573c3c79993e6ab94ae7cef23e47291e546563acf344cb2a2",
+      "slot": "B3",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "표"
+      ],
+      "wide": false,
+      "content": "4명의 학생 D, A, B, C 중 정확히 한 명만 당첨금을 가지고 있다. 각 학생의 말은 다음과 같다.<br><div class=\"question-note-box\">D: A가 당첨금을 가지고 있다.<br>A: B는 당첨금을 가지고 있지 않다.<br>B: C가 당첨금을 가지고 있다.<br>C: D의 말은 거짓이다.</div>이 중 정확히 2명의 말이 거짓이다. 또 C의 말은 거짓이라고 한다. 거짓말한 학생과 당첨금을 가진 학생을 바르게 짝지은 것은?",
+      "choices": [
+        "D·B(거짓말) / D(당첨)",
+        "B·C(거짓말) / A(당첨)",
+        "D·A·B(거짓말) / B(당첨)",
+        "D(거짓말) / C(당첨)",
+        "D·C(거짓말) / A(당첨)"
+      ],
+      "answer": "②",
+      "solution": "D와 C의 말은 서로 반대이므로 두 사람 중 반드시 한 명만 거짓말한다.\\n당첨자 후보를 한 명씩 가정해 나머지 진술의 참·거짓을 판정한다.\\nD가 당첨자라면 거짓말은 D, B로 2명, 추가로 C의 말은 참.\nA가 당첨자라면 거짓말은 B, C로 2명, 추가로 C의 말은 거짓.\nB가 당첨자라면 거짓말은 D, A, B로 3명, 추가로 C의 말은 참.\nC가 당첨자라면 거짓말은 D로 1명, 추가로 C의 말은 참.\\n따라서 조건을 모두 만족하는 당첨자는 A이며, 거짓말한 사람은 B, C이다.\\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/B3-solution.svg",
+      "solutionImageAlt": "당첨자를 각각 가정했을 때 학생들의 진술 참·거짓을 보여주는 진리표",
+      "solutionImageCaption": "각 경우의 거짓 진술 수를 세어 주어진 조건을 모두 만족하는 경우를 선택한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "primaryRPM_L3": "명제와 조건",
+        "sourcePrimaryL3Semantic": "논리 관계와 추론",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-244",
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_SOURCE_LOGIC_CHAIN",
+        "metaFoundationL3": "논리 관계와 추론",
+        "metaFoundationL4": "논리 조건을 이용한 추론",
+        "problemTypeKey": "PT_LOGIC_CHAIN",
+        "templateKey": "TPL_LOGIC_CONSTRAINT_PUZZLE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-244는 명제와 조건/참·거짓 판정이며 원본 Meta Foundation 논리 관계와 추론/연쇄 진술 유형의 direct exact binding은 확인되지 않음."
+          },
+          {
+            "field": "CONDITION_EXACT_FALSE_COUNT",
+            "status": "EVIDENCE_DEBT",
+            "reason": "정확히 1/2/3명 거짓 진술 수 제약의 별도 canonical Condition key 미확정; 없는 키 임의 생성하지 않음."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 학생별 진술, 당첨자 유일성, 거짓 진술 수와 추가 조건으로 학생 관점에서 추론 가능",
+        "mathSelfCheckEvidence": {
+          "truthTable": [
+            {
+              "winner": "D",
+              "truths": [
+                false,
+                true,
+                false,
+                true
+              ],
+              "liars": [
+                "D",
+                "B"
+              ],
+              "count": 2,
+              "eligible": false,
+              "extraGood": false
+            },
+            {
+              "winner": "A",
+              "truths": [
+                true,
+                true,
+                false,
+                false
+              ],
+              "liars": [
+                "B",
+                "C"
+              ],
+              "count": 2,
+              "eligible": true,
+              "extraGood": true
+            },
+            {
+              "winner": "B",
+              "truths": [
+                false,
+                false,
+                false,
+                true
+              ],
+              "liars": [
+                "D",
+                "A",
+                "B"
+              ],
+              "count": 3,
+              "eligible": false,
+              "extraGood": false
+            },
+            {
+              "winner": "C",
+              "truths": [
+                false,
+                true,
+                true,
+                true
+              ],
+              "liars": [
+                "D"
+              ],
+              "count": 1,
+              "eligible": false,
+              "extraGood": false
+            }
+          ],
+          "uniqueEligibleCount": 1,
+          "correctHolder": "A",
+          "liars": [
+            "B",
+            "C"
+          ]
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "D·B(거짓말) / D(당첨)",
+            "reason": "당첨자가 D일 때 거짓말한 사람은 D·B(2명)이며 별도 참·거짓 조건에 어긋난다"
+          },
+          {
+            "choice": "③",
+            "offeredOption": "D·A·B(거짓말) / B(당첨)",
+            "reason": "당첨자가 B일 때 거짓말한 사람은 D·A·B(3명)이며 별도 참·거짓 조건에 어긋난다"
+          },
+          {
+            "choice": "④",
+            "offeredOption": "D(거짓말) / C(당첨)",
+            "reason": "당첨자가 C일 때 거짓말한 사람은 D(1명)이며 별도 참·거짓 조건에 어긋난다"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "D·C(거짓말) / A(당첨)",
+            "reason": "실제 당첨자가 A이면 거짓말한 사람은 B·C이므로 D·C로 판정한 진리값 집계가 틀림"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "모든 학생의 진술을 발문 조건박스에 완전 제공"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/B3-solution.svg",
+          "reason": "각 당첨 후보별 거짓 진술 수와 추가 조건을 비교하는 표가 추론의 경우를 명료화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-JEIL25-2FINAL-Q08-C1",
+      "sourceQid": 8,
+      "sourceUid": "qid_v1_cc7005ff1c74273573c3c79993e6ab94ae7cef23e47291e546563acf344cb2a2",
+      "slot": "C1",
+      "purpose": "C",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "표"
+      ],
+      "wide": false,
+      "content": "5명의 학생 A, B, C, D, E 중 정확히 한 명만 당첨금을 가지고 있다. 각 학생의 말은 다음과 같다.<br><div class=\"question-note-box\">A: B가 당첨금을 가지고 있다.<br>B: C는 당첨금을 가지고 있지 않다.<br>C: D가 당첨금을 가지고 있다.<br>D: A의 말은 거짓이다.<br>E: A는 당첨금을 가지고 있지 않다.</div>이 중 정확히 2명의 말이 거짓이다. 거짓말한 학생과 당첨금을 가진 학생을 바르게 짝지은 것은?",
+      "choices": [
+        "A·B·C(거짓말) / C(당첨)",
+        "A(거짓말) / D(당첨)",
+        "A·D(거짓말) / B(당첨)",
+        "A·C·E(거짓말) / A(당첨)",
+        "C·D(거짓말) / B(당첨)"
+      ],
+      "answer": "⑤",
+      "solution": "A와 D의 말은 서로 반대이므로 두 사람 중 반드시 한 명만 거짓말한다.\\n당첨자 후보를 한 명씩 가정해 나머지 진술의 참·거짓을 판정한다.\\nA가 당첨자라면 거짓말은 A, C, E로 3명.\nB가 당첨자라면 거짓말은 C, D로 2명.\nC가 당첨자라면 거짓말은 A, B, C로 3명.\nD가 당첨자라면 거짓말은 A로 1명.\\n따라서 조건을 모두 만족하는 당첨자는 B이며, 거짓말한 사람은 C, D이다.\\n따라서 정답은 ⑤이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/C1-solution.svg",
+      "solutionImageAlt": "당첨자를 각각 가정했을 때 학생들의 진술 참·거짓을 보여주는 진리표",
+      "solutionImageCaption": "각 경우의 거짓 진술 수를 세어 주어진 조건을 모두 만족하는 경우를 선택한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "primaryRPM_L3": "명제와 조건",
+        "sourcePrimaryL3Semantic": "논리 관계와 추론",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-244",
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_SOURCE_LOGIC_CHAIN",
+        "metaFoundationL3": "논리 관계와 추론",
+        "metaFoundationL4": "논리 조건을 이용한 추론",
+        "problemTypeKey": "PT_LOGIC_CHAIN",
+        "templateKey": "TPL_LOGIC_CONSTRAINT_PUZZLE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 5,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-244는 명제와 조건/참·거짓 판정이며 원본 Meta Foundation 논리 관계와 추론/연쇄 진술 유형의 direct exact binding은 확인되지 않음."
+          },
+          {
+            "field": "CONDITION_EXACT_FALSE_COUNT",
+            "status": "EVIDENCE_DEBT",
+            "reason": "정확히 1/2/3명 거짓 진술 수 제약의 별도 canonical Condition key 미확정; 없는 키 임의 생성하지 않음."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 학생별 진술, 당첨자 유일성, 거짓 진술 수와 추가 조건으로 학생 관점에서 추론 가능",
+        "mathSelfCheckEvidence": {
+          "truthTable": [
+            {
+              "winner": "A",
+              "truths": [
+                false,
+                true,
+                false,
+                true,
+                false
+              ],
+              "liars": [
+                "A",
+                "C",
+                "E"
+              ],
+              "count": 3,
+              "eligible": false,
+              "extraGood": true
+            },
+            {
+              "winner": "B",
+              "truths": [
+                true,
+                true,
+                false,
+                false,
+                true
+              ],
+              "liars": [
+                "C",
+                "D"
+              ],
+              "count": 2,
+              "eligible": true,
+              "extraGood": true
+            },
+            {
+              "winner": "C",
+              "truths": [
+                false,
+                false,
+                false,
+                true,
+                true
+              ],
+              "liars": [
+                "A",
+                "B",
+                "C"
+              ],
+              "count": 3,
+              "eligible": false,
+              "extraGood": true
+            },
+            {
+              "winner": "D",
+              "truths": [
+                false,
+                true,
+                true,
+                true,
+                true
+              ],
+              "liars": [
+                "A"
+              ],
+              "count": 1,
+              "eligible": false,
+              "extraGood": true
+            }
+          ],
+          "uniqueEligibleCount": 1,
+          "correctHolder": "B",
+          "liars": [
+            "C",
+            "D"
+          ]
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "A·B·C(거짓말) / C(당첨)",
+            "reason": "당첨자가 C일 때 거짓말한 사람은 A·B·C(3명)이며 추가 참·거짓 조건에 맞는다"
+          },
+          {
+            "choice": "②",
+            "offeredOption": "A(거짓말) / D(당첨)",
+            "reason": "당첨자가 D일 때 거짓말한 사람은 A(1명)이며 추가 참·거짓 조건에 맞는다"
+          },
+          {
+            "choice": "③",
+            "offeredOption": "A·D(거짓말) / B(당첨)",
+            "reason": "실제 당첨자가 B이면 거짓말한 사람은 C·D이므로 A·D로 판정한 진리값 집계가 틀림"
+          },
+          {
+            "choice": "④",
+            "offeredOption": "A·C·E(거짓말) / A(당첨)",
+            "reason": "당첨자가 A일 때 거짓말한 사람은 A·C·E(3명)이며 추가 참·거짓 조건에 맞는다"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "모든 학생의 진술을 발문 조건박스에 완전 제공"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/C1-solution.svg",
+          "reason": "각 당첨 후보별 거짓 진술 수와 추가 조건을 비교하는 표가 추론의 경우를 명료화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-JEIL25-2FINAL-Q08-C2",
+      "sourceQid": 8,
+      "sourceUid": "qid_v1_cc7005ff1c74273573c3c79993e6ab94ae7cef23e47291e546563acf344cb2a2",
+      "slot": "C2",
+      "purpose": "C",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "표"
+      ],
+      "wide": false,
+      "content": "5명의 학생 B, C, D, A, E 중 정확히 한 명만 당첨금을 가지고 있다. 각 학생의 말은 다음과 같다.<br><div class=\"question-note-box\">B: C가 당첨금을 가지고 있다.<br>C: D는 당첨금을 가지고 있지 않다.<br>D: A가 당첨금을 가지고 있다.<br>A: B의 말은 거짓이다.<br>E: C는 당첨금을 가지고 있지 않다.</div>이 중 정확히 2명의 말이 거짓이다. 거짓말한 학생과 당첨금을 가진 학생을 바르게 짝지은 것은?",
+      "choices": [
+        "D·A·E(거짓말) / C(당첨)",
+        "B·C·D(거짓말) / D(당첨)",
+        "B(거짓말) / A(당첨)",
+        "B·A(거짓말) / B(당첨)",
+        "B·D(거짓말) / B(당첨)"
+      ],
+      "answer": "⑤",
+      "solution": "B와 A의 말은 서로 반대이므로 두 사람 중 반드시 한 명만 거짓말한다.\\n당첨자 후보를 한 명씩 가정해 나머지 진술의 참·거짓을 판정한다.\\nB가 당첨자라면 거짓말은 B, D로 2명.\nC가 당첨자라면 거짓말은 D, A, E로 3명.\nD가 당첨자라면 거짓말은 B, C, D로 3명.\nA가 당첨자라면 거짓말은 B로 1명.\\n따라서 조건을 모두 만족하는 당첨자는 B이며, 거짓말한 사람은 B, D이다.\\n따라서 정답은 ⑤이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/C2-solution.svg",
+      "solutionImageAlt": "당첨자를 각각 가정했을 때 학생들의 진술 참·거짓을 보여주는 진리표",
+      "solutionImageCaption": "각 경우의 거짓 진술 수를 세어 주어진 조건을 모두 만족하는 경우를 선택한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "primaryRPM_L3": "명제와 조건",
+        "sourcePrimaryL3Semantic": "논리 관계와 추론",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-244",
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_SOURCE_LOGIC_CHAIN",
+        "metaFoundationL3": "논리 관계와 추론",
+        "metaFoundationL4": "논리 조건을 이용한 추론",
+        "problemTypeKey": "PT_LOGIC_CHAIN",
+        "templateKey": "TPL_LOGIC_CONSTRAINT_PUZZLE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 5,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-244는 명제와 조건/참·거짓 판정이며 원본 Meta Foundation 논리 관계와 추론/연쇄 진술 유형의 direct exact binding은 확인되지 않음."
+          },
+          {
+            "field": "CONDITION_EXACT_FALSE_COUNT",
+            "status": "EVIDENCE_DEBT",
+            "reason": "정확히 1/2/3명 거짓 진술 수 제약의 별도 canonical Condition key 미확정; 없는 키 임의 생성하지 않음."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 학생별 진술, 당첨자 유일성, 거짓 진술 수와 추가 조건으로 학생 관점에서 추론 가능",
+        "mathSelfCheckEvidence": {
+          "truthTable": [
+            {
+              "winner": "B",
+              "truths": [
+                false,
+                true,
+                false,
+                true,
+                true
+              ],
+              "liars": [
+                "B",
+                "D"
+              ],
+              "count": 2,
+              "eligible": true,
+              "extraGood": true
+            },
+            {
+              "winner": "C",
+              "truths": [
+                true,
+                true,
+                false,
+                false,
+                false
+              ],
+              "liars": [
+                "D",
+                "A",
+                "E"
+              ],
+              "count": 3,
+              "eligible": false,
+              "extraGood": true
+            },
+            {
+              "winner": "D",
+              "truths": [
+                false,
+                false,
+                false,
+                true,
+                true
+              ],
+              "liars": [
+                "B",
+                "C",
+                "D"
+              ],
+              "count": 3,
+              "eligible": false,
+              "extraGood": true
+            },
+            {
+              "winner": "A",
+              "truths": [
+                false,
+                true,
+                true,
+                true,
+                true
+              ],
+              "liars": [
+                "B"
+              ],
+              "count": 1,
+              "eligible": false,
+              "extraGood": true
+            }
+          ],
+          "uniqueEligibleCount": 1,
+          "correctHolder": "B",
+          "liars": [
+            "B",
+            "D"
+          ]
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "D·A·E(거짓말) / C(당첨)",
+            "reason": "당첨자가 C일 때 거짓말한 사람은 D·A·E(3명)이며 추가 참·거짓 조건에 맞는다"
+          },
+          {
+            "choice": "②",
+            "offeredOption": "B·C·D(거짓말) / D(당첨)",
+            "reason": "당첨자가 D일 때 거짓말한 사람은 B·C·D(3명)이며 추가 참·거짓 조건에 맞는다"
+          },
+          {
+            "choice": "③",
+            "offeredOption": "B(거짓말) / A(당첨)",
+            "reason": "당첨자가 A일 때 거짓말한 사람은 B(1명)이며 추가 참·거짓 조건에 맞는다"
+          },
+          {
+            "choice": "④",
+            "offeredOption": "B·A(거짓말) / B(당첨)",
+            "reason": "실제 당첨자가 B이면 거짓말한 사람은 B·D이므로 B·A로 판정한 진리값 집계가 틀림"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "모든 학생의 진술을 발문 조건박스에 완전 제공"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/C2-solution.svg",
+          "reason": "각 당첨 후보별 거짓 진술 수와 추가 조건을 비교하는 표가 추론의 경우를 명료화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-JEIL25-2FINAL-Q08-C3",
+      "sourceQid": 8,
+      "sourceUid": "qid_v1_cc7005ff1c74273573c3c79993e6ab94ae7cef23e47291e546563acf344cb2a2",
+      "slot": "C3",
+      "purpose": "C",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "표"
+      ],
+      "wide": false,
+      "content": "5명의 학생 C, D, A, B, E 중 정확히 한 명만 당첨금을 가지고 있다. 각 학생의 말은 다음과 같다.<br><div class=\"question-note-box\">C: D가 당첨금을 가지고 있다.<br>D: A는 당첨금을 가지고 있지 않다.<br>A: B가 당첨금을 가지고 있다.<br>B: C의 말은 거짓이다.<br>E: B는 당첨금을 가지고 있지 않다.</div>이 중 정확히 3명의 말이 거짓이다. 거짓말한 학생과 당첨금을 가진 학생을 바르게 짝지은 것은?",
+      "choices": [
+        "C·B(거짓말) / A(당첨)",
+        "C·A(거짓말) / C(당첨)",
+        "A·B(거짓말) / D(당첨)",
+        "C·D·A(거짓말) / A(당첨)",
+        "C·E(거짓말) / B(당첨)"
+      ],
+      "answer": "④",
+      "solution": "C와 B의 말은 서로 반대이므로 두 사람 중 반드시 한 명만 거짓말한다.\\n당첨자 후보를 한 명씩 가정해 나머지 진술의 참·거짓을 판정한다.\\nC가 당첨자라면 거짓말은 C, A로 2명.\nD가 당첨자라면 거짓말은 A, B로 2명.\nA가 당첨자라면 거짓말은 C, D, A로 3명.\nB가 당첨자라면 거짓말은 C, E로 2명.\\n따라서 조건을 모두 만족하는 당첨자는 A이며, 거짓말한 사람은 C, D, A이다.\\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/C3-solution.svg",
+      "solutionImageAlt": "당첨자를 각각 가정했을 때 학생들의 진술 참·거짓을 보여주는 진리표",
+      "solutionImageCaption": "각 경우의 거짓 진술 수를 세어 주어진 조건을 모두 만족하는 경우를 선택한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "primaryRPM_L3": "명제와 조건",
+        "sourcePrimaryL3Semantic": "논리 관계와 추론",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-244",
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_SOURCE_LOGIC_CHAIN",
+        "metaFoundationL3": "논리 관계와 추론",
+        "metaFoundationL4": "논리 조건을 이용한 추론",
+        "problemTypeKey": "PT_LOGIC_CHAIN",
+        "templateKey": "TPL_LOGIC_CONSTRAINT_PUZZLE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 5,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM H1-RPM-244는 명제와 조건/참·거짓 판정이며 원본 Meta Foundation 논리 관계와 추론/연쇄 진술 유형의 direct exact binding은 확인되지 않음."
+          },
+          {
+            "field": "CONDITION_EXACT_FALSE_COUNT",
+            "status": "EVIDENCE_DEBT",
+            "reason": "정확히 1/2/3명 거짓 진술 수 제약의 별도 canonical Condition key 미확정; 없는 키 임의 생성하지 않음."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 학생별 진술, 당첨자 유일성, 거짓 진술 수와 추가 조건으로 학생 관점에서 추론 가능",
+        "mathSelfCheckEvidence": {
+          "truthTable": [
+            {
+              "winner": "C",
+              "truths": [
+                false,
+                true,
+                false,
+                true,
+                true
+              ],
+              "liars": [
+                "C",
+                "A"
+              ],
+              "count": 2,
+              "eligible": false,
+              "extraGood": true
+            },
+            {
+              "winner": "D",
+              "truths": [
+                true,
+                true,
+                false,
+                false,
+                true
+              ],
+              "liars": [
+                "A",
+                "B"
+              ],
+              "count": 2,
+              "eligible": false,
+              "extraGood": true
+            },
+            {
+              "winner": "A",
+              "truths": [
+                false,
+                false,
+                false,
+                true,
+                true
+              ],
+              "liars": [
+                "C",
+                "D",
+                "A"
+              ],
+              "count": 3,
+              "eligible": true,
+              "extraGood": true
+            },
+            {
+              "winner": "B",
+              "truths": [
+                false,
+                true,
+                true,
+                true,
+                false
+              ],
+              "liars": [
+                "C",
+                "E"
+              ],
+              "count": 2,
+              "eligible": false,
+              "extraGood": true
+            }
+          ],
+          "uniqueEligibleCount": 1,
+          "correctHolder": "A",
+          "liars": [
+            "C",
+            "D",
+            "A"
+          ]
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "C·B(거짓말) / A(당첨)",
+            "reason": "실제 당첨자가 A이면 거짓말한 사람은 C·D·A이므로 C·B로 판정한 진리값 집계가 틀림"
+          },
+          {
+            "choice": "②",
+            "offeredOption": "C·A(거짓말) / C(당첨)",
+            "reason": "당첨자가 C일 때 거짓말한 사람은 C·A(2명)이며 추가 참·거짓 조건에 맞는다"
+          },
+          {
+            "choice": "③",
+            "offeredOption": "A·B(거짓말) / D(당첨)",
+            "reason": "당첨자가 D일 때 거짓말한 사람은 A·B(2명)이며 추가 참·거짓 조건에 맞는다"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "C·E(거짓말) / B(당첨)",
+            "reason": "당첨자가 B일 때 거짓말한 사람은 C·E(2명)이며 추가 참·거짓 조건에 맞는다"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "모든 학생의 진술을 발문 조건박스에 완전 제공"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/C3-solution.svg",
+          "reason": "각 당첨 후보별 거짓 진술 수와 추가 조건을 비교하는 표가 추론의 경우를 명료화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    }
+  ]
+}
