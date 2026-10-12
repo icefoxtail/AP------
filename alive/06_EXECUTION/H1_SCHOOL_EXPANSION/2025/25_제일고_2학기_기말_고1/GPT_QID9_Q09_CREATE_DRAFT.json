@@ -1,0 +1,1069 @@
+{
+  "schemaVersion": "ALIVE_QID9_AUTHOR_DRAFT_v1",
+  "source": {
+    "path": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+    "qid": 9,
+    "sourceUid": "qid_v1_432f715c1ecb2d487ffa187535ac53fe686cc735551b3ee7919c1399e2724dfc",
+    "gitBlobSha1": "252c1cc9a687cadd961183b56ea10d21bf1976b4",
+    "preservedReadOnly": true
+  },
+  "authority": {
+    "runtime": "archive/data/meta-foundation/runtime/geometry-equations-v1.json",
+    "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "originalPrimaryL3": "절편을 이용한 최댓값·최솟값"
+  },
+  "summary": {
+    "authorDraftItems": 9,
+    "svgCreated": 9,
+    "externalOpenBookReview": "NOT_RUN",
+    "studentRelease": "NOT_AUTHORIZED",
+    "status": "AUTHOR_DRAFT_ONLY",
+    "nextQid": 10
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-JEIL25-2FINAL-Q09-A1",
+      "sourceQid": 9,
+      "sourceUid": "qid_v1_432f715c1ecb2d487ffa187535ac53fe686cc735551b3ee7919c1399e2724dfc",
+      "slot": "A1",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "직선의 방정식",
+      "originalCategory": "직선의 방정식",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-02",
+      "standardUnit": "직선의 방정식",
+      "standardUnitOrder": 2,
+      "subUnitKey": "H22-C2-02-EQUATION_APPLICATION",
+      "subUnit": "방정식과 부등식의 활용",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "$a,b$는 양수이고 직선 $\\dfrac{x}{a}+\\dfrac{y}{b}=1$은 점 $(4,9)$를 지난다. 이 직선의 양의 $x$절편과 $y$절편을 각각 $a,b$라 할 때, $a+b$의 최솟값은?",
+      "choices": [
+        "$13$",
+        "$19$",
+        "$25$",
+        "$31$",
+        "$37$"
+      ],
+      "answer": "③",
+      "solution": "점을 지나므로 $\\dfrac{4}a+\\dfrac{9}b=1$이고 $a>4$이다. $t=a-4>0$으로 놓으면 $a=4+t$, $b=9+\\dfrac{36}{t}$이다.\\n따라서 $a+b=13+t+\\dfrac{36}{t}$이다.\\n$t>0$이므로 $\\left(\\sqrt{t}-\\sqrt{\\dfrac{36}{t}}\\right)^2\\ge0$에서 $t+\\dfrac{36}{t}\\ge12$이다.\\n등호를 만족하는 $t=6$에서 $a=10,b=15$이므로 $a+b$의 최솟값은 $25$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/A1-solution.svg",
+      "solutionImageAlt": "양의 두 절편과 통과점 P를 나타낸 직선",
+      "solutionImageCaption": "절편과 점의 관계를 이용하여 최솟값에 이르는 상황을 표시한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "직선의 방정식",
+        "primaryRPM_L3": "직선의 방정식",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "절편을 이용한 최댓값·최솟값",
+        "rpmRecordId": "H1-RPM-210",
+        "rpmL4SemanticLabel": "한 점과 기울기",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_INTERCEPT_OPTIMIZATION",
+        "metaFoundationL3": "절편을 이용한 최댓값·최솟값",
+        "metaFoundationL4": "두 절편의 합의 최솟값",
+        "problemTypeKey": "PT_INTERCEPT_OPTIMIZATION",
+        "templateKey": "TPL_INTERCEPT_SUM_MINIMUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "기존 RPM H1-RPM-210의 L3/L4는 source Meta Foundation 절편 최적화의 exact path가 아니므로 기존 PT/TPL과 source semantic을 보존"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 절편·지나는 점·최솟값 대상 명확",
+        "mathSelfCheckEvidence": {
+          "p": 4,
+          "q": 9,
+          "w": 1,
+          "z": 1,
+          "optA": 10,
+          "optB": 15,
+          "answer": 25,
+          "pointOnLine": 1,
+          "correctChoice": 3
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "$13$",
+            "reason": "두 양수항의 하한을 0√(36)로 계산(정확한 계수는 2)"
+          },
+          {
+            "choice": "②",
+            "offeredValue": "$19$",
+            "reason": "두 양수항의 하한을 1√(36)로 계산(정확한 계수는 2)"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$31$",
+            "reason": "두 양수항의 하한을 3√(36)로 계산(정확한 계수는 2)"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$37$",
+            "reason": "두 양수항의 하한을 4√(36)로 계산(정확한 계수는 2)"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "학생 풀이에 필요한 모든 절편·통과점 조건 명시"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/A1-solution.svg",
+          "reason": "최적 절편과 직선 위 점을 시각화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-JEIL25-2FINAL-Q09-A2",
+      "sourceQid": 9,
+      "sourceUid": "qid_v1_432f715c1ecb2d487ffa187535ac53fe686cc735551b3ee7919c1399e2724dfc",
+      "slot": "A2",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "직선의 방정식",
+      "originalCategory": "직선의 방정식",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-02",
+      "standardUnit": "직선의 방정식",
+      "standardUnitOrder": 2,
+      "subUnitKey": "H22-C2-02-EQUATION_APPLICATION",
+      "subUnit": "방정식과 부등식의 활용",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "$a,b$는 양수이고 직선 $\\dfrac{x}{a}+\\dfrac{y}{b}=1$은 점 $(1,16)$를 지난다. 이 직선의 양의 $x$절편과 $y$절편을 각각 $a,b$라 할 때, $a+b$의 최솟값은?",
+      "choices": [
+        "$17$",
+        "$21$",
+        "$25$",
+        "$29$",
+        "$33$"
+      ],
+      "answer": "③",
+      "solution": "점을 지나므로 $\\dfrac{1}a+\\dfrac{16}b=1$이고 $a>1$이다. $t=a-1>0$으로 놓으면 $a=1+t$, $b=16+\\dfrac{16}{t}$이다.\\n따라서 $a+b=17+t+\\dfrac{16}{t}$이다.\\n$t>0$이므로 $\\left(\\sqrt{t}-\\sqrt{\\dfrac{16}{t}}\\right)^2\\ge0$에서 $t+\\dfrac{16}{t}\\ge8$이다.\\n등호를 만족하는 $t=4$에서 $a=5,b=20$이므로 $a+b$의 최솟값은 $25$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/A2-solution.svg",
+      "solutionImageAlt": "양의 두 절편과 통과점 P를 나타낸 직선",
+      "solutionImageCaption": "절편과 점의 관계를 이용하여 최솟값에 이르는 상황을 표시한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "직선의 방정식",
+        "primaryRPM_L3": "직선의 방정식",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "절편을 이용한 최댓값·최솟값",
+        "rpmRecordId": "H1-RPM-210",
+        "rpmL4SemanticLabel": "한 점과 기울기",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_INTERCEPT_OPTIMIZATION",
+        "metaFoundationL3": "절편을 이용한 최댓값·최솟값",
+        "metaFoundationL4": "두 절편의 합의 최솟값",
+        "problemTypeKey": "PT_INTERCEPT_OPTIMIZATION",
+        "templateKey": "TPL_INTERCEPT_SUM_MINIMUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "기존 RPM H1-RPM-210의 L3/L4는 source Meta Foundation 절편 최적화의 exact path가 아니므로 기존 PT/TPL과 source semantic을 보존"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 절편·지나는 점·최솟값 대상 명확",
+        "mathSelfCheckEvidence": {
+          "p": 1,
+          "q": 16,
+          "w": 1,
+          "z": 1,
+          "optA": 5,
+          "optB": 20,
+          "answer": 25,
+          "pointOnLine": 1,
+          "correctChoice": 3
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "$17$",
+            "reason": "두 양수항의 하한을 0√(16)로 계산(정확한 계수는 2)"
+          },
+          {
+            "choice": "②",
+            "offeredValue": "$21$",
+            "reason": "두 양수항의 하한을 1√(16)로 계산(정확한 계수는 2)"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$29$",
+            "reason": "두 양수항의 하한을 3√(16)로 계산(정확한 계수는 2)"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$33$",
+            "reason": "두 양수항의 하한을 4√(16)로 계산(정확한 계수는 2)"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "학생 풀이에 필요한 모든 절편·통과점 조건 명시"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/A2-solution.svg",
+          "reason": "최적 절편과 직선 위 점을 시각화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-JEIL25-2FINAL-Q09-A3",
+      "sourceQid": 9,
+      "sourceUid": "qid_v1_432f715c1ecb2d487ffa187535ac53fe686cc735551b3ee7919c1399e2724dfc",
+      "slot": "A3",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "직선의 방정식",
+      "originalCategory": "직선의 방정식",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-02",
+      "standardUnit": "직선의 방정식",
+      "standardUnitOrder": 2,
+      "subUnitKey": "H22-C2-02-EQUATION_APPLICATION",
+      "subUnit": "방정식과 부등식의 활용",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "$a,b$는 양수이고 직선 $\\dfrac{x}{a}+\\dfrac{y}{b}=1$은 점 $(9,16)$를 지난다. 이 직선의 양의 $x$절편과 $y$절편을 각각 $a,b$라 할 때, $a+b$의 최솟값은?",
+      "choices": [
+        "$25$",
+        "$37$",
+        "$49$",
+        "$61$",
+        "$73$"
+      ],
+      "answer": "③",
+      "solution": "점을 지나므로 $\\dfrac{9}a+\\dfrac{16}b=1$이고 $a>9$이다. $t=a-9>0$으로 놓으면 $a=9+t$, $b=16+\\dfrac{144}{t}$이다.\\n따라서 $a+b=25+t+\\dfrac{144}{t}$이다.\\n$t>0$이므로 $\\left(\\sqrt{t}-\\sqrt{\\dfrac{144}{t}}\\right)^2\\ge0$에서 $t+\\dfrac{144}{t}\\ge24$이다.\\n등호를 만족하는 $t=12$에서 $a=21,b=28$이므로 $a+b$의 최솟값은 $49$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/A3-solution.svg",
+      "solutionImageAlt": "양의 두 절편과 통과점 P를 나타낸 직선",
+      "solutionImageCaption": "절편과 점의 관계를 이용하여 최솟값에 이르는 상황을 표시한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "직선의 방정식",
+        "primaryRPM_L3": "직선의 방정식",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "절편을 이용한 최댓값·최솟값",
+        "rpmRecordId": "H1-RPM-210",
+        "rpmL4SemanticLabel": "한 점과 기울기",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_INTERCEPT_OPTIMIZATION",
+        "metaFoundationL3": "절편을 이용한 최댓값·최솟값",
+        "metaFoundationL4": "두 절편의 합의 최솟값",
+        "problemTypeKey": "PT_INTERCEPT_OPTIMIZATION",
+        "templateKey": "TPL_INTERCEPT_SUM_MINIMUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "기존 RPM H1-RPM-210의 L3/L4는 source Meta Foundation 절편 최적화의 exact path가 아니므로 기존 PT/TPL과 source semantic을 보존"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 절편·지나는 점·최솟값 대상 명확",
+        "mathSelfCheckEvidence": {
+          "p": 9,
+          "q": 16,
+          "w": 1,
+          "z": 1,
+          "optA": 21,
+          "optB": 28,
+          "answer": 49,
+          "pointOnLine": 1,
+          "correctChoice": 3
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "$25$",
+            "reason": "두 양수항의 하한을 0√(144)로 계산(정확한 계수는 2)"
+          },
+          {
+            "choice": "②",
+            "offeredValue": "$37$",
+            "reason": "두 양수항의 하한을 1√(144)로 계산(정확한 계수는 2)"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$61$",
+            "reason": "두 양수항의 하한을 3√(144)로 계산(정확한 계수는 2)"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$73$",
+            "reason": "두 양수항의 하한을 4√(144)로 계산(정확한 계수는 2)"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "학생 풀이에 필요한 모든 절편·통과점 조건 명시"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/A3-solution.svg",
+          "reason": "최적 절편과 직선 위 점을 시각화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-JEIL25-2FINAL-Q09-B1",
+      "sourceQid": 9,
+      "sourceUid": "qid_v1_432f715c1ecb2d487ffa187535ac53fe686cc735551b3ee7919c1399e2724dfc",
+      "slot": "B1",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "상",
+      "category": "직선의 방정식",
+      "originalCategory": "직선의 방정식",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-02",
+      "standardUnit": "직선의 방정식",
+      "standardUnitOrder": 2,
+      "subUnitKey": "H22-C2-02-EQUATION_APPLICATION",
+      "subUnit": "방정식과 부등식의 활용",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "$a,b$는 양수이고 직선 $\\dfrac{x}{a}+\\dfrac{y}{b}=1$은 점 $(2,9)$를 지난다. 이 직선의 양의 $x$절편과 $y$절편을 각각 $a,b$라 할 때, $2a+b$의 최솟값은?",
+      "choices": [
+        "$13$",
+        "$19$",
+        "$25$",
+        "$31$",
+        "$37$"
+      ],
+      "answer": "③",
+      "solution": "점을 지나므로 $\\dfrac{2}a+\\dfrac{9}b=1$이고 $a>2$이다. $t=a-2>0$으로 놓으면 $a=2+t$, $b=9+\\dfrac{18}{t}$이다.\\n따라서 $2a+b=13+2t+\\dfrac{18}{t}$이다.\\n$t>0$이므로 $\\left(\\sqrt{2t}-\\sqrt{\\dfrac{18}{t}}\\right)^2\\ge0$에서 $2t+\\dfrac{18}{t}\\ge12$이다.\\n등호를 만족하는 $t=3$에서 $a=5,b=15$이므로 $2a+b$의 최솟값은 $25$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/B1-solution.svg",
+      "solutionImageAlt": "양의 두 절편과 통과점 P를 나타낸 직선",
+      "solutionImageCaption": "절편과 점의 관계를 이용하여 최솟값에 이르는 상황을 표시한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "직선의 방정식",
+        "primaryRPM_L3": "직선의 방정식",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "절편을 이용한 최댓값·최솟값",
+        "rpmRecordId": "H1-RPM-210",
+        "rpmL4SemanticLabel": "한 점과 기울기",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_INTERCEPT_OPTIMIZATION",
+        "metaFoundationL3": "절편을 이용한 최댓값·최솟값",
+        "metaFoundationL4": "두 절편의 합의 최솟값",
+        "problemTypeKey": "PT_INTERCEPT_OPTIMIZATION",
+        "templateKey": "TPL_INTERCEPT_SUM_MINIMUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "기존 RPM H1-RPM-210의 L3/L4는 source Meta Foundation 절편 최적화의 exact path가 아니므로 기존 PT/TPL과 source semantic을 보존"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 절편·지나는 점·최솟값 대상 명확",
+        "mathSelfCheckEvidence": {
+          "p": 2,
+          "q": 9,
+          "w": 2,
+          "z": 1,
+          "optA": 5,
+          "optB": 15,
+          "answer": 25,
+          "pointOnLine": 1,
+          "correctChoice": 3
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "$13$",
+            "reason": "두 양수항의 하한을 0√(36)로 계산(정확한 계수는 2)"
+          },
+          {
+            "choice": "②",
+            "offeredValue": "$19$",
+            "reason": "두 양수항의 하한을 1√(36)로 계산(정확한 계수는 2)"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$31$",
+            "reason": "두 양수항의 하한을 3√(36)로 계산(정확한 계수는 2)"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$37$",
+            "reason": "두 양수항의 하한을 4√(36)로 계산(정확한 계수는 2)"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "학생 풀이에 필요한 모든 절편·통과점 조건 명시"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/B1-solution.svg",
+          "reason": "최적 절편과 직선 위 점을 시각화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-JEIL25-2FINAL-Q09-B2",
+      "sourceQid": 9,
+      "sourceUid": "qid_v1_432f715c1ecb2d487ffa187535ac53fe686cc735551b3ee7919c1399e2724dfc",
+      "slot": "B2",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "상",
+      "category": "직선의 방정식",
+      "originalCategory": "직선의 방정식",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-02",
+      "standardUnit": "직선의 방정식",
+      "standardUnitOrder": 2,
+      "subUnitKey": "H22-C2-02-EQUATION_APPLICATION",
+      "subUnit": "방정식과 부등식의 활용",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "$a,b$는 양수이고 직선 $\\dfrac{x}{a}+\\dfrac{y}{b}=1$은 점 $(9,2)$를 지난다. 이 직선의 양의 $x$절편과 $y$절편을 각각 $a,b$라 할 때, $a+2b$의 최솟값은?",
+      "choices": [
+        "$13$",
+        "$19$",
+        "$25$",
+        "$31$",
+        "$37$"
+      ],
+      "answer": "③",
+      "solution": "점을 지나므로 $\\dfrac{9}a+\\dfrac{2}b=1$이고 $a>9$이다. $t=a-9>0$으로 놓으면 $a=9+t$, $b=2+\\dfrac{18}{t}$이다.\\n따라서 $a+2b=13+t+\\dfrac{36}{t}$이다.\\n$t>0$이므로 $\\left(\\sqrt{t}-\\sqrt{\\dfrac{36}{t}}\\right)^2\\ge0$에서 $t+\\dfrac{36}{t}\\ge12$이다.\\n등호를 만족하는 $t=6$에서 $a=15,b=5$이므로 $a+2b$의 최솟값은 $25$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/B2-solution.svg",
+      "solutionImageAlt": "양의 두 절편과 통과점 P를 나타낸 직선",
+      "solutionImageCaption": "절편과 점의 관계를 이용하여 최솟값에 이르는 상황을 표시한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "직선의 방정식",
+        "primaryRPM_L3": "직선의 방정식",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "절편을 이용한 최댓값·최솟값",
+        "rpmRecordId": "H1-RPM-210",
+        "rpmL4SemanticLabel": "한 점과 기울기",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_INTERCEPT_OPTIMIZATION",
+        "metaFoundationL3": "절편을 이용한 최댓값·최솟값",
+        "metaFoundationL4": "두 절편의 합의 최솟값",
+        "problemTypeKey": "PT_INTERCEPT_OPTIMIZATION",
+        "templateKey": "TPL_INTERCEPT_SUM_MINIMUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "기존 RPM H1-RPM-210의 L3/L4는 source Meta Foundation 절편 최적화의 exact path가 아니므로 기존 PT/TPL과 source semantic을 보존"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 절편·지나는 점·최솟값 대상 명확",
+        "mathSelfCheckEvidence": {
+          "p": 9,
+          "q": 2,
+          "w": 1,
+          "z": 2,
+          "optA": 15,
+          "optB": 5,
+          "answer": 25,
+          "pointOnLine": 1,
+          "correctChoice": 3
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "$13$",
+            "reason": "두 양수항의 하한을 0√(36)로 계산(정확한 계수는 2)"
+          },
+          {
+            "choice": "②",
+            "offeredValue": "$19$",
+            "reason": "두 양수항의 하한을 1√(36)로 계산(정확한 계수는 2)"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$31$",
+            "reason": "두 양수항의 하한을 3√(36)로 계산(정확한 계수는 2)"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$37$",
+            "reason": "두 양수항의 하한을 4√(36)로 계산(정확한 계수는 2)"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "학생 풀이에 필요한 모든 절편·통과점 조건 명시"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/B2-solution.svg",
+          "reason": "최적 절편과 직선 위 점을 시각화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-JEIL25-2FINAL-Q09-B3",
+      "sourceQid": 9,
+      "sourceUid": "qid_v1_432f715c1ecb2d487ffa187535ac53fe686cc735551b3ee7919c1399e2724dfc",
+      "slot": "B3",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "상",
+      "category": "직선의 방정식",
+      "originalCategory": "직선의 방정식",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-02",
+      "standardUnit": "직선의 방정식",
+      "standardUnitOrder": 2,
+      "subUnitKey": "H22-C2-02-EQUATION_APPLICATION",
+      "subUnit": "방정식과 부등식의 활용",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "$a,b$는 양수이고 직선 $\\dfrac{x}{a}+\\dfrac{y}{b}=1$은 점 $(3,16)$를 지난다. 이 직선의 양의 $x$절편과 $y$절편을 각각 $a,b$라 할 때, $3a+b$의 최솟값은?",
+      "choices": [
+        "$25$",
+        "$37$",
+        "$49$",
+        "$61$",
+        "$73$"
+      ],
+      "answer": "③",
+      "solution": "점을 지나므로 $\\dfrac{3}a+\\dfrac{16}b=1$이고 $a>3$이다. $t=a-3>0$으로 놓으면 $a=3+t$, $b=16+\\dfrac{48}{t}$이다.\\n따라서 $3a+b=25+3t+\\dfrac{48}{t}$이다.\\n$t>0$이므로 $\\left(\\sqrt{3t}-\\sqrt{\\dfrac{48}{t}}\\right)^2\\ge0$에서 $3t+\\dfrac{48}{t}\\ge24$이다.\\n등호를 만족하는 $t=4$에서 $a=7,b=28$이므로 $3a+b$의 최솟값은 $49$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/B3-solution.svg",
+      "solutionImageAlt": "양의 두 절편과 통과점 P를 나타낸 직선",
+      "solutionImageCaption": "절편과 점의 관계를 이용하여 최솟값에 이르는 상황을 표시한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "직선의 방정식",
+        "primaryRPM_L3": "직선의 방정식",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "절편을 이용한 최댓값·최솟값",
+        "rpmRecordId": "H1-RPM-210",
+        "rpmL4SemanticLabel": "한 점과 기울기",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_INTERCEPT_OPTIMIZATION",
+        "metaFoundationL3": "절편을 이용한 최댓값·최솟값",
+        "metaFoundationL4": "두 절편의 합의 최솟값",
+        "problemTypeKey": "PT_INTERCEPT_OPTIMIZATION",
+        "templateKey": "TPL_INTERCEPT_SUM_MINIMUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "기존 RPM H1-RPM-210의 L3/L4는 source Meta Foundation 절편 최적화의 exact path가 아니므로 기존 PT/TPL과 source semantic을 보존"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 절편·지나는 점·최솟값 대상 명확",
+        "mathSelfCheckEvidence": {
+          "p": 3,
+          "q": 16,
+          "w": 3,
+          "z": 1,
+          "optA": 7,
+          "optB": 28,
+          "answer": 49,
+          "pointOnLine": 1,
+          "correctChoice": 3
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "$25$",
+            "reason": "두 양수항의 하한을 0√(144)로 계산(정확한 계수는 2)"
+          },
+          {
+            "choice": "②",
+            "offeredValue": "$37$",
+            "reason": "두 양수항의 하한을 1√(144)로 계산(정확한 계수는 2)"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$61$",
+            "reason": "두 양수항의 하한을 3√(144)로 계산(정확한 계수는 2)"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$73$",
+            "reason": "두 양수항의 하한을 4√(144)로 계산(정확한 계수는 2)"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "학생 풀이에 필요한 모든 절편·통과점 조건 명시"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/B3-solution.svg",
+          "reason": "최적 절편과 직선 위 점을 시각화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-JEIL25-2FINAL-Q09-C1",
+      "sourceQid": 9,
+      "sourceUid": "qid_v1_432f715c1ecb2d487ffa187535ac53fe686cc735551b3ee7919c1399e2724dfc",
+      "slot": "C1",
+      "purpose": "C",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "직선의 방정식",
+      "originalCategory": "직선의 방정식",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-02",
+      "standardUnit": "직선의 방정식",
+      "standardUnitOrder": 2,
+      "subUnitKey": "H22-C2-02-EQUATION_APPLICATION",
+      "subUnit": "방정식과 부등식의 활용",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "$a,b$는 양수이고 직선 $\\dfrac{x}{a}+\\dfrac{y}{b}=1$은 점 $(4,9)$를 지난다. 양의 $x$축, $y$축과 만나는 점을 $A,B$라 하고, $C=(a,b)$라 하자. 직사각형 $OACB$의 둘레의 최솟값은? (단, $O$는 원점)",
+      "choices": [
+        "$26$",
+        "$38$",
+        "$50$",
+        "$62$",
+        "$74$"
+      ],
+      "answer": "③",
+      "solution": "점을 지나므로 $\\dfrac{4}a+\\dfrac{9}b=1$이고 $a>4$이다. $t=a-4>0$으로 놓으면 $a=4+t$, $b=9+\\dfrac{36}{t}$이다.\\n따라서 $a+b=13+t+\\dfrac{36}{t}$이다.\\n$t>0$이므로 $\\left(\\sqrt{t}-\\sqrt{\\dfrac{36}{t}}\\right)^2\\ge0$에서 $t+\\dfrac{36}{t}\\ge12$이다.\\n등호를 만족하는 $t=6$에서 $a=10,b=15$이므로 $a+b$의 최솟값은 $25$이다.\n직사각형의 둘레는 $2(a+b)$이므로 최솟값은 $50$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/C1-solution.svg",
+      "solutionImageAlt": "양의 두 절편과 통과점 P를 나타낸 직선",
+      "solutionImageCaption": "절편과 점의 관계를 이용하여 최솟값에 이르는 상황을 표시한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "직선의 방정식",
+        "primaryRPM_L3": "직선의 방정식",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "절편을 이용한 최댓값·최솟값",
+        "rpmRecordId": "H1-RPM-210",
+        "rpmL4SemanticLabel": "한 점과 기울기",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_INTERCEPT_OPTIMIZATION",
+        "metaFoundationL3": "절편을 이용한 최댓값·최솟값",
+        "metaFoundationL4": "두 절편의 합의 최솟값",
+        "problemTypeKey": "PT_INTERCEPT_OPTIMIZATION",
+        "templateKey": "TPL_INTERCEPT_SUM_MINIMUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 5,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "기존 RPM H1-RPM-210의 L3/L4는 source Meta Foundation 절편 최적화의 exact path가 아니므로 기존 PT/TPL과 source semantic을 보존"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 절편·지나는 점·최솟값 대상 명확",
+        "mathSelfCheckEvidence": {
+          "p": 4,
+          "q": 9,
+          "w": 1,
+          "z": 1,
+          "optA": 10,
+          "optB": 15,
+          "answer": 50,
+          "pointOnLine": 1,
+          "correctChoice": 3
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "$26$",
+            "reason": "두 양수항의 하한을 0√(36)로 계산(정확한 계수는 2)"
+          },
+          {
+            "choice": "②",
+            "offeredValue": "$38$",
+            "reason": "두 양수항의 하한을 1√(36)로 계산(정확한 계수는 2)"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$62$",
+            "reason": "두 양수항의 하한을 3√(36)로 계산(정확한 계수는 2)"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$74$",
+            "reason": "두 양수항의 하한을 4√(36)로 계산(정확한 계수는 2)"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "학생 풀이에 필요한 모든 절편·통과점 조건 명시"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/C1-solution.svg",
+          "reason": "최적 절편과 직선 위 점을 시각화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-JEIL25-2FINAL-Q09-C2",
+      "sourceQid": 9,
+      "sourceUid": "qid_v1_432f715c1ecb2d487ffa187535ac53fe686cc735551b3ee7919c1399e2724dfc",
+      "slot": "C2",
+      "purpose": "C",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "직선의 방정식",
+      "originalCategory": "직선의 방정식",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-02",
+      "standardUnit": "직선의 방정식",
+      "standardUnitOrder": 2,
+      "subUnitKey": "H22-C2-02-EQUATION_APPLICATION",
+      "subUnit": "방정식과 부등식의 활용",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "$a,b$는 양수이고 직선 $\\dfrac{x}{a}+\\dfrac{y}{b}=1$은 점 $(3,5)$를 지난다. 이 직선과 양의 두 좌표축이 이루는 삼각형의 넓이의 최솟값은?",
+      "choices": [
+        "$15$",
+        "$\\dfrac{45}{2}$",
+        "$30$",
+        "$45$",
+        "$60$"
+      ],
+      "answer": "③",
+      "solution": "점을 지나므로 $\\dfrac{3}a+\\dfrac{5}b=1$이다. $u=\\dfrac{3}a>0$, $v=\\dfrac{5}b>0$으로 놓으면 $u+v=1$이다.\\n$(u-v)^2\\ge0$에서 $4uv\\le1$이므로 $ab=\\dfrac{15}{uv}\\ge60$이다.\\n따라서 삼각형의 넓이는 $\\dfrac{ab}{2}\\ge30$이다. $u=v=\\dfrac12$에서 $a=6, b=10$로 등호가 성립한다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/C2-solution.svg",
+      "solutionImageAlt": "양의 두 절편과 통과점 P를 나타낸 직선",
+      "solutionImageCaption": "절편과 점의 관계를 이용하여 최솟값에 이르는 상황을 표시한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "직선의 방정식",
+        "primaryRPM_L3": "직선의 방정식",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "절편을 이용한 최댓값·최솟값",
+        "rpmRecordId": "H1-RPM-210",
+        "rpmL4SemanticLabel": "한 점과 기울기",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_INTERCEPT_OPTIMIZATION",
+        "metaFoundationL3": "절편을 이용한 최댓값·최솟값",
+        "metaFoundationL4": "두 절편의 합의 최솟값",
+        "problemTypeKey": "PT_INTERCEPT_OPTIMIZATION",
+        "templateKey": "TPL_INTERCEPT_SUM_MINIMUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 5,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "기존 RPM H1-RPM-210의 L3/L4는 source Meta Foundation 절편 최적화의 exact path가 아니므로 기존 PT/TPL과 source semantic을 보존"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 절편·지나는 점·최솟값 대상 명확",
+        "mathSelfCheckEvidence": {
+          "p": 3,
+          "q": 5,
+          "w": 1,
+          "z": 1,
+          "optA": 6,
+          "optB": 10,
+          "answer": 30,
+          "pointOnLine": 1,
+          "correctChoice": 3
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "$15$",
+            "reason": "곱의 상한 계산 또는 삼각형의 1/2 배수를 잘못 적용하여 15 도출"
+          },
+          {
+            "choice": "②",
+            "offeredValue": "$\\dfrac{45}{2}$",
+            "reason": "곱의 상한 계산 또는 삼각형의 1/2 배수를 잘못 적용하여 22.5 도출"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$45$",
+            "reason": "곱의 상한 계산 또는 삼각형의 1/2 배수를 잘못 적용하여 45 도출"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$60$",
+            "reason": "곱의 상한 계산 또는 삼각형의 1/2 배수를 잘못 적용하여 60 도출"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "학생 풀이에 필요한 모든 절편·통과점 조건 명시"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/C2-solution.svg",
+          "reason": "최적 절편과 직선 위 점을 시각화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-JEIL25-2FINAL-Q09-C3",
+      "sourceQid": 9,
+      "sourceUid": "qid_v1_432f715c1ecb2d487ffa187535ac53fe686cc735551b3ee7919c1399e2724dfc",
+      "slot": "C3",
+      "purpose": "C",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "직선의 방정식",
+      "originalCategory": "직선의 방정식",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-02",
+      "standardUnit": "직선의 방정식",
+      "standardUnitOrder": 2,
+      "subUnitKey": "H22-C2-02-EQUATION_APPLICATION",
+      "subUnit": "방정식과 부등식의 활용",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "$a,b$는 양수이고 직선 $\\dfrac{x}{a}+\\dfrac{y}{b}=1$은 점 $(4,9)$를 지난다. $a+b$가 최소가 될 때 이 직선의 기울기는?",
+      "choices": [
+        "$-2$",
+        "$-\\dfrac{3}{2}$",
+        "$-\\dfrac{2}{3}$",
+        "$-\\dfrac{1}{2}$",
+        "$\\dfrac{3}{2}$"
+      ],
+      "answer": "②",
+      "solution": "점을 지나므로 $\\dfrac{4}a+\\dfrac{9}b=1$이고 $a>4$이다. $t=a-4>0$으로 놓으면 $a=4+t$, $b=9+\\dfrac{36}{t}$이다.\\n따라서 $a+b=13+t+\\dfrac{36}{t}$이다.\\n$t>0$이므로 $\\left(\\sqrt{t}-\\sqrt{\\dfrac{36}{t}}\\right)^2\\ge0$에서 $t+\\dfrac{36}{t}\\ge12$이다.\\n등호를 만족하는 $t=6$에서 $a=10,b=15$이므로 $a+b$의 최솟값은 $25$이다.\n그때 기울기는 $-\\dfrac{b}{a}=-\\dfrac{15}{10}=-\\dfrac32$이다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/C3-solution.svg",
+      "solutionImageAlt": "양의 두 절편과 통과점 P를 나타낸 직선",
+      "solutionImageCaption": "절편과 점의 관계를 이용하여 최솟값에 이르는 상황을 표시한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "직선의 방정식",
+        "primaryRPM_L3": "직선의 방정식",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "절편을 이용한 최댓값·최솟값",
+        "rpmRecordId": "H1-RPM-210",
+        "rpmL4SemanticLabel": "한 점과 기울기",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_INTERCEPT_OPTIMIZATION",
+        "metaFoundationL3": "절편을 이용한 최댓값·최솟값",
+        "metaFoundationL4": "두 절편의 합의 최솟값",
+        "problemTypeKey": "PT_INTERCEPT_OPTIMIZATION",
+        "templateKey": "TPL_INTERCEPT_SUM_MINIMUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 5,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L3_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "기존 RPM H1-RPM-210의 L3/L4는 source Meta Foundation 절편 최적화의 exact path가 아니므로 기존 PT/TPL과 source semantic을 보존"
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 절편·지나는 점·최솟값 대상 명확",
+        "mathSelfCheckEvidence": {
+          "p": 4,
+          "q": 9,
+          "w": 1,
+          "z": 1,
+          "optA": 10,
+          "optB": 15,
+          "answer": -1.5,
+          "pointOnLine": 1,
+          "correctChoice": 2
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "$-2$",
+            "reason": "절편 비 2:1로 착각"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "$-\\dfrac{2}{3}$",
+            "reason": "두 절편의 비를 역수로 취함"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$-\\dfrac{1}{2}$",
+            "reason": "절편 비율을 절반으로 계산"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$\\dfrac{3}{2}$",
+            "reason": "기울기 음수 부호 누락"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "학생 풀이에 필요한 모든 절편·통과점 조건 명시"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/C3-solution.svg",
+          "reason": "최적 절편과 직선 위 점을 시각화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    }
+  ]
+}
