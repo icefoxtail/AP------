@@ -67,16 +67,15 @@ function findSourceAuditCommit(uid, sourceEvidence, sourceQuestion) {
   for (const commit of candidates) {
     const sourceResult = spawnSync('git', ['rev-parse', commit + ':' + sourceEvidence.path], { cwd: root, encoding: 'utf8' });
     if (sourceResult.status !== 0 || sourceResult.stdout.trim() !== sourceEvidence.gitBlobSha1) continue;
-    const grepResult = spawnSync('git', ['grep', '-l', '-F', uid, commit, '--', '*.json'], { cwd: root, encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 });
-    if (grepResult.status === 1) continue;
-    if (grepResult.status !== 0) throw new Error('SOURCE_AUDIT_SEARCH_FAILED:' + uid);
-    const reviewPaths = [...new Set(grepResult.stdout.split(/\r?\n/).filter(Boolean).map(line => line.includes(':') ? line.slice(line.indexOf(':') + 1) : line))]
-      .filter(filePath => /review|audit|gate|evidence/i.test(filePath));
+    const treePaths = execFileSync('git', ['ls-tree', '-r', '--name-only', commit], { cwd: root, encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 }).split(/\r?\n/).filter(Boolean);
+    const reviewPaths = treePaths.filter(filePath => filePath.endsWith('.json') && /review|audit|gate|evidence/i.test(filePath));
     for (const reviewPath of reviewPaths) {
       const reviewResult = spawnSync('git', ['rev-parse', commit + ':' + reviewPath], { cwd: root, encoding: 'utf8' });
-      if (reviewResult.status !== 0) throw new Error('SOURCE_AUDIT_BLOB_MISSING:' + uid);
+      if (reviewResult.status !== 0) throw new Error('SOURCE_AUDIT_BLOB_MISSING:' + uid + ':' + reviewPath);
       const reviewBlobSha = reviewResult.stdout.trim();
-      const review = JSON.parse(gitBlobBytes(reviewBlobSha).toString('utf8'));
+      const reviewBytes = gitBlobBytes(reviewBlobSha);
+      if (!reviewBytes.includes(Buffer.from(uid))) continue;
+      const review = JSON.parse(reviewBytes.toString('utf8'));
       const validated = validateExistingSourceAudit(review, uid, sourceEvidence, sourceQuestion);
       if (validated) accepted.set(reviewPath + ':' + reviewBlobSha, { commit, reviewPath, reviewBlobSha, ...validated });
     }
