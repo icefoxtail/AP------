@@ -9701,6 +9701,37 @@ window.mainDB = {
       "primaryStandardCourse": "수학II"
     },
     {
+      "file": "original/high/h2/1mid/23_팔마고_1학기_중간_고2_확률과통계.js",
+      "school": "팔마고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "확률과통계",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-PS-01",
+      "rangeStartUnit": "순열과 조합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-PS-04",
+      "rangeEndUnit": "조건부확률",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-01",
+          "rangeStartUnit": "순열과 조합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-PS-04",
+          "rangeEndUnit": "조건부확률",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
       "file": "original/high/h2/1mid/23_한영고_1학기_중간_고2_대수.js",
       "school": "한영고",
       "topic": "",
