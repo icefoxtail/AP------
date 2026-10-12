@@ -39,7 +39,13 @@
     "metadataDebtUidCount": 9,
     "status": "AUTHOR_DRAFT_ONLY",
     "nextQid": 3,
-    "firstMissingClosureStep": "GPT_OPEN_BOOK_REVIEW"
+    "firstMissingClosureStep": "GPT_OPEN_BOOK_REVIEW",
+    "authorSelfCheck": "9/9 MATH_META_SVG_STATIC_RECHECK_20261012_REQUIRES_BROWSER",
+    "selfRecheckStatus": "QID_INCOMPLETE",
+    "incorrectRoutesRechecked": 36,
+    "solutionSvgStaticRechecked": "9/9(4 changed; 5 existing)",
+    "actualBrowserSvgRender": "NOT_RUN",
+    "answerDistributionDisposition": "KEEP_NUMERIC_SORTED_CHOICES; NO_ARTIFICIAL_ANSWER_POSITION_SHUFFLE"
   },
   "questions": [
     {
@@ -124,19 +130,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "세로 이동량 $2$를 결과 $y$좌표로 착각"
+            "reason": "수평 -5는 맞게 적용, 수직 변화량 +2를 최종 y좌표로 오인: (-3,2)"
           },
           {
             "choice": "③",
-            "reason": "가로 이동량의 음수를 양수로 착각"
+            "reason": "기준 도착점 x=-1을 수평 변화량 -5로 혼동: (2-(-1),5+2)=(3,7)"
           },
           {
             "choice": "④",
-            "reason": "가로·세로 이동량의 부호를 모두 반대로 적용"
+            "reason": "출발점 성분과 이동량 성분을 동시에 바꾸어 (5+2,2-5)=(7,-3)"
           },
           {
             "choice": "⑤",
-            "reason": "이동량의 부호를 바꾸고 좌표의 성분도 잘못 대응"
+            "reason": "이동량을 역방향 (+5,-2)으로 적용: (2+5,5-2)=(7,3)"
           }
         ],
         "calculatedGeometryFacts": [
@@ -174,7 +180,63 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "originalStemOrIssue": "원본 q02 점의 평행이동 L3 및 이동량 동일 적용 보존. A는 수치/부호, B는 역산·중점·공통량, C는 합성이동·직선·좌표축 조건으로 수학적 사고 확장.",
+        "reverseReadingFinding": "학생이 최종 발문/5지에서 이동 전후·목표량을 확정 가능. Δ=(-1-4,3-1)=(-5,+2), (2,5)+Δ=(-3,7)",
+        "decision": "REVISED",
+        "affectedFields": [
+          "review.wrongRoutes",
+          "review.selfRecheck20261012"
+        ],
+        "changedMathRecheck": "학생용 정답/풀이/5지 유지, 4개 오답 수치 정확 대응 확인. 기존 해설의 x/y 계산 및 현재 SVG geometry parity 재계산.",
+        "remainingRisk": "변경 SVG의 실제 브라우저 렌더 NOT_RUN; QID_INCOMPLETE 보존. 별도 GPT 검수와 학생 출시는 NOT_RUN.",
+        "selfRecheck20261012": {
+          "status": "QID_INCOMPLETE",
+          "decision": "REVISED",
+          "reviewRole": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT",
+          "actualAnswer": "②",
+          "independentStudentCalculation": "Δ=(-1-4,3-1)=(-5,+2), (2,5)+Δ=(-3,7)",
+          "incorrectOptionCount": 4,
+          "incorrectCalculationEvidence": "review.wrongRoutes",
+          "originalL3": "평행이동",
+          "lockedRPMId": "H1-RPM-225",
+          "originalMathRetained": "동일한 좌표 이동량 적용",
+          "changedThought": "두 점으로 이동량을 구하여 다른 점에 동일 적용",
+          "L1": "도형의 방정식",
+          "L2": "도형의 이동",
+          "L4": "점·직선의 이동",
+          "metaFoundationL3": "점의 평행이동",
+          "metaFoundationL4": "점의 평행이동과 좌표",
+          "PT": "PT_MOVE_POINT_TRANSLATION",
+          "TPL": "TT_POINT_TRANSLATION_COORD",
+          "CrossConcept": [],
+          "Condition": [],
+          "Integration": "SEQUENTIAL",
+          "difficulty": {
+            "level": "하",
+            "assessment1to5": 1,
+            "cognitive": "이동량/역이동/결합 조건 판정",
+            "computation": "정수 좌표 1~4번 계산"
+          },
+          "problemSVG": "VISUAL_EXEMPT: 모든 기준점과 목표값이 문장으로 명확히 주어짐",
+          "solutionSVG": "VISUAL_REQUIRED: 도형의 이동의 좌표 대응 및 경우에 따라 중점·직선의 학습 시각화",
+          "actualSVGPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/A1-solution.svg",
+          "svgFileVerified": "YES_FILE_READ",
+          "svgCoordinates": "STATIC_COORDINATE_PARITY_ALL_POINTS",
+          "browserRender": "NOT_RUN",
+          "newVisualCorrections": "SVG_VISUAL_EXISTING",
+          "defect": "기존 wrongRoutes 중 계산-보기 연결 누락/오류; B1/B2/C1 라벨 겹침, C2 절편 시각 누락은 대상 SVG에서 수정",
+          "repairs": "정확한 오답 4개 수식 및 영향 SVG만 변경",
+          "rechecked": "답 및 4지별 계산/학년 교육과정, 변경 SVG 실제 point(x,y) 좌표 parity",
+          "notExecuted": [
+            "실제 브라우저 SVG 렌더",
+            "후속 독립 GPT 검수",
+            "Consumer/index/main 출시"
+          ],
+          "uncertainty": [
+            "실제 렌더에서 라벨 가독성 및 겹침 최종 확인"
+          ]
+        }
       }
     },
     {
@@ -259,19 +321,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "이동량 $(5,-5)$의 방향을 뒤집어 적용"
+            "reason": "이동량 (5,-5) 대신 (-5,5) 적용: (-1-5,2+5)=(-6,7)"
           },
           {
             "choice": "②",
-            "reason": "세로 성분 $-5$만 적용하고 가로 이동은 생략"
+            "reason": "수직 -5만 적용: (-1,2-5)=(-1,-3)"
           },
           {
             "choice": "④",
-            "reason": "가로 성분 $5$만 적용하고 세로 이동은 생략"
+            "reason": "수평 +5만 적용: (-1+5,2)=(4,2)"
           },
           {
             "choice": "⑤",
-            "reason": "세로 이동량 $-5$를 $+5$로 잘못 적용"
+            "reason": "수직 -5를 +5로 반대로 계산: (-1+5,2+5)=(4,7)"
           }
         ],
         "calculatedGeometryFacts": [
@@ -309,7 +371,63 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "originalStemOrIssue": "원본 q02 점의 평행이동 L3 및 이동량 동일 적용 보존. A는 수치/부호, B는 역산·중점·공통량, C는 합성이동·직선·좌표축 조건으로 수학적 사고 확장.",
+        "reverseReadingFinding": "학생이 최종 발문/5지에서 이동 전후·목표량을 확정 가능. Δ=(2+3,-1-4)=(5,-5), (-1,2)+Δ=(4,-3)",
+        "decision": "REVISED",
+        "affectedFields": [
+          "review.wrongRoutes",
+          "review.selfRecheck20261012"
+        ],
+        "changedMathRecheck": "학생용 정답/풀이/5지 유지, 4개 오답 수치 정확 대응 확인. 기존 해설의 x/y 계산 및 현재 SVG geometry parity 재계산.",
+        "remainingRisk": "변경 SVG의 실제 브라우저 렌더 NOT_RUN; QID_INCOMPLETE 보존. 별도 GPT 검수와 학생 출시는 NOT_RUN.",
+        "selfRecheck20261012": {
+          "status": "QID_INCOMPLETE",
+          "decision": "REVISED",
+          "reviewRole": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT",
+          "actualAnswer": "③",
+          "independentStudentCalculation": "Δ=(2+3,-1-4)=(5,-5), (-1,2)+Δ=(4,-3)",
+          "incorrectOptionCount": 4,
+          "incorrectCalculationEvidence": "review.wrongRoutes",
+          "originalL3": "평행이동",
+          "lockedRPMId": "H1-RPM-225",
+          "originalMathRetained": "동일한 좌표 이동량 적용",
+          "changedThought": "가로·세로 이동량의 부호를 각각 검토",
+          "L1": "도형의 방정식",
+          "L2": "도형의 이동",
+          "L4": "점·직선의 이동",
+          "metaFoundationL3": "점의 평행이동",
+          "metaFoundationL4": "점의 평행이동과 좌표",
+          "PT": "PT_MOVE_POINT_TRANSLATION",
+          "TPL": "TT_POINT_TRANSLATION_COORD",
+          "CrossConcept": [],
+          "Condition": [],
+          "Integration": "SEQUENTIAL",
+          "difficulty": {
+            "level": "하",
+            "assessment1to5": 1,
+            "cognitive": "이동량/역이동/결합 조건 판정",
+            "computation": "정수 좌표 1~4번 계산"
+          },
+          "problemSVG": "VISUAL_EXEMPT: 모든 기준점과 목표값이 문장으로 명확히 주어짐",
+          "solutionSVG": "VISUAL_REQUIRED: 도형의 이동의 좌표 대응 및 경우에 따라 중점·직선의 학습 시각화",
+          "actualSVGPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/A2-solution.svg",
+          "svgFileVerified": "YES_FILE_READ",
+          "svgCoordinates": "STATIC_COORDINATE_PARITY_ALL_POINTS",
+          "browserRender": "NOT_RUN",
+          "newVisualCorrections": "SVG_VISUAL_EXISTING",
+          "defect": "기존 wrongRoutes 중 계산-보기 연결 누락/오류; B1/B2/C1 라벨 겹침, C2 절편 시각 누락은 대상 SVG에서 수정",
+          "repairs": "정확한 오답 4개 수식 및 영향 SVG만 변경",
+          "rechecked": "답 및 4지별 계산/학년 교육과정, 변경 SVG 실제 point(x,y) 좌표 parity",
+          "notExecuted": [
+            "실제 브라우저 SVG 렌더",
+            "후속 독립 GPT 검수",
+            "Consumer/index/main 출시"
+          ],
+          "uncertainty": [
+            "실제 렌더에서 라벨 가독성 및 겹침 최종 확인"
+          ]
+        }
       }
     },
     {
@@ -394,19 +512,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "세로 이동량 $+6$을 $-6$으로 잘못 계산"
+            "reason": "수직 +6을 -6으로 오산: (0-4,-3-6)=(-4,-9)"
           },
           {
             "choice": "②",
-            "reason": "가로 이동량만 적용하고 세로 이동을 생략"
+            "reason": "수직 이동 생략: (0-4,-3)=(-4,-3)"
           },
           {
             "choice": "④",
-            "reason": "세로 이동량만 적용하고 가로 이동을 생략"
+            "reason": "수평 이동 생략: (0,-3+6)=(0,3)"
           },
           {
             "choice": "⑤",
-            "reason": "두 이동량의 방향을 모두 반대로 적용"
+            "reason": "수평/수직 부호를 모두 반대로 적용: (0+4,-3-6)=(4,-9)"
           }
         ],
         "calculatedGeometryFacts": [
@@ -444,7 +562,63 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "originalStemOrIssue": "원본 q02 점의 평행이동 L3 및 이동량 동일 적용 보존. A는 수치/부호, B는 역산·중점·공통량, C는 합성이동·직선·좌표축 조건으로 수학적 사고 확장.",
+        "reverseReadingFinding": "학생이 최종 발문/5지에서 이동 전후·목표량을 확정 가능. Δ=(1-5,4+2)=(-4,6), (0,-3)+Δ=(-4,3)",
+        "decision": "REVISED",
+        "affectedFields": [
+          "review.wrongRoutes",
+          "review.selfRecheck20261012"
+        ],
+        "changedMathRecheck": "학생용 정답/풀이/5지 유지, 4개 오답 수치 정확 대응 확인. 기존 해설의 x/y 계산 및 현재 SVG geometry parity 재계산.",
+        "remainingRisk": "변경 SVG의 실제 브라우저 렌더 NOT_RUN; QID_INCOMPLETE 보존. 별도 GPT 검수와 학생 출시는 NOT_RUN.",
+        "selfRecheck20261012": {
+          "status": "QID_INCOMPLETE",
+          "decision": "REVISED",
+          "reviewRole": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT",
+          "actualAnswer": "③",
+          "independentStudentCalculation": "Δ=(1-5,4+2)=(-4,6), (0,-3)+Δ=(-4,3)",
+          "incorrectOptionCount": 4,
+          "incorrectCalculationEvidence": "review.wrongRoutes",
+          "originalL3": "평행이동",
+          "lockedRPMId": "H1-RPM-225",
+          "originalMathRetained": "동일한 좌표 이동량 적용",
+          "changedThought": "음수에서 양수로의 이동량 부호 판정",
+          "L1": "도형의 방정식",
+          "L2": "도형의 이동",
+          "L4": "점·직선의 이동",
+          "metaFoundationL3": "점의 평행이동",
+          "metaFoundationL4": "점의 평행이동과 좌표",
+          "PT": "PT_MOVE_POINT_TRANSLATION",
+          "TPL": "TT_POINT_TRANSLATION_COORD",
+          "CrossConcept": [],
+          "Condition": [],
+          "Integration": "SEQUENTIAL",
+          "difficulty": {
+            "level": "하",
+            "assessment1to5": 1,
+            "cognitive": "이동량/역이동/결합 조건 판정",
+            "computation": "정수 좌표 1~4번 계산"
+          },
+          "problemSVG": "VISUAL_EXEMPT: 모든 기준점과 목표값이 문장으로 명확히 주어짐",
+          "solutionSVG": "VISUAL_REQUIRED: 도형의 이동의 좌표 대응 및 경우에 따라 중점·직선의 학습 시각화",
+          "actualSVGPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/A3-solution.svg",
+          "svgFileVerified": "YES_FILE_READ",
+          "svgCoordinates": "STATIC_COORDINATE_PARITY_ALL_POINTS",
+          "browserRender": "NOT_RUN",
+          "newVisualCorrections": "SVG_VISUAL_EXISTING",
+          "defect": "기존 wrongRoutes 중 계산-보기 연결 누락/오류; B1/B2/C1 라벨 겹침, C2 절편 시각 누락은 대상 SVG에서 수정",
+          "repairs": "정확한 오답 4개 수식 및 영향 SVG만 변경",
+          "rechecked": "답 및 4지별 계산/학년 교육과정, 변경 SVG 실제 point(x,y) 좌표 parity",
+          "notExecuted": [
+            "실제 브라우저 SVG 렌더",
+            "후속 독립 GPT 검수",
+            "Consumer/index/main 출시"
+          ],
+          "uncertainty": [
+            "실제 렌더에서 라벨 가독성 및 겹침 최종 확인"
+          ]
+        }
       }
     },
     {
@@ -529,19 +703,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "역이동할 때 세로 성분 $-2$를 빼지 않고 더해 잘못 적용"
+            "reason": "도착 (-1,7)에서 수평 -3 역산, 수직 -2는 역산하지 않아 (-1-3,7-2)=(-4,5)"
           },
           {
             "choice": "③",
-            "reason": "가로좌표 $-1$을 그대로 두고 세로만 역이동"
+            "reason": "가로 역산 생략: (-1,7+2)=(-1,9)"
           },
           {
             "choice": "④",
-            "reason": "역이동이 아니라 정방향 이동을 다시 적용"
+            "reason": "도착점에 정방향 이동을 또 적용: (-1+3,7-2)=(2,5)"
           },
           {
             "choice": "⑤",
-            "reason": "가로는 정방향, 세로는 역방향으로 혼합 적용"
+            "reason": "가로 정방향/세로 역방향을 혼합: (-1+3,7+2)=(2,9)"
           }
         ],
         "calculatedGeometryFacts": [
@@ -579,7 +753,64 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "originalStemOrIssue": "원본 q02 점의 평행이동 L3 및 이동량 동일 적용 보존. A는 수치/부호, B는 역산·중점·공통량, C는 합성이동·직선·좌표축 조건으로 수학적 사고 확장.",
+        "reverseReadingFinding": "학생이 최종 발문/5지에서 이동 전후·목표량을 확정 가능. Δ=(4-1,3-5)=(3,-2), P=(-1,7)-Δ=(-4,9)",
+        "decision": "REVISED",
+        "affectedFields": [
+          "review.wrongRoutes",
+          "review.selfRecheck20261012",
+          "existing solutionImage SVG"
+        ],
+        "changedMathRecheck": "학생용 정답/풀이/5지 유지, 4개 오답 수치 정확 대응 확인. 기존 해설의 x/y 계산 및 현재 SVG geometry parity 재계산.",
+        "remainingRisk": "변경 SVG의 실제 브라우저 렌더 NOT_RUN; QID_INCOMPLETE 보존. 별도 GPT 검수와 학생 출시는 NOT_RUN.",
+        "selfRecheck20261012": {
+          "status": "QID_INCOMPLETE",
+          "decision": "REVISED",
+          "reviewRole": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT",
+          "actualAnswer": "②",
+          "independentStudentCalculation": "Δ=(4-1,3-5)=(3,-2), P=(-1,7)-Δ=(-4,9)",
+          "incorrectOptionCount": 4,
+          "incorrectCalculationEvidence": "review.wrongRoutes",
+          "originalL3": "평행이동",
+          "lockedRPMId": "H1-RPM-225",
+          "originalMathRetained": "동일한 좌표 이동량 적용",
+          "changedThought": "도착점에서 원래 점으로 역산",
+          "L1": "도형의 방정식",
+          "L2": "도형의 이동",
+          "L4": "점·직선의 이동",
+          "metaFoundationL3": "점의 평행이동",
+          "metaFoundationL4": "점의 평행이동과 좌표",
+          "PT": "PT_MOVE_POINT_TRANSLATION",
+          "TPL": "TT_POINT_TRANSLATION_COORD",
+          "CrossConcept": [],
+          "Condition": [],
+          "Integration": "SEQUENTIAL",
+          "difficulty": {
+            "level": "중",
+            "assessment1to5": 2,
+            "cognitive": "이동량/역이동/결합 조건 판정",
+            "computation": "정수 좌표 1~4번 계산"
+          },
+          "problemSVG": "VISUAL_EXEMPT: 모든 기준점과 목표값이 문장으로 명확히 주어짐",
+          "solutionSVG": "VISUAL_REQUIRED: 도형의 이동의 좌표 대응 및 경우에 따라 중점·직선의 학습 시각화",
+          "actualSVGPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/B1-solution.svg",
+          "svgFileVerified": "YES_FILE_READ",
+          "svgCoordinates": "STATIC_COORDINATE_PARITY_ALL_POINTS",
+          "browserRender": "NOT_RUN",
+          "newVisualCorrections": "SVG_VISUAL_REPAIRED",
+          "defect": "기존 wrongRoutes 중 계산-보기 연결 누락/오류; B1/B2/C1 라벨 겹침, C2 절편 시각 누락은 대상 SVG에서 수정",
+          "repairs": "정확한 오답 4개 수식 및 영향 SVG만 변경",
+          "rechecked": "답 및 4지별 계산/학년 교육과정, 변경 SVG 실제 point(x,y) 좌표 parity",
+          "notExecuted": [
+            "실제 브라우저 SVG 렌더",
+            "후속 독립 GPT 검수",
+            "Consumer/index/main 출시"
+          ],
+          "uncertainty": [
+            "실제 렌더에서 라벨 가독성 및 겹침 최종 확인"
+          ]
+        }
       }
     },
     {
@@ -666,19 +897,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "세로 이동을 $-4$로 적용하여 중점 $(1,-4)$를 얻음"
+            "reason": "원래 중점 (4,0)에 (-3,-4) 오용: (1,-4)"
           },
           {
             "choice": "③",
-            "reason": "평행이동 전 중점 $(4,0)$을 그대로 답으로 선택"
+            "reason": "이동 전 중점 ((1+7)/2,(2-2)/2)=(4,0)을 그대로 선택"
           },
           {
             "choice": "④",
-            "reason": "중점의 가로좌표에 $+3$을 적용하고 세로에는 $-4$를 적용"
+            "reason": "두 성분 부호 반전 (+3,-4)을 (4,0)에 적용: (7,-4)"
           },
           {
             "choice": "⑤",
-            "reason": "가로 이동량 $-3$을 $+3$으로 적용"
+            "reason": "수평만 -3을 +3으로 오용: (4+3,0+4)=(7,4)"
           }
         ],
         "calculatedGeometryFacts": [
@@ -726,7 +957,66 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "originalStemOrIssue": "원본 q02 점의 평행이동 L3 및 이동량 동일 적용 보존. A는 수치/부호, B는 역산·중점·공통량, C는 합성이동·직선·좌표축 조건으로 수학적 사고 확장.",
+        "reverseReadingFinding": "학생이 최종 발문/5지에서 이동 전후·목표량을 확정 가능. A'=(-2,6),B'=(4,2),중점=((−2+4)/2,(6+2)/2)=(1,4)",
+        "decision": "REVISED",
+        "affectedFields": [
+          "review.wrongRoutes",
+          "review.selfRecheck20261012",
+          "existing solutionImage SVG"
+        ],
+        "changedMathRecheck": "학생용 정답/풀이/5지 유지, 4개 오답 수치 정확 대응 확인. 기존 해설의 x/y 계산 및 현재 SVG geometry parity 재계산.",
+        "remainingRisk": "변경 SVG의 실제 브라우저 렌더 NOT_RUN; QID_INCOMPLETE 보존. 별도 GPT 검수와 학생 출시는 NOT_RUN.",
+        "selfRecheck20261012": {
+          "status": "QID_INCOMPLETE",
+          "decision": "REVISED",
+          "reviewRole": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT",
+          "actualAnswer": "②",
+          "independentStudentCalculation": "A'=(-2,6),B'=(4,2),중점=((−2+4)/2,(6+2)/2)=(1,4)",
+          "incorrectOptionCount": 4,
+          "incorrectCalculationEvidence": "review.wrongRoutes",
+          "originalL3": "평행이동",
+          "lockedRPMId": "H1-RPM-225",
+          "originalMathRetained": "동일한 좌표 이동량 적용",
+          "changedThought": "점의 평행이동과 중점의 대응 관계 결합",
+          "L1": "도형의 방정식",
+          "L2": "도형의 이동",
+          "L4": "점·직선의 이동",
+          "metaFoundationL3": "점의 평행이동",
+          "metaFoundationL4": "점의 평행이동과 좌표",
+          "PT": "PT_MOVE_POINT_TRANSLATION",
+          "TPL": "TT_POINT_TRANSLATION_COORD",
+          "CrossConcept": [
+            "CC_MIDPOINT"
+          ],
+          "Condition": [],
+          "Integration": "SEQUENTIAL",
+          "difficulty": {
+            "level": "중",
+            "assessment1to5": 2,
+            "cognitive": "이동량/역이동/결합 조건 판정",
+            "computation": "정수 좌표 1~4번 계산"
+          },
+          "problemSVG": "VISUAL_EXEMPT: 모든 기준점과 목표값이 문장으로 명확히 주어짐",
+          "solutionSVG": "VISUAL_REQUIRED: 도형의 이동의 좌표 대응 및 경우에 따라 중점·직선의 학습 시각화",
+          "actualSVGPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/B2-solution.svg",
+          "svgFileVerified": "YES_FILE_READ",
+          "svgCoordinates": "STATIC_COORDINATE_PARITY_ALL_POINTS",
+          "browserRender": "NOT_RUN",
+          "newVisualCorrections": "SVG_VISUAL_REPAIRED",
+          "defect": "기존 wrongRoutes 중 계산-보기 연결 누락/오류; B1/B2/C1 라벨 겹침, C2 절편 시각 누락은 대상 SVG에서 수정",
+          "repairs": "정확한 오답 4개 수식 및 영향 SVG만 변경",
+          "rechecked": "답 및 4지별 계산/학년 교육과정, 변경 SVG 실제 point(x,y) 좌표 parity",
+          "notExecuted": [
+            "실제 브라우저 SVG 렌더",
+            "후속 독립 GPT 검수",
+            "Consumer/index/main 출시"
+          ],
+          "uncertainty": [
+            "실제 렌더에서 라벨 가독성 및 겹침 최종 확인"
+          ]
+        }
       }
     },
     {
@@ -811,19 +1101,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "$3-a=-3$을 $a=-6$으로 잘못 풀어 $-7$을 얻음"
+            "reason": "3-a=-3을 a=-6으로 오산, b=-1: a+b=-7"
           },
           {
             "choice": "②",
-            "reason": "$3-a=-3$을 $a=0$으로 잘못 계산"
+            "reason": "3-a=-3을 a=0으로 오산, b=-1: a+b=-1"
           },
           {
             "choice": "③",
-            "reason": "$a=0$, $b=1$로 두 이동량의 부호를 모두 혼동"
+            "reason": "a=0,b=1로 두 미지수의 이항/부호를 함께 오산: a+b=1"
           },
           {
             "choice": "⑤",
-            "reason": "$b=-1$을 $b=1$로 잘못 계산"
+            "reason": "a=6, 4-b=5를 b=1로 오산: a+b=7"
           }
         ],
         "calculatedGeometryFacts": [
@@ -861,7 +1151,63 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "originalStemOrIssue": "원본 q02 점의 평행이동 L3 및 이동량 동일 적용 보존. A는 수치/부호, B는 역산·중점·공통량, C는 합성이동·직선·좌표축 조건으로 수학적 사고 확장.",
+        "reverseReadingFinding": "학생이 최종 발문/5지에서 이동 전후·목표량을 확정 가능. 3-a=-3 → a=6; 4-b=5 → b=-1; a+b=5",
+        "decision": "REVISED",
+        "affectedFields": [
+          "review.wrongRoutes",
+          "review.selfRecheck20261012"
+        ],
+        "changedMathRecheck": "학생용 정답/풀이/5지 유지, 4개 오답 수치 정확 대응 확인. 기존 해설의 x/y 계산 및 현재 SVG geometry parity 재계산.",
+        "remainingRisk": "변경 SVG의 실제 브라우저 렌더 NOT_RUN; QID_INCOMPLETE 보존. 별도 GPT 검수와 학생 출시는 NOT_RUN.",
+        "selfRecheck20261012": {
+          "status": "QID_INCOMPLETE",
+          "decision": "REVISED",
+          "reviewRole": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT",
+          "actualAnswer": "④",
+          "independentStudentCalculation": "3-a=-3 → a=6; 4-b=5 → b=-1; a+b=5",
+          "incorrectOptionCount": 4,
+          "incorrectCalculationEvidence": "review.wrongRoutes",
+          "originalL3": "평행이동",
+          "lockedRPMId": "H1-RPM-225",
+          "originalMathRetained": "동일한 좌표 이동량 적용",
+          "changedThought": "두 평행이동의 공통 이동량을 이용한 역조건 해석",
+          "L1": "도형의 방정식",
+          "L2": "도형의 이동",
+          "L4": "점·직선의 이동",
+          "metaFoundationL3": "점의 평행이동",
+          "metaFoundationL4": "점의 평행이동과 좌표",
+          "PT": "PT_MOVE_POINT_TRANSLATION",
+          "TPL": "TT_POINT_TRANSLATION_COORD",
+          "CrossConcept": [],
+          "Condition": [],
+          "Integration": "INTERDEPENDENT",
+          "difficulty": {
+            "level": "중",
+            "assessment1to5": 3,
+            "cognitive": "이동량/역이동/결합 조건 판정",
+            "computation": "정수 좌표 1~4번 계산"
+          },
+          "problemSVG": "VISUAL_EXEMPT: 모든 기준점과 목표값이 문장으로 명확히 주어짐",
+          "solutionSVG": "VISUAL_REQUIRED: 도형의 이동의 좌표 대응 및 경우에 따라 중점·직선의 학습 시각화",
+          "actualSVGPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/B3-solution.svg",
+          "svgFileVerified": "YES_FILE_READ",
+          "svgCoordinates": "STATIC_COORDINATE_PARITY_ALL_POINTS",
+          "browserRender": "NOT_RUN",
+          "newVisualCorrections": "SVG_VISUAL_EXISTING",
+          "defect": "기존 wrongRoutes 중 계산-보기 연결 누락/오류; B1/B2/C1 라벨 겹침, C2 절편 시각 누락은 대상 SVG에서 수정",
+          "repairs": "정확한 오답 4개 수식 및 영향 SVG만 변경",
+          "rechecked": "답 및 4지별 계산/학년 교육과정, 변경 SVG 실제 point(x,y) 좌표 parity",
+          "notExecuted": [
+            "실제 브라우저 SVG 렌더",
+            "후속 독립 GPT 검수",
+            "Consumer/index/main 출시"
+          ],
+          "uncertainty": [
+            "실제 렌더에서 라벨 가독성 및 겹침 최종 확인"
+          ]
+        }
       }
     },
     {
@@ -946,19 +1292,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "첫 번째 평행이동 $(-4,4)$만 적용"
+            "reason": "첫 이동 (-4,+4)만 적용: (4-4,5+4)=(0,9)"
           },
           {
             "choice": "②",
-            "reason": "두 번째 이동의 세로 성분 $-4$를 한 번 더 중복 계산"
+            "reason": "수평은 총합 -1, 수직은 두 번째 -4만 적용: (4-1,5-4)=(3,1)"
           },
           {
             "choice": "④",
-            "reason": "두 번째 평행이동 $(3,-4)$만 적용"
+            "reason": "두 번째 이동 (+3,-4)만 적용: (4+3,5-4)=(7,1)"
           },
           {
             "choice": "⑤",
-            "reason": "가로 이동량의 부호를 버리고 크기 $4+3$을 더함"
+            "reason": "수평 이동의 부호를 무시하고 4+3=7을 더함: (4+7,5+4-4)=(11,5)"
           }
         ],
         "calculatedGeometryFacts": [
@@ -991,7 +1337,64 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "originalStemOrIssue": "원본 q02 점의 평행이동 L3 및 이동량 동일 적용 보존. A는 수치/부호, B는 역산·중점·공통량, C는 합성이동·직선·좌표축 조건으로 수학적 사고 확장.",
+        "reverseReadingFinding": "학생이 최종 발문/5지에서 이동 전후·목표량을 확정 가능. Δ1=(-4,4),Δ2=(3,-4), Δsum=(-1,0), (4,5)+Δsum=(3,5)",
+        "decision": "REVISED",
+        "affectedFields": [
+          "review.wrongRoutes",
+          "review.selfRecheck20261012",
+          "existing solutionImage SVG"
+        ],
+        "changedMathRecheck": "학생용 정답/풀이/5지 유지, 4개 오답 수치 정확 대응 확인. 기존 해설의 x/y 계산 및 현재 SVG geometry parity 재계산.",
+        "remainingRisk": "변경 SVG의 실제 브라우저 렌더 NOT_RUN; QID_INCOMPLETE 보존. 별도 GPT 검수와 학생 출시는 NOT_RUN.",
+        "selfRecheck20261012": {
+          "status": "QID_INCOMPLETE",
+          "decision": "REVISED",
+          "reviewRole": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT",
+          "actualAnswer": "③",
+          "independentStudentCalculation": "Δ1=(-4,4),Δ2=(3,-4), Δsum=(-1,0), (4,5)+Δsum=(3,5)",
+          "incorrectOptionCount": 4,
+          "incorrectCalculationEvidence": "review.wrongRoutes",
+          "originalL3": "평행이동",
+          "lockedRPMId": "H1-RPM-225",
+          "originalMathRetained": "동일한 좌표 이동량 적용",
+          "changedThought": "순차 평행이동을 두 이동량의 합으로 통합",
+          "L1": "도형의 방정식",
+          "L2": "도형의 이동",
+          "L4": "점·직선의 이동",
+          "metaFoundationL3": "점의 평행이동",
+          "metaFoundationL4": "점의 평행이동과 좌표",
+          "PT": "PT_MOVE_POINT_TRANSLATION",
+          "TPL": "TT_POINT_TRANSLATION_COORD",
+          "CrossConcept": [],
+          "Condition": [],
+          "Integration": "SEQUENTIAL",
+          "difficulty": {
+            "level": "중",
+            "assessment1to5": 3,
+            "cognitive": "이동량/역이동/결합 조건 판정",
+            "computation": "정수 좌표 1~4번 계산"
+          },
+          "problemSVG": "VISUAL_EXEMPT: 모든 기준점과 목표값이 문장으로 명확히 주어짐",
+          "solutionSVG": "VISUAL_REQUIRED: 도형의 이동의 좌표 대응 및 경우에 따라 중점·직선의 학습 시각화",
+          "actualSVGPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/C1-solution.svg",
+          "svgFileVerified": "YES_FILE_READ",
+          "svgCoordinates": "STATIC_COORDINATE_PARITY_ALL_POINTS",
+          "browserRender": "NOT_RUN",
+          "newVisualCorrections": "SVG_VISUAL_REPAIRED",
+          "defect": "기존 wrongRoutes 중 계산-보기 연결 누락/오류; B1/B2/C1 라벨 겹침, C2 절편 시각 누락은 대상 SVG에서 수정",
+          "repairs": "정확한 오답 4개 수식 및 영향 SVG만 변경",
+          "rechecked": "답 및 4지별 계산/학년 교육과정, 변경 SVG 실제 point(x,y) 좌표 parity",
+          "notExecuted": [
+            "실제 브라우저 SVG 렌더",
+            "후속 독립 GPT 검수",
+            "Consumer/index/main 출시"
+          ],
+          "uncertainty": [
+            "실제 렌더에서 라벨 가독성 및 겹침 최종 확인"
+          ]
+        }
       }
     },
     {
@@ -1078,19 +1481,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "이동 전 직선 $y=2x-1$의 $y$절편을 그대로 선택"
+            "reason": "이전 직선 기울기 2, y=2x-1의 이전 절편 -1을 그대로 사용"
           },
           {
             "choice": "②",
-            "reason": "세로 이동량 $3$만 $y$절편에 더하고 가로 이동을 무시"
+            "reason": "이전 절편 -1에 위로 3만 더하고 왼쪽 2에 따른 변화 4를 빠뜨려 -1+3=2"
           },
           {
             "choice": "③",
-            "reason": "이동한 점 $A'$의 $y$좌표를 $y$절편으로 착각"
+            "reason": "이동한 A'=(-1,4)의 y값 4를 직선의 y절편으로 착각"
           },
           {
             "choice": "⑤",
-            "reason": "이동한 점 $B'$의 $y$좌표를 $y$절편으로 착각"
+            "reason": "이동한 B'=(1,8)의 y값 8을 y절편으로 착각"
           }
         ],
         "calculatedGeometryFacts": [
@@ -1128,7 +1531,66 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "originalStemOrIssue": "원본 q02 점의 평행이동 L3 및 이동량 동일 적용 보존. A는 수치/부호, B는 역산·중점·공통량, C는 합성이동·직선·좌표축 조건으로 수학적 사고 확장.",
+        "reverseReadingFinding": "학생이 최종 발문/5지에서 이동 전후·목표량을 확정 가능. A'=(-1,4),B'=(1,8),기울기2, y=2x+6 → y절편6",
+        "decision": "REVISED",
+        "affectedFields": [
+          "review.wrongRoutes",
+          "review.selfRecheck20261012",
+          "existing solutionImage SVG"
+        ],
+        "changedMathRecheck": "학생용 정답/풀이/5지 유지, 4개 오답 수치 정확 대응 확인. 기존 해설의 x/y 계산 및 현재 SVG geometry parity 재계산.",
+        "remainingRisk": "변경 SVG의 실제 브라우저 렌더 NOT_RUN; QID_INCOMPLETE 보존. 별도 GPT 검수와 학생 출시는 NOT_RUN.",
+        "selfRecheck20261012": {
+          "status": "QID_INCOMPLETE",
+          "decision": "REVISED",
+          "reviewRole": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT",
+          "actualAnswer": "④",
+          "independentStudentCalculation": "A'=(-1,4),B'=(1,8),기울기2, y=2x+6 → y절편6",
+          "incorrectOptionCount": 4,
+          "incorrectCalculationEvidence": "review.wrongRoutes",
+          "originalL3": "평행이동",
+          "lockedRPMId": "H1-RPM-225",
+          "originalMathRetained": "동일한 좌표 이동량 적용",
+          "changedThought": "점의 평행이동에서 이동한 직선의 절편 계산",
+          "L1": "도형의 방정식",
+          "L2": "도형의 이동",
+          "L4": "점·직선의 이동",
+          "metaFoundationL3": "점의 평행이동",
+          "metaFoundationL4": "점의 평행이동과 좌표",
+          "PT": "PT_MOVE_LINE_TRANSLATION",
+          "TPL": "TT_LINE_TRANSLATION_EQUATION",
+          "CrossConcept": [
+            "CC_LINE_EQUATION"
+          ],
+          "Condition": [],
+          "Integration": "SEQUENTIAL",
+          "difficulty": {
+            "level": "중",
+            "assessment1to5": 3,
+            "cognitive": "이동량/역이동/결합 조건 판정",
+            "computation": "정수 좌표 1~4번 계산"
+          },
+          "problemSVG": "VISUAL_EXEMPT: 모든 기준점과 목표값이 문장으로 명확히 주어짐",
+          "solutionSVG": "VISUAL_REQUIRED: 도형의 이동의 좌표 대응 및 경우에 따라 중점·직선의 학습 시각화",
+          "actualSVGPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/C2-solution.svg",
+          "svgFileVerified": "YES_FILE_READ",
+          "svgCoordinates": "STATIC_COORDINATE_PARITY_ALL_POINTS",
+          "browserRender": "NOT_RUN",
+          "newVisualCorrections": "SVG_VISUAL_REPAIRED",
+          "defect": "기존 wrongRoutes 중 계산-보기 연결 누락/오류; B1/B2/C1 라벨 겹침, C2 절편 시각 누락은 대상 SVG에서 수정",
+          "repairs": "정확한 오답 4개 수식 및 영향 SVG만 변경",
+          "rechecked": "답 및 4지별 계산/학년 교육과정, 변경 SVG 실제 point(x,y) 좌표 parity",
+          "notExecuted": [
+            "실제 브라우저 SVG 렌더",
+            "후속 독립 GPT 검수",
+            "Consumer/index/main 출시"
+          ],
+          "uncertainty": [
+            "실제 렌더에서 라벨 가독성 및 겹침 최종 확인"
+          ]
+        }
       }
     },
     {
@@ -1215,19 +1677,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "점 $A$의 $x$좌표에 가로 이동량을 적용하고 $B$의 세로좌표만 유지"
+            "reason": "B'가 아닌 A'의 x좌표 -2-2=-4와 B'의 y좌표 5-1=4를 섞어 (-4,4)"
           },
           {
             "choice": "③",
-            "reason": "세로 이동량 $-1$을 $+1$로 잘못 적용"
+            "reason": "수평 h=-2는 맞고 수직 k=-1을 +1로 오산: (6-2,5+1)=(4,6)"
           },
           {
             "choice": "④",
-            "reason": "가로 이동량 $-2$를 $+2$로 잘못 적용"
+            "reason": "수직 k=-1은 맞고 수평 h=-2를 +2로 오산: (6+2,5-1)=(8,4)"
           },
           {
             "choice": "⑤",
-            "reason": "두 이동량의 부호를 모두 반대로 적용"
+            "reason": "양쪽 이동 부호를 모두 반대로 적용: (6+2,5+1)=(8,6)"
           }
         ],
         "calculatedGeometryFacts": [
@@ -1275,7 +1737,65 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "originalStemOrIssue": "원본 q02 점의 평행이동 L3 및 이동량 동일 적용 보존. A는 수치/부호, B는 역산·중점·공통량, C는 합성이동·직선·좌표축 조건으로 수학적 사고 확장.",
+        "reverseReadingFinding": "학생이 최종 발문/5지에서 이동 전후·목표량을 확정 가능. M=(2,3),M' x=0 → h=-2; A' y=0 → k=-1; B'=(4,4)",
+        "decision": "REVISED",
+        "affectedFields": [
+          "review.wrongRoutes",
+          "review.selfRecheck20261012"
+        ],
+        "changedMathRecheck": "학생용 정답/풀이/5지 유지, 4개 오답 수치 정확 대응 확인. 기존 해설의 x/y 계산 및 현재 SVG geometry parity 재계산.",
+        "remainingRisk": "변경 SVG의 실제 브라우저 렌더 NOT_RUN; QID_INCOMPLETE 보존. 별도 GPT 검수와 학생 출시는 NOT_RUN.",
+        "selfRecheck20261012": {
+          "status": "QID_INCOMPLETE",
+          "decision": "REVISED",
+          "reviewRole": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT",
+          "actualAnswer": "②",
+          "independentStudentCalculation": "M=(2,3),M' x=0 → h=-2; A' y=0 → k=-1; B'=(4,4)",
+          "incorrectOptionCount": 4,
+          "incorrectCalculationEvidence": "review.wrongRoutes",
+          "originalL3": "평행이동",
+          "lockedRPMId": "H1-RPM-225",
+          "originalMathRetained": "동일한 좌표 이동량 적용",
+          "changedThought": "중점의 이동과 좌표축 조건으로 이동량을 역결정",
+          "L1": "도형의 방정식",
+          "L2": "도형의 이동",
+          "L4": "점·직선의 이동",
+          "metaFoundationL3": "점의 평행이동",
+          "metaFoundationL4": "점의 평행이동과 좌표",
+          "PT": "PT_MOVE_POINT_TRANSLATION",
+          "TPL": "TT_POINT_TRANSLATION_COORD",
+          "CrossConcept": [
+            "CC_MIDPOINT"
+          ],
+          "Condition": [],
+          "Integration": "SEQUENTIAL",
+          "difficulty": {
+            "level": "중",
+            "assessment1to5": 4,
+            "cognitive": "이동량/역이동/결합 조건 판정",
+            "computation": "정수 좌표 1~4번 계산"
+          },
+          "problemSVG": "VISUAL_EXEMPT: 모든 기준점과 목표값이 문장으로 명확히 주어짐",
+          "solutionSVG": "VISUAL_REQUIRED: 도형의 이동의 좌표 대응 및 경우에 따라 중점·직선의 학습 시각화",
+          "actualSVGPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/C3-solution.svg",
+          "svgFileVerified": "YES_FILE_READ",
+          "svgCoordinates": "STATIC_COORDINATE_PARITY_ALL_POINTS",
+          "browserRender": "NOT_RUN",
+          "newVisualCorrections": "SVG_VISUAL_EXISTING",
+          "defect": "기존 wrongRoutes 중 계산-보기 연결 누락/오류; B1/B2/C1 라벨 겹침, C2 절편 시각 누락은 대상 SVG에서 수정",
+          "repairs": "정확한 오답 4개 수식 및 영향 SVG만 변경",
+          "rechecked": "답 및 4지별 계산/학년 교육과정, 변경 SVG 실제 point(x,y) 좌표 parity",
+          "notExecuted": [
+            "실제 브라우저 SVG 렌더",
+            "후속 독립 GPT 검수",
+            "Consumer/index/main 출시"
+          ],
+          "uncertainty": [
+            "실제 렌더에서 라벨 가독성 및 겹침 최종 확인"
+          ]
+        }
       }
     }
   ]
