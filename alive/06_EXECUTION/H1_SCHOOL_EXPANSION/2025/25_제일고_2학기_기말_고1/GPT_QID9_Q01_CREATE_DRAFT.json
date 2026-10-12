@@ -37,7 +37,7 @@
     "visualPerSurfaceReviewed": "9/9 each",
     "svgCreated": 0,
     "visualExemption": "No diagrammatic spatial/math facts in proposition classification",
-    "authorSelfCheck": "9/9",
+    "authorSelfCheck": "9/9 VERIFIED_20261012_AUTHOR_ONLY",
     "externalQualityReview": "NOT_RUN",
     "studentRelease": "NOT_AUTHORIZED",
     "nextQid": 2,
@@ -45,7 +45,9 @@
     "status": "AUTHOR_DRAFT_ONLY",
     "firstMissingClosureStep": "GPT_OPEN_BOOK_REVIEW",
     "remainingSourceQids": "q02-q22",
-    "remainingCandidatesToDraft": 189
+    "remainingCandidatesToDraft": 189,
+    "selfRecheckStatus": "SELF_RECHECK_COMPLETE",
+    "wrongRouteCalculationCoverage": "36/36"
   },
   "questions": [
     {
@@ -119,19 +121,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "7이 소수라는 참인 문장을 명제가 아닌 것으로 분류"
+            "reason": "7의 약수는 1,7뿐이므로 7은 소수(참 명제). 참인 수문장은 명제가 아니라고 혼동하여 ① 선택"
           },
           {
             "choice": "③",
-            "reason": "모든 정수라는 양화 표현을 열린 변수로 혼동"
+            "reason": "정수 k는 k/1로 유리수, -2=-2/1도 유리수. 음의 정수를 누락하는 분류 오류로 ③ 선택"
           },
           {
             "choice": "④",
-            "reason": "거짓인 문장은 명제가 아니라고 오해"
+            "reason": "10=2×5라 홀수가 아니다(거짓 명제). 거짓 문장을 명제에서 빼는 오류로 ④ 선택"
           },
           {
             "choice": "⑤",
-            "reason": "0은 짝수가 아니라는 오개념 때문에 제외"
+            "reason": "0=2×0이므로 짝수(참 명제). 0을 짝수에서 제외하는 오류로 ⑤ 선택"
           }
         ],
         "problemVisual": {
@@ -146,7 +148,59 @@
         "externalOpenBookReview": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "realEngineRender": "NOT_RUN",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "originalStemOrIssue": "원본 q01의 '명제/조건 구별' Primary L3 유지. 변형의 숫자/양화/집계 구조는 신규 작성. 기출 원본 불변.",
+        "reverseReadingFinding": "최종 학생 발문과 보기만으로 묻는 명제/조건의 구별, 진리값, 답형이 성립함. t=5이면 t+4=9, t=0이면 4≠9. 나머지 ①·③·⑤ 참 명제, ④ 거짓 명제이므로 ②.",
+        "decision": "REVISED",
+        "affectedFields": [
+          "review.wrongRoutes",
+          "review.selfRecheck20261012"
+        ],
+        "changedMathRecheck": "보강한 네 오답경로와 최종 보기를 대조. 학생용 발문·보기·정답·해설/Meta 불변으로 의미 계산 비회귀.",
+        "remainingRisk": "별도 독립 품질검수, student Chrome 렌더, Consumer/main 출시는 미실행",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "decision": "REVISED",
+          "reviewRole": "AUTHOR_ONLY_NOT_INDEPENDENT",
+          "actualAnswer": "②",
+          "correctCalculation": "t=5이면 t+4=9, t=0이면 4≠9. 나머지 ①·③·⑤ 참 명제, ④ 거짓 명제이므로 ②.",
+          "incorrectChoices": [
+            "①",
+            "③",
+            "④",
+            "⑤"
+          ],
+          "incorrectCalculations": "review.wrongRoutes 각 choice reason에 현재 보기와 대조한 수치/논리 오류 계산 보존",
+          "originalThoughtRetained": "원본 RPM Primary L3 '명제와 조건' 및 참거짓이 정해지는 문장 판정",
+          "variantChange": "수치·대상·양화문/집계 질문의 사고 확장",
+          "L1": "집합과 명제",
+          "L2": "명제",
+          "primaryL3": "명제와 조건",
+          "primaryL3Id": "H1-RPM-244",
+          "L4": "명제의 참·거짓",
+          "metaFoundationL4": "명제와 조건의 구별",
+          "PT": "PT_PROPOSITION_JUDGMENT",
+          "TPL": "TPL_PROPOSITION_CONDITION_IDENTIFICATION",
+          "crossConcept": [],
+          "condition": [],
+          "integration": "NONE",
+          "difficultyLearning": "하",
+          "difficultyAssessment": 1,
+          "actualL3Use": "변수 미정/상수·양화 → 참거짓 확정 → 필요한 경우 문장 수 집계",
+          "problemVisual": "EXEMPT — 학생용 그림 조건 없음, 모든 명제·수치가 텍스트에 완결됨",
+          "solutionVisual": "EXEMPT — 실제 결정은 문장별 양화·반례·진리값 계산. 별도 SVG의 신규 수학 관계 이득 없음",
+          "actualSvgGeometry": "NOT_APPLICABLE_NO_REQUIRED_SVG",
+          "render": "NOT_APPLICABLE_NO_SVG",
+          "defect": "기존 4개 오답 설명이 보기별 계산을 완전히 재현하지 못하는 증거 부족",
+          "fix": "review.wrongRoutes 4개 수치/논리 경로 정정; 학생용 및 정식 Meta 불변",
+          "impactRecheck": "해당 UID 학생용 입력·5지·answer·solution·추가 오답경로 재대조",
+          "unexecuted": [
+            "후속 독립 GPT 검수",
+            "실제 학생 브라우저/Consumer 검색·출력",
+            "main 병합·학생 출시"
+          ],
+          "uncertainty": []
+        }
       }
     },
     {
@@ -220,19 +274,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "자연수라는 범위만 정해도 n값이 확정된다고 오해"
+            "reason": "n=3이면 참, n=1이면 거짓. 자연수 범위만으로 n이 정해진다고 착각하여 ① 선택"
           },
           {
             "choice": "②",
-            "reason": "부등식은 언제나 명제라고 혼동"
+            "reason": "x=2이면 x>1 참, x=0이면 거짓. 열린 부등식을 항상 명제로 오인하여 ② 선택"
           },
           {
             "choice": "③",
-            "reason": "방정식의 해가 존재하면 원래 문장도 명제라고 생각"
+            "reason": "a=2이면 a²=4 참, a=0이면 거짓. 방정식에 해가 있다는 사실을 존재명제로 혼동하여 ③ 선택"
           },
           {
             "choice": "⑤",
-            "reason": "m을 풀 수 있다는 이유만으로 열린 문장을 명제로 분류"
+            "reason": "m=3이면 m+2=5 참, m=0이면 거짓. 미정 변수의 해를 구할 수 있으니 명제라고 착각하여 ⑤ 선택"
           }
         ],
         "problemVisual": {
@@ -247,7 +301,59 @@
         "externalOpenBookReview": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "realEngineRender": "NOT_RUN",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "originalStemOrIssue": "원본 q01의 '명제/조건 구별' Primary L3 유지. 변형의 숫자/양화/집계 구조는 신규 작성. 기출 원본 불변.",
+        "reverseReadingFinding": "최종 학생 발문과 보기만으로 묻는 명제/조건의 구별, 진리값, 답형이 성립함. 모든 실수 t의 제곱은 0 이상. ① n=1/3, ② x=0/2, ③ a=0/2, ⑤ m=0/3에서 각각 참거짓 달라져 ④.",
+        "decision": "REVISED",
+        "affectedFields": [
+          "review.wrongRoutes",
+          "review.selfRecheck20261012"
+        ],
+        "changedMathRecheck": "보강한 네 오답경로와 최종 보기를 대조. 학생용 발문·보기·정답·해설/Meta 불변으로 의미 계산 비회귀.",
+        "remainingRisk": "별도 독립 품질검수, student Chrome 렌더, Consumer/main 출시는 미실행",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "decision": "REVISED",
+          "reviewRole": "AUTHOR_ONLY_NOT_INDEPENDENT",
+          "actualAnswer": "④",
+          "correctCalculation": "모든 실수 t의 제곱은 0 이상. ① n=1/3, ② x=0/2, ③ a=0/2, ⑤ m=0/3에서 각각 참거짓 달라져 ④.",
+          "incorrectChoices": [
+            "①",
+            "②",
+            "③",
+            "⑤"
+          ],
+          "incorrectCalculations": "review.wrongRoutes 각 choice reason에 현재 보기와 대조한 수치/논리 오류 계산 보존",
+          "originalThoughtRetained": "원본 RPM Primary L3 '명제와 조건' 및 참거짓이 정해지는 문장 판정",
+          "variantChange": "수치·대상·양화문/집계 질문의 사고 확장",
+          "L1": "집합과 명제",
+          "L2": "명제",
+          "primaryL3": "명제와 조건",
+          "primaryL3Id": "H1-RPM-244",
+          "L4": "명제의 참·거짓",
+          "metaFoundationL4": "명제와 조건의 구별",
+          "PT": "PT_PROPOSITION_JUDGMENT",
+          "TPL": "TPL_PROPOSITION_CONDITION_IDENTIFICATION",
+          "crossConcept": [],
+          "condition": [],
+          "integration": "NONE",
+          "difficultyLearning": "하",
+          "difficultyAssessment": 1,
+          "actualL3Use": "변수 미정/상수·양화 → 참거짓 확정 → 필요한 경우 문장 수 집계",
+          "problemVisual": "EXEMPT — 학생용 그림 조건 없음, 모든 명제·수치가 텍스트에 완결됨",
+          "solutionVisual": "EXEMPT — 실제 결정은 문장별 양화·반례·진리값 계산. 별도 SVG의 신규 수학 관계 이득 없음",
+          "actualSvgGeometry": "NOT_APPLICABLE_NO_REQUIRED_SVG",
+          "render": "NOT_APPLICABLE_NO_SVG",
+          "defect": "기존 4개 오답 설명이 보기별 계산을 완전히 재현하지 못하는 증거 부족",
+          "fix": "review.wrongRoutes 4개 수치/논리 경로 정정; 학생용 및 정식 Meta 불변",
+          "impactRecheck": "해당 UID 학생용 입력·5지·answer·solution·추가 오답경로 재대조",
+          "unexecuted": [
+            "후속 독립 GPT 검수",
+            "실제 학생 브라우저/Consumer 검색·출력",
+            "main 병합·학생 출시"
+          ],
+          "uncertainty": []
+        }
       }
     },
     {
@@ -321,19 +427,19 @@
         "wrongRoutes": [
           {
             "choice": "②",
-            "reason": "존재 표현에도 n이 보이므로 열린 조건이라고 오해"
+            "reason": "정수 n=4에서 4²=16이므로 참인 존재명제다. n이 쓰였다는 이유로 열린 문장이라 오판하여 ② 선택"
           },
           {
             "choice": "③",
-            "reason": "거짓인 6의 소수성 문장은 명제가 아니라고 착각"
+            "reason": "6=2×3이라 소수가 아니므로 거짓인 명제다. 거짓이면 비명제라고 오판하여 ③ 선택"
           },
           {
             "choice": "④",
-            "reason": "일반적인 자연수 표현은 언제나 조건이라고 생각"
+            "reason": "자연수는 모두 정수라는 참인 전칭명제다. '모든 n'도 자유변수라 착각하여 ④ 선택"
           },
           {
             "choice": "⑤",
-            "reason": "거짓 문장을 명제가 아닌 것으로 혼동"
+            "reason": "-1<0이므로 양수가 아니라 거짓인 명제다. 거짓을 비명제로 오판하여 ⑤ 선택"
           }
         ],
         "problemVisual": {
@@ -348,7 +454,59 @@
         "externalOpenBookReview": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "realEngineRender": "NOT_RUN",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "originalStemOrIssue": "원본 q01의 '명제/조건 구별' Primary L3 유지. 변형의 숫자/양화/집계 구조는 신규 작성. 기출 원본 불변.",
+        "reverseReadingFinding": "최종 학생 발문과 보기만으로 묻는 명제/조건의 구별, 진리값, 답형이 성립함. u=4이면 16, u=0이면 0. ② 존재 참, ③ 6=2×3 거짓, ④ 참, ⑤ -1<0 거짓이므로 ①.",
+        "decision": "REVISED",
+        "affectedFields": [
+          "review.wrongRoutes",
+          "review.selfRecheck20261012"
+        ],
+        "changedMathRecheck": "보강한 네 오답경로와 최종 보기를 대조. 학생용 발문·보기·정답·해설/Meta 불변으로 의미 계산 비회귀.",
+        "remainingRisk": "별도 독립 품질검수, student Chrome 렌더, Consumer/main 출시는 미실행",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "decision": "REVISED",
+          "reviewRole": "AUTHOR_ONLY_NOT_INDEPENDENT",
+          "actualAnswer": "①",
+          "correctCalculation": "u=4이면 16, u=0이면 0. ② 존재 참, ③ 6=2×3 거짓, ④ 참, ⑤ -1<0 거짓이므로 ①.",
+          "incorrectChoices": [
+            "②",
+            "③",
+            "④",
+            "⑤"
+          ],
+          "incorrectCalculations": "review.wrongRoutes 각 choice reason에 현재 보기와 대조한 수치/논리 오류 계산 보존",
+          "originalThoughtRetained": "원본 RPM Primary L3 '명제와 조건' 및 참거짓이 정해지는 문장 판정",
+          "variantChange": "수치·대상·양화문/집계 질문의 사고 확장",
+          "L1": "집합과 명제",
+          "L2": "명제",
+          "primaryL3": "명제와 조건",
+          "primaryL3Id": "H1-RPM-244",
+          "L4": "명제의 참·거짓",
+          "metaFoundationL4": "명제와 조건의 구별",
+          "PT": "PT_PROPOSITION_JUDGMENT",
+          "TPL": "TPL_PROPOSITION_CONDITION_IDENTIFICATION",
+          "crossConcept": [],
+          "condition": [],
+          "integration": "NONE",
+          "difficultyLearning": "하",
+          "difficultyAssessment": 1,
+          "actualL3Use": "변수 미정/상수·양화 → 참거짓 확정 → 필요한 경우 문장 수 집계",
+          "problemVisual": "EXEMPT — 학생용 그림 조건 없음, 모든 명제·수치가 텍스트에 완결됨",
+          "solutionVisual": "EXEMPT — 실제 결정은 문장별 양화·반례·진리값 계산. 별도 SVG의 신규 수학 관계 이득 없음",
+          "actualSvgGeometry": "NOT_APPLICABLE_NO_REQUIRED_SVG",
+          "render": "NOT_APPLICABLE_NO_SVG",
+          "defect": "기존 4개 오답 설명이 보기별 계산을 완전히 재현하지 못하는 증거 부족",
+          "fix": "review.wrongRoutes 4개 수치/논리 경로 정정; 학생용 및 정식 Meta 불변",
+          "impactRecheck": "해당 UID 학생용 입력·5지·answer·solution·추가 오답경로 재대조",
+          "unexecuted": [
+            "후속 독립 GPT 검수",
+            "실제 학생 브라우저/Consumer 검색·출력",
+            "main 병합·학생 출시"
+          ],
+          "uncertainty": []
+        }
       }
     },
     {
@@ -422,19 +580,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "ㄴ만 세고 전체양화와 거짓 명제를 빠뜨림"
+            "reason": "ㄴ n=2에서 2²=4만 명제로 세고 ㄷ과 ㅁ을 놓치면 1개로 ①"
           },
           {
             "choice": "②",
-            "reason": "거짓인 ㅁ을 명제에서 제외하여 두 개로 계산"
+            "reason": "ㄴ·ㄷ을 명제로 세되 거짓인 ㅁ(6=2×3)을 빼면 2개로 ②"
           },
           {
             "choice": "④",
-            "reason": "열린 문장 ㄹ을 명제로 추가하여 네 개로 계산"
+            "reason": "원래 ㄴ·ㄷ·ㅁ 세 개에 열린 ㄹ(k는 소수)을 넣으면 3+1=4로 ④"
           },
           {
             "choice": "⑤",
-            "reason": "열린 ㄱ과 ㄹ을 명제로 포함하여 다섯 개로 계산"
+            "reason": "열린 ㄱ(m=2 참,m=0 거짓)과 ㄹ도 명제로 포함하면 3+2=5로 ⑤"
           }
         ],
         "problemVisual": {
@@ -449,7 +607,59 @@
         "externalOpenBookReview": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "realEngineRender": "NOT_RUN",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "originalStemOrIssue": "원본 q01의 '명제/조건 구별' Primary L3 유지. 변형의 숫자/양화/집계 구조는 신규 작성. 기출 원본 불변.",
+        "reverseReadingFinding": "최종 학생 발문과 보기만으로 묻는 명제/조건의 구별, 진리값, 답형이 성립함. ㄴ(n=2 존재), ㄷ(모든 실수 제곱+1>0), ㅁ(6 소수는 거짓) 3개는 명제; ㄱ·ㄹ은 열린 문장. ③.",
+        "decision": "REVISED",
+        "affectedFields": [
+          "review.wrongRoutes",
+          "review.selfRecheck20261012"
+        ],
+        "changedMathRecheck": "보강한 네 오답경로와 최종 보기를 대조. 학생용 발문·보기·정답·해설/Meta 불변으로 의미 계산 비회귀.",
+        "remainingRisk": "별도 독립 품질검수, student Chrome 렌더, Consumer/main 출시는 미실행",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "decision": "REVISED",
+          "reviewRole": "AUTHOR_ONLY_NOT_INDEPENDENT",
+          "actualAnswer": "③",
+          "correctCalculation": "ㄴ(n=2 존재), ㄷ(모든 실수 제곱+1>0), ㅁ(6 소수는 거짓) 3개는 명제; ㄱ·ㄹ은 열린 문장. ③.",
+          "incorrectChoices": [
+            "①",
+            "②",
+            "④",
+            "⑤"
+          ],
+          "incorrectCalculations": "review.wrongRoutes 각 choice reason에 현재 보기와 대조한 수치/논리 오류 계산 보존",
+          "originalThoughtRetained": "원본 RPM Primary L3 '명제와 조건' 및 참거짓이 정해지는 문장 판정",
+          "variantChange": "수치·대상·양화문/집계 질문의 사고 확장",
+          "L1": "집합과 명제",
+          "L2": "명제",
+          "primaryL3": "명제와 조건",
+          "primaryL3Id": "H1-RPM-244",
+          "L4": "명제의 참·거짓",
+          "metaFoundationL4": "명제와 조건의 구별",
+          "PT": "PT_PROPOSITION_JUDGMENT",
+          "TPL": "TPL_PROPOSITION_CONDITION_IDENTIFICATION",
+          "crossConcept": [],
+          "condition": [],
+          "integration": "SEQUENTIAL",
+          "difficultyLearning": "중",
+          "difficultyAssessment": 2,
+          "actualL3Use": "변수 미정/상수·양화 → 참거짓 확정 → 필요한 경우 문장 수 집계",
+          "problemVisual": "EXEMPT — 학생용 그림 조건 없음, 모든 명제·수치가 텍스트에 완결됨",
+          "solutionVisual": "EXEMPT — 실제 결정은 문장별 양화·반례·진리값 계산. 별도 SVG의 신규 수학 관계 이득 없음",
+          "actualSvgGeometry": "NOT_APPLICABLE_NO_REQUIRED_SVG",
+          "render": "NOT_APPLICABLE_NO_SVG",
+          "defect": "기존 4개 오답 설명이 보기별 계산을 완전히 재현하지 못하는 증거 부족",
+          "fix": "review.wrongRoutes 4개 수치/논리 경로 정정; 학생용 및 정식 Meta 불변",
+          "impactRecheck": "해당 UID 학생용 입력·5지·answer·solution·추가 오답경로 재대조",
+          "unexecuted": [
+            "후속 독립 GPT 검수",
+            "실제 학생 브라우저/Consumer 검색·출력",
+            "main 병합·학생 출시"
+          ],
+          "uncertainty": []
+        }
       }
     },
     {
@@ -523,19 +733,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "x를 2로 지정해도 문자 표기가 있으면 조건이라고 오해"
+            "reason": "x=2로 고정하면 2²=4로 참인 명제. 문자 x가 보인다는 이유로 비명제라 선택하면 ①"
           },
           {
             "choice": "②",
-            "reason": "거짓인 모든-명제는 명제가 아니라고 착각"
+            "reason": "모든 실수 x에 대한 문장은 x=0에서 0²≠4인 거짓 명제. 거짓을 비명제로 혼동하면 ②"
           },
           {
             "choice": "③",
-            "reason": "해가 둘이기 때문에 존재명제 진리값이 미정이라고 생각"
+            "reason": "정수 x=2 또는 -2가 존재해 x²=4이므로 참인 명제. 존재양화를 빠뜨리면 ③"
           },
           {
             "choice": "④",
-            "reason": "x=-2 고정식은 문자식이라는 이유로 조건으로 분류"
+            "reason": "x=-2에서 (-2)²=4인 참인 명제. 문자만 보고 자유변수로 오판하면 ④"
           }
         ],
         "problemVisual": {
@@ -550,7 +760,59 @@
         "externalOpenBookReview": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "realEngineRender": "NOT_RUN",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "originalStemOrIssue": "원본 q01의 '명제/조건 구별' Primary L3 유지. 변형의 숫자/양화/집계 구조는 신규 작성. 기출 원본 불변.",
+        "reverseReadingFinding": "최종 학생 발문과 보기만으로 묻는 명제/조건의 구별, 진리값, 답형이 성립함. x=2이면 x²=4, x=0이면 거짓. ⑤는 범위만 지정; 나머지는 상수/양화로 닫힌 명제. ⑤.",
+        "decision": "REVISED",
+        "affectedFields": [
+          "review.wrongRoutes",
+          "review.selfRecheck20261012"
+        ],
+        "changedMathRecheck": "보강한 네 오답경로와 최종 보기를 대조. 학생용 발문·보기·정답·해설/Meta 불변으로 의미 계산 비회귀.",
+        "remainingRisk": "별도 독립 품질검수, student Chrome 렌더, Consumer/main 출시는 미실행",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "decision": "REVISED",
+          "reviewRole": "AUTHOR_ONLY_NOT_INDEPENDENT",
+          "actualAnswer": "⑤",
+          "correctCalculation": "x=2이면 x²=4, x=0이면 거짓. ⑤는 범위만 지정; 나머지는 상수/양화로 닫힌 명제. ⑤.",
+          "incorrectChoices": [
+            "①",
+            "②",
+            "③",
+            "④"
+          ],
+          "incorrectCalculations": "review.wrongRoutes 각 choice reason에 현재 보기와 대조한 수치/논리 오류 계산 보존",
+          "originalThoughtRetained": "원본 RPM Primary L3 '명제와 조건' 및 참거짓이 정해지는 문장 판정",
+          "variantChange": "수치·대상·양화문/집계 질문의 사고 확장",
+          "L1": "집합과 명제",
+          "L2": "명제",
+          "primaryL3": "명제와 조건",
+          "primaryL3Id": "H1-RPM-244",
+          "L4": "명제의 참·거짓",
+          "metaFoundationL4": "명제와 조건의 구별",
+          "PT": "PT_PROPOSITION_JUDGMENT",
+          "TPL": "TPL_PROPOSITION_CONDITION_IDENTIFICATION",
+          "crossConcept": [],
+          "condition": [],
+          "integration": "NONE",
+          "difficultyLearning": "중",
+          "difficultyAssessment": 2,
+          "actualL3Use": "변수 미정/상수·양화 → 참거짓 확정 → 필요한 경우 문장 수 집계",
+          "problemVisual": "EXEMPT — 학생용 그림 조건 없음, 모든 명제·수치가 텍스트에 완결됨",
+          "solutionVisual": "EXEMPT — 실제 결정은 문장별 양화·반례·진리값 계산. 별도 SVG의 신규 수학 관계 이득 없음",
+          "actualSvgGeometry": "NOT_APPLICABLE_NO_REQUIRED_SVG",
+          "render": "NOT_APPLICABLE_NO_SVG",
+          "defect": "기존 4개 오답 설명이 보기별 계산을 완전히 재현하지 못하는 증거 부족",
+          "fix": "review.wrongRoutes 4개 수치/논리 경로 정정; 학생용 및 정식 Meta 불변",
+          "impactRecheck": "해당 UID 학생용 입력·5지·answer·solution·추가 오답경로 재대조",
+          "unexecuted": [
+            "후속 독립 GPT 검수",
+            "실제 학생 브라우저/Consumer 검색·출력",
+            "main 병합·학생 출시"
+          ],
+          "uncertainty": []
+        }
       }
     },
     {
@@ -624,19 +886,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "ㄴ만 참으로 보고 나머지 하나를 명제 수에서도 누락"
+            "reason": "정답 (3,2)에서 거짓 명제 ㄷ을 제외하여 (2,2), 또 참인 ㄹ을 거짓으로 오판하면 (2,1)로 ①(두 오류)"
           },
           {
             "choice": "②",
-            "reason": "거짓인 ㄷ을 명제가 아니라고 잘못 제외"
+            "reason": "명제 ㄴ·ㄷ·ㄹ 중 ㄷ은 n=0에서 0²≠16이라 거짓 명제인데 아예 제외하면 (2,2)로 ②"
           },
           {
             "choice": "③",
-            "reason": "ㄴ 또는 ㄹ을 거짓으로 잘못 계산"
+            "reason": "명제 셋 유지, 9가 홀수인 ㄹ을 거짓이라고 오판하면 참 ㄴ만 남아 (3,1)로 ③"
           },
           {
             "choice": "⑤",
-            "reason": "열린 문장 ㄱ 또는 ㅁ 하나를 명제로 더 셈"
+            "reason": "열린 ㄱ을 z=0에서 거짓으로 고정한 명제라 잘못 세면 명제 4개, 참 ㄴ·ㄹ 2개여서 (4,2)로 ⑤"
           }
         ],
         "problemVisual": {
@@ -651,7 +913,59 @@
         "externalOpenBookReview": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "realEngineRender": "NOT_RUN",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "originalStemOrIssue": "원본 q01의 '명제/조건 구별' Primary L3 유지. 변형의 숫자/양화/집계 구조는 신규 작성. 기출 원본 불변.",
+        "reverseReadingFinding": "최종 학생 발문과 보기만으로 묻는 명제/조건의 구별, 진리값, 답형이 성립함. ㄴ(n=4) 참, ㄷ(n=0 반례) 거짓, ㄹ(9 홀수) 참이므로 명제 3개·참 2개. (3,2), ④.",
+        "decision": "REVISED",
+        "affectedFields": [
+          "review.wrongRoutes",
+          "review.selfRecheck20261012"
+        ],
+        "changedMathRecheck": "보강한 네 오답경로와 최종 보기를 대조. 학생용 발문·보기·정답·해설/Meta 불변으로 의미 계산 비회귀.",
+        "remainingRisk": "별도 독립 품질검수, student Chrome 렌더, Consumer/main 출시는 미실행",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "decision": "REVISED",
+          "reviewRole": "AUTHOR_ONLY_NOT_INDEPENDENT",
+          "actualAnswer": "④",
+          "correctCalculation": "ㄴ(n=4) 참, ㄷ(n=0 반례) 거짓, ㄹ(9 홀수) 참이므로 명제 3개·참 2개. (3,2), ④.",
+          "incorrectChoices": [
+            "①",
+            "②",
+            "③",
+            "⑤"
+          ],
+          "incorrectCalculations": "review.wrongRoutes 각 choice reason에 현재 보기와 대조한 수치/논리 오류 계산 보존",
+          "originalThoughtRetained": "원본 RPM Primary L3 '명제와 조건' 및 참거짓이 정해지는 문장 판정",
+          "variantChange": "수치·대상·양화문/집계 질문의 사고 확장",
+          "L1": "집합과 명제",
+          "L2": "명제",
+          "primaryL3": "명제와 조건",
+          "primaryL3Id": "H1-RPM-244",
+          "L4": "명제의 참·거짓",
+          "metaFoundationL4": "명제와 조건의 구별",
+          "PT": "PT_PROPOSITION_JUDGMENT",
+          "TPL": "TPL_PROPOSITION_CONDITION_IDENTIFICATION",
+          "crossConcept": [],
+          "condition": [],
+          "integration": "SEQUENTIAL",
+          "difficultyLearning": "중",
+          "difficultyAssessment": 3,
+          "actualL3Use": "변수 미정/상수·양화 → 참거짓 확정 → 필요한 경우 문장 수 집계",
+          "problemVisual": "EXEMPT — 학생용 그림 조건 없음, 모든 명제·수치가 텍스트에 완결됨",
+          "solutionVisual": "EXEMPT — 실제 결정은 문장별 양화·반례·진리값 계산. 별도 SVG의 신규 수학 관계 이득 없음",
+          "actualSvgGeometry": "NOT_APPLICABLE_NO_REQUIRED_SVG",
+          "render": "NOT_APPLICABLE_NO_SVG",
+          "defect": "기존 4개 오답 설명이 보기별 계산을 완전히 재현하지 못하는 증거 부족",
+          "fix": "review.wrongRoutes 4개 수치/논리 경로 정정; 학생용 및 정식 Meta 불변",
+          "impactRecheck": "해당 UID 학생용 입력·5지·answer·solution·추가 오답경로 재대조",
+          "unexecuted": [
+            "후속 독립 GPT 검수",
+            "실제 학생 브라우저/Consumer 검색·출력",
+            "main 병합·학생 출시"
+          ],
+          "uncertainty": []
+        }
       }
     },
     {
@@ -727,19 +1041,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "ㄹ만 명제로 보고 ㄴ과 ㅁ을 누락"
+            "reason": "A={-2,0,2}의 제곱은 4,0,4. ㄹ만 참이라 세고 ㄴ·ㅁ을 누락하면 1개로 ①"
           },
           {
             "choice": "②",
-            "reason": "ㅁ을 모든 x에 대한 주장으로 잘못 해석하여 제외"
+            "reason": "ㄴ·ㄹ은 참. '어떤 x'인 ㅁ을 '모든 x'로 오독해 0²≠4를 반례로 제외하면 2개로 ②"
           },
           {
             "choice": "④",
-            "reason": "열린 문장 ㄱ을 참인 명제로 포함"
+            "reason": "ㄴ·ㄹ·ㅁ 3개에 열린 ㄱ(x∈A)을 특정 원소의 참 명제로 잘못 포함하면 3+1=4로 ④"
           },
           {
             "choice": "⑤",
-            "reason": "열린 ㄱ과 거짓인 ㄷ도 참으로 포함"
+            "reason": "ㄴ·ㄹ·ㅁ 3개에 열린 ㄱ도 참으로, x²=3을 만족하는 원소 없는 ㄷ도 참으로 오판하면 3+1+1=5로 ⑤(두 오류)"
           }
         ],
         "problemVisual": {
@@ -754,7 +1068,61 @@
         "externalOpenBookReview": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "realEngineRender": "NOT_RUN",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "originalStemOrIssue": "원본 q01의 '명제/조건 구별' Primary L3 유지. 변형의 숫자/양화/집계 구조는 신규 작성. 기출 원본 불변.",
+        "reverseReadingFinding": "최종 학생 발문과 보기만으로 묻는 명제/조건의 구별, 진리값, 답형이 성립함. A의 제곱값 4,0,4. ㄴ·ㄹ·ㅁ 참, ㄷ 거짓, ㄱ 자유변수 남아 비명제. 3개, ③.",
+        "decision": "REVISED",
+        "affectedFields": [
+          "review.wrongRoutes",
+          "review.selfRecheck20261012"
+        ],
+        "changedMathRecheck": "보강한 네 오답경로와 최종 보기를 대조. 학생용 발문·보기·정답·해설/Meta 불변으로 의미 계산 비회귀.",
+        "remainingRisk": "별도 독립 품질검수, student Chrome 렌더, Consumer/main 출시는 미실행",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "decision": "REVISED",
+          "reviewRole": "AUTHOR_ONLY_NOT_INDEPENDENT",
+          "actualAnswer": "③",
+          "correctCalculation": "A의 제곱값 4,0,4. ㄴ·ㄹ·ㅁ 참, ㄷ 거짓, ㄱ 자유변수 남아 비명제. 3개, ③.",
+          "incorrectChoices": [
+            "①",
+            "②",
+            "④",
+            "⑤"
+          ],
+          "incorrectCalculations": "review.wrongRoutes 각 choice reason에 현재 보기와 대조한 수치/논리 오류 계산 보존",
+          "originalThoughtRetained": "원본 RPM Primary L3 '명제와 조건' 및 참거짓이 정해지는 문장 판정",
+          "variantChange": "수치·대상·양화문/집계 질문의 사고 확장",
+          "L1": "집합과 명제",
+          "L2": "명제",
+          "primaryL3": "명제와 조건",
+          "primaryL3Id": "H1-RPM-244",
+          "L4": "명제의 참·거짓",
+          "metaFoundationL4": "명제와 조건의 구별",
+          "PT": "PT_PROPOSITION_JUDGMENT",
+          "TPL": "TPL_PROPOSITION_CONDITION_IDENTIFICATION",
+          "crossConcept": [],
+          "condition": [
+            "COND_RANGE"
+          ],
+          "integration": "SEQUENTIAL",
+          "difficultyLearning": "중",
+          "difficultyAssessment": 3,
+          "actualL3Use": "변수 미정/상수·양화 → 참거짓 확정 → 필요한 경우 문장 수 집계",
+          "problemVisual": "EXEMPT — 학생용 그림 조건 없음, 모든 명제·수치가 텍스트에 완결됨",
+          "solutionVisual": "EXEMPT — 실제 결정은 문장별 양화·반례·진리값 계산. 별도 SVG의 신규 수학 관계 이득 없음",
+          "actualSvgGeometry": "NOT_APPLICABLE_NO_REQUIRED_SVG",
+          "render": "NOT_APPLICABLE_NO_SVG",
+          "defect": "기존 4개 오답 설명이 보기별 계산을 완전히 재현하지 못하는 증거 부족",
+          "fix": "review.wrongRoutes 4개 수치/논리 경로 정정; 학생용 및 정식 Meta 불변",
+          "impactRecheck": "해당 UID 학생용 입력·5지·answer·solution·추가 오답경로 재대조",
+          "unexecuted": [
+            "후속 독립 GPT 검수",
+            "실제 학생 브라우저/Consumer 검색·출력",
+            "main 병합·학생 출시"
+          ],
+          "uncertainty": []
+        }
       }
     },
     {
@@ -828,19 +1196,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "두 변수 모두 정해졌어도 변수 문자가 보여서 조건이라고 판단"
+            "reason": "(x,y)=(2,3)이 고정돼 2+3=5인 참 명제인데 문자 표기만으로 비명제라 오인하면 ①"
           },
           {
             "choice": "②",
-            "reason": "모든 쌍에서 참이 아니라는 이유로 명제가 아니라고 오해"
+            "reason": "모든 실수쌍 주장에 (0,0)을 넣으면 0≠5로 거짓 명제인데 거짓을 비명제로 오인하면 ②"
           },
           {
             "choice": "③",
-            "reason": "만족하는 순서쌍이 여러 개면 진리값이 미정이라고 착각"
+            "reason": "실수쌍 (2,3)이 존재해 2+3=5인 참 명제인데 여러 해가 있음을 자유변수로 오판하면 ③"
           },
           {
             "choice": "④",
-            "reason": "x=0이라는 값 때문에 이미 완성된 등식을 조건으로 혼동"
+            "reason": "(x,y)=(0,5) 고정으로 0+5=5인 참 명제인데 문자 기호만으로 미정이라 착각하면 ④"
           }
         ],
         "problemVisual": {
@@ -855,7 +1223,59 @@
         "externalOpenBookReview": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "realEngineRender": "NOT_RUN",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "originalStemOrIssue": "원본 q01의 '명제/조건 구별' Primary L3 유지. 변형의 숫자/양화/집계 구조는 신규 작성. 기출 원본 불변.",
+        "reverseReadingFinding": "최종 학생 발문과 보기만으로 묻는 명제/조건의 구별, 진리값, 답형이 성립함. ⑤의 x=2만 고정, y=3일 때 참·y=0일 때 거짓. ①·④ 고정 참, ② 전칭 거짓, ③ 존재 참. ⑤.",
+        "decision": "REVISED",
+        "affectedFields": [
+          "review.wrongRoutes",
+          "review.selfRecheck20261012"
+        ],
+        "changedMathRecheck": "보강한 네 오답경로와 최종 보기를 대조. 학생용 발문·보기·정답·해설/Meta 불변으로 의미 계산 비회귀.",
+        "remainingRisk": "별도 독립 품질검수, student Chrome 렌더, Consumer/main 출시는 미실행",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "decision": "REVISED",
+          "reviewRole": "AUTHOR_ONLY_NOT_INDEPENDENT",
+          "actualAnswer": "⑤",
+          "correctCalculation": "⑤의 x=2만 고정, y=3일 때 참·y=0일 때 거짓. ①·④ 고정 참, ② 전칭 거짓, ③ 존재 참. ⑤.",
+          "incorrectChoices": [
+            "①",
+            "②",
+            "③",
+            "④"
+          ],
+          "incorrectCalculations": "review.wrongRoutes 각 choice reason에 현재 보기와 대조한 수치/논리 오류 계산 보존",
+          "originalThoughtRetained": "원본 RPM Primary L3 '명제와 조건' 및 참거짓이 정해지는 문장 판정",
+          "variantChange": "수치·대상·양화문/집계 질문의 사고 확장",
+          "L1": "집합과 명제",
+          "L2": "명제",
+          "primaryL3": "명제와 조건",
+          "primaryL3Id": "H1-RPM-244",
+          "L4": "명제의 참·거짓",
+          "metaFoundationL4": "명제와 조건의 구별",
+          "PT": "PT_PROPOSITION_JUDGMENT",
+          "TPL": "TPL_PROPOSITION_CONDITION_IDENTIFICATION",
+          "crossConcept": [],
+          "condition": [],
+          "integration": "CASE_BRANCH",
+          "difficultyLearning": "중",
+          "difficultyAssessment": 3,
+          "actualL3Use": "변수 미정/상수·양화 → 참거짓 확정 → 필요한 경우 문장 수 집계",
+          "problemVisual": "EXEMPT — 학생용 그림 조건 없음, 모든 명제·수치가 텍스트에 완결됨",
+          "solutionVisual": "EXEMPT — 실제 결정은 문장별 양화·반례·진리값 계산. 별도 SVG의 신규 수학 관계 이득 없음",
+          "actualSvgGeometry": "NOT_APPLICABLE_NO_REQUIRED_SVG",
+          "render": "NOT_APPLICABLE_NO_SVG",
+          "defect": "기존 4개 오답 설명이 보기별 계산을 완전히 재현하지 못하는 증거 부족",
+          "fix": "review.wrongRoutes 4개 수치/논리 경로 정정; 학생용 및 정식 Meta 불변",
+          "impactRecheck": "해당 UID 학생용 입력·5지·answer·solution·추가 오답경로 재대조",
+          "unexecuted": [
+            "후속 독립 GPT 검수",
+            "실제 학생 브라우저/Consumer 검색·출력",
+            "main 병합·학생 출시"
+          ],
+          "uncertainty": []
+        }
       }
     },
     {
@@ -931,19 +1351,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "거짓인 ㄷ 또는 ㄹ 중 하나를 참이라고 판단"
+            "reason": "명제 네 개 유지, 5가 짝수라는 ㄹ을 참으로 오판하면 거짓 ㄷ 하나로 (4,1), ①"
           },
           {
             "choice": "③",
-            "reason": "참인 ㄴ 또는 ㅂ 중 하나를 거짓이라고 판단"
+            "reason": "(-1)²=-1로 부호를 잘못 계산하여 참인 ㄴ을 거짓으로 세면 거짓 ㄴ·ㄷ·ㄹ 세 개로 (4,3), ③"
           },
           {
             "choice": "④",
-            "reason": "열린 ㄱ을 명제로 추가하고 거짓인 하나를 참으로 오판"
+            "reason": "열린 ㄱ을 x=3인 참 명제로 추가하여 a=5, 거짓인 ㄹ을 참으로 오판해 b=1이면 (5,1), ④(두 오류)"
           },
           {
             "choice": "⑤",
-            "reason": "열린 ㄱ 또는 ㅁ을 명제로 추가"
+            "reason": "열린 ㄱ을 x=3인 참 명제로 추가해 a=5, 거짓 ㄷ·ㄹ 2개를 유지하면 (5,2), ⑤"
           }
         ],
         "problemVisual": {
@@ -958,7 +1378,61 @@
         "externalOpenBookReview": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "realEngineRender": "NOT_RUN",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "originalStemOrIssue": "원본 q01의 '명제/조건 구별' Primary L3 유지. 변형의 숫자/양화/집계 구조는 신규 작성. 기출 원본 불변.",
+        "reverseReadingFinding": "최종 학생 발문과 보기만으로 묻는 명제/조건의 구별, 진리값, 답형이 성립함. 명제 ㄴ 참, ㄷ 거짓(자연수 제곱2 불가), ㄹ 거짓(5 홀수), ㅂ 참(z=3). ㄱ·ㅁ 미정. (4,2), ②.",
+        "decision": "REVISED",
+        "affectedFields": [
+          "review.wrongRoutes",
+          "review.selfRecheck20261012"
+        ],
+        "changedMathRecheck": "보강한 네 오답경로와 최종 보기를 대조. 학생용 발문·보기·정답·해설/Meta 불변으로 의미 계산 비회귀.",
+        "remainingRisk": "별도 독립 품질검수, student Chrome 렌더, Consumer/main 출시는 미실행",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "decision": "REVISED",
+          "reviewRole": "AUTHOR_ONLY_NOT_INDEPENDENT",
+          "actualAnswer": "②",
+          "correctCalculation": "명제 ㄴ 참, ㄷ 거짓(자연수 제곱2 불가), ㄹ 거짓(5 홀수), ㅂ 참(z=3). ㄱ·ㅁ 미정. (4,2), ②.",
+          "incorrectChoices": [
+            "①",
+            "③",
+            "④",
+            "⑤"
+          ],
+          "incorrectCalculations": "review.wrongRoutes 각 choice reason에 현재 보기와 대조한 수치/논리 오류 계산 보존",
+          "originalThoughtRetained": "원본 RPM Primary L3 '명제와 조건' 및 참거짓이 정해지는 문장 판정",
+          "variantChange": "수치·대상·양화문/집계 질문의 사고 확장",
+          "L1": "집합과 명제",
+          "L2": "명제",
+          "primaryL3": "명제와 조건",
+          "primaryL3Id": "H1-RPM-244",
+          "L4": "명제의 참·거짓",
+          "metaFoundationL4": "명제와 조건의 구별",
+          "PT": "PT_PROPOSITION_JUDGMENT",
+          "TPL": "TPL_PROPOSITION_CONDITION_IDENTIFICATION",
+          "crossConcept": [],
+          "condition": [
+            "COND_NATURAL_NUMBER"
+          ],
+          "integration": "SEQUENTIAL",
+          "difficultyLearning": "중",
+          "difficultyAssessment": 3,
+          "actualL3Use": "변수 미정/상수·양화 → 참거짓 확정 → 필요한 경우 문장 수 집계",
+          "problemVisual": "EXEMPT — 학생용 그림 조건 없음, 모든 명제·수치가 텍스트에 완결됨",
+          "solutionVisual": "EXEMPT — 실제 결정은 문장별 양화·반례·진리값 계산. 별도 SVG의 신규 수학 관계 이득 없음",
+          "actualSvgGeometry": "NOT_APPLICABLE_NO_REQUIRED_SVG",
+          "render": "NOT_APPLICABLE_NO_SVG",
+          "defect": "기존 4개 오답 설명이 보기별 계산을 완전히 재현하지 못하는 증거 부족",
+          "fix": "review.wrongRoutes 4개 수치/논리 경로 정정; 학생용 및 정식 Meta 불변",
+          "impactRecheck": "해당 UID 학생용 입력·5지·answer·solution·추가 오답경로 재대조",
+          "unexecuted": [
+            "후속 독립 GPT 검수",
+            "실제 학생 브라우저/Consumer 검색·출력",
+            "main 병합·학생 출시"
+          ],
+          "uncertainty": []
+        }
       }
     }
   ]
