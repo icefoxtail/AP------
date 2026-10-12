@@ -89,6 +89,28 @@ jobs:
           node archive/tools/verify-archive-registration.mjs
           git diff --check
 
+      - name: Set up real Chrome for Jeil print QA
+        if: github.event_name == 'pull_request' && github.head_ref == 'work/review-25-jeil-h1-2final-legacy22-20261012'
+        uses: browser-actions/setup-chrome@v1
+        id: jeil_chrome
+        with:
+          chrome-version: stable
+
+      - name: Verify Jeil exam, answer, solution Chrome print
+        if: github.event_name == 'pull_request' && github.head_ref == 'work/review-25-jeil-h1-2final-legacy22-20261012'
+        env:
+          CHROME_BIN: ${{ steps.jeil_chrome.outputs.chrome-path }}
+          JEIL_CHROME_OUT: ${{ runner.temp }}/jeil-chrome-print
+        run: node tools/check-jeil-legacy-similar-chrome.cjs
+
+      - name: Upload Jeil Chrome print proof
+        if: always() && github.event_name == 'pull_request' && github.head_ref == 'work/review-25-jeil-h1-2final-legacy22-20261012'
+        uses: actions/upload-artifact@v4
+        with:
+          name: jeil-legacy-similar-chrome-print
+          path: ${{ runner.temp }}/jeil-chrome-print/
+          if-no-files-found: warn
+
       - name: Guard generated scope
         shell: bash
         run: |
