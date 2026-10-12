@@ -19822,6 +19822,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "original/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2.js",
+      "school": "순천여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2025,
+      "semester": "2",
+      "examType": "final",
+      "subject": "공통수학2",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "H22-C2-06",
+      "rangeStartUnit": "명제",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-C2-09",
+      "rangeEndUnit": "무리함수",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-06",
+          "rangeStartUnit": "명제",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-C2-09",
+          "rangeEndUnit": "무리함수",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
     }
   ]
 };
