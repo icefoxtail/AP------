@@ -10258,6 +10258,37 @@ window.mainDB = {
       "primaryStandardCourse": "수학(상)"
     },
     {
+      "file": "original/high/h1/1mid/23_순천여고_1학기_중간_고1_기출.js",
+      "school": "순천여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2023,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "공통수학1",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H22-C-02",
+      "rangeStartUnit": "항등식과 나머지 정리",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-C-06",
+      "rangeEndUnit": "여러 가지 방정식과 부등식",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-02",
+          "rangeStartUnit": "항등식과 나머지 정리",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-C-06",
+          "rangeEndUnit": "여러 가지 방정식과 부등식",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "공통수학1"
+    },
+    {
       "file": "original/high/h1/2mid/23_순천여고_2학기_중간_고1_기출.js",
       "school": "순천여고",
       "topic": "",
@@ -14066,6 +14097,37 @@ window.mainDB = {
       "primaryStandardCourse": "수학(상)"
     },
     {
+      "file": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2021,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "공통수학1",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H22-C-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C-06",
+      "rangeEndUnit": "여러 가지 방정식과 부등식",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C-06",
+          "rangeEndUnit": "여러 가지 방정식과 부등식",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "공통수학1"
+    },
+    {
       "file": "original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js",
       "school": "금당고",
       "topic": "",
@@ -15846,6 +15908,37 @@ window.mainDB = {
           "rangeEndUnitKey": "H15-SA-05",
           "rangeEndUnit": "이차방정식",
           "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
+      "file": "original/high/h1/1mid/20_순천고_1학기_중간_고1_기출.js",
+      "school": "순천고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2020,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H15-SA-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SA-09",
+      "rangeEndUnit": "평면좌표",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SA-09",
+          "rangeEndUnit": "평면좌표",
+          "rangeEndUnitOrder": 9
         }
       ],
       "primaryStandardCourse": "수학(상)"
