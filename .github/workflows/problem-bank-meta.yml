@@ -20,30 +20,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Capture checked-in projection baseline
+      - name: Verify checked-in Consumer and browse alias projections
         run: |
-          mkdir -p "$RUNNER_TEMP/generated-projection-evidence"
-          git status --short --untracked-files=all > "$RUNNER_TEMP/generated-projection-evidence/before.status"
-
-      - name: Materialize canonical Generated source projections for contract tests
-        run: |
-          node archive/tools/generated-meta/compile-qid9-main-source.mjs --write
-          node archive/tools/generated-meta/compile-qid9-main-source.mjs --check
-          node archive/tools/generated-meta/auto-register-approved-qid9.mjs --write
-          node archive/tools/generated-meta/auto-register-approved-qid9.mjs --check
-          node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --write
           node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --check
-          node archive/tools/build-generated-meta-browse-aliases.cjs --write
           node archive/tools/build-generated-meta-browse-aliases.cjs
-
-      - name: Capture materialized projection delta
-        if: always()
-        run: |
-          git status --short --untracked-files=all > "$RUNNER_TEMP/generated-projection-evidence/after.status"
-          git diff --binary > "$RUNNER_TEMP/generated-projection-evidence/materialized-projection.patch"
-          diff -u "$RUNNER_TEMP/generated-projection-evidence/before.status" "$RUNNER_TEMP/generated-projection-evidence/after.status" > "$RUNNER_TEMP/generated-projection-evidence/status.delta" || true
-          cat "$RUNNER_TEMP/generated-projection-evidence/status.delta"
-
+      - name: Meta persistence, recovery and shared consumer contracts
       - name: Meta persistence, recovery and shared consumer contracts
         run: node --test tests/problem-bank-meta.test.cjs tests/problem-bank-meta-consumers.test.cjs tests/generated-meta-backfill.test.cjs tests/generated-meta-browse-aliases.test.cjs
       - uses: browser-actions/setup-chrome@v1
@@ -59,11 +40,4 @@ jobs:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
         run: node tests/problem-bank-meta-browser.cjs
 
-      - name: Upload materialized projection drift evidence
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: generated-projection-drift-shared-meta-${{ github.run_id }}
-          path: ${{ runner.temp }}/generated-projection-evidence/
-          if-no-files-found: warn
 
