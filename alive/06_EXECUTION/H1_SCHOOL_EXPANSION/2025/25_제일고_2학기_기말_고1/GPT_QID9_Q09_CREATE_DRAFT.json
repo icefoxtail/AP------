@@ -17,8 +17,13 @@
     "svgCreated": 9,
     "externalOpenBookReview": "NOT_RUN",
     "studentRelease": "NOT_AUTHORIZED",
-    "status": "AUTHOR_DRAFT_ONLY",
-    "nextQid": 10
+    "status": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+    "nextQid": 10,
+    "selfRecheckComplete": 9,
+    "correctMathCount": 9,
+    "wrongRouteCount": 36,
+    "svgStaticGeometryChecked": 9,
+    "chrome": "NOT_RUN"
   },
   "questions": [
     {
@@ -49,13 +54,13 @@
       "content": "$a,b$는 양수이고 직선 $\\dfrac{x}{a}+\\dfrac{y}{b}=1$은 점 $(4,9)$를 지난다. 이 직선의 양의 $x$절편과 $y$절편을 각각 $a,b$라 할 때, $a+b$의 최솟값은?",
       "choices": [
         "$13$",
-        "$19$",
         "$25$",
-        "$31$",
-        "$37$"
+        "$19$",
+        "$26$",
+        "$28$"
       ],
-      "answer": "③",
-      "solution": "점을 지나므로 $\\dfrac{4}a+\\dfrac{9}b=1$이고 $a>4$이다. $t=a-4>0$으로 놓으면 $a=4+t$, $b=9+\\dfrac{36}{t}$이다.\\n따라서 $a+b=13+t+\\dfrac{36}{t}$이다.\\n$t>0$이므로 $\\left(\\sqrt{t}-\\sqrt{\\dfrac{36}{t}}\\right)^2\\ge0$에서 $t+\\dfrac{36}{t}\\ge12$이다.\\n등호를 만족하는 $t=6$에서 $a=10,b=15$이므로 $a+b$의 최솟값은 $25$이다.\n따라서 정답은 ③이다.",
+      "answer": "②",
+      "solution": "점을 지나므로 $\\dfrac{4}a+\\dfrac{9}b=1$이고 $a>4$이다. $t=a-4>0$으로 놓으면 $a=4+t$, $b=9+\\dfrac{36}{t}$이다.\n따라서 $a+b=13+t+\\dfrac{36}{t}$이다.\n$t>0$이므로 $\\left(\\sqrt{t}-\\sqrt{\\dfrac{36}{t}}\\right)^2\\ge0$에서 $t+\\dfrac{36}{t}\\ge12$이다.\n등호를 만족하는 $t=6$에서 $a=10,b=15$이므로 $a+b$의 최솟값은 $25$이다.\n따라서 정답은 ②이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/A1-solution.svg",
       "solutionImageAlt": "양의 두 절편과 통과점 P를 나타낸 직선",
       "solutionImageCaption": "절편과 점의 관계를 이용하여 최솟값에 이르는 상황을 표시한다.",
@@ -79,7 +84,7 @@
         "conditionKeys": [
           "COND_POSITIVE"
         ],
-        "integrationPattern": "CASE_BRANCH",
+        "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 3,
         "metadataDebt": [],
         "generatedExtL3Id": "EXT-L3-JEIL25-Q09-INTERCEPT-OPTIMIZATION",
@@ -107,7 +112,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_INTERCEPT_OPTIMIZATION"
       },
       "review": {
-        "reverseStem": "KEEP: 절편·지나는 점·최솟값 대상 명확",
+        "reverseStem": "REVISED: 최종 발문만으로 직선 절편·통과점·양수 범위와 목적 절편의 합를 복원하고, 정답 도출에 반드시 필요한 직선의 절편 조건과 등호조건을 확인했다.",
         "mathSelfCheckEvidence": {
           "p": 4,
           "q": 9,
@@ -117,28 +122,39 @@
           "optB": 15,
           "answer": 25,
           "pointOnLine": 1,
-          "correctChoice": 3
+          "correctChoice": 2,
+          "baseline": 13,
+          "optimizeN": 36,
+          "lowerBound": 25,
+          "wrongCount": 4,
+          "wrongRouteCalculationEvidence": [
+            "①",
+            "③",
+            "④",
+            "⑤"
+          ],
+          "metaIntegration": "SEQUENTIAL"
         },
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredValue": "$13$",
-            "reason": "두 양수항의 하한을 0√(36)로 계산(정확한 계수는 2)"
+            "offeredOption": "$13$",
+            "reason": "$a=p+t,\\ b=q+pq/t$에서 양수항 $t+36/t$를 생략하여 $13$로 계산했다."
           },
           {
-            "choice": "②",
-            "offeredValue": "$19$",
-            "reason": "두 양수항의 하한을 1√(36)로 계산(정확한 계수는 2)"
+            "choice": "③",
+            "offeredOption": "$19$",
+            "reason": "$t+36/t\\ge 2\\sqrt{36}$의 앞 계수 2를 놓쳐 $13+\\sqrt{36}=19$가 나왔다."
           },
           {
             "choice": "④",
-            "offeredValue": "$31$",
-            "reason": "두 양수항의 하한을 3√(36)로 계산(정확한 계수는 2)"
+            "offeredOption": "$26$",
+            "reason": "최솟값일 때 두 절편이 같다고 잘못 가정해 $a=b=13$로 정하고 $a+b=26$을 답으로 택했다."
           },
           {
             "choice": "⑤",
-            "offeredValue": "$37$",
-            "reason": "두 양수항의 하한을 4√(36)로 계산(정확한 계수는 2)"
+            "offeredOption": "$28$",
+            "reason": "등호조건을 $t=\\sqrt{36}/2=3$로 잘못 구한 후 원래 식에 넣어 $13+3+36/(3)=28$을 최솟값으로 오판했다."
           }
         ],
         "problemVisual": {
@@ -153,7 +169,35 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "distractorTraceStatus": "4_OF_4_CALCULATED_FINAL_CHOICES",
+        "selfRecheck": {
+          "disposition": "REVISED",
+          "before": {
+            "choices": [
+              "$13$",
+              "$19$",
+              "$25$",
+              "$31$",
+              "$37$"
+            ],
+            "answer": "③",
+            "level": "중",
+            "bucket": 3
+          },
+          "changedFields": [
+            "choices",
+            "answer",
+            "solution",
+            "review",
+            "level",
+            "meta.difficultyBucket",
+            "meta.integrationPattern",
+            "solutionLineBreak"
+          ],
+          "oldComputedEvidence": "STALE_REPLACED",
+          "newWrongRouteCount": 4
+        }
       }
     },
     {
@@ -186,11 +230,11 @@
         "$17$",
         "$21$",
         "$25$",
-        "$29$",
-        "$33$"
+        "$34$",
+        "$27$"
       ],
       "answer": "③",
-      "solution": "점을 지나므로 $\\dfrac{1}a+\\dfrac{16}b=1$이고 $a>1$이다. $t=a-1>0$으로 놓으면 $a=1+t$, $b=16+\\dfrac{16}{t}$이다.\\n따라서 $a+b=17+t+\\dfrac{16}{t}$이다.\\n$t>0$이므로 $\\left(\\sqrt{t}-\\sqrt{\\dfrac{16}{t}}\\right)^2\\ge0$에서 $t+\\dfrac{16}{t}\\ge8$이다.\\n등호를 만족하는 $t=4$에서 $a=5,b=20$이므로 $a+b$의 최솟값은 $25$이다.\n따라서 정답은 ③이다.",
+      "solution": "점을 지나므로 $\\dfrac{1}a+\\dfrac{16}b=1$이고 $a>1$이다. $t=a-1>0$으로 놓으면 $a=1+t$, $b=16+\\dfrac{16}{t}$이다.\n따라서 $a+b=17+t+\\dfrac{16}{t}$이다.\n$t>0$이므로 $\\left(\\sqrt{t}-\\sqrt{\\dfrac{16}{t}}\\right)^2\\ge0$에서 $t+\\dfrac{16}{t}\\ge8$이다.\n등호를 만족하는 $t=4$에서 $a=5,b=20$이므로 $a+b$의 최솟값은 $25$이다.\n따라서 정답은 ③이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/A2-solution.svg",
       "solutionImageAlt": "양의 두 절편과 통과점 P를 나타낸 직선",
       "solutionImageCaption": "절편과 점의 관계를 이용하여 최솟값에 이르는 상황을 표시한다.",
@@ -214,7 +258,7 @@
         "conditionKeys": [
           "COND_POSITIVE"
         ],
-        "integrationPattern": "CASE_BRANCH",
+        "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 3,
         "metadataDebt": [],
         "generatedExtL3Id": "EXT-L3-JEIL25-Q09-INTERCEPT-OPTIMIZATION",
@@ -242,7 +286,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_INTERCEPT_OPTIMIZATION"
       },
       "review": {
-        "reverseStem": "KEEP: 절편·지나는 점·최솟값 대상 명확",
+        "reverseStem": "REVISED: 최종 발문만으로 직선 절편·통과점·양수 범위와 목적 절편의 합를 복원하고, 정답 도출에 반드시 필요한 직선의 절편 조건과 등호조건을 확인했다.",
         "mathSelfCheckEvidence": {
           "p": 1,
           "q": 16,
@@ -252,28 +296,39 @@
           "optB": 20,
           "answer": 25,
           "pointOnLine": 1,
-          "correctChoice": 3
+          "correctChoice": 3,
+          "baseline": 17,
+          "optimizeN": 16,
+          "lowerBound": 25,
+          "wrongCount": 4,
+          "wrongRouteCalculationEvidence": [
+            "①",
+            "②",
+            "④",
+            "⑤"
+          ],
+          "metaIntegration": "SEQUENTIAL"
         },
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredValue": "$17$",
-            "reason": "두 양수항의 하한을 0√(16)로 계산(정확한 계수는 2)"
+            "offeredOption": "$17$",
+            "reason": "$a=p+t,\\ b=q+pq/t$에서 양수항 $t+16/t$를 생략하여 $17$로 계산했다."
           },
           {
             "choice": "②",
-            "offeredValue": "$21$",
-            "reason": "두 양수항의 하한을 1√(16)로 계산(정확한 계수는 2)"
+            "offeredOption": "$21$",
+            "reason": "$t+16/t\\ge 2\\sqrt{16}$의 앞 계수 2를 놓쳐 $17+\\sqrt{16}=21$가 나왔다."
           },
           {
             "choice": "④",
-            "offeredValue": "$29$",
-            "reason": "두 양수항의 하한을 3√(16)로 계산(정확한 계수는 2)"
+            "offeredOption": "$34$",
+            "reason": "최솟값일 때 두 절편이 같다고 잘못 가정해 $a=b=17$로 정하고 $a+b=34$을 답으로 택했다."
           },
           {
             "choice": "⑤",
-            "offeredValue": "$33$",
-            "reason": "두 양수항의 하한을 4√(16)로 계산(정확한 계수는 2)"
+            "offeredOption": "$27$",
+            "reason": "등호조건을 $t=\\sqrt{16}/2=2$로 잘못 구한 후 원래 식에 넣어 $17+2+16/(2)=27$을 최솟값으로 오판했다."
           }
         ],
         "problemVisual": {
@@ -288,7 +343,35 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "distractorTraceStatus": "4_OF_4_CALCULATED_FINAL_CHOICES",
+        "selfRecheck": {
+          "disposition": "REVISED",
+          "before": {
+            "choices": [
+              "$17$",
+              "$21$",
+              "$25$",
+              "$29$",
+              "$33$"
+            ],
+            "answer": "③",
+            "level": "중",
+            "bucket": 3
+          },
+          "changedFields": [
+            "choices",
+            "answer",
+            "solution",
+            "review",
+            "level",
+            "meta.difficultyBucket",
+            "meta.integrationPattern",
+            "solutionLineBreak"
+          ],
+          "oldComputedEvidence": "STALE_REPLACED",
+          "newWrongRouteCount": 4
+        }
       }
     },
     {
@@ -320,12 +403,12 @@
       "choices": [
         "$25$",
         "$37$",
+        "$50$",
         "$49$",
-        "$61$",
-        "$73$"
+        "$55$"
       ],
-      "answer": "③",
-      "solution": "점을 지나므로 $\\dfrac{9}a+\\dfrac{16}b=1$이고 $a>9$이다. $t=a-9>0$으로 놓으면 $a=9+t$, $b=16+\\dfrac{144}{t}$이다.\\n따라서 $a+b=25+t+\\dfrac{144}{t}$이다.\\n$t>0$이므로 $\\left(\\sqrt{t}-\\sqrt{\\dfrac{144}{t}}\\right)^2\\ge0$에서 $t+\\dfrac{144}{t}\\ge24$이다.\\n등호를 만족하는 $t=12$에서 $a=21,b=28$이므로 $a+b$의 최솟값은 $49$이다.\n따라서 정답은 ③이다.",
+      "answer": "④",
+      "solution": "점을 지나므로 $\\dfrac{9}a+\\dfrac{16}b=1$이고 $a>9$이다. $t=a-9>0$으로 놓으면 $a=9+t$, $b=16+\\dfrac{144}{t}$이다.\n따라서 $a+b=25+t+\\dfrac{144}{t}$이다.\n$t>0$이므로 $\\left(\\sqrt{t}-\\sqrt{\\dfrac{144}{t}}\\right)^2\\ge0$에서 $t+\\dfrac{144}{t}\\ge24$이다.\n등호를 만족하는 $t=12$에서 $a=21,b=28$이므로 $a+b$의 최솟값은 $49$이다.\n따라서 정답은 ④이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/A3-solution.svg",
       "solutionImageAlt": "양의 두 절편과 통과점 P를 나타낸 직선",
       "solutionImageCaption": "절편과 점의 관계를 이용하여 최솟값에 이르는 상황을 표시한다.",
@@ -349,7 +432,7 @@
         "conditionKeys": [
           "COND_POSITIVE"
         ],
-        "integrationPattern": "CASE_BRANCH",
+        "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 3,
         "metadataDebt": [],
         "generatedExtL3Id": "EXT-L3-JEIL25-Q09-INTERCEPT-OPTIMIZATION",
@@ -377,7 +460,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_INTERCEPT_OPTIMIZATION"
       },
       "review": {
-        "reverseStem": "KEEP: 절편·지나는 점·최솟값 대상 명확",
+        "reverseStem": "REVISED: 최종 발문만으로 직선 절편·통과점·양수 범위와 목적 절편의 합를 복원하고, 정답 도출에 반드시 필요한 직선의 절편 조건과 등호조건을 확인했다.",
         "mathSelfCheckEvidence": {
           "p": 9,
           "q": 16,
@@ -387,28 +470,39 @@
           "optB": 28,
           "answer": 49,
           "pointOnLine": 1,
-          "correctChoice": 3
+          "correctChoice": 4,
+          "baseline": 25,
+          "optimizeN": 144,
+          "lowerBound": 49,
+          "wrongCount": 4,
+          "wrongRouteCalculationEvidence": [
+            "①",
+            "②",
+            "③",
+            "⑤"
+          ],
+          "metaIntegration": "SEQUENTIAL"
         },
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredValue": "$25$",
-            "reason": "두 양수항의 하한을 0√(144)로 계산(정확한 계수는 2)"
+            "offeredOption": "$25$",
+            "reason": "$a=p+t,\\ b=q+pq/t$에서 양수항 $t+144/t$를 생략하여 $25$로 계산했다."
           },
           {
             "choice": "②",
-            "offeredValue": "$37$",
-            "reason": "두 양수항의 하한을 1√(144)로 계산(정확한 계수는 2)"
+            "offeredOption": "$37$",
+            "reason": "$t+144/t\\ge 2\\sqrt{144}$의 앞 계수 2를 놓쳐 $25+\\sqrt{144}=37$가 나왔다."
           },
           {
-            "choice": "④",
-            "offeredValue": "$61$",
-            "reason": "두 양수항의 하한을 3√(144)로 계산(정확한 계수는 2)"
+            "choice": "③",
+            "offeredOption": "$50$",
+            "reason": "최솟값일 때 두 절편이 같다고 잘못 가정해 $a=b=25$로 정하고 $a+b=50$을 답으로 택했다."
           },
           {
             "choice": "⑤",
-            "offeredValue": "$73$",
-            "reason": "두 양수항의 하한을 4√(144)로 계산(정확한 계수는 2)"
+            "offeredOption": "$55$",
+            "reason": "등호조건을 $t=\\sqrt{144}/2=6$로 잘못 구한 후 원래 식에 넣어 $25+6+144/(6)=55$을 최솟값으로 오판했다."
           }
         ],
         "problemVisual": {
@@ -423,7 +517,35 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "distractorTraceStatus": "4_OF_4_CALCULATED_FINAL_CHOICES",
+        "selfRecheck": {
+          "disposition": "REVISED",
+          "before": {
+            "choices": [
+              "$25$",
+              "$37$",
+              "$49$",
+              "$61$",
+              "$73$"
+            ],
+            "answer": "③",
+            "level": "중",
+            "bucket": 3
+          },
+          "changedFields": [
+            "choices",
+            "answer",
+            "solution",
+            "review",
+            "level",
+            "meta.difficultyBucket",
+            "meta.integrationPattern",
+            "solutionLineBreak"
+          ],
+          "oldComputedEvidence": "STALE_REPLACED",
+          "newWrongRouteCount": 4
+        }
       }
     },
     {
@@ -434,7 +556,7 @@
       "slot": "B1",
       "purpose": "B",
       "modeCandidate": "FOLLOWUP",
-      "level": "상",
+      "level": "중",
       "category": "직선의 방정식",
       "originalCategory": "직선의 방정식",
       "standardCourse": "공통수학2",
@@ -455,12 +577,12 @@
       "choices": [
         "$13$",
         "$19$",
-        "$25$",
-        "$31$",
-        "$37$"
+        "$26$",
+        "$11+6\\sqrt{2}$",
+        "$25$"
       ],
-      "answer": "③",
-      "solution": "점을 지나므로 $\\dfrac{2}a+\\dfrac{9}b=1$이고 $a>2$이다. $t=a-2>0$으로 놓으면 $a=2+t$, $b=9+\\dfrac{18}{t}$이다.\\n따라서 $2a+b=13+2t+\\dfrac{18}{t}$이다.\\n$t>0$이므로 $\\left(\\sqrt{2t}-\\sqrt{\\dfrac{18}{t}}\\right)^2\\ge0$에서 $2t+\\dfrac{18}{t}\\ge12$이다.\\n등호를 만족하는 $t=3$에서 $a=5,b=15$이므로 $2a+b$의 최솟값은 $25$이다.\n따라서 정답은 ③이다.",
+      "answer": "⑤",
+      "solution": "점을 지나므로 $\\dfrac{2}a+\\dfrac{9}b=1$이고 $a>2$이다. $t=a-2>0$으로 놓으면 $a=2+t$, $b=9+\\dfrac{18}{t}$이다.\n따라서 $2a+b=13+2t+\\dfrac{18}{t}$이다.\n$t>0$이므로 $\\left(\\sqrt{2t}-\\sqrt{\\dfrac{18}{t}}\\right)^2\\ge0$에서 $2t+\\dfrac{18}{t}\\ge12$이다.\n등호를 만족하는 $t=3$에서 $a=5,b=15$이므로 $2a+b$의 최솟값은 $25$이다.\n따라서 정답은 ⑤이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/B1-solution.svg",
       "solutionImageAlt": "양의 두 절편과 통과점 P를 나타낸 직선",
       "solutionImageCaption": "절편과 점의 관계를 이용하여 최솟값에 이르는 상황을 표시한다.",
@@ -484,8 +606,8 @@
         "conditionKeys": [
           "COND_POSITIVE"
         ],
-        "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 4,
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
         "metadataDebt": [],
         "generatedExtL3Id": "EXT-L3-JEIL25-Q09-INTERCEPT-OPTIMIZATION",
         "crossConceptRoleEvidence": "최솟값을 주는 두 양수항의 제곱차가 0 이상임을 사용(산술·기하 평균 관계)",
@@ -512,7 +634,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_INTERCEPT_OPTIMIZATION"
       },
       "review": {
-        "reverseStem": "KEEP: 절편·지나는 점·최솟값 대상 명확",
+        "reverseStem": "REVISED: 최종 발문만으로 직선 절편·통과점·양수 범위와 목적 가중 절편의 합를 복원하고, 정답 도출에 반드시 필요한 직선의 절편 조건과 등호조건을 확인했다.",
         "mathSelfCheckEvidence": {
           "p": 2,
           "q": 9,
@@ -522,28 +644,39 @@
           "optB": 15,
           "answer": 25,
           "pointOnLine": 1,
-          "correctChoice": 3
+          "correctChoice": 5,
+          "baseline": 13,
+          "optimizeN": 36,
+          "lowerBound": 25,
+          "wrongCount": 4,
+          "wrongRouteCalculationEvidence": [
+            "①",
+            "②",
+            "③",
+            "④"
+          ],
+          "metaIntegration": "SEQUENTIAL"
         },
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredValue": "$13$",
-            "reason": "두 양수항의 하한을 0√(36)로 계산(정확한 계수는 2)"
+            "offeredOption": "$13$",
+            "reason": "$2a+1b=13+2t+18/t$에서 뒤의 양수항을 생략하여 $13$를 답으로 냈다."
           },
           {
             "choice": "②",
-            "offeredValue": "$19$",
-            "reason": "두 양수항의 하한을 1√(36)로 계산(정확한 계수는 2)"
+            "offeredOption": "$19$",
+            "reason": "$2t+18/t\\ge2\\sqrt{36}$에서 2를 빠뜨려 $13+\\sqrt{36}=19$를 얻었다."
+          },
+          {
+            "choice": "③",
+            "offeredOption": "$26$",
+            "reason": "조건을 만족하는 시험값 $a=2p=4$, $b=2q=18$를 대입해 $2\\cdot4+1\\cdot18=26$가 나오자 이 값을 최솟값으로 잘못 판단했다."
           },
           {
             "choice": "④",
-            "offeredValue": "$31$",
-            "reason": "두 양수항의 하한을 3√(36)로 계산(정확한 계수는 2)"
-          },
-          {
-            "choice": "⑤",
-            "offeredValue": "$37$",
-            "reason": "두 양수항의 하한을 4√(36)로 계산(정확한 계수는 2)"
+            "offeredOption": "$11+6\\sqrt{2}$",
+            "reason": "최소화 대상 $2a+1b$의 가중치를 놓치고 $a+b$를 최소화하여 $(\\sqrt{2}+\\sqrt{9})^2=11+6\\sqrt{2}$를 구했다."
           }
         ],
         "problemVisual": {
@@ -558,7 +691,35 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "distractorTraceStatus": "4_OF_4_CALCULATED_FINAL_CHOICES",
+        "selfRecheck": {
+          "disposition": "REVISED",
+          "before": {
+            "choices": [
+              "$13$",
+              "$19$",
+              "$25$",
+              "$31$",
+              "$37$"
+            ],
+            "answer": "③",
+            "level": "상",
+            "bucket": 4
+          },
+          "changedFields": [
+            "choices",
+            "answer",
+            "solution",
+            "review",
+            "level",
+            "meta.difficultyBucket",
+            "meta.integrationPattern",
+            "solutionLineBreak"
+          ],
+          "oldComputedEvidence": "STALE_REPLACED",
+          "newWrongRouteCount": 4
+        }
       }
     },
     {
@@ -569,7 +730,7 @@
       "slot": "B2",
       "purpose": "B",
       "modeCandidate": "FOLLOWUP",
-      "level": "상",
+      "level": "중",
       "category": "직선의 방정식",
       "originalCategory": "직선의 방정식",
       "standardCourse": "공통수학2",
@@ -588,14 +749,14 @@
       "wide": false,
       "content": "$a,b$는 양수이고 직선 $\\dfrac{x}{a}+\\dfrac{y}{b}=1$은 점 $(9,2)$를 지난다. 이 직선의 양의 $x$절편과 $y$절편을 각각 $a,b$라 할 때, $a+2b$의 최솟값은?",
       "choices": [
+        "$25$",
         "$13$",
         "$19$",
-        "$25$",
-        "$31$",
-        "$37$"
+        "$26$",
+        "$11+6\\sqrt{2}$"
       ],
-      "answer": "③",
-      "solution": "점을 지나므로 $\\dfrac{9}a+\\dfrac{2}b=1$이고 $a>9$이다. $t=a-9>0$으로 놓으면 $a=9+t$, $b=2+\\dfrac{18}{t}$이다.\\n따라서 $a+2b=13+t+\\dfrac{36}{t}$이다.\\n$t>0$이므로 $\\left(\\sqrt{t}-\\sqrt{\\dfrac{36}{t}}\\right)^2\\ge0$에서 $t+\\dfrac{36}{t}\\ge12$이다.\\n등호를 만족하는 $t=6$에서 $a=15,b=5$이므로 $a+2b$의 최솟값은 $25$이다.\n따라서 정답은 ③이다.",
+      "answer": "①",
+      "solution": "점을 지나므로 $\\dfrac{9}a+\\dfrac{2}b=1$이고 $a>9$이다. $t=a-9>0$으로 놓으면 $a=9+t$, $b=2+\\dfrac{18}{t}$이다.\n따라서 $a+2b=13+t+\\dfrac{36}{t}$이다.\n$t>0$이므로 $\\left(\\sqrt{t}-\\sqrt{\\dfrac{36}{t}}\\right)^2\\ge0$에서 $t+\\dfrac{36}{t}\\ge12$이다.\n등호를 만족하는 $t=6$에서 $a=15,b=5$이므로 $a+2b$의 최솟값은 $25$이다.\n따라서 정답은 ①이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/B2-solution.svg",
       "solutionImageAlt": "양의 두 절편과 통과점 P를 나타낸 직선",
       "solutionImageCaption": "절편과 점의 관계를 이용하여 최솟값에 이르는 상황을 표시한다.",
@@ -619,8 +780,8 @@
         "conditionKeys": [
           "COND_POSITIVE"
         ],
-        "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 4,
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
         "metadataDebt": [],
         "generatedExtL3Id": "EXT-L3-JEIL25-Q09-INTERCEPT-OPTIMIZATION",
         "crossConceptRoleEvidence": "최솟값을 주는 두 양수항의 제곱차가 0 이상임을 사용(산술·기하 평균 관계)",
@@ -647,7 +808,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_INTERCEPT_OPTIMIZATION"
       },
       "review": {
-        "reverseStem": "KEEP: 절편·지나는 점·최솟값 대상 명확",
+        "reverseStem": "REVISED: 최종 발문만으로 직선 절편·통과점·양수 범위와 목적 가중 절편의 합를 복원하고, 정답 도출에 반드시 필요한 직선의 절편 조건과 등호조건을 확인했다.",
         "mathSelfCheckEvidence": {
           "p": 9,
           "q": 2,
@@ -657,28 +818,39 @@
           "optB": 5,
           "answer": 25,
           "pointOnLine": 1,
-          "correctChoice": 3
+          "correctChoice": 1,
+          "baseline": 13,
+          "optimizeN": 36,
+          "lowerBound": 25,
+          "wrongCount": 4,
+          "wrongRouteCalculationEvidence": [
+            "②",
+            "③",
+            "④",
+            "⑤"
+          ],
+          "metaIntegration": "SEQUENTIAL"
         },
         "wrongRoutes": [
           {
-            "choice": "①",
-            "offeredValue": "$13$",
-            "reason": "두 양수항의 하한을 0√(36)로 계산(정확한 계수는 2)"
+            "choice": "②",
+            "offeredOption": "$13$",
+            "reason": "$1a+2b=13+1t+36/t$에서 뒤의 양수항을 생략하여 $13$를 답으로 냈다."
           },
           {
-            "choice": "②",
-            "offeredValue": "$19$",
-            "reason": "두 양수항의 하한을 1√(36)로 계산(정확한 계수는 2)"
+            "choice": "③",
+            "offeredOption": "$19$",
+            "reason": "$1t+36/t\\ge2\\sqrt{36}$에서 2를 빠뜨려 $13+\\sqrt{36}=19$를 얻었다."
           },
           {
             "choice": "④",
-            "offeredValue": "$31$",
-            "reason": "두 양수항의 하한을 3√(36)로 계산(정확한 계수는 2)"
+            "offeredOption": "$26$",
+            "reason": "조건을 만족하는 시험값 $a=2p=18$, $b=2q=4$를 대입해 $1\\cdot18+2\\cdot4=26$가 나오자 이 값을 최솟값으로 잘못 판단했다."
           },
           {
             "choice": "⑤",
-            "offeredValue": "$37$",
-            "reason": "두 양수항의 하한을 4√(36)로 계산(정확한 계수는 2)"
+            "offeredOption": "$11+6\\sqrt{2}$",
+            "reason": "최소화 대상 $1a+2b$의 가중치를 놓치고 $a+b$를 최소화하여 $(\\sqrt{9}+\\sqrt{2})^2=11+6\\sqrt{2}$를 구했다."
           }
         ],
         "problemVisual": {
@@ -693,7 +865,35 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "distractorTraceStatus": "4_OF_4_CALCULATED_FINAL_CHOICES",
+        "selfRecheck": {
+          "disposition": "REVISED",
+          "before": {
+            "choices": [
+              "$13$",
+              "$19$",
+              "$25$",
+              "$31$",
+              "$37$"
+            ],
+            "answer": "③",
+            "level": "상",
+            "bucket": 4
+          },
+          "changedFields": [
+            "choices",
+            "answer",
+            "solution",
+            "review",
+            "level",
+            "meta.difficultyBucket",
+            "meta.integrationPattern",
+            "solutionLineBreak"
+          ],
+          "oldComputedEvidence": "STALE_REPLACED",
+          "newWrongRouteCount": 4
+        }
       }
     },
     {
@@ -704,7 +904,7 @@
       "slot": "B3",
       "purpose": "B",
       "modeCandidate": "FOLLOWUP",
-      "level": "상",
+      "level": "중",
       "category": "직선의 방정식",
       "originalCategory": "직선의 방정식",
       "standardCourse": "공통수학2",
@@ -724,13 +924,13 @@
       "content": "$a,b$는 양수이고 직선 $\\dfrac{x}{a}+\\dfrac{y}{b}=1$은 점 $(3,16)$를 지난다. 이 직선의 양의 $x$절편과 $y$절편을 각각 $a,b$라 할 때, $3a+b$의 최솟값은?",
       "choices": [
         "$25$",
-        "$37$",
         "$49$",
-        "$61$",
-        "$73$"
+        "$37$",
+        "$50$",
+        "$19+8\\sqrt{3}$"
       ],
-      "answer": "③",
-      "solution": "점을 지나므로 $\\dfrac{3}a+\\dfrac{16}b=1$이고 $a>3$이다. $t=a-3>0$으로 놓으면 $a=3+t$, $b=16+\\dfrac{48}{t}$이다.\\n따라서 $3a+b=25+3t+\\dfrac{48}{t}$이다.\\n$t>0$이므로 $\\left(\\sqrt{3t}-\\sqrt{\\dfrac{48}{t}}\\right)^2\\ge0$에서 $3t+\\dfrac{48}{t}\\ge24$이다.\\n등호를 만족하는 $t=4$에서 $a=7,b=28$이므로 $3a+b$의 최솟값은 $49$이다.\n따라서 정답은 ③이다.",
+      "answer": "②",
+      "solution": "점을 지나므로 $\\dfrac{3}a+\\dfrac{16}b=1$이고 $a>3$이다. $t=a-3>0$으로 놓으면 $a=3+t$, $b=16+\\dfrac{48}{t}$이다.\n따라서 $3a+b=25+3t+\\dfrac{48}{t}$이다.\n$t>0$이므로 $\\left(\\sqrt{3t}-\\sqrt{\\dfrac{48}{t}}\\right)^2\\ge0$에서 $3t+\\dfrac{48}{t}\\ge24$이다.\n등호를 만족하는 $t=4$에서 $a=7,b=28$이므로 $3a+b$의 최솟값은 $49$이다.\n따라서 정답은 ②이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/B3-solution.svg",
       "solutionImageAlt": "양의 두 절편과 통과점 P를 나타낸 직선",
       "solutionImageCaption": "절편과 점의 관계를 이용하여 최솟값에 이르는 상황을 표시한다.",
@@ -754,8 +954,8 @@
         "conditionKeys": [
           "COND_POSITIVE"
         ],
-        "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 4,
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
         "metadataDebt": [],
         "generatedExtL3Id": "EXT-L3-JEIL25-Q09-INTERCEPT-OPTIMIZATION",
         "crossConceptRoleEvidence": "최솟값을 주는 두 양수항의 제곱차가 0 이상임을 사용(산술·기하 평균 관계)",
@@ -782,7 +982,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_INTERCEPT_OPTIMIZATION"
       },
       "review": {
-        "reverseStem": "KEEP: 절편·지나는 점·최솟값 대상 명확",
+        "reverseStem": "REVISED: 최종 발문만으로 직선 절편·통과점·양수 범위와 목적 가중 절편의 합를 복원하고, 정답 도출에 반드시 필요한 직선의 절편 조건과 등호조건을 확인했다.",
         "mathSelfCheckEvidence": {
           "p": 3,
           "q": 16,
@@ -792,28 +992,39 @@
           "optB": 28,
           "answer": 49,
           "pointOnLine": 1,
-          "correctChoice": 3
+          "correctChoice": 2,
+          "baseline": 25,
+          "optimizeN": 144,
+          "lowerBound": 49,
+          "wrongCount": 4,
+          "wrongRouteCalculationEvidence": [
+            "①",
+            "③",
+            "④",
+            "⑤"
+          ],
+          "metaIntegration": "SEQUENTIAL"
         },
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredValue": "$25$",
-            "reason": "두 양수항의 하한을 0√(144)로 계산(정확한 계수는 2)"
+            "offeredOption": "$25$",
+            "reason": "$3a+1b=25+3t+48/t$에서 뒤의 양수항을 생략하여 $25$를 답으로 냈다."
           },
           {
-            "choice": "②",
-            "offeredValue": "$37$",
-            "reason": "두 양수항의 하한을 1√(144)로 계산(정확한 계수는 2)"
+            "choice": "③",
+            "offeredOption": "$37$",
+            "reason": "$3t+48/t\\ge2\\sqrt{144}$에서 2를 빠뜨려 $25+\\sqrt{144}=37$를 얻었다."
           },
           {
             "choice": "④",
-            "offeredValue": "$61$",
-            "reason": "두 양수항의 하한을 3√(144)로 계산(정확한 계수는 2)"
+            "offeredOption": "$50$",
+            "reason": "조건을 만족하는 시험값 $a=2p=6$, $b=2q=32$를 대입해 $3\\cdot6+1\\cdot32=50$가 나오자 이 값을 최솟값으로 잘못 판단했다."
           },
           {
             "choice": "⑤",
-            "offeredValue": "$73$",
-            "reason": "두 양수항의 하한을 4√(144)로 계산(정확한 계수는 2)"
+            "offeredOption": "$19+8\\sqrt{3}$",
+            "reason": "최소화 대상 $3a+1b$의 가중치를 놓치고 $a+b$를 최소화하여 $(\\sqrt{3}+\\sqrt{16})^2=19+8\\sqrt{3}$를 구했다."
           }
         ],
         "problemVisual": {
@@ -828,7 +1039,35 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "distractorTraceStatus": "4_OF_4_CALCULATED_FINAL_CHOICES",
+        "selfRecheck": {
+          "disposition": "REVISED",
+          "before": {
+            "choices": [
+              "$25$",
+              "$37$",
+              "$49$",
+              "$61$",
+              "$73$"
+            ],
+            "answer": "③",
+            "level": "상",
+            "bucket": 4
+          },
+          "changedFields": [
+            "choices",
+            "answer",
+            "solution",
+            "review",
+            "level",
+            "meta.difficultyBucket",
+            "meta.integrationPattern",
+            "solutionLineBreak"
+          ],
+          "oldComputedEvidence": "STALE_REPLACED",
+          "newWrongRouteCount": 4
+        }
       }
     },
     {
@@ -839,7 +1078,7 @@
       "slot": "C1",
       "purpose": "C",
       "modeCandidate": "PLUS_ONE",
-      "level": "상",
+      "level": "중",
       "category": "직선의 방정식",
       "originalCategory": "직선의 방정식",
       "standardCourse": "공통수학2",
@@ -860,15 +1099,15 @@
       "choices": [
         "$26$",
         "$38$",
+        "$52$",
         "$50$",
-        "$62$",
-        "$74$"
+        "$56$"
       ],
-      "answer": "③",
-      "solution": "점을 지나므로 $\\dfrac{4}a+\\dfrac{9}b=1$이고 $a>4$이다. $t=a-4>0$으로 놓으면 $a=4+t$, $b=9+\\dfrac{36}{t}$이다.\\n따라서 $a+b=13+t+\\dfrac{36}{t}$이다.\\n$t>0$이므로 $\\left(\\sqrt{t}-\\sqrt{\\dfrac{36}{t}}\\right)^2\\ge0$에서 $t+\\dfrac{36}{t}\\ge12$이다.\\n등호를 만족하는 $t=6$에서 $a=10,b=15$이므로 $a+b$의 최솟값은 $25$이다.\n직사각형의 둘레는 $2(a+b)$이므로 최솟값은 $50$이다.\n따라서 정답은 ③이다.",
+      "answer": "④",
+      "solution": "점을 지나므로 $\\dfrac{4}a+\\dfrac{9}b=1$이고 $a>4$이다. $t=a-4>0$으로 놓으면 $a=4+t$, $b=9+\\dfrac{36}{t}$이다.\n따라서 $a+b=13+t+\\dfrac{36}{t}$이다.\n$t>0$이므로 $\\left(\\sqrt{t}-\\sqrt{\\dfrac{36}{t}}\\right)^2\\ge0$에서 $t+\\dfrac{36}{t}\\ge12$이다.\n등호를 만족하는 $t=6$에서 $a=10,b=15$이므로 $a+b$의 최솟값은 $25$이다.\n직사각형의 둘레는 $2(a+b)$이므로 최솟값은 $50$이다.\n따라서 정답은 ④이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/C1-solution.svg",
-      "solutionImageAlt": "양의 두 절편과 통과점 P를 나타낸 직선",
-      "solutionImageCaption": "절편과 점의 관계를 이용하여 최솟값에 이르는 상황을 표시한다.",
+      "solutionImageAlt": "최적 절편으로 정해지는 직사각형 OACB의 네 꼭짓점과 통과점 P",
+      "solutionImageCaption": "꼭짓점 C=(a,b)와 네 변을 표시하고 둘레 2(a+b)를 비교한다.",
       "solutionImageSize": "medium",
       "meta": {
         "rpmL1": "도형의 방정식",
@@ -889,8 +1128,8 @@
         "conditionKeys": [
           "COND_POSITIVE"
         ],
-        "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 5,
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
         "metadataDebt": [],
         "generatedExtL3Id": "EXT-L3-JEIL25-Q09-INTERCEPT-OPTIMIZATION",
         "crossConceptRoleEvidence": "최솟값을 주는 두 양수항의 제곱차가 0 이상임을 사용(산술·기하 평균 관계)",
@@ -917,7 +1156,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_INTERCEPT_OPTIMIZATION"
       },
       "review": {
-        "reverseStem": "KEEP: 절편·지나는 점·최솟값 대상 명확",
+        "reverseStem": "REVISED: 최종 발문만으로 직선 절편·통과점·양수 범위와 목적 직사각형 둘레를 복원하고, 정답 도출에 반드시 필요한 직선의 절편 조건과 등호조건을 확인했다.",
         "mathSelfCheckEvidence": {
           "p": 4,
           "q": 9,
@@ -927,28 +1166,39 @@
           "optB": 15,
           "answer": 50,
           "pointOnLine": 1,
-          "correctChoice": 3
+          "correctChoice": 4,
+          "baseline": 13,
+          "optimizeN": 36,
+          "lowerBound": 50,
+          "wrongCount": 4,
+          "wrongRouteCalculationEvidence": [
+            "①",
+            "②",
+            "③",
+            "⑤"
+          ],
+          "metaIntegration": "SEQUENTIAL"
         },
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredValue": "$26$",
-            "reason": "두 양수항의 하한을 0√(36)로 계산(정확한 계수는 2)"
+            "offeredOption": "$26$",
+            "reason": "둘레 $2(a+b)=2(13+t+36/t)$에서 뒤의 두 양수항을 생략해 $26$을 답으로 냈다."
           },
           {
             "choice": "②",
-            "offeredValue": "$38$",
-            "reason": "두 양수항의 하한을 1√(36)로 계산(정확한 계수는 2)"
+            "offeredOption": "$38$",
+            "reason": "$t+36/t\\ge2\\sqrt{36}$에서 2를 놓쳐 $2(13+6)=38$로 계산했다."
           },
           {
-            "choice": "④",
-            "offeredValue": "$62$",
-            "reason": "두 양수항의 하한을 3√(36)로 계산(정확한 계수는 2)"
+            "choice": "③",
+            "offeredOption": "$52$",
+            "reason": "잘못된 가정 $a=b=13$에서 직사각형의 둘레를 $2(a+b)=52$로 계산했다."
           },
           {
             "choice": "⑤",
-            "offeredValue": "$74$",
-            "reason": "두 양수항의 하한을 4√(36)로 계산(정확한 계수는 2)"
+            "offeredOption": "$56$",
+            "reason": "등호조건 $t=6$ 대신 $t=3$을 대입하여 둘레를 $2(13+3+36/3)=56$로 얻고 최솟값이라고 착각했다."
           }
         ],
         "problemVisual": {
@@ -958,12 +1208,40 @@
         "solutionVisual": {
           "status": "ADD_NEW_VISUAL",
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/C1-solution.svg",
-          "reason": "최적 절편과 직선 위 점을 시각화"
+          "reason": "최적 절편에 따른 직사각형 OACB의 네 꼭짓점과 둘레 관계를 시각화"
         },
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "distractorTraceStatus": "4_OF_4_CALCULATED_FINAL_CHOICES",
+        "selfRecheck": {
+          "disposition": "REVISED",
+          "before": {
+            "choices": [
+              "$26$",
+              "$38$",
+              "$50$",
+              "$62$",
+              "$74$"
+            ],
+            "answer": "③",
+            "level": "상",
+            "bucket": 5
+          },
+          "changedFields": [
+            "choices",
+            "answer",
+            "solution",
+            "review",
+            "level",
+            "meta.difficultyBucket",
+            "meta.integrationPattern",
+            "solutionLineBreak"
+          ],
+          "oldComputedEvidence": "STALE_REPLACED",
+          "newWrongRouteCount": 4
+        }
       }
     },
     {
@@ -974,7 +1252,7 @@
       "slot": "C2",
       "purpose": "C",
       "modeCandidate": "PLUS_ONE",
-      "level": "상",
+      "level": "중",
       "category": "직선의 방정식",
       "originalCategory": "직선의 방정식",
       "standardCourse": "공통수학2",
@@ -993,14 +1271,14 @@
       "wide": false,
       "content": "$a,b$는 양수이고 직선 $\\dfrac{x}{a}+\\dfrac{y}{b}=1$은 점 $(3,5)$를 지난다. 이 직선과 양의 두 좌표축이 이루는 삼각형의 넓이의 최솟값은?",
       "choices": [
+        "$\\dfrac{15}{2}$",
         "$15$",
-        "$\\dfrac{45}{2}$",
-        "$30$",
-        "$45$",
-        "$60$"
+        "$\\dfrac{135}{2}$",
+        "$60$",
+        "$30$"
       ],
-      "answer": "③",
-      "solution": "점을 지나므로 $\\dfrac{3}a+\\dfrac{5}b=1$이다. $u=\\dfrac{3}a>0$, $v=\\dfrac{5}b>0$으로 놓으면 $u+v=1$이다.\\n$(u-v)^2\\ge0$에서 $4uv\\le1$이므로 $ab=\\dfrac{15}{uv}\\ge60$이다.\\n따라서 삼각형의 넓이는 $\\dfrac{ab}{2}\\ge30$이다. $u=v=\\dfrac12$에서 $a=6, b=10$로 등호가 성립한다.\n따라서 정답은 ③이다.",
+      "answer": "⑤",
+      "solution": "점을 지나므로 $\\dfrac{3}a+\\dfrac{5}b=1$이다. $u=\\dfrac{3}a>0$, $v=\\dfrac{5}b>0$으로 놓으면 $u+v=1$이다.\n$(u-v)^2\\ge0$에서 $4uv\\le1$이므로 $ab=\\dfrac{15}{uv}\\ge60$이다.\n따라서 삼각형의 넓이는 $\\dfrac{ab}{2}\\ge30$이다. $u=v=\\dfrac12$에서 $a=6, b=10$로 등호가 성립한다.\n따라서 정답은 ⑤이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/C2-solution.svg",
       "solutionImageAlt": "양의 두 절편과 통과점 P를 나타낸 직선",
       "solutionImageCaption": "절편과 점의 관계를 이용하여 최솟값에 이르는 상황을 표시한다.",
@@ -1024,8 +1302,8 @@
         "conditionKeys": [
           "COND_POSITIVE"
         ],
-        "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 5,
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
         "metadataDebt": [],
         "generatedExtL3Id": "EXT-L3-JEIL25-Q09-INTERCEPT-OPTIMIZATION",
         "crossConceptRoleEvidence": "최솟값을 주는 두 양수항의 제곱차가 0 이상임을 사용(산술·기하 평균 관계)",
@@ -1052,7 +1330,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_INTERCEPT_OPTIMIZATION"
       },
       "review": {
-        "reverseStem": "KEEP: 절편·지나는 점·최솟값 대상 명확",
+        "reverseStem": "REVISED: 최종 발문만으로 직선 절편·통과점·양수 범위와 목적 삼각형 넓이를 복원하고, 정답 도출에 반드시 필요한 직선의 절편 조건과 등호조건을 확인했다.",
         "mathSelfCheckEvidence": {
           "p": 3,
           "q": 5,
@@ -1062,28 +1340,39 @@
           "optB": 10,
           "answer": 30,
           "pointOnLine": 1,
-          "correctChoice": 3
+          "correctChoice": 5,
+          "baseline": 8,
+          "optimizeN": 15,
+          "lowerBound": 30,
+          "wrongCount": 4,
+          "wrongRouteCalculationEvidence": [
+            "①",
+            "②",
+            "③",
+            "④"
+          ],
+          "metaIntegration": "SEQUENTIAL"
         },
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredValue": "$15$",
-            "reason": "곱의 상한 계산 또는 삼각형의 1/2 배수를 잘못 적용하여 15 도출"
+            "offeredOption": "$\\dfrac{15}{2}$",
+            "reason": "$u+v=1$에서 단지 $uv\\le1$이라는 느슨한 부등식을 등호 가능한 최댓값으로 오해하여 넓이 $15/(2\\cdot1)=15/2$를 답으로 골랐다."
           },
           {
             "choice": "②",
-            "offeredValue": "$\\dfrac{45}{2}$",
-            "reason": "곱의 상한 계산 또는 삼각형의 1/2 배수를 잘못 적용하여 22.5 도출"
+            "offeredOption": "$15$",
+            "reason": "올바른 절편 $a=6,b=10$까지 구했으나 삼각형 넓이 공식을 $ab/2$가 아닌 $ab/4$로 잘못 적용해 $6\\cdot10/4=15$를 얻었다."
+          },
+          {
+            "choice": "③",
+            "offeredOption": "$\\dfrac{135}{2}$",
+            "reason": "$u+v=1$ 조건을 점검하지 않은 채 $u=v=1/3$을 등호조건으로 잘못 놓아 $a=9,b=15$를 얻고 넓이를 $9\\cdot15/2=135/2$로 구했다."
           },
           {
             "choice": "④",
-            "offeredValue": "$45$",
-            "reason": "곱의 상한 계산 또는 삼각형의 1/2 배수를 잘못 적용하여 45 도출"
-          },
-          {
-            "choice": "⑤",
-            "offeredValue": "$60$",
-            "reason": "곱의 상한 계산 또는 삼각형의 1/2 배수를 잘못 적용하여 60 도출"
+            "offeredOption": "$60$",
+            "reason": "삼각형 넓이의 $1/2$을 빠뜨리고 최적 절편의 곱 $ab=6\\cdot10=60$을 그대로 답으로 냈다."
           }
         ],
         "problemVisual": {
@@ -1098,7 +1387,35 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "distractorTraceStatus": "4_OF_4_CALCULATED_FINAL_CHOICES",
+        "selfRecheck": {
+          "disposition": "REVISED",
+          "before": {
+            "choices": [
+              "$15$",
+              "$\\dfrac{45}{2}$",
+              "$30$",
+              "$45$",
+              "$60$"
+            ],
+            "answer": "③",
+            "level": "상",
+            "bucket": 5
+          },
+          "changedFields": [
+            "choices",
+            "answer",
+            "solution",
+            "review",
+            "level",
+            "meta.difficultyBucket",
+            "meta.integrationPattern",
+            "solutionLineBreak"
+          ],
+          "oldComputedEvidence": "STALE_REPLACED",
+          "newWrongRouteCount": 4
+        }
       }
     },
     {
@@ -1109,7 +1426,7 @@
       "slot": "C3",
       "purpose": "C",
       "modeCandidate": "PLUS_ONE",
-      "level": "상",
+      "level": "중",
       "category": "직선의 방정식",
       "originalCategory": "직선의 방정식",
       "standardCourse": "공통수학2",
@@ -1128,14 +1445,14 @@
       "wide": false,
       "content": "$a,b$는 양수이고 직선 $\\dfrac{x}{a}+\\dfrac{y}{b}=1$은 점 $(4,9)$를 지난다. $a+b$가 최소가 될 때 이 직선의 기울기는?",
       "choices": [
-        "$-2$",
-        "$-\\dfrac{3}{2}$",
         "$-\\dfrac{2}{3}$",
-        "$-\\dfrac{1}{2}$",
+        "$-\\dfrac{9}{4}$",
+        "$-\\dfrac{3}{2}$",
+        "$-1$",
         "$\\dfrac{3}{2}$"
       ],
-      "answer": "②",
-      "solution": "점을 지나므로 $\\dfrac{4}a+\\dfrac{9}b=1$이고 $a>4$이다. $t=a-4>0$으로 놓으면 $a=4+t$, $b=9+\\dfrac{36}{t}$이다.\\n따라서 $a+b=13+t+\\dfrac{36}{t}$이다.\\n$t>0$이므로 $\\left(\\sqrt{t}-\\sqrt{\\dfrac{36}{t}}\\right)^2\\ge0$에서 $t+\\dfrac{36}{t}\\ge12$이다.\\n등호를 만족하는 $t=6$에서 $a=10,b=15$이므로 $a+b$의 최솟값은 $25$이다.\n그때 기울기는 $-\\dfrac{b}{a}=-\\dfrac{15}{10}=-\\dfrac32$이다.\n따라서 정답은 ②이다.",
+      "answer": "③",
+      "solution": "점을 지나므로 $\\dfrac{4}a+\\dfrac{9}b=1$이고 $a>4$이다. $t=a-4>0$으로 놓으면 $a=4+t$, $b=9+\\dfrac{36}{t}$이다.\n따라서 $a+b=13+t+\\dfrac{36}{t}$이다.\n$t>0$이므로 $\\left(\\sqrt{t}-\\sqrt{\\dfrac{36}{t}}\\right)^2\\ge0$에서 $t+\\dfrac{36}{t}\\ge12$이다.\n등호를 만족하는 $t=6$에서 $a=10,b=15$이므로 $a+b$의 최솟값은 $25$이다.\n그때 기울기는 $-\\dfrac{b}{a}=-\\dfrac{15}{10}=-\\dfrac32$이다.\n따라서 정답은 ③이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q09/C3-solution.svg",
       "solutionImageAlt": "양의 두 절편과 통과점 P를 나타낸 직선",
       "solutionImageCaption": "절편과 점의 관계를 이용하여 최솟값에 이르는 상황을 표시한다.",
@@ -1159,8 +1476,8 @@
         "conditionKeys": [
           "COND_POSITIVE"
         ],
-        "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 5,
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
         "metadataDebt": [],
         "generatedExtL3Id": "EXT-L3-JEIL25-Q09-INTERCEPT-OPTIMIZATION",
         "crossConceptRoleEvidence": "최솟값을 주는 두 양수항의 제곱차가 0 이상임을 사용(산술·기하 평균 관계)",
@@ -1187,7 +1504,7 @@
         "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_INTERCEPT_OPTIMIZATION"
       },
       "review": {
-        "reverseStem": "KEEP: 절편·지나는 점·최솟값 대상 명확",
+        "reverseStem": "REVISED: 최종 발문만으로 직선 절편·통과점·양수 범위와 목적 최솟값에서의 기울기를 복원하고, 정답 도출에 반드시 필요한 직선의 절편 조건과 등호조건을 확인했다.",
         "mathSelfCheckEvidence": {
           "p": 4,
           "q": 9,
@@ -1197,28 +1514,42 @@
           "optB": 15,
           "answer": -1.5,
           "pointOnLine": 1,
-          "correctChoice": 2
+          "correctChoice": 3,
+          "baseline": 13,
+          "optimizeN": 36,
+          "lowerBound": -1.5,
+          "wrongCount": 4,
+          "wrongRouteCalculationEvidence": [
+            "①",
+            "②",
+            "④",
+            "⑤"
+          ],
+          "optimumPointA": 10,
+          "optimumPointB": 15,
+          "optimumSlopeRecheck": "-15/10=-3/2",
+          "metaIntegration": "SEQUENTIAL"
         },
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredValue": "$-2$",
-            "reason": "절편 비 2:1로 착각"
+            "offeredOption": "$-\\dfrac{2}{3}$",
+            "reason": "기울기 $-b/a$의 분자와 분모를 거꾸로 하여 $-a/b=-10/15=-2/3$으로 계산했다."
           },
           {
-            "choice": "③",
-            "offeredValue": "$-\\dfrac{2}{3}$",
-            "reason": "두 절편의 비를 역수로 취함"
+            "choice": "②",
+            "offeredOption": "$-\\dfrac{9}{4}$",
+            "reason": "직선이 지나는 점 $(4,9)$의 두 좌표를 절편으로 잘못 읽어 기울기 $-9/4$를 구했다."
           },
           {
             "choice": "④",
-            "offeredValue": "$-\\dfrac{1}{2}$",
-            "reason": "절편 비율을 절반으로 계산"
+            "offeredOption": "$-1$",
+            "reason": "최솟값일 때 두 절편이 같다고 잘못 가정하여 기울기를 $-b/a=-1$로 계산했다."
           },
           {
             "choice": "⑤",
-            "offeredValue": "$\\dfrac{3}{2}$",
-            "reason": "기울기 음수 부호 누락"
+            "offeredOption": "$\\dfrac{3}{2}$",
+            "reason": "최적 절편에서 $b/a=15/10=3/2$을 구했으나 직선 기울기의 음수 부호를 누락했다."
           }
         ],
         "problemVisual": {
@@ -1233,7 +1564,36 @@
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "distractorTraceStatus": "4_OF_4_CALCULATED_FINAL_CHOICES",
+        "selfRecheck": {
+          "disposition": "REVISED",
+          "before": {
+            "choices": [
+              "$-2$",
+              "$-\\dfrac{3}{2}$",
+              "$-\\dfrac{2}{3}$",
+              "$-\\dfrac{1}{2}$",
+              "$\\dfrac{3}{2}$"
+            ],
+            "answer": "②",
+            "level": "상",
+            "bucket": 5
+          },
+          "changedFields": [
+            "choices",
+            "answer",
+            "solution",
+            "review",
+            "level",
+            "meta.difficultyBucket",
+            "meta.integrationPattern",
+            "solutionLineBreak"
+          ],
+          "oldComputedEvidence": "STALE_REPLACED",
+          "newWrongRouteCount": 4,
+          "mathCorrection": "C3 intermediate candidate had invalid -q/(p+sqrt(pq)); replaced with actual -(q+sqrt(pq))/(p+sqrt(pq))=-3/2; stale candidate never committed."
+        }
       }
     }
   ]
