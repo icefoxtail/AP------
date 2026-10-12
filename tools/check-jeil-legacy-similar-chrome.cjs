@@ -8,7 +8,7 @@ const {spawn}=require('node:child_process');
 const assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..');
 const exam='exams/similar/high/h1/2final/25_제일고_2학기_기말_고1_유사.js';
-const out=path.join(root,'reports/jeil-legacy-similar-chrome');
+const out=process.env.JEIL_CHROME_OUT||path.join(root,'reports/jeil-legacy-similar-chrome');
 fs.mkdirSync(out,{recursive:true});
 const source=fs.readFileSync(path.join(root,'archive',exam),'utf8');
 const context={window:{}};vm.createContext(context);vm.runInContext(source,context,{timeout:3000});
