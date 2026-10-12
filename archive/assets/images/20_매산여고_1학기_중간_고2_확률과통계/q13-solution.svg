@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="280" viewBox="0 0 620 280" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title desc" data-visual-provenance="R1_SOLUTION_VISUAL_CONSTRUCTED_REALIZATION">
+  <title id="title">원순열에서 남학생이 이웃하지 않는 배치</title>
+  <desc id="desc">여학생 네 명을 원형으로 배치하면 네 개의 틈이 생긴다. 그 틈 중 세 곳에 남학생을 한 명씩 배치한 한 가지 예를 보여 준다.</desc>
+  <rect x="0" y="0" width="620" height="280" rx="16" fill="#f8fafc"/>
+  <text x="22" y="33" font-family="Malgun Gothic, Arial, sans-serif" font-size="24" font-weight="700" fill="#172554">여학생 사이의 네 틈 중 세 곳을 선택</text>
+
+  <circle cx="160" cy="160" r="78" fill="none" stroke="#64748b" stroke-width="3"/>
+
+  <!-- Four distinct women in one circular arrangement. -->
+  <g id="women">
+    <circle cx="160" cy="82" r="22" fill="#eaf2ff" stroke="#2563eb" stroke-width="2.5"/>
+    <text x="160" y="89" text-anchor="middle" font-family="Malgun Gothic, Arial, sans-serif" font-size="22" font-weight="700" fill="#1e3a8a">여1</text>
+    <circle cx="238" cy="160" r="22" fill="#eaf2ff" stroke="#2563eb" stroke-width="2.5"/>
+    <text x="238" y="167" text-anchor="middle" font-family="Malgun Gothic, Arial, sans-serif" font-size="22" font-weight="700" fill="#1e3a8a">여2</text>
+    <circle cx="160" cy="238" r="22" fill="#eaf2ff" stroke="#2563eb" stroke-width="2.5"/>
+    <text x="160" y="245" text-anchor="middle" font-family="Malgun Gothic, Arial, sans-serif" font-size="22" font-weight="700" fill="#1e3a8a">여3</text>
+    <circle cx="82" cy="160" r="22" fill="#eaf2ff" stroke="#2563eb" stroke-width="2.5"/>
+    <text x="82" y="167" text-anchor="middle" font-family="Malgun Gothic, Arial, sans-serif" font-size="22" font-weight="700" fill="#1e3a8a">여4</text>
+  </g>
+
+  <!-- Three different selected gaps; the dashed marker is an unselected gap, not an empty seat. -->
+  <g id="selected-gaps">
+    <circle cx="215" cy="105" r="19" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
+    <text x="215" y="112" text-anchor="middle" font-family="Malgun Gothic, Arial, sans-serif" font-size="22" font-weight="700" fill="#166534">남1</text>
+    <circle cx="215" cy="215" r="19" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
+    <text x="215" y="222" text-anchor="middle" font-family="Malgun Gothic, Arial, sans-serif" font-size="22" font-weight="700" fill="#166534">남2</text>
+    <circle cx="105" cy="215" r="19" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
+    <text x="105" y="222" text-anchor="middle" font-family="Malgun Gothic, Arial, sans-serif" font-size="22" font-weight="700" fill="#166534">남3</text>
+  </g>
+  <g id="unselected-gap">
+    <circle cx="105" cy="105" r="19" fill="#ffffff" stroke="#64748b" stroke-width="2" stroke-dasharray="5 4"/>
+  </g>
+
+  <g id="explanation-panel">
+    <rect x="300" y="62" width="300" height="164" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="322" y="94" font-family="Malgun Gothic, Arial, sans-serif" font-size="23" font-weight="700" fill="#172554">세는 순서</text>
+    <circle cx="330" cy="126" r="12" fill="#dbeafe"/>
+    <text x="330" y="134" text-anchor="middle" font-family="Malgun Gothic, Arial, sans-serif" font-size="22" font-weight="700" fill="#1e3a8a">1</text>
+    <text x="352" y="134" font-family="Malgun Gothic, Arial, sans-serif" font-size="22" fill="#334155">여학생 4명 원순열</text>
+    <circle cx="330" cy="164" r="12" fill="#dcfce7"/>
+    <text x="330" y="172" text-anchor="middle" font-family="Malgun Gothic, Arial, sans-serif" font-size="22" font-weight="700" fill="#166534">2</text>
+    <text x="352" y="172" font-family="Malgun Gothic, Arial, sans-serif" font-size="22" fill="#334155">4개 틈 중 3곳 선택</text>
+    <circle cx="330" cy="202" r="12" fill="#dcfce7"/>
+    <text x="330" y="210" text-anchor="middle" font-family="Malgun Gothic, Arial, sans-serif" font-size="22" font-weight="700" fill="#166534">3</text>
+    <text x="352" y="210" font-family="Malgun Gothic, Arial, sans-serif" font-size="22" fill="#334155">선택한 틈에 남학생 배치</text>
+  </g>
+</svg>
