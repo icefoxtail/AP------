@@ -14,11 +14,11 @@ test('archive/exams inline image inventory covers every content img and validate
   const { generatedAt: _reportDate, ...reportData } = report;
   const { generatedAt: _generatedDate, ...generatedData } = generated;
 
-  assert.equal(generated.total, 60);
-  assert.equal(generated.productionTotal, 56);
+  assert.equal(generated.total, 73);
+  assert.equal(generated.productionTotal, 69);
   assert.equal(generated.testFixtureTotal, 4);
-  assert.deepEqual(generated.extensionCounts, { '.png': 59, '.svg': 1 });
-  assert.equal(generated.qImageAndInlineTotal, 10);
+  assert.deepEqual(generated.extensionCounts, { '.png': 72, '.svg': 1 });
+  assert.equal(generated.qImageAndInlineTotal, 18);
   assert.deepEqual(generated.validation, {
     relativePathInvalidCount: 0,
     missingProductionAssetCount: 0,
@@ -61,8 +61,16 @@ test('archive/exams inline image inventory covers every content img and validate
     ['original/high/h2/1mid/20_매산고_1학기_중간_고2_수학I.js', 7],
     ['original/high/h2/1mid/20_매산고_1학기_중간_고2_수학I.js', 11],
     ['original/high/h2/1mid/20_매산고_1학기_중간_고2_수학I.js', 15],
+    ['original/high/h2/1mid/20_매산여고_1학기_중간_고2_확률과통계.js', 7],
+    ['original/high/h2/1mid/20_매산여고_1학기_중간_고2_확률과통계.js', 9],
+    ['original/high/h2/1mid/20_매산여고_1학기_중간_고2_확률과통계.js', 10],
     ['original/high/h2/1mid/24_순천고_1학기_중간_고2_확률과통계.js', 5],
     ['original/high/h2/1mid/24_순천고_1학기_중간_고2_확률과통계.js', 6],
+    ['original/high/h2/1mid/24_팔마고_1학기_중간_고2_수학I.js', 13],
+    ['original/high/h2/1mid/24_팔마고_1학기_중간_고2_수학I.js', 18],
+    ['original/high/h2/1mid/24_팔마고_1학기_중간_고2_확률과통계.js', 1],
+    ['original/high/h2/1mid/24_팔마고_1학기_중간_고2_확률과통계.js', 10],
+    ['original/high/h2/1mid/24_팔마고_1학기_중간_고2_확률과통계.js', 17],
     ['test-fixtures/inline-image-readiness.js', 3],
   ]);
 
