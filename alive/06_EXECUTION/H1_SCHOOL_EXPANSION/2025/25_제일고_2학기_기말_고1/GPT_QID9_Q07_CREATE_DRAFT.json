@@ -1,0 +1,1125 @@
+{
+  "schemaVersion": "ALIVE_QID9_AUTHOR_DRAFT_v1",
+  "source": {
+    "path": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+    "qid": 7,
+    "sourceUid": "qid_v1_b9644a17aa0796f6680f4939f9db5ddade955db7f8164805d1990aaf15637606",
+    "gitBlobSha1": "252c1cc9a687cadd961183b56ea10d21bf1976b4",
+    "preservedReadOnly": true
+  },
+  "authority": {
+    "rpmCrosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "sourceRuntime": "archive/data/meta-foundation/runtime/geometry-equations-v1.json",
+    "originalPrimaryL3": "원의 접선",
+    "originalMetaL4": "두 접선의 기울기"
+  },
+  "summary": {
+    "authorDraftItems": 9,
+    "svgCreated": 9,
+    "wrongRouteCount": 36,
+    "externalOpenBookReview": "NOT_RUN",
+    "studentRelease": "NOT_AUTHORIZED",
+    "status": "AUTHOR_DRAFT_ONLY",
+    "nextQid": 8
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-JEIL25-2FINAL-Q07-A1",
+      "sourceQid": 7,
+      "sourceUid": "qid_v1_b9644a17aa0796f6680f4939f9db5ddade955db7f8164805d1990aaf15637606",
+      "slot": "A1",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "원의 방정식",
+      "originalCategory": "원의 방정식",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-03",
+      "standardUnit": "원의 방정식",
+      "standardUnitOrder": 3,
+      "subUnitKey": "H22-C2-03-TANGENT",
+      "subUnit": "원과 접선",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "점 $P(-3,4)$에서 원 $(x-0)^2+(y-0)^2=1$에 그은 두 접선의 기울기를 $m_1,m_2$라 할 때, $m_1m_2$의 값은?",
+      "choices": [
+        "$\\dfrac{8}{15}$",
+        "$\\dfrac{3}{2}$",
+        "$\\dfrac{17}{10}$",
+        "$\\dfrac{16}{9}$",
+        "$\\dfrac{15}{8}$"
+      ],
+      "answer": "⑤",
+      "solution": "접선을 $y-4=m(x--3)$로 두면 중심 $(0,0)$에서 접선까지의 거리는 반지름 1과 같다.\\n$\\dfrac{|3m+4|}{\\sqrt{m^2+1}}=1$이므로\\n$(8)m^2+24m+(15)=0$이다.\\n두 실근이 두 접선의 기울기이며 수직선 $x=-3$는 중심과의 거리가 3이므로 접선이 아니다.\\n근과 계수의 관계에서 $m_1+m_2=-3$, $m_1m_2=\\dfrac{15}{8}$이다.\n따라서 두 기울기의 곱을 선택한다.\n따라서 정답은 ⑤이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/A1-solution.svg",
+      "solutionImageAlt": "원 밖의 점에서 그은 두 접선과 반지름의 수직 관계",
+      "solutionImageCaption": "중심에서 접선까지의 거리가 반지름과 같다는 조건으로 기울기를 구한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "primaryRPM_L3": "원의 접선",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "원의 접선",
+        "rpmRecordId": "H1-RPM-222",
+        "rpmL4SemanticLabel": "기울기가 주어진 접선",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_EXACT_L4_DEBT",
+        "metaFoundationL3": "원의 접선",
+        "metaFoundationL4": "두 접선의 기울기",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_TWO_SLOPES",
+        "crossConceptKeys": [
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "현재 H1-RPM-222의 L4는 기울기가 주어진 접선이며 원본의 외부점 두 접선 기울기 전용 L4가 아님. 원본 Meta Foundation의 기존 TM_TANGENT_TWO_SLOPES 유지."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 외부점·원의 중심·반지름·두 접선·답형을 발문만으로 재구성 가능",
+        "mathSelfCheckEvidence": {
+          "u": 3,
+          "v": 4,
+          "r": 1,
+          "center": [
+            0,
+            0
+          ],
+          "point": [
+            -3,
+            4
+          ],
+          "slopeSum": "-3/1",
+          "slopeProduct": "15/8",
+          "answer": "15/8",
+          "uniqueTrueChoice": 5
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "$\\dfrac{8}{15}$",
+            "reason": "근과 계수의 관계에서 분자·분모를 바꾸어 계산"
+          },
+          {
+            "choice": "②",
+            "offeredValue": "$\\dfrac{3}{2}$",
+            "reason": "분모의 반지름 항 부호를 잘못 적용"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "$\\dfrac{17}{10}$",
+            "reason": "접선거리 제곱식의 감산을 덧셈으로 계산"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$\\dfrac{16}{9}$",
+            "reason": "반지름 항을 빼지 않고 기울기 곱을 계산"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "원의 식·외부점·두 접선의 수학적 조건을 전부 발문에 제공"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/A1-solution.svg",
+          "reason": "두 접점과 반지름-접선 수직관계를 시각화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-JEIL25-2FINAL-Q07-A2",
+      "sourceQid": 7,
+      "sourceUid": "qid_v1_b9644a17aa0796f6680f4939f9db5ddade955db7f8164805d1990aaf15637606",
+      "slot": "A2",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "원의 방정식",
+      "originalCategory": "원의 방정식",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-03",
+      "standardUnit": "원의 방정식",
+      "standardUnitOrder": 3,
+      "subUnitKey": "H22-C2-03-TANGENT",
+      "subUnit": "원과 접선",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "점 $P(-3,2)$에서 원 $(x-1)^2+(y+1)^2=4$에 그은 두 접선의 기울기를 $m_1,m_2$라 할 때, $m_1m_2$의 값은?",
+      "choices": [
+        "$\\dfrac{1}{4}$",
+        "$\\dfrac{5}{12}$",
+        "$\\dfrac{9}{16}$",
+        "$\\dfrac{13}{20}$",
+        "$\\dfrac{12}{5}$"
+      ],
+      "answer": "②",
+      "solution": "접선을 $y-2=m(x--3)$로 두면 중심 $(1,-1)$에서 접선까지의 거리는 반지름 2과 같다.\\n$\\dfrac{|4m+3|}{\\sqrt{m^2+1}}=2$이므로\\n$(12)m^2+24m+(5)=0$이다.\\n두 실근이 두 접선의 기울기이며 수직선 $x=-3$는 중심과의 거리가 4이므로 접선이 아니다.\\n근과 계수의 관계에서 $m_1+m_2=-2$, $m_1m_2=\\dfrac{5}{12}$이다.\n따라서 두 기울기의 곱을 선택한다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/A2-solution.svg",
+      "solutionImageAlt": "원 밖의 점에서 그은 두 접선과 반지름의 수직 관계",
+      "solutionImageCaption": "중심에서 접선까지의 거리가 반지름과 같다는 조건으로 기울기를 구한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "primaryRPM_L3": "원의 접선",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "원의 접선",
+        "rpmRecordId": "H1-RPM-222",
+        "rpmL4SemanticLabel": "기울기가 주어진 접선",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_EXACT_L4_DEBT",
+        "metaFoundationL3": "원의 접선",
+        "metaFoundationL4": "두 접선의 기울기",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_TWO_SLOPES",
+        "crossConceptKeys": [
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "현재 H1-RPM-222의 L4는 기울기가 주어진 접선이며 원본의 외부점 두 접선 기울기 전용 L4가 아님. 원본 Meta Foundation의 기존 TM_TANGENT_TWO_SLOPES 유지."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 외부점·원의 중심·반지름·두 접선·답형을 발문만으로 재구성 가능",
+        "mathSelfCheckEvidence": {
+          "u": 4,
+          "v": 3,
+          "r": 2,
+          "center": [
+            1,
+            -1
+          ],
+          "point": [
+            -3,
+            2
+          ],
+          "slopeSum": "-2/1",
+          "slopeProduct": "5/12",
+          "answer": "5/12",
+          "uniqueTrueChoice": 2
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "$\\dfrac{1}{4}$",
+            "reason": "분모의 반지름 항 부호를 잘못 적용"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "$\\dfrac{9}{16}$",
+            "reason": "반지름 항을 빼지 않고 기울기 곱을 계산"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$\\dfrac{13}{20}$",
+            "reason": "접선거리 제곱식의 감산을 덧셈으로 계산"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$\\dfrac{12}{5}$",
+            "reason": "근과 계수의 관계에서 분자·분모를 바꾸어 계산"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "원의 식·외부점·두 접선의 수학적 조건을 전부 발문에 제공"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/A2-solution.svg",
+          "reason": "두 접점과 반지름-접선 수직관계를 시각화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-JEIL25-2FINAL-Q07-A3",
+      "sourceQid": 7,
+      "sourceUid": "qid_v1_b9644a17aa0796f6680f4939f9db5ddade955db7f8164805d1990aaf15637606",
+      "slot": "A3",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "원의 방정식",
+      "originalCategory": "원의 방정식",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-03",
+      "standardUnit": "원의 방정식",
+      "standardUnitOrder": 3,
+      "subUnitKey": "H22-C2-03-TANGENT",
+      "subUnit": "원과 접선",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "점 $P(-6,5)$에서 원 $(x+1)^2+(y-1)^2=9$에 그은 두 접선의 기울기를 $m_1,m_2$라 할 때, $m_1m_2$의 값은?",
+      "choices": [
+        "$\\dfrac{7}{34}$",
+        "$\\dfrac{7}{16}$",
+        "$\\dfrac{16}{25}$",
+        "$\\dfrac{25}{34}$",
+        "$\\dfrac{16}{7}$"
+      ],
+      "answer": "②",
+      "solution": "접선을 $y-5=m(x--6)$로 두면 중심 $(-1,1)$에서 접선까지의 거리는 반지름 3과 같다.\\n$\\dfrac{|5m+4|}{\\sqrt{m^2+1}}=3$이므로\\n$(16)m^2+40m+(7)=0$이다.\\n두 실근이 두 접선의 기울기이며 수직선 $x=-6$는 중심과의 거리가 5이므로 접선이 아니다.\\n근과 계수의 관계에서 $m_1+m_2=-\\dfrac{5}{2}$, $m_1m_2=\\dfrac{7}{16}$이다.\n따라서 두 기울기의 곱을 선택한다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/A3-solution.svg",
+      "solutionImageAlt": "원 밖의 점에서 그은 두 접선과 반지름의 수직 관계",
+      "solutionImageCaption": "중심에서 접선까지의 거리가 반지름과 같다는 조건으로 기울기를 구한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "primaryRPM_L3": "원의 접선",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "원의 접선",
+        "rpmRecordId": "H1-RPM-222",
+        "rpmL4SemanticLabel": "기울기가 주어진 접선",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_EXACT_L4_DEBT",
+        "metaFoundationL3": "원의 접선",
+        "metaFoundationL4": "두 접선의 기울기",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_TWO_SLOPES",
+        "crossConceptKeys": [
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "현재 H1-RPM-222의 L4는 기울기가 주어진 접선이며 원본의 외부점 두 접선 기울기 전용 L4가 아님. 원본 Meta Foundation의 기존 TM_TANGENT_TWO_SLOPES 유지."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 외부점·원의 중심·반지름·두 접선·답형을 발문만으로 재구성 가능",
+        "mathSelfCheckEvidence": {
+          "u": 5,
+          "v": 4,
+          "r": 3,
+          "center": [
+            -1,
+            1
+          ],
+          "point": [
+            -6,
+            5
+          ],
+          "slopeSum": "-5/2",
+          "slopeProduct": "7/16",
+          "answer": "7/16",
+          "uniqueTrueChoice": 2
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "$\\dfrac{7}{34}$",
+            "reason": "분모의 반지름 항 부호를 잘못 적용"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "$\\dfrac{16}{25}$",
+            "reason": "반지름 항을 빼지 않고 기울기 곱을 계산"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$\\dfrac{25}{34}$",
+            "reason": "접선거리 제곱식의 감산을 덧셈으로 계산"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$\\dfrac{16}{7}$",
+            "reason": "근과 계수의 관계에서 분자·분모를 바꾸어 계산"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "원의 식·외부점·두 접선의 수학적 조건을 전부 발문에 제공"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/A3-solution.svg",
+          "reason": "두 접점과 반지름-접선 수직관계를 시각화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-JEIL25-2FINAL-Q07-B1",
+      "sourceQid": 7,
+      "sourceUid": "qid_v1_b9644a17aa0796f6680f4939f9db5ddade955db7f8164805d1990aaf15637606",
+      "slot": "B1",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "원의 방정식",
+      "originalCategory": "원의 방정식",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-03",
+      "standardUnit": "원의 방정식",
+      "standardUnitOrder": 3,
+      "subUnitKey": "H22-C2-03-TANGENT",
+      "subUnit": "원과 접선",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "점 $P(-2,4)$에서 원 $(x-2)^2+(y+1)^2=1$에 그은 두 접선의 기울기를 $m_1,m_2$라 할 때, $m_1+m_2$의 값은?",
+      "choices": [
+        "$-\\dfrac{8}{3}$",
+        "$-\\dfrac{40}{17}$",
+        "$-\\dfrac{5}{3}$",
+        "$-\\dfrac{4}{3}$",
+        "$\\dfrac{8}{3}$"
+      ],
+      "answer": "①",
+      "solution": "접선을 $y-4=m(x--2)$로 두면 중심 $(2,-1)$에서 접선까지의 거리는 반지름 1과 같다.\\n$\\dfrac{|4m+5|}{\\sqrt{m^2+1}}=1$이므로\\n$(15)m^2+40m+(24)=0$이다.\\n두 실근이 두 접선의 기울기이며 수직선 $x=-2$는 중심과의 거리가 4이므로 접선이 아니다.\\n근과 계수의 관계에서 $m_1+m_2=-\\dfrac{8}{3}$, $m_1m_2=\\dfrac{8}{5}$이다.\n따라서 두 기울기의 합을 선택한다.\n따라서 정답은 ①이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/B1-solution.svg",
+      "solutionImageAlt": "원 밖의 점에서 그은 두 접선과 반지름의 수직 관계",
+      "solutionImageCaption": "중심에서 접선까지의 거리가 반지름과 같다는 조건으로 기울기를 구한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "primaryRPM_L3": "원의 접선",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "원의 접선",
+        "rpmRecordId": "H1-RPM-222",
+        "rpmL4SemanticLabel": "기울기가 주어진 접선",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_EXACT_L4_DEBT",
+        "metaFoundationL3": "원의 접선",
+        "metaFoundationL4": "두 접선의 기울기",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_TWO_SLOPES",
+        "crossConceptKeys": [
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "현재 H1-RPM-222의 L4는 기울기가 주어진 접선이며 원본의 외부점 두 접선 기울기 전용 L4가 아님. 원본 Meta Foundation의 기존 TM_TANGENT_TWO_SLOPES 유지."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 외부점·원의 중심·반지름·두 접선·답형을 발문만으로 재구성 가능",
+        "mathSelfCheckEvidence": {
+          "u": 4,
+          "v": 5,
+          "r": 1,
+          "center": [
+            2,
+            -1
+          ],
+          "point": [
+            -2,
+            4
+          ],
+          "slopeSum": "-8/3",
+          "slopeProduct": "8/5",
+          "answer": "-8/3",
+          "uniqueTrueChoice": 1
+        },
+        "wrongRoutes": [
+          {
+            "choice": "②",
+            "offeredValue": "$-\\dfrac{40}{17}$",
+            "reason": "반지름 제곱을 덧셈으로 잘못 적용"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "$-\\dfrac{5}{3}$",
+            "reason": "근의 합에서 최고차항 계수를 잘못 선택"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$-\\dfrac{4}{3}$",
+            "reason": "이차방정식의 일차항 계수에서 2를 누락"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$\\dfrac{8}{3}$",
+            "reason": "근의 합 부호를 반대로 계산"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "원의 식·외부점·두 접선의 수학적 조건을 전부 발문에 제공"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/B1-solution.svg",
+          "reason": "두 접점과 반지름-접선 수직관계를 시각화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-JEIL25-2FINAL-Q07-B2",
+      "sourceQid": 7,
+      "sourceUid": "qid_v1_b9644a17aa0796f6680f4939f9db5ddade955db7f8164805d1990aaf15637606",
+      "slot": "B2",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "원의 방정식",
+      "originalCategory": "원의 방정식",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-03",
+      "standardUnit": "원의 방정식",
+      "standardUnitOrder": 3,
+      "subUnitKey": "H22-C2-03-TANGENT",
+      "subUnit": "원과 접선",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "점 $P(-7,5)$에서 원 $(x+2)^2+(y-2)^2=4$에 그은 두 접선의 기울기를 $m_1,m_2$라 할 때, $\\dfrac1{m_1}+\\dfrac1{m_2}$의 값은?",
+      "choices": [
+        "$-6$",
+        "$-3$",
+        "$-\\dfrac{30}{13}$",
+        "$-\\dfrac{10}{7}$",
+        "$6$"
+      ],
+      "answer": "①",
+      "solution": "접선을 $y-5=m(x--7)$로 두면 중심 $(-2,2)$에서 접선까지의 거리는 반지름 2과 같다.\\n$\\dfrac{|5m+3|}{\\sqrt{m^2+1}}=2$이므로\\n$(21)m^2+30m+(5)=0$이다.\\n두 실근이 두 접선의 기울기이며 수직선 $x=-7$는 중심과의 거리가 5이므로 접선이 아니다.\\n근과 계수의 관계에서 $m_1+m_2=-\\dfrac{10}{7}$, $m_1m_2=\\dfrac{5}{21}$이다.\n역수의 합은 $\\dfrac{m_1+m_2}{m_1m_2}=-6$이다.\n따라서 정답은 ①이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/B2-solution.svg",
+      "solutionImageAlt": "원 밖의 점에서 그은 두 접선과 반지름의 수직 관계",
+      "solutionImageCaption": "중심에서 접선까지의 거리가 반지름과 같다는 조건으로 기울기를 구한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "primaryRPM_L3": "원의 접선",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "원의 접선",
+        "rpmRecordId": "H1-RPM-222",
+        "rpmL4SemanticLabel": "기울기가 주어진 접선",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_EXACT_L4_DEBT",
+        "metaFoundationL3": "원의 접선",
+        "metaFoundationL4": "두 접선의 기울기",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_TWO_SLOPES",
+        "crossConceptKeys": [
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "현재 H1-RPM-222의 L4는 기울기가 주어진 접선이며 원본의 외부점 두 접선 기울기 전용 L4가 아님. 원본 Meta Foundation의 기존 TM_TANGENT_TWO_SLOPES 유지."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 외부점·원의 중심·반지름·두 접선·답형을 발문만으로 재구성 가능",
+        "mathSelfCheckEvidence": {
+          "u": 5,
+          "v": 3,
+          "r": 2,
+          "center": [
+            -2,
+            2
+          ],
+          "point": [
+            -7,
+            5
+          ],
+          "slopeSum": "-10/7",
+          "slopeProduct": "5/21",
+          "answer": "-6/1",
+          "uniqueTrueChoice": 1
+        },
+        "wrongRoutes": [
+          {
+            "choice": "②",
+            "offeredValue": "$-3$",
+            "reason": "두 근의 합 공식에서 계수 2를 누락"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "$-\\dfrac{30}{13}$",
+            "reason": "반지름 제곱을 덧셈으로 적용"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$-\\dfrac{10}{7}$",
+            "reason": "역수의 합 대신 기울기의 합을 계산"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$6$",
+            "reason": "두 근의 역수의 합 부호를 반대로 계산"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "원의 식·외부점·두 접선의 수학적 조건을 전부 발문에 제공"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/B2-solution.svg",
+          "reason": "두 접점과 반지름-접선 수직관계를 시각화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-JEIL25-2FINAL-Q07-B3",
+      "sourceQid": 7,
+      "sourceUid": "qid_v1_b9644a17aa0796f6680f4939f9db5ddade955db7f8164805d1990aaf15637606",
+      "slot": "B3",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "원의 방정식",
+      "originalCategory": "원의 방정식",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-03",
+      "standardUnit": "원의 방정식",
+      "standardUnitOrder": 3,
+      "subUnitKey": "H22-C2-03-TANGENT",
+      "subUnit": "원과 접선",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "점 $P(-5,5)$에서 원 $(x-1)^2+(y-1)^2=4$에 그은 두 접선의 기울기를 $m_1,m_2$라 할 때, $m_1+m_2$의 값은?",
+      "choices": [
+        "$-4$",
+        "$-\\dfrac{3}{2}$",
+        "$-\\dfrac{6}{5}$",
+        "$-\\dfrac{3}{4}$",
+        "$\\dfrac{3}{2}$"
+      ],
+      "answer": "②",
+      "solution": "접선을 $y-5=m(x--5)$로 두면 중심 $(1,1)$에서 접선까지의 거리는 반지름 2과 같다.\\n$\\dfrac{|6m+4|}{\\sqrt{m^2+1}}=2$이므로\\n$(32)m^2+48m+(12)=0$이다.\\n두 실근이 두 접선의 기울기이며 수직선 $x=-5$는 중심과의 거리가 6이므로 접선이 아니다.\\n근과 계수의 관계에서 $m_1+m_2=-\\dfrac{3}{2}$, $m_1m_2=\\dfrac{3}{8}$이다.\n따라서 두 기울기의 합을 선택한다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/B3-solution.svg",
+      "solutionImageAlt": "원 밖의 점에서 그은 두 접선과 반지름의 수직 관계",
+      "solutionImageCaption": "중심에서 접선까지의 거리가 반지름과 같다는 조건으로 기울기를 구한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "primaryRPM_L3": "원의 접선",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "원의 접선",
+        "rpmRecordId": "H1-RPM-222",
+        "rpmL4SemanticLabel": "기울기가 주어진 접선",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_EXACT_L4_DEBT",
+        "metaFoundationL3": "원의 접선",
+        "metaFoundationL4": "두 접선의 기울기",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_TWO_SLOPES",
+        "crossConceptKeys": [
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "현재 H1-RPM-222의 L4는 기울기가 주어진 접선이며 원본의 외부점 두 접선 기울기 전용 L4가 아님. 원본 Meta Foundation의 기존 TM_TANGENT_TWO_SLOPES 유지."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 외부점·원의 중심·반지름·두 접선·답형을 발문만으로 재구성 가능",
+        "mathSelfCheckEvidence": {
+          "u": 6,
+          "v": 4,
+          "r": 2,
+          "center": [
+            1,
+            1
+          ],
+          "point": [
+            -5,
+            5
+          ],
+          "slopeSum": "-3/2",
+          "slopeProduct": "3/8",
+          "answer": "-3/2",
+          "uniqueTrueChoice": 2
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "$-4$",
+            "reason": "근의 합에서 최고차항 계수를 잘못 선택"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "$-\\dfrac{6}{5}$",
+            "reason": "반지름 제곱을 덧셈으로 잘못 적용"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$-\\dfrac{3}{4}$",
+            "reason": "이차방정식의 일차항 계수에서 2를 누락"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$\\dfrac{3}{2}$",
+            "reason": "근의 합 부호를 반대로 계산"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "원의 식·외부점·두 접선의 수학적 조건을 전부 발문에 제공"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/B3-solution.svg",
+          "reason": "두 접점과 반지름-접선 수직관계를 시각화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-JEIL25-2FINAL-Q07-C1",
+      "sourceQid": 7,
+      "sourceUid": "qid_v1_b9644a17aa0796f6680f4939f9db5ddade955db7f8164805d1990aaf15637606",
+      "slot": "C1",
+      "purpose": "C",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "원의 방정식",
+      "originalCategory": "원의 방정식",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-03",
+      "standardUnit": "원의 방정식",
+      "standardUnitOrder": 3,
+      "subUnitKey": "H22-C2-03-TANGENT",
+      "subUnit": "원과 접선",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "점 $P(0,4)$에서 원 $(x-3)^2+(y-0)^2=1$에 그은 두 접선의 기울기를 $m_1,m_2$라 할 때, $(m_1-m_2)^2$의 값은?",
+      "choices": [
+        "$\\dfrac{3}{2}$",
+        "$\\dfrac{21}{4}$",
+        "$\\dfrac{57}{8}$",
+        "$\\dfrac{87}{8}$",
+        "$\\dfrac{33}{2}$"
+      ],
+      "answer": "①",
+      "solution": "접선을 $y-4=m(x-0)$로 두면 중심 $(3,0)$에서 접선까지의 거리는 반지름 1과 같다.\\n$\\dfrac{|3m+4|}{\\sqrt{m^2+1}}=1$이므로\\n$(8)m^2+24m+(15)=0$이다.\\n두 실근이 두 접선의 기울기이며 수직선 $x=0$는 중심과의 거리가 3이므로 접선이 아니다.\\n근과 계수의 관계에서 $m_1+m_2=-3$, $m_1m_2=\\dfrac{15}{8}$이다.\n두 기울기의 차의 제곱은 $(m_1+m_2)^2-4m_1m_2=\\dfrac{3}{2}$이다.\n따라서 정답은 ①이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/C1-solution.svg",
+      "solutionImageAlt": "원 밖의 점에서 그은 두 접선과 반지름의 수직 관계",
+      "solutionImageCaption": "중심에서 접선까지의 거리가 반지름과 같다는 조건으로 기울기를 구한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "primaryRPM_L3": "원의 접선",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "원의 접선",
+        "rpmRecordId": "H1-RPM-222",
+        "rpmL4SemanticLabel": "기울기가 주어진 접선",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_EXACT_L4_DEBT",
+        "metaFoundationL3": "원의 접선",
+        "metaFoundationL4": "두 접선의 기울기",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_TWO_SLOPES",
+        "crossConceptKeys": [
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "현재 H1-RPM-222의 L4는 기울기가 주어진 접선이며 원본의 외부점 두 접선 기울기 전용 L4가 아님. 원본 Meta Foundation의 기존 TM_TANGENT_TWO_SLOPES 유지."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 외부점·원의 중심·반지름·두 접선·답형을 발문만으로 재구성 가능",
+        "mathSelfCheckEvidence": {
+          "u": 3,
+          "v": 4,
+          "r": 1,
+          "center": [
+            3,
+            0
+          ],
+          "point": [
+            0,
+            4
+          ],
+          "slopeSum": "-3/1",
+          "slopeProduct": "15/8",
+          "answer": "3/2",
+          "uniqueTrueChoice": 1
+        },
+        "wrongRoutes": [
+          {
+            "choice": "②",
+            "offeredValue": "$\\dfrac{21}{4}$",
+            "reason": "근의 곱에 곱하는 2 또는 4를 바꾸어 계산"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "$\\dfrac{57}{8}$",
+            "reason": "두 근의 곱에 필요한 계수를 누락"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$\\dfrac{87}{8}$",
+            "reason": "두 근의 곱 항의 부호와 계수를 모두 잘못 사용"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$\\dfrac{33}{2}$",
+            "reason": "근의 곱 항의 부호를 잘못 적용"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "원의 식·외부점·두 접선의 수학적 조건을 전부 발문에 제공"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/C1-solution.svg",
+          "reason": "두 접점과 반지름-접선 수직관계를 시각화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-JEIL25-2FINAL-Q07-C2",
+      "sourceQid": 7,
+      "sourceUid": "qid_v1_b9644a17aa0796f6680f4939f9db5ddade955db7f8164805d1990aaf15637606",
+      "slot": "C2",
+      "purpose": "C",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "원의 방정식",
+      "originalCategory": "원의 방정식",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-03",
+      "standardUnit": "원의 방정식",
+      "standardUnitOrder": 3,
+      "subUnitKey": "H22-C2-03-TANGENT",
+      "subUnit": "원과 접선",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "점 $P(-3,1)$에서 원 $(x-2)^2+(y+2)^2=4$에 그은 두 접선의 기울기를 $m_1,m_2$라 할 때, $m_1^2+m_2^2$의 값은?",
+      "choices": [
+        "$\\dfrac{160}{147}$",
+        "$\\dfrac{230}{147}$",
+        "$\\dfrac{265}{147}$",
+        "$\\dfrac{335}{147}$",
+        "$\\dfrac{370}{147}$"
+      ],
+      "answer": "②",
+      "solution": "접선을 $y-1=m(x--3)$로 두면 중심 $(2,-2)$에서 접선까지의 거리는 반지름 2과 같다.\\n$\\dfrac{|5m+3|}{\\sqrt{m^2+1}}=2$이므로\\n$(21)m^2+30m+(5)=0$이다.\\n두 실근이 두 접선의 기울기이며 수직선 $x=-3$는 중심과의 거리가 5이므로 접선이 아니다.\\n근과 계수의 관계에서 $m_1+m_2=-\\dfrac{10}{7}$, $m_1m_2=\\dfrac{5}{21}$이다.\n두 제곱의 합은 $(m_1+m_2)^2-2m_1m_2=\\dfrac{230}{147}$이다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/C2-solution.svg",
+      "solutionImageAlt": "원 밖의 점에서 그은 두 접선과 반지름의 수직 관계",
+      "solutionImageCaption": "중심에서 접선까지의 거리가 반지름과 같다는 조건으로 기울기를 구한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "primaryRPM_L3": "원의 접선",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "원의 접선",
+        "rpmRecordId": "H1-RPM-222",
+        "rpmL4SemanticLabel": "기울기가 주어진 접선",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_EXACT_L4_DEBT",
+        "metaFoundationL3": "원의 접선",
+        "metaFoundationL4": "두 접선의 기울기",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_TWO_SLOPES",
+        "crossConceptKeys": [
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "현재 H1-RPM-222의 L4는 기울기가 주어진 접선이며 원본의 외부점 두 접선 기울기 전용 L4가 아님. 원본 Meta Foundation의 기존 TM_TANGENT_TWO_SLOPES 유지."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 외부점·원의 중심·반지름·두 접선·답형을 발문만으로 재구성 가능",
+        "mathSelfCheckEvidence": {
+          "u": 5,
+          "v": 3,
+          "r": 2,
+          "center": [
+            2,
+            -2
+          ],
+          "point": [
+            -3,
+            1
+          ],
+          "slopeSum": "-10/7",
+          "slopeProduct": "5/21",
+          "answer": "230/147",
+          "uniqueTrueChoice": 2
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "$\\dfrac{160}{147}$",
+            "reason": "근의 곱에 곱하는 2 또는 4를 바꾸어 계산"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "$\\dfrac{265}{147}$",
+            "reason": "두 근의 곱에 필요한 계수를 누락"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$\\dfrac{335}{147}$",
+            "reason": "두 근의 곱 항의 부호와 계수를 모두 잘못 사용"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$\\dfrac{370}{147}$",
+            "reason": "근의 곱 항의 부호를 잘못 적용"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "원의 식·외부점·두 접선의 수학적 조건을 전부 발문에 제공"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/C2-solution.svg",
+          "reason": "두 접점과 반지름-접선 수직관계를 시각화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-JEIL25-2FINAL-Q07-C3",
+      "sourceQid": 7,
+      "sourceUid": "qid_v1_b9644a17aa0796f6680f4939f9db5ddade955db7f8164805d1990aaf15637606",
+      "slot": "C3",
+      "purpose": "C",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "원의 방정식",
+      "originalCategory": "원의 방정식",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-03",
+      "standardUnit": "원의 방정식",
+      "standardUnitOrder": 3,
+      "subUnitKey": "H22-C2-03-TANGENT",
+      "subUnit": "원과 접선",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "점 $P(-5,3)$에서 원 $(x+1)^2+(y+2)^2=4$에 그은 두 접선의 기울기를 $m_1,m_2$라 할 때, $(m_1-m_2)^2$의 값은?",
+      "choices": [
+        "$\\dfrac{37}{9}$",
+        "$\\dfrac{137}{18}$",
+        "$\\dfrac{337}{36}$",
+        "$\\dfrac{463}{36}$",
+        "$\\dfrac{163}{9}$"
+      ],
+      "answer": "①",
+      "solution": "접선을 $y-3=m(x--5)$로 두면 중심 $(-1,-2)$에서 접선까지의 거리는 반지름 2과 같다.\\n$\\dfrac{|4m+5|}{\\sqrt{m^2+1}}=2$이므로\\n$(12)m^2+40m+(21)=0$이다.\\n두 실근이 두 접선의 기울기이며 수직선 $x=-5$는 중심과의 거리가 4이므로 접선이 아니다.\\n근과 계수의 관계에서 $m_1+m_2=-\\dfrac{10}{3}$, $m_1m_2=\\dfrac{7}{4}$이다.\n두 기울기의 차의 제곱은 $(m_1+m_2)^2-4m_1m_2=\\dfrac{37}{9}$이다.\n따라서 정답은 ①이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/C3-solution.svg",
+      "solutionImageAlt": "원 밖의 점에서 그은 두 접선과 반지름의 수직 관계",
+      "solutionImageCaption": "중심에서 접선까지의 거리가 반지름과 같다는 조건으로 기울기를 구한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "primaryRPM_L3": "원의 접선",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "원의 접선",
+        "rpmRecordId": "H1-RPM-222",
+        "rpmL4SemanticLabel": "기울기가 주어진 접선",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_EXACT_L4_DEBT",
+        "metaFoundationL3": "원의 접선",
+        "metaFoundationL4": "두 접선의 기울기",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_TWO_SLOPES",
+        "crossConceptKeys": [
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          {
+            "field": "RPM_EXACT_L4_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "현재 H1-RPM-222의 L4는 기울기가 주어진 접선이며 원본의 외부점 두 접선 기울기 전용 L4가 아님. 원본 Meta Foundation의 기존 TM_TANGENT_TWO_SLOPES 유지."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 외부점·원의 중심·반지름·두 접선·답형을 발문만으로 재구성 가능",
+        "mathSelfCheckEvidence": {
+          "u": 4,
+          "v": 5,
+          "r": 2,
+          "center": [
+            -1,
+            -2
+          ],
+          "point": [
+            -5,
+            3
+          ],
+          "slopeSum": "-10/3",
+          "slopeProduct": "7/4",
+          "answer": "37/9",
+          "uniqueTrueChoice": 1
+        },
+        "wrongRoutes": [
+          {
+            "choice": "②",
+            "offeredValue": "$\\dfrac{137}{18}$",
+            "reason": "근의 곱에 곱하는 2 또는 4를 바꾸어 계산"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "$\\dfrac{337}{36}$",
+            "reason": "두 근의 곱에 필요한 계수를 누락"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "$\\dfrac{463}{36}$",
+            "reason": "두 근의 곱 항의 부호와 계수를 모두 잘못 사용"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "$\\dfrac{163}{9}$",
+            "reason": "근의 곱 항의 부호를 잘못 적용"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "원의 식·외부점·두 접선의 수학적 조건을 전부 발문에 제공"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q07/C3-solution.svg",
+          "reason": "두 접점과 반지름-접선 수직관계를 시각화"
+        },
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    }
+  ]
+}
