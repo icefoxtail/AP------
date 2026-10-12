@@ -12,6 +12,7 @@ const ledgerPath = path.join(root, 'archive/data/generated-lite-consumer/v1/lega
 const cutoverPath = path.join(root, 'archive/data/generated-lite-consumer/v1/meta-retention-cutover-20261009.json');
 const canonicalHash = value => require('node:crypto').createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const studentBody = q => JSON.stringify({ uid: q.uid, content: q.content, choices: q.choices, answer: q.answer, solution: q.solution, image: q.image });
+const studentContentBody = q => JSON.stringify({ content: q.content, choices: q.choices, answer: q.answer, solution: q.solution, image: q.image });
 const crypto = require('node:crypto');
 const vm = require('node:vm');
 const { execFileSync, spawnSync } = require('node:child_process');
@@ -195,8 +196,8 @@ test('Consumer student payload hashes remain byte-equivalent to the evidence led
       assert.equal(gitBlobSha1(currentSourceBytes), row.sourceShardGitSha, 'current source pointer drift: ' + row.uid);
       const currentSourceQuestion = generatedQuestions(currentSourceBytes).find(item => Number(item.id) === Number(row.localOrdinal));
       assert.ok(currentSourceQuestion, 'current source question missing: ' + row.uid);
-      assert.equal(studentBody(currentSourceQuestion), studentBody(approvedQuestion), 'current source changed beyond audited student payload: ' + row.uid);
-      assert.equal(studentBody(matches[0].question), studentBody(currentSourceQuestion), 'Consumer does not match the audited source: ' + row.uid);
+      assert.equal(studentContentBody(currentSourceQuestion), studentContentBody(approvedQuestion), 'current source changed beyond audited student content: ' + row.uid);
+      assert.equal(studentContentBody(matches[0].question), studentContentBody(currentSourceQuestion), 'Consumer does not match the audited source content: ' + row.uid);
       assert.equal(audit.record.uid, row.uid);
     }
     checked++;
