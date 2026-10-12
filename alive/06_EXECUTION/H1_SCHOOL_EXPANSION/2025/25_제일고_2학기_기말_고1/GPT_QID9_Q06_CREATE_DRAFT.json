@@ -1,0 +1,1197 @@
+{
+  "schemaVersion": "ALIVE_QID9_AUTHOR_DRAFT_v1",
+  "source": {
+    "path": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+    "examTitle": "25_제일고_2학기_기말_고1_기출",
+    "qid": 6,
+    "sourceUid": "qid_v1_3904d93a26b02f90221332d7d997efe20a41f27d4cfe9620b170c77ea46e6f25",
+    "gitBlobSha1": "252c1cc9a687cadd961183b56ea10d21bf1976b4",
+    "originalContent": "두 점 $A(2,1)$, $B(5,4)$와 직선 $y=x$ 위의 점 $P$에 대하여 $\\overline{AP}+\\overline{BP}$의 최솟값은?",
+    "preservedReadOnly": true
+  },
+  "authority": {
+    "mainAtStart": "816c5602976d858b9705a44483992da6c95e4a11",
+    "runtimeMetaSource": "archive/data/meta-foundation/runtime/geometry-equations-v1.json",
+    "rpmCrosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "sourcePrimaryL3Semantic": "대칭이동을 이용한 최단거리",
+    "rpmParentL3": "대칭이동",
+    "exactL4SemanticDebt": true
+  },
+  "summary": {
+    "authorDraftItems": 9,
+    "svgCreated": 9,
+    "answerDistribution": {
+      "①": 0,
+      "②": 2,
+      "③": 5,
+      "④": 2,
+      "⑤": 0
+    },
+    "geometryFormulaSelfCheck": "9/9",
+    "externalOpenBookReview": "NOT_RUN",
+    "studentRelease": "NOT_AUTHORIZED",
+    "status": "AUTHOR_DRAFT_ONLY",
+    "nextQid": 7,
+    "metadataDebtUids": 9
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-JEIL25-2FINAL-Q06-A1",
+      "sourceQid": 6,
+      "slot": "A1",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "도형의 이동",
+      "originalCategory": "도형의 이동",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "standardUnitOrder": 4,
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "두 점 $A(2,1)$, $B(5,4)$와 직선 $y=x$ 위의 점 $P$에 대하여 $AP+BP$의 최솟값은?",
+      "choices": [
+        "$\\sqrt{13}$",
+        "$2\\sqrt{5}$",
+        "$5$",
+        "$3\\sqrt{5}$",
+        "$2\\sqrt{13}$"
+      ],
+      "answer": "②",
+      "solution": "$A$를 직선 $y=x$에 대하여 대칭이동한 점을 $A'=(1,2)$라 하자. $P$가 $y=x$ 위에 있으므로 $AP=A'P$이다.\n따라서 $AP+BP=A'P+BP\\ge A'B=\\sqrt{(5-1)^2+(4-2)^2}=\\sqrt{20}=2\\sqrt5$이다. 선분 $A'B$는 $y=x$와 $(3,3)$에서 만나므로 이때 등호가 성립한다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/A1-solution.svg",
+      "solutionImageAlt": "y=x에 대칭한 점, A에서 P를 거쳐 B로 가는 길이와 최단경로",
+      "solutionImageCaption": "대칭점과 최단경로의 관계를 비교한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "primaryRPM_L3": "대칭이동",
+        "sourcePrimaryL3Semantic": "대칭이동을 이용한 최단거리",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-228",
+        "rpmL4SemanticLabel": "직선에 대한 대칭",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_SHORTEST_TEMPLATE",
+        "metaFoundationL3": "대칭이동을 이용한 최단거리",
+        "metaFoundationL4": "한 직선에 대한 대칭이동을 이용한 최단거리",
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_ONE_LINE",
+        "crossConceptKeys": [
+          "CC_DISTANCE_TWO_POINTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 2,
+        "experienceAxis": "대칭점을 이용해 꺾인 경로를 직선으로 펴기",
+        "metadataDebt": [
+          {
+            "field": "RPM_L3_L4_DIRECT_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM canonical symmetry L3 (H1-RPM-227/228) is active but its L4 describes generic reflection, not the source Meta Foundation shortest-path PT/TPL exact binding. Preserve source semantic and do not alter RPM LOCKED."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: point positions, reflection line and answer target defined; final student question independently reconstructed",
+        "mathSelfCheckEvidence": {
+          "A": [
+            2,
+            1
+          ],
+          "B": [
+            5,
+            4
+          ],
+          "AReflected": [
+            1,
+            2
+          ],
+          "optimumOrSelectedP": [
+            3,
+            3
+          ],
+          "unconstrainedMinLength": 4.47213595499958,
+          "claimedAnswer": "$2\\sqrt{5}$",
+          "reflectionDistanceParity": true,
+          "relevantBoundary": "unconstrained segment intersection"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "$\\sqrt{13}$",
+            "reason": "대칭을 하지 않고 원래 두 점의 거리 또는 한 구간 거리만 구하는 오류"
+          },
+          {
+            "choice": "③",
+            "offeredOption": "$5$",
+            "reason": "수선 거리 또는 한 축 좌표차만 사용하는 오류"
+          },
+          {
+            "choice": "④",
+            "offeredOption": "$3\\sqrt{5}$",
+            "reason": "대칭 후 두 성분의 길이제곱·근호 계산에 생기는 오류"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "$2\\sqrt{13}$",
+            "reason": "정수·교점 조건 또는 답형을 누락하여 길이/좌표의 다른 양을 택하는 오류"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "모든 핵심 좌표와 대칭축이 학생 발문에 존재해 문제용 그림 없이 조건 완결"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "reason": "원래 꺾인 경로의 반사와 최단선분을 보여주는 도형이 실질적 학습에 필요",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/A1-solution.svg"
+        },
+        "authorSelfCheck": "CHECKED_WITH_EXACT_GEOMETRY_RECOMPUTATION",
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-JEIL25-2FINAL-Q06-A2",
+      "sourceQid": 6,
+      "slot": "A2",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "도형의 이동",
+      "originalCategory": "도형의 이동",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "standardUnitOrder": 4,
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "두 점 $A(3,1)$, $B(6,2)$와 직선 $y=x$ 위의 점 $P$에 대하여 $AP+BP$의 최솟값은?",
+      "choices": [
+        "$\\sqrt{17}$",
+        "$5$",
+        "$\\sqrt{26}$",
+        "$\\sqrt{29}$",
+        "$6$"
+      ],
+      "answer": "③",
+      "solution": "$A$를 $y=x$에 대하여 대칭이동하면 $A'=(1,3)$이다. $AP=A'P$이므로 $AP+BP\\ge A'B$이다.\n$A'B=\\sqrt{(6-1)^2+(2-3)^2}=\\sqrt{26}$이다.\n$A'B$ 위의 점을 $(1+5t,3-t)$라 두면 $y=x$와의 교점은 $1+5t=3-t$에서 $t=\\dfrac13$, 즉 $P=\\left(\\dfrac83,\\dfrac83\\right)$이다. 선분 내부이므로 등호가 성립한다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/A2-solution.svg",
+      "solutionImageAlt": "y=x에 대칭한 점, A에서 P를 거쳐 B로 가는 길이와 최단경로",
+      "solutionImageCaption": "대칭점과 최단경로의 관계를 비교한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "primaryRPM_L3": "대칭이동",
+        "sourcePrimaryL3Semantic": "대칭이동을 이용한 최단거리",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-228",
+        "rpmL4SemanticLabel": "직선에 대한 대칭",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_SHORTEST_TEMPLATE",
+        "metaFoundationL3": "대칭이동을 이용한 최단거리",
+        "metaFoundationL4": "한 직선에 대한 대칭이동을 이용한 최단거리",
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_ONE_LINE",
+        "crossConceptKeys": [
+          "CC_DISTANCE_TWO_POINTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 2,
+        "experienceAxis": "교점이 분수좌표인 경우도 대칭법 성립",
+        "metadataDebt": [
+          {
+            "field": "RPM_L3_L4_DIRECT_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM canonical symmetry L3 (H1-RPM-227/228) is active but its L4 describes generic reflection, not the source Meta Foundation shortest-path PT/TPL exact binding. Preserve source semantic and do not alter RPM LOCKED."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: point positions, reflection line and answer target defined; final student question independently reconstructed",
+        "mathSelfCheckEvidence": {
+          "A": [
+            3,
+            1
+          ],
+          "B": [
+            6,
+            2
+          ],
+          "AReflected": [
+            1,
+            3
+          ],
+          "optimumOrSelectedP": [
+            2.6666666666666665,
+            2.6666666666666665
+          ],
+          "unconstrainedMinLength": 5.099019513592785,
+          "claimedAnswer": "$\\sqrt{26}$",
+          "reflectionDistanceParity": true,
+          "relevantBoundary": "unconstrained segment intersection"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "$\\sqrt{17}$",
+            "reason": "대칭을 하지 않고 원래 두 점의 거리 또는 한 구간 거리만 구하는 오류"
+          },
+          {
+            "choice": "②",
+            "offeredOption": "$5$",
+            "reason": "수선 거리 또는 한 축 좌표차만 사용하는 오류"
+          },
+          {
+            "choice": "④",
+            "offeredOption": "$\\sqrt{29}$",
+            "reason": "대칭 후 두 성분의 길이제곱·근호 계산에 생기는 오류"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "$6$",
+            "reason": "정수·교점 조건 또는 답형을 누락하여 길이/좌표의 다른 양을 택하는 오류"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "모든 핵심 좌표와 대칭축이 학생 발문에 존재해 문제용 그림 없이 조건 완결"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "reason": "원래 꺾인 경로의 반사와 최단선분을 보여주는 도형이 실질적 학습에 필요",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/A2-solution.svg"
+        },
+        "authorSelfCheck": "CHECKED_WITH_EXACT_GEOMETRY_RECOMPUTATION",
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-JEIL25-2FINAL-Q06-A3",
+      "sourceQid": 6,
+      "slot": "A3",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "도형의 이동",
+      "originalCategory": "도형의 이동",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "standardUnitOrder": 4,
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "두 점 $A(2,1)$, $B(3,5)$와 $y$축 위의 점 $P$에 대하여 $AP+BP$의 최솟값은?",
+      "choices": [
+        "$5$",
+        "$6$",
+        "$\\sqrt{41}$",
+        "$7$",
+        "$8$"
+      ],
+      "answer": "③",
+      "solution": "$A$를 $y$축에 대하여 대칭이동하면 $A'=(-2,1)$이다. $P$가 $y$축 위에 있으므로 $AP=A'P$이다.\n$A'P+PB\\ge A'B=\\sqrt{(3+2)^2+(5-1)^2}=\\sqrt{41}$이다.\n$A'$와 $B$가 $y$축의 서로 다른 쪽에 있으므로 선분 $A'B$는 $y$축과 만난다. 그 교점이 최솟값을 만든다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/A3-solution.svg",
+      "solutionImageAlt": "x=0에 대칭한 점, A에서 P를 거쳐 B로 가는 길이와 최단경로",
+      "solutionImageCaption": "대칭점과 최단경로의 관계를 비교한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "primaryRPM_L3": "대칭이동",
+        "sourcePrimaryL3Semantic": "대칭이동을 이용한 최단거리",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-227",
+        "rpmL4SemanticLabel": "x축·y축·원점 대칭",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_SHORTEST_TEMPLATE",
+        "metaFoundationL3": "대칭이동을 이용한 최단거리",
+        "metaFoundationL4": "한 직선에 대한 대칭이동을 이용한 최단거리",
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_ONE_LINE",
+        "crossConceptKeys": [
+          "CC_DISTANCE_TWO_POINTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 2,
+        "experienceAxis": "대칭축을 y축으로 바꿔 풀이 적용",
+        "metadataDebt": [
+          {
+            "field": "RPM_L3_L4_DIRECT_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM canonical symmetry L3 (H1-RPM-227/228) is active but its L4 describes generic reflection, not the source Meta Foundation shortest-path PT/TPL exact binding. Preserve source semantic and do not alter RPM LOCKED."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: point positions, reflection line and answer target defined; final student question independently reconstructed",
+        "mathSelfCheckEvidence": {
+          "A": [
+            2,
+            1
+          ],
+          "B": [
+            3,
+            5
+          ],
+          "AReflected": [
+            -2,
+            1
+          ],
+          "optimumOrSelectedP": [
+            0,
+            2.6
+          ],
+          "unconstrainedMinLength": 6.4031242374328485,
+          "claimedAnswer": "$\\sqrt{41}$",
+          "reflectionDistanceParity": true,
+          "relevantBoundary": "unconstrained segment intersection"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "$5$",
+            "reason": "대칭을 하지 않고 원래 두 점의 거리 또는 한 구간 거리만 구하는 오류"
+          },
+          {
+            "choice": "②",
+            "offeredOption": "$6$",
+            "reason": "수선 거리 또는 한 축 좌표차만 사용하는 오류"
+          },
+          {
+            "choice": "④",
+            "offeredOption": "$7$",
+            "reason": "대칭 후 두 성분의 길이제곱·근호 계산에 생기는 오류"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "$8$",
+            "reason": "정수·교점 조건 또는 답형을 누락하여 길이/좌표의 다른 양을 택하는 오류"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "모든 핵심 좌표와 대칭축이 학생 발문에 존재해 문제용 그림 없이 조건 완결"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "reason": "원래 꺾인 경로의 반사와 최단선분을 보여주는 도형이 실질적 학습에 필요",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/A3-solution.svg"
+        },
+        "authorSelfCheck": "CHECKED_WITH_EXACT_GEOMETRY_RECOMPUTATION",
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-JEIL25-2FINAL-Q06-B1",
+      "sourceQid": 6,
+      "slot": "B1",
+      "purpose": "B",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "도형의 이동",
+      "originalCategory": "도형의 이동",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "standardUnitOrder": 4,
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "두 점 $A(1,2)$, $B(6,3)$와 $x$축 위의 점 $P$에 대하여 $AP+BP$의 최솟값은?",
+      "choices": [
+        "$5$",
+        "$\\sqrt{41}$",
+        "$7$",
+        "$5\\sqrt2$",
+        "$8$"
+      ],
+      "answer": "④",
+      "solution": "$A$를 $x$축에 대하여 대칭이동하면 $A'=(1,-2)$이다. 따라서 $AP+BP=A'P+PB\\ge A'B$이다.\n$A'B=\\sqrt{(6-1)^2+(3+2)^2}=\\sqrt{50}=5\\sqrt2$이다.\n선분 $A'B$는 $x$축과 교차하므로 그 교점 $P=(3,0)$에서 등호가 성립한다.\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/B1-solution.svg",
+      "solutionImageAlt": "y=0에 대칭한 점, A에서 P를 거쳐 B로 가는 길이와 최단경로",
+      "solutionImageCaption": "대칭점과 최단경로의 관계를 비교한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "primaryRPM_L3": "대칭이동",
+        "sourcePrimaryL3Semantic": "대칭이동을 이용한 최단거리",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-227",
+        "rpmL4SemanticLabel": "x축·y축·원점 대칭",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_SHORTEST_TEMPLATE",
+        "metaFoundationL3": "대칭이동을 이용한 최단거리",
+        "metaFoundationL4": "한 직선에 대한 대칭이동을 이용한 최단거리",
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_ONE_LINE",
+        "crossConceptKeys": [
+          "CC_DISTANCE_TWO_POINTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "experienceAxis": "x축 대칭에서 최솟값 구조 확인",
+        "metadataDebt": [
+          {
+            "field": "RPM_L3_L4_DIRECT_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM canonical symmetry L3 (H1-RPM-227/228) is active but its L4 describes generic reflection, not the source Meta Foundation shortest-path PT/TPL exact binding. Preserve source semantic and do not alter RPM LOCKED."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: point positions, reflection line and answer target defined; final student question independently reconstructed",
+        "mathSelfCheckEvidence": {
+          "A": [
+            1,
+            2
+          ],
+          "B": [
+            6,
+            3
+          ],
+          "AReflected": [
+            1,
+            -2
+          ],
+          "optimumOrSelectedP": [
+            3,
+            0
+          ],
+          "unconstrainedMinLength": 7.0710678118654755,
+          "claimedAnswer": "$5\\sqrt2$",
+          "reflectionDistanceParity": true,
+          "relevantBoundary": "unconstrained segment intersection"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "$5$",
+            "reason": "대칭을 하지 않고 원래 두 점의 거리 또는 한 구간 거리만 구하는 오류"
+          },
+          {
+            "choice": "②",
+            "offeredOption": "$\\sqrt{41}$",
+            "reason": "수선 거리 또는 한 축 좌표차만 사용하는 오류"
+          },
+          {
+            "choice": "③",
+            "offeredOption": "$7$",
+            "reason": "대칭 후 두 성분의 길이제곱·근호 계산에 생기는 오류"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "$8$",
+            "reason": "정수·교점 조건 또는 답형을 누락하여 길이/좌표의 다른 양을 택하는 오류"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "모든 핵심 좌표와 대칭축이 학생 발문에 존재해 문제용 그림 없이 조건 완결"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "reason": "원래 꺾인 경로의 반사와 최단선분을 보여주는 도형이 실질적 학습에 필요",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/B1-solution.svg"
+        },
+        "authorSelfCheck": "CHECKED_WITH_EXACT_GEOMETRY_RECOMPUTATION",
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-JEIL25-2FINAL-Q06-B2",
+      "sourceQid": 6,
+      "slot": "B2",
+      "purpose": "B",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "도형의 이동",
+      "originalCategory": "도형의 이동",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "standardUnitOrder": 4,
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "두 점 $A(3,1)$, $B(4,2)$와 직선 $y=-x$ 위의 점 $P$에 대하여 $AP+BP$의 최솟값은?",
+      "choices": [
+        "$5$",
+        "$\\sqrt{34}$",
+        "$7$",
+        "$5\\sqrt2$",
+        "$8$"
+      ],
+      "answer": "④",
+      "solution": "점 $(x,y)$를 직선 $y=-x$에 대하여 대칭이동하면 $(-y,-x)$가 된다. 따라서 $A'=(-1,-3)$이다.\n$AP+PB=A'P+PB\\ge A'B=\\sqrt{(4+1)^2+(2+3)^2}=5\\sqrt2$이다.\n$A'B$는 $y=-x$와 $(1,-1)$에서 만나므로 등호가 성립한다.\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/B2-solution.svg",
+      "solutionImageAlt": "y=-x에 대칭한 점, A에서 P를 거쳐 B로 가는 길이와 최단경로",
+      "solutionImageCaption": "대칭점과 최단경로의 관계를 비교한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "primaryRPM_L3": "대칭이동",
+        "sourcePrimaryL3Semantic": "대칭이동을 이용한 최단거리",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-228",
+        "rpmL4SemanticLabel": "직선에 대한 대칭",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_SHORTEST_TEMPLATE",
+        "metaFoundationL3": "대칭이동을 이용한 최단거리",
+        "metaFoundationL4": "한 직선에 대한 대칭이동을 이용한 최단거리",
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_ONE_LINE",
+        "crossConceptKeys": [
+          "CC_DISTANCE_TWO_POINTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "experienceAxis": "y=-x 대칭을 적용한 최단경로",
+        "metadataDebt": [
+          {
+            "field": "RPM_L3_L4_DIRECT_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM canonical symmetry L3 (H1-RPM-227/228) is active but its L4 describes generic reflection, not the source Meta Foundation shortest-path PT/TPL exact binding. Preserve source semantic and do not alter RPM LOCKED."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: point positions, reflection line and answer target defined; final student question independently reconstructed",
+        "mathSelfCheckEvidence": {
+          "A": [
+            3,
+            1
+          ],
+          "B": [
+            4,
+            2
+          ],
+          "AReflected": [
+            -1,
+            -3
+          ],
+          "optimumOrSelectedP": [
+            1,
+            -1
+          ],
+          "unconstrainedMinLength": 7.0710678118654755,
+          "claimedAnswer": "$5\\sqrt2$",
+          "reflectionDistanceParity": true,
+          "relevantBoundary": "unconstrained segment intersection"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "$5$",
+            "reason": "대칭을 하지 않고 원래 두 점의 거리 또는 한 구간 거리만 구하는 오류"
+          },
+          {
+            "choice": "②",
+            "offeredOption": "$\\sqrt{34}$",
+            "reason": "수선 거리 또는 한 축 좌표차만 사용하는 오류"
+          },
+          {
+            "choice": "③",
+            "offeredOption": "$7$",
+            "reason": "대칭 후 두 성분의 길이제곱·근호 계산에 생기는 오류"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "$8$",
+            "reason": "정수·교점 조건 또는 답형을 누락하여 길이/좌표의 다른 양을 택하는 오류"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "모든 핵심 좌표와 대칭축이 학생 발문에 존재해 문제용 그림 없이 조건 완결"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "reason": "원래 꺾인 경로의 반사와 최단선분을 보여주는 도형이 실질적 학습에 필요",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/B2-solution.svg"
+        },
+        "authorSelfCheck": "CHECKED_WITH_EXACT_GEOMETRY_RECOMPUTATION",
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-JEIL25-2FINAL-Q06-B3",
+      "sourceQid": 6,
+      "slot": "B3",
+      "purpose": "B",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "도형의 이동",
+      "originalCategory": "도형의 이동",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "standardUnitOrder": 4,
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "두 점 $A(4,1)$, $B(5,2)$와 직선 $y=x$ 위의 점 $P$에 대하여 $AP+BP$가 최소가 되는 점 $P=(a,b)$의 $a+b$는?",
+      "choices": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$7$",
+        "$8$"
+      ],
+      "answer": "③",
+      "solution": "$A$의 대칭점은 $A'=(1,4)$이다. 최소 경로는 직선 $A'B$가 $y=x$와 만나는 점에서 얻는다.\n선분 $A'B$ 위의 점을 $(1+4t,4-2t)$ ($0\\le t\\le1$)라 두면 $y=x$에서 $1+4t=4-2t$, 즉 $t=\\dfrac12$이다.\n따라서 $P=(3,3)$이고 $a+b=6$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/B3-solution.svg",
+      "solutionImageAlt": "y=x에 대칭한 점, A에서 P를 거쳐 B로 가는 길이와 최단경로",
+      "solutionImageCaption": "대칭점과 최단경로의 관계를 비교한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "primaryRPM_L3": "대칭이동",
+        "sourcePrimaryL3Semantic": "대칭이동을 이용한 최단거리",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-228",
+        "rpmL4SemanticLabel": "직선에 대한 대칭",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_SHORTEST_TEMPLATE",
+        "metaFoundationL3": "대칭이동을 이용한 최단거리",
+        "metaFoundationL4": "한 직선에 대한 대칭이동을 이용한 최단거리",
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_ONE_LINE",
+        "crossConceptKeys": [
+          "CC_DISTANCE_TWO_POINTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "experienceAxis": "대칭 후 최솟값 실현점을 계산",
+        "metadataDebt": [
+          {
+            "field": "RPM_L3_L4_DIRECT_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM canonical symmetry L3 (H1-RPM-227/228) is active but its L4 describes generic reflection, not the source Meta Foundation shortest-path PT/TPL exact binding. Preserve source semantic and do not alter RPM LOCKED."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: point positions, reflection line and answer target defined; final student question independently reconstructed",
+        "mathSelfCheckEvidence": {
+          "A": [
+            4,
+            1
+          ],
+          "B": [
+            5,
+            2
+          ],
+          "AReflected": [
+            1,
+            4
+          ],
+          "optimumOrSelectedP": [
+            3,
+            3
+          ],
+          "unconstrainedMinLength": 4.47213595499958,
+          "claimedAnswer": "$6$",
+          "reflectionDistanceParity": true,
+          "relevantBoundary": "unconstrained segment intersection"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "$4$",
+            "reason": "대칭을 하지 않고 원래 두 점의 거리 또는 한 구간 거리만 구하는 오류"
+          },
+          {
+            "choice": "②",
+            "offeredOption": "$5$",
+            "reason": "수선 거리 또는 한 축 좌표차만 사용하는 오류"
+          },
+          {
+            "choice": "④",
+            "offeredOption": "$7$",
+            "reason": "대칭 후 두 성분의 길이제곱·근호 계산에 생기는 오류"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "$8$",
+            "reason": "정수·교점 조건 또는 답형을 누락하여 길이/좌표의 다른 양을 택하는 오류"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "모든 핵심 좌표와 대칭축이 학생 발문에 존재해 문제용 그림 없이 조건 완결"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "reason": "원래 꺾인 경로의 반사와 최단선분을 보여주는 도형이 실질적 학습에 필요",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/B3-solution.svg"
+        },
+        "authorSelfCheck": "CHECKED_WITH_EXACT_GEOMETRY_RECOMPUTATION",
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-JEIL25-2FINAL-Q06-C1",
+      "sourceQid": 6,
+      "slot": "C1",
+      "purpose": "C",
+      "modeCandidate": "TYPE_BANK",
+      "level": "상",
+      "category": "도형의 이동",
+      "originalCategory": "도형의 이동",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "standardUnitOrder": 4,
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "두 점 $A(5,1)$, $B(7,3)$와 직선 $y=x$ 위의 점 $P$에 대하여 $AP+BP$가 최소가 되는 점 $P$의 $x$좌표는?",
+      "choices": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "answer": "③",
+      "solution": "$A(5,1)$의 대칭점은 $A'=(1,5)$이다. $AP+BP$의 최솟값은 $A',P,B$가 한 직선에 있을 때 얻는다.\n선분 $A'B$를 $(1+6t,5-2t)$ ($0\\le t\\le1$)로 나타내면 $y=x$에서 $1+6t=5-2t$이다.\n따라서 $t=\\dfrac12$이고 $P=(4,4)$이므로 $x$좌표는 4이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/C1-solution.svg",
+      "solutionImageAlt": "y=x에 대칭한 점, A에서 P를 거쳐 B로 가는 길이와 최단경로",
+      "solutionImageCaption": "대칭점과 최단경로의 관계를 비교한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "primaryRPM_L3": "대칭이동",
+        "sourcePrimaryL3Semantic": "대칭이동을 이용한 최단거리",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-228",
+        "rpmL4SemanticLabel": "직선에 대한 대칭",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_SHORTEST_TEMPLATE",
+        "metaFoundationL3": "대칭이동을 이용한 최단거리",
+        "metaFoundationL4": "한 직선에 대한 대칭이동을 이용한 최단거리",
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_ONE_LINE",
+        "crossConceptKeys": [
+          "CC_DISTANCE_TWO_POINTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "experienceAxis": "대칭점-직선 매개 관계에서 최소 실현점 역산",
+        "metadataDebt": [
+          {
+            "field": "RPM_L3_L4_DIRECT_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM canonical symmetry L3 (H1-RPM-227/228) is active but its L4 describes generic reflection, not the source Meta Foundation shortest-path PT/TPL exact binding. Preserve source semantic and do not alter RPM LOCKED."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: point positions, reflection line and answer target defined; final student question independently reconstructed",
+        "mathSelfCheckEvidence": {
+          "A": [
+            5,
+            1
+          ],
+          "B": [
+            7,
+            3
+          ],
+          "AReflected": [
+            1,
+            5
+          ],
+          "optimumOrSelectedP": [
+            4,
+            4
+          ],
+          "unconstrainedMinLength": 6.324555320336759,
+          "claimedAnswer": "$4$",
+          "reflectionDistanceParity": true,
+          "relevantBoundary": "unconstrained segment intersection"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "$2$",
+            "reason": "대칭을 하지 않고 원래 두 점의 거리 또는 한 구간 거리만 구하는 오류"
+          },
+          {
+            "choice": "②",
+            "offeredOption": "$3$",
+            "reason": "수선 거리 또는 한 축 좌표차만 사용하는 오류"
+          },
+          {
+            "choice": "④",
+            "offeredOption": "$5$",
+            "reason": "대칭 후 두 성분의 길이제곱·근호 계산에 생기는 오류"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "$6$",
+            "reason": "정수·교점 조건 또는 답형을 누락하여 길이/좌표의 다른 양을 택하는 오류"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "모든 핵심 좌표와 대칭축이 학생 발문에 존재해 문제용 그림 없이 조건 완결"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "reason": "원래 꺾인 경로의 반사와 최단선분을 보여주는 도형이 실질적 학습에 필요",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/C1-solution.svg"
+        },
+        "authorSelfCheck": "CHECKED_WITH_EXACT_GEOMETRY_RECOMPUTATION",
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-JEIL25-2FINAL-Q06-C2",
+      "sourceQid": 6,
+      "slot": "C2",
+      "purpose": "C",
+      "modeCandidate": "TYPE_BANK",
+      "level": "상",
+      "category": "도형의 이동",
+      "originalCategory": "도형의 이동",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "standardUnitOrder": 4,
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "두 점 $A(2,1)$, $B(5,4)$가 있다. $P=(n,n)$이고 $n$은 $4$ 이상의 자연수일 때, $AP+BP$의 최솟값은?",
+      "choices": [
+        "$\\sqrt{10}$",
+        "$\\sqrt{13}$",
+        "$1+\\sqrt{13}$",
+        "$\\sqrt{26}$",
+        "$2+\\sqrt{13}$"
+      ],
+      "answer": "③",
+      "solution": "자연수 $n\\ge4$에 대하여 $AP^2=(n-2)^2+(n-1)^2$, $BP^2=(n-5)^2+(n-4)^2$이다.\n$n\\ge4$에서 $(n-2)^2$와 $(n-1)^2$는 각각 증가하므로 $AP$는 증가한다. 또한 $n=4,5$일 때 $BP=1$이며 $n\\ge6$이면 $BP>1$이다.\n따라서 $AP+BP$는 $n=4$에서 최소이다. 이때 $AP=\\sqrt{(4-2)^2+(4-1)^2}=\\sqrt{13}$, $BP=1$이므로 최솟값은 $1+\\sqrt{13}$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/C2-solution.svg",
+      "solutionImageAlt": "y=x에 대칭한 점, A에서 P를 거쳐 B로 가는 길이와 최단경로",
+      "solutionImageCaption": "대칭점과 최단경로의 관계를 비교한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "primaryRPM_L3": "대칭이동",
+        "sourcePrimaryL3Semantic": "대칭이동을 이용한 최단거리",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-228",
+        "rpmL4SemanticLabel": "직선에 대한 대칭",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_SHORTEST_TEMPLATE",
+        "metaFoundationL3": "대칭이동을 이용한 최단거리",
+        "metaFoundationL4": "한 직선에 대한 대칭이동을 이용한 최단거리",
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_ONE_LINE",
+        "crossConceptKeys": [
+          "CC_DISTANCE_TWO_POINTS"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "experienceAxis": "정수 격자점 제한으로 무제약 최적점과 달라지는 경계",
+        "metadataDebt": [
+          {
+            "field": "RPM_L3_L4_DIRECT_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM canonical symmetry L3 (H1-RPM-227/228) is active but its L4 describes generic reflection, not the source Meta Foundation shortest-path PT/TPL exact binding. Preserve source semantic and do not alter RPM LOCKED."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: point positions, reflection line and answer target defined; final student question independently reconstructed",
+        "mathSelfCheckEvidence": {
+          "A": [
+            2,
+            1
+          ],
+          "B": [
+            5,
+            4
+          ],
+          "AReflected": [
+            1,
+            2
+          ],
+          "optimumOrSelectedP": [
+            4,
+            4
+          ],
+          "unconstrainedMinLength": 4.47213595499958,
+          "claimedAnswer": "$1+\\sqrt{13}$",
+          "reflectionDistanceParity": true,
+          "relevantBoundary": "n integer >=4"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "$\\sqrt{10}$",
+            "reason": "대칭을 하지 않고 원래 두 점의 거리 또는 한 구간 거리만 구하는 오류"
+          },
+          {
+            "choice": "②",
+            "offeredOption": "$\\sqrt{13}$",
+            "reason": "수선 거리 또는 한 축 좌표차만 사용하는 오류"
+          },
+          {
+            "choice": "④",
+            "offeredOption": "$\\sqrt{26}$",
+            "reason": "대칭 후 두 성분의 길이제곱·근호 계산에 생기는 오류"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "$2+\\sqrt{13}$",
+            "reason": "정수·교점 조건 또는 답형을 누락하여 길이/좌표의 다른 양을 택하는 오류"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "모든 핵심 좌표와 대칭축이 학생 발문에 존재해 문제용 그림 없이 조건 완결"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "reason": "원래 꺾인 경로의 반사와 최단선분을 보여주는 도형이 실질적 학습에 필요",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/C2-solution.svg"
+        },
+        "authorSelfCheck": "CHECKED_WITH_EXACT_GEOMETRY_RECOMPUTATION",
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-JEIL25-2FINAL-Q06-C3",
+      "sourceQid": 6,
+      "slot": "C3",
+      "purpose": "C",
+      "modeCandidate": "TYPE_BANK",
+      "level": "상",
+      "category": "도형의 이동",
+      "originalCategory": "도형의 이동",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "standardUnitOrder": 4,
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "점 $A(2,1)$과 점 $B(5,k)$가 있다. $k$는 $1,2,3,4$ 중 하나이고, 점 $P$는 직선 $y=x$ 위를 움직인다. 가능한 모든 $k$와 $P$에 대하여 $AP+BP$의 최솟값은?",
+      "choices": [
+        "$\\sqrt{13}$",
+        "$4$",
+        "$\\sqrt{17}$",
+        "$2\\sqrt5$",
+        "$5$"
+      ],
+      "answer": "②",
+      "solution": "$A$의 대칭점은 $A'=(1,2)$이다. $k=1,2,3,4$에 대하여 $A'$와 $B(5,k)$는 직선 $y=x$의 서로 다른 쪽에 있으므로 $AP+BP$의 최솟값은 $A'B$이다.\n$A'B=\\sqrt{(5-1)^2+(k-2)^2}=\\sqrt{16+(k-2)^2}$이므로 $k=2$에서 최소가 되고 그 값은 $4$이다. 이때 직선 $A'B$와 $y=x$의 교점 $P=(2,2)$에서 실제로 등호가 성립한다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/C3-solution.svg",
+      "solutionImageAlt": "y=x에 대칭한 점, A에서 P를 거쳐 B로 가는 길이와 최단경로",
+      "solutionImageCaption": "대칭점과 최단경로의 관계를 비교한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "primaryRPM_L3": "대칭이동",
+        "sourcePrimaryL3Semantic": "대칭이동을 이용한 최단거리",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-228",
+        "rpmL4SemanticLabel": "직선에 대한 대칭",
+        "rpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_SHORTEST_TEMPLATE",
+        "metaFoundationL3": "대칭이동을 이용한 최단거리",
+        "metaFoundationL4": "한 직선에 대한 대칭이동을 이용한 최단거리",
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_ONE_LINE",
+        "crossConceptKeys": [
+          "CC_DISTANCE_TWO_POINTS"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "experienceAxis": "대칭 최소화와 유한 정수 매개변수를 순서대로 최적화",
+        "metadataDebt": [
+          {
+            "field": "RPM_L3_L4_DIRECT_BINDING",
+            "status": "EVIDENCE_DEBT",
+            "reason": "RPM canonical symmetry L3 (H1-RPM-227/228) is active but its L4 describes generic reflection, not the source Meta Foundation shortest-path PT/TPL exact binding. Preserve source semantic and do not alter RPM LOCKED."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: point positions, reflection line and answer target defined; final student question independently reconstructed",
+        "mathSelfCheckEvidence": {
+          "A": [
+            2,
+            1
+          ],
+          "B": [
+            5,
+            2
+          ],
+          "AReflected": [
+            1,
+            2
+          ],
+          "optimumOrSelectedP": [
+            2,
+            2
+          ],
+          "unconstrainedMinLength": 4,
+          "claimedAnswer": "$4$",
+          "reflectionDistanceParity": true,
+          "relevantBoundary": "k=1,2,3,4"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredOption": "$\\sqrt{13}$",
+            "reason": "대칭을 하지 않고 원래 두 점의 거리 또는 한 구간 거리만 구하는 오류"
+          },
+          {
+            "choice": "③",
+            "offeredOption": "$\\sqrt{17}$",
+            "reason": "수선 거리 또는 한 축 좌표차만 사용하는 오류"
+          },
+          {
+            "choice": "④",
+            "offeredOption": "$2\\sqrt5$",
+            "reason": "대칭 후 두 성분의 길이제곱·근호 계산에 생기는 오류"
+          },
+          {
+            "choice": "⑤",
+            "offeredOption": "$5$",
+            "reason": "정수·교점 조건 또는 답형을 누락하여 길이/좌표의 다른 양을 택하는 오류"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "모든 핵심 좌표와 대칭축이 학생 발문에 존재해 문제용 그림 없이 조건 완결"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "reason": "원래 꺾인 경로의 반사와 최단선분을 보여주는 도형이 실질적 학습에 필요",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q06/C3-solution.svg"
+        },
+        "authorSelfCheck": "CHECKED_WITH_EXACT_GEOMETRY_RECOMPUTATION",
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    }
+  ]
+}
