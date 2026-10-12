@@ -40,7 +40,17 @@
     "studentRelease": "NOT_AUTHORIZED",
     "status": "AUTHOR_DRAFT_ONLY",
     "nextQid": 4,
-    "metadataDebt": []
+    "metadataDebt": [],
+    "authorSelfCheck": "9/9 MATH_META_WRONG_CHOICES_36_AND_CHROMIUM_STANDALONE_SVG_20261012",
+    "selfRecheckStatus": "SELF_RECHECK_COMPLETE",
+    "incorrectRoutesRechecked": 36,
+    "solutionSvgGeometryVerified": "9/9 Git exact original SVG + C2/C3 targeted revised",
+    "actualBrowserSvgRender": "PASS_9_OF_9_CHROMIUM_DESKTOP_AND_MOBILE",
+    "solutionSvgRepaired": [
+      "C2",
+      "C3"
+    ],
+    "answerDistributionDisposition": "KEEP_NUMERIC_AND_EQUATION_CHOICES_AS_DISPLAYED_NOT_FORCE_UNNATURAL_KEY_POSITIONS"
   },
   "questions": [
     {
@@ -116,19 +126,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "반지름 $5$를 우변에 그대로 사용"
+            "reason": "반지름 5를 우변으로 잘못 넣어 3x+4y=5로 오답을 만듦. 접점 (3,4) 대입 시 9+16=25≠5."
           },
           {
             "choice": "③",
-            "reason": "반지름의 좌표 성분을 뒤바꿈"
+            "reason": "반지름 좌표 (3,4)의 성분을 바꾸어 4x+3y=25로 오답을 만듦. 접점 대입 값 12+12=24≠25."
           },
           {
             "choice": "④",
-            "reason": "반지름과 접선이 수직임을 놓치고 부호를 잘못 적용"
+            "reason": "법선벡터의 두 번째 성분 부호를 바꾸어 3x-4y=25로 오답을 만듦. 접점 대입 값 9-16=-7≠25."
           },
           {
             "choice": "⑤",
-            "reason": "접점 좌표에 음수를 대입한 것으로 착각"
+            "reason": "우변의 부호를 반대로 써 3x+4y=-25로 오답을 만듦. 접점 대입 값 25≠-25."
           }
         ],
         "geometryFacts": {
@@ -161,11 +171,51 @@
           "reason": "원과 접선의 수직성, 접점, 절편·교점을 독립 계산한 그림으로 확인",
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q03/A1-solution.svg"
         },
-        "authorSelfCheck": "CHECKED_PYTHON_GEOMETRY_FACTS",
+        "authorSelfCheck": "CHECKED_MATH_META_GEOMETRY_CHROMIUM_STANDALONE_20261012",
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reviewRole": "AUTHOR_SELF_RECHECK_NOT_EXTERNAL_INDEPENDENT",
+          "checkedCorrectAnswer": "②",
+          "uniqueCorrectChoice": true,
+          "wrongRoutesRecalculated": 4,
+          "wrongRoutesEvidence": "review.wrongRoutes (numeric or exact equation per distractor)",
+          "originalLockedPrimaryL3": "원의 접선",
+          "rpmRecordId": "H1-RPM-221",
+          "metaFoundationL3": "원의 접선",
+          "metaFoundationL4": "원 위의 점에서의 접선의 방정식",
+          "pt": "PT_CIRCLE_TANGENT",
+          "tpl": "TM_TANGENT_AT_POINT",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficulty": {
+            "learningLevel": "하",
+            "assessment1to5": 1,
+            "cognitive": "원 위 접점의 반지름에 수직인 직선",
+            "computation": "접점과 원의 중심의 차로 법선 산출 후 직선식 2~3단계"
+          },
+          "problemSvg": "VISUAL_EXEMPT: 문제의 좌표 조건 자체로 유일하게 해석됨",
+          "solutionSvg": "VISUAL_REQUIRED: 실제 원·반지름·접선·접점과 추가 점의 좌표를 도형에 표시",
+          "svgAssetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q03/A1-solution.svg",
+          "svgGeometry": "SVG_CENTER_RADIUS_TANGENT_POINT_STATIC_PARITY_9_OF_9",
+          "svgActualBrowser": "PASS_STANDALONE_CHROMIUM_DESKTOP_560_MOBILE_390",
+          "svgTextBBoxOverlap": 0,
+          "svgTextBBoxClipped": 0,
+          "svgChange": "REUSE_ORIGINAL_GIT_SVG_EXACT_BLOB",
+          "otherEvidence": [
+            "원본·UID·sourceQid/provenance",
+            "RPM Primary L3/L4 + Meta Registry UID 결속",
+            "접점은 원 위에 있고 접선은 반지름에 수직",
+            "A1~C3 5지 정답 유일성·4오답 경로"
+          ],
+          "independentGptOpenBookReview": "NOT_RUN",
+          "archiveActualStudentExamSolutionAnswerEngineRender": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        }
       }
     },
     {
@@ -241,19 +291,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "중심과 접점을 모두 원점 기준으로 착각해 우변을 반지름으로 처리"
+            "reason": "반지름 길이 5를 접선 우변으로 잘못 적용: 3x+4y=5; T(4,2)에서 12+8=20≠5."
           },
           {
             "choice": "③",
-            "reason": "접점을 지나는 접선의 우변을 $r^2=25$로 고정"
+            "reason": "중심 이동을 무시하고 원점 중심 공식의 r²=25를 대입: 3x+4y=25; T 대입은 20≠25."
           },
           {
             "choice": "④",
-            "reason": "접점에서 중심까지의 좌표차 성분을 바꿈"
+            "reason": "법선 (3,4)를 (4,3)으로 뒤집어 4x+3y=20; T 대입은 16+6=22≠20."
           },
           {
             "choice": "⑤",
-            "reason": "반지름에 수직이라는 조건에서 기울기 부호를 잘못 처리"
+            "reason": "법선 y성분 +4를 -4로 오용: 3x-4y=20; T 대입은 12-8=4≠20."
           }
         ],
         "geometryFacts": {
@@ -286,11 +336,51 @@
           "reason": "원과 접선의 수직성, 접점, 절편·교점을 독립 계산한 그림으로 확인",
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q03/A2-solution.svg"
         },
-        "authorSelfCheck": "CHECKED_PYTHON_GEOMETRY_FACTS",
+        "authorSelfCheck": "CHECKED_MATH_META_GEOMETRY_CHROMIUM_STANDALONE_20261012",
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reviewRole": "AUTHOR_SELF_RECHECK_NOT_EXTERNAL_INDEPENDENT",
+          "checkedCorrectAnswer": "②",
+          "uniqueCorrectChoice": true,
+          "wrongRoutesRecalculated": 4,
+          "wrongRoutesEvidence": "review.wrongRoutes (numeric or exact equation per distractor)",
+          "originalLockedPrimaryL3": "원의 접선",
+          "rpmRecordId": "H1-RPM-221",
+          "metaFoundationL3": "원의 접선",
+          "metaFoundationL4": "원 위의 점에서의 접선의 방정식",
+          "pt": "PT_CIRCLE_TANGENT",
+          "tpl": "TM_TANGENT_AT_POINT",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficulty": {
+            "learningLevel": "하",
+            "assessment1to5": 1,
+            "cognitive": "중심 이동이 있는 원의 접선",
+            "computation": "접점과 원의 중심의 차로 법선 산출 후 직선식 2~3단계"
+          },
+          "problemSvg": "VISUAL_EXEMPT: 문제의 좌표 조건 자체로 유일하게 해석됨",
+          "solutionSvg": "VISUAL_REQUIRED: 실제 원·반지름·접선·접점과 추가 점의 좌표를 도형에 표시",
+          "svgAssetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q03/A2-solution.svg",
+          "svgGeometry": "SVG_CENTER_RADIUS_TANGENT_POINT_STATIC_PARITY_9_OF_9",
+          "svgActualBrowser": "PASS_STANDALONE_CHROMIUM_DESKTOP_560_MOBILE_390",
+          "svgTextBBoxOverlap": 0,
+          "svgTextBBoxClipped": 0,
+          "svgChange": "REUSE_ORIGINAL_GIT_SVG_EXACT_BLOB",
+          "otherEvidence": [
+            "원본·UID·sourceQid/provenance",
+            "RPM Primary L3/L4 + Meta Registry UID 결속",
+            "접점은 원 위에 있고 접선은 반지름에 수직",
+            "A1~C3 5지 정답 유일성·4오답 경로"
+          ],
+          "independentGptOpenBookReview": "NOT_RUN",
+          "archiveActualStudentExamSolutionAnswerEngineRender": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        }
       }
     },
     {
@@ -366,19 +456,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "반지름 길이를 우변에 사용"
+            "reason": "반지름 길이 5를 우변에 그대로 넣음: 3x+4y=5; T(1,5)에서 3+20=23≠5."
           },
           {
             "choice": "③",
-            "reason": "중심 이동을 무시해 우변을 $25$로 착각"
+            "reason": "원점 중심 접선 공식의 우변 25를 중심 이동에도 적용: 3x+4y=25; T 대입 23≠25."
           },
           {
             "choice": "④",
-            "reason": "수직선의 계수 3과 4를 서로 바꿈"
+            "reason": "법선 두 성분을 뒤바꾸어 4x+3y=23; T 대입 4+15=19≠23."
           },
           {
             "choice": "⑤",
-            "reason": "반지름 성분의 한쪽 부호를 바꿈"
+            "reason": "법선 y성분 부호 오용: 3x-4y=23; T 대입 3-20=-17≠23."
           }
         ],
         "geometryFacts": {
@@ -411,11 +501,51 @@
           "reason": "원과 접선의 수직성, 접점, 절편·교점을 독립 계산한 그림으로 확인",
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q03/A3-solution.svg"
         },
-        "authorSelfCheck": "CHECKED_PYTHON_GEOMETRY_FACTS",
+        "authorSelfCheck": "CHECKED_MATH_META_GEOMETRY_CHROMIUM_STANDALONE_20261012",
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reviewRole": "AUTHOR_SELF_RECHECK_NOT_EXTERNAL_INDEPENDENT",
+          "checkedCorrectAnswer": "②",
+          "uniqueCorrectChoice": true,
+          "wrongRoutesRecalculated": 4,
+          "wrongRoutesEvidence": "review.wrongRoutes (numeric or exact equation per distractor)",
+          "originalLockedPrimaryL3": "원의 접선",
+          "rpmRecordId": "H1-RPM-221",
+          "metaFoundationL3": "원의 접선",
+          "metaFoundationL4": "원 위의 점에서의 접선의 방정식",
+          "pt": "PT_CIRCLE_TANGENT",
+          "tpl": "TM_TANGENT_AT_POINT",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficulty": {
+            "learningLevel": "하",
+            "assessment1to5": 1,
+            "cognitive": "음의 중심 좌표가 주어진 접선",
+            "computation": "접점과 원의 중심의 차로 법선 산출 후 직선식 2~3단계"
+          },
+          "problemSvg": "VISUAL_EXEMPT: 문제의 좌표 조건 자체로 유일하게 해석됨",
+          "solutionSvg": "VISUAL_REQUIRED: 실제 원·반지름·접선·접점과 추가 점의 좌표를 도형에 표시",
+          "svgAssetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q03/A3-solution.svg",
+          "svgGeometry": "SVG_CENTER_RADIUS_TANGENT_POINT_STATIC_PARITY_9_OF_9",
+          "svgActualBrowser": "PASS_STANDALONE_CHROMIUM_DESKTOP_560_MOBILE_390",
+          "svgTextBBoxOverlap": 0,
+          "svgTextBBoxClipped": 0,
+          "svgChange": "REUSE_ORIGINAL_GIT_SVG_EXACT_BLOB",
+          "otherEvidence": [
+            "원본·UID·sourceQid/provenance",
+            "RPM Primary L3/L4 + Meta Registry UID 결속",
+            "접점은 원 위에 있고 접선은 반지름에 수직",
+            "A1~C3 5지 정답 유일성·4오답 경로"
+          ],
+          "independentGptOpenBookReview": "NOT_RUN",
+          "archiveActualStudentExamSolutionAnswerEngineRender": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        }
       }
     },
     {
@@ -491,19 +621,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "$5$와 $4$의 비만 계산해 절편으로 착각"
+            "reason": "반지름 5만 y값 4로 나눈 5/4를 y절편으로 오인; 실제는 3·0+4y=25 → y=25/4."
           },
           {
             "choice": "②",
-            "reason": "접점의 $y$좌표 $4$를 절편이라고 오해"
+            "reason": "접점 (3,4)의 y좌표 4를 절편으로 오인; 접선에 (0,4)를 대입하면 16≠25."
           },
           {
             "choice": "③",
-            "reason": "원의 반지름 $5$를 절편으로 착각"
+            "reason": "원의 반지름 5를 y절편으로 오인; x=0,y=5를 대입하면 20≠25."
           },
           {
             "choice": "⑤",
-            "reason": "$x$절편 $25/3$을 $y$절편으로 착각"
+            "reason": "y절편 대신 x절편을 선택: y=0 → x=25/3, 그러나 x=0 → y=25/4."
           }
         ],
         "geometryFacts": {
@@ -542,11 +672,51 @@
           "reason": "원과 접선의 수직성, 접점, 절편·교점을 독립 계산한 그림으로 확인",
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q03/B1-solution.svg"
         },
-        "authorSelfCheck": "CHECKED_PYTHON_GEOMETRY_FACTS",
+        "authorSelfCheck": "CHECKED_MATH_META_GEOMETRY_CHROMIUM_STANDALONE_20261012",
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reviewRole": "AUTHOR_SELF_RECHECK_NOT_EXTERNAL_INDEPENDENT",
+          "checkedCorrectAnswer": "④",
+          "uniqueCorrectChoice": true,
+          "wrongRoutesRecalculated": 4,
+          "wrongRoutesEvidence": "review.wrongRoutes (numeric or exact equation per distractor)",
+          "originalLockedPrimaryL3": "원의 접선",
+          "rpmRecordId": "H1-RPM-221",
+          "metaFoundationL3": "원의 접선",
+          "metaFoundationL4": "원 위의 점에서의 접선의 방정식",
+          "pt": "PT_CIRCLE_TANGENT",
+          "tpl": "TM_TANGENT_AT_POINT",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficulty": {
+            "learningLevel": "중",
+            "assessment1to5": 2,
+            "cognitive": "접선 방정식에서 y절편을 추가 산출",
+            "computation": "접선 방정식과 기울기/절편/좌표 조건 3~5단계"
+          },
+          "problemSvg": "VISUAL_EXEMPT: 문제의 좌표 조건 자체로 유일하게 해석됨",
+          "solutionSvg": "VISUAL_REQUIRED: 실제 원·반지름·접선·접점과 추가 점의 좌표를 도형에 표시",
+          "svgAssetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q03/B1-solution.svg",
+          "svgGeometry": "SVG_CENTER_RADIUS_TANGENT_POINT_STATIC_PARITY_9_OF_9",
+          "svgActualBrowser": "PASS_STANDALONE_CHROMIUM_DESKTOP_560_MOBILE_390",
+          "svgTextBBoxOverlap": 0,
+          "svgTextBBoxClipped": 0,
+          "svgChange": "REUSE_ORIGINAL_GIT_SVG_EXACT_BLOB",
+          "otherEvidence": [
+            "원본·UID·sourceQid/provenance",
+            "RPM Primary L3/L4 + Meta Registry UID 결속",
+            "접점은 원 위에 있고 접선은 반지름에 수직",
+            "A1~C3 5지 정답 유일성·4오답 경로"
+          ],
+          "independentGptOpenBookReview": "NOT_RUN",
+          "archiveActualStudentExamSolutionAnswerEngineRender": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        }
       }
     },
     {
@@ -622,19 +792,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "접선 기울기 분자·분모를 그대로 좌표로 읽되 잘못된 비례상수 적용"
+            "reason": "접점 (3t,4t)의 원 조건 25t²=25를 잘못 풀어 t=1/3, x=3·(1/3)=1이라 답함; 실제 t=1."
           },
           {
             "choice": "②",
-            "reason": "반지름의 길이를 사용하지 않고 비례상수 $2/3$을 잘못 적용"
+            "reason": "접점 (3t,4t)의 비례상수를 2/3으로 오인해 x=3·(2/3)=2라 답함; 그 점의 반지름은 5·(2/3)=10/3≠5."
           },
           {
             "choice": "④",
-            "reason": "접점 좌표 $(3,4)$에서 $y$좌표를 선택"
+            "reason": "정확한 접점 (3,4)에서 구하려는 x좌표 3 대신 y좌표 4를 선택."
           },
           {
             "choice": "⑤",
-            "reason": "반지름 길이 $5$를 접점의 $x$좌표로 오해"
+            "reason": "반지름 길이 5를 접점의 x좌표로 혼동; x=5,y=0이면 접선의 기울기 0의 수선이 아니고 접선은 수직선 x=5."
           }
         ],
         "geometryFacts": {
@@ -667,11 +837,51 @@
           "reason": "원과 접선의 수직성, 접점, 절편·교점을 독립 계산한 그림으로 확인",
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q03/B2-solution.svg"
         },
-        "authorSelfCheck": "CHECKED_PYTHON_GEOMETRY_FACTS",
+        "authorSelfCheck": "CHECKED_MATH_META_GEOMETRY_CHROMIUM_STANDALONE_20261012",
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reviewRole": "AUTHOR_SELF_RECHECK_NOT_EXTERNAL_INDEPENDENT",
+          "checkedCorrectAnswer": "③",
+          "uniqueCorrectChoice": true,
+          "wrongRoutesRecalculated": 4,
+          "wrongRoutesEvidence": "review.wrongRoutes (numeric or exact equation per distractor)",
+          "originalLockedPrimaryL3": "원의 접선",
+          "rpmRecordId": "H1-RPM-221",
+          "metaFoundationL3": "원의 접선",
+          "metaFoundationL4": "원 위의 점에서의 접선의 방정식",
+          "pt": "PT_CIRCLE_TANGENT",
+          "tpl": "TM_TANGENT_AT_POINT",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficulty": {
+            "learningLevel": "중",
+            "assessment1to5": 2,
+            "cognitive": "접선 기울기에서 접점을 역결정",
+            "computation": "접선 방정식과 기울기/절편/좌표 조건 3~5단계"
+          },
+          "problemSvg": "VISUAL_EXEMPT: 문제의 좌표 조건 자체로 유일하게 해석됨",
+          "solutionSvg": "VISUAL_REQUIRED: 실제 원·반지름·접선·접점과 추가 점의 좌표를 도형에 표시",
+          "svgAssetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q03/B2-solution.svg",
+          "svgGeometry": "SVG_CENTER_RADIUS_TANGENT_POINT_STATIC_PARITY_9_OF_9",
+          "svgActualBrowser": "PASS_STANDALONE_CHROMIUM_DESKTOP_560_MOBILE_390",
+          "svgTextBBoxOverlap": 0,
+          "svgTextBBoxClipped": 0,
+          "svgChange": "REUSE_ORIGINAL_GIT_SVG_EXACT_BLOB",
+          "otherEvidence": [
+            "원본·UID·sourceQid/provenance",
+            "RPM Primary L3/L4 + Meta Registry UID 결속",
+            "접점은 원 위에 있고 접선은 반지름에 수직",
+            "A1~C3 5지 정답 유일성·4오답 경로"
+          ],
+          "independentGptOpenBookReview": "NOT_RUN",
+          "archiveActualStudentExamSolutionAnswerEngineRender": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        }
       }
     },
     {
@@ -747,19 +957,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "접점의 $x$좌표 4를 그대로 사용"
+            "reason": "접선 3x+4y=20의 x절편 20/3 대신 접점 T의 x좌표 4를 사용."
           },
           {
             "choice": "②",
-            "reason": "반지름 길이 5를 원점에서 절편까지의 거리로 혼동"
+            "reason": "중심에서 접점까지의 반지름 5를 원점에서 x절편 A까지의 거리로 혼동."
           },
           {
             "choice": "③",
-            "reason": "절편 방정식을 정수로 잘못 근사해 6 선택"
+            "reason": "x절편 20/3=6.666…을 6으로 버림(버림값은 길이의 정확값 아님)."
           },
           {
             "choice": "⑤",
-            "reason": "절편을 올림한 정수 7로 오인"
+            "reason": "x절편 20/3=6.666…을 7로 반올림(정확한 길이는 20/3)."
           }
         ],
         "geometryFacts": {
@@ -798,11 +1008,51 @@
           "reason": "원과 접선의 수직성, 접점, 절편·교점을 독립 계산한 그림으로 확인",
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q03/B3-solution.svg"
         },
-        "authorSelfCheck": "CHECKED_PYTHON_GEOMETRY_FACTS",
+        "authorSelfCheck": "CHECKED_MATH_META_GEOMETRY_CHROMIUM_STANDALONE_20261012",
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reviewRole": "AUTHOR_SELF_RECHECK_NOT_EXTERNAL_INDEPENDENT",
+          "checkedCorrectAnswer": "④",
+          "uniqueCorrectChoice": true,
+          "wrongRoutesRecalculated": 4,
+          "wrongRoutesEvidence": "review.wrongRoutes (numeric or exact equation per distractor)",
+          "originalLockedPrimaryL3": "원의 접선",
+          "rpmRecordId": "H1-RPM-221",
+          "metaFoundationL3": "원의 접선",
+          "metaFoundationL4": "원 위의 점에서의 접선의 방정식",
+          "pt": "PT_CIRCLE_TANGENT",
+          "tpl": "TM_TANGENT_AT_POINT",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficulty": {
+            "learningLevel": "중",
+            "assessment1to5": 3,
+            "cognitive": "접선과 x축의 교점으로 거리 결정",
+            "computation": "접선 방정식과 기울기/절편/좌표 조건 3~5단계"
+          },
+          "problemSvg": "VISUAL_EXEMPT: 문제의 좌표 조건 자체로 유일하게 해석됨",
+          "solutionSvg": "VISUAL_REQUIRED: 실제 원·반지름·접선·접점과 추가 점의 좌표를 도형에 표시",
+          "svgAssetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q03/B3-solution.svg",
+          "svgGeometry": "SVG_CENTER_RADIUS_TANGENT_POINT_STATIC_PARITY_9_OF_9",
+          "svgActualBrowser": "PASS_STANDALONE_CHROMIUM_DESKTOP_560_MOBILE_390",
+          "svgTextBBoxOverlap": 0,
+          "svgTextBBoxClipped": 0,
+          "svgChange": "REUSE_ORIGINAL_GIT_SVG_EXACT_BLOB",
+          "otherEvidence": [
+            "원본·UID·sourceQid/provenance",
+            "RPM Primary L3/L4 + Meta Registry UID 결속",
+            "접점은 원 위에 있고 접선은 반지름에 수직",
+            "A1~C3 5지 정답 유일성·4오답 경로"
+          ],
+          "independentGptOpenBookReview": "NOT_RUN",
+          "archiveActualStudentExamSolutionAnswerEngineRender": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        }
       }
     },
     {
@@ -880,19 +1130,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "원의 반지름 5를 선분 AB 길이로 오인"
+            "reason": "접선 절편점 거리와 반지름을 혼동하여 원의 반지름 5를 선택."
           },
           {
             "choice": "②",
-            "reason": "y절편 $25/4$를 AB로 선택"
+            "reason": "A(25/3,0),B(0,25/4) 중 y절편 25/4만 선분 길이로 오인."
           },
           {
             "choice": "③",
-            "reason": "x절편 $25/3$를 AB로 선택"
+            "reason": "A(25/3,0),B(0,25/4) 중 x절편 25/3만 선분 길이로 오인."
           },
           {
             "choice": "⑤",
-            "reason": "두 축 절편의 합 $25/3+25/4$를 거리로 착각"
+            "reason": "직교하는 절편 간 거리 대신 절편의 합 25/3+25/4=(100+75)/12=175/12를 선택; 실제는 피타고라스 거리 125/12."
           }
         ],
         "geometryFacts": {
@@ -936,11 +1186,53 @@
           "reason": "원과 접선의 수직성, 접점, 절편·교점을 독립 계산한 그림으로 확인",
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q03/C1-solution.svg"
         },
-        "authorSelfCheck": "CHECKED_PYTHON_GEOMETRY_FACTS",
+        "authorSelfCheck": "CHECKED_MATH_META_GEOMETRY_CHROMIUM_STANDALONE_20261012",
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reviewRole": "AUTHOR_SELF_RECHECK_NOT_EXTERNAL_INDEPENDENT",
+          "checkedCorrectAnswer": "④",
+          "uniqueCorrectChoice": true,
+          "wrongRoutesRecalculated": 4,
+          "wrongRoutesEvidence": "review.wrongRoutes (numeric or exact equation per distractor)",
+          "originalLockedPrimaryL3": "원의 접선",
+          "rpmRecordId": "H1-RPM-221",
+          "metaFoundationL3": "원의 접선",
+          "metaFoundationL4": "원 위의 점에서의 접선의 방정식",
+          "pt": "PT_CIRCLE_TANGENT",
+          "tpl": "TM_TANGENT_AT_POINT",
+          "crossConceptKeys": [
+            "CC_DISTANCE_TWO_POINTS"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficulty": {
+            "learningLevel": "중",
+            "assessment1to5": 3,
+            "cognitive": "접선의 양 절편과 피타고라스 거리 계산",
+            "computation": "두 접선 연립, 절편 간 거리, 넓이 계산 4~7단계"
+          },
+          "problemSvg": "VISUAL_EXEMPT: 문제의 좌표 조건 자체로 유일하게 해석됨",
+          "solutionSvg": "VISUAL_REQUIRED: 실제 원·반지름·접선·접점과 추가 점의 좌표를 도형에 표시",
+          "svgAssetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q03/C1-solution.svg",
+          "svgGeometry": "SVG_CENTER_RADIUS_TANGENT_POINT_STATIC_PARITY_9_OF_9",
+          "svgActualBrowser": "PASS_STANDALONE_CHROMIUM_DESKTOP_560_MOBILE_390",
+          "svgTextBBoxOverlap": 0,
+          "svgTextBBoxClipped": 0,
+          "svgChange": "REUSE_ORIGINAL_GIT_SVG_EXACT_BLOB",
+          "otherEvidence": [
+            "원본·UID·sourceQid/provenance",
+            "RPM Primary L3/L4 + Meta Registry UID 결속",
+            "접점은 원 위에 있고 접선은 반지름에 수직",
+            "A1~C3 5지 정답 유일성·4오답 경로"
+          ],
+          "independentGptOpenBookReview": "NOT_RUN",
+          "archiveActualStudentExamSolutionAnswerEngineRender": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        }
       }
     },
     {
@@ -1016,19 +1308,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "교점의 한 좌표 $25/7$만 답함"
+            "reason": "두 접선 교점 P=(25/7,25/7)의 한 좌표 25/7만 더하지 않고 답함."
           },
           {
             "choice": "②",
-            "reason": "원의 반지름을 좌표 합으로 오해"
+            "reason": "접점 두 개가 같은 원 위에 있다는 이유로 교점 좌표의 합을 반지름 5로 착각."
           },
           {
             "choice": "④",
-            "reason": "한 접선의 x절편 $25/3$을 교점 좌표 합과 혼동"
+            "reason": "첫 접선 3x+4y=25의 x절편 25/3을 두 접선 교점 좌표 합으로 오인."
           },
           {
             "choice": "⑤",
-            "reason": "대칭 교점을 $(5,5)$로 추정하여 10으로 계산"
+            "reason": "두 접선의 교점이 (5,5)라고 잘못 가정해 a+b=10; 첫 접선에서 15+20=35≠25."
           }
         ],
         "geometryFacts": {
@@ -1076,11 +1368,51 @@
           "reason": "원과 접선의 수직성, 접점, 절편·교점을 독립 계산한 그림으로 확인",
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q03/C2-solution.svg"
         },
-        "authorSelfCheck": "CHECKED_PYTHON_GEOMETRY_FACTS",
+        "authorSelfCheck": "CHECKED_MATH_META_GEOMETRY_CHROMIUM_STANDALONE_20261012",
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reviewRole": "AUTHOR_SELF_RECHECK_NOT_EXTERNAL_INDEPENDENT",
+          "checkedCorrectAnswer": "③",
+          "uniqueCorrectChoice": true,
+          "wrongRoutesRecalculated": 4,
+          "wrongRoutesEvidence": "review.wrongRoutes (numeric or exact equation per distractor)",
+          "originalLockedPrimaryL3": "원의 접선",
+          "rpmRecordId": "H1-RPM-221",
+          "metaFoundationL3": "원의 접선",
+          "metaFoundationL4": "원 위의 점에서의 접선의 방정식",
+          "pt": "PT_CIRCLE_TANGENT",
+          "tpl": "TM_TANGENT_AT_POINT",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "INTERDEPENDENT",
+          "difficulty": {
+            "learningLevel": "상",
+            "assessment1to5": 4,
+            "cognitive": "두 접선의 방정식을 연립하여 교점을 구함",
+            "computation": "두 접선 연립, 절편 간 거리, 넓이 계산 4~7단계"
+          },
+          "problemSvg": "VISUAL_EXEMPT: 문제의 좌표 조건 자체로 유일하게 해석됨",
+          "solutionSvg": "VISUAL_REQUIRED: 실제 원·반지름·접선·접점과 추가 점의 좌표를 도형에 표시",
+          "svgAssetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q03/C2-solution.svg",
+          "svgGeometry": "SVG_CENTER_RADIUS_TANGENT_POINT_STATIC_PARITY_9_OF_9",
+          "svgActualBrowser": "PASS_STANDALONE_CHROMIUM_DESKTOP_560_MOBILE_390",
+          "svgTextBBoxOverlap": 0,
+          "svgTextBBoxClipped": 0,
+          "svgChange": "TARGETED_VISUAL_REPAIR",
+          "otherEvidence": [
+            "원본·UID·sourceQid/provenance",
+            "RPM Primary L3/L4 + Meta Registry UID 결속",
+            "접점은 원 위에 있고 접선은 반지름에 수직",
+            "A1~C3 5지 정답 유일성·4오답 경로"
+          ],
+          "independentGptOpenBookReview": "NOT_RUN",
+          "archiveActualStudentExamSolutionAnswerEngineRender": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        }
       }
     },
     {
@@ -1158,19 +1490,19 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "reason": "높이 $9/4$만 삼각형 넓이로 선택"
+            "reason": "수직 높이 25/4-4=9/4만 구하고 삼각형 넓이로 오인."
           },
           {
             "choice": "②",
-            "reason": "밑변을 4로 착각하여 $4×(9/4)/2=9/2$"
+            "reason": "AB=(-3,4)에서 (3,4)까지 길이 6을 y좌표 4로 오인해 넓이를 4·(9/4)/2=9/2로 계산."
           },
           {
             "choice": "③",
-            "reason": "높이를 2로 단순화하여 삼각형 넓이를 6으로 계산"
+            "reason": "높이 9/4를 정수 2로 오산해 6·2/2=6으로 계산."
           },
           {
             "choice": "⑤",
-            "reason": "삼각형 넓이에서 $1/2$를 누락하여 $27/2$라고 계산"
+            "reason": "삼각형 넓이의 1/2를 누락해 6·(9/4)=54/4=27/2로 답함."
           }
         ],
         "geometryFacts": {
@@ -1218,11 +1550,53 @@
           "reason": "원과 접선의 수직성, 접점, 절편·교점을 독립 계산한 그림으로 확인",
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q03/C3-solution.svg"
         },
-        "authorSelfCheck": "CHECKED_PYTHON_GEOMETRY_FACTS",
+        "authorSelfCheck": "CHECKED_MATH_META_GEOMETRY_CHROMIUM_STANDALONE_20261012",
         "externalOpenBookReview": "NOT_RUN",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
-        "disposition": "AUTHOR_DRAFT_ONLY"
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "reviewRole": "AUTHOR_SELF_RECHECK_NOT_EXTERNAL_INDEPENDENT",
+          "checkedCorrectAnswer": "④",
+          "uniqueCorrectChoice": true,
+          "wrongRoutesRecalculated": 4,
+          "wrongRoutesEvidence": "review.wrongRoutes (numeric or exact equation per distractor)",
+          "originalLockedPrimaryL3": "원의 접선",
+          "rpmRecordId": "H1-RPM-221",
+          "metaFoundationL3": "원의 접선",
+          "metaFoundationL4": "원 위의 점에서의 접선의 방정식",
+          "pt": "PT_CIRCLE_TANGENT",
+          "tpl": "TM_TANGENT_AT_POINT",
+          "crossConceptKeys": [
+            "CC_DISTANCE_TWO_POINTS"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "INTERDEPENDENT",
+          "difficulty": {
+            "learningLevel": "상",
+            "assessment1to5": 4,
+            "cognitive": "두 접선의 교점, 현의 위치, 삼각형의 넓이 결합",
+            "computation": "두 접선 연립, 절편 간 거리, 넓이 계산 4~7단계"
+          },
+          "problemSvg": "VISUAL_EXEMPT: 문제의 좌표 조건 자체로 유일하게 해석됨",
+          "solutionSvg": "VISUAL_REQUIRED: 실제 원·반지름·접선·접점과 추가 점의 좌표를 도형에 표시",
+          "svgAssetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q03/C3-solution.svg",
+          "svgGeometry": "SVG_CENTER_RADIUS_TANGENT_POINT_STATIC_PARITY_9_OF_9",
+          "svgActualBrowser": "PASS_STANDALONE_CHROMIUM_DESKTOP_560_MOBILE_390",
+          "svgTextBBoxOverlap": 0,
+          "svgTextBBoxClipped": 0,
+          "svgChange": "TARGETED_VISUAL_REPAIR",
+          "otherEvidence": [
+            "원본·UID·sourceQid/provenance",
+            "RPM Primary L3/L4 + Meta Registry UID 결속",
+            "접점은 원 위에 있고 접선은 반지름에 수직",
+            "A1~C3 5지 정답 유일성·4오답 경로"
+          ],
+          "independentGptOpenBookReview": "NOT_RUN",
+          "archiveActualStudentExamSolutionAnswerEngineRender": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        }
       }
     }
   ]
