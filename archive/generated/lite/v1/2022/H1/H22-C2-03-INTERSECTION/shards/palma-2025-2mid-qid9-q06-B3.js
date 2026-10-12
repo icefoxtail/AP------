@@ -1,6 +1,6 @@
 window.examTitle = "PALMA_2025_QID9_06_B3";
 window.questionBank = [
-  {
+    {
     "id": 1,
     "uid": "ALITE-PALMA25-2MID-Q06-B3",
     "level": "중",
@@ -36,7 +36,12 @@ window.questionBank = [
     "sourceKind": "generated",
     "sourceQid": 6,
     "slot": "B3",
-    "purposeGroup": "B"
+    "purposeGroup": "B",
+    "image": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q06-B3-problem.svg",
+    "imageSize": "large",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q06-B3-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   }
 ];
 

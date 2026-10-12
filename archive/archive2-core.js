@@ -402,9 +402,13 @@
         sourceGrades.size === 1 &&
         isHighSemanticSubjectGrade([...sourceGrades][0]) &&
         Boolean(identity?.subjectProjections?.size),
+      indexedSubjectProjections = identity?.subjectProjections,
       semanticMatch =
         !filters.semanticSubject ||
-        identity?.subjectProjections?.has(filters.semanticSubject),
+        (indexedSubjectProjections?.size
+          ? indexedSubjectProjections.has(filters.semanticSubject)
+          : (Array.isArray(exam?.courseFamilies) &&
+              exam.courseFamilies.includes(filters.semanticSubject))),
       semanticCurriculumMatch =
         !filters.semanticSubject ||
         !filters.curriculumKey ||

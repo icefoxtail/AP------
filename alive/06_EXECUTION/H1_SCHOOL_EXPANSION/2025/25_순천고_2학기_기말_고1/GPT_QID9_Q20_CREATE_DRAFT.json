@@ -1,0 +1,1694 @@
+{
+  "schemaVersion": "ALIVE_QID9_AUTHOR_DRAFT_v1",
+  "source": {
+    "path": "archive/exams/original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
+    "examTitle": "25_순천고_2학기_기말_고1_기출",
+    "qid": 20,
+    "sourceUid": "25_순천고_2학기_기말_고1_기출|q20",
+    "gitBlobSha1": "6159f478e8e3edf7074d3967ba1cb7456f7762a3",
+    "originalReadOnly": true,
+    "originalAnswer": "$15$"
+  },
+  "authority": {
+    "rpmPrimaryL3": "명제와 조건",
+    "rpmPrimaryL4": "명제의 참·거짓",
+    "rpmRecordIds": [
+      "H1-RPM-244"
+    ],
+    "rpmCrosswalkGitBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+    "PT": "PT_PROPOSITION_JUDGMENT",
+    "TPL": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+    "secondaryPT": "PT_LOGIC_CHAIN",
+    "secondaryTPL": "TPL_IMPLICATION_CHAIN",
+    "mappingStatus": "DIRECT_ACTIVE",
+    "subUnitKey": "H22-C2-06-CORE"
+  },
+  "summary": {
+    "qid": 20,
+    "createdSlots": 9,
+    "choiceCount": 45,
+    "distractorRoutes": 36,
+    "solutions": 9,
+    "solutionSvgFiles": 9,
+    "solutionSvgInline": 0,
+    "problemSvgFiles": 0,
+    "answerDistribution": {
+      "①": 2,
+      "②": 2,
+      "③": 2,
+      "④": 2,
+      "⑤": 1
+    },
+    "mathValidation": "EXHAUSTIVE_ALL_16_OR_32_CARD_FLIP_MASKS_AUTHOR_ONLY",
+    "status": "AUTHOR_DRAFT_ONLY",
+    "independentQualityReview": "NOT_RUN",
+    "actualBrowserRender": "NOT_RUN",
+    "nextSourceQid": 21
+  },
+  "authorMathWitness": {
+    "algorithm": "Enumerated every one of 2^4 or 2^5 subsets; applied implication, exact-count, equivalence and at-least constraints; computed every allowed visible sum; for symbolic k compared both allowed classes algebraically",
+    "allStates": [
+      {
+        "slot": "A1",
+        "states": [
+          {
+            "flipped": [],
+            "sum": 10
+          },
+          {
+            "flipped": [
+              1,
+              4
+            ],
+            "sum": 17
+          }
+        ],
+        "objective": 17,
+        "vmax": 17,
+        "vmin": 10,
+        "correct": "①",
+        "parameter": null
+      },
+      {
+        "slot": "A2",
+        "states": [
+          {
+            "flipped": [],
+            "sum": 10
+          },
+          {
+            "flipped": [
+              1,
+              4
+            ],
+            "sum": 20
+          }
+        ],
+        "objective": 20,
+        "vmax": 20,
+        "vmin": 10,
+        "correct": "②",
+        "parameter": null
+      },
+      {
+        "slot": "A3",
+        "states": [
+          {
+            "flipped": [],
+            "sum": 10
+          },
+          {
+            "flipped": [
+              1,
+              4
+            ],
+            "sum": 23
+          }
+        ],
+        "objective": 23,
+        "vmax": 23,
+        "vmin": 10,
+        "correct": "③",
+        "parameter": null
+      },
+      {
+        "slot": "B1",
+        "states": [
+          {
+            "flipped": [],
+            "sum": 10
+          },
+          {
+            "flipped": [
+              2,
+              3
+            ],
+            "sum": 21
+          },
+          {
+            "flipped": [
+              1,
+              4
+            ],
+            "sum": 19
+          }
+        ],
+        "objective": 21,
+        "vmax": 21,
+        "vmin": 10,
+        "correct": "④",
+        "parameter": null
+      },
+      {
+        "slot": "B2",
+        "states": [
+          {
+            "flipped": [],
+            "sum": 10
+          },
+          {
+            "flipped": [
+              1,
+              4
+            ],
+            "sum": 18
+          }
+        ],
+        "objective": 18,
+        "vmax": 18,
+        "vmin": 10,
+        "correct": "⑤",
+        "parameter": {
+          "name": "k",
+          "value": 8,
+          "target": 18
+        }
+      },
+      {
+        "slot": "B3",
+        "states": [
+          {
+            "flipped": [
+              2,
+              3
+            ],
+            "sum": 21
+          },
+          {
+            "flipped": [
+              1,
+              4
+            ],
+            "sum": 20
+          }
+        ],
+        "objective": 20,
+        "vmax": 21,
+        "vmin": 20,
+        "correct": "①",
+        "parameter": null
+      },
+      {
+        "slot": "C1",
+        "states": [
+          {
+            "flipped": [],
+            "sum": 15
+          },
+          {
+            "flipped": [
+              1,
+              2,
+              3
+            ],
+            "sum": 36
+          },
+          {
+            "flipped": [
+              2,
+              3,
+              5
+            ],
+            "sum": 37
+          }
+        ],
+        "objective": 37,
+        "vmax": 37,
+        "vmin": 15,
+        "correct": "②",
+        "parameter": null
+      },
+      {
+        "slot": "C2",
+        "states": [
+          {
+            "flipped": [
+              2,
+              3
+            ],
+            "sum": 26
+          },
+          {
+            "flipped": [
+              1,
+              2,
+              3
+            ],
+            "sum": 33
+          }
+        ],
+        "objective": 7,
+        "vmax": 33,
+        "vmin": 26,
+        "correct": "③",
+        "parameter": null
+      },
+      {
+        "slot": "C3",
+        "states": [
+          {
+            "flipped": [
+              2,
+              3
+            ],
+            "sum": 26
+          },
+          {
+            "flipped": [
+              1,
+              2,
+              3
+            ],
+            "sum": 38
+          }
+        ],
+        "objective": 38,
+        "vmax": 38,
+        "vmin": 26,
+        "correct": "④",
+        "parameter": {
+          "name": "k",
+          "value": 13,
+          "target": 38
+        }
+      }
+    ],
+    "originalCheck": {
+      "allowed": [
+        [],
+        [
+          1,
+          4
+        ]
+      ],
+      "sums": [
+        10,
+        15
+      ]
+    }
+  },
+  "selfReviewLedger": [
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-A1",
+      "slot": "A1",
+      "answer": "⑤",
+      "distractors": 4,
+      "math": "EXHAUSTIVE_MASK_CHECK",
+      "visual": "SOLUTION_SVG_NEW",
+      "quality": "AUTHOR_DRAFT_ONLY"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-A2",
+      "slot": "A2",
+      "answer": "③",
+      "distractors": 4,
+      "math": "EXHAUSTIVE_MASK_CHECK",
+      "visual": "SOLUTION_SVG_NEW",
+      "quality": "AUTHOR_DRAFT_ONLY"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-A3",
+      "slot": "A3",
+      "answer": "①",
+      "distractors": 4,
+      "math": "EXHAUSTIVE_MASK_CHECK",
+      "visual": "SOLUTION_SVG_NEW",
+      "quality": "AUTHOR_DRAFT_ONLY"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-B1",
+      "slot": "B1",
+      "answer": "②",
+      "distractors": 4,
+      "math": "EXHAUSTIVE_MASK_CHECK",
+      "visual": "SOLUTION_SVG_NEW",
+      "quality": "AUTHOR_DRAFT_ONLY"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-B2",
+      "slot": "B2",
+      "answer": "④",
+      "distractors": 4,
+      "math": "EXHAUSTIVE_MASK_CHECK",
+      "visual": "SOLUTION_SVG_NEW",
+      "quality": "AUTHOR_DRAFT_ONLY"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-B3",
+      "slot": "B3",
+      "answer": "③",
+      "distractors": 4,
+      "math": "EXHAUSTIVE_MASK_CHECK",
+      "visual": "SOLUTION_SVG_NEW",
+      "quality": "AUTHOR_DRAFT_ONLY"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-C1",
+      "slot": "C1",
+      "answer": "④",
+      "distractors": 4,
+      "math": "EXHAUSTIVE_MASK_CHECK",
+      "visual": "SOLUTION_SVG_NEW",
+      "quality": "AUTHOR_DRAFT_ONLY"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-C2",
+      "slot": "C2",
+      "answer": "①",
+      "distractors": 4,
+      "math": "EXHAUSTIVE_MASK_CHECK",
+      "visual": "SOLUTION_SVG_NEW",
+      "quality": "AUTHOR_DRAFT_ONLY"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-C3",
+      "slot": "C3",
+      "answer": "②",
+      "distractors": 4,
+      "math": "EXHAUSTIVE_MASK_CHECK",
+      "visual": "SOLUTION_SVG_NEW",
+      "quality": "AUTHOR_DRAFT_ONLY"
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-A1",
+      "sourceQid": 20,
+      "slot": "A1",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "조건 명제와 카드 뒤집기",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "조건명제",
+        "논리추론",
+        "카드"
+      ],
+      "wide": false,
+      "content": "카드 4장의 앞면에는 순서대로 $1,2,3,4$, 뒷면에는 각각 $6$이 적혀 있다. 모든 카드가 앞면을 보이고 있다. 조건을 지키며 카드를 뒤집은 뒤, 보이는 숫자의 합의 최댓값은?\n<div class=\"q-box\">&lt;조건&gt;\n(가) 1번을 뒤집으면 정확히 두 장을 뒤집는다.\n(나) 2번과 3번은 함께 뒤집거나 둘 다 그대로 둔다.\n(다) 두 장만 뒤집었다면 반드시 1번도 뒤집는다.\n(라) 4번을 뒤집으면 1번도 뒤집는다.</div>",
+      "choices": [
+        "$10$",
+        "$15$",
+        "$19$",
+        "$12$",
+        "$17$"
+      ],
+      "answer": "⑤",
+      "solution": "2번과 3번은 함께 움직인다. 둘만 뒤집으면 1번을 포함하지 않아 조건을 어기며, 1번이나 4번을 더 뒤집으면 1번이 뒤집힌 상태에서 총 두 장이라는 조건과 충돌한다. 결국 2,3번은 뒤집을 수 없고 1,4번은 함께 뒤집거나 함께 남는다.\n$\\{\\}$인 경우 합은 $10$이다. $\\{1,4\\}$인 경우 합은 $17$이다.\n허용 상태를 모두 비교한 최댓값은 $17$이다.\n따라서 정답은 ⑤이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-A1-solution.svg",
+      "solutionImageAlt": "A1 허용 카드 뒤집기 상태와 보이는 숫자 합 비교",
+      "solutionImageCaption": "TURN은 뒤집힌 카드, KEEP은 앞면이 유지된 카드를 뜻한다. 허용 상태를 비교한 그림이다.",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "primaryRPM_L3": "명제와 조건",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+        "templateKey": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+        "secondaryProblemTypeKey": "PT_LOGIC_CHAIN",
+        "secondaryTemplateKey": "TPL_IMPLICATION_CHAIN",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_OTHER_FORMAL_MATH_CONCEPT_REQUIRED",
+        "crossConceptEvidence": "조건 명제 조합 판정과 기본 정수 합 비교",
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "difficultyBucket": 3,
+        "metadataDebt": [],
+        "integrationPatternReason": "CARD_FLIP_IMPLICATION_CLOSURE_AND_VISIBLE_SUM"
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 20,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3",
+        "sourceRelationship": "STRICT_SOURCE_LOGIC_FOR_A; CONDITIONAL_FOLLOWUP_FOR_BC",
+        "authorCreated": true
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "조건명제의 함의와 참거짓을 검토해야만 허용 카드 집합을 정할 수 있음",
+        "distractors": [
+          {
+            "choice": "②",
+            "choiceValue": "$15$",
+            "wrongStepAndActualResult": "1번만 뒤집어 합 15를 얻었지만 1번이 뒤집혔을 때 총 두 장이어야 한다는 조건 위반"
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$19$",
+            "wrongStepAndActualResult": "{2,3,4}를 뒤집어 합 19로 계산하지만 4번을 뒤집으면 1번도 뒤집어야 함"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$12$",
+            "wrongStepAndActualResult": "4번만 뒤집어 합 12로 계산하지만 4번→1번 위반"
+          },
+          {
+            "choice": "①",
+            "choiceValue": "$10$",
+            "wrongStepAndActualResult": "아무것도 안 뒤집은 합 10만 비교"
+          }
+        ],
+        "distractorCoverage": "4/4",
+        "answerUniqueness": "EXHAUSTIVE_ALL_FLIP_MASKS_AUTHOR_CHECK",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "앞뒷면 값과 조건이 모두 글과 숫자로 주어져 그림에 의존하지 않음"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "format": "SVG",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-A1-solution.svg",
+          "expectedFacts": {
+            "front": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "back": [
+              6,
+              6,
+              6,
+              6
+            ],
+            "legalStates": [
+              {
+                "flipped": [],
+                "sum": 10
+              },
+              {
+                "flipped": [
+                  1,
+                  4
+                ],
+                "sum": 17
+              }
+            ],
+            "objective": "max",
+            "parameter": null
+          },
+          "actualSvgRaster": "NOT_RUN",
+          "actualChrome": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-A2",
+      "sourceQid": 20,
+      "slot": "A2",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "조건 명제와 카드 뒤집기",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "조건명제",
+        "논리추론",
+        "카드"
+      ],
+      "wide": false,
+      "content": "앞면에 $1,2,3,4$, 뒷면에 각각 $6,8,7,9$가 순서대로 적힌 네 카드가 모두 앞면을 보이고 있다. 다음 조건들을 만족시키도록 뒤집었을 때 보이는 수의 합의 최댓값은?\n<div class=\"q-box\">&lt;조건&gt;\n(가) 1번 카드를 뒤집으면 정확히 두 장을 뒤집는다.\n(나) 2번과 3번은 모두 뒤집거나 모두 뒤집지 않는다.\n(다) 두 장만 뒤집은 경우에는 1번 카드도 포함된다.\n(라) 4번을 뒤집었다면 1번도 뒤집었다.</div>",
+      "choices": [
+        "$30$",
+        "$24$",
+        "$20$",
+        "$10$",
+        "$15$"
+      ],
+      "answer": "③",
+      "solution": "2,3번만 뒤집으면 정확히 두 장이지만 1번이 빠져 모순이다. 이 두 장에 1번을 더하면 1번→정확히 두 장 조건을 어기며, 4번을 더해도 4번→1번으로 모순이다. 따라서 2,3번은 그대로 두고, 1번과 4번만 함께 뒤집거나 둘 다 그대로 둔다.\n$\\{\\}$인 경우 합은 $10$이다. $\\{1,4\\}$인 경우 합은 $20$이다.\n허용 상태를 모두 비교한 최댓값은 $20$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-A2-solution.svg",
+      "solutionImageAlt": "A2 허용 카드 뒤집기 상태와 보이는 숫자 합 비교",
+      "solutionImageCaption": "TURN은 뒤집힌 카드, KEEP은 앞면이 유지된 카드를 뜻한다. 허용 상태를 비교한 그림이다.",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "primaryRPM_L3": "명제와 조건",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+        "templateKey": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+        "secondaryProblemTypeKey": "PT_LOGIC_CHAIN",
+        "secondaryTemplateKey": "TPL_IMPLICATION_CHAIN",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_OTHER_FORMAL_MATH_CONCEPT_REQUIRED",
+        "crossConceptEvidence": "조건 명제 조합 판정과 기본 정수 합 비교",
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "difficultyBucket": 3,
+        "metadataDebt": [],
+        "integrationPatternReason": "CARD_FLIP_IMPLICATION_CLOSURE_AND_VISIBLE_SUM"
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 20,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3",
+        "sourceRelationship": "STRICT_SOURCE_LOGIC_FOR_A; CONDITIONAL_FOLLOWUP_FOR_BC",
+        "authorCreated": true
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "조건명제의 함의와 참거짓을 검토해야만 허용 카드 집합을 정할 수 있음",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$30$",
+            "wrongStepAndActualResult": "네 장 모두 뒤집은 합 30이나 1번→정확히 두 장 위반"
+          },
+          {
+            "choice": "②",
+            "choiceValue": "$24$",
+            "wrongStepAndActualResult": "{1,3,4}의 합 24이나 2,3번은 함께 뒤집혀야 한다는 조건 위반"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$10$",
+            "wrongStepAndActualResult": "뒤집지 않은 합 10만 계산"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$15$",
+            "wrongStepAndActualResult": "4번만 뒤집은 합 15이나 4번→1번 위반"
+          }
+        ],
+        "distractorCoverage": "4/4",
+        "answerUniqueness": "EXHAUSTIVE_ALL_FLIP_MASKS_AUTHOR_CHECK",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "앞뒷면 값과 조건이 모두 글과 숫자로 주어져 그림에 의존하지 않음"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "format": "SVG",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-A2-solution.svg",
+          "expectedFacts": {
+            "front": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "back": [
+              6,
+              8,
+              7,
+              9
+            ],
+            "legalStates": [
+              {
+                "flipped": [],
+                "sum": 10
+              },
+              {
+                "flipped": [
+                  1,
+                  4
+                ],
+                "sum": 20
+              }
+            ],
+            "objective": "max",
+            "parameter": null
+          },
+          "actualSvgRaster": "NOT_RUN",
+          "actualChrome": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-A3",
+      "sourceQid": 20,
+      "slot": "A3",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "조건 명제와 카드 뒤집기",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "조건명제",
+        "논리추론",
+        "카드"
+      ],
+      "wide": false,
+      "content": "앞면의 수가 $1,2,3,4$, 뒷면의 수가 각각 $8,6,7,10$인 네 카드를 모두 앞면으로 놓았다. 조건을 모두 만족하도록 뒤집었을 때 보이는 수의 합의 최댓값은?\n<div class=\"q-box\">&lt;조건&gt;\n(가) 1번을 뒤집었다면 전체에서 정확히 두 장만 뒤집는다.\n(나) 2번과 3번은 뒤집혔는지가 같다.\n(다) 정확히 두 장을 뒤집으면 1번이 포함된다.\n(라) 4번을 뒤집으면 1번도 뒤집는다.</div>",
+      "choices": [
+        "$23$",
+        "$18$",
+        "$10$",
+        "$16$",
+        "$31$"
+      ],
+      "answer": "①",
+      "solution": "2,3번은 둘을 동시에 뒤집어야 하는데 두 장만 뒤집으면 1번이 빠져 불가능하고, 다른 카드를 더 뒤집으면 1번이 포함되어 총 두 장이어야 한다는 조건과 충돌한다. 따라서 2,3번은 반드시 그대로이다. 4번→1번 및 1번→두 장에서 1,4번을 함께 뒤집거나 아무것도 뒤집지 않는 경우만 남는다.\n$\\{\\}$인 경우 합은 $10$이다. $\\{1,4\\}$인 경우 합은 $23$이다.\n허용 상태를 모두 비교한 최댓값은 $23$이다.\n따라서 정답은 ①이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-A3-solution.svg",
+      "solutionImageAlt": "A3 허용 카드 뒤집기 상태와 보이는 숫자 합 비교",
+      "solutionImageCaption": "TURN은 뒤집힌 카드, KEEP은 앞면이 유지된 카드를 뜻한다. 허용 상태를 비교한 그림이다.",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "primaryRPM_L3": "명제와 조건",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+        "templateKey": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+        "secondaryProblemTypeKey": "PT_LOGIC_CHAIN",
+        "secondaryTemplateKey": "TPL_IMPLICATION_CHAIN",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_OTHER_FORMAL_MATH_CONCEPT_REQUIRED",
+        "crossConceptEvidence": "조건 명제 조합 판정과 기본 정수 합 비교",
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "difficultyBucket": 3,
+        "metadataDebt": [],
+        "integrationPatternReason": "CARD_FLIP_IMPLICATION_CLOSURE_AND_VISIBLE_SUM"
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 20,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3",
+        "sourceRelationship": "STRICT_SOURCE_LOGIC_FOR_A; CONDITIONAL_FOLLOWUP_FOR_BC",
+        "authorCreated": true
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "조건명제의 함의와 참거짓을 검토해야만 허용 카드 집합을 정할 수 있음",
+        "distractors": [
+          {
+            "choice": "③",
+            "choiceValue": "$10$",
+            "wrongStepAndActualResult": "뒤집지 않은 기본 합 10을 최댓값으로 오인"
+          },
+          {
+            "choice": "②",
+            "choiceValue": "$18$",
+            "wrongStepAndActualResult": "{2,3}의 합 18이지만 두 장이면 1번 필수"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$16$",
+            "wrongStepAndActualResult": "{4}의 합 16이지만 4번→1번 조건 위반"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$31$",
+            "wrongStepAndActualResult": "4장 모두 뒤집으면 합 31이지만 1번→두 장 조건 위반"
+          }
+        ],
+        "distractorCoverage": "4/4",
+        "answerUniqueness": "EXHAUSTIVE_ALL_FLIP_MASKS_AUTHOR_CHECK",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "앞뒷면 값과 조건이 모두 글과 숫자로 주어져 그림에 의존하지 않음"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "format": "SVG",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-A3-solution.svg",
+          "expectedFacts": {
+            "front": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "back": [
+              8,
+              6,
+              7,
+              10
+            ],
+            "legalStates": [
+              {
+                "flipped": [],
+                "sum": 10
+              },
+              {
+                "flipped": [
+                  1,
+                  4
+                ],
+                "sum": 23
+              }
+            ],
+            "objective": "max",
+            "parameter": null
+          },
+          "actualSvgRaster": "NOT_RUN",
+          "actualChrome": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-B1",
+      "sourceQid": 20,
+      "slot": "B1",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "조건 명제와 카드 뒤집기",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "조건명제",
+        "논리추론",
+        "카드"
+      ],
+      "wide": false,
+      "content": "앞면에 $1,2,3,4$, 뒷면에 $6,9,7,8$이 차례로 쓰인 카드가 모두 앞면을 보인다. 다음 조건만을 만족하며 뒤집을 때 보이는 숫자 합의 최댓값은?\n<div class=\"q-box\">&lt;조건&gt;\n(가) 1번을 뒤집으면 정확히 두 장을 뒤집는다.\n(나) 2번과 3번은 함께 뒤집거나 함께 그대로 둔다.\n(다) 4번을 뒤집으면 1번도 뒤집는다.</div>",
+      "choices": [
+        "$10$",
+        "$21$",
+        "$30$",
+        "$19$",
+        "$26$"
+      ],
+      "answer": "②",
+      "solution": "2,3번은 쌍으로 움직인다. 1번을 뒤집을 때는 정확히 두 장이어야 하므로 1번과 4번을 함께 뒤집는 {1,4}만 가능하고 1,2,3번을 함께 뒤집는 것은 불가능하다. 1번을 뒤집지 않으면 4번도 못 뒤집으므로 2,3번을 함께 뒤집는 {2,3}이나 아무것도 뒤집지 않는 경우만 가능하다.\n$\\{\\}$인 경우 합은 $10$이다. $\\{2,3\\}$인 경우 합은 $21$이다. $\\{1,4\\}$인 경우 합은 $19$이다.\n허용 상태를 모두 비교한 최댓값은 $21$이다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-B1-solution.svg",
+      "solutionImageAlt": "B1 허용 카드 뒤집기 상태와 보이는 숫자 합 비교",
+      "solutionImageCaption": "TURN은 뒤집힌 카드, KEEP은 앞면이 유지된 카드를 뜻한다. 허용 상태를 비교한 그림이다.",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "primaryRPM_L3": "명제와 조건",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+        "templateKey": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+        "secondaryProblemTypeKey": "PT_LOGIC_CHAIN",
+        "secondaryTemplateKey": "TPL_IMPLICATION_CHAIN",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_OTHER_FORMAL_MATH_CONCEPT_REQUIRED",
+        "crossConceptEvidence": "조건 명제 조합 판정과 기본 정수 합 비교",
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "difficultyBucket": 4,
+        "metadataDebt": [],
+        "integrationPatternReason": "CARD_FLIP_IMPLICATION_CLOSURE_AND_VISIBLE_SUM"
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 20,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3",
+        "sourceRelationship": "STRICT_SOURCE_LOGIC_FOR_A; CONDITIONAL_FOLLOWUP_FOR_BC",
+        "authorCreated": true
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "조건명제의 함의와 참거짓을 검토해야만 허용 카드 집합을 정할 수 있음",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$10$",
+            "wrongStepAndActualResult": "공집합의 합 10만 고려"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$19$",
+            "wrongStepAndActualResult": "{1,4}의 합 19를 얻고 {2,3}을 누락"
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$30$",
+            "wrongStepAndActualResult": "전부 뒤집어 합 30을 얻지만 1번→두 장 위반"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$26$",
+            "wrongStepAndActualResult": "{1,2,3}을 뒤집어 합 26을 얻지만 1번→두 장 위반"
+          }
+        ],
+        "distractorCoverage": "4/4",
+        "answerUniqueness": "EXHAUSTIVE_ALL_FLIP_MASKS_AUTHOR_CHECK",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "앞뒷면 값과 조건이 모두 글과 숫자로 주어져 그림에 의존하지 않음"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "format": "SVG",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-B1-solution.svg",
+          "expectedFacts": {
+            "front": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "back": [
+              6,
+              9,
+              7,
+              8
+            ],
+            "legalStates": [
+              {
+                "flipped": [],
+                "sum": 10
+              },
+              {
+                "flipped": [
+                  2,
+                  3
+                ],
+                "sum": 21
+              },
+              {
+                "flipped": [
+                  1,
+                  4
+                ],
+                "sum": 19
+              }
+            ],
+            "objective": "max",
+            "parameter": null
+          },
+          "actualSvgRaster": "NOT_RUN",
+          "actualChrome": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-B2",
+      "sourceQid": 20,
+      "slot": "B2",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "조건 명제와 카드 뒤집기",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "조건명제",
+        "논리추론",
+        "카드"
+      ],
+      "wide": false,
+      "content": "네 카드 앞면에 각각 $1,2,3,4$, 뒷면에 순서대로 $k,5,5,5$가 있다. $k$는 자연수이다. 아래 조건을 만족하게 뒤집을 때 보이는 합의 최댓값이 $18$이면 $k$는?\n<div class=\"q-box\">&lt;조건&gt;\n(가) 1번을 뒤집으면 정확히 두 장이다.\n(나) 2번과 3번은 항상 함께 뒤집거나 둘 다 그대로이다.\n(다) 두 장만 뒤집었다면 1번도 뒤집는다.\n(라) 4번을 뒤집으면 1번도 뒤집는다.</div>",
+      "choices": [
+        "$5$",
+        "$6$",
+        "$7$",
+        "$8$",
+        "$9$"
+      ],
+      "answer": "④",
+      "solution": "2,3번을 함께 뒤집으면 정확히 두 장이 되어 1번 포함 규칙과 모순이다. 이를 피하려고 1번이나 4번을 추가하면 1번→정확히 두 장 조건에 어긋난다. 따라서 허용 상태는 공집합과 {1,4}뿐이다. 공집합일 때 합은 10이고 {1,4}일 때 합은 k+2+3+5=k+10이다. k는 자연수이므로 k+10>10이다. 따라서 최댓값이 18이면 k+10=18, 즉 k=8이다.\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-B2-solution.svg",
+      "solutionImageAlt": "B2 허용 카드 뒤집기 상태와 보이는 숫자 합 비교",
+      "solutionImageCaption": "TURN은 뒤집힌 카드, KEEP은 앞면이 유지된 카드를 뜻한다. 허용 상태를 비교한 그림이다.",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "primaryRPM_L3": "명제와 조건",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+        "templateKey": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+        "secondaryProblemTypeKey": "PT_LOGIC_CHAIN",
+        "secondaryTemplateKey": "TPL_IMPLICATION_CHAIN",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_OTHER_FORMAL_MATH_CONCEPT_REQUIRED",
+        "crossConceptEvidence": "조건 명제 조합 판정과 기본 정수 합 비교",
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "difficultyBucket": 4,
+        "metadataDebt": [],
+        "integrationPatternReason": "CARD_FLIP_IMPLICATION_CLOSURE_AND_VISIBLE_SUM"
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 20,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3",
+        "sourceRelationship": "STRICT_SOURCE_LOGIC_FOR_A; CONDITIONAL_FOLLOWUP_FOR_BC",
+        "authorCreated": true
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "조건명제의 함의와 참거짓을 검토해야만 허용 카드 집합을 정할 수 있음",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$5$",
+            "wrongStepAndActualResult": "남은 보이는 숫자 2+3+5=10을 13으로 잘못 더해 k=5"
+          },
+          {
+            "choice": "②",
+            "choiceValue": "$6$",
+            "wrongStepAndActualResult": "남은 보이는 숫자 합을 12로 오산해 k=6"
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$7$",
+            "wrongStepAndActualResult": "남은 보이는 숫자 합을 11로 오산해 k=7"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$9$",
+            "wrongStepAndActualResult": "남은 보이는 숫자 합을 9로 오산해 k=9"
+          }
+        ],
+        "distractorCoverage": "4/4",
+        "answerUniqueness": "EXHAUSTIVE_ALL_FLIP_MASKS_AUTHOR_CHECK",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "앞뒷면 값과 조건이 모두 글과 숫자로 주어져 그림에 의존하지 않음"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "format": "SVG",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-B2-solution.svg",
+          "expectedFacts": {
+            "front": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "back": [
+              8,
+              5,
+              5,
+              5
+            ],
+            "legalStates": [
+              {
+                "flipped": [],
+                "sum": 10
+              },
+              {
+                "flipped": [
+                  1,
+                  4
+                ],
+                "sum": 18
+              }
+            ],
+            "objective": "max",
+            "parameter": {
+              "name": "k",
+              "value": 8,
+              "target": 18
+            }
+          },
+          "actualSvgRaster": "NOT_RUN",
+          "actualChrome": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-B3",
+      "sourceQid": 20,
+      "slot": "B3",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "조건 명제와 카드 뒤집기",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "조건명제",
+        "논리추론",
+        "카드"
+      ],
+      "wide": false,
+      "content": "네 카드 앞면에 $1,2,3,4$, 뒷면에 차례로 $8,9,7,7$이 적혀 있다. 아래의 조건을 만족하고 **적어도 한 장**을 뒤집을 때, 보이는 수의 합의 최솟값은?\n<div class=\"q-box\">&lt;조건&gt;\n(가) 1번을 뒤집으면 총 두 장을 뒤집는다.\n(나) 2번과 3번은 함께 뒤집거나 모두 그대로이다.\n(다) 4번을 뒤집으면 1번도 뒤집는다.\n(라) 반드시 한 장 이상 뒤집는다.</div>",
+      "choices": [
+        "$10$",
+        "$21$",
+        "$20$",
+        "$17$",
+        "$13$"
+      ],
+      "answer": "③",
+      "solution": "2,3번은 항상 동시에 움직이고 4번은 1번과 함께 뒤집혀야 한다. 1번은 정확히 두 장 조건을 가지므로 1번과 4번을 뒤집거나 2번과 3번을 뒤집는 것 외에 비어 있지 않은 허용 상태는 없다. 공집합은 적어도 한 장을 뒤집는 조건에 위배된다.\n$\\{2,3\\}$인 경우 합은 $21$이다. $\\{1,4\\}$인 경우 합은 $20$이다.\n허용 상태를 모두 비교한 최솟값은 $20$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-B3-solution.svg",
+      "solutionImageAlt": "B3 허용 카드 뒤집기 상태와 보이는 숫자 합 비교",
+      "solutionImageCaption": "TURN은 뒤집힌 카드, KEEP은 앞면이 유지된 카드를 뜻한다. 허용 상태를 비교한 그림이다.",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "primaryRPM_L3": "명제와 조건",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+        "templateKey": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+        "secondaryProblemTypeKey": "PT_LOGIC_CHAIN",
+        "secondaryTemplateKey": "TPL_IMPLICATION_CHAIN",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_OTHER_FORMAL_MATH_CONCEPT_REQUIRED",
+        "crossConceptEvidence": "조건 명제 조합 판정과 기본 정수 합 비교",
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "difficultyBucket": 4,
+        "metadataDebt": [],
+        "integrationPatternReason": "CARD_FLIP_IMPLICATION_CLOSURE_AND_VISIBLE_SUM"
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 20,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3",
+        "sourceRelationship": "STRICT_SOURCE_LOGIC_FOR_A; CONDITIONAL_FOLLOWUP_FOR_BC",
+        "authorCreated": true
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "조건명제의 함의와 참거짓을 검토해야만 허용 카드 집합을 정할 수 있음",
+        "distractors": [
+          {
+            "choice": "②",
+            "choiceValue": "$21$",
+            "wrongStepAndActualResult": "{2,3}의 합 21이지만 {1,4}의 합 20과 비교하지 않음"
+          },
+          {
+            "choice": "①",
+            "choiceValue": "$10$",
+            "wrongStepAndActualResult": "아무것도 뒤집지 않은 합 10은 적어도 한 장 조건 위반"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$17$",
+            "wrongStepAndActualResult": "{1}을 뒤집어 17이지만 1번→두 장 위반"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$13$",
+            "wrongStepAndActualResult": "{4}를 뒤집어 13이지만 4번→1번 위반"
+          }
+        ],
+        "distractorCoverage": "4/4",
+        "answerUniqueness": "EXHAUSTIVE_ALL_FLIP_MASKS_AUTHOR_CHECK",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "앞뒷면 값과 조건이 모두 글과 숫자로 주어져 그림에 의존하지 않음"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "format": "SVG",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-B3-solution.svg",
+          "expectedFacts": {
+            "front": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "back": [
+              8,
+              9,
+              7,
+              7
+            ],
+            "legalStates": [
+              {
+                "flipped": [
+                  2,
+                  3
+                ],
+                "sum": 21
+              },
+              {
+                "flipped": [
+                  1,
+                  4
+                ],
+                "sum": 20
+              }
+            ],
+            "objective": "min",
+            "parameter": null
+          },
+          "actualSvgRaster": "NOT_RUN",
+          "actualChrome": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-C1",
+      "sourceQid": 20,
+      "slot": "C1",
+      "purpose": "C",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "조건 명제와 카드 뒤집기",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "조건명제",
+        "논리추론",
+        "카드"
+      ],
+      "wide": false,
+      "content": "앞면에 $1,2,3,4,5$, 뒷면에 각각 $8,10,9,7,13$이 적힌 다섯 카드를 앞면이 보이도록 놓았다. 조건을 만족하며 뒤집을 때 보이는 숫자 합의 최댓값은?\n<div class=\"q-box\">&lt;조건&gt;\n(가) 1번을 뒤집으면 정확히 세 장을 뒤집는다.\n(나) 2번과 3번은 함께 뒤집거나 둘 다 그대로이다.\n(다) 4번을 뒤집으면 1번도 뒤집는다.\n(라) 5번을 뒤집으면 2번도 뒤집는다.\n(마) 정확히 두 장을 뒤집었다면 4번이 포함된다.</div>",
+      "choices": [
+        "$36$",
+        "$15$",
+        "$47$",
+        "$37$",
+        "$25$"
+      ],
+      "answer": "④",
+      "solution": "4번을 뒤집으면 1번이 필요하다. 1번이 있으면 정확히 세 장이어야 하는데 2번과 3번을 한 쌍으로 추가하거나 5번을 추가하면 2번도 필요하므로 총 세 장을 맞출 수 없다. 4번은 따라서 뒤집을 수 없다. 1번을 뒤집으면 {1,2,3}의 세 장만 가능하다. 1번을 뒤집지 않고 2,3번을 뒤집었다면 정확히 두 장인 {2,3}은 4번 포함 조건에 걸리므로 5번을 추가한 {2,3,5}만 가능하다. 공집합은 조건을 모두 만족한다.\n$\\{\\}$인 경우 합은 $15$이다. $\\{1,2,3\\}$인 경우 합은 $36$이다. $\\{2,3,5\\}$인 경우 합은 $37$이다.\n허용 상태를 모두 비교한 최댓값은 $37$이다.\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-C1-solution.svg",
+      "solutionImageAlt": "C1 허용 카드 뒤집기 상태와 보이는 숫자 합 비교",
+      "solutionImageCaption": "TURN은 뒤집힌 카드, KEEP은 앞면이 유지된 카드를 뜻한다. 허용 상태를 비교한 그림이다.",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "primaryRPM_L3": "명제와 조건",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+        "templateKey": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+        "secondaryProblemTypeKey": "PT_LOGIC_CHAIN",
+        "secondaryTemplateKey": "TPL_IMPLICATION_CHAIN",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_OTHER_FORMAL_MATH_CONCEPT_REQUIRED",
+        "crossConceptEvidence": "조건 명제 조합 판정과 기본 정수 합 비교",
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "difficultyBucket": 5,
+        "metadataDebt": [],
+        "integrationPatternReason": "CARD_FLIP_IMPLICATION_CLOSURE_AND_VISIBLE_SUM"
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 20,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3",
+        "sourceRelationship": "STRICT_SOURCE_LOGIC_FOR_A; CONDITIONAL_FOLLOWUP_FOR_BC",
+        "authorCreated": true
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "조건명제의 함의와 참거짓을 검토해야만 허용 카드 집합을 정할 수 있음",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$36$",
+            "wrongStepAndActualResult": "허용 상태 {1,2,3}의 합 36을 최댓값으로 착각"
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$47$",
+            "wrongStepAndActualResult": "5장 모두 뒤집은 합 47이나 1번→정확히 세 장 조건 위반"
+          },
+          {
+            "choice": "②",
+            "choiceValue": "$15$",
+            "wrongStepAndActualResult": "공집합의 합 15를 최댓값으로 착각"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$25$",
+            "wrongStepAndActualResult": "{1,4}를 뒤집어 합 25지만 1번→세 장 위반"
+          }
+        ],
+        "distractorCoverage": "4/4",
+        "answerUniqueness": "EXHAUSTIVE_ALL_FLIP_MASKS_AUTHOR_CHECK",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "앞뒷면 값과 조건이 모두 글과 숫자로 주어져 그림에 의존하지 않음"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "format": "SVG",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-C1-solution.svg",
+          "expectedFacts": {
+            "front": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "back": [
+              8,
+              10,
+              9,
+              7,
+              13
+            ],
+            "legalStates": [
+              {
+                "flipped": [],
+                "sum": 15
+              },
+              {
+                "flipped": [
+                  1,
+                  2,
+                  3
+                ],
+                "sum": 36
+              },
+              {
+                "flipped": [
+                  2,
+                  3,
+                  5
+                ],
+                "sum": 37
+              }
+            ],
+            "objective": "max",
+            "parameter": null
+          },
+          "actualSvgRaster": "NOT_RUN",
+          "actualChrome": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-C2",
+      "sourceQid": 20,
+      "slot": "C2",
+      "purpose": "C",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "조건 명제와 카드 뒤집기",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "조건명제",
+        "논리추론",
+        "카드"
+      ],
+      "wide": false,
+      "content": "앞면에 $1,2,3,4,5$, 뒷면에 $8,9,7,10,11$이 차례로 적힌 다섯 카드가 앞면을 보인다. 조건에 맞춰 뒤집었을 때 **보이는 숫자 합의 최댓값과 최솟값의 차**는?\n<div class=\"q-box\">&lt;조건&gt;\n(가) 1번을 뒤집으면 정확히 세 장을 뒤집는다.\n(나) 2번과 3번은 함께 뒤집거나 함께 그대로이다.\n(다) 4번을 뒤집으면 1번도 뒤집는다.\n(라) 5번을 뒤집으면 2번도 뒤집는다.\n(마) 세 장을 뒤집었다면 1번이 포함된다.\n(바) 뒤집는 장수는 1장 이상 3장 이하이다.</div>",
+      "choices": [
+        "$7$",
+        "$26$",
+        "$33$",
+        "$18$",
+        "$0$"
+      ],
+      "answer": "①",
+      "solution": "4번이 뒤집히면 1번도 뒤집혀 세 장이어야 하지만 나머지 딱 한 장을 더하는 방법은 2·3번 쌍 규칙 및 5번→2번 조건 때문에 없다. 5번을 뒤집으면 2,3번도 뒤집혀 세 장인데 1번이 없으므로 세 장→1번 조건에 모순이다. 남는 것은 {2,3}과 {1,2,3}이다. 전자는 두 장이라 조건을 만족하고 후자는 1번 포함 세 장이라 모두 만족한다.\n$\\{2,3\\}$인 경우 합은 $26$이다. $\\{1,2,3\\}$인 경우 합은 $33$이다.\n최댓값 $33$와 최솟값 $26$의 차는 $7$이다.\n따라서 정답은 ①이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-C2-solution.svg",
+      "solutionImageAlt": "C2 허용 카드 뒤집기 상태와 보이는 숫자 합 비교",
+      "solutionImageCaption": "TURN은 뒤집힌 카드, KEEP은 앞면이 유지된 카드를 뜻한다. 허용 상태를 비교한 그림이다.",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "primaryRPM_L3": "명제와 조건",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+        "templateKey": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+        "secondaryProblemTypeKey": "PT_LOGIC_CHAIN",
+        "secondaryTemplateKey": "TPL_IMPLICATION_CHAIN",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_OTHER_FORMAL_MATH_CONCEPT_REQUIRED",
+        "crossConceptEvidence": "조건 명제 조합 판정과 기본 정수 합 비교",
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "difficultyBucket": 5,
+        "metadataDebt": [],
+        "integrationPatternReason": "CARD_FLIP_IMPLICATION_CLOSURE_AND_VISIBLE_SUM"
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 20,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3",
+        "sourceRelationship": "STRICT_SOURCE_LOGIC_FOR_A; CONDITIONAL_FOLLOWUP_FOR_BC",
+        "authorCreated": true
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "조건명제의 함의와 참거짓을 검토해야만 허용 카드 집합을 정할 수 있음",
+        "distractors": [
+          {
+            "choice": "③",
+            "choiceValue": "$33$",
+            "wrongStepAndActualResult": "허용 상태 중 더 큰 합 33만 구해 차로 오인"
+          },
+          {
+            "choice": "②",
+            "choiceValue": "$26$",
+            "wrongStepAndActualResult": "허용 상태 중 작은 합 26만 구해 차로 오인"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$18$",
+            "wrongStepAndActualResult": "공집합의 합 15를 허용된 최소라고 잘못 여겨 33−15=18 계산"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$0$",
+            "wrongStepAndActualResult": "두 허용 상태를 구분하지 않고 차가 0이라고 계산"
+          }
+        ],
+        "distractorCoverage": "4/4",
+        "answerUniqueness": "EXHAUSTIVE_ALL_FLIP_MASKS_AUTHOR_CHECK",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "앞뒷면 값과 조건이 모두 글과 숫자로 주어져 그림에 의존하지 않음"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "format": "SVG",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-C2-solution.svg",
+          "expectedFacts": {
+            "front": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "back": [
+              8,
+              9,
+              7,
+              10,
+              11
+            ],
+            "legalStates": [
+              {
+                "flipped": [
+                  2,
+                  3
+                ],
+                "sum": 26
+              },
+              {
+                "flipped": [
+                  1,
+                  2,
+                  3
+                ],
+                "sum": 33
+              }
+            ],
+            "objective": "range",
+            "parameter": null
+          },
+          "actualSvgRaster": "NOT_RUN",
+          "actualChrome": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q20-C3",
+      "sourceQid": 20,
+      "slot": "C3",
+      "purpose": "C",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "조건 명제와 카드 뒤집기",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "조건명제",
+        "논리추론",
+        "카드"
+      ],
+      "wide": false,
+      "content": "앞면에 $1,2,3,4,5$, 뒷면에 차례로 $k,9,7,10,11$이 적혀 있다. $k$는 자연수이다. 다음 조건을 만족하며 뒤집을 때 보이는 숫자 합의 최댓값이 $38$이 되도록 하는 $k$는?\n<div class=\"q-box\">&lt;조건&gt;\n(가) 1번을 뒤집으면 정확히 세 장을 뒤집는다.\n(나) 2번과 3번은 동시에 뒤집거나 둘 다 그대로 둔다.\n(다) 4번을 뒤집으면 1번도 뒤집는다.\n(라) 5번을 뒤집으면 2번도 뒤집는다.\n(마) 세 장을 뒤집으면 그중에 1번이 포함된다.\n(바) 뒤집힌 카드는 1장 이상 3장 이하이다.</div>",
+      "choices": [
+        "$11$",
+        "$13$",
+        "$15$",
+        "$12$",
+        "$14$"
+      ],
+      "answer": "②",
+      "solution": "4번을 뒤집으면 1번과 더불어 반드시 세 장을 뒤집어야 하지만 2·3 동시 조건을 지키면서 한 장만 추가할 수 없고 5번을 추가해도 2·3번을 더해야 하므로 불가능하다. 5번을 뒤집으면 2·3번도 뒤집혀 세 장인데 1번이 없어 불가능하다. 따라서 {2,3}, {1,2,3}만 허용된다. {2,3}의 합은 26이고 {1,2,3}의 합은 k+9+7+4+5=k+25이다. 자연수 k에 대해 k+25≥26이므로 최댓값은 k+25이다. 이 값이 38이므로 k=13이다.\n$\\{2,3\\}$인 경우 합은 $26$이다. $\\{1,2,3\\}$인 경우 합은 $k+25$이다.\n자연수 $k$에 대해 $k+25\\ge26$이므로 최댓값은 $k+25=38$, 따라서 $k=13$이다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-C3-solution.svg",
+      "solutionImageAlt": "C3 허용 카드 뒤집기 상태와 보이는 숫자 합 비교",
+      "solutionImageCaption": "TURN은 뒤집힌 카드, KEEP은 앞면이 유지된 카드를 뜻한다. 허용 상태를 비교한 그림이다.",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "primaryRPM_L3": "명제와 조건",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+        "templateKey": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+        "secondaryProblemTypeKey": "PT_LOGIC_CHAIN",
+        "secondaryTemplateKey": "TPL_IMPLICATION_CHAIN",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_OTHER_FORMAL_MATH_CONCEPT_REQUIRED",
+        "crossConceptEvidence": "조건 명제 조합 판정과 기본 정수 합 비교",
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "difficultyBucket": 5,
+        "metadataDebt": [],
+        "integrationPatternReason": "CARD_FLIP_IMPLICATION_CLOSURE_AND_VISIBLE_SUM"
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 20,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3",
+        "sourceRelationship": "STRICT_SOURCE_LOGIC_FOR_A; CONDITIONAL_FOLLOWUP_FOR_BC",
+        "authorCreated": true
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "조건명제의 함의와 참거짓을 검토해야만 허용 카드 집합을 정할 수 있음",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$11$",
+            "wrongStepAndActualResult": "다른 보이는 수의 합 9+7+4+5=25를 27로 오산해 k=11"
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$12$",
+            "wrongStepAndActualResult": "다른 보이는 수 합을 26으로 오산하여 k=12"
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$15$",
+            "wrongStepAndActualResult": "다른 보이는 수 합을 23으로 오산하여 k=15"
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$14$",
+            "wrongStepAndActualResult": "다른 보이는 수 합을 24로 오산하여 k=14"
+          }
+        ],
+        "distractorCoverage": "4/4",
+        "answerUniqueness": "EXHAUSTIVE_ALL_FLIP_MASKS_AUTHOR_CHECK",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "앞뒷면 값과 조건이 모두 글과 숫자로 주어져 그림에 의존하지 않음"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "format": "SVG",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q20-C3-solution.svg",
+          "expectedFacts": {
+            "front": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "back": [
+              13,
+              9,
+              7,
+              10,
+              11
+            ],
+            "legalStates": [
+              {
+                "flipped": [
+                  2,
+                  3
+                ],
+                "sum": 26
+              },
+              {
+                "flipped": [
+                  1,
+                  2,
+                  3
+                ],
+                "sum": 38
+              }
+            ],
+            "objective": "max",
+            "parameter": {
+              "name": "k",
+              "value": 13,
+              "target": 38
+            }
+          },
+          "actualSvgRaster": "NOT_RUN",
+          "actualChrome": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    }
+  ],
+  "answerPositionRebalance": {
+    "policy": "QID9_COLUMN_4_OF_20",
+    "previousBlob": "92c5aa8d3583bfcd571386eed040d2f405f7f47a",
+    "stemAndCorrectValuesPreserved": true,
+    "choiceLocationOnly": true,
+    "quality": "AUTHOR_DRAFT_ONLY"
+  }
+}

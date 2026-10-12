@@ -36,6 +36,13 @@ h1,h2,p{margin:0}h1{font-size:31px;letter-spacing:-1px}h2{font-size:20px;letter-
 .question-table{border-collapse:collapse;white-space:normal;font-size:13px}
 .question-table th,.question-table td{border:1px solid #a5b2c0;text-align:center;padding:4px 8px}
 img.math-figure{display:block;max-width:100%;max-height:410px;object-fit:contain;margin:12px 0}
+.q-image-wrap{width:100%;break-inside:avoid;page-break-inside:avoid}
+.q-image-wrap.image-small img.math-figure{width:50%;max-width:50%;max-height:95px;margin-left:auto;margin-right:auto}
+.q-image-wrap.image-half img.math-figure{width:65%;max-width:65%;max-height:125px;margin-left:auto;margin-right:auto}
+.q-image-wrap.image-medium img.math-figure{width:80%;max-width:80%;max-height:150px;margin-left:auto;margin-right:auto}
+.q-image-wrap.image-large img.math-figure{width:94%;max-width:94%;max-height:190px;margin-left:auto;margin-right:auto}
+.q-image-wrap.image-full img.math-figure{width:100%;max-width:100%;max-height:240px;margin-left:auto;margin-right:auto}
+.q-image-wrap.image-tall img.math-figure{width:100%;max-width:100%;max-height:320px;margin-left:auto;margin-right:auto}
 .answer{margin:12px 0;border-top:1px solid #dce4ec;padding:12px 0;white-space:pre-wrap}
 .generated-question-search{display:grid;gap:10px}
 .generated-question-search input{width:100%;min-height:46px;padding:10px 12px;border:1px solid #cbd8e6;border-radius:9px;font:inherit;color:#173d68}
@@ -298,7 +305,10 @@ async function questionFor(row){
 function figure(parent,q){
  if(!q.image)return;
  if(typeof q.image!=="string"||!/^assets\/(?:generated-lite|images)\/[^?#\\%]+\.(?:svg|png|jpe?g|webp)$/i.test(q.image)||q.image.split("/").some(part=>!part||part==="."||part===".."))throw Error("문제 이미지 경로 오류");
- const img=document.createElement("img");img.src=q.image;img.alt=q.imageAlt||"문항 수학 시각자료";img.className="math-figure";parent.appendChild(img);
+ const size=["small","half","medium","large","full","tall"].includes(q.imageSize)?q.imageSize:"";
+ const wrap=document.createElement("div");wrap.className="q-image-wrap"+(size?" image-"+size:"");
+ const img=document.createElement("img");img.src=q.image;img.alt=q.imageAlt||"문항 수학 시각자료";img.className="math-figure";wrap.appendChild(img);parent.appendChild(wrap);
+
 }
 function stemText(parent,raw){
  const notes=/<div class=(["'])note-box\1>([\s\S]*?)<\/div>/g;
@@ -718,7 +728,7 @@ async function openGeneratedSolution(row){
   if(!isTeacherSession())throw Error("교사 로그인을 확인한 뒤 다시 시도하세요.");
   const output=window.Archive2Output;
   if(!output?.publishOutputEnvelope||!output?.outputEnvelopeUrl)throw Error("해설 출력 엔진을 불러오지 못했습니다.");
-  const solutionQuestion={...q,solutionImageSize:"full",solutionImageLayout:"fullwidth"};
+  const solutionQuestion={...q,solutionImage:q.solutionImage||q.image||null,solutionImageAlt:q.solutionImageAlt||q.imageAlt||"문항 수학 시각자료",solutionImageSize:"full",solutionImageLayout:"fullwidth"};
   envelope=await output.publishOutputEnvelope({
    sourceKind:"generated-bank",sourceId:row.uid,mode:"sol",questionCount:1,questionUids:[row.uid],
    meta:{title:generatedTitle(row),qpp:1,questionUids:[row.uid]},questions:[solutionQuestion]

@@ -2,6 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const vm = require('node:vm');
 const { spawnSync } = require('node:child_process');
 
 const root = path.join(__dirname, '..');
@@ -13,11 +14,11 @@ test('archive/exams inline image inventory covers every content img and validate
   const { generatedAt: _reportDate, ...reportData } = report;
   const { generatedAt: _generatedDate, ...generatedData } = generated;
 
-  assert.equal(generated.total, 46);
-  assert.equal(generated.productionTotal, 42);
+  assert.equal(generated.total, 60);
+  assert.equal(generated.productionTotal, 56);
   assert.equal(generated.testFixtureTotal, 4);
-  assert.deepEqual(generated.extensionCounts, { '.png': 45, '.svg': 1 });
-  assert.equal(generated.qImageAndInlineTotal, 1);
+  assert.deepEqual(generated.extensionCounts, { '.png': 59, '.svg': 1 });
+  assert.equal(generated.qImageAndInlineTotal, 10);
   assert.deepEqual(generated.validation, {
     relativePathInvalidCount: 0,
     missingProductionAssetCount: 0,
@@ -33,12 +34,37 @@ test('archive/exams inline image inventory covers every content img and validate
     src: 'assets/images/25_제일고_2학기_중간_고2_수학II/q9.png', extension: '.png', qImagePresent: false,
     contentInlineImage: true, testFixture: false, relativePathValid: true, assetExists: true });
 
+  const correctedExamPath = 'original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js';
+  const correctedWindow = {};
+  vm.runInNewContext(fs.readFileSync(path.join(root, 'archive', 'exams', correctedExamPath), 'utf8'),
+    { window: correctedWindow }, { filename: correctedExamPath, timeout: 5000 });
   for (const questionId of [12, 16, 20, 23]) {
-    const row = generated.records.find(record => record.file === 'original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js'
-      && record.questionId === questionId);
-    assert.equal(row?.src, `assets/images/24_순천여고_1학기_중간_고2_확률과통계/q${questionId}.png`);
-    assert.equal(row?.assetExists, true);
+    const question = correctedWindow.questionBank.find(row => row.id === questionId);
+    const expectedImage = `assets/images/24_순천여고_1학기_중간_고2_확률과통계/q${questionId}_source-correction.png`;
+    assert.equal(question?.image, expectedImage, `q${questionId} keeps its source-corrected question image`);
+    assert.equal(/<img\b/i.test(question?.content || ''), false,
+      `q${questionId} uses the image field instead of duplicating it in inline content`);
+    assert.equal(fs.existsSync(path.join(root, 'archive', expectedImage)), true,
+      `q${questionId} source-corrected image exists`);
   }
+
+  const q8 = generated.records.find(record => record.file === 'original/high/h2/1mid/24_순천고_1학기_중간_고2_확률과통계.js'
+    && record.questionId === 8);
+  assert.equal(q8?.src, 'assets/images/24_순천고_1학기_중간_고2_확률과통계/q08-source-correction.png');
+  assert.equal(q8?.assetExists, true);
+
+  assert.deepEqual(generated.records.filter(record => record.qImagePresent).map(({ file, questionId }) => [file, questionId]), [
+    ['original/high/h2/1mid/19_순천여고_1학기_중간_고2_수학I.js', 7],
+    ['original/high/h2/1mid/19_순천여고_1학기_중간_고2_수학I.js', 12],
+    ['original/high/h2/1mid/19_순천여고_1학기_중간_고2_수학I.js', 17],
+    ['original/high/h2/1mid/19_순천여고_1학기_중간_고2_수학I.js', 20],
+    ['original/high/h2/1mid/20_매산고_1학기_중간_고2_수학I.js', 7],
+    ['original/high/h2/1mid/20_매산고_1학기_중간_고2_수학I.js', 11],
+    ['original/high/h2/1mid/20_매산고_1학기_중간_고2_수학I.js', 15],
+    ['original/high/h2/1mid/24_순천고_1학기_중간_고2_확률과통계.js', 5],
+    ['original/high/h2/1mid/24_순천고_1학기_중간_고2_확률과통계.js', 6],
+    ['test-fixtures/inline-image-readiness.js', 3],
+  ]);
 
   assert.deepEqual(reportData, generatedData);
   const check = spawnSync(process.execPath, ['archive/tools/build-inline-image-inventory.mjs', '--check'], {

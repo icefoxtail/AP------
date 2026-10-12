@@ -82,6 +82,53 @@ export function isAllowedGeneratedMetaProjectionRepair(uid,before,after){
  };
  return metaSha256(strip(before))===metaSha256(strip(after));
 }
+export function needsSameMetaSourceRebind(row,meta,currentSourceBlobSha){
+ return !!row&&!!currentSourceBlobSha&&(!row.metaVerification||row.metaVerification.status==='VERIFIED_CURRENT_SOURCE')&&
+  row.metaFinalSha256===metaSha256(meta)&&metaSha256(row.meta)===metaSha256(meta)&&
+  (row.sourceShardGitSha!==currentSourceBlobSha||row.metaVerification?.sourceShardGitSha!==currentSourceBlobSha);
+}
+function refreshApprovedSourceHashBindings(expectedUids){
+ const index=json(INDEX),allowed=new Set(expectedUids),changedConsumers=new Map();let updated=0;
+ for(const row of index.records){
+  if(!allowed.has(row.uid))continue;
+  const consumerPath='archive/'+row.shard;
+  safeRepoFile(root,consumerPath,'CONSUMER');
+  const doc=changedConsumers.get(consumerPath)||json(consumerPath);
+  const matches=doc.records.filter(record=>record.generatedUid===row.uid);
+  requireTrue(matches.length===1,'SOURCE_HASH_REBIND_UID_NOT_UNIQUE:'+row.uid);
+  const record=matches[0],sourcePath=record.sourceShard;
+  safeRepoFile(root,sourcePath,'SOURCE');
+  const sourceBytes=read(sourcePath),blob=gitBlobSha(sourceBytes);
+  if(!needsSameMetaSourceRebind(row,row.meta,blob))continue;
+  const sandbox={window:{}};vm.runInNewContext(sourceBytes.toString('utf8'),sandbox,{timeout:2000});
+  const sourceRows=sandbox.window.questionBank.filter(question=>question.uid===row.uid);
+  const metadataPath=sourcePath.replace('/shards/','/metadata/').replace(/\.js$/,'.json');
+  safeRepoFile(root,metadataPath,'METADATA');
+  const authorities=json(metadataPath).filter(entry=>entry.uid===row.uid);
+  requireTrue(sourceRows.length===1&&authorities.length===1,'SOURCE_HASH_REBIND_AUTHORITY_NOT_UNIQUE:'+row.uid);
+  const authority=authorities[0],digest=metaSha256(authority.meta),binding=authority.reviewEvidenceBinding;
+  requireTrue([row.meta,record.meta,record.question.meta,sourceRows[0].meta].every(meta=>metaSha256(meta)===digest)&&row.metaFinalSha256===digest,'SOURCE_HASH_REBIND_META_CHANGED:'+row.uid);
+  const priorReviewSha=row.metaVerification?.reviewEvidenceSha256||row.metaReviewEvidenceSha256;
+  requireTrue(binding&&binding.sha256===priorReviewSha,'SOURCE_HASH_REBIND_REVIEW_CHANGED:'+row.uid);
+  safeRepoFile(root,binding.path,'REVIEW');
+  requireTrue(hex(read(binding.path))===binding.sha256,'SOURCE_HASH_REBIND_REVIEW_BYTES_CHANGED:'+row.uid);
+  const reviewed={window:{}};vm.runInNewContext(historicalBlob(root,authority.sourceShardGitSha).toString('utf8'),reviewed,{timeout:2000});
+  const reviewedRows=reviewed.window.questionBank.filter(question=>question.uid===row.uid);
+  requireTrue(reviewedRows.length===1&&['content','choices','answer','solution'].every(key=>JSON.stringify(sourceRows[0][key])===JSON.stringify(reviewedRows[0][key])),'SOURCE_HASH_REBIND_REVIEWED_BODY_CHANGED:'+row.uid);
+  requireTrue(['content','choices','answer','solution'].every(key=>JSON.stringify(sourceRows[0][key])===JSON.stringify(record.question[key])),'SOURCE_HASH_REBIND_BODY_PARITY_MISMATCH:'+row.uid);
+  record.sourceShardGitSha=blob;doc.sourceShardGitSha=blob;
+  row.sourceShardGitSha=blob;row.metaVerification={status:'VERIFIED_CURRENT_SOURCE',sourceBound:true,reviewBytesBound:true,metaFinalSha256:digest,sourceShardGitSha:blob,reviewEvidenceSha256:binding.sha256};
+  changedConsumers.set(consumerPath,doc);updated++;
+ }
+ for(const [consumerPath,doc]of changedConsumers){
+  const bytes=buf(doc),blob=gitBlobSha(bytes);write(consumerPath,bytes);
+  for(const row of index.records.filter(row=>'archive/'+row.shard===consumerPath)){
+   row.consumerShardGitSha=blob;row.shardGitBlobSha=blob;if('consumerShardSha256'in row)row.consumerShardSha256=hex(bytes);
+  }
+ }
+ if(updated)write(INDEX,buf(index));
+ return updated;
+}
 export function unknownApprovedQid9Manifests(manifests,supportedPath){
  return manifests.filter(entry=>entry.path!==supportedPath&&eligibleApprovedQids(entry.value).length>0)
   .map(entry=>({manifestPath:entry.path,approvedQidCount:eligibleApprovedQids(entry.value).length}));
@@ -181,6 +228,7 @@ function safeRepoFile(root,rel,labelName){
  requireTrue(normalized===rel&&!normalized.startsWith('/')&&!normalized.split('/').includes('..'),labelName+'_PATH_INVALID');
  const full=path.resolve(root,normalized),base=path.resolve(root)+path.sep;
  requireTrue(full.startsWith(base),labelName+'_PATH_OUT_OF_ROOT');
+ if(fs.existsSync(full))requireTrue(fs.realpathSync(full).startsWith(fs.realpathSync(root)+path.sep),labelName+'_REALPATH_OUT_OF_ROOT');
  return full;
 }
 function externalVisualManifests(root){
@@ -603,8 +651,10 @@ const main=()=>{
     const existing=index.records.find(x=>x.uid===uid);
     const existingCount=index.records.filter(x=>x.uid===uid).length;
     requireTrue(existingCount===0||existingCount===1,'EXISTING_UID_DUPLICATE:'+uid);
-     const existingRepair=!!existing&&isAllowedGeneratedMetaProjectionRepair(uid,existing.meta,meta);
-    if(existing?.metaFinalSha256===digest && existing.metaVerification?.status==='VERIFIED_CURRENT_SOURCE'){
+     const currentGeneratedSourceBlob=exists(sourcePath)?gitBlobSha(read(sourcePath)):null;
+     const existingRepair=!!existing&&(isAllowedGeneratedMetaProjectionRepair(uid,existing.meta,meta)||needsSameMetaSourceRebind(existing,meta,currentGeneratedSourceBlob));
+    if(existing?.metaFinalSha256===digest && existing.metaVerification?.status==='VERIFIED_CURRENT_SOURCE'&&
+       existing.sourceShardGitSha===currentGeneratedSourceBlob&&existing.metaVerification.sourceShardGitSha===currentGeneratedSourceBlob){
     requireTrue(existing.shard===consumerPath.replace(/^archive\//,''),'EXISTING_UID_SHARD_DRIFT:'+uid);
     skipped++;continue;
    }
@@ -686,6 +736,7 @@ const main=()=>{
   }
  }
  if(mode==='write'){
+  latestSummary.sourceHashBindingsRefreshed=refreshApprovedSourceHashBindings(expectedApprovedUids);
   const finalIndex=json(INDEX);
   requireTrue(finalIndex.approvedCount===finalIndex.records.length,'INDEX_COUNT_MISMATCH_AFTER');
   requireTrue(new Set(finalIndex.records.map(x=>x.uid)).size===finalIndex.records.length,'DUPLICATE_AFTER');

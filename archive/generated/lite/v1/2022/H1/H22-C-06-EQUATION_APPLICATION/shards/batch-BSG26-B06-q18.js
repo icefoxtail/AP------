@@ -240,7 +240,7 @@ window.questionBank = [
     "image": "assets/images/26_복성고_ALITE_B06/q18-two-tunnels.svg",
     "sourceType": "generated"
   },
-  {
+    {
     "id": 8,
     "uid": "ALITE-BSG26-B06-Q18-S08",
     "level": "상",
@@ -273,8 +273,12 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 정사각형 구멍이 아닌 원형 구멍의 안쪽 곡면을 사용한다.\n원래 원기둥의 겉넓이는 $2\\pi\\cdot6(6+4)=120\\pi$이다.\n위아래 원형 개구부에서 넓이 $2\\pi r^2$가 제거되고, 구멍 안쪽에는 높이 4의 원기둥 옆면 $2\\pi r\\cdot4=8\\pi r$가 드러난다.\n따라서 $120\\pi-2\\pi r^2+8\\pi r=128\\pi$이다.\n정리하면 $r^2-4r+4=0$, 즉 $(r-2)^2=0$이므로 $r=2$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/26_복성고_ALITE_B06/q18-circular-tunnel.svg",
-    "sourceType": "generated"
+    "image": "assets/generated-lite/palma-svg-repair/ALITE-BSG26-B06-Q18-S08-problem.svg",
+    "sourceType": "generated",
+    "imageSize": "medium",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-BSG26-B06-Q18-S08-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 9,

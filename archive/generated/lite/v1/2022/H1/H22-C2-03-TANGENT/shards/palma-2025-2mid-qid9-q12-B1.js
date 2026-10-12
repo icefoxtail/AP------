@@ -36,7 +36,12 @@ window.questionBank = [
     "sourceKind": "generated",
     "sourceQid": 12,
     "slot": "B1",
-    "purposeGroup": "B"
+    "purposeGroup": "B",
+    "image": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q12-B1-problem.svg",
+    "imageSize": "large",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q12-B1-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   }
 ];
 

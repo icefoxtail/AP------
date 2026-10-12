@@ -1,0 +1,1951 @@
+{
+  "schemaVersion": "ALIVE_QID9_AUTHOR_DRAFT_v1",
+  "source": {
+    "path": "archive/exams/original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
+    "examTitle": "25_순천고_2학기_기말_고1_기출",
+    "qid": 21,
+    "gitBlobSha1": "6159f478e8e3edf7074d3967ba1cb7456f7762a3",
+    "originalReadOnly": true,
+    "originalAnswer": "(1) 1, (2) 3, (3) 4"
+  },
+  "authority": {
+    "rpmPrimaryL3": "함수의 성질",
+    "rpmPrimaryL4": "일대일함수",
+    "rpmRecordIds": [
+      "H1-RPM-257"
+    ],
+    "rpmCrosswalkGitBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+    "PT": "PT_ONE_TO_ONE_BIJECTION",
+    "TPL": "TPL_BIJECTION_JUDGMENT_CONDITION",
+    "secondaryPT": "PT_FINITE_BIJECTION",
+    "secondaryTPL": "TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION",
+    "mappingStatus": "DIRECT_ACTIVE",
+    "subUnitKey": "H22-C2-07-FUNCTION_BASIC"
+  },
+  "summary": {
+    "qid": 21,
+    "createdSlots": 9,
+    "answerDistribution": {
+      "①": 2,
+      "②": 2,
+      "③": 2,
+      "④": 2,
+      "⑤": 1
+    },
+    "choiceCount": 45,
+    "distractorRoutes": 36,
+    "solutions": 9,
+    "solutionSvgFiles": 9,
+    "problemSvgFiles": 0,
+    "status": "AUTHOR_DRAFT_ONLY",
+    "mathValidation": "EXHAUSTIVE_36_OR_576_PAIRS_OF_BIJECTIONS_AUTHOR_CHECK",
+    "independentQualityReview": "NOT_RUN",
+    "actualBrowserRender": "NOT_RUN",
+    "nextSourceQid": 22,
+    "stemFormatting": "HTML_Q_BOX_CONDITION_LINES_EXPLICIT_BR"
+  },
+  "authorMathWitness": {
+    "enumeration": "For n=3 enumerate 6! permutations pairs = 36; for n=4 enumerate 24 x 24 = 576; evaluate each explicit f, g, compositions and inverses against conditions. All candidates have exactly one satisfying pair.",
+    "cases": [
+      {
+        "slot": "A1",
+        "domainSize": 3,
+        "f": [
+          2,
+          1,
+          3
+        ],
+        "g": [
+          2,
+          3,
+          1
+        ],
+        "conditions": [
+          [
+            "f",
+            1,
+            2
+          ],
+          [
+            "g",
+            3,
+            1
+          ],
+          [
+            "gf",
+            2,
+            2
+          ]
+        ],
+        "uniqueValidPairs": 1,
+        "ask": [
+          [
+            "fi",
+            3
+          ],
+          [
+            "fg",
+            1
+          ]
+        ],
+        "components": [
+          3,
+          1
+        ],
+        "answer": 4
+      },
+      {
+        "slot": "A2",
+        "domainSize": 3,
+        "f": [
+          3,
+          2,
+          1
+        ],
+        "g": [
+          3,
+          1,
+          2
+        ],
+        "conditions": [
+          [
+            "f",
+            1,
+            3
+          ],
+          [
+            "g",
+            2,
+            1
+          ],
+          [
+            "gf",
+            3,
+            3
+          ]
+        ],
+        "uniqueValidPairs": 1,
+        "ask": [
+          [
+            "gi",
+            2
+          ],
+          [
+            "gf",
+            3
+          ]
+        ],
+        "components": [
+          3,
+          3
+        ],
+        "answer": 6
+      },
+      {
+        "slot": "A3",
+        "domainSize": 3,
+        "f": [
+          2,
+          1,
+          3
+        ],
+        "g": [
+          3,
+          1,
+          2
+        ],
+        "conditions": [
+          [
+            "f",
+            2,
+            1
+          ],
+          [
+            "g",
+            3,
+            2
+          ],
+          [
+            "gf",
+            1,
+            1
+          ]
+        ],
+        "uniqueValidPairs": 1,
+        "ask": [
+          [
+            "fg",
+            1
+          ],
+          [
+            "fi",
+            1
+          ]
+        ],
+        "components": [
+          3,
+          2
+        ],
+        "answer": 5
+      },
+      {
+        "slot": "B1",
+        "domainSize": 3,
+        "f": [
+          1,
+          3,
+          2
+        ],
+        "g": [
+          2,
+          3,
+          1
+        ],
+        "conditions": [
+          [
+            "fi",
+            3,
+            2
+          ],
+          [
+            "g",
+            1,
+            2
+          ],
+          [
+            "gf",
+            3,
+            3
+          ]
+        ],
+        "uniqueValidPairs": 1,
+        "ask": [
+          [
+            "fi",
+            2
+          ],
+          [
+            "fg",
+            3
+          ]
+        ],
+        "components": [
+          3,
+          1
+        ],
+        "answer": 4
+      },
+      {
+        "slot": "B2",
+        "domainSize": 3,
+        "f": [
+          3,
+          2,
+          1
+        ],
+        "g": [
+          2,
+          3,
+          1
+        ],
+        "conditions": [
+          [
+            "f",
+            3,
+            1
+          ],
+          [
+            "g",
+            2,
+            3
+          ],
+          [
+            "gf",
+            1,
+            1
+          ]
+        ],
+        "uniqueValidPairs": 1,
+        "ask": [
+          [
+            "gi",
+            2
+          ],
+          [
+            "f",
+            1
+          ]
+        ],
+        "components": [
+          1,
+          3
+        ],
+        "answer": 4
+      },
+      {
+        "slot": "B3",
+        "domainSize": 3,
+        "f": [
+          1,
+          3,
+          2
+        ],
+        "g": [
+          3,
+          1,
+          2
+        ],
+        "conditions": [
+          [
+            "fi",
+            2,
+            3
+          ],
+          [
+            "g",
+            1,
+            3
+          ],
+          [
+            "gf",
+            2,
+            2
+          ]
+        ],
+        "uniqueValidPairs": 1,
+        "ask": [
+          [
+            "fg",
+            2
+          ],
+          [
+            "gi",
+            1
+          ]
+        ],
+        "components": [
+          1,
+          2
+        ],
+        "answer": 3
+      },
+      {
+        "slot": "C1",
+        "domainSize": 4,
+        "f": [
+          2,
+          1,
+          4,
+          3
+        ],
+        "g": [
+          3,
+          4,
+          2,
+          1
+        ],
+        "conditions": [
+          [
+            "gf",
+            1,
+            4
+          ],
+          [
+            "f",
+            1,
+            2
+          ],
+          [
+            "fg",
+            1,
+            4
+          ],
+          [
+            "fg",
+            3,
+            1
+          ],
+          [
+            "gf",
+            2,
+            3
+          ]
+        ],
+        "uniqueValidPairs": 1,
+        "ask": [
+          [
+            "fi",
+            4
+          ],
+          [
+            "fg",
+            1
+          ]
+        ],
+        "components": [
+          3,
+          4
+        ],
+        "answer": 7
+      },
+      {
+        "slot": "C2",
+        "domainSize": 4,
+        "f": [
+          3,
+          1,
+          4,
+          2
+        ],
+        "g": [
+          2,
+          4,
+          1,
+          3
+        ],
+        "conditions": [
+          [
+            "gf",
+            1,
+            1
+          ],
+          [
+            "f",
+            1,
+            3
+          ],
+          [
+            "gf",
+            2,
+            2
+          ],
+          [
+            "f",
+            2,
+            1
+          ],
+          [
+            "gf",
+            3,
+            3
+          ],
+          [
+            "f",
+            3,
+            4
+          ]
+        ],
+        "uniqueValidPairs": 1,
+        "ask": [
+          [
+            "gi",
+            3
+          ],
+          [
+            "fg",
+            4
+          ]
+        ],
+        "components": [
+          4,
+          4
+        ],
+        "answer": 8
+      },
+      {
+        "slot": "C3",
+        "domainSize": 4,
+        "f": [
+          2,
+          3,
+          4,
+          1
+        ],
+        "g": [
+          4,
+          1,
+          2,
+          3
+        ],
+        "conditions": [
+          [
+            "gf",
+            1,
+            1
+          ],
+          [
+            "f",
+            1,
+            2
+          ],
+          [
+            "gf",
+            2,
+            2
+          ],
+          [
+            "f",
+            2,
+            3
+          ],
+          [
+            "gf",
+            3,
+            3
+          ],
+          [
+            "f",
+            3,
+            4
+          ]
+        ],
+        "uniqueValidPairs": 1,
+        "ask": [
+          [
+            "fi",
+            4
+          ],
+          [
+            "gf",
+            2
+          ]
+        ],
+        "components": [
+          3,
+          2
+        ],
+        "answer": 5
+      }
+    ]
+  },
+  "selfReviewLedger": [
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q21-A1",
+      "slot": "A1",
+      "authorMathCheck": "EXHAUSTIVE_PERMUTATIONS_UNIQUE",
+      "answer": "⑤",
+      "previewSVG": "NEW_SVG",
+      "independentReview": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q21-A2",
+      "slot": "A2",
+      "authorMathCheck": "EXHAUSTIVE_PERMUTATIONS_UNIQUE",
+      "answer": "①",
+      "previewSVG": "NEW_SVG",
+      "independentReview": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q21-A3",
+      "slot": "A3",
+      "authorMathCheck": "EXHAUSTIVE_PERMUTATIONS_UNIQUE",
+      "answer": "④",
+      "previewSVG": "NEW_SVG",
+      "independentReview": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q21-B1",
+      "slot": "B1",
+      "authorMathCheck": "EXHAUSTIVE_PERMUTATIONS_UNIQUE",
+      "answer": "②",
+      "previewSVG": "NEW_SVG",
+      "independentReview": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q21-B2",
+      "slot": "B2",
+      "authorMathCheck": "EXHAUSTIVE_PERMUTATIONS_UNIQUE",
+      "answer": "③",
+      "previewSVG": "NEW_SVG",
+      "independentReview": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q21-B3",
+      "slot": "B3",
+      "authorMathCheck": "EXHAUSTIVE_PERMUTATIONS_UNIQUE",
+      "answer": "④",
+      "previewSVG": "NEW_SVG",
+      "independentReview": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q21-C1",
+      "slot": "C1",
+      "authorMathCheck": "EXHAUSTIVE_PERMUTATIONS_UNIQUE",
+      "answer": "①",
+      "previewSVG": "NEW_SVG",
+      "independentReview": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q21-C2",
+      "slot": "C2",
+      "authorMathCheck": "EXHAUSTIVE_PERMUTATIONS_UNIQUE",
+      "answer": "③",
+      "previewSVG": "NEW_SVG",
+      "independentReview": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q21-C3",
+      "slot": "C3",
+      "authorMathCheck": "EXHAUSTIVE_PERMUTATIONS_UNIQUE",
+      "answer": "②",
+      "previewSVG": "NEW_SVG",
+      "independentReview": "NOT_RUN"
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q21-A1",
+      "sourceQid": 21,
+      "slot": "A1",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "일대일대응과 역함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "COMPLETE_CANDIDATE",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "일대일대응",
+        "합성함수",
+        "역함수"
+      ],
+      "wide": false,
+      "content": "집합 $X=\\{1,2,3\\}$에 대하여 $X$에서 $X$로 가는 두 함수 $f,g$는 모두 일대일대응이다. 다음 조건을 모두 만족할 때, $f^{-1}(3)+(f\\circ g)(1)$의 값은?\n<div class=\"q-box\">&lt;조건&gt;\n(가) $f(1)=2$<br>(나) $g(3)=1$<br>(다) $(g\\circ f)(2)=2$</div>",
+      "choices": [
+        "$2$",
+        "$3$",
+        "$5$",
+        "$6$",
+        "$4$"
+      ],
+      "answer": "⑤",
+      "solution": "$f(1)=2$, $g(3)=1$이다. $(g\\circ f)(2)=2$이므로 $g(f(2))=2$이다. $f(2)$가 $3$이면 $g(3)=1$과 모순이고 $f(2)$는 $2$가 될 수 없으므로 $f(2)=1$이다. 따라서 $f(3)=3$, $g(1)=2$, $g(2)=3$이다.\n따라서 첫 번째 항은 $f^{-1}(3)=3$, 두 번째 항은 $(f\\circ g)(1)=1$이다. 두 값을 더하면 $3+1=4$이다.\n따라서 정답은 ⑤이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q21-A1-solution.svg",
+      "solutionImageAlt": "A1 일대일대응 f,g 대응표 및 함수 값 추론",
+      "solutionImageCaption": "일대일대응 표에서 f, g의 모든 대응과 문제의 두 항 (3, 1)을 확인한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "함수의 성질",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "일대일함수",
+        "rpmRecordId": "H1-RPM-257",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+        "secondaryProblemTypeKey": "PT_FINITE_BIJECTION",
+        "secondaryTemplateKey": "TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_ADDITIONAL_CROSS_CONCEPT",
+        "conditionKeys": [],
+        "conditionStatus": "LOGICAL_FIXED_MAPPING_CONDITIONS_NO_EXTRA_RANGE",
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "difficultyBucket": 3,
+        "metadataDebt": [],
+        "integrationPatternReason": "FINITE_BIJECTION_COMPOSITION_INVERSE_DEDUCTION"
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 21,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3"
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "일대일대응 제약이 유한 함수표 결정에 본질적",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$2$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 1, 둘째 항을 1로 잘못 판단하면 1+1=2로 계산한다."
+          },
+          {
+            "choice": "②",
+            "choiceValue": "$3$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 1, 둘째 항을 2로 잘못 판단하면 1+2=3로 계산한다."
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$5$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 2, 둘째 항을 3로 잘못 판단하면 2+3=5로 계산한다."
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$6$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 3, 둘째 항을 3로 잘못 판단하면 3+3=6로 계산한다."
+          }
+        ],
+        "distractorCoverage": "4/4_EXPLICIT_INCORRECT_INTERMEDIATE_VALUES",
+        "answerUniqueness": "EXHAUSTIVE_PERMUTATION_PAIR_SPACE_PROVEN_UNIQUE",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "원소·조건·연산식을 명시한 발문으로 독립 풀이 가능"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q21-A1-solution.svg",
+          "expectedFacts": {
+            "domain": [
+              1,
+              2,
+              3
+            ],
+            "f": [
+              2,
+              1,
+              3
+            ],
+            "g": [
+              2,
+              3,
+              1
+            ],
+            "condition": [
+              [
+                "f",
+                1,
+                2
+              ],
+              [
+                "g",
+                3,
+                1
+              ],
+              [
+                "gf",
+                2,
+                2
+              ]
+            ],
+            "numberOfCompatiblePairs": 1,
+            "askedComponents": [
+              3,
+              1
+            ]
+          },
+          "actualRender": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q21-A2",
+      "sourceQid": 21,
+      "slot": "A2",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "일대일대응과 역함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "COMPLETE_CANDIDATE",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "일대일대응",
+        "합성함수",
+        "역함수"
+      ],
+      "wide": false,
+      "content": "집합 $X=\\{1,2,3\\}$에 대하여 $X$에서 $X$로 가는 두 함수 $f,g$는 모두 일대일대응이다. 다음 조건을 모두 만족할 때, $g^{-1}(2)+(g\\circ f)(3)$의 값은?\n<div class=\"q-box\">&lt;조건&gt;\n(가) $f(1)=3$<br>(나) $g(2)=1$<br>(다) $(g\\circ f)(3)=3$</div>",
+      "choices": [
+        "$6$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "answer": "①",
+      "solution": "$f(1)=3$, $g(2)=1$이다. $g(f(3))=3$이므로 $f(3)\\ne2$이고 $f(3)\\ne3$이다. 따라서 $f(3)=1$, $f(2)=2$이다. 이어서 $g(1)=3$, $g(3)=2$가 정해진다.\n따라서 첫 번째 항은 $g^{-1}(2)=3$, 두 번째 항은 $(g\\circ f)(3)=3$이다. 두 값을 더하면 $3+3=6$이다.\n따라서 정답은 ①이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q21-A2-solution.svg",
+      "solutionImageAlt": "A2 일대일대응 f,g 대응표 및 함수 값 추론",
+      "solutionImageCaption": "일대일대응 표에서 f, g의 모든 대응과 문제의 두 항 (3, 3)을 확인한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "함수의 성질",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "일대일함수",
+        "rpmRecordId": "H1-RPM-257",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+        "secondaryProblemTypeKey": "PT_FINITE_BIJECTION",
+        "secondaryTemplateKey": "TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_ADDITIONAL_CROSS_CONCEPT",
+        "conditionKeys": [],
+        "conditionStatus": "LOGICAL_FIXED_MAPPING_CONDITIONS_NO_EXTRA_RANGE",
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "difficultyBucket": 3,
+        "metadataDebt": [],
+        "integrationPatternReason": "FINITE_BIJECTION_COMPOSITION_INVERSE_DEDUCTION"
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 21,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3"
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "일대일대응 제약이 유한 함수표 결정에 본질적",
+        "distractors": [
+          {
+            "choice": "②",
+            "choiceValue": "$2$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 1, 둘째 항을 1로 잘못 판단하면 1+1=2로 계산한다."
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$3$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 1, 둘째 항을 2로 잘못 판단하면 1+2=3로 계산한다."
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$4$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 2, 둘째 항을 2로 잘못 판단하면 2+2=4로 계산한다."
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$5$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 2, 둘째 항을 3로 잘못 판단하면 2+3=5로 계산한다."
+          }
+        ],
+        "distractorCoverage": "4/4_EXPLICIT_INCORRECT_INTERMEDIATE_VALUES",
+        "answerUniqueness": "EXHAUSTIVE_PERMUTATION_PAIR_SPACE_PROVEN_UNIQUE",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "원소·조건·연산식을 명시한 발문으로 독립 풀이 가능"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q21-A2-solution.svg",
+          "expectedFacts": {
+            "domain": [
+              1,
+              2,
+              3
+            ],
+            "f": [
+              3,
+              2,
+              1
+            ],
+            "g": [
+              3,
+              1,
+              2
+            ],
+            "condition": [
+              [
+                "f",
+                1,
+                3
+              ],
+              [
+                "g",
+                2,
+                1
+              ],
+              [
+                "gf",
+                3,
+                3
+              ]
+            ],
+            "numberOfCompatiblePairs": 1,
+            "askedComponents": [
+              3,
+              3
+            ]
+          },
+          "actualRender": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q21-A3",
+      "sourceQid": 21,
+      "slot": "A3",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "일대일대응과 역함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "COMPLETE_CANDIDATE",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "일대일대응",
+        "합성함수",
+        "역함수"
+      ],
+      "wide": false,
+      "content": "집합 $X=\\{1,2,3\\}$에 대하여 $X$에서 $X$로 가는 두 함수 $f,g$는 모두 일대일대응이다. 다음 조건을 모두 만족할 때, $(f\\circ g)(1)+f^{-1}(1)$의 값은?\n<div class=\"q-box\">&lt;조건&gt;\n(가) $f(2)=1$<br>(나) $g(3)=2$<br>(다) $(g\\circ f)(1)=1$</div>",
+      "choices": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "answer": "④",
+      "solution": "$f(2)=1$, $g(3)=2$, $g(f(1))=1$이다. $f(1)$이 $3$이면 $g(3)=2$와 모순이고 $f(1)=1$도 일대일 조건에 위배되므로 $f(1)=2$이다. 따라서 $f(3)=3$, $g(2)=1$, $g(1)=3$이다.\n따라서 첫 번째 항은 $(f\\circ g)(1)=3$, 두 번째 항은 $f^{-1}(1)=2$이다. 두 값을 더하면 $3+2=5$이다.\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q21-A3-solution.svg",
+      "solutionImageAlt": "A3 일대일대응 f,g 대응표 및 함수 값 추론",
+      "solutionImageCaption": "일대일대응 표에서 f, g의 모든 대응과 문제의 두 항 (3, 2)을 확인한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "함수의 성질",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "일대일함수",
+        "rpmRecordId": "H1-RPM-257",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+        "secondaryProblemTypeKey": "PT_FINITE_BIJECTION",
+        "secondaryTemplateKey": "TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_ADDITIONAL_CROSS_CONCEPT",
+        "conditionKeys": [],
+        "conditionStatus": "LOGICAL_FIXED_MAPPING_CONDITIONS_NO_EXTRA_RANGE",
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "difficultyBucket": 3,
+        "metadataDebt": [],
+        "integrationPatternReason": "FINITE_BIJECTION_COMPOSITION_INVERSE_DEDUCTION"
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 21,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3"
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "일대일대응 제약이 유한 함수표 결정에 본질적",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$2$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 1, 둘째 항을 1로 잘못 판단하면 1+1=2로 계산한다."
+          },
+          {
+            "choice": "②",
+            "choiceValue": "$3$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 1, 둘째 항을 2로 잘못 판단하면 1+2=3로 계산한다."
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$4$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 2, 둘째 항을 2로 잘못 판단하면 2+2=4로 계산한다."
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$6$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 3, 둘째 항을 3로 잘못 판단하면 3+3=6로 계산한다."
+          }
+        ],
+        "distractorCoverage": "4/4_EXPLICIT_INCORRECT_INTERMEDIATE_VALUES",
+        "answerUniqueness": "EXHAUSTIVE_PERMUTATION_PAIR_SPACE_PROVEN_UNIQUE",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "원소·조건·연산식을 명시한 발문으로 독립 풀이 가능"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q21-A3-solution.svg",
+          "expectedFacts": {
+            "domain": [
+              1,
+              2,
+              3
+            ],
+            "f": [
+              2,
+              1,
+              3
+            ],
+            "g": [
+              3,
+              1,
+              2
+            ],
+            "condition": [
+              [
+                "f",
+                2,
+                1
+              ],
+              [
+                "g",
+                3,
+                2
+              ],
+              [
+                "gf",
+                1,
+                1
+              ]
+            ],
+            "numberOfCompatiblePairs": 1,
+            "askedComponents": [
+              3,
+              2
+            ]
+          },
+          "actualRender": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q21-B1",
+      "sourceQid": 21,
+      "slot": "B1",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "상",
+      "category": "함수",
+      "originalCategory": "일대일대응과 역함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "COMPLETE_CANDIDATE",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "일대일대응",
+        "합성함수",
+        "역함수"
+      ],
+      "wide": false,
+      "content": "집합 $X=\\{1,2,3\\}$에 대하여 $X$에서 $X$로 가는 두 함수 $f,g$는 모두 일대일대응이다. 다음 조건을 모두 만족할 때, $f^{-1}(2)+(f\\circ g)(3)$의 값은?\n<div class=\"q-box\">&lt;조건&gt;\n(가) $f^{-1}(3)=2$<br>(나) $g(1)=2$<br>(다) $(g\\circ f)(3)=3$</div>",
+      "choices": [
+        "$2$",
+        "$4$",
+        "$3$",
+        "$5$",
+        "$6$"
+      ],
+      "answer": "②",
+      "solution": "$f^{-1}(3)=2$에서 $f(2)=3$이고 $g(1)=2$이다. $g(f(3))=3$이므로 $f(3)\\ne1$이다. 또 $f(2)=3$이므로 $f(3)=2$, $f(1)=1$이다. $g(2)=3$, $g(3)=1$로 모든 값이 정해진다.\n따라서 첫 번째 항은 $f^{-1}(2)=3$, 두 번째 항은 $(f\\circ g)(3)=1$이다. 두 값을 더하면 $3+1=4$이다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q21-B1-solution.svg",
+      "solutionImageAlt": "B1 일대일대응 f,g 대응표 및 함수 값 추론",
+      "solutionImageCaption": "일대일대응 표에서 f, g의 모든 대응과 문제의 두 항 (3, 1)을 확인한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "함수의 성질",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "일대일함수",
+        "rpmRecordId": "H1-RPM-257",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+        "secondaryProblemTypeKey": "PT_FINITE_BIJECTION",
+        "secondaryTemplateKey": "TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_ADDITIONAL_CROSS_CONCEPT",
+        "conditionKeys": [],
+        "conditionStatus": "LOGICAL_FIXED_MAPPING_CONDITIONS_NO_EXTRA_RANGE",
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "difficultyBucket": 4,
+        "metadataDebt": [],
+        "integrationPatternReason": "FINITE_BIJECTION_COMPOSITION_INVERSE_DEDUCTION"
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 21,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3"
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "일대일대응 제약이 유한 함수표 결정에 본질적",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$2$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 1, 둘째 항을 1로 잘못 판단하면 1+1=2로 계산한다."
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$3$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 1, 둘째 항을 2로 잘못 판단하면 1+2=3로 계산한다."
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$5$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 2, 둘째 항을 3로 잘못 판단하면 2+3=5로 계산한다."
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$6$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 3, 둘째 항을 3로 잘못 판단하면 3+3=6로 계산한다."
+          }
+        ],
+        "distractorCoverage": "4/4_EXPLICIT_INCORRECT_INTERMEDIATE_VALUES",
+        "answerUniqueness": "EXHAUSTIVE_PERMUTATION_PAIR_SPACE_PROVEN_UNIQUE",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "원소·조건·연산식을 명시한 발문으로 독립 풀이 가능"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q21-B1-solution.svg",
+          "expectedFacts": {
+            "domain": [
+              1,
+              2,
+              3
+            ],
+            "f": [
+              1,
+              3,
+              2
+            ],
+            "g": [
+              2,
+              3,
+              1
+            ],
+            "condition": [
+              [
+                "fi",
+                3,
+                2
+              ],
+              [
+                "g",
+                1,
+                2
+              ],
+              [
+                "gf",
+                3,
+                3
+              ]
+            ],
+            "numberOfCompatiblePairs": 1,
+            "askedComponents": [
+              3,
+              1
+            ]
+          },
+          "actualRender": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q21-B2",
+      "sourceQid": 21,
+      "slot": "B2",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "상",
+      "category": "함수",
+      "originalCategory": "일대일대응과 역함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "COMPLETE_CANDIDATE",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "일대일대응",
+        "합성함수",
+        "역함수"
+      ],
+      "wide": false,
+      "content": "집합 $X=\\{1,2,3\\}$에 대하여 $X$에서 $X$로 가는 두 함수 $f,g$는 모두 일대일대응이다. 다음 조건을 모두 만족할 때, $g^{-1}(2)+f(1)$의 값은?\n<div class=\"q-box\">&lt;조건&gt;\n(가) $f(3)=1$<br>(나) $g(2)=3$<br>(다) $(g\\circ f)(1)=1$</div>",
+      "choices": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "answer": "③",
+      "solution": "$f(3)=1$, $g(2)=3$, $g(f(1))=1$이다. $f(1)$은 2나 3인데 $g(2)=3$이므로 $f(1)=3$, $g(3)=1$이다. 따라서 $f(2)=2$, $g(1)=2$가 된다.\n따라서 첫 번째 항은 $g^{-1}(2)=1$, 두 번째 항은 $f(1)=3$이다. 두 값을 더하면 $1+3=4$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q21-B2-solution.svg",
+      "solutionImageAlt": "B2 일대일대응 f,g 대응표 및 함수 값 추론",
+      "solutionImageCaption": "일대일대응 표에서 f, g의 모든 대응과 문제의 두 항 (1, 3)을 확인한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "함수의 성질",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "일대일함수",
+        "rpmRecordId": "H1-RPM-257",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+        "secondaryProblemTypeKey": "PT_FINITE_BIJECTION",
+        "secondaryTemplateKey": "TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_ADDITIONAL_CROSS_CONCEPT",
+        "conditionKeys": [],
+        "conditionStatus": "LOGICAL_FIXED_MAPPING_CONDITIONS_NO_EXTRA_RANGE",
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "difficultyBucket": 4,
+        "metadataDebt": [],
+        "integrationPatternReason": "FINITE_BIJECTION_COMPOSITION_INVERSE_DEDUCTION"
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 21,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3"
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "일대일대응 제약이 유한 함수표 결정에 본질적",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$2$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 1, 둘째 항을 1로 잘못 판단하면 1+1=2로 계산한다."
+          },
+          {
+            "choice": "②",
+            "choiceValue": "$3$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 1, 둘째 항을 2로 잘못 판단하면 1+2=3로 계산한다."
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$5$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 2, 둘째 항을 3로 잘못 판단하면 2+3=5로 계산한다."
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$6$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 3, 둘째 항을 3로 잘못 판단하면 3+3=6로 계산한다."
+          }
+        ],
+        "distractorCoverage": "4/4_EXPLICIT_INCORRECT_INTERMEDIATE_VALUES",
+        "answerUniqueness": "EXHAUSTIVE_PERMUTATION_PAIR_SPACE_PROVEN_UNIQUE",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "원소·조건·연산식을 명시한 발문으로 독립 풀이 가능"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q21-B2-solution.svg",
+          "expectedFacts": {
+            "domain": [
+              1,
+              2,
+              3
+            ],
+            "f": [
+              3,
+              2,
+              1
+            ],
+            "g": [
+              2,
+              3,
+              1
+            ],
+            "condition": [
+              [
+                "f",
+                3,
+                1
+              ],
+              [
+                "g",
+                2,
+                3
+              ],
+              [
+                "gf",
+                1,
+                1
+              ]
+            ],
+            "numberOfCompatiblePairs": 1,
+            "askedComponents": [
+              1,
+              3
+            ]
+          },
+          "actualRender": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q21-B3",
+      "sourceQid": 21,
+      "slot": "B3",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "상",
+      "category": "함수",
+      "originalCategory": "일대일대응과 역함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "COMPLETE_CANDIDATE",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "일대일대응",
+        "합성함수",
+        "역함수"
+      ],
+      "wide": false,
+      "content": "집합 $X=\\{1,2,3\\}$에 대하여 $X$에서 $X$로 가는 두 함수 $f,g$는 모두 일대일대응이다. 다음 조건을 모두 만족할 때, $(f\\circ g)(2)+g^{-1}(1)$의 값은?\n<div class=\"q-box\">&lt;조건&gt;\n(가) $f^{-1}(2)=3$<br>(나) $g(1)=3$<br>(다) $(g\\circ f)(2)=2$</div>",
+      "choices": [
+        "$2$",
+        "$4$",
+        "$5$",
+        "$3$",
+        "$6$"
+      ],
+      "answer": "④",
+      "solution": "$f^{-1}(2)=3$이므로 $f(3)=2$이다. $g(1)=3$이고 $g(f(2))=2$이므로 $f(2)$가 1일 수 없고, 이미 2가 사용되었으므로 $f(2)=3$이다. 따라서 $f(1)=1$, $g(3)=2$, $g(2)=1$이다.\n따라서 첫 번째 항은 $(f\\circ g)(2)=1$, 두 번째 항은 $g^{-1}(1)=2$이다. 두 값을 더하면 $1+2=3$이다.\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q21-B3-solution.svg",
+      "solutionImageAlt": "B3 일대일대응 f,g 대응표 및 함수 값 추론",
+      "solutionImageCaption": "일대일대응 표에서 f, g의 모든 대응과 문제의 두 항 (1, 2)을 확인한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "함수의 성질",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "일대일함수",
+        "rpmRecordId": "H1-RPM-257",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+        "secondaryProblemTypeKey": "PT_FINITE_BIJECTION",
+        "secondaryTemplateKey": "TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_ADDITIONAL_CROSS_CONCEPT",
+        "conditionKeys": [],
+        "conditionStatus": "LOGICAL_FIXED_MAPPING_CONDITIONS_NO_EXTRA_RANGE",
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "difficultyBucket": 4,
+        "metadataDebt": [],
+        "integrationPatternReason": "FINITE_BIJECTION_COMPOSITION_INVERSE_DEDUCTION"
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 21,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3"
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "일대일대응 제약이 유한 함수표 결정에 본질적",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$2$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 1, 둘째 항을 1로 잘못 판단하면 1+1=2로 계산한다."
+          },
+          {
+            "choice": "②",
+            "choiceValue": "$4$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 2, 둘째 항을 2로 잘못 판단하면 2+2=4로 계산한다."
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$5$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 2, 둘째 항을 3로 잘못 판단하면 2+3=5로 계산한다."
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$6$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 3, 둘째 항을 3로 잘못 판단하면 3+3=6로 계산한다."
+          }
+        ],
+        "distractorCoverage": "4/4_EXPLICIT_INCORRECT_INTERMEDIATE_VALUES",
+        "answerUniqueness": "EXHAUSTIVE_PERMUTATION_PAIR_SPACE_PROVEN_UNIQUE",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "원소·조건·연산식을 명시한 발문으로 독립 풀이 가능"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q21-B3-solution.svg",
+          "expectedFacts": {
+            "domain": [
+              1,
+              2,
+              3
+            ],
+            "f": [
+              1,
+              3,
+              2
+            ],
+            "g": [
+              3,
+              1,
+              2
+            ],
+            "condition": [
+              [
+                "fi",
+                2,
+                3
+              ],
+              [
+                "g",
+                1,
+                3
+              ],
+              [
+                "gf",
+                2,
+                2
+              ]
+            ],
+            "numberOfCompatiblePairs": 1,
+            "askedComponents": [
+              1,
+              2
+            ]
+          },
+          "actualRender": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q21-C1",
+      "sourceQid": 21,
+      "slot": "C1",
+      "purpose": "C",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "함수",
+      "originalCategory": "일대일대응과 역함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "COMPLETE_CANDIDATE",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "일대일대응",
+        "합성함수",
+        "역함수"
+      ],
+      "wide": false,
+      "content": "집합 $X=\\{1,2,3,4\\}$에 대하여 $X$에서 $X$로 가는 두 함수 $f,g$는 모두 일대일대응이다. 다음 조건을 모두 만족할 때, $f^{-1}(4)+(f\\circ g)(1)$의 값은?\n<div class=\"q-box\">&lt;조건&gt;\n(가) $(g\\circ f)(1)=4$<br>(나) $f(1)=2$<br>(다) $(f\\circ g)(1)=4$<br>(라) $(f\\circ g)(3)=1$<br>(마) $(g\\circ f)(2)=3$</div>",
+      "choices": [
+        "$7$",
+        "$4$",
+        "$5$",
+        "$6$",
+        "$8$"
+      ],
+      "answer": "①",
+      "solution": "$f(1)=2$와 $g(f(1))=4$에서 $g(2)=4$이다. $f(g(1))=4$이므로 $g(1)$은 3 또는 4인데 $g(2)=4$이고 $f(1)=2$이므로 $g(1)=3$, 따라서 $f(3)=4$이다. $g(f(2))=3$이므로 $f(2)=1$, $g(1)=3$이 확인된다. $f(4)=3$이며 $f(g(3))=1$에서 $g(3)=2$, 남은 값 $g(4)=1$이다.\n따라서 첫 번째 항은 $f^{-1}(4)=3$, 두 번째 항은 $(f\\circ g)(1)=4$이다. 두 값을 더하면 $3+4=7$이다.\n따라서 정답은 ①이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q21-C1-solution.svg",
+      "solutionImageAlt": "C1 일대일대응 f,g 대응표 및 함수 값 추론",
+      "solutionImageCaption": "일대일대응 표에서 f, g의 모든 대응과 문제의 두 항 (3, 4)을 확인한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "함수의 성질",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "일대일함수",
+        "rpmRecordId": "H1-RPM-257",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+        "secondaryProblemTypeKey": "PT_FINITE_BIJECTION",
+        "secondaryTemplateKey": "TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_ADDITIONAL_CROSS_CONCEPT",
+        "conditionKeys": [],
+        "conditionStatus": "LOGICAL_FIXED_MAPPING_CONDITIONS_NO_EXTRA_RANGE",
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "difficultyBucket": 5,
+        "metadataDebt": [],
+        "integrationPatternReason": "FINITE_BIJECTION_COMPOSITION_INVERSE_DEDUCTION"
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 21,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3"
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "일대일대응 제약이 유한 함수표 결정에 본질적",
+        "distractors": [
+          {
+            "choice": "②",
+            "choiceValue": "$4$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 2, 둘째 항을 2로 잘못 판단하면 2+2=4로 계산한다."
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$5$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 2, 둘째 항을 3로 잘못 판단하면 2+3=5로 계산한다."
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$6$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 3, 둘째 항을 3로 잘못 판단하면 3+3=6로 계산한다."
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$8$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 4, 둘째 항을 4로 잘못 판단하면 4+4=8로 계산한다."
+          }
+        ],
+        "distractorCoverage": "4/4_EXPLICIT_INCORRECT_INTERMEDIATE_VALUES",
+        "answerUniqueness": "EXHAUSTIVE_PERMUTATION_PAIR_SPACE_PROVEN_UNIQUE",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "원소·조건·연산식을 명시한 발문으로 독립 풀이 가능"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q21-C1-solution.svg",
+          "expectedFacts": {
+            "domain": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "f": [
+              2,
+              1,
+              4,
+              3
+            ],
+            "g": [
+              3,
+              4,
+              2,
+              1
+            ],
+            "condition": [
+              [
+                "gf",
+                1,
+                4
+              ],
+              [
+                "f",
+                1,
+                2
+              ],
+              [
+                "fg",
+                1,
+                4
+              ],
+              [
+                "fg",
+                3,
+                1
+              ],
+              [
+                "gf",
+                2,
+                3
+              ]
+            ],
+            "numberOfCompatiblePairs": 1,
+            "askedComponents": [
+              3,
+              4
+            ]
+          },
+          "actualRender": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q21-C2",
+      "sourceQid": 21,
+      "slot": "C2",
+      "purpose": "C",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "함수",
+      "originalCategory": "일대일대응과 역함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "COMPLETE_CANDIDATE",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "일대일대응",
+        "합성함수",
+        "역함수"
+      ],
+      "wide": false,
+      "content": "집합 $X=\\{1,2,3,4\\}$에 대하여 $X$에서 $X$로 가는 두 함수 $f,g$는 모두 일대일대응이다. 다음 조건을 모두 만족할 때, $g^{-1}(3)+(f\\circ g)(4)$의 값은?\n<div class=\"q-box\">&lt;조건&gt;\n(가) $(g\\circ f)(1)=1$<br>(나) $f(1)=3$<br>(다) $(g\\circ f)(2)=2$<br>(라) $f(2)=1$<br>(마) $(g\\circ f)(3)=3$<br>(바) $f(3)=4$</div>",
+      "choices": [
+        "$4$",
+        "$5$",
+        "$8$",
+        "$6$",
+        "$7$"
+      ],
+      "answer": "③",
+      "solution": "$f(1)=3$, $f(2)=1$, $f(3)=4$가 주어지므로 일대일대응에서 $f(4)=2$이다. $g(f(1))=1$, $g(f(2))=2$, $g(f(3))=3$에서 각각 $g(3)=1$, $g(1)=2$, $g(4)=3$이므로 $g(2)=4$이다.\n따라서 첫 번째 항은 $g^{-1}(3)=4$, 두 번째 항은 $(f\\circ g)(4)=4$이다. 두 값을 더하면 $4+4=8$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q21-C2-solution.svg",
+      "solutionImageAlt": "C2 일대일대응 f,g 대응표 및 함수 값 추론",
+      "solutionImageCaption": "일대일대응 표에서 f, g의 모든 대응과 문제의 두 항 (4, 4)을 확인한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "함수의 성질",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "일대일함수",
+        "rpmRecordId": "H1-RPM-257",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+        "secondaryProblemTypeKey": "PT_FINITE_BIJECTION",
+        "secondaryTemplateKey": "TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_ADDITIONAL_CROSS_CONCEPT",
+        "conditionKeys": [],
+        "conditionStatus": "LOGICAL_FIXED_MAPPING_CONDITIONS_NO_EXTRA_RANGE",
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "difficultyBucket": 5,
+        "metadataDebt": [],
+        "integrationPatternReason": "FINITE_BIJECTION_COMPOSITION_INVERSE_DEDUCTION"
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 21,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3"
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "일대일대응 제약이 유한 함수표 결정에 본질적",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$4$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 2, 둘째 항을 2로 잘못 판단하면 2+2=4로 계산한다."
+          },
+          {
+            "choice": "②",
+            "choiceValue": "$5$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 2, 둘째 항을 3로 잘못 판단하면 2+3=5로 계산한다."
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$6$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 3, 둘째 항을 3로 잘못 판단하면 3+3=6로 계산한다."
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$7$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 3, 둘째 항을 4로 잘못 판단하면 3+4=7로 계산한다."
+          }
+        ],
+        "distractorCoverage": "4/4_EXPLICIT_INCORRECT_INTERMEDIATE_VALUES",
+        "answerUniqueness": "EXHAUSTIVE_PERMUTATION_PAIR_SPACE_PROVEN_UNIQUE",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "원소·조건·연산식을 명시한 발문으로 독립 풀이 가능"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q21-C2-solution.svg",
+          "expectedFacts": {
+            "domain": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "f": [
+              3,
+              1,
+              4,
+              2
+            ],
+            "g": [
+              2,
+              4,
+              1,
+              3
+            ],
+            "condition": [
+              [
+                "gf",
+                1,
+                1
+              ],
+              [
+                "f",
+                1,
+                3
+              ],
+              [
+                "gf",
+                2,
+                2
+              ],
+              [
+                "f",
+                2,
+                1
+              ],
+              [
+                "gf",
+                3,
+                3
+              ],
+              [
+                "f",
+                3,
+                4
+              ]
+            ],
+            "numberOfCompatiblePairs": 1,
+            "askedComponents": [
+              4,
+              4
+            ]
+          },
+          "actualRender": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-SUNCHEON25-2FINAL-Q21-C3",
+      "sourceQid": 21,
+      "slot": "C3",
+      "purpose": "C",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "함수",
+      "originalCategory": "일대일대응과 역함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "COMPLETE_CANDIDATE",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "일대일대응",
+        "합성함수",
+        "역함수"
+      ],
+      "wide": false,
+      "content": "집합 $X=\\{1,2,3,4\\}$에 대하여 $X$에서 $X$로 가는 두 함수 $f,g$는 모두 일대일대응이다. 다음 조건을 모두 만족할 때, $f^{-1}(4)+(g\\circ f)(2)$의 값은?\n<div class=\"q-box\">&lt;조건&gt;\n(가) $(g\\circ f)(1)=1$<br>(나) $f(1)=2$<br>(다) $(g\\circ f)(2)=2$<br>(라) $f(2)=3$<br>(마) $(g\\circ f)(3)=3$<br>(바) $f(3)=4$</div>",
+      "choices": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$7$",
+        "$8$"
+      ],
+      "answer": "②",
+      "solution": "$f(1)=2$, $f(2)=3$, $f(3)=4$에서 $f(4)=1$이다. $g(f(1))=1$, $g(f(2))=2$, $g(f(3))=3$이므로 $g(2)=1$, $g(3)=2$, $g(4)=3$이며, 남은 값으로 $g(1)=4$이다.\n따라서 첫 번째 항은 $f^{-1}(4)=3$, 두 번째 항은 $(g\\circ f)(2)=2$이다. 두 값을 더하면 $3+2=5$이다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q21-C3-solution.svg",
+      "solutionImageAlt": "C3 일대일대응 f,g 대응표 및 함수 값 추론",
+      "solutionImageCaption": "일대일대응 표에서 f, g의 모든 대응과 문제의 두 항 (3, 2)을 확인한다.",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "함수의 성질",
+        "primaryRPM_L3Lock": "FROZEN",
+        "rpmL4SemanticLabel": "일대일함수",
+        "rpmRecordId": "H1-RPM-257",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "rpmRecordCrosswalkBlobSha": "904b3768b69b300607e52217cad05bf71e34f221",
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+        "secondaryProblemTypeKey": "PT_FINITE_BIJECTION",
+        "secondaryTemplateKey": "TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION",
+        "crossConceptKeys": [],
+        "crossConceptApplicability": "NO_ADDITIONAL_CROSS_CONCEPT",
+        "conditionKeys": [],
+        "conditionStatus": "LOGICAL_FIXED_MAPPING_CONDITIONS_NO_EXTRA_RANGE",
+        "integrationPattern": "INTERDEPENDENT",
+        "integrationPatternStatus": "SEMANTIC_DESCRIPTION_ONLY",
+        "difficultyBucket": 5,
+        "metadataDebt": [],
+        "integrationPatternReason": "FINITE_BIJECTION_COMPOSITION_INVERSE_DEDUCTION"
+      },
+      "provenance": {
+        "kind": "ALIVE_QID9_NEW",
+        "sourceQid": 21,
+        "sourceOriginalGitBlobSha": "6159f478e8e3edf7074d3967ba1cb7456f7762a3"
+      },
+      "review": {
+        "reverseStemDisposition": "KEEP",
+        "primaryL3Necessity": "일대일대응 제약이 유한 함수표 결정에 본질적",
+        "distractors": [
+          {
+            "choice": "①",
+            "choiceValue": "$4$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 2, 둘째 항을 2로 잘못 판단하면 2+2=4로 계산한다."
+          },
+          {
+            "choice": "③",
+            "choiceValue": "$6$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 3, 둘째 항을 3로 잘못 판단하면 3+3=6로 계산한다."
+          },
+          {
+            "choice": "④",
+            "choiceValue": "$7$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 3, 둘째 항을 4로 잘못 판단하면 3+4=7로 계산한다."
+          },
+          {
+            "choice": "⑤",
+            "choiceValue": "$8$",
+            "wrongStepAndActualResult": "조건에 맞게 두 함숫값을 추적하지 않고 첫 항을 4, 둘째 항을 4로 잘못 판단하면 4+4=8로 계산한다."
+          }
+        ],
+        "distractorCoverage": "4/4_EXPLICIT_INCORRECT_INTERMEDIATE_VALUES",
+        "answerUniqueness": "EXHAUSTIVE_PERMUTATION_PAIR_SPACE_PROVEN_UNIQUE",
+        "problemVisual": {
+          "decision": "NO_VISUAL",
+          "reason": "원소·조건·연산식을 명시한 발문으로 독립 풀이 가능"
+        },
+        "solutionVisual": {
+          "decision": "ADD_NEW_VISUAL",
+          "physicalPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_순천고_2학기_기말_고1/assets/q21-C3-solution.svg",
+          "expectedFacts": {
+            "domain": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "f": [
+              2,
+              3,
+              4,
+              1
+            ],
+            "g": [
+              4,
+              1,
+              2,
+              3
+            ],
+            "condition": [
+              [
+                "gf",
+                1,
+                1
+              ],
+              [
+                "f",
+                1,
+                2
+              ],
+              [
+                "gf",
+                2,
+                2
+              ],
+              [
+                "f",
+                2,
+                3
+              ],
+              [
+                "gf",
+                3,
+                3
+              ],
+              [
+                "f",
+                3,
+                4
+              ]
+            ],
+            "numberOfCompatiblePairs": 1,
+            "askedComponents": [
+              3,
+              2
+            ]
+          },
+          "actualRender": "NOT_RUN"
+        },
+        "independentQualityReview": "NOT_RUN"
+      }
+    }
+  ]
+}
