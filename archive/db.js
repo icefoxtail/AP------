@@ -321,6 +321,37 @@ window.mainDB = {
       "primaryStandardCourse": "기하"
     },
     {
+      "file": "original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js",
+      "school": "제일고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2026,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "대수",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H22-A-01",
+      "rangeStartUnit": "지수와 로그",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-A-04",
+      "rangeEndUnit": "삼각함수",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-01",
+          "rangeStartUnit": "지수와 로그",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-A-04",
+          "rangeEndUnit": "삼각함수",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "대수"
+    },
+    {
       "file": "original/high/h2/2mid/26_제일고_2학기_중간_고2_미적분I.js",
       "school": "제일고",
       "topic": "",
@@ -474,6 +505,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "확률과 통계"
+    },
+    {
+      "file": "original/high/h1/2mid/26_강남여고_2학기_중간_고1_공통수학2.js",
+      "school": "강남여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "공통수학2",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "H22-C2-01",
+      "rangeStartUnit": "평면좌표",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C2-07",
+      "rangeEndUnit": "함수",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-01",
+          "rangeStartUnit": "평면좌표",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C2-07",
+          "rangeEndUnit": "함수",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
     },
     {
       "file": "original/high/h1/1mid/26_강남여고_1학기_중간_고1_기출.js",
@@ -1545,6 +1607,37 @@ window.mainDB = {
           "rangeEndUnitKey": "M2-04",
           "rangeEndUnit": "일차함수와 그래프",
           "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "중2 수학"
+    },
+    {
+      "file": "original/middle/m2/1mid/26_왕의중_1학기_중간_중2_수학.js",
+      "school": "왕의중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2026,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "중2 수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M2-01",
+      "rangeStartUnit": "수와 식",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M2-02",
+      "rangeEndUnit": "일차부등식",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-01",
+          "rangeStartUnit": "수와 식",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M2-02",
+          "rangeEndUnit": "일차부등식",
+          "rangeEndUnitOrder": 2
         }
       ],
       "primaryStandardCourse": "중2 수학"
@@ -3352,6 +3445,37 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-C2-05",
           "rangeEndUnit": "집합",
           "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "original/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2.js",
+      "school": "순천여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2025,
+      "semester": "2",
+      "examType": "final",
+      "subject": "공통수학2",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "H22-C2-06",
+      "rangeStartUnit": "명제",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-C2-09",
+      "rangeEndUnit": "무리함수",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-06",
+          "rangeStartUnit": "명제",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-C2-09",
+          "rangeEndUnit": "무리함수",
+          "rangeEndUnitOrder": 9
         }
       ],
       "primaryStandardCourse": "공통수학2"
@@ -6705,6 +6829,47 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2mid/24_강남여고_2학기_중간_고1_수학.js",
+      "school": "강남여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2024,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "공통수학2",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": null,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": null,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-01",
+          "rangeStartUnit": "평면좌표",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C2-07",
+          "rangeEndUnit": "함수",
+          "rangeEndUnitOrder": 7
+        },
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-06",
+          "rangeStartUnit": "여러 가지 방정식과 부등식",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-C-06",
+          "rangeEndUnit": "여러 가지 방정식과 부등식",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
     },
     {
       "file": "original/high/h1/2final/24_금당고_2학기_기말_고1_기출.js",
@@ -19688,171 +19853,6 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "중1 수학"
-    },
-    {
-      "file": "original/high/h1/2mid/26_강남여고_2학기_중간_고1_공통수학2.js",
-      "school": "강남여고",
-      "topic": "",
-      "grade": "고1",
-      "year": 2026,
-      "semester": "2",
-      "examType": "mid",
-      "subject": "공통수학2",
-      "contentType": "기출",
-      "qCount": 24,
-      "rangeStartUnitKey": "H22-C2-01",
-      "rangeStartUnit": "평면좌표",
-      "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "H22-C2-07",
-      "rangeEndUnit": "함수",
-      "rangeEndUnitOrder": 7,
-      "courseRanges": [
-        {
-          "standardCourse": "공통수학2",
-          "courseCode": "H22-C2",
-          "rangeStartUnitKey": "H22-C2-01",
-          "rangeStartUnit": "평면좌표",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "H22-C2-07",
-          "rangeEndUnit": "함수",
-          "rangeEndUnitOrder": 7
-        }
-      ],
-      "primaryStandardCourse": "공통수학2"
-    },
-    {
-      "file": "original/middle/m2/1mid/26_왕의중_1학기_중간_중2_수학.js",
-      "school": "왕의중",
-      "topic": "",
-      "grade": "중2",
-      "year": 2026,
-      "semester": "1",
-      "examType": "mid",
-      "subject": "중2 수학",
-      "contentType": "기출",
-      "qCount": 24,
-      "rangeStartUnitKey": "M2-01",
-      "rangeStartUnit": "수와 식",
-      "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "M2-02",
-      "rangeEndUnit": "일차부등식",
-      "rangeEndUnitOrder": 2,
-      "courseRanges": [
-        {
-          "standardCourse": "중2 수학",
-          "courseCode": "M2",
-          "rangeStartUnitKey": "M2-01",
-          "rangeStartUnit": "수와 식",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "M2-02",
-          "rangeEndUnit": "일차부등식",
-          "rangeEndUnitOrder": 2
-        }
-      ],
-      "primaryStandardCourse": "중2 수학"
-    },
-    {
-      "file": "original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js",
-      "school": "제일고",
-      "topic": "",
-      "grade": "고2",
-      "year": 2026,
-      "semester": "1",
-      "examType": "mid",
-      "subject": "대수",
-      "contentType": "기출",
-      "qCount": 23,
-      "rangeStartUnitKey": "H22-A-01",
-      "rangeStartUnit": "지수와 로그",
-      "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "H22-A-04",
-      "rangeEndUnit": "삼각함수",
-      "rangeEndUnitOrder": 4,
-      "courseRanges": [
-        {
-          "standardCourse": "대수",
-          "courseCode": "H22-A",
-          "rangeStartUnitKey": "H22-A-01",
-          "rangeStartUnit": "지수와 로그",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "H22-A-04",
-          "rangeEndUnit": "삼각함수",
-          "rangeEndUnitOrder": 4
-        }
-      ],
-      "primaryStandardCourse": "대수"
-    },
-    {
-      "file": "original/high/h1/2mid/24_강남여고_2학기_중간_고1_수학.js",
-      "school": "강남여고",
-      "topic": "",
-      "grade": "고1",
-      "year": 2024,
-      "semester": "2",
-      "examType": "mid",
-      "subject": "공통수학2",
-      "contentType": "기출",
-      "qCount": 24,
-      "rangeStartUnitKey": "",
-      "rangeStartUnit": "",
-      "rangeStartUnitOrder": null,
-      "rangeEndUnitKey": "",
-      "rangeEndUnit": "",
-      "rangeEndUnitOrder": null,
-      "courseRanges": [
-        {
-          "standardCourse": "공통수학2",
-          "courseCode": "H22-C2",
-          "rangeStartUnitKey": "H22-C2-01",
-          "rangeStartUnit": "평면좌표",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "H22-C2-07",
-          "rangeEndUnit": "함수",
-          "rangeEndUnitOrder": 7
-        },
-        {
-          "standardCourse": "공통수학1",
-          "courseCode": "H22-C",
-          "rangeStartUnitKey": "H22-C-06",
-          "rangeStartUnit": "여러 가지 방정식과 부등식",
-          "rangeStartUnitOrder": 6,
-          "rangeEndUnitKey": "H22-C-06",
-          "rangeEndUnit": "여러 가지 방정식과 부등식",
-          "rangeEndUnitOrder": 6
-        }
-      ],
-      "primaryStandardCourse": "공통수학2"
-    },
-    {
-      "file": "original/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2.js",
-      "school": "순천여고",
-      "topic": "",
-      "grade": "고1",
-      "year": 2025,
-      "semester": "2",
-      "examType": "final",
-      "subject": "공통수학2",
-      "contentType": "기출",
-      "qCount": 21,
-      "rangeStartUnitKey": "H22-C2-06",
-      "rangeStartUnit": "명제",
-      "rangeStartUnitOrder": 6,
-      "rangeEndUnitKey": "H22-C2-09",
-      "rangeEndUnit": "무리함수",
-      "rangeEndUnitOrder": 9,
-      "courseRanges": [
-        {
-          "standardCourse": "공통수학2",
-          "courseCode": "H22-C2",
-          "rangeStartUnitKey": "H22-C2-06",
-          "rangeStartUnit": "명제",
-          "rangeStartUnitOrder": 6,
-          "rangeEndUnitKey": "H22-C2-09",
-          "rangeEndUnit": "무리함수",
-          "rangeEndUnitOrder": 9
-        }
-      ],
-      "primaryStandardCourse": "공통수학2"
     }
   ]
 };

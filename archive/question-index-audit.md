@@ -73,13 +73,13 @@
 
 ---
 
-## 5. 필드 누락 (최종 인덱스 14678건 기준)
+## 5. 필드 누락 (최종 인덱스 14794건 기준)
 
 | 필드 | 누락 수 |
 |------|--------:|
 | id | 0 |
 | content | 0 |
-| choices(배열) | 24 |
+| choices(배열) | 5 |
 | level | 474 |
 | standardUnit | 0 |
 | standardUnitKey | 0 |
@@ -92,9 +92,9 @@
 | 기준 | 수 |
 |------|---:|
 | q.image 보유 | 3108 |
-| content <img> | 73 |
+| content <img> | 79 |
 | content <svg> | 77 |
-| content <table> | 184 |
+| content <table> | 185 |
 | 시각요소 보유(hasImage=true) | 3421 |
 
 > hasImage 판정은 mixer.html 의 hasVisualAsset 과 동일(image OR content 내부 img/svg/table).
