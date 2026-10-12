@@ -105,3 +105,5 @@ window.questionBank = [
     "metaFinalSha256": "90ac3967ef3697876f00881dd7a2f16b42b2f9c12f94bd5a1f6b1284bb86d49f"
   }
 ];
+
+;(()=>{const bank=window.questionBank;if(!Array.isArray(bank))throw Error('VISUAL_BIND_BANK_MISSING');const patches={"ALITE-PALMA25-H1-2MID-B02-Q20-BP01":{"image":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-H1-2MID-B02-Q20-BP01-problem.svg","imageSize":"large","solutionImage":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-H1-2MID-B02-Q20-BP01-solution.svg","solutionImageSize":"full","solutionImageLayout":"fullwidth"}};for(const [uid,fields] of Object.entries(patches)){const rows=bank.filter(q=>q.uid===uid);if(rows.length!==1)throw Error('VISUAL_BIND_UID_NOT_UNIQUE:'+uid);Object.assign(rows[0],fields);}})();

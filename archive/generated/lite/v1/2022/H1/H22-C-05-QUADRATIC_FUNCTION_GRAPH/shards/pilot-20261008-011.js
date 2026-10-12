@@ -60,6 +60,9 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-20261008-HYC26-Q18-002-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth",
     "difficultyBucket": 3
   },
   {

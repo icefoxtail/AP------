@@ -238,7 +238,11 @@ window.questionBank = [
     "slot": "B3",
     "purposeGroup": "B",
     "rpmPrimaryL3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
-    "generatedL4": "직선 제약에서 거리합 등호점 찾기"
+    "generatedL4": "직선 제약에서 거리합 등호점 찾기",
+    "image": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q04-B3-problem.svg",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q04-B3-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 7,
@@ -358,6 +362,14 @@ window.questionBank = [
     "slot": "C3",
     "purposeGroup": "C",
     "rpmPrimaryL3": "평면좌표: 두 점 사이 거리 및 거리합의 최솟값",
-    "generatedL4": "거리합 최솟값에서 매개변수와 등호 교점 복원"
+    "generatedL4": "거리합 최솟값에서 매개변수와 등호 교점 복원",
+    "image": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q04-C3-problem.svg",
+    "solutionImage": "assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q04-C3-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   }
 ];
+
+;(()=>{const bank=window.questionBank;if(!Array.isArray(bank))throw Error('VISUAL_BIND_BANK_MISSING');const patches={"ALITE-PALMA25-2MID-Q04-A1":{"image":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q04-A1-problem.svg","imageSize":"large","solutionImage":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q04-A1-solution.svg","solutionImageSize":"full","solutionImageLayout":"fullwidth"},"ALITE-PALMA25-2MID-Q04-A2":{"image":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q04-A2-problem.svg","imageSize":"large","solutionImage":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q04-A2-solution.svg","solutionImageSize":"full","solutionImageLayout":"fullwidth"},"ALITE-PALMA25-2MID-Q04-A3":{"image":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q04-A3-problem.svg","imageSize":"large","solutionImage":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q04-A3-solution.svg","solutionImageSize":"full","solutionImageLayout":"fullwidth"},"ALITE-PALMA25-2MID-Q04-B1":{"image":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q04-B1-problem.svg","imageSize":"large","solutionImage":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q04-B1-solution.svg","solutionImageSize":"full","solutionImageLayout":"fullwidth"},"ALITE-PALMA25-2MID-Q04-B2":{"image":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q04-B2-problem.svg","imageSize":"large","solutionImage":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q04-B2-solution.svg","solutionImageSize":"full","solutionImageLayout":"fullwidth"},"ALITE-PALMA25-2MID-Q04-C1":{"image":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q04-C1-problem.svg","imageSize":"large","solutionImage":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q04-C1-solution.svg","solutionImageSize":"full","solutionImageLayout":"fullwidth"}};for(const [uid,fields] of Object.entries(patches)){const rows=bank.filter(q=>q.uid===uid);if(rows.length!==1)throw Error('VISUAL_BIND_UID_NOT_UNIQUE:'+uid);Object.assign(rows[0],fields);}})();
+
+;(()=>{const bank=window.questionBank;if(!Array.isArray(bank))throw Error('VISUAL_BIND_BANK_MISSING');const patches={"ALITE-PALMA25-2MID-Q04-C2":{"image":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q04-C2-problem.svg","imageSize":"large","solutionImage":"assets/generated-lite/palma-svg-repair/ALITE-PALMA25-2MID-Q04-C2-solution.svg","solutionImageSize":"full","solutionImageLayout":"fullwidth"}};for(const [uid,fields] of Object.entries(patches)){const rows=bank.filter(q=>q.uid===uid);if(rows.length!==1)throw Error('VISUAL_BIND_UID_NOT_UNIQUE:'+uid);Object.assign(rows[0],fields);}})();

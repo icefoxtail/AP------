@@ -237,3 +237,5 @@ window.questionBank = [
     "metaFinalSha256": "bed8f1be96dca463d352cd6ab5a7f1ff10f9b753f8de6fd66de89b41e40cf3b0"
   }
 ];
+
+;(()=>{const bank=window.questionBank;if(!Array.isArray(bank))throw Error('VISUAL_BIND_BANK_MISSING');const patches={"ALITE-25PAL-B03-Q02-P01":{"solutionImage":"assets/generated-lite/palma-svg-repair/ALITE-25PAL-B03-Q02-P01-solution.svg","solutionImageSize":"full","solutionImageLayout":"fullwidth"},"ALITE-25PAL-B03-Q02-P02":{"solutionImage":"assets/generated-lite/palma-svg-repair/ALITE-25PAL-B03-Q02-P02-solution.svg","solutionImageSize":"full","solutionImageLayout":"fullwidth"},"ALITE-25PAL-B03-Q14-P01":{"solutionImage":"assets/generated-lite/palma-svg-repair/ALITE-25PAL-B03-Q14-P01-solution.svg","solutionImageSize":"full","solutionImageLayout":"fullwidth"},"ALITE-25PAL-B03-Q21-P01":{"solutionImage":"assets/generated-lite/palma-svg-repair/ALITE-25PAL-B03-Q21-P01-solution.svg","solutionImageSize":"full","solutionImageLayout":"fullwidth"}};for(const [uid,fields] of Object.entries(patches)){const rows=bank.filter(q=>q.uid===uid);if(rows.length!==1)throw Error('VISUAL_BIND_UID_NOT_UNIQUE:'+uid);Object.assign(rows[0],fields);}})();

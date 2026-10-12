@@ -304,7 +304,7 @@
         .sol-image-wrap.image-large img { max-width: 92%; max-height: 180px; }
         .sol-image-wrap.image-full img { max-width: 100%; max-height: none; }
         .sol-image-wrap.layout-fullwidth { width: 100%; }
-        .sol-image-wrap.layout-fullwidth img { max-width: 100%; max-height: none; }
+        .sol-image-wrap.layout-fullwidth img { width: 100%; max-width: 100%; height: auto; max-height: none; }
         .sol-image-caption { margin-top: 4px; color: #666; font-size: 7.5pt; line-height: 1.35; }
 
         /* [Answer Grid] Styles */
@@ -1411,6 +1411,9 @@ function wrapLatexPreserveBlocks(text) {
     let s = String(text);
     s = s.replace(/\\\([\s\S]+?\\\)/g, m => '$' + m.slice(2, -2) + '$');
     s = s.replace(/\\\[[\s\S]+?\\\]/g, m => '$$' + m.slice(2, -2) + '$$');
+    // A source line break within inline TeX is whitespace, not a prose BR.
+    // Keep the complete formula together before the single-line token passes.
+    s = s.replace(/(\$\$[\s\S]*?\$\$)|(\$[^$]*?\$)/g, (match, display, inline) => display || inline.replace(/\r\n|\r|\n/g, ' '));
     const combRepl = T => (m, a1, a2, b1, b2) => `$_{${a1||a2}}${T}_{${b1||b2}}$`;
     const combPat = prefix => new RegExp(`(?<!\\$)(?:\\{\\}|\\[\\])_(?:\\{([^}]+)\\}|([a-zA-Z0-9+\\-]+))${prefix}_(?:\\{([^}]+)\\}|([a-zA-Z0-9+\\-]+))`, 'g');
     const htmlTags = [];
@@ -1520,7 +1523,9 @@ function makeSolutionHtmlChunks(html) {
             const mathToken = /^__AP_SOLUTION_DISPLAY_MATH_(\d+)__$/.exec(part);
             if (mathToken || /^\$[^$\n]*?\$$/.test(part)) {
                 flush();
-                chunks.push(mathToken ? displayMathBlocks[Number(mathToken[1])] : part);
+                // Text nodes decode HTML entities; escape inline TeX before
+                // inserting it as HTML again so inequalities cannot form tags.
+                chunks.push(mathToken ? displayMathBlocks[Number(mathToken[1])] : part.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'));
                 continue;
             }
             if ((buf + part).length > 260 && buf.trim()) {

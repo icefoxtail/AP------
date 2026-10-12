@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img"><style>.shape{fill:none;stroke:#111;stroke-width:2.2}.aux{fill:none;stroke:#68768a;stroke-width:2;stroke-dasharray:7 5}.solution{fill:none;stroke:#1f4e79;stroke-width:3}.inner{fill:none;stroke:#1f4e79;stroke-width:3}.thin{stroke:#555;stroke-width:1.5}.text{font-family:Arial,sans-serif;fill:#111}.result{font-weight:700;fill:#173f68}.node{fill:#fff;stroke:#111;stroke-width:3}.node-a{fill:#3977b8;stroke:#111;stroke-width:2}.node-b{fill:#e58d3d;stroke:#111;stroke-width:2}.node-c{fill:#58a66a;stroke:#111;stroke-width:2}.node-d{fill:#a46ab5;stroke:#111;stroke-width:2}</style>
+<line id="outer-left-wall" x1="100.0000" y1="120.0000" x2="100.0000" y2="260.0000" class="shape" data-from="outerLeftTop" data-to="outerLeftBottom"/>
+<line id="outer-right-wall" x1="420.0000" y1="120.0000" x2="420.0000" y2="260.0000" class="shape" data-from="outerRightTop" data-to="outerRightBottom"/>
+<line id="inner-left-wall" x1="206.0000" y1="120.0000" x2="206.0000" y2="260.0000" class="inner" data-from="innerLeftTop" data-to="innerLeftBottom"/>
+<line id="inner-right-wall" x1="314.0000" y1="120.0000" x2="314.0000" y2="260.0000" class="inner" data-from="innerRightTop" data-to="innerRightBottom"/>
+<line id="outer-radius" x1="260.0000" y1="120.0000" x2="420.0000" y2="120.0000" class="aux" data-from="outerTop" data-to="outerRightTop"/>
+<line id="inner-radius" x1="260.0000" y1="120.0000" x2="314.0000" y2="120.0000" class="solution" data-from="innerTop" data-to="innerRightTop"/>
+<line id="height-dimension" x1="72.0000" y1="120.0000" x2="72.0000" y2="260.0000" class="solution" data-from="heightTop" data-to="heightBottom"/>
+<line id="height-cap-top" x1="64.0000" y1="120.0000" x2="80.0000" y2="120.0000" class="thin" data-from="hcap1a" data-to="hcap1b"/>
+<line id="height-cap-bottom" x1="64.0000" y1="260.0000" x2="80.0000" y2="260.0000" class="thin" data-from="hcap2a" data-to="hcap2b"/>
+<ellipse id="outer-top-face" cx="260.0000" cy="120.0000" rx="160.0000" ry="54.0000" class="shape" data-center-point="outerTop"/>
+<ellipse id="outer-bottom-face" cx="260.0000" cy="260.0000" rx="160.0000" ry="54.0000" class="aux" data-center-point="outerBottom"/>
+<ellipse id="inner-top-opening" cx="260.0000" cy="120.0000" rx="54.0000" ry="18.0000" class="inner" data-center-point="innerTop"/>
+<ellipse id="inner-bottom-opening" cx="260.0000" cy="260.0000" rx="54.0000" ry="18.0000" class="aux" data-center-point="innerBottom"/>
+<text x="435.000" y="150.000" text-anchor="start" font-size="15" class="result" data-owner="outer-side-area">바깥 곡면 48π</text>
+<text x="435.000" y="188.000" text-anchor="start" font-size="15" class="text" data-owner="top-bottom-area">위·아래 면 72π−2πr²</text>
+<text x="435.000" y="226.000" text-anchor="start" font-size="15" class="result" data-owner="inner-wall-area">안쪽 곡면 8πr</text>
+<text x="385.000" y="305.000" text-anchor="start" font-size="15" class="text" data-owner="area-equation">S=120π−2πr²+8πr=128π</text>
+<text x="535.000" y="338.000" text-anchor="start" font-size="15" class="result" data-owner="radius-solution">r=2</text>
+<text x="30.000" y="205.000" text-anchor="start" font-size="18" class="result" data-owner="height-label">높이 4</text>
+</svg>

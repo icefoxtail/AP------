@@ -160,3 +160,5 @@ window.questionBank = [
     "metaFinalSha256": "c55680416f635a5566783ef12f15d3b7d6729e7a8a492cb37522960b07c6e27e"
   }
 ];
+
+;(()=>{const bank=window.questionBank;if(!Array.isArray(bank))throw Error('VISUAL_BIND_BANK_MISSING');const patches={"B06_Q05_C01_TWO_POINT_LINE_INTERSECTION":{"image":"assets/generated-lite/palma-svg-repair/B06_Q05_C01_TWO_POINT_LINE_INTERSECTION-problem.svg","imageSize":"large","solutionImage":"assets/generated-lite/palma-svg-repair/B06_Q05_C01_TWO_POINT_LINE_INTERSECTION-solution.svg","solutionImageSize":"full","solutionImageLayout":"fullwidth"},"B06_Q23_C01_PARAMETER_INTERSECTION_EQUIDISTANCE":{"solutionImage":"assets/generated-lite/palma-svg-repair/B06_Q23_C01_PARAMETER_INTERSECTION_EQUIDISTANCE-solution.svg","solutionImageSize":"full","solutionImageLayout":"fullwidth"}};for(const [uid,fields] of Object.entries(patches)){const rows=bank.filter(q=>q.uid===uid);if(rows.length!==1)throw Error('VISUAL_BIND_UID_NOT_UNIQUE:'+uid);Object.assign(rows[0],fields);}})();
