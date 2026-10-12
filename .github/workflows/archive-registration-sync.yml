@@ -85,6 +85,7 @@ jobs:
           node archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs --check
           node tests/archive-question-identity-contract.test.mjs
           node tests/archive-question-identity-runtime.test.mjs
+          node tests/jeil-legacy-similar-22-registration.test.cjs
           node archive/tools/verify-archive-registration.mjs
           git diff --check
 
@@ -136,6 +137,7 @@ jobs:
             node archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs --check
             node tests/archive-question-identity-contract.test.mjs
             node tests/archive-question-identity-runtime.test.mjs
+            node tests/jeil-legacy-similar-22-registration.test.cjs
             node archive/tools/verify-archive-registration.mjs
             git diff --check
             git add -- archive/db.js archive/data/question_identity_map.json archive/data/question_metadata.json archive/question-identity.js archive/question-index.js archive/question-index-report.md archive/question-index-audit.md archive/data/archive2-catalog.json archive/data/archive2-crosswalk-inventory.json archive/data/archive2-canonical-input-manifest.json archive/data/archive2-canonical-projection-policy.json archive/data/archive2-item-review-overrides.json archive/data/basic-scope-parent-links.json archive/data/meta-foundation/runtime/*.json
