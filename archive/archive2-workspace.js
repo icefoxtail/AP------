@@ -232,6 +232,24 @@
     derivedBaseQuestions: null,
     editSavedPaperId: "",
   };
+  let finderFilterRenderTimer = null;
+
+  function scheduleFinderFilterRender() {
+    clearTimeout(finderFilterRenderTimer);
+    finderFilterRenderTimer = setTimeout(() => {
+      finderFilterRenderTimer = null;
+      if (state.view !== "find") return;
+      const activeFilter = document.activeElement?.dataset?.group === "find"
+        ? document.activeElement.dataset.filter
+        : null;
+      render();
+      if (activeFilter) {
+        [...document.querySelectorAll('[data-group="find"][data-filter]')]
+          .find((el) => el.dataset.filter === activeFilter)
+          ?.focus?.({ preventScroll: true });
+      }
+    }, 0);
+  }
   let lastRenderedView = state.view;
   let autosaveTimer,
     previewTimer,
@@ -3688,6 +3706,10 @@
             reconcileFinderSchool(state.find);
           state.page = 0;
           urlState();
+        }
+        if (el.dataset.group === "find") {
+          scheduleFinderFilterRender();
+          return;
         }
         render();
       } else if (el.dataset.scope) {

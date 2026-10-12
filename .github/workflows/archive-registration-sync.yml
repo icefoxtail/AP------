@@ -85,8 +85,39 @@ jobs:
           node archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs --check
           node tests/archive-question-identity-contract.test.mjs
           node tests/archive-question-identity-runtime.test.mjs
+          node tests/jeil-legacy-similar-22-registration.test.cjs
           node archive/tools/verify-archive-registration.mjs
           git diff --check
+
+      - name: Set up real Chrome for Jeil print QA
+        if: github.event_name == 'pull_request' && github.head_ref == 'work/review-25-jeil-h1-2final-legacy22-20261012'
+        uses: browser-actions/setup-chrome@v1
+        id: jeil_chrome
+        with:
+          chrome-version: stable
+
+      - name: Install Korean fonts for real student print
+        if: github.event_name == 'pull_request' && github.head_ref == 'work/review-25-jeil-h1-2final-legacy22-20261012'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends fonts-noto-cjk
+          fc-cache -f
+          fc-list :lang=ko family | grep -qi 'Noto Sans CJK'
+
+      - name: Verify Jeil exam, answer, solution Chrome print
+        if: github.event_name == 'pull_request' && github.head_ref == 'work/review-25-jeil-h1-2final-legacy22-20261012'
+        env:
+          CHROME_BIN: ${{ steps.jeil_chrome.outputs.chrome-path }}
+          JEIL_CHROME_OUT: ${{ runner.temp }}/jeil-chrome-print
+        run: node tools/check-jeil-legacy-similar-chrome.cjs
+
+      - name: Upload Jeil Chrome print proof
+        if: always() && github.event_name == 'pull_request' && github.head_ref == 'work/review-25-jeil-h1-2final-legacy22-20261012'
+        uses: actions/upload-artifact@v4
+        with:
+          name: jeil-legacy-similar-chrome-print
+          path: ${{ runner.temp }}/jeil-chrome-print/
+          if-no-files-found: warn
 
       - name: Guard generated scope
         shell: bash
@@ -136,6 +167,7 @@ jobs:
             node archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs --check
             node tests/archive-question-identity-contract.test.mjs
             node tests/archive-question-identity-runtime.test.mjs
+            node tests/jeil-legacy-similar-22-registration.test.cjs
             node archive/tools/verify-archive-registration.mjs
             git diff --check
             git add -- archive/db.js archive/data/question_identity_map.json archive/data/question_metadata.json archive/question-identity.js archive/question-index.js archive/question-index-report.md archive/question-index-audit.md archive/data/archive2-catalog.json archive/data/archive2-crosswalk-inventory.json archive/data/archive2-canonical-input-manifest.json archive/data/archive2-canonical-projection-policy.json archive/data/archive2-item-review-overrides.json archive/data/basic-scope-parent-links.json archive/data/meta-foundation/runtime/*.json

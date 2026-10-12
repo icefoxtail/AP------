@@ -1,0 +1,49 @@
+name: Archive Progress Observer
+
+on:
+  workflow_run:
+    workflows: [Archive Registration Sync, Archive Pages Release, Archive Stage Validator]
+    types: [completed]
+  pull_request:
+    types: [closed]
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      history_pages:
+        description: "Number of past 60-run/100-PR pages to reconcile (1–100, manual only)"
+        type: number
+        required: false
+        default: 1
+
+permissions:
+  contents: write
+  actions: read
+  pull-requests: read
+
+concurrency:
+  group: archive-progress-observer
+  cancel-in-progress: false
+
+jobs:
+  observe:
+    if: github.event_name != 'pull_request' || github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout trusted main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Set up Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Reconcile public status (nonblocking)
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          ARCHIVE_PROGRESS_HISTORY_PAGES: ${{ inputs.history_pages || 1 }}
+        run: node archive/tools/archive-progress-observer.mjs
+      - name: No production dependency
+        if: always()
+        run: echo "Observer never gates archive validation, handoff, merge or Pages."
