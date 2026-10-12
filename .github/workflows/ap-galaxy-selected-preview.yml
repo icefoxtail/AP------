@@ -1,0 +1,65 @@
+name: AP Galaxy selected star and real preview
+on:
+  push:
+    branches:
+      - codex/ap-galaxy-visual-quality
+    paths:
+      - ".github/workflows/ap-galaxy-selected-preview.yml"
+      - "archive/prototypes/ap-galaxy/orbit-app.js"
+      - "archive/prototypes/ap-galaxy/orbit.css"
+      - "archive/prototypes/ap-galaxy/tests/selected-detail-real-preview.cjs"
+permissions:
+  contents: write
+jobs:
+  selected-preview:
+    if: github.ref == 'refs/heads/codex/ap-galaxy-visual-quality'
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          filter: blob:none
+          sparse-checkout: |
+            archive/prototypes/ap-galaxy
+            archive/data/archive2-catalog.json
+            archive/archive2-core.js
+            archive/engine.html
+            archive/vendor
+            archive/css
+            archive/exams/original/middle/m3/1mid/26_삼산중_1학기_중간_중3_기출.js
+            archive/assets/images/26_삼산중_1학기_중간_중3_기출
+            docs/reviews/ap-galaxy-visual-polish-20261011
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Build and syntax-check affected prototype
+        run: |
+          npm ci --prefix archive/prototypes/ap-galaxy
+          npm run build --prefix archive/prototypes/ap-galaxy
+          node --check archive/prototypes/ap-galaxy/orbit-app.js
+          node --check archive/prototypes/ap-galaxy/assets/orbital-world.js
+          node --check archive/prototypes/ap-galaxy/tests/selected-detail-real-preview.cjs
+      - name: Install isolated Playwright Chromium
+        run: |
+          npm install --prefix /tmp/ap-galaxy-playwright --no-save playwright@1.55.0
+          /tmp/ap-galaxy-playwright/node_modules/.bin/playwright install chromium --with-deps
+      - name: Verify 96 cap promotion and capture real exam preview
+        run: node archive/prototypes/ap-galaxy/tests/selected-detail-real-preview.cjs
+      - name: Attach fresh evidence to this PR branch only
+        run: |
+          git diff --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- docs/reviews/ap-galaxy-visual-polish-20261011/star-v3-*
+          if ! git diff --cached --quiet; then
+            git commit -m "test(ap-galaxy): capture real selected exam preview and detail-budget proof"
+            git push origin HEAD:codex/ap-galaxy-visual-quality
+          fi
+      - name: Upload targeted evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ap-galaxy-selected-preview
+          path: docs/reviews/ap-galaxy-visual-polish-20261011/star-v3-*
+          if-no-files-found: warn

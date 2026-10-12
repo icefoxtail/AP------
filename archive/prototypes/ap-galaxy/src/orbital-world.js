@@ -15,18 +15,58 @@ function randomFrom(seed) {
 }
 function makeGalaxyNebulaTexture() {
   const canvas = document.createElement('canvas');
+  canvas.width = 128;
+  canvas.height = 128;
+  const context = canvas.getContext('2d');
+  const gradient = context.createRadialGradient(64, 64, 1, 64, 64, 64);
+  gradient.addColorStop(0, 'rgba(255,255,255,.34)');
+  gradient.addColorStop(.2, 'rgba(255,255,255,.23)');
+  gradient.addColorStop(.58, 'rgba(255,255,255,.055)');
+  gradient.addColorStop(1, 'rgba(255,255,255,0)');
+  context.fillStyle = gradient;
+  context.fillRect(0, 0, 128, 128);
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  return texture;
+}
+function makeStarSpriteTexture() {
+  const canvas = document.createElement('canvas');
   canvas.width = 64;
   canvas.height = 64;
   const context = canvas.getContext('2d');
-  const gradient = context.createRadialGradient(32, 32, 1, 32, 32, 32);
-  gradient.addColorStop(0, 'rgba(255,255,255,.62)');
-  gradient.addColorStop(.18, 'rgba(255,255,255,.3)');
-  gradient.addColorStop(.55, 'rgba(255,255,255,.07)');
-  gradient.addColorStop(1, 'rgba(255,255,255,0)');
+  const gradient = context.createRadialGradient(32, 32, 0, 32, 32, 32);
+  gradient.addColorStop(0, 'rgba(255,255,255,1)');
+  gradient.addColorStop(.045, 'rgba(255,252,239,.96)');
+  gradient.addColorStop(.14, 'rgba(255,245,226,.72)');
+  gradient.addColorStop(.34, 'rgba(213,228,255,.28)');
+  gradient.addColorStop(.68, 'rgba(180,202,255,.08)');
+  gradient.addColorStop(1, 'rgba(180,202,255,0)');
   context.fillStyle = gradient;
   context.fillRect(0, 0, 64, 64);
   const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
   return texture;
+}
+function makeCoreGlowTexture() {
+  const canvas = document.createElement('canvas');
+  canvas.width = 128;
+  canvas.height = 128;
+  const context = canvas.getContext('2d');
+  const gradient = context.createRadialGradient(64, 64, 0, 64, 64, 64);
+  gradient.addColorStop(0, 'rgba(255,255,244,1)');
+  gradient.addColorStop(.055, 'rgba(255,242,210,.9)');
+  gradient.addColorStop(.18, 'rgba(255,202,139,.4)');
+  gradient.addColorStop(.4, 'rgba(222,168,255,.12)');
+  gradient.addColorStop(1, 'rgba(190,168,255,0)');
+  context.fillStyle = gradient;
+  context.fillRect(0, 0, 128, 128);
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  return texture;
+}
+function smoothStep(start, end, value) {
+  const t = THREE.MathUtils.clamp((value - start) / (end - start), 0, 1);
+  return t * t * (3 - 2 * t);
 }
 function makeOrbit(radius, aspect, material, segments = 112) {
   const points = [];
@@ -36,40 +76,10 @@ function makeOrbit(radius, aspect, material, segments = 112) {
   }
   return new THREE.Line(new THREE.BufferGeometry().setFromPoints(points), material);
 }
-function makeDocumentTexture() {
-  const canvas = document.createElement('canvas');
-  canvas.width = 128;
-  canvas.height = 160;
-  const ctx = canvas.getContext('2d');
-  ctx.fillStyle = '#fffdf7';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.strokeStyle = '#d5deeb';
-  ctx.lineWidth = 2;
-  ctx.strokeRect(3, 3, 122, 154);
-  ctx.fillStyle = '#344663';
-  ctx.fillRect(18, 22, 47, 5);
-  ctx.fillStyle = '#a9b8ce';
-  ctx.fillRect(18, 38, 90, 2);
-  ctx.fillRect(18, 47, 74, 2);
-  ctx.fillRect(18, 62, 93, 2);
-  ctx.fillRect(18, 72, 82, 2);
-  ctx.fillRect(18, 82, 88, 2);
-  ctx.fillRect(18, 102, 58, 2);
-  ctx.fillRect(18, 112, 88, 2);
-  ctx.fillRect(18, 122, 74, 2);
-  ctx.strokeStyle = '#b9a0dc';
-  ctx.lineWidth = 3;
-  ctx.beginPath();
-  ctx.arc(96, 137, 10, 0, Math.PI * 2);
-  ctx.stroke();
-  const texture = new THREE.CanvasTexture(canvas);
-  texture.colorSpace = THREE.SRGBColorSpace;
-  texture.anisotropy = 2;
-  return texture;
-}
-
 export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame }) {
   const mobile = window.innerWidth < 760;
+  const starSpriteTexture = makeStarSpriteTexture();
+  const coreGlowTexture = makeCoreGlowTexture();
   const renderer = new THREE.WebGLRenderer({
     canvas, alpha: true, antialias: !mobile, powerPreference: 'high-performance', preserveDrawingBuffer: false,
   });
@@ -129,7 +139,8 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   starGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
   starGeometry.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
   scene.add(new THREE.Points(starGeometry, new THREE.PointsMaterial({
-    size: mobile ? .32 : .22, sizeAttenuation: true, vertexColors: true, transparent: true, opacity: .8, depthWrite: false,
+    map: starSpriteTexture, size: mobile ? .5 : .42, sizeAttenuation: true,
+    vertexColors: true, transparent: true, opacity: .88, depthWrite: false, alphaTest: .012,
   })));
 
   const sunRoot = new THREE.Group();
@@ -177,15 +188,10 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   scene.add(groupRoot, dataRoot, constellationRoot);
   const sharedGroupPickGeometry = new THREE.SphereGeometry(1.55, 16, 12);
   const sharedGroupPickMaterial = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, colorWrite: false, depthWrite: false });
-  const sharedDataStarGeometry = new THREE.SphereGeometry(.2, 14, 10);
-  const sharedDataGlowGeometry = new THREE.SphereGeometry(.43, 14, 10);
-  const sharedPaperGeometry = new THREE.PlaneGeometry(.68, .84);
-  const sharedPaperTexture = makeDocumentTexture();
-  const sharedPaperMaterial = new THREE.MeshStandardMaterial({
-    map: sharedPaperTexture, color: 0xffffff, roughness: .7, metalness: .01,
-    side: THREE.DoubleSide, emissive: 0x201b2d, emissiveIntensity: .13,
-  });
+  const sharedDataStarGeometry = new THREE.SphereGeometry(.2, 24, 18);
   const galaxyNebulaTexture = makeGalaxyNebulaTexture();
+  const sharedCoreGlowTexture = coreGlowTexture;
+  const sharedStarSpriteTexture = starSpriteTexture;
   const dataStarMaterials = new Map();
   const dataGlowMaterials = new Map();
   const groups = new Map();
@@ -196,6 +202,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   let visibleCatalogPointFiles = [];
   let catalogPointPositions = null;
   let focusedGroupId = '';
+  let selectedExamFile = '';
   const constellations = [];
   let pendingLines = [];
   const raycaster = new THREE.Raycaster();
@@ -216,16 +223,26 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   let pointerStart = null;
   const frameInterval = mobile ? 1000 / 24 : 1000 / 30;
 
-  function getDataStarMaterial(index) {
-    if (!dataStarMaterials.has(index)) dataStarMaterials.set(index, new THREE.MeshBasicMaterial({ color: ORBIT_COLORS[index % ORBIT_COLORS.length] }));
-    return dataStarMaterials.get(index);
+  function getDataStarMaterial(index, bright) {
+    const key = index * 2 + bright;
+    if (!dataStarMaterials.has(key)) {
+      const color = new THREE.Color(ORBIT_COLORS[index % ORBIT_COLORS.length]);
+      dataStarMaterials.set(key, new THREE.MeshStandardMaterial({
+        color: color.clone().lerp(new THREE.Color(0xffffff), .16),
+        emissive: color, emissiveIntensity: bright ? .44 : .34,
+        roughness: .54, metalness: .02, toneMapped: false,
+      }));
+    }
+    return dataStarMaterials.get(key);
   }
-  function getDataGlowMaterial(index) {
-    if (!dataGlowMaterials.has(index)) dataGlowMaterials.set(index, new THREE.MeshBasicMaterial({
-      color: ORBIT_COLORS[index % ORBIT_COLORS.length], transparent: true, opacity: .22,
-      blending: THREE.AdditiveBlending, depthWrite: false,
+  function getDataGlowMaterial(index, bright) {
+    const key = index * 2 + bright;
+    if (!dataGlowMaterials.has(key)) dataGlowMaterials.set(key, new THREE.SpriteMaterial({
+      map: sharedCoreGlowTexture, color: ORBIT_COLORS[index % ORBIT_COLORS.length],
+      transparent: true, opacity: bright ? .34 : .27, alphaTest: .012,
+      blending: THREE.AdditiveBlending, depthWrite: false, depthTest: true, toneMapped: false,
     }));
-    return dataGlowMaterials.get(index);
+    return dataGlowMaterials.get(key);
   }
   function hashAngle(text) {
     return (hashText(text) % 100000) / 100000 * Math.PI * 2;
@@ -235,20 +252,23 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   }
   function makeGalaxyDisc(data, palette) {
     const random = randomFrom(hashText(data.id) ^ 0x61c88647);
-    const starCount = 84;
+    const starCount = 216;
     const positions = new Float32Array(starCount * 3);
     const colors = new Float32Array(starCount * 3);
     const baseColor = new THREE.Color(ORBIT_COLORS[palette]);
     const white = new THREE.Color(0xe5f4ff);
+    const warm = new THREE.Color(0xffd2a1);
     for (let i = 0; i < starCount; i += 1) {
-      const arm = i % 3;
+      const arm = i % 4;
       const spread = Math.sqrt(random());
-      const radius = .22 + spread * 1.72;
-      const angle = arm * Math.PI * 2 / 3 + radius * 1.72 + (random() - .5) * .48;
+      const core = i % 5 === 0;
+      const radius = core ? Math.sqrt(random()) * .72 : .22 + spread * 1.78;
+      const angle = arm * Math.PI / 2 + radius * 1.62 + (random() - .5) * (.26 + radius * .035);
       positions[i * 3] = Math.cos(angle) * radius;
-      positions[i * 3 + 1] = (random() - .5) * (.13 + radius * .045);
+      positions[i * 3 + 1] = (random() - .5) * (.1 + radius * .035);
       positions[i * 3 + 2] = Math.sin(angle) * radius * .7;
-      const color = baseColor.clone().lerp(white, Math.max(.08, (1 - spread) * .58 + random() * .12));
+      const color = baseColor.clone().lerp(white, Math.max(.24, (1 - spread) * .68 + random() * .18));
+      if (radius < .85 && random() > .45) color.lerp(warm, .14);
       color.toArray(colors, i * 3);
     }
     const geometry = new THREE.BufferGeometry();
@@ -258,7 +278,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   }
   function makeNebulaCloud(data, palette) {
     const random = randomFrom(hashText(data.id) ^ 0x9e3779b9);
-    const count = 38;
+    const count = 54;
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
     const baseColor = new THREE.Color(ORBIT_COLORS[palette]);
@@ -290,25 +310,26 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     root.add(hub);
     hub.scale.setScalar(hubScale);
     const cloud = new THREE.Points(makeNebulaCloud(data, palette), new THREE.PointsMaterial({
-      map: galaxyNebulaTexture, vertexColors: true, size: 2.45, sizeAttenuation: true,
-      transparent: true, opacity: .16, blending: THREE.AdditiveBlending, depthWrite: false, alphaTest: .008,
+      map: galaxyNebulaTexture, vertexColors: true, size: 1.72, sizeAttenuation: true,
+      transparent: true, opacity: .12, blending: THREE.AdditiveBlending, depthWrite: false, alphaTest: .01,
     }));
     cloud.rotation.x = -.18;
     hub.add(cloud);
     const galaxy = new THREE.Points(makeGalaxyDisc(data, palette), new THREE.PointsMaterial({
-      vertexColors: true, size: .145, sizeAttenuation: true, transparent: true,
-      opacity: .88, blending: THREE.AdditiveBlending, depthWrite: false,
+      map: sharedStarSpriteTexture, vertexColors: true, size: .22, sizeAttenuation: true,
+      transparent: true, opacity: .95, alphaTest: .018,
+      blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false,
     }));
     galaxy.rotation.x = -.18;
     hub.add(galaxy);
     const nucleusGlow = new THREE.Sprite(new THREE.SpriteMaterial({
-      map: galaxyNebulaTexture, color, transparent: true, opacity: .42,
-      blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false,
+      map: sharedCoreGlowTexture, color: 0xffe2b7, transparent: true, opacity: .42,
+      blending: THREE.AdditiveBlending, depthWrite: false, depthTest: true, toneMapped: false,
     }));
-    nucleusGlow.scale.set(2.25, 1.55, 1);
+    nucleusGlow.scale.set(1.82, 1.48, 1);
     hub.add(nucleusGlow);
-    const nucleus = new THREE.Mesh(sharedDataStarGeometry, new THREE.MeshBasicMaterial({ color: 0xf4eddd }));
-    nucleus.scale.setScalar(.78);
+    const nucleus = new THREE.Mesh(sharedDataStarGeometry, new THREE.MeshBasicMaterial({ color: 0xfff4dc, toneMapped: false }));
+    nucleus.scale.setScalar(.82);
     hub.add(nucleus);
     const globe = new THREE.Mesh(sharedGroupPickGeometry, sharedGroupPickMaterial);
     globe.userData.kind = 'group';
@@ -353,22 +374,24 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   }
   function createDataNode(exam, groupId, slot) {
     const token = new THREE.Group();
-    const palette = hashText(exam.file) % ORBIT_COLORS.length;
-    const glow = new THREE.Mesh(sharedDataGlowGeometry, getDataGlowMaterial(palette));
-    const star = new THREE.Mesh(sharedDataStarGeometry, getDataStarMaterial(palette));
+    const signature = hashText(exam.file);
+    const palette = signature % ORBIT_COLORS.length;
+    const bright = (signature >>> 11) & 1;
+    const size = .92 + ((signature >>> 17) % 7) * .03;
+    const glow = new THREE.Sprite(getDataGlowMaterial(palette, bright));
+    glow.scale.setScalar(.76 * size);
+    const star = new THREE.Mesh(sharedDataStarGeometry, getDataStarMaterial(palette, bright));
+    star.scale.setScalar(.96 * size);
     star.userData.file = exam.file;
     star.userData.exam = exam;
     star.userData.kind = 'exam';
-    const paper = new THREE.Mesh(sharedPaperGeometry, sharedPaperMaterial);
-    paper.scale.setScalar(.82);
-    paper.visible = false;
-    token.add(glow, star, paper);
+    token.add(glow, star);
     token.userData.file = exam.file;
     token.userData.exam = exam;
     token.userData.kind = 'exam';
     dataRoot.add(token);
     return {
-      file: exam.file, exam, groupId, slot, token, star, paper, pickMesh: star,
+      file: exam.file, exam, groupId, slot, token, glow, star, pickMesh: star, size, selectedMix: 0,
       position: new THREE.Vector3(), phase: hashAngle(exam.file), radius: 2.8 + (slot % 3) * 1.72,
       speed: .22 + (hashText(exam.file) % 13) * .025,
     };
@@ -384,7 +407,6 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   }
 
   function setData({ groups: nextGroups, exams: nextExams, details = nextExams, searching = false }) {
-    sharedPaperMaterial.emissiveIntensity = searching ? .58 : .13;
     document.body.classList.toggle('search-active', searching);
     const oldGroups = [...groups.values()];
     const oldGroupsById = new Map(oldGroups.map((group) => [group.id, group]));
@@ -520,8 +542,9 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     geometry.setAttribute('position', positionAttribute);
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
     catalogPoints = new THREE.Points(geometry, new THREE.PointsMaterial({
-      size: mobile ? .2 : .14, sizeAttenuation: true, vertexColors: true,
-      transparent: true, opacity: .92, blending: THREE.AdditiveBlending, depthWrite: false,
+      map: sharedStarSpriteTexture, size: mobile ? .34 : .25, sizeAttenuation: true, vertexColors: true,
+      transparent: true, opacity: .94, alphaTest: .012,
+      blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false,
     }));
     catalogPoints.userData.kind = 'catalog-points';
     catalogPoints.userData.files = visibleCatalogPointFiles;
@@ -604,9 +627,9 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       const emphasized = group.id === focusedGroupId;
       group.orbitPath.material.opacity = emphasized ? .42 : .004;
       for (let i = 0; i < group.shellMaterials.length; i += 1) group.shellMaterials[i].opacity = emphasized ? .34 - i * .035 : .012 - i * .002;
-      group.galaxy.material.opacity = emphasized ? .98 : .82;
-      group.cloud.material.opacity = emphasized ? .24 : .15;
-      group.nucleusGlow.material.opacity = emphasized ? .58 : .38;
+      group.galaxy.material.opacity = emphasized ? 1 : .92;
+      group.cloud.material.opacity = emphasized ? .2 : .13;
+      group.nucleusGlow.material.opacity = emphasized ? .52 : .34;
       const x = Math.cos(group.angle) * group.orbitRadius;
       const z = Math.sin(group.angle) * group.orbitRadius * .9;
       const y = Math.sin(group.angle * .72) * 1.25;
@@ -642,9 +665,12 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       entity.token.position.copy(entity.position);
       entity.token.rotation.y = Math.sin(simTime * .6 + entity.phase) * .12;
       entity.token.rotation.z = Math.cos(simTime * .3 + entity.phase) * .045;
-      const nearPaper = entity.groupId === focusedGroupId || camera.position.distanceTo(entity.position) < 30;
-      entity.paper.visible = nearPaper;
-      entity.star.scale.setScalar(nearPaper ? .78 : 1.18);
+      const distance = camera.position.distanceTo(entity.position);
+      const selected = entity.file === selectedExamFile ? 1 : 0;
+      entity.selectedMix += (selected - entity.selectedMix) * Math.min(1, dt * 10);
+      const nearGlow = 1 - smoothStep(26, 52, distance);
+      entity.star.scale.setScalar(.96 * entity.size * (1 + entity.selectedMix * .045));
+      entity.glow.scale.setScalar((.7 + nearGlow * .16) * entity.size * (1 + entity.selectedMix * .23));
     }
 
     sun.rotation.y = simTime * .022;
@@ -792,6 +818,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
 
   return {
     setData,
+    setSelectedExam(file) { selectedExamFile = typeof file === 'string' ? file : ''; },
     setConstellations(anchorFile, relatedFiles, color) {
       pendingLines.length = 0;
       if (anchorFile) for (const file of relatedFiles) pendingLines.push({ from: anchorFile, to: file, color });
@@ -817,11 +844,9 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       sharedGroupPickGeometry.dispose();
       sharedGroupPickMaterial.dispose();
       galaxyNebulaTexture.dispose();
+      sharedCoreGlowTexture.dispose();
+      sharedStarSpriteTexture.dispose();
       sharedDataStarGeometry.dispose();
-      sharedDataGlowGeometry.dispose();
-      sharedPaperGeometry.dispose();
-      sharedPaperTexture.dispose();
-      sharedPaperMaterial.dispose();
       nebulaTexture.dispose();
       nebulaSky.geometry.dispose();
       nebulaSky.material.dispose();

@@ -23,6 +23,20 @@
     const semester = exam.semester ? exam.semester + '학기 ' : '';
     return [exam.year ? exam.year + '년' : '', semester + type, exam.school, exam.grade, exam.subject].filter(Boolean).join(' · ');
   };
+  const satelliteLabelLines = (exam) => {
+    const year = clean(exam.year);
+    const semester = clean(exam.semester);
+    const examType = clean(exam.examType);
+    const semesterLabel = semester === '1' || semester === '2' ? semester + '학기' : semester;
+    const examTypeLabel = examType === 'mid' ? '중간' : examType === 'final' ? '기말' : examType;
+    const period = [year, [semesterLabel, examTypeLabel].filter(Boolean).join(' ')].filter(Boolean).join(' · ');
+    const school = clean(exam.school);
+    const grade = clean(exam.grade);
+    const subject = clean(exam.subject);
+    const subjectLabel = grade && subject.startsWith(grade) ? subject.slice(grade.length).trim() : subject;
+    const identity = [school, grade, subjectLabel].filter(Boolean).join(' · ');
+    return { period, identity };
+  };
   const examTags = (exam) => [...(state.tagsByFile.get(exam.file) || [])];
   const normalizedField = (value) => clean(value).toLocaleLowerCase('ko');
   const showToast = (message) => {
@@ -98,13 +112,33 @@
       }
       if (!advanced) break;
     }
+    // A selection from the full list or point LOD must occupy an existing
+    // detailed-star slot, without raising the desktop/mobile 96/54 budget.
+    const featuredFile = state.selectedExam?.file;
+    if (featuredFile && !visibleExams.some((exam) => exam.file === featuredFile)) {
+      const featuredGroup = groups.find((group) => group.exams.some((exam) => exam.file === featuredFile));
+      const featuredExam = featuredGroup?.exams.find((exam) => exam.file === featuredFile);
+      if (featuredExam) {
+        const replaceIndex = visibleExams.findLastIndex((exam) => groupKeyForExam(exam).id === featuredGroup.id);
+        if (visibleExams.length < maxNodes) visibleExams.push(featuredExam);
+        else if (replaceIndex >= 0) visibleExams[replaceIndex] = featuredExam;
+        else visibleExams[visibleExams.length - 1] = featuredExam;
+      }
+    }
     const drawnByGroup = new Map();
     for (const exam of visibleExams) {
       const key = groupKeyForExam(exam);
       if (!drawnByGroup.has(key.id)) drawnByGroup.set(key.id, []);
       drawnByGroup.get(key.id).push(exam);
     }
-    for (const group of groups) group.items = drawnByGroup.get(group.id) || [];
+    for (const group of groups) {
+      const items = drawnByGroup.get(group.id) || [];
+      // The existing 12-label limit remains; keep the active detailed node
+      // among the visible labels when its group is focused.
+      const selectedIndex = items.findIndex((exam) => exam.file === featuredFile);
+      if (selectedIndex > 0) items.unshift(...items.splice(selectedIndex, 1));
+      group.items = items;
+    }
     return { groups, visibleExams };
   };
 
@@ -122,7 +156,9 @@
   }
   function openExam(exam) {
     if (!exam) return;
+    const wasDetailed = state.visibleExams.some((item) => item.file === exam.file);
     state.selectedExam = exam;
+    state.world?.setSelectedExam(exam.file);
     const url = sourceUrl(exam);
     ui.title.textContent = examTitle(exam);
     ui.meta.replaceChildren();
@@ -143,6 +179,13 @@
     ui.drawer.classList.add('open');
     ui.drawer.setAttribute('aria-hidden', 'false');
     $('drawerBack').focus({ preventScroll: true });
+    if (!wasDetailed) {
+      // Open the existing preview first, then promote the selected catalog
+      // point/list item on the next paint. Ignore superseded selections.
+      requestAnimationFrame(() => {
+        if (state.selectedExam?.file === exam.file) renderScene();
+      });
+    }
   }
   function closeExam() {
     const openedExam = state.selectedExam;
@@ -150,6 +193,7 @@
     ui.drawer.setAttribute('aria-hidden', 'true');
     ui.frame.src = 'about:blank';
     state.selectedExam = null;
+    state.world?.setSelectedExam(null);
     const focusedButton = openedExam && state.satelliteButtons.get(openedExam.file);
     if (focusedButton) focusedButton.focus({ preventScroll: true });
   }
@@ -157,13 +201,11 @@
   function makeGroupLabel(group) {
     const label = document.createElement('div');
     label.className = 'planet-label';
-    const dot = document.createElement('span');
-    dot.className = 'planet-dot';
     const title = document.createElement('b');
     title.textContent = group.name;
     const meta = document.createElement('small');
     meta.textContent = group.exams.length.toLocaleString() + '개 자료 노드';
-    label.append(dot, title, meta);
+    label.append(title, meta);
     ui.labels.append(label);
     state.groupLabels.set(group.id, label);
   }
@@ -186,13 +228,14 @@
       button.type = 'button';
       button.dataset.examFile = exam.file;
       button.title = 'catalog source: ' + exam.file;
-      button.setAttribute('aria-label', examTitle(exam) + ' 원본 자료 노드 열기');
-      const icon = document.createElement('span');
-      icon.className = 'mini-paper';
-      icon.setAttribute('aria-hidden', 'true');
-      const title = document.createElement('b');
-      title.textContent = String(exam.year || '') + ' · ' + (exam.school || '') + ' · ' + (exam.subject || '시험지');
-      button.append(icon, title);
+      const lines = satelliteLabelLines(exam);
+      button.setAttribute('aria-label', [lines.period, lines.identity, '원본 자료 노드 열기'].filter(Boolean).join(' · '));
+      const period = document.createElement('span');
+      period.className = 'satellite-period';
+      period.textContent = lines.period;
+      const identity = document.createElement('b');
+      identity.textContent = lines.identity;
+      button.append(period, identity);
       button.addEventListener('click', () => openExam(exam));
       ui.satelliteLabels.append(button);
       state.satelliteButtons.set(exam.file, button);
@@ -329,7 +372,7 @@
     updateConstellations();
     const schoolCount = new Set(state.filtered.map((exam) => exam.school)).size;
     $('sceneCount').textContent = '별 자료 노드 ' + state.filtered.length.toLocaleString() + ' / ' +
-      state.filtered.length.toLocaleString() + ' · 종이 상세 ' + state.visibleExams.length.toLocaleString() + ' · ' + state.visibleGroups.length + '개 작은 은하';
+      state.filtered.length.toLocaleString() + ' · 입체 별 상세 ' + state.visibleExams.length.toLocaleString() + ' · ' + state.visibleGroups.length + '개 작은 은하';
     $('sceneInstruction').textContent = state.visibleGroups.length
       ? '시험지마다 고유 자료 노드 하나가 있습니다. 학교·학년·단원 은하를 바꿔 같은 원본의 다른 공간 배치를 둘러보세요.'
       : '조건에 맞는 은하가 없습니다. 필터를 풀거나 검색어를 바꿔 보세요.';
@@ -540,8 +583,8 @@
     } catch (error) {
       ui.status.textContent = '우주를 열지 못했습니다.';
       $('worldFallback').hidden = false;
-      $('worldFallback').querySelector('strong').textContent = error.message || '3D catalog를 시작할 수 없습니다.';
-      $('worldFallback').querySelector('span').textContent = '검색과 목록 대체 보기를 계속 사용할 수 있습니다.';
+      $('worldFallback').querySelector('strong').textContent = '3D 장면을 시작할 수 없습니다.';
+      $('worldFallback').querySelector('span').textContent = '검색, 목록, 문항 미리보기는 계속 이용할 수 있습니다.';
       console.error(error);
       createAccessibleList();
       toggleList(true);
