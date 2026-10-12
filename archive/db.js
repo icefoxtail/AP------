@@ -9019,6 +9019,37 @@ window.mainDB = {
       "primaryStandardCourse": "확률과 통계"
     },
     {
+      "file": "original/high/h2/1mid/23_복성고_1학기_중간_고2_수학I.js",
+      "school": "복성고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-M1-01",
+      "rangeStartUnit": "지수의 뜻과 성질",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M1-05",
+      "rangeEndUnit": "삼각함수의 뜻과 값",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "수학I",
+          "courseCode": "H15-M1",
+          "rangeStartUnitKey": "H15-M1-01",
+          "rangeStartUnit": "지수의 뜻과 성질",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M1-05",
+          "rangeEndUnit": "삼각함수의 뜻과 값",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "수학I"
+    },
+    {
       "file": "original/high/h2/2mid/23_복성고_2학기_중간_고2_수학II.js",
       "school": "복성고",
       "topic": "",
@@ -9905,6 +9936,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": ""
+    },
+    {
+      "file": "original/high/h1/1mid/23_금당고_1학기_중간_고1_기출.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2023,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "H15-SA-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SA-07",
+      "rangeEndUnit": "여러 가지 방정식",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SA-07",
+          "rangeEndUnit": "여러 가지 방정식",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
     },
     {
       "file": "original/high/h1/1final/23_매산고_1학기_기말_고1_기출.js",
@@ -13013,6 +13075,37 @@ window.mainDB = {
       "primaryStandardCourse": "수학(하)"
     },
     {
+      "file": "original/high/h1/1mid/22_팔마고_1학기_중간_고1_기출.js",
+      "school": "팔마고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2022,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SA-05",
+      "rangeEndUnit": "이차방정식",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SA-05",
+          "rangeEndUnit": "이차방정식",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
       "file": "original/high/h1/2final/22_효천고_2학기_기말_고1_기출.js",
       "school": "효천고",
       "topic": "",
@@ -13684,6 +13777,37 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
+      "file": "original/high/h2/1mid/21_강남여고_1학기_중간_고2_수학I.js",
+      "school": "강남여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2021,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 30,
+      "rangeStartUnitKey": "H15-M1-01",
+      "rangeStartUnit": "지수의 뜻과 성질",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M1-07",
+      "rangeEndUnit": "삼각방정식과 삼각부등식",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "수학I",
+          "courseCode": "H15-M1",
+          "rangeStartUnitKey": "H15-M1-01",
+          "rangeStartUnit": "지수의 뜻과 성질",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M1-07",
+          "rangeEndUnit": "삼각방정식과 삼각부등식",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "수학I"
+    },
+    {
       "file": "original/high/h2/2final/21_매산여고_2학기_기말_고2_수학II.js",
       "school": "매산여고",
       "topic": "",
@@ -14097,6 +14221,37 @@ window.mainDB = {
       "primaryStandardCourse": "수학(상)"
     },
     {
+      "file": "original/high/h1/1mid/21_매산여고_1학기_중간_고1_기출.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2021,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SA-07",
+      "rangeEndUnit": "여러 가지 방정식",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SA-07",
+          "rangeEndUnit": "여러 가지 방정식",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
       "file": "original/high/h1/2final/21_복성고_2학기_기말_고1_기출.js",
       "school": "복성고",
       "topic": "",
@@ -14198,6 +14353,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": ""
+    },
+    {
+      "file": "original/high/h1/1mid/21_복성고_1학기_중간_고1_기출.js",
+      "school": "복성고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2021,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SA-09",
+      "rangeEndUnit": "평면좌표",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SA-09",
+          "rangeEndUnit": "평면좌표",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
     },
     {
       "file": "original/high/h1/2final/21_순천고_2학기_기말_고1_기출.js",
