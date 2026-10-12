@@ -30,7 +30,8 @@ function verifyMaster(row, master, taxonomy, bindings, conditions) {
   requireAssert(scope, 'RPM_L1_L2 q' + row.qid);
   const L3 = scope.concepts.find((r) => r.concept === row.rpmL3);
   requireAssert(L3, 'RPM_L3 q' + row.qid);
-  if (row.rpmL4) requireAssert(L3.problemTypes.some((r) => r.problemType === row.rpmL4), 'RPM_L4 q' + row.qid);
+  const L4 = row.rpmL4 ? L3.problemTypes.find((r) => r.problemType === row.rpmL4) : null;
+  if (row.rpmL4) requireAssert(L4, 'RPM_L4 q' + row.qid);
   else requireAssert(row.metaDebt.includes('NO_EQUIVALENT_RPM_L4'), 'RPM_L4 HOLD evidence q' + row.qid);
   if (row.problemTypeKey) {
     requireAssert(taxonomy.problemTypes.some((r) => r.problemTypeKey === row.problemTypeKey), 'PT master q' + row.qid);
@@ -44,6 +45,12 @@ function verifyMaster(row, master, taxonomy, bindings, conditions) {
   requireAssert(Array.isArray(row.crossConceptKeys), 'cross concept array q' + row.qid);
   requireAssert(Number.isInteger(row.independentDifficulty1to5) &&
     row.independentDifficulty1to5 >= 1 && row.independentDifficulty1to5 <= 5, 'difficulty q' + row.qid);
+  // Only a fully reviewed canonical RPM L4 may supply its scope/selectability.
+  // Do not infer a selectable L4 for an explicit NO_EQUIVALENT_RPM_L4 debt.
+  return L4 ? {
+    curriculumApplicability: L4.curriculumApplicability || L3.curriculumApplicability || scope.curriculumApplicability,
+    defaultSelectable: L4.defaultSelectable ?? L3.defaultSelectable ?? scope.defaultSelectable,
+  } : {};
 }
 export function applyReviewedLegacySimilarLedgers() {
   if (!fs.existsSync(ledgerDir)) return { status: 'NO_LEDGER' };
@@ -94,8 +101,9 @@ export function applyReviewedLegacySimilarLedgers() {
         meta.sourceFingerprint === row.sourceFingerprint, 'unrecognized prior fingerprint q' + row.qid);
       requireAssert([meta.contentFingerprint, row.sourceBodyFingerprint].includes(row.oldSourceBodyFingerprint) ||
         meta.contentFingerprint === row.sourceBodyFingerprint, 'unrecognized prior body fingerprint q' + row.qid);
-      verifyMaster(row, master, taxonomy, bindings, conditions);
+      const canonicalSelection = verifyMaster(row, master, taxonomy, bindings, conditions);
       const patch = {
+        ...canonicalSelection,
         sourceFingerprint: row.sourceFingerprint,
         contentFingerprint: row.sourceBodyFingerprint,
         standardCourse: q.standardCourse, standardUnitKey: row.standardUnitKey, standardUnit: row.standardUnit,
