@@ -290,6 +290,9 @@ for (const exam of exams) {
       meta.sourceOrdinal === ordinal;
     const directNode = validJoin && paths.get(core.pathKey(meta));
     const foundationScoped = meta?.metadataRevision?.startsWith("meta-foundation:");
+    const reviewedLegacySimilar = validJoin && meta?.sourceType === "LEGACY_SIMILAR" &&
+      meta?.rpmProjectionRevision === "archive-registration-target-source-rpm-projection-v1" &&
+      (meta?.approvalEvidence || []).some((ref) => ref.startsWith("archive/data/legacy-similar-reviewed/"));
     const metaV2Sidecar = metaV2SidecarRevision(meta?.metadataRevision);
     const foundationPresent = foundationScoped && Boolean(meta?.problemTypeKey || meta?.templateKey);
     const template = meta?.templateKey ? foundationTemplates.get(meta.templateKey) : null;
@@ -311,7 +314,7 @@ for (const exam of exams) {
     const semantic = {};
     for (const field of core.META_FIELDS) {
       if (core.PATH_FIELDS.includes(field)) continue;
-      if (!foundationScoped && foundationProjectionFields.has(field)) continue;
+      if (!foundationScoped && !reviewedLegacySimilar && foundationProjectionFields.has(field)) continue;
       const sourceValue = question[field],
         value = validJoin ? meta[field] : undefined;
       if (
@@ -372,6 +375,7 @@ for (const exam of exams) {
           ? exam.semester + "-" + exam.examType
           : "other",
       contentType: exam.contentType,
+      ...(reviewedLegacySimilar ? { sourceKind: "LEGACY_SIMILAR" } : {}),
       ...semantic,
       difficultyBucket: Number.isInteger(semantic.difficultyBucket)
         ? semantic.difficultyBucket
