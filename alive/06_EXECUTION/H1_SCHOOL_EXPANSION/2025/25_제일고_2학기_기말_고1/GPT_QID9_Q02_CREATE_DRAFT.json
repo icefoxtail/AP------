@@ -1,0 +1,1165 @@
+{
+  "schemaVersion": "ALIVE_QID9_AUTHOR_DRAFT_v1",
+  "source": {
+    "path": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+    "examTitle": "25_제일고_2학기_기말_고1_기출",
+    "qid": 2,
+    "sourceUid": "qid_v1_8bc12777f135e12acce07e0e0b42e6eeb11800ea1b642646d84f2355929f70fd",
+    "gitBlobSha1": "252c1cc9a687cadd961183b56ea10d21bf1976b4",
+    "originalAnswer": "②",
+    "preservedReadOnly": true
+  },
+  "authority": {
+    "repoMainAtStart": "816c5602976d858b9705a44483992da6c95e4a11",
+    "QID9GuidelineBlob": "a56e95d34a598af8b886ad278d84f7e783d95be5",
+    "rpmCrosswalkBlob": "904b3768b69b300607e52217cad05bf71e34f221",
+    "rpmRecordId": "H1-RPM-225",
+    "rpmPrimaryL3": "평행이동",
+    "rpmPrimaryL3Frozen": true,
+    "metaFoundationRuntimeBlob": "0e04ae10f5370af38145b74dc5b1eea3efa696ba",
+    "visualRuleBlob": "d6933d90454abbf16fa671de82c492fd7c054e03"
+  },
+  "summary": {
+    "sourceQid": 2,
+    "authorDraftItems": 9,
+    "answerDistribution": {
+      "①": 0,
+      "②": 4,
+      "③": 3,
+      "④": 2,
+      "⑤": 0
+    },
+    "wrongOptionRoutes": 36,
+    "problemVisualExempt": "9/9",
+    "solutionSvgAttached": "9/9",
+    "pythonCoordinatesCheck": "9/9",
+    "externalQualityReview": "NOT_RUN",
+    "studentRelease": "NOT_AUTHORIZED",
+    "sourceRPMMappingStatus": "RPM_ONLY_NO_ACTIVE_BINDING",
+    "metadataDebtUidCount": 9,
+    "status": "AUTHOR_DRAFT_ONLY",
+    "nextQid": 3,
+    "firstMissingClosureStep": "GPT_OPEN_BOOK_REVIEW"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-JEIL25-2FINAL-Q02-A1",
+      "sourceQid": 2,
+      "slot": "A1",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "하",
+      "category": "도형의 이동",
+      "originalCategory": "도형의 이동",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "standardUnitOrder": 4,
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "점 $(4,1)$을 점 $(-1,3)$으로 옮기는 평행이동에 의하여 점 $(2,5)$가 옮겨진 점의 좌표는?",
+      "choices": [
+        "$(-3,2)$",
+        "$(-3,7)$",
+        "$(3,7)$",
+        "$(7,-3)$",
+        "$(7,3)$"
+      ],
+      "answer": "②",
+      "solution": "평행이동은 모든 점의 좌표를 같은 만큼 변화시킨다.\n점 $(4,1)$이 $(-1,3)$으로 옮겨졌으므로 이동량은 $(-1-4,3-1)=(-5,2)$이다.\n이 이동량을 $(2,5)$에 더하면 $(2-5,5+2)=(-3,7)$이다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/A1-solution.svg",
+      "solutionImageAlt": "A1 평행이동에 사용된 대응 점들의 좌표와 이동 경로",
+      "solutionImageCaption": "A1: 좌표평면에서 대응 점들의 이동 방향과 계산값을 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "primaryRPM_L3": "평행이동",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-225",
+        "rpmL4SemanticLabel": "점·직선의 이동",
+        "rpmRecordMappingStatus": "RPM_ONLY",
+        "rpmBindingStatus": "NO_ACTIVE_MAPPING",
+        "metaFoundationL3": "점의 평행이동",
+        "metaFoundationL4": "점의 평행이동과 좌표",
+        "problemTypeKey": "PT_MOVE_POINT_TRANSLATION",
+        "templateKey": "TT_POINT_TRANSLATION_COORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 1,
+        "experienceAxis": "두 점으로 이동량을 구하여 다른 점에 동일 적용",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordId DIRECT_ACTIVE mapping",
+            "status": "EVIDENCE_DEBT",
+            "reason": "H1-RPM-225 is RPM_ONLY, NO_ACTIVE_MAPPING; Primary L3 source preserved. Generated-only repair needed before publication."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 질문 대상과 모든 점·이동량은 최종 발문으로 복원 가능",
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "reason": "세로 이동량 $2$를 결과 $y$좌표로 착각"
+          },
+          {
+            "choice": "③",
+            "reason": "가로 이동량의 음수를 양수로 착각"
+          },
+          {
+            "choice": "④",
+            "reason": "가로·세로 이동량의 부호를 모두 반대로 적용"
+          },
+          {
+            "choice": "⑤",
+            "reason": "이동량의 부호를 바꾸고 좌표의 성분도 잘못 대응"
+          }
+        ],
+        "calculatedGeometryFacts": [
+          {
+            "name": "A",
+            "x": 4,
+            "y": 1
+          },
+          {
+            "name": "B",
+            "x": -1,
+            "y": 3
+          },
+          {
+            "name": "P",
+            "x": 2,
+            "y": 5
+          },
+          {
+            "name": "P′",
+            "x": -3,
+            "y": 7
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "점 좌표와 평행이동 정보는 발문 텍스트로 완결"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "reason": "H22-C2-04 평행이동의 대응 점·경로를 학생에게 실제 좌표로 설명해야 함",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/A1-solution.svg"
+        },
+        "authorSelfCheck": "CHECKED_BY_AUTHOR_PYTHON_FACTS_VERIFIED",
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-JEIL25-2FINAL-Q02-A2",
+      "sourceQid": 2,
+      "slot": "A2",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "하",
+      "category": "도형의 이동",
+      "originalCategory": "도형의 이동",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "standardUnitOrder": 4,
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "점 $(-3,4)$를 점 $(2,-1)$로 옮기는 평행이동에 의하여 점 $(-1,2)$가 옮겨진 점의 좌표는?",
+      "choices": [
+        "$(-6,7)$",
+        "$(-1,-3)$",
+        "$(4,-3)$",
+        "$(4,2)$",
+        "$(4,7)$"
+      ],
+      "answer": "③",
+      "solution": "기준점 $(-3,4)$에서 $(2,-1)$로의 평행이동량은 $(2+3,-1-4)=(5,-5)$이다.\n따라서 점 $(-1,2)$는 $(-1+5,2-5)=(4,-3)$으로 옮겨진다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/A2-solution.svg",
+      "solutionImageAlt": "A2 평행이동에 사용된 대응 점들의 좌표와 이동 경로",
+      "solutionImageCaption": "A2: 좌표평면에서 대응 점들의 이동 방향과 계산값을 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "primaryRPM_L3": "평행이동",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-225",
+        "rpmL4SemanticLabel": "점·직선의 이동",
+        "rpmRecordMappingStatus": "RPM_ONLY",
+        "rpmBindingStatus": "NO_ACTIVE_MAPPING",
+        "metaFoundationL3": "점의 평행이동",
+        "metaFoundationL4": "점의 평행이동과 좌표",
+        "problemTypeKey": "PT_MOVE_POINT_TRANSLATION",
+        "templateKey": "TT_POINT_TRANSLATION_COORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 1,
+        "experienceAxis": "가로·세로 이동량의 부호를 각각 검토",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordId DIRECT_ACTIVE mapping",
+            "status": "EVIDENCE_DEBT",
+            "reason": "H1-RPM-225 is RPM_ONLY, NO_ACTIVE_MAPPING; Primary L3 source preserved. Generated-only repair needed before publication."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 질문 대상과 모든 점·이동량은 최종 발문으로 복원 가능",
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "reason": "이동량 $(5,-5)$의 방향을 뒤집어 적용"
+          },
+          {
+            "choice": "②",
+            "reason": "세로 성분 $-5$만 적용하고 가로 이동은 생략"
+          },
+          {
+            "choice": "④",
+            "reason": "가로 성분 $5$만 적용하고 세로 이동은 생략"
+          },
+          {
+            "choice": "⑤",
+            "reason": "세로 이동량 $-5$를 $+5$로 잘못 적용"
+          }
+        ],
+        "calculatedGeometryFacts": [
+          {
+            "name": "A",
+            "x": -3,
+            "y": 4
+          },
+          {
+            "name": "B",
+            "x": 2,
+            "y": -1
+          },
+          {
+            "name": "P",
+            "x": -1,
+            "y": 2
+          },
+          {
+            "name": "P′",
+            "x": 4,
+            "y": -3
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "점 좌표와 평행이동 정보는 발문 텍스트로 완결"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "reason": "H22-C2-04 평행이동의 대응 점·경로를 학생에게 실제 좌표로 설명해야 함",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/A2-solution.svg"
+        },
+        "authorSelfCheck": "CHECKED_BY_AUTHOR_PYTHON_FACTS_VERIFIED",
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-JEIL25-2FINAL-Q02-A3",
+      "sourceQid": 2,
+      "slot": "A3",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "하",
+      "category": "도형의 이동",
+      "originalCategory": "도형의 이동",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "standardUnitOrder": 4,
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "점 $(5,-2)$를 점 $(1,4)$로 옮기는 평행이동에 의하여 점 $(0,-3)$이 옮겨진 점의 좌표는?",
+      "choices": [
+        "$(-4,-9)$",
+        "$(-4,-3)$",
+        "$(-4,3)$",
+        "$(0,3)$",
+        "$(4,-9)$"
+      ],
+      "answer": "③",
+      "solution": "기준점의 좌표 변화는 $(1-5,4-(-2))=(-4,6)$이다.\n점 $(0,-3)$에 이를 적용하면 $(0-4,-3+6)=(-4,3)$이다.\n특히 세로 이동량은 음수 좌표 $-2$에서 양수 좌표 $4$로 이동하므로 $+6$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/A3-solution.svg",
+      "solutionImageAlt": "A3 평행이동에 사용된 대응 점들의 좌표와 이동 경로",
+      "solutionImageCaption": "A3: 좌표평면에서 대응 점들의 이동 방향과 계산값을 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "primaryRPM_L3": "평행이동",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-225",
+        "rpmL4SemanticLabel": "점·직선의 이동",
+        "rpmRecordMappingStatus": "RPM_ONLY",
+        "rpmBindingStatus": "NO_ACTIVE_MAPPING",
+        "metaFoundationL3": "점의 평행이동",
+        "metaFoundationL4": "점의 평행이동과 좌표",
+        "problemTypeKey": "PT_MOVE_POINT_TRANSLATION",
+        "templateKey": "TT_POINT_TRANSLATION_COORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 1,
+        "experienceAxis": "음수에서 양수로의 이동량 부호 판정",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordId DIRECT_ACTIVE mapping",
+            "status": "EVIDENCE_DEBT",
+            "reason": "H1-RPM-225 is RPM_ONLY, NO_ACTIVE_MAPPING; Primary L3 source preserved. Generated-only repair needed before publication."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 질문 대상과 모든 점·이동량은 최종 발문으로 복원 가능",
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "reason": "세로 이동량 $+6$을 $-6$으로 잘못 계산"
+          },
+          {
+            "choice": "②",
+            "reason": "가로 이동량만 적용하고 세로 이동을 생략"
+          },
+          {
+            "choice": "④",
+            "reason": "세로 이동량만 적용하고 가로 이동을 생략"
+          },
+          {
+            "choice": "⑤",
+            "reason": "두 이동량의 방향을 모두 반대로 적용"
+          }
+        ],
+        "calculatedGeometryFacts": [
+          {
+            "name": "A",
+            "x": 5,
+            "y": -2
+          },
+          {
+            "name": "B",
+            "x": 1,
+            "y": 4
+          },
+          {
+            "name": "P",
+            "x": 0,
+            "y": -3
+          },
+          {
+            "name": "P′",
+            "x": -4,
+            "y": 3
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "점 좌표와 평행이동 정보는 발문 텍스트로 완결"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "reason": "H22-C2-04 평행이동의 대응 점·경로를 학생에게 실제 좌표로 설명해야 함",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/A3-solution.svg"
+        },
+        "authorSelfCheck": "CHECKED_BY_AUTHOR_PYTHON_FACTS_VERIFIED",
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-JEIL25-2FINAL-Q02-B1",
+      "sourceQid": 2,
+      "slot": "B1",
+      "purpose": "B",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "도형의 이동",
+      "originalCategory": "도형의 이동",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "standardUnitOrder": 4,
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "점 $(1,5)$를 점 $(4,3)$으로 옮기는 평행이동에 의하여 점 $P$가 $(-1,7)$로 옮겨졌다. 이동 전 점 $P$의 좌표는?",
+      "choices": [
+        "$(-4,5)$",
+        "$(-4,9)$",
+        "$(-1,9)$",
+        "$(2,5)$",
+        "$(2,9)$"
+      ],
+      "answer": "②",
+      "solution": "점 $(1,5)$에서 $(4,3)$으로의 이동량은 $(3,-2)$이다.\n이동 전 점을 $P=(x,y)$라 하면 $(x+3,y-2)=(-1,7)$이다.\n따라서 $x=-1-3=-4$, $y=7+2=9$이므로 $P=(-4,9)$이다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/B1-solution.svg",
+      "solutionImageAlt": "B1 평행이동에 사용된 대응 점들의 좌표와 이동 경로",
+      "solutionImageCaption": "B1: 좌표평면에서 대응 점들의 이동 방향과 계산값을 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "primaryRPM_L3": "평행이동",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-225",
+        "rpmL4SemanticLabel": "점·직선의 이동",
+        "rpmRecordMappingStatus": "RPM_ONLY",
+        "rpmBindingStatus": "NO_ACTIVE_MAPPING",
+        "metaFoundationL3": "점의 평행이동",
+        "metaFoundationL4": "점의 평행이동과 좌표",
+        "problemTypeKey": "PT_MOVE_POINT_TRANSLATION",
+        "templateKey": "TT_POINT_TRANSLATION_COORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "experienceAxis": "도착점에서 원래 점으로 역산",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordId DIRECT_ACTIVE mapping",
+            "status": "EVIDENCE_DEBT",
+            "reason": "H1-RPM-225 is RPM_ONLY, NO_ACTIVE_MAPPING; Primary L3 source preserved. Generated-only repair needed before publication."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 질문 대상과 모든 점·이동량은 최종 발문으로 복원 가능",
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "reason": "역이동할 때 세로 성분 $-2$를 빼지 않고 더해 잘못 적용"
+          },
+          {
+            "choice": "③",
+            "reason": "가로좌표 $-1$을 그대로 두고 세로만 역이동"
+          },
+          {
+            "choice": "④",
+            "reason": "역이동이 아니라 정방향 이동을 다시 적용"
+          },
+          {
+            "choice": "⑤",
+            "reason": "가로는 정방향, 세로는 역방향으로 혼합 적용"
+          }
+        ],
+        "calculatedGeometryFacts": [
+          {
+            "name": "A",
+            "x": 1,
+            "y": 5
+          },
+          {
+            "name": "B",
+            "x": 4,
+            "y": 3
+          },
+          {
+            "name": "P",
+            "x": -4,
+            "y": 9
+          },
+          {
+            "name": "P′",
+            "x": -1,
+            "y": 7
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "점 좌표와 평행이동 정보는 발문 텍스트로 완결"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "reason": "H22-C2-04 평행이동의 대응 점·경로를 학생에게 실제 좌표로 설명해야 함",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/B1-solution.svg"
+        },
+        "authorSelfCheck": "CHECKED_BY_AUTHOR_PYTHON_FACTS_VERIFIED",
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-JEIL25-2FINAL-Q02-B2",
+      "sourceQid": 2,
+      "slot": "B2",
+      "purpose": "B",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "도형의 이동",
+      "originalCategory": "도형의 이동",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "standardUnitOrder": 4,
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "두 점 $A(1,2)$, $B(7,-2)$를 각각 $x$축의 방향으로 $-3$, $y$축의 방향으로 $4$만큼 평행이동한 점을 $A'$, $B'$이라 하자. 선분 $A'B'$의 중점 좌표는?",
+      "choices": [
+        "$(1,-4)$",
+        "$(1,4)$",
+        "$(4,0)$",
+        "$(7,-4)$",
+        "$(7,4)$"
+      ],
+      "answer": "②",
+      "solution": "평행이동한 점은 $A'=(-2,6)$, $B'=(4,2)$이다.\n선분 $A'B'$의 중점은 각 좌표의 평균이므로\n$\\left(\\dfrac{-2+4}{2},\\dfrac{6+2}{2}\\right)=(1,4)$이다.\n이동 전 중점 $(4,0)$에 이동량 $(-3,4)$를 더해도 같은 결과를 얻는다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/B2-solution.svg",
+      "solutionImageAlt": "B2 평행이동에 사용된 대응 점들의 좌표와 이동 경로",
+      "solutionImageCaption": "B2: 좌표평면에서 대응 점들의 이동 방향과 계산값을 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "primaryRPM_L3": "평행이동",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-225",
+        "rpmL4SemanticLabel": "점·직선의 이동",
+        "rpmRecordMappingStatus": "RPM_ONLY",
+        "rpmBindingStatus": "NO_ACTIVE_MAPPING",
+        "metaFoundationL3": "점의 평행이동",
+        "metaFoundationL4": "점의 평행이동과 좌표",
+        "problemTypeKey": "PT_MOVE_POINT_TRANSLATION",
+        "templateKey": "TT_POINT_TRANSLATION_COORD",
+        "crossConceptKeys": [
+          "CC_MIDPOINT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "experienceAxis": "점의 평행이동과 중점의 대응 관계 결합",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordId DIRECT_ACTIVE mapping",
+            "status": "EVIDENCE_DEBT",
+            "reason": "H1-RPM-225 is RPM_ONLY, NO_ACTIVE_MAPPING; Primary L3 source preserved. Generated-only repair needed before publication."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 질문 대상과 모든 점·이동량은 최종 발문으로 복원 가능",
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "reason": "세로 이동을 $-4$로 적용하여 중점 $(1,-4)$를 얻음"
+          },
+          {
+            "choice": "③",
+            "reason": "평행이동 전 중점 $(4,0)$을 그대로 답으로 선택"
+          },
+          {
+            "choice": "④",
+            "reason": "중점의 가로좌표에 $+3$을 적용하고 세로에는 $-4$를 적용"
+          },
+          {
+            "choice": "⑤",
+            "reason": "가로 이동량 $-3$을 $+3$으로 적용"
+          }
+        ],
+        "calculatedGeometryFacts": [
+          {
+            "name": "A",
+            "x": 1,
+            "y": 2
+          },
+          {
+            "name": "B",
+            "x": 7,
+            "y": -2
+          },
+          {
+            "name": "A′",
+            "x": -2,
+            "y": 6
+          },
+          {
+            "name": "B′",
+            "x": 4,
+            "y": 2
+          },
+          {
+            "name": "M",
+            "x": 4,
+            "y": 0
+          },
+          {
+            "name": "M′",
+            "x": 1,
+            "y": 4
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "점 좌표와 평행이동 정보는 발문 텍스트로 완결"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "reason": "H22-C2-04 평행이동의 대응 점·경로를 학생에게 실제 좌표로 설명해야 함",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/B2-solution.svg"
+        },
+        "authorSelfCheck": "CHECKED_BY_AUTHOR_PYTHON_FACTS_VERIFIED",
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-JEIL25-2FINAL-Q02-B3",
+      "sourceQid": 2,
+      "slot": "B3",
+      "purpose": "B",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "도형의 이동",
+      "originalCategory": "도형의 이동",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "standardUnitOrder": 4,
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "하나의 평행이동에 의하여 점 $P(a,2)$는 $P'(3,7)$로, 점 $Q(1,b)$는 $Q'(-2,4)$로 옮겨진다. 실수 $a,b$에 대하여 $a+b$의 값은?",
+      "choices": [
+        "$-7$",
+        "$-1$",
+        "$1$",
+        "$5$",
+        "$7$"
+      ],
+      "answer": "④",
+      "solution": "두 점에 적용되는 평행이동량은 같아야 한다.\n$Q$의 가로좌표 변화가 $-2-1=-3$이므로 $P$에서도 $3-a=-3$이다. 따라서 $a=6$이다.\n$P$의 세로좌표 변화가 $7-2=5$이므로 $Q$에서도 $4-b=5$이다. 따라서 $b=-1$이다.\n그러므로 $a+b=6+(-1)=5$이다.\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/B3-solution.svg",
+      "solutionImageAlt": "B3 평행이동에 사용된 대응 점들의 좌표와 이동 경로",
+      "solutionImageCaption": "B3: 좌표평면에서 대응 점들의 이동 방향과 계산값을 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "primaryRPM_L3": "평행이동",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-225",
+        "rpmL4SemanticLabel": "점·직선의 이동",
+        "rpmRecordMappingStatus": "RPM_ONLY",
+        "rpmBindingStatus": "NO_ACTIVE_MAPPING",
+        "metaFoundationL3": "점의 평행이동",
+        "metaFoundationL4": "점의 평행이동과 좌표",
+        "problemTypeKey": "PT_MOVE_POINT_TRANSLATION",
+        "templateKey": "TT_POINT_TRANSLATION_COORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 3,
+        "experienceAxis": "두 평행이동의 공통 이동량을 이용한 역조건 해석",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordId DIRECT_ACTIVE mapping",
+            "status": "EVIDENCE_DEBT",
+            "reason": "H1-RPM-225 is RPM_ONLY, NO_ACTIVE_MAPPING; Primary L3 source preserved. Generated-only repair needed before publication."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 질문 대상과 모든 점·이동량은 최종 발문으로 복원 가능",
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "reason": "$3-a=-3$을 $a=-6$으로 잘못 풀어 $-7$을 얻음"
+          },
+          {
+            "choice": "②",
+            "reason": "$3-a=-3$을 $a=0$으로 잘못 계산"
+          },
+          {
+            "choice": "③",
+            "reason": "$a=0$, $b=1$로 두 이동량의 부호를 모두 혼동"
+          },
+          {
+            "choice": "⑤",
+            "reason": "$b=-1$을 $b=1$로 잘못 계산"
+          }
+        ],
+        "calculatedGeometryFacts": [
+          {
+            "name": "P",
+            "x": 6,
+            "y": 2
+          },
+          {
+            "name": "P′",
+            "x": 3,
+            "y": 7
+          },
+          {
+            "name": "Q",
+            "x": 1,
+            "y": -1
+          },
+          {
+            "name": "Q′",
+            "x": -2,
+            "y": 4
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "점 좌표와 평행이동 정보는 발문 텍스트로 완결"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "reason": "H22-C2-04 평행이동의 대응 점·경로를 학생에게 실제 좌표로 설명해야 함",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/B3-solution.svg"
+        },
+        "authorSelfCheck": "CHECKED_BY_AUTHOR_PYTHON_FACTS_VERIFIED",
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-JEIL25-2FINAL-Q02-C1",
+      "sourceQid": 2,
+      "slot": "C1",
+      "purpose": "C",
+      "modeCandidate": "TYPE_BANK",
+      "level": "중",
+      "category": "도형의 이동",
+      "originalCategory": "도형의 이동",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "standardUnitOrder": 4,
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "점 $(2,-1)$을 점 $(-2,3)$으로 옮기는 평행이동을 한 뒤, 다시 점 $(-2,3)$을 점 $(1,-1)$로 옮기는 평행이동을 한다. 이 두 평행이동을 차례로 적용할 때, 점 $(4,5)$가 최종적으로 옮겨지는 점의 좌표는?",
+      "choices": [
+        "$(0,9)$",
+        "$(3,1)$",
+        "$(3,5)$",
+        "$(7,1)$",
+        "$(11,5)$"
+      ],
+      "answer": "③",
+      "solution": "첫 번째 이동량은 $(-2-2,3-(-1))=(-4,4)$이고, 두 번째 이동량은 $(1-(-2),-1-3)=(3,-4)$이다.\n두 이동량을 더하면 $(-1,0)$이므로, 점 $(4,5)$의 최종 좌표는 $(4-1,5+0)=(3,5)$이다.\n직접 순서대로 적용해도 $(4,5)\\to(0,9)\\to(3,5)$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/C1-solution.svg",
+      "solutionImageAlt": "C1 평행이동에 사용된 대응 점들의 좌표와 이동 경로",
+      "solutionImageCaption": "C1: 좌표평면에서 대응 점들의 이동 방향과 계산값을 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "primaryRPM_L3": "평행이동",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-225",
+        "rpmL4SemanticLabel": "점·직선의 이동",
+        "rpmRecordMappingStatus": "RPM_ONLY",
+        "rpmBindingStatus": "NO_ACTIVE_MAPPING",
+        "metaFoundationL3": "점의 평행이동",
+        "metaFoundationL4": "점의 평행이동과 좌표",
+        "problemTypeKey": "PT_MOVE_POINT_TRANSLATION",
+        "templateKey": "TT_POINT_TRANSLATION_COORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "experienceAxis": "순차 평행이동을 두 이동량의 합으로 통합",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordId DIRECT_ACTIVE mapping",
+            "status": "EVIDENCE_DEBT",
+            "reason": "H1-RPM-225 is RPM_ONLY, NO_ACTIVE_MAPPING; Primary L3 source preserved. Generated-only repair needed before publication."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 질문 대상과 모든 점·이동량은 최종 발문으로 복원 가능",
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "reason": "첫 번째 평행이동 $(-4,4)$만 적용"
+          },
+          {
+            "choice": "②",
+            "reason": "두 번째 이동의 세로 성분 $-4$를 한 번 더 중복 계산"
+          },
+          {
+            "choice": "④",
+            "reason": "두 번째 평행이동 $(3,-4)$만 적용"
+          },
+          {
+            "choice": "⑤",
+            "reason": "가로 이동량의 부호를 버리고 크기 $4+3$을 더함"
+          }
+        ],
+        "calculatedGeometryFacts": [
+          {
+            "name": "P",
+            "x": 4,
+            "y": 5
+          },
+          {
+            "name": "P₁",
+            "x": 0,
+            "y": 9
+          },
+          {
+            "name": "P₂",
+            "x": 3,
+            "y": 5
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "점 좌표와 평행이동 정보는 발문 텍스트로 완결"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "reason": "H22-C2-04 평행이동의 대응 점·경로를 학생에게 실제 좌표로 설명해야 함",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/C1-solution.svg"
+        },
+        "authorSelfCheck": "CHECKED_BY_AUTHOR_PYTHON_FACTS_VERIFIED",
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-JEIL25-2FINAL-Q02-C2",
+      "sourceQid": 2,
+      "slot": "C2",
+      "purpose": "C",
+      "modeCandidate": "TYPE_BANK",
+      "level": "중",
+      "category": "도형의 이동",
+      "originalCategory": "도형의 이동",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "standardUnitOrder": 4,
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "두 점 $A(1,1)$, $B(3,5)$를 각각 $x$축의 방향으로 $-2$, $y$축의 방향으로 $3$만큼 평행이동한 점을 $A'$, $B'$이라 한다. 직선 $A'B'$의 $y$절편은?",
+      "choices": [
+        "$-1$",
+        "$2$",
+        "$4$",
+        "$6$",
+        "$8$"
+      ],
+      "answer": "④",
+      "solution": "평행이동 전 두 점을 지나는 직선의 기울기는 $\\dfrac{5-1}{3-1}=2$이다.\n평행이동 뒤의 점은 $A'=(-1,4)$, $B'=(1,8)$이며 기울기는 변하지 않는다.\n직선 $A'B'$의 식을 $y=2x+b$라 하면 $A'=(-1,4)$를 대입하여 $4=-2+b$이다. 따라서 $b=6$이다.\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/C2-solution.svg",
+      "solutionImageAlt": "C2 평행이동에 사용된 대응 점들의 좌표와 이동 경로",
+      "solutionImageCaption": "C2: 좌표평면에서 대응 점들의 이동 방향과 계산값을 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "primaryRPM_L3": "평행이동",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-225",
+        "rpmL4SemanticLabel": "점·직선의 이동",
+        "rpmRecordMappingStatus": "RPM_ONLY",
+        "rpmBindingStatus": "NO_ACTIVE_MAPPING",
+        "metaFoundationL3": "점의 평행이동",
+        "metaFoundationL4": "점의 평행이동과 좌표",
+        "problemTypeKey": "PT_MOVE_LINE_TRANSLATION",
+        "templateKey": "TT_LINE_TRANSLATION_EQUATION",
+        "crossConceptKeys": [
+          "CC_LINE_EQUATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "experienceAxis": "점의 평행이동에서 이동한 직선의 절편 계산",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordId DIRECT_ACTIVE mapping",
+            "status": "EVIDENCE_DEBT",
+            "reason": "H1-RPM-225 is RPM_ONLY, NO_ACTIVE_MAPPING; Primary L3 source preserved. Generated-only repair needed before publication."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 질문 대상과 모든 점·이동량은 최종 발문으로 복원 가능",
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "reason": "이동 전 직선 $y=2x-1$의 $y$절편을 그대로 선택"
+          },
+          {
+            "choice": "②",
+            "reason": "세로 이동량 $3$만 $y$절편에 더하고 가로 이동을 무시"
+          },
+          {
+            "choice": "③",
+            "reason": "이동한 점 $A'$의 $y$좌표를 $y$절편으로 착각"
+          },
+          {
+            "choice": "⑤",
+            "reason": "이동한 점 $B'$의 $y$좌표를 $y$절편으로 착각"
+          }
+        ],
+        "calculatedGeometryFacts": [
+          {
+            "name": "A",
+            "x": 1,
+            "y": 1
+          },
+          {
+            "name": "B",
+            "x": 3,
+            "y": 5
+          },
+          {
+            "name": "A′",
+            "x": -1,
+            "y": 4
+          },
+          {
+            "name": "B′",
+            "x": 1,
+            "y": 8
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "점 좌표와 평행이동 정보는 발문 텍스트로 완결"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "reason": "H22-C2-04 평행이동의 대응 점·경로를 학생에게 실제 좌표로 설명해야 함",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/C2-solution.svg"
+        },
+        "authorSelfCheck": "CHECKED_BY_AUTHOR_PYTHON_FACTS_VERIFIED",
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-JEIL25-2FINAL-Q02-C3",
+      "sourceQid": 2,
+      "slot": "C3",
+      "purpose": "C",
+      "modeCandidate": "TYPE_BANK",
+      "level": "중",
+      "category": "도형의 이동",
+      "originalCategory": "도형의 이동",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "standardUnitOrder": 4,
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "도형"
+      ],
+      "wide": false,
+      "content": "두 점 $A(-2,1)$, $B(6,5)$의 중점 $M$을 어떤 평행이동에 의하여 점 $M'$으로 옮겼더니 $M'$은 $y$축 위에 있었다. 같은 평행이동으로 옮긴 점 $A'$이 $x$축 위에 있을 때, 점 $B$가 옮겨진 점 $B'$의 좌표는?",
+      "choices": [
+        "$(-4,4)$",
+        "$(4,4)$",
+        "$(4,6)$",
+        "$(8,4)$",
+        "$(8,6)$"
+      ],
+      "answer": "②",
+      "solution": "선분 $AB$의 중점은 $M=\\left(\\dfrac{-2+6}{2},\\dfrac{1+5}{2}\\right)=(2,3)$이다.\n평행이동량을 $(h,k)$라 하면 $M'=(2+h,3+k)$이다. $M'$이 $y$축 위에 있으므로 $2+h=0$, 즉 $h=-2$이다.\n점 $A'=(-2+h,1+k)$가 $x$축 위에 있으므로 $1+k=0$, 즉 $k=-1$이다.\n따라서 점 $B(6,5)$는 $(6-2,5-1)=(4,4)$로 옮겨진다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/C3-solution.svg",
+      "solutionImageAlt": "C3 평행이동에 사용된 대응 점들의 좌표와 이동 경로",
+      "solutionImageCaption": "C3: 좌표평면에서 대응 점들의 이동 방향과 계산값을 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "primaryRPM_L3": "평행이동",
+        "primaryRPM_L3Frozen": true,
+        "rpmRecordId": "H1-RPM-225",
+        "rpmL4SemanticLabel": "점·직선의 이동",
+        "rpmRecordMappingStatus": "RPM_ONLY",
+        "rpmBindingStatus": "NO_ACTIVE_MAPPING",
+        "metaFoundationL3": "점의 평행이동",
+        "metaFoundationL4": "점의 평행이동과 좌표",
+        "problemTypeKey": "PT_MOVE_POINT_TRANSLATION",
+        "templateKey": "TT_POINT_TRANSLATION_COORD",
+        "crossConceptKeys": [
+          "CC_MIDPOINT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "experienceAxis": "중점의 이동과 좌표축 조건으로 이동량을 역결정",
+        "metadataDebt": [
+          {
+            "field": "rpmRecordId DIRECT_ACTIVE mapping",
+            "status": "EVIDENCE_DEBT",
+            "reason": "H1-RPM-225 is RPM_ONLY, NO_ACTIVE_MAPPING; Primary L3 source preserved. Generated-only repair needed before publication."
+          }
+        ]
+      },
+      "review": {
+        "reverseStem": "KEEP: 질문 대상과 모든 점·이동량은 최종 발문으로 복원 가능",
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "reason": "점 $A$의 $x$좌표에 가로 이동량을 적용하고 $B$의 세로좌표만 유지"
+          },
+          {
+            "choice": "③",
+            "reason": "세로 이동량 $-1$을 $+1$로 잘못 적용"
+          },
+          {
+            "choice": "④",
+            "reason": "가로 이동량 $-2$를 $+2$로 잘못 적용"
+          },
+          {
+            "choice": "⑤",
+            "reason": "두 이동량의 부호를 모두 반대로 적용"
+          }
+        ],
+        "calculatedGeometryFacts": [
+          {
+            "name": "A",
+            "x": -2,
+            "y": 1
+          },
+          {
+            "name": "B",
+            "x": 6,
+            "y": 5
+          },
+          {
+            "name": "M",
+            "x": 2,
+            "y": 3
+          },
+          {
+            "name": "A′",
+            "x": -4,
+            "y": 0
+          },
+          {
+            "name": "B′",
+            "x": 4,
+            "y": 4
+          },
+          {
+            "name": "M′",
+            "x": 0,
+            "y": 2
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "점 좌표와 평행이동 정보는 발문 텍스트로 완결"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "reason": "H22-C2-04 평행이동의 대응 점·경로를 학생에게 실제 좌표로 설명해야 함",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q02/C3-solution.svg"
+        },
+        "authorSelfCheck": "CHECKED_BY_AUTHOR_PYTHON_FACTS_VERIFIED",
+        "externalOpenBookReview": "NOT_RUN",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY"
+      }
+    }
+  ]
+}
