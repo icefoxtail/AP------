@@ -16831,6 +16831,47 @@ window.mainDB = {
       "primaryStandardCourse": ""
     },
     {
+      "file": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
+      "school": "순천고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2020,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "공통수학2",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-09",
+          "rangeStartUnit": "평면좌표",
+          "rangeStartUnitOrder": 9,
+          "rangeEndUnitKey": "H15-SA-12",
+          "rangeEndUnit": "도형의 이동",
+          "rangeEndUnitOrder": 12
+        },
+        {
+          "standardCourse": "수학(하)",
+          "courseCode": "H15-SB",
+          "rangeStartUnitKey": "H15-SB-01",
+          "rangeStartUnit": "집합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SB-02",
+          "rangeEndUnit": "명제",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": ""
+    },
+    {
       "file": "original/high/h1/1mid/20_순천고_1학기_중간_고1_기출.js",
       "school": "순천고",
       "topic": "",
@@ -17704,6 +17745,37 @@ window.mainDB = {
           "rangeEndUnitKey": "H15-SA-12",
           "rangeEndUnit": "도형의 이동",
           "rangeEndUnitOrder": 12
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
+      "file": "original/high/h1/1mid/19_순천고_1학기_중간_고1_기출.js",
+      "school": "순천고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2019,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "H15-SA-02",
+      "rangeStartUnit": "항등식과 나머지정리",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H15-SA-11",
+      "rangeEndUnit": "원의 방정식",
+      "rangeEndUnitOrder": 11,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-02",
+          "rangeStartUnit": "항등식과 나머지정리",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H15-SA-11",
+          "rangeEndUnit": "원의 방정식",
+          "rangeEndUnitOrder": 11
         }
       ],
       "primaryStandardCourse": "수학(상)"
