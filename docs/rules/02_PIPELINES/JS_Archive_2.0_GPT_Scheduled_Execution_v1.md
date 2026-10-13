@@ -1,38 +1,36 @@
 # JS Archive 2.0 — GPT Scheduled Execution Contract v1
 
-status: CURRENT POLICY / GPT SCHEDULED LINE; operational transition pending
+status: CURRENT COMMON POLICY / ALL GPT SCHEDULED CAMPAIGNS; document-only update
 qualityContractVersion: JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006
 currentCampaignId: H1_GPT2_20261006
 parent quality authority: JS_Archive_2.0_Common_Quality_Contract_v1.md
 scheduled prompt copy source: JS_Archive_2.0_GPT_Scheduled_Prompt_Template_v1.md
 campaign authority: JS_Archive_2.0_GPT_Campaign_Generation_v1.md
 
-## 0. Authority boundary and rollout state
+## 0. Authority boundary and current application
 
-이 문서는 GPT 예약 2.0의 문서상 목표 운영정책과 현재 적용 상태를 함께 정의한다. Prompt copy source는 `JS_Archive_2.0_GPT_Scheduled_Prompt_Template_v1.md`; A/B/C 대상 배정 authority는 `JS_Archive_2.0_GPT_Campaign_Generation_v1.md`와 frozen Git manifest다. Common Quality Contract의 문항 품질 기준은 계속 적용한다.
+이 문서는 **모든 GPT 제작·검수 예약 캠페인**에 공통 적용되는 운영 계약이다. campaignId, frozen manifest, stream roster/data, source authority와 과거 검수결과는 각 캠페인의 기존 정본을 그대로 유지한다. H1_GPT2_20261006 등 특정 캠페인의 identity나 배정을 이 공통화 때문에 재생성·재배치하지 않는다. Prompt copy source는 `JS_Archive_2.0_GPT_Scheduled_Prompt_Template_v1.md`; 대상 배정 authority는 `JS_Archive_2.0_GPT_Campaign_Generation_v1.md` 및 해당 캠페인의 frozen Git manifest다. Common Quality Contract와 이 문서 §§16–17의 문항 품질 기준은 계속 적용한다. Common Quality Contract §1은 GPT 예약이 R3 완료 패킷과 실제 검사 결과를 Library에 남기고, 별도 Work/Codex 출고 담당이 production JS·이미지·SVG를 일괄 출고하는 동일한 흐름을 정의한다.
 
-**이 문서 PR은 문서 준비다. 현재 consumer와 예약은 구방식이다.** 적용 담당자는 consumer/예약 지시를 필요한 만큼 갱신하고, 신규 자격 대상 또는 다음 미완료 단계에서 실제 예약 인수·저장·후속 인수와 최종 마감을 확인한 뒤 전환을 선언한다. 이미 완료된 검수를 실증 목적으로 반복하지 않는다. 그 전까지 현재 consumer 지시를 따른다. 문서 변경만으로 진행 중 시험지나 예약 실행을 바꾸거나 재시작하지 않는다.
-기존 저장 continuation/인계문에 옛 CAS·marker-last·복수 upload/readback 지시가 남아 있으면 적용 담당자가 해당 운영지시만 새 정책으로 바꾸고, 이미 동결된 답·검수 증거·수정본은 그대로 보존한다(B13/C8에서 잔존 확인).
+이번 변경은 **계약 문서만** 수정한다. 실제 예약 prompt/consumer 지시나 validator 코드는 변경하거나 실행하지 않았으며, 문서 수정만으로 실제 예약 설정이 바뀌었다고 주장하지 않는다. 다만 과거의 “전환 전 구 consumer 유효” 문구는 중간 Git 쓰기·운영경로 복사·branch/commit/PR·Git writer lease를 단계 인계 관문으로 되살리는 근거가 될 수 없다. 실제 prompt/validator 정비 여부는 이 문서 편집과 별도로 기록한다.
 
 `archive/tools/GPT2_ONE_SHOT_CLOSEOUT.md`와 `GPT2_CONNECTED_STDIO_HOST.md`는 선택형 CANARY 도구다. 새 기본 흐름의 선행조건이 아니며, 이 문서 변경은 해당 코드를 활성화하지 않는다.
-
 ## 1. 목표 흐름
 
-시험지별 단일 Library 작업본에서 `CREATE → R1 → R2 → R3 → 최종 기술검사·게시`를 수행하고, 단계별 결과는 하나의 누적 검수기록에 추가한다. 품질 역할은 유지하지만 중간 폴더로 작업본을 복사·이관하지 않고, 단계별 독립 PASS 영수증·반복 seal·validator 실행·같은 SHA 원격 재조회는 하지 않는다. 최종 기술검사와 게시를 한 번 수행한다.
+모든 GPT 예약 campaign은 시험지별 **전체 Library 패킷**으로 `CREATE → R1 → R2 → R3`를 수행한다. 각 단계의 실제 검사·수정·잔여항목을 누적 검수기록에 남긴다. R3 완료 후 예약은 출고 대상인 production JS·이미지·SVG의 정확한 Library 파일 ID·revision/해시와 실제 수행한 검사 결과를 기록하고, 완료 패킷을 Library에 쌓는다. R3 완료나 Library 수납만으로 공식 PASS·Git 출고를 뜻하지 않는다. 별도 Work 또는 Codex 출고 담당이 완료 패킷을 모아 production JS·이미지·SVG만 일괄 push하고 main에 병합한다. GPT 제작·검수 예약은 직접 Git에 쓰지 않는다.
 
-이 간소화는 독립 검수 기준, 정확한 버전 식별, 대상 배정, 변경 영향 범위, 최종 구조 확인을 낮추지 않는다. 현재 campaign에서 검수본과 수정 범위가 유효한 기존 완료 기록은 원본을 보존하고 누적 기록에 링크해 승계하며 다음 미완료 단계부터 진행한다. 증거의 삭제·위조·소급 승격은 금지한다. 다른 generation의 기록은 current campaign 완료로 승계하지 않는다.
+단계 인계에 중간 Git 저장, 운영 경로 복사, branch/commit/PR 생성, Git writer lease 취득을 요구하지 않는다. 원본 자산을 보충할 때 Git은 읽기 전용 source로 사용할 수 있다. Library 패킷은 각 단계가 이어서 작업할 수 있도록 유지하며, 한 패킷에는 한 시점에 한 작성자/수정자만 둔다. 다음 수신자와 인계 revision을 명시하고 동시 수정은 금지한다.
 
+이 흐름은 독립 검수 기준, 정확한 버전·바이트 식별, 대상 배정, 변경 영향 범위, 최종 구조 확인을 낮추지 않는다. Library에 후보를 저장하거나 패킷을 완성한 사실만으로 품질 PASS를 부여하지 않는다. 수학적 정답, 의미 기반 Meta, 해설 완결성, Visual 필요성·정확성, 독립 검수는 각자 근거를 남기며, 미실행 검사는 `NOT_RUN`으로 남긴다. 미해결 항목도 숨기거나 PASS로 바꾸지 않는다. 기존 유효 증거는 원본을 보존하고 누적 기록에 링크해 승계한다. 증거의 삭제·위조·소급 승격은 금지한다. 다른 generation 증거는 current campaign 완료로 승계하지 않는다.
 ## 2. 대상과 작업 소유권
 
-현재 캠페인의 `H1_GPT2_20261006`와 frozen manifest A/B/C 시험지별 배정·순서는 유지한다. 새로 배정하거나 stream 사이에서 가져오지 않는다. 시험지 하나는 한 시점에 한 단계, 한 작성자/실행자만 담당한다. 이전 실행이 끝났는지 불확실하면 같은 시험지를 중복 시작하지 말고 기존 실행을 확인·회수한다. 실제 진행 중인 시험지는 현재 위치와 증거를 보존하고 전환 자체를 이유로 다시 시작하지 않는다.
+공통 절차는 모든 GPT 제작·검수 예약에 적용하지만 각 campaign의 `campaignId`, frozen manifest, A/B/C 배정·순서, source authority와 roster/data는 해당 정본대로 유지한다. 기존 H1/M3 campaign ID·roster·data 및 과거 검수결과를 이 문서 변경으로 바꾸지 않는다. 각 단계 예약은 Library 조회에서 다른 실행자가 진행 중인 패킷을 제외하고, 기존 누적기록의 동시수정 보호를 재사용한다. 진행 중 시험지는 위치·패킷·증거를 보존하며 정책 문구 변경만으로 다시 시작하지 않는다.
 
-전환 후 selector는 누적 기록에서 해당 단계가 아직 완료되지 않았고 현재 소유 실행이 없는 다음 배정 시험지를 선택한다. 단계 중간의 Git/Notion write나 별도 Notion 갱신 관문은 두지 않는다. Git manifest의 대상 배정은 기존 authority로 유지한다.
-
+각 단계 예약은 별도 수동 인계 호출을 기다리지 않는다. 실행 시작 시 Library에서 직전 단계가 완료한 최신 패킷을 직접 조회하고, campaignId·stream·examUid와 file ID·revision 또는 revisionUnavailable일 때 실바이트 SHA-256으로 정확한 입력을 확인한다. 자기 단계에서 이미 처리한 패킷과 다른 실행자가 진행 중인 패킷은 기존 누적기록·동시수정 보호 표시에 따라 제외하고, 이어서 처리할 수 있는 패킷만 선택한다. 선택·처리 상태와 다음 단계 역할을 기존 누적 검수기록에 저장한다. Git manifest와 원본 자산은 읽을 수 있지만 중간 Git 쓰기나 별도 수동 인계 호출은 필요하지 않다.
 ## 3. Library 작업본과 누적 검수기록
 
-시험지마다 Library에 작업본 하나와 append-only 누적 검수기록 하나를 둔다. 역할별 복사본이나 PASS/seal 영수증 파일은 만들지 않는다. 작업본은 Library 파일 ID와 version/revision으로 식별하고, 누적 기록에는 단계, 실행자, 시각, input/output revision, 검토 범위, 발견·수정·미해결 항목을 적는다. Library에서 revision을 다시 읽을 수 있으면 그것으로 검수본을 식별한다. 과거 revision을 재조회할 수 없을 때만 필요한 snapshot을 보존한다. 추가 SHA 기록은 최종 기술검사 또는 실제 불일치 진단에 한정한다.
+시험지마다 Library의 전체 작업 패킷과 append-only 누적 검수기록을 유지한다. 단계별 복사본이나 별도 PASS/seal 영수증 파일은 만들지 않는다. 패킷은 작업본, 원본·필요 시각 자산, 관계 자료와 검수기록을 포함한다. 각 파일은 Library file ID와 version/revision으로 식별하고, revision을 제공하지 않거나 재조회할 수 없을 때에만 정확한 실바이트 SHA-256을 기록해 구분한다. 필요한 snapshot은 대체 식별 수단이 없을 때만 보존한다. 누적 기록에는 campaignId/stream/examUid, stage, 작성자·검수자, 시각, input/output file ID·revision 또는 SHA-256, 검토범위, 발견·수정·잔여항목, 다음 수신 단계·수신자와 인계본을 적는다. 패킷별 단일 수정자와 명시된 인계본으로 동시 수정을 막는다. Git은 원본 자산을 읽어 패킷을 보충할 수 있으나 중간 쓰기는 요구하지 않는다.
 
-누적 기록은 각 단계의 검토 완료와 유효한 선행 완료 기록의 링크를 보인다. 별도 PASS receipt/seal은 만들지 않는다. 다음 단계는 정확히 지정된 Library file ID+revision을 입력으로 받는다. 내용 변경 시 새 revision을 만들고 변경한 시험지의 영향 단계만 재개한다. 다른 시험지나 영향 없는 단계를 되돌리지 않는다.
+누적 기록은 각 단계의 실제 수행 상태, 판단 근거, 유효한 선행 완료 기록 링크와 잔여항목을 보인다. 패킷 저장·수납 자체는 PASS가 아니다. 별도 단계 PASS receipt/seal은 만들지 않는다. 다음 단계 예약이 Library를 조회해 이 기록이 가리키는 정확한 최신 file ID+revision 또는 revisionUnavailable인 경우 실바이트 SHA-256을 직접 확인해 입력으로 가져간다. 별도 수동 인계 호출은 없다. 내용 변경 시 새 revision/해시를 기록하고 변경한 시험지의 직접 영향 단계만 재개한다. 다른 시험지나 영향 없는 단계를 되돌리지 않는다. 수학·Meta·해설·Visual·독립검수 결과는 각각 근거를 남기며 미실행은 `NOT_RUN`, 미해결은 그대로 표기한다.
 
 **B13 단일 예약 파일럿의 revision 미노출 예외(2026-10-11):** Files 제공자가 작업본 version/revision을 반환하지 않으면 값을 임의 생성하지 않고 `revisionUnavailable=true`로 표기한다. 정확한 Library file ID와 현재 실바이트 SHA-256, 변경 없는 이미 보존된 이전 단계 snapshot의 file ID·실바이트 동일성을 기록해 해당 파일을 검수본 witness로 참조한다. 현재 B13은 R1/R2 JS 각각 41,496바이트, SHA-256 `3a2724f945dc99a4de2211149692dc12bf569d8922265c2770dccc5441a35969`, Git blob `fb3e9dbb84fa0b85aa5332ab30d29ebb2f9ee089`가 같음을 확인했다. 이 경우에 한하여 다음 단계는 `current file ID + 동일바이트 witness file ID + SHA-256`을 실질 revision 인수 근거로 사용한다. 기존 snapshot이 사용 가능하면 새 복제본을 만들지 않는다. 학생용 본문이나 기존 완료 단계가 달라진 경우에는 이 예외를 적용하지 않으며 변경 범위만 다시 결속한다. 이 예외는 최종 기술 validator·게시 gate 또는 B13 외 시험지·예약 정책을 완화하지 않는다.
 
@@ -46,23 +44,22 @@ R1은 이전 정답·해설·타 검수자의 답을 볼 수 없는 별도 세�
 
 R2는 이전 정답·해설·타 검수자의 답을 볼 수 없는 R1과 별도의 새 세션에서 시작한다. 입력은 완전한 최신 학생용 문항·choices·필요 시각자료와 정답 없는 진행상태 요약뿐이며, 누적 기록의 기존 내용은 열지 않는다. 전 qid 독립 답과 필요한 근거만 먼저 append·저장·고정한 뒤 전체 기록과 저장 정답·해설을 열어 비교한다. 일치 항목은 닫고 불일치·의심·미해결·고위험만 조사한다. 새 수정은 해당 qid와 직접 영향만 재확인한다. R1의 전수 품질 검사를 반복하지 않는다.
 
-## 6. R3와 최종 기술검사·게시
+## 6. R3 완료 패킷과 별도 일괄 출고
 
-R3는 누적 기록의 변경 항목, 미해결 항목, 직접 영향 범위만 확인하고 전체 구조를 최종 확인한다. 전 시험지 의미 품질을 재검하지 않는다. 최종 구조 확인은 문서상 R3 완료 판단에 포함하되 기술 validator를 반복 실행하지 않는다.
+R3는 누적 기록의 변경 항목, 미해결 항목, 직접 영향 범위와 전체 구조를 확인하고 실제 수행한 검사의 결과를 기록한다. 변경되지 않은 qid의 전수 의미 재검을 반복하지 않으며, 미실행 항목은 `NOT_RUN`으로 남긴다. 예약은 production JS·이미지·SVG, 정확한 Library identity, 검사 결과와 잔여항목을 출고 후보 패킷으로 남긴다. `R3_RELEASE_READY`는 패킷 준비 상태이지 Git 출고나 전체 품질 PASS가 아니다.
 
-CREATE/R1/R2/R3의 완료기록을 확인하고 필요한 수정을 마친 뒤, 한 번의 최종 기술검사로 현재 최종 revision과 필요한 자산의 구조·참조·identity 결속을 확인하고 한 번 게시한다. 이때만 validator를 실행하고, 게시 결과와 remote 확인 근거를 누적 검수기록에 남긴다. 같은 SHA에 대한 단계별 원격 재조회는 하지 않는다. 최종 검사 실패 시 시험지 전체를 되감지 않고, 실패한 항목과 직접 영향 범위만 적절한 단계로 돌려 수정한 뒤 새 최종 revision에 대해 최종 검사·게시를 다시 한다. 실패·수정 전 기록은 보존한다. 기술 PASS나 게시 완료를 추정으로 기록하지 않는다.
+별도 Work 또는 Codex 출고 담당이 Library의 완료 패킷과 실제 검사 기록을 모아 production JS·이미지·SVG만 일괄 push하고 main에 병합한다. 예약은 이 일괄 출고를 위해 필요한 파일 ID·revision/해시, 검사 결과, 잔여항목을 남기며 Git 쓰기·branch/commit/PR·운영 경로 복사·Git writer lease를 수행하지 않는다. 출고 담당은 실제 release/원격 확인 결과를 Library에 기록한다. 실패한 검사·미해결 항목은 출고 완료로 표시하지 않고 Library 패킷의 직접 영향 범위로 돌려 처리한다.
 
-MASTER의 역할은 이 최종 기술검사와 target-only 게시다. 전역 publication lease, 단계별 Git 브랜치, 시험지별 중간 commit, render 또는 Codex handoff를 새 관문으로 두지 않는다. 실제 게시에서 필요한 동시성 제어는 consumer가 보장하는 target/head 조건을 따른다. 학생용 main 자료 사용 정책에 새 승인 관문을 추가하지 않는다.
-
+단계별 Library 동시성은 패킷의 단일 수정자와 누적 기록의 기존 보호를 따른다. 별도 Work/Codex 출고 담당은 예약의 Library 완료 패킷을 취합해 production JS·이미지·SVG를 일괄 출고하며, GPT 예약 단계의 작성자·검수자와 구분된다.
 ## 7. 품질 상태와 역사 기록
 
 누적 검수기록이 stage 진행과 미해결 사항의 실행 authority다. 현재 campaign에서 검수본이 동일하고 이후 수정이 해당 검수 범위에 영향을 주지 않아 유효한 기존 PASS/evidence는 원본을 보존해 링크로 승계한다. 완료된 단계는 반복하지 않고 다음 미완료 단계부터 잇는다. 다른 generation의 PASS/evidence는 승계하지 않는다. 기존 실패·미해결 evidence도 보존한다. 별도 stage PASS receipt나 반복 seal은 만들지 않는다.
 
-전환 전 기존 예약 실행은 현재 consumer가 요구하는 stage artifact, validator, PASS/seal 및 lease 동작을 계속 따른다. 새 정책을 이유로 해당 gate를 생략하거나 진행 중 작업을 바꾸지 않는다. 전환 이후에는 이 문서와 새 consumer/예약 지시가 함께 일치해야 하며, 둘 중 하나만 갱신된 상태를 전환 완료로 간주하지 않는다.
+과거 consumer의 “전환 전 구방식 유효” 문구는 현재 공통 계약에 중간 Git 쓰기 관문을 추가하지 않는다. 문서 정책과 실제 예약 prompt/consumer/validator의 변경 상태는 별도로 기록한다. 이 문서 편집은 실제 예약 prompt나 validator의 변경·검증 완료를 뜻하지 않는다. 실제로 수행하지 않은 검수, 검사, 독립검토, 기술검증과 Git 출고는 `NOT_RUN` 또는 미완료로 남긴다.
 
 ## 16. CREATE/R1 semantic quality acceptance — 2026-10-08
 
-CREATE와 R1은 전 qid에 아래 3가지 학생 노출 품질을 확보한다. R2/R3/MASTER에 CREATE·R1의 전체 재검 책임을 전가하지 않는다. 현재 campaign의 검수본이 그대로이고 후속 수정이 해당 범위에 영향이 없는 유효한 CREATE/R1 완료 기록은 적용 전환 시 다시 실행하지 않는다.
+CREATE와 R1은 전 qid에 아래 3가지 학생 노출 품질을 확보한다. R2/R3/출고 담당에 CREATE·R1의 전체 재검 책임을 전가하지 않는다. 현재 campaign의 검수본이 그대로이고 후속 수정이 해당 범위에 영향이 없는 유효한 CREATE/R1 완료 기록은 반복하지 않는다.
 
 1. **Difficulty and Meta**: legacy `level`의 canonical `하|중|상` 문자열 필수(`null`·숫자 불허); `difficultyBucket` 1~5 별도 판정. L3/L4/RPM/crossConceptKeys/conditionKeys/integrationPattern은 실제 풀이 기반 semantic 판정.
 2. **Question layout**: `layoutTag`는 의미적 조판 단위에 맞춰 문항별 결정한다. `stack` 일괄 적용 및 기계적 줄바꿈을 금지한다. 다수 `stack`은 해당 문항별 재확인 신호이지 획일적인 비율 제한은 아니다.
@@ -73,7 +70,7 @@ R1은 CREATE의 verdict를 독립 재확인하며 형식 유효성만으로 sema
 
 ## 17. NEXT-RUN QUALITY FLOOR — GPT CREATE/R1 quality (2026-10-08)
 
-§16–17의 실제 CREATE/R1 품질 기준은 전환 후에도 유지된다. 아래 실행 순서의 보관·버전 식별은 새 누적 검수기록에 반영한다. validator, PASS receipt, seal, continuation 등 전환 후 실행 산출물은 §0–7의 새 정책을 따른다. 전환 전에는 기존 consumer 지시가 유효하다. 완료 시험지를 일괄 되감지 않고 결함은 영향 범위만 유지·수정한다.
+§16–17의 실제 CREATE/R1 품질 기준은 모든 GPT campaign에 공통 적용된다. 아래 실행 순서의 보관·버전 식별은 Library 패킷과 누적 검수기록에 반영한다. 단계별 validator/PASS receipt/seal을 만들지 않는다. 기존 consumer 문구는 중간 Git 인계 관문을 되살리지 않으며, 실제 예약 prompt/validator 변경 여부는 이 문서 계약과 별도로 관리한다. 완료 시험지를 일괄 되감지 않고 결함은 영향 범위만 유지·수정한다.
 
 ### 17.1 실제 검토 순서와 근거
 
@@ -94,7 +91,7 @@ Regression examples: \`24_매산여고_1학기_중간\` numeric level; \`24_금�
 
 ### 17.3 역할과 render 분리
 
-CREATE는 완성된 학생용 결과를 만들고 R1은 독립 판정·수정한다. R2는 blind 답 검수를, R3는 변경·미해결·직접 영향 범위와 최종 구조 확인을 맡는다. MASTER는 최종 기술검사와 게시를 맡는다. GPT는 Archive Engine을 캡처하지 않는다. Codex render는 GPT 실행 선행조건이나 CREATE/R1 품질 검수를 대신하지 않는다. 정적 검토를 `RENDER_PASS`로 기록하지 않는다. 임의 글자 수 기준, Meta quota, 전체 재검 반복은 두지 않는다. A/B/C 고정 배정과 시험지당 한 번에 한 단계·한 실행자를 유지한다. 앞선 실행이 불확실하면 확인한 뒤 이어가고 중복 시작하지 않는다.
+CREATE는 완성된 학생용 결과를 만들고 R1은 독립 판정·수정한다. R2는 blind 답 검수를, R3는 변경·미해결·직접 영향 범위와 최종 구조 확인, 출고용 패킷·실제 검사 결과 기록을 맡는다. 별도 Work/Codex 출고 담당이 Library 완료 패킷의 production JS·이미지·SVG를 일괄 출고한다. GPT 예약은 직접 Git에 쓰지 않고 Archive Engine도 캡처하지 않는다. Codex render는 GPT 실행 선행조건이나 CREATE/R1 품질 검수를 대신하지 않는다. 정적 검토를 `RENDER_PASS`로 기록하지 않는다. 임의 글자 수 기준, Meta quota, 전체 재검 반복은 두지 않는다. A/B/C 고정 배정과 시험지당 한 번에 한 단계·한 실행자를 유지한다. 앞선 실행이 불확실하면 확인한 뒤 이어가고 중복 시작하지 않는다.
 
 ### 17.4 누적 검수기록 항목
 
@@ -102,4 +99,4 @@ CREATE/R1은 검토한 `examUid`와 Library file ID+revision, qid 범위, 독립
 
 ## 2026-10-08 — Direct assignment completion scope
 
-이 단락은 전환 전의 현재 consumer 흐름과 GPT 예약 외 Archive 실행에 적용된다. GPT 예약 2.0의 간소화 전환 후에는 §0–7이 단계 산출물·기술검사·게시 순서를 정한다. 이 문구는 학생용 main 자료 사용 정책에 승인 단계를 추가하지 않는다. 모든 실행선에서 실제 수행하지 않은 검수·렌더·게시를 완료로 기록하지 않는다.
+이 단락은 GPT 예약 외 Archive 실행에 적용된다. 모든 GPT 예약 2.0 campaign은 §0–7의 Library 작업·검수·R3 완료 패킷 기록 및 별도 Work/Codex 담당의 일괄 출고 순서를 따른다. 이 문구는 학생용 main 자료 사용 정책에 승인 단계를 추가하지 않는다. 모든 실행선에서 실제 수행하지 않은 검수·렌더·게시를 완료로 기록하지 않는다.
