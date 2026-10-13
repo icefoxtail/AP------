@@ -16780,6 +16780,37 @@ window.mainDB = {
       "primaryStandardCourse": "수학(하)"
     },
     {
+      "file": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2020,
+      "semester": "2",
+      "examType": "final",
+      "subject": "공통수학2",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SB-03",
+      "rangeStartUnit": "함수",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H15-SB-07",
+      "rangeEndUnit": "순열",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(하)",
+          "courseCode": "H15-SB",
+          "rangeStartUnitKey": "H15-SB-03",
+          "rangeStartUnit": "함수",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H15-SB-07",
+          "rangeEndUnit": "순열",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
       "file": "original/high/h1/1final/20_매산여고_1학기_기말_고1_기출.js",
       "school": "매산여고",
       "topic": "",
