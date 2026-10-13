@@ -11,9 +11,9 @@
 <body>
   <main class="universe" id="universe" aria-label="실시간 3차원 학교 우주 탐색">
     <canvas id="space" aria-label="마우스 드래그 또는 터치로 회전하고 확대하는 3차원 우주 장면"></canvas>
-    <div class="world-fallback" id="worldFallback" hidden>
+    <div class="world-fallback" id="worldFallback" role="status" aria-live="polite" hidden>
       <strong>3D 우주를 시작할 수 없습니다.</strong>
-      <span>브라우저 WebGL 지원을 확인한 뒤 목록 탐색을 이용해 주세요.</span>
+      <span>검색, 목록, 문항 미리보기는 계속 이용할 수 있습니다.</span>
     </div>
 
     <header class="topbar">
@@ -51,6 +51,35 @@
       <div class="catalog-status" id="catalogStatus">공개 catalog를 읽는 중…</div>
     </section>
 
+    <aside class="atlas-panel glass" id="atlasPanel" aria-label="Archive atlas overview">
+      <div class="atlas-panel-head">
+        <span class="eyebrow">AP ARCHIVE / ORBITAL ATLAS</span>
+        <span class="atlas-head-actions"><span class="atlas-live"><span class="live-dot"></span>LIVE</span><button class="atlas-collapse" id="atlasCollapse" type="button" aria-expanded="true" aria-controls="atlasPanelBody" aria-label="Collapse atlas overview">−</button></span>
+      </div>
+      <div class="atlas-panel-body" id="atlasPanelBody">
+        <div class="atlas-panel-copy">
+          <h2>Find your next<br><em>study orbit.</em></h2>
+          <p>Search the catalog, choose a school orbit, then open the original problem with its answer and solution.</p>
+        </div>
+        <div class="atlas-metrics" aria-label="Catalog metrics">
+          <div><b id="atlasExamCount">0</b><span>EXAMS</span></div>
+          <div><b id="atlasGroupCount">0</b><span>ORBITS</span></div>
+          <div><b id="atlasDetailCount">0</b><span>DETAILS</span></div>
+        </div>
+        <div class="atlas-actions">
+          <button class="atlas-primary" id="atlasExplore" type="button">Start with search</button>
+          <button class="atlas-secondary" id="atlasOverview" type="button">Reset view</button>
+        </div>
+        <div class="atlas-route" aria-hidden="true"><span class="route-node active"></span><span>INDEX</span><i></i><span class="route-node"></span><span>ORBIT</span><i></i><span class="route-node"></span><span>DOCUMENT</span></div>
+      </div>
+    </aside>
+
+    <div class="warp-trails" aria-hidden="true">
+      <span style="--angle:0deg"></span><span style="--angle:30deg"></span><span style="--angle:60deg"></span>
+      <span style="--angle:90deg"></span><span style="--angle:120deg"></span><span style="--angle:150deg"></span>
+      <span style="--angle:180deg"></span><span style="--angle:210deg"></span><span style="--angle:240deg"></span>
+      <span style="--angle:270deg"></span><span style="--angle:300deg"></span><span style="--angle:330deg"></span>
+    </div>
     <div class="scene-hud">
       <div class="hud-left">
         <div class="group-mode-switch" id="groupModes" role="group" aria-label="자료를 묶는 기준">
@@ -59,16 +88,26 @@
           <button type="button" data-group-mode="unit" aria-pressed="false">단원 성단</button>
         </div>
         <div class="hud-group">
+          <button class="hud-button" id="instantTravel" type="button" aria-pressed="false" aria-label="즉시 이동 모드">↯ 즉시 이동</button>
           <button class="hud-button" id="motionToggle" type="button" aria-pressed="false"><span class="motion-glyph" aria-hidden="true">Ⅱ</span><span id="motionLabel">공전 일시정지</span></button>
           <button class="hud-button" id="constellationToggle" type="button" aria-pressed="false"><span aria-hidden="true">✳</span><span id="constellationLabel">L2 별자리</span></button>
         </div>
       </div>
       <div class="scene-hint" id="sceneHint"><span>드래그</span> 회전 <i>·</i> <span>휠 / 두 손가락</span> 확대 <i>·</i> <span>우클릭 / 두 손가락 이동</span> 이동</div>
     </div>
+    <div class="scale-rail glass" id="scaleRail" role="group" aria-label="Exploration scale">
+      <span class="scale-rail-label" id="scaleLabel">MACRO UNIVERSE</span>
+      <button type="button" data-scale-mode="macro" aria-pressed="true">Macro</button>
+      <button type="button" data-scale-mode="planet" aria-pressed="false">Planet</button>
+      <button type="button" data-scale-mode="micro" aria-pressed="false">Micro concept</button>
+    </div>
+    <div class="scale-caption" id="scaleCaption" hidden role="status" aria-live="polite"></div>
 
     <div class="planet-label-layer" id="planetLabels" aria-hidden="true"></div>
     <div class="satellite-label-layer" id="satelliteLabels"></div>
     <div class="blackhole-label-layer" id="blackholeLabels"></div>
+    <div id="questionOrbit" class="question-orbit-layer" role="group" aria-label="선택한 시험지의 문항 궤도"></div>
+    <div id="questionStatus" class="question-orbit-status" role="status" aria-live="polite" hidden></div>
 
     <div class="entry-chip glass" id="focusedChip" hidden>
       <span class="entry-orb" aria-hidden="true"></span>
@@ -87,6 +126,15 @@
         <div><span class="eyebrow">EXAM SATELLITE</span><h2 id="examTitle">시험지를 불러오는 중</h2><div class="exam-meta" id="examMeta"></div><code class="exam-source" id="examSource"></code></div>
       </div>
       <div class="preview-heading"><strong>원본 시험지</strong><span>원본 문제 내용과 순서를 유지합니다.</span><a id="openOriginal" href="#" target="_blank" rel="noopener">새 창 ↗</a></div>
+      <div class="question-toolbar" id="questionToolbar" role="group" aria-label="선택한 문항의 빠른 읽기" hidden>
+        <b id="readerQuestionTitle"></b>
+        <select id="questionSelect" class="question-select" aria-label="Question selector"></select>
+        <button type="button" data-reader-mode="exam" aria-pressed="true">문제</button>
+        <button type="button" data-reader-mode="ans" aria-pressed="false">정답</button>
+        <button type="button" data-reader-mode="sol" aria-pressed="false">해설</button>
+        <button type="button" id="wholeExam">전체 시험지</button>
+        <a id="printOriginal" href="#" target="_blank" rel="noopener">전체 시험지·인쇄 ↗</a>
+      </div>
       <div class="preview-frame"><iframe id="examFrame" title="선택한 원본 시험지 미리보기" loading="lazy"></iframe></div>
       <p class="drawer-foot">공개 Archive catalog와 기존 원본 미리보기 경로를 사용합니다. 문제 생성·저장·학생 배부는 수행하지 않습니다.</p>
     </aside>
@@ -102,6 +150,7 @@
   </main>
 
   <script src="../../archive2-core.js"></script>
+  <script src="./orbit-question-reader.js"></script>
   <script src="./orbit-app.js"></script>
 </body>
 </html>
