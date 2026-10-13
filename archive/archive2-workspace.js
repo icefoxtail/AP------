@@ -3,11 +3,29 @@
   const C = window.Archive2Core,
     Source = window.Archive2Source;
   const ProblemBankMeta = window.ProblemBankMeta;
+  const AssessmentRecipes = window.ProblemBankAssessmentRecipes;
   const O = window.Archive2Output;
   const Parts = window.Archive2Papers;
   const History = window.Archive2History;
   const frozenPaperCache = new Map();
   const composeMetaQueryCache = new Map();
+  let workspaceMatchCatalog = null;
+  let workspaceStrictMatchOptions = null;
+  let workspaceGeneralMatchOptions = null;
+  function workspaceMatchOptions() {
+    if (workspaceMatchCatalog !== state.catalog) {
+      workspaceMatchCatalog = state.catalog;
+      const shared = {
+        canonicalAuthority: state.catalog?.canonicalAuthority,
+        projectionPolicy: state.catalog?.projectionPolicy,
+      };
+      workspaceStrictMatchOptions = { ...shared, useMode: "strict" };
+      workspaceGeneralMatchOptions = { ...shared, useMode: "general" };
+    }
+    return workspaceUseMode() === "general"
+      ? workspaceGeneralMatchOptions
+      : workspaceStrictMatchOptions;
+  }
   const lockedIndex = (index) =>
     Boolean(Parts.receipt(state.receipts, Parts.partIndex(index)));
   const ownHistoryContext = () => {
@@ -51,16 +69,133 @@
     `<span class="badge ${type}">${esc(label)}</span>`;
   const unique = (values) => [...new Set(values.filter(Boolean))];
   let renderEligibilityCache = null;
+  const workspaceScopeParentCache = new WeakMap();
+  function workspaceUseMode() {
+    // Assessment recipes shape the teacher-facing UI (fixed count/QPP and
+    // recipe UID pool); they do not certify metadata. Certification remains
+    // owned by ProblemBankMeta's VERIFIED profile and external validators.
+    return state.useMode || "strict";
+  }
+  function isSourceRoutedGeneralRange() {
+    return workspaceUseMode() === "general" &&
+      state.view === "compose" &&
+      state.urlRange === "all" &&
+      state.sources.length > 0;
+  }
+  function sourceRoutedFallbackMatches(record, filters = state.filters) {
+    if (!isSourceRoutedGeneralRange() || !state.sources.includes(record.sourceFile))
+      return false;
+    const fallback = record?.unverifiedTaxonomy;
+    if (!fallback || (filters.curriculumKey && fallback.curriculumKey &&
+        fallback.curriculumKey !== filters.curriculumKey))
+      return false;
+    // The exact source list is authoritative for this routed range. Keep the
+    // fallback taxonomy attached to its source without inventing a canonical
+    // course/path assignment in the global catalog.
+    const relaxed = {
+      ...filters,
+      courseKey: "",
+      L1: "",
+      L2: "",
+      L3: "",
+      L4: "",
+      primaryPaths: [],
+    };
+    return C.matches(record, relaxed, workspaceMatchOptions());
+  }
   function workspaceEligibility(record) {
-    if (!renderEligibilityCache) return C.eligibility(record, state);
+    const mode = workspaceUseMode();
+    const evaluate = mode === "general" ? C.generalUseEligibility : C.eligibility;
+    if (!renderEligibilityCache) return evaluate(record, state);
     if (!renderEligibilityCache.has(record))
-      renderEligibilityCache.set(record, C.eligibility(record, state));
+      renderEligibilityCache.set(record, evaluate(record, state));
     return renderEligibilityCache.get(record);
+  }
+  function workspaceMatches(record, filters = state.filters) {
+    const options = workspaceMatchOptions();
+    return C.matches(record, filters, options) ||
+      sourceRoutedFallbackMatches(record, filters);
+  }
+  function workspaceScopeParent(record) {
+    if (workspaceScopeParentCache.has(record)) return workspaceScopeParentCache.get(record);
+    const assignmentList = state.catalog?.canonicalAuthority?.assignmentsByUid?.[record.questionUid];
+    const canonicalParent = Array.isArray(assignmentList) && assignmentList.length === 1
+      ? C.basicScopeParent(
+        record,
+        state.catalog.basicScopeLinks,
+        state.catalog.canonicalAuthority,
+      )
+      : null;
+    if (canonicalParent) {
+      const result = { ...canonicalParent, supplemental: false };
+      workspaceScopeParentCache.set(record, result);
+      return result;
+    }
+    const fallback = record?.unverifiedTaxonomy;
+    const fields = ["curriculumKey", "courseKey", "L1", "L2"];
+    if (!fallback || fields.some((field) => !String(fallback[field] || "").trim())) {
+      workspaceScopeParentCache.set(record, null);
+      return null;
+    }
+    const result = {
+      grade: record.effectiveBrowseGrade || record.sourceGrade || record.grade || "",
+      ...Object.fromEntries(fields.map((field) => [field, fallback[field]])),
+      supplemental: true,
+    };
+    workspaceScopeParentCache.set(record, result);
+    return result;
   }
   const SAVED_PAPER_UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
   const savedPaperIds = (values) => unique(
     (Array.isArray(values) ? values : []).map(String).filter((id) => SAVED_PAPER_UUID.test(id)),
   );
+  const FIVE_MINUTE_RECIPE_KEY = "FIVE_MINUTE";
+  const FIVE_MINUTE_TITLE = "\u0035\uBD84 \uD14C\uC2A4\uD2B8";
+  const SUBUNIT_RECIPE_KEY = "SUBUNIT";
+  const SUBUNIT_TITLE = "\uC18C\uB2E8\uC6D0 \uD3C9\uAC00";
+  const UNIT_RECIPE_KEY = "UNIT";
+  const UNIT_TITLE = "\uC911\uB2E8\uC6D0 \uD3C9\uAC00";
+  const MONTHLY_RECIPE_KEY = "MONTHLY";
+  const MONTHLY_TITLE = "\uC885\uD569\uD3C9\uAC00";
+  const ASSESSMENT_RECIPE_TITLES = Object.freeze({
+    [FIVE_MINUTE_RECIPE_KEY]: FIVE_MINUTE_TITLE,
+    [SUBUNIT_RECIPE_KEY]: SUBUNIT_TITLE,
+    [UNIT_RECIPE_KEY]: UNIT_TITLE,
+    [MONTHLY_RECIPE_KEY]: MONTHLY_TITLE,
+  });
+  const ASSESSMENT_RECIPE_KEYS = new Set(Object.keys(ASSESSMENT_RECIPE_TITLES));
+  let assessmentRecipeCache = { key: "", uids: null, coverage: null };
+  function activeAssessmentRecipe() {
+    if (!state.assessmentRecipe || !AssessmentRecipes) return null;
+    try { return AssessmentRecipes.getRecipe(state.assessmentRecipe); } catch { return null; }
+  }
+  function isAssessmentRecipeMode() {
+    return ASSESSMENT_RECIPE_KEYS.has(state.assessmentRecipe);
+  }
+  function activeAssessmentRecipeUids() {
+    const recipe = activeAssessmentRecipe();
+    if (!recipe || !state.metaIndex?.length) return null;
+    const key = `${recipe.key}:${state.indexVersion}`;
+    if (assessmentRecipeCache.key === key) return assessmentRecipeCache.uids;
+    const result = AssessmentRecipes.queryRecipe(
+      state.metaIndex,
+      recipe.key,
+      {},
+      { profile: "DIRECT", count: recipe.defaultCount },
+    );
+    assessmentRecipeCache = {
+      key,
+      uids: new Set(result.candidates.map((row) => row.questionUid || row.uid).filter(Boolean)),
+      coverage: result.coverage,
+    };
+    return assessmentRecipeCache.uids;
+  }
+  function assessmentSelectionOptions() {
+    if (!isAssessmentRecipeMode() || !AssessmentRecipes?.representativeGroup) return {};
+    const byUid = new Map((state.metaIndex || []).map(row => [row.questionUid || row.uid, row]));
+    return { representativeGroupFor: record =>
+      AssessmentRecipes.representativeGroup(byUid.get(record.questionUid)) };
+  }
   const HOME_PRODUCT_REGISTRY = Object.freeze([
     Object.freeze({
       productKey: "school-exams",
@@ -80,23 +215,34 @@
     Object.freeze({
       productKey: "five-minute-test",
       label: "5분 테스트",
-      availability: false,
-      routeOwner: "common-pack",
-      routeResolver: null,
+      availability: true,
+      routeOwner: "five-minute-test",
+      routeResolver: () =>
+        new URL("workspace.html?view=compose&recipe=FIVE_MINUTE", location.href).href,
+    }),
+    Object.freeze({
+      productKey: "subunit-assessment",
+      label: "소단원 평가",
+      availability: true,
+      routeOwner: "subunit-assessment",
+      routeResolver: () =>
+        new URL("workspace.html?view=compose&recipe=SUBUNIT", location.href).href,
     }),
     Object.freeze({
       productKey: "unit-assessment",
-      label: "단원평가",
-      availability: false,
-      routeOwner: "unit-assessment-v2",
-      routeResolver: null,
+      label: "중단원 평가",
+      availability: true,
+      routeOwner: "unit-assessment",
+      routeResolver: () =>
+        new URL("workspace.html?view=compose&recipe=UNIT", location.href).href,
     }),
     Object.freeze({
       productKey: "exam-prep",
-      label: "시험 대비",
-      availability: false,
-      routeOwner: "exam-prep-v2",
-      routeResolver: null,
+      label: "종합평가",
+      availability: true,
+      routeOwner: "monthly-assessment",
+      routeResolver: () =>
+        new URL("workspace.html?view=compose&recipe=MONTHLY", location.href).href,
     }),
   ]);
   function homeProductMarkup(product) {
@@ -127,6 +273,8 @@
     const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true;
     if (highSemantic && !filters.semanticSubject) return [];
     const allowedParents = new Set();
+    const includeSupplemental = workspaceUseMode() === "general";
+    const supplementalRows = new Map();
     const selectionFilters = {
       ...filters,
       L3: "",
@@ -136,21 +284,30 @@
     };
     delete selectionFilters.scopeQuestionUids;
     for (const record of state.catalog.records || []) {
-      if (!C.matches(record, selectionFilters, state) || !composeMetaMatches(record) || !workspaceEligibility(record).ok) continue;
-      const parent = C.basicScopeParent(
-        record,
-        state.catalog.basicScopeLinks,
-        state.catalog.canonicalAuthority,
-      );
-      if (parent) allowedParents.add(scopeParentKey({ ...record, ...parent }));
+      if (!workspaceMatches(record, selectionFilters) || !composeMetaMatches(record) || !workspaceEligibility(record).ok) continue;
+      const parent = workspaceScopeParent(record);
+      if (parent) {
+        const key = scopeParentKey({ ...record, ...parent });
+        allowedParents.add(key);
+        if (includeSupplemental && parent.supplemental === true && !supplementalRows.has(key))
+          supplementalRows.set(key, { ...record, ...parent, supplemental: true });
+      }
     }
-    return (state.catalog.basicTaxonomy || []).filter((row) =>
+    const canonicalRows = (state.catalog.basicTaxonomy || []).filter((row) =>
       (!filters.grade || row.grade === filters.grade ||
         (highSemantic && C.isHighSemanticSubjectGrade?.(row.grade) === true)) &&
       (!filters.curriculumKey || row.curriculumKey === filters.curriculumKey) &&
       (!filters.courseKey || filters.semanticSubject || row.courseKey === filters.courseKey) &&
       allowedParents.has(scopeParentKey(row)),
     );
+    const canonicalKeys = includeSupplemental ? new Set(canonicalRows.map(scopeParentKey)) : new Set();
+    const supplemental = [...supplementalRows.entries()]
+      .filter(([key, row]) => !canonicalKeys.has(key) &&
+        (!filters.grade || row.grade === filters.grade) &&
+        (!filters.curriculumKey || row.curriculumKey === filters.curriculumKey) &&
+        (!filters.courseKey || filters.semanticSubject || row.courseKey === filters.courseKey))
+      .map(([, row]) => row);
+    return [...canonicalRows, ...supplemental];
   };
   const state = {
     catalog: null,
@@ -165,6 +322,8 @@
     byUid: new Map(),
     busy: false,
     view: "home",
+    useMode: "strict",
+    assessmentRecipe: "",
     page: 0,
     savedPaperId: "",
     savedLibraryStatusFilter: "ACTIVE",
@@ -231,6 +390,8 @@
     derivationSource: null,
     derivedBaseQuestions: null,
     editSavedPaperId: "",
+    urlSources: [],
+    urlRange: "",
   };
   let finderFilterRenderTimer = null;
 
@@ -742,6 +903,7 @@
   let scopeRenderCache = null;
   let displayedScopes = null;
   let renderingScopes = false;
+  let renderPoolCache = null;
   function scopeOptions() {
     if (renderingScopes && scopeRenderCache) return scopeRenderCache;
     const canonicalRows = taxonomyRowsForFilters(state.filters);
@@ -757,20 +919,27 @@
       difficultyBuckets: state.buckets,
     };
     const seenUids = new Set();
+      const recipeUids = activeAssessmentRecipeUids();
     for (const record of state.catalog.records || []) {
       if (!record.questionUid || seenUids.has(record.questionUid)) continue;
-      if (!C.matches(record, selectionFilters, state) || !composeMetaMatches(record) || !workspaceEligibility(record).ok) continue;
-      if (!C.rowMatches(record, { difficultyBuckets: state.buckets }) || excluded.has(record.questionUid)) continue;
-      const parent = C.basicScopeParent(
-        record,
-        state.catalog.basicScopeLinks,
-        state.catalog.canonicalAuthority,
-      );
+      if (recipeUids && !recipeUids.has(record.questionUid)) continue;
+      if (!workspaceMatches(record, selectionFilters) || !composeMetaMatches(record) || !workspaceEligibility(record).ok) continue;
+      if (!C.rowMatches(record, { difficultyBuckets: state.buckets }, workspaceMatchOptions()) || excluded.has(record.questionUid)) continue;
+      const parent = workspaceScopeParent(record);
       if (!parent) continue;
       const key = scopeParentKey({ ...record, ...parent });
-      const unit = units.get(key);
+      let unit = units.get(key);
+      if (!unit && isSourceRoutedGeneralRange() && parent.supplemental) {
+        const candidates = [...units.values()].filter((candidate) =>
+          String(candidate.curriculumKey || "") === String(parent.curriculumKey || "") &&
+          scopeText(candidate.L1) === scopeText(parent.L1) &&
+          scopeText(candidate.L2) === scopeText(parent.L2),
+        );
+        if (candidates.length === 1) unit = candidates[0];
+      }
       if (!unit) continue;
       unit.records.set(record.questionUid, record);
+      unit.supplemental = unit.supplemental || parent.supplemental === true;
       seenUids.add(record.questionUid);
     }
     for (const [key, unit] of units)
@@ -813,7 +982,8 @@
     }
     const result = groups.map((group, index) => {
       const sources = unique(group.units.flatMap((unit) => [...unit.records.values()]));
-      const paths = unique(sources.map((record) => C.pathKey(record, 4)));
+      const supplemental = sources.some((record) => workspaceScopeParent(record)?.supplemental === true);
+      const paths = supplemental ? [] : unique(sources.map((record) => C.pathKey(record, 4)));
       const displayKey = scopeText(group.L1) + "|" + scopeText(group.L2);
       const suffix =
         displayKeys.get(displayKey) > 1
@@ -831,6 +1001,7 @@
         scopeQuestionUids: unique(sources.map(r => r.questionUid)),
         count: sources.length,
         eligibleCount: sources.length,
+        supplemental,
       };
     });
     if (renderingScopes) {
@@ -849,7 +1020,10 @@
     return scopeOptions().filter(scopeIsSelected);
   }
   function selectedScopePaths() {
-    return unique(selectedScopeOptions().flatMap((scope) => scope.paths));
+    const scopes = selectedScopeOptions();
+    return scopes.some((scope) => scope.supplemental)
+      ? []
+      : unique(scopes.flatMap((scope) => scope.paths));
   }
   function selectedScopeQuestionUids() {
     return unique(selectedScopeOptions().flatMap(scope => scope.scopeQuestionUids));
@@ -891,16 +1065,31 @@
       .filter((r) => r.count > 0 || state.distribution !== "all");
   }
   function pool() {
+    if (renderingScopes && renderPoolCache) return renderPoolCache;
     const scopes = selectedScopeOptions();
-    if (!scopes.length) return state.catalog.records.filter(record => composeMetaMatches(record));
-    const uids = new Set(scopes.flatMap(scope => scope.scopeQuestionUids));
-    return state.catalog.records.filter(
-      (r) => uids.has(r.questionUid) && composeMetaMatches(r),
-    );
+    const recipeUids = activeAssessmentRecipeUids();
+    const uids = scopes.length ? new Set(scopes.flatMap(scope => scope.scopeQuestionUids)) : null;
+    const result = !scopes.length
+      ? state.catalog.records.filter(record =>
+        (!recipeUids || recipeUids.has(record.questionUid)) && composeMetaMatches(record))
+      : state.catalog.records.filter(
+        (r) => uids.has(r.questionUid) && (!recipeUids || recipeUids.has(r.questionUid)) && composeMetaMatches(r),
+      );
+    if (renderingScopes) renderPoolCache = result;
+    return result;
   }
   function composeMetaMatches(record, filters = state.filters) {
     const hasMetaFilter = Boolean(filters.L1 || filters.L2 || filters.L3 || filters.L4 || state.buckets.length);
     if (!hasMetaFilter) return true;
+    const supplementalParent = workspaceScopeParent(record);
+    if (supplementalParent?.supplemental) {
+      // The fallback taxonomy is explicitly unverified. It may support basic
+      // L1/L2 browsing, but never advanced L3/L4 or a fabricated difficulty
+      // capability.
+      if (filters.L3 || filters.L4 || state.buckets.length) return false;
+      return (!filters.L1 || scopeText(supplementalParent.L1) === scopeText(filters.L1)) &&
+        (!filters.L2 || scopeText(supplementalParent.L2) === scopeText(filters.L2));
+    }
     if (state.catalog?.records && state.metaIndexSource !== state.catalog.records) {
       state.metaIndex = ProblemBankMeta.buildIndex(state.catalog.records, []);
       state.metaIndexSource = state.catalog.records;
@@ -928,11 +1117,14 @@
     const rows = useFrozen ? state.rows : planRows();
     const paths = useFrozen ? unique(rows.flatMap(row => row.paths || (row.path ? [row.path] : []))) : selectedScopePaths();
     const scopeQuestionUids = useFrozen
-      ? unique(rows.flatMap(row => row.scopeQuestionUids || state.catalog.records.filter(r => C.rowMatches(r, row)).map(r => r.questionUid)))
+      ? unique(rows.flatMap(row => row.scopeQuestionUids || state.catalog.records.filter(r => C.rowMatches(r, row, workspaceMatchOptions())).map(r => r.questionUid)))
       : selectedScopeQuestionUids();
+    const routedFilters = isSourceRoutedGeneralRange()
+      ? { ...state.filters, courseKey: "" }
+      : state.filters;
     return {
       filters: {
-        ...state.filters,
+        ...routedFilters,
         sourceFiles: state.sources,
         primaryPaths: paths,
         scopeQuestionUids,
@@ -943,6 +1135,7 @@
         .map((r) => ({ questionUid: r.questionUid, rowId: r.rowId })),
       canonicalAuthority: state.catalog?.canonicalAuthority,
       projectionPolicy: state.catalog?.projectionPolicy,
+      useMode: workspaceUseMode(),
       seed: state.seed,
     };
   }
@@ -1571,7 +1764,7 @@
     const baseFilters = { ...selectionFilters, L3: "", L4: "" };
     const excluded = C.composeExclusions(context()).union;
     const eligible = pool().filter(r =>
-      C.matches(r, baseFilters, state) && composeMetaMatches(r) && workspaceEligibility(r).ok && !excluded.has(r.questionUid));
+      workspaceMatches(r, baseFilters) && composeMetaMatches(r) && workspaceEligibility(r).ok && !excluded.has(r.questionUid));
     const labels = window.ARCHIVE_META_FOUNDATION_LABELS || { problemTypes: {}, templates: {} };
     const concepts = new Map(), types = new Map();
     for (const record of eligible) {
@@ -1599,6 +1792,11 @@
   }
   function renderComposition() {
     if (state.derivationSource) return renderDerivedComposition();
+    const fixedAssessment = isAssessmentRecipeMode();
+    if (fixedAssessment) {
+      state.distribution = "pool";
+      state.count = activeAssessmentRecipe()?.defaultCount || 4;
+    }
     const selectionFilters = {
       ...state.filters,
       sourceFiles: state.sources,
@@ -1609,7 +1807,7 @@
     const excluded = C.composeExclusions(context()).union;
     const candidates = pool().filter(
       (r) =>
-        C.matches(r, selectionFilters, state) &&
+        workspaceMatches(r, selectionFilters) &&
         composeMetaMatches(r) &&
         workspaceEligibility(r).ok &&
         !excluded.has(r.questionUid),
@@ -1617,7 +1815,7 @@
     const shortages = rows
       .map((row) => ({
         row,
-        available: candidates.filter((r) => C.rowMatches(r, row)).length,
+        available: candidates.filter((r) => C.rowMatches(r, row, workspaceMatchOptions())).length,
       }))
       .filter((item) => item.available < item.row.count);
     const advanced = composeAdvancedChoices(selectionFilters);
@@ -2206,9 +2404,24 @@
         "",
       )}</tbody></table><div class="callout">미분류는 보류와 다른 상태입니다. 기존 난이도 하·중·상을 숫자로 추정하지 않습니다. 검수 대기나 원본 불일치는 원본 시험 열기를 막지 않으며 문제지 자동 선택에서 제외합니다.</div><div class="callout">교육과정 간 연결 검수: 기존 연결 ${state.crosswalkInventory?.total ?? "확인 불가"}개 · 승인된 EXACT ${state.crosswalkInventory?.reviewedExact ?? "확인 불가"}개. 문제지 자동 선택은 선택한 교육과정 안에서 수행합니다. <a href="data/archive2-crosswalk-inventory.json" target="_blank">연결 근거 보기</a></div><p class="muted">정본: RPM Primary v1.0 · Difficulty v1.3 · Metadata Contract v2<br>catalog ${esc(state.catalog.indexVersion.slice(0, 16))}</p></section>`;
   }
+  function applyFiveMinuteViewGuard() {
+    if (!isAssessmentRecipeMode()) return;
+    $("distribution")?.setAttribute("disabled", "");
+    $("count")?.setAttribute("disabled", "");
+    document
+      .querySelectorAll('[data-action="save-paper"], [data-action="backup"], [data-action="import"], [data-action="new-draft"]')
+      .forEach((element) => element.remove());
+    const emptyInspector = document.querySelector(".inspector p.muted");
+    if (emptyInspector)
+      emptyInspector.textContent = "\uBB38\uD56D\uC744 \uC120\uD0DD\uD558\uBA74 \uBB38\uC81C\u00B7\uC815\uB2F5\u00B7\uD574\uC124 \uCD9C\uB825\uC744 \uD655\uC778\uD569\uB2C8\uB2E4.";
+    const inspectorHeading = document.querySelector(".inspector h2");
+    if (inspectorHeading)
+      inspectorHeading.textContent = `${state.title} ${state.round}\uCC28`;
+  }
   function renderControls() {
     const inspector = document.querySelector(".inspector");
     if (inspector) inspector.outerHTML = renderInspector();
+    applyFiveMinuteViewGuard();
     document
       .querySelectorAll(".paper-row[data-question-uid]")
       .forEach((row) => {
@@ -2234,13 +2447,16 @@
     // the current filters, catalog quality gates and previous-round exclusions.
     scopeRenderCache = null;
     displayedScopes = null;
+    renderPoolCache = null;
     renderEligibilityCache = new WeakMap();
     renderingScopes = true;
     try {
       renderContent();
+      applyFiveMinuteViewGuard();
     } finally {
       renderingScopes = false;
       scopeRenderCache = null;
+      renderPoolCache = null;
       renderEligibilityCache = null;
     }
   }
@@ -2656,7 +2872,7 @@
       ctx.current = state.selected
         .filter((r) => !state.pins.includes(r.questionUid))
         .map((r) => r.questionUid);
-    const result = C.selectBlueprint(pool(), req, ctx);
+    const result = C.selectBlueprint(pool(), req, ctx, assessmentSelectionOptions());
     if (!result.ok) {
       showDialog(
         "현재 조건에서 문항이 부족합니다",
@@ -2699,9 +2915,9 @@
       excluded = C.composeExclusions(context()).union;
     candidateRecords = pool().filter(
       (r) =>
-        C.eligibility(r, state).ok &&
-        C.matches(r, selectionFilters, state) &&
-        C.rowMatches(r, row) &&
+      workspaceEligibility(r).ok &&
+      workspaceMatches(r, selectionFilters) &&
+      C.rowMatches(r, row, workspaceMatchOptions()) &&
         !used.has(r.questionUid) &&
         !excluded.has(r.questionUid),
     ).sort(C.compareNewest);
@@ -2952,7 +3168,7 @@
           !state.pins.includes(q.questionUid),
       )
       .map((q) => q.questionUid);
-    const result = C.selectBlueprint(pool(), req, ctx);
+    const result = C.selectBlueprint(pool(), req, ctx, assessmentSelectionOptions());
     if (!result.ok)
       throw new Error(
         "같은 조건의 새 문항이 부족합니다. 필요한 문항만 개별 교체해 주세요.",
@@ -2991,6 +3207,8 @@
   function routeUrl() {
     const url = new URL("workspace.html", location.href);
     url.searchParams.set("view", state.view);
+    if (state.view === "compose" && state.assessmentRecipe)
+      url.searchParams.set("recipe", state.assessmentRecipe);
     if (state.view === "find") {
       for (const key of FINDER_URL_KEYS)
         if (state.find[key]) url.searchParams.set(key, state.find[key]);
@@ -3007,6 +3225,9 @@
         url.searchParams.set("status", state.savedLibraryStatusFilter);
     } else if (state.view === "compose" && state.editSavedPaperId) {
       url.searchParams.set("edit_saved_paper", state.editSavedPaperId);
+    } else if (state.view === "compose" && state.sources.length) {
+      for (const source of state.sources) url.searchParams.append("source", source);
+      if (state.distribution === "all") url.searchParams.set("range", "all");
     }
     return url;
   }
@@ -3973,6 +4194,24 @@
   });
   function readUrl() {
     const p = new URLSearchParams(location.search);
+    const requestedRecipe = p.get("recipe");
+    const nextRecipe = ASSESSMENT_RECIPE_KEYS.has(requestedRecipe) ? requestedRecipe : "";
+    const recipeChanged = nextRecipe !== state.assessmentRecipe;
+    state.assessmentRecipe = nextRecipe;
+    if (recipeChanged && ASSESSMENT_RECIPE_KEYS.has(nextRecipe)) {
+      const recipe = activeAssessmentRecipe();
+      const title = ASSESSMENT_RECIPE_TITLES[nextRecipe] || "";
+      state.distribution = "pool";
+      state.count = recipe?.defaultCount || 4;
+      state.title = title;
+      state.header.title = title;
+      state.header.subtitle = "";
+      state.sources = [];
+      state.scopes = [];
+      state.buckets = [];
+      state.selected = [];
+      state.rows = [];
+    }
     state.view = ["home", "find", "compose", "saved", "recent", "health"].includes(p.get("view"))
       ? p.get("view")
       : "home";
@@ -3980,6 +4219,8 @@
     state.savedLibraryStatusFilter = ["ACTIVE", "ARCHIVED", "TRASHED"].includes(p.get("status"))
       ? p.get("status") : "ACTIVE";
     state.editSavedPaperId = p.get("edit_saved_paper") || "";
+    state.urlSources = [...new Set(p.getAll("source").map((value) => String(value || "").trim()).filter(Boolean))];
+    state.urlRange = p.get("range") === "all" ? "all" : "";
     state.find = {};
     for (const k of FINDER_URL_KEYS)
       if (p.has(k)) state.find[k] = p.get(k);
@@ -4004,6 +4245,49 @@
     if (state.view !== "find") return;
     history.replaceState(history.state || {}, "", routeUrl());
   }
+  function applySourceRoute() {
+    if (state.view !== "compose" || !state.urlSources.length || !state.catalog?.records) return;
+    const catalogFiles = new Set(state.catalog.records.map((record) => record.sourceFile).filter(Boolean));
+    const files = state.urlSources.filter((file) => catalogFiles.has(file));
+    if (!files.length) return;
+    state.sources = files;
+    // A routed range already names the exact source intersection. Let the
+    // existing compose selector own scope filtering and output generation.
+    const routedRecords = state.catalog.records.filter((record) =>
+      files.includes(record.sourceFile),
+    );
+    const routedExams = (state.catalog.exams || []).filter((exam) =>
+      files.includes(exam.file),
+    );
+    const routedGrades = new Set(
+      [
+        ...routedRecords.map((record) =>
+          record.effectiveBrowseGrade || record.sourceGrade || record.grade,
+        ),
+        ...routedExams.map((exam) => exam.sourceGrade || exam.grade),
+      ]
+        .filter(Boolean),
+    );
+    const routedCurriculumCourses = new Set(
+      routedRecords
+        .filter((record) => record.curriculumKey && record.courseKey)
+        .map((record) => `${record.curriculumKey}\u0000${record.courseKey}`),
+    );
+    state.filters = {};
+    if (routedGrades.size === 1)
+      state.filters.grade = [...routedGrades][0];
+    if (routedCurriculumCourses.size === 1) {
+      const [curriculumKey, courseKey] = [...routedCurriculumCourses][0].split("\u0000");
+      state.filters.curriculumKey = curriculumKey;
+      state.filters.courseKey = courseKey;
+    }
+    if (state.urlRange === "all") {
+      state.distribution = "all";
+      state.scopes = scopeOptions().filter((scope) => scope.basicScope).map((scope) => scope.key);
+      state.title = "현재 범위 문제지";
+      state.header.title = state.title;
+    }
+  }
   (async () => {
     readUrl();
     const savedOnBoot = state.view === "saved";
@@ -4015,6 +4299,7 @@
       if (typeof window.applyArchiveMetaFoundationCatalog !== "function")
         throw new Error("CANONICAL_AUTHORITY_UNAVAILABLE: 현재 분류 기준을 확인할 수 없습니다.");
       state.catalog = await window.applyArchiveMetaFoundationCatalog();
+      state.useMode = "general";
       if (!ProblemBankMeta) throw new Error("PROBLEM_BANK_META_UNAVAILABLE");
       state.metaIndex = ProblemBankMeta.buildIndex(state.catalog.records, []);
       state.metaIndexSource = state.catalog.records;
@@ -4032,6 +4317,7 @@
           .map((r) => [r.questionUid, r]),
       );
       readUrl();
+      applySourceRoute();
       if (!(savedOnBoot && state.view === "saved")) render();
       status(state.view === "saved"
         ? "저장한 시험지를 불러왔습니다."
