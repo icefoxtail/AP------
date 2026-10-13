@@ -6,35 +6,33 @@ Fast Lane 우선: docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Fast_Lane_CURRENT
 2026-10-13 NO_HOLD_ISSUANCE: 새 item/exam/run/roster HOLD status나 HOLD handoff를 만들지 않는다. 기존 HOLD는 과거 기록으로만 보존한다. 상태는 repair/replacement/review/publication 진행으로 쓴다.
 결함 보고에는 owner, qid, 다음 구체적 repair action을 명시한다. 지정된 creator가 해당 locus의 source/solution/Meta/assets를 직접 수정하고, 필요한 원문 근거만 해당 PDF 영역에서 좁게 확인한다.
 원문 복구 불가면 승인된 ALIVE replacement를 적용한다. 실패 후보는 수정하거나 새 후보를 생성한다. 이미 승인된 repair/replacement에 사용자 재승인을 요청하지 않는다.
-R1/R2/R3는 repair assignment(owner+qid+action)를 ROOT에 반환한다. ROOT는 완료까지 담당자를 dispatch/추적한다. 학생 입력이 바뀐 qid만 완전한 실제 assets를 포함한 clean blind review로 확인하고 원 freeze/provenance를 보존한다.
+R1/R2/R3는 repair assignment(owner+qid+action)를 ROOT에 반환한다. ROOT는 완료까지 담당자를 추적한다. 이전 freeze/provenance를 보존하고 필요한 검토는 완전한 실제 입력과 에셋으로 수행한다. 신규 R2를 blind 답안 동결로 부르지 않는다.
 문항 quality/input/asset gap은 repair 또는 replacement handoff로 closure까지 진행한다. 실제 permission/command 오류는 정확한 execution error로 별도 기록한다. content HOLD로 바꾸거나 PASS를 위조하지 않는다.
 이 우선 지시가 오래된 stage-kit/NONSTOP production 절차보다 우선한다.
 지정받은 examUid와 R2 stage만 수행한다.
 새 examUid를 선택하거나 다른 stage를 대신 수행하지 않는다.
 assignment의 절대 worktree, JS, asset, evidence 경로와 expected SHA를 확인한다.
 해당 assignment 경로만 사용하고 cwd나 primary checkout으로 대체하지 않는다.
-현재 추출 JS의 학생용 지문/보기 및 실제 참조 asset만 직접 열어 확인한다.
-정답, 해설, prior answer, upstream 판정을 freeze 전에 보지 않는다.
-전 qid를 한 번의 complete blind math/answer sweep으로 독립 풀이한다.
-각 답과 reasoning을 먼저 기록해 독립 freeze를 남긴다.
-freeze 후에만 stored answer와 비교하고 다른 qid 답에 기대어 freeze하지 않는다.
-모든 그림/표/그래프 등 실제 참조 자산을 확인한 뒤 해당 qid를 freeze한다.
-필수 입력/그림이 빠지면 그 qid 답을 추정하거나 freeze하지 않는다.
-원 freeze, provenance, source SHA와 실제 입력/asset 확인 사실을 보존한다.
-비교 중 계산/표기 오류는 기존 freeze를 덮지 않는 adjudication에 남긴다.
-전체 전 qid 분모와 독립 reasoning을 보존하고 새 오류 qid만 ROOT에 제시한다.
+현재 학생용 지문/보기/실제 참조 그림·표와 최신 해설을 모두 열어 확인한다.
+전 qid 해설의 식 설정, 계산·대입, 결론까지 실제로 따라 검산하며 논리·표기·교육과정 결함을 찾고 적극 개선한다.
+중간 계산, 조건 사용 이유, 보조선 목적, 설명의 논리 연결을 학생이 이해하도록 보완한다.
+qid마다 부족점, 실제 수정 전후와 학생 이점 또는 변경하지 않을 때 충분성 근거를 기록한다. 수정 할당량은 두지 않는다.
+정답 불일치·의심·고위험·해설 정확성 우려에는 원문과 choices를 기준으로 해당 qid만 독립 재풀이한다.
+교육과정 범위 밖 풀이법으로 개선하지 않으며 최종 해설 ID+revision 또는 실바이트 SHA-256에 판단을 결속한다.
+신규 R2는 전 qid blind answer writing/freeze를 요구하지 않으며 과거 blind 동결·근거는 역사 기록으로 보존한다.
+R1의 전수 4축 감사를 반복하지 않고 수정 qid와 직접 영향을 재확인한다.
 변경 없이 유효한 기존 PASS/freeze/render는 그대로 재사용한다.
 선택 helper 오류는 건너뛰고 직접 읽을 수 있는 학생 JS/assets/evidence로 진행한다.
 tool-only schema/compatibility 실패는 log와 FAIL_TOOL/NOT_RUN 상태를 보존한다.
-실제 blind quality 기준을 직접 충족하면 MANUAL_STAGE_COMPLETE로 표시해 표준 Git handoff를 한다.
+실제 학생 관점 해설 검산·개선 품질 기준을 충족하면 검증 근거와 함께 MANUAL_STAGE_COMPLETE로 인계한다. generic PASS 또는 미실행 기술검사를 의미 검수완료로 바꾸지 않는다.
 generic PASS, sealed-event, auto-consumer acceptance로 주장하지 않는다.
-실제 JS parse/answer 결함, 누락 asset 또는 불완전 blind input은 해당 qid의 repair/replacement action으로 ROOT에 인계한다. 보정된 완전한 학생 입력과 모든 실제 asset으로 해당 qid만 clean blind review하고 원 freeze를 보존한다.
+실제 JS parse/answer 결함·누락 자산·불완전 입력은 owner+qid+repair action으로 ROOT에 인계한다. 수정된 qid와 직접 영향만 최종 입력·해설로 재검산하고, 필요 시 독립 재풀이한다. 이전 blind 동결은 덮어쓰지 않는다.
 신규 script나 shared tool, validator, renderer, CI를 변경하지 않는다.
-새 R2 generic validator는 정상 완료 시 1회 실행한다.
+R2 generic validator는 정상 마감 시 보조 기술검사로 한 번 실행하고 실제 scope/result를 남긴다. 수학·교육과정 의미검수를 대체하지 않으며 미실행은 `NOT_RUN`으로 기록한다.
 실질 실패는 해당 locus만 수정하고 그 변경 영향만 확인한다.
 실제 필수 quality evidence 부재는 수정/대체 인계 후 해당 문항 검수 완료로 해소하며 종료 사유로 남기지 않는다.
 PASS 위조, blind 오염 은폐, 알려진 결함 waiver를 금지한다.
-결과는 source SHA/freeze evidence/qid 분모와 결과를 적고, 결함은 repair owner+qid+next action으로 인계한다.
+결과는 final solution identity, 실제 에셋, 전 qid 해설 검산·개선 근거, 기존 source SHA/freeze 이력을 남기고 결함은 owner+qid+next action으로 인계한다.
 """
 
 [agents]

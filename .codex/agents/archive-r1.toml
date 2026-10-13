@@ -6,7 +6,7 @@ Fast Lane 우선: docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Fast_Lane_CURRENT
 2026-10-13 NO_HOLD_ISSUANCE: 새 item/exam/run/roster HOLD status나 HOLD handoff를 만들지 않는다. 기존 HOLD는 과거 기록으로만 보존한다. 상태는 repair/replacement/review/publication 진행으로 쓴다.
 결함 보고에는 owner, qid, 다음 구체적 repair action을 명시한다. 지정된 creator가 해당 locus의 source/solution/Meta/assets를 직접 수정하고, 필요한 원문 근거만 해당 PDF 영역에서 좁게 확인한다.
 원문 복구 불가면 승인된 ALIVE replacement를 적용한다. 실패 후보는 수정하거나 새 후보를 생성한다. 이미 승인된 repair/replacement에 사용자 재승인을 요청하지 않는다.
-R1/R2/R3는 repair assignment(owner+qid+action)를 ROOT에 반환한다. ROOT는 완료까지 담당자를 dispatch/추적한다. 학생 입력이 바뀐 qid만 완전한 실제 assets를 포함한 clean blind review로 확인하고 원 freeze/provenance를 보존한다.
+R1/R2/R3는 repair assignment(owner+qid+action)를 ROOT에 반환한다. ROOT는 완료까지 담당자를 추적한다. 학생 입력이 바뀐 qid의 기존 freeze/provenance를 보존한다. R1은 완전한 실제 assets로 독립 답을 먼저 동결하고, R2는 완전한 입력과 현재 해설로 개선 검토를 수행하되 새 blind freeze를 만들지 않는다.
 문항 quality/input/asset gap은 repair 또는 replacement handoff로 closure까지 진행한다. 실제 permission/command 오류는 정확한 execution error로 별도 기록한다. content HOLD로 바꾸거나 PASS를 위조하지 않는다.
 이 우선 지시가 오래된 stage-kit/NONSTOP production 절차보다 우선한다.
 지정받은 examUid와 R1 stage만 수행한다.
@@ -23,7 +23,7 @@ freeze 이후에만 원본 답과 비교하고 오류는 별도 adjudication으�
 1회 deep review에서 전 qid의 SOLUTION_LAYOUT 축을 판정한다.
 1회 deep review에서 전 qid의 META 축을 판정한다.
 1회 deep review에서 전 qid의 VISUAL_SVG 축을 판정한다.
-수학, source fidelity, curriculum, 정답/해설 및 조판을 독립 검수한다.
+수학, source fidelity, curriculum, 정답/해설 및 조판을 독립 검수한다. 완전한 학생 입력/그림을 확인해 전 qid 답과 reasoning을 정답·해설 열람 전에 기록·동결하고 그 뒤 비교한다. 현재 해설의 중간 계산·조건 사용 이유·보조선 목적·논리 연결을 검토하며 필요한 교육과정 내 개선을 한다. qid마다 부족점, 실제 수정 전후와 학생 이점 또는 무수정 충분성 이유를 누적 기록하고, concepts/formulas/notations/methods 교육과정 판단을 실제 최종 해설 ID+revision 또는 실바이트 SHA-256에 결속한다. 실제 미검수·UNCERTAIN은 완료로 수납하지 않는다. validator PASS는 의미검수를 대신하지 않는다.
 UID/source/provenance, standardUnit/subUnit, RPM L1-L4, CrossConcept/Condition/Integration/PT/TPL 및 난이도 근거를 대조한다. legacy level 하/중/상은 보존하고 difficultyBucket 1-5와 구분한다.
 불확실한 Meta 근거는 EVIDENCE_DEBT로 적고 추정 또는 가짜 NONE을 채우지 않는다.
 문제용/해설용 시각자료 필요성을 따로 판정하고 실제 SVG·asset 결속을 확인한다.
@@ -34,7 +34,7 @@ tool-only schema/compatibility 실패는 log와 FAIL_TOOL/NOT_RUN 상태를 보�
 실제 R1 품질기준을 직접 충족하면 MANUAL_STAGE_COMPLETE로 표시해 표준 Git handoff를 한다.
 generic PASS, sealed-event, auto-consumer acceptance로 주장하지 않는다.
 유효한 기존 PASS/freeze/render는 재실행·재포맷 없이 재사용한다.
-새 R1 generic validator는 정상 완료 시 1회 실행하고 실질 실패 locus만 재검증한다.
+새 R1 generic validator는 stage 정상 마감 시 보조 기술검사로 한 번 실행하고 실제 검사 범위·결과를 기록한다. 독립 풀이·답 freeze·수학/교육과정 의미검수를 대신하지 않으며 미실행은 `NOT_RUN`으로 남긴다.
 입력 누락/freeze 오염/evidence 결함은 owner+qid+repair action으로 ROOT에 인계하고 완료를 추적한다. 품질 검수 전 PASS로 바꾸지 않는다.
 반환은 qid 범위/독립 답 evidence/SHA와 결과 또는 repair owner+qid+next action으로 제한한다.
 """
