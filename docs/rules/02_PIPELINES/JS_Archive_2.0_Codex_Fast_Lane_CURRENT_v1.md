@@ -30,7 +30,7 @@ qualityContractVersion: `JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006`
 | --- | --- | --- |
 | CREATE | 해당 문항 직접 수정; 필요한 원문 영역 대조; 복원 불가능하면 ALIVE 대체 후보 제작 | 문제·정답·해설·Meta·에셋 완성 후 R1 인계 |
 | R1 | 담당 session의 최소 수정 또는 ROOT가 제작 담당자에게 해당 qid 대체 인계 | 변경 문항의 독립 심사 후 다음 단계 인계 |
-| R2 | 원 freeze 보존; 오류 판정·수정 인계; 입력 변경 qid만 새 완전한 입력으로 clean 검수 | 정답 sweep 결손 해소 후 R3 인계 |
+| R2 | 과거 freeze 보존; 전 qid 현재 해설의 학생 관점 검산·개선; 불일치·의심·고위험은 필요한 qid만 원문에서 독립 재풀이 | 새 blind 답안 freeze, R1 4축 반복, 수정 quota |
 | R3 | 구조/표시 결함 해당 locus 수정; 내용 대체가 필요하면 ROOT가 제작/영향 검수 담당자 연결 | 실제 필요한 영향 검수·표시 마감 후 publication 인계 |
 | ROOT | 미결함 건별 담당자·다음 행동 인계와 완료 수납; 다른 정상 시험지 병행 | 담당 JS·필수 에셋 main 반영·원격 일치 |
 
@@ -53,15 +53,18 @@ Codex 원본 시험지 제작·마감의 기본 경로다. Execution/Common/role
 
 ## 2. 단계별 한 번
 
+R1은 전 qid의 실제 풀이방법·개념·공식·표기를 해당 시험 연도/학년/과목 교육과정과 대조하고 최종 해설 identity에 결속한다. R1·신규 R2는 전 qid 해설의 중간 계산, 조건 채택 이유, 보조선 목적, 논리적 연결을 적극 개선 검토한다. qid별 부족점/수정 전후/학생 이점 또는 무수정 충분성 근거를 누적 기록하며 인위적 수정량 목표는 없다. R3는 변경·미해결·직접 영향과 최종 파일에 집중한다. 신규·수정 문항의 학생용 설명은 한국어로, 표준 수학기호와 필수 SVG 그림·좌표·점 라벨은 보존하고 raw TeX·caret 노출을 막는다.
+
+
 | 담당 | 수행 | 종료 뒤 금지 |
 | --- | --- | --- |
-| CREATE | 현재 추출 JS로 문제·정답·해설·Meta·필요 에셋 완성 | PDF routine 재대조, 다른 도구 개발 |
+| CREATE | 현재 추출 JS로 전 qid 직접 풀어 교육과정 내 정답·논리적 해설 초안·Meta·필요 에셋 완성 | PDF routine 재대조, 다른 도구 개발 |
 | R1 | 전 qid 수학·해설·조판·Meta·Visual 독립 심사 한 번 | 같은 시험지 4축 재심사 |
-| R2 | 완전한 학생 입력·그림으로 전 qid blind 답안 sweep 한 번 | R1 4축 반복, MATCH 문항 심층 재풀이 |
+| R2 | 완전한 학생 입력·실제 그림과 현재 해설로 전 qid 계산·논리·교육과정 및 학생 설명을 검토·적극 개선 | R1 4축 반복, 신뢰되는 문항의 불필요한 전체 독립 재풀이·새 blind freeze·수정량 quota |
 | R3 | changed/open/direct dependency만 심사; 전체 구조와 공식 엔진 표시 한 번 마감 | 전 문항 수학·Meta 재심사 |
 | ROOT | 기존 완료 기록 수납, 지정 파일 병합, 원격 bytes 확인 | 품질 재심사, 등록/배포 자동 확대 |
 
-- generic validator는 **새로 수행한 stage 정상 마감 때 한 번**이다. ROOT는 같은 validator를 다시 실행하지 않는다.
+- generic validator는 stage 정상 마감의 **보조 기술검사로 한 번** 수행하고 실제 scope/result 또는 `NOT_RUN`을 기록한다. PASS/NOT_RUN은 독립풀이·수학·교육과정 의미검수를 대신하지 않는다. ROOT는 같은 검사기를 반복하지 않는다.
 - R3 actual render는 기존 지원 경로로 한 번 수행한다. 유효한 동일 입력·자산·렌더 조건의 receipt는 재사용한다. 렌더 실패를 고쳤을 때만 영향 case를 재확인한다. ROOT가 다시 화면을 검수하지 않는다. 기존 §25의 근거 있는 면제는 실제 미실행 상태를 보존한다.
 - 필수 증거만 작성한다. 기존 유효 증거를 새 포맷·seal·원장·보고서로 바꾸기 위한 재검은 금지한다. 기존 완료 기록과 실제 파일을 직접 읽고 인계한다.
 - CREATE/R1/R2/R3별 동시 담당 1개인 컨베이어를 유지한다. 완료 stage의 slot을 바로 다음 시험지에 인계한다. ROOT는 routing/publication만, worker는 Luna High를 유지한다.
@@ -71,7 +74,7 @@ Codex 원본 시험지 제작·마감의 기본 경로다. Execution/Common/role
 - **첫 미완료 단계부터 이어간다.** 이미 통과한 CREATE/R1/R2/R3를 처음부터 실행하지 않는다.
 - 변경 없는 JS·asset·필수 입력에 결속된 PASS/freeze/receipt는 유지한다. main의 무관한 변경, 작업 폴더 이동, helper 업데이트만으로 품질 검수를 무효화하지 않는다.
 - 실제 결함이면 담당 기존 session이 해당 qid·필수 직접 dependency만 고친다. 변경 범위에 필요한 확인 한 번으로 닫는다. 실제 추가 실패가 있어야 다음 확인을 수행한다.
-- 해설·Meta만 바뀌고 학생 지문·보기·문제 그림이 정확히 같으면 기존 blind freeze를 유지한다. 원 freeze를 덮거나 새 SHA만 붙여 유효한 척하지 않는다. 실제 학생 입력 교체·답 사전 노출·필수 그림 누락으로 freeze가 무효일 때만 영향 qid를 clean 검수한다.
+- 학생 지문·보기·문제 그림이 같은 경우 기존 R1 및 유효한 과거 R2 blind freeze를 보존한다. 이전 기록을 덮거나 신규 R2 개선 검토를 blind 기록으로 소급 표기하지 않는다. 기존 R1 독립 답 입력이 바뀐 해당 qid만 필요한 fresh 검수를 한다.
 - 문항별 품질·필수 Meta/Visual·정답 정확성은 유지한다. 알려진 결함을 시간 때문에 PASS로 만들지 않는다.
 
 ## 4. 시험지 작업 중 도구 수정 절대 금지
@@ -87,7 +90,7 @@ Codex 원본 시험지 제작·마감의 기본 경로다. Execution/Common/role
 
 `archive-create-preflight.mjs`, `archive-codex-stage-kit.mjs`의 bind/seal/verify-complete/intake, `archive-codex-handoff.mjs`의 assignment receipt/accept/dispatcher, bundle adapter/postfreeze/freeze CLI, 등록 candidate worktree/compiler/rebuild는 **기본 생산의 필수 호출에서 제거한다**. 새 completion event·추가 승인 receipt·도구 전용 proof를 만들기 위해 검수 결과를 다시 포장하지 않는다. 기존 CLI 파일은 다른 작업/과거 증거 호환용으로 남으며 이 라인의 시작·전환·병합 gate가 아니다.
 
-정상 경로는 **JS·에셋 직접 열람 → 담당자 검수 기록 → 기존 generic 구조 validator 1회 → 다음 담당자**다. R1/R2에는 정답·해설을 제거한 완전한 학생 입력을 전달하고, 독립 답/이유와 실제 그림 열람을 파일로 먼저 동결한다. 입력 추출과 동결의 정확성은 유지하되 특정 helper·bundle schema·seal에 종속시키지 않는다. ROOT가 정답-bearing 원본을 blind worker에게 보내거나 불완전한 입력으로 진행하는 것은 금지한다.
+정상 경로는 **JS·에셋 직접 열람 → 담당자의 실제 qid별 품질 검수·기록 → generic 구조 validator 1회(보조) → 다음 담당자**다. R1은 답·해설을 보기 전에 완전한 학생 입력과 필수 자산을 확인해 독립 답/근거를 freeze한다. 신규 R2는 최신 해설을 완전한 입력과 함께 전 qid 따라 검산·개선하며 일괄 blind 동결은 하지 않는다. ROOT가 정답-bearing 원본을 R1 blind worker에게 제공하는 것은 금지한다.
 
 편의 도구가 막히면 그 도구를 건너뛰고 실제 JS·에셋·기존 증거를 직접 읽어 진행한다. generic의 실제 문항/구조 결함은 해당 locus를 고친다. 도구 전용 schema/호환 결함은 실패 로그를 보존하고 담당자가 같은 품질 항목을 직접 확인한 `MANUAL_STAGE_COMPLETE` 기록으로 인계한다. `genericValidatorStatus:FAIL_TOOL` 또는 `NOT_RUN`을 사실대로 남기며 generic PASS/sealed-event/자동 consumer 수납 완료를 주장하지 않는다. 자동 helper를 사용하지 않은 수동 인계와 표준 Git 병합은 허용한다. 실제 JS parse 실패·정답/필수 Meta/asset 결손·미완료 독립 검수는 수동 완료로 우회하지 않는다.
 
