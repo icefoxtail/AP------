@@ -15,13 +15,13 @@ button,input,select{font:inherit}button{color:inherit;cursor:pointer}button:focu
 .icon-button{width:31px;height:31px;display:grid;place-items:center;padding:0;border:1px solid #dceaff24;border-radius:50%;background:#ffffff08;color:#e4eeff;font-size:19px;line-height:1}.icon-button:hover{background:#ffffff18;border-color:#b5d5ff66}
 .scene-heading{position:absolute;z-index:2;left:clamp(18px,4vw,58px);top:clamp(100px,17vh,155px);width:min(440px,40vw);pointer-events:none;text-shadow:0 3px 24px #020611}.eyebrow{display:flex;align-items:center;gap:8px;color:#a1bddd;font-size:9px;font-weight:600;letter-spacing:.17em}.live-dot{width:6px;height:6px;border-radius:50%;background:#92f2d8;box-shadow:0 0 13px #8ffff0}.scene-heading h1{font:450 clamp(27px,2.9vw,42px)/1.18 Georgia,"Noto Serif KR",serif;letter-spacing:-.045em;margin:16px 0 9px;color:#eff5ff}.scene-heading h1 em{font-weight:400;color:#afd8ff}.scene-heading p{font-size:11px;line-height:1.7;color:#b4c2d9;max-width:300px;margin:0}.catalog-status{font-size:9px;color:#8fa5c4;margin-top:14px;letter-spacing:.025em}
 .scene-hud{position:absolute;z-index:3;left:clamp(18px,3vw,42px);right:clamp(18px,3vw,42px);bottom:50px;display:flex;justify-content:space-between;align-items:flex-end;gap:14px;pointer-events:none}.scene-hud>*{pointer-events:auto}.hud-left{display:grid;gap:8px}.hud-group{display:flex;gap:7px}.group-mode-switch{display:flex;align-items:center;gap:2px;padding:4px;border:1px solid #dceaff20;border-radius:999px;background:#081225b8;backdrop-filter:blur(16px);width:max-content}.group-mode-switch button{border:0;background:transparent;border-radius:999px;padding:7px 12px;color:#aebed5;font-size:9px;white-space:nowrap}.group-mode-switch button:hover{color:white;background:#ffffff0e}.group-mode-switch button[aria-pressed=true]{background:#e7f3ff;color:#102034;box-shadow:0 2px 12px #c9e4ff52}.hud-button{display:flex;align-items:center;gap:8px;padding:9px 13px;font-size:10px}.motion-glyph{font-family:ui-monospace,monospace;min-width:11px}.scene-hint{padding:8px 11px;color:#91a3bf;background:#080f1d70;border-radius:999px;font-size:9px;backdrop-filter:blur(8px)}.scene-hint span{color:#c8d7ed}.scene-hint i{padding:0 5px;color:#536685;font-style:normal}
-.planet-label-layer,.satellite-label-layer{position:absolute;inset:0;z-index:2;pointer-events:none}.planet-label{position:absolute;transform:translate(-50%,-50%);text-align:center;min-width:70px;white-space:nowrap;color:#eaf3ff;text-shadow:0 1px 10px #030712,0 0 18px #000;font-size:10px;letter-spacing:.02em;pointer-events:none;transition:opacity .2s}.planet-label b{font-weight:600}.planet-label small{display:block;margin-top:2px;color:#9fb5d3;font-size:8px}.planet-label .planet-dot{width:4px;height:4px;display:block;margin:0 auto 5px;border-radius:50%;background:#d9f0ff;box-shadow:0 0 10px #a9e1ff}
-body.search-active .planet-label{color:#fff;text-shadow:0 0 8px #dac7ff,0 0 24px #aa83ee,0 2px 12px #030712}body.search-active .planet-label .planet-dot{background:#f2e7ff;box-shadow:0 0 9px #d8bfff,0 0 22px #c793ff}
+.planet-label-layer,.satellite-label-layer{position:absolute;inset:0;z-index:2;pointer-events:none}.planet-label{position:absolute;transform:translate(-50%,-50%);text-align:center;min-width:70px;white-space:nowrap;color:#fff;text-shadow:0 1px 2px #000;font-size:12px;font-weight:600;letter-spacing:.02em;pointer-events:none;transition:opacity .2s}.planet-label b{font-weight:700}.planet-label small{display:block;margin-top:2px;color:#edf2fa;font-size:9px;font-weight:500}
+body.search-active .planet-label{color:#fff;text-shadow:0 1px 2px #000}
 .blackhole-label-layer{position:absolute;inset:0;z-index:3;pointer-events:none}.blackhole-hit{position:absolute;display:none;transform:translate(-50%,-50%);align-items:center;gap:8px;padding:6px 10px 6px 6px;border:1px solid #d7c0ff75;border-radius:999px;background:#120e22df;color:#f0e9ff;box-shadow:0 0 19px #a382d45c;font-size:9px;text-align:left;pointer-events:auto;backdrop-filter:blur(10px)}.blackhole-hit:hover,.blackhole-hit:focus-visible{border-color:#ffe2a4;box-shadow:0 0 0 2px #ddceff55,0 0 23px #c59bff99}.blackhole-hit b,.blackhole-hit small{display:block;white-space:nowrap}.blackhole-hit b{font-size:9px}.blackhole-hit small{margin-top:1px;color:#c1afd9;font-size:7px}.blackhole-symbol{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;color:#f3ca93;font-size:19px;background:radial-gradient(circle,#0a0813 42%,#b17bdd 49%,#e3b478 63%,#120d20 72%);box-shadow:0 0 11px #d0a2ff8c}
-.satellite-hit{position:absolute;transform:translate(-50%,-50%);pointer-events:auto;display:none;align-items:center;gap:6px;max-width:175px;padding:6px 9px 6px 6px;border:1px solid #eff5ff85;border-radius:999px;background:#f4f2eaff;color:#202b3c;box-shadow:0 4px 18px #0008;font-size:9px;white-space:nowrap}.satellite-hit .mini-paper{width:15px;height:18px;border:1px solid #8795aa;border-radius:2px;background:#fff;box-shadow:inset 0 -5px #edf1f7;position:relative}.satellite-hit .mini-paper:after{content:"";position:absolute;top:5px;left:3px;right:3px;height:1px;background:#9caac0;box-shadow:0 3px #9caac0}.satellite-hit b{overflow:hidden;text-overflow:ellipsis}.satellite-hit:hover,.satellite-hit:focus-visible{background:#fff;border-color:#fff;box-shadow:0 0 0 2px #b9e4ff,0 5px 20px #000b}.focused .satellite-hit{display:flex}
+.satellite-hit{position:absolute;transform:translate(-15px,-50%);pointer-events:auto;display:none;align-items:flex-start;flex-direction:column;gap:1px;width:max-content;max-width:none;min-height:32px;padding:3px 9px 3px 27px;border:0;background:none;color:#fff;box-shadow:none;white-space:normal}.satellite-hit:before{content:"";position:absolute;left:6px;top:50%;width:15px;height:18px;transform:translateY(-50%);pointer-events:none}.satellite-period{color:#fff;font-size:10px;font-weight:600;line-height:1.1;text-shadow:0 1px 2px #000;white-space:nowrap}.satellite-period:empty{display:none}.satellite-hit b{color:#fff;font-size:12px;font-weight:650;line-height:1.1;text-shadow:0 1px 2px #000;white-space:nowrap}.focused .satellite-hit{display:flex}
 .entry-chip{position:absolute;z-index:4;top:85px;right:clamp(18px,3vw,42px);display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:14px;max-width:min(320px,calc(100vw - 36px))}.entry-orb{width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 32% 25%,#ecf2ff,#63b7d2 48%,#172b4a 100%);box-shadow:0 0 19px #9bddff68}.entry-chip small,.entry-chip b{display:block}.entry-chip small{font-size:8px;color:#9dafc8}.entry-chip b{font-size:12px;margin:1px 0}
 .drawer{position:absolute;z-index:12;top:14px;right:14px;bottom:14px;width:min(510px,calc(100vw - 28px));border-radius:22px;display:flex;flex-direction:column;overflow:hidden;transform:translateX(calc(100% + 30px));visibility:hidden;transition:transform .35s cubic-bezier(.2,.75,.2,1),visibility .35s}.drawer.open{transform:translateX(0);visibility:visible}.drawer-head{display:flex;align-items:center;gap:10px;padding:13px 16px;border-bottom:1px solid #d9e7ff16}.back-button{display:flex;align-items:center;gap:7px;border:0;background:transparent;color:#d0def3;padding:5px 0;font-size:11px}.back-button:hover{color:white}.drawer-kicker{margin-left:auto;color:#91a8c9;font-size:8px;letter-spacing:.18em}.close-drawer{margin-left:0}
-.exam-identity{display:flex;gap:13px;align-items:center;padding:16px 17px 12px}.paper-mark{flex:0 0 34px;height:42px;background:var(--paper);border-radius:3px;box-shadow:0 3px 10px #0005;padding:9px 6px;display:flex;flex-direction:column;gap:4px;transform:rotate(-4deg)}.paper-mark span{height:1px;background:#98a6ba}.paper-mark span:first-child{width:55%;background:#4d6682}.exam-identity .eyebrow{font-size:8px}.exam-identity h2{font:600 15px/1.35 Georgia,"Noto Serif KR",serif;margin:4px 0;color:#f7faff}.exam-meta{display:flex;flex-wrap:wrap;gap:6px;color:#aebfd7;font-size:9px}.exam-meta span{padding:3px 7px;border:1px solid #c4d9f31f;border-radius:99px}
+.exam-identity{display:flex;gap:13px;align-items:center;padding:16px 17px 12px}.exam-identity>div:last-child{flex:1;min-width:0}.paper-mark{flex:0 0 34px;height:42px;background:var(--paper);border-radius:3px;box-shadow:0 3px 10px #0005;padding:9px 6px;display:flex;flex-direction:column;gap:4px;transform:rotate(-4deg)}.paper-mark span{height:1px;background:#98a6ba}.paper-mark span:first-child{width:55%;background:#4d6682}.exam-identity .eyebrow{font-size:8px}.exam-identity h2{font:600 15px/1.35 Georgia,"Noto Serif KR",serif;margin:4px 0;color:#f7faff}.exam-meta{display:flex;flex-wrap:wrap;gap:6px;color:#aebfd7;font-size:9px}.exam-meta span{padding:3px 7px;border:1px solid #c4d9f31f;border-radius:99px}
 .exam-source{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:5px;color:#8095b3;font:8px/1.4 ui-monospace,SFMono-Regular,monospace}
 .preview-heading{display:flex;align-items:baseline;gap:8px;padding:10px 17px 9px;border-top:1px solid #dce9ff16}.preview-heading strong{font-size:11px}.preview-heading span{color:#aabbd3;font-size:9px}.preview-heading a{margin-left:auto;color:#add8ff;text-decoration:none;font-size:9px;white-space:nowrap}.preview-heading a:hover{text-decoration:underline}.preview-frame{flex:1;min-height:180px;margin:0 12px 10px;border-radius:9px;background:var(--paper);overflow:hidden;box-shadow:0 6px 25px #0006}.preview-frame iframe{display:block;width:100%;height:100%;min-height:200px;background:var(--paper);border:0}.drawer-foot{margin:0;padding:8px 15px 13px;color:#90a2bc;font-size:8px;line-height:1.6}
 .list-panel{position:absolute;z-index:10;top:78px;right:clamp(16px,3vw,44px);bottom:56px;width:min(460px,calc(100vw - 32px));border-radius:20px;display:flex;flex-direction:column;overflow:hidden;transform:translateX(calc(100% + 50px));visibility:hidden;transition:transform .32s cubic-bezier(.2,.75,.2,1),visibility .32s}.list-panel.open{transform:translateX(0);visibility:visible}.list-panel-head{display:flex;align-items:flex-start;gap:12px;padding:17px 17px 12px;border-bottom:1px solid #dce9ff18}.list-panel-head>div{flex:1}.list-panel-head .eyebrow{font-size:8px}.list-panel-head h2{font:500 21px/1.2 Georgia,"Noto Serif KR",serif;margin:5px 0}.list-panel-head p{font-size:9px;color:#9eafc8;margin:0}.list-groups{overflow:auto;overscroll-behavior:contain;padding:8px 10px;flex:1}.school-group{border-bottom:1px solid #dce9ff13}.school-group summary{list-style:none;display:flex;align-items:center;gap:9px;cursor:pointer;padding:10px 7px}.school-group summary::-webkit-details-marker{display:none}.school-group summary:before{content:"";width:9px;height:9px;border-radius:50%;background:var(--planet-color,#8bc6eb);box-shadow:0 0 10px var(--planet-color,#8bc6eb)}.school-group summary b{font-size:11px;font-weight:600}.school-group summary small{margin-left:auto;color:#9aabc4;font-size:9px}.exam-links{display:grid;gap:4px;padding:0 5px 10px 22px}.exam-link{display:flex;justify-content:space-between;gap:8px;text-align:left;border:1px solid transparent;background:#ffffff05;border-radius:8px;padding:8px;color:#dce8f8}.exam-link:hover,.exam-link:focus-visible{background:#ffffff0f;border-color:#b9d8ff4d}.exam-link span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:9px}.exam-link small{flex:0 0 auto;color:#9eb1cc;font-size:8px}.empty-list{padding:25px 10px;color:#aabbd2;text-align:center;font-size:11px}
@@ -31,6 +31,22 @@ body.search-active .planet-label{color:#fff;text-shadow:0 0 8px #dac7ff,0 0 24px
 @media(max-width:420px){.topbar{gap:7px;padding:9px 10px}.wordmark{gap:6px}.wordmark b{font-size:10px;letter-spacing:.09em}.wordmark small{letter-spacing:.12em}.sigil{width:28px;height:28px}.search-wrap{max-width:38vw}.search-wrap input::placeholder{font-size:9px}.quiet-button{padding:7px 8px;font-size:8px}.quiet-button span{display:none}.scene-heading{top:83px;width:260px}.scene-heading h1{font-size:22px}.scene-hint span:last-child{display:none}.scene-hud{bottom:41px}.scene-footer span:first-child{max-width:58%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}.drawer,.list-panel{transition:none}}
 
+/* A consistent exploration rail turns the camera from the atlas scale into a
+   planet orbit and a clearly labelled educational micro concept view. */
+.scale-rail{position:absolute;z-index:4;right:clamp(18px,3vw,42px);bottom:50px;display:flex;align-items:center;gap:5px;padding:5px 6px;border:1px solid #dceaff20;border-radius:999px;background:#081225b8;backdrop-filter:blur(14px);box-shadow:0 8px 22px #0003}.scale-rail-label{padding:0 7px;color:#8da6c5;font-size:7px;letter-spacing:.13em;white-space:nowrap}.scale-rail button{border:1px solid transparent;border-radius:999px;background:transparent;color:#aebed5;padding:7px 9px;font-size:8px;white-space:nowrap;cursor:pointer}.scale-rail button:hover:not(:disabled){color:#fff;background:#ffffff0e}.scale-rail button[aria-pressed=true]{border-color:#8cd8ce77;background:#142c37;color:#ddfff4;box-shadow:0 0 16px #70d8c522}.scale-rail button:disabled{cursor:not-allowed;opacity:.34}.scale-caption{position:absolute;z-index:4;right:clamp(18px,3vw,42px);bottom:96px;max-width:300px;padding:8px 11px;border:1px solid #a9d9ff2b;border-radius:12px;background:#091426d9;color:#c4d6ec;font-size:9px;line-height:1.45;box-shadow:0 8px 24px #0003;backdrop-filter:blur(12px);pointer-events:none}.universe:has(.scale-caption:not([hidden])) .atlas-panel{opacity:.78}.universe:has(.scale-caption:not([hidden])) .scene-heading{opacity:.72}
+@media(max-width:760px){.scale-rail{left:12px;right:12px;bottom:78px;justify-content:space-between;gap:2px;padding:4px}.scale-rail-label{display:none}.scale-rail button{flex:1;padding:7px 6px;font-size:8px}.scale-caption{left:12px;right:12px;bottom:122px;max-width:none;text-align:center;font-size:8px;padding:7px 9px}}
+
+/* Overview layer: a compact atlas entry point that uses the live catalog counts. */
+.atlas-panel{position:absolute;z-index:4;top:clamp(112px,14vh,142px);right:clamp(18px,3vw,42px);width:min(292px,calc(100vw - 36px));padding:16px 17px 14px;border:1px solid #d7e9ff1f;border-radius:18px;background:linear-gradient(145deg,#15243ad9,#0a1224c9);box-shadow:0 18px 48px #0003,0 0 36px #7e9dff0d;backdrop-filter:blur(18px);transition:opacity .28s ease,transform .35s ease,filter .28s ease}.atlas-panel-head{display:flex;align-items:center;justify-content:space-between;gap:8px}.atlas-panel-head .eyebrow{font-size:7px;letter-spacing:.16em}.atlas-live{display:flex;align-items:center;gap:5px;color:#9cefd7;font-size:7px;font-weight:700;letter-spacing:.13em}.atlas-panel-copy{margin-top:19px}.atlas-panel-copy h2{margin:0;color:#f1f6ff;font:500 25px/1.08 Georgia,"Noto Serif KR",serif;letter-spacing:-.04em}.atlas-panel-copy h2 em{color:#a7cdf5;font-weight:400}.atlas-panel-copy p{margin:10px 0 0;color:#afbed5;font-size:10px;line-height:1.65}.atlas-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:18px;padding:11px 0 10px;border-top:1px solid #d3e6ff17;border-bottom:1px solid #d3e6ff17}.atlas-metrics div{display:grid;gap:3px}.atlas-metrics b{color:#edf5ff;font:600 17px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:-.04em}.atlas-metrics span{color:#8299b9;font-size:7px;letter-spacing:.13em}.atlas-actions{display:flex;gap:7px;margin-top:13px}.atlas-actions button{min-height:31px;padding:8px 10px;border-radius:9px;font-size:9px;font-weight:600;cursor:pointer}.atlas-primary{border:1px solid #c7e3ff;background:#dff0ff;color:#15253c;box-shadow:0 5px 18px #a1cfff1c}.atlas-primary:hover{background:#fff}.atlas-secondary{border:1px solid #d9e7ff27;background:#ffffff08;color:#c8d7ed}.atlas-secondary:hover{background:#ffffff12;color:#fff}.atlas-route{display:flex;align-items:center;gap:6px;margin-top:14px;color:#7085a5;font-size:7px;letter-spacing:.12em}.atlas-route i{width:16px;height:1px;background:#d0e2ff2a}.route-node{width:5px;height:5px;border:1px solid #7891b5;border-radius:50%}.route-node.active{background:#a5e7db;border-color:#cafff3;box-shadow:0 0 8px #9fffe680}.universe.focused .atlas-panel{opacity:.24;transform:translateY(-7px) scale(.98);filter:saturate(.55);pointer-events:none}
+@media(max-width:760px){.atlas-panel{top:186px;right:12px;width:min(304px,calc(100vw - 24px));padding:11px 13px 10px}.atlas-panel-copy{margin-top:9px}.atlas-panel-copy h2{font-size:19px}.atlas-panel-copy p{margin-top:6px;font-size:8.5px;line-height:1.4}.atlas-metrics{margin-top:9px;padding:7px 0}.atlas-metrics b{font-size:14px}.atlas-actions{margin-top:8px}.atlas-actions button{min-height:29px;padding:7px 8px;font-size:8px}.atlas-route{display:none}}
+
+/* A small-screen atlas card should frame the world, not cover it. */
+@media(max-width:760px){.atlas-panel{top:188px;padding:9px 12px 8px}.atlas-panel-copy{margin-top:6px}.atlas-panel-copy h2{font-size:17px;line-height:1.04}.atlas-panel-copy p{display:none}.atlas-metrics{margin-top:7px;padding:6px 0}.atlas-metrics b{font-size:13px}.atlas-actions{margin-top:6px}.atlas-actions button{min-height:27px;padding:6px 8px}}
+
+/* Keep the observatory composition readable while the WebGL layers provide depth. */
+.universe::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 54% 50% at 50% 51%,transparent 0%,transparent 46%,#02061125 100%),linear-gradient(180deg,#02050f12 0%,transparent 25%,transparent 74%,#02050f2b 100%)}
+.universe.travel-warp::after,.universe.travel-flight::after{background:radial-gradient(circle at 50% 50%,#b9ddff16 0%,transparent 28%),linear-gradient(90deg,transparent 0%,#8ebcff12 48%,transparent 100%)}
+
 /* Keep the homepage inside the orbital scene rather than presenting a landing-page billboard. */
 .universe{background:radial-gradient(ellipse 82% 72% at 52% 56%,#211b3b 0%,#10152b 43%,#070d1d 78%,#040711 100%)}
 .scene-heading{left:clamp(16px,3vw,42px);top:clamp(72px,9vh,94px);width:min(285px,26vw);text-shadow:0 2px 16px #020611}
@@ -39,3 +55,145 @@ body.search-active .planet-label{color:#fff;text-shadow:0 0 8px #dac7ff,0 0 24px
 .scene-heading p{max-width:250px;font-size:9px;line-height:1.45;color:#c0c1d8}
 .catalog-status{font-size:8px;margin-top:7px}
 @media(max-width:760px){.scene-heading{left:16px;top:78px;width:min(230px,58vw)}.scene-heading h1{font-size:20px;margin:6px 0 4px}.scene-heading p{font-size:8px;max-width:205px}.catalog-status{font-size:7px;margin-top:5px}}
+
+/* WebGL failure must leave the accessible catalog and preview fully interactive. */
+.world-fallback{inset:auto 12px 12px auto;z-index:11;width:max-content;max-width:min(360px,calc(100vw - 24px));display:flex;align-items:center;flex-wrap:wrap;gap:2px 10px;padding:8px 12px;border:1px solid #c6d9f23b;border-radius:12px;background:#10192ae8;box-shadow:0 8px 28px #0005;backdrop-filter:blur(12px);text-align:left;pointer-events:none}
+.world-fallback[hidden]{display:none}
+.world-fallback strong{font-size:11px}
+.world-fallback span{font-size:10px}
+@media(max-width:520px){.world-fallback{left:12px;right:12px;bottom:12px;width:auto;justify-content:center;gap:2px 8px;padding:7px 10px;text-align:center}.world-fallback strong,.world-fallback span{font-size:9px}}
+
+/* AP Galaxy first journey — on-space warp and one canonical question orbit. */
+.warp-trails{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;overflow:hidden;transition:opacity .15s}
+.warp-trails span{position:absolute;left:50%;top:50%;width:clamp(75px,14vw,210px);height:1px;
+  background:linear-gradient(90deg,transparent,#93b9ed70 30%,#e8f8ff8a 52%,transparent);
+  transform-origin:left center;transform:rotate(var(--angle)) translateX(30px) scaleX(.14)}
+.travel-warp .warp-trails{opacity:.65}
+.travel-warp .warp-trails span{animation:ap-galaxy-warp .85s ease-in-out both}
+@keyframes ap-galaxy-warp{0%{opacity:0;transform:rotate(var(--angle)) translateX(20px) scaleX(.12)}
+  30%{opacity:.65}75%{opacity:.42}100%{opacity:0;transform:rotate(var(--angle)) translateX(70px) scaleX(1.1)}}
+.travel-warp .planet-label,.travel-warp .satellite-hit,.travel-flight .satellite-hit{opacity:.07;pointer-events:none}
+.question-orbit-layer{position:absolute;inset:0;z-index:7;pointer-events:none}
+.question-orbit-node{position:absolute;display:none;place-items:center;transform:translate(-50%,-50%);
+  pointer-events:auto;width:30px;height:30px;min-width:30px;padding:0;border-radius:50%;
+  background:radial-gradient(circle at 32% 25%,#8cb8e677,#182f4bc9 66%,#0a162bbb);
+  border:1px solid #a6c7e683;color:#f1f8ff;font:600 10px/1 ui-monospace,monospace;
+  box-shadow:0 0 7px #9eccff45,0 0 1px #ffffff9b;white-space:nowrap;
+  text-shadow:0 1px 3px #000;transition:box-shadow .15s,border-color .15s}
+.question-orbit-node:hover,.question-orbit-node:focus-visible,.question-orbit-node.selected{
+  outline:none;border-color:#effaff;box-shadow:0 0 10px #bce6ffaa,0 0 22px #719acc77}
+.question-orbit-status{position:absolute;z-index:8;left:50%;bottom:101px;max-width:min(480px,70vw);
+  transform:translateX(-50%);padding:4px 9px;color:#d8edff;
+  background:#081323a0;text-shadow:0 0 9px #3c82c7;box-shadow:none;
+  text-align:center;font-size:10px;border-radius:8px;pointer-events:none}
+.question-orbit-status[hidden],.question-toolbar[hidden]{display:none!important}
+.question-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:9px 12px;
+  border-top:1px solid #dce9ff25;border-bottom:1px solid #dce9ff19;background:#0b1729da}
+.question-toolbar b{font-size:11px;color:#c4e7ff;margin-right:auto}
+.question-toolbar button{cursor:pointer;border:1px solid #87b1d24a;border-radius:8px;
+  background:transparent;color:#d3e7fc;padding:5px 9px;font-size:10px}
+.question-toolbar button[aria-pressed=true]{background:#dceffc;color:#0d2137}
+.question-toolbar button:hover{border-color:#ccf0ffb0}.question-select{display:none;border:1px solid #87b1d24a;border-radius:8px;background:#102339;color:#d3e7fc;padding:5px 8px;font-size:10px}
+#instantTravel[aria-pressed=true]{color:#0b2035;background:#dbeaff}
+@media(max-width:760px){.question-orbit-node{width:24px;height:24px;min-width:24px;font-size:9px}
+  .question-orbit-status{bottom:110px;font-size:9px;max-width:90vw}
+  .question-toolbar{gap:4px;padding:7px 8px}.question-toolbar button{padding:5px 7px}.question-select{display:block;min-width:52px;max-width:62px}}
+@media(prefers-reduced-motion:reduce){.warp-trails{display:none}.travel-warp .warp-trails span{animation:none}
+  .question-orbit-node{transition:none}}
+
+/* Reader print route is a true link; keep a pointer-sized clickable area. */
+.question-toolbar #printOriginal{display:inline-flex;align-items:center;min-height:32px;padding:6px 10px;border:1px solid #87b1d24a;border-radius:8px;color:#d5efff;text-decoration:none;font-size:10px;background:#102339}
+.question-toolbar #printOriginal:hover,.question-toolbar #printOriginal:focus-visible{border-color:#ccf0ffb0;background:#193a57}
+
+
+/* Arrival scene refinement — restrained celestial observatory (desktop only). */
+@media (min-width:761px) {
+  /* A quiet pool of light and a peripheral vignette give arrival a near/far
+     relationship. These layers are decorative and never intercept orbit picks. */
+  .universe.focused::before {
+    content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:
+      radial-gradient(ellipse 35% 48% at 43% 48%,#9ec7ff16 0%,#7998e20d 46%,transparent 80%),
+      radial-gradient(ellipse 28% 34% at 28% 66%,#aa91ed0d 0%,transparent 76%),
+      linear-gradient(90deg,#04071252 0%,transparent 27%,transparent 69%,#04071335 100%);
+  }
+  .universe.focused .planet-label {
+    padding:6px 11px 7px; border:1px solid #d7e6ff2b; border-radius:10px;
+    background:linear-gradient(145deg,#0c1831e8,#0b1124c7);
+    box-shadow:0 8px 24px #02061475,0 0 20px #81b6ee16;
+    text-shadow:0 2px 8px #000e; color:#f6f9ff;
+    font-size:12px; letter-spacing:.015em; backdrop-filter:blur(9px);
+  }
+  .universe.focused .planet-label small {
+    color:#bad0eb; font-size:9px; margin-top:3px;
+  }
+  .universe.focused .satellite-hit {
+    padding:5px 10px 6px 27px; min-height:37px; border:1px solid #a6c4f02e;
+    border-radius:9px; background:linear-gradient(110deg,#101d35e8,#0a142aca);
+    box-shadow:0 8px 23px #03081775,inset 0 1px #dcecff0a;
+    backdrop-filter:blur(8px);
+  }
+  .universe.focused .satellite-hit:hover,
+  .universe.focused .satellite-hit:focus-visible {
+    border-color:#b1ddff90; background:#192b47ee;
+    box-shadow:0 0 0 1px #add4ff37,0 10px 26px #0008;
+  }
+  .universe.focused .satellite-period {
+    font-size:10px; color:#a9c8ee; font-weight:600;
+    text-shadow:0 1px 8px #000d;
+  }
+  .universe.focused .satellite-hit b {
+    font-size:12px; font-weight:650; color:#f7f9ff;
+    text-shadow:0 1px 8px #000d;
+  }
+  .universe.focused .question-orbit-node {
+    border-color:#d5eaff9c; color:#fff;
+    background:radial-gradient(circle at 35% 25%,#a3d5f5b5,#355b83e8 47%,#101d3bee 100%);
+    box-shadow:0 0 0 3px #192d4952,0 0 17px #80bbf873;
+  }
+  .universe.focused .question-orbit-node.selected {
+    box-shadow:0 0 0 3px #a4d9ff52,0 0 21px #b0dfffab;
+  }
+  .universe.focused .entry-chip {
+    border-color:#d5e9ff54; background:linear-gradient(125deg,#152947eb,#0a1429e8);
+    box-shadow:0 18px 38px #020716a6,0 0 24px #8dbfff14;
+  }
+  .universe.focused .entry-chip b {color:#f7fbff;font-size:13px}
+  .universe.focused .entry-chip small {color:#b3c9e6}
+  /* The same cool highlight is carried into the original exam drawer.
+     All links, reader modes and iframe measurements remain untouched. */
+  .universe.focused .drawer.open {
+    border:1px solid #d2e7ff58;
+    background:linear-gradient(160deg,#14243ded 0%,#0a162beF 38%,#081021f5 100%);
+    box-shadow:-20px 0 70px #010613b5,0 0 0 1px #e0eeff0a,inset 1px 0 #b0d8ff13;
+  }
+  .universe.focused .drawer-head {
+    border-bottom-color:#b3d5ff32; background:#15274655;
+  }
+  .universe.focused .drawer-kicker {color:#b4d1f5;letter-spacing:.15em}
+  .universe.focused .exam-identity {padding-top:18px;padding-bottom:15px}
+  .universe.focused .exam-identity h2 {
+    color:#f9fcff; font-size:16px; line-height:1.42; letter-spacing:-.015em;
+    text-wrap:pretty;
+  }
+  .universe.focused .exam-meta span {
+    border-color:#a9cbed34; background:#9fc7ff0a; color:#c1d4ed;
+  }
+  .universe.focused .preview-heading {
+    border-top-color:#b4d8ff27; color:#eef6ff;
+  }
+  .universe.focused .preview-heading a {color:#bee5ff}
+  .universe.focused .question-toolbar {
+    background:linear-gradient(90deg,#142944f5,#0c1c33f2);
+    border-top-color:#bddfff4c; border-bottom-color:#a1c9f531;
+  }
+  .universe.focused .question-toolbar b {color:#e2f3ff;font-size:11px}
+  .universe.focused .preview-frame {
+    outline:1px solid #b9d7f44d;box-shadow:0 10px 30px #01071485;
+  }
+  .universe.focused .drawer-foot {color:#a8c0dd}
+}
+
+/* Keep the mobile atlas explorable without covering the centre of the universe. */
+.atlas-head-actions{display:flex;align-items:center;gap:8px}.atlas-collapse{display:none;border:1px solid #d9e7ff27;border-radius:999px;background:#ffffff08;color:#c8d7ed;width:22px;height:22px;padding:0;font:600 14px/1 ui-monospace,SFMono-Regular,Consolas,monospace;cursor:pointer}.atlas-collapse:hover{background:#ffffff12;color:#fff}.atlas-panel-body{overflow:hidden}
+@media(max-width:760px){.atlas-panel{top:156px;width:min(248px,calc(100vw - 24px));padding:9px 11px 8px}.atlas-panel-head{gap:5px}.atlas-head-actions{gap:5px}.atlas-collapse{display:grid;place-items:center}.atlas-panel-body{max-height:310px;opacity:1;transition:max-height .24s ease,opacity .18s ease}.atlas-panel.collapsed{width:min(194px,calc(100vw - 24px))}.atlas-panel.collapsed .atlas-panel-body{max-height:0;opacity:0;pointer-events:none}.atlas-panel-copy{margin-top:7px}.atlas-panel-copy h2{font-size:18px}.atlas-panel-copy p{font-size:8px;line-height:1.4}.atlas-metrics{margin-top:8px}.atlas-actions{margin-top:7px}.atlas-route{display:none}}

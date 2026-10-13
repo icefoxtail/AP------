@@ -26,4 +26,6 @@ Three.js version 0.186.1 and esbuild version 0.28.2 are exact pinned dependencie
 
 The Three.js license is included in vendor/THREE-LICENSE.txt. Runtime movement starts automatically unless the device requests reduced motion. A visible control pauses and resumes the orbital simulation. Rendering is capped at 30fps on desktop and 24fps on narrow viewports to bound rendering work; these are caps, not measured performance claims. The accessible list view remains available alongside the 3D scene.
 
+The Jupiter material pilot uses `assets/jupiter-2k.jpg`, the 2k equirectangular Jupiter surface map by Solar System Scope / INOVE, sourced from <https://www.solarsystemscope.com/textures/> (original file: <https://www.solarsystemscope.com/textures/download/2k_jupiter.jpg>). It is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The local copy is unmodified; it is loaded once as a local static asset.
+
 Browser review captures for desktop and 390px mobile are in `orbit-review-20261010/`, including a short interaction recording.
