@@ -100,7 +100,9 @@ jobs:
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
           RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
-        run: node tools/check-qid9-main-source-browser.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/qid9-student-chrome.log"
+        run: |
+          node tools/check-qid9-main-source-browser.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/qid9-student-chrome.log"
+          QID9_SOURCE_ROOT_INDEX=1 QID9_SAMPLE_QID=17 node tools/check-qid9-main-source-browser.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/qid9-jeil-student-chrome.log"
 
       - name: Verify complete generated mock selection, preview, print, answer, and solution flow
         env:

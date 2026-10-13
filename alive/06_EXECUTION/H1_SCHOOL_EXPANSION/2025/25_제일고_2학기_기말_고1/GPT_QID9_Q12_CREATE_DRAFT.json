@@ -1,0 +1,2259 @@
+{
+  "schemaVersion": "ALIVE_QID9_AUTHOR_DRAFT_v1",
+  "source": {
+    "path": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+    "examTitle": "25_제일고_2학기_기말_고1_기출",
+    "qid": 12,
+    "sourceUid": "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+    "gitBlobSha1": "252c1cc9a687cadd961183b56ea10d21bf1976b4",
+    "preservedReadOnly": true
+  },
+  "authority": {
+    "runtime": "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+    "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "sourceMetaL3": "역함수 구하기와 함수값"
+  },
+  "summary": {
+    "authorDraftItems": 9,
+    "problemSvgCreated": 9,
+    "solutionSvgCreated": 9,
+    "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS_9_OF_9",
+    "studentRelease": "NOT_AUTHORIZED",
+    "status": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+    "nextQid": 13,
+    "selfRecheckStatus": "SELF_RECHECK_COMPLETE",
+    "selfRecheckedItems": 9,
+    "wrongChoiceCalculationChecks": 36,
+    "svgRebuilt": 18,
+    "svgAxisParity": "EQUAL_SCALE_14PX_X_Y",
+    "answerDistribution": {
+      "①": 1,
+      "②": 2,
+      "③": 2,
+      "④": 2,
+      "⑤": 2
+    },
+    "browserRender": "NOT_RUN",
+    "openBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q11_Q15_OPENBOOK_REVIEW_20261013.json",
+    "gptMetaIntegrationCorrectedSlots": [],
+    "gptVisualPinpointCorrectedSlots": []
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-JEIL25-2FINAL-Q12-A1",
+      "sourceQid": 12,
+      "sourceUid": "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+      "slot": "A1",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f:[0,10]\\to\\mathbb R$의 그래프와 직선 $y=x$가 그림과 같다. 함수 $f$는 일대일함수이며, 그래프의 표시된 점은 $(2,3)$, $(5,6)$, $(8,9)$이다. $f(2)+f^{-1}(9)$의 값은?",
+      "choices": [
+        "$5$",
+        "$8$",
+        "$9$",
+        "$10$",
+        "$11$"
+      ],
+      "answer": "⑤",
+      "solution": "그래프에서 $f(2)=3$, $f(5)=6$, $f(8)=9$임을 읽는다.\n$f(8)=9$이므로 $f^{-1}(9)=8$이다.\n따라서 $f(2)+f^{-1}(9)=3+8=11$이다.\n따라서 정답은 ⑤이다.",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A1-problem.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A1-solution.svg",
+      "solutionImageAlt": "함수 그래프의 점과 역함수로 읽는 x좌표의 관계",
+      "solutionImageCaption": "그래프에서 f(x)=y이면 역함수의 값은 f⁻¹(y)=x이다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "역함수 구하기와 함수값",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "rpmRecordMappingStatus": "GENERATED_L4_ACTIVE_RPM_PARENT",
+        "metaFoundationL3": "역함수 구하기와 함수값",
+        "metaFoundationL4": "그래프·대응도에서 역함숫값 읽기",
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+        "crossConceptKeys": [
+          "CC_ONE_TO_ONE_FUNCTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [],
+        "crossConceptRoleEvidence": "일대일 조건으로 표시된 역함숫값을 단일하게 읽음",
+        "generatedExtL4Id": "EXT-L4-JEIL25-Q12-INVERSE-POINT-VALUE",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q12-INVERSE-POINT-VALUE",
+        "effectiveL4Authority": "GENERATED_ACTIVE_NEW",
+        "rpmReferenceRole": "CANONICAL_PARENT_RPM_NOT_EXACT_L4",
+        "primaryL3Id": "H1-RPM-256",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "primaryL3DecisiveSemantic": "역함수 구하기와 함수값",
+        "rpmL4ReferenceId": "H1-RPM-256",
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED",
+        "metaRegistryAuthority": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_GENERATED_META_REGISTRY_v1.json",
+        "canonicalPtTplStatus": "ACTIVE_CANONICAL_BOTH",
+        "conditionApplicabilityStatus": "NOT_APPLICABLE",
+        "crossConceptApplicabilityStatus": "APPLIED",
+        "previousMetadataDebtResolved": {
+          "priorFields": [
+            "RPM_EXACT_L4_BINDING"
+          ],
+          "resolution": "GENERATED_EXT_L4_OR_CANONICAL_ALIGNMENT",
+          "sourceStage": "CREATE_AUTHOR_META_REPAIR"
+        },
+        "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_GRAPH_VALUE"
+      },
+      "review": {
+        "reverseStem": "REVISED: 역함수의 x좌표 읽기, 값 계산, 5지 정답 유일성, 오답 산출 근거 재확인. 문제/해설 그림의 x:y 단위축척을 1:1로 조정.",
+        "mathSelfCheckEvidence": {
+          "domain": [
+            0,
+            10
+          ],
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              5,
+              6
+            ],
+            [
+              8,
+              9
+            ],
+            [
+              10,
+              12
+            ]
+          ],
+          "strictlyIncreasing": true,
+          "f2": 3,
+          "f5": 6,
+          "f8": 9,
+          "computedAnswer": 11,
+          "correctChoice": 5,
+          "inverseByObservedOutput": {
+            "3": 2,
+            "6": 5,
+            "9": 8
+          },
+          "previousWrongRoutesAndChoiceIndex": "SUPERSEDED"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 5,
+            "incorrectArithmetic": "3+2=5",
+            "arithmeticTerms": [
+              3,
+              2
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "②",
+            "offeredValue": 8,
+            "incorrectArithmetic": "3+5=8",
+            "arithmeticTerms": [
+              3,
+              5
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "③",
+            "offeredValue": 9,
+            "incorrectArithmetic": "3+6=9",
+            "arithmeticTerms": [
+              3,
+              6
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "④",
+            "offeredValue": 10,
+            "incorrectArithmetic": "2+8=10",
+            "arithmeticTerms": [
+              2,
+              8
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          }
+        ],
+        "problemVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A1-problem.svg",
+          "reason": "원본 그래프 정보가 필요하며 표시된 점의 x/y 위치를 해석해야 함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A1-solution.svg",
+          "reason": "그래프의 수평/수직 값 읽기와 역함수 변환을 보조"
+        },
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "primaryL3": "H1-RPM-256",
+          "correct": 11,
+          "answer": "⑤",
+          "incorrectCalculations": [
+            [
+              "①",
+              "3+2=5"
+            ],
+            [
+              "②",
+              "3+5=8"
+            ],
+            [
+              "③",
+              "3+6=9"
+            ],
+            [
+              "④",
+              "2+8=10"
+            ]
+          ],
+          "wrongRouteCoverage": "4/4",
+          "sourceGraphPoints": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              5,
+              6
+            ],
+            [
+              8,
+              9
+            ],
+            [
+              10,
+              12
+            ]
+          ],
+          "graphScale": {
+            "x": 14,
+            "y": 14
+          },
+          "svgRebuilt": "PROBLEM_AND_SOLUTION",
+          "oldLevel": "중",
+          "newLevel": "중",
+          "oldDifficulty": 2,
+          "newDifficulty": 2,
+          "affectedPriorEvidence": "SUPERSEDED",
+          "externalQuality": "NOT_RUN",
+          "browser": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q11_Q15_OPENBOOK_REVIEW_20261013.json"
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-JEIL25-2FINAL-Q12-A2",
+      "sourceQid": 12,
+      "sourceUid": "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+      "slot": "A2",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f:[0,10]\\to\\mathbb R$의 그래프와 직선 $y=x$가 그림과 같다. 함수 $f$는 일대일함수이며, 그래프의 표시된 점은 $(2,4)$, $(5,7)$, $(8,11)$이다. $f(2)+f^{-1}(11)$의 값은?",
+      "choices": [
+        "$6$",
+        "$9$",
+        "$10$",
+        "$12$",
+        "$15$"
+      ],
+      "answer": "④",
+      "solution": "그래프에서 $f(2)=4$, $f(5)=7$, $f(8)=11$임을 읽는다.\n$f(8)=11$이므로 $f^{-1}(11)=8$이다.\n따라서 $f(2)+f^{-1}(11)=4+8=12$이다.\n따라서 정답은 ④이다.",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A2-problem.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A2-solution.svg",
+      "solutionImageAlt": "함수 그래프의 점과 역함수로 읽는 x좌표의 관계",
+      "solutionImageCaption": "그래프에서 f(x)=y이면 역함수의 값은 f⁻¹(y)=x이다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "역함수 구하기와 함수값",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "rpmRecordMappingStatus": "GENERATED_L4_ACTIVE_RPM_PARENT",
+        "metaFoundationL3": "역함수 구하기와 함수값",
+        "metaFoundationL4": "그래프·대응도에서 역함숫값 읽기",
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+        "crossConceptKeys": [
+          "CC_ONE_TO_ONE_FUNCTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [],
+        "crossConceptRoleEvidence": "일대일 조건으로 표시된 역함숫값을 단일하게 읽음",
+        "generatedExtL4Id": "EXT-L4-JEIL25-Q12-INVERSE-POINT-VALUE",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q12-INVERSE-POINT-VALUE",
+        "effectiveL4Authority": "GENERATED_ACTIVE_NEW",
+        "rpmReferenceRole": "CANONICAL_PARENT_RPM_NOT_EXACT_L4",
+        "primaryL3Id": "H1-RPM-256",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "primaryL3DecisiveSemantic": "역함수 구하기와 함수값",
+        "rpmL4ReferenceId": "H1-RPM-256",
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED",
+        "metaRegistryAuthority": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_GENERATED_META_REGISTRY_v1.json",
+        "canonicalPtTplStatus": "ACTIVE_CANONICAL_BOTH",
+        "conditionApplicabilityStatus": "NOT_APPLICABLE",
+        "crossConceptApplicabilityStatus": "APPLIED",
+        "previousMetadataDebtResolved": {
+          "priorFields": [
+            "RPM_EXACT_L4_BINDING"
+          ],
+          "resolution": "GENERATED_EXT_L4_OR_CANONICAL_ALIGNMENT",
+          "sourceStage": "CREATE_AUTHOR_META_REPAIR"
+        },
+        "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_GRAPH_VALUE"
+      },
+      "review": {
+        "reverseStem": "REVISED: 역함수의 x좌표 읽기, 값 계산, 5지 정답 유일성, 오답 산출 근거 재확인. 문제/해설 그림의 x:y 단위축척을 1:1로 조정.",
+        "mathSelfCheckEvidence": {
+          "domain": [
+            0,
+            10
+          ],
+          "points": [
+            [
+              0,
+              1
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              8,
+              11
+            ],
+            [
+              10,
+              13
+            ]
+          ],
+          "strictlyIncreasing": true,
+          "f2": 4,
+          "f5": 7,
+          "f8": 11,
+          "computedAnswer": 12,
+          "correctChoice": 4,
+          "inverseByObservedOutput": {
+            "4": 2,
+            "7": 5,
+            "11": 8
+          },
+          "previousWrongRoutesAndChoiceIndex": "SUPERSEDED"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 6,
+            "incorrectArithmetic": "4+2=6",
+            "arithmeticTerms": [
+              4,
+              2
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "②",
+            "offeredValue": 9,
+            "incorrectArithmetic": "4+5=9",
+            "arithmeticTerms": [
+              4,
+              5
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "③",
+            "offeredValue": 10,
+            "incorrectArithmetic": "2+8=10",
+            "arithmeticTerms": [
+              2,
+              8
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 15,
+            "incorrectArithmetic": "4+11=15",
+            "arithmeticTerms": [
+              4,
+              11
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          }
+        ],
+        "problemVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A2-problem.svg",
+          "reason": "원본 그래프 정보가 필요하며 표시된 점의 x/y 위치를 해석해야 함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A2-solution.svg",
+          "reason": "그래프의 수평/수직 값 읽기와 역함수 변환을 보조"
+        },
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "primaryL3": "H1-RPM-256",
+          "correct": 12,
+          "answer": "④",
+          "incorrectCalculations": [
+            [
+              "①",
+              "4+2=6"
+            ],
+            [
+              "②",
+              "4+5=9"
+            ],
+            [
+              "③",
+              "2+8=10"
+            ],
+            [
+              "⑤",
+              "4+11=15"
+            ]
+          ],
+          "wrongRouteCoverage": "4/4",
+          "sourceGraphPoints": [
+            [
+              0,
+              1
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              8,
+              11
+            ],
+            [
+              10,
+              13
+            ]
+          ],
+          "graphScale": {
+            "x": 14,
+            "y": 14
+          },
+          "svgRebuilt": "PROBLEM_AND_SOLUTION",
+          "oldLevel": "중",
+          "newLevel": "중",
+          "oldDifficulty": 2,
+          "newDifficulty": 2,
+          "affectedPriorEvidence": "SUPERSEDED",
+          "externalQuality": "NOT_RUN",
+          "browser": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q11_Q15_OPENBOOK_REVIEW_20261013.json"
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-JEIL25-2FINAL-Q12-A3",
+      "sourceQid": 12,
+      "sourceUid": "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+      "slot": "A3",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f:[0,10]\\to\\mathbb R$의 그래프와 직선 $y=x$가 그림과 같다. 함수 $f$는 일대일함수이며, 그래프의 표시된 점은 $(2,5)$, $(5,8)$, $(8,13)$이다. $f(2)+f^{-1}(13)$의 값은?",
+      "choices": [
+        "$7$",
+        "$10$",
+        "$13$",
+        "$16$",
+        "$18$"
+      ],
+      "answer": "③",
+      "solution": "그래프에서 $f(2)=5$, $f(5)=8$, $f(8)=13$임을 읽는다.\n$f(8)=13$이므로 $f^{-1}(13)=8$이다.\n따라서 $f(2)+f^{-1}(13)=5+8=13$이다.\n따라서 정답은 ③이다.",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A3-problem.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A3-solution.svg",
+      "solutionImageAlt": "함수 그래프의 점과 역함수로 읽는 x좌표의 관계",
+      "solutionImageCaption": "그래프에서 f(x)=y이면 역함수의 값은 f⁻¹(y)=x이다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "역함수 구하기와 함수값",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "rpmRecordMappingStatus": "GENERATED_L4_ACTIVE_RPM_PARENT",
+        "metaFoundationL3": "역함수 구하기와 함수값",
+        "metaFoundationL4": "그래프·대응도에서 역함숫값 읽기",
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+        "crossConceptKeys": [
+          "CC_ONE_TO_ONE_FUNCTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [],
+        "crossConceptRoleEvidence": "일대일 조건으로 표시된 역함숫값을 단일하게 읽음",
+        "generatedExtL4Id": "EXT-L4-JEIL25-Q12-INVERSE-POINT-VALUE",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q12-INVERSE-POINT-VALUE",
+        "effectiveL4Authority": "GENERATED_ACTIVE_NEW",
+        "rpmReferenceRole": "CANONICAL_PARENT_RPM_NOT_EXACT_L4",
+        "primaryL3Id": "H1-RPM-256",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "primaryL3DecisiveSemantic": "역함수 구하기와 함수값",
+        "rpmL4ReferenceId": "H1-RPM-256",
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED",
+        "metaRegistryAuthority": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_GENERATED_META_REGISTRY_v1.json",
+        "canonicalPtTplStatus": "ACTIVE_CANONICAL_BOTH",
+        "conditionApplicabilityStatus": "NOT_APPLICABLE",
+        "crossConceptApplicabilityStatus": "APPLIED",
+        "previousMetadataDebtResolved": {
+          "priorFields": [
+            "RPM_EXACT_L4_BINDING"
+          ],
+          "resolution": "GENERATED_EXT_L4_OR_CANONICAL_ALIGNMENT",
+          "sourceStage": "CREATE_AUTHOR_META_REPAIR"
+        },
+        "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_GRAPH_VALUE"
+      },
+      "review": {
+        "reverseStem": "REVISED: 역함수의 x좌표 읽기, 값 계산, 5지 정답 유일성, 오답 산출 근거 재확인. 문제/해설 그림의 x:y 단위축척을 1:1로 조정.",
+        "mathSelfCheckEvidence": {
+          "domain": [
+            0,
+            10
+          ],
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              5,
+              8
+            ],
+            [
+              8,
+              13
+            ],
+            [
+              10,
+              15
+            ]
+          ],
+          "strictlyIncreasing": true,
+          "f2": 5,
+          "f5": 8,
+          "f8": 13,
+          "computedAnswer": 13,
+          "correctChoice": 3,
+          "inverseByObservedOutput": {
+            "5": 2,
+            "8": 5,
+            "13": 8
+          },
+          "previousWrongRoutesAndChoiceIndex": "SUPERSEDED"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 7,
+            "incorrectArithmetic": "5+2=7",
+            "arithmeticTerms": [
+              5,
+              2
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "②",
+            "offeredValue": 10,
+            "incorrectArithmetic": "5+5=10",
+            "arithmeticTerms": [
+              5,
+              5
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "④",
+            "offeredValue": 16,
+            "incorrectArithmetic": "8+8=16",
+            "arithmeticTerms": [
+              8,
+              8
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 18,
+            "incorrectArithmetic": "5+13=18",
+            "arithmeticTerms": [
+              5,
+              13
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          }
+        ],
+        "problemVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A3-problem.svg",
+          "reason": "원본 그래프 정보가 필요하며 표시된 점의 x/y 위치를 해석해야 함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/A3-solution.svg",
+          "reason": "그래프의 수평/수직 값 읽기와 역함수 변환을 보조"
+        },
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "primaryL3": "H1-RPM-256",
+          "correct": 13,
+          "answer": "③",
+          "incorrectCalculations": [
+            [
+              "①",
+              "5+2=7"
+            ],
+            [
+              "②",
+              "5+5=10"
+            ],
+            [
+              "④",
+              "8+8=16"
+            ],
+            [
+              "⑤",
+              "5+13=18"
+            ]
+          ],
+          "wrongRouteCoverage": "4/4",
+          "sourceGraphPoints": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              5,
+              8
+            ],
+            [
+              8,
+              13
+            ],
+            [
+              10,
+              15
+            ]
+          ],
+          "graphScale": {
+            "x": 14,
+            "y": 14
+          },
+          "svgRebuilt": "PROBLEM_AND_SOLUTION",
+          "oldLevel": "중",
+          "newLevel": "중",
+          "oldDifficulty": 2,
+          "newDifficulty": 2,
+          "affectedPriorEvidence": "SUPERSEDED",
+          "externalQuality": "NOT_RUN",
+          "browser": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q11_Q15_OPENBOOK_REVIEW_20261013.json"
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-JEIL25-2FINAL-Q12-B1",
+      "sourceQid": 12,
+      "sourceUid": "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+      "slot": "B1",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f:[0,10]\\to\\mathbb R$의 그래프와 직선 $y=x$가 그림과 같다. 함수 $f$는 일대일함수이며, 표시된 점은 $(2,4)$, $(5,10)$, $(8,15)$이다. $f(5)+f^{-1}(15)-f^{-1}(4)$의 값은?",
+      "choices": [
+        "$16$",
+        "$18$",
+        "$20$",
+        "$21$",
+        "$23$"
+      ],
+      "answer": "①",
+      "solution": "그래프에서 $f(2)=4$, $f(5)=10$, $f(8)=15$임을 읽는다.\n$f(8)=15$, $f(2)=4$이므로 $f^{-1}(15)=8$, $f^{-1}(4)=2$이다.\n따라서 $f(5)+f^{-1}(15)-f^{-1}(4)=10+8-2=16$이다.\n따라서 정답은 ①이다.",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B1-problem.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B1-solution.svg",
+      "solutionImageAlt": "함수 그래프의 점과 역함수로 읽는 x좌표의 관계",
+      "solutionImageCaption": "그래프에서 f(x)=y이면 역함수의 값은 f⁻¹(y)=x이다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "역함수 구하기와 함수값",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "rpmRecordMappingStatus": "GENERATED_L4_ACTIVE_RPM_PARENT",
+        "metaFoundationL3": "역함수 구하기와 함수값",
+        "metaFoundationL4": "그래프·대응도에서 역함숫값 읽기",
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+        "crossConceptKeys": [
+          "CC_ONE_TO_ONE_FUNCTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [],
+        "crossConceptRoleEvidence": "일대일 조건으로 표시된 역함숫값을 단일하게 읽음",
+        "generatedExtL4Id": "EXT-L4-JEIL25-Q12-INVERSE-MULTI-POINT",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q12-INVERSE-MULTI-POINT",
+        "effectiveL4Authority": "GENERATED_ACTIVE_NEW",
+        "rpmReferenceRole": "CANONICAL_PARENT_RPM_NOT_EXACT_L4",
+        "primaryL3Id": "H1-RPM-256",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "primaryL3DecisiveSemantic": "역함수 구하기와 함수값",
+        "rpmL4ReferenceId": "H1-RPM-256",
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED",
+        "metaRegistryAuthority": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_GENERATED_META_REGISTRY_v1.json",
+        "canonicalPtTplStatus": "ACTIVE_CANONICAL_BOTH",
+        "conditionApplicabilityStatus": "NOT_APPLICABLE",
+        "crossConceptApplicabilityStatus": "APPLIED",
+        "previousMetadataDebtResolved": {
+          "priorFields": [
+            "RPM_EXACT_L4_BINDING"
+          ],
+          "resolution": "GENERATED_EXT_L4_OR_CANONICAL_ALIGNMENT",
+          "sourceStage": "CREATE_AUTHOR_META_REPAIR"
+        },
+        "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_GRAPH_VALUE"
+      },
+      "review": {
+        "reverseStem": "REVISED: 역함수의 x좌표 읽기, 값 계산, 5지 정답 유일성, 오답 산출 근거 재확인. 문제/해설 그림의 x:y 단위축척을 1:1로 조정.",
+        "mathSelfCheckEvidence": {
+          "domain": [
+            0,
+            10
+          ],
+          "points": [
+            [
+              0,
+              1
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              5,
+              10
+            ],
+            [
+              8,
+              15
+            ],
+            [
+              10,
+              17
+            ]
+          ],
+          "strictlyIncreasing": true,
+          "f2": 4,
+          "f5": 10,
+          "f8": 15,
+          "computedAnswer": 16,
+          "correctChoice": 1,
+          "inverseByObservedOutput": {
+            "4": 2,
+            "10": 5,
+            "15": 8
+          },
+          "previousWrongRoutesAndChoiceIndex": "SUPERSEDED"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "②",
+            "offeredValue": 18,
+            "incorrectArithmetic": "10+8=18",
+            "arithmeticTerms": [
+              10,
+              8
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "③",
+            "offeredValue": 20,
+            "incorrectArithmetic": "10+8+2=20",
+            "arithmeticTerms": [
+              10,
+              8,
+              2
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "④",
+            "offeredValue": 21,
+            "incorrectArithmetic": "15+8-2=21",
+            "arithmeticTerms": [
+              15,
+              8,
+              -2
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 23,
+            "incorrectArithmetic": "10+15-2=23",
+            "arithmeticTerms": [
+              10,
+              15,
+              -2
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          }
+        ],
+        "problemVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B1-problem.svg",
+          "reason": "원본 그래프 정보가 필요하며 표시된 점의 x/y 위치를 해석해야 함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B1-solution.svg",
+          "reason": "그래프의 수평/수직 값 읽기와 역함수 변환을 보조"
+        },
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "primaryL3": "H1-RPM-256",
+          "correct": 16,
+          "answer": "①",
+          "incorrectCalculations": [
+            [
+              "②",
+              "10+8=18"
+            ],
+            [
+              "③",
+              "10+8+2=20"
+            ],
+            [
+              "④",
+              "15+8-2=21"
+            ],
+            [
+              "⑤",
+              "10+15-2=23"
+            ]
+          ],
+          "wrongRouteCoverage": "4/4",
+          "sourceGraphPoints": [
+            [
+              0,
+              1
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              5,
+              10
+            ],
+            [
+              8,
+              15
+            ],
+            [
+              10,
+              17
+            ]
+          ],
+          "graphScale": {
+            "x": 14,
+            "y": 14
+          },
+          "svgRebuilt": "PROBLEM_AND_SOLUTION",
+          "oldLevel": "중",
+          "newLevel": "중",
+          "oldDifficulty": 3,
+          "newDifficulty": 3,
+          "affectedPriorEvidence": "SUPERSEDED",
+          "externalQuality": "NOT_RUN",
+          "browser": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q11_Q15_OPENBOOK_REVIEW_20261013.json"
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-JEIL25-2FINAL-Q12-B2",
+      "sourceQid": 12,
+      "sourceUid": "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+      "slot": "B2",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f:[0,10]\\to\\mathbb R$의 그래프와 직선 $y=x$가 그림과 같다. 함수 $f$는 일대일함수이며, 표시된 점은 $(2,3)$, $(5,8)$, $(8,12)$이다. $f(5)+f^{-1}(12)-f^{-1}(3)$의 값은?",
+      "choices": [
+        "$11$",
+        "$13$",
+        "$14$",
+        "$16$",
+        "$18$"
+      ],
+      "answer": "③",
+      "solution": "그래프에서 $f(2)=3$, $f(5)=8$, $f(8)=12$임을 읽는다.\n$f(8)=12$, $f(2)=3$이므로 $f^{-1}(12)=8$, $f^{-1}(3)=2$이다.\n따라서 $f(5)+f^{-1}(12)-f^{-1}(3)=8+8-2=14$이다.\n따라서 정답은 ③이다.",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B2-problem.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B2-solution.svg",
+      "solutionImageAlt": "함수 그래프의 점과 역함수로 읽는 x좌표의 관계",
+      "solutionImageCaption": "그래프에서 f(x)=y이면 역함수의 값은 f⁻¹(y)=x이다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "역함수 구하기와 함수값",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "rpmRecordMappingStatus": "GENERATED_L4_ACTIVE_RPM_PARENT",
+        "metaFoundationL3": "역함수 구하기와 함수값",
+        "metaFoundationL4": "그래프·대응도에서 역함숫값 읽기",
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+        "crossConceptKeys": [
+          "CC_ONE_TO_ONE_FUNCTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [],
+        "crossConceptRoleEvidence": "일대일 조건으로 표시된 역함숫값을 단일하게 읽음",
+        "generatedExtL4Id": "EXT-L4-JEIL25-Q12-INVERSE-MULTI-POINT",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q12-INVERSE-MULTI-POINT",
+        "effectiveL4Authority": "GENERATED_ACTIVE_NEW",
+        "rpmReferenceRole": "CANONICAL_PARENT_RPM_NOT_EXACT_L4",
+        "primaryL3Id": "H1-RPM-256",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "primaryL3DecisiveSemantic": "역함수 구하기와 함수값",
+        "rpmL4ReferenceId": "H1-RPM-256",
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED",
+        "metaRegistryAuthority": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_GENERATED_META_REGISTRY_v1.json",
+        "canonicalPtTplStatus": "ACTIVE_CANONICAL_BOTH",
+        "conditionApplicabilityStatus": "NOT_APPLICABLE",
+        "crossConceptApplicabilityStatus": "APPLIED",
+        "previousMetadataDebtResolved": {
+          "priorFields": [
+            "RPM_EXACT_L4_BINDING"
+          ],
+          "resolution": "GENERATED_EXT_L4_OR_CANONICAL_ALIGNMENT",
+          "sourceStage": "CREATE_AUTHOR_META_REPAIR"
+        },
+        "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_GRAPH_VALUE"
+      },
+      "review": {
+        "reverseStem": "REVISED: 역함수의 x좌표 읽기, 값 계산, 5지 정답 유일성, 오답 산출 근거 재확인. 문제/해설 그림의 x:y 단위축척을 1:1로 조정.",
+        "mathSelfCheckEvidence": {
+          "domain": [
+            0,
+            10
+          ],
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              5,
+              8
+            ],
+            [
+              8,
+              12
+            ],
+            [
+              10,
+              15
+            ]
+          ],
+          "strictlyIncreasing": true,
+          "f2": 3,
+          "f5": 8,
+          "f8": 12,
+          "computedAnswer": 14,
+          "correctChoice": 3,
+          "inverseByObservedOutput": {
+            "3": 2,
+            "8": 5,
+            "12": 8
+          },
+          "previousWrongRoutesAndChoiceIndex": "SUPERSEDED"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 11,
+            "incorrectArithmetic": "8+5-2=11",
+            "arithmeticTerms": [
+              8,
+              5,
+              -2
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "②",
+            "offeredValue": 13,
+            "incorrectArithmetic": "8+8-3=13",
+            "arithmeticTerms": [
+              8,
+              8,
+              -3
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "④",
+            "offeredValue": 16,
+            "incorrectArithmetic": "8+8=16",
+            "arithmeticTerms": [
+              8,
+              8
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 18,
+            "incorrectArithmetic": "8+12-2=18",
+            "arithmeticTerms": [
+              8,
+              12,
+              -2
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          }
+        ],
+        "problemVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B2-problem.svg",
+          "reason": "원본 그래프 정보가 필요하며 표시된 점의 x/y 위치를 해석해야 함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B2-solution.svg",
+          "reason": "그래프의 수평/수직 값 읽기와 역함수 변환을 보조"
+        },
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "primaryL3": "H1-RPM-256",
+          "correct": 14,
+          "answer": "③",
+          "incorrectCalculations": [
+            [
+              "①",
+              "8+5-2=11"
+            ],
+            [
+              "②",
+              "8+8-3=13"
+            ],
+            [
+              "④",
+              "8+8=16"
+            ],
+            [
+              "⑤",
+              "8+12-2=18"
+            ]
+          ],
+          "wrongRouteCoverage": "4/4",
+          "sourceGraphPoints": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              5,
+              8
+            ],
+            [
+              8,
+              12
+            ],
+            [
+              10,
+              15
+            ]
+          ],
+          "graphScale": {
+            "x": 14,
+            "y": 14
+          },
+          "svgRebuilt": "PROBLEM_AND_SOLUTION",
+          "oldLevel": "중",
+          "newLevel": "중",
+          "oldDifficulty": 3,
+          "newDifficulty": 3,
+          "affectedPriorEvidence": "SUPERSEDED",
+          "externalQuality": "NOT_RUN",
+          "browser": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q11_Q15_OPENBOOK_REVIEW_20261013.json"
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-JEIL25-2FINAL-Q12-B3",
+      "sourceQid": 12,
+      "sourceUid": "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+      "slot": "B3",
+      "purpose": "B",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f:[0,10]\\to\\mathbb R$의 그래프와 직선 $y=x$가 그림과 같다. 함수 $f$는 일대일함수이며, 표시된 점은 $(2,6)$, $(5,11)$, $(8,17)$이다. $f(5)+f^{-1}(17)-f^{-1}(6)$의 값은?",
+      "choices": [
+        "$13$",
+        "$14$",
+        "$15$",
+        "$17$",
+        "$19$"
+      ],
+      "answer": "④",
+      "solution": "그래프에서 $f(2)=6$, $f(5)=11$, $f(8)=17$임을 읽는다.\n$f(8)=17$, $f(2)=6$이므로 $f^{-1}(17)=8$, $f^{-1}(6)=2$이다.\n따라서 $f(5)+f^{-1}(17)-f^{-1}(6)=11+8-2=17$이다.\n따라서 정답은 ④이다.",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B3-problem.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B3-solution.svg",
+      "solutionImageAlt": "함수 그래프의 점과 역함수로 읽는 x좌표의 관계",
+      "solutionImageCaption": "그래프에서 f(x)=y이면 역함수의 값은 f⁻¹(y)=x이다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "역함수 구하기와 함수값",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "rpmRecordMappingStatus": "GENERATED_L4_ACTIVE_RPM_PARENT",
+        "metaFoundationL3": "역함수 구하기와 함수값",
+        "metaFoundationL4": "그래프·대응도에서 역함숫값 읽기",
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+        "crossConceptKeys": [
+          "CC_ONE_TO_ONE_FUNCTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [],
+        "crossConceptRoleEvidence": "일대일 조건으로 표시된 역함숫값을 단일하게 읽음",
+        "generatedExtL4Id": "EXT-L4-JEIL25-Q12-INVERSE-MULTI-POINT",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q12-INVERSE-MULTI-POINT",
+        "effectiveL4Authority": "GENERATED_ACTIVE_NEW",
+        "rpmReferenceRole": "CANONICAL_PARENT_RPM_NOT_EXACT_L4",
+        "primaryL3Id": "H1-RPM-256",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "primaryL3DecisiveSemantic": "역함수 구하기와 함수값",
+        "rpmL4ReferenceId": "H1-RPM-256",
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED",
+        "metaRegistryAuthority": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_GENERATED_META_REGISTRY_v1.json",
+        "canonicalPtTplStatus": "ACTIVE_CANONICAL_BOTH",
+        "conditionApplicabilityStatus": "NOT_APPLICABLE",
+        "crossConceptApplicabilityStatus": "APPLIED",
+        "previousMetadataDebtResolved": {
+          "priorFields": [
+            "RPM_EXACT_L4_BINDING"
+          ],
+          "resolution": "GENERATED_EXT_L4_OR_CANONICAL_ALIGNMENT",
+          "sourceStage": "CREATE_AUTHOR_META_REPAIR"
+        },
+        "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_GRAPH_VALUE"
+      },
+      "review": {
+        "reverseStem": "REVISED: 역함수의 x좌표 읽기, 값 계산, 5지 정답 유일성, 오답 산출 근거 재확인. 문제/해설 그림의 x:y 단위축척을 1:1로 조정.",
+        "mathSelfCheckEvidence": {
+          "domain": [
+            0,
+            10
+          ],
+          "points": [
+            [
+              0,
+              2
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              5,
+              11
+            ],
+            [
+              8,
+              17
+            ],
+            [
+              10,
+              18
+            ]
+          ],
+          "strictlyIncreasing": true,
+          "f2": 6,
+          "f5": 11,
+          "f8": 17,
+          "computedAnswer": 17,
+          "correctChoice": 4,
+          "inverseByObservedOutput": {
+            "6": 2,
+            "11": 5,
+            "17": 8
+          },
+          "previousWrongRoutesAndChoiceIndex": "SUPERSEDED"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 13,
+            "incorrectArithmetic": "11+8-6=13",
+            "arithmeticTerms": [
+              11,
+              8,
+              -6
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "②",
+            "offeredValue": 14,
+            "incorrectArithmetic": "11+5-2=14",
+            "arithmeticTerms": [
+              11,
+              5,
+              -2
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "③",
+            "offeredValue": 15,
+            "incorrectArithmetic": "11+6-2=15",
+            "arithmeticTerms": [
+              11,
+              6,
+              -2
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 19,
+            "incorrectArithmetic": "11+8=19",
+            "arithmeticTerms": [
+              11,
+              8
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          }
+        ],
+        "problemVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B3-problem.svg",
+          "reason": "원본 그래프 정보가 필요하며 표시된 점의 x/y 위치를 해석해야 함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/B3-solution.svg",
+          "reason": "그래프의 수평/수직 값 읽기와 역함수 변환을 보조"
+        },
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "primaryL3": "H1-RPM-256",
+          "correct": 17,
+          "answer": "④",
+          "incorrectCalculations": [
+            [
+              "①",
+              "11+8-6=13"
+            ],
+            [
+              "②",
+              "11+5-2=14"
+            ],
+            [
+              "③",
+              "11+6-2=15"
+            ],
+            [
+              "⑤",
+              "11+8=19"
+            ]
+          ],
+          "wrongRouteCoverage": "4/4",
+          "sourceGraphPoints": [
+            [
+              0,
+              2
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              5,
+              11
+            ],
+            [
+              8,
+              17
+            ],
+            [
+              10,
+              18
+            ]
+          ],
+          "graphScale": {
+            "x": 14,
+            "y": 14
+          },
+          "svgRebuilt": "PROBLEM_AND_SOLUTION",
+          "oldLevel": "중",
+          "newLevel": "중",
+          "oldDifficulty": 3,
+          "newDifficulty": 3,
+          "affectedPriorEvidence": "SUPERSEDED",
+          "externalQuality": "NOT_RUN",
+          "browser": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q11_Q15_OPENBOOK_REVIEW_20261013.json"
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-JEIL25-2FINAL-Q12-C1",
+      "sourceQid": 12,
+      "sourceUid": "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+      "slot": "C1",
+      "purpose": "C",
+      "modeCandidate": "PLUS_ONE",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f:[0,10]\\to\\mathbb R$의 그래프와 직선 $y=x$가 그림과 같다. 함수 $f$는 일대일함수이며, 표시된 점은 $(2,4)$, $(5,9)$, $(8,14)$이다. $f(2)+f^{-1}(9)+f^{-1}(14)$의 값은?",
+      "choices": [
+        "$14$",
+        "$17$",
+        "$20$",
+        "$21$",
+        "$23$"
+      ],
+      "answer": "②",
+      "solution": "그래프에서 $f(2)=4$, $f(5)=9$, $f(8)=14$임을 읽는다.\n$f(5)=9$, $f(8)=14$이므로 $f^{-1}(9)=5$, $f^{-1}(14)=8$이다.\n따라서 $f(2)+f^{-1}(9)+f^{-1}(14)=4+5+8=17$이다.\n따라서 정답은 ②이다.",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C1-problem.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C1-solution.svg",
+      "solutionImageAlt": "함수 그래프의 점과 역함수로 읽는 x좌표의 관계",
+      "solutionImageCaption": "그래프에서 f(x)=y이면 역함수의 값은 f⁻¹(y)=x이다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "역함수 구하기와 함수값",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "rpmRecordMappingStatus": "GENERATED_L4_ACTIVE_RPM_PARENT",
+        "metaFoundationL3": "역함수 구하기와 함수값",
+        "metaFoundationL4": "그래프·대응도에서 역함숫값 읽기",
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+        "crossConceptKeys": [
+          "CC_ONE_TO_ONE_FUNCTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [],
+        "crossConceptRoleEvidence": "일대일 조건으로 표시된 역함숫값을 단일하게 읽음",
+        "generatedExtL4Id": "EXT-L4-JEIL25-Q12-INVERSE-MULTI-POINT",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q12-INVERSE-MULTI-POINT",
+        "effectiveL4Authority": "GENERATED_ACTIVE_NEW",
+        "rpmReferenceRole": "CANONICAL_PARENT_RPM_NOT_EXACT_L4",
+        "primaryL3Id": "H1-RPM-256",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "primaryL3DecisiveSemantic": "역함수 구하기와 함수값",
+        "rpmL4ReferenceId": "H1-RPM-256",
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED",
+        "metaRegistryAuthority": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_GENERATED_META_REGISTRY_v1.json",
+        "canonicalPtTplStatus": "ACTIVE_CANONICAL_BOTH",
+        "conditionApplicabilityStatus": "NOT_APPLICABLE",
+        "crossConceptApplicabilityStatus": "APPLIED",
+        "previousMetadataDebtResolved": {
+          "priorFields": [
+            "RPM_EXACT_L4_BINDING"
+          ],
+          "resolution": "GENERATED_EXT_L4_OR_CANONICAL_ALIGNMENT",
+          "sourceStage": "CREATE_AUTHOR_META_REPAIR"
+        },
+        "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_GRAPH_VALUE"
+      },
+      "review": {
+        "reverseStem": "REVISED: 역함수의 x좌표 읽기, 값 계산, 5지 정답 유일성, 오답 산출 근거 재확인. 문제/해설 그림의 x:y 단위축척을 1:1로 조정.",
+        "mathSelfCheckEvidence": {
+          "domain": [
+            0,
+            10
+          ],
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              5,
+              9
+            ],
+            [
+              8,
+              14
+            ],
+            [
+              10,
+              18
+            ]
+          ],
+          "strictlyIncreasing": true,
+          "f2": 4,
+          "f5": 9,
+          "f8": 14,
+          "computedAnswer": 17,
+          "correctChoice": 2,
+          "inverseByObservedOutput": {
+            "4": 2,
+            "9": 5,
+            "14": 8
+          },
+          "previousWrongRoutesAndChoiceIndex": "SUPERSEDED"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 14,
+            "incorrectArithmetic": "4+5+5=14",
+            "arithmeticTerms": [
+              4,
+              5,
+              5
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "③",
+            "offeredValue": 20,
+            "incorrectArithmetic": "4+8+8=20",
+            "arithmeticTerms": [
+              4,
+              8,
+              8
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "④",
+            "offeredValue": 21,
+            "incorrectArithmetic": "4+9+8=21",
+            "arithmeticTerms": [
+              4,
+              9,
+              8
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 23,
+            "incorrectArithmetic": "4+5+14=23",
+            "arithmeticTerms": [
+              4,
+              5,
+              14
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          }
+        ],
+        "problemVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C1-problem.svg",
+          "reason": "원본 그래프 정보가 필요하며 표시된 점의 x/y 위치를 해석해야 함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C1-solution.svg",
+          "reason": "그래프의 수평/수직 값 읽기와 역함수 변환을 보조"
+        },
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "primaryL3": "H1-RPM-256",
+          "correct": 17,
+          "answer": "②",
+          "incorrectCalculations": [
+            [
+              "①",
+              "4+5+5=14"
+            ],
+            [
+              "③",
+              "4+8+8=20"
+            ],
+            [
+              "④",
+              "4+9+8=21"
+            ],
+            [
+              "⑤",
+              "4+5+14=23"
+            ]
+          ],
+          "wrongRouteCoverage": "4/4",
+          "sourceGraphPoints": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              5,
+              9
+            ],
+            [
+              8,
+              14
+            ],
+            [
+              10,
+              18
+            ]
+          ],
+          "graphScale": {
+            "x": 14,
+            "y": 14
+          },
+          "svgRebuilt": "PROBLEM_AND_SOLUTION",
+          "oldLevel": "상",
+          "newLevel": "중",
+          "oldDifficulty": 4,
+          "newDifficulty": 3,
+          "affectedPriorEvidence": "SUPERSEDED",
+          "externalQuality": "NOT_RUN",
+          "browser": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q11_Q15_OPENBOOK_REVIEW_20261013.json"
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-JEIL25-2FINAL-Q12-C2",
+      "sourceQid": 12,
+      "sourceUid": "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+      "slot": "C2",
+      "purpose": "C",
+      "modeCandidate": "PLUS_ONE",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f:[0,10]\\to\\mathbb R$의 그래프와 직선 $y=x$가 그림과 같다. 함수 $f$는 일대일함수이며, 표시된 점은 $(2,5)$, $(5,11)$, $(8,16)$이다. $f(2)+f^{-1}(11)+f^{-1}(16)$의 값은?",
+      "choices": [
+        "$15$",
+        "$18$",
+        "$21$",
+        "$24$",
+        "$26$"
+      ],
+      "answer": "②",
+      "solution": "그래프에서 $f(2)=5$, $f(5)=11$, $f(8)=16$임을 읽는다.\n$f(5)=11$, $f(8)=16$이므로 $f^{-1}(11)=5$, $f^{-1}(16)=8$이다.\n따라서 $f(2)+f^{-1}(11)+f^{-1}(16)=5+5+8=18$이다.\n따라서 정답은 ②이다.",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C2-problem.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C2-solution.svg",
+      "solutionImageAlt": "함수 그래프의 점과 역함수로 읽는 x좌표의 관계",
+      "solutionImageCaption": "그래프에서 f(x)=y이면 역함수의 값은 f⁻¹(y)=x이다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "역함수 구하기와 함수값",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "rpmRecordMappingStatus": "GENERATED_L4_ACTIVE_RPM_PARENT",
+        "metaFoundationL3": "역함수 구하기와 함수값",
+        "metaFoundationL4": "그래프·대응도에서 역함숫값 읽기",
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+        "crossConceptKeys": [
+          "CC_ONE_TO_ONE_FUNCTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [],
+        "crossConceptRoleEvidence": "일대일 조건으로 표시된 역함숫값을 단일하게 읽음",
+        "generatedExtL4Id": "EXT-L4-JEIL25-Q12-INVERSE-MULTI-POINT",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q12-INVERSE-MULTI-POINT",
+        "effectiveL4Authority": "GENERATED_ACTIVE_NEW",
+        "rpmReferenceRole": "CANONICAL_PARENT_RPM_NOT_EXACT_L4",
+        "primaryL3Id": "H1-RPM-256",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "primaryL3DecisiveSemantic": "역함수 구하기와 함수값",
+        "rpmL4ReferenceId": "H1-RPM-256",
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED",
+        "metaRegistryAuthority": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_GENERATED_META_REGISTRY_v1.json",
+        "canonicalPtTplStatus": "ACTIVE_CANONICAL_BOTH",
+        "conditionApplicabilityStatus": "NOT_APPLICABLE",
+        "crossConceptApplicabilityStatus": "APPLIED",
+        "previousMetadataDebtResolved": {
+          "priorFields": [
+            "RPM_EXACT_L4_BINDING"
+          ],
+          "resolution": "GENERATED_EXT_L4_OR_CANONICAL_ALIGNMENT",
+          "sourceStage": "CREATE_AUTHOR_META_REPAIR"
+        },
+        "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_GRAPH_VALUE"
+      },
+      "review": {
+        "reverseStem": "REVISED: 역함수의 x좌표 읽기, 값 계산, 5지 정답 유일성, 오답 산출 근거 재확인. 문제/해설 그림의 x:y 단위축척을 1:1로 조정.",
+        "mathSelfCheckEvidence": {
+          "domain": [
+            0,
+            10
+          ],
+          "points": [
+            [
+              0,
+              2
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              5,
+              11
+            ],
+            [
+              8,
+              16
+            ],
+            [
+              10,
+              19
+            ]
+          ],
+          "strictlyIncreasing": true,
+          "f2": 5,
+          "f5": 11,
+          "f8": 16,
+          "computedAnswer": 18,
+          "correctChoice": 2,
+          "inverseByObservedOutput": {
+            "5": 2,
+            "11": 5,
+            "16": 8
+          },
+          "previousWrongRoutesAndChoiceIndex": "SUPERSEDED"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 15,
+            "incorrectArithmetic": "5+5+5=15",
+            "arithmeticTerms": [
+              5,
+              5,
+              5
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "③",
+            "offeredValue": 21,
+            "incorrectArithmetic": "5+8+8=21",
+            "arithmeticTerms": [
+              5,
+              8,
+              8
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "④",
+            "offeredValue": 24,
+            "incorrectArithmetic": "5+11+8=24",
+            "arithmeticTerms": [
+              5,
+              11,
+              8
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 26,
+            "incorrectArithmetic": "5+5+16=26",
+            "arithmeticTerms": [
+              5,
+              5,
+              16
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          }
+        ],
+        "problemVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C2-problem.svg",
+          "reason": "원본 그래프 정보가 필요하며 표시된 점의 x/y 위치를 해석해야 함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C2-solution.svg",
+          "reason": "그래프의 수평/수직 값 읽기와 역함수 변환을 보조"
+        },
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "primaryL3": "H1-RPM-256",
+          "correct": 18,
+          "answer": "②",
+          "incorrectCalculations": [
+            [
+              "①",
+              "5+5+5=15"
+            ],
+            [
+              "③",
+              "5+8+8=21"
+            ],
+            [
+              "④",
+              "5+11+8=24"
+            ],
+            [
+              "⑤",
+              "5+5+16=26"
+            ]
+          ],
+          "wrongRouteCoverage": "4/4",
+          "sourceGraphPoints": [
+            [
+              0,
+              2
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              5,
+              11
+            ],
+            [
+              8,
+              16
+            ],
+            [
+              10,
+              19
+            ]
+          ],
+          "graphScale": {
+            "x": 14,
+            "y": 14
+          },
+          "svgRebuilt": "PROBLEM_AND_SOLUTION",
+          "oldLevel": "상",
+          "newLevel": "중",
+          "oldDifficulty": 4,
+          "newDifficulty": 3,
+          "affectedPriorEvidence": "SUPERSEDED",
+          "externalQuality": "NOT_RUN",
+          "browser": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q11_Q15_OPENBOOK_REVIEW_20261013.json"
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-JEIL25-2FINAL-Q12-C3",
+      "sourceQid": 12,
+      "sourceUid": "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+      "slot": "C3",
+      "purpose": "C",
+      "modeCandidate": "PLUS_ONE",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f:[0,10]\\to\\mathbb R$의 그래프와 직선 $y=x$가 그림과 같다. 함수 $f$는 일대일함수이며, 표시된 점은 $(2,6)$, $(5,12)$, $(8,18)$이다. $f(2)+f^{-1}(12)+f^{-1}(18)$의 값은?",
+      "choices": [
+        "$13$",
+        "$14$",
+        "$15$",
+        "$16$",
+        "$19$"
+      ],
+      "answer": "⑤",
+      "solution": "그래프에서 $f(2)=6$, $f(5)=12$, $f(8)=18$임을 읽는다.\n$f(5)=12$, $f(8)=18$이므로 $f^{-1}(12)=5$, $f^{-1}(18)=8$이다.\n따라서 $f(2)+f^{-1}(12)+f^{-1}(18)=6+5+8=19$이다.\n따라서 정답은 ⑤이다.",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C3-problem.svg",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C3-solution.svg",
+      "solutionImageAlt": "함수 그래프의 점과 역함수로 읽는 x좌표의 관계",
+      "solutionImageCaption": "그래프에서 f(x)=y이면 역함수의 값은 f⁻¹(y)=x이다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "sourcePrimaryL3Semantic": "역함수 구하기와 함수값",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "rpmRecordMappingStatus": "GENERATED_L4_ACTIVE_RPM_PARENT",
+        "metaFoundationL3": "역함수 구하기와 함수값",
+        "metaFoundationL4": "그래프·대응도에서 역함숫값 읽기",
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+        "crossConceptKeys": [
+          "CC_ONE_TO_ONE_FUNCTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [],
+        "crossConceptRoleEvidence": "일대일 조건으로 표시된 역함숫값을 단일하게 읽음",
+        "generatedExtL4Id": "EXT-L4-JEIL25-Q12-INVERSE-MULTI-POINT",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q12-INVERSE-MULTI-POINT",
+        "effectiveL4Authority": "GENERATED_ACTIVE_NEW",
+        "rpmReferenceRole": "CANONICAL_PARENT_RPM_NOT_EXACT_L4",
+        "primaryL3Id": "H1-RPM-256",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "primaryL3DecisiveSemantic": "역함수 구하기와 함수값",
+        "rpmL4ReferenceId": "H1-RPM-256",
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED",
+        "metaRegistryAuthority": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_GENERATED_META_REGISTRY_v1.json",
+        "canonicalPtTplStatus": "ACTIVE_CANONICAL_BOTH",
+        "conditionApplicabilityStatus": "NOT_APPLICABLE",
+        "crossConceptApplicabilityStatus": "APPLIED",
+        "previousMetadataDebtResolved": {
+          "priorFields": [
+            "RPM_EXACT_L4_BINDING"
+          ],
+          "resolution": "GENERATED_EXT_L4_OR_CANONICAL_ALIGNMENT",
+          "sourceStage": "CREATE_AUTHOR_META_REPAIR"
+        },
+        "legacyRpmRecordMappingStatus": "PARENT_L3_ONLY_NOT_EXACT_GRAPH_VALUE"
+      },
+      "review": {
+        "reverseStem": "REVISED: 역함수의 x좌표 읽기, 값 계산, 5지 정답 유일성, 오답 산출 근거 재확인. 문제/해설 그림의 x:y 단위축척을 1:1로 조정.",
+        "mathSelfCheckEvidence": {
+          "domain": [
+            0,
+            10
+          ],
+          "points": [
+            [
+              0,
+              1
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              5,
+              12
+            ],
+            [
+              8,
+              18
+            ],
+            [
+              10,
+              20
+            ]
+          ],
+          "strictlyIncreasing": true,
+          "f2": 6,
+          "f5": 12,
+          "f8": 18,
+          "computedAnswer": 19,
+          "correctChoice": 5,
+          "inverseByObservedOutput": {
+            "6": 2,
+            "12": 5,
+            "18": 8
+          },
+          "previousWrongRoutesAndChoiceIndex": "SUPERSEDED"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 13,
+            "incorrectArithmetic": "6+5+2=13",
+            "arithmeticTerms": [
+              6,
+              5,
+              2
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "②",
+            "offeredValue": 14,
+            "incorrectArithmetic": "6+8=14",
+            "arithmeticTerms": [
+              6,
+              8
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "③",
+            "offeredValue": 15,
+            "incorrectArithmetic": "2+5+8=15",
+            "arithmeticTerms": [
+              2,
+              5,
+              8
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          },
+          {
+            "choice": "④",
+            "offeredValue": 16,
+            "incorrectArithmetic": "6+2+8=16",
+            "arithmeticTerms": [
+              6,
+              2,
+              8
+            ],
+            "reason": "함숫값·역함숫값 또는 덧셈/뺄셈을 혼동한 오류 계산"
+          }
+        ],
+        "problemVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C3-problem.svg",
+          "reason": "원본 그래프 정보가 필요하며 표시된 점의 x/y 위치를 해석해야 함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q12/C3-solution.svg",
+          "reason": "그래프의 수평/수직 값 읽기와 역함수 변환을 보조"
+        },
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "selfRecheck": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "primaryL3": "H1-RPM-256",
+          "correct": 19,
+          "answer": "⑤",
+          "incorrectCalculations": [
+            [
+              "①",
+              "6+5+2=13"
+            ],
+            [
+              "②",
+              "6+8=14"
+            ],
+            [
+              "③",
+              "2+5+8=15"
+            ],
+            [
+              "④",
+              "6+2+8=16"
+            ]
+          ],
+          "wrongRouteCoverage": "4/4",
+          "sourceGraphPoints": [
+            [
+              0,
+              1
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              5,
+              12
+            ],
+            [
+              8,
+              18
+            ],
+            [
+              10,
+              20
+            ]
+          ],
+          "graphScale": {
+            "x": 14,
+            "y": 14
+          },
+          "svgRebuilt": "PROBLEM_AND_SOLUTION",
+          "oldLevel": "상",
+          "newLevel": "중",
+          "oldDifficulty": 4,
+          "newDifficulty": 3,
+          "affectedPriorEvidence": "SUPERSEDED",
+          "externalQuality": "NOT_RUN",
+          "browser": "NOT_RUN",
+          "studentRelease": "NOT_AUTHORIZED"
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q11_Q15_OPENBOOK_REVIEW_20261013.json"
+      }
+    }
+  ]
+}
