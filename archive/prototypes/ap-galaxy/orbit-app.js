@@ -7,21 +7,44 @@
     grade: $('gradeFilter'), school: $('schoolFilter'), year: $('yearFilter'), unit: $('unitFilter'),
     filterPanel: $('filterPanel'), filterToggle: $('filterToggle'), focusedChip: $('focusedChip'),
     drawer: $('examDrawer'), frame: $('examFrame'), title: $('examTitle'), meta: $('examMeta'), source: $('examSource'),
-    openOriginal: $('openOriginal'), labels: $('planetLabels'), satelliteLabels: $('satelliteLabels'),
+    openOriginal: $('openOriginal'), printOriginal: $('printOriginal'), labels: $('planetLabels'), satelliteLabels: $('satelliteLabels'),
     focusName: $('focusedSchoolName'), focusMeta: $('focusedSchoolMeta'), toast: $('toast'),
     listPanel: $('listPanel'), listGroups: $('listGroups'),
+    questionOrbit: $('questionOrbit'), questionStatus: $('questionStatus'),
+    readerToolbar: $('questionToolbar'), readerTitle: $('readerQuestionTitle'), readerSelect: $('questionSelect'),
+    instantTravel: $('instantTravel'),
+    atlasExamCount: $('atlasExamCount'), atlasGroupCount: $('atlasGroupCount'), atlasDetailCount: $('atlasDetailCount'),
+    atlasExplore: $('atlasExplore'), atlasOverview: $('atlasOverview'), atlasPanel: $('atlasPanel'), atlasCollapse: $('atlasCollapse'),
+    scaleRail: $('scaleRail'), scaleLabel: $('scaleLabel'), scaleCaption: $('scaleCaption'),
   };
   const state = {
     exams: [], records: [], filtered: [], visibleGroups: [], visibleExams: [], selectedExam: null,
     focusedGroupId: '', groupMode: 'school', activeTag: '', constellation: false, list: false,
     world: null, tagsByFile: new Map(), filesByTag: new Map(), groupsById: new Map(),
     groupLabels: new Map(), satelliteButtons: new Map(), toastTimer: 0, searchTimer: 0,
+    questionRows: [], selectedQuestion: null, readerMode: 'exam', readerGeneration: 0,
+    examGeneration: 0, frameGeneration: 0, entrySnapshot: null, pendingExamFocus: '', instant: false,
+    examsByFile: new Map(), scaleMode: 'macro', atlasCollapsed: false,
   };
   const clean = (value) => String(value ?? '').normalize('NFC').trim();
   const examTitle = (exam) => {
     const type = exam.examType === 'final' ? '기말고사' : '중간고사';
     const semester = exam.semester ? exam.semester + '학기 ' : '';
     return [exam.year ? exam.year + '년' : '', semester + type, exam.school, exam.grade, exam.subject].filter(Boolean).join(' · ');
+  };
+  const satelliteLabelLines = (exam) => {
+    const year = clean(exam.year);
+    const semester = clean(exam.semester);
+    const examType = clean(exam.examType);
+    const semesterLabel = semester === '1' || semester === '2' ? semester + '학기' : semester;
+    const examTypeLabel = examType === 'mid' ? '중간' : examType === 'final' ? '기말' : examType;
+    const period = [year, [semesterLabel, examTypeLabel].filter(Boolean).join(' ')].filter(Boolean).join(' · ');
+    const school = clean(exam.school);
+    const grade = clean(exam.grade);
+    const subject = clean(exam.subject);
+    const subjectLabel = grade && subject.startsWith(grade) ? subject.slice(grade.length).trim() : subject;
+    const identity = [school, grade, subjectLabel].filter(Boolean).join(' · ');
+    return { period, identity };
   };
   const examTags = (exam) => [...(state.tagsByFile.get(exam.file) || [])];
   const normalizedField = (value) => clean(value).toLocaleLowerCase('ko');
@@ -31,6 +54,38 @@
     clearTimeout(state.toastTimer);
     state.toastTimer = setTimeout(() => ui.toast.classList.remove('show'), 2500);
   };
+  function updateScaleUI(mode = state.scaleMode) {
+    state.scaleMode = mode;
+    const labels = { macro: 'MACRO UNIVERSE', planet: 'PLANET ORBIT', micro: 'MICRO CONCEPT' };
+    const captions = {
+      macro: '',
+      planet: 'Planetary orbit · choose a star or school orbit to open its source.',
+      micro: 'Conceptual micro view · particles and shells explain an idea; this is not a physical scale claim.',
+    };
+    if (ui.scaleLabel) ui.scaleLabel.textContent = labels[mode] || labels.macro;
+    if (ui.scaleCaption) {
+      ui.scaleCaption.textContent = captions[mode] || '';
+      ui.scaleCaption.hidden = !captions[mode];
+    }
+    ui.scaleRail?.querySelectorAll('[data-scale-mode]').forEach((button) => {
+      const active = button.dataset.scaleMode === mode;
+      button.setAttribute('aria-pressed', String(active));
+      if (button.dataset.scaleMode === 'planet' || button.dataset.scaleMode === 'micro') {
+        button.disabled = Boolean(state.selectedExam) || !state.focusedGroupId;
+      } else if (button.dataset.scaleMode === 'macro') {
+        button.disabled = Boolean(state.selectedExam);
+      }
+    });
+  }
+  function setAtlasCollapsed(collapsed) {
+    state.atlasCollapsed = Boolean(collapsed);
+    ui.atlasPanel?.classList.toggle('collapsed', state.atlasCollapsed);
+    if (ui.atlasCollapse) {
+      ui.atlasCollapse.setAttribute('aria-expanded', String(!state.atlasCollapsed));
+      ui.atlasCollapse.textContent = state.atlasCollapsed ? '+' : '−';
+      ui.atlasCollapse.setAttribute('aria-label', state.atlasCollapsed ? 'Expand atlas overview' : 'Collapse atlas overview');
+    }
+  }
   const optionValues = (select, values, label) => {
     const selected = select.value;
     select.replaceChildren(new Option('전체 ' + label, ''));
@@ -98,38 +153,191 @@
       }
       if (!advanced) break;
     }
+    // A selection from the full list or point LOD must occupy an existing
+    // detailed-star slot, without raising the desktop/mobile 96/54 budget.
+    const featuredFile = state.selectedExam?.file;
+    if (featuredFile && !visibleExams.some((exam) => exam.file === featuredFile)) {
+      const featuredGroup = groups.find((group) => group.exams.some((exam) => exam.file === featuredFile));
+      const featuredExam = featuredGroup?.exams.find((exam) => exam.file === featuredFile);
+      if (featuredExam) {
+        const replaceIndex = visibleExams.findLastIndex((exam) => groupKeyForExam(exam).id === featuredGroup.id);
+        if (visibleExams.length < maxNodes) visibleExams.push(featuredExam);
+        else if (replaceIndex >= 0) visibleExams[replaceIndex] = featuredExam;
+        else visibleExams[visibleExams.length - 1] = featuredExam;
+      }
+    }
     const drawnByGroup = new Map();
     for (const exam of visibleExams) {
       const key = groupKeyForExam(exam);
       if (!drawnByGroup.has(key.id)) drawnByGroup.set(key.id, []);
       drawnByGroup.get(key.id).push(exam);
     }
-    for (const group of groups) group.items = drawnByGroup.get(group.id) || [];
+    for (const group of groups) {
+      const items = drawnByGroup.get(group.id) || [];
+      // The existing 12-label limit remains; keep the active detailed node
+      // among the visible labels when its group is focused.
+      const selectedIndex = items.findIndex((exam) => exam.file === featuredFile);
+      if (selectedIndex > 0) items.unshift(...items.splice(selectedIndex, 1));
+      group.items = items;
+    }
     return { groups, visibleExams };
   };
 
-  function sourceUrl(exam) {
+  function sourceUrl(exam, { preview = true, loadGeneration = 0 } = {}) {
     const url = new URL('../../engine.html', location.href);
     const params = new URLSearchParams();
     params.set('data', 'exams/' + exam.file);
     params.set('mode', 'exam');
-    params.set('preview', '1');
+    if (preview) {
+      params.set('preview', '1');
+      params.set('ap_galaxy_load', String(loadGeneration));
+    }
     params.set('title', examTitle(exam));
     params.set('subject', exam.subject || '');
     if (exam.qCount) params.set('q', String(exam.qCount));
     url.search = params.toString();
     return url.href;
   }
+  function captureNavigation() {
+    return {
+      camera: state.world?.snapshotNavigation() || null,
+      mode: state.groupMode, groupId: state.focusedGroupId,
+      search: ui.search.value, grade: ui.grade.value, school: ui.school.value,
+      unit: ui.unit.value, year: ui.year.value,
+    };
+  }
+  function restoreNavigation(snapshot) {
+    if (!snapshot) return;
+    state.groupMode = snapshot.mode;
+    state.focusedGroupId = snapshot.groupId;
+    ui.search.value = snapshot.search;
+    for (const field of ['grade', 'school', 'unit', 'year']) ui[field].value = snapshot[field];
+    $('groupModes').querySelectorAll('[data-group-mode]').forEach(button => {
+      button.setAttribute('aria-pressed', String(button.dataset.groupMode === state.groupMode));
+    });
+    renderScene();
+    if (!state.world?.restoreNavigation(snapshot.camera)) state.world?.resetCamera();
+    renderSatelliteLabels();
+  }
+  function renderQuestionOrbit(rows) {
+    ui.questionOrbit.replaceChildren();
+    ui.readerSelect.replaceChildren();
+    for (const row of rows) {
+      const option = document.createElement('option');
+      option.value = row.id;
+      option.textContent = 'Q' + row.ordinal;
+      ui.readerSelect.append(option);
+    }
+    for (const row of rows) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'question-orbit-node';
+      button.dataset.questionId = row.id;
+      button.classList.toggle('selected', state.selectedQuestion?.id === row.id);
+      button.textContent = row.id;
+      button.title = '원본 문항 ID ' + row.id + ' · ' + row.ordinal + '번째 문항 열기';
+      button.setAttribute('aria-label', button.title);
+      button.addEventListener('click', () => selectQuestion(row));
+      ui.questionOrbit.appendChild(button);
+    }
+    state.world?.setQuestionOrbit(state.selectedExam?.file, rows);
+  }
+  function clearQuestionOrbit() {
+    ui.questionOrbit.replaceChildren();
+    ui.readerSelect.replaceChildren();
+    state.questionRows = [];
+    state.selectedQuestion = null;
+    state.world?.clearQuestionOrbit();
+    ui.readerToolbar.hidden = true;
+    ui.questionStatus.hidden = true;
+    window.APOrbitQuestionReader?.clearFocus(ui.frame);
+  }
+  function setQuestionStatus(message) {
+    ui.questionStatus.hidden = !message;
+    ui.questionStatus.textContent = message;
+  }
+  function modeName(mode) {
+    return mode === 'ans' ? '정답' : mode === 'sol' ? '해설' : '문제';
+  }
+  async function setReaderMode(mode) {
+    const row = state.selectedQuestion;
+    if (!row || !state.selectedExam) return;
+    const token = ++state.readerGeneration;
+    const examToken = state.examGeneration;
+    const frameToken = state.frameGeneration;
+    const file = state.selectedExam.file;
+    state.readerMode = mode;
+    ui.readerTitle.textContent = '문항 ' + row.id + ' · ' + modeName(mode);
+    ui.readerToolbar.querySelectorAll('[data-reader-mode]').forEach(button =>
+      button.setAttribute('aria-pressed', String(button.dataset.readerMode === mode)));
+    setQuestionStatus('문항 ' + row.id + ' ' + modeName(mode) + '를 여는 중…');
+    try {
+      const result = await window.APOrbitQuestionReader.focus(ui.frame, row, mode,
+        { file, loadGeneration: frameToken },
+        () => state.readerGeneration === token && state.examGeneration === examToken &&
+          state.frameGeneration === frameToken && state.selectedExam?.file === file &&
+          state.selectedQuestion === row);
+      if (state.readerGeneration !== token) return;
+      setQuestionStatus('문항 ' + row.id + ' · ' + modeName(mode));
+      return result;
+    } catch (error) {
+      if (state.readerGeneration !== token || error.message === 'STALE_QUESTION_SELECTION') return;
+      setQuestionStatus('문항을 표시하지 못했습니다. 전체 시험지는 아래에서 계속 볼 수 있습니다.');
+      console.warn('[ap-galaxy] selected question render failed:', error.message);
+    }
+  }
+  function selectQuestion(row) {
+    if (!state.selectedExam || !state.questionRows.includes(row)) return;
+    state.selectedQuestion = row;
+    ui.readerToolbar.hidden = false;
+    ui.readerSelect.value = row.id;
+    ui.questionOrbit.querySelectorAll('.question-orbit-node').forEach(button =>
+      button.classList.toggle('selected', button.dataset.questionId === row.id));
+    setReaderMode('exam');
+  }
+  function showWholeExam() {
+    state.readerGeneration++;
+    state.selectedQuestion = null;
+    ui.readerToolbar.hidden = true;
+    ui.readerSelect.value = '';
+    ui.questionOrbit.querySelectorAll('.question-orbit-node').forEach(button => button.classList.remove('selected'));
+    window.APOrbitQuestionReader?.clearFocus(ui.frame);
+    // The existing Archive engine owns pagination and print. Do not re-render it.
+    try {
+      const tab = ui.frame.contentDocument?.getElementById('btn-exam');
+      if (tab && !tab.classList.contains('active')) tab.click();
+      ui.frame.contentWindow?.scrollTo(0, 0);
+    } catch (_) { /* An in-flight iframe remains on the original source URL. */ }
+    setQuestionStatus(state.questionRows.length ? state.questionRows.length + '개 실제 문항 궤도 · 전체 시험지' : '');
+  }
+  function arriveAtExam(file) {
+    if (!file || state.selectedExam?.file !== file) return;
+    requestAnimationFrame(() => {
+      if (state.selectedExam?.file !== file) return;
+      if (!state.world?.focusExam(file)) requestAnimationFrame(() => {
+        if (state.selectedExam?.file === file) state.world?.focusExam(file);
+      });
+    });
+  }
   function openExam(exam) {
     if (!exam) return;
+    if (!state.entrySnapshot) state.entrySnapshot = captureNavigation();
+    const token = ++state.examGeneration;
+    state.readerGeneration++;
+    window.APOrbitQuestionReader?.abort();
+    clearQuestionOrbit();
+    const wasDetailed = state.visibleExams.some(item => item.file === exam.file);
     state.selectedExam = exam;
-    const url = sourceUrl(exam);
+    state.world?.setSelectedExam(exam.file);
+    const frameToken = ++state.frameGeneration;
+    const url = sourceUrl(exam, { loadGeneration: frameToken });
+    const printableUrl = sourceUrl(exam, { preview: false });
     ui.title.textContent = examTitle(exam);
     ui.meta.replaceChildren();
     for (const value of [
       exam.grade || '학년 미상',
       exam.subject || '과목 미상',
-      exam.qCount ? exam.qCount + '문항' : '문항 수 확인 필요',
+      exam.qCount ? exam.qCount + '문항 (catalog)' : '문항 수 확인 중',
       exam.contentType || '원본 자료',
     ]) {
       const tag = document.createElement('span');
@@ -139,17 +347,47 @@
     ui.source.textContent = 'catalog source · ' + exam.file;
     ui.source.title = exam.file;
     ui.frame.src = url;
-    ui.openOriginal.href = url;
+    ui.openOriginal.href = printableUrl;
+    ui.printOriginal.href = printableUrl;
     ui.drawer.classList.add('open');
     ui.drawer.setAttribute('aria-hidden', 'false');
     $('drawerBack').focus({ preventScroll: true });
+    setQuestionStatus('실제 시험지의 문항 ID를 읽는 중…');
+    if (!wasDetailed) renderScene();
+    state.focusedGroupId = groupKeyForExam(exam).id;
+    renderSatelliteLabels();
+    state.pendingExamFocus = exam.file;
+    state.world?.focusGroup(state.focusedGroupId);
+    window.APOrbitQuestionReader.load(exam.file).then((rows) => {
+      if (token !== state.examGeneration || state.selectedExam?.file !== exam.file) return;
+      state.questionRows = rows;
+      if (matchMedia('(max-width:760px)').matches && rows[0]) selectQuestion(rows[0]);
+      if (state.world) renderQuestionOrbit(rows);
+      else requestAnimationFrame(() => {
+        if (token === state.examGeneration && state.selectedExam?.file === exam.file) renderQuestionOrbit(rows);
+      });
+      setQuestionStatus(rows.length + '개 실제 문항 · 별 주위 번호를 선택하세요.');
+    }).catch((error) => {
+      if (token !== state.examGeneration) return;
+      setQuestionStatus('문항 궤도를 열지 못했습니다 (' + error.message + '). 전체 시험지는 계속 열 수 있습니다.');
+      ui.readerToolbar.hidden = true;
+    });
   }
-  function closeExam() {
+  function closeExam({ restore = true } = {}) {
     const openedExam = state.selectedExam;
+    ++state.examGeneration;
+    ++state.frameGeneration;
+    ++state.readerGeneration;
+    window.APOrbitQuestionReader?.abort();
+    clearQuestionOrbit();
+    state.pendingExamFocus = '';
     ui.drawer.classList.remove('open');
     ui.drawer.setAttribute('aria-hidden', 'true');
     ui.frame.src = 'about:blank';
     state.selectedExam = null;
+    state.world?.setSelectedExam(null);
+    if (restore) restoreNavigation(state.entrySnapshot);
+    state.entrySnapshot = null;
     const focusedButton = openedExam && state.satelliteButtons.get(openedExam.file);
     if (focusedButton) focusedButton.focus({ preventScroll: true });
   }
@@ -157,13 +395,11 @@
   function makeGroupLabel(group) {
     const label = document.createElement('div');
     label.className = 'planet-label';
-    const dot = document.createElement('span');
-    dot.className = 'planet-dot';
     const title = document.createElement('b');
     title.textContent = group.name;
     const meta = document.createElement('small');
     meta.textContent = group.exams.length.toLocaleString() + '개 자료 노드';
-    label.append(dot, title, meta);
+    label.append(title, meta);
     ui.labels.append(label);
     state.groupLabels.set(group.id, label);
   }
@@ -186,13 +422,14 @@
       button.type = 'button';
       button.dataset.examFile = exam.file;
       button.title = 'catalog source: ' + exam.file;
-      button.setAttribute('aria-label', examTitle(exam) + ' 원본 자료 노드 열기');
-      const icon = document.createElement('span');
-      icon.className = 'mini-paper';
-      icon.setAttribute('aria-hidden', 'true');
-      const title = document.createElement('b');
-      title.textContent = String(exam.year || '') + ' · ' + (exam.school || '') + ' · ' + (exam.subject || '시험지');
-      button.append(icon, title);
+      const lines = satelliteLabelLines(exam);
+      button.setAttribute('aria-label', [lines.period, lines.identity, '원본 자료 노드 열기'].filter(Boolean).join(' · '));
+      const period = document.createElement('span');
+      period.className = 'satellite-period';
+      period.textContent = lines.period;
+      const identity = document.createElement('b');
+      identity.textContent = lines.identity;
+      button.append(period, identity);
       button.addEventListener('click', () => openExam(exam));
       ui.satelliteLabels.append(button);
       state.satelliteButtons.set(exam.file, button);
@@ -315,7 +552,7 @@
       state.world?.clearFocus();
       renderSatelliteLabels();
     }
-    if (state.selectedExam && !state.filtered.some((exam) => exam.file === state.selectedExam.file)) closeExam();
+    if (state.selectedExam && !state.filtered.some((exam) => exam.file === state.selectedExam.file)) closeExam({ restore: false });
     state.world?.setData({
       mode: state.groupMode,
       searching: Boolean(ui.search.value.trim()),
@@ -328,8 +565,11 @@
     createAccessibleList();
     updateConstellations();
     const schoolCount = new Set(state.filtered.map((exam) => exam.school)).size;
+    ui.atlasExamCount.textContent = state.filtered.length.toLocaleString();
+    ui.atlasGroupCount.textContent = state.visibleGroups.length.toLocaleString();
+    ui.atlasDetailCount.textContent = state.visibleExams.length.toLocaleString();
     $('sceneCount').textContent = '별 자료 노드 ' + state.filtered.length.toLocaleString() + ' / ' +
-      state.filtered.length.toLocaleString() + ' · 종이 상세 ' + state.visibleExams.length.toLocaleString() + ' · ' + state.visibleGroups.length + '개 작은 은하';
+      state.filtered.length.toLocaleString() + ' · 입체 별 상세 ' + state.visibleExams.length.toLocaleString() + ' · ' + state.visibleGroups.length + '개 작은 은하';
     $('sceneInstruction').textContent = state.visibleGroups.length
       ? '시험지마다 고유 자료 노드 하나가 있습니다. 학교·학년·단원 은하를 바꿔 같은 원본의 다른 공간 배치를 둘러보세요.'
       : '조건에 맞는 은하가 없습니다. 필터를 풀거나 검색어를 바꿔 보세요.';
@@ -344,6 +584,7 @@
   function focusGroup(id) {
     const group = state.groupsById.get(id);
     if (!group) return;
+    if (!state.entrySnapshot) state.entrySnapshot = captureNavigation();
     state.focusedGroupId = id;
     state.world?.focusGroup(id);
     renderSatelliteLabels();
@@ -363,6 +604,7 @@
     const catalog = window.Archive2Core?.decodeCatalog(raw);
     if (!catalog?.exams || !catalog?.records) throw new Error('공개 Archive catalog 구조를 읽을 수 없습니다.');
     state.exams = catalog.exams.filter((exam) => exam.file && exam.contentType === '기출');
+    state.examsByFile = new Map(state.exams.map(exam => [exam.file, exam]));
     state.records = catalog.records;
     state.tagsByFile.clear();
     state.filesByTag.clear();
@@ -388,12 +630,22 @@
       canvas: ui.canvas,
       onGroup: (id) => focusGroup(id),
       onExam: (file) => {
-        const exam = state.exams.find((item) => item.file === file);
+        const exam = state.examsByFile.get(file);
         if (exam) openExam(exam);
       },
+      onTravel: (type) => {
+        $('universe').classList.toggle('travel-warp', type === 'warp');
+        $('universe').classList.toggle('travel-flight', type === 'flight');
+        if (!type && state.pendingExamFocus) {
+          const file = state.pendingExamFocus;
+          state.pendingExamFocus = '';
+          arriveAtExam(file);
+        }
+      },
+      onScale: (mode) => updateScaleUI(mode),
       onBlackhole: () => window.open('../../generated-bank.html', '_blank', 'noopener'),
       onFrame: (positions) => {
-        const reservedRects = [...document.querySelectorAll('.topbar,.scene-heading,.scene-hud,.scene-footer,.entry-chip,.filter-panel:not([hidden]),.list-panel.open,.drawer.open')]
+        const reservedRects = [...document.querySelectorAll('.topbar,.scene-heading,.scene-hud,.scene-footer,.entry-chip,.scale-rail,.scale-caption:not([hidden]),.filter-panel:not([hidden]),.list-panel.open,.drawer.open')]
           .filter((element) => element.getClientRects().length)
           .map((element) => element.getBoundingClientRect());
         const overlapsChrome = (point, halfWidth, halfHeight) => reservedRects.some((rect) =>
@@ -401,7 +653,15 @@
           point.y + halfHeight > rect.top && point.y - halfHeight < rect.bottom,
         );
         for (const label of state.groupLabels.values()) label.style.display = 'none';
-        const labelCandidates = [...state.groupLabels].map(([id, label]) => ({ id, label, point: positions.groups.get(id) }))
+        for (const button of ui.questionOrbit.children) {
+          const point = positions.questions?.get(button.dataset.questionId);
+          button.style.display = point?.visible && !overlapsChrome(point, 16, 16) ? 'grid' : 'none';
+          if (point?.visible) {
+            button.style.left = point.x + 'px';
+            button.style.top = point.y + 'px';
+          }
+        }
+        const labelCandidates = (state.selectedExam ? [] : [...state.groupLabels]).map(([id, label]) => ({ id, label, point: positions.groups.get(id) }))
           .filter(({ point }) => point?.visible)
           .sort((a, b) => Number(b.id === state.focusedGroupId) - Number(a.id === state.focusedGroupId) || a.point.depth - b.point.depth);
         const occupiedGroupLabels = [];
@@ -417,7 +677,7 @@
           label.style.top = (point.y - 22) + 'px';
         }
         for (const button of state.satelliteButtons.values()) button.style.display = 'none';
-        const satelliteCandidates = [...state.satelliteButtons].map(([file, button]) => ({ file, button, point: positions.exams.get(file) }))
+        const satelliteCandidates = (state.selectedExam ? [] : [...state.satelliteButtons]).map(([file, button]) => ({ file, button, point: positions.exams.get(file) }))
           .filter(({ point }) => point?.visible && point.depth < 38)
           .sort((a, b) => a.point.depth - b.point.depth);
         const occupiedSatellites = [];
@@ -435,6 +695,9 @@
     });
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
     state.world.setMotion(!reducedMotion);
+    state.world.setInstantTravel(state.instant || reducedMotion);
+    updateScaleUI('macro');
+    setAtlasCollapsed(matchMedia('(max-width:760px)').matches);
     $('motionToggle').setAttribute('aria-pressed', String(reducedMotion));
     $('motionLabel').textContent = reducedMotion ? '공전 시작' : '공전 일시정지';
     if (reducedMotion) showToast('기기의 동작 줄이기 설정에 맞춰 공전을 멈췄습니다.');
@@ -506,14 +769,61 @@
       if (state.constellation) showToast('실제 공개 L2 태그가 겹치는 시험지 노드를 우주 안의 빛으로 잇습니다.');
     });
     $('returnToGalaxy').addEventListener('click', () => {
-      state.focusedGroupId = '';
-      state.world?.resetCamera();
-      ui.focusedChip.hidden = true;
-      renderSatelliteLabels();
-      updateConstellations();
+      if (state.selectedExam) closeExam();
+      else {
+        restoreNavigation(state.entrySnapshot);
+        state.entrySnapshot = null;
+      }
     });
-    $('drawerBack').addEventListener('click', closeExam);
-    $('closeDrawer').addEventListener('click', closeExam);
+    $('drawerBack').addEventListener('click', () => {
+      if (state.selectedQuestion) showWholeExam();
+      else closeExam();
+    });
+    $('closeDrawer').addEventListener('click', () => closeExam());
+    $('wholeExam').addEventListener('click', showWholeExam);
+    ui.atlasExplore.addEventListener('click', () => {
+      ui.search.focus({ preventScroll: true });
+      ui.search.select();
+    });
+    ui.atlasOverview.addEventListener('click', () => {
+      if (state.selectedExam) closeExam();
+      else if (state.focusedGroupId && state.entrySnapshot) {
+        restoreNavigation(state.entrySnapshot);
+        state.entrySnapshot = null;
+      } else state.world?.resetCamera();
+    });
+    ui.atlasCollapse?.addEventListener('click', () => setAtlasCollapsed(!state.atlasCollapsed));
+    $('questionToolbar').addEventListener('click', (event) => {
+      const button = event.target.closest('[data-reader-mode]');
+      if (button) setReaderMode(button.dataset.readerMode);
+    });
+    ui.readerSelect.addEventListener('change', () => {
+      const row = state.questionRows.find((item) => item.id === ui.readerSelect.value);
+      if (row) selectQuestion(row);
+    });
+    ui.scaleRail?.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-scale-mode]');
+      if (!button || button.disabled || !state.world) return;
+      const mode = button.dataset.scaleMode;
+      if (mode === 'macro') {
+        if (state.selectedExam) closeExam();
+        else if (state.focusedGroupId && state.entrySnapshot) {
+          state.world.cancelTravel();
+          restoreNavigation(state.entrySnapshot);
+          state.entrySnapshot = null;
+        } else {
+          state.focusedGroupId = '';
+          state.world.resetCamera();
+          renderSatelliteLabels();
+        }
+      } else state.world.setScale(mode);
+    });
+    ui.instantTravel.addEventListener('click', () => {
+      state.instant = !state.instant;
+      ui.instantTravel.setAttribute('aria-pressed', String(state.instant));
+      state.world?.setInstantTravel(state.instant || matchMedia('(prefers-reduced-motion: reduce)').matches);
+      if (state.instant) state.world?.finishTravel();
+    });
     $('closeList').addEventListener('click', () => toggleList(false));
     ui.search.addEventListener('input', () => {
       clearTimeout(state.searchTimer);
@@ -524,7 +834,22 @@
     });
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
-        if (ui.drawer.classList.contains('open')) closeExam();
+        // A focused search input would otherwise clear itself *after* we restore
+        // the saved query, violating navigation return state.
+        if (ui.drawer.classList.contains('open') || state.focusedGroupId || state.list ||
+            !ui.filterPanel.hidden || $('universe').classList.contains('travel-warp') ||
+            $('universe').classList.contains('travel-flight')) event.preventDefault();
+        if (ui.drawer.classList.contains('open')) {
+          if (state.selectedQuestion) showWholeExam();
+          else closeExam();
+        } else if (state.focusedGroupId || $('universe').classList.contains('travel-warp') ||
+            $('universe').classList.contains('travel-flight')) {
+          // Escape is a reliable back action both during the journey and
+          // after arrival; never require the animation to still be running.
+          state.world?.cancelTravel();
+          restoreNavigation(state.entrySnapshot);
+          state.entrySnapshot = null;
+        }
         else if (state.list) toggleList(false);
         else if (!ui.filterPanel.hidden) toggleFilters(false);
       }
@@ -540,8 +865,8 @@
     } catch (error) {
       ui.status.textContent = '우주를 열지 못했습니다.';
       $('worldFallback').hidden = false;
-      $('worldFallback').querySelector('strong').textContent = error.message || '3D catalog를 시작할 수 없습니다.';
-      $('worldFallback').querySelector('span').textContent = '검색과 목록 대체 보기를 계속 사용할 수 있습니다.';
+      $('worldFallback').querySelector('strong').textContent = '3D 장면을 시작할 수 없습니다.';
+      $('worldFallback').querySelector('span').textContent = '검색, 목록, 문항 미리보기는 계속 이용할 수 있습니다.';
       console.error(error);
       createAccessibleList();
       toggleList(true);

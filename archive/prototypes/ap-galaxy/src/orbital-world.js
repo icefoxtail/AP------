@@ -3,6 +3,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 const ORBIT_COLORS = [0x698cbe, 0x9f8bc6, 0x63a9a6, 0xc49485, 0x8094bf, 0x8bb3a9, 0xbe9e70, 0x819cc0, 0xb887a1, 0x78a7a7, 0x9a8cc1, 0x82a6bd];
 const GOLDEN_ANGLE = Math.PI * (3 - Math.sqrt(5));
+const JUPITER_EXAM_FILE = 'original/middle/m3/1mid/26_삼산중_1학기_중간_중3_기출.js';
 
 function hashText(value) {
   let h = 2166136261;
@@ -15,18 +16,112 @@ function randomFrom(seed) {
 }
 function makeGalaxyNebulaTexture() {
   const canvas = document.createElement('canvas');
+  canvas.width = 256;
+  canvas.height = 160;
+  const context = canvas.getContext('2d');
+  const image = context.createImageData(canvas.width, canvas.height);
+  const lattice = (x, y, seed) => {
+    let value = Math.imul(x + seed, 374761393) + Math.imul(y - seed, 668265263);
+    value = Math.imul(value ^ (value >>> 13), 1274126177);
+    return ((value ^ (value >>> 16)) >>> 0) / 4294967295;
+  };
+  const noise = (x, y, seed) => {
+    const x0 = Math.floor(x);
+    const y0 = Math.floor(y);
+    const tx = x - x0;
+    const ty = y - y0;
+    const sx = tx * tx * (3 - 2 * tx);
+    const sy = ty * ty * (3 - 2 * ty);
+    const top = THREE.MathUtils.lerp(lattice(x0, y0, seed), lattice(x0 + 1, y0, seed), sx);
+    const bottom = THREE.MathUtils.lerp(lattice(x0, y0 + 1, seed), lattice(x0 + 1, y0 + 1, seed), sx);
+    return THREE.MathUtils.lerp(top, bottom, sy);
+  };
+  for (let y = 0; y < canvas.height; y += 1) {
+    const py = ((y + .5) / canvas.height - .5) * 2;
+    for (let x = 0; x < canvas.width; x += 1) {
+      const px = ((x + .5) / canvas.width - .5) * 2;
+      const broad = noise(px * 2.8 + 17.4, py * 2.8 - 3.9, 0x12);
+      const medium = noise(px * 6.5, py * 6.5, 0x2b);
+      const fine = noise(px * 14, py * 14, 0x51);
+      const turbulence = broad * .5 + medium * .34 + fine * .16;
+      const radius = Math.sqrt(px * px + py * py * 1.45);
+      const warpedRadius = Math.max(0, radius + (turbulence - .5) * .32);
+      const envelope = Math.exp(-warpedRadius * warpedRadius * 2.15);
+      const angle = Math.atan2(py, px);
+      const arm = .74 + .26 * (.5 + .5 * Math.sin(angle * 2 - radius * 6.4 + (broad - .5) * 2.4));
+      const alpha = Math.min(.46, envelope * (.28 + turbulence * 1.15) * arm * .58);
+      const edge = THREE.MathUtils.clamp(radius * .72, 0, 1);
+      const offset = (y * canvas.width + x) * 4;
+      image.data[offset] = Math.round(255 - edge * 89);
+      image.data[offset + 1] = Math.round(242 - edge * 51);
+      image.data[offset + 2] = Math.round(226 + edge * 29);
+      image.data[offset + 3] = Math.round(alpha * 255);
+    }
+  }
+  context.putImageData(image, 0, 0);
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  return texture;
+}
+function makeStarSpriteTexture() {
+  const canvas = document.createElement('canvas');
   canvas.width = 64;
   canvas.height = 64;
   const context = canvas.getContext('2d');
-  const gradient = context.createRadialGradient(32, 32, 1, 32, 32, 32);
-  gradient.addColorStop(0, 'rgba(255,255,255,.62)');
-  gradient.addColorStop(.18, 'rgba(255,255,255,.3)');
-  gradient.addColorStop(.55, 'rgba(255,255,255,.07)');
-  gradient.addColorStop(1, 'rgba(255,255,255,0)');
+  const gradient = context.createRadialGradient(32, 32, 0, 32, 32, 32);
+  gradient.addColorStop(0, 'rgba(255,255,255,1)');
+  gradient.addColorStop(.045, 'rgba(255,252,239,.96)');
+  gradient.addColorStop(.14, 'rgba(255,245,226,.72)');
+  gradient.addColorStop(.34, 'rgba(213,228,255,.28)');
+  gradient.addColorStop(.68, 'rgba(180,202,255,.08)');
+  gradient.addColorStop(1, 'rgba(180,202,255,0)');
   context.fillStyle = gradient;
   context.fillRect(0, 0, 64, 64);
   const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
   return texture;
+}
+function makeCoreGlowTexture() {
+  const canvas = document.createElement('canvas');
+  canvas.width = 128;
+  canvas.height = 128;
+  const context = canvas.getContext('2d');
+  const gradient = context.createRadialGradient(64, 64, 0, 64, 64, 64);
+  gradient.addColorStop(0, 'rgba(255,255,244,1)');
+  gradient.addColorStop(.055, 'rgba(255,242,210,.9)');
+  gradient.addColorStop(.18, 'rgba(255,202,139,.4)');
+  gradient.addColorStop(.4, 'rgba(222,168,255,.12)');
+  gradient.addColorStop(1, 'rgba(190,168,255,0)');
+  context.fillStyle = gradient;
+  context.fillRect(0, 0, 128, 128);
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  return texture;
+}
+function makeDepthField(count, minRadius, radiusSpan, seed, verticalScale) {
+  const random = randomFrom(seed);
+  const positions = new Float32Array(count * 3);
+  const colors = new Float32Array(count * 3);
+  const tints = [0x93b9f0, 0x8f8bd5, 0x9ad8d0, 0xc8a3a0, 0xd3c28e].map((color) => new THREE.Color(color));
+  for (let i = 0; i < count; i += 1) {
+    const radius = minRadius + random() * radiusSpan;
+    const angle = random() * Math.PI * 2;
+    const band = .72 + random() * .42;
+    positions[i * 3] = Math.cos(angle) * radius * band;
+    positions[i * 3 + 1] = (random() - .5) * radius * verticalScale;
+    positions[i * 3 + 2] = Math.sin(angle) * radius * .72;
+    const color = tints[Math.floor(random() * tints.length)].clone();
+    color.lerp(new THREE.Color(0xe6f1ff), random() * .32);
+    color.toArray(colors, i * 3);
+  }
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  return geometry;
+}
+function smoothStep(start, end, value) {
+  const t = THREE.MathUtils.clamp((value - start) / (end - start), 0, 1);
+  return t * t * (3 - 2 * t);
 }
 function makeOrbit(radius, aspect, material, segments = 112) {
   const points = [];
@@ -36,40 +131,10 @@ function makeOrbit(radius, aspect, material, segments = 112) {
   }
   return new THREE.Line(new THREE.BufferGeometry().setFromPoints(points), material);
 }
-function makeDocumentTexture() {
-  const canvas = document.createElement('canvas');
-  canvas.width = 128;
-  canvas.height = 160;
-  const ctx = canvas.getContext('2d');
-  ctx.fillStyle = '#fffdf7';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.strokeStyle = '#d5deeb';
-  ctx.lineWidth = 2;
-  ctx.strokeRect(3, 3, 122, 154);
-  ctx.fillStyle = '#344663';
-  ctx.fillRect(18, 22, 47, 5);
-  ctx.fillStyle = '#a9b8ce';
-  ctx.fillRect(18, 38, 90, 2);
-  ctx.fillRect(18, 47, 74, 2);
-  ctx.fillRect(18, 62, 93, 2);
-  ctx.fillRect(18, 72, 82, 2);
-  ctx.fillRect(18, 82, 88, 2);
-  ctx.fillRect(18, 102, 58, 2);
-  ctx.fillRect(18, 112, 88, 2);
-  ctx.fillRect(18, 122, 74, 2);
-  ctx.strokeStyle = '#b9a0dc';
-  ctx.lineWidth = 3;
-  ctx.beginPath();
-  ctx.arc(96, 137, 10, 0, Math.PI * 2);
-  ctx.stroke();
-  const texture = new THREE.CanvasTexture(canvas);
-  texture.colorSpace = THREE.SRGBColorSpace;
-  texture.anisotropy = 2;
-  return texture;
-}
-
-export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame }) {
+export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame, onTravel, onScale }) {
   const mobile = window.innerWidth < 760;
+  const starSpriteTexture = makeStarSpriteTexture();
+  const coreGlowTexture = makeCoreGlowTexture();
   const renderer = new THREE.WebGLRenderer({
     canvas, alpha: true, antialias: !mobile, powerPreference: 'high-performance', preserveDrawingBuffer: false,
   });
@@ -85,8 +150,39 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     map: nebulaTexture, color: 0xaaa0d6, side: THREE.BackSide, transparent: true, opacity: .78, depthWrite: false,
   }));
   scene.add(nebulaSky);
+  const depthFar = new THREE.Points(makeDepthField(mobile ? 260 : 720, 96, 108, 0x5eed2026, .34), new THREE.PointsMaterial({
+    map: starSpriteTexture, size: mobile ? .28 : .38, sizeAttenuation: true, vertexColors: true,
+    transparent: true, opacity: .24, depthWrite: false, alphaTest: .012, blending: THREE.AdditiveBlending, toneMapped: false,
+  }));
+  depthFar.renderOrder = -6;
+  depthFar.rotation.set(.22, -.35, .08);
+  const depthNear = new THREE.Points(makeDepthField(mobile ? 110 : 320, 24, 80, 0x1a5eed, .18), new THREE.PointsMaterial({
+    map: starSpriteTexture, size: mobile ? .34 : .52, sizeAttenuation: true, vertexColors: true,
+    transparent: true, opacity: .3, depthWrite: false, alphaTest: .012, blending: THREE.AdditiveBlending, toneMapped: false,
+  }));
+  depthNear.renderOrder = -5;
+  depthNear.rotation.set(-.16, .54, -.11);
+  const orbitalFrame = new THREE.Group();
+  const frameMaterials = [];
+  const frameRadii = mobile ? [31, 57] : [28, 52, 78];
+  frameRadii.forEach((radius, index) => {
+    const material = new THREE.LineDashedMaterial({
+      color: index === frameRadii.length - 1 ? 0x89a3d0 : 0x6d8abb,
+      transparent: true, opacity: mobile ? .065 : .095, depthWrite: false,
+      dashSize: index === frameRadii.length - 1 ? .72 : .52, gapSize: index === frameRadii.length - 1 ? 1.15 : .88,
+    });
+    const orbit = makeOrbit(radius, .7 + index * .08, material, 192);
+    orbit.computeLineDistances();
+    orbit.rotation.x = .2 + index * .13;
+    orbit.rotation.z = index % 2 ? -.14 : .1;
+    orbit.position.y = (index - 1) * .42;
+    orbitalFrame.add(orbit);
+    frameMaterials.push(material);
+  });
+  orbitalFrame.renderOrder = -4;
+  scene.add(depthFar, depthNear, orbitalFrame);
   const camera = new THREE.PerspectiveCamera(mobile ? 68 : 60, 1, .1, 480);
-  camera.position.set(0, 48, 92);
+  camera.position.set(0, mobile ? 44 : 46, mobile ? 94 : 96);
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.target.set(0, 0, 0);
   controls.enableDamping = true;
@@ -129,7 +225,8 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   starGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
   starGeometry.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
   scene.add(new THREE.Points(starGeometry, new THREE.PointsMaterial({
-    size: mobile ? .32 : .22, sizeAttenuation: true, vertexColors: true, transparent: true, opacity: .8, depthWrite: false,
+    map: starSpriteTexture, size: mobile ? .5 : .42, sizeAttenuation: true,
+    vertexColors: true, transparent: true, opacity: .88, depthWrite: false, alphaTest: .012,
   })));
 
   const sunRoot = new THREE.Group();
@@ -177,25 +274,58 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   scene.add(groupRoot, dataRoot, constellationRoot);
   const sharedGroupPickGeometry = new THREE.SphereGeometry(1.55, 16, 12);
   const sharedGroupPickMaterial = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, colorWrite: false, depthWrite: false });
-  const sharedDataStarGeometry = new THREE.SphereGeometry(.2, 14, 10);
-  const sharedDataGlowGeometry = new THREE.SphereGeometry(.43, 14, 10);
-  const sharedPaperGeometry = new THREE.PlaneGeometry(.68, .84);
-  const sharedPaperTexture = makeDocumentTexture();
-  const sharedPaperMaterial = new THREE.MeshStandardMaterial({
-    map: sharedPaperTexture, color: 0xffffff, roughness: .7, metalness: .01,
-    side: THREE.DoubleSide, emissive: 0x201b2d, emissiveIntensity: .13,
-  });
+  const sharedDataStarGeometry = new THREE.SphereGeometry(.2, 24, 18);
   const galaxyNebulaTexture = makeGalaxyNebulaTexture();
+  const sharedCoreGlowTexture = coreGlowTexture;
+  const sharedStarSpriteTexture = starSpriteTexture;
   const dataStarMaterials = new Map();
   const dataGlowMaterials = new Map();
   const groups = new Map();
   const entities = new Map();
+  let jupiterMaterial = null;
+  let jupiterTexture = null;
+  let jupiterTextureState = 'idle';
+  let worldDisposed = false;
+  function loadJupiterTexture() {
+    if (jupiterTextureState !== 'idle') return;
+    jupiterTextureState = 'loading';
+    new THREE.TextureLoader().load(new URL('../assets/jupiter-2k.jpg', import.meta.url).href, (texture) => {
+      if (worldDisposed) {
+        texture.dispose();
+        return;
+      }
+      texture.colorSpace = THREE.SRGBColorSpace;
+      jupiterTexture = texture;
+      jupiterMaterial = new THREE.MeshStandardMaterial({
+        map: jupiterTexture, color: 0xffffff, roughness: .86, metalness: 0,
+      });
+      jupiterTextureState = 'loaded';
+      for (const entity of entities.values()) {
+        if (!entity.isJupiter) continue;
+        entity.star.material = jupiterMaterial;
+        entity.glow.visible = false;
+      }
+    }, undefined, () => {
+      jupiterTextureState = 'failed';
+      // Keep the original colored star and glow if the local texture is unavailable.
+    });
+  }
+  // A single on-demand orbit; no question mesh is created for unopened exams.
+  const sharedQuestionGeometry = new THREE.SphereGeometry(.095, 10, 8);
+  const sharedQuestionMaterial = new THREE.MeshBasicMaterial({ color: 0xc5e7ff, toneMapped: false });
+  const sharedQuestionLineMaterial = new THREE.LineBasicMaterial({ color: 0x84bde0, transparent: true, opacity: .3, depthWrite: false });
+  let questionOrbit = null;
+  const questionProjections = new Map();
   let catalogPoints = null;
   let catalogPointFiles = [];
   let visibleCatalogPointNodes = [];
   let visibleCatalogPointFiles = [];
   let catalogPointPositions = null;
   let focusedGroupId = '';
+  let selectedExamFile = '';
+  let scaleMode = 'macro';
+  let scaleMix = 0;
+  let microAnchor = new THREE.Vector3();
   const constellations = [];
   let pendingLines = [];
   const raycaster = new THREE.Raycaster();
@@ -212,20 +342,105 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   let running = !matchMedia('(prefers-reduced-motion: reduce)').matches;
   let pageVisible = !document.hidden;
   let cameraTransition = null;
+  let travelGuide = null;
+  let instantTravel = false;
   let rafId = 0;
   let pointerStart = null;
   const frameInterval = mobile ? 1000 / 24 : 1000 / 30;
 
-  function getDataStarMaterial(index) {
-    if (!dataStarMaterials.has(index)) dataStarMaterials.set(index, new THREE.MeshBasicMaterial({ color: ORBIT_COLORS[index % ORBIT_COLORS.length] }));
-    return dataStarMaterials.get(index);
+  // The micro view is an educational concept scene. It deliberately uses a
+  // compact, readable atom-like arrangement rather than claiming physical
+  // scale or orbital accuracy.
+  const microRoot = new THREE.Group();
+  microRoot.name = 'educational-micro-concept';
+  microRoot.visible = false;
+  microRoot.renderOrder = 18;
+  const microMaterials = [];
+  const microOrbitMaterials = [];
+  const microNucleus = new THREE.Mesh(new THREE.SphereGeometry(.48, 18, 12), new THREE.MeshBasicMaterial({ color: 0xffd39c, transparent: true, opacity: 0, toneMapped: false }));
+  const microNucleusGlow = new THREE.Sprite(new THREE.SpriteMaterial({ map: coreGlowTexture, color: 0xffbd78, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false }));
+  microNucleusGlow.scale.setScalar(2.25);
+  microRoot.add(microNucleusGlow, microNucleus);
+  microMaterials.push(microNucleus.material, microNucleusGlow.material);
+  for (let shell = 0; shell < 3; shell += 1) {
+    const orbitMaterial = new THREE.LineBasicMaterial({ color: shell === 1 ? 0x9de8ff : 0x87a8ff, transparent: true, opacity: 0, depthWrite: false, toneMapped: false });
+    const orbit = makeOrbit(1.25 + shell * .78, .72 + shell * .12, orbitMaterial, 96);
+    orbit.rotation.x = .18 + shell * .35;
+    orbit.rotation.z = shell % 2 ? -.22 : .12;
+    microRoot.add(orbit);
+    microOrbitMaterials.push(orbitMaterial);
+    const electronCount = shell + 2;
+    for (let electronIndex = 0; electronIndex < electronCount; electronIndex += 1) {
+      const electronMaterial = new THREE.MeshBasicMaterial({ color: shell === 2 ? 0xb9ffea : 0x9fd9ff, transparent: true, opacity: 0, toneMapped: false });
+      const electron = new THREE.Mesh(new THREE.SphereGeometry(.105, 10, 8), electronMaterial);
+      electron.userData.microShell = shell;
+      electron.userData.microPhase = electronIndex / electronCount * Math.PI * 2 + shell * .44;
+      electron.userData.microRadius = 1.25 + shell * .78;
+      electron.userData.microTilt = .18 + shell * .35;
+      microRoot.add(electron);
+      microMaterials.push(electronMaterial);
+    }
   }
-  function getDataGlowMaterial(index) {
-    if (!dataGlowMaterials.has(index)) dataGlowMaterials.set(index, new THREE.MeshBasicMaterial({
-      color: ORBIT_COLORS[index % ORBIT_COLORS.length], transparent: true, opacity: .22,
-      blending: THREE.AdditiveBlending, depthWrite: false,
+  scene.add(microRoot);
+
+  function clearTravelGuide() {
+    if (!travelGuide) return;
+    scene.remove(travelGuide.line, travelGuide.beacon, travelGuide.ring);
+    travelGuide.line.geometry.dispose();
+    travelGuide.line.material.dispose();
+    travelGuide.beacon.geometry.dispose();
+    travelGuide.beacon.material.dispose();
+    travelGuide.ring.geometry.dispose();
+    travelGuide.ring.material.dispose();
+    travelGuide = null;
+  }
+  function createTravelGuide(from, target) {
+    clearTravelGuide();
+    const midpoint = from.clone().lerp(target, .5);
+    midpoint.y += Math.max(3, from.distanceTo(target) * .09);
+    const geometry = new THREE.BufferGeometry().setFromPoints([from, midpoint, target]);
+    const material = new THREE.LineDashedMaterial({
+      color: 0x9bd4ff, transparent: true, opacity: .48, depthWrite: false,
+      dashSize: .5, gapSize: .7, toneMapped: false,
+    });
+    const line = new THREE.Line(geometry, material);
+    line.computeLineDistances();
+    line.renderOrder = 9;
+    const beacon = new THREE.Mesh(new THREE.SphereGeometry(.14, 10, 8), new THREE.MeshBasicMaterial({
+      color: 0xe4f6ff, transparent: true, opacity: .9, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false,
     }));
-    return dataGlowMaterials.get(index);
+    beacon.position.copy(target);
+    beacon.renderOrder = 10;
+    const ring = new THREE.Mesh(new THREE.TorusGeometry(.45, .025, 6, 40), new THREE.MeshBasicMaterial({
+      color: 0x98d2ff, transparent: true, opacity: .62, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false,
+    }));
+    ring.position.copy(target);
+    ring.rotation.x = Math.PI / 2;
+    ring.renderOrder = 10;
+    scene.add(line, beacon, ring);
+    travelGuide = { line, beacon, ring };
+  }
+
+  function getDataStarMaterial(index, bright) {
+    const key = index * 2 + bright;
+    if (!dataStarMaterials.has(key)) {
+      const color = new THREE.Color(ORBIT_COLORS[index % ORBIT_COLORS.length]);
+      dataStarMaterials.set(key, new THREE.MeshStandardMaterial({
+        color: color.clone().lerp(new THREE.Color(0xffffff), .16),
+        emissive: color, emissiveIntensity: bright ? .44 : .34,
+        roughness: .54, metalness: .02, toneMapped: false,
+      }));
+    }
+    return dataStarMaterials.get(key);
+  }
+  function getDataGlowMaterial(index, bright) {
+    const key = index * 2 + bright;
+    if (!dataGlowMaterials.has(key)) dataGlowMaterials.set(key, new THREE.SpriteMaterial({
+      map: sharedCoreGlowTexture, color: ORBIT_COLORS[index % ORBIT_COLORS.length],
+      transparent: true, opacity: bright ? .34 : .27, alphaTest: .012,
+      blending: THREE.AdditiveBlending, depthWrite: false, depthTest: true, toneMapped: false,
+    }));
+    return dataGlowMaterials.get(key);
   }
   function hashAngle(text) {
     return (hashText(text) % 100000) / 100000 * Math.PI * 2;
@@ -235,20 +450,23 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   }
   function makeGalaxyDisc(data, palette) {
     const random = randomFrom(hashText(data.id) ^ 0x61c88647);
-    const starCount = 84;
+    const starCount = 216;
     const positions = new Float32Array(starCount * 3);
     const colors = new Float32Array(starCount * 3);
     const baseColor = new THREE.Color(ORBIT_COLORS[palette]);
     const white = new THREE.Color(0xe5f4ff);
+    const warm = new THREE.Color(0xffd2a1);
     for (let i = 0; i < starCount; i += 1) {
-      const arm = i % 3;
+      const arm = i % 4;
       const spread = Math.sqrt(random());
-      const radius = .22 + spread * 1.72;
-      const angle = arm * Math.PI * 2 / 3 + radius * 1.72 + (random() - .5) * .48;
+      const core = i % 5 === 0;
+      const radius = core ? Math.sqrt(random()) * .72 : .22 + spread * 1.78;
+      const angle = arm * Math.PI / 2 + radius * 1.62 + (random() - .5) * (.26 + radius * .035);
       positions[i * 3] = Math.cos(angle) * radius;
-      positions[i * 3 + 1] = (random() - .5) * (.13 + radius * .045);
+      positions[i * 3 + 1] = (random() - .5) * (.1 + radius * .035);
       positions[i * 3 + 2] = Math.sin(angle) * radius * .7;
-      const color = baseColor.clone().lerp(white, Math.max(.08, (1 - spread) * .58 + random() * .12));
+      const color = baseColor.clone().lerp(white, Math.max(.24, (1 - spread) * .68 + random() * .18));
+      if (radius < .85 && random() > .45) color.lerp(warm, .14);
       color.toArray(colors, i * 3);
     }
     const geometry = new THREE.BufferGeometry();
@@ -258,7 +476,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   }
   function makeNebulaCloud(data, palette) {
     const random = randomFrom(hashText(data.id) ^ 0x9e3779b9);
-    const count = 38;
+    const count = 54;
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
     const baseColor = new THREE.Color(ORBIT_COLORS[palette]);
@@ -290,25 +508,34 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     root.add(hub);
     hub.scale.setScalar(hubScale);
     const cloud = new THREE.Points(makeNebulaCloud(data, palette), new THREE.PointsMaterial({
-      map: galaxyNebulaTexture, vertexColors: true, size: 2.45, sizeAttenuation: true,
-      transparent: true, opacity: .16, blending: THREE.AdditiveBlending, depthWrite: false, alphaTest: .008,
+      map: galaxyNebulaTexture, vertexColors: true, size: 1.72, sizeAttenuation: true,
+      transparent: true, opacity: .12, blending: THREE.AdditiveBlending, depthWrite: false, alphaTest: .01,
     }));
     cloud.rotation.x = -.18;
     hub.add(cloud);
+    const nebulaBillboard = new THREE.Sprite(new THREE.SpriteMaterial({
+      map: galaxyNebulaTexture, color: new THREE.Color(color).lerp(new THREE.Color(0x9fb8ff), .38),
+      transparent: true, opacity: .22, blending: THREE.NormalBlending,
+      depthWrite: false, depthTest: true,
+    }));
+    nebulaBillboard.scale.set(6.8, 4.1, 1);
+    nebulaBillboard.position.y = -.08;
+    hub.add(nebulaBillboard);
     const galaxy = new THREE.Points(makeGalaxyDisc(data, palette), new THREE.PointsMaterial({
-      vertexColors: true, size: .145, sizeAttenuation: true, transparent: true,
-      opacity: .88, blending: THREE.AdditiveBlending, depthWrite: false,
+      map: sharedStarSpriteTexture, vertexColors: true, size: .22, sizeAttenuation: true,
+      transparent: true, opacity: .95, alphaTest: .018,
+      blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false,
     }));
     galaxy.rotation.x = -.18;
     hub.add(galaxy);
     const nucleusGlow = new THREE.Sprite(new THREE.SpriteMaterial({
-      map: galaxyNebulaTexture, color, transparent: true, opacity: .42,
-      blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false,
+      map: sharedCoreGlowTexture, color: 0xffe2b7, transparent: true, opacity: .42,
+      blending: THREE.AdditiveBlending, depthWrite: false, depthTest: true, toneMapped: false,
     }));
-    nucleusGlow.scale.set(2.25, 1.55, 1);
+    nucleusGlow.scale.set(1.82, 1.48, 1);
     hub.add(nucleusGlow);
-    const nucleus = new THREE.Mesh(sharedDataStarGeometry, new THREE.MeshBasicMaterial({ color: 0xf4eddd }));
-    nucleus.scale.setScalar(.78);
+    const nucleus = new THREE.Mesh(sharedDataStarGeometry, new THREE.MeshBasicMaterial({ color: 0xfff4dc, toneMapped: false }));
+    nucleus.scale.setScalar(.82);
     hub.add(nucleus);
     const globe = new THREE.Mesh(sharedGroupPickGeometry, sharedGroupPickMaterial);
     globe.userData.kind = 'group';
@@ -326,13 +553,16 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     const orbitPath = makeOrbit(orbitRadius, .9 + index % 4 * .035, new THREE.LineBasicMaterial({
       color, transparent: true, opacity: .075, depthWrite: false,
     }), 128);
+    orbitPath.rotation.x = .08 + (index % 5) * .045;
+    orbitPath.rotation.z = (index % 2 ? -.1 : .07) + (index % 3) * .022;
+    orbitPath.position.y = (index % 3 - 1) * .22;
     scene.add(orbitPath);
     const animateLayout = running && !matchMedia('(prefers-reduced-motion: reduce)').matches;
     const targetAngle = index * GOLDEN_ANGLE;
     const initialAngle = animateLayout ? hashAngle(data.id) : targetAngle;
     const transitionStart = performance.now();
     return {
-      id: data.id, name: data.name, mode: data.mode, count: data.count, root, hub, globe, galaxy, cloud, nucleusGlow,
+      id: data.id, name: data.name, mode: data.mode, count: data.count, root, hub, globe, galaxy, cloud, nebulaBillboard, nucleusGlow,
       orbitPath, palette, color, index, orbitRadius, targetRadius: orbitRadius,
       angle: initialAngle, layoutAngle: initialAngle, layoutFromAngle: initialAngle,
       targetAngle, layoutTransitionStart: transitionStart, layoutTransitionDuration: animateLayout ? 900 : 0, orbitPhase: 0,
@@ -353,22 +583,27 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   }
   function createDataNode(exam, groupId, slot) {
     const token = new THREE.Group();
-    const palette = hashText(exam.file) % ORBIT_COLORS.length;
-    const glow = new THREE.Mesh(sharedDataGlowGeometry, getDataGlowMaterial(palette));
-    const star = new THREE.Mesh(sharedDataStarGeometry, getDataStarMaterial(palette));
+    const signature = hashText(exam.file);
+    const palette = signature % ORBIT_COLORS.length;
+    const bright = (signature >>> 11) & 1;
+    const isJupiter = exam.file === JUPITER_EXAM_FILE;
+    if (isJupiter) loadJupiterTexture();
+    const size = .92 + ((signature >>> 17) % 7) * .03;
+    const glow = new THREE.Sprite(getDataGlowMaterial(palette, bright));
+    glow.scale.setScalar(.76 * size);
+    if (isJupiter && jupiterMaterial) glow.visible = false;
+    const star = new THREE.Mesh(sharedDataStarGeometry, isJupiter && jupiterMaterial ? jupiterMaterial : getDataStarMaterial(palette, bright));
+    star.scale.setScalar(.96 * size);
     star.userData.file = exam.file;
     star.userData.exam = exam;
     star.userData.kind = 'exam';
-    const paper = new THREE.Mesh(sharedPaperGeometry, sharedPaperMaterial);
-    paper.scale.setScalar(.82);
-    paper.visible = false;
-    token.add(glow, star, paper);
+    token.add(glow, star);
     token.userData.file = exam.file;
     token.userData.exam = exam;
     token.userData.kind = 'exam';
     dataRoot.add(token);
     return {
-      file: exam.file, exam, groupId, slot, token, star, paper, pickMesh: star,
+      file: exam.file, exam, groupId, slot, token, glow, star, pickMesh: star, size, selectedMix: 0, isJupiter,
       position: new THREE.Vector3(), phase: hashAngle(exam.file), radius: 2.8 + (slot % 3) * 1.72,
       speed: .22 + (hashText(exam.file) % 13) * .025,
     };
@@ -384,7 +619,6 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   }
 
   function setData({ groups: nextGroups, exams: nextExams, details = nextExams, searching = false }) {
-    sharedPaperMaterial.emissiveIntensity = searching ? .58 : .13;
     document.body.classList.toggle('search-active', searching);
     const oldGroups = [...groups.values()];
     const oldGroupsById = new Map(oldGroups.map((group) => [group.id, group]));
@@ -520,8 +754,9 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     geometry.setAttribute('position', positionAttribute);
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
     catalogPoints = new THREE.Points(geometry, new THREE.PointsMaterial({
-      size: mobile ? .2 : .14, sizeAttenuation: true, vertexColors: true,
-      transparent: true, opacity: .92, blending: THREE.AdditiveBlending, depthWrite: false,
+      map: sharedStarSpriteTexture, size: mobile ? .34 : .25, sizeAttenuation: true, vertexColors: true,
+      transparent: true, opacity: .94, alphaTest: .012,
+      blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false,
     }));
     catalogPoints.userData.kind = 'catalog-points';
     catalogPoints.userData.files = visibleCatalogPointFiles;
@@ -591,8 +826,40 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     const elapsed = Math.max(0, (now - lastFrame) / 1000);
     const dt = Math.min(elapsed, .08);
     lastFrame = now;
-    if (running && pageVisible) simTime += elapsed;
-    const animate = running && pageVisible;
+    if (running && pageVisible && !selectedExamFile) simTime += elapsed;
+    const animate = running && pageVisible && !selectedExamFile;
+    if (animate) {
+      depthFar.rotation.y += elapsed * .0022;
+      depthNear.rotation.y -= elapsed * .0048;
+      orbitalFrame.rotation.y = simTime * .0028;
+      orbitalFrame.rotation.z = Math.sin(simTime * .08) * .012;
+    }
+    const frameOpacity = focusedGroupId ? .028 : .095;
+    for (const material of frameMaterials) material.opacity = frameOpacity;
+    const desiredScaleMix = scaleMode === 'micro' ? 1 : 0;
+    scaleMix += (desiredScaleMix - scaleMix) * Math.min(1, dt * 4.8);
+    microRoot.visible = scaleMix > .002;
+    if (microRoot.visible) {
+      const anchorEntity = selectedExamFile ? entities.get(selectedExamFile) : null;
+      const anchorGroup = focusedGroupId ? groups.get(focusedGroupId) : null;
+      if (anchorEntity) microAnchor.copy(anchorEntity.position);
+      else if (anchorGroup) anchorGroup.globe.getWorldPosition(microAnchor);
+      microRoot.position.copy(microAnchor);
+      microRoot.scale.setScalar(.72 + scaleMix * .28);
+      microNucleus.material.opacity = .88 * scaleMix;
+      microNucleusGlow.material.opacity = .42 * scaleMix;
+      for (const material of microOrbitMaterials) material.opacity = .36 * scaleMix;
+      for (const material of microMaterials) {
+        if (material !== microNucleus.material && material !== microNucleusGlow.material) material.opacity = .92 * scaleMix;
+      }
+      microRoot.rotation.y = simTime * .1;
+      for (const child of microRoot.children) {
+        if (!child.userData?.microRadius) continue;
+        const phase = child.userData.microPhase + simTime * (.16 + child.userData.microShell * .045);
+        child.position.set(Math.cos(phase) * child.userData.microRadius, 0, Math.sin(phase) * child.userData.microRadius);
+        child.position.applyAxisAngle(orbitAxis, child.userData.microTilt);
+      }
+    }
 
     for (const group of groups.values()) {
       group.orbitRadius += (group.targetRadius - group.orbitRadius) * Math.min(1, dt * 1.4);
@@ -602,11 +869,18 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       if (animate) group.orbitPhase += group.speed * elapsed;
       group.angle = group.layoutAngle + group.orbitPhase;
       const emphasized = group.id === focusedGroupId;
-      group.orbitPath.material.opacity = emphasized ? .42 : .004;
-      for (let i = 0; i < group.shellMaterials.length; i += 1) group.shellMaterials[i].opacity = emphasized ? .34 - i * .035 : .012 - i * .002;
-      group.galaxy.material.opacity = emphasized ? .98 : .82;
-      group.cloud.material.opacity = emphasized ? .24 : .15;
-      group.nucleusGlow.material.opacity = emphasized ? .58 : .38;
+      const nebulaVisibility = smoothStep(18, 46, camera.position.distanceTo(group.root.position));
+      // Keep the overview's shared orbital frame legible at a glance. The
+      // focused route still wins by a wide margin, while the quiet paths give
+      // the wide shot a stable sense of scale and depth.
+      group.orbitPath.material.opacity = emphasized ? .42 : focusedGroupId ? .008 : .022;
+      for (let i = 0; i < group.shellMaterials.length; i += 1) {
+        group.shellMaterials[i].opacity = emphasized ? .34 - i * .035 : focusedGroupId ? .014 - i * .002 : .022 - i * .003;
+      }
+      group.galaxy.material.opacity = emphasized ? 1 : .92;
+      group.cloud.material.opacity = (emphasized ? .2 : .13) * nebulaVisibility;
+      group.nebulaBillboard.material.opacity = .22 * nebulaVisibility;
+      group.nucleusGlow.material.opacity = emphasized ? .52 : .34;
       const x = Math.cos(group.angle) * group.orbitRadius;
       const z = Math.sin(group.angle) * group.orbitRadius * .9;
       const y = Math.sin(group.angle * .72) * 1.25;
@@ -642,9 +916,16 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       entity.token.position.copy(entity.position);
       entity.token.rotation.y = Math.sin(simTime * .6 + entity.phase) * .12;
       entity.token.rotation.z = Math.cos(simTime * .3 + entity.phase) * .045;
-      const nearPaper = entity.groupId === focusedGroupId || camera.position.distanceTo(entity.position) < 30;
-      entity.paper.visible = nearPaper;
-      entity.star.scale.setScalar(nearPaper ? .78 : 1.18);
+      if (entity.isJupiter) entity.star.rotation.y = simTime * .12;
+      const distance = camera.position.distanceTo(entity.position);
+      const selected = entity.file === selectedExamFile ? 1 : 0;
+      entity.selectedMix += (selected - entity.selectedMix) * Math.min(1, dt * 10);
+      const nearGlow = 1 - smoothStep(26, 52, distance);
+      const globeScale = entity.isJupiter
+        ? .96 * (1 + 4 * Math.max(nearGlow, entity.selectedMix))
+        : .96 * (1 + entity.selectedMix * .045);
+      entity.star.scale.setScalar(globeScale * entity.size);
+      entity.glow.scale.setScalar((.7 + nearGlow * .16) * entity.size * (1 + entity.selectedMix * .23));
     }
 
     sun.rotation.y = simTime * .022;
@@ -655,12 +936,20 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     lensB.rotation.y -= animate ? elapsed * .006 : 0;
     if (cameraTransition) {
       const t = Math.min(1, (now - cameraTransition.start) / cameraTransition.duration);
-      const eased = t * t * (3 - 2 * t);
+      // Quintic ease-in/out: real camera travel, restrained acceleration and deceleration.
+      const eased = t < .5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2;
       camera.position.lerpVectors(cameraTransition.fromPosition, cameraTransition.toPosition, eased);
       controls.target.lerpVectors(cameraTransition.fromTarget, cameraTransition.toTarget, eased);
-      if (t >= 1) cameraTransition = null;
+      if (travelGuide) {
+        const pulse = .4 + Math.sin(simTime * 1.8) * .12;
+        travelGuide.line.material.opacity = pulse;
+        travelGuide.beacon.scale.setScalar(1 + Math.sin(simTime * 2.6) * .22);
+        travelGuide.ring.scale.setScalar(1 + Math.sin(simTime * 1.9) * .18);
+        travelGuide.ring.rotation.z = simTime * .7;
+      }
+      if (t >= 1) { cameraTransition = null; clearTravelGuide(); onTravel?.(''); }
     }
-    if (!cameraTransition && focusedGroupId) {
+    if (!cameraTransition && focusedGroupId && !selectedExamFile) {
       const focusedGroup = groups.get(focusedGroupId);
       if (focusedGroup) {
         focusedGroup.globe.getWorldPosition(tempB);
@@ -670,6 +959,14 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       }
     }
     controls.update();
+    if (questionOrbit) {
+      const center = entities.get(questionOrbit.file);
+      if (center) {
+        questionOrbit.root.position.copy(center.position);
+        questionOrbit.root.quaternion.copy(camera.quaternion);
+        questionOrbit.root.updateMatrixWorld(true);
+      }
+    }
     for (const relation of constellations) {
       const a = relation.from.position;
       const b = relation.to.position;
@@ -705,8 +1002,21 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     blackholeLabel.style.display = holePoint.visible ? 'flex' : 'none';
     blackholeLabel.style.left = holePoint.x + 'px';
     blackholeLabel.style.top = (holePoint.y - 24) + 'px';
+    if (questionOrbit) {
+      for (const marker of questionOrbit.markers) {
+        marker.mesh.getWorldPosition(tempProjected);
+        const depth = camera.position.distanceTo(tempProjected);
+        tempProjected.project(camera);
+        const projected = questionProjections.get(marker.key);
+        projected.x = (tempProjected.x * .5 + .5) * width;
+        projected.y = (-tempProjected.y * .5 + .5) * height;
+        projected.visible = tempProjected.z > -1 && tempProjected.z < 1
+          && Math.abs(tempProjected.x) < .98 && Math.abs(tempProjected.y) < .98;
+        projected.depth = depth;
+      }
+    }
     const groupAngles = new Map([...groups.values()].map((group) => [group.id, group.angle]));
-    onFrame?.({ groups: groupPositions, exams: examPositions, examFiles: catalogPointFiles, groupAngles, cameraPosition: camera.position.toArray() });
+    onFrame?.({ groups: groupPositions, exams: examPositions, questions: questionProjections, examFiles: catalogPointFiles, groupAngles, cameraPosition: camera.position.toArray() });
     renderer.render(scene, camera);
     rafId = requestAnimationFrame(setFrame);
   }
@@ -719,40 +1029,144 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
   }
+  function travelTo(target, distance, lift = 2) {
+    const direction = camera.position.clone().sub(controls.target).normalize();
+    const position = target.clone().addScaledVector(direction, distance);
+    position.y += lift;
+    const far = controls.target.distanceTo(target) > 24;
+    if (instantTravel || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      cameraTransition = null;
+      clearTravelGuide();
+      camera.position.copy(position);
+      controls.target.copy(target);
+      controls.update();
+      onTravel?.('');
+      return;
+    }
+    createTravelGuide(controls.target.clone(), target.clone());
+    cameraTransition = {
+      fromPosition: camera.position.clone(), fromTarget: controls.target.clone(),
+      toPosition: position, toTarget: target,
+      start: performance.now(), duration: far ? 1100 : 510,
+    };
+    onTravel?.(far ? 'warp' : 'flight');
+  }
   function focusGroup(id) {
     const group = groups.get(id);
     if (!group) return;
     focusedGroupId = id;
-    const target = group.globe.getWorldPosition(new THREE.Vector3());
-    const fromPosition = camera.position.clone();
-    const fromTarget = controls.target.clone();
-    const direction = camera.position.clone().sub(controls.target).normalize();
-    const toPosition = target.clone().addScaledVector(direction, 17);
-    toPosition.y += 2.6;
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      camera.position.copy(toPosition);
-      controls.target.copy(target);
-      cameraTransition = null;
-      controls.update();
-      return;
-    }
-    cameraTransition = { fromPosition, fromTarget, toPosition, toTarget: target, start: performance.now(), duration: 900 };
+    scaleMode = 'planet';
+    onScale?.(scaleMode);
+    travelTo(group.globe.getWorldPosition(new THREE.Vector3()), 17, 2.6);
+  }
+  function focusExam(file) {
+    const entity = entities.get(file);
+    if (!entity) return false;
+    focusedGroupId = entity.groupId;
+    scaleMode = 'planet';
+    onScale?.(scaleMode);
+    travelTo(entity.position.clone(), 15, 1.8);
+    return true;
   }
   function resetCamera() {
-    const toTarget = new THREE.Vector3(0, 0, 0);
     focusedGroupId = '';
-    const toPosition = new THREE.Vector3(0, 48, 92);
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      camera.position.copy(toPosition);
-      controls.target.copy(toTarget);
-      cameraTransition = null;
-      controls.update();
-      return;
+    scaleMode = 'macro';
+    onScale?.(scaleMode);
+    travelTo(new THREE.Vector3(), 92, 0);
+  }
+  function setScale(mode) {
+    const next = ['macro', 'planet', 'micro'].includes(mode) ? mode : 'macro';
+    if (next === 'micro' && !focusedGroupId && !selectedExamFile) return false;
+    if (next === 'planet' && !focusedGroupId && !selectedExamFile) return false;
+    if (next === 'macro' && selectedExamFile) return false;
+    const entity = selectedExamFile ? entities.get(selectedExamFile) : null;
+    const group = focusedGroupId ? groups.get(focusedGroupId) : null;
+    const target = new THREE.Vector3();
+    if (entity) target.copy(entity.position);
+    else if (group) group.globe.getWorldPosition(target);
+    scaleMode = next;
+    onScale?.(scaleMode);
+    if (next === 'macro') {
+      focusedGroupId = '';
+      travelTo(new THREE.Vector3(), 92, 0);
+    } else if (next === 'micro') {
+      microAnchor.copy(target);
+      travelTo(target, 8.2, 1.25);
+    } else {
+      travelTo(target, 17, 2.6);
     }
-    cameraTransition = {
-      fromPosition: camera.position.clone(), fromTarget: controls.target.clone(),
-      toPosition, toTarget, start: performance.now(), duration: 980,
-    };
+    return true;
+  }
+  function finishTravel() {
+    if (!cameraTransition) return;
+    camera.position.copy(cameraTransition.toPosition);
+    controls.target.copy(cameraTransition.toTarget);
+    cameraTransition = null;
+    clearTravelGuide();
+    controls.update();
+    onTravel?.('');
+  }
+  function snapshotNavigation() {
+    return { position: camera.position.toArray(), target: controls.target.toArray(), focusedGroupId, scaleMode };
+  }
+  function restoreNavigation(snapshot) {
+    const valid = snapshot && [snapshot.position, snapshot.target].every((arr) =>
+      Array.isArray(arr) && arr.length === 3 && arr.every(Number.isFinite));
+    if (!valid) return false;
+    cameraTransition = null;
+    clearTravelGuide();
+    onTravel?.('');
+    focusedGroupId = groups.has(snapshot.focusedGroupId) ? snapshot.focusedGroupId : '';
+    scaleMode = ['macro', 'planet', 'micro'].includes(snapshot.scaleMode) ? snapshot.scaleMode : (focusedGroupId ? 'planet' : 'macro');
+    onScale?.(scaleMode);
+    camera.position.fromArray(snapshot.position);
+    controls.target.fromArray(snapshot.target);
+    controls.update();
+    return true;
+  }
+  function clearQuestionOrbit() {
+    if (!questionOrbit) return;
+    dataRoot.remove(questionOrbit.root);
+    for (const line of questionOrbit.lines) line.geometry.dispose();
+    questionOrbit = null;
+    questionProjections.clear();
+  }
+  function setQuestionOrbit(file, rows) {
+    clearQuestionOrbit();
+    if (!file || !entities.has(file) || !Array.isArray(rows) || !rows.length) return false;
+    const root = new THREE.Group();
+    const markers = [];
+    const lines = [];
+    const rings = rows.length > 18 ? 2 : 1;
+    const counts = Array.from({ length: rings }, () => 0);
+    for (let i = 0; i < rows.length; i += 1) counts[i % rings]++;
+    const ordinals = Array.from({ length: rings }, () => 0);
+    for (let ring = 0; ring < rings; ring += 1) {
+      const radius = ring ? 2.85 : 1.95;
+      const points = [];
+      for (let step = 0; step <= 96; step += 1) {
+        const angle = step * Math.PI * 2 / 96;
+        points.push(new THREE.Vector3(Math.cos(angle) * radius, Math.sin(angle) * radius * .78, 0));
+      }
+      const orbit = new THREE.Line(new THREE.BufferGeometry().setFromPoints(points), sharedQuestionLineMaterial);
+      root.add(orbit);
+      lines.push(orbit);
+    }
+    for (let i = 0; i < rows.length; i += 1) {
+      const ring = i % rings;
+      const ordinal = ordinals[ring]++;
+      const angle = ordinal / counts[ring] * Math.PI * 2 - Math.PI / 2;
+      const radius = ring ? 2.85 : 1.95;
+      const mesh = new THREE.Mesh(sharedQuestionGeometry, sharedQuestionMaterial);
+      mesh.position.set(Math.cos(angle) * radius, Math.sin(angle) * radius * .78, 0);
+      root.add(mesh);
+      const key = String(rows[i].id);
+      questionProjections.set(key, { x: 0, y: 0, depth: Infinity, visible: false });
+      markers.push({ key, mesh });
+    }
+    dataRoot.add(root);
+    questionOrbit = { file, root, markers, lines };
+    return true;
   }
   function settleGroupLayouts() {
     const now = performance.now();
@@ -792,6 +1206,20 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
 
   return {
     setData,
+    setSelectedExam(file) {
+      selectedExamFile = typeof file === 'string' ? file : '';
+      controls.enabled = !selectedExamFile;
+      if (!selectedExamFile) clearQuestionOrbit();
+    },
+    setQuestionOrbit,
+    clearQuestionOrbit,
+    focusExam,
+    setScale,
+    snapshotNavigation,
+    restoreNavigation,
+    cancelTravel() { cameraTransition = null; clearTravelGuide(); onTravel?.(''); },
+    finishTravel,
+    setInstantTravel(value) { instantTravel = Boolean(value); if (instantTravel) finishTravel(); },
     setConstellations(anchorFile, relatedFiles, color) {
       pendingLines.length = 0;
       if (anchorFile) for (const file of relatedFiles) pendingLines.push({ from: anchorFile, to: file, color });
@@ -805,11 +1233,21 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     resize: setSize,
     clearFocus() { resetCamera(); },
     dispose() {
+      worldDisposed = true;
       cancelAnimationFrame(rafId);
       canvas.removeEventListener('pointerdown', pointerDown);
       canvas.removeEventListener('pointerup', pointerUp);
       window.removeEventListener('resize', setSize);
       controls.dispose();
+      clearQuestionOrbit();
+      clearTravelGuide();
+      microRoot.traverse((object) => {
+        if (object.geometry) object.geometry.dispose();
+        if (object.material) object.material.dispose();
+      });
+      sharedQuestionGeometry.dispose();
+      sharedQuestionMaterial.dispose();
+      sharedQuestionLineMaterial.dispose();
       for (const group of groups.values()) clearGroupNode(group);
       for (const entity of entities.values()) removeDataNode(entity);
       disposeConstellations();
@@ -817,16 +1255,21 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       sharedGroupPickGeometry.dispose();
       sharedGroupPickMaterial.dispose();
       galaxyNebulaTexture.dispose();
+      sharedCoreGlowTexture.dispose();
+      sharedStarSpriteTexture.dispose();
       sharedDataStarGeometry.dispose();
-      sharedDataGlowGeometry.dispose();
-      sharedPaperGeometry.dispose();
-      sharedPaperTexture.dispose();
-      sharedPaperMaterial.dispose();
       nebulaTexture.dispose();
       nebulaSky.geometry.dispose();
       nebulaSky.material.dispose();
       for (const material of dataStarMaterials.values()) material.dispose();
       for (const material of dataGlowMaterials.values()) material.dispose();
+      jupiterMaterial?.dispose();
+      jupiterTexture?.dispose();
+      depthFar.geometry.dispose();
+      depthFar.material.dispose();
+      depthNear.geometry.dispose();
+      depthNear.material.dispose();
+      for (const material of frameMaterials) material.dispose();
       if (catalogPoints) {
         dataRoot.remove(catalogPoints);
         catalogPoints.geometry.dispose();
