@@ -16934,6 +16934,37 @@ window.mainDB = {
       "primaryStandardCourse": "수학(상)"
     },
     {
+      "file": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+      "school": "제일고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2020,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "공통수학2",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SB-01",
+      "rangeStartUnit": "집합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SB-03",
+      "rangeEndUnit": "함수",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(하)",
+          "courseCode": "H15-SB",
+          "rangeStartUnitKey": "H15-SB-01",
+          "rangeStartUnit": "집합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SB-03",
+          "rangeEndUnit": "함수",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
       "file": "original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
       "school": "신흥중",
       "topic": "",
