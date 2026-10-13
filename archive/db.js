@@ -8492,6 +8492,37 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
+      "file": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+      "school": "왕운중",
+      "topic": "",
+      "grade": "중1",
+      "year": 2024,
+      "semester": "2",
+      "examType": "final",
+      "subject": "수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M1-06",
+      "rangeStartUnit": "평면도형의 성질",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "M1-08",
+      "rangeEndUnit": "자료의 정리와 해석",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-06",
+          "rangeStartUnit": "평면도형의 성질",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "M1-08",
+          "rangeEndUnit": "자료의 정리와 해석",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
       "file": "original/middle/m1/2mid/24_왕운중_2학기_중간_중1_기출.js",
       "school": "왕운중",
       "topic": "",
