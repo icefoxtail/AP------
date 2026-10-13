@@ -10,13 +10,23 @@
   const RECIPES = Object.freeze({
     FIVE_MINUTE: Object.freeze({ key: "FIVE_MINUTE", label: "5분 테스트", defaultCount: 4, profile: "VERIFIED" }),
     SUBUNIT: Object.freeze({ key: "SUBUNIT", label: "소단원 평가", defaultCount: 12, profile: "VERIFIED" }),
-    UNIT: Object.freeze({ key: "UNIT", label: "단원 평가", defaultCount: 20, profile: "VERIFIED" }),
-    MONTHLY: Object.freeze({ key: "MONTHLY", label: "월말 평가", defaultCount: 24, profile: "VERIFIED" }),
+    UNIT: Object.freeze({ key: "UNIT", label: "중단원 평가", defaultCount: 20, profile: "VERIFIED" }),
+    MONTHLY: Object.freeze({ key: "MONTHLY", label: "종합평가", defaultCount: 24, profile: "VERIFIED" }),
   });
   function getRecipe(key) {
     const recipe = RECIPES[key];
     if (!recipe) throw new Error("UNKNOWN_ASSESSMENT_RECIPE:" + key);
     return recipe;
+  }
+  function representativeGroup(row) {
+    if (!row) return null;
+    const usable = field => ["CONFIRMED", "RECORDED"].includes(row.metaStatus?.[field]) &&
+      typeof row[field] === "string" && row[field].trim();
+    const concept = usable("problemTypeKey") ? `mf:${row.problemTypeKey}` :
+      usable("rpmL3") ? `rpm:${row.rpmL3}` : "";
+    const type = usable("templateKey") && concept.startsWith("mf:") ? `mf:${row.templateKey}` :
+      usable("rpmL4") && concept.startsWith("rpm:") ? `rpm:${row.rpmL4}` : "";
+    return concept || type ? { concept, type } : null;
   }
   function queryRecipe(records, key, filters = {}, options = {}) {
     const recipe = getRecipe(key);
@@ -46,5 +56,5 @@
       }),
     });
   }
-  return Object.freeze({ VERSION: "PROBLEM_BANK_ASSESSMENT_RECIPE_META_V1", RECIPES, getRecipe, queryRecipe });
+  return Object.freeze({ VERSION: "PROBLEM_BANK_ASSESSMENT_RECIPE_META_V1", RECIPES, getRecipe, queryRecipe, representativeGroup });
 });
