@@ -7790,6 +7790,37 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
+      "file": "original/middle/m3/2final/24_왕운중_2학기_기말_중3_수학.js",
+      "school": "왕운중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2024,
+      "semester": "2",
+      "examType": "final",
+      "subject": "수학",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "M3-05",
+      "rangeStartUnit": "삼각비",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "M3-07",
+      "rangeEndUnit": "통계",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-05",
+          "rangeStartUnit": "삼각비",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M3-07",
+          "rangeEndUnit": "통계",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
       "file": "original/middle/m3/2mid/24_왕운중_2학기_중간_중3_수학.js",
       "school": "왕운중",
       "topic": "",
