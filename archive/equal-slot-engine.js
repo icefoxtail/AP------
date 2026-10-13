@@ -228,6 +228,8 @@
         fitPages(pages);
         const evidence = audit(area);
         area.dataset.equalSlotAudit = JSON.stringify(evidence);
+        // Keep the failed geometry evidence observable after the fast runtime rolls back its staging DOM.
+        root.__AP_EQUAL_SLOT_LAST_AUDIT__ = evidence;
         if (!evidence.ok) throw failure('EQUAL_SLOT_AUDIT_FAILED', evidence);
         return evidence;
     }
