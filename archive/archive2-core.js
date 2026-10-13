@@ -500,6 +500,29 @@
       reasons.push("conflict");
     return { ok: reasons.length === 0, reasons };
   }
+  // General archive use is a source-availability path, not a canonical
+  // metadata approval path. Keep identity/integrity and the source payload
+  // contract hard, while leaving taxonomy/approval/version status as
+  // supplemental metadata state for later repair.
+  function generalUseEligibility(record = {}) {
+    const reasons = [];
+    if (!UID.test(record.questionUid || "") || record.identityStatus !== "VERIFIED")
+      reasons.push("identity");
+    if (record.sourceIntegrityStatus !== "VERIFIED")
+      reasons.push("source");
+    if (
+      !normalizeFile(record.sourceFile) ||
+      !Number.isInteger(Number(record.sourceOrdinal)) ||
+      !text(record.sourceFingerprint)
+    )
+      reasons.push("source");
+    if (["SOURCE_BLOCKED", "SOURCE_REPAIR_REQUIRED", "SOLUTION_REPAIR_REQUIRED",
+      "ANSWER_REPAIR_REQUIRED"].includes(record.sourceQualityDisposition))
+      reasons.push("source");
+    if (record.sourceIssueHold === true || record.sourceDefectCandidate === true)
+      reasons.push("source_issue");
+    return { ok: reasons.length === 0, reasons: [...new Set(reasons)] };
+  }
   const eligibility = basicEligibility;
   function difficultyEligible(record) {
     return record.sourceStatus === "VERIFIED" &&
@@ -518,34 +541,48 @@
       (advancedAuthority(record) !== "mf" || !record.foundationTaxonomyStatus || record.foundationTaxonomyStatus === "CONFIRMED") &&
       !(record.metadataConflicts || []).some(field => ["L3", "L4", "problemTypeKey", "templateKey", "foundationTaxonomy"].includes(field));
   }
+  function generalFilterRecord(record, options = {}) {
+    if (options.useMode !== "general") return record;
+    const fallback = record?.unverifiedTaxonomy;
+    const fields = ["curriculumKey", "courseKey", "L1", "L2"];
+    if (!fallback || fields.some((field) => text(record[field]))) return record;
+    if (fields.some((field) => !text(fallback[field]))) return record;
+    return {
+      ...record,
+      ...Object.fromEntries(fields.map((field) => [field, fallback[field]])),
+    };
+  }
   function matches(record, filters = {}, options = {}) {
+    const filterRecord = options.useMode === "general"
+      ? generalFilterRecord(record, options)
+      : record;
     if (Array.isArray(filters.scopeQuestionUids) && !filters.scopeQuestionUids.includes(record.questionUid))
       return false;
     if (
       filters.primaryPaths?.length &&
-      !filters.primaryPaths.includes(pathKey(record, 4))
+      !filters.primaryPaths.includes(pathKey(filterRecord, 4))
     )
       return false;
     const projectionPolicy = options.projectionPolicy ||
       options.canonicalAuthority?.projectionPolicy || options.catalog?.projectionPolicy;
-    if (!browseGradeMatchesRecord(record, filters.grade, projectionPolicy)) return false;
+    if (!browseGradeMatchesRecord(filterRecord, filters.grade, projectionPolicy)) return false;
     if (
       filters.sourceFiles?.length &&
-      !filters.sourceFiles.includes(record.sourceFile)
+      !filters.sourceFiles.includes(filterRecord.sourceFile)
     )
       return false;
-    if (filters.school && record.school !== filters.school) return false;
-    if (filters.yearFrom && sourceYear(record) < Number(filters.yearFrom))
+    if (filters.school && filterRecord.school !== filters.school) return false;
+    if (filters.yearFrom && sourceYear(filterRecord) < Number(filters.yearFrom))
       return false;
-    if (filters.yearTo && (!sourceYear(record) || sourceYear(record) > Number(filters.yearTo)))
+    if (filters.yearTo && (!sourceYear(filterRecord) || sourceYear(filterRecord) > Number(filters.yearTo)))
       return false;
-    if (filters.axis && record.examAxis !== filters.axis) return false;
+    if (filters.axis && filterRecord.examAxis !== filters.axis) return false;
     if (!subjectProjectionMatches(
-      record,
+      filterRecord,
       filters,
       projectionPolicy,
     )) return false;
-    if (filters.family && !record.courseFamilies?.includes(filters.family))
+    if (filters.family && !filterRecord.courseFamilies?.includes(filters.family))
       return false;
     for (const level of [3, 4]) {
       const selected = filters[`L${level}`];
@@ -561,7 +598,7 @@
         hasSubjectProjection(filters.grade)
       )
         continue;
-      if (filters[field] && record[field] !== filters[field]) return false;
+      if (filters[field] && filterRecord[field] !== filters[field]) return false;
     }
     if (
       filters.difficultyBuckets?.length &&
@@ -572,16 +609,16 @@
       filters.query &&
       !normalizeSearch(
         [
-          record.school,
-          record.year,
-          record.courseKey,
-          record.L1,
-          record.L2,
-          record.L3,
-          record.L4,
-          record.subject,
-          record.topic,
-          record.sourceFile,
+          filterRecord.school,
+          filterRecord.year,
+          filterRecord.courseKey,
+          filterRecord.L1,
+          filterRecord.L2,
+          filterRecord.L3,
+          filterRecord.L4,
+          filterRecord.subject,
+          filterRecord.topic,
+          filterRecord.sourceFile,
           record.examAxis?.replace("-final", "기말").replace("-mid", "중간"),
         ].join(" "),
       ).includes(normalizeSearch(filters.query))
@@ -617,10 +654,13 @@
     }
     return { sets, union };
   }
-  function rowMatches(record, row) {
+  function rowMatches(record, row, options = {}) {
+    const filterRecord = options.useMode === "general"
+      ? generalFilterRecord(record, options)
+      : record;
     const pathsMatch = row.paths?.length
-      ? row.paths.includes(pathKey(record, row.depth || 4))
-      : !row.path || pathKey(record, row.depth || 4) === row.path;
+      ? row.paths.includes(pathKey(filterRecord, row.depth || 4))
+      : !row.path || pathKey(filterRecord, row.depth || 4) === row.path;
     return (
       pathsMatch &&
       (!Array.isArray(row.scopeQuestionUids) || row.scopeQuestionUids.includes(record.questionUid)) &&
@@ -665,7 +705,7 @@
       errors.push("선택 학생의 출제 이력을 먼저 확인해야 합니다.");
     return errors;
   }
-  function selectBlueprint(records, request, context = {}) {
+  function selectBlueprint(records, request, context = {}, options = {}) {
     const started = Date.now();
     const errors = validatePlan(request);
     const exclusions = composeExclusions(context);
@@ -673,7 +713,9 @@
     const used = new Set();
     const candidates = records.filter((record) => {
       if (!matches(record, request.filters, request)) return false;
-      const gate = eligibility(record, request);
+      const gate = request.useMode === "general"
+        ? generalUseEligibility(record, request)
+        : eligibility(record, request);
       gate.reasons.forEach((reason) => {
         reasons[reason] = (reasons[reason] || 0) + 1;
       });
@@ -691,7 +733,7 @@
     const rowResults = rows.map((row) => ({
       id: row.id,
       requested: row.count,
-      available: candidates.filter((r) => rowMatches(r, row)).length,
+      available: candidates.filter((r) => rowMatches(r, row, request)).length,
       selected: 0,
     }));
     for (const pin of request.pins || []) {
@@ -700,7 +742,7 @@
       if (
         !record ||
         !row ||
-        !rowMatches(record, row) ||
+        !rowMatches(record, row, request) ||
         used.has(pin.questionUid)
       ) {
         errors.push("고정 문항이 현재 범위·이력 조건과 충돌합니다.");
@@ -725,15 +767,57 @@
       const count = row.count - result.selected;
       if (count <= 0 || errors.length) continue;
       const pool = candidates.filter(
-        (record) => !used.has(record.questionUid) && rowMatches(record, row),
+        (record) => !used.has(record.questionUid) && rowMatches(record, row, request),
       );
+      if (typeof options.representativeGroupFor === "function") {
+        const groups = new Map();
+        const conceptCounts = new Map();
+        const selectedGroups = new Set();
+        const groupOf = record => {
+          const value = options.representativeGroupFor(record);
+          if (!value?.concept) return null;
+          return { concept: value.concept, key: JSON.stringify([value.concept, value.type || ""]) };
+        };
+        for (const record of selected.filter(item => item.rowId === row.id)) {
+          const group = groupOf(record);
+          if (!group) continue;
+          selectedGroups.add(group.key);
+          conceptCounts.set(group.concept, (conceptCounts.get(group.concept) || 0) + 1);
+        }
+        for (const record of pool) {
+          const group = groupOf(record);
+          if (!group || selectedGroups.has(group.key)) continue;
+          if (!groups.has(group.key)) groups.set(group.key, { ...group, records: [] });
+          groups.get(group.key).records.push(record);
+        }
+        while (result.selected < row.count && groups.size) {
+          const group = [...groups.values()].sort((a, b) =>
+            (conceptCounts.get(a.concept) || 0) - (conceptCounts.get(b.concept) || 0) ||
+            Math.max(...b.records.map(sourceYear)) - Math.max(...a.records.map(sourceYear)) ||
+            a.key.localeCompare(b.key, "en"))[0];
+          groups.delete(group.key);
+          const newestYear = Math.max(...group.records.map(sourceYear));
+          const selection = selector.selectCandidates(
+            group.records.filter(record => sourceYear(record) === newestYear),
+            { count: 1 },
+            { selectionSeed: request.seed || VERSION },
+          );
+          const record = selection.selected[0];
+          if (!record || used.has(record.questionUid)) continue;
+          selected.push({ ...record, rowId: row.id });
+          used.add(record.questionUid);
+          result.selected++;
+          selectedGroups.add(group.key);
+          conceptCounts.set(group.concept, (conceptCounts.get(group.concept) || 0) + 1);
+        }
+      }
       // Recency is a priority after hard scope/quality/history gates. Preserve
       // the existing seeded selection within each year; unknown years go last.
       for (const year of [...new Set(pool.map(sourceYear))].sort((a, b) => b - a)) {
         const remaining = row.count - result.selected;
         if (!remaining) break;
         const selection = selector.selectCandidates(
-          pool.filter((record) => sourceYear(record) === year),
+          pool.filter((record) => !used.has(record.questionUid) && sourceYear(record) === year),
           { count: remaining },
           { selectionSeed: request.seed || VERSION },
         );
@@ -752,6 +836,18 @@
     const shortages = rowResults
       .filter((r) => r.selected < r.requested)
       .map((r) => ({ ...r, shortage: r.requested - r.selected }));
+    const representativeCoverage = typeof options.representativeGroupFor === "function"
+      ? rows.map(row => {
+          const groupKey = record => {
+            const group = options.representativeGroupFor(record);
+            return group?.concept ? JSON.stringify([group.concept, group.type || ""]) : null;
+          };
+          const known = new Set(candidates.filter(record => rowMatches(record, row, request)).map(groupKey).filter(Boolean));
+          const covered = new Set(selected.filter(record => record.rowId === row.id).map(groupKey).filter(Boolean));
+          return { rowId: row.id, knownGroupCount: known.size, coveredGroupCount: covered.size,
+            complete: known.size > 0 && row.count >= known.size && [...known].every(key => covered.has(key)) };
+        })
+      : [];
     return {
       ok: !errors.length && !shortages.length,
       selected,
@@ -763,6 +859,7 @@
         selectedCount: selected.length,
         excludedByReason: reasons,
         elapsedMs: Date.now() - started,
+        representativeCoverage,
       },
       seed: request.seed,
       selectorVersion: VERSION,
@@ -776,12 +873,15 @@
     for (const record of selected) {
       if (seen.has(record.questionUid)) hardFailures.push("중복 UID");
       seen.add(record.questionUid);
-      if (!eligibility(record, request).ok || !matches(record, request.filters, request))
+      const gate = request.useMode === "general"
+        ? generalUseEligibility(record, request)
+        : eligibility(record, request);
+      if (!gate.ok || !matches(record, request.filters, request))
         hardFailures.push("문항의 승인·범위 조건이 일치하지 않습니다.");
       if (exclusions.has(record.questionUid))
         hardFailures.push("학생·시리즈·수동 제외 이력과 중복됩니다.");
       const row = request.rows.find((r) => r.id === record.rowId);
-      if (!row || !rowMatches(record, row))
+      if (!row || !rowMatches(record, row, request))
         hardFailures.push("출제 조건과 문항이 일치하지 않습니다.");
     }
     for (const row of request.rows || [])
@@ -870,6 +970,7 @@
     taxonomyPaths,
     eligibility,
     basicEligibility,
+    generalUseEligibility,
     difficultyEligible,
     advancedEligible,
     advancedAuthority,

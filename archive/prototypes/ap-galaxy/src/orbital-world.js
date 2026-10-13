@@ -131,7 +131,7 @@ function makeOrbit(radius, aspect, material, segments = 112) {
   }
   return new THREE.Line(new THREE.BufferGeometry().setFromPoints(points), material);
 }
-export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame, onTravel, onScale }) {
+export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame, onTravel, onScale, onFacet }) {
   const mobile = window.innerWidth < 760;
   const starSpriteTexture = makeStarSpriteTexture();
   const coreGlowTexture = makeCoreGlowTexture();
@@ -271,10 +271,14 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   const groupRoot = new THREE.Group();
   const dataRoot = new THREE.Group();
   const constellationRoot = new THREE.Group();
-  scene.add(groupRoot, dataRoot, constellationRoot);
+  const facetRoot = new THREE.Group();
+  facetRoot.name = 'parallel-facet-galaxies';
+  scene.add(groupRoot, dataRoot, constellationRoot, facetRoot);
   const sharedGroupPickGeometry = new THREE.SphereGeometry(1.55, 16, 12);
   const sharedGroupPickMaterial = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, colorWrite: false, depthWrite: false });
   const sharedDataStarGeometry = new THREE.SphereGeometry(.2, 24, 18);
+  const sharedFacetPickGeometry = new THREE.SphereGeometry(.9, 16, 10);
+  const sharedFacetPickMaterial = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, colorWrite: false, depthWrite: false });
   const galaxyNebulaTexture = makeGalaxyNebulaTexture();
   const sharedCoreGlowTexture = coreGlowTexture;
   const sharedStarSpriteTexture = starSpriteTexture;
@@ -332,6 +336,9 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   const pointer = new THREE.Vector2();
   const planetPicks = [];
   const examPicks = [];
+  const facetPicks = [];
+  const facetNodes = new Map();
+  const facetCategories = new Map();
   const blackholePicks = [blackhole];
   const tempA = new THREE.Vector3();
   const tempB = new THREE.Vector3();
@@ -448,9 +455,8 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   function groupOrbitRadius(index, groupCount) {
     return 10 + index * (72 / Math.max(1, groupCount - 1));
   }
-  function makeGalaxyDisc(data, palette) {
+  function makeGalaxyDisc(data, palette, starCount = 216) {
     const random = randomFrom(hashText(data.id) ^ 0x61c88647);
-    const starCount = 216;
     const positions = new Float32Array(starCount * 3);
     const colors = new Float32Array(starCount * 3);
     const baseColor = new THREE.Color(ORBIT_COLORS[palette]);
@@ -580,6 +586,121 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       if (object.geometry && object.geometry !== sharedGroupPickGeometry && object.geometry !== sharedDataStarGeometry) object.geometry.dispose();
       if (object.material && object.material !== sharedGroupPickMaterial) object.material.dispose();
     });
+  }
+  const FACET_KINDS = ['grade', 'subject', 'term', 'year', 'school'];
+  const FACET_CATEGORY_COLORS = [0x9bc7ff, 0xc6a5ff, 0x9ce8d0, 0xffd08f, 0xf3b4d6];
+  function facetCategoryPosition(index) {
+    const positions = {
+      grade: [-10, 2, 8],
+      subject: [12, 2, 8],
+      term: mobile ? [-12, -9, -18] : [-34, -9, -18],
+      year: mobile ? [0, -14, -27] : [0, -14, -27],
+      school: mobile ? [12, -9, -18] : [34, -9, -18],
+    };
+    const [x, y, z] = positions[FACET_KINDS[index]] || [0, 0, 0];
+    return new THREE.Vector3(x, y, z);
+  }
+  function clearFacetNodes() {
+    for (const category of facetCategories.values()) {
+      facetRoot.remove(category.root);
+      category.root.traverse((object) => {
+        if (object.geometry && object.geometry !== sharedFacetPickGeometry && object.geometry !== sharedDataStarGeometry) object.geometry.dispose();
+        if (object.material && object.material !== sharedFacetPickMaterial) object.material.dispose();
+      });
+    }
+    facetCategories.clear();
+    facetNodes.clear();
+    facetPicks.length = 0;
+  }
+  function createFacetCategory(kind, index) {
+    const color = FACET_CATEGORY_COLORS[index % FACET_CATEGORY_COLORS.length];
+    const root = new THREE.Group();
+    root.name = 'facet-category:' + kind;
+    root.position.copy(facetCategoryPosition(index));
+    const hub = new THREE.Group();
+    root.add(hub);
+    const galaxy = new THREE.Points(makeGalaxyDisc({ id: 'facet-category:' + kind }, index, 160), new THREE.PointsMaterial({
+      map: sharedStarSpriteTexture, vertexColors: true, size: .18, sizeAttenuation: true,
+      transparent: true, opacity: .8, alphaTest: .018, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false,
+    }));
+    galaxy.scale.setScalar(1.35);
+    hub.add(galaxy);
+    const glow = new THREE.Sprite(new THREE.SpriteMaterial({
+      map: sharedCoreGlowTexture, color, transparent: true, opacity: .38,
+      blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false,
+    }));
+    glow.scale.setScalar(1.7);
+    hub.add(glow);
+    const nucleus = new THREE.Mesh(sharedDataStarGeometry, new THREE.MeshBasicMaterial({ color: 0xffffff, toneMapped: false }));
+    nucleus.scale.setScalar(1.2);
+    hub.add(nucleus);
+    const ringMaterial = new THREE.LineBasicMaterial({ color, transparent: true, opacity: .26, depthWrite: false });
+    const ring = makeOrbit(3.7, .74, ringMaterial, 80);
+    ring.rotation.x = .24 + index * .11;
+    ring.rotation.z = index % 2 ? -.18 : .12;
+    root.add(ring);
+    const pick = new THREE.Mesh(sharedFacetPickGeometry, sharedFacetPickMaterial);
+    pick.userData.kind = 'facet-category';
+    pick.userData.facetKind = kind;
+    root.add(pick);
+    facetRoot.add(root);
+    const category = { kind, root, hub, galaxy, glow, nucleus, ring, pick, color };
+    facetCategories.set(kind, category);
+    return category;
+  }
+  function createFacetNode(data, index) {
+    const category = facetCategories.get(data.kind);
+    if (!category) return null;
+    const palette = index % FACET_CATEGORY_COLORS.length;
+    const root = new THREE.Group();
+    root.name = data.id;
+    const color = FACET_CATEGORY_COLORS[palette];
+    const galaxy = new THREE.Points(makeGalaxyDisc({ id: data.id }, palette, 52), new THREE.PointsMaterial({
+      map: sharedStarSpriteTexture, vertexColors: true, size: .12, sizeAttenuation: true,
+      transparent: true, opacity: data.disabled ? .16 : data.selected ? .92 : .56,
+      alphaTest: .018, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false,
+    }));
+    galaxy.scale.setScalar(data.selected ? 1.18 : .88);
+    root.add(galaxy);
+    const glow = new THREE.Sprite(new THREE.SpriteMaterial({
+      map: sharedCoreGlowTexture, color, transparent: true,
+      opacity: data.disabled ? .06 : data.selected ? .32 : .16,
+      blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false,
+    }));
+    glow.scale.setScalar(data.selected ? .72 : .5);
+    root.add(glow);
+    const star = new THREE.Mesh(sharedDataStarGeometry, new THREE.MeshBasicMaterial({ color: data.disabled ? 0x5a6d8b : color, toneMapped: false }));
+    star.scale.setScalar(data.selected ? .65 : .42);
+    root.add(star);
+    const ringMaterial = new THREE.LineBasicMaterial({ color, transparent: true, opacity: data.disabled ? .04 : .11, depthWrite: false });
+    const ring = makeOrbit(1.15 + (index % 3) * .23, .7, ringMaterial, 48);
+    ring.rotation.x = .18 + (index % 4) * .17;
+    root.add(ring);
+    const pick = new THREE.Mesh(sharedFacetPickGeometry, sharedFacetPickMaterial);
+    pick.userData.kind = 'facet';
+    pick.userData.facetKind = data.kind;
+    pick.userData.facetValue = data.value;
+    pick.userData.facetId = data.id;
+    pick.userData.disabled = Boolean(data.disabled);
+    root.add(pick);
+    category.root.add(root);
+    const kindIndex = [...facetNodes.values()].filter((existing) => existing.kind === data.kind).length;
+    const radius = mobile
+      ? (data.kind === 'grade' ? 7.4 + kindIndex * 1.7 : data.kind === 'term' ? 7.2 + kindIndex * 1.35 : data.kind === 'year' ? 8.2 + (kindIndex % 8) * 1.1 : data.kind === 'school' ? 9.2 + (kindIndex % 9) * .92 : 5.2 + (index % 6) * 1.2)
+      : 5.2 + (index % 6) * 1.2;
+    const node = {
+      ...data, root, galaxy, glow, star, ring, pick, category,
+      phase: hashAngle(data.id), radius,
+      speed: .012 + (hashText(data.id) % 5) * .003,
+    };
+    facetNodes.set(data.id, node);
+    facetPicks.push(pick);
+    return node;
+  }
+  function setFacetData(nextFacets = []) {
+    clearFacetNodes();
+    FACET_KINDS.forEach((kind, index) => createFacetCategory(kind, index));
+    nextFacets.filter((data) => data.worldVisible !== false).forEach((data, index) => createFacetNode(data, index));
   }
   function createDataNode(exam, groupId, slot) {
     const token = new THREE.Group();
@@ -889,6 +1010,25 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       group.orbitPath.scale.setScalar(group.orbitRadius / Math.max(group.targetRadius, 1));
     }
 
+    for (const category of facetCategories.values()) {
+      category.hub.rotation.y = simTime * .06;
+      category.ring.rotation.y = simTime * .035;
+      const categoryOpacity = selectedExamFile ? .12 : focusedGroupId ? .42 : 1;
+      category.galaxy.material.opacity = .8 * categoryOpacity;
+      category.glow.material.opacity = .38 * categoryOpacity;
+      category.nucleus.material.opacity = categoryOpacity;
+      category.ring.material.opacity = .26 * categoryOpacity;
+    }
+    for (const node of facetNodes.values()) {
+      const angle = node.phase + simTime * node.speed;
+      node.root.position.set(Math.cos(angle) * node.radius, Math.sin(angle * 1.31) * .72, Math.sin(angle) * node.radius * .72);
+      node.root.rotation.y = simTime * .08 + node.phase;
+      const categoryOpacity = selectedExamFile ? .12 : focusedGroupId ? .42 : 1;
+      node.galaxy.material.opacity = (node.disabled ? .16 : node.selected ? .92 : .56) * categoryOpacity;
+      node.glow.material.opacity = (node.disabled ? .06 : node.selected ? .32 : .16) * categoryOpacity;
+      node.ring.material.opacity = (node.disabled ? .04 : .11) * categoryOpacity;
+    }
+
     for (let i = 0; i < visibleCatalogPointNodes.length; i += 1) {
       const node = visibleCatalogPointNodes[i];
       const group = groups.get(node.groupId);
@@ -998,6 +1138,10 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     for (const group of groups.values()) groupPositions.set(group.id, projectPoint(group.globe));
     const examPositions = new Map();
     for (const entity of entities.values()) examPositions.set(entity.file, projectPoint(entity.pickMesh));
+    const facetCategoryPositions = new Map();
+    for (const [kind, category] of facetCategories) facetCategoryPositions.set(kind, projectPoint(category.pick));
+    const facetPositions = new Map();
+    for (const [id, node] of facetNodes) facetPositions.set(id, projectPoint(node.pick));
     const holePoint = projectPoint(blackhole);
     blackholeLabel.style.display = holePoint.visible ? 'flex' : 'none';
     blackholeLabel.style.left = holePoint.x + 'px';
@@ -1016,7 +1160,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       }
     }
     const groupAngles = new Map([...groups.values()].map((group) => [group.id, group.angle]));
-    onFrame?.({ groups: groupPositions, exams: examPositions, questions: questionProjections, examFiles: catalogPointFiles, groupAngles, cameraPosition: camera.position.toArray() });
+    onFrame?.({ groups: groupPositions, exams: examPositions, facets: facetPositions, facetCategories: facetCategoryPositions, questions: questionProjections, examFiles: catalogPointFiles, groupAngles, cameraPosition: camera.position.toArray() });
     renderer.render(scene, camera);
     rafId = requestAnimationFrame(setFrame);
   }
@@ -1182,10 +1326,12 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
     pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
     raycaster.setFromCamera(pointer, camera);
-    const hits = raycaster.intersectObjects([...planetPicks, ...examPicks, ...(catalogPoints ? [catalogPoints] : []), ...blackholePicks], false);
+    const hits = raycaster.intersectObjects([...planetPicks, ...examPicks, ...facetPicks, ...(catalogPoints ? [catalogPoints] : []), ...blackholePicks], false);
     if (!hits.length) return;
     const { object: hit, index } = hits[0];
     if (hit.userData.kind === 'group') onGroup?.(hit.userData.groupId);
+    else if (hit.userData.kind === 'facet' && !hit.userData.disabled) onFacet?.(hit.userData.facetKind, hit.userData.facetValue);
+    else if (hit.userData.kind === 'facet-category') onFacet?.(hit.userData.facetKind, '');
     else if (hit.userData.kind === 'exam') onExam?.(hit.userData.file);
     else if (hit.userData.kind === 'catalog-points') onExam?.(hit.userData.files[index]);
     else if (hit.userData.kind === 'blackhole') onBlackhole?.();
@@ -1206,6 +1352,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
 
   return {
     setData,
+    setFacetData,
     setSelectedExam(file) {
       selectedExamFile = typeof file === 'string' ? file : '';
       controls.enabled = !selectedExamFile;
@@ -1254,6 +1401,8 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       starGeometry.dispose();
       sharedGroupPickGeometry.dispose();
       sharedGroupPickMaterial.dispose();
+      sharedFacetPickGeometry.dispose();
+      sharedFacetPickMaterial.dispose();
       galaxyNebulaTexture.dispose();
       sharedCoreGlowTexture.dispose();
       sharedStarSpriteTexture.dispose();
