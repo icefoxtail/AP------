@@ -1,0 +1,1585 @@
+window.examTitle = "19_금당고_2학기_기말_고1_기출";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "questionType": "객관식",
+    "content": "점 $(7,2)$를 $x$축의 방향으로 $-4$만큼, $y$축의 방향으로 $3$만큼 평행이동한 점의 좌표를 $(a,b)$라 할 때, $b-a$의 값을 구하시오. (3.8점)",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "tags": [
+      "객관식",
+      "좌표평면"
+    ],
+    "answer": "②",
+    "solution": "x축 방향으로 -4, y축 방향으로 3만큼 옮기면 좌표는 각각 그만큼 더해진다.\n(a,b)=(7-4,2+3)=(3,5)이다.\n따라서 b-a=5-3=2이므로 정답은 ②이다.",
+    "category": "평면좌표",
+    "originalCategory": "평면좌표",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-12",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 12,
+    "layoutTag": "grid",
+    "wide": false,
+    "level": "하",
+    "subUnitKey": "H15-SA-12-TRANSLATION",
+    "subUnit": "평행이동",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_MOVE_POINT_TRANSLATION",
+    "templateKey": "TT_POINT_TRANSLATION_COORD",
+    "crossConceptKeys": [
+      "CC_TRANSLATION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmPath": {
+      "majorUnit": "도형의 방정식",
+      "midUnit": "도형의 이동",
+      "l3": "평행이동",
+      "l4": "점·직선의 이동"
+    },
+    "rpmPrimaryMappingStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyReason": "학생 풀이에서 평면좌표 핵심 개념과 실제 조건 분기·계산 단계를 따로 세어 하/1로 분류했다.",
+    "sourceQid": 1,
+    "sourceOrdinal": 1,
+    "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+    "questionUid": "qid_v1_c6638e8d98b75f08e84783797659ab6b1b586d4640baaa8b8c2d3e727e016ddf",
+    "provenance": {
+      "sourceId": "2019|금당고|h1|2final",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 1,
+      "sourceQid": 1,
+      "sourceType": "ORIGINAL_EXAM",
+      "sourceIntakeEvidence": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
+      "sourcePdfSha256": "546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816",
+      "sourceInputJsSha256": "5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0",
+      "sourcePage": 1
+    },
+    "metadataEvidenceDebt": [
+      {
+        "field": "rpmPath",
+        "status": "EVIDENCE_DEBT",
+        "reason": "RPM_ONLY: 점 평행이동의 고1 curriculum binding 부재."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "questionType": "객관식",
+    "content": "유리함수 $y=\\dfrac{2x-3}{x-1}$의 그래프의 점근선을 $x=a$, $y=b$라 하면 $a+b$의 값을 구하시오. (3.8점)",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "tags": [
+      "객관식",
+      "유리함수"
+    ],
+    "answer": "③",
+    "solution": "분자를 나누어 쓰면\n$y=\\dfrac{2x-3}{x-1}=2-\\dfrac1{x-1}$이다.\n분모가 0이 되는 $x=1$에서 수직점근선이 생기고, 나머지 항은 0에 가까워지므로 수평점근선은 $y=2$이다.\n따라서 $a+b=1+2=3$이므로 정답은 ③이다.",
+    "category": "유리함수",
+    "originalCategory": "유리함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-04",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 4,
+    "layoutTag": "grid",
+    "wide": false,
+    "level": "하",
+    "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+    "subUnit": "유리함수의 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+    "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+    "crossConceptKeys": [
+      "CC_RATIONAL_FUNCTION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmPath": {
+      "majorUnit": "함수",
+      "midUnit": "유리함수",
+      "l3": "점근선과 위치",
+      "l4": "점근선"
+    },
+    "rpmPrimaryMappingStatus": "DIRECT_ACTIVE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyReason": "학생 풀이에서 유리함수 핵심 개념과 실제 조건 분기·계산 단계를 따로 세어 하/1로 분류했다.",
+    "sourceQid": 2,
+    "sourceOrdinal": 2,
+    "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+    "questionUid": "qid_v1_ca8cecc4d3b4af24b2cd3540d0e52bd89faa73e0e3e36d4c90e83187f21cbfd3",
+    "provenance": {
+      "sourceId": "2019|금당고|h1|2final",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 2,
+      "sourceQid": 2,
+      "sourceType": "ORIGINAL_EXAM",
+      "sourceIntakeEvidence": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
+      "sourcePdfSha256": "546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816",
+      "sourceInputJsSha256": "5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0",
+      "sourcePage": 1
+    }
+  },
+  {
+    "id": 3,
+    "questionType": "객관식",
+    "content": "무리함수 $y=\\sqrt{2x-6}+2$의 그래프의 정의역을 $\\{x\\mid x\\ge a\\}$, 치역을 $\\{y\\mid y\\ge b\\}$라 할 때, $a\\times b$의 값을 구하시오. (3.8점)",
+    "choices": [
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "tags": [
+      "객관식",
+      "무리함수"
+    ],
+    "answer": "⑤",
+    "solution": "제곱근 안의 값은 0 이상이어야 하므로\n$2x-6\\ge0$, 즉 $x\\ge3$이다.\n이때 $\\sqrt{2x-6}\\ge0$이므로 $y=\\sqrt{2x-6}+2\\ge2$이다.\n따라서 $a=3$, $b=2$이고 $a\\times b=6$이므로 정답은 ⑤이다.",
+    "category": "무리함수",
+    "originalCategory": "무리함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-05",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 5,
+    "layoutTag": "grid",
+    "wide": false,
+    "level": "하",
+    "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+    "subUnit": "무리함수의 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+    "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_DIRECT",
+    "crossConceptKeys": [
+      "CC_RADICAL_FUNCTION"
+    ],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmPath": {
+      "majorUnit": "함수",
+      "midUnit": "무리함수",
+      "l3": "정의역과 치역",
+      "l4": "정의역 조건"
+    },
+    "rpmPrimaryMappingStatus": "DIRECT_BINDING_GAP",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyReason": "학생 풀이에서 무리함수 핵심 개념과 실제 조건 분기·계산 단계를 따로 세어 하/1로 분류했다.",
+    "sourceQid": 3,
+    "sourceOrdinal": 3,
+    "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+    "questionUid": "qid_v1_ba49013180d51766c27a90f25dd86a5486204696eb4483fc8e030596f0aa4206",
+    "provenance": {
+      "sourceId": "2019|금당고|h1|2final",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 3,
+      "sourceQid": 3,
+      "sourceType": "ORIGINAL_EXAM",
+      "sourceIntakeEvidence": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
+      "sourcePdfSha256": "546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816",
+      "sourceInputJsSha256": "5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0",
+      "sourcePage": 1
+    },
+    "metadataEvidenceDebt": [
+      {
+        "field": "rpmPath",
+        "status": "EVIDENCE_DEBT",
+        "reason": "고1 RPM crosswalk는 DIRECT_BINDING_GAP; H15-SB-05의 정의역·치역 PT/TPL은 active이지만 exact curriculum binding debt를 보존한다."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "questionType": "객관식",
+    "content": "$x,y$가 자연수일 때, 부등식 $3\\le x+y\\le 4$를 만족시키는 순서쌍 $(x,y)$의 개수를 구하시오. (3.8점)",
+    "choices": [
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "tags": [
+      "객관식",
+      "순서쌍"
+    ],
+    "answer": "④",
+    "solution": "자연수 순서쌍을 합에 따라 나눈다.\n$x+y=3$이면 $(1,2),(2,1)$의 2개이다.\n$x+y=4$이면 $(1,3),(2,2),(3,1)$의 3개이다.\n두 경우는 겹치지 않으므로 모두 $2+3=5$개이고 정답은 ④이다.",
+    "category": "경우의 수",
+    "originalCategory": "경우의 수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-06",
+    "standardUnit": "경우의 수",
+    "standardUnitOrder": 6,
+    "layoutTag": "grid",
+    "wide": false,
+    "level": "하",
+    "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+    "subUnit": "경우의 수의 기본 원리",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+    "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmPath": {
+      "majorUnit": "경우의 수",
+      "midUnit": "경우의 수와 순열",
+      "l3": "합·곱의 법칙",
+      "l4": "경우를 나누어 세기"
+    },
+    "rpmPrimaryMappingStatus": "DIRECT_ACTIVE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyReason": "학생 풀이에서 경우의 수 핵심 개념과 실제 조건 분기·계산 단계를 따로 세어 하/1로 분류했다.",
+    "sourceQid": 4,
+    "sourceOrdinal": 4,
+    "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+    "questionUid": "qid_v1_2e031837aa0c3a02f757e3f7f5cb366855f6445b7116cef7af70c61b7393ea40",
+    "provenance": {
+      "sourceId": "2019|금당고|h1|2final",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 4,
+      "sourceQid": 4,
+      "sourceType": "ORIGINAL_EXAM",
+      "sourceIntakeEvidence": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
+      "sourcePdfSha256": "546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816",
+      "sourceInputJsSha256": "5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0",
+      "sourcePage": 1
+    }
+  },
+  {
+    "id": 5,
+    "questionType": "객관식",
+    "content": "서로 다른 케이크 7개와 서로 다른 음료 5잔 중에서 케이크 2개와 음료 3잔을 택하는 모든 경우의 수를 구하시오. (4점)",
+    "choices": [
+      "210",
+      "220",
+      "230",
+      "240",
+      "250"
+    ],
+    "tags": [
+      "객관식",
+      "경우의 수"
+    ],
+    "answer": "①",
+    "solution": "케이크 7개에서 2개를 고르는 방법은 $\\binom72=21$가지이다.\n음료 5잔에서 3잔을 고르는 방법은 $\\binom53=10$가지이다.\n두 선택은 서로 독립이므로 곱의 법칙에 따라 $21\\times10=210$가지이다. 정답은 ①이다.",
+    "category": "조합",
+    "originalCategory": "조합",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-08",
+    "standardUnit": "조합",
+    "standardUnitOrder": 8,
+    "layoutTag": "grid",
+    "wide": false,
+    "level": "하",
+    "subUnitKey": "H15-SB-08-COMBINATION_APPLICATION",
+    "subUnit": "조합의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+    "templateKey": "TPL_COMBINATION_SELECTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmPath": {
+      "majorUnit": "경우의 수",
+      "midUnit": "조합",
+      "l3": "조합의 활용",
+      "l4": "선택 조건"
+    },
+    "rpmPrimaryMappingStatus": "DIRECT_ACTIVE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyReason": "학생 풀이에서 조합 핵심 개념과 실제 조건 분기·계산 단계를 따로 세어 하/1로 분류했다.",
+    "sourceQid": 5,
+    "sourceOrdinal": 5,
+    "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+    "questionUid": "qid_v1_196ee75055c02b8a2329f54f0596ca33aec5f9f79f0c38fa7ab48a1b27cf32e0",
+    "provenance": {
+      "sourceId": "2019|금당고|h1|2final",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 5,
+      "sourceQid": 5,
+      "sourceType": "ORIGINAL_EXAM",
+      "sourceIntakeEvidence": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
+      "sourcePdfSha256": "546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816",
+      "sourceInputJsSha256": "5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0",
+      "sourcePage": 1
+    }
+  },
+  {
+    "id": 6,
+    "questionType": "객관식",
+    "content": "남학생 5명과 여학생 5명으로 구성된 동아리에서 대표 4명을 뽑을 때, 남학생과 여학생을 적어도 1명씩 포함하는 모든 경우의 수를 구하시오. (4점)",
+    "choices": [
+      "198",
+      "200",
+      "202",
+      "204",
+      "206"
+    ],
+    "tags": [
+      "객관식",
+      "경우의 수"
+    ],
+    "answer": "②",
+    "solution": "대표 4명 전체에서 남학생만 뽑거나 여학생만 뽑는 경우를 제외한다.\n전체는 $\\binom{10}4=210$가지이다.\n남학생만 또는 여학생만 뽑는 경우는 각각 $\\binom54=5$가지이다.\n따라서 $210-5-5=200$가지이고 정답은 ②이다.",
+    "category": "조합",
+    "originalCategory": "조합",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-08",
+    "standardUnit": "조합",
+    "standardUnitOrder": 8,
+    "layoutTag": "grid",
+    "wide": false,
+    "level": "중",
+    "subUnitKey": "H15-SB-08-COMBINATION_APPLICATION",
+    "subUnit": "조합의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+    "templateKey": "TPL_COMBINATION_SELECTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmPath": {
+      "majorUnit": "경우의 수",
+      "midUnit": "조합",
+      "l3": "조합의 활용",
+      "l4": "선택 조건"
+    },
+    "rpmPrimaryMappingStatus": "DIRECT_ACTIVE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyReason": "학생 풀이에서 조합 핵심 개념과 실제 조건 분기·계산 단계를 따로 세어 중/2로 분류했다.",
+    "sourceQid": 6,
+    "sourceOrdinal": 6,
+    "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+    "questionUid": "qid_v1_7218d10c13be8fb176249de6935376e9ed7e48bac14ef58e82b95c0ae86ee37f",
+    "provenance": {
+      "sourceId": "2019|금당고|h1|2final",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 6,
+      "sourceQid": 6,
+      "sourceType": "ORIGINAL_EXAM",
+      "sourceIntakeEvidence": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
+      "sourcePdfSha256": "546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816",
+      "sourceInputJsSha256": "5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0",
+      "sourcePage": 1
+    }
+  },
+  {
+    "id": 7,
+    "questionType": "객관식",
+    "content": "두 함수 $f(x)=\\dfrac{-x+3}{x+a}$, $g(x)=\\dfrac{bx+3}{cx+1}$에 대하여 $g^{-1}(x)=f(x)$가 성립할 때, 상수 $a,b,c$에 대하여 $a+b+c$의 값을 구하시오. (4점)",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "tags": [
+      "객관식",
+      "유리함수",
+      "역함수"
+    ],
+    "answer": "①",
+    "solution": "$g^{-1}(x)$를 구하기 위해 $y=\\dfrac{bx+3}{cx+1}$에서 $x$를 정리한다.\n$y(cx+1)=bx+3$이므로 $x=\\dfrac{y-3}{b-cy}$, 따라서 $g^{-1}(x)=\\dfrac{x-3}{b-cx}$이다.\n한편 $f(x)=\\dfrac{3-x}{x+a}=-\\dfrac{x-3}{x+a}$이다.\n$g^{-1}(x)=f(x)$에서 $x\\ne3$인 값들을 비교하면 $b-cx=-(x+a)$이므로 $c=1$, $b=-a$이다.\n따라서 $a+b+c=1$이고 정답은 ①이다.",
+    "category": "역함수",
+    "originalCategory": "역함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-03",
+    "standardUnit": "함수",
+    "standardUnitOrder": 3,
+    "layoutTag": "grid",
+    "wide": false,
+    "level": "중",
+    "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
+    "subUnit": "역함수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_INVERSE_VALUE",
+    "templateKey": "TPL_INVERSE_FUNCTION_FORM",
+    "crossConceptKeys": [
+      "CC_RATIONAL_FUNCTION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmPath": {
+      "majorUnit": "함수",
+      "midUnit": "함수",
+      "l3": "역함수",
+      "l4": "역함수 구하기"
+    },
+    "rpmPrimaryMappingStatus": "DIRECT_ACTIVE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyReason": "학생 풀이에서 역함수 핵심 개념과 실제 조건 분기·계산 단계를 따로 세어 중/3로 분류했다.",
+    "sourceQid": 7,
+    "sourceOrdinal": 7,
+    "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+    "questionUid": "qid_v1_b1fd959d384d58ceb721e305e4e1a6b30fc06036a7356233584273fad2f3c6c1",
+    "provenance": {
+      "sourceId": "2019|금당고|h1|2final",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 7,
+      "sourceQid": 7,
+      "sourceType": "ORIGINAL_EXAM",
+      "sourceIntakeEvidence": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
+      "sourcePdfSha256": "546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816",
+      "sourceInputJsSha256": "5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0",
+      "sourcePage": 1
+    }
+  },
+  {
+    "id": 8,
+    "questionType": "객관식",
+    "content": "일차다항식 $P(x)$에 대하여 함수 $y=\\dfrac{P(x)}{x-a}$의 그래프가 오른쪽 그림과 같을 때, $-5P(a)$의 값을 구하시오. (4점)",
+    "choices": [
+      "6",
+      "7",
+      "8",
+      "9",
+      "10"
+    ],
+    "tags": [
+      "객관식",
+      "유리함수",
+      "그래프"
+    ],
+    "image": "assets/images/19_금당고_2학기_기말_고1_기출/q08.png",
+    "answer": "⑤",
+    "solution": "그래프에서 수직점근선은 $x=-2$이므로 $a=-2$이다. $P(x)=mx+n$ ($m\\ne0$)으로 놓으면 나눗셈 항등식\n$\\dfrac{P(x)}{x-a}=m+\\dfrac{ma+n}{x-a}$\n을 얻는다. 둘째 항은 $|x|$가 커질수록 0에 가까워지므로 수평점근선은 $y=m$이다. 그래프의 수평점근선이 $y=1$이므로 $m=1$이다.\n그래프가 원점 $O(0,0)$을 지나므로 $0=\\dfrac{P(0)}{0-a}=\\dfrac{n}{2}$이고 $n=0$이다. 따라서 $P(x)=x$, $P(a)=P(-2)=-2$이다.\n그러므로 $-5P(a)=10$이며 정답은 ⑤이다.",
+    "category": "유리함수",
+    "originalCategory": "유리함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-04",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 4,
+    "layoutTag": "grid",
+    "wide": false,
+    "level": "중",
+    "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
+    "subUnit": "유리함수의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_FUNCTION_RECOVERY",
+    "templateKey": "TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT",
+    "crossConceptKeys": [
+      "CC_RATIONAL_FUNCTION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmPath": {
+      "majorUnit": "함수",
+      "midUnit": "유리함수",
+      "l3": "유리함수의 활용",
+      "l4": "식 결정"
+    },
+    "rpmPrimaryMappingStatus": "DIRECT_ACTIVE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyReason": "학생 풀이에서 유리함수 핵심 개념과 실제 조건 분기·계산 단계를 따로 세어 중/2로 분류했다.",
+    "sourceQid": 8,
+    "sourceOrdinal": 8,
+    "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+    "questionUid": "qid_v1_dfc88daf5b7ebf9a44cb2e24218e629cb4af364d1e36f2437eb04da40a8ee7bf",
+    "provenance": {
+      "sourceId": "2019|금당고|h1|2final",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 8,
+      "sourceQid": 8,
+      "sourceType": "ORIGINAL_EXAM",
+      "sourceIntakeEvidence": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
+      "sourcePdfSha256": "546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816",
+      "sourceInputJsSha256": "5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0",
+      "sourcePage": 1,
+      "itemTransformation": "ALIVE_BOUNDED_REPLACEMENT",
+      "replacedOriginalQuestion": "원문 발문은 함수 P(x)의 종류를 제한하지 않아 그래프의 점근선과 원점 통과만으로 P(a)를 유일하게 결정할 수 없다. 일차다항식 조건을 명시해 원문 문형·단원·보기 구조를 유지한 최소 조건 보완으로 대체했다.",
+      "originalSourceContent": "함수 $P(x)$에 대하여 함수 $y=\\dfrac{P(x)}{x-a}$의 그래프가 오른쪽 그림과 같을 때, $-5P(a)$의 값을 구하시오. (4점)",
+      "addedCondition": "P(x)는 일차다항식이다.",
+      "sourceOriginalSnapshot": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/comparison/source-only-before.js",
+      "priorR1FreezeInvalidatedByInputChange": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/R1/r1-composite-independent-freeze-22.json"
+    },
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q08.png",
+    "solutionImageAlt": "수직점근선 x=-2, 수평점근선 y=1과 원점 O를 지나는 그래프",
+    "solutionImageCaption": "점근선의 위치와 원점 통과를 그래프에서 확인한다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 9,
+    "questionType": "객관식",
+    "content": "원 $(x-5)^2+(y-1)^2=1$을 직선 $y=x-2$에 대하여 대칭이동한 원의 방정식이 $(x-a)^2+(y-b)^2=c$일 때, 상수 $a,b,c$에 대하여 $a+b+c$의 값을 구하시오. (4점)",
+    "choices": [
+      "4",
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "tags": [
+      "객관식",
+      "원의 방정식",
+      "대칭이동"
+    ],
+    "answer": "④",
+    "solution": "직선 $y=x-2$는 기울기가 1인 직선이다. 점 $(x,y)$를 이 직선에 대칭이동하면 $(y+2,x-2)$가 된다.\n원의 중심 $(5,1)$은 $(3,3)$으로 옮겨지고 반지름 1은 그대로이다.\n대칭이동한 원은 $(x-3)^2+(y-3)^2=1$이므로 $a=3,b=3,c=1$이다.\n따라서 $a+b+c=7$이고 정답은 ④이다.",
+    "category": "도형의 이동",
+    "originalCategory": "도형의 이동",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-12",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 12,
+    "layoutTag": "grid",
+    "wide": false,
+    "level": "중",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_MOVE_LINE_REFLECTION",
+    "templateKey": "TT_LINE_REFLECTION_EQUATION",
+    "crossConceptKeys": [
+      "CC_CIRCLE_EQUATION",
+      "CC_REFLECTION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmPath": {
+      "majorUnit": "도형의 방정식",
+      "midUnit": "도형의 이동",
+      "l3": "대칭이동",
+      "l4": "직선에 대한 대칭"
+    },
+    "rpmPrimaryMappingStatus": "DIRECT_ACTIVE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyReason": "학생 풀이에서 도형의 이동 핵심 개념과 실제 조건 분기·계산 단계를 따로 세어 중/2로 분류했다.",
+    "sourceQid": 9,
+    "sourceOrdinal": 9,
+    "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+    "questionUid": "qid_v1_b9cdb8177780851e0c61a4b0ad6cf63960d62e4afcb1b6453256e820cc12f1bf",
+    "provenance": {
+      "sourceId": "2019|금당고|h1|2final",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 9,
+      "sourceQid": 9,
+      "sourceType": "ORIGINAL_EXAM",
+      "sourceIntakeEvidence": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
+      "sourcePdfSha256": "546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816",
+      "sourceInputJsSha256": "5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0",
+      "sourcePage": 2
+    },
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q09-solution.svg",
+    "solutionImageAlt": "중심 (5,1)인 단위원과 직선 y=x−2에 대한 대칭 후 중심 (3,3)인 단위원",
+    "solutionImageCaption": "직선에 대한 대칭은 중심의 위치를 바꾸고 반지름을 보존한다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 10,
+    "questionType": "객관식",
+    "content": "두 집합 $A=\\{(x,y)\\mid y=\\sqrt{x-3}\\}$, $B=\\{(x,y)\\mid y=x+k\\}$에 대하여 $n(A\\cap B)=1$이 되도록 하는 정수 $k$의 최댓값은? (4점)",
+    "choices": [
+      "-1",
+      "-2",
+      "-3",
+      "-4",
+      "-5"
+    ],
+    "tags": [
+      "객관식",
+      "무리함수",
+      "교점"
+    ],
+    "answer": "④",
+    "solution": "제곱근을 $t=\\sqrt{x-3}$으로 놓으면 $t\\ge0$, $x=t^2+3$이다. 교점에서는 $t=x+k$이므로\n$t=t^2+3+k$, 즉 $t^2-t+(k+3)=0$이다.\n$k=-3$이면 $t=0,1$의 두 해가 있어 교점이 2개이다. $k=-4$이면 두 근 중 하나만 양수이고, $k=-5$도 두 근 중 하나만 양수이다. $k=-2,-1$에서는 실근이 없다.\n따라서 교점이 1개인 정수 $k$의 최댓값은 $-4$이고 정답은 ④이다.",
+    "category": "무리함수",
+    "originalCategory": "무리함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-05",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 5,
+    "layoutTag": "grid",
+    "wide": false,
+    "level": "중",
+    "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+    "subUnit": "무리함수의 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+    "crossConceptKeys": [
+      "CC_RADICAL_FUNCTION"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmPath": {
+      "majorUnit": "함수",
+      "midUnit": "무리함수",
+      "l3": "무리함수의 활용",
+      "l4": "무리함수의 교점"
+    },
+    "rpmPrimaryMappingStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyReason": "학생 풀이에서 무리함수 핵심 개념과 실제 조건 분기·계산 단계를 따로 세어 중/2로 분류했다.",
+    "sourceQid": 10,
+    "sourceOrdinal": 10,
+    "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+    "questionUid": "qid_v1_fc95f81369e2f8d4ad3e8acdbfdb9810d52b5906bb81060054012f737fce03b8",
+    "provenance": {
+      "sourceId": "2019|금당고|h1|2final",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 10,
+      "sourceQid": 10,
+      "sourceType": "ORIGINAL_EXAM",
+      "sourceIntakeEvidence": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
+      "sourcePdfSha256": "546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816",
+      "sourceInputJsSha256": "5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0",
+      "sourcePage": 2,
+      "itemTransformation": "AUDITED_SOURCE_TRANSCRIPTION_REPAIR",
+      "sourceCorrection": {
+        "before": "n(A∩B)=10 in extracted source-only JS",
+        "after": "n(A∩B)=1",
+        "evidence": "source-intake/source-pages/columns/page_02_col1.png; opened region q10; n(A∩B)=1 and option ④ is -4"
+      }
+    },
+    "metadataEvidenceDebt": [
+      {
+        "field": "rpmPath",
+        "status": "EVIDENCE_DEBT",
+        "reason": "원문 조건 k 정수 및 양의 제곱근 domain을 반영한 교점 개수의 exact H1 PT/TPL crosswalk가 없어 active graph-intersection PT/TPL을 보존한다."
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "questionType": "객관식",
+    "content": "두 함수 $y=3\\sqrt{x+1}-2$, $x=3\\sqrt{y+1}-2$의 그래프가 두 점에서 만날 때, 이 두 점 사이의 거리를 $a\\sqrt{b}$라 하면 $a+b$의 값을 구하시오. (4점)",
+    "choices": [
+      "12",
+      "13",
+      "14",
+      "15",
+      "16"
+    ],
+    "tags": [
+      "객관식",
+      "무리함수",
+      "교점"
+    ],
+    "answer": "②",
+    "solution": "두 그래프의 교점에서는 $x=3\\sqrt{y+1}-2$, $y=3\\sqrt{x+1}-2$가 함께 성립한다. $u=\\sqrt{x+1}$, $v=\\sqrt{y+1}$로 두면\n$v^2=3u-1$, $u^2=3v-1$이다. 두 식을 빼면 $(u-v)(u+v+3)=0$이고 $u+v+3>0$이므로 $u=v$, 따라서 $x=y$이다.\n$t=\\sqrt{x+1}$이라 두면 $t^2-1=3t-2$, 즉 $t^2-3t+1=0$이다. 두 양의 근은 $\\dfrac{3\\pm\\sqrt5}{2}$이고, 이에 대응하는 $x$좌표는 $\\dfrac{5\\pm3\\sqrt5}{2}$이다.\n두 교점은 $y=x$ 위에 있으므로 거리는 $\\sqrt2$ 곱하기 $x$좌표 차이다. 따라서 거리는 $3\\sqrt{10}$이고 $a+b=3+10=13$이므로 정답은 ②이다.",
+    "category": "무리함수",
+    "originalCategory": "무리함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-05",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 5,
+    "layoutTag": "grid",
+    "wide": false,
+    "level": "상",
+    "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
+    "subUnit": "무리함수와 역함수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_INVERSE_GRAPH",
+    "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+    "crossConceptKeys": [
+      "CC_RADICAL_FUNCTION"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmPath": {
+      "majorUnit": "함수",
+      "midUnit": "무리함수",
+      "l3": "무리함수의 활용",
+      "l4": "무리함수의 역함수"
+    },
+    "rpmPrimaryMappingStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyReason": "학생 풀이에서 무리함수 핵심 개념과 실제 조건 분기·계산 단계를 따로 세어 상/3로 분류했다.",
+    "sourceQid": 11,
+    "sourceOrdinal": 11,
+    "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+    "questionUid": "qid_v1_2044082d0217747d22a5ca399740579165b3669326607f493907228ffb438de0",
+    "provenance": {
+      "sourceId": "2019|금당고|h1|2final",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 11,
+      "sourceQid": 11,
+      "sourceType": "ORIGINAL_EXAM",
+      "sourceIntakeEvidence": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
+      "sourcePdfSha256": "546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816",
+      "sourceInputJsSha256": "5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0",
+      "sourcePage": 2
+    },
+    "metadataEvidenceDebt": [
+      {
+        "field": "rpmPath",
+        "status": "EVIDENCE_DEBT",
+        "reason": "무리함수와 그 역함수 그래프 교점에서 거리를 구하는 exact H1 PT/TPL binding이 없어 active inverse-graph PT/TPL과 canonical path를 보존한다."
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "questionType": "객관식",
+    "content": "점 $A(3,4)$와 $y$축 위의 점 $B$, 직선 $y=x$ 위의 점 $C$를 꼭짓점으로 하는 삼각형 $ABC$의 둘레의 길이의 최솟값을 구하시오. (4점)",
+    "choices": [
+      "6",
+      "$4\\sqrt{2}$",
+      "7",
+      "$5\\sqrt{2}$",
+      "8"
+    ],
+    "tags": [
+      "객관식",
+      "좌표평면",
+      "최솟값"
+    ],
+    "answer": "④",
+    "solution": "점 $A$를 $y$축에 대칭이동한 점은 $A_1=(-3,4)$이고, $A$를 직선 $y=x$에 대칭이동한 점은 $A_2=(4,3)$이다. 반사 성질에 따라 원래 둘레 $AB+BC+CA$는 $A_1B+BC+CA_2$와 같다.\n선분 $A_1A_2$는 두 제한선 $y$축과 $y=x$를 차례로 만나므로 이 경로가 최소가 된다.\n$A_1A_2=\\sqrt{(4+3)^2+(3-4)^2}=\\sqrt{50}=5\\sqrt2$이다. 정답은 ④이다.",
+    "category": "평면좌표",
+    "originalCategory": "평면좌표",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-12",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 12,
+    "layoutTag": "grid",
+    "wide": false,
+    "level": "상",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+    "templateKey": "TT_SHORTEST_MULTI_LINE",
+    "crossConceptKeys": [
+      "CC_REFLECTION",
+      "CC_DISTANCE_TWO_POINTS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmPath": {
+      "majorUnit": "도형의 방정식",
+      "midUnit": "도형의 이동",
+      "l3": "대칭이동",
+      "l4": "직선에 대한 대칭"
+    },
+    "rpmPrimaryMappingStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyReason": "학생 풀이에서 평면좌표 핵심 개념과 실제 조건 분기·계산 단계를 따로 세어 상/4로 분류했다.",
+    "sourceQid": 12,
+    "sourceOrdinal": 12,
+    "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+    "questionUid": "qid_v1_8be98144bb576b326b7b16ec83dd0067b27289324545077c89fbc8ef0871602b",
+    "provenance": {
+      "sourceId": "2019|금당고|h1|2final",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 12,
+      "sourceQid": 12,
+      "sourceType": "ORIGINAL_EXAM",
+      "sourceIntakeEvidence": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
+      "sourcePdfSha256": "546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816",
+      "sourceInputJsSha256": "5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0",
+      "sourcePage": 2
+    },
+    "metadataEvidenceDebt": [
+      {
+        "field": "rpmPath",
+        "status": "EVIDENCE_DEBT",
+        "reason": "서로 다른 두 직선에 점을 순서대로 반사해 둘레 최솟값을 구하는 exact H1 PT/TPL binding이 없어 active shortest-reflection PT/TPL과 canonical path를 보존한다."
+      }
+    ],
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "두 직선에 반사한 점 A₁, A₂와 y축 위 B, y=x 위 C를 잇는 최단 경로",
+    "solutionImageCaption": "반사한 두 점 A₁, A₂를 잇는 직선이 두 이동선을 순서대로 만나 최솟값을 이룬다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 13,
+    "questionType": "객관식",
+    "content": "숫자 1, 2, 3을 전부 또는 일부를 사용하여 같은 숫자가 이웃하지 않도록 다섯 자리 자연수를 만든다. 이때 만의 자리 숫자와 일의 자리 숫자가 같은 경우의 수를 구하시오. (4점)",
+    "choices": [
+      "14",
+      "16",
+      "18",
+      "20",
+      "24"
+    ],
+    "tags": [
+      "객관식",
+      "경우의 수"
+    ],
+    "answer": "③",
+    "solution": "첫째 자리와 끝자리가 모두 1인 경우부터 센다. 숫자 1,2,3의 이름은 대칭적이므로 첫째 자리를 고르는 방법은 3가지이다.\n첫째 자리를 1로 고정하면 둘째 자리는 2 또는 3이다. 둘째가 2일 때 셋째가 1이면 넷째는 2가지, 셋째가 3이면 넷째는 1가지이므로 3가지이다. 둘째가 3일 때도 3가지이다.\n따라서 첫째를 고정했을 때 6가지, 모두 $3\\times6=18$가지이다. 정답은 ③이다.",
+    "category": "순열",
+    "originalCategory": "순열",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-07",
+    "standardUnit": "순열",
+    "standardUnitOrder": 7,
+    "layoutTag": "grid",
+    "wide": false,
+    "level": "중",
+    "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+    "subUnit": "조건이 있는 순열",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+    "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+    "crossConceptKeys": [
+      "CC_COMBINATORICS_COUNTING"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmPath": {
+      "majorUnit": "경우의 수",
+      "midUnit": "경우의 수와 순열",
+      "l3": "순열",
+      "l4": "특정 조건 배열"
+    },
+    "rpmPrimaryMappingStatus": "DIRECT_ACTIVE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyReason": "학생 풀이에서 순열 핵심 개념과 실제 조건 분기·계산 단계를 따로 세어 중/2로 분류했다.",
+    "sourceQid": 13,
+    "sourceOrdinal": 13,
+    "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+    "questionUid": "qid_v1_1ea2626df3b2a16244aa8445727c9e24a2a8e37affc6f8aeb83e933012089fca",
+    "provenance": {
+      "sourceId": "2019|금당고|h1|2final",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 13,
+      "sourceQid": 13,
+      "sourceType": "ORIGINAL_EXAM",
+      "sourceIntakeEvidence": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
+      "sourcePdfSha256": "546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816",
+      "sourceInputJsSha256": "5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0",
+      "sourcePage": 2
+    }
+  },
+  {
+    "id": 14,
+    "questionType": "객관식",
+    "content": "원 $(x-a)^2+(y-a)^2=b^2$를 $y$축 방향으로 $-2$만큼 평행이동한 도형이 직선 $y=x$와 $x$축에 동시에 접할 때, $2a^2-8b$의 값을 구하시오. (단, $a>2$, $b>0$) (4점)",
+    "choices": [
+      "4",
+      "6",
+      "8",
+      "10",
+      "12"
+    ],
+    "tags": [
+      "객관식",
+      "원의 방정식",
+      "접선"
+    ],
+    "answer": "⑤",
+    "solution": "이동 전 원의 중심은 $(a,a)$이고, $y$축 방향으로 -2만큼 옮긴 뒤 중심은 $(a,a-2)$이다.\n$x$축에 접하므로 중심의 $y$좌표와 반지름이 같아 $b=a-2$이다. 중심에서 직선 $y=x$까지의 거리는 $\\dfrac{|a-(a-2)|}{\\sqrt2}=\\sqrt2$이므로 $b=\\sqrt2$, $a=2+\\sqrt2$이다.\n$2a^2-8b=2(2+\\sqrt2)^2-8\\sqrt2=12$이므로 정답은 ⑤이다.",
+    "category": "원의 방정식",
+    "originalCategory": "원의 방정식",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-11",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 11,
+    "layoutTag": "grid",
+    "wide": false,
+    "level": "상",
+    "subUnitKey": "H15-SA-11-TANGENT",
+    "subUnit": "원의 접선",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": "TM_TANGENT_GIVEN_SLOPE",
+    "crossConceptKeys": [
+      "CC_CIRCLE_TANGENCY",
+      "CC_TRANSLATION"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmPath": {
+      "majorUnit": "도형의 방정식",
+      "midUnit": "원의 방정식",
+      "l3": "원의 접선",
+      "l4": "기울기가 주어진 접선"
+    },
+    "rpmPrimaryMappingStatus": "DIRECT_ACTIVE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyReason": "학생 풀이에서 원의 방정식 핵심 개념과 실제 조건 분기·계산 단계를 따로 세어 상/3로 분류했다.",
+    "sourceQid": 14,
+    "sourceOrdinal": 14,
+    "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+    "questionUid": "qid_v1_cafc097e94abdb16d6877fe11ad55c6202f8c9fa7b91c1651cf37b266c36dff6",
+    "provenance": {
+      "sourceId": "2019|금당고|h1|2final",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 14,
+      "sourceQid": 14,
+      "sourceType": "ORIGINAL_EXAM",
+      "sourceIntakeEvidence": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
+      "sourcePdfSha256": "546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816",
+      "sourceInputJsSha256": "5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0",
+      "sourcePage": 2
+    },
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "중심 (2+√2,√2), 반지름 √2인 원과 x축 및 y=x의 두 접선",
+    "solutionImageCaption": "두 접점까지의 거리가 반지름 √2와 같다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 15,
+    "questionType": "객관식",
+    "content": "1부터 9까지의 자연수 중에서 서로 다른 세 개의 수를 뽑아 세 자리 자연수의 비밀번호를 설정하려고 한다. 비밀번호는 소수가 두 개 이상 포함되도록 하여 가장 큰 자연수부터 차례대로 나열할 때 62번째 오는 비밀번호를 구하시오. (4점)",
+    "choices": [
+      "675",
+      "673",
+      "672",
+      "657",
+      "653"
+    ],
+    "tags": [
+      "객관식",
+      "경우의 수",
+      "순열"
+    ],
+    "answer": "②",
+    "solution": "소수는 $2,3,5,7$이다. 큰 수부터 세어 62번째를 찾는다.\n백의 자리가 $9$ 또는 $8$이면 나머지 두 자리는 서로 다른 소수여야 하므로 각각 $4\\cdot3=12$개, 합 $24$개이다.\n백의 자리가 $7$이면 뒤의 두 자리는 $7$을 제외한 8개 숫자 중 서로 다르게 고른다. 모두 $8\\cdot7=56$가지이다. 이 가운데 두 자리가 모두 합성수 또는 1인 경우는 $1,4,6,8,9$ 중 서로 다르게 고르는 $5\\cdot4=20$가지이다. 따라서 적어도 하나의 소수가 더 포함되는 경우는 $56-20=36$가지이다.\n따라서 백의 자리가 $9$, $8$, $7$인 경우까지 $24+36=60$개이다. 백의 자리가 $6$일 때 소수가 두 개 이상이려면 십의 자리와 일의 자리가 서로 다른 소수여야 한다. 큰 수부터 보면 처음 두 수는 $675,673$이므로 62번째는 $673$이고 정답은 ②이다.",
+    "category": "순열",
+    "originalCategory": "순열",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-07",
+    "standardUnit": "순열",
+    "standardUnitOrder": 7,
+    "layoutTag": "grid",
+    "wide": false,
+    "level": "상",
+    "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+    "subUnit": "조건이 있는 순열",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+    "templateKey": "TPL_H1_ARRANGEMENT_LEXICOGRAPHIC_RANK",
+    "crossConceptKeys": [
+      "CC_COMBINATORICS_COUNTING"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmPath": {
+      "majorUnit": "경우의 수",
+      "midUnit": "경우의 수와 순열",
+      "l3": "순열",
+      "l4": "특정 조건 배열"
+    },
+    "rpmPrimaryMappingStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyReason": "학생 풀이에서 순열 핵심 개념과 실제 조건 분기·계산 단계를 따로 세어 상/4로 분류했다.",
+    "sourceQid": 15,
+    "sourceOrdinal": 15,
+    "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+    "questionUid": "qid_v1_1a01ce6b57afdd46704e5ed835db8c054e97c29f45f071000717bbb155cbba7b",
+    "provenance": {
+      "sourceId": "2019|금당고|h1|2final",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 15,
+      "sourceQid": 15,
+      "sourceType": "ORIGINAL_EXAM",
+      "sourceIntakeEvidence": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
+      "sourcePdfSha256": "546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816",
+      "sourceInputJsSha256": "5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0",
+      "sourcePage": 2
+    },
+    "metadataEvidenceDebt": [
+      {
+        "field": "rpmPath",
+        "status": "EVIDENCE_DEBT",
+        "reason": "소수 조건을 만족하는 순열을 사전식 내림차순으로 rank하는 exact H1 binding이 없어 active lexical-rank PT/TPL과 canonical path를 보존한다."
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "questionType": "객관식",
+    "content": "다음 조건을 만족시키는 점 $(x,y)$ 중에서 임의로 4개의 점을 택할 때, 만들 수 있는 사각형의 개수는? (4점)<br>(가) $x,y$는 정수이다.　(나) $x^2+y^2\\le4$",
+    "choices": [
+      "260",
+      "325",
+      "395",
+      "445",
+      "455"
+    ],
+    "tags": [
+      "객관식",
+      "좌표평면",
+      "경우의 수"
+    ],
+    "answer": "④",
+    "solution": "조건을 만족하는 격자점은 $x^2+y^2\\le4$인 13개이다. 전체 4점 선택은 $\\binom{13}4=715$가지이다.\n네 점 중 세 점이 한 직선 위에 있으면 사각형이 퇴화한다. 5점이 놓인 직선은 $x$축과 $y$축 두 개이다. 정확히 3점이 놓인 직선은 $x=\\pm1$, $y=\\pm1$의 네 선, $y=\\pm x$의 두 선, $x+y=\\pm2$와 $x-y=\\pm2$의 네 선으로 모두 10개이다.\n5점 직선 하나에서 네 점을 고르는 퇴화 선택은 $\\binom54=5$가지이다. 그 직선 위 세 점과 바깥 8점 중 하나를 고르는 경우는 $\\binom53\\cdot8=80$가지이다. 정확히 3점이 놓인 직선 하나마다 그 세 점과 나머지 10점 중 한 점을 더하는 10가지가 있다.\n따라서 퇴화 선택은 $2(5+80)+10\\cdot10=270$가지이고, 사각형은 $715-270=445$개이다. 정답은 ④이다.",
+    "category": "조합",
+    "originalCategory": "조합",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-08",
+    "standardUnit": "조합",
+    "standardUnitOrder": 8,
+    "layoutTag": "grid",
+    "wide": false,
+    "level": "상",
+    "subUnitKey": "H15-SB-08-COMBINATION_APPLICATION",
+    "subUnit": "조합의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+    "templateKey": "TPL_H1_SELECTION_GEOMETRIC_DEGENERACY",
+    "crossConceptKeys": [
+      "CC_LATTICE_POINT_COUNTING"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmPath": {
+      "majorUnit": "경우의 수",
+      "midUnit": "조합",
+      "l3": "조합의 활용",
+      "l4": "도형에서의 선택"
+    },
+    "rpmPrimaryMappingStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyReason": "학생 풀이에서 조합 핵심 개념과 실제 조건 분기·계산 단계를 따로 세어 상/4로 분류했다.",
+    "sourceQid": 16,
+    "sourceOrdinal": 16,
+    "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+    "questionUid": "qid_v1_8fc02860b53d17732cd1303591f432102389615ef3fcaa4cacda98529a6cc970",
+    "provenance": {
+      "sourceId": "2019|금당고|h1|2final",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 16,
+      "sourceQid": 16,
+      "sourceType": "ORIGINAL_EXAM",
+      "sourceIntakeEvidence": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
+      "sourcePdfSha256": "546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816",
+      "sourceInputJsSha256": "5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0",
+      "sourcePage": 3
+    },
+    "metadataEvidenceDebt": [
+      {
+        "field": "rpmPath",
+        "status": "EVIDENCE_DEBT",
+        "reason": "격자점 4개 선택 후 공선 퇴화를 제외하는 exact H1 geometric-degeneracy binding이 없어 active PT/TPL과 canonical path를 보존한다."
+      }
+    ],
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "원점 중심 반지름 2인 원 안의 격자점 13개와 공선인 점 묶음",
+    "solutionImageCaption": "축 위의 5점 직선 두 개와 3점 직선 열 개에서 퇴화 선택을 센다.",
+    "solutionImageSize": "full",
+    "image": "assets/images/19_금당고_2학기_기말_고1_기출/q16-problem.svg"
+  },
+  {
+    "id": 17,
+    "questionType": "객관식",
+    "content": "두 점 $A(-1,0)$, $B(0,1)$과 곡선 $y=\\sqrt{x}$ 위의 한 점 $P(x,y)$에 대하여 삼각형 $ABP$의 넓이의 최솟값이 $\\dfrac{a}{b}$일 때, $b-a$의 값은? (4.2점)",
+    "choices": [
+      "5",
+      "4",
+      "3",
+      "2",
+      "1"
+    ],
+    "tags": [
+      "객관식",
+      "무리함수",
+      "최솟값"
+    ],
+    "answer": "⑤",
+    "solution": "$P=(x,\\sqrt{x})$로 놓고 $t=\\sqrt{x}\\ge0$라 두면 $P=(t^2,t)$이다.\n직선 $AB$는 $A(-1,0)$, $B(0,1)$을 지나므로 $y=x+1$이다.\n선분 $AB$의 길이는 $\\sqrt{(0+1)^2+(1-0)^2}=\\sqrt2$이다. 점 $P(t^2,t)$에서 직선 $AB$까지의 거리는\n$\\dfrac{|t^2-t+1|}{\\sqrt2}$이다.\n$t^2-t+1=(t-\\dfrac12)^2+\\dfrac34>0$이므로 이 거리는 $\\dfrac{t^2-t+1}{\\sqrt2}$이다.\n따라서 삼각형 $ABP$의 넓이는\n$\\dfrac12\\cdot\\sqrt2\\cdot\\dfrac{t^2-t+1}{\\sqrt2}=\\dfrac12(t^2-t+1)$이다.\n같은 완전제곱식으로 넓이의 최솟값은 $\\dfrac12\\cdot\\dfrac34=\\dfrac38$이다. 따라서 $a=3,b=8$이고 $b-a=5$이므로 정답은 ⑤이다.",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q17-solution.svg",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q17-solution.svg",
+    "category": "무리함수",
+    "originalCategory": "무리함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-05",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 5,
+    "layoutTag": "grid",
+    "wide": false,
+    "level": "중",
+    "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+    "subUnit": "무리함수의 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+    "templateKey": "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
+    "crossConceptKeys": [
+      "CC_RADICAL_FUNCTION",
+      "CC_TRIANGLE_AREA"
+    ],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmPath": {
+      "majorUnit": "함수",
+      "midUnit": "무리함수",
+      "l3": "무리함수의 그래프",
+      "l4": "기본 그래프"
+    },
+    "rpmPrimaryMappingStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyReason": "학생 풀이에서 무리함수 핵심 개념과 실제 조건 분기·계산 단계를 따로 세어 중/3로 분류했다.",
+    "sourceQid": 17,
+    "sourceOrdinal": 17,
+    "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+    "questionUid": "qid_v1_c502e8af2c91265b22858366b1fe8aca1d64d4aa841c8702783e05a00d7a7f13",
+    "provenance": {
+      "sourceId": "2019|금당고|h1|2final",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 17,
+      "sourceQid": 17,
+      "sourceType": "ORIGINAL_EXAM",
+      "sourceIntakeEvidence": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
+      "sourcePdfSha256": "546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816",
+      "sourceInputJsSha256": "5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0",
+      "sourcePage": 3
+    },
+    "metadataEvidenceDebt": [
+      {
+        "field": "rpmPath",
+        "status": "EVIDENCE_DEBT",
+        "reason": "무리함수 그래프 위의 점으로 삼각형 넓이 최솟값을 구하는 exact H1 PT/TPL binding이 없어 active function-extremum PT/TPL을 보존한다."
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "questionType": "객관식",
+    "content": "함수 $f(x)=\\dfrac{3x+a}{x+b}$가 다음 조건을 만족한다.<br>(가) 3이 아닌 모든 실수 $x$에 대하여 $f^{-1}(x)=f(x+5)+5$이다.<br>(나) 함수 $y=f^{-1}(x)$의 그래프를 평행이동하면 함수 $y=\\dfrac{6}{x}$의 그래프와 일치한다.<br>이때 $a+b$의 값을 구하시오. (단, $a,b$는 상수) (4.2점)",
+    "choices": [
+      "-28",
+      "-26",
+      "-24",
+      "-22",
+      "-20"
+    ],
+    "tags": [
+      "객관식",
+      "유리함수",
+      "역함수"
+    ],
+    "answer": "②",
+    "solution": "조건 (가)를 식으로 바꾼다.\n$f^{-1}(x)=\\dfrac{a-bx}{x-3}$이고 $f(x+5)+5=\\dfrac{8x+a+5b+40}{x+b+5}$이다. 두 식이 같으므로 분모의 이차식 계수를 비교하면 $-b=8$, 따라서 $b=-8$이다.\n조건 (나)에 따라 $f^{-1}(x)$는 $y=\\dfrac6x$를 평행이동한 꼴이다. $b=-8$을 대입하면 $f^{-1}(x)=\\dfrac{a+8x}{x-3}=8+\\dfrac{a+24}{x-3}$이다. 분자 계수가 6이어야 하므로 $a+24=6$, $a=-18$이다.\n따라서 $a+b=-26$이고 정답은 ②이다.",
+    "category": "역함수",
+    "originalCategory": "역함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-03",
+    "standardUnit": "함수",
+    "standardUnitOrder": 3,
+    "layoutTag": "grid",
+    "wide": false,
+    "level": "상",
+    "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
+    "subUnit": "역함수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_INVERSE_VALUE",
+    "templateKey": "TPL_INVERSE_FUNCTION_FORM",
+    "crossConceptKeys": [
+      "CC_RATIONAL_FUNCTION"
+    ],
+    "conditionKeys": [
+      "COND_NONZERO"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmPath": {
+      "majorUnit": "함수",
+      "midUnit": "함수",
+      "l3": "역함수",
+      "l4": "역함수 구하기"
+    },
+    "rpmPrimaryMappingStatus": "DIRECT_ACTIVE",
+    "difficultyBucket": 5,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyReason": "학생 풀이에서 역함수 핵심 개념과 실제 조건 분기·계산 단계를 따로 세어 상/5로 분류했다.",
+    "sourceQid": 18,
+    "sourceOrdinal": 18,
+    "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+    "questionUid": "qid_v1_9f76c907e5f9d4c3a6ce7b7543c8a184c23b359df9b9bff71ba54691265ec0dd",
+    "provenance": {
+      "sourceId": "2019|금당고|h1|2final",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 18,
+      "sourceQid": 18,
+      "sourceType": "ORIGINAL_EXAM",
+      "sourceIntakeEvidence": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
+      "sourcePdfSha256": "546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816",
+      "sourceInputJsSha256": "5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0",
+      "sourcePage": 3
+    }
+  },
+  {
+    "id": 19,
+    "questionType": "객관식",
+    "content": "좌표평면에서 반원 $y=\\sqrt{289-x^2}$과 직선 $y=-x+k$가 서로 다른 두 점에서 만나도록 하는 양의 정수 $k$의 최댓값은? (4.2점)",
+    "choices": [
+      "14",
+      "16",
+      "18",
+      "20",
+      "24"
+    ],
+    "tags": [
+      "객관식",
+      "무리함수",
+      "원과 직선",
+      "교점"
+    ],
+    "answer": "⑤",
+    "solution": "반원은 $x^2+y^2=289$, $y\\ge0$이고 직선은 $x+y=k$이다. 원과 직선의 교점에서 $y=k-x$를 대입하면\n$2x^2-2kx+k^2-289=0$이다. 판별식은 $4(578-k^2)$이므로 서로 다른 두 실근을 위해 $k<17\\sqrt2$이다.\n두 교점이 모두 반원 위에 있으려면 두 $y$좌표 $(k\\pm\\sqrt{578-k^2})/2$가 0 이상이어야 한다. 작은 값이 0 이상일 조건은 $k\\ge\\sqrt{578-k^2}$, 즉 $k\\ge17$이다.\n따라서 정수 $k$는 $17\\le k<17\\sqrt2$이고 최댓값은 24, 정답은 ⑤이다.",
+    "category": "원과 직선",
+    "originalCategory": "원과 직선",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-11",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 11,
+    "layoutTag": "grid",
+    "wide": false,
+    "level": "중",
+    "subUnitKey": "H15-SA-11-INTERSECTION",
+    "subUnit": "원과 직선·원의 교점",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+    "crossConceptKeys": [
+      "CC_CIRCLE_EQUATION",
+      "CC_LINE_INTERSECTION"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmPath": {
+      "majorUnit": "도형의 방정식",
+      "midUnit": "원의 방정식",
+      "l3": "원과 직선",
+      "l4": "교점 개수"
+    },
+    "rpmPrimaryMappingStatus": "DIRECT_ACTIVE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyReason": "학생 풀이에서 원과 직선 핵심 개념과 실제 조건 분기·계산 단계를 따로 세어 중/3로 분류했다.",
+    "sourceQid": 19,
+    "sourceOrdinal": 19,
+    "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+    "questionUid": "qid_v1_bf0fe7bdcd6274eaaddb01ebde9c62130b1aab450d94ae224be41d1d36f00a01",
+    "provenance": {
+      "sourceId": "2019|금당고|h1|2final",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 19,
+      "sourceQid": 19,
+      "sourceType": "ORIGINAL_EXAM",
+      "sourceIntakeEvidence": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
+      "sourcePdfSha256": "546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816",
+      "sourceInputJsSha256": "5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0",
+      "sourcePage": 3,
+      "itemTransformation": "ALIVE_BOUNDED_REPLACEMENT",
+      "replacedOriginalQuestion": "원문에서는 두 곡선의 부호가 반대라 교점이면 두 제곱근이 0이어야 하나, 두 근호 안의 합 4k=0은 k≠0과 모순.",
+      "sourceOriginalSnapshot": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/comparison/source-only-before.js"
+    },
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "반지름 17인 윗반원과 직선 x+y=24가 만나는 두 점",
+    "solutionImageCaption": "k=24에서는 두 교점이 모두 반원 위에 있고, k=25에서는 교점이 없다.",
+    "solutionImageSize": "full",
+    "image": "assets/images/19_금당고_2학기_기말_고1_기출/q19-problem.svg"
+  },
+  {
+    "id": 20,
+    "questionType": "객관식",
+    "content": "그림과 같이 좌표평면에서 세 점 $O(0,0)$, $A(4,0)$, $B(0,3)$을 꼭짓점으로 하는 삼각형 $OAB$를 평행이동한 도형을 삼각형 $O'A'B'$이라 하자. 점 $A'$의 좌표가 $(9,2)$일 때, 삼각형 $O'A'B'$에 내접하는 원의 방정식은 $x^2+y^2+ax+by+c=0$이다. $\\dfrac{a+b+c}{2}$의 값을 구하시오. (단, $a,b,c$는 상수이다.) (4.2점)",
+    "choices": [
+      "11",
+      "12",
+      "13",
+      "14",
+      "15"
+    ],
+    "tags": [
+      "객관식",
+      "원의 방정식",
+      "도형의 평행이동"
+    ],
+    "image": "assets/images/19_금당고_2학기_기말_고1_기출/q20.png",
+    "answer": "③",
+    "solution": "평행이동 벡터는 $(9-4,2-0)=(5,2)$이다. 따라서 $O′=(5,2)$, $A′=(9,2)$, $B′=(5,5)$이다. 두 변의 길이가 $4$, $3$인 직각삼각형이고 빗변의 길이는 $5$이다.\n직각삼각형의 넓이는 $\\dfrac12\\cdot4\\cdot3=6$이다. 내심에서 세 변에 내린 수선의 길이는 모두 내접원의 반지름 $r$이므로 삼각형 넓이는 $\\dfrac12(4+3+5)r=6r$이다. 따라서 $6r=6$, $r=1$이다.\n직각 꼭짓점 $O′=(5,2)$에서 두 변에 각각 거리 $1$만큼 떨어진 내심은 $(6,3)$이다. 원의 방정식은 $(x-6)^2+(y-3)^2=1$, 즉 $x^2+y^2-12x-6y+44=0$이다. 따라서 $a+b+c=26$이고 $\\dfrac{a+b+c}{2}=13$이므로 정답은 ③이다.",
+    "category": "원의 방정식",
+    "originalCategory": "원의 방정식",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-11",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 11,
+    "layoutTag": "grid",
+    "wide": false,
+    "level": "중",
+    "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+    "subUnit": "원의 방정식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_CIRCLE_EQUATION",
+    "templateKey": "TM_CIRCLE_CENTER_RADIUS",
+    "crossConceptKeys": [
+      "CC_RIGHT_TRIANGLE",
+      "CC_CIRCLE_TANGENCY"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmPath": {
+      "majorUnit": "도형의 방정식",
+      "midUnit": "원의 방정식",
+      "l3": "원의 방정식",
+      "l4": "중심과 반지름"
+    },
+    "rpmPrimaryMappingStatus": "DIRECT_ACTIVE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyReason": "학생 풀이에서 원의 방정식 핵심 개념과 실제 조건 분기·계산 단계를 따로 세어 중/2로 분류했다.",
+    "sourceQid": 20,
+    "sourceOrdinal": 20,
+    "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+    "questionUid": "qid_v1_4b95f7d0cf690faba75ecbd49383e6c374c96ec17062b278ae305180aef21282",
+    "provenance": {
+      "sourceId": "2019|금당고|h1|2final",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 20,
+      "sourceQid": 20,
+      "sourceType": "ORIGINAL_EXAM",
+      "sourceIntakeEvidence": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
+      "sourcePdfSha256": "546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816",
+      "sourceInputJsSha256": "5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0",
+      "sourcePage": 3
+    }
+  },
+  {
+    "id": 21,
+    "questionType": "서술형",
+    "content": "그림과 같이 유리함수 $y=\\dfrac{5}{x-2}+3$의 그래프 위의 점 $P$에서 $x$축과 $y$축에 내린 수선의 발을 각각 $A$, $B$라 하자. 직사각형 $OAPB$의 네 변의 길이의 합이 최소가 되도록 하는 점 $P$의 좌표를 $(a,b)$라 할 때, $a+b$의 값을 구하시오. (단, 점 $O$는 원점이고, 점 $P$는 제1사분면 위에 있다.) [10점]",
+    "choices": [],
+    "tags": [
+      "서술형",
+      "유리함수",
+      "최솟값"
+    ],
+    "image": "assets/images/19_금당고_2학기_기말_고1_기출/q21.png",
+    "answer": "$5+2\\sqrt{5}$",
+    "solution": "$t=x-2$라 두면 $t>0$, $x=t+2$이고 그래프의 식에서 $y=\\dfrac5t+3$이다. 직사각형의 둘레는 $2(x+y)$이므로 $x+y=t+\\dfrac5t+5$이다.\n산술-기하 평균에 의해 $t+\\dfrac5t\\ge2\\sqrt5$이고, 등호는 $t=\\sqrt5$일 때 성립한다. 이때 $x=2+\\sqrt5$, $y=3+\\sqrt5$이므로 둘레가 최소이다.\n따라서 $(a,b)=(2+\\sqrt5,3+\\sqrt5)$이고 $a+b=5+2\\sqrt5$이다.",
+    "category": "유리함수",
+    "originalCategory": "유리함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-04",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 4,
+    "layoutTag": "grid",
+    "wide": false,
+    "level": "상",
+    "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
+    "subUnit": "유리함수의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+    "templateKey": "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
+    "crossConceptKeys": [
+      "CC_RATIONAL_FUNCTION",
+      "CC_AM_GM"
+    ],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmPath": {
+      "majorUnit": "함수",
+      "midUnit": "유리함수",
+      "l3": "유리함수의 활용",
+      "l4": "유리함수의 최대·최소"
+    },
+    "rpmPrimaryMappingStatus": "RPM_ONLY",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyReason": "학생 풀이에서 유리함수 핵심 개념과 실제 조건 분기·계산 단계를 따로 세어 상/4로 분류했다.",
+    "sourceQid": 21,
+    "sourceOrdinal": 21,
+    "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+    "questionUid": "qid_v1_b2230ec647f85e8293a0a966c8acee37c414500d8493234be91b3fa860d14174",
+    "provenance": {
+      "sourceId": "2019|금당고|h1|2final",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 21,
+      "sourceQid": 21,
+      "sourceType": "ORIGINAL_EXAM",
+      "sourceIntakeEvidence": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
+      "sourcePdfSha256": "546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816",
+      "sourceInputJsSha256": "5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0",
+      "sourcePage": 4
+    },
+    "metadataEvidenceDebt": [
+      {
+        "field": "rpmPath",
+        "status": "EVIDENCE_DEBT",
+        "reason": "H1 RPM crosswalk status RPM_ONLY for rational-function extrema; no exact active PT/TPL binding exists. Active function-extremum PT/TPL and canonical path are retained."
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "questionType": "서술형",
+    "content": "함수 $f(x)=-\\sqrt{-x-4}$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프가 직선 $y=-x+n$과 만나는 두 점을 각각 $A$, $B$라 할 때, 선분 $AB$의 길이의 최솟값을 구하시오. (단, $n\\le-4$) [10점]",
+    "choices": [],
+    "tags": [
+      "서술형",
+      "무리함수",
+      "역함수"
+    ],
+    "answer": "$\\dfrac{15\\sqrt{2}}{4}$",
+    "solution": "$f$의 그래프 위의 점을 $P=(x,y)$라 하면 $x=-t^2-4$, $y=-t$인 $t=\\sqrt{-x-4}\\ge0$로 나타낼 수 있다. 역함수 그래프는 $y=x$에 대한 대칭이므로 대응점은 $P'=(y,x)$이다. 두 점의 합은 $x+y=-t^2-t-4$이므로 직선 $y=-x+n$ 위에 함께 놓인다.\n$AB=PP'=\\sqrt{(x-y)^2+(y-x)^2}=\\sqrt2|x-y|=\\sqrt2(t^2-t+4)$이다.\n$t^2-t+4=(t-\\dfrac12)^2+\\dfrac{15}4$이므로 최솟값은 $\\dfrac{15\\sqrt2}{4}$이다. 해당 점은 $n=x+y=-\\dfrac{19}4\\le-4$를 만족하므로 조건 안에서 실제로 달성된다.",
+    "category": "무리함수",
+    "originalCategory": "무리함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-05",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 5,
+    "layoutTag": "grid",
+    "wide": false,
+    "level": "상",
+    "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
+    "subUnit": "무리함수와 역함수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_INVERSE_GRAPH",
+    "templateKey": "TPL_INVERSE_GRAPH_GEOMETRY",
+    "crossConceptKeys": [
+      "CC_RADICAL_FUNCTION",
+      "CC_REFLECTION"
+    ],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "rpmPath": {
+      "majorUnit": "함수",
+      "midUnit": "무리함수",
+      "l3": "무리함수의 활용",
+      "l4": "무리함수의 역함수"
+    },
+    "rpmPrimaryMappingStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyReason": "학생 풀이에서 무리함수 핵심 개념과 실제 조건 분기·계산 단계를 따로 세어 상/4로 분류했다.",
+    "sourceQid": 22,
+    "sourceOrdinal": 22,
+    "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+    "questionUid": "qid_v1_e8475d79081dd2fd22631109a154978194caea8b0c191426fa2175f246a99c4b",
+    "provenance": {
+      "sourceId": "2019|금당고|h1|2final",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 22,
+      "sourceQid": 22,
+      "sourceType": "ORIGINAL_EXAM",
+      "sourceIntakeEvidence": "archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
+      "sourcePdfSha256": "546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816",
+      "sourceInputJsSha256": "5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0",
+      "sourcePage": 4
+    },
+    "metadataEvidenceDebt": [
+      {
+        "field": "rpmPath",
+        "status": "EVIDENCE_DEBT",
+        "reason": "무리함수 역함수 그래프와 이동 직선이 만드는 거리 최솟값의 exact H1 binding이 없어 active inverse-graph PT/TPL과 canonical path를 보존한다."
+      }
+    ]
+  }
+];
