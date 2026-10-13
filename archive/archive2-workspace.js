@@ -219,7 +219,7 @@
       availability: true,
       routeOwner: "five-minute-test",
       routeResolver: () =>
-        new URL("workspace.html?view=compose&recipe=FIVE_MINUTE", location.href).href,
+        new URL("workspace.html?view=five-minute", location.href).href,
     }),
     Object.freeze({
       productKey: "subunit-assessment",
@@ -227,7 +227,7 @@
       availability: true,
       routeOwner: "subunit-assessment",
       routeResolver: () =>
-        new URL("workspace.html?view=compose&recipe=SUBUNIT", location.href).href,
+        new URL("workspace.html?view=subunit-test", location.href).href,
     }),
     Object.freeze({
       productKey: "unit-assessment",
@@ -235,7 +235,7 @@
       availability: true,
       routeOwner: "unit-assessment",
       routeResolver: () =>
-        new URL("workspace.html?view=compose&recipe=UNIT", location.href).href,
+        new URL("workspace.html?view=unit-test", location.href).href,
     }),
     Object.freeze({
       productKey: "exam-prep",
@@ -243,7 +243,7 @@
       availability: true,
       routeOwner: "monthly-assessment",
       routeResolver: () =>
-        new URL("workspace.html?view=compose&recipe=MONTHLY", location.href).href,
+        new URL("workspace.html?view=monthly-test", location.href).href,
     }),
   ]);
   function homeProductMarkup(product) {
@@ -395,6 +395,44 @@
     urlRange: "",
   };
   let finderFilterRenderTimer = null;
+  // The five-minute shelf uses the existing catalog and output engine without
+  // changing the compose draft or its selection controls.
+  const quickAssessmentConfigs = Object.freeze({
+    "five-minute": Object.freeze({ title: "5분 테스트", count: 4, order: ["basic", "standard", "application"], presets: Object.freeze({
+      basic: [[1, 2], [2, 2]], standard: [[2, 2], [3, 2]], application: [[2, 1], [3, 3]],
+    }) }),
+    "subunit-test": Object.freeze({ title: "소단원 평가", count: 12, order: ["basic", "standard", "application"], presets: Object.freeze({
+      basic: [[1, 6], [2, 6], [3, 0]], standard: [[1, 3], [2, 6], [3, 3]],
+      application: [[1, 1], [2, 5], [3, 6]],
+    }) }),
+    "unit-test": Object.freeze({ title: "중단원 평가", count: 20,
+      order: ["basic", "standard", "application", "advanced"], presets: Object.freeze({
+        basic: [[1, 8], [2, 10], [3, 2], [4, 0]],
+        standard: [[1, 4], [2, 10], [3, 6], [4, 0]],
+        application: [[1, 2], [2, 6], [3, 9], [4, 3]],
+        advanced: [[1, 0], [2, 4], [3, 10], [4, 6]],
+      }) }),
+    "monthly-test": Object.freeze({ title: "종합평가", count: 24,
+      order: ["basic", "standard", "application", "advanced"], presets: Object.freeze({
+        basic: [[1, 8], [2, 12], [3, 4], [4, 0]],
+        standard: [[1, 4], [2, 12], [3, 8], [4, 0]],
+        application: [[1, 2], [2, 8], [3, 10], [4, 4]],
+        advanced: [[1, 0], [2, 4], [3, 12], [4, 8]],
+      }) }),
+  });
+  const fiveMinutePresetLabels = { basic: "기초", standard: "기본", application: "응용", advanced: "심화" };
+  const fiveMinute = { grade: "", course: "", preset: "standard", units: null, busy: false };
+  const subunitTest = { grade: "", course: "", preset: "standard", units: null, busy: false };
+  const unitTest = { grade: "", course: "", preset: "standard", units: null, busy: false };
+  const monthlyTest = { grade: "", course: "", preset: "standard", units: null,
+    selectedUnits: new Set(), busy: false };
+  const quickAssessment = () => ({
+    config: quickAssessmentConfigs[state.view],
+    selection: state.view === "monthly-test" ? monthlyTest
+      : state.view === "unit-test" ? unitTest
+      : state.view === "subunit-test" ? subunitTest : fiveMinute,
+  });
+  const isQuickAssessmentView = () => Boolean(quickAssessmentConfigs[state.view]);
 
   function scheduleFinderFilterRender() {
     clearTimeout(finderFilterRenderTimer);
@@ -1684,6 +1722,205 @@
       throw new Error("팝업을 허용한 뒤 다시 열어 주세요.");
   }
 
+  function quickAssessmentUnits() {
+    const { selection } = quickAssessment();
+    const scope = state.view;
+    if (!selection.units) {
+      const units = new Map();
+      const metaByUid = scope === "subunit-test"
+        ? new Map((state.metaIndex || []).map(row => [row.questionUid || row.uid, row])) : null;
+      for (const record of state.catalog.records) {
+        if (!record.sourceGrade || !record.curriculumKey || !record.courseKey || !record.L1 || !record.L2 ||
+            ![1, 2, 3, ...(scope === "unit-test" || scope === "monthly-test" ? [4] : [])]
+              .includes(record.difficultyBucket) ||
+            !C.generalUseEligibility(record).ok) continue;
+        const meta = metaByUid?.get(record.questionUid);
+        if (scope === "subunit-test" && (!meta?.standardUnitKey || !meta?.subUnitKey || !meta?.subUnit)) continue;
+        const course = JSON.stringify([record.curriculumKey, record.courseKey]);
+        const path = scope === "monthly-test" ? [record.L1]
+          : scope === "subunit-test" ? [meta.standardUnitKey, meta.subUnitKey]
+          : [record.L1, record.L2];
+        const key = JSON.stringify([record.sourceGrade, course, ...path]);
+        if (!units.has(key)) units.set(key, {
+          key, grade: record.sourceGrade, course, curriculumKey: record.curriculumKey,
+          courseKey: record.courseKey,
+          L1: scope === "subunit-test" ? (meta.standardUnit || record.L1) : record.L1,
+          L2: scope === "monthly-test" ? "" : scope === "subunit-test" ? meta.subUnit : record.L2,
+          buckets: { 1: [], 2: [], 3: [], 4: [] },
+        });
+        units.get(key).buckets[record.difficultyBucket].push(record);
+      }
+      selection.units = [...units.values()].sort((a, b) =>
+        a.grade.localeCompare(b.grade, "ko") || a.course.localeCompare(b.course, "ko") ||
+        a.L1.localeCompare(b.L1, "ko") || a.L2.localeCompare(b.L2, "ko"));
+    }
+    return selection.units.filter(unit =>
+      (!selection.grade || unit.grade === selection.grade) &&
+      (!selection.course || unit.course === selection.course));
+  }
+  function renderFiveMinute() {
+    const { config, selection } = quickAssessment();
+    const all = quickAssessmentUnits();
+    const cachedUnits = selection.units;
+    const grades = ["중1", "중2", "중3", "고1", "고2", "고3"]
+      .filter(grade => cachedUnits.some(unit => unit.grade === grade));
+    const courses = [...new Map(cachedUnits.filter(unit => unit.grade === selection.grade)
+      .map(unit => [unit.course, {
+        value: unit.course,
+        label: `${/^M([123])-([12])$/.test(unit.courseKey)
+          ? unit.courseKey.replace(/^M([123])-([12])$/, "중$1 · $2학기 수학")
+          : unit.courseKey} · ${unit.curriculumKey}`,
+      }])).values()];
+    const units = selection.grade && selection.course ? all : [];
+    const mix = config.presets[selection.preset].filter(([, count]) => count)
+      .map(([bucket, count]) => `${bucket}단계 ${count}문항`).join(" · ");
+    const monthly = state.view === "monthly-test";
+    const cards = units.map((unit, index) => {
+      const label = `${esc(unit.L1)}${unit.L2 && unit.L2 !== unit.L1 ? ` · ${esc(unit.L2)}` : ""}`;
+      const counts = [1, 2, 3, ...(config.count >= 20 ? [4] : [])]
+        .map(bucket => `${bucket}단계 ${unit.buckets[bucket].length}`).join(" · ");
+      const open = button("five-minute-unit", `${label} <small>${counts}</small>`,
+        `type="button" data-unit-index="${index}" ${selection.busy ? "disabled" : ""}`);
+      return monthly ? `<div class="quick-bundle-entry">${open}<label><input type="checkbox" data-quick-bundle="${esc(unit.key)}"
+        ${selection.selectedUnits.has(unit.key) ? "checked" : ""}> 묶음에 추가</label></div>` : open;
+    }).join("");
+    return `<div class="intro"><div><h1>${config.title}</h1></div>${state.view === "subunit-test"
+      ? '<a href="assessment/assessment-mvp.html?scope=subunit">기존 소단원 평가팩 45개 보기</a>' : ""}</div>
+      <section class="panel"><h2>학년 · 과목</h2><div class="inline">
+        <label>학년<select id="five-minute-grade">${options(grades, selection.grade, "학년 선택")}</select></label>
+        <label>과목<select id="five-minute-course" ${selection.grade ? "" : "disabled"}>${options(courses, selection.course, "과목 선택")}</select></label>
+      </div></section>
+      <section class="panel"><h2>난이도 · <span id="five-minute-level-current">${fiveMinutePresetLabels[selection.preset]}</span></h2>
+        <div class="five-minute-slider"><div class="five-minute-slider-labels">${config.order.map(key => `<span>${fiveMinutePresetLabels[key]}</span>`).join("")}</div>
+          <div class="five-minute-slider-rail">${config.order.map(() => "<span></span>").join("")}
+            <input id="five-minute-level" type="range" min="0" max="${config.order.length - 1}" step="1"
+              value="${config.order.indexOf(selection.preset)}" aria-label="${config.title} 난이도" aria-valuetext="${fiveMinutePresetLabels[selection.preset]}">
+          </div>
+        </div><p class="muted" id="quick-assessment-mix">${mix}</p></section>
+      <section class="panel"><h2>${monthly ? "대단원" : state.view === "unit-test" ? "중단원" : state.view === "subunit-test" ? "소단원" : "단원"}</h2>
+        ${monthly ? '<p class="muted">단원명을 누르면 한 단원으로 바로 출제합니다. 여러 단원은 묶음에 추가하세요.</p>' : ""}${units.length
+        ? `<div class="archive-home-products">${cards}</div>${monthly ? button("quick-bundle-open",
+          `선택한 대단원 ${selection.selectedUnits.size}개 묶어 24문항 출력`,
+          `type="button" class="primary" ${selection.selectedUnits.size && !selection.busy ? "" : "disabled"}`) : ""}`
+        : '<p class="muted">학년과 과목을 선택하세요.</p>'}</section>`;
+  }
+  function fiveMinuteShuffle(rows) {
+    const result = rows.slice();
+    const value = new Uint32Array(1);
+    for (let i = result.length - 1; i > 0; i--) {
+      const range = i + 1, limit = Math.floor(4294967296 / range) * range;
+      do { crypto.getRandomValues(value); } while (value[0] >= limit);
+      const j = value[0] % range;
+      [result[i], result[j]] = [result[j], result[i]];
+    }
+    return result;
+  }
+  function balancedQuickSelection(units, preset) {
+    const pools = { 1: [], 2: [], 3: [], 4: [] }, scopeByUid = new Map();
+    for (const unit of units) for (const bucket of [1, 2, 3, 4])
+      for (const record of unit.buckets[bucket]) {
+        pools[bucket].push(record);
+        scopeByUid.set(record.questionUid, unit.key);
+      }
+    const typeByUid = new Map(), subunitByUid = new Map();
+    for (const row of state.metaIndex || []) {
+      const uid = row.questionUid || row.uid;
+      if (!scopeByUid.has(uid)) continue;
+      const group = AssessmentRecipes?.representativeGroup?.(row);
+      if (group?.concept || group?.type) typeByUid.set(uid, group.concept || group.type);
+      if (row.subUnitKey) subunitByUid.set(uid, row.subUnitKey);
+    }
+    const scopeUse = new Map(), subunitUse = new Map(), typeUse = new Map(),
+      sourceUse = new Map(), selected = [];
+    for (const [bucket, count] of preset) {
+      const candidates = fiveMinuteShuffle([...new Map(pools[bucket]
+        .map(record => [record.questionUid, record])).values()]);
+      for (let i = 0; i < count; i++) {
+        let best = 0, bestScore = Infinity;
+        for (let j = 0; j < candidates.length; j++) {
+          const record = candidates[j], type = typeByUid.get(record.questionUid);
+          const scope = scopeByUid.get(record.questionUid);
+          const subunit = subunitByUid.get(record.questionUid) || record.L2;
+          const score = (scopeUse.get(scope) || 0) * 1000000 +
+            (subunitUse.get(subunit) || 0) * 10000 +
+            (type ? (typeUse.get(type) || 0) : 0) * 100 +
+            (sourceUse.get(record.sourceFile) || 0);
+          if (score < bestScore) { best = j; bestScore = score; }
+        }
+        const [record] = candidates.splice(best, 1);
+        selected.push(record);
+        const scope = scopeByUid.get(record.questionUid);
+        scopeUse.set(scope, (scopeUse.get(scope) || 0) + 1);
+        const subunit = subunitByUid.get(record.questionUid) || record.L2;
+        subunitUse.set(subunit, (subunitUse.get(subunit) || 0) + 1);
+        const type = typeByUid.get(record.questionUid);
+        if (type) typeUse.set(type, (typeUse.get(type) || 0) + 1);
+        sourceUse.set(record.sourceFile, (sourceUse.get(record.sourceFile) || 0) + 1);
+      }
+    }
+    return selected;
+  }
+  async function openFiveMinuteUnit(index) {
+    const { config, selection } = quickAssessment();
+    if (selection.busy) return;
+    const availableUnits = quickAssessmentUnits();
+    const units = state.view === "monthly-test" && index === -1
+      ? availableUnits.filter(unit => selection.selectedUnits.has(unit.key))
+      : [availableUnits[index]].filter(Boolean);
+    const preset = config?.presets[selection.preset];
+    if (!units.length || !selection.grade || !selection.course || !preset) return;
+    const label = units.map(unit => unit.L2 || unit.L1).join(" · ");
+    const pools = { 1: [], 2: [], 3: [], 4: [] };
+    for (const unit of units) for (const bucket of [1, 2, 3, 4])
+      pools[bucket].push(...unit.buckets[bucket]);
+    const shortages = preset.filter(([bucket, count]) =>
+      new Set(pools[bucket].map(record => record.questionUid)).size < count);
+    if (shortages.length) {
+      status(`${label}: ${shortages.map(([bucket, count]) =>
+        `${bucket}단계 ${count}문항 필요 / ${new Set(pools[bucket].map(record => record.questionUid)).size}문항 가능`).join(" · ")}`, true);
+      return;
+    }
+    const selected = state.view === "unit-test" || state.view === "monthly-test"
+      ? balancedQuickSelection(units, preset)
+      : preset.flatMap(([bucket, count]) =>
+        fiveMinuteShuffle([...new Map(pools[bucket].map(record => [record.questionUid, record])).values()]).slice(0, count));
+    if (new Set(selected.map(record => record.questionUid)).size !== config.count) {
+      status("문항 UID가 중복되어 시험지를 열 수 없습니다.", true);
+      return;
+    }
+    const popup = window.open("about:blank", "_blank");
+    if (!popup) { status("새 창을 열 수 없습니다. 팝업 설정을 확인하세요.", true); return; }
+    popup.document.body.textContent = "시험지를 준비하고 있습니다.";
+    selection.busy = true;
+    status("선택한 문항의 원본을 확인하고 있습니다.");
+    render();
+    try {
+      const questions = await Source.restore(selected, state.catalog);
+      const questionUids = selected.map(record => record.questionUid);
+      const title = `${config.title} · ${label}`;
+      const meta = {
+        title, customTitle: title, identityTitle: title, count: config.count,
+        grade: selection.grade, subject: units[0].courseKey, questionUids,
+        scopeKeys: units.map(unit => unit.key),
+        printHeaderOptions: { title, subtitle: "", metaRight: "AP수학",
+          showNameLine: true, showScoreLine: true, applyToSolution: true, applyToAnswer: true },
+        includeQr: false, qpp: 4, sourceType: "mixed", indexVersion: state.catalog.indexVersion,
+      };
+      const envelope = await O.publishOutputEnvelope({
+        sourceKind: "archive2-compose", sourceId: crypto.randomUUID(), mode: "exam",
+        questionCount: config.count, questionUids, meta, questions,
+      });
+      const url = O.outputEnvelopeUrl("mixed_engine.html", location.href, envelope, { studio: true });
+      popup.location.replace(url.href);
+      status(`${label} · ${questionUids.length}문항 시험지를 열었습니다.`);
+    } catch (error) {
+      popup.close();
+      status(error.message || "시험지를 준비하지 못했습니다.", true);
+    } finally {
+      selection.busy = false;
+      if (isQuickAssessmentView()) render();
+    }
+  }
   function renderHome() {
     const recent = drafts().slice(0, 3);
     const grades = ["중1", "중2", "중3", "고1", "고2", "고3"];
@@ -2512,6 +2749,8 @@
     $("content").innerHTML =
       state.view === "home"
         ? renderHome()
+        : isQuickAssessmentView()
+          ? renderFiveMinute()
         : state.view === "find"
           ? renderFind()
           : state.view === "recent"
@@ -3520,6 +3759,10 @@
           return;
         const target = product.routeResolver();
         if (target) location.href = String(target);
+      } else if (a === "five-minute-unit") {
+        await openFiveMinuteUnit(Number(b.dataset.unitIndex));
+      } else if (a === "quick-bundle-open") {
+        await openFiveMinuteUnit(-1);
       } else if (a === "home-grade") {
         rememberCurrentHistoryEntry();
         state.sources = [];
@@ -3837,6 +4080,30 @@
     if (state.busy) return;
     const el = event.target;
     try {
+      if (isQuickAssessmentView() && el.id === "five-minute-level") {
+        quickAssessment().selection.preset = quickAssessment().config.order[Number(el.value)] || "standard";
+        render();
+        return;
+      }
+      if (isQuickAssessmentView() && el.id === "five-minute-grade") {
+        quickAssessment().selection.grade = el.value;
+        quickAssessment().selection.course = "";
+        if (state.view === "monthly-test") monthlyTest.selectedUnits.clear();
+        render();
+        return;
+      }
+      if (isQuickAssessmentView() && el.id === "five-minute-course") {
+        quickAssessment().selection.course = el.value;
+        if (state.view === "monthly-test") monthlyTest.selectedUnits.clear();
+        render();
+        return;
+      }
+      if (state.view === "monthly-test" && el.dataset.quickBundle) {
+        if (el.checked) monthlyTest.selectedUnits.add(el.dataset.quickBundle);
+        else monthlyTest.selectedUnits.delete(el.dataset.quickBundle);
+        render();
+        return;
+      }
       if (el.dataset.outputField) {
         changeOutput(el);
         return;
@@ -4001,6 +4268,17 @@
     } catch (e) {
       status(e.message, true);
     }
+  });
+  document.addEventListener("input", (event) => {
+    if (!isQuickAssessmentView() || event.target.id !== "five-minute-level") return;
+    const preset = quickAssessment().config.order[Number(event.target.value)] || "standard";
+    const label = fiveMinutePresetLabels[preset] || "기본";
+    event.target.setAttribute("aria-valuetext", label);
+    const current = $("five-minute-level-current");
+    if (current) current.textContent = label;
+    const mix = $("quick-assessment-mix");
+    if (mix) mix.textContent = quickAssessment().config.presets[preset]
+      .filter(([, count]) => count).map(([bucket, count]) => `${bucket}단계 ${count}문항`).join(" · ");
   });
   document.addEventListener("input", (event) => {
     if (state.saveResultState === "RESULT_UNKNOWN") { render(); return; }
@@ -4220,7 +4498,7 @@
       state.selected = [];
       state.rows = [];
     }
-    state.view = ["home", "find", "compose", "saved", "recent", "health"].includes(p.get("view"))
+    state.view = ["home", "find", "compose", "saved", "recent", "health", "five-minute", "subunit-test", "unit-test", "monthly-test"].includes(p.get("view"))
       ? p.get("view")
       : "home";
     state.savedPaperId = p.get("paper_id") || "";
