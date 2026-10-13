@@ -17585,6 +17585,47 @@ window.mainDB = {
       "primaryStandardCourse": "확률과통계"
     },
     {
+      "file": "original/high/h1/2final/19_강남여고_2학기_기말_고1_기출.js",
+      "school": "강남여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2019,
+      "semester": "2",
+      "examType": "final",
+      "subject": "공통수학2",
+      "contentType": "기출",
+      "qCount": 25,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-02",
+          "rangeStartUnit": "항등식과 나머지정리",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H15-SA-12",
+          "rangeEndUnit": "도형의 이동",
+          "rangeEndUnitOrder": 12
+        },
+        {
+          "standardCourse": "수학(하)",
+          "courseCode": "H15-SB",
+          "rangeStartUnitKey": "H15-SB-01",
+          "rangeStartUnit": "집합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SB-07",
+          "rangeEndUnit": "순열",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": ""
+    },
+    {
       "file": "original/high/h1/1mid/19_강남여고_1학기_중간_고1_기출.js",
       "school": "강남여고",
       "topic": "",
