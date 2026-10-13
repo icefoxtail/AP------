@@ -1,5 +1,11 @@
 # Codex handoff helper
 
+## 2026-10-12 — Optional compatibility path, not the production lane
+
+2026-10-13 production rule: no new item/exam/run HOLD is issued. A review defect is an owner/qid/next-action repair or approved ALIVE replacement assignment, followed by affected review. Old helper HOLD records are historical inputs, not permission to return or stop new production as HOLD. No helper edits or new status enum are required for this direct routing rule.
+
+The default Codex original-exam lane is direct JS/asset review under `docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Fast_Lane_CURRENT_v1.md`. The helper workflow below is retained for existing consumers and historical jobs. Assignment receipts, stage-kit sealing, dispatcher acceptance and helper schema conversions are not required to start, hand off or merge a fast-lane exam. Do not repair these tools during production. Preserve independent student-only freezes and actual review evidence directly; report machine failures honestly. A helper failure does not invalidate an unchanged valid review or authorize new reviews.
+
 `archive-codex-handoff.mjs` composes the current Codex stage validator, stage kit, student bundle adapter, and dispatcher. It adds bounded assignment/receipt checks and immutable process evidence. It does not make mathematical, Meta, visual, source, or presentation judgments; it does not publish or alter exam/runtime code.
 
 ## Assignment inputs
