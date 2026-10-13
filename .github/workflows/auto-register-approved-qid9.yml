@@ -9,6 +9,10 @@ on:
       - 'alive/06_EXECUTION/H1_SCHOOL_EXPANSION/**/GPT_QID9_*_USER_DIRECTED_APPROVAL_*.json'
       - 'archive/analysis/palma-mock-builder-20261010/**'
       - 'archive/assets/generated-lite/ALITE-PALMA25-2MID-Q*-*.svg'
+      - 'alive/06_EXECUTION/H1_SCHOOL_EXPANSION/**/GPT_QID9_Q*_CREATE_DRAFT.json'
+      - 'archive/data/generated-source-import-roots-v1.json'
+      - 'archive/tools/generated-meta/compile-qid9-main-source.mjs'
+      - 'tools/check-qid9-main-source-browser.cjs'
       - 'archive/generated/lite/v1/**/shards/**/*.js'
       - 'archive/generated/lite/v1/**/metadata/**/*.json'
       - 'archive/tools/generated-meta/auto-register-approved-qid9.mjs'
@@ -43,6 +47,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Materialize configured QID9 source and visual assets
+        run: |
+          node archive/tools/generated-meta/compile-qid9-main-source.mjs --write
+          node archive/tools/generated-meta/compile-qid9-main-source.mjs --check
       - name: Materialize approved QID9 items from source packages and receipts
         run: node archive/tools/generated-meta/auto-register-approved-qid9.mjs --write
       - name: Check approved UID completeness and source projection parity
@@ -51,6 +59,8 @@ jobs:
         run: |
           node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --write
           node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --check
+      - name: Verify configured QID9 Consumer and visual parity
+        run: node archive/tools/generated-meta/verify-qid9-main-source-projection.mjs
       - name: Validate scoped approval Meta and source availability contracts
         run: >-
           node --test
@@ -61,3 +71,14 @@ jobs:
           tests/archive2-generated-bank-registration.test.js
           tests/archive2-generated-mock-selection.test.cjs
           tests/problem-bank-meta.test.cjs
+
+      - uses: browser-actions/setup-chrome@v1
+        id: qid9_chrome
+        with:
+          chrome-version: stable
+      - name: Verify both configured QID9 schools in actual Chrome
+        env:
+          CHROME_BIN: ${{ steps.qid9_chrome.outputs.chrome-path }}
+        run: |
+          node tools/check-qid9-main-source-browser.cjs
+          QID9_SOURCE_ROOT_INDEX=1 QID9_SAMPLE_QID=17 node tools/check-qid9-main-source-browser.cjs

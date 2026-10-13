@@ -1,0 +1,1298 @@
+{
+  "schemaVersion": "ALIVE_QID9_AUTHOR_DRAFT_v1",
+  "source": {
+    "path": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+    "examTitle": "25_제일고_2학기_기말_고1_기출",
+    "qid": 4,
+    "sourceUid": "qid_v1_99c21975638c202e7427a20b95557efdd29be831fa8cc30fcc0ee066cf038513",
+    "gitBlobSha1": "252c1cc9a687cadd961183b56ea10d21bf1976b4",
+    "originalContent": "명제 “$x+y\\lt 6$이면 $x\\lt 4$ 또는 $y\\lt k+3$이다.”가 참이 되도록 하는 실수 $k$의 최솟값은?",
+    "preservedReadOnly": true
+  },
+  "authority": {
+    "startMain": "816c5602976d858b9705a44483992da6c95e4a11",
+    "sourceMetaFoundation": "archive/data/meta-foundation/runtime/sets-propositions-v1.json",
+    "rpmCrosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "sourceL3SemanticFrozen": "명제가 참이 되기 위한 조건",
+    "exactRpmId": "EVIDENCE_DEBT"
+  },
+  "summary": {
+    "authorDraftItems": 9,
+    "wrongRoutesRecorded": 36,
+    "answerDistribution": {
+      "①": 0,
+      "②": 0,
+      "③": 8,
+      "④": 0,
+      "⑤": 1
+    },
+    "explicitMetaDebtUids": 0,
+    "externalQualityReview": "GPT_OPEN_BOOK_REVIEW_PASS_9_OF_9",
+    "studentRelease": "NOT_AUTHORIZED",
+    "status": "AUTHOR_DRAFT_ONLY",
+    "nextQid": 5,
+    "distractorRouteRecheck": "36/36 final explicit number/choice mapping checked on final candidate",
+    "authorSelfRecheck": "9_OF_9_COMPLETE_TARGETED_REPAIR_20261012",
+    "wrongRoutesRechecked": 36,
+    "contentPinpointRepair": [
+      "B1 grammar (previous commit retained)",
+      "C2 universal quantifier clarified",
+      "C3 question grammar clarified"
+    ],
+    "reviewRouteRepairs": [
+      "B1 exact arithmetic paths",
+      "B2 actual wrong computations",
+      "C2 boundary route",
+      "C3 option ① = 15 exact omission"
+    ],
+    "selfRecheckStatus": "SELF_RECHECK_COMPLETE",
+    "historicalMetaDebtBeforeRepair": 9,
+    "svgDisposition": "NO_SVG_VISUAL_EXEMPT_9_9",
+    "openBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q01_Q05_OPENBOOK_REVIEW_20261013.json"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-JEIL25-2FINAL-Q04-A1",
+      "sourceQid": 4,
+      "slot": "A1",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [],
+      "wide": false,
+      "content": "모든 실수 $x,y$에 대하여 명제 “$x+y\\lt8$이면 $x\\lt3$ 또는 $y\\lt k+1$이다”가 참이 되도록 하는 실수 $k$의 최솟값은?",
+      "choices": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "answer": "③",
+      "solution": "결론이 거짓인 경우를 먼저 생각하여 원래 명제의 성립 조건을 구한다.\n$x\\ge3$, $y\\ge k+1$이면 $x+y\\ge k+4$이다. 따라서 주어진 명제가 항상 참일 필요충분조건은 $k+4\\ge8$, 즉 $k\\ge4$이다. $k<4$이면 $(x,y)=(3,k+1)$이 반례다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourcePrimaryL3": "명제가 참이 되기 위한 조건",
+        "primaryRPM_L3": "명제와 조건",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "RPM_PARENT_ACTIVE_GENERATED_L4_REUSE",
+        "metaFoundationL3": "명제가 참이 되기 위한 조건",
+        "metaFoundationL4": "역·대우의 경계조건과 매개변수",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_BOUND_PARAMETER",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 2,
+        "experienceAxis": "대우로 최솟값을 구성",
+        "metadataDebt": [],
+        "primaryRPM_L3Frozen": true,
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "sourcePrimaryL3Semantic": "명제가 참이 되기 위한 조건",
+        "rpmReferenceRole": "PARENT_BROAD_NOT_EXACT_SOURCE_L3",
+        "generatedExtL4Id": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+        "effectiveL4Id": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+        "effectiveL4Authority": "GENERATED_ACTIVE_EXISTING_REUSED",
+        "primaryL3Id": "H1-RPM-244",
+        "primaryL3Authority": "RPM_PARENT_WITH_SOURCE_SEMANTIC",
+        "primaryL3DecisiveSemantic": "명제가 참이 되기 위한 조건",
+        "rpmL4ReferenceId": "H1-RPM-244",
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED",
+        "metaRegistryAuthority": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_GENERATED_META_REGISTRY_v1.json",
+        "canonicalPtTplStatus": "ACTIVE_CANONICAL_BOTH",
+        "conditionApplicabilityStatus": "APPLIED",
+        "crossConceptApplicabilityStatus": "NOT_APPLICABLE",
+        "previousMetadataDebtResolved": {
+          "priorFields": [
+            "Primary RPM L3 exact ID"
+          ],
+          "resolution": "EXISTING_GENERATED_L4_REUSE",
+          "sourceStage": "CREATE_AUTHOR_META_REPAIR"
+        }
+      },
+      "review": {
+        "reverseStem": "KEEP: 대우로 반례 가능성을 검사하는 명제가 발문에 명시됨",
+        "mathSelfCheckEvidence": "$x\\ge3$, $y\\ge k+1$이면 $x+y\\ge k+4$이다. 따라서 주어진 명제가 항상 참일 필요충분조건은 $k+4\\ge8$, 즉 $k\\ge4$이다. $k<4$이면 $(x,y)=(3,k+1)$이 반례다.",
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 2,
+            "reason": "$k=2$을 대입하면 $x=3,\\ y=k+1$에서 원 명제의 전제는 참이고 결론은 거짓이다. 따라서 이 값은 조건을 충족하지 않는다."
+          },
+          {
+            "choice": "②",
+            "offeredValue": 3,
+            "reason": "$k=3$을 대입하면 $x=3,\\ y=k+1$에서 원 명제의 전제는 참이고 결론은 거짓이다. 따라서 이 값은 조건을 충족하지 않는다."
+          },
+          {
+            "choice": "④",
+            "offeredValue": 5,
+            "reason": "$k=5$도 명제를 참으로 만들지만 더 작은 $k=4$가 가능하므로 최솟값이 아니다."
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 6,
+            "reason": "$k=6$도 명제를 참으로 만들지만 더 작은 $k=4$가 가능하므로 최솟값이 아니다."
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "조건이 선형부등식으로 완결되며 그림에서 수치를 읽지 않음"
+        },
+        "solutionVisual": {
+          "status": "EXEMPT",
+          "reason": "두 변수의 하계와 명제 참 조건을 식으로 추적하는 것이 결정적 풀이이며 공간기하 자료 없음"
+        },
+        "authorSelfCheck": "SELF_RECHECK_COMPLETE_20261012",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "distractorPathStatus": "36_CHOICE_ROUTES_9_SLOTS_AUTHOR_RECHECKED",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "role": "AUTHOR_NOT_INDEPENDENT",
+          "independentGptOpenBook": "NOT_RUN",
+          "studentEngine": "NOT_RUN",
+          "sourcePrimaryL3": "명제가 참이 되기 위한 조건",
+          "correctAnswer": "③",
+          "wrongRoutesVerified": 4,
+          "problemVisual": "VISUAL_EXEMPT",
+          "solutionVisual": "VISUAL_EXEMPT",
+          "sourceMetaKey": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED",
+          "finalAlgebraCondition": "k≥4",
+          "calculatedNumericAnswer": 4,
+          "allFourWrongValuesRechecked": true,
+          "correctChoiceUnique": true,
+          "finalStudentSourceChecked": true,
+          "actualSvgBrowser": "NOT_APPLICABLE_NO_SVG",
+          "archiveEngine": "NOT_RUN",
+          "externalQualityReview": "NOT_RUN"
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q01_Q05_OPENBOOK_REVIEW_20261013.json"
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-JEIL25-2FINAL-Q04-A2",
+      "sourceQid": 4,
+      "slot": "A2",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [],
+      "wide": false,
+      "content": "모든 실수 $x,y$에 대하여 명제 “$x+y\\lt5$이면 $x\\lt2$ 또는 $y\\lt k+4$이다”가 참이 되도록 하는 실수 $k$의 최솟값은?",
+      "choices": [
+        "$-3$",
+        "$-2$",
+        "$-1$",
+        "$0$",
+        "$1$"
+      ],
+      "answer": "③",
+      "solution": "결론이 거짓인 경우를 먼저 생각하여 원래 명제의 성립 조건을 구한다.\n결론이 거짓이면 $x\\ge2$, $y\\ge k+4$이므로 $x+y\\ge k+6$이다. 따라서 $k+6\\ge5$, 즉 $k\\ge-1$이어야 한다. $k<-1$에서는 $(2,k+4)$가 반례가 된다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourcePrimaryL3": "명제가 참이 되기 위한 조건",
+        "primaryRPM_L3": "명제와 조건",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "RPM_PARENT_ACTIVE_GENERATED_L4_REUSE",
+        "metaFoundationL3": "명제가 참이 되기 위한 조건",
+        "metaFoundationL4": "역·대우의 경계조건과 매개변수",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_BOUND_PARAMETER",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 2,
+        "experienceAxis": "음수 매개변수의 최솟값",
+        "metadataDebt": [],
+        "primaryRPM_L3Frozen": true,
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "sourcePrimaryL3Semantic": "명제가 참이 되기 위한 조건",
+        "rpmReferenceRole": "PARENT_BROAD_NOT_EXACT_SOURCE_L3",
+        "generatedExtL4Id": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+        "effectiveL4Id": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+        "effectiveL4Authority": "GENERATED_ACTIVE_EXISTING_REUSED",
+        "primaryL3Id": "H1-RPM-244",
+        "primaryL3Authority": "RPM_PARENT_WITH_SOURCE_SEMANTIC",
+        "primaryL3DecisiveSemantic": "명제가 참이 되기 위한 조건",
+        "rpmL4ReferenceId": "H1-RPM-244",
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED",
+        "metaRegistryAuthority": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_GENERATED_META_REGISTRY_v1.json",
+        "canonicalPtTplStatus": "ACTIVE_CANONICAL_BOTH",
+        "conditionApplicabilityStatus": "APPLIED",
+        "crossConceptApplicabilityStatus": "NOT_APPLICABLE",
+        "previousMetadataDebtResolved": {
+          "priorFields": [
+            "Primary RPM L3 exact ID"
+          ],
+          "resolution": "EXISTING_GENERATED_L4_REUSE",
+          "sourceStage": "CREATE_AUTHOR_META_REPAIR"
+        }
+      },
+      "review": {
+        "reverseStem": "KEEP: 대우로 반례 가능성을 검사하는 명제가 발문에 명시됨",
+        "mathSelfCheckEvidence": "결론이 거짓이면 $x\\ge2$, $y\\ge k+4$이므로 $x+y\\ge k+6$이다. 따라서 $k+6\\ge5$, 즉 $k\\ge-1$이어야 한다. $k<-1$에서는 $(2,k+4)$가 반례가 된다.",
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": -3,
+            "reason": "$k=-3$을 대입하면 $x=2,\\ y=k+4$에서 원 명제의 전제는 참이고 결론은 거짓이다. 따라서 이 값은 조건을 충족하지 않는다."
+          },
+          {
+            "choice": "②",
+            "offeredValue": -2,
+            "reason": "$k=-2$을 대입하면 $x=2,\\ y=k+4$에서 원 명제의 전제는 참이고 결론은 거짓이다. 따라서 이 값은 조건을 충족하지 않는다."
+          },
+          {
+            "choice": "④",
+            "offeredValue": 0,
+            "reason": "$k=0$도 명제를 참으로 만들지만 더 작은 $k=-1$가 가능하므로 최솟값이 아니다."
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 1,
+            "reason": "$k=1$도 명제를 참으로 만들지만 더 작은 $k=-1$가 가능하므로 최솟값이 아니다."
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "조건이 선형부등식으로 완결되며 그림에서 수치를 읽지 않음"
+        },
+        "solutionVisual": {
+          "status": "EXEMPT",
+          "reason": "두 변수의 하계와 명제 참 조건을 식으로 추적하는 것이 결정적 풀이이며 공간기하 자료 없음"
+        },
+        "authorSelfCheck": "SELF_RECHECK_COMPLETE_20261012",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "distractorPathStatus": "36_CHOICE_ROUTES_9_SLOTS_AUTHOR_RECHECKED",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "role": "AUTHOR_NOT_INDEPENDENT",
+          "independentGptOpenBook": "NOT_RUN",
+          "studentEngine": "NOT_RUN",
+          "sourcePrimaryL3": "명제가 참이 되기 위한 조건",
+          "correctAnswer": "③",
+          "wrongRoutesVerified": 4,
+          "problemVisual": "VISUAL_EXEMPT",
+          "solutionVisual": "VISUAL_EXEMPT",
+          "sourceMetaKey": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED",
+          "finalAlgebraCondition": "k≥-1",
+          "calculatedNumericAnswer": -1,
+          "allFourWrongValuesRechecked": true,
+          "correctChoiceUnique": true,
+          "finalStudentSourceChecked": true,
+          "actualSvgBrowser": "NOT_APPLICABLE_NO_SVG",
+          "archiveEngine": "NOT_RUN",
+          "externalQualityReview": "NOT_RUN"
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q01_Q05_OPENBOOK_REVIEW_20261013.json"
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-JEIL25-2FINAL-Q04-A3",
+      "sourceQid": 4,
+      "slot": "A3",
+      "purpose": "A",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [],
+      "wide": false,
+      "content": "모든 실수 $x,y$에 대하여 명제 “$2x+y\\lt10$이면 $x\\lt3$ 또는 $y\\lt k+2$이다”가 참이 되도록 하는 실수 $k$의 최솟값은?",
+      "choices": [
+        "$0$",
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$"
+      ],
+      "answer": "③",
+      "solution": "결론이 거짓인 경우를 먼저 생각하여 원래 명제의 성립 조건을 구한다.\n대우를 이용하면 $x\\ge3$, $y\\ge k+2$인 경우 $2x+y\\ge6+k+2=k+8$이다. 따라서 항상 $2x+y\\ge10$이려면 $k\\ge2$가 필요충분하다. $k<2$이면 $x=3$, $y=k+2$가 반례다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourcePrimaryL3": "명제가 참이 되기 위한 조건",
+        "primaryRPM_L3": "명제와 조건",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "RPM_PARENT_ACTIVE_GENERATED_L4_REUSE",
+        "metaFoundationL3": "명제가 참이 되기 위한 조건",
+        "metaFoundationL4": "역·대우의 경계조건과 매개변수",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_BOUND_PARAMETER",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 2,
+        "experienceAxis": "계수가 있는 선형식에서 대우의 최솟값",
+        "metadataDebt": [],
+        "primaryRPM_L3Frozen": true,
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "sourcePrimaryL3Semantic": "명제가 참이 되기 위한 조건",
+        "rpmReferenceRole": "PARENT_BROAD_NOT_EXACT_SOURCE_L3",
+        "generatedExtL4Id": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+        "effectiveL4Id": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+        "effectiveL4Authority": "GENERATED_ACTIVE_EXISTING_REUSED",
+        "primaryL3Id": "H1-RPM-244",
+        "primaryL3Authority": "RPM_PARENT_WITH_SOURCE_SEMANTIC",
+        "primaryL3DecisiveSemantic": "명제가 참이 되기 위한 조건",
+        "rpmL4ReferenceId": "H1-RPM-244",
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED",
+        "metaRegistryAuthority": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_GENERATED_META_REGISTRY_v1.json",
+        "canonicalPtTplStatus": "ACTIVE_CANONICAL_BOTH",
+        "conditionApplicabilityStatus": "APPLIED",
+        "crossConceptApplicabilityStatus": "NOT_APPLICABLE",
+        "previousMetadataDebtResolved": {
+          "priorFields": [
+            "Primary RPM L3 exact ID"
+          ],
+          "resolution": "EXISTING_GENERATED_L4_REUSE",
+          "sourceStage": "CREATE_AUTHOR_META_REPAIR"
+        }
+      },
+      "review": {
+        "reverseStem": "KEEP: 대우로 반례 가능성을 검사하는 명제가 발문에 명시됨",
+        "mathSelfCheckEvidence": "대우를 이용하면 $x\\ge3$, $y\\ge k+2$인 경우 $2x+y\\ge6+k+2=k+8$이다. 따라서 항상 $2x+y\\ge10$이려면 $k\\ge2$가 필요충분하다. $k<2$이면 $x=3$, $y=k+2$가 반례다.",
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 0,
+            "reason": "$k=0$을 대입하면 $x=3,\\ y=k+2$에서 원 명제의 전제는 참이고 결론은 거짓이다. 따라서 이 값은 조건을 충족하지 않는다."
+          },
+          {
+            "choice": "②",
+            "offeredValue": 1,
+            "reason": "$k=1$을 대입하면 $x=3,\\ y=k+2$에서 원 명제의 전제는 참이고 결론은 거짓이다. 따라서 이 값은 조건을 충족하지 않는다."
+          },
+          {
+            "choice": "④",
+            "offeredValue": 3,
+            "reason": "$k=3$도 명제를 참으로 만들지만 더 작은 $k=2$가 가능하므로 최솟값이 아니다."
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 4,
+            "reason": "$k=4$도 명제를 참으로 만들지만 더 작은 $k=2$가 가능하므로 최솟값이 아니다."
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "조건이 선형부등식으로 완결되며 그림에서 수치를 읽지 않음"
+        },
+        "solutionVisual": {
+          "status": "EXEMPT",
+          "reason": "두 변수의 하계와 명제 참 조건을 식으로 추적하는 것이 결정적 풀이이며 공간기하 자료 없음"
+        },
+        "authorSelfCheck": "SELF_RECHECK_COMPLETE_20261012",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "distractorPathStatus": "36_CHOICE_ROUTES_9_SLOTS_AUTHOR_RECHECKED",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "role": "AUTHOR_NOT_INDEPENDENT",
+          "independentGptOpenBook": "NOT_RUN",
+          "studentEngine": "NOT_RUN",
+          "sourcePrimaryL3": "명제가 참이 되기 위한 조건",
+          "correctAnswer": "③",
+          "wrongRoutesVerified": 4,
+          "problemVisual": "VISUAL_EXEMPT",
+          "solutionVisual": "VISUAL_EXEMPT",
+          "sourceMetaKey": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED",
+          "finalAlgebraCondition": "k≥2",
+          "calculatedNumericAnswer": 2,
+          "allFourWrongValuesRechecked": true,
+          "correctChoiceUnique": true,
+          "finalStudentSourceChecked": true,
+          "actualSvgBrowser": "NOT_APPLICABLE_NO_SVG",
+          "archiveEngine": "NOT_RUN",
+          "externalQualityReview": "NOT_RUN"
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q01_Q05_OPENBOOK_REVIEW_20261013.json"
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-JEIL25-2FINAL-Q04-B1",
+      "sourceQid": 4,
+      "slot": "B1",
+      "purpose": "B",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [],
+      "wide": false,
+      "content": "모든 실수 $x,y$에 대하여 명제 “$x+y\\lt9$이면 $x\\lt4$ 또는 $y\\lt k+2$이다”가 참이 되도록 하는 $-2\\le k\\le6$인 정수 $k$의 개수는?",
+      "choices": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "answer": "③",
+      "solution": "결론이 거짓인 경우를 먼저 생각하여 원래 명제의 성립 조건을 구한다.\n결론이 거짓인 $x\\ge4$, $y\\ge k+2$에서 $x+y\\ge k+6$이다. 따라서 명제가 항상 참이려면 $k+6\\ge9$, 즉 $k\\ge3$이다. 주어진 정수 범위와 교집합을 구하면 $k=3,4,5,6$ 네 개이다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourcePrimaryL3": "명제가 참이 되기 위한 조건",
+        "primaryRPM_L3": "명제와 조건",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "RPM_PARENT_ACTIVE_GENERATED_L4_REUSE",
+        "metaFoundationL3": "명제가 참이 되기 위한 조건",
+        "metaFoundationL4": "역·대우의 경계조건과 매개변수",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_BOUND_PARAMETER",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "experienceAxis": "실수 경계값과 정수 범위를 결합",
+        "metadataDebt": [],
+        "primaryRPM_L3Frozen": true,
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "sourcePrimaryL3Semantic": "명제가 참이 되기 위한 조건",
+        "rpmReferenceRole": "PARENT_BROAD_NOT_EXACT_SOURCE_L3",
+        "generatedExtL4Id": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+        "effectiveL4Id": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+        "effectiveL4Authority": "GENERATED_ACTIVE_EXISTING_REUSED",
+        "primaryL3Id": "H1-RPM-244",
+        "primaryL3Authority": "RPM_PARENT_WITH_SOURCE_SEMANTIC",
+        "primaryL3DecisiveSemantic": "명제가 참이 되기 위한 조건",
+        "rpmL4ReferenceId": "H1-RPM-244",
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED",
+        "metaRegistryAuthority": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_GENERATED_META_REGISTRY_v1.json",
+        "canonicalPtTplStatus": "ACTIVE_CANONICAL_BOTH",
+        "conditionApplicabilityStatus": "APPLIED",
+        "crossConceptApplicabilityStatus": "NOT_APPLICABLE",
+        "previousMetadataDebtResolved": {
+          "priorFields": [
+            "Primary RPM L3 exact ID"
+          ],
+          "resolution": "EXISTING_GENERATED_L4_REUSE",
+          "sourceStage": "CREATE_AUTHOR_META_REPAIR"
+        }
+      },
+      "review": {
+        "reverseStem": "KEEP: 대우로 반례 가능성을 검사하는 명제가 발문에 명시됨",
+        "mathSelfCheckEvidence": "결론이 거짓인 $x\\ge4$, $y\\ge k+2$에서 $x+y\\ge k+6$이다. 따라서 명제가 항상 참이려면 $k+6\\ge9$, 즉 $k\\ge3$이다. 주어진 정수 범위와 교집합을 구하면 $k=3,4,5,6$ 네 개이다.",
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 2,
+            "reason": "부정한 결론의 실제 $x\\ge4$를 $x\\ge2$로 오인하면 $x+y\\ge k+4$, 곧 $k\\ge5$라 계산하여 $5,6$만 세어 $2$를 얻는다."
+          },
+          {
+            "choice": "②",
+            "offeredValue": 3,
+            "reason": "실제 $x\\ge4$를 $x\\ge3$으로 오인하면 $x+y\\ge k+5$, 곧 $k\\ge4$라 계산하여 $4,5,6$ 세 개를 얻는다."
+          },
+          {
+            "choice": "④",
+            "offeredValue": 5,
+            "reason": "실제 $x\\ge4$를 $x\\ge5$로 오인하면 $x+y\\ge k+7$, 곧 $k\\ge2$라 계산하여 $2,3,4,5,6$ 다섯 개를 얻는다."
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 6,
+            "reason": "실제 $x\\ge4$를 $x\\ge6$으로 오인하면 $x+y\\ge k+8$, 곧 $k\\ge1$이라 계산하여 $1,2,3,4,5,6$ 여섯 개를 얻는다."
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "조건이 선형부등식으로 완결되며 그림에서 수치를 읽지 않음"
+        },
+        "solutionVisual": {
+          "status": "EXEMPT",
+          "reason": "두 변수의 하계와 명제 참 조건을 식으로 추적하는 것이 결정적 풀이이며 공간기하 자료 없음"
+        },
+        "authorSelfCheck": "SELF_RECHECK_COMPLETE_20261012",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "distractorPathStatus": "36_CHOICE_ROUTES_9_SLOTS_AUTHOR_RECHECKED",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "role": "AUTHOR_NOT_INDEPENDENT",
+          "independentGptOpenBook": "NOT_RUN",
+          "studentEngine": "NOT_RUN",
+          "sourcePrimaryL3": "명제가 참이 되기 위한 조건",
+          "correctAnswer": "③",
+          "wrongRoutesVerified": 4,
+          "problemVisual": "VISUAL_EXEMPT",
+          "solutionVisual": "VISUAL_EXEMPT",
+          "sourceMetaKey": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED",
+          "finalAlgebraCondition": "k=3,4,5,6",
+          "calculatedNumericAnswer": 4,
+          "allFourWrongValuesRechecked": true,
+          "correctChoiceUnique": true,
+          "finalStudentSourceChecked": true,
+          "actualSvgBrowser": "NOT_APPLICABLE_NO_SVG",
+          "archiveEngine": "NOT_RUN",
+          "externalQualityReview": "NOT_RUN"
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q01_Q05_OPENBOOK_REVIEW_20261013.json"
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-JEIL25-2FINAL-Q04-B2",
+      "sourceQid": 4,
+      "slot": "B2",
+      "purpose": "B",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [],
+      "wide": false,
+      "content": "다음 두 명제를 모든 실수 $x,y$에 대하여 생각하자.\n(가) “$x+y\\lt7$이면 $x\\lt3$ 또는 $y\\lt k+1$이다”\n(나) “$x+y\\lt10$이면 $x\\lt5$ 또는 $y\\lt k+3$이다”\n두 명제가 모두 참이 되도록 하는 실수 $k$의 최솟값은?",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "answer": "③",
+      "solution": "각 조건에서 원래 명제가 참일 조건을 따로 구한다.\n첫째 명제는 $x\\ge3$, $y\\ge k+1$일 때 $x+y\\ge k+4$이므로 $k\\ge3$과 동치이다. 둘째 명제는 $x\\ge5$, $y\\ge k+3$에서 $x+y\\ge k+8$이므로 $k\\ge2$와 동치이다. 두 명제가 모두 참이려면 $k\\ge3$이다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourcePrimaryL3": "명제가 참이 되기 위한 조건",
+        "primaryRPM_L3": "명제와 조건",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "RPM_PARENT_ACTIVE_GENERATED_L4_REUSE",
+        "metaFoundationL3": "명제가 참이 되기 위한 조건",
+        "metaFoundationL4": "역·대우의 경계조건과 매개변수",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_BOUND_PARAMETER",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "experienceAxis": "두 명제의 참 조건의 교집합",
+        "metadataDebt": [],
+        "primaryRPM_L3Frozen": true,
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "sourcePrimaryL3Semantic": "명제가 참이 되기 위한 조건",
+        "rpmReferenceRole": "PARENT_BROAD_NOT_EXACT_SOURCE_L3",
+        "generatedExtL4Id": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+        "effectiveL4Id": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+        "effectiveL4Authority": "GENERATED_ACTIVE_EXISTING_REUSED",
+        "primaryL3Id": "H1-RPM-244",
+        "primaryL3Authority": "RPM_PARENT_WITH_SOURCE_SEMANTIC",
+        "primaryL3DecisiveSemantic": "명제가 참이 되기 위한 조건",
+        "rpmL4ReferenceId": "H1-RPM-244",
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED",
+        "metaRegistryAuthority": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_GENERATED_META_REGISTRY_v1.json",
+        "canonicalPtTplStatus": "ACTIVE_CANONICAL_BOTH",
+        "conditionApplicabilityStatus": "APPLIED",
+        "crossConceptApplicabilityStatus": "NOT_APPLICABLE",
+        "previousMetadataDebtResolved": {
+          "priorFields": [
+            "Primary RPM L3 exact ID"
+          ],
+          "resolution": "EXISTING_GENERATED_L4_REUSE",
+          "sourceStage": "CREATE_AUTHOR_META_REPAIR"
+        }
+      },
+      "review": {
+        "reverseStem": "KEEP: 대우로 반례 가능성을 검사하는 명제가 발문에 명시됨",
+        "mathSelfCheckEvidence": "첫째 명제는 $x\\ge3$, $y\\ge k+1$일 때 $x+y\\ge k+4$이므로 $k\\ge3$과 동치이다. 둘째 명제는 $x\\ge5$, $y\\ge k+3$에서 $x+y\\ge k+8$이므로 $k\\ge2$와 동치이다. 두 명제가 모두 참이려면 $k\\ge3$이다.",
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 1,
+            "reason": "(나)의 부정 $y\\ge k+3$을 $y\\ge k+4$로 잘못 바꾸면 $x+y\\ge k+9$에서 $k\\ge1$을 얻고, (가)의 조건을 누락하여 $1$로 답한다."
+          },
+          {
+            "choice": "②",
+            "offeredValue": 2,
+            "reason": "둘째 명제의 $k\\ge2$만 채택하여 $2$를 고르는 오답이다. $k=2$이면 (가)의 $(x,y)=(3,3)$은 $x+y=6<7$이지만 결론은 거짓이다."
+          },
+          {
+            "choice": "④",
+            "offeredValue": 4,
+            "reason": "(가)의 결론 부정 $x\\ge3$을 $x\\ge2$로 잘못 바꾸면 $x+y\\ge k+3$, 즉 $k\\ge4$라 계산한다. (나)의 $k\\ge2$와 교집합을 구해 $4$를 고른다."
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 5,
+            "reason": "두 경계값 3과 2를 합산하여 5를 택한 오답이다. 두 부등식의 공통해는 합이 아니라 $k\\ge3$이다."
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "조건이 선형부등식으로 완결되며 그림에서 수치를 읽지 않음"
+        },
+        "solutionVisual": {
+          "status": "EXEMPT",
+          "reason": "두 변수의 하계와 명제 참 조건을 식으로 추적하는 것이 결정적 풀이이며 공간기하 자료 없음"
+        },
+        "authorSelfCheck": "SELF_RECHECK_COMPLETE_20261012",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "distractorPathStatus": "36_CHOICE_ROUTES_9_SLOTS_AUTHOR_RECHECKED",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "role": "AUTHOR_NOT_INDEPENDENT",
+          "independentGptOpenBook": "NOT_RUN",
+          "studentEngine": "NOT_RUN",
+          "sourcePrimaryL3": "명제가 참이 되기 위한 조건",
+          "correctAnswer": "③",
+          "wrongRoutesVerified": 4,
+          "problemVisual": "VISUAL_EXEMPT",
+          "solutionVisual": "VISUAL_EXEMPT",
+          "sourceMetaKey": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED",
+          "finalAlgebraCondition": "k≥3",
+          "calculatedNumericAnswer": 3,
+          "allFourWrongValuesRechecked": true,
+          "correctChoiceUnique": true,
+          "finalStudentSourceChecked": true,
+          "actualSvgBrowser": "NOT_APPLICABLE_NO_SVG",
+          "archiveEngine": "NOT_RUN",
+          "externalQualityReview": "NOT_RUN"
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q01_Q05_OPENBOOK_REVIEW_20261013.json"
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-JEIL25-2FINAL-Q04-B3",
+      "sourceQid": 4,
+      "slot": "B3",
+      "purpose": "B",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [],
+      "wide": false,
+      "content": "모든 실수 $x,y$에 대하여 명제 “$x+y\\le8$이면 $x\\lt3$ 또는 $y\\lt k+2$이다”가 참이 되도록 하는 정수 $k$의 최솟값은?",
+      "choices": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "answer": "③",
+      "solution": "결론이 거짓인 경우를 먼저 생각하여 원래 명제의 성립 조건을 구한다.\n결론이 거짓이 되려면 $x\\ge3$, $y\\ge k+2$이다. 이때 $x+y\\ge k+5$이다. 원래 전제가 $x+y\\le8$이므로 반례를 없애려면 $k+5>8$, 즉 $k>3$이어야 한다. $k=3$에서는 $(3,5)$가 실제 반례가 된다. 따라서 정수 $k$의 최솟값은 $4$이다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourcePrimaryL3": "명제가 참이 되기 위한 조건",
+        "primaryRPM_L3": "명제와 조건",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "RPM_PARENT_ACTIVE_GENERATED_L4_REUSE",
+        "metaFoundationL3": "명제가 참이 되기 위한 조건",
+        "metaFoundationL4": "역·대우의 경계조건과 매개변수",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_BOUND_PARAMETER",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 3,
+        "experienceAxis": "등호 포함 전제에서 열린 경계, 정수 최솟값",
+        "metadataDebt": [],
+        "primaryRPM_L3Frozen": true,
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "sourcePrimaryL3Semantic": "명제가 참이 되기 위한 조건",
+        "rpmReferenceRole": "PARENT_BROAD_NOT_EXACT_SOURCE_L3",
+        "generatedExtL4Id": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+        "effectiveL4Id": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+        "effectiveL4Authority": "GENERATED_ACTIVE_EXISTING_REUSED",
+        "primaryL3Id": "H1-RPM-244",
+        "primaryL3Authority": "RPM_PARENT_WITH_SOURCE_SEMANTIC",
+        "primaryL3DecisiveSemantic": "명제가 참이 되기 위한 조건",
+        "rpmL4ReferenceId": "H1-RPM-244",
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED",
+        "metaRegistryAuthority": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_GENERATED_META_REGISTRY_v1.json",
+        "canonicalPtTplStatus": "ACTIVE_CANONICAL_BOTH",
+        "conditionApplicabilityStatus": "APPLIED",
+        "crossConceptApplicabilityStatus": "NOT_APPLICABLE",
+        "previousMetadataDebtResolved": {
+          "priorFields": [
+            "Primary RPM L3 exact ID"
+          ],
+          "resolution": "EXISTING_GENERATED_L4_REUSE",
+          "sourceStage": "CREATE_AUTHOR_META_REPAIR"
+        }
+      },
+      "review": {
+        "reverseStem": "KEEP: 대우로 반례 가능성을 검사하는 명제가 발문에 명시됨",
+        "mathSelfCheckEvidence": "결론이 거짓이 되려면 $x\\ge3$, $y\\ge k+2$이다. 이때 $x+y\\ge k+5$이다. 원래 전제가 $x+y\\le8$이므로 반례를 없애려면 $k+5>8$, 즉 $k>3$이어야 한다. $k=3$에서는 $(3,5)$가 실제 반례가 된다. 따라서 정수 $k$의 최솟값은 $4$이다.",
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 2,
+            "reason": "$k=2$을 대입하면 $x=3,\\ y=k+2$에서 원 명제의 전제는 참이고 결론은 거짓이다. 따라서 이 값은 조건을 충족하지 않는다."
+          },
+          {
+            "choice": "②",
+            "offeredValue": 3,
+            "reason": "$k=3$을 대입하면 $x=3,\\ y=k+2$에서 원 명제의 전제는 참이고 결론은 거짓이다. 따라서 이 값은 조건을 충족하지 않는다."
+          },
+          {
+            "choice": "④",
+            "offeredValue": 5,
+            "reason": "$k=5$도 명제를 참으로 만들지만 더 작은 $k=4$가 가능하므로 최솟값이 아니다."
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 6,
+            "reason": "$k=6$도 명제를 참으로 만들지만 더 작은 $k=4$가 가능하므로 최솟값이 아니다."
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "조건이 선형부등식으로 완결되며 그림에서 수치를 읽지 않음"
+        },
+        "solutionVisual": {
+          "status": "EXEMPT",
+          "reason": "두 변수의 하계와 명제 참 조건을 식으로 추적하는 것이 결정적 풀이이며 공간기하 자료 없음"
+        },
+        "authorSelfCheck": "SELF_RECHECK_COMPLETE_20261012",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "distractorPathStatus": "36_CHOICE_ROUTES_9_SLOTS_AUTHOR_RECHECKED",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "role": "AUTHOR_NOT_INDEPENDENT",
+          "independentGptOpenBook": "NOT_RUN",
+          "studentEngine": "NOT_RUN",
+          "sourcePrimaryL3": "명제가 참이 되기 위한 조건",
+          "correctAnswer": "③",
+          "wrongRoutesVerified": 4,
+          "problemVisual": "VISUAL_EXEMPT",
+          "solutionVisual": "VISUAL_EXEMPT",
+          "sourceMetaKey": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED",
+          "finalAlgebraCondition": "k>3, integer",
+          "calculatedNumericAnswer": 4,
+          "allFourWrongValuesRechecked": true,
+          "correctChoiceUnique": true,
+          "finalStudentSourceChecked": true,
+          "actualSvgBrowser": "NOT_APPLICABLE_NO_SVG",
+          "archiveEngine": "NOT_RUN",
+          "externalQualityReview": "NOT_RUN"
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q01_Q05_OPENBOOK_REVIEW_20261013.json"
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-JEIL25-2FINAL-Q04-C1",
+      "sourceQid": 4,
+      "slot": "C1",
+      "purpose": "C",
+      "modeCandidate": "TYPE_BANK",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [],
+      "wide": false,
+      "content": "다음 두 명제를 모든 실수 $x,y$에 대하여 생각하자.\n(가) “$2x+3y\\lt18$이면 $x\\lt3$ 또는 $y\\lt k+1$이다”\n(나) “$x+y\\lt10$이면 $x\\lt4$ 또는 $y\\lt k+2$이다”\n두 명제가 모두 참이 되도록 하는 실수 $k$의 최솟값은?",
+      "choices": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "answer": "③",
+      "solution": "각 조건에서 원래 명제가 참일 조건을 따로 구한다.\n첫째 명제는 결론이 거짓인 $x\\ge3$, $y\\ge k+1$에서 $2x+3y\\ge6+3(k+1)=3k+9$이므로 $3k+9\\ge18$, 즉 $k\\ge3$이다. 둘째 명제는 $x\\ge4$, $y\\ge k+2$에서 $x+y\\ge k+6$이므로 $k\\ge4$이다. 두 조건을 동시에 만족하는 최솟값은 $4$이다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourcePrimaryL3": "명제가 참이 되기 위한 조건",
+        "primaryRPM_L3": "명제와 조건",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "RPM_PARENT_ACTIVE_GENERATED_L4_REUSE",
+        "metaFoundationL3": "명제가 참이 되기 위한 조건",
+        "metaFoundationL4": "역·대우의 경계조건과 매개변수",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_BOUND_PARAMETER",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "experienceAxis": "가중 선형식 조건 두 개의 교집합",
+        "metadataDebt": [],
+        "primaryRPM_L3Frozen": true,
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "sourcePrimaryL3Semantic": "명제가 참이 되기 위한 조건",
+        "rpmReferenceRole": "PARENT_BROAD_NOT_EXACT_SOURCE_L3",
+        "generatedExtL4Id": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+        "effectiveL4Id": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+        "effectiveL4Authority": "GENERATED_ACTIVE_EXISTING_REUSED",
+        "primaryL3Id": "H1-RPM-244",
+        "primaryL3Authority": "RPM_PARENT_WITH_SOURCE_SEMANTIC",
+        "primaryL3DecisiveSemantic": "명제가 참이 되기 위한 조건",
+        "rpmL4ReferenceId": "H1-RPM-244",
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED",
+        "metaRegistryAuthority": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_GENERATED_META_REGISTRY_v1.json",
+        "canonicalPtTplStatus": "ACTIVE_CANONICAL_BOTH",
+        "conditionApplicabilityStatus": "APPLIED",
+        "crossConceptApplicabilityStatus": "NOT_APPLICABLE",
+        "previousMetadataDebtResolved": {
+          "priorFields": [
+            "Primary RPM L3 exact ID"
+          ],
+          "resolution": "EXISTING_GENERATED_L4_REUSE",
+          "sourceStage": "CREATE_AUTHOR_META_REPAIR"
+        }
+      },
+      "review": {
+        "reverseStem": "KEEP: 대우로 반례 가능성을 검사하는 명제가 발문에 명시됨",
+        "mathSelfCheckEvidence": "첫째 명제는 결론이 거짓인 $x\\ge3$, $y\\ge k+1$에서 $2x+3y\\ge6+3(k+1)=3k+9$이므로 $3k+9\\ge18$, 즉 $k\\ge3$이다. 둘째 명제는 $x\\ge4$, $y\\ge k+2$에서 $x+y\\ge k+6$이므로 $k\\ge4$이다. 두 조건을 동시에 만족하는 최솟값은 $4$이다.",
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 2,
+            "reason": "$k=2$을 대입하면 $x=4,\\ y=k+2$에서 원 명제의 전제는 참이고 결론은 거짓이다. 따라서 이 값은 조건을 충족하지 않는다."
+          },
+          {
+            "choice": "②",
+            "offeredValue": 3,
+            "reason": "$k=3$을 대입하면 $x=4,\\ y=k+2$에서 원 명제의 전제는 참이고 결론은 거짓이다. 따라서 이 값은 조건을 충족하지 않는다."
+          },
+          {
+            "choice": "④",
+            "offeredValue": 5,
+            "reason": "$k=5$도 명제를 참으로 만들지만 더 작은 $k=4$가 가능하므로 최솟값이 아니다."
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 6,
+            "reason": "$k=6$도 명제를 참으로 만들지만 더 작은 $k=4$가 가능하므로 최솟값이 아니다."
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "조건이 선형부등식으로 완결되며 그림에서 수치를 읽지 않음"
+        },
+        "solutionVisual": {
+          "status": "EXEMPT",
+          "reason": "두 변수의 하계와 명제 참 조건을 식으로 추적하는 것이 결정적 풀이이며 공간기하 자료 없음"
+        },
+        "authorSelfCheck": "SELF_RECHECK_COMPLETE_20261012",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "distractorPathStatus": "36_CHOICE_ROUTES_9_SLOTS_AUTHOR_RECHECKED",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "role": "AUTHOR_NOT_INDEPENDENT",
+          "independentGptOpenBook": "NOT_RUN",
+          "studentEngine": "NOT_RUN",
+          "sourcePrimaryL3": "명제가 참이 되기 위한 조건",
+          "correctAnswer": "③",
+          "wrongRoutesVerified": 4,
+          "problemVisual": "VISUAL_EXEMPT",
+          "solutionVisual": "VISUAL_EXEMPT",
+          "sourceMetaKey": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED",
+          "finalAlgebraCondition": "k≥4",
+          "calculatedNumericAnswer": 4,
+          "allFourWrongValuesRechecked": true,
+          "correctChoiceUnique": true,
+          "finalStudentSourceChecked": true,
+          "actualSvgBrowser": "NOT_APPLICABLE_NO_SVG",
+          "archiveEngine": "NOT_RUN",
+          "externalQualityReview": "NOT_RUN"
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q01_Q05_OPENBOOK_REVIEW_20261013.json"
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-JEIL25-2FINAL-Q04-C2",
+      "sourceQid": 4,
+      "slot": "C2",
+      "purpose": "C",
+      "modeCandidate": "TYPE_BANK",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [],
+      "wide": false,
+      "content": "모든 실수 $x,y$에 대하여 다음 두 명제를 생각하자.\n(가) “$x+y\\lt8$이면 $x\\lt3$ 또는 $y\\lt k+2$이다”\n(나) “$x+y\\lt10$이면 $x\\lt3$ 또는 $y\\lt k+2$이다”\n첫째 명제는 참이고 둘째 명제는 거짓이 되도록 하는 모든 정수 $k$의 합은?",
+      "choices": [
+        "$3$",
+        "$5$",
+        "$7$",
+        "$9$",
+        "$11$"
+      ],
+      "answer": "③",
+      "solution": "각 조건에서 원래 명제가 참일 조건을 따로 구한다.\n첫째 명제가 항상 참이려면 결론이 거짓인 $x\\ge3$, $y\\ge k+2$에서 최소 합 $k+5$가 $8$ 이상이어야 하므로 $k\\ge3$이다. 둘째 명제가 거짓이라는 것은 $x+y\\lt10$이면서 $x\\ge3$, $y\\ge k+2$인 반례가 존재한다는 뜻이다. 이는 $k+5<10$, 즉 $k<5$일 때 가능하다. 따라서 정수 $k$는 $3,4$이고 합은 $7$이다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourcePrimaryL3": "명제가 참이 되기 위한 조건",
+        "primaryRPM_L3": "명제와 조건",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "RPM_PARENT_ACTIVE_GENERATED_L4_REUSE",
+        "metaFoundationL3": "명제가 참이 되기 위한 조건",
+        "metaFoundationL4": "역·대우의 경계조건과 매개변수",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_BOUND_PARAMETER",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "experienceAxis": "두 명제의 참·거짓 혼합 조건과 정수 합",
+        "metadataDebt": [],
+        "primaryRPM_L3Frozen": true,
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "sourcePrimaryL3Semantic": "명제가 참이 되기 위한 조건",
+        "rpmReferenceRole": "PARENT_BROAD_NOT_EXACT_SOURCE_L3",
+        "generatedExtL4Id": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+        "effectiveL4Id": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+        "effectiveL4Authority": "GENERATED_ACTIVE_EXISTING_REUSED",
+        "primaryL3Id": "H1-RPM-244",
+        "primaryL3Authority": "RPM_PARENT_WITH_SOURCE_SEMANTIC",
+        "primaryL3DecisiveSemantic": "명제가 참이 되기 위한 조건",
+        "rpmL4ReferenceId": "H1-RPM-244",
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED",
+        "metaRegistryAuthority": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_GENERATED_META_REGISTRY_v1.json",
+        "canonicalPtTplStatus": "ACTIVE_CANONICAL_BOTH",
+        "conditionApplicabilityStatus": "APPLIED",
+        "crossConceptApplicabilityStatus": "NOT_APPLICABLE",
+        "previousMetadataDebtResolved": {
+          "priorFields": [
+            "Primary RPM L3 exact ID"
+          ],
+          "resolution": "EXISTING_GENERATED_L4_REUSE",
+          "sourceStage": "CREATE_AUTHOR_META_REPAIR"
+        }
+      },
+      "review": {
+        "reverseStem": "KEEP: 대우로 반례 가능성을 검사하는 명제가 발문에 명시됨",
+        "mathSelfCheckEvidence": "첫째 명제가 항상 참이려면 결론이 거짓인 $x\\ge3$, $y\\ge k+2$에서 최소 합 $k+5$가 $8$ 이상이어야 하므로 $k\\ge3$이다. 둘째 명제가 거짓이라는 것은 $x+y\\lt10$이면서 $x\\ge3$, $y\\ge k+2$인 반례가 존재한다는 뜻이다. 이는 $k+5<10$, 즉 $k<5$일 때 가능하다. 따라서 정수 $k$는 $3,4$이고 합은 $7$이다.",
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 3,
+            "reason": "가능한 $k=3,4$ 중 $k=4$를 누락하여 합을 3으로 계산"
+          },
+          {
+            "choice": "②",
+            "offeredValue": 5,
+            "reason": "둘째 명제가 거짓인 조건 $k<5$를 잘못 뒤집어 $k\\ge5$로 계산하고 경계 정수 $k=5$만 택하면 합을 $5$로 잘못 얻는다."
+          },
+          {
+            "choice": "④",
+            "offeredValue": 9,
+            "reason": "첫째 명제의 경계 3을 중복 포함해 $3+3+3=9$로 잘못 합산한 오답이다. 실제 가능한 정수는 $3,4$뿐이다."
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": 11,
+            "reason": "가능한 정수 $3,4$에서 4를 중복 합산해 $3+4+4=11$을 얻는 오답이다. 서로 다른 가능한 정수는 각각 한 번만 더해야 한다."
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "조건이 선형부등식으로 완결되며 그림에서 수치를 읽지 않음"
+        },
+        "solutionVisual": {
+          "status": "EXEMPT",
+          "reason": "두 변수의 하계와 명제 참 조건을 식으로 추적하는 것이 결정적 풀이이며 공간기하 자료 없음"
+        },
+        "authorSelfCheck": "SELF_RECHECK_COMPLETE_20261012",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "distractorPathStatus": "36_CHOICE_ROUTES_9_SLOTS_AUTHOR_RECHECKED",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "role": "AUTHOR_NOT_INDEPENDENT",
+          "independentGptOpenBook": "NOT_RUN",
+          "studentEngine": "NOT_RUN",
+          "sourcePrimaryL3": "명제가 참이 되기 위한 조건",
+          "correctAnswer": "③",
+          "wrongRoutesVerified": 4,
+          "problemVisual": "VISUAL_EXEMPT",
+          "solutionVisual": "VISUAL_EXEMPT",
+          "sourceMetaKey": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED",
+          "finalAlgebraCondition": "k=3,4, sum=7",
+          "calculatedNumericAnswer": 7,
+          "allFourWrongValuesRechecked": true,
+          "correctChoiceUnique": true,
+          "finalStudentSourceChecked": true,
+          "actualSvgBrowser": "NOT_APPLICABLE_NO_SVG",
+          "archiveEngine": "NOT_RUN",
+          "externalQualityReview": "NOT_RUN"
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q01_Q05_OPENBOOK_REVIEW_20261013.json"
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-JEIL25-2FINAL-Q04-C3",
+      "sourceQid": 4,
+      "slot": "C3",
+      "purpose": "C",
+      "modeCandidate": "TYPE_BANK",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [],
+      "wide": false,
+      "content": "모든 자연수 $x,y$에 대하여 명제 “$x+y\\le9$이면 $x\\le3$ 또는 $y\\le k+1$이다”가 참이 되도록 하는 $1\\le k\\le7$인 자연수 $k$의 값의 합은?",
+      "choices": [
+        "$15$",
+        "$16$",
+        "$18$",
+        "$20$",
+        "$22$"
+      ],
+      "answer": "⑤",
+      "solution": "결론이 거짓인 경우를 먼저 생각하여 원래 명제의 성립 조건을 구한다.\n결론이 거짓이라는 것은 자연수 $x\\ge4$, $y\\ge k+2$임을 뜻한다. 이때 합의 최솟값은 $x+y=k+6$이며 실제 $x=4$, $y=k+2$에서 달성된다. 전제는 $x+y\\le9$이므로 반례가 없으려면 $k+6>9$, 즉 $k>3$이어야 한다. 범위 $1\\le k\\le7$의 자연수에서는 $k=4,5,6,7$이다. 따라서 합은 $22$이다.\n따라서 정답은 ⑤이다.",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourcePrimaryL3": "명제가 참이 되기 위한 조건",
+        "primaryRPM_L3": "명제와 조건",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "RPM_PARENT_ACTIVE_GENERATED_L4_REUSE",
+        "metaFoundationL3": "명제가 참이 되기 위한 조건",
+        "metaFoundationL4": "역·대우의 경계조건과 매개변수",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_BOUND_PARAMETER",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "experienceAxis": "자연수 해집합·끝점·합을 동시에 판정",
+        "metadataDebt": [],
+        "primaryRPM_L3Frozen": true,
+        "rpmL4SemanticLabel": "명제의 참·거짓",
+        "sourcePrimaryL3Semantic": "명제가 참이 되기 위한 조건",
+        "rpmReferenceRole": "PARENT_BROAD_NOT_EXACT_SOURCE_L3",
+        "generatedExtL4Id": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+        "effectiveL4Id": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+        "effectiveL4Authority": "GENERATED_ACTIVE_EXISTING_REUSED",
+        "primaryL3Id": "H1-RPM-244",
+        "primaryL3Authority": "RPM_PARENT_WITH_SOURCE_SEMANTIC",
+        "primaryL3DecisiveSemantic": "명제가 참이 되기 위한 조건",
+        "rpmL4ReferenceId": "H1-RPM-244",
+        "metaTaxonomyStatus": "AUTHOR_RESOLVED_EXISTING_OR_GENERATED_REGISTERED",
+        "metaRegistryAuthority": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_GENERATED_META_REGISTRY_v1.json",
+        "canonicalPtTplStatus": "ACTIVE_CANONICAL_BOTH",
+        "conditionApplicabilityStatus": "APPLIED",
+        "crossConceptApplicabilityStatus": "NOT_APPLICABLE",
+        "previousMetadataDebtResolved": {
+          "priorFields": [
+            "Primary RPM L3 exact ID"
+          ],
+          "resolution": "EXISTING_GENERATED_L4_REUSE",
+          "sourceStage": "CREATE_AUTHOR_META_REPAIR"
+        }
+      },
+      "review": {
+        "reverseStem": "KEEP: 대우로 반례 가능성을 검사하는 명제가 발문에 명시됨",
+        "mathSelfCheckEvidence": "결론이 거짓이라는 것은 자연수 $x\\ge4$, $y\\ge k+2$임을 뜻한다. 이때 합의 최솟값은 $x+y=k+6$이며 실제 $x=4$, $y=k+2$에서 달성된다. 전제는 $x+y\\le9$이므로 반례가 없으려면 $k+6>9$, 즉 $k>3$이어야 한다. 범위 $1\\le k\\le7$의 자연수에서는 $k=4,5,6,7$이다. 따라서 합은 $22$이다.",
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": 15,
+            "reason": "허용되는 $k=4,5,6,7$에서 범위의 상한 $k=7$을 빠뜨리면 $4+5+6=15$로 계산한다."
+          },
+          {
+            "choice": "②",
+            "offeredValue": 16,
+            "reason": "가능한 $k=4,5,6,7$ 중 $k=6$을 누락해 $4+5+7=16$으로 계산"
+          },
+          {
+            "choice": "③",
+            "offeredValue": 18,
+            "reason": "허용된 $k=4$를 누락해 $5+6+7=18$로 계산"
+          },
+          {
+            "choice": "④",
+            "offeredValue": 20,
+            "reason": "$k=5$를 누락하고 불허인 $k=3$을 포함해 $3+4+6+7=20$으로 계산"
+          }
+        ],
+        "problemVisual": {
+          "status": "EXEMPT",
+          "reason": "조건이 선형부등식으로 완결되며 그림에서 수치를 읽지 않음"
+        },
+        "solutionVisual": {
+          "status": "EXEMPT",
+          "reason": "두 변수의 하계와 명제 참 조건을 식으로 추적하는 것이 결정적 풀이이며 공간기하 자료 없음"
+        },
+        "authorSelfCheck": "SELF_RECHECK_COMPLETE_20261012",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
+        "realEngineRender": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "disposition": "AUTHOR_DRAFT_ONLY",
+        "distractorPathStatus": "36_CHOICE_ROUTES_9_SLOTS_AUTHOR_RECHECKED",
+        "selfRecheck20261012": {
+          "status": "SELF_RECHECK_COMPLETE",
+          "role": "AUTHOR_NOT_INDEPENDENT",
+          "independentGptOpenBook": "NOT_RUN",
+          "studentEngine": "NOT_RUN",
+          "sourcePrimaryL3": "명제가 참이 되기 위한 조건",
+          "correctAnswer": "⑤",
+          "wrongRoutesVerified": 4,
+          "problemVisual": "VISUAL_EXEMPT",
+          "solutionVisual": "VISUAL_EXEMPT",
+          "sourceMetaKey": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+          "metaRegistry": "GENERATED_ACTIVE_EXISTING_REUSED",
+          "finalAlgebraCondition": "k=4,5,6,7, sum=22",
+          "calculatedNumericAnswer": 22,
+          "allFourWrongValuesRechecked": true,
+          "correctChoiceUnique": true,
+          "finalStudentSourceChecked": true,
+          "actualSvgBrowser": "NOT_APPLICABLE_NO_SVG",
+          "archiveEngine": "NOT_RUN",
+          "externalQualityReview": "NOT_RUN"
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q01_Q05_OPENBOOK_REVIEW_20261013.json"
+      }
+    }
+  ]
+}
