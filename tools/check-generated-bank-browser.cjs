@@ -8,7 +8,7 @@ async function main(){
   const server=http.createServer((req,res)=>{
     try{const n=decodeURIComponent(new URL(req.url,'http://localhost').pathname),p=path.resolve(root,'.'+n);
       if(!p.startsWith(root+path.sep)||!fs.existsSync(p)||fs.statSync(p).isDirectory()){res.writeHead(404);res.end();return;}
-      res.writeHead(200,{'Content-Type':(n.endsWith('.json')?'application/json':n.endsWith('.svg')?'image/svg+xml':n.endsWith('.png')?'image/png':n.endsWith('.js')?'text/javascript':'text/html')+'; charset=utf-8'});
+      res.writeHead(200,{'Content-Type':(n.endsWith('.css')?'text/css':n.endsWith('.json')?'application/json':n.endsWith('.svg')?'image/svg+xml':n.endsWith('.png')?'image/png':n.endsWith('.js')?'text/javascript':'text/html')+'; charset=utf-8'});
       fs.createReadStream(p).pipe(res);
     }catch(e){res.writeHead(500);res.end(String(e));}
   });
@@ -90,8 +90,10 @@ async function main(){
       if(!target)throw Error('Mixer exam popup missing '+school);
       const attached=await send('Target.attachToTarget',{targetId:target.targetId,flatten:true}),sessionId=attached.sessionId;
       const popupEv=async expression=>{const id2=++id;const result=await new Promise((resolve,reject)=>{pending.set(id2,{resolve,reject});ws.send(JSON.stringify({id:id2,method:'Runtime.evaluate',params:{expression,returnByValue:true,awaitPromise:true},sessionId}));});if(result.exceptionDetails)throw Error(JSON.stringify(result.exceptionDetails));return result.result.value;};
-      let view;for(let n=0;n<400;n++){try{view=await popupEv("({mode:AppState.mode,count:AppState.data.length,boxes:document.querySelectorAll('#print-area .q-box').length,title:AppState.meta.title,answers:document.querySelectorAll('#print-area .sol-box,#print-area .ans-cell').length})");if(view.boxes===count)break;}catch{}await sleep(100);}
-      if(view?.mode!=='exam'||view.count!==count||view.boxes!==count||!view.title.includes(school)||view.answers){
+      let view;for(let n=0;n<400;n++){try{view=await popupEv("({mode:AppState.mode,count:AppState.data.length,qpp:Number(AppState.qpp)||4,boxes:document.querySelectorAll('#print-area .q-box').length,pages:document.querySelectorAll('#print-area .ap-equal-slot-page').length,title:AppState.meta.title,answers:document.querySelectorAll('#print-area .sol-box,#print-area .ans-cell').length})");if(view.boxes===Math.ceil(count/view.qpp)*view.qpp)break;}catch{}await sleep(100);}
+      const expectedPages=Math.ceil(count/(view?.qpp||4));
+      const expectedSlots=expectedPages*(view?.qpp||4);
+      if(view?.mode!=='exam'||view.count!==count||view.boxes!==expectedSlots||view.pages!==expectedPages||!view.title.includes(school)||view.answers){
          const diagnostic=await popupEv("(async()=>{const r=await Promise.race([window.__AP_RENDER_READY__||Promise.resolve('NO_RENDER_PROMISE'),new Promise(ok=>setTimeout(()=>ok('PENDING'),300))]);return {render:r,readiness:document.documentElement.dataset.apPrintReadiness,printArea:document.querySelector('#print-area')?.textContent?.slice(0,500),bodyText:document.body.innerText.slice(0,400),url:location.href,qpp:AppState.qpp,preview:document.documentElement.className,renderer:typeof rendererMode==='function'?rendererMode():'UNKNOWN',buildHost:!!window.mixedFastHost}})()");
          throw Error('Mixer question output mismatch '+JSON.stringify(view)+' DIAGNOSTIC '+JSON.stringify(diagnostic));
        }
