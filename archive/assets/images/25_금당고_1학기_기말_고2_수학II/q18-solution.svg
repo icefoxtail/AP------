@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 520" role="img" aria-labelledby="title desc">
+<title id="title">정육각형 상자의 밑면 변과 높이</title>
+<desc id="desc">한 변이 8인 바깥 정육각형과 밑면 한 변이 s인 안쪽 정육각형 사이의 수직 거리가 x임을 보인다.</desc>
+<defs>
+  <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse">
+    <path d="M0,0 L8,4 L0,8 Z" fill="#355C7D"/>
+  </marker>
+  <style>
+    .label { font-family: "Noto Sans KR", "Malgun Gothic", sans-serif; fill: #18324A; }
+    .given { stroke: #355C7D; stroke-width: 3; fill: #DCEBFA; }
+    .base { stroke: #18324A; stroke-width: 3; fill: #FFFFFF; }
+    .dim { stroke: #355C7D; stroke-width: 2.5; marker-start: url(#arrow); marker-end: url(#arrow); }
+    .guide { stroke: #68849E; stroke-width: 1.5; stroke-dasharray: 6 5; }
+  </style>
+</defs>
+<rect width="820" height="520" rx="22" fill="#F6F9FC"/>
+<text class="label" x="40" y="48" font-size="24" font-weight="700">접은 뒤의 밑면과 높이</text>
+<polygon class="given" points="300,70 456,160 456,340 300,430 144,340 144,160"/>
+<polygon class="base" points="300,108 423,179 423,321 300,392 177,321 177,179"/>
+<text class="label" x="468" y="242" font-size="22" font-weight="700">8</text>
+<text class="label" x="390" y="242" font-size="21" font-weight="700">s</text>
+<line class="guide" x1="456" y1="250" x2="423" y2="250"/>
+<line class="dim" x1="454" y1="250" x2="425" y2="250"/>
+<text class="label" x="432" y="276" font-size="20" font-weight="700">x</text>
+<text class="label" x="264" y="258" font-size="18" text-anchor="middle" font-weight="700">정육각형 밑면</text>
+<rect x="520" y="112" width="260" height="290" rx="18" fill="#FFFFFF" stroke="#D1DCE6" stroke-width="2"/>
+<text class="label" x="548" y="160" font-size="20" font-weight="700">평행한 변 사이 거리</text>
+<text class="label" x="548" y="205" font-size="21">x</text>
+<text class="label" x="548" y="256" font-size="20" font-weight="700">밑면 한 변</text>
+<text class="label" x="548" y="300" font-size="23" font-weight="700">s = 8 − 2x/√3</text>
+<text class="label" x="548" y="355" font-size="17">여섯 면의 높이는 모두 x</text>
+</svg>
