@@ -1,7 +1,7 @@
 {
   "schemaVersion": "ALIVE_QID9_GENERATED_META_REGISTRY_v1",
   "status": "GENERATED_ACTIVE_CREATE_SCOPE",
-  "scope": "2025_JEIL_HIGH_2FINAL_H1_Q01_Q18",
+  "scope": "2025_JEIL_HIGH_2FINAL_H1_Q01_Q19",
   "workspaceBranch": "work/alive-25-jeil-h1-2final-qid9",
   "sourceExam": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
   "sourceBlobSha": "252c1cc9a687cadd961183b56ea10d21bf1976b4",
@@ -926,6 +926,63 @@
           "uid": "ALITE-JEIL25-2FINAL-Q18-C3",
           "slot": "C3",
           "questionObjective": "두 함수<br>$f(x)=\\begin{cases}1-\\dfrac x2&(0\\le x\\lt2)\\\\x-2&(2\\le x\\le4)\\end{cases}$,<br>$g(x)=\\begin{cases}x+1&(0\\le x\\lt1)\\\\4-2x&(1\\le x\\le2)\\end{cases}$<br>에 대하여 함수 $y=(g\\circ f)(x)$의 그래프와 직선 $y=\\dfrac32$ 및 $y$축으로 둘러싸인, 직선 $y=\\dfrac32$ 위쪽의 두 영역의 넓이의 합은?"
+        }
+      ]
+    },
+    {
+      "generatedExtL4Id": "EXT-L4-JEIL25-Q19-DOUBLE-EXISTENTIAL-QUADRATIC",
+      "parentLockedRpmL3Id": "H1-RPM-244",
+      "parentLockedRpmL3Label": "명제와 조건",
+      "labelKo": "두 변수의 존재양화사 부정과 최악조건",
+      "definition": "두 존재양화사를 모두 전칭양화사로 부정하고, 먼저 x의 최솟값, 다음 t의 최댓값을 판단한다.",
+      "decisiveStepSignature": "두 존재양화사를 모두 전칭양화사로 부정하고, 먼저 x의 최솟값, 다음 t의 최댓값을 판단한다.",
+      "sourceQid": 19,
+      "sourceExam": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "comparisonWithExistingRpmL4": "명제의 일반 참거짓 L4보다 복합 양화·다변수·절댓값 경계가 추가되는 Generated-only 세분",
+      "status": "GENERATED_ACTIVE",
+      "examples": [
+        {
+          "uid": "ALITE-JEIL25-2FINAL-Q19-C1",
+          "slot": "C1",
+          "questionObjective": "$1\\le t\\le3$인 어떤 실수 $t$와 어떤 실수 $x$가 존재하여 $x^2-2tx+t+k\\lt0$이라는 명제를 생각하자. 이 명제의 부정을 쓰고, 그 부정이 참이 되게 하는 상수 $k$의 최솟값을 구하는 과정을 서술하시오."
+        }
+      ]
+    },
+    {
+      "generatedExtL4Id": "EXT-L4-JEIL25-Q19-COUPLED-REAL-PAIR",
+      "parentLockedRpmL3Id": "H1-RPM-244",
+      "parentLockedRpmL3Label": "명제와 조건",
+      "labelKo": "관계조건을 갖는 실수쌍의 존재명제 부정",
+      "definition": "실수쌍에 대한 존재를 부정하되 제한조건을 유지하고 한 변수를 제거하여 부등식의 전역 조건을 판단한다.",
+      "decisiveStepSignature": "실수쌍에 대한 존재를 부정하되 제한조건을 유지하고 한 변수를 제거하여 부등식의 전역 조건을 판단한다.",
+      "sourceQid": 19,
+      "sourceExam": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "comparisonWithExistingRpmL4": "명제의 일반 참거짓 L4보다 복합 양화·다변수·절댓값 경계가 추가되는 Generated-only 세분",
+      "status": "GENERATED_ACTIVE",
+      "examples": [
+        {
+          "uid": "ALITE-JEIL25-2FINAL-Q19-C2",
+          "slot": "C2",
+          "questionObjective": "명제 “$x+y=4$를 만족하는 어떤 실수 $x,y$에 대하여 $x^2+y^2-2x+k\\lt0$이다.”의 부정을 쓰고, 그 부정이 참이 되도록 하는 정수 $k$의 최솟값을 구하는 과정을 서술하시오."
+        }
+      ]
+    },
+    {
+      "generatedExtL4Id": "EXT-L4-JEIL25-Q19-ABS-NEGATION-INTEGER-BOUND",
+      "parentLockedRpmL3Id": "H1-RPM-244",
+      "parentLockedRpmL3Label": "명제와 조건",
+      "labelKo": "절댓값 이차식의 존재명제 부정과 정수 경계",
+      "definition": "절댓값 치환으로 전역 최솟값을 구한 뒤 존재명제의 부정과 정수 최솟값 조건을 함께 적용한다.",
+      "decisiveStepSignature": "절댓값 치환으로 전역 최솟값을 구한 뒤 존재명제의 부정과 정수 최솟값 조건을 함께 적용한다.",
+      "sourceQid": 19,
+      "sourceExam": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "comparisonWithExistingRpmL4": "명제의 일반 참거짓 L4보다 복합 양화·다변수·절댓값 경계가 추가되는 Generated-only 세분",
+      "status": "GENERATED_ACTIVE",
+      "examples": [
+        {
+          "uid": "ALITE-JEIL25-2FINAL-Q19-C3",
+          "slot": "C3",
+          "questionObjective": "실수 전체의 집합에서 명제 “어떤 실수 $x$에 대하여 $x^2-4x-|x-2|+k\\lt0$이다.”의 부정을 쓰고, 그 부정이 참이 되도록 하는 정수 $k$의 최솟값을 구하는 과정을 서술하시오."
         }
       ]
     }
@@ -4396,6 +4453,266 @@
         "COND_RANGE"
       ],
       "integrationPattern": "CASE_BRANCH",
+      "level": "상",
+      "difficultyBucket": 5,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q19-A1",
+      "qid": 19,
+      "slot": "A1",
+      "sourceUid": null,
+      "sourceQid": 19,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-06",
+      "subUnitKey": "H22-C2-06-CORE",
+      "parentRpmRecordId": "H1-RPM-244",
+      "parentRpmL3": "명제와 조건",
+      "sourcePrimaryL3": "명제의 부정과 참조건",
+      "effectiveL3Id": "H1-RPM-244",
+      "effectiveL4Id": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+      "L4Authority": "META_FOUNDATION_ACTIVE",
+      "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+      "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+      "crossConceptKeys": [
+        "CC_COMPLETE_SQUARE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 2,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q19-A2",
+      "qid": 19,
+      "slot": "A2",
+      "sourceUid": null,
+      "sourceQid": 19,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-06",
+      "subUnitKey": "H22-C2-06-CORE",
+      "parentRpmRecordId": "H1-RPM-244",
+      "parentRpmL3": "명제와 조건",
+      "sourcePrimaryL3": "명제의 부정과 참조건",
+      "effectiveL3Id": "H1-RPM-244",
+      "effectiveL4Id": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+      "L4Authority": "META_FOUNDATION_ACTIVE",
+      "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+      "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+      "crossConceptKeys": [
+        "CC_COMPLETE_SQUARE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 2,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q19-A3",
+      "qid": 19,
+      "slot": "A3",
+      "sourceUid": null,
+      "sourceQid": 19,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-06",
+      "subUnitKey": "H22-C2-06-CORE",
+      "parentRpmRecordId": "H1-RPM-244",
+      "parentRpmL3": "명제와 조건",
+      "sourcePrimaryL3": "명제의 부정과 참조건",
+      "effectiveL3Id": "H1-RPM-244",
+      "effectiveL4Id": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+      "L4Authority": "META_FOUNDATION_ACTIVE",
+      "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+      "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+      "crossConceptKeys": [
+        "CC_COMPLETE_SQUARE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 2,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q19-B1",
+      "qid": 19,
+      "slot": "B1",
+      "sourceUid": null,
+      "sourceQid": 19,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-06",
+      "subUnitKey": "H22-C2-06-CORE",
+      "parentRpmRecordId": "H1-RPM-244",
+      "parentRpmL3": "명제와 조건",
+      "sourcePrimaryL3": "명제의 부정과 참조건",
+      "effectiveL3Id": "H1-RPM-244",
+      "effectiveL4Id": "TPL_QUANTIFIER_NEGATION_INTERVAL",
+      "L4Authority": "META_FOUNDATION_ACTIVE",
+      "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+      "templateKey": "TPL_QUANTIFIER_NEGATION_INTERVAL",
+      "crossConceptKeys": [
+        "CC_COMPLETE_SQUARE",
+        "CC_INEQUALITY_QUADRATIC"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 3,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q19-B2",
+      "qid": 19,
+      "slot": "B2",
+      "sourceUid": null,
+      "sourceQid": 19,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-06",
+      "subUnitKey": "H22-C2-06-CORE",
+      "parentRpmRecordId": "H1-RPM-244",
+      "parentRpmL3": "명제와 조건",
+      "sourcePrimaryL3": "명제의 부정과 참조건",
+      "effectiveL3Id": "H1-RPM-244",
+      "effectiveL4Id": "TPL_QUANTIFIER_NEGATION_INTERVAL",
+      "L4Authority": "META_FOUNDATION_ACTIVE",
+      "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+      "templateKey": "TPL_QUANTIFIER_NEGATION_INTERVAL",
+      "crossConceptKeys": [
+        "CC_COMPLETE_SQUARE",
+        "CC_INEQUALITY_QUADRATIC"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 3,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q19-B3",
+      "qid": 19,
+      "slot": "B3",
+      "sourceUid": null,
+      "sourceQid": 19,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-06",
+      "subUnitKey": "H22-C2-06-CORE",
+      "parentRpmRecordId": "H1-RPM-244",
+      "parentRpmL3": "명제와 조건",
+      "sourcePrimaryL3": "명제의 부정과 참조건",
+      "effectiveL3Id": "H1-RPM-244",
+      "effectiveL4Id": "TPL_QUANTIFIER_TRUTH_JUDGMENT",
+      "L4Authority": "META_FOUNDATION_ACTIVE",
+      "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+      "templateKey": "TPL_QUANTIFIER_TRUTH_JUDGMENT",
+      "crossConceptKeys": [
+        "CC_COMPLETE_SQUARE"
+      ],
+      "conditionKeys": [
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 3,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q19-C1",
+      "qid": 19,
+      "slot": "C1",
+      "sourceUid": null,
+      "sourceQid": 19,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-06",
+      "subUnitKey": "H22-C2-06-CORE",
+      "parentRpmRecordId": "H1-RPM-244",
+      "parentRpmL3": "명제와 조건",
+      "sourcePrimaryL3": "명제의 부정과 참조건",
+      "effectiveL3Id": "H1-RPM-244",
+      "effectiveL4Id": "EXT-L4-JEIL25-Q19-DOUBLE-EXISTENTIAL-QUADRATIC",
+      "L4Authority": "GENERATED_ACTIVE",
+      "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+      "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+      "crossConceptKeys": [
+        "CC_COMPLETE_SQUARE",
+        "CC_QUADRATIC_EXTREMUM"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "level": "상",
+      "difficultyBucket": 4,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q19-C2",
+      "qid": 19,
+      "slot": "C2",
+      "sourceUid": null,
+      "sourceQid": 19,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-06",
+      "subUnitKey": "H22-C2-06-CORE",
+      "parentRpmRecordId": "H1-RPM-244",
+      "parentRpmL3": "명제와 조건",
+      "sourcePrimaryL3": "명제의 부정과 참조건",
+      "effectiveL3Id": "H1-RPM-244",
+      "effectiveL4Id": "EXT-L4-JEIL25-Q19-COUPLED-REAL-PAIR",
+      "L4Authority": "GENERATED_ACTIVE",
+      "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+      "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+      "crossConceptKeys": [
+        "CC_SIMULTANEOUS_EQUATION",
+        "CC_COMPLETE_SQUARE"
+      ],
+      "conditionKeys": [
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "level": "상",
+      "difficultyBucket": 4,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q19-C3",
+      "qid": 19,
+      "slot": "C3",
+      "sourceUid": null,
+      "sourceQid": 19,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-06",
+      "subUnitKey": "H22-C2-06-CORE",
+      "parentRpmRecordId": "H1-RPM-244",
+      "parentRpmL3": "명제와 조건",
+      "sourcePrimaryL3": "명제의 부정과 참조건",
+      "effectiveL3Id": "H1-RPM-244",
+      "effectiveL4Id": "EXT-L4-JEIL25-Q19-ABS-NEGATION-INTEGER-BOUND",
+      "L4Authority": "GENERATED_ACTIVE",
+      "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+      "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+      "crossConceptKeys": [
+        "CC_INEQUALITY_ABSOLUTE_VALUE",
+        "CC_COMPLETE_SQUARE"
+      ],
+      "conditionKeys": [
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
       "level": "상",
       "difficultyBucket": 5,
       "formerDebtCount": 1,

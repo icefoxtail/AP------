@@ -1,0 +1,985 @@
+{
+  "schemaVersion": "ALIVE_QID9_Q19_CREATE_DRAFT_v1",
+  "source": {
+    "path": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+    "examTitle": "25_제일고_2학기_기말_고1_기출",
+    "qid": 19,
+    "sourceUid": null,
+    "sourceUidResolution": "REQUIRES_CANONICAL_QID_V1_LOOKUP",
+    "gitBlobSha1": "252c1cc9a687cadd961183b56ea10d21bf1976b4",
+    "preservedReadOnly": true,
+    "sourceQuestionType": "서술형"
+  },
+  "authority": {
+    "rpmPrimaryL3": "H1-RPM-244",
+    "rpmL3Label": "명제와 조건",
+    "sourceSemantic": "양화명제의 부정과 이차식의 전칭 조건",
+    "pt": "PT_QUANTIFIER_NEGATION",
+    "existingTemplates": [
+      "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+      "TPL_QUANTIFIER_NEGATION_INTERVAL",
+      "TPL_QUANTIFIER_TRUTH_JUDGMENT"
+    ],
+    "generatedL4Ids": [
+      "EXT-L4-JEIL25-Q19-DOUBLE-EXISTENTIAL-QUADRATIC",
+      "EXT-L4-JEIL25-Q19-COUPLED-REAL-PAIR",
+      "EXT-L4-JEIL25-Q19-ABS-NEGATION-INTEGER-BOUND"
+    ]
+  },
+  "summary": {
+    "authorDraftItems": 9,
+    "mathSelfChecks": 9,
+    "wrongChoiceCalculationChecks": "NOT_APPLICABLE_ESSAY",
+    "subjectiveAnswerCount": 9,
+    "answerValues": [
+      "$9$",
+      "$2$",
+      "$4$",
+      "$3$",
+      "$8$",
+      "$0$",
+      "$6$",
+      "$-3$",
+      "$5$"
+    ],
+    "reverseKeep": 9,
+    "reverseRevised": 0,
+    "reverseHold": 0,
+    "problemSvgCreated": 0,
+    "solutionSvgCreated": 9,
+    "svgBrowserRendered": "NOT_RUN",
+    "externalOpenBookReview": "NOT_RUN",
+    "studentRelease": "NOT_AUTHORIZED",
+    "metaEvidenceDebtUidCount": 9,
+    "status": "AUTHOR_DRAFT_SOURCE_UID_EVIDENCE_DEBT",
+    "nextQid": 20
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-JEIL25-2FINAL-Q19-A1",
+      "sourceQid": 19,
+      "sourceUid": null,
+      "slot": "A1",
+      "purpose": "A",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q19",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "실수 전체의 집합에서 명제 “어떤 실수 $x$에 대하여 $x^2-6x+k\\lt0$이다.”의 부정을 쓰고, 그 부정이 참이 되도록 하는 실수 $k$의 최솟값을 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$9$",
+      "solution": "주어진 명제는 부등식을 만족하는 실수가 존재한다는 뜻이다. 따라서 그 부정은 “모든 실수 $x$에 대하여 $x^2-6x+k\\ge0$이다.”이다.\\n$x^2-6x+k=(x-3)^2+k-9$이고 모든 실수 $x$에서 $(x-3)^2\\ge0$이다. $x=3$에서 제곱항이 $0$이 되므로 식의 최솟값은 $k-9$이다. 모든 실수에서 $0$ 이상이 되려면 $k-9\\ge0$, 즉 $k\\ge9$이어야 하며 $k=9$에서는 $x=3$에서 등호가 성립한다.\\n따라서 구하는 최솟값은 $9$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q19/A1-solution.svg",
+      "solutionImageAlt": "A1 명제의 부정과 이차식의 최솟값 경계를 보여주는 해설 그래프",
+      "solutionImageCaption": "전칭 부등식의 경계에서 최소가 되는 지점과 허용 범위를 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourceMetaFoundationL3": "명제의 부정과 조건 판정",
+        "sourceMetaFoundationL4": "존재·전칭 양화사 부정 후 부등식 경계",
+        "primaryRPM_L3": "명제와 조건",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-244",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+        "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+        "effectiveL4Id": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+        "effectiveL4Authority": "META_FOUNDATION_ACTIVE",
+        "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_CANONICAL_PT_TPL_GENERATED_WHERE_NEEDED_SOURCE_UID_DEBT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "학생용 명제의 양화 범위·부등식·요청된 최솟값 또는 최댓값이 자연스럽고, 부정을 통해 전체 조건을 결정해야 풀림",
+        "primaryL3Necessity": "QUANTIFIER_NEGATION_IS_DECISIVE_BEFORE_GLOBAL_BOUND",
+        "mathSelfCheckEvidence": {
+          "calculatedBoundaryK": 9,
+          "answer": "$9$",
+          "plotModel": {
+            "vertexX": 3,
+            "leadingCoefficient": 1,
+            "validXDomain": [
+              0,
+              6
+            ]
+          },
+          "method": "COMPLETE_SQUARE_GLOBAL",
+          "numericalCheck": "PYTHON_SYMPY_CALCULATED_MINIMUMS",
+          "eduNoCalculus": true
+        },
+        "commonErrors": [
+          "'어떤'을 '어떤'으로 유지하여 양화사를 부정하지 않음",
+          "$kgt9$로 부등호의 등호를 누락함"
+        ],
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_SUBJECTIVE",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "학생용 발문에서 문자조건과 수식이 완결되어 별도의 문제용 시각자산 불필요"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q19/A1-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-JEIL25-2FINAL-Q19-A2",
+      "sourceQid": 19,
+      "sourceUid": null,
+      "slot": "A2",
+      "purpose": "A",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q19",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "실수 전체의 집합에서 명제 “어떤 실수 $x$에 대하여 $2x^2+4x+k\\lt0$이다.”의 부정을 쓰고, 그 부정이 참이 되게 하는 $k$의 최솟값을 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$2$",
+      "solution": "주어진 존재명제의 부정은 “모든 실수 $x$에 대하여 $2x^2+4x+k\\ge0$이다.”이다.\\n$2x^2+4x+k=2(x+1)^2+k-2$로 완전제곱하면 제곱항의 계수가 양수이므로 $x=-1$에서 최솟값 $k-2$를 갖는다. 이 값이 $0$ 이상이어야 모든 실수에서 부등식이 성립하므로 $k-2\\ge0$, 곧 $k\\ge2$이다. $k=2$일 때 실제로 $2(x+1)^2\\ge0$이다.\\n따라서 구하는 최솟값은 $2$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q19/A2-solution.svg",
+      "solutionImageAlt": "A2 명제의 부정과 이차식의 최솟값 경계를 보여주는 해설 그래프",
+      "solutionImageCaption": "전칭 부등식의 경계에서 최소가 되는 지점과 허용 범위를 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourceMetaFoundationL3": "명제의 부정과 조건 판정",
+        "sourceMetaFoundationL4": "존재·전칭 양화사 부정 후 부등식 경계",
+        "primaryRPM_L3": "명제와 조건",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-244",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+        "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+        "effectiveL4Id": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+        "effectiveL4Authority": "META_FOUNDATION_ACTIVE",
+        "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_CANONICAL_PT_TPL_GENERATED_WHERE_NEEDED_SOURCE_UID_DEBT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "학생용 명제의 양화 범위·부등식·요청된 최솟값 또는 최댓값이 자연스럽고, 부정을 통해 전체 조건을 결정해야 풀림",
+        "primaryL3Necessity": "QUANTIFIER_NEGATION_IS_DECISIVE_BEFORE_GLOBAL_BOUND",
+        "mathSelfCheckEvidence": {
+          "calculatedBoundaryK": 2,
+          "answer": "$2$",
+          "plotModel": {
+            "vertexX": -1,
+            "leadingCoefficient": 2,
+            "validXDomain": [
+              -3,
+              1
+            ]
+          },
+          "method": "COMPLETE_SQUARE_GLOBAL",
+          "numericalCheck": "PYTHON_SYMPY_CALCULATED_MINIMUMS",
+          "eduNoCalculus": true
+        },
+        "commonErrors": [
+          "제곱항의 계수 2를 빠뜨리고 $(x+1)^2$로 잘못 정리함",
+          "존재명제의 부정을 모든 실수와 $ge$가 아닌 $>$로 작성함"
+        ],
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_SUBJECTIVE",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "학생용 발문에서 문자조건과 수식이 완결되어 별도의 문제용 시각자산 불필요"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q19/A2-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-JEIL25-2FINAL-Q19-A3",
+      "sourceQid": 19,
+      "sourceUid": null,
+      "slot": "A3",
+      "purpose": "A",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q19",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "실수 전체의 집합에서 명제 “어떤 실수 $x$에 대하여 $x^2+2x+k-3\\lt0$이다.”의 부정을 쓰고, 그 부정이 참이 되게 하는 $k$의 최솟값을 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$4$",
+      "solution": "부정은 “모든 실수 $x$에 대하여 $x^2+2x+k-3\\ge0$이다.”이다.\\n주어진 식은 $x^2+2x+k-3=(x+1)^2+k-4$이다. 모든 실수 $x$에서 $(x+1)^2\\ge0$이며 $x=-1$에서 $0$이 된다. 따라서 원래 식의 최솟값이 $k-4$이므로, 부정이 참이 되는 조건은 $k-4\\ge0$이다. 경계값 $k=4$일 때도 $(x+1)^2\\ge0$이므로 조건을 만족한다.\\n따라서 구하는 최솟값은 $4$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q19/A3-solution.svg",
+      "solutionImageAlt": "A3 명제의 부정과 이차식의 최솟값 경계를 보여주는 해설 그래프",
+      "solutionImageCaption": "전칭 부등식의 경계에서 최소가 되는 지점과 허용 범위를 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourceMetaFoundationL3": "명제의 부정과 조건 판정",
+        "sourceMetaFoundationL4": "존재·전칭 양화사 부정 후 부등식 경계",
+        "primaryRPM_L3": "명제와 조건",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-244",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+        "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+        "effectiveL4Id": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+        "effectiveL4Authority": "META_FOUNDATION_ACTIVE",
+        "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_CANONICAL_PT_TPL_GENERATED_WHERE_NEEDED_SOURCE_UID_DEBT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "학생용 명제의 양화 범위·부등식·요청된 최솟값 또는 최댓값이 자연스럽고, 부정을 통해 전체 조건을 결정해야 풀림",
+        "primaryL3Necessity": "QUANTIFIER_NEGATION_IS_DECISIVE_BEFORE_GLOBAL_BOUND",
+        "mathSelfCheckEvidence": {
+          "calculatedBoundaryK": 4,
+          "answer": "$4$",
+          "plotModel": {
+            "vertexX": -1,
+            "leadingCoefficient": 1,
+            "validXDomain": [
+              -3,
+              1
+            ]
+          },
+          "method": "COMPLETE_SQUARE_GLOBAL",
+          "numericalCheck": "PYTHON_SYMPY_CALCULATED_MINIMUMS",
+          "eduNoCalculus": true
+        },
+        "commonErrors": [
+          "상수항 $-3$을 이항하면서 $k-4$ 대신 $k-2$로 계산함",
+          "양화사는 바꾸되 부등식의 방향을 그대로 유지함"
+        ],
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_SUBJECTIVE",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "학생용 발문에서 문자조건과 수식이 완결되어 별도의 문제용 시각자산 불필요"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q19/A3-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-JEIL25-2FINAL-Q19-B1",
+      "sourceQid": 19,
+      "sourceUid": null,
+      "slot": "B1",
+      "purpose": "B",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q19",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "명제 “$3$ 이상의 어떤 실수 $x$에 대하여 $x^2-4x+k\\lt0$이다.”의 부정을 쓰고, 그 부정이 참이 되게 하는 실수 $k$의 최솟값을 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$3$",
+      "solution": "주어진 명제의 부정은 “$3$ 이상의 모든 실수 $x$에 대하여 $x^2-4x+k\\ge0$이다.”이다.\\n식은 $(x-2)^2+k-4$이다. 제곱항의 중심은 $x=2$이지만 허용 범위는 $x\\ge3$이므로, $x=2$를 최솟값 위치로 사용할 수 없다. $x\\ge3$에서는 $x-2\\ge1$이어서 $(x-2)^2\\ge1$이고, $x=3$에서 등호가 성립한다. 따라서 최솟값은 $1+k-4=k-3$이며 $k-3\\ge0$을 만족해야 한다.\\n따라서 구하는 최솟값은 $3$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q19/B1-solution.svg",
+      "solutionImageAlt": "B1 명제의 부정과 이차식의 최솟값 경계를 보여주는 해설 그래프",
+      "solutionImageCaption": "전칭 부등식의 경계에서 최소가 되는 지점과 허용 범위를 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourceMetaFoundationL3": "명제의 부정과 조건 판정",
+        "sourceMetaFoundationL4": "존재·전칭 양화사 부정 후 부등식 경계",
+        "primaryRPM_L3": "명제와 조건",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-244",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+        "templateKey": "TPL_QUANTIFIER_NEGATION_INTERVAL",
+        "effectiveL4Id": "TPL_QUANTIFIER_NEGATION_INTERVAL",
+        "effectiveL4Authority": "META_FOUNDATION_ACTIVE",
+        "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE",
+          "CC_INEQUALITY_QUADRATIC"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_CANONICAL_PT_TPL_GENERATED_WHERE_NEEDED_SOURCE_UID_DEBT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "학생용 명제의 양화 범위·부등식·요청된 최솟값 또는 최댓값이 자연스럽고, 부정을 통해 전체 조건을 결정해야 풀림",
+        "primaryL3Necessity": "QUANTIFIER_NEGATION_IS_DECISIVE_BEFORE_GLOBAL_BOUND",
+        "mathSelfCheckEvidence": {
+          "calculatedBoundaryK": 3,
+          "answer": "$3$",
+          "plotModel": {
+            "vertexX": 2,
+            "leadingCoefficient": 1,
+            "validXDomain": [
+              3,
+              5.6
+            ]
+          },
+          "method": "HALF_LINE_ENDPOINT",
+          "numericalCheck": "PYTHON_SYMPY_CALCULATED_MINIMUMS",
+          "eduNoCalculus": true
+        },
+        "commonErrors": [
+          "정의역 $xge3$을 무시하고 $x=2$를 사용하여 $kge4$라고 답함",
+          "부정에서 전체 실수로 범위를 확대함"
+        ],
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_SUBJECTIVE",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "학생용 발문에서 문자조건과 수식이 완결되어 별도의 문제용 시각자산 불필요"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q19/B1-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-JEIL25-2FINAL-Q19-B2",
+      "sourceQid": 19,
+      "sourceUid": null,
+      "slot": "B2",
+      "purpose": "B",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q19",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "명제 “$-1\\le x\\le2$인 어떤 실수 $x$에 대하여 $x^2-6x+k\\lt0$이다.”의 부정을 쓰고, 그 부정이 참이 되게 하는 $k$의 최솟값을 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$8$",
+      "solution": "부정은 “$-1\\le x\\le2$인 모든 실수 $x$에 대하여 $x^2-6x+k\\ge0$이다.”이다.\\n$x^2-6x+k=(x-3)^2+k-9$이고 꼭짓점의 $x$좌표인 $3$은 주어진 구간 밖에 있다. $-1\\le x\\le2$에서는 $x-3\\le-1$이므로 $(x-3)^2\\ge1$이고, 제곱항이 최소인 곳은 오른쪽 끝 $x=2$이다. 따라서 허용 구간에서 식의 최솟값은 $1+k-9=k-8$이다. 모든 허용 $x$에서 $0$ 이상이 되려면 $k\\ge8$이어야 한다.\\n따라서 구하는 최솟값은 $8$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q19/B2-solution.svg",
+      "solutionImageAlt": "B2 명제의 부정과 이차식의 최솟값 경계를 보여주는 해설 그래프",
+      "solutionImageCaption": "전칭 부등식의 경계에서 최소가 되는 지점과 허용 범위를 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourceMetaFoundationL3": "명제의 부정과 조건 판정",
+        "sourceMetaFoundationL4": "존재·전칭 양화사 부정 후 부등식 경계",
+        "primaryRPM_L3": "명제와 조건",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-244",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+        "templateKey": "TPL_QUANTIFIER_NEGATION_INTERVAL",
+        "effectiveL4Id": "TPL_QUANTIFIER_NEGATION_INTERVAL",
+        "effectiveL4Authority": "META_FOUNDATION_ACTIVE",
+        "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE",
+          "CC_INEQUALITY_QUADRATIC"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_CANONICAL_PT_TPL_GENERATED_WHERE_NEEDED_SOURCE_UID_DEBT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "학생용 명제의 양화 범위·부등식·요청된 최솟값 또는 최댓값이 자연스럽고, 부정을 통해 전체 조건을 결정해야 풀림",
+        "primaryL3Necessity": "QUANTIFIER_NEGATION_IS_DECISIVE_BEFORE_GLOBAL_BOUND",
+        "mathSelfCheckEvidence": {
+          "calculatedBoundaryK": 8,
+          "answer": "$8$",
+          "plotModel": {
+            "vertexX": 3,
+            "leadingCoefficient": 1,
+            "validXDomain": [
+              -1,
+              2
+            ]
+          },
+          "method": "CLOSED_INTERVAL_ENDPOINT",
+          "numericalCheck": "PYTHON_SYMPY_CALCULATED_MINIMUMS",
+          "eduNoCalculus": true
+        },
+        "commonErrors": [
+          "구간 밖 꼭짓점 $x=3$을 그대로 적용하여 $kge9$라고 답함",
+          "양화 부정 후에도 $x$가 구간 전체의 모든 실수라는 조건을 빠뜨림"
+        ],
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_SUBJECTIVE",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "학생용 발문에서 문자조건과 수식이 완결되어 별도의 문제용 시각자산 불필요"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q19/B2-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-JEIL25-2FINAL-Q19-B3",
+      "sourceQid": 19,
+      "sourceUid": null,
+      "slot": "B3",
+      "purpose": "B",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q19",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "명제 “모든 실수 $x$에 대하여 $x^2-2x+k\\ge0$이다.”의 부정을 쓰고, 그 부정이 참이 되도록 하는 정수 $k$의 최댓값을 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$0$",
+      "solution": "원래 명제는 모든 실수에서 이차식이 $0$ 이상이라는 뜻이다. 그 부정은 “어떤 실수 $x$에 대하여 $x^2-2x+k\\lt0$이다.”이다.\\n$x^2-2x+k=(x-1)^2+k-1$이다. 이 식이 어떤 실수에서 음수가 될 필요충분조건은 최솟값 $k-1$이 음수인 것이다. 따라서 $k-1\\lt0$, 즉 $k\\lt1$이어야 한다. 경계값 $k=1$이면 식은 제곱식이라 음수가 될 수 없다. $k$는 정수이므로 가능한 값 중 가장 큰 것은 $0$이다.\\n따라서 구하는 최댓값은 $0$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q19/B3-solution.svg",
+      "solutionImageAlt": "B3 명제의 부정과 이차식의 최솟값 경계를 보여주는 해설 그래프",
+      "solutionImageCaption": "전칭 부등식의 경계에서 최소가 되는 지점과 허용 범위를 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourceMetaFoundationL3": "명제의 부정과 조건 판정",
+        "sourceMetaFoundationL4": "존재·전칭 양화사 부정 후 부등식 경계",
+        "primaryRPM_L3": "명제와 조건",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-244",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+        "templateKey": "TPL_QUANTIFIER_TRUTH_JUDGMENT",
+        "effectiveL4Id": "TPL_QUANTIFIER_TRUTH_JUDGMENT",
+        "effectiveL4Authority": "META_FOUNDATION_ACTIVE",
+        "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_CANONICAL_PT_TPL_GENERATED_WHERE_NEEDED_SOURCE_UID_DEBT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "학생용 명제의 양화 범위·부등식·요청된 최솟값 또는 최댓값이 자연스럽고, 부정을 통해 전체 조건을 결정해야 풀림",
+        "primaryL3Necessity": "QUANTIFIER_NEGATION_IS_DECISIVE_BEFORE_GLOBAL_BOUND",
+        "mathSelfCheckEvidence": {
+          "calculatedBoundaryK": 1,
+          "answer": "$0$",
+          "plotModel": {
+            "vertexX": 1,
+            "leadingCoefficient": 1,
+            "validXDomain": [
+              -1,
+              3
+            ]
+          },
+          "method": "UNIVERSAL_TO_EXISTENTIAL_STRICT",
+          "numericalCheck": "PYTHON_SYMPY_CALCULATED_MINIMUMS",
+          "eduNoCalculus": true
+        },
+        "commonErrors": [
+          "$lt$를 $le$로 바꾸어 $k=1$도 가능하다고 판단함",
+          "최솟값 $k-1$ 대신 임의의 $x$에 대입하여 조건을 구함"
+        ],
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_SUBJECTIVE",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "학생용 발문에서 문자조건과 수식이 완결되어 별도의 문제용 시각자산 불필요"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q19/B3-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-JEIL25-2FINAL-Q19-C1",
+      "sourceQid": 19,
+      "sourceUid": null,
+      "slot": "C1",
+      "purpose": "C",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q19",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "$1\\le t\\le3$인 어떤 실수 $t$와 어떤 실수 $x$가 존재하여 $x^2-2tx+t+k\\lt0$이라는 명제를 생각하자. 이 명제의 부정을 쓰고, 그 부정이 참이 되게 하는 상수 $k$의 최솟값을 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$6$",
+      "solution": "주어진 명제에서는 조건을 만족하는 $t$와 $x$가 모두 존재해야 한다. 부정은 “$1\\le t\\le3$인 모든 실수 $t$와 모든 실수 $x$에 대하여 $x^2-2tx+t+k\\ge0$이다.”이다.\\n$x^2-2tx+t+k=(x-t)^2+k-t^2+t$이다. 각 $t$에 대하여 $x=t$에서 최소가 되므로 모든 $x$에 대해 $0$ 이상이 되려면 $k\\ge t^2-t$이어야 한다. 이것이 모든 $1\\le t\\le3$에서 성립해야 한다. $t$와 $t-1$은 이 구간에서 모두 음이 아니며 커질수록 각각 커지므로 $t(t-1)\\le3\\cdot2=6$이다. $t=3$에서 실제로 $6$이 되므로 $k\\ge6$이 필요충분조건이다.\\n따라서 구하는 최솟값은 $6$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q19/C1-solution.svg",
+      "solutionImageAlt": "C1 명제의 부정과 이차식의 최솟값 경계를 보여주는 해설 그래프",
+      "solutionImageCaption": "전칭 부등식의 경계에서 최소가 되는 지점과 허용 범위를 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourceMetaFoundationL3": "명제의 부정과 조건 판정",
+        "sourceMetaFoundationL4": "존재·전칭 양화사 부정 후 부등식 경계",
+        "primaryRPM_L3": "명제와 조건",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-244",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+        "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q19-DOUBLE-EXISTENTIAL-QUADRATIC",
+        "effectiveL4Authority": "GENERATED_ACTIVE",
+        "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE",
+          "CC_QUADRATIC_EXTREMUM"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_CANONICAL_PT_TPL_GENERATED_WHERE_NEEDED_SOURCE_UID_DEBT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "학생용 명제의 양화 범위·부등식·요청된 최솟값 또는 최댓값이 자연스럽고, 부정을 통해 전체 조건을 결정해야 풀림",
+        "primaryL3Necessity": "QUANTIFIER_NEGATION_IS_DECISIVE_BEFORE_GLOBAL_BOUND",
+        "mathSelfCheckEvidence": {
+          "calculatedBoundaryK": 6,
+          "answer": "$6$",
+          "plotModel": {
+            "vertexX": 3,
+            "leadingCoefficient": 1,
+            "validXDomain": [
+              0,
+              6
+            ]
+          },
+          "method": "TWO_QUANTIFIERS_MAX_OF_MIN",
+          "numericalCheck": "PYTHON_SYMPY_CALCULATED_MINIMUMS",
+          "eduNoCalculus": true
+        },
+        "commonErrors": [
+          "두 개의 '어떤' 중 하나만 '모든'으로 부정함",
+          "각 $t$마다 최소인 $k$를 찾은 뒤 구간 전체의 최댓값을 놓침"
+        ],
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_SUBJECTIVE",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "학생용 발문에서 문자조건과 수식이 완결되어 별도의 문제용 시각자산 불필요"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q19/C1-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-JEIL25-2FINAL-Q19-C2",
+      "sourceQid": 19,
+      "sourceUid": null,
+      "slot": "C2",
+      "purpose": "C",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q19",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "명제 “$x+y=4$를 만족하는 어떤 실수 $x,y$에 대하여 $x^2+y^2-2x+k\\lt0$이다.”의 부정을 쓰고, 그 부정이 참이 되도록 하는 정수 $k$의 최솟값을 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$-3$",
+      "solution": "부정은 “$x+y=4$를 만족하는 모든 실수 $x,y$에 대하여 $x^2+y^2-2x+k\\ge0$이다.”이다. $x+y=4$인 조건을 제외한 실수쌍까지 무조건 양수라고 요구하는 것은 아니다.\\n$y=4-x$를 대입하면 $x^2+(4-x)^2-2x+k=2x^2-10x+16+k=2(x-\\dfrac52)^2+k+\\dfrac72$이다. 모든 실수 $x$에 대하여 $0$ 이상이 되기 위한 필요충분조건은 $k+\\dfrac72\\ge0$, 즉 $k\\ge-\\dfrac72$이다. 등호는 $x=\\dfrac52$, $y=\\dfrac32$일 때 성립한다. $k$가 정수이므로 이 범위에서 가장 작은 정수는 $-3$이다.\\n따라서 구하는 최솟값은 $-3$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q19/C2-solution.svg",
+      "solutionImageAlt": "C2 명제의 부정과 이차식의 최솟값 경계를 보여주는 해설 그래프",
+      "solutionImageCaption": "전칭 부등식의 경계에서 최소가 되는 지점과 허용 범위를 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourceMetaFoundationL3": "명제의 부정과 조건 판정",
+        "sourceMetaFoundationL4": "존재·전칭 양화사 부정 후 부등식 경계",
+        "primaryRPM_L3": "명제와 조건",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-244",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+        "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q19-COUPLED-REAL-PAIR",
+        "effectiveL4Authority": "GENERATED_ACTIVE",
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_EQUATION",
+          "CC_COMPLETE_SQUARE"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_CANONICAL_PT_TPL_GENERATED_WHERE_NEEDED_SOURCE_UID_DEBT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "학생용 명제의 양화 범위·부등식·요청된 최솟값 또는 최댓값이 자연스럽고, 부정을 통해 전체 조건을 결정해야 풀림",
+        "primaryL3Necessity": "QUANTIFIER_NEGATION_IS_DECISIVE_BEFORE_GLOBAL_BOUND",
+        "mathSelfCheckEvidence": {
+          "calculatedBoundaryK": -3.5,
+          "answer": "$-3$",
+          "plotModel": {
+            "vertexX": 2.5,
+            "leadingCoefficient": 2,
+            "validXDomain": [
+              0,
+              5
+            ]
+          },
+          "method": "CONSTRAINED_PAIR_SUBSTITUTION",
+          "numericalCheck": "PYTHON_SYMPY_CALCULATED_MINIMUMS",
+          "eduNoCalculus": true
+        },
+        "commonErrors": [
+          "조건 $x+y=4$를 제거하고 모든 $(x,y)$에 대해 부등식을 요구함",
+          "최소 경계 $-7/2$를 정수 최솟값으로 그대로 답함"
+        ],
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_SUBJECTIVE",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "학생용 발문에서 문자조건과 수식이 완결되어 별도의 문제용 시각자산 불필요"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q19/C2-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-JEIL25-2FINAL-Q19-C3",
+      "sourceQid": 19,
+      "sourceUid": null,
+      "slot": "C3",
+      "purpose": "C",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q19",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "실수 전체의 집합에서 명제 “어떤 실수 $x$에 대하여 $x^2-4x-|x-2|+k\\lt0$이다.”의 부정을 쓰고, 그 부정이 참이 되도록 하는 정수 $k$의 최솟값을 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$5$",
+      "solution": "부정은 “모든 실수 $x$에 대하여 $x^2-4x-|x-2|+k\\ge0$이다.”이다.\\n$u=|x-2|$로 놓으면 $u\\ge0$이고 $(x-2)^2=u^2$이다. 따라서 식은 $u^2-u+k-4=(u-\\dfrac12)^2+k-\\dfrac{17}{4}$이다. $u=\\dfrac12$는 $x=\\dfrac32$ 또는 $x=\\dfrac52$일 때 실제로 가능하므로 식의 전체 최솟값은 $k-\\dfrac{17}{4}$이다. 모든 실수에서 $0$ 이상이 되려면 $k\\ge\\dfrac{17}{4}$이어야 한다. $k$가 정수이므로 가장 작은 값은 $5$이다.\\n따라서 구하는 최솟값은 $5$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q19/C3-solution.svg",
+      "solutionImageAlt": "C3 명제의 부정과 이차식의 최솟값 경계를 보여주는 해설 그래프",
+      "solutionImageCaption": "전칭 부등식의 경계에서 최소가 되는 지점과 허용 범위를 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourceMetaFoundationL3": "명제의 부정과 조건 판정",
+        "sourceMetaFoundationL4": "존재·전칭 양화사 부정 후 부등식 경계",
+        "primaryRPM_L3": "명제와 조건",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-244",
+        "rpmRecordId": "H1-RPM-244",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+        "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q19-ABS-NEGATION-INTEGER-BOUND",
+        "effectiveL4Authority": "GENERATED_ACTIVE",
+        "crossConceptKeys": [
+          "CC_INEQUALITY_ABSOLUTE_VALUE",
+          "CC_COMPLETE_SQUARE"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 5,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_CANONICAL_PT_TPL_GENERATED_WHERE_NEEDED_SOURCE_UID_DEBT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "학생용 명제의 양화 범위·부등식·요청된 최솟값 또는 최댓값이 자연스럽고, 부정을 통해 전체 조건을 결정해야 풀림",
+        "primaryL3Necessity": "QUANTIFIER_NEGATION_IS_DECISIVE_BEFORE_GLOBAL_BOUND",
+        "mathSelfCheckEvidence": {
+          "calculatedBoundaryK": 4.25,
+          "answer": "$5$",
+          "plotModel": {
+            "vertexX": 2,
+            "leadingCoefficient": 1,
+            "validXDomain": [
+              0.5,
+              3.5
+            ]
+          },
+          "method": "ABS_SUBSTITUTION_TWO_EQUAL_MINIMA",
+          "numericalCheck": "PYTHON_SYMPY_CALCULATED_MINIMUMS",
+          "eduNoCalculus": true
+        },
+        "commonErrors": [
+          "절댓값 앞의 마이너스를 무시해 최솟값을 잘못 계산함",
+          "실수 경계 $17/4$를 정수 최솟값으로 답함"
+        ],
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_SUBJECTIVE",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "학생용 발문에서 문자조건과 수식이 완결되어 별도의 문제용 시각자산 불필요"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q19/C3-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    }
+  ]
+}
