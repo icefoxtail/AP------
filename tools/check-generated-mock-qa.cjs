@@ -56,8 +56,9 @@ function localServer() {
       if (!absolute.startsWith(ROOT + path.sep) || !fs.existsSync(absolute) || fs.statSync(absolute).isDirectory()) {
         response.writeHead(404); response.end('Not found'); return;
       }
-      const contentType = pathname.endsWith('.json') ? 'application/json'
-        : pathname.endsWith('.svg') ? 'image/svg+xml'
+      const contentType = pathname.endsWith('.css') ? 'text/css'
+        : pathname.endsWith('.json') ? 'application/json'
+          : pathname.endsWith('.svg') ? 'image/svg+xml'
           : pathname.endsWith('.png') ? 'image/png'
             : pathname.endsWith('.js') ? 'text/javascript' : 'text/html';
       const serve = () => {
@@ -590,7 +591,10 @@ async function main() {
     await evaluate("document.getElementById('print-mock').click(); true");
     const examTarget=await waitForPopup(session.port,session.targetId,'/archive/mixed_engine.html');
     const examPage=await attachTarget(session.port,examTarget.id);
-    await waitFor(examPage.evaluate,"AppState?.mode==='exam' && document.querySelectorAll('#print-area .q-box').length===23",'mixer student exam render',60000);
+    const expectedQpp = 4;
+    const expectedPages = Math.ceil(SOURCE_COUNT / expectedQpp);
+    const expectedSlots = expectedPages * expectedQpp;
+    await waitFor(examPage.evaluate,`AppState?.mode==='exam' && document.querySelectorAll('#print-area .ap-equal-slot-page').length===${expectedPages} && document.querySelectorAll('#print-area .q-box').length===${expectedSlots}`,'mixer student exam render',60000);
     const paper=await examPage.evaluate(`(()=>({
       mode:AppState.mode,urlMode:new URLSearchParams(location.search).get('mode'),
       preview:new URLSearchParams(location.search).get('preview'),
@@ -599,13 +603,18 @@ async function main() {
        sourceMath:Number(String(q.content).includes(String.fromCharCode(36)))+(q.choices||[]).filter(c=>String(c).includes(String.fromCharCode(36))).length,
        renderedMathSources:Number(!![...document.querySelectorAll('#print-area .q-box')][i]?.querySelector('.q-content mjx-container'))+[...([...document.querySelectorAll('#print-area .q-box')][i]?.querySelectorAll('.choice-text')||[])].filter(c=>c.querySelector('mjx-container')).length,
        renderedMath:[...document.querySelectorAll('#print-area .q-box')][i]?.querySelectorAll('mjx-container').length||0})),
+      qpp:Number(AppState.qpp)||0,
+      pages:document.querySelectorAll('#print-area .ap-equal-slot-page').length,
       boxes:document.querySelectorAll('#print-area .q-box').length,
+      emptySlots:[...document.querySelectorAll('#print-area .q-box')].filter(box=>!box.innerText.trim()).length,
       mathNodes:document.querySelectorAll('#print-area mjx-container').length,
       answerBlocks:document.querySelectorAll('#print-area .sol-box,#print-area .sol-meta,#print-area .ans-cell').length,
       brokenImages:[...document.querySelectorAll('#print-area img')].filter(img=>!img.complete||img.naturalWidth===0).map(img=>img.src)
     }))()`);
-    assert(paper.mode==='exam'&&paper.urlMode==='exam'&&paper.preview==='1'&&paper.boxes===SOURCE_COUNT&&
-      JSON.stringify(paper.uids)===JSON.stringify(previewBeforePrint.map(q=>q.uid)),'Mixer exam mode, count or UID order mismatch.',paper);
+    assert(paper.mode==='exam'&&paper.urlMode==='exam'&&paper.preview==='1'&&paper.qpp===expectedQpp&&
+      paper.pages===expectedPages&&paper.boxes===expectedSlots&&paper.emptySlots===expectedSlots-SOURCE_COUNT&&
+      paper.questions.length===SOURCE_COUNT&&
+      JSON.stringify(paper.uids)===JSON.stringify(previewBeforePrint.map(q=>q.uid)),'Mixer exam mode, page/slot count or UID order mismatch.',paper);
     const expectedQuestions=await evaluate("Promise.all(mockItems.map(item=>questionFor(item.row)))");
     for(let index=0;index<SOURCE_COUNT;index++){
       const q=expectedQuestions[index],printed=paper.questions[index];
@@ -616,8 +625,8 @@ async function main() {
     }
     assert(paper.answerBlocks===0&&paper.brokenImages.length===0&&paper.mathNodes>0,'Mixer student exam contains solution blocks, broken assets or unrendered math.',paper);
     await examPage.send('Emulation.setEmulatedMedia',{media:'print'});
-    const printLayout=await examPage.evaluate("({visible:getComputedStyle(document.getElementById('print-area')).display!=='none',questionCount:document.querySelectorAll('#print-area .q-box').length})");
-    assert(printLayout.visible&&printLayout.questionCount===SOURCE_COUNT,'Mixer print media omits questions.',printLayout);
+    const printLayout=await examPage.evaluate("({visible:getComputedStyle(document.getElementById('print-area')).display!=='none',pages:document.querySelectorAll('#print-area .ap-equal-slot-page').length,slots:document.querySelectorAll('#print-area .q-box').length})");
+    assert(printLayout.visible&&printLayout.pages===expectedPages&&printLayout.slots===expectedSlots,'Mixer print media omits pages or equal slots.',printLayout);
     await saveScreenshot(examPage.send,output,'student-print-output.png');evidence.screenshots.push('student-print-output.png');
     check('student mixer exam preserves exact source UID order/content/choices/assets and renders print media',{...paper,printLayout});
     await examPage.evaluate('window.close(); true').catch(()=>{});examPage.socket.close();
