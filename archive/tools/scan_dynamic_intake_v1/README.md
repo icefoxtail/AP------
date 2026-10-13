@@ -2,6 +2,15 @@
 
 목적: 시험지 인테이크가 계속 늘어날 때 기존 고정 29건은 그대로 유지하면서, 새 원본은 운영 파일 / 기존 작업 / PR / Library / 공식 검수 증거와 대조한 뒤 **새 CREATE 대상** 또는 **기존 작업 인계 대상**으로 구분한다.
 
+## Pro 12레인 / Plus 5레인 용량 전환 (v2)
+
+- `--profile pro12`는 현재 Pro의 CREATE 12개를 실제 실행 슬롯으로 사용한다(기본값).
+- `--profile plus5`는 향후 Plus용 실행 슬롯 5개에서 기존 12개 **논리 담당 큐**를 분담한다.
+- 기존 29건의 소유 및 `rows[].lane`은 절대로 재배정하지 않는다. `rows[].executionSlot`만 12/5에 따라 바뀐다.
+- `workers`는 실행 슬롯별 대기열이다. Plus 전환 때 기존 12개 예약을 모두 ON하지 말고 5개만 사용한다. 유효 writer lease가 있는 시험지는 슬롯 전환 전 먼저 마감하거나 정식 인계해야 한다.
+- 코드 설정 변경은 `--profile plus5`로 가능하다. 실제 예약 OFF/ON과 동시 writer 안전성 검증은 별개다.
+- 인덱스 source/main/branches/PR/Library/receipts/ownership 중 하나라도 불완전하면 `completeForDispatch=false`이며 신규 Git 쓰기 자동 허용하지 않는다.
+
 ## 현재 정본
 
 - Git 원본: `codex/scan-intake-deliverables-20261012` → `스캔_인테이크_산출물/<시험지>/<시험지>.js`

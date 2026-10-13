@@ -16,6 +16,18 @@ export const LANES = [
   'CREATE-B','CREATE-B1','CREATE-B2','CREATE-B3',
   'CREATE-C','CREATE-C1','CREATE-C2','CREATE-C3',
 ];
+// Pro->Plus changes only execution slot count. Logical lane ownership is immutable.
+export const CAPACITY_PROFILES = Object.freeze({
+  pro12: Object.freeze([...LANES]),
+  plus5: Object.freeze(['CREATE-SLOT-1','CREATE-SLOT-2','CREATE-SLOT-3','CREATE-SLOT-4','CREATE-SLOT-5']),
+});
+export function executionSlotForLane(lane, profile='pro12') {
+  const index=LANES.indexOf(lane);
+  if(index<0) throw new Error('Unknown logical lane '+lane);
+  if(!Object.hasOwn(CAPACITY_PROFILES,profile)) throw new Error('Unknown capacity profile '+profile);
+  if(profile==='pro12') return lane;
+  return CAPACITY_PROFILES.plus5[index % CAPACITY_PROFILES.plus5.length];
+}
 export const INTAKE_ROOT = '스캔_인테이크_산출물/';
 
 export function normalizeExamId(filename) {
@@ -111,7 +123,8 @@ const nowIso=()=>new Date().toISOString();
  * Each external index must have `complete: true` to authorize new CREATE.
  * `verified:true` with an exact SHA is mandatory for trusting stage receipts.
  */
-export function dispatch(snapshots,{minYear=0,maxYear=25,grade='중3',pins=pinsV4(),generatedAt=nowIso(),campaign='SCAN_M3_DYNAMIC_V1'}={}){
+export function dispatch(snapshots,{minYear=0,maxYear=25,grade='중3',pins=pinsV4(),generatedAt=nowIso(),campaign='SCAN_M3_DYNAMIC_V1',capacityProfile='pro12'}={}){
+  if(!Object.hasOwn(CAPACITY_PROFILES,capacityProfile)) throw new Error('Invalid capacity profile: '+capacityProfile);
   const {source={},production={},branches={},prs={},library={},receipts={},ownership={}}=snapshots;
   const scope=(r)=>r && r.grade===grade && r.year>=minYear&&r.year<=maxYear;
   const sourceRows=parseIndexArray(source,['items','files']).map(x=>{
@@ -190,7 +203,7 @@ export function dispatch(snapshots,{minYear=0,maxYear=25,grade='중3',pins=pinsV
     else if(!requiredCoverage){status='INVENTORY_UNVERIFIED';why='At least one mandatory cross-system inventory incomplete';}
     else if(branchEvidence.length||libraryPaths.length||pin||own.lane){status='CREATE_RESUME';why='Existing owner/candidate or prior Library data must be inherited';}
     else {status='CREATE_NEW';why='No prior product, branch, PR or Library record in complete snapshots';}
-    rows.push({id,year:parseIdentity(id).year,lane,stream:lane.split('-')[1][0],pinned:!!pin,
+    rows.push({id,year:parseIdentity(id).year,lane,executionSlot:executionSlotForLane(lane,capacityProfile),stream:lane.split('-')[1][0],pinned:!!pin,
       sourcePaths:orig.map(x=>x.sourcePath).filter(Boolean),sourceBlobSha:orig[0]?.sourceBlobSha||null,
       status,why,productionPaths:studentProducts,workingBranches:branchEvidence,openPrs,
       libraryFileCount:libraryPaths.filter(p=>p.includes('.')).length,libraryPaths:libraryPaths.slice(0,5),
@@ -205,7 +218,20 @@ export function dispatch(snapshots,{minYear=0,maxYear=25,grade='중3',pins=pinsV
     else if(x.status==='CREATE_RESUME')lane.resume++;
     else if(!x.mayStartCreate)lane.blocked++;
   }
-  return {schemaVersion:1,campaign,generatedAt,policy:'READ_ONLY_NO_CLAIMS_NO_GIT_WRITES',
+  const workers=Object.fromEntries(CAPACITY_PROFILES[capacityProfile].map(slot=>
+    [slot,{count:0,new:0,resume:0,blocked:0,logicalLanes:[],exams:[]}]
+  ));
+  for(const x of rows){
+    const w=workers[x.executionSlot];
+    w.count++; w.exams.push({id:x.id,lane:x.lane,status:x.status});
+    if(!w.logicalLanes.includes(x.lane))w.logicalLanes.push(x.lane);
+    if(x.status==='CREATE_NEW')w.new++;
+    else if(x.status==='CREATE_RESUME')w.resume++;
+    else w.blocked++;
+  }
+  for(const w of Object.values(workers))w.logicalLanes.sort();
+  return {schemaVersion:2,campaign,generatedAt,policy:'READ_ONLY_NO_CLAIMS_NO_GIT_WRITES',
+    capacityProfile,workerSlotCount:CAPACITY_PROFILES[capacityProfile].length,workers,
     sourceRef:source.ref||null,sourceHead:source.sha||null,
     mainRef:production.ref||null,mainHead:production.sha||null,
     completeForDispatch:requiredCoverage,inventoryCoverage:coverage,
@@ -222,7 +248,7 @@ function optionArgs(args){let o={};for(let i=0;i<args.length;i++){
 function readJson(f, def={complete:false}){return f?JSON.parse(fs.readFileSync(f,'utf8')):def;}
 function main(argv){
  const opts=optionArgs(argv);
- if(opts.help){console.log('Usage: node scan-dispatch.mjs --source-index source.json --production-index main.json --branches-index branches.json --prs-index prs.json --library-index library.json --receipts-index receipts.json --ownership-index previous.json --output out.json [--min-year 0] [--max-year 25]  OR --from-git --source-ref origin/codex/scan-intake-deliverables-20261012 --production-ref origin/main [external indexes...]');return;}
+ if(opts.help){console.log('Usage: node scan-dispatch.mjs --source-index source.json --production-index main.json --branches-index branches.json --prs-index prs.json --library-index library.json --receipts-index receipts.json --ownership-index previous.json --output out.json [--min-year 0] [--max-year 25] [--profile pro12|plus5]  OR --from-git --source-ref origin/codex/scan-intake-deliverables-20261012 --production-ref origin/main [external indexes...]');return;}
  let git={};if(opts['from-git']!==undefined){
     git=gitSnapshot({sourceRef:opts['source-ref']||'origin/codex/scan-intake-deliverables-20261012',productionRef:opts['production-ref']||'origin/main'});
  }
@@ -233,10 +259,10 @@ function main(argv){
  if(!snapshots.source||!snapshots.production)throw Error('Need source and production snapshots (or --from-git)');
  const maxYear=opts['max-year']===undefined?25:Number(opts['max-year']);
  const minYear=opts['min-year']===undefined?0:Number(opts['min-year']);
- const output=dispatch(snapshots,{maxYear,minYear,grade:opts.grade||'중3'});
+ const output=dispatch(snapshots,{maxYear,minYear,grade:opts.grade||'중3',capacityProfile:opts.profile||'pro12'});
  const dest=opts.output||'scan-dispatch.json';fs.mkdirSync(path.dirname(dest),{recursive:true});fs.writeFileSync(dest,JSON.stringify(output,null,2)+'\n');
- const csv=['examId,lane,status,pinned,sourceBlobSha,reason',...output.rows.map(x=>
- [x.id,x.lane,x.status,x.pinned,x.sourceBlobSha||'',x.why].map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(','))].join('\n')+'\n';
+ const csv=['examId,lane,executionSlot,status,pinned,sourceBlobSha,reason',...output.rows.map(x=>
+ [x.id,x.lane,x.executionSlot,x.status,x.pinned,x.sourceBlobSha||'',x.why].map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(','))].join('\n')+'\n';
  fs.writeFileSync(dest.replace(/\.json$/i,'')+'.csv',csv);
  console.log(JSON.stringify({output:dest,coverage:output.inventoryCoverage,totals:output.totals},null,2));
  if(!output.completeForDispatch){console.error('Not safe for autonomous dispatch: required inventory snapshot(s) missing/incomplete.');process.exitCode=2;}

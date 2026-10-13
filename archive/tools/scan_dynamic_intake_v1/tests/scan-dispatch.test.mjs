@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import { dispatch,normalizeExamId,parseIdentity,pinsV4,LANES } from '../scan-dispatch.mjs';
+import { dispatch,normalizeExamId,parseIdentity,pinsV4,LANES,CAPACITY_PROFILES,executionSlotForLane } from '../scan-dispatch.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const source=JSON.parse(fs.readFileSync(path.join(root,'fixtures/git-source-snapshot-20261013.json')));
 const production=JSON.parse(fs.readFileSync(path.join(root,'fixtures/git-main-snapshot-20261013.json')));
@@ -93,4 +93,36 @@ test('two same-identity source paths cannot be auto-created',()=>{
  const source2={...source,items:[...source.items,{examId:id,sourcePath:'other/duplicate.js'}]};
  const out=dispatch(snapshot({source:source2}));
  assert.equal(out.rows.find(x=>x.id===id).status,'DUPLICATE_REVIEW');
+});
+
+
+test('Pro 12 physical slots and Plus 5 preserve all logical ownership',()=>{
+ const a=dispatch(snapshot(),{capacityProfile:'pro12'});
+ const b=dispatch(snapshot(),{capacityProfile:'plus5'});
+ assert.equal(a.workerSlotCount,12);assert.equal(b.workerSlotCount,5);
+ assert.deepEqual(Object.keys(b.workers),CAPACITY_PROFILES.plus5);
+ assert.equal(b.totals.sourceCount,a.totals.sourceCount);
+ assert.equal(b.totals.pinnedExisting,29);
+ for(const x of a.rows){
+   const y=b.rows.find(z=>z.id===x.id);
+   assert.equal(y.lane,x.lane);
+   assert.equal(y.status,x.status);
+   assert.equal(y.executionSlot,executionSlotForLane(y.lane,'plus5'));
+ }
+ assert.equal(Object.values(b.workers).reduce((sum,w)=>sum+w.count,0),b.rows.length);
+ assert.equal(new Set(b.rows.map(x=>x.executionSlot)).size,5);
+});
+
+test('Plus 5 does not reshuffle pinned or discovered logical lanes when batch grows',()=>{
+ const id='21_왕운중_2학기_중간_중3_수학';
+ const before=dispatch(snapshot(),{capacityProfile:'plus5'});
+ const expanded={...source,items:[...source.items,{examId:id,sourceBlobSha:'b'.repeat(40),sourcePath:'스캔_인테이크_산출물/'+id+'/'+id+'.js'}]};
+ const after=dispatch(snapshot({source:expanded}),{capacityProfile:'plus5'});
+ for(const x of before.rows){const y=after.rows.find(z=>z.id===x.id);assert.equal(y.lane,x.lane);assert.equal(y.executionSlot,x.executionSlot);}
+ assert.equal(after.rows.length,before.rows.length+1);
+});
+
+test('bad capacity profile fails closed',()=>{
+ assert.throws(()=>dispatch(snapshot(),{capacityProfile:'other'}),/Invalid capacity profile/);
+ assert.throws(()=>executionSlotForLane('CREATE-X','plus5'),/Unknown logical lane/);
 });
