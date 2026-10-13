@@ -1,7 +1,7 @@
 {
   "schemaVersion": "archive-question-metadata-v1",
   "metadataRevision": "archive-metadata-v1-phase1b-20260825+H1_FOUNDATION@1.0.0",
-  "generatedAt": "2026-10-13T19:56:21.506Z",
+  "generatedAt": "2026-10-13T20:00:06.932Z",
   "approvalStatus": "APPROVED_SEMANTIC_RECHECKED_WITH_L4_GAPS",
   "promotionPolicy": {
     "candidateOnlyTagsPromoted": false,
@@ -13,7 +13,7 @@
     "l4GapRecordsDefaultSelectable": false
   },
   "sourceDigests": {
-    "identityMap": "9a0c53528ea9337dd9d8de25d337ba827cfdc1f4dc0f5a3f7ffdbb044b8b6bfc",
+    "identityMap": "f36bda282c97101a920ec1641fc408ff2fbb57a81faac8630f312f61b8627a5a",
     "completeClassification": "24dc74f6c4a8a4ef588941ddcec9c139bb601d65a642c259eab4a87fe5cb7b2b",
     "tagMaster": "68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a"
   },
@@ -486,12 +486,12 @@
   },
   "reviewedPassCount": 3189,
   "counts": {
-    "records": 15647,
+    "records": 15669,
     "uidUnique": true,
     "sourceJoinUnique": true,
     "semanticallyReviewed": 3239,
-    "explicitProblemTypeHolds": 11197,
-    "explicitTemplateHolds": 11231,
+    "explicitProblemTypeHolds": 11219,
+    "explicitTemplateHolds": 11253,
     "explicitDifficultyHolds": 999,
     "m3FoundationV2AppliedRecords": 1644,
     "m3Direct2HFinalized": 700,
@@ -79673,6 +79673,43 @@
       "difficultyBucket": 2
     },
     {
+      "questionUid": "qid_v1_196ee75055c02b8a2329f54f0596ca33aec5f9f79f0c38fa7ab48a1b27cf32e0",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 5,
+      "sourceQuestionNo": 5,
+      "sourceFingerprint": "07bfb9b9df92166063815de83e4f564e8599f7f8b34237ecb3d4f8bf03a8938e",
+      "contentFingerprint": "b63c0bd51c0317c26e21755a1d1498dbb3eccc34eae7fecadbec633c33cd06ee",
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-08",
+      "standardUnit": "조합",
+      "subUnitKey": "H15-SB-08-COMBINATION_APPLICATION",
+      "subUnit": "조합의 활용",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 1
+    },
+    {
       "questionUid": "qid_v1_19743fe3bbbcf53f5420a37cc7158f7f7e72b5cd142c4027a87d3ae750e48a55",
       "sourceArchiveFile": "similar/high/h1/2mid/25_금당고_2학기_중간_고1_유사2.js",
       "sourceOrdinal": 9,
@@ -81447,6 +81484,47 @@
       "approvalEvidence": [
         "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json"
       ]
+    },
+    {
+      "questionUid": "qid_v1_1a01ce6b57afdd46704e5ed835db8c054e97c29f45f071000717bbb155cbba7b",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 15,
+      "sourceQuestionNo": 15,
+      "sourceFingerprint": "f5346d082e03b5d51891717eebf49cea3dbebf8ff738ae4b408046f235777efe",
+      "contentFingerprint": "ba4b4590a538fb1b11f8b0bffa83c9d27464f9718571080b8dff0b2dded726a3",
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-07",
+      "standardUnit": "순열",
+      "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+      "subUnit": "조건이 있는 순열",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_H1_ARRANGEMENT_LEXICOGRAPHIC_RANK",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 4
     },
     {
       "questionUid": "qid_v1_1a01eaaa4e1a675571d760906c036394daf8de34f6459b5b90caf618be89eddd",
@@ -96035,6 +96113,45 @@
       ]
     },
     {
+      "questionUid": "qid_v1_1ea2626df3b2a16244aa8445727c9e24a2a8e37affc6f8aeb83e933012089fca",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 13,
+      "sourceQuestionNo": 13,
+      "sourceFingerprint": "a8b264db1a6e41b95fe1d22fca5f3394f559cc76bde4218a9b520275e36bba7f",
+      "contentFingerprint": "4454de74431e0087b88e9bbd6b84598668c555fdc28fbe7cab52750a412a1ad8",
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-07",
+      "standardUnit": "순열",
+      "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+      "subUnit": "조건이 있는 순열",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 2
+    },
+    {
       "questionUid": "qid_v1_1ea93c8f6e39dec082dec838c07cd44187b0fe2e169005b68a65e6d29fba82a8",
       "sourceArchiveFile": "original/middle/m2/2final/23_금당중_2학기_기말_중2_기출.js",
       "sourceOrdinal": 2,
@@ -100511,6 +100628,47 @@
       "metaFoundationPackVersion": "1.0.0",
       "metaFoundationHoldReason": null,
       "legacyLevelCompatibilityEvidence": "REUSED_ACCEPTED_METADATA_PAIR"
+    },
+    {
+      "questionUid": "qid_v1_2044082d0217747d22a5ca399740579165b3669326607f493907228ffb438de0",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 11,
+      "sourceQuestionNo": 11,
+      "sourceFingerprint": "3758a202a239c94065ded5de3e90bb123b24b5035d86ccc0e8b4fb0daa61cb1b",
+      "contentFingerprint": "5f7fdfb8b8ffef7b335197980c83198fe7f54a8e76ef15e75af0ed902848da67",
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-05",
+      "standardUnit": "무리함수",
+      "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
+      "subUnit": "무리함수와 역함수",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "crossConceptKeys": [
+        "CC_RADICAL_FUNCTION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 3
     },
     {
       "questionUid": "qid_v1_204b55472ec74fe6c2c2eeb120fc0127d0b7b464160c50894677326d52490378",
@@ -144150,6 +144308,45 @@
         "payloadPath": "archive/data/r2e-intake/m3/21_팔마중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json",
         "payloadReviewedAtKst": "2026-09-30T17:02:17+09:00"
       }
+    },
+    {
+      "questionUid": "qid_v1_2e031837aa0c3a02f757e3f7f5cb366855f6445b7116cef7af70c61b7393ea40",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 4,
+      "sourceQuestionNo": 4,
+      "sourceFingerprint": "a2e81dc6c927c78732d5d728f48f55d0f0d60c2ff107046701998d2d616a3338",
+      "contentFingerprint": "2ca9062b2bbfe1f75001a4ccac4fe2624e2eda4ca71b4842455c6a6901b2cf44",
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-06",
+      "standardUnit": "경우의 수",
+      "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+      "subUnit": "경우의 수의 기본 원리",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 1
     },
     {
       "questionUid": "qid_v1_2e05a8e19cdaa15fdf876a92b0b0921d9662dcdc9c59101b7dd8b7d1cfa657e2",
@@ -239134,6 +239331,46 @@
       "approvalEvidence": [
         "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json"
       ]
+    },
+    {
+      "questionUid": "qid_v1_4b95f7d0cf690faba75ecbd49383e6c374c96ec17062b278ae305180aef21282",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": 20,
+      "sourceFingerprint": "0359468640b2043f310f5d6994eac08b3e399c4f00164337e57ffce12e8c859b",
+      "contentFingerprint": "9350ba73d006a1ef08eaa26ca0faa5c89870f0f294ddf03ed925337f011e9853",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-11",
+      "standardUnit": "원의 방정식",
+      "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+      "subUnit": "원의 방정식",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_CIRCLE_EQUATION",
+      "templateKey": "TM_CIRCLE_CENTER_RADIUS",
+      "crossConceptKeys": [
+        "CC_RIGHT_TRIANGLE",
+        "CC_CIRCLE_TANGENCY"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 2
     },
     {
       "questionUid": "qid_v1_4b9e934ca4a68d8fca10e52af37423ba9b20dc9c7b0148f6b5944457d253ff18",
@@ -360982,6 +361219,45 @@
       ]
     },
     {
+      "questionUid": "qid_v1_7218d10c13be8fb176249de6935376e9ed7e48bac14ef58e82b95c0ae86ee37f",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 6,
+      "sourceQuestionNo": 6,
+      "sourceFingerprint": "91fa3a8d3fdf39ef0e11d907dac2172074e5f9e253ff37229cf9b0c40f25c978",
+      "contentFingerprint": "21c88378d72e5264eca13b06f07bdb18814cd9600f4b08e7a22d9fe5bcc58778",
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-08",
+      "standardUnit": "조합",
+      "subUnitKey": "H15-SB-08-COMBINATION_APPLICATION",
+      "subUnit": "조합의 활용",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 2
+    },
+    {
       "questionUid": "qid_v1_721a09b13db981cba1d0bf976d36a9314746b2c053e1538d60450c22c535b95d",
       "sourceArchiveFile": "original/high/h1/1final/25_금당고_1학기_기말_고1_기출c.js",
       "sourceOrdinal": 19,
@@ -445614,6 +445890,46 @@
       "subUnitClassificationDepth": "complete_active_binding"
     },
     {
+      "questionUid": "qid_v1_8be98144bb576b326b7b16ec83dd0067b27289324545077c89fbc8ef0871602b",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 12,
+      "sourceQuestionNo": 12,
+      "sourceFingerprint": "309ffa5b9470c6c7aa010d1ce24e4d22ac32d1bf0d7913ad72e6930b20fc52c8",
+      "contentFingerprint": "e4b4f49d47e9683223fbf3fb2fbccd551ccb6eef147a99674cabcf168c9bee43",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-12",
+      "standardUnit": "도형의 이동",
+      "subUnitKey": "H15-SA-12-REFLECTION",
+      "subUnit": "대칭이동",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+      "templateKey": "TT_SHORTEST_MULTI_LINE",
+      "crossConceptKeys": [
+        "CC_REFLECTION",
+        "CC_DISTANCE_TWO_POINTS"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 4
+    },
+    {
       "questionUid": "qid_v1_8bebcc6498ee3c67f0f667c0026994659471a518190591839829c1e495f3507a",
       "sourceArchiveFile": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js",
       "sourceOrdinal": 22,
@@ -459207,6 +459523,48 @@
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
       ],
       "difficultyBucket": 5
+    },
+    {
+      "questionUid": "qid_v1_8fc02860b53d17732cd1303591f432102389615ef3fcaa4cacda98529a6cc970",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 16,
+      "sourceQuestionNo": 16,
+      "sourceFingerprint": "fcbdecac7e9bbae1d719670e02e66aafed85b32281c1828886e3528c61e710c7",
+      "contentFingerprint": "38d590f6d99f6d7d98823b077f89f388ced794341d82073689e335f5647431be",
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-08",
+      "standardUnit": "조합",
+      "subUnitKey": "H15-SB-08-COMBINATION_APPLICATION",
+      "subUnit": "조합의 활용",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_H1_SELECTION_GEOMETRIC_DEGENERACY",
+      "crossConceptKeys": [
+        "CC_LATTICE_POINT_COUNTING"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_INTEGER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 4
     },
     {
       "questionUid": "qid_v1_8fc47f6ddd22ff96c5e4f8eaed3caabb6cf6fc73783e0be16b750d24212f1892",
@@ -511970,6 +512328,47 @@
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
       ],
       "difficultyBucket": 2
+    },
+    {
+      "questionUid": "qid_v1_9f76c907e5f9d4c3a6ce7b7543c8a184c23b359df9b9bff71ba54691265ec0dd",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 18,
+      "sourceQuestionNo": 18,
+      "sourceFingerprint": "f4cd1d5893c3447c92cbe34cb63fb1ffee373f2b1411c19047e3dcbad710512b",
+      "contentFingerprint": "1e2a027273d7d86b159ddd56ab4b16af02684446058e3d2b1b9452c40ddd4631",
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-03",
+      "standardUnit": "함수",
+      "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
+      "subUnit": "역함수",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "templateKey": "TPL_INVERSE_FUNCTION_FORM",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_NONZERO"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 5
     },
     {
       "questionUid": "qid_v1_9f7e019f726b8ab23e81652f7e3538d0755cd922eee165459cc1052fa57447e6",
@@ -574308,6 +574707,45 @@
       ]
     },
     {
+      "questionUid": "qid_v1_b1fd959d384d58ceb721e305e4e1a6b30fc06036a7356233584273fad2f3c6c1",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 7,
+      "sourceQuestionNo": 7,
+      "sourceFingerprint": "c49d54f77b4362da87985b8ea1e9ac5bb7f950551064d8ae958f8277973eb99f",
+      "contentFingerprint": "4b409c0b7dca92816056777398cb21a28ef7680253e0df02ce99a6589ac98714",
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-03",
+      "standardUnit": "함수",
+      "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
+      "subUnit": "역함수",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "templateKey": "TPL_INVERSE_FUNCTION_FORM",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 3
+    },
+    {
       "questionUid": "qid_v1_b202ccbdfc7ec3cf1e8a2df9d2dd8c6a748d0d2b8bd0c3ac7bd2597a89f01896",
       "sourceArchiveFile": "original/high/h1/1final/21_강남여고_1학기_기말_고1_기출.js",
       "sourceOrdinal": 22,
@@ -574780,6 +575218,48 @@
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
       ]
+    },
+    {
+      "questionUid": "qid_v1_b2230ec647f85e8293a0a966c8acee37c414500d8493234be91b3fa860d14174",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 21,
+      "sourceQuestionNo": 21,
+      "sourceFingerprint": "701f8b6d3f34336a732bda58f60af885a9bf1393d648fbed08d79246e71b28da",
+      "contentFingerprint": "27f5edcde6b457e39935da29226f0f524ee218659ad06e84b4454a353ef9f651",
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-04",
+      "standardUnit": "유리함수",
+      "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
+      "subUnit": "유리함수의 활용",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION",
+        "CC_AM_GM"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 4
     },
     {
       "questionUid": "qid_v1_b241d1d5c34ce84c18c8bc4ca689efe25199dedc795485543a90bd47f1eb7b22",
@@ -601403,6 +601883,46 @@
       ]
     },
     {
+      "questionUid": "qid_v1_b9cdb8177780851e0c61a4b0ad6cf63960d62e4afcb1b6453256e820cc12f1bf",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 9,
+      "sourceQuestionNo": 9,
+      "sourceFingerprint": "7b49e8a5b0caf9fef673597d75b5f84267636092280460ecc3922881d3775576",
+      "contentFingerprint": "f09ca1b805e383fcd83a0e24109d5d42586b067ccae59edb1f18cb9eb8e81425",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-12",
+      "standardUnit": "도형의 이동",
+      "subUnitKey": "H15-SA-12-REFLECTION",
+      "subUnit": "대칭이동",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_MOVE_LINE_REFLECTION",
+      "templateKey": "TT_LINE_REFLECTION_EQUATION",
+      "crossConceptKeys": [
+        "CC_CIRCLE_EQUATION",
+        "CC_REFLECTION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 2
+    },
+    {
       "questionUid": "qid_v1_b9d573cbf4e91c156e4cd0f8883f2d22b49a1697926ef8b0bcd0168a44850513",
       "sourceArchiveFile": "original/high/h1/1final/26_순천여고_1학기_기말_고1_기출.js",
       "sourceOrdinal": 11,
@@ -602458,6 +602978,47 @@
       "approvalEvidence": [
         "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json"
       ]
+    },
+    {
+      "questionUid": "qid_v1_ba49013180d51766c27a90f25dd86a5486204696eb4483fc8e030596f0aa4206",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 3,
+      "sourceQuestionNo": 3,
+      "sourceFingerprint": "57e4d5005bcbee6d8b155fc897c84236e8351efa5a2c6d0568a21c0d8e079d3a",
+      "contentFingerprint": "d0d26f6635cf2ccb28167870bbfa592aafabce5fe23411468bcb161d552fba9f",
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-05",
+      "standardUnit": "무리함수",
+      "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+      "subUnit": "무리함수의 그래프",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+      "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_DIRECT",
+      "crossConceptKeys": [
+        "CC_RADICAL_FUNCTION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 1
     },
     {
       "questionUid": "qid_v1_ba4ddc90175cba403007b152f63aa7005153285b37398f5859098a02112e3d5a",
@@ -617876,6 +618437,49 @@
       ],
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate"
+    },
+    {
+      "questionUid": "qid_v1_bf0fe7bdcd6274eaaddb01ebde9c62130b1aab450d94ae224be41d1d36f00a01",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 19,
+      "sourceQuestionNo": 19,
+      "sourceFingerprint": "9c32c089f81361051f343f08296bd579099e0fc2b8b8263e94d232c43c647420",
+      "contentFingerprint": "861260366019331045a443c0bca69592af35433d4bc86936009a5c8fb3747520",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-11",
+      "standardUnit": "원의 방정식",
+      "subUnitKey": "H15-SA-11-INTERSECTION",
+      "subUnit": "원과 직선·원의 교점",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+      "crossConceptKeys": [
+        "CC_CIRCLE_EQUATION",
+        "CC_LINE_INTERSECTION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_INTEGER",
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 3
     },
     {
       "questionUid": "qid_v1_bf1f63cd94dbdac93b4c288cec4cce1a32d4f5ce3245f9d2039c535a4b69b6b7",
@@ -637306,6 +637910,48 @@
       "metaFoundationPackVersion": "1.0.2"
     },
     {
+      "questionUid": "qid_v1_c502e8af2c91265b22858366b1fe8aca1d64d4aa841c8702783e05a00d7a7f13",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": 17,
+      "sourceFingerprint": "357ebbd35f09910a960b234271544523ea8bf175f98b7e0bfba37d5fe8e148ac",
+      "contentFingerprint": "be9b2044d219cafd779bc7e3362e29d0a8622e5fe3098f635e9c661856c76329",
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-05",
+      "standardUnit": "무리함수",
+      "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+      "subUnit": "무리함수의 그래프",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
+      "crossConceptKeys": [
+        "CC_RADICAL_FUNCTION",
+        "CC_TRIANGLE_AREA"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 3
+    },
+    {
       "questionUid": "qid_v1_c50d6b573fa518ccbfca333378e99c0ae61b538d165091f7c1c2e8895cd9b08b",
       "sourceArchiveFile": "original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js",
       "sourceOrdinal": 7,
@@ -641165,6 +641811,45 @@
         "independentRecheck": "independent_recheck.json",
         "representationRole": "not visually dependent"
       }
+    },
+    {
+      "questionUid": "qid_v1_c6638e8d98b75f08e84783797659ab6b1b586d4640baaa8b8c2d3e727e016ddf",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 1,
+      "sourceQuestionNo": 1,
+      "sourceFingerprint": "2a8dbdcd4d0cb23f19d5881ba427a8dd7608f8d909ad33acd9ff03233c9a9994",
+      "contentFingerprint": "28ae5ea2a3ab6539ee32644d279656a7221ee294277fcf5a4f69aea6e9ce97ad",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-12",
+      "standardUnit": "도형의 이동",
+      "subUnitKey": "H15-SA-12-TRANSLATION",
+      "subUnit": "평행이동",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_MOVE_POINT_TRANSLATION",
+      "templateKey": "TT_POINT_TRANSLATION_COORD",
+      "crossConceptKeys": [
+        "CC_TRANSLATION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 1
     },
     {
       "questionUid": "qid_v1_c6658d925a05a2fdaa2f56656fc63f57030e54dc9d71e9f577b777934e00cce5",
@@ -654124,6 +654809,45 @@
       ]
     },
     {
+      "questionUid": "qid_v1_ca8cecc4d3b4af24b2cd3540d0e52bd89faa73e0e3e36d4c90e83187f21cbfd3",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 2,
+      "sourceQuestionNo": 2,
+      "sourceFingerprint": "6d00600385898742388adcbe5e0edacd9169c61039a4ca3e6d8005a319637a08",
+      "contentFingerprint": "7fb4d25ff6135da78c33246692b5dff3bf3b9380b70a4529891acbcf597ed2e7",
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-04",
+      "standardUnit": "유리함수",
+      "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+      "subUnit": "유리함수의 그래프",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+      "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 1
+    },
+    {
       "questionUid": "qid_v1_ca9000b38594dad9cc69f42b7d259bee5168ffeee34548c87f187dbf6f58a55a",
       "sourceArchiveFile": "original/middle/m1/2mid/23_향림중_2학기_중간_중1_기출.js",
       "sourceOrdinal": 11,
@@ -655624,6 +656348,48 @@
       "L2Key": "L2-1.1",
       "L3Key": "L3-1.1.2",
       "L4Key": "L4-1.1.2.2"
+    },
+    {
+      "questionUid": "qid_v1_cafc097e94abdb16d6877fe11ad55c6202f8c9fa7b91c1651cf37b266c36dff6",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 14,
+      "sourceQuestionNo": 14,
+      "sourceFingerprint": "f3809aee2b737d73c29e3de8015dda76406725866420061664e402432af67e42",
+      "contentFingerprint": "abfd1cbfcab24d77fd8ae0fa1e9c4a988628ef20e8a375b7dc9839ba2d38bbf1",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-11",
+      "standardUnit": "원의 방정식",
+      "subUnitKey": "H15-SA-11-TANGENT",
+      "subUnit": "원의 접선",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_GIVEN_SLOPE",
+      "crossConceptKeys": [
+        "CC_CIRCLE_TANGENCY",
+        "CC_TRANSLATION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 3
     },
     {
       "questionUid": "qid_v1_caffa2fa9b47278ffbf8ede61047c0dec4866bfb5cb552805f03eca092205526",
@@ -719411,6 +720177,45 @@
       "metaFoundationPackVersion": "1.0.2"
     },
     {
+      "questionUid": "qid_v1_dfc88daf5b7ebf9a44cb2e24218e629cb4af364d1e36f2437eb04da40a8ee7bf",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 8,
+      "sourceQuestionNo": 8,
+      "sourceFingerprint": "be6163fe218e967f21bf008ceacc3c8445f3c71805cc1296ef3a7632a21c3e28",
+      "contentFingerprint": "81d3e589c9181d1ad742d7cabf595845ff19c87ba2196f7d9442515a74c4783a",
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-04",
+      "standardUnit": "유리함수",
+      "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
+      "subUnit": "유리함수의 활용",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_FUNCTION_RECOVERY",
+      "templateKey": "TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 2
+    },
+    {
       "questionUid": "qid_v1_dfcb3489221fd88723a26a3260daddf29af9bb531c7f708e6ff524e5f1c4def5",
       "sourceArchiveFile": "original/middle/m2/2final/22_풍덕중_2학기_기말_중2_기출.js",
       "sourceOrdinal": 24,
@@ -749133,6 +749938,48 @@
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
       ],
       "difficultyBucket": 3
+    },
+    {
+      "questionUid": "qid_v1_e8475d79081dd2fd22631109a154978194caea8b0c191426fa2175f246a99c4b",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 22,
+      "sourceQuestionNo": 22,
+      "sourceFingerprint": "7a24b644004a02abd782c94d8d486efc13181e3de590873c939f1f402f292bc3",
+      "contentFingerprint": "a5fb4c211d61f8041d04b4ec12e33d7300eca14503d35629e42cc3877c6805e3",
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-05",
+      "standardUnit": "무리함수",
+      "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
+      "subUnit": "무리함수와 역함수",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_GEOMETRY",
+      "crossConceptKeys": [
+        "CC_RADICAL_FUNCTION",
+        "CC_REFLECTION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 4
     },
     {
       "questionUid": "qid_v1_e848c668133a1a2031dea330703e621a3247447588f4cfcc875b27577d7ec167",
@@ -815020,6 +815867,48 @@
       "metaFoundationPackVersion": "1.0.2"
     },
     {
+      "questionUid": "qid_v1_fc95f81369e2f8d4ad3e8acdbfdb9810d52b5906bb81060054012f737fce03b8",
+      "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 10,
+      "sourceQuestionNo": 10,
+      "sourceFingerprint": "8d8107a2ce7fd8b14f5d3309a12fb170b70c1760bfacf222f6b51d5d153a4ccc",
+      "contentFingerprint": "720d1d93f1823f77a8fe17275a1d43d5c32ed4684102c61af3730b4cda822b6d",
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-05",
+      "standardUnit": "무리함수",
+      "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+      "subUnit": "무리함수의 그래프",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+      "crossConceptKeys": [
+        "CC_RADICAL_FUNCTION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_INTEGER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 2
+    },
+    {
       "questionUid": "qid_v1_fc9659090ccd851e9486a29f4e6f01ad880289c9dfd0da343d98c8404bade19c",
       "sourceArchiveFile": "original/high/h2/1mid/25_순천여고_1학기_중간_고2_대수.js",
       "sourceOrdinal": 14,
@@ -825623,10 +826512,9 @@
   "productionWriteAllowed": true,
   "registrationSync": {
     "schemaVersion": "archive-registration-metadata-sync-v2",
-    "added": 44,
+    "added": 22,
     "addedFiles": [
-      "original/high/h1/1final/20_매산여고_1학기_기말_고1_기출.js",
-      "original/high/h1/1mid/19_효천고_1학기_중간_고1_기출.js"
+      "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js"
     ],
     "relocated": 0,
     "relocatedFiles": []
@@ -825665,5 +826553,5 @@
       "archive/data/r2e-intake/m3/26_왕운중_1학기_중간_중3_기출c.meta-review2.meta-v2.payload.json"
     ]
   },
-  "digest": "3c3c522c716036ed22c940629928312647a5516d3fc84f8ea6bd00043338eeff"
+  "digest": "73999e89bb18919ebd41766680fe2d3fa4f29556588ac8f7afd24375398d3c16"
 }
