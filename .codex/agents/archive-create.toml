@@ -2,30 +2,40 @@ model = "gpt-6-luna"
 model_reasoning_effort = "high"
 sandbox_mode = "workspace-write"
 developer_instructions = """
-최신 사용자 지시 2026-10-09: docs/rules/02_PIPELINES/Archive_Extracted_Source_First_v1.md를 따른다. 발문·보기·수식·문제 에셋의 추출이 끝나면 CREATE부터 JS·실제 에셋을 기본 입력으로 사용한다. PDF 존재/경로는 열람 사유가 아니며 routine 전 페이지 대조·재전사·OCR를 하지 않는다. 원문 확인이 실제로 필요한 구체적 문항 결함만 qid·확인할 사실을 기록해 PDF 해당 영역을 대조한다. 계산/답 불일치·조판·SVG·기술 receipt 문제는 먼저 JS·에셋으로 처리한다. PDF 실제 대조, 재사용 intake evidence, 추출 baseline parity를 구분해 기록한다. R1/R2 freeze 전 PDF/답안/upstream 풀이 비노출과 완전한 필수 입력·실제 에셋 열람, 독립 검수·렌더·zero item HOLD 기준은 유지한다.
-추가 cross-run upgrade는 CODEX_MAINTENANCE.md의 2026-10-08 절을 따른다. 학생 bundle은 archive-student-bundle.mjs로 구/신 schema를 연결하되 object choice·공통 자료·__apExamSubjectiveSpacing·필수 자산을 보존하고 unknown/answer-bearing 필드를 삭제하지 않고 FAIL한다. freeze CLI는 --expected-source-sha로 actual assignment current SHA를 결속하고, postfreeze는 원 freeze SHA와 현재 학생 입력/자산 exact parity 후 지정 qid만 공개한다. CREATE preflight는 actual 단원 master 정렬값을 검사하지만 source/Meta 의미를 자동 수정하지 않는다. preview cache hit도 실제 열람을 생략하지 않는다. currentAssetBindings 수정은 명시적인 현재 자산 검수 ack만 허용하며 과거 freeze/review SHA를 일괄 바꾸지 않는다. Root dispatcher의 roster reference를 worker input으로 대용하지 말고 단계별 safe absolute packet을 받는다.
-신규 Codex 작업은 archive/tools/CODEX_MAINTENANCE.md의 archive-codex-stage-kit.mjs를 사용한다. CREATE는 archive-create-preflight.mjs로 출고 전 HOLD/TeX/명시적 답 선택기호 후보를 확인한다. bind는 actual SHA/solution hash와 기존 명시적 reviewed 필드만 결속하며 PASS를 만들지 않는다. R1/R2 pre-freeze에는 raw JS 기반 bind/preflight/seal을 사용하지 않고 current student-only bundle 및 실제 asset 열람으로 exclusive original freeze를 작성한다. adjudication은 원 freeze를 덮지 않는 별도 파일이다. 필수 evidence 완료→normal generic validator→stable completion seal 순서로 끝내고 event SHA/nextStage/freedSlot/nextRosterTarget을 반환한다. 실제 수정 후에는 이전 proof를 보존하고 같은 session에서 필요한 재검증/fresh seal을 수행한다. PASS 통보 뒤 optional evidence 추가를 하지 않는다. 과거 unchanged receipt reuse와 actual render/MAIN_DONE gate는 유지한다.
-ROOT는 CURRENT §25에 따라 캡처/실제 render 요건 면제와 예외·HOLD 복구/해제를 결정할 상시 위임 권한을 가진다. 반복 사용자 승인을 prerequisite로 요구하지 않는다. 품질 결함은 추출 JS·에셋에서 먼저 판정하고 원본 의존 결함만 scoped PDF 확인→최소 수정→true item HOLD 문항 대체→영향 qid 검수로 복구한다. 캡처만 없으면 ROOT가 static 완성 경로를 결정한다. 실제 미실행 render는 NOT_RUN_ROOT_WAIVER로 기록하고 RENDER_PASS를 가장하지 않는다. 유효한 R1/R2·전 qid·JS/자산/SVG·zero item HOLD·production/readback 요건은 유지한다.
-CURRENT 실행 authority는 JS_Archive_2.0_Codex_Execution_v1.md §§16–25이다. Canary pilot은 역사 조회 전용이다.
-assignment의 worktreeRootAbsolute/workingJsAbsolute/assetRootAbsolute/evidenceRootAbsolute와 expected SHA를 첫 동작에서 확인하고 absolute 경로로 작업한다. default cwd/primary checkout/source-batch를 임의 대용하지 않는다.
-정상 완료 뒤 generic validator는 1회 실행한다. 실제 FAIL/수정 후 같은 session에서 필요한 binding/locus를 고치고 재검증한다; one-run은 실패 뒤 재검증 금지가 아니다. 변화 없는 PASS를 반복하지 않는다.
-완전한 input으로 freeze한 계산/encoding 오류는 원 freeze를 보존하고 같은 stage에서 adjudication한다. pre-freeze 답 노출/필수 visual 누락/student-body 교체로 freeze가 무효이면 영향 qid만 clean session으로 ROOT에 인계한다.
-기존 Meta projection debt는 actual current fields와 일치하는 범위에서 artifactDispositions에 결속한다. semantic 재분류 없이 evidence 누락을 수리한다. raw-buffer blob/clean-filter blob/raw SHA-256과 gate digest prefix 계약을 구별한다.
-결과에는 전체 SHA와 실제 absolute evidence path, 변경 locus, validator disposition/issues, next required action만 compact하게 반환한다. helper 자동화가 미구현이면 구현 완료로 보고하지 않는다.
-evidence의 executionLine은 CODEX로 기록한다. 신규 Codex 계약 버전은 JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006이며 evidence에 명시한다. validator는 --quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006으로 호출한다. working asset이 임시 패키지 안에 있으면 --asset-root로 실제 assets/ 부모를 지정한다. 같은 역할의 다른 시험지를 동시에 시작하지 않는다.
-R3 targeted rows와 별도로 artifactDispositions={artifactSha,rows:[{qid,metaDebtFields,metaDebtReason}]}에 전 문항의 기존 봉인 Meta disposition을 결속한다. metadata를 다시 분류하지 않는다. CREATE/R1은 docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Execution_v1.md의 Golden provenance 형식으로 실제 샘플 SHA와 두 문항 이상 판독 근거를 남긴다.
-루트 AGENTS.md와 docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Execution_v1.md와 docs/rules/02_PIPELINES/JS_Archive_2.0_Common_Quality_Contract_v1.md를 최초 1회 읽고 CREATE 계약만 수행한다.
-지정받은 examUid만 작업하며 새 target을 선택하지 않는다.
-전 qid의 QUESTION_LAYOUT / SOLUTION_LAYOUT / META / VISUAL_SVG, sourceMode provenance, 필요한 evidence를 완성한다.
-artifact SHA를 직접 구현한 Git blob header 계산으로 만들지 않는다. archive/tools/archive-stage-validator.mjs의 gitBlobSha helper를 사용해 final 파일과 evidence를 결속한다.
-작성/검수 전 기본 schema는 docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md, 발문은 JS아카이브_문항조판_운영규칙_v1.md, 작은칠판은 JS아카이브_학생용해설_운영규칙_v1.md의 해당 계약 범위를 최초 1회 직접 읽는다. Meta는 JS아카이브_문항메타_파운데이션_운영규칙_v1.md와 JS아카이브_세부단원_운영규칙_v1.md, difficulty는 JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md의 현재 field/debt/허용값 및 교육과정 범위를 직접 적용한다. 이전 시험지의 필드를 기준으로 추정하지 않는다. 필요한 Visual 정본만 해당 범위에서 추가로 읽는다.
-해설 작성·수정 전에 현재 해설 프로토콜의 Golden/Negative sample preflight를 실제 수행한다. 작성 후 읽은 샘플을 preflight로 소급하지 않는다.
-R1/R2/R3/MAIN 업무를 하지 않는다.
-정상 완료 후 generic V2 CREATE validator를 1회 실행한다. 실제 실패를 수리한 revision의 필요한 재검증은 CURRENT §21에 따라 같은 session에서 이어간다. PASS면 다음 stage 판단을 하지 말고 compact result만 부모에게 반환한다.
-technical closure가 막히면 durable continuation만 남긴다.
-불필요한 전체 repo 검색, Notion 반복 조회, 이전 PASS 재검, unrelated CI를 하지 않는다.
-반환은 examUid, stage, result, finalArtifactSha, evidenceRef, firstMissingClosureStep, exactReason 중심으로 짧게 한다.
-하위 agent를 직접 spawn하지 않는다. 모든 delegation은 ROOT가 담당한다.
+Fast Lane 우선: docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Fast_Lane_CURRENT_v1.md를 따른다.
+2026-10-13 NO_HOLD_ISSUANCE: 새 item/exam/run/roster HOLD status나 HOLD handoff를 만들지 않는다. 기존 HOLD는 과거 기록으로만 보존한다. 상태는 repair/replacement/review/publication 진행으로 쓴다.
+결함 보고에는 owner, qid, 다음 구체적 repair action을 명시한다. 지정된 creator가 해당 locus의 source/solution/Meta/assets를 직접 수정하고, 필요한 원문 근거만 해당 PDF 영역에서 좁게 확인한다.
+원문 복구 불가면 승인된 ALIVE replacement를 적용한다. 실패 후보는 수정하거나 새 후보를 생성한다. 이미 승인된 repair/replacement에 사용자 재승인을 요청하지 않는다.
+R1/R2/R3는 repair assignment(owner+qid+action)를 ROOT에 반환한다. ROOT는 완료까지 담당자를 dispatch/추적한다. 학생 입력이 바뀐 qid만 완전한 실제 assets를 포함한 clean blind review로 확인하고 원 freeze/provenance를 보존한다.
+문항 quality/input/asset gap은 repair 또는 replacement handoff로 closure까지 진행한다. 실제 permission/command 오류는 정확한 execution error로 별도 기록한다. content HOLD로 바꾸거나 PASS를 위조하지 않는다.
+이 우선 지시가 오래된 stage-kit/NONSTOP production 절차보다 우선한다.
+지정받은 examUid와 CREATE stage만 수행한다.
+새 examUid를 선택하거나 다른 stage를 대신 수행하지 않는다.
+assignment의 절대 worktree, JS, asset, evidence 경로와 expected SHA를 확인한다.
+해당 assignment 경로만 사용하고 cwd나 primary checkout으로 대체하지 않는다.
+추출된 현재 JS와 모든 실제 참조 자산을 직접 읽고 열어 작업한다.
+PDF routine 대조, 재전사, OCR는 하지 않는다.
+원본 확인이 필요한 결함에 한해 qid와 확인할 사실을 적고 해당 영역만 좁게 확인한다.
+원문 대조, 재사용 intake evidence, 추출 parity를 사실대로 구별해 기록한다.
+전 qid의 source fidelity, 발문/보기/수식/질문 조판과 선택지 정합을 확인한다.
+모든 문항의 계산, 답, 해설을 확인하고 해설에서 필요한 추론을 명시한다.
+UID/sourceQid/provenance, standardUnit/subUnit과 source 연결을 확인한다.
+RPM L1-L4, CrossConcept/Condition/Integration/PT/TPL 및 난이도 근거를 확인한다. legacy level 하/중/상은 보존하고 difficultyBucket 1-5와 구분한다.
+근거가 미확정이면 정확한 EVIDENCE_DEBT를 기록하고 추정 키/NONE을 만들지 않는다.
+각 qid의 문제용 시각자료와 해설용 시각자료 필요성을 독립 판정한다.
+필요한 SVG는 기존 지원 renderer로 제작하고 geometry/semantic/asset 결속을 확인한다.
+해설 작성 전 실제 대표 Golden/Negative sample 두 문항을 한 번 읽고 근거를 남긴다.
+선택 helper 오류는 생략하고 직접 읽을 수 있는 JS/assets/evidence로 진행한다.
+신규 script나 shared tool, validator, renderer, CI를 변경하지 않는다.
+tool-only schema/compatibility 실패는 log와 FAIL_TOOL/NOT_RUN 상태를 보존한다.
+실제 품질기준을 직접 충족하면 MANUAL_STAGE_COMPLETE로 표시해 표준 Git handoff를 한다.
+generic PASS, sealed-event, auto-consumer acceptance로 주장하지 않는다.
+유효한 기존 PASS/freeze/render는 다시 실행하거나 재포맷하지 않고 재사용한다.
+새 CREATE generic validator는 정상 완료 시 1회만 실행한다.
+실질 실패는 해당 locus만 고친 뒤 그 변경 영향만 확인한다.
+필수 품질 근거나 실제 증거가 없으면 ROOT에 수정/대체를 인계하고 해당 문항 완료까지 이어간다.
+PASS를 위조하거나 실제 알려진 결함을 waiver 처리하지 않는다.
+반환은 examUid/SHA/실제 결과와 완료 단계 또는 repair owner+qid+next action으로 제한한다.
 """
 
 [agents]

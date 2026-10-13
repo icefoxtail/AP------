@@ -1860,6 +1860,37 @@ window.mainDB = {
       "primaryStandardCourse": "수학I"
     },
     {
+      "file": "original/high/h2/1final/25_금당고_1학기_기말_고2_수학II.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2025,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "H15-M2-05",
+      "rangeStartUnit": "접선의 방정식",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H15-M2-09",
+      "rangeEndUnit": "적분의 활용",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-05",
+          "rangeStartUnit": "접선의 방정식",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H15-M2-09",
+          "rangeEndUnit": "적분의 활용",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "수학II"
+    },
+    {
       "file": "original/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계.js",
       "school": "금당고",
       "topic": "",
@@ -8595,6 +8626,68 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
+      "file": "original/high/h2/1final/23_강남여고_1학기_기말_고2_수학I.js",
+      "school": "강남여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 25,
+      "rangeStartUnitKey": "H15-M1-02",
+      "rangeStartUnit": "로그의 뜻과 성질",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H15-M1-11",
+      "rangeEndUnit": "수학적 귀납법",
+      "rangeEndUnitOrder": 11,
+      "courseRanges": [
+        {
+          "standardCourse": "수학I",
+          "courseCode": "H15-M1",
+          "rangeStartUnitKey": "H15-M1-02",
+          "rangeStartUnit": "로그의 뜻과 성질",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H15-M1-11",
+          "rangeEndUnit": "수학적 귀납법",
+          "rangeEndUnitOrder": 11
+        }
+      ],
+      "primaryStandardCourse": "수학I"
+    },
+    {
+      "file": "original/high/h2/1final/23_강남여고_1학기_기말_고2_확률과통계.js",
+      "school": "강남여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "1",
+      "examType": "final",
+      "subject": "확률과통계",
+      "contentType": "기출",
+      "qCount": 25,
+      "rangeStartUnitKey": "H15-PS-01",
+      "rangeStartUnit": "순열과 조합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-PS-04",
+      "rangeEndUnit": "조건부확률",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-01",
+          "rangeStartUnit": "순열과 조합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-PS-04",
+          "rangeEndUnit": "조건부확률",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
       "file": "original/high/h2/1mid/23_강남여고_1학기_중간_고2_수학I.js",
       "school": "강남여고",
       "topic": "",
@@ -8686,6 +8779,47 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "확률과 통계"
+    },
+    {
+      "file": "original/high/h2/1final/23_금당고_1학기_기말_고2_수학I.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 18,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-09",
+          "rangeStartUnit": "평면좌표",
+          "rangeStartUnitOrder": 9,
+          "rangeEndUnitKey": "H15-SA-09",
+          "rangeEndUnit": "평면좌표",
+          "rangeEndUnitOrder": 9
+        },
+        {
+          "standardCourse": "수학I",
+          "courseCode": "H15-M1",
+          "rangeStartUnitKey": "H15-M1-05",
+          "rangeStartUnit": "삼각함수의 뜻과 값",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H15-M1-11",
+          "rangeEndUnit": "수학적 귀납법",
+          "rangeEndUnitOrder": 11
+        }
+      ],
+      "primaryStandardCourse": ""
     },
     {
       "file": "original/high/h2/1final/23_금당고_1학기_기말_고2_수학II.js",
@@ -9370,6 +9504,37 @@ window.mainDB = {
       "primaryStandardCourse": "수학II"
     },
     {
+      "file": "original/high/h2/1mid/23_순천고_1학기_중간_고2_확률과통계.js",
+      "school": "순천고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "확률과통계",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "H15-PS-01",
+      "rangeStartUnit": "순열과 조합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-PS-02",
+      "rangeEndUnit": "이항정리",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-01",
+          "rangeStartUnit": "순열과 조합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-PS-02",
+          "rangeEndUnit": "이항정리",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
       "file": "original/high/h2/2final/23_순천여고_2학기_기말_고2_수학II.js",
       "school": "순천여고",
       "topic": "",
@@ -9678,6 +9843,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/1mid/23_제일고_1학기_중간_고2_확률과통계.js",
+      "school": "제일고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "확률과통계",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H15-PS-01",
+      "rangeStartUnit": "순열과 조합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-PS-02",
+      "rangeEndUnit": "이항정리",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-01",
+          "rangeStartUnit": "순열과 조합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-PS-02",
+          "rangeEndUnit": "이항정리",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
     },
     {
       "file": "original/high/h2/2mid/23_제일고_2학기_중간_고2_확률과통계.js",
@@ -12250,6 +12446,37 @@ window.mainDB = {
       "primaryStandardCourse": "기하"
     },
     {
+      "file": "original/high/h2/1mid/22_금당고_1학기_중간_고2_확률과통계.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2022,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "확률과통계",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-PS-01",
+      "rangeStartUnit": "순열과 조합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-PS-04",
+      "rangeEndUnit": "조건부확률",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-01",
+          "rangeStartUnit": "순열과 조합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-PS-04",
+          "rangeEndUnit": "조건부확률",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
       "file": "original/high/h2/1final/22_매산고_1학기_기말_고2_기하_기출.js",
       "school": "매산고",
       "topic": "",
@@ -12312,6 +12539,68 @@ window.mainDB = {
       "primaryStandardCourse": "기하와벡터"
     },
     {
+      "file": "original/high/h2/1mid/22_매산고_1학기_중간_고2_확률과통계.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2022,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "확률과통계",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-PS-01",
+      "rangeStartUnit": "순열과 조합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-PS-03",
+      "rangeEndUnit": "확률의 뜻과 활용",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-01",
+          "rangeStartUnit": "순열과 조합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-PS-03",
+          "rangeEndUnit": "확률의 뜻과 활용",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
+      "file": "original/high/h2/1mid/22_순천고_1학기_중간_고2_수학I.js",
+      "school": "순천고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2022,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-M1-01",
+      "rangeStartUnit": "지수의 뜻과 성질",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M1-05",
+      "rangeEndUnit": "삼각함수의 뜻과 값",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "수학I",
+          "courseCode": "H15-M1",
+          "rangeStartUnitKey": "H15-M1-01",
+          "rangeStartUnit": "지수의 뜻과 성질",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M1-05",
+          "rangeEndUnit": "삼각함수의 뜻과 값",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "수학I"
+    },
+    {
       "file": "original/high/h2/2mid/22_순천고_2학기_중간_고2_수학II.js",
       "school": "순천고",
       "topic": "",
@@ -12343,6 +12632,99 @@ window.mainDB = {
       "primaryStandardCourse": "수학II"
     },
     {
+      "file": "original/high/h2/1mid/22_순천고_1학기_중간_고2_확률과통계.js",
+      "school": "순천고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2022,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "확률과통계",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "H15-PS-01",
+      "rangeStartUnit": "순열과 조합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-PS-02",
+      "rangeEndUnit": "이항정리",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-01",
+          "rangeStartUnit": "순열과 조합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-PS-02",
+          "rangeEndUnit": "이항정리",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
+      "file": "original/high/h2/1mid/22_제일고_1학기_중간_고2_확률과통계.js",
+      "school": "제일고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2022,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "확률과통계",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "H15-PS-01",
+      "rangeStartUnit": "순열과 조합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-PS-02",
+      "rangeEndUnit": "이항정리",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-01",
+          "rangeStartUnit": "순열과 조합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-PS-02",
+          "rangeEndUnit": "이항정리",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
+      "file": "original/high/h2/1mid/22_팔마고_1학기_중간_고2_수학I.js",
+      "school": "팔마고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2022,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-M1-01",
+      "rangeStartUnit": "지수의 뜻과 성질",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M1-05",
+      "rangeEndUnit": "삼각함수의 뜻과 값",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "수학I",
+          "courseCode": "H15-M1",
+          "rangeStartUnitKey": "H15-M1-01",
+          "rangeStartUnit": "지수의 뜻과 성질",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M1-05",
+          "rangeEndUnit": "삼각함수의 뜻과 값",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "수학I"
+    },
+    {
       "file": "original/high/h2/2mid/22_팔마고_2학기_중간_고2_수학II.js",
       "school": "팔마고",
       "topic": "",
@@ -12372,6 +12754,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/1mid/22_팔마고_1학기_중간_고2_확률과통계.js",
+      "school": "팔마고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2022,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "확률과통계",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-PS-01",
+      "rangeStartUnit": "순열과 조합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-PS-04",
+      "rangeEndUnit": "조건부확률",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-01",
+          "rangeStartUnit": "순열과 조합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-PS-04",
+          "rangeEndUnit": "조건부확률",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
     },
     {
       "file": "original/high/h2/2mid/22_효천고_2학기_중간_고2_수학II.js",
@@ -16605,6 +17018,37 @@ window.mainDB = {
       "primaryStandardCourse": "확률과 통계"
     },
     {
+      "file": "original/high/h2/1final/19_매산여고_1학기_기말_고2_수학I.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2019,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-M1-05",
+      "rangeStartUnit": "삼각함수의 뜻과 값",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H15-M1-11",
+      "rangeEndUnit": "수학적 귀납법",
+      "rangeEndUnitOrder": 11,
+      "courseRanges": [
+        {
+          "standardCourse": "수학I",
+          "courseCode": "H15-M1",
+          "rangeStartUnitKey": "H15-M1-05",
+          "rangeStartUnit": "삼각함수의 뜻과 값",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H15-M1-11",
+          "rangeEndUnit": "수학적 귀납법",
+          "rangeEndUnitOrder": 11
+        }
+      ],
+      "primaryStandardCourse": "수학I"
+    },
+    {
       "file": "original/high/h2/2final/19_복성고_2학기_기말_고2_수학II.js",
       "school": "복성고",
       "topic": "",
@@ -16634,6 +17078,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/1final/19_순천여고_1학기_기말_고2_수학I.js",
+      "school": "순천여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2019,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-M1-01",
+      "rangeStartUnit": "지수의 뜻과 성질",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M1-11",
+      "rangeEndUnit": "수학적 귀납법",
+      "rangeEndUnitOrder": 11,
+      "courseRanges": [
+        {
+          "standardCourse": "수학I",
+          "courseCode": "H15-M1",
+          "rangeStartUnitKey": "H15-M1-01",
+          "rangeStartUnit": "지수의 뜻과 성질",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M1-11",
+          "rangeEndUnit": "수학적 귀납법",
+          "rangeEndUnitOrder": 11
+        }
+      ],
+      "primaryStandardCourse": "수학I"
     },
     {
       "file": "original/high/h2/2final/19_순천여고_2학기_기말_고2_수학II.js",
