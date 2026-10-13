@@ -1,0 +1,957 @@
+{
+  "schemaVersion": "ALIVE_QID9_Q20_CREATE_DRAFT_v1",
+  "source": {
+    "path": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+    "examTitle": "25_제일고_2학기_기말_고1_기출",
+    "qid": 20,
+    "sourceUid": null,
+    "sourceUidResolution": "REQUIRES_CANONICAL_QID_V1_LOOKUP",
+    "gitBlobSha1": "252c1cc9a687cadd961183b56ea10d21bf1976b4",
+    "preservedReadOnly": true,
+    "sourceQuestionType": "서술형"
+  },
+  "authority": {
+    "rpmPrimaryL3": "H1-RPM-256",
+    "lockedRPM_L3": "역함수",
+    "canonicalPT": "PT_INVERSE_GRAPH",
+    "existingTPL": [
+      "TPL_INVERSE_GRAPH_INTERSECTION",
+      "TPL_INVERSE_GRAPH_GEOMETRY"
+    ],
+    "generatedL4Ids": [
+      "EXT-L4-JEIL25-Q20-INVERSE-FIXEDPOINT-COEFFICIENT",
+      "EXT-L4-JEIL25-Q20-INVERSE-FIXEDPOINT-COUNT"
+    ]
+  },
+  "summary": {
+    "authorDraftItems": 9,
+    "mathSelfChecks": 9,
+    "choicesTotal": 0,
+    "wrongChoiceCalculationChecks": "NOT_APPLICABLE_ESSAY",
+    "answerValues": [
+      "$(3,3)$",
+      "$(3,3)$",
+      "$(4,4)$",
+      "$(1,1), (4,4)$",
+      "$(4,4)$",
+      "$(3,3)$",
+      "$3$",
+      "$a=8, b=-12$",
+      "$m=11, (2,2), (6,6)$"
+    ],
+    "reverseKeep": 9,
+    "reverseRevised": 0,
+    "reverseHold": 0,
+    "problemSvgCreated": 0,
+    "solutionSvgCreated": 9,
+    "svgBrowserRendered": "NOT_RUN",
+    "externalOpenBookReview": "NOT_RUN",
+    "studentRelease": "NOT_AUTHORIZED",
+    "metaEvidenceDebtUidCount": 9,
+    "status": "AUTHOR_DRAFT_SOURCE_UID_EVIDENCE_DEBT",
+    "nextQid": 21
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-JEIL25-2FINAL-Q20-A1",
+      "sourceQid": 20,
+      "sourceUid": null,
+      "slot": "A1",
+      "purpose": "A",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q20",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\sqrt{x+6}$의 역함수를 $g(x)$라 할 때, 두 그래프 $y=f(x)$, $y=g(x)$의 교점의 좌표를 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$(3,3)$",
+      "solution": "$f$는 정의역 $x\\ge-6$에서 엄격히 증가하므로 역함수가 존재한다. 교점을 $(u,v)$라 하면 $v=f(u)$, $u=f(v)$이다. $u<v$라고 가정하면 증가성에 의해 $v=f(u)<f(v)=u$가 되어 모순이다. $u>v$일 때도 모순이므로 교점에서 $u=v$이다.\n따라서 $x=\\sqrt{x+6}$을 푼다. $x\\ge0$이고 양변을 제곱하면 $x^2-x-6=(x-3)(x+2)=0$이다. $x=-2$는 제곱 전 조건을 만족하지 않으며, $x=3$은 $3=\\sqrt9$로 성립한다.\n따라서 구하는 교점은 $(3,3)$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q20/A1-solution.svg",
+      "solutionImageAlt": "A1 함수와 역함수의 교점 및 y=x 대칭을 보여 주는 해설 그래프",
+      "solutionImageCaption": "역함수 그래프는 y=x에 대하여 대칭이며 증가함수의 교점은 대칭축 위에 놓인다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "sourceMetaFoundationL3": "역함수 교점",
+        "sourceMetaFoundationL4": "역함수 그래프 대칭",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-256",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "problemTypeKey": "PT_INVERSE_GRAPH",
+        "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+        "effectiveL4Id": "TPL_INVERSE_GRAPH_INTERSECTION",
+        "effectiveL4Authority": "META_FOUNDATION_ACTIVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_ACTIVE_PT_TPL_GENERATED_L4_WHERE_NEEDED"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "근호 상수항 수치변형, 증가성·제곱 후 부호 판정",
+        "primaryL3Necessity": "INVERSE_GRAPH_SYMMETRY_FIXED_POINT",
+        "mathSelfCheckEvidence": {
+          "originalFamily": "sqrt(ax+b)+c",
+          "coefficients": {
+            "a": 1,
+            "b": 6,
+            "c": 0
+          },
+          "actualValidFixedPoints": [
+            3
+          ],
+          "exactSympyCheck": "PYTHON_SYMPY_RUN",
+          "answer": "$(3,3)$",
+          "method": "STRICTLY_INCREASING_THEN_DIAGONAL_FIXEDPOINT",
+          "curriculum": "H22-C2_NO_CALCULUS"
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_SUBJECTIVE",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "학생 입력에 함수식과 조건이 완전히 있고 그림을 주면 고정점 답을 노출함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q20/A1-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-JEIL25-2FINAL-Q20-A2",
+      "sourceQid": 20,
+      "sourceUid": null,
+      "slot": "A2",
+      "purpose": "A",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q20",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\sqrt{2x+3}$의 역함수를 $g(x)$라 한다. 두 그래프 $y=f(x)$, $y=g(x)$의 교점의 좌표를 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$(3,3)$",
+      "solution": "$f$는 $x\\ge-\\dfrac32$에서 엄격히 증가한다. 두 그래프의 교점 $(u,v)$는 $v=f(u)$, $u=f(v)$를 만족하며, 증가성을 이용하면 $u<v$와 $u>v$ 어느 쪽도 가능하지 않다. 따라서 $u=v$이다.\n$x=\\sqrt{2x+3}$에서 $x\\ge0$이고, 제곱하면 $x^2-2x-3=(x-3)(x+1)=0$이다. 후보 $x=3,-1$ 중 $x=-1$은 원래 등식에서 제외한다. $x=3$에서는 $\\sqrt{2\\cdot3+3}=3$이다.\n따라서 구하는 교점은 $(3,3)$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q20/A2-solution.svg",
+      "solutionImageAlt": "A2 함수와 역함수의 교점 및 y=x 대칭을 보여 주는 해설 그래프",
+      "solutionImageCaption": "역함수 그래프는 y=x에 대하여 대칭이며 증가함수의 교점은 대칭축 위에 놓인다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "sourceMetaFoundationL3": "역함수 교점",
+        "sourceMetaFoundationL4": "역함수 그래프 대칭",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-256",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "problemTypeKey": "PT_INVERSE_GRAPH",
+        "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+        "effectiveL4Id": "TPL_INVERSE_GRAPH_INTERSECTION",
+        "effectiveL4Authority": "META_FOUNDATION_ACTIVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_ACTIVE_PT_TPL_GENERATED_L4_WHERE_NEEDED"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "x계수를 바꿔 근호 방정식의 양수 근 확인",
+        "primaryL3Necessity": "INVERSE_GRAPH_SYMMETRY_FIXED_POINT",
+        "mathSelfCheckEvidence": {
+          "originalFamily": "sqrt(ax+b)+c",
+          "coefficients": {
+            "a": 2,
+            "b": 3,
+            "c": 0
+          },
+          "actualValidFixedPoints": [
+            3
+          ],
+          "exactSympyCheck": "PYTHON_SYMPY_RUN",
+          "answer": "$(3,3)$",
+          "method": "STRICTLY_INCREASING_THEN_DIAGONAL_FIXEDPOINT",
+          "curriculum": "H22-C2_NO_CALCULUS"
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_SUBJECTIVE",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "학생 입력에 함수식과 조건이 완전히 있고 그림을 주면 고정점 답을 노출함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q20/A2-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-JEIL25-2FINAL-Q20-A3",
+      "sourceQid": 20,
+      "sourceUid": null,
+      "slot": "A3",
+      "purpose": "A",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q20",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\sqrt{3x+4}$의 역함수를 $g(x)$라 하자. 두 그래프 $y=f(x)$와 $y=g(x)$의 교점의 좌표를 구하고 그 이유를 서술하시오.",
+      "choices": [],
+      "answer": "$(4,4)$",
+      "solution": "$f$는 정의역 $x\\ge-\\dfrac43$에서 엄격히 증가하므로 역함수가 존재한다. 교점 $(u,v)$에서는 $v=f(u)$와 $u=f(v)$가 함께 성립한다. 두 좌표가 서로 다르면 증가성과 모순되므로 $u=v$이다.\n$x=\\sqrt{3x+4}$에서 $x\\ge0$을 확인하고 제곱하여 $x^2-3x-4=(x-4)(x+1)=0$을 얻는다. $x=-1$은 음수라 제외한다. $x=4$를 원래 식에 대입하면 $\\sqrt{16}=4$이다.\n따라서 구하는 교점은 $(4,4)$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q20/A3-solution.svg",
+      "solutionImageAlt": "A3 함수와 역함수의 교점 및 y=x 대칭을 보여 주는 해설 그래프",
+      "solutionImageCaption": "역함수 그래프는 y=x에 대하여 대칭이며 증가함수의 교점은 대칭축 위에 놓인다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "sourceMetaFoundationL3": "역함수 교점",
+        "sourceMetaFoundationL4": "역함수 그래프 대칭",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-256",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "problemTypeKey": "PT_INVERSE_GRAPH",
+        "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+        "effectiveL4Id": "TPL_INVERSE_GRAPH_INTERSECTION",
+        "effectiveL4Authority": "META_FOUNDATION_ACTIVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_ACTIVE_PT_TPL_GENERATED_L4_WHERE_NEEDED"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "계수 변형과 원식 대입 검증",
+        "primaryL3Necessity": "INVERSE_GRAPH_SYMMETRY_FIXED_POINT",
+        "mathSelfCheckEvidence": {
+          "originalFamily": "sqrt(ax+b)+c",
+          "coefficients": {
+            "a": 3,
+            "b": 4,
+            "c": 0
+          },
+          "actualValidFixedPoints": [
+            4
+          ],
+          "exactSympyCheck": "PYTHON_SYMPY_RUN",
+          "answer": "$(4,4)$",
+          "method": "STRICTLY_INCREASING_THEN_DIAGONAL_FIXEDPOINT",
+          "curriculum": "H22-C2_NO_CALCULUS"
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_SUBJECTIVE",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "학생 입력에 함수식과 조건이 완전히 있고 그림을 주면 고정점 답을 노출함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q20/A3-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-JEIL25-2FINAL-Q20-B1",
+      "sourceQid": 20,
+      "sourceUid": null,
+      "slot": "B1",
+      "purpose": "B",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q20",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\sqrt{5x-4}$의 역함수를 $g(x)$라 한다. 두 그래프 $y=f(x)$, $y=g(x)$의 모든 교점의 좌표를 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$(1,1), (4,4)$",
+      "solution": "$f$는 $x\\ge\\dfrac45$에서 엄격히 증가한다. 따라서 역함수의 그래프와 만나는 점은 모두 $y=x$ 위에 놓인다.\n$x=\\sqrt{5x-4}$에서 $x\\ge0$이고 $5x-4\\ge0$이어야 한다. 제곱하면 $x^2-5x+4=(x-1)(x-4)=0$이므로 $x=1,4$이다. 두 값은 모두 정의역에 있으며 $1=\\sqrt1$, $4=\\sqrt{16}$을 만족한다. 따라서 두 교점이 존재한다.\n따라서 구하는 모든 교점은 $(1,1)$, $(4,4)$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q20/B1-solution.svg",
+      "solutionImageAlt": "B1 함수와 역함수의 교점 및 y=x 대칭을 보여 주는 해설 그래프",
+      "solutionImageCaption": "역함수 그래프는 y=x에 대하여 대칭이며 증가함수의 교점은 대칭축 위에 놓인다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "sourceMetaFoundationL3": "역함수 교점",
+        "sourceMetaFoundationL4": "역함수 그래프 대칭",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-256",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "problemTypeKey": "PT_INVERSE_GRAPH",
+        "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+        "effectiveL4Id": "TPL_INVERSE_GRAPH_INTERSECTION",
+        "effectiveL4Authority": "META_FOUNDATION_ACTIVE",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_ACTIVE_PT_TPL_GENERATED_L4_WHERE_NEEDED"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "정답이 두 교점이므로 빠뜨리지 않음",
+        "primaryL3Necessity": "INVERSE_GRAPH_SYMMETRY_FIXED_POINT",
+        "mathSelfCheckEvidence": {
+          "originalFamily": "sqrt(ax+b)+c",
+          "coefficients": {
+            "a": 5,
+            "b": -4,
+            "c": 0
+          },
+          "actualValidFixedPoints": [
+            1,
+            4
+          ],
+          "exactSympyCheck": "PYTHON_SYMPY_RUN",
+          "answer": "$(1,1), (4,4)$",
+          "method": "STRICTLY_INCREASING_THEN_DIAGONAL_FIXEDPOINT",
+          "curriculum": "H22-C2_NO_CALCULUS"
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_SUBJECTIVE",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "학생 입력에 함수식과 조건이 완전히 있고 그림을 주면 고정점 답을 노출함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q20/B1-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-JEIL25-2FINAL-Q20-B2",
+      "sourceQid": 20,
+      "sourceUid": null,
+      "slot": "B2",
+      "purpose": "B",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q20",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\sqrt{x+5}+1$의 역함수를 $g(x)$라 할 때, 두 함수의 그래프의 교점의 좌표를 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$(4,4)$",
+      "solution": "$f$는 정의역 $x\\ge-5$에서 엄격히 증가하고 치역은 $y\\ge1$이다. 두 그래프의 교점 $(u,v)$는 $v=f(u)$, $u=f(v)$를 만족한다. 증가성 때문에 서로 다른 $u,v$는 불가능하므로 교점에서는 $u=v$이다.\n$x=\\sqrt{x+5}+1$을 풀 때 $x-1=\\sqrt{x+5}$이므로 $x\\ge1$이다. 제곱하여 $(x-1)^2=x+5$, 곧 $(x-4)(x+1)=0$이다. $x=-1$은 $x\\ge1$을 만족하지 않으므로 제외하고 $x=4$에서 $4=\\sqrt9+1$이 성립한다.\n따라서 구하는 교점은 $(4,4)$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q20/B2-solution.svg",
+      "solutionImageAlt": "B2 함수와 역함수의 교점 및 y=x 대칭을 보여 주는 해설 그래프",
+      "solutionImageCaption": "역함수 그래프는 y=x에 대하여 대칭이며 증가함수의 교점은 대칭축 위에 놓인다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "sourceMetaFoundationL3": "역함수 교점",
+        "sourceMetaFoundationL4": "역함수 그래프 대칭",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-256",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "problemTypeKey": "PT_INVERSE_GRAPH",
+        "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+        "effectiveL4Id": "TPL_INVERSE_GRAPH_INTERSECTION",
+        "effectiveL4Authority": "META_FOUNDATION_ACTIVE",
+        "crossConceptKeys": [
+          "CC_RADICAL_EXPRESSION"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_ACTIVE_PT_TPL_GENERATED_L4_WHERE_NEEDED"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "수직 이동과 역함수 정의역, x≥1 확인",
+        "primaryL3Necessity": "INVERSE_GRAPH_SYMMETRY_FIXED_POINT",
+        "mathSelfCheckEvidence": {
+          "originalFamily": "sqrt(ax+b)+c",
+          "coefficients": {
+            "a": 1,
+            "b": 5,
+            "c": 1
+          },
+          "actualValidFixedPoints": [
+            4
+          ],
+          "exactSympyCheck": "PYTHON_SYMPY_RUN",
+          "answer": "$(4,4)$",
+          "method": "STRICTLY_INCREASING_THEN_DIAGONAL_FIXEDPOINT",
+          "curriculum": "H22-C2_NO_CALCULUS"
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_SUBJECTIVE",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "학생 입력에 함수식과 조건이 완전히 있고 그림을 주면 고정점 답을 노출함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q20/B2-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-JEIL25-2FINAL-Q20-B3",
+      "sourceQid": 20,
+      "sourceUid": null,
+      "slot": "B3",
+      "purpose": "B",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q20",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "$k>0$일 때 함수 $f(x)=\\sqrt{kx-3}$의 역함수를 $g(x)$라 한다. 두 그래프가 점 $(1,1)$에서 만나고 이 점 외에 다른 교점이 하나 더 있다. 다른 교점의 좌표를 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$(3,3)$",
+      "solution": "$k>0$이므로 $f$는 정의역에서 엄격히 증가한다. 따라서 두 그래프의 교점은 $y=x$ 위에 있다. 주어진 $(1,1)$이 $f$의 그래프 위의 점이므로 $1=\\sqrt{k-3}$이다. 제곱하면 $k-3=1$로부터 $k=4$를 얻는다.\n다른 교점을 찾기 위해 $x=\\sqrt{4x-3}$을 푼다. 양변 제곱으로 $x^2-4x+3=(x-1)(x-3)=0$이다. $x=1$은 주어진 교점이고, $x=3$은 정의역 조건과 $3=\\sqrt9$를 모두 만족한다.\n따라서 다른 교점의 좌표는 $(3,3)$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q20/B3-solution.svg",
+      "solutionImageAlt": "B3 함수와 역함수의 교점 및 y=x 대칭을 보여 주는 해설 그래프",
+      "solutionImageCaption": "역함수 그래프는 y=x에 대하여 대칭이며 증가함수의 교점은 대칭축 위에 놓인다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "sourceMetaFoundationL3": "역함수 교점",
+        "sourceMetaFoundationL4": "역함수 그래프 대칭",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-256",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "problemTypeKey": "PT_INVERSE_GRAPH",
+        "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q20-INVERSE-FIXEDPOINT-COEFFICIENT",
+        "effectiveL4Authority": "GENERATED_ACTIVE",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_ACTIVE_PT_TPL_GENERATED_L4_WHERE_NEEDED"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "기존 교점 대입으로 k 복원, 다른 교점 추론",
+        "primaryL3Necessity": "INVERSE_GRAPH_SYMMETRY_FIXED_POINT",
+        "mathSelfCheckEvidence": {
+          "originalFamily": "sqrt(ax+b)+c",
+          "coefficients": {
+            "a": 4,
+            "b": -3,
+            "c": 0
+          },
+          "actualValidFixedPoints": [
+            1,
+            3
+          ],
+          "exactSympyCheck": "PYTHON_SYMPY_RUN",
+          "answer": "$(3,3)$",
+          "method": "STRICTLY_INCREASING_THEN_DIAGONAL_FIXEDPOINT",
+          "curriculum": "H22-C2_NO_CALCULUS"
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_SUBJECTIVE",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "학생 입력에 함수식과 조건이 완전히 있고 그림을 주면 고정점 답을 노출함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q20/B3-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-JEIL25-2FINAL-Q20-C1",
+      "sourceQid": 20,
+      "sourceUid": null,
+      "slot": "C1",
+      "purpose": "C",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q20",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "$1\\le m\\le6$인 자연수 $m$에 대하여 함수 $f(x)=\\sqrt{4x-m}$의 역함수를 $g(x)$라 한다. 두 그래프 $y=f(x)$, $y=g(x)$가 서로 다른 두 점에서 만나도록 하는 $m$의 개수를 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$3$",
+      "solution": "$f$는 $x\\ge\\dfrac m4$에서 엄격히 증가하므로 역함수가 존재하며 두 그래프의 교점은 $y=x$ 위에 있다. 따라서 $x=\\sqrt{4x-m}$을 제곱하면 $x^2-4x+m=0$이다.\n서로 다른 두 실근의 필요조건은 판별식 $16-4m>0$, 곧 $m<4$이다. 주어진 자연수 범위에서 후보는 $m=1,2,3$이다. 이때 두 근은 $x=2\\pm\\sqrt{4-m}$이고 $0<\\sqrt{4-m}<2$이므로 모두 양수다. 제곱식에서 $4x-m=x^2\\ge0$이므로 원래 근호의 정의역 및 등식도 만족한다. $m=4$에서는 중근 한 개, $m=5,6$에서는 실근이 없다.\n따라서 구하는 $m$의 개수는 $3$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q20/C1-solution.svg",
+      "solutionImageAlt": "C1 함수와 역함수의 교점 및 y=x 대칭을 보여 주는 해설 그래프",
+      "solutionImageCaption": "m=3,4,5 대표 경우에서 두 교점·한 교점·교점 없음 구분",
+      "solutionImageSize": "full",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "sourceMetaFoundationL3": "역함수 교점",
+        "sourceMetaFoundationL4": "역함수 그래프 대칭",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-256",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "problemTypeKey": "PT_INVERSE_GRAPH",
+        "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q20-INVERSE-FIXEDPOINT-COUNT",
+        "effectiveL4Authority": "GENERATED_ACTIVE",
+        "crossConceptKeys": [
+          "CC_DISCRIMINANT",
+          "CC_QUADRATIC_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_ACTIVE_PT_TPL_GENERATED_L4_WHERE_NEEDED"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "m=1,2,3만 두 교점, m4 중근, 5·6 교점 없음",
+        "primaryL3Necessity": "INVERSE_GRAPH_SYMMETRY_FIXED_POINT",
+        "mathSelfCheckEvidence": {
+          "originalFamily": "sqrt(ax+b)+c",
+          "coefficients": {
+            "a": 4,
+            "b": -3,
+            "c": 0
+          },
+          "actualValidFixedPoints": [
+            1,
+            3
+          ],
+          "exactSympyCheck": "PYTHON_SYMPY_RUN",
+          "answer": "$3$",
+          "method": "STRICTLY_INCREASING_THEN_DIAGONAL_FIXEDPOINT",
+          "curriculum": "H22-C2_NO_CALCULUS"
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_SUBJECTIVE",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "학생 입력에 함수식과 조건이 완전히 있고 그림을 주면 고정점 답을 노출함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q20/C1-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-JEIL25-2FINAL-Q20-C2",
+      "sourceQid": 20,
+      "sourceUid": null,
+      "slot": "C2",
+      "purpose": "C",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q20",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "$a>0$, $b$는 실수라 하자. 함수 $f(x)=\\sqrt{ax+b}$의 역함수를 $g(x)$라 한다. 두 그래프가 서로 다른 두 점에서 만나고 두 교점의 $x$좌표의 합은 $8$, 곱은 $12$이다. $a,b$의 값을 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$a=8, b=-12$",
+      "solution": "$a>0$이므로 $f$는 정의역에서 엄격히 증가한다. 역함수의 그래프와의 교점은 모두 $y=x$ 위에 있으므로 $x=\\sqrt{ax+b}$를 푼다. 이때 $x\\ge0$이고 제곱하면 $x^2-ax-b=0$이다.\n서로 다른 교점의 $x$좌표를 $r,s$라 하면 근과 계수의 관계로 $r+s=a$, $rs=-b$이다. 주어진 합 $8$과 곱 $12$를 대입하면 $a=8$, $b=-12$이다. 실제로 $x^2-8x+12=(x-2)(x-6)$이어서 두 근은 $2,6$이다. 두 값은 음이 아니며 각각 $2=\\sqrt{16-12}$, $6=\\sqrt{48-12}$를 만족한다.\n따라서 구하는 값은 $a=8$, $b=-12$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q20/C2-solution.svg",
+      "solutionImageAlt": "C2 함수와 역함수의 교점 및 y=x 대칭을 보여 주는 해설 그래프",
+      "solutionImageCaption": "역함수 그래프는 y=x에 대하여 대칭이며 증가함수의 교점은 대칭축 위에 놓인다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "sourceMetaFoundationL3": "역함수 교점",
+        "sourceMetaFoundationL4": "역함수 그래프 대칭",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-256",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "problemTypeKey": "PT_INVERSE_GRAPH",
+        "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q20-INVERSE-FIXEDPOINT-COEFFICIENT",
+        "effectiveL4Authority": "GENERATED_ACTIVE",
+        "crossConceptKeys": [
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_ACTIVE_PT_TPL_GENERATED_L4_WHERE_NEEDED"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "교점 좌표 합·곱에서 a,b 역산과 역대입",
+        "primaryL3Necessity": "INVERSE_GRAPH_SYMMETRY_FIXED_POINT",
+        "mathSelfCheckEvidence": {
+          "originalFamily": "sqrt(ax+b)+c",
+          "coefficients": {
+            "a": 8,
+            "b": -12,
+            "c": 0
+          },
+          "actualValidFixedPoints": [
+            2,
+            6
+          ],
+          "exactSympyCheck": "PYTHON_SYMPY_RUN",
+          "answer": "$a=8, b=-12$",
+          "method": "STRICTLY_INCREASING_THEN_DIAGONAL_FIXEDPOINT",
+          "curriculum": "H22-C2_NO_CALCULUS"
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_SUBJECTIVE",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "학생 입력에 함수식과 조건이 완전히 있고 그림을 주면 고정점 답을 노출함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q20/C2-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-JEIL25-2FINAL-Q20-C3",
+      "sourceQid": 20,
+      "sourceUid": null,
+      "slot": "C3",
+      "purpose": "C",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q20",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "실수 $m$에 대하여 함수 $f(x)=\\sqrt{6x-m}+1$의 역함수를 $g(x)$라 한다. 두 그래프가 서로 다른 점 $P,Q$에서 만나며 그 두 점 사이의 거리가 $4\\sqrt2$이다. $m$의 값과 두 교점의 좌표를 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$m=11, (2,2), (6,6)$",
+      "solution": "$f$는 정의역에서 엄격히 증가하므로 역함수가 존재한다. 두 그래프의 교점은 $y=x$ 위에 있으므로 $x=\\sqrt{6x-m}+1$이며 $x\\ge1$이다. 양변을 제곱하여 $(x-1)^2=6x-m$, 즉 $x^2-8x+(m+1)=0$을 얻는다.\n서로 다른 두 교점의 $x$좌표를 $r<s$라 하면 근과 계수의 관계로 $r+s=8$이다. 교점은 $(r,r)$, $(s,s)$이므로 두 점 사이의 거리는 $\\sqrt2(s-r)$이다. $\\sqrt2(s-r)=4\\sqrt2$에서 $s-r=4$이고, 합이 $8$이므로 $r=2$, $s=6$이다. $x=2$를 대입하면 $2=\\sqrt{12-m}+1$이므로 $m=11$이다. 실제 $x=2,6$에서 각각 $\\sqrt1+1=2$, $\\sqrt{25}+1=6$이 성립한다.\n따라서 구하는 값은 $m=11$이고 두 교점은 $(2,2)$, $(6,6)$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q20/C3-solution.svg",
+      "solutionImageAlt": "C3 함수와 역함수의 교점 및 y=x 대칭을 보여 주는 해설 그래프",
+      "solutionImageCaption": "교점의 좌표차로 두 점 사이의 거리 계산",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "sourceMetaFoundationL3": "역함수 교점",
+        "sourceMetaFoundationL4": "역함수 그래프 대칭",
+        "primaryRPM_L3": "역함수",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-256",
+        "rpmRecordId": "H1-RPM-256",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "그래프 대칭",
+        "problemTypeKey": "PT_INVERSE_GRAPH",
+        "templateKey": "TPL_INVERSE_GRAPH_GEOMETRY",
+        "effectiveL4Id": "TPL_INVERSE_GRAPH_GEOMETRY",
+        "effectiveL4Authority": "META_FOUNDATION_ACTIVE",
+        "crossConceptKeys": [
+          "CC_DISTANCE_TWO_POINTS",
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 5,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_ACTIVE_PT_TPL_GENERATED_L4_WHERE_NEEDED"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "근과 계수·대칭 교점 거리에서 m 역산",
+        "primaryL3Necessity": "INVERSE_GRAPH_SYMMETRY_FIXED_POINT",
+        "mathSelfCheckEvidence": {
+          "originalFamily": "sqrt(ax+b)+c",
+          "coefficients": {
+            "a": 6,
+            "b": -11,
+            "c": 1
+          },
+          "actualValidFixedPoints": [
+            2,
+            6
+          ],
+          "exactSympyCheck": "PYTHON_SYMPY_RUN",
+          "answer": "$m=11, (2,2), (6,6)$",
+          "method": "STRICTLY_INCREASING_THEN_DIAGONAL_FIXEDPOINT",
+          "curriculum": "H22-C2_NO_CALCULUS"
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_SUBJECTIVE",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "학생 입력에 함수식과 조건이 완전히 있고 그림을 주면 고정점 답을 노출함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q20/C3-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    }
+  ]
+}

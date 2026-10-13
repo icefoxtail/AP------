@@ -1,7 +1,7 @@
 {
   "schemaVersion": "ALIVE_QID9_GENERATED_META_REGISTRY_v1",
   "status": "GENERATED_ACTIVE_CREATE_SCOPE",
-  "scope": "2025_JEIL_HIGH_2FINAL_H1_Q01_Q19",
+  "scope": "2025_JEIL_HIGH_2FINAL_H1_Q01_Q20",
   "workspaceBranch": "work/alive-25-jeil-h1-2final-qid9",
   "sourceExam": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
   "sourceBlobSha": "252c1cc9a687cadd961183b56ea10d21bf1976b4",
@@ -983,6 +983,49 @@
           "uid": "ALITE-JEIL25-2FINAL-Q19-C3",
           "slot": "C3",
           "questionObjective": "실수 전체의 집합에서 명제 “어떤 실수 $x$에 대하여 $x^2-4x-|x-2|+k\\lt0$이다.”의 부정을 쓰고, 그 부정이 참이 되도록 하는 정수 $k$의 최솟값을 구하는 과정을 서술하시오."
+        }
+      ]
+    },
+    {
+      "generatedExtL4Id": "EXT-L4-JEIL25-Q20-INVERSE-FIXEDPOINT-COEFFICIENT",
+      "parentLockedRpmL3Id": "H1-RPM-256",
+      "parentLockedRpmL3Label": "역함수",
+      "labelKo": "역함수 공통 교점에서 근호 계수 역산",
+      "definition": "증가함수와 역함수 교점이 y=x에 있다는 조건을 이용해 한 점 또는 두 점의 좌표합·곱으로 미지 근호 계수를 구한다.",
+      "decisiveStepSignature": "증가함수와 역함수 교점이 y=x에 있다는 조건을 이용해 한 점 또는 두 점의 좌표합·곱으로 미지 근호 계수를 구한다.",
+      "sourceQid": 20,
+      "sourceExam": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "comparisonWithExistingRpmL4": "기존 역함수 그래프 대칭 L4 아래 생성 전용 역산/교점 개수 하위 사고",
+      "status": "GENERATED_ACTIVE",
+      "examples": [
+        {
+          "uid": "ALITE-JEIL25-2FINAL-Q20-B3",
+          "slot": "B3",
+          "questionObjective": "$k>0$일 때 함수 $f(x)=\\sqrt{kx-3}$의 역함수를 $g(x)$라 한다. 두 그래프가 점 $(1,1)$에서 만나고 이 점 외에 다른 교점이 하나 더 있다. 다른 교점의 좌표를 구하는 과정을 서술하시오."
+        },
+        {
+          "uid": "ALITE-JEIL25-2FINAL-Q20-C2",
+          "slot": "C2",
+          "questionObjective": "$a>0$, $b$는 실수라 하자. 함수 $f(x)=\\sqrt{ax+b}$의 역함수를 $g(x)$라 한다. 두 그래프가 서로 다른 두 점에서 만나고 두 교점의 $x$좌표의 합은 $8$, 곱은 $12$이다. $a,b$의 값을 구하는 과정을 서술하시오."
+        }
+      ]
+    },
+    {
+      "generatedExtL4Id": "EXT-L4-JEIL25-Q20-INVERSE-FIXEDPOINT-COUNT",
+      "parentLockedRpmL3Id": "H1-RPM-256",
+      "parentLockedRpmL3Label": "역함수",
+      "labelKo": "역함수 교점 개수와 매개변수 판정",
+      "definition": "역함수 교점을 고정점 이차방정식으로 바꾸어 판별식과 제곱 전 부호 조건을 통해 매개변수별 교점 개수를 판단한다.",
+      "decisiveStepSignature": "역함수 교점을 고정점 이차방정식으로 바꾸어 판별식과 제곱 전 부호 조건을 통해 매개변수별 교점 개수를 판단한다.",
+      "sourceQid": 20,
+      "sourceExam": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "comparisonWithExistingRpmL4": "기존 역함수 그래프 대칭 L4 아래 생성 전용 역산/교점 개수 하위 사고",
+      "status": "GENERATED_ACTIVE",
+      "examples": [
+        {
+          "uid": "ALITE-JEIL25-2FINAL-Q20-C1",
+          "slot": "C1",
+          "questionObjective": "$1\\le m\\le6$인 자연수 $m$에 대하여 함수 $f(x)=\\sqrt{4x-m}$의 역함수를 $g(x)$라 한다. 두 그래프 $y=f(x)$, $y=g(x)$가 서로 다른 두 점에서 만나도록 하는 $m$의 개수를 구하는 과정을 서술하시오."
         }
       ]
     }
@@ -4712,6 +4755,254 @@
       "conditionKeys": [
         "COND_INTEGER"
       ],
+      "integrationPattern": "INTERDEPENDENT",
+      "level": "상",
+      "difficultyBucket": 5,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q20-A1",
+      "qid": 20,
+      "slot": "A1",
+      "sourceUid": null,
+      "sourceQid": 20,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-07",
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "parentRpmRecordId": "H1-RPM-256",
+      "parentRpmL3": "역함수",
+      "sourcePrimaryL3": "역함수와 무리함수의 그래프 교점",
+      "effectiveL3Id": "H1-RPM-256",
+      "effectiveL4Id": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "L4Authority": "META_FOUNDATION_ACTIVE",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 2,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q20-A2",
+      "qid": 20,
+      "slot": "A2",
+      "sourceUid": null,
+      "sourceQid": 20,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-07",
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "parentRpmRecordId": "H1-RPM-256",
+      "parentRpmL3": "역함수",
+      "sourcePrimaryL3": "역함수와 무리함수의 그래프 교점",
+      "effectiveL3Id": "H1-RPM-256",
+      "effectiveL4Id": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "L4Authority": "META_FOUNDATION_ACTIVE",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 2,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q20-A3",
+      "qid": 20,
+      "slot": "A3",
+      "sourceUid": null,
+      "sourceQid": 20,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-07",
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "parentRpmRecordId": "H1-RPM-256",
+      "parentRpmL3": "역함수",
+      "sourcePrimaryL3": "역함수와 무리함수의 그래프 교점",
+      "effectiveL3Id": "H1-RPM-256",
+      "effectiveL4Id": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "L4Authority": "META_FOUNDATION_ACTIVE",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 2,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q20-B1",
+      "qid": 20,
+      "slot": "B1",
+      "sourceUid": null,
+      "sourceQid": 20,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-07",
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "parentRpmRecordId": "H1-RPM-256",
+      "parentRpmL3": "역함수",
+      "sourcePrimaryL3": "역함수와 무리함수의 그래프 교점",
+      "effectiveL3Id": "H1-RPM-256",
+      "effectiveL4Id": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "L4Authority": "META_FOUNDATION_ACTIVE",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 3,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q20-B2",
+      "qid": 20,
+      "slot": "B2",
+      "sourceUid": null,
+      "sourceQid": 20,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-07",
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "parentRpmRecordId": "H1-RPM-256",
+      "parentRpmL3": "역함수",
+      "sourcePrimaryL3": "역함수와 무리함수의 그래프 교점",
+      "effectiveL3Id": "H1-RPM-256",
+      "effectiveL4Id": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "L4Authority": "META_FOUNDATION_ACTIVE",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "crossConceptKeys": [
+        "CC_RADICAL_EXPRESSION"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 3,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q20-B3",
+      "qid": 20,
+      "slot": "B3",
+      "sourceUid": null,
+      "sourceQid": 20,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-07",
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "parentRpmRecordId": "H1-RPM-256",
+      "parentRpmL3": "역함수",
+      "sourcePrimaryL3": "역함수와 무리함수의 그래프 교점",
+      "effectiveL3Id": "H1-RPM-256",
+      "effectiveL4Id": "EXT-L4-JEIL25-Q20-INVERSE-FIXEDPOINT-COEFFICIENT",
+      "L4Authority": "GENERATED_ACTIVE",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "level": "중",
+      "difficultyBucket": 3,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q20-C1",
+      "qid": 20,
+      "slot": "C1",
+      "sourceUid": null,
+      "sourceQid": 20,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-07",
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "parentRpmRecordId": "H1-RPM-256",
+      "parentRpmL3": "역함수",
+      "sourcePrimaryL3": "역함수와 무리함수의 그래프 교점",
+      "effectiveL3Id": "H1-RPM-256",
+      "effectiveL4Id": "EXT-L4-JEIL25-Q20-INVERSE-FIXEDPOINT-COUNT",
+      "L4Authority": "GENERATED_ACTIVE",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT",
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "level": "상",
+      "difficultyBucket": 4,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q20-C2",
+      "qid": 20,
+      "slot": "C2",
+      "sourceUid": null,
+      "sourceQid": 20,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-07",
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "parentRpmRecordId": "H1-RPM-256",
+      "parentRpmL3": "역함수",
+      "sourcePrimaryL3": "역함수와 무리함수의 그래프 교점",
+      "effectiveL3Id": "H1-RPM-256",
+      "effectiveL4Id": "EXT-L4-JEIL25-Q20-INVERSE-FIXEDPOINT-COEFFICIENT",
+      "L4Authority": "GENERATED_ACTIVE",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "crossConceptKeys": [
+        "CC_ROOTS_COEFFICIENTS"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "level": "상",
+      "difficultyBucket": 4,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q20-C3",
+      "qid": 20,
+      "slot": "C3",
+      "sourceUid": null,
+      "sourceQid": 20,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-07",
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "parentRpmRecordId": "H1-RPM-256",
+      "parentRpmL3": "역함수",
+      "sourcePrimaryL3": "역함수와 무리함수의 그래프 교점",
+      "effectiveL3Id": "H1-RPM-256",
+      "effectiveL4Id": "TPL_INVERSE_GRAPH_GEOMETRY",
+      "L4Authority": "META_FOUNDATION_ACTIVE",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_GEOMETRY",
+      "crossConceptKeys": [
+        "CC_DISTANCE_TWO_POINTS",
+        "CC_ROOTS_COEFFICIENTS"
+      ],
+      "conditionKeys": [],
       "integrationPattern": "INTERDEPENDENT",
       "level": "상",
       "difficultyBucket": 5,
