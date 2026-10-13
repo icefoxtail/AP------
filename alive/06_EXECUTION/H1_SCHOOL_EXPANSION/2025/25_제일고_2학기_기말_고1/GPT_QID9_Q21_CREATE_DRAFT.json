@@ -1,0 +1,919 @@
+{
+  "schemaVersion": "ALIVE_QID9_Q21_CREATE_DRAFT_v1",
+  "source": {
+    "path": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+    "examTitle": "25_제일고_2학기_기말_고1_기출",
+    "qid": 21,
+    "sourceUid": null,
+    "sourceUidResolution": "REQUIRES_CANONICAL_QID_V1_LOOKUP",
+    "gitBlobSha1": "252c1cc9a687cadd961183b56ea10d21bf1976b4",
+    "preservedReadOnly": true,
+    "sourceQuestionType": "서술형"
+  },
+  "authority": {
+    "rpmNearestParentL3Id": "H1-RPM-263",
+    "rpmParentL3": "유리함수의 활용",
+    "rpmExactL3SemanticMatch": false,
+    "generatedL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
+    "canonicalPT": "PT_RATIONAL_EXPRESSION",
+    "canonicalTPL": "TPL_RATIONAL_TELESCOPING_SUM",
+    "canonicalPT2022Binding": "ACTIVE",
+    "generatedL4Ids": [
+      "EXT-L4-JEIL25-Q21-TELESCOPING-ENDPOINT-RECOVERY",
+      "EXT-L4-JEIL25-Q21-TELESCOPING-SPLIT-RATIO",
+      "EXT-L4-JEIL25-Q21-TELESCOPING-FUNCTION-DIFFERENCE",
+      "EXT-L4-JEIL25-Q21-TELESCOPING-SHIFT-PARAMETER"
+    ],
+    "sourceSemantic": "유리식의 부분분수 분해와 망원합"
+  },
+  "summary": {
+    "authorDraftItems": 9,
+    "mathSelfChecks": 9,
+    "subjective": 9,
+    "choicesTotal": 0,
+    "answerValues": [
+      "$\\dfrac{49}{50}$",
+      "$\\dfrac{39}{82}$",
+      "$\\dfrac{48}{25}$",
+      "$24$",
+      "$\\dfrac{35}{104}$",
+      "$\\dfrac{10}{21}$",
+      "$4$",
+      "$3$",
+      "$4$"
+    ],
+    "reverseKeep": 9,
+    "reverseRevised": 0,
+    "reverseHold": 0,
+    "problemSvgCreated": 0,
+    "solutionSvgCreated": 9,
+    "svgBrowserRendered": "NOT_RUN",
+    "externalOpenBookReview": "NOT_RUN",
+    "studentRelease": "NOT_AUTHORIZED",
+    "sourceUidDebt": 9,
+    "rpmSemanticL3Debt": 9,
+    "metaEvidenceDebtUidCount": 9,
+    "status": "AUTHOR_DRAFT_SOURCE_UID_AND_RPM_EXACT_L3_EVIDENCE_DEBT",
+    "nextQid": 22
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-JEIL25-2FINAL-Q21-A1",
+      "sourceQid": 21,
+      "sourceUid": null,
+      "slot": "A1",
+      "purpose": "A",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q21",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "유리함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "canonical_master_parent_label_but_semantic_gap",
+      "subUnitClassificationDepth": "source_primary_semantic_review",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\dfrac1{x(x+1)}$에 대하여 $f(1)+f(2)+\\cdots+f(49)$의 값을 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$\\dfrac{49}{50}$",
+      "solution": "먼저 $\\dfrac1{x(x+1)}=\\dfrac1x-\\dfrac1{x+1}$임을 통분하여 확인한다.\n따라서 구하는 합은\n$(1-\\dfrac12)+(\\dfrac12-\\dfrac13)+\\cdots+(\\dfrac1{49}-\\dfrac1{50})$이다.\n이웃한 항에서 $\\dfrac12,\\dfrac13,\\ldots,\\dfrac1{49}$가 각각 한 번 더해지고 한 번 빼져 모두 없어진다.\n그러므로 남는 항은 $1-\\dfrac1{50}=\\dfrac{49}{50}$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/A1-solution.svg",
+      "solutionImageAlt": "A1 유리식 부분분수 분해와 중간항 소거 과정을 보여 주는 해설 SVG",
+      "solutionImageCaption": "부분분수 분해에서 소거되는 항을 확인하고 남은 첫 항·끝 항으로 답을 계산한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "sourceMetaFoundationL3": "유리식의 망원합",
+        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-263",
+        "rpmRecordId": "H1-RPM-263",
+        "rpmRecordMappingStatus": "PARENT_NEAREST_ONLY_EXACT_TELESCOPING_L3_NOT_PRESENT",
+        "primaryL3Authority": "RPM_LOCKED_PARENT_SEMANTIC_DEBT",
+        "generatedL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
+        "generatedL3Authority": "GENERATED_ACTIVE_UNDER_RPM_PARENT",
+        "rpmL4SemanticLabel": "식 결정 (원본의 목표와 다름)",
+        "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+        "templateKey": "TPL_RATIONAL_TELESCOPING_SUM",
+        "effectiveL4Id": "TPL_RATIONAL_TELESCOPING_SUM",
+        "effectiveL4Authority": "META_FOUNDATION_ACTIVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED",
+          "RPM_EXACT_L3_TELESCOPING_NOT_PRESENT_PARENT_H1_RPM_263"
+        ],
+        "metaTaxonomyStatus": "EXISTING_ACTIVE_PT_TPL_GENERATED_L3_UNDER_NEAREST_RPM_PARENT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "독립 서술형 입력이 자연스럽고 부분분수 항등식과 소거를 정확히 복원해야 마지막 값/범위/매개변수가 정해짐. 기본 부분분수로 연속항 소거",
+        "primaryL3Necessity": "RATIONAL_PARTIAL_FRACTION_THEN_TELESCOPING_SUM",
+        "mathSelfCheckEvidence": {
+          "exactRationalFraction": "49/50",
+          "calculatedWith": "PYTHON_FRACTIONS_EXACT_NINE",
+          "partialFractionTelescoping": true,
+          "calculations": [
+            "1/[x(x+1)] = 1/x − 1/(x+1)",
+            "(1 − 1/2) + (1/2 − 1/3) + … + (1/49 − 1/50)",
+            "남는 항: 1 − 1/50 = 49/50"
+          ],
+          "curriculum": "H22_C2_NO_CALCULUS"
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_ESSAY",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본처럼 함수식과 범위가 모두 텍스트에 있으며 문제에서 소거 도식을 제시하면 풀이 방법을 노출함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_EDUCATIONAL_BENEFIT",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/A1-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-JEIL25-2FINAL-Q21-A2",
+      "sourceQid": 21,
+      "sourceUid": null,
+      "slot": "A2",
+      "purpose": "A",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q21",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "유리함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "canonical_master_parent_label_but_semantic_gap",
+      "subUnitClassificationDepth": "source_primary_semantic_review",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\dfrac1{(x+1)(x+2)}$에 대하여 $f(1)+f(2)+\\cdots+f(39)$의 값을 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$\\dfrac{39}{82}$",
+      "solution": "$\\dfrac1{(x+1)(x+2)}=\\dfrac1{x+1}-\\dfrac1{x+2}$이다.\n따라서\n$f(1)+\\cdots+f(39)=(\\dfrac12-\\dfrac13)+(\\dfrac13-\\dfrac14)+\\cdots+(\\dfrac1{40}-\\dfrac1{41})$이다.\n중간의 $\\dfrac13,\\dfrac14,\\ldots,\\dfrac1{40}$이 소거되어 $\\dfrac12-\\dfrac1{41}$만 남는다.\n이를 통분하면 $\\dfrac{41-2}{82}=\\dfrac{39}{82}$이므로 정답은 $\\dfrac{39}{82}$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/A2-solution.svg",
+      "solutionImageAlt": "A2 유리식 부분분수 분해와 중간항 소거 과정을 보여 주는 해설 SVG",
+      "solutionImageCaption": "부분분수 분해에서 소거되는 항을 확인하고 남은 첫 항·끝 항으로 답을 계산한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "sourceMetaFoundationL3": "유리식의 망원합",
+        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-263",
+        "rpmRecordId": "H1-RPM-263",
+        "rpmRecordMappingStatus": "PARENT_NEAREST_ONLY_EXACT_TELESCOPING_L3_NOT_PRESENT",
+        "primaryL3Authority": "RPM_LOCKED_PARENT_SEMANTIC_DEBT",
+        "generatedL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
+        "generatedL3Authority": "GENERATED_ACTIVE_UNDER_RPM_PARENT",
+        "rpmL4SemanticLabel": "식 결정 (원본의 목표와 다름)",
+        "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+        "templateKey": "TPL_RATIONAL_TELESCOPING_SUM",
+        "effectiveL4Id": "TPL_RATIONAL_TELESCOPING_SUM",
+        "effectiveL4Authority": "META_FOUNDATION_ACTIVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED",
+          "RPM_EXACT_L3_TELESCOPING_NOT_PRESENT_PARENT_H1_RPM_263"
+        ],
+        "metaTaxonomyStatus": "EXISTING_ACTIVE_PT_TPL_GENERATED_L3_UNDER_NEAREST_RPM_PARENT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "독립 서술형 입력이 자연스럽고 부분분수 항등식과 소거를 정확히 복원해야 마지막 값/범위/매개변수가 정해짐. 함수 입력 전체를 한 칸 옮겨 소거 시작항 변경",
+        "primaryL3Necessity": "RATIONAL_PARTIAL_FRACTION_THEN_TELESCOPING_SUM",
+        "mathSelfCheckEvidence": {
+          "exactRationalFraction": "39/82",
+          "calculatedWith": "PYTHON_FRACTIONS_EXACT_NINE",
+          "partialFractionTelescoping": true,
+          "calculations": [
+            "1/[(x+1)(x+2)] = 1/(x+1) − 1/(x+2)",
+            "(1/2 − 1/3) + … + (1/40 − 1/41)",
+            "남는 항: 1/2 − 1/41 = 39/82"
+          ],
+          "curriculum": "H22_C2_NO_CALCULUS"
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_ESSAY",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본처럼 함수식과 범위가 모두 텍스트에 있으며 문제에서 소거 도식을 제시하면 풀이 방법을 노출함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_EDUCATIONAL_BENEFIT",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/A2-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-JEIL25-2FINAL-Q21-A3",
+      "sourceQid": 21,
+      "sourceUid": null,
+      "slot": "A3",
+      "purpose": "A",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q21",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "유리함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "canonical_master_parent_label_but_semantic_gap",
+      "subUnitClassificationDepth": "source_primary_semantic_review",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\dfrac2{x(x+1)}$에 대하여 $f(1)+f(2)+\\cdots+f(24)$의 값을 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$\\dfrac{48}{25}$",
+      "solution": "$\\dfrac2{x(x+1)}=2(\\dfrac1x-\\dfrac1{x+1})$이다.\n따라서 합은\n$2\\{(1-\\dfrac12)+(\\dfrac12-\\dfrac13)+\\cdots+(\\dfrac1{24}-\\dfrac1{25})\\}$이다.\n괄호 안의 중간 역수가 모두 소거되므로 $2(1-\\dfrac1{25})=2\\cdot\\dfrac{24}{25}$만 남는다.\n따라서 합은 $\\dfrac{48}{25}$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/A3-solution.svg",
+      "solutionImageAlt": "A3 유리식 부분분수 분해와 중간항 소거 과정을 보여 주는 해설 SVG",
+      "solutionImageCaption": "부분분수 분해에서 소거되는 항을 확인하고 남은 첫 항·끝 항으로 답을 계산한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "sourceMetaFoundationL3": "유리식의 망원합",
+        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-263",
+        "rpmRecordId": "H1-RPM-263",
+        "rpmRecordMappingStatus": "PARENT_NEAREST_ONLY_EXACT_TELESCOPING_L3_NOT_PRESENT",
+        "primaryL3Authority": "RPM_LOCKED_PARENT_SEMANTIC_DEBT",
+        "generatedL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
+        "generatedL3Authority": "GENERATED_ACTIVE_UNDER_RPM_PARENT",
+        "rpmL4SemanticLabel": "식 결정 (원본의 목표와 다름)",
+        "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+        "templateKey": "TPL_RATIONAL_TELESCOPING_SUM",
+        "effectiveL4Id": "TPL_RATIONAL_TELESCOPING_SUM",
+        "effectiveL4Authority": "META_FOUNDATION_ACTIVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED",
+          "RPM_EXACT_L3_TELESCOPING_NOT_PRESENT_PARENT_H1_RPM_263"
+        ],
+        "metaTaxonomyStatus": "EXISTING_ACTIVE_PT_TPL_GENERATED_L3_UNDER_NEAREST_RPM_PARENT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "독립 서술형 입력이 자연스럽고 부분분수 항등식과 소거를 정확히 복원해야 마지막 값/범위/매개변수가 정해짐. 상수배를 부분분수 소거 뒤에 적용",
+        "primaryL3Necessity": "RATIONAL_PARTIAL_FRACTION_THEN_TELESCOPING_SUM",
+        "mathSelfCheckEvidence": {
+          "exactRationalFraction": "48/25",
+          "calculatedWith": "PYTHON_FRACTIONS_EXACT_NINE",
+          "partialFractionTelescoping": true,
+          "calculations": [
+            "2/[x(x+1)] = 2{1/x − 1/(x+1)}",
+            "2{(1 − 1/2) + … + (1/24 − 1/25)}",
+            "남는 항: 2(1 − 1/25) = 48/25"
+          ],
+          "curriculum": "H22_C2_NO_CALCULUS"
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_ESSAY",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본처럼 함수식과 범위가 모두 텍스트에 있으며 문제에서 소거 도식을 제시하면 풀이 방법을 노출함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_EDUCATIONAL_BENEFIT",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/A3-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-JEIL25-2FINAL-Q21-B1",
+      "sourceQid": 21,
+      "sourceUid": null,
+      "slot": "B1",
+      "purpose": "B",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q21",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "유리함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "canonical_master_parent_label_but_semantic_gap",
+      "subUnitClassificationDepth": "source_primary_semantic_review",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\dfrac1{x(x+1)}$에 대하여 자연수 $n$이 $f(1)+f(2)+\\cdots+f(n)=\\dfrac{24}{25}$를 만족한다. $n$의 값을 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$24$",
+      "solution": "주어진 함수는 $f(x)=\\dfrac1x-\\dfrac1{x+1}$로 쓸 수 있다.\n따라서 $f(1)+\\cdots+f(n)=(1-\\dfrac12)+\\cdots+(\\dfrac1n-\\dfrac1{n+1})=1-\\dfrac1{n+1}$이다.\n이 값이 $\\dfrac{24}{25}$이므로 $\\dfrac1{n+1}=\\dfrac1{25}$이다. 양변의 분모가 양의 정수이므로 $n+1=25$, 즉 $n=24$이다.\n$n=24$이면 원래 합도 $1-\\dfrac1{25}=\\dfrac{24}{25}$로 확인된다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/B1-solution.svg",
+      "solutionImageAlt": "B1 유리식 부분분수 분해와 중간항 소거 과정을 보여 주는 해설 SVG",
+      "solutionImageCaption": "부분분수 분해에서 소거되는 항을 확인하고 남은 첫 항·끝 항으로 답을 계산한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "sourceMetaFoundationL3": "유리식의 망원합",
+        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-263",
+        "rpmRecordId": "H1-RPM-263",
+        "rpmRecordMappingStatus": "PARENT_NEAREST_ONLY_EXACT_TELESCOPING_L3_NOT_PRESENT",
+        "primaryL3Authority": "RPM_LOCKED_PARENT_SEMANTIC_DEBT",
+        "generatedL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
+        "generatedL3Authority": "GENERATED_ACTIVE_UNDER_RPM_PARENT",
+        "rpmL4SemanticLabel": "식 결정 (원본의 목표와 다름)",
+        "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+        "templateKey": "TPL_RATIONAL_TELESCOPING_SUM",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q21-TELESCOPING-ENDPOINT-RECOVERY",
+        "effectiveL4Authority": "GENERATED_ACTIVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED",
+          "RPM_EXACT_L3_TELESCOPING_NOT_PRESENT_PARENT_H1_RPM_263"
+        ],
+        "metaTaxonomyStatus": "EXISTING_ACTIVE_PT_TPL_GENERATED_L3_UNDER_NEAREST_RPM_PARENT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "독립 서술형 입력이 자연스럽고 부분분수 항등식과 소거를 정확히 복원해야 마지막 값/범위/매개변수가 정해짐. 망원합의 끝항에서 항 수 n 역산",
+        "primaryL3Necessity": "RATIONAL_PARTIAL_FRACTION_THEN_TELESCOPING_SUM",
+        "mathSelfCheckEvidence": {
+          "exactRationalFraction": "24",
+          "calculatedWith": "PYTHON_FRACTIONS_EXACT_NINE",
+          "partialFractionTelescoping": true,
+          "calculations": [
+            "f(1) + … + f(n) = 1 − 1/(n+1)",
+            "1 − 1/(n+1) = 24/25",
+            "1/(n+1)=1/25  →  n=24"
+          ],
+          "curriculum": "H22_C2_NO_CALCULUS"
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_ESSAY",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본처럼 함수식과 범위가 모두 텍스트에 있으며 문제에서 소거 도식을 제시하면 풀이 방법을 노출함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_EDUCATIONAL_BENEFIT",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/B1-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-JEIL25-2FINAL-Q21-B2",
+      "sourceQid": 21,
+      "sourceUid": null,
+      "slot": "B2",
+      "purpose": "B",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q21",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "유리함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "canonical_master_parent_label_but_semantic_gap",
+      "subUnitClassificationDepth": "source_primary_semantic_review",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\dfrac1{(x+1)(x+3)}$에 대하여 $f(1)+f(2)+\\cdots+f(10)$의 값을 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$\\dfrac{35}{104}$",
+      "solution": "두 분모가 $2$만큼 차이나므로\n$\\dfrac1{(x+1)(x+3)}=\\dfrac12(\\dfrac1{x+1}-\\dfrac1{x+3})$이다.\n따라서 합은\n$\\dfrac12\\{(\\dfrac12-\\dfrac14)+(\\dfrac13-\\dfrac15)+(\\dfrac14-\\dfrac16)+\\cdots+(\\dfrac1{11}-\\dfrac1{13})\\}$이다.\n양의 항은 $\\dfrac12$부터 $\\dfrac1{11}$까지, 음의 항은 $-\\dfrac14$부터 $-\\dfrac1{13}$까지이므로 중간 $\\dfrac14,\\ldots,\\dfrac1{11}$이 소거된다.\n남는 값은 $\\dfrac12(\\dfrac12+\\dfrac13-\\dfrac1{12}-\\dfrac1{13})=\\dfrac12(\\dfrac34-\\dfrac1{13})=\\dfrac12\\cdot\\dfrac{35}{52}=\\dfrac{35}{104}$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/B2-solution.svg",
+      "solutionImageAlt": "B2 유리식 부분분수 분해와 중간항 소거 과정을 보여 주는 해설 SVG",
+      "solutionImageCaption": "부분분수 분해에서 소거되는 항을 확인하고 남은 첫 항·끝 항으로 답을 계산한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "sourceMetaFoundationL3": "유리식의 망원합",
+        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-263",
+        "rpmRecordId": "H1-RPM-263",
+        "rpmRecordMappingStatus": "PARENT_NEAREST_ONLY_EXACT_TELESCOPING_L3_NOT_PRESENT",
+        "primaryL3Authority": "RPM_LOCKED_PARENT_SEMANTIC_DEBT",
+        "generatedL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
+        "generatedL3Authority": "GENERATED_ACTIVE_UNDER_RPM_PARENT",
+        "rpmL4SemanticLabel": "식 결정 (원본의 목표와 다름)",
+        "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+        "templateKey": "TPL_RATIONAL_TELESCOPING_SUM",
+        "effectiveL4Id": "TPL_RATIONAL_TELESCOPING_SUM",
+        "effectiveL4Authority": "META_FOUNDATION_ACTIVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED",
+          "RPM_EXACT_L3_TELESCOPING_NOT_PRESENT_PARENT_H1_RPM_263"
+        ],
+        "metaTaxonomyStatus": "EXISTING_ACTIVE_PT_TPL_GENERATED_L3_UNDER_NEAREST_RPM_PARENT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "독립 서술형 입력이 자연스럽고 부분분수 항등식과 소거를 정확히 복원해야 마지막 값/범위/매개변수가 정해짐. 두 칸 차이의 부분분수와 양 끝 두 항 소거",
+        "primaryL3Necessity": "RATIONAL_PARTIAL_FRACTION_THEN_TELESCOPING_SUM",
+        "mathSelfCheckEvidence": {
+          "exactRationalFraction": "35/104",
+          "calculatedWith": "PYTHON_FRACTIONS_EXACT_NINE",
+          "partialFractionTelescoping": true,
+          "calculations": [
+            "1/[(x+1)(x+3)] = (1/2){1/(x+1) − 1/(x+3)}",
+            "중간 1/4, …, 1/11 소거",
+            "(1/2)(1/2 + 1/3 − 1/12 − 1/13) = 35/104"
+          ],
+          "curriculum": "H22_C2_NO_CALCULUS"
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_ESSAY",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본처럼 함수식과 범위가 모두 텍스트에 있으며 문제에서 소거 도식을 제시하면 풀이 방법을 노출함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_EDUCATIONAL_BENEFIT",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/B2-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-JEIL25-2FINAL-Q21-B3",
+      "sourceQid": 21,
+      "sourceUid": null,
+      "slot": "B3",
+      "purpose": "B",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q21",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "유리함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "canonical_master_parent_label_but_semantic_gap",
+      "subUnitClassificationDepth": "source_primary_semantic_review",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\dfrac1{(2x-1)(2x+1)}$에 대하여 $f(1)+f(2)+\\cdots+f(10)$의 값을 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$\\dfrac{10}{21}$",
+      "solution": "$\\dfrac1{(2x-1)(2x+1)}=\\dfrac12(\\dfrac1{2x-1}-\\dfrac1{2x+1})$이다.\n따라서\n$f(1)+\\cdots+f(10)=\\dfrac12\\{(1-\\dfrac13)+(\\dfrac13-\\dfrac15)+\\cdots+(\\dfrac1{19}-\\dfrac1{21})\\}$이다.\n$\\dfrac13,\\dfrac15,\\ldots,\\dfrac1{19}$가 각각 상쇄되어 처음의 $1$과 마지막의 $-\\dfrac1{21}$만 남는다.\n그러므로 $\\dfrac12(1-\\dfrac1{21})=\\dfrac12\\cdot\\dfrac{20}{21}=\\dfrac{10}{21}$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/B3-solution.svg",
+      "solutionImageAlt": "B3 유리식 부분분수 분해와 중간항 소거 과정을 보여 주는 해설 SVG",
+      "solutionImageCaption": "부분분수 분해에서 소거되는 항을 확인하고 남은 첫 항·끝 항으로 답을 계산한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "sourceMetaFoundationL3": "유리식의 망원합",
+        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-263",
+        "rpmRecordId": "H1-RPM-263",
+        "rpmRecordMappingStatus": "PARENT_NEAREST_ONLY_EXACT_TELESCOPING_L3_NOT_PRESENT",
+        "primaryL3Authority": "RPM_LOCKED_PARENT_SEMANTIC_DEBT",
+        "generatedL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
+        "generatedL3Authority": "GENERATED_ACTIVE_UNDER_RPM_PARENT",
+        "rpmL4SemanticLabel": "식 결정 (원본의 목표와 다름)",
+        "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+        "templateKey": "TPL_RATIONAL_TELESCOPING_SUM",
+        "effectiveL4Id": "TPL_RATIONAL_TELESCOPING_SUM",
+        "effectiveL4Authority": "META_FOUNDATION_ACTIVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED",
+          "RPM_EXACT_L3_TELESCOPING_NOT_PRESENT_PARENT_H1_RPM_263"
+        ],
+        "metaTaxonomyStatus": "EXISTING_ACTIVE_PT_TPL_GENERATED_L3_UNDER_NEAREST_RPM_PARENT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "독립 서술형 입력이 자연스럽고 부분분수 항등식과 소거를 정확히 복원해야 마지막 값/범위/매개변수가 정해짐. 홀수 역수들의 2칸 간격 소거",
+        "primaryL3Necessity": "RATIONAL_PARTIAL_FRACTION_THEN_TELESCOPING_SUM",
+        "mathSelfCheckEvidence": {
+          "exactRationalFraction": "10/21",
+          "calculatedWith": "PYTHON_FRACTIONS_EXACT_NINE",
+          "partialFractionTelescoping": true,
+          "calculations": [
+            "1/[(2x−1)(2x+1)] = (1/2){1/(2x−1) − 1/(2x+1)}",
+            "(1 − 1/3) + (1/3 − 1/5) + … + (1/19 − 1/21)",
+            "남는 항: (1/2)(1 − 1/21) = 10/21"
+          ],
+          "curriculum": "H22_C2_NO_CALCULUS"
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_ESSAY",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본처럼 함수식과 범위가 모두 텍스트에 있으며 문제에서 소거 도식을 제시하면 풀이 방법을 노출함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_EDUCATIONAL_BENEFIT",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/B3-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-JEIL25-2FINAL-Q21-C1",
+      "sourceQid": 21,
+      "sourceUid": null,
+      "slot": "C1",
+      "purpose": "C",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q21",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "유리함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "canonical_master_parent_label_but_semantic_gap",
+      "subUnitClassificationDepth": "source_primary_semantic_review",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\dfrac1{x(x+1)}$에 대하여 자연수 $n$에 대해 $S=f(1)+\\cdots+f(n)$, $T=f(n+1)+\\cdots+f(2n)$이라 한다. $S=9T$일 때 $n$의 값을 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$4$",
+      "solution": "$f(x)=\\dfrac1x-\\dfrac1{x+1}$이므로\n$S=1-\\dfrac1{n+1}=\\dfrac n{n+1}$이다.\n한편 $T=(\\dfrac1{n+1}-\\dfrac1{n+2})+\\cdots+(\\dfrac1{2n}-\\dfrac1{2n+1})=\\dfrac1{n+1}-\\dfrac1{2n+1}$이다.\n따라서 $T=\\dfrac{(2n+1)-(n+1)}{(n+1)(2n+1)}=\\dfrac n{(n+1)(2n+1)}$이다.\n$n$은 자연수이므로 $S/T=2n+1$이다. 주어진 $S=9T$에서 $2n+1=9$이므로 $n=4$이다.\n실제로 $S=\\dfrac45$, $T=\\dfrac4{45}$여서 $S=9T$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/C1-solution.svg",
+      "solutionImageAlt": "C1 유리식 부분분수 분해와 중간항 소거 과정을 보여 주는 해설 SVG",
+      "solutionImageCaption": "부분분수 분해에서 소거되는 항을 확인하고 남은 첫 항·끝 항으로 답을 계산한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "sourceMetaFoundationL3": "유리식의 망원합",
+        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-263",
+        "rpmRecordId": "H1-RPM-263",
+        "rpmRecordMappingStatus": "PARENT_NEAREST_ONLY_EXACT_TELESCOPING_L3_NOT_PRESENT",
+        "primaryL3Authority": "RPM_LOCKED_PARENT_SEMANTIC_DEBT",
+        "generatedL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
+        "generatedL3Authority": "GENERATED_ACTIVE_UNDER_RPM_PARENT",
+        "rpmL4SemanticLabel": "식 결정 (원본의 목표와 다름)",
+        "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+        "templateKey": "TPL_RATIONAL_TELESCOPING_SUM",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q21-TELESCOPING-SPLIT-RATIO",
+        "effectiveL4Authority": "GENERATED_ACTIVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED",
+          "RPM_EXACT_L3_TELESCOPING_NOT_PRESENT_PARENT_H1_RPM_263"
+        ],
+        "metaTaxonomyStatus": "EXISTING_ACTIVE_PT_TPL_GENERATED_L3_UNDER_NEAREST_RPM_PARENT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "독립 서술형 입력이 자연스럽고 부분분수 항등식과 소거를 정확히 복원해야 마지막 값/범위/매개변수가 정해짐. 초기 구간과 다음 구간 합을 분리하여 비율 식 구성",
+        "primaryL3Necessity": "RATIONAL_PARTIAL_FRACTION_THEN_TELESCOPING_SUM",
+        "mathSelfCheckEvidence": {
+          "exactRationalFraction": "4",
+          "calculatedWith": "PYTHON_FRACTIONS_EXACT_NINE",
+          "partialFractionTelescoping": true,
+          "calculations": [
+            "S = 1 − 1/(n+1) = n/(n+1)",
+            "T = 1/(n+1) − 1/(2n+1)",
+            "S/T = 2n+1 = 9  →  n=4"
+          ],
+          "curriculum": "H22_C2_NO_CALCULUS"
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_ESSAY",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본처럼 함수식과 범위가 모두 텍스트에 있으며 문제에서 소거 도식을 제시하면 풀이 방법을 노출함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_EDUCATIONAL_BENEFIT",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/C1-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-JEIL25-2FINAL-Q21-C2",
+      "sourceQid": 21,
+      "sourceUid": null,
+      "slot": "C2",
+      "purpose": "C",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q21",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "유리함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "canonical_master_parent_label_but_semantic_gap",
+      "subUnitClassificationDepth": "source_primary_semantic_review",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "두 함수 $f(x)=\\dfrac1{x(x+1)}$, $g(x)=\\dfrac1{(x+1)(x+2)}$에 대하여 자연수 $n$이\n$\\{f(1)-g(1)\\}+\\{f(2)-g(2)\\}+\\cdots+\\{f(n)-g(n)\\}=\\dfrac9{20}$\n을 만족한다. $n$의 값을 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$3$",
+      "solution": "두 함수는 $g(x)=f(x+1)$의 관계가 있다. 따라서 주어진 합은\n$\\{f(1)-f(2)\\}+\\{f(2)-f(3)\\}+\\cdots+\\{f(n)-f(n+1)\\}$이다.\n중간의 $f(2),\\ldots,f(n)$이 모두 소거되어 $f(1)-f(n+1)$만 남는다.\n$f(1)=\\dfrac12$, $f(n+1)=\\dfrac1{(n+1)(n+2)}$이므로\n$\\dfrac12-\\dfrac1{(n+1)(n+2)}=\\dfrac9{20}$이다. 따라서 $(n+1)(n+2)=20$이고\n$n^2+3n-18=(n-3)(n+6)=0$이다. 자연수 조건에 의해 $n=3$이며, 실제 합은 $\\dfrac12-\\dfrac1{20}=\\dfrac9{20}$이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/C2-solution.svg",
+      "solutionImageAlt": "C2 유리식 부분분수 분해와 중간항 소거 과정을 보여 주는 해설 SVG",
+      "solutionImageCaption": "부분분수 분해에서 소거되는 항을 확인하고 남은 첫 항·끝 항으로 답을 계산한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "sourceMetaFoundationL3": "유리식의 망원합",
+        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-263",
+        "rpmRecordId": "H1-RPM-263",
+        "rpmRecordMappingStatus": "PARENT_NEAREST_ONLY_EXACT_TELESCOPING_L3_NOT_PRESENT",
+        "primaryL3Authority": "RPM_LOCKED_PARENT_SEMANTIC_DEBT",
+        "generatedL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
+        "generatedL3Authority": "GENERATED_ACTIVE_UNDER_RPM_PARENT",
+        "rpmL4SemanticLabel": "식 결정 (원본의 목표와 다름)",
+        "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+        "templateKey": "TPL_RATIONAL_TELESCOPING_SUM",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q21-TELESCOPING-FUNCTION-DIFFERENCE",
+        "effectiveL4Authority": "GENERATED_ACTIVE",
+        "crossConceptKeys": [
+          "CC_FUNCTION_COMPOSITION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED",
+          "RPM_EXACT_L3_TELESCOPING_NOT_PRESENT_PARENT_H1_RPM_263"
+        ],
+        "metaTaxonomyStatus": "EXISTING_ACTIVE_PT_TPL_GENERATED_L3_UNDER_NEAREST_RPM_PARENT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "독립 서술형 입력이 자연스럽고 부분분수 항등식과 소거를 정확히 복원해야 마지막 값/범위/매개변수가 정해짐. 두 유리함수의 한 칸 이동 관계를 찾고 함수값 수준에서 소거",
+        "primaryL3Necessity": "RATIONAL_PARTIAL_FRACTION_THEN_TELESCOPING_SUM",
+        "mathSelfCheckEvidence": {
+          "exactRationalFraction": "3",
+          "calculatedWith": "PYTHON_FRACTIONS_EXACT_NINE",
+          "partialFractionTelescoping": true,
+          "calculations": [
+            "g(x) = f(x+1)",
+            "{f(1)−f(2)} + … + {f(n)−f(n+1)}",
+            "1/2 − 1/[(n+1)(n+2)] = 9/20  →  n=3"
+          ],
+          "curriculum": "H22_C2_NO_CALCULUS"
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_ESSAY",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본처럼 함수식과 범위가 모두 텍스트에 있으며 문제에서 소거 도식을 제시하면 풀이 방법을 노출함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_EDUCATIONAL_BENEFIT",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/C2-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-JEIL25-2FINAL-Q21-C3",
+      "sourceQid": 21,
+      "sourceUid": null,
+      "slot": "C3",
+      "purpose": "C",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q21",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "유리함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "canonical_master_parent_label_but_semantic_gap",
+      "subUnitClassificationDepth": "source_primary_semantic_review",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "자연수 $a$에 대해 함수 $f(x)=\\dfrac1{(x+a)(x+a+1)}$라 하자. $f(1)+f(2)+f(3)+f(4)=\\dfrac4{45}$를 만족하도록 하는 $a$의 값을 구하는 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$4$",
+      "solution": "부분분수로 분해하면\n$f(x)=\\dfrac1{x+a}-\\dfrac1{x+a+1}$이다.\n따라서 네 항의 합은\n$(\\dfrac1{a+1}-\\dfrac1{a+2})+\\cdots+(\\dfrac1{a+4}-\\dfrac1{a+5})=\\dfrac1{a+1}-\\dfrac1{a+5}$이다.\n이를 통분하면 $\\dfrac4{(a+1)(a+5)}$이므로 문제의 조건에서\n$\\dfrac4{(a+1)(a+5)}=\\dfrac4{45}$, 곧 $(a+1)(a+5)=45$이다.\n$a^2+6a-40=(a-4)(a+10)=0$이고 $a$는 자연수이므로 $a=4$이다.\n실제로 $(a+1)(a+5)=5\\cdot9=45$여서 조건을 만족한다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/C3-solution.svg",
+      "solutionImageAlt": "C3 유리식 부분분수 분해와 중간항 소거 과정을 보여 주는 해설 SVG",
+      "solutionImageCaption": "부분분수 분해에서 소거되는 항을 확인하고 남은 첫 항·끝 항으로 답을 계산한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "sourceMetaFoundationL3": "유리식의 망원합",
+        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-263",
+        "rpmRecordId": "H1-RPM-263",
+        "rpmRecordMappingStatus": "PARENT_NEAREST_ONLY_EXACT_TELESCOPING_L3_NOT_PRESENT",
+        "primaryL3Authority": "RPM_LOCKED_PARENT_SEMANTIC_DEBT",
+        "generatedL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
+        "generatedL3Authority": "GENERATED_ACTIVE_UNDER_RPM_PARENT",
+        "rpmL4SemanticLabel": "식 결정 (원본의 목표와 다름)",
+        "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+        "templateKey": "TPL_RATIONAL_TELESCOPING_SUM",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q21-TELESCOPING-SHIFT-PARAMETER",
+        "effectiveL4Authority": "GENERATED_ACTIVE",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED",
+          "RPM_EXACT_L3_TELESCOPING_NOT_PRESENT_PARENT_H1_RPM_263"
+        ],
+        "metaTaxonomyStatus": "EXISTING_ACTIVE_PT_TPL_GENERATED_L3_UNDER_NEAREST_RPM_PARENT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "독립 서술형 입력이 자연스럽고 부분분수 항등식과 소거를 정확히 복원해야 마지막 값/범위/매개변수가 정해짐. 분모 이동 매개변수로 망원합 계산 후 이차식 역산",
+        "primaryL3Necessity": "RATIONAL_PARTIAL_FRACTION_THEN_TELESCOPING_SUM",
+        "mathSelfCheckEvidence": {
+          "exactRationalFraction": "4",
+          "calculatedWith": "PYTHON_FRACTIONS_EXACT_NINE",
+          "partialFractionTelescoping": true,
+          "calculations": [
+            "f(x) = 1/(x+a) − 1/(x+a+1)",
+            "f(1)+…+f(4) = 1/(a+1) − 1/(a+5)",
+            "4/[(a+1)(a+5)] = 4/45  →  a=4"
+          ],
+          "curriculum": "H22_C2_NO_CALCULUS"
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_ESSAY",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본처럼 함수식과 범위가 모두 텍스트에 있으며 문제에서 소거 도식을 제시하면 풀이 방법을 노출함"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_EDUCATIONAL_BENEFIT",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/C3-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    }
+  ]
+}
