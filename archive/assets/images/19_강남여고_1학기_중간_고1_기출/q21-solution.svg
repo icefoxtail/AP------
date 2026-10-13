@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 520" role="img" aria-labelledby="title desc" data-visual-type="manual-circle-square-projection" data-source-qid="21" data-coordinate-model="A=(0,10), B=(0,0), C=(10,0), D=(10,10), side=10, incircle center=(5,5), radius=5">
+<title id="title">직각삼각형 PED로 DP 구하기</title>
+<desc id="desc">가능한 배치 하나를 나타냈다. 사각형 PEDF는 직사각형이고 PE=10−x, ED=PF=10−y이다. PE와 ED가 수직인 직각삼각형 PED에서 DP²=PE²+ED²이다.</desc>
+<rect width="1020" height="520" fill="#ffffff"/>
+<text x="34" y="34" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="22" font-weight="700" fill="#202a35">DP를 두 직각 성분으로 나누기</text>
+<text x="34" y="62" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" fill="#485866">가능한 배치 하나를 그렸다. x,y를 바꾸어도 DP는 같다.</text>
+<g fill="none" stroke="#303b45" stroke-width="3">
+  <line x1="130" y1="30" x2="130" y2="380" data-geometry="side" data-label="AB" data-from="A" data-to="B"/>
+  <line x1="130" y1="380" x2="480" y2="380" data-geometry="side" data-label="BC" data-from="B" data-to="C"/>
+  <line x1="480" y1="380" x2="480" y2="30" data-geometry="side" data-label="CD" data-from="C" data-to="D"/>
+  <line x1="480" y1="30" x2="130" y2="30" data-geometry="side" data-label="AD" data-from="D" data-to="A"/>
+</g>
+<circle cx="305" cy="205" r="175" fill="none" stroke="#6c8394" stroke-width="3" data-geometry="incircle" data-model-center="5,5" data-model-radius="5"/>
+<line x1="130" y1="264.554" x2="469.554" y2="264.554" stroke="#2e789d" stroke-width="4" stroke-linecap="round" data-geometry="PQ" data-model-from="0,3.298438" data-model-to="9.701562,3.298438"/>
+<line x1="469.554" y1="264.554" x2="469.554" y2="380" stroke="#2e789d" stroke-width="4" stroke-linecap="round" data-geometry="PR" data-model-from="9.701562,3.298438" data-model-to="9.701562,0"/>
+<line x1="130" y1="264.554" x2="130" y2="380" stroke="#303b45" stroke-width="2.5" data-geometry="QB"/>
+<line x1="130" y1="380" x2="469.554" y2="380" stroke="#303b45" stroke-width="2.5" data-geometry="BR"/>
+<line x1="469.554" y1="264.554" x2="480" y2="264.554" stroke="#4b8b7b" stroke-width="3" stroke-dasharray="5 3" data-geometry="PE" data-model-length="0.298438"/>
+<line x1="469.554" y1="264.554" x2="469.554" y2="30" stroke="#4b8b7b" stroke-width="3" stroke-dasharray="7 4" data-geometry="PF" data-model-length="6.701562"/>
+<line x1="480" y1="30" x2="469.554" y2="264.554" stroke="#b4762c" stroke-width="4" stroke-linecap="round" data-geometry="DP" data-model-length="6.708204"/>
+<path d="M130 274.554 L140 274.554 L140 264.554 M459.554 380 L459.554 370 L469.554 370 M480 254.554 L470 254.554 L470 264.554 M469.554 40 L479.554 40 L479.554 30" fill="none" stroke="#263746" stroke-width="1.8" data-geometry="right-angle-markers"/>
+<text x="489" y="165" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" font-weight="700" fill="#b4762c">DP</text>
+<g fill="#202a35" font-family="Cambria Math, Noto Sans KR, Malgun Gothic, sans-serif" font-size="20" font-style="italic">
+  <circle cx="130" cy="30" r="4.5" fill="#202a35" data-fact-id="A" data-model-x="0" data-model-y="10"/><text x="103" y="24">A</text>
+  <circle cx="130" cy="380" r="4.5" fill="#202a35" data-fact-id="B" data-model-x="0" data-model-y="0"/><text x="105" y="404">B</text>
+  <circle cx="480" cy="380" r="4.5" fill="#202a35" data-fact-id="C" data-model-x="10" data-model-y="0"/><text x="491" y="402">C</text>
+  <circle cx="480" cy="30" r="4.5" fill="#202a35" data-fact-id="D" data-model-x="10" data-model-y="10"/><text x="493" y="25">D</text>
+  <circle cx="469.554" cy="264.554" r="5.5" fill="#b4762c" data-fact-id="P" data-model-x="9.701562" data-model-y="3.298438"/><text x="438" y="249">P</text>
+  <circle cx="130" cy="264.554" r="4.5" fill="#202a35" data-fact-id="Q" data-model-x="0" data-model-y="3.298438"/><text x="105" y="257">Q</text>
+  <circle cx="469.554" cy="380" r="4.5" fill="#202a35" data-fact-id="R" data-model-x="9.701562" data-model-y="0"/><text x="444" y="409">R</text>
+  <circle cx="480" cy="264.554" r="4.5" fill="#4b8b7b" data-fact-id="E" data-model-x="10" data-model-y="3.298438"/><text x="493" y="269">E</text>
+  <circle cx="469.554" cy="30" r="4.5" fill="#4b8b7b" data-fact-id="F" data-model-x="9.701562" data-model-y="10"/><text x="447" y="59">F</text>
+</g>
+<text x="292" y="252" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="18" font-weight="700" fill="#2e789d">x</text>
+<text x="477" y="333" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="18" font-weight="700" fill="#2e789d">y</text>
+<text x="100" y="198" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" fill="#485866">10</text>
+<text x="292" y="409" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" fill="#485866">10</text>
+<rect x="555" y="94" width="430" height="350" rx="14" fill="#f4f7f9" stroke="#c4d0d8"/>
+<text x="580" y="130" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="18" font-weight="700" fill="#263746">직사각형 PQBR</text>
+<text x="580" y="166" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" fill="#263746">x=PQ,  y=PR</text>
+<text x="580" y="198" font-family="Cambria Math, Noto Sans KR, sans-serif" font-size="18" fill="#263746">x+y=13,  xy=32</text>
+<text x="580" y="230" font-family="Cambria Math, Noto Sans KR, sans-serif" font-size="18" fill="#263746">x²+y²=105</text>
+<line x1="580" y1="250" x2="958" y2="250" stroke="#d2dbe1"/>
+<text x="580" y="286" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" fill="#4b8b7b">PE=10−x,  ED=PF=10−y</text>
+<text x="580" y="318" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" fill="#263746">PE ⟂ ED</text>
+<text x="580" y="357" font-family="Cambria Math, Noto Sans KR, sans-serif" font-size="18" font-weight="700" fill="#b4762c">DP²=PE²+ED²=PE²+PF²</text>
+<text x="580" y="406" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="14" fill="#485866">x, y가 서로 바뀌어도 거리식은 같다.</text>
+</svg>
