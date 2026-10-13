@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 390" width="720" height="390" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title desc" data-visual-type="geometry" data-geometry-style-version="AP_GEOMETRY_PRINT_V1_0_DRAFT" data-geometry-preset="GEOMETRY_STANDARD" data-geometry-fact-hash="c4baf75c0bdb8e376b9c079a6973fa8f72847e283ed73a3b378d7299bcc8336d" data-visual-provenance="CONSTRUCTED_REALIZATION" data-space-visual-tier="TIER_1_STANDARD_3D" data-scale-policy="TOPOLOGY_ONLY_NOT_TO_SCALE">
+<title id="title">세 모서리의 제곱합은 공간 대각선의 제곱</title>
+<desc id="desc">직육면체의 서로 다른 세 모서리 방향과 반대 꼭짓점을 잇는 공간 대각선을 표시한 비례를 나타내지 않는 사시도</desc>
+<style>.title{font:700 22px "Noto Sans KR","Malgun Gothic",sans-serif;fill:#111827}.note{font:15px "Noto Sans KR","Malgun Gothic",sans-serif;fill:#475569}.edge{stroke:#334155;stroke-width:2.4;fill:none;stroke-linecap:round}.hidden{stroke:#64748b;stroke-width:1.8;stroke-dasharray:4 4;fill:none;stroke-linecap:round}.diag{stroke:#c2410c;stroke-width:4;fill:none;stroke-linecap:round}.dim{font:700 19px "STIX Two Math","Cambria Math",serif;font-style:italic;fill:#1d4ed8}.endpoint{font:700 18px "STIX Two Math","Cambria Math",serif;font-style:italic;fill:#9a3412}.panel{fill:#f8fafc;stroke:#cbd5e1;stroke-width:1.2}.math{font:italic 25px "STIX Two Math","Cambria Math",serif;fill:#111827}.panelnote{font:15px "Noto Sans KR","Malgun Gothic",sans-serif;fill:#334155}</style>
+<rect width="720" height="390" fill="#fff"/>
+<text x="32" y="38" class="title">세 모서리를 잇는 공간 대각선</text>
+<text x="32" y="64" class="note">그림은 꼭짓점·모서리 관계를 보이며 길이 비율은 나타내지 않는다.</text>
+<g id="visible-edges" class="edge">
+<line id="AB" x1="140" y1="280" x2="330" y2="280"/>
+<line id="BC" x1="330" y1="280" x2="330" y2="130"/>
+<line id="CD" x1="330" y1="130" x2="140" y2="130"/>
+<line id="DA" x1="140" y1="130" x2="140" y2="280"/>
+<line id="DH" x1="140" y1="130" x2="220" y2="75"/>
+<line id="HG" x1="220" y1="75" x2="410" y2="75"/>
+<line id="GC" x1="410" y1="75" x2="330" y2="130"/>
+<line id="BF" x1="330" y1="280" x2="410" y2="225"/>
+<line id="FG" x1="410" y1="225" x2="410" y2="75"/>
+</g>
+<g id="hidden-edges" class="hidden">
+<line id="AE" x1="140" y1="280" x2="220" y2="225"/>
+<line id="EF" x1="220" y1="225" x2="410" y2="225"/>
+<line id="EH" x1="220" y1="225" x2="220" y2="75"/>
+</g>
+<line id="space-diagonal-AG" class="diag" x1="140" y1="280" x2="410" y2="75"/>
+<circle cx="140" cy="280" r="4.5" fill="#c2410c"/><circle cx="410" cy="75" r="4.5" fill="#c2410c"/>
+<text x="117" y="304" class="endpoint">A</text><text x="418" y="73" class="endpoint">G</text>
+<text id="dim-a" data-owner-edge="AB" data-fact-role="GIVEN" x="226" y="307" class="dim">a</text><text id="dim-b" data-owner-edge="DH" data-fact-role="GIVEN" x="165" y="103" class="dim">b</text><text id="dim-c" data-owner-edge="DA" data-fact-role="GIVEN" x="111" y="208" class="dim">c</text>
+<path d="M423 152 L468 152" stroke="#c2410c" stroke-width="2.5" fill="none"/>
+<text x="476" y="157" class="endpoint">공간 대각선</text>
+<rect x="476" y="184" width="210" height="126" rx="12" class="panel"/>
+<text x="494" y="220" class="panelnote">서로 수직인 세 모서리 길이</text>
+<text x="494" y="258" class="math">a, b, c</text>
+<text id="space-diagonal-formula" data-fact-role="DERIVED_INTERMEDIATE" x="494" y="288" class="math">d² = a² + b² + c²</text>
+</svg>
