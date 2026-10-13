@@ -80,7 +80,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "$P(x)=2x^3-x^2+3x+6$이라 하자.\n나머지정리에 의해 $x-1$로 나눈 나머지는 $P(1)$이다.\n$P(1)=2-1+3+6=10$이다.\n따라서 나머지는 $10$이고 정답은 ⑤이다.",
-    "templateNullReason": "ACTIVE_H1_TEMPLATE_LOOKUP_NO_EXACT_MATCH:DIRECT_LINEAR_DIVISOR_REMAINDER"
+    "templateNullReason": "LOCKED_ORIGINAL_BINDING_EVIDENCE_DEBT:PT_H1_REMAINDER_THEOREM has ACTIVE templates TPL_H1_REMAINDER_COMPOSITE_DIVISOR and TPL_H1_REMAINDER_NESTED_DIVISION; neither matches one-step direct evaluation P(1) for the linear divisor x-1. No exact ACTIVE template exists under the locked H15-SA-02-REMAINDER_FACTOR / PT_H1_REMAINDER_THEOREM binding."
   },
   {
     "id": 3,
@@ -417,8 +417,8 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "source_solution_semantic_resolved",
     "subUnitClassificationDepth": "complete_category",
-    "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
-    "templateKey": null,
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "DEEP_COMPOSITE",
@@ -443,7 +443,6 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "식에서 $a$가 붙은 부분을 묶으면\n$y=x^2-5+a(x+1)$이다.\n따라서 $x=-1$일 때 $a$와 관계없이 $y=-4$이므로\n$P=(-1,-4)$이다.\n$P$가 꼭짓점이므로 축의 방정식은 $x=-1$이다.\n축 $x=-\\dfrac a2=-1$에서 $a=2$이다.\n따라서 함수는\n$y=x^2+2x-3=(x-1)(x+3)$이고\n두 $x$절편은 $1,-3$이다.\n그러므로\n$|\\alpha|+|\\beta|=1+3=4$이다.\n정답은 ②이다.",
-    "templateNullReason": "ACTIVE_H1_TEMPLATE_LOOKUP_NO_EXACT_MATCH:FIXED_POINT_VERTEX_THEN_ROOT_ABS_SUM"
   },
   {
     "id": 12,
@@ -580,7 +579,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "H15-SA-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
-    "subUnitConfidence": "source_solution_semantic_resolved",
+    "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
     "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
@@ -600,16 +599,16 @@ window.questionBank = [
       "이차방정식"
     ],
     "wide": false,
-    "content": "이차방정식 $x^2+ax-2a=0$이 서로 다른 두 실근 $\\alpha$, $\\beta$를 가질 때, $|\\alpha|+|\\beta|=3$이다. 양수 $a$의 값은? [4.4점]",
+    "content": "이차방정식 $x^2+ax-3a=0$이 서로 다른 두 실근 $\\alpha$, $\\beta$를 가질 때, $|\\alpha|+|\\beta|$, $|\\alpha||\\beta|$를 두 근으로 갖는 이차방정식은 $x^2-7ax+12a^2=0$이다. 양수 $a$의 값은? [4.4점]",
     "choices": [
       "$\\dfrac{1}{2}$",
-      "$1$",
-      "$\\dfrac{3}{2}$",
-      "$2$",
-      "$\\dfrac{5}{2}$"
+      "$\\dfrac{8}{15}$",
+      "$\\dfrac{3}{5}$",
+      "$\\dfrac{4}{5}$",
+      "$\\dfrac{13}{16}$"
     ],
-    "answer": "②",
-    "solution": "$a>0$이면 두 근의 곱은\n$\\alpha\\beta=-2a<0$이므로 두 근의 부호가 서로 다르다.\n따라서 $|\\alpha|+|\\beta|$는 두 근 사이의 거리와 같고\n$|\\alpha|+|\\beta|=|\\alpha-\\beta|$이다.\n이차방정식의 두 근의 차의 제곱은\n$(\\alpha-\\beta)^2=(\\alpha+\\beta)^2-4\\alpha\\beta$이다.\n근과 계수의 관계에서\n$\\alpha+\\beta=-a$, $\\alpha\\beta=-2a$이므로\n$(|\\alpha|+|\\beta|)^2=a^2+8a$이다.\n문제의 조건을 대입하면\n$9=a^2+8a$\n$a^2+8a-9=0$\n$(a-1)(a+9)=0$이다.\n$a>0$이므로 $a=1$이다.\n따라서 정답은 ②이다."
+    "answer": "④",
+    "solution": "근과 계수의 관계로 $\\alpha+\\beta=-a$, $\\alpha\\beta=-3a<0$이다. 두 근의 부호가 다르므로 $|\\alpha\\beta|=3a$이다.\n주어진 이차식은\n$x^2-7ax+12a^2=(x-3a)(x-4a)$\n이므로 두 근은 $3a$, $4a$이다. 이미 $|\\alpha\\beta|=3a$이므로 $|\\alpha|+|\\beta|=4a$이다.\n두 근의 부호가 다르므로 $|\\alpha|+|\\beta|=|\\alpha-\\beta|$이고,\n$(4a)^2=(\\alpha-\\beta)^2=(\\alpha+\\beta)^2-4\\alpha\\beta=a^2+12a$이다.\n따라서 $15a^2=12a$이고, $a>0$이므로 $a=\\dfrac45$이다. 정답은 ④이다."
   },
   {
     "id": 16,
@@ -721,7 +720,7 @@ window.questionBank = [
       "복소수"
     ],
     "wide": false,
-    "content": "이차방정식 $x^2+ax+b=0$의 한 근이 $\\dfrac{3}{2-i}$일 때, 실수 $a$, $b$에 대하여 $\\dfrac{a}{b}$의 값을 구하시오. (단, $i=\\sqrt{-1}$) [4.0점]",
+    "content": "이차방정식 $x^2+ax+b$의 한 근이 $\\dfrac{3}{2-i}$일 때, 실수 $a$, $b$에 대하여 $\\dfrac{a}{b}$의 값을 구하시오. (단, $i=\\sqrt{-1}$) [4.0점]",
     "choices": [],
     "answer": "$-\\dfrac{4}{3}$",
     "solution": "주어진 근을 먼저 정리한다.\n$\\dfrac{3}{2-i}=\\dfrac{3(2+i)}{(2-i)(2+i)}=\\dfrac{6+3i}{5}$이다.\n계수가 실수인 이차방정식이므로 다른 한 근은 켤레복소수\n$\\dfrac{6-3i}{5}$이다.\n두 근의 합은\n$\\dfrac{12}{5}=-a$이므로 $a=-\\dfrac{12}{5}$이다.\n두 근의 곱은\n$\\dfrac{36+9}{25}=\\dfrac95=b$이다.\n따라서\n$\\dfrac ab=\\dfrac{-12/5}{9/5}=-\\dfrac43$이다."
@@ -761,41 +760,42 @@ window.questionBank = [
     "choices": [],
     "answer": "$21, 23$",
     "solution": "$x^2+x+1=0$의 한 근을 $\\omega$라 두면 $\\omega^3=1$, $\\omega\\ne1$이다.\n$x^2+x+1$이 $P_n(x)$의 인수이려면 $P_n(\\omega)=0$이어야 한다.\n즉\n$\\prod_{k=1}^{n}(1+\\omega^k)=128$이어야 한다.\n세 항씩 묶으면\n$(1+\\omega)(1+\\omega^2)(1+\\omega^3)$\n$=(1+\\omega)(1+\\omega^2)\\cdot2$이다.\n$1+\\omega=-\\omega^2$, $1+\\omega^2=-\\omega$이므로 한 묶음의 곱은 $2$이다.\n$n=3q$이면 전체 곱은 $2^q$이므로 $2^q=128=2^7$에서 $n=21$이다.\n$n=3q+1$이면 마지막 인수 $1+\\omega$가 남아 실수 $128$이 될 수 없다.\n$n=3q+2$이면 마지막 두 인수의 곱 $(1+\\omega)(1+\\omega^2)=1$이므로 전체 곱은 다시 $2^q$이다.\n$q=7$에서 $n=23$이다.\n따라서 $n=21,23$이다.",
-    "templateNullReason": "ACTIVE_H1_TEMPLATE_LOOKUP_NO_EXACT_MATCH:ROOT_OF_UNITY_PRODUCT_PERIODICITY"
+    "templateNullReason": "LOCKED_ORIGINAL_BINDING_EVIDENCE_DEBT:locked source classification is H15-SA-02-REMAINDER_FACTOR / PT_H1_FACTOR_THEOREM for divisibility by x^2+x+1. ACTIVE TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD is parented to PT_H1_COMPLEX_POWER_ROOT and bound to H15-SA-04 complex-number subunits; no exact ACTIVE template is bound to the locked factor-theorem curriculum path. Do not reclassify solely to fill templateKey."
   },
   {
     "id": 20,
-    "level": "중",
-    "category": "다항식의 연산",
-    "originalCategory": "다항식의 연산",
+    "level": "상",
+    "category": "나머지정리",
+    "originalCategory": "나머지정리",
     "standardCourse": "수학(상)",
-    "standardUnitKey": "H15-SA-01",
-    "standardUnit": "다항식의 연산",
-    "standardUnitOrder": 1,
-    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
-    "subUnit": "다항식의 기본 연산",
+    "standardUnitKey": "H15-SA-02",
+    "standardUnit": "항등식과 나머지정리",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+    "subUnit": "나머지정리와 인수정리",
     "subUnitConfidence": "source_solution_semantic_resolved",
     "subUnitClassificationDepth": "complete_category",
-    "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
-    "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+    "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+    "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 2,
-    "difficultyConfidence": "high",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
-      "다항식"
+      "다항식",
+      "나머지정리"
     ],
     "wide": true,
-    "content": "세 다항식 $A$, $B$, $C$가 $A=x^2-xy+y^2$, $B=x^2+2xy$, $C=x^2+3y^2$와 같을 때, 아래 식을 계산하여 $x$에 대한 내림차순으로 나타내고 그 과정을 서술하시오. [각 2점] (1) $(A+B)+(2A-B)$. (2) $BC-2CB$.",
+    "content": "삼차다항식 $f(x)$가 다음 조건을 만족시킨다. (가) $f(n)=kn$ ($n=1,2,3$) (단, $k$는 상수이다.) (나) $f(x+1)-6$은 $x+1$로 나누어 떨어지고, $f(x)-2$는 $x-1$로 나누어 떨어진다. 이 때, $f(x)$를 $(x-1)^2(x-3)$으로 나눈 나머지를 $R(x)$라 할 때, $R(-1)$의 값을 구하시오. [10점]",
     "choices": [],
-    "answer": "(1) $3x^2-3xy+3y^2$; (2) $-x^4-2x^3y-3x^2y^2-6xy^3$",
-    "solution": "(1) 먼저 같은 다항식끼리 정리한다.\n$(A+B)+(2A-B)=3A$이다.\n따라서\n$3A=3(x^2-xy+y^2)=3x^2-3xy+3y^2$이다.\n\n(2) 다항식의 곱은 교환법칙이 성립하므로 $BC=CB$이다.\n따라서\n$BC-2CB=-BC$이다.\n$BC=(x^2+2xy)(x^2+3y^2)$\n$=x^4+2x^3y+3x^2y^2+6xy^3$이므로\n$BC-2CB=-x^4-2x^3y-3x^2y^2-6xy^3$이다."
+    "answer": "$6$",
+    "solution": "먼저 $f(x)=Ax^3+Bx^2+Cx+D$라 두자.\n$f(x+1)-6$이 $x+1$로 나누어 떨어지므로 $f(0)=6$이다.\n$f(x)-2$가 $x-1$로 나누어 떨어지므로 $f(1)=2$이다. 한편 $f(1)=k$이므로 $k=2$이다.\n따라서 $f(2)=4$, $f(3)=6$이고, $D=6$이다. 계수 비교로\n$A+B+C=-4$, $8A+4B+2C=-2$, $27A+9B+3C=0$이다.\n이를 풀면 $A=-1$, $B=6$, $C=-9$이므로 $f(x)=-x^3+6x^2-9x+6$이다.\n$(x-1)^2(x-3)=x^3-5x^2+7x-3$이므로\n$f(x)=- (x-1)^2(x-3)+(x^2-2x+3)$이다.\n따라서 나머지는 $R(x)=x^2-2x+3$이고 $R(-1)=1+2+3=6$이다."
   },
   {
     "id": 21,
@@ -813,9 +813,7 @@ window.questionBank = [
     "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
     "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "DEEP_COMPOSITE",
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
@@ -829,9 +827,9 @@ window.questionBank = [
       "이차방정식"
     ],
     "wide": true,
-    "content": "두 이차함수 $f(x)=(x-a)^2-a^2$, $g(x)=-(x-2a)^2+4a^2+b$가 다음 조건을 만족시킨다. (가) 방정식 $f(x)=g(x)$는 서로 다른 두 실근 $\\alpha$, $\\beta$를 갖는다. (나) $\\beta-\\alpha=2$. (다) $f(\\beta)-g(\\alpha)\\le g(2a)-f(a)$. (라) $g(b)=f(a)+5a^2+b$. 다음 조건을 모두 만족하는 $a$, $b$에 대하여 $ab$의 값을 구하고 서술하시오. (단, $a$, $b$는 상수이고 $a>0$이다.) [10점]",
+    "content": "두 이차함수 $f(x)=(x-a)^2-a^2$, $g(x)=-(x-2a)^2+4a^2+b$가 다음 조건을 만족시킨다. (가) 방정식 $f(x)=g(x)$는 서로 다른 두 실근 $\\alpha$, $\\beta$를 갖는다. (나) $\\beta-\\alpha=2$. (다) $f(\\beta)-g(\\alpha)\\le g(2a)-f(a)$. (라) $g(\\beta)=f(\\alpha)+5a^2+b$. 다음 조건을 모두 만족하는 $a$, $b$에 대하여 $ab$의 값을 구하고 서술하시오. (단, $a$, $b$는 상수이다.) [10점]",
     "choices": [],
-    "answer": "$\\dfrac{88-16\\sqrt{10}}{81}$",
-    "solution": "두 함수를 전개하면\n$f(x)=x^2-2ax$, $g(x)=-x^2+4ax+b$이다.\n따라서 $f(x)=g(x)$는\n$2x^2-6ax-b=0$, 즉\n$x^2-3ax-\\dfrac b2=0$이다.\n두 근의 합과 곱은\n$\\alpha+\\beta=3a$, $\\alpha\\beta=-\\dfrac b2$이다.\n또\n$(\\beta-\\alpha)^2=(\\alpha+\\beta)^2-4\\alpha\\beta$이므로\n$4=9a^2+2b$이다.\n따라서\n$b=2-\\dfrac92a^2$이다.\n\n조건 (다)를 확인한다. 두 근에서는 $f=g$이므로\n$f(\\beta)-g(\\alpha)=g(\\beta)-g(\\alpha)$이다.\n$g(\\beta)-g(\\alpha)=(\\beta-\\alpha)\\{4a-(\\alpha+\\beta)\\}$\n$=2(4a-3a)=2a$이다.\n한편\n$g(2a)-f(a)=(4a^2+b)-(-a^2)=5a^2+b$이다.\n따라서 조건 (다)는\n$2a\\le5a^2+b$이다.\n$b=2-\\dfrac92a^2$를 대입하면\n$0\\le\\dfrac12(a-2)^2$이므로 항상 성립한다.\n\n조건 (라)에서\n$g(b)=-(b-2a)^2+4a^2+b$이고\n$f(a)+5a^2+b=-a^2+5a^2+b=4a^2+b$이다.\n따라서\n$(b-2a)^2=0$, 즉 $b=2a$이다.\n이를 $b=2-\\dfrac92a^2$와 결합하면\n$9a^2+4a-4=0$이다.\n$a>0$이므로\n$a=\\dfrac{-2+2\\sqrt{10}}9$이다.\n따라서\n$b=2a=\\dfrac{-4+4\\sqrt{10}}9$이고\n$ab=2a^2=\\dfrac{88-16\\sqrt{10}}{81}$이다."
+    "answer": "$-32$",
+    "solution": "두 함수를 전개하면 $f(x)=x^2-2ax$, $g(x)=-x^2+4ax+b$이다.\n$f(x)=g(x)$에서 $2x^2-6ax-b=0$이므로 근의 합은 $\\alpha+\\beta=3a$이다. 조건 $\\beta-\\alpha=2$로부터 $\\alpha=\\dfrac{3a-2}{2}$, $\\beta=\\dfrac{3a+2}{2}$이다.\n두 근의 곱을 이용하면 $\\alpha\\beta=-\\dfrac b2$이고 $((\\alpha+\\beta)^2-(\\beta-\\alpha)^2)/4=\\alpha\\beta$이므로 $b=2-\\dfrac92a^2$이다.\n조건 (다)의 좌변은 $f(\\beta)-g(\\alpha)=g(\\beta)-g(\\alpha)=2(4a-(\\alpha+\\beta))=2a$이고 우변은 $g(2a)-f(a)=5a^2+b$이다. $b=2-\\dfrac92a^2$를 대입하면 $2a\\le5a^2+b$는 $0\\le\\dfrac12(a-2)^2$이므로 항상 성립한다.\n조건 (라)에 $\\alpha,\\beta$를 대입한다. $g(\\beta)= -\\beta^2+4a\\beta+b$, $f(\\alpha)=\\alpha^2-2a\\alpha$이므로 $g(\\beta)=f(\\alpha)+5a^2+b$는 $\\dfrac12(a-2)^2=0$으로 정리된다. 따라서 $a=2$이고 $b=2-\\dfrac92(4)=-16$이다.\n그러므로 $ab=2(-16)=-32$이다."
   }
 ];
