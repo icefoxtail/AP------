@@ -219,10 +219,19 @@
       showToast('현재 범위에 자료가 없습니다.');
       return;
     }
+    const files = [...new Set(state.filtered.map((exam) => exam.file).filter(Boolean))];
+    // A one-source range can use the established standalone engine directly.
+    // This preserves every source question even when that source has no basic
+    // taxonomy parent for Archive 2's multi-source scope selector.
+    if (files.length === 1) {
+      const exam = state.examsByFile.get(files[0]) || state.filtered[0];
+      window.location.href = sourceUrl(exam, { preview: false });
+      return;
+    }
     const url = new URL('../../workspace.html', location.href);
     url.searchParams.set('view', 'compose');
     url.searchParams.set('range', 'all');
-    for (const exam of state.filtered) url.searchParams.append('source', exam.file);
+    for (const file of files) url.searchParams.append('source', file);
     window.location.href = url.href;
   }
   function renderFacetSpaceLabels(nodes) {
