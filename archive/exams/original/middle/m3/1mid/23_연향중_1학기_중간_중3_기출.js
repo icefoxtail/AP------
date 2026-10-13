@@ -31,7 +31,15 @@ window.questionBank = [
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "difficultyBucket": 1
+    "difficultyBucket": 1,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "EVIDENCE_DEBT_NOT_YET_CANONICAL_RESOLVED",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN"
   },
   {
     "id": 2,
@@ -63,7 +71,15 @@ window.questionBank = [
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "difficultyBucket": 1
+    "difficultyBucket": 1,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "EVIDENCE_DEBT_NOT_YET_CANONICAL_RESOLVED",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN"
   },
   {
     "id": 3,
@@ -96,7 +112,15 @@ window.questionBank = [
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "difficultyBucket": 2
+    "difficultyBucket": 2,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "EVIDENCE_DEBT_NOT_YET_CANONICAL_RESOLVED",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN"
   },
   {
     "id": 4,
@@ -128,7 +152,15 @@ window.questionBank = [
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "difficultyBucket": 2
+    "difficultyBucket": 2,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "EVIDENCE_DEBT_NOT_YET_CANONICAL_RESOLVED",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN"
   },
   {
     "id": 5,
@@ -160,7 +192,15 @@ window.questionBank = [
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "difficultyBucket": 2
+    "difficultyBucket": 2,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "EVIDENCE_DEBT_NOT_YET_CANONICAL_RESOLVED",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN"
   },
   {
     "id": 6,
@@ -192,7 +232,15 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "difficultyBucket": 3
+    "difficultyBucket": 3,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "EVIDENCE_DEBT_NOT_YET_CANONICAL_RESOLVED",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN"
   },
   {
     "id": 7,
@@ -224,8 +272,16 @@ window.questionBank = [
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "solutionImage": "assets/solutions/23_연향중_1학기_중간_중3_수학/q07_solution.svg",
-    "difficultyBucket": 3
+    "solutionImage": "assets/images/23_연향중_1학기_중간_중3_수학/q07_solution.svg",
+    "difficultyBucket": 3,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "EVIDENCE_DEBT_NOT_YET_CANONICAL_RESOLVED",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN"
   },
   {
     "id": 8,
@@ -257,8 +313,16 @@ window.questionBank = [
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "solutionImage": "assets/solutions/23_연향중_1학기_중간_중3_수학/q08_solution.svg",
-    "difficultyBucket": 3
+    "solutionImage": "assets/images/23_연향중_1학기_중간_중3_수학/q08_solution.svg",
+    "difficultyBucket": 3,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "EVIDENCE_DEBT_NOT_YET_CANONICAL_RESOLVED",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN"
   },
   {
     "id": 9,
@@ -290,7 +354,15 @@ window.questionBank = [
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "difficultyBucket": 3
+    "difficultyBucket": 3,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "EVIDENCE_DEBT_NOT_YET_CANONICAL_RESOLVED",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN"
   },
   {
     "id": 10,
@@ -322,7 +394,15 @@ window.questionBank = [
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "difficultyBucket": 3
+    "difficultyBucket": 3,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "EVIDENCE_DEBT_NOT_YET_CANONICAL_RESOLVED",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN"
   },
   {
     "id": 11,
@@ -354,7 +434,15 @@ window.questionBank = [
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "difficultyBucket": 3
+    "difficultyBucket": 3,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "EVIDENCE_DEBT_NOT_YET_CANONICAL_RESOLVED",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN"
   },
   {
     "id": 12,
@@ -386,7 +474,15 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "difficultyBucket": 2
+    "difficultyBucket": 2,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "EVIDENCE_DEBT_NOT_YET_CANONICAL_RESOLVED",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN"
   },
   {
     "id": 13,
@@ -418,7 +514,15 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "difficultyBucket": 2
+    "difficultyBucket": 2,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "EVIDENCE_DEBT_NOT_YET_CANONICAL_RESOLVED",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN"
   },
   {
     "id": 14,
@@ -450,7 +554,15 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "difficultyBucket": 3
+    "difficultyBucket": 3,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "EVIDENCE_DEBT_NOT_YET_CANONICAL_RESOLVED",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN"
   },
   {
     "id": 15,
@@ -482,7 +594,15 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "difficultyBucket": 3
+    "difficultyBucket": 3,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "EVIDENCE_DEBT_NOT_YET_CANONICAL_RESOLVED",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN"
   },
   {
     "id": 16,
@@ -514,8 +634,16 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "solutionImage": "assets/solutions/23_연향중_1학기_중간_중3_수학/q16_solution.svg",
-    "difficultyBucket": 4
+    "solutionImage": "assets/images/23_연향중_1학기_중간_중3_수학/q16_solution.svg",
+    "difficultyBucket": 4,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "EVIDENCE_DEBT_NOT_YET_CANONICAL_RESOLVED",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN"
   },
   {
     "id": 17,
@@ -547,7 +675,15 @@ window.questionBank = [
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "difficultyBucket": 4
+    "difficultyBucket": 4,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "EVIDENCE_DEBT_NOT_YET_CANONICAL_RESOLVED",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN"
   },
   {
     "id": 18,
@@ -579,7 +715,15 @@ window.questionBank = [
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "difficultyBucket": 4
+    "difficultyBucket": 4,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "EVIDENCE_DEBT_NOT_YET_CANONICAL_RESOLVED",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN"
   },
   {
     "id": 19,
@@ -605,7 +749,15 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "difficultyBucket": 5
+    "difficultyBucket": 5,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "EVIDENCE_DEBT_NOT_YET_CANONICAL_RESOLVED",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN"
   },
   {
     "id": 20,
@@ -631,7 +783,15 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "difficultyBucket": 4
+    "difficultyBucket": 4,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "EVIDENCE_DEBT_NOT_YET_CANONICAL_RESOLVED",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN"
   },
   {
     "id": 21,
@@ -657,6 +817,14 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "difficultyBucket": 3
+    "difficultyBucket": 3,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "EVIDENCE_DEBT_NOT_YET_CANONICAL_RESOLVED",
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN"
   }
 ];
