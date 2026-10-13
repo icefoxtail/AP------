@@ -70,11 +70,12 @@ test('workspace consumes the common subject projection for Finder, Compose, meta
 
 test('scope, replacement and draft restore keep the shared projection gate on the existing paths', () => {
   const workspace = read('archive2-workspace.js');
-  assert.match(workspace, /function pool\(\)\s*\{\s*const scopes = selectedScopeOptions\(\)/s);
-  assert.match(workspace, /const uids = new Set\(scopes\.flatMap\(scope => scope\.scopeQuestionUids\)\)/);
+  assert.match(workspace, /function pool\(\)\s*\{[\s\S]*?const scopes = selectedScopeOptions\(\)/);
+  assert.match(workspace, /const uids = scopes\.length \? new Set\(scopes\.flatMap\(scope => scope\.scopeQuestionUids\)\) : null/);
   assert.match(workspace, /uids\.has\(r\.questionUid\)/);
-  assert.match(workspace, /candidateRecords = pool\(\)\.filter\([\s\S]*?C\.matches\(r, selectionFilters, state\)/);
-  assert.match(workspace, /const result = C\.selectBlueprint\(pool\(\), req, ctx\)/);
+  assert.match(workspace, /candidateRecords = pool\(\)\.filter\([\s\S]*?workspaceMatches\(r, selectionFilters\)[\s\S]*?C\.rowMatches\(r, row, workspaceMatchOptions\(\)\)/);
+  assert.match(workspace, /return C\.matches\(record, filters, options\) \|\|\s*sourceRoutedFallbackMatches\(record, filters\)/);
+  assert.match(workspace, /const result = C\.selectBlueprint\(pool\(\), req, ctx, assessmentSelectionOptions\(\)\)/);
   assert.match(workspace, /state\.filters = C\.reconcileFinderFilters\([\s\S]*?state\.catalog\.taxonomy/);
   assert.match(workspace, /r\.sourceFingerprint &&[\s\S]*?state\.byUid\.get\(r\.questionUid\)\.sourceFingerprint/);
   assert.match(workspace, /frozenPaperCache\.set\(saved\.key/);
