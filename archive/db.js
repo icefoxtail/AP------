@@ -17400,6 +17400,37 @@ window.mainDB = {
       "primaryStandardCourse": "수학(상)"
     },
     {
+      "file": "original/high/h1/1final/19_순천고_1학기_기말_고1_기출.js",
+      "school": "순천고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2019,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "H15-SA-06",
+      "rangeStartUnit": "이차방정식의 근과 계수",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H15-SA-12",
+      "rangeEndUnit": "도형의 이동",
+      "rangeEndUnitOrder": 12,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-06",
+          "rangeStartUnit": "이차방정식의 근과 계수",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H15-SA-12",
+          "rangeEndUnit": "도형의 이동",
+          "rangeEndUnitOrder": 12
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
       "file": "original/middle/m3/1mid/19_금당중_1학기_중간_중3_기출.js",
       "school": "금당중",
       "topic": "",
