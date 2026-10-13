@@ -2,6 +2,8 @@
 
 ## 2026-10-12 — Production fast lane takes precedence
 
+2026-10-13: New Codex exam work does not emit item/exam/run HOLD. Convenience preflight output and historical CARRY_ITEM_HOLD examples below do not authorize new HOLD handoffs. Assign repair/replacement ownership and continue until the changed item is actually reviewed and publishable. Preserve old records and real command/permission failures; do not modify tools or invent machine PASS to implement this operational policy.
+
 For Codex original-exam runs, follow `docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Fast_Lane_CURRENT_v1.md` first. **The commands below are optional compatibility documentation, not the default production entrypoint.** Remove preflight/bind/seal/verify/intake/dispatcher/registration-candidate chains from the normal lane. Read current JS/assets and valid existing reviews directly; retain the blind student-only input/freeze and actual evidence requirements. Do not modify shared tools, add wrappers, auto-route to MASTER, regenerate registration on each main drift, or rerun valid stages to adopt helper formats. Skip a broken convenience helper and continue direct review. Tool-only schema failures remain FAIL_TOOL/NOT_RUN; directly completed quality review is MANUAL_STAGE_COMPLETE, never fabricated machine PASS. Actual content, input or permission gaps remain accurately incomplete. Default completion is approved production JS/assets on main and remote byte parity; registration and deployment belong only to an explicitly requested scope.
 
 ## 2026-10-08 — Handoff and notation preflight

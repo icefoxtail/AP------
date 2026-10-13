@@ -1,6 +1,6 @@
 ## CURRENT HARD — Codex 시험지 FAST LANE / 중복 검수·도구 수정 금지 (2026-10-12 사용자 직접 지시)
 
-- **2026-10-13 문항 HOLD 종료 금지:** 문항 결함은 담당자가 수정프로토콜로 직접 수정하고 필요한 해당 영역만 원문 대조한다. 원문 복구 불가능이면 승인된 ALIVE 문형 대체를 반드시 적용하며, 후보가 실패하면 수정하거나 다른 후보를 생성해 해당 문항의 독립 검수·Meta·에셋·표시·main 반영까지 완성한다. 복구 불가능은 대체 전환 근거이지 최종 HOLD 근거가 아니다. 문항 HOLD로 시험지·roster·골을 종료하지 않는다. 원문/실패/freeze 및 대체 provenance를 보존하고 바뀐 qid만 새 입력으로 검수한다. 공유 도구 수정 금지는 문항 수정·대체 금지가 아니다. 실제 권한·실행 오류와 미실행 검수는 사실대로 기록한다.
+- **2026-10-13 신규 문항 HOLD 발행 금지:** 신규 Codex 문항 작업은 임시 item/시험지/roster/run HOLD도 발행하지 않는다. 결함은 담당자·qid·다음 수정 행동을 지정해 수정프로토콜로 직접 수정하고 필요한 해당 영역만 원문 대조한다. 원문 복구 불가능이면 승인된 ALIVE 문형 대체를 반드시 적용하며, 후보가 실패하면 수정하거나 다른 후보를 생성해 해당 문항의 독립 검수·Meta·에셋·표시·main 반영까지 완성한다. ROOT는 수정/대체 인계와 완료를 수납하며 이미 위임된 대체를 재승인받지 않는다. 운영 보고는 제작/수정/대체 제작/검수/병합 진행으로 표현하고 HOLD로 반환·종료하지 않는다. 과거 원문/HOLD/실패/freeze 및 대체 provenance는 이력으로 보존하고 바뀐 qid만 새 입력으로 검수한다. 공유 도구 수정 금지는 문항 수정·대체 금지가 아니다. 실제 실행·권한 오류와 미실행 검수는 사실대로 기록하고 나머지 시험지는 계속 진행한다.
 
 - 실행 정본: `docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Fast_Lane_CURRENT_v1.md`. Codex 원본 시험지의 기본 종료는 CREATE → R1 → R2 → R3 → 프로덕션 JS·필수 에셋 main 반영·원격 일치 확인이다. 등록·배포는 별도 요청 범위이며 병합 선행조건으로 자동 추가하지 않는다. ALIVE Generated 출시 계약과 명시적으로 지정한 다른 종료 조건은 유지한다.
 - 기존 PASS/freeze/렌더를 재사용하고 첫 미완료 단계부터 진행한다. 정상 stage validator 한 번, R1 한 번 deep, R2 한 번 blind sweep, R3 한 번 targeted/구조/표시 마감. 실제 실패·수정 qid와 필수 직접 dependency만 다시 확인한다. ROOT 재검, 무관한 main drift에 따른 재검·등록 rebuild를 금지한다.
@@ -91,11 +91,11 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 ## Archive Codex 실행 증거·수납 보완
 
 - assignment의 worktree/working JS/asset root/evidence root 절대 경로와 expected SHA를 첫 동작에서 확인한다. asset root는 실제 `assets/` 부모다.
-- CREATE item HOLD는 JS·에셋 결함 판정 → 필요한 경우에만 scoped PDF 대조 → 최소 수정 → R1/R2 검수 → true item HOLD의 QUESTION_ONLY 대체 경로를 이어 간다. 복구 가능한 기술 결속 오류를 시험지 최종 HOLD로 종료하지 않는다.
+- CREATE 결함은 해당 qid 담당자의 JS·에셋 직접 수정 → 필요한 해당 PDF 영역 대조 → 원문 복구 불가능 시 승인 ALIVE 문형 대체 → 변경 qid R1/R2 검수로 완성한다. 신규 item/시험지/run HOLD를 발행하지 않으며 ROOT가 담당자·다음 행동을 연결하고 완료를 수납한다.
 - stage 결과는 `--quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006 --execution-line CODEX --json`의 실제 raw generic report를 보존한다. custom PASS 요약이나 common-only PASS는 active artifact contract 증거를 대신하지 않는다.
 - ROOT는 publish 전에 실제 report schema, 전 qid 분모, JS·자산·receipt SHA를 수납한다. Git index와 remote bytes를 각각 확인하고 기존 파일도 raw witness와 다르면 명시한 경로만 재정규화·stage한다. 기존 실패와 수정 provenance는 보존한다.
 - 명시적 사용자 지시가 특정 run의 실제 캡처 요건을 면제하면 원문 지시·고정 roster·범위·SHA를 별도 evidence로 결속한다. `NOT_RUN_USER_WAIVER`와 `USER_DIRECTED_STATIC_COMPLETE`를 사용하고 실제 `RENDER_PASS`를 주장하지 않는다. JS/자산, R1/R2, item HOLD, production·remote readback 요건은 유지한다. 기본 actual render 계약은 유지한다.
 
-## ROOT production 완성·예외·HOLD 해제 권한
+## ROOT production 완성·예외·수정 대체 책임
 
-CURRENT Execution v1.3 §25를 따른다. ROOT는 승인 범위에서 캡처/실제 render 조건을 근거 있게 면제하고 최소 수정·true item HOLD의 문항 대체·기술 복구·HOLD 해제·publication을 자율 결정한다. 같은 적용 여부를 반복 요청하지 않는다. 완료 기준은 JS/정답/해설/Meta/이미지/SVG, 유효한 R1/R2 및 R3 static integrity, zero item HOLD, 실제 production·remote readback·closeout이다. 캡처만 없다는 이유로 최종 HOLD를 만들지 않는다. ROOT 결정은 ROOT_DELEGATED/ROOT_DIRECTED_STATIC_COMPLETE/NOT_RUN_ROOT_WAIVER와 범위·사유·대체 검수·SHA를 기록한다. actual RENDER_PASS를 가장하지 않으며 알려진 품질 결함을 면제하지 않는다. 일반 ROOT 경로는 archive-codex-root-waiver-intake.mjs 및 RootWaived static/MAIN_DONE validators·stage consumers로 수납한다. 새로운 예외 기능이 미지원일 때만 MASTER의 exact 기술 continuation으로 결속을 보완한다. 원 정상/실패/freeze/capture/권한 provenance는 보존한다.
+CURRENT Execution v1.3 §25를 따른다. ROOT는 승인 범위에서 캡처/실제 render 조건을 근거 있게 면제하고 최소 수정·승인 ALIVE 문형 대체·실제 기술 실행 인계·publication을 자율 결정하고 결과를 수납한다. 신규 문항 HOLD를 발행하거나 결함 보고만으로 작업을 종료하지 않는다. 같은 적용 여부를 반복 요청하지 않는다. 완료 기준은 JS/정답/해설/Meta/이미지/SVG, 유효한 R1/R2 및 R3 static integrity, zero item HOLD, 실제 production·remote readback·closeout이다. 캡처만 없다는 이유로 최종 HOLD를 만들지 않는다. ROOT 결정은 ROOT_DELEGATED/ROOT_DIRECTED_STATIC_COMPLETE/NOT_RUN_ROOT_WAIVER와 범위·사유·대체 검수·SHA를 기록한다. actual RENDER_PASS를 가장하지 않으며 알려진 품질 결함을 면제하지 않는다. 일반 ROOT 경로는 archive-codex-root-waiver-intake.mjs 및 RootWaived static/MAIN_DONE validators·stage consumers로 수납한다. 새로운 예외 기능이 미지원일 때만 MASTER의 exact 기술 continuation으로 결속을 보완한다. 원 정상/실패/freeze/capture/권한 provenance는 보존한다.
