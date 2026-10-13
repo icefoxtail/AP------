@@ -48,7 +48,7 @@ window.questionBank = [
       "객관식",
       "다항식"
     ],
-    "content": "사차식 $x^4+x^3-4x^2+x+1$의 인수인 것을 고르면? [4.2점]",
+    "content": "이차식 $x^4+x^3-4x^2+x+1$의 인수인 것을 고르면? [4.2점]",
     "choices": [
       "$x^2-2x+2$",
       "$x^2+2x+3$",
@@ -129,7 +129,7 @@ window.questionBank = [
       "객관식",
       "다항식"
     ],
-    "content": "다음 항등식 중 옳지 않은 것은? [4.4점]",
+    "content": "다음 중 옳지 <u>않은</u> 것을 고른 것은? [4.4점]",
     "choices": [
       "$a^2-b^2=(a+b)(a-b)$",
       "$a^2+b^2+c^2+2ab+2bc+2ca=(a+b+c)^2$",
@@ -138,15 +138,15 @@ window.questionBank = [
       "$a^4+a^2b^2+b^4=(a^2+ab+b^2)(a^2-ab+b^2)$"
     ],
     "answer": "④",
-    "solution": "각 항등식의 좌변과 우변을 전개해 비교한다.\n① $(a+b)(a-b)=a^2-b^2$이므로 참이다.\n② $(a+b+c)^2=a^2+b^2+c^2+2ab+2bc+2ca$이므로 참이다.\n③ $(a+b)(a^2-ab+b^2)=a^3+b^3$이므로 참이다.\n④ $(a-b)^3-3ab(a-b)$을 전개하면\n$=a^3-3a^2b+3ab^2-b^3-3a^2b+3ab^2$\n$=a^3-6a^2b+6ab^2-b^3$이다.\n이는 일반적으로 $a^3-b^3$이 아니다.\n⑤ $(a^2+ab+b^2)(a^2-ab+b^2)$\n$=(a^2+b^2)^2-(ab)^2=a^4+a^2b^2+b^4$이므로 참이다.\n따라서 옳지 않은 것은 ④이다.",
+    "solution": "① $(a+b)(a-b)=a^2-b^2$이므로 첫째 식은 참이다.\n\n② $(a+b+c)^2=a^2+b^2+c^2+2ab+2bc+2ca$이므로 둘째 식도 참이다.\n\n③ $(a+b)(a^2-ab+b^2)$를 전개하면 $a^3-a^2b+ab^2+a^2b-ab^2+b^3=a^3+b^3$이므로 셋째 식도 참이다.\n\n④ 오른쪽을 전개하면\n$(a-b)^3-3ab(a-b)$\n$=a^3-3a^2b+3ab^2-b^3-3a^2b+3ab^2$\n$=a^3-6a^2b+6ab^2-b^3$이다.\n이는 일반적으로 $a^3-b^3$과 같지 않다. 예를 들어 $a=1$, $b=2$이면 왼쪽은 $-7$, 오른쪽은 $5$이다. 따라서 넷째 식은 거짓이다.\n\n⑤ $(a^2+ab+b^2)(a^2-ab+b^2)=((a^2+b^2)+ab)((a^2+b^2)-ab)$\n$=(a^2+b^2)^2-a^2b^2=a^4+a^2b^2+b^4$이므로 다섯째 식은 참이다.\n\n따라서 옳지 않은 것은 ④이다.",
     "standardCourse": "공통수학1",
     "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
     "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
-    "subUnitConfidence": "active_binding_and_semantic_match",
-    "subUnitClassificationDepth": "complete_active_binding",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
     "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
     "crossConceptKeys": [],
@@ -575,7 +575,7 @@ window.questionBank = [
       "객관식",
       "이차방정식"
     ],
-    "content": "이차방정식 $x^2-2x+1=0$의 두 근을 $\\alpha$, $\\beta$라고 할 때, $\\dfrac{1}{\\alpha^2-3\\alpha+6}+\\dfrac{1}{\\beta^2-3\\beta+6}$의 값은? [4.5점]",
+    "content": "이차방정식 $x^2-2x+4=0$의 두 근을 $\\alpha$, $\\beta$라고 할 때, $\\dfrac{1}{\\alpha^2-3\\alpha+6}+\\dfrac{1}{\\beta^2-3\\beta+6}$의 값은? [4.5점]",
     "choices": [
       "$\\dfrac{1}{2}$",
       "$\\dfrac{1}{3}$",
@@ -584,7 +584,7 @@ window.questionBank = [
       "$\\dfrac{1}{6}$"
     ],
     "answer": "①",
-    "solution": "$x^2-2x+1=(x-1)^2$이므로 두 근은 중복을 포함하여 $\\alpha=\\beta=1$이다.\n각 분모를 계산하면\n$\\alpha^2-3\\alpha+6=1-3+6=4$,\n$\\beta^2-3\\beta+6=1-3+6=4$이다.\n따라서\n$\\dfrac1{\\alpha^2-3\\alpha+6}+\\dfrac1{\\beta^2-3\\beta+6}$\n$=\\dfrac14+\\dfrac14=\\dfrac12$이다.\n정답은 ①이다.",
+    "solution": "$x^2-2x+4=0$의 두 근은 $\\alpha=1+\\sqrt3 i$, $\\beta=1-\\sqrt3 i$이다.\n각 분모를 계산하면\n$\\alpha^2-3\\alpha+6=1-\\sqrt3 i$, $\\beta^2-3\\beta+6=1+\\sqrt3 i$이다.\n따라서\n$\\dfrac1{1-\\sqrt3 i}+\\dfrac1{1+\\sqrt3 i}=\\dfrac{1+\\sqrt3 i}{4}+\\dfrac{1-\\sqrt3 i}{4}=\\dfrac12$이다.\n정답은 ①이다.",
     "standardCourse": "공통수학1",
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
@@ -847,9 +847,9 @@ window.questionBank = [
       "서술형",
       "이차함수"
     ],
-    "content": "이차함수 $f(x)=k(x-3)(x-5)$ ($k>0$)의 그래프가 직선 $y=2x-10$에 접할 때, $f(-1)$의 값을 구하시오. [5점]",
-    "answer": "24",
-    "solution": "접한다는 것은 두 함수의 교점 방정식이 중근을 가진다는 뜻이다.\n$f(x)=k(x-3)(x-5)=k(x^2-8x+15)$이다.\n직선 $y=2x-10$과의 교점을 구하려면\n$k(x^2-8x+15)=2x-10$으로 둔다.\n한쪽으로 옮기면\n$kx^2-(8k+2)x+(15k+10)=0$이다.\n접하므로 판별식은\n$D=(8k+2)^2-4k(15k+10)$\n$=64k^2+32k+4-60k^2-40k$\n$=4k^2-8k+4=4(k-1)^2=0$이다.\n따라서 $k=1$이다.\n이 값을 함수식에 대입하면\n$f(-1)=(-1-3)(-1-5)$\n$=(-4)(-6)=24$이다.\n따라서 정답은 $24$이다.",
+    "content": "이차함수 $y=f(x)$가 다음 조건을 모두 만족시키는 함수 $y=f(x)$의 그래프와 $x$축의 교점의 좌표를 각각 $(\\alpha,0)$, $(\\beta,0)$이라고 할 때, $\\alpha-\\beta$의 값을 구하시오. (단, $\\alpha>\\beta$) [5점]\n<div class=\"box-content\">\n(가) 모든 실수 $x$에 대하여 $f(2-x)=f(2+x)$이다.<br/>\n(나) $x$의 값의 범위가 $-1\\le x\\le+4$일 때, 함수 $f(x)$의 최댓값은 $9$, 최솟값은 $0$이다.<br/>\n(다) 이차함수 $y=f(x)$의 그래프와 직선 $y=-2x+14$는 접한다.\n</div>",
+    "answer": "6",
+    "solution": "대칭 조건 $f(2-x)=f(2+x)$에서 축은 $x=2$이므로 $f(x)=a(x-2)^2+c$로 둔다.\n구간 $[-1,4]$에서 꼭짓점 $x=2$는 안에 있고, 왼쪽 끝점 $-1$이 오른쪽 끝점 $4$보다 축에서 더 멀다.\n위로 열린 경우에는 최솟값이 꼭짓점 값이므로 $c=0$이다. 최댓값은 $x=-1$에서 $9a=9$가 되어 $f(x)=(x-2)^2$이다. 이 함수의 기울기가 $-2$인 접선은 $y=-2x+7$이므로 조건 (다)와 맞지 않는다.\n아래로 열린 경우에는 꼭짓점에서 최댓값 $c=9$이다. 더 먼 끝점 $x=-1$에서 최솟값이 $0$이므로 $9+9a=0$, $a=-1$이다. 따라서 $f(x)=9-(x-2)^2=-x^2+4x+5$이다.\n이 함수의 기울기는 $x=3$에서 $-2$이고 $f(3)=8$이므로 그 접선은 $y-8=-2(x-3)$, 즉 $y=-2x+14$로 조건 (다)를 만족한다.\n$x$축과의 교점은 $9-(x-2)^2=0$에서 $x=-1,5$이다. $\\alpha>\\beta$이므로 $\\alpha=5$, $\\beta=-1$이고 $\\alpha-\\beta=6$이다.",
     "standardCourse": "공통수학1",
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
@@ -864,7 +864,7 @@ window.questionBank = [
       "CC_DISCRIMINANT"
     ],
     "conditionKeys": [
-      "COND_POSITIVE"
+      "COND_RANGE"
     ],
     "integrationPattern": "INTERDEPENDENT",
     "difficultyBucket": 4,
