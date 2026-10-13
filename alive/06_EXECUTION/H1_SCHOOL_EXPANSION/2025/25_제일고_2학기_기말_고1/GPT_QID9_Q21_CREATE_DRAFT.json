@@ -4,11 +4,17 @@
     "path": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
     "examTitle": "25_제일고_2학기_기말_고1_기출",
     "qid": 21,
-    "sourceUid": null,
-    "sourceUidResolution": "REQUIRES_CANONICAL_QID_V1_LOOKUP",
+    "sourceUid": "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975",
+    "sourceUidResolution": "VERIFIED_QID_V1_SHA256_OF_NORMALIZED_SOURCE_PATH_HASH_QID",
     "gitBlobSha1": "252c1cc9a687cadd961183b56ea10d21bf1976b4",
     "preservedReadOnly": true,
-    "sourceQuestionType": "서술형"
+    "sourceQuestionType": "서술형",
+    "sourceUidEvidence": {
+      "authority": "archive/tools/meta-foundation/rpm-active-resolver.mjs::questionUidForSource",
+      "sourceOrdinal": 21,
+      "originalSourceGitBlob": "252c1cc9a687cadd961183b56ea10d21bf1976b4",
+      "knownQ16DigestCrosscheck": "MATCHED"
+    }
   },
   "authority": {
     "rpmNearestParentL3Id": "H1-RPM-263",
@@ -24,7 +30,9 @@
       "EXT-L4-JEIL25-Q21-TELESCOPING-FUNCTION-DIFFERENCE",
       "EXT-L4-JEIL25-Q21-TELESCOPING-SHIFT-PARAMETER"
     ],
-    "sourceSemantic": "유리식의 부분분수 분해와 망원합"
+    "sourceSemantic": "유리식의 부분분수 분해와 망원합",
+    "rpmParentRelation": "BROAD_RATIONAL_FUNCTION_APPLICATION_PARENT_ONLY",
+    "generatedL3Status": "EXISTING_GENERATED_L3_PARENT_EVIDENCE_VERIFIED_NO_DUPLICATE"
   },
   "summary": {
     "authorDraftItems": 9,
@@ -61,7 +69,7 @@
       "id": 1,
       "uid": "ALITE-JEIL25-2FINAL-Q21-A1",
       "sourceQid": 21,
-      "sourceUid": null,
+      "sourceUid": "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975",
       "slot": "A1",
       "purpose": "A",
       "provenance": "ALIVE_GENERATED_SOURCE_Q21",
@@ -75,8 +83,8 @@
       "standardUnitOrder": 8,
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
       "subUnit": "함수의 뜻과 그래프",
-      "subUnitConfidence": "canonical_master_parent_label_but_semantic_gap",
-      "subUnitClassificationDepth": "source_primary_semantic_review",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
       "questionType": "서술형",
       "layoutTag": "grid",
       "tags": [
@@ -95,15 +103,15 @@
         "rpmL1": "함수",
         "rpmL2": "유리함수",
         "sourceMetaFoundationL3": "유리식의 망원합",
-        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3": "유리식의 부분분수와 망원합",
         "primaryRPM_L3Frozen": true,
-        "primaryL3Id": "H1-RPM-263",
+        "primaryL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
         "rpmRecordId": "H1-RPM-263",
-        "rpmRecordMappingStatus": "PARENT_NEAREST_ONLY_EXACT_TELESCOPING_L3_NOT_PRESENT",
-        "primaryL3Authority": "RPM_LOCKED_PARENT_SEMANTIC_DEBT",
+        "rpmRecordMappingStatus": "PARENT_ONLY_GENERATED_EXACT_L3",
+        "primaryL3Authority": "GENERATED_ACTIVE_WITH_RPM_PARENT",
         "generatedL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
-        "generatedL3Authority": "GENERATED_ACTIVE_UNDER_RPM_PARENT",
-        "rpmL4SemanticLabel": "식 결정 (원본의 목표와 다름)",
+        "generatedL3Authority": "GENERATED_ACTIVE_PARENT_EVIDENCE_VERIFIED",
+        "rpmL4SemanticLabel": "부분분수 망원합 (Generated L4; RPM 식 결정과 구별)",
         "problemTypeKey": "PT_RATIONAL_EXPRESSION",
         "templateKey": "TPL_RATIONAL_TELESCOPING_SUM",
         "effectiveL4Id": "TPL_RATIONAL_TELESCOPING_SUM",
@@ -112,11 +120,10 @@
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 2,
-        "metadataDebt": [
-          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED",
-          "RPM_EXACT_L3_TELESCOPING_NOT_PRESENT_PARENT_H1_RPM_263"
-        ],
-        "metaTaxonomyStatus": "EXISTING_ACTIVE_PT_TPL_GENERATED_L3_UNDER_NEAREST_RPM_PARENT"
+        "metadataDebt": [],
+        "metaTaxonomyStatus": "GPT_REVIEWED_PRIMARY_L3_L4_AND_SOURCE_UID_VERIFIED",
+        "sourceUidResolution": "QID_V1_CANONICAL_PATH_ORDINAL_SHA256_VERIFIED",
+        "parentLockedRpmL3Id": "H1-RPM-263"
       },
       "review": {
         "reverseStem": "KEEP",
@@ -146,16 +153,17 @@
           "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/A1-solution.svg",
           "actualBrowserRender": "NOT_RUN"
         },
-        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
-        "externalOpenBookReview": "NOT_RUN",
-        "studentRelease": "NOT_AUTHORIZED"
+        "disposition": "GPT_INDEPENDENT_MATH_AND_META_REVIEW_CLOSED",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_20261013_REVIEWED",
+        "studentRelease": "NOT_AUTHORIZED",
+        "mathIndependentFreezeBlob": "639cf3c26aa6f7962ae63232a1500de6ad9d2e75"
       }
     },
     {
       "id": 2,
       "uid": "ALITE-JEIL25-2FINAL-Q21-A2",
       "sourceQid": 21,
-      "sourceUid": null,
+      "sourceUid": "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975",
       "slot": "A2",
       "purpose": "A",
       "provenance": "ALIVE_GENERATED_SOURCE_Q21",
@@ -169,8 +177,8 @@
       "standardUnitOrder": 8,
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
       "subUnit": "함수의 뜻과 그래프",
-      "subUnitConfidence": "canonical_master_parent_label_but_semantic_gap",
-      "subUnitClassificationDepth": "source_primary_semantic_review",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
       "questionType": "서술형",
       "layoutTag": "grid",
       "tags": [
@@ -189,15 +197,15 @@
         "rpmL1": "함수",
         "rpmL2": "유리함수",
         "sourceMetaFoundationL3": "유리식의 망원합",
-        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3": "유리식의 부분분수와 망원합",
         "primaryRPM_L3Frozen": true,
-        "primaryL3Id": "H1-RPM-263",
+        "primaryL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
         "rpmRecordId": "H1-RPM-263",
-        "rpmRecordMappingStatus": "PARENT_NEAREST_ONLY_EXACT_TELESCOPING_L3_NOT_PRESENT",
-        "primaryL3Authority": "RPM_LOCKED_PARENT_SEMANTIC_DEBT",
+        "rpmRecordMappingStatus": "PARENT_ONLY_GENERATED_EXACT_L3",
+        "primaryL3Authority": "GENERATED_ACTIVE_WITH_RPM_PARENT",
         "generatedL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
-        "generatedL3Authority": "GENERATED_ACTIVE_UNDER_RPM_PARENT",
-        "rpmL4SemanticLabel": "식 결정 (원본의 목표와 다름)",
+        "generatedL3Authority": "GENERATED_ACTIVE_PARENT_EVIDENCE_VERIFIED",
+        "rpmL4SemanticLabel": "부분분수 망원합 (Generated L4; RPM 식 결정과 구별)",
         "problemTypeKey": "PT_RATIONAL_EXPRESSION",
         "templateKey": "TPL_RATIONAL_TELESCOPING_SUM",
         "effectiveL4Id": "TPL_RATIONAL_TELESCOPING_SUM",
@@ -206,11 +214,10 @@
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 2,
-        "metadataDebt": [
-          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED",
-          "RPM_EXACT_L3_TELESCOPING_NOT_PRESENT_PARENT_H1_RPM_263"
-        ],
-        "metaTaxonomyStatus": "EXISTING_ACTIVE_PT_TPL_GENERATED_L3_UNDER_NEAREST_RPM_PARENT"
+        "metadataDebt": [],
+        "metaTaxonomyStatus": "GPT_REVIEWED_PRIMARY_L3_L4_AND_SOURCE_UID_VERIFIED",
+        "sourceUidResolution": "QID_V1_CANONICAL_PATH_ORDINAL_SHA256_VERIFIED",
+        "parentLockedRpmL3Id": "H1-RPM-263"
       },
       "review": {
         "reverseStem": "KEEP",
@@ -240,16 +247,17 @@
           "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/A2-solution.svg",
           "actualBrowserRender": "NOT_RUN"
         },
-        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
-        "externalOpenBookReview": "NOT_RUN",
-        "studentRelease": "NOT_AUTHORIZED"
+        "disposition": "GPT_INDEPENDENT_MATH_AND_META_REVIEW_CLOSED",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_20261013_REVIEWED",
+        "studentRelease": "NOT_AUTHORIZED",
+        "mathIndependentFreezeBlob": "639cf3c26aa6f7962ae63232a1500de6ad9d2e75"
       }
     },
     {
       "id": 3,
       "uid": "ALITE-JEIL25-2FINAL-Q21-A3",
       "sourceQid": 21,
-      "sourceUid": null,
+      "sourceUid": "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975",
       "slot": "A3",
       "purpose": "A",
       "provenance": "ALIVE_GENERATED_SOURCE_Q21",
@@ -263,8 +271,8 @@
       "standardUnitOrder": 8,
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
       "subUnit": "함수의 뜻과 그래프",
-      "subUnitConfidence": "canonical_master_parent_label_but_semantic_gap",
-      "subUnitClassificationDepth": "source_primary_semantic_review",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
       "questionType": "서술형",
       "layoutTag": "grid",
       "tags": [
@@ -283,15 +291,15 @@
         "rpmL1": "함수",
         "rpmL2": "유리함수",
         "sourceMetaFoundationL3": "유리식의 망원합",
-        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3": "유리식의 부분분수와 망원합",
         "primaryRPM_L3Frozen": true,
-        "primaryL3Id": "H1-RPM-263",
+        "primaryL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
         "rpmRecordId": "H1-RPM-263",
-        "rpmRecordMappingStatus": "PARENT_NEAREST_ONLY_EXACT_TELESCOPING_L3_NOT_PRESENT",
-        "primaryL3Authority": "RPM_LOCKED_PARENT_SEMANTIC_DEBT",
+        "rpmRecordMappingStatus": "PARENT_ONLY_GENERATED_EXACT_L3",
+        "primaryL3Authority": "GENERATED_ACTIVE_WITH_RPM_PARENT",
         "generatedL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
-        "generatedL3Authority": "GENERATED_ACTIVE_UNDER_RPM_PARENT",
-        "rpmL4SemanticLabel": "식 결정 (원본의 목표와 다름)",
+        "generatedL3Authority": "GENERATED_ACTIVE_PARENT_EVIDENCE_VERIFIED",
+        "rpmL4SemanticLabel": "부분분수 망원합 (Generated L4; RPM 식 결정과 구별)",
         "problemTypeKey": "PT_RATIONAL_EXPRESSION",
         "templateKey": "TPL_RATIONAL_TELESCOPING_SUM",
         "effectiveL4Id": "TPL_RATIONAL_TELESCOPING_SUM",
@@ -300,11 +308,10 @@
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 2,
-        "metadataDebt": [
-          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED",
-          "RPM_EXACT_L3_TELESCOPING_NOT_PRESENT_PARENT_H1_RPM_263"
-        ],
-        "metaTaxonomyStatus": "EXISTING_ACTIVE_PT_TPL_GENERATED_L3_UNDER_NEAREST_RPM_PARENT"
+        "metadataDebt": [],
+        "metaTaxonomyStatus": "GPT_REVIEWED_PRIMARY_L3_L4_AND_SOURCE_UID_VERIFIED",
+        "sourceUidResolution": "QID_V1_CANONICAL_PATH_ORDINAL_SHA256_VERIFIED",
+        "parentLockedRpmL3Id": "H1-RPM-263"
       },
       "review": {
         "reverseStem": "KEEP",
@@ -334,16 +341,17 @@
           "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/A3-solution.svg",
           "actualBrowserRender": "NOT_RUN"
         },
-        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
-        "externalOpenBookReview": "NOT_RUN",
-        "studentRelease": "NOT_AUTHORIZED"
+        "disposition": "GPT_INDEPENDENT_MATH_AND_META_REVIEW_CLOSED",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_20261013_REVIEWED",
+        "studentRelease": "NOT_AUTHORIZED",
+        "mathIndependentFreezeBlob": "639cf3c26aa6f7962ae63232a1500de6ad9d2e75"
       }
     },
     {
       "id": 4,
       "uid": "ALITE-JEIL25-2FINAL-Q21-B1",
       "sourceQid": 21,
-      "sourceUid": null,
+      "sourceUid": "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975",
       "slot": "B1",
       "purpose": "B",
       "provenance": "ALIVE_GENERATED_SOURCE_Q21",
@@ -357,8 +365,8 @@
       "standardUnitOrder": 8,
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
       "subUnit": "함수의 뜻과 그래프",
-      "subUnitConfidence": "canonical_master_parent_label_but_semantic_gap",
-      "subUnitClassificationDepth": "source_primary_semantic_review",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
       "questionType": "서술형",
       "layoutTag": "grid",
       "tags": [
@@ -377,15 +385,15 @@
         "rpmL1": "함수",
         "rpmL2": "유리함수",
         "sourceMetaFoundationL3": "유리식의 망원합",
-        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3": "유리식의 부분분수와 망원합",
         "primaryRPM_L3Frozen": true,
-        "primaryL3Id": "H1-RPM-263",
+        "primaryL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
         "rpmRecordId": "H1-RPM-263",
-        "rpmRecordMappingStatus": "PARENT_NEAREST_ONLY_EXACT_TELESCOPING_L3_NOT_PRESENT",
-        "primaryL3Authority": "RPM_LOCKED_PARENT_SEMANTIC_DEBT",
+        "rpmRecordMappingStatus": "PARENT_ONLY_GENERATED_EXACT_L3",
+        "primaryL3Authority": "GENERATED_ACTIVE_WITH_RPM_PARENT",
         "generatedL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
-        "generatedL3Authority": "GENERATED_ACTIVE_UNDER_RPM_PARENT",
-        "rpmL4SemanticLabel": "식 결정 (원본의 목표와 다름)",
+        "generatedL3Authority": "GENERATED_ACTIVE_PARENT_EVIDENCE_VERIFIED",
+        "rpmL4SemanticLabel": "부분분수 망원합 (Generated L4; RPM 식 결정과 구별)",
         "problemTypeKey": "PT_RATIONAL_EXPRESSION",
         "templateKey": "TPL_RATIONAL_TELESCOPING_SUM",
         "effectiveL4Id": "EXT-L4-JEIL25-Q21-TELESCOPING-ENDPOINT-RECOVERY",
@@ -396,11 +404,10 @@
         ],
         "integrationPattern": "INTERDEPENDENT",
         "difficultyBucket": 3,
-        "metadataDebt": [
-          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED",
-          "RPM_EXACT_L3_TELESCOPING_NOT_PRESENT_PARENT_H1_RPM_263"
-        ],
-        "metaTaxonomyStatus": "EXISTING_ACTIVE_PT_TPL_GENERATED_L3_UNDER_NEAREST_RPM_PARENT"
+        "metadataDebt": [],
+        "metaTaxonomyStatus": "GPT_REVIEWED_PRIMARY_L3_L4_AND_SOURCE_UID_VERIFIED",
+        "sourceUidResolution": "QID_V1_CANONICAL_PATH_ORDINAL_SHA256_VERIFIED",
+        "parentLockedRpmL3Id": "H1-RPM-263"
       },
       "review": {
         "reverseStem": "KEEP",
@@ -430,16 +437,17 @@
           "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/B1-solution.svg",
           "actualBrowserRender": "NOT_RUN"
         },
-        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
-        "externalOpenBookReview": "NOT_RUN",
-        "studentRelease": "NOT_AUTHORIZED"
+        "disposition": "GPT_INDEPENDENT_MATH_AND_META_REVIEW_CLOSED",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_20261013_REVIEWED",
+        "studentRelease": "NOT_AUTHORIZED",
+        "mathIndependentFreezeBlob": "639cf3c26aa6f7962ae63232a1500de6ad9d2e75"
       }
     },
     {
       "id": 5,
       "uid": "ALITE-JEIL25-2FINAL-Q21-B2",
       "sourceQid": 21,
-      "sourceUid": null,
+      "sourceUid": "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975",
       "slot": "B2",
       "purpose": "B",
       "provenance": "ALIVE_GENERATED_SOURCE_Q21",
@@ -453,8 +461,8 @@
       "standardUnitOrder": 8,
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
       "subUnit": "함수의 뜻과 그래프",
-      "subUnitConfidence": "canonical_master_parent_label_but_semantic_gap",
-      "subUnitClassificationDepth": "source_primary_semantic_review",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
       "questionType": "서술형",
       "layoutTag": "grid",
       "tags": [
@@ -473,15 +481,15 @@
         "rpmL1": "함수",
         "rpmL2": "유리함수",
         "sourceMetaFoundationL3": "유리식의 망원합",
-        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3": "유리식의 부분분수와 망원합",
         "primaryRPM_L3Frozen": true,
-        "primaryL3Id": "H1-RPM-263",
+        "primaryL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
         "rpmRecordId": "H1-RPM-263",
-        "rpmRecordMappingStatus": "PARENT_NEAREST_ONLY_EXACT_TELESCOPING_L3_NOT_PRESENT",
-        "primaryL3Authority": "RPM_LOCKED_PARENT_SEMANTIC_DEBT",
+        "rpmRecordMappingStatus": "PARENT_ONLY_GENERATED_EXACT_L3",
+        "primaryL3Authority": "GENERATED_ACTIVE_WITH_RPM_PARENT",
         "generatedL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
-        "generatedL3Authority": "GENERATED_ACTIVE_UNDER_RPM_PARENT",
-        "rpmL4SemanticLabel": "식 결정 (원본의 목표와 다름)",
+        "generatedL3Authority": "GENERATED_ACTIVE_PARENT_EVIDENCE_VERIFIED",
+        "rpmL4SemanticLabel": "부분분수 망원합 (Generated L4; RPM 식 결정과 구별)",
         "problemTypeKey": "PT_RATIONAL_EXPRESSION",
         "templateKey": "TPL_RATIONAL_TELESCOPING_SUM",
         "effectiveL4Id": "TPL_RATIONAL_TELESCOPING_SUM",
@@ -490,11 +498,10 @@
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 3,
-        "metadataDebt": [
-          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED",
-          "RPM_EXACT_L3_TELESCOPING_NOT_PRESENT_PARENT_H1_RPM_263"
-        ],
-        "metaTaxonomyStatus": "EXISTING_ACTIVE_PT_TPL_GENERATED_L3_UNDER_NEAREST_RPM_PARENT"
+        "metadataDebt": [],
+        "metaTaxonomyStatus": "GPT_REVIEWED_PRIMARY_L3_L4_AND_SOURCE_UID_VERIFIED",
+        "sourceUidResolution": "QID_V1_CANONICAL_PATH_ORDINAL_SHA256_VERIFIED",
+        "parentLockedRpmL3Id": "H1-RPM-263"
       },
       "review": {
         "reverseStem": "KEEP",
@@ -524,16 +531,17 @@
           "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/B2-solution.svg",
           "actualBrowserRender": "NOT_RUN"
         },
-        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
-        "externalOpenBookReview": "NOT_RUN",
-        "studentRelease": "NOT_AUTHORIZED"
+        "disposition": "GPT_INDEPENDENT_MATH_AND_META_REVIEW_CLOSED",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_20261013_REVIEWED",
+        "studentRelease": "NOT_AUTHORIZED",
+        "mathIndependentFreezeBlob": "639cf3c26aa6f7962ae63232a1500de6ad9d2e75"
       }
     },
     {
       "id": 6,
       "uid": "ALITE-JEIL25-2FINAL-Q21-B3",
       "sourceQid": 21,
-      "sourceUid": null,
+      "sourceUid": "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975",
       "slot": "B3",
       "purpose": "B",
       "provenance": "ALIVE_GENERATED_SOURCE_Q21",
@@ -547,8 +555,8 @@
       "standardUnitOrder": 8,
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
       "subUnit": "함수의 뜻과 그래프",
-      "subUnitConfidence": "canonical_master_parent_label_but_semantic_gap",
-      "subUnitClassificationDepth": "source_primary_semantic_review",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
       "questionType": "서술형",
       "layoutTag": "grid",
       "tags": [
@@ -567,15 +575,15 @@
         "rpmL1": "함수",
         "rpmL2": "유리함수",
         "sourceMetaFoundationL3": "유리식의 망원합",
-        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3": "유리식의 부분분수와 망원합",
         "primaryRPM_L3Frozen": true,
-        "primaryL3Id": "H1-RPM-263",
+        "primaryL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
         "rpmRecordId": "H1-RPM-263",
-        "rpmRecordMappingStatus": "PARENT_NEAREST_ONLY_EXACT_TELESCOPING_L3_NOT_PRESENT",
-        "primaryL3Authority": "RPM_LOCKED_PARENT_SEMANTIC_DEBT",
+        "rpmRecordMappingStatus": "PARENT_ONLY_GENERATED_EXACT_L3",
+        "primaryL3Authority": "GENERATED_ACTIVE_WITH_RPM_PARENT",
         "generatedL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
-        "generatedL3Authority": "GENERATED_ACTIVE_UNDER_RPM_PARENT",
-        "rpmL4SemanticLabel": "식 결정 (원본의 목표와 다름)",
+        "generatedL3Authority": "GENERATED_ACTIVE_PARENT_EVIDENCE_VERIFIED",
+        "rpmL4SemanticLabel": "부분분수 망원합 (Generated L4; RPM 식 결정과 구별)",
         "problemTypeKey": "PT_RATIONAL_EXPRESSION",
         "templateKey": "TPL_RATIONAL_TELESCOPING_SUM",
         "effectiveL4Id": "TPL_RATIONAL_TELESCOPING_SUM",
@@ -584,11 +592,10 @@
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 3,
-        "metadataDebt": [
-          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED",
-          "RPM_EXACT_L3_TELESCOPING_NOT_PRESENT_PARENT_H1_RPM_263"
-        ],
-        "metaTaxonomyStatus": "EXISTING_ACTIVE_PT_TPL_GENERATED_L3_UNDER_NEAREST_RPM_PARENT"
+        "metadataDebt": [],
+        "metaTaxonomyStatus": "GPT_REVIEWED_PRIMARY_L3_L4_AND_SOURCE_UID_VERIFIED",
+        "sourceUidResolution": "QID_V1_CANONICAL_PATH_ORDINAL_SHA256_VERIFIED",
+        "parentLockedRpmL3Id": "H1-RPM-263"
       },
       "review": {
         "reverseStem": "KEEP",
@@ -618,16 +625,17 @@
           "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/B3-solution.svg",
           "actualBrowserRender": "NOT_RUN"
         },
-        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
-        "externalOpenBookReview": "NOT_RUN",
-        "studentRelease": "NOT_AUTHORIZED"
+        "disposition": "GPT_INDEPENDENT_MATH_AND_META_REVIEW_CLOSED",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_20261013_REVIEWED",
+        "studentRelease": "NOT_AUTHORIZED",
+        "mathIndependentFreezeBlob": "639cf3c26aa6f7962ae63232a1500de6ad9d2e75"
       }
     },
     {
       "id": 7,
       "uid": "ALITE-JEIL25-2FINAL-Q21-C1",
       "sourceQid": 21,
-      "sourceUid": null,
+      "sourceUid": "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975",
       "slot": "C1",
       "purpose": "C",
       "provenance": "ALIVE_GENERATED_SOURCE_Q21",
@@ -641,8 +649,8 @@
       "standardUnitOrder": 8,
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
       "subUnit": "함수의 뜻과 그래프",
-      "subUnitConfidence": "canonical_master_parent_label_but_semantic_gap",
-      "subUnitClassificationDepth": "source_primary_semantic_review",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
       "questionType": "서술형",
       "layoutTag": "grid",
       "tags": [
@@ -661,15 +669,15 @@
         "rpmL1": "함수",
         "rpmL2": "유리함수",
         "sourceMetaFoundationL3": "유리식의 망원합",
-        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3": "유리식의 부분분수와 망원합",
         "primaryRPM_L3Frozen": true,
-        "primaryL3Id": "H1-RPM-263",
+        "primaryL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
         "rpmRecordId": "H1-RPM-263",
-        "rpmRecordMappingStatus": "PARENT_NEAREST_ONLY_EXACT_TELESCOPING_L3_NOT_PRESENT",
-        "primaryL3Authority": "RPM_LOCKED_PARENT_SEMANTIC_DEBT",
+        "rpmRecordMappingStatus": "PARENT_ONLY_GENERATED_EXACT_L3",
+        "primaryL3Authority": "GENERATED_ACTIVE_WITH_RPM_PARENT",
         "generatedL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
-        "generatedL3Authority": "GENERATED_ACTIVE_UNDER_RPM_PARENT",
-        "rpmL4SemanticLabel": "식 결정 (원본의 목표와 다름)",
+        "generatedL3Authority": "GENERATED_ACTIVE_PARENT_EVIDENCE_VERIFIED",
+        "rpmL4SemanticLabel": "부분분수 망원합 (Generated L4; RPM 식 결정과 구별)",
         "problemTypeKey": "PT_RATIONAL_EXPRESSION",
         "templateKey": "TPL_RATIONAL_TELESCOPING_SUM",
         "effectiveL4Id": "EXT-L4-JEIL25-Q21-TELESCOPING-SPLIT-RATIO",
@@ -680,11 +688,10 @@
         ],
         "integrationPattern": "INTERDEPENDENT",
         "difficultyBucket": 4,
-        "metadataDebt": [
-          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED",
-          "RPM_EXACT_L3_TELESCOPING_NOT_PRESENT_PARENT_H1_RPM_263"
-        ],
-        "metaTaxonomyStatus": "EXISTING_ACTIVE_PT_TPL_GENERATED_L3_UNDER_NEAREST_RPM_PARENT"
+        "metadataDebt": [],
+        "metaTaxonomyStatus": "GPT_REVIEWED_PRIMARY_L3_L4_AND_SOURCE_UID_VERIFIED",
+        "sourceUidResolution": "QID_V1_CANONICAL_PATH_ORDINAL_SHA256_VERIFIED",
+        "parentLockedRpmL3Id": "H1-RPM-263"
       },
       "review": {
         "reverseStem": "KEEP",
@@ -714,16 +721,17 @@
           "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/C1-solution.svg",
           "actualBrowserRender": "NOT_RUN"
         },
-        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
-        "externalOpenBookReview": "NOT_RUN",
-        "studentRelease": "NOT_AUTHORIZED"
+        "disposition": "GPT_INDEPENDENT_MATH_AND_META_REVIEW_CLOSED",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_20261013_REVIEWED",
+        "studentRelease": "NOT_AUTHORIZED",
+        "mathIndependentFreezeBlob": "639cf3c26aa6f7962ae63232a1500de6ad9d2e75"
       }
     },
     {
       "id": 8,
       "uid": "ALITE-JEIL25-2FINAL-Q21-C2",
       "sourceQid": 21,
-      "sourceUid": null,
+      "sourceUid": "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975",
       "slot": "C2",
       "purpose": "C",
       "provenance": "ALIVE_GENERATED_SOURCE_Q21",
@@ -737,8 +745,8 @@
       "standardUnitOrder": 8,
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
       "subUnit": "함수의 뜻과 그래프",
-      "subUnitConfidence": "canonical_master_parent_label_but_semantic_gap",
-      "subUnitClassificationDepth": "source_primary_semantic_review",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
       "questionType": "서술형",
       "layoutTag": "grid",
       "tags": [
@@ -757,15 +765,15 @@
         "rpmL1": "함수",
         "rpmL2": "유리함수",
         "sourceMetaFoundationL3": "유리식의 망원합",
-        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3": "유리식의 부분분수와 망원합",
         "primaryRPM_L3Frozen": true,
-        "primaryL3Id": "H1-RPM-263",
+        "primaryL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
         "rpmRecordId": "H1-RPM-263",
-        "rpmRecordMappingStatus": "PARENT_NEAREST_ONLY_EXACT_TELESCOPING_L3_NOT_PRESENT",
-        "primaryL3Authority": "RPM_LOCKED_PARENT_SEMANTIC_DEBT",
+        "rpmRecordMappingStatus": "PARENT_ONLY_GENERATED_EXACT_L3",
+        "primaryL3Authority": "GENERATED_ACTIVE_WITH_RPM_PARENT",
         "generatedL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
-        "generatedL3Authority": "GENERATED_ACTIVE_UNDER_RPM_PARENT",
-        "rpmL4SemanticLabel": "식 결정 (원본의 목표와 다름)",
+        "generatedL3Authority": "GENERATED_ACTIVE_PARENT_EVIDENCE_VERIFIED",
+        "rpmL4SemanticLabel": "부분분수 망원합 (Generated L4; RPM 식 결정과 구별)",
         "problemTypeKey": "PT_RATIONAL_EXPRESSION",
         "templateKey": "TPL_RATIONAL_TELESCOPING_SUM",
         "effectiveL4Id": "EXT-L4-JEIL25-Q21-TELESCOPING-FUNCTION-DIFFERENCE",
@@ -778,11 +786,10 @@
         ],
         "integrationPattern": "INTERDEPENDENT",
         "difficultyBucket": 4,
-        "metadataDebt": [
-          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED",
-          "RPM_EXACT_L3_TELESCOPING_NOT_PRESENT_PARENT_H1_RPM_263"
-        ],
-        "metaTaxonomyStatus": "EXISTING_ACTIVE_PT_TPL_GENERATED_L3_UNDER_NEAREST_RPM_PARENT"
+        "metadataDebt": [],
+        "metaTaxonomyStatus": "GPT_REVIEWED_PRIMARY_L3_L4_AND_SOURCE_UID_VERIFIED",
+        "sourceUidResolution": "QID_V1_CANONICAL_PATH_ORDINAL_SHA256_VERIFIED",
+        "parentLockedRpmL3Id": "H1-RPM-263"
       },
       "review": {
         "reverseStem": "KEEP",
@@ -812,16 +819,17 @@
           "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/C2-solution.svg",
           "actualBrowserRender": "NOT_RUN"
         },
-        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
-        "externalOpenBookReview": "NOT_RUN",
-        "studentRelease": "NOT_AUTHORIZED"
+        "disposition": "GPT_INDEPENDENT_MATH_AND_META_REVIEW_CLOSED",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_20261013_REVIEWED",
+        "studentRelease": "NOT_AUTHORIZED",
+        "mathIndependentFreezeBlob": "639cf3c26aa6f7962ae63232a1500de6ad9d2e75"
       }
     },
     {
       "id": 9,
       "uid": "ALITE-JEIL25-2FINAL-Q21-C3",
       "sourceQid": 21,
-      "sourceUid": null,
+      "sourceUid": "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975",
       "slot": "C3",
       "purpose": "C",
       "provenance": "ALIVE_GENERATED_SOURCE_Q21",
@@ -835,8 +843,8 @@
       "standardUnitOrder": 8,
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
       "subUnit": "함수의 뜻과 그래프",
-      "subUnitConfidence": "canonical_master_parent_label_but_semantic_gap",
-      "subUnitClassificationDepth": "source_primary_semantic_review",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
       "questionType": "서술형",
       "layoutTag": "grid",
       "tags": [
@@ -855,15 +863,15 @@
         "rpmL1": "함수",
         "rpmL2": "유리함수",
         "sourceMetaFoundationL3": "유리식의 망원합",
-        "primaryRPM_L3": "유리함수의 활용",
+        "primaryRPM_L3": "유리식의 부분분수와 망원합",
         "primaryRPM_L3Frozen": true,
-        "primaryL3Id": "H1-RPM-263",
+        "primaryL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
         "rpmRecordId": "H1-RPM-263",
-        "rpmRecordMappingStatus": "PARENT_NEAREST_ONLY_EXACT_TELESCOPING_L3_NOT_PRESENT",
-        "primaryL3Authority": "RPM_LOCKED_PARENT_SEMANTIC_DEBT",
+        "rpmRecordMappingStatus": "PARENT_ONLY_GENERATED_EXACT_L3",
+        "primaryL3Authority": "GENERATED_ACTIVE_WITH_RPM_PARENT",
         "generatedL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
-        "generatedL3Authority": "GENERATED_ACTIVE_UNDER_RPM_PARENT",
-        "rpmL4SemanticLabel": "식 결정 (원본의 목표와 다름)",
+        "generatedL3Authority": "GENERATED_ACTIVE_PARENT_EVIDENCE_VERIFIED",
+        "rpmL4SemanticLabel": "부분분수 망원합 (Generated L4; RPM 식 결정과 구별)",
         "problemTypeKey": "PT_RATIONAL_EXPRESSION",
         "templateKey": "TPL_RATIONAL_TELESCOPING_SUM",
         "effectiveL4Id": "EXT-L4-JEIL25-Q21-TELESCOPING-SHIFT-PARAMETER",
@@ -876,11 +884,10 @@
         ],
         "integrationPattern": "INTERDEPENDENT",
         "difficultyBucket": 4,
-        "metadataDebt": [
-          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED",
-          "RPM_EXACT_L3_TELESCOPING_NOT_PRESENT_PARENT_H1_RPM_263"
-        ],
-        "metaTaxonomyStatus": "EXISTING_ACTIVE_PT_TPL_GENERATED_L3_UNDER_NEAREST_RPM_PARENT"
+        "metadataDebt": [],
+        "metaTaxonomyStatus": "GPT_REVIEWED_PRIMARY_L3_L4_AND_SOURCE_UID_VERIFIED",
+        "sourceUidResolution": "QID_V1_CANONICAL_PATH_ORDINAL_SHA256_VERIFIED",
+        "parentLockedRpmL3Id": "H1-RPM-263"
       },
       "review": {
         "reverseStem": "KEEP",
@@ -910,9 +917,10 @@
           "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q21/C3-solution.svg",
           "actualBrowserRender": "NOT_RUN"
         },
-        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
-        "externalOpenBookReview": "NOT_RUN",
-        "studentRelease": "NOT_AUTHORIZED"
+        "disposition": "GPT_INDEPENDENT_MATH_AND_META_REVIEW_CLOSED",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_20261013_REVIEWED",
+        "studentRelease": "NOT_AUTHORIZED",
+        "mathIndependentFreezeBlob": "639cf3c26aa6f7962ae63232a1500de6ad9d2e75"
       }
     }
   ]

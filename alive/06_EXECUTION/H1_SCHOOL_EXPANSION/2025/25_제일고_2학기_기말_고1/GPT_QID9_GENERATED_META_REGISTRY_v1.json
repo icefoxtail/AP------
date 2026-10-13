@@ -75,9 +75,9 @@
       "parentLockedRpmL3Label": "유리함수의 활용",
       "standardUnitKey": "H22-C2-08",
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
-      "definition": "유리함수 f(x)의 값의 합을 부분분수 항등식으로 바꾸어 연속항을 소거하는 Generated 세분 유형. H1-RPM-263의 식 결정 L4와는 다름. 정확 L3 RPM 일치 여부 추후 검수 필요.",
+      "definition": "유리함수의 함수값을 부분분수 항등식으로 바꾸고 연속항을 소거하여 합·항 수·매개변수를 계산하는 Generated 정확 L3. RPM H1-RPM-263 유리함수의 활용은 상위 영역 부모일 뿐 L3 직접 의미 일치나 LOCKED L4 식 결정을 주장하지 않는다.",
       "sourceOriginalL3": "유리식의 망원합",
-      "status": "GENERATED_ACTIVE_WITH_PARENT_SEMANTIC_REVIEW",
+      "status": "GENERATED_ACTIVE_PARENT_EVIDENCE_VERIFIED",
       "sourceQid": 21,
       "exampleUids": [
         "ALITE-JEIL25-2FINAL-Q21-A1",
@@ -89,7 +89,16 @@
         "ALITE-JEIL25-2FINAL-Q21-C1",
         "ALITE-JEIL25-2FINAL-Q21-C2",
         "ALITE-JEIL25-2FINAL-Q21-C3"
-      ]
+      ],
+      "parentMatchStatus": "BROAD_RATIONAL_FUNCTION_APPLICATION_PARENT_ONLY",
+      "verification": {
+        "sourceOriginalGitBlob": "252c1cc9a687cadd961183b56ea10d21bf1976b4",
+        "rpmCrosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "lockedParentId": "H1-RPM-263",
+        "parentExactSemanticMatch": false,
+        "existingGeneratedL3Reused": true,
+        "blindFreezeBlob": "639cf3c26aa6f7962ae63232a1500de6ad9d2e75"
+      }
     },
     {
       "generatedExtL3Id": "EXT-L3-JEIL25-Q16-NESTED-RATIONAL-EXPRESSION",
@@ -5307,14 +5316,14 @@
       "uid": "ALITE-JEIL25-2FINAL-Q21-A1",
       "qid": 21,
       "slot": "A1",
-      "sourceUid": null,
+      "sourceUid": "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975",
       "sourceQid": 21,
       "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "standardUnitKey": "H22-C2-08",
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
       "parentRpmRecordId": "H1-RPM-263",
       "parentRpmL3": "유리함수의 활용",
-      "sourcePrimaryL3": "유리식 부분분수 및 망원합",
+      "sourcePrimaryL3": "유리식의 부분분수 및 망원합",
       "effectiveL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
       "lockedRpmParentL3Id": "H1-RPM-263",
       "effectiveL4Id": "TPL_RATIONAL_TELESCOPING_SUM",
@@ -5327,20 +5336,21 @@
       "level": "중",
       "difficultyBucket": 2,
       "formerDebtCount": 2,
-      "metaStatus": "SOURCE_UID_HASH_AND_RPM_L3_SEMANTIC_GAP_EVIDENCE_DEBT"
+      "metaStatus": "GENERATED_L3_ACTIVE_RPM_PARENT_ONLY_VERIFIED",
+      "currentDebtCount": 0
     },
     {
       "uid": "ALITE-JEIL25-2FINAL-Q21-A2",
       "qid": 21,
       "slot": "A2",
-      "sourceUid": null,
+      "sourceUid": "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975",
       "sourceQid": 21,
       "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "standardUnitKey": "H22-C2-08",
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
       "parentRpmRecordId": "H1-RPM-263",
       "parentRpmL3": "유리함수의 활용",
-      "sourcePrimaryL3": "유리식 부분분수 및 망원합",
+      "sourcePrimaryL3": "유리식의 부분분수 및 망원합",
       "effectiveL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
       "lockedRpmParentL3Id": "H1-RPM-263",
       "effectiveL4Id": "TPL_RATIONAL_TELESCOPING_SUM",
@@ -5353,20 +5363,21 @@
       "level": "중",
       "difficultyBucket": 2,
       "formerDebtCount": 2,
-      "metaStatus": "SOURCE_UID_HASH_AND_RPM_L3_SEMANTIC_GAP_EVIDENCE_DEBT"
+      "metaStatus": "GENERATED_L3_ACTIVE_RPM_PARENT_ONLY_VERIFIED",
+      "currentDebtCount": 0
     },
     {
       "uid": "ALITE-JEIL25-2FINAL-Q21-A3",
       "qid": 21,
       "slot": "A3",
-      "sourceUid": null,
+      "sourceUid": "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975",
       "sourceQid": 21,
       "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "standardUnitKey": "H22-C2-08",
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
       "parentRpmRecordId": "H1-RPM-263",
       "parentRpmL3": "유리함수의 활용",
-      "sourcePrimaryL3": "유리식 부분분수 및 망원합",
+      "sourcePrimaryL3": "유리식의 부분분수 및 망원합",
       "effectiveL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
       "lockedRpmParentL3Id": "H1-RPM-263",
       "effectiveL4Id": "TPL_RATIONAL_TELESCOPING_SUM",
@@ -5379,20 +5390,21 @@
       "level": "중",
       "difficultyBucket": 2,
       "formerDebtCount": 2,
-      "metaStatus": "SOURCE_UID_HASH_AND_RPM_L3_SEMANTIC_GAP_EVIDENCE_DEBT"
+      "metaStatus": "GENERATED_L3_ACTIVE_RPM_PARENT_ONLY_VERIFIED",
+      "currentDebtCount": 0
     },
     {
       "uid": "ALITE-JEIL25-2FINAL-Q21-B1",
       "qid": 21,
       "slot": "B1",
-      "sourceUid": null,
+      "sourceUid": "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975",
       "sourceQid": 21,
       "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "standardUnitKey": "H22-C2-08",
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
       "parentRpmRecordId": "H1-RPM-263",
       "parentRpmL3": "유리함수의 활용",
-      "sourcePrimaryL3": "유리식 부분분수 및 망원합",
+      "sourcePrimaryL3": "유리식의 부분분수 및 망원합",
       "effectiveL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
       "lockedRpmParentL3Id": "H1-RPM-263",
       "effectiveL4Id": "EXT-L4-JEIL25-Q21-TELESCOPING-ENDPOINT-RECOVERY",
@@ -5407,20 +5419,21 @@
       "level": "중",
       "difficultyBucket": 3,
       "formerDebtCount": 2,
-      "metaStatus": "SOURCE_UID_HASH_AND_RPM_L3_SEMANTIC_GAP_EVIDENCE_DEBT"
+      "metaStatus": "GENERATED_L3_ACTIVE_RPM_PARENT_ONLY_VERIFIED",
+      "currentDebtCount": 0
     },
     {
       "uid": "ALITE-JEIL25-2FINAL-Q21-B2",
       "qid": 21,
       "slot": "B2",
-      "sourceUid": null,
+      "sourceUid": "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975",
       "sourceQid": 21,
       "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "standardUnitKey": "H22-C2-08",
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
       "parentRpmRecordId": "H1-RPM-263",
       "parentRpmL3": "유리함수의 활용",
-      "sourcePrimaryL3": "유리식 부분분수 및 망원합",
+      "sourcePrimaryL3": "유리식의 부분분수 및 망원합",
       "effectiveL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
       "lockedRpmParentL3Id": "H1-RPM-263",
       "effectiveL4Id": "TPL_RATIONAL_TELESCOPING_SUM",
@@ -5433,20 +5446,21 @@
       "level": "중",
       "difficultyBucket": 3,
       "formerDebtCount": 2,
-      "metaStatus": "SOURCE_UID_HASH_AND_RPM_L3_SEMANTIC_GAP_EVIDENCE_DEBT"
+      "metaStatus": "GENERATED_L3_ACTIVE_RPM_PARENT_ONLY_VERIFIED",
+      "currentDebtCount": 0
     },
     {
       "uid": "ALITE-JEIL25-2FINAL-Q21-B3",
       "qid": 21,
       "slot": "B3",
-      "sourceUid": null,
+      "sourceUid": "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975",
       "sourceQid": 21,
       "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "standardUnitKey": "H22-C2-08",
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
       "parentRpmRecordId": "H1-RPM-263",
       "parentRpmL3": "유리함수의 활용",
-      "sourcePrimaryL3": "유리식 부분분수 및 망원합",
+      "sourcePrimaryL3": "유리식의 부분분수 및 망원합",
       "effectiveL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
       "lockedRpmParentL3Id": "H1-RPM-263",
       "effectiveL4Id": "TPL_RATIONAL_TELESCOPING_SUM",
@@ -5459,20 +5473,21 @@
       "level": "중",
       "difficultyBucket": 3,
       "formerDebtCount": 2,
-      "metaStatus": "SOURCE_UID_HASH_AND_RPM_L3_SEMANTIC_GAP_EVIDENCE_DEBT"
+      "metaStatus": "GENERATED_L3_ACTIVE_RPM_PARENT_ONLY_VERIFIED",
+      "currentDebtCount": 0
     },
     {
       "uid": "ALITE-JEIL25-2FINAL-Q21-C1",
       "qid": 21,
       "slot": "C1",
-      "sourceUid": null,
+      "sourceUid": "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975",
       "sourceQid": 21,
       "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "standardUnitKey": "H22-C2-08",
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
       "parentRpmRecordId": "H1-RPM-263",
       "parentRpmL3": "유리함수의 활용",
-      "sourcePrimaryL3": "유리식 부분분수 및 망원합",
+      "sourcePrimaryL3": "유리식의 부분분수 및 망원합",
       "effectiveL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
       "lockedRpmParentL3Id": "H1-RPM-263",
       "effectiveL4Id": "EXT-L4-JEIL25-Q21-TELESCOPING-SPLIT-RATIO",
@@ -5487,20 +5502,21 @@
       "level": "상",
       "difficultyBucket": 4,
       "formerDebtCount": 2,
-      "metaStatus": "SOURCE_UID_HASH_AND_RPM_L3_SEMANTIC_GAP_EVIDENCE_DEBT"
+      "metaStatus": "GENERATED_L3_ACTIVE_RPM_PARENT_ONLY_VERIFIED",
+      "currentDebtCount": 0
     },
     {
       "uid": "ALITE-JEIL25-2FINAL-Q21-C2",
       "qid": 21,
       "slot": "C2",
-      "sourceUid": null,
+      "sourceUid": "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975",
       "sourceQid": 21,
       "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "standardUnitKey": "H22-C2-08",
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
       "parentRpmRecordId": "H1-RPM-263",
       "parentRpmL3": "유리함수의 활용",
-      "sourcePrimaryL3": "유리식 부분분수 및 망원합",
+      "sourcePrimaryL3": "유리식의 부분분수 및 망원합",
       "effectiveL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
       "lockedRpmParentL3Id": "H1-RPM-263",
       "effectiveL4Id": "EXT-L4-JEIL25-Q21-TELESCOPING-FUNCTION-DIFFERENCE",
@@ -5517,20 +5533,21 @@
       "level": "상",
       "difficultyBucket": 4,
       "formerDebtCount": 2,
-      "metaStatus": "SOURCE_UID_HASH_AND_RPM_L3_SEMANTIC_GAP_EVIDENCE_DEBT"
+      "metaStatus": "GENERATED_L3_ACTIVE_RPM_PARENT_ONLY_VERIFIED",
+      "currentDebtCount": 0
     },
     {
       "uid": "ALITE-JEIL25-2FINAL-Q21-C3",
       "qid": 21,
       "slot": "C3",
-      "sourceUid": null,
+      "sourceUid": "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975",
       "sourceQid": 21,
       "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "standardUnitKey": "H22-C2-08",
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
       "parentRpmRecordId": "H1-RPM-263",
       "parentRpmL3": "유리함수의 활용",
-      "sourcePrimaryL3": "유리식 부분분수 및 망원합",
+      "sourcePrimaryL3": "유리식의 부분분수 및 망원합",
       "effectiveL3Id": "EXT-L3-JEIL25-Q21-RATIONAL-TELESCOPING",
       "lockedRpmParentL3Id": "H1-RPM-263",
       "effectiveL4Id": "EXT-L4-JEIL25-Q21-TELESCOPING-SHIFT-PARAMETER",
@@ -5547,13 +5564,14 @@
       "level": "상",
       "difficultyBucket": 4,
       "formerDebtCount": 2,
-      "metaStatus": "SOURCE_UID_HASH_AND_RPM_L3_SEMANTIC_GAP_EVIDENCE_DEBT"
+      "metaStatus": "GENERATED_L3_ACTIVE_RPM_PARENT_ONLY_VERIFIED",
+      "currentDebtCount": 0
     },
     {
       "uid": "ALITE-JEIL25-2FINAL-Q22-A1",
       "qid": 22,
       "slot": "A1",
-      "sourceUid": null,
+      "sourceUid": "qid_v1_07c5348413bc3219960f00ffb307c01eefcfa6704b78c80b2287ead8b53b845b",
       "sourceQid": 22,
       "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "standardUnitKey": "H22-C2-06",
@@ -5576,13 +5594,14 @@
       "level": "중",
       "difficultyBucket": 2,
       "formerDebtCount": 1,
-      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+      "metaStatus": "GENERAL_PROOF_RPM_FAMILY_AND_SOURCE_UID_VERIFIED",
+      "currentDebtCount": 0
     },
     {
       "uid": "ALITE-JEIL25-2FINAL-Q22-A2",
       "qid": 22,
       "slot": "A2",
-      "sourceUid": null,
+      "sourceUid": "qid_v1_07c5348413bc3219960f00ffb307c01eefcfa6704b78c80b2287ead8b53b845b",
       "sourceQid": 22,
       "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "standardUnitKey": "H22-C2-06",
@@ -5605,13 +5624,14 @@
       "level": "중",
       "difficultyBucket": 2,
       "formerDebtCount": 1,
-      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+      "metaStatus": "GENERAL_PROOF_RPM_FAMILY_AND_SOURCE_UID_VERIFIED",
+      "currentDebtCount": 0
     },
     {
       "uid": "ALITE-JEIL25-2FINAL-Q22-A3",
       "qid": 22,
       "slot": "A3",
-      "sourceUid": null,
+      "sourceUid": "qid_v1_07c5348413bc3219960f00ffb307c01eefcfa6704b78c80b2287ead8b53b845b",
       "sourceQid": 22,
       "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "standardUnitKey": "H22-C2-06",
@@ -5634,13 +5654,14 @@
       "level": "중",
       "difficultyBucket": 2,
       "formerDebtCount": 1,
-      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+      "metaStatus": "GENERAL_PROOF_RPM_FAMILY_AND_SOURCE_UID_VERIFIED",
+      "currentDebtCount": 0
     },
     {
       "uid": "ALITE-JEIL25-2FINAL-Q22-B1",
       "qid": 22,
       "slot": "B1",
-      "sourceUid": null,
+      "sourceUid": "qid_v1_07c5348413bc3219960f00ffb307c01eefcfa6704b78c80b2287ead8b53b845b",
       "sourceQid": 22,
       "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "standardUnitKey": "H22-C2-06",
@@ -5664,13 +5685,14 @@
       "level": "중",
       "difficultyBucket": 3,
       "formerDebtCount": 1,
-      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+      "metaStatus": "GENERAL_PROOF_RPM_FAMILY_AND_SOURCE_UID_VERIFIED",
+      "currentDebtCount": 0
     },
     {
       "uid": "ALITE-JEIL25-2FINAL-Q22-B2",
       "qid": 22,
       "slot": "B2",
-      "sourceUid": null,
+      "sourceUid": "qid_v1_07c5348413bc3219960f00ffb307c01eefcfa6704b78c80b2287ead8b53b845b",
       "sourceQid": 22,
       "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "standardUnitKey": "H22-C2-06",
@@ -5693,13 +5715,14 @@
       "level": "중",
       "difficultyBucket": 3,
       "formerDebtCount": 1,
-      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+      "metaStatus": "GENERAL_PROOF_RPM_FAMILY_AND_SOURCE_UID_VERIFIED",
+      "currentDebtCount": 0
     },
     {
       "uid": "ALITE-JEIL25-2FINAL-Q22-B3",
       "qid": 22,
       "slot": "B3",
-      "sourceUid": null,
+      "sourceUid": "qid_v1_07c5348413bc3219960f00ffb307c01eefcfa6704b78c80b2287ead8b53b845b",
       "sourceQid": 22,
       "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "standardUnitKey": "H22-C2-06",
@@ -5723,13 +5746,14 @@
       "level": "상",
       "difficultyBucket": 4,
       "formerDebtCount": 1,
-      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+      "metaStatus": "GENERAL_PROOF_RPM_FAMILY_AND_SOURCE_UID_VERIFIED",
+      "currentDebtCount": 0
     },
     {
       "uid": "ALITE-JEIL25-2FINAL-Q22-C1",
       "qid": 22,
       "slot": "C1",
-      "sourceUid": null,
+      "sourceUid": "qid_v1_07c5348413bc3219960f00ffb307c01eefcfa6704b78c80b2287ead8b53b845b",
       "sourceQid": 22,
       "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "standardUnitKey": "H22-C2-06",
@@ -5752,13 +5776,14 @@
       "level": "상",
       "difficultyBucket": 4,
       "formerDebtCount": 1,
-      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+      "metaStatus": "GENERAL_PROOF_RPM_FAMILY_AND_SOURCE_UID_VERIFIED",
+      "currentDebtCount": 0
     },
     {
       "uid": "ALITE-JEIL25-2FINAL-Q22-C2",
       "qid": 22,
       "slot": "C2",
-      "sourceUid": null,
+      "sourceUid": "qid_v1_07c5348413bc3219960f00ffb307c01eefcfa6704b78c80b2287ead8b53b845b",
       "sourceQid": 22,
       "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "standardUnitKey": "H22-C2-06",
@@ -5782,13 +5807,14 @@
       "level": "상",
       "difficultyBucket": 4,
       "formerDebtCount": 1,
-      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+      "metaStatus": "GENERAL_PROOF_RPM_FAMILY_AND_SOURCE_UID_VERIFIED",
+      "currentDebtCount": 0
     },
     {
       "uid": "ALITE-JEIL25-2FINAL-Q22-C3",
       "qid": 22,
       "slot": "C3",
-      "sourceUid": null,
+      "sourceUid": "qid_v1_07c5348413bc3219960f00ffb307c01eefcfa6704b78c80b2287ead8b53b845b",
       "sourceQid": 22,
       "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "standardUnitKey": "H22-C2-06",
@@ -5813,7 +5839,8 @@
       "level": "상",
       "difficultyBucket": 5,
       "formerDebtCount": 1,
-      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+      "metaStatus": "GENERAL_PROOF_RPM_FAMILY_AND_SOURCE_UID_VERIFIED",
+      "currentDebtCount": 0
     },
     {
       "uid": "ALITE-JEIL25-2FINAL-Q16-A1",
