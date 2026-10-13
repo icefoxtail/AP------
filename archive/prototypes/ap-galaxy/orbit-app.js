@@ -4,7 +4,7 @@
   const $ = (id) => document.getElementById(id);
   const ui = {
     canvas: $('space'), status: $('catalogStatus'), count: $('sceneCount'), search: $('search'),
-    grade: $('gradeFilter'), school: $('schoolFilter'), year: $('yearFilter'), unit: $('unitFilter'),
+    grade: $('gradeFilter'), school: $('schoolFilter'), year: $('yearFilter'), term: $('termFilter'), unit: $('unitFilter'),
     filterPanel: $('filterPanel'), filterToggle: $('filterToggle'), focusedChip: $('focusedChip'),
     drawer: $('examDrawer'), frame: $('examFrame'), title: $('examTitle'), meta: $('examMeta'), source: $('examSource'),
     openOriginal: $('openOriginal'), printOriginal: $('printOriginal'), labels: $('planetLabels'), satelliteLabels: $('satelliteLabels'),
@@ -16,6 +16,8 @@
     atlasExamCount: $('atlasExamCount'), atlasGroupCount: $('atlasGroupCount'), atlasDetailCount: $('atlasDetailCount'),
     atlasExplore: $('atlasExplore'), atlasOverview: $('atlasOverview'), atlasPanel: $('atlasPanel'), atlasCollapse: $('atlasCollapse'),
     scaleRail: $('scaleRail'), scaleLabel: $('scaleLabel'), scaleCaption: $('scaleCaption'),
+    facetNav: $('facetNav'), facetSummary: $('facetSummary'), clearFacetSelections: $('clearFacetSelections'),
+    facetGrade: $('facetGrade'), facetTerm: $('facetTerm'), facetYear: $('facetYear'), facetSchool: $('facetSchool'),
   };
   const state = {
     exams: [], records: [], filtered: [], visibleGroups: [], visibleExams: [], selectedExam: null,
@@ -96,6 +98,7 @@
     grade: ui.grade.value,
     school: ui.school.value,
     year: ui.year.value,
+    term: ui.term?.value || '',
     unit: ui.unit.value,
     query: normalizedField(ui.search.value),
   });
@@ -103,6 +106,11 @@
     if (filters.grade && exam.grade !== filters.grade) return false;
     if (filters.school && exam.school !== filters.school) return false;
     if (filters.year && String(exam.year) !== filters.year) return false;
+    if (filters.term) {
+      const [semester, examType] = filters.term.split(':');
+      if (semester && String(exam.semester) !== semester) return false;
+      if (examType && exam.examType !== examType) return false;
+    }
     const tags = state.tagsByFile.get(exam.file);
     if (filters.unit && !tags?.has(filters.unit)) return false;
     if (!filters.query) return true;
@@ -114,6 +122,67 @@
     return state.exams.filter((exam) => matchesFilters(exam, filters))
       .sort((a, b) => (Number(b.year) || 0) - (Number(a.year) || 0) || clean(a.school).localeCompare(clean(b.school), 'ko'));
   };
+  const termKey = (exam) => [clean(exam.semester), clean(exam.examType)].filter(Boolean).join(':');
+  const termLabel = (key) => {
+    const [semester, examType] = String(key || '').split(':');
+    const semesterLabel = semester === '1' || semester === '2' ? semester + '학기' : semester;
+    const typeLabel = examType === 'mid' ? '중간' : examType === 'final' ? '기말' : examType;
+    return [semesterLabel, typeLabel].filter(Boolean).join(' ');
+  };
+  const facetValues = {
+    grade: (exam) => clean(exam.grade),
+    term: (exam) => termKey(exam),
+    year: (exam) => clean(exam.year),
+    school: (exam) => clean(exam.school),
+  };
+  const facetLabel = (kind, value) => kind === 'term' ? termLabel(value) : value;
+  function renderFacets() {
+    if (!ui.facetNav) return;
+    const current = currentFilters();
+    const kinds = ['grade', 'term', 'year', 'school'];
+    const controls = { grade: ui.facetGrade, term: ui.facetTerm, year: ui.facetYear, school: ui.facetSchool };
+    for (const kind of kinds) {
+      const base = { ...current, query: current.query };
+      if (kind === 'grade') base.grade = '';
+      if (kind === 'term') base.term = '';
+      if (kind === 'year') base.year = '';
+      if (kind === 'school') base.school = '';
+      const values = [...new Set(state.exams.map(facetValues[kind]).filter(Boolean))];
+      values.sort((a, b) => kind === 'year' ? Number(b) - Number(a) : facetLabel(kind, a).localeCompare(facetLabel(kind, b), 'ko'));
+      const container = controls[kind];
+      if (!container) continue;
+      container.replaceChildren();
+      for (const value of values) {
+        const countFilters = { ...base, [kind]: value };
+        const count = state.exams.filter((exam) => matchesFilters(exam, countFilters)).length;
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'facet-node';
+        button.dataset.facetKind = kind;
+        button.dataset.facetValue = value;
+        button.setAttribute('aria-pressed', String(current[kind] === value));
+        button.disabled = count === 0 && current[kind] !== value;
+        button.setAttribute('aria-label', facetLabel(kind, value) + ' · ' + count + '개 시험지');
+        button.innerHTML = '<span>' + facetLabel(kind, value) + '</span><small>' + count + '</small>';
+        container.append(button);
+      }
+      if (!values.length) {
+        const empty = document.createElement('span');
+        empty.className = 'facet-empty';
+        empty.textContent = '자료 없음';
+        container.append(empty);
+      }
+    }
+    const active = [current.grade && '학년 ' + current.grade, current.term && termLabel(current.term), current.year && current.year + '년', current.school].filter(Boolean);
+    ui.facetSummary.textContent = active.length ? active.join(' · ') + ' · ' + state.filtered.length + '개 시험지' : '학년·시험·연도·학교를 원하는 순서로 고르세요.';
+  }
+  function applyFacet(kind, value) {
+    const select = kind === 'grade' ? ui.grade : kind === 'term' ? ui.term : kind === 'year' ? ui.year : ui.school;
+    if (!select) return;
+    select.value = select.value === value ? '' : value;
+    ui.search.value = '';
+    renderScene();
+  }
   const primaryUnitForExam = (exam) => {
     const tags = examTags(exam).sort((a, b) => a.localeCompare(b, 'ko'));
     if (ui.unit.value && tags.includes(ui.unit.value)) return ui.unit.value;
@@ -203,7 +272,7 @@
       camera: state.world?.snapshotNavigation() || null,
       mode: state.groupMode, groupId: state.focusedGroupId,
       search: ui.search.value, grade: ui.grade.value, school: ui.school.value,
-      unit: ui.unit.value, year: ui.year.value,
+      unit: ui.unit.value, year: ui.year.value, term: ui.term?.value || '',
     };
   }
   function restoreNavigation(snapshot) {
@@ -211,7 +280,7 @@
     state.groupMode = snapshot.mode;
     state.focusedGroupId = snapshot.groupId;
     ui.search.value = snapshot.search;
-    for (const field of ['grade', 'school', 'unit', 'year']) ui[field].value = snapshot[field];
+    for (const field of ['grade', 'school', 'unit', 'year', 'term']) if (ui[field]) ui[field].value = snapshot[field] || '';
     $('groupModes').querySelectorAll('[data-group-mode]').forEach(button => {
       button.setAttribute('aria-pressed', String(button.dataset.groupMode === state.groupMode));
     });
@@ -564,6 +633,7 @@
     setFilterSummary();
     createAccessibleList();
     updateConstellations();
+    renderFacets();
     const schoolCount = new Set(state.filtered.map((exam) => exam.school)).size;
     ui.atlasExamCount.textContent = state.filtered.length.toLocaleString();
     ui.atlasGroupCount.textContent = state.visibleGroups.length.toLocaleString();
@@ -575,7 +645,7 @@
       : '조건에 맞는 은하가 없습니다. 필터를 풀거나 검색어를 바꿔 보세요.';
   }
   function setFilterSummary() {
-    const active = [ui.grade.value, ui.school.value, ui.year.value, ui.unit.value, ui.search.value.trim()].filter(Boolean).length;
+    const active = [ui.grade.value, ui.school.value, ui.year.value, ui.term?.value, ui.unit.value, ui.search.value.trim()].filter(Boolean).length;
     const modeName = state.groupMode === 'grade' ? '학년 성단' : state.groupMode === 'unit' ? '단원 성단' : '학교 은하';
     $('filterSummary').textContent = active
       ? active + '개 조건 · ' + state.filtered.length.toLocaleString() + '개 시험지 · ' + modeName
@@ -595,6 +665,7 @@
     optionValues(ui.school, [...new Set(state.exams.map((exam) => exam.school).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ko')), '학교');
     optionValues(ui.grade, [...new Set(state.exams.map((exam) => exam.grade).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ko')), '학년');
     optionValues(ui.year, [...new Set(state.exams.map((exam) => String(exam.year)).filter(Boolean))].sort((a, b) => Number(b) - Number(a)), '연도');
+    if (ui.term) optionValues(ui.term, [...new Set(state.exams.map(termKey).filter(Boolean))].sort((a, b) => termLabel(a).localeCompare(termLabel(b), 'ko')), '시험 구분');
     optionValues(ui.unit, [...state.filesByTag.keys()].sort((a, b) => a.localeCompare(b, 'ko')), '공개 L2 단원');
   }
   async function loadCatalog() {
@@ -723,6 +794,7 @@
     ui.grade.value = '';
     ui.school.value = '';
     ui.year.value = '';
+    if (ui.term) ui.term.value = '';
     ui.unit.value = '';
     ui.search.value = '';
     state.activeTag = '';
@@ -747,11 +819,22 @@
   }
 
   async function init() {
-    for (const field of [ui.grade, ui.school, ui.year, ui.unit]) field.addEventListener('change', renderScene);
+    if (!ui.term) {
+      ui.term = document.createElement('select');
+      ui.term.id = 'termFilter';
+      ui.term.hidden = true;
+      document.body.append(ui.term);
+    }
+    for (const field of [ui.grade, ui.school, ui.year, ui.term, ui.unit].filter(Boolean)) field.addEventListener('change', renderScene);
     $('clearFilters').addEventListener('click', clearAllFilters);
     ui.filterToggle.addEventListener('click', () => toggleFilters());
     $('closeFilters').addEventListener('click', () => toggleFilters(false));
     $('viewToggle').addEventListener('click', () => toggleList());
+    ui.facetNav?.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-facet-kind]');
+      if (button) applyFacet(button.dataset.facetKind, button.dataset.facetValue);
+    });
+    ui.clearFacetSelections?.addEventListener('click', clearAllFilters);
     $('groupModes').addEventListener('click', (event) => {
       const button = event.target.closest('[data-group-mode]');
       if (button) setGroupMode(button.dataset.groupMode);
@@ -782,6 +865,7 @@
     $('closeDrawer').addEventListener('click', () => closeExam());
     $('wholeExam').addEventListener('click', showWholeExam);
     ui.atlasExplore.addEventListener('click', () => {
+      toggleList(true);
       ui.search.focus({ preventScroll: true });
       ui.search.select();
     });
