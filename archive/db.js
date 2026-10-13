@@ -8626,6 +8626,37 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
+      "file": "original/high/h2/1final/23_강남여고_1학기_기말_고2_수학I.js",
+      "school": "강남여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 25,
+      "rangeStartUnitKey": "H15-M1-02",
+      "rangeStartUnit": "로그의 뜻과 성질",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H15-M1-11",
+      "rangeEndUnit": "수학적 귀납법",
+      "rangeEndUnitOrder": 11,
+      "courseRanges": [
+        {
+          "standardCourse": "수학I",
+          "courseCode": "H15-M1",
+          "rangeStartUnitKey": "H15-M1-02",
+          "rangeStartUnit": "로그의 뜻과 성질",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H15-M1-11",
+          "rangeEndUnit": "수학적 귀납법",
+          "rangeEndUnitOrder": 11
+        }
+      ],
+      "primaryStandardCourse": "수학I"
+    },
+    {
       "file": "original/high/h2/1final/23_강남여고_1학기_기말_고2_확률과통계.js",
       "school": "강남여고",
       "topic": "",
