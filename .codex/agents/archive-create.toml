@@ -3,6 +3,7 @@ model_reasoning_effort = "high"
 sandbox_mode = "workspace-write"
 developer_instructions = """
 Fast Lane 우선: docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Fast_Lane_CURRENT_v1.md를 따른다.
+2026-10-13 우선: 문항 HOLD로 종료하지 않는다. 결함은 수정프로토콜로 직접 수정하고 필요한 해당 영역만 원문 대조한다. 원문 복구 불가능이면 승인된 ALIVE 문형 대체를 반드시 적용한다. 대체 후보가 실패하면 수정하거나 다른 후보를 생성해 완성한다. 검수자는 ROOT를 통해 제작 담당자에게 즉시 인계하고 해당 변경 qid만 완전한 새 학생 입력으로 독립 검수한다. 원문·실패·freeze와 대체 provenance를 보존한다. 결함 보고는 수정 인계이며 시험지/roster/골 종료가 아니다. 기존 정상 문항 재검·공유 도구 수정은 금지하고 실제 권한/실행 오류 및 미실행 검수는 사실대로 기록한다.
 이 우선 지시가 오래된 stage-kit/NONSTOP production 절차보다 우선한다.
 지정받은 examUid와 CREATE stage만 수행한다.
 새 examUid를 선택하거나 다른 stage를 대신 수행하지 않는다.
@@ -28,7 +29,7 @@ generic PASS, sealed-event, auto-consumer acceptance로 주장하지 않는다.
 유효한 기존 PASS/freeze/render는 다시 실행하거나 재포맷하지 않고 재사용한다.
 새 CREATE generic validator는 정상 완료 시 1회만 실행한다.
 실질 실패는 해당 locus만 고친 뒤 그 변경 영향만 확인한다.
-필수 품질 근거나 실제 증거가 없으면 정확한 gap을 ROOT에 보고한다.
+필수 품질 근거나 실제 증거가 없으면 ROOT에 수정/대체를 인계하고 해당 문항 완료까지 이어간다.
 PASS를 위조하거나 실제 알려진 결함을 waiver 처리하지 않는다.
 반환은 examUid, SHA, 변경 locus, 실제 결과와 남은 gap으로 제한한다.
 """

@@ -1,5 +1,7 @@
 ## CURRENT HARD — Codex 시험지 FAST LANE / 중복 검수·도구 수정 금지 (2026-10-12 사용자 직접 지시)
 
+- **2026-10-13 문항 HOLD 종료 금지:** 문항 결함은 담당자가 수정프로토콜로 직접 수정하고 필요한 해당 영역만 원문 대조한다. 원문 복구 불가능이면 승인된 ALIVE 문형 대체를 반드시 적용하며, 후보가 실패하면 수정하거나 다른 후보를 생성해 해당 문항의 독립 검수·Meta·에셋·표시·main 반영까지 완성한다. 복구 불가능은 대체 전환 근거이지 최종 HOLD 근거가 아니다. 문항 HOLD로 시험지·roster·골을 종료하지 않는다. 원문/실패/freeze 및 대체 provenance를 보존하고 바뀐 qid만 새 입력으로 검수한다. 공유 도구 수정 금지는 문항 수정·대체 금지가 아니다. 실제 권한·실행 오류와 미실행 검수는 사실대로 기록한다.
+
 - 실행 정본: `docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Fast_Lane_CURRENT_v1.md`. Codex 원본 시험지의 기본 종료는 CREATE → R1 → R2 → R3 → 프로덕션 JS·필수 에셋 main 반영·원격 일치 확인이다. 등록·배포는 별도 요청 범위이며 병합 선행조건으로 자동 추가하지 않는다. ALIVE Generated 출시 계약과 명시적으로 지정한 다른 종료 조건은 유지한다.
 - 기존 PASS/freeze/렌더를 재사용하고 첫 미완료 단계부터 진행한다. 정상 stage validator 한 번, R1 한 번 deep, R2 한 번 blind sweep, R3 한 번 targeted/구조/표시 마감. 실제 실패·수정 qid와 필수 직접 dependency만 다시 확인한다. ROOT 재검, 무관한 main drift에 따른 재검·등록 rebuild를 금지한다.
 - 시험지 run 중 공유 도구/validator/renderer/compiler/등록기/registry/CI 수정, 새 helper 작성, MASTER 자동 도구 복구를 절대 금지한다. preflight/bind/seal/verify/intake/dispatcher/등록 candidate는 생산 필수 호출에서 제거한다. 편의 도구가 막히면 JS·에셋·기존 증거를 직접 읽어 진행한다. 도구 호환 결함은 실제 품질 항목을 직접 확인한 MANUAL_STAGE_COMPLETE로 인계하되 generic FAIL_TOOL/NOT_RUN을 그대로 보존한다. 실제 품질·입력 결손은 완료로 우회하지 않는다. 도구 수정은 사용자에게 별도 맡긴 작업에서만 수행한다.
