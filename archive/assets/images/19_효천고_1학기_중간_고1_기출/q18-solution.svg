@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="640" viewBox="0 0 1120 640" role="img" aria-labelledby="title desc">
+<title id="title">양수 조건과 이차함수의 꼭짓점</title>
+<desc id="desc">k=4의 꼭짓점은 x축에 닿고, k=5의 최솟값은 1이므로 모든 x에서 양수이다.</desc>
+<style>text{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;fill:#172033}.title{font-size:23px;font-weight:700}.sub{font-size:18px}.label{font-size:18px;font-weight:600}.tick{font-size:16px}.curve4{fill:none;stroke:#65758b;stroke-width:3;stroke-dasharray:9 7}.curve5{fill:none;stroke:#1769aa;stroke-width:4}.grid{stroke:#e4e9f0;stroke-width:1}.frame{fill:#fff;stroke:#cbd5e1;stroke-width:1.4}.point4{fill:#d45a1b;stroke:#fff;stroke-width:2}.point5{fill:#6b4eff;stroke:#fff;stroke-width:2}</style>
+<rect width="1120" height="640" fill="#fff"/>
+<text x="38" y="42" class="title">모든 실수에서 양수인 이차함수</text>
+<text x="38" y="70" class="sub">k=4 경계와 가장 작은 정수 사례</text>
+<rect x="95" y="95" width="620" height="430" class="frame"/>
+<line x1="95.000000000" y1="95" x2="95.000000000" y2="525" class="grid"/>
+<line x1="198.333333333" y1="95" x2="198.333333333" y2="525" class="grid"/>
+<line x1="301.666666667" y1="95" x2="301.666666667" y2="525" class="grid"/>
+<line x1="405.000000000" y1="95" x2="405.000000000" y2="525" class="grid"/>
+<line x1="508.333333333" y1="95" x2="508.333333333" y2="525" class="grid"/>
+<line x1="611.666666667" y1="95" x2="611.666666667" y2="525" class="grid"/>
+<line x1="715.000000000" y1="95" x2="715.000000000" y2="525" class="grid"/>
+<line x1="95" y1="489.166666667" x2="715" y2="489.166666667" class="grid"/>
+<line x1="95" y1="417.500000000" x2="715" y2="417.500000000" class="grid"/>
+<line x1="95" y1="345.833333333" x2="715" y2="345.833333333" class="grid"/>
+<line x1="95" y1="274.166666667" x2="715" y2="274.166666667" class="grid"/>
+<line x1="95" y1="202.500000000" x2="715" y2="202.500000000" class="grid"/>
+<line x1="95" y1="130.833333333" x2="715" y2="130.833333333" class="grid"/>
+<line x1="95" y1="489.166666667" x2="715" y2="489.166666667" stroke="#172033" stroke-width="2"/>
+<line x1="611.666666667" y1="95" x2="611.666666667" y2="525" stroke="#172033" stroke-width="2"/>
+<path id="k4-boundary-curve" d="M 95.000000000 166.666666667 Q 250.000000000 489.166666667 405.000000000 489.166666667 Q 560.000000000 489.166666667 715.000000000 166.666666667" class="curve4"/>
+<path id="k5-minimum-curve" d="M 95.000000000 130.833333333 Q 250.000000000 453.333333333 405.000000000 453.333333333 Q 560.000000000 453.333333333 715.000000000 130.833333333" class="curve5"/>
+<circle id="k4-vertex" cx="405.000000000" cy="489.166666667" r="7" class="point4"/>
+<circle id="k5-vertex" cx="405.000000000" cy="453.333333333" r="7" class="point5"/>
+<text x="95.000000000" y="547" text-anchor="middle" class="tick">-5</text>
+<text x="198.333333333" y="547" text-anchor="middle" class="tick">-4</text>
+<text x="301.666666667" y="547" text-anchor="middle" class="tick">-3</text>
+<text x="405.000000000" y="547" text-anchor="middle" class="tick">-2</text>
+<text x="508.333333333" y="547" text-anchor="middle" class="tick">-1</text>
+<text x="611.666666667" y="547" text-anchor="middle" class="tick">0</text>
+<text x="715.000000000" y="547" text-anchor="middle" class="tick">1</text>
+<text x="707" y="575" text-anchor="end" class="label">x</text>
+<text x="105" y="117" class="label">f(x)</text>
+<rect x="760" y="95" width="330" height="430" rx="14" fill="#f8fafc" stroke="#d6dfeb"/>
+<text x="786" y="132" class="title">꼭짓점 비교</text>
+<line x1="788" y1="180" x2="840" y2="180" class="curve4"/><text x="854" y="186" class="sub">k=4</text>
+<text x="788" y="226" class="label">꼭짓점 (−2,0)</text>
+<text x="788" y="257" class="sub">x축에 닿아 f(x)&gt;0이 아님</text>
+<line x1="788" y1="320" x2="840" y2="320" class="curve5"/><text x="854" y="326" class="sub">k=5</text>
+<text x="788" y="366" class="label">꼭짓점 (−2,1)</text>
+<text x="788" y="397" class="sub">최솟값이 1&gt;0</text>
+<text x="788" y="470" class="sub">따라서 경계 다음 정수 5가</text>
+<text x="788" y="498" class="sub">가장 작은 값이다.</text>
+</svg>
