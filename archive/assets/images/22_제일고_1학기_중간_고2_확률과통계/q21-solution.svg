@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" preserveAspectRatio="xMidYMid meet" data-geometry-style-version="AP_GEOMETRY_PRINT_V1_0_DRAFT" data-geometry-preset="GEOMETRY_STANDARD" data-geometry-fact-hash="cb66c57aee3145dddbcd36704c55d1bfa4ffb302a0ea786823f5395ba64f1196" data-visual-provenance="SOURCE_AND_R1_FROZEN_SOLUTION"><title>최단 경로는 대각선 세 개를 잇는 하나뿐</title><rect x="0" y="0" width="640" height="360" rx="18" fill="#F8FAFC"/><text x="28" y="38" fill="#17324D" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="19" font-weight="700">최단 경로는 대각선 세 개를 잇는 하나뿐</text>
+<defs><marker id="arrow-gray" markerWidth="7" markerHeight="7" refX="5.4" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="#A8B7C4"/></marker><marker id="arrow-orange" markerWidth="8" markerHeight="8" refX="6.2" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#D97732"/></marker></defs>
+<g fill="none" stroke="#C6D0D8" stroke-width="1.5" marker-end="url(#arrow-gray)">
+<line x1="105" y1="280" x2="173" y2="280"/><line x1="173" y1="280" x2="241" y2="280"/><line x1="241" y1="280" x2="309" y2="280"/>
+<line x1="105" y1="212" x2="173" y2="212"/><line x1="173" y1="212" x2="241" y2="212"/><line x1="241" y1="212" x2="309" y2="212"/>
+<line x1="105" y1="144" x2="173" y2="144"/><line x1="173" y1="144" x2="241" y2="144"/><line x1="241" y1="144" x2="309" y2="144"/>
+<line x1="105" y1="76" x2="173" y2="76"/><line x1="173" y1="76" x2="241" y2="76"/><line x1="241" y1="76" x2="309" y2="76"/>
+<line x1="105" y1="280" x2="105" y2="212"/><line x1="105" y1="212" x2="105" y2="144"/><line x1="105" y1="144" x2="105" y2="76"/>
+<line x1="173" y1="280" x2="173" y2="212"/><line x1="173" y1="212" x2="173" y2="144"/><line x1="173" y1="144" x2="173" y2="76"/>
+<line x1="241" y1="280" x2="241" y2="212"/><line x1="241" y1="212" x2="241" y2="144"/><line x1="241" y1="144" x2="241" y2="76"/>
+<line x1="309" y1="280" x2="309" y2="212"/><line x1="309" y1="212" x2="309" y2="144"/><line x1="309" y1="144" x2="309" y2="76"/>
+</g>
+<g fill="none" stroke="#D2DCE4" stroke-width="1.4" marker-end="url(#arrow-gray)">
+<line x1="105" y1="212" x2="173" y2="144"/><line x1="241" y1="212" x2="309" y2="144"/>
+<line x1="105" y1="144" x2="173" y2="76"/><line x1="173" y1="144" x2="241" y2="76"/>
+<line x1="173" y1="280" x2="241" y2="212"/><line x1="241" y1="280" x2="309" y2="212"/>
+</g>
+<g fill="none" stroke="#D97732" stroke-width="4" marker-end="url(#arrow-orange)"><line x1="105" y1="280" x2="173" y2="212" stroke="#D97732" stroke-width="4"/><line x1="173" y1="212" x2="241" y2="144" stroke="#D97732" stroke-width="4"/><line x1="241" y1="144" x2="309" y2="76" stroke="#D97732" stroke-width="4"/></g>
+<g fill="#17324D"><circle cx="105" cy="280" r="4"/><circle cx="173" cy="212" r="4"/><circle cx="241" cy="144" r="4"/><circle cx="309" cy="76" r="4"/></g>
+<text x="82" y="302" fill="#17324D" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="700">A</text><text x="315" y="72" fill="#17324D" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="15" font-weight="700">B</text>
+<rect x="360" y="76" width="254" height="230" rx="14" fill="#FFFFFF" stroke="#D4DEE7"/>
+<text x="384" y="111" fill="#17324D" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="700">최소 이동 횟수</text>
+<text x="384" y="148" fill="#43586B" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="14">가로·세로로 3칸씩 이동해야</text><text x="384" y="170" fill="#43586B" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="14">하므로 어떤 경로도 3회 미만은</text><text x="384" y="192" fill="#43586B" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="14">불가능하다.</text>
+<text x="384" y="229" fill="#D97732" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" font-weight="700">대각선 3개 = 3회</text><text x="384" y="256" fill="#43586B" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="14">이 조건을 이루는 길은 강조된</text><text x="384" y="278" fill="#43586B" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="14">한 경로뿐이다: 1가지</text>
+<text x="28" y="340" fill="#54697C" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="12.5">회색 화살표는 다른 허용 이동이고, 주황색은 유일한 최단 경로이다.</text></svg>
