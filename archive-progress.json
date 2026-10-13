@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-13T20:37:09.237Z",
+  "updatedAt": "2026-10-13T20:58:18.719Z",
   "coverage": "GitHub PR/Actions only; Library/GPT completion not observed",
   "history": {
     "complete": false,
@@ -2821,27 +2821,10 @@
     }
   },
   "observations": {
-    "registration:38458522721:1:7e06178164930fe60a275fbebc715182e5823e34": {
-      "key": "registration:38458522721:1:7e06178164930fe60a275fbebc715182e5823e34",
-      "status": "unverified",
-      "attempts": 3,
-      "reason": "현재 실행 차수 증거 없음",
-      "run": {
-        "id": 38458522721,
-        "attempt": 1,
-        "sha": "7e06178164930fe60a275fbebc715182e5823e34",
-        "at": "2026-10-13T19:57:26Z",
-        "url": "https://github.com/icefoxtail/AP------/actions/runs/38458522721",
-        "conclusion": "success",
-        "event": "push",
-        "branch": "main"
-      },
-      "nextRetryAt": "2026-10-13T20:56:51.061Z"
-    },
     "registration:38459041740:1:99b8da88c7e9f1c1482735f0b2282729effe79f1": {
       "key": "registration:38459041740:1:99b8da88c7e9f1c1482735f0b2282729effe79f1",
       "status": "unverified",
-      "attempts": 2,
+      "attempts": 3,
       "reason": "현재 실행 차수 증거 없음",
       "run": {
         "id": 38459041740,
@@ -2853,12 +2836,12 @@
         "event": "push",
         "branch": "main"
       },
-      "nextRetryAt": "2026-10-13T20:46:46.343Z"
+      "nextRetryAt": "2026-10-13T21:18:10.429Z"
     },
     "registration:38460531550:1:255685f41e0acc85b915245eb1d4fa0b36b26790": {
       "key": "registration:38460531550:1:255685f41e0acc85b915245eb1d4fa0b36b26790",
       "status": "unverified",
-      "attempts": 2,
+      "attempts": 3,
       "reason": "현재 실행 차수 증거 없음",
       "run": {
         "id": 38460531550,
@@ -2870,12 +2853,12 @@
         "event": "push",
         "branch": "main"
       },
-      "nextRetryAt": "2026-10-13T20:46:42.030Z"
+      "nextRetryAt": "2026-10-13T21:18:01.788Z"
     },
     "registration:38462099151:1:7a0ffc89d1a40a900652b194468fd1a4eeb667fd": {
       "key": "registration:38462099151:1:7a0ffc89d1a40a900652b194468fd1a4eeb667fd",
       "status": "unverified",
-      "attempts": 1,
+      "attempts": 2,
       "reason": "현재 실행 차수 증거 없음",
       "run": {
         "id": 38462099151,
@@ -2887,14 +2870,29 @@
         "event": "push",
         "branch": "main"
       },
-      "nextRetryAt": "2026-10-13T20:41:35.082Z"
+      "nextRetryAt": "2026-10-13T21:07:57.605Z"
+    },
+    "registration:38466020942:1:adbcb4b06505865d1b91d31f2abe923642e97963": {
+      "key": "registration:38466020942:1:adbcb4b06505865d1b91d31f2abe923642e97963",
+      "status": "unverified",
+      "attempts": 1,
+      "reason": "현재 실행 차수 증거 없음",
+      "run": {
+        "id": 38466020942,
+        "attempt": 1,
+        "sha": "adbcb4b06505865d1b91d31f2abe923642e97963",
+        "at": "2026-10-13T20:55:03Z",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/38466020942",
+        "conclusion": "success",
+        "event": "push",
+        "branch": "main"
+      },
+      "nextRetryAt": "2026-10-13T21:02:54.020Z"
     },
     "release:38460531564:1:255685f41e0acc85b915245eb1d4fa0b36b26790": {
       "key": "release:38460531564:1:255685f41e0acc85b915245eb1d4fa0b36b26790",
       "status": "partial",
-      "fileProofState": "permanent",
       "attempts": 1,
-      "verifiedAt": "2026-10-13T20:37:08.201Z",
       "run": {
         "id": 38460531564,
         "attempt": 1,
@@ -2915,6 +2913,8 @@
         "fileProofReason": "Pages ZIP 크기 초과",
         "exams": {}
       },
+      "fileProofState": "permanent",
+      "verifiedAt": "2026-10-13T20:37:08.201Z",
       "checkedExamIds": [
         "19_금당고_1학기_중간_고1_기출",
         "19_매산고_1학기_중간_고1_기출",
@@ -2987,9 +2987,7 @@
     "release:38462099150:1:7a0ffc89d1a40a900652b194468fd1a4eeb667fd": {
       "key": "release:38462099150:1:7a0ffc89d1a40a900652b194468fd1a4eeb667fd",
       "status": "partial",
-      "fileProofState": "permanent",
       "attempts": 1,
-      "verifiedAt": "2026-10-13T20:37:07.064Z",
       "run": {
         "id": 38462099150,
         "attempt": 1,
@@ -3010,6 +3008,8 @@
         "fileProofReason": "Pages ZIP 크기 초과",
         "exams": {}
       },
+      "fileProofState": "permanent",
+      "verifiedAt": "2026-10-13T20:37:07.064Z",
       "checkedExamIds": [
         "19_금당고_1학기_중간_고1_기출",
         "19_매산고_1학기_중간_고1_기출",
@@ -17243,11 +17243,27 @@
         "23_여천고_1학기_중간_고1_기출"
       ]
     },
+    "registration:38458522721:1:7e06178164930fe60a275fbebc715182e5823e34": {
+      "key": "registration:38458522721:1:7e06178164930fe60a275fbebc715182e5823e34",
+      "status": "unverified",
+      "attempts": 4,
+      "reason": "현재 실행 차수 증거 없음",
+      "run": {
+        "id": 38458522721,
+        "attempt": 1,
+        "sha": "7e06178164930fe60a275fbebc715182e5823e34",
+        "at": "2026-10-13T19:57:26Z",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/38458522721",
+        "conclusion": "success",
+        "event": "push",
+        "branch": "main"
+      },
+      "retryExhausted": true
+    },
     "registration:38446549305:1:8e8ea2b57fcbc9cae767bfafc87b8b74f00cfdd1": {
       "key": "registration:38446549305:1:8e8ea2b57fcbc9cae767bfafc87b8b74f00cfdd1",
       "status": "unverified",
       "attempts": 4,
-      "reason": "현재 실행 차수 증거 없음",
       "run": {
         "id": 38446549305,
         "attempt": 1,
@@ -17258,13 +17274,13 @@
         "event": "push",
         "branch": "main"
       },
+      "reason": "현재 실행 차수 증거 없음",
       "retryExhausted": true
     },
     "registration:38447409427:1:414043508359053b1d1f086eb5ff5b54c595d4f9": {
       "key": "registration:38447409427:1:414043508359053b1d1f086eb5ff5b54c595d4f9",
       "status": "unverified",
       "attempts": 4,
-      "reason": "현재 실행 차수 증거 없음",
       "run": {
         "id": 38447409427,
         "attempt": 1,
@@ -17275,6 +17291,7 @@
         "event": "push",
         "branch": "main"
       },
+      "reason": "현재 실행 차수 증거 없음",
       "retryExhausted": true
     },
     "registration:38389656108:1:a2b7686afe7d69a1f37b8a8a9171ab20bb7fb2d3": {
