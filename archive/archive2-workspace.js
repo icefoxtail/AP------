@@ -9,6 +9,7 @@
   const History = window.Archive2History;
   const frozenPaperCache = new Map();
   const composeMetaQueryCache = new Map();
+  let renderComposeMetaFilters = null;
   let workspaceMatchCatalog = null;
   let workspaceStrictMatchOptions = null;
   let workspaceGeneralMatchOptions = null;
@@ -923,8 +924,9 @@
     for (const record of state.catalog.records || []) {
       if (!record.questionUid || seenUids.has(record.questionUid)) continue;
       if (recipeUids && !recipeUids.has(record.questionUid)) continue;
-      if (!workspaceMatches(record, selectionFilters) || !composeMetaMatches(record) || !workspaceEligibility(record).ok) continue;
-      if (!C.rowMatches(record, { difficultyBuckets: state.buckets }, workspaceMatchOptions()) || excluded.has(record.questionUid)) continue;
+      if (!composeMetaMatches(record) || !workspaceMatches(record, selectionFilters) || !workspaceEligibility(record).ok) continue;
+      // workspaceMatches already applies the selected difficulty buckets.
+      if (excluded.has(record.questionUid)) continue;
       const parent = workspaceScopeParent(record);
       if (!parent) continue;
       const key = scopeParentKey({ ...record, ...parent });
@@ -1081,7 +1083,7 @@
   function composeMetaMatches(record, filters = state.filters) {
     const hasMetaFilter = Boolean(filters.L1 || filters.L2 || filters.L3 || filters.L4 || state.buckets.length);
     if (!hasMetaFilter) return true;
-    const supplementalParent = workspaceScopeParent(record);
+    const supplementalParent = record?.unverifiedTaxonomy ? workspaceScopeParent(record) : null;
     if (supplementalParent?.supplemental) {
       // The fallback taxonomy is explicitly unverified. It may support basic
       // L1/L2 browsing, but never advanced L3/L4 or a fabricated difficulty
@@ -1095,21 +1097,25 @@
       state.metaIndexSource = state.catalog.records;
       composeMetaQueryCache.clear();
     }
-    // Existing MF-qualified selectors keep their established canonical authority path.
-    const directFilters = {};
-    for (const level of [1, 2, 3, 4]) {
-      const value = filters[`L${level}`];
-      if (value && !(level >= 3 && /^(?:mf|rpm):/.test(value)))
-        directFilters[`rpmL${level}`] = value.replace(/^rpm:/, "");
-    }
-    if (state.buckets.length) directFilters.difficultyBuckets = state.buckets;
-    const key = JSON.stringify([state.indexVersion, directFilters]);
-    let allowed = composeMetaQueryCache.get(key);
+    let allowed = renderComposeMetaFilters?.get(filters);
     if (!allowed) {
-      allowed = new Set(ProblemBankMeta.query(state.metaIndex, directFilters, { profile: "DIRECT" })
-        .map(row => row.questionUid));
-      if (composeMetaQueryCache.size >= 8) composeMetaQueryCache.clear();
-      composeMetaQueryCache.set(key, allowed);
+      // Existing MF-qualified selectors keep their established canonical authority path.
+      const directFilters = {};
+      for (const level of [1, 2, 3, 4]) {
+        const value = filters[`L${level}`];
+        if (value && !(level >= 3 && /^(?:mf|rpm):/.test(value)))
+          directFilters[`rpmL${level}`] = value.replace(/^rpm:/, "");
+      }
+      if (state.buckets.length) directFilters.difficultyBuckets = state.buckets;
+      const key = JSON.stringify([state.indexVersion, directFilters]);
+      allowed = composeMetaQueryCache.get(key);
+      if (!allowed) {
+        allowed = new Set(ProblemBankMeta.query(state.metaIndex, directFilters, { profile: "DIRECT" })
+          .map(row => row.questionUid));
+        if (composeMetaQueryCache.size >= 8) composeMetaQueryCache.clear();
+        composeMetaQueryCache.set(key, allowed);
+      }
+      renderComposeMetaFilters?.set(filters, allowed);
     }
     return allowed.has(record.questionUid);
   }
@@ -2449,6 +2455,7 @@
     displayedScopes = null;
     renderPoolCache = null;
     renderEligibilityCache = new WeakMap();
+    renderComposeMetaFilters = new WeakMap();
     renderingScopes = true;
     try {
       renderContent();
@@ -2458,6 +2465,7 @@
       scopeRenderCache = null;
       renderPoolCache = null;
       renderEligibilityCache = null;
+      renderComposeMetaFilters = null;
     }
   }
   function renderContent() {
