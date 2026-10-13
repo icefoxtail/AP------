@@ -32,13 +32,13 @@ function remoteBranches(){
  for(const x of remoteRows){
   if(x.name==='main')continue;
   let treeSha;
-  try{treeSha=git('rev-parse',`${x.ref}:archive/exams/original`).trim();}
+  try{treeSha=git('rev-parse',`${x.ref}:archive/exams`).trim();}
   catch(e){treeSha='ABSENT';}
   if(!treeCache.has(treeSha)){
     if(treeSha==='ABSENT'){treeCache.set(treeSha,[]);continue;}
     try{
-      const text=git('ls-tree','-r',x.ref,'--','archive/exams/original');
-      const names=text.trim().split('\n').map(v=>v.match(/^[0-9]+ blob [a-f0-9]{40}\t(.+)$/)?.[1]).filter(Boolean).filter(p=>p.endsWith('.js'));
+      const text=git('ls-tree','-r',x.ref,'--','archive/exams');
+      const names=text.trim().split('\n').map(v=>v.match(/^[0-9]+ blob [a-f0-9]{40}\t(.+)$/)?.[1]).filter(Boolean).filter(p=>p.endsWith('.js') && /^archive\/exams\/(original|product|production)\//.test(p));
       treeCache.set(treeSha,names);
     }catch(e){return{complete:false,reason:`Branch ${x.ref} read failed: ${recordError(e)}`,branches:filtered,remoteCount:remoteRows.length};}
   }
