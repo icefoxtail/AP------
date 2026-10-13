@@ -630,7 +630,7 @@ async function openMockOutput(mode){
   const questions=mode==="sol"?loaded.map(question=>({...question,solutionImageSize:"full",solutionImageLayout:"fullwidth"})):loaded;
   envelope=await output.publishOutputEnvelope({
    sourceKind:"generated-mock",sourceId:"generated-mock-"+sourceSha,mode,questionCount:questions.length,questionUids,
-   meta:{title:examTitle(sourceExamChoice)+" 모의고사",qpp:1,questionUids},questions
+   meta:{title:examTitle(sourceExamChoice)+" 모의고사",qpp:mode==="exam"?4:1,questionUids},questions
   });
   if(popup.closed){await output.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);return;}
   if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)throw Error("현재 모의고사 구성이 바뀌었습니다. 다시 생성해 주세요.");
@@ -773,7 +773,7 @@ async function printGeneratedSelection(){
   if(!output?.publishOutputEnvelope||!output?.outputEnvelopeUrl)throw Error("문항 출력 미리보기 엔진을 불러오지 못했습니다.");
   envelope=await output.publishOutputEnvelope({
    sourceKind:"generated-bank",sourceId:selected.map(row=>row.uid).join(","),mode:"exam",questionCount:selected.length,
-   questionUids:selected.map(row=>row.uid),meta:{title:"생성문제 · "+selected.length+"문항",qpp:1,questionUids:selected.map(row=>row.uid)},questions
+   questionUids:selected.map(row=>row.uid),meta:{title:"생성문제 · "+selected.length+"문항",qpp:4,questionUids:selected.map(row=>row.uid)},questions
   });
   if(popup.closed){await output.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);return;}
   const url=output.outputEnvelopeUrl("mixed_engine.html",location.href,envelope,{preview:true});
@@ -799,7 +799,7 @@ async function printExam(){
   if(popup.closed)return;
   const output=window.Archive2Output;
   if(!output?.publishOutputEnvelope||!output?.outputEnvelopeUrl)throw Error("출력 엔진을 불러오지 못했습니다.");
-  envelope=await output.publishOutputEnvelope({sourceKind:"generated-mock",sourceId:"generated-mock-"+e.sha,mode:"exam",questionCount:questions.length,questionUids,meta:{title:examTitle(e)+" 모의고사",qpp:1,questionUids},questions});
+  envelope=await output.publishOutputEnvelope({sourceKind:"generated-mock",sourceId:"generated-mock-"+e.sha,mode:"exam",questionCount:questions.length,questionUids,meta:{title:examTitle(e)+" 모의고사",qpp:4,questionUids},questions});
   if(popup.closed){await output.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);return;}
   popup.location.href=output.outputEnvelopeUrl("mixed_engine.html",location.href,envelope,{preview:true}).href;
   status("믹서 엔진에서 모의고사 출력 미리보기를 열었습니다.");
