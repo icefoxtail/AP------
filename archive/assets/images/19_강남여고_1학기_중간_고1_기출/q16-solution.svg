@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 570" role="img" aria-labelledby="title desc" data-visual-type="manual-function-graph-cases" data-source-qid="16">
+<title id="title">꼭짓점의 높이와 x축의 교점</title>
+<desc id="desc">y=(x−a)²+a−2의 꼭짓점 높이는 a−2이다. a가 2보다 작으면 두 점, 2이면 한 점에서 만나고, 2보다 크면 만나지 않는다.</desc>
+<rect width="1080" height="570" fill="#ffffff"/>
+<text x="40" y="38" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="22" font-weight="700" fill="#202a35">꼭짓점 높이로 x축과의 교점을 판정</text>
+<text x="40" y="69" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="17" fill="#485866">y=(x−a)²+a−2,  꼭짓점 V(a, a−2)</text>
+<g stroke="#cbd5db" fill="none">
+  <rect x="35" y="95" width="325" height="365" rx="10"/>
+  <rect x="377" y="95" width="325" height="365" rx="10"/>
+  <rect x="719" y="95" width="325" height="365" rx="10"/>
+</g>
+<g stroke="#263746" stroke-width="1.7">
+  <line x1="65" y1="370" x2="335" y2="370" data-geometry="x-axis-case-a1"/>
+  <line x1="405" y1="370" x2="675" y2="370" data-geometry="x-axis-case-a2"/>
+  <line x1="747" y1="370" x2="1017" y2="370" data-geometry="x-axis-case-a3"/>
+</g>
+<text x="40" y="374" font-family="Cambria Math, serif" font-size="14" fill="#263746">x축</text>
+<text x="383" y="374" font-family="Cambria Math, serif" font-size="14" fill="#263746">x축</text>
+<text x="725" y="374" font-family="Cambria Math, serif" font-size="14" fill="#263746">x축</text>
+<path d="M70 235 Q180 595 290 235" fill="none" stroke="#276c91" stroke-width="3.5" stroke-linecap="round" data-geometry="parabola" data-parameter-a="1" data-vertex-x="1" data-vertex-y="-1" data-root-count="2"/>
+<circle cx="180" cy="415" r="5" fill="#276c91" data-fact-id="vertex-a1" data-model-x="1" data-model-y="-1"/>
+<circle cx="125" cy="370" r="4" fill="#b8782d" data-fact-id="root-a1-left" data-model-x="0" data-model-y="0"/>
+<circle cx="235" cy="370" r="4" fill="#b8782d" data-fact-id="root-a1-right" data-model-x="2" data-model-y="0"/>
+<path d="M430 190 Q540 550 650 190" fill="none" stroke="#276c91" stroke-width="3.5" stroke-linecap="round" data-geometry="parabola" data-parameter-a="2" data-vertex-x="2" data-vertex-y="0" data-root-count="1"/>
+<circle cx="540" cy="370" r="5" fill="#b8782d" data-fact-id="tangent-vertex-a2" data-model-x="2" data-model-y="0"/>
+<path d="M790 145 Q900 505 1010 145" fill="none" stroke="#276c91" stroke-width="3.5" stroke-linecap="round" data-geometry="parabola" data-parameter-a="3" data-vertex-x="3" data-vertex-y="1" data-root-count="0"/>
+<circle cx="900" cy="325" r="5" fill="#276c91" data-fact-id="vertex-a3" data-model-x="3" data-model-y="1"/>
+<text x="197" y="125" text-anchor="middle" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="19" font-weight="700" fill="#263746">a=1 (&lt;2)</text>
+<text x="539" y="125" text-anchor="middle" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="19" font-weight="700" fill="#263746">a=2</text>
+<text x="881" y="125" text-anchor="middle" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="19" font-weight="700" fill="#263746">a=3 (&gt;2)</text>
+<text x="197" y="438" text-anchor="middle" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" fill="#276c91">꼭짓점 아래 → 두 교점</text>
+<text x="539" y="438" text-anchor="middle" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" fill="#a86822">x축에 접함</text>
+<text x="881" y="438" text-anchor="middle" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="16" fill="#485866">꼭짓점 위 → 교점 없음</text>
+<rect x="40" y="485" width="1000" height="54" rx="10" fill="#f4f7f9" stroke="#c4d0d8"/>
+<text x="540" y="519" text-anchor="middle" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="19" font-weight="700" fill="#263746">x축과 만나려면 a−2≤0, 즉 a≤2  →  정수 a의 최댓값은 2</text>
+</svg>
