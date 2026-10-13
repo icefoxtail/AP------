@@ -5,21 +5,21 @@ default_subagent_model = "gpt-6-luna"
 default_subagent_reasoning_effort = "high"
 
 [agents.archive_create]
-description = "Archive 2.0 CREATE 전용 production worker"
+description = "Archive Fast Lane CREATE: JS/asset 직접 제작, 도구 수리 금지"
 config_file = "./agents/archive-create.toml"
 
 [agents.archive_r1]
-description = "Archive 2.0 R1 DEEP 전용 worker"
+description = "Archive Fast Lane R1: 독립 deep 검수 1회, 통과분 재검 금지"
 config_file = "./agents/archive-r1.toml"
 
 [agents.archive_r2]
-description = "Archive 2.0 R2 BLIND SWEEP 전용 worker"
+description = "Archive Fast Lane R2: blind 답안 sweep 1회, R1 반복 금지"
 config_file = "./agents/archive-r2.toml"
 
 [agents.archive_r3]
-description = "Archive 2.0 R3 TARGETED RELEASE 전용 worker"
+description = "Archive Fast Lane R3: 영향 범위·구조·표시 마감 1회"
 config_file = "./agents/archive-r3.toml"
 
 [agents.archive_master]
-description = "Archive 2.0 continuation 전용 MASTER"
+description = "별도 명시적 기술 작업 전용 MASTER: 시험지 run 자동 투입 금지"
 config_file = "./agents/archive-master.toml"

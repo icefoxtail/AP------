@@ -5,6 +5,10 @@ description: Special JS Archive route selector. Use only when explicitly invoked
 
 # APMath Archive Exams — SPECIAL ROUTER
 
+## 2026-10-12 Codex fast-lane precedence
+
+Codex original-exam production follows `docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Fast_Lane_CURRENT_v1.md`. Resume at the first incomplete stage and reuse valid proofs. Read JS/assets directly; mandatory preflight/bind/seal/verify/intake and registration-candidate chains are removed from the lane. Skip broken convenience helpers while preserving actual quality checks and truthful machine status. An exam-run tool failure never selects SYSTEM_PIPELINE: shared tool edits, new wrappers, automatic MASTER repair, and repeated registration rebuilds are forbidden during production. Only an explicit separate infrastructure task authorizes those edits. Default production completion is JS/required assets on main with remote byte parity; do not add registration or deployment as an unrequested merge prerequisite.
+
 This skill is **not a normal Archive exam startup prerequisite**.
 
 The user's current instruction and the already-assigned CURRENT stage are the authority.
