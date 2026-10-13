@@ -18,7 +18,7 @@
     "svgCreated": 9,
     "truthTablesChecked": 9,
     "uniqueAnswerCount": 9,
-    "externalOpenBookReview": "NOT_RUN",
+    "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS_9_OF_9",
     "studentRelease": "NOT_AUTHORIZED",
     "status": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
     "nextQid": 9,
@@ -26,7 +26,15 @@
     "wrongRouteCount": 36,
     "svgRechecked": 9,
     "svgWithRebuiltFiveCandidateTruthTable": 3,
-    "actualChromiumRender": "NOT_RUN"
+    "actualChromiumRender": "NOT_RUN",
+    "gptReview2PinpointRepairs": [
+      "A1",
+      "A2",
+      "A3",
+      "C3"
+    ],
+    "gptReview2AnswerLeakCorrections": 4,
+    "openBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q06_Q10_OPENBOOK_REVIEW_20261013.json"
   },
   "questions": [
     {
@@ -56,11 +64,11 @@
       "wide": false,
       "content": "4명의 학생 A, B, C, D 중 정확히 한 명만 당첨금을 가지고 있다. 각 학생의 말은 다음과 같다.<br><div class=\"question-note-box\">A: B가 당첨금을 가지고 있다.<br>B: C는 당첨금을 가지고 있지 않다.<br>C: D가 당첨금을 가지고 있다.<br>D: A의 말은 거짓이다.</div>이 중 정확히 1명의 말이 거짓이다. 거짓말한 학생과 당첨금을 가진 학생을 바르게 짝지은 것은?",
       "choices": [
-        "A·C(거짓말) / A(당첨)",
-        "C·D(거짓말) / B(당첨)",
-        "A·B·C(거짓말) / C(당첨)",
+        "C(거짓말) / A(당첨)",
+        "D(거짓말) / B(당첨)",
+        "B(거짓말) / C(당첨)",
         "A(거짓말) / D(당첨)",
-        "A·D(거짓말) / D(당첨)"
+        "C(거짓말) / D(당첨)"
       ],
       "answer": "④",
       "solution": "D는 A의 말이 거짓이라고 주장하므로 두 사람 중 정확히 한 사람의 말만 거짓이다.\n당첨자 후보 A, B, C, D를 각각 가정하여 진술을 확인한다.\nA가 당첨자라면 거짓말한 사람은 A·C로 2명이다.\nB가 당첨자라면 거짓말한 사람은 C·D로 2명이다.\nC가 당첨자라면 거짓말한 사람은 A·B·C로 3명이다.\nD가 당첨자라면 거짓말한 사람은 A로 1명이다.\n거짓말한 학생은 정확히 1명이어야 한다. 이를 모두 만족하는 당첨자는 D, 거짓말한 학생은 A뿐이다.\n따라서 정답은 ④이다.",
@@ -207,23 +215,23 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredOption": "A·C(거짓말) / A(당첨)",
-            "reason": "A를 당첨자로 가정하면 A·C의 말은 거짓, B·D의 말은 참이므로 거짓은 2명이다. 거짓 1명 조건을 무시하면 ①의 'A·C(거짓말) / A(당첨)'를 택한다."
+            "offeredOption": "C(거짓말) / A(당첨)",
+            "reason": "당첨자가 A일 때 진술의 실제 거짓 발언자는 A·C(2명)이다. 거짓인 A의 말을 참이라고 놓쳤다. 실제 거짓말 인원도 발문의 1명 조건과 충돌한다."
           },
           {
             "choice": "②",
-            "offeredOption": "C·D(거짓말) / B(당첨)",
-            "reason": "B를 당첨자로 가정하면 C·D의 말은 거짓, A·B의 말은 참이므로 거짓은 2명이다. 거짓 1명 조건을 무시하면 ②의 'C·D(거짓말) / B(당첨)'를 택한다."
+            "offeredOption": "D(거짓말) / B(당첨)",
+            "reason": "당첨자가 B일 때 진술의 실제 거짓 발언자는 C·D(2명)이다. 거짓인 C의 말을 참이라고 놓쳤다. 실제 거짓말 인원도 발문의 1명 조건과 충돌한다."
           },
           {
             "choice": "③",
-            "offeredOption": "A·B·C(거짓말) / C(당첨)",
-            "reason": "C를 당첨자로 가정하면 A·B·C의 말은 거짓, D의 말은 참이므로 거짓은 3명이다. 거짓 1명 조건을 무시하면 ③의 'A·B·C(거짓말) / C(당첨)'를 택한다."
+            "offeredOption": "B(거짓말) / C(당첨)",
+            "reason": "당첨자가 C일 때 진술의 실제 거짓 발언자는 A·B·C(3명)이다. 거짓인 A·C의 말을 참이라고 놓쳤다. 실제 거짓말 인원도 발문의 1명 조건과 충돌한다."
           },
           {
             "choice": "⑤",
-            "offeredOption": "A·D(거짓말) / D(당첨)",
-            "reason": "D를 당첨자로 가정하면 A의 말은 거짓, B·C·D의 말은 참이므로 거짓은 1명이다. D의 참 진술을 거짓으로 오판; 거짓 발언자 집합을 A·D로 잘못 적으면 ⑤의 'A·D(거짓말) / D(당첨)'가 된다."
+            "offeredOption": "C(거짓말) / D(당첨)",
+            "reason": "당첨자가 D일 때 진술의 실제 거짓 발언자는 A(1명)이다. 거짓인 A의 말을 참이라고 놓쳤다. 참인 C의 말을 거짓으로 판정했다. "
           }
         ],
         "problemVisual": {
@@ -235,11 +243,11 @@
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/A1-solution.svg",
           "reason": "각 당첨 후보별 거짓 진술 수와 추가 조건을 비교하는 표가 추론의 경우를 명료화"
         },
-        "externalOpenBookReview": "NOT_RUN",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
-        "distractorTraceStatus": "4_OF_4_EXACT_TRUTH_ASSIGNMENTS_AND_WRONG_DECISIONS",
+        "distractorTraceStatus": "GPT_REVIEW2_CORRECTED_ONE_TO_ONE_20261013",
         "selfRecheck": {
           "status": "REVISED",
           "beforeContent": "4명의 학생 A, B, C, D 중 정확히 한 명만 당첨금을 가지고 있다. 각 학생의 말은 다음과 같다.<br><div class=\"question-note-box\">A: B가 당첨금을 가지고 있다.<br>B: C는 당첨금을 가지고 있지 않다.<br>C: D가 당첨금을 가지고 있다.<br>D: A의 말은 거짓이다.</div>이 중 정확히 1명의 말이 거짓이다. 거짓말한 학생과 당첨금을 가진 학생을 바르게 짝지은 것은?",
@@ -247,7 +255,15 @@
           "fullTruthRows": 4,
           "wrongRoutesReproduced": 4,
           "studentChrome": "NOT_RUN"
-        }
+        },
+        "authorDistractorEvidenceBeforeCorrection": "SUPERSEDED_AFTER_CHOICES_CHANGE",
+        "gptQualityReview20261013": {
+          "result": "PASS_AFTER_PINPOINT_REPAIR",
+          "reason": "ANSWER_LEAK_THROUGH_LIAR_COUNT",
+          "wrongOptionRoutesRecreated": 4,
+          "correctAnswerUnchanged": true
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q06_Q10_OPENBOOK_REVIEW_20261013.json"
       }
     },
     {
@@ -277,11 +293,11 @@
       "wide": false,
       "content": "4명의 학생 C, D, A, B 중 정확히 한 명만 당첨금을 가지고 있다. 각 학생의 말은 다음과 같다.<br><div class=\"question-note-box\">C: D가 당첨금을 가지고 있다.<br>D: A는 당첨금을 가지고 있지 않다.<br>A: B가 당첨금을 가지고 있다.<br>B: C의 말은 거짓이다.</div>이 중 정확히 1명의 말이 거짓이다. 거짓말한 학생과 당첨금을 가진 학생을 바르게 짝지은 것은?",
       "choices": [
-        "C·D·A(거짓말) / A(당첨)",
+        "C(거짓말) / A(당첨)",
         "C(거짓말) / B(당첨)",
-        "C·B(거짓말) / B(당첨)",
-        "C·A(거짓말) / C(당첨)",
-        "A·B(거짓말) / D(당첨)"
+        "A(거짓말) / C(당첨)",
+        "B(거짓말) / D(당첨)",
+        "D(거짓말) / A(당첨)"
       ],
       "answer": "②",
       "solution": "B는 C의 말이 거짓이라고 주장하므로 두 사람 중 정확히 한 사람의 말만 거짓이다.\n당첨자 후보 C, D, A, B를 각각 가정하여 진술을 확인한다.\nC가 당첨자라면 거짓말한 사람은 C·A로 2명이다.\nD가 당첨자라면 거짓말한 사람은 A·B로 2명이다.\nA가 당첨자라면 거짓말한 사람은 C·D·A로 3명이다.\nB가 당첨자라면 거짓말한 사람은 C로 1명이다.\n거짓말한 학생은 정확히 1명이어야 한다. 이를 모두 만족하는 당첨자는 B, 거짓말한 학생은 C뿐이다.\n따라서 정답은 ②이다.",
@@ -428,23 +444,23 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredOption": "C·D·A(거짓말) / A(당첨)",
-            "reason": "A를 당첨자로 가정하면 C·D·A의 말은 거짓, B의 말은 참이므로 거짓은 3명이다. 거짓 1명 조건을 무시하면 ①의 'C·D·A(거짓말) / A(당첨)'를 택한다."
+            "offeredOption": "C(거짓말) / A(당첨)",
+            "reason": "당첨자가 A일 때 진술의 실제 거짓 발언자는 C·D·A(3명)이다. 거짓인 D·A의 말을 참이라고 놓쳤다. 실제 거짓말 인원도 발문의 1명 조건과 충돌한다."
           },
           {
             "choice": "③",
-            "offeredOption": "C·B(거짓말) / B(당첨)",
-            "reason": "B를 당첨자로 가정하면 C의 말은 거짓, D·A·B의 말은 참이므로 거짓은 1명이다. B의 참 진술을 거짓으로 오판; 거짓 발언자 집합을 C·B로 잘못 적으면 ③의 'C·B(거짓말) / B(당첨)'가 된다."
+            "offeredOption": "A(거짓말) / C(당첨)",
+            "reason": "당첨자가 C일 때 진술의 실제 거짓 발언자는 C·A(2명)이다. 거짓인 C의 말을 참이라고 놓쳤다. 실제 거짓말 인원도 발문의 1명 조건과 충돌한다."
           },
           {
             "choice": "④",
-            "offeredOption": "C·A(거짓말) / C(당첨)",
-            "reason": "C를 당첨자로 가정하면 C·A의 말은 거짓, D·B의 말은 참이므로 거짓은 2명이다. 거짓 1명 조건을 무시하면 ④의 'C·A(거짓말) / C(당첨)'를 택한다."
+            "offeredOption": "B(거짓말) / D(당첨)",
+            "reason": "당첨자가 D일 때 진술의 실제 거짓 발언자는 A·B(2명)이다. 거짓인 A의 말을 참이라고 놓쳤다. 실제 거짓말 인원도 발문의 1명 조건과 충돌한다."
           },
           {
             "choice": "⑤",
-            "offeredOption": "A·B(거짓말) / D(당첨)",
-            "reason": "D를 당첨자로 가정하면 A·B의 말은 거짓, C·D의 말은 참이므로 거짓은 2명이다. 거짓 1명 조건을 무시하면 ⑤의 'A·B(거짓말) / D(당첨)'를 택한다."
+            "offeredOption": "D(거짓말) / A(당첨)",
+            "reason": "당첨자가 A일 때 진술의 실제 거짓 발언자는 C·D·A(3명)이다. 거짓인 C·A의 말을 참이라고 놓쳤다. 실제 거짓말 인원도 발문의 1명 조건과 충돌한다."
           }
         ],
         "problemVisual": {
@@ -456,11 +472,11 @@
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/A2-solution.svg",
           "reason": "각 당첨 후보별 거짓 진술 수와 추가 조건을 비교하는 표가 추론의 경우를 명료화"
         },
-        "externalOpenBookReview": "NOT_RUN",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
-        "distractorTraceStatus": "4_OF_4_EXACT_TRUTH_ASSIGNMENTS_AND_WRONG_DECISIONS",
+        "distractorTraceStatus": "GPT_REVIEW2_CORRECTED_ONE_TO_ONE_20261013",
         "selfRecheck": {
           "status": "REVISED",
           "beforeContent": "4명의 학생 C, D, A, B 중 정확히 한 명만 당첨금을 가지고 있다. 각 학생의 말은 다음과 같다.<br><div class=\"question-note-box\">C: D가 당첨금을 가지고 있다.<br>D: A는 당첨금을 가지고 있지 않다.<br>A: B가 당첨금을 가지고 있다.<br>B: C의 말은 거짓이다.</div>이 중 정확히 1명의 말이 거짓이다. 거짓말한 학생과 당첨금을 가진 학생을 바르게 짝지은 것은?",
@@ -468,7 +484,15 @@
           "fullTruthRows": 4,
           "wrongRoutesReproduced": 4,
           "studentChrome": "NOT_RUN"
-        }
+        },
+        "authorDistractorEvidenceBeforeCorrection": "SUPERSEDED_AFTER_CHOICES_CHANGE",
+        "gptQualityReview20261013": {
+          "result": "PASS_AFTER_PINPOINT_REPAIR",
+          "reason": "ANSWER_LEAK_THROUGH_LIAR_COUNT",
+          "wrongOptionRoutesRecreated": 4,
+          "correctAnswerUnchanged": true
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q06_Q10_OPENBOOK_REVIEW_20261013.json"
       }
     },
     {
@@ -498,10 +522,10 @@
       "wide": false,
       "content": "4명의 학생 B, C, D, A 중 정확히 한 명만 당첨금을 가지고 있다. 각 학생의 말은 다음과 같다.<br><div class=\"question-note-box\">B: C가 당첨금을 가지고 있다.<br>C: D는 당첨금을 가지고 있지 않다.<br>D: A가 당첨금을 가지고 있다.<br>A: B의 말은 거짓이다.</div>이 중 정확히 1명의 말이 거짓이다. 거짓말한 학생과 당첨금을 가진 학생을 바르게 짝지은 것은?",
       "choices": [
-        "B·A(거짓말) / A(당첨)",
-        "B·D(거짓말) / B(당첨)",
-        "D·A(거짓말) / C(당첨)",
-        "B·C·D(거짓말) / D(당첨)",
+        "A(거짓말) / A(당첨)",
+        "B(거짓말) / B(당첨)",
+        "D(거짓말) / C(당첨)",
+        "C(거짓말) / D(당첨)",
         "B(거짓말) / A(당첨)"
       ],
       "answer": "⑤",
@@ -649,23 +673,23 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredOption": "B·A(거짓말) / A(당첨)",
-            "reason": "A를 당첨자로 가정하면 B의 말은 거짓, C·D·A의 말은 참이므로 거짓은 1명이다. A의 참 진술을 거짓으로 오판; 거짓 발언자 집합을 B·A로 잘못 적으면 ①의 'B·A(거짓말) / A(당첨)'가 된다."
+            "offeredOption": "A(거짓말) / A(당첨)",
+            "reason": "당첨자가 A일 때 진술의 실제 거짓 발언자는 B(1명)이다. 거짓인 B의 말을 참이라고 놓쳤다. 참인 A의 말을 거짓으로 판정했다. "
           },
           {
             "choice": "②",
-            "offeredOption": "B·D(거짓말) / B(당첨)",
-            "reason": "B를 당첨자로 가정하면 B·D의 말은 거짓, C·A의 말은 참이므로 거짓은 2명이다. 거짓 1명 조건을 무시하면 ②의 'B·D(거짓말) / B(당첨)'를 택한다."
+            "offeredOption": "B(거짓말) / B(당첨)",
+            "reason": "당첨자가 B일 때 진술의 실제 거짓 발언자는 B·D(2명)이다. 거짓인 D의 말을 참이라고 놓쳤다. 실제 거짓말 인원도 발문의 1명 조건과 충돌한다."
           },
           {
             "choice": "③",
-            "offeredOption": "D·A(거짓말) / C(당첨)",
-            "reason": "C를 당첨자로 가정하면 D·A의 말은 거짓, B·C의 말은 참이므로 거짓은 2명이다. 거짓 1명 조건을 무시하면 ③의 'D·A(거짓말) / C(당첨)'를 택한다."
+            "offeredOption": "D(거짓말) / C(당첨)",
+            "reason": "당첨자가 C일 때 진술의 실제 거짓 발언자는 D·A(2명)이다. 거짓인 A의 말을 참이라고 놓쳤다. 실제 거짓말 인원도 발문의 1명 조건과 충돌한다."
           },
           {
             "choice": "④",
-            "offeredOption": "B·C·D(거짓말) / D(당첨)",
-            "reason": "D를 당첨자로 가정하면 B·C·D의 말은 거짓, A의 말은 참이므로 거짓은 3명이다. 거짓 1명 조건을 무시하면 ④의 'B·C·D(거짓말) / D(당첨)'를 택한다."
+            "offeredOption": "C(거짓말) / D(당첨)",
+            "reason": "당첨자가 D일 때 진술의 실제 거짓 발언자는 B·C·D(3명)이다. 거짓인 B·D의 말을 참이라고 놓쳤다. 실제 거짓말 인원도 발문의 1명 조건과 충돌한다."
           }
         ],
         "problemVisual": {
@@ -677,11 +701,11 @@
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/A3-solution.svg",
           "reason": "각 당첨 후보별 거짓 진술 수와 추가 조건을 비교하는 표가 추론의 경우를 명료화"
         },
-        "externalOpenBookReview": "NOT_RUN",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
-        "distractorTraceStatus": "4_OF_4_EXACT_TRUTH_ASSIGNMENTS_AND_WRONG_DECISIONS",
+        "distractorTraceStatus": "GPT_REVIEW2_CORRECTED_ONE_TO_ONE_20261013",
         "selfRecheck": {
           "status": "REVISED",
           "beforeContent": "4명의 학생 B, C, D, A 중 정확히 한 명만 당첨금을 가지고 있다. 각 학생의 말은 다음과 같다.<br><div class=\"question-note-box\">B: C가 당첨금을 가지고 있다.<br>C: D는 당첨금을 가지고 있지 않다.<br>D: A가 당첨금을 가지고 있다.<br>A: B의 말은 거짓이다.</div>이 중 정확히 1명의 말이 거짓이다. 거짓말한 학생과 당첨금을 가진 학생을 바르게 짝지은 것은?",
@@ -689,7 +713,15 @@
           "fullTruthRows": 4,
           "wrongRoutesReproduced": 4,
           "studentChrome": "NOT_RUN"
-        }
+        },
+        "authorDistractorEvidenceBeforeCorrection": "SUPERSEDED_AFTER_CHOICES_CHANGE",
+        "gptQualityReview20261013": {
+          "result": "PASS_AFTER_PINPOINT_REPAIR",
+          "reason": "ANSWER_LEAK_THROUGH_LIAR_COUNT",
+          "wrongOptionRoutesRecreated": 4,
+          "correctAnswerUnchanged": true
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q06_Q10_OPENBOOK_REVIEW_20261013.json"
       }
     },
     {
@@ -905,7 +937,7 @@
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/B1-solution.svg",
           "reason": "각 당첨 후보별 거짓 진술 수와 추가 조건을 비교하는 표가 추론의 경우를 명료화"
         },
-        "externalOpenBookReview": "NOT_RUN",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
@@ -917,7 +949,8 @@
           "fullTruthRows": 4,
           "wrongRoutesReproduced": 4,
           "studentChrome": "NOT_RUN"
-        }
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q06_Q10_OPENBOOK_REVIEW_20261013.json"
       }
     },
     {
@@ -1133,7 +1166,7 @@
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/B2-solution.svg",
           "reason": "각 당첨 후보별 거짓 진술 수와 추가 조건을 비교하는 표가 추론의 경우를 명료화"
         },
-        "externalOpenBookReview": "NOT_RUN",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
@@ -1145,7 +1178,8 @@
           "fullTruthRows": 4,
           "wrongRoutesReproduced": 4,
           "studentChrome": "NOT_RUN"
-        }
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q06_Q10_OPENBOOK_REVIEW_20261013.json"
       }
     },
     {
@@ -1361,7 +1395,7 @@
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/B3-solution.svg",
           "reason": "각 당첨 후보별 거짓 진술 수와 추가 조건을 비교하는 표가 추론의 경우를 명료화"
         },
-        "externalOpenBookReview": "NOT_RUN",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
@@ -1373,7 +1407,8 @@
           "fullTruthRows": 4,
           "wrongRoutesReproduced": 4,
           "studentChrome": "NOT_RUN"
-        }
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q06_Q10_OPENBOOK_REVIEW_20261013.json"
       }
     },
     {
@@ -1606,7 +1641,7 @@
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/C1-solution.svg",
           "reason": "각 당첨 후보별 거짓 진술 수와 추가 조건을 비교하는 표가 추론의 경우를 명료화"
         },
-        "externalOpenBookReview": "NOT_RUN",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
@@ -1618,7 +1653,8 @@
           "fullTruthRows": 5,
           "wrongRoutesReproduced": 4,
           "studentChrome": "NOT_RUN"
-        }
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q06_Q10_OPENBOOK_REVIEW_20261013.json"
       }
     },
     {
@@ -1851,7 +1887,7 @@
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/C2-solution.svg",
           "reason": "각 당첨 후보별 거짓 진술 수와 추가 조건을 비교하는 표가 추론의 경우를 명료화"
         },
-        "externalOpenBookReview": "NOT_RUN",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
@@ -1863,7 +1899,8 @@
           "fullTruthRows": 5,
           "wrongRoutesReproduced": 4,
           "studentChrome": "NOT_RUN"
-        }
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q06_Q10_OPENBOOK_REVIEW_20261013.json"
       }
     },
     {
@@ -1893,11 +1930,11 @@
       "wide": false,
       "content": "5명의 학생 C, D, A, B, E 중 정확히 한 명만 당첨금을 가지고 있다. 각 학생의 말은 다음과 같다.<br><div class=\"question-note-box\">C: D가 당첨금을 가지고 있다.<br>D: A는 당첨금을 가지고 있지 않다.<br>A: B가 당첨금을 가지고 있다.<br>B: C의 말은 거짓이다.<br>E: B는 당첨금을 가지고 있지 않다.</div>이 중 정확히 3명의 말이 거짓이다. 거짓말한 학생과 당첨금을 가진 학생을 바르게 짝지은 것은?",
       "choices": [
-        "C·B(거짓말) / A(당첨)",
-        "C·A(거짓말) / C(당첨)",
-        "A·B(거짓말) / D(당첨)",
+        "C·D·B(거짓말) / A(당첨)",
+        "C·A·E(거짓말) / C(당첨)",
+        "A·B·E(거짓말) / D(당첨)",
         "C·D·A(거짓말) / A(당첨)",
-        "C·E(거짓말) / B(당첨)"
+        "C·B·E(거짓말) / B(당첨)"
       ],
       "answer": "④",
       "solution": "B는 C의 말이 거짓이라고 주장하므로 두 사람 중 정확히 한 사람의 말만 거짓이다.\n당첨자 후보 C, D, A, B, E를 각각 가정하여 진술을 확인한다.\nC가 당첨자라면 거짓말한 사람은 C·A로 2명이다.\nD가 당첨자라면 거짓말한 사람은 A·B로 2명이다.\nA가 당첨자라면 거짓말한 사람은 C·D·A로 3명이다.\nB가 당첨자라면 거짓말한 사람은 C·E로 2명이다.\nE가 당첨자라면 거짓말한 사람은 C·A로 2명이다.\n거짓말한 학생은 정확히 3명이어야 한다. 이를 모두 만족하는 당첨자는 A, 거짓말한 학생은 C·D·A뿐이다.\n따라서 정답은 ④이다.",
@@ -2068,23 +2105,23 @@
         "wrongRoutes": [
           {
             "choice": "①",
-            "offeredOption": "C·B(거짓말) / A(당첨)",
-            "reason": "A를 당첨자로 가정하면 C·D·A의 말은 거짓, B·E의 말은 참이므로 거짓은 3명이다. D·A의 거짓 진술을 참으로 오판; B의 참 진술을 거짓으로 오판; 거짓 발언자 집합을 C·B로 잘못 적으면 ①의 'C·B(거짓말) / A(당첨)'가 된다."
+            "offeredOption": "C·D·B(거짓말) / A(당첨)",
+            "reason": "당첨자가 A일 때 진술의 실제 거짓 발언자는 C·D·A(3명)이다. 거짓인 A의 말을 참이라고 놓쳤다. 참인 B의 말을 거짓으로 판정했다. "
           },
           {
             "choice": "②",
-            "offeredOption": "C·A(거짓말) / C(당첨)",
-            "reason": "C를 당첨자로 가정하면 C·A의 말은 거짓, D·B·E의 말은 참이므로 거짓은 2명이다. 거짓 3명 조건을 무시하면 ②의 'C·A(거짓말) / C(당첨)'를 택한다."
+            "offeredOption": "C·A·E(거짓말) / C(당첨)",
+            "reason": "당첨자가 C일 때 진술의 실제 거짓 발언자는 C·A(2명)이다. 참인 E의 말을 거짓으로 판정했다. 실제 거짓말 인원도 발문의 3명 조건과 충돌한다."
           },
           {
             "choice": "③",
-            "offeredOption": "A·B(거짓말) / D(당첨)",
-            "reason": "D를 당첨자로 가정하면 A·B의 말은 거짓, C·D·E의 말은 참이므로 거짓은 2명이다. 거짓 3명 조건을 무시하면 ③의 'A·B(거짓말) / D(당첨)'를 택한다."
+            "offeredOption": "A·B·E(거짓말) / D(당첨)",
+            "reason": "당첨자가 D일 때 진술의 실제 거짓 발언자는 A·B(2명)이다. 참인 E의 말을 거짓으로 판정했다. 실제 거짓말 인원도 발문의 3명 조건과 충돌한다."
           },
           {
             "choice": "⑤",
-            "offeredOption": "C·E(거짓말) / B(당첨)",
-            "reason": "B를 당첨자로 가정하면 C·E의 말은 거짓, D·A·B의 말은 참이므로 거짓은 2명이다. 거짓 3명 조건을 무시하면 ⑤의 'C·E(거짓말) / B(당첨)'를 택한다."
+            "offeredOption": "C·B·E(거짓말) / B(당첨)",
+            "reason": "당첨자가 B일 때 진술의 실제 거짓 발언자는 C·E(2명)이다. 참인 B의 말을 거짓으로 판정했다. 실제 거짓말 인원도 발문의 3명 조건과 충돌한다."
           }
         ],
         "problemVisual": {
@@ -2096,11 +2133,11 @@
           "assetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q08/C3-solution.svg",
           "reason": "각 당첨 후보별 거짓 진술 수와 추가 조건을 비교하는 표가 추론의 경우를 명료화"
         },
-        "externalOpenBookReview": "NOT_RUN",
+        "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS",
         "realEngineRender": "NOT_RUN",
         "studentRelease": "NOT_AUTHORIZED",
         "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
-        "distractorTraceStatus": "4_OF_4_EXACT_TRUTH_ASSIGNMENTS_AND_WRONG_DECISIONS",
+        "distractorTraceStatus": "GPT_REVIEW2_CORRECTED_ONE_TO_ONE_20261013",
         "selfRecheck": {
           "status": "REVISED",
           "beforeContent": "5명의 학생 C, D, A, B, E 중 정확히 한 명만 당첨금을 가지고 있다. 각 학생의 말은 다음과 같다.<br><div class=\"question-note-box\">C: D가 당첨금을 가지고 있다.<br>D: A는 당첨금을 가지고 있지 않다.<br>A: B가 당첨금을 가지고 있다.<br>B: C의 말은 거짓이다.<br>E: B는 당첨금을 가지고 있지 않다.</div>이 중 정확히 3명의 말이 거짓이다. 거짓말한 학생과 당첨금을 가진 학생을 바르게 짝지은 것은?",
@@ -2108,7 +2145,15 @@
           "fullTruthRows": 5,
           "wrongRoutesReproduced": 4,
           "studentChrome": "NOT_RUN"
-        }
+        },
+        "authorDistractorEvidenceBeforeCorrection": "SUPERSEDED_AFTER_CHOICES_CHANGE",
+        "gptQualityReview20261013": {
+          "result": "PASS_AFTER_PINPOINT_REPAIR",
+          "reason": "ANSWER_LEAK_THROUGH_LIAR_COUNT",
+          "wrongOptionRoutesRecreated": 4,
+          "correctAnswerUnchanged": true
+        },
+        "externalOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q06_Q10_OPENBOOK_REVIEW_20261013.json"
       }
     }
   ]

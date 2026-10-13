@@ -11,8 +11,8 @@
     "targetUid": 198,
     "authorDraft": 198,
     "authorNotStarted": 0,
-    "externalQualityPass": 45,
-    "approved": 45,
+    "externalQualityPass": 90,
+    "approved": 90,
     "consumerIndexed": 0,
     "liveChromeVerified": 0,
     "svgPhysicallyStored": 198,
@@ -20,7 +20,7 @@
     "sourceUnmodified": true,
     "priorSchoolTracksUnmodified": true,
     "metaEvidenceDebtUidCount": 63,
-    "firstMissingClosureStep": "q01..q05 45 UID GPT quality PASS, but student exam/sol/ans real render, Consumer/index, main and Pages NOT_RUN. q06..q22 153 UID GPT quality review pending. Metadata evidence debt 63 UID outside q01..q05 remains.",
+    "firstMissingClosureStep": "q01..q10 90/198 GPT content/math/meta review PASS (reviewer q06 A3 initial blind arithmetic corrected in adjudication). q11..q22 108 UID independent GPT review pending; 63 UID metadata evidence debt outside q01..q10 unchanged. 90 reviewed UID student engine exam/sol/ans Chrome, Consumer/index, main and Pages technical release NOT_RUN.",
     "nextSourceQid": null,
     "metaAuditUidCount": 144,
     "metaRegisteredDraftUidCount": 171,
@@ -60,8 +60,11 @@
     "selfRecheckFinishedDraftUids": 198,
     "metaNewDraftDeltaUidCount": 27,
     "metaDeltaStoredUidTotal": 144,
-    "lastIndependentOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q01_Q05_OPENBOOK_REVIEW_20261013.json",
-    "lastIndependentOpenBookReviewedUidCount": 45
+    "lastIndependentOpenBookReviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q06_Q10_OPENBOOK_REVIEW_20261013.json",
+    "lastIndependentOpenBookReviewedUidCount": 90,
+    "lastQualityReviewBatch": "Q06_Q10_GPT_OPENBOOK_20261013",
+    "qualityRepairedUidTotalThisBatch": 5,
+    "uidProvenanceCopiedFromSourceCountThisBatch": 9
   },
   "sourceQids": [
     {
@@ -290,14 +293,14 @@
         "ALITE-JEIL25-2FINAL-Q06-C2",
         "ALITE-JEIL25-2FINAL-Q06-C3"
       ],
-      "approvalCount": 0,
+      "approvalCount": 9,
       "studentConsumerCount": 0,
       "draftPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q06_CREATE_DRAFT.json",
       "sourceRPMPrimaryL3": "대칭이동을 이용한 최단거리",
       "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
       "metaEvidenceDebt": [],
       "svgFilesExpectedAndStored": 9,
-      "externalOpenBookReview": "NOT_RUN",
+      "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS_9_OF_9",
       "studentChromeSearchSelectExamAnswerSolution": "NOT_RUN",
       "mainMerged": false,
       "distractorPathEvidence": "36_OF_36_EXACT_FINAL_CHOICES_AND_ERROR_CALCULATIONS",
@@ -310,7 +313,10 @@
       "selfRecheckUidCount": 9,
       "solutionSvgStaticRecheck": "9_OF_9_GIT_ASSET_ACTUAL_POINT_COORDINATE_PARITY",
       "visualBrowserRender": "NOT_RUN",
-      "selfRecheckNote": "2026-10-12 q06 9 correct stored answers, all 36 incorrect options rebuilt with actual numerical erroneous computations, C2 reflection vs n>=4 explanation, C1/C2/C3 level/difficulty revised to mid/3; existing 9 SVG static geometry parity; actual Chromium Archive engine/external independent review/student release NOT_RUN."
+      "selfRecheckNote": "2026-10-12 q06 9 correct stored answers, all 36 incorrect options rebuilt with actual numerical erroneous computations, C2 reflection vs n>=4 explanation, C1/C2/C3 level/difficulty revised to mid/3; existing 9 SVG static geometry parity; actual Chromium Archive engine/external independent review/student release NOT_RUN.",
+      "externalOpenBookLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q06_Q10_OPENBOOK_REVIEW_20261013.json",
+      "qualityReviewCount": 9,
+      "independentMathReviewStatus": "PASS_WITH_Q06_A3_FREEZE_CORRECTION_DISCLOSED"
     },
     {
       "qid": 7,
@@ -329,14 +335,14 @@
         "ALITE-JEIL25-2FINAL-Q07-C2",
         "ALITE-JEIL25-2FINAL-Q07-C3"
       ],
-      "approvalCount": 0,
+      "approvalCount": 9,
       "studentConsumerCount": 0,
       "draftPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q07_CREATE_DRAFT.json",
       "sourceRPMPrimaryL3": "원의 접선",
       "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
       "metaEvidenceDebt": [],
       "svgFilesExpectedAndStored": 9,
-      "externalOpenBookReview": "NOT_RUN",
+      "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS_9_OF_9",
       "studentChromeSearchSelectExamAnswerSolution": "NOT_RUN",
       "mainMerged": false,
       "distractorPathEvidence": "36_OF_36_EXACT_FINAL_CHOICES_AND_ERROR_CALCULATIONS",
@@ -349,7 +355,10 @@
       "selfRecheckUidCount": 9,
       "solutionSvgStaticRecheck": "9_OF_9_GIT_ASSET_ACTUAL_POINT_COORDINATE_PARITY",
       "visualBrowserRender": "NOT_RUN",
-      "selfRecheckNote": "2026-10-12 q07 9/9 correct stored answers and unique choices; 36/36 concrete calculated wrong paths; corrected point-slope notation, stepwise tangent-distance solutions, C1/C2/C3 level=중/difficultyBucket=3, 9/9 existing SVG actual geometric static parity; Chromium Archive engine, independent quality review and student release NOT_RUN."
+      "selfRecheckNote": "2026-10-12 q07 9/9 correct stored answers and unique choices; 36/36 concrete calculated wrong paths; corrected point-slope notation, stepwise tangent-distance solutions, C1/C2/C3 level=중/difficultyBucket=3, 9/9 existing SVG actual geometric static parity; Chromium Archive engine, independent quality review and student release NOT_RUN.",
+      "externalOpenBookLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q06_Q10_OPENBOOK_REVIEW_20261013.json",
+      "qualityReviewCount": 9,
+      "independentMathReviewStatus": "MATCHED_FROZEN_ANSWER_9_9"
     },
     {
       "qid": 8,
@@ -368,14 +377,14 @@
         "ALITE-JEIL25-2FINAL-Q08-C2",
         "ALITE-JEIL25-2FINAL-Q08-C3"
       ],
-      "approvalCount": 0,
+      "approvalCount": 9,
       "studentConsumerCount": 0,
       "draftPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q08_CREATE_DRAFT.json",
       "sourceRPMPrimaryL3": "논리 관계와 추론",
       "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
       "metaEvidenceDebt": [],
       "svgFilesExpectedAndStored": 9,
-      "externalOpenBookReview": "NOT_RUN",
+      "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS_9_OF_9",
       "studentChromeSearchSelectExamAnswerSolution": "NOT_RUN",
       "mainMerged": false,
       "distractorPathEvidence": "36_OF_36_EXACT_TRUTH_TABLE_WRONG_CHOICES",
@@ -389,7 +398,10 @@
       "solutionSvgStaticRecheck": "9_OF_9_TRUTH_TABLE_PARITY_THREE_REBUILT",
       "fullFiveCandidateCoverage": "C1_C2_C3_5_OF_5",
       "visualBrowserRender": "NOT_RUN",
-      "selfRecheckNote": "2026-10-12 q08: 9/9 full truth-table recalculation, 36/36 distractor routes; B1-B3 short-circuit removed with registered Generated condition; C1-C2 omitted winner E repaired; C1-C3 SVG rebuilt to five candidates; B/C level and bucket corrected. Actual Chrome, independent quality review, student release NOT_RUN."
+      "selfRecheckNote": "2026-10-12 q08: 9/9 full truth-table recalculation, 36/36 distractor routes; B1-B3 short-circuit removed with registered Generated condition; C1-C2 omitted winner E repaired; C1-C3 SVG rebuilt to five candidates; B/C level and bucket corrected. Actual Chrome, independent quality review, student release NOT_RUN.",
+      "externalOpenBookLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q06_Q10_OPENBOOK_REVIEW_20261013.json",
+      "qualityReviewCount": 9,
+      "independentMathReviewStatus": "MATCHED_FROZEN_ANSWER_9_9"
     },
     {
       "qid": 9,
@@ -408,14 +420,14 @@
         "ALITE-JEIL25-2FINAL-Q09-C2",
         "ALITE-JEIL25-2FINAL-Q09-C3"
       ],
-      "approvalCount": 0,
+      "approvalCount": 9,
       "studentConsumerCount": 0,
       "draftPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q09_CREATE_DRAFT.json",
       "sourceRPMPrimaryL3": "절편을 이용한 최댓값·최솟값",
       "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
       "metaEvidenceDebt": [],
       "svgFilesExpectedAndStored": 9,
-      "externalOpenBookReview": "NOT_RUN",
+      "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS_9_OF_9",
       "studentChromeSearchSelectExamAnswerSolution": "NOT_RUN",
       "mainMerged": false,
       "distractorPathEvidence": "36_OF_36_EXACT_FINAL_CHOICES_AND_CALCULATED_ERRORS",
@@ -428,7 +440,10 @@
       "selfRecheckUidCount": 9,
       "solutionSvgStaticRecheck": "9_OF_9_ACTUAL_GIT_ASSET_COORDINATE_PARITY_C1_REPAIRED",
       "visualBrowserRender": "NOT_RUN",
-      "selfRecheckNote": "2026-10-12 q09 author 9/9 correct extrema & slopes and unique answers, 36/36 concrete error route values and student-facing solution linebreak repair. Answer index redistributed ①1/②2/③2/④2/⑤2. B1-C3 level/difficulty adjusted. Meta integration CASE_BRANCH→SEQUENTIAL for all q09; C1 rectangle corner C added in existing SVG, 9 asset coordinate checks. External review/Chromium/student release NOT_RUN."
+      "selfRecheckNote": "2026-10-12 q09 author 9/9 correct extrema & slopes and unique answers, 36/36 concrete error route values and student-facing solution linebreak repair. Answer index redistributed ①1/②2/③2/④2/⑤2. B1-C3 level/difficulty adjusted. Meta integration CASE_BRANCH→SEQUENTIAL for all q09; C1 rectangle corner C added in existing SVG, 9 asset coordinate checks. External review/Chromium/student release NOT_RUN.",
+      "externalOpenBookLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q06_Q10_OPENBOOK_REVIEW_20261013.json",
+      "qualityReviewCount": 9,
+      "independentMathReviewStatus": "MATCHED_FROZEN_ANSWER_9_9"
     },
     {
       "qid": 10,
@@ -447,14 +462,14 @@
         "ALITE-JEIL25-2FINAL-Q10-C2",
         "ALITE-JEIL25-2FINAL-Q10-C3"
       ],
-      "approvalCount": 0,
+      "approvalCount": 9,
       "studentConsumerCount": 0,
       "draftPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q10_CREATE_DRAFT.json",
       "sourceRPMPrimaryL3": "합성함수",
       "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
       "metaEvidenceDebt": [],
       "svgFilesExpectedAndStored": 18,
-      "externalOpenBookReview": "NOT_RUN",
+      "externalOpenBookReview": "GPT_OPEN_BOOK_REVIEW_PASS_9_OF_9",
       "studentChromeSearchSelectExamAnswerSolution": "NOT_RUN",
       "mainMerged": false,
       "distractorPathEvidence": "36_OF_36_EXACT_CALCULATED",
@@ -479,7 +494,10 @@
       "svgStaticRecheck": "18/18_MAPPING_AND_PATH; B3_PAIR_UPDATED",
       "svgBrowserRender": "NOT_RUN",
       "selfRecheckNote": "q10 9 items and 36 distractors manually reconciled with final SVG mappings; B3 mappings+SVG modified; C difficulty corrected; independent review/Chromium/student release NOT_RUN",
-      "previousDraftBlobSha": "38904bd6ab162e38723dd889da85b5ee89f05fd4"
+      "previousDraftBlobSha": "38904bd6ab162e38723dd889da85b5ee89f05fd4",
+      "externalOpenBookLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/GPT_QID9_Q06_Q10_OPENBOOK_REVIEW_20261013.json",
+      "qualityReviewCount": 9,
+      "independentMathReviewStatus": "MATCHED_FROZEN_ANSWER_9_9"
     },
     {
       "qid": 11,
