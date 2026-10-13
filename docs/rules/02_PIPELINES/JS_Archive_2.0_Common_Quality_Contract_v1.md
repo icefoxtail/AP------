@@ -2,6 +2,8 @@
 
 ## 2026-10-12 CODEX FAST LANE
 
+2026-10-13 Codex 추가 지시: 신규 문항의 임시/최종 item·시험지·run HOLD 발행을 금지한다. 결함은 담당자·qid·다음 행동이 있는 수정/ALIVE 대체/영향 검수로 완료한다. ROOT는 실제 담당자를 연결하고 결과를 수납한다. 과거 HOLD 이력은 보존하며 이 문서의 item HOLD travel/recovery 표현은 Codex 신규 작업의 HOLD 발행을 허용하지 않는다. 실제 품질 판정·독립 freeze·Meta/에셋·표시·publication 정확성과 GPT 예약라인은 유지한다.
+
 Codex 원본 시험지 운영은 `JS_Archive_2.0_Codex_Fast_Lane_CURRENT_v1.md`를 우선한다. 필수 문항 품질과 R1 독립 심사·R2 blind sweep을 유지하고 기존 유효한 완료 기록을 재사용한다. R3는 targeted/구조/표시 마감만 수행하고 ROOT는 재검하지 않는다. 시험지 생산 중 공유 도구 수정·새 helper·MASTER 자동 수리·등록/배포 자동 확대를 금지한다. GPT 예약라인은 변경하지 않는다.
 
 status: CURRENT / TWO-LANE QUALITY FOUNDATION

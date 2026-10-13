@@ -3,7 +3,11 @@ model_reasoning_effort = "high"
 sandbox_mode = "workspace-write"
 developer_instructions = """
 Fast Lane 우선: docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Fast_Lane_CURRENT_v1.md를 따른다.
-2026-10-13 우선: 문항 HOLD로 종료하지 않는다. 결함은 수정프로토콜로 직접 수정하고 필요한 해당 영역만 원문 대조한다. 원문 복구 불가능이면 승인된 ALIVE 문형 대체를 반드시 적용한다. 대체 후보가 실패하면 수정하거나 다른 후보를 생성해 완성한다. 검수자는 ROOT를 통해 제작 담당자에게 즉시 인계하고 해당 변경 qid만 완전한 새 학생 입력으로 독립 검수한다. 원문·실패·freeze와 대체 provenance를 보존한다. 결함 보고는 수정 인계이며 시험지/roster/골 종료가 아니다. 기존 정상 문항 재검·공유 도구 수정은 금지하고 실제 권한/실행 오류 및 미실행 검수는 사실대로 기록한다.
+2026-10-13 NO_HOLD_ISSUANCE: 새 item/exam/run/roster HOLD status나 HOLD handoff를 만들지 않는다. 기존 HOLD는 과거 기록으로만 보존한다. 상태는 repair/replacement/review/publication 진행으로 쓴다.
+결함 보고에는 owner, qid, 다음 구체적 repair action을 명시한다. 지정된 creator가 해당 locus의 source/solution/Meta/assets를 직접 수정하고, 필요한 원문 근거만 해당 PDF 영역에서 좁게 확인한다.
+원문 복구 불가면 승인된 ALIVE replacement를 적용한다. 실패 후보는 수정하거나 새 후보를 생성한다. 이미 승인된 repair/replacement에 사용자 재승인을 요청하지 않는다.
+R1/R2/R3는 repair assignment(owner+qid+action)를 ROOT에 반환한다. ROOT는 완료까지 담당자를 dispatch/추적한다. 학생 입력이 바뀐 qid만 완전한 실제 assets를 포함한 clean blind review로 확인하고 원 freeze/provenance를 보존한다.
+문항 quality/input/asset gap은 repair 또는 replacement handoff로 closure까지 진행한다. 실제 permission/command 오류는 정확한 execution error로 별도 기록한다. content HOLD로 바꾸거나 PASS를 위조하지 않는다.
 이 우선 지시가 오래된 stage-kit/NONSTOP production 절차보다 우선한다.
 지정받은 examUid와 R2 stage만 수행한다.
 새 examUid를 선택하거나 다른 stage를 대신 수행하지 않는다.
@@ -24,13 +28,13 @@ freeze 후에만 stored answer와 비교하고 다른 qid 답에 기대어 freez
 tool-only schema/compatibility 실패는 log와 FAIL_TOOL/NOT_RUN 상태를 보존한다.
 실제 blind quality 기준을 직접 충족하면 MANUAL_STAGE_COMPLETE로 표시해 표준 Git handoff를 한다.
 generic PASS, sealed-event, auto-consumer acceptance로 주장하지 않는다.
-실제 JS parse/answer 결함, 누락된 답/asset 또는 불완전한 blind input은 우회하지 않고 정확한 gap으로 보고한다.
+실제 JS parse/answer 결함, 누락 asset 또는 불완전 blind input은 해당 qid의 repair/replacement action으로 ROOT에 인계한다. 보정된 완전한 학생 입력과 모든 실제 asset으로 해당 qid만 clean blind review하고 원 freeze를 보존한다.
 신규 script나 shared tool, validator, renderer, CI를 변경하지 않는다.
 새 R2 generic validator는 정상 완료 시 1회 실행한다.
 실질 실패는 해당 locus만 수정하고 그 변경 영향만 확인한다.
 실제 필수 quality evidence 부재는 수정/대체 인계 후 해당 문항 검수 완료로 해소하며 종료 사유로 남기지 않는다.
 PASS 위조, blind 오염 은폐, 알려진 결함 waiver를 금지한다.
-결과는 source SHA, freeze evidence, qid 분모/결과와 unresolved gap으로 제한한다.
+결과는 source SHA/freeze evidence/qid 분모와 결과를 적고, 결함은 repair owner+qid+next action으로 인계한다.
 """
 
 [agents]

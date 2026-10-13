@@ -362,20 +362,18 @@ ROOT는 검증된 safe extractor를 실행·인계할 수 있으나 문항을 �
 - freeze 전 답 노출·그림 누락으로 해당 답을 독립 결정할 수 없었던 attempt는 실패로 보존하고 영향 qid만 fresh clean session으로 검수한다. 완전한 입력으로 freeze한 계산/표기 오류는 같은 session에서 postcomparison adjudication한다.
 - student body가 바뀌면 해당 worker가 old/current payload와 asset SHA를 비교해 freeze validity를 판정한다. 줄바꿈·의미 불변 punctuation은 근거를 기록해 재사용할 수 있다. 수학 조건·보기·결정적 visual이 바뀌어 freeze가 무효이면 영향 qid만 fresh blind 검수한다.
 
-## 20. ITEM_HOLD TRAVEL — 원본 → 최소수정 → 직접 대체
+## 20. 결함 수정 → 원문 복구 → ALIVE 대체 → 영향 검수
 
-**2026-10-13 우선 지시:** Fast Lane의 ‘문항 HOLD로 종료 금지’를 적용한다. 콘텐츠 결함은 해당 문항 수정→필요한 원문 영역 대조→복구 불가능 시 승인 ALIVE 문형 대체→후보 수정/다른 후보 생성→영향 독립 검수로 완성한다. 대체를 R2 이후까지 기다리는 조건부 선택으로 두지 않는다. 아래 HOLD 운반/유지 및 다른 절의 terminal HOLD 문구는 작업 중 상태·실패 이력 보존에만 사용하며 시험지/roster/골 종료 근거로 사용하지 않는다. 대체 실패 후보는 수정하거나 교체하고 unchanged 문항은 재검하지 않는다. 실제 권한·실행 오류를 콘텐츠 HOLD와 혼동하지 않으며 수행하지 않은 검수를 PASS로 표시하지 않는다.
+2026-10-13 Fast Lane의 **신규 문항 HOLD 발행 금지**를 적용한다. 임시/최종 item·시험지·roster/run HOLD를 만들거나 다음 worker에게 운반하지 않는다. 미완성 문항은 수정/대체 제작/영향 검수 진행으로 관리한다. 과거 HOLD·실패·freeze는 원 이력으로 보존한다.
 
-CREATE의 item HOLD를 시험지 최종 완료로 집계하지 않는다. 각 stage는 전체 denominator를 검수하고 held qid를 다음 독립 검수에 운반한다. generic validator가 HOLD row 때문에 FAIL이면 `PASS`를 만들지 않고 exact issue/coverage를 기록한다. 다른 serialization/hash/debt 결함은 먼저 수리해 실제 item hold와 구분한다.
+1. 결함을 발견한 worker는 해당 qid·필수 직접 의존 부분·수정 담당자·다음 실제 행동을 인계한다. ROOT는 담당자를 연결하고 완료를 수납한다. 결함 목록 반환만으로 시험지/roster/골을 종료하지 않는다.
+2. 현재 추출 JS·실제 자산과 source evidence를 직접 읽고 `수정프로토콜.md`의 단일 의미 locus·감사 가능한 원문 수정 규칙을 적용한다. 원문 확인이 필요한 문항/그림/공통 자료의 해당 PDF 영역만 대조한다. 전수 PDF 재대조나 근거 없는 조건 추가는 하지 않는다.
+3. 원문 복구로 완성할 수 없으면 해당 문항만 승인된 ALIVE 문형 대체를 반드시 적용한다. 재승인·R2 이후 대기·HOLD 조건을 붙이지 않는다. 기존 승인 문형/author/renderer를 재사용하고 새 도구·ALIVE 전체 pipeline을 만들지 않는다.
+4. 대체는 동일 교육과정·단원·목표 난이도·문항 수에서 실제 풀이·정답·해설·보기·근거 있는 Meta·필요 에셋을 완성한다. 실패한 후보는 실패 locus를 수정하거나 다른 후보로 바꾼다. 동일 실패 후보의 반복 검증이나 HOLD 반환은 금지한다.
+5. 원문·실패·freeze와 대체 provenance를 보존한다. R1/R2는 완전한 학생 입력/실제 그림으로 독립 검수하며, 대체로 학생 입력이 바뀐 qid만 clean 검수한다. unchanged 문항의 유효한 검수/freeze/렌더는 재사용한다.
+6. R3는 실제 필요한 변경/구조/표시 마감을 수행하고 ROOT가 승인 JS·필수 에셋 main 반영·원격 일치를 닫는다. 실제 미완료 품질·미실행 검수·미해결 과거 HOLD 필드를 PASS/0으로 위장하지 않는다.
 
-1. 먼저 현재 추출 JS·실제 문제 에셋과 기존 intake evidence로 해당 HOLD의 조건·입력·수학을 확인한다. 원문 누락·오독·그림 충돌처럼 원본 확인이 실제로 필요한 결함만 qid와 확인할 사실을 명시해 로컬 PDF/scan의 해당 영역을 대조한다. PDF·답안 전수 재열람을 자동 선행 조건으로 두지 않는다.
-2. `수정프로토콜.md`의 REPAIR_BEFORE_HOLD / ONE_SEMANTIC_LOCUS_REPAIR / AUDITED_SOURCE_REPAIR를 적용하고 worker가 changed locus를 재검한다. 근거 없는 조건 추가로 정답을 만들지 않는다.
-3. R1/R2는 upstream HOLD를 정답으로 삼지 않고 student bundle에서 독립 재판정한다.
-4. 원문의 최소복구가 불가능하면 해당 qid만 승인된 ALIVE 문형 대체로 전환한다. 기존 직접 대체 계약과 사용자 허용 author role을 사용한다. 대체 후보에 결함이 있으면 수정하거나 다른 후보를 생성해 완성한다. 임의 새 role·새 엔진·ALIVE 전면 pipeline을 열지 않는다.
-5. replacement는 solution-first·실제 오답 경로·5 choices 전수·fresh Meta·non-target invariance를 닫는다. student body 교체로 무효인 qid만 새 clean R1/R2 freeze를 수행한다.
-6. 기존 stage owner가 unchanged qids를 재사용하고 current full evidence를 재결속·검증한다. `itemHoldCount=0` 이후 R3로 간다. actual 경로는 RENDER_PASS, ROOT 면제 경로는 R3 static closure와 별도 gate 수납 뒤 publication한다.
-
-원문 복구 불가능 근거와 과거 HOLD 필드는 대체 전환·수정 provenance로 보존한다. 대체 이후 콘텐츠 HOLD를 최종 종료 근거로 유지하지 않는다. 콘텐츠 수정/대체 작업과 run 공통 권한·실행 오류는 별도 원인으로 기록한다.
+운영 보고의 제작/수정/대체 제작/검수/병합 표현은 신규 machine enum을 만들라는 뜻이 아니다. 기존 supported evidence에 실제 진행·담당자·다음 행동을 남긴다. 실제 권한·명령 오류는 별도 실행 오류로 정확히 기록하고 영향 없는 시험지는 계속 진행한다.
 
 ## 21. HASH / VALIDATOR / EVIDENCE — 실패 후 필요한 검증 허용
 
@@ -411,7 +409,7 @@ R3는 desktop/mobile × exam/sol/ans 6 cases를 공식 engine에서 실행한다
 run ledger에 examUid/stage/sessionId/role, resolved model/effort, input/output artifact hashes, ownership, validator attempts, freeze/disclosure 순서, repair locus, receipt path/SHA, publication/remote readback을 event별 기록한다. 완료 event는 다음 stage dispatch와 slot 해제를 함께 기록한다.
 
 - `MAIN_DONE`은 production 반영 + remote readback + closeout helper 성공 후에만 집계한다.
-- terminal HOLD는 해당 시험지의 가능한 repair/recovery를 실제 소진한 근거와 exact missing input/capability가 있어야 한다. 보존된 WAIT/CONTINUATION 및 CREATE item HOLD를 최종 종결로 오집계하지 않는다.
+- 신규 terminal/item/exam/run HOLD 발행은 금지한다. 결함은 담당자·qid·다음 행동이 있는 수정/ALIVE 대체/영향 검수로 이어가며 과거 HOLD·WAIT·CONTINUATION은 이력으로만 보존한다.
 - 공통 render blocker가 있으면 동일 blocker를 N개 독립 실패처럼 새로 발견하지 않는다. 각 candidate의 재개 SHA/완료 stage를 공통 blocker ID에 연결한다.
 - 사용자 설정에 따라 진행 출력은 시험지 종결 시 compact 1건으로 제한한다. 최종 보고는 roster별 production/MAIN_DONE/HOLD, latest verified main SHA, 핵심 수정, 남은 재개 조건, spawn/MASTER, 재사용/재작업 범위와 계측값을 포함한다.
 - spawn은 신규 session만 세고 same-session followup/interrupt/resume은 별도 event로 센다. MASTER는 별도 tally다. token/비용/시간이 제공되지 않으면 NOT_AVAILABLE로 적고 추정치를 실제 계측값처럼 보고하지 않는다.
@@ -450,15 +448,15 @@ actual 경로와 면제 경로의 gate를 구별하고 publish 전에 실제 hel
 
 일반 ROOT 자동 수납은 `validateCodexRootWaivedStaticReceipt` / `validateCodexRootWaivedMainDoneReceipt`와 `consumeCodexRootWaivedStaticPass` / `consumeCodexRootWaivedMainDone`으로 구현되어 있다. 학년·과목·runId·시험지 수는 고정하지 않고 실제 SHA-bound locked roster의 membership·전체 qid 분모를 사용한다. R3/RENDER → PUBLICATION은 static gate, PUBLICATION → MAIN_DONE은 actual remote parity gate로 전환한다. CREATE/R1/R2에서 조기 publication으로 전환하지 않는다. 이전 중2 직접 사용자 면제 함수는 그 역사적 범위로 유지하며 ROOT 경로와 normal render 경로를 구분한다. 기존 receipt의 권한 주체를 소급 변경하거나 앱 runtime 변경의 별도 응답성·저장소·실제 동작 검증을 이 권한으로 생략하지 않는다. 예외 schema의 새 기능에 실제 구현 지원이 부족한 경우에만 MASTER의 exact 기술 continuation으로 복구하며 같은 면제 권한을 사용자에게 재요청하지 않는다.
 
-### 25.4 HOLD 복구·해제의 실행 순서
+### 25.4 신규 HOLD 없는 수정·대체·완성 순서
 
-1. 콘텐츠 item HOLD, evidence/receipt/hash 전송 오류, run 공통 render/capture blocker를 각각 원인과 영향 범위로 기록한다. CREATE의 미완료·WAIT·CONTINUATION을 시험지 최종 HOLD로 종결하지 않는다.
+1. 콘텐츠 결함에는 수정 담당자·qid·다음 행동을 지정한다. evidence/receipt/hash 전송 오류와 실제 권한·render 실행 오류는 별도 원인으로 기록한다. 신규 item/시험지/run HOLD를 발행하지 않는다.
 2. 콘텐츠는 먼저 현재 추출 JS·문제 에셋·기존 source evidence로 검수한다. 원문 확인이 필요한 실제 결함만 관련 문제·공통 자료의 PDF 영역을 대조하며, 정답 자료는 freeze 후에도 원본 의존 문제 해결에 필요한 경우에만 참조한다. 전 페이지 대조를 자동 요구하지 않는다. 복원 근거가 있으면 수정프로토콜의 단일 의미 locus·최소 수정부터 적용한다. 원 freeze/실패/원문·수정 provenance를 보존하고 관련 JS/answer/solution/decisiveStep/Meta/visual/evidence를 동기화한다.
-3. R1/R2 뒤에도 true item HOLD이면 직접 문항 대체 규칙으로 해당 qid의 완제품을 작성하고 변경 학생 입력의 영향 qid만 fresh R1/R2 검수한다. ROOT가 이 복구·대체를 승인 범위에서 자율 dispatch하며 같은 적용 여부를 재질문하지 않는다.
+3. 원문 복구 불가능이면 즉시 해당 qid의 승인 ALIVE 문형 대체를 제작하고 변경 학생 입력의 영향 qid만 clean R1/R2 검수한다. 후보 실패는 수정/다른 후보 생성으로 해소한다. ROOT가 자율 dispatch하고 같은 적용 여부를 재질문하지 않는다.
 4. 유효한 완전 입력 freeze 뒤 발견된 계산·선택기호·단위 encoding 오류는 같은 stage에서 최소 adjudication한다. 학생 body/필수 그림이 바뀐 경우 freeze 유효성은 worker가 판정한다. unchanged qid를 다시 풀거나 다시 capture하지 않는다.
 5. 기술 오류는 raw generic V2/CODEX report, 실제 자산 root, mode별 필요한 decoded set, raw/clean-filter hash, Git index/remote bytes, durable physical ref 및 reviewer 결속을 항목별로 복구한다. 원래 정상 validator 1회 규칙은 실제 수정 이후 필요한 재검증을 막지 않는다.
 6. 캡처만 막힌 경우 §25.2의 ROOT 면제와 R3 static closure로 이어간다. production 완성 근거가 충족되면 ROOT가 HOLD 해제와 publication·closeout을 닫는다. 이 결정은 해결/면제/부분 미실행을 명시한 closeout evidence로 남긴다.
-7. 필수 품질 입력·정답 결정·자산 복구·대체까지 가능한 경로를 실제 소진한 경우에만 terminal HOLD를 유지하고 exact missing facts와 이미 시도한 복구를 기록한다. 기술 인계나 캡처 파일 부재만으로 terminal HOLD를 만들지 않는다.
+7. 신규 terminal HOLD 유지 경로는 없다. 원문 복원 실패는 ALIVE 대체 전환이며 후보 실패는 수정/후보 교체로 이어간다. 실제 권한·실행 오류는 오류·영향·담당자·재개 행동을 기록하고 미실행 검수를 PASS로 위장하지 않는다.
 
 ### 25.5 이번 중2 완료에서 고정할 운영 사례
 
@@ -488,7 +486,7 @@ CLI는 읽기 전용으로 actual receipt SHA와 helper 결과를 JSON 출력하
 
 ## 2026-10-12 — 직접 열람·간단 인계 / 유지보수 도구 경로 제외
 
-기본 생산은 `JS_Archive_2.0_Codex_Fast_Lane_CURRENT_v1.md`의 JS·에셋 직접 열람과 담당자 검수 기록으로 진행한다. 전환 때 preflight→bind→seal→verify→intake→dispatcher 체인을 수행하지 않는다. CREATE의 실제 HOLD/TeX/선택기호·단원/Meta 확인, R1/R2의 완전한 학생 입력·실제 그림 열람·선행 독립 freeze, R3의 구조/실제 표시 확인은 담당자가 직접 수행한다.
+기본 생산은 `JS_Archive_2.0_Codex_Fast_Lane_CURRENT_v1.md`의 JS·에셋 직접 열람과 담당자 검수 기록으로 진행한다. 전환 때 preflight→bind→seal→verify→intake→dispatcher 체인을 수행하지 않는다. CREATE의 실제 미완성/TeX/선택기호·단원/Meta 확인, R1/R2의 완전한 학생 입력·실제 그림 열람·선행 독립 freeze, R3의 구조/실제 표시 확인은 담당자가 직접 수행한다.
 
 독립 답/이유·qid 분모·원 freeze·변경 locus·source/asset SHA와 실제 generic 결과를 기존 간단 기록에 보존하고 ROOT가 다음 담당자를 바로 인계한다. 새 completion event·assignment receipt·authority snapshot·등록 candidate를 전환의 필수 조건으로 만들지 않는다. 도구 전용 schema/호환 오류는 실제 해당 품질 항목을 직접 확인한 MANUAL_STAGE_COMPLETE로 수동 인계하되 generic FAIL_TOOL/NOT_RUN을 보존하며 자동 수납 PASS를 주장하지 않는다. 실제 품질 결손은 수동 완료로 우회하지 않는다.
 
