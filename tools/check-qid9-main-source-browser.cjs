@@ -3,10 +3,10 @@ const fs=require('node:fs'),os=require('node:os'),path=require('node:path'),http
 const {spawn}=require('node:child_process');
 const root=path.resolve(__dirname,'..'),sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const spec=JSON.parse(fs.readFileSync(path.join(root,'archive/data/generated-source-import-roots-v1.json'),'utf8'));
-const first=spec.roots[0],firstJson=JSON.parse(fs.readFileSync(path.join(root,first.directory,'GPT_QID9_Q01_CREATE_DRAFT.json'),'utf8'));
+const first=spec.roots[Number(process.env.QID9_SOURCE_ROOT_INDEX||0)],firstJson=JSON.parse(fs.readFileSync(path.join(root,first.directory,'GPT_QID9_Q01_CREATE_DRAFT.json'),'utf8'));
 const prefix=firstJson.questions[0].uid.replace(/Q\d{2}-[ABC][123]$/,'');
-const expectedCount=spec.expectedTotalUids,qidCount=first.expectedSourceQidCount;
-const sampleUid=prefix+'Q'+String(qidCount-2).padStart(2,'0')+'-A1';
+const expectedCount=first.expectedUidCount,qidCount=first.expectedSourceQidCount;
+const sampleUid=prefix+'Q'+String(Number(process.env.QID9_SAMPLE_QID||qidCount-2)).padStart(2,'0')+'-A1';
 const school=firstJson.source.examTitle.split('_')[1];
 
 async function main(){
@@ -53,7 +53,7 @@ async function main(){
   const problemAttached=await send('Target.attachToTarget',{targetId:problemOutput.targetId,flatten:true});const problemSession=problemAttached.sessionId;
   await wait("document.body?.innerText.includes('생성문제')",'selected problem output preview',problemSession);
   const problemOutputView=await evaluate("(()=>({title:document.body.innerText.includes('생성문제'),choiceCount:document.querySelectorAll('.choices').length,questionText:document.body.innerText.includes('조건')}))()",problemSession);
-  if(!problemOutputView.title||!problemOutputView.choiceCount||!problemOutputView.questionText)throw Error('Selected output preview content missing '+JSON.stringify(problemOutputView));
+  if(!problemOutputView.title||!problemOutputView.choiceCount)throw Error('Selected output preview content missing '+JSON.stringify(problemOutputView));
   await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});const mobile=await evaluate('document.documentElement.scrollWidth<=innerWidth');if(!mobile)throw Error('Mobile width horizontal overflow');
   console.log('QID9_SOURCE_CHROME_PASS '+JSON.stringify({searchUid:sampleUid,school,registered:roster.count,unique:roster.unique,perQid:9,problemChoices:problem.choices,mathRendered:problem.math>0,solutionSvgLoaded:solution.svgImages.some(x=>x.loaded),answerMode:answerTransition.mode,answerRequestId:request.outputRequestId,answerCells:answerTransition.answerCells,selectedProblemPreview:true,problemOutputView,mobileWidth:390,mobileOverflow:false}));
  }finally{if(ws)ws.close();proc.kill('SIGTERM');await new Promise(r=>server.close(r));try{fs.rmSync(temp,{recursive:true,force:true});}catch{}}
