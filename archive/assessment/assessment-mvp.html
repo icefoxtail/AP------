@@ -789,8 +789,11 @@
   <script src="assessment-packs-1sem.generated.js"></script>
   <script>
     const DATA = window.APMATH_ASSESSMENT_PACKS_1SEM || { packs: [], sourceSummary: {} };
-    const packs = DATA.packs || [];
-    const categories = DATA.categoryOrder || ['진단평가', '단원평가', '중간·기말평가'];
+    const subunitScope = new URLSearchParams(location.search).get('scope') === 'subunit';
+    const packs = (DATA.packs || []).filter((pack) =>
+      !subunitScope || (pack.category === '단원평가' && String(pack.id || '').startsWith('SUB_1SEM_')));
+    const categories = subunitScope ? ['단원평가'] :
+      (DATA.categoryOrder || ['진단평가', '단원평가', '중간·기말평가']);
     let active = categories[0] || '진단평가';
 
     function escapeHTML(value) {
@@ -809,6 +812,13 @@
 
     function renderStats() {
       const summary = DATA.sourceSummary || {};
+      if (subunitScope) {
+        const questionCount = packs.reduce((total, pack) => total + (pack.questions || []).length, 0);
+        document.getElementById('stats').innerHTML =
+          `<div class="stat"><strong>${packs.length}</strong>평가</div>` +
+          `<div class="stat"><strong>${questionCount}</strong>문항</div>`;
+        return;
+      }
       document.getElementById('stats').innerHTML = [
         `<div class="stat"><strong>${packs.length}</strong>평가</div>`,
         `<div class="stat"><strong>${summary.uniqueTextQuestions || 0}</strong>고유 텍스트 문항</div>`,
@@ -820,6 +830,7 @@
       const availableCategories = new Set(categories);
       document.querySelectorAll('.fb-original-toggle').forEach((button) => {
         if (!availableCategories.has(button.dataset.category)) {
+          button.style.display = 'none';
           return;
         }
         button.addEventListener('click', () => {
@@ -1759,6 +1770,11 @@
     window.goAssessmentMixedEngine = goAssessmentMixedEngine;
 
     restoreApmathSessionFromHash();
+    if (subunitScope) {
+      document.title = '소단원 평가 보관함 · AP Math';
+      document.querySelector('.archive-title').textContent = '소단원 평가 보관함';
+      document.querySelector('.archive-sub').textContent = '기존 소단원 평가팩을 확인하고 문제·정답·해설을 출력합니다.';
+    }
     renderStats();
     setupControls();
     render();
