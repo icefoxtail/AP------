@@ -182,6 +182,9 @@
           selected: current[kind] === value,
           disabled: count === 0 && current[kind] !== value,
           priority: (kind === 'grade' && /^중[123]$/.test(value)) || (kind === 'subject' && /^(공통수학1|공통수학2|대수|미적분|미적분I|확률과 ?통계|기하|기하와벡터)$/.test(value) && state.exams.some((exam) => subjectFacetValue(exam) === value && /^고/.test(clean(exam.grade)))),
+          worldVisible: kind !== 'grade' || /^중[123]$/.test(value)
+            ? kind !== 'subject' || state.exams.some((exam) => subjectFacetValue(exam) === value && /^고/.test(clean(exam.grade)))
+            : false,
         });
       }
       if (!values.length) {
@@ -191,8 +194,8 @@
         container.append(empty);
       }
     }
-    const active = [current.grade && '학년 ' + current.grade, current.term && termLabel(current.term), current.year && current.year + '년', current.school, current.subject && current.subject].filter(Boolean);
-    ui.facetSummary.textContent = active.length ? active.join(' · ') + ' · ' + state.filtered.length + '개 시험지' : '학년·과목·시험·연도·학교를 원하는 순서로 고르세요.';
+    const active = [current.grade, current.subject, current.term && termLabel(current.term), current.year, current.school].filter(Boolean);
+    ui.facetSummary.textContent = active.length ? active.join(' · ') : '학년·과목·시험·연도·학교 기준을 고르세요.';
     return facetNodes;
   }
   function applyFacet(kind, value) {
@@ -202,23 +205,9 @@
     ui.search.value = '';
     renderScene();
   }
-  const facetCategoryNames = {
-    grade: '\uD559\uB144 \uC740\uD558',
-    term: '\uC2DC\uD5D8 \uC740\uD558',
-    year: '\uC5F0\uB3C4 \uC740\uD558',
-    school: '\uD559\uAD50 \uC740\uD558',
-    subject: '\uACFC\uBAA9 \uC740\uD558',
-  };
   function renderFacetSpaceLabels(nodes) {
     if (!ui.facetSpaceLabels) return;
     ui.facetSpaceLabels.replaceChildren();
-    for (const kind of ['grade', 'subject', 'term', 'year', 'school']) {
-      const label = document.createElement('div');
-      label.className = 'facet-space-label facet-space-category';
-      label.dataset.facetCategory = kind;
-      label.innerHTML = '<b>' + facetCategoryNames[kind] + '</b>';
-      ui.facetSpaceLabels.append(label);
-    }
     for (const node of nodes) {
       const label = document.createElement('div');
       label.className = 'facet-space-label facet-space-value';
@@ -695,11 +684,10 @@
       : '조건에 맞는 은하가 없습니다. 필터를 풀거나 검색어를 바꿔 보세요.';
   }
   function setFilterSummary() {
-    const active = [ui.grade.value, ui.school.value, ui.year.value, ui.term?.value, ui.subject?.value, ui.unit.value, ui.search.value.trim()].filter(Boolean).length;
-    const modeName = state.groupMode === 'grade' ? '학년 성단' : state.groupMode === 'unit' ? '단원 성단' : '학교 은하';
-    $('filterSummary').textContent = active
-      ? active + '개 조건 · ' + state.filtered.length.toLocaleString() + '개 시험지 · ' + modeName
-      : '필터를 자유롭게 조합하세요. ' + modeName + ' 안에서 각 시험지는 한 번만 표시됩니다.';
+    const values = [ui.grade.value, ui.subject?.value, ui.term?.value ? termLabel(ui.term.value) : '', ui.year.value, ui.school.value, ui.unit.value, ui.search.value.trim()].filter(Boolean);
+    $('filterSummary').textContent = values.length
+      ? values.join(' · ')
+      : '조건을 자유롭게 고르세요. 남은 기준은 같은 우주에서 계속 선택할 수 있습니다.';
   }
   function focusGroup(id) {
     const group = state.groupsById.get(id);
