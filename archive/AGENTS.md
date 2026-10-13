@@ -1,5 +1,7 @@
 # Archive implementation instructions
 
+Codex 원본 시험지 생산은 `../docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Fast_Lane_CURRENT_v1.md`를 우선한다. JS·실제 asset 직접 검수로 진행하고 preflight/bind/seal/verify/intake/등록 candidate를 필수 호출하지 않는다. 시험지 run에서 공통 도구 수정·새 wrapper·MASTER 자동 수리는 금지한다. 아래 런타임 구현 지시는 실제 런타임 수정 작업에만 적용하며 단순 시험지 생산의 추가 gate가 아니다.
+
 상위 `AGENTS.md`와 `../docs/rules/01_CANONICAL/Archive2_Runtime_Responsiveness_and_Original_Source_Contract_v1.md`를 함께 적용한다. Archive 2.0 런타임 코드를 변경하기 전에 계약을 읽는다.
 
 원본 기출을 열기 위한 브라우저 저장소 복사, 클릭마다 반복되는 전체 아카이브 검사, 저장소 장애·용량 초과로 출력 창이 닫히는 회귀를 허용하지 않는다. 새 기능을 위해 기존 안정 경로와 사용자 응답성을 희생하지 않는다.

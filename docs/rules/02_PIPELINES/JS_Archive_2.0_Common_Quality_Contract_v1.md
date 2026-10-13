@@ -1,5 +1,9 @@
 # JS Archive 2.0 — Common Quality Contract v1
 
+## 2026-10-12 CODEX FAST LANE
+
+Codex 원본 시험지 운영은 `JS_Archive_2.0_Codex_Fast_Lane_CURRENT_v1.md`를 우선한다. 필수 문항 품질과 R1 독립 심사·R2 blind sweep을 유지하고 기존 유효한 완료 기록을 재사용한다. R3는 targeted/구조/표시 마감만 수행하고 ROOT는 재검하지 않는다. 시험지 생산 중 공유 도구 수정·새 helper·MASTER 자동 수리·등록/배포 자동 확대를 금지한다. GPT 예약라인은 변경하지 않는다.
+
 status: CURRENT / TWO-LANE QUALITY FOUNDATION
 qualityContractVersion: `JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006`
 

@@ -1,5 +1,9 @@
 # JS Archive 2.0 — Codex Execution Contract v1.3
 
+## 2026-10-12 DIRECT USER OVERRIDE — FAST LANE DEFAULT
+
+`JS_Archive_2.0_Codex_Fast_Lane_CURRENT_v1.md`가 Codex 원본 시험지 운영의 우선 정본이다. 첫 미완료 stage부터 재개, 기존 PASS/freeze/render 재사용, 정상 stage validator 1회, changed/open/direct dependency만 최소 확인한다. 시험지 run 중 공유 도구 수정·새 helper·MASTER 자동 수리·등록 rebuild loop는 금지한다. 해결되지 않는 도구 오류는 BLOCKED_TOOL로 보존한다. 기본 종료는 프로덕션 JS·필수 에셋 main 반영과 원격 일치 확인이며 등록·배포는 별도 요청 범위다. 이 지시는 아래 §§13/21/25 및 후속 maintenance/registration 확대 문구보다 우선하며, 품질 결함을 면제하거나 미실행 PASS를 허용하지 않는다. 기존 진행분이 있는 JS 2개 약 2시간을 운영 목표로 삼는다.
+
 status: CURRENT / CODEX EXECUTION LINE
 updated: 2026-10-07
 execution authority: 본 문서 + Common Quality Contract + 실제 current validator 구현
@@ -254,7 +258,7 @@ source truth 또는 Meta/difficulty authority가 아니다.
 
 - 오류 때문에 line 자체를 중단하지 않는다.
 - current target에서 해결 가능한 것은 fresh state 1회 → 최소수정 → materially different safe path 최대 1회 → closure.
-- 기술적으로 못 닫으면 exact continuation을 남기고 MASTER가 이어받는다.
+- 편의 도구 문제는 직접 JS·에셋·증거를 읽어 진행한다. 실제 품질·입력 결손만 정확히 기록하며 MASTER 자동 수리는 금지한다.
 - 동일 PASS/validator/readback의 변화 없는 반복은 금지한다. 실제 수정·실패 후 필요한 재검증은 §21에 따른다.
 - stage 품질은 깊게, ceremony는 최소화한다.
 
@@ -480,25 +484,15 @@ CLI는 읽기 전용으로 actual receipt SHA와 helper 결과를 JSON 출력하
 - MAIN_DONE은 production raw/Git blob·모든 asset·decision·authority snapshot·roster·R1/R2·R3·loaded JS·partial actual witness/captures의 remote bytes parity까지 확인한다. 임시 `.tmp` 참조, 잘못된 SHA, 무효 scope, item HOLD, non-PASS raw V2/CODEX proof, 경로 이탈을 수납하지 않는다.
 
 
-## Implemented maintenance CLI — 2026-10-07
+## 2026-10-12 — 직접 열람·간단 인계 / 유지보수 도구 경로 제외
 
-### Stable worker completion maintenance — 2026-10-08
+기본 생산은 `JS_Archive_2.0_Codex_Fast_Lane_CURRENT_v1.md`의 JS·에셋 직접 열람과 담당자 검수 기록으로 진행한다. 전환 때 preflight→bind→seal→verify→intake→dispatcher 체인을 수행하지 않는다. CREATE의 실제 HOLD/TeX/선택기호·단원/Meta 확인, R1/R2의 완전한 학생 입력·실제 그림 열람·선행 독립 freeze, R3의 구조/실제 표시 확인은 담당자가 직접 수행한다.
 
-추가 cross-run 도구는 `archive/tools/CODEX_MAINTENANCE.md`의 2026-10-08 upgrade 절을 따른다. 학생용 bundle adapter는 기존 questions/requiredAssets와 rows/student/assets를 안전하게 연결하고 object choice·공통 자료·표시 필드를 보존하며 알 수 없는 필드는 삭제하지 않고 FAIL한다. 새 freeze CLI는 assignment의 current raw SHA를 요구한다. postfreeze는 원 freeze SHA·전체 qid·현재 학생 필드/자산 parity를 확인한 뒤 명시한 qid의 저장 필드만 공개한다.
+독립 답/이유·qid 분모·원 freeze·변경 locus·source/asset SHA와 실제 generic 결과를 기존 간단 기록에 보존하고 ROOT가 다음 담당자를 바로 인계한다. 새 completion event·assignment receipt·authority snapshot·등록 candidate를 전환의 필수 조건으로 만들지 않는다. 도구 전용 schema/호환 오류는 실제 해당 품질 항목을 직접 확인한 MANUAL_STAGE_COMPLETE로 수동 인계하되 generic FAIL_TOOL/NOT_RUN을 보존하며 자동 수납 PASS를 주장하지 않는다. 실제 품질 결손은 수동 완료로 우회하지 않는다.
 
-CREATE의 정식 단원 순서 검사는 actual L1 master row/SHA로 앞단에서 수행하며 숫자 접미사나 legacy alias로 추정·자동 수정하지 않는다. 기존 등록 대상은 중복 거부를 완화하지 않고 별도 prepare/update 경로로 처리한다. 허용된 physical Meta 변경도 current R1 META PASS/source parity를 요구하고 영향 target의 runtime 승인 상태는 pending으로 돌려 이전 승인을 새 내용에 자동 승계하지 않는다. source item HOLD와 runtime pending을 혼동하지 않는다.
+`archive/tools/CODEX_MAINTENANCE.md`와 `CODEX_HANDOFF.md`의 helper/등록 명령은 선택 가능한 기존 호환 경로다. 기본 생산에서는 읽거나 호출할 필요가 없고 고장나면 직접 읽기로 진행한다. 시험지 run 중 도구 수정·새 wrapper·MASTER 자동 복구를 금지한다. capture preflight를 CREATE 시작 조건으로 추가하지 않으며 R3에서 기존 실제 엔진 경로를 한 번 사용한다.
 
-ROOT publication은 bound checks 종료·exit code·현재 source/proofs/assets/baseline/main 입력을 immutable checkpoint로 확인하고 실패 단계부터 재개한다. main drift의 비겹침과 target overlap을 구분하고 무조건 재적용하지 않는다. dispatcher는 stage별 1개·새 pair fresh session·same-stage 기존 session 규칙과 sealed event 수납을 유지한다. preview cache는 source SHA·전체 변환 조건·도구 version에 결속하고 실제 reviewer 열람을 생략하지 않는다. Git remote bytes는 bounded binary batch로 읽으며 파일별 SHA/크기/누락/중복/잔여 bytes 검증은 유지한다. 이미 완료된 유효 시험지의 검수·receipt는 새 포맷을 위한 소급 재실행 없이 보존한다.
-
-신규 Codex stage는 `archive/tools/CODEX_MAINTENANCE.md`의 CREATE preflight 및 `archive-codex-stage-kit.mjs`를 사용한다. CREATE 출고 전 실제 HOLD count/reason, TeX 표기, 명시적 최종값과 선택기호의 불일치 후보를 먼저 표시하고 해당 worker가 원본·수학 근거로 처리한다. 정당한 CREATE HOLD는 R1/R2로 운반하고 R3의 남은 itemStatus HOLD는 release FAIL이다. 구조 lint는 source/수학/Visual 승인이 아니며 자동 발문 수정은 하지 않는다.
-
-기술 bind는 actual raw SHA-256·raw-buffer/clean-filter blob SHA·solution hash와 기존의 명시적 small-board 검수 필드만 결속한다. quality PASS/Meta 의미 판정/없는 reviewed field를 만들지 않는다. R1/R2 pre-freeze에서는 raw JS를 읽는 bind/preflight/seal을 금지하고 current student-only bundle과 실제 asset 열람 후 immutable freeze만 사용한다. original freeze는 exclusive-write로 보존하고 adjudication을 별도 파일로 기록한다.
-
-필수 evidence를 모두 작성한 최종 상태에서 normal generic validator를 1회 실행한 뒤 fresh stable completion event를 seal한다. ROOT는 worker가 반환한 event SHA와 source/evidence/assets/raw report/추가 필수 proof의 현재 bytes를 확인하고 nextStage·freedSlot·nextRosterTarget을 함께 수납한다. 완료 event 뒤 파일 수정은 이전 event를 무효화한다. 실제 오류·수정에 필요한 재검증과 fresh event는 같은 session에서 수행하고 정상 PASS 뒤 임의 optional refinement는 하지 않는다. 과거의 유효한 unchanged receipt는 기존 reuse 경로를 유지하며 새 event 포맷만을 위해 재검수하지 않는다. R3 actual render/ROOT §25/publication/MAIN_DONE gate는 별도로 유지한다.
-
-Run bootstrap can use `archive/tools/capture-codex-exam.mjs --preflight` to actually verify isolated Chrome, a physical PNG and the required mobile viewport before CREATE. Six-case collection uses the same CLI with the assigned JS and real asset root. It emits `CAPTURED_REVIEW_REQUIRED`, never `RENDER_PASS`. R3 reviews its actual PNGs; `build-codex-render-receipt.mjs` requires SHA-bound R3 coverage/judgment for all six cases and consumes the existing render receipt validator. API or machine capture refusal remains an honest blocker; existing §25 authority and source quality gates are unchanged.
-
-For one new production exam, `prepare-target-registration.mjs` extracts only its rows from isolated canonical generator outputs. `register-target-exam.mjs` defaults to validated dry-run and requires explicit `--apply`, exact source/assets/HEAD/catalog/baseline hashes and full target UID/ordinal coverage. It preserves non-target records, runtime tuples and dictionary IDs, rolls back its own failed writes, and does not grant semantic review or automatic eligibility. ROOT performs required registration validation, target-only publication and remote readback before MAIN_DONE. A whole-generator unrelated failure is preserved rather than forcing PASS or changing unrelated exams. CLI usage and tested boundaries: `archive/tools/CODEX_MAINTENANCE.md`.
+등록 compiler/index rebuild와 사이트 배포는 별도 요청 범위다. main 병합은 검증된 프로덕션 JS·필수 에셋만 표준 Git으로 반영하고 원격 일치 확인으로 종료한다. 기존 helper의 자동 MAIN_DONE receipt와 수동 프로덕션 main 반영을 구분하여 기록한다.
 
 ## 2026-10-08 — DIRECT USER ASSIGNMENT AUTO-RELEASE HARD (2026-10-10 범위 명확화)
 

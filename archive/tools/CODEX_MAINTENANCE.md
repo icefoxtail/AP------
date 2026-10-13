@@ -1,5 +1,9 @@
 # Codex capture and scoped registration tools
 
+## 2026-10-12 — Production fast lane takes precedence
+
+For Codex original-exam runs, follow `docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Fast_Lane_CURRENT_v1.md` first. **The commands below are optional compatibility documentation, not the default production entrypoint.** Remove preflight/bind/seal/verify/intake/dispatcher/registration-candidate chains from the normal lane. Read current JS/assets and valid existing reviews directly; retain the blind student-only input/freeze and actual evidence requirements. Do not modify shared tools, add wrappers, auto-route to MASTER, regenerate registration on each main drift, or rerun valid stages to adopt helper formats. Skip a broken convenience helper and continue direct review. Tool-only schema failures remain FAIL_TOOL/NOT_RUN; directly completed quality review is MANUAL_STAGE_COMPLETE, never fabricated machine PASS. Actual content, input or permission gaps remain accurately incomplete. Default completion is approved production JS/assets on main and remote byte parity; registration and deployment belong only to an explicitly requested scope.
+
 ## 2026-10-08 — Handoff and notation preflight
 
 Use [CODEX_HANDOFF.md](CODEX_HANDOFF.md) for the ROOT-side `archive-codex-handoff.mjs` commands. They bind explicit absolute assignments, canonical reviewer IDs, real asset-parent directories, immutable freezes and actual validator process output. Verified completion acceptance releases the dispatcher slot and returns the next roster plan together. ROOT still performs agent dispatch and publication; the helper does not keep a chat running after its turn ends.
