@@ -16790,6 +16790,47 @@ window.mainDB = {
       "primaryStandardCourse": "수학(상)"
     },
     {
+      "file": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
+      "school": "복성고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2020,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "공통수학2",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-10",
+          "rangeStartUnit": "직선의 방정식",
+          "rangeStartUnitOrder": 10,
+          "rangeEndUnitKey": "H15-SA-10",
+          "rangeEndUnit": "직선의 방정식",
+          "rangeEndUnitOrder": 10
+        },
+        {
+          "standardCourse": "수학(하)",
+          "courseCode": "H15-SB",
+          "rangeStartUnitKey": "H15-SB-01",
+          "rangeStartUnit": "집합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SB-03",
+          "rangeEndUnit": "함수",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": ""
+    },
+    {
       "file": "original/high/h1/1mid/20_순천고_1학기_중간_고1_기출.js",
       "school": "순천고",
       "topic": "",
