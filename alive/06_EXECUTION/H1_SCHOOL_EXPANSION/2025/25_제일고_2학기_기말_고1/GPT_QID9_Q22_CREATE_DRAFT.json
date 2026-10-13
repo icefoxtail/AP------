@@ -1,0 +1,1186 @@
+{
+  "schemaVersion": "ALIVE_QID9_Q22_CREATE_DRAFT_v1",
+  "source": {
+    "path": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+    "examTitle": "25_제일고_2학기_기말_고1_기출",
+    "qid": 22,
+    "sourceUid": null,
+    "sourceUidResolution": "REQUIRES_CANONICAL_QID_V1_LOOKUP",
+    "gitBlobSha1": "252c1cc9a687cadd961183b56ea10d21bf1976b4",
+    "preservedReadOnly": true,
+    "sourceQuestionType": "서술형"
+  },
+  "authority": {
+    "primaryRpmId": "H1-RPM-249",
+    "primaryRpmL3": "증명",
+    "rpmL4": "귀류법",
+    "rpmMappingStatus": "FAMILY_ACTIVE",
+    "canonicalPT": "PT_CONTRADICTION_PROOF",
+    "canonicalTPL": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+    "generatedL4Ids": [
+      "EXT-L4-JEIL25-Q22-PRIMITIVE-PARITY",
+      "EXT-L4-JEIL25-Q22-PYTHAGOREAN-MOD3",
+      "EXT-L4-JEIL25-Q22-PYTHAGOREAN-MOD16",
+      "EXT-L4-JEIL25-Q22-PYTHAGOREAN-MOD5",
+      "EXT-L4-JEIL25-Q22-ODD-LEG-STRONGER-DIVISIBILITY",
+      "EXT-L4-JEIL25-Q22-TRIPLE-PRODUCT-60"
+    ],
+    "sourceSemantic": "피타고라스 관계 a²+b²=c²로 증명하는 홀짝·배수성 귀류법"
+  },
+  "summary": {
+    "authorDraftItems": 9,
+    "mathSelfChecks": 9,
+    "choicesTotal": 0,
+    "answerValues": [
+      "$a,b$ 중 적어도 하나는 짝수이다.",
+      "$a,b$ 중 정확히 하나만 짝수이다.",
+      "$c$가 짝수이면 $a,b$도 모두 짝수이다.",
+      "$c$는 홀수이다.",
+      "$a,b$ 중 적어도 하나는 $3$의 배수이다.",
+      "$a,b$ 중 적어도 하나는 $4$의 배수이다.",
+      "$a,b,c$ 중 적어도 하나는 $5$의 배수이다.",
+      "$c$는 홀수이고 $b$는 $4$의 배수이다.",
+      "$abc$는 $60$의 배수이다."
+    ],
+    "reverseKeep": 9,
+    "reverseRevised": 0,
+    "reverseHold": 0,
+    "problemSvgCreated": 0,
+    "solutionSvgCreated": 9,
+    "svgBrowserRendered": "NOT_RUN",
+    "externalOpenBookReview": "NOT_RUN",
+    "studentRelease": "NOT_AUTHORIZED",
+    "metaEvidenceDebtUidCount": 9,
+    "status": "AUTHOR_DRAFT_SOURCE_UID_EVIDENCE_DEBT",
+    "nextQid": null,
+    "finalSourceQid": 22,
+    "target198Status": "ALL_AUTHOR_DRAFT"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-JEIL25-2FINAL-Q22-A1",
+      "sourceQid": 22,
+      "sourceUid": null,
+      "slot": "A1",
+      "purpose": "A",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q22",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "canonical_content_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "자연수 $a,b,c$가 $a^2+b^2=c^2$을 만족할 때, $a,b$ 중 적어도 하나는 짝수임을 귀류법으로 증명하시오.",
+      "choices": [],
+      "answer": "$a,b$ 중 적어도 하나는 짝수이다.",
+      "solution": "결론이 거짓이라고 가정하면 $a,b$는 모두 홀수이다.\n홀수의 제곱을 $4$로 나눈 나머지는 $1$이므로 $a^2+b^2$를 $4$로 나눈 나머지는 $2$이다.\n그러나 정수의 제곱을 $4$로 나눈 나머지는 $0$ 또는 $1$뿐이다. 따라서 $c^2=a^2+b^2$라는 조건과 모순이다.\n그러므로 가정이 거짓이고 $a,b$ 중 적어도 하나는 짝수이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q22/A1-solution.svg",
+      "solutionImageAlt": "A1 제곱수의 나머지를 이용한 귀류법 단계별 해설 SVG",
+      "solutionImageCaption": "결론의 부정 가정과 제곱수 나머지 비교에서 생기는 모순을 순서대로 확인한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourceMetaFoundationL3": "귀류법",
+        "primaryRPM_L3": "증명",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-249",
+        "rpmRecordId": "H1-RPM-249",
+        "rpmRecordMappingStatus": "FAMILY_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "귀류법",
+        "problemTypeKey": "PT_CONTRADICTION_PROOF",
+        "templateKey": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "effectiveL4Id": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "effectiveL4Authority": "RPM_FAMILY_ACTIVE",
+        "crossConceptKeys": [
+          "CC_NUMBER_PARITY"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_REUSED_ACTIVE_PT_TPL_EXT_L4_REGISTERED"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "자연수 조건과 증명 목표가 명확하며 귀류법의 부정 가정 및 실제 제곱수 나머지 모순이 필수인 학교 서술형이다.",
+        "primaryL3Necessity": "NEGATE_CLAIM_THEN_CONGRUENCE_CONTRADICTION",
+        "mathSelfCheckEvidence": {
+          "modularSquareResidues": {
+            "3": [
+              0,
+              1
+            ],
+            "4": [
+              0,
+              1
+            ],
+            "5": [
+              0,
+              1,
+              4
+            ],
+            "16": [
+              0,
+              1,
+              4,
+              9
+            ]
+          },
+          "enumeratedPythagoreanTripleCount": 192,
+          "nineClaimCounterexamples": 0,
+          "congruenceProofSteps": [
+            [
+              "부정 가정",
+              "a,b 모두 홀수"
+            ],
+            [
+              "나머지 계산",
+              "a²+b² ≡ 1+1 = 2 (mod 4)"
+            ],
+            [
+              "모순",
+              "c²는 0 또는 1 (mod 4) → 결론 성립"
+            ]
+          ],
+          "noCalculus": true
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_ESSAY",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본과 마찬가지로 수와 수식이 완결되어 문제 그림을 넣으면 증명의 힌트가 됨"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_EDUCATIONAL_BENEFIT",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q22/A1-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-JEIL25-2FINAL-Q22-A2",
+      "sourceQid": 22,
+      "sourceUid": null,
+      "slot": "A2",
+      "purpose": "A",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q22",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "canonical_content_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "자연수 $a,b,c$가 $a^2+b^2=c^2$을 만족하고 $c$가 홀수라고 하자. $a,b$ 중 정확히 하나만 짝수임을 귀류법으로 증명하시오.",
+      "choices": [],
+      "answer": "$a,b$ 중 정확히 하나만 짝수이다.",
+      "solution": "결론을 부정하면 $a,b$는 둘 다 홀수이거나 둘 다 짝수이다.\n둘 다 짝수라면 $a^2+b^2$가 짝수인데 $c^2$는 홀수이므로 모순이다.\n둘 다 홀수라면 $a^2+b^2\\equiv2\\pmod4$이다. 하지만 홀수의 제곱인 $c^2$는 $4$로 나눈 나머지가 $1$이므로 모순이다.\n따라서 두 수의 홀짝이 같을 수 없으므로 정확히 한 수만 짝수이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q22/A2-solution.svg",
+      "solutionImageAlt": "A2 제곱수의 나머지를 이용한 귀류법 단계별 해설 SVG",
+      "solutionImageCaption": "결론의 부정 가정과 제곱수 나머지 비교에서 생기는 모순을 순서대로 확인한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourceMetaFoundationL3": "귀류법",
+        "primaryRPM_L3": "증명",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-249",
+        "rpmRecordId": "H1-RPM-249",
+        "rpmRecordMappingStatus": "FAMILY_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "귀류법",
+        "problemTypeKey": "PT_CONTRADICTION_PROOF",
+        "templateKey": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "effectiveL4Id": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "effectiveL4Authority": "RPM_FAMILY_ACTIVE",
+        "crossConceptKeys": [
+          "CC_NUMBER_PARITY"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_REUSED_ACTIVE_PT_TPL_EXT_L4_REGISTERED"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "자연수 조건과 증명 목표가 명확하며 귀류법의 부정 가정 및 실제 제곱수 나머지 모순이 필수인 학교 서술형이다.",
+        "primaryL3Necessity": "NEGATE_CLAIM_THEN_CONGRUENCE_CONTRADICTION",
+        "mathSelfCheckEvidence": {
+          "modularSquareResidues": {
+            "3": [
+              0,
+              1
+            ],
+            "4": [
+              0,
+              1
+            ],
+            "5": [
+              0,
+              1,
+              4
+            ],
+            "16": [
+              0,
+              1,
+              4,
+              9
+            ]
+          },
+          "enumeratedPythagoreanTripleCount": 192,
+          "nineClaimCounterexamples": 0,
+          "congruenceProofSteps": [
+            [
+              "부정 가정",
+              "a,b 모두 짝수 또는 모두 홀수"
+            ],
+            [
+              "둘 다 짝수",
+              "왼쪽 짝수 ≠ 오른쪽 홀수"
+            ],
+            [
+              "둘 다 홀수",
+              "왼쪽 2 (mod 4) ≠ 오른쪽 1 (mod 4)"
+            ]
+          ],
+          "noCalculus": true
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_ESSAY",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본과 마찬가지로 수와 수식이 완결되어 문제 그림을 넣으면 증명의 힌트가 됨"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_EDUCATIONAL_BENEFIT",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q22/A2-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-JEIL25-2FINAL-Q22-A3",
+      "sourceQid": 22,
+      "sourceUid": null,
+      "slot": "A3",
+      "purpose": "A",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q22",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "canonical_content_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "자연수 $a,b,c$가 $a^2+b^2=c^2$을 만족한다. $c$가 짝수이면 $a,b$도 모두 짝수임을 귀류법으로 증명하시오.",
+      "choices": [],
+      "answer": "$c$가 짝수이면 $a,b$도 모두 짝수이다.",
+      "solution": "$c$가 짝수라고 하고 결론을 부정하여 $a,b$ 가운데 적어도 한 수가 홀수라고 가정하자.\n$a,b$ 중 한 수만 홀수라면 $a^2+b^2$가 홀수이므로 짝수인 $c^2$와 같을 수 없다.\n$a,b$가 둘 다 홀수라면 $a^2+b^2\\equiv2\\pmod4$이지만 짝수 $c$에 대해 $c^2\\equiv0\\pmod4$이므로 모순이다.\n가능한 두 경우가 모두 모순이므로 $a,b$는 모두 짝수이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q22/A3-solution.svg",
+      "solutionImageAlt": "A3 제곱수의 나머지를 이용한 귀류법 단계별 해설 SVG",
+      "solutionImageCaption": "결론의 부정 가정과 제곱수 나머지 비교에서 생기는 모순을 순서대로 확인한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourceMetaFoundationL3": "귀류법",
+        "primaryRPM_L3": "증명",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-249",
+        "rpmRecordId": "H1-RPM-249",
+        "rpmRecordMappingStatus": "FAMILY_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "귀류법",
+        "problemTypeKey": "PT_CONTRADICTION_PROOF",
+        "templateKey": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "effectiveL4Id": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "effectiveL4Authority": "RPM_FAMILY_ACTIVE",
+        "crossConceptKeys": [
+          "CC_NUMBER_PARITY"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_REUSED_ACTIVE_PT_TPL_EXT_L4_REGISTERED"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "자연수 조건과 증명 목표가 명확하며 귀류법의 부정 가정 및 실제 제곱수 나머지 모순이 필수인 학교 서술형이다.",
+        "primaryL3Necessity": "NEGATE_CLAIM_THEN_CONGRUENCE_CONTRADICTION",
+        "mathSelfCheckEvidence": {
+          "modularSquareResidues": {
+            "3": [
+              0,
+              1
+            ],
+            "4": [
+              0,
+              1
+            ],
+            "5": [
+              0,
+              1,
+              4
+            ],
+            "16": [
+              0,
+              1,
+              4,
+              9
+            ]
+          },
+          "enumeratedPythagoreanTripleCount": 192,
+          "nineClaimCounterexamples": 0,
+          "congruenceProofSteps": [
+            [
+              "부정 가정",
+              "c 짝수, a 또는 b 홀수"
+            ],
+            [
+              "홀수 하나",
+              "a²+b² 홀수, c² 짝수 → 불가능"
+            ],
+            [
+              "홀수 둘",
+              "a²+b² ≡ 2, c² ≡ 0 (mod 4) → 모순"
+            ]
+          ],
+          "noCalculus": true
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_ESSAY",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본과 마찬가지로 수와 수식이 완결되어 문제 그림을 넣으면 증명의 힌트가 됨"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_EDUCATIONAL_BENEFIT",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q22/A3-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-JEIL25-2FINAL-Q22-B1",
+      "sourceQid": 22,
+      "sourceUid": null,
+      "slot": "B1",
+      "purpose": "B",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q22",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "canonical_content_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "자연수 $a,b,c$가 $a^2+b^2=c^2$을 만족하고 $a,b$가 서로소일 때 $c$는 홀수임을 귀류법으로 증명하시오.",
+      "choices": [],
+      "answer": "$c$는 홀수이다.",
+      "solution": "$c$가 짝수라고 가정하면 $c^2$는 $4$의 배수이다.\n$a,b$ 중 정확히 한 수가 홀수이면 $a^2+b^2$가 홀수이므로 모순이다. 둘 다 홀수여도 $a^2+b^2\\equiv2\\pmod4$이므로 모순이다.\n따라서 $a,b$는 모두 짝수일 수밖에 없는데, 그러면 $2$가 공약수가 되어 $a,b$가 서로소라는 조건에 어긋난다.\n따라서 처음 가정이 거짓이므로 $c$는 홀수이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q22/B1-solution.svg",
+      "solutionImageAlt": "B1 제곱수의 나머지를 이용한 귀류법 단계별 해설 SVG",
+      "solutionImageCaption": "결론의 부정 가정과 제곱수 나머지 비교에서 생기는 모순을 순서대로 확인한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourceMetaFoundationL3": "귀류법",
+        "primaryRPM_L3": "증명",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-249",
+        "rpmRecordId": "H1-RPM-249",
+        "rpmRecordMappingStatus": "FAMILY_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "귀류법",
+        "problemTypeKey": "PT_CONTRADICTION_PROOF",
+        "templateKey": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q22-PRIMITIVE-PARITY",
+        "effectiveL4Authority": "GENERATED_ACTIVE",
+        "crossConceptKeys": [
+          "CC_NUMBER_PARITY",
+          "CC_NUMBER_PRIME_COPRIME"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_REUSED_ACTIVE_PT_TPL_EXT_L4_REGISTERED"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "자연수 조건과 증명 목표가 명확하며 귀류법의 부정 가정 및 실제 제곱수 나머지 모순이 필수인 학교 서술형이다.",
+        "primaryL3Necessity": "NEGATE_CLAIM_THEN_CONGRUENCE_CONTRADICTION",
+        "mathSelfCheckEvidence": {
+          "modularSquareResidues": {
+            "3": [
+              0,
+              1
+            ],
+            "4": [
+              0,
+              1
+            ],
+            "5": [
+              0,
+              1,
+              4
+            ],
+            "16": [
+              0,
+              1,
+              4,
+              9
+            ]
+          },
+          "enumeratedPythagoreanTripleCount": 192,
+          "nineClaimCounterexamples": 0,
+          "congruenceProofSteps": [
+            [
+              "부정 가정",
+              "c 짝수 → c² ≡ 0 (mod 4)"
+            ],
+            [
+              "홀짝 모순",
+              "a,b에 홀수가 있으면 등식 불가능"
+            ],
+            [
+              "서로소 모순",
+              "a,b 모두 짝수 → 공약수 2 → 결론 성립"
+            ]
+          ],
+          "noCalculus": true
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_ESSAY",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본과 마찬가지로 수와 수식이 완결되어 문제 그림을 넣으면 증명의 힌트가 됨"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_EDUCATIONAL_BENEFIT",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q22/B1-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-JEIL25-2FINAL-Q22-B2",
+      "sourceQid": 22,
+      "sourceUid": null,
+      "slot": "B2",
+      "purpose": "B",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q22",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "canonical_content_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "자연수 $a,b,c$에 대하여 $a^2+b^2=c^2$이면 $a,b$ 중 적어도 하나가 $3$의 배수임을 귀류법으로 증명하시오.",
+      "choices": [],
+      "answer": "$a,b$ 중 적어도 하나는 $3$의 배수이다.",
+      "solution": "결론이 거짓이라고 가정하면 $a,b$는 모두 $3$의 배수가 아니다.\n정수를 $3$으로 나눈 나머지가 $1$ 또는 $2$이면 그 제곱을 $3$으로 나눈 나머지는 $1$이다. 따라서 $a^2\\equiv b^2\\equiv1\\pmod3$이다.\n그러면 $c^2=a^2+b^2\\equiv2\\pmod3$이어야 한다. 하지만 제곱수를 $3$으로 나눈 나머지는 $0$ 또는 $1$이므로 모순이다.\n따라서 $a,b$ 가운데 적어도 한 수는 $3$의 배수이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q22/B2-solution.svg",
+      "solutionImageAlt": "B2 제곱수의 나머지를 이용한 귀류법 단계별 해설 SVG",
+      "solutionImageCaption": "결론의 부정 가정과 제곱수 나머지 비교에서 생기는 모순을 순서대로 확인한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourceMetaFoundationL3": "귀류법",
+        "primaryRPM_L3": "증명",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-249",
+        "rpmRecordId": "H1-RPM-249",
+        "rpmRecordMappingStatus": "FAMILY_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "귀류법",
+        "problemTypeKey": "PT_CONTRADICTION_PROOF",
+        "templateKey": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q22-PYTHAGOREAN-MOD3",
+        "effectiveL4Authority": "GENERATED_ACTIVE",
+        "crossConceptKeys": [
+          "CC_NUMBER_DIVISOR_MULTIPLE"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_REUSED_ACTIVE_PT_TPL_EXT_L4_REGISTERED"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "자연수 조건과 증명 목표가 명확하며 귀류법의 부정 가정 및 실제 제곱수 나머지 모순이 필수인 학교 서술형이다.",
+        "primaryL3Necessity": "NEGATE_CLAIM_THEN_CONGRUENCE_CONTRADICTION",
+        "mathSelfCheckEvidence": {
+          "modularSquareResidues": {
+            "3": [
+              0,
+              1
+            ],
+            "4": [
+              0,
+              1
+            ],
+            "5": [
+              0,
+              1,
+              4
+            ],
+            "16": [
+              0,
+              1,
+              4,
+              9
+            ]
+          },
+          "enumeratedPythagoreanTripleCount": 192,
+          "nineClaimCounterexamples": 0,
+          "congruenceProofSteps": [
+            [
+              "부정 가정",
+              "a,b 모두 3의 배수가 아님"
+            ],
+            [
+              "나머지 계산",
+              "a²+b² ≡ 1+1 = 2 (mod 3)"
+            ],
+            [
+              "모순",
+              "c²는 0 또는 1 (mod 3) → 불가능"
+            ]
+          ],
+          "noCalculus": true
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_ESSAY",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본과 마찬가지로 수와 수식이 완결되어 문제 그림을 넣으면 증명의 힌트가 됨"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_EDUCATIONAL_BENEFIT",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q22/B2-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-JEIL25-2FINAL-Q22-B3",
+      "sourceQid": 22,
+      "sourceUid": null,
+      "slot": "B3",
+      "purpose": "B",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q22",
+      "modeCandidate": "FOLLOWUP",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "canonical_content_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "자연수 $a,b,c$에 대하여 $a^2+b^2=c^2$이면 $a,b$ 가운데 적어도 하나는 $4$의 배수임을 귀류법으로 증명하시오.",
+      "choices": [],
+      "answer": "$a,b$ 중 적어도 하나는 $4$의 배수이다.",
+      "solution": "두 수 $a,b$ 중 어느 것도 $4$의 배수가 아니라고 가정하자.\n$4$의 배수가 아닌 정수는 홀수이거나 $4$로 나눈 나머지가 $2$이다. 홀수의 제곱은 $16$으로 나눈 나머지가 $1,9$ 중 하나이며, $4$로 나눈 나머지가 $2$인 수의 제곱은 $16$으로 나눈 나머지가 $4$이다.\n따라서 $a^2+b^2$의 가능한 나머지는 $2,10,5,13,8$이다. 하지만 임의의 제곱수 $c^2$를 $16$으로 나눈 나머지는 $0,1,4,9$뿐이다. 두 집합에 공통 원소가 없어 모순이다.\n따라서 $a,b$ 가운데 적어도 하나는 $4$의 배수이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q22/B3-solution.svg",
+      "solutionImageAlt": "B3 제곱수의 나머지를 이용한 귀류법 단계별 해설 SVG",
+      "solutionImageCaption": "결론의 부정 가정과 제곱수 나머지 비교에서 생기는 모순을 순서대로 확인한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourceMetaFoundationL3": "귀류법",
+        "primaryRPM_L3": "증명",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-249",
+        "rpmRecordId": "H1-RPM-249",
+        "rpmRecordMappingStatus": "FAMILY_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "귀류법",
+        "problemTypeKey": "PT_CONTRADICTION_PROOF",
+        "templateKey": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q22-PYTHAGOREAN-MOD16",
+        "effectiveL4Authority": "GENERATED_ACTIVE",
+        "crossConceptKeys": [
+          "CC_NUMBER_PARITY",
+          "CC_NUMBER_DIVISOR_MULTIPLE"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_REUSED_ACTIVE_PT_TPL_EXT_L4_REGISTERED"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "자연수 조건과 증명 목표가 명확하며 귀류법의 부정 가정 및 실제 제곱수 나머지 모순이 필수인 학교 서술형이다.",
+        "primaryL3Necessity": "NEGATE_CLAIM_THEN_CONGRUENCE_CONTRADICTION",
+        "mathSelfCheckEvidence": {
+          "modularSquareResidues": {
+            "3": [
+              0,
+              1
+            ],
+            "4": [
+              0,
+              1
+            ],
+            "5": [
+              0,
+              1,
+              4
+            ],
+            "16": [
+              0,
+              1,
+              4,
+              9
+            ]
+          },
+          "enumeratedPythagoreanTripleCount": 192,
+          "nineClaimCounterexamples": 0,
+          "congruenceProofSteps": [
+            [
+              "부정 가정",
+              "a,b 모두 4의 배수가 아님"
+            ],
+            [
+              "제곱의 합 (mod 16)",
+              "가능한 값: {2,5,8,10,13}"
+            ],
+            [
+              "제곱수 (mod 16)",
+              "가능한 값: {0,1,4,9} → 교집합 없음"
+            ]
+          ],
+          "noCalculus": true
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_ESSAY",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본과 마찬가지로 수와 수식이 완결되어 문제 그림을 넣으면 증명의 힌트가 됨"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_EDUCATIONAL_BENEFIT",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q22/B3-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-JEIL25-2FINAL-Q22-C1",
+      "sourceQid": 22,
+      "sourceUid": null,
+      "slot": "C1",
+      "purpose": "C",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q22",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "canonical_content_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "자연수 $a,b,c$가 $a^2+b^2=c^2$을 만족한다고 하자. $a,b,c$ 중 적어도 하나는 $5$의 배수임을 귀류법으로 증명하시오.",
+      "choices": [],
+      "answer": "$a,b,c$ 중 적어도 하나는 $5$의 배수이다.",
+      "solution": "결론을 부정하여 $a,b,c$가 모두 $5$의 배수가 아니라고 가정하자.\n$5$의 배수가 아닌 정수의 제곱을 $5$로 나눈 나머지는 $1$ 또는 $4$이다.\n따라서 $a^2+b^2$를 $5$로 나눈 나머지는 $1+1=2$, $1+4=0$, $4+4\\equiv3\\pmod5$ 중 하나이다. 그런데 $c^2$의 나머지는 $1$ 또는 $4$여야 하므로 두 식은 같을 수 없다.\n모순이므로 $a,b,c$ 중 적어도 하나는 $5$의 배수이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q22/C1-solution.svg",
+      "solutionImageAlt": "C1 제곱수의 나머지를 이용한 귀류법 단계별 해설 SVG",
+      "solutionImageCaption": "결론의 부정 가정과 제곱수 나머지 비교에서 생기는 모순을 순서대로 확인한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourceMetaFoundationL3": "귀류법",
+        "primaryRPM_L3": "증명",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-249",
+        "rpmRecordId": "H1-RPM-249",
+        "rpmRecordMappingStatus": "FAMILY_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "귀류법",
+        "problemTypeKey": "PT_CONTRADICTION_PROOF",
+        "templateKey": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q22-PYTHAGOREAN-MOD5",
+        "effectiveL4Authority": "GENERATED_ACTIVE",
+        "crossConceptKeys": [
+          "CC_NUMBER_DIVISOR_MULTIPLE"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_REUSED_ACTIVE_PT_TPL_EXT_L4_REGISTERED"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "자연수 조건과 증명 목표가 명확하며 귀류법의 부정 가정 및 실제 제곱수 나머지 모순이 필수인 학교 서술형이다.",
+        "primaryL3Necessity": "NEGATE_CLAIM_THEN_CONGRUENCE_CONTRADICTION",
+        "mathSelfCheckEvidence": {
+          "modularSquareResidues": {
+            "3": [
+              0,
+              1
+            ],
+            "4": [
+              0,
+              1
+            ],
+            "5": [
+              0,
+              1,
+              4
+            ],
+            "16": [
+              0,
+              1,
+              4,
+              9
+            ]
+          },
+          "enumeratedPythagoreanTripleCount": 192,
+          "nineClaimCounterexamples": 0,
+          "congruenceProofSteps": [
+            [
+              "부정 가정",
+              "a,b,c 모두 5의 배수가 아님"
+            ],
+            [
+              "왼쪽 (mod 5)",
+              "a²+b² ∈ {0,2,3}"
+            ],
+            [
+              "오른쪽 (mod 5)",
+              "c² ∈ {1,4} → 모순"
+            ]
+          ],
+          "noCalculus": true
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_ESSAY",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본과 마찬가지로 수와 수식이 완결되어 문제 그림을 넣으면 증명의 힌트가 됨"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_EDUCATIONAL_BENEFIT",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q22/C1-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-JEIL25-2FINAL-Q22-C2",
+      "sourceQid": 22,
+      "sourceUid": null,
+      "slot": "C2",
+      "purpose": "C",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q22",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "canonical_content_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "자연수 $a,b,c$가 $a^2+b^2=c^2$을 만족하고 $a$가 홀수일 때, $c$는 홀수이고 $b$는 $4$의 배수임을 귀류법으로 증명하시오.",
+      "choices": [],
+      "answer": "$c$는 홀수이고 $b$는 $4$의 배수이다.",
+      "solution": "$a$가 홀수이다. $b$도 홀수라고 가정하면 $a^2+b^2\\equiv1+1=2\\pmod4$인데 정수의 제곱은 $4$로 나눈 나머지가 $0$ 또는 $1$뿐이므로 모순이다. 따라서 $b$는 짝수이고, $c^2=a^2+b^2$는 홀수이므로 $c$도 홀수이다.\n이제 $b$가 $4$의 배수가 아니라고 가정하자. $b$는 짝수이므로 $b\\equiv2\\pmod4$이고, 따라서 $b^2\\equiv4\\pmod{16}$이다.\n홀수 $a,c$의 제곱을 $16$으로 나눈 나머지는 각각 $1$ 또는 $9$이므로 $a^2+b^2$의 나머지는 $5$ 또는 $13$이지만 $c^2$의 나머지는 $1$ 또는 $9$이다. 이는 모순이다.\n따라서 $b$는 $4$의 배수이고 $c$는 홀수이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q22/C2-solution.svg",
+      "solutionImageAlt": "C2 제곱수의 나머지를 이용한 귀류법 단계별 해설 SVG",
+      "solutionImageCaption": "결론의 부정 가정과 제곱수 나머지 비교에서 생기는 모순을 순서대로 확인한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourceMetaFoundationL3": "귀류법",
+        "primaryRPM_L3": "증명",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-249",
+        "rpmRecordId": "H1-RPM-249",
+        "rpmRecordMappingStatus": "FAMILY_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "귀류법",
+        "problemTypeKey": "PT_CONTRADICTION_PROOF",
+        "templateKey": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q22-ODD-LEG-STRONGER-DIVISIBILITY",
+        "effectiveL4Authority": "GENERATED_ACTIVE",
+        "crossConceptKeys": [
+          "CC_NUMBER_PARITY",
+          "CC_NUMBER_DIVISOR_MULTIPLE"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_REUSED_ACTIVE_PT_TPL_EXT_L4_REGISTERED"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "자연수 조건과 증명 목표가 명확하며 귀류법의 부정 가정 및 실제 제곱수 나머지 모순이 필수인 학교 서술형이다.",
+        "primaryL3Necessity": "NEGATE_CLAIM_THEN_CONGRUENCE_CONTRADICTION",
+        "mathSelfCheckEvidence": {
+          "modularSquareResidues": {
+            "3": [
+              0,
+              1
+            ],
+            "4": [
+              0,
+              1
+            ],
+            "5": [
+              0,
+              1,
+              4
+            ],
+            "16": [
+              0,
+              1,
+              4,
+              9
+            ]
+          },
+          "enumeratedPythagoreanTripleCount": 192,
+          "nineClaimCounterexamples": 0,
+          "congruenceProofSteps": [
+            [
+              "첫 부정 가정",
+              "b 홀수 → 2 (mod 4), 모순"
+            ],
+            [
+              "두 번째 가정",
+              "b 짝수지만 4의 배수 아님 → b² ≡ 4"
+            ],
+            [
+              "16으로 나눈 나머지",
+              "a²+b² ∈ {5,13}, c² ∈ {1,9} → 모순"
+            ]
+          ],
+          "noCalculus": true
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_ESSAY",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본과 마찬가지로 수와 수식이 완결되어 문제 그림을 넣으면 증명의 힌트가 됨"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_EDUCATIONAL_BENEFIT",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q22/C2-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-JEIL25-2FINAL-Q22-C3",
+      "sourceQid": 22,
+      "sourceUid": null,
+      "slot": "C3",
+      "purpose": "C",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q22",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "명제",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "canonical_content_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "tags": [
+        "서술형"
+      ],
+      "wide": false,
+      "content": "자연수 $a,b,c$가 $a^2+b^2=c^2$을 만족한다고 하자. 곱 $abc$가 반드시 $60$의 배수임을 귀류법을 사용하여 증명하시오.",
+      "choices": [],
+      "answer": "$abc$는 $60$의 배수이다.",
+      "solution": "먼저 $a,b$ 중 어느 것도 $3$의 배수가 아니라고 가정하자. 이때 $a^2\\equiv b^2\\equiv1\\pmod3$이고 $c^2\\equiv2\\pmod3$이 되지만 제곱수는 $3$으로 나눈 나머지가 $0$ 또는 $1$뿐이므로 모순이다. 따라서 $3$이 $ab$를 나눈다.\n다음으로 $a,b$ 중 어느 것도 $4$의 배수가 아니라고 가정하자. $4$의 배수가 아닌 수의 제곱을 $16$으로 나눈 나머지는 $1,4,9$ 중 하나다. 두 수가 각각 홀수 또는 $4$로 나눈 나머지가 $2$인 짝수임을 고려하면 그 제곱의 합은 $2,5,8,10,13$ 중 하나이지만 제곱수 $c^2$의 가능한 나머지는 $0,1,4,9$여서 모순이다. 따라서 $4$가 $ab$를 나눈다.\n마지막으로 $a,b,c$ 어느 것도 $5$의 배수가 아니라고 하면 각 제곱을 $5$로 나눈 나머지는 $1$ 또는 $4$이다. 따라서 $a^2+b^2$의 나머지는 $0,2,3$ 중 하나인데 $c^2$의 나머지는 $1,4$여서 모순이다. 따라서 $5$가 $abc$를 나눈다.\n서로소인 $3,4,5$가 모두 $abc$를 나누므로 $3\\cdot4\\cdot5=60$도 $abc$를 나눈다. 따라서 $abc$는 $60$의 배수이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q22/C3-solution.svg",
+      "solutionImageAlt": "C3 제곱수의 나머지를 이용한 귀류법 단계별 해설 SVG",
+      "solutionImageCaption": "결론의 부정 가정과 제곱수 나머지 비교에서 생기는 모순을 순서대로 확인한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "sourceMetaFoundationL3": "귀류법",
+        "primaryRPM_L3": "증명",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-249",
+        "rpmRecordId": "H1-RPM-249",
+        "rpmRecordMappingStatus": "FAMILY_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "귀류법",
+        "problemTypeKey": "PT_CONTRADICTION_PROOF",
+        "templateKey": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q22-TRIPLE-PRODUCT-60",
+        "effectiveL4Authority": "GENERATED_ACTIVE",
+        "crossConceptKeys": [
+          "CC_NUMBER_PARITY",
+          "CC_NUMBER_DIVISOR_MULTIPLE",
+          "CC_NUMBER_PRIME_COPRIME"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 5,
+        "metadataDebt": [
+          "SOURCE_UID_V1_EXACT_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_REUSED_ACTIVE_PT_TPL_EXT_L4_REGISTERED"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "자연수 조건과 증명 목표가 명확하며 귀류법의 부정 가정 및 실제 제곱수 나머지 모순이 필수인 학교 서술형이다.",
+        "primaryL3Necessity": "NEGATE_CLAIM_THEN_CONGRUENCE_CONTRADICTION",
+        "mathSelfCheckEvidence": {
+          "modularSquareResidues": {
+            "3": [
+              0,
+              1
+            ],
+            "4": [
+              0,
+              1
+            ],
+            "5": [
+              0,
+              1,
+              4
+            ],
+            "16": [
+              0,
+              1,
+              4,
+              9
+            ]
+          },
+          "enumeratedPythagoreanTripleCount": 192,
+          "nineClaimCounterexamples": 0,
+          "congruenceProofSteps": [
+            [
+              "3의 배수 귀류",
+              "3 | ab : 제곱의 합 2 (mod 3)은 모순"
+            ],
+            [
+              "4의 배수 귀류",
+              "4 | ab : 제곱의 합과 제곱수 (mod 16) 모순"
+            ],
+            [
+              "5의 배수 귀류",
+              "5 | abc : 합 {0,2,3} ≠ 제곱 {1,4}"
+            ],
+            [
+              "결합 결론",
+              "3,4,5는 서로소 → 60 | abc"
+            ]
+          ],
+          "noCalculus": true
+        },
+        "wrongRoutes": [],
+        "wrongRouteCoverage": "NOT_APPLICABLE_ESSAY",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본과 마찬가지로 수와 수식이 완결되어 문제 그림을 넣으면 증명의 힌트가 됨"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_EDUCATIONAL_BENEFIT",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q22/C3-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    }
+  ]
+}
