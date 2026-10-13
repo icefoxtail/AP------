@@ -4,10 +4,10 @@
   const $ = (id) => document.getElementById(id);
   const ui = {
     canvas: $('space'), status: $('catalogStatus'), count: $('sceneCount'), search: $('search'),
-    grade: $('gradeFilter'), school: $('schoolFilter'), year: $('yearFilter'), term: $('termFilter'), unit: $('unitFilter'),
+    grade: $('gradeFilter'), school: $('schoolFilter'), year: $('yearFilter'), term: $('termFilter'), subject: $('subjectFilter'), unit: $('unitFilter'),
     filterPanel: $('filterPanel'), filterToggle: $('filterToggle'), focusedChip: $('focusedChip'),
     drawer: $('examDrawer'), frame: $('examFrame'), title: $('examTitle'), meta: $('examMeta'), source: $('examSource'),
-    openOriginal: $('openOriginal'), printOriginal: $('printOriginal'), labels: $('planetLabels'), satelliteLabels: $('satelliteLabels'),
+    openOriginal: $('openOriginal'), printOriginal: $('printOriginal'), labels: $('planetLabels'), facetSpaceLabels: $('facetSpaceLabels'), satelliteLabels: $('satelliteLabels'),
     focusName: $('focusedSchoolName'), focusMeta: $('focusedSchoolMeta'), toast: $('toast'),
     listPanel: $('listPanel'), listGroups: $('listGroups'),
     questionOrbit: $('questionOrbit'), questionStatus: $('questionStatus'),
@@ -17,7 +17,7 @@
     atlasExplore: $('atlasExplore'), atlasOverview: $('atlasOverview'), atlasPanel: $('atlasPanel'), atlasCollapse: $('atlasCollapse'),
     scaleRail: $('scaleRail'), scaleLabel: $('scaleLabel'), scaleCaption: $('scaleCaption'),
     facetNav: $('facetNav'), facetSummary: $('facetSummary'), clearFacetSelections: $('clearFacetSelections'),
-    facetGrade: $('facetGrade'), facetTerm: $('facetTerm'), facetYear: $('facetYear'), facetSchool: $('facetSchool'),
+    facetGrade: $('facetGrade'), facetTerm: $('facetTerm'), facetYear: $('facetYear'), facetSchool: $('facetSchool'), facetSubject: $('facetSubject'),
   };
   const state = {
     exams: [], records: [], filtered: [], visibleGroups: [], visibleExams: [], selectedExam: null,
@@ -94,11 +94,15 @@
     for (const value of values) select.add(new Option(value, value));
     if (values.includes(selected)) select.value = selected;
   };
+  const subjectFacetValue = (exam) => {
+    return clean(exam.primaryStandardCourse || exam.courseRanges?.[0]?.standardCourse || exam.subject);
+  };
   const currentFilters = () => ({
     grade: ui.grade.value,
     school: ui.school.value,
     year: ui.year.value,
     term: ui.term?.value || '',
+    subject: ui.subject?.value || '',
     unit: ui.unit.value,
     query: normalizedField(ui.search.value),
   });
@@ -111,6 +115,7 @@
       if (semester && String(exam.semester) !== semester) return false;
       if (examType && exam.examType !== examType) return false;
     }
+    if (filters.subject && subjectFacetValue(exam) !== filters.subject) return false;
     const tags = state.tagsByFile.get(exam.file);
     if (filters.unit && !tags?.has(filters.unit)) return false;
     if (!filters.query) return true;
@@ -134,19 +139,22 @@
     term: (exam) => termKey(exam),
     year: (exam) => clean(exam.year),
     school: (exam) => clean(exam.school),
+    subject: subjectFacetValue,
   };
   const facetLabel = (kind, value) => kind === 'term' ? termLabel(value) : value;
   function renderFacets() {
-    if (!ui.facetNav) return;
+    if (!ui.facetNav) return [];
     const current = currentFilters();
-    const kinds = ['grade', 'term', 'year', 'school'];
-    const controls = { grade: ui.facetGrade, term: ui.facetTerm, year: ui.facetYear, school: ui.facetSchool };
+    const kinds = ['grade', 'term', 'year', 'school', 'subject'];
+    const controls = { grade: ui.facetGrade, term: ui.facetTerm, year: ui.facetYear, school: ui.facetSchool, subject: ui.facetSubject };
+    const facetNodes = [];
     for (const kind of kinds) {
       const base = { ...current, query: current.query };
       if (kind === 'grade') base.grade = '';
       if (kind === 'term') base.term = '';
       if (kind === 'year') base.year = '';
       if (kind === 'school') base.school = '';
+      if (kind === 'subject') base.subject = '';
       const values = [...new Set(state.exams.map(facetValues[kind]).filter(Boolean))];
       values.sort((a, b) => kind === 'year' ? Number(b) - Number(a) : facetLabel(kind, a).localeCompare(facetLabel(kind, b), 'ko'));
       const container = controls[kind];
@@ -154,7 +162,7 @@
       container.replaceChildren();
       for (const value of values) {
         const countFilters = { ...base, [kind]: value };
-        const count = state.exams.filter((exam) => matchesFilters(exam, countFilters)).length;
+        const count = new Set(state.exams.filter((exam) => matchesFilters(exam, countFilters)).map((exam) => exam.file)).size;
         const button = document.createElement('button');
         button.type = 'button';
         button.className = 'facet-node';
@@ -163,8 +171,18 @@
         button.setAttribute('aria-pressed', String(current[kind] === value));
         button.disabled = count === 0 && current[kind] !== value;
         button.setAttribute('aria-label', facetLabel(kind, value) + ' · ' + count + '개 시험지');
-        button.innerHTML = '<span>' + facetLabel(kind, value) + '</span><small>' + count + '</small>';
+        button.innerHTML = '<span>' + facetLabel(kind, value) + '</span>';
         container.append(button);
+        facetNodes.push({
+          id: kind + ':' + value,
+          kind,
+          value,
+          label: facetLabel(kind, value),
+          count,
+          selected: current[kind] === value,
+          disabled: count === 0 && current[kind] !== value,
+          priority: (kind === 'grade' && /^중[123]$/.test(value)) || (kind === 'subject' && /^(공통수학1|공통수학2|대수|미적분|미적분I|확률과 ?통계|기하|기하와벡터)$/.test(value) && state.exams.some((exam) => subjectFacetValue(exam) === value && /^고/.test(clean(exam.grade)))),
+        });
       }
       if (!values.length) {
         const empty = document.createElement('span');
@@ -173,15 +191,44 @@
         container.append(empty);
       }
     }
-    const active = [current.grade && '학년 ' + current.grade, current.term && termLabel(current.term), current.year && current.year + '년', current.school].filter(Boolean);
-    ui.facetSummary.textContent = active.length ? active.join(' · ') + ' · ' + state.filtered.length + '개 시험지' : '학년·시험·연도·학교를 원하는 순서로 고르세요.';
+    const active = [current.grade && '학년 ' + current.grade, current.term && termLabel(current.term), current.year && current.year + '년', current.school, current.subject && current.subject].filter(Boolean);
+    ui.facetSummary.textContent = active.length ? active.join(' · ') + ' · ' + state.filtered.length + '개 시험지' : '학년·과목·시험·연도·학교를 원하는 순서로 고르세요.';
+    return facetNodes;
   }
   function applyFacet(kind, value) {
-    const select = kind === 'grade' ? ui.grade : kind === 'term' ? ui.term : kind === 'year' ? ui.year : ui.school;
+    const select = kind === 'grade' ? ui.grade : kind === 'term' ? ui.term : kind === 'year' ? ui.year : kind === 'school' ? ui.school : ui.subject;
     if (!select) return;
     select.value = select.value === value ? '' : value;
     ui.search.value = '';
     renderScene();
+  }
+  const facetCategoryNames = {
+    grade: '\uD559\uB144 \uC740\uD558',
+    term: '\uC2DC\uD5D8 \uC740\uD558',
+    year: '\uC5F0\uB3C4 \uC740\uD558',
+    school: '\uD559\uAD50 \uC740\uD558',
+    subject: '\uACFC\uBAA9 \uC740\uD558',
+  };
+  function renderFacetSpaceLabels(nodes) {
+    if (!ui.facetSpaceLabels) return;
+    ui.facetSpaceLabels.replaceChildren();
+    for (const kind of ['grade', 'subject', 'term', 'year', 'school']) {
+      const label = document.createElement('div');
+      label.className = 'facet-space-label facet-space-category';
+      label.dataset.facetCategory = kind;
+      label.innerHTML = '<b>' + facetCategoryNames[kind] + '</b>';
+      ui.facetSpaceLabels.append(label);
+    }
+    for (const node of nodes) {
+      const label = document.createElement('div');
+      label.className = 'facet-space-label facet-space-value';
+      label.dataset.facetId = node.id;
+      label.dataset.facetKind = node.kind;
+      label.dataset.priority = String(Boolean(node.priority));
+      label.dataset.selected = String(node.selected);
+      label.innerHTML = '<b>' + node.label + '</b><span class="facet-space-count">' + node.count + '</span>';
+      ui.facetSpaceLabels.append(label);
+    }
   }
   const primaryUnitForExam = (exam) => {
     const tags = examTags(exam).sort((a, b) => a.localeCompare(b, 'ko'));
@@ -272,7 +319,7 @@
       camera: state.world?.snapshotNavigation() || null,
       mode: state.groupMode, groupId: state.focusedGroupId,
       search: ui.search.value, grade: ui.grade.value, school: ui.school.value,
-      unit: ui.unit.value, year: ui.year.value, term: ui.term?.value || '',
+      unit: ui.unit.value, year: ui.year.value, term: ui.term?.value || '', subject: ui.subject?.value || '',
     };
   }
   function restoreNavigation(snapshot) {
@@ -280,7 +327,7 @@
     state.groupMode = snapshot.mode;
     state.focusedGroupId = snapshot.groupId;
     ui.search.value = snapshot.search;
-    for (const field of ['grade', 'school', 'unit', 'year', 'term']) if (ui[field]) ui[field].value = snapshot[field] || '';
+    for (const field of ['grade', 'school', 'unit', 'year', 'term', 'subject']) if (ui[field]) ui[field].value = snapshot[field] || '';
     $('groupModes').querySelectorAll('[data-group-mode]').forEach(button => {
       button.setAttribute('aria-pressed', String(button.dataset.groupMode === state.groupMode));
     });
@@ -466,9 +513,10 @@
     label.className = 'planet-label';
     const title = document.createElement('b');
     title.textContent = group.name;
-    const meta = document.createElement('small');
-    meta.textContent = group.exams.length.toLocaleString() + '개 자료 노드';
-    label.append(title, meta);
+    const count = document.createElement('span');
+    count.className = 'planet-count';
+    count.textContent = group.exams.length.toLocaleString();
+    label.append(title, count);
     ui.labels.append(label);
     state.groupLabels.set(group.id, label);
   }
@@ -633,7 +681,9 @@
     setFilterSummary();
     createAccessibleList();
     updateConstellations();
-    renderFacets();
+    const facetNodes = renderFacets();
+    renderFacetSpaceLabels(facetNodes);
+    state.world?.setFacetData(facetNodes);
     const schoolCount = new Set(state.filtered.map((exam) => exam.school)).size;
     ui.atlasExamCount.textContent = state.filtered.length.toLocaleString();
     ui.atlasGroupCount.textContent = state.visibleGroups.length.toLocaleString();
@@ -645,7 +695,7 @@
       : '조건에 맞는 은하가 없습니다. 필터를 풀거나 검색어를 바꿔 보세요.';
   }
   function setFilterSummary() {
-    const active = [ui.grade.value, ui.school.value, ui.year.value, ui.term?.value, ui.unit.value, ui.search.value.trim()].filter(Boolean).length;
+    const active = [ui.grade.value, ui.school.value, ui.year.value, ui.term?.value, ui.subject?.value, ui.unit.value, ui.search.value.trim()].filter(Boolean).length;
     const modeName = state.groupMode === 'grade' ? '학년 성단' : state.groupMode === 'unit' ? '단원 성단' : '학교 은하';
     $('filterSummary').textContent = active
       ? active + '개 조건 · ' + state.filtered.length.toLocaleString() + '개 시험지 · ' + modeName
@@ -666,6 +716,7 @@
     optionValues(ui.grade, [...new Set(state.exams.map((exam) => exam.grade).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ko')), '학년');
     optionValues(ui.year, [...new Set(state.exams.map((exam) => String(exam.year)).filter(Boolean))].sort((a, b) => Number(b) - Number(a)), '연도');
     if (ui.term) optionValues(ui.term, [...new Set(state.exams.map(termKey).filter(Boolean))].sort((a, b) => termLabel(a).localeCompare(termLabel(b), 'ko')), '시험 구분');
+    if (ui.subject) optionValues(ui.subject, [...new Set(state.exams.map(subjectFacetValue).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ko')), '\uACFC\uBAA9');
     optionValues(ui.unit, [...state.filesByTag.keys()].sort((a, b) => a.localeCompare(b, 'ko')), '공개 L2 단원');
   }
   async function loadCatalog() {
@@ -700,6 +751,10 @@
     state.world = module.createOrbitWorld({
       canvas: ui.canvas,
       onGroup: (id) => focusGroup(id),
+      onFacet: (kind, value) => {
+        if (value) applyFacet(kind, value);
+        else showToast((kind === 'grade' ? '\uD559\uB144' : kind === 'term' ? '\uC2DC\uD5D8' : kind === 'year' ? '\uC5F0\uB3C4' : kind === 'school' ? '\uD559\uAD50' : '\uACFC\uBAA9') + ' \uAE30\uC900\uC740 HTML \uD0D0\uC0C9\u5F8C\uB85C \uACE0\uB97C\uC138\uC694.');
+      },
       onExam: (file) => {
         const exam = state.examsByFile.get(file);
         if (exam) openExam(exam);
@@ -724,6 +779,7 @@
           point.y + halfHeight > rect.top && point.y - halfHeight < rect.bottom,
         );
         for (const label of state.groupLabels.values()) label.style.display = 'none';
+        for (const label of ui.facetSpaceLabels?.children || []) label.style.display = 'none';
         for (const button of ui.questionOrbit.children) {
           const point = positions.questions?.get(button.dataset.questionId);
           button.style.display = point?.visible && !overlapsChrome(point, 16, 16) ? 'grid' : 'none';
@@ -746,6 +802,45 @@
           shownGroupLabels += 1;
           label.style.left = point.x + 'px';
           label.style.top = (point.y - 22) + 'px';
+        }
+        const facetCategoryPositions = positions.facetCategories || new Map();
+        const facetPositions = positions.facets || new Map();
+        const facetCandidates = [...(ui.facetSpaceLabels?.children || [])].map((label) => ({
+          label,
+          point: label.dataset.facetCategory
+            ? facetCategoryPositions.get(label.dataset.facetCategory)
+            : facetPositions.get(label.dataset.facetId),
+          category: Boolean(label.dataset.facetCategory),
+        })).filter(({ point }) => point?.visible).sort((a, b) => a.point.depth - b.point.depth);
+        const occupiedFacets = [];
+        let shownFacets = 0;
+        for (const { label, point, category } of facetCandidates) {
+          const selected = label.dataset.selected === 'true';
+          const priority = label.dataset.priority === 'true';
+          const crowded = occupiedFacets.some((used) => Math.abs(used.x - point.x) < (category ? 96 : 64) && Math.abs(used.y - point.y) < 24);
+          if (category) {
+            label.style.display = 'block';
+            label.style.left = point.x + 'px';
+            label.style.top = (point.y - 18) + 'px';
+            occupiedFacets.push(point);
+            shownFacets += 1;
+            continue;
+          }
+          if (priority && !selected) {
+            label.style.display = 'block';
+            label.style.left = point.x + 'px';
+            label.style.top = (point.y - 12) + 'px';
+            occupiedFacets.push(point);
+            shownFacets += 1;
+            continue;
+          }
+          if ((!selected && crowded) || shownFacets >= 22 || overlapsChrome(point, 36, 16)) continue;
+          label.style.display = selected || point.depth < 118 ? 'block' : 'none';
+          if (label.style.display === 'none') continue;
+          occupiedFacets.push(point);
+          shownFacets += 1;
+          label.style.left = point.x + 'px';
+          label.style.top = (point.y - (category ? 18 : 12)) + 'px';
         }
         for (const button of state.satelliteButtons.values()) button.style.display = 'none';
         const satelliteCandidates = (state.selectedExam ? [] : [...state.satelliteButtons]).map(([file, button]) => ({ file, button, point: positions.exams.get(file) }))
@@ -795,6 +890,7 @@
     ui.school.value = '';
     ui.year.value = '';
     if (ui.term) ui.term.value = '';
+    if (ui.subject) ui.subject.value = '';
     ui.unit.value = '';
     ui.search.value = '';
     state.activeTag = '';
@@ -825,7 +921,13 @@
       ui.term.hidden = true;
       document.body.append(ui.term);
     }
-    for (const field of [ui.grade, ui.school, ui.year, ui.term, ui.unit].filter(Boolean)) field.addEventListener('change', renderScene);
+    if (!ui.subject) {
+      ui.subject = document.createElement('select');
+      ui.subject.id = 'subjectFilter';
+      ui.subject.hidden = true;
+      document.body.append(ui.subject);
+    }
+    for (const field of [ui.grade, ui.school, ui.year, ui.term, ui.subject, ui.unit].filter(Boolean)) field.addEventListener('change', renderScene);
     $('clearFilters').addEventListener('click', clearAllFilters);
     ui.filterToggle.addEventListener('click', () => toggleFilters());
     $('closeFilters').addEventListener('click', () => toggleFilters(false));
