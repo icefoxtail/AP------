@@ -16965,6 +16965,37 @@ window.mainDB = {
       "primaryStandardCourse": "수학(하)"
     },
     {
+      "file": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+      "school": "효천고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2020,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "공통수학2",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SB-01",
+      "rangeStartUnit": "집합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SB-03",
+      "rangeEndUnit": "함수",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(하)",
+          "courseCode": "H15-SB",
+          "rangeStartUnitKey": "H15-SB-01",
+          "rangeStartUnit": "집합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SB-03",
+          "rangeEndUnit": "함수",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
       "file": "original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
       "school": "신흥중",
       "topic": "",
@@ -17810,6 +17841,47 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "수학(상)"
+    },
+    {
+      "file": "original/high/h1/1mid/19_순천여고_1학기_중간_고1_기출.js",
+      "school": "순천여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2019,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SA-10",
+          "rangeEndUnit": "직선의 방정식",
+          "rangeEndUnitOrder": 10
+        },
+        {
+          "standardCourse": "수학(하)",
+          "courseCode": "H15-SB",
+          "rangeStartUnitKey": "H15-SB-06",
+          "rangeStartUnit": "경우의 수",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H15-SB-07",
+          "rangeEndUnit": "순열",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": ""
     },
     {
       "file": "original/high/h1/1final/19_팔마고_1학기_기말_고1_기출.js",
