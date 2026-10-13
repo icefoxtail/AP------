@@ -16687,6 +16687,37 @@ window.mainDB = {
       "primaryStandardCourse": "수학(상)"
     },
     {
+      "file": "original/high/h1/2final/20_매산고_2학기_기말_고1_기출.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2020,
+      "semester": "2",
+      "examType": "final",
+      "subject": "공통수학2",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H15-SB-03",
+      "rangeStartUnit": "함수",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H15-SB-08",
+      "rangeEndUnit": "조합",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(하)",
+          "courseCode": "H15-SB",
+          "rangeStartUnitKey": "H15-SB-03",
+          "rangeStartUnit": "함수",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H15-SB-08",
+          "rangeEndUnit": "조합",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "수학(하)"
+    },
+    {
       "file": "original/high/h1/1final/20_매산고_1학기_기말_고1_기출.js",
       "school": "매산고",
       "topic": "",
