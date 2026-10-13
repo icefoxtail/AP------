@@ -593,9 +593,9 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     const positions = {
       grade: [-10, 2, 8],
       subject: [12, 2, 8],
-      term: [-34, -9, -18],
-      year: [0, -14, -27],
-      school: [34, -9, -18],
+      term: mobile ? [-12, -9, -18] : [-34, -9, -18],
+      year: mobile ? [0, -14, -27] : [0, -14, -27],
+      school: mobile ? [12, -9, -18] : [34, -9, -18],
     };
     const [x, y, z] = positions[FACET_KINDS[index]] || [0, 0, 0];
     return new THREE.Vector3(x, y, z);
@@ -684,9 +684,13 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     pick.userData.disabled = Boolean(data.disabled);
     root.add(pick);
     category.root.add(root);
+    const kindIndex = [...facetNodes.values()].filter((existing) => existing.kind === data.kind).length;
+    const radius = mobile
+      ? (data.kind === 'grade' ? 7.4 + kindIndex * 1.7 : data.kind === 'term' ? 7.2 + kindIndex * 1.35 : data.kind === 'year' ? 8.2 + (kindIndex % 8) * 1.1 : data.kind === 'school' ? 9.2 + (kindIndex % 9) * .92 : 5.2 + (index % 6) * 1.2)
+      : 5.2 + (index % 6) * 1.2;
     const node = {
       ...data, root, galaxy, glow, star, ring, pick, category,
-      phase: hashAngle(data.id), radius: 5.2 + (index % 6) * 1.2,
+      phase: hashAngle(data.id), radius,
       speed: .012 + (hashText(data.id) % 5) * .003,
     };
     facetNodes.set(data.id, node);

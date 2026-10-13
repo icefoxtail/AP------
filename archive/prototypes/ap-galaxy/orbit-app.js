@@ -17,7 +17,7 @@
     atlasExplore: $('atlasExplore'), atlasOverview: $('atlasOverview'), atlasPanel: $('atlasPanel'), atlasCollapse: $('atlasCollapse'),
     scaleRail: $('scaleRail'), scaleLabel: $('scaleLabel'), scaleCaption: $('scaleCaption'),
     facetNav: $('facetNav'), facetSummary: $('facetSummary'), clearFacetSelections: $('clearFacetSelections'),
-    facetGrade: $('facetGrade'), facetTerm: $('facetTerm'), facetYear: $('facetYear'), facetSchool: $('facetSchool'), facetSubject: $('facetSubject'),
+    facetGrade: $('facetGrade'), facetTerm: $('facetTerm'), facetYear: $('facetYear'), facetSchool: $('facetSchool'), facetSubject: $('facetSubject'), selectCurrentRange: $('selectCurrentRange'),
   };
   const state = {
     exams: [], records: [], filtered: [], visibleGroups: [], visibleExams: [], selectedExam: null,
@@ -182,9 +182,12 @@
           selected: current[kind] === value,
           disabled: count === 0 && current[kind] !== value,
           priority: (kind === 'grade' && /^중[123]$/.test(value)) || (kind === 'subject' && /^(공통수학1|공통수학2|대수|미적분|미적분I|확률과 ?통계|기하|기하와벡터)$/.test(value) && state.exams.some((exam) => subjectFacetValue(exam) === value && /^고/.test(clean(exam.grade)))),
-          worldVisible: kind !== 'grade' || /^중[123]$/.test(value)
-            ? kind !== 'subject' || state.exams.some((exam) => subjectFacetValue(exam) === value && /^고/.test(clean(exam.grade)))
-            : false,
+          worldVisible: count > 0 &&
+            (kind !== 'grade' || /^\uC911[123]$/.test(value)) &&
+            (kind !== 'subject' || state.exams.some((exam) => subjectFacetValue(exam) === value && /^\uACE0/.test(clean(exam.grade)))) &&
+            (kind !== 'term' || Boolean(current.grade)) &&
+            (kind !== 'year' || Boolean(current.grade && current.term)) &&
+            (kind !== 'school' || Boolean(current.grade && current.term && current.year)),
         });
       }
       if (!values.length) {
@@ -193,6 +196,12 @@
         empty.textContent = '자료 없음';
         container.append(empty);
       }
+    }
+    for (const node of facetNodes) {
+      node.priority = node.priority ||
+        (node.kind === 'term' && Boolean(current.grade)) ||
+        (node.kind === 'year' && Boolean(current.grade && current.term)) ||
+        (node.kind === 'school' && Boolean(current.grade && current.term && current.year));
     }
     const active = [current.grade, current.subject, current.term && termLabel(current.term), current.year, current.school].filter(Boolean);
     ui.facetSummary.textContent = active.length ? active.join(' · ') : '학년·과목·시험·연도·학교 기준을 고르세요.';
@@ -204,6 +213,17 @@
     select.value = select.value === value ? '' : value;
     ui.search.value = '';
     renderScene();
+  }
+  function openCurrentRangeComposer() {
+    if (!state.filtered.length) {
+      showToast('현재 범위에 자료가 없습니다.');
+      return;
+    }
+    const url = new URL('../../workspace.html', location.href);
+    url.searchParams.set('view', 'compose');
+    url.searchParams.set('range', 'all');
+    for (const exam of state.filtered) url.searchParams.append('source', exam.file);
+    window.location.href = url.href;
   }
   function renderFacetSpaceLabels(nodes) {
     if (!ui.facetSpaceLabels) return;
@@ -677,6 +697,12 @@
     ui.atlasExamCount.textContent = state.filtered.length.toLocaleString();
     ui.atlasGroupCount.textContent = state.visibleGroups.length.toLocaleString();
     ui.atlasDetailCount.textContent = state.visibleExams.length.toLocaleString();
+    if (ui.selectCurrentRange) {
+      ui.selectCurrentRange.disabled = state.filtered.length === 0;
+      ui.selectCurrentRange.setAttribute('aria-label', state.filtered.length
+        ? '현재 범위 자료를 기존 Archive 출제 도구로 선택'
+        : '현재 범위에 자료가 없음');
+    }
     $('sceneCount').textContent = '별 자료 노드 ' + state.filtered.length.toLocaleString() + ' / ' +
       state.filtered.length.toLocaleString() + ' · 입체 별 상세 ' + state.visibleExams.length.toLocaleString() + ' · ' + state.visibleGroups.length + '개 작은 은하';
     $('sceneInstruction').textContent = state.visibleGroups.length
@@ -925,6 +951,7 @@
       if (button) applyFacet(button.dataset.facetKind, button.dataset.facetValue);
     });
     ui.clearFacetSelections?.addEventListener('click', clearAllFilters);
+    ui.selectCurrentRange?.addEventListener('click', openCurrentRangeComposer);
     $('groupModes').addEventListener('click', (event) => {
       const button = event.target.closest('[data-group-mode]');
       if (button) setGroupMode(button.dataset.groupMode);
