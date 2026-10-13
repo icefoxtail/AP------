@@ -16749,6 +16749,37 @@ window.mainDB = {
       "primaryStandardCourse": "수학(하)"
     },
     {
+      "file": "original/high/h1/1final/20_매산여고_1학기_기말_고1_기출.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2020,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-04",
+      "rangeStartUnit": "복소수",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H15-SA-10",
+      "rangeEndUnit": "직선의 방정식",
+      "rangeEndUnitOrder": 10,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-04",
+          "rangeStartUnit": "복소수",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H15-SA-10",
+          "rangeEndUnit": "직선의 방정식",
+          "rangeEndUnitOrder": 10
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
       "file": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
       "school": "매산여고",
       "topic": "",
@@ -17997,6 +18028,37 @@ window.mainDB = {
       "subject": "수학(상)",
       "contentType": "기출",
       "qCount": 21,
+      "rangeStartUnitKey": "H15-SA-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SA-06",
+      "rangeEndUnit": "이차방정식의 근과 계수",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SA-06",
+          "rangeEndUnit": "이차방정식의 근과 계수",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
+      "file": "original/high/h1/1mid/19_효천고_1학기_중간_고1_기출.js",
+      "school": "효천고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2019,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 22,
       "rangeStartUnitKey": "H15-SA-01",
       "rangeStartUnit": "다항식의 연산",
       "rangeStartUnitOrder": 1,
