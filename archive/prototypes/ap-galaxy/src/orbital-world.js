@@ -646,7 +646,6 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     facetRoot.add(root);
     const category = { kind, root, hub, galaxy, glow, nucleus, ring, pick, color };
     facetCategories.set(kind, category);
-    facetPicks.push(pick);
     return category;
   }
   function createFacetNode(data, index) {
@@ -697,7 +696,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   function setFacetData(nextFacets = []) {
     clearFacetNodes();
     FACET_KINDS.forEach((kind, index) => createFacetCategory(kind, index));
-    nextFacets.forEach((data, index) => createFacetNode(data, index));
+    nextFacets.filter((data) => data.worldVisible !== false).forEach((data, index) => createFacetNode(data, index));
   }
   function createDataNode(exam, groupId, slot) {
     const token = new THREE.Group();
