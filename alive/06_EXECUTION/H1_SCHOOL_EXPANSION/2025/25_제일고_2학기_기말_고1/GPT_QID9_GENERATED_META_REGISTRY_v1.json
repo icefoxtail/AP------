@@ -1,7 +1,7 @@
 {
   "schemaVersion": "ALIVE_QID9_GENERATED_META_REGISTRY_v1",
   "status": "GENERATED_ACTIVE_CREATE_SCOPE",
-  "scope": "2025_JEIL_HIGH_2FINAL_H1_Q01_Q17",
+  "scope": "2025_JEIL_HIGH_2FINAL_H1_Q01_Q18",
   "workspaceBranch": "work/alive-25-jeil-h1-2final-qid9",
   "sourceExam": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
   "sourceBlobSha": "252c1cc9a687cadd961183b56ea10d21bf1976b4",
@@ -826,6 +826,106 @@
           "uid": "ALITE-JEIL25-2FINAL-Q17-C3",
           "slot": "C3",
           "questionObjective": "$m>1$인 실수 $m$에 대하여 두 무리함수 $y=\\sqrt{mx}$, $y=\\sqrt{x}$의 그래프에서 높이가 같은 점을 각각 $A,D$라 한다. 이들에서 $x$축에 내린 수선의 발을 $B,C$라 할 때, $ABCD$가 정사각형이며 중심 $M$은 직선 $y=\\dfrac35x$ 위에 있다. 정사각형의 넓이는?"
+        }
+      ]
+    },
+    {
+      "generatedExtL4Id": "EXT-L4-JEIL25-Q18-COMPOSITE-AREA-PARAMETER",
+      "parentLockedRpmL3Id": "H1-RPM-253",
+      "parentLockedRpmL3Label": "합성함수",
+      "labelKo": "넓이 조건에서 합성함수 매개변수 역산",
+      "definition": "합성함수의 구간별 면적 식을 매개변수에 대한 방정식으로 만들고 조건에 맞는 값을 역산한다.",
+      "decisiveStepSignature": "합성함수의 구간별 면적 식을 매개변수에 대한 방정식으로 만들고 조건에 맞는 값을 역산한다.",
+      "sourceQid": 18,
+      "sourceExam": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "comparisonWithExistingRpmL4": "RPM 기본 L4는 합성함수 계산, 본 유형은 검증된 구간 그래프 이후의 추가 넓이 판단",
+      "status": "GENERATED_ACTIVE",
+      "examples": [
+        {
+          "uid": "ALITE-JEIL25-2FINAL-Q18-B1",
+          "slot": "B1",
+          "questionObjective": "두 함수<br>$f(x)=\\begin{cases}1-\\dfrac x2&(0\\le x\\lt2)\\\\x-2&(2\\le x\\le4)\\end{cases}$,<br>$g(x)=\\begin{cases}kx+1&(0\\le x\\lt1)\\\\(k+1)(2-x)&(1\\le x\\le2)\\end{cases}$<br>에 대하여 $k>0$이고 함수 $y=(g\\circ f)(x)$의 그래프와 좌표축으로 둘러싸인 부분의 넓이가 $\\dfrac{15}{2}$일 때 $k$는?"
+        },
+        {
+          "uid": "ALITE-JEIL25-2FINAL-Q18-C1",
+          "slot": "C1",
+          "questionObjective": "두 함수<br>$f(x)=\\begin{cases}1-\\dfrac xa&(0\\le x\\lt a)\\\\\\dfrac{2(x-a)}b&(a\\le x\\le a+b)\\end{cases}$,<br>$g(x)=\\begin{cases}x+1&(0\\le x\\lt1)\\\\4-2x&(1\\le x\\le2)\\end{cases}$<br>에 대하여 양수 $a,b$가 $a+b=5$를 만족한다. 함수 $y=(g\\circ f)(x)$의 그래프와 좌표축으로 둘러싸인 부분의 넓이가 $\\dfrac{27}{4}$일 때 $a$는?"
+        }
+      ]
+    },
+    {
+      "generatedExtL4Id": "EXT-L4-JEIL25-Q18-COMPOSITE-AREA-RATIO",
+      "parentLockedRpmL3Id": "H1-RPM-253",
+      "parentLockedRpmL3Label": "합성함수",
+      "labelKo": "구간별 합성함수 넓이의 비",
+      "definition": "내부 분기점을 기준으로 여러 구간의 도형 넓이를 모아 두 영역의 비를 구한다.",
+      "decisiveStepSignature": "내부 분기점을 기준으로 여러 구간의 도형 넓이를 모아 두 영역의 비를 구한다.",
+      "sourceQid": 18,
+      "sourceExam": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "comparisonWithExistingRpmL4": "RPM 기본 L4는 합성함수 계산, 본 유형은 검증된 구간 그래프 이후의 추가 넓이 판단",
+      "status": "GENERATED_ACTIVE",
+      "examples": [
+        {
+          "uid": "ALITE-JEIL25-2FINAL-Q18-B2",
+          "slot": "B2",
+          "questionObjective": "두 함수<br>$f(x)=\\begin{cases}1-x&(0\\le x\\lt1)\\\\x-1&(1\\le x\\le3)\\end{cases}$,<br>$g(x)=\\begin{cases}x+1&(0\\le x\\lt1)\\\\4-2x&(1\\le x\\le2)\\end{cases}$<br>에 대하여 함수 $y=(g\\circ f)(x)$의 그래프 아래에서 $0\\le x\\le1$인 부분의 넓이를 $S_1$, $1\\le x\\le3$인 부분의 넓이를 $S_2$라 할 때, $S_1:S_2$는?"
+        }
+      ]
+    },
+    {
+      "generatedExtL4Id": "EXT-L4-JEIL25-Q18-COMPOSITE-AREA-INTEGER",
+      "parentLockedRpmL3Id": "H1-RPM-253",
+      "parentLockedRpmL3Label": "합성함수",
+      "labelKo": "합성함수 넓이 부등식과 자연수",
+      "definition": "합성함수의 구간별 넓이 합을 매개변수 부등식으로 바꾸어 제한된 자연수 해를 센다.",
+      "decisiveStepSignature": "합성함수의 구간별 넓이 합을 매개변수 부등식으로 바꾸어 제한된 자연수 해를 센다.",
+      "sourceQid": 18,
+      "sourceExam": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "comparisonWithExistingRpmL4": "RPM 기본 L4는 합성함수 계산, 본 유형은 검증된 구간 그래프 이후의 추가 넓이 판단",
+      "status": "GENERATED_ACTIVE",
+      "examples": [
+        {
+          "uid": "ALITE-JEIL25-2FINAL-Q18-B3",
+          "slot": "B3",
+          "questionObjective": "두 함수<br>$f(x)=\\begin{cases}1-\\dfrac x2&(0\\le x\\lt2)\\\\2(x-2)&(2\\le x\\le3)\\end{cases}$,<br>$g(x)=\\begin{cases}tx+1&(0\\le x\\lt1)\\\\(t+1)(2-x)&(1\\le x\\le2)\\end{cases}$<br>에 대하여 자연수 $t$가 $1\\le t\\le5$를 만족한다. 함수 $y=(g\\circ f)(x)$의 그래프와 두 좌표축으로 둘러싸인 부분의 넓이가 $8$보다 작도록 하는 $t$의 개수는?"
+        }
+      ]
+    },
+    {
+      "generatedExtL4Id": "EXT-L4-JEIL25-Q18-COMPOSITION-ORDER-AREA",
+      "parentLockedRpmL3Id": "H1-RPM-253",
+      "parentLockedRpmL3Label": "합성함수",
+      "labelKo": "합성 순서별 그래프 넓이 비교",
+      "definition": "두 합성 순서의 구간별 그래프를 각각 결정한 뒤 도형 넓이의 차를 구한다.",
+      "decisiveStepSignature": "두 합성 순서의 구간별 그래프를 각각 결정한 뒤 도형 넓이의 차를 구한다.",
+      "sourceQid": 18,
+      "sourceExam": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "comparisonWithExistingRpmL4": "RPM 기본 L4는 합성함수 계산, 본 유형은 검증된 구간 그래프 이후의 추가 넓이 판단",
+      "status": "GENERATED_ACTIVE",
+      "examples": [
+        {
+          "uid": "ALITE-JEIL25-2FINAL-Q18-C2",
+          "slot": "C2",
+          "questionObjective": "두 함수<br>$f(x)=\\begin{cases}1-x&(0\\le x\\lt1)\\\\2x-2&(1\\le x\\le2)\\end{cases}$,<br>$g(x)=\\begin{cases}x+1&(0\\le x\\lt1)\\\\4-2x&(1\\le x\\le2)\\end{cases}$<br>에 대하여 $0\\le x\\le2$에서 두 합성함수 $y=(g\\circ f)(x)$, $y=(f\\circ g)(x)$의 그래프와 $x$축, 두 직선 $x=0$, $x=2$로 둘러싸인 부분의 넓이를 각각 $S,T$라 한다. $S-T$의 값은?"
+        }
+      ]
+    },
+    {
+      "generatedExtL4Id": "EXT-L4-JEIL25-Q18-COMPOSITE-HORIZONTAL-SLICE",
+      "parentLockedRpmL3Id": "H1-RPM-253",
+      "parentLockedRpmL3Label": "합성함수",
+      "labelKo": "합성함수와 수평선 사이 영역 분할",
+      "definition": "합성함수 그래프의 모든 구간에서 수평선과의 교점을 결정한 뒤 분리된 영역의 넓이를 합한다.",
+      "decisiveStepSignature": "합성함수 그래프의 모든 구간에서 수평선과의 교점을 결정한 뒤 분리된 영역의 넓이를 합한다.",
+      "sourceQid": 18,
+      "sourceExam": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "comparisonWithExistingRpmL4": "RPM 기본 L4는 합성함수 계산, 본 유형은 검증된 구간 그래프 이후의 추가 넓이 판단",
+      "status": "GENERATED_ACTIVE",
+      "examples": [
+        {
+          "uid": "ALITE-JEIL25-2FINAL-Q18-C3",
+          "slot": "C3",
+          "questionObjective": "두 함수<br>$f(x)=\\begin{cases}1-\\dfrac x2&(0\\le x\\lt2)\\\\x-2&(2\\le x\\le4)\\end{cases}$,<br>$g(x)=\\begin{cases}x+1&(0\\le x\\lt1)\\\\4-2x&(1\\le x\\le2)\\end{cases}$<br>에 대하여 함수 $y=(g\\circ f)(x)$의 그래프와 직선 $y=\\dfrac32$ 및 $y$축으로 둘러싸인, 직선 $y=\\dfrac32$ 위쪽의 두 영역의 넓이의 합은?"
         }
       ]
     }
@@ -4040,6 +4140,262 @@
         "COND_RANGE"
       ],
       "integrationPattern": "INTERDEPENDENT",
+      "level": "상",
+      "difficultyBucket": 5,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q18-A1",
+      "qid": 18,
+      "slot": "A1",
+      "sourceUid": null,
+      "sourceQid": 18,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-07",
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "parentRpmRecordId": "H1-RPM-253",
+      "parentRpmL3": "합성함수",
+      "sourcePrimaryL3": "합성함수",
+      "effectiveL3Id": "H1-RPM-253",
+      "effectiveL4Id": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+      "L4Authority": "META_FOUNDATION_ACTIVE",
+      "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+      "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+      "crossConceptKeys": [
+        "CC_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 2,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q18-A2",
+      "qid": 18,
+      "slot": "A2",
+      "sourceUid": null,
+      "sourceQid": 18,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-07",
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "parentRpmRecordId": "H1-RPM-253",
+      "parentRpmL3": "합성함수",
+      "sourcePrimaryL3": "합성함수",
+      "effectiveL3Id": "H1-RPM-253",
+      "effectiveL4Id": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+      "L4Authority": "META_FOUNDATION_ACTIVE",
+      "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+      "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+      "crossConceptKeys": [
+        "CC_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 2,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q18-A3",
+      "qid": 18,
+      "slot": "A3",
+      "sourceUid": null,
+      "sourceQid": 18,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-07",
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "parentRpmRecordId": "H1-RPM-253",
+      "parentRpmL3": "합성함수",
+      "sourcePrimaryL3": "합성함수",
+      "effectiveL3Id": "H1-RPM-253",
+      "effectiveL4Id": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+      "L4Authority": "META_FOUNDATION_ACTIVE",
+      "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+      "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+      "crossConceptKeys": [
+        "CC_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 2,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q18-B1",
+      "qid": 18,
+      "slot": "B1",
+      "sourceUid": null,
+      "sourceQid": 18,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-07",
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "parentRpmRecordId": "H1-RPM-253",
+      "parentRpmL3": "합성함수",
+      "sourcePrimaryL3": "합성함수",
+      "effectiveL3Id": "H1-RPM-253",
+      "effectiveL4Id": "EXT-L4-JEIL25-Q18-COMPOSITE-AREA-PARAMETER",
+      "L4Authority": "GENERATED_ACTIVE",
+      "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+      "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+      "crossConceptKeys": [
+        "CC_AREA"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "level": "중",
+      "difficultyBucket": 3,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q18-B2",
+      "qid": 18,
+      "slot": "B2",
+      "sourceUid": null,
+      "sourceQid": 18,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-07",
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "parentRpmRecordId": "H1-RPM-253",
+      "parentRpmL3": "합성함수",
+      "sourcePrimaryL3": "합성함수",
+      "effectiveL3Id": "H1-RPM-253",
+      "effectiveL4Id": "EXT-L4-JEIL25-Q18-COMPOSITE-AREA-RATIO",
+      "L4Authority": "GENERATED_ACTIVE",
+      "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+      "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+      "crossConceptKeys": [
+        "CC_AREA"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 3,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q18-B3",
+      "qid": 18,
+      "slot": "B3",
+      "sourceUid": null,
+      "sourceQid": 18,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-07",
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "parentRpmRecordId": "H1-RPM-253",
+      "parentRpmL3": "합성함수",
+      "sourcePrimaryL3": "합성함수",
+      "effectiveL3Id": "H1-RPM-253",
+      "effectiveL4Id": "EXT-L4-JEIL25-Q18-COMPOSITE-AREA-INTEGER",
+      "L4Authority": "GENERATED_ACTIVE",
+      "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+      "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+      "crossConceptKeys": [
+        "CC_AREA"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "level": "상",
+      "difficultyBucket": 4,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q18-C1",
+      "qid": 18,
+      "slot": "C1",
+      "sourceUid": null,
+      "sourceQid": 18,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-07",
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "parentRpmRecordId": "H1-RPM-253",
+      "parentRpmL3": "합성함수",
+      "sourcePrimaryL3": "합성함수",
+      "effectiveL3Id": "H1-RPM-253",
+      "effectiveL4Id": "EXT-L4-JEIL25-Q18-COMPOSITE-AREA-PARAMETER",
+      "L4Authority": "GENERATED_ACTIVE",
+      "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+      "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+      "crossConceptKeys": [
+        "CC_AREA"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "level": "상",
+      "difficultyBucket": 4,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q18-C2",
+      "qid": 18,
+      "slot": "C2",
+      "sourceUid": null,
+      "sourceQid": 18,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-07",
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "parentRpmRecordId": "H1-RPM-253",
+      "parentRpmL3": "합성함수",
+      "sourcePrimaryL3": "합성함수",
+      "effectiveL3Id": "H1-RPM-253",
+      "effectiveL4Id": "EXT-L4-JEIL25-Q18-COMPOSITION-ORDER-AREA",
+      "L4Authority": "GENERATED_ACTIVE",
+      "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+      "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+      "crossConceptKeys": [
+        "CC_AREA"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "level": "상",
+      "difficultyBucket": 4,
+      "formerDebtCount": 1,
+      "metaStatus": "SOURCE_UID_V1_HASH_EVIDENCE_DEBT"
+    },
+    {
+      "uid": "ALITE-JEIL25-2FINAL-Q18-C3",
+      "qid": 18,
+      "slot": "C3",
+      "sourceUid": null,
+      "sourceQid": 18,
+      "sourcePath": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "standardUnitKey": "H22-C2-07",
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "parentRpmRecordId": "H1-RPM-253",
+      "parentRpmL3": "합성함수",
+      "sourcePrimaryL3": "합성함수",
+      "effectiveL3Id": "H1-RPM-253",
+      "effectiveL4Id": "EXT-L4-JEIL25-Q18-COMPOSITE-HORIZONTAL-SLICE",
+      "L4Authority": "GENERATED_ACTIVE",
+      "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+      "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+      "crossConceptKeys": [
+        "CC_AREA"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "CASE_BRANCH",
       "level": "상",
       "difficultyBucket": 5,
       "formerDebtCount": 1,

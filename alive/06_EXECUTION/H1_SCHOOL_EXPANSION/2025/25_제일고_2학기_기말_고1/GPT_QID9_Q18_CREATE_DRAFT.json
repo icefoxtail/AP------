@@ -1,0 +1,1373 @@
+{
+  "schemaVersion": "ALIVE_QID9_Q18_CREATE_DRAFT_v1",
+  "source": {
+    "path": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+    "examTitle": "25_제일고_2학기_기말_고1_기출",
+    "qid": 18,
+    "sourceUid": null,
+    "sourceUidResolution": "REQUIRES_CANONICAL_QID_V1_LOOKUP",
+    "gitBlobSha1": "252c1cc9a687cadd961183b56ea10d21bf1976b4",
+    "preservedReadOnly": true
+  },
+  "authority": {
+    "sourceCurriculum": "공통수학2",
+    "sourceL3": "합성함수",
+    "rpmPrimaryL3": "H1-RPM-253",
+    "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+    "currentCanonicalPT": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+    "currentCanonicalTPL": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+    "generatedL4Ids": [
+      "EXT-L4-JEIL25-Q18-COMPOSITE-AREA-PARAMETER",
+      "EXT-L4-JEIL25-Q18-COMPOSITE-AREA-RATIO",
+      "EXT-L4-JEIL25-Q18-COMPOSITE-AREA-INTEGER",
+      "EXT-L4-JEIL25-Q18-COMPOSITION-ORDER-AREA",
+      "EXT-L4-JEIL25-Q18-COMPOSITE-HORIZONTAL-SLICE"
+    ],
+    "studentProblemGraph": "EXEMPT_SOURCE_FULL_FORMULA"
+  },
+  "summary": {
+    "authorDraftItems": 9,
+    "mathSelfChecks": 9,
+    "wrongChoiceCalculationChecks": 36,
+    "answerSequence": [
+      "④",
+      "②",
+      "⑤",
+      "③",
+      "①",
+      "④",
+      "⑤",
+      "②",
+      "③"
+    ],
+    "answerDistribution": {
+      "①": 1,
+      "②": 2,
+      "③": 2,
+      "④": 2,
+      "⑤": 2
+    },
+    "reverseKeep": 9,
+    "reverseRevised": 0,
+    "reverseHold": 0,
+    "problemSvgCreated": 0,
+    "solutionSvgCreated": 9,
+    "svgBrowserRendered": "NOT_RUN",
+    "externalOpenBookReview": "NOT_RUN",
+    "studentRelease": "NOT_AUTHORIZED",
+    "metaEvidenceDebtUidCount": 9,
+    "status": "AUTHOR_DRAFT_SOURCE_UID_HASH_EVIDENCE_DEBT",
+    "nextQid": 19
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-JEIL25-2FINAL-Q18-A1",
+      "sourceQid": 18,
+      "sourceUid": null,
+      "slot": "A1",
+      "purpose": "A",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q18",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "두 함수<br>$f(x)=\\begin{cases}1-x&(0\\le x\\lt1)\\\\2x-2&(1\\le x\\le2)\\end{cases}$,<br>$g(x)=\\begin{cases}x+2&(0\\le x\\lt1)\\\\6-3x&(1\\le x\\le2)\\end{cases}$<br>에 대하여 함수 $y=(g\\circ f)(x)$의 그래프와 $x$축 및 $y$축으로 둘러싸인 부분의 넓이는?",
+      "choices": [
+        "$\\dfrac{5}{2}$",
+        "$\\dfrac{15}{4}$",
+        "$\\dfrac{13}{4}$",
+        "$\\dfrac{9}{2}$",
+        "$5$"
+      ],
+      "answer": "④",
+      "solution": "$0\\le x\\le1$에서는 $f(x)=1-x$이므로 $(g\\circ f)(x)=3-x$이다. $1\\le x\\le\\dfrac32$에서는 $f(x)=2x-2<1$이므로 합성함수는 $2x$이다. $\\dfrac32\\le x\\le2$에서는 $f(x)\\ge1$이므로 합성함수는 $12-6x$이다. 따라서 그래프의 꼭짓점은 $(0,3),(1,2),(\\dfrac32,3),(2,0)$ 순이다. 세 구간의 넓이는 차례로 $\\dfrac{3+2}{2}\\cdot1=\\dfrac52$, $\\dfrac{2+3}{2}\\cdot\\dfrac12=\\dfrac54$, $\\dfrac12\\cdot\\dfrac12\\cdot3=\\dfrac34$이다. 합은 $\\dfrac52+\\dfrac54+\\dfrac34=\\dfrac92$이므로 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q18/A1-solution.svg",
+      "solutionImageAlt": "A1 합성함수 구간별 꺾은선 그래프와 넓이 계산 참고도",
+      "solutionImageCaption": "내부 함수값의 범위별로 그래프의 분기점과 도형 넓이를 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "합성함수",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-253",
+        "rpmRecordId": "H1-RPM-253",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "합성함수 계산",
+        "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+        "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+        "canonicalPTBindingStatus": "EXISTING_ACTIVE_2022_H22-C2-07",
+        "rpmCrosswalkPT": "PT_COMPOSITION_EVALUATION",
+        "rpmMachineFamilyDisposition": "EVIDENCE_BASED_ACTIVE_COMPOSITE_GRAPH_ANALYSIS",
+        "effectiveL4Id": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+        "effectiveL4Authority": "META_FOUNDATION_ACTIVE",
+        "crossConceptKeys": [
+          "CC_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          "SOURCE_QID18_QID_V1_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_EXISTING_ACTIVE_PT_TPL_WITH_SOURCE_UID_DEBT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "구간별 합성함수를 먼저 구성한 다음 실제 그래프를 분할하지 않으면 질문의 넓이·조건을 확정할 수 없고 고1 사다리꼴/삼각형 풀이가 자연스러움",
+        "primaryL3Necessity": "piecewise g(f(x)) or both orders must be resolved before geometric area",
+        "mathSelfCheckEvidence": {
+          "config": {
+            "a": 1,
+            "b": 1,
+            "d": 2,
+            "k": 1
+          },
+          "formulaVertices": [
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1.5,
+              3
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          "expectedAnswer": "9/2",
+          "correctChoice": "④",
+          "calculationMethod": "GEOMETRIC_TRAPEZOID_TRIANGLE_NO_CALCULUS"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "5/2",
+            "incorrectCalculation": "① $5/2$: 첫 구간의 사다리꼴 넓이만 계산한다.",
+            "correctChoice": "④"
+          },
+          {
+            "choice": "②",
+            "offeredValue": "15/4",
+            "incorrectCalculation": "② $15/4$: 첫째·둘째 구간만 더해 마지막 삼각형을 빠뜨린다.",
+            "correctChoice": "④"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "13/4",
+            "incorrectCalculation": "③ $13/4$: 첫째·셋째 구간만 더해 가운데 사다리꼴을 빠뜨린다.",
+            "correctChoice": "④"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "5",
+            "incorrectCalculation": "⑤ $5$: 마지막 삼각형 넓이를 가운데 사다리꼴 넓이 $5/4$로 중복 더한다. (실제 $5/2+5/4+5/4=5$)",
+            "correctChoice": "④"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본 q18처럼 학생용 함수식이 완전하고 문제 그래프는 합성 구간분할의 정답 힌트가 되어 제작하지 않음"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q18/A1-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-JEIL25-2FINAL-Q18-A2",
+      "sourceQid": 18,
+      "sourceUid": null,
+      "slot": "A2",
+      "purpose": "A",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q18",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "두 함수<br>$f(x)=\\begin{cases}1-\\dfrac x2&(0\\le x\\lt2)\\\\x-2&(2\\le x\\le4)\\end{cases}$,<br>$g(x)=\\begin{cases}x+1&(0\\le x\\lt1)\\\\4-2x&(1\\le x\\le2)\\end{cases}$<br>에 대하여 함수 $y=(g\\circ f)(x)$의 그래프와 $x$축 및 $y$축으로 둘러싸인 부분의 넓이는?",
+      "choices": [
+        "$3$",
+        "$\\dfrac{11}{2}$",
+        "$\\dfrac{9}{2}$",
+        "$4$",
+        "$\\dfrac{13}{2}$"
+      ],
+      "answer": "②",
+      "solution": "$0\\le x\\le2$에서 $f(x)=1-\\dfrac x2$이므로 합성함수는 $2-\\dfrac x2$이다. $2\\le x\\le3$에서는 $f(x)=x-2<1$이므로 $g(f(x))=x-1$이다. $3\\le x\\le4$에서는 $f(x)\\ge1$이므로 $g(f(x))=8-2x$이다. 그래프의 꼭짓점은 $(0,2),(2,1),(3,2),(4,0)$이다. 각 부분의 넓이는 $\\dfrac{2+1}{2}\\cdot2=3$, $\\dfrac{1+2}{2}\\cdot1=\\dfrac32$, $\\dfrac12\\cdot1\\cdot2=1$이다. 따라서 전체 넓이는 $3+\\dfrac32+1=\\dfrac{11}{2}$이고, 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q18/A2-solution.svg",
+      "solutionImageAlt": "A2 합성함수 구간별 꺾은선 그래프와 넓이 계산 참고도",
+      "solutionImageCaption": "내부 함수값의 범위별로 그래프의 분기점과 도형 넓이를 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "합성함수",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-253",
+        "rpmRecordId": "H1-RPM-253",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "합성함수 계산",
+        "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+        "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+        "canonicalPTBindingStatus": "EXISTING_ACTIVE_2022_H22-C2-07",
+        "rpmCrosswalkPT": "PT_COMPOSITION_EVALUATION",
+        "rpmMachineFamilyDisposition": "EVIDENCE_BASED_ACTIVE_COMPOSITE_GRAPH_ANALYSIS",
+        "effectiveL4Id": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+        "effectiveL4Authority": "META_FOUNDATION_ACTIVE",
+        "crossConceptKeys": [
+          "CC_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          "SOURCE_QID18_QID_V1_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_EXISTING_ACTIVE_PT_TPL_WITH_SOURCE_UID_DEBT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "구간별 합성함수를 먼저 구성한 다음 실제 그래프를 분할하지 않으면 질문의 넓이·조건을 확정할 수 없고 고1 사다리꼴/삼각형 풀이가 자연스러움",
+        "primaryL3Necessity": "piecewise g(f(x)) or both orders must be resolved before geometric area",
+        "mathSelfCheckEvidence": {
+          "config": {
+            "a": 2,
+            "b": 2,
+            "d": 1,
+            "k": 1
+          },
+          "formulaVertices": [
+            [
+              0,
+              2
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              4,
+              0
+            ]
+          ],
+          "expectedAnswer": "11/2",
+          "correctChoice": "②",
+          "calculationMethod": "GEOMETRIC_TRAPEZOID_TRIANGLE_NO_CALCULUS"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "3",
+            "incorrectCalculation": "① $3$: 첫 구간의 넓이만 센다.",
+            "correctChoice": "②"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "9/2",
+            "incorrectCalculation": "③ $9/2$: 마지막 삼각형 넓이 $1$을 누락하여 $3+3/2$로 계산한다.",
+            "correctChoice": "②"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "4",
+            "incorrectCalculation": "④ $4$: 가운데 사다리꼴 $3/2$를 누락해 $3+1$로 계산한다.",
+            "correctChoice": "②"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "13/2",
+            "incorrectCalculation": "⑤ $13/2$: 마지막 삼각형의 밑변을 $1$ 대신 $2$로 잘못 잡아 넓이 $2$를 더한다. ($3+3/2+2=13/2$)",
+            "correctChoice": "②"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본 q18처럼 학생용 함수식이 완전하고 문제 그래프는 합성 구간분할의 정답 힌트가 되어 제작하지 않음"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q18/A2-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-JEIL25-2FINAL-Q18-A3",
+      "sourceQid": 18,
+      "sourceUid": null,
+      "slot": "A3",
+      "purpose": "A",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q18",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "두 함수<br>$f(x)=\\begin{cases}1-x&(0\\le x\\lt1)\\\\2x-2&(1\\le x\\le2)\\end{cases}$,<br>$g(x)=\\begin{cases}2x+1&(0\\le x\\lt1)\\\\6-3x&(1\\le x\\le2)\\end{cases}$<br>에 대하여 함수 $y=(g\\circ f)(x)$의 그래프와 $x$축 및 $y$축으로 둘러싸인 부분의 넓이는?",
+      "choices": [
+        "$2$",
+        "$3$",
+        "$\\dfrac{11}{4}$",
+        "$\\dfrac{9}{2}$",
+        "$\\dfrac{15}{4}$"
+      ],
+      "answer": "⑤",
+      "solution": "$0\\le x\\le1$에서는 $f(x)=1-x$이므로 $g(f(x))=3-2x$이다. $1\\le x\\le\\dfrac32$에서는 $f(x)=2x-2<1$이므로 $g(f(x))=4x-3$이다. $\\dfrac32\\le x\\le2$에서는 $g(f(x))=12-6x$이다. 그래프는 $(0,3),(1,1),(\\dfrac32,3),(2,0)$을 차례로 잇는다. 세 구간의 넓이는 $\\dfrac{3+1}{2}\\cdot1=2$, $\\dfrac{1+3}{2}\\cdot\\dfrac12=1$, $\\dfrac12\\cdot\\dfrac12\\cdot3=\\dfrac34$이다. 합은 $\\dfrac{15}{4}$이므로 정답은 ⑤이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q18/A3-solution.svg",
+      "solutionImageAlt": "A3 합성함수 구간별 꺾은선 그래프와 넓이 계산 참고도",
+      "solutionImageCaption": "내부 함수값의 범위별로 그래프의 분기점과 도형 넓이를 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "합성함수",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-253",
+        "rpmRecordId": "H1-RPM-253",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "합성함수 계산",
+        "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+        "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+        "canonicalPTBindingStatus": "EXISTING_ACTIVE_2022_H22-C2-07",
+        "rpmCrosswalkPT": "PT_COMPOSITION_EVALUATION",
+        "rpmMachineFamilyDisposition": "EVIDENCE_BASED_ACTIVE_COMPOSITE_GRAPH_ANALYSIS",
+        "effectiveL4Id": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+        "effectiveL4Authority": "META_FOUNDATION_ACTIVE",
+        "crossConceptKeys": [
+          "CC_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          "SOURCE_QID18_QID_V1_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_EXISTING_ACTIVE_PT_TPL_WITH_SOURCE_UID_DEBT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "구간별 합성함수를 먼저 구성한 다음 실제 그래프를 분할하지 않으면 질문의 넓이·조건을 확정할 수 없고 고1 사다리꼴/삼각형 풀이가 자연스러움",
+        "primaryL3Necessity": "piecewise g(f(x)) or both orders must be resolved before geometric area",
+        "mathSelfCheckEvidence": {
+          "config": {
+            "a": 1,
+            "b": 1,
+            "d": 1,
+            "k": 2
+          },
+          "formulaVertices": [
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1.5,
+              3
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          "expectedAnswer": "15/4",
+          "correctChoice": "⑤",
+          "calculationMethod": "GEOMETRIC_TRAPEZOID_TRIANGLE_NO_CALCULUS"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "2",
+            "incorrectCalculation": "① $2$: 첫 구간의 넓이만 구한다.",
+            "correctChoice": "⑤"
+          },
+          {
+            "choice": "②",
+            "offeredValue": "3",
+            "incorrectCalculation": "② $3$: 앞의 두 구간의 넓이만 더하여 마지막 삼각형을 누락한다.",
+            "correctChoice": "⑤"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "11/4",
+            "incorrectCalculation": "③ $11/4$: 첫 구간과 마지막 삼각형만 더한다. ($2+3/4=11/4$)",
+            "correctChoice": "⑤"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "9/2",
+            "incorrectCalculation": "④ $9/2$: 마지막 삼각형을 너비 $1/2$, 높이 $3$의 직사각형으로 계산한다. ($2+1+3/2=9/2$)",
+            "correctChoice": "⑤"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본 q18처럼 학생용 함수식이 완전하고 문제 그래프는 합성 구간분할의 정답 힌트가 되어 제작하지 않음"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q18/A3-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-JEIL25-2FINAL-Q18-B1",
+      "sourceQid": 18,
+      "sourceUid": null,
+      "slot": "B1",
+      "purpose": "B",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q18",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "두 함수<br>$f(x)=\\begin{cases}1-\\dfrac x2&(0\\le x\\lt2)\\\\x-2&(2\\le x\\le4)\\end{cases}$,<br>$g(x)=\\begin{cases}kx+1&(0\\le x\\lt1)\\\\(k+1)(2-x)&(1\\le x\\le2)\\end{cases}$<br>에 대하여 $k>0$이고 함수 $y=(g\\circ f)(x)$의 그래프와 좌표축으로 둘러싸인 부분의 넓이가 $\\dfrac{15}{2}$일 때 $k$는?",
+      "choices": [
+        "$\\dfrac{15}{4}$",
+        "$1$",
+        "$2$",
+        "$4$",
+        "$\\dfrac{8}{3}$"
+      ],
+      "answer": "③",
+      "solution": "$f(x)$의 값이 $1$이 되는 분기점은 $x=0,3$이다. 합성함수의 그래프는 $(0,k+1),(2,1),(3,k+1),(4,0)$을 차례로 잇는다. 각 구간의 넓이는 $k+2$, $\\dfrac{k+2}{2}$, $\\dfrac{k+1}{2}$이므로 전체 넓이는 $(k+2)+\\dfrac{k+2}{2}+\\dfrac{k+1}{2}=\\dfrac72+2k$이다. 이것이 $\\dfrac{15}{2}$이므로 $2k=4$, $k=2$이다. 따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q18/B1-solution.svg",
+      "solutionImageAlt": "B1 합성함수 구간별 꺾은선 그래프와 넓이 계산 참고도",
+      "solutionImageCaption": "내부 함수값의 범위별로 그래프의 분기점과 도형 넓이를 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "합성함수",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-253",
+        "rpmRecordId": "H1-RPM-253",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "합성함수 계산",
+        "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+        "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+        "canonicalPTBindingStatus": "EXISTING_ACTIVE_2022_H22-C2-07",
+        "rpmCrosswalkPT": "PT_COMPOSITION_EVALUATION",
+        "rpmMachineFamilyDisposition": "EVIDENCE_BASED_ACTIVE_COMPOSITE_GRAPH_ANALYSIS",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q18-COMPOSITE-AREA-PARAMETER",
+        "effectiveL4Authority": "GENERATED_ACTIVE",
+        "crossConceptKeys": [
+          "CC_AREA"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          "SOURCE_QID18_QID_V1_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_EXISTING_ACTIVE_PT_TPL_WITH_SOURCE_UID_DEBT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "구간별 합성함수를 먼저 구성한 다음 실제 그래프를 분할하지 않으면 질문의 넓이·조건을 확정할 수 없고 고1 사다리꼴/삼각형 풀이가 자연스러움",
+        "primaryL3Necessity": "piecewise g(f(x)) or both orders must be resolved before geometric area",
+        "mathSelfCheckEvidence": {
+          "config": {
+            "a": 2,
+            "b": 2,
+            "d": 1,
+            "k": 2
+          },
+          "formulaVertices": [
+            [
+              0,
+              3
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              0
+            ]
+          ],
+          "expectedAnswer": "2",
+          "correctChoice": "③",
+          "calculationMethod": "GEOMETRIC_TRAPEZOID_TRIANGLE_NO_CALCULUS"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "15/4",
+            "incorrectCalculation": "① $15/4$: 고정 넓이 $7/2$를 전부 생략하고 $2k=15/2$라고 놓는다.",
+            "correctChoice": "③"
+          },
+          {
+            "choice": "②",
+            "offeredValue": "1",
+            "incorrectCalculation": "② $1$: 계수 $2k$를 $4k$로 두어 $7/2+4k=15/2$를 푼다.",
+            "correctChoice": "③"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "4",
+            "incorrectCalculation": "④ $4$: 두 그래프의 기울기에 따른 넓이 증가를 절반으로 잘못 계산해 $7/2+k=15/2$라고 놓는다.",
+            "correctChoice": "③"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "8/3",
+            "incorrectCalculation": "⑤ $8/3$: 끝 삼각형의 $k$ 기여분 $1/2$를 누락하고 $7/2+3k/2=15/2$라고 놓는다.",
+            "correctChoice": "③"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본 q18처럼 학생용 함수식이 완전하고 문제 그래프는 합성 구간분할의 정답 힌트가 되어 제작하지 않음"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q18/B1-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-JEIL25-2FINAL-Q18-B2",
+      "sourceQid": 18,
+      "sourceUid": null,
+      "slot": "B2",
+      "purpose": "B",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q18",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "두 함수<br>$f(x)=\\begin{cases}1-x&(0\\le x\\lt1)\\\\x-1&(1\\le x\\le3)\\end{cases}$,<br>$g(x)=\\begin{cases}x+1&(0\\le x\\lt1)\\\\4-2x&(1\\le x\\le2)\\end{cases}$<br>에 대하여 함수 $y=(g\\circ f)(x)$의 그래프 아래에서 $0\\le x\\le1$인 부분의 넓이를 $S_1$, $1\\le x\\le3$인 부분의 넓이를 $S_2$라 할 때, $S_1:S_2$는?",
+      "choices": [
+        "$3:5$",
+        "$3:2$",
+        "$1:1$",
+        "$5:3$",
+        "$2:3$"
+      ],
+      "answer": "①",
+      "solution": "합성함수는 $0\\le x\\le1$에서 $2-x$, $1\\le x\\le2$에서 $x$, $2\\le x\\le3$에서 $6-2x$이다. 따라서 그래프는 $(0,2),(1,1),(2,2),(3,0)$을 차례로 잇는다. 첫 영역은 사다리꼴이므로 $S_1=\\dfrac{2+1}{2}\\cdot1=\\dfrac32$이다. 오른쪽 영역은 사다리꼴 넓이 $\\dfrac{1+2}{2}\\cdot1=\\dfrac32$과 삼각형 넓이 $\\dfrac12\\cdot1\\cdot2=1$의 합이므로 $S_2=\\dfrac52$이다. 따라서 $S_1:S_2=3:5$이므로 정답은 ①이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q18/B2-solution.svg",
+      "solutionImageAlt": "B2 합성함수 구간별 꺾은선 그래프와 넓이 계산 참고도",
+      "solutionImageCaption": "내부 함수값의 범위별로 그래프의 분기점과 도형 넓이를 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "합성함수",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-253",
+        "rpmRecordId": "H1-RPM-253",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "합성함수 계산",
+        "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+        "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+        "canonicalPTBindingStatus": "EXISTING_ACTIVE_2022_H22-C2-07",
+        "rpmCrosswalkPT": "PT_COMPOSITION_EVALUATION",
+        "rpmMachineFamilyDisposition": "EVIDENCE_BASED_ACTIVE_COMPOSITE_GRAPH_ANALYSIS",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q18-COMPOSITE-AREA-RATIO",
+        "effectiveL4Authority": "GENERATED_ACTIVE",
+        "crossConceptKeys": [
+          "CC_AREA"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          "SOURCE_QID18_QID_V1_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_EXISTING_ACTIVE_PT_TPL_WITH_SOURCE_UID_DEBT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "구간별 합성함수를 먼저 구성한 다음 실제 그래프를 분할하지 않으면 질문의 넓이·조건을 확정할 수 없고 고1 사다리꼴/삼각형 풀이가 자연스러움",
+        "primaryL3Necessity": "piecewise g(f(x)) or both orders must be resolved before geometric area",
+        "mathSelfCheckEvidence": {
+          "config": {
+            "a": 1,
+            "b": 2,
+            "d": 1,
+            "k": 1
+          },
+          "formulaVertices": [
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              3,
+              0
+            ]
+          ],
+          "expectedAnswer": "3:5",
+          "correctChoice": "①",
+          "calculationMethod": "GEOMETRIC_TRAPEZOID_TRIANGLE_NO_CALCULUS"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "②",
+            "offeredValue": "3:2",
+            "incorrectCalculation": "② $3:2$: 오른쪽에서 마지막 삼각형의 넓이 $1$만 남기고 가운데 사다리꼴을 빠뜨린다. ($3/2:1=3:2$)",
+            "correctChoice": "①"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "1:1",
+            "incorrectCalculation": "③ $1:1$: 좌우를 각각 첫째·둘째 사다리꼴 넓이 $3/2$만 비교한다.",
+            "correctChoice": "①"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "5:3",
+            "incorrectCalculation": "④ $5:3$: $S_1$과 $S_2$의 순서를 바꾸어 $dfrac52:dfrac32$로 쓴다.",
+            "correctChoice": "①"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "2:3",
+            "incorrectCalculation": "⑤ $2:3$: 오른쪽 삼각형 $1$과 왼쪽 사다리꼴 $3/2$을 거꾸로 비교한다. ($1:3/2=2:3$)",
+            "correctChoice": "①"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본 q18처럼 학생용 함수식이 완전하고 문제 그래프는 합성 구간분할의 정답 힌트가 되어 제작하지 않음"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q18/B2-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-JEIL25-2FINAL-Q18-B3",
+      "sourceQid": 18,
+      "sourceUid": null,
+      "slot": "B3",
+      "purpose": "B",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q18",
+      "modeCandidate": "FOLLOWUP",
+      "level": "상",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "두 함수<br>$f(x)=\\begin{cases}1-\\dfrac x2&(0\\le x\\lt2)\\\\2(x-2)&(2\\le x\\le3)\\end{cases}$,<br>$g(x)=\\begin{cases}tx+1&(0\\le x\\lt1)\\\\(t+1)(2-x)&(1\\le x\\le2)\\end{cases}$<br>에 대하여 자연수 $t$가 $1\\le t\\le5$를 만족한다. 함수 $y=(g\\circ f)(x)$의 그래프와 두 좌표축으로 둘러싸인 부분의 넓이가 $8$보다 작도록 하는 $t$의 개수는?",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$4$",
+        "$3$",
+        "$5$"
+      ],
+      "answer": "④",
+      "solution": "$f(x)$의 경계값 $0,1,2$를 이용하면 합성함수 그래프의 꼭짓점은 $(0,t+1),(2,1),(\\dfrac52,t+1),(3,0)$이다. 세 구간의 사다리꼴·삼각형 넓이는 차례로 $t+2$, $\\dfrac{t+2}{4}$, $\\dfrac{t+1}{4}$이다. 따라서 전체 넓이는 $\\dfrac{6t+11}{4}$이다. $\\dfrac{6t+11}{4}<8$에서 $6t<21$, 즉 $t<\\dfrac72$이다. $1\\le t\\le5$인 자연수 가운데 가능한 값은 $1,2,3$으로 $3$개다. 따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q18/B3-solution.svg",
+      "solutionImageAlt": "B3 합성함수 구간별 꺾은선 그래프와 넓이 계산 참고도",
+      "solutionImageCaption": "가능한 t=1, 2, 3의 구간별 그래프를 비교한다.",
+      "solutionImageSize": "large",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "합성함수",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-253",
+        "rpmRecordId": "H1-RPM-253",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "합성함수 계산",
+        "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+        "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+        "canonicalPTBindingStatus": "EXISTING_ACTIVE_2022_H22-C2-07",
+        "rpmCrosswalkPT": "PT_COMPOSITION_EVALUATION",
+        "rpmMachineFamilyDisposition": "EVIDENCE_BASED_ACTIVE_COMPOSITE_GRAPH_ANALYSIS",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q18-COMPOSITE-AREA-INTEGER",
+        "effectiveL4Authority": "GENERATED_ACTIVE",
+        "crossConceptKeys": [
+          "CC_AREA"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          "SOURCE_QID18_QID_V1_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_EXISTING_ACTIVE_PT_TPL_WITH_SOURCE_UID_DEBT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "구간별 합성함수를 먼저 구성한 다음 실제 그래프를 분할하지 않으면 질문의 넓이·조건을 확정할 수 없고 고1 사다리꼴/삼각형 풀이가 자연스러움",
+        "primaryL3Necessity": "piecewise g(f(x)) or both orders must be resolved before geometric area",
+        "mathSelfCheckEvidence": {
+          "config": {
+            "a": 2,
+            "b": 1,
+            "d": 1,
+            "k": 3
+          },
+          "formulaVertices": [
+            [
+              0,
+              4
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2.5,
+              4
+            ],
+            [
+              3,
+              0
+            ]
+          ],
+          "expectedAnswer": "3",
+          "correctChoice": "④",
+          "calculationMethod": "GEOMETRIC_TRAPEZOID_TRIANGLE_NO_CALCULUS"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "1",
+            "incorrectCalculation": "① $1$: 부등식을 $2<t<7/2$로 잘못 제한하여 $t=3$만 센다.",
+            "correctChoice": "④"
+          },
+          {
+            "choice": "②",
+            "offeredValue": "2",
+            "incorrectCalculation": "② $2$: $t<7/2$를 $t<3$으로 내림 처리하여 $1,2$만 센다.",
+            "correctChoice": "④"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "4",
+            "incorrectCalculation": "③ $4$: $t<7/2$를 $tle4$로 잘못 바꾸어 $1,2,3,4$를 센다.",
+            "correctChoice": "④"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "5",
+            "incorrectCalculation": "⑤ $5$: 넓이 제한을 무시하고 주어진 $1le tle5$의 모든 자연수를 센다.",
+            "correctChoice": "④"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본 q18처럼 학생용 함수식이 완전하고 문제 그래프는 합성 구간분할의 정답 힌트가 되어 제작하지 않음"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q18/B3-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-JEIL25-2FINAL-Q18-C1",
+      "sourceQid": 18,
+      "sourceUid": null,
+      "slot": "C1",
+      "purpose": "C",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q18",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "두 함수<br>$f(x)=\\begin{cases}1-\\dfrac xa&(0\\le x\\lt a)\\\\\\dfrac{2(x-a)}b&(a\\le x\\le a+b)\\end{cases}$,<br>$g(x)=\\begin{cases}x+1&(0\\le x\\lt1)\\\\4-2x&(1\\le x\\le2)\\end{cases}$<br>에 대하여 양수 $a,b$가 $a+b=5$를 만족한다. 함수 $y=(g\\circ f)(x)$의 그래프와 좌표축으로 둘러싸인 부분의 넓이가 $\\dfrac{27}{4}$일 때 $a$는?",
+      "choices": [
+        "$1$",
+        "$3$",
+        "$4$",
+        "$5$",
+        "$2$"
+      ],
+      "answer": "⑤",
+      "solution": "합성함수의 구간을 나누면 $0\\le x\\le a$에서 $2-\\dfrac xa$, $a\\le x\\le a+\\dfrac b2$에서 $1+\\dfrac{2(x-a)}b$, 나머지 $a+\\dfrac b2\\le x\\le a+b$에서 $4-\\dfrac{4(x-a)}b$이다. 그래프는 $(0,2),(a,1),(a+\\dfrac b2,2),(a+b,0)$을 잇는다. 세 구간의 넓이는 $\\dfrac{3a}{2}$, $\\dfrac{3b}{4}$, $\\dfrac b2$이므로 전체 넓이는 $\\dfrac{3a}{2}+\\dfrac{5b}{4}$이다. $b=5-a$와 넓이 조건을 대입하면 $\\dfrac{6a+25-5a}{4}=\\dfrac{27}{4}$이므로 $a=2$, $b=3$이다. 둘 다 양수이므로 조건을 만족한다. 따라서 정답은 ⑤이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q18/C1-solution.svg",
+      "solutionImageAlt": "C1 합성함수 구간별 꺾은선 그래프와 넓이 계산 참고도",
+      "solutionImageCaption": "내부 함수값의 범위별로 그래프의 분기점과 도형 넓이를 확인한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "합성함수",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-253",
+        "rpmRecordId": "H1-RPM-253",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "합성함수 계산",
+        "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+        "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+        "canonicalPTBindingStatus": "EXISTING_ACTIVE_2022_H22-C2-07",
+        "rpmCrosswalkPT": "PT_COMPOSITION_EVALUATION",
+        "rpmMachineFamilyDisposition": "EVIDENCE_BASED_ACTIVE_COMPOSITE_GRAPH_ANALYSIS",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q18-COMPOSITE-AREA-PARAMETER",
+        "effectiveL4Authority": "GENERATED_ACTIVE",
+        "crossConceptKeys": [
+          "CC_AREA"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          "SOURCE_QID18_QID_V1_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_EXISTING_ACTIVE_PT_TPL_WITH_SOURCE_UID_DEBT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "구간별 합성함수를 먼저 구성한 다음 실제 그래프를 분할하지 않으면 질문의 넓이·조건을 확정할 수 없고 고1 사다리꼴/삼각형 풀이가 자연스러움",
+        "primaryL3Necessity": "piecewise g(f(x)) or both orders must be resolved before geometric area",
+        "mathSelfCheckEvidence": {
+          "config": {
+            "a": 2,
+            "b": 3,
+            "d": 1,
+            "k": 1
+          },
+          "formulaVertices": [
+            [
+              0,
+              2
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3.5,
+              2
+            ],
+            [
+              5,
+              0
+            ]
+          ],
+          "expectedAnswer": "2",
+          "correctChoice": "⑤",
+          "calculationMethod": "GEOMETRIC_TRAPEZOID_TRIANGLE_NO_CALCULUS"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "1",
+            "incorrectCalculation": "① $1$: 넓이의 $a$ 계수를 $1/4$가 아닌 $1/2$로 잘못 계산해 $25/4+a/2=27/4$를 푼다.",
+            "correctChoice": "⑤"
+          },
+          {
+            "choice": "②",
+            "offeredValue": "3",
+            "incorrectCalculation": "② $3$: $a$ 대신 $b=3$을 답한다.",
+            "correctChoice": "⑤"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "4",
+            "incorrectCalculation": "③ $4$: $a$의 넓이 계수를 $1/8$로 잘못 계산해 $25/4+a/8=27/4$를 푼다.",
+            "correctChoice": "⑤"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "5",
+            "incorrectCalculation": "④ $5$: 구간 전체 길이 $a+b=5$를 $a$로 착각한다.",
+            "correctChoice": "⑤"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본 q18처럼 학생용 함수식이 완전하고 문제 그래프는 합성 구간분할의 정답 힌트가 되어 제작하지 않음"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q18/C1-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-JEIL25-2FINAL-Q18-C2",
+      "sourceQid": 18,
+      "sourceUid": null,
+      "slot": "C2",
+      "purpose": "C",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q18",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "두 함수<br>$f(x)=\\begin{cases}1-x&(0\\le x\\lt1)\\\\2x-2&(1\\le x\\le2)\\end{cases}$,<br>$g(x)=\\begin{cases}x+1&(0\\le x\\lt1)\\\\4-2x&(1\\le x\\le2)\\end{cases}$<br>에 대하여 $0\\le x\\le2$에서 두 합성함수 $y=(g\\circ f)(x)$, $y=(f\\circ g)(x)$의 그래프와 $x$축, 두 직선 $x=0$, $x=2$로 둘러싸인 부분의 넓이를 각각 $S,T$라 한다. $S-T$의 값은?",
+      "choices": [
+        "$\\dfrac{7}{4}$",
+        "$1$",
+        "$\\dfrac{11}{4}$",
+        "$\\dfrac{9}{4}$",
+        "$\\dfrac{1}{2}$"
+      ],
+      "answer": "②",
+      "solution": "먼저 $(g\\circ f)(x)$는 $0\\le x\\le1$에서 $2-x$, $1\\le x\\le\\dfrac32$에서 $2x-1$, $\\dfrac32\\le x\\le2$에서 $8-4x$이다. 구간별 넓이는 $\\dfrac32,\\dfrac34,\\dfrac12$이므로 $S=\\dfrac{11}{4}$이다. 반면 $(f\\circ g)(x)$는 $0\\le x\\le1$에서 $2x$, $1\\le x\\le\\dfrac32$에서 $6-4x$, $\\dfrac32\\le x\\le2$에서 $2x-3$이다. 대응하는 삼각형의 넓이는 $1,\\dfrac12,\\dfrac14$이므로 $T=\\dfrac74$이다. 따라서 $S-T=\\dfrac{11}{4}-\\dfrac74=1$이고, 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q18/C2-solution.svg",
+      "solutionImageAlt": "C2 합성함수 구간별 꺾은선 그래프와 넓이 계산 참고도",
+      "solutionImageCaption": "합성 순서에 따른 두 그래프의 넓이를 각각 비교한다.",
+      "solutionImageSize": "large",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "합성함수",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-253",
+        "rpmRecordId": "H1-RPM-253",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "합성함수 계산",
+        "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+        "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+        "canonicalPTBindingStatus": "EXISTING_ACTIVE_2022_H22-C2-07",
+        "rpmCrosswalkPT": "PT_COMPOSITION_EVALUATION",
+        "rpmMachineFamilyDisposition": "EVIDENCE_BASED_ACTIVE_COMPOSITE_GRAPH_ANALYSIS",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q18-COMPOSITION-ORDER-AREA",
+        "effectiveL4Authority": "GENERATED_ACTIVE",
+        "crossConceptKeys": [
+          "CC_AREA"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          "SOURCE_QID18_QID_V1_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_EXISTING_ACTIVE_PT_TPL_WITH_SOURCE_UID_DEBT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "구간별 합성함수를 먼저 구성한 다음 실제 그래프를 분할하지 않으면 질문의 넓이·조건을 확정할 수 없고 고1 사다리꼴/삼각형 풀이가 자연스러움",
+        "primaryL3Necessity": "piecewise g(f(x)) or both orders must be resolved before geometric area",
+        "mathSelfCheckEvidence": {
+          "config": {
+            "a": 1,
+            "b": 1,
+            "d": 1,
+            "k": 1
+          },
+          "formulaVertices": [
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1.5,
+              2
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          "expectedAnswer": "1",
+          "correctChoice": "②",
+          "calculationMethod": "GEOMETRIC_TRAPEZOID_TRIANGLE_NO_CALCULUS"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "7/4",
+            "incorrectCalculation": "① $7/4$: $T$를 구한 뒤 두 넓이의 차가 아니라 $T$ 자체를 답한다.",
+            "correctChoice": "②"
+          },
+          {
+            "choice": "③",
+            "offeredValue": "11/4",
+            "incorrectCalculation": "③ $11/4$: $S$만 계산하고 $T$를 빼지 않는다.",
+            "correctChoice": "②"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "9/4",
+            "incorrectCalculation": "④ $9/4$: $T$에서 가운데 삼각형 $1/2$만 빼어 $S-1/2=9/4$를 답한다.",
+            "correctChoice": "②"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "1/2",
+            "incorrectCalculation": "⑤ $1/2$: $(fcirc g)$의 첫 삼각형을 높이 평균 $3/2$인 사다리꼴로 착각해 $T=9/4$로 계산하고 $S-T=1/2$로 답한다.",
+            "correctChoice": "②"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본 q18처럼 학생용 함수식이 완전하고 문제 그래프는 합성 구간분할의 정답 힌트가 되어 제작하지 않음"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q18/C2-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-JEIL25-2FINAL-Q18-C3",
+      "sourceQid": 18,
+      "sourceUid": null,
+      "slot": "C3",
+      "purpose": "C",
+      "provenance": "ALIVE_GENERATED_SOURCE_Q18",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "그래프"
+      ],
+      "wide": false,
+      "content": "두 함수<br>$f(x)=\\begin{cases}1-\\dfrac x2&(0\\le x\\lt2)\\\\x-2&(2\\le x\\le4)\\end{cases}$,<br>$g(x)=\\begin{cases}x+1&(0\\le x\\lt1)\\\\4-2x&(1\\le x\\le2)\\end{cases}$<br>에 대하여 함수 $y=(g\\circ f)(x)$의 그래프와 직선 $y=\\dfrac32$ 및 $y$축으로 둘러싸인, 직선 $y=\\dfrac32$ 위쪽의 두 영역의 넓이의 합은?",
+      "choices": [
+        "$\\dfrac{1}{4}$",
+        "$\\dfrac{3}{16}$",
+        "$\\dfrac{7}{16}$",
+        "$\\dfrac{3}{4}$",
+        "$\\dfrac{1}{2}$"
+      ],
+      "answer": "③",
+      "solution": "$(g\\circ f)(x)$의 그래프는 $(0,2),(2,1),(3,2),(4,0)$을 잇는 꺾은선이다. 각 구간의 식은 $2-\\dfrac x2$, $x-1$, $8-2x$이다. 직선 $y=\\dfrac32$과의 교점의 $x$좌표는 각 구간에서 $1,\\dfrac52,\\dfrac{13}{4}$이다. 왼쪽 영역은 밑변 $1$, 높이 $\\dfrac12$인 삼각형이므로 넓이가 $\\dfrac14$이다. 가운데 봉우리 위쪽 영역은 밑변 $\\dfrac{13}{4}-\\dfrac52=\\dfrac34$, 높이 $\\dfrac12$인 삼각형이므로 넓이가 $\\dfrac{3}{16}$이다. 합은 $\\dfrac14+\\dfrac{3}{16}=\\dfrac{7}{16}$이므로 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q18/C3-solution.svg",
+      "solutionImageAlt": "C3 합성함수 구간별 꺾은선 그래프와 넓이 계산 참고도",
+      "solutionImageCaption": "직선 y=3/2 위쪽에 분리된 두 영역을 비교한다.",
+      "solutionImageSize": "medium",
+      "meta": {
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "primaryRPM_L3": "합성함수",
+        "primaryRPM_L3Frozen": true,
+        "primaryL3Id": "H1-RPM-253",
+        "rpmRecordId": "H1-RPM-253",
+        "rpmRecordMappingStatus": "DIRECT_ACTIVE",
+        "primaryL3Authority": "RPM_LOCKED_PARENT",
+        "rpmL4SemanticLabel": "합성함수 계산",
+        "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+        "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+        "canonicalPTBindingStatus": "EXISTING_ACTIVE_2022_H22-C2-07",
+        "rpmCrosswalkPT": "PT_COMPOSITION_EVALUATION",
+        "rpmMachineFamilyDisposition": "EVIDENCE_BASED_ACTIVE_COMPOSITE_GRAPH_ANALYSIS",
+        "effectiveL4Id": "EXT-L4-JEIL25-Q18-COMPOSITE-HORIZONTAL-SLICE",
+        "effectiveL4Authority": "GENERATED_ACTIVE",
+        "crossConceptKeys": [
+          "CC_AREA"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 5,
+        "metadataDebt": [
+          "SOURCE_QID18_QID_V1_HASH_NOT_VERIFIED"
+        ],
+        "metaTaxonomyStatus": "AUTHOR_EXISTING_ACTIVE_PT_TPL_WITH_SOURCE_UID_DEBT"
+      },
+      "review": {
+        "reverseStem": "KEEP",
+        "reverseStemReason": "구간별 합성함수를 먼저 구성한 다음 실제 그래프를 분할하지 않으면 질문의 넓이·조건을 확정할 수 없고 고1 사다리꼴/삼각형 풀이가 자연스러움",
+        "primaryL3Necessity": "piecewise g(f(x)) or both orders must be resolved before geometric area",
+        "mathSelfCheckEvidence": {
+          "config": {
+            "a": 2,
+            "b": 2,
+            "d": 1,
+            "k": 1
+          },
+          "formulaVertices": [
+            [
+              0,
+              2
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              4,
+              0
+            ]
+          ],
+          "expectedAnswer": "7/16",
+          "correctChoice": "③",
+          "calculationMethod": "GEOMETRIC_TRAPEZOID_TRIANGLE_NO_CALCULUS"
+        },
+        "wrongRoutes": [
+          {
+            "choice": "①",
+            "offeredValue": "1/4",
+            "incorrectCalculation": "① $1/4$: 왼쪽 영역만 세고 오른쪽 봉우리를 놓친다.",
+            "correctChoice": "③"
+          },
+          {
+            "choice": "②",
+            "offeredValue": "3/16",
+            "incorrectCalculation": "② $3/16$: 오른쪽 봉우리만 세고 $y$축 쪽 왼쪽 삼각형을 놓친다.",
+            "correctChoice": "③"
+          },
+          {
+            "choice": "④",
+            "offeredValue": "3/4",
+            "incorrectCalculation": "④ $3/4$: 오른쪽 봉우리의 밑변 $3/4$을 넓이로 착각한다.",
+            "correctChoice": "③"
+          },
+          {
+            "choice": "⑤",
+            "offeredValue": "1/2",
+            "incorrectCalculation": "⑤ $1/2$: 오른쪽 봉우리 밑변을 $3/4$ 대신 $1$로 잡아 넓이를 $1/4$로 계산하고 왼쪽 $1/4$을 더한다.",
+            "correctChoice": "③"
+          }
+        ],
+        "wrongRouteCoverage": "4/4",
+        "problemVisual": {
+          "status": "NO_VISUAL",
+          "necessity": "VISUAL_EXEMPT",
+          "reason": "원본 q18처럼 학생용 함수식이 완전하고 문제 그래프는 합성 구간분할의 정답 힌트가 되어 제작하지 않음"
+        },
+        "solutionVisual": {
+          "status": "ADD_NEW_VISUAL",
+          "necessity": "VISUAL_REQUIRED",
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_제일고_2학기_기말_고1/assets/q18/C3-solution.svg",
+          "actualBrowserRender": "NOT_RUN"
+        },
+        "disposition": "AUTHOR_DRAFT_SELF_RECHECK_COMPLETE_NOT_APPROVED",
+        "externalOpenBookReview": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED"
+      }
+    }
+  ]
+}
