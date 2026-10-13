@@ -16884,6 +16884,37 @@ window.mainDB = {
       "primaryStandardCourse": "확률과 통계"
     },
     {
+      "file": "original/high/h2/1final/19_매산여고_1학기_기말_고2_수학I.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2019,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-M1-05",
+      "rangeStartUnit": "삼각함수의 뜻과 값",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H15-M1-11",
+      "rangeEndUnit": "수학적 귀납법",
+      "rangeEndUnitOrder": 11,
+      "courseRanges": [
+        {
+          "standardCourse": "수학I",
+          "courseCode": "H15-M1",
+          "rangeStartUnitKey": "H15-M1-05",
+          "rangeStartUnit": "삼각함수의 뜻과 값",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H15-M1-11",
+          "rangeEndUnit": "수학적 귀납법",
+          "rangeEndUnitOrder": 11
+        }
+      ],
+      "primaryStandardCourse": "수학I"
+    },
+    {
       "file": "original/high/h2/2final/19_복성고_2학기_기말_고2_수학II.js",
       "school": "복성고",
       "topic": "",
