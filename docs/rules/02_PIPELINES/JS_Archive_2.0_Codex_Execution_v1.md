@@ -86,7 +86,7 @@ CREATE/R1/R2/R3 각각 동시 담당 1개를 유지한다. CREATE A 인계 후 �
 
 ## 4. CREATE
 
-CREATE는 전 qid의 Archive 완제품 후보를 만든다.
+CREATE는 전 qid의 문제를 직접 풀어 실제 학년·과목 교육과정에 맞는 정답과 논리적으로 완결된 학생용 해설 초안을 만들고 Archive 완제품 후보를 구성한다.
 
 - source identity / content / choices / answer
 - QUESTION_LAYOUT exact parity
@@ -128,6 +128,9 @@ R1은 전 qid를 한 번 깊게 독립 검수하고 동일 final artifact를 통
 - Visual necessity / semantic parity
 
 CREATE verdict를 자동 승계하지 않는다.
+
+완전한 학생용 지문·보기·필수 그림을 통해 전 qid 독립 답과 reasoning을 정답·해설 열람 전에 먼저 freeze하고 이후 비교한다. qid별 실제 풀이의 concepts/formulas/notations/methods를 해당 연도·학년·과목 교육과정과 대조해 최종 해설 파일 ID+revision 또는 실바이트 SHA-256에 결속한다. 검산·설명 개선 시 중간 계산·조건의 사용 이유·보조선 목적·논리 연결을 검토하고, 부족점·수정 전후·학생 이점 또는 무수정 충분성 근거를 기록한다. validator는 보조 기술검사이며 의미 검수 대신 PASS를 주지 않는다; 미실행은 `NOT_RUN`이다.
+
 수정은 same-stage 최소수정하고 changed qid + direct dependency만 다시 확인한다.
 content/choices/problem visual이 바뀌면 이전 independent freeze가 여전히 유효한지 판단한다.
 
@@ -135,17 +138,11 @@ PASS 시 answer·solution·decisiveStep·Meta·visual·evidence가 동일 finalA
 
 ## 6. R2
 
-현재 Codex R2는 **전 qid blind answer sweep**을 유지한다. 범위 축소는 별도 명시 지시가 있을 때만 한다.
+신규 Codex R2는 **전 qid 학생 관점 해설 검산·적극 개선 검토**다. 완전한 학생용 지문·보기·필수 실제 그림 및 최신 해설을 확인하고, 각 단계의 계산·대입·결론을 다시 검산한다. 중간 계산, 조건을 사용하는 이유, 보조선의 목적과 논리 연결, 교육과정 내 더 명확한 설명을 검토·개선한다.
 
-- current final source에서 완전한 student input을 추출한다.
-- content / choices / problem visual만 먼저 공개한다.
-- stored answer/solution 공개 전에 전 qid independent answer를 freeze한다.
-- freeze 뒤 MATCH/MISMATCH/SUSPICIOUS를 비교한다.
-- MATCH는 빠르게 닫는다.
-- mismatch/suspicious/open/high-risk locus만 깊게 처리한다.
-- R1 전체 4축을 다시 돌지 않는다.
+qid별 부족점, 실제 수정 전후 및 학생 이점, 수정이 없다면 현재 해설의 충분성 근거를 기록한다. **수정량·문장교체 할당량은 없다.** 정답 불일치·의심·미해결·고위험 또는 해설 정확성 우려에는 원문과 choices에서 해당 qid를 독립 재풀이한다. R1의 전체 4축 검수는 반복하지 않고 변경 문항·직접 영향만 재확인한다.
 
-freeze 전 answer/solution 노출 또는 필요한 problem visual 누락이면 해당 attempt는 실패 기록으로 남기고 clean blind session으로 다시 수행한다.
+신규 R2는 별도의 전 문항 blind answer-writing/freeze를 요구하지 않으며 이 검토를 blind 검수로 부르지 않는다. 과거 유효한 R2 blind/full-input freeze와 provenance는 이력으로 보존하고 소급 변경하지 않는다. 단계 generic validator는 보조 기술검사로 실제 scope/result 또는 미실행 `NOT_RUN`을 남기며 수학·교육과정 검수 완료를 대신하지 않는다.
 
 ## 7. R3
 
@@ -351,9 +348,9 @@ ROOT + CREATE/R1/R2/R3의 5개 역할을 기본 상한으로 유지한다. 각 s
 
 worker의 첫 동작은 absolute path 존재·actual Git root/HEAD·후보 raw SHA 확인이다. 경로가 다르면 source-batch/production/옛 analysis를 임의 대용하지 않는다. ROOT가 기술 경로를 바로잡고 같은 session에서 재개한다. 출력 evidence의 absolute 위치와 실제 hash를 부모에게 반환한다. compact 인계에도 전체 SHA를 사용하며 `...` 축약이나 구분 공백을 넣지 않는다.
 
-## 19. BLIND INPUT ISOLATION — R1과 R2 공통
+## 19. R1 BLIND INPUT ISOLATION — 과거 R2 동결 기록 보존
 
-ROOT는 검증된 safe extractor를 실행·인계할 수 있으나 문항을 직접 풀거나 의미 판정을 하지 않는다. extractor는 current final JS의 실제 bytes에서 student-visible fields만 whitelist로 추출한다. 지문·선택지·표/도형·inline visual·모든 참조 자산을 포함하고 answer/solution/solutionImage/decisiveStep/Meta/upstream verdict는 pre-freeze bundle에서 제외한다. 실제 renderer가 사용하는 학생 필드가 추가되면 whitelist와 parity 계약을 함께 갱신한다.
+이 절의 freeze-before-disclosure 필수 절차는 R1과 과거 유효한 R2 blind 실행에 적용한다. 신규 R2는 현재 해설을 학생 관점에서 전 문항 검산·개선하므로 새 일괄 blind freeze를 요구하지 않는다. ROOT는 검증된 safe extractor를 실행·인계할 수 있으나 문항을 직접 풀거나 의미 판정을 하지 않는다. extractor는 current final JS의 실제 bytes에서 student-visible fields만 whitelist로 추출한다. 지문·선택지·표/도형·inline visual·모든 참조 자산을 포함하고 answer/solution/solutionImage/decisiveStep/Meta/upstream verdict는 pre-freeze bundle에서 제외한다. 실제 renderer가 사용하는 학생 필드가 추가되면 whitelist와 parity 계약을 함께 갱신한다.
 
 - bundle은 source raw SHA, qid별 student payload SHA, 참조 자산 path/SHA를 결속한다. 모든 student field/reference가 source와 일치하는지 freeze 전에 확인한다.
 - pre-freeze assignment와 상태 요약에도 upstream 답·풀이·답을 유추하는 hold reason을 포함하지 않는다. worker는 raw JS의 head/Get-Content/검색으로 구조를 확인하지 않는다.
@@ -370,7 +367,7 @@ ROOT는 검증된 safe extractor를 실행·인계할 수 있으나 문항을 �
 2. 현재 추출 JS·실제 자산과 source evidence를 직접 읽고 `수정프로토콜.md`의 단일 의미 locus·감사 가능한 원문 수정 규칙을 적용한다. 원문 확인이 필요한 문항/그림/공통 자료의 해당 PDF 영역만 대조한다. 전수 PDF 재대조나 근거 없는 조건 추가는 하지 않는다.
 3. 원문 복구로 완성할 수 없으면 해당 문항만 승인된 ALIVE 문형 대체를 반드시 적용한다. 재승인·R2 이후 대기·HOLD 조건을 붙이지 않는다. 기존 승인 문형/author/renderer를 재사용하고 새 도구·ALIVE 전체 pipeline을 만들지 않는다.
 4. 대체는 동일 교육과정·단원·목표 난이도·문항 수에서 실제 풀이·정답·해설·보기·근거 있는 Meta·필요 에셋을 완성한다. 실패한 후보는 실패 locus를 수정하거나 다른 후보로 바꾼다. 동일 실패 후보의 반복 검증이나 HOLD 반환은 금지한다.
-5. 원문·실패·freeze와 대체 provenance를 보존한다. R1/R2는 완전한 학생 입력/실제 그림으로 독립 검수하며, 대체로 학생 입력이 바뀐 qid만 clean 검수한다. unchanged 문항의 유효한 검수/freeze/렌더는 재사용한다.
+5. 원문·실패·freeze와 대체 provenance를 보존한다. R1은 변경된 완전한 학생 입력/실제 그림으로 독립 답을 먼저 동결해 검수하며, 신규 R2는 해당 qid 해설을 검산·개선하고 불일치·의심·고위험 시 독립 재풀이한다. unchanged 문항의 유효한 검수/freeze/렌더는 재사용한다.
 6. R3는 실제 필요한 변경/구조/표시 마감을 수행하고 ROOT가 승인 JS·필수 에셋 main 반영·원격 일치를 닫는다. 실제 미완료 품질·미실행 검수·미해결 과거 HOLD 필드를 PASS/0으로 위장하지 않는다.
 
 운영 보고의 제작/수정/대체 제작/검수/병합 표현은 신규 machine enum을 만들라는 뜻이 아니다. 기존 supported evidence에 실제 진행·담당자·다음 행동을 남긴다. 실제 권한·명령 오류는 별도 실행 오류로 정확히 기록하고 영향 없는 시험지는 계속 진행한다.
@@ -435,7 +432,7 @@ MAIN_DONE의 목표는 완성된 학생용 JS·정답·해설·Meta·문제 이�
 ROOT는 browser/임시 후보 전달 경로 부재, 실행 도구의 명시적 접근 거부, 유효한 unchanged actual 증거의 재사용, 코드·자산 검수와 기존 증거에 비해 중복 capture의 추가 효용이 낮은 경우 등에서 actual render/capture의 일부 또는 전부를 면제할 수 있다. 정상적으로 유용한 render는 R3가 수행한다. 화면을 ROOT가 다시 심사하거나 면제를 위해 보안 거부를 우회하지 않는다.
 
 면제 경로에도 다음은 충족한다.
-- 완전한 current student bundle·필수 그림과 pre-disclosure freeze에 결속된 R1/R2 전 qid PASS. unchanged 유효 범위는 재사용한다.
+- R1의 완전한 current student bundle·필수 그림과 pre-disclosure 답 freeze, 신규 R2의 전 qid 현 해설 검산·개선 근거가 실제 final identity에 결속되어야 한다. 유효한 과거 R2 blind 기록과 unchanged 완료 근거는 재사용한다.
 - R3의 변경/open/direct dependency 및 전체 구조·마지막 qid·JS syntax·필수 필드·참조 자산·SVG XML/code·외부 dependency·raw SHA 검수.
 - 알려진 계산·정답·해설·수학적 visual 결함, 누락/깨진 asset, 무효 freeze, 해제되지 않은 item HOLD를 먼저 복구한다. 이 결함을 캡처 면제로 통과시키지 않는다.
 - 실행하지 않은 화면/MathJax/overflow 판정은 NOT_RUN으로 기록한다. static 검수와 실제 화면 PASS를 구분한다.

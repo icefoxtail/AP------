@@ -4,7 +4,7 @@
 
 2026-10-13 Codex 추가 지시: 신규 문항의 임시/최종 item·시험지·run HOLD 발행을 금지한다. 결함은 담당자·qid·다음 행동이 있는 수정/ALIVE 대체/영향 검수로 완료한다. ROOT는 실제 담당자를 연결하고 결과를 수납한다. 과거 HOLD 이력은 보존하며 이 문서의 item HOLD travel/recovery 표현은 Codex 신규 작업의 HOLD 발행을 허용하지 않는다. 실제 품질 판정·독립 freeze·Meta/에셋·표시·publication 정확성과 GPT 예약라인은 유지한다.
 
-Codex 원본 시험지 운영은 `JS_Archive_2.0_Codex_Fast_Lane_CURRENT_v1.md`를 우선한다. 필수 문항 품질과 R1 독립 심사·R2 blind sweep을 유지하고 기존 유효한 완료 기록을 재사용한다. R3는 targeted/구조/표시 마감만 수행하고 ROOT는 재검하지 않는다. 시험지 생산 중 공유 도구 수정·새 helper·MASTER 자동 수리·등록/배포 자동 확대를 금지한다. GPT 예약라인은 변경하지 않는다.
+Codex 원본 시험지 운영은 `JS_Archive_2.0_Codex_Fast_Lane_CURRENT_v1.md`를 우선한다. R1의 전 qid 독립 답·근거 freeze-before-compare 및 실제 교육과정 의미검수, 신규 R2의 전 qid 현재 해설 학생 관점 검산·적극 개선을 구분한다. 신규 R2 별도 blind freeze는 강제하지 않는다. 유효한 과거 blind/PASS는 보존한다. R3는 변경·미해결·직접 영향과 최종 구조만 확인한다. 검사기 PASS는 수학·교육과정 의미검수를 대신하지 않는다. GPT 정책 문서는 정렬하되 실제 예약·validator는 변경하지 않는다.
 
 status: CURRENT / TWO-LANE QUALITY FOUNDATION
 qualityContractVersion: `JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006`
@@ -79,7 +79,7 @@ Known Golden defects are recorded as exceptions instead of replacing the fixed s
 
 ## 7. CREATE
 
-CREATE produces an Archive-complete candidate for every qid:
+CREATE directly solves every qid and drafts a mathematically complete, taught-curriculum solution with intermediate calculations and reasons for using conditions or auxiliary constructions, then produces an Archive-complete candidate for every qid:
 - source identity / content / choices / answer
 - question layout
 - small-board solution
@@ -94,6 +94,9 @@ Evidence-only PASS is forbidden when the final artifact does not physically cont
 ## 8. R1
 
 R1 is the one deep full-qid integrated seal:
+
+Before seeing stored answers or solutions, independently solve and freeze each qid answer and reasoning with complete student-facing input and required assets. Then compare and judge the actual final solution's concepts/formulas/notations/methods against the year/grade/course curriculum, bound to exact Library file ID+revision or full-byte SHA-256. Improve missing intermediate steps, reasons, auxiliary-line purpose and logical continuity as needed; record per-qid shortcomings, before/after/student benefit or sufficient no-edit reasons. Validator PASS/NOT_RUN is technical evidence, never semantic math/curriculum completion. An unperformed semantic review or UNCERTAIN judgment is not complete.
+
 - source identity
 - independent math / answer / answer cardinality
 - question layout
@@ -107,13 +110,9 @@ Legacy PASS binds answer, solution, decisiveStep, Meta, visual, and evidence to 
 
 ## 9. R2 and R3
 
-Current Codex R2 keeps a full-qid blind answer sweep; terminated qualification pilots remain historical.
-Freeze the complete student-input answer before stored answer/solution exposure.
-MATCH closes quickly; mismatch/suspicious/high-risk locus gets deep treatment.
-R2 does not rerun the full R1 quality audit.
+New R2 is a **full-qid student-perspective review of the current solutions**. Read complete current student input, necessary assets and solution, recompute decisive steps, and proactively improve missing calculations, condition usage, auxiliary-line purposes, clear logic, notation and in-curriculum teaching. For each qid record the deficiency, before/after edit and student benefit or why no change is necessary. Do not impose edit quotas. Independently re-solve from the original question/choices for mismatch, suspicion or high-risk items, rather than re-running R1's full audit.
 
-R3 is targeted release review of changed/open/direct-dependency/locked scope plus final structural integrity.
-It does not rerun whole-exam semantic review.
+New R2 does **not** require a full-qid blind answer freeze and must not be labeled as such. Preserve historical valid R2 blind/full-input freeze as historical evidence without relabeling. R3 checks changed/open/direct-dependency scope and final file structure/visual integrity only, not a repeat of whole-exam math/Meta audits. Generic validator status and actual scope/result or `NOT_RUN` remain separate from completed math/curriculum review.
 
 ## 10. Artifact gate
 

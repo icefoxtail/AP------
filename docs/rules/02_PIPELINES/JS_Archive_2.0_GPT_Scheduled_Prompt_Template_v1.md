@@ -30,15 +30,17 @@ executionLine = GPT_SCHEDULED
 
 ## 2. ROLE = CREATE — COPY
 
-전 qid의 source identity, 학생용 발문·choices·answer, QUESTION_LAYOUT, 작은칠판 해설, 의미 기반 Meta·difficulty, visual/SVG 필요성·정확성, engine-safe 결과를 완성한다. 실제 Golden/Negative와 필요한 그림을 사전에 확인하고 근거와 Library file ID+revision을 누적 기록에 남긴다. 품질 기준은 Scheduled Execution §§16–17을 따른다. 이 단계에서 별도 validator/PASS/seal을 만들지 않는다.
+전 qid를 직접 풀고 해당 학년·과목 교육과정에서 논리적으로 완결된 학생용 해설 초안을 작성한다. source identity·발문·choices·정답·QUESTION_LAYOUT·중간 계산·조건의 이유·보조선 목적·논리 연결·의미 Meta·난이도·Visual/필수 SVG를 점검한다. Golden/Negative와 실제 그림을 확인하고 누적기록에 정확한 Library ID+revision 또는 실바이트 SHA-256과 근거를 남긴다. 별도 validator/PASS/seal을 새로 만들지 않는다.
 
 ## 3. ROLE = R1 — COPY
 
-별도 세션에서 시작해 이전 정답·해설·타 검수자 답 없이 완전한 학생용 입력, 필요한 그림·표, 정답 없는 상태 요약만 읽는다. 누적기록의 기존 내용을 열지 않고 독립 답과 필요한 풀이 근거만 먼저 append·저장·고정한 다음에만 전체 기록과 저장 답·해설을 대조한다. 분리 순서를 보장하지 못하면 독립 검수 완료로 표시하지 않는다. CREATE 결론은 승계하지 않는다. 수정 후 변경 qid와 직접 영향만 확인하고 Library file ID+revision을 기록한다. 별도 validator/PASS/seal을 만들지 않는다.
+별도 세션에서 정답·해설·타 검수자 답을 보기 전 완전한 학생 입력과 필수 그림으로 **전 qid 독립 답·reasoning을 먼저 append·저장·동결**하고 그 뒤에만 저장 답·해설과 비교한다. CREATE의 답을 승계하지 않고 수학·해설·Meta·Visual과 실제 풀이법의 연도·학년·과목 교육과정 적합성을 최종 해설 identity에 결속한다. 해설 중간 계산·조건 사용 이유·보조선 목적·논리 연결을 적극 검토해 qid별 부족점·실제 수정 전후와 학생 이점 또는 무수정 충분성 근거를 기록한다. 수정 qid·직접 영향만 다시 확인한다. generic validator는 기술검사이며 실제 범위·결과 또는 `NOT_RUN`을 남긴다. 기술 PASS로 독립 풀이/수학/교육과정 의미검수를 대체하지 않는다. 별도 validator/PASS/seal을 만들지 않는다.
 
 ## 4. ROLE = R2 — COPY
 
-R1과 별도의 새 세션에서 시작해, 이전 답·해설·타 검수자 답 없이 완전한 최신 학생용 입력(content, choices, 필요한 visual)과 정답 없는 상태 요약만 읽는다. 누적기록의 기존 내용을 열지 않고 전 qid 독립 답과 필요한 근거만 append·저장·고정한 후 전체 기록·저장 정답과 비교한다. 일치 항목은 닫고 불일치·의심·미해결·고위험만 조사한다. R1의 전수 품질 검사를 반복하지 않는다. 별도 validator/PASS/seal을 만들지 않는다.
+R1과 분리된 새 검수자가 완전한 최신 학생 입력·필수 시각자료·**현재 해설**을 전 qid 따라 검산하며 논리·계산·표기·교육과정 결함을 적극 개선한다. 중간 계산·조건 선택의 이유·보조선 목적·논리 연결을 보완하고, qid별 부족점·수정 전후·학생 이점 또는 무수정 충분성 이유를 누적 기록한다. 수정 quota는 없다. 정답 불일치·의심·고위험은 원문과 choices에서 해당 qid 독립 재풀이한다. 신규 R2에 전 문항 별도 blind 동결은 요구하지 않으며 과거 유효한 blind 기록은 보존한다. 변경·직접 영향만 재확인하고 R1 전체 감사를 반복하지 않는다. 기술 validator 결과·`NOT_RUN`은 수학·교육과정 검수와 분리하고 별도 validator/PASS/seal을 만들지 않는다.
+
+학생용 설명은 한국어 정식 교육과정 용어를 사용하고 수학 표준기호·SVG 필수 그림·좌표·점 라벨은 보존한다. SVG의 raw TeX·caret·영문 제작 메모 노출을 피한다. 변경 없는 기존 문항의 일괄 재작업은 하지 않는다.
 
 ## 5. ROLE = R3 — COPY
 
