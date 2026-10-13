@@ -364,16 +364,18 @@ ROOT는 검증된 safe extractor를 실행·인계할 수 있으나 문항을 �
 
 ## 20. ITEM_HOLD TRAVEL — 원본 → 최소수정 → 직접 대체
 
+**2026-10-13 우선 지시:** Fast Lane의 ‘문항 HOLD로 종료 금지’를 적용한다. 콘텐츠 결함은 해당 문항 수정→필요한 원문 영역 대조→복구 불가능 시 승인 ALIVE 문형 대체→후보 수정/다른 후보 생성→영향 독립 검수로 완성한다. 대체를 R2 이후까지 기다리는 조건부 선택으로 두지 않는다. 아래 HOLD 운반/유지 및 다른 절의 terminal HOLD 문구는 작업 중 상태·실패 이력 보존에만 사용하며 시험지/roster/골 종료 근거로 사용하지 않는다. 대체 실패 후보는 수정하거나 교체하고 unchanged 문항은 재검하지 않는다. 실제 권한·실행 오류를 콘텐츠 HOLD와 혼동하지 않으며 수행하지 않은 검수를 PASS로 표시하지 않는다.
+
 CREATE의 item HOLD를 시험지 최종 완료로 집계하지 않는다. 각 stage는 전체 denominator를 검수하고 held qid를 다음 독립 검수에 운반한다. generic validator가 HOLD row 때문에 FAIL이면 `PASS`를 만들지 않고 exact issue/coverage를 기록한다. 다른 serialization/hash/debt 결함은 먼저 수리해 실제 item hold와 구분한다.
 
 1. 먼저 현재 추출 JS·실제 문제 에셋과 기존 intake evidence로 해당 HOLD의 조건·입력·수학을 확인한다. 원문 누락·오독·그림 충돌처럼 원본 확인이 실제로 필요한 결함만 qid와 확인할 사실을 명시해 로컬 PDF/scan의 해당 영역을 대조한다. PDF·답안 전수 재열람을 자동 선행 조건으로 두지 않는다.
 2. `수정프로토콜.md`의 REPAIR_BEFORE_HOLD / ONE_SEMANTIC_LOCUS_REPAIR / AUDITED_SOURCE_REPAIR를 적용하고 worker가 changed locus를 재검한다. 근거 없는 조건 추가로 정답을 만들지 않는다.
 3. R1/R2는 upstream HOLD를 정답으로 삼지 않고 student bundle에서 독립 재판정한다.
-4. R2 뒤에도 true item HOLD가 남고 최소복구가 불가능하면 `Archive_Final_Item_Direct_Replacement_v1.md`에 따라 held qid만 직접 대체한다. 사용자 허용 custom author role을 사용하고 임의 새 role/ALIVE 전면 pipeline을 열지 않는다.
+4. 원문의 최소복구가 불가능하면 해당 qid만 승인된 ALIVE 문형 대체로 전환한다. 기존 직접 대체 계약과 사용자 허용 author role을 사용한다. 대체 후보에 결함이 있으면 수정하거나 다른 후보를 생성해 완성한다. 임의 새 role·새 엔진·ALIVE 전면 pipeline을 열지 않는다.
 5. replacement는 solution-first·실제 오답 경로·5 choices 전수·fresh Meta·non-target invariance를 닫는다. student body 교체로 무효인 qid만 새 clean R1/R2 freeze를 수행한다.
 6. 기존 stage owner가 unchanged qids를 재사용하고 current full evidence를 재결속·검증한다. `itemHoldCount=0` 이후 R3로 간다. actual 경로는 RENDER_PASS, ROOT 면제 경로는 R3 static closure와 별도 gate 수납 뒤 publication한다.
 
-HOLD 유지에는 decisiveMissingFacts, alternateEvidenceChecked, fullPageLookupResult, repairAttempted, whyDeterministicClosureImpossible, nextRequiredEvidenceOrCapability가 필요하다. 콘텐츠 item hold와 run 공통 browser/receipt blocker는 서로 다른 원인으로 기록한다.
+원문 복구 불가능 근거와 과거 HOLD 필드는 대체 전환·수정 provenance로 보존한다. 대체 이후 콘텐츠 HOLD를 최종 종료 근거로 유지하지 않는다. 콘텐츠 수정/대체 작업과 run 공통 권한·실행 오류는 별도 원인으로 기록한다.
 
 ## 21. HASH / VALIDATOR / EVIDENCE — 실패 후 필요한 검증 허용
 
