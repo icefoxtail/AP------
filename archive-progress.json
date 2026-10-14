@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-14T05:38:11.153Z",
+  "updatedAt": "2026-10-14T05:52:31.152Z",
   "coverage": "GitHub PR/Actions only; Library/GPT completion not observed",
   "history": {
     "complete": false,
@@ -100,7 +100,14 @@
         "run": "https://github.com/icefoxtail/AP------/pull/440",
         "at": "2026-10-14T05:33:12Z"
       },
-      "registration": null,
+      "registration": {
+        "result": "실패",
+        "sha": "5fbb3cfb4574eb3806796da0d913480d972cf10d",
+        "run": "https://github.com/icefoxtail/AP------/actions/runs/38517251206",
+        "at": "2026-10-14T05:39:31Z",
+        "stage": "등록",
+        "attempt": 1
+      },
       "deployment": {
         "result": "실패",
         "sha": "5fbb3cfb4574eb3806796da0d913480d972cf10d",
@@ -121,9 +128,9 @@
       "lastFailure": {
         "result": "실패",
         "sha": "5fbb3cfb4574eb3806796da0d913480d972cf10d",
-        "run": "https://github.com/icefoxtail/AP------/actions/runs/38517251197",
-        "at": "2026-10-14T05:35:53Z",
-        "stage": "배포 작업",
+        "run": "https://github.com/icefoxtail/AP------/actions/runs/38517251206",
+        "at": "2026-10-14T05:39:31Z",
+        "stage": "등록",
         "attempt": 1
       }
     },
@@ -18998,7 +19005,6 @@
       "key": "registration:38510511528:1:9c3083d2f022795b513d63a40e5b71b515553d97",
       "status": "unverified",
       "attempts": 4,
-      "reason": "현재 실행 차수 증거 없음",
       "run": {
         "id": 38510511528,
         "attempt": 1,
@@ -19009,6 +19015,7 @@
         "event": "push",
         "branch": "main"
       },
+      "reason": "현재 실행 차수 증거 없음",
       "retryExhausted": true
     },
     "registration:38490550448:1:11ded194b5fda51ad240dfbd02fafbb883b42261": {
