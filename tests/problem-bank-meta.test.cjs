@@ -45,6 +45,14 @@ test('source availability, user disablement and Meta verification are independen
     metaFinalSha256:approved.metaFinalSha256,sourceShardGitSha:approved.sourceShardGitSha,
     reviewEvidenceSha256:approved.metaReviewEvidenceSha256}});
   assert.equal(verified.verifiedEligible,true);
+  const completeCurrentSource={...approved,meta:m,metaVerification:{
+    status:'VERIFIED_CURRENT_SOURCE',sourceBound:true,reviewBytesBound:true,
+    metaFinalSha256:approved.metaFinalSha256,sourceShardGitSha:approved.sourceShardGitSha,
+    reviewEvidenceSha256:approved.metaReviewEvidenceSha256}};
+  for (const field of ['rpmL1','rpmL2','rpmL3','rpmL4','secondaryConceptKeys','crossConceptKeys',
+    'conditionKeys','integrationPattern','problemTypeKey','templateKey','difficultyBucket']) {
+    assert.equal(meta.projectGenerated({...completeCurrentSource,meta:{...m,[field]:null}}).verifiedEligible,false,field+' remains required for Generated Meta');
+  }
   assert.equal(meta.projectGenerated({...approved,meta:m,
     metaVerification:{status:'VERIFIED_CURRENT_SOURCE',sourceBound:true}}).verifiedEligible,false);
   for (const patch of [
