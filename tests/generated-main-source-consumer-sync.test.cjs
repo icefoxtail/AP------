@@ -123,7 +123,15 @@ test('Pages release derives the complete source projection atomically without a 
   'source, tests, and student browser checks finish before the Pages artifact is uploaded');
  assert.match(release,/branches: \[main\]/);
  assert.match(release,/needs: build/,'deployment requires the complete build job');
- assert.doesNotMatch(release,/gh pr (?:create|merge)|git push origin (?:main|HEAD:main)/);
+ assert.doesNotMatch(release,/gh pr (?:create|merge)/,'Pages release must not create a projection PR loop');
+ const registrationCommit=release.indexOf('Commit generated Archive registration artifacts');
+ const pushIndex=release.indexOf('git push origin HEAD:main');
+ assert.ok(registrationCommit>=0&&pushIndex>registrationCommit&&pushIndex<sourceWrite,
+  'only the inline registration step may push derived artifacts before compiling the projection');
+ assert.equal((release.match(/git push origin HEAD:main/g)||[]).length,1,
+  'Pages release has one controlled registration push, not a projection loop');
+ assert.match(release,/chore\\(archive\\): sync registration artifacts \\[skip ci\\]/,
+  'registration push must avoid recursive CI release loops');
 });
 
 test('Windows CRLF source worktrees project the canonical Git blob SHA into Consumer rows',t=>{
