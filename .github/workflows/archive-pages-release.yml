@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -31,6 +31,11 @@ jobs:
         with:
           node-version: '22'
 
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
       - name: Create release evidence context
         env:
           RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
@@ -44,6 +49,76 @@ jobs:
             printf 'workflow_ref=%s\n' "$GITHUB_WORKFLOW_REF"
             printf 'workflow_run_url=%s/%s/actions/runs/%s\n' "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID"
           } > "$RELEASE_EVIDENCE_DIR/context.txt"
+
+      - name: Materialize reviewed META_V2 and register Archive sources
+        env:
+          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+        run: |
+          node archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs --write 2>&1 | tee "$RELEASE_EVIDENCE_DIR/meta-v2-materializer-write.log"
+          python archive/build_db.py 2>&1 | tee "$RELEASE_EVIDENCE_DIR/archive-registration-build.log"
+
+      - name: Verify Archive DB, UID, Meta, index, and catalog registration
+        env:
+          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+        run: |
+          node tests/archive-meta-v2-materializer.test.mjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/meta-v2-materializer-tests.log"
+          node tests/archive2-meta-v2-semantic-authority.test.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/meta-v2-authority-tests.log"
+          node archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs --check 2>&1 | tee "$RELEASE_EVIDENCE_DIR/meta-v2-materializer-check.log"
+          node tests/archive-question-identity-contract.test.mjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/question-identity-contract-tests.log"
+          node tests/archive-question-identity-runtime.test.mjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/question-identity-runtime-tests.log"
+          node tests/jeil-legacy-similar-22-registration.test.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/jeil-registration-tests.log"
+          node tests/palma-legacy-similar-23-registration.test.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/palma-registration-tests.log"
+          node archive/tools/verify-archive-registration.mjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/archive-registration-parity.log"
+          git diff --check
+
+      - name: Guard generated Archive registration scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t changed < <(
+            {
+              git diff --name-only
+              git ls-files --others --exclude-standard
+            } | sort -u
+          )
+          allowed='^(archive/db\.js|archive/data/question_identity_map\.json|archive/data/question_metadata\.json|archive/question-identity\.js|archive/question-index\.js|archive/question-index-report\.md|archive/question-index-audit\.md|archive/data/archive2-catalog\.json|archive/data/archive2-crosswalk-inventory\.json|archive/data/archive2-canonical-input-manifest\.json|archive/data/archive2-canonical-projection-policy\.json|archive/data/archive2-item-review-overrides\.json|archive/data/basic-scope-parent-links\.json|archive/data/meta-foundation/runtime/[^/]+\.json)$'
+          for file in "${changed[@]}"; do
+            if [[ -n "$file" && ! "$file" =~ $allowed ]]; then
+              echo "Unexpected generated Archive registration file: $file"
+              exit 1
+            fi
+          done
+          printf '%s\n' "${changed[@]}"
+
+      - name: Commit generated Archive registration artifacts
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add -- archive/db.js archive/data/question_identity_map.json archive/data/question_metadata.json archive/question-identity.js archive/question-index.js archive/question-index-report.md archive/question-index-audit.md archive/data/archive2-catalog.json archive/data/archive2-crosswalk-inventory.json archive/data/archive2-canonical-input-manifest.json archive/data/archive2-canonical-projection-policy.json archive/data/archive2-item-review-overrides.json archive/data/basic-scope-parent-links.json archive/data/meta-foundation/runtime/*.json
+          if git diff --cached --quiet; then
+            echo "Archive registration artifacts already current."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "chore(archive): sync registration artifacts [skip ci]"
+            git push origin HEAD:main
+          fi
+          git fetch --no-tags origin main
+          registered_sha="$(git rev-parse HEAD)"
+          remote_sha="$(git rev-parse origin/main)"
+          if [[ "$registered_sha" != "$remote_sha" ]]; then
+            echo "main advanced while Archive registration ran; refusing to release stale output" >&2
+            echo "registered=$registered_sha remote=$remote_sha" >&2
+            exit 1
+          fi
+          {
+            printf 'registration_input_sha=%s\n' "$GITHUB_SHA"
+            printf 'registration_commit_sha=%s\n' "$registered_sha"
+            printf 'registration_remote_main_sha=%s\n' "$remote_sha"
+          } >> "$RELEASE_EVIDENCE_DIR/context.txt"
 
       - name: Materialize main-resident QID9 source formats through common converter
         env:
@@ -114,6 +189,21 @@ jobs:
         env:
           RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
         run: node tools/check-archive2-runtime.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/archive2-runtime.log"
+
+      - name: Confirm deployment is built from current registered main
+        env:
+          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin main
+          release_sha="$(git rev-parse HEAD)"
+          remote_sha="$(git rev-parse origin/main)"
+          if [[ "$release_sha" != "$remote_sha" ]]; then
+            echo "main advanced during Pages verification; refusing to deploy a stale artifact" >&2
+            echo "release=$release_sha remote=$remote_sha" >&2
+            exit 1
+          fi
+          printf 'verified_release_main_sha=%s\n' "$release_sha" >> "$RELEASE_EVIDENCE_DIR/context.txt"
 
       - name: Upload release diagnostics, including failed runs
         if: always()
