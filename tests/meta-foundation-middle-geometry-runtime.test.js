@@ -32,7 +32,7 @@ assert.strictEqual(runtimeReceipt.checked.combinedRuntimeRecords, runtimeRecordC
 assert.strictEqual(runtimeReceipt.checked.combinedUniqueUid, runtimeRecordCount);
 assert.strictEqual(runtimeReceipt.checked.combinedUniqueSourceIdentity, runtimeRecordCount);
 assert.strictEqual(runtimeReceipt.checked.middleGeometryCatalogJoin, 928);
-assert.strictEqual(runtimeReceipt.checked.metaFoundationRuntimePackCount, 10);
+assert.strictEqual(runtimeReceipt.checked.metaFoundationRuntimePackCount, 11);
 assert.strictEqual(runtime.counts.automaticEligibleExpected, 54);
 assert.strictEqual(new Set(runtime.records.map((row) => row.questionUid)).size, 928);
 assert.strictEqual(new Set(runtime.records.map((row) => sourceKey(row.sourceArchiveFile, row.sourceOrdinal))).size, 928);

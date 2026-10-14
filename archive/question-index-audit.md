@@ -7,8 +7,8 @@
   - DB 미등록 교재 파일과 미추적 _pro 드래프트는 제외한다.
 - 공식 마스터 키 수: 143 (중등 23 + H22 56 + H15 64)
 - 원본 문항 수: 17459
-- 최종 인덱스 문항 수: 17437
-- 중복 qKey 그룹: 1 / 제외 레코드(duplicate_skipped): 22
+- 최종 인덱스 문항 수: 17459
+- 중복 qKey 그룹: 0 / 제외 레코드(duplicate_skipped): 0
 - 최종 인덱스 중복 qKey: 0 (0이어야 정상)
 
 ---
@@ -20,31 +20,7 @@
 > qKey 규칙(sourceFile_id)은 유지하며 새 키로 치환하지 않는다.
 > ※ 아래 그룹의 SKIP 레코드는 대부분 "내용이 다른 별개 문항"이 동일 id를 가져 qKey가 충돌한 경우다(2번 항목 참조).
 
-### original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js_
-- sourceFile: original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js
-  - KEPT   id="" key="" unit="기하" course="중3 수학" class=empty content=0자
-  - SKIP   id="" key="" unit="통계" course="중3 수학" class=empty content=0자
-  - SKIP   id="" key="" unit="통계" course="중3 수학" class=empty content=0자
-  - SKIP   id="" key="" unit="통계" course="중3 수학" class=empty content=0자
-  - SKIP   id="" key="" unit="통계" course="중3 수학" class=empty content=0자
-  - SKIP   id="" key="" unit="통계" course="중3 수학" class=empty content=0자
-  - SKIP   id="" key="" unit="통계" course="중3 수학" class=empty content=0자
-  - SKIP   id="" key="" unit="통계" course="중3 수학" class=empty content=0자
-  - SKIP   id="" key="" unit="통계" course="중3 수학" class=empty content=0자
-  - SKIP   id="" key="" unit="통계" course="중3 수학" class=empty content=0자
-  - SKIP   id="" key="" unit="통계" course="중3 수학" class=empty content=0자
-  - SKIP   id="" key="" unit="기하" course="중3 수학" class=empty content=0자
-  - SKIP   id="" key="" unit="기하" course="중3 수학" class=empty content=0자
-  - SKIP   id="" key="" unit="기하" course="중3 수학" class=empty content=0자
-  - SKIP   id="" key="" unit="기하" course="중3 수학" class=empty content=0자
-  - SKIP   id="" key="" unit="기하" course="중3 수학" class=empty content=0자
-  - SKIP   id="" key="" unit="기하" course="중3 수학" class=empty content=0자
-  - SKIP   id="" key="" unit="입체도형" course="중3 수학" class=empty content=0자
-  - SKIP   id="" key="" unit="입체도형" course="중3 수학" class=empty content=0자
-  - SKIP   id="" key="" unit="입체도형" course="중3 수학" class=empty content=0자
-  - SKIP   id="" key="" unit="통계" course="중3 수학" class=empty content=0자
-  - SKIP   id="" key="" unit="입체도형" course="중3 수학" class=empty content=0자
-  - SKIP   id="" key="" unit="입체도형" course="중3 수학" class=empty content=0자
+- 중복 qKey 없음
 
 ---
 
@@ -54,9 +30,7 @@
 > 동일 파일 내 같은 id가 2회 이상 쓰이면(내용이 다르더라도) 동일 qKey가 생성되어 1건만 인덱스에 남는다.
 > 후속 단계에서 원본 JS의 id 재부여가 필요하다.
 
-### original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js (총 23문항)
-  - 중복 id 없음
-  - 빈 id 문항: 23건
+- id 중복/누락 파일 없음
 
 ---
 
@@ -105,16 +79,16 @@
 
 ---
 
-## 5. 필드 누락 (최종 인덱스 17437건 기준)
+## 5. 필드 누락 (최종 인덱스 17459건 기준)
 
 | 필드 | 누락 수 |
 |------|--------:|
-| id | 1 |
-| content | 94 |
+| id | 0 |
+| content | 116 |
 | choices(배열) | 5 |
 | level | 521 |
 | standardUnit | 48 |
-| standardUnitKey | 72 |
+| standardUnitKey | 94 |
 | standardCourse | 59 |
 | tags | 47 |
 | undefined/비객체(skip) | 0 |
