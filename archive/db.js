@@ -15480,6 +15480,37 @@ window.mainDB = {
       "primaryStandardCourse": ""
     },
     {
+      "file": "original/high/h1/1final/21_제일고_1학기_기말_고1_기출.js",
+      "school": "제일고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2021,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-05",
+      "rangeStartUnit": "이차방정식",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H15-SA-11",
+      "rangeEndUnit": "원의 방정식",
+      "rangeEndUnitOrder": 11,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-05",
+          "rangeStartUnit": "이차방정식",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H15-SA-11",
+          "rangeEndUnit": "원의 방정식",
+          "rangeEndUnitOrder": 11
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
       "file": "original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js",
       "school": "제일고",
       "topic": "",
