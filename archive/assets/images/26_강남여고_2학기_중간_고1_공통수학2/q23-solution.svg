@@ -1,30 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="760" height="760" viewBox="0 0 760 760" role="img">
-<style>.axis{stroke:#111;stroke-width:1.2}.shape,.curve{fill:none;stroke:#111;stroke-width:1.8}.guide{fill:none;stroke:#555;stroke-width:1;stroke-dasharray:5 4}.point{fill:#111}.radius{fill:none;stroke:#1f4e79;stroke-width:1.5}.tangent{fill:none;stroke:#111;stroke-width:2.1}.perpendicular{fill:none;stroke:#555;stroke-width:1;stroke-dasharray:3 3}.right-angle{fill:none;stroke:#111;stroke-width:1.2}.center-point{fill:#1f4e79}.element-label,.annotation{font:32px sans-serif}.annotation{font-style:italic}text{font:32px sans-serif;fill:#111}.cell{fill:#fff;stroke:#111;stroke-width:1}.cell-text{text-anchor:middle;dominant-baseline:middle;font:32px sans-serif}</style>
-<line x1="119" y1="32" x2="119" y2="728" class="axis"/>
-<line x1="32" y1="641" x2="728" y2="641" class="axis"/>
-<line x1="206" y1="510.5" x2="554" y2="162.5" class="guide"/>
-<text x="385" y="331.5" class="element-label">C₁C₂=8√2</text>
-<line x1="206" y1="510.5" x2="119" y2="510.5" class="radius"/>
-<text x="167.5" y="505.5" class="element-label">r₁=2</text>
-<line x1="554" y1="162.5" x2="119" y2="162.5" class="radius"/>
-<text x="341.5" y="157.5" class="element-label">r₂=10</text>
-<circle cx="206" cy="510.5" r="3" class="point"/>
-<text x="212" y="504.5">C₁</text>
-<circle cx="554" cy="162.5" r="3" class="point"/>
-<text x="560" y="156.5">C₂</text>
-<circle cx="119" cy="510.5" r="3" class="point"/>
-<text x="125" y="504.5">T₁</text>
-<circle cx="119" cy="162.5" r="3" class="point"/>
-<text x="125" y="156.5">T₂</text>
-<circle cx="293" cy="510.5" r="3" class="point"/>
-<text x="299" y="504.5">P(4,3)</text>
-<circle cx="206" cy="510.5" r="87" class="shape"/>
-<circle cx="206" cy="510.5" r="3.4" class="center-point"/>
-
-<path d="M119 162.5 A435 435 0 0 0 293 510.5" class="shape"/>
-<circle cx="554" cy="162.5" r="3.4" class="center-point"/>
-
-<text x="53.75" y="62.45" class="annotation">두 원 모두 y축에 접함</text>
-<text x="53.75" y="132" class="annotation">P는 두 원 위</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="790" viewBox="0 0 820 790" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="q23title q23desc">
+<title id="q23title">y축에 접하고 같은 점을 지나는 두 원</title>
+<desc id="q23desc">중심 A(2,3), 반지름 2인 원과 중심 B(10,11), 반지름 10인 원이 모두 y축에 접하고 점 P(4,3)을 지난다. 중심 사이의 거리는 8√2이다.</desc>
+<style>.axis{fill:none;stroke:#888;stroke-width:1.5}.small{fill:#f1f8fb;stroke:#1c6486;stroke-width:3}.large{fill:#f9fcfe;stroke:#2f4958;stroke-width:3}.helper{fill:none;stroke:#888;stroke-width:1.8;stroke-dasharray:6 5}.center{fill:#111}.point{fill:#1b6894;stroke:#fff;stroke-width:2}.label{font:24px Arial,'Noto Sans KR',sans-serif;fill:#111}.value{font:26px Arial,'Noto Sans KR',sans-serif;fill:#223e53}</style>
+<line class="axis" x1="40" y1="750" x2="789" y2="750"/>
+<line class="axis" x1="80" y1="32" x2="80" y2="768"/>
+<text class="label" x="793" y="745">x</text><text class="label" x="88" y="31">y</text>
+<circle class="large" cx="400" cy="398" r="320" data-center="10,11" data-radius="10"/>
+<circle class="small" cx="144" cy="654" r="64" data-center="2,3" data-radius="2"/>
+<line class="helper" x1="80" y1="398" x2="400" y2="398"/>
+<line class="helper" x1="80" y1="654" x2="144" y2="654"/>
+<line class="helper" x1="144" y1="654" x2="400" y2="398" data-center-distance="8sqrt2"/>
+<line class="helper" x1="400" y1="398" x2="208" y2="654" data-radius="10"/>
+<circle class="center" cx="144" cy="654" r="4" data-math-x="2" data-math-y="3"/>
+<circle class="center" cx="400" cy="398" r="4" data-math-x="10" data-math-y="11"/>
+<circle class="point" cx="208" cy="654" r="5.5" data-math-x="4" data-math-y="3"/>
+<text class="label" x="110" y="626">A(2,3)</text><text class="label" x="412" y="375">B(10,11)</text>
+<text class="label" x="224" y="693">P(4,3)</text><text class="label" x="90" y="733">O</text>
+<text class="value" x="272" y="562">AB = 8√2</text>
+<text class="value" x="161" y="680">r = 2</text><text class="value" x="240" y="395">r = 10</text>
+<text class="label" x="452" y="172">두 원 모두 y축에 접한다</text>
 </svg>
