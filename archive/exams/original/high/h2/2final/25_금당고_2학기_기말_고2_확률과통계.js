@@ -199,7 +199,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "answerStatus": "direct_solved_round13",
-    "solution": "[키포인트] $V(aX+b)=a^2 V(X)$이고 $E(aX+b)=aE(X)+b$임을 이용한다.\\n조건 정리: $E(X)=30$, $V(X)=5$, $E(Y)=75$, $V(Y)=45$, $a>0$.\\n풀이 방향: 분산 공식으로 $a$를 먼저 구하고, 기댓값 공식으로 $b$를 구한다.\\n정석 풀이:\\n분산 조건: $V(Y) = a^2 V(X)$이므로\\n$45 = a^2 \\times 5$, $a^2 = 9$. $a > 0$이므로 $a = 3$이다.\\n기댓값 조건: $E(Y) = aE(X) + b$이므로\\n$75 = 3 \\times 30 + b = 90 + b$, $b = -15$.\\n따라서 $a - b = 3 - (-15) = 18$이다.\\n따라서 정답은 ④이다.",
+    "solution": "$Y=aX+b$에서 평균은 $a$배 한 뒤 $b$를 더하고, 분산은 $a^2$배가 된다.\n$V(Y)=a^2V(X)$\n$45=5a^2\\;\\Rightarrow\\;a^2=9$\n$a>0$이므로 $a=3$이다.\n$E(Y)=aE(X)+b$\n$75=3\\times30+b$\n$75=90+b\\;\\Rightarrow\\;b=-15$\n따라서 $a-b=3-(-15)=18$이므로 정답은 ④이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "round13_continue_to_zero_completed",
     "tags": [
@@ -244,7 +244,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] 조건부확률 공식 $P(2학년 | 이용경험 있음) = \\dfrac{P(2학년 \\\\cap 이용경험 있음)}{P(이용경험 있음)}$을 이용한다.\\n조건 정리: 전체 150명, 1학년 중 이용경험 '있음' 비율이 30%, 1학년 이용경험 '있음' 인원 24명, 2학년 이용경험 '없음' 49명.\\n풀이 방향: 표의 빈칸을 채운 뒤 조건부확률을 계산한다.\\n정석 풀이:\\n1학년 이용경험 '있음'이 24명이고 이것이 1학년 전체의 30%이므로,\\n1학년 전체 = $24 \\div 0.3 = 80$명.\\n따라서 2학년 전체 = $150 - 80 = 70$명.\\n1학년 이용경험 '없음' = $80 - 24 = 56$명.\\n2학년 이용경험 '없음' = 49명이므로, 2학년 이용경험 '있음' = $70 - 49 = 21$명.\\n이용경험 '있음' 전체 = $24 + 21 = 45$명.\\n구하는 조건부확률은\\n$P = \\dfrac{21}{45} = \\dfrac{7}{15}$\\n따라서 정답은 ②이다.",
+    "solution": "1학년에서 이용 경험이 있는 $24$명이 1학년 전체의 $30\\%$이므로\n$1$학년 전체 인원 $=\\dfrac{24}{0.3}=80$명이다.\n$2$학년 전체 인원 $=150-80=70$명이고,\n$2$학년 중 이용 경험이 있는 인원 $=70-49=21$명이다.\n따라서 이용 경험이 있는 학생은 모두 $24+21=45$명이다.\n이용 경험이 있다는 조건에서 $2$학년일 확률은\n$P=\\dfrac{21}{45}=\\dfrac7{15}$\n따라서 정답은 ②이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
@@ -291,7 +291,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] 확률밀도함수의 그래프 아래 전체 넓이가 1이라는 조건을 이용한다.\\n조건 정리: 그래프는 $(0,0)$에서 $(3,h)$까지 직선으로 증가하고, $3 \\le x \\le 5$에서 높이 $h$로 일정하며, $(5,h)$에서 $(6,0)$까지 직선으로 감소한다.\\n풀이 방향: 전체 넓이로 $h$를 구한 뒤 $P(0 \\le X \\le 2)$를 구해 여사건으로 계산한다.\\n정석 풀이: 그래프 아래 전체 넓이는 삼각형, 직사각형, 삼각형의 넓이의 합이므로\\n$\\dfrac{1}{2}\\cdot 3h+2h+\\dfrac{1}{2}\\cdot h=4h=1$\\n따라서 $h=\\dfrac{1}{4}$이다.\\n$0 \\le x \\le 3$에서는 직선으로 증가하므로 $x=2$에서의 높이는 $\\dfrac{2}{3}h=\\dfrac{1}{6}$이다. 따라서\\n$P(0 \\le X \\le 2)=\\dfrac{1}{2}\\cdot 2\\cdot \\dfrac{1}{6}=\\dfrac{1}{6}$\\n이므로\\n$P(2 \\le X \\le 6)=1-\\dfrac{1}{6}=\\dfrac{5}{6}$\\n따라서 정답은 ⑤이다.",
+    "solution": "확률밀도함수의 그래프 아래 전체 넓이는 $1$이다.\n그래프는 $0$부터 $3$까지 삼각형, $3$부터 $5$까지 직사각형, $5$부터 $6$까지 삼각형이다.\n전체 넓이를 높이 $k$로 나타내면\n$\\dfrac12\\times3k+2k+\\dfrac12\\times k=1$\n$4k=1\\;\\Rightarrow\\;k=\\dfrac14$\n$0\\le x\\le3$에서 그래프는 직선이므로 $x=2$의 높이는\n$f(2)=\\dfrac23k=\\dfrac16$이다.\n따라서 $0\\le X\\le2$에 해당하는 삼각형의 넓이는\n$P(0\\le X\\le2)=\\dfrac12\\times2\\times\\dfrac16=\\dfrac16$\n연속확률변수에서 한 점의 확률은 $0$이므로, 여사건을 이용하면\n$P(2\\le X\\le6)=1-\\dfrac16=\\dfrac56$\n따라서 정답은 ⑤이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
@@ -336,7 +336,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] 정규분포 $N(40, 16)$에서 구간 $[a-1, a+3]$의 확률이 최대가 되려면 구간의 중심이 평균 40에 가장 가까워야 한다.\\n조건 정리: $X \\\\sim N(40, 16)$, 즉 평균 $\\\\mu=40$, 분산 $\\\\sigma^2=16$, $\\\\sigma=4$.\\n풀이 방향: 정규분포는 평균을 중심으로 대칭이므로, 고정된 길이의 구간 $[a-1, a+3]$의 확률은 구간의 중점이 평균 40에 가장 가까울 때 최대이다.\\n정석 풀이:\\n구간 $[a-1, a+3]$의 중점은 $\\dfrac{(a-1)+(a+3)}{2} = a+1$이다.\\n확률이 최대가 되려면 구간의 중점 $a+1$이 평균 $\\\\mu=40$과 일치해야 하므로,\\n$a+1 = 40$, 즉 $a = 39$이다.\\n따라서 정답은 ④이다.",
+    "solution": "정규분포 $N(40,16)$은 평균 $40$을 중심으로 대칭이고, 평균에 가까울수록 확률밀도함수의 높이가 크다.\n길이가 일정한 구간의 확률이 최대가 되려면 구간을 평균의 양쪽에 대칭으로 놓아야 한다.\n주어진 구간 $[a-1,a+3]$의 길이는\n$(a+3)-(a-1)=4$이다.\n이 구간의 가운데 값이 평균 $40$이 되어야 하므로\n$\\dfrac{(a-1)+(a+3)}2=40$\n$a+1=40\\;\\Rightarrow\\;a=39$\n이때 구간은 $[38,42]$로 평균 $40$을 중심으로 대칭이다.\n따라서 정답은 ④이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
