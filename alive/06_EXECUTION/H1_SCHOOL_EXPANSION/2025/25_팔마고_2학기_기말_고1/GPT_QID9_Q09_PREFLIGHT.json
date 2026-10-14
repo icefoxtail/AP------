@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q09_PREFLIGHT_v1",
+  "date": "2026-10-15",
+  "branch": "work/alive-25-palma-h1-2final-qid9",
+  "branchParentHead": "d9a9d3ad5b8506165469ff51870459c63ac0ff26",
+  "mainReadHead": "266656f234a0063ee8f76fe0b309007e684474d8",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "firstMissingAtStart": 9,
+  "previousDraftCount": 72,
+  "scope": "q09 A1..C3 one commit; original JS, q01..q08, existing similar materials protected",
+  "notion": [
+    "GPT 작업 전 필독 라우터 (2026-10-14 CURRENT)",
+    "GPT 유사·변형 문항 생성 5단계",
+    "Archive 전체 작업 생명주기"
+  ],
+  "canonical": [
+    {
+      "path": "AGENTS.md",
+      "sha": "de297c6a6903413790387e411a89e06dd650d4cf",
+      "application": "five axis evidence + exact scope"
+    },
+    {
+      "path": "alive/06_EXECUTION/ALIVE_GPT_QID9_ONE_SOURCE_CURRENT.md",
+      "sha": "c248536b448d6dc467161a8811f52fc3179ab58f",
+      "application": "one qid × A1..C3, reverse stem, commit"
+    },
+    {
+      "path": "docs/architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md",
+      "sha": "a501482ef952a1dcc75b7df3ec5c856debfe433d",
+      "application": "accurate RPM/Generated EXT/meta/difficulty"
+    },
+    {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "sha": "904b3768b69b300607e52217cad05bf71e34f221",
+      "application": "H1-RPM-258 L3 anchor, L4 mismatch recorded"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+      "sha": "a6684bdfec3ff8beaff25c19346b4865a24f7b81",
+      "application": "PT_FUNCTIONAL_EQUATION and TPL_FUNCTIONAL_EQUATION_ADDITIVE ACTIVE"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/bindings.json",
+      "sha": "89e975174c3aa3339f287db56c35d5db8df2a902",
+      "application": "2022 H22-C2-07 FUNCTION_BASIC ACTIVE"
+    },
+    {
+      "path": "alive/06_EXECUTION/ALIVE_LITE_L3_L4_EXTENSION_DISCOVERY_CONTRACT_v1.md",
+      "sha": "0ae2ad15671228a65be938200e838a582c5d2086",
+      "application": "existing GENERATED EXT lookup, register only source q09"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+      "sha": "bf5b8a1b6d7488d30b4b1ced5fbe6853001c9d75",
+      "application": "student reproducible math, small board"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+      "sha": "51a6b4ae3164be845ba9d90fd49d88378fc32fbe",
+      "application": "level separate from bucket"
+    },
+    {
+      "path": "docs/rules/04_VISUAL/Problem_Bank_All_Items_Problem_And_Solution_Visual_Gate_CURRENT_v1.md",
+      "sha": "6b209291731867f4a6b633a86a6c670440414a5f",
+      "application": "problem/solution need independently"
+    },
+    {
+      "path": "docs/rules/04_VISUAL/JS_Archive_GPT_Visual_Production_Contract_v1.md",
+      "sha": "87929597314d32950a391af3acdaf99699bb0bd3",
+      "application": "SVG semantic, browser NOT_RUN"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md",
+      "sha": "693c7ed76dbd643dedd204bbcec9f707bbc2e2f2",
+      "application": "Golden 2 + related negative"
+    }
+  ],
+  "golden": [
+    {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/GPT_QID9_Q08_CREATE_DRAFT.json",
+      "sha": "82d117f63b9350690a8535f86d15e74b7d0a2373",
+      "observations": "9Uid actual choices/distractors/solutions and per UID 5-axis evidence; visual needs separately"
+    },
+    {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/GPT_QID9_Q07_CREATE_DRAFT.json",
+      "sha": "3b53895fa1b03546012525ce800c5dbef790a1c6",
+      "observations": "level/bucket separate and calculation error maps; wrong routes must produce option"
+    },
+    {
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/GPT_QID9_Q06_CREATE_DRAFT.json",
+      "sha": "62a93a9cdad0822a6d8002a69ae471288802a5ae",
+      "kind": "NEGATIVE",
+      "observations": "avoid hallucinated error route and degenerate math assumptions"
+    }
+  ],
+  "curriculumBoundary": "Do not assert globally f(x)=c x on R without regularity. Establish only integer additive relations directly. Quadratic term corrections evaluated by finite substitution within high1.",
+  "originalInput": "f(x+y)=f(x)+f(y), f2=4, f5=10",
+  "rpmL3Anchor": "H1-RPM-258",
+  "rpmL4SourceMismatch": "RPM L4 항등함수·상수함수 not needed; Generated EXT L4 registration at exact H22-C2-07 FUNCTION_BASIC bucket",
+  "notRun": [
+    "FORMAL_INDEPENDENT",
+    "ACTUAL_BROWSER",
+    "CONSUMER",
+    "PRODUCTION_MAIN"
+  ],
+  "unresolvedDebt": [
+    "SOURCE_UID_V1_HASH_NOT_VERIFIED"
+  ]
+}

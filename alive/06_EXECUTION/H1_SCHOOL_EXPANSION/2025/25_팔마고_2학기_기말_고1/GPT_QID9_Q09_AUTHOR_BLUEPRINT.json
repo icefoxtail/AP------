@@ -1,0 +1,569 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q09_AUTHOR_BLUEPRINT_v1",
+  "sourceQid": 9,
+  "sourceOriginalJsBlob": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceActualQuestion": "For all real x,y, f(x+y)=f(x)+f(y), f(2)=4, find f(5); answer10.",
+  "lockedPrimaryL3Id": "H1-RPM-258",
+  "lockedPrimaryL3": "함수의 성질",
+  "rpmL4Match": "NONMATCH_EXISTING",
+  "exactPt": "PT_FUNCTIONAL_EQUATION",
+  "exactTpl": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+  "activeBinding": "2022 H22-C2-07 FUNCTION_BASIC",
+  "generatedExtL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_BASIC/extension-l4/palma-2025-2final-q09-registry.json",
+  "lockedEvaluationInvariant": "Read f(x+y) universal relation, substitute admissible inputs, recover needed integer/negative outputs or integer bound without assuming a globally linear function on all reals.",
+  "degreesOfFreedom": [
+    "negative values",
+    "unknown natural input",
+    "difference/negative preimage",
+    "shifted extra constant",
+    "xy bilinear correction",
+    "integer bound intersection"
+  ],
+  "records": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-PALMA25-2FINAL-Q09-A1",
+      "modeCandidate": "STRICT_VARIANT",
+      "similarityKind": "ORIGINAL_FIDELITY",
+      "studentQuestion": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)$를 만족시키는 함수 $f$가 있다. $f(2)=6$일 때, $f(5)$의 값은?",
+      "studentMentalPath": "f(2)=2f(1) → f(1)=3 → f(5)=5f(1)=15",
+      "primaryRpmL3Id": "H1-RPM-258",
+      "l4": "EXT-PALMA25-Q09-ADDITIVE-VALUES",
+      "pt": "PT_FUNCTIONAL_EQUATION",
+      "tpl": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+      "crossConcepts": [],
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "하",
+      "difficultyBucket": 2,
+      "learningReason": "가법 관계에서 f(1)을 구하고 다섯 번 더하는 원본 동일 사고로 조건 분기가 없다.",
+      "assessmentReason": "f(2)에서 f(1)로 나누는 단계와 다섯 번의 정수배 적용에서 횟수 착각 위험이 있으나 단일 경로.",
+      "visual": {
+        "problemNeed": "EXEMPT",
+        "solutionNeed": "EXEMPT",
+        "solutionAsset": null,
+        "solutionAssetBlob": null
+      },
+      "answer": "15",
+      "sortedChoices": [
+        "12",
+        "15",
+        "18",
+        "21",
+        "30"
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "12",
+          "calc": "다섯 번 대신 네 번을 더해 $f(4)=4\\cdot3=12$를 구한다."
+        },
+        {
+          "index": "③",
+          "value": "18",
+          "calc": "다섯 번 대신 여섯 번을 더하면 $f(6)=6\\cdot3=18$이다."
+        },
+        {
+          "index": "④",
+          "value": "21",
+          "calc": "다섯 번 대신 일곱 번을 더하면 $f(7)=7\\cdot3=21$이다."
+        },
+        {
+          "index": "⑤",
+          "value": "30",
+          "calc": "$f(1)$ 대신 $f(2)=6$을 다섯 번 더하면 $5\\cdot6=30$이다."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "6/2=3;5*3=15"
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-PALMA25-2FINAL-Q09-A2",
+      "modeCandidate": "STRICT_VARIANT",
+      "similarityKind": "ORIGINAL_FIDELITY",
+      "studentQuestion": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)$를 만족시키는 함수 $f$가 있다. $f(2)=-4$일 때, $f(7)$의 값은?",
+      "studentMentalPath": "f(2)=2f(1) → f(1)=-2 → f(7)=-14",
+      "primaryRpmL3Id": "H1-RPM-258",
+      "l4": "EXT-PALMA25-Q09-ADDITIVE-VALUES",
+      "pt": "PT_FUNCTIONAL_EQUATION",
+      "tpl": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+      "crossConcepts": [],
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "하",
+      "difficultyBucket": 2,
+      "learningReason": "원본과 같은 반복 가법 관계에 음의 함숫값을 대입하는 직접형으로 별도 분기 없다.",
+      "assessmentReason": "음수 나눗셈·정수배 부호·반복 횟수의 대표 실수를 검사해야 하지만 구조는 단순.",
+      "visual": {
+        "problemNeed": "EXEMPT",
+        "solutionNeed": "EXEMPT",
+        "solutionAsset": null,
+        "solutionAssetBlob": null
+      },
+      "answer": "-14",
+      "sortedChoices": [
+        "-28",
+        "-16",
+        "-14",
+        "-12",
+        "-8"
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "-28",
+          "calc": "$f(1)$을 구하지 않고 $f(2)=-4$를 일곱 번 더해 $7(-4)=-28$을 얻는다."
+        },
+        {
+          "index": "②",
+          "value": "-16",
+          "calc": "반복 횟수를 8번으로 잘못 세어 $8(-2)=-16$을 구한다."
+        },
+        {
+          "index": "④",
+          "value": "-12",
+          "calc": "반복 횟수를 6번으로 잘못 세어 $6(-2)=-12$를 구한다."
+        },
+        {
+          "index": "⑤",
+          "value": "-8",
+          "calc": "반복 횟수를 4번으로 잘못 세어 $4(-2)=-8$을 구한다."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "-4/2=-2;7*(-2)=-14"
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-PALMA25-2FINAL-Q09-A3",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "similarityKind": "ORIGINAL_FIDELITY",
+      "studentQuestion": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)$를 만족시키는 함수 $f$가 있다. $f(3)=15$일 때, $f(8)$의 값은?",
+      "studentMentalPath": "f(3)=3f(1) → f(1)=5 → f(8)=40",
+      "primaryRpmL3Id": "H1-RPM-258",
+      "l4": "EXT-PALMA25-Q09-ADDITIVE-VALUES",
+      "pt": "PT_FUNCTIONAL_EQUATION",
+      "tpl": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+      "crossConcepts": [],
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "하",
+      "difficultyBucket": 2,
+      "learningReason": "한 번의 정수배 비율을 3에서 1로 환산하고 8에 적용한다. 원본과 같은 직접 사고.",
+      "assessmentReason": "초기 함수값의 입력 3과 목표 입력 8을 분리해야 하지만 연산 자체는 정수 한 단계.",
+      "visual": {
+        "problemNeed": "EXEMPT",
+        "solutionNeed": "EXEMPT",
+        "solutionAsset": null,
+        "solutionAssetBlob": null
+      },
+      "answer": "40",
+      "sortedChoices": [
+        "25",
+        "30",
+        "35",
+        "40",
+        "120"
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "25",
+          "calc": "목표 입력 8을 5로 잘못 읽으면 $5\\cdot5=25$이다."
+        },
+        {
+          "index": "②",
+          "value": "30",
+          "calc": "목표 입력 8을 6으로 잘못 읽으면 $6\\cdot5=30$이다."
+        },
+        {
+          "index": "③",
+          "value": "35",
+          "calc": "목표 입력 8을 7로 잘못 읽으면 $7\\cdot5=35$이다."
+        },
+        {
+          "index": "⑤",
+          "value": "120",
+          "calc": "$f(1)=5$를 거치지 않고 $f(3)=15$를 여덟 번 더하면 $8\\cdot15=120$이다."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "15/3=5;8*5=40"
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-PALMA25-2FINAL-Q09-B1",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "similarityKind": "L3_EXPANSION",
+      "studentQuestion": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)$를 만족시키는 함수 $f$가 있다. $f(2)=8$이고 자연수 $n$에 대하여 $f(n)=28$일 때, $n$의 값은?",
+      "studentMentalPath": "f(1)=4 → f(n)=4n → n=7",
+      "primaryRpmL3Id": "H1-RPM-258",
+      "l4": "EXT-PALMA25-Q09-ADDITIVE-VALUES",
+      "pt": "PT_FUNCTIONAL_EQUATION",
+      "tpl": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+      "crossConcepts": [],
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS",
+        "COND_FUNCTION_VALUE_CONSTRAINT",
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 3,
+      "learningReason": "가법 관계의 정수배 식을 만든 뒤 함숫값에서 입력 자연수를 역으로 찾아야 한다.",
+      "assessmentReason": "목표가 함숫값이 아니라 입력이며 두 숫자의 역할을 뒤집거나 횟수를 잘못 조정할 위험이 있다.",
+      "visual": {
+        "problemNeed": "EXEMPT",
+        "solutionNeed": "EXEMPT",
+        "solutionAsset": null,
+        "solutionAssetBlob": null
+      },
+      "answer": "7",
+      "sortedChoices": [
+        "5",
+        "6",
+        "7",
+        "8",
+        "14"
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "5",
+          "calc": "$f(n+2)=28$이라고 한 번 잘못 읽으면 $4(n+2)=28$에서 $n=5$이다."
+        },
+        {
+          "index": "②",
+          "value": "6",
+          "calc": "$f(n+1)=28$이라고 한 번 잘못 읽으면 $4(n+1)=28$에서 $n=6$이다."
+        },
+        {
+          "index": "④",
+          "value": "8",
+          "calc": "$f(n-1)=28$로 잘못 읽으면 $4(n-1)=28$에서 $n=8$이다."
+        },
+        {
+          "index": "⑤",
+          "value": "14",
+          "calc": "$f(1)=8/2=4$ 대신 $8/4=2$로 한 번 더 나누면 $2n=28$, $n=14$이다."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "8/2=4;28/4=7"
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-PALMA25-2FINAL-Q09-B2",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "similarityKind": "L3_EXPANSION",
+      "studentQuestion": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)$를 만족시키는 함수 $f$가 있다. $f(4)=12$일 때, $f(7)-f(-2)$의 값은?",
+      "studentMentalPath": "f(0)=0, f(-2)=-6, f(7)=21 → 차는 27",
+      "primaryRpmL3Id": "H1-RPM-258",
+      "l4": "EXT-PALMA25-Q09-ADDITIVE-VALUES",
+      "pt": "PT_FUNCTIONAL_EQUATION",
+      "tpl": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+      "crossConcepts": [],
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integrationPattern": "REINTERPRETATION",
+      "level": "중",
+      "difficultyBucket": 3,
+      "learningReason": "음수 입력의 대응 부호를 복원하고 차를 더하기로 바꾸어 합성적인 관계를 활용해야 한다.",
+      "assessmentReason": "음수 함숫값과 뺄셈의 이중 부호가 정답을 뒤집기 쉬워 오류 위험이 높지만 계산은 작다.",
+      "visual": {
+        "problemNeed": "EXEMPT",
+        "solutionNeed": "EXEMPT",
+        "solutionAsset": null,
+        "solutionAssetBlob": null
+      },
+      "answer": "27",
+      "sortedChoices": [
+        "15",
+        "18",
+        "21",
+        "24",
+        "27"
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "15",
+          "calc": "부호를 무시하고 $f(7)+f(-2)$로 계산하면 $21+(-6)=15$이다."
+        },
+        {
+          "index": "②",
+          "value": "18",
+          "calc": "$f(-2)=-6$을 잘못 $+3$으로 두면 $21-3=18$이다."
+        },
+        {
+          "index": "③",
+          "value": "21",
+          "calc": "뺄셈항을 통째로 누락하고 $f(7)=21$만 계산한다."
+        },
+        {
+          "index": "④",
+          "value": "24",
+          "calc": "$f(-2)=-6$을 $-3$으로 잘못 계산하면 $21-(-3)=24$이다."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "f1=3; f7=21; f(-2)=-6; 21+6=27"
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-PALMA25-2FINAL-Q09-B3",
+      "modeCandidate": "TYPE_BANK",
+      "similarityKind": "L3_EXPANSION",
+      "studentQuestion": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)+2$를 만족시키는 함수 $f$가 있다. $f(2)=6$일 때, $f(5)$의 값은?",
+      "studentMentalPath": "f2=2f1+2 → f1=2 → 매 1 증가시 f값 4 증가 → f5=18",
+      "primaryRpmL3Id": "H1-RPM-258",
+      "l4": "EXT-PALMA25-Q09-SHIFTED-ADDITIVITY",
+      "pt": "PT_FUNCTIONAL_EQUATION",
+      "tpl": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+      "crossConcepts": [],
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 3,
+      "learningReason": "가법 관계에 추가되는 상수항을 매회 적용해야 하므로 원본의 단순 선형 누적과 구별된다.",
+      "assessmentReason": "첫 f(1) 산출과 추가 상수 2를 매 합성 단계마다 더하는지 확인할 필요가 있다.",
+      "visual": {
+        "problemNeed": "EXEMPT",
+        "solutionNeed": "EXEMPT",
+        "solutionAsset": null,
+        "solutionAssetBlob": null
+      },
+      "answer": "18",
+      "sortedChoices": [
+        "8",
+        "10",
+        "16",
+        "18",
+        "20"
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "8",
+          "calc": "초기 $5f(1)$ 부분을 누락하고 덧붙은 상수만 네 번 더해 $4\\cdot2=8$을 얻는다."
+        },
+        {
+          "index": "②",
+          "value": "10",
+          "calc": "관계식의 추가 상수항을 모두 놓치면 $f(5)=5f(1)=5\\cdot2=10$이다."
+        },
+        {
+          "index": "③",
+          "value": "16",
+          "calc": "추가 상수항을 네 번이 아니라 세 번 적용하면 $5\\cdot2+3\\cdot2=16$이다."
+        },
+        {
+          "index": "⑤",
+          "value": "20",
+          "calc": "$g(x)=f(x)+2$를 가법으로 바꾸어 $g(5)=20$까지 구한 뒤 $f(5)=g(5)-2$를 잊으면 $20$이다."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "f1=(6-2)/2=2; f5=5*2+4*2=18"
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-PALMA25-2FINAL-Q09-C1",
+      "modeCandidate": "TYPE_BANK",
+      "similarityKind": "L3_EXPANSION",
+      "studentQuestion": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)+2xy$를 만족시키는 함수 $f$가 있다. $f(1)=4$일 때, $f(5)$의 값은?",
+      "studentMentalPath": "f(n+1)=f(n)+4+2n → f2=10,f3=18,f4=28,f5=40",
+      "primaryRpmL3Id": "H1-RPM-258",
+      "l4": "EXT-PALMA25-Q09-BILINEAR-ADDITIVITY",
+      "pt": "PT_FUNCTIONAL_EQUATION",
+      "tpl": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+      "crossConcepts": [],
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 4,
+      "learningReason": "가법 관계에서 추가 곱항 2xy가 매번 바뀌므로 단계별 대입값을 정확히 갱신해야 한다.",
+      "assessmentReason": "고정 증가량이 아니라 +6,+8,+10,+12로 바뀌는 갱신 관계라 한 단계 누락·곱항 중복 위험이 높다.",
+      "visual": {
+        "problemNeed": "EXEMPT",
+        "solutionNeed": "BENEFICIAL",
+        "solutionAsset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q09/C1-solution.svg",
+        "solutionAssetBlob": "41410fa46c0a701256bc92f6a6cb04764aaf50f2"
+      },
+      "answer": "40",
+      "sortedChoices": [
+        "28",
+        "32",
+        "36",
+        "40",
+        "48"
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "28",
+          "calc": "$f(4)=28$에서 한 단계 먼저 멈춰 $f(5)$로 착각한다."
+        },
+        {
+          "index": "②",
+          "value": "32",
+          "calc": "마지막 $2xy$ 항을 빠뜨리면 $f(5)=28+4=32$이다."
+        },
+        {
+          "index": "③",
+          "value": "36",
+          "calc": "마지막에 $x=4$ 대신 $x=2$를 대입하면 $28+4+2\\cdot2\\cdot1=36$이다."
+        },
+        {
+          "index": "⑤",
+          "value": "48",
+          "calc": "마지막 추가 곱항 $8$을 두 번 세면 $28+4+8+8=48$이다."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "f=[4,10,18,28,40]; increments=[6,8,10,12]"
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-PALMA25-2FINAL-Q09-C2",
+      "modeCandidate": "TYPE_BANK",
+      "similarityKind": "L3_EXPANSION",
+      "studentQuestion": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)$를 만족시키는 함수 $f$가 있다. $f(3)=9$이다. 자연수 $n$에 대하여 $f(n-1)>12$이고 $f(n+2)\\le30$일 때, 이를 만족시키는 $n$의 개수는?",
+      "studentMentalPath": "f(n)=3n(자연수), 3(n-1)>12→n>5; 3(n+2)≤30→n≤8; 3개",
+      "primaryRpmL3Id": "H1-RPM-258",
+      "l4": "EXT-PALMA25-Q09-ADDITIVE-VALUES",
+      "pt": "PT_FUNCTIONAL_EQUATION",
+      "tpl": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+      "crossConcepts": [],
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS",
+        "COND_FUNCTION_VALUE_CONSTRAINT",
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "level": "중",
+      "difficultyBucket": 4,
+      "learningReason": "가법 함숫값의 정수배 식을 복원한 뒤 두 입력이 다른 부등식을 동시에 풀고 경계를 판정한다.",
+      "assessmentReason": "엄격한 >와 ≤의 포함 차이, n-1과 n+2의 입력 이동, 자연수 개수까지 세 층의 오류 위험이 있다.",
+      "visual": {
+        "problemNeed": "EXEMPT",
+        "solutionNeed": "BENEFICIAL",
+        "solutionAsset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q09/C2-solution.svg",
+        "solutionAssetBlob": "3ec537a019324c79642247252281c37620262852"
+      },
+      "answer": "3",
+      "sortedChoices": [
+        "2",
+        "3",
+        "4",
+        "5",
+        "8"
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "2",
+          "calc": "상한의 등호를 버려 $n<8$로 잘못 풀면 $n=6,7$ 두 개이다."
+        },
+        {
+          "index": "③",
+          "value": "4",
+          "calc": "하한의 $>$를 $\\ge$로 바꾸면 $5\\le n\\le8$, 네 개이다."
+        },
+        {
+          "index": "④",
+          "value": "5",
+          "calc": "$f(n-1)>12$의 입력을 $n+1$로 잘못 읽으면 $3(n+1)>12$, $n>3$이므로 $n=4,5,6,7,8$ 다섯 개이다."
+        },
+        {
+          "index": "⑤",
+          "value": "8",
+          "calc": "첫째 부등식을 누락하면 자연수 $n\\le8$이므로 $1,2,\\dots,8$ 여덟 개이다."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "n in [1..30] s.t. 3(n-1)>12 and 3(n+2)<=30 => [6,7,8]"
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-PALMA25-2FINAL-Q09-C3",
+      "modeCandidate": "TYPE_BANK",
+      "similarityKind": "L3_EXPANSION",
+      "studentQuestion": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)+xy$를 만족시키는 함수 $f$가 있다. $f(2)=7$일 때, $1\\le n\\le12$인 자연수 $n$ 중 $25\\le f(n)\\le52$가 성립하는 $n$의 개수는?",
+      "studentMentalPath": "f1=3, f(n+1)=f(n)+3+n → 18/25/33/42/52/63 → n5..8 총4",
+      "primaryRpmL3Id": "H1-RPM-258",
+      "l4": "EXT-PALMA25-Q09-BILINEAR-ADDITIVITY",
+      "pt": "PT_FUNCTIONAL_EQUATION",
+      "tpl": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+      "crossConcepts": [],
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS",
+        "COND_FUNCTION_VALUE_CONSTRAINT",
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "level": "상",
+      "difficultyBucket": 5,
+      "learningReason": "가법 관계에 추가되는 xy 항에서 변화하는 점화 관계를 도출한 뒤 경계 f4/f5 및 f8/f9와 단조 증가를 함께 이용하여 구간 개수를 판정한다.",
+      "assessmentReason": "원소별 계산뿐 아니라 f(2)→f(1) 역산, 증가량의 부호·양 경계 등호·누락 없는 개수 확인이 모두 필요하다.",
+      "visual": {
+        "problemNeed": "EXEMPT",
+        "solutionNeed": "BENEFICIAL",
+        "solutionAsset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q09/C3-solution.svg",
+        "solutionAssetBlob": "c9c61e1e4b52457d99080ce57b8b2842059a7e09"
+      },
+      "answer": "4",
+      "sortedChoices": [
+        "2",
+        "3",
+        "4",
+        "5",
+        "8"
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "2",
+          "calc": "양쪽 등호를 모두 빼면 $n=6,7$만 세어 두 개가 된다."
+        },
+        {
+          "index": "②",
+          "value": "3",
+          "calc": "위쪽 등호를 제외하고 $f(n)<52$로 풀면 $n=5,6,7$ 세 개이다."
+        },
+        {
+          "index": "④",
+          "value": "5",
+          "calc": "$f(4)=18$을 한 단계 앞당겨 $f(5)=25$로 착각해 $n=4,5,6,7,8$을 포함하면 다섯 개이다."
+        },
+        {
+          "index": "⑤",
+          "value": "8",
+          "calc": "하한을 무시하고 $f(n)\\le52$만 적용하면 $n=1,\\ldots,8$ 여덟 개이다."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "f1=3; f2..f9=[7,12,18,25,33,42,52,63]; 25<=f(n)<=52 => n=[5,6,7,8]"
+    }
+  ]
+}

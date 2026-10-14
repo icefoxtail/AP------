@@ -1,0 +1,1530 @@
+{
+  "schemaVersion": "PALMA25_QID9_DRAFT_v1",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceQid": 9,
+  "sourceOriginalImage": null,
+  "sourceOriginalCondition": "For all real x,y: f(x+y)=f(x)+f(y), f(2)=4, target f(5)=10; original multiple-choice answer ①.",
+  "primaryRpmL3": "H1-RPM-258",
+  "rpmL3Label": "함수의 성질",
+  "rpmExistingL4SemanticGap": "항등함수·상수함수 is NOT the actual L4 for the source q09 functional equation",
+  "rpmPrimaryCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+  "generatedExtL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_BASIC/extension-l4/palma-2025-2final-q09-registry.json",
+  "summary": {
+    "authorCreated": 9,
+    "choicesChecked": 45,
+    "wrongRoutes": 36,
+    "problemSvg": 0,
+    "problemSvgExempt": 9,
+    "solutionSvg": 3,
+    "solutionSvgExempt": 6,
+    "answerDistribution": {
+      "①": 0,
+      "②": 2,
+      "③": 3,
+      "④": 3,
+      "⑤": 1
+    },
+    "formalIndependent": "NOT_RUN",
+    "browser": "NOT_RUN",
+    "consumer": "NOT_RUN",
+    "main": "NOT_RUN",
+    "sourceUidEvidenceDebt": 9,
+    "nextQid": 10
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-PALMA25-2FINAL-Q09-A1",
+      "sourceQid": 9,
+      "sourceUid": null,
+      "slot": "A1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "하",
+      "category": "함수방정식과 함숫값의 관계",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "함수",
+        "함수방정식"
+      ],
+      "wide": false,
+      "content": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)$를 만족시키는 함수 $f$가 있다. $f(2)=6$일 때, $f(5)$의 값은?",
+      "choices": [
+        "$12$",
+        "$15$",
+        "$18$",
+        "$21$",
+        "$30$"
+      ],
+      "answer": "②",
+      "solution": "$f(2)=f(1+1)=2f(1)$이므로 $2f(1)=6$, 곧 $f(1)=3$이다.\n가법 관계를 반복 적용하면 $f(5)=f(1+1+1+1+1)=5f(1)$이다.\n따라서 $f(5)=5\\cdot3=15$이다.\n따라서 정답은 ②이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-258",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "함수의 성질",
+        "rpmL4": null,
+        "rpmL4RecordLabel": "항등함수·상수함수",
+        "rpmL4SemanticStatus": "L3_ONLY_EXISTING_L4_NOT_APPLICABLE",
+        "generatedExtL4Id": "EXT-PALMA25-Q09-ADDITIVE-VALUES",
+        "generatedExtL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_BASIC/extension-l4/palma-2025-2final-q09-registry.json",
+        "rpmCrosswalkMappingStatus": "DIRECT_ACTIVE",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "H1-RPM-258 L3=함수의 성질; original RPM L4 항등함수·상수함수 is NOT semantic match. Crosswalk DIRECT_ACTIVE maps unrelated PT_SPECIAL_FUNCTION_PROPERTIES; actual user question and generated candidates are PT_FUNCTIONAL_EQUATION/TPL_FUNCTIONAL_EQUATION_ADDITIVE ACTIVE binding at H22-C2-07-FUNCTION_BASIC. GENERATED_ACTIVE EXT-L4 supplies exact decisive step.",
+        "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
+        "templateKey": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS",
+          "COND_FUNCTION_VALUE_CONSTRAINT"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q09는 모든 실수에서의 함수 관계 f(x+y)를 대입하여 특정 함숫값을 복원하는 함수의 성질 L3; H1-RPM-258은 L3 비교 기준일 뿐 L4 항등함수·상수함수는 사용하지 않음.",
+          "l4": "GENERATED_ACTIVE EXT-PALMA25-Q09-ADDITIVE-VALUES의 결정단계: f(2)=2f(1) → f(1)=3 → f(5)=5f(1)=15. RPM 기존 L4로 잘못 채우지 않음.",
+          "pt": "PT_FUNCTIONAL_EQUATION ACTIVE: 모든 x,y의 함수 등식에 적절한 값을 대입하여 새 함수 관계·함숫값을 복원하는 핵심 풀이.",
+          "tpl": "TPL_FUNCTIONAL_EQUATION_ADDITIVE ACTIVE: f(2)=2f(1) → f(1)=3 → f(5)=5f(1)=15. C1/C3에는 xy correction을 포함하는 Generated L4로 명시.",
+          "cross": "주제 함수방정식 외 기초 정수·부호·일차식 연산/조건은 독립 CrossConcept로 이중 태깅하지 않음.",
+          "condition": "COND_UNIVERSAL_INPUTS, COND_FUNCTION_VALUE_CONSTRAINT: f(2)=2f(1) → f(1)=3 → f(5)=5f(1)=15에서 모든 실수 조건, 주어진 함숫값, 자연수/범위(해당 시) 적용.",
+          "integration": "SEQUENTIAL: f(2)=2f(1) → f(1)=3 → f(5)=5f(1)=15",
+          "learningLevel": "가법 관계에서 f(1)을 구하고 다섯 번 더하는 원본 동일 사고로 조건 분기가 없다.",
+          "assessmentBucket": "f(2)에서 f(1)로 나누는 단계와 다섯 번의 정수배 적용에서 횟수 착각 위험이 있으나 단일 경로.",
+          "problemVisual": "원문의 모든 값·조건을 수식으로 충분히 제시하므로 별도 문제 그림은 중복이며 정답을 누설할 위험만 늘린다.",
+          "solutionVisual": "대입·정수배 계산이 해설 수식에서 완결되고 새 공간적/경계 관계가 없어 그림은 중복.",
+          "curriculum": "공통수학2 함수의 뜻과 함수 관계식에 실수 대입, 중등 정수·음수·일차방정식 연산만 사용. 연속성 없는 가법함수 전체를 f(x)=cx로 단정하지 않고 요청 정수 입력의 값만 도출."
+        },
+        "rpmSemanticMatch": "L3_ONLY_L4_GAP"
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "공통수학2 함수의 뜻과 함수 관계식에 실수 대입, 중등 정수·음수·일차방정식 연산만 사용. 연속성 없는 가법함수 전체를 f(x)=cx로 단정하지 않고 요청 정수 입력의 값만 도출.",
+        "learningLevelReason": "가법 관계에서 f(1)을 구하고 다섯 번 더하는 원본 동일 사고로 조건 분기가 없다.",
+        "assessmentDifficultyReason": "f(2)에서 f(1)로 나누는 단계와 다섯 번의 정수배 적용에서 횟수 착각 위험이 있으나 단일 경로.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)$를 만족시키는 함수 $f$가 있다. $f(2)=6$일 때, $f(5)$의 값은?",
+          "requiredPrimaryL3Step": "f(2)=2f(1) → f(1)=3 → f(5)=5f(1)=15",
+          "naturalKorean": "모든 실수에서의 함수 등식·제시된 함숫값·학생이 구할 출력/개수가 발문에 전부 존재하고 불필요한 목표식이 없음",
+          "conditionSufficiency": "함수 관계가 모든 실수에서 성립하고 목표 입력은 정수이므로 유리·정수 가법만 사용해 유일한 답을 얻는다.",
+          "shortcut": "원본 L3를 건너뛰는 출제자 의도 밖 우회 없음. 요구된 정수값만 유일하다고 주장하고 모든 실수의 함수꼴을 단정하지 않음",
+          "answerFromFinalStudentInput": "15",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "독립품질·실제 브라우저 미실행. 원본 exact sourceUid 미결속"
+        },
+        "wrongRoutes": {
+          "count": 4,
+          "indexSet": [
+            "①",
+            "③",
+            "④",
+            "⑤"
+          ],
+          "derivations": [
+            {
+              "index": "①",
+              "value": "12",
+              "errorCalculation": "다섯 번 대신 네 번을 더해 $f(4)=4\\cdot3=12$를 구한다."
+            },
+            {
+              "index": "③",
+              "value": "18",
+              "errorCalculation": "다섯 번 대신 여섯 번을 더하면 $f(6)=6\\cdot3=18$이다."
+            },
+            {
+              "index": "④",
+              "value": "21",
+              "errorCalculation": "다섯 번 대신 일곱 번을 더하면 $f(7)=7\\cdot3=21$이다."
+            },
+            {
+              "index": "⑤",
+              "value": "30",
+              "errorCalculation": "$f(1)$ 대신 $f(2)=6$을 다섯 번 더하면 $5\\cdot6=30$이다."
+            }
+          ]
+        },
+        "mathEvidence": {
+          "method": "EXACT_INTEGER_RELATION_AND_BOUNDARY_ENUMERATION",
+          "expressionOrValues": "6/2=3;5*3=15",
+          "answer": "15",
+          "sourceEquationOnlyNotGlobalLinear": true,
+          "verifiedAs": "AUTHOR_MATH_CHECK"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "reason": "원문의 가법식과 정수 입력만으로 문제를 완전하게 읽을 수 있어 문제 그림은 추가 정보 없이 중복.",
+          "asset": null,
+          "actualBrowser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "reason": "대입·정수배 계산이 해설 수식에서 완결되고 새 공간적/경계 관계가 없어 그림은 중복.",
+          "asset": null,
+          "gitBlobSha": null,
+          "mathFacts": [],
+          "staticStatus": "NOT_APPLICABLE",
+          "actualBrowser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-PALMA25-2FINAL-Q09-A2",
+      "sourceQid": 9,
+      "sourceUid": null,
+      "slot": "A2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "하",
+      "category": "함수방정식과 함숫값의 관계",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "함수",
+        "함수방정식"
+      ],
+      "wide": false,
+      "content": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)$를 만족시키는 함수 $f$가 있다. $f(2)=-4$일 때, $f(7)$의 값은?",
+      "choices": [
+        "$-28$",
+        "$-16$",
+        "$-14$",
+        "$-12$",
+        "$-8$"
+      ],
+      "answer": "③",
+      "solution": "$f(2)=f(1)+f(1)=2f(1)$이므로 $f(1)=-2$이다.\n$f(7)=f(1+\\cdots+1)$에서 $1$이 일곱 개이므로 $f(7)=7f(1)$이다.\n따라서 $f(7)=7\\cdot(-2)=-14$이다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-258",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "함수의 성질",
+        "rpmL4": null,
+        "rpmL4RecordLabel": "항등함수·상수함수",
+        "rpmL4SemanticStatus": "L3_ONLY_EXISTING_L4_NOT_APPLICABLE",
+        "generatedExtL4Id": "EXT-PALMA25-Q09-ADDITIVE-VALUES",
+        "generatedExtL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_BASIC/extension-l4/palma-2025-2final-q09-registry.json",
+        "rpmCrosswalkMappingStatus": "DIRECT_ACTIVE",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "H1-RPM-258 L3=함수의 성질; original RPM L4 항등함수·상수함수 is NOT semantic match. Crosswalk DIRECT_ACTIVE maps unrelated PT_SPECIAL_FUNCTION_PROPERTIES; actual user question and generated candidates are PT_FUNCTIONAL_EQUATION/TPL_FUNCTIONAL_EQUATION_ADDITIVE ACTIVE binding at H22-C2-07-FUNCTION_BASIC. GENERATED_ACTIVE EXT-L4 supplies exact decisive step.",
+        "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
+        "templateKey": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS",
+          "COND_FUNCTION_VALUE_CONSTRAINT"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q09는 모든 실수에서의 함수 관계 f(x+y)를 대입하여 특정 함숫값을 복원하는 함수의 성질 L3; H1-RPM-258은 L3 비교 기준일 뿐 L4 항등함수·상수함수는 사용하지 않음.",
+          "l4": "GENERATED_ACTIVE EXT-PALMA25-Q09-ADDITIVE-VALUES의 결정단계: f(2)=2f(1) → f(1)=-2 → f(7)=-14. RPM 기존 L4로 잘못 채우지 않음.",
+          "pt": "PT_FUNCTIONAL_EQUATION ACTIVE: 모든 x,y의 함수 등식에 적절한 값을 대입하여 새 함수 관계·함숫값을 복원하는 핵심 풀이.",
+          "tpl": "TPL_FUNCTIONAL_EQUATION_ADDITIVE ACTIVE: f(2)=2f(1) → f(1)=-2 → f(7)=-14. C1/C3에는 xy correction을 포함하는 Generated L4로 명시.",
+          "cross": "주제 함수방정식 외 기초 정수·부호·일차식 연산/조건은 독립 CrossConcept로 이중 태깅하지 않음.",
+          "condition": "COND_UNIVERSAL_INPUTS, COND_FUNCTION_VALUE_CONSTRAINT: f(2)=2f(1) → f(1)=-2 → f(7)=-14에서 모든 실수 조건, 주어진 함숫값, 자연수/범위(해당 시) 적용.",
+          "integration": "SEQUENTIAL: f(2)=2f(1) → f(1)=-2 → f(7)=-14",
+          "learningLevel": "원본과 같은 반복 가법 관계에 음의 함숫값을 대입하는 직접형으로 별도 분기 없다.",
+          "assessmentBucket": "음수 나눗셈·정수배 부호·반복 횟수의 대표 실수를 검사해야 하지만 구조는 단순.",
+          "problemVisual": "원문의 모든 값·조건을 수식으로 충분히 제시하므로 별도 문제 그림은 중복이며 정답을 누설할 위험만 늘린다.",
+          "solutionVisual": "대입·정수배 계산이 해설 수식에서 완결되고 새 공간적/경계 관계가 없어 그림은 중복.",
+          "curriculum": "공통수학2 함수의 뜻과 함수 관계식에 실수 대입, 중등 정수·음수·일차방정식 연산만 사용. 연속성 없는 가법함수 전체를 f(x)=cx로 단정하지 않고 요청 정수 입력의 값만 도출."
+        },
+        "rpmSemanticMatch": "L3_ONLY_L4_GAP"
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "공통수학2 함수의 뜻과 함수 관계식에 실수 대입, 중등 정수·음수·일차방정식 연산만 사용. 연속성 없는 가법함수 전체를 f(x)=cx로 단정하지 않고 요청 정수 입력의 값만 도출.",
+        "learningLevelReason": "원본과 같은 반복 가법 관계에 음의 함숫값을 대입하는 직접형으로 별도 분기 없다.",
+        "assessmentDifficultyReason": "음수 나눗셈·정수배 부호·반복 횟수의 대표 실수를 검사해야 하지만 구조는 단순.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)$를 만족시키는 함수 $f$가 있다. $f(2)=-4$일 때, $f(7)$의 값은?",
+          "requiredPrimaryL3Step": "f(2)=2f(1) → f(1)=-2 → f(7)=-14",
+          "naturalKorean": "모든 실수에서의 함수 등식·제시된 함숫값·학생이 구할 출력/개수가 발문에 전부 존재하고 불필요한 목표식이 없음",
+          "conditionSufficiency": "함수 관계가 모든 실수에서 성립하고 목표 입력은 정수이므로 유리·정수 가법만 사용해 유일한 답을 얻는다.",
+          "shortcut": "원본 L3를 건너뛰는 출제자 의도 밖 우회 없음. 요구된 정수값만 유일하다고 주장하고 모든 실수의 함수꼴을 단정하지 않음",
+          "answerFromFinalStudentInput": "-14",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "독립품질·실제 브라우저 미실행. 원본 exact sourceUid 미결속"
+        },
+        "wrongRoutes": {
+          "count": 4,
+          "indexSet": [
+            "①",
+            "②",
+            "④",
+            "⑤"
+          ],
+          "derivations": [
+            {
+              "index": "①",
+              "value": "-28",
+              "errorCalculation": "$f(1)$을 구하지 않고 $f(2)=-4$를 일곱 번 더해 $7(-4)=-28$을 얻는다."
+            },
+            {
+              "index": "②",
+              "value": "-16",
+              "errorCalculation": "반복 횟수를 8번으로 잘못 세어 $8(-2)=-16$을 구한다."
+            },
+            {
+              "index": "④",
+              "value": "-12",
+              "errorCalculation": "반복 횟수를 6번으로 잘못 세어 $6(-2)=-12$를 구한다."
+            },
+            {
+              "index": "⑤",
+              "value": "-8",
+              "errorCalculation": "반복 횟수를 4번으로 잘못 세어 $4(-2)=-8$을 구한다."
+            }
+          ]
+        },
+        "mathEvidence": {
+          "method": "EXACT_INTEGER_RELATION_AND_BOUNDARY_ENUMERATION",
+          "expressionOrValues": "-4/2=-2;7*(-2)=-14",
+          "answer": "-14",
+          "sourceEquationOnlyNotGlobalLinear": true,
+          "verifiedAs": "AUTHOR_MATH_CHECK"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "reason": "원문의 가법식과 정수 입력만으로 문제를 완전하게 읽을 수 있어 문제 그림은 추가 정보 없이 중복.",
+          "asset": null,
+          "actualBrowser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "reason": "대입·정수배 계산이 해설 수식에서 완결되고 새 공간적/경계 관계가 없어 그림은 중복.",
+          "asset": null,
+          "gitBlobSha": null,
+          "mathFacts": [],
+          "staticStatus": "NOT_APPLICABLE",
+          "actualBrowser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-PALMA25-2FINAL-Q09-A3",
+      "sourceQid": 9,
+      "sourceUid": null,
+      "slot": "A3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "하",
+      "category": "함수방정식과 함숫값의 관계",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "함수",
+        "함수방정식"
+      ],
+      "wide": false,
+      "content": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)$를 만족시키는 함수 $f$가 있다. $f(3)=15$일 때, $f(8)$의 값은?",
+      "choices": [
+        "$25$",
+        "$30$",
+        "$35$",
+        "$40$",
+        "$120$"
+      ],
+      "answer": "④",
+      "solution": "$f(3)=f(1)+f(1)+f(1)=3f(1)$이므로 $f(1)=5$이다.\n가법 관계를 여덟 번 적용하면 $f(8)=8f(1)=8\\cdot5=40$이다.\n따라서 정답은 ④이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-258",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "함수의 성질",
+        "rpmL4": null,
+        "rpmL4RecordLabel": "항등함수·상수함수",
+        "rpmL4SemanticStatus": "L3_ONLY_EXISTING_L4_NOT_APPLICABLE",
+        "generatedExtL4Id": "EXT-PALMA25-Q09-ADDITIVE-VALUES",
+        "generatedExtL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_BASIC/extension-l4/palma-2025-2final-q09-registry.json",
+        "rpmCrosswalkMappingStatus": "DIRECT_ACTIVE",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "H1-RPM-258 L3=함수의 성질; original RPM L4 항등함수·상수함수 is NOT semantic match. Crosswalk DIRECT_ACTIVE maps unrelated PT_SPECIAL_FUNCTION_PROPERTIES; actual user question and generated candidates are PT_FUNCTIONAL_EQUATION/TPL_FUNCTIONAL_EQUATION_ADDITIVE ACTIVE binding at H22-C2-07-FUNCTION_BASIC. GENERATED_ACTIVE EXT-L4 supplies exact decisive step.",
+        "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
+        "templateKey": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS",
+          "COND_FUNCTION_VALUE_CONSTRAINT"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q09는 모든 실수에서의 함수 관계 f(x+y)를 대입하여 특정 함숫값을 복원하는 함수의 성질 L3; H1-RPM-258은 L3 비교 기준일 뿐 L4 항등함수·상수함수는 사용하지 않음.",
+          "l4": "GENERATED_ACTIVE EXT-PALMA25-Q09-ADDITIVE-VALUES의 결정단계: f(3)=3f(1) → f(1)=5 → f(8)=40. RPM 기존 L4로 잘못 채우지 않음.",
+          "pt": "PT_FUNCTIONAL_EQUATION ACTIVE: 모든 x,y의 함수 등식에 적절한 값을 대입하여 새 함수 관계·함숫값을 복원하는 핵심 풀이.",
+          "tpl": "TPL_FUNCTIONAL_EQUATION_ADDITIVE ACTIVE: f(3)=3f(1) → f(1)=5 → f(8)=40. C1/C3에는 xy correction을 포함하는 Generated L4로 명시.",
+          "cross": "주제 함수방정식 외 기초 정수·부호·일차식 연산/조건은 독립 CrossConcept로 이중 태깅하지 않음.",
+          "condition": "COND_UNIVERSAL_INPUTS, COND_FUNCTION_VALUE_CONSTRAINT: f(3)=3f(1) → f(1)=5 → f(8)=40에서 모든 실수 조건, 주어진 함숫값, 자연수/범위(해당 시) 적용.",
+          "integration": "SEQUENTIAL: f(3)=3f(1) → f(1)=5 → f(8)=40",
+          "learningLevel": "한 번의 정수배 비율을 3에서 1로 환산하고 8에 적용한다. 원본과 같은 직접 사고.",
+          "assessmentBucket": "초기 함수값의 입력 3과 목표 입력 8을 분리해야 하지만 연산 자체는 정수 한 단계.",
+          "problemVisual": "원문의 모든 값·조건을 수식으로 충분히 제시하므로 별도 문제 그림은 중복이며 정답을 누설할 위험만 늘린다.",
+          "solutionVisual": "대입·정수배 계산이 해설 수식에서 완결되고 새 공간적/경계 관계가 없어 그림은 중복.",
+          "curriculum": "공통수학2 함수의 뜻과 함수 관계식에 실수 대입, 중등 정수·음수·일차방정식 연산만 사용. 연속성 없는 가법함수 전체를 f(x)=cx로 단정하지 않고 요청 정수 입력의 값만 도출."
+        },
+        "rpmSemanticMatch": "L3_ONLY_L4_GAP"
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "공통수학2 함수의 뜻과 함수 관계식에 실수 대입, 중등 정수·음수·일차방정식 연산만 사용. 연속성 없는 가법함수 전체를 f(x)=cx로 단정하지 않고 요청 정수 입력의 값만 도출.",
+        "learningLevelReason": "한 번의 정수배 비율을 3에서 1로 환산하고 8에 적용한다. 원본과 같은 직접 사고.",
+        "assessmentDifficultyReason": "초기 함수값의 입력 3과 목표 입력 8을 분리해야 하지만 연산 자체는 정수 한 단계.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)$를 만족시키는 함수 $f$가 있다. $f(3)=15$일 때, $f(8)$의 값은?",
+          "requiredPrimaryL3Step": "f(3)=3f(1) → f(1)=5 → f(8)=40",
+          "naturalKorean": "모든 실수에서의 함수 등식·제시된 함숫값·학생이 구할 출력/개수가 발문에 전부 존재하고 불필요한 목표식이 없음",
+          "conditionSufficiency": "함수 관계가 모든 실수에서 성립하고 목표 입력은 정수이므로 유리·정수 가법만 사용해 유일한 답을 얻는다.",
+          "shortcut": "원본 L3를 건너뛰는 출제자 의도 밖 우회 없음. 요구된 정수값만 유일하다고 주장하고 모든 실수의 함수꼴을 단정하지 않음",
+          "answerFromFinalStudentInput": "40",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "독립품질·실제 브라우저 미실행. 원본 exact sourceUid 미결속"
+        },
+        "wrongRoutes": {
+          "count": 4,
+          "indexSet": [
+            "①",
+            "②",
+            "③",
+            "⑤"
+          ],
+          "derivations": [
+            {
+              "index": "①",
+              "value": "25",
+              "errorCalculation": "목표 입력 8을 5로 잘못 읽으면 $5\\cdot5=25$이다."
+            },
+            {
+              "index": "②",
+              "value": "30",
+              "errorCalculation": "목표 입력 8을 6으로 잘못 읽으면 $6\\cdot5=30$이다."
+            },
+            {
+              "index": "③",
+              "value": "35",
+              "errorCalculation": "목표 입력 8을 7로 잘못 읽으면 $7\\cdot5=35$이다."
+            },
+            {
+              "index": "⑤",
+              "value": "120",
+              "errorCalculation": "$f(1)=5$를 거치지 않고 $f(3)=15$를 여덟 번 더하면 $8\\cdot15=120$이다."
+            }
+          ]
+        },
+        "mathEvidence": {
+          "method": "EXACT_INTEGER_RELATION_AND_BOUNDARY_ENUMERATION",
+          "expressionOrValues": "15/3=5;8*5=40",
+          "answer": "40",
+          "sourceEquationOnlyNotGlobalLinear": true,
+          "verifiedAs": "AUTHOR_MATH_CHECK"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "reason": "원문의 가법식과 정수 입력만으로 문제를 완전하게 읽을 수 있어 문제 그림은 추가 정보 없이 중복.",
+          "asset": null,
+          "actualBrowser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "reason": "대입·정수배 계산이 해설 수식에서 완결되고 새 공간적/경계 관계가 없어 그림은 중복.",
+          "asset": null,
+          "gitBlobSha": null,
+          "mathFacts": [],
+          "staticStatus": "NOT_APPLICABLE",
+          "actualBrowser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-PALMA25-2FINAL-Q09-B1",
+      "sourceQid": 9,
+      "sourceUid": null,
+      "slot": "B1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "함수방정식과 함숫값의 관계",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "함수",
+        "함수방정식"
+      ],
+      "wide": false,
+      "content": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)$를 만족시키는 함수 $f$가 있다. $f(2)=8$이고 자연수 $n$에 대하여 $f(n)=28$일 때, $n$의 값은?",
+      "choices": [
+        "$5$",
+        "$6$",
+        "$7$",
+        "$8$",
+        "$14$"
+      ],
+      "answer": "③",
+      "solution": "가법 관계에서 $f(2)=2f(1)=8$이므로 $f(1)=4$이다.\n자연수 $n$에 대하여 같은 관계를 $n$번 적용하면 $f(n)=4n$이다.\n$f(n)=28$이므로 $4n=28$, 따라서 $n=7$이다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-258",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "함수의 성질",
+        "rpmL4": null,
+        "rpmL4RecordLabel": "항등함수·상수함수",
+        "rpmL4SemanticStatus": "L3_ONLY_EXISTING_L4_NOT_APPLICABLE",
+        "generatedExtL4Id": "EXT-PALMA25-Q09-ADDITIVE-VALUES",
+        "generatedExtL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_BASIC/extension-l4/palma-2025-2final-q09-registry.json",
+        "rpmCrosswalkMappingStatus": "DIRECT_ACTIVE",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "H1-RPM-258 L3=함수의 성질; original RPM L4 항등함수·상수함수 is NOT semantic match. Crosswalk DIRECT_ACTIVE maps unrelated PT_SPECIAL_FUNCTION_PROPERTIES; actual user question and generated candidates are PT_FUNCTIONAL_EQUATION/TPL_FUNCTIONAL_EQUATION_ADDITIVE ACTIVE binding at H22-C2-07-FUNCTION_BASIC. GENERATED_ACTIVE EXT-L4 supplies exact decisive step.",
+        "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
+        "templateKey": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS",
+          "COND_FUNCTION_VALUE_CONSTRAINT",
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q09는 모든 실수에서의 함수 관계 f(x+y)를 대입하여 특정 함숫값을 복원하는 함수의 성질 L3; H1-RPM-258은 L3 비교 기준일 뿐 L4 항등함수·상수함수는 사용하지 않음.",
+          "l4": "GENERATED_ACTIVE EXT-PALMA25-Q09-ADDITIVE-VALUES의 결정단계: f(1)=4 → f(n)=4n → n=7. RPM 기존 L4로 잘못 채우지 않음.",
+          "pt": "PT_FUNCTIONAL_EQUATION ACTIVE: 모든 x,y의 함수 등식에 적절한 값을 대입하여 새 함수 관계·함숫값을 복원하는 핵심 풀이.",
+          "tpl": "TPL_FUNCTIONAL_EQUATION_ADDITIVE ACTIVE: f(1)=4 → f(n)=4n → n=7. C1/C3에는 xy correction을 포함하는 Generated L4로 명시.",
+          "cross": "주제 함수방정식 외 기초 정수·부호·일차식 연산/조건은 독립 CrossConcept로 이중 태깅하지 않음.",
+          "condition": "COND_UNIVERSAL_INPUTS, COND_FUNCTION_VALUE_CONSTRAINT, COND_NATURAL_NUMBER: f(1)=4 → f(n)=4n → n=7에서 모든 실수 조건, 주어진 함숫값, 자연수/범위(해당 시) 적용.",
+          "integration": "SEQUENTIAL: f(1)=4 → f(n)=4n → n=7",
+          "learningLevel": "가법 관계의 정수배 식을 만든 뒤 함숫값에서 입력 자연수를 역으로 찾아야 한다.",
+          "assessmentBucket": "목표가 함숫값이 아니라 입력이며 두 숫자의 역할을 뒤집거나 횟수를 잘못 조정할 위험이 있다.",
+          "problemVisual": "원문의 모든 값·조건을 수식으로 충분히 제시하므로 별도 문제 그림은 중복이며 정답을 누설할 위험만 늘린다.",
+          "solutionVisual": "대입·정수배 계산이 해설 수식에서 완결되고 새 공간적/경계 관계가 없어 그림은 중복.",
+          "curriculum": "공통수학2 함수의 뜻과 함수 관계식에 실수 대입, 중등 정수·음수·일차방정식 연산만 사용. 연속성 없는 가법함수 전체를 f(x)=cx로 단정하지 않고 요청 정수 입력의 값만 도출."
+        },
+        "rpmSemanticMatch": "L3_ONLY_L4_GAP"
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "공통수학2 함수의 뜻과 함수 관계식에 실수 대입, 중등 정수·음수·일차방정식 연산만 사용. 연속성 없는 가법함수 전체를 f(x)=cx로 단정하지 않고 요청 정수 입력의 값만 도출.",
+        "learningLevelReason": "가법 관계의 정수배 식을 만든 뒤 함숫값에서 입력 자연수를 역으로 찾아야 한다.",
+        "assessmentDifficultyReason": "목표가 함숫값이 아니라 입력이며 두 숫자의 역할을 뒤집거나 횟수를 잘못 조정할 위험이 있다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)$를 만족시키는 함수 $f$가 있다. $f(2)=8$이고 자연수 $n$에 대하여 $f(n)=28$일 때, $n$의 값은?",
+          "requiredPrimaryL3Step": "f(1)=4 → f(n)=4n → n=7",
+          "naturalKorean": "모든 실수에서의 함수 등식·제시된 함숫값·학생이 구할 출력/개수가 발문에 전부 존재하고 불필요한 목표식이 없음",
+          "conditionSufficiency": "함수 관계가 모든 실수에서 성립하고 목표 입력은 정수이므로 유리·정수 가법만 사용해 유일한 답을 얻는다.",
+          "shortcut": "원본 L3를 건너뛰는 출제자 의도 밖 우회 없음. 요구된 정수값만 유일하다고 주장하고 모든 실수의 함수꼴을 단정하지 않음",
+          "answerFromFinalStudentInput": "7",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "독립품질·실제 브라우저 미실행. 원본 exact sourceUid 미결속"
+        },
+        "wrongRoutes": {
+          "count": 4,
+          "indexSet": [
+            "①",
+            "②",
+            "④",
+            "⑤"
+          ],
+          "derivations": [
+            {
+              "index": "①",
+              "value": "5",
+              "errorCalculation": "$f(n+2)=28$이라고 한 번 잘못 읽으면 $4(n+2)=28$에서 $n=5$이다."
+            },
+            {
+              "index": "②",
+              "value": "6",
+              "errorCalculation": "$f(n+1)=28$이라고 한 번 잘못 읽으면 $4(n+1)=28$에서 $n=6$이다."
+            },
+            {
+              "index": "④",
+              "value": "8",
+              "errorCalculation": "$f(n-1)=28$로 잘못 읽으면 $4(n-1)=28$에서 $n=8$이다."
+            },
+            {
+              "index": "⑤",
+              "value": "14",
+              "errorCalculation": "$f(1)=8/2=4$ 대신 $8/4=2$로 한 번 더 나누면 $2n=28$, $n=14$이다."
+            }
+          ]
+        },
+        "mathEvidence": {
+          "method": "EXACT_INTEGER_RELATION_AND_BOUNDARY_ENUMERATION",
+          "expressionOrValues": "8/2=4;28/4=7",
+          "answer": "7",
+          "sourceEquationOnlyNotGlobalLinear": true,
+          "verifiedAs": "AUTHOR_MATH_CHECK"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "reason": "원문의 가법식과 정수 입력만으로 문제를 완전하게 읽을 수 있어 문제 그림은 추가 정보 없이 중복.",
+          "asset": null,
+          "actualBrowser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "reason": "대입·정수배 계산이 해설 수식에서 완결되고 새 공간적/경계 관계가 없어 그림은 중복.",
+          "asset": null,
+          "gitBlobSha": null,
+          "mathFacts": [],
+          "staticStatus": "NOT_APPLICABLE",
+          "actualBrowser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-PALMA25-2FINAL-Q09-B2",
+      "sourceQid": 9,
+      "sourceUid": null,
+      "slot": "B2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "함수방정식과 함숫값의 관계",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "함수",
+        "함수방정식"
+      ],
+      "wide": false,
+      "content": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)$를 만족시키는 함수 $f$가 있다. $f(4)=12$일 때, $f(7)-f(-2)$의 값은?",
+      "choices": [
+        "$15$",
+        "$18$",
+        "$21$",
+        "$24$",
+        "$27$"
+      ],
+      "answer": "⑤",
+      "solution": "가법 관계에 $x=y=0$을 대입하면 $f(0)=2f(0)$이므로 $f(0)=0$이다.\n$f(2)+f(-2)=f(0)=0$이므로 $f(-2)=-f(2)$이다.\n$f(4)=4f(1)=12$에서 $f(1)=3$이므로 $f(7)=21$, $f(-2)=-6$이다.\n따라서 $f(7)-f(-2)=21-(-6)=27$이다.\n또는 가법 관계로 $f(7)-f(-2)=f(7)+f(2)=f(9)=27$이다.\n따라서 정답은 ⑤이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-258",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "함수의 성질",
+        "rpmL4": null,
+        "rpmL4RecordLabel": "항등함수·상수함수",
+        "rpmL4SemanticStatus": "L3_ONLY_EXISTING_L4_NOT_APPLICABLE",
+        "generatedExtL4Id": "EXT-PALMA25-Q09-ADDITIVE-VALUES",
+        "generatedExtL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_BASIC/extension-l4/palma-2025-2final-q09-registry.json",
+        "rpmCrosswalkMappingStatus": "DIRECT_ACTIVE",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "H1-RPM-258 L3=함수의 성질; original RPM L4 항등함수·상수함수 is NOT semantic match. Crosswalk DIRECT_ACTIVE maps unrelated PT_SPECIAL_FUNCTION_PROPERTIES; actual user question and generated candidates are PT_FUNCTIONAL_EQUATION/TPL_FUNCTIONAL_EQUATION_ADDITIVE ACTIVE binding at H22-C2-07-FUNCTION_BASIC. GENERATED_ACTIVE EXT-L4 supplies exact decisive step.",
+        "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
+        "templateKey": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS",
+          "COND_FUNCTION_VALUE_CONSTRAINT"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q09는 모든 실수에서의 함수 관계 f(x+y)를 대입하여 특정 함숫값을 복원하는 함수의 성질 L3; H1-RPM-258은 L3 비교 기준일 뿐 L4 항등함수·상수함수는 사용하지 않음.",
+          "l4": "GENERATED_ACTIVE EXT-PALMA25-Q09-ADDITIVE-VALUES의 결정단계: f(0)=0, f(-2)=-6, f(7)=21 → 차는 27. RPM 기존 L4로 잘못 채우지 않음.",
+          "pt": "PT_FUNCTIONAL_EQUATION ACTIVE: 모든 x,y의 함수 등식에 적절한 값을 대입하여 새 함수 관계·함숫값을 복원하는 핵심 풀이.",
+          "tpl": "TPL_FUNCTIONAL_EQUATION_ADDITIVE ACTIVE: f(0)=0, f(-2)=-6, f(7)=21 → 차는 27. C1/C3에는 xy correction을 포함하는 Generated L4로 명시.",
+          "cross": "주제 함수방정식 외 기초 정수·부호·일차식 연산/조건은 독립 CrossConcept로 이중 태깅하지 않음.",
+          "condition": "COND_UNIVERSAL_INPUTS, COND_FUNCTION_VALUE_CONSTRAINT: f(0)=0, f(-2)=-6, f(7)=21 → 차는 27에서 모든 실수 조건, 주어진 함숫값, 자연수/범위(해당 시) 적용.",
+          "integration": "REINTERPRETATION: f(0)=0, f(-2)=-6, f(7)=21 → 차는 27",
+          "learningLevel": "음수 입력의 대응 부호를 복원하고 차를 더하기로 바꾸어 합성적인 관계를 활용해야 한다.",
+          "assessmentBucket": "음수 함숫값과 뺄셈의 이중 부호가 정답을 뒤집기 쉬워 오류 위험이 높지만 계산은 작다.",
+          "problemVisual": "원문의 모든 값·조건을 수식으로 충분히 제시하므로 별도 문제 그림은 중복이며 정답을 누설할 위험만 늘린다.",
+          "solutionVisual": "대입·정수배 계산이 해설 수식에서 완결되고 새 공간적/경계 관계가 없어 그림은 중복.",
+          "curriculum": "공통수학2 함수의 뜻과 함수 관계식에 실수 대입, 중등 정수·음수·일차방정식 연산만 사용. 연속성 없는 가법함수 전체를 f(x)=cx로 단정하지 않고 요청 정수 입력의 값만 도출."
+        },
+        "rpmSemanticMatch": "L3_ONLY_L4_GAP"
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "공통수학2 함수의 뜻과 함수 관계식에 실수 대입, 중등 정수·음수·일차방정식 연산만 사용. 연속성 없는 가법함수 전체를 f(x)=cx로 단정하지 않고 요청 정수 입력의 값만 도출.",
+        "learningLevelReason": "음수 입력의 대응 부호를 복원하고 차를 더하기로 바꾸어 합성적인 관계를 활용해야 한다.",
+        "assessmentDifficultyReason": "음수 함숫값과 뺄셈의 이중 부호가 정답을 뒤집기 쉬워 오류 위험이 높지만 계산은 작다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)$를 만족시키는 함수 $f$가 있다. $f(4)=12$일 때, $f(7)-f(-2)$의 값은?",
+          "requiredPrimaryL3Step": "f(0)=0, f(-2)=-6, f(7)=21 → 차는 27",
+          "naturalKorean": "모든 실수에서의 함수 등식·제시된 함숫값·학생이 구할 출력/개수가 발문에 전부 존재하고 불필요한 목표식이 없음",
+          "conditionSufficiency": "함수 관계가 모든 실수에서 성립하고 목표 입력은 정수이므로 유리·정수 가법만 사용해 유일한 답을 얻는다.",
+          "shortcut": "원본 L3를 건너뛰는 출제자 의도 밖 우회 없음. 요구된 정수값만 유일하다고 주장하고 모든 실수의 함수꼴을 단정하지 않음",
+          "answerFromFinalStudentInput": "27",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "독립품질·실제 브라우저 미실행. 원본 exact sourceUid 미결속"
+        },
+        "wrongRoutes": {
+          "count": 4,
+          "indexSet": [
+            "①",
+            "②",
+            "③",
+            "④"
+          ],
+          "derivations": [
+            {
+              "index": "①",
+              "value": "15",
+              "errorCalculation": "부호를 무시하고 $f(7)+f(-2)$로 계산하면 $21+(-6)=15$이다."
+            },
+            {
+              "index": "②",
+              "value": "18",
+              "errorCalculation": "$f(2)=6$에서 음수 입력임을 잊고 이를 한 번 더 반으로 나누어 $f(-2)=+3$이라 하면 $21-3=18$이다."
+            },
+            {
+              "index": "③",
+              "value": "21",
+              "errorCalculation": "뺄셈항을 통째로 누락하고 $f(7)=21$만 계산한다."
+            },
+            {
+              "index": "④",
+              "value": "24",
+              "errorCalculation": "$f(-2)=-f(2)$ 대신 $-f(1)=-3$으로 잘못 쓰면 $21-(-3)=24$이다."
+            }
+          ]
+        },
+        "mathEvidence": {
+          "method": "EXACT_INTEGER_RELATION_AND_BOUNDARY_ENUMERATION",
+          "expressionOrValues": "f1=3; f7=21; f(-2)=-6; 21+6=27",
+          "answer": "27",
+          "sourceEquationOnlyNotGlobalLinear": true,
+          "verifiedAs": "AUTHOR_MATH_CHECK"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "reason": "원문의 가법식과 정수 입력만으로 문제를 완전하게 읽을 수 있어 문제 그림은 추가 정보 없이 중복.",
+          "asset": null,
+          "actualBrowser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "reason": "대입·정수배 계산이 해설 수식에서 완결되고 새 공간적/경계 관계가 없어 그림은 중복.",
+          "asset": null,
+          "gitBlobSha": null,
+          "mathFacts": [],
+          "staticStatus": "NOT_APPLICABLE",
+          "actualBrowser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-PALMA25-2FINAL-Q09-B3",
+      "sourceQid": 9,
+      "sourceUid": null,
+      "slot": "B3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "TYPE_BANK",
+      "level": "중",
+      "category": "함수방정식과 함숫값의 관계",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "함수",
+        "함수방정식"
+      ],
+      "wide": false,
+      "content": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)+2$를 만족시키는 함수 $f$가 있다. $f(2)=6$일 때, $f(5)$의 값은?",
+      "choices": [
+        "$8$",
+        "$10$",
+        "$16$",
+        "$18$",
+        "$20$"
+      ],
+      "answer": "④",
+      "solution": "$x=y=1$을 대입하면 $f(2)=2f(1)+2$이다.\n$6=2f(1)+2$에서 $f(1)=2$이다.\n이제 $f(n+1)=f(n)+f(1)+2=f(n)+4$이므로,\n$f(3)=6+4=10$, $f(4)=10+4=14$, $f(5)=14+4=18$이다.\n따라서 정답은 ④이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-258",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "함수의 성질",
+        "rpmL4": null,
+        "rpmL4RecordLabel": "항등함수·상수함수",
+        "rpmL4SemanticStatus": "L3_ONLY_EXISTING_L4_NOT_APPLICABLE",
+        "generatedExtL4Id": "EXT-PALMA25-Q09-SHIFTED-ADDITIVITY",
+        "generatedExtL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_BASIC/extension-l4/palma-2025-2final-q09-registry.json",
+        "rpmCrosswalkMappingStatus": "DIRECT_ACTIVE",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "H1-RPM-258 L3=함수의 성질; original RPM L4 항등함수·상수함수 is NOT semantic match. Crosswalk DIRECT_ACTIVE maps unrelated PT_SPECIAL_FUNCTION_PROPERTIES; actual user question and generated candidates are PT_FUNCTIONAL_EQUATION/TPL_FUNCTIONAL_EQUATION_ADDITIVE ACTIVE binding at H22-C2-07-FUNCTION_BASIC. GENERATED_ACTIVE EXT-L4 supplies exact decisive step.",
+        "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
+        "templateKey": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS",
+          "COND_FUNCTION_VALUE_CONSTRAINT"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q09는 모든 실수에서의 함수 관계 f(x+y)를 대입하여 특정 함숫값을 복원하는 함수의 성질 L3; H1-RPM-258은 L3 비교 기준일 뿐 L4 항등함수·상수함수는 사용하지 않음.",
+          "l4": "GENERATED_ACTIVE EXT-PALMA25-Q09-SHIFTED-ADDITIVITY의 결정단계: f2=2f1+2 → f1=2 → 매 1 증가시 f값 4 증가 → f5=18. RPM 기존 L4로 잘못 채우지 않음.",
+          "pt": "PT_FUNCTIONAL_EQUATION ACTIVE: 모든 x,y의 함수 등식에 적절한 값을 대입하여 새 함수 관계·함숫값을 복원하는 핵심 풀이.",
+          "tpl": "TPL_FUNCTIONAL_EQUATION_ADDITIVE ACTIVE: f2=2f1+2 → f1=2 → 매 1 증가시 f값 4 증가 → f5=18. C1/C3에는 xy correction을 포함하는 Generated L4로 명시.",
+          "cross": "주제 함수방정식 외 기초 정수·부호·일차식 연산/조건은 독립 CrossConcept로 이중 태깅하지 않음.",
+          "condition": "COND_UNIVERSAL_INPUTS, COND_FUNCTION_VALUE_CONSTRAINT: f2=2f1+2 → f1=2 → 매 1 증가시 f값 4 증가 → f5=18에서 모든 실수 조건, 주어진 함숫값, 자연수/범위(해당 시) 적용.",
+          "integration": "SEQUENTIAL: f2=2f1+2 → f1=2 → 매 1 증가시 f값 4 증가 → f5=18",
+          "learningLevel": "가법 관계에 추가되는 상수항을 매회 적용해야 하므로 원본의 단순 선형 누적과 구별된다.",
+          "assessmentBucket": "첫 f(1) 산출과 추가 상수 2를 매 합성 단계마다 더하는지 확인할 필요가 있다.",
+          "problemVisual": "원문의 모든 값·조건을 수식으로 충분히 제시하므로 별도 문제 그림은 중복이며 정답을 누설할 위험만 늘린다.",
+          "solutionVisual": "대입·정수배 계산이 해설 수식에서 완결되고 새 공간적/경계 관계가 없어 그림은 중복.",
+          "curriculum": "공통수학2 함수의 뜻과 함수 관계식에 실수 대입, 중등 정수·음수·일차방정식 연산만 사용. 연속성 없는 가법함수 전체를 f(x)=cx로 단정하지 않고 요청 정수 입력의 값만 도출."
+        },
+        "rpmSemanticMatch": "L3_ONLY_L4_GAP"
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "공통수학2 함수의 뜻과 함수 관계식에 실수 대입, 중등 정수·음수·일차방정식 연산만 사용. 연속성 없는 가법함수 전체를 f(x)=cx로 단정하지 않고 요청 정수 입력의 값만 도출.",
+        "learningLevelReason": "가법 관계에 추가되는 상수항을 매회 적용해야 하므로 원본의 단순 선형 누적과 구별된다.",
+        "assessmentDifficultyReason": "첫 f(1) 산출과 추가 상수 2를 매 합성 단계마다 더하는지 확인할 필요가 있다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)+2$를 만족시키는 함수 $f$가 있다. $f(2)=6$일 때, $f(5)$의 값은?",
+          "requiredPrimaryL3Step": "f2=2f1+2 → f1=2 → 매 1 증가시 f값 4 증가 → f5=18",
+          "naturalKorean": "모든 실수에서의 함수 등식·제시된 함숫값·학생이 구할 출력/개수가 발문에 전부 존재하고 불필요한 목표식이 없음",
+          "conditionSufficiency": "모든 실수 관계가 주어졌으며 f1을 결정한 뒤 정수 입력 f5를 유일하게 계산한다.",
+          "shortcut": "원본 L3를 건너뛰는 출제자 의도 밖 우회 없음. 요구된 정수값만 유일하다고 주장하고 모든 실수의 함수꼴을 단정하지 않음",
+          "answerFromFinalStudentInput": "18",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "독립품질·실제 브라우저 미실행. 원본 exact sourceUid 미결속"
+        },
+        "wrongRoutes": {
+          "count": 4,
+          "indexSet": [
+            "①",
+            "②",
+            "③",
+            "⑤"
+          ],
+          "derivations": [
+            {
+              "index": "①",
+              "value": "8",
+              "errorCalculation": "초기 $5f(1)$ 부분을 누락하고 덧붙은 상수만 네 번 더해 $4\\cdot2=8$을 얻는다."
+            },
+            {
+              "index": "②",
+              "value": "10",
+              "errorCalculation": "관계식의 추가 상수항을 모두 놓치면 $f(5)=5f(1)=5\\cdot2=10$이다."
+            },
+            {
+              "index": "③",
+              "value": "16",
+              "errorCalculation": "추가 상수항을 네 번이 아니라 세 번 적용하면 $5\\cdot2+3\\cdot2=16$이다."
+            },
+            {
+              "index": "⑤",
+              "value": "20",
+              "errorCalculation": "$g(x)=f(x)+2$를 가법으로 바꾸어 $g(5)=20$까지 구한 뒤 $f(5)=g(5)-2$를 잊으면 $20$이다."
+            }
+          ]
+        },
+        "mathEvidence": {
+          "method": "EXACT_INTEGER_RELATION_AND_BOUNDARY_ENUMERATION",
+          "expressionOrValues": "f1=(6-2)/2=2; f5=5*2+4*2=18",
+          "answer": "18",
+          "sourceEquationOnlyNotGlobalLinear": true,
+          "verifiedAs": "AUTHOR_MATH_CHECK"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "reason": "원문의 가법식과 정수 입력만으로 문제를 완전하게 읽을 수 있어 문제 그림은 추가 정보 없이 중복.",
+          "asset": null,
+          "actualBrowser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "reason": "대입·정수배 계산이 해설 수식에서 완결되고 새 공간적/경계 관계가 없어 그림은 중복.",
+          "asset": null,
+          "gitBlobSha": null,
+          "mathFacts": [],
+          "staticStatus": "NOT_APPLICABLE",
+          "actualBrowser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-PALMA25-2FINAL-Q09-C1",
+      "sourceQid": 9,
+      "sourceUid": null,
+      "slot": "C1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "TYPE_BANK",
+      "level": "중",
+      "category": "함수방정식과 함숫값의 관계",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "함수",
+        "함수방정식"
+      ],
+      "wide": false,
+      "content": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)+2xy$를 만족시키는 함수 $f$가 있다. $f(1)=4$일 때, $f(5)$의 값은?",
+      "choices": [
+        "$28$",
+        "$32$",
+        "$36$",
+        "$40$",
+        "$48$"
+      ],
+      "answer": "④",
+      "solution": "함수 관계에 차례로 $x=1,2,3,4$, $y=1$을 대입한다.\n$f(2)=f(1)+f(1)+2\\cdot1\\cdot1=4+4+2=10$이다.\n$f(3)=f(2)+f(1)+2\\cdot2\\cdot1=10+4+4=18$이다.\n$f(4)=f(3)+f(1)+2\\cdot3\\cdot1=18+4+6=28$이다.\n$f(5)=f(4)+f(1)+2\\cdot4\\cdot1=28+4+8=40$이다.\n따라서 정답은 ④이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-258",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "함수의 성질",
+        "rpmL4": null,
+        "rpmL4RecordLabel": "항등함수·상수함수",
+        "rpmL4SemanticStatus": "L3_ONLY_EXISTING_L4_NOT_APPLICABLE",
+        "generatedExtL4Id": "EXT-PALMA25-Q09-BILINEAR-ADDITIVITY",
+        "generatedExtL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_BASIC/extension-l4/palma-2025-2final-q09-registry.json",
+        "rpmCrosswalkMappingStatus": "DIRECT_ACTIVE",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "H1-RPM-258 L3=함수의 성질; original RPM L4 항등함수·상수함수 is NOT semantic match. Crosswalk DIRECT_ACTIVE maps unrelated PT_SPECIAL_FUNCTION_PROPERTIES; actual user question and generated candidates are PT_FUNCTIONAL_EQUATION/TPL_FUNCTIONAL_EQUATION_ADDITIVE ACTIVE binding at H22-C2-07-FUNCTION_BASIC. GENERATED_ACTIVE EXT-L4 supplies exact decisive step.",
+        "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
+        "templateKey": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS",
+          "COND_FUNCTION_VALUE_CONSTRAINT"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q09는 모든 실수에서의 함수 관계 f(x+y)를 대입하여 특정 함숫값을 복원하는 함수의 성질 L3; H1-RPM-258은 L3 비교 기준일 뿐 L4 항등함수·상수함수는 사용하지 않음.",
+          "l4": "GENERATED_ACTIVE EXT-PALMA25-Q09-BILINEAR-ADDITIVITY의 결정단계: f(n+1)=f(n)+4+2n → f2=10,f3=18,f4=28,f5=40. RPM 기존 L4로 잘못 채우지 않음.",
+          "pt": "PT_FUNCTIONAL_EQUATION ACTIVE: 모든 x,y의 함수 등식에 적절한 값을 대입하여 새 함수 관계·함숫값을 복원하는 핵심 풀이.",
+          "tpl": "TPL_FUNCTIONAL_EQUATION_ADDITIVE ACTIVE: f(n+1)=f(n)+4+2n → f2=10,f3=18,f4=28,f5=40. C1/C3에는 xy correction을 포함하는 Generated L4로 명시.",
+          "cross": "주제 함수방정식 외 기초 정수·부호·일차식 연산/조건은 독립 CrossConcept로 이중 태깅하지 않음.",
+          "condition": "COND_UNIVERSAL_INPUTS, COND_FUNCTION_VALUE_CONSTRAINT: f(n+1)=f(n)+4+2n → f2=10,f3=18,f4=28,f5=40에서 모든 실수 조건, 주어진 함숫값, 자연수/범위(해당 시) 적용.",
+          "integration": "SEQUENTIAL: f(n+1)=f(n)+4+2n → f2=10,f3=18,f4=28,f5=40",
+          "learningLevel": "가법 관계에서 추가 곱항 2xy가 매번 바뀌므로 단계별 대입값을 정확히 갱신해야 한다.",
+          "assessmentBucket": "고정 증가량이 아니라 +6,+8,+10,+12로 바뀌는 갱신 관계라 한 단계 누락·곱항 중복 위험이 높다.",
+          "problemVisual": "원문의 모든 값·조건을 수식으로 충분히 제시하므로 별도 문제 그림은 중복이며 정답을 누설할 위험만 늘린다.",
+          "solutionVisual": "n=1~5의 실제 함수값과 각 단계에서 달라지는 +6,+8,+10,+12를 표로 확인하면 추가 2xy 항의 효과가 눈에 보임.",
+          "curriculum": "공통수학2 함수의 뜻과 함수 관계식에 실수 대입, 중등 정수·음수·일차방정식 연산만 사용. 연속성 없는 가법함수 전체를 f(x)=cx로 단정하지 않고 요청 정수 입력의 값만 도출."
+        },
+        "rpmSemanticMatch": "L3_ONLY_L4_GAP"
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "공통수학2 함수의 뜻과 함수 관계식에 실수 대입, 중등 정수·음수·일차방정식 연산만 사용. 연속성 없는 가법함수 전체를 f(x)=cx로 단정하지 않고 요청 정수 입력의 값만 도출.",
+        "learningLevelReason": "가법 관계에서 추가 곱항 2xy가 매번 바뀌므로 단계별 대입값을 정확히 갱신해야 한다.",
+        "assessmentDifficultyReason": "고정 증가량이 아니라 +6,+8,+10,+12로 바뀌는 갱신 관계라 한 단계 누락·곱항 중복 위험이 높다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)+2xy$를 만족시키는 함수 $f$가 있다. $f(1)=4$일 때, $f(5)$의 값은?",
+          "requiredPrimaryL3Step": "f(n+1)=f(n)+4+2n → f2=10,f3=18,f4=28,f5=40",
+          "naturalKorean": "모든 실수에서의 함수 등식·제시된 함숫값·학생이 구할 출력/개수가 발문에 전부 존재하고 불필요한 목표식이 없음",
+          "conditionSufficiency": "정수 1~5를 순차 대입할 수 있어 전체 실수 해의 유일한 형태를 가정하지 않아도 f(5)는 유일하다.",
+          "shortcut": "원본 L3를 건너뛰는 출제자 의도 밖 우회 없음. 요구된 정수값만 유일하다고 주장하고 모든 실수의 함수꼴을 단정하지 않음",
+          "answerFromFinalStudentInput": "40",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "독립품질·실제 브라우저 미실행. 원본 exact sourceUid 미결속"
+        },
+        "wrongRoutes": {
+          "count": 4,
+          "indexSet": [
+            "①",
+            "②",
+            "③",
+            "⑤"
+          ],
+          "derivations": [
+            {
+              "index": "①",
+              "value": "28",
+              "errorCalculation": "$f(4)=28$에서 한 단계 먼저 멈춰 $f(5)$로 착각한다."
+            },
+            {
+              "index": "②",
+              "value": "32",
+              "errorCalculation": "마지막 $2xy$ 항을 빠뜨리면 $f(5)=28+4=32$이다."
+            },
+            {
+              "index": "③",
+              "value": "36",
+              "errorCalculation": "마지막에 $x=4$ 대신 $x=2$를 대입하면 $28+4+2\\cdot2\\cdot1=36$이다."
+            },
+            {
+              "index": "⑤",
+              "value": "48",
+              "errorCalculation": "마지막 추가 곱항 $8$을 두 번 세면 $28+4+8+8=48$이다."
+            }
+          ]
+        },
+        "mathEvidence": {
+          "method": "EXACT_INTEGER_RELATION_AND_BOUNDARY_ENUMERATION",
+          "expressionOrValues": "f=[4,10,18,28,40]; increments=[6,8,10,12]",
+          "answer": "40",
+          "sourceEquationOnlyNotGlobalLinear": true,
+          "verifiedAs": "AUTHOR_MATH_CHECK"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "reason": "수식·부등식·입력값에 필요한 모든 정보가 있어 문제 그림이 필요 없음.",
+          "asset": null,
+          "actualBrowser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "BENEFICIAL",
+          "reason": "n=1~5의 실제 함수값과 각 단계에서 달라지는 +6,+8,+10,+12를 표로 확인하면 추가 2xy 항의 효과가 눈에 보임.",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q09/C1-solution.svg",
+          "gitBlobSha": "41410fa46c0a701256bc92f6a6cb04764aaf50f2",
+          "mathFacts": [
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              10
+            ],
+            [
+              3,
+              18
+            ],
+            [
+              4,
+              28
+            ],
+            [
+              5,
+              40
+            ]
+          ],
+          "staticStatus": "AUTHOR_PRIMITIVE_DATA_PARITY_CHECKED",
+          "actualBrowser": "NOT_RUN"
+        }
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q09/C1-solution.svg",
+      "solutionImageAlt": "함숫값을 n=1부터 5까지 계산한 표",
+      "solutionImageCaption": "추가 곱항으로 인해 매번 달라지는 함숫값을 확인한다.",
+      "solutionImageSize": "medium"
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-PALMA25-2FINAL-Q09-C2",
+      "sourceQid": 9,
+      "sourceUid": null,
+      "slot": "C2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "TYPE_BANK",
+      "level": "중",
+      "category": "함수방정식과 함숫값의 관계",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "함수",
+        "함수방정식",
+        "부등식",
+        "자연수"
+      ],
+      "wide": false,
+      "content": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)$를 만족시키는 함수 $f$가 있다. $f(3)=9$이다. 자연수 $n$에 대하여 $f(n-1)>12$이고 $f(n+2)\\le30$일 때, 이를 만족시키는 $n$의 개수는?",
+      "choices": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$",
+        "$8$"
+      ],
+      "answer": "②",
+      "solution": "$f(3)=3f(1)=9$이므로 $f(1)=3$이다.\n자연수 $n$에 대하여 $f(n-1)=3(n-1)$, $f(n+2)=3(n+2)$이다. ($n=1$이면 $f(0)=0$이므로 같은 식이다.)\n첫째 조건 $3(n-1)>12$에서 $n-1>4$, 즉 $n>5$이다.\n둘째 조건 $3(n+2)\\le30$에서 $n+2\\le10$, 즉 $n\\le8$이다.\n따라서 $5<n\\le8$인 자연수는 $6,7,8$의 세 개이다.\n따라서 정답은 ②이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-258",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "함수의 성질",
+        "rpmL4": null,
+        "rpmL4RecordLabel": "항등함수·상수함수",
+        "rpmL4SemanticStatus": "L3_ONLY_EXISTING_L4_NOT_APPLICABLE",
+        "generatedExtL4Id": "EXT-PALMA25-Q09-ADDITIVE-VALUES",
+        "generatedExtL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_BASIC/extension-l4/palma-2025-2final-q09-registry.json",
+        "rpmCrosswalkMappingStatus": "DIRECT_ACTIVE",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "H1-RPM-258 L3=함수의 성질; original RPM L4 항등함수·상수함수 is NOT semantic match. Crosswalk DIRECT_ACTIVE maps unrelated PT_SPECIAL_FUNCTION_PROPERTIES; actual user question and generated candidates are PT_FUNCTIONAL_EQUATION/TPL_FUNCTIONAL_EQUATION_ADDITIVE ACTIVE binding at H22-C2-07-FUNCTION_BASIC. GENERATED_ACTIVE EXT-L4 supplies exact decisive step.",
+        "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
+        "templateKey": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS",
+          "COND_FUNCTION_VALUE_CONSTRAINT",
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q09는 모든 실수에서의 함수 관계 f(x+y)를 대입하여 특정 함숫값을 복원하는 함수의 성질 L3; H1-RPM-258은 L3 비교 기준일 뿐 L4 항등함수·상수함수는 사용하지 않음.",
+          "l4": "GENERATED_ACTIVE EXT-PALMA25-Q09-ADDITIVE-VALUES의 결정단계: f(n)=3n(자연수), 3(n-1)>12→n>5; 3(n+2)≤30→n≤8; 3개. RPM 기존 L4로 잘못 채우지 않음.",
+          "pt": "PT_FUNCTIONAL_EQUATION ACTIVE: 모든 x,y의 함수 등식에 적절한 값을 대입하여 새 함수 관계·함숫값을 복원하는 핵심 풀이.",
+          "tpl": "TPL_FUNCTIONAL_EQUATION_ADDITIVE ACTIVE: f(n)=3n(자연수), 3(n-1)>12→n>5; 3(n+2)≤30→n≤8; 3개. C1/C3에는 xy correction을 포함하는 Generated L4로 명시.",
+          "cross": "주제 함수방정식 외 기초 정수·부호·일차식 연산/조건은 독립 CrossConcept로 이중 태깅하지 않음.",
+          "condition": "COND_UNIVERSAL_INPUTS, COND_FUNCTION_VALUE_CONSTRAINT, COND_NATURAL_NUMBER, COND_RANGE: f(n)=3n(자연수), 3(n-1)>12→n>5; 3(n+2)≤30→n≤8; 3개에서 모든 실수 조건, 주어진 함숫값, 자연수/범위(해당 시) 적용.",
+          "integration": "INTERDEPENDENT: f(n)=3n(자연수), 3(n-1)>12→n>5; 3(n+2)≤30→n≤8; 3개",
+          "learningLevel": "가법 함숫값의 정수배 식을 복원한 뒤 두 입력이 다른 부등식을 동시에 풀고 경계를 판정한다.",
+          "assessmentBucket": "엄격한 >와 ≤의 포함 차이, n-1과 n+2의 입력 이동, 자연수 개수까지 세 층의 오류 위험이 있다.",
+          "problemVisual": "원문의 모든 값·조건을 수식으로 충분히 제시하므로 별도 문제 그림은 중복이며 정답을 누설할 위험만 늘린다.",
+          "solutionVisual": "정수 범위 (5,8]의 열린 5, 닫힌 8, 실제 포함 6/7/8을 수직선 위에 놓으면 경계 판단을 즉시 이해.",
+          "curriculum": "공통수학2 함수의 뜻과 함수 관계식에 실수 대입, 중등 정수·음수·일차방정식 연산만 사용. 연속성 없는 가법함수 전체를 f(x)=cx로 단정하지 않고 요청 정수 입력의 값만 도출."
+        },
+        "rpmSemanticMatch": "L3_ONLY_L4_GAP"
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "공통수학2 함수의 뜻과 함수 관계식에 실수 대입, 중등 정수·음수·일차방정식 연산만 사용. 연속성 없는 가법함수 전체를 f(x)=cx로 단정하지 않고 요청 정수 입력의 값만 도출.",
+        "learningLevelReason": "가법 함숫값의 정수배 식을 복원한 뒤 두 입력이 다른 부등식을 동시에 풀고 경계를 판정한다.",
+        "assessmentDifficultyReason": "엄격한 >와 ≤의 포함 차이, n-1과 n+2의 입력 이동, 자연수 개수까지 세 층의 오류 위험이 있다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)$를 만족시키는 함수 $f$가 있다. $f(3)=9$이다. 자연수 $n$에 대하여 $f(n-1)>12$이고 $f(n+2)\\le30$일 때, 이를 만족시키는 $n$의 개수는?",
+          "requiredPrimaryL3Step": "f(n)=3n(자연수), 3(n-1)>12→n>5; 3(n+2)≤30→n≤8; 3개",
+          "naturalKorean": "모든 실수에서의 함수 등식·제시된 함숫값·학생이 구할 출력/개수가 발문에 전부 존재하고 불필요한 목표식이 없음",
+          "conditionSufficiency": "함수 관계와 자연수 조건, 두 엄격·비엄격 부등식이 독립으로 주어졌으며 n의 범위가 유일하게 정해진다.",
+          "shortcut": "원본 L3를 건너뛰는 출제자 의도 밖 우회 없음. 요구된 정수값만 유일하다고 주장하고 모든 실수의 함수꼴을 단정하지 않음",
+          "answerFromFinalStudentInput": "3",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "독립품질·실제 브라우저 미실행. 원본 exact sourceUid 미결속"
+        },
+        "wrongRoutes": {
+          "count": 4,
+          "indexSet": [
+            "①",
+            "③",
+            "④",
+            "⑤"
+          ],
+          "derivations": [
+            {
+              "index": "①",
+              "value": "2",
+              "errorCalculation": "상한의 등호를 버려 $n<8$로 잘못 풀면 $n=6,7$ 두 개이다."
+            },
+            {
+              "index": "③",
+              "value": "4",
+              "errorCalculation": "하한의 $>$를 $\\ge$로 바꾸면 $5\\le n\\le8$, 네 개이다."
+            },
+            {
+              "index": "④",
+              "value": "5",
+              "errorCalculation": "$f(n-1)>12$의 입력을 $n+1$로 잘못 읽으면 $3(n+1)>12$, $n>3$이므로 $n=4,5,6,7,8$ 다섯 개이다."
+            },
+            {
+              "index": "⑤",
+              "value": "8",
+              "errorCalculation": "첫째 부등식을 누락하면 자연수 $n\\le8$이므로 $1,2,\\dots,8$ 여덟 개이다."
+            }
+          ]
+        },
+        "mathEvidence": {
+          "method": "EXACT_INTEGER_RELATION_AND_BOUNDARY_ENUMERATION",
+          "expressionOrValues": "n in [1..30] s.t. 3(n-1)>12 and 3(n+2)<=30 => [6,7,8]",
+          "answer": "3",
+          "sourceEquationOnlyNotGlobalLinear": true,
+          "verifiedAs": "AUTHOR_MATH_CHECK"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "reason": "수식·부등식·입력값에 필요한 모든 정보가 있어 문제 그림이 필요 없음.",
+          "asset": null,
+          "actualBrowser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "BENEFICIAL",
+          "reason": "정수 범위 (5,8]의 열린 5, 닫힌 8, 실제 포함 6/7/8을 수직선 위에 놓으면 경계 판단을 즉시 이해.",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q09/C2-solution.svg",
+          "gitBlobSha": "3ec537a019324c79642247252281c37620262852",
+          "mathFacts": [
+            6,
+            7,
+            8
+          ],
+          "staticStatus": "AUTHOR_PRIMITIVE_DATA_PARITY_CHECKED",
+          "actualBrowser": "NOT_RUN"
+        }
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q09/C2-solution.svg",
+      "solutionImageAlt": "자연수 n이 5보다 크고 8 이하인 수직선",
+      "solutionImageCaption": "끝점 5를 제외하고 8을 포함하면 가능한 자연수는 세 개다.",
+      "solutionImageSize": "medium"
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-PALMA25-2FINAL-Q09-C3",
+      "sourceQid": 9,
+      "sourceUid": null,
+      "slot": "C3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "TYPE_BANK",
+      "level": "상",
+      "category": "함수방정식과 함숫값의 관계",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "함수",
+        "함수방정식",
+        "부등식",
+        "자연수"
+      ],
+      "wide": false,
+      "content": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)+xy$를 만족시키는 함수 $f$가 있다. $f(2)=7$일 때, $1\\le n\\le12$인 자연수 $n$ 중 $25\\le f(n)\\le52$가 성립하는 $n$의 개수는?",
+      "choices": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$",
+        "$8$"
+      ],
+      "answer": "③",
+      "solution": "$x=y=1$을 대입하면 $f(2)=2f(1)+1$이므로 $7=2f(1)+1$, $f(1)=3$이다.\n다음과 같이 $x=n$, $y=1$을 대입하면 $f(n+1)=f(n)+3+n$이다.\n$f(2)=7$, $f(3)=7+3+2=12$, $f(4)=12+3+3=18$이다.\n이어서 $f(5)=18+3+4=25$, $f(6)=25+3+5=33$,\n$f(7)=33+3+6=42$, $f(8)=42+3+7=52$, $f(9)=52+3+8=63$이다.\n자연수 $n\\ge1$에서 증가량 $3+n$이 양수이므로 $f(n)$은 $n$이 증가하면 계속 커진다.\n따라서 $25\\le f(n)\\le52$를 만족하는 $n$은 $5,6,7,8$로 네 개이고, $1\\le n\\le12$도 모두 만족한다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-258",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "함수의 성질",
+        "rpmL4": null,
+        "rpmL4RecordLabel": "항등함수·상수함수",
+        "rpmL4SemanticStatus": "L3_ONLY_EXISTING_L4_NOT_APPLICABLE",
+        "generatedExtL4Id": "EXT-PALMA25-Q09-BILINEAR-ADDITIVITY",
+        "generatedExtL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_BASIC/extension-l4/palma-2025-2final-q09-registry.json",
+        "rpmCrosswalkMappingStatus": "DIRECT_ACTIVE",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "H1-RPM-258 L3=함수의 성질; original RPM L4 항등함수·상수함수 is NOT semantic match. Crosswalk DIRECT_ACTIVE maps unrelated PT_SPECIAL_FUNCTION_PROPERTIES; actual user question and generated candidates are PT_FUNCTIONAL_EQUATION/TPL_FUNCTIONAL_EQUATION_ADDITIVE ACTIVE binding at H22-C2-07-FUNCTION_BASIC. GENERATED_ACTIVE EXT-L4 supplies exact decisive step.",
+        "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
+        "templateKey": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS",
+          "COND_FUNCTION_VALUE_CONSTRAINT",
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 5,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q09는 모든 실수에서의 함수 관계 f(x+y)를 대입하여 특정 함숫값을 복원하는 함수의 성질 L3; H1-RPM-258은 L3 비교 기준일 뿐 L4 항등함수·상수함수는 사용하지 않음.",
+          "l4": "GENERATED_ACTIVE EXT-PALMA25-Q09-BILINEAR-ADDITIVITY의 결정단계: f1=3, f(n+1)=f(n)+3+n → 18/25/33/42/52/63 → n5..8 총4. RPM 기존 L4로 잘못 채우지 않음.",
+          "pt": "PT_FUNCTIONAL_EQUATION ACTIVE: 모든 x,y의 함수 등식에 적절한 값을 대입하여 새 함수 관계·함숫값을 복원하는 핵심 풀이.",
+          "tpl": "TPL_FUNCTIONAL_EQUATION_ADDITIVE ACTIVE: f1=3, f(n+1)=f(n)+3+n → 18/25/33/42/52/63 → n5..8 총4. C1/C3에는 xy correction을 포함하는 Generated L4로 명시.",
+          "cross": "주제 함수방정식 외 기초 정수·부호·일차식 연산/조건은 독립 CrossConcept로 이중 태깅하지 않음.",
+          "condition": "COND_UNIVERSAL_INPUTS, COND_FUNCTION_VALUE_CONSTRAINT, COND_NATURAL_NUMBER, COND_RANGE: f1=3, f(n+1)=f(n)+3+n → 18/25/33/42/52/63 → n5..8 총4에서 모든 실수 조건, 주어진 함숫값, 자연수/범위(해당 시) 적용.",
+          "integration": "INTERDEPENDENT: f1=3, f(n+1)=f(n)+3+n → 18/25/33/42/52/63 → n5..8 총4",
+          "learningLevel": "가법 관계에 추가되는 xy 항에서 변화하는 점화 관계를 도출한 뒤 경계 f4/f5 및 f8/f9와 단조 증가를 함께 이용하여 구간 개수를 판정한다.",
+          "assessmentBucket": "원소별 계산뿐 아니라 f(2)→f(1) 역산, 증가량의 부호·양 경계 등호·누락 없는 개수 확인이 모두 필요하다.",
+          "problemVisual": "원문의 모든 값·조건을 수식으로 충분히 제시하므로 별도 문제 그림은 중복이며 정답을 누설할 위험만 늘린다.",
+          "solutionVisual": "표에서 f4=18, f5=25, f8=52, f9=63의 경계를 같은 수평 흐름에 표시해 함숫값 포함 판정을 명료하게 한다.",
+          "curriculum": "공통수학2 함수의 뜻과 함수 관계식에 실수 대입, 중등 정수·음수·일차방정식 연산만 사용. 연속성 없는 가법함수 전체를 f(x)=cx로 단정하지 않고 요청 정수 입력의 값만 도출."
+        },
+        "rpmSemanticMatch": "L3_ONLY_L4_GAP"
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "공통수학2 함수의 뜻과 함수 관계식에 실수 대입, 중등 정수·음수·일차방정식 연산만 사용. 연속성 없는 가법함수 전체를 f(x)=cx로 단정하지 않고 요청 정수 입력의 값만 도출.",
+        "learningLevelReason": "가법 관계에 추가되는 xy 항에서 변화하는 점화 관계를 도출한 뒤 경계 f4/f5 및 f8/f9와 단조 증가를 함께 이용하여 구간 개수를 판정한다.",
+        "assessmentDifficultyReason": "원소별 계산뿐 아니라 f(2)→f(1) 역산, 증가량의 부호·양 경계 등호·누락 없는 개수 확인이 모두 필요하다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)+f(y)+xy$를 만족시키는 함수 $f$가 있다. $f(2)=7$일 때, $1\\le n\\le12$인 자연수 $n$ 중 $25\\le f(n)\\le52$가 성립하는 $n$의 개수는?",
+          "requiredPrimaryL3Step": "f1=3, f(n+1)=f(n)+3+n → 18/25/33/42/52/63 → n5..8 총4",
+          "naturalKorean": "모든 실수에서의 함수 등식·제시된 함숫값·학생이 구할 출력/개수가 발문에 전부 존재하고 불필요한 목표식이 없음",
+          "conditionSufficiency": "1≤n≤12에서 양의 증가량 3+n으로 단조성을 확인하므로 5..8 이외의 해가 없고 두 경계의 포함이 완결된다.",
+          "shortcut": "원본 L3를 건너뛰는 출제자 의도 밖 우회 없음. 요구된 정수값만 유일하다고 주장하고 모든 실수의 함수꼴을 단정하지 않음",
+          "answerFromFinalStudentInput": "4",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "독립품질·실제 브라우저 미실행. 원본 exact sourceUid 미결속"
+        },
+        "wrongRoutes": {
+          "count": 4,
+          "indexSet": [
+            "①",
+            "②",
+            "④",
+            "⑤"
+          ],
+          "derivations": [
+            {
+              "index": "①",
+              "value": "2",
+              "errorCalculation": "양쪽 등호를 모두 빼면 $n=6,7$만 세어 두 개가 된다."
+            },
+            {
+              "index": "②",
+              "value": "3",
+              "errorCalculation": "위쪽 등호를 제외하고 $f(n)<52$로 풀면 $n=5,6,7$ 세 개이다."
+            },
+            {
+              "index": "④",
+              "value": "5",
+              "errorCalculation": "$f(5)=25$인 칸을 한 단계 앞인 $n=4$의 값으로 잘못 옮겨 적으면 $n=4,5,6,7,8$의 다섯 개를 센다."
+            },
+            {
+              "index": "⑤",
+              "value": "8",
+              "errorCalculation": "하한을 무시하고 $f(n)\\le52$만 적용하면 $n=1,\\ldots,8$ 여덟 개이다."
+            }
+          ]
+        },
+        "mathEvidence": {
+          "method": "EXACT_INTEGER_RELATION_AND_BOUNDARY_ENUMERATION",
+          "expressionOrValues": "f1=3; f2..f9=[7,12,18,25,33,42,52,63]; 25<=f(n)<=52 => n=[5,6,7,8]",
+          "answer": "4",
+          "sourceEquationOnlyNotGlobalLinear": true,
+          "verifiedAs": "AUTHOR_MATH_CHECK"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "reason": "수식·부등식·입력값에 필요한 모든 정보가 있어 문제 그림이 필요 없음.",
+          "asset": null,
+          "actualBrowser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "BENEFICIAL",
+          "reason": "표에서 f4=18, f5=25, f8=52, f9=63의 경계를 같은 수평 흐름에 표시해 함숫값 포함 판정을 명료하게 한다.",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q09/C3-solution.svg",
+          "gitBlobSha": "c9c61e1e4b52457d99080ce57b8b2842059a7e09",
+          "mathFacts": [
+            [
+              4,
+              18
+            ],
+            [
+              5,
+              25
+            ],
+            [
+              6,
+              33
+            ],
+            [
+              7,
+              42
+            ],
+            [
+              8,
+              52
+            ],
+            [
+              9,
+              63
+            ]
+          ],
+          "staticStatus": "AUTHOR_PRIMITIVE_DATA_PARITY_CHECKED",
+          "actualBrowser": "NOT_RUN"
+        }
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q09/C3-solution.svg",
+      "solutionImageAlt": "함숫값 f(4)부터 f(9)까지와 범위 조건을 표시한 표",
+      "solutionImageCaption": "25 이상 52 이하에 해당하는 n=5,6,7,8을 확인한다.",
+      "solutionImageSize": "medium"
+    }
+  ]
+}
