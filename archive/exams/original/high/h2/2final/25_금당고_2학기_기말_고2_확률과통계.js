@@ -19,7 +19,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] 두 사건이 서로 독립이면 $P(A \\cap B) = P(A) \\times P(B)$이다.\\n조건 정리: $P(A) = \\dfrac{3}{5}$, $P(B) = \\dfrac{1}{3}$, A와 B는 서로 독립.\\n풀이 방향: 독립의 정의를 직접 적용하여 교사건의 확률을 구한다.\\n정석 풀이: 두 사건 A, B가 서로 독립이므로\\n$P(A \\\\cap B) = P(A) \\times P(B) = \\dfrac{3}{5} \\times \\dfrac{1}{3} = \\dfrac{3}{15} = \\dfrac{1}{5}$\\n따라서 정답은 ①이다.",
+    "solution": "두 사건 $A$, $B$는 서로 독립이므로 교집합의 확률은 두 확률의 곱이다.\n$P(A\\cap B)=P(A)P(B)$\n$=\\dfrac35\\times\\dfrac13$\n$=\\dfrac3{15}=\\dfrac15$\n따라서 정답은 ①이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
@@ -64,11 +64,12 @@ window.questionBank = [
     ],
     "answer": "②",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] $E(X) = \\sum x \\cdot P(X=x)$를 직접 계산한다.\\n조건 정리: $P(X=0)=\\dfrac{125}{216}$, $P(X=1)=\\dfrac{75}{216}$, $P(X=2)=\\dfrac{15}{216}$, $P(X=3)=\\dfrac{1}{216}$.\\n풀이 방향: 기댓값 정의에 따라 각 값과 확률의 곱을 합산한다.\\n정석 풀이:\\n$E(X) = 0 \\times \\dfrac{125}{216} + 1 \\times \\dfrac{75}{216} + 2 \\times \\dfrac{15}{216} + 3 \\times \\dfrac{1}{216}$\\n$= \\dfrac{0 + 75 + 30 + 3}{216} = \\dfrac{108}{216} = \\dfrac{1}{2}$\\n따라서 정답은 ②이다.",
+    "solution": "확률변수의 기댓값은 각 값에 그 값이 나올 확률을 곱하여 모두 더한 것이다.\n먼저 확률의 합은 $\\dfrac{125+75+15+1}{216}=1$이다.\n$E(X)=0\\times\\dfrac{125}{216}+1\\times\\dfrac{75}{216}$\n$\\qquad+2\\times\\dfrac{15}{216}+3\\times\\dfrac1{216}$\n$=\\dfrac{75+30+3}{216}$\n$=\\dfrac{108}{216}=\\dfrac12$\n따라서 정답은 ②이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
-      "기출"
+      "기출",
+      "표"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -109,7 +110,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] 연속확률변수는 어떤 범위의 실수값을 연속적으로 취하는 확률변수이다.\\n조건 정리: 이산확률변수는 셀 수 있는 값을, 연속확률변수는 연속적인 구간의 실수값을 취한다.\\n풀이 방향: 각 보기의 값이 유한한 정수·자연수인지, 아니면 실수 구간에서 연속적으로 정해지는지 판단한다.\\n정석 풀이: ①은 1~12월 중 하나이므로 이산. ②는 1~6 중 하나이므로 이산. ③은 0~10 중 정수이므로 이산. ④는 자연수 값이므로 이산. ⑤는 귀향 시간이 양의 실수 구간 $(0, \\infty)$에서 연속적으로 결정되므로 연속확률변수이다.\\n따라서 정답은 ⑤이다.",
+    "solution": "연속확률변수는 일정한 구간에 있는 실수값을 연속적으로 가질 수 있는 확률변수이다.\n① 태어난 달: $1$월부터 $12$월까지의 정해진 값이다.\n② 주사위의 눈: $1,2,3,4,5,6$ 중 하나이다.\n③ 비긴 횟수: $0$회부터 $10$회까지의 정수이다.\n④ 하루 출생아 수: $0$ 이상의 정수이다.\n⑤ 귀향에 걸리는 시간: 예를 들어 $4.2$시간, $4.25$시간처럼 시간의 값이 연속적으로 달라질 수 있다.\n따라서 연속확률변수는 ⑤이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
@@ -154,7 +155,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] 이항분포 $B(n, p)$의 평균·분산·표준편차 공식을 적용한다.\\n조건 정리: $X \\\\sim B\\left(18, \\dfrac{1}{3}\\right)$, $n=18$, $p=\\dfrac{1}{3}$, $q=\\dfrac{2}{3}$.\\n풀이 방향: 이항분포 공식 $E(X)=np$, $V(X)=npq$, $\\\\sigma(X)=\\sqrt{npq}$를 대입하여 각각 구한 뒤 합산한다.\\n정석 풀이:\\n$E(X) = np = 18 \\times \\dfrac{1}{3} = 6$\\n$V(X) = npq = 18 \\times \\dfrac{1}{3} \\times \\dfrac{2}{3} = 4$\\n$\\\\sigma(X) = \\sqrt{V(X)} = \\sqrt{4} = 2$\\n따라서 $E(X) + V(X) + \\\\sigma(X) = 6 + 4 + 2 = 12$이다.\\n따라서 정답은 ③이다.",
+    "solution": "$X\\sim B(18,\\dfrac13)$이므로 시행 횟수는 $n=18$, 성공확률은 $p=\\dfrac13$이다.\n이항분포의 평균은 $np$, 분산은 $np(1-p)$, 표준편차는 분산의 양의 제곱근이다.\n$E(X)=18\\times\\dfrac13=6$\n$V(X)=18\\times\\dfrac13\\times\\dfrac23=4$\n$\\sigma(X)=\\sqrt{V(X)}=\\sqrt4=2$\n따라서\n$E(X)+V(X)+\\sigma(X)=6+4+2=12$\n따라서 정답은 ③이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
@@ -199,7 +200,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "answerStatus": "direct_solved_round13",
-    "solution": "[키포인트] $V(aX+b)=a^2 V(X)$이고 $E(aX+b)=aE(X)+b$임을 이용한다.\\n조건 정리: $E(X)=30$, $V(X)=5$, $E(Y)=75$, $V(Y)=45$, $a>0$.\\n풀이 방향: 분산 공식으로 $a$를 먼저 구하고, 기댓값 공식으로 $b$를 구한다.\\n정석 풀이:\\n분산 조건: $V(Y) = a^2 V(X)$이므로\\n$45 = a^2 \\times 5$, $a^2 = 9$. $a > 0$이므로 $a = 3$이다.\\n기댓값 조건: $E(Y) = aE(X) + b$이므로\\n$75 = 3 \\times 30 + b = 90 + b$, $b = -15$.\\n따라서 $a - b = 3 - (-15) = 18$이다.\\n따라서 정답은 ④이다.",
+    "solution": "$Y=aX+b$에서 평균은 $a$배 한 뒤 $b$를 더하고, 분산은 $a^2$배가 된다.\n$V(Y)=a^2V(X)$\n$45=5a^2\\;\\Rightarrow\\;a^2=9$\n$a>0$이므로 $a=3$이다.\n$E(Y)=aE(X)+b$\n$75=3\\times30+b$\n$75=90+b\\;\\Rightarrow\\;b=-15$\n따라서 $a-b=3-(-15)=18$이므로 정답은 ④이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "round13_continue_to_zero_completed",
     "tags": [
@@ -244,11 +245,12 @@ window.questionBank = [
     ],
     "answer": "②",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] 조건부확률 공식 $P(2학년 | 이용경험 있음) = \\dfrac{P(2학년 \\\\cap 이용경험 있음)}{P(이용경험 있음)}$을 이용한다.\\n조건 정리: 전체 150명, 1학년 중 이용경험 '있음' 비율이 30%, 1학년 이용경험 '있음' 인원 24명, 2학년 이용경험 '없음' 49명.\\n풀이 방향: 표의 빈칸을 채운 뒤 조건부확률을 계산한다.\\n정석 풀이:\\n1학년 이용경험 '있음'이 24명이고 이것이 1학년 전체의 30%이므로,\\n1학년 전체 = $24 \\div 0.3 = 80$명.\\n따라서 2학년 전체 = $150 - 80 = 70$명.\\n1학년 이용경험 '없음' = $80 - 24 = 56$명.\\n2학년 이용경험 '없음' = 49명이므로, 2학년 이용경험 '있음' = $70 - 49 = 21$명.\\n이용경험 '있음' 전체 = $24 + 21 = 45$명.\\n구하는 조건부확률은\\n$P = \\dfrac{21}{45} = \\dfrac{7}{15}$\\n따라서 정답은 ②이다.",
+    "solution": "1학년에서 이용 경험이 있는 $24$명이 1학년 전체의 $30\\%$이므로\n$1$학년 전체 인원 $=\\dfrac{24}{0.3}=80$명이다.\n$2$학년 전체 인원 $=150-80=70$명이고,\n$2$학년 중 이용 경험이 있는 인원 $=70-49=21$명이다.\n따라서 이용 경험이 있는 학생은 모두 $24+21=45$명이다.\n이용 경험이 있다는 조건에서 $2$학년일 확률은\n$P=\\dfrac{21}{45}=\\dfrac7{15}$\n따라서 정답은 ②이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
-      "기출"
+      "기출",
+      "표"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -266,7 +268,7 @@ window.questionBank = [
     "unitInferStatus": "content_keyword",
     "sourceDisplayNoLabel": "6",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -291,11 +293,16 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] 확률밀도함수의 그래프 아래 전체 넓이가 1이라는 조건을 이용한다.\\n조건 정리: 그래프는 $(0,0)$에서 $(3,h)$까지 직선으로 증가하고, $3 \\le x \\le 5$에서 높이 $h$로 일정하며, $(5,h)$에서 $(6,0)$까지 직선으로 감소한다.\\n풀이 방향: 전체 넓이로 $h$를 구한 뒤 $P(0 \\le X \\le 2)$를 구해 여사건으로 계산한다.\\n정석 풀이: 그래프 아래 전체 넓이는 삼각형, 직사각형, 삼각형의 넓이의 합이므로\\n$\\dfrac{1}{2}\\cdot 3h+2h+\\dfrac{1}{2}\\cdot h=4h=1$\\n따라서 $h=\\dfrac{1}{4}$이다.\\n$0 \\le x \\le 3$에서는 직선으로 증가하므로 $x=2$에서의 높이는 $\\dfrac{2}{3}h=\\dfrac{1}{6}$이다. 따라서\\n$P(0 \\le X \\le 2)=\\dfrac{1}{2}\\cdot 2\\cdot \\dfrac{1}{6}=\\dfrac{1}{6}$\\n이므로\\n$P(2 \\le X \\le 6)=1-\\dfrac{1}{6}=\\dfrac{5}{6}$\\n따라서 정답은 ⑤이다.",
+    "solution": "확률밀도함수의 그래프 아래 전체 넓이는 $1$이다.\n그래프는 $0$부터 $3$까지 삼각형, $3$부터 $5$까지 직사각형, $5$부터 $6$까지 삼각형이다.\n전체 넓이를 높이 $k$로 나타내면\n$\\dfrac12\\times3k+2k+\\dfrac12\\times k=1$\n$4k=1\\;\\Rightarrow\\;k=\\dfrac14$\n$0\\le x\\le3$에서 그래프는 직선이므로 $x=2$의 높이는\n$f(2)=\\dfrac23k=\\dfrac16$이다.\n따라서 $0\\le X\\le2$에 해당하는 삼각형의 넓이는\n$P(0\\le X\\le2)=\\dfrac12\\times2\\times\\dfrac16=\\dfrac16$\n연속확률변수에서 한 점의 확률은 $0$이므로, 여사건을 이용하면\n$P(2\\le X\\le6)=1-\\dfrac16=\\dfrac56$\n따라서 정답은 ⑤이다.",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q07-solution.svg",
+    "solutionImageAlt": "확률밀도함수 그래프의 2부터 6까지의 색칠된 넓이는 5/6, 0부터 2까지의 삼각형 넓이는 1/6",
+    "solutionImageCaption": "전체 넓이는 1이고, 색칠한 2 이상 6 이하 구간의 넓이는 5/6",
+    "solutionImageSize": "full",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
-      "기출"
+      "기출",
+      "그래프"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -336,11 +343,16 @@ window.questionBank = [
     ],
     "answer": "④",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] 정규분포 $N(40, 16)$에서 구간 $[a-1, a+3]$의 확률이 최대가 되려면 구간의 중심이 평균 40에 가장 가까워야 한다.\\n조건 정리: $X \\\\sim N(40, 16)$, 즉 평균 $\\\\mu=40$, 분산 $\\\\sigma^2=16$, $\\\\sigma=4$.\\n풀이 방향: 정규분포는 평균을 중심으로 대칭이므로, 고정된 길이의 구간 $[a-1, a+3]$의 확률은 구간의 중점이 평균 40에 가장 가까울 때 최대이다.\\n정석 풀이:\\n구간 $[a-1, a+3]$의 중점은 $\\dfrac{(a-1)+(a+3)}{2} = a+1$이다.\\n확률이 최대가 되려면 구간의 중점 $a+1$이 평균 $\\\\mu=40$과 일치해야 하므로,\\n$a+1 = 40$, 즉 $a = 39$이다.\\n따라서 정답은 ④이다.",
+    "solution": "정규분포 $N(40,16)$은 평균 $40$을 중심으로 대칭이고, 평균에 가까울수록 확률밀도함수의 높이가 크다.\n길이가 일정한 구간의 확률이 최대가 되려면 구간을 평균의 양쪽에 대칭으로 놓아야 한다.\n주어진 구간 $[a-1,a+3]$의 길이는\n$(a+3)-(a-1)=4$이다.\n이 구간의 가운데 값이 평균 $40$이 되어야 하므로\n$\\dfrac{(a-1)+(a+3)}2=40$\n$a+1=40\\;\\Rightarrow\\;a=39$\n이때 구간은 $[38,42]$로 평균 $40$을 중심으로 대칭이다.\n따라서 정답은 ④이다.",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q08-solution.svg",
+    "solutionImageAlt": "평균 40을 중심으로 38부터 42까지 대칭으로 잡은 구간",
+    "solutionImageCaption": "길이가 같은 구간은 평균 40을 중심으로 놓을 때 확률이 최대",
+    "solutionImageSize": "full",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
-      "기출"
+      "기출",
+      "그래프"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -381,7 +393,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] 신뢰도 99% 신뢰구간의 길이 공식 $l = 2 \\times 2.58 \\times \\dfrac{\\\\sigma}{\\sqrt{n}}$을 이용한다.\\n조건 정리: 모표준편차 $\\\\sigma=0.5$, 신뢰도 99%이므로 $z_{0.005}=2.58$, $l \\le 0.129$.\\n풀이 방향: 신뢰구간의 길이 공식에 대입하여 $n$의 범위를 구한 뒤 최솟값을 찾는다.\\n정석 풀이:\\n신뢰도 99%의 신뢰구간의 길이는\\n$l = 2 \\times 2.58 \\times \\dfrac{0.5}{\\sqrt{n}} = \\dfrac{2.58}{\\sqrt{n}}$\\n$l \\le 0.129$ 조건:\\n$\\dfrac{2.58}{\\sqrt{n}} \\le 0.129$\\n$\\sqrt{n} \\ge \\dfrac{2.58}{0.129} = 20$\\n$n \\ge 400$\\n$n$은 자연수이므로 최솟값은 $n = 400$이다.\\n따라서 정답은 ③이다.",
+    "solution": "모표준편차 $\\sigma=0.5$를 알고 있으므로 신뢰도 $99\\%$인 모평균의 신뢰구간은 표본평균을 중심으로 양쪽에 $2.58\\dfrac{\\sigma}{\\sqrt n}$만큼 벌어진다.\n따라서 신뢰구간의 전체 길이는\n$l=2\\times2.58\\times\\dfrac{0.5}{\\sqrt n}$\n$=\\dfrac{2.58}{\\sqrt n}$\n주어진 길이 조건을 적용하면\n$\\dfrac{2.58}{\\sqrt n}\\le0.129$\n$\\sqrt n\\ge\\dfrac{2.58}{0.129}=20$\n$n\\ge400$\n$n$은 자연수이므로 최솟값은 $400$이다.\n따라서 정답은 ③이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
@@ -403,7 +415,7 @@ window.questionBank = [
     "unitInferStatus": "content_keyword",
     "sourceDisplayNoLabel": "9",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -426,7 +438,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] 베이즈 정리(조건부확률)를 이용하여 불량품이 주어졌을 때 B공장 생산 확률을 구한다.\\n조건 정리: $P(A공장)=0.45$, $P(B공장)=0.55$, $P(불량|A)=0.03$, $P(불량|B)=0.06$.\\n풀이 방향: $P(불량)$을 전확률 공식으로 구한 뒤 $P(B|불량)$을 계산한다.\\n정석 풀이:\\n$P(불량) = P(A) \\times P(불량|A) + P(B) \\times P(불량|B)$\\n$= 0.45 \\times 0.03 + 0.55 \\times 0.06$\\n$= 0.0135 + 0.033 = 0.0465$\\n$P(B|불량) = \\dfrac{P(B) \\times P(불량|B)}{P(불량)} = \\dfrac{0.55 \\times 0.06}{0.0465} = \\dfrac{0.033}{0.0465}$\\n분자·분모에 $\\dfrac{1000}{15}$를 곱하면: $\\dfrac{0.033}{0.0465} = \\dfrac{33}{46.5} = \\dfrac{66}{93} = \\dfrac{22}{31}$\\n따라서 정답은 ⑤이다.",
+    "solution": "불량품을 받았다는 조건에서 B공장 제품일 확률을 구한다.\n불량품을 받는 사건을 $D$라 하자. 불량품이 발생하는 경우는 A공장 제품이 불량이거나 B공장 제품이 불량인 두 경우이다.\n$P(D)=0.45\\times0.03+0.55\\times0.06$\n$=0.0135+0.033=0.0465$\n이 중 B공장에서 생산된 불량품의 확률은\n$0.55\\times0.06=0.033$이다.\n따라서 구하는 조건부확률은\n$P(B\\mid D)=\\dfrac{0.033}{0.0465}$\n$=\\dfrac{330}{465}=\\dfrac{22}{31}$\n따라서 정답은 ⑤이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
@@ -448,7 +460,7 @@ window.questionBank = [
     "unitInferStatus": "content_keyword",
     "sourceDisplayNoLabel": "10",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -471,7 +483,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "answerStatus": "direct_solved_round13",
-    "solution": "[키포인트] 상위 $\\dfrac{160}{1000}=16\\\\%$에 해당하는 점수가 합격 최저선이다.\\n조건 정리: $X \\\\sim N(320, 25^2)$, 합격 인원 160명, 전체 1000명.\\n풀이 방향: 합격률 0.16을 표준정규분포표에서 대응하는 $z$값으로 변환한 뒤 점수를 구한다.\\n정석 풀이:\\n상위 $\\dfrac{160}{1000} = 0.16 = 16\\\\%$이어야 합격이므로, 합격 최저 점수를 $a$라 하면\\n$P(X \\ge a) = 0.16$이다.\\n$P(X \\ge a) = P\\left(Z \\ge \\dfrac{a-320}{25}\\right) = 0.16$\\n$P(0 \\le Z \\le 1) = 0.34$이므로 $P(Z \\ge 1) = 0.5 - 0.34 = 0.16$.\\n따라서 $\\dfrac{a-320}{25} = 1$이고, $a = 320 + 25 = 345$점이다.\\n따라서 정답은 ①이다.",
+    "solution": "지원자 $1000$명 중 $160$명만 합격하므로 합격자는 상위 $16\\%$이다.\n합격 최저 점수를 $a$점이라 하면\n$P(X\\ge a)=\\dfrac{160}{1000}=0.16$\n표준정규분포표에서\n$P(Z\\ge1)=0.5-0.34=0.16$\n점수 $X$의 평균이 $320$, 표준편차가 $25$이므로\n$P\\left(Z\\ge\\dfrac{a-320}{25}\\right)=0.16$\n$\\dfrac{a-320}{25}=1$\n$a-320=25\\;\\Rightarrow\\;a=345$\n따라서 정답은 ①이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "round13_continue_to_zero_completed",
     "tags": [
@@ -482,7 +494,7 @@ window.questionBank = [
       "OCR-based content fill; verify against source image before live archive promotion."
     ],
     "level": "중",
-    "category": "통계적 추정",
+    "category": "확률분포",
     "originalCategory": "통계적 추정",
     "standardUnitKey": "H15-PS-05",
     "standardUnit": "확률분포",
@@ -516,7 +528,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "answerStatus": "direct_solved_round13",
-    "solution": "[키포인트] 장난감 4개의 합계 무게의 분포를 구한 뒤 불량률을 계산하고, 이항분포를 정규분포로 근사하여 $x$를 구한다.\\n조건 정리: 장난감 1개의 무게 $W_i \\\\sim N(30, 5^2)$, 한 상자 무게 $S = W_1+W_2+W_3+W_4$, 불량 기준 $S \\le 100$.\\n풀이 방향: $S$의 분포 → 불량률 $p$ → 이항분포 $B(2500, p)$를 정규분포로 근사 → $P(Y \\ge x)=0.02$.\\n정석 풀이:\\n$E(S) = 4 \\times 30 = 120$g, $V(S) = 4 \\times 25 = 100$, $\\\\sigma(S) = 10$g이므로 $S \\\\sim N(120, 10^2)$.\\n불량률: $P(S \\le 100) = P\\left(Z \\le \\dfrac{100-120}{10}\\right) = P(Z \\le -2) = 0.5 - 0.48 = 0.02$\\n2500상자에서 불량품 수를 $Y$라 하면 $Y \\\\sim B(2500, 0.02)$.\\n$E(Y) = 2500 \\times 0.02 = 50$, $V(Y) = 2500 \\times 0.02 \\times 0.98 = 49$, $\\\\sigma(Y) = 7$.\\n$Y$를 정규분포 $N(50, 7^2)$으로 근사한다.\\n$P(Y \\ge x) = 0.02$이므로\\n$P\\left(Z \\ge \\dfrac{x-50}{7}\\right) = 0.02$\\n$P(Z \\ge 2) = 0.5 - 0.48 = 0.02$이므로 $\\dfrac{x-50}{7} = 2$.\\n$x = 50 + 14 = 64$.\\n따라서 정답은 ②이다.",
+    "solution": "장난감 $4$개의 무게가 서로 독립으로 추출되므로 한 상자의 무게 $S$는 합의 정규분포를 따른다.\n$E(S)=4\\times30=120$\n$V(S)=4\\times5^2=100$\n$\\sigma(S)=10$\n따라서 $S\\sim N(120,10^2)$이다.\n상자 무게가 $100$g 이하일 확률은\n$P(S\\le100)=P\\left(Z\\le\\dfrac{100-120}{10}\\right)$\n$=P(Z\\le-2)=0.5-0.48=0.02$\n$2500$상자 중 불량품 수를 $Y$라 하면\n$Y\\sim B(2500,0.02)$이다.\n$E(Y)=2500\\times0.02=50$\n$V(Y)=2500\\times0.02\\times0.98=49$\n$\\sigma(Y)=7$\n시행 횟수가 크므로 이항분포를 정규분포 $N(50,7^2)$으로 근사한다.\n$P(Y\\ge x)\\approx P\\left(Z\\ge\\dfrac{x-50}{7}\\right)=0.02$\n$P(Z\\ge2)=0.5-0.48=0.02$이므로\n$\\dfrac{x-50}{7}=2$\n$x=50+14=64$\n따라서 정답은 ②이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "round13_continue_to_zero_completed",
     "tags": [
@@ -527,7 +539,7 @@ window.questionBank = [
       "OCR-based content fill; verify against source image before live archive promotion."
     ],
     "level": "상",
-    "category": "통계적 추정",
+    "category": "확률분포",
     "originalCategory": "통계적 추정",
     "standardUnitKey": "H15-PS-05",
     "standardUnit": "확률분포",
@@ -561,11 +573,17 @@ window.questionBank = [
     ],
     "answer": "③",
     "answerStatus": "direct_solved_round13",
-    "solution": "[키포인트] 두 상자의 가격 합이 40000원이 되려면 A, B 모두 정가(20000원) 판매되어야 한다.\\n조건 정리: A상자 크림빵 무게 $\\\\sim N(22, 4^2)$, B상자 $\\\\sim N(21, 2^2)$. 표본 크기 $n=4$. 표본평균 $\\ge 20$이면 정가 판매.\\n풀이 방향: 각 상자의 표본평균 분포를 구하고, 두 상자 모두 정가 판매될 확률을 독립사건의 곱으로 계산한다.\\n정석 풀이:\\nA상자: 표본평균 $\\bar{X}_A \\\\sim N\\left(22, \\dfrac{4^2}{4}\\right) = N(22, 4)$, $\\\\sigma_{\\bar{X}_A} = 2$.\\n$P(\\bar{X}_A \\ge 20) = P\\left(Z \\ge \\dfrac{20-22}{2}\\right) = P(Z \\ge -1) = 0.5 + 0.34 = 0.84$\nB상자: 표본평균 $\\bar{X}_B \\\\sim N\\left(21, \\dfrac{2^2}{4}\\right) = N(21, 1)$, $\\\\sigma_{\\bar{X}_B} = 1$.\\n$P(\\bar{X}_B \\ge 20) = P\\left(Z \\ge \\dfrac{20-21}{1}\\right) = P(Z \\ge -1) = 0.5 + 0.34 = 0.84$\\n두 상자의 판매 가격이 독립이므로, 합이 40000원일 확률은\\n$0.84 \\times 0.84 = 0.7056$\\n따라서 정답은 ③이다.",
+    "solution": "두 상자의 판매가격 합이 $40000$원이 되려면 A상자와 B상자가 모두 $20000$원에 팔려야 한다.\n표본 크기가 $4$이므로 표본평균의 표준편차는 원래 표준편차의 $\\sqrt4=2$분의 $1$이다.\nA상자의 표본평균을 $\\overline X_A$라 하면\n$\\overline X_A\\sim N\\left(22,\\dfrac{4^2}{4}\\right)=N(22,2^2)$\n$P(\\overline X_A\\ge20)=P\\left(Z\\ge\\dfrac{20-22}{2}\\right)$\n$=P(Z\\ge-1)=0.5+0.34=0.84$\nB상자의 표본평균을 $\\overline X_B$라 하면\n$\\overline X_B\\sim N\\left(21,\\dfrac{2^2}{4}\\right)=N(21,1^2)$\n$P(\\overline X_B\\ge20)=P\\left(Z\\ge\\dfrac{20-21}{1}\\right)$\n$=P(Z\\ge-1)=0.5+0.34=0.84$\n서로 다른 상자에서 각각 독립적으로 표본을 추출하므로 두 상자가 모두 정가에 팔릴 확률은 각 확률의 곱이다.\n$P=0.84\\times0.84=0.7056$\n따라서 정답은 ③이다.",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "두 상자 표본평균의 정가 판매 경계는 표준정규분포에서 동일하게 마이너스 1이며 오른쪽 확률은 각각 0.84",
+    "solutionImageCaption": "A와 B의 정가 판매 조건 모두 Z가 -1 이상인 사건",
+    "solutionImageSize": "full",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "round13_continue_to_zero_completed",
     "tags": [
-      "기출"
+      "기출",
+      "표",
+      "그래프"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -583,7 +601,7 @@ window.questionBank = [
     "unitInferStatus": "term_default",
     "sourceDisplayNoLabel": "13",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -606,7 +624,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] 비복원추출로 세 수를 뽑아 $Y_1$, $Y_2$ 점수를 각각 구하고 $V(X) = V(Y_1 + Y_2)$를 계산한다.\\n조건 정리: 1~4 공 비복원추출 3회. $Y_k$는 $a_k+a_{k+1}$의 점수(5의 배수→2점, 2의 배수→1점, 그 외→0점). $X = Y_1 + Y_2$.\\n풀이 방향: 24가지 순열 $(a_1, a_2, a_3)$에 대해 $X$의 분포를 구하고 $V(X)$를 계산한다.\\n정석 풀이:\\n비복원추출로 1~4에서 3개를 순서 있게 뽑는 경우의 수: $_4P_3 = 24$.\\n각 순열에 대해 점수를 계산하면 $X=1$인 경우 8가지, $X=2$인 경우 8가지, $X=3$인 경우 8가지이다.\\n따라서 $P(X=1)=P(X=2)=P(X=3)=\\dfrac{1}{3}$.\\n$E(X) = 1 \\times \\dfrac{1}{3} + 2 \\times \\dfrac{1}{3} + 3 \\times \\dfrac{1}{3} = \\dfrac{6}{3} = 2$\\n$E(X^2) = 1^2 \\times \\dfrac{1}{3} + 2^2 \\times \\dfrac{1}{3} + 3^2 \\times \\dfrac{1}{3} = \\dfrac{1+4+9}{3} = \\dfrac{14}{3}$\\n$V(X) = E(X^2) - \\{E(X)\\}^2 = \\dfrac{14}{3} - 4 = \\dfrac{14-12}{3} = \\dfrac{2}{3}$\\n따라서 정답은 ④이다.",
+    "solution": "세 공을 순서 있게 비복원추출하므로 전체 경우의 수는\n$\\,{}_4P_3=4\\times3\\times2=24$이다.\n두 이웃한 공의 숫자 합은 $3$부터 $7$ 사이이다.\n그 합이 짝수이면 $1$점, $5$이면 $2$점, 나머지는 $0$점을 얻는다. 두 조건이 동시에 성립하는 합은 없다.\n가운데 공 $a_2$를 하나 고정하자.\n남은 $3$개 공과 $a_2$가 만드는 점수는 언제나 $0,1,2$가 각각 한 번씩 나온다.\n예를 들어 $a_2=1$이면 이웃 공이 $2,3,4$일 때 점수는 차례로 $0,1,2$이다.\n첫째·셋째 공은 서로 다른 두 공이므로 이 세 점수에서 서로 다른 두 개를 순서 있게 고른다.\n$X=1$: $0+1$ 또는 $1+0$ → $2$가지\n$X=2$: $0+2$ 또는 $2+0$ → $2$가지\n$X=3$: $1+2$ 또는 $2+1$ → $2$가지\n가운데 공은 $4$가지이므로 각 값은 $4\\times2=8$가지씩이다.\n$P(X=1)=P(X=2)=P(X=3)=\\dfrac8{24}=\\dfrac13$\n$E(X)=\\dfrac{1+2+3}{3}=2$\n$E(X^2)=\\dfrac{1^2+2^2+3^2}{3}=\\dfrac{14}{3}$\n$V(X)=E(X^2)-\\{E(X)\\}^2$\n$=\\dfrac{14}{3}-2^2=\\dfrac23$\n따라서 정답은 ④이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
@@ -651,11 +669,12 @@ window.questionBank = [
     ],
     "answer": "①",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] $f(24)=g(28)$과 $\\\\sigma_1=\\\\sigma_2$에서 $X, Y$의 평균 관계를 파악한 뒤 조건 (가), (나)로 $m_1, m_2, \\\\sigma$를 구한다.\\n조건 정리: $\\\\sigma_1=\\\\sigma_2=\\\\sigma$. $f(24)=g(28)$은 $x=24$가 $X$ 분포에서 $x=28$이 $Y$ 분포에서 동일 확률밀도를 가짐을 의미한다.\\n풀이 방향: 대칭 구조에서 $24-m_1 = m_2-28$을 도출하고, 조건 (가)로 $\\\\sigma$를 결정한다.\\n정석 풀이:\\n정규분포의 대칭성에 의해 $f(24)=g(28)$이면\\n$|24-m_1| = |28-m_2|$.\\n(가) 조건에서 $P(m_1 \\le X \\le 24) + P(28 \\le Y \\le m_2) = 0.9544$이고,\\n좌변의 두 항은 각각 $P\\left(0 \\le Z \\le \\dfrac{24-m_1}{\\\\sigma}\\right)$의 형태이며 대칭이므로\\n각각 $0.4772$이다. 따라서 $\\dfrac{24-m_1}{\\\\sigma}=2$와 $\\dfrac{m_2-28}{\\\\sigma}=2$이다.\\n즉, $24-m_1 = 2\\\\sigma$, $m_2-28 = 2\\\\sigma$이므로 $m_1 = 24-2\\\\sigma$, $m_2 = 28+2\\\\sigma$.\\n(나) 조건: $P(Y \\ge 36) = 1-P(X \\le 24)=P(X \\ge 24)$.\\n$P(X \\ge 24) = P\\left(Z \\ge \\dfrac{24-m_1}{\\\\sigma}\\right) = P(Z \\ge 2) = 0.0228$.\\n$P(Y \\ge 36) = P\\left(Z \\ge \\dfrac{36-m_2}{\\\\sigma}\\right) = 0.0228$이므로 $\\dfrac{36-m_2}{\\\\sigma} = 2$.\\n$36-m_2 = 2\\\\sigma$이고 $m_2 = 28+2\\\\sigma$이므로 $36-(28+2\\\\sigma)=2\\\\sigma$, $8=4\\\\sigma$, $\\\\sigma=2$.\\n따라서 $m_1 = 24 - 4 = 20$, $m_2 = 28 + 4 = 32$.\\n구하는 확률:\\n$P(17 \\le X \\le 21) = P\\left(\\dfrac{17-20}{2} \\le Z \\le \\dfrac{21-20}{2}\\right) = P(-1.5 \\le Z \\le 0.5)$\\n$= P(0 \\le Z \\le 1.5) + P(0 \\le Z \\le 0.5) = 0.4332 + 0.1915 = 0.6247$\\n따라서 정답은 ①이다.",
+    "solution": "두 정규분포의 표준편차가 같으므로 $\\sigma_1=\\sigma_2=\\sigma$라 놓는다.\n두 밀도함수의 높이가 $f(24)=g(28)$이므로 두 값이 각 평균에서 떨어진 거리는 같다.\n(가)의 확률이 양수이고 두 확률의 합이 $0.9544$이므로 $m_1<24$, $28<m_2$이다.\n따라서 $24-m_1=m_2-28$이다.\n표준화하면 (가)의 두 확률은 서로 같은 값이므로 각각\n$\\dfrac{0.9544}{2}=0.4772$이다.\n$P(0\\le Z\\le2)=0.4772$이므로\n$\\dfrac{24-m_1}{\\sigma}=2,\\qquad\\dfrac{m_2-28}{\\sigma}=2$\n$m_1=24-2\\sigma,\\qquad m_2=28+2\\sigma$\n이제 (나)를 적용한다.\n$P(Y\\ge36)=1-P(X\\le24)=P(X\\ge24)=P(Z\\ge2)$\n정규분포의 대칭성과 같은 꼬리확률이므로\n$\\dfrac{36-m_2}{\\sigma}=2$\n$36-(28+2\\sigma)=2\\sigma$\n$8=4\\sigma\\;\\Rightarrow\\;\\sigma=2$\n$m_1=24-4=20,\\quad m_2=28+4=32$\n따라서 $X\\sim N(20,2^2)$이다.\n$P(17\\le X\\le21)=P\\left(\\dfrac{17-20}{2}\\le Z\\le\\dfrac{21-20}{2}\\right)$\n$=P(-1.5\\le Z\\le0.5)$\n$=0.4332+0.1915=0.6247$\n따라서 정답은 ①이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
-      "기출"
+      "기출",
+      "표"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -692,11 +711,12 @@ window.questionBank = [
     "choices": [],
     "answer": "5/16",
     "answerStatus": "direct_solved_round12_meitner",
-    "solution": "[키포인트] 소수가 나온 횟수를 $k$로 놓고, 최종 위치가 5가 되는 $k$를 찾는다.\\n조건 정리: 주사위에서 소수는 2, 3, 5이므로 $P(소수)=\\dfrac{3}{6}=\\dfrac{1}{2}$. 5번 시행 중 소수 $k$회, 비소수 $(5-k)$회 이동.\\n풀이 방향: 최종 위치 $3k - 2(5-k) = 5$가 되는 $k$를 구한 뒤 이항확률을 계산한다.\\n정석 풀이:\\n최종 위치: $3k - 2(5-k) = 3k - 10 + 2k = 5k - 10$.\\n$5k - 10 = 5$이므로 $k = 3$.\\n소수가 정확히 3번 나올 확률:\\n$P = \\\\binom{5}{3} \\left(\\dfrac{1}{2}\\right)^3 \\left(\\dfrac{1}{2}\\right)^2 = \\\\binom{5}{3} \\left(\\dfrac{1}{2}\\right)^5 = 10 \\times \\dfrac{1}{32} = \\dfrac{10}{32} = \\dfrac{5}{16}$\\n따라서 구하는 값은 $\\dfrac{5}{16}$이다.",
+    "solution": "주사위의 눈 중 소수는 $2,3,5$로 $3$개이므로 소수가 나올 확률은\n$p=\\dfrac36=\\dfrac12$이다.\n나머지 $1,4,6$이 나올 확률도 $\\dfrac12$이다.\n소수가 나온 횟수를 $k$라 하면 오른쪽으로 $3k$, 왼쪽으로 $2(5-k)$만큼 이동한다.\n출발점 $0$에서 도착점 $5$로 이동하므로\n$3k-2(5-k)=5$\n$3k-10+2k=5$\n$5k=15\\;\\Rightarrow\\;k=3$\n즉 소수가 $3$회, 소수가 아닌 눈이 $2$회 나와야 한다.\n서로 독립인 $5$번의 시행에서 소수가 나오는 횟수는 $B(5,\\dfrac12)$를 따른다.\n$P(k=3)={}_5C_3\\left(\\dfrac12\\right)^3\\left(\\dfrac12\\right)^2$\n$=10\\times\\dfrac1{32}=\\dfrac5{16}$\n따라서 구하는 값은 $\\dfrac5{16}$이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "round12_continue_to_zero_resolved",
     "tags": [
-      "기출"
+      "기출",
+      "도형"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -732,7 +752,7 @@ window.questionBank = [
     "choices": [],
     "answer": "57",
     "answerStatus": "direct_solved_round12_meitner",
-    "solution": "[키포인트] $X \\\\sim B\\left(n, \\dfrac{x}{x+3}\\right)$임을 이용하여 $E(X)$와 $V(X)$ 조건에서 $n$과 $x$를 구한다.\\n조건 정리: 빨간 공을 뽑을 확률 $p = \\dfrac{x}{x+3}$. $X \\\\sim B(n, p)$. $E(X)=36$, $V(X)=9$.\\n풀이 방향: $V(X) = E(X)(1-p) = 9$와 $E(X)=36$에서 $p$를 먼저 구하고, $n$과 $x$를 순서대로 결정한다.\\n정석 풀이:\\n$V(X) = np(1-p) = E(X) \\cdot (1-p)$이므로\\n$9 = 36 \\times (1-p)$, $1-p = \\dfrac{1}{4}$, $p = \\dfrac{3}{4}$.\\n$E(X) = np = 36$이므로 $n = \\dfrac{36}{3/4} = 48$.\\n$p = \\dfrac{x}{x+3} = \\dfrac{3}{4}$이므로 $4x = 3(x+3) = 3x+9$, $x = 9$.\\n따라서 $n + x = 48 + 9 = 57$.\\n따라서 구하는 값은 $57$이다.",
+    "solution": "빨간 공이 나올 확률을 $p$라 하면 매번 공을 다시 넣으므로 각 시행의 성공확률은 일정하다.\n$p=\\dfrac{x}{x+3}$이고 $X\\sim B(n,p)$이다.\n이항분포에서\n$E(X)=np=36$\n$V(X)=np(1-p)=9$\n두 식을 나누어 $p$를 먼저 구하면\n$1-p=\\dfrac9{36}=\\dfrac14$\n$p=\\dfrac34$\n따라서\n$n\\times\\dfrac34=36\\;\\Rightarrow\\;n=48$\n또한\n$\\dfrac{x}{x+3}=\\dfrac34$\n$4x=3x+9\\;\\Rightarrow\\;x=9$\n따라서 구하는 값은 $n+x=48+9=57$이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "round12_continue_to_zero_resolved",
     "tags": [
@@ -772,11 +792,12 @@ window.questionBank = [
     "choices": [],
     "answer": "P(X=1)=3/10, P(X=2)=3/5, P(X=3)=1/10; E(X)=9/5, V(X)=9/25, σ(X)=3/5",
     "answerStatus": "direct_solved_round12_meitner",
-    "solution": "[키포인트] 남학생 3명·여학생 2명 중 3명을 뽑으므로 $X$의 범위는 1~3이다. 전체 경우 $\\\\binom{5}{3}=10$.\\n조건 정리: 남학생 3명, 여학생 2명. 대표 3명 선출. $X=$ 대표 중 남학생 수. $X \\\\in \\{1, 2, 3\\}$.\\n풀이 방향: 조합을 이용해 각 $P(X=k)$를 구하고, 기댓값·분산·표준편차를 정의에 따라 계산한다.\\n정석 풀이:\\n$P(X=1) = \\dfrac{\\\\binom{3}{1}\\\\binom{2}{2}}{\\\\binom{5}{3}} = \\dfrac{3 \\times 1}{10} = \\dfrac{3}{10}$\\n$P(X=2) = \\dfrac{\\\\binom{3}{2}\\\\binom{2}{1}}{\\\\binom{5}{3}} = \\dfrac{3 \\times 2}{10} = \\dfrac{6}{10} = \\dfrac{3}{5}$\\n$P(X=3) = \\dfrac{\\\\binom{3}{3}\\\\binom{2}{0}}{\\\\binom{5}{3}} = \\dfrac{1 \\times 1}{10} = \\dfrac{1}{10}$\\n확인: $\\dfrac{3}{10}+\\dfrac{6}{10}+\\dfrac{1}{10}=1$ (성립).\\n기댓값:\\n$E(X) = 1 \\times \\dfrac{3}{10} + 2 \\times \\dfrac{6}{10} + 3 \\times \\dfrac{1}{10} = \\dfrac{3+12+3}{10} = \\dfrac{18}{10} = \\dfrac{9}{5}$\\n$E(X^2) = 1^2 \\times \\dfrac{3}{10} + 2^2 \\times \\dfrac{6}{10} + 3^2 \\times \\dfrac{1}{10} = \\dfrac{3+24+9}{10} = \\dfrac{36}{10} = \\dfrac{18}{5}$\\n분산:\\n$V(X) = E(X^2) - \\{E(X)\\}^2 = \\dfrac{18}{5} - \\left(\\dfrac{9}{5}\\right)^2 = \\dfrac{18}{5} - \\dfrac{81}{25} = \\dfrac{90}{25} - \\dfrac{81}{25} = \\dfrac{9}{25}$\\n표준편차:\\n$\\\\sigma(X) = \\sqrt{V(X)} = \\sqrt{\\dfrac{9}{25}} = \\dfrac{3}{5}$\\n따라서 구하는 값은 $E(X)=\\dfrac{9}{5}$, $V(X)=\\dfrac{9}{25}$, $\\\\sigma(X)=\\dfrac{3}{5}$이다.",
+    "solution": "대표 $3$명을 $5$명 중에서 뽑는 전체 경우의 수는 $\\,{}_5C_3=10$이다.\n여학생이 $2$명뿐이므로 대표 중 남학생 수 $X$는 $1,2,3$ 중 하나이다.\n$P(X=1)=\\dfrac{{}_3C_1\\,{}_2C_2}{{}_5C_3}=\\dfrac3{10}$\n$P(X=2)=\\dfrac{{}_3C_2\\,{}_2C_1}{{}_5C_3}=\\dfrac6{10}=\\dfrac35$\n$P(X=3)=\\dfrac{{}_3C_3\\,{}_2C_0}{{}_5C_3}=\\dfrac1{10}$\n따라서 확률분포표는 다음과 같다.\n<table style=\"border-collapse:collapse;font-size:12px;margin:4px 0\"><tr><th style=\"border:1px solid #888;padding:3px 7px\">X</th><td style=\"border:1px solid #888;padding:3px 7px\">1</td><td style=\"border:1px solid #888;padding:3px 7px\">2</td><td style=\"border:1px solid #888;padding:3px 7px\">3</td><td style=\"border:1px solid #888;padding:3px 7px\">합계</td></tr><tr><th style=\"border:1px solid #888;padding:3px 7px\">P(X=x)</th><td style=\"border:1px solid #888;padding:3px 7px\">3/10</td><td style=\"border:1px solid #888;padding:3px 7px\">3/5</td><td style=\"border:1px solid #888;padding:3px 7px\">1/10</td><td style=\"border:1px solid #888;padding:3px 7px\">1</td></tr></table>\n기댓값은\n$E(X)=1\\times\\dfrac3{10}+2\\times\\dfrac6{10}+3\\times\\dfrac1{10}$\n$=\\dfrac{3+12+3}{10}=\\dfrac95$\n분산을 구하기 위해 제곱의 기댓값을 계산하면\n$E(X^2)=1^2\\times\\dfrac3{10}+2^2\\times\\dfrac6{10}+3^2\\times\\dfrac1{10}$\n$=\\dfrac{3+24+9}{10}=\\dfrac{18}{5}$\n$V(X)=E(X^2)-\\{E(X)\\}^2$\n$=\\dfrac{18}{5}-\\left(\\dfrac95\\right)^2$\n$=\\dfrac{90-81}{25}=\\dfrac9{25}$\n표준편차는 분산의 양의 제곱근이므로\n$\\sigma(X)=\\sqrt{\\dfrac9{25}}=\\dfrac35$\n따라서 기댓값은 $\\dfrac95$, 분산은 $\\dfrac9{25}$, 표준편차는 $\\dfrac35$이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "round12_continue_to_zero_resolved",
     "tags": [
-      "기출"
+      "기출",
+      "표"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -812,11 +833,12 @@ window.questionBank = [
     "choices": [],
     "answer": "76",
     "answerStatus": "direct_solved_round12_meitner",
-     "solution": "[키포인트] 조건 (가)에서 표준화한 두 확률의 대칭성을 이용해 $m$을 구하고, 조건 (나)에서 $n$, 조건 (다)에서 $\\sigma$를 결정한다.\n조건 정리: $X \\sim N(m, \\sigma^2)$이고, 크기 $n$인 표본의 평균은 $\\bar{X} \\sim N\\left(m, \\dfrac{\\sigma^2}{n}\\right)$이다.\n풀이 방향: 조건 (가)의 두 꼬리확률을 표준화하여 평균의 위치를 확인한 뒤, 조건 (나)와 (다)를 차례로 적용한다.\n정석 풀이:\n조건 (가)에서 $P(X \\ge 8)+P(\\bar{X} \\ge 8)=1$이다.\n$t=\\dfrac{8-m}{\\sigma}$라고 놓으면 $P(X \\ge 8)=P(Z \\ge t)$이고, 표본평균의 표준편차는 $\\dfrac{\\sigma}{\\sqrt n}$이므로\n$P(\\bar{X} \\ge 8)=P\\left(Z \\ge \\dfrac{8-m}{\\sigma/\\sqrt n}\\right)=P(Z \\ge t\\sqrt n)$이다.\n따라서 $P(Z \\ge t)+P(Z \\ge t\\sqrt n)=1$이다. 표준정규분포의 대칭성에 의해 $P(Z \\ge t)+P(Z \\ge -t)=1$이므로, 표준정규분포의 누적확률이 단조증가한다는 성질을 이용하면 $t\\sqrt n=-t$이어야 한다.\n그러므로 $t(\\sqrt n+1)=0$이다. $n$은 자연수이므로 $\\sqrt n+1>0$이고, 따라서 $t=0$이다. 즉 $\\dfrac{8-m}{\\sigma}=0$이므로 $m=8$이다.\n조건 (나)에서 $P(X \\ge 12)+P(\\bar{X} \\ge 7.5)=1$이다. $m=8$을 대입하면 $P(X \\ge 12)=P\\left(Z \\ge \\dfrac{12-8}{\\sigma}\\right)=P\\left(Z \\ge \\dfrac{4}{\\sigma}\\right)$이고,\n$P(\\bar{X} \\ge 7.5)=P\\left(Z \\ge \\dfrac{7.5-8}{\\sigma/\\sqrt n}\\right)=P\\left(Z \\ge -\\dfrac{0.5\\sqrt n}{\\sigma}\\right)$이다. 두 꼬리확률의 합이 1이 되려면 두 양의 표준화값이 서로 같아야 하므로 $\\dfrac{4}{\\sigma}=\\dfrac{0.5\\sqrt n}{\\sigma}$이다. 따라서 $\\sqrt n=8$, $n=64$이다.\n조건 (다)의 신뢰도 $95.44\\%$는 $z=2$에 해당한다. 신뢰구간의 반길이가 1이므로 $2\\times\\dfrac{\\sigma}{\\sqrt n}=1$이다. $n=64$를 대입하면 $2\\times\\dfrac{\\sigma}{8}=1$이므로 $\\sigma=4$이다.\n따라서 $m+\\sigma+n=8+4+64=76$이다.",
+     "solution": "모집단이 $N(m,\\sigma^2)$을 따르므로 크기 $n$인 표본평균은\n$\\overline X\\sim N\\left(m,\\dfrac{\\sigma^2}{n}\\right)$을 따른다.\n(가) 평균 $m$을 구한다.\n$P(X\\ge8)+P(\\overline X\\ge8)=1$\n$m<8$이면 두 확률이 모두 $\\dfrac12$보다 작고, $m>8$이면 모두 $\\dfrac12$보다 크므로 합이 $1$이 될 수 없다.\n따라서 $m=8$이다.\n(나) 표본 크기 $n$을 구한다.\n$P(X\\ge12)=P\\left(Z\\ge\\dfrac{12-8}{\\sigma}\\right)=P\\left(Z\\ge\\dfrac4{\\sigma}\\right)$\n$P(\\overline X\\ge7.5)=P\\left(Z\\ge\\dfrac{7.5-8}{\\sigma/\\sqrt n}\\right)$\n$=P\\left(Z\\ge-\\dfrac{0.5\\sqrt n}{\\sigma}\\right)$\n두 확률의 합이 $1$이므로 표준정규분포의 대칭성에 의해\n$\\dfrac4{\\sigma}=\\dfrac{0.5\\sqrt n}{\\sigma}$\n$4=0.5\\sqrt n$\n$\\sqrt n=8\\;\\Rightarrow\\;n=64$\n(다) 모표준편차 $\\sigma$를 구한다.\n$P(-2\\le Z\\le2)=2\\times0.4772=0.9544$이므로 신뢰도 $95.44\\%$의 신뢰구간은\n$\\overline X-2\\dfrac{\\sigma}{\\sqrt n}\\le m\\le\\overline X+2\\dfrac{\\sigma}{\\sqrt n}$이다.\n주어진 신뢰구간의 반길이가 $1$이므로\n$2\\dfrac{\\sigma}{\\sqrt n}=1$\n$2\\dfrac{\\sigma}{8}=1\\;\\Rightarrow\\;\\sigma=4$\n따라서 구하는 값은 $m+\\sigma+n=8+4+64=76$이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "round12_continue_to_zero_resolved",
     "tags": [
-      "기출"
+      "기출",
+      "표"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -835,7 +857,7 @@ window.questionBank = [
     "contentStatus": "round12_reconstructed_from_page_image",
     "sourceDisplayNoLabel": "19",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -852,7 +874,7 @@ window.questionBank = [
     "choices": [],
     "answer": "1/37",
     "answerStatus": "direct_solved_round12_meitner",
-    "solution": "[키포인트] 교환 후 각 주머니에 검은 공·흰 공이 3개씩이 되는 경우를 나누고, 그 중 흰 공이 교환되지 않은 경우의 조건부확률을 계산한다.\\n조건 정리: A: 검은 4, 흰 3 (총 7개). B: 검은 2, 흰 3 (총 5개). A에서 3개, B에서 2개를 꺼내 교환. 교환 후 A와 B 모두 검은 3개·흰 3개.\\n풀이 방향: A에서 꺼낸 검은 공 수를 $i$, B에서 꺼낸 검은 공 수를 $j$로 놓고 교환 조건을 분석한다. 그런 다음 \"흰 공이 교환되지 않음\"의 의미를 파악하여 조건부확률을 계산한다.\\n정석 풀이:\\n교환 후 A의 검은 공 수: $(4-i)+j=3$이므로 $j=i-1$이어야 한다.\\n가능한 경우: $(i,j)=(1,0),\\ (2,1),\\ (3,2)$.\\n각 경우의 확률(전체 경우):\\n$P(i,j) = \\dfrac{\\\\binom{4}{i}\\\\binom{3}{3-i}}{\\\\binom{7}{3}} \\times \\dfrac{\\\\binom{2}{j}\\\\binom{3}{2-j}}{\\\\binom{5}{2}}$\\n$\\\\binom{7}{3}=35$, $\\\\binom{5}{2}=10$이므로 분모는 $350$.\\n$(i=1, j=0)$: $\\\\binom{4}{1}\\\\binom{3}{2} \\times \\\\binom{2}{0}\\\\binom{3}{2} = 4\\\\times3\\\\times1\\\\times3=36$\\n$(i=2, j=1)$: $\\\\binom{4}{2}\\\\binom{3}{1} \\times \\\\binom{2}{1}\\\\binom{3}{1} = 6\\\\times3\\\\times2\\\\times3=108$\\n$(i=3, j=2)$: $\\\\binom{4}{3}\\\\binom{3}{0} \\times \\\\binom{2}{2}\\\\binom{3}{0} = 4\\\\times1\\\\times1\\\\times1=4$\\n총합: $36+108+4=148$.\\n\"흰 공이 교환되지 않음\"은 A에서 꺼낸 3개가 모두 검은 공이고 B에서 꺼낸 2개도 모두 검은 공인 경우, 즉 $(i=3, j=2)$에 해당한다.\\n단, $(i=3,j=2)$에서 A는 검은 공 3개를 꺼내고(흰 공 0개), B는 검은 공 2개를 꺼냈으므로(흰 공 0개) 흰 공이 전혀 교환되지 않은 것이다.\\n구하는 조건부확률:\\n$P = \\dfrac{4}{148} = \\dfrac{1}{37}$\\n따라서 구하는 값은 $\\dfrac{1}{37}$이다.",
+    "solution": "A주머니에서 꺼낸 검은 공 수를 $i$, B주머니에서 꺼낸 검은 공 수를 $j$라 하자.\n교환 후 A주머니의 검은 공 수는 $4-i+j$이다.\n교환 후 검은 공이 $3$개라는 조건에서\n$4-i+j=3$\n$i-j=1$\n따라서 가능한 순서쌍 $(i,j)$는 $(1,0),(2,1),(3,2)$이다.\nA에서는 $7$개 중 $3$개, B에서는 $5$개 중 $2$개를 각각 뽑으므로 전체 경우의 수는\n$\\,{}_7C_3\\times{}_5C_2=35\\times10=350$이다.\n각 경우의 수를 순서대로 계산하면\n$(i,j)=(1,0)$:\n$\\,{}_4C_1\\,{}_3C_2\\times{}_2C_0\\,{}_3C_2$\n$=4\\times3\\times1\\times3=36$\n$(i,j)=(2,1)$:\n$\\,{}_4C_2\\,{}_3C_1\\times{}_2C_1\\,{}_3C_1$\n$=6\\times3\\times2\\times3=108$\n$(i,j)=(3,2)$:\n$\\,{}_4C_3\\,{}_3C_0\\times{}_2C_2\\,{}_3C_0$\n$=4\\times1\\times1\\times1=4$\n따라서 교환 후 두 주머니에 검은 공과 흰 공이 각각 $3$개씩 있는 경우는 모두\n$36+108+4=148$가지이다.\n흰 공이 서로 교환되지 않으려면 양쪽에서 검은 공만 꺼내야 한다.\n이는 A에서 검은 공 $3$개, B에서 검은 공 $2$개를 꺼내는 $(i,j)=(3,2)$의 $4$가지이다.\n따라서 주어진 교환 후 상태를 조건으로 하는 확률은\n$P=\\dfrac{4/350}{148/350}=\\dfrac4{148}=\\dfrac1{37}$\n따라서 구하는 값은 $\\dfrac1{37}$이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "round12_continue_to_zero_resolved",
     "tags": [
@@ -875,7 +897,7 @@ window.questionBank = [
     "contentStatus": "round12_reconstructed_from_page_image",
     "sourceDisplayNoLabel": "20",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   }
