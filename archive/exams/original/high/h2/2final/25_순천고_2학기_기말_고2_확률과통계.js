@@ -493,7 +493,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 확률의 합이 1이라는 조건으로 $a$를 구하고, $V\\!\\left(\\dfrac{1}{a}X\\right) = \\dfrac{1}{a^2}V(X)$를 이용한다.\\n조건 정리: $x=0,1,2,3$에서 확률은 각각 $\\dfrac{3}{20}, \\dfrac{1}{20}, \\dfrac{5}{20}, \\dfrac{9}{20}$이다.\\n풀이 방향: 네 확률의 합을 구해 $a$를 확정한 뒤 $V(X)$를 계산한다.\\n정석 풀이: $\\dfrac{3+1+5+9}{20} + a = 1 \\Rightarrow \\dfrac{18}{20} + a = 1 \\Rightarrow a = \\dfrac{2}{20} = \\dfrac{1}{10}$\\n$E(X) = 0 \\cdot \\dfrac{3}{20} + 1 \\cdot \\dfrac{1}{20} + 2 \\cdot \\dfrac{5}{20} + 3 \\cdot \\dfrac{9}{20} + 4 \\cdot \\dfrac{1}{10}$\\n$= 0 + \\dfrac{1}{20} + \\dfrac{10}{20} + \\dfrac{27}{20} + \\dfrac{8}{20} = \\dfrac{46}{20} = \\dfrac{23}{10}$\\n$E(X^2) = 0 + \\dfrac{1}{20} + \\dfrac{20}{20} + \\dfrac{81}{20} + \\dfrac{16}{10} = \\dfrac{102}{20} + \\dfrac{32}{20} = \\dfrac{134}{20} = \\dfrac{67}{10}$\\n$V(X) = \\dfrac{67}{10} - \\left(\\dfrac{23}{10}\\right)^2 = \\dfrac{670}{100} - \\dfrac{529}{100} = \\dfrac{141}{100}$\\n$V\\!\\left(\\dfrac{1}{a}X\\right) = \\dfrac{1}{a^2}V(X) = \\dfrac{1}{(1/10)^2} \\cdot \\dfrac{141}{100} = 100 \\cdot \\dfrac{141}{100} = 141$\\n따라서 정답은 ③이다.",
+    "solution": "먼저 각 $x$에 대한 확률을 구하고, 합이 $1$임을 이용한다.\n$P(X=0)=\\dfrac{3}{20}$, $P(X=1)=\\dfrac{1}{20}$\n$P(X=2)=\\dfrac{5}{20}$, $P(X=3)=\\dfrac{9}{20}$\n$\\dfrac{3+1+5+9}{20}+a=1$\n$a=\\dfrac{1}{10}$, 따라서 $P(X=4)=\\dfrac{2}{20}$\n\n평균을 계산하면\n$E(X)=\\dfrac{0+1+10+27+8}{20}=\\dfrac{23}{10}$\n\n제곱의 평균은\n$E(X^2)=\\dfrac{0+1+20+81+32}{20}=\\dfrac{67}{10}$\n\n분산은\n$V(X)=E(X^2)-\\{E(X)\\}^2$\n$=\\dfrac{67}{10}-\\left(\\dfrac{23}{10}\\right)^2$\n$=\\dfrac{670-529}{100}=\\dfrac{141}{100}$\n\n$\\dfrac{1}{a}=10$이므로 분산의 성질을 이용하면\n$V\\left(\\dfrac{1}{a}X\\right)=V(10X)=10^2V(X)$\n$=100\\times\\dfrac{141}{100}=141$\n\n따라서 정답은 ③이다.",
     "solutionStatus": "solution_upgraded_batch3",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -540,7 +540,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] $P(\\bar{X} \\ge a) = 0.98 > 0.5$이므로 $a$는 평균보다 작은 쪽, 즉 $z$값이 음수이다.\\n조건 정리: 모집단 $N(300, 5^2)$, $n=100$이므로 $\\bar{X} \\sim N\\!\\left(300, 0.5^2\\right)$이다.\\n풀이 방향: $P(Z \\ge -2) = 0.5 + 0.48 = 0.98$임을 이용해 표준화 방정식을 세운다.\\n정석 풀이: $P(\\bar{X} \\ge a) = 0.98$이므로\\n$P\\!\\left(Z \\ge \\dfrac{a-300}{0.5}\\right) = 0.98 = P(Z \\ge -2)$\\n따라서 $\\dfrac{a-300}{0.5} = -2$이므로 $a - 300 = -1$, $a = 299$\\n따라서 정답은 ②이다.",
+    "solution": "모집단의 분포가 $N(300,5^2)$이고 표본 크기가 $100$이므로\n$\\sigma_{\\bar X}=\\dfrac{5}{\\sqrt{100}}=0.5$\n$\\bar X\\sim N(300,0.5^2)$\n\n$P(\\bar X\\ge a)=0.98$이므로 $a$는 평균 $300$보다 작다.\n표에서 $P(0\\le Z\\le2)=0.48$이므로\n$P(Z\\ge-2)=0.5+0.48=0.98$\n\n따라서 $a$를 표준화한 값은 $-2$이다.\n$\\dfrac{a-300}{0.5}=-2$\n$a-300=-1$\n$a=299$\n\n따라서 정답은 ②이다.",
     "solutionStatus": "solution_upgraded_batch3",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -587,7 +587,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] $\\dfrac{1}{(x+1)(x+2)}=\\dfrac{1}{x+1}-\\dfrac{1}{x+2}$로 부분분수 분해하면 합이 소거된다.\\n조건 정리: $P(X=x)=\\dfrac{a}{(x+1)(x+2)}$, $x=1,2,\\ldots,10$이다.\\n풀이 방향: 확률의 총합이 1임을 이용해 $a$를 구하고, $X>3a$를 만족하는 $x$의 범위를 정한다.\\n정석 풀이: $\\sum_{x=1}^{10}\\dfrac{1}{(x+1)(x+2)}=\\dfrac{1}{2}-\\dfrac{1}{12}=\\dfrac{5}{12}$이므로\\n$a\\cdot\\dfrac{5}{12}=1$, 따라서 $a=\\dfrac{12}{5}$이다.\\n$3a=\\dfrac{36}{5}=7.2$이므로 $X>3a$는 $X=8,9,10$인 경우이다.\\n따라서\\n$P(X>3a)=\\dfrac{12}{5}\\left(\\dfrac{1}{9\\cdot10}+\\dfrac{1}{10\\cdot11}+\\dfrac{1}{11\\cdot12}\\right)$\\n$=\\dfrac{12}{5}\\left(\\dfrac{1}{9}-\\dfrac{1}{12}\\right)=\\dfrac{12}{5}\\cdot\\dfrac{1}{36}=\\dfrac{1}{15}$\\n따라서 정답은 ④이다.",
+    "solution": "확률질량함수의 전체 확률이 $1$임을 이용한다.\n먼저\n$\\dfrac{1}{(x+1)(x+2)}=\\dfrac{1}{x+1}-\\dfrac{1}{x+2}$\n\n$x=1,2,\\ldots,10$까지 더하면 중간 항이 소거되어\n$\\dfrac{1}{2}-\\dfrac{1}{12}=\\dfrac{5}{12}$\n$a\\times\\dfrac{5}{12}=1$\n$a=\\dfrac{12}{5}$\n\n$3a=\\dfrac{36}{5}=7.2$이므로 $X>3a$는 $X=8,9,10$이다.\n\n$P(X>3a)=a\\left(\\dfrac{1}{9\\cdot10}+\\dfrac{1}{10\\cdot11}+\\dfrac{1}{11\\cdot12}\\right)$\n$=\\dfrac{12}{5}\\left(\\dfrac{1}{9}-\\dfrac{1}{12}\\right)$\n$=\\dfrac{12}{5}\\times\\dfrac{1}{36}=\\dfrac{1}{15}$\n\n따라서 정답은 ④이다.",
     "solutionStatus": "solution_upgraded_batch3",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -634,7 +634,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 정규분포에서 $P(Z \\ge z_1) + P(Z \\ge z_2) = 1$이면 $z_1 + z_2 = 0$이어야 한다.\\n조건 정리: $X \\sim N(m, \\sigma^2)$, $\\bar{X} \\sim N\\!\\left(m, \\dfrac{\\sigma^2}{n}\\right)$이다.\\n풀이 방향: (가)로 $m$을 구하고, (나)로 $n$을 구한다.\\n정석 풀이: 조건 (가): $P(X \\ge 12) + P(\\bar{X} \\ge 12) = 1$\\n두 확률의 합이 1이 되려면 두 확률의 $z$값이 서로 합이 0이 되어야 한다.\\n$\\dfrac{12-m}{\\sigma} + \\dfrac{12-m}{\\sigma/\\sqrt{n}} = 0$에서 $(12-m)\\!\\left(\\dfrac{1}{\\sigma} + \\dfrac{\\sqrt{n}}{\\sigma}\\right) = 0$\\n$1+\\sqrt{n} > 0$이므로 $12 - m = 0$, 즉 $m = 12$\\n조건 (나): $P(X \\ge 16) + P(\\bar{X} \\ge 10) = 1$\\n$\\dfrac{16-12}{\\sigma} + \\dfrac{10-12}{\\sigma/\\sqrt{n}} = 0$이므로 $\\dfrac{4}{\\sigma} - \\dfrac{2\\sqrt{n}}{\\sigma} = 0$\\n$4 = 2\\sqrt{n}$, $\\sqrt{n} = 2$, $n = 4$\\n$m + 2n = 12 + 8 = 20$\\n따라서 정답은 ③이다.",
+    "solution": "모집단과 표본평균의 분포는\n$X\\sim N(m,\\sigma^2)$\n$\\bar X\\sim N\\left(m,\\dfrac{\\sigma^2}{n}\\right)$\n\n정규분포에서 오른쪽 꼬리확률의 합이 $1$이면 두 표준화 값은 서로 반대이다.\n\n(가) $P(X\\ge12)+P(\\bar X\\ge12)=1$\n$\\dfrac{12-m}{\\sigma}=-\\dfrac{12-m}{\\sigma/\\sqrt n}$\n$(12-m)(1+\\sqrt n)=0$\n$n>0$이므로 $m=12$이다.\n\n(나) $P(X\\ge16)+P(\\bar X\\ge10)=1$\n$\\dfrac{16-12}{\\sigma}=-\\dfrac{10-12}{\\sigma/\\sqrt n}$\n$\\dfrac{4}{\\sigma}=\\dfrac{2\\sqrt n}{\\sigma}$\n$\\sqrt n=2$, $n=4$\n\n$m+2n=12+2\\times4=20$\n\n따라서 정답은 ③이다.",
     "solutionStatus": "solution_upgraded_batch3",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -681,7 +681,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 확률밀도함수의 전체 넓이는 1이고, 구간의 넓이가 그 구간의 확률이다.\\n조건 정리: $f(x)=a(3-x)$ ($0 \\le x \\le 3$), $f(x)=\\dfrac{b}{3}(x-3)$ ($3 \\le x \\le 6$)이다.\\n풀이 방향: 왼쪽 구간 넓이를 $P(0 \\le X \\le 3)$으로 두고 $3b$와 같다는 조건, 전체 넓이 1 조건을 연립한다.\\n정석 풀이: $P(0 \\le X \\le 3) = \\int_0^3 a(3-x)\\,dx = a\\left[3x - \\dfrac{x^2}{2}\\right]_0^3 = a \\cdot \\dfrac{9}{2} = \\dfrac{9a}{2}$\\n조건에서 $\\dfrac{9a}{2} = 3b$이므로 $b = \\dfrac{3a}{2}$\\n오른쪽 구간 넓이: $\\int_3^6 \\dfrac{b}{3}(x-3)\\,dx = \\dfrac{b}{3}\\left[\\dfrac{(x-3)^2}{2}\\right]_3^6 = \\dfrac{b}{3} \\cdot \\dfrac{9}{2} = \\dfrac{3b}{2}$\\n전체 넓이: $\\dfrac{9a}{2} + \\dfrac{3b}{2} = 1$\\n$b = \\dfrac{3a}{2}$를 대입하면 $\\dfrac{9a}{2} + \\dfrac{9a}{4} = 1$, $\\dfrac{27a}{4} = 1$, $a = \\dfrac{4}{27}$\\n$b = \\dfrac{3}{2} \\cdot \\dfrac{4}{27} = \\dfrac{2}{9}$\\n$a + b = \\dfrac{4}{27} + \\dfrac{6}{27} = \\dfrac{10}{27}$\\n따라서 정답은 ④이다.",
+    "solution": "확률밀도함수의 그래프는 $0\\le x\\le3$과 $3\\le x\\le6$에서 각각 삼각형을 만든다.\n\n왼쪽 삼각형은 밑변이 $3$, 높이가 $f(0)=3a$이므로\n$P(0\\le X\\le3)=\\dfrac{1}{2}\\times3\\times3a=\\dfrac{9a}{2}$\n주어진 조건에 따라\n$\\dfrac{9a}{2}=3b$\n$b=\\dfrac{3a}{2}$\n\n오른쪽 삼각형은 밑변이 $3$, 높이가 $f(6)=b$이므로\n$P(3\\le X\\le6)=\\dfrac{1}{2}\\times3\\times b=\\dfrac{3b}{2}$\n\n전체 확률이 $1$이므로\n$\\dfrac{9a}{2}+\\dfrac{3b}{2}=1$\n$\\dfrac{9a}{2}+\\dfrac{9a}{4}=1$\n$\\dfrac{27a}{4}=1$, $a=\\dfrac{4}{27}$\n$b=\\dfrac{3}{2}\\times\\dfrac{4}{27}=\\dfrac{2}{9}$\n\n$a+b=\\dfrac{4}{27}+\\dfrac{6}{27}=\\dfrac{10}{27}$\n\n따라서 정답은 ④이다.",
     "solutionStatus": "solution_upgraded_batch3",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
