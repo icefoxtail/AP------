@@ -420,7 +420,7 @@ for (const file of examFiles) {
                 continue;
             }
 
-            const rawId = q.id ?? '';
+            const rawId = q.id ?? q.number ?? '';
             const id = rawId;
             const idKey = String(rawId);
             if (!idSlots.has(idKey)) idSlots.set(idKey, []);
