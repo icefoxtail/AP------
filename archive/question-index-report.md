@@ -1,55 +1,62 @@
 # question-index 생성 리포트
 
 - 인덱싱 범위(SCOPE): git-tracked + db-listed production (parity-gated) (git 등재 시험지만; textbook 교재은행·미추적 _pro 드래프트 제외)
-- 시험지 수(db.js): 688
-- 시험지 파일 수: 688
-- 원본 문항 수(중복 제거 전): 16201
-- 최종 인덱스 문항 수(중복 제거 후): 16201
-- 중복 qKey로 제외된 레코드: 0 (그룹 0)
+- 시험지 수(db.js): 741
+- 시험지 파일 수: 741
+- 원본 문항 수(중복 제거 전): 17459
+- 최종 인덱스 문항 수(중복 제거 후): 17437
+- 중복 qKey로 제외된 레코드: 22 (그룹 1)
 - 최종 인덱스 중복 qKey: 0
 - undefined/비객체 문항 skip: 0
-- db.js 크기: 685195 bytes
-- 시험지 JS 총 크기: 31174533 bytes
-- 인덱스 크기: 17325150 bytes
+- db.js 크기: 736181 bytes
+- 시험지 JS 총 크기: 34563874 bytes
+- 인덱스 크기: 18641855 bytes
 - 로드 실패 파일: 0
 
-> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(16201)" 기준이다.
+> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(17437)" 기준이다.
 
 ## 표준단원키 분류 (공식 마스터 143개 기준)
 
-- 공식(official): 16107
-- RAW-(임시 규약, 허용): 0 (distinct 0)
+- 공식(official): 17246
+- RAW-(임시 규약, 허용): 25 (distinct 7)
 - 비공식(invalid): 94 (distinct 21)
-- 빈 키(empty): 0
+- 빈 키(empty): 72
 
 상세 비공식 키 목록은 question-index-audit.md 참조.
 
 ## 필드 누락 (최종 인덱스 기준)
 
-- 누락 id: 0
-- 누락 content: 0
+- 누락 id: 1
+- 누락 content: 94
 - 누락 choices: 5
-- 누락 level: 474
-- 누락 standardUnit: 0
-- 누락 standardUnitKey: 0
-- 누락 standardCourse: 12
-- 누락 tags: 0
+- 누락 level: 521
+- 누락 standardUnit: 48
+- 누락 standardUnitKey: 72
+- 누락 standardCourse: 59
+- 누락 tags: 47
 
 ## 시각요소 집계 (최종 인덱스 기준)
 
-- q.image 보유: 3279
-- content 내부 <img>: 133
+- q.image 보유: 3396
+- content 내부 <img>: 453
 - content 내부 <svg>: 77
-- content 내부 <table>: 193
-- 시각요소 보유(hasImage=true, OR 합산): 3651
+- content 내부 <table>: 234
+- 시각요소 보유(hasImage=true, OR 합산): 4115
 
 ## 누락 예시
 
 ### id
-  - 없음
+  - original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js#(빈 id)
 
 ### content
-  - 없음
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#1
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#2
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#3
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#4
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#5
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#6
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#7
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#8
 
 ### choices
   - original/high/h1/1mid/23_매산여고_1학기_중간_고1_기출.js#19
@@ -69,10 +76,24 @@
   - original/high/h1/1mid/24_금당고_1학기_중간_고1_기출.js#8
 
 ### standardUnit
-  - 없음
+  - original/middle/m3/1mid/22_연향중_1학기_중간_중3_기출c.js#20
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#1
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#2
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#3
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#4
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#5
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#6
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#7
 
 ### standardUnitKey
-  - 없음
+  - original/middle/m3/1mid/22_연향중_1학기_중간_중3_기출c.js#20
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#1
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#2
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#3
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#4
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#5
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#6
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#7
 
 ### standardCourse
   - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#13
@@ -85,7 +106,14 @@
   - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#20
 
 ### tags
-  - 없음
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#1
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#2
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#3
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#4
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#5
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#6
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#7
+  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#8
 
 ### undefined/비객체 문항
   - 없음

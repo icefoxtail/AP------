@@ -2,13 +2,13 @@
 
 - 생성기: archive/tools/build-question-index.mjs
 - 인덱싱 범위(SCOPE): git-tracked + db-listed production (parity-gated)
-  - git 버전관리에 등재된 시험지 JS만 인덱싱(688파일).
+  - git 버전관리에 등재된 시험지 JS만 인덱싱(741파일).
   - 교과서 파일은 `textbooks/<book>/<title>.js` 경로와 db.js의 명시 등록이 모두 있을 때만 포함한다.
   - DB 미등록 교재 파일과 미추적 _pro 드래프트는 제외한다.
 - 공식 마스터 키 수: 143 (중등 23 + H22 56 + H15 64)
-- 원본 문항 수: 16201
-- 최종 인덱스 문항 수: 16201
-- 중복 qKey 그룹: 0 / 제외 레코드(duplicate_skipped): 0
+- 원본 문항 수: 17459
+- 최종 인덱스 문항 수: 17437
+- 중복 qKey 그룹: 1 / 제외 레코드(duplicate_skipped): 22
 - 최종 인덱스 중복 qKey: 0 (0이어야 정상)
 
 ---
@@ -20,7 +20,31 @@
 > qKey 규칙(sourceFile_id)은 유지하며 새 키로 치환하지 않는다.
 > ※ 아래 그룹의 SKIP 레코드는 대부분 "내용이 다른 별개 문항"이 동일 id를 가져 qKey가 충돌한 경우다(2번 항목 참조).
 
-- 중복 qKey 없음
+### original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js_
+- sourceFile: original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js
+  - KEPT   id="" key="" unit="기하" course="중3 수학" class=empty content=0자
+  - SKIP   id="" key="" unit="통계" course="중3 수학" class=empty content=0자
+  - SKIP   id="" key="" unit="통계" course="중3 수학" class=empty content=0자
+  - SKIP   id="" key="" unit="통계" course="중3 수학" class=empty content=0자
+  - SKIP   id="" key="" unit="통계" course="중3 수학" class=empty content=0자
+  - SKIP   id="" key="" unit="통계" course="중3 수학" class=empty content=0자
+  - SKIP   id="" key="" unit="통계" course="중3 수학" class=empty content=0자
+  - SKIP   id="" key="" unit="통계" course="중3 수학" class=empty content=0자
+  - SKIP   id="" key="" unit="통계" course="중3 수학" class=empty content=0자
+  - SKIP   id="" key="" unit="통계" course="중3 수학" class=empty content=0자
+  - SKIP   id="" key="" unit="통계" course="중3 수학" class=empty content=0자
+  - SKIP   id="" key="" unit="기하" course="중3 수학" class=empty content=0자
+  - SKIP   id="" key="" unit="기하" course="중3 수학" class=empty content=0자
+  - SKIP   id="" key="" unit="기하" course="중3 수학" class=empty content=0자
+  - SKIP   id="" key="" unit="기하" course="중3 수학" class=empty content=0자
+  - SKIP   id="" key="" unit="기하" course="중3 수학" class=empty content=0자
+  - SKIP   id="" key="" unit="기하" course="중3 수학" class=empty content=0자
+  - SKIP   id="" key="" unit="입체도형" course="중3 수학" class=empty content=0자
+  - SKIP   id="" key="" unit="입체도형" course="중3 수학" class=empty content=0자
+  - SKIP   id="" key="" unit="입체도형" course="중3 수학" class=empty content=0자
+  - SKIP   id="" key="" unit="통계" course="중3 수학" class=empty content=0자
+  - SKIP   id="" key="" unit="입체도형" course="중3 수학" class=empty content=0자
+  - SKIP   id="" key="" unit="입체도형" course="중3 수학" class=empty content=0자
 
 ---
 
@@ -30,7 +54,9 @@
 > 동일 파일 내 같은 id가 2회 이상 쓰이면(내용이 다르더라도) 동일 qKey가 생성되어 1건만 인덱스에 남는다.
 > 후속 단계에서 원본 JS의 id 재부여가 필요하다.
 
-- id 중복/누락 파일 없음
+### original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js (총 23문항)
+  - 중복 id 없음
+  - 빈 id 문항: 23건
 
 ---
 
@@ -67,34 +93,40 @@
 ## 4. RAW- 키 (임시 규약, 허용)
 
 > 마스터 테이블이 허용하는 임시 미분류 규약(standardUnitOrder 999). 비공식 오류와 구분한다.
-> distinct 0종 / 0건
+> distinct 7종 / 25건
 
-- 없음
+- `RAW-삼각비` — 10건
+- `RAW-원의 성질` — 5건
+- `RAW-삼각비의 활용` — 3건
+- `RAW-원의 접선` — 3건
+- `RAW-원주각` — 2건
+- `RAW-정다각형과 원` — 1건
+- `RAW-일차함수` — 1건
 
 ---
 
-## 5. 필드 누락 (최종 인덱스 16201건 기준)
+## 5. 필드 누락 (최종 인덱스 17437건 기준)
 
 | 필드 | 누락 수 |
 |------|--------:|
-| id | 0 |
-| content | 0 |
+| id | 1 |
+| content | 94 |
 | choices(배열) | 5 |
-| level | 474 |
-| standardUnit | 0 |
-| standardUnitKey | 0 |
-| standardCourse | 12 |
-| tags | 0 |
+| level | 521 |
+| standardUnit | 48 |
+| standardUnitKey | 72 |
+| standardCourse | 59 |
+| tags | 47 |
 | undefined/비객체(skip) | 0 |
 
 ## 6. 시각요소 집계 (최종 인덱스 기준)
 
 | 기준 | 수 |
 |------|---:|
-| q.image 보유 | 3279 |
-| content <img> | 133 |
+| q.image 보유 | 3396 |
+| content <img> | 453 |
 | content <svg> | 77 |
-| content <table> | 193 |
-| 시각요소 보유(hasImage=true) | 3651 |
+| content <table> | 234 |
+| 시각요소 보유(hasImage=true) | 4115 |
 
 > hasImage 판정은 mixer.html 의 hasVisualAsset 과 동일(image OR content 내부 img/svg/table).
