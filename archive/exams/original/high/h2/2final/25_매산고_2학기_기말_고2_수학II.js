@@ -439,7 +439,7 @@ window.questionBank=[
     "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q14-solution.svg",
     "solutionImageAlt": "25_매산고_2학기_기말_고2_수학II q14의 원문 조건과 해설 흐름을 정리한 SVG 카드",
     "solutionImageSize": "full",
-    "solution": "먼저 안쪽 함수 $g$의 치역을 구한다.\n$x\\ne0$에서\n$\\left(x^2-\\dfrac2{x^2}\\right)^2\\ge0$ 대신 $x^2+\\dfrac4{x^2}\\ge4$를 이용한다.\n등호는 $x^2=2$일 때 성립하므로\n$g(x)=x^2+\\dfrac4{x^2}-3\\ge1$이고,\n$g$의 치역은 $[1,\\infty)$이다.\n$u=g(x)$라 두면 $u\\ge1$에서\n$f(u)=u^4-14u^2+24u+3$의 최솟값을 구하면 된다.\n$f'(u)=4u^3-28u+24$\n$=4(u-1)(u-2)(u+3)$이다.\n$1<u<2$에서 $f'(u)<0$, $u>2$에서 $f'(u)>0$이다.\n따라서 $u=2$에서 최솟값을 가지며\n$f(2)=16-56+48+3=11$이다.\n$u=2$도 실제 $g$의 치역에 속하므로 구하는 최솟값은 $11$이다.\n정답은 ①이다.",
+    "solution": "먼저 안쪽 함수 $g$의 치역을 구한다.\n$x\\ne0$에서\n$x^2+\\dfrac4{x^2}-4=\\dfrac{(x^2-2)^2}{x^2}\\ge0$이다.\n등호는 $x^2=2$일 때 성립하므로\n$g(x)=x^2+\\dfrac4{x^2}-3\\ge1$이고,\n$g$의 치역은 $[1,\\infty)$이다.\n$u=g(x)$라 두면 $u\\ge1$에서\n$f(u)=u^4-14u^2+24u+3$의 최솟값을 구하면 된다.\n$f'(u)=4u^3-28u+24$\n$=4(u-1)(u-2)(u+3)$이다.\n$1<u<2$에서 $f'(u)<0$, $u>2$에서 $f'(u)>0$이다.\n따라서 $u=2$에서 최솟값을 가지며\n$f(2)=16-56+48+3=11$이다.\n$u=2$도 실제 $g$의 치역에 속하므로 구하는 최솟값은 $11$이다.\n정답은 ①이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
