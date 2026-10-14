@@ -21,7 +21,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 이항분포에서 $E(X^2) = V(X) + \\{E(X)\\}^2$를 이용한다.\\n조건 정리: 6의 약수는 1, 2, 3, 6이므로 4개, 성공확률은 $p = \\dfrac{4}{6} = \\dfrac{2}{3}$이다. $X \\sim B\\!\\left(90,\\, \\dfrac{2}{3}\\right)$\\n풀이 방향: $E(X)$와 $V(X)$를 구한 뒤 $E(X^2) = V(X) + \\{E(X)\\}^2$에 대입한다.\\n정석 풀이: $E(X) = 90 \\cdot \\dfrac{2}{3} = 60$\\n$V(X) = 90 \\cdot \\dfrac{2}{3} \\cdot \\dfrac{1}{3} = 20$\\n$E(X^2) = V(X) + \\{E(X)\\}^2 = 20 + 60^2 = 20 + 3600 = 3620$\\n따라서 정답은 ④이다.",
+    "solution": "한 번 던져 6의 약수가 나올 확률을 먼저 구한다.\n$6$의 약수: $1,\\,2,\\,3,\\,6$ (4개)\n$p=\\dfrac{4}{6}=\\dfrac{2}{3}$, $X\\sim B\\left(90,\\dfrac{2}{3}\\right)$\n\n이항분포의 평균과 분산은\n$E(X)=np=90\\times\\dfrac{2}{3}=60$\n$V(X)=np(1-p)=90\\times\\dfrac{2}{3}\\times\\dfrac{1}{3}=20$\n\n$V(X)=E(X^2)-\\{E(X)\\}^2$이므로\n$E(X^2)=V(X)+\\{E(X)\\}^2$\n$=20+60^2=3620$\n\n따라서 정답은 ④이다.",
     "solutionStatus": "solution_upgraded_batch1",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -68,7 +68,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 선형변환의 평균 $E(aX+b) = aE(X)+b$를 이용한다.\\n조건 정리: 서로 다른 두 동전을 동시에 던질 때 모두 앞면이 나올 확률은 $\\dfrac{1}{2} \\cdot \\dfrac{1}{2} = \\dfrac{1}{4}$이다. $X \\sim B\\!\\left(200,\\, \\dfrac{1}{4}\\right)$\\n풀이 방향: 이항분포의 평균 공식으로 $E(X)$를 구한 뒤 $Y = 2X+3$의 평균에 대입한다.\\n정석 풀이: $E(X) = 200 \\cdot \\dfrac{1}{4} = 50$\\n$E(Y) = 2E(X)+3 = 2 \\cdot 50 + 3 = 103$\\n따라서 정답은 ③이다.",
+    "solution": "두 동전을 한 번에 던질 때 모두 앞면이 나올 확률은\n$p=\\dfrac{1}{2}\\times\\dfrac{1}{2}=\\dfrac{1}{4}$\n\n이 시행을 200번 반복하므로\n$X\\sim B\\left(200,\\dfrac{1}{4}\\right)$\n$E(X)=200\\times\\dfrac{1}{4}=50$\n\n$Y=2X+3$에서 평균의 성질을 적용하면\n$E(Y)=E(2X+3)$\n$=2E(X)+3$\n$=2\\times50+3=103$\n\n따라서 정답은 ③이다.",
     "solutionStatus": "solution_upgraded_batch1",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -115,7 +115,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 표본평균의 분포: 모집단 $N(m, \\sigma^2)$에서 크기 $n$인 표본의 평균은 $N\\!\\left(m,\\, \\dfrac{\\sigma^2}{n}\\right)$을 따른다.\\n조건 정리: 모집단은 $N(60, 3^2)$이고 표본의 크기는 $n=36$이다.\\n풀이 방향: 표본평균의 평균과 표준편차를 구해 $a$, $b$를 확정한다.\\n정석 풀이: 표본평균 $\\bar{X}$는 $N\\!\\left(60,\\, \\left(\\dfrac{3}{\\sqrt{36}}\\right)^2\\right) = N\\!\\left(60,\\, \\left(\\dfrac{1}{2}\\right)^2\\right)$을 따른다.\\n따라서 $a = 60$, $b = \\dfrac{1}{2}$이므로 $ab = 60 \\cdot \\dfrac{1}{2} = 30$이다.\\n따라서 정답은 ①이다.",
+    "solution": "모집단이 $N(60,3^2)$을 따르고 표본의 크기는 $n=36$이다.\n표본평균의 평균과 표준편차는\n$E(\\bar X)=60$\n$\\sigma_{\\bar X}=\\dfrac{3}{\\sqrt{36}}=\\dfrac{1}{2}$\n\n따라서 표본평균의 분포는\n$\\bar X\\sim N\\left(60,\\left(\\dfrac{1}{2}\\right)^2\\right)$\n\n$N(a,b^2)$과 비교하면 $a=60$, $b=\\dfrac{1}{2}$이므로\n$ab=60\\times\\dfrac{1}{2}=30$\n\n따라서 정답은 ①이다.",
     "solutionStatus": "solution_upgraded_batch1",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -162,7 +162,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 표본평균의 분산은 $V(\\bar{X}) = \\dfrac{V(X)}{n}$이다.\\n조건 정리: 확률의 합이 1이므로 $\\dfrac{1}{8} + a + \\dfrac{1}{8} = 1$에서 $a = \\dfrac{3}{4}$이다.\\n풀이 방향: $E(X)$, $E(X^2)$을 계산해 $V(X)$를 구하고 $n=4$로 나눈다.\\n정석 풀이: $E(X) = 1 \\cdot \\dfrac{1}{8} + 2 \\cdot \\dfrac{3}{4} + 3 \\cdot \\dfrac{1}{8} = \\dfrac{1}{8} + \\dfrac{12}{8} + \\dfrac{3}{8} = 2$\\n$E(X^2) = 1 \\cdot \\dfrac{1}{8} + 4 \\cdot \\dfrac{3}{4} + 9 \\cdot \\dfrac{1}{8} = \\dfrac{1}{8} + 3 + \\dfrac{9}{8} = \\dfrac{1+24+9}{8} = \\dfrac{34}{8} = \\dfrac{17}{4}$\\n$V(X) = E(X^2) - \\{E(X)\\}^2 = \\dfrac{17}{4} - 4 = \\dfrac{1}{4}$\\n$V(\\bar{X}) = \\dfrac{V(X)}{4} = \\dfrac{1}{4} \\cdot \\dfrac{1}{4} = \\dfrac{1}{16}$\\n따라서 정답은 ⑤이다.",
+    "solution": "확률분포표에서 확률의 합은 $1$이다.\n$\\dfrac{1}{8}+a+\\dfrac{1}{8}=1$\n$a=\\dfrac{3}{4}$\n\n모집단의 평균은\n$E(X)=1\\times\\dfrac{1}{8}+2\\times\\dfrac{3}{4}+3\\times\\dfrac{1}{8}=2$\n\n분산은 평균에서 떨어진 거리의 제곱에 확률을 곱해 구한다.\n$V(X)=(1-2)^2\\times\\dfrac{1}{8}$\n$\\qquad +(2-2)^2\\times\\dfrac{3}{4}+(3-2)^2\\times\\dfrac{1}{8}$\n$=\\dfrac{1}{8}+0+\\dfrac{1}{8}=\\dfrac{1}{4}$\n\n표본의 크기가 $4$이므로\n$V(\\bar X)=\\dfrac{V(X)}{4}=\\dfrac{1}{16}$\n\n따라서 정답은 ⑤이다.",
     "solutionStatus": "solution_upgraded_batch1",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -209,7 +209,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 모평균의 신뢰구간: $\\bar{x} - z \\cdot \\dfrac{\\sigma}{\\sqrt{n}} \\le m \\le \\bar{x} + z \\cdot \\dfrac{\\sigma}{\\sqrt{n}}$\\n조건 정리: 표본평균 $\\bar{x}=170$, 표준편차 $\\sigma=5$, 표본 크기 $n=100$, $z=1.96$이다.\\n풀이 방향: 오차한계를 먼저 계산한다.\\n정석 풀이: 오차한계 $= 1.96 \\cdot \\dfrac{5}{\\sqrt{100}} = 1.96 \\cdot \\dfrac{5}{10} = 1.96 \\cdot 0.5 = 0.98$\\n따라서 신뢰구간은 $170 - 0.98 \\le m \\le 170 + 0.98$, 즉 $169.02 \\le m \\le 170.98$이다.\\n따라서 정답은 ④이다.",
+    "solution": "모표준편차 $\\sigma=5$, 표본 크기 $n=100$, 표본평균 $\\bar x=170$이다.\n95% 신뢰구간의 표준정규분포 값은 $1.96$이다.\n\n오차한계는\n$1.96\\times\\dfrac{\\sigma}{\\sqrt n}$\n$=1.96\\times\\dfrac{5}{10}=0.98$\n\n따라서 모평균 $m$의 신뢰구간은\n$170-0.98\\le m\\le170+0.98$\n$169.02\\le m\\le170.98$\n\n따라서 정답은 ④이다.",
     "solutionStatus": "solution_upgraded_batch1",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
