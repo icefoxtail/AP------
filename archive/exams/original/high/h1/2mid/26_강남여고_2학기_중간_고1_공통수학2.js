@@ -14,7 +14,11 @@ window.questionBank = [
     ],
     "image": "",
     "answer": "①",
-    "solution": "내분점 $P(a,b)$가 $AP:PB=2:1$을 만족하므로\n$P=\\left(\\dfrac{1\\cdot A+2\\cdot B}{3}\\right)$이다.\n따라서 $a=\\dfrac{-2+2\\cdot4}{3}=2$,\n$b=\\dfrac{1+2\\cdot(-2)}{3}=-1$이다.\n그러므로 $a+b=2-1=1$이다.\n정답은 ①이다.",
+    "solution": "선분 $AB$를 $AP:PB=2:1$로 내분하는 점을 $P(a,b)$라 하자.\n내분점의 좌표는 양 끝점의 좌표에 반대쪽의 비를 곱하여 구한다.\n$a=\\dfrac{1\\cdot(-2)+2\\cdot4}{2+1}$\n$=\\dfrac{-2+8}{3}=2$이다.\n$b=\\dfrac{1\\cdot1+2\\cdot(-2)}{2+1}$\n$=\\dfrac{1-4}{3}=-1$이다.\n따라서\n$a+b=2+(-1)=1$이다.\n정답은 ①이다.",
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q01-solution.svg",
+    "solutionImageAlt": "좌표평면의 선분 AB 위에 내분점 P(2, -1)을 표시하고 AP:PB=2:1인 관계를 보여주는 그림",
+    "solutionImageCaption": "내분점 P(2, -1)는 선분 AB를 2:1로 나눈다.",
+    "solutionImageSize": "full",
     "sourceDocumentSha256": "sha256:f1e0cb0b266816f92b379c8ebe8c3685e4b69922647e18cc2959fa91779b04bc",
     "sourceQuestionNo": "1",
     "sourcePageNo": 1,
@@ -45,7 +49,7 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "tags": []
+    "tags": ["도형"]
   },
   {
     "id": 2,
@@ -61,7 +65,11 @@ window.questionBank = [
     ],
     "image": "",
     "answer": "④",
-    "solution": "원을 완전제곱식으로 정리하면\n$(x+3)^2+(y-4)^2=9$이다.\n따라서 중심은 $(-3,4)$이고 반지름은 $3$이다.\n그러므로 $a+b+2r=-3+4+2\\cdot3=7$이다.\n정답은 ④이다.",
+    "solution": "주어진 원의 방정식을 완전제곱식으로 고친다.\n$x^2+y^2+6x-8y+16=0$\n$(x^2+6x+9)+(y^2-8y+16)=9$\n$(x+3)^2+(y-4)^2=9$이다.\n원의 표준형과 비교하면 중심은 $(-3,4)$이고 반지름은 $3$이다.\n따라서\n$a=-3,\\quad b=4,\\quad r=3$이므로\n$a+b+2r=-3+4+2\\cdot3=7$이다.\n정답은 ④이다.",
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q02-solution.svg",
+    "solutionImageAlt": "좌표평면에서 중심이 (-3, 4), 반지름이 3인 원과 중심에서 원 위 점까지의 반지름을 표시한 그림",
+    "solutionImageCaption": "완전제곱식에서 중심 (-3, 4)와 반지름 3을 읽는다.",
+    "solutionImageSize": "full",
     "sourceDocumentSha256": "sha256:f1e0cb0b266816f92b379c8ebe8c3685e4b69922647e18cc2959fa91779b04bc",
     "sourceQuestionNo": "2",
     "sourcePageNo": 1,
@@ -92,7 +100,7 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "tags": []
+    "tags": ["도형"]
   },
   {
     "id": 3,
@@ -108,7 +116,7 @@ window.questionBank = [
     ],
     "image": "",
     "answer": "②",
-    "solution": "보기의 집합이 공집합인지 차례로 확인한다.\nㄱ. $\\{\\emptyset\\}$은 원소 $\\emptyset$을 가지므로 공집합이 아니다.\nㄴ. 1보다 작은 자연수는 없으므로 공집합이다.\nㄷ. 양수이면서 음수인 수는 없으므로 공집합이다.\nㄹ. 짝수인 소수 $2$를 원소로 가지므로 공집합이 아니다.\nㅁ. 자연수에서 $x^2+x=0$을 만족하는 값이 없으므로 공집합이다.\nㅂ. 3과 10의 양의 공약수 $1$을 원소로 가지므로 공집합이 아니다.\n따라서 공집합인 것은 ㄴ, ㄷ, ㅁ의 3개이다.\n정답은 ②이다.",
+    "solution": "공집합은 원소가 하나도 없는 집합이다. 각 보기의 원소를 확인하자.\nㄱ. $\\{\\emptyset\\}$은 원소 $\\emptyset$을 하나 가지므로 공집합이 아니다.\nㄴ. $1$보다 작은 자연수는 없으므로 공집합이다.\nㄷ. 음수이면서 동시에 $x>0$인 수는 없으므로 공집합이다.\nㄹ. $2$는 짝수인 소수이므로 공집합이 아니다.\nㅁ. $x^2+x=x(x+1)=0$에서 $x=0$ 또는 $x=-1$이다. 둘 다 자연수가 아니므로 공집합이다.\nㅂ. $1$은 $3$과 $10$의 양의 공약수이므로 공집합이 아니다.\n따라서 공집합인 것은 ㄴ, ㄷ, ㅁ의 $3$개이다.\n정답은 ②이다.",
     "sourceDocumentSha256": "sha256:f1e0cb0b266816f92b379c8ebe8c3685e4b69922647e18cc2959fa91779b04bc",
     "sourceQuestionNo": "3",
     "sourcePageNo": 1,
@@ -155,7 +163,11 @@ window.questionBank = [
     ],
     "image": "",
     "answer": "②",
-    "solution": "$AC=BC$이므로 두 거리의 제곱을 같게 놓는다.\n$(a+1)^2+(1-2)^2=(a-2)^2+(1-3)^2$\n$(a+1)^2+1=(a-2)^2+4$\n$a^2+2a+2=a^2-4a+8$\n$6a=6$이므로 $a=1$이다.\n정답은 ②이다.",
+    "solution": "$AC=BC$이므로 두 선분의 길이의 제곱을 같게 놓는다.\n$AC^2=(a+1)^2+(1-2)^2$\n$=(a+1)^2+1$이다.\n$BC^2=(a-2)^2+(1-3)^2$\n$=(a-2)^2+4$이다.\n따라서\n$(a+1)^2+1=(a-2)^2+4$\n$a^2+2a+2=a^2-4a+8$\n$6a=6$\n$a=1$이다.\n정답은 ②이다.",
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q04-solution.svg",
+    "solutionImageAlt": "A(-1, 2), B(2, 3), C(1, 1)과 AC, BC, 선분 AB의 수직이등분선을 표시한 좌표평면 그림",
+    "solutionImageCaption": "AC와 BC가 같아지는 점 C의 좌표는 (1, 1)이다.",
+    "solutionImageSize": "full",
     "sourceDocumentSha256": "sha256:f1e0cb0b266816f92b379c8ebe8c3685e4b69922647e18cc2959fa91779b04bc",
     "sourceQuestionNo": "4",
     "sourcePageNo": 1,
@@ -186,7 +198,7 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "tags": []
+    "tags": ["도형"]
   },
   {
     "id": 5,
@@ -202,7 +214,7 @@ window.questionBank = [
     ],
     "image": "",
     "answer": "⑤",
-    "solution": "직선의 방정식을 $mx-y+3m+1=0$으로 쓴다.\n원점에서 이 직선까지의 거리가 반지름 $\\sqrt2$와 같아야 한다.\n$\\dfrac{|3m+1|}{\\sqrt{m^2+1}}=\\sqrt2$\n양변을 제곱하면 $(3m+1)^2=2(m^2+1)$이고,\n$7m^2+6m-1=0$이다.\n$(7m-1)(m+1)=0$이므로 $m=\\dfrac17$ 또는 $m=-1$이다.\n조건 $m<0$에서 $m=-1$이다.\n정답은 ⑤이다.",
+    "solution": "원의 중심은 $O(0,0)$이고 반지름은 $\\sqrt2$이다.\n직선 $y=m(x+3)+1$을 일반형으로 바꾸면\n$mx-y+3m+1=0$이다.\n원과 직선이 접하려면 원의 중심에서 직선까지의 거리가 반지름과 같아야 한다.\n$\\dfrac{|3m+1|}{\\sqrt{m^2+1}}=\\sqrt2$\n$(3m+1)^2=2(m^2+1)$\n$9m^2+6m+1=2m^2+2$\n$7m^2+6m-1=0$\n$(7m-1)(m+1)=0$\n$m=\\dfrac17$ 또는 $m=-1$이다.\n조건 $m<0$을 만족하는 값은 $m=-1$이다.\n정답은 ⑤이다.",
     "sourceDocumentSha256": "sha256:f1e0cb0b266816f92b379c8ebe8c3685e4b69922647e18cc2959fa91779b04bc",
     "sourceQuestionNo": "5",
     "sourcePageNo": 1,
@@ -233,10 +245,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "tags": [],
+    "tags": ["도형"],
     "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q05-solution.svg",
-    "solutionImageAlt": "Solution diagram for question 5",
-    "solutionImageCaption": "Visual summary of the geometric or algebraic relations used in the solution to question 5.",
+    "solutionImageAlt": "중심이 원점이고 반지름이 √2인 원에 직선 x+y+2=0이 점 (-1, -1)에서 접하는 그림",
+    "solutionImageCaption": "중심에서 접선까지의 거리가 반지름 √2와 같다.",
     "solutionImageSize": "full"
   },
   {
