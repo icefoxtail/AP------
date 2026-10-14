@@ -265,7 +265,7 @@ window.questionBank = [
       "$130$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 역함수가 존재하는 함수는 일대일대응이다.\n조건 정리: $n(X)=5$이고 $f:X\\to Y$가 일대일대응이므로 $n(Y)=5$이다.\n풀이 방향: 두 집합의 원소를 일대일로 대응시키는 모든 순열을 센다.\n정석 풀이: 원소가 $5$개인 두 집합 사이의 일대일대응의 개수는 $5!=120$이다. 따라서 구하는 합은 $n(Y)+120=5+120=125$이다.\n따라서 정답은 ④이다.",
+    "solution": "역함수가 존재하는 함수는 서로 다른 원소를 서로 다른 원소로 대응시키고, 공역의 모든 원소에 대응되는 원소가 있어야 한다. 즉 일대일대응이다.\n$n(X)=5$이므로 일대일대응의 공역도 원소가 $5$개이다.\n$n(Y)=5$\n$X$의 첫째 원소에 대응시킬 $Y$의 원소는 $5$가지,\n둘째 원소에는 남은 $4$가지, 차례로 $3,2,1$가지이다.\n함수의 개수는\n$5!=5\\times4\\times3\\times2\\times1=120$\n구하는 합은\n$n(Y)+120=5+120=125$\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
@@ -295,7 +295,7 @@ window.questionBank = [
       "$-\\dfrac{1}{2}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 제곱근 값을 새로운 문자로 두면 교점의 개수를 이차식의 값으로 판단할 수 있다.\n조건 정리: $t=\\sqrt{2-2x}\\ge0$이라 두면 $x=1-\\dfrac{t^2}{2}$이고, 교점 조건은 $-t=x+k$이다.\n풀이 방향: $k$를 $t$에 대한 완전제곱식으로 나타내고 같은 $k$를 만드는 서로 다른 음이 아닌 $t$의 개수를 센다.\n정석 풀이: $-t=1-\\dfrac{t^2}{2}+k$에서 $k=\\dfrac{t^2}{2}-t-1=\\dfrac{(t-1)^2}{2}-\\dfrac{3}{2}$이다. $-\\dfrac{3}{2}<k<-1$이면 $t=1\\pm\\sqrt{2k+3}$이 모두 양수여서 교점이 두 개이다. $k=-1$이면 $t=0,2$로 서로 다른 두 교점이 생긴다. 그러나 $k>-1$이면 두 해 중 하나가 음수가 되어 교점은 하나뿐이다. 따라서 범위는 $-\\dfrac{3}{2}<k\\le-1$이고, $a+b=-\\dfrac{3}{2}-1=-\\dfrac{5}{2}$이다.\n따라서 정답은 ①이다.",
+    "solution": "제곱근 안이 $0$ 이상이므로 $x\\le1$이다.\n$t=\\sqrt{2-2x}$로 놓으면 $t\\ge0$이고\n$t^2=2-2x\\ \\Rightarrow\\ x=1-\\dfrac{t^2}{2}$\n두 그래프의 교점에서 $-t=x+k$이므로\n$-t=1-\\dfrac{t^2}{2}+k$\n$k=\\dfrac{t^2}{2}-t-1$\n$=\\dfrac{(t-1)^2}{2}-\\dfrac32$\n따라서\n$(t-1)^2=2k+3$\n$t=1\\pm\\sqrt{2k+3}$\n서로 다른 두 교점이 생기려면 두 $t$가 서로 다르고 모두 $0$ 이상이어야 한다.\n$2k+3>0\\ \\Rightarrow\\ k>-\\dfrac32$\n$1-\\sqrt{2k+3}\\ge0\\ \\Rightarrow\\ k\\le-1$\n$k=-1$일 때 $t=0,2$이므로 두 점이고, $k=-\\dfrac32$에서는 $t=1$로 한 점이다.\n따라서 $-\\dfrac32<k\\le-1$이고\n$a+b=-\\dfrac32+(-1)=-\\dfrac52$\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q10-solution.svg",
     "solutionImageAlt": "무리함수와 직선의 두 교점을 나타낸 해설 그래프",
     "solutionImageCaption": "k=−1.4인 직선과 무리함수의 두 교점을 표시하고 −3/2<k≤−1 범위의 경계를 확인한다.",
@@ -329,7 +329,7 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 두 점의 $x$좌표를 제곱근으로 치환하면 기울기의 분모가 인수분해된다.\n조건 정리: $u=\\sqrt{a}$, $v=\\sqrt{c}$라 두면 $0<u<v$, $b=3u$, $d=3v$이고 $u+v=1$이다.\n풀이 방향: 기울기 공식을 적용한 뒤 $v^2-u^2=(v-u)(v+u)$를 이용한다.\n정석 풀이: 직선 $PQ$의 기울기는 $\\dfrac{d-b}{c-a}=\\dfrac{3v-3u}{v^2-u^2}=\\dfrac{3(v-u)}{(v-u)(v+u)}=\\dfrac{3}{u+v}=3$이다.\n따라서 정답은 ②이다.",
+    "solution": "두 점이 그래프 위에 있으므로\n$b=3\\sqrt a,\\quad d=3\\sqrt c$\n$b+d=3$에서\n$3\\sqrt a+3\\sqrt c=3$\n$\\sqrt a+\\sqrt c=1$\n직선 $PQ$의 기울기는\n$\\dfrac{d-b}{c-a}$\n$=\\dfrac{3\\sqrt c-3\\sqrt a}{c-a}$\n$=\\dfrac{3(\\sqrt c-\\sqrt a)}{(\\sqrt c-\\sqrt a)(\\sqrt c+\\sqrt a)}$\n$=\\dfrac{3}{\\sqrt c+\\sqrt a}$\n$=\\dfrac31=3$\n단, $0<a<c$이므로 $\\sqrt c-\\sqrt a>0$이고 약분할 수 있다.\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q11-solution.svg",
     "solutionImageAlt": "무리함수 위의 두 점과 현 PQ를 나타낸 해설 그래프",
     "solutionImageCaption": "y=3√x 위에서 b+d=3이 되는 두 점을 표시하고 직선 PQ의 기울기 3을 확인한다.",
@@ -361,7 +361,7 @@ window.questionBank = [
       "$24000$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 선수 구성뿐 아니라 승부차기 순서까지 구분해야 한다.\n조건 정리: 1학년에서 $3$명, 2학년에서 $2$명을 고르고, 뽑힌 $5$명을 순서 있게 배치한다.\n풀이 방향: 조합으로 선수들을 고른 뒤 $5!$을 곱한다.\n정석 풀이: 경우의 수는 ${}_{6}C_{3}\\times{}_{5}C_{2}\\times5!=20\\times10\\times120=24000$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "1학년 $6$명 중 $3$명을 먼저 고르는 방법은\n$ {}_6C_3=\\dfrac{6\\times5\\times4}{3\\times2\\times1}=20$\n2학년 $5$명 중 $2$명을 고르는 방법은\n$ {}_5C_2=\\dfrac{5\\times4}{2\\times1}=10$\n이렇게 고른 다섯 명은 서로 다른 선수이다.\n승부차기 순서도 구별하므로 $5!$을 곱해야 한다.\n$5!=5\\times4\\times3\\times2\\times1=120$\n전체 경우의 수는\n$20\\times10\\times120$\n$=200\\times120=24000$\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
     "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
