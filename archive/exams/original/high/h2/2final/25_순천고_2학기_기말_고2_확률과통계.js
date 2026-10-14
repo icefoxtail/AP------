@@ -21,7 +21,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 이항분포에서 $E(X^2) = V(X) + \\{E(X)\\}^2$를 이용한다.\\n조건 정리: 6의 약수는 1, 2, 3, 6이므로 4개, 성공확률은 $p = \\dfrac{4}{6} = \\dfrac{2}{3}$이다. $X \\sim B\\!\\left(90,\\, \\dfrac{2}{3}\\right)$\\n풀이 방향: $E(X)$와 $V(X)$를 구한 뒤 $E(X^2) = V(X) + \\{E(X)\\}^2$에 대입한다.\\n정석 풀이: $E(X) = 90 \\cdot \\dfrac{2}{3} = 60$\\n$V(X) = 90 \\cdot \\dfrac{2}{3} \\cdot \\dfrac{1}{3} = 20$\\n$E(X^2) = V(X) + \\{E(X)\\}^2 = 20 + 60^2 = 20 + 3600 = 3620$\\n따라서 정답은 ④이다.",
+    "solution": "한 번 던져 6의 약수가 나올 확률을 먼저 구한다.\n$6$의 약수: $1,\\,2,\\,3,\\,6$ (4개)\n$p=\\dfrac{4}{6}=\\dfrac{2}{3}$, $X\\sim B\\left(90,\\dfrac{2}{3}\\right)$\n\n이항분포의 평균과 분산은\n$E(X)=np=90\\times\\dfrac{2}{3}=60$\n$V(X)=np(1-p)=90\\times\\dfrac{2}{3}\\times\\dfrac{1}{3}=20$\n\n$V(X)=E(X^2)-\\{E(X)\\}^2$이므로\n$E(X^2)=V(X)+\\{E(X)\\}^2$\n$=20+60^2=3620$\n\n따라서 정답은 ④이다.",
     "solutionStatus": "solution_upgraded_batch1",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -68,7 +68,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 선형변환의 평균 $E(aX+b) = aE(X)+b$를 이용한다.\\n조건 정리: 서로 다른 두 동전을 동시에 던질 때 모두 앞면이 나올 확률은 $\\dfrac{1}{2} \\cdot \\dfrac{1}{2} = \\dfrac{1}{4}$이다. $X \\sim B\\!\\left(200,\\, \\dfrac{1}{4}\\right)$\\n풀이 방향: 이항분포의 평균 공식으로 $E(X)$를 구한 뒤 $Y = 2X+3$의 평균에 대입한다.\\n정석 풀이: $E(X) = 200 \\cdot \\dfrac{1}{4} = 50$\\n$E(Y) = 2E(X)+3 = 2 \\cdot 50 + 3 = 103$\\n따라서 정답은 ③이다.",
+    "solution": "두 동전을 한 번에 던질 때 모두 앞면이 나올 확률은\n$p=\\dfrac{1}{2}\\times\\dfrac{1}{2}=\\dfrac{1}{4}$\n\n이 시행을 200번 반복하므로\n$X\\sim B\\left(200,\\dfrac{1}{4}\\right)$\n$E(X)=200\\times\\dfrac{1}{4}=50$\n\n$Y=2X+3$에서 평균의 성질을 적용하면\n$E(Y)=E(2X+3)$\n$=2E(X)+3$\n$=2\\times50+3=103$\n\n따라서 정답은 ③이다.",
     "solutionStatus": "solution_upgraded_batch1",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -83,7 +83,7 @@ window.questionBank = [
     "standardUnit": "확률분포",
     "standardUnitKey": "H15-PS-05",
     "standardUnitOrder": 5,
-    "level": "중",
+    "level": "하",
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
@@ -115,7 +115,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 표본평균의 분포: 모집단 $N(m, \\sigma^2)$에서 크기 $n$인 표본의 평균은 $N\\!\\left(m,\\, \\dfrac{\\sigma^2}{n}\\right)$을 따른다.\\n조건 정리: 모집단은 $N(60, 3^2)$이고 표본의 크기는 $n=36$이다.\\n풀이 방향: 표본평균의 평균과 표준편차를 구해 $a$, $b$를 확정한다.\\n정석 풀이: 표본평균 $\\bar{X}$는 $N\\!\\left(60,\\, \\left(\\dfrac{3}{\\sqrt{36}}\\right)^2\\right) = N\\!\\left(60,\\, \\left(\\dfrac{1}{2}\\right)^2\\right)$을 따른다.\\n따라서 $a = 60$, $b = \\dfrac{1}{2}$이므로 $ab = 60 \\cdot \\dfrac{1}{2} = 30$이다.\\n따라서 정답은 ①이다.",
+    "solution": "모집단이 $N(60,3^2)$을 따르고 표본의 크기는 $n=36$이다.\n표본평균의 평균과 표준편차는\n$E(\\bar X)=60$\n$\\sigma_{\\bar X}=\\dfrac{3}{\\sqrt{36}}=\\dfrac{1}{2}$\n\n따라서 표본평균의 분포는\n$\\bar X\\sim N\\left(60,\\left(\\dfrac{1}{2}\\right)^2\\right)$\n\n$N(a,b^2)$과 비교하면 $a=60$, $b=\\dfrac{1}{2}$이므로\n$ab=60\\times\\dfrac{1}{2}=30$\n\n따라서 정답은 ①이다.",
     "solutionStatus": "solution_upgraded_batch1",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -130,7 +130,7 @@ window.questionBank = [
     "standardUnit": "통계적 추정",
     "standardUnitKey": "H15-PS-06",
     "standardUnitOrder": 6,
-    "level": "중",
+    "level": "하",
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
@@ -162,7 +162,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 표본평균의 분산은 $V(\\bar{X}) = \\dfrac{V(X)}{n}$이다.\\n조건 정리: 확률의 합이 1이므로 $\\dfrac{1}{8} + a + \\dfrac{1}{8} = 1$에서 $a = \\dfrac{3}{4}$이다.\\n풀이 방향: $E(X)$, $E(X^2)$을 계산해 $V(X)$를 구하고 $n=4$로 나눈다.\\n정석 풀이: $E(X) = 1 \\cdot \\dfrac{1}{8} + 2 \\cdot \\dfrac{3}{4} + 3 \\cdot \\dfrac{1}{8} = \\dfrac{1}{8} + \\dfrac{12}{8} + \\dfrac{3}{8} = 2$\\n$E(X^2) = 1 \\cdot \\dfrac{1}{8} + 4 \\cdot \\dfrac{3}{4} + 9 \\cdot \\dfrac{1}{8} = \\dfrac{1}{8} + 3 + \\dfrac{9}{8} = \\dfrac{1+24+9}{8} = \\dfrac{34}{8} = \\dfrac{17}{4}$\\n$V(X) = E(X^2) - \\{E(X)\\}^2 = \\dfrac{17}{4} - 4 = \\dfrac{1}{4}$\\n$V(\\bar{X}) = \\dfrac{V(X)}{4} = \\dfrac{1}{4} \\cdot \\dfrac{1}{4} = \\dfrac{1}{16}$\\n따라서 정답은 ⑤이다.",
+    "solution": "확률분포표에서 확률의 합은 $1$이다.\n$\\dfrac{1}{8}+a+\\dfrac{1}{8}=1$\n$a=\\dfrac{3}{4}$\n\n모집단의 평균은\n$E(X)=1\\times\\dfrac{1}{8}+2\\times\\dfrac{3}{4}+3\\times\\dfrac{1}{8}=2$\n\n분산은 평균에서 떨어진 거리의 제곱에 확률을 곱해 구한다.\n$V(X)=(1-2)^2\\times\\dfrac{1}{8}$\n$\\qquad +(2-2)^2\\times\\dfrac{3}{4}+(3-2)^2\\times\\dfrac{1}{8}$\n$=\\dfrac{1}{8}+0+\\dfrac{1}{8}=\\dfrac{1}{4}$\n\n표본의 크기가 $4$이므로\n$V(\\bar X)=\\dfrac{V(X)}{4}=\\dfrac{1}{16}$\n\n따라서 정답은 ⑤이다.",
     "solutionStatus": "solution_upgraded_batch1",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -209,7 +209,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 모평균의 신뢰구간: $\\bar{x} - z \\cdot \\dfrac{\\sigma}{\\sqrt{n}} \\le m \\le \\bar{x} + z \\cdot \\dfrac{\\sigma}{\\sqrt{n}}$\\n조건 정리: 표본평균 $\\bar{x}=170$, 표준편차 $\\sigma=5$, 표본 크기 $n=100$, $z=1.96$이다.\\n풀이 방향: 오차한계를 먼저 계산한다.\\n정석 풀이: 오차한계 $= 1.96 \\cdot \\dfrac{5}{\\sqrt{100}} = 1.96 \\cdot \\dfrac{5}{10} = 1.96 \\cdot 0.5 = 0.98$\\n따라서 신뢰구간은 $170 - 0.98 \\le m \\le 170 + 0.98$, 즉 $169.02 \\le m \\le 170.98$이다.\\n따라서 정답은 ④이다.",
+    "solution": "모표준편차 $\\sigma=5$, 표본 크기 $n=100$, 표본평균 $\\bar x=170$이다.\n95% 신뢰구간의 표준정규분포 값은 $1.96$이다.\n\n오차한계는\n$1.96\\times\\dfrac{\\sigma}{\\sqrt n}$\n$=1.96\\times\\dfrac{5}{10}=0.98$\n\n따라서 모평균 $m$의 신뢰구간은\n$170-0.98\\le m\\le170+0.98$\n$169.02\\le m\\le170.98$\n\n따라서 정답은 ④이다.",
     "solutionStatus": "solution_upgraded_batch1",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -224,7 +224,7 @@ window.questionBank = [
     "standardUnit": "통계적 추정",
     "standardUnitKey": "H15-PS-06",
     "standardUnitOrder": 6,
-    "level": "중",
+    "level": "하",
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
@@ -256,7 +256,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 신뢰구간의 왼쪽 끝이 주어지면 오차한계를 구해 중심과 오른쪽 끝을 차례로 찾는다.\\n조건 정리: $\\sigma=3$, $n=81$, 99% 신뢰도에서 $z=2.58$, 신뢰구간의 왼쪽 끝이 $2.14$이다.\\n풀이 방향: 오차한계를 먼저 계산하고, 왼쪽 끝과 오차한계로 중심(표본평균)을 구한 뒤 오른쪽 끝을 결정한다.\\n정석 풀이: 오차한계 $e = 2.58 \\cdot \\dfrac{3}{\\sqrt{81}} = 2.58 \\cdot \\dfrac{3}{9} = 2.58 \\cdot \\dfrac{1}{3} = 0.86$\\n중심(표본평균) $\\bar{x} = 2.14 + 0.86 = 3.00$\\n오른쪽 끝 $a = 3.00 + 0.86 = 3.86$\\n따라서 정답은 ②이다.",
+    "solution": "99% 신뢰구간은 표본평균을 중심으로 오차한계만큼 양쪽으로 벌어진다.\n$\\sigma=3$, $n=81$, 신뢰도에 대응하는 값은 $2.58$이다.\n\n오차한계는\n$e=2.58\\times\\dfrac{3}{\\sqrt{81}}$\n$=2.58\\times\\dfrac{1}{3}=0.86$\n\n구간의 왼쪽 끝이 $\\bar x-e=2.14$이므로\n$\\bar x=2.14+0.86=3.00$\n\n오른쪽 끝은\n$a=\\bar x+e=3.00+0.86=3.86$\n\n따라서 정답은 ②이다.",
     "solutionStatus": "solution_upgraded_batch1",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -304,7 +304,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 표본평균을 표준화한 뒤 주어진 꼬리확률에 해당하는 $z$값을 찾는다.\\n조건 정리: 표준편차 $\\sigma=5$, $n=100$이므로 표본평균의 표준편차는 $\\dfrac{5}{\\sqrt{100}} = 0.5$이다.\\n풀이 방향: $P(\\bar{X} \\ge 160) = 0.0228$은 표준정규분포에서 $P(Z \\ge z_0) = 0.0228$이 되는 $z_0$를 찾는 것이다.\\n정석 풀이: $P(Z \\ge 2) = 0.5 - P(0 \\le Z \\le 2) = 0.5 - 0.4772 = 0.0228$\\n따라서 $z_0 = 2$이다. 즉 $\\dfrac{160 - m}{0.5} = 2$이므로\\n$160 - m = 1$, $m = 159$\\n따라서 정답은 ④이다.",
+    "solution": "표본평균의 분포를 먼저 구한다.\n$\\bar X\\sim N\\left(m,\\left(\\dfrac{5}{\\sqrt{100}}\\right)^2\\right)$\n$\\sigma_{\\bar X}=\\dfrac{5}{10}=0.5$\n\n주어진 확률을 표준화하면\n$P(\\bar X\\ge160)=P\\left(Z\\ge\\dfrac{160-m}{0.5}\\right)=0.0228$\n\n표에서 $P(0\\le Z\\le2)=0.4772$이므로\n$P(Z\\ge2)=0.5-0.4772=0.0228$\n따라서 $\\dfrac{160-m}{0.5}=2$이다.\n\n$160-m=2\\times0.5=1$\n$m=159$\n\n따라서 정답은 ④이다.",
     "solutionStatus": "solution_upgraded_batch2",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -328,7 +328,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q07-solution.svg",
+    "solutionImageAlt": "표본평균 160 이상의 확률은 표준화하면 Z가 2 이상인 오른쪽 꼬리 영역이다.",
+    "solutionImageCaption": "P(Z ≥ 2) = 0.0228",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -352,7 +356,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 표본평균의 분포를 표준화해 구간확률을 표에서 읽는다.\\n조건 정리: 모집단 $N(65, 5^2)$, $n=25$이므로 $\\bar{X} \\sim N\\!\\left(65, 1^2\\right)$이다. (표준편차 $\\dfrac{5}{\\sqrt{25}}=1$)\\n풀이 방향: 63과 66.5를 각각 표준화한다.\\n정석 풀이: $63$에 대한 $z$값: $\\dfrac{63-65}{1} = -2$\\n$66.5$에 대한 $z$값: $\\dfrac{66.5-65}{1} = 1.5$\\n$P(63 \\le \\bar{X} \\le 66.5) = P(-2 \\le Z \\le 1.5)$\\n$= P(0 \\le Z \\le 2) + P(0 \\le Z \\le 1.5) = 0.48 + 0.43 = 0.91$\\n따라서 정답은 ⑤이다.",
+    "solution": "표본평균의 평균은 $65$, 표준편차는\n$\\sigma_{\\bar X}=\\dfrac{5}{\\sqrt{25}}=1$이다.\n$\\bar X\\sim N(65,1^2)$\n\n양 끝값을 각각 표준화한다.\n$63\\ \\rightarrow\\ \\dfrac{63-65}{1}=-2$\n$66.5\\ \\rightarrow\\ \\dfrac{66.5-65}{1}=1.5$\n\n구하는 확률은\n$P(63\\le\\bar X\\le66.5)=P(-2\\le Z\\le1.5)$\n$=P(0\\le Z\\le2)+P(0\\le Z\\le1.5)$\n$=0.48+0.43=0.91$\n\n따라서 정답은 ⑤이다.",
     "solutionStatus": "solution_upgraded_batch2",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -376,7 +380,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q08-solution.svg",
+    "solutionImageAlt": "평균 65 표준편차 1인 표본평균에서 63 이상 66.5 이하 구간을 표준화하면 -2 이상 1.5 이하 영역이다.",
+    "solutionImageCaption": "P(-2 ≤ Z ≤ 1.5) = 0.91",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -399,7 +407,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 이항분포 $B(n, p)$의 평균·분산·표준편차를 구한 뒤 선형변환에 적용한다.\\n조건 정리: 동전 4개를 던질 때 앞면 개수 $X \\sim B\\!\\left(4, \\dfrac{1}{2}\\right)$이므로 $E(X)=2$, $V(X)=1$, 표준편차 $=1$이다.\\n풀이 방향: $Y=aX+b$의 표준편차가 1이면 $a=1$ ($a>0$), 그 다음 평균 조건으로 $b$를 구한다.\\n정석 풀이: $\\sigma(Y) = |a| \\cdot \\sigma(X) = a \\cdot 1 = 1$ (단, $a>0$)이므로 $a=1$\\n$E(Y) = aE(X)+b = 1 \\cdot 2 + b = 4$이므로 $b = 2$\\n따라서 정답은 ②이다.",
+    "solution": "동전 4개 중 앞면의 개수는\n$X\\sim B\\left(4,\\dfrac{1}{2}\\right)$\n\n이항분포의 평균과 분산은\n$E(X)=4\\times\\dfrac{1}{2}=2$\n$V(X)=4\\times\\dfrac{1}{2}\\times\\dfrac{1}{2}=1$\n$\\sigma(X)=\\sqrt{1}=1$\n\n$Y=aX+b$, $a>0$이고 $\\sigma(Y)=1$이므로\n$\\sigma(Y)=a\\sigma(X)=a=1$\n\n또 $E(Y)=4$이므로\n$4=aE(X)+b=1\\times2+b$\n$b=2$\n\n따라서 $a=1,\\ b=2$이므로 정답은 ②이다.",
     "solutionStatus": "solution_upgraded_batch2",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -446,7 +454,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 한 제품이 불량품일 확률을 먼저 구하고, 불량품 수를 정규근사한다.\\n조건 정리: 제품 무게 $\\sim N(30, 5^2)$이고 40g 이상이면 불량품이다.\\n풀이 방향: 불량 확률 $p$를 구한 뒤, 불량품 수 $W \\sim B(2500, p)$를 정규분포로 근사한다.\\n정석 풀이: $p = P\\!\\left(Z \\ge \\dfrac{40-30}{5}\\right) = P(Z \\ge 2) = 0.5 - 0.48 = 0.02$\\n$W$의 평균: $2500 \\cdot 0.02 = 50$\\n$W$의 표준편차: $\\sqrt{2500 \\cdot 0.02 \\cdot 0.98} = \\sqrt{49} = 7$\\n64에 대한 $z$값: $\\dfrac{64-50}{7} = 2$\\n$P(W \\ge 64) = P(Z \\ge 2) = 0.5 - 0.48 = 0.02$\\n따라서 정답은 ⑤이다.",
+    "solution": "제품 한 개의 무게를 $T$라 하면 $T\\sim N(30,5^2)$이다.\n$40$ g 이상일 확률은\n$p=P\\left(Z\\ge\\dfrac{40-30}{5}\\right)=P(Z\\ge2)$\n$=0.5-0.48=0.02$\n\n2500개 중 불량품 수를 $W$라 하면\n$W\\sim B(2500,0.02)$\n$E(W)=2500\\times0.02=50$\n$V(W)=2500\\times0.02\\times0.98=49$\n$\\sigma(W)=7$\n\n이항분포를 정규분포로 근사하여 구하면\n$P(W\\ge64)\\approx P\\left(Z\\ge\\dfrac{64-50}{7}\\right)$\n$=P(Z\\ge2)=0.5-0.48=0.02$\n\n따라서 정답은 ⑤이다.",
     "solutionStatus": "solution_upgraded_batch2",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -470,7 +478,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "불량품 수는 근사 정규분포 평균 50 표준편차 7이며 64 이상의 꼬리 영역에 대응한다.",
+    "solutionImageCaption": "W ≥ 64 → Z ≥ 2, 확률 약 0.02",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -493,7 +505,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 확률의 합이 1이라는 조건으로 $a$를 구하고, $V\\!\\left(\\dfrac{1}{a}X\\right) = \\dfrac{1}{a^2}V(X)$를 이용한다.\\n조건 정리: $x=0,1,2,3$에서 확률은 각각 $\\dfrac{3}{20}, \\dfrac{1}{20}, \\dfrac{5}{20}, \\dfrac{9}{20}$이다.\\n풀이 방향: 네 확률의 합을 구해 $a$를 확정한 뒤 $V(X)$를 계산한다.\\n정석 풀이: $\\dfrac{3+1+5+9}{20} + a = 1 \\Rightarrow \\dfrac{18}{20} + a = 1 \\Rightarrow a = \\dfrac{2}{20} = \\dfrac{1}{10}$\\n$E(X) = 0 \\cdot \\dfrac{3}{20} + 1 \\cdot \\dfrac{1}{20} + 2 \\cdot \\dfrac{5}{20} + 3 \\cdot \\dfrac{9}{20} + 4 \\cdot \\dfrac{1}{10}$\\n$= 0 + \\dfrac{1}{20} + \\dfrac{10}{20} + \\dfrac{27}{20} + \\dfrac{8}{20} = \\dfrac{46}{20} = \\dfrac{23}{10}$\\n$E(X^2) = 0 + \\dfrac{1}{20} + \\dfrac{20}{20} + \\dfrac{81}{20} + \\dfrac{16}{10} = \\dfrac{102}{20} + \\dfrac{32}{20} = \\dfrac{134}{20} = \\dfrac{67}{10}$\\n$V(X) = \\dfrac{67}{10} - \\left(\\dfrac{23}{10}\\right)^2 = \\dfrac{670}{100} - \\dfrac{529}{100} = \\dfrac{141}{100}$\\n$V\\!\\left(\\dfrac{1}{a}X\\right) = \\dfrac{1}{a^2}V(X) = \\dfrac{1}{(1/10)^2} \\cdot \\dfrac{141}{100} = 100 \\cdot \\dfrac{141}{100} = 141$\\n따라서 정답은 ③이다.",
+    "solution": "먼저 각 $x$에 대한 확률을 구하고, 합이 $1$임을 이용한다.\n$P(X=0)=\\dfrac{3}{20}$, $P(X=1)=\\dfrac{1}{20}$\n$P(X=2)=\\dfrac{5}{20}$, $P(X=3)=\\dfrac{9}{20}$\n$\\dfrac{3+1+5+9}{20}+a=1$\n$a=\\dfrac{1}{10}$, 따라서 $P(X=4)=\\dfrac{2}{20}$\n\n평균을 계산하면\n$E(X)=\\dfrac{0+1+10+27+8}{20}=\\dfrac{23}{10}$\n\n제곱의 평균은\n$E(X^2)=\\dfrac{0+1+20+81+32}{20}=\\dfrac{67}{10}$\n\n분산은\n$V(X)=E(X^2)-\\{E(X)\\}^2$\n$=\\dfrac{67}{10}-\\left(\\dfrac{23}{10}\\right)^2$\n$=\\dfrac{670-529}{100}=\\dfrac{141}{100}$\n\n$\\dfrac{1}{a}=10$이므로 분산의 성질을 이용하면\n$V\\left(\\dfrac{1}{a}X\\right)=V(10X)=10^2V(X)$\n$=100\\times\\dfrac{141}{100}=141$\n\n따라서 정답은 ③이다.",
     "solutionStatus": "solution_upgraded_batch3",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -508,7 +520,7 @@ window.questionBank = [
     "standardUnit": "확률분포",
     "standardUnitKey": "H15-PS-05",
     "standardUnitOrder": 5,
-    "level": "중",
+    "level": "상",
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
@@ -540,7 +552,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] $P(\\bar{X} \\ge a) = 0.98 > 0.5$이므로 $a$는 평균보다 작은 쪽, 즉 $z$값이 음수이다.\\n조건 정리: 모집단 $N(300, 5^2)$, $n=100$이므로 $\\bar{X} \\sim N\\!\\left(300, 0.5^2\\right)$이다.\\n풀이 방향: $P(Z \\ge -2) = 0.5 + 0.48 = 0.98$임을 이용해 표준화 방정식을 세운다.\\n정석 풀이: $P(\\bar{X} \\ge a) = 0.98$이므로\\n$P\\!\\left(Z \\ge \\dfrac{a-300}{0.5}\\right) = 0.98 = P(Z \\ge -2)$\\n따라서 $\\dfrac{a-300}{0.5} = -2$이므로 $a - 300 = -1$, $a = 299$\\n따라서 정답은 ②이다.",
+    "solution": "모집단의 분포가 $N(300,5^2)$이고 표본 크기가 $100$이므로\n$\\sigma_{\\bar X}=\\dfrac{5}{\\sqrt{100}}=0.5$\n$\\bar X\\sim N(300,0.5^2)$\n\n$P(\\bar X\\ge a)=0.98$이므로 $a$는 평균 $300$보다 작다.\n표에서 $P(0\\le Z\\le2)=0.48$이므로\n$P(Z\\ge-2)=0.5+0.48=0.98$\n\n따라서 $a$를 표준화한 값은 $-2$이다.\n$\\dfrac{a-300}{0.5}=-2$\n$a-300=-1$\n$a=299$\n\n따라서 정답은 ②이다.",
     "solutionStatus": "solution_upgraded_batch3",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -587,7 +599,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] $\\dfrac{1}{(x+1)(x+2)}=\\dfrac{1}{x+1}-\\dfrac{1}{x+2}$로 부분분수 분해하면 합이 소거된다.\\n조건 정리: $P(X=x)=\\dfrac{a}{(x+1)(x+2)}$, $x=1,2,\\ldots,10$이다.\\n풀이 방향: 확률의 총합이 1임을 이용해 $a$를 구하고, $X>3a$를 만족하는 $x$의 범위를 정한다.\\n정석 풀이: $\\sum_{x=1}^{10}\\dfrac{1}{(x+1)(x+2)}=\\dfrac{1}{2}-\\dfrac{1}{12}=\\dfrac{5}{12}$이므로\\n$a\\cdot\\dfrac{5}{12}=1$, 따라서 $a=\\dfrac{12}{5}$이다.\\n$3a=\\dfrac{36}{5}=7.2$이므로 $X>3a$는 $X=8,9,10$인 경우이다.\\n따라서\\n$P(X>3a)=\\dfrac{12}{5}\\left(\\dfrac{1}{9\\cdot10}+\\dfrac{1}{10\\cdot11}+\\dfrac{1}{11\\cdot12}\\right)$\\n$=\\dfrac{12}{5}\\left(\\dfrac{1}{9}-\\dfrac{1}{12}\\right)=\\dfrac{12}{5}\\cdot\\dfrac{1}{36}=\\dfrac{1}{15}$\\n따라서 정답은 ④이다.",
+    "solution": "확률질량함수의 전체 확률이 $1$임을 이용한다.\n먼저\n$\\dfrac{1}{(x+1)(x+2)}=\\dfrac{1}{x+1}-\\dfrac{1}{x+2}$\n\n$x=1,2,\\ldots,10$까지 더하면 중간 항이 소거되어\n$\\dfrac{1}{2}-\\dfrac{1}{12}=\\dfrac{5}{12}$\n$a\\times\\dfrac{5}{12}=1$\n$a=\\dfrac{12}{5}$\n\n$3a=\\dfrac{36}{5}=7.2$이므로 $X>3a$는 $X=8,9,10$이다.\n\n$P(X>3a)=a\\left(\\dfrac{1}{9\\cdot10}+\\dfrac{1}{10\\cdot11}+\\dfrac{1}{11\\cdot12}\\right)$\n$=\\dfrac{12}{5}\\left(\\dfrac{1}{9}-\\dfrac{1}{12}\\right)$\n$=\\dfrac{12}{5}\\times\\dfrac{1}{36}=\\dfrac{1}{15}$\n\n따라서 정답은 ④이다.",
     "solutionStatus": "solution_upgraded_batch3",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -602,7 +614,7 @@ window.questionBank = [
     "standardUnit": "확률분포",
     "standardUnitKey": "H15-PS-05",
     "standardUnitOrder": 5,
-    "level": "중",
+    "level": "상",
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
@@ -634,7 +646,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 정규분포에서 $P(Z \\ge z_1) + P(Z \\ge z_2) = 1$이면 $z_1 + z_2 = 0$이어야 한다.\\n조건 정리: $X \\sim N(m, \\sigma^2)$, $\\bar{X} \\sim N\\!\\left(m, \\dfrac{\\sigma^2}{n}\\right)$이다.\\n풀이 방향: (가)로 $m$을 구하고, (나)로 $n$을 구한다.\\n정석 풀이: 조건 (가): $P(X \\ge 12) + P(\\bar{X} \\ge 12) = 1$\\n두 확률의 합이 1이 되려면 두 확률의 $z$값이 서로 합이 0이 되어야 한다.\\n$\\dfrac{12-m}{\\sigma} + \\dfrac{12-m}{\\sigma/\\sqrt{n}} = 0$에서 $(12-m)\\!\\left(\\dfrac{1}{\\sigma} + \\dfrac{\\sqrt{n}}{\\sigma}\\right) = 0$\\n$1+\\sqrt{n} > 0$이므로 $12 - m = 0$, 즉 $m = 12$\\n조건 (나): $P(X \\ge 16) + P(\\bar{X} \\ge 10) = 1$\\n$\\dfrac{16-12}{\\sigma} + \\dfrac{10-12}{\\sigma/\\sqrt{n}} = 0$이므로 $\\dfrac{4}{\\sigma} - \\dfrac{2\\sqrt{n}}{\\sigma} = 0$\\n$4 = 2\\sqrt{n}$, $\\sqrt{n} = 2$, $n = 4$\\n$m + 2n = 12 + 8 = 20$\\n따라서 정답은 ③이다.",
+    "solution": "모집단과 표본평균의 분포는\n$X\\sim N(m,\\sigma^2)$\n$\\bar X\\sim N\\left(m,\\dfrac{\\sigma^2}{n}\\right)$\n\n정규분포에서 오른쪽 꼬리확률의 합이 $1$이면 두 표준화 값은 서로 반대이다.\n\n(가) $P(X\\ge12)+P(\\bar X\\ge12)=1$\n$\\dfrac{12-m}{\\sigma}=-\\dfrac{12-m}{\\sigma/\\sqrt n}$\n$(12-m)(1+\\sqrt n)=0$\n$n>0$이므로 $m=12$이다.\n\n(나) $P(X\\ge16)+P(\\bar X\\ge10)=1$\n$\\dfrac{16-12}{\\sigma}=-\\dfrac{10-12}{\\sigma/\\sqrt n}$\n$\\dfrac{4}{\\sigma}=\\dfrac{2\\sqrt n}{\\sigma}$\n$\\sqrt n=2$, $n=4$\n\n$m+2n=12+2\\times4=20$\n\n따라서 정답은 ③이다.",
     "solutionStatus": "solution_upgraded_batch3",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -649,7 +661,7 @@ window.questionBank = [
     "standardUnit": "통계적 추정",
     "standardUnitKey": "H15-PS-06",
     "standardUnitOrder": 6,
-    "level": "중",
+    "level": "상",
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
@@ -681,7 +693,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 확률밀도함수의 전체 넓이는 1이고, 구간의 넓이가 그 구간의 확률이다.\\n조건 정리: $f(x)=a(3-x)$ ($0 \\le x \\le 3$), $f(x)=\\dfrac{b}{3}(x-3)$ ($3 \\le x \\le 6$)이다.\\n풀이 방향: 왼쪽 구간 넓이를 $P(0 \\le X \\le 3)$으로 두고 $3b$와 같다는 조건, 전체 넓이 1 조건을 연립한다.\\n정석 풀이: $P(0 \\le X \\le 3) = \\int_0^3 a(3-x)\\,dx = a\\left[3x - \\dfrac{x^2}{2}\\right]_0^3 = a \\cdot \\dfrac{9}{2} = \\dfrac{9a}{2}$\\n조건에서 $\\dfrac{9a}{2} = 3b$이므로 $b = \\dfrac{3a}{2}$\\n오른쪽 구간 넓이: $\\int_3^6 \\dfrac{b}{3}(x-3)\\,dx = \\dfrac{b}{3}\\left[\\dfrac{(x-3)^2}{2}\\right]_3^6 = \\dfrac{b}{3} \\cdot \\dfrac{9}{2} = \\dfrac{3b}{2}$\\n전체 넓이: $\\dfrac{9a}{2} + \\dfrac{3b}{2} = 1$\\n$b = \\dfrac{3a}{2}$를 대입하면 $\\dfrac{9a}{2} + \\dfrac{9a}{4} = 1$, $\\dfrac{27a}{4} = 1$, $a = \\dfrac{4}{27}$\\n$b = \\dfrac{3}{2} \\cdot \\dfrac{4}{27} = \\dfrac{2}{9}$\\n$a + b = \\dfrac{4}{27} + \\dfrac{6}{27} = \\dfrac{10}{27}$\\n따라서 정답은 ④이다.",
+    "solution": "확률밀도함수의 그래프는 $0\\le x\\le3$과 $3\\le x\\le6$에서 각각 삼각형을 만든다.\n\n왼쪽 삼각형은 밑변이 $3$, 높이가 $f(0)=3a$이므로\n$P(0\\le X\\le3)=\\dfrac{1}{2}\\times3\\times3a=\\dfrac{9a}{2}$\n주어진 조건에 따라\n$\\dfrac{9a}{2}=3b$\n$b=\\dfrac{3a}{2}$\n\n오른쪽 삼각형은 밑변이 $3$, 높이가 $f(6)=b$이므로\n$P(3\\le X\\le6)=\\dfrac{1}{2}\\times3\\times b=\\dfrac{3b}{2}$\n\n전체 확률이 $1$이므로\n$\\dfrac{9a}{2}+\\dfrac{3b}{2}=1$\n$\\dfrac{9a}{2}+\\dfrac{9a}{4}=1$\n$\\dfrac{27a}{4}=1$, $a=\\dfrac{4}{27}$\n$b=\\dfrac{3}{2}\\times\\dfrac{4}{27}=\\dfrac{2}{9}$\n\n$a+b=\\dfrac{4}{27}+\\dfrac{6}{27}=\\dfrac{10}{27}$\n\n따라서 정답은 ④이다.",
     "solutionStatus": "solution_upgraded_batch3",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -705,7 +717,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
     "subUnit": "확률변수와 기댓값",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "확률밀도함수의 두 구간과 삼각형의 넓이를 보여주는 해설 그래프",
+    "solutionImageCaption": "삼각형의 넓이로 구간확률을 계산한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -728,7 +744,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 신뢰도가 같을 때 신뢰구간 길이 $b-a = 2z \\cdot \\dfrac{\\sigma}{\\sqrt{n}}$은 $\\dfrac{\\sigma}{\\sqrt{n}}$에 비례한다.\\n조건 정리: 신뢰도가 모두 같으므로 $z$는 동일하다. $\\dfrac{\\sigma}{\\sqrt{n}}$만 비교하면 된다.\\n풀이 방향: 각 보기의 $\\dfrac{\\sigma}{\\sqrt{n}}$ 값을 계산해 가장 큰 것을 찾는다.\\n정석 풀이:\\n① $\\dfrac{2}{\\sqrt{36}} = \\dfrac{2}{6} \\approx 0.333$\\n② $\\dfrac{10}{\\sqrt{100}} = \\dfrac{10}{10} = 1$\\n③ $\\dfrac{9}{\\sqrt{25}} = \\dfrac{9}{5} = 1.8$\\n④ $\\dfrac{12}{\\sqrt{81}} = \\dfrac{12}{9} \\approx 1.333$\\n⑤ $\\dfrac{11}{\\sqrt{100}} = \\dfrac{11}{10} = 1.1$\\n가장 큰 값은 ③의 $1.8$이다.\\n따라서 정답은 ③이다.",
+    "solution": "신뢰도가 같으면 신뢰구간의 폭은\n$b-a=2z\\times\\dfrac{\\sigma}{\\sqrt n}$이다.\n여기서 $z$는 모든 보기에서 같으므로 $\\dfrac{\\sigma}{\\sqrt n}$가 가장 큰 것을 고른다.\n\n① $\\dfrac{2}{\\sqrt{36}}=\\dfrac{1}{3}$\n② $\\dfrac{10}{\\sqrt{100}}=1$\n③ $\\dfrac{9}{\\sqrt{25}}=\\dfrac{9}{5}=1.8$\n④ $\\dfrac{12}{\\sqrt{81}}=\\dfrac{4}{3}$\n⑤ $\\dfrac{11}{\\sqrt{100}}=1.1$\n\n가장 큰 값은 ③의 $1.8$이므로 그 신뢰구간의 폭이 가장 크다.\n\n따라서 정답은 ③이다.",
     "solutionStatus": "solution_upgraded_batch4",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -775,7 +791,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 신뢰구간 길이 $b-a = 2 \\times 1.96 \\times \\dfrac{\\sigma}{\\sqrt{n}}$이 4 이하가 되어야 한다.\\n조건 정리: $\\sigma=8$, $z=1.96$, $b-a \\le 4$를 만족하는 자연수 $n$의 최솟값을 구한다.\\n풀이 방향: $b-a = \\dfrac{2 \\times 1.96 \\times 8}{\\sqrt{n}} \\le 4$를 $n$에 대해 풀어 최솟값을 구한다.\\n정석 풀이: $\\dfrac{2 \\times 1.96 \\times 8}{\\sqrt{n}} \\le 4$\\n$\\dfrac{31.36}{\\sqrt{n}} \\le 4$\\n$\\sqrt{n} \\ge \\dfrac{31.36}{4} = 7.84$\\n$n \\ge 7.84^2 = 61.4656$\\n따라서 자연수 $n$의 최솟값은 $62$이다.\\n따라서 정답은 ①이다.",
+    "solution": "95% 신뢰구간의 폭은\n$b-a=2\\times1.96\\times\\dfrac{8}{\\sqrt n}$이다.\n\n폭이 $4$ 이하라는 조건을 적용하면\n$2\\times1.96\\times\\dfrac{8}{\\sqrt n}\\le4$\n$\\dfrac{31.36}{\\sqrt n}\\le4$\n$\\sqrt n\\ge7.84$\n\n양변이 양수이므로 제곱하여\n$n\\ge(7.84)^2=61.4656$\n\n$n$은 자연수이므로 가능한 최솟값은 $62$이다.\n\n따라서 정답은 ①이다.",
     "solutionStatus": "solution_upgraded_batch4",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -823,7 +839,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 한 상자의 총 무게(16개 합)의 분포를 구한 뒤, 두 상자 중 정확히 한 개만 조건을 만족할 확률을 이항분포로 계산한다.\\n조건 정리: 소금빵 1개의 무게 $\\sim N(200, 20^2)$이고, 한 상자는 16개이다.\\n풀이 방향: 한 상자 내용량(16개 합)의 분포를 구해 구간확률을 찾고, 두 상자 중 한 개만 만족할 확률을 계산한다.\\n정석 풀이: 한 상자의 총 무게 평균: $16 \\times 200 = 3200$ g\\n한 상자의 총 무게 표준편차: $\\sqrt{16} \\times 20 = 80$ g\\n(총 무게 $\\sim N(3200, 80^2)$)\\n$3.12$ kg $= 3120$ g에 대한 $z$값: $\\dfrac{3120-3200}{80} = -1$\\n$3.36$ kg $= 3360$ g에 대한 $z$값: $\\dfrac{3360-3200}{80} = 2$\\n한 상자가 조건을 만족할 확률: $p = P(-1 \\le Z \\le 2) = 0.34 + 0.48 = 0.82$\\n두 상자 중 정확히 한 개만 조건을 만족할 확률:\\n$\\binom{2}{1} p(1-p) = 2 \\times 0.82 \\times 0.18 = 0.2952$\\n따라서 정답은 ②이다.",
+    "solution": "한 상자의 내용량을 $S$ g이라 하자.\n소금빵 16개 무게의 합이므로\n$E(S)=16\\times200=3200$\n$\\sigma(S)=\\sqrt{16}\\times20=80$\n$S\\sim N(3200,80^2)$\n\n$3.12$ kg부터 $3.36$ kg까지는 $3120$ g부터 $3360$ g까지이다.\n두 끝값을 표준화하면\n$\\dfrac{3120-3200}{80}=-1$\n$\\dfrac{3360-3200}{80}=2$\n\n한 상자가 이 범위에 들어올 확률을 $p$라 하면\n$p=P(-1\\le Z\\le2)$\n$=P(0\\le Z\\le1)+P(0\\le Z\\le2)$\n$=0.34+0.48=0.82$\n\n두 상자 중 정확히 한 상자만 조건을 만족하는 경우는\n(가) A만 만족: $0.82\\times0.18$\n(나) B만 만족: $0.18\\times0.82$\n\n두 경우를 더하면\n$2\\times0.82\\times0.18=0.2952$\n\n따라서 정답은 ②이다.",
     "solutionStatus": "solution_upgraded_batch4",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -838,7 +854,7 @@ window.questionBank = [
     "standardUnit": "통계적 추정",
     "standardUnitKey": "H15-PS-06",
     "standardUnitOrder": 6,
-    "level": "중",
+    "level": "상",
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
@@ -847,7 +863,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-ESTIMATION_APPLICATION",
     "subUnit": "추정의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "한 상자 내용량의 평균은 3200그램 표준편차는 80그램이고 구간이 -1에서 2 사이의 영역에 대응한다.",
+    "solutionImageCaption": "3120~3360g → -1 ≤ Z ≤ 2",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -870,7 +890,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] $P(A) + P(B) = 1$이면 $P(A) = 1 - P(B)$이고, $A$와 $B$는 서로 대칭관계가 성립한다.\\n조건 정리: $\\bar{X} \\sim N(20, 2^2)$이고, $\\bar{Y} \\sim N\\!\\left(100, \\left(\\dfrac{\\sigma}{4}\\right)^2\\right)$이다.\\n풀이 방향: $P(\\bar{X} \\le 23)$을 먼저 표준화한 뒤, $P(\\bar{Y} \\le 94) = 1 - P(\\bar{X} \\le 23)$을 이용해 $\\sigma$를 구한다.\\n정석 풀이: $P(\\bar{X} \\le 23) = P\\!\\left(Z \\le \\dfrac{23-20}{2}\\right) = P(Z \\le 1.5) = 0.5 + 0.4332 = 0.9332$\\n$P(\\bar{Y} \\le 94) = 1 - 0.9332 = 0.0668 = P(Z \\le -1.5)$\\n따라서 $\\dfrac{94-100}{\\sigma/4} = -1.5$이므로 $\\dfrac{-6}{\\sigma/4} = -1.5$\\n$\\sigma/4 = 4$, $\\sigma = 16$\\n$\\bar{Y}$의 표준편차 $= \\dfrac{16}{4} = 4$\\n$P(\\bar{Y} \\le 110) = P\\!\\left(Z \\le \\dfrac{110-100}{4}\\right) = P(Z \\le 2.5) = 0.5 + 0.4938 = 0.9938$\\n따라서 정답은 ①이다.",
+    "solution": "두 표본평균의 분포부터 구한다.\n$\\bar X\\sim N\\left(20,\\left(\\dfrac{4}{\\sqrt4}\\right)^2\\right)=N(20,2^2)$\n$\\bar Y\\sim N\\left(100,\\left(\\dfrac{\\sigma}{\\sqrt{16}}\\right)^2\\right)=N\\left(100,\\left(\\dfrac{\\sigma}{4}\\right)^2\\right)$\n\n먼저 주어진 첫 번째 확률은\n$P(\\bar X\\le23)=P\\left(Z\\le\\dfrac{23-20}{2}\\right)$\n$=P(Z\\le1.5)=0.5+0.4332=0.9332$\n\n확률의 합이 $1$이므로\n$P(\\bar Y\\le94)=1-0.9332=0.0668$\n$=P(Z\\le-1.5)$\n\n따라서 $\\bar Y$를 표준화한 값이 $-1.5$이다.\n$\\dfrac{94-100}{\\sigma/4}=-1.5$\n$\\dfrac{24}{\\sigma}=1.5$\n$\\sigma=16$\n$\\sigma_{\\bar Y}=\\dfrac{16}{4}=4$\n\n이제 구하는 확률은\n$P(\\bar Y\\le110)=P\\left(Z\\le\\dfrac{110-100}{4}\\right)$\n$=P(Z\\le2.5)=0.5+0.4938=0.9938$\n\n따라서 정답은 ①이다.",
     "solutionStatus": "solution_upgraded_batch4",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -885,7 +905,7 @@ window.questionBank = [
     "standardUnit": "통계적 추정",
     "standardUnitKey": "H15-PS-06",
     "standardUnitOrder": 6,
-    "level": "중",
+    "level": "상",
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
@@ -894,7 +914,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "첫 번째 표본평균의 왼쪽 누적확률 0.9332에 대응하여 두 번째 표본평균의 왼쪽 누적확률은 0.0668이고 표준화 값은 -1.5이다.",
+    "solutionImageCaption": "P(Ȳ ≤ 94) = P(Z ≤ -1.5) = 0.0668",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -917,7 +941,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 신뢰구간의 중심이 표본평균이고, 오차한계로 $\\sigma$를 역산한다.\\n조건 정리: 표본 $n=10$, 신뢰구간 $0.42 \\le m \\le 5.58$, $z = 2.58$이다.\\n풀이 방향: 표본평균과 오차한계를 신뢰구간에서 읽고, 오차한계 공식으로 $\\sigma$를 구한다.\\n정석 풀이: 표본평균 $\\bar{x} = \\dfrac{5+(-3)+6+(-1)+7+6+(-1)+8+5+(-2)}{10} = \\dfrac{30}{10} = 3$\\n신뢰구간 중심: $\\dfrac{0.42+5.58}{2} = 3$ ✓\\n오차한계: $5.58 - 3 = 2.58$\\n$2.58 \\cdot \\dfrac{\\sigma}{\\sqrt{10}} = 2.58$이므로 $\\dfrac{\\sigma}{\\sqrt{10}} = 1$, $\\sigma = \\sqrt{10}$\\n$V(X) = \\sigma^2 = 10$\\n따라서 정답은 ⑤이다.",
+    "solution": "표본 10개의 합은\n$5-3+6-1+7+6-1+8+5-2=30$\n따라서 표본평균은\n$\\bar x=\\dfrac{30}{10}=3$이다.\n\n99% 신뢰구간은\n$\\bar x-2.58\\dfrac{\\sigma}{\\sqrt{10}}\\le m\\le\\bar x+2.58\\dfrac{\\sigma}{\\sqrt{10}}$\n\n주어진 신뢰구간은 $0.42\\le m\\le5.58$이므로\n중심은 $3$, 오차한계는\n$5.58-3=2.58$이다.\n\n$2.58\\dfrac{\\sigma}{\\sqrt{10}}=2.58$\n$\\dfrac{\\sigma}{\\sqrt{10}}=1$\n$\\sigma=\\sqrt{10}$\n\n모집단 확률변수의 분산은 $V(X)=\\sigma^2=10$이다.\n\n따라서 정답은 ⑤이다.",
     "solutionStatus": "solution_upgraded_batch4",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -964,7 +988,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] $f$는 짝함수(0 대칭), $g$는 3을 기준으로 대칭이다. 두 함수가 공통 계수 $a$, $b$를 공유한다.\\n조건 정리: $f(-x)=f(x)$이므로 $f$는 우함수; $f$의 정의역 $[-4,4]$. $g(3+x)=g(3-x)$이므로 $g$는 $x=3$ 대칭; $g$의 정의역 $[-3,9]$.\\n풀이 방향: $g$의 전체 넓이 1로 $b$를 구하고, $f$의 전체 넓이 1로 $a$를 구한다.\\n정석 풀이:\\n[g의 넓이 계산] $-3 \\le x \\le 3$에서 $g(x)=ax+b$이고, $g$는 $x=3$ 대칭이므로 $3 \\le x \\le 9$에서도 $g(x)=a(6-x)+b$이다.\\n$\\int_{-3}^{3}(ax+b)\\,dx = \\left[\\dfrac{ax^2}{2}+bx\\right]_{-3}^{3} = \\dfrac{9a}{2}+3b - \\dfrac{9a}{2}+3b = 6b$\\n대칭에 의해 $3 \\le x \\le 9$ 구간의 넓이도 $6b$이다.\\n전체 넓이: $6b + 6b = 12b = 1$이므로 $b = \\dfrac{1}{12}$\\n[f의 넓이 계산] $f$는 우함수이므로 $-4 \\le x \\le 0$에서 $f(x)=a(-x)+b=-ax+b$이다.\\n$\\int_0^4(ax+b)\\,dx = \\left[\\dfrac{ax^2}{2}+bx\\right]_0^4 = 8a+4b$\\n전체 넓이: $2(8a+4b) = 16a+8b = 1$\\n$b = \\dfrac{1}{12}$을 대입: $16a + \\dfrac{8}{12} = 1$, $16a = \\dfrac{1}{3}$, $a = \\dfrac{1}{48}$\\n$P(-3 \\le X \\le 3) = \\int_{-3}^{3} f(x)\\,dx = 2\\int_0^3(ax+b)\\,dx = 2\\!\\left[\\dfrac{ax^2}{2}+bx\\right]_0^3 = 2\\!\\left(\\dfrac{9a}{2}+3b\\right) = 9a+6b$\\n$= 9 \\cdot \\dfrac{1}{48} + 6 \\cdot \\dfrac{1}{12} = \\dfrac{9}{48} + \\dfrac{24}{48} = \\dfrac{33}{48} = \\dfrac{11}{16}$\\n$16P(-3 \\le X \\le 3) = 16 \\cdot \\dfrac{11}{16} = 11$\\n따라서 정답은 ①이다.",
+    "solution": "확률밀도함수는 전체 그래프 아래의 넓이가 $1$이다.\n주어진 대칭성을 이용해 $a,b$를 차례로 구한다.\n\n먼저 $g$는 직선 $x=3$에 대하여 대칭이다.\n$-3\\le x\\le3$에서 양 끝 높이는\n$g(-3)=b-3a$, $g(3)=b+3a$이다.\n\n이 구간의 넓이는 사다리꼴의 넓이로\n$\\dfrac{6\\{(b-3a)+(b+3a)\\}}{2}=6b$\n대칭인 $3\\le x\\le9$의 넓이도 $6b$이므로\n$12b=1$\n$b=\\dfrac{1}{12}$\n\n다음으로 $f$는 $y$축 대칭이다.\n$0\\le x\\le4$에서 양 끝 높이는 $b$, $4a+b$이므로\n$\\dfrac{4\\{b+(4a+b)\\}}{2}=8a+4b$\n전체 넓이가 $1$이므로\n$2(8a+4b)=1$\n$16a+8b=1$\n$16a+\\dfrac{2}{3}=1$\n$a=\\dfrac{1}{48}$\n\n이제 $-3\\le X\\le3$의 확률을 구한다.\n대칭성에 의해 $0\\le x\\le3$의 넓이를 두 배 하면 된다.\n$P(-3\\le X\\le3)=2\\times\\dfrac{3\\{b+(3a+b)\\}}{2}$\n$=9a+6b$\n$=\\dfrac{9}{48}+\\dfrac{6}{12}=\\dfrac{11}{16}$\n\n$16P(-3\\le X\\le3)=16\\times\\dfrac{11}{16}=11$\n\n따라서 정답은 ①이다.",
     "solutionStatus": "solution_upgraded_batch5",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -979,7 +1003,7 @@ window.questionBank = [
     "standardUnit": "확률분포",
     "standardUnitKey": "H15-PS-05",
     "standardUnitOrder": 5,
-    "level": "중",
+    "level": "상",
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
@@ -988,7 +1012,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
     "subUnit": "확률변수와 기댓값",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "f와 g의 대칭성 및 확률구간의 넓이를 보여주는 해설 그래프",
+    "solutionImageCaption": "두 밀도함수의 대칭성을 이용해 전체 넓이 1과 구간확률을 계산한다.",
+    "solutionImageSize": "large"
   },
   {
     "id": 22,
@@ -1006,7 +1034,7 @@ window.questionBank = [
     "choices": [],
     "answer": "0.8413",
     "answerStatus": "round4_direct_solved",
-    "solution": "[키포인트] $P(\\bar{X} \\le 215)$로 표준오차를 구하고, 그 결과를 $\\bar{Y}$의 표준오차 계산에 이용한다.\\n조건 정리: $X \\sim N(220, \\sigma_X^2)$, $Y \\sim N(240, \\sigma_Y^2)$이고 $\\sigma_Y = 1.5\\sigma_X$이다. 표본 크기는 각각 $n$, $9n$이다.\\n풀이 방향: $P(\\bar{X} \\le 215) = 0.1587$에서 $z = -1$을 이용해 $\\dfrac{\\sigma_X}{\\sqrt{n}}$을 구한다.\\n정석 풀이: 표준정규분포표에서 $P(0 \\le Z \\le 1) = 0.3413$이므로\\n$P(Z \\le -1) = 0.5 - 0.3413 = 0.1587$\\n즉 $\\dfrac{215-220}{\\sigma_X/\\sqrt{n}} = -1$이므로 $\\dfrac{\\sigma_X}{\\sqrt{n}} = 5$\\n$\\bar{Y}$의 표준오차: $\\dfrac{\\sigma_Y}{\\sqrt{9n}} = \\dfrac{1.5\\sigma_X}{3\\sqrt{n}} = \\dfrac{0.5\\sigma_X}{\\sqrt{n}} = 0.5 \\times 5 = 2.5$\\n$P(\\bar{Y} \\ge 237.5) = P\\!\\left(Z \\ge \\dfrac{237.5-240}{2.5}\\right) = P(Z \\ge -1) = 0.5 + 0.3413 = 0.8413$\\n따라서 구하는 값은 $0.8413$이다.",
+    "solution": "지역 A의 모표준편차를 $\\sigma_X$라 두면 지역 B의 모표준편차는\n$\\sigma_Y=1.5\\sigma_X$이다.\n\n두 표본평균의 분포는 각각\n$\\bar X\\sim N\\left(220,\\dfrac{\\sigma_X^2}{n}\\right)$\n$\\bar Y\\sim N\\left(240,\\dfrac{(1.5\\sigma_X)^2}{9n}\\right)$\n\n표에서 $P(0\\le Z\\le1)=0.3413$이므로\n$P(Z\\le-1)=0.5-0.3413=0.1587$\n\n주어진 $P(\\bar X\\le215)=0.1587$을 표준화하면\n$\\dfrac{215-220}{\\sigma_X/\\sqrt n}=-1$\n$\\dfrac{-5}{\\sigma_X/\\sqrt n}=-1$\n$\\dfrac{\\sigma_X}{\\sqrt n}=5$\n\n지역 B의 표본평균의 표준편차는\n$\\sigma_{\\bar Y}=\\dfrac{1.5\\sigma_X}{\\sqrt{9n}}$\n$=\\dfrac{1.5}{3}\\times\\dfrac{\\sigma_X}{\\sqrt n}$\n$=\\dfrac{1}{2}\\times5=2.5$\n\n따라서 구하는 확률은\n$P(\\bar Y\\ge237.5)=P\\left(Z\\ge\\dfrac{237.5-240}{2.5}\\right)$\n$=P(Z\\ge-1)=0.5+0.3413=0.8413$\n\n따라서 구하는 값은 $0.8413$이다.",
     "solutionStatus": "solution_upgraded_batch5",
     "reviewStatus": "round4_verified",
     "tags": [
@@ -1021,7 +1049,7 @@ window.questionBank = [
     "standardUnit": "통계적 추정",
     "standardUnitKey": "H15-PS-06",
     "standardUnitOrder": 6,
-    "level": "중",
+    "level": "상",
     "contentStatus": "round4_verified_from_page_image",
     "repairRound": "anscombe_round4",
     "questionType": "주관식",
@@ -1032,7 +1060,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "지역 B의 표본평균 표준편차는 2.5이고 237.5 이상은 표준화하여 Z가 -1 이상인 영역이다.",
+    "solutionImageCaption": "P(Z ≥ -1) = 0.8413",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -1050,7 +1082,7 @@ window.questionBank = [
     "choices": [],
     "answer": "23",
     "answerStatus": "round4_direct_solved",
-    "solution": "[키포인트] 한 번의 시행에서 교집합 원소 수가 1일 확률을 먼저 구하고, 8640번 반복에서 정규근사를 적용한다.\\n조건 정리: $A$의 부분집합 8개, $B$의 부분집합 4개에서 각각 임의로 1개씩 선택한다. 공통 원소는 $a$, $b$ 두 개이다.\\n풀이 방향: 원소 $a$, $b$ 각각이 두 선택된 부분집합에 모두 속할 확률을 구해, 교집합 원소 수의 분포를 파악한다.\\n정석 풀이: 원소 $a$가 $A$의 선택된 부분집합에 속할 확률: $\\dfrac{4}{8} = \\dfrac{1}{2}$\\n원소 $a$가 $B$의 선택된 부분집합에 속할 확률: $\\dfrac{2}{4} = \\dfrac{1}{2}$\\n원소 $a$가 교집합에 속할 확률: $\\dfrac{1}{2} \\times \\dfrac{1}{2} = \\dfrac{1}{4}$ (마찬가지로 $b$도 $\\dfrac{1}{4}$)\\n($c$는 $B$에 없으므로 교집합에 포함 불가)\\n교집합 원소 수 $W \\sim B\\!\\left(2, \\dfrac{1}{4}\\right)$이므로\\n$P(W=1) = \\binom{2}{1} \\cdot \\dfrac{1}{4} \\cdot \\dfrac{3}{4} = \\dfrac{3}{8}$\\n8640번 반복에서 기록이 1인 횟수를 $T$라 하면 $T \\sim B\\!\\left(8640, \\dfrac{3}{8}\\right)$\\n$E(T) = 8640 \\times \\dfrac{3}{8} = 3240$\\n$V(T) = 8640 \\times \\dfrac{3}{8} \\times \\dfrac{5}{8} = 3240 \\times \\dfrac{5}{8} = 2025$, $\\sigma(T) = 45$\\n$P(T \\ge 3330) = P\\!\\left(Z \\ge \\dfrac{3330-3240}{45}\\right) = P(Z \\ge 2) = 0.5 - 0.477 = 0.023$\\n(표에서 $P(0 \\le Z \\le 2) = 0.477$이므로)\\n$k = 0.023$이므로 $1000k = 23$\\n따라서 구하는 값은 $23$이다.",
+    "solution": "교집합에 들어갈 수 있는 원소는 $a,b$뿐이다.\n각 부분집합은 모든 부분집합 중 균등하게 선택하므로, 원소 $a$가 선택된 A의 부분집합에 포함될 확률은 $\\dfrac{4}{8}=\\dfrac{1}{2}$이다.\nB의 부분집합에 포함될 확률도 $\\dfrac{2}{4}=\\dfrac{1}{2}$이다.\n\n따라서 $a$가 교집합에 들어갈 확률은\n$\\dfrac{1}{2}\\times\\dfrac{1}{2}=\\dfrac{1}{4}$\n$b$도 같으며 두 원소의 포함 여부는 서로 독립이다.\n\n한 번 시행하여 교집합의 원소가 1개일 확률을 $p$라 하면\n(가) $a$만 포함: $\\dfrac{1}{4}\\times\\dfrac{3}{4}=\\dfrac{3}{16}$\n(나) $b$만 포함: $\\dfrac{3}{4}\\times\\dfrac{1}{4}=\\dfrac{3}{16}$\n$p=\\dfrac{3}{16}+\\dfrac{3}{16}=\\dfrac{3}{8}$\n\n8640번 중 교집합의 원소가 1개인 횟수를 $T$라 하면\n$T\\sim B\\left(8640,\\dfrac{3}{8}\\right)$\n$E(T)=8640\\times\\dfrac{3}{8}=3240$\n$V(T)=8640\\times\\dfrac{3}{8}\\times\\dfrac{5}{8}=2025$\n$\\sigma(T)=45$\n\n정규분포로 근사하면\n$k=P(T\\ge3330)\\approx P\\left(Z\\ge\\dfrac{3330-3240}{45}\\right)$\n$=P(Z\\ge2)$\n\n표에서 $P(0\\le Z\\le2)=0.477$이므로\n$k\\approx0.5-0.477=0.023$\n$1000k=1000\\times0.023=23$\n\n따라서 구하는 값은 $23$이다.",
     "solutionStatus": "solution_upgraded_batch5",
     "reviewStatus": "round4_verified",
     "tags": [
@@ -1065,7 +1097,7 @@ window.questionBank = [
     "standardUnit": "확률분포",
     "standardUnitKey": "H15-PS-05",
     "standardUnitOrder": 5,
-    "level": "중",
+    "level": "상",
     "contentStatus": "round4_verified_from_page_image",
     "repairRound": "anscombe_round4",
     "questionType": "주관식",
@@ -1076,7 +1108,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "이항분포 평균 3240 표준편차 45에 대한 3330 이상의 정규근사는 Z가 2 이상인 오른쪽 영역이다.",
+    "solutionImageCaption": "P(T ≥ 3330) ≈ P(Z ≥ 2) = 0.023",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -1093,7 +1129,7 @@ window.questionBank = [
     "choices": [],
     "answer": "179/144",
     "answerStatus": "round4_direct_solved",
-    "solution": "[키포인트] $X$가 가질 수 있는 값별 확률을 모두 구해 확률분포를 만든 뒤 $E(X)$, $E(X^2)$으로 분산을 계산한다.\\n조건 정리: 한 번 던질 때 3이 나올 확률 $\\dfrac{1}{2}$, 4가 나올 확률 $\\dfrac{1}{3}$, 6이 나올 확률 $\\dfrac{1}{6}$이다. 3회 시행에서 나온 수의 최댓값$-$최솟값이 $X$이다.\\n풀이 방향: $(\\text{최솟값}, \\text{최댓값})$의 가능한 쌍이 $(3,3), (4,4), (6,6) \\to X=0$; $(3,4) \\to X=1$; $(4,6) \\to X=2$; $(3,6) \\to X=3$임을 파악하고 각 확률을 구한다.\\n정석 풀이:\\n$P(X=0)$: 세 번 모두 같은 수 $= \\left(\\dfrac{1}{2}\\right)^3 + \\left(\\dfrac{1}{3}\\right)^3 + \\left(\\dfrac{1}{6}\\right)^3 = \\dfrac{27+8+1}{216} = \\dfrac{36}{216} = \\dfrac{1}{6}$\\n$P(X=1)$: 3과 4만 나오고 둘 다 포함 $= \\left(\\dfrac{1}{2}+\\dfrac{1}{3}\\right)^3 - \\left(\\dfrac{1}{2}\\right)^3 - \\left(\\dfrac{1}{3}\\right)^3 = \\left(\\dfrac{5}{6}\\right)^3 - \\dfrac{1}{8} - \\dfrac{1}{27}$\\n$= \\dfrac{125}{216} - \\dfrac{27}{216} - \\dfrac{8}{216} = \\dfrac{90}{216} = \\dfrac{5}{12}$\\n$P(X=2)$: 4와 6만 나오고 둘 다 포함 $= \\left(\\dfrac{1}{3}+\\dfrac{1}{6}\\right)^3 - \\left(\\dfrac{1}{3}\\right)^3 - \\left(\\dfrac{1}{6}\\right)^3 = \\left(\\dfrac{1}{2}\\right)^3 - \\dfrac{1}{27} - \\dfrac{1}{216}$\\n$= \\dfrac{27}{216} - \\dfrac{8}{216} - \\dfrac{1}{216} = \\dfrac{18}{216} = \\dfrac{1}{12}$\\n$P(X=3) = 1 - \\dfrac{1}{6} - \\dfrac{5}{12} - \\dfrac{1}{12} = 1 - \\dfrac{2+5+1}{12} = \\dfrac{4}{12} = \\dfrac{1}{3}$\\n$E(X) = 0 \\cdot \\dfrac{1}{6} + 1 \\cdot \\dfrac{5}{12} + 2 \\cdot \\dfrac{1}{12} + 3 \\cdot \\dfrac{1}{3} = \\dfrac{5}{12} + \\dfrac{2}{12} + \\dfrac{12}{12} = \\dfrac{19}{12}$\\n$E(X^2) = 0 + 1 \\cdot \\dfrac{5}{12} + 4 \\cdot \\dfrac{1}{12} + 9 \\cdot \\dfrac{1}{3} = \\dfrac{5}{12} + \\dfrac{4}{12} + \\dfrac{36}{12} = \\dfrac{45}{12} = \\dfrac{15}{4}$\\n$V(X) = E(X^2) - \\{E(X)\\}^2 = \\dfrac{15}{4} - \\left(\\dfrac{19}{12}\\right)^2 = \\dfrac{540}{144} - \\dfrac{361}{144} = \\dfrac{179}{144}$\\n따라서 구하는 값은 $\\dfrac{179}{144}$이다.",
+    "solution": "한 번 던졌을 때 각 수가 나올 확률은\n$P(3)=\\dfrac{3}{6}=\\dfrac{1}{2}$\n$P(4)=\\dfrac{2}{6}=\\dfrac{1}{3}$\n$P(6)=\\dfrac{1}{6}$\n\n세 번 나온 수의 최댓값과 최솟값의 차는 $X=0,1,2,3$ 중 하나이다.\n값별로 가능한 경우를 나누어 확률을 구한다.\n\n(가) $X=0$: 세 번 모두 같은 수\n$P(X=0)=\\left(\\dfrac{1}{2}\\right)^3+\\left(\\dfrac{1}{3}\\right)^3+\\left(\\dfrac{1}{6}\\right)^3$\n$=\\dfrac{27+8+1}{216}=\\dfrac{1}{6}$\n\n(나) $X=1$: 3과 4만 나오되 둘 다 적어도 한 번 나옴\n$P(X=1)=\\left(\\dfrac{5}{6}\\right)^3-\\left(\\dfrac{1}{2}\\right)^3-\\left(\\dfrac{1}{3}\\right)^3$\n$=\\dfrac{125-27-8}{216}=\\dfrac{5}{12}$\n\n(다) $X=2$: 4와 6만 나오되 둘 다 적어도 한 번 나옴\n$P(X=2)=\\left(\\dfrac{1}{2}\\right)^3-\\left(\\dfrac{1}{3}\\right)^3-\\left(\\dfrac{1}{6}\\right)^3$\n$=\\dfrac{27-8-1}{216}=\\dfrac{1}{12}$\n\n(라) $X=3$: 3과 6이 모두 나옴\n$P(X=3)=1-\\left(\\dfrac{1}{6}+\\dfrac{5}{12}+\\dfrac{1}{12}\\right)$\n$=\\dfrac{1}{3}$\n\n위 확률의 합은 $1$이다.\n평균과 제곱의 평균을 구하면\n$E(X)=0\\times\\dfrac{1}{6}+1\\times\\dfrac{5}{12}+2\\times\\dfrac{1}{12}+3\\times\\dfrac{1}{3}$\n$=\\dfrac{5+2+12}{12}=\\dfrac{19}{12}$\n\n$E(X^2)=0^2\\times\\dfrac{1}{6}+1^2\\times\\dfrac{5}{12}+2^2\\times\\dfrac{1}{12}+3^2\\times\\dfrac{1}{3}$\n$=\\dfrac{5+4+36}{12}=\\dfrac{15}{4}$\n\n분산은\n$V(X)=E(X^2)-\\{E(X)\\}^2$\n$=\\dfrac{15}{4}-\\left(\\dfrac{19}{12}\\right)^2$\n$=\\dfrac{540-361}{144}=\\dfrac{179}{144}$\n\n따라서 구하는 값은 $\\dfrac{179}{144}$이다.",
     "solutionStatus": "solution_upgraded_batch5",
     "reviewStatus": "round4_verified",
     "tags": [
@@ -1108,7 +1144,7 @@ window.questionBank = [
     "standardUnit": "확률분포",
     "standardUnitKey": "H15-PS-05",
     "standardUnitOrder": 5,
-    "level": "중",
+    "level": "상",
     "contentStatus": "round4_verified_from_page_image",
     "repairRound": "anscombe_round4",
     "questionType": "주관식",
