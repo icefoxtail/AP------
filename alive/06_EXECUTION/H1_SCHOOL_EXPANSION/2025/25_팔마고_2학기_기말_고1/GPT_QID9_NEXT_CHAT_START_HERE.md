@@ -1,7 +1,6 @@
-# 2025 팔마고 고1 2학기 기말 — 다음 채팅 시작 (CURRENT)
+# 2025 팔마고 고1 2학기 기말 — NEXT CHAT CURRENT
 
-- q07까지 제작 완료, q01~q07 신규 63/207, 잔여 144. **다음 q08**부터 원본 JS·그림 확인 후 신규 A1~C3 9문항 제작.
-- 동일 작업 브랜치 `work/alive-25-palma-h1-2final-qid9`; Q07 PROGRESS, BLUEPRINT, CREATE_DRAFT, AUTHOR_RECEIPT, VISUAL_NUMERIC_EVIDENCE, QUALITY_HANDOFF, 최신 main 먼저 읽는다.
-- q07 원본 Primary H1-RPM-264 RPM_ONLY, PT_FUNCTION_EXTREMUM ACTIVE, 두 TPL ACTIVE; 학습·평가 난이도 별도 이유, 오답 계산 실제 36개, 문제 SVG 0/해설 SVG 5(필요성 UID별 판정).
-- q07 SourceUid exact 9 EVIDENCE_DEBT, 누적 63. 독립 품질검사/브라우저/학생 등록/운영 main NOT_RUN.
-- q01~q07 기존 제작물/원본/레거시 유사문항 모두 보호. 후속은 q08 하나를 신규 커밋으로 마감.
+- q08 제작자료까지 브랜치에 누적: **72/207** 신규 AUTHOR 후보; 아직 135문항; **다음 시작 q09**.
+- Branch: `work/alive-25-palma-h1-2final-qid9`. 먼저 최신 main/AGENTS/QID9 정본과 `GPT_QID9_PROGRESS_CURRENT.json`, Q08 PREFLIGHT·BLUEPRINT·CREATE_DRAFT·AUTHOR_RECEIPT·QUALITY_HANDOFF 본문 및 현재 원본 q09를 확인한다.
+- q08 L3 H1-RPM-253 합성함수; 반복합성 ACTIVE PT_ITERATED_COMPOSITION, 세 종류의 TPL. C1/C3는 함숫값 HTML table + 실제 해설 순환 SVG, 나머지는 수식 재현. Q08 실정답 분포 ①0 ②3 ③3 ④2 ⑤1; 수치 선택지 자연순서를 우선했고 전체 207문항 제작 후 최종 분포 판정.
+- q08 기존 Git 제작만 마감, 독립품질/브라우저/Consumer/main NOT_RUN. sourceUid 9건 EVIDENCE_DEBT, 누적72. q01~q08 및 기출 원본과 레거시 유사문제 변경 금지.

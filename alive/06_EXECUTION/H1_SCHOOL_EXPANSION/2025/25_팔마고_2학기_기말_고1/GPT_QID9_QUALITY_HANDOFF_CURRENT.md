@@ -1,3 +1,11 @@
+# CURRENT TOP — q08 AUTHOR / q09 NEXT (2026-10-14)
+- Branch `work/alive-25-palma-h1-2final-qid9`; previous q01~q07 63/207, q08 A1~C3 +9 AUTHOR candidates: total **72/207**, next q09, remaining 135. All earlier candidate/original/legacy files protected.
+- Actual original source q08 blob `0d12b75e824ab47f08fc3b5a6180be595f882c6`, formula-only f(x)=x+2; f^10(2)=22; no original q08 image. Locked Primary L3 H1-RPM-253 합성함수 (crosswalk DIRECT_ACTIVE default direct evaluation). Actual decisive repeated composition uses independently ACTIVE PT_ITERATED_COMPOSITION and TPL_ITERATION_RULE / TPL_ITERATION_IDENTITY_ORDER / TPL_ITERATION_PERIOD, not misreported as direct PT crosswalk.
+- q08 A1~C3 9 problems/45 naturally sorted numeric choices/36 1:1 calculated wrong-option routes; levels and buckets are independently justified; HTML function tables in C1/C3; **2 new solution SVGs** for actual finite-cycle relations. All nine problem SVG separately exempt and seven solution SVG separately exempt for text-complete arithmetic. Visual directed-edge static author parity checked; actual student render NOT_RUN.
+- Q08 files: `GPT_QID9_Q08_PREFLIGHT.json`, `GPT_QID9_Q08_AUTHOR_BLUEPRINT.json`, `GPT_QID9_Q08_CREATE_DRAFT.json`, `GPT_QID9_Q08_AUTHOR_RECEIPT.json`, `assets/q08/C1-solution.svg`, `assets/q08/C3-solution.svg`.
+- SourceUid exact identity 9 EVIDENCE_DEBT, cumulative 72; independent quality, actual browser, Consumer/index, main launch NOT_RUN. Author CREATE is not formal quality approval.
+- Last q07 evidence/old handoff preserved below. Next firstMissing=q09.
+
 # CURRENT TOP — q07 제작 / q08 시작 (2026-10-14)
 - 브랜치 `work/alive-25-palma-h1-2final-qid9`, 실제 q01~q07 신규 후보 63/207, 첫 미제작 q08, 남은 144. q01~q06 변경 0.
 - source q07 `archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js` blob `0d12b75e824ab47f08fc3b5a6180be595f882c6e`, 본문 수식 기반 최댓값(그림 없음).

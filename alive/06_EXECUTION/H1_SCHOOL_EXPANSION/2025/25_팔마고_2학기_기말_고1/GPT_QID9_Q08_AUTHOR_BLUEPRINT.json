@@ -1,0 +1,552 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q08_BLUEPRINT_v1",
+  "sourceQid": 8,
+  "sourceJsSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6",
+  "primaryRpmL3Id": "H1-RPM-253",
+  "rpmMappingStatus": "DIRECT_ACTIVE",
+  "lockedEvaluationInvariant": "Same-function iteration f^n as repeated composition; translation, scalar recurrence, involution, and disjoint finite cycles must preserve the decisive repeated application.",
+  "rpmDirectMappingPt": "PT_COMPOSITION_EVALUATION",
+  "actualSelectedActivePt": "PT_ITERATED_COMPOSITION",
+  "mappingDistinction": "RPM H1-RPM-253 DIRECT_ACTIVE는 PT_COMPOSITION_EVALUATION/TPL_COMPOSITION_VALUE_DIRECT에 대한 기본 직접 매핑임. 본 문항의 반복합성 결정 사고에 따라 별도 ACTIVE PT_ITERATED_COMPOSITION + 선택 TPL을 사용하며 이를 직접 crosswalk mapping으로 오기하지 않는다.",
+  "records": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-PALMA25-2FINAL-Q08-A1",
+      "mode": "STRICT_VARIANT",
+      "studentStem": "함수 $f(x)=x+3$에 대하여 $f^1=f$, $f^{n+1}=f\\circ f^n$ ($n$은 자연수)로 정의할 때, $f^{8}(1)$의 값은?",
+      "studentMentalPath": "한 번 합성 +3 → 8회 +24 → 처음 1 더하기",
+      "primaryRpmL3Id": "H1-RPM-253",
+      "rpmL4": "합성함수 계산",
+      "pt": "PT_ITERATED_COMPOSITION",
+      "tpl": "TPL_ITERATION_RULE",
+      "crossConcepts": [],
+      "conditions": [
+        "COND_ITERATION_COUNT"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "하",
+      "assessmentDifficultyBucket": 2,
+      "levelReason": "반복합성의 일정한 증가량을 발견한 뒤 한 번의 대입으로 해결한다.",
+      "bucketReason": "첫 입력 누락·반복 횟수 오인 위험이 있지만 경우 분기는 없다.",
+      "visual": {
+        "problemSvg": "EXEMPT",
+        "problemPresentation": "TEXT",
+        "solutionSvg": "EXEMPT",
+        "solutionAssetPath": null,
+        "solutionAssetGitBlob": null
+      },
+      "answer": "25",
+      "sortedChoices": [
+        "19",
+        "22",
+        "24",
+        "25",
+        "28"
+      ],
+      "wrongRoutes": [
+        {
+          "i": "①",
+          "v": "19",
+          "calc": "8회를 6회로 잘못 세면 $1+3\\cdot6=19$."
+        },
+        {
+          "i": "②",
+          "v": "22",
+          "calc": "8회를 7회로 잘못 세면 $1+3\\cdot7=22$."
+        },
+        {
+          "i": "③",
+          "v": "24",
+          "calc": "시작값을 빠뜨리면 $3\\cdot8=24$."
+        },
+        {
+          "i": "⑤",
+          "v": "28",
+          "calc": "9회로 잘못 세면 $1+3\\cdot9=28$."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "1+3*8=25"
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-PALMA25-2FINAL-Q08-A2",
+      "mode": "STRICT_VARIANT",
+      "studentStem": "함수 $f(x)=x-4$에 대하여 $f^1=f$, $f^{n+1}=f\\circ f^n$ ($n$은 자연수)로 정의할 때, $f^{6}(29)$의 값은?",
+      "studentMentalPath": "한 번 -4 → 6번 -24 → 29-24",
+      "primaryRpmL3Id": "H1-RPM-253",
+      "rpmL4": "합성함수 계산",
+      "pt": "PT_ITERATED_COMPOSITION",
+      "tpl": "TPL_ITERATION_RULE",
+      "crossConcepts": [],
+      "conditions": [
+        "COND_ITERATION_COUNT"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "하",
+      "assessmentDifficultyBucket": 2,
+      "levelReason": "반복되는 감소량을 계산하는 직접형으로 추가 분기가 없다.",
+      "bucketReason": "음수 부호와 횟수 한 회 착오 가능성이 있지만 직접 계산이다.",
+      "visual": {
+        "problemSvg": "EXEMPT",
+        "problemPresentation": "TEXT",
+        "solutionSvg": "EXEMPT",
+        "solutionAssetPath": null,
+        "solutionAssetGitBlob": null
+      },
+      "answer": "5",
+      "sortedChoices": [
+        "1",
+        "5",
+        "9",
+        "25",
+        "33"
+      ],
+      "wrongRoutes": [
+        {
+          "i": "①",
+          "v": "1",
+          "calc": "7회로 착각하면 $29-4\\cdot7=1$."
+        },
+        {
+          "i": "③",
+          "v": "9",
+          "calc": "5회로 착각하면 $29-4\\cdot5=9$."
+        },
+        {
+          "i": "④",
+          "v": "25",
+          "calc": "한 번만 계산하면 $29-4=25$."
+        },
+        {
+          "i": "⑤",
+          "v": "33",
+          "calc": "빼기를 더하기로 바꾸면 $29+4=33$."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "29-4*6=5"
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-PALMA25-2FINAL-Q08-A3",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "함수 $f(x)=2x$에 대하여 $f^1=f$, $f^{n+1}=f\\circ f^n$ ($n$은 자연수)로 정의할 때, $f^{5}(3)$의 값은?",
+      "studentMentalPath": "반복할 때마다 2배 → 다섯 번 2^5배",
+      "primaryRpmL3Id": "H1-RPM-253",
+      "rpmL4": "합성함수 계산",
+      "pt": "PT_ITERATED_COMPOSITION",
+      "tpl": "TPL_ITERATION_RULE",
+      "crossConcepts": [],
+      "conditions": [
+        "COND_ITERATION_COUNT"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentDifficultyBucket": 3,
+      "levelReason": "가산 반복과 배수 반복을 구분하고 합성 횟수를 지수로 표현해야 한다.",
+      "bucketReason": "지수와 최초 입력이 각각 다른 역할임을 구분해야 하지만 경우는 하나다.",
+      "visual": {
+        "problemSvg": "EXEMPT",
+        "problemPresentation": "TEXT",
+        "solutionSvg": "EXEMPT",
+        "solutionAssetPath": null,
+        "solutionAssetGitBlob": null
+      },
+      "answer": "96",
+      "sortedChoices": [
+        "30",
+        "32",
+        "48",
+        "96",
+        "192"
+      ],
+      "wrongRoutes": [
+        {
+          "i": "①",
+          "v": "30",
+          "calc": "반복배수를 곱셈 1회와 횟수 곱으로 혼동하여 $3\\cdot2\\cdot5=30$."
+        },
+        {
+          "i": "②",
+          "v": "32",
+          "calc": "입력 3을 빠뜨리고 $2^5=32$."
+        },
+        {
+          "i": "③",
+          "v": "48",
+          "calc": "4번만 합성하면 $3\\cdot2^4=48$."
+        },
+        {
+          "i": "⑤",
+          "v": "192",
+          "calc": "6번 합성하면 $3\\cdot2^6=192$."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "3*2**5=96"
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-PALMA25-2FINAL-Q08-B1",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "함수 $f(x)=x+k$에 대하여 $f^1=f$, $f^{n+1}=f\\circ f^n$ ($n$은 자연수)로 정의한다. $f^{6}(2)=26$일 때, 실수 $k$의 값은?",
+      "studentMentalPath": "2+6k=26을 수립하여 k=4",
+      "primaryRpmL3Id": "H1-RPM-253",
+      "rpmL4": "합성함수 계산",
+      "pt": "PT_ITERATED_COMPOSITION",
+      "tpl": "TPL_ITERATION_RULE",
+      "crossConcepts": [],
+      "conditions": [
+        "COND_ITERATION_COUNT",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentDifficultyBucket": 3,
+      "levelReason": "반복합성의 규칙을 먼저 만든 다음 결과로부터 매개변수를 역산한다.",
+      "bucketReason": "초깃값·횟수·매개변수의 역할 구분과 나눗셈 실수 위험이 있다.",
+      "visual": {
+        "problemSvg": "EXEMPT",
+        "problemPresentation": "TEXT",
+        "solutionSvg": "EXEMPT",
+        "solutionAssetPath": null,
+        "solutionAssetGitBlob": null
+      },
+      "answer": "4",
+      "sortedChoices": [
+        "-4",
+        "3",
+        "4",
+        "\\dfrac{13}{3}",
+        "6"
+      ],
+      "wrongRoutes": [
+        {
+          "i": "①",
+          "v": "-4",
+          "calc": "변화량 방향을 반대로 취하면 $k=-(26-2)/6=-4$."
+        },
+        {
+          "i": "②",
+          "v": "3",
+          "calc": "6회를 8회로 착각하면 $k=(26-2)/8=3$."
+        },
+        {
+          "i": "④",
+          "v": "\\dfrac{13}{3}",
+          "calc": "초깃값 2를 빼지 않고 $6k=26$으로 놓아 $k=13/3$."
+        },
+        {
+          "i": "⑤",
+          "v": "6",
+          "calc": "6회를 4회로 착각하면 $k=(26-2)/4=6$."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "(26-2)/6=4"
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-PALMA25-2FINAL-Q08-B2",
+      "mode": "TYPE_BANK",
+      "studentStem": "함수 $f(x)=3-x$에 대하여 $f^1=f$, $f^{n+1}=f\\circ f^n$ ($n$은 자연수)로 정의할 때, $f^{2025}(7)$의 값은?",
+      "studentMentalPath": "f²(x)=x; 홀수 횟수면 f(7)=-4",
+      "primaryRpmL3Id": "H1-RPM-253",
+      "rpmL4": "합성함수 계산",
+      "pt": "PT_ITERATED_COMPOSITION",
+      "tpl": "TPL_ITERATION_IDENTITY_ORDER",
+      "crossConcepts": [],
+      "conditions": [
+        "COND_ITERATION_COUNT"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "하",
+      "assessmentDifficultyBucket": 2,
+      "levelReason": "f²가 항등이라는 한 번의 관찰과 홀짝 판정만 필요하다.",
+      "bucketReason": "큰 지수라도 거듭제곱 계산을 요구하지 않으며 결정적 2주기 확인이 짧다.",
+      "visual": {
+        "problemSvg": "EXEMPT",
+        "problemPresentation": "TEXT",
+        "solutionSvg": "EXEMPT",
+        "solutionAssetPath": null,
+        "solutionAssetGitBlob": null
+      },
+      "answer": "-4",
+      "sortedChoices": [
+        "-7",
+        "-4",
+        "-3",
+        "4",
+        "7"
+      ],
+      "wrongRoutes": [
+        {
+          "i": "①",
+          "v": "-7",
+          "calc": "상수 3을 빠뜨리고 $f(7)=-7$."
+        },
+        {
+          "i": "③",
+          "v": "-3",
+          "calc": "3을 4로 잘못 보고 $4-7=-3$."
+        },
+        {
+          "i": "④",
+          "v": "4",
+          "calc": "뺄셈 순서를 뒤집어 $7-3=4$."
+        },
+        {
+          "i": "⑤",
+          "v": "7",
+          "calc": "2025를 짝수로 보고 $f^{2m}(7)=7$을 사용."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "f²(x)=x; odd 2025 gives f(7)=-4"
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-PALMA25-2FINAL-Q08-B3",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "함수 $f(x)=6-x$에 대하여 $f^1=f$, $f^{n+1}=f\\circ f^n$ ($n$은 자연수)로 정의할 때, $f^{2024}(2)+f^{2025}(2)$의 값은?",
+      "studentMentalPath": "짝수 반복 2와 홀수 반복 4를 각각 구해 합산",
+      "primaryRpmL3Id": "H1-RPM-253",
+      "rpmL4": "합성함수 계산",
+      "pt": "PT_ITERATED_COMPOSITION",
+      "tpl": "TPL_ITERATION_IDENTITY_ORDER",
+      "crossConcepts": [],
+      "conditions": [
+        "COND_ITERATION_COUNT"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentDifficultyBucket": 3,
+      "levelReason": "인접한 짝수·홀수 지수를 별도로 판단하고 두 결과를 결합한다.",
+      "bucketReason": "같은 반복값으로 잘못 통일하거나 한 항을 누락하는 오류 위험이 있다.",
+      "visual": {
+        "problemSvg": "EXEMPT",
+        "problemPresentation": "TEXT",
+        "solutionSvg": "EXEMPT",
+        "solutionAssetPath": null,
+        "solutionAssetGitBlob": null
+      },
+      "answer": "6",
+      "sortedChoices": [
+        "2",
+        "4",
+        "6",
+        "8",
+        "10"
+      ],
+      "wrongRoutes": [
+        {
+          "i": "①",
+          "v": "2",
+          "calc": "홀수항을 빼고 짝수항 $2$만 남김."
+        },
+        {
+          "i": "②",
+          "v": "4",
+          "calc": "짝수항을 빼고 홀수항 $4$만 남김."
+        },
+        {
+          "i": "④",
+          "v": "8",
+          "calc": "두 항을 모두 홀수 결과로 보고 $4+4=8$."
+        },
+        {
+          "i": "⑤",
+          "v": "10",
+          "calc": "홀수항을 한 번 더 더해 $2+4+4=10$."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "2+4=6"
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-PALMA25-2FINAL-Q08-C1",
+      "mode": "TYPE_BANK",
+      "studentStem": "집합 $X=\\{1,2,3,4,5\\}$에서 함수 $f:X\\to X$가 다음 표와 같다. <div class=\"question-table-wrap\"><table class=\"question-table\" style=\"font-size:8.6pt;border-collapse:collapse;max-width:280px;margin:4px 0\"><tbody><tr><th style=\"border:1px solid #555;padding:3px\">x</th><td style=\"border:1px solid #555;padding:3px\">1</td><td style=\"border:1px solid #555;padding:3px\">2</td><td style=\"border:1px solid #555;padding:3px\">3</td><td style=\"border:1px solid #555;padding:3px\">4</td><td style=\"border:1px solid #555;padding:3px\">5</td></tr><tr><th style=\"border:1px solid #555;padding:3px\">f(x)</th><td style=\"border:1px solid #555;padding:3px\">2</td><td style=\"border:1px solid #555;padding:3px\">3</td><td style=\"border:1px solid #555;padding:3px\">1</td><td style=\"border:1px solid #555;padding:3px\">5</td><td style=\"border:1px solid #555;padding:3px\">4</td></tr></tbody></table></div>$f^1=f$, $f^{n+1}=f\\circ f^n$ ($n$은 자연수)로 정의할 때, $f^{2026}(1)+f^{2026}(4)$의 값은?",
+      "studentMentalPath": "1은 3주기, 4는 2주기; 2026의 나머지 1과 0",
+      "primaryRpmL3Id": "H1-RPM-253",
+      "rpmL4": "합성함수 계산",
+      "pt": "PT_ITERATED_COMPOSITION",
+      "tpl": "TPL_ITERATION_PERIOD",
+      "crossConcepts": [],
+      "conditions": [
+        "COND_ITERATION_COUNT"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentDifficultyBucket": 4,
+      "levelReason": "서로 다른 두 순환 길이를 확인하고 동일 지수를 각각 다른 주기로 줄여 합산한다.",
+      "bucketReason": "두 가지 나머지 계산과 대응표 해석이 필요하여 오류 위험이 상대적으로 높다.",
+      "visual": {
+        "problemSvg": "EXEMPT",
+        "problemPresentation": "HTML_TABLE",
+        "solutionSvg": "BENEFICIAL",
+        "solutionAssetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q08/C1-solution.svg",
+        "solutionAssetGitBlob": "f21d84b60bd8adaf1d1bfc028be10623d7eaf8b0"
+      },
+      "answer": "6",
+      "sortedChoices": [
+        "3",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "wrongRoutes": [
+        {
+          "i": "①",
+          "v": "3",
+          "calc": "$f^2(1)=3$만 구하고 나머지 항을 빠뜨리면 $3$."
+        },
+        {
+          "i": "②",
+          "v": "5",
+          "calc": "두 입력이 모두 원점으로 돌아온다고 착각해 $1+4=5$."
+        },
+        {
+          "i": "④",
+          "v": "7",
+          "calc": "둘째 순환도 홀수라고 오인해 $f(4)=5$로 하면 $2+5=7$."
+        },
+        {
+          "i": "⑤",
+          "v": "8",
+          "calc": "두 잔여 횟수를 각각 2회와 1회로 오인해 $f^2(1)+f(4)=3+5=8$."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "2026%3=1 and 2026%2=0; f(1)+4=6"
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-PALMA25-2FINAL-Q08-C2",
+      "mode": "TYPE_BANK",
+      "studentStem": "실수 전체에서 정의된 함수 $f(x)=ax+b$에 대하여 $f^1=f$, $f^{n+1}=f\\circ f^n$ ($n$은 자연수)로 정의한다. 모든 실수 $x$에 대해 $f^2(x)=x$가 성립하고 $a\\ne1$이다. $f^{2025}(3)=9$일 때, 실수 $b$의 값은? (단, $a,b$는 실수이다.)",
+      "studentMentalPath": "f² 항등 → a=-1 → 홀수 반복은 f → b=12",
+      "primaryRpmL3Id": "H1-RPM-253",
+      "rpmL4": "합성함수 계산",
+      "pt": "PT_ITERATED_COMPOSITION",
+      "tpl": "TPL_ITERATION_IDENTITY_ORDER",
+      "crossConcepts": [],
+      "conditions": [
+        "COND_ITERATION_COUNT",
+        "COND_UNIVERSAL_INPUTS",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "learningLevel": "상",
+      "assessmentDifficultyBucket": 4,
+      "levelReason": "모든 실수에 대한 항등조건을 계수 비교로 전환하고 가능한 a를 분기한 뒤 홀수 반복 결과와 결합해야 한다.",
+      "bucketReason": "계수 비교·a=±1 분기·짝홀 적용은 독립된 판단이나 매개변수 열거는 없다.",
+      "visual": {
+        "problemSvg": "EXEMPT",
+        "problemPresentation": "TEXT",
+        "solutionSvg": "EXEMPT",
+        "solutionAssetPath": null,
+        "solutionAssetGitBlob": null
+      },
+      "answer": "12",
+      "sortedChoices": [
+        "-12",
+        "-6",
+        "6",
+        "9",
+        "12"
+      ],
+      "wrongRoutes": [
+        {
+          "i": "①",
+          "v": "-12",
+          "calc": "$b$의 부호를 뒤집어 $-3-b=9$로 쓰면 $b=-12$."
+        },
+        {
+          "i": "②",
+          "v": "-6",
+          "calc": "이항의 뺄셈 순서를 뒤집어 $b=3-9=-6$."
+        },
+        {
+          "i": "③",
+          "v": "6",
+          "calc": "$-3$의 부호를 그대로 옮겨 $b=9-3=6$."
+        },
+        {
+          "i": "④",
+          "v": "9",
+          "calc": "입력 $3$에 따른 $-3$항을 빼먹고 $b=9$로 계산."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "a²=1,a≠1→a=-1; -3+b=9→12"
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-PALMA25-2FINAL-Q08-C3",
+      "mode": "TYPE_BANK",
+      "studentStem": "집합 $X=\\{1,2,3,4,5,6,7\\}$에서 함수 $f:X\\to X$가 다음 표와 같다. <div class=\"question-table-wrap\"><table class=\"question-table\" style=\"font-size:8.6pt;border-collapse:collapse;max-width:280px;margin:4px 0\"><tbody><tr><th style=\"border:1px solid #555;padding:3px\">x</th><td style=\"border:1px solid #555;padding:3px\">1</td><td style=\"border:1px solid #555;padding:3px\">2</td><td style=\"border:1px solid #555;padding:3px\">3</td><td style=\"border:1px solid #555;padding:3px\">4</td><td style=\"border:1px solid #555;padding:3px\">5</td><td style=\"border:1px solid #555;padding:3px\">6</td><td style=\"border:1px solid #555;padding:3px\">7</td></tr><tr><th style=\"border:1px solid #555;padding:3px\">f(x)</th><td style=\"border:1px solid #555;padding:3px\">2</td><td style=\"border:1px solid #555;padding:3px\">3</td><td style=\"border:1px solid #555;padding:3px\">1</td><td style=\"border:1px solid #555;padding:3px\">5</td><td style=\"border:1px solid #555;padding:3px\">6</td><td style=\"border:1px solid #555;padding:3px\">7</td><td style=\"border:1px solid #555;padding:3px\">4</td></tr></tbody></table></div>$f^1=f$, $f^{n+1}=f\\circ f^n$ ($n$은 자연수)로 정의한다. $1\\le n\\le100$인 자연수 $n$ 중 $f^n(1)=3$이고 $f^n(4)=6$을 동시에 만족하는 $n$의 개수는?",
+      "studentMentalPath": "3주기·4주기 → 두 잔여 모두2 → 12간격 → 9개",
+      "primaryRpmL3Id": "H1-RPM-253",
+      "rpmL4": "합성함수 계산",
+      "pt": "PT_ITERATED_COMPOSITION",
+      "tpl": "TPL_ITERATION_PERIOD",
+      "crossConcepts": [
+        "CC_NUMBER_DIVISOR_MULTIPLE"
+      ],
+      "conditions": [
+        "COND_ITERATION_COUNT",
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE",
+        "COND_DIVISIBILITY"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "learningLevel": "상",
+      "assessmentDifficultyBucket": 5,
+      "levelReason": "3주기와 4주기를 독립 판정하고 두 잔여 조건을 최소공배수 12로 결합해 범위에서 개수를 세야 한다.",
+      "bucketReason": "동시 조건·첫 경계 n=2·끝 n=98·최소공배수 오판 등 여러 오류 지점이 있다.",
+      "visual": {
+        "problemSvg": "EXEMPT",
+        "problemPresentation": "HTML_TABLE",
+        "solutionSvg": "BENEFICIAL",
+        "solutionAssetPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q08/C3-solution.svg",
+        "solutionAssetGitBlob": "c3804d1a5cd0c1be61d9a924a6ad289633db6435"
+      },
+      "answer": "9",
+      "sortedChoices": [
+        "8",
+        "9",
+        "17",
+        "25",
+        "33"
+      ],
+      "wrongRoutes": [
+        {
+          "i": "①",
+          "v": "8",
+          "calc": "처음 $n=2$를 제외하고 $14,26,ldots,98$만 세면 8개."
+        },
+        {
+          "i": "③",
+          "v": "17",
+          "calc": "최소공배수를 6으로 오판해 $(98-2)/6+1=17$개."
+        },
+        {
+          "i": "④",
+          "v": "25",
+          "calc": "4주기 조건만 적용하여 $n=2+4k\\le100$에서 25개."
+        },
+        {
+          "i": "⑤",
+          "v": "33",
+          "calc": "3주기 조건만 적용하여 $n=2+3k\\le100$에서 33개."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "n=2+12k(k=0..8) → 9"
+    }
+  ]
+}
