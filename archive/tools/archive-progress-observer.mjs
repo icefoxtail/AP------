@@ -154,7 +154,7 @@ export async function executeOnce({api,getEvidence,historyPages=1,clock=()=>new 
  // Keep bounded history; verified records are reusable and never invalidated by a
  // temporary API outage. Reconciliation preserves older completed item snapshots.
  current.observations=Object.fromEntries(Object.entries(observations).sort((a,b)=>
-   (b[1].verifiedAt||b[1].nextRetryAt||'').localeCompare(a[1].verifiedAt||a[1].nextRetryAt||'')).slice(0,180));
+   (b[1].verifiedAt||b[1].nextRetryAt||'').localeCompare(a[1].verifiedAt||a[1].nextRetryAt||'')).slice(0,200));
  current.history={...current.history,seenRegistrationRuns:selectedRegistration.length,
   seenReleaseRuns:selectedRelease.length,runScanIsPartial:!manualHistory&&(
    regRuns.filter(x=>x.event!=='pull_request'&&x.branch==='main').length>count||

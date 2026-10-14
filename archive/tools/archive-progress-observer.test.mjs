@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {CONTENTS_API_INLINE_LIMIT,readStatus} from './archive-progress-observer.mjs';
+import {CONTENTS_API_INLINE_LIMIT,readStatus,executeOnce} from './archive-progress-observer.mjs';
 
 const encode=value=>Buffer.from(typeof value==='string'?value:JSON.stringify(value),'utf8').toString('base64');
 
@@ -59,4 +59,35 @@ test('unexpected Git Blob encoding fails closed instead of parsing empty Content
   if(route.startsWith('/contents/'))return {sha:'blob-bad',size:CONTENTS_API_INLINE_LIMIT+1,encoding:'none',content:''};
   return {sha:'blob-bad',size:0,encoding:'none',content:''};
  }),/Git Blob response is not base64 content/);
+});
+
+
+test('executeOnce retains all prior 180 observations when new run rows are added',async()=>{
+ const observations={};
+ for(let i=0;i<180;i++){
+  const id=800000+i,sha=String(i+1).padStart(40,'0'),key='registration:'+id+':1:'+sha;
+  observations[key]={key,status:'unverified',attempts:4,run:{id,attempt:1,sha,at:'2026-10-13T03:35:19Z',
+   url:'https://github.com/icefoxtail/AP------/actions/runs/'+id,conclusion:'success',event:'push',branch:'main'},
+   reason:'현재 실행 차수 증거 없음',retryExhausted:true};
+ }
+ const old={schema:1,updatedAt:'2026-10-13T03:35:19Z',entries:{},observations};
+ const raw=JSON.stringify(old),newRuns=Array.from({length:10},(_,i)=>{
+  const id=900000+i,sha=String(id).padStart(40,'0');
+  return {id,run_attempt:1,event:'push',conclusion:'success',head_sha:sha,
+   updated_at:new Date(Date.parse('2026-10-14T14:00:00Z')+i*1000).toISOString(),
+   html_url:'https://github.com/icefoxtail/AP------/actions/runs/'+id,head_branch:'main',pull_requests:[]};
+ });
+ let written=null;
+ const api=async route=>{
+  if(route.startsWith('/contents/'))return {sha:'status-blob',size:Buffer.byteLength(raw),encoding:'base64',content:encode(raw)};
+  if(route.startsWith('/pulls?'))return [];
+  if(route.startsWith('/actions/workflows/archive-registration-sync.yml/runs?'))return {workflow_runs:newRuns};
+  if(route.startsWith('/actions/workflows/archive-pages-release.yml/runs?'))return {workflow_runs:[]};
+  throw Error('unexpected API route '+route);
+ };
+ await executeOnce({api,getEvidence:async()=>null,clock:()=> '2026-10-14T14:01:00.000Z',
+  storeStatus:async value=>{written=value;}});
+ assert.ok(written);
+ for(const [key,value] of Object.entries(observations))assert.deepEqual(written.observations[key],value);
+ assert.equal(Object.keys(written.observations).length,190);
 });
