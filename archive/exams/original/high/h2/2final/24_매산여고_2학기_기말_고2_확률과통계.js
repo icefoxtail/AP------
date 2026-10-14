@@ -172,7 +172,7 @@ window.questionBank = [
       "0.784"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 모평균 $m$에 대한 신뢰도 $95\\%$의 신뢰구간의 길이 공식은 $l = 2k \\dfrac{\\sigma}{\\sqrt{n}}$이다.\\n조건 정리: 모표준편차 $\\sigma = 5$, 표본의 크기 $n = 625$이다. 신뢰도 $95\\%$일 때 신뢰상수 $k = 1.96$이다.\\n풀이 방향: 신뢰구간의 길이 공식에 주어진 수치를 대입하여 정확한 소수점 계산을 진행한다.\\n정석 풀이:\\n$\\sqrt{n} = \\sqrt{625} = 25$이다.\\n공식에 대입하면 다음과 같다.\\n$l = 2 \\times 1.96 \\times \\dfrac{5}{25} = 2 \\times 1.96 \\times 0.2 = 0.4 \\times 1.96 = 0.784$\\n따라서 신뢰구간의 길이는 $0.784$이며, 이는 선지 ⑤번에 위치한다.\\n따라서 정답은 ⑤이다.",
+    "solution": "신뢰도 $95\\%$의 신뢰구간은 $\\overline X\\pm1.96\\dfrac{\\sigma}{\\sqrt n}$이다.\n양 끝값 사이의 길이는 오차의 한계의 $2$배이다.\n$\\sigma=5,\\quad n=625,\\quad\\sqrt n=25$이므로\n$L=2\\times1.96\\times\\dfrac5{\\sqrt{625}}$\n$=2\\times1.96\\times\\dfrac5{25}$\n$=3.92\\times0.2$\n$=0.784$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "rule_inferred",
@@ -200,7 +200,7 @@ window.questionBank = [
       "6"
     ],
     "answer": "①",
-    "solution": "[키포인트] 맞는 열쇠를 찾을 때까지 시도한 횟수 $X$의 이산확률분포를 구한 후 분산을 구한다.\\n조건 정리: 전체 열쇠는 $5$개, 맞는 열쇠는 $1$개이며 한 번 시도한 열쇠는 제외하므로 비복원추출 구조이다.\\n풀이 방향: $X$가 가질 수 있는 값 $1, 2, 3, 4, 5$의 확률을 구해 평균과 제곱의 평균을 계산한다.\\n정석 풀이:\\n각 시도 횟수별 확률을 구하면 다음과 같다.\\n$P(X=1) = \\dfrac{1}{5}$\\n$P(X=2) = \\dfrac{4}{5} \\times \\dfrac{1}{4} = \\dfrac{1}{5}$\\n$P(X=3) = \\dfrac{4}{5} \\times \\dfrac{3}{4} \\times \\dfrac{1}{3} = \\dfrac{1}{5}$\\n$P(X=4) = \\dfrac{4}{5} \\times \\dfrac{3}{4} \\times \\dfrac{2}{4} \\times \\dfrac{1}{2} = \\dfrac{1}{5}$\\n$P(X=5) = \\dfrac{4}{5} \\times \\dfrac{3}{4} \\times \\dfrac{2}{4} \\times \\dfrac{1}{4} \\times 1 = \\dfrac{1}{5}$\\n모든 경우의 확률이 $\\dfrac{1}{5}$로 동일한 일양분포를 따른다.\\n평균 $E(X) = (1+2+3+4+5) \\times \\dfrac{1}{5} = \\dfrac{15}{5} = 3$\\n제곱의 평균 $E(X^2) = (1^2 + 2^2 + 3^2 + 4^2 + 5^2) \\times \\dfrac{1}{5} = (1+4+9+16+25) \\times \\dfrac{1}{5} = \\dfrac{55}{5} = 11$\\n분산 $V(X) = E(X^2) - \\{E(X)\\}^2 = 11 - 3^2 = 11 - 9 = 2$\\n따라서 구하는 분산값은 $2$이며 이는 ①번에 해당한다.\\n따라서 정답은 ①이다.",
+    "solution": "맞는 열쇠는 $5$개 중 하나이고, 실패한 열쇠는 다시 시도하지 않는다.\n맞는 열쇠가 시도 순서의 어느 위치에 있는지는 똑같이 가능하므로\n$P(X=1)=P(X=2)=\\cdots=P(X=5)=\\dfrac15$이다.\n먼저 평균을 구하면\n$E(X)=\\dfrac{1+2+3+4+5}{5}=\\dfrac{15}{5}=3$이다.\n제곱의 평균은\n$E(X^2)=\\dfrac{1^2+2^2+3^2+4^2+5^2}{5}$\n$=\\dfrac{55}{5}=11$이다.\n따라서\n$V(X)=E(X^2)-\\{E(X)\\}^2$\n$=11-3^2=2$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -228,7 +228,7 @@ window.questionBank = [
       "8"
     ],
     "answer": "④",
-    "solution": "[키포인트] 확률변수 기댓값의 선형성 성질 $E(aX+b) = aE(X)+b$를 이용한다.\\n조건 정리: 빨간 공 $3$개, 파란 공 $2$개로 총 $5$개의 공이 있고 이 중 $2$개를 동시에 꺼낸다.\\n풀이 방향: 파란 공의 개수 $X$의 확률분포를 구하여 $E(X)$를 얻은 후 $E(10X-3) = 10E(X)-3$을 연산한다.\\n정석 풀이:\\n전체 공 $5$개 중 $2$개를 꺼내는 경우의 수는 ${}_{5}C_{2} = 10$이다.\\n$P(X=0) = \\dfrac{{}_{3}C_{2}}{10} = \\dfrac{3}{10}$\\n$P(X=1) = \\dfrac{{}_{3}C_{1} \\times {}_{2}C_{1}}{10} = \\dfrac{6}{10}$\\n$P(X=2) = \\dfrac{{}_{2}C_{2}}{10} = \\dfrac{1}{10}$\\n확률변수 $X$의 기댓값 $E(X)$는 다음과 같다.\\n$E(X) = 0 \\times \\dfrac{3}{10} + 1 \\times \\dfrac{6}{10} + 2 \\times \\dfrac{1}{10} = \\dfrac{8}{10} = \\dfrac{4}{5}$\\n따라서 구하고자 하는 $10X-3$의 평균은 다음과 같다.\\n$E(10X-3) = 10E(X) - 3 = 10 \\times \\dfrac{4}{5} - 3 = 8 - 3 = 5$\\n계산 결과 값은 $5$이므로 ④번이 정답이 된다.\\n따라서 정답은 ④이다.",
+    "solution": "전체 $5$개 중 $2$개를 고르는 경우는 $\\binom52=10$가지이다.\n파란 공의 개수 $X$는 $0,1,2$이다.\n$P(X=0)=\\dfrac{\\binom32}{10}=\\dfrac3{10}$\n$P(X=1)=\\dfrac{\\binom31\\binom21}{10}=\\dfrac6{10}$\n$P(X=2)=\\dfrac{\\binom22}{10}=\\dfrac1{10}$이다.\n따라서 평균은\n$E(X)=0\\cdot\\dfrac3{10}+1\\cdot\\dfrac6{10}+2\\cdot\\dfrac1{10}$\n$=\\dfrac8{10}=\\dfrac45$이다.\n기댓값의 성질을 적용하면\n$E(10X-3)=10E(X)-3$\n$=10\\cdot\\dfrac45-3$\n$=8-3=5$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -256,7 +256,7 @@ window.questionBank = [
       "-5"
     ],
     "answer": "③",
-    "solution": "[키포인트] 확률변수 변환 공식인 $E(aX+b)=aE(X)+b$와 $V(aX+b)=a^2V(X)$를 적용한다.\\n조건 정리: $E(X)=5, V(X)=10$, $E(Y)=7, V(Y)=40$, $a>0$이다.\\n풀이 방향: 분산의 조건으로부터 양수 $a$의 값을 결정한 후, 평균 식에 대입하여 $b$의 값을 산출한다.\\n정석 풀이:\\n1단계: $V(Y) = V(aX+b) = a^2 V(X)$이므로\\n$40 = a^2 \\times 10 \\implies a^2 = 4$\\n$a>0$이므로 $a = 2$이다.\\n2단계: $E(Y) = E(aX+b) = aE(X) + b$이므로\\n$7 = 2 \\times 5 + b \\implies 7 = 10 + b$\\n따라서 $b = -3$이다.\\n계산된 상수 $b$의 값은 $-3$이며 이는 ③번에 위치한다.\\n따라서 정답은 ③이다.",
+    "solution": "$Y=aX+b$에서 상수 $b$를 더해도 분산은 변하지 않는다.\n따라서 분산 조건으로 $a$를 먼저 구한다.\n$V(Y)=a^2V(X)$\n$40=10a^2$\n$a^2=4$이다.\n$a>0$이므로 $a=2$이다.\n이제 기댓값 조건에 대입한다.\n$E(Y)=aE(X)+b$\n$7=2\\cdot5+b$\n$7=10+b,\\quad b=-3$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -286,13 +286,17 @@ window.questionBank = [
       "66"
     ],
     "answer": "③",
-    "solution": "[키포인트] 정규분포를 따르는 확률변수 $X$를 표준화 공식을 통해 $Z$로 변환하여 그래프의 기하학적 넓이와 비교한다.\\n조건 정리: $X$는 평균 $m=40$, 표준편차 $\\sigma=\\sqrt{9}=3$인 정규분포를 따른다. 그래프의 색칠된 영역은 $-1$부터 $2$까지의 넓이를 나타낸다.\\n풀이 방향: $P(a \\le X \\le 43)$을 표준화했을 때의 구간 범위가 표준정규분포상 대칭이동을 고려한 영역과 일치하게 식을 세운다.\\n정석 풀이:\\n$X$의 확률구간을 표준화하면 다음과 같다.\\n$P(a \\le X \\le 43) = P\\left(\\dfrac{a - 40}{3} \\le \\dfrac{X - 40}{3} \\le \\dfrac{43 - 40}{3}\\right) = P\\left(\\dfrac{a - 40}{3} \\le Z \\le 1\\right)$\\n그래프에서 색칠된 부분의 넓이는 $P(-1 \\le Z \\le 2)$를 나타내고 있으며, 정규분포곡선은 대칭이므로 넓이가 같은 구간은 $P(-2 \\le Z \\le 1)$로도 변형할 수 있다.\\n따라서 상한값 $1$이 서로 일치하므로 하한값 역시 같아야 한다.\\n$\\dfrac{a - 40}{3} = -2 \\implies a - 40 = -6 \\implies a = 34$\\n따라서 구하는 상수 $a$의 값은 $34$이며 이는 ③번이다.\\n따라서 정답은 ③이다.",
+    "solution": "그림에서 색칠한 표준정규분포의 구간은 $-1\\le Z\\le2$이다.\n$X\\sim N(40,9)$이므로 $Z=\\dfrac{X-40}{3}$이다.\n구하는 확률을 표준화하면\n$P(a\\le X\\le43)$\n$=P\\left(\\dfrac{a-40}{3}\\le Z\\le1\\right)$이다.\n표준정규분포는 $0$을 중심으로 좌우 대칭이므로\n$P(-1\\le Z\\le2)=P(-2\\le Z\\le1)$이다.\n따라서 아래쪽 경계가 $-2$여야 한다.\n$\\dfrac{a-40}{3}=-2$\n$a-40=-6$\n$a=34$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q10.png",
     "imageSize": "half",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "표준정규분포에서 왼쪽 음영 -1부터 2와 오른쪽 음영 -2부터 1의 넓이가 동일한 두 곡선",
+    "solutionImageCaption": "좌우 대칭인 두 영역의 넓이는 같으므로 아래 경계는 z=-2이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
