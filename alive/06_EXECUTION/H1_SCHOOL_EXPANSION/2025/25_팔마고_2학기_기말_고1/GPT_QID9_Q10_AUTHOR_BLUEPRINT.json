@@ -1,0 +1,525 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q10_AUTHOR_BLUEPRINT_v1",
+  "sourceQid": 10,
+  "sourceJsSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceOriginalImage": null,
+  "lockedPrimaryRpmL3Id": "H1-RPM-253",
+  "lockedL3Label": "합성함수",
+  "rpmL4": "합성함수 계산",
+  "rpmMappingStatus": "DIRECT_ACTIVE",
+  "defaultCrosswalkPt": "PT_COMPOSITION_EVALUATION",
+  "actualActivePt": "PT_COMPOSITION_PROPERTIES",
+  "actualActiveTpl": "TPL_COMPOSITION_RELATION_CONDITION",
+  "distinction": "Crosswalk direct PT is simple evaluation, while actual q10 commutation uses separate ACTIVE PT/TPL and generated-only EXT L4; RPM LOCKED unchanged.",
+  "lockedInvariant": "전체 실수에서 합성 순서 두 가지의 함숫값을 비교해 동등한 함수가 되기 위한 계수의 관계를 얻는다.",
+  "degreesOfFreedom": [
+    "일차함수의 이동 상수",
+    "상수와 계수의 동시 매개변수",
+    "매개변수의 비영 조건",
+    "서로 다른 일차 기울기",
+    "두 미지 상수의 추가 합 조건",
+    "삼인수에서 해 제외",
+    "이차·일차 함수의 합성 교환",
+    "세 함수의 쌍별 교환"
+  ],
+  "extensionRegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_COMPOSITION/extension-l4/palma-2025-2final-q10-registry.json",
+  "records": [
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q10-A1",
+      "slot": "A1",
+      "mode": "STRICT_VARIANT",
+      "studentStem": "실수 전체에서 정의된 두 함수 $f(x)=x+3$, $g(x)=kx+2$에 대하여 $g\\circ f=f\\circ g$가 성립할 때, 실수 $k$의 값은?",
+      "studentMentalPath": "g(f)=kx+3k+2, f(g)=kx+5 → k=1",
+      "primaryRpmL3Id": "H1-RPM-253",
+      "l4": "EXT-PALMA25-Q10-AFFINE-COMMUTATION",
+      "pt": "PT_COMPOSITION_PROPERTIES",
+      "tpl": "TPL_COMPOSITION_RELATION_CONDITION",
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS"
+      ],
+      "crossConceptKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "하",
+      "difficultyBucket": 2,
+      "levelReason": "일차함수 두 개의 합성을 전개하고 상수항 방정식 하나를 해결하므로 별도 분기가 없다.",
+      "bucketReason": "안쪽/바깥쪽 대입의 순서와 상수항 전개 실수 위험은 있으나 계산이 짧다.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "solutionAsset": null,
+      "solutionAssetBlob": null,
+      "choices": [
+        "$-1$",
+        "$0$",
+        "$1$",
+        "$2$",
+        "$3$"
+      ],
+      "answer": "③",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "-1",
+          "errorCalculation": "$f(g(x))$에 $+3$을 $-3$으로 잘못 적용하면 $kx-1$이므로 $3k+2=-1$, $k=-1$이다."
+        },
+        {
+          "index": "②",
+          "value": "0",
+          "errorCalculation": "$f(g(x))$에 바깥 $+3$을 빠뜨리면 $kx+2$이므로 $3k+2=2$, $k=0$이다."
+        },
+        {
+          "index": "④",
+          "value": "2",
+          "errorCalculation": "$3k+2=5$에서 이항을 잘못해 $3k=6$으로 계산하면 $k=2$이다."
+        },
+        {
+          "index": "⑤",
+          "value": "3",
+          "errorCalculation": "$g(x+3)$에서 $3k$를 $k$로 잘못 전개하면 $k+2=5$, $k=3$이다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q10-A2",
+      "slot": "A2",
+      "mode": "STRICT_VARIANT",
+      "studentStem": "실수 전체에서 정의된 두 함수 $f(x)=x-2$, $g(x)=(k+2)x+5$에 대하여 $g\\circ f=f\\circ g$가 성립할 때, 실수 $k$의 값은?",
+      "studentMentalPath": "g(f)=(k+2)x−2k+1; f(g)=(k+2)x+3 → k=-1",
+      "primaryRpmL3Id": "H1-RPM-253",
+      "l4": "EXT-PALMA25-Q10-AFFINE-COMMUTATION",
+      "pt": "PT_COMPOSITION_PROPERTIES",
+      "tpl": "TPL_COMPOSITION_RELATION_CONDITION",
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS"
+      ],
+      "crossConceptKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "하",
+      "difficultyBucket": 2,
+      "levelReason": "합성 순서 두 가지를 전개한 뒤 상수항 비교만 수행하며 경우 분기가 없다.",
+      "bucketReason": "음수 분배법칙을 잘못 적용하기 쉬워 원본과 다른 부호함정이 있지만 짧은 일차계산이다.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "solutionAsset": null,
+      "solutionAssetBlob": null,
+      "choices": [
+        "$-3$",
+        "$-2$",
+        "$-1$",
+        "$0$",
+        "$1$"
+      ],
+      "answer": "③",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "-3",
+          "errorCalculation": "$f(g(x))$의 $-2$를 $+2$로 착각하면 상수항이 $7$이므로 $-2k+1=7$, $k=-3$이다."
+        },
+        {
+          "index": "②",
+          "value": "-2",
+          "errorCalculation": "바깥 함수의 $-2$를 누락하면 $-2k+1=5$이므로 $k=-2$이다."
+        },
+        {
+          "index": "④",
+          "value": "0",
+          "errorCalculation": "$f(g(x))$에서 $-2$를 두 번 적용하면 상수항이 $1$이 되어 $-2k+1=1$에서 $k=0$이다."
+        },
+        {
+          "index": "⑤",
+          "value": "1",
+          "errorCalculation": "$g(f(x))$의 $-2(k+2)$에서 $-4$를 누락하면 상수항 $-2k+5$이므로 $-2k+5=3$, $k=1$이다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q10-A3",
+      "slot": "A3",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "두 함수 $f(x)=x+k$, $g(x)=(k-1)x+3$는 실수 전체에서 정의된다. $g\\circ f=f\\circ g$이고 $k\\ne0$일 때, 실수 $k$의 값은?",
+      "studentMentalPath": "k(k−2)=0, 0 제외, k2",
+      "primaryRpmL3Id": "H1-RPM-253",
+      "l4": "EXT-PALMA25-Q10-AFFINE-COMMUTATION",
+      "pt": "PT_COMPOSITION_PROPERTIES",
+      "tpl": "TPL_COMPOSITION_RELATION_CONDITION",
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS",
+        "COND_NONZERO"
+      ],
+      "crossConceptKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "level": "중",
+      "difficultyBucket": 3,
+      "levelReason": "두 합성식 비교→이차방정식 인수분해→k=0 제외의 세 판단.",
+      "bucketReason": "곱 전개에서 k²-k의 음수항과 제외 조건의 결합 오류 가능.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "solutionAsset": null,
+      "solutionAssetBlob": null,
+      "choices": [
+        "$0$",
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$"
+      ],
+      "answer": "③",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "0",
+          "errorCalculation": "$k(k-2)=0$에서 $k\\ne0$을 무시하여 $k=0$을 선택."
+        },
+        {
+          "index": "②",
+          "value": "1",
+          "errorCalculation": "$(k-1)k$의 $-k$항을 누락하면 $k^2=k$에서 비영 해는 $1$. "
+        },
+        {
+          "index": "④",
+          "value": "3",
+          "errorCalculation": "$g(x)$의 계수 $k-1$을 $k-2$로 읽으면 $k(k-3)=0$, 비영 해 $3$. "
+        },
+        {
+          "index": "⑤",
+          "value": "4",
+          "errorCalculation": "$g(x)$의 계수 $k-1$을 $k-3$으로 읽으면 $k(k-4)=0$, 비영 해 $4$. "
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q10-B1",
+      "slot": "B1",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "실수 전체에서 정의된 두 함수 $f(x)=2x+3$, $g(x)=kx+3$에 대하여 $f\\circ g=g\\circ f$가 성립할 때, 실수 $k$의 값은?",
+      "studentMentalPath": "f(g)=2kx+9, g(f)=2kx+3k+3 → k2",
+      "primaryRpmL3Id": "H1-RPM-253",
+      "l4": "EXT-PALMA25-Q10-AFFINE-COMMUTATION",
+      "pt": "PT_COMPOSITION_PROPERTIES",
+      "tpl": "TPL_COMPOSITION_RELATION_CONDITION",
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS"
+      ],
+      "crossConceptKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "하",
+      "difficultyBucket": 3,
+      "levelReason": "두 일차식 합성 후 한 상수항을 비교한다. B 슬롯이지만 경우분기 없으므로 하.",
+      "bucketReason": "양쪽 계수 전개를 각기 해야 하고 3k를 틀리기 쉬워 3.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "solutionAsset": null,
+      "solutionAssetBlob": null,
+      "choices": [
+        "$0$",
+        "$1$",
+        "$2$",
+        "$3$",
+        "$6$"
+      ],
+      "answer": "③",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "0",
+          "errorCalculation": "$f(kx+3)$에서 $2\\cdot3$을 빠뜨려 상수항을 $3$만 기록하면 $3=3k+3$에서 $k=0$. "
+        },
+        {
+          "index": "②",
+          "value": "1",
+          "errorCalculation": "$f(kx+3)$의 바깥 $+3$을 누락하면 $6=3k+3$에서 $k=1$. "
+        },
+        {
+          "index": "④",
+          "value": "3",
+          "errorCalculation": "$g(2x+3)$에서 $3k$를 $2k$로 잘못 전개하면 $9=2k+3$에서 $k=3$. "
+        },
+        {
+          "index": "⑤",
+          "value": "6",
+          "errorCalculation": "$g(2x+3)$에서 $3k$를 $k$로 잘못 전개하면 $9=k+3$에서 $k=6$. "
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q10-B2",
+      "slot": "B2",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "실수 전체에서 정의된 두 함수 $f(x)=(k+1)x+4$, $g(x)=3x+2$에 대하여 $f\\circ g=g\\circ f$가 성립할 때, 실수 $k$의 값은?",
+      "studentMentalPath": "f(g)=3(k+1)x+2k+6;g(f)=3(k+1)x+14→k4",
+      "primaryRpmL3Id": "H1-RPM-253",
+      "l4": "EXT-PALMA25-Q10-AFFINE-COMMUTATION",
+      "pt": "PT_COMPOSITION_PROPERTIES",
+      "tpl": "TPL_COMPOSITION_RELATION_CONDITION",
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS"
+      ],
+      "crossConceptKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 3,
+      "levelReason": "두 일차함수 합성의 매개변수·계수를 비교하나 특별한 경우분기는 없다.",
+      "bucketReason": "매개변수 괄호를 포함한 2(k+1)의 분배법칙과 바깥 3의 작용을 모두 검사해야 한다.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "solutionAsset": null,
+      "solutionAssetBlob": null,
+      "choices": [
+        "$-1$",
+        "$0$",
+        "$2$",
+        "$4$",
+        "$6$"
+      ],
+      "answer": "④",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "-1",
+          "errorCalculation": "$g(f(x))$의 상수항에서 $3\\cdot4$와 $+2$를 빠뜨려 $4$만 남기면 $2k+6=4$에서 $k=-1$. "
+        },
+        {
+          "index": "②",
+          "value": "0",
+          "errorCalculation": "$3\\cdot4$를 $4$로 잘못 계산하면 오른쪽 상수항은 $4+2=6$, $2k+6=6$에서 $k=0$. "
+        },
+        {
+          "index": "③",
+          "value": "2",
+          "errorCalculation": "$2(k+1)$의 $2k$를 $4k$로 잘못 계산하면 $4k+6=14$에서 $k=2$. "
+        },
+        {
+          "index": "⑤",
+          "value": "6",
+          "errorCalculation": "$g(f(x))$의 $+2$를 $+6$으로 읽으면 상수항이 $18$, $2k+6=18$에서 $k=6$. "
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q10-B3",
+      "slot": "B3",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "실수 전체에서 정의된 두 함수 $f(x)=2x+a$, $g(x)=3x+b$가 $f\\circ g=g\\circ f$를 만족한다. $a+b=15$일 때, 실수 $b$의 값은?",
+      "studentMentalPath": "2b+a=3a+b, b=2a, a+b=15 → b10",
+      "primaryRpmL3Id": "H1-RPM-253",
+      "l4": "EXT-PALMA25-Q10-AFFINE-COMMUTATION",
+      "pt": "PT_COMPOSITION_PROPERTIES",
+      "tpl": "TPL_COMPOSITION_RELATION_CONDITION",
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS"
+      ],
+      "crossConceptKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 4,
+      "levelReason": "상수항 계수 비교로 b=2a를 얻은 후 합 조건을 결합한다.",
+      "bucketReason": "합성 순서와 두 미지수 관계를 연립하여 계산한다.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "solutionAsset": null,
+      "solutionAssetBlob": null,
+      "choices": [
+        "$5$",
+        "$\\dfrac{15}{2}$",
+        "$10$",
+        "$12$",
+        "$15$"
+      ],
+      "answer": "③",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "5",
+          "errorCalculation": "b 대신 a=5를 답으로 적음."
+        },
+        {
+          "index": "②",
+          "value": "\\dfrac{15}{2}",
+          "errorCalculation": "b=a로 잘못 정리하여 2b=15를 풀면 15/2."
+        },
+        {
+          "index": "④",
+          "value": "12",
+          "errorCalculation": "b=4a로 잘못 정리하면 5a=15, b=12."
+        },
+        {
+          "index": "⑤",
+          "value": "15",
+          "errorCalculation": "a+b=15를 b=15로 잘못 읽음."
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q10-C1",
+      "slot": "C1",
+      "mode": "TYPE_BANK",
+      "studentStem": "실수 전체에서 정의된 두 함수 $f(x)=x+k$, $g(x)=(k^2-3k+3)x+2$에 대하여 $g\\circ f=f\\circ g$가 성립한다. $0$이 아닌 실수 $k$의 가능한 모든 값의 합은?",
+      "studentMentalPath": "k(k−1)(k−2)=0→0 제외→1+2=3",
+      "primaryRpmL3Id": "H1-RPM-253",
+      "l4": "EXT-PALMA25-Q10-AFFINE-COMMUTATION",
+      "pt": "PT_COMPOSITION_PROPERTIES",
+      "tpl": "TPL_COMPOSITION_RELATION_CONDITION",
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS",
+        "COND_NONZERO"
+      ],
+      "crossConceptKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "level": "상",
+      "difficultyBucket": 4,
+      "levelReason": "합성 상수항 비교→세 인수의 해→0 제외→허용 해 합계의 여러 단계 판단.",
+      "bucketReason": "매개변수 이차식 인수분해, 조건에 따른 해 제외와 합산에서 실제 오류 가능.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "solutionAsset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q10/C1-solution.svg",
+      "solutionAssetBlob": "b193158e15d6851e6baaefc926a0cd1686b55ff2",
+      "choices": [
+        "$0$",
+        "$1$",
+        "$2$",
+        "$3$",
+        "$5$"
+      ],
+      "answer": "④",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "0",
+          "errorCalculation": "$k(k-1)(k-2)=0$에서 조건 $k\\ne0$을 적용하지 않고 첫 해 $0$만 고른다."
+        },
+        {
+          "index": "②",
+          "value": "1",
+          "errorCalculation": "허용되는 두 해 $1,2$ 중 $1$만 답하고 합을 구하지 않는다."
+        },
+        {
+          "index": "③",
+          "value": "2",
+          "errorCalculation": "허용되는 두 해 $1,2$ 중 $2$만 답하고 합을 구하지 않는다."
+        },
+        {
+          "index": "⑤",
+          "value": "5",
+          "errorCalculation": "$k^2-3k+2$를 $(k-2)(k-3)$으로 잘못 인수분해하면 허용된 해가 $2,3$인 것으로 보고 합 $5$를 구한다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q10-C2",
+      "slot": "C2",
+      "mode": "TYPE_BANK",
+      "studentStem": "실수 전체에서 정의된 두 함수 $f(x)=x^2-2x+2$, $g(x)=kx+1$에 대하여 $f\\circ g=g\\circ f$가 성립할 때, 실수 $k$의 값은?",
+      "studentMentalPath": "f(g)=k²x²+1;g(f)=kx²−2kx+2k+1→0=−2k→k0",
+      "primaryRpmL3Id": "H1-RPM-253",
+      "l4": "EXT-PALMA25-Q10-QUADRATIC-COMMUTATION",
+      "pt": "PT_COMPOSITION_PROPERTIES",
+      "tpl": "TPL_COMPOSITION_RELATION_CONDITION",
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS"
+      ],
+      "crossConceptKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "level": "중",
+      "difficultyBucket": 4,
+      "levelReason": "이차함수와 일차함수의 양방향 합성을 전개하고 모든 x에서의 계수 비교를 적용한다.",
+      "bucketReason": "일차항·이차항을 혼동하기 쉬운 다항식 전개 및 해의 충분성 확인이 필요.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "solutionAsset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q10/C2-solution.svg",
+      "solutionAssetBlob": "f259b3c69a9ad3f9732620ecd6c6d79fc22ab9df",
+      "choices": [
+        "$-2$",
+        "$-1$",
+        "$0$",
+        "$1$",
+        "$2$"
+      ],
+      "answer": "③",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "-2",
+          "errorCalculation": "$x$항과 $x^2$항을 혼동하여 $k^2=-2k$로 두면 $k(k+2)=0$에서 $k=-2$를 잘못 선택한다."
+        },
+        {
+          "index": "②",
+          "value": "-1",
+          "errorCalculation": "$g(f(x))$의 $x^2$항 계수 $k$에 부호를 잘못 붙이면 $k^2=-k$에서 $k=-1$을 잘못 선택한다."
+        },
+        {
+          "index": "④",
+          "value": "1",
+          "errorCalculation": "$x^2$항의 계수 $k^2=k$만 풀고 $x$항의 비교를 빠뜨리면 $k=1$도 가능하다고 잘못 판단한다."
+        },
+        {
+          "index": "⑤",
+          "value": "2",
+          "errorCalculation": "$g(f(x))$에서 $x^2$항 계수 $k$ 대신 $x$항 계수의 절댓값 $2k$를 가져오면 $k^2=2k$에서 $k=2$를 잘못 선택한다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q10-C3",
+      "slot": "C3",
+      "mode": "TYPE_BANK",
+      "studentStem": "실수 전체에서 정의된 세 함수 $f(x)=2x+a$, $g(x)=3x+b$, $h(x)=4x+c$에서 임의의 두 함수의 합성 순서를 바꾸어도 결과가 같다. $a+b+c=30$일 때, 실수 $c$의 값은? (단, $a,b,c$는 실수이다.)",
+      "studentMentalPath": "b=2a,2c=3b→c=3a;f,h 확인;6a=30→c15",
+      "primaryRpmL3Id": "H1-RPM-253",
+      "l4": "EXT-PALMA25-Q10-AFFINE-COMMUTATION",
+      "pt": "PT_COMPOSITION_PROPERTIES",
+      "tpl": "TPL_COMPOSITION_RELATION_CONDITION",
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS"
+      ],
+      "crossConceptKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "level": "상",
+      "difficultyBucket": 5,
+      "levelReason": "세 쌍의 합성 교환관계를 판정하여 변수를 연계하고 총합 조건을 적용한다.",
+      "bucketReason": "함수 3개와 계수 관계 3개를 연립하고 중복 관계의 충분성도 확인하는 높은 사고 부담.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "solutionAsset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q10/C3-solution.svg",
+      "solutionAssetBlob": "3c610a2534891344b8fa30f67509f31314023fb8",
+      "choices": [
+        "$5$",
+        "$10$",
+        "$12$",
+        "$15$",
+        "$30$"
+      ],
+      "answer": "④",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "5",
+          "errorCalculation": "$a=5,b=10,c=15$를 구한 뒤 문제의 $c$ 대신 $a=5$를 기록한다."
+        },
+        {
+          "index": "②",
+          "value": "10",
+          "errorCalculation": "$a=5,b=10,c=15$를 구한 뒤 문제의 $c$ 대신 $b=10$을 기록한다."
+        },
+        {
+          "index": "③",
+          "value": "12",
+          "errorCalculation": "$g,h$의 합성 교환조건 $2c=3b$ 대신 $c=b$로 잘못 정리하면 $b=2a,c=2a$이고 $5a=30$에서 $c=12$가 된다."
+        },
+        {
+          "index": "⑤",
+          "value": "30",
+          "errorCalculation": "$a+b+c=30$에서 $a+b$를 빠뜨리고 $c=30$으로 답한다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    }
+  ]
+}

@@ -1,3 +1,12 @@
+# CURRENT TOP — q10 AUTHOR COMPLETE / q11 NEXT (2026-10-15)
+- Branch `work/alive-25-palma-h1-2final-qid9`; previous q01~q09 81/207 preserved unchanged, q10 A1~C3 +9 AUTHOR candidates: **90/207**, pending 117, firstMissing=q11. All original exam and legacy similar untouched.
+- Original q10 `archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js` Git blob `0d12b75e824ab47f08fc3b5a6180be595f882c6e`: f=x+k, g=kx+1, g∘f=f∘g, k≠0, answer k=1(④). No original problem picture.
+- RPM Primary H1-RPM-253 L3 합성함수, crosswalk DIRECT_ACTIVE (default direct composition PT_COMPOSITION_EVALUATION). Actual f∘g=g∘f decisive step uses separately ACTIVE PT_COMPOSITION_PROPERTIES/TPL_COMPOSITION_RELATION_CONDITION on H22-C2-07-FUNCTION_COMPOSITION, plus Generated EXT L4 affine vs quadratic commutation registry. RPM LOCKED untouched. Existing Geumdang branch-only candidate noted for future alias; no arbitrary canonical promotion.
+- A1~C3 9 school-style problems, 45 five choices, 36 1:1 wrong calculation routes, student-reproducible explanations, individual level & difficulty reasons and Reverse Stem KEEP. 9 problem SVG EXEMPT. 3 solution SVG (C1 k root filtering, C2 coefficient table, C3 pairwise commutation relations), 6 solution SVG EXEMPT. SVG static fact parity checked, browser NOT_RUN. Python SymPy current-run exact nine commutation checks.
+- New sourceUid exact 9 EVIDENCE_DEBT; cumulative 90. Independent formal/open-book quality, Browser, Student Consumer/index, production main NOT_RUN. Candidate Git push not student release.
+- q10 evidence: Q10_PREFLIGHT / Q10_AUTHOR_BLUEPRINT / Q10_CREATE_DRAFT / Q10_AUTHOR_RECEIPT and q10 generated L4 registry + C1/C2/C3 SVG. q01~q09 authored files and old receipts protected.
+- Next q11 original source and any image/SVG must be inspected before q11 9-slot author; same-branch one source qid independent commit. Q10 answer counts ①0 ②0 ③6 ④3 ⑤0; natural order retained, full 207 index balancing later.
+
 # CURRENT TOP — q09 AUTHOR COMPLETE / q10 NEXT (2026-10-15)
 - Branch `work/alive-25-palma-h1-2final-qid9`: q01~q09 81/207 AUTHOR candidates, remaining 126, firstMissing q10. Previous q01~q08 candidate/asset, all originals and legacy similar questions unchanged.
 - Original q09 source JS blob `0d12b75e824ab47f08fc3b5a6180be595f882c6e`: f(x+y)=f(x)+f(y) for all real x,y, f(2)=4, target f(5)=10, answer ①. Original source has no image; category 함수의 성질, subunit FUNCTION_BASIC.

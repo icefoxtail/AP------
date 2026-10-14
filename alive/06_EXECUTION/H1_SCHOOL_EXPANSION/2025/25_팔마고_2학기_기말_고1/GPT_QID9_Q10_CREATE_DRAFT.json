@@ -1,0 +1,1355 @@
+{
+  "schemaVersion": "PALMA25_QID9_DRAFT_v1",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceQid": 10,
+  "sourceOriginalImage": null,
+  "sourceOriginalCondition": "f(x)=x+k, g(x)=kx+1, g∘f=f∘g, k!=0; original k=1, answer ④",
+  "primaryRpmL3": "H1-RPM-253",
+  "rpmMappingStatus": "DIRECT_ACTIVE",
+  "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+  "generatedExtL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_COMPOSITION/extension-l4/palma-2025-2final-q10-registry.json",
+  "summary": {
+    "authorCreated": 9,
+    "choicesChecked": 45,
+    "wrongRoutes": 36,
+    "problemSvg": 0,
+    "problemSvgExempt": 9,
+    "solutionSvg": 3,
+    "solutionSvgExempt": 6,
+    "answerDistribution": {
+      "①": 0,
+      "②": 0,
+      "③": 6,
+      "④": 3,
+      "⑤": 0
+    },
+    "formalIndependent": "NOT_RUN",
+    "browser": "NOT_RUN",
+    "consumer": "NOT_RUN",
+    "main": "NOT_RUN",
+    "sourceUidEvidenceDebt": 9,
+    "nextQid": 11
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-PALMA25-2FINAL-Q10-A1",
+      "sourceQid": 10,
+      "sourceUid": null,
+      "slot": "A1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "하",
+      "category": "합성함수의 교환 관계",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "합성함수",
+        "교환조건",
+        "계수 비교"
+      ],
+      "wide": false,
+      "content": "실수 전체에서 정의된 두 함수 $f(x)=x+3$, $g(x)=kx+2$에 대하여 $g\\circ f=f\\circ g$가 성립할 때, 실수 $k$의 값은?",
+      "choices": [
+        "$-1$",
+        "$0$",
+        "$1$",
+        "$2$",
+        "$3$"
+      ],
+      "answer": "③",
+      "solution": "$g(f(x))=g(x+3)=k(x+3)+2=kx+3k+2$이다.\n$f(g(x))=f(kx+2)=kx+5$이다.\n두 함수가 같으려면 모든 실수 $x$에 대하여 $kx+3k+2=kx+5$이므로 $3k+2=5$이다.\n$3k=3$이므로 $k=1$이다. 이때 두 합성식은 모두 $x+5$로 같다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "합성함수 계산",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "원본 q10과 동일하게 함수 합성 순서를 각각 계산하고 두 함수가 모든 실수에서 같아지는 조건으로 계수·상수항 관계를 판정한다. H1-RPM-253: 합성함수/합성함수 계산. Crosswalk DIRECT_ACTIVE 기본 PT_COMPOSITION_EVALUATION과 달리 실제 결정적 풀이에는 별도 ACTIVE PT_COMPOSITION_PROPERTIES/TPL_COMPOSITION_RELATION_CONDITION을 사용하며 이를 직접 crosswalk mapping이라 주장하지 않는다.",
+        "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+        "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+        "generatedExtL4Id": "EXT-PALMA25-Q10-AFFINE-COMMUTATION",
+        "generatedExtL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_COMPOSITION/extension-l4/palma-2025-2final-q10-registry.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q10과 동일하게 함수 합성 순서를 각각 계산하고 두 함수가 모든 실수에서 같아지는 조건으로 계수·상수항 관계를 판정한다. H1-RPM-253: 합성함수/합성함수 계산. Crosswalk DIRECT_ACTIVE 기본 PT_COMPOSITION_EVALUATION과 달리 실제 결정적 풀이에는 별도 ACTIVE PT_COMPOSITION_PROPERTIES/TPL_COMPOSITION_RELATION_CONDITION을 사용하며 이를 직접 crosswalk mapping이라 주장하지 않는다.",
+          "l4": "일차함수들의 계수 교환을 다루는 GENERATED_ACTIVE L4 혹은 이차·일차 함수의 합성 교환을 다루는 GENERATED_ACTIVE L4를 결정적 사고에 따라 적용.",
+          "pt": "전체 정의역에서 f∘g=g∘f를 이용하여 계수를 결정하는 실제 풀이로 PT_COMPOSITION_PROPERTIES ACTIVE.",
+          "tpl": "TPL_COMPOSITION_RELATION_CONDITION ACTIVE; g(f)=kx+3k+2, f(g)=kx+5 → k=1",
+          "cross": "계수비교·다항식 전개는 이미 이수한 대수 도구로서 주개념 풀이에 종속하며 독립 CrossConcept 태그는 필요하지 않음.",
+          "condition": "COND_UNIVERSAL_INPUTS가 모든 실수의 함수 상등 및 필요시 0 제외에 사용된다.",
+          "integration": "SEQUENTIAL: g(f)=kx+3k+2, f(g)=kx+5 → k=1",
+          "learningLevel": "일차함수 두 개의 합성을 전개하고 상수항 방정식 하나를 해결하므로 별도 분기가 없다.",
+          "assessmentBucket": "안쪽/바깥쪽 대입의 순서와 상수항 전개 실수 위험은 있으나 계산이 짧다.",
+          "problemVisual": "수식만으로 출제 정보가 모두 주어져 문제 그림은 중복·답 누설 가능성이 있어 EXEMPT.",
+          "solutionVisual": "EXEMPT: 합성식 두 개와 한 줄의 계수 비교로 논리와 값을 충분히 전달함.",
+          "curriculum": "2022 개정 공통수학2 합성함수의 뜻과 계수비교, 선행 다항식 전개·인수분해만 사용. 미분·벡터·극한 등 상위 교육과정 방법을 사용하지 않음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "공통수학2 합성함수, 선행 다항식 전개와 인수분해만 사용",
+        "learningLevelReason": "일차함수 두 개의 합성을 전개하고 상수항 방정식 하나를 해결하므로 별도 분기가 없다.",
+        "assessmentDifficultyReason": "안쪽/바깥쪽 대입의 순서와 상수항 전개 실수 위험은 있으나 계산이 짧다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "실수 전체에서 정의된 두 함수 $f(x)=x+3$, $g(x)=kx+2$에 대하여 $g\\circ f=f\\circ g$가 성립할 때, 실수 $k$의 값은?",
+          "requiredPrimaryL3Step": "g(f)=kx+3k+2, f(g)=kx+5 → k=1",
+          "questionNaturalness": "동등한 합성함수의 조건에서 매개변수를 묻는 학교 내신식 발문",
+          "conditionSufficiency": "각 식이 모든 실수에서 같아야 한다는 조건을 적용해 필요충분한 계수비교 및 원식 대입을 확인.",
+          "shortcut": "합성 계산과 함수 상등 확인 없이 목표 k를 임의로 결정할 수 없음",
+          "answerFromFinalStudentInput": "1",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "실제 브라우저 렌더와 별도 독립품질검사 미실행"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "-1",
+              "errorCalculation": "$f(g(x))$에 $+3$을 $-3$으로 잘못 적용하면 $kx-1$이므로 $3k+2=-1$, $k=-1$이다."
+            },
+            {
+              "index": "②",
+              "value": "0",
+              "errorCalculation": "$f(g(x))$에 바깥 $+3$을 빠뜨리면 $kx+2$이므로 $3k+2=2$, $k=0$이다."
+            },
+            {
+              "index": "④",
+              "value": "2",
+              "errorCalculation": "$3k+2=5$에서 이항을 잘못해 $3k=6$으로 계산하면 $k=2$이다."
+            },
+            {
+              "index": "⑤",
+              "value": "3",
+              "errorCalculation": "$g(x+3)$에서 $3k$를 $k$로 잘못 전개하면 $k+2=5$, $k=3$이다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "PYTHON_SYMPY_CURRENT_PASS",
+          "expression": "g(f)-f(g)=-3(k-1)",
+          "answer": "1"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "합성함수 식, 조건, 목표 모두 명시. 추가 이미지 불필요",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "why": "수식 계산으로 충분",
+          "svgPath": null,
+          "svgBlob": null,
+          "staticGeometryStatus": "NOT_APPLICABLE",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-PALMA25-2FINAL-Q10-A2",
+      "sourceQid": 10,
+      "sourceUid": null,
+      "slot": "A2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "하",
+      "category": "합성함수의 교환 관계",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "합성함수",
+        "교환조건",
+        "계수 비교"
+      ],
+      "wide": false,
+      "content": "실수 전체에서 정의된 두 함수 $f(x)=x-2$, $g(x)=(k+2)x+5$에 대하여 $g\\circ f=f\\circ g$가 성립할 때, 실수 $k$의 값은?",
+      "choices": [
+        "$-3$",
+        "$-2$",
+        "$-1$",
+        "$0$",
+        "$1$"
+      ],
+      "answer": "③",
+      "solution": "$g(f(x))=(k+2)(x-2)+5=(k+2)x-2k+1$이다.\n$f(g(x))=(k+2)x+5-2=(k+2)x+3$이다.\n두 함수가 같으므로 $-2k+1=3$이고, $-2k=2$이다.\n따라서 $k=-1$이며 이때 두 합성식은 모두 $x+3$으로 일치한다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "합성함수 계산",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "원본 q10과 동일하게 함수 합성 순서를 각각 계산하고 두 함수가 모든 실수에서 같아지는 조건으로 계수·상수항 관계를 판정한다. H1-RPM-253: 합성함수/합성함수 계산. Crosswalk DIRECT_ACTIVE 기본 PT_COMPOSITION_EVALUATION과 달리 실제 결정적 풀이에는 별도 ACTIVE PT_COMPOSITION_PROPERTIES/TPL_COMPOSITION_RELATION_CONDITION을 사용하며 이를 직접 crosswalk mapping이라 주장하지 않는다.",
+        "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+        "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+        "generatedExtL4Id": "EXT-PALMA25-Q10-AFFINE-COMMUTATION",
+        "generatedExtL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_COMPOSITION/extension-l4/palma-2025-2final-q10-registry.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q10과 동일하게 함수 합성 순서를 각각 계산하고 두 함수가 모든 실수에서 같아지는 조건으로 계수·상수항 관계를 판정한다. H1-RPM-253: 합성함수/합성함수 계산. Crosswalk DIRECT_ACTIVE 기본 PT_COMPOSITION_EVALUATION과 달리 실제 결정적 풀이에는 별도 ACTIVE PT_COMPOSITION_PROPERTIES/TPL_COMPOSITION_RELATION_CONDITION을 사용하며 이를 직접 crosswalk mapping이라 주장하지 않는다.",
+          "l4": "일차함수들의 계수 교환을 다루는 GENERATED_ACTIVE L4 혹은 이차·일차 함수의 합성 교환을 다루는 GENERATED_ACTIVE L4를 결정적 사고에 따라 적용.",
+          "pt": "전체 정의역에서 f∘g=g∘f를 이용하여 계수를 결정하는 실제 풀이로 PT_COMPOSITION_PROPERTIES ACTIVE.",
+          "tpl": "TPL_COMPOSITION_RELATION_CONDITION ACTIVE; g(f)=(k+2)x−2k+1; f(g)=(k+2)x+3 → k=-1",
+          "cross": "계수비교·다항식 전개는 이미 이수한 대수 도구로서 주개념 풀이에 종속하며 독립 CrossConcept 태그는 필요하지 않음.",
+          "condition": "COND_UNIVERSAL_INPUTS가 모든 실수의 함수 상등 및 필요시 0 제외에 사용된다.",
+          "integration": "SEQUENTIAL: g(f)=(k+2)x−2k+1; f(g)=(k+2)x+3 → k=-1",
+          "learningLevel": "합성 순서 두 가지를 전개한 뒤 상수항 비교만 수행하며 경우 분기가 없다.",
+          "assessmentBucket": "음수 분배법칙을 잘못 적용하기 쉬워 원본과 다른 부호함정이 있지만 짧은 일차계산이다.",
+          "problemVisual": "수식만으로 출제 정보가 모두 주어져 문제 그림은 중복·답 누설 가능성이 있어 EXEMPT.",
+          "solutionVisual": "EXEMPT: 합성식 두 개와 한 줄의 계수 비교로 논리와 값을 충분히 전달함.",
+          "curriculum": "2022 개정 공통수학2 합성함수의 뜻과 계수비교, 선행 다항식 전개·인수분해만 사용. 미분·벡터·극한 등 상위 교육과정 방법을 사용하지 않음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "공통수학2 합성함수, 선행 다항식 전개와 인수분해만 사용",
+        "learningLevelReason": "합성 순서 두 가지를 전개한 뒤 상수항 비교만 수행하며 경우 분기가 없다.",
+        "assessmentDifficultyReason": "음수 분배법칙을 잘못 적용하기 쉬워 원본과 다른 부호함정이 있지만 짧은 일차계산이다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "실수 전체에서 정의된 두 함수 $f(x)=x-2$, $g(x)=(k+2)x+5$에 대하여 $g\\circ f=f\\circ g$가 성립할 때, 실수 $k$의 값은?",
+          "requiredPrimaryL3Step": "g(f)=(k+2)x−2k+1; f(g)=(k+2)x+3 → k=-1",
+          "questionNaturalness": "동등한 합성함수의 조건에서 매개변수를 묻는 학교 내신식 발문",
+          "conditionSufficiency": "각 식이 모든 실수에서 같아야 한다는 조건을 적용해 필요충분한 계수비교 및 원식 대입을 확인.",
+          "shortcut": "합성 계산과 함수 상등 확인 없이 목표 k를 임의로 결정할 수 없음",
+          "answerFromFinalStudentInput": "-1",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "실제 브라우저 렌더와 별도 독립품질검사 미실행"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "-3",
+              "errorCalculation": "$f(g(x))$의 $-2$를 $+2$로 착각하면 상수항이 $7$이므로 $-2k+1=7$, $k=-3$이다."
+            },
+            {
+              "index": "②",
+              "value": "-2",
+              "errorCalculation": "바깥 함수의 $-2$를 누락하면 $-2k+1=5$이므로 $k=-2$이다."
+            },
+            {
+              "index": "④",
+              "value": "0",
+              "errorCalculation": "$f(g(x))$에서 $-2$를 두 번 적용하면 상수항이 $1$이 되어 $-2k+1=1$에서 $k=0$이다."
+            },
+            {
+              "index": "⑤",
+              "value": "1",
+              "errorCalculation": "$g(f(x))$의 $-2(k+2)$에서 $-4$를 누락하면 상수항 $-2k+5$이므로 $-2k+5=3$, $k=1$이다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "PYTHON_SYMPY_CURRENT_PASS",
+          "expression": "g(f)-f(g)=2(k+1)",
+          "answer": "-1"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "합성함수 식, 조건, 목표 모두 명시. 추가 이미지 불필요",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "why": "수식 계산으로 충분",
+          "svgPath": null,
+          "svgBlob": null,
+          "staticGeometryStatus": "NOT_APPLICABLE",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-PALMA25-2FINAL-Q10-A3",
+      "sourceQid": 10,
+      "sourceUid": null,
+      "slot": "A3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "합성함수의 교환 관계",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "합성함수",
+        "교환조건",
+        "계수 비교"
+      ],
+      "wide": false,
+      "content": "두 함수 $f(x)=x+k$, $g(x)=(k-1)x+3$는 실수 전체에서 정의된다. $g\\circ f=f\\circ g$이고 $k\\ne0$일 때, 실수 $k$의 값은?",
+      "choices": [
+        "$0$",
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$"
+      ],
+      "answer": "③",
+      "solution": "$g(f(x))=(k-1)x+k^2-k+3$, $f(g(x))=(k-1)x+3+k$이다.\n상수항을 비교하면 $k^2-k+3=3+k$, 즉 $k(k-2)=0$이다.\n$k=0$ 또는 $k=2$에서 조건 $k\\ne0$으로 $k=2$이다.\n이때 $f(x)=x+2$, $g(x)=x+3$의 양방향 합성값은 모두 $x+5$다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "합성함수 계산",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "원본 q10과 동일하게 함수 합성 순서를 각각 계산하고 두 함수가 모든 실수에서 같아지는 조건으로 계수·상수항 관계를 판정한다. H1-RPM-253: 합성함수/합성함수 계산. Crosswalk DIRECT_ACTIVE 기본 PT_COMPOSITION_EVALUATION과 달리 실제 결정적 풀이에는 별도 ACTIVE PT_COMPOSITION_PROPERTIES/TPL_COMPOSITION_RELATION_CONDITION을 사용하며 이를 직접 crosswalk mapping이라 주장하지 않는다.",
+        "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+        "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+        "generatedExtL4Id": "EXT-PALMA25-Q10-AFFINE-COMMUTATION",
+        "generatedExtL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_COMPOSITION/extension-l4/palma-2025-2final-q10-registry.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS",
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q10과 동일하게 함수 합성 순서를 각각 계산하고 두 함수가 모든 실수에서 같아지는 조건으로 계수·상수항 관계를 판정한다. H1-RPM-253: 합성함수/합성함수 계산. Crosswalk DIRECT_ACTIVE 기본 PT_COMPOSITION_EVALUATION과 달리 실제 결정적 풀이에는 별도 ACTIVE PT_COMPOSITION_PROPERTIES/TPL_COMPOSITION_RELATION_CONDITION을 사용하며 이를 직접 crosswalk mapping이라 주장하지 않는다.",
+          "l4": "일차함수들의 계수 교환을 다루는 GENERATED_ACTIVE L4 혹은 이차·일차 함수의 합성 교환을 다루는 GENERATED_ACTIVE L4를 결정적 사고에 따라 적용.",
+          "pt": "전체 정의역에서 f∘g=g∘f를 이용하여 계수를 결정하는 실제 풀이로 PT_COMPOSITION_PROPERTIES ACTIVE.",
+          "tpl": "TPL_COMPOSITION_RELATION_CONDITION ACTIVE; k(k−2)=0, 0 제외, k2",
+          "cross": "계수비교·다항식 전개는 이미 이수한 대수 도구로서 주개념 풀이에 종속하며 독립 CrossConcept 태그는 필요하지 않음.",
+          "condition": "COND_UNIVERSAL_INPUTS, COND_NONZERO가 모든 실수의 함수 상등 및 필요시 0 제외에 사용된다.",
+          "integration": "CASE_BRANCH: k(k−2)=0, 0 제외, k2",
+          "learningLevel": "두 합성식 비교→이차방정식 인수분해→k=0 제외의 세 판단.",
+          "assessmentBucket": "곱 전개에서 k²-k의 음수항과 제외 조건의 결합 오류 가능.",
+          "problemVisual": "수식만으로 출제 정보가 모두 주어져 문제 그림은 중복·답 누설 가능성이 있어 EXEMPT.",
+          "solutionVisual": "EXEMPT: 합성식 두 개와 한 줄의 계수 비교로 논리와 값을 충분히 전달함.",
+          "curriculum": "2022 개정 공통수학2 합성함수의 뜻과 계수비교, 선행 다항식 전개·인수분해만 사용. 미분·벡터·극한 등 상위 교육과정 방법을 사용하지 않음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "공통수학2 합성함수, 선행 다항식 전개와 인수분해만 사용",
+        "learningLevelReason": "두 합성식 비교→이차방정식 인수분해→k=0 제외의 세 판단.",
+        "assessmentDifficultyReason": "곱 전개에서 k²-k의 음수항과 제외 조건의 결합 오류 가능.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "두 함수 $f(x)=x+k$, $g(x)=(k-1)x+3$는 실수 전체에서 정의된다. $g\\circ f=f\\circ g$이고 $k\\ne0$일 때, 실수 $k$의 값은?",
+          "requiredPrimaryL3Step": "k(k−2)=0, 0 제외, k2",
+          "questionNaturalness": "동등한 합성함수의 조건에서 매개변수를 묻는 학교 내신식 발문",
+          "conditionSufficiency": "각 식이 모든 실수에서 같아야 한다는 조건을 적용해 필요충분한 계수비교 및 원식 대입을 확인.",
+          "shortcut": "합성 계산과 함수 상등 확인 없이 목표 k를 임의로 결정할 수 없음",
+          "answerFromFinalStudentInput": "2",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "실제 브라우저 렌더와 별도 독립품질검사 미실행"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "0",
+              "errorCalculation": "$k(k-2)=0$에서 $k\\ne0$을 무시하여 $k=0$을 선택."
+            },
+            {
+              "index": "②",
+              "value": "1",
+              "errorCalculation": "$(k-1)k$의 $-k$항을 누락하면 $k^2=k$에서 비영 해는 $1$. "
+            },
+            {
+              "index": "④",
+              "value": "3",
+              "errorCalculation": "$g(x)$의 계수 $k-1$을 $k-2$로 읽으면 $k(k-3)=0$, 비영 해 $3$. "
+            },
+            {
+              "index": "⑤",
+              "value": "4",
+              "errorCalculation": "$g(x)$의 계수 $k-1$을 $k-3$으로 읽으면 $k(k-4)=0$, 비영 해 $4$. "
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "PYTHON_SYMPY_CURRENT_PASS",
+          "expression": "g(f)-f(g)=-k(k-2), k!=0",
+          "answer": "2"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "합성함수 식, 조건, 목표 모두 명시. 추가 이미지 불필요",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "why": "수식 계산으로 충분",
+          "svgPath": null,
+          "svgBlob": null,
+          "staticGeometryStatus": "NOT_APPLICABLE",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-PALMA25-2FINAL-Q10-B1",
+      "sourceQid": 10,
+      "sourceUid": null,
+      "slot": "B1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "하",
+      "category": "합성함수의 교환 관계",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "합성함수",
+        "교환조건",
+        "계수 비교"
+      ],
+      "wide": false,
+      "content": "실수 전체에서 정의된 두 함수 $f(x)=2x+3$, $g(x)=kx+3$에 대하여 $f\\circ g=g\\circ f$가 성립할 때, 실수 $k$의 값은?",
+      "choices": [
+        "$0$",
+        "$1$",
+        "$2$",
+        "$3$",
+        "$6$"
+      ],
+      "answer": "③",
+      "solution": "$(f\\circ g)(x)=f(kx+3)=2kx+9$이다.\n$(g\\circ f)(x)=g(2x+3)=2kx+3k+3$이다.\n두 함수가 같으므로 $9=3k+3$, $3k=6$에서 $k=2$이다.\n이때 두 합성식은 모두 $4x+9$로 같으므로 조건을 만족한다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "합성함수 계산",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "원본 q10과 동일하게 함수 합성 순서를 각각 계산하고 두 함수가 모든 실수에서 같아지는 조건으로 계수·상수항 관계를 판정한다. H1-RPM-253: 합성함수/합성함수 계산. Crosswalk DIRECT_ACTIVE 기본 PT_COMPOSITION_EVALUATION과 달리 실제 결정적 풀이에는 별도 ACTIVE PT_COMPOSITION_PROPERTIES/TPL_COMPOSITION_RELATION_CONDITION을 사용하며 이를 직접 crosswalk mapping이라 주장하지 않는다.",
+        "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+        "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+        "generatedExtL4Id": "EXT-PALMA25-Q10-AFFINE-COMMUTATION",
+        "generatedExtL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_COMPOSITION/extension-l4/palma-2025-2final-q10-registry.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q10과 동일하게 함수 합성 순서를 각각 계산하고 두 함수가 모든 실수에서 같아지는 조건으로 계수·상수항 관계를 판정한다. H1-RPM-253: 합성함수/합성함수 계산. Crosswalk DIRECT_ACTIVE 기본 PT_COMPOSITION_EVALUATION과 달리 실제 결정적 풀이에는 별도 ACTIVE PT_COMPOSITION_PROPERTIES/TPL_COMPOSITION_RELATION_CONDITION을 사용하며 이를 직접 crosswalk mapping이라 주장하지 않는다.",
+          "l4": "일차함수들의 계수 교환을 다루는 GENERATED_ACTIVE L4 혹은 이차·일차 함수의 합성 교환을 다루는 GENERATED_ACTIVE L4를 결정적 사고에 따라 적용.",
+          "pt": "전체 정의역에서 f∘g=g∘f를 이용하여 계수를 결정하는 실제 풀이로 PT_COMPOSITION_PROPERTIES ACTIVE.",
+          "tpl": "TPL_COMPOSITION_RELATION_CONDITION ACTIVE; f(g)=2kx+9, g(f)=2kx+3k+3 → k2",
+          "cross": "계수비교·다항식 전개는 이미 이수한 대수 도구로서 주개념 풀이에 종속하며 독립 CrossConcept 태그는 필요하지 않음.",
+          "condition": "COND_UNIVERSAL_INPUTS가 모든 실수의 함수 상등 및 필요시 0 제외에 사용된다.",
+          "integration": "SEQUENTIAL: f(g)=2kx+9, g(f)=2kx+3k+3 → k2",
+          "learningLevel": "두 일차식 합성 후 한 상수항을 비교한다. B 슬롯이지만 경우분기 없으므로 하.",
+          "assessmentBucket": "양쪽 계수 전개를 각기 해야 하고 3k를 틀리기 쉬워 3.",
+          "problemVisual": "수식만으로 출제 정보가 모두 주어져 문제 그림은 중복·답 누설 가능성이 있어 EXEMPT.",
+          "solutionVisual": "EXEMPT: 합성식 두 개와 한 줄의 계수 비교로 논리와 값을 충분히 전달함.",
+          "curriculum": "2022 개정 공통수학2 합성함수의 뜻과 계수비교, 선행 다항식 전개·인수분해만 사용. 미분·벡터·극한 등 상위 교육과정 방법을 사용하지 않음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "공통수학2 합성함수, 선행 다항식 전개와 인수분해만 사용",
+        "learningLevelReason": "두 일차식 합성 후 한 상수항을 비교한다. B 슬롯이지만 경우분기 없으므로 하.",
+        "assessmentDifficultyReason": "양쪽 계수 전개를 각기 해야 하고 3k를 틀리기 쉬워 3.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "실수 전체에서 정의된 두 함수 $f(x)=2x+3$, $g(x)=kx+3$에 대하여 $f\\circ g=g\\circ f$가 성립할 때, 실수 $k$의 값은?",
+          "requiredPrimaryL3Step": "f(g)=2kx+9, g(f)=2kx+3k+3 → k2",
+          "questionNaturalness": "동등한 합성함수의 조건에서 매개변수를 묻는 학교 내신식 발문",
+          "conditionSufficiency": "각 식이 모든 실수에서 같아야 한다는 조건을 적용해 필요충분한 계수비교 및 원식 대입을 확인.",
+          "shortcut": "합성 계산과 함수 상등 확인 없이 목표 k를 임의로 결정할 수 없음",
+          "answerFromFinalStudentInput": "2",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "실제 브라우저 렌더와 별도 독립품질검사 미실행"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "0",
+              "errorCalculation": "$f(kx+3)$에서 $2\\cdot3$을 빠뜨려 상수항을 $3$만 기록하면 $3=3k+3$에서 $k=0$. "
+            },
+            {
+              "index": "②",
+              "value": "1",
+              "errorCalculation": "$f(kx+3)$의 바깥 $+3$을 누락하면 $6=3k+3$에서 $k=1$. "
+            },
+            {
+              "index": "④",
+              "value": "3",
+              "errorCalculation": "$g(2x+3)$에서 $3k$를 $2k$로 잘못 전개하면 $9=2k+3$에서 $k=3$. "
+            },
+            {
+              "index": "⑤",
+              "value": "6",
+              "errorCalculation": "$g(2x+3)$에서 $3k$를 $k$로 잘못 전개하면 $9=k+3$에서 $k=6$. "
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "PYTHON_SYMPY_CURRENT_PASS",
+          "expression": "f(g)-g(f)=-3(k-2)",
+          "answer": "2"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "합성함수 식, 조건, 목표 모두 명시. 추가 이미지 불필요",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "why": "수식 계산으로 충분",
+          "svgPath": null,
+          "svgBlob": null,
+          "staticGeometryStatus": "NOT_APPLICABLE",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-PALMA25-2FINAL-Q10-B2",
+      "sourceQid": 10,
+      "sourceUid": null,
+      "slot": "B2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "합성함수의 교환 관계",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "합성함수",
+        "교환조건",
+        "계수 비교"
+      ],
+      "wide": false,
+      "content": "실수 전체에서 정의된 두 함수 $f(x)=(k+1)x+4$, $g(x)=3x+2$에 대하여 $f\\circ g=g\\circ f$가 성립할 때, 실수 $k$의 값은?",
+      "choices": [
+        "$-1$",
+        "$0$",
+        "$2$",
+        "$4$",
+        "$6$"
+      ],
+      "answer": "④",
+      "solution": "$(f\\circ g)(x)=f(3x+2)=3(k+1)x+2k+6$이다.\n$(g\\circ f)(x)=g((k+1)x+4)=3(k+1)x+14$이다.\n두 합성함수가 같으므로 $2k+6=14$에서 $k=4$이다.\n이때 양쪽 합성함수는 모두 $15x+14$이므로 조건에 맞는다.\n따라서 정답은 ④이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "합성함수 계산",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "원본 q10과 동일하게 함수 합성 순서를 각각 계산하고 두 함수가 모든 실수에서 같아지는 조건으로 계수·상수항 관계를 판정한다. H1-RPM-253: 합성함수/합성함수 계산. Crosswalk DIRECT_ACTIVE 기본 PT_COMPOSITION_EVALUATION과 달리 실제 결정적 풀이에는 별도 ACTIVE PT_COMPOSITION_PROPERTIES/TPL_COMPOSITION_RELATION_CONDITION을 사용하며 이를 직접 crosswalk mapping이라 주장하지 않는다.",
+        "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+        "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+        "generatedExtL4Id": "EXT-PALMA25-Q10-AFFINE-COMMUTATION",
+        "generatedExtL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_COMPOSITION/extension-l4/palma-2025-2final-q10-registry.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q10과 동일하게 함수 합성 순서를 각각 계산하고 두 함수가 모든 실수에서 같아지는 조건으로 계수·상수항 관계를 판정한다. H1-RPM-253: 합성함수/합성함수 계산. Crosswalk DIRECT_ACTIVE 기본 PT_COMPOSITION_EVALUATION과 달리 실제 결정적 풀이에는 별도 ACTIVE PT_COMPOSITION_PROPERTIES/TPL_COMPOSITION_RELATION_CONDITION을 사용하며 이를 직접 crosswalk mapping이라 주장하지 않는다.",
+          "l4": "일차함수들의 계수 교환을 다루는 GENERATED_ACTIVE L4 혹은 이차·일차 함수의 합성 교환을 다루는 GENERATED_ACTIVE L4를 결정적 사고에 따라 적용.",
+          "pt": "전체 정의역에서 f∘g=g∘f를 이용하여 계수를 결정하는 실제 풀이로 PT_COMPOSITION_PROPERTIES ACTIVE.",
+          "tpl": "TPL_COMPOSITION_RELATION_CONDITION ACTIVE; f(g)=3(k+1)x+2k+6;g(f)=3(k+1)x+14→k4",
+          "cross": "계수비교·다항식 전개는 이미 이수한 대수 도구로서 주개념 풀이에 종속하며 독립 CrossConcept 태그는 필요하지 않음.",
+          "condition": "COND_UNIVERSAL_INPUTS가 모든 실수의 함수 상등 및 필요시 0 제외에 사용된다.",
+          "integration": "SEQUENTIAL: f(g)=3(k+1)x+2k+6;g(f)=3(k+1)x+14→k4",
+          "learningLevel": "두 일차함수 합성의 매개변수·계수를 비교하나 특별한 경우분기는 없다.",
+          "assessmentBucket": "매개변수 괄호를 포함한 2(k+1)의 분배법칙과 바깥 3의 작용을 모두 검사해야 한다.",
+          "problemVisual": "수식만으로 출제 정보가 모두 주어져 문제 그림은 중복·답 누설 가능성이 있어 EXEMPT.",
+          "solutionVisual": "EXEMPT: 합성식 두 개와 한 줄의 계수 비교로 논리와 값을 충분히 전달함.",
+          "curriculum": "2022 개정 공통수학2 합성함수의 뜻과 계수비교, 선행 다항식 전개·인수분해만 사용. 미분·벡터·극한 등 상위 교육과정 방법을 사용하지 않음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "공통수학2 합성함수, 선행 다항식 전개와 인수분해만 사용",
+        "learningLevelReason": "두 일차함수 합성의 매개변수·계수를 비교하나 특별한 경우분기는 없다.",
+        "assessmentDifficultyReason": "매개변수 괄호를 포함한 2(k+1)의 분배법칙과 바깥 3의 작용을 모두 검사해야 한다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "실수 전체에서 정의된 두 함수 $f(x)=(k+1)x+4$, $g(x)=3x+2$에 대하여 $f\\circ g=g\\circ f$가 성립할 때, 실수 $k$의 값은?",
+          "requiredPrimaryL3Step": "f(g)=3(k+1)x+2k+6;g(f)=3(k+1)x+14→k4",
+          "questionNaturalness": "동등한 합성함수의 조건에서 매개변수를 묻는 학교 내신식 발문",
+          "conditionSufficiency": "각 식이 모든 실수에서 같아야 한다는 조건을 적용해 필요충분한 계수비교 및 원식 대입을 확인.",
+          "shortcut": "합성 계산과 함수 상등 확인 없이 목표 k를 임의로 결정할 수 없음",
+          "answerFromFinalStudentInput": "4",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "실제 브라우저 렌더와 별도 독립품질검사 미실행"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "-1",
+              "errorCalculation": "$g(f(x))$의 상수항에서 $3\\cdot4$와 $+2$를 빠뜨려 $4$만 남기면 $2k+6=4$에서 $k=-1$. "
+            },
+            {
+              "index": "②",
+              "value": "0",
+              "errorCalculation": "$3\\cdot4$를 $4$로 잘못 계산하면 오른쪽 상수항은 $4+2=6$, $2k+6=6$에서 $k=0$. "
+            },
+            {
+              "index": "③",
+              "value": "2",
+              "errorCalculation": "$2(k+1)$의 $2k$를 $4k$로 잘못 계산하면 $4k+6=14$에서 $k=2$. "
+            },
+            {
+              "index": "⑤",
+              "value": "6",
+              "errorCalculation": "$g(f(x))$의 $+2$를 $+6$으로 읽으면 상수항이 $18$, $2k+6=18$에서 $k=6$. "
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "PYTHON_SYMPY_CURRENT_PASS",
+          "expression": "f(g)-g(f)=2(k-4)",
+          "answer": "4"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "합성함수 식, 조건, 목표 모두 명시. 추가 이미지 불필요",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "why": "수식 계산으로 충분",
+          "svgPath": null,
+          "svgBlob": null,
+          "staticGeometryStatus": "NOT_APPLICABLE",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-PALMA25-2FINAL-Q10-B3",
+      "sourceQid": 10,
+      "sourceUid": null,
+      "slot": "B3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "합성함수의 교환 관계",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "합성함수",
+        "교환조건",
+        "계수 비교"
+      ],
+      "wide": false,
+      "content": "실수 전체에서 정의된 두 함수 $f(x)=2x+a$, $g(x)=3x+b$가 $f\\circ g=g\\circ f$를 만족한다. $a+b=15$일 때, 실수 $b$의 값은?",
+      "choices": [
+        "$5$",
+        "$\\dfrac{15}{2}$",
+        "$10$",
+        "$12$",
+        "$15$"
+      ],
+      "answer": "③",
+      "solution": "$(f\\circ g)(x)=6x+2b+a$, $(g\\circ f)(x)=6x+3a+b$이다.\n계수 비교로 $b=2a$이며, $a+b=15$이므로 $3a=15$, $a=5$, $b=10$이다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "합성함수 계산",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "원본 q10과 동일하게 함수 합성 순서를 각각 계산하고 두 함수가 모든 실수에서 같아지는 조건으로 계수·상수항 관계를 판정한다. H1-RPM-253: 합성함수/합성함수 계산. Crosswalk DIRECT_ACTIVE 기본 PT_COMPOSITION_EVALUATION과 달리 실제 결정적 풀이에는 별도 ACTIVE PT_COMPOSITION_PROPERTIES/TPL_COMPOSITION_RELATION_CONDITION을 사용하며 이를 직접 crosswalk mapping이라 주장하지 않는다.",
+        "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+        "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+        "generatedExtL4Id": "EXT-PALMA25-Q10-AFFINE-COMMUTATION",
+        "generatedExtL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_COMPOSITION/extension-l4/palma-2025-2final-q10-registry.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q10과 동일하게 함수 합성 순서를 각각 계산하고 두 함수가 모든 실수에서 같아지는 조건으로 계수·상수항 관계를 판정한다. H1-RPM-253: 합성함수/합성함수 계산. Crosswalk DIRECT_ACTIVE 기본 PT_COMPOSITION_EVALUATION과 달리 실제 결정적 풀이에는 별도 ACTIVE PT_COMPOSITION_PROPERTIES/TPL_COMPOSITION_RELATION_CONDITION을 사용하며 이를 직접 crosswalk mapping이라 주장하지 않는다.",
+          "l4": "일차함수들의 계수 교환을 다루는 GENERATED_ACTIVE L4 혹은 이차·일차 함수의 합성 교환을 다루는 GENERATED_ACTIVE L4를 결정적 사고에 따라 적용.",
+          "pt": "전체 정의역에서 f∘g=g∘f를 이용하여 계수를 결정하는 실제 풀이로 PT_COMPOSITION_PROPERTIES ACTIVE.",
+          "tpl": "TPL_COMPOSITION_RELATION_CONDITION ACTIVE; 2b+a=3a+b, b=2a, a+b=15 → b10",
+          "cross": "계수비교·다항식 전개는 이미 이수한 대수 도구로서 주개념 풀이에 종속하며 독립 CrossConcept 태그는 필요하지 않음.",
+          "condition": "COND_UNIVERSAL_INPUTS가 모든 실수의 함수 상등 및 필요시 0 제외에 사용된다.",
+          "integration": "SEQUENTIAL: 2b+a=3a+b, b=2a, a+b=15 → b10",
+          "learningLevel": "상수항 계수 비교로 b=2a를 얻은 후 합 조건을 결합한다.",
+          "assessmentBucket": "합성 순서와 두 미지수 관계를 연립하여 계산한다.",
+          "problemVisual": "수식만으로 출제 정보가 모두 주어져 문제 그림은 중복·답 누설 가능성이 있어 EXEMPT.",
+          "solutionVisual": "EXEMPT: 합성식 두 개와 한 줄의 계수 비교로 논리와 값을 충분히 전달함.",
+          "curriculum": "2022 개정 공통수학2 합성함수의 뜻과 계수비교, 선행 다항식 전개·인수분해만 사용. 미분·벡터·극한 등 상위 교육과정 방법을 사용하지 않음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "공통수학2 합성함수, 선행 다항식 전개와 인수분해만 사용",
+        "learningLevelReason": "상수항 계수 비교로 b=2a를 얻은 후 합 조건을 결합한다.",
+        "assessmentDifficultyReason": "합성 순서와 두 미지수 관계를 연립하여 계산한다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "실수 전체에서 정의된 두 함수 $f(x)=2x+a$, $g(x)=3x+b$가 $f\\circ g=g\\circ f$를 만족한다. $a+b=15$일 때, 실수 $b$의 값은?",
+          "requiredPrimaryL3Step": "2b+a=3a+b, b=2a, a+b=15 → b10",
+          "questionNaturalness": "동등한 합성함수의 조건에서 매개변수를 묻는 학교 내신식 발문",
+          "conditionSufficiency": "각 식이 모든 실수에서 같아야 한다는 조건을 적용해 필요충분한 계수비교 및 원식 대입을 확인.",
+          "shortcut": "합성 계산과 함수 상등 확인 없이 목표 k를 임의로 결정할 수 없음",
+          "answerFromFinalStudentInput": "10",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "실제 브라우저 렌더와 별도 독립품질검사 미실행"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "5",
+              "errorCalculation": "b 대신 a=5를 답으로 적음."
+            },
+            {
+              "index": "②",
+              "value": "\\dfrac{15}{2}",
+              "errorCalculation": "b=a로 잘못 정리하여 2b=15를 풀면 15/2."
+            },
+            {
+              "index": "④",
+              "value": "12",
+              "errorCalculation": "b=4a로 잘못 정리하면 5a=15, b=12."
+            },
+            {
+              "index": "⑤",
+              "value": "15",
+              "errorCalculation": "a+b=15를 b=15로 잘못 읽음."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "PYTHON_SYMPY_CURRENT_PASS",
+          "expression": "f(g)-g(f)=b-2a; a+b=15",
+          "answer": "10"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "합성함수 식, 조건, 목표 모두 명시. 추가 이미지 불필요",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "why": "수식 계산으로 충분",
+          "svgPath": null,
+          "svgBlob": null,
+          "staticGeometryStatus": "NOT_APPLICABLE",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-PALMA25-2FINAL-Q10-C1",
+      "sourceQid": 10,
+      "sourceUid": null,
+      "slot": "C1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "TYPE_BANK",
+      "level": "상",
+      "category": "합성함수의 교환 관계",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "합성함수",
+        "교환조건",
+        "계수 비교"
+      ],
+      "wide": false,
+      "content": "실수 전체에서 정의된 두 함수 $f(x)=x+k$, $g(x)=(k^2-3k+3)x+2$에 대하여 $g\\circ f=f\\circ g$가 성립한다. $0$이 아닌 실수 $k$의 가능한 모든 값의 합은?",
+      "choices": [
+        "$0$",
+        "$1$",
+        "$2$",
+        "$3$",
+        "$5$"
+      ],
+      "answer": "④",
+      "solution": "$g(f(x))=(k^2-3k+3)(x+k)+2$, $f(g(x))=(k^2-3k+3)x+2+k$이다.\n두 식의 상수항을 비교하면 $k(k^2-3k+3)+2=k+2$이다.\n$k(k^2-3k+2)=k(k-1)(k-2)=0$이므로 $k=0,1,2$이다.\n$k\\ne0$에 따라 $k=1,2$만 가능하다. 두 값에서 $g(x)=x+2$이므로 $f$와 $g$는 합성 순서를 바꾸어도 같다.\n따라서 모든 가능한 값의 합은 $1+2=3$이다.\n따라서 정답은 ④이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "합성함수 계산",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "원본 q10과 동일하게 함수 합성 순서를 각각 계산하고 두 함수가 모든 실수에서 같아지는 조건으로 계수·상수항 관계를 판정한다. H1-RPM-253: 합성함수/합성함수 계산. Crosswalk DIRECT_ACTIVE 기본 PT_COMPOSITION_EVALUATION과 달리 실제 결정적 풀이에는 별도 ACTIVE PT_COMPOSITION_PROPERTIES/TPL_COMPOSITION_RELATION_CONDITION을 사용하며 이를 직접 crosswalk mapping이라 주장하지 않는다.",
+        "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+        "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+        "generatedExtL4Id": "EXT-PALMA25-Q10-AFFINE-COMMUTATION",
+        "generatedExtL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_COMPOSITION/extension-l4/palma-2025-2final-q10-registry.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS",
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q10과 동일하게 함수 합성 순서를 각각 계산하고 두 함수가 모든 실수에서 같아지는 조건으로 계수·상수항 관계를 판정한다. H1-RPM-253: 합성함수/합성함수 계산. Crosswalk DIRECT_ACTIVE 기본 PT_COMPOSITION_EVALUATION과 달리 실제 결정적 풀이에는 별도 ACTIVE PT_COMPOSITION_PROPERTIES/TPL_COMPOSITION_RELATION_CONDITION을 사용하며 이를 직접 crosswalk mapping이라 주장하지 않는다.",
+          "l4": "일차함수들의 계수 교환을 다루는 GENERATED_ACTIVE L4 혹은 이차·일차 함수의 합성 교환을 다루는 GENERATED_ACTIVE L4를 결정적 사고에 따라 적용.",
+          "pt": "전체 정의역에서 f∘g=g∘f를 이용하여 계수를 결정하는 실제 풀이로 PT_COMPOSITION_PROPERTIES ACTIVE.",
+          "tpl": "TPL_COMPOSITION_RELATION_CONDITION ACTIVE; k(k−1)(k−2)=0→0 제외→1+2=3",
+          "cross": "계수비교·다항식 전개는 이미 이수한 대수 도구로서 주개념 풀이에 종속하며 독립 CrossConcept 태그는 필요하지 않음.",
+          "condition": "COND_UNIVERSAL_INPUTS, COND_NONZERO가 모든 실수의 함수 상등 및 필요시 0 제외에 사용된다.",
+          "integration": "CASE_BRANCH: k(k−1)(k−2)=0→0 제외→1+2=3",
+          "learningLevel": "합성 상수항 비교→세 인수의 해→0 제외→허용 해 합계의 여러 단계 판단.",
+          "assessmentBucket": "매개변수 이차식 인수분해, 조건에 따른 해 제외와 합산에서 실제 오류 가능.",
+          "problemVisual": "수식만으로 출제 정보가 모두 주어져 문제 그림은 중복·답 누설 가능성이 있어 EXEMPT.",
+          "solutionVisual": "BENEFICIAL: root case cards k=0 excluded, 1 and 2 accepted",
+          "curriculum": "2022 개정 공통수학2 합성함수의 뜻과 계수비교, 선행 다항식 전개·인수분해만 사용. 미분·벡터·극한 등 상위 교육과정 방법을 사용하지 않음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "공통수학2 합성함수, 선행 다항식 전개와 인수분해만 사용",
+        "learningLevelReason": "합성 상수항 비교→세 인수의 해→0 제외→허용 해 합계의 여러 단계 판단.",
+        "assessmentDifficultyReason": "매개변수 이차식 인수분해, 조건에 따른 해 제외와 합산에서 실제 오류 가능.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "실수 전체에서 정의된 두 함수 $f(x)=x+k$, $g(x)=(k^2-3k+3)x+2$에 대하여 $g\\circ f=f\\circ g$가 성립한다. $0$이 아닌 실수 $k$의 가능한 모든 값의 합은?",
+          "requiredPrimaryL3Step": "k(k−1)(k−2)=0→0 제외→1+2=3",
+          "questionNaturalness": "동등한 합성함수의 조건에서 매개변수를 묻는 학교 내신식 발문",
+          "conditionSufficiency": "각 식이 모든 실수에서 같아야 한다는 조건을 적용해 필요충분한 계수비교 및 원식 대입을 확인.",
+          "shortcut": "합성 계산과 함수 상등 확인 없이 목표 k를 임의로 결정할 수 없음",
+          "answerFromFinalStudentInput": "3",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "실제 브라우저 렌더와 별도 독립품질검사 미실행"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "0",
+              "errorCalculation": "$k(k-1)(k-2)=0$에서 조건 $k\\ne0$을 적용하지 않고 첫 해 $0$만 고른다."
+            },
+            {
+              "index": "②",
+              "value": "1",
+              "errorCalculation": "허용되는 두 해 $1,2$ 중 $1$만 답하고 합을 구하지 않는다."
+            },
+            {
+              "index": "③",
+              "value": "2",
+              "errorCalculation": "허용되는 두 해 $1,2$ 중 $2$만 답하고 합을 구하지 않는다."
+            },
+            {
+              "index": "⑤",
+              "value": "5",
+              "errorCalculation": "$k^2-3k+2$를 $(k-2)(k-3)$으로 잘못 인수분해하면 허용된 해가 $2,3$인 것으로 보고 합 $5$를 구한다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "PYTHON_SYMPY_CURRENT_PASS",
+          "expression": "g(f)-f(g)=k(k-1)(k-2), k!=0",
+          "answer": "3"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "합성함수 식, 조건, 목표 모두 명시. 추가 이미지 불필요",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "BENEFICIAL",
+          "why": "root case cards k=0 excluded, 1 and 2 accepted",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q10/C1-solution.svg",
+          "svgBlob": "b193158e15d6851e6baaefc926a0cd1686b55ff2",
+          "staticGeometryStatus": "AUTHOR_VISUAL_SEMANTIC_STATIC_CHECK",
+          "browser": "NOT_RUN"
+        }
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q10/C1-solution.svg",
+      "solutionImageAlt": "가능한 k=1,2의 경우를 0 제외 조건과 함께 나타낸 해설",
+      "solutionImageCaption": "합성함수의 교환조건에서 필요한 판단 관계를 정리한다.",
+      "solutionImageSize": "medium"
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-PALMA25-2FINAL-Q10-C2",
+      "sourceQid": 10,
+      "sourceUid": null,
+      "slot": "C2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "TYPE_BANK",
+      "level": "중",
+      "category": "합성함수의 교환 관계",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "합성함수",
+        "교환조건",
+        "계수 비교"
+      ],
+      "wide": false,
+      "content": "실수 전체에서 정의된 두 함수 $f(x)=x^2-2x+2$, $g(x)=kx+1$에 대하여 $f\\circ g=g\\circ f$가 성립할 때, 실수 $k$의 값은?",
+      "choices": [
+        "$-2$",
+        "$-1$",
+        "$0$",
+        "$1$",
+        "$2$"
+      ],
+      "answer": "③",
+      "solution": "$(f\\circ g)(x)=f(kx+1)=(kx+1)^2-2(kx+1)+2=k^2x^2+1$이다.\n$(g\\circ f)(x)=g(x^2-2x+2)=kx^2-2kx+2k+1$이다.\n모든 실수 $x$에서 이 두 식이 같아야 하므로 $x$의 계수를 비교하면 $0=-2k$이다.\n따라서 $k=0$이다. 실제 $g(x)=1$이고 $f(1)=1$이므로 두 합성함수 모두 상수함수 $1$이 되어 조건을 만족한다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "합성함수 계산",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "원본 q10과 동일하게 함수 합성 순서를 각각 계산하고 두 함수가 모든 실수에서 같아지는 조건으로 계수·상수항 관계를 판정한다. H1-RPM-253: 합성함수/합성함수 계산. Crosswalk DIRECT_ACTIVE 기본 PT_COMPOSITION_EVALUATION과 달리 실제 결정적 풀이에는 별도 ACTIVE PT_COMPOSITION_PROPERTIES/TPL_COMPOSITION_RELATION_CONDITION을 사용하며 이를 직접 crosswalk mapping이라 주장하지 않는다.",
+        "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+        "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+        "generatedExtL4Id": "EXT-PALMA25-Q10-QUADRATIC-COMMUTATION",
+        "generatedExtL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_COMPOSITION/extension-l4/palma-2025-2final-q10-registry.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q10과 동일하게 함수 합성 순서를 각각 계산하고 두 함수가 모든 실수에서 같아지는 조건으로 계수·상수항 관계를 판정한다. H1-RPM-253: 합성함수/합성함수 계산. Crosswalk DIRECT_ACTIVE 기본 PT_COMPOSITION_EVALUATION과 달리 실제 결정적 풀이에는 별도 ACTIVE PT_COMPOSITION_PROPERTIES/TPL_COMPOSITION_RELATION_CONDITION을 사용하며 이를 직접 crosswalk mapping이라 주장하지 않는다.",
+          "l4": "일차함수들의 계수 교환을 다루는 GENERATED_ACTIVE L4 혹은 이차·일차 함수의 합성 교환을 다루는 GENERATED_ACTIVE L4를 결정적 사고에 따라 적용.",
+          "pt": "전체 정의역에서 f∘g=g∘f를 이용하여 계수를 결정하는 실제 풀이로 PT_COMPOSITION_PROPERTIES ACTIVE.",
+          "tpl": "TPL_COMPOSITION_RELATION_CONDITION ACTIVE; f(g)=k²x²+1;g(f)=kx²−2kx+2k+1→0=−2k→k0",
+          "cross": "계수비교·다항식 전개는 이미 이수한 대수 도구로서 주개념 풀이에 종속하며 독립 CrossConcept 태그는 필요하지 않음.",
+          "condition": "COND_UNIVERSAL_INPUTS가 모든 실수의 함수 상등 및 필요시 0 제외에 사용된다.",
+          "integration": "INTERDEPENDENT: f(g)=k²x²+1;g(f)=kx²−2kx+2k+1→0=−2k→k0",
+          "learningLevel": "이차함수와 일차함수의 양방향 합성을 전개하고 모든 x에서의 계수 비교를 적용한다.",
+          "assessmentBucket": "일차항·이차항을 혼동하기 쉬운 다항식 전개 및 해의 충분성 확인이 필요.",
+          "problemVisual": "수식만으로 출제 정보가 모두 주어져 문제 그림은 중복·답 누설 가능성이 있어 EXEMPT.",
+          "solutionVisual": "BENEFICIAL: coefficient table, x term 0 = -2k",
+          "curriculum": "2022 개정 공통수학2 합성함수의 뜻과 계수비교, 선행 다항식 전개·인수분해만 사용. 미분·벡터·극한 등 상위 교육과정 방법을 사용하지 않음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "공통수학2 합성함수, 선행 다항식 전개와 인수분해만 사용",
+        "learningLevelReason": "이차함수와 일차함수의 양방향 합성을 전개하고 모든 x에서의 계수 비교를 적용한다.",
+        "assessmentDifficultyReason": "일차항·이차항을 혼동하기 쉬운 다항식 전개 및 해의 충분성 확인이 필요.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "실수 전체에서 정의된 두 함수 $f(x)=x^2-2x+2$, $g(x)=kx+1$에 대하여 $f\\circ g=g\\circ f$가 성립할 때, 실수 $k$의 값은?",
+          "requiredPrimaryL3Step": "f(g)=k²x²+1;g(f)=kx²−2kx+2k+1→0=−2k→k0",
+          "questionNaturalness": "동등한 합성함수의 조건에서 매개변수를 묻는 학교 내신식 발문",
+          "conditionSufficiency": "각 식이 모든 실수에서 같아야 한다는 조건을 적용해 필요충분한 계수비교 및 원식 대입을 확인.",
+          "shortcut": "합성 계산과 함수 상등 확인 없이 목표 k를 임의로 결정할 수 없음",
+          "answerFromFinalStudentInput": "0",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "실제 브라우저 렌더와 별도 독립품질검사 미실행"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "-2",
+              "errorCalculation": "$x$항과 $x^2$항을 혼동하여 $k^2=-2k$로 두면 $k(k+2)=0$에서 $k=-2$를 잘못 선택한다."
+            },
+            {
+              "index": "②",
+              "value": "-1",
+              "errorCalculation": "$g(f(x))$의 $x^2$항 계수 $k$에 부호를 잘못 붙이면 $k^2=-k$에서 $k=-1$을 잘못 선택한다."
+            },
+            {
+              "index": "④",
+              "value": "1",
+              "errorCalculation": "$x^2$항의 계수 $k^2=k$만 풀고 $x$항의 비교를 빠뜨리면 $k=1$도 가능하다고 잘못 판단한다."
+            },
+            {
+              "index": "⑤",
+              "value": "2",
+              "errorCalculation": "$g(f(x))$에서 $x^2$항 계수 $k$ 대신 $x$항 계수의 절댓값 $2k$를 가져오면 $k^2=2k$에서 $k=2$를 잘못 선택한다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "PYTHON_SYMPY_CURRENT_PASS",
+          "expression": "f(g)-g(f)=k*((k-1)x²+2x-2), all x -> k=0",
+          "answer": "0"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "합성함수 식, 조건, 목표 모두 명시. 추가 이미지 불필요",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "BENEFICIAL",
+          "why": "coefficient table, x term 0 = -2k",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q10/C2-solution.svg",
+          "svgBlob": "f259b3c69a9ad3f9732620ecd6c6d79fc22ab9df",
+          "staticGeometryStatus": "AUTHOR_VISUAL_SEMANTIC_STATIC_CHECK",
+          "browser": "NOT_RUN"
+        }
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q10/C2-solution.svg",
+      "solutionImageAlt": "두 다항식 합성함수의 계수를 비교하는 표",
+      "solutionImageCaption": "합성함수의 교환조건에서 필요한 판단 관계를 정리한다.",
+      "solutionImageSize": "medium"
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-PALMA25-2FINAL-Q10-C3",
+      "sourceQid": 10,
+      "sourceUid": null,
+      "slot": "C3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "TYPE_BANK",
+      "level": "상",
+      "category": "합성함수의 교환 관계",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "합성함수",
+        "교환조건",
+        "계수 비교"
+      ],
+      "wide": false,
+      "content": "실수 전체에서 정의된 세 함수 $f(x)=2x+a$, $g(x)=3x+b$, $h(x)=4x+c$에서 임의의 두 함수의 합성 순서를 바꾸어도 결과가 같다. $a+b+c=30$일 때, 실수 $c$의 값은? (단, $a,b,c$는 실수이다.)",
+      "choices": [
+        "$5$",
+        "$10$",
+        "$12$",
+        "$15$",
+        "$30$"
+      ],
+      "answer": "④",
+      "solution": "먼저 $f\\circ g=g\\circ f$에서 $6x+2b+a=6x+3a+b$이므로 $b=2a$이다.\n$g\\circ h=h\\circ g$에서 $12x+3c+b=12x+4b+c$이므로 $2c=3b$이다.\n$b=2a$를 대입하면 $c=3a$이다.\n나머지 쌍도 $f\\circ h=8x+2c+a$, $h\\circ f=8x+4a+c$이므로 $c=3a$에서 일치한다.\n$a+b+c=a+2a+3a=6a=30$에서 $a=5$이다.\n따라서 $b=10$, $c=15$이고 세 쌍의 합성 교환조건을 모두 만족한다.\n따라서 정답은 ④이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "합성함수 계산",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "원본 q10과 동일하게 함수 합성 순서를 각각 계산하고 두 함수가 모든 실수에서 같아지는 조건으로 계수·상수항 관계를 판정한다. H1-RPM-253: 합성함수/합성함수 계산. Crosswalk DIRECT_ACTIVE 기본 PT_COMPOSITION_EVALUATION과 달리 실제 결정적 풀이에는 별도 ACTIVE PT_COMPOSITION_PROPERTIES/TPL_COMPOSITION_RELATION_CONDITION을 사용하며 이를 직접 crosswalk mapping이라 주장하지 않는다.",
+        "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+        "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+        "generatedExtL4Id": "EXT-PALMA25-Q10-AFFINE-COMMUTATION",
+        "generatedExtL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_COMPOSITION/extension-l4/palma-2025-2final-q10-registry.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_UNIVERSAL_INPUTS"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 5,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q10과 동일하게 함수 합성 순서를 각각 계산하고 두 함수가 모든 실수에서 같아지는 조건으로 계수·상수항 관계를 판정한다. H1-RPM-253: 합성함수/합성함수 계산. Crosswalk DIRECT_ACTIVE 기본 PT_COMPOSITION_EVALUATION과 달리 실제 결정적 풀이에는 별도 ACTIVE PT_COMPOSITION_PROPERTIES/TPL_COMPOSITION_RELATION_CONDITION을 사용하며 이를 직접 crosswalk mapping이라 주장하지 않는다.",
+          "l4": "일차함수들의 계수 교환을 다루는 GENERATED_ACTIVE L4 혹은 이차·일차 함수의 합성 교환을 다루는 GENERATED_ACTIVE L4를 결정적 사고에 따라 적용.",
+          "pt": "전체 정의역에서 f∘g=g∘f를 이용하여 계수를 결정하는 실제 풀이로 PT_COMPOSITION_PROPERTIES ACTIVE.",
+          "tpl": "TPL_COMPOSITION_RELATION_CONDITION ACTIVE; b=2a,2c=3b→c=3a;f,h 확인;6a=30→c15",
+          "cross": "계수비교·다항식 전개는 이미 이수한 대수 도구로서 주개념 풀이에 종속하며 독립 CrossConcept 태그는 필요하지 않음.",
+          "condition": "COND_UNIVERSAL_INPUTS가 모든 실수의 함수 상등 및 필요시 0 제외에 사용된다.",
+          "integration": "INTERDEPENDENT: b=2a,2c=3b→c=3a;f,h 확인;6a=30→c15",
+          "learningLevel": "세 쌍의 합성 교환관계를 판정하여 변수를 연계하고 총합 조건을 적용한다.",
+          "assessmentBucket": "함수 3개와 계수 관계 3개를 연립하고 중복 관계의 충분성도 확인하는 높은 사고 부담.",
+          "problemVisual": "수식만으로 출제 정보가 모두 주어져 문제 그림은 중복·답 누설 가능성이 있어 EXEMPT.",
+          "solutionVisual": "BENEFICIAL: relation table b=2a,2c=3b,c=3a",
+          "curriculum": "2022 개정 공통수학2 합성함수의 뜻과 계수비교, 선행 다항식 전개·인수분해만 사용. 미분·벡터·극한 등 상위 교육과정 방법을 사용하지 않음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "공통수학2 합성함수, 선행 다항식 전개와 인수분해만 사용",
+        "learningLevelReason": "세 쌍의 합성 교환관계를 판정하여 변수를 연계하고 총합 조건을 적용한다.",
+        "assessmentDifficultyReason": "함수 3개와 계수 관계 3개를 연립하고 중복 관계의 충분성도 확인하는 높은 사고 부담.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "실수 전체에서 정의된 세 함수 $f(x)=2x+a$, $g(x)=3x+b$, $h(x)=4x+c$에서 임의의 두 함수의 합성 순서를 바꾸어도 결과가 같다. $a+b+c=30$일 때, 실수 $c$의 값은? (단, $a,b,c$는 실수이다.)",
+          "requiredPrimaryL3Step": "b=2a,2c=3b→c=3a;f,h 확인;6a=30→c15",
+          "questionNaturalness": "동등한 합성함수의 조건에서 매개변수를 묻는 학교 내신식 발문",
+          "conditionSufficiency": "각 식이 모든 실수에서 같아야 한다는 조건을 적용해 필요충분한 계수비교 및 원식 대입을 확인.",
+          "shortcut": "합성 계산과 함수 상등 확인 없이 목표 k를 임의로 결정할 수 없음",
+          "answerFromFinalStudentInput": "15",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "실제 브라우저 렌더와 별도 독립품질검사 미실행"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "5",
+              "errorCalculation": "$a=5,b=10,c=15$를 구한 뒤 문제의 $c$ 대신 $a=5$를 기록한다."
+            },
+            {
+              "index": "②",
+              "value": "10",
+              "errorCalculation": "$a=5,b=10,c=15$를 구한 뒤 문제의 $c$ 대신 $b=10$을 기록한다."
+            },
+            {
+              "index": "③",
+              "value": "12",
+              "errorCalculation": "$g,h$의 합성 교환조건 $2c=3b$ 대신 $c=b$로 잘못 정리하면 $b=2a,c=2a$이고 $5a=30$에서 $c=12$가 된다."
+            },
+            {
+              "index": "⑤",
+              "value": "30",
+              "errorCalculation": "$a+b+c=30$에서 $a+b$를 빠뜨리고 $c=30$으로 답한다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "PYTHON_SYMPY_CURRENT_PASS",
+          "expression": "f(g)-g(f)=b-2a;g(h)-h(g)=2c-3b;f(h)-h(f)=c-3a",
+          "answer": "15"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "합성함수 식, 조건, 목표 모두 명시. 추가 이미지 불필요",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "BENEFICIAL",
+          "why": "relation table b=2a,2c=3b,c=3a",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q10/C3-solution.svg",
+          "svgBlob": "3c610a2534891344b8fa30f67509f31314023fb8",
+          "staticGeometryStatus": "AUTHOR_VISUAL_SEMANTIC_STATIC_CHECK",
+          "browser": "NOT_RUN"
+        }
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q10/C3-solution.svg",
+      "solutionImageAlt": "세 쌍의 합성함수 교환 관계를 정리한 표",
+      "solutionImageCaption": "합성함수의 교환조건에서 필요한 판단 관계를 정리한다.",
+      "solutionImageSize": "medium"
+    }
+  ]
+}
