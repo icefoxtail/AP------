@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="700" height="700" viewBox="0 0 700 700" role="img">
+<title>대칭이동과 두 삼각형의 외접반지름</title>
+<desc>점 A(a,2), B(2,a), C(2,-a)는 원점에서 같은 거리에 있다. 원점 O는 삼각형 ABC의 외심이고 OA와 OC가 수직이므로 삼각형 AOC의 외접원 지름은 AC이다. 주어진 곱에서 a²=34를 얻는다.</desc>
 <style>.axis{stroke:#111;stroke-width:1.2}.shape,.curve{fill:none;stroke:#111;stroke-width:1.8}.guide{fill:none;stroke:#555;stroke-width:1;stroke-dasharray:5 4}.point{fill:#111}.radius{fill:none;stroke:#1f4e79;stroke-width:1.5}.tangent{fill:none;stroke:#111;stroke-width:2.1}.perpendicular{fill:none;stroke:#555;stroke-width:1;stroke-dasharray:3 3}.right-angle{fill:none;stroke:#111;stroke-width:1.2}.center-point{fill:#1f4e79}.element-label,.annotation{font:30px sans-serif}.annotation{font-style:italic}text{font:30px sans-serif;fill:#111}.cell{fill:#fff;stroke:#111;stroke-width:1}.cell-text{text-anchor:middle;dominant-baseline:middle;font:30px sans-serif}</style>
 <line x1="350" y1="32" x2="350" y2="668" class="axis"/>
 <line x1="32" y1="350" x2="668" y2="350" class="axis"/>
@@ -16,16 +18,16 @@
 <circle cx="350" cy="350" r="3" class="point"/>
 <text x="356" y="344">O</text>
 <circle cx="614.891815" cy="259.142857" r="3" class="point"/>
-<text x="620.891815" y="253.142857">A</text>
+<text x="519" y="238">A(a,2)</text>
 <circle cx="440.857143" cy="85.108185" r="3" class="point"/>
-<text x="446.857143" y="79.108185">B</text>
+<text x="449" y="77">B(2,a)</text>
 <circle cx="440.857143" cy="614.891815" r="3" class="point"/>
-<text x="446.857143" y="608.891815">C</text>
+<text x="449" y="647">C(2,-a)</text>
 <polyline points="361.350864,346.106686 365.244178,357.45755 353.893314,361.350864" class="right-angle"/>
 <circle cx="350" cy="350" r="280.040522" class="shape"/>
 <circle cx="350" cy="350" r="3.4" class="center-point"/>
 
 <text x="54.714286" y="68.342857" class="annotation">△ABC의 외심 O</text>
-<text x="54.714286" y="104.685714" class="annotation">OA ⟂ OC; r₂=AC/2=√19</text>
+<text x="54.714286" y="104.685714" class="annotation">OA ⟂ OC, r₂=AC/2</text>
 <text x="54.714286" y="141.028571" class="annotation">r₁r₂=19√2</text>
 </svg>
