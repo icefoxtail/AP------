@@ -305,7 +305,7 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 위치는 속도 그래프와 $t$축 사이의 부호 있는 넓이로 구한다.\n조건 정리: $0$에서 $3$까지는 속도가 양수이고, $3$에서 $5$까지는 음수이다.\n풀이 방향: 각 삼각형의 넓이로 위치를 구하고, 원점에서 가장 먼 위치가 $3$이라는 조건으로 $a$를 정한다.\n정석 풀이: $0\\le t\\le3$에서의 넓이는 $\\dfrac12\\cdot2\\cdot a+\\dfrac12\\cdot1\\cdot a=\\dfrac{3a}{2}$이므로 $t=3$에서의 위치는 $\\dfrac{3a}{2}$이다. 이후 $3\\le t\\le5$에서의 음의 넓이는 $\\dfrac12\\cdot1\\cdot a+\\dfrac12\\cdot1\\cdot a=a$이므로 $t=5$에서의 위치는 $\\dfrac a2$이다. $t=6$까지 다시 증가해도 위치는 $a$이므로 가장 먼 위치는 $t=3$에서의 $\\dfrac{3a}{2}$이다. 이것이 $3$이므로 $a=2$이고, $t=5$에서의 위치는 $1$이다.\n따라서 정답은 ①이다.",
+    "solution": "속도 그래프와 시간축 사이의 부호 있는 넓이가 위치의 변화량이다. 출발점은 원점이므로\n$\\displaystyle x(t)=\\int_0^t v(s)\\,ds$이다.\n\n그림에서 $0\\le t\\le3$에서는 속도가 양수이고,\n$t=3$ 이후 $t=5$까지는 음수이다.\n$t=3$에서 위치가 가장 크며, 그 값이 $3$이다.\n\n높이를 $a$라고 하면 $0$에서 $3$까지의 넓이는\n$\\displaystyle x(3)=\\dfrac12\\cdot2\\cdot a+\\dfrac12\\cdot1\\cdot a$\n$=\\dfrac32a$이다.\n$\\dfrac32a=3$에서 $a=2$이다.\n\n$3$부터 $5$까지는 시간축 아래 두 삼각형의 넓이를 빼야 한다.\n$\\displaystyle\\int_3^5v(t)\\,dt$\n$\\displaystyle=-\\dfrac12\\cdot1\\cdot2-\\dfrac12\\cdot1\\cdot2$\n$=-2$이다.\n\n따라서\n$x(5)=x(3)-2=3-2=1$이므로\n정답은 ①이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -337,7 +337,7 @@ window.questionBank = [
       "$72$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 절댓값 때문에 $x=3$을 기준으로 함수식을 나누어 넓이를 계산한다.\n조건 정리: $0\\le x\\le3$에서는 $|x-3|=3-x$, $3\\le x\\le6$에서는 $|x-3|=x-3$이다.\n풀이 방향: 두 구간의 넓이를 각각 적분하여 더한다.\n정석 풀이: 넓이는 $\\displaystyle\\int_0^3x(3-x)dx+\\int_3^6x(x-3)dx$이다. 첫 적분은 $\\dfrac92$, 둘째 적분은 $\\dfrac{45}{2}$이므로 전체 넓이는 $\\dfrac92+\\dfrac{45}{2}=27$이다.\n따라서 정답은 ③이다.",
+    "solution": "$x=3$을 기준으로 절댓값을 풀어 두 부분으로 나눈다.\n\n$0\\le x\\le3$에서는\n$|x-3|=3-x$이므로 $y=3x-x^2$이다.\n$3\\le x\\le6$에서는\n$|x-3|=x-3$이므로 $y=x^2-3x$이다.\n두 구간에서 모두 $y\\ge0$이다.\n\n첫 번째 부분의 넓이는\n$\\displaystyle S_1=\\int_0^3(3x-x^2)\\,dx$\n$\\displaystyle=\\left[\\dfrac32x^2-\\dfrac13x^3\\right]_0^3$\n$\\displaystyle=\\dfrac{27}{2}-9=\\dfrac92$이다.\n\n두 번째 부분의 넓이는\n$\\displaystyle S_2=\\int_3^6(x^2-3x)\\,dx$\n$\\displaystyle=\\left[\\dfrac{x^3}{3}-\\dfrac32x^2\\right]_3^6$\n$\\displaystyle=(72-54)-\\left(9-\\dfrac{27}{2}\\right)$\n$\\displaystyle=18+\\dfrac92=\\dfrac{45}{2}$이다.\n\n따라서 전체 넓이는\n$\\displaystyle S_1+S_2=\\dfrac92+\\dfrac{45}{2}=27$이므로\n정답은 ③이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -365,7 +365,7 @@ window.questionBank = [
       "$\\dfrac{25}{12}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 먼저 정적분 값을 하나의 상수로 두어 자기 자신을 포함한 식을 풀고, 그 다음 극값을 구한다.\n조건 정리: $I=\\displaystyle\\int_0^1f(t)dt$라 두면 $f(x)=x^3-12x+4I$이다.\n풀이 방향: 양변을 $0$부터 $1$까지 적분하여 $I$를 정한 뒤 $f'(x)=0$을 조사한다.\n정석 풀이: $I=\\int_0^1(t^3-12t+4I)dt=\\dfrac14-6+4I=-\\dfrac{23}{4}+4I$이므로 $I=\\dfrac{23}{12}$이다. 따라서 $f(x)=x^3-12x+\\dfrac{23}{3}$이다. $f'(x)=3x^2-12=3(x-2)(x+2)$이므로 극점은 $x=-2,2$이다. $f(-2)=\\dfrac{71}{3}$, $f(2)=-\\dfrac{25}{3}$이므로 두 극값의 합은 $\\dfrac{46}{3}$이다.\n따라서 정답은 ②이다.",
+    "solution": "정적분에 들어 있는 상수를 먼저 정한다.\n$\\displaystyle A=\\int_0^1 f(t)\\,dt$라 두면\n$f(x)=x^3-12x+4A$이다.\n\n양변을 $0$에서 $1$까지 적분하면\n$\\displaystyle A=\\int_0^1(t^3-12t+4A)\\,dt$\n$\\displaystyle=\\left[\\dfrac{t^4}{4}-6t^2+4At\\right]_0^1$\n$=\\dfrac14-6+4A$\n$=-\\dfrac{23}{4}+4A$이다.\n따라서 $3A=\\dfrac{23}{4}$,\n$A=\\dfrac{23}{12}$이다.\n\n그러므로\n$\\displaystyle f(x)=x^3-12x+\\dfrac{23}{3}$이고,\n$f'(x)=3x^2-12=3(x+2)(x-2)$이다.\n도함수의 부호는\n$x<-2$에서 양, $-2<x<2$에서 음, $x>2$에서 양이다.\n따라서 $x=-2$에서 극대, $x=2$에서 극소이다.\n\n극댓값은\n$\\displaystyle f(-2)=-8+24+\\dfrac{23}{3}=\\dfrac{71}{3}$,\n극솟값은\n$\\displaystyle f(2)=8-24+\\dfrac{23}{3}=-\\dfrac{25}{3}$이다.\n\n모든 극값의 합은\n$\\displaystyle\\dfrac{71}{3}-\\dfrac{25}{3}=\\dfrac{46}{3}$이므로\n정답은 ②이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
@@ -393,7 +393,7 @@ window.questionBank = [
       "$-\\dfrac9{13}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 적분에 들어 있는 $x$와 $t$를 분리하여 두 적분값을 상수로 둔다.\n조건 정리: $A=\\int_0^1f(t)dt$, $B=\\int_0^1tf(t)dt$라 두면 $f(x)=3x^2+Ax-B$이다.\n풀이 방향: 이 식을 이용해 $A,B$에 대한 연립방정식을 만든 뒤 이차방정식의 근과 계수를 이용한다.\n정석 풀이: $A=\\int_0^1(3t^2+At-B)dt=1+\\dfrac A2-B$이므로 $\\dfrac A2+B=1$이다. 또 $B=\\int_0^1t(3t^2+At-B)dt=\\dfrac34+\\dfrac A3-\\dfrac B2$이므로 $\\dfrac{3B}{2}=\\dfrac34+\\dfrac A3$이다. 이를 풀면 $A=\\dfrac9{13}$, $B=\\dfrac{17}{26}$이다. 따라서 $f(x)=3x^2+\\dfrac9{13}x-\\dfrac{17}{26}$이고, 두 근의 합은 $-\\dfrac{(9/13)}3=-\\dfrac3{13}$이다.\n따라서 정답은 ④이다.",
+    "solution": "적분구간이 $0$부터 $1$까지로 고정되어 있으므로, 적분에서 나오는 두 값을 상수로 둔다.\n$\\displaystyle A=\\int_0^1 f(t)\\,dt$,\n$\\displaystyle B=\\int_0^1 t f(t)\\,dt$라 하자.\n\n주어진 식은\n$f(x)=3x^2+Ax-B$가 된다.\n\n이 식을 $0$부터 $1$까지 적분하면\n$\\displaystyle A=\\int_0^1(3t^2+At-B)\\,dt$\n$\\displaystyle=1+\\dfrac A2-B$이다.\n따라서 $A=2-2B$이다.\n\n이번에는 양변에 $x$를 곱하여 적분하면\n$\\displaystyle B=\\int_0^1(3t^3+At^2-Bt)\\,dt$\n$\\displaystyle=\\dfrac34+\\dfrac A3-\\dfrac B2$이다.\n따라서\n$\\displaystyle B=\\dfrac12+\\dfrac{2A}{9}$이다.\n\n이를 $A=2-2B$에 대입하면\n$\\displaystyle A=2-2\\left(\\dfrac12+\\dfrac{2A}{9}\\right)$\n$\\displaystyle=1-\\dfrac{4A}{9}$,\n$\\displaystyle\\dfrac{13A}{9}=1$이므로 $A=\\dfrac9{13}$이다.\n\n$f(x)=3x^2+\\dfrac9{13}x-B$는 이차함수이다.\n$f(x)=0$의 두 근의 합은 근과 계수의 관계로\n$\\displaystyle-\\dfrac{\\frac9{13}}{3}=-\\dfrac3{13}$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
@@ -421,7 +421,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 극대 조건과 접선의 기울기 조건은 모두 도함수에 대한 식을 준다.\n조건 정리: $f'(-3)=0$, $f'(-2)=-9$, $f(-2)=28$이다.\n풀이 방향: 앞의 두 식으로 $a,b$를 구한 뒤 함수값 조건으로 $c$를 정한다.\n정석 풀이: $f'(x)=3x^2+2ax+b$이다. $f'(-3)=0$에서 $27-6a+b=0$, $f'(-2)=-9$에서 $12-4a+b=-9$이다. 두 식을 풀면 $a=3$, $b=-9$이다. $f(-2)=-8+12+18+c=22+c=28$이므로 $c=6$이다. 따라서 $f(1)=1+3-9+6=1$이다.\n따라서 정답은 ①이다.",
+    "solution": "극대 조건과 접선의 기울기는 모두 도함수 조건이다.\n$f(x)=x^3+ax^2+bx+c$이므로\n$f'(x)=3x^2+2ax+b$이다.\n\n$x=-3$에서 극대이므로\n$f'(-3)=27-6a+b=0$이다. ①\n\n점 $(-2,28)$에서 접선의 기울기가 $-9$이므로\n$f'(-2)=12-4a+b=-9$이다. ②\n\n①에서 $b=6a-27$,\n②에서 $b=4a-21$이다.\n따라서\n$6a-27=4a-21$\n$2a=6,\\quad a=3$이고\n$b=6\\cdot3-27=-9$이다.\n\n이때 $f'(x)=3(x+3)(x-1)$이고\n$x=-3$을 지날 때 부호가 양에서 음으로 바뀌므로 극대 조건도 만족한다.\n\n접점 $(-2,28)$은 곡선 위에 있으므로\n$f(-2)=-8+3\\cdot4-9(-2)+c$\n$=-8+12+18+c=22+c=28$이다.\n따라서 $c=6$이다.\n\n$f(1)=1+3-9+6=1$이므로\n정답은 ①이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
