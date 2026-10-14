@@ -175,7 +175,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 필요조건은 명제의 방향을 뒤집어 진리집합의 포함관계로 확인한다.\n조건 정리: $p:x^2-2x-8\\lt0$의 진리집합은 $P=(-2,4)$이다. $q:x^2\\le a$의 진리집합을 $Q$라 하자.\n정석 풀이: $p$가 $q$이기 위한 필요조건이므로 $q\\to p$, 즉 $Q\\subset P$여야 한다. 먼저 $a\\lt0$이면 $x^2\\le a$를 만족하는 실수가 없으므로 $Q=\\varnothing$이고, 이 경우에는 포함관계가 공허하게 성립한다. 그러나 음의 정수들은 최댓값을 결정하지 않는다.\n$a\\ge0$이면 $Q=[-\\sqrt a,\\sqrt a]$이다. 이 구간이 $(-2,4)$에 포함되려면 양 끝점이 각각 $-2$보다 크고 $4$보다 작아야 하며, 대칭이므로 $\\sqrt a\\lt2$이면 충분하다. 따라서 $a\\lt4$이고, 정수 $a$의 최댓값은 $3$이다.\n따라서 정답은 ③이다.",
+    "solution": "먼저 $p$의 진리집합을 구한다.\n$x^2-2x-8\\lt0$\n$(x-4)(x+2)\\lt0$\n$-2\\lt x\\lt4$이므로 $P=(-2,4)$이다.\n$p$가 $q$이기 위한 필요조건이므로 $Q\\subset P$이다.\n\n$a\\ge0$이면 $Q=[-\\sqrt a,\\sqrt a]$이다.\n양 끝점도 $P$에 포함되어야 하므로\n$-\\sqrt a\\gt-2$, $\\sqrt a\\lt4$이다.\n$\\sqrt a\\lt2$가 더 강한 조건이므로\n$0\\le a\\lt4$이다.\n$a\\lt0$이면 $Q=\\varnothing$으로 포함관계는 성립하지만 최댓값에는 영향을 주지 않는다.\n따라서 정수 $a$의 최댓값은 $3$이고 정답은 ③이다.",
     "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
     "subUnit": "필요조건과 충분조건",
     "subUnitConfidence": "rule_inferred",
@@ -207,7 +207,11 @@ window.questionBank = [
       "$88$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 바깥 영역까지 포함하여 인접 관계를 확인한 뒤 순서대로 색을 정한다.\n바깥 영역의 색은 $4$가지이고, 이를 정한 뒤 안쪽에서는 그 색을 제외한 $3$가지 색을 사용한다. 안쪽의 $A,B,C,D$는 차례로 한 바퀴를 이루는 인접 구조이다.\n$A$는 $3$가지, $B$는 $2$가지이다. $C=A$이면 $D$는 $2$가지이고, $C$가 $A,B$와 다른 나머지 색이면 $D$는 $1$가지이다. 따라서 안쪽 색칠은 $3\\times2\\times(2+1)=18$가지이다.\n전체 경우의 수는 $4\\times18=72$이다.\n따라서 정답은 ①이다.",
+    "solution": "바깥 영역까지 합쳐 $5$개 영역이다. 바깥 색은 $4$가지이고, 이 색은 안쪽 $A,B,C,D$에 쓸 수 없다.\n안쪽은 나머지 $3$색으로 칠한다.\n선분을 공유하는 $A-B$, $B-C$, $C-D$, $D-A$만 서로 달라야 한다. 점 하나에서만 만나는 $A-C$, $B-D$는 인접하지 않는다.\n\n$A$: $3$가지\n$B$: $A$와 달라야 하므로 $2$가지\n\n$C=A$인 경우 $D$는 $A,C$와 다른 $2$가지이다.\n$C\\ne A$인 경우 $C$는 $A,B$와 다른 $1$가지, $D$는 $A,C$와 다른 $1$가지이다.\n따라서 안쪽 색칠은\n$3\\times2\\times(2+1)=18$가지이다.\n\n바깥 색 $4$가지까지 곱하면\n$4\\times18=72$가지이다.\n따라서 정답은 ①이다.",
+    "solutionImage": "assets/images/24_제일고_2학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "다섯 영역의 인접 관계를 나타낸 해설 그림",
+    "solutionImageCaption": "바깥 영역은 안쪽 네 영역과 인접하고, 안쪽은 A-B-C-D-A 순서로 인접한다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-06-COUNTING_APPLICATION",
     "subUnit": "경우의 수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -237,7 +241,7 @@ window.questionBank = [
       "$28$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 전체 부분집합에서 소수를 하나도 포함하지 않는 부분집합을 뺀다.\n$U$의 소수는 $2,3,5$이고 소수가 아닌 원소는 $1,4$이다. 공집합이 아닌 부분집합은 $2^5-1=31$개이다.\n소수를 하나도 포함하지 않는 공집합이 아닌 부분집합은 $\\{1\\}$, $\\{4\\}$, $\\{1,4\\}$의 $3$개이다. 따라서 구하는 개수는 $31-3=28$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "전체집합 $U=\\{1,2,3,4,5\\}$에서 소수는 $2,3,5$의 $3$개이고, 소수가 아닌 원소는 $1,4$의 $2$개이다.\n'어떤 원소는 소수'라는 말은 소수를 적어도 하나 포함한다는 뜻이다.\n\n모든 부분집합은\n$2^5=32$개이다.\n소수를 하나도 포함하지 않는 부분집합은 $\\{1,4\\}$의 부분집합이므로\n$2^2=4$개이다.\n여기에는 공집합도 들어 있지만 빼는 두 집합에 모두 포함되므로 따로 보정할 필요가 없다.\n$32-4=28$개이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-SB-01-SET_BASIC",
     "subUnit": "집합의 뜻과 표현",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -267,7 +271,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 코시-슈바르츠 부등식으로 주어진 합과 구하려는 식을 연결한다.\n$\\dfrac1x+\\dfrac2y=\\dfrac{1^2}{x}+\\dfrac{2^2}{2y}$이므로\n$\\left(\\dfrac1x+\\dfrac2y\\right)(x+2y)\\ge(1+2)^2=9$이다.\n$x+2y=3$이므로 $\\dfrac1x+\\dfrac2y\\ge3$이고, 등호는 $x=y=1$일 때 성립한다.\n따라서 정답은 ③이다.",
+    "solution": "$x,y\\gt0$이고 $x+2y=3$이다.\n$(x-y)^2\\ge0$에서\n$x^2+y^2\\ge2xy$이므로\n$\\dfrac{x}{y}+\\dfrac{y}{x}\\ge2$이다.\n\n구하는 식과 주어진 합을 곱하면\n$\\left(\\dfrac1x+\\dfrac2y\\right)(x+2y)$\n$=1+\\dfrac{2y}{x}+\\dfrac{2x}{y}+4$\n$=5+2\\left(\\dfrac{y}{x}+\\dfrac{x}{y}\\right)$\n$\\ge5+4=9$이다.\n$x+2y=3$을 대입하면\n$\\dfrac1x+\\dfrac2y\\ge3$이다.\n등호는 $x=y$일 때 성립하고, $x+2y=3$에 의해 $x=y=1$이다.\n따라서 최솟값은 $3$이고 정답은 ③이다.",
     "subUnitKey": "H15-SB-02-PROOF",
     "subUnit": "증명과 절대부등식",
     "subUnitConfidence": "rule_inferred",
@@ -297,7 +301,7 @@ window.questionBank = [
       "$4$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 공통분모 $x^2+x-2=(x-1)(x+2)$로 통분하여 분자를 비교한다.\n좌변의 분자는 $2(x+2)-3(x-1)-4$이다.\n$2(x+2)-3(x-1)-4=2x+4-3x+3-4=-x+3$이므로 $a=-1$, $b=3$이다.\n따라서 $a+b=2$이다.\n따라서 정답은 ④이다.",
+    "solution": "$x^2+x-2=(x-1)(x+2)$이므로 분모 조건은\n$x\\ne1$, $x\\ne-2$이다.\n공통분모로 통분하면\n$\\dfrac2{x-1}-\\dfrac3{x+2}-\\dfrac4{x^2+x-2}$\n$=\\dfrac{2(x+2)-3(x-1)-4}{(x-1)(x+2)}$이다.\n\n분자를 세로로 전개하면\n$2(x+2)-3(x-1)-4$\n$=2x+4-3x+3-4$\n$=-x+3$이다.\n모든 허용된 $x$에서 항등식이 성립하므로 분자를 비교하여\n$ax+b=-x+3$,\n$a=-1$, $b=3$이다.\n$a+b=-1+3=2$이므로 정답은 ④이다.",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
