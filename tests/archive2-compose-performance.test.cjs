@@ -30,6 +30,7 @@ function app() {
   const { state, render } = window.testApp;
   Object.assign(state, { catalog: structuredClone(catalog), view: 'compose', filters: { grade: '고1' } });
   state.metaIndex = window.ProblemBankMeta.buildIndex(state.catalog.records, []);
+  state.metaIndexSource = state.catalog.records;
   state.finderIndex = core.buildFinderIndex(state.catalog);
   return { state, render, nodes, listeners };
 }
