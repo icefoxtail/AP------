@@ -28,7 +28,7 @@ function runJs(file, code) {
   ctx.globalThis = ctx;
   vm.createContext(ctx);
   vm.runInContext(code, ctx, { filename: file, timeout: 3000 });
-  const bank = ctx.window.questions || ctx.window.questionBank || ctx.questions || ctx.questionBank;
+  const bank = ctx.window.questions || ctx.window.questionBank || ctx.questions || ctx.questionBank || ctx.window.examData?.questions;
   if (!Array.isArray(bank)) throw new Error('questions array not found: ' + file);
   return bank;
 }
