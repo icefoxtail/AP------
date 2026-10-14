@@ -52,3 +52,36 @@ test('pending metadata loader accepts questions on the root window.examData obje
   assert.equal(questions[0].id, 1);
   assert.equal(questions[1].id, 2);
 });
+
+function selector(source, variableName) {
+  const expression = source.match(new RegExp(`const ${variableName} = ([^;]+);`))?.[1];
+  assert.ok(expression, `${variableName} source-array selector exists`);
+  return new Function('context', 'scope', `return (${expression})`);
+}
+
+const indexSource = fs.readFileSync(path.join(root, 'archive/tools/build-question-index.mjs'), 'utf8');
+const catalogSource = fs.readFileSync(path.join(root, 'archive/tools/build-archive2-catalog.mjs'), 'utf8');
+
+test('question-index source loader uses examData only after existing globals and keeps array guard', () => {
+  const getQuestions = selector(indexSource, 'questions');
+  const fallback = [{ id: 1 }, { id: 2 }];
+  const context = { window: { examData: { questions: fallback } } };
+  assert.equal(getQuestions(context), fallback);
+
+  const preferred = [{ id: 'preferred' }];
+  assert.equal(getQuestions({ window: { questions: preferred, examData: { questions: fallback } } }), preferred);
+  assert.equal(Array.isArray(getQuestions({ window: { questions: {}, examData: { questions: fallback } } })), false);
+  assert.match(indexSource, /if \(!Array\.isArray\(questions\)\)/);
+});
+
+test('catalog source loader uses examData only after existing globals and keeps array guard', () => {
+  const getBank = selector(catalogSource, 'bank');
+  const fallback = [{ id: 1 }, { id: 2 }];
+  const scope = { window: { examData: { questions: fallback } } };
+  assert.equal(getBank(undefined, scope), fallback);
+
+  const preferred = [{ id: 'preferred' }];
+  assert.equal(getBank(undefined, { window: { questions: preferred, examData: { questions: fallback } } }), preferred);
+  assert.equal(Array.isArray(getBank(undefined, { window: { questions: {}, examData: { questions: fallback } } })), false);
+  assert.match(catalogSource, /if \(!Array\.isArray\(bank\)\)/);
+});
