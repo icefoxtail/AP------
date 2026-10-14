@@ -265,7 +265,11 @@ window.questionBank = [
     ],
     "image": "",
     "answer": "①",
-    "solution": "대칭이동은 원점에 대한 대칭이므로\n옮기기 전의 점 $(x,y)$는 옮긴 점 $(X,Y)$에 대하여\n$x=-X$, $y=-Y$를 만족한다.\n원래 직선식에 대입하면\n$3(-X)-4(-Y)+5=0$\n$-3X+4Y+5=0$이다.\n양변에 $-1$을 곱하면 $3X-4Y-5=0$이다.\n따라서 옮겨지는 직선은 $3x-4y-5=0$이다.\n정답은 ①이다.",
+    "solution": "주어진 대칭이동은 $(x,y)$를 $(-x,-y)$로 옮기는 원점 대칭이다.\n원래 직선의 방정식은\n$3x-4y+5=0$이다.\n원점 대칭은 두 번 하면 원래 위치로 돌아가므로, 옮겨진 점 $(x,y)$를 원래 직선으로 되돌린 좌표 $(-x,-y)$를 대입한다.\n$3(-x)-4(-y)+5=0$\n$-3x+4y+5=0$\n$3x-4y-5=0$이다.\n따라서 옮겨진 직선의 방정식은 $3x-4y-5=0$이다.\n정답은 ①이다.",
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q06-solution.svg",
+    "solutionImageAlt": "원래 직선 3x−4y+5=0과 원점에 대해 대칭인 직선 3x−4y−5=0을 같은 좌표평면에 표시한 그림",
+    "solutionImageCaption": "원점 대칭에 의하여 두 직선은 서로 평행한 위치로 옮겨진다.",
+    "solutionImageSize": "full",
     "sourceDocumentSha256": "sha256:f1e0cb0b266816f92b379c8ebe8c3685e4b69922647e18cc2959fa91779b04bc",
     "sourceQuestionNo": "6",
     "sourcePageNo": 1,
@@ -296,7 +300,7 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "tags": []
+    "tags": ["도형"]
   },
   {
     "id": 7,
@@ -312,7 +316,11 @@ window.questionBank = [
     ],
     "image": "",
     "answer": "④",
-    "solution": "처음 원의 중심은 $(4,1)$이고, 옮긴 원의 중심은 $(0,0)$이다.\n따라서 평행이동 벡터는 $(-4,-1)$이다.\n점 $(a,3)$은 $(a-4,2)$로 옮겨진다.\n$(a-4,2)=(1,b)$이므로 $a=5$, $b=2$이다.\n따라서 $ab=10$이다.\n정답은 ④이다.",
+    "solution": "먼저 원의 중심을 구한다.\n$x^2+y^2-8x-2y+8=0$\n$(x-4)^2+(y-1)^2=9$이므로 중심은 $(4,1)$이다.\n옮긴 원 $x^2+y^2=9$의 중심은 $(0,0)$이다.\n따라서 모든 점을 $x$축 방향으로 $-4$, $y$축 방향으로 $-1$만큼 평행이동한다.\n점 $(a,3)$의 이동 후 좌표는\n$(a-4,3-1)=(a-4,2)$이다.\n이 점이 $(1,b)$이므로\n$a-4=1,\\quad b=2$\n$a=5,\\quad b=2$이다.\n따라서 $ab=5\\cdot2=10$이다.\n정답은 ④이다.",
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q07-solution.svg",
+    "solutionImageAlt": "중심 (4,1)의 원이 (0,0)으로 이동할 때 점 (5,3)도 (1,2)로 함께 이동하는 그림",
+    "solutionImageCaption": "중심과 점은 모두 x방향 −4, y방향 −1만큼 이동한다.",
+    "solutionImageSize": "full",
     "sourceDocumentSha256": "sha256:f1e0cb0b266816f92b379c8ebe8c3685e4b69922647e18cc2959fa91779b04bc",
     "sourceQuestionNo": "7",
     "sourcePageNo": 2,
@@ -343,7 +351,7 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "tags": []
+    "tags": ["도형"]
   },
   {
     "id": 8,
@@ -359,7 +367,7 @@ window.questionBank = [
     ],
     "image": "",
     "answer": "③",
-    "solution": "직선 $y=mx+1$의 기울기는 $m$이고,\n$nx-y+3=0$에서 $y=nx+3$이므로 기울기는 $n$이다.\n두 직선이 수직이므로 $mn=-1$이다.\n또 $y=(4-n)x-1$과 평행하므로 $m=4-n$이다.\n따라서 $n(4-n)=-1$, 즉 $n^2-4n-1=0$이다.\n구하는 값은\n$m^2+n^2=(4-n)^2+n^2=16-8n+2n^2$\n$=16-8n+2(4n+1)=18$이다.\n정답은 ③이다.",
+    "solution": "세 직선의 기울기를 먼저 비교한다.\n$nx-y+3=0$을 정리하면\n$y=nx+3$이므로 기울기는 $n$이다.\n$y=mx+1$의 기울기는 $m$이다.\n두 직선이 수직이므로\n$mn=-1$이다.\n또 $y=mx+1$과 $y=(4-n)x-1$은 평행하므로 기울기가 같다.\n$m=4-n$\n$m+n=4$이다.\n구하는 값은 두 조건을 이용하면\n$m^2+n^2=(m+n)^2-2mn$\n$=4^2-2(-1)$\n$=16+2=18$이다.\n정답은 ③이다.",
     "sourceDocumentSha256": "sha256:f1e0cb0b266816f92b379c8ebe8c3685e4b69922647e18cc2959fa91779b04bc",
     "sourceQuestionNo": "8",
     "sourcePageNo": 2,
@@ -406,7 +414,11 @@ window.questionBank = [
     ],
     "image": "",
     "answer": "④",
-    "solution": "평행한 두 직선 사이의 거리는\n$\\dfrac{|k-2|}{\\sqrt{3^2+(-4)^2}}=\\dfrac{|k-2|}{5}$이다.\n이 거리가 3이므로 $|k-2|=15$이다.\n따라서 $k=17$ 또는 $k=-13$이고 두 값은 모두 $k\\ne2$를 만족한다.\n모든 값의 합은 $17+(-13)=4$이다.\n정답은 ④이다.",
+    "solution": "두 직선의 $x,y$의 계수가 같으므로 서로 평행하다.\n평행한 두 직선\n$3x-4y+2=0,\\quad 3x-4y+k=0$\n사이의 거리는\n$d=\\dfrac{|k-2|}{\\sqrt{3^2+(-4)^2}}$\n$=\\dfrac{|k-2|}{5}$이다.\n두 직선 사이의 거리가 $3$이므로\n$\\dfrac{|k-2|}{5}=3$\n$|k-2|=15$이다.\n따라서 두 경우로 나눈다.\n① $k-2=15$이면 $k=17$이다.\n② $k-2=-15$이면 $k=-13$이다.\n두 값은 모두 $k\\ne2$를 만족한다.\n따라서 모든 $k$의 합은\n$17+(-13)=4$이다.\n정답은 ④이다.",
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q09-solution.svg",
+    "solutionImageAlt": "직선 3x−4y+2=0의 양쪽으로 각각 거리가 3인 평행선 k=17과 k=−13을 나타낸 그림",
+    "solutionImageCaption": "거리 3을 만족하는 평행선은 기준 직선의 양쪽에 하나씩 있다.",
+    "solutionImageSize": "full",
     "sourceDocumentSha256": "sha256:f1e0cb0b266816f92b379c8ebe8c3685e4b69922647e18cc2959fa91779b04bc",
     "sourceQuestionNo": "9",
     "sourcePageNo": 2,
@@ -437,7 +449,7 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "tags": []
+    "tags": ["도형"]
   },
   {
     "id": 10,
@@ -453,7 +465,7 @@ window.questionBank = [
     ],
     "image": "",
     "answer": "④",
-    "solution": "원 $x^2+y^2=20$ 위의 $(4,2)$에서의 접선은\n$4x+2y=20$, 즉 $2x+y=10$이다.\n두 접선이 평행하려면 원 $x^2+y^2=8$ 위의 $(a,b)$에서의 접선\n$ax+by=8$의 법선 $(a,b)$가 $(2,1)$에 평행해야 한다.\n따라서 $(a,b)=t(2,1)$이다.\n$a^2+b^2=8$에서 $5t^2=8$이므로 $t^2=\\dfrac85$이다.\n그러므로 $ab=2t^2=\\dfrac{16}{5}$이다.\n정답은 ④이다.",
+    "solution": "원 $x^2+y^2=r^2$ 위의 점 $(p,q)$에서의 접선은 $px+qy=r^2$로 나타낼 수 있다.\n첫 번째 원의 점 $(4,2)$에서의 접선 $l_1$은\n$4x+2y=20$\n$2x+y=10$\n$y=-2x+10$이므로 기울기는 $-2$이다.\n두 번째 원의 점 $(a,b)$에서의 접선 $l_2$는\n$ax+by=8$이다.\n$l_2$가 $l_1$과 평행하므로 기울기가 $-2$이고, $b\\ne0$이다.\n$-\\dfrac ab=-2$에서\n$a=2b$이다.\n또 $(a,b)$가 원 $x^2+y^2=8$ 위에 있으므로\n$a^2+b^2=8$\n$(2b)^2+b^2=8$\n$5b^2=8$\n$b^2=\\dfrac85$이다.\n따라서 $ab=2b^2=\\dfrac{16}{5}$이다.\n정답은 ④이다.",
     "sourceDocumentSha256": "sha256:f1e0cb0b266816f92b379c8ebe8c3685e4b69922647e18cc2959fa91779b04bc",
     "sourceQuestionNo": "10",
     "sourcePageNo": 2,
@@ -484,10 +496,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
-    "tags": [],
+    "tags": ["도형"],
     "solutionImage": "assets/images/26_강남여고_2학기_중간_고1_공통수학2/q10-solution.svg",
-    "solutionImageAlt": "Solution diagram for question 10",
-    "solutionImageCaption": "Visual summary of the geometric or algebraic relations used in the solution to question 10.",
+    "solutionImageAlt": "중심이 같은 반지름 √20, √8의 두 원과 평행한 접선 l₁, l₂, 서로 반대 방향에 있는 두 접점 후보를 표시한 그림",
+    "solutionImageCaption": "접선의 기울기는 모두 −2이며, 두 접점 후보 모두 ab=16/5를 만족한다.",
     "solutionImageSize": "full"
   },
   {
