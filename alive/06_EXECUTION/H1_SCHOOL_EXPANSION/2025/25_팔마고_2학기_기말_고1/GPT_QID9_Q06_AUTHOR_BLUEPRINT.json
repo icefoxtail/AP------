@@ -1,0 +1,564 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q06_BLUEPRINT_v1",
+  "sourceQid": 6,
+  "sourceJsSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "primaryRpmL3Id": "H1-RPM-261",
+  "rpmMappingStatus": "DIRECT_ACTIVE",
+  "objective": "rational function vertical/horizontal asymptotes x=a, y=b → inverse function input a+b and unique output",
+  "records": [
+    {
+      "slot": "A1",
+      "mode": "STRICT_VARIANT",
+      "model": {
+        "a": 2,
+        "b": 3,
+        "k": 12,
+        "chartX": 8,
+        "targetY": 5,
+        "formula": "\\dfrac{3x+6}{x-2}"
+      },
+      "studentQuestion": "함수 $f(x)=\\dfrac{3x+6}{x-2}$의 두 점근선이 $x=a$, $y=b$일 때, $f^{-1}(a+b)$의 값은?",
+      "expectedAnswer": 8,
+      "choices": [
+        -4,
+        4,
+        6,
+        8,
+        14
+      ],
+      "level": "하",
+      "difficultyBucket": 2,
+      "levelReason": "하: 표준형 변환과 일차방정식 역대응이 직접 연결되고 별도 조건 분기가 없다.",
+      "bucketReason": "2: 부호가 안정적이지만 점근선의 x·y 구분과 역함수의 입력 해석 오류가 가능하다.",
+      "decisiveSteps": [
+        "$f(x)=3+\\dfrac{12}{x-2}$이므로 수직점근선은 $x=2$, 수평점근선은 $y=3$이다.",
+        "따라서 $a=2$, $b=3$이고 $a+b=5$이다.",
+        "$f^{-1}(5)$는 $f(x)=5$를 만족하는 $x$이다.",
+        "$3+\\dfrac{12}{x-2}=5$에서 $\\dfrac{12}{x-2}=2$, $x-2=6$이므로 $x=8$이다.",
+        "$8\\ne2$이고 $f(8)=5$이므로 구한 값은 역함수의 정의에 맞는다."
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": -4,
+          "errorCalculation": "$x=a-\\dfrac{k}{a}=2-\\dfrac{12}{2}=-4$로 부호를 반대로 적용"
+        },
+        {
+          "index": "②",
+          "value": 4,
+          "errorCalculation": "$x=\\dfrac{k}{a}-a=6-2=4$로 점근선 이동방향을 반대로 적용"
+        },
+        {
+          "index": "③",
+          "value": 6,
+          "errorCalculation": "$x=a+\\dfrac{k}{b}=2+\\dfrac{12}{3}=6$으로 $a$ 대신 $b$로 나눔"
+        },
+        {
+          "index": "⑤",
+          "value": 14,
+          "errorCalculation": "$x=a+k=2+12=14$로 $a$로 나누는 단계를 누락"
+        }
+      ],
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "BENEFICIAL",
+      "solutionSvgGitBlob": "9be65c8a6d8f7f2ba80fe895ddc7d0fda100ce84",
+      "cross": [],
+      "conditions": [],
+      "reverseStem": "AUTHOR_RECHECK_KEEP"
+    },
+    {
+      "slot": "A2",
+      "mode": "STRICT_VARIANT",
+      "model": {
+        "a": -2,
+        "b": 5,
+        "k": 8,
+        "chartX": -6,
+        "targetY": 3,
+        "formula": "\\dfrac{5x+18}{x+2}"
+      },
+      "studentQuestion": "함수 $f(x)=\\dfrac{5x+18}{x+2}$의 두 점근선이 $x=a$, $y=b$일 때, $f^{-1}(a+b)$의 값은?",
+      "expectedAnswer": -6,
+      "choices": [
+        -10,
+        -8,
+        -6,
+        -4,
+        2
+      ],
+      "level": "하",
+      "difficultyBucket": 2,
+      "levelReason": "하: 점근선 부호를 구분한 뒤 한 번의 일차방정식으로 끝난다.",
+      "bucketReason": "2: 분모 $x+2$에서 $a=-2$를 잘못 읽거나 음수 나눗셈을 틀리기 쉽다.",
+      "decisiveSteps": [
+        "$f(x)=5+\\dfrac{8}{x+2}$이므로 점근선은 $x=-2$, $y=5$이다.",
+        "따라서 $a+b=-2+5=3$이다.",
+        "$f^{-1}(3)$을 구하려면 $5+\\dfrac8{x+2}=3$을 푼다.",
+        "$\\dfrac8{x+2}=-2$이고 $x+2=-4$이므로 $x=-6$이다.",
+        "$f(-6)=5+\\dfrac8{-4}=3$으로 확인된다."
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": -10,
+          "errorCalculation": "$x=a-k=-2-8=-10$으로 나눗셈을 생략"
+        },
+        {
+          "index": "②",
+          "value": -8,
+          "errorCalculation": "역대응식을 세우지 않고 분자 잔여항의 부호만 바꾸어 $x=-k=-8$이라 둠"
+        },
+        {
+          "index": "④",
+          "value": -4,
+          "errorCalculation": "$x=\\dfrac{k}{a}=\\dfrac8{-2}=-4$로 $a$를 더하지 않음"
+        },
+        {
+          "index": "⑤",
+          "value": 2,
+          "errorCalculation": "$x=a-\\dfrac{k}{a}=-2-(-4)=2$로 부호를 반대로 적용"
+        }
+      ],
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "BENEFICIAL",
+      "solutionSvgGitBlob": "2754566d6462f988c01dba409613933fc2cbf9dd",
+      "cross": [],
+      "conditions": [],
+      "reverseStem": "AUTHOR_RECHECK_KEEP"
+    },
+    {
+      "slot": "A3",
+      "mode": "STRICT_VARIANT",
+      "model": {
+        "a": 3,
+        "b": -1,
+        "k": 12,
+        "chartX": 7,
+        "targetY": 2,
+        "formula": "\\dfrac{-x+15}{x-3}"
+      },
+      "studentQuestion": "함수 $f(x)=\\dfrac{-x+15}{x-3}$의 두 점근선이 $x=a$, $y=b$일 때, $f^{-1}(a+b)$의 값은?",
+      "expectedAnswer": 7,
+      "choices": [
+        -1,
+        3,
+        4,
+        7,
+        15
+      ],
+      "level": "중",
+      "difficultyBucket": 3,
+      "levelReason": "중: 분자의 음수 항을 정확히 묶어야 점근선과 최종 목표가 정해진다.",
+      "bucketReason": "3: 상수항 분해와 역함수 역대응을 연속 처리하면서 부호 오류가 생긴다.",
+      "decisiveSteps": [
+        "분자를 $-(x-3)+12$로 나타내면 $f(x)=-1+\\dfrac{12}{x-3}$이다.",
+        "수직점근선은 $x=3$, 수평점근선은 $y=-1$이므로 $a+b=2$이다.",
+        "$f^{-1}(2)$의 값은 $-1+\\dfrac{12}{x-3}=2$의 해이다.",
+        "$\\dfrac{12}{x-3}=3$이므로 $x-3=4$, $x=7$이다.",
+        "정의역 조건 $x\\ne3$을 만족하며 $f(7)=2$이다."
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": -1,
+          "errorCalculation": "$x=a-\\dfrac{k}{a}=3-4=-1$로 이동 부호를 반대로 적용"
+        },
+        {
+          "index": "②",
+          "value": 3,
+          "errorCalculation": "수직점근선의 $x$좌표인 $a=3$을 역함숫값으로 오인"
+        },
+        {
+          "index": "③",
+          "value": 4,
+          "errorCalculation": "$x=\\dfrac{k}{a}=12/3=4$로 $a$만큼의 평행이동 누락"
+        },
+        {
+          "index": "⑤",
+          "value": 15,
+          "errorCalculation": "$x=a+k=3+12=15$로 나눗셈 누락"
+        }
+      ],
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "BENEFICIAL",
+      "solutionSvgGitBlob": "c5206c822d3456758952e813eb47ef03f60515d1",
+      "cross": [],
+      "conditions": [],
+      "reverseStem": "AUTHOR_RECHECK_KEEP"
+    },
+    {
+      "slot": "B1",
+      "mode": "EXAM_FOLLOWUP",
+      "model": {
+        "a": -2,
+        "b": 4,
+        "k": 12,
+        "chartX": -8,
+        "targetY": 2,
+        "formula": "\\dfrac{4x+20}{x+2}"
+      },
+      "studentQuestion": "함수 $f(x)=\\dfrac{4x+c}{x+2}$가 $f(0)=10$을 만족한다. 그래프의 점근선이 $x=a$, $y=b$일 때, $f^{-1}(a+b)$의 값은? (단, $c$는 실수이다.)",
+      "expectedAnswer": -8,
+      "choices": [
+        -8,
+        -6,
+        -2,
+        4,
+        10
+      ],
+      "level": "중",
+      "difficultyBucket": 3,
+      "levelReason": "중: 미지계수 확정, 점근선, 역대응의 세 단계를 차례로 해야 한다.",
+      "bucketReason": "3: 주어진 $f(0)$과 역함수 입력 $a+b$를 혼동하기 쉽다.",
+      "decisiveSteps": [
+        "$f(0)=\\dfrac c2=10$이므로 $c=20$이다.",
+        "따라서 $f(x)=\\dfrac{4x+20}{x+2}=4+\\dfrac{12}{x+2}$이다.",
+        "수직점근선은 $x=-2$, 수평점근선은 $y=4$이므로 $a+b=2$이다.",
+        "$f^{-1}(2)$를 구하려면 $4+\\dfrac{12}{x+2}=2$이다.",
+        "$\\dfrac{12}{x+2}=-2$에서 $x+2=-6$, $x=-8$이다.",
+        "$f(-8)=2$이고 $-8\\ne-2$이므로 조건을 만족한다."
+      ],
+      "wrongRoutes": [
+        {
+          "index": "②",
+          "value": -6,
+          "errorCalculation": "$x=\\dfrac{k}{a}=12/(-2)=-6$으로 수직점근선 이동 누락"
+        },
+        {
+          "index": "③",
+          "value": -2,
+          "errorCalculation": "$x=a=-2$를 역함숫값으로 택해 정의역에서 제외되는 점을 사용"
+        },
+        {
+          "index": "④",
+          "value": 4,
+          "errorCalculation": "수평점근선 $y=b=4$를 역함숫값으로 오독"
+        },
+        {
+          "index": "⑤",
+          "value": 10,
+          "errorCalculation": "이미 주어진 $f(0)=10$을 구해야 할 역함숫값으로 오독"
+        }
+      ],
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "BENEFICIAL",
+      "solutionSvgGitBlob": "6c4d3d02509a2529e35cb489c3ab74b4380d9671",
+      "cross": [],
+      "conditions": [],
+      "reverseStem": "AUTHOR_RECHECK_KEEP"
+    },
+    {
+      "slot": "B2",
+      "mode": "EXAM_FOLLOWUP",
+      "model": {
+        "a": -2,
+        "b": 15,
+        "k": -24,
+        "chartX": 10,
+        "targetY": 13,
+        "formula": "\\dfrac{15x+6}{x+2}"
+      },
+      "studentQuestion": "함수 $f(x)=\\dfrac{px+6}{x+2}$가 $f(1)=7$을 만족한다. 그래프의 점근선이 $x=a$, $y=b$일 때, $f^{-1}(a+b)$의 값은? (단, $p$는 실수이다.)",
+      "expectedAnswer": 10,
+      "choices": [
+        -14,
+        -2,
+        10,
+        12,
+        15
+      ],
+      "level": "중",
+      "difficultyBucket": 4,
+      "levelReason": "중: 미지계수 복원과 음의 분수 부호를 연결해 역값을 확정한다.",
+      "bucketReason": "4: $p$ 계산·분자 분해·역함숫값 대입의 세 오류 지점이 연결된다.",
+      "decisiveSteps": [
+        "$f(1)=\\dfrac{p+6}{3}=7$이므로 $p+6=21$, $p=15$이다.",
+        "따라서 $f(x)=\\dfrac{15x+6}{x+2}=15-\\dfrac{24}{x+2}$이다.",
+        "두 점근선은 $x=-2$, $y=15$이므로 $a+b=13$이다.",
+        "$f^{-1}(13)$은 $15-\\dfrac{24}{x+2}=13$의 해이다.",
+        "$-\\dfrac{24}{x+2}=-2$이므로 $x+2=12$, $x=10$이다.",
+        "$f(10)=15-24/12=13$으로 확인된다."
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": -14,
+          "errorCalculation": "$x=a-\\dfrac{k}{a}=-2-12=-14$로 이동 부호를 반대로 적용"
+        },
+        {
+          "index": "②",
+          "value": -2,
+          "errorCalculation": "수직점근선 $x=a=-2$의 좌표를 역함숫값으로 착각"
+        },
+        {
+          "index": "④",
+          "value": 12,
+          "errorCalculation": "$x=\\dfrac{k}{a}=(-24)/(-2)=12$로 $a$를 더하지 않음"
+        },
+        {
+          "index": "⑤",
+          "value": 15,
+          "errorCalculation": "수평점근선 $y=b=15$를 역함숫값으로 오독"
+        }
+      ],
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "BENEFICIAL",
+      "solutionSvgGitBlob": "04dffd26e3a7f3c498fcb358601abbdd5c966002",
+      "cross": [],
+      "conditions": [],
+      "reverseStem": "AUTHOR_RECHECK_KEEP"
+    },
+    {
+      "slot": "B3",
+      "mode": "EXAM_FOLLOWUP",
+      "model": {
+        "a": 2,
+        "b": 2,
+        "k": 8,
+        "chartX": 6,
+        "targetY": 4,
+        "formula": "\\dfrac{2x+4}{x-2}"
+      },
+      "studentQuestion": "함수 $f(x)=\\dfrac{2x+m}{x-2}$의 두 점근선을 $x=a$, $y=b$라 하자. $f^{-1}(a+b)=6$이 되도록 하는 실수 $m$의 값은? (단, $f$는 역함수가 존재한다.)",
+      "expectedAnswer": 4,
+      "choices": [
+        -4,
+        0,
+        2,
+        4,
+        8
+      ],
+      "level": "중",
+      "difficultyBucket": 4,
+      "levelReason": "중: 역함수 대응을 먼저 본함수 값으로 고쳐야 매개변수를 계산할 수 있다.",
+      "bucketReason": "4: $f^{-1}(4)=6$과 $f(4)=6$을 뒤집거나 상수함수 예외를 놓치기 쉽다.",
+      "decisiveSteps": [
+        "분모의 영점과 분자 최고차항 계수의 비로부터 $a=2$, $b=2$이고 $a+b=4$이다.",
+        "$f^{-1}(4)=6$은 역함수의 정의에 따라 $f(6)=4$와 같다.",
+        "따라서 $\\dfrac{2\\cdot6+m}{6-2}=4$이므로 $12+m=16$, $m=4$이다.",
+        "$m=4$이면 $f(x)=\\dfrac{2x+4}{x-2}=2+\\dfrac8{x-2}$로 상수함수가 아니고 역함수가 존재한다.",
+        "$f(6)=4$이므로 역대응 조건까지 만족한다."
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": -4,
+          "errorCalculation": "$12+m=16$을 $m=12-16=-4$로 잘못 이항"
+        },
+        {
+          "index": "②",
+          "value": 0,
+          "errorCalculation": "분모 $6-2=4$를 $3$으로 오산해 $12+m=4\\times3=12$, $m=0$"
+        },
+        {
+          "index": "③",
+          "value": 2,
+          "errorCalculation": "역함수 목표 $a+b=4$ 대신 $\\dfrac72$를 넣어 $12+m=14$, $m=2$"
+        },
+        {
+          "index": "⑤",
+          "value": 8,
+          "errorCalculation": "분모 $6-2=4$를 $5$로 오산해 $12+m=4\\times5=20$, $m=8$"
+        }
+      ],
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "BENEFICIAL",
+      "solutionSvgGitBlob": "c95b3d6349fc5d23c1872c3dec1302ab1291b315",
+      "cross": [],
+      "conditions": [],
+      "reverseStem": "AUTHOR_RECHECK_KEEP"
+    },
+    {
+      "slot": "C1",
+      "mode": "TYPE_BANK",
+      "model": {
+        "a": 5,
+        "b": 3,
+        "k": 20,
+        "chartX": 9,
+        "targetY": 8,
+        "formula": "3+\\dfrac{20}{x-5}"
+      },
+      "studentQuestion": "함수 $f(x)=\\dfrac{2x+14}{x-3}$에 대하여 $g(x)=f(x-2)+1$로 정의한다. $g$의 두 점근선이 $x=a$, $y=b$일 때, $g^{-1}(a+b)$의 값은?",
+      "expectedAnswer": 9,
+      "choices": [
+        1,
+        5,
+        7,
+        9,
+        25
+      ],
+      "level": "상",
+      "difficultyBucket": 4,
+      "levelReason": "상: 원함수 → 이동함수 → 새 점근선 → 역대응으로 표현을 여러 번 전환한다.",
+      "bucketReason": "4: 평행이동 방향 및 $g$와 $f$의 점근선 구분이 결정적인 함정이다.",
+      "decisiveSteps": [
+        "분자 $2x+14=2(x-3)+20$이므로 $f(x)=2+\\dfrac{20}{x-3}$이다.",
+        "$g(x)=f(x-2)+1=2+\\dfrac{20}{x-5}+1=3+\\dfrac{20}{x-5}$이다.",
+        "따라서 $g$의 점근선은 $x=5$, $y=3$이므로 $a+b=8$이다.",
+        "$g^{-1}(8)$을 구하는 방정식은 $3+\\dfrac{20}{x-5}=8$이다.",
+        "$\\dfrac{20}{x-5}=5$이므로 $x-5=4$, $x=9$이다.",
+        "$g(9)=8$이고 $x\\ne5$이므로 정의역에도 맞는다."
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": 1,
+          "errorCalculation": "$x=a-\\dfrac{k}{a}=5-20/5=1$로 역대응 부호를 반대로 적용"
+        },
+        {
+          "index": "②",
+          "value": 5,
+          "errorCalculation": "수직점근선 $x=5$의 좌표를 역함숫값으로 취함"
+        },
+        {
+          "index": "③",
+          "value": 7,
+          "errorCalculation": "$g(x)=8$ 대신 $g(x)=13$을 풀어 $3+20/(x-5)=13$, $x=7$"
+        },
+        {
+          "index": "⑤",
+          "value": 25,
+          "errorCalculation": "$x=a+k=5+20=25$로 분모로 나누는 과정을 생략"
+        }
+      ],
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "BENEFICIAL",
+      "solutionSvgGitBlob": "71dd315db5a36da0c2517d22dad5329e743bb8da",
+      "cross": [
+        "CC_TRANSLATION"
+      ],
+      "conditions": [],
+      "reverseStem": "AUTHOR_RECHECK_KEEP"
+    },
+    {
+      "slot": "C2",
+      "mode": "TYPE_BANK",
+      "model": {
+        "a": 2,
+        "b": 3,
+        "k": 24,
+        "chartX": 14,
+        "targetY": 5,
+        "formula": "3+\\dfrac{24}{x-2}"
+      },
+      "studentQuestion": "함수 $f(x)=\\dfrac{2x+18}{x-3}$의 역함수를 $g$라 하자. $g$의 그래프의 두 점근선이 $x=a$, $y=b$일 때, $g^{-1}(a+b)$의 값은?",
+      "expectedAnswer": 14,
+      "choices": [
+        -10,
+        2,
+        3,
+        5,
+        14
+      ],
+      "level": "상",
+      "difficultyBucket": 4,
+      "levelReason": "상: 원함수·역함수의 그래프/식과 점근선 방향을 번갈아 해석한다.",
+      "bucketReason": "4: $f^{-1}$와 $(f^{-1})^{-1}$ 혼동, 수직·수평 점근선 교환 실패 위험이 높다.",
+      "decisiveSteps": [
+        "$f(x)=2+\\dfrac{24}{x-3}$이므로 $f$의 점근선은 $x=3$, $y=2$이다.",
+        "역함수 $g=f^{-1}$의 그래프는 $y=x$에 대하여 대칭이므로 점근선은 서로 역할이 바뀐 $x=2$, $y=3$이다.",
+        "실제로 $y=\\dfrac{2x+18}{x-3}$에서 $x=\\dfrac{3y+18}{y-2}=3+\\dfrac{24}{y-2}$이므로 $g(x)=3+\\dfrac{24}{x-2}$이다.",
+        "따라서 $a+b=2+3=5$이다.",
+        "$g^{-1}=f$이므로 $g^{-1}(5)=f(5)=2+\\dfrac{24}{5-3}=14$이다.",
+        "$5\\ne3$이므로 본함수 정의역에 포함되고, 역함숫값도 잘 정의된다."
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": -10,
+          "errorCalculation": "$f(5)=2+24/2$에서 분수 부호를 반대로 써 $2-24/2=-10$"
+        },
+        {
+          "index": "②",
+          "value": 2,
+          "errorCalculation": "원함수의 수평점근선 $y=2$를 요구 역함숫값으로 착각"
+        },
+        {
+          "index": "③",
+          "value": 3,
+          "errorCalculation": "원함수의 수직점근선 $x=3$을 요구 역함숫값으로 착각"
+        },
+        {
+          "index": "④",
+          "value": 5,
+          "errorCalculation": "입력값 $a+b=5$를 역함숫값으로 그대로 기록"
+        }
+      ],
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "BENEFICIAL",
+      "solutionSvgGitBlob": "f08ec62d47e6358d13d8bf78191567d17a3e0677",
+      "cross": [
+        "CC_INVERSE_FUNCTION"
+      ],
+      "conditions": [],
+      "reverseStem": "AUTHOR_RECHECK_KEEP"
+    },
+    {
+      "slot": "C3",
+      "mode": "TYPE_BANK",
+      "model": {
+        "a": 3,
+        "b": 4,
+        "k": -6,
+        "chartX": 1,
+        "targetY": 7,
+        "formula": "4-\\dfrac6{x-3}"
+      },
+      "studentQuestion": "정수 $t$가 $-15\\le t\\le6$일 때, 함수 $f_t(x)=\\dfrac{4x+2t}{x-3}$를 생각하자. $f_t$의 그래프의 점근선을 $x=a$, $y=b$라 하자. $f_t$의 역함수가 존재하고 $f_t^{-1}(a+b)$가 $3$보다 작은 정수가 되도록 하는 $t$의 개수는?",
+      "expectedAnswer": 3,
+      "choices": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "level": "상",
+      "difficultyBucket": 5,
+      "levelReason": "상: 상수함수 예외와 정수성/구간 조건이 동시에 얽혀 분기가 필수다.",
+      "bucketReason": "5: 역함수 존재 여부·나눗셈의 정수성·경계 $t<-6$·양끝 포함까지 여러 독립 함정이 있다.",
+      "decisiveSteps": [
+        "$f_t(x)=4+\\dfrac{2t+12}{x-3}$이므로 $t\\ne-6$일 때 두 점근선은 $x=3$, $y=4$이고 $a+b=7$이다.",
+        "$t=-6$이면 $f_t(x)=4$ (단, $x\\ne3$)인 상수함수이므로 역함수가 존재하지 않는다.",
+        "$t\\ne-6$일 때 $f_t^{-1}(7)$은 $4+\\dfrac{2t+12}{x-3}=7$의 해이고, $2t+12=3(x-3)$에서 $x=7+\\dfrac{2t}{3}$이다.",
+        "이 값이 정수이려면 $3$이 $t$의 약수여야 한다. 또한 $7+\\dfrac{2t}{3}<3$이므로 $t<-6$이다.",
+        "$-15\\le t\\le6$에서 $3$의 배수이면서 $t<-6$인 정수는 $-15,-12,-9$의 세 개이다.",
+        "세 값은 모두 $t\\ne-6$이며 역함수가 존재하므로 조건을 만족한다."
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": 1,
+          "errorCalculation": "범위 안의 $t=-9$만 확인하고 $t=-15,-12$를 누락하여 $1$개로 셈"
+        },
+        {
+          "index": "②",
+          "value": 2,
+          "errorCalculation": "왼쪽 끝점 $t=-15$를 열린 경계로 오해하여 $-12,-9$ 두 개만 셈"
+        },
+        {
+          "index": "④",
+          "value": 4,
+          "errorCalculation": "$f_t^{-1}(7)\\le3$으로 완화하고 $t=-6$의 역함수 부재를 놓쳐 $-15,-12,-9,-6$ 네 개를 셈"
+        },
+        {
+          "index": "⑤",
+          "value": 5,
+          "errorCalculation": "실제 $f_t^{-1}(7)<3$ 대신 $t<0$만 검사해 $-15,-12,-9,-6,-3$을 세고 역함수 부재도 무시"
+        }
+      ],
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "BENEFICIAL",
+      "solutionSvgGitBlob": "b1ad75d484bed32c8465968f7bad7f5487971df3",
+      "cross": [],
+      "conditions": [
+        "COND_INTEGER",
+        "COND_RANGE"
+      ],
+      "reverseStem": "AUTHOR_RECHECK_KEEP"
+    }
+  ],
+  "independentQuality": "NOT_RUN",
+  "browser": "NOT_RUN"
+}

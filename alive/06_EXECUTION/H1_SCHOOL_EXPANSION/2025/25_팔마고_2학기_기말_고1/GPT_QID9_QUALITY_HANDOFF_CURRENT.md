@@ -1,3 +1,11 @@
+# CURRENT TOP — q06 신규 9문항 제작 / 다음 q07 (2026-10-14)
+- 작업 브랜치 work/alive-25-palma-h1-2final-qid9; q01~q06 누적 54/207, q01~q05 보호/불변. 첫 미완료 q07, 남은 153.
+- 원본 q06 archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js; blob 0d12b75e824ab47f08fc3b5a6180be595f882c6e, 학생용 원문 이미지 없음(문자·수식). 원본 f(x)=(4x+5)/(x+1) 점근선 x=-1,y=4; f^(-1)(3)=-2.
+- Primary RPM L3 H1-RPM-261 점근선과 위치/점근선; DIRECT_ACTIVE PT_RATIONAL_ASYMPTOTE / TPL_RATIONAL_ASYMPTOTE_DIRECT. 각 UID의 추가 사고·CrossConcept/Condition/난도 근거는 Q06_CREATE_DRAFT와 Q06_BLUEPRINT.
+- A1~C3 신규 9, 보기 45/45, 오답 계산 경로 36/36, 문제 SVG 0(UID별 TEXT_ONLY EXEMPT), 해설 SVG 9개 actual Git blob. 수치모델 Python 대입/경계 검증, SHA·기하좌표 정적 제작 근거는 receipt+SVG. 독립품질·브라우저·Consumer·main NOT_RUN.
+- q06 sourceUid exact 9개 EVIDENCE_DEBT, 누적 54개. 완료로 가장하지 않는다.
+- 다음 q07부터 이어간다. 기존 q01~q06 신규 draft/메타/asset 보호, 별도 재제작 금지.
+
 # 팔마고 q01~q23 작업자 품질 HARD LOCK
 
 ## CURRENT TOP — q05 완료 인계 / 다음 채팅은 q06부터 (2026-10-14)

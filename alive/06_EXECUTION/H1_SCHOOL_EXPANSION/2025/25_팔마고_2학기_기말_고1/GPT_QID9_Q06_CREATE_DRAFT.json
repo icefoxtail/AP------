@@ -1,0 +1,1425 @@
+{
+  "schemaVersion": "PALMA25_QID9_DRAFT_v1",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceQid": 6,
+  "sourceOriginalImage": null,
+  "sourceOriginalCondition": "f(x)=(4x+5)/(x+1); asymptotes x=a,y=b; find f^(-1)(a+b)=-2",
+  "primaryRpmL3": "H1-RPM-261",
+  "rpmMappingStatus": "DIRECT_ACTIVE",
+  "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+  "summary": {
+    "authorCreated": 9,
+    "choicesChecked": 45,
+    "wrongRoutes": 36,
+    "problemSvg": 0,
+    "solutionSvg": 9,
+    "answerDistribution": {
+      "①": 1,
+      "②": 0,
+      "③": 3,
+      "④": 4,
+      "⑤": 1
+    },
+    "formalIndependent": "NOT_RUN",
+    "browser": "NOT_RUN",
+    "main": "NOT_RUN",
+    "sourceUidEvidenceDebt": 9,
+    "nextQid": 7
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-PALMA25-2FINAL-Q06-A1",
+      "sourceQid": 6,
+      "sourceUid": null,
+      "slot": "A1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "하",
+      "category": "유리함수와 역함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "유리함수",
+        "점근선",
+        "역함수"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\dfrac{3x+6}{x-2}$의 두 점근선이 $x=a$, $y=b$일 때, $f^{-1}(a+b)$의 값은?",
+      "choices": [
+        "$-4$",
+        "$4$",
+        "$6$",
+        "$8$",
+        "$14$"
+      ],
+      "answer": "④",
+      "solution": "$f(x)=3+\\dfrac{12}{x-2}$이므로 수직점근선은 $x=2$, 수평점근선은 $y=3$이다.\n따라서 $a=2$, $b=3$이고 $a+b=5$이다.\n$f^{-1}(5)$는 $f(x)=5$를 만족하는 $x$이다.\n$3+\\dfrac{12}{x-2}=5$에서 $\\dfrac{12}{x-2}=2$, $x-2=6$이므로 $x=8$이다.\n$8\\ne2$이고 $f(8)=5$이므로 구한 값은 역함수의 정의에 맞는다.\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q06/A1-solution.svg",
+      "solutionImageAlt": "A1 유리함수의 수직·수평 점근선과 역대응값을 표시한 해설 그래프",
+      "solutionImageCaption": "점근선 x=2, y=3, 목표 높이 y=5에서 교점의 x좌표 8을(를) 확인한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-261",
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "rpmL3": "점근선과 위치",
+        "rpmL4": "점근선",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json H1-RPM-261 DIRECT_ACTIVE, PT_RATIONAL_ASYMPTOTE/TPL_RATIONAL_ASYMPTOTE_DIRECT in FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+        "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED"
+        ],
+        "reasons": {
+          "rpm": "분모 영점/분자 최고차 계수비(또는 이동·역함수 그래프의 대응)를 통해 두 점근선 x=a,y=b를 얻는 단계가 최종 질문의 입력 a+b에 필수이다.",
+          "l4": "H1-RPM-261 L4=점근선 DIRECT_ACTIVE; 계산된 a+b를 역함수 대응값으로 연결하는 후속 사고는 별도 기록.",
+          "pt": "유리함수의 두 점근선을 구하거나 이동·역함수에서 식별하는 실제 풀이 단계; canonical ACTIVE PT_RATIONAL_ASYMPTOTE.",
+          "tpl": "점근선 정보를 먼저 확정하는 실제 단계에 DIRECT_ACTIVE TPL_RATIONAL_ASYMPTOTE_DIRECT 대응.",
+          "cross": "추가 독립 CrossConcept 불필요; 기본 역대응은 원본과 같은 후속 풀이이며 Primary L3를 변경하지 않는다.",
+          "condition": "추가 정수·범위 제한 없이 주어진 수학 조건과 함수 정의역만 적용한다.",
+          "integration": "SEQUENTIAL: 기본 분수식의 점근선 두 개를 읽고 역대응값을 계산하는 두 단계",
+          "learningLevel": "하: 표준형 변환과 일차방정식 역대응이 직접 연결되고 별도 조건 분기가 없다.",
+          "assessmentBucket": "2: 부호가 안정적이지만 점근선의 x·y 구분과 역함수의 입력 해석 오류가 가능하다."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "고1 공통수학2: 유리함수의 점근선·평행이동·역함수 대응·기본 유리식 계산, 중학교 일차방정식 및 정수의 성질만 사용; 미적분/벡터 미사용.",
+        "learningLevelReason": "하: 표준형 변환과 일차방정식 역대응이 직접 연결되고 별도 조건 분기가 없다.",
+        "assessmentDifficultyReason": "2: 부호가 안정적이지만 점근선의 x·y 구분과 역함수의 입력 해석 오류가 가능하다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "originalInvariant": "유리함수의 두 점근선을 파악한 뒤 그 합을 역함수 입력으로 쓰는 사고",
+          "decisiveStep": "기본 분수식의 점근선 두 개를 읽고 역대응값을 계산하는 두 단계",
+          "sufficientData": "함수식, 필요한 함수값·변환·정수 범위는 최종 학생 발문에 모두 명시. 문제용 SVG 없이 원문을 해석 가능.",
+          "answerHintInProblemSVG": false,
+          "questionNaturalness": "학교형 유리함수 점근선·역대응 질문, 값·조건 외 불필요한 목표량 없음",
+          "remainingRisk": "별도 독립 품질검수 및 실제 브라우저 출력은 NOT_RUN"
+        },
+        "choiceAudit": {
+          "choicesAscending": true,
+          "finalValues": [
+            -4,
+            4,
+            6,
+            8,
+            14
+          ],
+          "correctValue": 8,
+          "correctIndex": 4,
+          "wrongRoutes": [
+            {
+              "index": "①",
+              "value": -4,
+              "errorCalculation": "$x=a-\\dfrac{k}{a}=2-\\dfrac{12}{2}=-4$로 부호를 반대로 적용"
+            },
+            {
+              "index": "②",
+              "value": 4,
+              "errorCalculation": "$x=\\dfrac{k}{a}-a=6-2=4$로 점근선 이동방향을 반대로 적용"
+            },
+            {
+              "index": "③",
+              "value": 6,
+              "errorCalculation": "$x=a+\\dfrac{k}{b}=2+\\dfrac{12}{3}=6$으로 $a$ 대신 $b$로 나눔"
+            },
+            {
+              "index": "⑤",
+              "value": 14,
+              "errorCalculation": "$x=a+k=2+12=14$로 $a$로 나누는 단계를 누락"
+            }
+          ],
+          "duplicateChoices": 0,
+          "correctAnswerCount": 1
+        },
+        "expectedMath": {
+          "asymptoteX": 2,
+          "asymptoteY": 3,
+          "residualK": 12,
+          "inverseInput": 5,
+          "inverseValueX": 8,
+          "answer": 8,
+          "rationalForm": "\\dfrac{3x+6}{x-2}",
+          "domainExcludedX": 2,
+          "graphSpec": "y=b+k/(x-a)",
+          "case": null
+        },
+        "problemSVG": {
+          "necessity": "EXEMPT",
+          "reason": "모든 함수·변환·조건이 식과 문장으로 완전하게 제시되어 추가 그림은 문제 해결 정보 없이 장식적 반복만 한다.",
+          "asset": null,
+          "actualBrowser": "NOT_RUN"
+        },
+        "solutionSVG": {
+          "necessity": "BENEFICIAL",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q06/A1-solution.svg",
+          "gitBlobSha": "9be65c8a6d8f7f2ba80fe895ddc7d0fda100ce84",
+          "newVisualInformation": "함수의 서로 다른 두 가지, 수직/수평점근선, 목표 y=a+b와 교점의 x좌표를 동시에 표시하여 역함수의 입력·출력 변환을 시각화.",
+          "coordinateModel": "screen 75+(x-xMin)*560/span, 85+(yMax-y)*560/span; equal units x/y; separate branches; representative parameters for B3,C3",
+          "staticCheck": "AUTHOR_PYTHON_NUMERIC_FACTS_AND_DETERMINISTIC_SAMPLED_COORDINATES",
+          "actualBrowser": "NOT_RUN"
+        },
+        "answerOrderDesign": "ASCENDING_NUMERIC_NO_POSTHOC_REORDER"
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-PALMA25-2FINAL-Q06-A2",
+      "sourceQid": 6,
+      "sourceUid": null,
+      "slot": "A2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "하",
+      "category": "유리함수와 역함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "유리함수",
+        "점근선",
+        "역함수"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\dfrac{5x+18}{x+2}$의 두 점근선이 $x=a$, $y=b$일 때, $f^{-1}(a+b)$의 값은?",
+      "choices": [
+        "$-10$",
+        "$-8$",
+        "$-6$",
+        "$-4$",
+        "$2$"
+      ],
+      "answer": "③",
+      "solution": "$f(x)=5+\\dfrac{8}{x+2}$이므로 점근선은 $x=-2$, $y=5$이다.\n따라서 $a+b=-2+5=3$이다.\n$f^{-1}(3)$을 구하려면 $5+\\dfrac8{x+2}=3$을 푼다.\n$\\dfrac8{x+2}=-2$이고 $x+2=-4$이므로 $x=-6$이다.\n$f(-6)=5+\\dfrac8{-4}=3$으로 확인된다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q06/A2-solution.svg",
+      "solutionImageAlt": "A2 유리함수의 수직·수평 점근선과 역대응값을 표시한 해설 그래프",
+      "solutionImageCaption": "점근선 x=-2, y=5, 목표 높이 y=3에서 교점의 x좌표 -6을(를) 확인한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-261",
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "rpmL3": "점근선과 위치",
+        "rpmL4": "점근선",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json H1-RPM-261 DIRECT_ACTIVE, PT_RATIONAL_ASYMPTOTE/TPL_RATIONAL_ASYMPTOTE_DIRECT in FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+        "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED"
+        ],
+        "reasons": {
+          "rpm": "분모 영점/분자 최고차 계수비(또는 이동·역함수 그래프의 대응)를 통해 두 점근선 x=a,y=b를 얻는 단계가 최종 질문의 입력 a+b에 필수이다.",
+          "l4": "H1-RPM-261 L4=점근선 DIRECT_ACTIVE; 계산된 a+b를 역함수 대응값으로 연결하는 후속 사고는 별도 기록.",
+          "pt": "유리함수의 두 점근선을 구하거나 이동·역함수에서 식별하는 실제 풀이 단계; canonical ACTIVE PT_RATIONAL_ASYMPTOTE.",
+          "tpl": "점근선 정보를 먼저 확정하는 실제 단계에 DIRECT_ACTIVE TPL_RATIONAL_ASYMPTOTE_DIRECT 대응.",
+          "cross": "추가 독립 CrossConcept 불필요; 기본 역대응은 원본과 같은 후속 풀이이며 Primary L3를 변경하지 않는다.",
+          "condition": "추가 정수·범위 제한 없이 주어진 수학 조건과 함수 정의역만 적용한다.",
+          "integration": "SEQUENTIAL: 음의 수직점근선과 양의 수평점근선을 정확히 구분해 역대응값 결정",
+          "learningLevel": "하: 점근선 부호를 구분한 뒤 한 번의 일차방정식으로 끝난다.",
+          "assessmentBucket": "2: 분모 $x+2$에서 $a=-2$를 잘못 읽거나 음수 나눗셈을 틀리기 쉽다."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "고1 공통수학2: 유리함수의 점근선·평행이동·역함수 대응·기본 유리식 계산, 중학교 일차방정식 및 정수의 성질만 사용; 미적분/벡터 미사용.",
+        "learningLevelReason": "하: 점근선 부호를 구분한 뒤 한 번의 일차방정식으로 끝난다.",
+        "assessmentDifficultyReason": "2: 분모 $x+2$에서 $a=-2$를 잘못 읽거나 음수 나눗셈을 틀리기 쉽다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "originalInvariant": "유리함수의 두 점근선을 파악한 뒤 그 합을 역함수 입력으로 쓰는 사고",
+          "decisiveStep": "음의 수직점근선과 양의 수평점근선을 정확히 구분해 역대응값 결정",
+          "sufficientData": "함수식, 필요한 함수값·변환·정수 범위는 최종 학생 발문에 모두 명시. 문제용 SVG 없이 원문을 해석 가능.",
+          "answerHintInProblemSVG": false,
+          "questionNaturalness": "학교형 유리함수 점근선·역대응 질문, 값·조건 외 불필요한 목표량 없음",
+          "remainingRisk": "별도 독립 품질검수 및 실제 브라우저 출력은 NOT_RUN"
+        },
+        "choiceAudit": {
+          "choicesAscending": true,
+          "finalValues": [
+            -10,
+            -8,
+            -6,
+            -4,
+            2
+          ],
+          "correctValue": -6,
+          "correctIndex": 3,
+          "wrongRoutes": [
+            {
+              "index": "①",
+              "value": -10,
+              "errorCalculation": "$x=a-k=-2-8=-10$으로 나눗셈을 생략"
+            },
+            {
+              "index": "②",
+              "value": -8,
+              "errorCalculation": "역대응식을 세우지 않고 분자 잔여항의 부호만 바꾸어 $x=-k=-8$이라 둠"
+            },
+            {
+              "index": "④",
+              "value": -4,
+              "errorCalculation": "$x=\\dfrac{k}{a}=\\dfrac8{-2}=-4$로 $a$를 더하지 않음"
+            },
+            {
+              "index": "⑤",
+              "value": 2,
+              "errorCalculation": "$x=a-\\dfrac{k}{a}=-2-(-4)=2$로 부호를 반대로 적용"
+            }
+          ],
+          "duplicateChoices": 0,
+          "correctAnswerCount": 1
+        },
+        "expectedMath": {
+          "asymptoteX": -2,
+          "asymptoteY": 5,
+          "residualK": 8,
+          "inverseInput": 3,
+          "inverseValueX": -6,
+          "answer": -6,
+          "rationalForm": "\\dfrac{5x+18}{x+2}",
+          "domainExcludedX": -2,
+          "graphSpec": "y=b+k/(x-a)",
+          "case": null
+        },
+        "problemSVG": {
+          "necessity": "EXEMPT",
+          "reason": "모든 함수·변환·조건이 식과 문장으로 완전하게 제시되어 추가 그림은 문제 해결 정보 없이 장식적 반복만 한다.",
+          "asset": null,
+          "actualBrowser": "NOT_RUN"
+        },
+        "solutionSVG": {
+          "necessity": "BENEFICIAL",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q06/A2-solution.svg",
+          "gitBlobSha": "2754566d6462f988c01dba409613933fc2cbf9dd",
+          "newVisualInformation": "함수의 서로 다른 두 가지, 수직/수평점근선, 목표 y=a+b와 교점의 x좌표를 동시에 표시하여 역함수의 입력·출력 변환을 시각화.",
+          "coordinateModel": "screen 75+(x-xMin)*560/span, 85+(yMax-y)*560/span; equal units x/y; separate branches; representative parameters for B3,C3",
+          "staticCheck": "AUTHOR_PYTHON_NUMERIC_FACTS_AND_DETERMINISTIC_SAMPLED_COORDINATES",
+          "actualBrowser": "NOT_RUN"
+        },
+        "answerOrderDesign": "ASCENDING_NUMERIC_NO_POSTHOC_REORDER"
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-PALMA25-2FINAL-Q06-A3",
+      "sourceQid": 6,
+      "sourceUid": null,
+      "slot": "A3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "유리함수와 역함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "유리함수",
+        "점근선",
+        "역함수"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\dfrac{-x+15}{x-3}$의 두 점근선이 $x=a$, $y=b$일 때, $f^{-1}(a+b)$의 값은?",
+      "choices": [
+        "$-1$",
+        "$3$",
+        "$4$",
+        "$7$",
+        "$15$"
+      ],
+      "answer": "④",
+      "solution": "분자를 $-(x-3)+12$로 나타내면 $f(x)=-1+\\dfrac{12}{x-3}$이다.\n수직점근선은 $x=3$, 수평점근선은 $y=-1$이므로 $a+b=2$이다.\n$f^{-1}(2)$의 값은 $-1+\\dfrac{12}{x-3}=2$의 해이다.\n$\\dfrac{12}{x-3}=3$이므로 $x-3=4$, $x=7$이다.\n정의역 조건 $x\\ne3$을 만족하며 $f(7)=2$이다.\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q06/A3-solution.svg",
+      "solutionImageAlt": "A3 유리함수의 수직·수평 점근선과 역대응값을 표시한 해설 그래프",
+      "solutionImageCaption": "점근선 x=3, y=-1, 목표 높이 y=2에서 교점의 x좌표 7을(를) 확인한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-261",
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "rpmL3": "점근선과 위치",
+        "rpmL4": "점근선",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json H1-RPM-261 DIRECT_ACTIVE, PT_RATIONAL_ASYMPTOTE/TPL_RATIONAL_ASYMPTOTE_DIRECT in FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+        "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED"
+        ],
+        "reasons": {
+          "rpm": "분모 영점/분자 최고차 계수비(또는 이동·역함수 그래프의 대응)를 통해 두 점근선 x=a,y=b를 얻는 단계가 최종 질문의 입력 a+b에 필수이다.",
+          "l4": "H1-RPM-261 L4=점근선 DIRECT_ACTIVE; 계산된 a+b를 역함수 대응값으로 연결하는 후속 사고는 별도 기록.",
+          "pt": "유리함수의 두 점근선을 구하거나 이동·역함수에서 식별하는 실제 풀이 단계; canonical ACTIVE PT_RATIONAL_ASYMPTOTE.",
+          "tpl": "점근선 정보를 먼저 확정하는 실제 단계에 DIRECT_ACTIVE TPL_RATIONAL_ASYMPTOTE_DIRECT 대응.",
+          "cross": "추가 독립 CrossConcept 불필요; 기본 역대응은 원본과 같은 후속 풀이이며 Primary L3를 변경하지 않는다.",
+          "condition": "추가 정수·범위 제한 없이 주어진 수학 조건과 함수 정의역만 적용한다.",
+          "integration": "SEQUENTIAL: 음의 수평점근선을 가진 분자 변환을 한 뒤 역함숫값 계산",
+          "learningLevel": "중: 분자의 음수 항을 정확히 묶어야 점근선과 최종 목표가 정해진다.",
+          "assessmentBucket": "3: 상수항 분해와 역함수 역대응을 연속 처리하면서 부호 오류가 생긴다."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "고1 공통수학2: 유리함수의 점근선·평행이동·역함수 대응·기본 유리식 계산, 중학교 일차방정식 및 정수의 성질만 사용; 미적분/벡터 미사용.",
+        "learningLevelReason": "중: 분자의 음수 항을 정확히 묶어야 점근선과 최종 목표가 정해진다.",
+        "assessmentDifficultyReason": "3: 상수항 분해와 역함수 역대응을 연속 처리하면서 부호 오류가 생긴다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "originalInvariant": "유리함수의 두 점근선을 파악한 뒤 그 합을 역함수 입력으로 쓰는 사고",
+          "decisiveStep": "음의 수평점근선을 가진 분자 변환을 한 뒤 역함숫값 계산",
+          "sufficientData": "함수식, 필요한 함수값·변환·정수 범위는 최종 학생 발문에 모두 명시. 문제용 SVG 없이 원문을 해석 가능.",
+          "answerHintInProblemSVG": false,
+          "questionNaturalness": "학교형 유리함수 점근선·역대응 질문, 값·조건 외 불필요한 목표량 없음",
+          "remainingRisk": "별도 독립 품질검수 및 실제 브라우저 출력은 NOT_RUN"
+        },
+        "choiceAudit": {
+          "choicesAscending": true,
+          "finalValues": [
+            -1,
+            3,
+            4,
+            7,
+            15
+          ],
+          "correctValue": 7,
+          "correctIndex": 4,
+          "wrongRoutes": [
+            {
+              "index": "①",
+              "value": -1,
+              "errorCalculation": "$x=a-\\dfrac{k}{a}=3-4=-1$로 이동 부호를 반대로 적용"
+            },
+            {
+              "index": "②",
+              "value": 3,
+              "errorCalculation": "수직점근선의 $x$좌표인 $a=3$을 역함숫값으로 오인"
+            },
+            {
+              "index": "③",
+              "value": 4,
+              "errorCalculation": "$x=\\dfrac{k}{a}=12/3=4$로 $a$만큼의 평행이동 누락"
+            },
+            {
+              "index": "⑤",
+              "value": 15,
+              "errorCalculation": "$x=a+k=3+12=15$로 나눗셈 누락"
+            }
+          ],
+          "duplicateChoices": 0,
+          "correctAnswerCount": 1
+        },
+        "expectedMath": {
+          "asymptoteX": 3,
+          "asymptoteY": -1,
+          "residualK": 12,
+          "inverseInput": 2,
+          "inverseValueX": 7,
+          "answer": 7,
+          "rationalForm": "\\dfrac{-x+15}{x-3}",
+          "domainExcludedX": 3,
+          "graphSpec": "y=b+k/(x-a)",
+          "case": null
+        },
+        "problemSVG": {
+          "necessity": "EXEMPT",
+          "reason": "모든 함수·변환·조건이 식과 문장으로 완전하게 제시되어 추가 그림은 문제 해결 정보 없이 장식적 반복만 한다.",
+          "asset": null,
+          "actualBrowser": "NOT_RUN"
+        },
+        "solutionSVG": {
+          "necessity": "BENEFICIAL",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q06/A3-solution.svg",
+          "gitBlobSha": "c5206c822d3456758952e813eb47ef03f60515d1",
+          "newVisualInformation": "함수의 서로 다른 두 가지, 수직/수평점근선, 목표 y=a+b와 교점의 x좌표를 동시에 표시하여 역함수의 입력·출력 변환을 시각화.",
+          "coordinateModel": "screen 75+(x-xMin)*560/span, 85+(yMax-y)*560/span; equal units x/y; separate branches; representative parameters for B3,C3",
+          "staticCheck": "AUTHOR_PYTHON_NUMERIC_FACTS_AND_DETERMINISTIC_SAMPLED_COORDINATES",
+          "actualBrowser": "NOT_RUN"
+        },
+        "answerOrderDesign": "ASCENDING_NUMERIC_NO_POSTHOC_REORDER"
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-PALMA25-2FINAL-Q06-B1",
+      "sourceQid": 6,
+      "sourceUid": null,
+      "slot": "B1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "유리함수와 역함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "유리함수",
+        "점근선",
+        "역함수"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\dfrac{4x+c}{x+2}$가 $f(0)=10$을 만족한다. 그래프의 점근선이 $x=a$, $y=b$일 때, $f^{-1}(a+b)$의 값은? (단, $c$는 실수이다.)",
+      "choices": [
+        "$-8$",
+        "$-6$",
+        "$-2$",
+        "$4$",
+        "$10$"
+      ],
+      "answer": "①",
+      "solution": "$f(0)=\\dfrac c2=10$이므로 $c=20$이다.\n따라서 $f(x)=\\dfrac{4x+20}{x+2}=4+\\dfrac{12}{x+2}$이다.\n수직점근선은 $x=-2$, 수평점근선은 $y=4$이므로 $a+b=2$이다.\n$f^{-1}(2)$를 구하려면 $4+\\dfrac{12}{x+2}=2$이다.\n$\\dfrac{12}{x+2}=-2$에서 $x+2=-6$, $x=-8$이다.\n$f(-8)=2$이고 $-8\\ne-2$이므로 조건을 만족한다.\n따라서 정답은 ①이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q06/B1-solution.svg",
+      "solutionImageAlt": "B1 유리함수의 수직·수평 점근선과 역대응값을 표시한 해설 그래프",
+      "solutionImageCaption": "점근선 x=-2, y=4, 목표 높이 y=2에서 교점의 x좌표 -8을(를) 확인한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-261",
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "rpmL3": "점근선과 위치",
+        "rpmL4": "점근선",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json H1-RPM-261 DIRECT_ACTIVE, PT_RATIONAL_ASYMPTOTE/TPL_RATIONAL_ASYMPTOTE_DIRECT in FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+        "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED"
+        ],
+        "reasons": {
+          "rpm": "분모 영점/분자 최고차 계수비(또는 이동·역함수 그래프의 대응)를 통해 두 점근선 x=a,y=b를 얻는 단계가 최종 질문의 입력 a+b에 필수이다.",
+          "l4": "H1-RPM-261 L4=점근선 DIRECT_ACTIVE; 계산된 a+b를 역함수 대응값으로 연결하는 후속 사고는 별도 기록.",
+          "pt": "유리함수의 두 점근선을 구하거나 이동·역함수에서 식별하는 실제 풀이 단계; canonical ACTIVE PT_RATIONAL_ASYMPTOTE.",
+          "tpl": "점근선 정보를 먼저 확정하는 실제 단계에 DIRECT_ACTIVE TPL_RATIONAL_ASYMPTOTE_DIRECT 대응.",
+          "cross": "추가 독립 CrossConcept 불필요; 기본 역대응은 원본과 같은 후속 풀이이며 Primary L3를 변경하지 않는다.",
+          "condition": "추가 정수·범위 제한 없이 주어진 수학 조건과 함수 정의역만 적용한다.",
+          "integration": "SEQUENTIAL: 주어진 함수값으로 미정계수를 먼저 결정해야 유리함수 점근선과 역대응이 확정",
+          "learningLevel": "중: 미지계수 확정, 점근선, 역대응의 세 단계를 차례로 해야 한다.",
+          "assessmentBucket": "3: 주어진 $f(0)$과 역함수 입력 $a+b$를 혼동하기 쉽다."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "고1 공통수학2: 유리함수의 점근선·평행이동·역함수 대응·기본 유리식 계산, 중학교 일차방정식 및 정수의 성질만 사용; 미적분/벡터 미사용.",
+        "learningLevelReason": "중: 미지계수 확정, 점근선, 역대응의 세 단계를 차례로 해야 한다.",
+        "assessmentDifficultyReason": "3: 주어진 $f(0)$과 역함수 입력 $a+b$를 혼동하기 쉽다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "originalInvariant": "유리함수의 두 점근선을 파악한 뒤 그 합을 역함수 입력으로 쓰는 사고",
+          "decisiveStep": "주어진 함수값으로 미정계수를 먼저 결정해야 유리함수 점근선과 역대응이 확정",
+          "sufficientData": "함수식, 필요한 함수값·변환·정수 범위는 최종 학생 발문에 모두 명시. 문제용 SVG 없이 원문을 해석 가능.",
+          "answerHintInProblemSVG": false,
+          "questionNaturalness": "학교형 유리함수 점근선·역대응 질문, 값·조건 외 불필요한 목표량 없음",
+          "remainingRisk": "별도 독립 품질검수 및 실제 브라우저 출력은 NOT_RUN"
+        },
+        "choiceAudit": {
+          "choicesAscending": true,
+          "finalValues": [
+            -8,
+            -6,
+            -2,
+            4,
+            10
+          ],
+          "correctValue": -8,
+          "correctIndex": 1,
+          "wrongRoutes": [
+            {
+              "index": "②",
+              "value": -6,
+              "errorCalculation": "$x=\\dfrac{k}{a}=12/(-2)=-6$으로 수직점근선 이동 누락"
+            },
+            {
+              "index": "③",
+              "value": -2,
+              "errorCalculation": "$x=a=-2$를 역함숫값으로 택해 정의역에서 제외되는 점을 사용"
+            },
+            {
+              "index": "④",
+              "value": 4,
+              "errorCalculation": "수평점근선 $y=b=4$를 역함숫값으로 오독"
+            },
+            {
+              "index": "⑤",
+              "value": 10,
+              "errorCalculation": "이미 주어진 $f(0)=10$을 구해야 할 역함숫값으로 오독"
+            }
+          ],
+          "duplicateChoices": 0,
+          "correctAnswerCount": 1
+        },
+        "expectedMath": {
+          "asymptoteX": -2,
+          "asymptoteY": 4,
+          "residualK": 12,
+          "inverseInput": 2,
+          "inverseValueX": -8,
+          "answer": -8,
+          "rationalForm": "\\dfrac{4x+20}{x+2}",
+          "domainExcludedX": -2,
+          "graphSpec": "y=b+k/(x-a)",
+          "case": null
+        },
+        "problemSVG": {
+          "necessity": "EXEMPT",
+          "reason": "모든 함수·변환·조건이 식과 문장으로 완전하게 제시되어 추가 그림은 문제 해결 정보 없이 장식적 반복만 한다.",
+          "asset": null,
+          "actualBrowser": "NOT_RUN"
+        },
+        "solutionSVG": {
+          "necessity": "BENEFICIAL",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q06/B1-solution.svg",
+          "gitBlobSha": "6c4d3d02509a2529e35cb489c3ab74b4380d9671",
+          "newVisualInformation": "함수의 서로 다른 두 가지, 수직/수평점근선, 목표 y=a+b와 교점의 x좌표를 동시에 표시하여 역함수의 입력·출력 변환을 시각화.",
+          "coordinateModel": "screen 75+(x-xMin)*560/span, 85+(yMax-y)*560/span; equal units x/y; separate branches; representative parameters for B3,C3",
+          "staticCheck": "AUTHOR_PYTHON_NUMERIC_FACTS_AND_DETERMINISTIC_SAMPLED_COORDINATES",
+          "actualBrowser": "NOT_RUN"
+        },
+        "answerOrderDesign": "ASCENDING_NUMERIC_NO_POSTHOC_REORDER"
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-PALMA25-2FINAL-Q06-B2",
+      "sourceQid": 6,
+      "sourceUid": null,
+      "slot": "B2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "유리함수와 역함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "유리함수",
+        "점근선",
+        "역함수"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\dfrac{px+6}{x+2}$가 $f(1)=7$을 만족한다. 그래프의 점근선이 $x=a$, $y=b$일 때, $f^{-1}(a+b)$의 값은? (단, $p$는 실수이다.)",
+      "choices": [
+        "$-14$",
+        "$-2$",
+        "$10$",
+        "$12$",
+        "$15$"
+      ],
+      "answer": "③",
+      "solution": "$f(1)=\\dfrac{p+6}{3}=7$이므로 $p+6=21$, $p=15$이다.\n따라서 $f(x)=\\dfrac{15x+6}{x+2}=15-\\dfrac{24}{x+2}$이다.\n두 점근선은 $x=-2$, $y=15$이므로 $a+b=13$이다.\n$f^{-1}(13)$은 $15-\\dfrac{24}{x+2}=13$의 해이다.\n$-\\dfrac{24}{x+2}=-2$이므로 $x+2=12$, $x=10$이다.\n$f(10)=15-24/12=13$으로 확인된다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q06/B2-solution.svg",
+      "solutionImageAlt": "B2 유리함수의 수직·수평 점근선과 역대응값을 표시한 해설 그래프",
+      "solutionImageCaption": "점근선 x=-2, y=15, 목표 높이 y=13에서 교점의 x좌표 10을(를) 확인한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-261",
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "rpmL3": "점근선과 위치",
+        "rpmL4": "점근선",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json H1-RPM-261 DIRECT_ACTIVE, PT_RATIONAL_ASYMPTOTE/TPL_RATIONAL_ASYMPTOTE_DIRECT in FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+        "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED"
+        ],
+        "reasons": {
+          "rpm": "분모 영점/분자 최고차 계수비(또는 이동·역함수 그래프의 대응)를 통해 두 점근선 x=a,y=b를 얻는 단계가 최종 질문의 입력 a+b에 필수이다.",
+          "l4": "H1-RPM-261 L4=점근선 DIRECT_ACTIVE; 계산된 a+b를 역함수 대응값으로 연결하는 후속 사고는 별도 기록.",
+          "pt": "유리함수의 두 점근선을 구하거나 이동·역함수에서 식별하는 실제 풀이 단계; canonical ACTIVE PT_RATIONAL_ASYMPTOTE.",
+          "tpl": "점근선 정보를 먼저 확정하는 실제 단계에 DIRECT_ACTIVE TPL_RATIONAL_ASYMPTOTE_DIRECT 대응.",
+          "cross": "추가 독립 CrossConcept 불필요; 기본 역대응은 원본과 같은 후속 풀이이며 Primary L3를 변경하지 않는다.",
+          "condition": "추가 정수·범위 제한 없이 주어진 수학 조건과 함수 정의역만 적용한다.",
+          "integration": "SEQUENTIAL: 계수를 조건식에서 복원하고 음의 잔여항·두 점근선·역대응으로 진행",
+          "learningLevel": "중: 미지계수 복원과 음의 분수 부호를 연결해 역값을 확정한다.",
+          "assessmentBucket": "4: $p$ 계산·분자 분해·역함숫값 대입의 세 오류 지점이 연결된다."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "고1 공통수학2: 유리함수의 점근선·평행이동·역함수 대응·기본 유리식 계산, 중학교 일차방정식 및 정수의 성질만 사용; 미적분/벡터 미사용.",
+        "learningLevelReason": "중: 미지계수 복원과 음의 분수 부호를 연결해 역값을 확정한다.",
+        "assessmentDifficultyReason": "4: $p$ 계산·분자 분해·역함숫값 대입의 세 오류 지점이 연결된다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "originalInvariant": "유리함수의 두 점근선을 파악한 뒤 그 합을 역함수 입력으로 쓰는 사고",
+          "decisiveStep": "계수를 조건식에서 복원하고 음의 잔여항·두 점근선·역대응으로 진행",
+          "sufficientData": "함수식, 필요한 함수값·변환·정수 범위는 최종 학생 발문에 모두 명시. 문제용 SVG 없이 원문을 해석 가능.",
+          "answerHintInProblemSVG": false,
+          "questionNaturalness": "학교형 유리함수 점근선·역대응 질문, 값·조건 외 불필요한 목표량 없음",
+          "remainingRisk": "별도 독립 품질검수 및 실제 브라우저 출력은 NOT_RUN"
+        },
+        "choiceAudit": {
+          "choicesAscending": true,
+          "finalValues": [
+            -14,
+            -2,
+            10,
+            12,
+            15
+          ],
+          "correctValue": 10,
+          "correctIndex": 3,
+          "wrongRoutes": [
+            {
+              "index": "①",
+              "value": -14,
+              "errorCalculation": "$x=a-\\dfrac{k}{a}=-2-12=-14$로 이동 부호를 반대로 적용"
+            },
+            {
+              "index": "②",
+              "value": -2,
+              "errorCalculation": "수직점근선 $x=a=-2$의 좌표를 역함숫값으로 착각"
+            },
+            {
+              "index": "④",
+              "value": 12,
+              "errorCalculation": "$x=\\dfrac{k}{a}=(-24)/(-2)=12$로 $a$를 더하지 않음"
+            },
+            {
+              "index": "⑤",
+              "value": 15,
+              "errorCalculation": "수평점근선 $y=b=15$를 역함숫값으로 오독"
+            }
+          ],
+          "duplicateChoices": 0,
+          "correctAnswerCount": 1
+        },
+        "expectedMath": {
+          "asymptoteX": -2,
+          "asymptoteY": 15,
+          "residualK": -24,
+          "inverseInput": 13,
+          "inverseValueX": 10,
+          "answer": 10,
+          "rationalForm": "\\dfrac{15x+6}{x+2}",
+          "domainExcludedX": -2,
+          "graphSpec": "y=b+k/(x-a)",
+          "case": null
+        },
+        "problemSVG": {
+          "necessity": "EXEMPT",
+          "reason": "모든 함수·변환·조건이 식과 문장으로 완전하게 제시되어 추가 그림은 문제 해결 정보 없이 장식적 반복만 한다.",
+          "asset": null,
+          "actualBrowser": "NOT_RUN"
+        },
+        "solutionSVG": {
+          "necessity": "BENEFICIAL",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q06/B2-solution.svg",
+          "gitBlobSha": "04dffd26e3a7f3c498fcb358601abbdd5c966002",
+          "newVisualInformation": "함수의 서로 다른 두 가지, 수직/수평점근선, 목표 y=a+b와 교점의 x좌표를 동시에 표시하여 역함수의 입력·출력 변환을 시각화.",
+          "coordinateModel": "screen 75+(x-xMin)*560/span, 85+(yMax-y)*560/span; equal units x/y; separate branches; representative parameters for B3,C3",
+          "staticCheck": "AUTHOR_PYTHON_NUMERIC_FACTS_AND_DETERMINISTIC_SAMPLED_COORDINATES",
+          "actualBrowser": "NOT_RUN"
+        },
+        "answerOrderDesign": "ASCENDING_NUMERIC_NO_POSTHOC_REORDER"
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-PALMA25-2FINAL-Q06-B3",
+      "sourceQid": 6,
+      "sourceUid": null,
+      "slot": "B3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "유리함수와 역함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "유리함수",
+        "점근선",
+        "역함수"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\dfrac{2x+m}{x-2}$의 두 점근선을 $x=a$, $y=b$라 하자. $f^{-1}(a+b)=6$이 되도록 하는 실수 $m$의 값은? (단, $f$는 역함수가 존재한다.)",
+      "choices": [
+        "$-4$",
+        "$0$",
+        "$2$",
+        "$4$",
+        "$8$"
+      ],
+      "answer": "④",
+      "solution": "분모의 영점과 분자 최고차항 계수의 비로부터 $a=2$, $b=2$이고 $a+b=4$이다.\n$f^{-1}(4)=6$은 역함수의 정의에 따라 $f(6)=4$와 같다.\n따라서 $\\dfrac{2\\cdot6+m}{6-2}=4$이므로 $12+m=16$, $m=4$이다.\n$m=4$이면 $f(x)=\\dfrac{2x+4}{x-2}=2+\\dfrac8{x-2}$로 상수함수가 아니고 역함수가 존재한다.\n$f(6)=4$이므로 역대응 조건까지 만족한다.\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q06/B3-solution.svg",
+      "solutionImageAlt": "B3 유리함수의 수직·수평 점근선과 역대응값을 표시한 해설 그래프",
+      "solutionImageCaption": "점근선 x=2, y=2, 목표 높이 y=4에서 교점의 x좌표 6을(를) 확인한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-261",
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "rpmL3": "점근선과 위치",
+        "rpmL4": "점근선",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json H1-RPM-261 DIRECT_ACTIVE, PT_RATIONAL_ASYMPTOTE/TPL_RATIONAL_ASYMPTOTE_DIRECT in FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+        "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED"
+        ],
+        "reasons": {
+          "rpm": "분모 영점/분자 최고차 계수비(또는 이동·역함수 그래프의 대응)를 통해 두 점근선 x=a,y=b를 얻는 단계가 최종 질문의 입력 a+b에 필수이다.",
+          "l4": "H1-RPM-261 L4=점근선 DIRECT_ACTIVE; 계산된 a+b를 역함수 대응값으로 연결하는 후속 사고는 별도 기록.",
+          "pt": "유리함수의 두 점근선을 구하거나 이동·역함수에서 식별하는 실제 풀이 단계; canonical ACTIVE PT_RATIONAL_ASYMPTOTE.",
+          "tpl": "점근선 정보를 먼저 확정하는 실제 단계에 DIRECT_ACTIVE TPL_RATIONAL_ASYMPTOTE_DIRECT 대응.",
+          "cross": "추가 독립 CrossConcept 불필요; 기본 역대응은 원본과 같은 후속 풀이이며 Primary L3를 변경하지 않는다.",
+          "condition": "추가 정수·범위 제한 없이 주어진 수학 조건과 함수 정의역만 적용한다.",
+          "integration": "SEQUENTIAL: 역함수 값을 입력값 식으로 변환하고 미지계수를 역산하면서 역함수 존재 조건 점검",
+          "learningLevel": "중: 역함수 대응을 먼저 본함수 값으로 고쳐야 매개변수를 계산할 수 있다.",
+          "assessmentBucket": "4: $f^{-1}(4)=6$과 $f(4)=6$을 뒤집거나 상수함수 예외를 놓치기 쉽다."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "고1 공통수학2: 유리함수의 점근선·평행이동·역함수 대응·기본 유리식 계산, 중학교 일차방정식 및 정수의 성질만 사용; 미적분/벡터 미사용.",
+        "learningLevelReason": "중: 역함수 대응을 먼저 본함수 값으로 고쳐야 매개변수를 계산할 수 있다.",
+        "assessmentDifficultyReason": "4: $f^{-1}(4)=6$과 $f(4)=6$을 뒤집거나 상수함수 예외를 놓치기 쉽다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "originalInvariant": "유리함수의 두 점근선을 파악한 뒤 그 합을 역함수 입력으로 쓰는 사고",
+          "decisiveStep": "역함수 값을 입력값 식으로 변환하고 미지계수를 역산하면서 역함수 존재 조건 점검",
+          "sufficientData": "함수식, 필요한 함수값·변환·정수 범위는 최종 학생 발문에 모두 명시. 문제용 SVG 없이 원문을 해석 가능.",
+          "answerHintInProblemSVG": false,
+          "questionNaturalness": "학교형 유리함수 점근선·역대응 질문, 값·조건 외 불필요한 목표량 없음",
+          "remainingRisk": "별도 독립 품질검수 및 실제 브라우저 출력은 NOT_RUN"
+        },
+        "choiceAudit": {
+          "choicesAscending": true,
+          "finalValues": [
+            -4,
+            0,
+            2,
+            4,
+            8
+          ],
+          "correctValue": 4,
+          "correctIndex": 4,
+          "wrongRoutes": [
+            {
+              "index": "①",
+              "value": -4,
+              "errorCalculation": "$12+m=16$을 $m=12-16=-4$로 잘못 이항"
+            },
+            {
+              "index": "②",
+              "value": 0,
+              "errorCalculation": "분모 $6-2=4$를 $3$으로 오산해 $12+m=4\\times3=12$, $m=0$"
+            },
+            {
+              "index": "③",
+              "value": 2,
+              "errorCalculation": "역함수 목표 $a+b=4$ 대신 $\\dfrac72$를 넣어 $12+m=14$, $m=2$"
+            },
+            {
+              "index": "⑤",
+              "value": 8,
+              "errorCalculation": "분모 $6-2=4$를 $5$로 오산해 $12+m=4\\times5=20$, $m=8$"
+            }
+          ],
+          "duplicateChoices": 0,
+          "correctAnswerCount": 1
+        },
+        "expectedMath": {
+          "asymptoteX": 2,
+          "asymptoteY": 2,
+          "residualK": 8,
+          "inverseInput": 4,
+          "inverseValueX": 6,
+          "answer": 4,
+          "rationalForm": "\\dfrac{2x+4}{x-2}",
+          "domainExcludedX": 2,
+          "graphSpec": "y=b+k/(x-a)",
+          "case": null
+        },
+        "problemSVG": {
+          "necessity": "EXEMPT",
+          "reason": "모든 함수·변환·조건이 식과 문장으로 완전하게 제시되어 추가 그림은 문제 해결 정보 없이 장식적 반복만 한다.",
+          "asset": null,
+          "actualBrowser": "NOT_RUN"
+        },
+        "solutionSVG": {
+          "necessity": "BENEFICIAL",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q06/B3-solution.svg",
+          "gitBlobSha": "c95b3d6349fc5d23c1872c3dec1302ab1291b315",
+          "newVisualInformation": "함수의 서로 다른 두 가지, 수직/수평점근선, 목표 y=a+b와 교점의 x좌표를 동시에 표시하여 역함수의 입력·출력 변환을 시각화.",
+          "coordinateModel": "screen 75+(x-xMin)*560/span, 85+(yMax-y)*560/span; equal units x/y; separate branches; representative parameters for B3,C3",
+          "staticCheck": "AUTHOR_PYTHON_NUMERIC_FACTS_AND_DETERMINISTIC_SAMPLED_COORDINATES",
+          "actualBrowser": "NOT_RUN"
+        },
+        "answerOrderDesign": "ASCENDING_NUMERIC_NO_POSTHOC_REORDER"
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-PALMA25-2FINAL-Q06-C1",
+      "sourceQid": 6,
+      "sourceUid": null,
+      "slot": "C1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "TYPE_BANK",
+      "level": "상",
+      "category": "유리함수와 역함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "유리함수",
+        "점근선",
+        "역함수"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\dfrac{2x+14}{x-3}$에 대하여 $g(x)=f(x-2)+1$로 정의한다. $g$의 두 점근선이 $x=a$, $y=b$일 때, $g^{-1}(a+b)$의 값은?",
+      "choices": [
+        "$1$",
+        "$5$",
+        "$7$",
+        "$9$",
+        "$25$"
+      ],
+      "answer": "④",
+      "solution": "분자 $2x+14=2(x-3)+20$이므로 $f(x)=2+\\dfrac{20}{x-3}$이다.\n$g(x)=f(x-2)+1=2+\\dfrac{20}{x-5}+1=3+\\dfrac{20}{x-5}$이다.\n따라서 $g$의 점근선은 $x=5$, $y=3$이므로 $a+b=8$이다.\n$g^{-1}(8)$을 구하는 방정식은 $3+\\dfrac{20}{x-5}=8$이다.\n$\\dfrac{20}{x-5}=5$이므로 $x-5=4$, $x=9$이다.\n$g(9)=8$이고 $x\\ne5$이므로 정의역에도 맞는다.\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q06/C1-solution.svg",
+      "solutionImageAlt": "C1 유리함수의 수직·수평 점근선과 역대응값을 표시한 해설 그래프",
+      "solutionImageCaption": "점근선 x=5, y=3, 목표 높이 y=8에서 교점의 x좌표 9을(를) 확인한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-261",
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "rpmL3": "점근선과 위치",
+        "rpmL4": "점근선",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json H1-RPM-261 DIRECT_ACTIVE, PT_RATIONAL_ASYMPTOTE/TPL_RATIONAL_ASYMPTOTE_DIRECT in FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+        "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+        "crossConceptKeys": [
+          "CC_TRANSLATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED"
+        ],
+        "reasons": {
+          "rpm": "분모 영점/분자 최고차 계수비(또는 이동·역함수 그래프의 대응)를 통해 두 점근선 x=a,y=b를 얻는 단계가 최종 질문의 입력 a+b에 필수이다.",
+          "l4": "H1-RPM-261 L4=점근선 DIRECT_ACTIVE; 계산된 a+b를 역함수 대응값으로 연결하는 후속 사고는 별도 기록.",
+          "pt": "유리함수의 두 점근선을 구하거나 이동·역함수에서 식별하는 실제 풀이 단계; canonical ACTIVE PT_RATIONAL_ASYMPTOTE.",
+          "tpl": "점근선 정보를 먼저 확정하는 실제 단계에 DIRECT_ACTIVE TPL_RATIONAL_ASYMPTOTE_DIRECT 대응.",
+          "cross": "CC_TRANSLATION: 수평·수직 평행이동으로 점근선 변화를 추적한 다음 새 함수의 역대응 판단",
+          "condition": "추가 정수·범위 제한 없이 주어진 수학 조건과 함수 정의역만 적용한다.",
+          "integration": "SEQUENTIAL: 수평·수직 평행이동으로 점근선 변화를 추적한 다음 새 함수의 역대응 판단",
+          "learningLevel": "상: 원함수 → 이동함수 → 새 점근선 → 역대응으로 표현을 여러 번 전환한다.",
+          "assessmentBucket": "4: 평행이동 방향 및 $g$와 $f$의 점근선 구분이 결정적인 함정이다."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "고1 공통수학2: 유리함수의 점근선·평행이동·역함수 대응·기본 유리식 계산, 중학교 일차방정식 및 정수의 성질만 사용; 미적분/벡터 미사용.",
+        "learningLevelReason": "상: 원함수 → 이동함수 → 새 점근선 → 역대응으로 표현을 여러 번 전환한다.",
+        "assessmentDifficultyReason": "4: 평행이동 방향 및 $g$와 $f$의 점근선 구분이 결정적인 함정이다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "originalInvariant": "유리함수의 두 점근선을 파악한 뒤 그 합을 역함수 입력으로 쓰는 사고",
+          "decisiveStep": "수평·수직 평행이동으로 점근선 변화를 추적한 다음 새 함수의 역대응 판단",
+          "sufficientData": "함수식, 필요한 함수값·변환·정수 범위는 최종 학생 발문에 모두 명시. 문제용 SVG 없이 원문을 해석 가능.",
+          "answerHintInProblemSVG": false,
+          "questionNaturalness": "학교형 유리함수 점근선·역대응 질문, 값·조건 외 불필요한 목표량 없음",
+          "remainingRisk": "별도 독립 품질검수 및 실제 브라우저 출력은 NOT_RUN"
+        },
+        "choiceAudit": {
+          "choicesAscending": true,
+          "finalValues": [
+            1,
+            5,
+            7,
+            9,
+            25
+          ],
+          "correctValue": 9,
+          "correctIndex": 4,
+          "wrongRoutes": [
+            {
+              "index": "①",
+              "value": 1,
+              "errorCalculation": "$x=a-\\dfrac{k}{a}=5-20/5=1$로 역대응 부호를 반대로 적용"
+            },
+            {
+              "index": "②",
+              "value": 5,
+              "errorCalculation": "수직점근선 $x=5$의 좌표를 역함숫값으로 취함"
+            },
+            {
+              "index": "③",
+              "value": 7,
+              "errorCalculation": "$g(x)=8$ 대신 $g(x)=13$을 풀어 $3+20/(x-5)=13$, $x=7$"
+            },
+            {
+              "index": "⑤",
+              "value": 25,
+              "errorCalculation": "$x=a+k=5+20=25$로 분모로 나누는 과정을 생략"
+            }
+          ],
+          "duplicateChoices": 0,
+          "correctAnswerCount": 1
+        },
+        "expectedMath": {
+          "asymptoteX": 5,
+          "asymptoteY": 3,
+          "residualK": 20,
+          "inverseInput": 8,
+          "inverseValueX": 9,
+          "answer": 9,
+          "rationalForm": "3+\\dfrac{20}{x-5}",
+          "domainExcludedX": 5,
+          "graphSpec": "y=b+k/(x-a)",
+          "case": null
+        },
+        "problemSVG": {
+          "necessity": "EXEMPT",
+          "reason": "모든 함수·변환·조건이 식과 문장으로 완전하게 제시되어 추가 그림은 문제 해결 정보 없이 장식적 반복만 한다.",
+          "asset": null,
+          "actualBrowser": "NOT_RUN"
+        },
+        "solutionSVG": {
+          "necessity": "BENEFICIAL",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q06/C1-solution.svg",
+          "gitBlobSha": "71dd315db5a36da0c2517d22dad5329e743bb8da",
+          "newVisualInformation": "함수의 서로 다른 두 가지, 수직/수평점근선, 목표 y=a+b와 교점의 x좌표를 동시에 표시하여 역함수의 입력·출력 변환을 시각화.",
+          "coordinateModel": "screen 75+(x-xMin)*560/span, 85+(yMax-y)*560/span; equal units x/y; separate branches; representative parameters for B3,C3",
+          "staticCheck": "AUTHOR_PYTHON_NUMERIC_FACTS_AND_DETERMINISTIC_SAMPLED_COORDINATES",
+          "actualBrowser": "NOT_RUN"
+        },
+        "answerOrderDesign": "ASCENDING_NUMERIC_NO_POSTHOC_REORDER"
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-PALMA25-2FINAL-Q06-C2",
+      "sourceQid": 6,
+      "sourceUid": null,
+      "slot": "C2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "TYPE_BANK",
+      "level": "상",
+      "category": "유리함수와 역함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "유리함수",
+        "점근선",
+        "역함수"
+      ],
+      "wide": false,
+      "content": "함수 $f(x)=\\dfrac{2x+18}{x-3}$의 역함수를 $g$라 하자. $g$의 그래프의 두 점근선이 $x=a$, $y=b$일 때, $g^{-1}(a+b)$의 값은?",
+      "choices": [
+        "$-10$",
+        "$2$",
+        "$3$",
+        "$5$",
+        "$14$"
+      ],
+      "answer": "⑤",
+      "solution": "$f(x)=2+\\dfrac{24}{x-3}$이므로 $f$의 점근선은 $x=3$, $y=2$이다.\n역함수 $g=f^{-1}$의 그래프는 $y=x$에 대하여 대칭이므로 점근선은 서로 역할이 바뀐 $x=2$, $y=3$이다.\n실제로 $y=\\dfrac{2x+18}{x-3}$에서 $x=\\dfrac{3y+18}{y-2}=3+\\dfrac{24}{y-2}$이므로 $g(x)=3+\\dfrac{24}{x-2}$이다.\n따라서 $a+b=2+3=5$이다.\n$g^{-1}=f$이므로 $g^{-1}(5)=f(5)=2+\\dfrac{24}{5-3}=14$이다.\n$5\\ne3$이므로 본함수 정의역에 포함되고, 역함숫값도 잘 정의된다.\n따라서 정답은 ⑤이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q06/C2-solution.svg",
+      "solutionImageAlt": "C2 유리함수의 수직·수평 점근선과 역대응값을 표시한 해설 그래프",
+      "solutionImageCaption": "점근선 x=2, y=3, 목표 높이 y=5에서 교점의 x좌표 14을(를) 확인한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-261",
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "rpmL3": "점근선과 위치",
+        "rpmL4": "점근선",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json H1-RPM-261 DIRECT_ACTIVE, PT_RATIONAL_ASYMPTOTE/TPL_RATIONAL_ASYMPTOTE_DIRECT in FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+        "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+        "crossConceptKeys": [
+          "CC_INVERSE_FUNCTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED"
+        ],
+        "reasons": {
+          "rpm": "분모 영점/분자 최고차 계수비(또는 이동·역함수 그래프의 대응)를 통해 두 점근선 x=a,y=b를 얻는 단계가 최종 질문의 입력 a+b에 필수이다.",
+          "l4": "H1-RPM-261 L4=점근선 DIRECT_ACTIVE; 계산된 a+b를 역함수 대응값으로 연결하는 후속 사고는 별도 기록.",
+          "pt": "유리함수의 두 점근선을 구하거나 이동·역함수에서 식별하는 실제 풀이 단계; canonical ACTIVE PT_RATIONAL_ASYMPTOTE.",
+          "tpl": "점근선 정보를 먼저 확정하는 실제 단계에 DIRECT_ACTIVE TPL_RATIONAL_ASYMPTOTE_DIRECT 대응.",
+          "cross": "CC_INVERSE_FUNCTION: 그래프의 y=x 대칭에서 점근선을 교환한 뒤 이중 역함수 관계로 계산",
+          "condition": "추가 정수·범위 제한 없이 주어진 수학 조건과 함수 정의역만 적용한다.",
+          "integration": "SEQUENTIAL: 그래프의 y=x 대칭에서 점근선을 교환한 뒤 이중 역함수 관계로 계산",
+          "learningLevel": "상: 원함수·역함수의 그래프/식과 점근선 방향을 번갈아 해석한다.",
+          "assessmentBucket": "4: $f^{-1}$와 $(f^{-1})^{-1}$ 혼동, 수직·수평 점근선 교환 실패 위험이 높다."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "고1 공통수학2: 유리함수의 점근선·평행이동·역함수 대응·기본 유리식 계산, 중학교 일차방정식 및 정수의 성질만 사용; 미적분/벡터 미사용.",
+        "learningLevelReason": "상: 원함수·역함수의 그래프/식과 점근선 방향을 번갈아 해석한다.",
+        "assessmentDifficultyReason": "4: $f^{-1}$와 $(f^{-1})^{-1}$ 혼동, 수직·수평 점근선 교환 실패 위험이 높다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "originalInvariant": "유리함수의 두 점근선을 파악한 뒤 그 합을 역함수 입력으로 쓰는 사고",
+          "decisiveStep": "그래프의 y=x 대칭에서 점근선을 교환한 뒤 이중 역함수 관계로 계산",
+          "sufficientData": "함수식, 필요한 함수값·변환·정수 범위는 최종 학생 발문에 모두 명시. 문제용 SVG 없이 원문을 해석 가능.",
+          "answerHintInProblemSVG": false,
+          "questionNaturalness": "학교형 유리함수 점근선·역대응 질문, 값·조건 외 불필요한 목표량 없음",
+          "remainingRisk": "별도 독립 품질검수 및 실제 브라우저 출력은 NOT_RUN"
+        },
+        "choiceAudit": {
+          "choicesAscending": true,
+          "finalValues": [
+            -10,
+            2,
+            3,
+            5,
+            14
+          ],
+          "correctValue": 14,
+          "correctIndex": 5,
+          "wrongRoutes": [
+            {
+              "index": "①",
+              "value": -10,
+              "errorCalculation": "$f(5)=2+24/2$에서 분수 부호를 반대로 써 $2-24/2=-10$"
+            },
+            {
+              "index": "②",
+              "value": 2,
+              "errorCalculation": "원함수의 수평점근선 $y=2$를 요구 역함숫값으로 착각"
+            },
+            {
+              "index": "③",
+              "value": 3,
+              "errorCalculation": "원함수의 수직점근선 $x=3$을 요구 역함숫값으로 착각"
+            },
+            {
+              "index": "④",
+              "value": 5,
+              "errorCalculation": "입력값 $a+b=5$를 역함숫값으로 그대로 기록"
+            }
+          ],
+          "duplicateChoices": 0,
+          "correctAnswerCount": 1
+        },
+        "expectedMath": {
+          "asymptoteX": 2,
+          "asymptoteY": 3,
+          "residualK": 24,
+          "inverseInput": 5,
+          "inverseValueX": 14,
+          "answer": 14,
+          "rationalForm": "3+\\dfrac{24}{x-2}",
+          "domainExcludedX": 2,
+          "graphSpec": "y=b+k/(x-a)",
+          "case": null
+        },
+        "problemSVG": {
+          "necessity": "EXEMPT",
+          "reason": "모든 함수·변환·조건이 식과 문장으로 완전하게 제시되어 추가 그림은 문제 해결 정보 없이 장식적 반복만 한다.",
+          "asset": null,
+          "actualBrowser": "NOT_RUN"
+        },
+        "solutionSVG": {
+          "necessity": "BENEFICIAL",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q06/C2-solution.svg",
+          "gitBlobSha": "f08ec62d47e6358d13d8bf78191567d17a3e0677",
+          "newVisualInformation": "함수의 서로 다른 두 가지, 수직/수평점근선, 목표 y=a+b와 교점의 x좌표를 동시에 표시하여 역함수의 입력·출력 변환을 시각화.",
+          "coordinateModel": "screen 75+(x-xMin)*560/span, 85+(yMax-y)*560/span; equal units x/y; separate branches; representative parameters for B3,C3",
+          "staticCheck": "AUTHOR_PYTHON_NUMERIC_FACTS_AND_DETERMINISTIC_SAMPLED_COORDINATES",
+          "actualBrowser": "NOT_RUN"
+        },
+        "answerOrderDesign": "ASCENDING_NUMERIC_NO_POSTHOC_REORDER"
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-PALMA25-2FINAL-Q06-C3",
+      "sourceQid": 6,
+      "sourceUid": null,
+      "slot": "C3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "TYPE_BANK",
+      "level": "상",
+      "category": "유리함수와 역함수",
+      "originalCategory": "유리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-08",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "유리함수",
+        "점근선",
+        "역함수"
+      ],
+      "wide": false,
+      "content": "정수 $t$가 $-15\\le t\\le6$일 때, 함수 $f_t(x)=\\dfrac{4x+2t}{x-3}$를 생각하자. $f_t$의 그래프의 점근선을 $x=a$, $y=b$라 하자. $f_t$의 역함수가 존재하고 $f_t^{-1}(a+b)$가 $3$보다 작은 정수가 되도록 하는 $t$의 개수는?",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "answer": "③",
+      "solution": "$f_t(x)=4+\\dfrac{2t+12}{x-3}$이므로 $t\\ne-6$일 때 두 점근선은 $x=3$, $y=4$이고 $a+b=7$이다.\n$t=-6$이면 $f_t(x)=4$ (단, $x\\ne3$)인 상수함수이므로 역함수가 존재하지 않는다.\n$t\\ne-6$일 때 $f_t^{-1}(7)$은 $4+\\dfrac{2t+12}{x-3}=7$의 해이고, $2t+12=3(x-3)$에서 $x=7+\\dfrac{2t}{3}$이다.\n이 값이 정수이려면 $3$이 $t$의 약수여야 한다. 또한 $7+\\dfrac{2t}{3}<3$이므로 $t<-6$이다.\n$-15\\le t\\le6$에서 $3$의 배수이면서 $t<-6$인 정수는 $-15,-12,-9$의 세 개이다.\n세 값은 모두 $t\\ne-6$이며 역함수가 존재하므로 조건을 만족한다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q06/C3-solution.svg",
+      "solutionImageAlt": "C3 유리함수의 수직·수평 점근선과 역대응값을 표시한 해설 그래프",
+      "solutionImageCaption": "점근선 x=3, y=4, 목표 높이 y=7에서 교점의 x좌표 1을(를) 확인한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-261",
+        "rpmL1": "함수",
+        "rpmL2": "유리함수",
+        "rpmL3": "점근선과 위치",
+        "rpmL4": "점근선",
+        "rpmMappingStatus": "DIRECT_ACTIVE",
+        "rpmBindingEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json H1-RPM-261 DIRECT_ACTIVE, PT_RATIONAL_ASYMPTOTE/TPL_RATIONAL_ASYMPTOTE_DIRECT in FUNCTIONS_GRAPHS",
+        "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+        "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 5,
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED"
+        ],
+        "reasons": {
+          "rpm": "분모 영점/분자 최고차 계수비(또는 이동·역함수 그래프의 대응)를 통해 두 점근선 x=a,y=b를 얻는 단계가 최종 질문의 입력 a+b에 필수이다.",
+          "l4": "H1-RPM-261 L4=점근선 DIRECT_ACTIVE; 계산된 a+b를 역함수 대응값으로 연결하는 후속 사고는 별도 기록.",
+          "pt": "유리함수의 두 점근선을 구하거나 이동·역함수에서 식별하는 실제 풀이 단계; canonical ACTIVE PT_RATIONAL_ASYMPTOTE.",
+          "tpl": "점근선 정보를 먼저 확정하는 실제 단계에 DIRECT_ACTIVE TPL_RATIONAL_ASYMPTOTE_DIRECT 대응.",
+          "cross": "추가 독립 CrossConcept 불필요; 기본 역대응은 원본과 같은 후속 풀이이며 Primary L3를 변경하지 않는다.",
+          "condition": "COND_INTEGER, COND_RANGE: 역함수 존재성의 퇴화 매개변수를 제외하고 정수성·엄격한 경계 부등식을 동시에 처리",
+          "integration": "CASE_BRANCH: 역함수 존재성의 퇴화 매개변수를 제외하고 정수성·엄격한 경계 부등식을 동시에 처리",
+          "learningLevel": "상: 상수함수 예외와 정수성/구간 조건이 동시에 얽혀 분기가 필수다.",
+          "assessmentBucket": "5: 역함수 존재 여부·나눗셈의 정수성·경계 $t<-6$·양끝 포함까지 여러 독립 함정이 있다."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "고1 공통수학2: 유리함수의 점근선·평행이동·역함수 대응·기본 유리식 계산, 중학교 일차방정식 및 정수의 성질만 사용; 미적분/벡터 미사용.",
+        "learningLevelReason": "상: 상수함수 예외와 정수성/구간 조건이 동시에 얽혀 분기가 필수다.",
+        "assessmentDifficultyReason": "5: 역함수 존재 여부·나눗셈의 정수성·경계 $t<-6$·양끝 포함까지 여러 독립 함정이 있다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "originalInvariant": "유리함수의 두 점근선을 파악한 뒤 그 합을 역함수 입력으로 쓰는 사고",
+          "decisiveStep": "역함수 존재성의 퇴화 매개변수를 제외하고 정수성·엄격한 경계 부등식을 동시에 처리",
+          "sufficientData": "함수식, 필요한 함수값·변환·정수 범위는 최종 학생 발문에 모두 명시. 문제용 SVG 없이 원문을 해석 가능.",
+          "answerHintInProblemSVG": false,
+          "questionNaturalness": "학교형 유리함수 점근선·역대응 질문, 값·조건 외 불필요한 목표량 없음",
+          "remainingRisk": "별도 독립 품질검수 및 실제 브라우저 출력은 NOT_RUN"
+        },
+        "choiceAudit": {
+          "choicesAscending": true,
+          "finalValues": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "correctValue": 3,
+          "correctIndex": 3,
+          "wrongRoutes": [
+            {
+              "index": "①",
+              "value": 1,
+              "errorCalculation": "범위 안의 $t=-9$만 확인하고 $t=-15,-12$를 누락하여 $1$개로 셈"
+            },
+            {
+              "index": "②",
+              "value": 2,
+              "errorCalculation": "왼쪽 끝점 $t=-15$를 열린 경계로 오해하여 $-12,-9$ 두 개만 셈"
+            },
+            {
+              "index": "④",
+              "value": 4,
+              "errorCalculation": "$f_t^{-1}(7)\\le3$으로 완화하고 $t=-6$의 역함수 부재를 놓쳐 $-15,-12,-9,-6$ 네 개를 셈"
+            },
+            {
+              "index": "⑤",
+              "value": 5,
+              "errorCalculation": "실제 $f_t^{-1}(7)<3$ 대신 $t<0$만 검사해 $-15,-12,-9,-6,-3$을 세고 역함수 부재도 무시"
+            }
+          ],
+          "duplicateChoices": 0,
+          "correctAnswerCount": 1
+        },
+        "expectedMath": {
+          "asymptoteX": 3,
+          "asymptoteY": 4,
+          "residualK": -6,
+          "inverseInput": 7,
+          "inverseValueX": 1,
+          "answer": 3,
+          "rationalForm": "4-\\dfrac6{x-3}",
+          "domainExcludedX": 3,
+          "graphSpec": "y=b+k/(x-a)",
+          "case": "t=-9 representative, admissible t=-15,-12,-9"
+        },
+        "problemSVG": {
+          "necessity": "EXEMPT",
+          "reason": "모든 함수·변환·조건이 식과 문장으로 완전하게 제시되어 추가 그림은 문제 해결 정보 없이 장식적 반복만 한다.",
+          "asset": null,
+          "actualBrowser": "NOT_RUN"
+        },
+        "solutionSVG": {
+          "necessity": "BENEFICIAL",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q06/C3-solution.svg",
+          "gitBlobSha": "b1ad75d484bed32c8465968f7bad7f5487971df3",
+          "newVisualInformation": "함수의 서로 다른 두 가지, 수직/수평점근선, 목표 y=a+b와 교점의 x좌표를 동시에 표시하여 역함수의 입력·출력 변환을 시각화.",
+          "coordinateModel": "screen 75+(x-xMin)*560/span, 85+(yMax-y)*560/span; equal units x/y; separate branches; representative parameters for B3,C3",
+          "staticCheck": "AUTHOR_PYTHON_NUMERIC_FACTS_AND_DETERMINISTIC_SAMPLED_COORDINATES",
+          "actualBrowser": "NOT_RUN"
+        },
+        "answerOrderDesign": "ASCENDING_NUMERIC_NO_POSTHOC_REORDER"
+      }
+    }
+  ]
+}
