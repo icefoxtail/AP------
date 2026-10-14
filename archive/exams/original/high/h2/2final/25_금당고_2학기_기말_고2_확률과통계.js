@@ -561,7 +561,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "answerStatus": "direct_solved_round13",
-    "solution": "[키포인트] 두 상자의 가격 합이 40000원이 되려면 A, B 모두 정가(20000원) 판매되어야 한다.\\n조건 정리: A상자 크림빵 무게 $\\\\sim N(22, 4^2)$, B상자 $\\\\sim N(21, 2^2)$. 표본 크기 $n=4$. 표본평균 $\\ge 20$이면 정가 판매.\\n풀이 방향: 각 상자의 표본평균 분포를 구하고, 두 상자 모두 정가 판매될 확률을 독립사건의 곱으로 계산한다.\\n정석 풀이:\\nA상자: 표본평균 $\\bar{X}_A \\\\sim N\\left(22, \\dfrac{4^2}{4}\\right) = N(22, 4)$, $\\\\sigma_{\\bar{X}_A} = 2$.\\n$P(\\bar{X}_A \\ge 20) = P\\left(Z \\ge \\dfrac{20-22}{2}\\right) = P(Z \\ge -1) = 0.5 + 0.34 = 0.84$\nB상자: 표본평균 $\\bar{X}_B \\\\sim N\\left(21, \\dfrac{2^2}{4}\\right) = N(21, 1)$, $\\\\sigma_{\\bar{X}_B} = 1$.\\n$P(\\bar{X}_B \\ge 20) = P\\left(Z \\ge \\dfrac{20-21}{1}\\right) = P(Z \\ge -1) = 0.5 + 0.34 = 0.84$\\n두 상자의 판매 가격이 독립이므로, 합이 40000원일 확률은\\n$0.84 \\times 0.84 = 0.7056$\\n따라서 정답은 ③이다.",
+    "solution": "두 상자의 판매가격 합이 $40000$원이 되려면 A상자와 B상자가 모두 $20000$원에 팔려야 한다.\n표본 크기가 $4$이므로 표본평균의 표준편차는 원래 표준편차의 $\\sqrt4=2$분의 $1$이다.\nA상자의 표본평균을 $\\overline X_A$라 하면\n$\\overline X_A\\sim N\\left(22,\\dfrac{4^2}{4}\\right)=N(22,2^2)$\n$P(\\overline X_A\\ge20)=P\\left(Z\\ge\\dfrac{20-22}{2}\\right)$\n$=P(Z\\ge-1)=0.5+0.34=0.84$\nB상자의 표본평균을 $\\overline X_B$라 하면\n$\\overline X_B\\sim N\\left(21,\\dfrac{2^2}{4}\\right)=N(21,1^2)$\n$P(\\overline X_B\\ge20)=P\\left(Z\\ge\\dfrac{20-21}{1}\\right)$\n$=P(Z\\ge-1)=0.5+0.34=0.84$\n서로 다른 상자에서 각각 독립적으로 표본을 추출하므로 두 상자가 모두 정가에 팔릴 확률은 각 확률의 곱이다.\n$P=0.84\\times0.84=0.7056$\n따라서 정답은 ③이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "round13_continue_to_zero_completed",
     "tags": [
@@ -606,7 +606,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] 비복원추출로 세 수를 뽑아 $Y_1$, $Y_2$ 점수를 각각 구하고 $V(X) = V(Y_1 + Y_2)$를 계산한다.\\n조건 정리: 1~4 공 비복원추출 3회. $Y_k$는 $a_k+a_{k+1}$의 점수(5의 배수→2점, 2의 배수→1점, 그 외→0점). $X = Y_1 + Y_2$.\\n풀이 방향: 24가지 순열 $(a_1, a_2, a_3)$에 대해 $X$의 분포를 구하고 $V(X)$를 계산한다.\\n정석 풀이:\\n비복원추출로 1~4에서 3개를 순서 있게 뽑는 경우의 수: $_4P_3 = 24$.\\n각 순열에 대해 점수를 계산하면 $X=1$인 경우 8가지, $X=2$인 경우 8가지, $X=3$인 경우 8가지이다.\\n따라서 $P(X=1)=P(X=2)=P(X=3)=\\dfrac{1}{3}$.\\n$E(X) = 1 \\times \\dfrac{1}{3} + 2 \\times \\dfrac{1}{3} + 3 \\times \\dfrac{1}{3} = \\dfrac{6}{3} = 2$\\n$E(X^2) = 1^2 \\times \\dfrac{1}{3} + 2^2 \\times \\dfrac{1}{3} + 3^2 \\times \\dfrac{1}{3} = \\dfrac{1+4+9}{3} = \\dfrac{14}{3}$\\n$V(X) = E(X^2) - \\{E(X)\\}^2 = \\dfrac{14}{3} - 4 = \\dfrac{14-12}{3} = \\dfrac{2}{3}$\\n따라서 정답은 ④이다.",
+    "solution": "세 공을 순서 있게 비복원추출하므로 전체 경우의 수는\n$\\,{}_4P_3=4\\times3\\times2=24$이다.\n두 이웃한 공의 숫자 합은 $3$부터 $7$ 사이이다.\n그 합이 짝수이면 $1$점, $5$이면 $2$점, 나머지는 $0$점을 얻는다. 두 조건이 동시에 성립하는 합은 없다.\n가운데 공 $a_2$를 하나 고정하자.\n남은 $3$개 공과 $a_2$가 만드는 점수는 언제나 $0,1,2$가 각각 한 번씩 나온다.\n예를 들어 $a_2=1$이면 이웃 공이 $2,3,4$일 때 점수는 차례로 $0,1,2$이다.\n첫째·셋째 공은 서로 다른 두 공이므로 이 세 점수에서 서로 다른 두 개를 순서 있게 고른다.\n$X=1$: $0+1$ 또는 $1+0$ → $2$가지\n$X=2$: $0+2$ 또는 $2+0$ → $2$가지\n$X=3$: $1+2$ 또는 $2+1$ → $2$가지\n가운데 공은 $4$가지이므로 각 값은 $4\\times2=8$가지씩이다.\n$P(X=1)=P(X=2)=P(X=3)=\\dfrac8{24}=\\dfrac13$\n$E(X)=\\dfrac{1+2+3}{3}=2$\n$E(X^2)=\\dfrac{1^2+2^2+3^2}{3}=\\dfrac{14}{3}$\n$V(X)=E(X^2)-\\{E(X)\\}^2$\n$=\\dfrac{14}{3}-2^2=\\dfrac23$\n따라서 정답은 ④이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
@@ -651,7 +651,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] $f(24)=g(28)$과 $\\\\sigma_1=\\\\sigma_2$에서 $X, Y$의 평균 관계를 파악한 뒤 조건 (가), (나)로 $m_1, m_2, \\\\sigma$를 구한다.\\n조건 정리: $\\\\sigma_1=\\\\sigma_2=\\\\sigma$. $f(24)=g(28)$은 $x=24$가 $X$ 분포에서 $x=28$이 $Y$ 분포에서 동일 확률밀도를 가짐을 의미한다.\\n풀이 방향: 대칭 구조에서 $24-m_1 = m_2-28$을 도출하고, 조건 (가)로 $\\\\sigma$를 결정한다.\\n정석 풀이:\\n정규분포의 대칭성에 의해 $f(24)=g(28)$이면\\n$|24-m_1| = |28-m_2|$.\\n(가) 조건에서 $P(m_1 \\le X \\le 24) + P(28 \\le Y \\le m_2) = 0.9544$이고,\\n좌변의 두 항은 각각 $P\\left(0 \\le Z \\le \\dfrac{24-m_1}{\\\\sigma}\\right)$의 형태이며 대칭이므로\\n각각 $0.4772$이다. 따라서 $\\dfrac{24-m_1}{\\\\sigma}=2$와 $\\dfrac{m_2-28}{\\\\sigma}=2$이다.\\n즉, $24-m_1 = 2\\\\sigma$, $m_2-28 = 2\\\\sigma$이므로 $m_1 = 24-2\\\\sigma$, $m_2 = 28+2\\\\sigma$.\\n(나) 조건: $P(Y \\ge 36) = 1-P(X \\le 24)=P(X \\ge 24)$.\\n$P(X \\ge 24) = P\\left(Z \\ge \\dfrac{24-m_1}{\\\\sigma}\\right) = P(Z \\ge 2) = 0.0228$.\\n$P(Y \\ge 36) = P\\left(Z \\ge \\dfrac{36-m_2}{\\\\sigma}\\right) = 0.0228$이므로 $\\dfrac{36-m_2}{\\\\sigma} = 2$.\\n$36-m_2 = 2\\\\sigma$이고 $m_2 = 28+2\\\\sigma$이므로 $36-(28+2\\\\sigma)=2\\\\sigma$, $8=4\\\\sigma$, $\\\\sigma=2$.\\n따라서 $m_1 = 24 - 4 = 20$, $m_2 = 28 + 4 = 32$.\\n구하는 확률:\\n$P(17 \\le X \\le 21) = P\\left(\\dfrac{17-20}{2} \\le Z \\le \\dfrac{21-20}{2}\\right) = P(-1.5 \\le Z \\le 0.5)$\\n$= P(0 \\le Z \\le 1.5) + P(0 \\le Z \\le 0.5) = 0.4332 + 0.1915 = 0.6247$\\n따라서 정답은 ①이다.",
+    "solution": "두 정규분포의 표준편차가 같으므로 $\\sigma_1=\\sigma_2=\\sigma$라 놓는다.\n두 밀도함수의 높이가 $f(24)=g(28)$이므로 두 값이 각 평균에서 떨어진 거리는 같다.\n(가)의 확률이 양수이고 두 확률의 합이 $0.9544$이므로 $m_1<24$, $28<m_2$이다.\n따라서 $24-m_1=m_2-28$이다.\n표준화하면 (가)의 두 확률은 서로 같은 값이므로 각각\n$\\dfrac{0.9544}{2}=0.4772$이다.\n$P(0\\le Z\\le2)=0.4772$이므로\n$\\dfrac{24-m_1}{\\sigma}=2,\\qquad\\dfrac{m_2-28}{\\sigma}=2$\n$m_1=24-2\\sigma,\\qquad m_2=28+2\\sigma$\n이제 (나)를 적용한다.\n$P(Y\\ge36)=1-P(X\\le24)=P(X\\ge24)=P(Z\\ge2)$\n정규분포의 대칭성과 같은 꼬리확률이므로\n$\\dfrac{36-m_2}{\\sigma}=2$\n$36-(28+2\\sigma)=2\\sigma$\n$8=4\\sigma\\;\\Rightarrow\\;\\sigma=2$\n$m_1=24-4=20,\\quad m_2=28+4=32$\n따라서 $X\\sim N(20,2^2)$이다.\n$P(17\\le X\\le21)=P\\left(\\dfrac{17-20}{2}\\le Z\\le\\dfrac{21-20}{2}\\right)$\n$=P(-1.5\\le Z\\le0.5)$\n$=0.4332+0.1915=0.6247$\n따라서 정답은 ①이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
@@ -692,7 +692,7 @@ window.questionBank = [
     "choices": [],
     "answer": "5/16",
     "answerStatus": "direct_solved_round12_meitner",
-    "solution": "[키포인트] 소수가 나온 횟수를 $k$로 놓고, 최종 위치가 5가 되는 $k$를 찾는다.\\n조건 정리: 주사위에서 소수는 2, 3, 5이므로 $P(소수)=\\dfrac{3}{6}=\\dfrac{1}{2}$. 5번 시행 중 소수 $k$회, 비소수 $(5-k)$회 이동.\\n풀이 방향: 최종 위치 $3k - 2(5-k) = 5$가 되는 $k$를 구한 뒤 이항확률을 계산한다.\\n정석 풀이:\\n최종 위치: $3k - 2(5-k) = 3k - 10 + 2k = 5k - 10$.\\n$5k - 10 = 5$이므로 $k = 3$.\\n소수가 정확히 3번 나올 확률:\\n$P = \\\\binom{5}{3} \\left(\\dfrac{1}{2}\\right)^3 \\left(\\dfrac{1}{2}\\right)^2 = \\\\binom{5}{3} \\left(\\dfrac{1}{2}\\right)^5 = 10 \\times \\dfrac{1}{32} = \\dfrac{10}{32} = \\dfrac{5}{16}$\\n따라서 구하는 값은 $\\dfrac{5}{16}$이다.",
+    "solution": "주사위의 눈 중 소수는 $2,3,5$로 $3$개이므로 소수가 나올 확률은\n$p=\\dfrac36=\\dfrac12$이다.\n나머지 $1,4,6$이 나올 확률도 $\\dfrac12$이다.\n소수가 나온 횟수를 $k$라 하면 오른쪽으로 $3k$, 왼쪽으로 $2(5-k)$만큼 이동한다.\n출발점 $0$에서 도착점 $5$로 이동하므로\n$3k-2(5-k)=5$\n$3k-10+2k=5$\n$5k=15\\;\\Rightarrow\\;k=3$\n즉 소수가 $3$회, 소수가 아닌 눈이 $2$회 나와야 한다.\n서로 독립인 $5$번의 시행에서 소수가 나오는 횟수는 $B(5,\\dfrac12)$를 따른다.\n$P(k=3)={}_5C_3\\left(\\dfrac12\\right)^3\\left(\\dfrac12\\right)^2$\n$=10\\times\\dfrac1{32}=\\dfrac5{16}$\n따라서 구하는 값은 $\\dfrac5{16}$이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "round12_continue_to_zero_resolved",
     "tags": [
