@@ -292,6 +292,10 @@ window.questionBank = [
     "answer": "⑤",
     "answerStatus": "answer_filled_from_hwp_answer_source",
     "solution": "확률밀도함수의 그래프 아래 전체 넓이는 $1$이다.\n그래프는 $0$부터 $3$까지 삼각형, $3$부터 $5$까지 직사각형, $5$부터 $6$까지 삼각형이다.\n전체 넓이를 높이 $k$로 나타내면\n$\\dfrac12\\times3k+2k+\\dfrac12\\times k=1$\n$4k=1\\;\\Rightarrow\\;k=\\dfrac14$\n$0\\le x\\le3$에서 그래프는 직선이므로 $x=2$의 높이는\n$f(2)=\\dfrac23k=\\dfrac16$이다.\n따라서 $0\\le X\\le2$에 해당하는 삼각형의 넓이는\n$P(0\\le X\\le2)=\\dfrac12\\times2\\times\\dfrac16=\\dfrac16$\n연속확률변수에서 한 점의 확률은 $0$이므로, 여사건을 이용하면\n$P(2\\le X\\le6)=1-\\dfrac16=\\dfrac56$\n따라서 정답은 ⑤이다.",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q07-solution.svg",
+    "solutionImageAlt": "확률밀도함수 그래프의 2부터 6까지의 색칠된 넓이는 5/6, 0부터 2까지의 삼각형 넓이는 1/6",
+    "solutionImageCaption": "전체 넓이는 1이고, 색칠한 2 이상 6 이하 구간의 넓이는 5/6",
+    "solutionImageSize": "full",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
@@ -337,6 +341,10 @@ window.questionBank = [
     "answer": "④",
     "answerStatus": "answer_filled_from_hwp_answer_source",
     "solution": "정규분포 $N(40,16)$은 평균 $40$을 중심으로 대칭이고, 평균에 가까울수록 확률밀도함수의 높이가 크다.\n길이가 일정한 구간의 확률이 최대가 되려면 구간을 평균의 양쪽에 대칭으로 놓아야 한다.\n주어진 구간 $[a-1,a+3]$의 길이는\n$(a+3)-(a-1)=4$이다.\n이 구간의 가운데 값이 평균 $40$이 되어야 하므로\n$\\dfrac{(a-1)+(a+3)}2=40$\n$a+1=40\\;\\Rightarrow\\;a=39$\n이때 구간은 $[38,42]$로 평균 $40$을 중심으로 대칭이다.\n따라서 정답은 ④이다.",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q08-solution.svg",
+    "solutionImageAlt": "평균 40을 중심으로 38부터 42까지 대칭으로 잡은 구간",
+    "solutionImageCaption": "길이가 같은 구간은 평균 40을 중심으로 놓을 때 확률이 최대",
+    "solutionImageSize": "full",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
@@ -562,6 +570,10 @@ window.questionBank = [
     "answer": "③",
     "answerStatus": "direct_solved_round13",
     "solution": "두 상자의 판매가격 합이 $40000$원이 되려면 A상자와 B상자가 모두 $20000$원에 팔려야 한다.\n표본 크기가 $4$이므로 표본평균의 표준편차는 원래 표준편차의 $\\sqrt4=2$분의 $1$이다.\nA상자의 표본평균을 $\\overline X_A$라 하면\n$\\overline X_A\\sim N\\left(22,\\dfrac{4^2}{4}\\right)=N(22,2^2)$\n$P(\\overline X_A\\ge20)=P\\left(Z\\ge\\dfrac{20-22}{2}\\right)$\n$=P(Z\\ge-1)=0.5+0.34=0.84$\nB상자의 표본평균을 $\\overline X_B$라 하면\n$\\overline X_B\\sim N\\left(21,\\dfrac{2^2}{4}\\right)=N(21,1^2)$\n$P(\\overline X_B\\ge20)=P\\left(Z\\ge\\dfrac{20-21}{1}\\right)$\n$=P(Z\\ge-1)=0.5+0.34=0.84$\n서로 다른 상자에서 각각 독립적으로 표본을 추출하므로 두 상자가 모두 정가에 팔릴 확률은 각 확률의 곱이다.\n$P=0.84\\times0.84=0.7056$\n따라서 정답은 ③이다.",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "두 상자 표본평균의 정가 판매 경계는 표준정규분포에서 동일하게 마이너스 1이며 오른쪽 확률은 각각 0.84",
+    "solutionImageCaption": "A와 B의 정가 판매 조건 모두 Z가 -1 이상인 사건",
+    "solutionImageSize": "full",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "round13_continue_to_zero_completed",
     "tags": [
