@@ -10,7 +10,23 @@ const ledger = JSON.parse(fs.readFileSync(path.join(root, 'archive/data/legacy-s
 const catalog = core.decodeCatalog(JSON.parse(fs.readFileSync(path.join(root, 'archive/data/archive2-catalog.json'), 'utf8')));
 const identity = JSON.parse(fs.readFileSync(path.join(root, 'archive/data/question_identity_map.json'), 'utf8'));
 const metadata = JSON.parse(fs.readFileSync(path.join(root, 'archive/data/question_metadata.json'), 'utf8'));
+const parentLinks = JSON.parse(fs.readFileSync(path.join(root, 'archive/data/basic-scope-parent-links.json'), 'utf8'));
 const rows = catalog.records.filter((r) => r.sourceFile === source).sort((a, b) => a.sourceOrdinal - b.sourceOrdinal);
+test('reviewed Palma ledger binds each source question to its exact active basic parent', () => {
+  for (const [i, frozen] of ledger.questions.entries()) {
+    const row = rows[i];
+    const link = parentLinks.sourceParents.find((item) => item.questionUid === frozen.questionUid);
+    assert.ok(link, 'missing reviewed source parent for q' + frozen.qid);
+    assert.equal(link.sourceFile, source);
+    assert.equal(link.sourceOrdinal, frozen.sourceOrdinal);
+    assert.equal(link.sourceFingerprint, frozen.sourceFingerprint);
+    assert.equal(link.assignmentFingerprint, frozen.sourceBodyFingerprint);
+    assert.equal(link.L1, frozen.rpmL1);
+    assert.equal(link.L2, frozen.rpmL2);
+    assert.equal(row.metadataAssignmentEvidence?.questionUid, frozen.questionUid);
+    assert.equal(row.metadataAssignmentEvidence?.assignmentFingerprint, frozen.sourceBodyFingerprint);
+  }
+});
 test('reviewed 23 stable legacy UIDs remain fully discoverable and individually basic-selectable', () => {
   assert.equal(rows.length, 23);
   assert.equal(new Set(rows.map((r) => r.questionUid)).size, 23);
