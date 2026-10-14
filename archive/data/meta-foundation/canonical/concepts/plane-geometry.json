@@ -164,15 +164,40 @@
       "supportingQuestionUids": [
         "qid_v1_07fec671a7a83ed559419dc7e2b3fbdc66669870e59d38c6900010987799d558",
         "qid_v1_2ac6eacae710586d5ed0e0cf5537097771669e8ccd44d1d02206bf332b0309e6",
-        "qid_v1_69c5f85ff7b49c1d3879f503a29e4dea7d6e040481d59591181af3d7adef42fe"
+        "qid_v1_69c5f85ff7b49c1d3879f503a29e4dea7d6e040481d59591181af3d7adef42fe",
+        "qid_v1_d0141edccc7f045c9810229926e075c2daeb53678f659ffa2d07329052149368"
       ],
-      "supportingItemCount": 3,
+      "supportingItemCount": 4,
       "sourceUnits": [
         "CIRCLE_EQUATION"
       ],
       "legacyKeys": [],
       "status": "ACTIVE",
-      "evidenceProvenance": [],
+      "evidenceProvenance": [
+        {
+          "sourceType": "ORIGINAL_EXAM",
+          "sourceId": "2020|매산여고|h1|2final",
+          "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+          "sourceQid": 15,
+          "sourceOrdinal": 15,
+          "questionUid": "qid_v1_d0141edccc7f045c9810229926e075c2daeb53678f659ffa2d07329052149368",
+          "sourceJsSha256": "e85fea390d0a0ba752e36eab3e3e57eae2844177615d5a180f2aa22a484ef512",
+          "sourceFingerprint": "cdf1e6e2879a785ec67d79873645bcb92bee0f1d2972ac76563116e131d39b19",
+          "contentFingerprint": "76df5c2a3b8fd5f815a8793f66db78e7992db29bb840d28d1be2cc36a66c80a3",
+          "evidence": {
+            "evidenceType": "ORIGINAL_EXAM_META_SEMANTIC_REVIEW",
+            "positiveCriterion": "The solution classifies triangle angles by the inscribed-angle relation: each angle is half its opposite arc, and a diameter subtends a right angle. This circle-geometry step determines acute/right/obtuse categories beyond the primary combination-counting path.",
+            "negativeCriterion": "Choosing triples by combinations counts triangles but does not determine their angle categories; the primary counting taxonomy alone cannot establish a,b,c.",
+            "sourceCue": "다음 그림과 같이 원 위에 있는 12개의 점 중에서 3개의 점을 꼭짓점으로 하여 삼각형을 만들 때, 직각삼각형의 개수를 $a$, 둔각삼각형의 개수를 $b$, 예각삼각형의 개수를 $c$라고 할 때, $a+b-c$의 값을 구하여라. [4.5점]",
+            "solutionCue": "12개 점이 원 위에 있으므로 세 꼭짓점 사이의 세 호는 12칸을 나눈 양의 정수 간격 $r,s,t$로 나타내며 $r+s+t=12$이다. 각은 맞은편 호 간격의 절반이므로 간격이 6보다 작으면 예각, 6이면 직각, 6보다 크면 둔각이다.\n\n전체 삼각형은 $\\binom{12}{3}=220$개이다. 직각삼각형은 빗변이 지름이므로 $a=6\\cdot10=60$이다. 세 간격이 모두 6보다 작은 순서쌍은 10개이고 시작 꼭짓점 12개를 세면 각 삼각형을 세 번 포함하므로 $c=12\\cdot10/3=40$이다.\n\n따라서 $b=220-60-40=120$이고, $a+b-c=60+120-40=140$이다. 정답은 ②이다.",
+            "reviewEvidenceRefs": [
+              {
+                "path": "output/h1-fast-lane-c-20261013/meta-independent-review/targeted-confirmation-0a9-cross-open-findings.json"
+              }
+            ]
+          }
+        }
+      ],
       "taxonomyRefs": [
         "PT_CIRCLE_EQUATION"
       ],

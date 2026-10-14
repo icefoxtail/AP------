@@ -161,6 +161,7 @@ test("catalog resolution does not promote raw labels into BASIC taxonomy or sour
   assert.equal(typeof canonical.resolveCatalog, "function");
   const resolved = canonical.resolveCatalog(fixture({ validAssignment: false }));
   const row = resolved.records.find((candidate) => candidate.questionUid === uid);
+  assert.equal(row.currentSourceJsSha256, 'c'.repeat(64));
   assert.equal(row.L1, "");
   assert.equal(row.L2, "");
   assert.equal(resolved.basicTaxonomy.some((candidate) => candidate.L1 === "RAW-legacy-only"), false);
@@ -498,7 +499,7 @@ test("input bundle rejects mixed bytes, an old browser version, and missing cano
   });
 });
 
-test("runtime canonical bootstrap keeps all 58 authority digests while fetching only resolver inputs", async () => {
+test("runtime canonical bootstrap keeps all 63 authority digests including original-source Meta while fetching only resolver inputs", async () => {
   const archiveDir = path.join(root, "archive");
   const manifest = JSON.parse(fs.readFileSync(path.join(archiveDir, "data/archive2-canonical-input-manifest.json"), "utf8"));
   const baseUrl = "https://apmath.test/AP------/archive/workspace.html";
@@ -516,7 +517,7 @@ test("runtime canonical bootstrap keeps all 58 authority digests while fetching 
   };
 
   const bundle = await canonical.loadInputBundle(fetcher, baseUrl);
-  assert.equal(manifest.files.length, 58);
+  assert.equal(manifest.files.length, 63);
   assert.equal(bundle.projectionVersion, manifest.projectionVersion);
   assert.equal(Object.keys(bundle.files).length, manifest.files.length,
     "projection version remains bound to every manifest digest");

@@ -14,10 +14,21 @@ body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#
 <label>과목<select id="course"><option value="">전체</option></select></label>
 <label>표준단원 키<select id="standardUnitKey"><option value="">전체</option></select></label>
 <label>세부분류 키<select id="subUnitKey"><option value="">전체</option></select></label>
-<label>L1 대단원<select id="L1"><option value="">전체</option></select></label>
-<label>L2 중단원<select id="L2"><option value="">전체</option></select></label>
-<label>L3 개념<select id="L3"><option value="">전체</option></select></label>
-<label>L4 유형<select id="L4"><option value="">전체</option></select></label>
+<label>원본 대단원<select id="nativeL1"><option value="">전체</option></select></label>
+<label>원본 중단원<select id="nativeL2"><option value="">전체</option></select></label>
+<label>원본 개념 L3<select id="nativeL3"><option value="">전체</option></select></label>
+<label>원본 유형 L4<select id="nativeL4"><option value="">전체</option></select></label>
+<label>RPM L1<select id="rpmL1"><option value="">전체</option></select></label>
+<label>RPM L2<select id="rpmL2"><option value="">전체</option></select></label>
+<label>RPM L3<select id="rpmL3"><option value="">전체</option></select></label>
+<label>RPM L4<select id="rpmL4"><option value="">전체</option></select></label>
+<label>문항 개념 키<select id="problemTypeKey"><option value="">전체</option></select></label>
+<label>풀이 유형 키<select id="templateKey"><option value="">전체</option></select></label>
+<label>연결 개념<select id="crossConceptKey"><option value="">전체</option></select></label>
+<label>조건<select id="conditionKey"><option value="">전체</option></select></label>
+<label>통합 사고<select id="integrationPattern"><option value="">전체</option></select></label>
+<label>개정<select id="nativeCurriculum"><option value="">전체</option></select></label>
+<label>학습수준<select id="level"><option value="">전체</option><option>하</option><option>중</option><option>상</option></select></label>
 <label>난이도<select id="difficulty"><option value="">전체</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option value="UNKNOWN">미지정</option></select></label>
 </div>
 <p id="status" role="status" aria-live="polite">문항 정보를 불러오는 중입니다.</p>
@@ -27,18 +38,24 @@ body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#
 <script src="mixer-selector.js?v=20261009-meta1"></script>
 <script src="archive2-canonical.js?v=20261009-meta1"></script>
 <script src="archive2-core.js?v=20261009-meta1"></script>
-<script src="problem-bank-meta.js?v=20261011-rpm-debt-projection1"></script>
+<script src="problem-bank-meta.js?v=20261014-h1-original-meta1"></script>
 <script src="archive2-source.js?v=20261009-meta1"></script>
 <script>
 'use strict';
 const el=id=>document.getElementById(id),shards=new Map();
 let inventory=[],matching=[],limit=40,holds=[],previewRequest=0,coreMetaFilterOptions={};
 const filters=()=>{
- const f={};for(const k of ['L1','L2','L3','L4'])if(el(k).value)f[k]=el(k).value;
+ const f={};for(const k of ['rpmL1','rpmL2','rpmL3','rpmL4'])if(el(k).value)f[k]=el(k).value;
  if(el('source').value)f.sourceKind=el('source').value;
  if(el('course').value)f.standardCourse=el('course').value;
  if(el('standardUnitKey').value)f.standardUnitKey=el('standardUnitKey').value;
  if(el('subUnitKey').value)f.subUnitKey=el('subUnitKey').value;
+ for(const key of ['nativeL1','nativeL2','nativeL3','nativeL4'])if(el(key).value)f[key]=el(key).value;
+ if(el('nativeCurriculum').value)f.nativeCurriculum=el('nativeCurriculum').value;
+ if(el('level').value)f.level=el('level').value;
+ for(const key of ['problemTypeKey','templateKey','integrationPattern'])if(el(key).value)f[key]=el(key).value;
+ if(el('crossConceptKey').value)f.crossConceptKeys=[el('crossConceptKey').value];
+ if(el('conditionKey').value)f.conditionKeys=[el('conditionKey').value];
  if(el('difficulty').value)f.difficultyBucket=el('difficulty').value==='UNKNOWN'?'UNKNOWN':Number(el('difficulty').value);
  return f;
 };
@@ -50,6 +67,13 @@ function options(id,field,rows,authorityRows=null){
  }
  const sorted=[...values.entries()].sort((a,b)=>a[0].localeCompare(b[0],'ko'));
  el(id).replaceChildren(new Option('전체',''),...sorted.map(([value,label])=>new Option(label,value)));
+ if(values.has(selected))el(id).value=selected;
+}
+function metaAxisOptions(id,field,rows){
+ const selected=el(id).value,values=new Set();
+ for(const row of rows){const value=row[field];for(const key of Array.isArray(value)?value:[value])if(typeof key==='string'&&key)values.add(key);}
+ const sorted=[...values].sort((a,b)=>a.localeCompare(b,'ko'));
+ el(id).replaceChildren(new Option('전체',''),...sorted.map(value=>new Option(value,value)));
  if(values.has(selected))el(id).value=selected;
 }
 function refreshCoreMetaKeyOptions(){
@@ -69,8 +93,18 @@ function render(){
   title.textContent=[row.school,row.year,row.sourceQid??row.sourceQuestionNo??row.sourceOrdinal].filter(v=>v!=null).join(' · ');
   const unit=row.standardUnit?`${row.standardUnit}${row.standardUnitKey?` (${row.standardUnitKey})`:''}`:'미지정';
   const subUnit=row.subUnit?`${row.subUnit}${row.subUnitKey?` (${row.subUnitKey})`:''}`:'미지정';
-  info.textContent=[row.standardCourse||'과목 미지정',row.L1||'L1 미지정',row.L2||'L2 미지정',`표준단원 ${unit}`,`세부분류 ${subUnit}`,row.L3||'L3 미지정',row.L4||'L4 미지정',`난이도 ${row.difficultyBucket??'미지정'}`].join(' / ');
+  const sourceNative=Boolean(row.nativeTaxonomyAuthority?.registrationPackId);
+  const rpmPath=[row.rpmL1,row.rpmL2,row.rpmL3,row.rpmL4].filter(Boolean).join(' → ');
+  const rpmStatus=row.rpmMapping?.status==='NO_ITEM_RPM_PATH_IN_SOURCE_JS'?'RPM 경로 미기록':
+   row.rpmMapping?.status==='NO_EQUIVALENT_PATH'?'RPM 대응 경로 없음':rpmPath?'RPM 경로 확인':'RPM 경로 확인 필요';
+  const classification=sourceNative
+   ?[`원본 ${row.nativeCurriculum||'개정 미지정'} 분류 ${row.nativeL1||'L1 미지정'} → ${row.nativeL2||'L2 미지정'} → ${row.nativeL3||'L3 미지정'} → ${row.nativeL4||'L4 미지정'}`,`${rpmStatus}${rpmPath?` · ${rpmPath}`:''}`]
+   :[row.rpmL1||'RPM L1 미지정',row.rpmL2||'RPM L2 미지정',row.rpmL3||'RPM L3 미지정',row.rpmL4||'RPM L4 미지정'];
+  info.textContent=[row.standardCourse||'과목 미지정',...classification,`표준단원 ${unit}`,`세부분류 ${subUnit}`,`학습수준 ${row.level||'미지정'}`,`난이도 ${row.difficultyBucket??'미지정'}`].join(' / ');
   card.append(title,info);
+  if(row.metaProjectionStatus==='SOURCE_META_STALE_OR_UNAVAILABLE'){
+   const stale=document.createElement('p');stale.textContent='원본 Meta 분류가 현재 자료와 연결되지 않아 표시되지 않습니다.';card.append(stale);
+  }
   const pendingMeta=Object.entries(row.metadataAssignmentEvidence?.fieldStatus||{}).filter(([,status])=>status==='manual_review_pending').map(([field])=>field);
   if(pendingMeta.length){const pending=document.createElement('p');pending.textContent=`메타 검토 대기: ${pendingMeta.join(', ')}`;card.append(pending);}
   if(row.rpmSemanticStatus&&row.rpmSemanticStatus!=='FINAL'){
@@ -113,15 +147,10 @@ function safeStem(host,content){
   const table=document.createElement('table');for(const row of cells){const tr=document.createElement('tr');for(const c of row){const cell=document.createElement(c[1]);cell.textContent=c[2];tr.append(cell);}table.append(tr);}host.append(table);cursor=match.index+match[0].length;
  }host.append(document.createTextNode(raw.slice(cursor)));
 }
-for(const id of ['source','course','standardUnitKey','subUnitKey','L1','L2','L3','L4','difficulty'])el(id).onchange=()=>{
+for(const id of ['source','course','standardUnitKey','subUnitKey','nativeL1','nativeL2','nativeL3','nativeL4','nativeCurriculum','level','rpmL1','rpmL2','rpmL3','rpmL4','problemTypeKey','templateKey','crossConceptKey','conditionKey','integrationPattern','difficulty'])el(id).onchange=()=>{
  limit=40;
  if(id==='course'){el('standardUnitKey').value='';el('subUnitKey').value='';refreshCoreMetaKeyOptions();}
  if(id==='standardUnitKey'){el('subUnitKey').value='';refreshCoreMetaKeyOptions();}
- if(['course','L1','L2','L3'].includes(id)){
-  const order=['L1','L2','L3','L4'],depth=id==='course'?-1:order.indexOf(id);
-  for(const key of order.slice(depth+1))el(key).value='';
-  const scoped=ProblemBankMeta.query(inventory,filters());for(const key of order.slice(depth+1))options(key,key,scoped);
- }
  render();
 };
 el('more').onclick=()=>{limit+=40;render();};
@@ -129,10 +158,14 @@ el('more').onclick=()=>{limit+=40;render();};
  try{
   const [catalog,index]=await Promise.all(['data/archive2-catalog.json','data/generated-lite-consumer/v1/index.json'].map(async p=>{const r=await fetch(p,{cache:'no-cache'});if(!r.ok)throw Error('검색 데이터 로드 실패');return r.json();}));
   coreMetaFilterOptions=catalog.coreMetaFilterOptions||{};
-  holds=index.userDisabledUids||[];inventory=ProblemBankMeta.buildIndex(Archive2Core.decodeCatalog(catalog).records,index.records,{excludedHoldUids:holds});
+  holds=index.userDisabledUids||[];
+  const sourceShaByFile=new Map(catalog.sourceHashes||[]);
+  const sourceRows=Archive2Core.decodeCatalog(catalog).records.map(row=>({...row,currentSourceJsSha256:sourceShaByFile.get(row.sourceFile)||''}));
+  inventory=ProblemBankMeta.buildIndex(sourceRows,index.records,{excludedHoldUids:holds});
   options('course','standardCourse',inventory);
   refreshCoreMetaKeyOptions();
-  for(const k of ['L1','L2','L3','L4'])options(k,k,inventory);render();
+  for(const k of ['nativeL1','nativeL2','nativeL3','nativeL4','nativeCurriculum','rpmL1','rpmL2','rpmL3','rpmL4','problemTypeKey','templateKey','integrationPattern'])options(k,k,inventory);
+  metaAxisOptions('crossConceptKey','crossConceptKeys',inventory);metaAxisOptions('conditionKey','conditionKeys',inventory);render();
  }catch(e){el('status').textContent=e.message;}
 })();
 </script>

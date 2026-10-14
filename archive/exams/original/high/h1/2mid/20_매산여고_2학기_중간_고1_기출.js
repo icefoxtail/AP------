@@ -45,7 +45,14 @@ window.questionBank = [
     "solutionImage": "assets/images/20_매산여고_2학기_중간_고1_기출/q1-solution.svg",
     "solutionImageAlt": "직선 y=2x−3 위의 점 R이 오른쪽 7, 위 3만큼 이동해 점 Q(5,−4)가 되고 이동한 직선을 나타낸 좌표 그림",
     "solutionImageCaption": "R(−2,−7)에서 Q(5,−4)로의 이동량 (7,3)을 원래 직선과 이동한 직선에 연결한다.",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "questionUid": "qid_v1_c14a25c8084b83db21e48e16c6f24886f62601a67b31184ced8466b33742ea02",
+    "sourceQid": 1,
+    "sourceOrdinal": 1,
+    "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js","sourceOrdinal":1,"sourceQid":1,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "difficultyReason": "Bucket 2 fits one familiar translation-condition interpretation; level 하 is adjacent and retained as BORDERLINE_ACCEPTABLE"
+  
   },
   {
     "id": 2,
@@ -82,13 +89,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
-    "crossConceptKeys": [
-      "CC_TRANSLATION",
-      "CC_POINT_LINE_DISTANCE"
-    ],
-    "conditionKeys": [
-      "COND_INTEGER"
-    ],
+    "crossConceptKeys": ["CC_TRANSLATION","CC_POINT_LINE_DISTANCE"],
+    "conditionKeys": ["COND_INTEGER"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
@@ -97,7 +99,14 @@ window.questionBank = [
     "solutionImage": "assets/images/20_매산여고_2학기_중간_고1_기출/q2-solution.svg",
     "solutionImageAlt": "중심 C(2,−1), 반지름 3인 원과 직선 4x−3y+2=0, 중심에서 직선에 내린 수선의 발 H를 나타낸 그림",
     "solutionImageCaption": "k=3에서 중심거리 13/5가 반지름 3보다 작아 원과 직선이 두 점에서 만난다.",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "questionUid": "qid_v1_b252c82ced805d030f9db27bc88511f88732e87e9ec21a4d34f551bb17d2d7fa",
+    "sourceQid": 2,
+    "sourceOrdinal": 2,
+    "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js","sourceOrdinal":2,"sourceQid":2,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "difficultyReason": "Bucket 3: strict circle-line condition then integer endpoint selection"
+  
   },
   {
     "id": 3,
@@ -145,7 +154,14 @@ window.questionBank = [
     "solutionImage": "assets/images/20_매산여고_2학기_중간_고1_기출/q3.png",
     "solutionImageAlt": "원점이 표시된 좌표평면에 1≤x≤2, 1≤y≤3인 원래 직사각형을 나타낸 그림",
     "solutionImageCaption": "원래 도형의 좌표 범위를 확인한 뒤 치환식 u=y+1, v=x+3을 적용한다.",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "questionUid": "qid_v1_3b23d50e2115508cf236f9f76140bb9ea21dada4200dad3d58e90dd6e861b393",
+    "sourceQid": 3,
+    "sourceOrdinal": 3,
+    "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js","sourceOrdinal":3,"sourceQid":3,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePage":1},
+    "difficultyReason": "Bucket 3: variable swap and translation require coordinate-range mapping"
+  
   },
   {
     "id": 4,
@@ -182,9 +198,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
     "templateKey": "TT_SHORTEST_WITH_POSITION",
-    "crossConceptKeys": [
-      "CC_SLOPE"
-    ],
+    "crossConceptKeys": ["CC_SLOPE"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
@@ -194,7 +208,14 @@ window.questionBank = [
     "solutionImage": "assets/images/20_매산여고_2학기_중간_고1_기출/q4-solution.svg",
     "solutionImageAlt": "점 A를 x축에 대칭이동한 점 A′와 직선 A′B가 강가의 최단 이동점을 지나는 그림",
     "solutionImageCaption": "A′, P, B가 한 직선이 되도록 대칭이동으로 최단 경로를 찾는다.",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "questionUid": "qid_v1_d6d9cbbbe67e58bb99d1ffac224c7b0e1ed148d26cfe810d16e9c1c3b6bdc49d",
+    "sourceQid": 4,
+    "sourceOrdinal": 4,
+    "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js","sourceOrdinal":4,"sourceQid":4,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePage":1},
+    "difficultyReason": "Bucket 3: reflection strategy then line slope/intersection"
+  
   },
   {
     "id": 5,
@@ -230,9 +251,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "templateKey": "TM_TANGENT_FROM_EXTERNAL_POINT",
-    "crossConceptKeys": [
-      "CC_PERPENDICULAR"
-    ],
+    "crossConceptKeys": ["CC_PERPENDICULAR"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
@@ -242,7 +261,14 @@ window.questionBank = [
     "solutionImage": "assets/images/20_매산여고_2학기_중간_고1_기출/q5-solution.svg",
     "solutionImageAlt": "원의 중심 O, 두 접점 T₁·T₂, 외부점 P와 서로 수직인 두 접선을 나타낸 그림",
     "solutionImageCaption": "두 접선의 수직 조건을 중심각과 직각삼각형으로 연결한다.",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "questionUid": "qid_v1_014e4b86a0d1bf0f78406a3bb827e9bb9c684ba0d8e2ec7314e88ba9da264d4e",
+    "sourceQid": 5,
+    "sourceOrdinal": 5,
+    "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js","sourceOrdinal":5,"sourceQid":5,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "difficultyReason": "Bucket 4: multi-step tangent geometry and two parameter values"
+  
   },
   {
     "id": 6,
@@ -284,7 +310,14 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_224b443932b2b3adfcdf15e5a6b5432dbf8f05a2b40dfd328fb2d0e9d5e461fe",
+    "sourceQid": 6,
+    "sourceOrdinal": 6,
+    "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js","sourceOrdinal":6,"sourceQid":6,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "difficultyReason": "Bucket 2: direct definition check with a counterexample"
+  
   },
   {
     "id": 7,
@@ -320,10 +353,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "templateKey": "TM_TANGENT_TWO_SLOPES",
-    "crossConceptKeys": [
-      "CC_POINT_LINE_DISTANCE",
-      "CC_ROOTS_COEFFICIENTS"
-    ],
+    "crossConceptKeys": ["CC_POINT_LINE_DISTANCE","CC_ROOTS_COEFFICIENTS"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
@@ -333,7 +363,14 @@ window.questionBank = [
     "solutionImage": "assets/images/20_매산여고_2학기_중간_고1_기출/q7-solution.svg",
     "solutionImageAlt": "중심 C(3,4), 반지름 1인 원과 점 P(1,2)에서 그은 두 접선, 접점 T₁·T₂와 반지름의 수직 표시",
     "solutionImageCaption": "각 접점에서 반지름과 접선이 수직임을 나타내 두 접선의 기울기를 살펴본다.",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "questionUid": "qid_v1_98ad34bf595a8df45da2b53850d1cbc830d10894a1749dd8d24ad2a9b53a5ad6",
+    "sourceQid": 7,
+    "sourceOrdinal": 7,
+    "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js","sourceOrdinal":7,"sourceQid":7,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "difficultyReason": "Bucket 3: tangent-distance condition becomes a slope quadratic"
+  
   },
   {
     "id": 8,
@@ -375,7 +412,14 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_5ea17d48d5064cfe4f233aaebcec7b61453c2add9c74dca7bdcab5ef6763d570",
+    "sourceQid": 8,
+    "sourceOrdinal": 8,
+    "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js","sourceOrdinal":8,"sourceQid":8,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "difficultyReason": "Bucket 1: direct element/subset definitions"
+  
   },
   {
     "id": 9,
@@ -412,17 +456,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_SET_OPERATION",
     "templateKey": "TPL_OPERATION_NUMBER_SET",
-    "crossConceptKeys": [
-      "CC_NUMBER_DIVISOR_MULTIPLE"
-    ],
-    "conditionKeys": [
-      "COND_NATURAL_NUMBER"
-    ],
+    "crossConceptKeys": ["CC_NUMBER_DIVISOR_MULTIPLE"],
+    "conditionKeys": ["COND_NATURAL_NUMBER"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_970be3ce1ee8dcd986325ce5c7b34d535adfe06e17a61e4ecff8ef6654d2316e",
+    "sourceQid": 9,
+    "sourceOrdinal": 9,
+    "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js","sourceOrdinal":9,"sourceQid":9,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "difficultyReason": "Bucket 2: divisibility facts followed by set operations"
+  
   },
   {
     "id": 10,
@@ -459,14 +506,19 @@ window.questionBank = [
     "problemTypeKey": "PT_SUBSET_COUNT",
     "templateKey": "TPL_SUBSET_COUNT_REQUIRED_FORBIDDEN",
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_NATURAL_NUMBER"
-    ],
+    "conditionKeys": ["COND_NATURAL_NUMBER"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_c22609cccdc6a34be058b559bb3a7f6bdbad141f751bb50a7817bb451015dc3a",
+    "sourceQid": 10,
+    "sourceOrdinal": 10,
+    "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js","sourceOrdinal":10,"sourceQid":10,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "difficultyReason": "Bucket 3: powerset count and proper-subset subtraction"
+  
   },
   {
     "id": 11,
@@ -504,14 +556,19 @@ window.questionBank = [
     "problemTypeKey": "PT_CONTRAPOSITIVE_PROOF",
     "templateKey": "TPL_CONTRAPOSITIVE_DIVISIBILITY_PROOF",
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_INTEGER"
-    ],
+    "conditionKeys": ["COND_INTEGER","COND_NONZERO"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_c532c4bfd1624de69f0018c7ace123eeb00c36838f472339d6f1dfdd5af90c25",
+    "sourceQid": 11,
+    "sourceOrdinal": 11,
+    "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js","sourceOrdinal":11,"sourceQid":11,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "difficultyReason": "Bucket 3: standard contrapositive plus modular calculation"
+  
   },
   {
     "id": 12,
@@ -548,15 +605,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
     "templateKey": "TPL_IMPLICATION_INTERVAL_PARAMETER",
-    "crossConceptKeys": [
-      "CC_QUADRATIC_EQUATION"
-    ],
+    "crossConceptKeys": ["CC_QUADRATIC_EQUATION"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_45cb09c7e852f3047d729a0eb308b8f191d352ddf710ea393fea2765aea7aed9",
+    "sourceQid": 12,
+    "sourceOrdinal": 12,
+    "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js","sourceOrdinal":12,"sourceQid":12,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "difficultyReason": "Bucket 4: two implication conditions constrain one parameter"
+  
   },
   {
     "id": 13,
@@ -603,7 +665,14 @@ window.questionBank = [
     "solutionImage": "assets/images/20_매산여고_2학기_중간_고1_기출/q13.png",
     "solutionImageAlt": "벤다이어그램에서 A와 B, A와 C가 각각 겹치는 부분을 색칠한 원본 그림",
     "solutionImageCaption": "색칠한 두 부분은 A∩B와 A∩C이므로 합집합으로 나타낸다.",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "questionUid": "qid_v1_94bea0957bfff04127b76876ae606a2f4fab12bba52db463b15232a1d6d09739",
+    "sourceQid": 13,
+    "sourceOrdinal": 13,
+    "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js","sourceOrdinal":13,"sourceQid":13,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePage":4},
+    "difficultyReason": "Bucket 2: interpret one Venn region"
+  
   },
   {
     "id": 14,
@@ -640,17 +709,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_NEC_SUFF_RELATION",
     "templateKey": "TPL_NEC_SUFF_INTERVAL_PARAMETER",
-    "crossConceptKeys": [
-      "CC_INEQUALITY_ABSOLUTE_VALUE"
-    ],
-    "conditionKeys": [
-      "COND_NATURAL_NUMBER"
-    ],
+    "crossConceptKeys": ["CC_INEQUALITY_ABSOLUTE_VALUE"],
+    "conditionKeys": ["COND_NATURAL_NUMBER"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_9bdcd87ed5cf08601f4af4c6b54922f9ef2edc9fed2672aaa6bd6da12c1140bc",
+    "sourceQid": 14,
+    "sourceOrdinal": 14,
+    "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js","sourceOrdinal":14,"sourceQid":14,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "difficultyReason": "Bucket 3: interval containment and least natural endpoint"
+  
   },
   {
     "id": 15,
@@ -687,16 +759,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_NEC_SUFF_RELATION",
     "templateKey": "TPL_NEC_SUFF_DIRECT_JUDGMENT",
-    "crossConceptKeys": [
-      "CC_TRIANGLE_INEQUALITY",
-      "CC_INEQUALITY_ABSOLUTE_VALUE"
-    ],
+    "crossConceptKeys": ["CC_TRIANGLE_INEQUALITY","CC_INEQUALITY_ABSOLUTE_VALUE"],
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_8c8067eac652a07faafb44c5099d4e6a3e91a4234f4ce74acc1a1ddd5b7da429",
+    "sourceQid": 15,
+    "sourceOrdinal": 15,
+    "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js","sourceOrdinal":15,"sourceQid":15,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "difficultyReason": "Bucket 4: compare five logical relations and counterexamples"
+  
   },
   {
     "id": 16,
@@ -738,7 +814,14 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_48b0e1f83181be90e40da16d51057b316d43e9ace6901f26bf0b7721efb6ea04",
+    "sourceQid": 16,
+    "sourceOrdinal": 16,
+    "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js","sourceOrdinal":16,"sourceQid":16,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "difficultyReason": "Bucket 2: direct truth-set complement relation"
+  
   },
   {
     "id": 17,
@@ -775,14 +858,19 @@ window.questionBank = [
     "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
     "templateKey": "TPL_AMGM_RECIPROCAL_MINIMUM",
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "conditionKeys": ["COND_POSITIVE"],
     "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_9fa6144d9f8e9edc1e834834b07b6b0c1ae7981aab142e7f68a5b2cf0c99a5be",
+    "sourceQid": 17,
+    "sourceOrdinal": 17,
+    "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js","sourceOrdinal":17,"sourceQid":17,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "difficultyReason": "Bucket 3: AM-GM after positivity and fixed sum"
+  
   },
   {
     "id": 18,
@@ -813,15 +901,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_SET_CONSTRUCTION",
     "templateKey": "TPL_SET_EQUATION_SOLUTION",
-    "crossConceptKeys": [
-      "CC_QUADRATIC_EQUATION"
-    ],
+    "crossConceptKeys": ["CC_QUADRATIC_EQUATION"],
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_7a3addb54b4e04b9c01ced9a850567f04f73f94c822b5aa6abb61c27e0b169e5",
+    "sourceQid": 18,
+    "sourceOrdinal": 18,
+    "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js","sourceOrdinal":18,"sourceQid":18,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "difficultyReason": "Bucket 4: quadratic candidates filtered by set equality"
+  
   },
   {
     "id": 19,
@@ -852,10 +945,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
-    "crossConceptKeys": [
-      "CC_POINT_LINE_DISTANCE",
-      "CC_TRIANGLE_AREA"
-    ],
+    "crossConceptKeys": ["CC_POINT_LINE_DISTANCE","CC_TRIANGLE_AREA"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
@@ -865,7 +955,14 @@ window.questionBank = [
     "solutionImage": "assets/images/20_매산여고_2학기_중간_고1_기출/q19-solution.svg",
     "solutionImageAlt": "원의 중심 C에서 현 AB에 내린 수선 CH와 삼각형 ABC의 밑변·높이를 나타낸 그림",
     "solutionImageCaption": "중심에서 현까지의 거리로 현 AB의 길이를 구하고 삼각형의 넓이에 연결한다.",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "questionUid": "qid_v1_291acbbde030f2e38592eddfbf58173a81adeb587cc32f7fab9a50b8d8b7d703",
+    "sourceQid": 19,
+    "sourceOrdinal": 19,
+    "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js","sourceOrdinal":19,"sourceQid":19,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "difficultyReason": "Bucket 4: circle, chord and area conditions in sequence"
+  
   },
   {
     "id": 20,
@@ -905,7 +1002,14 @@ window.questionBank = [
     "solutionImage": "assets/images/20_매산여고_2학기_중간_고1_기출/q20-solution.svg",
     "solutionImageAlt": "집합 A만의 원소 23개, 교집합 원소 10개와 A의 여집합 원소 17개를 영역으로 나타낸 벤다이어그램",
     "solutionImageCaption": "B−A의 원소 수 t가 0부터 17까지이므로 n(B)=10+t이다.",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "questionUid": "qid_v1_9b5e38f78c4e283f7570e477505283e034e0cf7c94503a98aac795adec005999",
+    "sourceQid": 20,
+    "sourceOrdinal": 20,
+    "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js","sourceOrdinal":20,"sourceQid":20,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "difficultyReason": "Bucket 4: cardinality range and attainable endpoints"
+  
   },
   {
     "id": 21,
@@ -936,14 +1040,19 @@ window.questionBank = [
     "problemTypeKey": "PT_CONTRADICTION_PROOF",
     "templateKey": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_NATURAL_NUMBER"
-    ],
+    "conditionKeys": ["COND_NATURAL_NUMBER"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_ff00af293ff64dba249bec8841817450633488f7c614ce2e93d2b731ce3989a5",
+    "sourceQid": 21,
+    "sourceOrdinal": 21,
+    "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js","sourceOrdinal":21,"sourceQid":21,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "difficultyReason": "Bucket 3: standard contradiction with two residues"
+  
   },
   {
     "id": 22,
@@ -973,10 +1082,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_CIRCLE_EQUATION",
     "templateKey": "TM_CIRCLE_EXISTENCE_CONDITION",
-    "crossConceptKeys": [
-      "CC_COMPLETE_SQUARE",
-      "CC_QUADRATIC_EQUATION"
-    ],
+    "crossConceptKeys": ["CC_COMPLETE_SQUARE","CC_QUADRATIC_EQUATION"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
@@ -986,6 +1092,13 @@ window.questionBank = [
     "solutionImage": "assets/images/20_매산여고_2학기_중간_고1_기출/q22-solution.svg",
     "solutionImageAlt": "두 원의 중심 C₁(1,2), C₂(2,4)와 가로 변화량 1, 세로 변화량 2를 직각삼각형으로 나타낸 그림",
     "solutionImageCaption": "k=1/2, 1일 때 얻은 두 중심을 연결하고 피타고라스 정리로 중심 사이 거리를 구한다.",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "questionUid": "qid_v1_078914dac7f8d2268893f531f0ebadda66d2492a16588ba4ca279a9b412b9894",
+    "sourceQid": 22,
+    "sourceOrdinal": 22,
+    "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js","sourceOrdinal":22,"sourceQid":22,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
+    "difficultyReason": "Bucket 4: coefficient condition, roots, completed squares, distance"
+  
   }
 ];

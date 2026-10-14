@@ -41,7 +41,13 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "평행이동을 거꾸로 적용해 직선의 좌표식을 한 번 대입한다. 표준적인 단일 변환 계산이다.",
-    "originalCategory": "평행이동한 직선의 방정식"
+    "originalCategory": "평행이동한 직선의 방정식",
+    "questionUid": "qid_v1_b2f7847d798c9d360b430787db73e35f97585612e117b2c47b860bd6ba1141cb",
+    "sourceQid": 1,
+    "sourceOrdinal": 1,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":1,"sourceQid":1,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   },
   {
     "id": 2,
@@ -83,7 +89,13 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "원소와 부분집합 기호를 구분해 한 보기의 관계를 판정한다.",
-    "originalCategory": "집합의 원소 관계"
+    "originalCategory": "집합의 원소 관계",
+    "questionUid": "qid_v1_f11d79fca62834698b5a46f6f55095d9f1da1aea3acceecd7b2694717c33bda5",
+    "sourceQid": 2,
+    "sourceOrdinal": 2,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":2,"sourceQid":2,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   },
   {
     "id": 3,
@@ -126,7 +138,13 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "주어진 두 조건명제와 대우를 연결해 보기별 명제의 참·거짓을 판정한다.",
-    "originalCategory": "명제의 참·거짓 판정"
+    "originalCategory": "명제의 참·거짓 판정",
+    "questionUid": "qid_v1_21b5e52eece0890ce88da86dc0853cea7c04b8b7a9107c0e77e87f15218141f1",
+    "sourceQid": 3,
+    "sourceOrdinal": 3,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":3,"sourceQid":3,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   },
   {
     "id": 4,
@@ -170,7 +188,13 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "대응도에서 실제 화살표가 도달하는 치역 원소를 읽고 세 수를 더한다.",
-    "originalCategory": "함수의 치역"
+    "originalCategory": "함수의 치역",
+    "questionUid": "qid_v1_0f2826a4b8168bed49ed8b16ab4015e3bb903ce283de371ff606f3f25fca3725",
+    "sourceQid": 4,
+    "sourceOrdinal": 4,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":4,"sourceQid":4,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   },
   {
     "id": 5,
@@ -212,7 +236,13 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "원소 네 개 각각의 포함 여부를 선택하는 기본 부분집합 개수 문제.",
-    "originalCategory": "부분집합의 개수"
+    "originalCategory": "부분집합의 개수",
+    "questionUid": "qid_v1_ff948cacb68b70ce066275d17520ca5d73302054124f3768fcf2c8476e7e2533",
+    "sourceQid": 5,
+    "sourceOrdinal": 5,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":5,"sourceQid":5,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   },
   {
     "id": 6,
@@ -248,9 +278,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_COMPOSITION_EVALUATION",
     "templateKey": "TPL_COMPOSITION_WITH_INVERSE_VALUE",
-    "crossConceptKeys": [
-      "CC_INVERSE_FUNCTION"
-    ],
+    "crossConceptKeys": ["CC_INVERSE_FUNCTION"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
@@ -258,7 +286,13 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "대응도에서 합성함숫값과 역함숫값을 각각 읽어 더한다. 두 함수 조작을 차례로 수행한다.",
-    "originalCategory": "합성함수와 역함숫값 계산"
+    "originalCategory": "합성함수와 역함숫값 계산",
+    "questionUid": "qid_v1_832062b2173cc4486a1b24ba39395bdc0079ecf731f626b8c4fda9410bf79075",
+    "sourceQid": 6,
+    "sourceOrdinal": 6,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":6,"sourceQid":6,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   },
   {
     "id": 7,
@@ -293,19 +327,21 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
     "templateKey": "TPL_AMGM_PRODUCT_EXTREMUM",
-    "crossConceptKeys": [
-      "CC_AM_GM"
-    ],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "crossConceptKeys": ["CC_AM_GM"],
+    "conditionKeys": ["COND_POSITIVE"],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "양수 제곱항의 합을 곱과 비교해 상한을 얻고 등호 조건에서 실제 최댓값을 확인한다.",
-    "originalCategory": "산술·기하평균을 이용한 곱의 최댓값"
+    "originalCategory": "산술·기하평균을 이용한 곱의 최댓값",
+    "questionUid": "qid_v1_a2eb68a823eb40552891b0053e502bdf3b953252257012fbdf8f2a43abb7842f",
+    "sourceQid": 7,
+    "sourceOrdinal": 7,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":7,"sourceQid":7,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   },
   {
     "id": 8,
@@ -341,14 +377,20 @@ window.questionBank = [
     "problemTypeKey": "PT_MOVE_POINT_TRANSLATION",
     "templateKey": "TT_POINT_TRANSLATION_COORD",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_PAIRWISE_DISTINCT_POINTS"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "두 평행이동 점의 좌표를 만든 뒤 공선식으로 매개변수 후보를 구하고, 중복 점 조건을 제거한다.",
-    "originalCategory": "평행이동과 세 점의 공선 조건"
+    "originalCategory": "평행이동과 세 점의 공선 조건",
+    "questionUid": "qid_v1_759729330faeb7fa0889c879880ec288f765ba7af0afed094e0cd0e6a9363181",
+    "sourceQid": 8,
+    "sourceOrdinal": 8,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":8,"sourceQid":8,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   },
   {
     "id": 9,
@@ -383,12 +425,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_NEC_SUFF_RELATION",
     "templateKey": "TPL_NEC_SUFF_INTERVAL_PARAMETER",
-    "crossConceptKeys": [
-      "CC_INEQUALITY_QUADRATIC"
-    ],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
+    "crossConceptKeys": ["CC_INEQUALITY_QUADRATIC"],
+    "conditionKeys": ["COND_RANGE"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
@@ -396,7 +434,13 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "먼저 이차부등식의 해구간을 구하고, 필요조건의 뜻에 맞게 열린 구간의 포함 관계를 세워 양 끝 조건을 각각 얻는다.",
     "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q9-solution.svg",
-    "originalCategory": "필요조건과 구간의 포함"
+    "originalCategory": "필요조건과 구간의 포함",
+    "questionUid": "qid_v1_37a572b1c1edb0e2bbd5133f505732b98a0086a5b83330e69d0bbfbd2f142e5f",
+    "sourceQid": 9,
+    "sourceOrdinal": 9,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":9,"sourceQid":9,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   },
   {
     "id": 10,
@@ -439,7 +483,13 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "일차함수의 역함수 식에서 기울기와 상수항을 비교해 두 계수를 정한다.",
-    "originalCategory": "일차함수의 역함수와 계수"
+    "originalCategory": "일차함수의 역함수와 계수",
+    "questionUid": "qid_v1_d72bf954818cf64ca4ad248580c0ee2cba8ce3f257d9c9eb71777979a3b76625",
+    "sourceQid": 10,
+    "sourceOrdinal": 10,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":10,"sourceQid":10,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   },
   {
     "id": 11,
@@ -470,14 +520,12 @@ window.questionBank = [
     "standardUnit": "도형의 이동",
     "standardUnitOrder": 12,
     "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "도형의 이동의 합성",
+    "subUnit": "합성 변환",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_MOVE_COMPOSITE",
     "templateKey": "TT_COMPOSITE_MIXED",
-    "crossConceptKeys": [
-      "CC_CIRCLE_TANGENCY"
-    ],
+    "crossConceptKeys": ["CC_CIRCLE_TANGENCY"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
@@ -486,7 +534,13 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "직선과 원에 각각 대칭이동을 적용해 최종 식과 중심을 정한 뒤 원·직선의 접선 조건을 사용한다.",
     "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q11-solution.svg",
-    "originalCategory": "대칭이동과 원·직선의 접선 조건"
+    "originalCategory": "대칭이동과 원·직선의 접선 조건",
+    "questionUid": "qid_v1_b912765a4eb48f9f68dda19506c979727bcacf7976cfa061bd3577bb6a19bd28",
+    "sourceQid": 11,
+    "sourceOrdinal": 11,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":11,"sourceQid":11,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   },
   {
     "id": 12,
@@ -521,9 +575,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_QUANTIFIER_NEGATION",
     "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
-    "crossConceptKeys": [
-      "CC_INEQUALITY_QUADRATIC"
-    ],
+    "crossConceptKeys": ["CC_INEQUALITY_QUADRATIC"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
@@ -531,7 +583,13 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "존재명제의 부정을 전칭조건으로 바꾼 뒤 완전제곱식의 최솟값이 음이 아니도록 한다.",
-    "originalCategory": "명제의 부정과 이차식의 최솟값"
+    "originalCategory": "명제의 부정과 이차식의 최솟값",
+    "questionUid": "qid_v1_191e10e4e2f936a66c43d1c1527a9265f32b673d95062a9e20fd8da65feb90fd",
+    "sourceQid": 12,
+    "sourceOrdinal": 12,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":12,"sourceQid":12,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   },
   {
     "id": 13,
@@ -566,19 +624,21 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
     "templateKey": "TPL_MIXED_INEQUALITY_EXTREMUM",
-    "crossConceptKeys": [
-      "CC_AM_GM"
-    ],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "crossConceptKeys": ["CC_AM_GM"],
+    "conditionKeys": ["COND_POSITIVE"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "분모의 이차식을 하나의 양수 변수로 치환하고 AM-GM 하한 및 실제 등호 가능성을 확인한다.",
-    "originalCategory": "치환과 절대부등식의 최솟값"
+    "originalCategory": "치환과 절대부등식의 최솟값",
+    "questionUid": "qid_v1_3272edaab620b01287b242f93103c6192a76cf1d60c43c3d6be9c53fcc967037",
+    "sourceQid": 13,
+    "sourceOrdinal": 13,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":13,"sourceQid":13,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   },
   {
     "id": 14,
@@ -615,14 +675,20 @@ window.questionBank = [
     "problemTypeKey": "PT_ITERATED_COMPOSITION",
     "templateKey": "TPL_ITERATION_RULE",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_PIECEWISE_DOMAIN_PARTITION"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "세 번까지 반복 합성하며 각 입력값의 부호에 맞는 함수식을 순서대로 적용한다.",
-    "originalCategory": "구간별 함수의 반복합성"
+    "originalCategory": "구간별 함수의 반복합성",
+    "questionUid": "qid_v1_0df3af4a9c962624a8eec44c89793fdcdac9434046d9104a26f5818aca4b853a",
+    "sourceQid": 14,
+    "sourceOrdinal": 14,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":14,"sourceQid":14,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   },
   {
     "id": 15,
@@ -658,21 +724,21 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_SET_AGGREGATE",
     "templateKey": "TPL_SET_ELEMENT_SUM",
-    "crossConceptKeys": [
-      "CC_NUMBER_DIVISOR_MULTIPLE",
-      "CC_NUMBER_PARITY"
-    ],
-    "conditionKeys": [
-      "COND_NATURAL_NUMBER",
-      "COND_RANGE"
-    ],
+    "crossConceptKeys": ["CC_NUMBER_DIVISOR_MULTIPLE","CC_NUMBER_PARITY"],
+    "conditionKeys": ["COND_NATURAL_NUMBER","COND_RANGE"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "교집합 크기 조건으로 약수 집합을 두 경우로 나누고, 약수합의 홀짝성을 이용해 조건을 만족하는 k를 합산한다.",
-    "originalCategory": "약수 집합의 교집합과 차집합 합"
+    "originalCategory": "약수 집합의 교집합과 차집합 합",
+    "questionUid": "qid_v1_00dda367bb22414fce7032df37951169a4cd4dee6920da041fb860ab11c2da15",
+    "sourceQid": 15,
+    "sourceOrdinal": 15,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":15,"sourceQid":15,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   },
   {
     "id": 16,
@@ -715,7 +781,13 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "대칭차집합에 나타날 수 있는 원소가 0과 2뿐임을 이용해 a 후보를 만들고 각 후보의 집합을 직접 확인한다.",
-    "originalCategory": "대칭차집합과 매개변수"
+    "originalCategory": "대칭차집합과 매개변수",
+    "questionUid": "qid_v1_d71f730f3db447ea818e04cfed418f262782f785ae092df57ea0ed524fc62f9a",
+    "sourceQid": 16,
+    "sourceOrdinal": 16,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":16,"sourceQid":16,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   },
   {
     "id": 17,
@@ -751,17 +823,21 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_FINITE_BIJECTION",
     "templateKey": "TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION",
-    "crossConceptKeys": [
-      "CC_FUNCTION_COMPOSITION"
-    ],
-    "conditionKeys": [],
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_FUNCTION_BIJECTION"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "유한집합의 전단사에서 함수값 중복 금지와 f(f(1))의 정의역 조건을 함께 적용한 뒤 남은 배치를 최소화한다.",
-    "originalCategory": "일대일 대응과 합성함수 조건"
+    "originalCategory": "일대일 대응과 합성함수 조건",
+    "questionUid": "qid_v1_c86f96b784fc87ba9e4add24f2d20fad5e04caf27f8068b01189b05ffecb8025",
+    "sourceQid": 17,
+    "sourceOrdinal": 17,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":17,"sourceQid":17,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   },
   {
     "id": 18,
@@ -799,12 +875,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_NEC_SUFF_RELATION",
     "templateKey": "TPL_NEC_SUFF_SET_RELATION",
-    "crossConceptKeys": [
-      "CC_CIRCLE_CENTER_RADIUS"
-    ],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "crossConceptKeys": ["CC_CIRCLE_CENTER_RADIUS"],
+    "conditionKeys": ["COND_POSITIVE"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
@@ -813,7 +885,13 @@ window.questionBank = [
     "difficultyReason": "필요조건을 진리집합의 포함으로 해석한 뒤 삼각형 안의 최대 원을 거리 조건으로 결정한다.",
     "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q18-solution.svg",
     "originalCategory": "필요조건과 삼각형 안의 원",
-    "image": "assets/images/20_금당고_2학기_중간_고1_기출/q18-problem.svg"
+    "image": "assets/images/20_금당고_2학기_중간_고1_기출/q18-problem.svg",
+    "questionUid": "qid_v1_7f3bb5181f16cd47489ba32a5f1a5abac53cba7f3bb02a51e2ca16002aa02cf3",
+    "sourceQid": 18,
+    "sourceOrdinal": 18,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":18,"sourceQid":18,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   },
   {
     "id": 19,
@@ -850,12 +928,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_MOVE_POINT_TRANSLATION",
     "templateKey": "TT_POINT_TRANSLATION_COORD",
-    "crossConceptKeys": [
-      "CC_TRIANGLE_AREA"
-    ],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
+    "crossConceptKeys": ["CC_TRIANGLE_AREA"],
+    "conditionKeys": ["COND_RANGE"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
@@ -863,7 +937,13 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "평행이동 후 공통부분을 t≤1과 t>1의 두 경우로 나누어 사각형에서 잘린 삼각형 넓이를 빼고 이차식의 최댓값을 구한다.",
     "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q19-solution.svg",
-    "originalCategory": "평행이동한 삼각형의 겹치는 넓이"
+    "originalCategory": "평행이동한 삼각형의 겹치는 넓이",
+    "questionUid": "qid_v1_8a8e7e7acc296df4589e0748cf827366c67f607608df518f327cc319d1a6552c",
+    "sourceQid": 19,
+    "sourceOrdinal": 19,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":19,"sourceQid":19,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   },
   {
     "id": 20,
@@ -899,12 +979,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
     "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
-    "crossConceptKeys": [
-      "CC_ABSOLUTE_VALUE_FUNCTION"
-    ],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
+    "crossConceptKeys": ["CC_ABSOLUTE_VALUE_FUNCTION"],
+    "conditionKeys": ["COND_FUNCTION_BIJECTION","COND_RANGE","COND_PIECEWISE_DOMAIN_PARTITION"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
@@ -912,7 +988,13 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "두 바깥 구간의 치역을 확인해 가운데 절댓값 일차함수가 [1,4]를 단조로 채워야 함을 구하고 각 진술을 대입 검토한다.",
     "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q20-solution.svg",
-    "originalCategory": "조각별 함수의 전사성과 일대일성"
+    "originalCategory": "조각별 함수의 전사성과 일대일성",
+    "questionUid": "qid_v1_155e26adb01746e8ae1f9a876ac7a80a47d4e8d1dc59f7e31deb121978d062ef",
+    "sourceQid": 20,
+    "sourceOrdinal": 20,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":20,"sourceQid":20,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   },
   {
     "id": 21,
@@ -942,9 +1024,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
     "templateKey": "TT_SHORTEST_ONE_LINE",
-    "crossConceptKeys": [
-      "CC_CIRCLE_CENTER_RADIUS"
-    ],
+    "crossConceptKeys": ["CC_CIRCLE_CENTER_RADIUS"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
@@ -953,7 +1033,13 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "y=x에 대한 반사로 꺾인 경로를 직선으로 펴고, 반사된 두 원의 최소 간격과 반사축 교차를 확인한다.",
     "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q21-solution.svg",
-    "originalCategory": "대칭이동과 원 사이의 최단거리"
+    "originalCategory": "대칭이동과 원 사이의 최단거리",
+    "questionUid": "qid_v1_5c357b0bcc7888c0280a4773d39fc5abbd25968718564498ead0911d3c6d8482",
+    "sourceQid": 21,
+    "sourceOrdinal": 21,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":21,"sourceQid":21,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   },
   {
     "id": 22,
@@ -982,17 +1068,21 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_FUNCTION_COUNTING",
     "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
-    "crossConceptKeys": [
-      "CC_ONE_TO_ONE_FUNCTION"
-    ],
-    "conditionKeys": [],
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_FUNCTION_BIJECTION","COND_FUNCTION_VALUE_CONSTRAINT","COND_UNIVERSAL_INPUTS"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "각 입력값에서 허용되는 함수값 수를 곱해 전체 함수를 세고, 일대일 조건에서는 남은 함수값을 두 경우로 나눈다.",
-    "originalCategory": "조건을 만족하는 함수의 개수"
+    "originalCategory": "조건을 만족하는 함수의 개수",
+    "questionUid": "qid_v1_fb02fd36de4b62c1b3b73b90fe88109154ad92223f8088e675c6e0b198d97ed8",
+    "sourceQid": 22,
+    "sourceOrdinal": 22,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":22,"sourceQid":22,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   },
   {
     "id": 23,
@@ -1022,19 +1112,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_SET_AGGREGATE",
     "templateKey": "TPL_SUBSET_AGGREGATE_BY_ROLE_FREQUENCY",
-    "crossConceptKeys": [
-      "CC_NUMBER_PARITY",
-      "CC_SET_CARDINALITY"
-    ],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
+    "crossConceptKeys": ["CC_NUMBER_PARITY","CC_SET_CARDINALITY"],
+    "conditionKeys": ["COND_RANGE"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "홀수 합 조건을 원소의 홀짝과 부분집합 크기로 나누고, 각 원소가 조건을 만족하는 부분집합에 포함되는 횟수를 집계한다.",
-    "originalCategory": "홀수 합 부분집합의 원소합 집계"
+    "originalCategory": "홀수 합 부분집합의 원소합 집계",
+    "questionUid": "qid_v1_ada9b4c8e9cf08d21952170a5a14297cea81bfe4ffa3f526553f967f3a7a8d81",
+    "sourceQid": 23,
+    "sourceOrdinal": 23,
+    "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":23,"sourceQid":23,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+  
   }
 ];

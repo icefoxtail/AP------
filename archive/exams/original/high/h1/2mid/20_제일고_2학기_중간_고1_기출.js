@@ -39,7 +39,14 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_b3df75daf0478f68ccbac0a8a2ecbbe100a759a3e7b699d7a41292995190706f",
+    "sourceQid": 1,
+    "sourceOrdinal": 1,
+    "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":1,"sourceQid":1,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
+    "difficultyReason": "집합 판정 기준 네 개를 각각 확인하는 기초 문항."
+  
   },
   {
     "id": 2,
@@ -80,7 +87,14 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_32fd2654a3487c0c066b4f83cbabd95b58d1e7ed8ea1624ebd6ee4556ac54237",
+    "sourceQid": 2,
+    "sourceOrdinal": 2,
+    "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":2,"sourceQid":2,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
+    "difficultyReason": "집합 포함과 여집합 관계를 먼저 정리한 뒤 허용 원소를 세는 복합 조건 문항."
+  
   },
   {
     "id": 3,
@@ -116,14 +130,19 @@ window.questionBank = [
     "problemTypeKey": "PT_SET_CARDINALITY",
     "templateKey": "TPL_SET_CARDINALITY_DIRECT",
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_NATURAL_NUMBER"
-    ],
+    "conditionKeys": ["COND_NATURAL_NUMBER"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_1af84daf1f5817a8018b925d0df762b261de55506e0f95f89adda87642bbfdf4",
+    "sourceQid": 3,
+    "sourceOrdinal": 3,
+    "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":3,"sourceQid":3,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
+    "difficultyReason": "바닥함수 조건을 정수 부등식으로 바꾸어 가능한 자연수를 센다."
+  
   },
   {
     "id": 4,
@@ -164,7 +183,14 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_8ffecf1e9a1aa387420e75c3dc621161cd295b6a87022de3bb5134ee7f3320c5",
+    "sourceQid": 4,
+    "sourceOrdinal": 4,
+    "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":4,"sourceQid":4,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
+    "difficultyReason": "여집합·차집합·합집합을 차례로 계산한다."
+  
   },
   {
     "id": 5,
@@ -209,7 +235,14 @@ window.questionBank = [
     "solutionImage": "assets/images/20_제일고_2학기_중간_고1_기출/q5-solution.svg",
     "solutionImageAlt": "빨강과 노랑을 모두 좋아하는 학생 수가 15명일 때와 3명일 때의 반별 인원 구성 표",
     "solutionImageCaption": "교집합이 15명일 때와 3명일 때 모두 빨강·노랑 선호 학생 수와 전체 34명을 만족하는 실제 배치를 보인다.",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "questionUid": "qid_v1_a97dac2362cb4c810bea65f54ff69900b19f8af98e7c855d500b64639653b66b",
+    "sourceQid": 5,
+    "sourceOrdinal": 5,
+    "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":5,"sourceQid":5,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
+    "difficultyReason": "포함배제로 교집합의 양끝값을 구하고 양끝값의 실현 가능성도 확인한다."
+  
   },
   {
     "id": 6,
@@ -250,7 +283,14 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_bd171452a65d8675e89fd73176a81bee164edc01314738dc0f96638bd5c525d3",
+    "sourceQid": 6,
+    "sourceOrdinal": 6,
+    "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":6,"sourceQid":6,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
+    "difficultyReason": "주어진 합집합을 여집합으로 바꾸어 포함관계를 찾고 다섯 문장을 판정한다."
+  
   },
   {
     "id": 7,
@@ -286,14 +326,19 @@ window.questionBank = [
     "problemTypeKey": "PT_SET_OPERATION",
     "templateKey": "TPL_DIRECT_MIXED_OPERATION",
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_NATURAL_NUMBER"
-    ],
+    "conditionKeys": ["COND_NATURAL_NUMBER"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_c3518fff8480348727cc92f8df21b2dc4d3451a0f9f7cbe0aea329c3300ca356",
+    "sourceQid": 7,
+    "sourceOrdinal": 7,
+    "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":7,"sourceQid":7,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
+    "difficultyReason": "연속된 구간의 공통 부분에서 최대 하한과 최소 상한을 비교한다."
+  
   },
   {
     "id": 8,
@@ -334,7 +379,14 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_2c66957c059859c519c33faf6d2d1e89e070fbaed0242f703abfa9b112d06f07",
+    "sourceQid": 8,
+    "sourceOrdinal": 8,
+    "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":8,"sourceQid":8,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
+    "difficultyReason": "여섯 문장에서 명제와 열린 문장을 구별한다."
+  
   },
   {
     "id": 9,
@@ -375,7 +427,14 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_e80b8a146a26deb487754f7482f47713dd33f8b094871e4755dedd14e963696b",
+    "sourceQid": 9,
+    "sourceOrdinal": 9,
+    "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":9,"sourceQid":9,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
+    "difficultyReason": "다섯 명제의 참·거짓을 각각 반례와 성질로 판정한다."
+  
   },
   {
     "id": 10,
@@ -416,7 +475,14 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_0c586c2806f6390a82c67213ae5855d0e52e4baa98e13826ba6b6dfcd5348127",
+    "sourceQid": 10,
+    "sourceOrdinal": 10,
+    "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":10,"sourceQid":10,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
+    "difficultyReason": "명제의 부정을 두 단계로 적용해 대우를 구성한다. 보기 ④는 원문 오류를 바로잡았다."
+  
   },
   {
     "id": 11,
@@ -457,7 +523,14 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_e65402e0036e36eb3638d676259d940490c551bc13109c4fba0a9a379d923ade",
+    "sourceQid": 11,
+    "sourceOrdinal": 11,
+    "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":11,"sourceQid":11,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
+    "difficultyReason": "명제·역·대우의 참을 반례와 동치로 비교한다."
+  
   },
   {
     "id": 12,
@@ -498,7 +571,14 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_83a1623d9c10dbd0f276e8b76ff37e2214c758b71374cd25af3b4f4496961fa8",
+    "sourceQid": 12,
+    "sourceOrdinal": 12,
+    "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":12,"sourceQid":12,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
+    "difficultyReason": "두 조건 관계를 집합 포함으로 바꾸어 필요·충분을 나누어 판단한다."
+  
   },
   {
     "id": 13,
@@ -539,7 +619,14 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_0d61d71fc7617c6e201f035d5c424e71aeaefb4ff4cebcc3df0df646e5168c7f",
+    "sourceQid": 13,
+    "sourceOrdinal": 13,
+    "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":13,"sourceQid":13,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
+    "difficultyReason": "동치와 필요·충분의 방향을 다섯 문장에서 확인한다."
+  
   },
   {
     "id": 14,
@@ -575,14 +662,19 @@ window.questionBank = [
     "problemTypeKey": "PT_CONTRADICTION_PROOF",
     "templateKey": "TPL_IRRATIONALITY_DIVISIBILITY_CONTRADICTION",
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_INTEGER"
-    ],
+    "conditionKeys": ["COND_INTEGER","COND_NONZERO"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_74c3449b99fb5d75fc87f77f665bd9ad5bf3fa49011d9bd96d5272304a951e08",
+    "sourceQid": 14,
+    "sourceOrdinal": 14,
+    "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":14,"sourceQid":14,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
+    "difficultyReason": "유리수 가정에서 서로소 가정과 충돌하는 공약수를 도출한다."
+  
   },
   {
     "id": 15,
@@ -623,7 +715,14 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_160d9d835c7c07e719e2d5e9d0c8757e54461db4a448395f92910a9b1b17b988",
+    "sourceQid": 15,
+    "sourceOrdinal": 15,
+    "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":15,"sourceQid":15,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
+    "difficultyReason": "완전제곱으로 항등식을 만들고 등호 성립 조건까지 구한다."
+  
   },
   {
     "id": 16,
@@ -664,7 +763,14 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_c27e813850f24226e51c7f365b7ce833901a24242948b098ee9213a1ba5984b8",
+    "sourceQid": 16,
+    "sourceOrdinal": 16,
+    "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":16,"sourceQid":16,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
+    "difficultyReason": "제곱 비교로 최댓값·최솟값의 상하한과 실제 등호 조건을 찾는다."
+  
   },
   {
     "id": 17,
@@ -705,7 +811,14 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_eb4ae8a96695d58fa6a3d43e246f22d0961704a911f1b6559f58a78e4ad7a187",
+    "sourceQid": 17,
+    "sourceOrdinal": 17,
+    "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":17,"sourceQid":17,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
+    "difficultyReason": "정의역 세 원소의 함숫값이 공역에 속하는지 대조한다."
+  
   },
   {
     "id": 18,
@@ -741,7 +854,7 @@ window.questionBank = [
     "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
     "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_FUNCTION_BIJECTION","COND_PIECEWISE_DOMAIN_PARTITION"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
@@ -750,7 +863,14 @@ window.questionBank = [
     "solutionImage": "assets/images/20_제일고_2학기_중간_고1_기출/q18-solution.svg",
     "solutionImageAlt": "x=2에서 만나며 왼쪽 기울기가 1/4, 오른쪽 기울기가 3/4인 구간별 일차함수의 예",
     "solutionImageCaption": "a=5/4일 때 두 구간의 기울기가 모두 양수여서 그래프가 전체 실수에서 증가하는 모습을 나타낸다.",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "questionUid": "qid_v1_ff9c52183997ae84adac0365a268922417f5f1c230bbcd75da645726cba645ba",
+    "sourceQid": 18,
+    "sourceOrdinal": 18,
+    "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":18,"sourceQid":18,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
+    "difficultyReason": "두 일차식의 기울기 부호, 경계점의 연속성, 일대일·전사를 모두 연결한다."
+  
   },
   {
     "id": 19,
@@ -785,7 +905,14 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_a0ae4b3edb34679d96207d76299d1ae8e95498d8c4cf340d2b5a3adab5a6d310",
+    "sourceQid": 19,
+    "sourceOrdinal": 19,
+    "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":19,"sourceQid":19,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
+    "difficultyReason": "교집합의 두 원소가 두 매개변수 집합에 들어갈 조건을 순서대로 맞춘다."
+  
   },
   {
     "id": 20,
@@ -820,7 +947,14 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_3d3347e1c198ba8d0a9596869346fa9f1330bb36c616d27a523b521cb7a393a9",
+    "sourceQid": 20,
+    "sourceOrdinal": 20,
+    "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":20,"sourceQid":20,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
+    "difficultyReason": "두 합집합 조건을 교차해 여집합을 찾고 공통 원소를 결정한다."
+  
   },
   {
     "id": 21,
@@ -850,14 +984,19 @@ window.questionBank = [
     "problemTypeKey": "PT_NEC_SUFF_RELATION",
     "templateKey": "TPL_NEC_SUFF_INTERVAL_PARAMETER",
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_INTEGER"
-    ],
+    "conditionKeys": ["COND_INTEGER","COND_RANGE"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_be608942312a24d91d4127db04c7aaab3a3b0974a1884dda6c97119a8141c967",
+    "sourceQid": 21,
+    "sourceOrdinal": 21,
+    "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":21,"sourceQid":21,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
+    "difficultyReason": "열린 끝점과 닫힌 끝점까지 고려해 두 진리집합 포함관계와 정수 경계를 구한다."
+  
   },
   {
     "id": 22,
@@ -892,6 +1031,13 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_dbdda34eb454764fd0efe875eca76d0e7e7f095f8483830284dc6b615e5d640e",
+    "sourceQid": 22,
+    "sourceOrdinal": 22,
+    "sourceArchiveFile": "original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|제일고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_제일고_2학기_중간_고1_기출.js","sourceOrdinal":22,"sourceQid":22,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_제일고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6D75ED69A2351338DEDA636E4F5FBFF9AE47D02A530FF355F1CFFE9F221EB532"},
+    "difficultyReason": "함수 입력이 6이 되도록 안쪽 입력식을 먼저 푼다."
+  
   }
 ];

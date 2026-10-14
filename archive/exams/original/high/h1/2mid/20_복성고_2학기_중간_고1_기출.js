@@ -52,17 +52,7 @@ window.questionBank = [
     "sourceOrdinal": 1,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_d52e43d82f4abd289fab6b21178408a2a11ae7018e95cecaa93a3f99245fe481",
-    "provenance": {
-      "sourceId": "2020|복성고|h1|2mid",
-      "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
-      "sourceOrdinal": 1,
-      "sourceQid": 1,
-      "sourceType": "ORIGINAL_EXAM",
-      "sourceIntakeEvidence": "archive/analysis/20_복성고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourcePdfSha256": "6f24308db3e51cbbe6bb31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465",
-      "sourceInputJsSha256": "b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091",
-      "sourcePage": 1
-    }
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":1,"sourceQid":1,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbe6bb31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":1}
   },
   {
     "id": 2,
@@ -115,17 +105,7 @@ window.questionBank = [
     "sourceOrdinal": 2,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_2bad02cf5e8ab51e935237e6aacd07e725b10d66e40b172a44fa831c65ae220b",
-    "provenance": {
-      "sourceId": "2020|복성고|h1|2mid",
-      "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
-      "sourceOrdinal": 2,
-      "sourceQid": 2,
-      "sourceType": "ORIGINAL_EXAM",
-      "sourceIntakeEvidence": "archive/analysis/20_복성고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourcePdfSha256": "6f24308db3e51cbbe6bb31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465",
-      "sourceInputJsSha256": "b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091",
-      "sourcePage": 1
-    }
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":2,"sourceQid":2,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbe6bb31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":1}
   },
   {
     "id": 3,
@@ -178,17 +158,7 @@ window.questionBank = [
     "sourceOrdinal": 3,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_b93e57c0358599699d5ed5d696515e242c506c6897bd12288a43e822e36479c5",
-    "provenance": {
-      "sourceId": "2020|복성고|h1|2mid",
-      "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
-      "sourceOrdinal": 3,
-      "sourceQid": 3,
-      "sourceType": "ORIGINAL_EXAM",
-      "sourceIntakeEvidence": "archive/analysis/20_복성고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourcePdfSha256": "6f24308db3e51cbbe6bb31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465",
-      "sourceInputJsSha256": "b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091",
-      "sourcePage": 1
-    }
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":3,"sourceQid":3,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbe6bb31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":1}
   },
   {
     "id": 4,
@@ -241,17 +211,7 @@ window.questionBank = [
     "sourceOrdinal": 4,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_34e94534cd5490084e569607677e84ef4b73e4dcf04bafe9c91118dce9842c6c",
-    "provenance": {
-      "sourceId": "2020|복성고|h1|2mid",
-      "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
-      "sourceOrdinal": 4,
-      "sourceQid": 4,
-      "sourceType": "ORIGINAL_EXAM",
-      "sourceIntakeEvidence": "archive/analysis/20_복성고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourcePdfSha256": "6f24308db3e51cbbe6bb31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465",
-      "sourceInputJsSha256": "b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091",
-      "sourcePage": 1
-    }
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":4,"sourceQid":4,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbe6bb31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":1}
   },
   {
     "id": 5,
@@ -288,12 +248,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_SET_INCLUSION",
     "templateKey": "TPL_INCLUSION_PARAMETER",
-    "crossConceptKeys": [
-      "CC_NUMBER_DIVISOR_MULTIPLE"
-    ],
-    "conditionKeys": [
-      "COND_NATURAL_NUMBER"
-    ],
+    "crossConceptKeys": ["CC_NUMBER_DIVISOR_MULTIPLE"],
+    "conditionKeys": ["COND_NATURAL_NUMBER"],
     "integrationPattern": "SEQUENTIAL",
     "rpmPath": {
       "majorUnit": "집합과 명제",
@@ -310,17 +266,7 @@ window.questionBank = [
     "sourceOrdinal": 5,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_99fa71636f09c1752f0b50d494d4c0bb07c43756b1220478c74d228c29e0cc3e",
-    "provenance": {
-      "sourceId": "2020|복성고|h1|2mid",
-      "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
-      "sourceOrdinal": 5,
-      "sourceQid": 5,
-      "sourceType": "ORIGINAL_EXAM",
-      "sourceIntakeEvidence": "archive/analysis/20_복성고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourcePdfSha256": "6f24308db3e51cbbe6bb31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465",
-      "sourceInputJsSha256": "b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091",
-      "sourcePage": 1
-    }
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":5,"sourceQid":5,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbe6bb31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":1}
   },
   {
     "id": 6,
@@ -373,17 +319,7 @@ window.questionBank = [
     "sourceOrdinal": 6,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_53dadca1c34b8afa6152c04379253bfa9486320de16495c0df48313126125003",
-    "provenance": {
-      "sourceId": "2020|복성고|h1|2mid",
-      "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
-      "sourceOrdinal": 6,
-      "sourceQid": 6,
-      "sourceType": "ORIGINAL_EXAM",
-      "sourceIntakeEvidence": "archive/analysis/20_복성고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourcePdfSha256": "6f24308db3e51cbbe6bb31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465",
-      "sourceInputJsSha256": "b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091",
-      "sourcePage": 1
-    }
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":6,"sourceQid":6,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbe6bb31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":1}
   },
   {
     "id": 7,
@@ -419,9 +355,7 @@ window.questionBank = [
     "problemTypeKey": "PT_SET_AGGREGATE",
     "templateKey": "TPL_SET_ELEMENT_SUM",
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_NATURAL_NUMBER"
-    ],
+    "conditionKeys": ["COND_NATURAL_NUMBER"],
     "integrationPattern": "SEQUENTIAL",
     "rpmPath": {
       "majorUnit": "집합과 명제",
@@ -438,17 +372,7 @@ window.questionBank = [
     "sourceOrdinal": 7,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_56f2ac448c3386fe022e3e154c48e6b3c1133f748798292f45793757204e6012",
-    "provenance": {
-      "sourceId": "2020|복성고|h1|2mid",
-      "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
-      "sourceOrdinal": 7,
-      "sourceQid": 7,
-      "sourceType": "ORIGINAL_EXAM",
-      "sourceIntakeEvidence": "archive/analysis/20_복성고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourcePdfSha256": "6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465",
-      "sourceInputJsSha256": "b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091",
-      "sourcePage": 2
-    }
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":7,"sourceQid":7,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":2}
   },
   {
     "id": 8,
@@ -484,9 +408,7 @@ window.questionBank = [
     "problemTypeKey": "PT_NEC_SUFF_RELATION",
     "templateKey": "TPL_NEC_SUFF_INTERVAL_PARAMETER",
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
+    "conditionKeys": ["COND_RANGE"],
     "integrationPattern": "SEQUENTIAL",
     "rpmPath": {
       "majorUnit": "집합과 명제",
@@ -503,17 +425,7 @@ window.questionBank = [
     "sourceOrdinal": 8,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_cd11dda0fa14cbb108fa5c14585e99ff2180fd5e1c2db2678a0b05c4f339102e",
-    "provenance": {
-      "sourceId": "2020|복성고|h1|2mid",
-      "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
-      "sourceOrdinal": 8,
-      "sourceQid": 8,
-      "sourceType": "ORIGINAL_EXAM",
-      "sourceIntakeEvidence": "archive/analysis/20_복성고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourcePdfSha256": "6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465",
-      "sourceInputJsSha256": "b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091",
-      "sourcePage": 2
-    }
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":8,"sourceQid":8,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":2}
   },
   {
     "id": 9,
@@ -549,12 +461,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
     "templateKey": "TPL_AMGM_MINIMUM",
-    "crossConceptKeys": [
-      "CC_AM_GM"
-    ],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "crossConceptKeys": ["CC_AM_GM"],
+    "conditionKeys": ["COND_POSITIVE"],
     "integrationPattern": "NONE",
     "rpmPath": {
       "majorUnit": "집합과 명제",
@@ -571,17 +479,7 @@ window.questionBank = [
     "sourceOrdinal": 9,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_3f4ebe65082ebcd56c3b3ad9bd82a784fc7bf09f43ca95282490941f4b6037bf",
-    "provenance": {
-      "sourceId": "2020|복성고|h1|2mid",
-      "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
-      "sourceOrdinal": 9,
-      "sourceQid": 9,
-      "sourceType": "ORIGINAL_EXAM",
-      "sourceIntakeEvidence": "archive/analysis/20_복성고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourcePdfSha256": "6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465",
-      "sourceInputJsSha256": "b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091",
-      "sourcePage": 2
-    },
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":9,"sourceQid":9,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":2},
     "image": "assets/images/20_복성고_2학기_중간_고1_기출/q9-problem.svg",
     "imageSize": "full",
     "imageAlt": "양의 절편을 가진 직선이 점 P(3,4)를 지나는 개형도(축척 없음)",
@@ -642,17 +540,7 @@ window.questionBank = [
     "sourceOrdinal": 10,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_df8df2a833cf90c5b73457fcf9a059ceb3de199d80cbda2e482679fa8f9f9906",
-    "provenance": {
-      "sourceId": "2020|복성고|h1|2mid",
-      "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
-      "sourceOrdinal": 10,
-      "sourceQid": 10,
-      "sourceType": "ORIGINAL_EXAM",
-      "sourceIntakeEvidence": "archive/analysis/20_복성고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourcePdfSha256": "6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465",
-      "sourceInputJsSha256": "b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091",
-      "sourcePage": 2
-    },
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":10,"sourceQid":10,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":2},
     "image": "assets/images/20_복성고_2학기_중간_고1_기출/q10-problem.svg",
     "imageSize": "full",
     "imageAlt": "직선 x/2+y/3=13/3의 좌표평면 그림",
@@ -697,9 +585,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_COMPOSITION_EVALUATION",
     "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
-    "crossConceptKeys": [
-      "CC_FUNCTION_COMPOSITION"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "rpmPath": {
@@ -717,17 +603,7 @@ window.questionBank = [
     "sourceOrdinal": 11,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_80f5fb13a15482c59e4653848a36fea9513e6f541c7f331f17ea8e75696164be",
-    "provenance": {
-      "sourceId": "2020|복성고|h1|2mid",
-      "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
-      "sourceOrdinal": 11,
-      "sourceQid": 11,
-      "sourceType": "ORIGINAL_EXAM",
-      "sourceIntakeEvidence": "archive/analysis/20_복성고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourcePdfSha256": "6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465",
-      "sourceInputJsSha256": "b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091",
-      "sourcePage": 2
-    }
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":11,"sourceQid":11,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":2}
   },
   {
     "id": 12,
@@ -762,12 +638,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
     "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
-    "crossConceptKeys": [
-      "CC_ABSOLUTE_VALUE_FUNCTION"
-    ],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
+    "crossConceptKeys": ["CC_ABSOLUTE_VALUE_FUNCTION"],
+    "conditionKeys": ["COND_RANGE","COND_FUNCTION_BIJECTION"],
     "integrationPattern": "SEQUENTIAL",
     "rpmPath": {
       "majorUnit": "함수",
@@ -784,17 +656,7 @@ window.questionBank = [
     "sourceOrdinal": 12,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_bb0497aba20cdf44d0455ad7eca5bd15642a23542b5f0b4c50840596a082c58a",
-    "provenance": {
-      "sourceId": "2020|복성고|h1|2mid",
-      "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
-      "sourceOrdinal": 12,
-      "sourceQid": 12,
-      "sourceType": "ORIGINAL_EXAM",
-      "sourceIntakeEvidence": "archive/analysis/20_복성고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourcePdfSha256": "6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465",
-      "sourceInputJsSha256": "b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091",
-      "sourcePage": 2
-    }
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":12,"sourceQid":12,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":2}
   },
   {
     "id": 13,
@@ -829,12 +691,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_ITERATED_COMPOSITION",
     "templateKey": "TPL_ITERATION_RULE",
-    "crossConceptKeys": [
-      "CC_FUNCTION_COMPOSITION"
-    ],
-    "conditionKeys": [
-      "COND_NATURAL_NUMBER"
-    ],
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_NATURAL_NUMBER"],
     "integrationPattern": "SEQUENTIAL",
     "rpmPath": {
       "majorUnit": "함수",
@@ -851,17 +709,7 @@ window.questionBank = [
     "sourceOrdinal": 13,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_b91af332cf674051e10895755445e8e176fa63950c9d318145bf192fc9edbfc8",
-    "provenance": {
-      "sourceId": "2020|복성고|h1|2mid",
-      "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
-      "sourceOrdinal": 13,
-      "sourceQid": 13,
-      "sourceType": "ORIGINAL_EXAM",
-      "sourceIntakeEvidence": "archive/analysis/20_복성고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourcePdfSha256": "6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465",
-      "sourceInputJsSha256": "b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091",
-      "sourcePage": 3
-    }
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":13,"sourceQid":13,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":3}
   },
   {
     "id": 14,
@@ -896,12 +744,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
     "templateKey": "TPL_QUADRATIC_DOMAIN_BIJECTION",
-    "crossConceptKeys": [
-      "CC_QUADRATIC_FUNCTION"
-    ],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
+    "crossConceptKeys": ["CC_QUADRATIC_FUNCTION"],
+    "conditionKeys": ["COND_FUNCTION_BIJECTION","COND_RANGE"],
     "integrationPattern": "SEQUENTIAL",
     "rpmPath": {
       "majorUnit": "함수",
@@ -918,17 +762,7 @@ window.questionBank = [
     "sourceOrdinal": 14,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_95febc0d45bb45fa9170b4fbd955a7e8ee8832819c63fa833c2b5eb32edee919",
-    "provenance": {
-      "sourceId": "2020|복성고|h1|2mid",
-      "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
-      "sourceOrdinal": 14,
-      "sourceQid": 14,
-      "sourceType": "ORIGINAL_EXAM",
-      "sourceIntakeEvidence": "archive/analysis/20_복성고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourcePdfSha256": "6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465",
-      "sourceInputJsSha256": "b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091",
-      "sourcePage": 3
-    },
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":14,"sourceQid":14,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":3},
     "solutionImage": "assets/images/20_복성고_2학기_중간_고1_기출/q14-solution.svg",
     "solutionImageAlt": "y=(x+2)²+4의 왼쪽 가지에서 x≤−2일 때 최솟값 y=4가 되는 꼭짓점",
     "solutionImageCaption": "a≤−2일 때 치역의 최솟값은 b=f(a)≥4이며, ab의 최댓값은 a=−2, b=4에서 나온다.",
@@ -968,7 +802,7 @@ window.questionBank = [
     "problemTypeKey": "PT_FINITE_BIJECTION",
     "templateKey": "TPL_FINITE_BIJECTION_DIRECT_DEDUCTION",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_FUNCTION_BIJECTION"],
     "integrationPattern": "SEQUENTIAL",
     "rpmPath": {
       "majorUnit": "함수",
@@ -985,17 +819,7 @@ window.questionBank = [
     "sourceOrdinal": 15,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_f3c33ae939784c402a38860118844e8c775545a19d89c28d21df6971a84b812d",
-    "provenance": {
-      "sourceId": "2020|복성고|h1|2mid",
-      "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
-      "sourceOrdinal": 15,
-      "sourceQid": 15,
-      "sourceType": "ORIGINAL_EXAM",
-      "sourceIntakeEvidence": "archive/analysis/20_복성고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourcePdfSha256": "6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465",
-      "sourceInputJsSha256": "b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091",
-      "sourcePage": 3
-    }
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":15,"sourceQid":15,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":3}
   },
   {
     "id": 16,
@@ -1048,17 +872,7 @@ window.questionBank = [
     "sourceOrdinal": 16,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_293940bb33859501467c8ad6ba0c38341e26327044f8704bbc32cc80a5255a94",
-    "provenance": {
-      "sourceId": "2020|복성고|h1|2mid",
-      "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
-      "sourceOrdinal": 16,
-      "sourceQid": 16,
-      "sourceType": "ORIGINAL_EXAM",
-      "sourceIntakeEvidence": "archive/analysis/20_복성고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourcePdfSha256": "6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465",
-      "sourceInputJsSha256": "b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091",
-      "sourcePage": 3
-    },
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":16,"sourceQid":16,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":3},
     "solutionImage": "assets/images/20_복성고_2학기_중간_고1_기출/q16-solution.svg",
     "solutionImageAlt": "y=(x−2)²와 그 역함수 그래프가 y=x 위의 점 (4,4)에서 만나는 그림",
     "solutionImageCaption": "f(x)=f⁻¹(x)의 해는 두 그래프가 만나는 x좌표이다.",
@@ -1097,11 +911,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_FINITE_BIJECTION",
     "templateKey": "TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION",
-    "crossConceptKeys": [
-      "CC_FUNCTION_COMPOSITION",
-      "CC_INVERSE_FUNCTION"
-    ],
-    "conditionKeys": [],
+    "crossConceptKeys": ["CC_INVERSE_FUNCTION"],
+    "conditionKeys": ["COND_FUNCTION_BIJECTION"],
     "integrationPattern": "SEQUENTIAL",
     "rpmPath": {
       "majorUnit": "함수",
@@ -1118,17 +929,7 @@ window.questionBank = [
     "sourceOrdinal": 17,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_65e15e9dd1e31a1035b6ebff68cc74b4121177080f7f0098c3462d48ca50d897",
-    "provenance": {
-      "sourceId": "2020|복성고|h1|2mid",
-      "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
-      "sourceOrdinal": 17,
-      "sourceQid": 17,
-      "sourceType": "ORIGINAL_EXAM",
-      "sourceIntakeEvidence": "archive/analysis/20_복성고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourcePdfSha256": "6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465",
-      "sourceInputJsSha256": "b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091",
-      "sourcePage": 3
-    }
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":17,"sourceQid":17,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":3}
   },
   {
     "id": 18,
@@ -1163,12 +964,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_LINE_RELATION",
     "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
-    "crossConceptKeys": [
-      "CC_CIRCLE_CENTER_RADIUS"
-    ],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "crossConceptKeys": ["CC_CIRCLE_CENTER_RADIUS"],
+    "conditionKeys": ["COND_POSITIVE"],
     "integrationPattern": "SEQUENTIAL",
     "rpmPath": {
       "majorUnit": "도형의 방정식",
@@ -1185,17 +982,7 @@ window.questionBank = [
     "sourceOrdinal": 18,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_a509bd2c0ec2e7fa40fff1a16563f9b8a8dfd836a6ed68dbefe422bb0bd70708",
-    "provenance": {
-      "sourceId": "2020|복성고|h1|2mid",
-      "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
-      "sourceOrdinal": 18,
-      "sourceQid": 18,
-      "sourceType": "ORIGINAL_EXAM",
-      "sourceIntakeEvidence": "archive/analysis/20_복성고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourcePdfSha256": "6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465",
-      "sourceInputJsSha256": "b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091",
-      "sourcePage": 3
-    },
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":18,"sourceQid":18,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":3},
     "image": "assets/images/20_복성고_2학기_중간_고1_기출/q18-problem.svg",
     "imageSize": "full",
     "solutionImage": "assets/images/20_복성고_2학기_중간_고1_기출/q18-solution.svg",
@@ -1231,9 +1018,7 @@ window.questionBank = [
     "problemTypeKey": "PT_INVERSE_VALUE",
     "templateKey": "TPL_INVERSE_FUNCTION_FORM",
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
+    "conditionKeys": ["COND_RANGE","COND_PIECEWISE_DOMAIN_PARTITION"],
     "integrationPattern": "SEQUENTIAL",
     "rpmPath": {
       "majorUnit": "함수",
@@ -1250,17 +1035,7 @@ window.questionBank = [
     "sourceOrdinal": 19,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_4261d7c943aec60255724547c786225037db1b1f556883e5103dceabf129816b",
-    "provenance": {
-      "sourceId": "2020|복성고|h1|2mid",
-      "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
-      "sourceOrdinal": 19,
-      "sourceQid": 19,
-      "sourceType": "ORIGINAL_EXAM",
-      "sourceIntakeEvidence": "archive/analysis/20_복성고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourcePdfSha256": "6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465",
-      "sourceInputJsSha256": "b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091",
-      "sourcePage": 4
-    }
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":19,"sourceQid":19,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":4}
   },
   {
     "id": 20,
@@ -1290,12 +1065,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
     "templateKey": "TPL_MIXED_INEQUALITY_EXTREMUM",
-    "crossConceptKeys": [
-      "CC_AM_GM"
-    ],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "crossConceptKeys": ["CC_AM_GM"],
+    "conditionKeys": ["COND_POSITIVE"],
     "integrationPattern": "SEQUENTIAL",
     "rpmPath": {
       "majorUnit": "집합과 명제",
@@ -1312,17 +1083,7 @@ window.questionBank = [
     "sourceOrdinal": 20,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_bbf1cba1748907ee359ad107bc2a645cf951e8089d6161a6d5740859d04060b3",
-    "provenance": {
-      "sourceId": "2020|복성고|h1|2mid",
-      "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
-      "sourceOrdinal": 20,
-      "sourceQid": 20,
-      "sourceType": "ORIGINAL_EXAM",
-      "sourceIntakeEvidence": "archive/analysis/20_복성고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourcePdfSha256": "6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465",
-      "sourceInputJsSha256": "b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091",
-      "sourcePage": 4
-    }
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":20,"sourceQid":20,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":4}
   },
   {
     "id": 21,
@@ -1369,16 +1130,6 @@ window.questionBank = [
     "sourceOrdinal": 21,
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_48efc36626a56b37f8ffd5371abcffa7c66b5c6cadf4bcf3353481251082ea32",
-    "provenance": {
-      "sourceId": "2020|복성고|h1|2mid",
-      "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
-      "sourceOrdinal": 21,
-      "sourceQid": 21,
-      "sourceType": "ORIGINAL_EXAM",
-      "sourceIntakeEvidence": "archive/analysis/20_복성고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourcePdfSha256": "6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465",
-      "sourceInputJsSha256": "b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091",
-      "sourcePage": 4
-    }
+    "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":21,"sourceQid":21,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":4}
   }
 ];

@@ -37,10 +37,15 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 하: 정의나 기본 성질을 곧바로 적용하는 사고가 중심이다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: $11P_x=\\dfrac{11!}{(11-x)!}$이므로 $(11-x)!=7!$에서 $11-x=7$, 따라서 $x=4$이다. 또 $y={}_8C_0=1$이므로 $xy=4\\cdot1=4$이다. 정답은 ②이다.",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
-    "sourceQid": 1
+    "sourceQid": 1,
+    "questionUid": "qid_v1_64abffb332af5556ae3aacf22fb1d3a0be72148e2a84eeed6761fe22a7aa4a12",
+    "sourceOrdinal": 1,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":1,"sourceQid":1,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
   },
   {
     "id": 2,
@@ -79,10 +84,15 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 하: 정의나 기본 성질을 곧바로 적용하는 사고가 중심이다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: $(f\\circ g)(x)=x$이므로 $f(g(x))=x$이다. $f(t)=\\dfrac12t+3$을 대입하면 $\\dfrac12g(x)+3=x$, 따라서 $g(x)=2x-6$이다. 그러므로 $g(2)=4-6=-2$이고 정답은 ②이다.",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
-    "sourceQid": 2
+    "sourceQid": 2,
+    "questionUid": "qid_v1_95e66556f015ba0af9c8be291d93da8d3e06b09cfbbcdbd11144ad14e9476181",
+    "sourceOrdinal": 2,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":2,"sourceQid":2,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
   },
   {
     "id": 3,
@@ -117,14 +127,19 @@ window.questionBank = [
     "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
     "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
     "crossConceptKeys": ["CC_NUMBER_PARITY"],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_DISTINCT_DIGITS","COND_NONZERO"],
     "integrationPattern": "REINTERPRETATION",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 십의 자리와 일의 자리의 합이 홀수이려면 한 자리는 홀수, 다른 자리는 짝수여야 한다. 홀수 카드는 $1,3,5$의 $3$장, 짝수 카드는 $0,2,4$의 $3$장이다. 십의 자리가 홀수이면 $3\\cdot3=9$개이고, 십의 자리가 짝수이면 $0$은 십의 자리에 쓸 수…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
-    "sourceQid": 3
+    "sourceQid": 3,
+    "questionUid": "qid_v1_fa641bdfb2f3b8fb154853b21fc35767eb66927989c667a84772a22aa153e5ae",
+    "sourceOrdinal": 3,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":3,"sourceQid":3,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
   },
   {
     "id": 4,
@@ -153,7 +168,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
-    "subUnit": "유리식의 계산",
+    "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_RATIONAL_EXPRESSION",
@@ -163,10 +178,15 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 1,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 하: 정의나 기본 성질을 곧바로 적용하는 사고가 중심이다. 문제은행 difficultyBucket 1: 풀이가 직접 읽기나 대입 한 번으로 끝난다. 현재 풀이 근거: 통분한 분자는 $(x-1)^2-(x-2)(x+2)=x^2-2x+1-(x^2-4)=-2x+5$이다. 따라서 $a=-2$, $b=5$이고 $a+b=3$이다. 정답은 ④이다.",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
-    "sourceQid": 4
+    "sourceQid": 4,
+    "questionUid": "qid_v1_2bb2352306e1e4e127169a75827f1ad80e3817c69fca12e7167690bfae64550f",
+    "sourceOrdinal": 4,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":4,"sourceQid":4,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
   },
   {
     "id": 5,
@@ -206,10 +226,15 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: $(f\\circ g)(x)=f(2x-1)=-8x+11$이므로 $(f\\circ g)^{-1}(x)=\\dfrac{11-x}{8}$이다. $x=2$를 차례로 넣으면 $f(2)=-1$, $(f\\circ g)^{-1}(-1)=\\dfrac32$, $f(\\dfrac32)=1$이다. 정답은",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
-    "sourceQid": 5
+    "sourceQid": 5,
+    "questionUid": "qid_v1_e0f243145f9cdde9702988de739557702d29c244636077561d5a0d6d48764adf",
+    "sourceOrdinal": 5,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":5,"sourceQid":5,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
   },
   {
     "id": 6,
@@ -244,14 +269,19 @@ window.questionBank = [
     "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
     "templateKey": "TPL_COMBINATION_SELECTION",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_NO_THREE_COLLINEAR_POINTS","COND_NATURAL_NUMBER"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 하: 정의나 기본 성질을 곧바로 적용하는 사고가 중심이다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 삼각형 하나는 $n$개 점 중 세 점을 고르는 경우 하나와 대응하므로 $C(n,3)=120$이다. $C(9,3)=84$, $C(10,3)=120$이므로 $n=10$이다. 정답은 ⑤이다.",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
-    "sourceQid": 6
+    "sourceQid": 6,
+    "questionUid": "qid_v1_1b1fc513d89763e805b17dccdb2335b1bb98d000f2ce9f111b4c3d2c9be25008",
+    "sourceOrdinal": 6,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":6,"sourceQid":6,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
   },
   {
     "id": 7,
@@ -286,14 +316,19 @@ window.questionBank = [
     "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
     "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_SPECIFIED_ITEMS_AT_BOTH_ENDPOINTS"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 양 끝에 설 남학생 두 명을 순서 있게 고르는 방법은 $3\\cdot2=6$가지이다. 가운데 세 자리에는 남은 세 학생을 배열하므로 $3!=6$가지이다. 전체는 $6\\cdot6=36$가지이고 정답은 ③이다.",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
-    "sourceQid": 7
+    "sourceQid": 7,
+    "questionUid": "qid_v1_993cb6961ae5154a04979023994c0c6276004f1ce8b903717c52ee0b901e7062",
+    "sourceOrdinal": 7,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":7,"sourceQid":7,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
   },
   {
     "id": 8,
@@ -333,10 +368,15 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 역함수 그래프 위의 $(-2,1)$을 대칭으로 바꾸면 원래 함수 그래프 위에는 $(1,-2)$가 놓인다. 따라서 $f(-2)=1$, $f(1)=-2$이다. $-2a+b=1$, $a+b=-2$를 풀면 $a=-1$, $b=-1$이다. 따라서 $ab=1$이고 정답은 ④이다.",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
-    "sourceQid": 8
+    "sourceQid": 8,
+    "questionUid": "qid_v1_8a91ed8cc58db3bbddf30c9a7a26a4cb30905a55a2f65eb7b93dddaa538d5c8a",
+    "sourceOrdinal": 8,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":8,"sourceQid":8,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
   },
   {
     "id": 9,
@@ -370,18 +410,24 @@ window.questionBank = [
     "subUnit": "합성함수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "problemTypeKey": "PT_ITERATED_COMPOSITION",
-    "templateKey": "TPL_ITERATION_RULE",
+    "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+    "templateKey": "TPL_COMPOSITION_WITH_INVERSE_VALUE",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 그림에서 $y=f(x)$와 $y=1$의 교점은 $x=2$이므로 $f^{-1}(1)=2$이다. $y=f(x)$와 $y=2$의 교점은 $x=4$이므로 $f^{-1}(2)=4$이다. 따라서 $(f\\circ f)^{-1}(1)=f^{-1}(f^{-1}(1))=4$이고 정답은 ④이다.",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
     "sourceQid": 9,
-    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q9-solution.svg"
+    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q9-solution.svg",
+    "questionUid": "qid_v1_be69ccb61d8cd5bc89cc9fbb11661415e4d9dbc6a4f2832e4f443c65af536fa6",
+    "sourceOrdinal": 9,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":9,"sourceQid":9,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
+  
   },
   {
     "id": 10,
@@ -416,14 +462,19 @@ window.questionBank = [
     "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
     "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_FUNCTION_INJECTIVE"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 하: 정의나 기본 성질을 곧바로 적용하는 사고가 중심이다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 서로 다른 네 공을 서로 다른 여섯 상자에 한 개씩 넣는 방법은 $P(6,4)=6\\cdot5\\cdot4\\cdot3=360$가지이다. 정답은 ⑤이다.",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
-    "sourceQid": 10
+    "sourceQid": 10,
+    "questionUid": "qid_v1_d1217aa1f1e1fbae1f10ed9bcd103403839ea9c97ed8b841fabd1fb149235e38",
+    "sourceOrdinal": 10,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":10,"sourceQid":10,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
   },
   {
     "id": 11,
@@ -462,10 +513,15 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 함수값은 $x$가 커질수록 감소하므로 최솟값은 $x=1$일 때이다. $\\sqrt{a-1}+2=4$에서 $a=5$이다. 최댓값은 $x=-4$에서 $\\sqrt{4+5}+2=5$이다. 정답은 ①이다.",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
-    "sourceQid": 11
+    "sourceQid": 11,
+    "questionUid": "qid_v1_36c0b37c6dd8abb3f46c8f774f143251beee85f145b95d9026f2ba7491ec04dc",
+    "sourceOrdinal": 11,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":11,"sourceQid":11,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
   },
   {
     "id": 12,
@@ -505,10 +561,15 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: $x 3$이면 $0$에 가까운 음수 $x$에서 분자가 양수여서 제3사분면을 지난다. 따라서 가능한 최댓값은 $k=3$이고 정답은 ⑤이다.",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
-    "sourceQid": 12
+    "sourceQid": 12,
+    "questionUid": "qid_v1_458352b10058143c3a0e0e1df38e10fe32c60e62b5407a7e96a3f8f8fb75d310",
+    "sourceOrdinal": 12,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":12,"sourceQid":12,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
   },
   {
     "id": 13,
@@ -548,10 +609,15 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 역함수는 $f^{-1}(x)=(x-2)^2-a=x^2-4x+4-a$이다. $x^2-4x+7$과 비교하여 $a=-3$을 얻는다. 역함수의 정의역은 원래 함수의 치역 $[2,\\infty)$이므로 $b=2$이다. 따라서 $b-a=5$이고 정답은 ⑤이다.",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
-    "sourceQid": 13
+    "sourceQid": 13,
+    "questionUid": "qid_v1_ed1957e3ff14aadf0c5d0d24e81c9cfe18cded21d0b7ca95093ab19594b18e99",
+    "sourceOrdinal": 13,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":13,"sourceQid":13,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
   },
   {
     "id": 14,
@@ -590,10 +656,15 @@ window.questionBank = [
     "integrationPattern": "REINTERPRETATION",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 하: 정의나 기본 성질을 곧바로 적용하는 사고가 중심이다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 전체 순서쌍은 $36$개이다. $|a-b|\\le1$인 경우는 $a=b$인 $6$개와 차가 $1$인 $10$개, 모두 $16$개이다. 따라서 $|a-b|>1$인 경우는 $36-16=20$개이고 정답은 ④이다.",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
-    "sourceQid": 14
+    "sourceQid": 14,
+    "questionUid": "qid_v1_dad3075bd2abd3e4142c3388b0c4d8a1b97f16c2fe49d85424f73182505e87fa",
+    "sourceOrdinal": 14,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":14,"sourceQid":14,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
   },
   {
     "id": 15,
@@ -634,11 +705,17 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: 직선 $l$의 기울기를 $m$이라 하면 쌍곡선과의 교점은 $mx=-\\dfrac3x$, 즉 $x^2=-\\dfrac3m$을 만족한다. 두 교점의 $x$좌표는 서로 반대이므로 $t=\\sqrt{-3/m}>0$이라 놓으면 $P=(-t,3/t)$, $Q=(t,-3/t)$이다. 두…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
     "sourceQid": 15,
-    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q15-solution.svg"
+    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q15-solution.svg",
+    "questionUid": "qid_v1_424800a42150a151d79bf093082f190d4dd6ded1e6968c1bb18fbdc800992d09",
+    "sourceOrdinal": 15,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":15,"sourceQid":15,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
+  
   },
   {
     "id": 16,
@@ -678,10 +755,15 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 곡선 위 점을 $P=((u+1)^2-2,u)$, $Q=((v+1)^2-2,v)$라 두면 중점의 $y$좌표 조건에서 $u+v=2$이다. 두 점은 서로 다르므로 $u e v$이다. 직선의 기울기는 $\\dfrac{v-u}{(v+1)^2-(u+1)^2}$…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
-    "sourceQid": 16
+    "sourceQid": 16,
+    "questionUid": "qid_v1_c7f62e26019e7017bd084610a5e09dadc311f5455a044d18b0e4e807578a6393",
+    "sourceOrdinal": 16,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":16,"sourceQid":16,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
   },
   {
     "id": 17,
@@ -721,10 +803,15 @@ window.questionBank = [
     "integrationPattern": "REINTERPRETATION",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: $1,2$를 포함하므로 나머지 세 원소를 $\\{3,4,5,6,7,8\\}$에서 고른다. 전체는 $C(6,3)=20$개이다. $5,7$을 모두 포함하는 경우는 나머지 하나를 $\\{3,4,6,8\\}$에서 골라 $4$개이다. 따라서 $20-4=16$개이고 정답은 ②이다.",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
-    "sourceQid": 17
+    "sourceQid": 17,
+    "questionUid": "qid_v1_5be4ee10729d3874b7ec02bf764ac5db27843a8c4039ba4487172718fbe71d58",
+    "sourceOrdinal": 17,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":17,"sourceQid":17,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
   },
   {
     "id": 18,
@@ -763,10 +850,15 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: $z=\\dfrac{1+i}{\\sqrt2}$라 하면 $z^2=i$, $z^4=-1$이므로 $z^{36}=(z^4)^9=-1$이다. 또 $w=z-\\sqrt2=\\dfrac{-1+i}{\\sqrt2}$라 두면 $w^2=-i$, $w^4=-1$이므로…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
-    "sourceQid": 18
+    "sourceQid": 18,
+    "questionUid": "qid_v1_30a55434567f8ba3ee9e662e3a35c3d6ebc35858e895d7180db041f586c7096c",
+    "sourceOrdinal": 18,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":18,"sourceQid":18,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
   },
   {
     "id": 19,
@@ -806,10 +898,15 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: 교점은 $mx+n=\\dfrac{x-2}{x+1}$을 만족하고, 정리하면 $mx^2+(m+n-1)x+n+2=0$이다. 판별식 $D=m^2-2(n+5)m+(n-1)^2$가 모든 실수 $m$에서 음수가 아니어야 한다. 이 식의 최솟값은 $m=n+5$일 때 $-12(n+2)$이므로…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
-    "sourceQid": 19
+    "sourceQid": 19,
+    "questionUid": "qid_v1_7094e1fa3d523d2f7a6c8ad0c31bad37b28e1dd6ac4889d2ce36e41879961899",
+    "sourceOrdinal": 19,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":19,"sourceQid":19,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
   },
   {
     "id": 20,
@@ -850,11 +947,17 @@ window.questionBank = [
     "integrationPattern": "INTERDEPENDENT",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: $A=(t,k\\sqrt t)$라 두면 같은 높이에서 $y=\\sqrt x$와 만나는 점은 $B=(k^2t,k\\sqrt t)$, 같은 $x$좌표에서 만나는 점은 $C=(t,\\sqrt t)$이다. 직각이등변 조건에서 $(k^2-1)t=(k-1)\\sqrt t$, 즉…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
     "sourceQid": 20,
-    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q20-solution.svg"
+    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q20-solution.svg",
+    "questionUid": "qid_v1_df642ba5ba6b03a242cfd8f4688169315203ebd89653a68abe8d7d5b2592057b",
+    "sourceOrdinal": 20,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":20,"sourceQid":20,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
+  
   },
   {
     "id": 21,
@@ -889,11 +992,17 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: 그래프의 시작점은 $(-1,2)$이므로 $a=2$, $b=2$이다. $f(x)=-\\sqrt{2x+2}+2$와 역함수의 교점은 $y=x$ 위에 있다. $f(x)=x$에서 $\\sqrt{2x+2}=2-x$이고 $x\\le2$이다. 제곱하면 $x^2-6x+2=0$, 따라서 허용되는…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
     "sourceQid": 21,
-    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q21-solution.svg"
+    "solutionImage": "assets/images/20_순천여고_2학기_기말_고1_기출/q21-solution.svg",
+    "questionUid": "qid_v1_a9196edd63d2e1a153fd3bcea37550d59899a1afe8032fded42b5c35d08efac7",
+    "sourceOrdinal": 21,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":21,"sourceQid":21,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
+  
   },
   {
     "id": 22,
@@ -924,14 +1033,19 @@ window.questionBank = [
     "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
     "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
     "crossConceptKeys": ["CC_QUADRATIC_FUNCTION"],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_FUNCTION_BIJECTION","COND_PIECEWISE_DOMAIN_PARTITION"],
     "integrationPattern": "INTERDEPENDENT",
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 5: 여러 구간·경계·경우를 맞춰 전체 구조를 종합해야 한다. 현재 풀이 근거: $f(x)=ax^2+bx+c$라 두면 $c=-1$, $a-b=5$이다. 왼쪽 가지의 치역은 $(-\\infty,-5)$, 오른쪽 가지의 치역은 $(4,\\infty)$이다. 전체 치역이 실수이고 함수가 일대일이 되려면 가운데 가지가 $4$에서 $-5$까지 감소해야 하므로…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
-    "sourceQid": 22
+    "sourceQid": 22,
+    "questionUid": "qid_v1_78eb383c8d75d1a58c5b0928c84ca37a0ee11f9bc30b050a9bdfd9a2430052a6",
+    "sourceOrdinal": 22,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":22,"sourceQid":22,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
   },
   {
     "id": 23,
@@ -965,9 +1079,14 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: $f=f^{-1}$이면 $f(f(x))=x$이므로 $f$는 자기 자신이 역함수인 순열이다. 순환은 고정점 또는 서로 바꾸는 두 원소의 쌍만 가능하다. 맞바꿈이 없으면 $1$가지, 하나이면 $C(5,2)=10$가지, 두 개이면 고정점을 고르는 $5$가지와 남은 네 원소를 짝짓는",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceId": "2020|순천여고|h1|2final",
-    "sourceQid": 23
+    "sourceQid": 23,
+    "questionUid": "qid_v1_c0330dca230e557a4c441ac8a0a5150b3d82fe8265b0e1faa5b0913f1da47697",
+    "sourceOrdinal": 23,
+    "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|순천여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js","sourceOrdinal":23,"sourceQid":23,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_순천여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042"}
   }
 ];

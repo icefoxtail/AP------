@@ -95,6 +95,7 @@
     "data/meta-foundation/runtime/middle-geometry-v1.json",
     "data/meta-foundation/runtime/middle1-v1.json",
     "data/meta-foundation/runtime/h1-foundation-v1.json",
+    "data/meta-foundation/runtime/h1-original-source-v1.json",
   ];
   const MANIFEST_REQUIRED_PATHS = Object.freeze([
     "data/archive2-catalog.json",
@@ -556,6 +557,9 @@
       if (!Object.hasOwn(resources, path))
         throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical input bundle is incomplete: " + path);
     const catalog = decodeCatalog(resources["data/archive2-catalog.json"]);
+    const sourceJsShaByFile = new Map((catalog?.sourceHashes || []).map(([file, sha]) =>
+      [normalizeFile(file), text(sha).toLowerCase()],
+    ));
     const master = resources[CANONICAL_MASTER_PATH];
     const projectionPolicy = resources["data/archive2-canonical-projection-policy.json"];
     const links = resources["data/basic-scope-parent-links.json"];
@@ -833,6 +837,7 @@
       const record = {
         ...source,
         sourceFile,
+        currentSourceJsSha256: sourceJsShaByFile.get(sourceFile) || "",
         sourceGrade: gradeEvidence.grade,
         sourceGradeStatus: gradeEvidence.status,
         sourceGradeReason: gradeEvidence.reason,

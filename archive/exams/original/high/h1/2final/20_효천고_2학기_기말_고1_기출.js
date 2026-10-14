@@ -36,8 +36,15 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
+    "difficultyReason": "학습용 level 하: 정의나 기본 성질을 곧바로 적용하는 사고가 중심이다. 문제은행 difficultyBucket 1: 풀이가 직접 읽기나 대입 한 번으로 끝난다. 현재 풀이 근거: $g(x)=x+1$을 $f$에 대입한다. $(f\\circ g)(x)=(x+1)^2-(x+1) =x^2+2x+1-x-1=x^2+x$. 따라서 정답은 ①이다.",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_9a53e7acc76d52e0b0fef30756121ed100a58fcb770bfd8df390c02d14415989",
+    "sourceQid": 1,
+    "sourceOrdinal": 1,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":1,"sourceQid":1,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":1}
+  
   },
   {
     "id": 2,
@@ -75,8 +82,15 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
+    "difficultyReason": "학습용 level 하: 정의나 기본 성질을 곧바로 적용하는 사고가 중심이다. 문제은행 difficultyBucket 1: 풀이가 직접 읽기나 대입 한 번으로 끝난다. 현재 풀이 근거: $y=3x+1$에서 $x$와 $y$를 바꾸면 $x=3y+1$이다. 이를 $y$에 대하여 풀면 $y=\\dfrac{x-1}{3}=\\dfrac13x-\\dfrac13$이다. 따라서 역함수는 ④이다.",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_8c489fcbc59c68fa066d49146eaba2b7d2d1e01d284baa38afa5e75326207b25",
+    "sourceQid": 2,
+    "sourceOrdinal": 2,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":2,"sourceQid":2,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":1}
+  
   },
   {
     "id": 3,
@@ -114,8 +128,15 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
+    "difficultyReason": "학습용 level 하: 정의나 기본 성질을 곧바로 적용하는 사고가 중심이다. 문제은행 difficultyBucket 1: 풀이가 직접 읽기나 대입 한 번으로 끝난다. 현재 풀이 근거: $y=\\dfrac1{x-1}+3$은 $y=\\dfrac1x$의 그래프를 오른쪽으로 1, 위쪽으로 3만큼 평행이동한 것이다. 그러므로 점근선은 $x=1$, $y=3$이고 정답은 ②이다.",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_f10e7fc2d6091eb2674e77647c4d5e629d7ee0c649fa20772c47796f1c00b291",
+    "sourceQid": 3,
+    "sourceOrdinal": 3,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":3,"sourceQid":3,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":1}
+  
   },
   {
     "id": 4,
@@ -146,17 +167,22 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_RADICAL_EXPRESSION",
+    "templateKey": "TPL_RADICAL_EXPRESSION_SIMPLIFY",
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_NONZERO"
-    ],
+    "conditionKeys": ["COND_NONZERO"],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 식은 $\\dfrac1{\\sqrt{x}+2}-\\dfrac1{\\sqrt{x}-2}$이다. 통분하면 분자는 $(\\sqrt{x}-2)-(\\sqrt{x}+2)=-4$이고 분모는 $(\\sqrt{x}+2)(\\sqrt{x}-2)=x-4$이다. 따라서 식의 값은…",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_ac97d77f0bf226952dcdbebd7a690d50e431a5ebd5f1d004fe95697b158d2796",
+    "sourceQid": 4,
+    "sourceOrdinal": 4,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":4,"sourceQid":4,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":1}
+  
   },
   {
     "id": 5,
@@ -187,17 +213,22 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+    "templateKey": "TPL_RANGE_ENUMERATION",
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
+    "conditionKeys": ["COND_RANGE"],
     "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
+    "difficultyReason": "학습용 level 하: 정의나 기본 성질을 곧바로 적용하는 사고가 중심이다. 문제은행 difficultyBucket 1: 풀이가 직접 읽기나 대입 한 번으로 끝난다. 현재 풀이 근거: 제곱근 안이 음이 아니어야 하므로 $4-2x\\ge0$, 즉 $x\\le2$이다. 또 $\\sqrt{4-2x}\\ge0$이므로 $y=-\\sqrt{4-2x}+3\\le3$이다. $x=2$에서 $y=3$이 가능하므로 치역은 $\\{y\\mid y\\le3\\}$이고 정답은 ⑤이다.",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_883feba82beda43d823f41f4667b6d27079deb010b302db3c9f6e78d45613bef",
+    "sourceQid": 5,
+    "sourceOrdinal": 5,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":5,"sourceQid":5,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":1}
+  
   },
   {
     "id": 6,
@@ -231,12 +262,19 @@ window.questionBank = [
     "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
     "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_DISTINCT_DIGITS","COND_PARITY_POSITION"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 하: 정의나 기본 성질을 곧바로 적용하는 사고가 중심이다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 두 자리 수가 짝수이려면 일의 자리는 2 또는 4이다. 일의 자리를 정하는 방법은 2가지이고, 그 뒤 십의 자리에 올 수 있는 카드는 남은 3장이다. 따라서 $2\\cdot3=6$가지이며 정답은 ②이다.",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_7c4e20c179d840bccbab4be5f5a715f5eceb24b2ede891ccb78e9f624a9d515e",
+    "sourceQid": 6,
+    "sourceOrdinal": 6,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":6,"sourceQid":6,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":1}
+  
   },
   {
     "id": 7,
@@ -274,8 +312,15 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
+    "difficultyReason": "학습용 level 하: 정의나 기본 성질을 곧바로 적용하는 사고가 중심이다. 문제은행 difficultyBucket 1: 풀이가 직접 읽기나 대입 한 번으로 끝난다. 현재 풀이 근거: 만두 크기 3가지, 만두피 4가지, 만두소 5가지 중에서 각각 하나씩 고른다. 곱의 법칙에 따라 $3\\cdot4\\cdot5=60$가지이므로 정답은 ④이다.",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_6edc919ef059cdab53f5e2e53f026e3af422358da89b519b755a038c06316a58",
+    "sourceQid": 7,
+    "sourceOrdinal": 7,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":7,"sourceQid":7,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":1}
+  
   },
   {
     "id": 8,
@@ -313,8 +358,15 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: $120=2^3\\cdot3\\cdot5$이다. 양의 약수는 각 소인수의 지수를 각각 $0$부터 지수의 최댓값까지 고른 결과이므로 개수는 $(3+1)(1+1)(1+1)=16$이다. 따라서 정답은 ①이다.",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_ff90fd7580db519f1f1a430ae32ed47894841152cab35131c4c796b94f5d425d",
+    "sourceQid": 8,
+    "sourceOrdinal": 8,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":8,"sourceQid":8,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":1}
+  
   },
   {
     "id": 9,
@@ -352,8 +404,15 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 반장, 부반장, 회장은 서로 다른 직책이므로 순서를 구별하여 뽑는다. 곱의 법칙에 따라 $7\\cdot6\\cdot5=210$가지이므로 정답은 ②이다.",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_74bbe00e9e185d76ade0eec1544254a550299d0c804d1001b88fba968e67831f",
+    "sourceQid": 9,
+    "sourceOrdinal": 9,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":9,"sourceQid":9,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":1}
+  
   },
   {
     "id": 10,
@@ -391,8 +450,15 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 서로 다른 케이크 6개 중 3개를 고르는 방법은 $\\binom63=20$가지이다. 서로 다른 음료 5잔 중 2잔을 고르는 방법은 $\\binom52=10$가지이다. 두 선택은 독립적으로 이루어지므로 전체 경우의 수는 $20\\cdot10=200$이다. 따라서 정답은 ②이다.",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_dc4d000bbea006ebec34b4443a5f5dd7819784aa6756346da0eab840f7e69bf4",
+    "sourceQid": 10,
+    "sourceOrdinal": 10,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":10,"sourceQid":10,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":1}
+  
   },
   {
     "id": 11,
@@ -427,20 +493,22 @@ window.questionBank = [
     "solutionImageAlt": "두 점 A, B와 유리함수 위의 점 P 및 삼각형을 나타낸 좌표 그래프",
     "solutionImageCaption": "x=3일 때 점 P가 움직이는 곡선 위에 놓여 넓이의 최솟값이 생긴다.",
     "solutionImageSize": "full",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_POINT_LINE_DISTANCE",
-      "CC_TRIANGLE_AREA"
-    ],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
+    "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+    "templateKey": "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
+    "crossConceptKeys": ["CC_POINT_LINE_DISTANCE","CC_TRIANGLE_AREA"],
+    "conditionKeys": ["COND_RANGE"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: $A(-2,3)$와 $B(2,1)$을 지나는 직선의 기울기는 $-\\dfrac12$이고, 직선의 방정식은 $x+2y-4=0$이다. 두 점 사이의 거리로 $AB=2\\sqrt5$이며, 점 $P$에서 직선 $AB$까지의 거리는 $\\dfrac{|x+2y-4|}{\\sqrt5}$이다.…",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_6907368a17cb59e94c84ae4c8c3543016044ebdf00654e244c6b78acbfb3c28f",
+    "sourceQid": 11,
+    "sourceOrdinal": 11,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":11,"sourceQid":11,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":2}
+  
   },
   {
     "id": 12,
@@ -475,17 +543,22 @@ window.questionBank = [
     "solutionImageAlt": "무리함수 그래프와 k=7/4 및 k=3인 직선을 함께 나타낸 그래프",
     "solutionImageCaption": "k=7/4에서는 접하고 k=3에서는 한 점에서 만나 교점이 하나이다.",
     "solutionImageSize": "full",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
+    "conditionKeys": ["COND_RANGE"],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: 교점에서 $\\sqrt{x-2}=x-k$이다. $u=\\sqrt{x-2}\\,(u\\ge0)$로 두면 $x=u^2+2$이므로 $k=u^2-u+2=(u-\\dfrac12)^2+\\dfrac74$이다. 포물선의 꼭짓점에서 $k=\\dfrac74$일 때 한 교점이고, $k>2$이면 두 근 중…",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_4fcb8d6b9fb32c8ebb66451fc850ae1526811d2fec0eb79e7c91d826946f7347",
+    "sourceQid": 12,
+    "sourceOrdinal": 12,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":12,"sourceQid":12,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":2}
+  
   },
   {
     "id": 13,
@@ -520,19 +593,22 @@ window.questionBank = [
     "solutionImageAlt": "두 무리함수의 그래프와 경계 x=-4, x=4를 나타낸 좌표 그래프",
     "solutionImageCaption": "x와 -x에서 두 그래프 사이의 세로 길이를 짝지으면 합이 8로 일정하다.",
     "solutionImageSize": "full",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_FUNCTION_SYMMETRY"
-    ],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
+    "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+    "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
+    "crossConceptKeys": ["CC_FUNCTION_SYMMETRY"],
+    "conditionKeys": ["COND_RANGE"],
     "integrationPattern": "REINTERPRETATION",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 구간 $[-4,4]$의 점 $x$와 $-x$에서 두 그래프 사이의 세로 길이를 각각 더한다. $g(x)-f(x)=4+\\sqrt{4-x}-\\sqrt{4+x}$이고, $g(-x)-f(-x)=4+\\sqrt{4+x}-\\sqrt{4-x}$이므로 두 길이의 합은 항상 8이다. 따라서…",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_2adb438f9246126ae65f678cd69e802a635a35a9a9b5d6a4f8ec74c3b9eb3c82",
+    "sourceQid": 13,
+    "sourceOrdinal": 13,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":13,"sourceQid":13,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":2}
+  
   },
   {
     "id": 14,
@@ -569,17 +645,20 @@ window.questionBank = [
     "solutionImageSize": "full",
     "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
     "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
-    "crossConceptKeys": [
-      "CC_INVERSE_FUNCTION"
-    ],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
+    "crossConceptKeys": ["CC_INVERSE_FUNCTION"],
+    "conditionKeys": ["COND_RANGE","COND_PIECEWISE_DOMAIN_PARTITION","COND_FUNCTION_BIJECTION"],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 5: 여러 구간·경계·경우를 맞춰 전체 구조를 종합해야 한다. 현재 풀이 근거: 왼쪽 구간에서 $g(x)=\\dfrac{-4x-8}{x+1}=-4-\\dfrac4{x+1}$의 치역은 $(-4,0)$이고, 오른쪽 구간에서 $\\sqrt{2x-2}+3$의 치역은 $[3,\\infty)$이다. $g$가 실수 전체에서 $(-4,\\infty)$로의 일대일 대응이므로…",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_21783a54902e438840dd4c99c81c6a893dae2ab556bd495e9942fd6025f9f7ed",
+    "sourceQid": 14,
+    "sourceOrdinal": 14,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":14,"sourceQid":14,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":2}
+  
   },
   {
     "id": 15,
@@ -612,15 +691,20 @@ window.questionBank = [
     "wide": false,
     "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
     "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
-    "crossConceptKeys": [
-      "CC_COMBINATORICS_COUNTING"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 마지막 걸음이 한 단이면 그 전까지 8단을 오르는 방법 수와 같고, 두 단이면 그 전까지 7단을 오르는 방법 수와 같다. $n$단까지의 방법 수를 $a_n$이라 하면 $a_n=a_{n-1}+a_{n-2}$이며 $a_1=1$, $a_2=2$이다. 차례로 $a_3=3$,…",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_f69d5b72c14a484e5447e6246eeb58ad7b336f66ae90ddfcbf6dacc9373dc142",
+    "sourceQid": 15,
+    "sourceOrdinal": 15,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":15,"sourceQid":15,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":2}
+  
   },
   {
     "id": 16,
@@ -654,15 +738,20 @@ window.questionBank = [
     "wide": false,
     "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
     "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
-    "crossConceptKeys": [
-      "CC_COMBINATORICS_COUNTING"
-    ],
-    "conditionKeys": [],
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_ADJACENT_REGIONS_DIFFERENT_COLOR"],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 네 영역의 인접 관계는 네 꼭짓점이 차례로 이어진 4-cycle이다. 먼저 $A$에는 5가지 색을 고른다. $B$는 $A$와 달라 4가지, $D$도 $A$와 달라 4가지이다. $C$는 $B,D$와 모두 달라야 한다. $B=D$이면 $C$는 4가지이고, $B\\ne D$이면…",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_282b6281ae1eefa0576a1b9a243b7391ffdbb8b34c2094132e7cb5bc46ee3622",
+    "sourceQid": 16,
+    "sourceOrdinal": 16,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":16,"sourceQid":16,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":2}
+  
   },
   {
     "id": 17,
@@ -699,15 +788,20 @@ window.questionBank = [
     "solutionImageSize": "full",
     "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
     "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
-    "crossConceptKeys": [
-      "CC_COMBINATORICS_COUNTING"
-    ],
-    "conditionKeys": [],
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_FUNCTION_BIJECTION", "COND_STRICT_MONOTONE_VALUES", "COND_STRICT_SELECTED_VALUE_SUM_COMPARISON"],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: 일대일 대응이므로 $f(1),\\ldots,f(6)$은 $1,2,3,4,5,6$의 순열이다. $f(2)>f(3)>f(4)$는 고른 세 값 $S$의 순서를 큰 수부터 하나로 정한다. 각 세 값의 합을 $s$라 할 때, $f(1)$은 $S$의 여집합 값 중 $3f(1)<s$인…",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_8cf7a96d2ffe77d29d0392556f3d051ecfc505504ef5cabfad0beb82ae92cd16",
+    "sourceQid": 17,
+    "sourceOrdinal": 17,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":17,"sourceQid":17,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":2}
+  
   },
   {
     "id": 18,
@@ -743,19 +837,21 @@ window.questionBank = [
     "solutionImageCaption": "수평선 y=2는 x=1에서 한 번만 만난다.",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
-    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
-    "crossConceptKeys": [
-      "CC_ABSOLUTE_VALUE_GRAPH"
-    ],
-    "conditionKeys": [
-      "COND_POSITIVE",
-      "COND_NONZERO"
-    ],
+    "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+    "crossConceptKeys": ["CC_ABSOLUTE_VALUE_GRAPH"],
+    "conditionKeys": ["COND_POSITIVE","COND_NONZERO"],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: $g(0)=1$이다. 실제로 $f(x)=0$은 $x=0$에서만 성립한다. $t=2$일 때 $k$와 $2$가 다르면 그래프는 서로 다른 두 점에서 $y=2$와 만난다. $k=2$이면 두 점근선 사이의 가지에서만 한 번 만나고, 나머지 두 가지는 $y=2$에 도달하지 않으므로…",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_f94805355be4f0030dc969876332a0abb626c883dfb08d918e9e1d8d8c80a33b",
+    "sourceQid": 18,
+    "sourceOrdinal": 18,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":18,"sourceQid":18,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":2}
+  
   },
   {
     "id": 19,
@@ -787,20 +883,22 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_ANGLE_BISECTOR_THEOREM",
-      "CC_RATIONAL_FUNCTION"
-    ],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
+    "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+    "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+    "crossConceptKeys": ["CC_ANGLE_BISECTOR_THEOREM"],
+    "conditionKeys": ["COND_RANGE"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: $OQ=4$이고 $Q$는 $x$축 위에 있으므로 $Q=(4,0)$이다. 점 $P$에서 $x$축에 내린 수선의 발이 $Q$이므로 $P=(4,y)$이다. 점근선의 교점은 $A=(3,1)$이므로 $OA$의 기울기는 $\\dfrac13$이다. 직선 $OA$와 $PQ$의 교점을…",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_6335fd5e39962a749573d6edfd7a25ad9215b925f92d792a4dd2d8dccc203309",
+    "sourceQid": 19,
+    "sourceOrdinal": 19,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":19,"sourceQid":19,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":3}
+  
   },
   {
     "id": 20,
@@ -827,17 +925,20 @@ window.questionBank = [
     "wide": false,
     "problemTypeKey": "PT_INVERSE_VALUE",
     "templateKey": "TPL_INVERSE_FUNCTION_FORM",
-    "crossConceptKeys": [
-      "CC_FUNCTION_COMPOSITION"
-    ],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
+    "crossConceptKeys": ["CC_FUNCTION_COMPOSITION"],
+    "conditionKeys": ["COND_RANGE"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 합성함수는 $(f\\circ g)(x)=\\sqrt{2-(-3x+1)}+1=\\sqrt{3x+1}+1$이다. 제곱근 안이 음이 아니어야 하므로 원래 정의역은 $x\\ge-\\dfrac13$이다. 이 구간에서 함수값은 $y\\ge1$이므로 역함수의 정의역은 $y\\ge1$이다.…",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_3de40b12f008317dd2c2e40f58c65ecb688885c106dd0b4f8185d78bf48c4c3f",
+    "sourceQid": 20,
+    "sourceOrdinal": 20,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":20,"sourceQid":20,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":3}
+  
   },
   {
     "id": 21,
@@ -869,18 +970,20 @@ window.questionBank = [
     "solutionImageSize": "full",
     "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
     "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
-    "crossConceptKeys": [
-      "CC_RATIONAL_FUNCTION"
-    ],
-    "conditionKeys": [
-      "COND_POSITIVE",
-      "COND_NEGATIVE"
-    ],
+    "crossConceptKeys": ["CC_RATIONAL_FUNCTION"],
+    "conditionKeys": ["COND_POSITIVE","COND_NEGATIVE"],
     "integrationPattern": "REINTERPRETATION",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 주어진 무리함수 그래프의 끝점은 $x$축 위의 양의 위치에 있고, 그래프는 그 점에서 왼쪽 아래 방향으로 뻗는다. $y=a\\sqrt{bx+c}$에서 정의역이 끝점의 왼쪽이므로 $b 0$이다. 따라서 $y=\\dfrac{b}{x+a}+c$의 점근선은 $x=-a$와 $y=c$이며…",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_94928d85e48f6efb9c2ae030608f4436f6b3465dd3adfcc8829b5b1020255997",
+    "sourceQid": 21,
+    "sourceOrdinal": 21,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":21,"sourceQid":21,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":3}
+  
   },
   {
     "id": 22,
@@ -908,15 +1011,20 @@ window.questionBank = [
     "wide": false,
     "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
     "templateKey": "TPL_COMBINATION_SELECTION",
-    "crossConceptKeys": [
-      "CC_COMBINATORICS_COUNTING"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 사다리꼴의 두 밑변은 세 평행선 묶음 중 한 묶음에서 두 직선을 고르고, 나머지 두 묶음에서 한 직선씩 골라 옆변을 만든다. 첫 번째와 세 번째 묶음은 각각 3개이므로 각 경우는 $\\binom32\\cdot2\\cdot3=18$개이다. 두 번째 묶음은 2개이므로 그 묶음에서…",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_997742c99ef418110956988ee96bfadf371aaffbf370e87030a7691fae06db9b",
+    "sourceQid": 22,
+    "sourceOrdinal": 22,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":22,"sourceQid":22,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":3}
+  
   },
   {
     "id": 23,
@@ -948,16 +1056,19 @@ window.questionBank = [
     "solutionImageSize": "full",
     "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
     "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
-    "crossConceptKeys": [
-      "CC_COMBINATORICS_COUNTING"
-    ],
-    "conditionKeys": [
-      "COND_NATURAL_NUMBER"
-    ],
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_AT_MOST_ONE_DISTINGUISHED_CLASS_PER_GRID_LINE", "COND_NATURAL_NUMBER"],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: 3의 배수는 $3,6,9$ 세 수이다. 이 세 수가 놓이는 세 칸 중 같은 가로줄·세로줄·대각선에 두 칸이 함께 있으면 조건에 어긋난다. 가운데의 1과 오른쪽 아래의 8을 제외한 칸을 확인하면, 조건을 만족하는 세 칸 묶음은 (왼쪽 위, 가운데 오른쪽, 아래 가운데), (위…",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_7f15f064aee6ac5d7878effd4345a671afdb62a66d220676766f946457c6d0dd",
+    "sourceQid": 23,
+    "sourceOrdinal": 23,
+    "sourceArchiveFile": "original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js","sourceOrdinal":23,"sourceQid":23,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_효천고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"07DBE35FCB348E7AC2E85AB697AC7F703B0E13710C23E4F3EE0D5E91F3B6C34B","sourceInputJsSha256":"2438D12383E978E45D098CE029DBF67CE05EE398DB4E7670CDAD959FA1DE38F5","sourcePage":3}
+  
   }
 ];
