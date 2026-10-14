@@ -105,4 +105,3 @@ node .agents/skills/apmath-source-intake-batch/scripts/validate_batch.cjs "C:\Us
 
 ### Step 6: 완료 보고
 7개 시험지 각각의 문항 수, 배점 합계(100.0점), 추출 에셋 수, 검증 PASS 여부 및 깃 커밋·푸시 결과를 깔끔한 테이블 형태로 사용자에게 보고합니다.
-
