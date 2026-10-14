@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="850" height="390" viewBox="0 0 850 390" role="img">
+<title>조건에 따른 점의 다섯 번 이동</title>
+<desc>출발점 (-1,2)부터 규칙 가 또는 나를 적용하면 1회 후 (0,1), 2회 (1,0), 3회 (-1,0), 4회 (0,-1), 5회 (0,1)이다. 이후 네 번마다 이 순환이 반복된다.</desc>
 <style>.axis{stroke:#111;stroke-width:1.2}.shape,.curve{fill:none;stroke:#111;stroke-width:1.8}.guide{fill:none;stroke:#555;stroke-width:1;stroke-dasharray:5 4}.point{fill:#111}.radius{fill:none;stroke:#1f4e79;stroke-width:1.5}.tangent{fill:none;stroke:#111;stroke-width:2.1}.perpendicular{fill:none;stroke:#555;stroke-width:1;stroke-dasharray:3 3}.right-angle{fill:none;stroke:#111;stroke-width:1.2}.center-point{fill:#1f4e79}.element-label,.annotation{font:36px sans-serif}.annotation{font-style:italic}text{font:36px sans-serif;fill:#111}.cell{fill:#fff;stroke:#111;stroke-width:1}.cell-text{text-anchor:middle;dominant-baseline:middle;font:36px sans-serif}</style>
 <rect x="16" y="16" width="204.5" height="51.142857" class="cell"/>
 <text x="118.25" y="41.571429" class="cell-text">상태</text>
@@ -49,8 +51,6 @@
 <text x="527.25" y="297.285714" class="cell-text">(−x, −y)</text>
 <rect x="629.5" y="271.714286" width="204.5" height="51.142857" class="cell"/>
 <text x="731.75" y="297.285714" class="cell-text">(0, 1)</text>
-<rect x="16" y="322.857143" width="204.5" height="51.142857" class="cell"/>
-<text x="118.25" y="348.428571" class="cell-text"></text>
 <rect x="16" y="322.857143" width="818" height="51.142857" class="cell"/>
-<text x="425" y="348.428571" class="cell-text">이후 4회마다 (0,1)로 복귀</text>
+<text x="425" y="348.428571" class="cell-text">1회 후부터 4회 주기, 17회 후 (0,1)</text>
 </svg>
