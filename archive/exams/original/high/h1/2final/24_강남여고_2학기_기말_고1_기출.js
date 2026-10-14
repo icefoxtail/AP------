@@ -89,7 +89,7 @@ window.questionBank = [
       "$65$"
     ],
     "answer": "④",
-    "solution": "음료수 $3$종류는 서로 다르고, 한 유리병에는 한 종류만 넣을 수 있다.\n첫 번째 음료수를 넣을 병: $5$가지\n두 번째 음료수를 넣을 병: $4$가지\n세 번째 음료수를 넣을 병: $3$가지\n세 선택은 순서에 따라 서로 다른 배치가 된다.\n$_{5}P_{3}=5\\times4\\times3$\n$=60$\n따라서 정답은 ④이다.",
+    "solution": "음료수 $3$종류는 서로 다르고, 한 유리병에는 한 종류만 넣을 수 있다.\n첫 번째 음료수를 넣을 병: $5$가지\n두 번째 음료수를 넣을 병: $4$가지\n세 번째 음료수를 넣을 병: $3$가지\n세 선택은 순서에 따라 서로 다른 배치가 된다.\n${}_{5}P_{3}=5\\times4\\times3$\n$=60$\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
     "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -119,7 +119,7 @@ window.questionBank = [
       "$45$"
     ],
     "answer": "③",
-    "solution": "꽃 $4$그루는 같은 종류이므로 어느 꽃을 어느 화분에 심는지는 구별하지 않는다.\n서로 다른 화분 $6$개 가운데 꽃을 심을 $4$개만 고르면 된다.\n$_{6}C_{4}={}_{6}C_{2}$\n$=\\dfrac{6\\times5}{2\\times1}$\n$=15$\n따라서 정답은 ③이다.",
+    "solution": "꽃 $4$그루는 같은 종류이므로 어느 꽃을 어느 화분에 심는지는 구별하지 않는다.\n서로 다른 화분 $6$개 가운데 꽃을 심을 $4$개만 고르면 된다.\n${}_{6}C_{4}={}_{6}C_{2}$\n$=\\dfrac{6\\times5}{2\\times1}$\n$=15$\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
     "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -315,7 +315,7 @@ window.questionBank = [
       "$3\\sqrt3$"
     ],
     "answer": "③",
-    "solution": "먼저 주어진 $x$의 분모를 유리화한다.\n$x=\\dfrac{\\sqrt3+1}{\\sqrt3-1}$\n$=\\dfrac{(\\sqrt3+1)^2}{3-1}$\n$=\\dfrac{4+2\\sqrt3}{2}=2+\\sqrt3$\n$t=\\sqrt{x}$라 두면 $t>1$이므로 분모 $t-1$과 $t+1$은 모두 $0$이 아니다.\n$\\dfrac{t-1}{t+1}+\\dfrac{t+1}{t-1}$\n$=\\dfrac{(t-1)^2+(t+1)^2}{(t+1)(t-1)}$\n$=\\dfrac{2t^2+2}{t^2-1}$\n$=\\dfrac{2(x+1)}{x-1}$\n여기서\n$\\dfrac{x+1}{x-1}=\\sqrt3$\n이므로 구하는 값은 $2\\sqrt3$이다.\n따라서 정답은 ③이다.",
+    "solution": "먼저 주어진 $x$의 분모를 유리화한다.\n$x=\\dfrac{\\sqrt3+1}{\\sqrt3-1}$\n$=\\dfrac{(\\sqrt3+1)^2}{3-1}$\n$=\\dfrac{4+2\\sqrt3}{2}=2+\\sqrt3$\n$t=\\sqrt{x}$라 두면 $t>1$이므로 분모 $t-1$과 $t+1$은 모두 $0$이 아니다.\n$\\dfrac{t-1}{t+1}+\\dfrac{t+1}{t-1}$\n$=\\dfrac{(t-1)^2+(t+1)^2}{(t+1)(t-1)}$\n$=\\dfrac{2t^2+2}{t^2-1}$\n$=\\dfrac{2(x+1)}{x-1}$\n여기서\n$\\dfrac{x+1}{x-1}=\\dfrac{3+\\sqrt3}{1+\\sqrt3}$\n$=\\dfrac{\\sqrt3(\\sqrt3+1)}{\\sqrt3+1}=\\sqrt3$\n이므로 구하는 값은 $2\\sqrt3$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -375,7 +375,7 @@ window.questionBank = [
       "$720$"
     ],
     "answer": "⑤",
-    "solution": "앞에서 둘째 자리와 넷째 자리를 먼저 정한다.\n서로 다른 남자 $3$명 중 이 두 자리에 들어갈 사람을 순서 있게 고르는 방법은\n$_3P_2=3\\times2=6$가지이다.\n남은 자리는 $1,3,5,6,7$번째의 $5$자리이다.\n남은 남자 $1$명과 여자 $4$명을 이 자리에 배열하는 방법은\n$5!=5\\times4\\times3\\times2\\times1=120$가지이다.\n따라서 구하는 방법의 수는\n$6\\times120=720$\n정답은 ⑤이다.",
+    "solution": "앞에서 둘째 자리와 넷째 자리를 먼저 정한다.\n서로 다른 남자 $3$명 중 이 두 자리에 들어갈 사람을 순서 있게 고르는 방법은\n${}_3P_2=3\\times2=6$가지이다.\n남은 자리는 $1,3,5,6,7$번째의 $5$자리이다.\n남은 남자 $1$명과 여자 $4$명을 이 자리에 배열하는 방법은\n$5!=5\\times4\\times3\\times2\\times1=120$가지이다.\n따라서 구하는 방법의 수는\n$6\\times120=720$\n정답은 ⑤이다.",
     "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
     "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -465,7 +465,7 @@ window.questionBank = [
       "$3600$"
     ],
     "answer": "③",
-    "solution": "문자 $b,e,t,i,f,u,l$ 중 자음은 $b,t,f,l$의 $4$개이고 모음은 $e,i,u$의 $3$개이다.\n양 끝에 놓을 자음 두 개를 순서 있게 고르면\n$_4P_2=4\\times3=12$가지이다.\n양 끝을 정한 뒤 남은 $5$개의 서로 다른 문자를 가운데 $5$자리에 배열하면\n$5!=5\\times4\\times3\\times2\\times1=120$가지이다.\n따라서 방법의 수는\n$12\\times120=1440$\n정답은 ③이다.",
+    "solution": "문자 $b,e,t,i,f,u,l$ 중 자음은 $b,t,f,l$의 $4$개이고 모음은 $e,i,u$의 $3$개이다.\n양 끝에 놓을 자음 두 개를 순서 있게 고르면\n${}_4P_2=4\\times3=12$가지이다.\n양 끝을 정한 뒤 남은 $5$개의 서로 다른 문자를 가운데 $5$자리에 배열하면\n$5!=5\\times4\\times3\\times2\\times1=120$가지이다.\n따라서 방법의 수는\n$12\\times120=1440$\n정답은 ③이다.",
     "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
     "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -497,7 +497,7 @@ window.questionBank = [
     ],
     "image": "assets/images/24_강남여고_2학기_기말_고1_기출/q16.png",
     "answer": "②",
-    "solution": "두 무리함수의 식을 $x$에 대하여 나타낸다.\n$y=\\sqrt{x+5}$에서\n$x=y^2-5$\n$y=\\sqrt{x}$에서\n$x=y^2$\n두 그래프는 $y=0$과 $y=2$ 사이에서 영역의 왼쪽과 오른쪽 경계가 된다.\n높이가 같은 곳에서 가로 길이를 구하면\n$x_{\\rm 오른쪽}-x_{\\rm 왼쪽}$\n$=y^2-(y^2-5)=5$\n즉 $0\\le y\\le2$에서 가로 길이가 항상 $5$로 일정하다.\n원래 영역을 같은 높이의 가로 조각으로 나란히 옮기면 가로 $5$, 세로 $2$인 직사각형과 넓이가 같다.\n$S=5\\times2=10$\n따라서 정답은 ②이다.",
+    "solution": "두 무리함수의 식을 $x$에 대하여 나타낸다.\n$y=\\sqrt{x+5}$에서\n$x=y^2-5$\n$y=\\sqrt{x}$에서\n$x=y^2$\n두 그래프는 $y=0$과 $y=2$ 사이에서 영역의 왼쪽과 오른쪽 경계가 된다.\n높이가 같은 곳에서 가로 길이를 구하면\n오른쪽 경계의 $x$좌표에서 왼쪽 경계의 $x$좌표를 빼면\n$y^2-(y^2-5)$\n$=5$\n즉 $0\\le y\\le2$에서 가로 길이가 항상 $5$로 일정하다.\n원래 영역을 같은 높이의 가로 조각으로 나란히 옮기면 가로 $5$, 세로 $2$인 직사각형과 넓이가 같다.\n$S=5\\times2=10$\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
     "subUnit": "무리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -557,7 +557,7 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "④",
-    "solution": "조합의 공식 $_mC_2=\\dfrac{m(m-1)}2$를 적용한다.\n$_{n+2}C_2+{}_{n+1}C_2=100$\n$\\dfrac{(n+2)(n+1)}2+\\dfrac{(n+1)n}2=100$\n$\\dfrac{(n+1)\\{(n+2)+n\\}}2=100$\n$\\dfrac{(n+1)(2n+2)}2=100$\n$(n+1)^2=100$\n$n+1=10$ 또는 $n+1=-10$이다.\n$n$은 자연수이므로 $n+1>0$이다.\n따라서 $n=9$이고 정답은 ④이다.",
+    "solution": "조합의 공식 $_mC_2=\\dfrac{m(m-1)}2$를 적용한다.\n${}_{n+2}C_2+{}_{n+1}C_2=100$\n$\\dfrac{(n+2)(n+1)}2+\\dfrac{(n+1)n}2=100$\n$\\dfrac{(n+1)\\{(n+2)+n\\}}2=100$\n$\\dfrac{(n+1)(2n+2)}2=100$\n$(n+1)^2=100$\n$n+1=10$ 또는 $n+1=-10$이다.\n$n$은 자연수이므로 $n+1>0$이다.\n따라서 $n=9$이고 정답은 ④이다.",
     "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
     "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -619,7 +619,7 @@ window.questionBank = [
       "$210$"
     ],
     "answer": "①",
-    "solution": "$5$명은 서로 다른 사람들이므로 어느 층에서 누가 내리는지 구별한다.\n먼저 $3$층에서 내릴 $2$명을 고른다.\n$_5C_2=\\dfrac{5\\times4}{2}=10$가지\n남은 $3$명 가운데 $4$층에서 내릴 $1$명을 고른다.\n$_3C_1=3$가지\n이제 남은 $2$명은 같은 층에서 함께 내리므로, 그 층은 $6,7,8$층 중 하나이다.\n$3$가지\n따라서 전체 방법의 수는\n$10\\times3\\times3=90$\n정답은 ①이다.",
+    "solution": "$5$명은 서로 다른 사람들이므로 어느 층에서 누가 내리는지 구별한다.\n먼저 $3$층에서 내릴 $2$명을 고른다.\n${}_5C_2=\\dfrac{5\\times4}{2}=10$가지\n남은 $3$명 가운데 $4$층에서 내릴 $1$명을 고른다.\n${}_3C_1=3$가지\n이제 남은 $2$명은 같은 층에서 함께 내리므로, 그 층은 $6,7,8$층 중 하나이다.\n$3$가지\n따라서 전체 방법의 수는\n$10\\times3\\times3=90$\n정답은 ①이다.",
     "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
     "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -695,7 +695,7 @@ window.questionBank = [
     "content": "풀이 과정을 자세히 작성하기 바랍니다.<br>옥순이가 친구 9명 중에서 6명을 생일파티를 위해 집에 초대할 때, 다음을 구하시오. [5점]<br>(1) 친구를 초대하는 모든 경우의 수 [2점]<br>(2) 친구 9명 중 3명은 세쌍둥이일 때, 이 세쌍둥이를 모두 초대하거나 3명 모두를 초대하지 않는 모든 경우의 수 [3점]",
     "choices": [],
     "answer": "(1) $84$, (2) $21$",
-    "solution": "(1) 친구 $9$명 가운데 초대할 $6$명을 순서 없이 선택한다.\n$_9C_6={}_9C_3$\n$=\\dfrac{9\\times8\\times7}{3\\times2\\times1}$\n$=84$\n따라서 (1)의 경우의 수는 $84$가지이다.\n\n(2) 세쌍둥이 $3$명을 모두 초대하거나 모두 초대하지 않는 경우로 나눈다.\n① 세쌍둥이를 모두 초대하는 경우\n이미 $3$명을 골랐으므로 나머지 $6$명 가운데 $3$명을 더 고른다.\n$_6C_3=\\dfrac{6\\times5\\times4}{3\\times2\\times1}=20$\n② 세쌍둥이를 모두 초대하지 않는 경우\n나머지 친구 $6$명을 전부 초대해야 한다.\n$_6C_6=1$\n두 경우는 서로 겹치지 않으므로\n$20+1=21$\n따라서 구하는 경우의 수는 (1) $84$가지, (2) $21$가지이다.",
+    "solution": "(1) 친구 $9$명 가운데 초대할 $6$명을 순서 없이 선택한다.\n${}_9C_6={}_9C_3$\n$=\\dfrac{9\\times8\\times7}{3\\times2\\times1}$\n$=84$\n따라서 (1)의 경우의 수는 $84$가지이다.\n\n(2) 세쌍둥이 $3$명을 모두 초대하거나 모두 초대하지 않는 경우로 나눈다.\n① 세쌍둥이를 모두 초대하는 경우\n이미 $3$명을 골랐으므로 나머지 $6$명 가운데 $3$명을 더 고른다.\n${}_6C_3=\\dfrac{6\\times5\\times4}{3\\times2\\times1}=20$\n② 세쌍둥이를 모두 초대하지 않는 경우\n나머지 친구 $6$명을 전부 초대해야 한다.\n${}_6C_6=1$\n두 경우는 서로 겹치지 않으므로\n$20+1=21$\n따라서 구하는 경우의 수는 (1) $84$가지, (2) $21$가지이다.",
     "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
     "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
