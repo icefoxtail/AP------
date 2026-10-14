@@ -21,3 +21,9 @@
 - L3 H1-RPM-253 합성함수 / L4 합성함수 계산 DIRECT_ACTIVE; UID별 ACTIVE PT/TPL·난도·조건·역발문·오답 근거는 q02 JSON 및 Metadata registry.
 - A1~C3 9개 AUTHOR_DRAFT_ONLY, 문제 SVG 9개+해설 SVG 9개 Git blob 결속, 각 UID self math/choice/curriculum/Meta/visual 필요성 기록. Python 좌표 수치·수학 계산 실행; 실제 Archive 브라우저 렌더·외부 독립검수·Consumer·main은 NOT_RUN.
 - q02 exact sourceUid 9개 EVIDENCE_DEBT. q01 9개 그대로 보호. 18/207 후보, next q03. q03은 같은 source-read→5축 설계·작성·검증·Git 누적.
+
+## QID9 정답번호 3×3 분산 HARD — 2026-10-14 형님 직접 확인
+- 신규 원본 qid A1~C3 9문항의 객관식 정답번호는 ①~⑤ 각 1~2개(2/2/2/2/1)로 분산한다. **3×3 가로 A/B/C와 세로 1/2/3 모두 번호 중복·쏠림을 각각 확인한다.** 숫자만으로 채우지 말고 최종 배치표를 제작 ledger에 남긴다.
+- 정답 수학값/content/실제 함수/SVG는 바꾸지 않고, 보기의 순서가 가변적인 문항만 재배열한다. 그 때 choices/answer/solution 결론/오답 네 개의 번호→실제 계산값 근거/receipt를 동기화하여 최종값으로 표적 재검한다. 원문 보기 또는 순서의 의미가 잠긴 경우 임의 재배열 금지. 숫자 보기 오름차순 자체는 순서 보호 근거가 아니다.
+- q02 수정 분포: A=[③,①,⑤], B=[②,④,①], C=[④,⑤,②]. 번호 빈도 ①2 ②2 ③1 ④2 ⑤2. q01 원문 그림 복수정답은 이 3×3 단일 정답 분산의 일괄 대상이 아님. q03 이후 제작 전/후 적용.
+- q02 본문 수학과 그림 원본/문제SVG/해설SVG/Meta 난도는 불변. 9개 문항 선택지 순서·번호·결론·오답 근거만 재조정. 독립검수 및 브라우저는 NOT_RUN 유지.

@@ -31,7 +31,53 @@
     "browser": "NOT_RUN",
     "sourceUidDebt": 9,
     "studentRelease": "NOT_AUTHORIZED",
-    "nextQid": 3
+    "nextQid": 3,
+    "answerDistribution": {
+      "counts": {
+        "①": 2,
+        "②": 2,
+        "③": 1,
+        "④": 2,
+        "⑤": 2
+      },
+      "rows": [
+        [
+          "③",
+          "①",
+          "⑤"
+        ],
+        [
+          "②",
+          "④",
+          "①"
+        ],
+        [
+          "④",
+          "⑤",
+          "②"
+        ]
+      ],
+      "columns": [
+        [
+          "③",
+          "②",
+          "④"
+        ],
+        [
+          "①",
+          "④",
+          "⑤"
+        ],
+        [
+          "⑤",
+          "①",
+          "②"
+        ]
+      ],
+      "rule": "All indices 1-2; no row or column duplicate; math values unchanged",
+      "scope": "Q02 A1-C3",
+      "status": "AUTHOR_RECHECK"
+    }
   },
   "questions": [
     {
@@ -67,12 +113,12 @@
       "choices": [
         "$1$",
         "$2$",
-        "$3$",
         "$4$",
+        "$3$",
         "$5$"
       ],
-      "answer": "④",
-      "solution": "합성함수는 안쪽 함수부터 적용하므로 대응을 순서대로 읽는다.\n$g(2)=3$이다.\n$f(3)=4$이다.\n$(f\\circ g)(2)=f(g(2))=f(3)=4$이다.\n따라서 정답은 ④이다.",
+      "answer": "③",
+      "solution": "합성함수는 안쪽 함수부터 적용하므로 대응을 순서대로 읽는다.\n$g(2)=3$이다.\n$f(3)=4$이다.\n$(f\\circ g)(2)=f(g(2))=f(3)=4$이다.\n따라서 정답은 ③이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/A1-solution.svg",
       "solutionImageAlt": "A1 함수 합성의 결정적 대응 경로를 표시한 해설 대응도",
       "solutionImageCaption": "먼저 g, 다음 f의 두 단계 대응",
@@ -127,19 +173,54 @@
           "allFive": [
             1,
             2,
-            3,
             4,
+            3,
             5
           ],
           "correctValue": 4,
-          "correctChoice": 4,
+          "correctChoice": 3,
           "wrongOptionReasons": [
             "① $f(2)=1$을 답으로 씀",
             "② 순서를 바꿔 $(g\\circ f)(2)=g(1)=2$",
-            "③ $g(2)=3$에서 멈춤",
+            "④ $g(2)=3$에서 멈춤",
             "⑤ $g(g(2))=g(3)=5$를 계산"
           ],
-          "mathematicallyUnique": true
+          "mathematicallyUnique": true,
+          "finalChoicePositionAudit": {
+            "status": "AUTHOR_RECHECK",
+            "sourceChoiceSetUnchanged": true,
+            "originalIndex": 4,
+            "finalIndex": 3,
+            "finalValues": [
+              1,
+              2,
+              4,
+              3,
+              5
+            ],
+            "wrongOptionValues": [
+              {
+                "index": "①",
+                "value": 1,
+                "reason": "$f(2)=1$을 답으로 씀"
+              },
+              {
+                "index": "②",
+                "value": 2,
+                "reason": "순서를 바꿔 $(g\\circ f)(2)=g(1)=2$"
+              },
+              {
+                "index": "④",
+                "value": 3,
+                "reason": "$g(2)=3$에서 멈춤"
+              },
+              {
+                "index": "⑤",
+                "value": 5,
+                "reason": "$g(g(2))=g(3)=5$를 계산"
+              }
+            ]
+          }
         },
         "expectedMapFacts": {
           "X": [
@@ -183,6 +264,21 @@
           "decisiveRelation": "먼저 g, 다음 f의 두 단계 대응",
           "newVisualInformation": "해설에서 사용한 함수별 화살표·적용 순서를 색상과 결론으로 분리",
           "browser": "NOT_RUN"
+        },
+        "answerIndexCorrection": {
+          "before": "④",
+          "after": "③",
+          "changedFields": [
+            "choices",
+            "answer",
+            "solution.conclusion",
+            "review.choiceAudit"
+          ],
+          "reason": "QID9 3x3 row/column spread and each answer position count 1..2",
+          "revalidated": "AUTHOR_TARGETED_RECHECK",
+          "svgUnchanged": true,
+          "mathResultUnchanged": true,
+          "independentReview": "NOT_RUN"
         }
       }
     },
@@ -217,14 +313,14 @@
       "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/A2-problem.svg",
       "imageSize": "full",
       "choices": [
+        "$4$",
         "$1$",
         "$2$",
         "$3$",
-        "$4$",
         "$5$"
       ],
-      "answer": "④",
-      "solution": "합성함수는 안쪽 함수부터 적용하므로 대응을 순서대로 읽는다.\n$f(4)=2$이다.\n$g(2)=4$이다.\n$(g\\circ f)(4)=g(f(4))=g(2)=4$이다.\n따라서 정답은 ④이다.",
+      "answer": "①",
+      "solution": "합성함수는 안쪽 함수부터 적용하므로 대응을 순서대로 읽는다.\n$f(4)=2$이다.\n$g(2)=4$이다.\n$(g\\circ f)(4)=g(f(4))=g(2)=4$이다.\n따라서 정답은 ①이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/A2-solution.svg",
       "solutionImageAlt": "A2 함수 합성의 결정적 대응 경로를 표시한 해설 대응도",
       "solutionImageCaption": "먼저 f, 다음 g의 두 단계 대응",
@@ -277,21 +373,56 @@
         },
         "choiceAudit": {
           "allFive": [
+            4,
             1,
             2,
             3,
-            4,
             5
           ],
           "correctValue": 4,
-          "correctChoice": 4,
+          "correctChoice": 1,
           "wrongOptionReasons": [
-            "① 입력값을 2로 잘못 읽어 $g(f(2))=1$",
-            "② $f(4)=2$에서 멈춤",
-            "③ 순서를 바꾸어 $f(g(4))=f(5)=3$",
+            "② 입력값을 2로 잘못 읽어 $g(f(2))=1$",
+            "③ $f(4)=2$에서 멈춤",
+            "④ 순서를 바꾸어 $f(g(4))=f(5)=3$",
             "⑤ $g(4)=5$만 구함"
           ],
-          "mathematicallyUnique": true
+          "mathematicallyUnique": true,
+          "finalChoicePositionAudit": {
+            "status": "AUTHOR_RECHECK",
+            "sourceChoiceSetUnchanged": true,
+            "originalIndex": 4,
+            "finalIndex": 1,
+            "finalValues": [
+              4,
+              1,
+              2,
+              3,
+              5
+            ],
+            "wrongOptionValues": [
+              {
+                "index": "②",
+                "value": 1,
+                "reason": "입력값을 2로 잘못 읽어 $g(f(2))=1$"
+              },
+              {
+                "index": "③",
+                "value": 2,
+                "reason": "$f(4)=2$에서 멈춤"
+              },
+              {
+                "index": "④",
+                "value": 3,
+                "reason": "순서를 바꾸어 $f(g(4))=f(5)=3$"
+              },
+              {
+                "index": "⑤",
+                "value": 5,
+                "reason": "$g(4)=5$만 구함"
+              }
+            ]
+          }
         },
         "expectedMapFacts": {
           "X": [
@@ -335,6 +466,21 @@
           "decisiveRelation": "먼저 f, 다음 g의 두 단계 대응",
           "newVisualInformation": "해설에서 사용한 함수별 화살표·적용 순서를 색상과 결론으로 분리",
           "browser": "NOT_RUN"
+        },
+        "answerIndexCorrection": {
+          "before": "④",
+          "after": "①",
+          "changedFields": [
+            "choices",
+            "answer",
+            "solution.conclusion",
+            "review.choiceAudit"
+          ],
+          "reason": "QID9 3x3 row/column spread and each answer position count 1..2",
+          "revalidated": "AUTHOR_TARGETED_RECHECK",
+          "svgUnchanged": true,
+          "mathResultUnchanged": true,
+          "independentReview": "NOT_RUN"
         }
       }
     },
@@ -371,12 +517,12 @@
       "choices": [
         "$1$",
         "$2$",
-        "$3$",
         "$4$",
-        "$5$"
+        "$5$",
+        "$3$"
       ],
-      "answer": "③",
-      "solution": "합성함수는 안쪽 함수부터 적용하므로 대응을 순서대로 읽는다.\n$g(1)=4$이다.\n$f(4)=3$이다.\n$(f\\circ g)(1)=f(g(1))=f(4)=3$이다.\n따라서 정답은 ③이다.",
+      "answer": "⑤",
+      "solution": "합성함수는 안쪽 함수부터 적용하므로 대응을 순서대로 읽는다.\n$g(1)=4$이다.\n$f(4)=3$이다.\n$(f\\circ g)(1)=f(g(1))=f(4)=3$이다.\n따라서 정답은 ⑤이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/A3-solution.svg",
       "solutionImageAlt": "A3 함수 합성의 결정적 대응 경로를 표시한 해설 대응도",
       "solutionImageCaption": "g의 출력 4를 f의 입력으로 사용",
@@ -431,19 +577,54 @@
           "allFive": [
             1,
             2,
-            3,
             4,
-            5
+            5,
+            3
           ],
           "correctValue": 3,
-          "correctChoice": 3,
+          "correctChoice": 5,
           "wrongOptionReasons": [
             "① $g(f(1))=g(2)=1$을 구함",
             "② $f(1)=2$에서 멈춤",
-            "④ $g(1)=4$에서 멈춤",
-            "⑤ 입력을 바꿔 $f(2)=5$"
+            "③ $g(1)=4$에서 멈춤",
+            "④ 입력을 바꿔 $f(2)=5$"
           ],
-          "mathematicallyUnique": true
+          "mathematicallyUnique": true,
+          "finalChoicePositionAudit": {
+            "status": "AUTHOR_RECHECK",
+            "sourceChoiceSetUnchanged": true,
+            "originalIndex": 3,
+            "finalIndex": 5,
+            "finalValues": [
+              1,
+              2,
+              4,
+              5,
+              3
+            ],
+            "wrongOptionValues": [
+              {
+                "index": "①",
+                "value": 1,
+                "reason": "$g(f(1))=g(2)=1$을 구함"
+              },
+              {
+                "index": "②",
+                "value": 2,
+                "reason": "$f(1)=2$에서 멈춤"
+              },
+              {
+                "index": "③",
+                "value": 4,
+                "reason": "$g(1)=4$에서 멈춤"
+              },
+              {
+                "index": "④",
+                "value": 5,
+                "reason": "입력을 바꿔 $f(2)=5$"
+              }
+            ]
+          }
         },
         "expectedMapFacts": {
           "X": [
@@ -487,6 +668,21 @@
           "decisiveRelation": "g의 출력 4를 f의 입력으로 사용",
           "newVisualInformation": "해설에서 사용한 함수별 화살표·적용 순서를 색상과 결론으로 분리",
           "browser": "NOT_RUN"
+        },
+        "answerIndexCorrection": {
+          "before": "③",
+          "after": "⑤",
+          "changedFields": [
+            "choices",
+            "answer",
+            "solution.conclusion",
+            "review.choiceAudit"
+          ],
+          "reason": "QID9 3x3 row/column spread and each answer position count 1..2",
+          "revalidated": "AUTHOR_TARGETED_RECHECK",
+          "svgUnchanged": true,
+          "mathResultUnchanged": true,
+          "independentReview": "NOT_RUN"
         }
       }
     },
@@ -522,13 +718,13 @@
       "imageSize": "full",
       "choices": [
         "$1$",
+        "$4$",
         "$2$",
         "$3$",
-        "$4$",
         "$5$"
       ],
-      "answer": "④",
-      "solution": "합성함수의 대응 순서를 확인하고 목표 출력에서 입력 또는 미지 대응값을 찾는다.\n$f(g(x))=5$에서 먼저 $f(u)=5$가 되는 입력 $u$를 찾는다.\n대응도에서 $f(3)=5$이고 $5$로 가는 입력은 $3$뿐이므로 $g(x)=3$이다.\n$g(4)=3$이므로 $x=4$이며 다른 입력은 조건을 만족하지 않는다.\n따라서 정답은 ④이다.",
+      "answer": "②",
+      "solution": "합성함수의 대응 순서를 확인하고 목표 출력에서 입력 또는 미지 대응값을 찾는다.\n$f(g(x))=5$에서 먼저 $f(u)=5$가 되는 입력 $u$를 찾는다.\n대응도에서 $f(3)=5$이고 $5$로 가는 입력은 $3$뿐이므로 $g(x)=3$이다.\n$g(4)=3$이므로 $x=4$이며 다른 입력은 조건을 만족하지 않는다.\n따라서 정답은 ②이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/B1-solution.svg",
       "solutionImageAlt": "B1 함수 합성의 결정적 대응 경로를 표시한 해설 대응도",
       "solutionImageCaption": "출력 5에서 f의 입력, 이어 g의 입력을 두 번 역추적",
@@ -584,20 +780,55 @@
         "choiceAudit": {
           "allFive": [
             1,
+            4,
             2,
             3,
-            4,
             5
           ],
           "correctValue": 4,
-          "correctChoice": 4,
+          "correctChoice": 2,
           "wrongOptionReasons": [
             "① $g(5)=1$을 역방향으로 오독",
-            "② $f(2)=2$를 근거 없이 목표조건에 대입",
-            "③ 중간값 3을 x로 오해",
+            "③ $f(2)=2$를 근거 없이 목표조건에 대입",
+            "④ 중간값 3을 x로 오해",
             "⑤ 목표 출력값 5를 입력으로 오해"
           ],
-          "mathematicallyUnique": true
+          "mathematicallyUnique": true,
+          "finalChoicePositionAudit": {
+            "status": "AUTHOR_RECHECK",
+            "sourceChoiceSetUnchanged": true,
+            "originalIndex": 4,
+            "finalIndex": 2,
+            "finalValues": [
+              1,
+              4,
+              2,
+              3,
+              5
+            ],
+            "wrongOptionValues": [
+              {
+                "index": "①",
+                "value": 1,
+                "reason": "$g(5)=1$을 역방향으로 오독"
+              },
+              {
+                "index": "③",
+                "value": 2,
+                "reason": "$f(2)=2$를 근거 없이 목표조건에 대입"
+              },
+              {
+                "index": "④",
+                "value": 3,
+                "reason": "중간값 3을 x로 오해"
+              },
+              {
+                "index": "⑤",
+                "value": 5,
+                "reason": "목표 출력값 5를 입력으로 오해"
+              }
+            ]
+          }
         },
         "expectedMapFacts": {
           "X": [
@@ -641,6 +872,21 @@
           "decisiveRelation": "출력 5에서 f의 입력, 이어 g의 입력을 두 번 역추적",
           "newVisualInformation": "해설에서 사용한 함수별 화살표·적용 순서를 색상과 결론으로 분리",
           "browser": "NOT_RUN"
+        },
+        "answerIndexCorrection": {
+          "before": "④",
+          "after": "②",
+          "changedFields": [
+            "choices",
+            "answer",
+            "solution.conclusion",
+            "review.choiceAudit"
+          ],
+          "reason": "QID9 3x3 row/column spread and each answer position count 1..2",
+          "revalidated": "AUTHOR_TARGETED_RECHECK",
+          "svgUnchanged": true,
+          "mathResultUnchanged": true,
+          "independentReview": "NOT_RUN"
         }
       }
     },
@@ -675,14 +921,14 @@
       "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/B2-problem.svg",
       "imageSize": "full",
       "choices": [
-        "$1$",
         "$2$",
         "$3$",
         "$4$",
+        "$1$",
         "$5$"
       ],
-      "answer": "①",
-      "solution": "합성함수의 대응 순서를 확인하고 목표 출력에서 입력 또는 미지 대응값을 찾는다.\n$f(4)=a$이므로 $(g\\circ f)(4)=g(a)$이다.\n따라서 $g(a)=3$이다.\n대응도에서 $g(1)=3$이고 이 출력을 만드는 입력은 $1$뿐이므로 $a=1$이다.\n따라서 정답은 ①이다.",
+      "answer": "④",
+      "solution": "합성함수의 대응 순서를 확인하고 목표 출력에서 입력 또는 미지 대응값을 찾는다.\n$f(4)=a$이므로 $(g\\circ f)(4)=g(a)$이다.\n따라서 $g(a)=3$이다.\n대응도에서 $g(1)=3$이고 이 출력을 만드는 입력은 $1$뿐이므로 $a=1$이다.\n따라서 정답은 ④이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/B2-solution.svg",
       "solutionImageAlt": "B2 함수 합성의 결정적 대응 경로를 표시한 해설 대응도",
       "solutionImageCaption": "미지 f(4)=a와 합성 결과에서 g의 원상을 찾음",
@@ -737,21 +983,56 @@
         },
         "choiceAudit": {
           "allFive": [
-            1,
             2,
             3,
             4,
+            1,
             5
           ],
           "correctValue": 1,
-          "correctChoice": 1,
+          "correctChoice": 4,
           "wrongOptionReasons": [
-            "② $g(5)=2$의 값을 입력으로 오해",
-            "③ 출력 3을 미지수 a로 오해",
-            "④ 원래 입력 4를 a로 오해",
+            "① $g(5)=2$의 값을 입력으로 오해",
+            "② 출력 3을 미지수 a로 오해",
+            "③ 원래 입력 4를 a로 오해",
             "⑤ $g(2)=5$의 출력을 잘못 고름"
           ],
-          "mathematicallyUnique": true
+          "mathematicallyUnique": true,
+          "finalChoicePositionAudit": {
+            "status": "AUTHOR_RECHECK",
+            "sourceChoiceSetUnchanged": true,
+            "originalIndex": 1,
+            "finalIndex": 4,
+            "finalValues": [
+              2,
+              3,
+              4,
+              1,
+              5
+            ],
+            "wrongOptionValues": [
+              {
+                "index": "①",
+                "value": 2,
+                "reason": "$g(5)=2$의 값을 입력으로 오해"
+              },
+              {
+                "index": "②",
+                "value": 3,
+                "reason": "출력 3을 미지수 a로 오해"
+              },
+              {
+                "index": "③",
+                "value": 4,
+                "reason": "원래 입력 4를 a로 오해"
+              },
+              {
+                "index": "⑤",
+                "value": 5,
+                "reason": "$g(2)=5$의 출력을 잘못 고름"
+              }
+            ]
+          }
         },
         "expectedMapFacts": {
           "X": [
@@ -795,6 +1076,21 @@
           "decisiveRelation": "미지 f(4)=a와 합성 결과에서 g의 원상을 찾음",
           "newVisualInformation": "해설에서 사용한 함수별 화살표·적용 순서를 색상과 결론으로 분리",
           "browser": "NOT_RUN"
+        },
+        "answerIndexCorrection": {
+          "before": "①",
+          "after": "④",
+          "changedFields": [
+            "choices",
+            "answer",
+            "solution.conclusion",
+            "review.choiceAudit"
+          ],
+          "reason": "QID9 3x3 row/column spread and each answer position count 1..2",
+          "revalidated": "AUTHOR_TARGETED_RECHECK",
+          "svgUnchanged": true,
+          "mathResultUnchanged": true,
+          "independentReview": "NOT_RUN"
         }
       }
     },
@@ -829,14 +1125,14 @@
       "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/B3-problem.svg",
       "imageSize": "full",
       "choices": [
+        "$5$",
         "$3$",
         "$4$",
-        "$5$",
         "$7$",
         "$8$"
       ],
-      "answer": "③",
-      "solution": "합성 순서가 다른 두 값을 각각 구하여 더한다.\n$(f\\circ g)(2)=f(g(2))=f(5)=3$이다.\n$(g\\circ f)(2)=g(f(2))=g(1)=2$이다.\n그러므로 두 합성값의 합은 $3+2=5$이다.\n따라서 정답은 ③이다.",
+      "answer": "①",
+      "solution": "합성 순서가 다른 두 값을 각각 구하여 더한다.\n$(f\\circ g)(2)=f(g(2))=f(5)=3$이다.\n$(g\\circ f)(2)=g(f(2))=g(1)=2$이다.\n그러므로 두 합성값의 합은 $3+2=5$이다.\n따라서 정답은 ①이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/B3-solution.svg",
       "solutionImageAlt": "B3 함수 합성의 결정적 대응 경로를 표시한 해설 대응도",
       "solutionImageCaption": "양 방향 합성을 각각 계산한 후 더함",
@@ -889,21 +1185,56 @@
         },
         "choiceAudit": {
           "allFive": [
+            5,
             3,
             4,
-            5,
             7,
             8
           ],
           "correctValue": 5,
-          "correctChoice": 3,
+          "correctChoice": 1,
           "wrongOptionReasons": [
-            "① 첫 번째 합성값 3만 구함",
-            "② 두 번째 합성에서 f(2)=1까지만 읽어 3+1=4",
+            "② 첫 번째 합성값 3만 구함",
+            "③ 두 번째 합성에서 f(2)=1까지만 읽어 3+1=4",
             "④ 첫 합성에서 바깥 f를 빼고 5+2=7",
             "⑤ 둘째 합성을 g(2)=5로 착각해 3+5=8"
           ],
-          "mathematicallyUnique": true
+          "mathematicallyUnique": true,
+          "finalChoicePositionAudit": {
+            "status": "AUTHOR_RECHECK",
+            "sourceChoiceSetUnchanged": true,
+            "originalIndex": 3,
+            "finalIndex": 1,
+            "finalValues": [
+              5,
+              3,
+              4,
+              7,
+              8
+            ],
+            "wrongOptionValues": [
+              {
+                "index": "②",
+                "value": 3,
+                "reason": "첫 번째 합성값 3만 구함"
+              },
+              {
+                "index": "③",
+                "value": 4,
+                "reason": "두 번째 합성에서 f(2)=1까지만 읽어 3+1=4"
+              },
+              {
+                "index": "④",
+                "value": 7,
+                "reason": "첫 합성에서 바깥 f를 빼고 5+2=7"
+              },
+              {
+                "index": "⑤",
+                "value": 8,
+                "reason": "둘째 합성을 g(2)=5로 착각해 3+5=8"
+              }
+            ]
+          }
         },
         "expectedMapFacts": {
           "X": [
@@ -947,6 +1278,21 @@
           "decisiveRelation": "양 방향 합성을 각각 계산한 후 더함",
           "newVisualInformation": "해설에서 사용한 함수별 화살표·적용 순서를 색상과 결론으로 분리",
           "browser": "NOT_RUN"
+        },
+        "answerIndexCorrection": {
+          "before": "③",
+          "after": "①",
+          "changedFields": [
+            "choices",
+            "answer",
+            "solution.conclusion",
+            "review.choiceAudit"
+          ],
+          "reason": "QID9 3x3 row/column spread and each answer position count 1..2",
+          "revalidated": "AUTHOR_TARGETED_RECHECK",
+          "svgUnchanged": true,
+          "mathResultUnchanged": true,
+          "independentReview": "NOT_RUN"
         }
       }
     },
@@ -984,11 +1330,11 @@
         "$1$",
         "$2$",
         "$3$",
-        "$4$",
-        "$5$"
+        "$5$",
+        "$4$"
       ],
-      "answer": "⑤",
-      "solution": "합성함수는 안쪽 함수부터 적용하므로 대응을 순서대로 읽는다.\n가장 안쪽부터 적용하면 $f(2)=3$이다.\n다음으로 $g(3)=4$이다.\n마지막으로 $f(4)=5$이므로 $f(g(f(2)))=5$이다.\n따라서 정답은 ⑤이다.",
+      "answer": "④",
+      "solution": "합성함수는 안쪽 함수부터 적용하므로 대응을 순서대로 읽는다.\n가장 안쪽부터 적용하면 $f(2)=3$이다.\n다음으로 $g(3)=4$이다.\n마지막으로 $f(4)=5$이므로 $f(g(f(2)))=5$이다.\n따라서 정답은 ④이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/C1-solution.svg",
       "solutionImageAlt": "C1 함수 합성의 결정적 대응 경로를 표시한 해설 대응도",
       "solutionImageCaption": "합성함수를 안쪽에서 바깥으로 세 번 적용",
@@ -1044,18 +1390,53 @@
             1,
             2,
             3,
-            4,
-            5
+            5,
+            4
           ],
           "correctValue": 5,
-          "correctChoice": 5,
+          "correctChoice": 4,
           "wrongOptionReasons": [
             "① 안쪽 f 대신 g(2)=1부터 시작",
             "② 마지막 f 대신 g(4)=2 적용",
             "③ f(2)=3에서 중단",
-            "④ g(f(2))=4에서 중단"
+            "⑤ g(f(2))=4에서 중단"
           ],
-          "mathematicallyUnique": true
+          "mathematicallyUnique": true,
+          "finalChoicePositionAudit": {
+            "status": "AUTHOR_RECHECK",
+            "sourceChoiceSetUnchanged": true,
+            "originalIndex": 5,
+            "finalIndex": 4,
+            "finalValues": [
+              1,
+              2,
+              3,
+              5,
+              4
+            ],
+            "wrongOptionValues": [
+              {
+                "index": "①",
+                "value": 1,
+                "reason": "안쪽 f 대신 g(2)=1부터 시작"
+              },
+              {
+                "index": "②",
+                "value": 2,
+                "reason": "마지막 f 대신 g(4)=2 적용"
+              },
+              {
+                "index": "③",
+                "value": 3,
+                "reason": "f(2)=3에서 중단"
+              },
+              {
+                "index": "⑤",
+                "value": 4,
+                "reason": "g(f(2))=4에서 중단"
+              }
+            ]
+          }
         },
         "expectedMapFacts": {
           "X": [
@@ -1099,6 +1480,21 @@
           "decisiveRelation": "합성함수를 안쪽에서 바깥으로 세 번 적용",
           "newVisualInformation": "해설에서 사용한 함수별 화살표·적용 순서를 색상과 결론으로 분리",
           "browser": "NOT_RUN"
+        },
+        "answerIndexCorrection": {
+          "before": "⑤",
+          "after": "④",
+          "changedFields": [
+            "choices",
+            "answer",
+            "solution.conclusion",
+            "review.choiceAudit"
+          ],
+          "reason": "QID9 3x3 row/column spread and each answer position count 1..2",
+          "revalidated": "AUTHOR_TARGETED_RECHECK",
+          "svgUnchanged": true,
+          "mathResultUnchanged": true,
+          "independentReview": "NOT_RUN"
         }
       }
     },
@@ -1136,11 +1532,11 @@
         "$3$",
         "$4$",
         "$5$",
-        "$7$",
-        "$9$"
+        "$9$",
+        "$7$"
       ],
-      "answer": "④",
-      "solution": "합성함수의 대응 순서를 확인하고 목표 출력에서 입력 또는 미지 대응값을 찾는다.\n$g(2)=3$이므로 첫째 조건은 $f(g(2))=f(3)=b=4$이다.\n둘째 조건은 $g(f(1))=g(a)=5$이고 $g(3)=5$이므로 $a=3$이다.\n따라서 $a+b=3+4=7$이다.\n따라서 정답은 ④이다.",
+      "answer": "⑤",
+      "solution": "합성함수의 대응 순서를 확인하고 목표 출력에서 입력 또는 미지 대응값을 찾는다.\n$g(2)=3$이므로 첫째 조건은 $f(g(2))=f(3)=b=4$이다.\n둘째 조건은 $g(f(1))=g(a)=5$이고 $g(3)=5$이므로 $a=3$이다.\n따라서 $a+b=3+4=7$이다.\n따라서 정답은 ⑤이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/C2-solution.svg",
       "solutionImageAlt": "C2 함수 합성의 결정적 대응 경로를 표시한 해설 대응도",
       "solutionImageCaption": "서로 방향이 다른 합성조건으로 a,b를 별도 결정",
@@ -1198,18 +1594,53 @@
             3,
             4,
             5,
-            7,
-            9
+            9,
+            7
           ],
           "correctValue": 7,
-          "correctChoice": 4,
+          "correctChoice": 5,
           "wrongOptionReasons": [
             "① a=3만 구함",
             "② b=4만 구함",
             "③ g(a)=5의 출력만 기록",
-            "⑤ 조건 두 출력 4+5=9를 더함"
+            "④ 조건 두 출력 4+5=9를 더함"
           ],
-          "mathematicallyUnique": true
+          "mathematicallyUnique": true,
+          "finalChoicePositionAudit": {
+            "status": "AUTHOR_RECHECK",
+            "sourceChoiceSetUnchanged": true,
+            "originalIndex": 4,
+            "finalIndex": 5,
+            "finalValues": [
+              3,
+              4,
+              5,
+              9,
+              7
+            ],
+            "wrongOptionValues": [
+              {
+                "index": "①",
+                "value": 3,
+                "reason": "a=3만 구함"
+              },
+              {
+                "index": "②",
+                "value": 4,
+                "reason": "b=4만 구함"
+              },
+              {
+                "index": "③",
+                "value": 5,
+                "reason": "g(a)=5의 출력만 기록"
+              },
+              {
+                "index": "④",
+                "value": 9,
+                "reason": "조건 두 출력 4+5=9를 더함"
+              }
+            ]
+          }
         },
         "expectedMapFacts": {
           "X": [
@@ -1253,6 +1684,21 @@
           "decisiveRelation": "서로 방향이 다른 합성조건으로 a,b를 별도 결정",
           "newVisualInformation": "해설에서 사용한 함수별 화살표·적용 순서를 색상과 결론으로 분리",
           "browser": "NOT_RUN"
+        },
+        "answerIndexCorrection": {
+          "before": "④",
+          "after": "⑤",
+          "changedFields": [
+            "choices",
+            "answer",
+            "solution.conclusion",
+            "review.choiceAudit"
+          ],
+          "reason": "QID9 3x3 row/column spread and each answer position count 1..2",
+          "revalidated": "AUTHOR_TARGETED_RECHECK",
+          "svgUnchanged": true,
+          "mathResultUnchanged": true,
+          "independentReview": "NOT_RUN"
         }
       }
     },
@@ -1288,13 +1734,13 @@
       "imageSize": "full",
       "choices": [
         "$1$",
-        "$2$",
         "$3$",
+        "$2$",
         "$4$",
         "$5$"
       ],
-      "answer": "③",
-      "solution": "두 합성 조건의 후보를 차례로 판정하고 공통으로 만족하는 입력을 찾는다.\n첫 조건 $f(g(x))=4$에서는 $f(4)=4$, $g(2)=g(3)=4$이므로 $x=2$ 또는 $x=3$이다.\n$x=2$이면 $(g\\circ f)(2)=g(f(2))=g(1)=1$로 둘째 조건에 맞지 않는다.\n$x=3$이면 $(g\\circ f)(3)=g(f(3))=g(5)=2$이므로 두 조건을 모두 만족한다.\n첫 조건을 만족하는 다른 입력은 없으므로 해는 $x=3$ 하나이다.\n따라서 정답은 ③이다.",
+      "answer": "②",
+      "solution": "두 합성 조건의 후보를 차례로 판정하고 공통으로 만족하는 입력을 찾는다.\n첫 조건 $f(g(x))=4$에서는 $f(4)=4$, $g(2)=g(3)=4$이므로 $x=2$ 또는 $x=3$이다.\n$x=2$이면 $(g\\circ f)(2)=g(f(2))=g(1)=1$로 둘째 조건에 맞지 않는다.\n$x=3$이면 $(g\\circ f)(3)=g(f(3))=g(5)=2$이므로 두 조건을 모두 만족한다.\n첫 조건을 만족하는 다른 입력은 없으므로 해는 $x=3$ 하나이다.\n따라서 정답은 ②이다.",
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/C3-solution.svg",
       "solutionImageAlt": "C3 함수 합성의 결정적 대응 경로를 표시한 해설 대응도",
       "solutionImageCaption": "첫 조건의 두 후보를 둘째 조건으로 판별",
@@ -1351,20 +1797,55 @@
         "choiceAudit": {
           "allFive": [
             1,
-            2,
             3,
+            2,
             4,
             5
           ],
           "correctValue": 3,
-          "correctChoice": 3,
+          "correctChoice": 2,
           "wrongOptionReasons": [
             "① x=1이면 첫째 합성값 2",
-            "② x=2는 둘째 합성값 1",
+            "③ x=2는 둘째 합성값 1",
             "④ x=4이면 첫째 합성값 3",
             "⑤ x=5이면 첫째 합성값 1"
           ],
-          "mathematicallyUnique": true
+          "mathematicallyUnique": true,
+          "finalChoicePositionAudit": {
+            "status": "AUTHOR_RECHECK",
+            "sourceChoiceSetUnchanged": true,
+            "originalIndex": 3,
+            "finalIndex": 2,
+            "finalValues": [
+              1,
+              3,
+              2,
+              4,
+              5
+            ],
+            "wrongOptionValues": [
+              {
+                "index": "①",
+                "value": 1,
+                "reason": "x=1이면 첫째 합성값 2"
+              },
+              {
+                "index": "③",
+                "value": 2,
+                "reason": "x=2는 둘째 합성값 1"
+              },
+              {
+                "index": "④",
+                "value": 4,
+                "reason": "x=4이면 첫째 합성값 3"
+              },
+              {
+                "index": "⑤",
+                "value": 5,
+                "reason": "x=5이면 첫째 합성값 1"
+              }
+            ]
+          }
         },
         "expectedMapFacts": {
           "X": [
@@ -1408,6 +1889,21 @@
           "decisiveRelation": "첫 조건의 두 후보를 둘째 조건으로 판별",
           "newVisualInformation": "해설에서 사용한 함수별 화살표·적용 순서를 색상과 결론으로 분리",
           "browser": "NOT_RUN"
+        },
+        "answerIndexCorrection": {
+          "before": "③",
+          "after": "②",
+          "changedFields": [
+            "choices",
+            "answer",
+            "solution.conclusion",
+            "review.choiceAudit"
+          ],
+          "reason": "QID9 3x3 row/column spread and each answer position count 1..2",
+          "revalidated": "AUTHOR_TARGETED_RECHECK",
+          "svgUnchanged": true,
+          "mathResultUnchanged": true,
+          "independentReview": "NOT_RUN"
         }
       }
     }
