@@ -23,7 +23,7 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 팩토리얼의 값을 작은 자연수부터 차례로 확인한다.\n조건 정리: $n!=24$이고 $n$은 자연수이다.\n풀이 방향: $1!,2!,3!,4!$를 계산하여 $24$가 되는 지점을 찾는다.\n정석 풀이: $1!=1$, $2!=2$, $3!=6$, $4!=4\\times3\\times2\\times1=24$이다. 따라서 $n=4$이다.\n따라서 정답은 ③이다.",
+    "solution": "$n!$은 $1$부터 $n$까지의 자연수를 모두 곱한 값이다.\n$1!=1$\n$2!=2\\times1=2$\n$3!=3\\times2\\times1=6$\n$4!=4\\times3\\times2\\times1=24$\n$n!=24$이므로 $n=4$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
     "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -51,7 +51,7 @@ window.questionBank = [
       "$\\dfrac{x}{x+3}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 분자와 분모에 같은 수를 곱하여 복분수를 없앤다.\n조건 정리: 분자와 분모에 $x$가 포함되어 있으므로 전체 식의 분자와 분모에 $x$를 곱한다.\n풀이 방향: $1-\\dfrac{3}{x}$와 $1+\\dfrac{3}{x}$를 각각 하나의 분수로 정리한다.\n정석 풀이: $1-\\dfrac{3}{x}=\\dfrac{x-3}{x}$, $1+\\dfrac{3}{x}=\\dfrac{x+3}{x}$이므로\n$\\dfrac{1-\\dfrac{3}{x}}{1+\\dfrac{3}{x}}=\\dfrac{\\dfrac{x-3}{x}}{\\dfrac{x+3}{x}}=\\dfrac{x-3}{x+3}$이다.\n따라서 정답은 ①이다.",
+    "solution": "분모에 $x$가 있으므로 먼저 $x\\ne0$이다. 또한 전체 분모가 $0$이 되지 않아야 하므로 $x\\ne-3$이다.\n분자와 분모를 각각 통분하면\n$1-\\dfrac{3}{x}=\\dfrac{x-3}{x}$\n$1+\\dfrac{3}{x}=\\dfrac{x+3}{x}$\n따라서\n$\\dfrac{1-\\dfrac{3}{x}}{1+\\dfrac{3}{x}}$\n$=\\dfrac{(x-3)/x}{(x+3)/x}$\n$=\\dfrac{x-3}{x+3}\\quad(x\\ne0,-3)$\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -81,7 +81,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "④",
-    "solution": "[키포인트] $y=\\dfrac{1}{x+a}+2$의 수직점근선과 수평점근선을 각각 읽는다.\n조건 정리: 분모가 $0$이 되는 직선은 $x=-a$이고, 수평점근선은 $y=2$이다.\n풀이 방향: 주어진 점근선 $x=-2$, $y=b$와 계수를 비교한다.\n정석 풀이: $-a=-2$이므로 $a=2$이고, $b=2$이다. 따라서 $a+b=2+2=4$이다.\n따라서 정답은 ④이다.",
+    "solution": "유리함수 $y=\\dfrac{1}{x+a}+2$에서 분모가 $0$이 되는 $x=-a$는 수직점근선이다.\n$x=-a=-2$\n$\\therefore\\ a=2$\n또 $\\dfrac{1}{x+a}$의 값이 $0$에 가까워질 때 $y$는 $2$에 가까워지므로 수평점근선은 $y=2$이다.\n$y=b=2$\n$\\therefore\\ b=2$\n$a+b=2+2=4$\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q03-solution.svg",
     "solutionImageAlt": "유리함수의 두 점근선 x=−2, y=2를 나타낸 해설 그래프",
     "solutionImageCaption": "수직점근선과 수평점근선을 확인하여 a=2, b=2를 읽는다.",
@@ -113,7 +113,7 @@ window.questionBank = [
       "$80$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 조합의 대칭 성질 ${}_{n}C_{r}={}_{n}C_{n-r}$를 이용한다.\n조건 정리: ${}_{20}C_{18}={}_{20}C_{2}$이다.\n풀이 방향: 두 개를 고르는 조합으로 바꾸어 계산량을 줄인다.\n정석 풀이: ${}_{20}C_{2}=\\dfrac{20\\times19}{2\\times1}=190$이다.\n따라서 정답은 ①이다.",
+    "solution": "$20$개 중 $18$개를 고르는 것은 고르지 않을 $2$개를 정하는 것과 같다.\n$ {}_{20}C_{18}={}_{20}C_{20-18}$\n$={}_{20}C_2$\n$=\\dfrac{20!}{2!\\,18!}$\n$=\\dfrac{20\\times19}{2\\times1}$\n$=10\\times19=190$\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
     "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
