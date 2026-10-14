@@ -37,7 +37,7 @@ window.questionBank = [
       "$x = 2, y = -3$"
     ],
     "answer": "⑤",
-    "solution": "점근선은 분모가 0이 되는 값과 수평선으로 구한다. $x-2=0$에서 수직점근선은 $x=2$이다. 또 $\\dfrac1{x-2}\\to0$이므로 $y=\\dfrac1{x-2}-3\\to-3$이다. 따라서 점근선은 $x=2$, $y=-3$이고 정답은 ⑤이다.",
+    "solution": "점근선은 분모가 0이 되는 직선과 분수 부분이 0에 가까워질 때의 수평선이다.\n$x-2=0$\n$x=2$ (수직점근선)\n$y=\\dfrac{1}{x-2}-3$\n$x$의 절댓값이 커질수록 $\\dfrac{1}{x-2}$은 $0$에 가까워지므로 수평점근선은 $y=-3$이다.\n따라서 점근선은 $x=2$, $y=-3$이고 정답은 ⑤이다.",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -113,7 +113,7 @@ window.questionBank = [
       "24"
     ],
     "answer": "④",
-    "solution": "$180=2^2\\cdot3^2\\cdot5$이다. 약수는 $2^a3^b5^c$ 꼴이고 지수 선택은 각각 3, 3, 2가지이다. 따라서 약수의 개수는 $(2+1)(2+1)(1+1)=18$이고 정답은 ④이다.",
+    "solution": "$180$을 소인수분해한다.\n$180=2^2\\times3^2\\times5$\n양의 약수는 $2^a3^b5^c$로 나타낸다.\n$a=0,1,2$: $3$가지\n$b=0,1,2$: $3$가지\n$c=0,1$: $2$가지\n각 지수는 독립적으로 고를 수 있으므로\n$3\\times3\\times2=18$\n따라서 약수는 $18$개이고 정답은 ④이다.",
     "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
     "subUnit": "경우의 수의 기본 원리",
     "subUnitConfidence": "candidate_evidence",
@@ -189,7 +189,7 @@ window.questionBank = [
       "720"
     ],
     "answer": "②",
-    "solution": "양 끝에 같은 카드 $E$ 두 장을 놓는 방법은 한 가지이다. 가운데 다섯 자리에 서로 다른 $P,R,M,U,T$를 놓으므로 $5!=120$가지이다. 정답은 ②이다.",
+    "solution": "두 장의 $\\mathrm{E}$를 양 끝에 고정한다.\n$\\mathrm{E},\\ \\square,\\ \\square,\\ \\square,\\ \\square,\\ \\square,\\ \\mathrm{E}$\n가운데에는 서로 다른 $\\mathrm{P,R,M,U,T}$ 다섯 장을 배열한다.\n첫 자리부터 선택 수는 $5,4,3,2,1$가지이므로\n$5!=5\\times4\\times3\\times2\\times1=120$\n$\\mathrm{E}$ 두 장은 같은 문자이므로 양 끝에서 서로 바꿔도 새 배열이 아니다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
     "subUnit": "순열",
     "subUnitConfidence": "candidate_evidence",
@@ -265,7 +265,7 @@ window.questionBank = [
       "120"
     ],
     "answer": "④",
-    "solution": "남학생은 $\\binom62=15$가지, 여학생은 $\\binom42=6$가지로 고른다. 따라서 $15\\cdot6=90$가지이고 정답은 ④이다.",
+    "solution": "남학생과 여학생을 각각 필요한 인원만큼 선택한다.\n남학생 선택: $_{6}C_{2}=\\dfrac{6\\times5}{2\\times1}=15$\n여학생 선택: $_{4}C_{2}=\\dfrac{4\\times3}{2\\times1}=6$\n남학생을 고른 한 가지 방법마다 여학생 선택 $6$가지를 결합할 수 있다.\n$15\\times6=90$\n모둠 안의 순서는 구별하지 않는다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
     "subUnit": "조합",
     "subUnitConfidence": "candidate_evidence",
@@ -341,7 +341,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "④",
-    "solution": "두 근호 안은 모두 0 이상이어야 한다. $3x+5\\ge0$에서 $x\\ge-\\dfrac53$, $2-x\\ge0$에서 $x\\le2$이다. 가능한 정수는 $-1,0,1,2$로 4개이므로 정답은 ④이다.",
+    "solution": "두 제곱근이 모두 실수가 되려면 근호 안의 식이 각각 $0$ 이상이어야 한다.\n$3x+5\\ge0$\n$x\\ge-\\dfrac53$\n$2-x\\ge0$\n$x\\le2$\n두 조건을 동시에 만족하는 범위는\n$-\\dfrac53\\le x\\le2$\n이 구간 안의 정수는 $-1,0,1,2$의 네 개이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
     "subUnit": "무리함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
