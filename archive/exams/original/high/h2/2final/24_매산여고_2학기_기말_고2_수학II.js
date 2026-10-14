@@ -23,7 +23,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 다항함수의 도함수를 구한 뒤 $x=1$을 대입한다.\n조건 정리: $f(x)=x^3+2x^2-3x+5$이다.\n풀이 방향: 각 항을 미분하여 $f'(x)$를 구한다.\n정석 풀이: $f'(x)=3x^2+4x-3$이므로 $f'(1)=3+4-3=4$이다.\n따라서 정답은 ④이다.",
+    "solution": "다항함수의 각 항을 미분한다.\n$f(x)=x^3+2x^2-3x+5$\n$f'(x)=3x^2+4x-3$\n\n이제 $x=1$을 대입한다.\n$f'(1)=3\\cdot1^2+4\\cdot1-3$\n$=3+4-3$\n$=4$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-04-DERIVATIVE",
     "subUnit": "도함수",
     "subUnitConfidence": "candidate_evidence",
@@ -51,7 +51,7 @@ window.questionBank = [
       "$15$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 위치를 한 번 미분하면 속도, 두 번 미분하면 가속도이다.\n조건 정리: $x(t)=5t^3-6t^2+4t$이다.\n풀이 방향: $v(t)=x'(t)$와 $a(t)=v'(t)$를 차례로 구한다.\n정석 풀이: $v(t)=15t^2-12t+4$이므로 $v=v(1)=7$이다. 또 $a(t)=30t-12$이므로 $a=a(1)=18$이다. 따라서 $a-v=18-7=11$이다.\n따라서 정답은 ①이다.",
+    "solution": "위치를 한 번 미분하면 속도, 두 번 미분하면 가속도이다.\n$x(t)=5t^3-6t^2+4t$\n$v(t)=x'(t)=15t^2-12t+4$\n$a(t)=v'(t)=30t-12$\n\n시각 $t=1$에서 각각 계산하면\n$v(1)=15-12+4=7$\n$a(1)=30-12=18$이다.\n\n따라서 $a(1)-v(1)=18-7=11$이므로\n정답은 ①이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -79,7 +79,7 @@ window.questionBank = [
       "$F(x)$, $G(x)$가 $f(x)$의 부정적분이면 $F(x)=G(x)+C$이다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 부정적분에는 항상 적분상수가 포함되며, 같은 함수의 두 부정적분의 차는 상수이다.\n조건 정리: 각 보기에서 적분상수와 미분·적분의 관계를 확인한다.\n정석 풀이: ① $\\int0\\,dx=C$이므로 틀리다. ② $\\int dx=x+C$이므로 틀리다. ③ 적분변수를 바꾸더라도 부정적분에는 각각 적분상수가 포함되므로 그대로 같은 식이라고 할 수 없다. ④ 왼쪽은 $f(x)+C$, 오른쪽은 $f(x)$이므로 일반적으로 같지 않다. ⑤ 같은 $f(x)$의 두 부정적분은 상수만큼 차이가 나므로 옳다.\n따라서 정답은 ⑤이다.",
+    "solution": "부정적분에는 적분상수가 포함된다는 점을 이용해 각 보기를 판단한다.\n\n① $\\displaystyle\\int 0\\,dx=C$이므로 제시된 $0$만으로 나타낼 수 없다. (옳지 않다.)\n\n② $\\displaystyle\\int 1\\,dx=x+C$이므로 $\\int dx=C$는 옳지 않다.\n\n③ $\\int f(x)\\,dx$는 $x$에 대한 부정적분, $\\int f(y)\\,dy$는 $y$에 대한 부정적분이다. 서로 다른 변수의 식을 그대로 같다고 할 수 없다.\n\n④ $\\displaystyle\\int f'(x)\\,dx=f(x)+C$이고,\n$\\displaystyle\\dfrac{d}{dx}\\left(\\int f(x)\\,dx\\right)=f(x)$이다.\n적분상수까지 포함한 부정적분의 식이 일치한다고 할 수 없다.\n\n⑤ $F'(x)=G'(x)=f(x)$이면\n$\\{F(x)-G(x)\\}'=0$이다.\n따라서 $F(x)-G(x)=C$, 즉 $F(x)=G(x)+C$이다.\n\n옳은 것은 ⑤뿐이므로 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
     "subUnit": "부정적분",
     "subUnitConfidence": "candidate_evidence",
@@ -107,7 +107,7 @@ window.questionBank = [
       "$36$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 부정적분 등식을 미분하면 피적분함수에 대한 식을 얻을 수 있다.\n조건 정리: 양변을 $x$에 대하여 미분한다.\n풀이 방향: $(2x-3)f'(x)$를 구한 뒤 공통인수 $2x-3$을 이용한다.\n정석 풀이: 양변을 미분하면 $(2x-3)f'(x)=4x^2-4x-3=(2x-3)(2x+1)$이다. 따라서 다항식의 항등관계로 $f'(x)=2x+1$이다. 그러므로 $f(x)=x^2+x+C$이고 $f(0)=1$에서 $C=1$이다. $f(1)=3$, $f'(1)=3$이므로 $f(1)+f'(1)=6$이다.\n따라서 정답은 ①이다.",
+    "solution": "양변을 미분하여 $f'(x)$를 먼저 구한다.\n$\\displaystyle\\int(2x-3)f'(x)\\,dx=\\dfrac43x^3-2x^2-3x$\n$(2x-3)f'(x)=4x^2-4x-3$\n\n오른쪽을 인수분해하면\n$4x^2-4x-3=(2x-3)(2x+1)$이다.\n따라서 $x\\ne\\dfrac32$에서는 $f'(x)=2x+1$이다. 미분가능성으로부터 $f(x)=x^2+x+C$로 나타낼 수 있다.\n\n이를 적분하면\n$f(x)=x^2+x+C$이고,\n$f(0)=1$에서 $C=1$이다.\n\n$f(1)=1+1+1=3$\n$f'(1)=2+1=3$\n\n그러므로 $f(1)+f'(1)=3+3=6$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
     "subUnit": "부정적분",
     "subUnitConfidence": "candidate_evidence",
@@ -135,7 +135,7 @@ window.questionBank = [
       "$\\dfrac1{12}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 대칭구간에서는 홀함수 부분의 정적분이 $0$이 된다.\n조건 정리: $3x^2$는 짝함수이고 $2x$는 홀함수이다.\n풀이 방향: 홀함수 부분을 없애고 $3x^2$만 적분한다.\n정석 풀이: $\\displaystyle\\int_{-a}^{a}(3x^2+2x)dx=\\int_{-a}^{a}3x^2dx=2\\int_0^a3x^2dx=2a^3$이다. 따라서 $2a^3=\\dfrac14$이므로 $a^3=\\dfrac18$, $a=\\dfrac12$이다. 그러므로 $-\\dfrac12a=-\\dfrac14$이다.\n따라서 정답은 ①이다.",
+    "solution": "적분구간이 $-a$부터 $a$까지인 대칭구간이다.\n$3x^2$은 짝함수이고 $2x$는 홀함수이므로\n$\\displaystyle\\int_{-a}^{a}2x\\,dx=0$이다.\n\n따라서\n$\\displaystyle\\int_{-a}^{a}(3x^2+2x)\\,dx$\n$\\displaystyle=\\left[x^3+x^2\\right]_{-a}^{a}$\n$=(a^3+a^2)-(-a^3+a^2)$\n$=2a^3$이다.\n\n주어진 조건에 의해\n$2a^3=\\dfrac14$\n$a^3=\\dfrac18$\n$a=\\dfrac12$이다.\n\n구하는 값은 $-\\dfrac12a$\n$=-\\dfrac12\\cdot\\dfrac12$\n$=-\\dfrac14$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
@@ -163,7 +163,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 한 점에서 미분가능하려면 그 점에서 연속이고 좌우의 미분계수가 같아야 한다.\n조건 정리: $x=1$에서 두 식의 함수값과 기울기를 각각 맞춘다.\n풀이 방향: 미분계수 조건으로 $a$를 먼저 구하고 연속 조건으로 $b$를 구한다.\n정석 풀이: 오른쪽 식의 도함수는 $6x+5a$이므로 $x=1$에서의 우미분계수는 $6+5a$이고, 왼쪽 식 $-4x+b$의 기울기는 $-4$이다. 따라서 $6+5a=-4$에서 $a=-2$이다. 연속 조건으로 $3+5a+7=-4+b$이므로 $10+5(-2)=-4+b$, 따라서 $b=4$이다. 그러므로 $a+b=2$이다.\n따라서 정답은 ②이다.",
+    "solution": "$x=1$에서 미분가능하려면 함수값이 이어지고 좌우 미분계수가 같아야 한다.\n\n먼저 좌우 기울기를 비교한다.\n$x\\le1$에서 $f'(x)=-4$\n$x>1$에서 $f'(x)=6x+5a$이다.\n따라서\n$-4=6+5a$\n$5a=-10$\n$a=-2$이다.\n\n이제 $x=1$에서의 함수값을 비교한다.\n$-4+b=3+5a+7$\n$-4+b=10-10=0$\n$b=4$이다.\n\n따라서 $a+b=-2+4=2$이므로\n정답은 ②이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
     "subUnit": "미분계수",
     "subUnitConfidence": "candidate_evidence",
@@ -180,7 +180,9 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "방정식 $2x^3+a=3x^2+12x+1$이 서로 다른 두 실근을 갖도록 하는 실수 $a$값을 모두 합하면? [3.8점]",
     "choices": [
@@ -191,11 +193,15 @@ window.questionBank = [
       "$15$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 삼차방정식이 서로 다른 두 실근을 가지려면 극댓값이나 극솟값 중 하나가 $0$이 되어 한 근이 중근이 되어야 한다.\n조건 정리: $F(x)=2x^3-3x^2-12x+a-1$이라 두면 방정식은 $F(x)=0$이다.\n풀이 방향: $F'(x)=0$인 두 극점에서의 함수값 중 하나를 $0$으로 둔다.\n정석 풀이: $F'(x)=6x^2-6x-12=6(x+1)(x-2)$이므로 극점은 $x=-1,2$이다. $F(-1)=a+6$, $F(2)=a-21$이다. 서로 다른 두 실근을 가지려면 $a+6=0$ 또는 $a-21=0$이어야 하므로 $a=-6,21$이다. 두 값의 합은 $15$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "방정식을 한쪽으로 모아 삼차함수와 수평선의 교점 개수로 판단한다.\n$2x^3-3x^2-12x=1-a$라 두고\n$G(x)=2x^3-3x^2-12x$라 하자.\n\n$G'(x)=6x^2-6x-12$\n$=6(x+1)(x-2)$이다.\n따라서 $x=-1$에서 극대, $x=2$에서 극소이다.\n\n극댓값과 극솟값은\n$G(-1)=-2-3+12=7$\n$G(2)=16-12-24=-20$이다.\n\n서로 다른 두 실근이 되려면 수평선 $y=1-a$가 극대점 또는 극소점을 지나, 그곳의 두 교점이 하나로 합쳐져야 한다.\n\n① $1-a=7$이면 $a=-6$이다.\n② $1-a=-20$이면 $a=21$이다.\n\n따라서 모든 $a$값의 합은\n$-6+21=15$이므로 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q07-solution.svg",
+    "solutionImageAlt": "삼차함수의 극대 (-1,7), 극소 (2,-20)와 수평선 7, -20",
+    "solutionImageCaption": "극대·극소와 두 실근",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -219,7 +225,7 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 분자를 $f(2)$를 기준으로 두 개의 미분계수 꼴로 나누어 해석한다.\n조건 정리: $h\\to0$에서 $f(2+h)-f(2)$와 $f(2)-f(2-5h)$를 이용한다.\n풀이 방향: 주어진 극한을 $f'(2)$의 배수로 바꾼다.\n정석 풀이: $\\dfrac{f(2+h)-f(2-5h)}{2h}=\\dfrac12\\dfrac{f(2+h)-f(2)}h+\\dfrac52\\dfrac{f(2)-f(2-5h)}{5h}$이다. $h\\to0$이면 두 미분계수는 모두 $f'(2)$가 되므로 주어진 극한은 $3f'(2)$이다. 따라서 $3f'(2)=12$, $f'(2)=4$이다. $f'(x)=3x^2-8x+a$이므로 $f'(2)=12-16+a=a-4=4$에서 $a=8$이다.\n따라서 정답은 ③이다.",
+    "solution": "미분계수의 정의를 이용해 두 함수값의 차를 나눈다.\n$\\displaystyle\\lim_{h\\to0}\\dfrac{f(2+h)-f(2-5h)}{2h}$\n\n분자에 $f(2)$를 더하고 빼면\n$\\displaystyle=\\lim_{h\\to0}\\left\\{\\dfrac{f(2+h)-f(2)}{2h}+\\dfrac{f(2)-f(2-5h)}{2h}\\right\\}$\n$\\displaystyle=\\dfrac12 f'(2)+\\dfrac52 f'(2)$\n$=3f'(2)$이다.\n\n주어진 값이 $12$이므로\n$3f'(2)=12$\n$f'(2)=4$이다.\n\n$f'(x)=3x^2-8x+a$이므로\n$f'(2)=12-16+a=a-4$이다.\n$a-4=4$에서 $a=8$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
     "subUnit": "미분계수",
     "subUnitConfidence": "candidate_evidence",
@@ -247,7 +253,7 @@ window.questionBank = [
       "$76$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $h\\gt0$인 상태에서는 두 적분이 모두 정상적인 정적분이므로 먼저 같은 구간으로 합친 뒤 $h\\to0^+$의 극한을 취한다.\n조건 정리: 두 번째 적분은 $\\displaystyle\\int_4^{2+h}=-\\int_{2+h}^4$이고, $2+h\\gt2$이므로 분모가 $0$이 되는 점을 적분구간에 포함하지 않는다.\n풀이 방향: 두 적분을 합쳐 $x^2-4$를 인수분해한 뒤 극한을 계산한다.\n정석 풀이: 두 번째 적분의 변수를 $x$로 바꾸면 주어진 식은 $\\displaystyle\\lim_{h\\to0^+}\\int_{2+h}^4\\dfrac{(x^2-4)(x^2-2x+4)}{x-2}dx$이다. $h\\gt0$에서는 $x\\ne2$이므로 $x^2-4=(x-2)(x+2)$를 약분할 수 있다. 따라서 $\\displaystyle\\lim_{h\\to0^+}\\int_{2+h}^4(x+2)(x^2-2x+4)dx=\\lim_{h\\to0^+}\\int_{2+h}^4(x^3+8)dx$이다. 이는 $\\displaystyle\\lim_{h\\to0^+}\\left\\{96-\\left(\\dfrac{(2+h)^4}{4}+8(2+h)\\right)\\right\\}=96-(4+16)=76$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "적분구간의 방향을 맞추고 두 피적분함수를 뺀다.\n$\\displaystyle\\int_4^{2+h} B(y)\\,dy=-\\int_{2+h}^4B(x)\\,dx$로 바꿀 수 있다.\n\n따라서 두 적분의 합은\n$\\displaystyle\\int_{2+h}^4\\dfrac{(x^2-4)(x^2-2x+4)}{x-2}\\,dx$이다.\n\n$x>2$에서 $x^2-4=(x-2)(x+2)$이므로\n$\\displaystyle\\dfrac{(x^2-4)(x^2-2x+4)}{x-2}$\n$=(x+2)(x^2-2x+4)$\n$=x^3+8$이다.\n\n이제 $h\\to0^+$일 때 아래끝은 $2$로 다가간다.\n$\\displaystyle\\int_2^4(x^3+8)\\,dx$\n$\\displaystyle=\\left[\\dfrac{x^4}{4}+8x\\right]_2^4$\n$\\displaystyle=\\left(\\dfrac{256}{4}+32\\right)-\\left(\\dfrac{16}{4}+16\\right)$\n$=96-20=76$이다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
@@ -275,7 +281,7 @@ window.questionBank = [
       "$16$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 도함수의 연속성으로 $a,b$를 정하고, 정적분으로 함수값의 변화를 구한다.\n조건 정리: $f'(x)$는 $x=-1,1$에서 연속이다.\n풀이 방향: 경계에서 도함숫값을 맞춘 뒤 $f(0)=1$을 기준으로 적분한다.\n정석 풀이: $x=1$에서 $3a=2(1)+1=3$이므로 $a=1$이다. $x=-1$에서 $3a=(-1)^2+b$이므로 $3=1+b$, $b=2$이다. $f(2)=f(0)+\\int_0^1 3dt+\\int_1^2(2t+1)dt=1+3+4=8$이다. 또 $f(0)-f(-1)=\\int_{-1}^0 3dt=3$이므로 $f(-1)=-2$이다. 따라서 $a+b+f(2)+f(-1)=1+2+8-2=9$이다.\n따라서 정답은 ③이다.",
+    "solution": "도함수 $f'(x)$가 연속이므로 경계점에서 좌우 식의 값이 같다.\n\n$x=1$에서\n$3a=2\\cdot1+1=3$\n$a=1$이다.\n\n$x=-1$에서\n$1+b=3a=3$\n$b=2$이다.\n\n따라서 $-1<x<1$에서 $f'(x)=3$이다.\n$f(0)=1$을 이용하면\n$\\displaystyle f(-1)=1+\\int_0^{-1}3\\,dx=1-3=-2$\n$\\displaystyle f(1)=1+\\int_0^1 3\\,dx=1+3=4$이다.\n\n$1\\le x\\le2$에서는 $f'(x)=2x+1$이므로\n$\\displaystyle f(2)=f(1)+\\int_1^2(2x+1)\\,dx$\n$\\displaystyle=4+[x^2+x]_1^2$\n$=4+(6-2)$\n$=8$이다.\n\n따라서\n$a+b+f(2)+f(-1)$\n$=1+2+8-2=9$이므로\n정답은 ③이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
@@ -305,7 +311,7 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 위치는 속도 그래프와 $t$축 사이의 부호 있는 넓이로 구한다.\n조건 정리: $0$에서 $3$까지는 속도가 양수이고, $3$에서 $5$까지는 음수이다.\n풀이 방향: 각 삼각형의 넓이로 위치를 구하고, 원점에서 가장 먼 위치가 $3$이라는 조건으로 $a$를 정한다.\n정석 풀이: $0\\le t\\le3$에서의 넓이는 $\\dfrac12\\cdot2\\cdot a+\\dfrac12\\cdot1\\cdot a=\\dfrac{3a}{2}$이므로 $t=3$에서의 위치는 $\\dfrac{3a}{2}$이다. 이후 $3\\le t\\le5$에서의 음의 넓이는 $\\dfrac12\\cdot1\\cdot a+\\dfrac12\\cdot1\\cdot a=a$이므로 $t=5$에서의 위치는 $\\dfrac a2$이다. $t=6$까지 다시 증가해도 위치는 $a$이므로 가장 먼 위치는 $t=3$에서의 $\\dfrac{3a}{2}$이다. 이것이 $3$이므로 $a=2$이고, $t=5$에서의 위치는 $1$이다.\n따라서 정답은 ①이다.",
+    "solution": "속도 그래프와 시간축 사이의 부호 있는 넓이가 위치의 변화량이다. 출발점은 원점이므로\n$\\displaystyle x(t)=\\int_0^t v(s)\\,ds$이다.\n\n그림에서 $0\\le t\\le3$에서는 속도가 양수이고,\n$t=3$ 이후 $t=5$까지는 음수이다.\n$t=3$에서 위치가 가장 크며, 그 값이 $3$이다.\n\n높이를 $a$라고 하면 $0$에서 $3$까지의 넓이는\n$\\displaystyle x(3)=\\dfrac12\\cdot2\\cdot a+\\dfrac12\\cdot1\\cdot a$\n$=\\dfrac32a$이다.\n$\\dfrac32a=3$에서 $a=2$이다.\n\n$3$부터 $5$까지는 시간축 아래 두 삼각형의 넓이를 빼야 한다.\n$\\displaystyle\\int_3^5v(t)\\,dt$\n$\\displaystyle=-\\dfrac12\\cdot1\\cdot2-\\dfrac12\\cdot1\\cdot2$\n$=-2$이다.\n\n따라서\n$x(5)=x(3)-2=3-2=1$이므로\n정답은 ①이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -326,7 +332,9 @@ window.questionBank = [
     "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "곡선 $y=x|x-3|$와 $x$축 및 직선 $x=6$으로 둘러싸인 도형의 넓이를 구하면? [4.1점]",
     "choices": [
@@ -337,11 +345,15 @@ window.questionBank = [
       "$72$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 절댓값 때문에 $x=3$을 기준으로 함수식을 나누어 넓이를 계산한다.\n조건 정리: $0\\le x\\le3$에서는 $|x-3|=3-x$, $3\\le x\\le6$에서는 $|x-3|=x-3$이다.\n풀이 방향: 두 구간의 넓이를 각각 적분하여 더한다.\n정석 풀이: 넓이는 $\\displaystyle\\int_0^3x(3-x)dx+\\int_3^6x(x-3)dx$이다. 첫 적분은 $\\dfrac92$, 둘째 적분은 $\\dfrac{45}{2}$이므로 전체 넓이는 $\\dfrac92+\\dfrac{45}{2}=27$이다.\n따라서 정답은 ③이다.",
+    "solution": "$x=3$을 기준으로 절댓값을 풀어 두 부분으로 나눈다.\n\n$0\\le x\\le3$에서는\n$|x-3|=3-x$이므로 $y=3x-x^2$이다.\n$3\\le x\\le6$에서는\n$|x-3|=x-3$이므로 $y=x^2-3x$이다.\n두 구간에서 모두 $y\\ge0$이다.\n\n첫 번째 부분의 넓이는\n$\\displaystyle S_1=\\int_0^3(3x-x^2)\\,dx$\n$\\displaystyle=\\left[\\dfrac32x^2-\\dfrac13x^3\\right]_0^3$\n$\\displaystyle=\\dfrac{27}{2}-9=\\dfrac92$이다.\n\n두 번째 부분의 넓이는\n$\\displaystyle S_2=\\int_3^6(x^2-3x)\\,dx$\n$\\displaystyle=\\left[\\dfrac{x^3}{3}-\\dfrac32x^2\\right]_3^6$\n$\\displaystyle=(72-54)-\\left(9-\\dfrac{27}{2}\\right)$\n$\\displaystyle=18+\\dfrac92=\\dfrac{45}{2}$이다.\n\n따라서 전체 넓이는\n$\\displaystyle S_1+S_2=\\dfrac92+\\dfrac{45}{2}=27$이므로\n정답은 ③이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "곡선 y=x|x−3|와 x=3을 경계로 나뉘는 두 넓이",
+    "solutionImageCaption": "절댓값 곡선과 두 영역의 넓이",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -354,7 +366,9 @@ window.questionBank = [
     "standardUnitOrder": 8,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "$f(x)=x^3-12x+4\\displaystyle\\int_0^1f(t)dt$를 만족시키는 함수 $f(x)$의 극값의 모든 합을 구하면? [4.2점]",
     "choices": [
@@ -365,11 +379,15 @@ window.questionBank = [
       "$\\dfrac{25}{12}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 먼저 정적분 값을 하나의 상수로 두어 자기 자신을 포함한 식을 풀고, 그 다음 극값을 구한다.\n조건 정리: $I=\\displaystyle\\int_0^1f(t)dt$라 두면 $f(x)=x^3-12x+4I$이다.\n풀이 방향: 양변을 $0$부터 $1$까지 적분하여 $I$를 정한 뒤 $f'(x)=0$을 조사한다.\n정석 풀이: $I=\\int_0^1(t^3-12t+4I)dt=\\dfrac14-6+4I=-\\dfrac{23}{4}+4I$이므로 $I=\\dfrac{23}{12}$이다. 따라서 $f(x)=x^3-12x+\\dfrac{23}{3}$이다. $f'(x)=3x^2-12=3(x-2)(x+2)$이므로 극점은 $x=-2,2$이다. $f(-2)=\\dfrac{71}{3}$, $f(2)=-\\dfrac{25}{3}$이므로 두 극값의 합은 $\\dfrac{46}{3}$이다.\n따라서 정답은 ②이다.",
+    "solution": "정적분에 들어 있는 상수를 먼저 정한다.\n$\\displaystyle A=\\int_0^1 f(t)\\,dt$라 두면\n$f(x)=x^3-12x+4A$이다.\n\n양변을 $0$에서 $1$까지 적분하면\n$\\displaystyle A=\\int_0^1(t^3-12t+4A)\\,dt$\n$\\displaystyle=\\left[\\dfrac{t^4}{4}-6t^2+4At\\right]_0^1$\n$=\\dfrac14-6+4A$\n$=-\\dfrac{23}{4}+4A$이다.\n따라서 $3A=\\dfrac{23}{4}$,\n$A=\\dfrac{23}{12}$이다.\n\n그러므로\n$\\displaystyle f(x)=x^3-12x+\\dfrac{23}{3}$이고,\n$f'(x)=3x^2-12=3(x+2)(x-2)$이다.\n도함수의 부호는\n$x<-2$에서 양, $-2<x<2$에서 음, $x>2$에서 양이다.\n따라서 $x=-2$에서 극대, $x=2$에서 극소이다.\n\n극댓값은\n$\\displaystyle f(-2)=-8+24+\\dfrac{23}{3}=\\dfrac{71}{3}$,\n극솟값은\n$\\displaystyle f(2)=8-24+\\dfrac{23}{3}=-\\dfrac{25}{3}$이다.\n\n모든 극값의 합은\n$\\displaystyle\\dfrac{71}{3}-\\dfrac{25}{3}=\\dfrac{46}{3}$이므로\n정답은 ②이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "f(x)=x³−12x+23/3의 극대 71/3과 극소 −25/3",
+    "solutionImageCaption": "삼차함수의 극대·극소",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -393,7 +411,7 @@ window.questionBank = [
       "$-\\dfrac9{13}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 적분에 들어 있는 $x$와 $t$를 분리하여 두 적분값을 상수로 둔다.\n조건 정리: $A=\\int_0^1f(t)dt$, $B=\\int_0^1tf(t)dt$라 두면 $f(x)=3x^2+Ax-B$이다.\n풀이 방향: 이 식을 이용해 $A,B$에 대한 연립방정식을 만든 뒤 이차방정식의 근과 계수를 이용한다.\n정석 풀이: $A=\\int_0^1(3t^2+At-B)dt=1+\\dfrac A2-B$이므로 $\\dfrac A2+B=1$이다. 또 $B=\\int_0^1t(3t^2+At-B)dt=\\dfrac34+\\dfrac A3-\\dfrac B2$이므로 $\\dfrac{3B}{2}=\\dfrac34+\\dfrac A3$이다. 이를 풀면 $A=\\dfrac9{13}$, $B=\\dfrac{17}{26}$이다. 따라서 $f(x)=3x^2+\\dfrac9{13}x-\\dfrac{17}{26}$이고, 두 근의 합은 $-\\dfrac{(9/13)}3=-\\dfrac3{13}$이다.\n따라서 정답은 ④이다.",
+    "solution": "적분구간이 $0$부터 $1$까지로 고정되어 있으므로, 적분에서 나오는 두 값을 상수로 둔다.\n$\\displaystyle A=\\int_0^1 f(t)\\,dt$,\n$\\displaystyle B=\\int_0^1 t f(t)\\,dt$라 하자.\n\n주어진 식은\n$f(x)=3x^2+Ax-B$가 된다.\n\n이 식을 $0$부터 $1$까지 적분하면\n$\\displaystyle A=\\int_0^1(3t^2+At-B)\\,dt$\n$\\displaystyle=1+\\dfrac A2-B$이다.\n따라서 $A=2-2B$이다.\n\n이번에는 양변에 $x$를 곱하여 적분하면\n$\\displaystyle B=\\int_0^1(3t^3+At^2-Bt)\\,dt$\n$\\displaystyle=\\dfrac34+\\dfrac A3-\\dfrac B2$이다.\n따라서\n$\\displaystyle B=\\dfrac12+\\dfrac{2A}{9}$이다.\n\n이를 $A=2-2B$에 대입하면\n$\\displaystyle A=2-2\\left(\\dfrac12+\\dfrac{2A}{9}\\right)$\n$\\displaystyle=1-\\dfrac{4A}{9}$,\n$\\displaystyle\\dfrac{13A}{9}=1$이므로 $A=\\dfrac9{13}$이다.\n\n$f(x)=3x^2+\\dfrac9{13}x-B$는 이차함수이다.\n$f(x)=0$의 두 근의 합은 근과 계수의 관계로\n$\\displaystyle-\\dfrac9{13}\\div3=-\\dfrac3{13}$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
@@ -410,7 +428,9 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "삼차함수 $f(x)=x^3+ax^2+bx+c$는 $x=-3$에서 극대이고, 곡선 $y=f(x)$ 위의 점 $(-2,28)$에서 접선의 기울기가 $-9$일 때, $f(1)$의 값을 구하면? (단, $a$, $b$, $c$는 상수) [4.3점]",
     "choices": [
@@ -421,11 +441,15 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 극대 조건과 접선의 기울기 조건은 모두 도함수에 대한 식을 준다.\n조건 정리: $f'(-3)=0$, $f'(-2)=-9$, $f(-2)=28$이다.\n풀이 방향: 앞의 두 식으로 $a,b$를 구한 뒤 함수값 조건으로 $c$를 정한다.\n정석 풀이: $f'(x)=3x^2+2ax+b$이다. $f'(-3)=0$에서 $27-6a+b=0$, $f'(-2)=-9$에서 $12-4a+b=-9$이다. 두 식을 풀면 $a=3$, $b=-9$이다. $f(-2)=-8+12+18+c=22+c=28$이므로 $c=6$이다. 따라서 $f(1)=1+3-9+6=1$이다.\n따라서 정답은 ①이다.",
+    "solution": "극대 조건과 접선의 기울기는 모두 도함수 조건이다.\n$f(x)=x^3+ax^2+bx+c$이므로\n$f'(x)=3x^2+2ax+b$이다.\n\n$x=-3$에서 극대이므로\n$f'(-3)=27-6a+b=0$이다. ①\n\n점 $(-2,28)$에서 접선의 기울기가 $-9$이므로\n$f'(-2)=12-4a+b=-9$이다. ②\n\n①에서 $b=6a-27$,\n②에서 $b=4a-21$이다.\n따라서\n$6a-27=4a-21$\n$2a=6,\\quad a=3$이고\n$b=6\\cdot3-27=-9$이다.\n\n이때 $f'(x)=3(x+3)(x-1)$이고\n$x=-3$을 지날 때 부호가 양에서 음으로 바뀌므로 극대 조건도 만족한다.\n\n접점 $(-2,28)$은 곡선 위에 있으므로\n$f(-2)=-8+3\\cdot4-9(-2)+c$\n$=-8+12+18+c=22+c=28$이다.\n따라서 $c=6$이다.\n\n$f(1)=1+3-9+6=1$이므로\n정답은 ①이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "삼차함수와 (−2,28)에서 기울기 −9인 접선, 극대점 (−3,33)",
+    "solutionImageCaption": "접점의 접선과 극대점",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -438,7 +462,9 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "구간 $[-4,2]$에서 함수 $f(x)=2x^3+ax^2+b$의 최솟값이 $-37$이다. 함수 $f(x)$는 $x=-2$에서 극대일 때, 함수 $f(1)$의 값을 구하면? (단, $a$, $b$는 상수) [4.3점]",
     "choices": [
@@ -449,11 +475,15 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 극대 조건으로 $a$를 정한 뒤 닫힌구간의 끝점과 극점에서 함수값을 비교한다.\n조건 정리: $f'(x)=6x^2+2ax$이고 $f'(-2)=0$이다.\n풀이 방향: $a$를 구한 다음 $[-4,2]$에서 최솟값이 생기는 위치를 확인한다.\n정석 풀이: $f'(-2)=24-4a=0$이므로 $a=6$이다. 이때 $f'(x)=6x(x+2)$이므로 $x=-2$에서 극대, $x=0$에서 극소이다. 후보값은 $f(-4)=b-32$, $f(0)=b$, $f(2)=b+40$이고 가장 작은 값은 $b-32$이다. $b-32=-37$에서 $b=-5$이다. 따라서 $f(1)=2+6-5=3$이다.\n따라서 정답은 ②이다.",
+    "solution": "극대가 일어나는 $x=-2$에서 도함수가 $0$이다.\n$f(x)=2x^3+ax^2+b$\n$f'(x)=6x^2+2ax$이므로\n$f'(-2)=24-4a=0$이다.\n따라서 $a=6$이다.\n\n이때\n$f'(x)=6x^2+12x=6x(x+2)$이다.\n도함수의 부호는\n$x<-2$에서 양,\n$-2<x<0$에서 음,\n$x>0$에서 양이다.\n따라서 $x=-2$에서 극대, $x=0$에서 극소가 된다.\n\n닫힌구간 $[-4,2]$에서는 양 끝점과 극점의 함수값을 비교한다.\n$f(-4)=-128+96+b=b-32$\n$f(-2)=-16+24+b=b+8$\n$f(0)=b$\n$f(2)=16+24+b=b+40$이다.\n\n가장 작은 값은 $f(-4)=b-32$이므로\n$b-32=-37$\n$b=-5$이다.\n\n따라서\n$f(1)=2+6-5=3$이므로\n정답은 ②이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "구간 [-4,2]에서 f(x)=2x³+6x²−5의 양 끝점과 두 극점",
+    "solutionImageCaption": "닫힌구간에서 최솟값 비교",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -466,7 +496,9 @@ window.questionBank = [
     "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "함수 $f(x)=-x^3+3x$와 최고차항의 계수가 $-1$인 이차함수 $g(x)$가 어떤 음수 $a$에 대하여 $f(a)=g(a)$, $f'(a)=g'(a)=0$을 만족시킬 때, 두 곡선 $y=f(x)$, $y=g(x)$로 둘러싸인 부분의 넓이를 구하면? [4.4점]",
     "choices": [
@@ -477,11 +509,15 @@ window.questionBank = [
       "$22$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 공통 접점에서 두 함수의 기울기가 모두 $0$이라는 조건으로 접점과 이차함수를 먼저 확정한다.\n조건 정리: $f'(x)=-3x^2+3$이고 $a$는 음수이다.\n풀이 방향: $a$를 구해 $g(x)$를 꼭짓점형으로 정한 뒤 두 함수의 교점과 차를 적분한다.\n정석 풀이: $f'(a)=0$에서 $a=\\pm1$이고 $a\\lt0$이므로 $a=-1$이다. $f(-1)=-2$이고 $g'(-1)=0$, 최고차항 계수가 $-1$이므로 $g(x)=-(x+1)^2-2$이다. $f(x)-g(x)=-x^3+x^2+5x+3=-(x-3)(x+1)^2$이므로 두 곡선은 $x=-1,3$에서 만나고 $-1\\le x\\le3$에서 $f(x)\\ge g(x)$이다. 따라서 넓이는 $\\displaystyle\\int_{-1}^{3}(-x^3+x^2+5x+3)dx$이다. 원시함수는 $-\\dfrac{x^4}{4}+\\dfrac{x^3}{3}+\\dfrac{5x^2}{2}+3x$이므로 넓이는 $\\displaystyle\\left[-\\dfrac{x^4}{4}+\\dfrac{x^3}{3}+\\dfrac{5x^2}{2}+3x\\right]_{-1}^{3}=\\dfrac{81}{4}-\\left(-\\dfrac{13}{12}\\right)=\\dfrac{64}{3}$이다.\n따라서 정답은 ③이다.",
+    "solution": "두 곡선이 기울기 $0$으로 만나는 음수 $a$부터 찾는다.\n$f(x)=-x^3+3x$이므로\n$f'(x)=-3x^2+3$이다.\n$f'(a)=0$에서\n$-3a^2+3=0$\n$a^2=1$이다.\n$a<0$이므로 $a=-1$이다.\n\n$f(-1)=-2$이고 $g'(-1)=0$이다.\n$g$의 최고차항 계수가 $-1$이므로\n$g(x)=-(x+1)^2-2$\n$=-x^2-2x-3$이다.\n\n두 함수의 차는\n$f(x)-g(x)=-x^3+x^2+5x+3$\n$=(3-x)(x+1)^2$이다.\n\n교점의 $x$좌표는 $-1,3$이다.\n$-1\\le x\\le3$에서 $(3-x)(x+1)^2\\ge0$이므로 이 구간에서는 $f(x)$가 위쪽이다.\n\n따라서 둘러싸인 넓이는\n$\\displaystyle S=\\int_{-1}^{3}\\{f(x)-g(x)\\}\\,dx$\n$\\displaystyle=\\int_{-1}^{3}(-x^3+x^2+5x+3)\\,dx$\n$\\displaystyle=\\left[-\\dfrac{x^4}{4}+\\dfrac{x^3}{3}+\\dfrac{5x^2}{2}+3x\\right]_{-1}^{3}$이다.\n\n위끝값은\n$\\displaystyle-\\dfrac{81}{4}+9+\\dfrac{45}{2}+9=\\dfrac{81}{4}$,\n아래끝값은\n$\\displaystyle-\\dfrac14-\\dfrac13+\\dfrac52-3=-\\dfrac{13}{12}$이다.\n\n$\\displaystyle S=\\dfrac{81}{4}-\\left(-\\dfrac{13}{12}\\right)$\n$\\displaystyle=\\dfrac{243+13}{12}=\\dfrac{64}{3}$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "f(x)=−x³+3x와 g(x)=−(x+1)²−2의 공통접점 −1, 교점 3, 둘러싸인 넓이",
+    "solutionImageCaption": "두 곡선 사이의 넓이",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -505,7 +541,7 @@ window.questionBank = [
       "$\\dfrac9{14}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 왼쪽 두 피적분함수는 곱 $x^2f(x)$를 미분한 식으로 묶인다.\n조건 정리: 양변을 미분하면 $2xf(x)+x^2f'(x)=4x^3-3ax^2+8x$이다.\n풀이 방향: 왼쪽을 $(x^2f(x))'$로 보고 적분상수를 검토한 뒤, 다항함수 조건을 이용한다.\n정석 풀이: $(x^2f(x))'=4x^3-3ax^2+8x$이므로 $x^2f(x)=x^4-ax^3+4x^2+C$이다. $f(x)$가 다항함수이므로 $C=0$이어야 하며 $f(x)=x^2-ax+4$이다. 따라서 $0=\\int_0^4f(x)dx=\\left[\\dfrac{x^3}{3}-\\dfrac a2x^2+4x\\right]_0^4=\\dfrac{112}{3}-8a$이므로 $a=\\dfrac{14}{3}$이다. 그러므로 $\\dfrac3a=\\dfrac9{14}$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "왼쪽 두 적분의 피적분함수를 합치면 곱을 미분한 꼴이다.\n$\\{x^2f(x)\\}'=2xf(x)+x^2f'(x)$이다.\n\n주어진 등식의 양변을 미분하면\n$2xf(x)+x^2f'(x)=4x^3-3ax^2+8x$이므로\n$\\{x^2f(x)\\}'=4x^3-3ax^2+8x$이다.\n\n양변을 적분하면\n$x^2f(x)=x^4-ax^3+4x^2+C$이다.\n$f(x)$가 다항함수이므로 $x=0$을 대입하면 왼쪽이 $0$이고 오른쪽이 $C$이다.\n따라서 $C=0$이다.\n\n$x^2f(x)=x^2(x^2-ax+4)$이므로\n$f(x)=x^2-ax+4$이다.\n\n이제 정적분 조건을 쓴다.\n$\\displaystyle 0=\\int_0^4(x^2-ax+4)\\,dx$\n$\\displaystyle=\\left[\\dfrac{x^3}{3}-\\dfrac{ax^2}{2}+4x\\right]_0^4$\n$\\displaystyle=\\dfrac{64}{3}-8a+16$\n$\\displaystyle=\\dfrac{112}{3}-8a$이다.\n\n$\\displaystyle8a=\\dfrac{112}{3}$\n$\\displaystyle a=\\dfrac{14}{3}$이다.\n따라서\n$\\displaystyle\\dfrac3a=3\\div\\dfrac{14}{3}=\\dfrac9{14}$이므로\n정답은 ⑤이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
@@ -522,7 +558,9 @@ window.questionBank = [
     "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "세 양수 $a$, $b$, $k$에 대하여 함수 $f(x)$를 $f(x)=\\begin{cases}ax&(x\\ltk)\\\\-x^2+4bx-3b^2&(x\\gek)\\end{cases}$라 하자. 함수 $f(x)$가 실수 전체의 집합에서 미분가능하고, $f(k)=f'(k)$를 만족시킬 때, 함수 $f(x)$의 그래프와 $x$축으로 둘러싸인 부분의 넓이를 구하면? [4.5점]",
     "choices": [
@@ -533,11 +571,15 @@ window.questionBank = [
       "$\\dfrac4{\\sqrt3}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 경계점 $x=k$에서의 함수값·미분계수 일치와 $f(k)=f'(k)$를 함께 사용한다.\n조건 정리: 왼쪽에서 $f(k)=ak$, $f'(k)=a$이므로 $ak=a$이고 $a\\gt0$이다.\n풀이 방향: 먼저 $k$를 구한 뒤 미분가능 조건으로 $a,b$를 정하고, 양의 부분을 적분한다.\n정석 풀이: $ak=a$에서 $k=1$이다. 미분계수의 일치로 $a=-2+4b$이다. 함수값의 연속성으로 $a=-1+4b-3b^2$이다. 두 식을 비교하면 $3b^2=1$이고 $b\\gt0$이므로 $b=\\dfrac1{\\sqrt3}$, $a=\\dfrac4{\\sqrt3}-2$이다. 오른쪽 이차식은 $-(x-b)(x-3b)$이고 $3b=\\sqrt3\\gt1$이므로 둘러싸인 넓이는 두 구간으로 나뉜다. 먼저 $\\displaystyle\\int_0^1axdx=\\dfrac a2=\\dfrac2{\\sqrt3}-1$이다. 또 $b=\\dfrac1{\\sqrt3}$를 대입하면 오른쪽 식은 $-x^2+\\dfrac4{\\sqrt3}x-1$이므로 $\\displaystyle\\int_1^{\\sqrt3}\\left(-x^2+\\dfrac4{\\sqrt3}x-1\\right)dx=\\left[-\\dfrac{x^3}{3}+\\dfrac2{\\sqrt3}x^2-x\\right]_1^{\\sqrt3}=\\dfrac43-\\dfrac2{\\sqrt3}$이다. 따라서 전체 넓이는 $\\left(\\dfrac2{\\sqrt3}-1\\right)+\\left(\\dfrac43-\\dfrac2{\\sqrt3}\\right)=\\dfrac13$이다.\n따라서 정답은 ②이다.",
+    "solution": "경계점 $x=k$에서 미분가능하므로 함수값과 기울기가 양쪽에서 일치한다.\n\n왼쪽 식 $f(x)=ax$에서 $f'(x)=a$이고,\n주어진 $f(k)=f'(k)$에 의해\n$ak=a$이다.\n$a>0$이므로 $k=1$이다.\n\n$x=1$에서 도함수의 연속 조건은\n$a=-2+4b$이고,\n함수값의 연속 조건은\n$a=-1+4b-3b^2$이다.\n\n두 식을 같게 놓으면\n$-2+4b=-1+4b-3b^2$\n$3b^2=1$이다.\n$b>0$이므로 $b=\\dfrac1{\\sqrt3}$이고\n$\\displaystyle a=\\dfrac4{\\sqrt3}-2$이다.\n\n따라서 함수는\n$f(x)=\\begin{cases}(\\dfrac4{\\sqrt3}-2)x&(x<1)\\\\-x^2+\\dfrac4{\\sqrt3}x-1&(x\\ge1)\\end{cases}$이다.\n\n오른쪽 이차식은\n$\\displaystyle -(x-\\dfrac1{\\sqrt3})(x-\\sqrt3)$으로 인수분해된다.\n$\\dfrac1{\\sqrt3}<1<\\sqrt3$이므로 $0<x<\\sqrt3$에서 그래프는 $x$축 위에 있다.\n\n둘러싸인 넓이를 $x=1$에서 나누어 계산한다.\n$\\displaystyle S_1=\\int_0^1\\left(\\dfrac4{\\sqrt3}-2\\right)x\\,dx$\n$\\displaystyle=\\left(\\dfrac4{\\sqrt3}-2\\right)\\dfrac12$\n$\\displaystyle=\\dfrac2{\\sqrt3}-1$이다.\n\n$\\displaystyle S_2=\\int_1^{\\sqrt3}\\left(-x^2+\\dfrac4{\\sqrt3}x-1\\right)dx$\n$\\displaystyle=\\left[-\\dfrac{x^3}{3}+\\dfrac2{\\sqrt3}x^2-x\\right]_1^{\\sqrt3}$이다.\n위끝값은 $-\\sqrt3+2\\sqrt3-\\sqrt3=0$,\n아래끝값은 $-\\dfrac13+\\dfrac2{\\sqrt3}-1=\\dfrac2{\\sqrt3}-\\dfrac43$이다.\n따라서 $\\displaystyle S_2=\\dfrac43-\\dfrac2{\\sqrt3}$이다.\n\n$\\displaystyle S=S_1+S_2=\\dfrac13$이므로\n정답은 ②이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "x=1에서 부드럽게 연결되는 직선과 이차곡선, 0부터 √3까지의 넓이",
+    "solutionImageCaption": "미분가능 연결점과 x축 사이 넓이",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -550,7 +592,9 @@ window.questionBank = [
     "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "원점에서 출발하여 수직선 위를 움직이는 점 $P$의 시각 $t$에서의 위치 $x(t)$가 $x(t)=kt(t-a)(t-b)$이다. 함수 $x(t)$와 점 $P$의 시각 $t$에서의 속도 $v(t)$가 다음 조건을 만족시킨다.<div class=\"question-note-box\">&lt;조 건&gt;<br>(가) 함수 $x(t)$의 극댓값은 $2$이다.<br>(나) $\\displaystyle\\int_0^2|v(t)|dt=4$이다.<br>(다) 점 $P$는 출발 이후 원점을 한 번만 지난다.</div>$\\displaystyle\\int_0^c|v(t)|dt=6$일 때, 양수 $c$의 값을 구하면? (단, $a$, $b$는 상수이고, $0\\lt a\\le b$, $k\\gt0$이다.) [4.5점]",
     "choices": [
@@ -561,11 +605,15 @@ window.questionBank = [
       "$\\dfrac73$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 위치의 영점 개수로 $a=b$를 먼저 확정하고, 이동거리는 위치함수의 증감에 따른 위치 변화량의 절댓값으로 계산한다.\n조건 정리: 출발 후 원점을 한 번만 지나므로 양의 영점 $a,b$가 같아야 한다. $a=b=r$라 두면 $x(t)=kt(t-r)^2$이다.\n풀이 방향: 극댓값 조건으로 $k$와 $r$의 관계를 만들고, $0$부터 $2$까지의 이동거리 조건으로 $r$을 정한다.\n정석 풀이: $x'(t)=k(t-r)(3t-r)$이므로 $t=\\dfrac r3$에서 극댓값을 가지며 그 값은 $\\dfrac{4kr^3}{27}=2$이다. 따라서 $k=\\dfrac{27}{2r^3}$이다. 위치는 $0$에서 극댓값 $2$까지 갔다가 $t=r$에서 다시 $0$이 된다. $2\\lt r\\le6$이면 $r/3\\le2\\lt r$이므로 시각 $2$까지의 이동거리는 $2+\\{2-x(2)\\}=4-x(2)\\lt4$이다. $r\\gt6$이면 $2\\lt r/3$이라 시각 $2$까지 계속 증가 중이므로 이동거리는 $x(2)\\lt2\\lt4$이다. 반대로 $0\\lt r\\lt2$이면 시각 $r$에서 이미 원점으로 돌아온 뒤 다시 증가하므로 시각 $2$까지의 이동거리는 $4+x(2)\\gt4$이다. 따라서 (나)를 만족하는 경우는 $r=2$뿐이다. 그러므로 $k=\\dfrac{27}{16}$이다. 시각 $2$까지의 이동거리가 $4$이고 $t\\gt2$에서는 $x'(t)=\\dfrac{27}{16}(t-2)(3t-2)\\gt0$이므로 $\\int_0^c|v(t)|dt=6$은 $x(c)=2$와 같다. 즉 $\\dfrac{27}{16}c(c-2)^2=2$, 다시 말해 $27c(c-2)^2=32$이다. $c=\\dfrac83$을 대입하면 $27\\cdot\\dfrac83\\cdot\\left(\\dfrac23\\right)^2=32$이므로 식을 만족한다. 또한 $t\\gt2$에서 $x(t)$가 단조증가하므로 이 해는 유일하다.\n따라서 정답은 ④이다.",
+    "solution": "출발 이후 원점을 한 번만 지나므로 양수인 두 영점 $a,b$는 일치해야 한다.\n$a=b=r$ $(r>0)$로 두면\n$x(t)=kt(t-r)^2$이다.\n\n속도는\n$v(t)=x'(t)=k(t-r)(3t-r)$이다.\n$t=\\dfrac r3$에서 속도가 양에서 음으로 바뀌므로 이때 위치가 극대이다.\n$\\displaystyle x\\left(\\dfrac r3\\right)=k\\cdot\\dfrac r3\\cdot\\left(-\\dfrac{2r}{3}\\right)^2$\n$\\displaystyle=\\dfrac{4kr^3}{27}=2$이다.\n따라서 $\\displaystyle k=\\dfrac{27}{2r^3}$이다.\n\n시각 $0$부터 극대점까지 위치가 $0\\to2$, 그 뒤 $t=r$까지 $2\\to0$으로 이동하므로 이 왕복 이동거리는 $4$이다.\n\n① $0<r<2$라면 $t=2$는 왕복 이후이다. $x(2)>0$이므로 시각 $2$까지의 이동거리는 $4+x(2)>4$이다.\n② $r>2$라면 시각 $2$까지 원점으로 돌아오지 못한다. $t=2$까지 극대를 지났으면 이동거리는 $4-x(2)<4$이고, 아직 극대 이전이면 이동거리는 $x(2)<2$이다.\n③ $r=2$라면 시각 $2$에 원점으로 돌아오므로 이동거리가 정확히 $4$이다.\n\n따라서 $r=2$이고\n$\\displaystyle k=\\dfrac{27}{2\\cdot2^3}=\\dfrac{27}{16}$이다.\n$\\displaystyle x(t)=\\dfrac{27}{16}t(t-2)^2$이다.\n\n시각 $2$ 이후 속도가 양수이고 이미 이동한 거리는 $4$이다. 전체 이동거리가 $6$이 되려면 $c>2$에서 위치가 $2$여야 한다.\n$\\displaystyle\\dfrac{27}{16}c(c-2)^2=2$\n$27c(c-2)^2=32$\n$27c^3-108c^2+108c-32=0$\n$(3c-8)(3c-2)^2=0$이다.\n\n$c>2$를 만족하는 해는\n$\\displaystyle c=\\dfrac83$뿐이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "x(t)=27t(t−2)²/16에서 극대 (2/3,2), 복귀 (2,0), 거리 6에서 위치 (8/3,2)",
+    "solutionImageCaption": "위치 변화량과 이동거리",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -579,17 +627,22 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "그래프"
     ],
     "wide": false,
     "content": "[주관식1 (서술형)] [6점](부분점수 있음)<br>모든 실수 $x$, $y$에 대하여 다항함수 $f(x)$가 $f(x+y)=f(x)+f(y)+4xy$를 만족시킨다. 함수 $H(x)$가 $H(x)=\\displaystyle\\int(x-2)f'(x)dx$이고, $H(x)$는 극값이 존재하지 않을 때, $f(5)$의 값을 구하는 풀이 과정을 자세히 서술하시오.",
     "choices": [],
     "answer": "$10$",
-    "solution": "[키포인트] 주어진 함수식에서 $2x^2$을 분리하면 다항식인 가법함수가 남고, $H'(x)$가 부호를 바꾸지 않는 조건을 이용한다.\n조건 정리: $g(x)=f(x)-2x^2$라 두면 $g(x+y)=g(x)+g(y)$이다.\n풀이 방향: 다항식인 가법함수는 일차함수임을 이용해 $f(x)$의 꼴을 정한 뒤 $H'(x)$의 두 근이 겹치도록 한다.\n정석 풀이: $g(x)$는 다항식이고 모든 실수에서 가법성을 만족하므로 $g(x)=mx$인 상수 $m$이 존재한다. 따라서 $f(x)=2x^2+mx$이고 $f'(x)=4x+m$이다. $H'(x)=(x-2)(4x+m)$이다. 두 일차인수의 영점이 서로 다르면 $H'(x)$의 부호가 각 영점에서 바뀌어 $H(x)$에 극값이 생긴다. 극값이 존재하지 않으려면 두 영점이 같아야 하므로 $-\\dfrac m4=2$, 즉 $m=-8$이다. 따라서 $f(5)=2\\cdot25-8\\cdot5=10$이다.\n따라서 구하는 값은 $10$이다.",
+    "solution": "먼저 주어진 함수식을 이용해 $f(x)$를 정한다.\n$y=0$을 대입하면\n$f(x)=f(x)+f(0)$이므로 $f(0)=0$이다.\n\n$x$를 고정하고 양변을 $y$에 대하여 미분하면\n$f'(x+y)=f'(y)+4x$이다.\n여기에 $y=0$을 대입하여\n$f'(x)=f'(0)+4x$를 얻는다.\n\n$f'(0)=m$으로 두면\n$f'(x)=4x+m$이고,\n$f(x)=2x^2+mx+C$이다.\n$f(0)=0$이므로 $C=0$이다.\n\n이제 $H(x)$의 극값 조건을 이용한다.\n$\\displaystyle H(x)=\\int(x-2)f'(x)\\,dx$이므로\n$H'(x)=(x-2)f'(x)$\n$=(x-2)(4x+m)$이다.\n\n두 일차인수의 영점 $2$와 $-\\dfrac m4$가 서로 다르면 도함수의 부호가 두 영점에서 바뀌어 극대와 극소가 생긴다.\n극값이 존재하지 않으려면 두 영점이 같아야 하므로\n$-\\dfrac m4=2$\n$m=-8$이다.\n\n이때 $H'(x)=4(x-2)^2\\ge0$이므로 실제로 극값이 생기지 않는다.\n\n따라서\n$f(5)=2\\cdot5^2-8\\cdot5$\n$=50-40=10$이다.\n따라서 구하는 값은 $10$이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "H'(x)=4(x−2)²는 x=2에서 0이지만 양옆에서 모두 양수",
+    "solutionImageCaption": "극값이 없는 도함수의 부호",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -603,17 +656,22 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "그래프"
     ],
     "wide": false,
     "content": "[주관식2 (서술형)] [7점](부분점수 있음)<br>두 함수 $f(x)=4x^4-3x^3-10x^2-6$, $g(x)=x^4+x^3+2x^2-a$에 대하여 $y=f(x)$의 그래프가 $y=g(x)$의 그래프보다 항상 위쪽에 있을 때, 실수 $a$의 값의 범위를 구하는 풀이 과정을 자세히 서술하시오.",
     "choices": [],
     "answer": "$a\\gt38$",
-    "solution": "[키포인트] 두 그래프의 위아래 관계를 차함수의 최솟값 문제로 바꾼다.\n조건 정리: 모든 실수 $x$에 대하여 $f(x)\\gt g(x)$이어야 한다.\n풀이 방향: $F(x)=f(x)-g(x)$의 전역 최솟값을 구해 그것이 양수가 되게 한다.\n정석 풀이: $F(x)=3x^4-4x^3-12x^2+a-6$이고 $F'(x)=12x(x+1)(x-2)$이다. 임계점은 $x=-1,0,2$이며, $F(-1)=a-11$, $F(0)=a-6$, $F(2)=a-38$이다. 최고차항의 계수가 양수이고 도함수의 부호를 조사하면 전역 최솟값은 $x=2$에서의 $a-38$이다. 두 그래프가 한 점에서도 만나지 않고 항상 $f$가 위에 있으려면 $F(x)\\gt0$이 모든 실수에서 성립해야 하므로 $a-38\\gt0$이다.\n따라서 구하는 범위는 $a\\gt38$이다.",
+    "solution": "$y=f(x)$가 언제나 $y=g(x)$보다 위쪽에 있으려면 모든 실수 $x$에 대하여 $f(x)-g(x)>0$이어야 한다.\n\n차를 $F(x)$로 두면\n$F(x)=4x^4-3x^3-10x^2-6-(x^4+x^3+2x^2-a)$\n$=3x^4-4x^3-12x^2+a-6$이다.\n\n이 함수의 최솟값을 구하기 위해 미분한다.\n$F'(x)=12x^3-12x^2-24x$\n$=12x(x+1)(x-2)$이다.\n\n도함수의 부호를 구간별로 살피면\n$x<-1$에서 음,\n$-1<x<0$에서 양,\n$0<x<2$에서 음,\n$x>2$에서 양이다.\n\n따라서 $x=-1$과 $x=2$에서 극소, $x=0$에서 극대이다.\n극솟값을 각각 구하면\n$F(-1)=3+4-12+a-6=a-11$\n$F(2)=48-32-48+a-6=a-38$이다.\n\n$F(x)$는 최고차항의 계수가 양수인 사차함수이므로 양쪽 끝으로 갈수록 값이 커진다.\n$a-38<a-11$이므로 전체 실수에서의 최솟값은 $x=2$에서의 $a-38$이다.\n\n그래프가 만나지 않고 항상 위에 있으려면 이 최솟값도 양수여야 한다.\n$a-38>0$\n$a>38$이다.\n\n따라서 구하는 범위는 $a\\gt38$이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "a=38일 때 f−g는 x=2에서 0에 접하고, a>38이면 모든 x에서 양수",
+    "solutionImageCaption": "차함수의 전역 최솟값",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -634,7 +692,7 @@ window.questionBank = [
     "content": "[주관식3 (서술형)] [7점](부분점수 있음)<br>두 함수 $f(x)=\\begin{cases}x&(x\\gt0)\\\\0&(x\\le0)\\end{cases}$, $g(x)=a(x-1)^2+b$에 대하여 함수 $h(x)$를 $h(x)=f(x)-f(x-c)-f(x-2+c)$라 하자. 함수 $y=h(x)$의 그래프와 함수 $y=g(x)$의 그래프가 서로 다른 세 점 $(\\alpha,h(\\alpha))$, $(\\beta,h(\\beta))$, $(\\gamma,h(\\gamma))$에서 접하고 $\\gamma=1+\\alpha$일 때, $\\displaystyle\\int_\\alpha^\\gamma g(x)dx$의 값을 구하는 풀이 과정을 자세히 서술하시오. (단, $a$, $b$, $c$는 상수이고, $0\\lt c\\lt1$이고, $\\alpha\\lt\\beta\\lt\\gamma$이다.)",
     "choices": [],
     "answer": "$\\dfrac23$",
-    "solution": "[키포인트] 먼저 $h(x)$를 구간별로 정리하면 기울기가 $0,1,0,-1$인 꺾은선이 되고, 세 접점의 기울기 조건으로 포물선을 정할 수 있다.\n조건 정리: $0\\lt c\\lt1$이므로 $h(x)=0$ $(x\\le0)$, $h(x)=x$ $(0\\lt x\\le c)$, $h(x)=c$ $(c\\lt x\\le2-c)$, $h(x)=2-x$ $(x\\gt2-c)$이다.\n풀이 방향: 가운데 수평구간에서의 접점과 좌우 기울기 $1,-1$인 구간에서의 접점을 이용한다.\n정석 풀이: $g'(x)=2a(x-1)$이다. 수평구간에서 접하려면 $g'(\\beta)=0$이므로 $\\beta=1$이고 $g(1)=b=h(1)=c$, 따라서 $b=c$이다. 왼쪽 접점에서는 $g'(\\alpha)=1$, 오른쪽 접점에서는 $g'(\\gamma)=-1$이므로 두 점은 $x=1$에 대하여 대칭이다. 따라서 $\\alpha+\\gamma=2$이다. 주어진 $\\gamma=1+\\alpha$와 함께 풀면 $\\alpha=\\dfrac12$, $\\gamma=\\dfrac32$이다. $2a(\\alpha-1)=1$에서 $a=-1$이다. 또한 $g(\\tfrac12)=h(\\tfrac12)=\\tfrac12$이므로 $-\\dfrac14+c=\\dfrac12$, 따라서 $c=b=\\dfrac34$이다. 그러므로 $g(x)=-(x-1)^2+\\dfrac34$이고 $\\displaystyle\\int_{1/2}^{3/2}g(x)dx=\\int_{-1/2}^{1/2}\\left(\\dfrac34-u^2\\right)du=\\dfrac23$이다.\n따라서 구하는 값은 $\\dfrac23$이다.",
+    "solution": "$0<c<1$이므로 꺾은선 $h(x)$를 구간별로 먼저 구한다.\n\n$h(x)=f(x)-f(x-c)-f(x-2+c)$에서\n$\\displaystyle h(x)=\\begin{cases}\n0&(x\\le0)\\\\\nx&(0<x\\le c)\\\\\nc&(c<x\\le2-c)\\\\\n2-x&(x>2-c)\n\\end{cases}$이다.\n\n따라서 세 접점이 놓이는 기울기 $1,0,-1$의 구간을 각각 고려한다.\n포물선 $g(x)=a(x-1)^2+b$의 도함수는\n$g'(x)=2a(x-1)$이다.\n\n가운데 수평구간에서 접하는 점은 $g'(x)=0$이어야 하므로\n$\\beta=1$이다.\n또 $h(1)=c$, $g(1)=b$이므로\n$b=c$이다.\n\n왼쪽 기울기 $1$인 구간의 접점에서는\n$g'(\\alpha)=2a(\\alpha-1)=1$이다. ①\n오른쪽 기울기 $-1$인 구간의 접점에서는\n$g'(\\gamma)=2a(\\gamma-1)=-1$이다. ②\n\n①과 ②를 더하면\n$2a(\\alpha+\\gamma-2)=0$이다.\n$a\\ne0$이므로 $\\alpha+\\gamma=2$이다.\n\n주어진 $\\gamma=1+\\alpha$를 대입하면\n$\\alpha+(1+\\alpha)=2$\n$2\\alpha=1$\n$\\alpha=\\dfrac12,\\quad\\gamma=\\dfrac32$이다.\n\n①에 대입하면\n$\\displaystyle2a\\left(\\dfrac12-1\\right)=1$\n$-a=1$이므로 $a=-1$이다.\n\n왼쪽 접점이 두 그래프 위에 있으므로\n$\\displaystyle g\\left(\\dfrac12\\right)=h\\left(\\dfrac12\\right)=\\dfrac12$이다.\n$\\displaystyle-\\left(\\dfrac12-1\\right)^2+b=\\dfrac12$\n$-\\dfrac14+b=\\dfrac12$\n$b=\\dfrac34$이다.\n따라서 $c=\\dfrac34$이다.\n\n이 값은 $0<\\alpha<c<1<2-c<\\gamma$를 만족하며 세 점 모두 실제로 접한다.\n$\\displaystyle g(x)=-(x-1)^2+\\dfrac34$\n$=-x^2+2x-\\dfrac14$이다.\n\n이제 요구한 정적분을 계산한다.\n$\\displaystyle\\int_{1/2}^{3/2}g(x)\\,dx$\n$\\displaystyle=\\left[-\\dfrac{x^3}{3}+x^2-\\dfrac x4\\right]_{1/2}^{3/2}$이다.\n\n위끝값은\n$\\displaystyle-\\dfrac98+\\dfrac94-\\dfrac38=\\dfrac34$,\n아래끝값은\n$\\displaystyle-\\dfrac1{24}+\\dfrac14-\\dfrac18=\\dfrac1{12}$이다.\n\n따라서\n$\\displaystyle\\int_{1/2}^{3/2}g(x)\\,dx$\n$\\displaystyle=\\dfrac34-\\dfrac1{12}=\\dfrac23$이다.\n따라서 구하는 값은 $\\dfrac23$이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
