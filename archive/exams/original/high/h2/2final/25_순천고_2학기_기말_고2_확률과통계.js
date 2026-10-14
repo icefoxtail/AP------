@@ -728,7 +728,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 신뢰도가 같을 때 신뢰구간 길이 $b-a = 2z \\cdot \\dfrac{\\sigma}{\\sqrt{n}}$은 $\\dfrac{\\sigma}{\\sqrt{n}}$에 비례한다.\\n조건 정리: 신뢰도가 모두 같으므로 $z$는 동일하다. $\\dfrac{\\sigma}{\\sqrt{n}}$만 비교하면 된다.\\n풀이 방향: 각 보기의 $\\dfrac{\\sigma}{\\sqrt{n}}$ 값을 계산해 가장 큰 것을 찾는다.\\n정석 풀이:\\n① $\\dfrac{2}{\\sqrt{36}} = \\dfrac{2}{6} \\approx 0.333$\\n② $\\dfrac{10}{\\sqrt{100}} = \\dfrac{10}{10} = 1$\\n③ $\\dfrac{9}{\\sqrt{25}} = \\dfrac{9}{5} = 1.8$\\n④ $\\dfrac{12}{\\sqrt{81}} = \\dfrac{12}{9} \\approx 1.333$\\n⑤ $\\dfrac{11}{\\sqrt{100}} = \\dfrac{11}{10} = 1.1$\\n가장 큰 값은 ③의 $1.8$이다.\\n따라서 정답은 ③이다.",
+    "solution": "신뢰도가 같으면 신뢰구간의 폭은\n$b-a=2z\\times\\dfrac{\\sigma}{\\sqrt n}$이다.\n여기서 $z$는 모든 보기에서 같으므로 $\\dfrac{\\sigma}{\\sqrt n}$가 가장 큰 것을 고른다.\n\n① $\\dfrac{2}{\\sqrt{36}}=\\dfrac{1}{3}$\n② $\\dfrac{10}{\\sqrt{100}}=1$\n③ $\\dfrac{9}{\\sqrt{25}}=\\dfrac{9}{5}=1.8$\n④ $\\dfrac{12}{\\sqrt{81}}=\\dfrac{4}{3}$\n⑤ $\\dfrac{11}{\\sqrt{100}}=1.1$\n\n가장 큰 값은 ③의 $1.8$이므로 그 신뢰구간의 폭이 가장 크다.\n\n따라서 정답은 ③이다.",
     "solutionStatus": "solution_upgraded_batch4",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -775,7 +775,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 신뢰구간 길이 $b-a = 2 \\times 1.96 \\times \\dfrac{\\sigma}{\\sqrt{n}}$이 4 이하가 되어야 한다.\\n조건 정리: $\\sigma=8$, $z=1.96$, $b-a \\le 4$를 만족하는 자연수 $n$의 최솟값을 구한다.\\n풀이 방향: $b-a = \\dfrac{2 \\times 1.96 \\times 8}{\\sqrt{n}} \\le 4$를 $n$에 대해 풀어 최솟값을 구한다.\\n정석 풀이: $\\dfrac{2 \\times 1.96 \\times 8}{\\sqrt{n}} \\le 4$\\n$\\dfrac{31.36}{\\sqrt{n}} \\le 4$\\n$\\sqrt{n} \\ge \\dfrac{31.36}{4} = 7.84$\\n$n \\ge 7.84^2 = 61.4656$\\n따라서 자연수 $n$의 최솟값은 $62$이다.\\n따라서 정답은 ①이다.",
+    "solution": "95% 신뢰구간의 폭은\n$b-a=2\\times1.96\\times\\dfrac{8}{\\sqrt n}$이다.\n\n폭이 $4$ 이하라는 조건을 적용하면\n$2\\times1.96\\times\\dfrac{8}{\\sqrt n}\\le4$\n$\\dfrac{31.36}{\\sqrt n}\\le4$\n$\\sqrt n\\ge7.84$\n\n양변이 양수이므로 제곱하여\n$n\\ge(7.84)^2=61.4656$\n\n$n$은 자연수이므로 가능한 최솟값은 $62$이다.\n\n따라서 정답은 ①이다.",
     "solutionStatus": "solution_upgraded_batch4",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -823,7 +823,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 한 상자의 총 무게(16개 합)의 분포를 구한 뒤, 두 상자 중 정확히 한 개만 조건을 만족할 확률을 이항분포로 계산한다.\\n조건 정리: 소금빵 1개의 무게 $\\sim N(200, 20^2)$이고, 한 상자는 16개이다.\\n풀이 방향: 한 상자 내용량(16개 합)의 분포를 구해 구간확률을 찾고, 두 상자 중 한 개만 만족할 확률을 계산한다.\\n정석 풀이: 한 상자의 총 무게 평균: $16 \\times 200 = 3200$ g\\n한 상자의 총 무게 표준편차: $\\sqrt{16} \\times 20 = 80$ g\\n(총 무게 $\\sim N(3200, 80^2)$)\\n$3.12$ kg $= 3120$ g에 대한 $z$값: $\\dfrac{3120-3200}{80} = -1$\\n$3.36$ kg $= 3360$ g에 대한 $z$값: $\\dfrac{3360-3200}{80} = 2$\\n한 상자가 조건을 만족할 확률: $p = P(-1 \\le Z \\le 2) = 0.34 + 0.48 = 0.82$\\n두 상자 중 정확히 한 개만 조건을 만족할 확률:\\n$\\binom{2}{1} p(1-p) = 2 \\times 0.82 \\times 0.18 = 0.2952$\\n따라서 정답은 ②이다.",
+    "solution": "한 상자의 내용량을 $S$ g이라 하자.\n소금빵 16개 무게의 합이므로\n$E(S)=16\\times200=3200$\n$\\sigma(S)=\\sqrt{16}\\times20=80$\n$S\\sim N(3200,80^2)$\n\n$3.12$ kg부터 $3.36$ kg까지는 $3120$ g부터 $3360$ g까지이다.\n두 끝값을 표준화하면\n$\\dfrac{3120-3200}{80}=-1$\n$\\dfrac{3360-3200}{80}=2$\n\n한 상자가 이 범위에 들어올 확률을 $p$라 하면\n$p=P(-1\\le Z\\le2)$\n$=P(0\\le Z\\le1)+P(0\\le Z\\le2)$\n$=0.34+0.48=0.82$\n\n두 상자 중 정확히 한 상자만 조건을 만족하는 경우는\n(가) A만 만족: $0.82\\times0.18$\n(나) B만 만족: $0.18\\times0.82$\n\n두 경우를 더하면\n$2\\times0.82\\times0.18=0.2952$\n\n따라서 정답은 ②이다.",
     "solutionStatus": "solution_upgraded_batch4",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -870,7 +870,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] $P(A) + P(B) = 1$이면 $P(A) = 1 - P(B)$이고, $A$와 $B$는 서로 대칭관계가 성립한다.\\n조건 정리: $\\bar{X} \\sim N(20, 2^2)$이고, $\\bar{Y} \\sim N\\!\\left(100, \\left(\\dfrac{\\sigma}{4}\\right)^2\\right)$이다.\\n풀이 방향: $P(\\bar{X} \\le 23)$을 먼저 표준화한 뒤, $P(\\bar{Y} \\le 94) = 1 - P(\\bar{X} \\le 23)$을 이용해 $\\sigma$를 구한다.\\n정석 풀이: $P(\\bar{X} \\le 23) = P\\!\\left(Z \\le \\dfrac{23-20}{2}\\right) = P(Z \\le 1.5) = 0.5 + 0.4332 = 0.9332$\\n$P(\\bar{Y} \\le 94) = 1 - 0.9332 = 0.0668 = P(Z \\le -1.5)$\\n따라서 $\\dfrac{94-100}{\\sigma/4} = -1.5$이므로 $\\dfrac{-6}{\\sigma/4} = -1.5$\\n$\\sigma/4 = 4$, $\\sigma = 16$\\n$\\bar{Y}$의 표준편차 $= \\dfrac{16}{4} = 4$\\n$P(\\bar{Y} \\le 110) = P\\!\\left(Z \\le \\dfrac{110-100}{4}\\right) = P(Z \\le 2.5) = 0.5 + 0.4938 = 0.9938$\\n따라서 정답은 ①이다.",
+    "solution": "두 표본평균의 분포부터 구한다.\n$\\bar X\\sim N\\left(20,\\left(\\dfrac{4}{\\sqrt4}\\right)^2\\right)=N(20,2^2)$\n$\\bar Y\\sim N\\left(100,\\left(\\dfrac{\\sigma}{\\sqrt{16}}\\right)^2\\right)=N\\left(100,\\left(\\dfrac{\\sigma}{4}\\right)^2\\right)$\n\n먼저 주어진 첫 번째 확률은\n$P(\\bar X\\le23)=P\\left(Z\\le\\dfrac{23-20}{2}\\right)$\n$=P(Z\\le1.5)=0.5+0.4332=0.9332$\n\n확률의 합이 $1$이므로\n$P(\\bar Y\\le94)=1-0.9332=0.0668$\n$=P(Z\\le-1.5)$\n\n따라서 $\\bar Y$를 표준화한 값이 $-1.5$이다.\n$\\dfrac{94-100}{\\sigma/4}=-1.5$\n$\\dfrac{24}{\\sigma}=1.5$\n$\\sigma=16$\n$\\sigma_{\\bar Y}=\\dfrac{16}{4}=4$\n\n이제 구하는 확률은\n$P(\\bar Y\\le110)=P\\left(Z\\le\\dfrac{110-100}{4}\\right)$\n$=P(Z\\le2.5)=0.5+0.4938=0.9938$\n\n따라서 정답은 ①이다.",
     "solutionStatus": "solution_upgraded_batch4",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -917,7 +917,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 신뢰구간의 중심이 표본평균이고, 오차한계로 $\\sigma$를 역산한다.\\n조건 정리: 표본 $n=10$, 신뢰구간 $0.42 \\le m \\le 5.58$, $z = 2.58$이다.\\n풀이 방향: 표본평균과 오차한계를 신뢰구간에서 읽고, 오차한계 공식으로 $\\sigma$를 구한다.\\n정석 풀이: 표본평균 $\\bar{x} = \\dfrac{5+(-3)+6+(-1)+7+6+(-1)+8+5+(-2)}{10} = \\dfrac{30}{10} = 3$\\n신뢰구간 중심: $\\dfrac{0.42+5.58}{2} = 3$ ✓\\n오차한계: $5.58 - 3 = 2.58$\\n$2.58 \\cdot \\dfrac{\\sigma}{\\sqrt{10}} = 2.58$이므로 $\\dfrac{\\sigma}{\\sqrt{10}} = 1$, $\\sigma = \\sqrt{10}$\\n$V(X) = \\sigma^2 = 10$\\n따라서 정답은 ⑤이다.",
+    "solution": "표본 10개의 합은\n$5-3+6-1+7+6-1+8+5-2=30$\n따라서 표본평균은\n$\\bar x=\\dfrac{30}{10}=3$이다.\n\n99% 신뢰구간은\n$\\bar x-2.58\\dfrac{\\sigma}{\\sqrt{10}}\\le m\\le\\bar x+2.58\\dfrac{\\sigma}{\\sqrt{10}}$\n\n주어진 신뢰구간은 $0.42\\le m\\le5.58$이므로\n중심은 $3$, 오차한계는\n$5.58-3=2.58$이다.\n\n$2.58\\dfrac{\\sigma}{\\sqrt{10}}=2.58$\n$\\dfrac{\\sigma}{\\sqrt{10}}=1$\n$\\sigma=\\sqrt{10}$\n\n모집단 확률변수의 분산은 $V(X)=\\sigma^2=10$이다.\n\n따라서 정답은 ⑤이다.",
     "solutionStatus": "solution_upgraded_batch4",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
