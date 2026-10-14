@@ -49,9 +49,45 @@ export async function collectEvidence(run,kind,cachedProof,client){
  const provided=await getProof(run,kind,client);
  return provided || registeredGitProof(run,client);
 }
+export const CONTENTS_API_INLINE_LIMIT = 1024 * 1024;
+
+/**
+ * Read the durable progress document without assuming Contents API always
+ * includes its bytes. GitHub omits inline content for files over 1 MiB and
+ * reports encoding "none"; in that case the Contents response SHA points to
+ * the same immutable object through the Git Blobs API.
+ */
+export async function readStatus(api) {
+ const file=await api('/contents/archive-progress.json?ref=archive-progress-state',{allow404:true});
+ if(!file)return {value:{entries:{}},sha:null};
+ const fileSize=Number.isInteger(file.size)&&file.size>=0?file.size:null;
+ const canReadInline=file.encoding==='base64'&&typeof file.content==='string'&&file.content.length>0&&
+  (fileSize===null||fileSize<=CONTENTS_API_INLINE_LIMIT);
+ let bytes;
+ if(canReadInline){
+  bytes=Buffer.from(file.content,'base64');
+ }else{
+  if(typeof file.sha!=='string'||!file.sha)throw Error('Progress Contents response has no blob SHA for fallback');
+  const blob=await api('/git/blobs/'+file.sha);
+  if(!blob||blob.sha!==file.sha)throw Error('Progress Git Blob SHA does not match Contents response');
+  if(blob.encoding!=='base64'||typeof blob.content!=='string'||blob.content.length===0)
+   throw Error('Progress Git Blob response is not base64 content');
+  bytes=Buffer.from(blob.content,'base64');
+  if(Number.isInteger(blob.size)&&blob.size!==bytes.length)
+   throw Error('Progress Git Blob size does not match decoded content');
+ }
+ if(fileSize!==null&&bytes.length!==fileSize)
+  throw Error('Progress status size does not match Contents response');
+ let value;
+ try{value=JSON.parse(bytes.toString('utf8'));}
+ catch(error){throw Error('Progress status JSON is invalid: '+error.message);}
+ if(!value||typeof value!=='object'||Array.isArray(value))
+  throw Error('Progress status JSON root must be an object');
+ return {value,sha:file.sha||null};
+}
+
 export async function executeOnce({api,getEvidence,historyPages=1,clock=()=>new Date().toISOString(),storeStatus,manualRetry=false}){
- const previous=await api('/contents/archive-progress.json?ref=archive-progress-state',{allow404:true});
- const old=previous?JSON.parse(Buffer.from(previous.content,'base64').toString('utf8')):{entries:{}};
+ const {value:old,sha:previousSha}=await readStatus(api);
  const [{prs,incompletePRs,completePulls,oldestObservedAt},regRuns,releaseRuns]=await Promise.all([
   mergedPRs(api,historyPages),runs(api,'archive-registration-sync.yml',historyPages),runs(api,'archive-pages-release.yml',historyPages)]);
  const checks=checksFromRuns(regRuns),registrations=[],releases=[];
@@ -123,7 +159,7 @@ export async function executeOnce({api,getEvidence,historyPages=1,clock=()=>new 
   seenReleaseRuns:selectedRelease.length,runScanIsPartial:!manualHistory&&(
    regRuns.filter(x=>x.event!=='pull_request'&&x.branch==='main').length>count||
    releaseRuns.filter(x=>x.branch==='main').length>count)};
- await storeStatus(current,previous?.sha||null);
+ await storeStatus(current,previousSha);
  return current;
 }
 
