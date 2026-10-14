@@ -1,5 +1,17 @@
 # 팔마고 q01~q23 작업자 품질 HARD LOCK
 
+## CURRENT TOP — q05 완료 인계 / 다음 채팅은 q06부터 (2026-10-14)
+- 현재 명시 지시: 한 채팅에서 원본 qid 하나 × 9(A1~C3) 제작 → 수학 검산·해설·메타·SVG·보기 정렬 → 원장·SHA 인계. 지금은 별도 독립 품질검사·브라우저·출시를 수행하지 않는다(NOT_RUN). q01~q05를 다시 제작하지 않는다.
+- 같은 Git 브랜치 `work/alive-25-palma-h1-2final-qid9`에만 계속 누적, main 최신 재조회 후 브랜치 actual HEAD/PROGRESS 먼저 확인, 완료 qid 보호. 최신 브랜치 HEAD는 현재 작업 마감 후 재조회하여 receipt에 확정한다.
+- 누적 q01~q05 **45/207**, 다음 q06, 나머지 162. `GPT_QID9_PROGRESS_CURRENT.json` firstMissing=6, `GPT_QID9_GENERATED_META_REGISTRY_v1.json` 45 UID. q05 원본 JS blob 0d12b75e824ab47f08fc3b5a6180be595f882c6e, PNG blob 7cf6f0b4d35208e0dc97e8d2d19acb29220968ed.
+- q05 `H1-RPM-270` **RPM_ONLY (DIRECT_ACTIVE 아님)**, 실제 ACTIVE PT=`PT_FUNCTION_RECOVERY`, TPL=`TPL_FUNCTION_FORM_FROM_GRAPH`, H22-C2-09-FUNCTION_BASIC current binding. q05 9문항 모두 끝점 A·점 P에서 f(x)=√(a+bx)+c를 복원하며, 이 단계가 실제 결정적 사고. `GPT_QID9_Q05_AUTHOR_BLUEPRINT.json` 설계/오답 근거·수학 파라미터와 `GPT_QID9_Q05_CREATE_DRAFT.json` 최종 UID별 5축 증거를 반드시 같이 읽는다.
+- 새 문항에서는 **정답번호 분산을 제작 단계부터 보되, 오름차순 숫자보기·오답 오류경로·학교식 발문을 깨지 않는다.** q05 현재 ①2 ②2 ③2 ④2 ⑤1; q02~q05 누적 단일정답 분포 ①7 ②6 ③7 ④10 ⑤6. 마지막 전체 207문항에서 최종 재판정. q01은 복수정답이라 같은 분모에 섞지 않음.
+- q05 문제 SVG 9/9·해설 SVG 9/9 원격 blob에 UID별 결속. 실제 Browser/독립검수/Student Consumer/main 미실행은 NOT_RUN. sourceUid exact 계산 미해결 q05 9개, 시험지 누적 45개 EVIDENCE_DEBT. 불명확한 검사 결과를 PASS라 주장하지 않음.
+- q06도 제작 전 Notion GPT 작업 전 필독 라우터→Archive 생명주기/생성 5단계→최신 Git AGENTS/QID9/Metadata·교육과정/해설/Visual/Golden→원본 q06·실제 image→RPM Primary L3 잠금→A/B/C별 추가 사고 설계→9개 작성/점검→병합 전 changed scope 확인→원격 Git commit/readback→HANDOFF 갱신. **다른 학교/원본·q01~q05·레거시 유사문항 수정 금지.**
+
+---
+
+
 ## 절대 최우선 3축
 1. **교육과정 내 풀이:** 공통수학2 범위 개념·용어·방법만 사용. 미분·적분·벡터 및 고등 상위 과정 금지. 수학적 참값 검증 뒤 교육과정 수준에서 다시 풀이를 작성한다.
 2. **해설 품질:** 학생이 글만 읽고 따라 풀 수 있어야 하며 판단 기준, 선택지별 판단 근거, 정답 및 오류 경로를 빠짐없이 적는다. 복수정답 강제 단일화 금지. 각 보기가 그림이면 그래프 5/5를 독립 판정해야 한다.
