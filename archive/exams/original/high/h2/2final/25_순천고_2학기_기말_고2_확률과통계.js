@@ -256,7 +256,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 신뢰구간의 왼쪽 끝이 주어지면 오차한계를 구해 중심과 오른쪽 끝을 차례로 찾는다.\\n조건 정리: $\\sigma=3$, $n=81$, 99% 신뢰도에서 $z=2.58$, 신뢰구간의 왼쪽 끝이 $2.14$이다.\\n풀이 방향: 오차한계를 먼저 계산하고, 왼쪽 끝과 오차한계로 중심(표본평균)을 구한 뒤 오른쪽 끝을 결정한다.\\n정석 풀이: 오차한계 $e = 2.58 \\cdot \\dfrac{3}{\\sqrt{81}} = 2.58 \\cdot \\dfrac{3}{9} = 2.58 \\cdot \\dfrac{1}{3} = 0.86$\\n중심(표본평균) $\\bar{x} = 2.14 + 0.86 = 3.00$\\n오른쪽 끝 $a = 3.00 + 0.86 = 3.86$\\n따라서 정답은 ②이다.",
+    "solution": "99% 신뢰구간은 표본평균을 중심으로 오차한계만큼 양쪽으로 벌어진다.\n$\\sigma=3$, $n=81$, 신뢰도에 대응하는 값은 $2.58$이다.\n\n오차한계는\n$e=2.58\\times\\dfrac{3}{\\sqrt{81}}$\n$=2.58\\times\\dfrac{1}{3}=0.86$\n\n구간의 왼쪽 끝이 $\\bar x-e=2.14$이므로\n$\\bar x=2.14+0.86=3.00$\n\n오른쪽 끝은\n$a=\\bar x+e=3.00+0.86=3.86$\n\n따라서 정답은 ②이다.",
     "solutionStatus": "solution_upgraded_batch1",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -304,7 +304,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 표본평균을 표준화한 뒤 주어진 꼬리확률에 해당하는 $z$값을 찾는다.\\n조건 정리: 표준편차 $\\sigma=5$, $n=100$이므로 표본평균의 표준편차는 $\\dfrac{5}{\\sqrt{100}} = 0.5$이다.\\n풀이 방향: $P(\\bar{X} \\ge 160) = 0.0228$은 표준정규분포에서 $P(Z \\ge z_0) = 0.0228$이 되는 $z_0$를 찾는 것이다.\\n정석 풀이: $P(Z \\ge 2) = 0.5 - P(0 \\le Z \\le 2) = 0.5 - 0.4772 = 0.0228$\\n따라서 $z_0 = 2$이다. 즉 $\\dfrac{160 - m}{0.5} = 2$이므로\\n$160 - m = 1$, $m = 159$\\n따라서 정답은 ④이다.",
+    "solution": "표본평균의 분포를 먼저 구한다.\n$\\bar X\\sim N\\left(m,\\left(\\dfrac{5}{\\sqrt{100}}\\right)^2\\right)$\n$\\sigma_{\\bar X}=\\dfrac{5}{10}=0.5$\n\n주어진 확률을 표준화하면\n$P(\\bar X\\ge160)=P\\left(Z\\ge\\dfrac{160-m}{0.5}\\right)=0.0228$\n\n표에서 $P(0\\le Z\\le2)=0.4772$이므로\n$P(Z\\ge2)=0.5-0.4772=0.0228$\n따라서 $\\dfrac{160-m}{0.5}=2$이다.\n\n$160-m=2\\times0.5=1$\n$m=159$\n\n따라서 정답은 ④이다.",
     "solutionStatus": "solution_upgraded_batch2",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -352,7 +352,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 표본평균의 분포를 표준화해 구간확률을 표에서 읽는다.\\n조건 정리: 모집단 $N(65, 5^2)$, $n=25$이므로 $\\bar{X} \\sim N\\!\\left(65, 1^2\\right)$이다. (표준편차 $\\dfrac{5}{\\sqrt{25}}=1$)\\n풀이 방향: 63과 66.5를 각각 표준화한다.\\n정석 풀이: $63$에 대한 $z$값: $\\dfrac{63-65}{1} = -2$\\n$66.5$에 대한 $z$값: $\\dfrac{66.5-65}{1} = 1.5$\\n$P(63 \\le \\bar{X} \\le 66.5) = P(-2 \\le Z \\le 1.5)$\\n$= P(0 \\le Z \\le 2) + P(0 \\le Z \\le 1.5) = 0.48 + 0.43 = 0.91$\\n따라서 정답은 ⑤이다.",
+    "solution": "표본평균의 평균은 $65$, 표준편차는\n$\\sigma_{\\bar X}=\\dfrac{5}{\\sqrt{25}}=1$이다.\n$\\bar X\\sim N(65,1^2)$\n\n양 끝값을 각각 표준화한다.\n$63\\ \\rightarrow\\ \\dfrac{63-65}{1}=-2$\n$66.5\\ \\rightarrow\\ \\dfrac{66.5-65}{1}=1.5$\n\n구하는 확률은\n$P(63\\le\\bar X\\le66.5)=P(-2\\le Z\\le1.5)$\n$=P(0\\le Z\\le2)+P(0\\le Z\\le1.5)$\n$=0.48+0.43=0.91$\n\n따라서 정답은 ⑤이다.",
     "solutionStatus": "solution_upgraded_batch2",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -399,7 +399,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 이항분포 $B(n, p)$의 평균·분산·표준편차를 구한 뒤 선형변환에 적용한다.\\n조건 정리: 동전 4개를 던질 때 앞면 개수 $X \\sim B\\!\\left(4, \\dfrac{1}{2}\\right)$이므로 $E(X)=2$, $V(X)=1$, 표준편차 $=1$이다.\\n풀이 방향: $Y=aX+b$의 표준편차가 1이면 $a=1$ ($a>0$), 그 다음 평균 조건으로 $b$를 구한다.\\n정석 풀이: $\\sigma(Y) = |a| \\cdot \\sigma(X) = a \\cdot 1 = 1$ (단, $a>0$)이므로 $a=1$\\n$E(Y) = aE(X)+b = 1 \\cdot 2 + b = 4$이므로 $b = 2$\\n따라서 정답은 ②이다.",
+    "solution": "동전 4개 중 앞면의 개수는\n$X\\sim B\\left(4,\\dfrac{1}{2}\\right)$\n\n이항분포의 평균과 분산은\n$E(X)=4\\times\\dfrac{1}{2}=2$\n$V(X)=4\\times\\dfrac{1}{2}\\times\\dfrac{1}{2}=1$\n$\\sigma(X)=\\sqrt{1}=1$\n\n$Y=aX+b$, $a>0$이고 $\\sigma(Y)=1$이므로\n$\\sigma(Y)=a\\sigma(X)=a=1$\n\n또 $E(Y)=4$이므로\n$4=aE(X)+b=1\\times2+b$\n$b=2$\n\n따라서 $a=1,\\ b=2$이므로 정답은 ②이다.",
     "solutionStatus": "solution_upgraded_batch2",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
@@ -446,7 +446,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 한 제품이 불량품일 확률을 먼저 구하고, 불량품 수를 정규근사한다.\\n조건 정리: 제품 무게 $\\sim N(30, 5^2)$이고 40g 이상이면 불량품이다.\\n풀이 방향: 불량 확률 $p$를 구한 뒤, 불량품 수 $W \\sim B(2500, p)$를 정규분포로 근사한다.\\n정석 풀이: $p = P\\!\\left(Z \\ge \\dfrac{40-30}{5}\\right) = P(Z \\ge 2) = 0.5 - 0.48 = 0.02$\\n$W$의 평균: $2500 \\cdot 0.02 = 50$\\n$W$의 표준편차: $\\sqrt{2500 \\cdot 0.02 \\cdot 0.98} = \\sqrt{49} = 7$\\n64에 대한 $z$값: $\\dfrac{64-50}{7} = 2$\\n$P(W \\ge 64) = P(Z \\ge 2) = 0.5 - 0.48 = 0.02$\\n따라서 정답은 ⑤이다.",
+    "solution": "제품 한 개의 무게를 $T$라 하면 $T\\sim N(30,5^2)$이다.\n$40$ g 이상일 확률은\n$p=P\\left(Z\\ge\\dfrac{40-30}{5}\\right)=P(Z\\ge2)$\n$=0.5-0.48=0.02$\n\n2500개 중 불량품 수를 $W$라 하면\n$W\\sim B(2500,0.02)$\n$E(W)=2500\\times0.02=50$\n$V(W)=2500\\times0.02\\times0.98=49$\n$\\sigma(W)=7$\n\n이항분포를 정규분포로 근사하여 구하면\n$P(W\\ge64)\\approx P\\left(Z\\ge\\dfrac{64-50}{7}\\right)$\n$=P(Z\\ge2)=0.5-0.48=0.02$\n\n따라서 정답은 ⑤이다.",
     "solutionStatus": "solution_upgraded_batch2",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [
