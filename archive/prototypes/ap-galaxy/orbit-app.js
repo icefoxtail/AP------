@@ -6,9 +6,11 @@
     canvas: $('space'), status: $('catalogStatus'), count: $('sceneCount'), search: $('search'),
     grade: $('gradeFilter'), school: $('schoolFilter'), year: $('yearFilter'), term: $('termFilter'), subject: $('subjectFilter'), unit: $('unitFilter'),
     filterPanel: $('filterPanel'), filterToggle: $('filterToggle'), focusedChip: $('focusedChip'),
-    drawer: $('examDrawer'), frame: $('examFrame'), title: $('examTitle'), meta: $('examMeta'), source: $('examSource'),
-    openOriginal: $('openOriginal'), printOriginal: $('printOriginal'), labels: $('planetLabels'), facetSpaceLabels: $('facetSpaceLabels'), satelliteLabels: $('satelliteLabels'),
-    focusName: $('focusedSchoolName'), focusMeta: $('focusedSchoolMeta'), toast: $('toast'),
+    drawer: $('examDrawer'), frame: $('examFrame'), previewLoadState: $('previewLoadState'), previewLoadMessage: $('previewLoadMessage'),
+    title: $('examTitle'), meta: $('examMeta'), source: $('examSource'),
+    openOriginal: $('openOriginal'), openFullSolution: $('openFullSolution'), composeExam: $('composeExam'), printOriginal: $('printOriginal'), previewHeadingTitle: $('previewHeadingTitle'), previewHeadingDescription: $('previewHeadingDescription'), labels: $('planetLabels'), facetSpaceLabels: $('facetSpaceLabels'), satelliteLabels: $('satelliteLabels'),
+    focusName: $('focusedSchoolName'), focusMeta: $('focusedSchoolMeta'), mobileExamList: $('mobileExamList'),
+    mobileFocusHeader: $('mobileFocusHeader'), mobileFocusBreadcrumb: $('mobileFocusBreadcrumb'), toast: $('toast'),
     listPanel: $('listPanel'), listGroups: $('listGroups'),
     questionOrbit: $('questionOrbit'), questionStatus: $('questionStatus'),
     readerToolbar: $('questionToolbar'), readerTitle: $('readerQuestionTitle'), readerSelect: $('questionSelect'),
@@ -20,13 +22,14 @@
     facetGrade: $('facetGrade'), facetTerm: $('facetTerm'), facetYear: $('facetYear'), facetSchool: $('facetSchool'), facetSubject: $('facetSubject'), selectCurrentRange: $('selectCurrentRange'),
   };
   const state = {
-    exams: [], records: [], filtered: [], visibleGroups: [], visibleExams: [], selectedExam: null,
-    focusedGroupId: '', groupMode: 'school', activeTag: '', constellation: false, list: false,
+    exams: [], catalogExamCount: 0, records: [], filtered: [], visibleGroups: [], visibleExams: [], selectedExam: null,
+    focusedGroupId: '', groupMode: 'curriculum', list: false,
     world: null, tagsByFile: new Map(), filesByTag: new Map(), groupsById: new Map(),
     groupLabels: new Map(), satelliteButtons: new Map(), toastTimer: 0, searchTimer: 0,
+    pointer: null, hoveredGroupId: '', hoveredLabelGroupId: '',
     questionRows: [], selectedQuestion: null, readerMode: 'exam', readerGeneration: 0,
     examGeneration: 0, frameGeneration: 0, entrySnapshot: null, pendingExamFocus: '', instant: false,
-    examsByFile: new Map(), scaleMode: 'macro', atlasCollapsed: false,
+    examsByFile: new Map(), scaleMode: 'macro', atlasCollapsed: false, solutionFallback: false,
   };
   const clean = (value) => String(value ?? '').normalize('NFC').trim();
   const examTitle = (exam) => {
@@ -58,11 +61,11 @@
   };
   function updateScaleUI(mode = state.scaleMode) {
     state.scaleMode = mode;
-    const labels = { macro: 'MACRO UNIVERSE', planet: 'PLANET ORBIT', micro: 'MICRO CONCEPT' };
+    const labels = { macro: 'COSMIC WEB', planet: 'GALAXY', micro: 'QUESTION CONCEPT' };
     const captions = {
       macro: '',
-      planet: 'Planetary orbit · choose a star or school orbit to open its source.',
-      micro: 'Conceptual micro view · particles and shells explain an idea; this is not a physical scale claim.',
+      planet: '은하를 살펴보고 시험지 위성을 선택하세요.',
+      micro: '문항 속 개념을 살펴보는 설명용 시각화입니다.',
     };
     if (ui.scaleLabel) ui.scaleLabel.textContent = labels[mode] || labels.macro;
     if (ui.scaleCaption) {
@@ -85,13 +88,13 @@
     if (ui.atlasCollapse) {
       ui.atlasCollapse.setAttribute('aria-expanded', String(!state.atlasCollapsed));
       ui.atlasCollapse.textContent = state.atlasCollapsed ? '+' : '−';
-      ui.atlasCollapse.setAttribute('aria-label', state.atlasCollapsed ? 'Expand atlas overview' : 'Collapse atlas overview');
+      ui.atlasCollapse.setAttribute('aria-label', state.atlasCollapsed ? 'catalog 요약 열기' : 'catalog 요약 닫기');
     }
   }
-  const optionValues = (select, values, label) => {
+  const optionValues = (select, values, label, format = (value) => value) => {
     const selected = select.value;
     select.replaceChildren(new Option('전체 ' + label, ''));
-    for (const value of values) select.add(new Option(value, value));
+    for (const value of values) select.add(new Option(format(value), value));
     if (values.includes(selected)) select.value = selected;
   };
   const subjectFacetValue = (exam) => {
@@ -119,7 +122,7 @@
     const tags = state.tagsByFile.get(exam.file);
     if (filters.unit && !tags?.has(filters.unit)) return false;
     if (!filters.query) return true;
-    return [exam.school, exam.grade, exam.subject, exam.topic, exam.year, exam.file, ...(tags || [])]
+    return [exam.school, exam.grade, subjectFacetValue(exam), exam.subject, exam.topic, exam.year, exam.file, ...(tags || [])]
       .some((part) => normalizedField(part).includes(filters.query));
   };
   const filterExams = () => {
@@ -220,14 +223,6 @@
       return;
     }
     const files = [...new Set(state.filtered.map((exam) => exam.file).filter(Boolean))];
-    // A one-source range can use the established standalone engine directly.
-    // This preserves every source question even when that source has no basic
-    // taxonomy parent for Archive 2's multi-source scope selector.
-    if (files.length === 1) {
-      const exam = state.examsByFile.get(files[0]) || state.filtered[0];
-      window.location.href = sourceUrl(exam, { preview: false });
-      return;
-    }
     const url = new URL('../../workspace.html', location.href);
     url.searchParams.set('view', 'compose');
     url.searchParams.set('range', 'all');
@@ -248,18 +243,21 @@
       ui.facetSpaceLabels.append(label);
     }
   }
-  const primaryUnitForExam = (exam) => {
-    const tags = examTags(exam).sort((a, b) => a.localeCompare(b, 'ko'));
-    if (ui.unit.value && tags.includes(ui.unit.value)) return ui.unit.value;
-    return tags[0] || 'L2 공개 태그 없음';
-  };
   const groupKeyForExam = (exam) => {
-    if (state.groupMode === 'grade') return { id: 'grade:' + (exam.grade || '학년 미상'), name: exam.grade || '학년 미상' };
-    if (state.groupMode === 'unit') {
-      const tag = primaryUnitForExam(exam);
-      return { id: 'unit:' + tag, name: tag };
+    if (state.groupMode === 'school') {
+      const school = clean(exam.school) || '학교 미상';
+      return { id: 'school:' + school, name: school, order: 0 };
     }
-    return { id: 'school:' + (exam.school || '학교 미상'), name: exam.school || '학교 미상' };
+    if (state.groupMode === 'curriculum') {
+      const grade = exam.grade || '학년 미상';
+      if (/^중[123]$/.test(grade)) {
+        return { id: 'curriculum:middle:' + grade, name: grade + ' 은하', order: Number(grade.slice(1)) };
+      }
+      const course = exam.primaryStandardCourse || exam.courseRanges?.[0]?.standardCourse || exam.subject || '과정 미상';
+      return { id: 'curriculum:high:' + course, name: course, order: 10 };
+    }
+    const course = exam.primaryStandardCourse || exam.courseRanges?.[0]?.standardCourse || exam.subject || '과정 미상';
+    return { id: 'curriculum:high:' + course, name: course, order: 10 };
   };
   const groupExams = (exams) => {
     const groups = new Map();
@@ -268,7 +266,7 @@
       if (!groups.has(key.id)) groups.set(key.id, { ...key, mode: state.groupMode, exams: [] });
       groups.get(key.id).exams.push(exam);
     }
-    return [...groups.values()].sort((a, b) => (b.exams.length - a.exams.length) || a.name.localeCompare(b.name, 'ko'));
+    return [...groups.values()].sort((a, b) => (a.order - b.order) || a.name.localeCompare(b.name, 'ko'));
   };
   const selectVisibleData = (allGroups) => {
     const groups = allGroups;
@@ -317,14 +315,15 @@
     return { groups, visibleExams };
   };
 
-  function sourceUrl(exam, { preview = true, loadGeneration = 0 } = {}) {
+  function sourceUrl(exam, { preview = true, loadGeneration = 0, mode = 'exam' } = {}) {
     const url = new URL('../../engine.html', location.href);
     const params = new URLSearchParams();
     params.set('data', 'exams/' + exam.file);
-    params.set('mode', 'exam');
+    params.set('mode', mode);
     if (preview) {
       params.set('preview', '1');
       params.set('ap_galaxy_load', String(loadGeneration));
+      params.set('renderer', 'legacy');
     }
     params.set('title', examTitle(exam));
     params.set('subject', exam.subject || '');
@@ -390,8 +389,95 @@
     ui.questionStatus.hidden = !message;
     ui.questionStatus.textContent = message;
   }
+  function setInlinePreviewState(kind = 'idle') {
+    const loading = kind === 'loading';
+    const failed = kind === 'failed';
+    ui.previewLoadState.hidden = !loading && !failed;
+    ui.previewLoadState.dataset.state = kind;
+    ui.previewLoadState.setAttribute('role', failed ? 'alert' : 'status');
+    ui.previewLoadMessage.textContent = failed
+      ? '원본 미리보기를 불러오지 못했습니다. 위의 “새 창”에서 원본을 열어 주세요.'
+      : '원본 시험지의 문항을 불러오는 중…';
+    ui.previewLoadState.parentElement.setAttribute('aria-busy', String(loading));
+  }
+  async function waitForInlinePreview(exam, examToken, frameToken, frame = ui.frame) {
+    const deadline = performance.now() + 60000;
+    while (performance.now() < deadline) {
+      if (state.examGeneration !== examToken || state.frameGeneration !== frameToken ||
+          state.selectedExam?.file !== exam.file || ui.frame !== frame) return false;
+      try {
+        const win = frame.contentWindow;
+        const doc = frame.contentDocument;
+        if (win && doc && win.location.origin === location.origin) {
+          const url = new URL(win.location.href);
+          const expectedLoad = url.pathname.endsWith('/archive/engine.html') &&
+            url.searchParams.get('data') === 'exams/' + exam.file &&
+            url.searchParams.get('preview') === '1' &&
+            url.searchParams.get('ap_galaxy_load') === String(frameToken);
+          if (expectedLoad && doc.documentElement?.dataset?.apRenderError) {
+            setInlinePreviewState('failed');
+            return false;
+          }
+          if (expectedLoad && doc.readyState === 'complete') {
+            const questions = Array.from(doc.querySelectorAll('#print-area .q-box[data-source-ref]'));
+            const expectedCount = Number(state.questionRows.length || exam.qCount || 0);
+            const hasRenderedQuestions = expectedCount > 0 && questions.length >= expectedCount &&
+              questions.slice(0, expectedCount).every(question => question.textContent.trim().length > 0);
+            if (hasRenderedQuestions) {
+              setInlinePreviewState('idle');
+              return true;
+            }
+          }
+        }
+      } catch (_) { /* The embedded document can be mid-navigation. */ }
+      await new Promise(resolve => window.setTimeout(resolve, 120));
+    }
+    if (state.examGeneration === examToken && state.frameGeneration === frameToken &&
+        state.selectedExam?.file === exam.file && ui.frame === frame) {
+      setInlinePreviewState('failed');
+    }
+    return false;
+  }
   function modeName(mode) {
     return mode === 'ans' ? '정답' : mode === 'sol' ? '해설' : '문제';
+  }
+  function resetPreviewHeading(exam) {
+    ui.previewHeadingTitle.textContent = '원본 시험지';
+    ui.previewHeadingDescription.textContent = '원본 문제 내용과 순서를 유지합니다.';
+    ui.openOriginal.href = sourceUrl(exam, { preview: false });
+    ui.openOriginal.textContent = '새 창 ↗';
+    ui.frame.title = '선택한 원본 시험지 미리보기';
+    state.solutionFallback = false;
+  }
+  async function openWholeSolution(row, examToken) {
+    const exam = state.selectedExam;
+    if (!exam || state.examGeneration !== examToken || !row) return false;
+    state.solutionFallback = true;
+    const readerToken = ++state.readerGeneration;
+    const frameToken = ++state.frameGeneration;
+    const solutionUrl = sourceUrl(exam, { mode: 'sol', loadGeneration: frameToken });
+    const examUrl = sourceUrl(exam, { mode: 'exam', loadGeneration: frameToken });
+    ui.readerTitle.textContent = '문항 ' + row.id + ' · 전체 해설 새 창';
+    ui.previewHeadingTitle.textContent = '원본 시험지 · 전체 해설은 새 창';
+    ui.previewHeadingDescription.textContent = '문항별 해설 전환을 멈추고 정상 원본 경로를 제공합니다.';
+    ui.openOriginal.href = solutionUrl;
+    ui.openOriginal.textContent = '전체 해설 새 창 ↗';
+    ui.frame.title = '선택한 원본 시험지 미리보기';
+    // The embedded legacy renderer does not settle its solution DOM when its
+    // mode is changed in-place. Restore the known-good exam preview immediately;
+    // the adjacent link opens the same source's normal full-solution route.
+    const examFrame = ui.frame.cloneNode(false);
+    examFrame.removeAttribute('src');
+    examFrame.title = '선택한 원본 시험지 미리보기';
+    ui.frame.replaceWith(examFrame);
+    ui.frame = examFrame;
+    setInlinePreviewState('loading');
+    ui.frame.src = examUrl;
+    waitForInlinePreview(exam, examToken, frameToken, ui.frame);
+    if (state.readerGeneration === readerToken && state.examGeneration === examToken) {
+      setQuestionStatus('문항별 해설을 미리보기에서 열지 못해 전체 시험지로 돌아왔습니다. 위의 “전체 해설 새 창”에서 공개 원본 해설을 여세요. 선택 문항은 ' + row.ordinal + '번입니다.');
+    }
+    return true;
   }
   async function setReaderMode(mode) {
     const row = state.selectedQuestion;
@@ -404,25 +490,40 @@
     ui.readerTitle.textContent = '문항 ' + row.id + ' · ' + modeName(mode);
     ui.readerToolbar.querySelectorAll('[data-reader-mode]').forEach(button =>
       button.setAttribute('aria-pressed', String(button.dataset.readerMode === mode)));
+    if (mode === 'sol' && state.solutionFallback) {
+      setQuestionStatus('위의 “전체 해설 새 창”에서 공개 원본 해설을 여세요. 선택 문항은 ' + row.ordinal + '번입니다.');
+      return;
+    }
+    if (mode !== 'sol') resetPreviewHeading(state.selectedExam);
+    if (mode !== 'exam') setInlinePreviewState('loading');
     setQuestionStatus('문항 ' + row.id + ' ' + modeName(mode) + '를 여는 중…');
     try {
       const result = await window.APOrbitQuestionReader.focus(ui.frame, row, mode,
         { file, loadGeneration: frameToken },
         () => state.readerGeneration === token && state.examGeneration === examToken &&
           state.frameGeneration === frameToken && state.selectedExam?.file === file &&
-          state.selectedQuestion === row);
+          state.selectedQuestion === row,
+        mode === 'sol' ? 8500 : 20000);
       if (state.readerGeneration !== token) return;
+      if (mode !== 'exam') setInlinePreviewState('idle');
       setQuestionStatus('문항 ' + row.id + ' · ' + modeName(mode));
       return result;
     } catch (error) {
       if (state.readerGeneration !== token || error.message === 'STALE_QUESTION_SELECTION') return;
+      if (mode === 'sol' && error.message === 'ENGINE_OR_QUESTION_LOAD_TIMEOUT') {
+        await openWholeSolution(row, examToken);
+        return;
+      }
+      if (mode !== 'exam') setInlinePreviewState('failed');
       setQuestionStatus('문항을 표시하지 못했습니다. 전체 시험지는 아래에서 계속 볼 수 있습니다.');
       console.warn('[ap-galaxy] selected question render failed:', error.message);
     }
   }
   function selectQuestion(row) {
     if (!state.selectedExam || !state.questionRows.includes(row)) return;
+    resetPreviewHeading(state.selectedExam);
     state.selectedQuestion = row;
+    ui.drawer.classList.add('reading-focus');
     ui.readerToolbar.hidden = false;
     ui.readerSelect.value = row.id;
     ui.questionOrbit.querySelectorAll('.question-orbit-node').forEach(button =>
@@ -431,7 +532,9 @@
   }
   function showWholeExam() {
     state.readerGeneration++;
+    if (state.selectedExam) resetPreviewHeading(state.selectedExam);
     state.selectedQuestion = null;
+    ui.drawer.classList.remove('reading-focus');
     ui.readerToolbar.hidden = true;
     ui.readerSelect.value = '';
     ui.questionOrbit.querySelectorAll('.question-orbit-node').forEach(button => button.classList.remove('selected'));
@@ -439,7 +542,14 @@
     // The existing Archive engine owns pagination and print. Do not re-render it.
     try {
       const tab = ui.frame.contentDocument?.getElementById('btn-exam');
-      if (tab && !tab.classList.contains('active')) tab.click();
+      if (tab && !tab.classList.contains('active')) {
+        const exam = state.selectedExam;
+        const examToken = state.examGeneration;
+        const frameToken = state.frameGeneration;
+        setInlinePreviewState('loading');
+        tab.click();
+        if (exam) waitForInlinePreview(exam, examToken, frameToken);
+      }
       ui.frame.contentWindow?.scrollTo(0, 0);
     } catch (_) { /* An in-flight iframe remains on the original source URL. */ }
     setQuestionStatus(state.questionRows.length ? state.questionRows.length + '개 실제 문항 궤도 · 전체 시험지' : '');
@@ -466,6 +576,7 @@
     const frameToken = ++state.frameGeneration;
     const url = sourceUrl(exam, { loadGeneration: frameToken });
     const printableUrl = sourceUrl(exam, { preview: false });
+    resetPreviewHeading(exam);
     ui.title.textContent = examTitle(exam);
     ui.meta.replaceChildren();
     for (const value of [
@@ -480,11 +591,31 @@
     }
     ui.source.textContent = 'catalog source · ' + exam.file;
     ui.source.title = exam.file;
-    ui.frame.src = url;
     ui.openOriginal.href = printableUrl;
+    ui.openFullSolution.href = sourceUrl(exam, { preview: false, mode: 'sol' });
     ui.printOriginal.href = printableUrl;
+    const composeUrl = new URL('../../workspace.html', location.href);
+    composeUrl.searchParams.set('view', 'compose');
+    composeUrl.searchParams.set('range', 'all');
+    composeUrl.searchParams.append('source', exam.file);
+    ui.composeExam.href = composeUrl.href;
     ui.drawer.classList.add('open');
+    setInlinePreviewState('loading');
+    // The drawer begins at `visibility:hidden`. In Chromium's desktop path the
+    // discrete visibility transition could leave its descendants hidden even
+    // after the .open class moved the panel into place. Keep the slide, but
+    // make the visibility flip immediate for this opening state.
+    ui.drawer.style.transition = 'transform .35s cubic-bezier(.2,.75,.2,1), visibility 0s linear 0s';
+    ui.drawer.style.visibility = 'visible';
     ui.drawer.setAttribute('aria-hidden', 'false');
+    // Let the paper drawer reach its visible layout before the existing engine
+    // measures its page grid inside the iframe.
+    window.setTimeout(() => {
+      if (token === state.examGeneration && state.selectedExam?.file === exam.file) {
+        ui.frame.src = url;
+        waitForInlinePreview(exam, token, frameToken);
+      }
+    }, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 360);
     $('drawerBack').focus({ preventScroll: true });
     setQuestionStatus('실제 시험지의 문항 ID를 읽는 중…');
     if (!wasDetailed) renderScene();
@@ -515,8 +646,12 @@
     window.APOrbitQuestionReader?.abort();
     clearQuestionOrbit();
     state.pendingExamFocus = '';
+    ui.drawer.style.removeProperty('visibility');
+    ui.drawer.style.removeProperty('transition');
     ui.drawer.classList.remove('open');
+    ui.drawer.classList.remove('reading-focus');
     ui.drawer.setAttribute('aria-hidden', 'true');
+    setInlinePreviewState('idle');
     ui.frame.src = 'about:blank';
     state.selectedExam = null;
     state.world?.setSelectedExam(null);
@@ -527,14 +662,25 @@
   }
 
   function makeGroupLabel(group) {
-    const label = document.createElement('div');
+    const groupName = clean(group.name);
+    if (!groupName || /^(학교 미상|학교명 미상|미상|unknown)$/i.test(groupName)) return;
+    const label = document.createElement('button');
+    label.type = 'button';
     label.className = 'planet-label';
-    const title = document.createElement('b');
-    title.textContent = group.name;
-    const count = document.createElement('span');
-    count.className = 'planet-count';
-    count.textContent = group.exams.length.toLocaleString();
-    label.append(title, count);
+    const spatialNoun = group.mode === 'school' ? '학교 은하' : '과정 은하';
+    label.setAttribute('aria-label', groupName + ' ' + spatialNoun + ' · ' + group.exams.length.toLocaleString() + '개 시험지 · 선택');
+    label.textContent = groupName + ' · ' + group.exams.length.toLocaleString();
+    label.addEventListener('click', () => focusGroup(group.id));
+    label.addEventListener('pointerenter', () => { state.hoveredLabelGroupId = group.id; });
+    label.addEventListener('pointerleave', () => {
+      if (state.hoveredLabelGroupId === group.id) state.hoveredLabelGroupId = '';
+    });
+    label.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        focusGroup(group.id);
+      }
+    });
     ui.labels.append(label);
     state.groupLabels.set(group.id, label);
   }
@@ -544,20 +690,45 @@
     $('universe').classList.toggle('focused', Boolean(state.focusedGroupId));
     const group = state.groupsById.get(state.focusedGroupId);
     ui.focusedChip.hidden = !group;
+    ui.mobileFocusHeader.hidden = !group;
+    ui.mobileFocusBreadcrumb.textContent = group ? group.name + ' · 시험지' : '';
+    ui.mobileExamList.replaceChildren();
+    if (group && matchMedia('(max-width:760px)').matches) $('secondaryMenu').open = false;
     if (!group) return;
     ui.focusName.textContent = group.name;
-    ui.focusMeta.textContent = group.mode === 'unit'
-      ? '공개 L2 tag · 이 그룹 안의 자료 노드를 펼쳐보세요'
-      : group.mode === 'grade'
-        ? '학년 성단 · 서로 다른 학교의 자료 노드'
-        : '학교 은하 · 연결된 원본 시험지 노드';
-    for (const exam of group.items.slice(0, 12)) {
+    ui.focusMeta.textContent = group.mode === 'school'
+      ? '학교 분포 · 공개 원본 시험지'
+      : group.id.startsWith('curriculum:middle:')
+        ? '중학교 학년 catalog · 공개 원본 시험지'
+        : '고등 실제 과목 catalog · 공개 원본 시험지';
+    const mobile = matchMedia('(max-width:760px)').matches;
+    const satelliteLimit = mobile ? 4 : 12;
+    for (const exam of group.items.slice(0, satelliteLimit)) {
+      const lines = satelliteLabelLines(exam);
+      if (mobile) {
+        const card = document.createElement('button');
+        card.className = 'mobile-exam-card';
+        card.type = 'button';
+        card.dataset.examFile = exam.file;
+        card.setAttribute('aria-label', [lines.period, lines.identity, '원본 시험지 열기'].filter(Boolean).join(' · '));
+        const identity = document.createElement('span');
+        const period = document.createElement('small');
+        period.textContent = lines.period;
+        const name = document.createElement('b');
+        name.textContent = lines.identity;
+        identity.append(period, name);
+        const quantity = document.createElement('small');
+        quantity.textContent = exam.qCount ? exam.qCount + '문항' : '시험지';
+        card.append(identity, quantity);
+        card.addEventListener('click', () => openExam(exam));
+        ui.mobileExamList.append(card);
+        continue;
+      }
       const button = document.createElement('button');
       button.className = 'satellite-hit';
       button.type = 'button';
       button.dataset.examFile = exam.file;
       button.title = 'catalog source: ' + exam.file;
-      const lines = satelliteLabelLines(exam);
       button.setAttribute('aria-label', [lines.period, lines.identity, '원본 자료 노드 열기'].filter(Boolean).join(' · '));
       const period = document.createElement('span');
       period.className = 'satellite-period';
@@ -575,7 +746,7 @@
     ui.listGroups.replaceChildren();
     const allGroups = groupExams(state.filtered);
     $('listSummary').textContent = state.filtered.length.toLocaleString() + '개 시험지 · ' + allGroups.length.toLocaleString() + '개 ' +
-      (state.groupMode === 'grade' ? '학년 성단' : state.groupMode === 'unit' ? '공개 L2 단원 성단' : '학교 은하');
+      (state.groupMode === 'school' ? '학교 은하' : '학년·과목 은하');
     if (!allGroups.length) {
       const empty = document.createElement('div');
       empty.className = 'empty-list';
@@ -618,59 +789,6 @@
     }
   }
 
-  function bestCrossSchoolTag(exams) {
-    const schoolCount = new Map();
-    const examCount = new Map();
-    for (const exam of exams) {
-      const tags = state.tagsByFile.get(exam.file);
-      if (!tags) continue;
-      for (const tag of tags) {
-        if (!schoolCount.has(tag)) schoolCount.set(tag, new Set());
-        schoolCount.get(tag).add(exam.school);
-        examCount.set(tag, (examCount.get(tag) || 0) + 1);
-      }
-    }
-    return [...schoolCount.keys()].sort((a, b) =>
-      (schoolCount.get(b).size - schoolCount.get(a).size) ||
-      ((examCount.get(b) || 0) - (examCount.get(a) || 0)) ||
-      a.localeCompare(b, 'ko'),
-    ).find((tag) => schoolCount.get(tag).size > 1) || '';
-  }
-  function constellationConfig() {
-    const preferredTags = state.selectedExam ? examTags(state.selectedExam) : [];
-    const tagCandidates = [...new Set([
-      ui.unit.value, preferredTags[0], state.activeTag,
-      bestCrossSchoolTag(state.visibleExams), bestCrossSchoolTag(state.filtered),
-    ].filter(Boolean))];
-    const tag = tagCandidates.find((candidate) => {
-      const schools = new Set(state.visibleExams.filter((exam) => state.tagsByFile.get(exam.file)?.has(candidate)).map((exam) => exam.school));
-      return schools.size > 1;
-    }) || tagCandidates[0] || '';
-    if (!tag) return { tag: '', anchor: '', related: [] };
-    const matching = state.visibleExams.filter((exam) => state.tagsByFile.get(exam.file)?.has(tag));
-    const anchorExam = matching.find((exam) => exam.file === state.selectedExam?.file) ||
-      matching.find((exam) => exam.school && matching.some((other) => other.school !== exam.school)) || matching[0];
-    if (!anchorExam) return { tag, anchor: '', related: [] };
-    const related = matching.filter((exam) => exam.file !== anchorExam.file && exam.school !== anchorExam.school)
-      .slice(0, 10).map((exam) => exam.file);
-    return { tag, anchor: anchorExam.file, related };
-  }
-  function updateConstellations() {
-    if (!state.world || !state.constellation) {
-      state.world?.setConstellations('', [], '');
-      $('constellationLabel').textContent = 'L2 별자리';
-      return;
-    }
-    const config = constellationConfig();
-    if (!config.anchor || !config.related.length) {
-      state.world.setConstellations('', [], '');
-      $('constellationLabel').textContent = config.tag ? '연결 노드 없음' : '공개 L2 없음';
-      return;
-    }
-    state.activeTag = config.tag;
-    state.world.setConstellations(config.anchor, config.related, '#b8a0ff');
-    $('constellationLabel').textContent = config.tag + ' · ' + (config.related.length + 1) + '개 L2 노드';
-  }
   function renderScene() {
     state.filtered = filterExams();
     const allGroups = groupExams(state.filtered);
@@ -698,25 +816,30 @@
     renderSatelliteLabels();
     setFilterSummary();
     createAccessibleList();
-    updateConstellations();
     const facetNodes = renderFacets();
-    renderFacetSpaceLabels(facetNodes);
+    // Keep filters in the labeled HTML controls. The world map stays focused on
+    // the decorative cosmic web and selectable curriculum galaxies.
+    ui.facetSpaceLabels.replaceChildren();
     state.world?.setFacetData(facetNodes);
     const schoolCount = new Set(state.filtered.map((exam) => exam.school)).size;
     ui.atlasExamCount.textContent = state.filtered.length.toLocaleString();
     ui.atlasGroupCount.textContent = state.visibleGroups.length.toLocaleString();
     ui.atlasDetailCount.textContent = state.visibleExams.length.toLocaleString();
+    $('atlasGroupLabel').textContent = state.groupMode === 'school' ? '학교 은하' : '학년·과목 은하';
     if (ui.selectCurrentRange) {
       ui.selectCurrentRange.disabled = state.filtered.length === 0;
       ui.selectCurrentRange.setAttribute('aria-label', state.filtered.length
         ? '현재 범위 자료를 기존 Archive 출제 도구로 선택'
         : '현재 범위에 자료가 없음');
     }
-    $('sceneCount').textContent = '별 자료 노드 ' + state.filtered.length.toLocaleString() + ' / ' +
-      state.filtered.length.toLocaleString() + ' · 입체 별 상세 ' + state.visibleExams.length.toLocaleString() + ' · ' + state.visibleGroups.length + '개 작은 은하';
+    const groupNoun = state.groupMode === 'school' ? '학교 은하' : '학년·과목 은하';
+    $('sceneCount').textContent = '시험지 ' + state.filtered.length.toLocaleString() + ' · ' +
+      state.visibleGroups.length + '개 ' + groupNoun + ' · 상세 ' + state.visibleExams.length.toLocaleString();
     $('sceneInstruction').textContent = state.visibleGroups.length
-      ? '시험지마다 고유 자료 노드 하나가 있습니다. 학교·학년·단원 은하를 바꿔 같은 원본의 다른 공간 배치를 둘러보세요.'
-      : '조건에 맞는 은하가 없습니다. 필터를 풀거나 검색어를 바꿔 보세요.';
+      ? state.groupMode === 'school'
+        ? '학교 은하 분포를 살펴보거나, 학교·연도·시험 조건을 자유롭게 조합하세요.'
+        : '중1·중2·중3과 공개 catalog의 고등 과목 은하를 함께 표시합니다. 학교·연도·시험 조건은 순서 없이 조합할 수 있습니다.'
+      : '조건에 맞는 자료가 없습니다. 필터를 풀거나 검색어를 바꿔 보세요.';
   }
   function setFilterSummary() {
     const values = [ui.grade.value, ui.subject?.value, ui.term?.value ? termLabel(ui.term.value) : '', ui.year.value, ui.school.value, ui.unit.value, ui.search.value.trim()].filter(Boolean);
@@ -731,14 +854,13 @@
     state.focusedGroupId = id;
     state.world?.focusGroup(id);
     renderSatelliteLabels();
-    updateConstellations();
   }
 
   function setupFilterOptions() {
     optionValues(ui.school, [...new Set(state.exams.map((exam) => exam.school).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ko')), '학교');
     optionValues(ui.grade, [...new Set(state.exams.map((exam) => exam.grade).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ko')), '학년');
     optionValues(ui.year, [...new Set(state.exams.map((exam) => String(exam.year)).filter(Boolean))].sort((a, b) => Number(b) - Number(a)), '연도');
-    if (ui.term) optionValues(ui.term, [...new Set(state.exams.map(termKey).filter(Boolean))].sort((a, b) => termLabel(a).localeCompare(termLabel(b), 'ko')), '시험 구분');
+    if (ui.term) optionValues(ui.term, [...new Set(state.exams.map(termKey).filter(Boolean))].sort((a, b) => termLabel(a).localeCompare(termLabel(b), 'ko')), '시험 구분', termLabel);
     if (ui.subject) optionValues(ui.subject, [...new Set(state.exams.map(subjectFacetValue).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ko')), '\uACFC\uBAA9');
     optionValues(ui.unit, [...state.filesByTag.keys()].sort((a, b) => a.localeCompare(b, 'ko')), '공개 L2 단원');
   }
@@ -748,6 +870,7 @@
     const raw = await response.json();
     const catalog = window.Archive2Core?.decodeCatalog(raw);
     if (!catalog?.exams || !catalog?.records) throw new Error('공개 Archive catalog 구조를 읽을 수 없습니다.');
+    state.catalogExamCount = catalog.exams.filter((exam) => exam.file).length;
     state.exams = catalog.exams.filter((exam) => exam.file && exam.contentType === '기출');
     state.examsByFile = new Map(state.exams.map(exam => [exam.file, exam]));
     state.records = catalog.records;
@@ -763,14 +886,11 @@
     }
     setupFilterOptions();
     const schoolCount = new Set(state.exams.map((exam) => exam.school)).size;
-    const l2Count = state.records.filter((record) => clean(record.L2)).length;
-    const l3Count = state.records.filter((record) => clean(record.L3)).length;
-    ui.status.textContent = '공개 catalog · 시험지 ' + state.exams.length.toLocaleString() + ' · 학교 ' + schoolCount +
-      ' · 공개 L2 record ' + l2Count.toLocaleString() + ' · 공개 L3 ' + l3Count;
+    ui.status.textContent = '공개 catalog · 자료 ' + state.catalogExamCount.toLocaleString() + ' · 기출 ' + state.exams.length.toLocaleString() + ' · 학교 ' + schoolCount;
     renderScene();
   }
   async function startUniverse() {
-    const module = await import('./assets/orbital-world.js');
+    const module = await import('./assets/orbital-world.js?v=20261014-curriculum-orbit-1');
     state.world = module.createOrbitWorld({
       canvas: ui.canvas,
       onGroup: (id) => focusGroup(id),
@@ -803,6 +923,16 @@
         );
         for (const label of state.groupLabels.values()) label.style.display = 'none';
         for (const label of ui.facetSpaceLabels?.children || []) label.style.display = 'none';
+        let pointerHover = '';
+        if (state.pointer && !state.selectedExam) {
+          let closest = window.innerWidth < 760 ? 30 : 40;
+          for (const [id, point] of positions.groups || []) {
+            if (!point?.visible) continue;
+            const distance = Math.hypot(point.x - state.pointer.x, point.y - state.pointer.y);
+            if (distance < closest) { closest = distance; pointerHover = id; }
+          }
+        }
+        state.hoveredGroupId = state.hoveredLabelGroupId || pointerHover;
         for (const button of ui.questionOrbit.children) {
           const point = positions.questions?.get(button.dataset.questionId);
           button.style.display = point?.visible && !overlapsChrome(point, 16, 16) ? 'grid' : 'none';
@@ -811,20 +941,49 @@
             button.style.top = point.y + 'px';
           }
         }
+        const primaryGroupIds = new Set([...state.groupsById.values()]
+          .filter((group) => clean(group.name) && group.mode === state.groupMode)
+          .sort((a, b) => b.exams.length - a.exams.length)
+          .slice(0, 3)
+          .map((group) => group.id));
         const labelCandidates = (state.selectedExam ? [] : [...state.groupLabels]).map(([id, label]) => ({ id, label, point: positions.groups.get(id) }))
-          .filter(({ point }) => point?.visible)
-          .sort((a, b) => Number(b.id === state.focusedGroupId) - Number(a.id === state.focusedGroupId) || a.point.depth - b.point.depth);
+          .filter(({ label, point }) => point?.visible && clean(label.textContent))
+          .sort((a, b) => Number(b.id === state.focusedGroupId) - Number(a.id === state.focusedGroupId) ||
+            Number(b.id === state.hoveredGroupId) - Number(a.id === state.hoveredGroupId) ||
+            Number(primaryGroupIds.has(b.id)) - Number(primaryGroupIds.has(a.id)) ||
+            Number(b.id.startsWith('curriculum:middle:')) - Number(a.id.startsWith('curriculum:middle:')) ||
+            a.point.depth - b.point.depth);
         const occupiedGroupLabels = [];
         let shownGroupLabels = 0;
         for (const { id, label, point } of labelCandidates) {
           const selected = id === state.focusedGroupId;
-          const crowded = occupiedGroupLabels.some((used) => Math.abs(used.x - point.x) < 122 && Math.abs(used.y - point.y) < 42);
-          if ((!selected && (point.depth > 132 || crowded || shownGroupLabels >= 5)) || overlapsChrome(point, 74, 22)) { label.style.display = 'none'; continue; }
+          const hovered = id === state.hoveredGroupId;
+          const primary = primaryGroupIds.has(id);
+          if (!selected && !hovered && !primary) continue;
           label.style.display = 'block';
-          occupiedGroupLabels.push(point);
+          label.style.opacity = '0';
+          label.style.visibility = '';
+          const halfWidth = Math.max(44, label.getBoundingClientRect().width / 2 + 8);
+          const halfHeight = Math.max(13, label.getBoundingClientRect().height / 2 + 5);
+          const labelY = point.y - 22;
+          const crowded = occupiedGroupLabels.some((used) =>
+            Math.abs(used.x - point.x) < used.halfWidth + halfWidth + 7 &&
+            Math.abs(used.y - labelY) < used.halfHeight + halfHeight + 5);
+            label.setAttribute('aria-pressed', String(selected));
+          const labelLimit = window.innerWidth < 760 ? 3 : 4;
+          const labelDepthLimit = window.innerWidth < 760 ? 124 : 164;
+          if ((!selected && (point.depth > labelDepthLimit || crowded || shownGroupLabels >= labelLimit)) || overlapsChrome({ ...point, y: labelY }, halfWidth, halfHeight)) {
+            label.style.display = 'none';
+            label.style.opacity = '';
+            continue;
+          }
+          label.style.display = 'block';
+          label.style.opacity = '';
+          label.dataset.role = selected ? 'selected' : hovered ? 'hovered' : 'primary';
+          occupiedGroupLabels.push({ x: point.x, y: labelY, halfWidth, halfHeight });
           shownGroupLabels += 1;
           label.style.left = point.x + 'px';
-          label.style.top = (point.y - 22) + 'px';
+          label.style.top = labelY + 'px';
         }
         const facetCategoryPositions = positions.facetCategories || new Map();
         const facetPositions = positions.facets || new Map();
@@ -886,7 +1045,7 @@
     state.world.setMotion(!reducedMotion);
     state.world.setInstantTravel(state.instant || reducedMotion);
     updateScaleUI('macro');
-    setAtlasCollapsed(matchMedia('(max-width:760px)').matches);
+    setAtlasCollapsed(true);
     $('motionToggle').setAttribute('aria-pressed', String(reducedMotion));
     $('motionLabel').textContent = reducedMotion ? '공전 시작' : '공전 일시정지';
     if (reducedMotion) showToast('기기의 동작 줄이기 설정에 맞춰 공전을 멈췄습니다.');
@@ -916,11 +1075,10 @@
     if (ui.subject) ui.subject.value = '';
     ui.unit.value = '';
     ui.search.value = '';
-    state.activeTag = '';
     renderScene();
   }
   function setGroupMode(mode) {
-    if (!['school', 'grade', 'unit'].includes(mode) || state.groupMode === mode) return;
+    if (!['school', 'curriculum'].includes(mode) || state.groupMode === mode) return;
     state.groupMode = mode;
     state.focusedGroupId = '';
     $('universe').classList.remove('focused');
@@ -930,14 +1088,19 @@
     });
     renderSatelliteLabels();
     renderScene();
-    showToast(mode === 'unit'
-      ? '단원 성단은 공개된 L2 태그를 기준으로 합니다. 시험지는 복제하지 않고 한 곳에만 둡니다.'
-      : mode === 'grade'
-        ? '같은 시험지 ID가 학년 성단의 공간 배치로 이동했습니다.'
-        : '학교별 작은 은하로 다시 배치했습니다.');
+    showToast(mode === 'school'
+      ? '학교 분포를 살펴봅니다. 학년·연도·시험·단원 조건은 계속 조합할 수 있습니다.'
+      : '중등 학년과 고등 실제 과정을 함께 살펴봅니다.');
   }
 
   async function init() {
+    const updateSearchPlaceholder = () => {
+      ui.search.placeholder = matchMedia('(max-width:760px)').matches
+        ? '학교·학년·과정'
+        : '학교 · 학년 · 과정 · 연도 검색';
+    };
+    updateSearchPlaceholder();
+    window.addEventListener('resize', updateSearchPlaceholder, { passive: true });
     if (!ui.term) {
       ui.term = document.createElement('select');
       ui.term.id = 'termFilter';
@@ -971,12 +1134,6 @@
       $('motionToggle').setAttribute('aria-pressed', String(!running));
       $('motionLabel').textContent = running ? '공전 일시정지' : '공전 시작';
     });
-    $('constellationToggle').addEventListener('click', (event) => {
-      state.constellation = !state.constellation;
-      event.currentTarget.setAttribute('aria-pressed', String(state.constellation));
-      updateConstellations();
-      if (state.constellation) showToast('실제 공개 L2 태그가 겹치는 시험지 노드를 우주 안의 빛으로 잇습니다.');
-    });
     $('returnToGalaxy').addEventListener('click', () => {
       if (state.selectedExam) closeExam();
       else {
@@ -984,6 +1141,7 @@
         state.entrySnapshot = null;
       }
     });
+    $('mobileFocusBack').addEventListener('click', () => $('returnToGalaxy').click());
     $('drawerBack').addEventListener('click', () => {
       if (state.selectedQuestion) showWholeExam();
       else closeExam();
@@ -1035,14 +1193,35 @@
       if (state.instant) state.world?.finishTravel();
     });
     $('closeList').addEventListener('click', () => toggleList(false));
+    $('overviewButton')?.addEventListener('click', () => ui.atlasOverview.click());
+    $('retryWorld')?.addEventListener('click', () => window.location.reload());
     ui.search.addEventListener('input', () => {
       clearTimeout(state.searchTimer);
       state.searchTimer = setTimeout(renderScene, 90);
     });
+    ui.canvas.addEventListener('pointermove', (event) => {
+      state.pointer = event.pointerType === 'mouse' ? { x: event.clientX, y: event.clientY } : null;
+    }, { passive: true });
+    ui.canvas.addEventListener('pointerleave', () => { state.pointer = null; }, { passive: true });
     ui.search.addEventListener('keydown', (event) => {
       if (event.key === 'Enter') { event.preventDefault(); toggleList(true); }
     });
     document.addEventListener('keydown', (event) => {
+      const typingTarget = ['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName) || document.activeElement.isContentEditable;
+      if (!typingTarget && !event.ctrlKey && !event.metaKey && !event.altKey) {
+        const key = event.key.toLowerCase();
+        if (key === 'g') { event.preventDefault(); $('overviewButton')?.click(); }
+        const modeByKey = { '1': 'curriculum', '2': 'school' };
+        if (modeByKey[key] && !ui.drawer.classList.contains('open')) {
+          event.preventDefault();
+          setGroupMode(modeByKey[key]);
+        }
+        if (key === '3' && !ui.drawer.classList.contains('open')) {
+          event.preventDefault();
+          toggleFilters(true);
+          ui.unit.focus({ preventScroll: true });
+        }
+      }
       if (event.key === 'Escape') {
         // A focused search input would otherwise clear itself *after* we restore
         // the saved query, violating navigation return state.
