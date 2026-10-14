@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-14T01:28:57.140Z",
+  "updatedAt": "2026-10-14T01:46:35.139Z",
   "coverage": "GitHub PR/Actions only; Library/GPT completion not observed",
   "history": {
     "complete": false,
@@ -10,7 +10,10 @@
     "seenReleaseRuns": 24,
     "runScanIsPartial": true
   },
-  "inventoryComplete": true,
+  "inventoryComplete": false,
+  "incompletePRs": [
+    213
+  ],
   "entries": {
     "19_금당고_1학기_중간_고1_기출": {
       "exam": "19_금당고_1학기_중간_고1_기출",
@@ -2821,40 +2824,6 @@
     }
   },
   "observations": {
-    "registration:38490550448:1:11ded194b5fda51ad240dfbd02fafbb883b42261": {
-      "key": "registration:38490550448:1:11ded194b5fda51ad240dfbd02fafbb883b42261",
-      "status": "unverified",
-      "attempts": 3,
-      "run": {
-        "id": 38490550448,
-        "attempt": 1,
-        "sha": "11ded194b5fda51ad240dfbd02fafbb883b42261",
-        "at": "2026-10-14T00:34:37Z",
-        "url": "https://github.com/icefoxtail/AP------/actions/runs/38490550448",
-        "conclusion": "success",
-        "event": "push",
-        "branch": "main"
-      },
-      "reason": "현재 실행 차수 증거 없음",
-      "nextRetryAt": "2026-10-14T01:35:12.541Z"
-    },
-    "registration:38491492202:1:3e7ba6cab6d66b2e64b33a93e3920d4e379fba2a": {
-      "key": "registration:38491492202:1:3e7ba6cab6d66b2e64b33a93e3920d4e379fba2a",
-      "status": "unverified",
-      "attempts": 3,
-      "run": {
-        "id": 38491492202,
-        "attempt": 1,
-        "sha": "3e7ba6cab6d66b2e64b33a93e3920d4e379fba2a",
-        "at": "2026-10-14T00:43:35Z",
-        "url": "https://github.com/icefoxtail/AP------/actions/runs/38491492202",
-        "conclusion": "success",
-        "event": "push",
-        "branch": "main"
-      },
-      "reason": "현재 실행 차수 증거 없음",
-      "nextRetryAt": "2026-10-14T01:35:09.467Z"
-    },
     "release:38492465492:1:3c61a1ff1a51f37381d05b8986aa6d6ebabaf74b": {
       "key": "release:38492465492:1:3c61a1ff1a51f37381d05b8986aa6d6ebabaf74b",
       "status": "partial",
@@ -18538,6 +18507,40 @@
         "23_팔마고_1학기_중간_고1_기출",
         "23_여천고_1학기_중간_고1_기출"
       ]
+    },
+    "registration:38490550448:1:11ded194b5fda51ad240dfbd02fafbb883b42261": {
+      "key": "registration:38490550448:1:11ded194b5fda51ad240dfbd02fafbb883b42261",
+      "status": "unverified",
+      "attempts": 4,
+      "reason": "API 조회 실패",
+      "run": {
+        "id": 38490550448,
+        "attempt": 1,
+        "sha": "11ded194b5fda51ad240dfbd02fafbb883b42261",
+        "at": "2026-10-14T00:34:37Z",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/38490550448",
+        "conclusion": "success",
+        "event": "push",
+        "branch": "main"
+      },
+      "retryExhausted": true
+    },
+    "registration:38491492202:1:3e7ba6cab6d66b2e64b33a93e3920d4e379fba2a": {
+      "key": "registration:38491492202:1:3e7ba6cab6d66b2e64b33a93e3920d4e379fba2a",
+      "status": "unverified",
+      "attempts": 4,
+      "reason": "현재 실행 차수 증거 없음",
+      "run": {
+        "id": 38491492202,
+        "attempt": 1,
+        "sha": "3e7ba6cab6d66b2e64b33a93e3920d4e379fba2a",
+        "at": "2026-10-14T00:43:35Z",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/38491492202",
+        "conclusion": "success",
+        "event": "push",
+        "branch": "main"
+      },
+      "retryExhausted": true
     },
     "registration:38488421554:1:2cc7310afa064f2051803d874259ddb6aa3694fe": {
       "key": "registration:38488421554:1:2cc7310afa064f2051803d874259ddb6aa3694fe",
