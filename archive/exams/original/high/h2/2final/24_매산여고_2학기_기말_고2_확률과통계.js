@@ -320,11 +320,15 @@ window.questionBank = [
       "$\\dfrac{5}{8}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 확률밀도함수의 전체 정의구간에서 그래프와 $x$축 사이의 전면적은 항상 $1$임을 이용한다.\\n조건 정리: 연속확률변수 $X$의 전체 구간은 $[0, 3k]$이며 두 부분으로 쪼개진 직선 함수 형태를 띤다.\\n풀이 방향: 전체 넓이 공식을 통해 $k$의 값을 결정한 후, 요구하는 구간 $[k, 2k]$ 사다리꼴의 넓이를 계산한다.\\n정석 풀이:\\n1단계: 전구간 면적을 통해 $k$ 구하기\\n구간 $[0, k]$의 면적은 가로 $k$, 세로 $k$인 직사각형이므로 $k^2$이다.\\n구간 $[k, 3k]$의 면적은 밑변 $2k$, 높이 $k$인 직각삼각형이므로 $\\dfrac{1}{2} \\times 2k \\times k = k^2$이다.\\n전체 넓이의 총합은 $k^2 + k^2 = 2k^2 = 1 \\implies k^2 = \\dfrac{1}{2}$이다. ($k>0$이므로 $k = \\dfrac{1}{\\sqrt{2}}$)\\n2단계: $P(k \\le X \\le 2k)$ 구간 면적 구하기\\n구간 $[k, 2k]$에서 그래프는 사다리꼴 형태를 이룬다.\\n윗변 ($x=k$에서의 함숫값): $f(k) = k$\\n아랫변 ($x=2k$에서의 함숫값): $f(2k) = \\dfrac{3k - 2k}{2} = \\dfrac{k}{2}$\\n높이 (구간의 폭): $2k - k = k$\\n사다리꼴 넓이 공식에 대입하면 다음과 같다.\\n$P(k \\le X \\le 2k) = \\dfrac{1}{2} \\times \\left(k + \\dfrac{k}{2}\\right) \\times k = \\dfrac{1}{2} \\times \\dfrac{3}{2}k \\times k = \\dfrac{3}{4}k^2$\\n여기에 $k^2 = \\dfrac{1}{2}$을 대입하면\\n$= \\dfrac{3}{4} \\times \\dfrac{1}{2} = \\dfrac{3}{8}$이다.\\n따라서 정답은 ③이다.",
+    "solution": "확률밀도함수의 그래프와 $x$축 사이의 전체 넓이는 $1$이다.\n$0\\le x\\le k$에서는 높이가 $k$, 폭이 $k$인 직사각형이다.\n넓이 $=k\\times k=k^2$이다.\n$k<x\\le3k$에서는 높이가 $k$에서 $0$으로 줄어드는 삼각형이다.\n넓이 $=\\dfrac12\\times2k\\times k=k^2$이다.\n따라서 $k^2+k^2=1$이므로 $k^2=\\dfrac12$이다.\n이제 $k\\le x\\le2k$ 구간은 사다리꼴이다.\n$f(k)=k,\\quad f(2k)=\\dfrac{3k-2k}{2}=\\dfrac k2$이다.\n구하는 확률은 그 사다리꼴의 넓이이므로\n$P(k\\le X\\le2k)=\\dfrac12\\left(k+\\dfrac k2\\right)\\times k$\n$=\\dfrac{3k^2}{4}=\\dfrac34\\times\\dfrac12=\\dfrac38$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "확률밀도함수에서 0에서 k까지 직사각형과 k에서 3k까지 감소하는 직선 및 k에서 2k까지의 사다리꼴을 표시한 그래프",
+    "solutionImageCaption": "k부터 2k까지의 사다리꼴 넓이가 확률이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -350,11 +354,15 @@ window.questionBank = [
       "0.6826"
     ],
     "answer": "①",
-    "solution": "[키포인트] 정규분포 곡선의 대칭성을 활용하여 모평균 $m$을 결정한 뒤, 표본의 크기에 따른 표본평균의 표준편차를 각각 구해 표준화한다.\\n조건 정리: 모분산 $\\sigma^2 = 16 \\implies \\sigma = 4$이다. $m$은 자연수이다.\\n풀이 방향: 조건 (가)와 (나)를 대칭축 $m$을 중심으로 하는 부등식으로 바꾸어 자연수 $m$을 확정한다.\\n정석 풀이:\\n1단계: 모평균 $m$ 구하기\\n조건 (가): $P(X \\ge 11) \\le P(X \\le 16)$에서 정규분포의 대칭성에 의해 중간값 조건을 구하면 $m \\le \\dfrac{11 + 16}{2} = 13.5$이다.\\n조건 (나): $P(X \\le 15) \\le P(X \\ge 10)$에서 정규분포의 대칭성에 의해 중간값 조건을 구하면 $m \\ge \\dfrac{15 + 10}{2} = 12.5$이다.\\n따라서 $12.5 \\le m \\le 13.5$이며 $m$은 자연수이므로 $m = 13$이다.\\n2단계: 표본평균의 표준화 공식 적용\\n$\\overline{X_1}$의 분포 (크기 36): 표준편차는 $\\dfrac{4}{\\sqrt{36}} = \\dfrac{4}{6} = \\dfrac{2}{3}$이므로 $\\overline{X_1} \\sim N\\left(13, \\left(\\dfrac{2}{3}\\right)^2\\right)$이다.\\n$\\overline{X_2}$의 분포 (크기 4): 표준편차는 $\\dfrac{4}{\\sqrt{4}} = \\dfrac{4}{2} = 2$이므로 $\\overline{X_2} \\sim N(13, 2^2)$이다.\\n3단계: 확률 연산\\n$P(\\overline{X_1} \\le m-1) = P(\\overline{X_1} \\le 12) = P\\left(Z \\le \\dfrac{12 - 13}{2/3}\\right) = P(Z \\le -1.5) = 0.5 - 0.4332 = 0.0668$\\n$P(\\overline{X_2} \\ge 27-m) = P(\\overline{X_2} \\ge 14) = P\\left(Z \\ge \\dfrac{14 - 13}{2}\\right) = P(Z \\ge 0.5) = 0.5 - 0.1915 = 0.3085$\\n두 확률의 합을 최종적으로 구하면 $0.0668 + 0.3085 = 0.3753$이다. 이는 선지 ①번에 일치한다.\\n따라서 정답은 ①이다.",
+    "solution": "정규분포는 평균 $m$에 대해 좌우 대칭이다.\n(가)에서 $P(X\\ge11)=P(X\\le2m-11)$이므로\n$P(X\\le2m-11)\\le P(X\\le16)$\n$2m-11\\le16,\\quad m\\le13.5$이다.\n(나)에서 $P(X\\ge10)=P(X\\le2m-10)$이므로\n$P(X\\le15)\\le P(X\\le2m-10)$\n$15\\le2m-10,\\quad m\\ge12.5$이다.\n$m$은 자연수이므로 $m=13$이다.\n첫 번째 표본평균의 표준편차는 $\\dfrac4{\\sqrt{36}}=\\dfrac23$이다.\n$P(\\overline X_1\\le m-1)=P\\left(Z\\le\\dfrac{-1}{2/3}\\right)$\n$=P(Z\\le-1.5)=0.5-0.4332=0.0668$이다.\n두 번째 표본평균의 표준편차는 $\\dfrac4{\\sqrt4}=2$이다.\n$27-m=14$이므로\n$P(\\overline X_2\\ge14)=P\\left(Z\\ge\\dfrac{14-13}{2}\\right)$\n$=P(Z\\ge0.5)=0.5-0.1915=0.3085$이다.\n따라서 두 확률의 합은\n$0.0668+0.3085=0.3753$이므로 정답은 ①이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "두 개의 정규분포곡선에 각각 z=-1.5 이하 왼쪽 꼬리와 z=0.5 이상 오른쪽 꼬리를 표시한 그림",
+    "solutionImageCaption": "표본의 크기에 따라 표본평균의 표준편차가 달라진다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -378,7 +386,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "①",
-    "solution": "[키포인트] 전확률의 합이 $1$임을 통해 상수 $k$를 도출하고, 모분산 $V(X)$를 계산한 후 표본평균의 분산 공식 $V(\\overline{X}) = \\dfrac{V(X)}{n}$을 사용한다.\\n조건 정리: 변수 $X$가 취하는 값은 $3, 6, 9$이고 표본 크기 $n=5$이다.\\n풀이 방향: $P(X=3)+P(X=6)+P(X=9)=1$ 방정식을 풀어 $k$를 구한 후 모분산을 설계한다.\\n정석 풀이:\\n$\\dfrac{3k}{3} + \\dfrac{6k}{3} + \\dfrac{9k}{3} = 1 \\implies k + 2k + 3k = 1 \\implies 6k = 1 \\implies k = \\dfrac{1}{6}$\\n따라서 확률변수의 확률질량함수는 $P(X=x) = \\dfrac{1}{18}x$이다.\\n$P(X=3) = \\dfrac{3}{18}, P(X=6) = \\dfrac{6}{18}, P(X=9) = \\dfrac{9}{18}$\\n모평균 $E(X) = 3 \\times \\dfrac{3}{18} + 6 \\times \\dfrac{6}{18} + 9 \\times \\dfrac{9}{18} = \\dfrac{9 + 36 + 81}{18} = \\dfrac{126}{18} = 7$\\n제곱의 평균 $E(X^2) = 3^2 \\times \\dfrac{3}{18} + 6^2 \\times \\dfrac{6}{18} + 9^2 \\times \\dfrac{9}{18} = \\dfrac{27 + 216 + 729}{18} = \\dfrac{972}{18} = 54$\\n모분산 $V(X) = E(X^2) - \\{E(X)\\}^2 = 54 - 7^2 = 54 - 49 = 5$\\n따라서 표본평균의 분산 $V(\\overline{X})$는 다음과 같다.\\n$V(\\overline{X}) = \\dfrac{V(X)}{n} = \\dfrac{5}{5} = 1$\\n결과값 $1$은 ①번 선지에 대응된다.\\n따라서 정답은 ①이다.",
+    "solution": "확률의 합이 $1$이므로\n$\\dfrac k3\\cdot3+\\dfrac k3\\cdot6+\\dfrac k3\\cdot9=1$\n$k+2k+3k=1,\\quad k=\\dfrac16$이다.\n따라서 $X=3,6,9$의 확률은 차례로 $\\dfrac16,\\dfrac13,\\dfrac12$이다.\n$E(X)=3\\cdot\\dfrac16+6\\cdot\\dfrac13+9\\cdot\\dfrac12$\n$=\\dfrac12+2+\\dfrac92=7$이다.\n$E(X^2)=3^2\\cdot\\dfrac16+6^2\\cdot\\dfrac13+9^2\\cdot\\dfrac12$\n$=\\dfrac32+12+\\dfrac{81}{2}=54$이다.\n모분산은 $V(X)=54-7^2=5$이다.\n표본의 크기가 $5$이므로\n$V(\\overline X)=\\dfrac{V(X)}5=\\dfrac55=1$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -406,7 +414,7 @@ window.questionBank = [
       "4"
     ],
     "answer": "③",
-    "solution": "[키포인트] 표본평균과 표본표준편차를 바탕으로 구한 모평균의 신뢰구간 길이 반경(오차의 한계) 공식을 사용한다.\\n조건 정리: 표본평균 $\\overline{x} = 163$, 모표준편차 대용인 표본표준편차 $s = 3$이다. 신뢰구간이 $[162, 164]$이므로 오차의 한계는 $164 - 163 = 1$이다. 신뢰도 $95\\%$ 단측상수 $k = 2.0$이다.\\n풀이 방향: 오차의 한계 식인 $k \\dfrac{\\sigma}{\\sqrt{n}} = 1$을 세우고 방정식의 해를 연산한다.\\n정석 풀이:\\n오차의 한계 식에 조건값을 대입하면 다음과 같다.\\n$2.0 \\times \\dfrac{3}{\\sqrt{n}} = 1 \\implies \\dfrac{6}{\\sqrt{n}} = 1$\\n$\\sqrt{n} = 6$\\n양변을 제곱하여 자연수 $n$을 얻으면 $n = 36$이 된다. 이는 ③번 선택지와 완벽히 일치한다.\\n따라서 정답은 ③이다.",
+    "solution": "신뢰구간은 $[162,164]$이고 중심은 표본평균 $163$이다.\n따라서 오차의 한계는 $164-163=1$이다.\n표준정규분포표에서 $P(0\\le Z\\le2)=0.475$이므로 신뢰도 $95\\%$에 해당하는 신뢰상수는 $2$이다.\n오차의 한계 식은\n$2\\times\\dfrac3{\\sqrt n}=1$이다.\n$\\dfrac6{\\sqrt n}=1$\n$\\sqrt n=6$\n$n=36$이다.\n또한 $n=36>30$이므로 주어진 조건을 만족한다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "rule_inferred",
@@ -434,7 +442,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "②",
-    "solution": "[키포인트] 변형된 확률변수의 표준편차 성질 $\\sigma(aX+b) = |a|\\sigma(X)$와 분산의 본래 계산 정의식 $V(X) = E(X^2) - \\{E(X)\\}^2$을 연립한다.\\n조건 정리: $E(X)=a$, $E(X^2)=6a+7$로 $a$에 관한 함수식 구조를 띤다.\\n풀이 방향: $V(X)$를 완전제곱식으로 고쳐 최대 스케일을 구하고 최종 표준편차 배율을 적용한다.\\n정석 풀이:\\n1단계: $X$의 분산 식 전개\\n$V(X) = E(X^2) - \\{E(X)\\}^2 = (6a+7) - a^2 = -a^2 + 6a + 7$\\n최댓값을 구하기 위해 완전제곱 꼴로 바꾸면 다음과 같다.\\n$V(X) = -(a^2 - 6a) + 7 = -(a-3)^2 + 9 + 7 = -(a-3)^2 + 16$\\n따라서 $V(X)$는 $a=3$일 때 최댓값 $16$을 갖는다.\\n2단계: $\\sigma(Y)$의 최댓값 유도\\n$\\sigma(Y) = \\sigma\\left(-\\dfrac{1}{2}X+1\\right) = \\left|-\\dfrac{1}{2}\\right| \\sigma(X) = \\dfrac{1}{2}\\sigma(X)$\\n$\\sigma(X)$의 최댓값은 $\\sqrt{16} = 4$이므로,\\n구하고자 하는 $\\sigma(Y)$의 최댓값은 $\\dfrac{1}{2} \\times 4 = 2$가 된다. 이는 ②번에 일치한다.\\n따라서 정답은 ②이다.",
+    "solution": "분산은 제곱의 평균에서 평균의 제곱을 뺀 값이다.\n$V(X)=E(X^2)-\\{E(X)\\}^2$\n$=(6a+7)-a^2$\n$=-(a-3)^2+16$이다.\n$(a-3)^2\\ge0$이므로 $V(X)\\le16$이고 $a=3$일 때 최대이다.\n$Y=-\\dfrac12X+1$이므로 표준편차의 성질에 따라\n$\\sigma(Y)=\\left|-\\dfrac12\\right|\\sigma(X)$\n$=\\dfrac12\\sqrt{V(X)}$\n$\\le\\dfrac12\\sqrt{16}=2$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
