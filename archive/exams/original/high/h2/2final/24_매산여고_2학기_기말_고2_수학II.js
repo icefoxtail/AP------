@@ -107,7 +107,7 @@ window.questionBank = [
       "$36$"
     ],
     "answer": "①",
-    "solution": "양변을 미분하여 $f'(x)$를 먼저 구한다.\n$\\displaystyle\\int(2x-3)f'(x)\\,dx=\\dfrac43x^3-2x^2-3x$\n$(2x-3)f'(x)=4x^2-4x-3$\n\n오른쪽을 인수분해하면\n$4x^2-4x-3=(2x-3)(2x+1)$이다.\n따라서 다항함수의 연속성을 이용하여\n$f'(x)=2x+1$이다.\n\n이를 적분하면\n$f(x)=x^2+x+C$이고,\n$f(0)=1$에서 $C=1$이다.\n\n$f(1)=1+1+1=3$\n$f'(1)=2+1=3$\n\n그러므로 $f(1)+f'(1)=3+3=6$이다.\n따라서 정답은 ①이다.",
+    "solution": "양변을 미분하여 $f'(x)$를 먼저 구한다.\n$\\displaystyle\\int(2x-3)f'(x)\\,dx=\\dfrac43x^3-2x^2-3x$\n$(2x-3)f'(x)=4x^2-4x-3$\n\n오른쪽을 인수분해하면\n$4x^2-4x-3=(2x-3)(2x+1)$이다.\n따라서 $x\\ne\\dfrac32$에서는 $f'(x)=2x+1$이다. 미분가능성으로부터 $f(x)=x^2+x+C$로 나타낼 수 있다.\n\n이를 적분하면\n$f(x)=x^2+x+C$이고,\n$f(0)=1$에서 $C=1$이다.\n\n$f(1)=1+1+1=3$\n$f'(1)=2+1=3$\n\n그러므로 $f(1)+f'(1)=3+3=6$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
     "subUnit": "부정적분",
     "subUnitConfidence": "candidate_evidence",
@@ -180,7 +180,9 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "방정식 $2x^3+a=3x^2+12x+1$이 서로 다른 두 실근을 갖도록 하는 실수 $a$값을 모두 합하면? [3.8점]",
     "choices": [
@@ -195,7 +197,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q07-solution.svg",
+    "solutionImageAlt": "삼차함수의 극대 (-1,7), 극소 (2,-20)와 수평선 7, -20",
+    "solutionImageCaption": "극대·극소와 두 실근",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -326,7 +332,9 @@ window.questionBank = [
     "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "곡선 $y=x|x-3|$와 $x$축 및 직선 $x=6$으로 둘러싸인 도형의 넓이를 구하면? [4.1점]",
     "choices": [
@@ -341,7 +349,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "곡선 y=x|x−3|와 x=3을 경계로 나뉘는 두 넓이",
+    "solutionImageCaption": "절댓값 곡선과 두 영역의 넓이",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -354,7 +366,9 @@ window.questionBank = [
     "standardUnitOrder": 8,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "$f(x)=x^3-12x+4\\displaystyle\\int_0^1f(t)dt$를 만족시키는 함수 $f(x)$의 극값의 모든 합을 구하면? [4.2점]",
     "choices": [
@@ -369,7 +383,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "f(x)=x³−12x+23/3의 극대 71/3과 극소 −25/3",
+    "solutionImageCaption": "삼차함수의 극대·극소",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -393,7 +411,7 @@ window.questionBank = [
       "$-\\dfrac9{13}$"
     ],
     "answer": "④",
-    "solution": "적분구간이 $0$부터 $1$까지로 고정되어 있으므로, 적분에서 나오는 두 값을 상수로 둔다.\n$\\displaystyle A=\\int_0^1 f(t)\\,dt$,\n$\\displaystyle B=\\int_0^1 t f(t)\\,dt$라 하자.\n\n주어진 식은\n$f(x)=3x^2+Ax-B$가 된다.\n\n이 식을 $0$부터 $1$까지 적분하면\n$\\displaystyle A=\\int_0^1(3t^2+At-B)\\,dt$\n$\\displaystyle=1+\\dfrac A2-B$이다.\n따라서 $A=2-2B$이다.\n\n이번에는 양변에 $x$를 곱하여 적분하면\n$\\displaystyle B=\\int_0^1(3t^3+At^2-Bt)\\,dt$\n$\\displaystyle=\\dfrac34+\\dfrac A3-\\dfrac B2$이다.\n따라서\n$\\displaystyle B=\\dfrac12+\\dfrac{2A}{9}$이다.\n\n이를 $A=2-2B$에 대입하면\n$\\displaystyle A=2-2\\left(\\dfrac12+\\dfrac{2A}{9}\\right)$\n$\\displaystyle=1-\\dfrac{4A}{9}$,\n$\\displaystyle\\dfrac{13A}{9}=1$이므로 $A=\\dfrac9{13}$이다.\n\n$f(x)=3x^2+\\dfrac9{13}x-B$는 이차함수이다.\n$f(x)=0$의 두 근의 합은 근과 계수의 관계로\n$\\displaystyle-\\dfrac{\\frac9{13}}{3}=-\\dfrac3{13}$이다.\n따라서 정답은 ④이다.",
+    "solution": "적분구간이 $0$부터 $1$까지로 고정되어 있으므로, 적분에서 나오는 두 값을 상수로 둔다.\n$\\displaystyle A=\\int_0^1 f(t)\\,dt$,\n$\\displaystyle B=\\int_0^1 t f(t)\\,dt$라 하자.\n\n주어진 식은\n$f(x)=3x^2+Ax-B$가 된다.\n\n이 식을 $0$부터 $1$까지 적분하면\n$\\displaystyle A=\\int_0^1(3t^2+At-B)\\,dt$\n$\\displaystyle=1+\\dfrac A2-B$이다.\n따라서 $A=2-2B$이다.\n\n이번에는 양변에 $x$를 곱하여 적분하면\n$\\displaystyle B=\\int_0^1(3t^3+At^2-Bt)\\,dt$\n$\\displaystyle=\\dfrac34+\\dfrac A3-\\dfrac B2$이다.\n따라서\n$\\displaystyle B=\\dfrac12+\\dfrac{2A}{9}$이다.\n\n이를 $A=2-2B$에 대입하면\n$\\displaystyle A=2-2\\left(\\dfrac12+\\dfrac{2A}{9}\\right)$\n$\\displaystyle=1-\\dfrac{4A}{9}$,\n$\\displaystyle\\dfrac{13A}{9}=1$이므로 $A=\\dfrac9{13}$이다.\n\n$f(x)=3x^2+\\dfrac9{13}x-B$는 이차함수이다.\n$f(x)=0$의 두 근의 합은 근과 계수의 관계로\n$\\displaystyle-\\dfrac9{13}\\div3=-\\dfrac3{13}$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
@@ -410,7 +428,9 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "삼차함수 $f(x)=x^3+ax^2+bx+c$는 $x=-3$에서 극대이고, 곡선 $y=f(x)$ 위의 점 $(-2,28)$에서 접선의 기울기가 $-9$일 때, $f(1)$의 값을 구하면? (단, $a$, $b$, $c$는 상수) [4.3점]",
     "choices": [
@@ -425,7 +445,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "삼차함수와 (−2,28)에서 기울기 −9인 접선, 극대점 (−3,33)",
+    "solutionImageCaption": "접점의 접선과 극대점",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -438,7 +462,9 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "구간 $[-4,2]$에서 함수 $f(x)=2x^3+ax^2+b$의 최솟값이 $-37$이다. 함수 $f(x)$는 $x=-2$에서 극대일 때, 함수 $f(1)$의 값을 구하면? (단, $a$, $b$는 상수) [4.3점]",
     "choices": [
@@ -453,7 +479,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "구간 [-4,2]에서 f(x)=2x³+6x²−5의 양 끝점과 두 극점",
+    "solutionImageCaption": "닫힌구간에서 최솟값 비교",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -466,7 +496,9 @@ window.questionBank = [
     "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "함수 $f(x)=-x^3+3x$와 최고차항의 계수가 $-1$인 이차함수 $g(x)$가 어떤 음수 $a$에 대하여 $f(a)=g(a)$, $f'(a)=g'(a)=0$을 만족시킬 때, 두 곡선 $y=f(x)$, $y=g(x)$로 둘러싸인 부분의 넓이를 구하면? [4.4점]",
     "choices": [
@@ -481,7 +513,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "f(x)=−x³+3x와 g(x)=−(x+1)²−2의 공통접점 −1, 교점 3, 둘러싸인 넓이",
+    "solutionImageCaption": "두 곡선 사이의 넓이",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -522,7 +558,9 @@ window.questionBank = [
     "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "세 양수 $a$, $b$, $k$에 대하여 함수 $f(x)$를 $f(x)=\\begin{cases}ax&(x\\ltk)\\\\-x^2+4bx-3b^2&(x\\gek)\\end{cases}$라 하자. 함수 $f(x)$가 실수 전체의 집합에서 미분가능하고, $f(k)=f'(k)$를 만족시킬 때, 함수 $f(x)$의 그래프와 $x$축으로 둘러싸인 부분의 넓이를 구하면? [4.5점]",
     "choices": [
@@ -537,7 +575,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "x=1에서 부드럽게 연결되는 직선과 이차곡선, 0부터 √3까지의 넓이",
+    "solutionImageCaption": "미분가능 연결점과 x축 사이 넓이",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -550,7 +592,9 @@ window.questionBank = [
     "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "원점에서 출발하여 수직선 위를 움직이는 점 $P$의 시각 $t$에서의 위치 $x(t)$가 $x(t)=kt(t-a)(t-b)$이다. 함수 $x(t)$와 점 $P$의 시각 $t$에서의 속도 $v(t)$가 다음 조건을 만족시킨다.<div class=\"question-note-box\">&lt;조 건&gt;<br>(가) 함수 $x(t)$의 극댓값은 $2$이다.<br>(나) $\\displaystyle\\int_0^2|v(t)|dt=4$이다.<br>(다) 점 $P$는 출발 이후 원점을 한 번만 지난다.</div>$\\displaystyle\\int_0^c|v(t)|dt=6$일 때, 양수 $c$의 값을 구하면? (단, $a$, $b$는 상수이고, $0\\lt a\\le b$, $k\\gt0$이다.) [4.5점]",
     "choices": [
@@ -565,7 +609,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "x(t)=27t(t−2)²/16에서 극대 (2/3,2), 복귀 (2,0), 거리 6에서 위치 (8/3,2)",
+    "solutionImageCaption": "위치 변화량과 이동거리",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -579,7 +627,8 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "그래프"
     ],
     "wide": false,
     "content": "[주관식1 (서술형)] [6점](부분점수 있음)<br>모든 실수 $x$, $y$에 대하여 다항함수 $f(x)$가 $f(x+y)=f(x)+f(y)+4xy$를 만족시킨다. 함수 $H(x)$가 $H(x)=\\displaystyle\\int(x-2)f'(x)dx$이고, $H(x)$는 극값이 존재하지 않을 때, $f(5)$의 값을 구하는 풀이 과정을 자세히 서술하시오.",
@@ -589,7 +638,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "H'(x)=4(x−2)²는 x=2에서 0이지만 양옆에서 모두 양수",
+    "solutionImageCaption": "극값이 없는 도함수의 부호",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -603,7 +656,8 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "그래프"
     ],
     "wide": false,
     "content": "[주관식2 (서술형)] [7점](부분점수 있음)<br>두 함수 $f(x)=4x^4-3x^3-10x^2-6$, $g(x)=x^4+x^3+2x^2-a$에 대하여 $y=f(x)$의 그래프가 $y=g(x)$의 그래프보다 항상 위쪽에 있을 때, 실수 $a$의 값의 범위를 구하는 풀이 과정을 자세히 서술하시오.",
@@ -613,7 +667,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "a=38일 때 f−g는 x=2에서 0에 접하고, a>38이면 모든 x에서 양수",
+    "solutionImageCaption": "차함수의 전역 최솟값",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
