@@ -5,6 +5,12 @@ const ORBIT_COLORS = [0x698cbe, 0x9f8bc6, 0x63a9a6, 0xc49485, 0x8094bf, 0x8bb3a9
 const GOLDEN_ANGLE = Math.PI * (3 - Math.sqrt(5));
 const JUPITER_EXAM_FILE = 'original/middle/m3/1mid/26_삼산중_1학기_중간_중3_기출.js';
 
+// Keep the Archive's cosmic web renderer focused on galaxies and records.
+const SUN_VERTEX = `varying vec3 vWorld; varying vec3 vNormal; void main(){vNormal=normalize(normalMatrix*normal);vWorld=(modelMatrix*vec4(position,1.)).xyz;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`;
+const SUN_FRAGMENT = `precision highp float; uniform float uTime; varying vec3 vWorld; varying vec3 vNormal;
+float hash(vec3 p){return fract(sin(dot(p,vec3(127.1,311.7,74.7)))*43758.5453);} float noise(vec3 p){vec3 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(mix(hash(i),hash(i+vec3(1,0,0)),f.x),mix(hash(i+vec3(0,1,0)),hash(i+vec3(1,1,0)),f.x),f.y),mix(mix(hash(i+vec3(0,0,1)),hash(i+vec3(1,0,1)),f.x),mix(hash(i+vec3(0,1,1)),hash(i+vec3(1,1,1)),f.x),f.y),f.z);}
+void main(){vec3 p=normalize(vWorld)*3.4;float n=noise(p+vec3(uTime*.025,-uTime*.012,uTime*.018));n=n*.52+noise(p*3.4+uTime*.04)*.3+noise(p*11.-uTime*.08)*.18;float fil=pow(max(noise(p*18.+vec3(uTime*.2)),.01),5.);float gran=smoothstep(.3,.78,n);float spot=smoothstep(.18,.035,length(p.xy-vec2(.42,-.22)))*.34;float limb=pow(max(dot(vNormal,normalize(cameraPosition-vWorld)),0.),.32);vec3 c=mix(vec3(.58,.08,.012),vec3(1.,.33,.025),gran);c=mix(c,vec3(1.,.9,.42),fil*.72+smoothstep(.64,.95,n)*.35);c*=.72+.32*limb;c*=1.-spot;gl_FragColor=vec4(c,1.);}`;
+
 function hashText(value) {
   let h = 2166136261;
   for (let i = 0; i < value.length; i += 1) h = Math.imul(h ^ value.charCodeAt(i), 16777619);
@@ -104,12 +110,13 @@ function makeDepthField(count, minRadius, radiusSpan, seed, verticalScale) {
   const colors = new Float32Array(count * 3);
   const tints = [0x93b9f0, 0x8f8bd5, 0x9ad8d0, 0xc8a3a0, 0xd3c28e].map((color) => new THREE.Color(color));
   for (let i = 0; i < count; i += 1) {
-    const radius = minRadius + random() * radiusSpan;
-    const angle = random() * Math.PI * 2;
-    const band = .72 + random() * .42;
-    positions[i * 3] = Math.cos(angle) * radius * band;
-    positions[i * 3 + 1] = (random() - .5) * radius * verticalScale;
-    positions[i * 3 + 2] = Math.sin(angle) * radius * .72;
+    const arm = i % 5;
+    const radius = minRadius + Math.pow(random(), .62) * radiusSpan;
+    const angle = arm * Math.PI * 2 / 5 + radius * .075 + (random() - .5) * .34;
+    const plume = (random() - .5) * (1.8 + radius * .1);
+    positions[i * 3] = Math.cos(angle) * radius + Math.cos(angle + Math.PI / 2) * plume;
+    positions[i * 3 + 1] = (random() - .5) * Math.max(1.2, radius * verticalScale);
+    positions[i * 3 + 2] = Math.sin(angle) * radius + Math.sin(angle + Math.PI / 2) * plume;
     const color = tints[Math.floor(random() * tints.length)].clone();
     color.lerp(new THREE.Color(0xe6f1ff), random() * .32);
     color.toArray(colors, i * 3);
@@ -142,23 +149,25 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.12;
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x101026);
-  scene.fog = new THREE.FogExp2(0x101026, .000003);
+  scene.background = new THREE.Color(0x030313);
+  scene.fog = new THREE.FogExp2(0x08071a, .0000012);
   const nebulaTexture = new THREE.TextureLoader().load(new URL('../assets/galaxy-atmosphere.png', import.meta.url).href);
   nebulaTexture.colorSpace = THREE.SRGBColorSpace;
+  const similarityHoleTexture = new THREE.TextureLoader().load(new URL('../assets/similarity-blackhole.png', import.meta.url).href);
+  similarityHoleTexture.colorSpace = THREE.SRGBColorSpace;
   const nebulaSky = new THREE.Mesh(new THREE.SphereGeometry(340, 64, 40), new THREE.MeshBasicMaterial({
-    map: nebulaTexture, color: 0xaaa0d6, side: THREE.BackSide, transparent: true, opacity: .78, depthWrite: false,
+    map: nebulaTexture, color: 0x9da7be, side: THREE.BackSide, transparent: true, opacity: .48, depthWrite: false,
   }));
   scene.add(nebulaSky);
-  const depthFar = new THREE.Points(makeDepthField(mobile ? 260 : 720, 96, 108, 0x5eed2026, .34), new THREE.PointsMaterial({
+  const depthFar = new THREE.Points(makeDepthField(mobile ? 2200 : 9000, 0, 68, 0x5eed2026, .035), new THREE.PointsMaterial({
     map: starSpriteTexture, size: mobile ? .28 : .38, sizeAttenuation: true, vertexColors: true,
-    transparent: true, opacity: .24, depthWrite: false, alphaTest: .012, blending: THREE.AdditiveBlending, toneMapped: false,
+    transparent: true, opacity: .17, depthWrite: false, alphaTest: .012, blending: THREE.AdditiveBlending, toneMapped: false,
   }));
   depthFar.renderOrder = -6;
   depthFar.rotation.set(.22, -.35, .08);
-  const depthNear = new THREE.Points(makeDepthField(mobile ? 110 : 320, 24, 80, 0x1a5eed, .18), new THREE.PointsMaterial({
+  const depthNear = new THREE.Points(makeDepthField(mobile ? 420 : 1500, 8, 64, 0x1a5eed, .055), new THREE.PointsMaterial({
     map: starSpriteTexture, size: mobile ? .34 : .52, sizeAttenuation: true, vertexColors: true,
-    transparent: true, opacity: .3, depthWrite: false, alphaTest: .012, blending: THREE.AdditiveBlending, toneMapped: false,
+    transparent: true, opacity: .2, depthWrite: false, alphaTest: .012, blending: THREE.AdditiveBlending, toneMapped: false,
   }));
   depthNear.renderOrder = -5;
   depthNear.rotation.set(-.16, .54, -.11);
@@ -168,7 +177,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   frameRadii.forEach((radius, index) => {
     const material = new THREE.LineDashedMaterial({
       color: index === frameRadii.length - 1 ? 0x89a3d0 : 0x6d8abb,
-      transparent: true, opacity: mobile ? .065 : .095, depthWrite: false,
+      transparent: true, opacity: mobile ? .01 : .012, depthWrite: false,
       dashSize: index === frameRadii.length - 1 ? .72 : .52, gapSize: index === frameRadii.length - 1 ? 1.15 : .88,
     });
     const orbit = makeOrbit(radius, .7 + index * .08, material, 192);
@@ -182,7 +191,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   orbitalFrame.renderOrder = -4;
   scene.add(depthFar, depthNear, orbitalFrame);
   const camera = new THREE.PerspectiveCamera(mobile ? 68 : 60, 1, .1, 480);
-  camera.position.set(0, mobile ? 44 : 46, mobile ? 94 : 96);
+  camera.position.set(0, mobile ? 30 : 40, mobile ? 66 : 94);
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.target.set(0, 0, 0);
   controls.enableDamping = true;
@@ -197,13 +206,13 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   controls.maxPolarAngle = Math.PI * .48;
 
   scene.add(new THREE.HemisphereLight(0xaac2ec, 0x111425, 1.34));
-  const sunLight = new THREE.PointLight(0xe8cfac, 92, 190, 1.55);
+  const sunLight = new THREE.PointLight(0x9fb5ee, 18, 112, 1.55);
   scene.add(sunLight);
-  const violetFill = new THREE.PointLight(0x9380e4, 17, 125, 2);
+  const violetFill = new THREE.PointLight(0x9380e4, 9, 100, 2);
   violetFill.position.set(-40, 28, 34);
   scene.add(violetFill);
 
-  const starCount = mobile ? 520 : 1620;
+  const starCount = mobile ? 320 : 720;
   const starPositions = new Float32Array(starCount * 3);
   const starColors = new Float32Array(starCount * 3);
   const skyRandom = randomFrom(81802026);
@@ -226,44 +235,53 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   starGeometry.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
   scene.add(new THREE.Points(starGeometry, new THREE.PointsMaterial({
     map: starSpriteTexture, size: mobile ? .5 : .42, sizeAttenuation: true,
-    vertexColors: true, transparent: true, opacity: .88, depthWrite: false, alphaTest: .012,
+    vertexColors: true, transparent: true, opacity: .62, depthWrite: false, alphaTest: .012,
   })));
 
   const sunRoot = new THREE.Group();
   scene.add(sunRoot);
   const sun = new THREE.Mesh(new THREE.SphereGeometry(1.5, 40, 28), new THREE.MeshStandardMaterial({
-    color: 0xf0d7af, emissive: 0xe2a86a, emissiveIntensity: 1.55, roughness: .55,
+    color: 0xbacbff, emissive: 0x7187df, emissiveIntensity: .8, roughness: .7,
   }));
   sunRoot.add(sun);
   const sunCorona = new THREE.Mesh(new THREE.SphereGeometry(1.86, 36, 24), new THREE.MeshBasicMaterial({
-    color: 0xffc982, transparent: true, opacity: .14, side: THREE.BackSide, blending: THREE.AdditiveBlending, depthWrite: false,
+    color: 0x94aaff, transparent: true, opacity: .07, side: THREE.BackSide, blending: THREE.AdditiveBlending, depthWrite: false,
   }));
   sunRoot.add(sunCorona);
   const sunHalo = new THREE.Mesh(new THREE.TorusGeometry(2.2, .035, 8, 112), new THREE.MeshBasicMaterial({
-    color: 0xffd59c, transparent: true, opacity: .44, blending: THREE.AdditiveBlending,
+    color: 0xb7caff, transparent: true, opacity: .2, blending: THREE.AdditiveBlending,
   }));
   sunHalo.rotation.x = Math.PI / 2.7;
   sunRoot.add(sunHalo);
+  sunRoot.scale.setScalar(.62);
 
   const blackholeRoot = new THREE.Group();
-  blackholeRoot.position.set(mobile ? 5 : 40, mobile ? -8 : -1.2, mobile ? 33 : 28);
+  blackholeRoot.position.set(mobile ? 9 : 42, mobile ? -15 : -8, mobile ? 30 : 8);
+  blackholeRoot.scale.setScalar(.72);
   scene.add(blackholeRoot);
   const blackhole = new THREE.Mesh(new THREE.SphereGeometry(1.42, 36, 28), new THREE.MeshBasicMaterial({ color: 0x02030a }));
   blackhole.userData.kind = 'blackhole';
   blackholeRoot.add(blackhole);
+  const blackholeIllustration = new THREE.Sprite(new THREE.SpriteMaterial({
+    map: similarityHoleTexture, color: 0xffffff, transparent: true, opacity: .88,
+    alphaTest: .012, depthWrite: false, depthTest: false, toneMapped: false,
+  }));
+  blackholeIllustration.scale.set(8.6, 8.6, 1);
+  blackholeIllustration.renderOrder = 4;
+  blackholeRoot.add(blackholeIllustration);
   const disk = new THREE.Mesh(new THREE.RingGeometry(1.65, 3.45, 96), new THREE.MeshBasicMaterial({
-    color: 0x8f75d4, side: THREE.DoubleSide, transparent: true, opacity: .34, blending: THREE.AdditiveBlending, depthWrite: false,
+    color: 0x8f75d4, side: THREE.DoubleSide, transparent: true, opacity: .22, blending: THREE.AdditiveBlending, depthWrite: false,
   }));
   disk.rotation.x = Math.PI / 2.25;
   disk.scale.set(1.28, .48, 1);
   blackholeRoot.add(disk);
   const lensA = new THREE.Mesh(new THREE.TorusGeometry(2.27, .13, 12, 96), new THREE.MeshBasicMaterial({
-    color: 0xe2a8ed, transparent: true, opacity: .9, blending: THREE.AdditiveBlending, depthWrite: false,
+    color: 0xe2a8ed, transparent: true, opacity: .68, blending: THREE.AdditiveBlending, depthWrite: false,
   }));
   lensA.rotation.set(.72, .12, -.35);
   blackholeRoot.add(lensA);
   const lensB = new THREE.Mesh(new THREE.TorusGeometry(2.94, .055, 8, 110), new THREE.MeshBasicMaterial({
-    color: 0xe9c18b, transparent: true, opacity: .75, blending: THREE.AdditiveBlending, depthWrite: false,
+    color: 0xe9c18b, transparent: true, opacity: .58, blending: THREE.AdditiveBlending, depthWrite: false,
   }));
   lensB.rotation.set(.91, -.2, .4);
   blackholeRoot.add(lensB);
@@ -364,7 +382,12 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   microRoot.renderOrder = 18;
   const microMaterials = [];
   const microOrbitMaterials = [];
-  const microNucleus = new THREE.Mesh(new THREE.SphereGeometry(.48, 18, 12), new THREE.MeshBasicMaterial({ color: 0xffd39c, transparent: true, opacity: 0, toneMapped: false }));
+  const microNucleus = new THREE.Mesh(new THREE.SphereGeometry(.48, 48, 36), new THREE.ShaderMaterial({
+    uniforms: { uTime: { value: 0 }, uOpacity: { value: 0 } },
+    vertexShader: SUN_VERTEX,
+    fragmentShader: SUN_FRAGMENT.replace('gl_FragColor=vec4(c,1.);', 'gl_FragColor=vec4(c,uOpacity);'),
+    transparent: true, depthWrite: false, toneMapped: false,
+  }));
   const microNucleusGlow = new THREE.Sprite(new THREE.SpriteMaterial({ map: coreGlowTexture, color: 0xffbd78, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false }));
   microNucleusGlow.scale.setScalar(2.25);
   microRoot.add(microNucleusGlow, microNucleus);
@@ -452,27 +475,71 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   function hashAngle(text) {
     return (hashText(text) % 100000) / 100000 * Math.PI * 2;
   }
-  function groupOrbitRadius(index, groupCount) {
-    return 10 + index * (72 / Math.max(1, groupCount - 1));
+function hashUnit(text) {
+  return hashText(text) / 4294967295;
+}
+  function groupOrbitLayout(data, index, groupCount) {
+  const progress = (index + .5) / Math.max(1, groupCount);
+  const minRadius = mobile ? 15 : 22;
+  const maxRadius = mobile ? 36 : 70;
+  const radius = Math.sqrt(minRadius * minRadius + progress * (maxRadius * maxRadius - minRadius * minRadius));
+  const angleJitter = (hashUnit(data.id + ':orbit') - .5) * .32;
+  const elevation = (hashUnit(data.id + ':depth') - .5) * (mobile ? 18 : 34);
+  return { radius, angle: index * GOLDEN_ANGLE + angleJitter, elevation };
   }
-  function makeGalaxyDisc(data, palette, starCount = 216) {
+  function groupCoordinates(angle, radius) {
+    return {
+      x: Math.cos(angle) * radius * (mobile ? .52 : 1),
+      z: Math.sin(angle) * radius * (mobile ? 1 : .9),
+    };
+  }
+  function galaxyProfile(data) {
+    const canonicalProfiles = {
+      'curriculum:middle:중1': 5,
+      'curriculum:middle:중2': 1,
+      'curriculum:middle:중3': 3,
+      'curriculum:high:공통수학1': 0,
+      'curriculum:high:기하': 2,
+    };
+    const variant = canonicalProfiles[data.id] ?? hashText(data.id) % 6;
+    const profiles = [
+      { kind: 'spiral', arms: 2, pitch: 1.04, flattening: .62, bar: .72, cloud: 1.06 },
+      { kind: 'spiral', arms: 3, pitch: 1.56, flattening: .78, bar: .18, cloud: 1.18 },
+      { kind: 'barred', arms: 4, pitch: .76, flattening: .48, bar: 1.08, cloud: .88 },
+      { kind: 'elliptical', arms: 0, pitch: .38, flattening: .56, bar: .08, cloud: .92 },
+      { kind: 'edge-on', arms: 0, pitch: .38, flattening: .14, bar: .04, cloud: .84 },
+      { kind: 'irregular', arms: 0, pitch: .38, flattening: .92, bar: .02, cloud: 1.42 },
+    ];
+    return { ...profiles[variant], variant, turn: (hashText(data.id + ':tilt') % 1000) / 1000 * Math.PI };
+  }
+  function makeGalaxyDisc(data, palette, profileOrStarCount = 216, legacyStarCount = 216) {
+    const legacyCount = typeof profileOrStarCount === 'number';
+    const profile = legacyCount ? galaxyProfile(data) : (profileOrStarCount || galaxyProfile(data));
+    const starCount = legacyCount ? profileOrStarCount : legacyStarCount;
     const random = randomFrom(hashText(data.id) ^ 0x61c88647);
     const positions = new Float32Array(starCount * 3);
     const colors = new Float32Array(starCount * 3);
     const baseColor = new THREE.Color(ORBIT_COLORS[palette]);
-    const white = new THREE.Color(0xe5f4ff);
+    const white = new THREE.Color(0xd4e8ff);
     const warm = new THREE.Color(0xffd2a1);
     for (let i = 0; i < starCount; i += 1) {
-      const arm = i % 4;
+      const arm = profile.arms ? i % profile.arms : 0;
       const spread = Math.sqrt(random());
       const core = i % 5 === 0;
-      const radius = core ? Math.sqrt(random()) * .72 : .22 + spread * 1.78;
-      const angle = arm * Math.PI / 2 + radius * 1.62 + (random() - .5) * (.26 + radius * .035);
-      positions[i * 3] = Math.cos(angle) * radius;
-      positions[i * 3 + 1] = (random() - .5) * (.1 + radius * .035);
-      positions[i * 3 + 2] = Math.sin(angle) * radius * .7;
-      const color = baseColor.clone().lerp(white, Math.max(.24, (1 - spread) * .68 + random() * .18));
-      if (radius < .85 && random() > .45) color.lerp(warm, .14);
+      const radius = core ? Math.sqrt(random()) * (.55 + profile.bar * .18) : .18 + spread * 1.82;
+      const angle = profile.arms
+        ? arm * Math.PI * 2 / profile.arms + radius * profile.pitch + (random() - .5) * (.12 + radius * .06)
+        : random() * Math.PI * 2;
+      const barOffset = profile.bar * Math.sin(angle * 2) * Math.exp(-radius * 1.35);
+      const irregularity = profile.kind === 'irregular'
+        ? 1 + .24 * Math.sin(angle * 5 + radius * 2.4) + .12 * Math.cos(angle * 3 - radius * 4.2)
+        : 1;
+      const ellipticalRadius = radius * (.68 + spread * .32) * irregularity;
+      positions[i * 3] = Math.cos(angle) * ellipticalRadius + barOffset;
+      positions[i * 3 + 1] = (random() - .5) * (.07 + radius * (1 - profile.flattening) * .14);
+      positions[i * 3 + 2] = Math.sin(angle) * ellipticalRadius * profile.flattening;
+      const color = baseColor.clone().lerp(white, Math.max(.12, (1 - spread) * .38 + random() * .12));
+      if (radius < .85 && random() > .3) color.lerp(warm, .28);
       color.toArray(colors, i * 3);
     }
     const geometry = new THREE.BufferGeometry();
@@ -480,18 +547,19 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
     return geometry;
   }
-  function makeNebulaCloud(data, palette) {
+  function makeNebulaCloud(data, palette, profile) {
     const random = randomFrom(hashText(data.id) ^ 0x9e3779b9);
     const count = 54;
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
     const baseColor = new THREE.Color(ORBIT_COLORS[palette]);
     for (let i = 0; i < count; i += 1) {
-      const radius = Math.sqrt(random()) * 1.95;
-      const angle = random() * Math.PI * 2;
+      const radius = Math.sqrt(random()) * 1.95 * profile.cloud;
+      const arm = profile.arms ? Math.floor(random() * profile.arms) * Math.PI * 2 / profile.arms : random() * Math.PI * 2;
+      const angle = profile.arms ? arm + radius * profile.pitch + (random() - .5) * .85 : random() * Math.PI * 2;
       positions[i * 3] = Math.cos(angle) * radius;
-      positions[i * 3 + 1] = (random() - .5) * .42;
-      positions[i * 3 + 2] = Math.sin(angle) * radius * .72;
+      positions[i * 3 + 1] = (random() - .5) * (.18 + (1 - profile.flattening) * .4);
+      positions[i * 3 + 2] = Math.sin(angle) * radius * profile.flattening;
       const color = baseColor.clone().lerp(new THREE.Color(0xa9bfff), random() * .42);
       color.toArray(colors, i * 3);
     }
@@ -503,53 +571,61 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   function createGroupNode(data, index, reusing, groupCount) {
     const palette = hashText(data.id) % ORBIT_COLORS.length;
     const color = ORBIT_COLORS[palette];
+    const profile = galaxyProfile(data);
     const root = reusing || new THREE.Group();
     if (reusing) {
       root.clear();
     }
     root.name = data.id;
-    const orbitRadius = groupOrbitRadius(index, groupCount);
-    const hubScale = data.mode === 'school' ? 1 : data.mode === 'grade' ? .88 : .78;
+    const layout = groupOrbitLayout(data, index, groupCount);
+    const orbitRadius = layout.radius;
+    const examCountFraction = Math.min(1, Math.max(1, Number(data.count) || 1) / 120);
+    const majorGalaxyScale = .92 + Math.pow(examCountFraction, .58) * 1.85;
+    const hubScale = .76 + Math.pow(examCountFraction, .62) * .38;
+    const inclination = .12 + hashUnit(data.id + ':inclination') * .44;
     const hub = new THREE.Group();
     root.add(hub);
     hub.scale.setScalar(hubScale);
-    const cloud = new THREE.Points(makeNebulaCloud(data, palette), new THREE.PointsMaterial({
-      map: galaxyNebulaTexture, vertexColors: true, size: 1.72, sizeAttenuation: true,
-      transparent: true, opacity: .12, blending: THREE.AdditiveBlending, depthWrite: false, alphaTest: .01,
+    const cloud = new THREE.Points(makeNebulaCloud(data, palette, profile), new THREE.PointsMaterial({
+      map: galaxyNebulaTexture, vertexColors: true, size: 1.9 + profile.cloud * .2, sizeAttenuation: true,
+      transparent: true, opacity: .19 + profile.cloud * .045, blending: THREE.AdditiveBlending, depthWrite: false, alphaTest: .01,
     }));
+    cloud.scale.setScalar(majorGalaxyScale);
     cloud.rotation.x = -.18;
     hub.add(cloud);
     const nebulaBillboard = new THREE.Sprite(new THREE.SpriteMaterial({
       map: galaxyNebulaTexture, color: new THREE.Color(color).lerp(new THREE.Color(0x9fb8ff), .38),
-      transparent: true, opacity: .22, blending: THREE.NormalBlending,
+      transparent: true, opacity: .4, blending: THREE.NormalBlending,
       depthWrite: false, depthTest: true,
     }));
-    nebulaBillboard.scale.set(6.8, 4.1, 1);
+    nebulaBillboard.scale.set((13 + profile.cloud * 3.1) * majorGalaxyScale, (8.6 + profile.cloud * 1.8) * majorGalaxyScale, 1);
     nebulaBillboard.position.y = -.08;
     hub.add(nebulaBillboard);
-    const galaxy = new THREE.Points(makeGalaxyDisc(data, palette), new THREE.PointsMaterial({
-      map: sharedStarSpriteTexture, vertexColors: true, size: .22, sizeAttenuation: true,
-      transparent: true, opacity: .95, alphaTest: .018,
-      blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false,
+    const galaxy = new THREE.Points(makeGalaxyDisc(data, palette, profile, 520), new THREE.PointsMaterial({
+      map: sharedStarSpriteTexture, vertexColors: true, size: .46 + profile.cloud * .07, sizeAttenuation: true,
+      transparent: true, opacity: .82, alphaTest: .018,
+      blending: THREE.NormalBlending, depthWrite: false, toneMapped: false,
     }));
     galaxy.rotation.x = -.18;
+    galaxy.rotation.y = profile.turn;
+    galaxy.scale.set((5.15 + profile.bar * .34) * majorGalaxyScale, 1.28 * majorGalaxyScale, (profile.kind === 'edge-on' ? .72 : 3.72 + profile.flattening * .78) * majorGalaxyScale);
     hub.add(galaxy);
     const nucleusGlow = new THREE.Sprite(new THREE.SpriteMaterial({
       map: sharedCoreGlowTexture, color: 0xffe2b7, transparent: true, opacity: .42,
       blending: THREE.AdditiveBlending, depthWrite: false, depthTest: true, toneMapped: false,
     }));
-    nucleusGlow.scale.set(1.82, 1.48, 1);
+    nucleusGlow.scale.set(2.1 + profile.bar * .44, 1.7 + profile.bar * .28, 1);
     hub.add(nucleusGlow);
     const nucleus = new THREE.Mesh(sharedDataStarGeometry, new THREE.MeshBasicMaterial({ color: 0xfff4dc, toneMapped: false }));
-    nucleus.scale.setScalar(.82);
+    nucleus.scale.setScalar(1.12);
     hub.add(nucleus);
     const globe = new THREE.Mesh(sharedGroupPickGeometry, sharedGroupPickMaterial);
     globe.userData.kind = 'group';
     globe.userData.groupId = data.id;
     hub.add(globe);
     const shellMaterials = [];
-    for (let shell = 0; shell < 3; shell += 1) {
-      const material = new THREE.LineBasicMaterial({ color, transparent: true, opacity: .045 - shell * .006, depthWrite: false });
+    for (let shell = 0; shell < 1; shell += 1) {
+      const material = new THREE.LineBasicMaterial({ color, transparent: true, opacity: .015, depthWrite: false });
       shellMaterials.push(material);
       const orbit = makeOrbit(2.8 + shell * 1.72, .8 + shell * .035, material, 80);
       orbit.rotation.x = .18 + shell * .21 + index * .035;
@@ -559,19 +635,19 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     const orbitPath = makeOrbit(orbitRadius, .9 + index % 4 * .035, new THREE.LineBasicMaterial({
       color, transparent: true, opacity: .075, depthWrite: false,
     }), 128);
-    orbitPath.rotation.x = .08 + (index % 5) * .045;
+    orbitPath.rotation.x = inclination;
     orbitPath.rotation.z = (index % 2 ? -.1 : .07) + (index % 3) * .022;
     orbitPath.position.y = (index % 3 - 1) * .22;
     scene.add(orbitPath);
     const animateLayout = running && !matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const targetAngle = index * GOLDEN_ANGLE;
+    const targetAngle = layout.angle;
     const initialAngle = animateLayout ? hashAngle(data.id) : targetAngle;
     const transitionStart = performance.now();
     return {
-      id: data.id, name: data.name, mode: data.mode, count: data.count, root, hub, globe, galaxy, cloud, nebulaBillboard, nucleusGlow,
-      orbitPath, palette, color, index, orbitRadius, targetRadius: orbitRadius,
+      id: data.id, name: data.name, mode: data.mode, count: data.count, root, hub, hubBaseScale: hubScale, globe, galaxy, cloud, nebulaBillboard, nucleusGlow, profile,
+      orbitPath, palette, color, index, elevation: layout.elevation, orbitRadius, targetRadius: orbitRadius,
       angle: initialAngle, layoutAngle: initialAngle, layoutFromAngle: initialAngle,
-      targetAngle, layoutTransitionStart: transitionStart, layoutTransitionDuration: animateLayout ? 900 : 0, orbitPhase: 0,
+      targetAngle, layoutTransitionStart: transitionStart, layoutTransitionDuration: animateLayout ? 900 : 0, orbitPhase: 0, inclination,
       speed: .034 + (hashText(data.id) % 7) * .006,
       shellMaterials, drawnFiles: data.files.slice(),
     };
@@ -774,8 +850,9 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
         next.layoutAngle = group.layoutAngle;
         next.orbitPhase = group.orbitPhase;
         next.orbitRadius = group.orbitRadius;
-        next.targetRadius = groupOrbitRadius(index, nextGroups.length);
-        const targetAngle = index * GOLDEN_ANGLE;
+        const layout = groupOrbitLayout(data, index, nextGroups.length);
+        next.targetRadius = layout.radius;
+        const targetAngle = layout.angle;
         const animateLayout = running && !matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (Math.abs(smoothAngle(group.targetAngle, targetAngle, 1) - group.targetAngle) < .0001) {
           next.layoutFromAngle = group.layoutFromAngle;
@@ -795,7 +872,9 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
         next.speed = group.speed;
       }
       groupRoot.add(next.root);
-      next.root.position.set(Math.cos(next.angle) * next.orbitRadius, Math.sin(next.angle * .72) * 1.25, Math.sin(next.angle) * next.orbitRadius * .9);
+      const coordinates = groupCoordinates(next.angle, next.orbitRadius);
+      const elevation = next.elevation - coordinates.z * Math.sin(next.inclination) * .28;
+      next.root.position.set(coordinates.x, elevation, coordinates.z);
       newGroupMap.set(data.id, next);
     }
     for (const group of unused) clearGroupNode(group);
@@ -955,8 +1034,9 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       orbitalFrame.rotation.y = simTime * .0028;
       orbitalFrame.rotation.z = Math.sin(simTime * .08) * .012;
     }
-    const frameOpacity = focusedGroupId ? .028 : .095;
+    const frameOpacity = focusedGroupId ? .014 : .002;
     for (const material of frameMaterials) material.opacity = frameOpacity;
+    sunRoot.visible = scaleMode === 'micro';
     const desiredScaleMix = scaleMode === 'micro' ? 1 : 0;
     scaleMix += (desiredScaleMix - scaleMix) * Math.min(1, dt * 4.8);
     microRoot.visible = scaleMix > .002;
@@ -967,7 +1047,8 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       else if (anchorGroup) anchorGroup.globe.getWorldPosition(microAnchor);
       microRoot.position.copy(microAnchor);
       microRoot.scale.setScalar(.72 + scaleMix * .28);
-      microNucleus.material.opacity = .88 * scaleMix;
+      microNucleus.material.uniforms.uOpacity.value = .88 * scaleMix;
+      if (animate) microNucleus.material.uniforms.uTime.value += elapsed;
       microNucleusGlow.material.opacity = .42 * scaleMix;
       for (const material of microOrbitMaterials) material.opacity = .36 * scaleMix;
       for (const material of microMaterials) {
@@ -990,21 +1071,23 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       if (animate) group.orbitPhase += group.speed * elapsed;
       group.angle = group.layoutAngle + group.orbitPhase;
       const emphasized = group.id === focusedGroupId;
-      const nebulaVisibility = smoothStep(18, 46, camera.position.distanceTo(group.root.position));
+      group.hub.scale.setScalar(group.hubBaseScale);
       // Keep the overview's shared orbital frame legible at a glance. The
       // focused route still wins by a wide margin, while the quiet paths give
       // the wide shot a stable sense of scale and depth.
-      group.orbitPath.material.opacity = emphasized ? .42 : focusedGroupId ? .008 : .022;
+      group.orbitPath.material.opacity = emphasized ? .42 : focusedGroupId ? .002 : .002;
       for (let i = 0; i < group.shellMaterials.length; i += 1) {
-        group.shellMaterials[i].opacity = emphasized ? .34 - i * .035 : focusedGroupId ? .014 - i * .002 : .022 - i * .003;
+        group.shellMaterials[i].opacity = emphasized ? .34 - i * .035 : focusedGroupId ? .002 : .003;
       }
-      group.galaxy.material.opacity = emphasized ? 1 : .92;
-      group.cloud.material.opacity = (emphasized ? .2 : .13) * nebulaVisibility;
-      group.nebulaBillboard.material.opacity = .22 * nebulaVisibility;
+      const quietSchoolMode = group.mode === 'school';
+      group.galaxy.material.opacity = emphasized ? .92 : quietSchoolMode ? .54 : .8;
+      group.cloud.material.opacity = emphasized ? .2 : quietSchoolMode ? .035 : .16;
+      group.nebulaBillboard.material.opacity = emphasized ? .24 : quietSchoolMode ? .045 : .2;
       group.nucleusGlow.material.opacity = emphasized ? .52 : .34;
-      const x = Math.cos(group.angle) * group.orbitRadius;
-      const z = Math.sin(group.angle) * group.orbitRadius * .9;
-      const y = Math.sin(group.angle * .72) * 1.25;
+      const coordinates = groupCoordinates(group.angle, group.orbitRadius);
+      const x = coordinates.x;
+      const z = coordinates.z;
+      const y = group.elevation - z * Math.sin(group.inclination) * .28;
       group.root.position.set(x, y, z);
       group.hub.rotation.y = simTime * .14;
       group.orbitPath.scale.setScalar(group.orbitRadius / Math.max(group.targetRadius, 1));
@@ -1062,7 +1145,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       entity.selectedMix += (selected - entity.selectedMix) * Math.min(1, dt * 10);
       const nearGlow = 1 - smoothStep(26, 52, distance);
       const globeScale = entity.isJupiter
-        ? .96 * (1 + 4 * Math.max(nearGlow, entity.selectedMix))
+        ? .96 * (1 + 1.0 * Math.max(nearGlow, entity.selectedMix))
         : .96 * (1 + entity.selectedMix * .045);
       entity.star.scale.setScalar(globeScale * entity.size);
       entity.glow.scale.setScalar((.7 + nearGlow * .16) * entity.size * (1 + entity.selectedMix * .23));
@@ -1216,7 +1299,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     focusedGroupId = '';
     scaleMode = 'macro';
     onScale?.(scaleMode);
-    travelTo(new THREE.Vector3(), 92, 0);
+    travelTo(new THREE.Vector3(), mobile ? 66 : 90, 0);
   }
   function setScale(mode) {
     const next = ['macro', 'planet', 'micro'].includes(mode) ? mode : 'macro';
@@ -1232,7 +1315,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     onScale?.(scaleMode);
     if (next === 'macro') {
       focusedGroupId = '';
-      travelTo(new THREE.Vector3(), 92, 0);
+      travelTo(new THREE.Vector3(), mobile ? 78 : 104, 0);
     } else if (next === 'micro') {
       microAnchor.copy(target);
       travelTo(target, 8.2, 1.25);
