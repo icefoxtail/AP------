@@ -347,10 +347,7 @@
             );
         }
       }
-      let hasNeutralMiddleRange = false;
       for (const range of exam.courseRanges || []) {
-        if (/^M[123]$/.test(text(range.courseCode)))
-          hasNeutralMiddleRange = true;
         const middleKeys = middleCourseRange(range).filter((key) =>
           curriculaByCourse.has(key),
         );
@@ -369,7 +366,7 @@
         if (curriculum && candidates.size && !exam.curriculums?.length)
           curriculumKeys.add(curriculum);
       }
-      if (!curriculumKeys.size && hasNeutralMiddleRange) {
+      if (!curriculumKeys.size) {
         const curriculum = middleCurriculumFromYear(
           exam.effectiveBrowseGrade || exam.grade,
           exam.year,
