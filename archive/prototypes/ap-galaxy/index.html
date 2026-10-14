@@ -4,48 +4,60 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#050916">
-  <title>AP Archive · Orbit</title>
+  <title>아카이브 유니버스 · 공개 시험지 탐색</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./orbit.css">
+  <link rel="stylesheet" href="./orbit.css?v=20261014-curriculum-orbit-1">
 </head>
 <body>
-  <main class="universe" id="universe" aria-label="실시간 3차원 학교 우주 탐색">
+  <main class="universe" id="universe" aria-label="학년과 과정 은하를 탐색하는 공개 시험지 우주">
     <canvas id="space" aria-label="마우스 드래그 또는 터치로 회전하고 확대하는 3차원 우주 장면"></canvas>
+    <svg class="cosmic-web-ambience" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M-40 420 C110 390 120 170 250 160 S390 320 500 290 S660 110 760 160 S860 420 1040 350"/>
+      <path d="M80 650 C130 490 270 490 350 370 S430 100 550 70 S720 190 790 300 S910 510 1030 540"/>
+      <path d="M-20 160 C140 60 240 250 340 260 S490 190 590 280 S760 470 860 430 S950 280 1030 260"/>
+      <path d="M180 -30 C220 100 300 180 410 190 S610 130 680 250 S710 390 850 470"/>
+      <circle cx="250" cy="160" r="3"/><circle cx="500" cy="290" r="2.4"/><circle cx="760" cy="160" r="3"/>
+      <circle cx="350" cy="370" r="2.2"/><circle cx="550" cy="70" r="2.8"/><circle cx="790" cy="300" r="2.4"/>
+      <circle cx="340" cy="260" r="2.5"/><circle cx="590" cy="280" r="2.2"/><circle cx="860" cy="430" r="3"/>
+    </svg>
     <div class="world-fallback" id="worldFallback" role="status" aria-live="polite" hidden>
       <strong>3D 우주를 시작할 수 없습니다.</strong>
       <span>검색, 목록, 문항 미리보기는 계속 이용할 수 있습니다.</span>
+      <button id="retryWorld" type="button">다시 시도</button>
     </div>
 
     <header class="topbar">
-      <a class="wordmark" href="./" aria-label="AP Archive Orbit 홈">
+      <a class="wordmark" href="./" aria-label="아카이브 유니버스 홈">
         <span class="sigil" aria-hidden="true">A</span>
-        <span><b>AP ARCHIVE</b><small>ORBITAL ATLAS</small></span>
+        <span><b>아카이브 유니버스</b><small>AP ARCHIVE · 우주 탐색</small></span>
       </a>
       <div class="search-wrap">
-        <label class="sr-only" for="search">학교, 학년, 과목, 연도 검색</label>
+        <label class="sr-only" for="search">학교, 학년, 과정, 과목, 연도 검색</label>
         <span class="search-icon" aria-hidden="true">⌕</span>
-        <input id="search" type="search" placeholder="학교 · 학년 · 과목 · 연도" autocomplete="off">
+        <input id="search" type="search" placeholder="학교 · 학년 · 과정 · 연도 검색" autocomplete="off">
         <kbd>/</kbd>
       </div>
-      <div class="top-actions">
-        <button class="quiet-button" id="filterToggle" type="button" aria-expanded="false" aria-controls="filterPanel"><span aria-hidden="true">☷</span> 필터</button>
+        <div class="top-actions">
+          <button class="quiet-button" id="filterToggle" type="button" aria-expanded="false" aria-controls="filterPanel"><span aria-hidden="true">☷</span><span class="desktop-filter-label">필터</span><span class="mobile-filter-label">필터</span></button>
         <button class="quiet-button" id="viewToggle" type="button" aria-pressed="false"><span aria-hidden="true">☷</span> 목록</button>
       </div>
     </header>
 
     <section class="filter-panel glass" id="filterPanel" aria-label="우주 자료 필터" hidden>
-      <div class="filter-panel-head"><div><strong>우주 좌표 필터</strong><span>순서를 정하지 말고 자유롭게 조합하세요.</span></div><button class="icon-button" id="closeFilters" type="button" aria-label="필터 닫기">×</button></div>
+      <div class="filter-panel-head"><div><strong>시험지 필터</strong><span>학년·과정, 연도, 시험 종류, 학교를 어떤 순서로든 고르세요.</span></div><button class="icon-button" id="closeFilters" type="button" aria-label="필터 닫기">×</button></div>
       <div class="filter-grid">
         <label>학년<select id="gradeFilter"><option value="">전체 학년</option></select></label>
-        <label>학교<select id="schoolFilter"><option value="">전체 학교</option></select></label>
+        <label>과목·과정<select id="subjectFilter"><option value="">전체 과목·과정</option></select></label>
+        <label>시험<select id="termFilter"><option value="">전체 시험</option></select></label>
         <label>연도<select id="yearFilter"><option value="">전체 연도</option></select></label>
-        <label>단원 L2<select id="unitFilter"><option value="">전체 공개 L2 단원</option></select></label>
+        <label>학교<select id="schoolFilter"><option value="">전체 학교</option></select></label>
+        <label>단원<select id="unitFilter"><option value="">전체 공개 L2 단원</option></select></label>
       </div>
       <div class="filter-footer"><span id="filterSummary">조건을 조합하고 언제든 초기화할 수 있습니다.</span><button class="text-button" id="clearFilters" type="button">조건 초기화</button></div>
     </section>
 
-    <section class="facet-nav glass" id="facetNav" aria-label="자료 탐색 기준 은하">
-      <div class="facet-nav-head"><div><strong>자료 탐색 은하</strong><span id="facetSummary">현재 조건을 조합하세요.</span></div><button class="text-button" id="clearFacetSelections" type="button">전체 초기화</button></div>
+    <section class="facet-nav glass" id="facetNav" aria-label="시험지 검색 조건">
+      <div class="facet-nav-head"><div><strong>빠른 조건 선택</strong><span id="facetSummary">학년·과정, 과목, 시험, 연도, 학교를 자유롭게 조합하세요.</span></div><button class="text-button" id="clearFacetSelections" type="button">전체 초기화</button></div>
       <div class="facet-row" data-facet-row="grade"><b>학년</b><div class="facet-options" id="facetGrade"></div></div>
       <div class="facet-row" data-facet-row="subject"><b>&#xACFC;&#xBAA9;</b><div class="facet-options" id="facetSubject"></div></div>
       <div class="facet-row" data-facet-row="term"><b>시험</b><div class="facet-options" id="facetTerm"></div></div>
@@ -55,32 +67,34 @@
     </section>
 
     <section class="scene-heading" aria-live="polite">
-      <div class="eyebrow"><span class="live-dot"></span>ARCHIVE · LIVE ORBITS</div>
-      <h1>자료가 별이 되는 곳,<br><em>아카이브의 작은 우주</em></h1>
-      <p id="sceneInstruction">행성은 자료를 묶는 중심입니다. 학교·학년·단원 은하를 바꿔 같은 원본 노드의 궤도를 둘러보세요.</p>
+      <div class="eyebrow"><span class="live-dot"></span>ARCHIVE · 우주 탐색</div>
+      <h1>중1·중2·중3과 고등 과목의<br><em>은하를 가로지르며 찾아보세요</em></h1>
+      <p id="sceneInstruction">과정 은하에서 시작하거나 학교·연도·시험 조건을 원하는 순서로 조합하세요.</p>
       <div class="catalog-status" id="catalogStatus">공개 catalog를 읽는 중…</div>
     </section>
 
+    <details class="secondary-menu" id="secondaryMenu">
+    <summary>지도 설정</summary>
     <aside class="atlas-panel glass" id="atlasPanel" aria-label="Archive atlas overview">
       <div class="atlas-panel-head">
-        <span class="eyebrow">AP ARCHIVE / ORBITAL ATLAS</span>
+          <span class="eyebrow">아카이브 유니버스</span>
         <span class="atlas-head-actions"><span class="atlas-live"><span class="live-dot"></span>LIVE</span><button class="atlas-collapse" id="atlasCollapse" type="button" aria-expanded="true" aria-controls="atlasPanelBody" aria-label="Collapse atlas overview">−</button></span>
       </div>
       <div class="atlas-panel-body" id="atlasPanelBody">
         <div class="atlas-panel-copy">
-          <h2>Find your next<br><em>study orbit.</em></h2>
-          <p>Search the catalog, choose a school orbit, then open the original problem with its answer and solution.</p>
+          <h2>우주를 둘러보고<br><em>시험지를 펼쳐보세요.</em></h2>
+      <p>중1·중2·중3과 catalog의 고등 과정을 넓은 은하망에서 살펴보세요. 학년·학교·연도·시험·단원은 언제든 함께 골라 원본 문제와 해설을 확인할 수 있습니다.</p>
         </div>
-        <div class="atlas-metrics" aria-label="Catalog metrics">
-          <div><b id="atlasExamCount">0</b><span>EXAMS</span></div>
-          <div><b id="atlasGroupCount">0</b><span>ORBITS</span></div>
-          <div><b id="atlasDetailCount">0</b><span>DETAILS</span></div>
+        <div class="atlas-metrics" aria-label="공개 자료 수">
+          <div><b id="atlasExamCount">0</b><span>시험지</span></div>
+          <div><b id="atlasGroupCount">0</b><span id="atlasGroupLabel">과정 은하</span></div>
+          <div><b id="atlasDetailCount">0</b><span>상세 별</span></div>
         </div>
         <div class="atlas-actions">
-          <button class="atlas-primary" id="atlasExplore" type="button">Start with search</button>
-          <button class="atlas-secondary" id="atlasOverview" type="button">Reset view</button>
+          <button class="atlas-primary" id="atlasExplore" type="button">조건으로 탐색</button>
+          <button class="atlas-secondary" id="atlasOverview" type="button">전체 보기</button>
         </div>
-        <div class="atlas-route" aria-hidden="true"><span class="route-node active"></span><span>INDEX</span><i></i><span class="route-node"></span><span>ORBIT</span><i></i><span class="route-node"></span><span>DOCUMENT</span></div>
+        <div class="atlas-route" aria-hidden="true"><span class="route-node active"></span><span>검색</span><i></i><span class="route-node"></span><span>은하</span><i></i><span class="route-node"></span><span>시험지</span></div>
       </div>
     </aside>
 
@@ -92,28 +106,32 @@
     </div>
     <div class="scene-hud">
       <div class="hud-left">
-        <div class="group-mode-switch" id="groupModes" role="group" aria-label="자료를 묶는 기준">
-          <button type="button" data-group-mode="school" aria-pressed="true">학교 은하</button>
-          <button type="button" data-group-mode="grade" aria-pressed="false">학년 성단</button>
-          <button type="button" data-group-mode="unit" aria-pressed="false">단원 성단</button>
+        <div class="group-mode-switch" id="groupModes" role="group" aria-label="우주 자료 보기">
+          <button type="button" data-group-mode="curriculum" aria-pressed="true">학년 · 과목 은하</button>
+          <button type="button" data-group-mode="school" aria-pressed="false">학교 분포</button>
         </div>
         <div class="hud-group">
+          <button class="hud-button" id="overviewButton" type="button" aria-label="전체 은하 보기" title="G 키: 전체 우주 보기"><span aria-hidden="true">↺</span><span>전체 우주</span></button>
           <button class="hud-button" id="instantTravel" type="button" aria-pressed="false" aria-label="즉시 이동 모드">↯ 즉시 이동</button>
           <button class="hud-button" id="motionToggle" type="button" aria-pressed="false"><span class="motion-glyph" aria-hidden="true">Ⅱ</span><span id="motionLabel">공전 일시정지</span></button>
-          <button class="hud-button" id="constellationToggle" type="button" aria-pressed="false"><span aria-hidden="true">✳</span><span id="constellationLabel">L2 별자리</span></button>
         </div>
       </div>
       <div class="scene-hint" id="sceneHint"><span>드래그</span> 회전 <i>·</i> <span>휠 / 두 손가락</span> 확대 <i>·</i> <span>우클릭 / 두 손가락 이동</span> 이동</div>
     </div>
+    <details class="navigation-guide" id="navigationGuide">
+      <summary>탐색 안내</summary>
+      <div><p>과정 은하나 시험지 자료를 선택해 가까이 살펴보세요. 학년·학교·연도·시험·단원 필터는 순서 없이 함께 쓸 수 있습니다.</p><p><kbd>G</kbd> 전체 우주 · <kbd>1</kbd> 과정 은하 · <kbd>2</kbd> 학교 분포 · <kbd>3</kbd> 단원 필터 열기 · <kbd>Esc</kbd> 뒤로</p></div>
+    </details>
     <div class="scale-rail glass" id="scaleRail" role="group" aria-label="Exploration scale">
       <span class="scale-rail-label" id="scaleLabel">MACRO UNIVERSE</span>
-      <button type="button" data-scale-mode="macro" aria-pressed="true">Macro</button>
-      <button type="button" data-scale-mode="planet" aria-pressed="false">Planet</button>
-      <button type="button" data-scale-mode="micro" aria-pressed="false">Micro concept</button>
+      <button type="button" data-scale-mode="macro" aria-pressed="true">우주망</button>
+      <button type="button" data-scale-mode="planet" aria-pressed="false">은하</button>
+      <button type="button" data-scale-mode="micro" aria-pressed="false">문항 개념</button>
     </div>
+    </details>
     <div class="scale-caption" id="scaleCaption" hidden role="status" aria-live="polite"></div>
 
-    <div class="planet-label-layer" id="planetLabels" aria-hidden="true"></div>
+    <div class="planet-label-layer" id="planetLabels" role="group" aria-label="자료 은하"></div>
     <div class="facet-space-label-layer" id="facetSpaceLabels" aria-hidden="true"></div>
     <div class="satellite-label-layer" id="satelliteLabels"></div>
     <div class="blackhole-label-layer" id="blackholeLabels"></div>
@@ -122,21 +140,27 @@
 
     <div class="entry-chip glass" id="focusedChip" hidden>
       <span class="entry-orb" aria-hidden="true"></span>
-      <span><small>선택한 행성</small><b id="focusedSchoolName"></b><small id="focusedSchoolMeta"></small></span>
-      <button id="returnToGalaxy" class="icon-button" type="button" aria-label="전체 우주로 돌아가기">↗</button>
+      <span><small>선택한 은하</small><b id="focusedSchoolName"></b><small id="focusedSchoolMeta"></small></span>
+      <div class="mobile-exam-list" id="mobileExamList" aria-label="선택한 은하의 공개 시험지"></div>
+      <button id="returnToGalaxy" class="icon-button" type="button" aria-label="전체 은하 탐색으로 돌아가기"><span aria-hidden="true">↗</span><span class="return-label">은하 탐색</span></button>
+    </div>
+    <div class="mobile-focus-header" id="mobileFocusHeader" hidden>
+      <span id="mobileFocusBreadcrumb">은하 탐색</span>
+      <button id="mobileFocusBack" type="button" aria-label="은하 탐색으로 돌아가기">← 뒤로</button>
     </div>
 
-    <aside class="drawer glass" id="examDrawer" aria-label="시험지 위성 상세" aria-hidden="true">
+    <aside class="drawer glass" id="examDrawer" aria-label="원본 시험지 자료 상세" aria-hidden="true">
       <div class="drawer-head">
         <button class="back-button" id="drawerBack" type="button"><span aria-hidden="true">←</span> 우주로</button>
-        <span class="drawer-kicker">ORBITAL DOCUMENT</span>
+        <span class="drawer-kicker">SOURCE EXAM</span>
         <button class="icon-button close-drawer" id="closeDrawer" type="button" aria-label="시험지 닫기">×</button>
       </div>
       <div class="exam-identity">
         <div class="paper-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
         <div><span class="eyebrow">EXAM SATELLITE</span><h2 id="examTitle">시험지를 불러오는 중</h2><div class="exam-meta" id="examMeta"></div><code class="exam-source" id="examSource"></code></div>
       </div>
-      <div class="preview-heading"><strong>원본 시험지</strong><span>원본 문제 내용과 순서를 유지합니다.</span><a id="openOriginal" href="#" target="_blank" rel="noopener">새 창 ↗</a></div>
+      <div class="preview-heading"><strong id="previewHeadingTitle">원본 시험지</strong><span id="previewHeadingDescription">원본 문제 내용과 순서를 유지합니다.</span><a id="openOriginal" href="#" target="_blank" rel="noopener">원본 ↗</a><a id="openFullSolution" href="#" target="_blank" rel="noopener">전체 해설 ↗</a></div>
+      <div class="exam-workflow-actions"><a id="composeExam" href="#" target="_blank" rel="noopener">이 시험 문항으로 문제지 구성 <span aria-hidden="true">→</span></a><small>공개 원본 문항을 선택한 뒤 실제 출력 미리보기까지 이어집니다.</small></div>
       <div class="question-toolbar" id="questionToolbar" role="group" aria-label="선택한 문항의 빠른 읽기" hidden>
         <b id="readerQuestionTitle"></b>
         <select id="questionSelect" class="question-select" aria-label="Question selector"></select>
@@ -146,14 +170,20 @@
         <button type="button" id="wholeExam">전체 시험지</button>
         <a id="printOriginal" href="#" target="_blank" rel="noopener">전체 시험지·인쇄 ↗</a>
       </div>
-      <div class="preview-frame"><iframe id="examFrame" title="선택한 원본 시험지 미리보기" loading="lazy"></iframe></div>
+      <div class="preview-frame" aria-busy="false">
+        <div class="preview-load-state" id="previewLoadState" role="status" aria-live="polite" aria-atomic="true" hidden>
+          <span class="preview-load-spinner" aria-hidden="true"></span>
+          <span id="previewLoadMessage">원본 시험지의 문항을 불러오는 중…</span>
+        </div>
+        <iframe id="examFrame" title="선택한 원본 시험지 미리보기" loading="eager"></iframe>
+      </div>
       <p class="drawer-foot">공개 Archive catalog와 기존 원본 미리보기 경로를 사용합니다. 문제 생성·저장·학생 배부는 수행하지 않습니다.</p>
     </aside>
 
-    <aside class="list-panel glass" id="listPanel" aria-hidden="true" aria-label="학교와 시험지 목록">
-      <div class="list-panel-head"><div><span class="eyebrow">ACCESSIBLE INDEX</span><h2>학교와 시험지</h2><p id="listSummary">공개 catalog로 검색 가능한 모든 학교</p></div><button class="icon-button" id="closeList" type="button" aria-label="목록 닫기">×</button></div>
+    <aside class="list-panel glass" id="listPanel" aria-hidden="true" aria-label="catalog 시험지 목록">
+      <div class="list-panel-head"><div><span class="eyebrow">시험지 목록</span><h2>과정별 자료</h2><p id="listSummary">공개 catalog 자료</p></div><button class="icon-button" id="closeList" type="button" aria-label="목록 닫기">×</button></div>
       <div class="list-groups" id="listGroups"></div>
-      <p class="drawer-foot">키보드로 학교와 시험지를 선택할 수 있습니다. 시험지를 고르면 같은 원본 미리보기가 열립니다.</p>
+      <p class="drawer-foot">키보드로 조건과 시험지를 고를 수 있습니다. 선택하면 공개 원본 미리보기가 열립니다.</p>
     </aside>
 
     <div class="toast glass" id="toast" role="status" aria-live="polite"></div>
@@ -161,7 +191,7 @@
   </main>
 
   <script src="../../archive2-core.js"></script>
-  <script src="./orbit-question-reader.js"></script>
-  <script src="./orbit-app.js"></script>
+  <script src="./orbit-question-reader.js?v=20261014-curriculum-orbit-1"></script>
+  <script src="./orbit-app.js?v=20261014-curriculum-orbit-1"></script>
 </body>
 </html>

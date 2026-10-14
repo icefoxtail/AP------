@@ -178,11 +178,11 @@
     }
   }
 
-  async function focus(iframe, row, mode, expected, isCurrent) {
+  async function focus(iframe, row, mode, expected, isCurrent, timeoutMs = 20000) {
     if (!row || !['exam','ans','sol'].includes(mode)) throw new Error('INVALID_QUESTION_MODE');
     if (!expected || !expected.file || !Number.isInteger(expected.loadGeneration) ||
         typeof isCurrent !== 'function') throw new Error('INVALID_ENGINE_SELECTION');
-    const deadline = performance.now() + 20000;
+    const deadline = performance.now() + timeoutMs;
     let readyDocument = null;
     let modeClicked = false;
     while (performance.now() < deadline) {
