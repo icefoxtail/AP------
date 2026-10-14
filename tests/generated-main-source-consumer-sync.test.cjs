@@ -126,14 +126,14 @@ test('Pages release derives the complete source projection atomically without a 
  const registrationStart=release.indexOf('- name: Commit generated Archive registration artifacts');
  const registrationEnd=release.indexOf('\n      - name:',registrationStart+1);
  const registrationStep=registrationStart>=0?release.slice(registrationStart,registrationEnd<0?undefined:registrationEnd):'';
- const stagedPaths=registrationStep.match(/^\\s+git add -- (.+)$/m)?.[1];
+ const stagedPaths=registrationStep.match(/^\s+git add -- (.+)$/m)?.[1];
  const expectedRegistrationPaths='archive/db.js archive/data/question_identity_map.json archive/data/question_metadata.json archive/question-identity.js archive/question-index.js archive/question-index-report.md archive/question-index-audit.md archive/data/archive2-catalog.json archive/data/archive2-crosswalk-inventory.json archive/data/archive2-canonical-input-manifest.json archive/data/archive2-canonical-projection-policy.json archive/data/archive2-item-review-overrides.json archive/data/basic-scope-parent-links.json archive/data/meta-foundation/runtime/*.json';
  assert.ok(registrationStart>=0&&registrationStart<approvedWrite,'registration artifacts are committed before Generated projection compilation');
- assert.match(registrationStep,/if: github.event_name == 'push' && github.ref == 'refs\\/heads\\/main'/);
+ assert.match(registrationStep,/if: github.event_name == 'push' && github.ref == 'refs\/heads\/main'/);
  assert.equal(stagedPaths,expectedRegistrationPaths,'only the existing Archive registration outputs are staged for main');
  assert.match(registrationStep,/git push origin HEAD:main/,'the registered artifacts are read back from main in the Pages run');
  assert.equal((release.match(/git push origin HEAD:main/g)||[]).length,1,'Pages performs only the single whitelisted registration-artifact push');
- assert.doesNotMatch(registrationStep,/generated-lite-consumer|archive\\/generated\\/lite|alive\\/06_EXECUTION/,'Generated projection outputs remain Pages artifacts and do not enter the registration commit');
+ assert.doesNotMatch(registrationStep,/generated-lite-consumer|archive\/generated\/lite|alive\/06_EXECUTION/,'Generated projection outputs remain Pages artifacts and do not enter the registration commit');
  assert.doesNotMatch(release,/gh pr (?:create|merge)/,'the Pages pipeline does not open a bot projection PR');
 });
 
