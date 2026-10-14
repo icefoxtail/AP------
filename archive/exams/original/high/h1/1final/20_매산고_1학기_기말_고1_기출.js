@@ -106,7 +106,7 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "④",
-    "solution": "두 그래프의 교점의 $x$좌표는\n$x^2+2x+5=ax+1$을 만족한다.\n정리하면\n$x^2+(2-a)x+4=0$이다.\n한 점에서 만나므로 이 이차방정식은 중근을 가져 판별식이 $0$이다.\n$(2-a)^2-4\\cdot1\\cdot4=0$,\n$(2-a)^2=16$이므로 $a=6$ 또는 $a=-2$이다.\n$a$는 양수이므로 $a=6$이고, 정답은 ④이다.",
+    "solution": "두 그래프의 교점에서는 두 식의 $y$값이 같으므로\n$x^2+2x+5=ax+1$\n$x^2+(2-a)x+4=0$\n한 점에서 만나려면 교점 방정식이 중근을 가져야 하므로 판별식이 0이다.\n$(2-a)^2-4\\cdot1\\cdot4=0$\n$(2-a)^2=16$\n$2-a=4$ 또는 $2-a=-4$\n$a=-2$ 또는 $a=6$\n문제에서 $a>0$이므로 $a=6$이다. 따라서 정답은 ④이다.",
     "category": "이차함수",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-05",
@@ -207,7 +207,7 @@ window.questionBank = [
       "$4$"
     ],
     "answer": "③",
-    "solution": "두 점 사이의 거리의 제곱을 구하면\n$\\overline{AB}^{\\,2}=(a-1)^2+(1-(a+1))^2$이다.\n$\\overline{AB}=\\sqrt5$이므로\n$(a-1)^2+a^2=5$이다.\n정리하면\n$2a^2-2a-4=0$, 즉 $(a-2)(a+1)=0$이다.\n따라서 $a=2$ 또는 $a=-1$인데, $a>0$이므로 $a=2$이다.\n정답은 ③이다.",
+    "solution": "두 점 사이 거리의 제곱은 $x$좌표 차와 $y$좌표 차의 제곱의 합이다.\n$\\overline{AB}^{\\,2}=(1-a)^2+((a+1)-1)^2$\n$\\overline{AB}=\\sqrt5$이므로 $\\overline{AB}^{\\,2}=5$이다.\n$(a-1)^2+a^2=5$\n$a^2-2a+1+a^2=5$\n$2a^2-2a-4=0$\n$a^2-a-2=0$\n$(a-2)(a+1)=0$\n$a=2$ 또는 $a=-1$\n조건 $a>0$에 맞는 값은 $a=2$이다. 따라서 정답은 ③이다.",
     "category": "두 점 사이의 거리",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-09",
@@ -415,7 +415,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "⑤",
-    "solution": "지름의 양 끝점이 $(0,1)$과 $(4,1)$이므로 원의 중심은 $(2,1)$, 반지름은 $2$이다.\n직선은 $x+y-k=0$으로 쓸 수 있다.\n중심에서 직선까지의 거리는 $\\dfrac{|2+1-k|}{\\sqrt2}=\\dfrac{|3-k|}{\\sqrt2}$이다.\n서로 다른 두 점에서 만나려면 이 거리가 반지름보다 작아야 한다.\n$\\dfrac{|3-k|}{\\sqrt2}<2$이므로\n$3-2\\sqrt2<k<3+2\\sqrt2$이다.\n이 범위의 정수는 $1,2,3,4,5$로 모두 $5$개이다.\n정답은 ⑤이다.",
+    "solution": "지름의 중점이 원의 중심이므로\n$O=\\left(\\frac{0+4}{2},\\frac{1+1}{2}\\right)$\n$O=(2,1)$이다.\n지름의 길이는\n$\\overline{AB}=\\sqrt{(4-0)^2+(1-1)^2}$\n$\\overline{AB}=4$이므로 반지름은 $r=\\frac{AB}{2}=2$이다.\n직선 $y=-x+k$를 $x+y-k=0$으로 쓰면 중심 $O$에서 직선까지의 거리는\n$d=\\frac{|2+1-k|}{\\sqrt{1^2+1^2}}$\n$d=\\frac{|3-k|}{\\sqrt2}$이다.\n원과 직선이 서로 다른 두 점에서 만나려면 중심과 직선 사이 거리가 반지름보다 작아야 한다.\n$\\frac{|3-k|}{\\sqrt2}<2$\n$|3-k|<2\\sqrt2$\n$-2\\sqrt2<3-k<2\\sqrt2$\n$3-2\\sqrt2<k<3+2\\sqrt2$\n$4<8<9$이므로 $2<2\\sqrt2<3$이다.\n따라서 $0<3-2\\sqrt2<1$이고 $5<3+2\\sqrt2<6$이다.\n이 범위에 있는 정수 $k$는 $1,2,3,4,5$로 다섯 개이다. 따라서 정답은 ⑤이다.",
     "category": "원의 방정식",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-11",
@@ -572,7 +572,7 @@ window.questionBank = [
       "$11\\pi$"
     ],
     "answer": "①",
-    "solution": "원을 완전제곱식으로 바꾸면\n$\\left(x+\\dfrac a2\\right)^2+(y-1)^2=\\dfrac{a^2}{4}+2$이다.\n따라서 원 $O$의 중심은 $\\left(-\\dfrac a2,1\\right)$이고, 원점 대칭한 원 $O'$의 중심은 $\\left(\\dfrac a2,-1\\right)$이다.\n두 중심 사이의 거리가 $\\sqrt8$이므로\n$\\sqrt{a^2+4}=\\sqrt8$에서 $a^2=4$이다.\n원의 반지름 제곱은 $\\dfrac{a^2}{4}+2=3$이다.\n따라서 넓이는 $3\\pi$이고, 정답은 ①이다.",
+    "solution": "완전제곱식을 만들면\n$x^2+ax=\\left(x+\\frac a2\\right)^2-\\frac{a^2}{4}$\n$y^2-2y=(y-1)^2-1$\n따라서 원 $O$의 방정식은\n$\\left(x+\\frac a2\\right)^2+(y-1)^2=\\frac{a^2}{4}+2$이다.\n그러므로 중심은 $O\\left(-\\frac a2,1\\right)$이고, 원점 대칭한 원 $O'$의 중심은 $O'\\left(\\frac a2,-1\\right)$이다.\n두 중심의 $x$좌표 차는 $a$이고 $y$좌표 차는 $-2$이므로\n$OO'^2=a^2+(-2)^2$\n$OO'^2=a^2+4$이다.\n$OO'=\\sqrt8$이므로\n$a^2+4=8$\n$a^2=4$\n원의 반지름 제곱은 $\\frac{a^2}{4}+2=3$이다.\n원의 넓이는 $3\\pi$이므로 정답은 ①이다.",
     "category": "원의 방정식",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-12",
@@ -623,7 +623,7 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "②",
-    "solution": "직선 $2x-y+3=0$을 $y=x$에 대하여 대칭이동하면 $x,y$를 서로 바꾸어\n$2y-x+3=0$이 된다.\n원\n$x^2-2x+y^2+ay+a^2-14=0$\n의 중심은 $\\left(1,-\\dfrac a2\\right)$이다.\n반사된 직선이 원을 이등분하므로 원의 중심이 그 직선 위에 있다.\n$2\\left(-\\dfrac a2\\right)-1+3=0$에서 $a=2$이다.\n따라서 $a^2=4$이고, 정답은 ②이다.",
+    "solution": "직선 $y=x$에 대한 대칭이동은 $x$와 $y$를 서로 바꾸는 것이므로\n$2y-x+3=0$이다.\n원 방정식을 완전제곱식으로 바꾸면\n$(x-1)^2+\\left(y+\\frac a2\\right)^2=15-\\frac{3a^2}{4}$이다.\n따라서 원의 중심은 $\\left(1,-\\frac a2\\right)$이다.\n직선이 원을 이등분하려면 원의 중심을 지나야 한다.\n중심을 반사된 직선에 대입하면\n$2\\left(-\\frac a2\\right)-1+3=0$\n$-a+2=0$\n$a=2$\n따라서 $a^2=4$이고 정답은 ②이다.",
     "category": "대칭이동",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-12",
@@ -676,7 +676,7 @@ window.questionBank = [
     ],
     "image": "assets/images/20_매산고_1학기_기말_고1_기출/q14.png",
     "answer": "④",
-    "solution": "원의 중심을 $(u,v)$라 하자. 두 좌표축에 모두 접하려면 중심에서 두 축까지의 거리가 같아야 하므로 $|u|=|v|$이다. 따라서 중심은 $v=u$ 또는 $v=-u$ 위에 있다.\n\n그림의 순서에 따라 중심 좌표는\n$A=(3,3),\\ B=(-\\sqrt3,\\sqrt3),\\ C=(-1,-1),\\ D=(\\sqrt3,-\\sqrt3)$이다.\n포물선과 $y=x$의 교점은 $(3,3),(-1,-1)$이고, 포물선과 $y=-x$의 교점은 $(\\sqrt3,-\\sqrt3),(-\\sqrt3,\\sqrt3)$이다.\n\n좌표 사이의 거리 공식으로\n$AB=\\sqrt{(3+\\sqrt3)^2+(3-\\sqrt3)^2}=2\\sqrt6$,\n$BC=\\sqrt{(\\sqrt3-1)^2+(\\sqrt3+1)^2}=2\\sqrt2$이다.\n같은 계산으로 $CD=2\\sqrt2$, $DA=2\\sqrt6$이다.\n따라서 둘레는\n$AB+BC+CD+DA=2(2\\sqrt6)+2(2\\sqrt2)=4(\\sqrt6+\\sqrt2)$이고, 정답은 ④이다.",
+    "solution": "원의 중심을 $(u,v)$라 하면 두 축에 접하므로 두 축까지의 거리가 같다.\n$|u|=|v|$이므로 $v=u$ 또는 $v=-u$이다.\n먼저 $v=u$를 포물선 $y=x^2-x-3$에 대입하면\n$u=u^2-u-3$\n$u^2-2u-3=0$\n$(u-3)(u+1)=0$\n$u=3$ 또는 $u=-1$이므로 이 두 중심은 $(3,3),(-1,-1)$이다.\n다음으로 $v=-u$를 포물선에 대입하면\n$-u=u^2-u-3$\n$u^2-3=0$\n$(u-\\sqrt3)(u+\\sqrt3)=0$\n$u=\\sqrt3$ 또는 $u=-\\sqrt3$이므로 두 중심은 $(\\sqrt3,-\\sqrt3),(-\\sqrt3,\\sqrt3)$이다.\n원본 그림의 점 순서는 $A=(3,3), B=(-\\sqrt3,\\sqrt3), C=(-1,-1), D=(\\sqrt3,-\\sqrt3)$이다.\n좌표 사이의 거리 공식으로\n$AB^2=(3+\\sqrt3)^2+(3-\\sqrt3)^2$\n$AB^2=(12+6\\sqrt3)+(12-6\\sqrt3)$\n$AB^2=24$\n$AB=2\\sqrt6$\n$BC^2=(\\sqrt3-1)^2+(\\sqrt3+1)^2$\n$BC^2=(4-2\\sqrt3)+(4+2\\sqrt3)$\n$BC^2=8$\n$BC=2\\sqrt2$\n$CD^2=(\\sqrt3+1)^2+(1-\\sqrt3)^2$\n$CD^2=(4+2\\sqrt3)+(4-2\\sqrt3)$\n$CD^2=8$\n$CD=2\\sqrt2$\n$DA^2=(3-\\sqrt3)^2+(3+\\sqrt3)^2$\n$DA^2=(12-6\\sqrt3)+(12+6\\sqrt3)$\n$DA^2=24$\n$DA=2\\sqrt6$\n따라서 둘레는\n$AB+BC+CD+DA=2\\sqrt6+2\\sqrt2+2\\sqrt2+2\\sqrt6$\n$=4(\\sqrt6+\\sqrt2)$이다. 따라서 정답은 ④이다.",
     "category": "원의 방정식",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-11",
@@ -721,7 +721,7 @@ window.questionBank = [
       "중점",
       "직선의 방정식"
     ],
-    "content": "그림과 같이 한 변의 길이가 $8$인 정삼각형 $ABC$에 대하여 세 점 $D,E,F$는 세 변 $BC,CA,AB$의 중점이고 세 점 $G,H,I$는 세 선분 $BD,DE,CE$의 중점일 때, 다음은 세 직선 $AH,EG,FI$가 한 점 $O(\\alpha,\\beta)$에서 만나는 것을 보이는 과정이다.\\n<img src=\"assets/images/20_매산고_1학기_기말_고1_기출/q15.png\" class=\"question-img\" alt=\"문제 15 정삼각형 그림\">\\n그림과 같이 점 $D$를 원점, 직선 $BC$를 $x$축, 직선 $AD$를 $y$축으로 하여 삼각형 $ABC$를 좌표평면 위에 나타내면 세 꼭짓점 $A,B,C$의 좌표는 $A(0,4\\sqrt3), B(-4,0), C(4,0)$이다.\\n이때 직선 $AH$를 나타내는 방정식은 $y=ax+b$ …… ㉠\\n직선 $EG$를 나타내는 방정식은 $y=cx+d$ …… ㉡\\n직선 $FI$를 나타내는 방정식은 $y=ex+f$ …… ㉢\\n두 직선 ㉠, ㉡의 교점 $O(\\alpha,\\beta)$는 직선 ㉢도 지난다.\\n따라서 세 직선 $AH,EG,HI$는 한 점 $O(\\alpha,\\beta)$에서 만난다.\\n<img src=\"assets/images/20_매산고_1학기_기말_고1_기출/q15-coordinate.png\" class=\"question-img\" alt=\"문제 15 좌표 그림\">\\n위의 ㉠, ㉡, ㉢의 직선의 방정식에서 $\\dfrac{ad}{e}$의 값은? [4.8점]",
+    "content": "그림과 같이 한 변의 길이가 $8$인 정삼각형 $ABC$에 대하여 세 점 $D,E,F$는 세 변 $BC,CA,AB$의 중점이고 세 점 $G,H,I$는 세 선분 $BD,DE,CE$의 중점일 때, 다음은 세 직선 $AH,EG,FI$가 한 점 $O(\\alpha,\\beta)$에서 만나는 것을 보이는 과정이다.\\n<img src=\"assets/images/20_매산고_1학기_기말_고1_기출/q15.png\" class=\"question-img\" alt=\"문제 15 정삼각형 그림\">\\n그림과 같이 점 $D$를 원점, 직선 $BC$를 $x$축, 직선 $AD$를 $y$축으로 하여 삼각형 $ABC$를 좌표평면 위에 나타내면 세 꼭짓점 $A,B,C$의 좌표는 $A(0,4\\sqrt3), B(-4,0), C(4,0)$이다.\\n이때 직선 $AH$를 나타내는 방정식은 $y=ax+b$ …… ㉠\\n직선 $EG$를 나타내는 방정식은 $y=cx+d$ …… ㉡\\n직선 $FI$를 나타내는 방정식은 $y=ex+f$ …… ㉢\\n두 직선 ㉠, ㉡의 교점 $O(\\alpha,\\beta)$는 직선 ㉢도 지난다.\\n따라서 세 직선 $AH,EG,FI$는 한 점 $O(\\alpha,\\beta)$에서 만난다.\\n<img src=\"assets/images/20_매산고_1학기_기말_고1_기출/q15-coordinate.png\" class=\"question-img\" alt=\"문제 15 좌표 그림\">\\n위의 ㉠, ㉡, ㉢의 직선의 방정식에서 $\\dfrac{ad}{e}$의 값은? [4.8점]",
     "choices": [
       "$4\\sqrt3$",
       "$8\\sqrt3$",
@@ -730,7 +730,7 @@ window.questionBank = [
       "$15\\sqrt3$"
     ],
     "answer": "⑤",
-    "solution": "좌표를 두면\n$D=(0,0),\\ A=(0,4\\sqrt3),\\ B=(-4,0),\\ C=(4,0)$이다.\n중점 조건으로\n$E=(2,2\\sqrt3),\\ F=(-2,2\\sqrt3),\\ G=(-2,0),\\ H=(1,\\sqrt3),\\ I=(3,\\sqrt3)$이다.\n직선 $AH$의 기울기는 $-3\\sqrt3$이므로 $a=-3\\sqrt3$, $b=4\\sqrt3$이다.\n직선 $EG$의 기울기는 $\\dfrac{\\sqrt3}{2}$이고 $G$를 지나므로 $d=\\sqrt3$이다.\n직선 $FI$의 기울기는 $e=\\dfrac{\\sqrt3-2\\sqrt3}{3-(-2)}=-\\dfrac{\\sqrt3}{5}$이다.\n또 $AH$와 $EG$의 교점은 $O\\left(\\dfrac67,\\dfrac{10\\sqrt3}{7}\\right)$이고, 직선 $FI$의 방정식은\n$y=-\\dfrac{\\sqrt3}{5}x+\\dfrac{8\\sqrt3}{5}$이다.\n$x=\\dfrac67$을 대입하면\n$y=-\\dfrac{6\\sqrt3}{35}+\\dfrac{56\\sqrt3}{35}=\\dfrac{10\\sqrt3}{7}$이므로 $O$도 직선 $FI$ 위에 있다.\n인쇄된 결론에는 $HI$라고 적혀 있지만, ㉢에서 정의한 직선은 $FI$이므로 여기서는 $FI$를 사용한다.\n따라서\n$\\dfrac{ad}{e}\n=\\dfrac{(-3\\sqrt3)(\\sqrt3)}{-\\sqrt3/5}\n=15\\sqrt3$이다.\n정답은 ⑤이다.",
+    "solution": "점 $D$를 원점으로 두면 $A=(0,4\\sqrt3),\\ B=(-4,0),\\ C=(4,0)$이다.\n중점 좌표를 하나씩 구하면\n$E=\\left(\\dfrac{0+4}{2},\\dfrac{4\\sqrt3+0}{2}\\right)=(2,2\\sqrt3)$ ($CA$의 중점),\n$F=\\left(\\dfrac{0-4}{2},\\dfrac{4\\sqrt3+0}{2}\\right)=(-2,2\\sqrt3)$ ($AB$의 중점),\n$G=\\left(\\dfrac{-4+0}{2},\\dfrac{0+0}{2}\\right)=(-2,0)$ ($BD$의 중점),\n$H=\\left(\\dfrac{0+2}{2},\\dfrac{0+2\\sqrt3}{2}\\right)=(1,\\sqrt3)$ ($DE$의 중점),\n$I=\\left(\\dfrac{4+2}{2},\\dfrac{0+2\\sqrt3}{2}\\right)=(3,\\sqrt3)$ ($CE$의 중점)이다.\n\n$AH$의 기울기는\n$a=\\dfrac{\\sqrt3-4\\sqrt3}{1-0}=-3\\sqrt3$이다.\n$A$의 $x$좌표가 $0$이므로 $AH$의 $y$절편은 $b=4\\sqrt3$이다.\n따라서 ㉠은 $y=-3\\sqrt3x+4\\sqrt3$이다.\n\n$EG$의 기울기는\n$c=\\dfrac{2\\sqrt3-0}{2-(-2)}=\\dfrac{\\sqrt3}{2}$이다.\n$G=(-2,0)$을 ㉡에 대입하면\n$0=-2c+d$이다.\n따라서\n$d=2c$\n$=2\\cdot\\dfrac{\\sqrt3}{2}$\n$=\\sqrt3$이다.\n따라서 ㉡은 $y=\\dfrac{\\sqrt3}{2}x+\\sqrt3$이다.\n\n$FI$의 기울기는\n$e=\\dfrac{\\sqrt3-2\\sqrt3}{3-(-2)}=-\\dfrac{\\sqrt3}{5}$이다.\n$I=(3,\\sqrt3)$을 ㉢에 대입하면 $\\sqrt3=3e+f$이다.\n따라서\n$f=\\sqrt3-3e$\n$=\\sqrt3-3\\left(-\\dfrac{\\sqrt3}{5}\\right)$\n$=\\sqrt3+\\dfrac{3\\sqrt3}{5}$\n$=\\dfrac{5\\sqrt3}{5}+\\dfrac{3\\sqrt3}{5}$\n$=\\dfrac{8\\sqrt3}{5}$이다.\n따라서 ㉢은 $y=-\\dfrac{\\sqrt3}{5}x+\\dfrac{8\\sqrt3}{5}$이다.\n\n㉠과 ㉡을 연립하면\n$-3\\sqrt3x+4\\sqrt3=\\dfrac{\\sqrt3}{2}x+\\sqrt3$이다.\n양변을 $\\sqrt3$으로 나누면 $-3x+4=\\dfrac{x}{2}+1$이다.\n양변에 $2$를 곱하면 $-6x+8=x+2$이다.\n따라서 $7x=6$, 즉 $x=\\dfrac67$이다.\n이를 ㉠에 대입하면\n$y=-3\\sqrt3\\cdot\\dfrac67+4\\sqrt3$\n$=-\\dfrac{18\\sqrt3}{7}+\\dfrac{28\\sqrt3}{7}$\n$=\\dfrac{10\\sqrt3}{7}$이다.\n따라서 $O=\\left(\\dfrac67,\\dfrac{10\\sqrt3}{7}\\right)$이다.\n\n이 점을 ㉢에 대입하면\n$-\\dfrac{\\sqrt3}{5}\\cdot\\dfrac67+\\dfrac{8\\sqrt3}{5}$\n$=-\\dfrac{6\\sqrt3}{35}+\\dfrac{56\\sqrt3}{35}$\n$=\\dfrac{10\\sqrt3}{7}$이다.\n따라서 $O$도 직선 $FI$ 위에 있다.\n\n마지막으로\n$\\dfrac{ad}{e}$\n$=\\dfrac{(-3\\sqrt3)(\\sqrt3)}{-\\sqrt3/5}$\n$=\\dfrac{-9}{-\\sqrt3/5}$\n$=\\dfrac{45}{\\sqrt3}$\n$=\\dfrac{45\\sqrt3}{3}$\n$=15\\sqrt3$이다.\n정답은 ⑤이다.",
     "category": "삼각형",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-10",
@@ -779,7 +779,7 @@ window.questionBank = [
     "choices": [],
     "image": "assets/images/20_매산고_1학기_기말_고1_기출/q16.png",
     "answer": "$\\dfrac38$",
-    "solution": "$A=(0,2),\\ B=(0,0),\\ C=(3,0)$으로 둔다. 원래 삼각형의 넓이는\n$[ABC]=\\dfrac12\\cdot3\\cdot2=3$이다.\n점들이 각 변을 $t:(1-t)$로 나누므로\n$\\dfrac{AP}{AB}=t,\\quad\\dfrac{PB}{AB}=1-t,\\quad\\dfrac{BQ}{BC}=t,\\quad\\dfrac{QC}{BC}=1-t,\\quad\\dfrac{CR}{CA}=t,\\quad\\dfrac{RA}{CA}=1-t$이다.\n\n세 꼭짓점의 작은 삼각형 넓이는 각각\n$\\dfrac{[APR]}{[ABC]}=\\dfrac{AP}{AB}\\cdot\\dfrac{AR}{AC}=t(1-t)$,\n$\\dfrac{[PBQ]}{[ABC]}=\\dfrac{PB}{AB}\\cdot\\dfrac{BQ}{BC}=(1-t)t$,\n$\\dfrac{[QCR]}{[ABC]}=\\dfrac{QC}{BC}\\cdot\\dfrac{CR}{CA}=(1-t)t$이다.\n따라서 가운데 삼각형의 넓이는 세 작은 삼각형 넓이를 전체 넓이에서 빼서\n$S=[PQR]=3\\bigl(1-3t(1-t)\\bigr)=9t^2-9t+3$이다.\n완전제곱식으로 나타내면\n$S=9\\left(t-\\dfrac12\\right)^2+\\dfrac34$이다.\n그러므로 최솟값은 $\\alpha=\\dfrac12$일 때 $S=\\dfrac34$이고,\n$S\\alpha=\\dfrac34\\cdot\\dfrac12=\\dfrac38$이다.",
+    "solution": "좌표를 $A=(0,2), B=(0,0), C=(3,0)$으로 두면\n$[ABC]=\\frac12\\cdot2\\cdot3=3$이다.\n내분비 $t:(1-t)$에서 전체 비는 $t+(1-t)=1$이므로 각 변에서\n$AP/AB=t, PB/AB=1-t, BQ/BC=t, QC/BC=1-t, CR/CA=t, RA/CA=1-t$이다.\n같은 끼인각을 갖는 두 삼각형의 넓이비는 양쪽 변의 비를 곱한 값이다.\n따라서\n$[APR]/[ABC]=(AP/AB)(AR/AC)=t(1-t)$\n$[PBQ]/[ABC]=(PB/AB)(BQ/BC)=(1-t)t$\n$[QCR]/[ABC]=(QC/BC)(CR/CA)=(1-t)t$\n가운데 삼각형은 세 꼭짓점의 작은 삼각형을 뺀 나머지이므로\n$S=3(1-3t(1-t))$\n$S=9t^2-9t+3$\n완전제곱식으로 바꾸면\n$S=9(t^2-t)+3$\n$S=9\\left((t-\\frac12)^2-\\frac14\\right)+3$\n$S=9(t-\\frac12)^2+\\frac34$\n$0<t<1$에서 $t=1/2$가 가능하고 제곱항의 최솟값은 0이다.\n따라서 $\\alpha=1/2$일 때 $S=3/4$이며\n$S\\alpha=\\frac34\\cdot\\frac12=\\frac38$이다.",
     "category": "삼각형의 넓이",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-13",
@@ -971,7 +971,7 @@ window.questionBank = [
     "content": "점 $A(a,0)$과 점 $B(0,b)$가 $\\triangle OAB$의 넓이가 항상 1이 되도록 $x$축, $y$축 위를 각각 움직인다. 선분 $\\overline{AB}$를 한 변으로 하는 정사각형 $ABCD$를 제1사분면에 만들고 이 정사각형의 두 대각선의 교점을 $M$이라고 하자. (단, $a,b$는 양수이다.)\\n(1) $a+b$의 값의 범위를 구하여라. [4점]\\n(2) 점 $M$의 자취를 그림으로 나타내어라. [6점]",
     "choices": [],
     "answer": "(1) $2\\sqrt2\\le a+b$\r\n(2) $y=x$ 위에서 $(\\sqrt2,\\sqrt2)$를 포함하고 오른쪽 위로 뻗는 반직선",
-    "solution": "삼각형 $OAB$의 넓이가 $1$이므로 $\\dfrac{ab}{2}=1$, 즉 $ab=2$이다.\n정사각형이 제1사분면에 있으므로 꼭짓점은\n$C=(b,a+b),\\ D=(a+b,a)$로 둘 수 있다.\n대각선의 교점은\n$M=\\left(\\dfrac{a+b}{2},\\dfrac{a+b}{2}\\right)$이다.\n산술평균과 기하평균의 관계로\n$a+b\\ge2\\sqrt{ab}=2\\sqrt2$이다.\n따라서 (1) $2\\sqrt2\\le a+b$이다.\n$M=(s,s)$라 두면 $s=(a+b)/2\\ge\\sqrt2$이므로 자취는 $y=x$ 위에서 $(\\sqrt2,\\sqrt2)$를 포함해 오른쪽 위로 뻗는 반직선이다.\n모든 $s\\ge\\sqrt2$가 가능하다. 실제로 $a+b=2s,\\ ab=2$인 양수 $a,b$가 존재하려면 판별식 $4s^2-8\\ge0$이면 되고, 이는 $s\\ge\\sqrt2$와 같다.",
+    "solution": "삼각형 $OAB$의 넓이가 1이므로\n$\\frac{ab}{2}=1$\n$ab=2$\n$A=(a,0), B=(0,b)$이므로 $\\overrightarrow{AB}=(-a,b)$이다.\n이 벡터를 시계 방향으로 90도 회전하면 $(b,a)$이므로 제1사분면의 정사각형 꼭짓점은\n$D=(a+b,a), C=(b,a+b)$이다.\n두 대각선의 교점 $M$은 $AC$의 중점이므로\n$M=\\left(\\frac{a+b}{2},\\frac{a+b}{2}\\right)$이다.\n산술평균과 기하평균의 관계에서\n$a+b\\ge2\\sqrt{ab}$\n$a+b\\ge2\\sqrt2$\n이 값은 $a=b=\\sqrt2$일 때 가능하므로 (1)의 범위는 $2\\sqrt2\\le a+b$이다.\n$s=(a+b)/2$라 두면 $M=(s,s)$이고 $s\\ge\\sqrt2$이다.\n모든 $s\\ge\\sqrt2$가 가능한지도 확인한다.\n$a,b$를 방정식 $z^2-2sz+2=0$의 두 근으로 두면 두 근의 합은 $2s$, 곱은 2이다.\n판별식은\n$(-2s)^2-4\\cdot1\\cdot2=4(s^2-2)\\ge0$이다.\n두 근의 곱이 $2>0$이고 합이 $2s>0$이므로 두 근은 모두 양수이다. 따라서 이 $a,b$는 조건 $ab=2$, $a+b=2s$를 만족한다.\n따라서 $M$의 자취는 $y=x$ 위에서 $x\\ge\\sqrt2$인 반직선이며 끝점 $(\\sqrt2,\\sqrt2)$를 포함한다.",
     "category": "자취",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-09",
