@@ -43,7 +43,8 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "그래프"
     ],
     "wide": false,
     "content": "다음 무리함수 $y=-\\sqrt{2x-4}+3$의 정의역과 치역을 바르게 나타낸 것은? [3점]",
@@ -137,7 +138,8 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "그래프"
     ],
     "wide": false,
     "content": "유리함수 $y=\\dfrac{3x-5}{x-2}$의 점근선을 구하면? [3.4점]",
@@ -345,7 +347,7 @@ window.questionBank = [
       "$102$"
     ],
     "answer": "①",
-    "solution": "백의 자리 수는 한 자리 소수 중에서 고른다.\n$2,3,5,7$: $4$가지\n십의 자리 수는 양의 한 자리 수 중 $2$의 배수로 고른다.\n$2,4,6,8$: $4$가지\n일의 자리 수는 $6$의 양의 약수 중에서 고른다.\n$1,2,3,6$: $4$가지\n각 자리의 선택은 서로 독립이므로\n$4\\times4\\times4=64$\n따라서 정답은 ①이다.",
+    "solution": "백의 자리 수는 한 자리 소수 중에서 고른다.\n$2,3,5,7$: $4$가지\n십의 자리 수로 선택하는 $2$의 배수를 나열하면\n$2,4,6,8$: $4$가지\n일의 자리 수는 $6$의 양의 약수 중에서 고른다.\n$1,2,3,6$: $4$가지\n각 자리의 선택은 서로 독립이므로\n$4\\times4\\times4=64$\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
     "subUnit": "경우의 수의 기본 원리",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -497,7 +499,7 @@ window.questionBank = [
     ],
     "image": "assets/images/24_강남여고_2학기_기말_고1_기출/q16.png",
     "answer": "②",
-    "solution": "두 무리함수의 식을 $x$에 대하여 나타낸다.\n$y=\\sqrt{x+5}$에서\n$x=y^2-5$\n$y=\\sqrt{x}$에서\n$x=y^2$\n두 그래프는 $y=0$과 $y=2$ 사이에서 영역의 왼쪽과 오른쪽 경계가 된다.\n높이가 같은 곳에서 가로 길이를 구하면\n오른쪽 경계의 $x$좌표에서 왼쪽 경계의 $x$좌표를 빼면\n$y^2-(y^2-5)$\n$=5$\n즉 $0\\le y\\le2$에서 가로 길이가 항상 $5$로 일정하다.\n원래 영역을 같은 높이의 가로 조각으로 나란히 옮기면 가로 $5$, 세로 $2$인 직사각형과 넓이가 같다.\n$S=5\\times2=10$\n따라서 정답은 ②이다.",
+    "solution": "두 무리함수의 식을 $x$에 대하여 나타낸다.\n$y=\\sqrt{x+5}$에서\n$x=y^2-5$\n$y=\\sqrt{x}$에서\n$x=y^2$\n두 그래프는 $y=0$과 $y=2$ 사이에서 영역의 왼쪽과 오른쪽 경계가 된다.\n높이가 같은 곳에서 오른쪽 경계의 $x$좌표에서 왼쪽 경계의 $x$좌표를 빼면\n$y^2-(y^2-5)$\n$=5$\n즉 $0\\le y\\le2$에서 가로 길이가 항상 $5$로 일정하다.\n원래 영역을 같은 높이의 가로 조각으로 나란히 옮기면 가로 $5$, 세로 $2$인 직사각형과 넓이가 같다.\n$S=5\\times2=10$\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
     "subUnit": "무리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -637,7 +639,8 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "그래프"
     ],
     "wide": false,
     "content": "풀이 과정을 자세히 작성하기 바랍니다.<br>유리함수 $y=\\dfrac{k}{x-3}+2$가 제 $1$, $2$, $3$, $4$사분면을 모두 지나도록 하는 정수 $k$의 최솟값을 구하시오. [4점]",
