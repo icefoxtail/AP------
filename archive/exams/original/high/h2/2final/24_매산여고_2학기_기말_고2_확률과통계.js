@@ -23,7 +23,7 @@ window.questionBank = [
       "11"
     ],
     "answer": "②",
-    "solution": "[키포인트] 확률질량함수의 성질에 의해 모든 확률의 합은 $1$임을 이용한다.\\n조건 정리: 확률변수 $X$가 가질 수 있는 값은 $1, 2, 3, 4, 5$이고 각각의 확률은 $P(X=x) = \\dfrac{a-x}{25}$이다.\\n풀이 방향: $\\sum_{x=1}^{5} P(X=x) = 1$ 식을 세워 상수 $a$의 값을 구한다.\\n정석 풀이:\\n모든 확률의 총합을 구하면 다음과 같다.\\n$\\dfrac{a-1}{25} + \\dfrac{a-2}{25} + \\dfrac{a-3}{25} + \\dfrac{a-4}{25} + \\dfrac{a-5}{25} = 1$\\n양변에 $25$를 곱하여 분자를 정리하면\\n$(a-1) + (a-2) + (a-3) + (a-4) + (a-5) = 25$\\n$5a - 15 = 25$\\n$5a = 40$\\n따라서 $a = 8$이다.\\n따라서 정답은 ②이다.",
+    "solution": "확률질량함수의 모든 확률을 더하면 $1$이다.\n$\\dfrac{a-1}{25}+\\dfrac{a-2}{25}+\\dfrac{a-3}{25}+\\dfrac{a-4}{25}+\\dfrac{a-5}{25}=1$\n$\\dfrac{5a-(1+2+3+4+5)}{25}=1$\n$5a-15=25$\n$5a=40,\\quad a=8$이다.\n각 확률은 $\\dfrac7{25},\\dfrac6{25},\\dfrac5{25},\\dfrac4{25},\\dfrac3{25}$로 모두 $0$ 이상이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -51,7 +51,7 @@ window.questionBank = [
       "15"
     ],
     "answer": "②",
-    "solution": "[키포인트] 이항분포 $B(n, p)$를 따르는 확률변수의 평균은 $E(X)=np$, 분산은 $V(X)=np(1-p)$이다.\\n조건 정리: $n=32$, $p=\\dfrac{1}{4}$이다.\\n풀이 방향: 이항분포의 평균과 분산 공식을 이용해 $a$와 $b$의 값을 각각 계산한 후 $a-b$를 구한다.\\n정석 풀이:\\n$E(X) = 32 \\times \\dfrac{1}{4} = 8$이므로 $a = 8$이다.\\n$V(X) = 32 \\times \\dfrac{1}{4} \\times \\left(1 - \\dfrac{1}{4}\\right) = 8 \\times \\dfrac{3}{4} = 6$이므로 $b = 6$이다.\\n따라서 구하고자 하는 값은 $a - b = 8 - 6 = 2$이다.\\n계산 결과 $a-b=2$이므로 정답은 ②이다.",
+    "solution": "$X\\sim B\\left(32,\\dfrac14\\right)$이므로 시행 횟수 $n=32$, 성공 확률 $p=\\dfrac14$이다.\n이항분포의 평균을 구하면\n$a=E(X)=np$\n$=32\\times\\dfrac14=8$이다.\n분산은\n$b=V(X)=np(1-p)$\n$=32\\times\\dfrac14\\times\\dfrac34$\n$=8\\times\\dfrac34=6$이다.\n따라서 $a-b=8-6=2$이므로 정답은 ②이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -81,11 +81,15 @@ window.questionBank = [
       "0.9544"
     ],
     "answer": "②",
-    "solution": "[키포인트] 정규분포를 따르는 확률변수를 표준화 공식 $Z = \\dfrac{X - m}{\\sigma}$를 이용하여 표준정규분포로 변환한다.\\n조건 정리: 확률변수 $X$는 평균 $m=60$, 표준편차 $\\sigma=\\sqrt{16}=4$인 정규분포를 따른다.\\n풀이 방향: $P(56 \\le X \\le 66)$의 각 변을 표준화하여 표준정규분포 변수 $Z$의 범위로 바꾼 뒤 표의 값을 이용한다.\\n정석 풀이:\\n$P(56 \\le X \\le 66) = P\\left(\\dfrac{56 - 60}{4} \\le \\dfrac{X - 60}{4} \\le \\dfrac{66 - 60}{4}\\right) = P(-1.0 \\le Z \\le 1.5)$\\n표준정규분포곡선의 대칭성에 의해 다음과 같이 분할하여 계산할 수 있다.\\n$P(-1.0 \\le Z \\le 1.5) = P(0 \\le Z \\le 1.0) + P(0 \\le Z \\le 1.5)$\\n주어진 표준정규분포표에서 값을 찾아 대입하면\\n$= 0.3413 + 0.4332 = 0.7745$이다.\\n따라서 정답은 ②이다.",
+    "solution": "$X\\sim N(60,16)$에서 평균은 $60$, 표준편차는 $\\sqrt{16}=4$이다.\n$Z=\\dfrac{X-60}{4}$로 표준화하면\n$P(56\\le X\\le66)$\n$=P\\left(\\dfrac{56-60}{4}\\le Z\\le\\dfrac{66-60}{4}\\right)$\n$=P(-1\\le Z\\le1.5)$이다.\n$0$을 기준으로 구간을 나누면\n$P(-1\\le Z\\le1.5)$\n$=P(-1\\le Z\\le0)+P(0\\le Z\\le1.5)$\n$=0.3413+0.4332=0.7745$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q03-solution.svg",
+    "solutionImageAlt": "표준정규분포에서 -1부터 1.5까지의 영역을 음영으로 표시한 곡선",
+    "solutionImageCaption": "양쪽 영역 0.3413과 0.4332를 합한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -111,7 +115,7 @@ window.questionBank = [
       "$m_1 \\lt m_2, \\sigma_1 \\lt \\sigma_2$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 정규분포 곡선에서 평균은 대칭축의 위치를 결정하고, 표준편차는 곡선의 흩어진 정도(높이와 폭)를 결정한다.\\n조건 정리: 두 곡선 $A, B$의 대칭축은 동일한 위치에 있고, 곡선 $A$가 곡선 $B$보다 가운데에 더 높게 솟아오르고 좌우 폭이 좁다.\\n풀이 방향: 대칭축의 위치를 통해 평균을 비교하고, 그래프의 최고조 높이 및 퍼진 정도를 통해 표준편차의 대소를 판단한다.\\n정석 풀이:\\n1단계: 두 정규분포 곡선의 대칭축의 위치가 일치하므로 두 반의 수학 성적의 평균은 서로 같다. 즉, $m_1 = m_2$이다.\\n2단계: 정규분포 곡선은 표준편차 $\\sigma$의 값이 커질수록 주위로 넓게 퍼지며 높이가 낮아지고 폭이 넓어지며, $\\sigma$의 값이 작아질수록 평균 주위로 자료들이 밀집되면서 높이가 높아지고 폭이 좁아진다. 그래프에서 곡선 $A$가 $B$보다 폭이 좁고 중심부에 집중되어 있으므로 반 $A$의 표준편차가 반 $B$의 표준편차보다 작다. 즉, $\\sigma_1 \\lt \\sigma_2$이다.\\n따라서 두 관계식을 종합하면 $m_1 = m_2, \\sigma_1 \\lt \\sigma_2$이다.\\n따라서 정답은 ③이다.",
+    "solution": "두 정규분포곡선의 대칭축이 그림의 같은 $m$을 지나므로\n$m_1=m_2$이다.\n곡선 $A$는 $B$보다 꼭대기가 높고 폭이 좁다.\n평균이 같은 정규분포에서는 표준편차가 작을수록 곡선이 높고 좁아진다.\n따라서 $\\sigma_1<\\sigma_2$이다.\n$m_1=m_2,\\ \\sigma_1<\\sigma_2$이므로 정답은 ③이다.",
     "image": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q4.png",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
@@ -140,7 +144,7 @@ window.questionBank = [
       "$\\dfrac{13}{36}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 크기가 $2$인 표본의 평균이 $2$가 되는 두 공의 숫자 조합을 구하고 임의추출(비복원추출) 상황에 맞는 확률을 계산한다.\\n조건 정리: 주머니에 $1$이 $2$개, $2$가 $3$개, $3$이 $1$개 들어있으며 전체 공의 개수는 $6$개이다.\\n풀이 방향: 추출된 두 개의 공을 각각 $X_1, X_2$라 할 때, $\\overline{X} = \\dfrac{X_1 + X_2}{2} = 2 \\implies X_1 + X_2 = 4$를 만족하는 조합의 확률을 구한다.\\n정석 풀이:\\n두 수의 합이 $4$가 되는 비복원추출의 경우는 다음과 같다.\\ncase 1) 첫 번째 공이 $1$, 두 번째 공이 $3$인 경우: $\\dfrac{2}{6} \\times \\dfrac{1}{5} = \\dfrac{2}{30}$\\ncase 2) 첫 번째 공이 $3$, 두 번째 공이 $1$인 경우: $\\dfrac{1}{6} \\times \\dfrac{2}{5} = \\dfrac{2}{30}$\\ncase 3) 첫 번째 공이 $2$, 두 번째 공이 $2$인 경우: $\\dfrac{3}{6} \\times \\dfrac{2}{5} = \\dfrac{6}{30}$\\n모든 경우의 확률을 합산하면 다음과 같다.\\n$P(\\overline{X}=2) = \\dfrac{2}{30} + \\dfrac{2}{30} + \\dfrac{6}{30} = \\dfrac{10}{30} = \\dfrac{1}{3}$\\n따라서 구하는 확률은 $\\dfrac{1}{3}$이며 이는 ④번에 해당한다.\\n따라서 정답은 ④이다.",
+    "solution": "표본평균이 $2$이려면 뽑은 두 공의 숫자 합이 $4$여야 한다.\n$\\overline X=\\dfrac{X_1+X_2}{2}=2$\n$\\Longleftrightarrow X_1+X_2=4$이다.\n서로 다른 두 공을 뽑는 전체 경우의 수는\n$\\binom62=15$이다.\n합이 $4$인 경우를 나누면\n$(1,3)$: 숫자 $1$인 공 $2$개 중 하나와 $3$인 공 $1$개를 고르므로 $2\\times1=2$가지.\n$(2,2)$: 숫자 $2$인 공 $3$개 중 둘을 고르므로 $\\binom32=3$가지.\n따라서 유리한 경우는 $2+3=5$가지이고\n$P(\\overline X=2)=\\dfrac5{15}=\\dfrac13$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "category_or_cue_inferred",
