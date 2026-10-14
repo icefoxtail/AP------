@@ -381,7 +381,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] 신뢰도 99% 신뢰구간의 길이 공식 $l = 2 \\times 2.58 \\times \\dfrac{\\\\sigma}{\\sqrt{n}}$을 이용한다.\\n조건 정리: 모표준편차 $\\\\sigma=0.5$, 신뢰도 99%이므로 $z_{0.005}=2.58$, $l \\le 0.129$.\\n풀이 방향: 신뢰구간의 길이 공식에 대입하여 $n$의 범위를 구한 뒤 최솟값을 찾는다.\\n정석 풀이:\\n신뢰도 99%의 신뢰구간의 길이는\\n$l = 2 \\times 2.58 \\times \\dfrac{0.5}{\\sqrt{n}} = \\dfrac{2.58}{\\sqrt{n}}$\\n$l \\le 0.129$ 조건:\\n$\\dfrac{2.58}{\\sqrt{n}} \\le 0.129$\\n$\\sqrt{n} \\ge \\dfrac{2.58}{0.129} = 20$\\n$n \\ge 400$\\n$n$은 자연수이므로 최솟값은 $n = 400$이다.\\n따라서 정답은 ③이다.",
+    "solution": "모표준편차 $\\sigma=0.5$를 알고 있으므로 신뢰도 $99\\%$인 모평균의 신뢰구간은 표본평균을 중심으로 양쪽에 $2.58\\dfrac{\\sigma}{\\sqrt n}$만큼 벌어진다.\n따라서 신뢰구간의 전체 길이는\n$l=2\\times2.58\\times\\dfrac{0.5}{\\sqrt n}$\n$=\\dfrac{2.58}{\\sqrt n}$\n주어진 길이 조건을 적용하면\n$\\dfrac{2.58}{\\sqrt n}\\le0.129$\n$\\sqrt n\\ge\\dfrac{2.58}{0.129}=20$\n$n\\ge400$\n$n$은 자연수이므로 최솟값은 $400$이다.\n따라서 정답은 ③이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
@@ -426,7 +426,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] 베이즈 정리(조건부확률)를 이용하여 불량품이 주어졌을 때 B공장 생산 확률을 구한다.\\n조건 정리: $P(A공장)=0.45$, $P(B공장)=0.55$, $P(불량|A)=0.03$, $P(불량|B)=0.06$.\\n풀이 방향: $P(불량)$을 전확률 공식으로 구한 뒤 $P(B|불량)$을 계산한다.\\n정석 풀이:\\n$P(불량) = P(A) \\times P(불량|A) + P(B) \\times P(불량|B)$\\n$= 0.45 \\times 0.03 + 0.55 \\times 0.06$\\n$= 0.0135 + 0.033 = 0.0465$\\n$P(B|불량) = \\dfrac{P(B) \\times P(불량|B)}{P(불량)} = \\dfrac{0.55 \\times 0.06}{0.0465} = \\dfrac{0.033}{0.0465}$\\n분자·분모에 $\\dfrac{1000}{15}$를 곱하면: $\\dfrac{0.033}{0.0465} = \\dfrac{33}{46.5} = \\dfrac{66}{93} = \\dfrac{22}{31}$\\n따라서 정답은 ⑤이다.",
+    "solution": "불량품을 받았다는 조건에서 B공장 제품일 확률을 구한다.\n불량품을 받는 사건을 $D$라 하자. 불량품이 발생하는 경우는 A공장 제품이 불량이거나 B공장 제품이 불량인 두 경우이다.\n$P(D)=0.45\\times0.03+0.55\\times0.06$\n$=0.0135+0.033=0.0465$\n이 중 B공장에서 생산된 불량품의 확률은\n$0.55\\times0.06=0.033$이다.\n따라서 구하는 조건부확률은\n$P(B\\mid D)=\\dfrac{0.033}{0.0465}$\n$=\\dfrac{330}{465}=\\dfrac{22}{31}$\n따라서 정답은 ⑤이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
@@ -471,7 +471,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "answerStatus": "direct_solved_round13",
-    "solution": "[키포인트] 상위 $\\dfrac{160}{1000}=16\\\\%$에 해당하는 점수가 합격 최저선이다.\\n조건 정리: $X \\\\sim N(320, 25^2)$, 합격 인원 160명, 전체 1000명.\\n풀이 방향: 합격률 0.16을 표준정규분포표에서 대응하는 $z$값으로 변환한 뒤 점수를 구한다.\\n정석 풀이:\\n상위 $\\dfrac{160}{1000} = 0.16 = 16\\\\%$이어야 합격이므로, 합격 최저 점수를 $a$라 하면\\n$P(X \\ge a) = 0.16$이다.\\n$P(X \\ge a) = P\\left(Z \\ge \\dfrac{a-320}{25}\\right) = 0.16$\\n$P(0 \\le Z \\le 1) = 0.34$이므로 $P(Z \\ge 1) = 0.5 - 0.34 = 0.16$.\\n따라서 $\\dfrac{a-320}{25} = 1$이고, $a = 320 + 25 = 345$점이다.\\n따라서 정답은 ①이다.",
+    "solution": "지원자 $1000$명 중 $160$명만 합격하므로 합격자는 상위 $16\\%$이다.\n합격 최저 점수를 $a$점이라 하면\n$P(X\\ge a)=\\dfrac{160}{1000}=0.16$\n표준정규분포표에서\n$P(Z\\ge1)=0.5-0.34=0.16$\n점수 $X$의 평균이 $320$, 표준편차가 $25$이므로\n$P\\left(Z\\ge\\dfrac{a-320}{25}\\right)=0.16$\n$\\dfrac{a-320}{25}=1$\n$a-320=25\\;\\Rightarrow\\;a=345$\n따라서 정답은 ①이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "round13_continue_to_zero_completed",
     "tags": [
@@ -516,7 +516,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "answerStatus": "direct_solved_round13",
-    "solution": "[키포인트] 장난감 4개의 합계 무게의 분포를 구한 뒤 불량률을 계산하고, 이항분포를 정규분포로 근사하여 $x$를 구한다.\\n조건 정리: 장난감 1개의 무게 $W_i \\\\sim N(30, 5^2)$, 한 상자 무게 $S = W_1+W_2+W_3+W_4$, 불량 기준 $S \\le 100$.\\n풀이 방향: $S$의 분포 → 불량률 $p$ → 이항분포 $B(2500, p)$를 정규분포로 근사 → $P(Y \\ge x)=0.02$.\\n정석 풀이:\\n$E(S) = 4 \\times 30 = 120$g, $V(S) = 4 \\times 25 = 100$, $\\\\sigma(S) = 10$g이므로 $S \\\\sim N(120, 10^2)$.\\n불량률: $P(S \\le 100) = P\\left(Z \\le \\dfrac{100-120}{10}\\right) = P(Z \\le -2) = 0.5 - 0.48 = 0.02$\\n2500상자에서 불량품 수를 $Y$라 하면 $Y \\\\sim B(2500, 0.02)$.\\n$E(Y) = 2500 \\times 0.02 = 50$, $V(Y) = 2500 \\times 0.02 \\times 0.98 = 49$, $\\\\sigma(Y) = 7$.\\n$Y$를 정규분포 $N(50, 7^2)$으로 근사한다.\\n$P(Y \\ge x) = 0.02$이므로\\n$P\\left(Z \\ge \\dfrac{x-50}{7}\\right) = 0.02$\\n$P(Z \\ge 2) = 0.5 - 0.48 = 0.02$이므로 $\\dfrac{x-50}{7} = 2$.\\n$x = 50 + 14 = 64$.\\n따라서 정답은 ②이다.",
+    "solution": "장난감 $4$개의 무게가 서로 독립으로 추출되므로 한 상자의 무게 $S$는 합의 정규분포를 따른다.\n$E(S)=4\\times30=120$\n$V(S)=4\\times5^2=100$\n$\\sigma(S)=10$\n따라서 $S\\sim N(120,10^2)$이다.\n상자 무게가 $100$g 이하일 확률은\n$P(S\\le100)=P\\left(Z\\le\\dfrac{100-120}{10}\\right)$\n$=P(Z\\le-2)=0.5-0.48=0.02$\n$2500$상자 중 불량품 수를 $Y$라 하면\n$Y\\sim B(2500,0.02)$이다.\n$E(Y)=2500\\times0.02=50$\n$V(Y)=2500\\times0.02\\times0.98=49$\n$\\sigma(Y)=7$\n시행 횟수가 크므로 이항분포를 정규분포 $N(50,7^2)$으로 근사한다.\n$P(Y\\ge x)\\approx P\\left(Z\\ge\\dfrac{x-50}{7}\\right)=0.02$\n$P(Z\\ge2)=0.5-0.48=0.02$이므로\n$\\dfrac{x-50}{7}=2$\n$x=50+14=64$\n따라서 정답은 ②이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "round13_continue_to_zero_completed",
     "tags": [
