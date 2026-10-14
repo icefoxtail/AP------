@@ -17,7 +17,7 @@ window.questionBank = [
       "좌표평면"
     ],
     "answer": "②",
-    "solution": "x축 방향으로 -4, y축 방향으로 3만큼 옮기면 좌표는 각각 그만큼 더해진다.\n(a,b)=(7-4,2+3)=(3,5)이다.\n따라서 b-a=5-3=2이므로 정답은 ②이다.",
+    "solution": "점 $(x,y)$를 $x$축 방향으로 $p$, $y$축 방향으로 $q$만큼 평행이동하면 $(x+p,y+q)$가 된다.\n주어진 점 $(7,2)$에 적용하면\n$(a,b)=(7+(-4),\\,2+3)$\n$=(3,5)$이다.\n따라서 $a=3,\\ b=5$이므로\n$b-a=5-3=2$이다.\n\n따라서 정답은 ②이다.",
     "category": "평면좌표",
     "originalCategory": "평면좌표",
     "standardCourse": "수학(상)",
@@ -74,10 +74,15 @@ window.questionBank = [
     ],
     "tags": [
       "객관식",
-      "유리함수"
+      "유리함수",
+      "그래프"
     ],
     "answer": "③",
-    "solution": "분자를 나누어 쓰면\n$y=\\dfrac{2x-3}{x-1}=2-\\dfrac1{x-1}$이다.\n분모가 0이 되는 $x=1$에서 수직점근선이 생기고, 나머지 항은 0에 가까워지므로 수평점근선은 $y=2$이다.\n따라서 $a+b=1+2=3$이므로 정답은 ③이다.",
+    "solution": "분모가 일차식인 유리함수는 분자를 분모로 나누어 점근선을 찾으면 편리하다.\n$2x-3=2(x-1)-1$이므로\n$y=\\dfrac{2x-3}{x-1}$\n$=\\dfrac{2(x-1)-1}{x-1}$\n$=2-\\dfrac1{x-1}$이다.\n분모 $x-1$이 $0$이 되는 $x=1$이 수직점근선이고,\n$x$의 절댓값이 커질수록 $\\dfrac1{x-1}$이 $0$에 가까워지므로 $y=2$가 수평점근선이다.\n따라서 $a=1,\\ b=2$이고\n$a+b=1+2=3$이다.\n\n따라서 정답은 ③이다.",
+    "solutionImageSize": "large",
+    "solutionImageCaption": "수직점근선과 수평점근선을 분모와 상수항에서 읽는다.",
+    "solutionImageAlt": "유리함수 y=2−1/(x−1)의 두 점근선 x=1, y=2",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q02-solution.svg",
     "category": "유리함수",
     "originalCategory": "유리함수",
     "standardCourse": "수학(하)",
@@ -127,10 +132,15 @@ window.questionBank = [
     ],
     "tags": [
       "객관식",
-      "무리함수"
+      "무리함수",
+      "그래프"
     ],
     "answer": "⑤",
-    "solution": "제곱근 안의 값은 0 이상이어야 하므로\n$2x-6\\ge0$, 즉 $x\\ge3$이다.\n이때 $\\sqrt{2x-6}\\ge0$이므로 $y=\\sqrt{2x-6}+2\\ge2$이다.\n따라서 $a=3$, $b=2$이고 $a\\times b=6$이므로 정답은 ⑤이다.",
+    "solution": "제곱근을 포함한 함수에서는 먼저 근호 안이 $0$ 이상이 되는 범위를 확인한다.\n$2x-6\\ge0$\n$2x\\ge6$\n$x\\ge3$이다.\n따라서 정의역의 시작값은 $a=3$이다.\n또 $\\sqrt{2x-6}\\ge0$이므로\n$y=\\sqrt{2x-6}+2\\ge2$이다.\n$x=3$일 때 $y=2$가 실제로 가능하고, $x$가 커지면 함수값도 계속 커진다.\n그러므로 치역의 시작값은 $b=2$이다.\n$a\\times b=3\\times2=6$이다.\n\n따라서 정답은 ⑤이다.",
+    "solutionImageSize": "large",
+    "solutionImageCaption": "시작점 (3,2)에서 정의역 x≥3, 치역 y≥2를 읽는다.",
+    "solutionImageAlt": "무리함수 y=√(2x−6)+2의 정의역 시작점 (3,2)",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q03-solution.svg",
     "category": "무리함수",
     "originalCategory": "무리함수",
     "standardCourse": "수학(하)",
@@ -190,7 +200,7 @@ window.questionBank = [
       "순서쌍"
     ],
     "answer": "④",
-    "solution": "자연수 순서쌍을 합에 따라 나눈다.\n$x+y=3$이면 $(1,2),(2,1)$의 2개이다.\n$x+y=4$이면 $(1,3),(2,2),(3,1)$의 3개이다.\n두 경우는 겹치지 않으므로 모두 $2+3=5$개이고 정답은 ④이다.",
+    "solution": "$x,y$는 자연수이므로 모두 $1$ 이상이다.\n주어진 범위를 만족하는 합은 $3$ 또는 $4$뿐이므로 두 경우로 나눈다.\n\n① $x+y=3$일 때\n가능한 순서쌍은 $(1,2),(2,1)$의 $2$개이다.\n\n② $x+y=4$일 때\n가능한 순서쌍은 $(1,3),(2,2),(3,1)$의 $3$개이다.\n\n두 경우는 서로 겹치지 않는다.\n따라서 구하는 순서쌍의 수는\n$2+3=5$개이다.\n\n따라서 정답은 ④이다.",
     "category": "경우의 수",
     "originalCategory": "경우의 수",
     "standardCourse": "수학(하)",
@@ -243,7 +253,7 @@ window.questionBank = [
       "경우의 수"
     ],
     "answer": "①",
-    "solution": "케이크 7개에서 2개를 고르는 방법은 $\\binom72=21$가지이다.\n음료 5잔에서 3잔을 고르는 방법은 $\\binom53=10$가지이다.\n두 선택은 서로 독립이므로 곱의 법칙에 따라 $21\\times10=210$가지이다. 정답은 ①이다.",
+    "solution": "케이크와 음료를 각각 선택하되, 선택한 순서는 중요하지 않으므로 조합을 이용한다.\n서로 다른 케이크 $7$개 중 $2$개를 고르는 방법은\n${}_{7}C_{2}=\\dfrac{7\\cdot6}{2\\cdot1}=21$가지이다.\n서로 다른 음료 $5$잔 중 $3$잔을 고르는 방법은\n${}_{5}C_{3}=\\dfrac{5\\cdot4\\cdot3}{3\\cdot2\\cdot1}=10$가지이다.\n케이크 선택 하나마다 음료 선택을 $10$가지씩 할 수 있으므로 곱의 법칙에 의해\n$21\\cdot10=210$가지이다.\n\n따라서 정답은 ①이다.",
     "category": "조합",
     "originalCategory": "조합",
     "standardCourse": "수학(하)",
@@ -296,7 +306,7 @@ window.questionBank = [
       "경우의 수"
     ],
     "answer": "②",
-    "solution": "대표 4명 전체에서 남학생만 뽑거나 여학생만 뽑는 경우를 제외한다.\n전체는 $\\binom{10}4=210$가지이다.\n남학생만 또는 여학생만 뽑는 경우는 각각 $\\binom54=5$가지이다.\n따라서 $210-5-5=200$가지이고 정답은 ②이다.",
+    "solution": "남학생과 여학생을 각각 적어도 $1$명씩 포함해야 한다.\n이를 직접 남녀 인원수별로 세는 대신, 대표 $4$명을 뽑는 전체 경우에서 한쪽 성별만 뽑는 경우를 빼면 간단하다.\n전체 $10$명 중 $4$명을 뽑는 경우는\n${}_{10}C_{4}=\\dfrac{10\\cdot9\\cdot8\\cdot7}{4\\cdot3\\cdot2\\cdot1}=210$가지이다.\n남학생만 $4$명을 뽑는 경우는 ${}_{5}C_{4}=5$가지이고,\n여학생만 $4$명을 뽑는 경우도 ${}_{5}C_{4}=5$가지이다.\n이 두 경우는 서로 겹치지 않으므로\n$210-5-5=200$가지이다.\n\n따라서 정답은 ②이다.",
     "category": "조합",
     "originalCategory": "조합",
     "standardCourse": "수학(하)",
@@ -350,7 +360,7 @@ window.questionBank = [
       "역함수"
     ],
     "answer": "①",
-    "solution": "$g^{-1}(x)$를 구하기 위해 $y=\\dfrac{bx+3}{cx+1}$에서 $x$를 정리한다.\n$y(cx+1)=bx+3$이므로 $x=\\dfrac{y-3}{b-cy}$, 따라서 $g^{-1}(x)=\\dfrac{x-3}{b-cx}$이다.\n한편 $f(x)=\\dfrac{3-x}{x+a}=-\\dfrac{x-3}{x+a}$이다.\n$g^{-1}(x)=f(x)$에서 $x\\ne3$인 값들을 비교하면 $b-cx=-(x+a)$이므로 $c=1$, $b=-a$이다.\n따라서 $a+b+c=1$이고 정답은 ①이다.",
+    "solution": "$g^{-1}(x)=f(x)$이므로 주어진 $g$의 식에서 역함수를 구해 $f$와 비교한다.\n$y=\\dfrac{bx+3}{cx+1}$이라 두면\n$y(cx+1)=bx+3$\n$cxy+y=bx+3$\n$(cy-b)x=3-y$\n$x=\\dfrac{3-y}{cy-b}=\\dfrac{y-3}{b-cy}$이다.\n따라서\n$g^{-1}(x)=\\dfrac{x-3}{b-cx}$이다.\n한편\n$f(x)=\\dfrac{-x+3}{x+a}=-\\dfrac{x-3}{x+a}$이다.\n두 식이 모든 허용되는 $x$에서 같으므로 분자의 공통인수 $x-3$을 제외하고 분모를 비교하면\n$b-cx=-(x+a)$\n$=-x-a$이다.\n$x$의 계수와 상수항을 비교하여\n$c=1,\\ b=-a$를 얻는다.\n그러므로\n$a+b+c=a-a+1=1$이다.\n\n따라서 정답은 ①이다.",
     "category": "역함수",
     "originalCategory": "역함수",
     "standardCourse": "수학(하)",
@@ -405,7 +415,7 @@ window.questionBank = [
     ],
     "image": "assets/images/19_금당고_2학기_기말_고1_기출/q08.png",
     "answer": "⑤",
-    "solution": "그래프에서 수직점근선은 $x=-2$이므로 $a=-2$이다. $P(x)=mx+n$ ($m\\ne0$)으로 놓으면 나눗셈 항등식\n$\\dfrac{P(x)}{x-a}=m+\\dfrac{ma+n}{x-a}$\n을 얻는다. 둘째 항은 $|x|$가 커질수록 0에 가까워지므로 수평점근선은 $y=m$이다. 그래프의 수평점근선이 $y=1$이므로 $m=1$이다.\n그래프가 원점 $O(0,0)$을 지나므로 $0=\\dfrac{P(0)}{0-a}=\\dfrac{n}{2}$이고 $n=0$이다. 따라서 $P(x)=x$, $P(a)=P(-2)=-2$이다.\n그러므로 $-5P(a)=10$이며 정답은 ⑤이다.",
+    "solution": "먼저 그림에서 점근선과 그래프가 지나는 점을 읽어 일차다항식 $P(x)$를 정한다.\n수직점근선은 $x=-2$이므로 분모 $x-a$가 $0$이 되는 곳에서\n$a=-2$이다.\n$P(x)=mx+n$ ($m\\ne0$)이라 두면\n$y=\\dfrac{mx+n}{x-a}$\n$=m+\\dfrac{ma+n}{x-a}$이다.\n따라서 수평점근선은 $y=m$이다.\n그림에서 수평점근선이 $y=1$이므로 $m=1$이다.\n또 그래프가 원점 $O(0,0)$을 지나므로\n$0=\\dfrac{P(0)}{0-(-2)}=\\dfrac n2$이고\n$n=0$이다.\n따라서 $P(x)=x$이므로\n$P(a)=P(-2)=-2$이다.\n구하는 값은 $-5P(a)=-5(-2)=10$이다.\n\n따라서 정답은 ⑤이다.",
     "category": "유리함수",
     "originalCategory": "유리함수",
     "standardCourse": "수학(하)",
@@ -441,10 +451,10 @@ window.questionBank = [
     "sourceArchiveFile": "original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
     "questionUid": "qid_v1_dfc88daf5b7ebf9a44cb2e24218e629cb4af364d1e36f2437eb04da40a8ee7bf",
     "provenance": {"sourceId":"2019|금당고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js","sourceOrdinal":8,"sourceQid":8,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_금당고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"546135392A1D56734147A198989E11B66C1736492D26E19C1D837816D131F816","sourceInputJsSha256":"5f1d4b7f7bf254c5f747c5e0e316808fbb7cb64a9031d37f57c04140ccc365c0","sourcePage":1,"itemTransformation":"ALIVE_BOUNDED_REPLACEMENT","replacedOriginalQuestion":"원문 발문은 함수 P(x)의 종류를 제한하지 않아 그래프의 점근선과 원점 통과만으로 P(a)를 유일하게 결정할 수 없다. 일차다항식 조건을 명시해 원문 문형·단원·보기 구조를 유지한 최소 조건 보완으로 대체했다.","originalSourceContent":"함수 $P(x)$에 대하여 함수 $y=\\dfrac{P(x)}{x-a}$의 그래프가 오른쪽 그림과 같을 때, $-5P(a)$의 값을 구하시오. (4점)","addedCondition":"P(x)는 일차다항식이다.","sourceOriginalSnapshot":"archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/comparison/source-only-before.js","priorR1FreezeInvalidatedByInputChange":"archive/analysis/19_금당고_2학기_기말_고1_기출/h1-fast-lane-c-20261013/R1/r1-composite-independent-freeze-22.json"},
-    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q08.png",
-    "solutionImageAlt": "수직점근선 x=-2, 수평점근선 y=1과 원점 O를 지나는 그래프",
-    "solutionImageCaption": "점근선의 위치와 원점 통과를 그래프에서 확인한다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q08-solution.svg",
+    "solutionImageAlt": "x=−2, y=1을 점근선으로 하고 원점을 지나는 유리함수",
+    "solutionImageCaption": "원본 그림의 점근선과 원점을 이용해 P(x)=x를 결정한다.",
+    "solutionImageSize": "large"
   },
   {
     "id": 9,
@@ -463,7 +473,7 @@ window.questionBank = [
       "대칭이동"
     ],
     "answer": "④",
-    "solution": "직선 $y=x-2$는 기울기가 1인 직선이다. 점 $(x,y)$를 이 직선에 대칭이동하면 $(y+2,x-2)$가 된다.\n원의 중심 $(5,1)$은 $(3,3)$으로 옮겨지고 반지름 1은 그대로이다.\n대칭이동한 원은 $(x-3)^2+(y-3)^2=1$이므로 $a=3,b=3,c=1$이다.\n따라서 $a+b+c=7$이고 정답은 ④이다.",
+    "solution": "원은 직선에 대하여 대칭이동해도 반지름이 변하지 않으므로 중심이 이동한 좌표만 구하면 된다.\n처음 원 $(x-5)^2+(y-1)^2=1$의 중심은 $(5,1)$이고 반지름은 $1$이다.\n대칭축 $y=x-2$를 $y+2=x$로 쓰면, 이 직선에 대한 대칭에서는 점 $(u,v)$가\n$(v+2,u-2)$로 옮겨진다.\n따라서 중심 $(5,1)$은\n$(5,1)\\rightarrow(1+2,5-2)=(3,3)$으로 옮겨진다.\n대칭이동한 원의 반지름도 $1$이므로 그 방정식은\n$(x-3)^2+(y-3)^2=1$이다.\n이를 주어진 식과 비교하면\n$a=3,\\ b=3,\\ c=1$이다.\n따라서 $a+b+c=3+3+1=7$이다.\n\n따라서 정답은 ④이다.",
     "category": "도형의 이동",
     "originalCategory": "도형의 이동",
     "standardCourse": "수학(상)",
@@ -477,8 +487,8 @@ window.questionBank = [
     "subUnit": "대칭이동",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "problemTypeKey": "PT_MOVE_LINE_REFLECTION",
-    "templateKey": "TT_LINE_REFLECTION_EQUATION",
+    "problemTypeKey": "PT_MOVE_CIRCLE_REFLECTION",
+    "templateKey": "TT_CIRCLE_REFLECTION_CENTER_RELATION",
     "crossConceptKeys": ["CC_CIRCLE_EQUATION"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
@@ -518,10 +528,15 @@ window.questionBank = [
     "tags": [
       "객관식",
       "무리함수",
-      "교점"
+      "교점",
+      "그래프"
     ],
     "answer": "④",
-    "solution": "제곱근을 $t=\\sqrt{x-3}$으로 놓으면 $t\\ge0$, $x=t^2+3$이다. 교점에서는 $t=x+k$이므로\n$t=t^2+3+k$, 즉 $t^2-t+(k+3)=0$이다.\n$k=-3$이면 $t=0,1$의 두 해가 있어 교점이 2개이다. $k=-4$이면 두 근 중 하나만 양수이고, $k=-5$도 두 근 중 하나만 양수이다. $k=-2,-1$에서는 실근이 없다.\n따라서 교점이 1개인 정수 $k$의 최댓값은 $-4$이고 정답은 ④이다.",
+    "solution": "두 그래프의 교점 개수를 구할 때에는 제곱근의 값이 음수가 될 수 없다는 조건이 중요하다.\n$t=\\sqrt{x-3}$으로 두면 $t\\ge0$이고\n$x=t^2+3$이다.\n교점에서는 $t=x+k$이므로\n$t=t^2+3+k$\n$t^2-t+(k+3)=0$이다.\n따라서 이 이차방정식의 근 중 $t\\ge0$인 근의 개수가 실제 교점의 개수이다.\n\n① $k\\le-4$이면 $k+3<0$이다.\n두 근의 곱이 음수이므로 한 근은 양수, 다른 근은 음수이다.\n$t\\ge0$인 근은 양수인 것 하나뿐이므로 교점은 정확히 $1$개이다.\n\n② $k=-3$이면\n$t^2-t=t(t-1)=0$이므로\n$t=0$ 또는 $t=1$이다.\n두 값 모두 $t\\ge0$을 만족하므로 교점은 $2$개이다.\n\n③ $k\\ge-2$이면\n판별식 $D=(-1)^2-4(k+3)=-4k-11<0$이므로 실근이 없고 교점도 없다.\n\n따라서 교점이 정확히 하나인 정수 $k$는 $k\\le-4$이고, 그 최댓값은 $-4$이다.\n\n따라서 정답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "k=−3에서는 교점 두 개, k=−4에서는 한 개가 생긴다.",
+    "solutionImageAlt": "무리함수 y=√(x−3)과 y=x−3, y=x−4의 교점 수 비교",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q10-solution.svg",
     "category": "무리함수",
     "originalCategory": "무리함수",
     "standardCourse": "수학(하)",
@@ -579,10 +594,15 @@ window.questionBank = [
     "tags": [
       "객관식",
       "무리함수",
-      "교점"
+      "교점",
+      "그래프"
     ],
     "answer": "②",
-    "solution": "두 그래프의 교점에서는 $x=3\\sqrt{y+1}-2$, $y=3\\sqrt{x+1}-2$가 함께 성립한다. $u=\\sqrt{x+1}$, $v=\\sqrt{y+1}$로 두면\n$v^2=3u-1$, $u^2=3v-1$이다. 두 식을 빼면 $(u-v)(u+v+3)=0$이고 $u+v+3>0$이므로 $u=v$, 따라서 $x=y$이다.\n$t=\\sqrt{x+1}$이라 두면 $t^2-1=3t-2$, 즉 $t^2-3t+1=0$이다. 두 양의 근은 $\\dfrac{3\\pm\\sqrt5}{2}$이고, 이에 대응하는 $x$좌표는 $\\dfrac{5\\pm3\\sqrt5}{2}$이다.\n두 교점은 $y=x$ 위에 있으므로 거리는 $\\sqrt2$ 곱하기 $x$좌표 차이다. 따라서 거리는 $3\\sqrt{10}$이고 $a+b=3+10=13$이므로 정답은 ②이다.",
+    "solution": "두 식은 $x,y$를 서로 바꾸면 같은 관계가 된다.\n교점이 왜 직선 $y=x$ 위에 있는지 먼저 확인한다.\n$u=\\sqrt{x+1}$, $v=\\sqrt{y+1}$이라 두면 $u,v\\ge0$이고\n$x=u^2-1,\\ y=v^2-1$이다.\n주어진 두 식을 각각 대입하면\n$v^2-1=3u-2$에서 $v^2=3u-1$,\n$u^2-1=3v-2$에서 $u^2=3v-1$이다.\n두 식을 빼면\n$v^2-u^2=3u-3v$\n$(v-u)(u+v)=-3(v-u)$\n$(v-u)(u+v+3)=0$이다.\n$u+v+3>0$이므로 $v=u$이고, 따라서 $y=x$이다.\n\n이제 교점의 좌표를 $(x,x)$라 두어 한 식에 대입한다.\n$x=3\\sqrt{x+1}-2$에서\n$t=\\sqrt{x+1}\\ge0$으로 두면 $x=t^2-1$이므로\n$t^2-1=3t-2$\n$t^2-3t+1=0$이다.\n근의 공식에 따라\n$t=\\dfrac{3\\pm\\sqrt5}{2}$이다.\n두 값 모두 양수이므로 실제 교점에 대응한다.\n$x=t^2-1$에 대입하면\n$x_1=\\dfrac{5-3\\sqrt5}{2}$,\n$x_2=\\dfrac{5+3\\sqrt5}{2}$이다.\n두 교점은 $(x_1,x_1)$과 $(x_2,x_2)$이므로\n$x_2-x_1=3\\sqrt5$이다.\n따라서 두 점 사이의 거리는\n$\\sqrt{(3\\sqrt5)^2+(3\\sqrt5)^2}$\n$=\\sqrt{90}=3\\sqrt{10}$이다.\n$a=3,\\ b=10$이므로 $a+b=13$이다.\n\n따라서 정답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 교점 모두 y=x 위에 있으므로 좌표 차이로 거리를 계산한다.",
+    "solutionImageAlt": "무리함수와 역함수의 두 교점이 y=x에 있는 그래프",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q11-solution.svg",
     "category": "무리함수",
     "originalCategory": "무리함수",
     "standardCourse": "수학(하)",
@@ -643,7 +663,7 @@ window.questionBank = [
       "최솟값"
     ],
     "answer": "④",
-    "solution": "점 $A$를 $y$축에 대칭이동한 점은 $A_1=(-3,4)$이고, $A$를 직선 $y=x$에 대칭이동한 점은 $A_2=(4,3)$이다. 반사 성질에 따라 원래 둘레 $AB+BC+CA$는 $A_1B+BC+CA_2$와 같다.\n선분 $A_1A_2$는 두 제한선 $y$축과 $y=x$를 차례로 만나므로 이 경로가 최소가 된다.\n$A_1A_2=\\sqrt{(4+3)^2+(3-4)^2}=\\sqrt{50}=5\\sqrt2$이다. 정답은 ④이다.",
+    "solution": "삼각형의 둘레 $AB+BC+CA$가 최소가 되도록 하려면 대칭이동을 이용해 꺾인 경로를 하나의 직선거리로 바꾼다.\n점 $A(3,4)$를 $y$축에 대하여 대칭이동한 점을 $A_1$이라 하면\n$A_1=(-3,4)$이다.\n$B$는 $y$축 위의 점이므로\n$AB=A_1B$이다.\n또 점 $A$를 직선 $y=x$에 대하여 대칭이동한 점을 $A_2$라 하면\n$A_2=(4,3)$이다.\n$C$는 직선 $y=x$ 위에 있으므로\n$CA=CA_2$이다.\n따라서 둘레는\n$AB+BC+CA=A_1B+BC+CA_2$이다.\n세 점 사이를 차례로 잇는 경로의 길이는 양 끝점 사이의 직선거리보다 짧을 수 없으므로\n$A_1B+BC+CA_2\\ge A_1A_2$이다.\n\n여기서 실제로 등호가 가능한지도 살펴야 한다.\n두 점 $A_1(-3,4)$, $A_2(4,3)$을 잇는 직선은\n$y=4-\\dfrac{x+3}{7}=\\dfrac{25-x}{7}$이다.\n이 직선은 $y$축과 점 $B(0,\\dfrac{25}{7})$에서 만나고,\n$y=x$와 점 $C(\\dfrac{25}{8},\\dfrac{25}{8})$에서 만난다.\n두 점이 선분 $A_1A_2$ 위에 $A_1,B,C,A_2$ 순서로 놓이므로 등호가 실제로 성립한다.\n따라서 최솟값은\n$A_1A_2=\\sqrt{(4-(-3))^2+(3-4)^2}$\n$=\\sqrt{7^2+(-1)^2}$\n$=\\sqrt{50}=5\\sqrt2$이다.\n\n따라서 정답은 ④이다.",
     "category": "평면좌표",
     "originalCategory": "평면좌표",
     "standardCourse": "수학(상)",
@@ -707,7 +727,7 @@ window.questionBank = [
       "경우의 수"
     ],
     "answer": "③",
-    "solution": "첫째 자리와 끝자리가 모두 1인 경우부터 센다. 숫자 1,2,3의 이름은 대칭적이므로 첫째 자리를 고르는 방법은 3가지이다.\n첫째 자리를 1로 고정하면 둘째 자리는 2 또는 3이다. 둘째가 2일 때 셋째가 1이면 넷째는 2가지, 셋째가 3이면 넷째는 1가지이므로 3가지이다. 둘째가 3일 때도 3가지이다.\n따라서 첫째를 고정했을 때 6가지, 모두 $3\\times6=18$가지이다. 정답은 ③이다.",
+    "solution": "같은 숫자가 이웃하지 않고 첫 자리와 끝자리가 같은 다섯 자리 수를 센다.\n숫자 $1,2,3$은 서로 같은 역할이므로 먼저 첫째와 다섯째 자리를 모두 $1$로 고정하여 세고, 마지막에 $3$을 곱한다.\n이때 둘째 자리는 $1$과 달라야 하므로 $2$ 또는 $3$의 $2$가지이다.\n\n① 둘째 자리가 $2$인 경우\n셋째 자리가 $1$이면 넷째 자리는 $2,3$의 $2$가지이다.\n셋째 자리가 $3$이면 넷째는 셋째 숫자 $3$과 끝자리 $1$ 모두와 달라야 하므로 $2$의 $1$가지이다.\n따라서 $2+1=3$가지이다.\n\n② 둘째 자리가 $3$인 경우\n숫자 $2,3$의 역할을 바꾸면 첫째 경우와 같으므로 $3$가지이다.\n\n처음과 끝이 모두 $1$인 경우는 $3+3=6$가지이다.\n처음과 끝이 모두 $2$인 경우와 모두 $3$인 경우도 각각 $6$가지이므로\n$3\\cdot6=18$가지이다.\n\n따라서 정답은 ③이다.",
     "category": "순열",
     "originalCategory": "순열",
     "standardCourse": "수학(하)",
@@ -761,7 +781,7 @@ window.questionBank = [
       "접선"
     ],
     "answer": "⑤",
-    "solution": "이동 전 원의 중심은 $(a,a)$이고, $y$축 방향으로 -2만큼 옮긴 뒤 중심은 $(a,a-2)$이다.\n$x$축에 접하므로 중심의 $y$좌표와 반지름이 같아 $b=a-2$이다. 중심에서 직선 $y=x$까지의 거리는 $\\dfrac{|a-(a-2)|}{\\sqrt2}=\\sqrt2$이므로 $b=\\sqrt2$, $a=2+\\sqrt2$이다.\n$2a^2-8b=2(2+\\sqrt2)^2-8\\sqrt2=12$이므로 정답은 ⑤이다.",
+    "solution": "원을 평행이동할 때 중심의 좌표는 이동하지만 반지름은 변하지 않는다.\n원 $(x-a)^2+(y-a)^2=b^2$의 중심은 $(a,a)$이고 반지름은 $b>0$이다.\n이 원을 아래로 $2$만큼 평행이동한 뒤의 중심은\n$C(a,a-2)$이고 반지름은 여전히 $b$이다.\n\n① $x$축과 접한다는 조건\n중심에서 $x$축까지의 거리가 반지름과 같으므로\n$|a-2|=b$이다.\n$a>2$이므로 $a-2>0$, 따라서\n$b=a-2$이다.\n\n② 직선 $y=x$와 접한다는 조건\n직선을 $x-y=0$으로 나타내면 중심 $C$에서 이 직선까지의 거리는\n$\\dfrac{|a-(a-2)|}{\\sqrt{1^2+(-1)^2}}$\n$=\\dfrac2{\\sqrt2}=\\sqrt2$이다.\n이 거리가 반지름과 같으므로\n$b=\\sqrt2$이다.\n따라서 $a-2=b$에서 $a=2+\\sqrt2$이다.\n\n구하는 식에 대입하면\n$2a^2-8b$\n$=2(2+\\sqrt2)^2-8\\sqrt2$\n$=2(6+4\\sqrt2)-8\\sqrt2$\n$=12$이다.\n\n따라서 정답은 ⑤이다.",
     "category": "원의 방정식",
     "originalCategory": "원의 방정식",
     "standardCourse": "수학(상)",
@@ -775,16 +795,16 @@ window.questionBank = [
     "subUnit": "원과 접선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "problemTypeKey": "PT_CIRCLE_TANGENT",
-    "templateKey": "TM_TANGENT_GIVEN_SLOPE",
+    "problemTypeKey": "PT_CIRCLE_EQUATION",
+    "templateKey": "TM_CIRCLE_MULTI_LINE_TANGENT",
     "crossConceptKeys": ["CC_TRANSLATION"],
     "conditionKeys": ["COND_POSITIVE"],
     "integrationPattern": "SEQUENTIAL",
     "rpmPath": {
       "majorUnit": "도형의 방정식",
       "midUnit": "원의 방정식",
-      "l3": "원의 접선",
-      "l4": "기울기가 주어진 접선"
+      "l3": "원의 방정식",
+      "l4": "여러 직선에 접하는 원의 조건"
     },
     "rpmPrimaryMappingStatus": "DIRECT_ACTIVE",
     "difficultyBucket": 3,
@@ -819,7 +839,7 @@ window.questionBank = [
       "순열"
     ],
     "answer": "②",
-    "solution": "소수는 $2,3,5,7$이다. 큰 수부터 세어 62번째를 찾는다.\n백의 자리가 $9$ 또는 $8$이면 나머지 두 자리는 서로 다른 소수여야 하므로 각각 $4\\cdot3=12$개, 합 $24$개이다.\n백의 자리가 $7$이면 뒤의 두 자리는 $7$을 제외한 8개 숫자 중 서로 다르게 고른다. 모두 $8\\cdot7=56$가지이다. 이 가운데 두 자리가 모두 합성수 또는 1인 경우는 $1,4,6,8,9$ 중 서로 다르게 고르는 $5\\cdot4=20$가지이다. 따라서 적어도 하나의 소수가 더 포함되는 경우는 $56-20=36$가지이다.\n따라서 백의 자리가 $9$, $8$, $7$인 경우까지 $24+36=60$개이다. 백의 자리가 $6$일 때 소수가 두 개 이상이려면 십의 자리와 일의 자리가 서로 다른 소수여야 한다. 큰 수부터 보면 처음 두 수는 $675,673$이므로 62번째는 $673$이고 정답은 ②이다.",
+    "solution": "서로 다른 세 숫자를 큰 수부터 나열하므로 백의 자리 숫자에 따라 앞에서부터 몇 개가 나오는지 세면 된다.\n$1$부터 $9$까지의 소수는 $2,3,5,7$이다.\n\n① 백의 자리가 $9$ 또는 $8$인 경우\n백의 자리는 소수가 아니므로 십의 자리와 일의 자리가 모두 소수여야 한다.\n서로 다른 소수 $4$개 중 $2$개를 순서 있게 고르는 방법은\n$4\\cdot3=12$가지이다.\n따라서 백의 자리가 $9,8$인 경우는 모두\n$12+12=24$가지이다.\n\n② 백의 자리가 $7$인 경우\n$7$은 소수이므로 나머지 두 자리 중 적어도 하나가 소수이면 된다.\n$7$을 제외한 $8$개 숫자에서 두 자리를 순서 있게 정하는 전체 방법은\n$8\\cdot7=56$가지이다.\n그중 나머지 두 자리에 소수가 전혀 없는 경우는\n$1,4,6,8,9$의 $5$개 중 두 개를 골라 배열하는 $5\\cdot4=20$가지이다.\n따라서 $56-20=36$가지이다.\n여기까지의 누적은 $24+36=60$가지이다.\n\n③ 백의 자리가 $6$인 경우\n$6$은 소수가 아니므로 십의 자리와 일의 자리가 서로 다른 소수여야 한다.\n큰 수부터 나열하면\n$675$가 $61$번째,\n$673$이 $62$번째이다.\n따라서 구하는 비밀번호는 $673$이다.\n\n따라서 정답은 ②이다.",
     "category": "순열",
     "originalCategory": "순열",
     "standardCourse": "수학(하)",
@@ -880,7 +900,7 @@ window.questionBank = [
       "경우의 수"
     ],
     "answer": "④",
-    "solution": "조건을 만족하는 격자점은 $x^2+y^2\\le4$인 13개이다. 전체 4점 선택은 $\\binom{13}4=715$가지이다.\n네 점 중 세 점이 한 직선 위에 있으면 사각형이 퇴화한다. 5점이 놓인 직선은 $x$축과 $y$축 두 개이다. 정확히 3점이 놓인 직선은 $x=\\pm1$, $y=\\pm1$의 네 선, $y=\\pm x$의 두 선, $x+y=\\pm2$와 $x-y=\\pm2$의 네 선으로 모두 10개이다.\n5점 직선 하나에서 네 점을 고르는 퇴화 선택은 $\\binom54=5$가지이다. 그 직선 위 세 점과 바깥 8점 중 하나를 고르는 경우는 $\\binom53\\cdot8=80$가지이다. 정확히 3점이 놓인 직선 하나마다 그 세 점과 나머지 10점 중 한 점을 더하는 10가지가 있다.\n따라서 퇴화 선택은 $2(5+80)+10\\cdot10=270$가지이고, 사각형은 $715-270=445$개이다. 정답은 ④이다.",
+    "solution": "조건 $x^2+y^2\\le4$를 만족하는 정수 격자점을 먼저 세고, 그중 $4$개가 사각형을 만들지 못하는 경우를 빼야 한다.\n\n① 가능한 격자점의 수\n$x=0$이면 $y=-2,-1,0,1,2$의 $5$개,\n$x=\\pm1$이면 각각 $y=-1,0,1$의 $3$개씩,\n$x=\\pm2$이면 각각 $y=0$의 $1$개씩이다.\n따라서 격자점은\n$5+2\\cdot3+2\\cdot1=13$개이다.\n전체에서 서로 다른 $4$점을 고르는 방법은\n${}_{13}C_{4}=715$가지이다.\n\n② 사각형이 되지 못하는 경우\n선택한 네 점 중 세 점 이상이 한 직선 위에 있으면 사각형의 네 꼭짓점으로 쓸 수 없다.\n먼저 $x$축과 $y$축에는 각각 $5$개의 격자점이 있다.\n그러한 직선 하나에서 $4$점 모두 고르면\n${}_{5}C_{4}=5$가지이고,\n그 직선의 $3$점과 직선 밖 $8$점 중 $1$점을 고르면\n${}_{5}C_{3}\\cdot8=10\\cdot8=80$가지이다.\n따라서 두 좌표축에서 발생하는 경우는\n$2(5+80)=170$가지이다.\n\n정확히 $3$개의 격자점이 놓인 직선은 다음과 같다.\n$x=1,\\ x=-1,\\ y=1,\\ y=-1$의 $4$개,\n$y=x,\\ y=-x$의 $2$개,\n$x+y=2,\\ x+y=-2,\\ x-y=2,\\ x-y=-2$의 $4$개로 모두 $10$개이다.\n각 직선 위 세 점을 고정하고, 그 직선 밖의 나머지 $10$점 중 한 점을 택하는 방법은 $10$가지이므로\n$10\\cdot10=100$가지이다.\n서로 다른 직선에서 세 점을 동시에 고르는 중복은 생기지 않는다. 네 점 안에서 서로 다른 두 직선에 각각 세 점을 놓으려면 두 직선이 서로 다른 두 점을 공유해야 하기 때문이다.\n\n따라서 사각형이 되지 못하는 경우는\n$170+100=270$가지이고,\n구하는 사각형의 개수는\n$715-270=445$개이다.\n\n따라서 정답은 ④이다.",
     "category": "조합",
     "originalCategory": "조합",
     "standardCourse": "수학(하)",
@@ -946,8 +966,10 @@ window.questionBank = [
       "최솟값"
     ],
     "answer": "⑤",
-    "solution": "$P=(x,\\sqrt{x})$로 놓고 $t=\\sqrt{x}\\ge0$라 두면 $P=(t^2,t)$이다.\n직선 $AB$는 $A(-1,0)$, $B(0,1)$을 지나므로 $y=x+1$이다.\n선분 $AB$의 길이는 $\\sqrt{(0+1)^2+(1-0)^2}=\\sqrt2$이다. 점 $P(t^2,t)$에서 직선 $AB$까지의 거리는\n$\\dfrac{|t^2-t+1|}{\\sqrt2}$이다.\n$t^2-t+1=(t-\\dfrac12)^2+\\dfrac34>0$이므로 이 거리는 $\\dfrac{t^2-t+1}{\\sqrt2}$이다.\n따라서 삼각형 $ABP$의 넓이는\n$\\dfrac12\\cdot\\sqrt2\\cdot\\dfrac{t^2-t+1}{\\sqrt2}=\\dfrac12(t^2-t+1)$이다.\n같은 완전제곱식으로 넓이의 최솟값은 $\\dfrac12\\cdot\\dfrac34=\\dfrac38$이다. 따라서 $a=3,b=8$이고 $b-a=5$이므로 정답은 ⑤이다.",
+    "solution": "삼각형 $ABP$의 넓이는 밑변 $AB$의 길이가 일정하므로 점 $P$에서 직선 $AB$까지의 거리가 가장 작을 때 최소가 된다.\n곡선 $y=\\sqrt{x}$ 위의 점은 $x\\ge0$이므로\n$t=\\sqrt{x}\\ge0$으로 두면\n$P=(t^2,t)$이다.\n\n두 점 $A(-1,0)$, $B(0,1)$을 지나는 직선은\n$y=x+1$, 즉 $x-y+1=0$이다.\n선분 $AB$의 길이는\n$AB=\\sqrt{(0+1)^2+(1-0)^2}=\\sqrt2$이다.\n점 $P(t^2,t)$에서 직선 $AB$까지의 거리는\n$d=\\dfrac{|t^2-t+1|}{\\sqrt{1^2+(-1)^2}}$\n$=\\dfrac{|t^2-t+1|}{\\sqrt2}$이다.\n여기서\n$t^2-t+1=\\left(t-\\dfrac12\\right)^2+\\dfrac34>0$이므로 절댓값을 없앨 수 있다.\n\n따라서 삼각형의 넓이는\n$S=\\dfrac12\\cdot AB\\cdot d$\n$=\\dfrac12\\cdot\\sqrt2\\cdot\\dfrac{t^2-t+1}{\\sqrt2}$\n$=\\dfrac12(t^2-t+1)$\n$=\\dfrac12\\left(t-\\dfrac12\\right)^2+\\dfrac38$이다.\n제곱항은 항상 $0$ 이상이고, $t=\\dfrac12\\ge0$일 때 실제로 $0$이 된다.\n따라서 넓이의 최솟값은 $\\dfrac38$이다.\n$a=3,\\ b=8$이므로\n$b-a=8-3=5$이다.\n\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "곡선 위 점 P(1/4,1/2)에서 직선 AB로 내린 수선의 발 H와 삼각형 넓이의 최솟값",
+    "solutionImageCaption": "밑변 AB는 일정하므로 높이 PH가 최소인 경우가 넓이의 최솟값이다.",
     "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q17-solution.svg",
     "category": "무리함수",
     "originalCategory": "무리함수",
@@ -970,8 +992,8 @@ window.questionBank = [
     "rpmPath": {
       "majorUnit": "함수",
       "midUnit": "무리함수",
-      "l3": "무리함수의 그래프",
-      "l4": "기본 그래프"
+      "l3": "무리함수의 활용",
+      "l4": "삼각형 넓이의 최솟값"
     },
     "rpmPrimaryMappingStatus": "RPM_PRIMARY_MIGRATION_GAP",
     "difficultyBucket": 3,
@@ -1006,10 +1028,15 @@ window.questionBank = [
     "tags": [
       "객관식",
       "유리함수",
-      "역함수"
+      "역함수",
+      "그래프"
     ],
     "answer": "②",
-    "solution": "조건 (가)를 식으로 바꾼다.\n$f^{-1}(x)=\\dfrac{a-bx}{x-3}$이고 $f(x+5)+5=\\dfrac{8x+a+5b+40}{x+b+5}$이다. 두 식이 같으므로 분모의 이차식 계수를 비교하면 $-b=8$, 따라서 $b=-8$이다.\n조건 (나)에 따라 $f^{-1}(x)$는 $y=\\dfrac6x$를 평행이동한 꼴이다. $b=-8$을 대입하면 $f^{-1}(x)=\\dfrac{a+8x}{x-3}=8+\\dfrac{a+24}{x-3}$이다. 분자 계수가 6이어야 하므로 $a+24=6$, $a=-18$이다.\n따라서 $a+b=-26$이고 정답은 ②이다.",
+    "solution": "두 함수가 서로 역함수이고 주어진 그래프 관계를 만족하므로, 먼저 유리함수를 점근선이 보이는 형태로 정리한다.\n$f(x)=\\dfrac{3x+a}{x+b}$에서\n$3x+a=3(x+b)+(a-3b)$이므로\n$f(x)=3+\\dfrac{a-3b}{x+b}$이다.\n역함수를 구하기 위해\n$y=\\dfrac{3x+a}{x+b}$를 $x$에 대해 풀면\n$y(x+b)=3x+a$\n$x(y-3)=a-by$\n$x=\\dfrac{a-by}{y-3}$이다.\n따라서\n$f^{-1}(x)=\\dfrac{a-bx}{x-3}$\n$=-b+\\dfrac{a-3b}{x-3}$이다.\n\n조건 (나)에서 역함수의 그래프는 $y=\\dfrac6x$를 평행이동한 그래프이다.\n평행이동은 분자에 있는 $6$의 값을 바꾸지 않으므로\n$a-3b=6$이다.\n특히 이 값은 $0$이 아니므로 두 유리함수에는 수직점근선이 존재한다.\n\n이제 조건 (가)를 이용한다.\n$f(x+5)+5$\n$=3+\\dfrac{a-3b}{x+b+5}+5$\n$=8+\\dfrac6{x+b+5}$이다.\n한편\n$f^{-1}(x)=-b+\\dfrac6{x-3}$이다.\n두 식이 같은 유리함수이므로 수평점근선을 비교하면\n$-b=8$,\n즉 $b=-8$이다.\n이때 오른쪽 식의 분모는\n$x+b+5=x-3$이어서 수직점근선도 일치한다.\n\n앞에서 얻은 $a-3b=6$에 $b=-8$을 대입하면\n$a+24=6$\n$a=-18$이다.\n따라서\n$a+b=-18-8=-26$이다.\n\n따라서 정답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "역함수의 두 점근선은 x=3, y=8이다.",
+    "solutionImageAlt": "유리함수 y=3+6/(x−8)과 역함수 y=8+6/(x−3)의 점근선 관계",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q18-solution.svg",
     "category": "역함수",
     "originalCategory": "역함수",
     "standardCourse": "수학(하)",
@@ -1064,7 +1091,7 @@ window.questionBank = [
       "교점"
     ],
     "answer": "⑤",
-    "solution": "반원은 $x^2+y^2=289$, $y\\ge0$이고 직선은 $x+y=k$이다. 원과 직선의 교점에서 $y=k-x$를 대입하면\n$2x^2-2kx+k^2-289=0$이다. 판별식은 $4(578-k^2)$이므로 서로 다른 두 실근을 위해 $k<17\\sqrt2$이다.\n두 교점이 모두 반원 위에 있으려면 두 $y$좌표 $(k\\pm\\sqrt{578-k^2})/2$가 0 이상이어야 한다. 작은 값이 0 이상일 조건은 $k\\ge\\sqrt{578-k^2}$, 즉 $k\\ge17$이다.\n따라서 정수 $k$는 $17\\le k<17\\sqrt2$이고 최댓값은 24, 정답은 ⑤이다.",
+    "solution": "반원의 방정식 $y=\\sqrt{289-x^2}$는\n$x^2+y^2=289,\\quad y\\ge0$\n인 원점 중심, 반지름 $17$인 윗반원을 뜻한다.\n직선 $y=-x+k$를 $x+y=k$로 쓰면, 원과 직선의 교점을 구할 수 있다.\n\n직선에서 $y=k-x$를 원의 식에 대입하면\n$x^2+(k-x)^2=289$\n$2x^2-2kx+k^2-289=0$이다.\n서로 다른 두 교점을 얻으려면 이 이차방정식의 판별식이 양수여야 한다.\n$D=(-2k)^2-4\\cdot2(k^2-289)$\n$=4(578-k^2)>0$이므로\n$k^2<578$이다.\n$k$는 양수이므로 $k<\\sqrt{578}=17\\sqrt2$이다.\n\n그러나 원 전체와 두 점에서 만나는 것만으로는 부족하다. 두 점이 모두 윗반원에 있어야 하므로 $y\\ge0$ 조건을 확인한다.\n교점의 $x$좌표는\n$x=\\dfrac{k\\pm\\sqrt{578-k^2}}2$이고,\n$y=k-x$이므로 두 $y$좌표는\n$\\dfrac{k\\mp\\sqrt{578-k^2}}2$이다.\n이 가운데 작은 값도 $0$ 이상이어야 하므로\n$k-\\sqrt{578-k^2}\\ge0$이다.\n양변이 $0$ 이상인 조건에서 제곱하면\n$k^2\\ge578-k^2$\n$2k^2\\ge578$\n$k^2\\ge289$이다.\n$k>0$이므로 $k\\ge17$이다.\n\n따라서 두 교점이 모두 윗반원 위에서 서로 다를 조건은\n$17\\le k<17\\sqrt2$이다.\n$17\\sqrt2$는 $24$보다 크고 $25$보다 작으므로, 가능한 양의 정수 $k$의 최댓값은 $24$이다.\n\n따라서 정답은 ⑤이다.",
     "category": "원과 직선",
     "originalCategory": "원과 직선",
     "standardCourse": "수학(상)",
@@ -1120,11 +1147,16 @@ window.questionBank = [
     "tags": [
       "객관식",
       "원의 방정식",
-      "도형의 평행이동"
+      "도형의 평행이동",
+      "도형"
     ],
     "image": "assets/images/19_금당고_2학기_기말_고1_기출/q20.png",
     "answer": "③",
-    "solution": "평행이동 벡터는 $(9-4,2-0)=(5,2)$이다. 따라서 $O′=(5,2)$, $A′=(9,2)$, $B′=(5,5)$이다. 두 변의 길이가 $4$, $3$인 직각삼각형이고 빗변의 길이는 $5$이다.\n직각삼각형의 넓이는 $\\dfrac12\\cdot4\\cdot3=6$이다. 내심에서 세 변에 내린 수선의 길이는 모두 내접원의 반지름 $r$이므로 삼각형 넓이는 $\\dfrac12(4+3+5)r=6r$이다. 따라서 $6r=6$, $r=1$이다.\n직각 꼭짓점 $O′=(5,2)$에서 두 변에 각각 거리 $1$만큼 떨어진 내심은 $(6,3)$이다. 원의 방정식은 $(x-6)^2+(y-3)^2=1$, 즉 $x^2+y^2-12x-6y+44=0$이다. 따라서 $a+b+c=26$이고 $\\dfrac{a+b+c}{2}=13$이므로 정답은 ③이다.",
+    "solution": "먼저 삼각형이 얼마만큼 평행이동했는지를 구해 세 꼭짓점의 새 좌표를 정한다.\n점 $A(4,0)$이 $A'(9,2)$로 이동했으므로 각 점의 좌표는\n$x$좌표에 $5$, $y$좌표에 $2$를 더한 것이다.\n따라서\n$O'=(5,2),\\quad A'=(9,2),\\quad B'=(5,5)$이다.\n\n삼각형 $O'A'B'$는 $O'$가 직각인 직각삼각형이며\n$O'A'=4,\\quad O'B'=3$이다.\n피타고라스 정리에 따라\n$A'B'=\\sqrt{4^2+3^2}=5$이다.\n\n내접원의 반지름을 $r$이라고 하자.\n삼각형의 넓이는\n$S=\\dfrac12\\cdot4\\cdot3=6$이다.\n내심에서 세 변까지의 거리가 모두 $r$이므로, 삼각형을 세 작은 삼각형으로 나누어 넓이를 더하면\n$S=\\dfrac12(4+3+5)r=6r$이다.\n따라서 $6r=6$에서 $r=1$이다.\n\n원은 두 직각변 $y=2$, $x=5$에 접하므로 내심은 두 직선에서 각각 안쪽으로 $1$만큼 떨어져 있다.\n따라서 내심은\n$C=(5+1,2+1)=(6,3)$이다.\n원의 방정식은\n$(x-6)^2+(y-3)^2=1$이다.\n이를 전개하면\n$x^2-12x+36+y^2-6y+9=1$\n$x^2+y^2-12x-6y+44=0$이다.\n따라서 $a=-12,\\ b=-6,\\ c=44$이므로\n$\\dfrac{a+b+c}{2}=\\dfrac{-12-6+44}{2}=\\dfrac{26}{2}=13$이다.\n\n따라서 정답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "내심 C는 두 직각변에서 1만큼 떨어져 있다.",
+    "solutionImageAlt": "평행이동한 직각삼각형 O'A'B'과 내심 C(6,3), 반지름 1인 내접원",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q20-solution.svg",
     "category": "원의 방정식",
     "originalCategory": "원의 방정식",
     "standardCourse": "수학(상)",
@@ -1169,11 +1201,16 @@ window.questionBank = [
     "tags": [
       "서술형",
       "유리함수",
-      "최솟값"
+      "최솟값",
+      "그래프"
     ],
     "image": "assets/images/19_금당고_2학기_기말_고1_기출/q21.png",
     "answer": "$5+2\\sqrt{5}$",
-    "solution": "$t=x-2$라 두면 $t>0$, $x=t+2$이고 그래프의 식에서 $y=\\dfrac5t+3$이다. 직사각형의 둘레는 $2(x+y)$이므로 $x+y=t+\\dfrac5t+5$이다.\n산술-기하 평균에 의해 $t+\\dfrac5t\\ge2\\sqrt5$이고, 등호는 $t=\\sqrt5$일 때 성립한다. 이때 $x=2+\\sqrt5$, $y=3+\\sqrt5$이므로 둘레가 최소이다.\n따라서 $(a,b)=(2+\\sqrt5,3+\\sqrt5)$이고 $a+b=5+2\\sqrt5$이다.",
+    "solution": "그림에서 점 $P$는 유리함수의 수직점근선 $x=2$보다 오른쪽 가지 위에 있으므로 $x>2$인 부분을 이용한다.\n점 $P(x,y)$가 제1사분면에 있으므로 직사각형 $OAPB$의 가로 길이는 $x$, 세로 길이는 $y$이다.\n따라서 둘레는\n$L=2x+2y=2(x+y)$이고, $x+y$가 최소일 때 둘레도 최소가 된다.\n\n$t=x-2$로 두면 그림의 오른쪽 가지 조건에 따라 $t>0$이다.\n$x=t+2$이고 함수식에서\n$y=\\dfrac5t+3$이므로\n$x+y=t+2+\\dfrac5t+3$\n$=t+\\dfrac5t+5$이다.\n\n양수 $t$에 대해\n$t+\\dfrac5t-2\\sqrt5$\n$=\\left(\\sqrt t-\\dfrac{\\sqrt5}{\\sqrt t}\\right)^2\\ge0$이다.\n따라서\n$t+\\dfrac5t\\ge2\\sqrt5$이고,\n등호는 $\\sqrt t=\\dfrac{\\sqrt5}{\\sqrt t}$, 즉\n$t=\\sqrt5$일 때 성립한다.\n그러므로 $x+y$의 최솟값은 $5+2\\sqrt5$이다.\n\n등호일 때 $t=\\sqrt5$이므로\n$x=2+\\sqrt5$,\n$y=3+\\dfrac5{\\sqrt5}=3+\\sqrt5$이다.\n따라서 구하는 점은\n$(a,b)=(2+\\sqrt5,3+\\sqrt5)$이고\n$a+b=5+2\\sqrt5$이다.\n\n따라서 구하는 값은 $5+2\\sqrt5$이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "오른쪽 가지 x>2에서 P=(2+√5, 3+√5)일 때 둘레가 최소이다.",
+    "solutionImageAlt": "그림의 오른쪽 가지에서 점 P의 직사각형 둘레가 최소인 위치",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q21-solution.svg",
     "category": "유리함수",
     "originalCategory": "유리함수",
     "standardCourse": "수학(하)",
@@ -1225,10 +1262,15 @@ window.questionBank = [
     "tags": [
       "서술형",
       "무리함수",
-      "역함수"
+      "역함수",
+      "그래프"
     ],
     "answer": "$\\dfrac{15\\sqrt{2}}{4}$",
-    "solution": "$f$의 그래프 위의 점을 $P=(x,y)$라 하면 $x=-t^2-4$, $y=-t$인 $t=\\sqrt{-x-4}\\ge0$로 나타낼 수 있다. 역함수 그래프는 $y=x$에 대한 대칭이므로 대응점은 $P'=(y,x)$이다. 두 점의 합은 $x+y=-t^2-t-4$이므로 직선 $y=-x+n$ 위에 함께 놓인다.\n$AB=PP'=\\sqrt{(x-y)^2+(y-x)^2}=\\sqrt2|x-y|=\\sqrt2(t^2-t+4)$이다.\n$t^2-t+4=(t-\\dfrac12)^2+\\dfrac{15}4$이므로 최솟값은 $\\dfrac{15\\sqrt2}{4}$이다. 해당 점은 $n=x+y=-\\dfrac{19}4\\le-4$를 만족하므로 조건 안에서 실제로 달성된다.",
+    "solution": "함수와 역함수의 그래프는 직선 $y=x$에 대하여 대칭이다.\n또 직선 $y=-x+n$은 $x+y=n$으로 나타낼 수 있으므로, 좌표 $(x,y)$를 $(y,x)$로 바꾸어도 같은 직선 위에 있다.\n따라서 이 직선이 함수 그래프와 만나는 점을 $A=(x,y)$라고 하면, 역함수 그래프와 만나는 대응점은 $B=(y,x)$이다.\n\n함수 $f(x)=-\\sqrt{-x-4}$에서\n$t=\\sqrt{-x-4}\\ge0$으로 두면\n$x=-t^2-4,\\quad y=-t$이다.\n따라서\n$A=(-t^2-4,-t)$,\n$B=(-t,-t^2-4)$이다.\n두 점의 좌표합은 모두\n$x+y=-t^2-t-4$이므로 같은 직선\n$y=-x+n$ 위에 있으며\n$n=-t^2-t-4\\le-4$이다.\n즉 문제의 $n$ 조건도 항상 만족한다.\n\n이제 두 점 사이의 거리를 구한다.\n두 점의 $x$좌표 차와 $y$좌표 차는 절댓값이 모두\n$|(-t^2-4)-(-t)|=|t^2-t+4|$\n이다.\n따라서\n$AB=\\sqrt{(t^2-t+4)^2+(t^2-t+4)^2}$\n$=\\sqrt2\\,|t^2-t+4|$이다.\n여기서 완전제곱식으로 정리하면\n$t^2-t+4=\\left(t-\\dfrac12\\right)^2+\\dfrac{15}{4}>0$이므로\n$AB=\\sqrt2\\left(\\left(t-\\dfrac12\\right)^2+\\dfrac{15}{4}\\right)$이다.\n제곱항이 최소인 $t=\\dfrac12\\ge0$에서\n$AB$의 최솟값은\n$\\dfrac{15\\sqrt2}{4}$이다.\n\n이때 $n=-\\dfrac14-\\dfrac12-4=-\\dfrac{19}{4}\\le-4$이므로 최솟값을 실제로 만들 수 있다.\n따라서 구하는 최솟값은 $\\dfrac{15\\sqrt2}{4}$이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 점의 대응 관계가 거리 최소를 완전제곱식으로 바꾼다.",
+    "solutionImageAlt": "함수와 역함수 위의 서로 대칭인 A, B 및 x+y=−19/4",
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q22-solution.svg",
     "category": "무리함수",
     "originalCategory": "무리함수",
     "standardCourse": "수학(하)",
