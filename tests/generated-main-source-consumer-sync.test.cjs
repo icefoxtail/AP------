@@ -130,7 +130,7 @@ test('Pages release derives the complete source projection atomically without a 
   'only the inline registration step may push derived artifacts before compiling the projection');
  assert.equal((release.match(/git push origin HEAD:main/g)||[]).length,1,
   'Pages release has one controlled registration push, not a projection loop');
- assert.match(release,/chore\\(archive\\): sync registration artifacts \\[skip ci\\]/,
+ assert.ok(release.includes('chore(archive): sync registration artifacts [skip ci]'),
   'registration push must avoid recursive CI release loops');
 });
 
