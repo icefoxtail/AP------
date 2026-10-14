@@ -360,7 +360,7 @@ window.questionBank = [
       "역함수"
     ],
     "answer": "①",
-    "solution": "$g^{-1}(x)=f(x)$이므로 주어진 $g$의 식에서 역함수를 구해 $f$와 비교한다.\n$y=\\dfrac{bx+3}{cx+1}$이라 두면\n$y(cx+1)=bx+3$\n$cxy+y=bx+3$\n$(cy-b)x=3-y$\n$x=\\dfrac{3-y}{cy-b}=\\dfrac{y-3}{b-cy}$이다.\n따라서\n$g^{-1}(x)=\\dfrac{x-3}{b-cx}$이다.\n한편\n$f(x)=\\dfrac{-x+3}{x+a}=-\\dfrac{x-3}{x+a}$이다.\n두 식이 모든 허용되는 $x$에서 같으므로 분자의 공통인수 $x-3$을 제외하고 분모를 비교하면\n$b-cx=-(x+a)$\n$=-x-a$이다.\n$x$의 계수와 상수항을 비교하여\n$c=1,\\ b=-a$를 얻는다.\n그러므로\n$a+b+c=a-a+1=1$이다.\n\n따라서 정답은 ①이다.",
+    "solution": "$g^{-1}(x)=f(x)$이므로 주어진 $g$의 식에서 역함수를 구해 $f$와 비교한다.\n$y=\\dfrac{bx+3}{cx+1}$이라 두면\n$y(cx+1)=bx+3$\n$cxy+y=bx+3$\n$(cy-b)x=3-y$\n$x=\\dfrac{3-y}{cy-b}=\\dfrac{y-3}{b-cy}$이다.\n따라서\n$g^{-1}(x)=\\dfrac{x-3}{b-cx}$이다.\n한편\n$f(x)=\\dfrac{-x+3}{x+a}=-\\dfrac{x-3}{x+a}$이다.\n두 식이 모든 허용되는 $x$에서 같으므로 ($x\\ne3$인 값에서) 분자의 공통인수 $x-3$을 제외하고 분모를 비교하면\n$b-cx=-(x+a)$\n$=-x-a$이다.\n$x$의 계수와 상수항을 비교하여\n$c=1,\\ b=-a$를 얻는다.\n그러므로\n$a+b+c=a-a+1=1$이다.\n\n따라서 정답은 ①이다.",
     "category": "역함수",
     "originalCategory": "역함수",
     "standardCourse": "수학(하)",
@@ -965,8 +965,8 @@ window.questionBank = [
       "무리함수",
       "최솟값"
     ],
-    "answer": "⑤",
-    "solution": "삼각형 $ABP$의 넓이는 밑변 $AB$의 길이가 일정하므로 점 $P$에서 직선 $AB$까지의 거리가 가장 작을 때 최소가 된다.\n곡선 $y=\\sqrt{x}$ 위의 점은 $x\\ge0$이므로\n$t=\\sqrt{x}\\ge0$으로 두면\n$P=(t^2,t)$이다.\n\n두 점 $A(-1,0)$, $B(0,1)$을 지나는 직선은\n$y=x+1$, 즉 $x-y+1=0$이다.\n선분 $AB$의 길이는\n$AB=\\sqrt{(0+1)^2+(1-0)^2}=\\sqrt2$이다.\n점 $P(t^2,t)$에서 직선 $AB$까지의 거리는\n$d=\\dfrac{|t^2-t+1|}{\\sqrt{1^2+(-1)^2}}$\n$=\\dfrac{|t^2-t+1|}{\\sqrt2}$이다.\n여기서\n$t^2-t+1=\\left(t-\\dfrac12\\right)^2+\\dfrac34>0$이므로 절댓값을 없앨 수 있다.\n\n따라서 삼각형의 넓이는\n$S=\\dfrac12\\cdot AB\\cdot d$\n$=\\dfrac12\\cdot\\sqrt2\\cdot\\dfrac{t^2-t+1}{\\sqrt2}$\n$=\\dfrac12(t^2-t+1)$\n$=\\dfrac12\\left(t-\\dfrac12\\right)^2+\\dfrac38$이다.\n제곱항은 항상 $0$ 이상이고, $t=\\dfrac12\\ge0$일 때 실제로 $0$이 된다.\n따라서 넓이의 최솟값은 $\\dfrac38$이다.\n$a=3,\\ b=8$이므로\n$b-a=8-3=5$이다.\n\n따라서 정답은 ⑤이다.",
+    "answer": "①",
+    "solution": "삼각형 $ABP$의 넓이는 밑변 $AB$의 길이가 일정하므로 점 $P$에서 직선 $AB$까지의 거리가 가장 작을 때 최소가 된다.\n곡선 $y=\\sqrt{x}$ 위의 점은 $x\\ge0$이므로\n$t=\\sqrt{x}\\ge0$으로 두면\n$P=(t^2,t)$이다.\n\n두 점 $A(-1,0)$, $B(0,1)$을 지나는 직선은\n$y=x+1$, 즉 $x-y+1=0$이다.\n선분 $AB$의 길이는\n$AB=\\sqrt{(0+1)^2+(1-0)^2}=\\sqrt2$이다.\n점 $P(t^2,t)$에서 직선 $AB$까지의 거리는\n$d=\\dfrac{|t^2-t+1|}{\\sqrt{1^2+(-1)^2}}$\n$=\\dfrac{|t^2-t+1|}{\\sqrt2}$이다.\n여기서\n$t^2-t+1=\\left(t-\\dfrac12\\right)^2+\\dfrac34>0$이므로 절댓값을 없앨 수 있다.\n\n따라서 삼각형의 넓이는\n$S=\\dfrac12\\cdot AB\\cdot d$\n$=\\dfrac12\\cdot\\sqrt2\\cdot\\dfrac{t^2-t+1}{\\sqrt2}$\n$=\\dfrac12(t^2-t+1)$\n$=\\dfrac12\\left(t-\\dfrac12\\right)^2+\\dfrac38$이다.\n제곱항은 항상 $0$ 이상이고, $t=\\dfrac12\\ge0$일 때 실제로 $0$이 된다.\n따라서 넓이의 최솟값은 $\\dfrac38$이다.\n$a=3,\\ b=8$이므로\n$b-a=8-3=5$이다.\n\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q17-solution.svg",
     "solutionImageAlt": "곡선 위 점 P(1/4,1/2)에서 직선 AB로 내린 수선의 발 H와 삼각형 넓이의 최솟값",
     "solutionImageCaption": "밑변 AB는 일정하므로 높이 PH가 최소인 경우가 넓이의 최솟값이다.",
@@ -1196,7 +1196,7 @@ window.questionBank = [
   {
     "id": 21,
     "questionType": "서술형",
-    "content": "그림과 같이 유리함수 $y=\\dfrac{5}{x-2}+3$의 그래프 위의 점 $P$에서 $x$축과 $y$축에 내린 수선의 발을 각각 $A$, $B$라 하자. 직사각형 $OAPB$의 네 변의 길이의 합이 최소가 되도록 하는 점 $P$의 좌표를 $(a,b)$라 할 때, $a+b$의 값을 구하시오. (단, 점 $O$는 원점이고, 점 $P$는 제1사분면 위에 있다.) [10점]",
+    "content": "그림과 같이 유리함수 $y=\\dfrac{5}{x-2}+3$의 그래프 위의 점 $P$에서 $x$축과 $y$축에 내린 수선의 발을 각각 $A$, $B$라 하자. 직사각형 $OAPB$의 네 변의 길이의 합이 최소가 되도록 하는 점 $P$의 좌표를 $(a,b)$라 할 때, $a+b$의 값을 구하시오. (단, 점 $O$는 원점이고, 점 $P$는 제1사분면 위에 있으며 그래프의 오른쪽 가지($x>2$) 위에 있다.) [10점]",
     "choices": [],
     "tags": [
       "서술형",
@@ -1206,7 +1206,7 @@ window.questionBank = [
     ],
     "image": "assets/images/19_금당고_2학기_기말_고1_기출/q21.png",
     "answer": "$5+2\\sqrt{5}$",
-    "solution": "그림에서 점 $P$는 유리함수의 수직점근선 $x=2$보다 오른쪽 가지 위에 있으므로 $x>2$인 부분을 이용한다.\n점 $P(x,y)$가 제1사분면에 있으므로 직사각형 $OAPB$의 가로 길이는 $x$, 세로 길이는 $y$이다.\n따라서 둘레는\n$L=2x+2y=2(x+y)$이고, $x+y$가 최소일 때 둘레도 최소가 된다.\n\n$t=x-2$로 두면 그림의 오른쪽 가지 조건에 따라 $t>0$이다.\n$x=t+2$이고 함수식에서\n$y=\\dfrac5t+3$이므로\n$x+y=t+2+\\dfrac5t+3$\n$=t+\\dfrac5t+5$이다.\n\n양수 $t$에 대해\n$t+\\dfrac5t-2\\sqrt5$\n$=\\left(\\sqrt t-\\dfrac{\\sqrt5}{\\sqrt t}\\right)^2\\ge0$이다.\n따라서\n$t+\\dfrac5t\\ge2\\sqrt5$이고,\n등호는 $\\sqrt t=\\dfrac{\\sqrt5}{\\sqrt t}$, 즉\n$t=\\sqrt5$일 때 성립한다.\n그러므로 $x+y$의 최솟값은 $5+2\\sqrt5$이다.\n\n등호일 때 $t=\\sqrt5$이므로\n$x=2+\\sqrt5$,\n$y=3+\\dfrac5{\\sqrt5}=3+\\sqrt5$이다.\n따라서 구하는 점은\n$(a,b)=(2+\\sqrt5,3+\\sqrt5)$이고\n$a+b=5+2\\sqrt5$이다.\n\n따라서 구하는 값은 $5+2\\sqrt5$이다.",
+    "solution": "점 $P$의 좌표를 $(x,y)$라 하자.\n추가 조건에서 $x>2$이므로 $t=x-2>0$이다.\n그래프 식에 $x=t+2$를 대입하면\n$y=\\dfrac5t+3$이다.\n직사각형의 가로와 세로의 길이는 각각 $x$, $y$이므로 둘레를 $\\ell$이라 하면\n$\\ell=2(x+y)$\n$=2\\left((t+2)+(\\dfrac5t+3)\\right)$\n$=2\\left(t+\\dfrac5t+5\\right)$이다.\n여기서 $t>0$이므로\n$(\\sqrt t-\\sqrt{5/t})^2\\ge0$\n$t+\\dfrac5t\\ge2\\sqrt5$이다.\n$\\ell=2(t+\\dfrac5t+5)$\n$\\ell\\ge2(2\\sqrt5+5)$\n$=10+4\\sqrt5$이다.\n등호는 $t=\\dfrac5t$, 즉 $t=\\sqrt5$일 때 성립한다.\n따라서 그때 둘레가 최소이고\n$a=x=t+2=2+\\sqrt5$이다.\n$b=y=\\dfrac5t+3=3+\\sqrt5$이다.\n$a+b=x+y$\n$=(2+\\sqrt5)+(3+\\sqrt5)$\n$=5+2\\sqrt5$이다.",
     "solutionImageSize": "full",
     "solutionImageCaption": "오른쪽 가지 x>2에서 P=(2+√5, 3+√5)일 때 둘레가 최소이다.",
     "solutionImageAlt": "그림의 오른쪽 가지에서 점 P의 직사각형 둘레가 최소인 위치",
