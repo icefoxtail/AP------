@@ -25,7 +25,7 @@ window.questionBank = [
       "$20$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 자연수의 약수의 개수는 소인수분해한 각 소인수의 지수에 $1$을 더하여 곱한다.\n$120=2^3\\times3^1\\times5^1$이다.\n따라서 양의 약수의 개수는 $(3+1)(1+1)(1+1)=16$이다.\n따라서 정답은 ③이다.",
+    "solution": "$120=2^3\\times3\\times5$이다.\n양의 약수는 $2^a3^b5^c$의 꼴이다.\n$2$의 지수 $a$는 $0,1,2,3$의 $4$가지,\n$3$의 지수 $b$는 $0,1$의 $2$가지,\n$5$의 지수 $c$는 $0,1$의 $2$가지이다.\n각 지수를 독립적으로 고를 수 있으므로\n$4\\times2\\times2=16$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
     "subUnit": "경우의 수의 기본 원리",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -55,7 +55,7 @@ window.questionBank = [
       "$P-Q=\\varnothing$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 명제 $p\\Rightarrow\\sim q$를 진리집합의 포함 관계로 바꾼다.\n$p$가 참이면 $q$가 거짓이므로 $P\\subset Q^C$이다.\n따라서 $P$와 $Q$에는 공통 원소가 없어서 $P\\cap Q=\\varnothing$이다. 다른 포함 관계는 주어진 조건만으로 항상 성립하지 않는다.\n따라서 정답은 ①이다.",
+    "solution": "$p\\Rightarrow\\sim q$가 참이므로 $p$를 만족하는 원소는 $q$를 만족할 수 없다.\n진리집합으로 나타내면\n$P\\subset Q^C$이다.\n따라서\n$P\\cap Q=\\varnothing$이다.\n\n이 조건은 $P$와 $Q$가 서로 겹치지 않는다는 뜻일 뿐, 어느 한 집합이 다른 집합에 포함된다는 뜻은 아니다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
     "subUnitConfidence": "rule_inferred",
@@ -85,7 +85,7 @@ window.questionBank = [
       "$q\\Rightarrow s$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 서로 모순되는 결론을 이용하고, 주어진 명제를 연쇄적으로 연결한다.\n$p\\Rightarrow q$이고 $r\\Rightarrow\\sim q$이므로 $p$와 $r$은 동시에 참일 수 없다. 따라서 $p\\Rightarrow\\sim r$, $r\\Rightarrow\\sim p$가 성립한다.\n또한 $s\\Rightarrow r$이므로 $p\\Rightarrow\\sim s$이고, $s\\Rightarrow r\\Rightarrow\\sim q$이다. 그러나 $q$가 참이라고 해서 $s$가 참이라는 결론은 얻을 수 없다.\n따라서 정답은 ⑤이다.",
+    "solution": "주어진 명제는\n$p\\Rightarrow q$, $r\\Rightarrow\\sim q$, $s\\Rightarrow r$이다.\n$p$가 참이면 $q$가 참이므로 $r$은 거짓이다.\n따라서 ① $p\\Rightarrow\\sim r$은 참이다.\n$r$이 참이면 $q$가 거짓이므로 $p$도 거짓이다.\n따라서 ② $r\\Rightarrow\\sim p$도 참이다.\n\n$s\\Rightarrow r$과 $r\\Rightarrow\\sim q$를 연결하면\n$s\\Rightarrow\\sim q$이므로 ④가 참이다.\n또한 $p$가 참이면 $r$이 거짓이고, $s\\Rightarrow r$이므로 $s$도 거짓이다.\n따라서 ③ $p\\Rightarrow\\sim s$가 참이다.\n\n반면 $q$가 참이라는 사실만으로 $s$가 참이라고 할 수 없다.\n그러므로 옳지 않은 것은 ⑤이다.",
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
     "subUnitConfidence": "rule_inferred",
@@ -115,7 +115,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 존재 명제의 부정은 모든 실수에 대한 명제로 바뀐다.\n주어진 명제의 부정은 모든 실수 $x$에 대하여 $x^2-2x+k-1\\ge0$이라는 뜻이다.\n$x^2-2x+k-1=(x-1)^2+k-2$이므로 모든 실수 $x$에서 음이 아닌 조건은 $k-2\\ge0$이다. 따라서 $k\\ge2$이고 최솟값은 $2$이다.\n따라서 정답은 ②이다.",
+    "solution": "'어떤 실수 $x$에서 $x^2-2x+k-1\\lt0$'의 부정은\n'모든 실수 $x$에서 $x^2-2x+k-1\\ge0$'이다.\n완전제곱식으로 고치면\n$x^2-2x+k-1$\n$=(x-1)^2+k-2$이다.\n$(x-1)^2$의 최솟값은 $x=1$일 때 $0$이므로\n모든 실수 $x$에서 음이 아니려면\n$k-2\\ge0$\n$k\\ge2$이어야 한다.\n따라서 $k$의 최솟값은 $2$이고 정답은 ②이다.",
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
     "subUnitConfidence": "rule_inferred",
@@ -145,7 +145,7 @@ window.questionBank = [
       "$3!\\times3!\\times2!\\times2!$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 같은 색 모자를 쓴 학생들을 각각 하나의 묶음으로 본다.\n파란모자 학생 3명의 묶음, 빨간모자 학생 2명의 묶음, 나머지 학생 2명을 합하면 모두 $4$개의 대상을 배열한다. 따라서 묶음의 배열은 $4!$가지이다.\n파란모자 묶음 안의 순서는 $3!$가지, 빨간모자 묶음 안의 순서는 $2!$가지이므로 전체 경우의 수는 $4!\\times3!\\times2!$이다.\n따라서 정답은 ④이다.",
+    "solution": "파란 모자 학생 $3$명을 한 묶음, 빨간 모자 학생 $2$명을 다른 한 묶음으로 본다.\n나머지 학생 $2$명은 각각 한 명씩 세면\n배열할 대상은 모두 $4$개이다.\n$4$개의 대상 배열: $4!$가지\n파란 모자 묶음 안의 순서: $3!$가지\n빨간 모자 묶음 안의 순서: $2!$가지\n이 선택들은 서로 독립이므로\n$4!\\times3!\\times2!$\n$=24\\times6\\times2=288$가지이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
     "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
