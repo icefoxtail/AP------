@@ -15,7 +15,70 @@
     "browser": "NOT_RUN",
     "independentQuality": "NOT_RUN",
     "main": "NOT_RUN",
-    "nextQid": 2
+    "nextQid": 2,
+    "difficultyMetaReview": {
+      "scope": "q01 A1~C3 9 UID",
+      "decisions": [
+        {
+          "slot": "A1",
+          "level": "중",
+          "bucket": 3,
+          "reason": "열린점/닫힌점 경계 1곳과 명확한 비함수 3개를 포함한다. 경계 포함 여부 확인 1단계가 추가된다."
+        },
+        {
+          "slot": "A2",
+          "level": "하",
+          "bucket": 2,
+          "reason": "직선·상향 포물선·원·수직선·서로 다른 x의 점들만 판단한다. 열린점 예외나 연쇄 추론이 없다."
+        },
+        {
+          "slot": "A3",
+          "level": "중",
+          "bucket": 3,
+          "reason": "두 닫힌 경계점의 중복과 같은 x의 이산점 중복을 동시에 구별해야 한다."
+        },
+        {
+          "slot": "B1",
+          "level": "중",
+          "bucket": 3,
+          "reason": "열린점/닫힌점이 있는 그래프 2개를 각각 검사하지만 판단 원리는 동일하다."
+        },
+        {
+          "slot": "B2",
+          "level": "중",
+          "bucket": 3,
+          "reason": "불연속인 점그래프도 함수가 될 수 있음을 확인하고 이중 닫힌점 비함수를 판정한다."
+        },
+        {
+          "slot": "B3",
+          "level": "중",
+          "bucket": 3,
+          "reason": "이산점의 같은 x 중복과 열린·닫힌 경계를 판정한다. 추가 고난도 개념은 없다."
+        },
+        {
+          "slot": "C1",
+          "level": "중",
+          "bucket": 3,
+          "reason": "서로 다른 x 점·두 닫힌 경계점·옆 포물선·열린 경계를 독립적으로 판정한다. 새로운 추론은 없다."
+        },
+        {
+          "slot": "C2",
+          "level": "중",
+          "bucket": 3,
+          "reason": "열린점 경계 한 번과 원·수직선·중복 x점 판정만 요구한다."
+        },
+        {
+          "slot": "C3",
+          "level": "중",
+          "bucket": 3,
+          "reason": "열린점과 두 닫힌점의 차이를 비교해야 하지만 중첩 조건/매개변수 추론은 없다."
+        }
+      ],
+      "summary": "하 1·중 8·상 0; 5단계는 2 한 문항·3 여덟 문항",
+      "basis": "graph-specific decisions, not A/B/C position",
+      "unchanged": "stem/answer/solution/SVG/sourceUid/provenance",
+      "status": "AUTHOR_TARGETED_META_CORRECTED_NO_INDEPENDENT_QA"
+    }
   },
   "questions": [
     {
@@ -96,7 +159,7 @@
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "metadataDebt": [
           "SOURCE_UID_V1_HASH_NOT_VERIFIED"
         ],
@@ -119,7 +182,10 @@
         "solutionSVG": "CREATED_STATIC",
         "browser": "NOT_RUN",
         "externalOpenBook": "NOT_RUN",
-        "studentRelease": "NOT_AUTHORIZED"
+        "studentRelease": "NOT_AUTHORIZED",
+        "difficultyRationale": "열린점/닫힌점 경계 1곳과 명확한 비함수 3개를 포함한다. 경계 포함 여부 확인 1단계가 추가된다.",
+        "difficultyAssessmentMethod": "개별 그래프의 필수 판단·경계점 포함 여부·혼동 가능한 오류만 평가. A/B/C 슬롯 위치 자체는 난이도 판단 근거로 사용하지 않음.",
+        "difficultyDecision": "CORRECTED_AFTER_TARGETED_NINE_ITEM_REVIEW"
       }
     },
     {
@@ -130,7 +196,7 @@
       "slot": "A2",
       "provenance": "ALIVE_GENERATED",
       "modeCandidate": "STRICT_VARIANT",
-      "level": "중",
+      "level": "하",
       "category": "함수의 그래프",
       "originalCategory": "함수",
       "standardCourse": "공통수학2",
@@ -223,7 +289,10 @@
         "solutionSVG": "CREATED_STATIC",
         "browser": "NOT_RUN",
         "externalOpenBook": "NOT_RUN",
-        "studentRelease": "NOT_AUTHORIZED"
+        "studentRelease": "NOT_AUTHORIZED",
+        "difficultyRationale": "직선·상향 포물선·원·수직선·서로 다른 x의 점들만 판단한다. 열린점 예외나 연쇄 추론이 없다.",
+        "difficultyAssessmentMethod": "개별 그래프의 필수 판단·경계점 포함 여부·혼동 가능한 오류만 평가. A/B/C 슬롯 위치 자체는 난이도 판단 근거로 사용하지 않음.",
+        "difficultyDecision": "CORRECTED_AFTER_TARGETED_NINE_ITEM_REVIEW"
       }
     },
     {
@@ -304,7 +373,7 @@
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "metadataDebt": [
           "SOURCE_UID_V1_HASH_NOT_VERIFIED"
         ],
@@ -327,7 +396,10 @@
         "solutionSVG": "CREATED_STATIC",
         "browser": "NOT_RUN",
         "externalOpenBook": "NOT_RUN",
-        "studentRelease": "NOT_AUTHORIZED"
+        "studentRelease": "NOT_AUTHORIZED",
+        "difficultyRationale": "두 닫힌 경계점의 중복과 같은 x의 이산점 중복을 동시에 구별해야 한다.",
+        "difficultyAssessmentMethod": "개별 그래프의 필수 판단·경계점 포함 여부·혼동 가능한 오류만 평가. A/B/C 슬롯 위치 자체는 난이도 판단 근거로 사용하지 않음.",
+        "difficultyDecision": "CORRECTED_AFTER_TARGETED_NINE_ITEM_REVIEW"
       }
     },
     {
@@ -431,7 +503,10 @@
         "solutionSVG": "CREATED_STATIC",
         "browser": "NOT_RUN",
         "externalOpenBook": "NOT_RUN",
-        "studentRelease": "NOT_AUTHORIZED"
+        "studentRelease": "NOT_AUTHORIZED",
+        "difficultyRationale": "열린점/닫힌점이 있는 그래프 2개를 각각 검사하지만 판단 원리는 동일하다.",
+        "difficultyAssessmentMethod": "개별 그래프의 필수 판단·경계점 포함 여부·혼동 가능한 오류만 평가. A/B/C 슬롯 위치 자체는 난이도 판단 근거로 사용하지 않음.",
+        "difficultyDecision": "CORRECTED_AFTER_TARGETED_NINE_ITEM_REVIEW"
       }
     },
     {
@@ -535,7 +610,10 @@
         "solutionSVG": "CREATED_STATIC",
         "browser": "NOT_RUN",
         "externalOpenBook": "NOT_RUN",
-        "studentRelease": "NOT_AUTHORIZED"
+        "studentRelease": "NOT_AUTHORIZED",
+        "difficultyRationale": "불연속인 점그래프도 함수가 될 수 있음을 확인하고 이중 닫힌점 비함수를 판정한다.",
+        "difficultyAssessmentMethod": "개별 그래프의 필수 판단·경계점 포함 여부·혼동 가능한 오류만 평가. A/B/C 슬롯 위치 자체는 난이도 판단 근거로 사용하지 않음.",
+        "difficultyDecision": "CORRECTED_AFTER_TARGETED_NINE_ITEM_REVIEW"
       }
     },
     {
@@ -546,7 +624,7 @@
       "slot": "B3",
       "provenance": "ALIVE_GENERATED",
       "modeCandidate": "FOLLOWUP",
-      "level": "상",
+      "level": "중",
       "category": "함수의 그래프",
       "originalCategory": "함수",
       "standardCourse": "공통수학2",
@@ -616,7 +694,7 @@
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 4,
+        "difficultyBucket": 3,
         "metadataDebt": [
           "SOURCE_UID_V1_HASH_NOT_VERIFIED"
         ],
@@ -639,7 +717,10 @@
         "solutionSVG": "CREATED_STATIC",
         "browser": "NOT_RUN",
         "externalOpenBook": "NOT_RUN",
-        "studentRelease": "NOT_AUTHORIZED"
+        "studentRelease": "NOT_AUTHORIZED",
+        "difficultyRationale": "이산점의 같은 x 중복과 열린·닫힌 경계를 판정한다. 추가 고난도 개념은 없다.",
+        "difficultyAssessmentMethod": "개별 그래프의 필수 판단·경계점 포함 여부·혼동 가능한 오류만 평가. A/B/C 슬롯 위치 자체는 난이도 판단 근거로 사용하지 않음.",
+        "difficultyDecision": "CORRECTED_AFTER_TARGETED_NINE_ITEM_REVIEW"
       }
     },
     {
@@ -650,7 +731,7 @@
       "slot": "C1",
       "provenance": "ALIVE_GENERATED",
       "modeCandidate": "PLUS_ONE",
-      "level": "상",
+      "level": "중",
       "category": "함수의 그래프",
       "originalCategory": "함수",
       "standardCourse": "공통수학2",
@@ -720,7 +801,7 @@
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 4,
+        "difficultyBucket": 3,
         "metadataDebt": [
           "SOURCE_UID_V1_HASH_NOT_VERIFIED"
         ],
@@ -743,7 +824,10 @@
         "solutionSVG": "CREATED_STATIC",
         "browser": "NOT_RUN",
         "externalOpenBook": "NOT_RUN",
-        "studentRelease": "NOT_AUTHORIZED"
+        "studentRelease": "NOT_AUTHORIZED",
+        "difficultyRationale": "서로 다른 x 점·두 닫힌 경계점·옆 포물선·열린 경계를 독립적으로 판정한다. 새로운 추론은 없다.",
+        "difficultyAssessmentMethod": "개별 그래프의 필수 판단·경계점 포함 여부·혼동 가능한 오류만 평가. A/B/C 슬롯 위치 자체는 난이도 판단 근거로 사용하지 않음.",
+        "difficultyDecision": "CORRECTED_AFTER_TARGETED_NINE_ITEM_REVIEW"
       }
     },
     {
@@ -754,7 +838,7 @@
       "slot": "C2",
       "provenance": "ALIVE_GENERATED",
       "modeCandidate": "PLUS_ONE",
-      "level": "상",
+      "level": "중",
       "category": "함수의 그래프",
       "originalCategory": "함수",
       "standardCourse": "공통수학2",
@@ -824,7 +908,7 @@
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 4,
+        "difficultyBucket": 3,
         "metadataDebt": [
           "SOURCE_UID_V1_HASH_NOT_VERIFIED"
         ],
@@ -847,7 +931,10 @@
         "solutionSVG": "CREATED_STATIC",
         "browser": "NOT_RUN",
         "externalOpenBook": "NOT_RUN",
-        "studentRelease": "NOT_AUTHORIZED"
+        "studentRelease": "NOT_AUTHORIZED",
+        "difficultyRationale": "열린점 경계 한 번과 원·수직선·중복 x점 판정만 요구한다.",
+        "difficultyAssessmentMethod": "개별 그래프의 필수 판단·경계점 포함 여부·혼동 가능한 오류만 평가. A/B/C 슬롯 위치 자체는 난이도 판단 근거로 사용하지 않음.",
+        "difficultyDecision": "CORRECTED_AFTER_TARGETED_NINE_ITEM_REVIEW"
       }
     },
     {
@@ -858,7 +945,7 @@
       "slot": "C3",
       "provenance": "ALIVE_GENERATED",
       "modeCandidate": "PLUS_ONE",
-      "level": "상",
+      "level": "중",
       "category": "함수의 그래프",
       "originalCategory": "함수",
       "standardCourse": "공통수학2",
@@ -928,7 +1015,7 @@
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 5,
+        "difficultyBucket": 3,
         "metadataDebt": [
           "SOURCE_UID_V1_HASH_NOT_VERIFIED"
         ],
@@ -951,7 +1038,10 @@
         "solutionSVG": "CREATED_STATIC",
         "browser": "NOT_RUN",
         "externalOpenBook": "NOT_RUN",
-        "studentRelease": "NOT_AUTHORIZED"
+        "studentRelease": "NOT_AUTHORIZED",
+        "difficultyRationale": "열린점과 두 닫힌점의 차이를 비교해야 하지만 중첩 조건/매개변수 추론은 없다.",
+        "difficultyAssessmentMethod": "개별 그래프의 필수 판단·경계점 포함 여부·혼동 가능한 오류만 평가. A/B/C 슬롯 위치 자체는 난이도 판단 근거로 사용하지 않음.",
+        "difficultyDecision": "CORRECTED_AFTER_TARGETED_NINE_ITEM_REVIEW"
       }
     }
   ]
