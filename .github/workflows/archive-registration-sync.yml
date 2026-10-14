@@ -86,18 +86,19 @@ jobs:
           node tests/archive-question-identity-contract.test.mjs
           node tests/archive-question-identity-runtime.test.mjs
           node tests/jeil-legacy-similar-22-registration.test.cjs
+          node tests/palma-legacy-similar-23-registration.test.cjs
           node archive/tools/verify-archive-registration.mjs
           git diff --check
 
       - name: Set up real Chrome for Jeil print QA
-        if: github.event_name == 'pull_request' && github.head_ref == 'work/review-25-jeil-h1-2final-legacy22-20261012'
+        if: github.event_name == 'pull_request' && (github.head_ref == 'work/review-25-jeil-h1-2final-legacy22-20261012' || github.head_ref == 'work/palma-legacy-similar-23-final-20261014')
         uses: browser-actions/setup-chrome@v1
         id: jeil_chrome
         with:
           chrome-version: stable
 
       - name: Install Korean fonts for real student print
-        if: github.event_name == 'pull_request' && github.head_ref == 'work/review-25-jeil-h1-2final-legacy22-20261012'
+        if: github.event_name == 'pull_request' && (github.head_ref == 'work/review-25-jeil-h1-2final-legacy22-20261012' || github.head_ref == 'work/palma-legacy-similar-23-final-20261014')
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends fonts-noto-cjk
@@ -117,6 +118,21 @@ jobs:
         with:
           name: jeil-legacy-similar-chrome-print
           path: ${{ runner.temp }}/jeil-chrome-print/
+          if-no-files-found: warn
+
+      - name: Verify Palma 23 exam, answer, solution Chrome print
+        if: github.event_name == 'pull_request' && github.head_ref == 'work/palma-legacy-similar-23-final-20261014'
+        env:
+          CHROME_BIN: ${{ steps.jeil_chrome.outputs.chrome-path }}
+          PALMA_CHROME_OUT: ${{ runner.temp }}/palma-chrome-print
+        run: node tools/check-palma-legacy-similar-chrome.cjs
+
+      - name: Upload Palma Chrome print proof
+        if: always() && github.event_name == 'pull_request' && github.head_ref == 'work/palma-legacy-similar-23-final-20261014'
+        uses: actions/upload-artifact@v4
+        with:
+          name: palma-legacy-similar-chrome-print
+          path: ${{ runner.temp }}/palma-chrome-print/
           if-no-files-found: warn
 
       - name: Guard generated scope
