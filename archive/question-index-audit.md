@@ -2,12 +2,12 @@
 
 - 생성기: archive/tools/build-question-index.mjs
 - 인덱싱 범위(SCOPE): git-tracked + db-listed production (parity-gated)
-  - git 버전관리에 등재된 시험지 JS만 인덱싱(680파일).
+  - git 버전관리에 등재된 시험지 JS만 인덱싱(688파일).
   - 교과서 파일은 `textbooks/<book>/<title>.js` 경로와 db.js의 명시 등록이 모두 있을 때만 포함한다.
   - DB 미등록 교재 파일과 미추적 _pro 드래프트는 제외한다.
 - 공식 마스터 키 수: 143 (중등 23 + H22 56 + H15 64)
-- 원본 문항 수: 16013
-- 최종 인덱스 문항 수: 16013
+- 원본 문항 수: 16201
+- 최종 인덱스 문항 수: 16201
 - 중복 qKey 그룹: 0 / 제외 레코드(duplicate_skipped): 0
 - 최종 인덱스 중복 qKey: 0 (0이어야 정상)
 
@@ -38,7 +38,7 @@
 
 > 공식 마스터(142) 에 없고 RAW- 규약도 아닌 키. 검색/자동출제에서 mixer 의 getStandardizedUnit 이 "미분류"로 처리한다.
 > 원문 standardUnitKey 값은 인덱스에 보존한다(별도 치환/보정 없음).
-> distinct 22종 / 95건
+> distinct 21종 / 94건
 
 - `H22-A-03-03` — 14건 (예: types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#4, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#8, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#9, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#10, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#11)
 - `HH15-SA-02` — 11건 (예: types/high/h1/항등식과나머지정리_고1_유형.js#3, types/high/h1/항등식과나머지정리_고1_유형.js#10, types/high/h1/항등식과나머지정리_고1_유형.js#12, types/high/h1/항등식과나머지정리_고1_유형.js#13, types/high/h1/항등식과나머지정리_고1_유형.js#17)
@@ -56,7 +56,6 @@
 - `M1-2-GEOM-SOLID-02` — 2건 (예: types/middle/m1/중1_2_기말대비1_입체도형_통계.js#3, types/middle/m1/중1_2_기말대비1_입체도형_통계.js#4)
 - `M1-2-GEOM-SOLID-03` — 2건 (예: types/middle/m1/중1_2_기말대비1_입체도형_통계.js#5, types/middle/m1/중1_2_기말대비1_입체도형_통계.js#6)
 - `M1-2-GEOM-SOLID-07` — 2건 (예: types/middle/m1/중1_2_기말대비1_입체도형_통계.js#14, types/middle/m1/중1_2_기말대비1_입체도형_통계.js#15)
-- `EVIDENCE_DEBT` — 1건 (예: original/high/h1/2final/19_강남여고_2학기_기말_고1_기출.js#13)
 - `H21-M1-01` — 1건 (예: original/high/h2/1mid/25_효천고_1학기_중간_고2_대수.js#19)
 - `H21-M1-02` — 1건 (예: original/high/h2/1mid/25_효천고_1학기_중간_고2_대수.js#23)
 - `HH22-C-02` — 1건 (예: types/high/h1/항등식과나머지정리_고1_유형.js#19)
@@ -74,7 +73,7 @@
 
 ---
 
-## 5. 필드 누락 (최종 인덱스 16013건 기준)
+## 5. 필드 누락 (최종 인덱스 16201건 기준)
 
 | 필드 | 누락 수 |
 |------|--------:|
@@ -92,10 +91,10 @@
 
 | 기준 | 수 |
 |------|---:|
-| q.image 보유 | 3246 |
-| content <img> | 130 |
+| q.image 보유 | 3279 |
+| content <img> | 133 |
 | content <svg> | 77 |
 | content <table> | 193 |
-| 시각요소 보유(hasImage=true) | 3615 |
+| 시각요소 보유(hasImage=true) | 3651 |
 
 > hasImage 판정은 mixer.html 의 hasVisualAsset 과 동일(image OR content 내부 img/svg/table).
