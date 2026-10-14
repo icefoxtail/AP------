@@ -2345,32 +2345,19 @@ function dashboardGetProgressCatalogItem(pathKey) {
 function dashboardFormatPersistentProgressLines(progressState) {
     const groups = new Map();
     (Array.isArray(progressState?.items) ? progressState.items : []).forEach((item, index) => {
-        const pathKey = String(item?.canonical_path_key || item?.canonicalPathKey || '');
-        const catalogItem = dashboardGetProgressCatalogItem(pathKey) || {};
-        const curriculumKey = String(item?.curriculum_key || item?.curriculumKey || catalogItem.curriculumKey || '');
-        const courseKey = String(item?.course_key || item?.courseKey || catalogItem.courseKey || '');
-        const courseLabel = String(catalogItem.courseLabel || courseKey || '과정');
-        const groupKey = [curriculumKey, courseKey].join('|');
-        const l1 = String(item?.l1_snapshot || item?.l1 || catalogItem.l1 || '').trim();
-        const l2 = String(item?.l2_snapshot || item?.l2 || catalogItem.l2 || '').trim();
-        const unitLabel = l1 && l2 && l1 !== l2 ? `${l1} · ${l2}` : (l2 || l1);
-        const order = Number.isFinite(Number(item?.sort_order))
-            ? Number(item.sort_order)
-            : index;
-
-        const previous = groups.get(groupKey);
-        if (!previous || order >= previous.order) {
-            groups.set(groupKey, {
-                label: [curriculumKey ? `${curriculumKey} 개정` : '', courseLabel].filter(Boolean).join(' · '),
-                unit: unitLabel,
-                order
-            });
+        const c = dashboardGetProgressCatalogItem(String(item?.canonical_path_key || item?.canonicalPathKey || '')) || {};
+        const curriculum = String(item?.curriculum_key || item?.curriculumKey || c.curriculumKey || '');
+        const level = String(item?.level_key || item?.level || c.level || '');
+        const course = String(item?.course_key || item?.courseKey || c.courseKey || '');
+        const unit = String(item?.l2_snapshot || item?.l2 || c.l2 ||
+            item?.l1_snapshot || item?.l1 || c.l1 || '').trim();
+        const order = Number.isFinite(Number(item?.sort_order)) ? Number(item.sort_order) : index;
+        const key = [curriculum, level, course].join('|');
+        if (unit && (!groups.has(key) || order >= groups.get(key).order)) {
+            groups.set(key, { curriculum, level, course, unit, order });
         }
     });
-
-    return Array.from(groups.values())
-        .filter(group => !!group.unit)
-        .map(group => `  * ${group.label}: ${group.unit}`);
+    return Array.from(groups.values());
 }
 
 function dashboardGetJournalDailyProgressState(classId, dateStr, exactRecord = null) {
@@ -2402,26 +2389,40 @@ function dashboardBuildClassJournalProgress(classId, dateStr, exactRecord = null
         ? extractJournalUnitAndNote(exactRecord.special_note)
         : { units: '', note: '' };
     const persistent = dashboardGetJournalPersistentProgress(classId, dateStr);
-    const persistentLines = dashboardFormatPersistentProgressLines(persistent);
-    const dailyProgressState = dashboardGetJournalDailyProgressState(classId, dateStr, exactRecord);
-    const textbooks = dashboardGetJournalTextbookTitles(classId, dateStr, dailyProgressState.progress);
-    const lines = persistentLines.slice();
-
-    // 진도관리에서 고른 현재 단원이 있으면 별도 교재 페이지 진도는 중복 표시하지 않는다.
-    if (lines.length === 0) {
-        dailyProgressState.progress.forEach(progress => {
-            const line = formatJournalLegacyProgressLine(progress, noteData.units);
-            if (line) lines.push(line);
-        });
-        if (lines.length === 0 && noteData.units) lines.push(`  * ${noteData.units}`);
-    }
-
-    return {
-        textbooks,
-        lines,
-        note: noteData.note,
-        loadFailed: !!persistent?.loadFailed && lines.length === 0
-    };
+    const canonical = dashboardFormatPersistentProgressLines(persistent);
+    const daily = dashboardGetJournalDailyProgressState(classId, dateStr, exactRecord);
+    const titles = dashboardGetJournalTextbookTitles(classId, dateStr, daily.progress);
+    const targetDate = String(dateStr || '').slice(0, 10);
+    const books = (state.db.class_textbooks || []).filter(tb =>
+        String(tb?.class_id || '') === String(classId) &&
+        (!tb.start_date || String(tb.start_date).slice(0, 10) <= targetDate) &&
+        (!tb.end_date || String(tb.end_date).slice(0, 10) >= targetDate)
+    );
+    const boundCount = titles.filter(title => {
+        const book = books.find(tb => String(tb.title || '').trim() === title);
+        return !!String(book?.progress_course_key || '');
+    }).length;
+    let lines = titles.map(title => {
+        const book = books.find(tb => String(tb.title || '').trim() === title);
+        const curriculum = String(book?.progress_curriculum_key || '');
+        const level = String(book?.progress_level_key || '');
+        const course = String(book?.progress_course_key || '');
+        const matches = canonical.filter(group =>
+            curriculum && course && group.curriculum === curriculum && group.course === course &&
+            (!level || !group.level || group.level === level)
+        );
+        let selected = matches.length === 1 ? matches[0] : null;
+        if (!selected && titles.length === 1 && canonical.length === 1 && boundCount === 0) selected = canonical[0];
+        const old = daily.progress.find(row =>
+            (book?.id && String(row.textbook_id || '') === String(book.id)) ||
+            String(row.textbook_title_snapshot || '').trim() === title
+        );
+        const unit = selected?.unit || String(old?.progress_text || '').trim();
+        return `  * ${title}${unit ? ' - ' + unit : ''}`;
+    });
+    if (lines.length === 0) lines = canonical.map(group => `  * ${group.unit}`);
+    if (lines.length === 0 && noteData.units) lines = [`  * ${noteData.units}`];
+    return { lines, note: noteData.note, loadFailed: !!persistent?.loadFailed && lines.length === 0 };
 }
 
 function dashboardGetJournalSectionRanges(lines) {
@@ -2759,9 +2760,6 @@ function buildJournalContent(dateStr) {
                 String(r.class_id) === String(cls.id) && String(r.date || '') === String(targetDate)
             ) || null;
             const progressState = dashboardBuildClassJournalProgress(cls.id, targetDate, dailyRecord);
-            if (progressState.textbooks.length > 0) {
-                text += `- 교재: ${progressState.textbooks.join(', ')}\n`;
-            }
             if (progressState.lines.length > 0) {
                 text += `- 진도:\n`;
                 progressState.lines.forEach(line => {
