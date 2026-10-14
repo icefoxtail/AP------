@@ -328,7 +328,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q07-solution.svg",
+    "solutionImageAlt": "표본평균 160 이상의 확률은 표준화하면 Z가 2 이상인 오른쪽 꼬리 영역이다.",
+    "solutionImageCaption": "P(Z ≥ 2) = 0.0228",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -376,7 +380,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q08-solution.svg",
+    "solutionImageAlt": "평균 65 표준편차 1인 표본평균에서 63 이상 66.5 이하 구간을 표준화하면 -2 이상 1.5 이하 영역이다.",
+    "solutionImageCaption": "P(-2 ≤ Z ≤ 1.5) = 0.91",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -470,7 +478,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "불량품 수는 근사 정규분포 평균 50 표준편차 7이며 64 이상의 꼬리 영역에 대응한다.",
+    "solutionImageCaption": "W ≥ 64 → Z ≥ 2, 확률 약 0.02",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -705,7 +717,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
     "subUnit": "확률변수와 기댓값",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "확률밀도함수의 두 구간과 삼각형의 넓이를 보여주는 해설 그래프",
+    "solutionImageCaption": "삼각형의 넓이로 구간확률을 계산한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -847,7 +863,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-ESTIMATION_APPLICATION",
     "subUnit": "추정의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "한 상자 내용량의 평균은 3200그램 표준편차는 80그램이고 구간이 -1에서 2 사이의 영역에 대응한다.",
+    "solutionImageCaption": "3120~3360g → -1 ≤ Z ≤ 2",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -894,7 +914,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "첫 번째 표본평균의 왼쪽 누적확률 0.9332에 대응하여 두 번째 표본평균의 왼쪽 누적확률은 0.0668이고 표준화 값은 -1.5이다.",
+    "solutionImageCaption": "P(Ȳ ≤ 94) = P(Z ≤ -1.5) = 0.0668",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -988,7 +1012,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
     "subUnit": "확률변수와 기댓값",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "f와 g의 대칭성 및 확률구간의 넓이를 보여주는 해설 그래프",
+    "solutionImageCaption": "두 밀도함수의 대칭성을 이용해 전체 넓이 1과 구간확률을 계산한다.",
+    "solutionImageSize": "large"
   },
   {
     "id": 22,
@@ -1032,7 +1060,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "지역 B의 표본평균 표준편차는 2.5이고 237.5 이상은 표준화하여 Z가 -1 이상인 영역이다.",
+    "solutionImageCaption": "P(Z ≥ -1) = 0.8413",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -1076,7 +1108,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "이항분포 평균 3240 표준편차 45에 대한 3330 이상의 정규근사는 Z가 2 이상인 오른쪽 영역이다.",
+    "solutionImageCaption": "P(T ≥ 3330) ≈ P(Z ≥ 2) = 0.023",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
