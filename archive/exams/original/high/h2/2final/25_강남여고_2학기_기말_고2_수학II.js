@@ -510,7 +510,7 @@ window.questionBank = [
       "$52$"
     ],
     "answer": "④",
-    "solution": "각 항에서 $u=x-2k$로 생각하면 적분 구간이 $x=2k$부터 $2k+2$까지 변할 때 $u$는 $0$부터 $2$까지 변한다.\n따라서 임의의 $k$에 대하여\n$\\displaystyle\\int_{2k}^{2k+2}f(x-2k)\\,dx$\n$=\\displaystyle\\int_0^2 f(u)\\,du=2$\n모든 항의 값이 같고 $k=1,2,\\ldots,25$이므로 항은 $25$개이다.\n$\\displaystyle\\sum_{k=1}^{25}\\int_{2k}^{2k+2}f(x-2k)\\,dx$\n$=\\underbrace{2+2+\\cdots+2}_{25\\text{개}}$\n$=25\\cdot2=50$\n따라서 정답은 ④이다.",
+    "solution": "각 항에서 $u=x-2k$로 생각하면 적분 구간이 $x=2k$부터 $2k+2$까지 변할 때 $u$는 $0$부터 $2$까지 변한다.\n따라서 임의의 $k$에 대하여\n$\\displaystyle\\int_{2k}^{2k+2}f(x-2k)\\,dx$\n$=\\displaystyle\\int_0^2 f(u)\\,du=2$\n모든 항의 값이 같고 $k=1,2,\\ldots,25$이므로 항은 $25$개이다.\n$\\displaystyle\\sum_{k=1}^{25}\\int_{2k}^{2k+2}f(x-2k)\\,dx$\n$=\\underbrace{2+2+\\cdots+2}_{25}$\n$=25\\cdot2=50$\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
