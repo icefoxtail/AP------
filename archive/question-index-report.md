@@ -4,34 +4,34 @@
 - 시험지 수(db.js): 741
 - 시험지 파일 수: 741
 - 원본 문항 수(중복 제거 전): 17459
-- 최종 인덱스 문항 수(중복 제거 후): 17437
-- 중복 qKey로 제외된 레코드: 22 (그룹 1)
+- 최종 인덱스 문항 수(중복 제거 후): 17459
+- 중복 qKey로 제외된 레코드: 0 (그룹 0)
 - 최종 인덱스 중복 qKey: 0
 - undefined/비객체 문항 skip: 0
 - db.js 크기: 736181 bytes
-- 시험지 JS 총 크기: 34545048 bytes
-- 인덱스 크기: 18641873 bytes
+- 시험지 JS 총 크기: 34780828 bytes
+- 인덱스 크기: 18659957 bytes
 - 로드 실패 파일: 0
 
-> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(17437)" 기준이다.
+> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(17459)" 기준이다.
 
 ## 표준단원키 분류 (공식 마스터 143개 기준)
 
 - 공식(official): 17246
 - RAW-(임시 규약, 허용): 25 (distinct 7)
 - 비공식(invalid): 94 (distinct 21)
-- 빈 키(empty): 72
+- 빈 키(empty): 94
 
 상세 비공식 키 목록은 question-index-audit.md 참조.
 
 ## 필드 누락 (최종 인덱스 기준)
 
-- 누락 id: 1
-- 누락 content: 94
+- 누락 id: 0
+- 누락 content: 116
 - 누락 choices: 5
 - 누락 level: 521
 - 누락 standardUnit: 48
-- 누락 standardUnitKey: 72
+- 누락 standardUnitKey: 94
 - 누락 standardCourse: 59
 - 누락 tags: 47
 
@@ -46,7 +46,7 @@
 ## 누락 예시
 
 ### id
-  - original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js#(빈 id)
+  - 없음
 
 ### content
   - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#1
