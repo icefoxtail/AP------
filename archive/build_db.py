@@ -443,6 +443,9 @@ def parse_standard_exam_filename(filename):
             exam_type = "mid"
         elif "기말" in p:
             exam_type = "final"
+        elif p == "2차":
+            # Second semester-1 school assessment is the final exam, not a subject.
+            exam_type = "final"
         elif p not in ("기출",):
             subject_parts.append(p)
 
