@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 510" role="img" aria-labelledby="title desc">
+  <title id="title">원기둥과 원뿔의 부피 비교</title>
+  <desc id="desc">원기둥과 원뿔의 부피가 같다는 조건에 각각의 밑면 반지름과 높이를 대입해 반지름 r을 구한다.</desc>
+  <rect width="980" height="510" fill="#ffffff"/>
+  <text x="490" y="42" text-anchor="middle" font-size="25" font-weight="700" font-family="sans-serif" fill="#202a37">두 도형의 부피가 같을 때</text>
+  <g stroke="#245c87" stroke-width="3" fill="none">
+    <ellipse cx="190" cy="130" rx="100" ry="28"/>
+    <path d="M90 130V270 M290 130V270"/>
+    <path d="M90 270 A100 28 0 0 0 290 270"/>
+    <path d="M90 270 A100 28 0 0 1 290 270" stroke-dasharray="7 6" opacity="0.75"/>
+    <path d="M190 130V270" stroke-dasharray="7 6"/>
+  </g>
+  <g stroke="#27804d" stroke-width="3" fill="none">
+    <path d="M560 140 L450 270 Q560 315 670 270 Z"/>
+    <ellipse cx="560" cy="270" rx="110" ry="32"/>
+    <path d="M560 140V270" stroke-dasharray="7 6"/>
+    <path d="M560 270H670" stroke-dasharray="7 6"/>
+  </g>
+  <g font-family="sans-serif" fill="#18324b">
+    <text x="190" y="95" text-anchor="middle" font-size="20" font-weight="700">원기둥</text>
+    <text x="560" y="95" text-anchor="middle" font-size="20" font-weight="700">원뿔</text>
+    <text x="207" y="205" font-size="18">높이 √5 cm</text>
+    <text x="204" y="322" font-size="18">밑면 반지름 2√6 cm</text>
+    <text x="578" y="205" font-size="18">높이 √20 cm</text>
+    <text x="598" y="322" font-size="18">밑면 반지름 r cm</text>
+  </g>
+  <path d="M90 335H890" stroke="#d3dde7" stroke-width="2"/>
+  <g font-family="sans-serif" fill="#202a37" font-size="19">
+    <text x="70" y="387">원기둥 부피 = π × (2√6)² × √5 = 24√5π</text>
+    <text x="70" y="421">원뿔 부피 = ⅓ × π × r² × √20 = ⅔r²√5π</text>
+    <text x="70" y="462" font-weight="700">두 부피를 같게 두면 r² = 36, 반지름이므로 r = 6 cm</text>
+  </g>
+</svg>
