@@ -71,7 +71,7 @@ export function applyReviewedLegacySimilarLedgers() {
     const ledger = json(path.join(ledgerDir, name));
     requireAssert(ledger.schemaVersion === 'JS_ARCHIVE_LEGACY_SIMILAR_TARGET_REVIEW_V1' &&
       ledger.preserveUid === true && ledger.regenerateQid9 === false &&
-      Array.isArray(ledger.questions) && ledger.questions.length === 22, 'ledger contract ' + name);
+      Array.isArray(ledger.questions) && ledger.questions.length === (Number.isInteger(ledger.expectedQuestionCount) ? ledger.expectedQuestionCount : 22), 'ledger contract ' + name);
     const sourceFile = pathOf(ledger.sourceFile);
     requireAssert(sourceFile.startsWith('similar/') && !sourceFile.includes('..'), 'source path ' + name);
     const code = fs.readFileSync(path.join(archive, 'exams', sourceFile));

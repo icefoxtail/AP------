@@ -1,8 +1,8 @@
 {
   "schemaVersion": "legacy-similar-meta-review-evidence-v1",
-  "status": "PARTIAL_READY_UID_JOIN_PENDING",
+  "status": "UID_BOUND_CANONICAL_ROUTED_PENDING_GENERATED_REGISTRATION_SYNC",
   "sourceArchiveFile": "similar/high/h1/2final/25_팔마고_2학기_기말_고1_유사.js",
-  "sourceBlobSha": "822deade870324cd96fc7675078ce3b1fd67716f",
+  "sourceBlobSha": "6bae74fae9764888517c331b1e483b4a45608a2d",
   "originalSourceArchiveFile": "original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
   "originalRuntimeRefs": [
     {
@@ -46,12 +46,20 @@
     [
       18,
       "solution"
+    ],
+    [
+      15,
+      "subUnitKey"
+    ],
+    [
+      15,
+      "subUnit"
     ]
   ],
   "unresolved": [
-    "authoritative similar UID/provenance join",
-    "RPM LOCKED recordId per UID",
-    "search catalog/index parity",
+    "RPM LOCKED exact per-UID recordId not independently verified",
+    "RPM canonical L4 no equivalent for q06/q09/q15",
+    "source-to-metadata-catalog-index registration sync pending",
     "student browser render NOT_TESTED",
     "q18 PNG visual NOT_TESTED"
   ],
@@ -60,16 +68,16 @@
       "ordinal": 1,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_7e8fc96a12adc7c06edb04eb08eefbe019f231b886928d05b4c55e27b8fb08b0",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_e7691fd1f8820c1932d43589a7bfaf4524f476ae144ff7532779ee4f45fce4b0",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
       "primary": {
         "L1": "함수",
         "L2": "함수",
-        "L3": "함수의 뜻과 판정",
-        "L4": "함수의 그래프 판정"
+        "L3": "함수의 뜻",
+        "L4": "대응과 함수"
       },
       "problemTypeKey": "PT_FUNCTION_DEFINITION_JUDGMENT",
       "templateKey": "TPL_FUNCTION_JUDGMENT_GRAPH",
@@ -80,24 +88,33 @@
       "level": "중",
       "difficultyBucket": 2,
       "difficultyReason": "함수 판정 다섯 그래프·복수 선택",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_ROUTE_VERIFIED_PENDING_CONSUMER_SYNC",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "함수의 뜻과 판정",
+        "L4": "함수의 그래프 판정"
+      },
+      "sourceFingerprint": "153cb811075fb92f91daea2b17e921c2eea4bb148a8e8d5eef1703b2c8de95e0",
+      "contentFingerprint": "fe0b7b1a0f20cf947a2cef9ff7e1ccc910e2245ab18be2b1142f3d994808cfab",
+      "rpmPathStatus": "CANONICAL_L4_MATCHED"
     },
     {
       "ordinal": 2,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_dc6b77d19163ba2eacf184a48ef6eb3290cec51a6a68711d5df7c8c79c778621",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_4d770bbe5dc7d9151659aeab4f08551d44902207fd9743da71176357149aca59",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
       "primary": {
         "L1": "함수",
         "L2": "함수",
-        "L3": "합성함수의 계산",
-        "L4": "대응도에서 합성함숫값 계산"
+        "L3": "합성함수",
+        "L4": "합성함수 계산"
       },
       "problemTypeKey": "PT_COMPOSITION_EVALUATION",
       "templateKey": "TPL_COMPOSITION_VALUE_MAPPING",
@@ -108,24 +125,33 @@
       "level": "하",
       "difficultyBucket": 1,
       "difficultyReason": "합성 대응도 두 단계",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_ROUTE_VERIFIED_PENDING_CONSUMER_SYNC",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "합성함수의 계산",
+        "L4": "대응도에서 합성함숫값 계산"
+      },
+      "sourceFingerprint": "5cac122b41f1e45a6f36e1bca298395ccd9c6f7a654afaa0a06b944eb96c54ae",
+      "contentFingerprint": "e55590598bdbf06763703033f4414efd30f28e943ae79114a408f67f78fd89ab",
+      "rpmPathStatus": "CANONICAL_L4_MATCHED"
     },
     {
       "ordinal": 3,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_013a373e6a7236edc5563aa3906f296223b53863793ba74d2bb804543b81289b",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_fff5a1eb94a55034e2220f850e84766baf94bc7beea9f9502c7cfe2bdef79b3f",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
       "primary": {
         "L1": "함수",
         "L2": "함수",
-        "L3": "역함수 구하기와 함수값",
-        "L4": "그래프·대응도에서 역함숫값 읽기"
+        "L3": "역함수",
+        "L4": "역함수 구하기"
       },
       "problemTypeKey": "PT_INVERSE_VALUE",
       "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
@@ -136,24 +162,33 @@
       "level": "하",
       "difficultyBucket": 1,
       "difficultyReason": "역함숫값 대응도 역추적",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_ROUTE_VERIFIED_PENDING_CONSUMER_SYNC",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "역함수 구하기와 함수값",
+        "L4": "그래프·대응도에서 역함숫값 읽기"
+      },
+      "sourceFingerprint": "8de104e43c65f91671ba0514600889339245737fe033d2d2994e0d8ed81bce57",
+      "contentFingerprint": "d3629045642ce8907ab209e0558e383d35c77eca0aa6f0c99a7426275eb06e68",
+      "rpmPathStatus": "CANONICAL_L4_MATCHED"
     },
     {
       "ordinal": 4,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_61af016ec937c0049b6942a80e6a2df1b0ce4230da59a3c18533beee45acb4b6",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_29624eb44d44f8309cdfc19fa6c5bd9477c285cea48e699f42b5c9623c513e4e",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-08",
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
       "primary": {
         "L1": "함수",
         "L2": "유리함수",
-        "L3": "함수 그래프와 사분면",
-        "L4": "함수 그래프가 지나는 사분면"
+        "L3": "점근선과 위치",
+        "L4": "그래프의 사분면"
       },
       "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
       "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
@@ -164,24 +199,33 @@
       "level": "중",
       "difficultyBucket": 2,
       "difficultyReason": "유리함수 부호 구간과 사분면",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_ROUTE_VERIFIED_PENDING_CONSUMER_SYNC",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "함수",
+        "L2": "유리함수",
+        "L3": "함수 그래프와 사분면",
+        "L4": "함수 그래프가 지나는 사분면"
+      },
+      "sourceFingerprint": "fc3cbe159080d2a8c3fce5d41c37b3b11bd6218203544e1f1f13c43b40800672",
+      "contentFingerprint": "d809aa8c31d4069696f870393b0b4600a4207aea60827f159a73185e9c056477",
+      "rpmPathStatus": "CANONICAL_L4_MATCHED"
     },
     {
       "ordinal": 5,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_88463e8391870792b644670bfcb5ba2ee3e9051e463f2cd91374e26775417f2b",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_062c7428ae0d13c141e6b8d6eb20e0137c0f291ed63d83c1f807f977292183b0",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-09",
       "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
       "primary": {
         "L1": "함수",
         "L2": "무리함수",
-        "L3": "함수식 구하기",
-        "L4": "그래프의 특징으로 함수식 구하기"
+        "L3": "무리함수의 활용",
+        "L4": "식 결정"
       },
       "problemTypeKey": "PT_FUNCTION_RECOVERY",
       "templateKey": "TPL_FUNCTION_FORM_FROM_GRAPH",
@@ -192,24 +236,33 @@
       "level": "중",
       "difficultyBucket": 2,
       "difficultyReason": "끝점·통과점 두 식 복원",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_ROUTE_VERIFIED_PENDING_CONSUMER_SYNC",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "함수",
+        "L2": "무리함수",
+        "L3": "함수식 구하기",
+        "L4": "그래프의 특징으로 함수식 구하기"
+      },
+      "sourceFingerprint": "5b214aa47235f629fe332cbb00c207cf9ecce0d3220905a1b14b229c1fb6f8cf",
+      "contentFingerprint": "9a70c56dd58aea506e155f9ebe09807a0b98413dfcd420bb5b6b56a8ef2c7f3b",
+      "rpmPathStatus": "CANONICAL_L4_MATCHED"
     },
     {
       "ordinal": 6,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_3c7809faf95dd6c6b6009ecc6ea4a7d3b5aadf599b66e5bc0b0588b188e2ba3d",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_1a2f44fbfce431c360f241b43c0d73565dfd7cb15a8bcbd8b77f28df56e15fbf",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-08",
       "subUnitKey": "H22-C2-08-FUNCTION_INVERSE",
       "primary": {
         "L1": "함수",
         "L2": "유리함수",
-        "L3": "역함수 구하기와 함수값",
-        "L4": "역함숫값 직접 구하기"
+        "L3": "유리함수의 활용",
+        "L4": null
       },
       "problemTypeKey": "PT_INVERSE_VALUE",
       "templateKey": "TPL_INVERSE_VALUE_DIRECT",
@@ -220,24 +273,33 @@
       "level": "중",
       "difficultyBucket": 2,
       "difficultyReason": "점근선에서 역함숫값 도출",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_L3_VERIFIED_L4_EVIDENCE_DEBT",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "함수",
+        "L2": "유리함수",
+        "L3": "역함수 구하기와 함수값",
+        "L4": "역함숫값 직접 구하기"
+      },
+      "sourceFingerprint": "1dab211272cb67f15fcb1d5630a531515507e9c0a72a080993871abd0d3a0dcd",
+      "contentFingerprint": "9ef905568a6a0c24d97e2d0104ece1294691561cb020dd4fce1f989fb4ed682e",
+      "rpmPathStatus": "HOLD_NO_EQUIVALENT_RPM_L4"
     },
     {
       "ordinal": 7,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_f198ca07a6b64efe0d09bf19a92bdfb7f33378e8b20bb1e45d280e29d0b9d442",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_644121aace0ac1cd01bf905d367c90956d55e8cd8ff6521d8685001244b3ec10",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-08",
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
       "primary": {
         "L1": "함수",
         "L2": "유리함수",
-        "L3": "함수의 최댓값·최솟값",
-        "L4": "구간 끝점과 함수의 최댓값·최솟값"
+        "L3": "유리함수의 활용",
+        "L4": "유리함수의 최대·최소"
       },
       "problemTypeKey": "PT_FUNCTION_EXTREMUM",
       "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
@@ -250,24 +312,33 @@
       "level": "중",
       "difficultyBucket": 3,
       "difficultyReason": "유리함수 구간 단조성·최솟값",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_ROUTE_VERIFIED_PENDING_CONSUMER_SYNC",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "함수",
+        "L2": "유리함수",
+        "L3": "함수의 최댓값·최솟값",
+        "L4": "구간 끝점과 함수의 최댓값·최솟값"
+      },
+      "sourceFingerprint": "240d97dedd0d75d3bcfa8079be4b958f942a87e6f40efeacf49ae355644166b0",
+      "contentFingerprint": "beb3eaf26fc59936ae6a1f25236d2107197a89f821cbb970fa1aa6b54e59eb0c",
+      "rpmPathStatus": "CANONICAL_L4_MATCHED"
     },
     {
       "ordinal": 8,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_c9d5ebc705de0fd149b686c859a8c9f0078f853425ac590bc2902e6ad588253e",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_826bff5c78892865faac651b5e2fa65a0821bc5ce42aca47f9953a3b44184391",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
       "primary": {
         "L1": "함수",
         "L2": "함수",
-        "L3": "반복합성",
-        "L4": "반복합성의 규칙"
+        "L3": "합성함수",
+        "L4": "합성함수 계산"
       },
       "problemTypeKey": "PT_ITERATED_COMPOSITION",
       "templateKey": "TPL_ITERATION_RULE",
@@ -278,24 +349,33 @@
       "level": "중",
       "difficultyBucket": 2,
       "difficultyReason": "합성 반복규칙·초깃값 역산",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_ROUTE_VERIFIED_PENDING_CONSUMER_SYNC",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "반복합성",
+        "L4": "반복합성의 규칙"
+      },
+      "sourceFingerprint": "1801ff069b47d8a454108c5023fd08319f09dee34b739b32674b2623b0b1a879",
+      "contentFingerprint": "7d40a4fa369e69f568dd0b8581632134d186ff97ebf25163ed3936ba597cb3af",
+      "rpmPathStatus": "CANONICAL_L4_MATCHED"
     },
     {
       "ordinal": 9,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_a2e9aac133cfb8ba1cdb52fa19ae3f3f689d36b8fb76b7a539710e82291898d3",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_8b7c53a0bc6a27ebbb6ab6b8cad40abb526cb976d63a2c0b79fe8731934df473",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
       "primary": {
         "L1": "함수",
         "L2": "함수",
-        "L3": "함수방정식",
-        "L4": "가법형 함수방정식"
+        "L3": "함수의 성질",
+        "L4": null
       },
       "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
       "templateKey": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
@@ -306,24 +386,33 @@
       "level": "중",
       "difficultyBucket": 2,
       "difficultyReason": "가법성·정수배",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_L3_VERIFIED_L4_EVIDENCE_DEBT",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "함수방정식",
+        "L4": "가법형 함수방정식"
+      },
+      "sourceFingerprint": "9bb3aefe0c20757c931e8ac5c660504036ef4a70d0daf5cebe1ca998106c83d7",
+      "contentFingerprint": "1c64a05a820ed4b1c46f9ff872d860026fe431b3fdac30ca41cafae9ab5ced60",
+      "rpmPathStatus": "HOLD_NO_EQUIVALENT_RPM_L4"
     },
     {
       "ordinal": 10,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_f0656cf418ef786bc3ecc16af6f758ba7988df917f627451e612c37b726b1004",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_9bb0757e2a66bbbd86422aa9b9c300d89681a72f27c36f3731cc6cb2d6d6e85a",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
       "primary": {
         "L1": "함수",
         "L2": "함수",
-        "L3": "합성함수의 성질",
-        "L4": "합성함수의 관계 조건"
+        "L3": "합성함수",
+        "L4": "합성함수 계산"
       },
       "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
       "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
@@ -336,24 +425,33 @@
       "level": "중",
       "difficultyBucket": 2,
       "difficultyReason": "합성의 교환성·양의 정수",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_ROUTE_VERIFIED_PENDING_CONSUMER_SYNC",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "합성함수의 성질",
+        "L4": "합성함수의 관계 조건"
+      },
+      "sourceFingerprint": "d57e9efcc7ab155bef56d93e162e4131f2ecd60743cce39edcd3ad9acb756142",
+      "contentFingerprint": "47e9056d32ed254c527b295b20c36eac5c5e1517bf61e62dc81a4e342c6f08e4",
+      "rpmPathStatus": "CANONICAL_L4_MATCHED"
     },
     {
       "ordinal": 11,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_d570b59e309a32bed77776f5a7dabece82abf08717f24c9c4f182a635fa17383",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_7befa476e6fd6bdfbdede9c05326db083b63757fe966d5adf47991eb54c26899",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
       "primary": {
         "L1": "함수",
         "L2": "함수",
-        "L3": "역함수의 그래프",
-        "L4": "함수와 역함수의 교점·접점"
+        "L3": "역함수",
+        "L4": "그래프 대칭"
       },
       "problemTypeKey": "PT_INVERSE_GRAPH",
       "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
@@ -369,24 +467,33 @@
       "level": "상",
       "difficultyBucket": 4,
       "difficultyReason": "역함수 접점·판별식·정의역",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_ROUTE_VERIFIED_PENDING_CONSUMER_SYNC",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "역함수의 그래프",
+        "L4": "함수와 역함수의 교점·접점"
+      },
+      "sourceFingerprint": "37f25f53ad6403c4a400bf4f86581aa4d0dce3ef2fc9e634c49f50b54473244f",
+      "contentFingerprint": "05cc0581e2362359316dac5d6b54c12464a90f189737b3422699bd6893626315",
+      "rpmPathStatus": "CANONICAL_L4_MATCHED"
     },
     {
       "ordinal": 12,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_1f7b74b8ce522acdcdbc445734375ae07c851c5ba8a9e913e25f2562f2ba7894",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_3acec5f99484fadeb82529eb0926ae83b89ff1008a2f1251d72960b7af2e190e",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-06",
       "subUnitKey": "H22-C2-06-CORE",
       "primary": {
         "L1": "집합과 명제",
         "L2": "명제",
-        "L3": "절대부등식의 증명",
-        "L4": "제곱 비교를 이용한 부등식 증명"
+        "L3": "증명",
+        "L4": "절대부등식 증명"
       },
       "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_PROOF",
       "templateKey": "TPL_SQUARE_COMPARISON_PROOF",
@@ -399,24 +506,33 @@
       "level": "중",
       "difficultyBucket": 2,
       "difficultyReason": "유리화와 제곱부등식",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_ROUTE_VERIFIED_PENDING_CONSUMER_SYNC",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "집합과 명제",
+        "L2": "명제",
+        "L3": "절대부등식의 증명",
+        "L4": "제곱 비교를 이용한 부등식 증명"
+      },
+      "sourceFingerprint": "1e9f018cd977eef4b1465916971c641f2f6ca6875feeef58869a2c493939153e",
+      "contentFingerprint": "aa674753347da5f96c6cb79c27a8be9129e504a83dd97a4942277451c977698e",
+      "rpmPathStatus": "CANONICAL_L4_MATCHED"
     },
     {
       "ordinal": 13,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_ec2fc803a2c67c50ee00c255ddd413f4eecc7e2550b11cbd8e439142acba91d6",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_4f7943cdeedbee2fcee8addb03478a0e3cb21ddc294b4f7eb1f059a521e1a514",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-06",
       "subUnitKey": "H22-C2-06-CORE",
       "primary": {
         "L1": "집합과 명제",
         "L2": "명제",
-        "L3": "절대부등식의 활용과 최댓값·최솟값",
-        "L4": "역수식의 최솟값"
+        "L3": "증명",
+        "L4": "절대부등식 증명"
       },
       "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
       "templateKey": "TPL_AMGM_RECIPROCAL_MINIMUM",
@@ -429,24 +545,33 @@
       "level": "중",
       "difficultyBucket": 3,
       "difficultyReason": "산술기하평균 등호·자연수 비",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_ROUTE_VERIFIED_PENDING_CONSUMER_SYNC",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "집합과 명제",
+        "L2": "명제",
+        "L3": "절대부등식의 활용과 최댓값·최솟값",
+        "L4": "역수식의 최솟값"
+      },
+      "sourceFingerprint": "44d891cfa8719aa388ef0f6977dbf4cbbedc37fbd7586147194d7ebf077f951f",
+      "contentFingerprint": "9b24c5535785d0d3ee5dfa718a4fecdc2de7194b7c34ef66e8944ac808cc08cc",
+      "rpmPathStatus": "CANONICAL_L4_MATCHED"
     },
     {
       "ordinal": 14,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_cbcbb1d3488286a391a8387d4d050f788da9339e9a91f7755b8fd50970080985",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_da63686ab416c7facbe382c809787bdb9a5a6cc9f25fe7188d2645126d1e246e",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
       "primary": {
         "L1": "함수",
         "L2": "함수",
-        "L3": "역함수의 성질",
-        "L4": "역함수의 성질 판정"
+        "L3": "역함수",
+        "L4": "역함수 구하기"
       },
       "problemTypeKey": "PT_INVERSE_PROPERTIES",
       "templateKey": "TPL_INVERSE_PROPERTY_JUDGMENT",
@@ -459,24 +584,33 @@
       "level": "중",
       "difficultyBucket": 3,
       "difficultyReason": "세 명제의 역함수·사분면·교점 판정",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_ROUTE_VERIFIED_PENDING_CONSUMER_SYNC",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "역함수의 성질",
+        "L4": "역함수의 성질 판정"
+      },
+      "sourceFingerprint": "909859a0517308d7d7f1d3bfd0dc7e736bb96c6f06f59fafbb9af9977608480d",
+      "contentFingerprint": "a3762eedc9fa387de74ac6ba6cfae71611c5029dea6adaa9148f9dbb1e8cf34d",
+      "rpmPathStatus": "CANONICAL_L4_MATCHED"
     },
     {
       "ordinal": 15,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_0a17b0647447adb5fae155e88e981c428430394d97480833530bcac5aafe34b5",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_ef9ec6dc1410487691e1f36a27b5c6e111b013b7eb564f6676aa1b4faf759394",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
-      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
       "primary": {
         "L1": "함수",
         "L2": "함수",
-        "L3": "역함수의 성질",
-        "L4": "자기역함수 관계로 계수 결정"
+        "L3": "역함수",
+        "L4": null
       },
       "problemTypeKey": "PT_INVERSE_PROPERTIES",
       "templateKey": "TPL_INVERSE_PROPERTY_JUDGMENT",
@@ -487,24 +621,34 @@
       "level": "상",
       "difficultyBucket": 4,
       "difficultyReason": "자기 역함수 조건을 항등식으로 계산",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_L3_VERIFIED_L4_EVIDENCE_DEBT",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "역함수의 성질",
+        "L4": "자기역함수 관계로 계수 결정"
+      },
+      "sourceFingerprint": "3125ea1c2f79202fff4df3bd21bd176f20bbc0be66566842fcb5386ecabe7846",
+      "contentFingerprint": "3774e520c24b8fee1d66b3cc6ff02575be48716886ac08fd6410bff6c7949218",
+      "rpmPathStatus": "HOLD_NO_EQUIVALENT_RPM_L4",
+      "subUnit": "역함수"
     },
     {
       "ordinal": 16,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_1213be2f756d1827cbbc73deaa45d672eb954e02186fd1c99680934558518c56",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
       "primary": {
         "L1": "함수",
         "L2": "함수",
-        "L3": "함수의 개수",
-        "L4": "일대일함수·일대일대응의 개수"
+        "L3": "함수의 성질",
+        "L4": "일대일함수"
       },
       "problemTypeKey": "PT_FUNCTION_COUNTING",
       "templateKey": "TPL_INJECTIVE_BIJECTION_COUNT",
@@ -515,24 +659,33 @@
       "level": "중",
       "difficultyBucket": 3,
       "difficultyReason": "순열의 상대순서 조건을 함수 개수로 환산",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_ROUTE_VERIFIED_PENDING_CONSUMER_SYNC",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "함수의 개수",
+        "L4": "일대일함수·일대일대응의 개수"
+      },
+      "sourceFingerprint": "08c2aec2b76460da4a2dd814483e2cdf1c52fbe6794a9d29b5a8e10ebe3560cf",
+      "contentFingerprint": "0ddc95997f1e9845b448c661d29991e22f7191cbdbd62d30f7bab050b8abc37e",
+      "rpmPathStatus": "CANONICAL_L4_MATCHED"
     },
     {
       "ordinal": 17,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_11c5032f8271bb046040f8c07d6592b45deb004c68e7bea49976813b991e2698",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_d5d28a37b503a8c3a27955d88227cb06e87d351e14a3d7f6ea1435785f7c47e3",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
       "primary": {
         "L1": "함수",
         "L2": "함수",
-        "L3": "일대일함수와 일대일대응",
-        "L4": "조각함수의 일대일대응 조건"
+        "L3": "함수의 성질",
+        "L4": "일대일함수"
       },
       "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
       "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
@@ -547,24 +700,33 @@
       "level": "상",
       "difficultyBucket": 4,
       "difficultyReason": "조각함수 일대일대응과 치역 경계 조건",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_ROUTE_VERIFIED_PENDING_CONSUMER_SYNC",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "일대일함수와 일대일대응",
+        "L4": "조각함수의 일대일대응 조건"
+      },
+      "sourceFingerprint": "c836f466484cd1296d234455a5c8320d249ec9dafd98df8b216e2764f7eb40ab",
+      "contentFingerprint": "c75645fd6bc379eddf600b136671e8d89131380c31ad1713a37ff326b5f6a7e8",
+      "rpmPathStatus": "CANONICAL_L4_MATCHED"
     },
     {
       "ordinal": 18,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_d961472e7c5f62da9261ae7369eb4114d3b39ea41b1f0309a923e9e26cc7b0d7",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-09",
       "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
       "primary": {
         "L1": "함수",
         "L2": "무리함수",
-        "L3": "함수 그래프와 도형",
-        "L4": "그래프와 직선으로 둘러싸인 넓이"
+        "L3": "무리함수의 그래프",
+        "L4": "평행이동"
       },
       "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
       "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
@@ -575,24 +737,33 @@
       "level": "상",
       "difficultyBucket": 5,
       "difficultyReason": "평행이동 곡선 영역의 등넓이 변형",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_ROUTE_VERIFIED_PENDING_CONSUMER_SYNC",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "함수",
+        "L2": "무리함수",
+        "L3": "함수 그래프와 도형",
+        "L4": "그래프와 직선으로 둘러싸인 넓이"
+      },
+      "sourceFingerprint": "9c0898fecc9533b6d16a2a113e19d8172e1329b369959b72936602e906110635",
+      "contentFingerprint": "b2a5880a9ea39ddaccfd6f8fcaf50719eef2272718a364b6c9e6916928135922",
+      "rpmPathStatus": "CANONICAL_L4_MATCHED"
     },
     {
       "ordinal": 19,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_6ce7907dbe92cbf79e401b3a43adfd14381ef017e9a5d20f7c3d2ff4416792b8",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
       "primary": {
         "L1": "함수",
         "L2": "함수",
-        "L3": "합성함수 방정식과 부등식",
-        "L4": "합성함수 방정식 풀기"
+        "L3": "합성함수",
+        "L4": "합성함수 계산"
       },
       "problemTypeKey": "PT_COMPOSITION_EQUATION",
       "templateKey": "TPL_COMPOSITION_EQUATION_SOLVE",
@@ -605,24 +776,33 @@
       "level": "상",
       "difficultyBucket": 4,
       "difficultyReason": "이차함수 복원과 합성방정식 근 분기",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_ROUTE_VERIFIED_PENDING_CONSUMER_SYNC",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "합성함수 방정식과 부등식",
+        "L4": "합성함수 방정식 풀기"
+      },
+      "sourceFingerprint": "eb2b168a880cba4535fe3e1e0ea0f40a49adf6601e5523cfc4b02fffb19f7994",
+      "contentFingerprint": "16fab1f99f10b865a5eb4d27704003c5234d3a6d98c428da24b58df8e8c0105c",
+      "rpmPathStatus": "CANONICAL_L4_MATCHED"
     },
     {
       "ordinal": 20,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_55954d55f496758cf58316c7e74e77449b9e9fe5e9a97405ec728eef27a48f52",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_ba5e09e788a76847098655adabb4d03f01961023bb25f0ae04aa22ba8e8b3a5f",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
       "primary": {
         "L1": "함수",
         "L2": "함수",
-        "L3": "일대일함수와 일대일대응",
-        "L4": "이차함수의 정의역 제한과 일대일대응"
+        "L3": "함수의 성질",
+        "L4": "일대일함수"
       },
       "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
       "templateKey": "TPL_QUADRATIC_DOMAIN_BIJECTION",
@@ -637,24 +817,33 @@
       "level": "중",
       "difficultyBucket": 3,
       "difficultyReason": "이차함수 정의역 단사·전사 동시 판정",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_ROUTE_VERIFIED_PENDING_CONSUMER_SYNC",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "일대일함수와 일대일대응",
+        "L4": "이차함수의 정의역 제한과 일대일대응"
+      },
+      "sourceFingerprint": "40b0dd7a1b7c1781b80ccf235e02d8afda585a74b65981ba9c3203d0db7b183a",
+      "contentFingerprint": "200d31f83626c799bda23c5844a466e68b3c49596f262e5aad8c5c3be0377d5b",
+      "rpmPathStatus": "CANONICAL_L4_MATCHED"
     },
     {
       "ordinal": 21,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_a5bbec7168a1a923a7b013ce63dd6c8b8768cbc5c6a34a566856b7c305c85d90",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_49900d0b00ba60526c9b89defbd534f601e737d280b9f6e620d09bc87391150f",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-08",
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
       "primary": {
         "L1": "함수",
         "L2": "유리함수",
-        "L3": "함수의 최댓값·최솟값",
-        "L4": "매개변수 함수의 최댓값·최솟값"
+        "L3": "유리함수의 활용",
+        "L4": "유리함수의 최대·최소"
       },
       "problemTypeKey": "PT_FUNCTION_EXTREMUM",
       "templateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
@@ -667,24 +856,33 @@
       "level": "중",
       "difficultyBucket": 3,
       "difficultyReason": "평균속력 함수모델과 구간 단조성",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_ROUTE_VERIFIED_PENDING_CONSUMER_SYNC",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "함수",
+        "L2": "유리함수",
+        "L3": "함수의 최댓값·최솟값",
+        "L4": "매개변수 함수의 최댓값·최솟값"
+      },
+      "sourceFingerprint": "cd5adaa2398045a268ad464ab11b85c16afd40f877714e29123e97ab9e6b6e75",
+      "contentFingerprint": "73dc1469203afc87076587392b22c67d7cfbafbda2a27a1a58696f45447bbcb2",
+      "rpmPathStatus": "CANONICAL_L4_MATCHED"
     },
     {
       "ordinal": 22,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_d51c95367e8902c0e59fed185babb77c240f0355b387e934373e9f6151bff8eb",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_d2f9c72a8fb2a7933e226e3195b3bf31d5810c4f9871bf6f918fb0d0faf717a6",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
       "primary": {
         "L1": "함수",
         "L2": "함수",
-        "L3": "역함수와 합성함수",
-        "L4": "역함수와 합성함수의 값 계산"
+        "L3": "역함수",
+        "L4": "역함수 구하기"
       },
       "problemTypeKey": "PT_INVERSE_COMPOSITION",
       "templateKey": "TPL_INVERSE_COMPOSITION_VALUE",
@@ -695,24 +893,33 @@
       "level": "중",
       "difficultyBucket": 2,
       "difficultyReason": "일차함수 복원 후 역함수 합성",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_ROUTE_VERIFIED_PENDING_CONSUMER_SYNC",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "역함수와 합성함수",
+        "L4": "역함수와 합성함수의 값 계산"
+      },
+      "sourceFingerprint": "2bad68a3ad14aaee6f41199d6337b09b1279e9bdd49941b2bca24aea3de0ede1",
+      "contentFingerprint": "3916c26b3f0543e38cec42b8f01cc6533195baee1194580e3c353352eb78d959",
+      "rpmPathStatus": "CANONICAL_L4_MATCHED"
     },
     {
       "ordinal": 23,
       "sourceKind": "LEGACY_SIMILAR",
       "originalUid": "qid_v1_1bc7273944cc5f9767fc39ca7e0bea31015f0cd03198b58ca5cf1c951b07f981",
-      "similarUid": null,
-      "similarUidStatus": "PENDING_IDENTITY_JOIN",
+      "similarUid": "qid_v1_d0492ffe77a7a4b69da6af88ccfc97b8df582367ce9b80470aaad2aa478ee3de",
+      "similarUidStatus": "VERIFIED_EXISTING_UID",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-09",
       "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
       "primary": {
         "L1": "함수",
         "L2": "무리함수",
-        "L3": "함수 그래프의 교점",
-        "L4": "그래프의 교점 개수"
+        "L3": "무리함수의 활용",
+        "L4": "무리함수의 교점"
       },
       "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
       "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
@@ -725,9 +932,25 @@
       "level": "상",
       "difficultyBucket": 4,
       "difficultyReason": "두 음이 아닌 근의 판별식과 경계 판정",
-      "semanticStatus": "REVIEWED_PROPOSAL_NOT_CONSUMER",
+      "semanticStatus": "CANONICAL_ROUTE_VERIFIED_PENDING_CONSUMER_SYNC",
       "rpmLockedRecordId": null,
-      "rpmLockedRecordIdStatus": "UNVERIFIED"
+      "rpmLockedRecordIdStatus": "UNVERIFIED",
+      "proposedPrimary": {
+        "L1": "함수",
+        "L2": "무리함수",
+        "L3": "함수 그래프의 교점",
+        "L4": "그래프의 교점 개수"
+      },
+      "sourceFingerprint": "022ee205fad02bc876131a232aa7426c1cd7252df9af4b6c1d2d8bd3035e63a3",
+      "contentFingerprint": "f314fd2589a2f71aebb1f0011395a3d62430066ae75a31959d7cfc4240e526c7",
+      "rpmPathStatus": "CANONICAL_L4_MATCHED"
     }
-  ]
+  ],
+  "uidJoin": {
+    "source": "archive/data/question_identity_map.json",
+    "questionCount": 23,
+    "uniqueExistingUids": 23,
+    "sourceQuestionNoPreserved": true,
+    "notRegenerated": true
+  }
 }
