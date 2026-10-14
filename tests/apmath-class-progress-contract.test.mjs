@@ -320,7 +320,8 @@ vm.runInNewContext(timetable, vmContext, { filename: 'apmath/js/timetable.js' })
 const resolved = vmContext.getTimetableRecentProgress('c1');
 assert.ok(resolved);
 assert.match(resolved.text, /이차함수/);
-assert.match(resolved.text, /공통수학1/);
+assert.match(resolved.text, /다항식의 연산/);
+assert.doesNotMatch(resolved.text, /공통수학1|2022 개정|중3 과정/);
 assert.doesNotMatch(resolved.text, /이차방정식의 풀이/);
 
 vmContext.state.ui.timetableMonthArchive = { active: true, virtualDb: {} };
