@@ -5587,6 +5587,37 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
+      "file": "original/middle/m2/1final/25_왕운중_1학기_기말_중2_수학.js",
+      "school": "왕운중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2025,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M2-03",
+      "rangeStartUnit": "연립일차방정식",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "M2-04",
+      "rangeEndUnit": "일차함수와 그래프",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-03",
+          "rangeStartUnit": "연립일차방정식",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "M2-04",
+          "rangeEndUnit": "일차함수와 그래프",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "중2 수학"
+    },
+    {
       "file": "original/middle/m2/2final/25_왕운중_2학기_기말_중2_기출.js",
       "school": "왕운중",
       "topic": "",
@@ -15727,6 +15758,37 @@ window.mainDB = {
       "primaryStandardCourse": ""
     },
     {
+      "file": "original/high/h1/1mid/21_효천고_1학기_중간_고1_기출.js",
+      "school": "효천고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2021,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SA-07",
+      "rangeEndUnit": "여러 가지 방정식",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SA-07",
+          "rangeEndUnit": "여러 가지 방정식",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
       "file": "original/middle/m3/2final/21_금당중_2학기_기말_중3_기출.js",
       "school": "금당중",
       "topic": "",
@@ -18078,6 +18140,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": ""
+    },
+    {
+      "file": "original/high/h1/2mid/19_금당고_2학기_중간_고1_기출.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2019,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "공통수학2",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SB-01",
+      "rangeStartUnit": "집합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SB-03",
+      "rangeEndUnit": "함수",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(하)",
+          "courseCode": "H15-SB",
+          "rangeStartUnitKey": "H15-SB-01",
+          "rangeStartUnit": "집합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SB-03",
+          "rangeEndUnit": "함수",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "수학(하)"
     },
     {
       "file": "original/high/h1/1mid/19_금당고_1학기_중간_고1_기출.js",
