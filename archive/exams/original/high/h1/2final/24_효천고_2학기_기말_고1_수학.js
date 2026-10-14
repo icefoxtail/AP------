@@ -37,7 +37,7 @@ window.questionBank = [
       "$x = 2, y = -3$"
     ],
     "answer": "⑤",
-    "solution": "점근선은 분모가 0이 되는 직선과 분수 부분이 0에 가까워질 때의 수평선이다.\n$x-2=0$\n$x=2$ (수직점근선)\n$y=\\dfrac{1}{x-2}-3$\n$x$의 절댓값이 커질수록 $\\dfrac{1}{x-2}$은 $0$에 가까워지므로 수평점근선은 $y=-3$이다.\n따라서 점근선은 $x=2$, $y=-3$이고 정답은 ⑤이다.",
+    "solution": "유리함수 $y=\\dfrac{1}{x}$의 그래프를 오른쪽으로 $2$, 아래로 $3$만큼 옮긴 그래프이다.\n먼저 분모가 $0$이 되는 $x$값을 구한다.\n$x-2=0$\n$x=2$\n이 직선에는 그래프가 가까워지지만 닿을 수 없으므로 수직점근선은 $x=2$이다.\n또 $x$가 한없이 커지거나 작아지면 $\\dfrac{1}{x-2}$는 $0$에 가까워진다.\n$y=\\dfrac{1}{x-2}-3$\n$\\longrightarrow\\ 0-3=-3$\n따라서 수평점근선은 $y=-3$이다.\n두 점근선은 $x=2,\\ y=-3$이므로 정답은 ⑤이다.",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -113,7 +113,7 @@ window.questionBank = [
       "24"
     ],
     "answer": "④",
-    "solution": "$180$을 소인수분해한다.\n$180=2^2\\times3^2\\times5$\n양의 약수는 $2^a3^b5^c$로 나타낸다.\n$a=0,1,2$: $3$가지\n$b=0,1,2$: $3$가지\n$c=0,1$: $2$가지\n각 지수는 독립적으로 고를 수 있으므로\n$3\\times3\\times2=18$\n따라서 약수는 $18$개이고 정답은 ④이다.",
+    "solution": "양의 약수는 소인수분해한 각 소인수의 지수를 고르면 하나씩 결정된다.\n$180=18\\times10$\n$=2^2\\times3^2\\times5^1$\n약수를 $2^a3^b5^c$라고 쓰면\n$a=0,1,2$이므로 $3$가지,\n$b=0,1,2$이므로 $3$가지,\n$c=0,1$이므로 $2$가지이다.\n지수 $0$을 고르면 해당 소인수를 사용하지 않는 약수도 포함된다.\n각 지수의 선택은 서로 영향을 주지 않으므로 곱의 법칙을 쓴다.\n$(2+1)(2+1)(1+1)$\n$=3\\times3\\times2$\n$=18$\n따라서 양의 약수는 $18$개이고 정답은 ④이다.",
     "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
     "subUnit": "경우의 수의 기본 원리",
     "subUnitConfidence": "candidate_evidence",
@@ -189,7 +189,7 @@ window.questionBank = [
       "720"
     ],
     "answer": "②",
-    "solution": "두 장의 $\\mathrm{E}$를 양 끝에 고정한다.\n$\\mathrm{E},\\ \\square,\\ \\square,\\ \\square,\\ \\square,\\ \\square,\\ \\mathrm{E}$\n가운데에는 서로 다른 $\\mathrm{P,R,M,U,T}$ 다섯 장을 배열한다.\n첫 자리부터 선택 수는 $5,4,3,2,1$가지이므로\n$5!=5\\times4\\times3\\times2\\times1=120$\n$\\mathrm{E}$ 두 장은 같은 문자이므로 양 끝에서 서로 바꿔도 새 배열이 아니다.\n따라서 정답은 ②이다.",
+    "solution": "두 장의 $\\mathrm{E}$가 양 끝에 있어야 하므로 첫째 자리와 일곱째 자리를 먼저 고정한다.\n$\\mathrm{E}\\quad\\Box\\quad\\Box\\quad\\Box\\quad\\Box\\quad\\Box\\quad\\mathrm{E}$\n가운데 빈자리 다섯 곳에는 $\\mathrm{P,R,M,U,T}$를 한 장씩 놓는다.\n첫 빈자리에는 $5$장 중 한 장,\n다음 자리에는 남은 $4$장 중 한 장을 놓는다.\n이와 같이 차례로 놓는 방법의 수는\n$5\\times4\\times3\\times2\\times1$\n$=5!=120$\n이다.\n양 끝의 $\\mathrm{E}$는 같은 문자이므로 서로 바꿔도 새로운 배열이 되지 않는다.\n따라서 경우의 수는 $120$가지이고 정답은 ②이다.",
     "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
     "subUnit": "순열",
     "subUnitConfidence": "candidate_evidence",
@@ -265,7 +265,7 @@ window.questionBank = [
       "120"
     ],
     "answer": "④",
-    "solution": "남학생과 여학생을 각각 필요한 인원만큼 선택한다.\n남학생 선택: $_{6}C_{2}=\\dfrac{6\\times5}{2\\times1}=15$\n여학생 선택: $_{4}C_{2}=\\dfrac{4\\times3}{2\\times1}=6$\n남학생을 고른 한 가지 방법마다 여학생 선택 $6$가지를 결합할 수 있다.\n$15\\times6=90$\n모둠 안의 순서는 구별하지 않는다.\n따라서 정답은 ④이다.",
+    "solution": "남학생 $2$명과 여학생 $2$명을 각각 고른 뒤 한 모둠으로 합친다.\n남학생 $6$명 중 $2$명을 고르는 방법은\n$\\binom{6}{2}=\\dfrac{6\\times5}{2\\times1}$\n$=15$가지이다.\n여학생 $4$명 중 $2$명을 고르는 방법은\n$\\binom{4}{2}=\\dfrac{4\\times3}{2\\times1}$\n$=6$가지이다.\n남학생을 고르는 한 가지 방법마다 여학생을 고르는 방법 $6$가지를 짝지을 수 있다.\n$15\\times6=90$\n모둠 안에서 누가 앞에 있는지는 구별하지 않으므로 순열을 곱하지 않는다.\n따라서 $90$가지이고 정답은 ④이다.",
     "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
     "subUnit": "조합",
     "subUnitConfidence": "candidate_evidence",
@@ -341,7 +341,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "④",
-    "solution": "두 제곱근이 모두 실수가 되려면 근호 안의 식이 각각 $0$ 이상이어야 한다.\n$3x+5\\ge0$\n$x\\ge-\\dfrac53$\n$2-x\\ge0$\n$x\\le2$\n두 조건을 동시에 만족하는 범위는\n$-\\dfrac53\\le x\\le2$\n이 구간 안의 정수는 $-1,0,1,2$의 네 개이다.\n따라서 정답은 ④이다.",
+    "solution": "제곱근의 값이 실수가 되려면 근호 안의 식이 각각 $0$ 이상이어야 한다.\n첫 번째 근호에서\n$3x+5\\ge0$\n$3x\\ge-5$\n$x\\ge-\\dfrac53$\n두 번째 근호에서\n$2-x\\ge0$\n$-x\\ge-2$\n$x\\le2$\n이다.\n따라서 두 조건을 동시에 만족하는 범위는\n$-\\dfrac53\\le x\\le2$\n이다. 양 끝값은 근호 안이 $0$이어도 허용되므로 포함한다.\n이 범위 안의 정수는 $-1,0,1,2$이다.\n따라서 정수의 개수는 $4$개이고 정답은 ④이다.",
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
     "subUnit": "무리함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
