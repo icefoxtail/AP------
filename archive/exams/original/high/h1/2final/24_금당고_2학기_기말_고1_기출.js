@@ -143,7 +143,7 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 제곱근은 항상 $0$ 이상이라는 사실을 이용한다.\n조건 정리: 정의역은 $x\\le2$이고, $\\sqrt{-x+2}\\ge0$이다.\n풀이 방향: 제곱근 부분이 가장 작아지는 때를 찾는다.\n정석 풀이: $-x+2=0$일 때 제곱근이 $0$이므로 $x=2$에서 최솟값 $3$을 갖는다. 따라서 $a=2$, $b=3$이고 $a\\times b=6$이다.\n따라서 정답은 ④이다.",
+    "solution": "제곱근 안은 $0$ 이상이어야 한다.\n$-x+2\\ge0\\ \\Rightarrow\\ x\\le2$\n또 제곱근의 값은 항상 $0$ 이상이므로\n$\\sqrt{-x+2}\\ge0$\n$y=\\sqrt{-x+2}+3\\ge3$\n등호는 $-x+2=0$, 즉 $x=2$일 때 성립한다.\n따라서 $a=2$, $b=3$이고\n$a\\times b=2\\times3=6$\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q05-solution.svg",
     "solutionImageAlt": "무리함수의 끝점과 최솟값을 나타낸 해설 그래프",
     "solutionImageCaption": "정의역 x≤2에서 끝점 (2,3)이 최솟값을 주는 위치를 확인한다.",
@@ -175,7 +175,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $f^{-1}(2)=k$는 $f(k)=2$와 같은 뜻이다.\n조건 정리: $f(k)=k-3$이다.\n풀이 방향: 역함수 식을 직접 구하지 않고 원래 함수에 대입한다.\n정석 풀이: $f(k)=2$이므로 $k-3=2$이고, $k=5$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "$f(x)=x-3$은 일대일대응이므로 역함수가 존재한다.\n$f^{-1}(2)=k$는 $f$가 $k$를 $2$로 보내는 함수라는 뜻이다.\n$f^{-1}(2)=k\\ \\Longleftrightarrow\\ f(k)=2$\n$f(k)=k-3$이므로\n$k-3=2$\n$k=2+3=5$\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
@@ -203,7 +203,7 @@ window.questionBank = [
       "$75$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 두 책꽂이가 서로 다르므로 책을 고른 뒤 배치 순서까지 구분한다.\n조건 정리: 첫째 책꽂이에 꽂을 책은 $6$가지, 둘째 책꽂이에 꽂을 책은 남은 $5$가지이다.\n풀이 방향: 서로 다른 두 자리에 서로 다른 책을 배치하는 순열로 계산한다.\n정석 풀이: 모든 방법의 수는 ${}_{6}P_{2}=6\\times5=30$이다.\n따라서 정답은 ②이다.",
+    "solution": "책꽂이 두 개가 서로 다르므로 어떤 책을 어느 책꽂이에 꽂는지까지 구별한다.\n첫째 책꽂이에 꽂을 책은 $6$권 중 하나이므로 $6$가지이다.\n둘째 책꽂이에는 이미 고른 책을 제외한 $5$권 중 하나를 꽂으므로 $5$가지이다.\n$6\\times5=30$\n또는\n$ {}_6P_2=\\dfrac{6!}{(6-2)!}=6\\times5=30$\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
     "subUnit": "경우의 수의 기본 원리",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -233,7 +233,11 @@ window.questionBank = [
       "$\\dfrac{19}{6}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 점근선에서 $a$, $b$를 먼저 정한 뒤 함수값의 변화 방향을 확인한다.\n조건 정리: 수직점근선 $x=-a=-1$에서 $a=1$, 수평점근선 $y=b=2$에서 $b=2$이다.\n풀이 방향: 함수를 $2-\\dfrac{1}{x+1}$의 꼴로 바꾸어 구간의 양 끝값을 비교한다.\n정석 풀이: $y=\\dfrac{2x+1}{x+1}=2-\\dfrac{1}{x+1}$이다. $1\\le x\\le2$에서 $x+1$은 $2$에서 $3$까지 증가하므로 $\\dfrac{1}{x+1}$은 감소하고 $y$는 증가한다. 따라서 최솟값은 $x=1$에서 $\\dfrac{3}{2}$, 최댓값은 $x=2$에서 $\\dfrac{5}{3}$이다. 그 합은 $\\dfrac{3}{2}+\\dfrac{5}{3}=\\dfrac{19}{6}$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "수직점근선이 $x=-1$이므로 $-a=-1$, 따라서 $a=1$이다.\n수평점근선이 $y=2$이므로 $b=2$이다.\n$y=\\dfrac{2x+1}{x+1}$\n$=\\dfrac{2(x+1)-1}{x+1}$\n$=2-\\dfrac{1}{x+1}\\quad(x\\ne-1)$\n$1\\le x\\le2$에서 $x+1$은 증가하므로 $\\dfrac{1}{x+1}$은 감소한다. 따라서 $y$는 증가한다.\n최솟값은 $x=1$일 때\n$2-\\dfrac12=\\dfrac32$\n최댓값은 $x=2$일 때\n$2-\\dfrac13=\\dfrac53$\n두 값의 합은\n$\\dfrac32+\\dfrac53=\\dfrac{9+10}{6}=\\dfrac{19}{6}$\n따라서 정답은 ⑤이다.",
+    "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q08-solution.svg",
+    "solutionImageAlt": "구간 1부터 2까지 증가하는 유리함수와 양 끝 함수값",
+    "solutionImageCaption": "x=1일 때 3/2, x=2일 때 5/3이므로 끝점에서 최소·최대가 결정된다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
     "subUnit": "유리함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
