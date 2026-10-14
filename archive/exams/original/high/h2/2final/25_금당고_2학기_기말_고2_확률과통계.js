@@ -19,7 +19,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] 두 사건이 서로 독립이면 $P(A \\cap B) = P(A) \\times P(B)$이다.\\n조건 정리: $P(A) = \\dfrac{3}{5}$, $P(B) = \\dfrac{1}{3}$, A와 B는 서로 독립.\\n풀이 방향: 독립의 정의를 직접 적용하여 교사건의 확률을 구한다.\\n정석 풀이: 두 사건 A, B가 서로 독립이므로\\n$P(A \\\\cap B) = P(A) \\times P(B) = \\dfrac{3}{5} \\times \\dfrac{1}{3} = \\dfrac{3}{15} = \\dfrac{1}{5}$\\n따라서 정답은 ①이다.",
+    "solution": "두 사건 $A$, $B$는 서로 독립이므로 교집합의 확률은 두 확률의 곱이다.\n$P(A\\cap B)=P(A)P(B)$\n$=\\dfrac35\\times\\dfrac13$\n$=\\dfrac3{15}=\\dfrac15$\n따라서 정답은 ①이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
@@ -64,7 +64,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] $E(X) = \\sum x \\cdot P(X=x)$를 직접 계산한다.\\n조건 정리: $P(X=0)=\\dfrac{125}{216}$, $P(X=1)=\\dfrac{75}{216}$, $P(X=2)=\\dfrac{15}{216}$, $P(X=3)=\\dfrac{1}{216}$.\\n풀이 방향: 기댓값 정의에 따라 각 값과 확률의 곱을 합산한다.\\n정석 풀이:\\n$E(X) = 0 \\times \\dfrac{125}{216} + 1 \\times \\dfrac{75}{216} + 2 \\times \\dfrac{15}{216} + 3 \\times \\dfrac{1}{216}$\\n$= \\dfrac{0 + 75 + 30 + 3}{216} = \\dfrac{108}{216} = \\dfrac{1}{2}$\\n따라서 정답은 ②이다.",
+    "solution": "확률변수의 기댓값은 각 값에 그 값이 나올 확률을 곱하여 모두 더한 것이다.\n먼저 확률의 합은 $\\dfrac{125+75+15+1}{216}=1$이다.\n$E(X)=0\\times\\dfrac{125}{216}+1\\times\\dfrac{75}{216}$\n$\\qquad+2\\times\\dfrac{15}{216}+3\\times\\dfrac1{216}$\n$=\\dfrac{75+30+3}{216}$\n$=\\dfrac{108}{216}=\\dfrac12$\n따라서 정답은 ②이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
@@ -109,7 +109,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] 연속확률변수는 어떤 범위의 실수값을 연속적으로 취하는 확률변수이다.\\n조건 정리: 이산확률변수는 셀 수 있는 값을, 연속확률변수는 연속적인 구간의 실수값을 취한다.\\n풀이 방향: 각 보기의 값이 유한한 정수·자연수인지, 아니면 실수 구간에서 연속적으로 정해지는지 판단한다.\\n정석 풀이: ①은 1~12월 중 하나이므로 이산. ②는 1~6 중 하나이므로 이산. ③은 0~10 중 정수이므로 이산. ④는 자연수 값이므로 이산. ⑤는 귀향 시간이 양의 실수 구간 $(0, \\infty)$에서 연속적으로 결정되므로 연속확률변수이다.\\n따라서 정답은 ⑤이다.",
+    "solution": "연속확률변수는 일정한 구간에 있는 실수값을 연속적으로 가질 수 있는 확률변수이다.\n① 태어난 달: $1$월부터 $12$월까지의 정해진 값이다.\n② 주사위의 눈: $1,2,3,4,5,6$ 중 하나이다.\n③ 비긴 횟수: $0$회부터 $10$회까지의 정수이다.\n④ 하루 출생아 수: $0$ 이상의 정수이다.\n⑤ 귀향에 걸리는 시간: 예를 들어 $4.2$시간, $4.25$시간처럼 시간의 값이 연속적으로 달라질 수 있다.\n따라서 연속확률변수는 ⑤이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
@@ -154,7 +154,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "answerStatus": "answer_filled_from_hwp_answer_source",
-    "solution": "[키포인트] 이항분포 $B(n, p)$의 평균·분산·표준편차 공식을 적용한다.\\n조건 정리: $X \\\\sim B\\left(18, \\dfrac{1}{3}\\right)$, $n=18$, $p=\\dfrac{1}{3}$, $q=\\dfrac{2}{3}$.\\n풀이 방향: 이항분포 공식 $E(X)=np$, $V(X)=npq$, $\\\\sigma(X)=\\sqrt{npq}$를 대입하여 각각 구한 뒤 합산한다.\\n정석 풀이:\\n$E(X) = np = 18 \\times \\dfrac{1}{3} = 6$\\n$V(X) = npq = 18 \\times \\dfrac{1}{3} \\times \\dfrac{2}{3} = 4$\\n$\\\\sigma(X) = \\sqrt{V(X)} = \\sqrt{4} = 2$\\n따라서 $E(X) + V(X) + \\\\sigma(X) = 6 + 4 + 2 = 12$이다.\\n따라서 정답은 ③이다.",
+    "solution": "$X\\sim B(18,\\dfrac13)$이므로 시행 횟수는 $n=18$, 성공확률은 $p=\\dfrac13$이다.\n이항분포의 평균은 $np$, 분산은 $np(1-p)$, 표준편차는 분산의 양의 제곱근이다.\n$E(X)=18\\times\\dfrac13=6$\n$V(X)=18\\times\\dfrac13\\times\\dfrac23=4$\n$\\sigma(X)=\\sqrt{V(X)}=\\sqrt4=2$\n따라서\n$E(X)+V(X)+\\sigma(X)=6+4+2=12$\n따라서 정답은 ③이다.",
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
