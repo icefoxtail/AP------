@@ -1,0 +1,606 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q07_BLUEPRINT_v1",
+  "sourceQid": 7,
+  "sourceJsSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "primaryRpmL3Id": "H1-RPM-264",
+  "rpmMappingStatus": "RPM_ONLY",
+  "lockedEvaluationInvariant": "bounded rational max/min through monotonicity of b+K/(x+c) on positive-denominator intervals; multiinterval/parameter/counterexamples may branch",
+  "records": [
+    {
+      "slot": "A1",
+      "mode": "STRICT_VARIANT",
+      "studentQuestion": "정의역이 $0le xle4$인 유리함수 $f(x)=dfrac{5x+k}{x+1}$의 최댓값이 $3$일 때, 실수 $k$의 값은?",
+      "studentMentalPath": "수평점근선 5보다 낮은 최댓값 → 음의 분자 잔여항 → 증가 → 오른쪽 끝점 대입",
+      "primaryRpmL3Id": "H1-RPM-264",
+      "rpmOnly": true,
+      "pt": "PT_FUNCTION_EXTREMUM",
+      "tpl": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "conditions": [
+        "COND_RANGE"
+      ],
+      "crossConcepts": [],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "하",
+      "assessmentDifficultyBucket": 2,
+      "levelReason": "하: 표준형의 부호로 단조성을 확인하고 끝점 한 곳을 대입하면 끝난다. 경우 분기가 없다.",
+      "bucketReason": "2: 분모가 양수인 조건과 증가 여부 확인이 필요하지만, 매개변수의 부호는 최대값 3<5에서 바로 결정된다.",
+      "visual": {
+        "problem": "EXEMPT",
+        "solution": "EXEMPT",
+        "solutionAssetSha": null
+      },
+      "expectedMath": {
+        "k": -5,
+        "f0": -5,
+        "fU": 3,
+        "L": 0,
+        "U": 4
+      },
+      "answer": -5,
+      "sortedChoices": [
+        -17,
+        -8,
+        -5,
+        -3,
+        3
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "-17",
+          "errorCalculation": "최댓값을 끝점에 대입할 때 분모 $5$를 빠뜨려 $20+k=3$으로 풀면 $k=-17$이다."
+        },
+        {
+          "index": "②",
+          "value": "-8",
+          "errorCalculation": "$x=4$에서 분모 $x+1=5$ 대신 $x=4$만 사용해 $20+k=3cdot4=12$로 풀면 $k=-8$이다."
+        },
+        {
+          "index": "④",
+          "value": "-3",
+          "errorCalculation": "구간 끝점을 $4$ 대신 $3$으로 읽어 $dfrac{15+k}{4}=3$으로 풀면 $k=-3$이다."
+        },
+        {
+          "index": "⑤",
+          "value": "3",
+          "errorCalculation": "최댓값이 왼쪽 끝점 $x=0$에서 나온다고 잘못 판단해 $f(0)=k=3$으로 풀면 $k=3$이다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "slot": "A2",
+      "mode": "STRICT_VARIANT",
+      "studentQuestion": "정의역이 $1le xle5$인 유리함수 $f(x)=dfrac{2x-k}{x+2}$의 최솟값이 $1$일 때, 실수 $k$의 값은?",
+      "studentMentalPath": "최솟값 1<2 → 분수 계수 부호 → 증가 → 왼쪽 끝점에서 k",
+      "primaryRpmL3Id": "H1-RPM-264",
+      "rpmOnly": true,
+      "pt": "PT_FUNCTION_EXTREMUM",
+      "tpl": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "conditions": [
+        "COND_RANGE"
+      ],
+      "crossConcepts": [],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "하",
+      "assessmentDifficultyBucket": 2,
+      "levelReason": "하: 최솟값이 수평기준 2보다 낮다는 사실로 증가 방향이 곧바로 결정된다.",
+      "bucketReason": "2: 분자의 마이너스와 왼쪽 끝점의 대응을 틀릴 여지는 있으나 계산은 일차식이다.",
+      "visual": {
+        "problem": "EXEMPT",
+        "solution": "EXEMPT",
+        "solutionAssetSha": null
+      },
+      "expectedMath": {
+        "k": -1,
+        "fL": 1,
+        "fU": "11/7",
+        "L": 1,
+        "U": 5
+      },
+      "answer": -1,
+      "sortedChoices": [
+        -2,
+        -1,
+        0,
+        1,
+        3
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "-2",
+          "errorCalculation": "$x=1$에서 분모 $x+2=3$을 $x+3=4$로 읽으면 $2-k=4$이므로 $k=-2$가 된다."
+        },
+        {
+          "index": "③",
+          "value": "0",
+          "errorCalculation": "$x=1$에서 분모 $x+2=3$을 $x+1=2$로 읽으면 $2-k=2$이므로 $k=0$이 된다."
+        },
+        {
+          "index": "④",
+          "value": "1",
+          "errorCalculation": "분모를 빠뜨려 $2-k=1$로 두면 $k=1$이다."
+        },
+        {
+          "index": "⑤",
+          "value": "3",
+          "errorCalculation": "최솟값 위치를 오른쪽 끝점 $x=5$로 잘못 정하면 $dfrac{10-k}{7}=1$에서 $k=3$이다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "slot": "A3",
+      "mode": "STRICT_VARIANT",
+      "studentQuestion": "정의역이 $1le xle5$인 유리함수 $f(x)=dfrac{5x+k}{x+3}$의 최댓값이 $4$일 때, 실수 $k$의 값은?",
+      "studentMentalPath": "최댓값4<기준5 → 증가 → x5 대입 → k7",
+      "primaryRpmL3Id": "H1-RPM-264",
+      "rpmOnly": true,
+      "pt": "PT_FUNCTION_EXTREMUM",
+      "tpl": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "conditions": [
+        "COND_RANGE"
+      ],
+      "crossConcepts": [],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "하",
+      "assessmentDifficultyBucket": 3,
+      "levelReason": "하: 기준값 5와 최대값 4의 비교로 증가 방향이 결정되고 한 끝점의 식만 푼다.",
+      "bucketReason": "3: 분자 $5x$와 분모 $x+3$를 동시에 처리해야 하고, 정수계수 계산/끝점 선택에서 실수가 비교적 쉽다. 사고 깊이 자체는 '하'로 유지한다.",
+      "visual": {
+        "problem": "EXEMPT",
+        "solution": "EXEMPT",
+        "solutionAssetSha": null
+      },
+      "expectedMath": {
+        "k": 7,
+        "fL": 3,
+        "fU": 4,
+        "L": 1,
+        "U": 5
+      },
+      "answer": 7,
+      "sortedChoices": [
+        7,
+        8,
+        11,
+        15,
+        32
+      ],
+      "wrongRoutes": [
+        {
+          "index": "②",
+          "value": "8",
+          "errorCalculation": "오른쪽 끝점을 $x=5$ 대신 $x=4$라고 읽으면 $dfrac{20+k}{7}=4$이므로 $k=8$이다."
+        },
+        {
+          "index": "③",
+          "value": "11",
+          "errorCalculation": "최댓값 위치를 반대로 잡아 $x=1$에서 $dfrac{5+k}{4}=4$를 적용하면 $k=11$이다."
+        },
+        {
+          "index": "④",
+          "value": "15",
+          "errorCalculation": "$x=5$의 분모 $x+3=8$을 $x+5=10$으로 읽으면 $25+k=40$에서 $k=15$이다."
+        },
+        {
+          "index": "⑤",
+          "value": "32",
+          "errorCalculation": "$25+k=32$를 풀 때 $25$를 이항하지 않고 오른쪽 $32$만 답으로 쓰면 $k=32$이다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "slot": "B1",
+      "mode": "EXAM_FOLLOWUP",
+      "studentQuestion": "정의역이 $0le xle4$인 유리함수 $f(x)=dfrac{3x+k}{x+2}$의 최솟값이 $5$일 때, 실수 $k$의 값은?",
+      "studentMentalPath": "최솟값5>기준3 → 감소 → 오른쪽 끝점에 대입",
+      "primaryRpmL3Id": "H1-RPM-264",
+      "rpmOnly": true,
+      "pt": "PT_FUNCTION_EXTREMUM",
+      "tpl": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "conditions": [
+        "COND_RANGE"
+      ],
+      "crossConcepts": [],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "하",
+      "assessmentDifficultyBucket": 2,
+      "levelReason": "하: 수평기준 3보다 큰 최솟값이므로 감소 방향이 직접 정해지고 한 끝점 식만 계산한다. B 슬롯이라는 이유로 중으로 올리지 않았다.",
+      "bucketReason": "2: 감소·최솟값 위치가 명확하며 복합 경우 분기가 없다.",
+      "visual": {
+        "problem": "EXEMPT",
+        "solution": "EXEMPT",
+        "solutionAssetSha": null
+      },
+      "expectedMath": {
+        "k": 18,
+        "fL": 9,
+        "fU": 5,
+        "L": 0,
+        "U": 4
+      },
+      "answer": 18,
+      "sortedChoices": [
+        -7,
+        8,
+        10,
+        16,
+        18
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "-7",
+          "errorCalculation": "최솟값이 생기는 끝점에서 분모를 빠뜨려 $12+k=5$로 풀면 $k=-7$이다."
+        },
+        {
+          "index": "②",
+          "value": "8",
+          "errorCalculation": "$x=4$에서 분모 $x+2=6$을 $x=4$로 읽으면 $12+k=5cdot4=20$이므로 $k=8$이다."
+        },
+        {
+          "index": "③",
+          "value": "10",
+          "errorCalculation": "감소함수의 최솟값 위치를 반대로 잡아 $f(0)=dfrac{k}{2}=5$로 풀면 $k=10$이다."
+        },
+        {
+          "index": "④",
+          "value": "16",
+          "errorCalculation": "끝점 $x=4$를 $x=3$으로 착각해 $dfrac{9+k}{5}=5$로 풀면 $k=16$이다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "slot": "B2",
+      "mode": "EXAM_FOLLOWUP",
+      "studentQuestion": "정의역이 $0le xle4$인 유리함수 $f(x)=dfrac{3x+k}{x+2}$에서 $k>6$이다. 최댓값과 최솟값의 차이가 $3$일 때, 실수 $k$의 값은?",
+      "studentMentalPath": "k>6 → 감소 확인 → 두 끝점 값 → 차 방정식 → k15",
+      "primaryRpmL3Id": "H1-RPM-264",
+      "rpmOnly": true,
+      "pt": "PT_FUNCTION_EXTREMUM",
+      "tpl": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+      "conditions": [
+        "COND_RANGE"
+      ],
+      "crossConcepts": [],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentDifficultyBucket": 4,
+      "levelReason": "중: k>6을 써서 감소 방향을 먼저 결정한 뒤 최대·최소를 각각 구하고 차의 방정식을 세워야 한다.",
+      "bucketReason": "4: 계수 부호, 최대·최소 순서, 끝점 값 차의 상수항 이항을 모두 맞춰야 한다.",
+      "visual": {
+        "problem": "EXEMPT",
+        "solution": "BENEFICIAL",
+        "solutionAssetSha": "8b5945ddf8bada7fcbb4b58ee284ab88319e7d1a"
+      },
+      "expectedMath": {
+        "k": 15,
+        "fL": "15/2",
+        "fU": "9/2",
+        "difference": 3,
+        "L": 0,
+        "U": 4
+      },
+      "answer": 15,
+      "sortedChoices": [
+        -3,
+        3,
+        9,
+        12,
+        15
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "-3",
+          "errorCalculation": "$k>6$을 무시하고 증가함수라고 보아 $dfrac{12+k}{6}-dfrac{k}{2}=3$을 풀면 $k=-3$이다."
+        },
+        {
+          "index": "②",
+          "value": "3",
+          "errorCalculation": "최대·최소 차를 정리하면서 상수항의 부호를 잘못 바꾸어 $dfrac{k}{3}+2=3$으로 풀면 $k=3$이다."
+        },
+        {
+          "index": "③",
+          "value": "9",
+          "errorCalculation": "두 끝점의 값의 차에서 상수항 $2$를 누락해 $dfrac{k}{3}=3$으로 풀면 $k=9$이다."
+        },
+        {
+          "index": "④",
+          "value": "12",
+          "errorCalculation": "$dfrac{12}{6}=2$를 $1$로 오산하여 $dfrac{k}{3}-1=3$으로 풀면 $k=12$이다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "slot": "B3",
+      "mode": "EXAM_FOLLOWUP",
+      "studentQuestion": "정수 $k$가 $0le kle5$일 때, 정의역이 $0le xle3$인 함수 $f(x)=dfrac{2x+k}{x+1}$의 최솟값은 $1$ 이상이고 최댓값은 $3$ 이하이다. 이를 만족하는 $k$의 개수는?",
+      "studentMentalPath": "단조 또는 상수 → 모든 x의 조건을 끝점 2개로 환원 → k1,2,3 전수",
+      "primaryRpmL3Id": "H1-RPM-264",
+      "rpmOnly": true,
+      "pt": "PT_FUNCTION_EXTREMUM",
+      "tpl": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+      "conditions": [
+        "COND_RANGE",
+        "COND_INTEGER",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "crossConcepts": [],
+      "integrationPattern": "CASE_BRANCH",
+      "learningLevel": "중",
+      "assessmentDifficultyBucket": 3,
+      "levelReason": "중: k=2의 상수함수 경계와 증가·감소 방향을 함께 고려하되, 결국 두 끝점 부등식으로 정리할 수 있다.",
+      "bucketReason": "3: 0≤k≤5의 작은 정수 범위, 두 끝점 검사 및 경계 k=2의 포함 여부가 핵심이다. 여러 단계라도 직접 열거 가능해 4/5로 올리지 않았다.",
+      "visual": {
+        "problem": "EXEMPT",
+        "solution": "BENEFICIAL",
+        "solutionAssetSha": "05e9af118d6b88ebe03e5daf6092c88984f405ad"
+      },
+      "expectedMath": {
+        "allowedK": [
+          1,
+          2,
+          3
+        ],
+        "answer": 3
+      },
+      "answer": 3,
+      "sortedChoices": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "1",
+          "errorCalculation": "$k=2$일 때의 상수함수만 조건에 맞는다고 보고 증가·감소하는 두 경우 $k=1,3$을 누락하면 $1$개이다."
+        },
+        {
+          "index": "②",
+          "value": "2",
+          "errorCalculation": "최댓값과 최솟값은 반드시 달라야 한다고 오해해 상수함수 $k=2$를 제외하면 $k=1,3$의 $2$개이다."
+        },
+        {
+          "index": "④",
+          "value": "4",
+          "errorCalculation": "최솟값 $1$ 이상을 확인하지 않아 $k=0$도 허용하면 $k=0,1,2,3$으로 $4$개를 센다."
+        },
+        {
+          "index": "⑤",
+          "value": "5",
+          "errorCalculation": "최댓값 $3$ 이하 조건을 빼고 $k=1,2,3,4,5$를 모두 허용하면 $5$개를 센다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "slot": "C1",
+      "mode": "TYPE_BANK",
+      "studentQuestion": "정의역이 $-2le xle0$ 또는 $3le xle6$인 유리함수 $f(x)=1+dfrac{12}{x-2}$의 최댓값을 $M$, 최솟값을 $m$이라 할 때, $M-m$의 값은?",
+      "studentMentalPath": "정의역 두 구간 분리 → 네 끝점 값 → 전체 최대/최소 → 차",
+      "primaryRpmL3Id": "H1-RPM-264",
+      "rpmOnly": true,
+      "pt": "PT_FUNCTION_EXTREMUM",
+      "tpl": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "conditions": [
+        "COND_RANGE"
+      ],
+      "crossConcepts": [],
+      "integrationPattern": "CASE_BRANCH",
+      "learningLevel": "중",
+      "assessmentDifficultyBucket": 4,
+      "levelReason": "중: 정의역이 둘로 끊기므로 한 구간의 끝점 비교가 아니라 네 끝점 함수값을 모아 비교해야 한다.",
+      "bucketReason": "4: 수직점근선 좌우의 분수 부호, 두 구간 각각의 감소 방향, 최댓값·최솟값 선택을 연달아 처리한다. 미적분 없이 해법은 명료해 상은 아니다.",
+      "visual": {
+        "problem": "EXEMPT",
+        "solution": "BENEFICIAL",
+        "solutionAssetSha": "657f77fe13c1535a28fe04de23ad99782ca94e43"
+      },
+      "expectedMath": {
+        "endpointValues": {
+          "0": -5,
+          "3": 13,
+          "6": 4,
+          "-2": -2
+        },
+        "max": 13,
+        "min": -5,
+        "answer": 18
+      },
+      "answer": 18,
+      "sortedChoices": [
+        13,
+        15,
+        17,
+        18,
+        19
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "13",
+          "errorCalculation": "구간별 최소를 따로 구하지 않고 둘째 구간의 최댓값 $13$만 최종 답으로 기록하면 $13$이다."
+        },
+        {
+          "index": "②",
+          "value": "15",
+          "errorCalculation": "첫째 구간에서 최솟값을 $f(0)=-5$가 아닌 $f(-2)=-2$라고 착각하면 $13-(-2)=15$이다."
+        },
+        {
+          "index": "③",
+          "value": "17",
+          "errorCalculation": "둘째 구간의 최댓값을 계산할 때 상수항 $1$을 빼먹어 $f(3)=12$로 두면 $12-(-5)=17$이다."
+        },
+        {
+          "index": "⑤",
+          "value": "19",
+          "errorCalculation": "첫째 구간의 최솟값을 계산할 때 상수항 $1$을 빼먹어 $f(0)=-6$으로 두면 $13-(-6)=19$이다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "slot": "C2",
+      "mode": "TYPE_BANK",
+      "studentQuestion": "정의역이 $0le xle4$인 유리함수 $f(x)=dfrac{ax+b}{x+1}$의 최솟값이 $2$, 최댓값이 $6$이다. $a>3$일 때, $a+b$의 값은? (단, $a,b$는 실수이다.)",
+      "studentMentalPath": "증가/감소 양쪽 끝점 대응 두 경우 → 각 a,b → a>3 제외 → 합",
+      "primaryRpmL3Id": "H1-RPM-264",
+      "rpmOnly": true,
+      "pt": "PT_FUNCTION_EXTREMUM",
+      "tpl": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+      "conditions": [
+        "COND_RANGE",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "crossConcepts": [],
+      "integrationPattern": "CASE_BRANCH",
+      "learningLevel": "상",
+      "assessmentDifficultyBucket": 4,
+      "levelReason": "상: 최댓값 6과 최솟값 2가 두 끝점 중 어느 쪽에 대응하는지 두 경우를 세우고 a>3으로 한 경우를 제거해야 한다.",
+      "bucketReason": "4: 경우를 반대로 설정한 오답 7의 위험이 크지만 연립은 일차계산이며 경계값의 연속적인 추적은 요구하지 않는다.",
+      "visual": {
+        "problem": "EXEMPT",
+        "solution": "BENEFICIAL",
+        "solutionAssetSha": "87daecd194980cd183d607f4e78703f686de012a"
+      },
+      "expectedMath": {
+        "valid": {
+          "a": 7,
+          "b": 2,
+          "min": 2,
+          "max": 6
+        },
+        "rejected": {
+          "a": 1,
+          "b": 6,
+          "min": 2,
+          "max": 6
+        },
+        "answer": 9
+      },
+      "answer": 9,
+      "sortedChoices": [
+        "7",
+        "15/2",
+        "9",
+        "21/2",
+        "11"
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "7",
+          "errorCalculation": "$f(0)=6$, $f(4)=2$인 감소 경우에서 $b=6$, $a=1$이 나왔는데 $a>3$ 조건을 적용하지 않으면 $a+b=7$이다."
+        },
+        {
+          "index": "②",
+          "value": "15/2",
+          "errorCalculation": "증가 경우에서 $b=2$를 얻은 뒤 $x=4$의 분모 $x+1=5$를 $x=4$라고 오해하면 $4a+2=6cdot4=24$로부터 $a=dfrac{11}{2}$, $a+b=dfrac{15}{2}$이다."
+        },
+        {
+          "index": "④",
+          "value": "21/2",
+          "errorCalculation": "$x=4$의 분모를 $x+2=6$으로 잘못 읽으면 $4a+2=6cdot6=36$에서 $a=dfrac{17}{2}$, $a+b=dfrac{21}{2}$이다."
+        },
+        {
+          "index": "⑤",
+          "value": "11",
+          "errorCalculation": "올바른 $a=7$, $b=2$를 구하고도 최종 질문을 $a+2b$로 잘못 읽으면 $7+2cdot2=11$이다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "slot": "C3",
+      "mode": "TYPE_BANK",
+      "studentQuestion": "자연수 $n$에 대하여 정의역이 $nle xle n+3$인 함수 $f(x)=2+dfrac{12}{x+1}$의 최댓값을 $M$, 최솟값을 $m$이라 하자. $M$이 $6$ 이하의 정수이고 $mge3$이 되도록 하는 $n$의 개수는?",
+      "studentMentalPath": "감소 → M/m 끝점 분리 → M 정수 약수 후보 → M≤6 → m≥3 필터",
+      "primaryRpmL3Id": "H1-RPM-264",
+      "rpmOnly": true,
+      "pt": "PT_FUNCTION_EXTREMUM",
+      "tpl": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+      "conditions": [
+        "COND_RANGE",
+        "COND_INTEGER",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "crossConcepts": [
+        "CC_NUMBER_DIVISOR_MULTIPLE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "상",
+      "assessmentDifficultyBucket": 5,
+      "levelReason": "상: 구간 끝점 최대·최소 식을 구한 후 정수성으로 약수 후보를 만든 다음 두 번째 부등식으로 후보를 걸러야 한다.",
+      "bucketReason": "5: 12의 약수 조건·최댓값의 등호 허용·최솟값의 추가 범위·자연수 조건의 네 층을 누락 없이 결합해야 한다.",
+      "visual": {
+        "problem": "EXEMPT",
+        "solution": "BENEFICIAL",
+        "solutionAssetSha": "b5574093912de56fe74a9e9f5323a60d324f7cf3"
+      },
+      "expectedMath": {
+        "divisors": [
+          1,
+          2,
+          3,
+          4,
+          6,
+          12
+        ],
+        "nCandidates": [
+          2,
+          3,
+          5,
+          11
+        ],
+        "allowedN": [
+          2,
+          3,
+          5
+        ],
+        "answer": 3
+      },
+      "answer": 3,
+      "sortedChoices": [
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "1",
+          "errorCalculation": "$n+1$이 $12$의 약수일 때 후보 네 개를 모두 살피지 않고 $n=5$ 한 사례만 남겨 세면 $1$개로 오판한다."
+        },
+        {
+          "index": "②",
+          "value": "2",
+          "errorCalculation": "$Mle6$을 $M<6$으로 잘못 바꿔 $M=6$인 $n=2$를 제외하면 $n=3,5$의 $2$개가 남는다."
+        },
+        {
+          "index": "④",
+          "value": "4",
+          "errorCalculation": "최댓값 정수 조건만 확인하고 최솟값 $mge3$을 검사하지 않으면 $n=2,3,5,11$의 $4$개를 센다."
+        },
+        {
+          "index": "⑤",
+          "value": "6",
+          "errorCalculation": "$Mle6$, $mge3$을 모두 무시하고 $n+1$이 $12$의 양의 약수라는 사실만 적용하면 약수 $1,2,3,4,6,12$를 그대로 세어 $6$개로 오판한다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    }
+  ],
+  "independentQuality": "NOT_RUN",
+  "browser": "NOT_RUN"
+}

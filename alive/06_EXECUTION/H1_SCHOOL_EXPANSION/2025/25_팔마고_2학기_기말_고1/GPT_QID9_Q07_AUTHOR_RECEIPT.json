@@ -1,0 +1,346 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q07_AUTHOR_RECEIPT_v1",
+  "date": "2026-10-14",
+  "branch": "work/alive-25-palma-h1-2final-qid9",
+  "parentHead": "b75568d065060460b36949590c0cccb01df4a0ab",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceExamGitBlob": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "originalProblemImage": "NONE_SOURCE_Q07_TEXT_ONLY",
+  "lockedPrimaryRpmL3": "H1-RPM-264",
+  "lockedRpmMappingStatus": "RPM_ONLY",
+  "canonicalPt": "PT_FUNCTION_EXTREMUM",
+  "canonicalTpls": [
+    "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+    "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL"
+  ],
+  "uidCount": 9,
+  "choicesChecked": 45,
+  "distractorRoutes": 36,
+  "problemSvg": 0,
+  "problemSvgExempt": 9,
+  "solutionSvg": 5,
+  "solutionSvgExempt": 4,
+  "authorMathChecks": "PYTHON_SYMPY_END_POINTS_BRANCH_FILTER",
+  "choiceAuditMethod": "every wrong route derives exactly its final option; per-item ledger",
+  "answerIndexDistribution": {
+    "①": 1,
+    "②": 1,
+    "③": 4,
+    "④": 1,
+    "⑤": 2
+  },
+  "ordering": "ASCENDING_RATIONAL_NOT_REORDERED_FOR_BALANCE",
+  "learningLevelBucket": [
+    {
+      "slot": "A1",
+      "level": "하",
+      "bucket": 2,
+      "learningReason": "하: 표준형의 부호로 단조성을 확인하고 끝점 한 곳을 대입하면 끝난다. 경우 분기가 없다.",
+      "bucketReason": "2: 분모가 양수인 조건과 증가 여부 확인이 필요하지만, 매개변수의 부호는 최대값 3<5에서 바로 결정된다."
+    },
+    {
+      "slot": "A2",
+      "level": "하",
+      "bucket": 2,
+      "learningReason": "하: 최솟값이 수평기준 2보다 낮다는 사실로 증가 방향이 곧바로 결정된다.",
+      "bucketReason": "2: 분자의 마이너스와 왼쪽 끝점의 대응을 틀릴 여지는 있으나 계산은 일차식이다."
+    },
+    {
+      "slot": "A3",
+      "level": "하",
+      "bucket": 3,
+      "learningReason": "하: 기준값 5와 최대값 4의 비교로 증가 방향이 결정되고 한 끝점의 식만 푼다.",
+      "bucketReason": "3: 분자 $5x$와 분모 $x+3$를 동시에 처리해야 하고, 정수계수 계산/끝점 선택에서 실수가 비교적 쉽다. 사고 깊이 자체는 '하'로 유지한다."
+    },
+    {
+      "slot": "B1",
+      "level": "하",
+      "bucket": 2,
+      "learningReason": "하: 수평기준 3보다 큰 최솟값이므로 감소 방향이 직접 정해지고 한 끝점 식만 계산한다. B 슬롯이라는 이유로 중으로 올리지 않았다.",
+      "bucketReason": "2: 감소·최솟값 위치가 명확하며 복합 경우 분기가 없다."
+    },
+    {
+      "slot": "B2",
+      "level": "중",
+      "bucket": 4,
+      "learningReason": "중: k>6을 써서 감소 방향을 먼저 결정한 뒤 최대·최소를 각각 구하고 차의 방정식을 세워야 한다.",
+      "bucketReason": "4: 계수 부호, 최대·최소 순서, 끝점 값 차의 상수항 이항을 모두 맞춰야 한다."
+    },
+    {
+      "slot": "B3",
+      "level": "중",
+      "bucket": 3,
+      "learningReason": "중: k=2의 상수함수 경계와 증가·감소 방향을 함께 고려하되, 결국 두 끝점 부등식으로 정리할 수 있다.",
+      "bucketReason": "3: 0≤k≤5의 작은 정수 범위, 두 끝점 검사 및 경계 k=2의 포함 여부가 핵심이다. 여러 단계라도 직접 열거 가능해 4/5로 올리지 않았다."
+    },
+    {
+      "slot": "C1",
+      "level": "중",
+      "bucket": 4,
+      "learningReason": "중: 정의역이 둘로 끊기므로 한 구간의 끝점 비교가 아니라 네 끝점 함수값을 모아 비교해야 한다.",
+      "bucketReason": "4: 수직점근선 좌우의 분수 부호, 두 구간 각각의 감소 방향, 최댓값·최솟값 선택을 연달아 처리한다. 미적분 없이 해법은 명료해 상은 아니다."
+    },
+    {
+      "slot": "C2",
+      "level": "상",
+      "bucket": 4,
+      "learningReason": "상: 최댓값 6과 최솟값 2가 두 끝점 중 어느 쪽에 대응하는지 두 경우를 세우고 a>3으로 한 경우를 제거해야 한다.",
+      "bucketReason": "4: 경우를 반대로 설정한 오답 7의 위험이 크지만 연립은 일차계산이며 경계값의 연속적인 추적은 요구하지 않는다."
+    },
+    {
+      "slot": "C3",
+      "level": "상",
+      "bucket": 5,
+      "learningReason": "상: 구간 끝점 최대·최소 식을 구한 후 정수성으로 약수 후보를 만든 다음 두 번째 부등식으로 후보를 걸러야 한다.",
+      "bucketReason": "5: 12의 약수 조건·최댓값의 등호 허용·최솟값의 추가 범위·자연수 조건의 네 층을 누락 없이 결합해야 한다."
+    }
+  ],
+  "visualEvidenceRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/GPT_QID9_Q07_VISUAL_NUMERIC_EVIDENCE.json",
+  "formalIndependent": "NOT_RUN",
+  "browser": "NOT_RUN",
+  "consumer": "NOT_RUN",
+  "main": "NOT_RUN",
+  "sourceUidBinding": "EVIDENCE_DEBT_9",
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q07-A1",
+      "slot": "A1",
+      "answer": "③",
+      "answerValue": "-5",
+      "correctIndex": 3,
+      "wrongRouteCount": 4,
+      "level": "하",
+      "bucket": 2,
+      "primaryRpmL3": "H1-RPM-264",
+      "rpmMappingStatus": "RPM_ONLY",
+      "pt": "PT_FUNCTION_EXTREMUM",
+      "tpl": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "cross": [],
+      "conditions": [
+        "COND_RANGE"
+      ],
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "EXEMPT",
+      "solutionSvg": null,
+      "solutionSvgBlob": null,
+      "reverseStem": "KEEP",
+      "independentQuality": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q07-A2",
+      "slot": "A2",
+      "answer": "②",
+      "answerValue": "-1",
+      "correctIndex": 2,
+      "wrongRouteCount": 4,
+      "level": "하",
+      "bucket": 2,
+      "primaryRpmL3": "H1-RPM-264",
+      "rpmMappingStatus": "RPM_ONLY",
+      "pt": "PT_FUNCTION_EXTREMUM",
+      "tpl": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "cross": [],
+      "conditions": [
+        "COND_RANGE"
+      ],
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "EXEMPT",
+      "solutionSvg": null,
+      "solutionSvgBlob": null,
+      "reverseStem": "KEEP",
+      "independentQuality": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q07-A3",
+      "slot": "A3",
+      "answer": "①",
+      "answerValue": "7",
+      "correctIndex": 1,
+      "wrongRouteCount": 4,
+      "level": "하",
+      "bucket": 3,
+      "primaryRpmL3": "H1-RPM-264",
+      "rpmMappingStatus": "RPM_ONLY",
+      "pt": "PT_FUNCTION_EXTREMUM",
+      "tpl": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "cross": [],
+      "conditions": [
+        "COND_RANGE"
+      ],
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "EXEMPT",
+      "solutionSvg": null,
+      "solutionSvgBlob": null,
+      "reverseStem": "KEEP",
+      "independentQuality": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q07-B1",
+      "slot": "B1",
+      "answer": "⑤",
+      "answerValue": "18",
+      "correctIndex": 5,
+      "wrongRouteCount": 4,
+      "level": "하",
+      "bucket": 2,
+      "primaryRpmL3": "H1-RPM-264",
+      "rpmMappingStatus": "RPM_ONLY",
+      "pt": "PT_FUNCTION_EXTREMUM",
+      "tpl": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "cross": [],
+      "conditions": [
+        "COND_RANGE"
+      ],
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "EXEMPT",
+      "solutionSvg": null,
+      "solutionSvgBlob": null,
+      "reverseStem": "KEEP",
+      "independentQuality": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q07-B2",
+      "slot": "B2",
+      "answer": "⑤",
+      "answerValue": "15",
+      "correctIndex": 5,
+      "wrongRouteCount": 4,
+      "level": "중",
+      "bucket": 4,
+      "primaryRpmL3": "H1-RPM-264",
+      "rpmMappingStatus": "RPM_ONLY",
+      "pt": "PT_FUNCTION_EXTREMUM",
+      "tpl": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+      "cross": [],
+      "conditions": [
+        "COND_RANGE"
+      ],
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "BENEFICIAL",
+      "solutionSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q07/B2-solution.svg",
+      "solutionSvgBlob": "8b5945ddf8bada7fcbb4b58ee284ab88319e7d1a",
+      "reverseStem": "KEEP",
+      "independentQuality": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q07-B3",
+      "slot": "B3",
+      "answer": "③",
+      "answerValue": "3",
+      "correctIndex": 3,
+      "wrongRouteCount": 4,
+      "level": "중",
+      "bucket": 3,
+      "primaryRpmL3": "H1-RPM-264",
+      "rpmMappingStatus": "RPM_ONLY",
+      "pt": "PT_FUNCTION_EXTREMUM",
+      "tpl": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+      "cross": [],
+      "conditions": [
+        "COND_RANGE",
+        "COND_INTEGER",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "BENEFICIAL",
+      "solutionSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q07/B3-solution.svg",
+      "solutionSvgBlob": "05e9af118d6b88ebe03e5daf6092c88984f405ad",
+      "reverseStem": "KEEP",
+      "independentQuality": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q07-C1",
+      "slot": "C1",
+      "answer": "④",
+      "answerValue": "18",
+      "correctIndex": 4,
+      "wrongRouteCount": 4,
+      "level": "중",
+      "bucket": 4,
+      "primaryRpmL3": "H1-RPM-264",
+      "rpmMappingStatus": "RPM_ONLY",
+      "pt": "PT_FUNCTION_EXTREMUM",
+      "tpl": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "cross": [],
+      "conditions": [
+        "COND_RANGE"
+      ],
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "BENEFICIAL",
+      "solutionSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q07/C1-solution.svg",
+      "solutionSvgBlob": "657f77fe13c1535a28fe04de23ad99782ca94e43",
+      "reverseStem": "KEEP",
+      "independentQuality": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q07-C2",
+      "slot": "C2",
+      "answer": "③",
+      "answerValue": "9",
+      "correctIndex": 3,
+      "wrongRouteCount": 4,
+      "level": "상",
+      "bucket": 4,
+      "primaryRpmL3": "H1-RPM-264",
+      "rpmMappingStatus": "RPM_ONLY",
+      "pt": "PT_FUNCTION_EXTREMUM",
+      "tpl": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+      "cross": [],
+      "conditions": [
+        "COND_RANGE",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "BENEFICIAL",
+      "solutionSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q07/C2-solution.svg",
+      "solutionSvgBlob": "87daecd194980cd183d607f4e78703f686de012a",
+      "reverseStem": "KEEP",
+      "independentQuality": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q07-C3",
+      "slot": "C3",
+      "answer": "③",
+      "answerValue": "3",
+      "correctIndex": 3,
+      "wrongRouteCount": 4,
+      "level": "상",
+      "bucket": 5,
+      "primaryRpmL3": "H1-RPM-264",
+      "rpmMappingStatus": "RPM_ONLY",
+      "pt": "PT_FUNCTION_EXTREMUM",
+      "tpl": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+      "cross": [
+        "CC_NUMBER_DIVISOR_MULTIPLE"
+      ],
+      "conditions": [
+        "COND_RANGE",
+        "COND_INTEGER",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "BENEFICIAL",
+      "solutionSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q07/C3-solution.svg",
+      "solutionSvgBlob": "b5574093912de56fe74a9e9f5323a60d324f7cf3",
+      "reverseStem": "KEEP",
+      "independentQuality": "NOT_RUN",
+      "browser": "NOT_RUN"
+    }
+  ],
+  "nextQid": 8,
+  "finalAuthorCorrections": [
+    "CREATE artifact metadata tags corrected per final stem: max-only/min-only fields not over-tagged",
+    "B3/C3 solution visual consists of condition tables (표), not function graphs (그래프)",
+    "Python Sympy mathematical reference was executed; SVG coordinate paths sampled in deterministic JavaScript, not incorrectly called Python-generated",
+    "SVG physical coordinate static reverse-readback checked B2/C1/C2 and validated line/pixel model within rounding tolerance"
+  ],
+  "updatedProofStatus": "AUTHOR_STATIC_REVIEWED_NOT_INDEPENDENT_OR_BROWSER"
+}

@@ -1,3 +1,11 @@
+# CURRENT TOP — q07 제작 / q08 시작 (2026-10-14)
+- 브랜치 `work/alive-25-palma-h1-2final-qid9`, 실제 q01~q07 신규 후보 63/207, 첫 미제작 q08, 남은 144. q01~q06 변경 0.
+- source q07 `archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js` blob `0d12b75e824ab47f08fc3b5a6180be595f882c6e`, 본문 수식 기반 최댓값(그림 없음).
+- RPM L3 H1-RPM-264 유리함수의 활용, RPM L4 유리함수의 최대·최소 **RPM_ONLY**. PT_FUNCTION_EXTREMUM/TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT/TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL 별도 ACTIVE 정본. 모든 UID meta 상세 이유는 Q07_CREATE_DRAFT 및 Q07_BLUEPRINT.
+- 9문항 보기45·정답9·오답 실제 계산경로36. 난이도 하4/중3/상2는 슬롯 할당이 아닌 실제 사고 판단, 평가 난이도2~5 독립 근거와 함께 저장.
+- 문제 시각자료 9 EXEMPT(식으로 조건 충분). 해설 5 실 SVG / 4 EXEMPT: 유리함수 그래프 B2/C1/C2, 경우표 B3/C3. Python SymPy exact endpoints/count check 실행; SVG 실제 점/곡선 역산 정적 대조 완료. SVG 경로는 검증 수학모델의 deterministic JS sampling이며 Python 좌표 직접 생성으로 허위 기록하지 않음. 실제 학생 브라우저 렌더 NOT_RUN.
+- sourceUid exact 9 EVIDENCE_DEBT, 누적 63. 별도 독립 품질검사·Consumer·main NOT_RUN. next q08.
+
 # CURRENT TOP — q06 신규 9문항 제작 / 다음 q07 (2026-10-14)
 - 작업 브랜치 work/alive-25-palma-h1-2final-qid9; q01~q06 누적 54/207, q01~q05 보호/불변. 첫 미완료 q07, 남은 153.
 - 원본 q06 archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js; blob 0d12b75e824ab47f08fc3b5a6180be595f882c6e, 학생용 원문 이미지 없음(문자·수식). 원본 f(x)=(4x+5)/(x+1) 점근선 x=-1,y=4; f^(-1)(3)=-2.

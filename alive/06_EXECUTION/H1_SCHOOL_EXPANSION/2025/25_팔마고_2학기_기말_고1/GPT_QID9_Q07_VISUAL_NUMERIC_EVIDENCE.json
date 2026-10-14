@@ -1,0 +1,236 @@
+{
+  "schemaVersion": "PALMA25_Q07_VISUAL_NUMERIC_EVIDENCE_v1",
+  "mathTool": "Python sympy run in current task; 2026-10-14",
+  "pythonVerified": {
+    "A1": "f(0)=-5, f(4)=3, max=3 when k=-5",
+    "A2": "f(1)=1, f(5)=11/7, min=1 when k=-1",
+    "A3": "f(1)=3, f(5)=4, max=4 when k=7",
+    "B1": "f(0)=9, f(4)=5, min=5 when k=18",
+    "B2": "f(0)=15/2, f(4)=9/2, difference3 when k=15",
+    "B3": "accepted integer k=[1,2,3] over 0..5 by both endpoint bounds",
+    "C1": "four endpoints f(-2)=-2, f(0)=-5, f(3)=13, f(6)=4, max-min=18",
+    "C2": "(a=7,b=2) extrema (2,6); rejected (a=1,b=6) violates a>3",
+    "C3": "integer maximum candidates n=[2,3,5,11], minimum condition leaves [2,3,5]"
+  },
+  "visualAssets": [
+    {
+      "slot": "B2",
+      "gitBlobSha": "8b5945ddf8bada7fcbb4b58ee284ab88319e7d1a",
+      "pythonInputs": {
+        "xMin": -4,
+        "xMax": 9,
+        "yMin": -2,
+        "yMax": 11,
+        "f": "3+9/(x+2)"
+      },
+      "pythonCalculatedOutputs": {
+        "scale": 40,
+        "originX": 236,
+        "originY": 556,
+        "anchors": [
+          [
+            0,
+            7.5,
+            236,
+            256
+          ],
+          [
+            4,
+            4.5,
+            396,
+            376
+          ]
+        ]
+      },
+      "actualSvgPrimitive": "polyline sampled 361 points, two circle anchors"
+    },
+    {
+      "slot": "B3",
+      "gitBlobSha": "05e9af118d6b88ebe03e5daf6092c88984f405ad",
+      "pythonInputs": {
+        "kRange": [
+          0,
+          5
+        ],
+        "f0": "k",
+        "f3": "(6+k)/4"
+      },
+      "pythonCalculatedOutputs": {
+        "eligible": [
+          1,
+          2,
+          3
+        ],
+        "f3AtEligible": [
+          "7/4",
+          "2",
+          "9/4"
+        ]
+      },
+      "actualSvgPrimitive": "SVG table; 7 columns including labels"
+    },
+    {
+      "slot": "C1",
+      "gitBlobSha": "657f77fe13c1535a28fe04de23ad99782ca94e43",
+      "pythonInputs": {
+        "xMin": -9,
+        "xMax": 17,
+        "yMin": -9,
+        "yMax": 17,
+        "f": "1+12/(x-2)",
+        "domains": [
+          [
+            -2,
+            0
+          ],
+          [
+            3,
+            6
+          ]
+        ]
+      },
+      "pythonCalculatedOutputs": {
+        "scale": 20,
+        "originX": 256,
+        "originY": 456,
+        "anchors": [
+          [
+            -2,
+            -2,
+            216,
+            496
+          ],
+          [
+            0,
+            -5,
+            256,
+            556
+          ],
+          [
+            3,
+            13,
+            316,
+            196
+          ],
+          [
+            6,
+            4,
+            376,
+            376
+          ]
+        ]
+      },
+      "actualSvgPrimitive": "two sampled polylines each 361 points, four circle anchors"
+    },
+    {
+      "slot": "C2",
+      "gitBlobSha": "87daecd194980cd183d607f4e78703f686de012a",
+      "pythonInputs": {
+        "xMin": -3,
+        "xMax": 9,
+        "yMin": -3,
+        "yMax": 9,
+        "f": "(7x+2)/(x+1)",
+        "rejected": "(x+6)/(x+1)"
+      },
+      "pythonCalculatedOutputs": {
+        "scale": 43.3333333333,
+        "originX": 206,
+        "originY": 506,
+        "anchors": [
+          [
+            0,
+            2,
+            206,
+            419.333
+          ],
+          [
+            4,
+            6,
+            379.333,
+            246
+          ]
+        ]
+      },
+      "actualSvgPrimitive": "two sampled polylines solid/dashed, two circle anchors"
+    },
+    {
+      "slot": "C3",
+      "gitBlobSha": "b5574093912de56fe74a9e9f5323a60d324f7cf3",
+      "pythonInputs": {
+        "nCandidates": [
+          2,
+          3,
+          5,
+          11
+        ],
+        "f": "2+12/(x+1)"
+      },
+      "pythonCalculatedOutputs": {
+        "M": [
+          "6",
+          "5",
+          "4",
+          "3"
+        ],
+        "m": [
+          "4",
+          "26/7",
+          "10/3",
+          "14/5"
+        ],
+        "validN": [
+          2,
+          3,
+          5
+        ]
+      },
+      "actualSvgPrimitive": "SVG condition table"
+    }
+  ],
+  "browser": "NOT_RUN",
+  "visualIndependence": "AUTHOR_STATIC_CHECK_ONLY_NOT_INDEPENDENT",
+  "coordinateGeneration": "SVG numeric paths deterministic JS applying Python-verified model; not misreported as Python-generated pixel paths",
+  "sourceUid": "EVIDENCE_DEBT",
+  "finalSvgPrimitiveReverseReadback": [
+    {
+      "slot": "B2",
+      "gitBlobSha": "8b5945ddf8bada7fcbb4b58ee284ab88319e7d1a",
+      "actualPrimitivePoints": 361,
+      "maxObservedCurveMathDeviation": 0.00003,
+      "maxObservedCirclePixelDeviation": 0,
+      "scaleParity": "sx=sy=40",
+      "status": "AUTHOR_STATIC_MATCH"
+    },
+    {
+      "slot": "C1",
+      "gitBlobSha": "657f77fe13c1535a28fe04de23ad99782ca94e43",
+      "actualPrimitivePoints": 722,
+      "maxObservedCurveMathDeviation": 0.00022,
+      "maxObservedCirclePixelDeviation": 0,
+      "scaleParity": "sx=sy=20",
+      "status": "AUTHOR_STATIC_MATCH"
+    },
+    {
+      "slot": "C2",
+      "gitBlobSha": "87daecd194980cd183d607f4e78703f686de012a",
+      "actualPrimitivePoints": 722,
+      "maxObservedCurveMathDeviation": 0.000063,
+      "maxObservedCirclePixelDeviation": 0.000334,
+      "scaleParity": "sx=sy=43.333333333",
+      "status": "AUTHOR_STATIC_MATCH"
+    }
+  ],
+  "staticEvidenceLimit": "AUTHOR_STATIC_ONLY; full student/browser rendering NOT_RUN",
+  "visualTypePerUid": {
+    "A1": "NO_SVG",
+    "A2": "NO_SVG",
+    "A3": "NO_SVG",
+    "B1": "NO_SVG",
+    "B2": "RATIONAL_GRAPH",
+    "B3": "CONDITION_TABLE",
+    "C1": "RATIONAL_GRAPH_TWO_INTERVALS",
+    "C2": "RATIONAL_GRAPH_TWO_CASES",
+    "C3": "CONDITION_TABLE"
+  }
+}
