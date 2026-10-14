@@ -1,0 +1,1415 @@
+{
+  "schemaVersion": "PALMA25_QID9_DRAFT_v1",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceQid": 2,
+  "sourceImage": "archive/assets/images/25_팔마고_2학기_기말_고1_기출/q02.png",
+  "sourceImageGitBlob": "ed1383becc8c672e67557224b8a6c1a5459ea1f6",
+  "sourceFacts": {
+    "f": {
+      "2": 4,
+      "3": 2,
+      "4": 3
+    },
+    "g": {
+      "2": 2,
+      "3": 4,
+      "4": 3
+    },
+    "answer": 4
+  },
+  "rpmCrosswalkGitBlob": "904b3768b69b300607e52217cad05bf71e34f221",
+  "taxonomyGitBlob": "a6684bdfec3ff8beaff25c19346b4865a24f7b81",
+  "summary": {
+    "authorDraft": 9,
+    "problemSVG": 9,
+    "solutionSVG": 9,
+    "verifiedChoiceCount": 45,
+    "wrongPathCount": 36,
+    "authorMathVerified": 9,
+    "independentReview": "NOT_RUN",
+    "browser": "NOT_RUN",
+    "sourceUidDebt": 9,
+    "studentRelease": "NOT_AUTHORIZED",
+    "nextQid": 3
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-PALMA25-2FINAL-Q02-A1",
+      "sourceQid": 2,
+      "sourceUid": null,
+      "slot": "A1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "하",
+      "category": "합성함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "도형",
+        "합성함수"
+      ],
+      "wide": false,
+      "content": "다음 대응도로 주어진 두 함수 $f,g:X\\to X$에 대하여 $(f\\circ g)(2)$의 값은?",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/A1-problem.svg",
+      "imageSize": "full",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "answer": "④",
+      "solution": "합성함수는 안쪽 함수부터 적용하므로 대응을 순서대로 읽는다.\n$g(2)=3$이다.\n$f(3)=4$이다.\n$(f\\circ g)(2)=f(g(2))=f(3)=4$이다.\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/A1-solution.svg",
+      "solutionImageAlt": "A1 함수 합성의 결정적 대응 경로를 표시한 해설 대응도",
+      "solutionImageCaption": "먼저 g, 다음 f의 두 단계 대응",
+      "solutionImageSize": "full",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "effectiveL4Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "합성함수 계산",
+        "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+        "templateKey": "TPL_COMPOSITION_VALUE_MAPPING",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED"
+        ],
+        "rationale": {
+          "primaryL3": "원본의 합성 순서·대응 추적을 유지: 먼저 g, 다음 f의 두 단계 대응",
+          "l4": "H1-RPM-253 DIRECT_ACTIVE 의 합성함수 계산이 최종 풀이의 주요 순서와 일치",
+          "pt": "PT_COMPOSITION_EVALUATION는 유한 대응도에서 합성값 계산에 사용",
+          "tpl": "TPL_COMPOSITION_VALUE_MAPPING은 대응 순서/대응값 직접 추적의 실제 형태",
+          "crossConcept": "필수 계산이 전부 합성함수의 대응이므로 별도 보조 개념 없음",
+          "condition": "별도 부호·정수·구간 조건이 없고 합성의 정의만으로 직접 계산",
+          "integration": "SEQUENTIAL: 먼저 g, 다음 f의 두 단계 대응"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_ONLY",
+        "independentReview": "NOT_RUN",
+        "browser": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "curriculumBasis": "2022 개정 공통수학2 합성함수·유한집합의 기본 대응; 벡터/미적분 미사용",
+        "studentReproducibleEvidence": [
+          "$g(2)=3$이다.",
+          "$f(3)=4$이다.",
+          "$(f\\circ g)(2)=f(g(2))=f(3)=4$이다."
+        ],
+        "difficultyRationale": "주어진 함수 대응을 순서대로 두 번 읽는 직접 계산",
+        "difficultyBucketRationale": "주어진 함수 대응을 순서대로 두 번 읽는 직접 계산; 슬롯 위치 기준 아님",
+        "reverseStemCheck": {
+          "decision": "KEEP",
+          "objective": "먼저 g, 다음 f의 두 단계 대응",
+          "primaryL3Necessary": true,
+          "stemSufficient": true,
+          "studentLanguage": "학교 내신형 함수 대응 질문"
+        },
+        "choiceAudit": {
+          "allFive": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "correctValue": 4,
+          "correctChoice": 4,
+          "wrongOptionReasons": [
+            "① $f(2)=1$을 답으로 씀",
+            "② 순서를 바꿔 $(g\\circ f)(2)=g(1)=2$",
+            "③ $g(2)=3$에서 멈춤",
+            "⑤ $g(g(2))=g(3)=5$를 계산"
+          ],
+          "mathematicallyUnique": true
+        },
+        "expectedMapFacts": {
+          "X": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "f": [
+            3,
+            1,
+            4,
+            5,
+            2
+          ],
+          "g": [
+            2,
+            3,
+            5,
+            1,
+            4
+          ],
+          "calculated": 4
+        },
+        "problemSVG": {
+          "necessity": "VISUAL_REQUIRED",
+          "action": "ADD",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/A1-problem.svg",
+          "gitBlobSha": "9ddc1037622b4412a03f482965f307507dd6e988",
+          "expectedLineCount": 10,
+          "model": "Python preflight: Y=150+90(i-1); f x 166→352, g x 484→666",
+          "meaning": "원본 대응도 타입 보존, 정답 강조 없음",
+          "browser": "NOT_RUN"
+        },
+        "solutionSVG": {
+          "necessity": "VISUAL_REQUIRED",
+          "action": "ADD",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/A1-solution.svg",
+          "gitBlobSha": "082c035c6bb0135c5933a33960e27f7ccfcd9a99",
+          "decisiveRelation": "먼저 g, 다음 f의 두 단계 대응",
+          "newVisualInformation": "해설에서 사용한 함수별 화살표·적용 순서를 색상과 결론으로 분리",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-PALMA25-2FINAL-Q02-A2",
+      "sourceQid": 2,
+      "sourceUid": null,
+      "slot": "A2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "하",
+      "category": "합성함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "도형",
+        "합성함수"
+      ],
+      "wide": false,
+      "content": "다음 대응도로 주어진 두 함수 $f,g:X\\to X$에 대하여 $(g\\circ f)(4)$의 값은?",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/A2-problem.svg",
+      "imageSize": "full",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "answer": "④",
+      "solution": "합성함수는 안쪽 함수부터 적용하므로 대응을 순서대로 읽는다.\n$f(4)=2$이다.\n$g(2)=4$이다.\n$(g\\circ f)(4)=g(f(4))=g(2)=4$이다.\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/A2-solution.svg",
+      "solutionImageAlt": "A2 함수 합성의 결정적 대응 경로를 표시한 해설 대응도",
+      "solutionImageCaption": "먼저 f, 다음 g의 두 단계 대응",
+      "solutionImageSize": "full",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "effectiveL4Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "합성함수 계산",
+        "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+        "templateKey": "TPL_COMPOSITION_VALUE_MAPPING",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED"
+        ],
+        "rationale": {
+          "primaryL3": "원본의 합성 순서·대응 추적을 유지: 먼저 f, 다음 g의 두 단계 대응",
+          "l4": "H1-RPM-253 DIRECT_ACTIVE 의 합성함수 계산이 최종 풀이의 주요 순서와 일치",
+          "pt": "PT_COMPOSITION_EVALUATION는 유한 대응도에서 합성값 계산에 사용",
+          "tpl": "TPL_COMPOSITION_VALUE_MAPPING은 대응 순서/대응값 직접 추적의 실제 형태",
+          "crossConcept": "필수 계산이 전부 합성함수의 대응이므로 별도 보조 개념 없음",
+          "condition": "별도 부호·정수·구간 조건이 없고 합성의 정의만으로 직접 계산",
+          "integration": "SEQUENTIAL: 먼저 f, 다음 g의 두 단계 대응"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_ONLY",
+        "independentReview": "NOT_RUN",
+        "browser": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "curriculumBasis": "2022 개정 공통수학2 합성함수·유한집합의 기본 대응; 벡터/미적분 미사용",
+        "studentReproducibleEvidence": [
+          "$f(4)=2$이다.",
+          "$g(2)=4$이다.",
+          "$(g\\circ f)(4)=g(f(4))=g(2)=4$이다."
+        ],
+        "difficultyRationale": "합성 기호에서 먼저 적용할 함수를 정확히 선택",
+        "difficultyBucketRationale": "합성 기호에서 먼저 적용할 함수를 정확히 선택; 슬롯 위치 기준 아님",
+        "reverseStemCheck": {
+          "decision": "KEEP",
+          "objective": "먼저 f, 다음 g의 두 단계 대응",
+          "primaryL3Necessary": true,
+          "stemSufficient": true,
+          "studentLanguage": "학교 내신형 함수 대응 질문"
+        },
+        "choiceAudit": {
+          "allFive": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "correctValue": 4,
+          "correctChoice": 4,
+          "wrongOptionReasons": [
+            "① 입력값을 2로 잘못 읽어 $g(f(2))=1$",
+            "② $f(4)=2$에서 멈춤",
+            "③ 순서를 바꾸어 $f(g(4))=f(5)=3$",
+            "⑤ $g(4)=5$만 구함"
+          ],
+          "mathematicallyUnique": true
+        },
+        "expectedMapFacts": {
+          "X": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "f": [
+            5,
+            1,
+            4,
+            2,
+            3
+          ],
+          "g": [
+            1,
+            4,
+            3,
+            5,
+            2
+          ],
+          "calculated": 4
+        },
+        "problemSVG": {
+          "necessity": "VISUAL_REQUIRED",
+          "action": "ADD",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/A2-problem.svg",
+          "gitBlobSha": "134534a58fbe079680c82b38cca612f4ec15b0e0",
+          "expectedLineCount": 10,
+          "model": "Python preflight: Y=150+90(i-1); f x 166→352, g x 484→666",
+          "meaning": "원본 대응도 타입 보존, 정답 강조 없음",
+          "browser": "NOT_RUN"
+        },
+        "solutionSVG": {
+          "necessity": "VISUAL_REQUIRED",
+          "action": "ADD",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/A2-solution.svg",
+          "gitBlobSha": "de86f09f75c0eafc4314d52b9953d77c813367b0",
+          "decisiveRelation": "먼저 f, 다음 g의 두 단계 대응",
+          "newVisualInformation": "해설에서 사용한 함수별 화살표·적용 순서를 색상과 결론으로 분리",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-PALMA25-2FINAL-Q02-A3",
+      "sourceQid": 2,
+      "sourceUid": null,
+      "slot": "A3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "하",
+      "category": "합성함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "도형",
+        "합성함수"
+      ],
+      "wide": false,
+      "content": "다음 대응도로 주어진 두 함수 $f,g:X\\to X$에 대하여 $(f\\circ g)(1)$의 값은?",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/A3-problem.svg",
+      "imageSize": "full",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "answer": "③",
+      "solution": "합성함수는 안쪽 함수부터 적용하므로 대응을 순서대로 읽는다.\n$g(1)=4$이다.\n$f(4)=3$이다.\n$(f\\circ g)(1)=f(g(1))=f(4)=3$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/A3-solution.svg",
+      "solutionImageAlt": "A3 함수 합성의 결정적 대응 경로를 표시한 해설 대응도",
+      "solutionImageCaption": "g의 출력 4를 f의 입력으로 사용",
+      "solutionImageSize": "full",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "effectiveL4Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "합성함수 계산",
+        "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+        "templateKey": "TPL_COMPOSITION_VALUE_MAPPING",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED"
+        ],
+        "rationale": {
+          "primaryL3": "원본의 합성 순서·대응 추적을 유지: g의 출력 4를 f의 입력으로 사용",
+          "l4": "H1-RPM-253 DIRECT_ACTIVE 의 합성함수 계산이 최종 풀이의 주요 순서와 일치",
+          "pt": "PT_COMPOSITION_EVALUATION는 유한 대응도에서 합성값 계산에 사용",
+          "tpl": "TPL_COMPOSITION_VALUE_MAPPING은 대응 순서/대응값 직접 추적의 실제 형태",
+          "crossConcept": "필수 계산이 전부 합성함수의 대응이므로 별도 보조 개념 없음",
+          "condition": "별도 부호·정수·구간 조건이 없고 합성의 정의만으로 직접 계산",
+          "integration": "SEQUENTIAL: g의 출력 4를 f의 입력으로 사용"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_ONLY",
+        "independentReview": "NOT_RUN",
+        "browser": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "curriculumBasis": "2022 개정 공통수학2 합성함수·유한집합의 기본 대응; 벡터/미적분 미사용",
+        "studentReproducibleEvidence": [
+          "$g(1)=4$이다.",
+          "$f(4)=3$이다.",
+          "$(f\\circ g)(1)=f(g(1))=f(4)=3$이다."
+        ],
+        "difficultyRationale": "두 번의 함수값 추적, 조건 분기 없음",
+        "difficultyBucketRationale": "두 번의 함수값 추적, 조건 분기 없음; 슬롯 위치 기준 아님",
+        "reverseStemCheck": {
+          "decision": "KEEP",
+          "objective": "g의 출력 4를 f의 입력으로 사용",
+          "primaryL3Necessary": true,
+          "stemSufficient": true,
+          "studentLanguage": "학교 내신형 함수 대응 질문"
+        },
+        "choiceAudit": {
+          "allFive": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "correctValue": 3,
+          "correctChoice": 3,
+          "wrongOptionReasons": [
+            "① $g(f(1))=g(2)=1$을 구함",
+            "② $f(1)=2$에서 멈춤",
+            "④ $g(1)=4$에서 멈춤",
+            "⑤ 입력을 바꿔 $f(2)=5$"
+          ],
+          "mathematicallyUnique": true
+        },
+        "expectedMapFacts": {
+          "X": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "f": [
+            2,
+            5,
+            1,
+            3,
+            4
+          ],
+          "g": [
+            4,
+            1,
+            5,
+            3,
+            2
+          ],
+          "calculated": 3
+        },
+        "problemSVG": {
+          "necessity": "VISUAL_REQUIRED",
+          "action": "ADD",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/A3-problem.svg",
+          "gitBlobSha": "8f72184caa2616aa3702138b31188af2688c0ce1",
+          "expectedLineCount": 10,
+          "model": "Python preflight: Y=150+90(i-1); f x 166→352, g x 484→666",
+          "meaning": "원본 대응도 타입 보존, 정답 강조 없음",
+          "browser": "NOT_RUN"
+        },
+        "solutionSVG": {
+          "necessity": "VISUAL_REQUIRED",
+          "action": "ADD",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/A3-solution.svg",
+          "gitBlobSha": "be7f22a38326aad9516609296a92792359940182",
+          "decisiveRelation": "g의 출력 4를 f의 입력으로 사용",
+          "newVisualInformation": "해설에서 사용한 함수별 화살표·적용 순서를 색상과 결론으로 분리",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-PALMA25-2FINAL-Q02-B1",
+      "sourceQid": 2,
+      "sourceUid": null,
+      "slot": "B1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "합성함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "도형",
+        "합성함수"
+      ],
+      "wide": false,
+      "content": "다음 대응도로 주어진 두 함수 $f,g:X\\to X$에 대하여 $(f\\circ g)(x)=5$를 만족시키는 $x$의 값은?",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/B1-problem.svg",
+      "imageSize": "full",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "answer": "④",
+      "solution": "합성함수의 대응 순서를 확인하고 목표 출력에서 입력 또는 미지 대응값을 찾는다.\n$f(g(x))=5$에서 먼저 $f(u)=5$가 되는 입력 $u$를 찾는다.\n대응도에서 $f(3)=5$이고 $5$로 가는 입력은 $3$뿐이므로 $g(x)=3$이다.\n$g(4)=3$이므로 $x=4$이며 다른 입력은 조건을 만족하지 않는다.\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/B1-solution.svg",
+      "solutionImageAlt": "B1 함수 합성의 결정적 대응 경로를 표시한 해설 대응도",
+      "solutionImageCaption": "출력 5에서 f의 입력, 이어 g의 입력을 두 번 역추적",
+      "solutionImageSize": "full",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "effectiveL4Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "합성함수 계산",
+        "problemTypeKey": "PT_COMPOSITION_EQUATION",
+        "templateKey": "TPL_COMPOSITION_EQUATION_SOLVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED"
+        ],
+        "rationale": {
+          "primaryL3": "원본의 합성 순서·대응 추적을 유지: 출력 5에서 f의 입력, 이어 g의 입력을 두 번 역추적",
+          "l4": "H1-RPM-253 DIRECT_ACTIVE 의 합성함수 계산이 최종 풀이의 주요 순서와 일치",
+          "pt": "PT_COMPOSITION_EQUATION는 합성 방정식 해의 역추적에 사용",
+          "tpl": "TPL_COMPOSITION_EQUATION_SOLVE은 대응 순서/대응값 역방향 조건판단의 실제 형태",
+          "crossConcept": "필수 계산이 전부 합성함수의 대응이므로 별도 보조 개념 없음",
+          "condition": "COND_RANGE: 유한 X 원소 중 조건에 맞는 입력을 걸러냄",
+          "integration": "SEQUENTIAL: 출력 5에서 f의 입력, 이어 g의 입력을 두 번 역추적"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_ONLY",
+        "independentReview": "NOT_RUN",
+        "browser": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "curriculumBasis": "2022 개정 공통수학2 합성함수·유한집합의 기본 대응; 벡터/미적분 미사용",
+        "studentReproducibleEvidence": [
+          "$f(g(x))=5$에서 먼저 $f(u)=5$가 되는 입력 $u$를 찾는다.",
+          "대응도에서 $f(3)=5$이고 $5$로 가는 입력은 $3$뿐이므로 $g(x)=3$이다.",
+          "$g(4)=3$이므로 $x=4$이며 다른 입력은 조건을 만족하지 않는다."
+        ],
+        "difficultyRationale": "단순 순방향 추적을 넘어 합성 방정식의 입력을 거꾸로 두 번 결정",
+        "difficultyBucketRationale": "단순 순방향 추적을 넘어 합성 방정식의 입력을 거꾸로 두 번 결정; 슬롯 위치 기준 아님",
+        "reverseStemCheck": {
+          "decision": "KEEP",
+          "objective": "출력 5에서 f의 입력, 이어 g의 입력을 두 번 역추적",
+          "primaryL3Necessary": true,
+          "stemSufficient": true,
+          "studentLanguage": "학교 내신형 함수 대응 질문"
+        },
+        "choiceAudit": {
+          "allFive": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "correctValue": 4,
+          "correctChoice": 4,
+          "wrongOptionReasons": [
+            "① $g(5)=1$을 역방향으로 오독",
+            "② $f(2)=2$를 근거 없이 목표조건에 대입",
+            "③ 중간값 3을 x로 오해",
+            "⑤ 목표 출력값 5를 입력으로 오해"
+          ],
+          "mathematicallyUnique": true
+        },
+        "expectedMapFacts": {
+          "X": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "f": [
+            4,
+            2,
+            5,
+            1,
+            3
+          ],
+          "g": [
+            2,
+            5,
+            4,
+            3,
+            1
+          ],
+          "calculated": "4"
+        },
+        "problemSVG": {
+          "necessity": "VISUAL_REQUIRED",
+          "action": "ADD",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/B1-problem.svg",
+          "gitBlobSha": "369a4c4c218c67b5fb20f353e88b4014087a215b",
+          "expectedLineCount": 10,
+          "model": "Python preflight: Y=150+90(i-1); f x 166→352, g x 484→666",
+          "meaning": "원본 대응도 타입 보존, 정답 강조 없음",
+          "browser": "NOT_RUN"
+        },
+        "solutionSVG": {
+          "necessity": "VISUAL_REQUIRED",
+          "action": "ADD",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/B1-solution.svg",
+          "gitBlobSha": "a580ede2bf4a3a93d1c1bf3caf64cee2209719d5",
+          "decisiveRelation": "출력 5에서 f의 입력, 이어 g의 입력을 두 번 역추적",
+          "newVisualInformation": "해설에서 사용한 함수별 화살표·적용 순서를 색상과 결론으로 분리",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-PALMA25-2FINAL-Q02-B2",
+      "sourceQid": 2,
+      "sourceUid": null,
+      "slot": "B2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "합성함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "도형",
+        "합성함수"
+      ],
+      "wide": false,
+      "content": "집합 $X=\\{1,2,3,4,5\\}$에서 아래 대응도로 주어진 두 함수 $f,g:X\\to X$에 대하여 $f(4)=a$이다. $(g\\circ f)(4)=3$일 때, $a$의 값은?",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/B2-problem.svg",
+      "imageSize": "full",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "answer": "①",
+      "solution": "합성함수의 대응 순서를 확인하고 목표 출력에서 입력 또는 미지 대응값을 찾는다.\n$f(4)=a$이므로 $(g\\circ f)(4)=g(a)$이다.\n따라서 $g(a)=3$이다.\n대응도에서 $g(1)=3$이고 이 출력을 만드는 입력은 $1$뿐이므로 $a=1$이다.\n따라서 정답은 ①이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/B2-solution.svg",
+      "solutionImageAlt": "B2 함수 합성의 결정적 대응 경로를 표시한 해설 대응도",
+      "solutionImageCaption": "미지 f(4)=a와 합성 결과에서 g의 원상을 찾음",
+      "solutionImageSize": "full",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "effectiveL4Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "합성함수 계산",
+        "problemTypeKey": "PT_COMPOSITION_EQUATION",
+        "templateKey": "TPL_COMPOSITION_EQUATION_SOLVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED"
+        ],
+        "rationale": {
+          "primaryL3": "원본의 합성 순서·대응 추적을 유지: 미지 f(4)=a와 합성 결과에서 g의 원상을 찾음",
+          "l4": "H1-RPM-253 DIRECT_ACTIVE 의 합성함수 계산이 최종 풀이의 주요 순서와 일치",
+          "pt": "PT_COMPOSITION_EQUATION는 합성 방정식 해의 역추적에 사용",
+          "tpl": "TPL_COMPOSITION_EQUATION_SOLVE은 대응 순서/대응값 역방향 조건판단의 실제 형태",
+          "crossConcept": "필수 계산이 전부 합성함수의 대응이므로 별도 보조 개념 없음",
+          "condition": "COND_RANGE: 유한 X 원소 중 조건에 맞는 입력을 걸러냄",
+          "integration": "SEQUENTIAL: 미지 f(4)=a와 합성 결과에서 g의 원상을 찾음"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_ONLY",
+        "independentReview": "NOT_RUN",
+        "browser": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "curriculumBasis": "2022 개정 공통수학2 합성함수·유한집합의 기본 대응; 벡터/미적분 미사용",
+        "studentReproducibleEvidence": [
+          "$f(4)=a$이므로 $(g\\circ f)(4)=g(a)$이다.",
+          "따라서 $g(a)=3$이다.",
+          "대응도에서 $g(1)=3$이고 이 출력을 만드는 입력은 $1$뿐이므로 $a=1$이다."
+        ],
+        "difficultyRationale": "합성식에 미지 대응값을 두고 출력에서 입력을 한 단계 역추적",
+        "difficultyBucketRationale": "합성식에 미지 대응값을 두고 출력에서 입력을 한 단계 역추적; 슬롯 위치 기준 아님",
+        "reverseStemCheck": {
+          "decision": "KEEP",
+          "objective": "미지 f(4)=a와 합성 결과에서 g의 원상을 찾음",
+          "primaryL3Necessary": true,
+          "stemSufficient": true,
+          "studentLanguage": "학교 내신형 함수 대응 질문"
+        },
+        "choiceAudit": {
+          "allFive": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "correctValue": 1,
+          "correctChoice": 1,
+          "wrongOptionReasons": [
+            "② $g(5)=2$의 값을 입력으로 오해",
+            "③ 출력 3을 미지수 a로 오해",
+            "④ 원래 입력 4를 a로 오해",
+            "⑤ $g(2)=5$의 출력을 잘못 고름"
+          ],
+          "mathematicallyUnique": true
+        },
+        "expectedMapFacts": {
+          "X": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "f": [
+            4,
+            2,
+            5,
+            null,
+            3
+          ],
+          "g": [
+            3,
+            5,
+            1,
+            4,
+            2
+          ],
+          "calculated": 1
+        },
+        "problemSVG": {
+          "necessity": "VISUAL_REQUIRED",
+          "action": "ADD",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/B2-problem.svg",
+          "gitBlobSha": "28bd48c367e8b8f06b1bd822165063f9620a879d",
+          "expectedLineCount": 9,
+          "model": "Python preflight: Y=150+90(i-1); f x 166→352, g x 484→666",
+          "meaning": "원본 대응도 타입 보존, 정답 강조 없음",
+          "browser": "NOT_RUN"
+        },
+        "solutionSVG": {
+          "necessity": "VISUAL_REQUIRED",
+          "action": "ADD",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/B2-solution.svg",
+          "gitBlobSha": "ce998792e23f1a87abde3c67ff806cf75b6d5883",
+          "decisiveRelation": "미지 f(4)=a와 합성 결과에서 g의 원상을 찾음",
+          "newVisualInformation": "해설에서 사용한 함수별 화살표·적용 순서를 색상과 결론으로 분리",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-PALMA25-2FINAL-Q02-B3",
+      "sourceQid": 2,
+      "sourceUid": null,
+      "slot": "B3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "합성함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "도형",
+        "합성함수"
+      ],
+      "wide": false,
+      "content": "다음 대응도로 주어진 두 함수 $f,g:X\\to X$에 대하여 $(f\\circ g)(2)+(g\\circ f)(2)$의 값은?",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/B3-problem.svg",
+      "imageSize": "full",
+      "choices": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$7$",
+        "$8$"
+      ],
+      "answer": "③",
+      "solution": "합성 순서가 다른 두 값을 각각 구하여 더한다.\n$(f\\circ g)(2)=f(g(2))=f(5)=3$이다.\n$(g\\circ f)(2)=g(f(2))=g(1)=2$이다.\n그러므로 두 합성값의 합은 $3+2=5$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/B3-solution.svg",
+      "solutionImageAlt": "B3 함수 합성의 결정적 대응 경로를 표시한 해설 대응도",
+      "solutionImageCaption": "양 방향 합성을 각각 계산한 후 더함",
+      "solutionImageSize": "full",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "effectiveL4Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "합성함수 계산",
+        "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+        "templateKey": "TPL_COMPOSITION_VALUE_MAPPING",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED"
+        ],
+        "rationale": {
+          "primaryL3": "원본의 합성 순서·대응 추적을 유지: 양 방향 합성을 각각 계산한 후 더함",
+          "l4": "H1-RPM-253 DIRECT_ACTIVE 의 합성함수 계산이 최종 풀이의 주요 순서와 일치",
+          "pt": "PT_COMPOSITION_EVALUATION는 유한 대응도에서 합성값 계산에 사용",
+          "tpl": "TPL_COMPOSITION_VALUE_MAPPING은 대응 순서/대응값 직접 추적의 실제 형태",
+          "crossConcept": "필수 계산이 전부 합성함수의 대응이므로 별도 보조 개념 없음",
+          "condition": "별도 부호·정수·구간 조건이 없고 합성의 정의만으로 직접 계산",
+          "integration": "INTERDEPENDENT: 양 방향 합성을 각각 계산한 후 더함"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_ONLY",
+        "independentReview": "NOT_RUN",
+        "browser": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "curriculumBasis": "2022 개정 공통수학2 합성함수·유한집합의 기본 대응; 벡터/미적분 미사용",
+        "studentReproducibleEvidence": [
+          "$(f\\circ g)(2)=f(g(2))=f(5)=3$이다.",
+          "$(g\\circ f)(2)=g(f(2))=g(1)=2$이다.",
+          "그러므로 두 합성값의 합은 $3+2=5$이다."
+        ],
+        "difficultyRationale": "두 경로를 구별하는 이중 추적 후 수치 결합",
+        "difficultyBucketRationale": "두 경로를 구별하는 이중 추적 후 수치 결합; 슬롯 위치 기준 아님",
+        "reverseStemCheck": {
+          "decision": "KEEP",
+          "objective": "양 방향 합성을 각각 계산한 후 더함",
+          "primaryL3Necessary": true,
+          "stemSufficient": true,
+          "studentLanguage": "학교 내신형 함수 대응 질문"
+        },
+        "choiceAudit": {
+          "allFive": [
+            3,
+            4,
+            5,
+            7,
+            8
+          ],
+          "correctValue": 5,
+          "correctChoice": 3,
+          "wrongOptionReasons": [
+            "① 첫 번째 합성값 3만 구함",
+            "② 두 번째 합성에서 f(2)=1까지만 읽어 3+1=4",
+            "④ 첫 합성에서 바깥 f를 빼고 5+2=7",
+            "⑤ 둘째 합성을 g(2)=5로 착각해 3+5=8"
+          ],
+          "mathematicallyUnique": true
+        },
+        "expectedMapFacts": {
+          "X": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "f": [
+            4,
+            1,
+            5,
+            2,
+            3
+          ],
+          "g": [
+            2,
+            5,
+            3,
+            1,
+            4
+          ],
+          "calculated": 5
+        },
+        "problemSVG": {
+          "necessity": "VISUAL_REQUIRED",
+          "action": "ADD",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/B3-problem.svg",
+          "gitBlobSha": "415f11d6d7b7ff2ee7b876663709592024081416",
+          "expectedLineCount": 10,
+          "model": "Python preflight: Y=150+90(i-1); f x 166→352, g x 484→666",
+          "meaning": "원본 대응도 타입 보존, 정답 강조 없음",
+          "browser": "NOT_RUN"
+        },
+        "solutionSVG": {
+          "necessity": "VISUAL_REQUIRED",
+          "action": "ADD",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/B3-solution.svg",
+          "gitBlobSha": "2c1c8482c0ce99851fe3e05ed1231c58313bd34b",
+          "decisiveRelation": "양 방향 합성을 각각 계산한 후 더함",
+          "newVisualInformation": "해설에서 사용한 함수별 화살표·적용 순서를 색상과 결론으로 분리",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-PALMA25-2FINAL-Q02-C1",
+      "sourceQid": 2,
+      "sourceUid": null,
+      "slot": "C1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "합성함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "도형",
+        "합성함수"
+      ],
+      "wide": false,
+      "content": "다음 대응도로 주어진 두 함수 $f,g:X\\to X$에 대하여 $f(g(f(2)))$의 값은?",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/C1-problem.svg",
+      "imageSize": "full",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "answer": "⑤",
+      "solution": "합성함수는 안쪽 함수부터 적용하므로 대응을 순서대로 읽는다.\n가장 안쪽부터 적용하면 $f(2)=3$이다.\n다음으로 $g(3)=4$이다.\n마지막으로 $f(4)=5$이므로 $f(g(f(2)))=5$이다.\n따라서 정답은 ⑤이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/C1-solution.svg",
+      "solutionImageAlt": "C1 함수 합성의 결정적 대응 경로를 표시한 해설 대응도",
+      "solutionImageCaption": "합성함수를 안쪽에서 바깥으로 세 번 적용",
+      "solutionImageSize": "full",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "effectiveL4Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "합성함수 계산",
+        "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+        "templateKey": "TPL_COMPOSITION_VALUE_MAPPING",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED"
+        ],
+        "rationale": {
+          "primaryL3": "원본의 합성 순서·대응 추적을 유지: 합성함수를 안쪽에서 바깥으로 세 번 적용",
+          "l4": "H1-RPM-253 DIRECT_ACTIVE 의 합성함수 계산이 최종 풀이의 주요 순서와 일치",
+          "pt": "PT_COMPOSITION_EVALUATION는 유한 대응도에서 합성값 계산에 사용",
+          "tpl": "TPL_COMPOSITION_VALUE_MAPPING은 대응 순서/대응값 직접 추적의 실제 형태",
+          "crossConcept": "필수 계산이 전부 합성함수의 대응이므로 별도 보조 개념 없음",
+          "condition": "별도 부호·정수·구간 조건이 없고 합성의 정의만으로 직접 계산",
+          "integration": "SEQUENTIAL: 합성함수를 안쪽에서 바깥으로 세 번 적용"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_ONLY",
+        "independentReview": "NOT_RUN",
+        "browser": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "curriculumBasis": "2022 개정 공통수학2 합성함수·유한집합의 기본 대응; 벡터/미적분 미사용",
+        "studentReproducibleEvidence": [
+          "가장 안쪽부터 적용하면 $f(2)=3$이다.",
+          "다음으로 $g(3)=4$이다.",
+          "마지막으로 $f(4)=5$이므로 $f(g(f(2)))=5$이다."
+        ],
+        "difficultyRationale": "연속 3회 대응, 별도 경우 분기는 없음",
+        "difficultyBucketRationale": "연속 3회 대응, 별도 경우 분기는 없음; 슬롯 위치 기준 아님",
+        "reverseStemCheck": {
+          "decision": "KEEP",
+          "objective": "합성함수를 안쪽에서 바깥으로 세 번 적용",
+          "primaryL3Necessary": true,
+          "stemSufficient": true,
+          "studentLanguage": "학교 내신형 함수 대응 질문"
+        },
+        "choiceAudit": {
+          "allFive": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "correctValue": 5,
+          "correctChoice": 5,
+          "wrongOptionReasons": [
+            "① 안쪽 f 대신 g(2)=1부터 시작",
+            "② 마지막 f 대신 g(4)=2 적용",
+            "③ f(2)=3에서 중단",
+            "④ g(f(2))=4에서 중단"
+          ],
+          "mathematicallyUnique": true
+        },
+        "expectedMapFacts": {
+          "X": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "f": [
+            4,
+            3,
+            1,
+            5,
+            2
+          ],
+          "g": [
+            5,
+            1,
+            4,
+            2,
+            3
+          ],
+          "calculated": 5
+        },
+        "problemSVG": {
+          "necessity": "VISUAL_REQUIRED",
+          "action": "ADD",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/C1-problem.svg",
+          "gitBlobSha": "c841eb6240c541bf92f0570958d0035bfa273cf9",
+          "expectedLineCount": 10,
+          "model": "Python preflight: Y=150+90(i-1); f x 166→352, g x 484→666",
+          "meaning": "원본 대응도 타입 보존, 정답 강조 없음",
+          "browser": "NOT_RUN"
+        },
+        "solutionSVG": {
+          "necessity": "VISUAL_REQUIRED",
+          "action": "ADD",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/C1-solution.svg",
+          "gitBlobSha": "ad7794938643ca59e645a65223fc47ebd13d0f0a",
+          "decisiveRelation": "합성함수를 안쪽에서 바깥으로 세 번 적용",
+          "newVisualInformation": "해설에서 사용한 함수별 화살표·적용 순서를 색상과 결론으로 분리",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-PALMA25-2FINAL-Q02-C2",
+      "sourceQid": 2,
+      "sourceUid": null,
+      "slot": "C2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "합성함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "도형",
+        "합성함수"
+      ],
+      "wide": false,
+      "content": "집합 $X=\\{1,2,3,4,5\\}$에서 아래 대응도로 주어진 두 함수 $f,g:X\\to X$에 대하여 $f(1)=a$, $f(3)=b$이다. $(f\\circ g)(2)=4$, $(g\\circ f)(1)=5$일 때, $a+b$의 값은?",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/C2-problem.svg",
+      "imageSize": "full",
+      "choices": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$7$",
+        "$9$"
+      ],
+      "answer": "④",
+      "solution": "합성함수의 대응 순서를 확인하고 목표 출력에서 입력 또는 미지 대응값을 찾는다.\n$g(2)=3$이므로 첫째 조건은 $f(g(2))=f(3)=b=4$이다.\n둘째 조건은 $g(f(1))=g(a)=5$이고 $g(3)=5$이므로 $a=3$이다.\n따라서 $a+b=3+4=7$이다.\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/C2-solution.svg",
+      "solutionImageAlt": "C2 함수 합성의 결정적 대응 경로를 표시한 해설 대응도",
+      "solutionImageCaption": "서로 방향이 다른 합성조건으로 a,b를 별도 결정",
+      "solutionImageSize": "full",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "effectiveL4Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "합성함수 계산",
+        "problemTypeKey": "PT_COMPOSITION_EQUATION",
+        "templateKey": "TPL_COMPOSITION_EQUATION_SOLVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED"
+        ],
+        "rationale": {
+          "primaryL3": "원본의 합성 순서·대응 추적을 유지: 서로 방향이 다른 합성조건으로 a,b를 별도 결정",
+          "l4": "H1-RPM-253 DIRECT_ACTIVE 의 합성함수 계산이 최종 풀이의 주요 순서와 일치",
+          "pt": "PT_COMPOSITION_EQUATION는 합성 방정식 해의 역추적에 사용",
+          "tpl": "TPL_COMPOSITION_EQUATION_SOLVE은 대응 순서/대응값 역방향 조건판단의 실제 형태",
+          "crossConcept": "필수 계산이 전부 합성함수의 대응이므로 별도 보조 개념 없음",
+          "condition": "COND_RANGE: 유한 X 원소 중 조건에 맞는 입력을 걸러냄",
+          "integration": "INTERDEPENDENT: 서로 방향이 다른 합성조건으로 a,b를 별도 결정"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_ONLY",
+        "independentReview": "NOT_RUN",
+        "browser": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "curriculumBasis": "2022 개정 공통수학2 합성함수·유한집합의 기본 대응; 벡터/미적분 미사용",
+        "studentReproducibleEvidence": [
+          "$g(2)=3$이므로 첫째 조건은 $f(g(2))=f(3)=b=4$이다.",
+          "둘째 조건은 $g(f(1))=g(a)=5$이고 $g(3)=5$이므로 $a=3$이다.",
+          "따라서 $a+b=3+4=7$이다."
+        ],
+        "difficultyRationale": "두 조건의 서로 다른 대응 방향 해석과 두 미지량 결합",
+        "difficultyBucketRationale": "두 조건의 서로 다른 대응 방향 해석과 두 미지량 결합; 슬롯 위치 기준 아님",
+        "reverseStemCheck": {
+          "decision": "KEEP",
+          "objective": "서로 방향이 다른 합성조건으로 a,b를 별도 결정",
+          "primaryL3Necessary": true,
+          "stemSufficient": true,
+          "studentLanguage": "학교 내신형 함수 대응 질문"
+        },
+        "choiceAudit": {
+          "allFive": [
+            3,
+            4,
+            5,
+            7,
+            9
+          ],
+          "correctValue": 7,
+          "correctChoice": 4,
+          "wrongOptionReasons": [
+            "① a=3만 구함",
+            "② b=4만 구함",
+            "③ g(a)=5의 출력만 기록",
+            "⑤ 조건 두 출력 4+5=9를 더함"
+          ],
+          "mathematicallyUnique": true
+        },
+        "expectedMapFacts": {
+          "X": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "f": [
+            "a",
+            1,
+            "b",
+            4,
+            2
+          ],
+          "g": [
+            4,
+            3,
+            5,
+            1,
+            2
+          ],
+          "calculated": 7
+        },
+        "problemSVG": {
+          "necessity": "VISUAL_REQUIRED",
+          "action": "ADD",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/C2-problem.svg",
+          "gitBlobSha": "c85495aaf94dc4a61ab0e21c8f94c528142b11a4",
+          "expectedLineCount": 8,
+          "model": "Python preflight: Y=150+90(i-1); f x 166→352, g x 484→666",
+          "meaning": "원본 대응도 타입 보존, 정답 강조 없음",
+          "browser": "NOT_RUN"
+        },
+        "solutionSVG": {
+          "necessity": "VISUAL_REQUIRED",
+          "action": "ADD",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/C2-solution.svg",
+          "gitBlobSha": "3e5b56fb300027e994572de41dbcc7912e4fd991",
+          "decisiveRelation": "서로 방향이 다른 합성조건으로 a,b를 별도 결정",
+          "newVisualInformation": "해설에서 사용한 함수별 화살표·적용 순서를 색상과 결론으로 분리",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-PALMA25-2FINAL-Q02-C3",
+      "sourceQid": 2,
+      "sourceUid": null,
+      "slot": "C3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "합성함수",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "도형",
+        "합성함수"
+      ],
+      "wide": false,
+      "content": "집합 $X=\\{1,2,3,4,5\\}$에서 아래 대응도로 주어진 두 함수 $f,g:X\\to X$에 대하여 $(f\\circ g)(x)=4$, $(g\\circ f)(x)=2$를 동시에 만족시키는 $x$의 값은?",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/C3-problem.svg",
+      "imageSize": "full",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "answer": "③",
+      "solution": "두 합성 조건의 후보를 차례로 판정하고 공통으로 만족하는 입력을 찾는다.\n첫 조건 $f(g(x))=4$에서는 $f(4)=4$, $g(2)=g(3)=4$이므로 $x=2$ 또는 $x=3$이다.\n$x=2$이면 $(g\\circ f)(2)=g(f(2))=g(1)=1$로 둘째 조건에 맞지 않는다.\n$x=3$이면 $(g\\circ f)(3)=g(f(3))=g(5)=2$이므로 두 조건을 모두 만족한다.\n첫 조건을 만족하는 다른 입력은 없으므로 해는 $x=3$ 하나이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/C3-solution.svg",
+      "solutionImageAlt": "C3 함수 합성의 결정적 대응 경로를 표시한 해설 대응도",
+      "solutionImageCaption": "첫 조건의 두 후보를 둘째 조건으로 판별",
+      "solutionImageSize": "full",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "effectiveL4Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "합성함수 계산",
+        "problemTypeKey": "PT_COMPOSITION_EQUATION",
+        "templateKey": "TPL_COMPOSITION_EQUATION_SOLVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED"
+        ],
+        "rationale": {
+          "primaryL3": "원본의 합성 순서·대응 추적을 유지: 첫 조건의 두 후보를 둘째 조건으로 판별",
+          "l4": "H1-RPM-253 DIRECT_ACTIVE 의 합성함수 계산이 최종 풀이의 주요 순서와 일치",
+          "pt": "PT_COMPOSITION_EQUATION는 합성 방정식 해의 역추적에 사용",
+          "tpl": "TPL_COMPOSITION_EQUATION_SOLVE은 대응 순서/대응값 역방향 조건판단의 실제 형태",
+          "crossConcept": "필수 계산이 전부 합성함수의 대응이므로 별도 보조 개념 없음",
+          "condition": "COND_RANGE: 유한 X 원소 중 조건에 맞는 입력을 걸러냄",
+          "integration": "CASE_BRANCH: 첫 조건의 두 후보를 둘째 조건으로 판별"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_ONLY",
+        "independentReview": "NOT_RUN",
+        "browser": "NOT_RUN",
+        "studentRelease": "NOT_AUTHORIZED",
+        "curriculumBasis": "2022 개정 공통수학2 합성함수·유한집합의 기본 대응; 벡터/미적분 미사용",
+        "studentReproducibleEvidence": [
+          "첫 조건 $f(g(x))=4$에서는 $f(4)=4$, $g(2)=g(3)=4$이므로 $x=2$ 또는 $x=3$이다.",
+          "$x=2$이면 $(g\\circ f)(2)=g(f(2))=g(1)=1$로 둘째 조건에 맞지 않는다.",
+          "$x=3$이면 $(g\\circ f)(3)=g(f(3))=g(5)=2$이므로 두 조건을 모두 만족한다.",
+          "첫 조건을 만족하는 다른 입력은 없으므로 해는 $x=3$ 하나이다."
+        ],
+        "difficultyRationale": "비일대일 대응에서 두 후보의 경우를 나누고 동시에 성립하는 값만 선택",
+        "difficultyBucketRationale": "비일대일 대응에서 두 후보의 경우를 나누고 동시에 성립하는 값만 선택; 슬롯 위치 기준 아님",
+        "reverseStemCheck": {
+          "decision": "KEEP",
+          "objective": "첫 조건의 두 후보를 둘째 조건으로 판별",
+          "primaryL3Necessary": true,
+          "stemSufficient": true,
+          "studentLanguage": "학교 내신형 함수 대응 질문"
+        },
+        "choiceAudit": {
+          "allFive": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "correctValue": 3,
+          "correctChoice": 3,
+          "wrongOptionReasons": [
+            "① x=1이면 첫째 합성값 2",
+            "② x=2는 둘째 합성값 1",
+            "④ x=4이면 첫째 합성값 3",
+            "⑤ x=5이면 첫째 합성값 1"
+          ],
+          "mathematicallyUnique": true
+        },
+        "expectedMapFacts": {
+          "X": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "f": [
+            2,
+            1,
+            5,
+            4,
+            3
+          ],
+          "g": [
+            1,
+            4,
+            4,
+            5,
+            2
+          ],
+          "calculated": "3"
+        },
+        "problemSVG": {
+          "necessity": "VISUAL_REQUIRED",
+          "action": "ADD",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/C3-problem.svg",
+          "gitBlobSha": "2da928e8997218af1a8b493a18df07ce43bc315e",
+          "expectedLineCount": 10,
+          "model": "Python preflight: Y=150+90(i-1); f x 166→352, g x 484→666",
+          "meaning": "원본 대응도 타입 보존, 정답 강조 없음",
+          "browser": "NOT_RUN"
+        },
+        "solutionSVG": {
+          "necessity": "VISUAL_REQUIRED",
+          "action": "ADD",
+          "asset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q02/C3-solution.svg",
+          "gitBlobSha": "5952e733e9fc2cb50c1bc848bee597114bd1ec4c",
+          "decisiveRelation": "첫 조건의 두 후보를 둘째 조건으로 판별",
+          "newVisualInformation": "해설에서 사용한 함수별 화살표·적용 순서를 색상과 결론으로 분리",
+          "browser": "NOT_RUN"
+        }
+      }
+    }
+  ]
+}

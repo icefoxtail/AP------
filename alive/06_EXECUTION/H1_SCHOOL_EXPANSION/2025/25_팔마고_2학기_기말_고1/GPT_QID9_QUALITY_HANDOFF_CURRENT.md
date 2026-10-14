@@ -15,3 +15,9 @@
 - 반드시 최종 발문·실제 그래프·필수 판단 단계별로 학습 `level=하/중/상`과 평가 `difficultyBucket=1~5`를 독립 판정한다. A/B/C 위치나 보기 종류 수만으로 높게 매기지 않는다.
 - q01 실제 문항별 난이도 재판정: A1=중/3, A2=하/2, A3=중/3, B1=중/3, B2=중/3, B3=중/3, C1=중/3, C2=중/3, C3=중/3 (학습/평가). 모든 UID의 결정적 사고와 난이도 이유는 Q01_CREATE_DRAFT.json 각 review에 기록.
 - 품질 3축 고정(교육과정 내 풀이, 학생 재현 해설, 문제/해설 SVG 실제 수학 일치)을 난이도 판단 이전에 유지하고 별도 출력 전 검증한다.
+
+## q02 AUTHOR DRAFT — 2026-10-14
+- 원본 q02 실제 PNG( Git blob ed1383becc8c672e67557224b8a6c1a5459ea1f6 )·원본 JS blob 0d12b75e824ab47f08fc3b5a6180be595f882c6e 확인; f(2)=4,f(3)=2,f(4)=3, g(2)=2,g(3)=4,g(4)=3.
+- L3 H1-RPM-253 합성함수 / L4 합성함수 계산 DIRECT_ACTIVE; UID별 ACTIVE PT/TPL·난도·조건·역발문·오답 근거는 q02 JSON 및 Metadata registry.
+- A1~C3 9개 AUTHOR_DRAFT_ONLY, 문제 SVG 9개+해설 SVG 9개 Git blob 결속, 각 UID self math/choice/curriculum/Meta/visual 필요성 기록. Python 좌표 수치·수학 계산 실행; 실제 Archive 브라우저 렌더·외부 독립검수·Consumer·main은 NOT_RUN.
+- q02 exact sourceUid 9개 EVIDENCE_DEBT. q01 9개 그대로 보호. 18/207 후보, next q03. q03은 같은 source-read→5축 설계·작성·검증·Git 누적.
