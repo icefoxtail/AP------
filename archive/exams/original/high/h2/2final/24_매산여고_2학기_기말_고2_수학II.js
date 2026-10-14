@@ -23,7 +23,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 다항함수의 도함수를 구한 뒤 $x=1$을 대입한다.\n조건 정리: $f(x)=x^3+2x^2-3x+5$이다.\n풀이 방향: 각 항을 미분하여 $f'(x)$를 구한다.\n정석 풀이: $f'(x)=3x^2+4x-3$이므로 $f'(1)=3+4-3=4$이다.\n따라서 정답은 ④이다.",
+    "solution": "다항함수의 각 항을 미분한다.\n$f(x)=x^3+2x^2-3x+5$\n$f'(x)=3x^2+4x-3$\n\n이제 $x=1$을 대입한다.\n$f'(1)=3\\cdot1^2+4\\cdot1-3$\n$=3+4-3$\n$=4$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-04-DERIVATIVE",
     "subUnit": "도함수",
     "subUnitConfidence": "candidate_evidence",
@@ -51,7 +51,7 @@ window.questionBank = [
       "$15$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 위치를 한 번 미분하면 속도, 두 번 미분하면 가속도이다.\n조건 정리: $x(t)=5t^3-6t^2+4t$이다.\n풀이 방향: $v(t)=x'(t)$와 $a(t)=v'(t)$를 차례로 구한다.\n정석 풀이: $v(t)=15t^2-12t+4$이므로 $v=v(1)=7$이다. 또 $a(t)=30t-12$이므로 $a=a(1)=18$이다. 따라서 $a-v=18-7=11$이다.\n따라서 정답은 ①이다.",
+    "solution": "위치를 한 번 미분하면 속도, 두 번 미분하면 가속도이다.\n$x(t)=5t^3-6t^2+4t$\n$v(t)=x'(t)=15t^2-12t+4$\n$a(t)=v'(t)=30t-12$\n\n시각 $t=1$에서 각각 계산하면\n$v(1)=15-12+4=7$\n$a(1)=30-12=18$이다.\n\n따라서 $a(1)-v(1)=18-7=11$이므로\n정답은 ①이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -79,7 +79,7 @@ window.questionBank = [
       "$F(x)$, $G(x)$가 $f(x)$의 부정적분이면 $F(x)=G(x)+C$이다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 부정적분에는 항상 적분상수가 포함되며, 같은 함수의 두 부정적분의 차는 상수이다.\n조건 정리: 각 보기에서 적분상수와 미분·적분의 관계를 확인한다.\n정석 풀이: ① $\\int0\\,dx=C$이므로 틀리다. ② $\\int dx=x+C$이므로 틀리다. ③ 적분변수를 바꾸더라도 부정적분에는 각각 적분상수가 포함되므로 그대로 같은 식이라고 할 수 없다. ④ 왼쪽은 $f(x)+C$, 오른쪽은 $f(x)$이므로 일반적으로 같지 않다. ⑤ 같은 $f(x)$의 두 부정적분은 상수만큼 차이가 나므로 옳다.\n따라서 정답은 ⑤이다.",
+    "solution": "부정적분에는 적분상수가 포함된다는 점을 이용해 각 보기를 판단한다.\n\n① $\\displaystyle\\int 0\\,dx=C$이므로 제시된 $0$만으로 나타낼 수 없다. (옳지 않다.)\n\n② $\\displaystyle\\int 1\\,dx=x+C$이므로 $\\int dx=C$는 옳지 않다.\n\n③ $\\int f(x)\\,dx$는 $x$에 대한 부정적분, $\\int f(y)\\,dy$는 $y$에 대한 부정적분이다. 서로 다른 변수의 식을 그대로 같다고 할 수 없다.\n\n④ $\\displaystyle\\int f'(x)\\,dx=f(x)+C$이고,\n$\\displaystyle\\dfrac{d}{dx}\\left(\\int f(x)\\,dx\\right)=f(x)$이다.\n적분상수까지 포함한 부정적분의 식이 일치한다고 할 수 없다.\n\n⑤ $F'(x)=G'(x)=f(x)$이면\n$\\{F(x)-G(x)\\}'=0$이다.\n따라서 $F(x)-G(x)=C$, 즉 $F(x)=G(x)+C$이다.\n\n옳은 것은 ⑤뿐이므로 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
     "subUnit": "부정적분",
     "subUnitConfidence": "candidate_evidence",
@@ -107,7 +107,7 @@ window.questionBank = [
       "$36$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 부정적분 등식을 미분하면 피적분함수에 대한 식을 얻을 수 있다.\n조건 정리: 양변을 $x$에 대하여 미분한다.\n풀이 방향: $(2x-3)f'(x)$를 구한 뒤 공통인수 $2x-3$을 이용한다.\n정석 풀이: 양변을 미분하면 $(2x-3)f'(x)=4x^2-4x-3=(2x-3)(2x+1)$이다. 따라서 다항식의 항등관계로 $f'(x)=2x+1$이다. 그러므로 $f(x)=x^2+x+C$이고 $f(0)=1$에서 $C=1$이다. $f(1)=3$, $f'(1)=3$이므로 $f(1)+f'(1)=6$이다.\n따라서 정답은 ①이다.",
+    "solution": "양변을 미분하여 $f'(x)$를 먼저 구한다.\n$\\displaystyle\\int(2x-3)f'(x)\\,dx=\\dfrac43x^3-2x^2-3x$\n$(2x-3)f'(x)=4x^2-4x-3$\n\n오른쪽을 인수분해하면\n$4x^2-4x-3=(2x-3)(2x+1)$이다.\n따라서 다항함수의 연속성을 이용하여\n$f'(x)=2x+1$이다.\n\n이를 적분하면\n$f(x)=x^2+x+C$이고,\n$f(0)=1$에서 $C=1$이다.\n\n$f(1)=1+1+1=3$\n$f'(1)=2+1=3$\n\n그러므로 $f(1)+f'(1)=3+3=6$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
     "subUnit": "부정적분",
     "subUnitConfidence": "candidate_evidence",
@@ -135,7 +135,7 @@ window.questionBank = [
       "$\\dfrac1{12}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 대칭구간에서는 홀함수 부분의 정적분이 $0$이 된다.\n조건 정리: $3x^2$는 짝함수이고 $2x$는 홀함수이다.\n풀이 방향: 홀함수 부분을 없애고 $3x^2$만 적분한다.\n정석 풀이: $\\displaystyle\\int_{-a}^{a}(3x^2+2x)dx=\\int_{-a}^{a}3x^2dx=2\\int_0^a3x^2dx=2a^3$이다. 따라서 $2a^3=\\dfrac14$이므로 $a^3=\\dfrac18$, $a=\\dfrac12$이다. 그러므로 $-\\dfrac12a=-\\dfrac14$이다.\n따라서 정답은 ①이다.",
+    "solution": "적분구간이 $-a$부터 $a$까지인 대칭구간이다.\n$3x^2$은 짝함수이고 $2x$는 홀함수이므로\n$\\displaystyle\\int_{-a}^{a}2x\\,dx=0$이다.\n\n따라서\n$\\displaystyle\\int_{-a}^{a}(3x^2+2x)\\,dx$\n$\\displaystyle=\\left[x^3+x^2\\right]_{-a}^{a}$\n$=(a^3+a^2)-(-a^3+a^2)$\n$=2a^3$이다.\n\n주어진 조건에 의해\n$2a^3=\\dfrac14$\n$a^3=\\dfrac18$\n$a=\\dfrac12$이다.\n\n구하는 값은 $-\\dfrac12a$\n$=-\\dfrac12\\cdot\\dfrac12$\n$=-\\dfrac14$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
