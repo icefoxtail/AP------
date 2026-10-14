@@ -32,6 +32,22 @@ test('same query works for original and Generated, unknown does not fill a bucke
   assert.equal(meta.projectGenerated(bound).rpmL2,'B','raw authority key is preserved');
   assert.equal(meta.projectGenerated({...bound,metaFinalSha256:'b'.repeat(64)}).L2,'B','stale alias is not consumed');
 });
+test('indexed Meta query preserves complete scan results and ordering', () => {
+  const rows=meta.buildIndex([
+    {questionUid:'qid_v1_a',sourceFile:'original/a.js',L1:'A',L2:'B',rpmL1:'A',difficultyBucket:2},
+    {questionUid:'qid_v1_b',sourceFile:'original/b.js',L1:'A',L2:'C',rpmL1:'A',difficultyBucket:3},
+    {questionUid:'qid_v1_c',sourceFile:'original/c.js',L1:'D',L2:'B',rpmL1:'D',difficultyBucket:2},
+  ],[]);
+  for (const filters of [
+    {rpmL1:'A',difficultyBuckets:[2,3]},
+    {L1:'A',L2:'C',difficultyBucket:3},
+    {rpmL1:'missing'},
+  ]) {
+    const indexed=meta.query(rows,filters).map(row=>row.uid);
+    const scanned=meta.query([...rows],filters).map(row=>row.uid);
+    assert.deepEqual(indexed,scanned,JSON.stringify(filters));
+  }
+});
 test('source availability, user disablement and Meta verification are independent axes', () => {
   assert.equal(meta.projectGenerated(approved,null,['ALITE-TEST']).directSelectable,false);
   assert.equal(meta.projectGenerated({...approved,reviewStatus:'HOLD'}).directSelectable,true);

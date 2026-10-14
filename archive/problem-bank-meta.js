@@ -6,6 +6,7 @@
   'use strict';
   // A derived view of existing authorities, never a new taxonomy or approval ledger.
   const VERSION = 'PROBLEM_BANK_META_VIEW_V1';
+  const queryCandidatesByIndex = new WeakMap();
   const FIELDS = Object.freeze(['rpmL1', 'rpmL2', 'rpmL3', 'rpmL4',
     'secondaryConceptKeys', 'crossConceptKeys', 'conditionKeys', 'integrationPattern',
     'problemTypeKey', 'templateKey', 'difficultyBucket', 'nativeCurriculum', 'nativeL1', 'nativeL2', 'nativeL3', 'nativeL4']);
@@ -376,17 +377,50 @@
   const projectGenerated = (row, consumer = null, holds = []) => project(row, true, consumer, holds);
   function buildIndex(originalRows = [], generatedRows = [], options = {}) {
     const seen = new Set();
-    return [...originalRows.map(projectOriginal), ...generatedRows.map(r =>
+    const rows = [...originalRows.map(projectOriginal), ...generatedRows.map(r =>
       projectGenerated(r, null, options.excludedHoldUids || []))].map(r => {
       if (!r.uid || seen.has(r.uid)) throw new Error('PROBLEM_BANK_DUPLICATE_OR_MISSING_UID:' + r.uid);
       seen.add(r.uid);
       return r;
     });
+    const byField = new Map();
+    for (const field of ['L1', 'L2', 'L3', 'L4', 'rpmL1', 'rpmL2', 'rpmL3', 'rpmL4', 'difficultyBucket']) {
+      const values = new Map();
+      for (const row of rows) {
+        const value = row[field];
+        if (value === undefined || value === null) continue;
+        let candidates = values.get(value);
+        if (!candidates) values.set(value, candidates = []);
+        candidates.push(row);
+      }
+      byField.set(field, values);
+    }
+    queryCandidatesByIndex.set(rows, byField);
+    return rows;
   }
   function query(records, filters = {}, options = {}) {
     const profile = options.profile || 'DIRECT';
     if (!['DIRECT', 'VERIFIED'].includes(profile)) throw new Error('UNKNOWN_META_PROFILE');
-    return records.filter(r => {
+    const byField = queryCandidatesByIndex.get(records);
+    let candidates = records;
+    if (byField) {
+      let smallest = null;
+      for (const field of ['L1', 'L2', 'L3', 'L4', 'rpmL1', 'rpmL2', 'rpmL3', 'rpmL4', 'difficultyBucket']) {
+        const value = filters[field];
+        if (!known(value)) continue;
+        const indexed = byField.get(field)?.get(value) || [];
+        if (!indexed.length) return [];
+        if (!smallest || indexed.length < smallest.length) smallest = indexed;
+      }
+      const buckets = filters.difficultyBuckets;
+      if (Array.isArray(buckets) && buckets.length) {
+        const indexed = [...new Set(buckets.flatMap(value => byField.get('difficultyBucket')?.get(value) || []))];
+        if (!indexed.length) return [];
+        if (!smallest || indexed.length < smallest.length) smallest = indexed;
+      }
+      if (smallest) candidates = smallest;
+    }
+    return candidates.filter(r => {
       if (profile === 'VERIFIED' ? !r.verifiedEligible : !r.directSelectable) return false;
       for (const field of ['sourceKind', 'standardCourse', 'standardUnitKey', 'subUnitKey', 'rpmSemanticStatus',
         'storageBucketKey', 'L1', 'L2', 'L3', 'L4', 'rpmL1', 'rpmL2', 'rpmL3', 'rpmL4',
