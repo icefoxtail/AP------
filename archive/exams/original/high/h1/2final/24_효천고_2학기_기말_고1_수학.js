@@ -420,7 +420,7 @@ window.questionBank = [
       "144"
     ],
     "answer": "①",
-    "solution": "전체 배열은 $5!=120$가지이다. 여학생이 서로 이웃하지 않으려면 여학생 자리가 $(1,3,5)$일 때뿐이며 그 배열은 $3!2!=12$가지이다. 따라서 적어도 둘이 이웃하는 경우는 $120-12=108$가지이고 정답은 ①이다.",
+    "solution": "전체 $5$명을 나열하는 방법은 $5!=120$가지이다.\n여학생 중 적어도 두 명이 이웃하는 경우는 전체에서 여학생 세 명이 모두 떨어져 있는 경우를 빼면 된다.\n여학생 $3$명이 서로 이웃하지 않으려면 다섯 자리에서 $1,3,5$번째를 차지해야 한다.\n그 세 자리에 여학생을 놓는 방법은 $3!=6$가지이다.\n나머지 $2,4$번째 자리에 남학생을 놓는 방법은 $2!=2$가지이다.\n모두 떨어져 있는 경우는 $3!\\times2!=12$가지이다.\n따라서 $120-12=108$가지이고 정답은 ①이다.",
     "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
     "subUnit": "조건이 있는 순열",
     "subUnitConfidence": "candidate_evidence",
@@ -505,7 +505,7 @@ window.questionBank = [
       "제 3, 4사분면"
     ],
     "answer": "④",
-    "solution": "그래프의 수직 점근선이 y축 오른쪽에 있으므로 -c>0, 즉 c<0이다. 수평 점근선은 x축 위에 있으므로 a>0이다. 그래프의 y절편 b/c는 음수이고 c<0이므로 b>0이다.\n\n따라서 g(x)=√(cx-b)-a의 정의역은 x≤b/c<0이다. 정의역의 끝점에서는 g(b/c)=-a<0이고, x가 감소할수록 cx-b가 커져 g(x)는 증가한다. x절편은 cx-b=a²에서 x=(a²+b)/c<b/c<0이다.\n\nx<(a²+b)/c이면 x<0, g(x)>0이므로 제2사분면을 지난다. (a²+b)/c<x≤b/c이면 x<0, g(x)<0이므로 제3사분면을 지난다. 따라서 제2, 3사분면을 지나며 정답은 ④이다.",
+    "solution": "유리함수 $f(x)=\\dfrac{ax+b}{x+c}$의 그림에서 계수의 부호를 읽는다.\n수직점근선 $x=-c$가 $y$축 오른쪽에 있으므로 $c<0$이다.\n수평점근선 $y=a$가 $x$축 위쪽에 있으므로 $a>0$이다.\n$y$절편 $\\dfrac bc$가 음수이고 $c<0$이므로 $b>0$이다.\n$g(x)=\\sqrt{cx-b}-a$의 정의역에서\n$cx-b\\ge0$\n$c<0$이므로 $x\\le\\dfrac bc<0$이다.\n그래프는 $y$축의 왼쪽에만 있다.\n정의역 끝점 $x=\\dfrac bc$에서 $g(x)=-a<0$이므로 제3사분면을 지난다.\n$x$절편은 $\\sqrt{cx-b}=a$에서 구한다.\n$cx-b=a^2$\n$x=\\dfrac{a^2+b}{c}<\\dfrac bc<0$\n$x$절편 왼쪽에서는 $g(x)>0$이므로 제2사분면도 지난다.\n따라서 제2, 3사분면을 지나며 정답은 ④이다.",
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
     "subUnit": "무리함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -592,7 +592,7 @@ window.questionBank = [
       "9"
     ],
     "answer": "③",
-    "solution": "교점의 $x$좌표를 $x_1,x_2$라 하면 $\\dfrac9x=x+k$에서 $x^2+kx-9=0$이다. 두 근의 차 제곱은 $k^2+36$이다. 직선의 기울기가 1이므로 거리 $l(k)=\\sqrt2|x_1-x_2|=\\sqrt{2(k^2+36)}$. $k=0$에서 최솟값 $6\\sqrt2$이므로 정답은 ③이다.",
+    "solution": "교점의 $x$좌표를 $x_1,x_2$라 하자.\n$\\dfrac9x=x+k$\n$x^2+kx-9=0$\n근과 계수의 관계에 의해\n$x_1+x_2=-k$, $x_1x_2=-9$이다.\n$(x_1-x_2)^2=(x_1+x_2)^2-4x_1x_2$\n$=k^2+36$\n두 교점은 직선 $y=x+k$ 위에 있으므로 $y$좌표의 차도 $x_1-x_2$이다.\n$l(k)=\\sqrt{2(x_1-x_2)^2}$\n$=\\sqrt{2(k^2+36)}$\n$k^2\\ge0$이므로 $k=0$일 때 최소이고\n$l(0)=\\sqrt{72}=6\\sqrt2$\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
     "subUnit": "유리함수의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -668,7 +668,7 @@ window.questionBank = [
       "4"
     ],
     "answer": "③",
-    "solution": "$f(4)=3$, $g(3)=-3$이다. $f(x)=-3$을 푼다. $x\\ge1$에서는 $f(x)=x-1\\ge0$이므로 해가 없다. $x<1$에서는 $-x^2+4x-3=-3$, 즉 $x(x-4)=0$이고 조건을 만족하는 해는 0뿐이다. 따라서 값은 0이고 정답은 ③이다.",
+    "solution": "합성함수는 안쪽 함수부터 계산한다.\n$4\\ge1$이므로 $f(4)=4-1=3$이다.\n$g(f(4))=g(3)=\\dfrac13\\times3-4=-3$\n이제 $f^{-1}(-3)$을 구하려면 $f(x)=-3$을 풀면 된다.\n① $x\\ge1$이면 $f(x)=x-1\\ge0$이므로 해가 없다.\n② $x<1$이면\n$-x^2+4x-3=-3$\n$x^2-4x=0$\n$x(x-4)=0$\n$x=0$ 또는 $x=4$\n이 중 $x<1$을 만족하는 값은 $0$뿐이다.\n따라서 $(f^{-1}\\circ g\\circ f)(4)=0$이고 정답은 ③이다.",
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "candidate_evidence",
@@ -744,7 +744,7 @@ window.questionBank = [
       "(가): $r!$, (나): $r$, (다): ${}_{n-1}\\mathrm{C}_r$"
     ],
     "answer": "①",
-    "solution": "$n\\binom{n-1}{r-1}=\\dfrac{n!}{(r-1)!(n-r)!}=r\\dfrac{n!}{r!(n-r)!}=r\\binom nr$이므로 (가)는 $r!$. 경우의 수에서도 임원 먼저 고르면 $r\\binom nr$, 회장 먼저 고르면 $n\\binom{n-1}{r-1}$이다. 따라서 (나)는 $r-1$, (다)는 C(n-1,r-1)$이고 정답은 ①이다.",
+    "solution": "[풀이 1] 조합의 정의를 사용한다.\n$n\\times{}_{n-1}C_{r-1}$\n$=n\\times\\dfrac{(n-1)!}{(r-1)!(n-r)!}$\n$=\\dfrac{n!}{(r-1)!(n-r)!}$\n$=r\\times\\dfrac{n!}{r!(n-r)!}$\n$=r\\times{}_{n}C_r$\n그러므로 (가)는 $r!$이다.\n[풀이 2] 회장이 포함된 임원 $r$명을 고른다.\n임원을 먼저 뽑으면 $_nC_r$가지 중 회장을 $r$가지로 정하므로 $r\\times{}_{n}C_r$가지이다.\n회장을 먼저 뽑으면 $n$가지이고, 나머지 임원은 $r-1$명이다.\n그 사람들은 남은 $n-1$명 중에서 고르므로 $_{n-1}C_{r-1}$가지이다.\n따라서 (나)는 $r-1$, (다)는 $_{n-1}C_{r-1}$이다.\n두 방식은 같은 임원 구성을 세므로 결과가 같다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
     "subUnit": "조합",
     "subUnitConfidence": "candidate_evidence",
