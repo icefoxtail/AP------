@@ -36,7 +36,8 @@ function loadBank(sourceFile) {
   ctx.globalThis = ctx;
   vm.createContext(ctx);
   vm.runInContext(fs.readFileSync(full, 'utf8'), ctx, { filename: full, timeout: 3000 });
-  const bank = ctx.window.questions || ctx.window.questionBank || ctx.questions || ctx.questionBank;
+  const bank = ctx.window.questions || ctx.window.questionBank || ctx.questions || ctx.questionBank
+    || ctx.window.examData?.questions;
   if (!Array.isArray(bank)) throw new Error('questions array not found: ' + file);
   banks.set(file, bank);
   return bank;

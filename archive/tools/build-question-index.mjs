@@ -389,7 +389,8 @@ for (const file of examFiles) {
         const code = fs.readFileSync(file, 'utf8');
         report.examBytes += Buffer.byteLength(code, 'utf8');
         const context = runArchiveScript(file, code);
-        const questions = context.window.questions || context.window.questionBank || context.questions || context.questionBank;
+        const questions = context.window.questions || context.window.questionBank || context.questions || context.questionBank
+            || context.window.examData?.questions;
         if (!Array.isArray(questions)) {
             report.failures.push({ sourceFile, error: 'questions array not found' });
             continue;
