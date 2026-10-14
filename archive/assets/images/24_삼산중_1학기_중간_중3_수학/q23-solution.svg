@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
+<title id="title">차의 제곱을 넓이로 설명하기</title><desc id="desc">a×a 정사각형에서 b×b 정사각형을 빼고 남은 a×(a−b), b×(a−b) 직사각형을 재배열해 (a+b)×(a−b) 직사각형을 만든다.</desc>
+<rect width="960" height="560" fill="#fff"/>
+<style>text{font-family:'Noto Sans CJK KR','Noto Sans KR',sans-serif;fill:#17233d}.title{font-size:26px;font-weight:700}.label{font-size:18px}.small{font-size:16px}.eq{font-size:22px;font-weight:700}.blue{fill:#dceafa;stroke:#243b64;stroke-width:3}.teal{fill:#d8f2ed;stroke:#23756b;stroke-width:3}.card{fill:#f4f7fb;stroke:#d2dceb;stroke-width:2}.arrow{stroke:#536783;stroke-width:4;fill:none;stroke-linecap:round;stroke-linejoin:round}</style>
+<text class="title" x="480" y="42" text-anchor="middle">정사각형의 차를 직사각형으로 재배열</text>
+<text class="label" x="245" y="83" text-anchor="middle">a×a에서 b×b를 뺀 ㄴ자 부분</text>
+<!-- Left: an a-by-a square with a b-by-b square removed at lower right. -->
+<rect class="blue" x="115" y="120" width="260" height="170"/>
+<rect class="teal" x="115" y="290" width="170" height="90"/>
+<rect x="285" y="290" width="90" height="90" fill="#fff" stroke="#243b64" stroke-width="3" stroke-dasharray="7 6"/>
+<text class="small" x="245" y="205" text-anchor="middle">a×(a−b)</text>
+<text class="small" x="200" y="340" text-anchor="middle">b×(a−b)</text>
+<text class="small" x="330" y="340" text-anchor="middle">b×b 제외</text>
+<text class="label" x="245" y="418" text-anchor="middle">큰 정사각형: a², 빠진 정사각형: b²</text>
+<path class="arrow" d="M420 250 H515 M500 235 L516 250 L500 265"/>
+<text class="label" x="745" y="83" text-anchor="middle">작은 직사각형을 돌려 옆에 붙이기</text>
+<!-- Right: the same two pieces form an (a+b)-by-(a-b) rectangle. -->
+<rect class="blue" x="570" y="175" width="260" height="170"/>
+<rect class="teal" x="830" y="175" width="90" height="170"/>
+<text class="small" x="700" y="265" text-anchor="middle">a×(a−b)</text>
+<text class="small" x="875" y="265" text-anchor="middle">b×(a−b)</text>
+<text class="label" x="745" y="375" text-anchor="middle">가로 a+b</text>
+<text class="small" x="745" y="153" text-anchor="middle">세로 a−b</text>
+<rect class="card" x="120" y="472" width="720" height="62" rx="14"/>
+<text class="eq" x="480" y="512" text-anchor="middle">a²−b² = (a+b)(a−b)</text>
+</svg>

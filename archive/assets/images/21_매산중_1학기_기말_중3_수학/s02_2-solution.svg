@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="680" viewBox="0 0 1100 680" role="img" aria-labelledby="title desc">
+<title id="title">정오각형 별의 한 변 AP와 닮음</title>
+<desc id="desc">원래 정오각형의 점 이름 A, B, C, D, E를 유지한다. 대각선 AC와 BE의 첫 교점 P에서 별의 한 변 AP를 s라고 두고, 삼각형 ABE와 PBA의 닮음 및 삼각형 PBC의 이등변 관계로 길이를 구한다.</desc>
+<rect width="1100" height="680" fill="#fff"/>
+<text x="42" y="48" font-family="Arial,sans-serif" font-size="27" font-weight="700" fill="#1f2937">원래 정오각형의 점 이름을 그대로 쓰자</text>
+<text x="42" y="78" font-family="Arial,sans-serif" font-size="18" fill="#334155">AB = 1, 대각선의 길이 = d, 별의 한 변 AP = s</text>
+<!-- Regular pentagon: A top, B upper-left, C lower-left, D lower-right, E upper-right. -->
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M250 112 L409 228 L348 416 L152 416 L91 228 Z" stroke="#64748b" stroke-width="3"/>
+  <!-- All five diagonals, in pentagram order A-C-E-B-D-A. -->
+  <path d="M250 112 L152 416 L409 228 L91 228 L348 416 Z" stroke="#111827" stroke-width="3"/>
+  <!-- Similar triangles ABE and PBA. P is AC ∩ BE. -->
+  <path d="M250 112 L91 228 L409 228 Z" stroke="#0f766e" stroke-width="6" opacity=".9"/>
+  <path d="M250 112 L212.6 228 L91 228 Z" stroke="#c2410c" stroke-width="4" opacity=".95"/>
+  <!-- Triangle PBC used to establish PC = BC. -->
+  <path d="M212.6 228 L91 228 L152 416 Z" stroke="#2563eb" stroke-width="4" opacity=".9"/>
+</g>
+<circle cx="212.6" cy="228" r="6" fill="#c2410c"/>
+<g font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">
+  <text x="242" y="96">A</text><text x="62" y="228">B</text><text x="138" y="441">C</text><text x="347" y="441">D</text><text x="412" y="247">E</text><text x="194" y="221" font-size="18">P</text>
+</g>
+<g font-family="Arial,sans-serif" font-size="17" fill="#334155">
+  <text x="112" y="181">AB = 1</text>
+  <text x="294" y="203" fill="#0f766e">BE = d</text>
+  <text x="238" y="188" fill="#c2410c">AP = s</text>
+</g>
+<text x="70" y="490" font-family="Arial,sans-serif" font-size="16" fill="#475569">청록색: 큰 △ABE · 주황색: 작은 △PBA · 파란색: △PBC</text>
+<line x1="485" y1="88" x2="485" y2="620" stroke="#e2e8f0" stroke-width="2"/>
+<g font-family="Arial,sans-serif" fill="#1f2937">
+  <text x="520" y="115" font-size="20" font-weight="700">1. 닮은 삼각형에서 d와 s의 관계</text>
+  <text x="540" y="150" font-size="17">정오각형의 내각은 108°이고 대각선이 각을 36°와 72°로 나눈다.</text>
+  <text x="540" y="178" font-size="17">△ABE와 △PBA의 각은 각각 108°, 36°, 36°로 같다.</text>
+  <text x="540" y="206" font-size="17">따라서 △ABE ∼ △PBA.</text>
+  <text x="540" y="234" font-size="17">대응변은 BE↔BA, AB↔PB이다.</text>
+  <text x="540" y="267" font-size="20" font-weight="700" fill="#0f766e">d : 1 = 1 : s  →  ds = 1</text>
+  <text x="540" y="295" font-size="17">작은 △PBA에서 AP = PB = s이다.</text>
+
+  <text x="520" y="345" font-size="20" font-weight="700">2. 교점 주변에서 PC를 구한다</text>
+  <text x="540" y="380" font-size="17">△PBC에서 ∠BPC = ∠PBC = 72°이다.</text>
+  <text x="540" y="408" font-size="17">같은 각에 마주 보는 변이 같으므로 PC = BC = 1.</text>
+  <text x="540" y="440" font-size="17">P가 AC 위에 있고 AC는 대각선이므로</text>
+  <text x="540" y="468" font-size="18" font-weight="700" fill="#c2410c">d = AC = AP + PC = s + 1</text>
+
+  <text x="520" y="520" font-size="20" font-weight="700">3. s를 구한다</text>
+  <text x="540" y="555" font-size="19">ds = 1, d = s + 1 이므로 s(s + 1) = 1.</text>
+  <text x="540" y="585" font-size="19">s² + s − 1 = 0. 길이 s는 양수이다.</text>
+  <text x="540" y="620" font-size="21" font-weight="700" fill="#0f766e">s = (√5 − 1)/2 cm</text>
+</g>
+</svg>

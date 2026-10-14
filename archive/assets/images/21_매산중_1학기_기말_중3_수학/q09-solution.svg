@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="540" viewBox="0 0 1000 540" role="img" aria-labelledby="title desc">
+<title id="title">도로를 제외한 땅의 넓이</title>
+<desc id="desc">15미터 곱하기 10미터 땅에서 폭 x인 가로와 세로 도로를 제외한 네 직사각형을 모으면 15 빼기 x, 10 빼기 x인 직사각형이 된다.</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#425466"/></marker></defs>
+<rect width="1000" height="540" fill="#fff"/>
+<text x="48" y="48" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#1f2937">도로를 뺀 네 땅 조각의 넓이</text>
+<text x="60" y="91" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#334155">원래 땅: 15 m × 10 m</text>
+<text x="585" y="91" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#334155">네 조각을 붙여 모은 모습</text>
+<!-- original 15 by 10 rectangle and crossing roads -->
+<rect x="72" y="135" width="380" height="250" rx="2" fill="#f7e8bd" stroke="#334155" stroke-width="3"/>
+<rect x="72" y="260" width="380" height="36" fill="#cbd5e1"/>
+<rect x="282" y="135" width="36" height="250" fill="#cbd5e1"/>
+<line x1="72" y1="123" x2="452" y2="123" stroke="#425466" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<text x="249" y="116" font-family="Arial,sans-serif" font-size="19" fill="#334155">15 m</text>
+<line x1="60" y1="135" x2="60" y2="385" stroke="#425466" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<text x="20" y="241" font-family="Arial,sans-serif" font-size="19" fill="#334155" transform="rotate(-90 20 265)">10 m</text>
+<line x1="282" y1="248" x2="318" y2="248" stroke="#0f172a" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<text x="291" y="236" font-family="Arial,sans-serif" font-size="18" font-style="italic" fill="#0f172a">x</text>
+<text x="100" y="202" font-family="Arial,sans-serif" font-size="17" fill="#5b4a24">남은 땅</text>
+<text x="307" y="317" font-family="Arial,sans-serif" font-size="17" fill="#5b4a24">남은 땅</text>
+<text x="111" y="428" font-family="Arial,sans-serif" font-size="16" fill="#475569">회색 띠가 도로이고, 노란 네 직사각형이 남은 땅</text>
+<!-- rearrangement arrow -->
+<path d="M485 255 H548" stroke="#425466" stroke-width="4" marker-end="url(#arrow)"/>
+
+<!-- rearranged land pieces -->
+<rect x="600" y="135" width="344" height="214" fill="#f7e8bd" stroke="#334155" stroke-width="3"/>
+<line x1="810" y1="135" x2="810" y2="349" stroke="#9a7b34" stroke-width="2" stroke-dasharray="7 5"/>
+<line x1="600" y1="260" x2="944" y2="260" stroke="#9a7b34" stroke-width="2" stroke-dasharray="7 5"/>
+<line x1="600" y1="123" x2="944" y2="123" stroke="#425466" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<text x="731" y="116" font-family="Arial,sans-serif" font-size="19" fill="#334155">15 − x</text>
+<line x1="588" y1="135" x2="588" y2="349" stroke="#425466" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<text x="548" y="241" font-family="Arial,sans-serif" font-size="19" fill="#334155" transform="rotate(-90 548 265)">10 − x</text>
+<text x="641" y="204" font-family="Arial,sans-serif" font-size="16" fill="#5b4a24">땅 조각</text>
+<text x="833" y="204" font-family="Arial,sans-serif" font-size="16" fill="#5b4a24">땅 조각</text>
+<text x="641" y="314" font-family="Arial,sans-serif" font-size="16" fill="#5b4a24">땅 조각</text>
+<text x="833" y="314" font-family="Arial,sans-serif" font-size="16" fill="#5b4a24">땅 조각</text>
+<text x="600" y="390" font-family="Arial,sans-serif" font-size="18" fill="#334155">넓이 = (15 − x)(10 − x) = 84</text>
+<text x="72" y="457" font-family="Arial,sans-serif" font-size="15" fill="#64748b">재배치도는 넓이 보존을 설명하는 모식도이며 위치 비율은 원문과 다를 수 있음</text>
+<text x="72" y="487" font-family="Arial,sans-serif" font-size="18" fill="#334155">(15 − x)(10 − x) = 84 → x² − 25x + 66 = 0 → (x − 3)(x − 22) = 0</text>
+<text x="72" y="519" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#0f766e">폭은 10 m보다 작으므로 x = 3 m</text>
+</svg>
