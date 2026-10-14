@@ -2203,16 +2203,43 @@ function compactJournalUnitText(text) {
     return String(text || '').replace(/\s+/g, '').trim();
 }
 
-function formatJournalProgressLine(progress, unitText) {
+function formatJournalLegacyProgressLine(progress, unitText) {
     const title = String(progress?.textbook_title_snapshot || '교재').trim() || '교재';
-    const progressText = String(progress?.progress_text || '').trim() || '(기록 없음)';
+    const progressText = String(progress?.progress_text || '').trim();
     const compactUnit = compactJournalUnitText(unitText);
+    const detail = [compactUnit, progressText].filter(Boolean).join(' · ');
+    return detail ? `  * ${title}: ${detail}` : '';
+}
 
-    if (compactUnit) {
-        return `  * ${title} ${compactUnit}-${progressText}`;
+function dashboardGetJournalTextbookTitles(classId, dateStr, dailyProgress) {
+    const cid = String(classId || '');
+    const targetDate = String(dateStr || '').slice(0, 10);
+    const titles = [];
+    const seen = new Set();
+    const addTitle = value => {
+        const title = String(value || '').trim();
+        if (title && !seen.has(title)) {
+            seen.add(title);
+            titles.push(title);
+        }
+    };
+    (state.db.class_textbooks || [])
+        .filter(tb => {
+            if (String(tb?.class_id || '') !== cid) return false;
+            if (tb?.start_date && String(tb.start_date).slice(0, 10) > targetDate) return false;
+            if (tb?.end_date && String(tb.end_date).slice(0, 10) < targetDate) return false;
+            return tb?.status === 'active' || (tb?.status === 'completed' && !!tb?.end_date);
+        })
+        .forEach(tb => addTitle(tb.title));
+
+    if (titles.length === 0) {
+        (Array.isArray(dailyProgress) ? dailyProgress : []).forEach(progress => addTitle(progress?.textbook_title_snapshot));
     }
-
-    return `  * ${title}: ${progressText}`;
+    if (titles.length === 0) {
+        const cls = (state.db.classes || []).find(item => String(item?.id || '') === cid);
+        addTitle(cls?.textbook);
+    }
+    return titles;
 }
 
 function dashboardGetJournalProgressCache() {
@@ -2377,13 +2404,20 @@ function dashboardBuildClassJournalProgress(classId, dateStr, exactRecord = null
     const persistent = dashboardGetJournalPersistentProgress(classId, dateStr);
     const persistentLines = dashboardFormatPersistentProgressLines(persistent);
     const dailyProgressState = dashboardGetJournalDailyProgressState(classId, dateStr, exactRecord);
+    const textbooks = dashboardGetJournalTextbookTitles(classId, dateStr, dailyProgressState.progress);
     const lines = persistentLines.slice();
 
-    dailyProgressState.progress.forEach(progress => {
-        lines.push(formatJournalProgressLine(progress, persistentLines.length > 0 ? '' : noteData.units));
-    });
+    // 진도관리에서 고른 현재 단원이 있으면 별도 교재 페이지 진도는 중복 표시하지 않는다.
+    if (lines.length === 0) {
+        dailyProgressState.progress.forEach(progress => {
+            const line = formatJournalLegacyProgressLine(progress, noteData.units);
+            if (line) lines.push(line);
+        });
+        if (lines.length === 0 && noteData.units) lines.push(`  * ${noteData.units}`);
+    }
 
     return {
+        textbooks,
         lines,
         note: noteData.note,
         loadFailed: !!persistent?.loadFailed && lines.length === 0
@@ -2405,14 +2439,16 @@ function dashboardGetJournalSectionRanges(lines) {
     return ranges;
 }
 
-function dashboardGetJournalProgressBlock(lines, start, end) {
+function dashboardGetJournalManagedBlocks(lines, start, end) {
+    const blocks = [];
     for (let index = start + 1; index < end; index += 1) {
-        if (!/^- 진도:/.test(String(lines[index] || ''))) continue;
+        if (!/^- (교재|진도):/.test(String(lines[index] || ''))) continue;
         let blockEnd = index + 1;
         while (blockEnd < end && /^\s+\*/.test(String(lines[blockEnd] || ''))) blockEnd += 1;
-        return { start: index, end: blockEnd, lines: lines.slice(index, blockEnd) };
+        blocks.push({ start: index, end: blockEnd, lines: lines.slice(index, blockEnd) });
+        index = blockEnd - 1;
     }
-    return null;
+    return blocks;
 }
 
 function dashboardUpgradeJournalProgressPlaceholders(existingContent, generatedContent) {
@@ -2421,19 +2457,19 @@ function dashboardUpgradeJournalProgressPlaceholders(existingContent, generatedC
     const generatedBlocks = new Map();
 
     dashboardGetJournalSectionRanges(generatedLines).forEach(section => {
-        const block = dashboardGetJournalProgressBlock(generatedLines, section.start, section.end);
-        if (!block || block.lines.length < 2 || block.lines[0] !== '- 진도:') return;
-        generatedBlocks.set(section.header, block.lines);
+        const blocks = dashboardGetJournalManagedBlocks(generatedLines, section.start, section.end);
+        if (blocks.length === 0) return;
+        generatedBlocks.set(section.header, blocks.flatMap(block => block.lines));
     });
 
-    const existingSections = dashboardGetJournalSectionRanges(existingLines).slice().reverse();
-    existingSections.forEach(section => {
+    dashboardGetJournalSectionRanges(existingLines).slice().reverse().forEach(section => {
         const replacement = generatedBlocks.get(section.header);
         if (!replacement) return;
-        const block = dashboardGetJournalProgressBlock(existingLines, section.start, section.end);
-        if (!block) return;
-        // Editable journals take their progress block from 진도관리; preserve every other teacher-written line.
-        existingLines.splice(block.start, block.end - block.start, ...replacement);
+        const blocks = dashboardGetJournalManagedBlocks(existingLines, section.start, section.end);
+        if (blocks.length === 0) return;
+        // 임시저장 일지는 자동 교재/진도 블록만 갱신하고 교사 메모를 보존한다.
+        blocks.slice().reverse().forEach(block => existingLines.splice(block.start, block.end - block.start));
+        existingLines.splice(blocks[0].start, 0, ...replacement);
     });
 
     return existingLines.join('\n');
@@ -2723,6 +2759,9 @@ function buildJournalContent(dateStr) {
                 String(r.class_id) === String(cls.id) && String(r.date || '') === String(targetDate)
             ) || null;
             const progressState = dashboardBuildClassJournalProgress(cls.id, targetDate, dailyRecord);
+            if (progressState.textbooks.length > 0) {
+                text += `- 교재: ${progressState.textbooks.join(', ')}\n`;
+            }
             if (progressState.lines.length > 0) {
                 text += `- 진도:\n`;
                 progressState.lines.forEach(line => {
@@ -2731,7 +2770,7 @@ function buildJournalContent(dateStr) {
             } else if (progressState.loadFailed) {
                 text += `- 진도: (불러오기 실패)\n`;
             } else {
-                text += `- 진도: (기록 없음)\n`;
+                text += `- 진도:\n`;
             }
 
             text = appendJournalNote(text, progressState.note);

@@ -165,6 +165,87 @@ test('editable draft refreshes stale generated progress while preserving teacher
   assert.match(refreshed, /- 특이사항: 직접 적은 메모/);
 });
 
+test('journal lists the textbook above its canonical progress without empty record text', async () => {
+  const { context } = makeContext(async () => ({
+    success: true,
+    snapshot: { id: 's', effective_date: '2026-10-01' },
+    items: [
+      { snapshot_id: 's', curriculum_key: '2022', course_key: 'M1-2', canonical_path_key: 'p1', l1_snapshot: '입체도형', l2_snapshot: '입체도형의 겉넓이와 부피', sort_order: 1 }
+    ]
+  }));
+  context.state.db.class_textbooks = [
+    { id: 'tb1', class_id: 'c1', title: '개념유형 1-2', status: 'active', start_date: '2026-09-01' }
+  ];
+  context.state.db.class_daily_records = [{ id: 'd1', class_id: 'c1', date: '2026-10-01' }];
+  context.state.db.class_daily_progress = [
+    { record_id: 'd1', textbook_id: 'tb1', textbook_title_snapshot: '개념유형 1-2', progress_text: '' }
+  ];
+
+  await context.dashboardPrimeJournalProgressForDate('2026-10-01', [{ id: 'c1' }]);
+  const content = context.buildJournalContent('2026-10-01');
+  assert.match(content, /- 교재: 개념유형 1-2\n- 진도:\n/);
+  assert.match(content, /입체도형의 겉넓이와 부피/);
+  assert.equal((content.match(/개념유형 1-2/g) || []).length, 1);
+  assert.doesNotMatch(content, /\(기록 없음\)/);
+});
+
+test('registered textbook appears even with no separate progress record', async () => {
+  const { context } = makeContext(async () => ({ success: true, snapshot: null, items: [] }));
+  context.state.db.class_textbooks = [
+    { id: 'tb1', class_id: 'c1', title: '개념유형 1-2', status: 'active', start_date: '2026-09-01' },
+    { id: 'future', class_id: 'c1', title: '다음 학기 교재', status: 'active', start_date: '2026-10-03' }
+  ];
+
+  await context.dashboardPrimeJournalProgressForDate('2026-10-01', [{ id: 'c1' }]);
+  const content = context.buildJournalContent('2026-10-01');
+  assert.match(content, /- 교재: 개념유형 1-2\n- 진도:\n/);
+  assert.doesNotMatch(content, /다음 학기 교재|\(기록 없음\)/);
+});
+
+test('legacy page progress remains visible only when canonical progress is absent', async () => {
+  const { context } = makeContext(async () => ({ success: true, snapshot: null, items: [] }));
+  context.state.db.class_daily_records = [{ id: 'd1', class_id: 'c1', date: '2026-10-01' }];
+  context.state.db.class_daily_progress = [
+    { record_id: 'd1', textbook_title_snapshot: '개념유형 1-2', progress_text: 'p.10~25' }
+  ];
+
+  await context.dashboardPrimeJournalProgressForDate('2026-10-01', [{ id: 'c1' }]);
+  const content = context.buildJournalContent('2026-10-01');
+  assert.match(content, /- 교재: 개념유형 1-2\n- 진도:\n  \* 개념유형 1-2: p\.10~25/);
+  assert.doesNotMatch(content, /\(기록 없음\)/);
+});
+
+test('old draft migrates textbook out of the progress block without losing teacher notes', async () => {
+  const { context } = makeContext(async () => ({
+    success: true,
+    snapshot: { id: 's', effective_date: '2026-10-01' },
+    items: [{ snapshot_id: 's', curriculum_key: '2022', course_key: 'M1-2', canonical_path_key: 'p1', sort_order: 0 }]
+  }));
+  context.state.db.class_textbooks = [
+    { id: 'tb1', class_id: 'c1', title: '개념유형 1-2', status: 'active', start_date: '2026-09-01' }
+  ];
+  await context.dashboardPrimeJournalProgressForDate('2026-10-01', [{ id: 'c1' }]);
+  const generated = context.buildJournalContent('2026-10-01');
+  const draft = [
+    '[AP Math 운영 일지 - 2026-10-01]',
+    '작성자: 교사',
+    '',
+    '■ 중1A반',
+    '- 출석: 6/6',
+    '- 숙제: 6/6',
+    '- 진도:',
+    '  * 2022 개정 · 중1 과정 · 2학기: 이전 단원',
+    '  * 개념유형 1-2: (기록 없음)',
+    '- 특이사항: 학생별 메모 유지',
+    ''
+  ].join('\n');
+  const refreshed = context.dashboardUpgradeJournalProgressPlaceholders(draft, generated);
+  assert.match(refreshed, /- 교재: 개념유형 1-2\n- 진도:\n/);
+  assert.doesNotMatch(refreshed, /이전 단원|\(기록 없음\)/);
+  assert.match(refreshed, /- 특이사항: 학생별 메모 유지/);
+  assert.equal(context.dashboardUpgradeJournalProgressPlaceholders(refreshed, generated), refreshed);
+});
+
 test('force refresh bypasses stale journal progress cache', async () => {
   let callNo = 0;
   const { context, calls } = makeContext(async () => {
@@ -207,3 +288,4 @@ assert.match(source, /await dashboardPrimeJournalProgressForDate\(targetDate, jo
 assert.match(source, /async function openTodayCloseModal\(step = 1\)/);
 assert.match(source, /dashboardGetJournalClassRows\(today\)/);
 assert.doesNotMatch(source, /- 진도: \(수업 기록 미입력\)/);
+assert.doesNotMatch(source, /- 진도: \(기록 없음\)/);
