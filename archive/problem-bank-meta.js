@@ -9,6 +9,8 @@
   const FIELDS = Object.freeze(['rpmL1', 'rpmL2', 'rpmL3', 'rpmL4',
     'secondaryConceptKeys', 'crossConceptKeys', 'conditionKeys', 'integrationPattern',
     'problemTypeKey', 'templateKey', 'difficultyBucket', 'nativeCurriculum', 'nativeL1', 'nativeL2', 'nativeL3', 'nativeL4']);
+  const GENERATED_FIELDS = Object.freeze(FIELDS.filter(field =>
+    !['nativeCurriculum', 'nativeL1', 'nativeL2', 'nativeL3', 'nativeL4'].includes(field)));
   const own = (o, k) => Object.prototype.hasOwnProperty.call(o || {}, k);
   const known = v => v !== undefined && v !== null && v !== '' && v !== 'UNKNOWN';
   const bucket = v => Number.isInteger(v) && v >= 1 && v <= 5 ? v : null;
@@ -346,8 +348,9 @@
         (record.sourceQid ?? consumer?.sourceQid) != null ? 'RECORDED' : 'UNKNOWN',
     } : {sourceFile: record.sourceFile ?? null, sourceOrdinal: record.sourceOrdinal ?? null,
       sourceFingerprint: record.sourceFingerprint ?? null, status: record.sourceFingerprint ? 'RECORDED' : 'UNKNOWN'};
-    view.metaCompleteness = FIELDS.every(k => known(view[k])) &&
-      !Object.values(view.metaStatus).some(status => ['STALE', 'INVALID', 'EVIDENCE_DEBT', 'HOLD', 'PENDING'].includes(status))
+    const completenessFields = generated ? GENERATED_FIELDS : FIELDS;
+    view.metaCompleteness = completenessFields.every(k => known(view[k])) &&
+      !completenessFields.some(field => ['STALE', 'INVALID', 'EVIDENCE_DEBT', 'HOLD', 'PENDING'].includes(view.metaStatus[field]))
       ? 'RECORDED_COMPLETE' : 'EVIDENCE_DEBT';
     const browse = generated && record.metaBrowsePath;
     if (browse?.status === 'EXACT_AUTHORITY_ALIAS' &&
@@ -364,8 +367,8 @@
       verification?.reviewEvidenceSha256 === record.metaReviewEvidenceSha256;
     view.verifiedEligible = view.directSelectable && view.metaCompleteness === 'RECORDED_COMPLETE' &&
       verification?.status === 'VERIFIED_CURRENT_SOURCE' && verification?.sourceBound === true &&
-      verification?.reviewBytesBound === true && verificationBindingsCurrent && !Object.values(view.metaStatus)
-        .some(s => ['UNKNOWN', 'STALE', 'INVALID', 'EVIDENCE_DEBT', 'HOLD', 'PENDING'].includes(s));
+      verification?.reviewBytesBound === true && verificationBindingsCurrent && !completenessFields
+        .some(field => ['UNKNOWN', 'STALE', 'INVALID', 'EVIDENCE_DEBT', 'HOLD', 'PENDING'].includes(view.metaStatus[field]));
     view.metaViewVersion = VERSION;
     return view;
   }
