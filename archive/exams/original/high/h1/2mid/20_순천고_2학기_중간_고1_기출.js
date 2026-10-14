@@ -31,24 +31,15 @@ window.questionBank = [
     "category": "평면좌표",
     "sourceQid": 1,
     "sourceJsPath": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
-    "provenance": {
-      "kind": "ORIGINAL_SOURCE_TRANSCRIPTION",
-      "sourceQuestionUid": "qid_v1_0af956bab1b54615e95739dc59f33ffaafc6e92594fa635db3e7ecfedb6a961b",
-      "sourceQid": 1,
-      "sourcePdfSha256": "e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6",
-      "sourceIntakeEvidenceRef": "archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourceIntakeEvidenceSha256": "3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf",
-      "baselineJsSha256": "1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c"
-    },
+    "provenance": {"kind":"ORIGINAL_SOURCE_TRANSCRIPTION","sourceQuestionUid":"qid_v1_0af956bab1b54615e95739dc59f33ffaafc6e92594fa635db3e7ecfedb6a961b","sourceQid":1,"sourcePdfSha256":"e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6","sourceIntakeEvidenceRef":"archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json","sourceIntakeEvidenceSha256":"3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf","baselineJsSha256":"1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c","sourceId":"2020|순천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js","sourceOrdinal":1,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
     "problemTypeKey": "PT_COORD_DISTANCE_OPTIMIZATION",
     "templateKey": "TPL_DISTANCE_SQSUM_MIN",
-    "crossConceptKeys": [
-      "CC_DISTANCE_TWO_POINTS"
-    ],
+    "crossConceptKeys": ["CC_DISTANCE_TWO_POINTS"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 점 P의 좌표를 P(t,0)이라 두면 x축 위의 점이라는 조건이 자동으로 반영된다. 두 거리의 제곱을 좌표로 나타내면 $AP²=(t−1)²+(0−2)²=(t−1)²+4,$ BP²=(t+3)²+(0−3)²=(t+3)²+9이다. 따라서…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
@@ -58,7 +49,10 @@ window.questionBank = [
     "solutionImageSize": "full",
     "questionUid": "qid_v1_0af956bab1b54615e95739dc59f33ffaafc6e92594fa635db3e7ecfedb6a961b",
     "originalCategory": "평면좌표",
-    "layoutTag": "grid"
+    "layoutTag": "grid",
+    "sourceOrdinal": 1,
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+  
   },
   {
     "id": 2,
@@ -89,24 +83,15 @@ window.questionBank = [
     "category": "평면좌표",
     "sourceQid": 2,
     "sourceJsPath": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
-    "provenance": {
-      "kind": "ORIGINAL_SOURCE_TRANSCRIPTION",
-      "sourceQuestionUid": "qid_v1_b7ba3b5ec38d7e9dfc9ec1057cdb5d793d9fd0b8a21130dd42b15342bd020d83",
-      "sourceQid": 2,
-      "sourcePdfSha256": "e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6",
-      "sourceIntakeEvidenceRef": "archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourceIntakeEvidenceSha256": "3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf",
-      "baselineJsSha256": "1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c"
-    },
+    "provenance": {"kind":"ORIGINAL_SOURCE_TRANSCRIPTION","sourceQuestionUid":"qid_v1_b7ba3b5ec38d7e9dfc9ec1057cdb5d793d9fd0b8a21130dd42b15342bd020d83","sourceQid":2,"sourcePdfSha256":"e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6","sourceIntakeEvidenceRef":"archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json","sourceIntakeEvidenceSha256":"3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf","baselineJsSha256":"1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c","sourceId":"2020|순천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js","sourceOrdinal":2,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
     "problemTypeKey": "PT_COORD_FIGURE_PROPERTIES",
     "templateKey": "TPL_FIGURE_PARALLELOGRAM",
-    "crossConceptKeys": [
-      "CC_PARALLELOGRAM_PROPERTIES"
-    ],
+    "crossConceptKeys": ["CC_PARALLELOGRAM_PROPERTIES"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: ABCD가 평행사변형이면 대각선의 중점이 서로 같다. 따라서 A+C=B+D이고 D=A+C−B=(0,6)+(7,5)−(6,−2)=(1,13)이다. 그러므로 a+b=1+13=14이고 정답은 ③이다.",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
@@ -116,7 +101,10 @@ window.questionBank = [
     "questionUid": "qid_v1_b7ba3b5ec38d7e9dfc9ec1057cdb5d793d9fd0b8a21130dd42b15342bd020d83",
     "originalCategory": "평면좌표",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "sourceOrdinal": 2,
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+  
   },
   {
     "id": 3,
@@ -147,24 +135,15 @@ window.questionBank = [
     "category": "평면좌표",
     "sourceQid": 3,
     "sourceJsPath": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
-    "provenance": {
-      "kind": "ORIGINAL_SOURCE_TRANSCRIPTION",
-      "sourceQuestionUid": "qid_v1_f7aa20f2afb975b58b4466dafca915f06c6e66906c0eb8da4c41d43f09f2cddf",
-      "sourceQid": 3,
-      "sourcePdfSha256": "e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6",
-      "sourceIntakeEvidenceRef": "archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourceIntakeEvidenceSha256": "3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf",
-      "baselineJsSha256": "1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c"
-    },
+    "provenance": {"kind":"ORIGINAL_SOURCE_TRANSCRIPTION","sourceQuestionUid":"qid_v1_f7aa20f2afb975b58b4466dafca915f06c6e66906c0eb8da4c41d43f09f2cddf","sourceQid":3,"sourcePdfSha256":"e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6","sourceIntakeEvidenceRef":"archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json","sourceIntakeEvidenceSha256":"3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf","baselineJsSha256":"1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c","sourceId":"2020|순천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js","sourceOrdinal":3,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
     "problemTypeKey": "PT_COORD_CENTROID",
     "templateKey": "TPL_CENTROID_APPLICATION",
-    "crossConceptKeys": [
-      "CC_TRIANGLE_CENTROID"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 무게중심의 좌표는 세 꼭짓점 좌표의 평균이다. ( (a+b+2)/3, (5−2+ab)/3 )=(4,2)이므로 a+b+2=12, ab+3=6이다. 따라서 a+b=10, ab=3이다. a²+b²=(a+b)²−2ab=10²−2·3=94이다. 그러므로 정답은 ①이다.",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
@@ -174,7 +153,10 @@ window.questionBank = [
     "questionUid": "qid_v1_f7aa20f2afb975b58b4466dafca915f06c6e66906c0eb8da4c41d43f09f2cddf",
     "originalCategory": "평면좌표",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "sourceOrdinal": 3,
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+  
   },
   {
     "id": 4,
@@ -205,15 +187,7 @@ window.questionBank = [
     "category": "직선의 방정식",
     "sourceQid": 4,
     "sourceJsPath": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
-    "provenance": {
-      "kind": "ORIGINAL_SOURCE_TRANSCRIPTION",
-      "sourceQuestionUid": "qid_v1_f7ffbcae3f37ef4fc780e4069850e764ea19793b23c4823ca3c618d2ca5fbf8a",
-      "sourceQid": 4,
-      "sourcePdfSha256": "e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6",
-      "sourceIntakeEvidenceRef": "archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourceIntakeEvidenceSha256": "3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf",
-      "baselineJsSha256": "1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c"
-    },
+    "provenance": {"kind":"ORIGINAL_SOURCE_TRANSCRIPTION","sourceQuestionUid":"qid_v1_f7ffbcae3f37ef4fc780e4069850e764ea19793b23c4823ca3c618d2ca5fbf8a","sourceQid":4,"sourcePdfSha256":"e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6","sourceIntakeEvidenceRef":"archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json","sourceIntakeEvidenceSha256":"3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf","baselineJsSha256":"1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c","sourceId":"2020|순천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js","sourceOrdinal":4,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
     "problemTypeKey": "PT_LINE_EQUATION",
     "templateKey": "TPL_LINE_MULTI_CONDITION",
     "crossConceptKeys": [],
@@ -221,6 +195,7 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: A와 B를 지나는 직선의 기울기는 (5−(−1))/(1−(−2))=6/3=2이다. A를 지나므로 직선의 방정식은 y+1=2(x+2), 즉 y=2x+3이다. C(k,k+2)가 이 직선 위에 있으려면 k+2=2k+3이어야 한다. 따라서 k=−1이고 정답은 ②이다.",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
@@ -230,7 +205,10 @@ window.questionBank = [
     "questionUid": "qid_v1_f7ffbcae3f37ef4fc780e4069850e764ea19793b23c4823ca3c618d2ca5fbf8a",
     "originalCategory": "직선의 방정식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "sourceOrdinal": 4,
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+  
   },
   {
     "id": 5,
@@ -263,24 +241,15 @@ window.questionBank = [
     "category": "직선의 방정식",
     "sourceQid": 5,
     "sourceJsPath": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
-    "provenance": {
-      "kind": "ORIGINAL_SOURCE_TRANSCRIPTION",
-      "sourceQuestionUid": "qid_v1_c858a679027a36c672c5845e9c6799133a309880fd4505d21fe4384b29b8744c",
-      "sourceQid": 5,
-      "sourcePdfSha256": "e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6",
-      "sourceIntakeEvidenceRef": "archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourceIntakeEvidenceSha256": "3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf",
-      "baselineJsSha256": "1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c"
-    },
+    "provenance": {"kind":"ORIGINAL_SOURCE_TRANSCRIPTION","sourceQuestionUid":"qid_v1_c858a679027a36c672c5845e9c6799133a309880fd4505d21fe4384b29b8744c","sourceQid":5,"sourcePdfSha256":"e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6","sourceIntakeEvidenceRef":"archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json","sourceIntakeEvidenceSha256":"3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf","baselineJsSha256":"1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c","sourceId":"2020|순천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js","sourceOrdinal":5,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
     "problemTypeKey": "PT_AREA_BISECTING_LINE",
     "templateKey": "TPL_AREA_BISECT_TRIANGLE",
-    "crossConceptKeys": [
-      "CC_TRIANGLE_AREA"
-    ],
+    "crossConceptKeys": ["CC_TRIANGLE_AREA"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 삼각형의 꼭짓점은 $O(0,0)$, $A(0,3)$, $B(3,0)$이므로 전체 넓이는 $\\dfrac92$이고 절반은 $\\dfrac94$이다. 직선은 $D=(0,1)$을 지난다. $k=1$이면 직선이 $x=0$과 겹쳐 삼각형 내부를 나누지 않는다. $k 1$이면…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
@@ -290,7 +259,10 @@ window.questionBank = [
     "questionUid": "qid_v1_c858a679027a36c672c5845e9c6799133a309880fd4505d21fe4384b29b8744c",
     "originalCategory": "직선의 방정식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "sourceOrdinal": 5,
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+  
   },
   {
     "id": 6,
@@ -321,24 +293,15 @@ window.questionBank = [
     "category": "직선의 방정식",
     "sourceQid": 6,
     "sourceJsPath": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
-    "provenance": {
-      "kind": "ORIGINAL_SOURCE_TRANSCRIPTION",
-      "sourceQuestionUid": "qid_v1_667732b49128ccbea318d56d75c9186c6c70fcc0187e4d3051bc6b26e339497e",
-      "sourceQid": 6,
-      "sourcePdfSha256": "e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6",
-      "sourceIntakeEvidenceRef": "archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourceIntakeEvidenceSha256": "3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf",
-      "baselineJsSha256": "1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c"
-    },
+    "provenance": {"kind":"ORIGINAL_SOURCE_TRANSCRIPTION","sourceQuestionUid":"qid_v1_667732b49128ccbea318d56d75c9186c6c70fcc0187e4d3051bc6b26e339497e","sourceQid":6,"sourcePdfSha256":"e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6","sourceIntakeEvidenceRef":"archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json","sourceIntakeEvidenceSha256":"3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf","baselineJsSha256":"1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c","sourceId":"2020|순천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js","sourceOrdinal":6,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
     "problemTypeKey": "PT_POINT_LINE_DISTANCE",
     "templateKey": "TPL_DISTANCE_PARALLEL_LINES",
-    "crossConceptKeys": [
-      "CC_PARALLEL_LINE_DISTANCE"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 두 직선은 x, y의 계수가 같으므로 서로 평행하다. 두 직선의 법선 방향 계수는 3과 −1이고 상수항의 차는 10이다. 평행한 직선 3x−y−14=0과 3x−y−4=0 사이의 거리는 |−14−(−4)|/√(3²+(−1)²)=10/√10=√10이다. 그러므로 정답은 ④이다.",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
@@ -348,7 +311,10 @@ window.questionBank = [
     "questionUid": "qid_v1_667732b49128ccbea318d56d75c9186c6c70fcc0187e4d3051bc6b26e339497e",
     "originalCategory": "직선의 방정식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "sourceOrdinal": 6,
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+  
   },
   {
     "id": 7,
@@ -380,25 +346,15 @@ window.questionBank = [
     "category": "원의 방정식",
     "sourceQid": 7,
     "sourceJsPath": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
-    "provenance": {
-      "kind": "ORIGINAL_SOURCE_TRANSCRIPTION",
-      "sourceQuestionUid": "qid_v1_b9d7c56f1c85edfc176bd0df233f65447a5e41c29826c308063848f84209a523",
-      "sourceQid": 7,
-      "sourcePdfSha256": "e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6",
-      "sourceIntakeEvidenceRef": "archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourceIntakeEvidenceSha256": "3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf",
-      "baselineJsSha256": "1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c"
-    },
+    "provenance": {"kind":"ORIGINAL_SOURCE_TRANSCRIPTION","sourceQuestionUid":"qid_v1_b9d7c56f1c85edfc176bd0df233f65447a5e41c29826c308063848f84209a523","sourceQid":7,"sourcePdfSha256":"e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6","sourceIntakeEvidenceRef":"archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json","sourceIntakeEvidenceSha256":"3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf","baselineJsSha256":"1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c","sourceId":"2020|순천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js","sourceOrdinal":7,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_POINT_LINE_DISTANCE",
-    "crossConceptKeys": [
-      "CC_CIRCLE_CENTER_RADIUS",
-      "CC_POINT_LINE_DISTANCE"
-    ],
+    "crossConceptKeys": ["CC_CIRCLE_CENTER_RADIUS"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: 직선 $l:y=x+1$ 위의 점 $H$를 $H=(u,u+1)$이라 하자. $P=(x,y)$에서 $H$에 내린 수선의 기울기는 $−1$이므로 $y−(u+1)=−(x−u)$이고, 따라서 $u=\\dfrac{x+y−1}{2}$이다. 두 수선의 발 사이 거리는…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
@@ -408,7 +364,10 @@ window.questionBank = [
     "questionUid": "qid_v1_b9d7c56f1c85edfc176bd0df233f65447a5e41c29826c308063848f84209a523",
     "originalCategory": "원의 방정식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "sourceOrdinal": 7,
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+  
   },
   {
     "id": 8,
@@ -440,25 +399,15 @@ window.questionBank = [
     "category": "도형의 이동",
     "sourceQid": 8,
     "sourceJsPath": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
-    "provenance": {
-      "kind": "ORIGINAL_SOURCE_TRANSCRIPTION",
-      "sourceQuestionUid": "qid_v1_2f1dd151ddbde439766f5119aa5823d85d152e5949987dbdb5a099a8a4f5cbc6",
-      "sourceQid": 8,
-      "sourcePdfSha256": "e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6",
-      "sourceIntakeEvidenceRef": "archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourceIntakeEvidenceSha256": "3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf",
-      "baselineJsSha256": "1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c"
-    },
+    "provenance": {"kind":"ORIGINAL_SOURCE_TRANSCRIPTION","sourceQuestionUid":"qid_v1_2f1dd151ddbde439766f5119aa5823d85d152e5949987dbdb5a099a8a4f5cbc6","sourceQid":8,"sourcePdfSha256":"e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6","sourceIntakeEvidenceRef":"archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json","sourceIntakeEvidenceSha256":"3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf","baselineJsSha256":"1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c","sourceId":"2020|순천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js","sourceOrdinal":8,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
     "problemTypeKey": "PT_MOVE_LINE_REFLECTION",
     "templateKey": "TT_LINE_REFLECTION_EQUATION",
-    "crossConceptKeys": [
-      "CC_REFLECTION",
-      "CC_CIRCLE_CENTER_RADIUS"
-    ],
+    "crossConceptKeys": ["CC_CIRCLE_CENTER_RADIUS"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 직선 x−y−2=0을 y=x에 대하여 대칭이동하면 x와 y를 서로 바꾸어 y−x−2=0, 즉 x−y+2=0이 된다. 원이 직선에 의해 넓이가 이등분되려면 직선이 원의 중심을 지나야 한다. x²+y²+ax−6y+6=0을 완전제곱하면 (x+a/2)²+(y−3)²=a²/4+3이므로",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
@@ -468,7 +417,10 @@ window.questionBank = [
     "questionUid": "qid_v1_2f1dd151ddbde439766f5119aa5823d85d152e5949987dbdb5a099a8a4f5cbc6",
     "originalCategory": "도형의 이동",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "sourceOrdinal": 8,
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+  
   },
   {
     "id": 9,
@@ -500,24 +452,15 @@ window.questionBank = [
     "category": "원의 방정식",
     "sourceQid": 9,
     "sourceJsPath": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
-    "provenance": {
-      "kind": "ORIGINAL_SOURCE_TRANSCRIPTION",
-      "sourceQuestionUid": "qid_v1_cce55fe8b5371950912068c18814f10776a46eaab475580802a7c9682d857773",
-      "sourceQid": 9,
-      "sourcePdfSha256": "e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6",
-      "sourceIntakeEvidenceRef": "archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourceIntakeEvidenceSha256": "3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf",
-      "baselineJsSha256": "1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c"
-    },
+    "provenance": {"kind":"ORIGINAL_SOURCE_TRANSCRIPTION","sourceQuestionUid":"qid_v1_cce55fe8b5371950912068c18814f10776a46eaab475580802a7c9682d857773","sourceQid":9,"sourcePdfSha256":"e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6","sourceIntakeEvidenceRef":"archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json","sourceIntakeEvidenceSha256":"3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf","baselineJsSha256":"1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c","sourceId":"2020|순천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js","sourceOrdinal":9,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "templateKey": "TM_TANGENCY_CONDITION",
-    "crossConceptKeys": [
-      "CC_CIRCLE_CENTER_RADIUS"
-    ],
+    "crossConceptKeys": ["CC_CIRCLE_CENTER_RADIUS"],
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 수직으로 a만큼 평행이동한 직선은 y=x−2+a, 즉 x−y+a−2=0이다. 원의 중심은 (5,−2), 반지름은 2√2이다. 접선 조건은 중심에서 직선까지의 거리가 반지름과 같은 것이다. |5−(−2)+a−2|/√2=2√2, 따라서 |a+5|=4이다. a=−1 또는 −9이므로",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
@@ -527,7 +470,10 @@ window.questionBank = [
     "questionUid": "qid_v1_cce55fe8b5371950912068c18814f10776a46eaab475580802a7c9682d857773",
     "originalCategory": "원의 방정식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "sourceOrdinal": 9,
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+  
   },
   {
     "id": 10,
@@ -559,26 +505,15 @@ window.questionBank = [
     "category": "원의 방정식",
     "sourceQid": 10,
     "sourceJsPath": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
-    "provenance": {
-      "kind": "ORIGINAL_SOURCE_TRANSCRIPTION",
-      "sourceQuestionUid": "qid_v1_1dcf5030ec312f95aec4c13ae41d046506dffaa861077b010430094b08d50777",
-      "sourceQid": 10,
-      "sourcePdfSha256": "e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6",
-      "sourceIntakeEvidenceRef": "archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourceIntakeEvidenceSha256": "3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf",
-      "baselineJsSha256": "1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c"
-    },
+    "provenance": {"kind":"ORIGINAL_SOURCE_TRANSCRIPTION","sourceQuestionUid":"qid_v1_1dcf5030ec312f95aec4c13ae41d046506dffaa861077b010430094b08d50777","sourceQid":10,"sourcePdfSha256":"e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6","sourceIntakeEvidenceRef":"archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json","sourceIntakeEvidenceSha256":"3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf","baselineJsSha256":"1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c","sourceId":"2020|순천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js","sourceOrdinal":10,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
     "problemTypeKey": "PT_CIRCLE_EQUATION",
     "templateKey": "TM_CIRCLE_EXISTENCE_CONDITION",
-    "crossConceptKeys": [
-      "CC_CIRCLE_CENTER_RADIUS"
-    ],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "crossConceptKeys": ["CC_CIRCLE_CENTER_RADIUS"],
+    "conditionKeys": ["COND_POSITIVE"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 하: 정의나 기본 성질을 곧바로 적용하는 사고가 중심이다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 식을 완전제곱하여 원의 중심과 반지름을 확인한다. $x²−2x+y²+4y+k=0$ (x−1)²+(y+2)²=5−k이다. 원이 되려면 반지름의 제곱 5−k가 양수여야 하므로 k<5이다. 그러므로 정답은 ③이다.",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "하",
@@ -588,7 +523,10 @@ window.questionBank = [
     "questionUid": "qid_v1_1dcf5030ec312f95aec4c13ae41d046506dffaa861077b010430094b08d50777",
     "originalCategory": "원의 방정식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "sourceOrdinal": 10,
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+  
   },
   {
     "id": 11,
@@ -620,25 +558,15 @@ window.questionBank = [
     "category": "도형의 이동",
     "sourceQid": 11,
     "sourceJsPath": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
-    "provenance": {
-      "kind": "ORIGINAL_SOURCE_TRANSCRIPTION",
-      "sourceQuestionUid": "qid_v1_0ae14cf2caa73619e091bf7d610de9afe7905957c8d2afcbaaed3b617e18ab77",
-      "sourceQid": 11,
-      "sourcePdfSha256": "e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6",
-      "sourceIntakeEvidenceRef": "archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourceIntakeEvidenceSha256": "3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf",
-      "baselineJsSha256": "1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c"
-    },
+    "provenance": {"kind":"ORIGINAL_SOURCE_TRANSCRIPTION","sourceQuestionUid":"qid_v1_0ae14cf2caa73619e091bf7d610de9afe7905957c8d2afcbaaed3b617e18ab77","sourceQid":11,"sourcePdfSha256":"e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6","sourceIntakeEvidenceRef":"archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json","sourceIntakeEvidenceSha256":"3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf","baselineJsSha256":"1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c","sourceId":"2020|순천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js","sourceOrdinal":11,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
     "problemTypeKey": "PT_MOVE_POINT_REFLECTION",
     "templateKey": "TT_POINT_REFLECTION_DISTANCE",
-    "crossConceptKeys": [
-      "CC_REFLECTION",
-      "CC_DISTANCE_TWO_POINTS"
-    ],
+    "crossConceptKeys": ["CC_DISTANCE_TWO_POINTS"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: P를 y=x에 대하여 대칭이동하면 P′는 중심 (2,−1), 반지름 √10인 원 위를 움직인다. Q를 x축에 대하여 대칭이동한 Q′는 중심 (−1,−2), 반지름 √10인 원 위를 움직인다. 두 중심 사이 거리는 √((2−(−1))²+(−1−(−2))²)=√10이다. 서로…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
@@ -648,7 +576,10 @@ window.questionBank = [
     "questionUid": "qid_v1_0ae14cf2caa73619e091bf7d610de9afe7905957c8d2afcbaaed3b617e18ab77",
     "originalCategory": "도형의 이동",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "sourceOrdinal": 11,
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+  
   },
   {
     "id": 12,
@@ -679,25 +610,15 @@ window.questionBank = [
     "category": "도형의 이동",
     "sourceQid": 12,
     "sourceJsPath": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
-    "provenance": {
-      "kind": "ORIGINAL_SOURCE_TRANSCRIPTION",
-      "sourceQuestionUid": "qid_v1_25543949359e5b275e6951da9439e25f192affc752228109b1a45eab24d9d402",
-      "sourceQid": 12,
-      "sourcePdfSha256": "e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6",
-      "sourceIntakeEvidenceRef": "archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourceIntakeEvidenceSha256": "3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf",
-      "baselineJsSha256": "1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c"
-    },
+    "provenance": {"kind":"ORIGINAL_SOURCE_TRANSCRIPTION","sourceQuestionUid":"qid_v1_25543949359e5b275e6951da9439e25f192affc752228109b1a45eab24d9d402","sourceQid":12,"sourcePdfSha256":"e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6","sourceIntakeEvidenceRef":"archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json","sourceIntakeEvidenceSha256":"3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf","baselineJsSha256":"1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c","sourceId":"2020|순천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js","sourceOrdinal":12,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
     "problemTypeKey": "PT_MOVE_POINT_REFLECTION",
     "templateKey": "TT_POINT_REFLECTION_GENERAL_LINE",
-    "crossConceptKeys": [
-      "CC_REFLECTION",
-      "CC_PERPENDICULAR"
-    ],
+    "crossConceptKeys": ["CC_PERPENDICULAR"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 직선 $x−y+4=0$을 $y=x+4$로 정리하면 기울기는 $1$이다. 이 직선에 수직이면서 $P(−2,4)$를 지나는 직선의 기울기는 $−1$이므로 $y−4=−(x+2)$, 즉 $y=−x+2$이다. 두 직선의 교점은 $H(−1,3)$이다. 수선의 발 $H$는 $P$와 대칭점",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
@@ -707,7 +628,10 @@ window.questionBank = [
     "questionUid": "qid_v1_25543949359e5b275e6951da9439e25f192affc752228109b1a45eab24d9d402",
     "originalCategory": "도형의 이동",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "sourceOrdinal": 12,
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+  
   },
   {
     "id": 13,
@@ -740,15 +664,7 @@ window.questionBank = [
     "category": "집합",
     "sourceQid": 13,
     "sourceJsPath": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
-    "provenance": {
-      "kind": "ORIGINAL_SOURCE_TRANSCRIPTION",
-      "sourceQuestionUid": "qid_v1_293b6d5fe94e8f8b5cef31a8661023ca2da357c738e569ee7db0f2d94b5fadbe",
-      "sourceQid": 13,
-      "sourcePdfSha256": "e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6",
-      "sourceIntakeEvidenceRef": "archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourceIntakeEvidenceSha256": "3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf",
-      "baselineJsSha256": "1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c"
-    },
+    "provenance": {"kind":"ORIGINAL_SOURCE_TRANSCRIPTION","sourceQuestionUid":"qid_v1_293b6d5fe94e8f8b5cef31a8661023ca2da357c738e569ee7db0f2d94b5fadbe","sourceQid":13,"sourcePdfSha256":"e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6","sourceIntakeEvidenceRef":"archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json","sourceIntakeEvidenceSha256":"3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf","baselineJsSha256":"1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c","sourceId":"2020|순천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js","sourceOrdinal":13,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
     "problemTypeKey": "PT_SET_REGION_EXPRESSION",
     "templateKey": "TPL_REGION_EQUIVALENCE",
     "crossConceptKeys": [],
@@ -756,6 +672,7 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 그림에서 음영은 A 안에서 B와 C의 공통부분만 제외한 영역이다. 따라서 나타내는 집합은 A−(B∩C)이다. ①은 정의 그대로이다. 드모르간 법칙으로 (B∩C)ᶜ=Bᶜ∪Cᶜ이므로 ②와 ③도 같은 집합이다. ④는 (Bᶜ∪Cᶜ)ᶜ=B∩C이므로 역시 A−(B∩C)이다. ⑤는…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
@@ -767,7 +684,10 @@ window.questionBank = [
     "imageAlt": "집합 A 내부에서 B∩C만 제외한 음영 영역",
     "imageSize": "large",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "sourceOrdinal": 13,
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+  
   },
   {
     "id": 14,
@@ -797,15 +717,7 @@ window.questionBank = [
     "category": "집합",
     "sourceQid": 14,
     "sourceJsPath": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
-    "provenance": {
-      "kind": "ORIGINAL_SOURCE_TRANSCRIPTION",
-      "sourceQuestionUid": "qid_v1_0c45664b5d51d775995d314c96e9fc73cd895e8d1950fa3843e2404ea2493e84",
-      "sourceQid": 14,
-      "sourcePdfSha256": "e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6",
-      "sourceIntakeEvidenceRef": "archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourceIntakeEvidenceSha256": "3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf",
-      "baselineJsSha256": "1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c"
-    },
+    "provenance": {"kind":"ORIGINAL_SOURCE_TRANSCRIPTION","sourceQuestionUid":"qid_v1_0c45664b5d51d775995d314c96e9fc73cd895e8d1950fa3843e2404ea2493e84","sourceQid":14,"sourcePdfSha256":"e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6","sourceIntakeEvidenceRef":"archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json","sourceIntakeEvidenceSha256":"3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf","baselineJsSha256":"1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c","sourceId":"2020|순천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js","sourceOrdinal":14,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
     "problemTypeKey": "PT_SET_EQUALITY",
     "templateKey": "TPL_EQUAL_SET_PARAMETER",
     "crossConceptKeys": [],
@@ -813,6 +725,7 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 왼쪽 집합은 (A−B)∪(B−A)이므로 주어진 등식은 (A−B)∪(B−A)=B−A이다. 따라서 A−B=∅, 즉 A⊆B이다. 이로부터 A∪B=B, A∩B=A, Aᶜ∪B=U가 성립하고, ①도 부분집합 관계이므로 성립한다. ④의 왼쪽은 B−A이다. 조건은 B−A가 공집합이 아닐…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
@@ -822,7 +735,10 @@ window.questionBank = [
     "solutionImageSize": "full",
     "originalCategory": "집합",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "sourceOrdinal": 14,
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+  
   },
   {
     "id": 15,
@@ -853,24 +769,15 @@ window.questionBank = [
     "category": "명제",
     "sourceQid": 15,
     "sourceJsPath": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
-    "provenance": {
-      "kind": "ORIGINAL_SOURCE_TRANSCRIPTION",
-      "sourceQuestionUid": "qid_v1_891893563f0a15d66fc96940b762668bfcbe49ad57aa13c09e2d0680f54acf45",
-      "sourceQid": 15,
-      "sourcePdfSha256": "e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6",
-      "sourceIntakeEvidenceRef": "archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourceIntakeEvidenceSha256": "3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf",
-      "baselineJsSha256": "1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c"
-    },
+    "provenance": {"kind":"ORIGINAL_SOURCE_TRANSCRIPTION","sourceQuestionUid":"qid_v1_891893563f0a15d66fc96940b762668bfcbe49ad57aa13c09e2d0680f54acf45","sourceQid":15,"sourcePdfSha256":"e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6","sourceIntakeEvidenceRef":"archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json","sourceIntakeEvidenceSha256":"3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf","baselineJsSha256":"1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c","sourceId":"2020|순천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js","sourceOrdinal":15,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
     "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
     "templateKey": "TPL_PROPOSITION_TRUTH_JUDGMENT",
-    "crossConceptKeys": [
-      "CC_PROPOSITION"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 전체집합이 무리수 집합임을 각 문장의 범위에 적용한다. ① x²≥0이므로 |x²|=x²이다. ② x²+x+1=(x+1/2)²+3/4>0이다. ③ 무리수 x는 0이 아니므로 x²>0이다. ⑤ 무리수는 0이 아니므로 |x|>0이며 존재한다. ④ x²=x의 실수해는 x=0 또는…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
@@ -880,7 +787,10 @@ window.questionBank = [
     "solutionImageSize": "full",
     "originalCategory": "명제",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "sourceOrdinal": 15,
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+  
   },
   {
     "id": 16,
@@ -912,24 +822,15 @@ window.questionBank = [
     "category": "명제",
     "sourceQid": 16,
     "sourceJsPath": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
-    "provenance": {
-      "kind": "ORIGINAL_SOURCE_CHOICE_CORRECTION",
-      "sourceQuestionUid": "qid_v1_14725a3c6ca3b5406ea7316c28322f92c0fd52f279ed3993b4b53d0ca8683904",
-      "sourceQid": 16,
-      "sourcePdfSha256": "e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6",
-      "sourceIntakeEvidenceRef": "archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourceIntakeEvidenceSha256": "3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf",
-      "baselineJsSha256": "1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c"
-    },
+    "provenance": {"kind":"ORIGINAL_SOURCE_CHOICE_CORRECTION","sourceQuestionUid":"qid_v1_14725a3c6ca3b5406ea7316c28322f92c0fd52f279ed3993b4b53d0ca8683904","sourceQid":16,"sourcePdfSha256":"e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6","sourceIntakeEvidenceRef":"archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json","sourceIntakeEvidenceSha256":"3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf","baselineJsSha256":"1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c","sourceId":"2020|순천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js","sourceOrdinal":16,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
     "problemTypeKey": "PT_NEC_SUFF_RELATION",
     "templateKey": "TPL_NEC_SUFF_DIRECT_JUDGMENT",
-    "crossConceptKeys": [
-      "CC_PROPOSITION"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: “p가 q의 필요조건”은 $q\\to p$를 뜻하고, “충분조건이 아님”은 $p\\to q$가 성립하지 않음을 뜻한다. ㄱ에서 $(x,y)=(2,-3)$이면 $x^2<y^2$는 참이지만 $x<y$는 거짓이므로 $q\\to p$가 성립하지 않는다. 또 $(x,y)=(-3,-2)$이면",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
@@ -939,7 +840,10 @@ window.questionBank = [
     "solutionImageSize": "full",
     "originalCategory": "명제",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "sourceOrdinal": 16,
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+  
   },
   {
     "id": 17,
@@ -970,24 +874,15 @@ window.questionBank = [
     "category": "명제",
     "sourceQid": 17,
     "sourceJsPath": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
-    "provenance": {
-      "kind": "ORIGINAL_SOURCE_TRANSCRIPTION",
-      "sourceQuestionUid": "qid_v1_a5686de6fce36da19f6327b9be48f8308a76999e24d73c29d92c8318d9fdebe5",
-      "sourceQid": 17,
-      "sourcePdfSha256": "e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6",
-      "sourceIntakeEvidenceRef": "archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourceIntakeEvidenceSha256": "3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf",
-      "baselineJsSha256": "1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c"
-    },
+    "provenance": {"kind":"ORIGINAL_SOURCE_TRANSCRIPTION","sourceQuestionUid":"qid_v1_a5686de6fce36da19f6327b9be48f8308a76999e24d73c29d92c8318d9fdebe5","sourceQid":17,"sourcePdfSha256":"e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6","sourceIntakeEvidenceRef":"archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json","sourceIntakeEvidenceSha256":"3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf","baselineJsSha256":"1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c","sourceId":"2020|순천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js","sourceOrdinal":17,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
     "problemTypeKey": "PT_TRUTH_SET_RELATION",
     "templateKey": "TPL_IMPLICATION_TRUTHSET_RELATION",
-    "crossConceptKeys": [
-      "CC_PROPOSITION"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 첫 번째 명제 $p\\to\\sim q$가 참이므로 $p$가 참인 모든 경우에는 $q$가 거짓이다. 진리집합으로 쓰면 $P\\subset Q^C$이다. 따라서 ①은 항상 옳다. 둘째 명제 $\\sim r\\to q$의 대우는 $\\sim q\\to r$이므로 $Q^C\\subset R$도…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
@@ -997,7 +892,10 @@ window.questionBank = [
     "solutionImageSize": "full",
     "originalCategory": "명제",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "sourceOrdinal": 17,
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+  
   },
   {
     "id": 18,
@@ -1028,24 +926,15 @@ window.questionBank = [
     "category": "명제",
     "sourceQid": 18,
     "sourceJsPath": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
-    "provenance": {
-      "kind": "ORIGINAL_SOURCE_TRANSCRIPTION",
-      "sourceQuestionUid": "qid_v1_9258e04712cc9d83939e8902552fdb140ae7521fbfe76d131512277accb7bfbc",
-      "sourceQid": 18,
-      "sourcePdfSha256": "e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6",
-      "sourceIntakeEvidenceRef": "archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourceIntakeEvidenceSha256": "3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf",
-      "baselineJsSha256": "1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c"
-    },
+    "provenance": {"kind":"ORIGINAL_SOURCE_TRANSCRIPTION","sourceQuestionUid":"qid_v1_9258e04712cc9d83939e8902552fdb140ae7521fbfe76d131512277accb7bfbc","sourceQid":18,"sourcePdfSha256":"e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6","sourceIntakeEvidenceRef":"archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json","sourceIntakeEvidenceSha256":"3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf","baselineJsSha256":"1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c","sourceId":"2020|순천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js","sourceOrdinal":18,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
     "problemTypeKey": "PT_LOGIC_CHAIN",
     "templateKey": "TPL_LOGIC_CONSTRAINT_PUZZLE",
-    "crossConceptKeys": [
-      "CC_PROPOSITION"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 영철이는 두 번째이고 미용이는 가입 전 네 명이 있었으므로 다섯 번째이다. 현명이는 미용이 바로 다음이므로 여섯 번째이다. 승미와 현수 사이에 영철이만 있으므로 두 사람은 영철이의 바로 앞뒤인 첫 번째와 세 번째 자리를 차지한다. 남은 네 번째 자리는 금석이의 자리이다.…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
@@ -1055,7 +944,10 @@ window.questionBank = [
     "solutionImageSize": "full",
     "originalCategory": "명제",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "sourceOrdinal": 18,
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+  
   },
   {
     "id": 19,
@@ -1081,24 +973,15 @@ window.questionBank = [
     "category": "평면좌표",
     "sourceQid": 19,
     "sourceJsPath": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
-    "provenance": {
-      "kind": "ORIGINAL_SOURCE_TRANSCRIPTION",
-      "sourceQuestionUid": "qid_v1_84cedcd81d0674c4184b259c85c9030bc1025dc724e21c0338baa18729d4dea3",
-      "sourceQid": 19,
-      "sourcePdfSha256": "e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6",
-      "sourceIntakeEvidenceRef": "archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourceIntakeEvidenceSha256": "3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf",
-      "baselineJsSha256": "1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c"
-    },
+    "provenance": {"kind":"ORIGINAL_SOURCE_TRANSCRIPTION","sourceQuestionUid":"qid_v1_84cedcd81d0674c4184b259c85c9030bc1025dc724e21c0338baa18729d4dea3","sourceQid":19,"sourcePdfSha256":"e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6","sourceIntakeEvidenceRef":"archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json","sourceIntakeEvidenceSha256":"3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf","baselineJsSha256":"1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c","sourceId":"2020|순천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js","sourceOrdinal":19,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
     "problemTypeKey": "PT_COORD_MIDPOINT",
     "templateKey": "TPL_MIDPOINT_DISTANCE_RELATION",
-    "crossConceptKeys": [
-      "CC_MIDPOINT"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: P=(u,v)라고 두면 P는 3u+2v+2=0을 만족한다. 중점 M=(x,y)이므로 중점 공식에서 u=2x−1, v=2y+1이다. 이를 P의 직선 조건에 대입하면 $3(2x−1)+2(2y+1)+2=0$ $6x−3+4y+2+2=0$ 6x+4y+1=0이다. 따라서 M의 자취는…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
@@ -1108,7 +991,10 @@ window.questionBank = [
     "questionUid": "qid_v1_84cedcd81d0674c4184b259c85c9030bc1025dc724e21c0338baa18729d4dea3",
     "originalCategory": "평면좌표",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "sourceOrdinal": 19,
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+  
   },
   {
     "id": 20,
@@ -1135,26 +1021,15 @@ window.questionBank = [
     "category": "원의 방정식",
     "sourceQid": 20,
     "sourceJsPath": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
-    "provenance": {
-      "kind": "ORIGINAL_SOURCE_TRANSCRIPTION",
-      "sourceQuestionUid": "qid_v1_5c08ef31dc7cae213726f423e79c4a04eade7b9a3ca89571f7dc51a54287fba6",
-      "sourceQid": 20,
-      "sourcePdfSha256": "e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6",
-      "sourceIntakeEvidenceRef": "archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourceIntakeEvidenceSha256": "3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf",
-      "baselineJsSha256": "1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c"
-    },
+    "provenance": {"kind":"ORIGINAL_SOURCE_TRANSCRIPTION","sourceQuestionUid":"qid_v1_5c08ef31dc7cae213726f423e79c4a04eade7b9a3ca89571f7dc51a54287fba6","sourceQid":20,"sourcePdfSha256":"e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6","sourceIntakeEvidenceRef":"archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json","sourceIntakeEvidenceSha256":"3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf","baselineJsSha256":"1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c","sourceId":"2020|순천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js","sourceOrdinal":20,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_POINT_LINE_DISTANCE",
-    "crossConceptKeys": [
-      "CC_CIRCLE_CENTER_RADIUS",
-      "CC_POINT_LINE_DISTANCE",
-      "CC_TRIANGLE_AREA"
-    ],
+    "crossConceptKeys": ["CC_CIRCLE_CENTER_RADIUS","CC_TRIANGLE_AREA"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: A와 B는 원 x²+y²=17 위에 있으므로 OA=OB=√17이다. AB=√((4−(−1))²+(−1−(−4))²)=√(25+9)=√34이다. 직선 AB의 방정식은 3x−5y−17=0이다. 원의 중심 O에서 AB까지의 거리는 17/√34=√(17/2)이다. 따라서 원 위의 점",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
@@ -1166,7 +1041,10 @@ window.questionBank = [
     "imageAlt": "원 x²+y²=17 위의 A, B와 삼각형 꼭짓점 P",
     "imageSize": "medium",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "sourceOrdinal": 20,
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+  
   },
   {
     "id": 21,
@@ -1191,26 +1069,15 @@ window.questionBank = [
     "category": "집합",
     "sourceQid": 21,
     "sourceJsPath": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js",
-    "provenance": {
-      "kind": "ORIGINAL_SOURCE_TRANSCRIPTION",
-      "sourceQuestionUid": "qid_v1_75d45f3b5044c899ebb77463bb66726fa41cd05466b37f057f9cb49984bf867a",
-      "sourceQid": 21,
-      "sourcePdfSha256": "e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6",
-      "sourceIntakeEvidenceRef": "archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json",
-      "sourceIntakeEvidenceSha256": "3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf",
-      "baselineJsSha256": "1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c"
-    },
+    "provenance": {"kind":"ORIGINAL_SOURCE_TRANSCRIPTION","sourceQuestionUid":"qid_v1_75d45f3b5044c899ebb77463bb66726fa41cd05466b37f057f9cb49984bf867a","sourceQid":21,"sourcePdfSha256":"e0ff2c616ffabe7bbbab642e4c83614b6cd22ac446c39d039274d423418e8ec6","sourceIntakeEvidenceRef":"archive/analysis/20_순천고_2학기_중간_고1_기출/h1-fast-lane-c-20261013/source-intake/source-intake.evidence.json","sourceIntakeEvidenceSha256":"3ea9ea457c2006a7de3dc2cfbcffff3f01da4c163eb6f50ff36f0b4f0e4f9caf","baselineJsSha256":"1149644de8a116296270c1fb441fe237de62a2b30311ff6d2c0b3c095775c22c","sourceId":"2020|순천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js","sourceOrdinal":21,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_순천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"},
     "problemTypeKey": "PT_SUBSET_COUNT",
     "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
-    "crossConceptKeys": [
-      "CC_SET_CARDINALITY"
-    ],
-    "conditionKeys": [
-      "COND_NATURAL_NUMBER"
-    ],
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_NATURAL_NUMBER"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: U={1,2,…,10}, A={1,3,5,7,9}, B={2,3,5,7}이다. 따라서 A−B={1,9}, A∪B={1,2,3,5,7,9}이다. (A−B)∪X=X는 {1,9}⊂X임을 뜻한다. (A∪B)∩X=X는 X⊂A∪B임을 뜻한다. 따라서 X는 {1,9}를 반드시 포함하고…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
@@ -1220,7 +1087,10 @@ window.questionBank = [
     "questionUid": "qid_v1_75d45f3b5044c899ebb77463bb66726fa41cd05466b37f057f9cb49984bf867a",
     "originalCategory": "집합",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "sourceOrdinal": 21,
+    "sourceArchiveFile": "original/high/h1/2mid/20_순천고_2학기_중간_고1_기출.js"
+  
   }
 ];
 

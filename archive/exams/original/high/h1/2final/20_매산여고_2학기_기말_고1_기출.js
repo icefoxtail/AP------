@@ -34,13 +34,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
+    "difficultyReason": "학습용 level 하: 정의나 기본 성질을 곧바로 적용하는 사고가 중심이다. 문제은행 difficultyBucket 1: 풀이가 직접 읽기나 대입 한 번으로 끝난다. 현재 풀이 근거: 두 함수가 정의역 $\\{1,3\\}$에서 같은 함수이므로, $x=1$과 $x=3$에서 함숫값이 각각 같다. $x=1$을 대입하면 $f(1)=g(1)$, $4=a+b$이다. $x=3$을 대입하면 $f(3)=g(3)$, $12=9a+b$이다. 두 식을 빼면 $8=8a$이므로…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_FUNCTION_DEFINITION_JUDGMENT",
     "templateKey": "TPL_FUNCTION_JUDGMENT_MAPPING",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_c5c90c93e4b9b7ee3d4b25514c93770f954bbe325e226f79daaabdf2ee1c9793",
+    "sourceQid": 1,
+    "sourceOrdinal": 1,
+    "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":1,"sourceQid":1,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+  
   },
   {
     "id": 2,
@@ -75,13 +82,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: 먼저 함수식에 $y=0$을 대입한다. $f(x)=f(x)f(0)$이고, 모든 실수 $x$에 대하여 $f(x)>0$이므로 $f(0)=1$이다. 또한 $f(x+0)=f(x)f(0)$에서 함수식이 성립한다. 역함수가 존재하므로 $f$는 일대일함수이다. ㄱ. $f(0)=1$이므로…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
     "templateKey": "TPL_FUNCTIONAL_EQUATION_MULTIPLICATIVE",
     "crossConceptKeys": [],
-    "conditionKeys": ["COND_POSITIVE"],
-    "integrationPattern": "INTERDEPENDENT"
+    "conditionKeys": ["COND_FUNCTION_BIJECTION","COND_POSITIVE"],
+    "integrationPattern": "INTERDEPENDENT",
+    "questionUid": "qid_v1_c2bceae18e470078adb3eed51f1429942241142f96ad24aa810e2aabe852afd6",
+    "sourceQid": 2,
+    "sourceOrdinal": 2,
+    "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":2,"sourceQid":2,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+  
   },
   {
     "id": 3,
@@ -118,6 +132,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: $f$는 $X$에서 $Y$로의 함수이므로 $f(X)\\subset Y$이다. 문제에서 $Y\\subset f(X)$이므로 $f(X)=Y$이다. $a=0$이면 $f(X)$가 한 점뿐이어서 $Y$와 같을 수 없다. 따라서 $a>0$ 또는 $a 0$이면 $f$가 증가하므로…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
@@ -128,7 +143,13 @@ window.questionBank = [
     "solutionImage": "assets/images/20_매산여고_2학기_기말_고1_기출/q3-solution.svg",
     "solutionImageAlt": "증가·감소 두 경우의 끝점 대응과 최댓값 비교 표",
     "solutionImageCaption": "두 단조 경우의 끝점 대응 및 |a−b| 값",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "questionUid": "qid_v1_2d09fd14207b11882277c9f6e742df9c02b71af3195745ca9f7a2ee340d64cdd",
+    "sourceQid": 3,
+    "sourceOrdinal": 3,
+    "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":3,"sourceQid":3,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+  
   },
   {
     "id": 4,
@@ -163,13 +184,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
+    "difficultyReason": "학습용 level 하: 정의나 기본 성질을 곧바로 적용하는 사고가 중심이다. 문제은행 difficultyBucket 1: 풀이가 직접 읽기나 대입 한 번으로 끝난다. 현재 풀이 근거: 합성함수의 관계 $h\\circ f=g$는 모든 $x$에 대하여 $h(f(x))=g(x)$라는 뜻이다. $h(1)$을 구하려면 $f(x)=1$이 되는 $x$를 찾는다. $2x+1=1$에서 $x=0$이다. 따라서 $h(1)=h(f(0))=g(0)=-2\\cdot0+3=3$이다.…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
     "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_d0a7819e6974ed18bb9e2d303f075763dcad42f02f7e9e93a997ea9a9c5777cf",
+    "sourceQid": 4,
+    "sourceOrdinal": 4,
+    "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":4,"sourceQid":4,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+  
   },
   {
     "id": 5,
@@ -215,8 +243,15 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 그래프에서 각 입력값과 그에 대응하는 함숫값을 읽으면 $f(1)=4$, $f(2)=2$, $f(3)=1$, $f(4)=3$이다. 따라서 $2$는 그대로 반복되고, $1\\to4\\to3\\to1$은 길이 $3$인 순환이다. $f^{10}(2)=2$이다.…",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "questionUid": "qid_v1_25055ad5f0f82197945fe1d2f52d46117e1e176e300e80208cdd10cefa42b91e",
+    "sourceQid": 5,
+    "sourceOrdinal": 5,
+    "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":5,"sourceQid":5,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+  
   },
   {
     "id": 6,
@@ -248,14 +283,21 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 하: 정의나 기본 성질을 곧바로 적용하는 사고가 중심이다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: $g^{-1}\\circ h\\circ f$가 항등함수이므로 모든 $x$에 대하여 $h(f(x))=g(x)$이다. $f(x)=t$라 놓으면 $t=\\dfrac12x-3$에서 $x=2t+6$이다. 따라서 $h(t)=g(2t+6)=3(2t+6)+1=6t+19$이다. 그러므로…",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "NORMAL",
-    "problemTypeKey": "PT_INVERSE_COMPOSITION",
+    "problemTypeKey": "PT_COMPOSITION_EVALUATION",
     "templateKey": "TPL_COMPOSITION_WITH_INVERSE_VALUE",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "level": "하"
+    "level": "하",
+    "questionUid": "qid_v1_707ef584eb068c48a2183741b43b1cfd806d2d0f71c5f6e5b30c88128fdfe8e0",
+    "sourceQid": 6,
+    "sourceOrdinal": 6,
+    "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":6,"sourceQid":6,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+  
   },
   {
     "id": 7,
@@ -281,24 +323,31 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "layoutTag": "grid",
     "wide": false,
-    "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
-    "subUnit": "역함수",
+    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+    "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: $f(x)=(x-2)^2-10$이므로 꼭짓점의 $x$좌표는 $2$이다. $X=[a,\\infty)$에서 역함수가 존재하려면 $f$가 일대일이어야 하므로 $a\\ge2$이어야 한다. 이때 $f$는 증가하고 $f(X)=[f(a),\\infty)$이다. $f$가 $X$에서 $X$로의…",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "NORMAL",
-    "problemTypeKey": "PT_INVERSE_PROPERTIES",
-    "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_PARAMETER",
+    "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+    "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
     "crossConceptKeys": [],
-    "conditionKeys": ["COND_RANGE"],
+    "conditionKeys": ["COND_FUNCTION_BIJECTION","COND_RANGE"],
     "integrationPattern": "SEQUENTIAL",
     "level": "중",
     "solutionImage": "assets/images/20_매산여고_2학기_기말_고1_기출/q7-solution.svg",
     "solutionImageAlt": "포물선과 y=x의 교점 및 x≥2에서의 증가",
     "solutionImageCaption": "y=x²−4x−6과 y=x를 그려 a≥2에서 만나는 점 (6,6)을 표시",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "questionUid": "qid_v1_41f537db3e4e892d9e4400cf45cb15f3a95006d635afbfb056c175565d9b2de8",
+    "sourceQid": 7,
+    "sourceOrdinal": 7,
+    "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":7,"sourceQid":7,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+  
   },
   {
     "id": 8,
@@ -331,18 +380,25 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: 유리함수 그래프의 점근선은 $x=-a$와 $y=b$이다. 그림에서 수직점근선이 $y$축의 오른쪽, 수평점근선이 $x$축의 위쪽에 있으므로 $a 0$이다. 또 그래프의 $y$절편은 양수이므로 $c/a>0$이고, 따라서 $c<0$이다. 무리함수의 정의역은 $x\\le b$이고,…",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
     "templateKey": "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION",
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_RATIONAL_FUNCTION"],
     "conditionKeys": ["COND_NEGATIVE","COND_POSITIVE"],
     "integrationPattern": "SEQUENTIAL",
     "level": "중",
     "solutionImage": "assets/images/20_매산여고_2학기_기말_고1_기출/q8-solution.svg",
     "solutionImageAlt": "계수 부호에서 무리함수의 치역과 사분면을 판정하는 표",
     "solutionImageCaption": "a<0, b>0, c<0에서 정의역과 함수값 부호를 정리",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "questionUid": "qid_v1_55d59583f48710dcbfd67a3f170c0ea93b425ea922b93f6017ae178adf066254",
+    "sourceQid": 8,
+    "sourceOrdinal": 8,
+    "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":8,"sourceQid":8,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+  
   },
   {
     "id": 9,
@@ -374,9 +430,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: 식을 점근선의 교점에 대한 좌표로 나타내면 대칭축을 구하기 쉽다. $y=\\dfrac{3-4x}{2x+1}=-2+\\dfrac{5}{2x+1}$이므로 점근선은 $x=-\\dfrac12$, $y=-2$이다. $u=x+\\dfrac12$, $v=y+2$라 하면…",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "NORMAL",
-    "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
     "templateKey": "TPL_FUNCTION_GRAPH_SYMMETRY",
     "crossConceptKeys": [],
     "conditionKeys": [],
@@ -385,7 +442,13 @@ window.questionBank = [
     "solutionImage": "assets/images/20_매산여고_2학기_기말_고1_기출/q9-solution.svg",
     "solutionImageAlt": "유리함수의 점근선 교점과 두 대칭축",
     "solutionImageCaption": "중심 (−1/2,−2), 점근선, y=x−3/2와 y=−x−5/2",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "questionUid": "qid_v1_a2a623f7a00616bb124bd4a9db79eb6564b710625ba70dd5ff967d7eff05cb68",
+    "sourceQid": 9,
+    "sourceOrdinal": 9,
+    "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":9,"sourceQid":9,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+  
   },
   {
     "id": 10,
@@ -417,6 +480,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 그래프가 $(-1,0)$을 지나므로 $-a+b=0$, 즉 $b=a$이다. 주어진 점근선 중 $y=3$은 수평점근선이므로 $a=3$, $b=3$이다. 따라서 $f(x)=\\dfrac{3x+3}{x+2}=3-\\dfrac{3}{x+2}$이다. $0\\le x\\le4$에서 $x+2$가…",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_FUNCTION_EXTREMUM",
@@ -428,7 +492,13 @@ window.questionBank = [
     "solutionImage": "assets/images/20_매산여고_2학기_기말_고1_기출/q10-solution.svg",
     "solutionImageAlt": "0≤x≤4에서 증가하는 유리함수와 두 끝점의 함수값",
     "solutionImageCaption": "f(x)=3−3/(x+2), m=3/2, M=5/2",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "questionUid": "qid_v1_bd84f30ba825833368bf723fc5e67191f916f4d6e1ad44f1445ce44fe5d9bfd8",
+    "sourceQid": 10,
+    "sourceOrdinal": 10,
+    "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":10,"sourceQid":10,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+  
   },
   {
     "id": 11,
@@ -460,14 +530,21 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 전체 배열에서 $t,n$을 양 끝에 고정하는 순서는 $2!$가지이다. 가운데 여섯 자리에 $q,u,e,s,i,o$를 배열한다. $o$와 $e$가 이웃하는 경우는 $2\\cdot5!$가지이고, $o$와 $i$가 이웃하는 경우도 $2\\cdot5!$가지이다. 두 조건이 함께 성립하면",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
     "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_CONSECUTIVE_GROUPING","COND_SPECIFIED_ITEMS_AT_BOTH_ENDPOINTS"],
     "integrationPattern": "SEQUENTIAL",
-    "level": "중"
+    "level": "중",
+    "questionUid": "qid_v1_99faf131a9f5143bc40c20a5671580636a095d5ad424762935d3345014c961a6",
+    "sourceQid": 11,
+    "sourceOrdinal": 11,
+    "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":11,"sourceQid":11,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+  
   },
   {
     "id": 12,
@@ -488,29 +565,36 @@ window.questionBank = [
     "category": "무리함수",
     "originalCategory": "무리함수",
     "standardCourse": "수학(하)",
-    "standardUnitKey": "H15-SB-05",
-    "standardUnit": "무리함수",
-    "standardUnitOrder": 5,
+    "standardUnitKey": "H15-SB-03",
+    "standardUnit": "함수",
+    "standardUnitOrder": 3,
     "layoutTag": "grid",
     "wide": false,
-    "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
-    "subUnit": "무리함수의 그래프",
+    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+    "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 5: 여러 구간·경계·경우를 맞춰 전체 구조를 종합해야 한다. 현재 풀이 근거: $x\\le2$에서 제곱근 가지의 치역은 $(-\\infty,2a]$이다. $x>2$에서 $f(x)=-2+\\dfrac{a-2}{x-1}$이다. 전체 치역이 $(-\\infty,-2)$가 되려면 $a<2$이고 이 가지의 치역은 $(a-4,-2)$이다. 치역이 빈틈없이 이어지고 두…",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "NORMAL",
-    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
-    "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_PARAMETER",
+    "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+    "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
     "crossConceptKeys": [],
-    "conditionKeys": ["COND_RANGE"],
+    "conditionKeys": ["COND_FUNCTION_INJECTIVE","COND_RANGE","COND_PIECEWISE_DOMAIN_PARTITION"],
     "integrationPattern": "SEQUENTIAL",
     "level": "상",
     "solutionImage": "assets/images/20_매산여고_2학기_기말_고1_기출/q12-solution.svg",
     "solutionImageAlt": "두 조각의 치역이 맞닿고 겹치지 않는 구간",
     "solutionImageCaption": "(−∞,−8]과 (−8,−2)의 분할",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "questionUid": "qid_v1_8b991cf57faa657101d30e068ee6d0f45204615d686af57ccd0c5e11a6129b21",
+    "sourceQid": 12,
+    "sourceOrdinal": 12,
+    "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":12,"sourceQid":12,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+  
   },
   {
     "id": 13,
@@ -542,6 +626,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 5: 여러 구간·경계·경우를 맞춰 전체 구조를 종합해야 한다. 현재 풀이 근거: 유리함수는 $y=2+\\dfrac{k}{x-3}$이다. 모든 사분면을 지나려면 $k>0$이고, 음수 $x$에서 그래프가 $x$축 아래에 놓이는 점이 있어야 하므로 $2+\\dfrac{k}{x-3} 6$일 때이다. 무리함수의 정의역은 $x\\ge-\\dfrac{k}{2}$이다.…",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
@@ -553,7 +638,13 @@ window.questionBank = [
     "solutionImage": "assets/images/20_매산여고_2학기_기말_고1_기출/q13-solution.svg",
     "solutionImageAlt": "두 그래프의 사분면 조건에서 얻은 정수 범위",
     "solutionImageCaption": "k>6과 0<k<9의 공통 정수 7,8",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "questionUid": "qid_v1_612e569eff91e69e4e59c968547c0a226fa5d4cd20957f85af483f777d9ecb53",
+    "sourceQid": 13,
+    "sourceOrdinal": 13,
+    "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":13,"sourceQid":13,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+  
   },
   {
     "id": 14,
@@ -585,14 +676,21 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 하: 정의나 기본 성질을 곧바로 적용하는 사고가 중심이다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 여섯 학생의 도착 순서는 $6!$가지이다. 첫 도착자가 $B$동아리인 경우는 $4\\cdot5!$가지이고, 마지막 도착자가 $B$동아리인 경우도 $4\\cdot5!$가지이다. 첫째와 마지막이 모두 $B$동아리이면 첫 학생 4가지, 마지막 학생 3가지, 가운데 네 학생의 순서…",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
     "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_DISTINCT_ARRIVAL_TIMES"],
     "integrationPattern": "SEQUENTIAL",
-    "level": "하"
+    "level": "하",
+    "questionUid": "qid_v1_83267abe8d1dffa1428f4fda134715c095cd3b51a1d84a9410993e357df95608",
+    "sourceQid": 14,
+    "sourceOrdinal": 14,
+    "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":14,"sourceQid":14,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+  
   },
   {
     "id": 15,
@@ -625,18 +723,25 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: 12개 점이 원 위에 있으므로 세 꼭짓점 사이의 세 호는 12칸을 나눈 양의 정수 간격 $r,s,t$로 나타내며 $r+s+t=12$이다. 각은 맞은편 호 간격의 절반이므로 간격이 6보다 작으면 예각, 6이면 직각, 6보다 크면 둔각이다. 전체 삼각형은…",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
     "templateKey": "TPL_COMBINATION_SELECTION",
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_INSCRIBED_ANGLE"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "level": "중",
     "solutionImage": "assets/images/20_매산여고_2학기_기말_고1_기출/q15-solution.svg",
     "solutionImageAlt": "12개 원 위 점으로 만든 삼각형의 각 분류와 개수",
     "solutionImageCaption": "호 간격에 따른 예각 40, 직각 60, 둔각 120",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "questionUid": "qid_v1_d0141edccc7f045c9810229926e075c2daeb53678f659ffa2d07329052149368",
+    "sourceQid": 15,
+    "sourceOrdinal": 15,
+    "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":15,"sourceQid":15,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+  
   },
   {
     "id": 16,
@@ -669,18 +774,25 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: 그림에서 이웃한 영역은 $A-B$, $B-C$, $C-D$, $D-A$이다. 먼저 $A$의 색은 4가지이다. $B,D$는 각각 $A$와 다른 3가지씩 고른다. $B=D$이면 $C$는 그 색과 달라야 하므로 3가지이다. 이 경우는 $4\\cdot3\\cdot3=36$가지이다. $B",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
     "templateKey": "TPL_H1_COUNTING_GRAPH_PATH_COLOR",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_ADJACENT_REGIONS_DIFFERENT_COLOR"],
     "integrationPattern": "SEQUENTIAL",
     "level": "중",
     "solutionImage": "assets/images/20_매산여고_2학기_기말_고1_기출/q16-solution.svg",
     "solutionImageAlt": "그림의 영역별 인접 관계와 색칠 수",
     "solutionImageCaption": "A-B-C-D-A 인접 관계와 경우 나누기",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "questionUid": "qid_v1_44edec091b52a9f87a91c4cf02f5b4706493fdc208c285e6422aa8e6edde23ea",
+    "sourceQid": 16,
+    "sourceOrdinal": 16,
+    "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":16,"sourceQid":16,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+  
   },
   {
     "id": 17,
@@ -712,18 +824,25 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 여덟 개의 $a$ 사이와 양 끝에는 9개의 자리가 있다. 서로 이웃하지 않게 네 개의 $b$를 놓는 방법은 $\\binom94=126$가지이다. 조건 (나)를 어기는 경우는 첫째 자리와 마지막 자리가 모두 $b$인 경우이다. 양 끝 두 자리를 고정하면 가운데 여덟 자리 중 서로",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
     "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_FIRST_LAST_SYMBOL_DEPENDENCY","COND_NO_ADJACENT_SELECTED_SYMBOLS"],
     "integrationPattern": "SEQUENTIAL",
     "level": "중",
     "solutionImage": "assets/images/20_매산여고_2학기_기말_고1_기출/q17-solution.svg",
     "solutionImageAlt": "여덟 a 사이와 양끝 자리에서 b를 고르는 경우",
     "solutionImageCaption": "전체 126에서 양끝 b인 21을 제외",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "questionUid": "qid_v1_7e2234af00d7998738b2835588876474889c2337ef0e8e722de63000b9a2a6ad",
+    "sourceQid": 17,
+    "sourceOrdinal": 17,
+    "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":17,"sourceQid":17,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+  
   },
   {
     "id": 18,
@@ -750,18 +869,25 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 하: 정의나 기본 성질을 곧바로 적용하는 사고가 중심이다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 역함수 그래프는 원래 그래프를 $y=x$에 대하여 대칭이동한 것이다. 원래 함수의 점근선 $x=5$, $y=-3$은 서로 바뀐다. 따라서 $y=f^{-1}(x)$의 두 점근선은 $x=-3$, $y=5$이다.",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "NORMAL",
-    "problemTypeKey": "PT_INVERSE_GRAPH",
-    "templateKey": "TPL_INVERSE_GRAPH_GEOMETRY",
-    "crossConceptKeys": [],
+    "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+    "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+    "crossConceptKeys": ["CC_INVERSE_FUNCTION"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "level": "하",
     "solutionImage": "assets/images/20_매산여고_2학기_기말_고1_기출/q18-solution.svg",
     "solutionImageAlt": "역함수에서 수직·수평 점근선이 바뀌는 표",
     "solutionImageCaption": "x=5, y=−3이 y=5, x=−3으로 교환",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "questionUid": "qid_v1_e1534b1ac192d508ec128665c836e40b60a5c9b4e426c7cb7746ba018b12435e",
+    "sourceQid": 18,
+    "sourceOrdinal": 18,
+    "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":18,"sourceQid":18,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+  
   },
   {
     "id": 19,
@@ -788,14 +914,21 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 5: 여러 구간·경계·경우를 맞춰 전체 구조를 종합해야 한다. 현재 풀이 근거: 단사함수 $f:A\\to A$는 순열이다. 인접한 두 정의역 원소에서 차가 4가 되는 값의 순서는 $(1,5)$ 또는 $(2,6)$뿐이다. 다섯 인접 위치 중 한 곳에서 차가 4가 되도록 세면 $5\\cdot2\\cdot4!=240$이다. 두 위치에서 동시에 성립하려면 두 사건이…",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_FUNCTION_COUNTING",
     "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_EXACTLY_ONE_ADJACENT_FUNCTION_VALUE_DIFFERENCE","COND_FUNCTION_INJECTIVE"],
     "integrationPattern": "SEQUENTIAL",
-    "level": "상"
+    "level": "상",
+    "questionUid": "qid_v1_a894ce7fa1ad496789ddb7ff26a109171edacff72546f99818ab3f23cd08650b",
+    "sourceQid": 19,
+    "sourceOrdinal": 19,
+    "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":19,"sourceQid":19,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+  
   },
   {
     "id": 20,
@@ -820,6 +953,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 내림차순 배열에서 각 첫째 자리마다 뒤의 네 자리 순열이 24개씩 있다. 50번째 수는 첫째 자리가 5인 묶음(49~72번째)의 두 번째 순열이다. 남은 $9,7,3,1$의 두 번째 내림차순 순열은 $9,7,1,3$이므로 $a=59713$이다. 100번째 수는 첫째 자리가…",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
@@ -827,7 +961,13 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "level": "중"
+    "level": "중",
+    "questionUid": "qid_v1_e24a5ed2a8c29e57c49e4df2cba622a959bccf1a4fa7dff499093a6c8bd00fbf",
+    "sourceQid": 20,
+    "sourceOrdinal": 20,
+    "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":20,"sourceQid":20,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+  
   },
   {
     "id": 21,
@@ -853,6 +993,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: 점 $P$의 좌표를 $P=(t^2,t)$로 놓으면 $t=\\sqrt{x}\\ge0$이다. 직선 $AB$의 기울기는 1이므로 방정식은 $y=x+1$이고, $AB=\\sqrt2$이다. 점 $P$에서 직선 $AB$까지의 거리는 $\\dfrac{|t^2-t+1|}{\\sqrt2}$이다.…",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
@@ -864,7 +1005,13 @@ window.questionBank = [
     "solutionImage": "assets/images/20_매산여고_2학기_기말_고1_기출/q21-solution.svg",
     "solutionImageAlt": "곡선 위 점 P, 직선 AB, 수선의 발 H와 밑변·높이",
     "solutionImageCaption": "AB=√2, PH가 AB에 수직, P=(1/4,1/2)",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "questionUid": "qid_v1_d63ef363e1fab88cfddd07e6fbe998849058e840557ab4ac8af6fa506fcecc6f",
+    "sourceQid": 21,
+    "sourceOrdinal": 21,
+    "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":21,"sourceQid":21,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+  
   },
   {
     "id": 22,
@@ -890,10 +1037,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: $f(g(x))=3(2x-1)^2+2$이다. 자연수 $a$에 대해 정의역 $(-a-1,a+1)$은 $x=\\frac12$를 포함하므로 최솟값은 2이다. 왼쪽 끝에 가까워질 때 제곱항은 $(2a+3)^2$에 가까워지고, 이 값은 오른쪽 끝에서의 $(2a+1)^2$보다 크다.…",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
-    "templateKey": "TPL_COMPOSITION_GRAPH_TRACE_VALUE",
+    "templateKey": "TPL_COMPOSITE_RANGE",
     "crossConceptKeys": [],
     "conditionKeys": ["COND_NATURAL_NUMBER","COND_RANGE"],
     "integrationPattern": "SEQUENTIAL",
@@ -901,6 +1049,12 @@ window.questionBank = [
     "solutionImage": "assets/images/20_매산여고_2학기_기말_고1_기출/q22-solution.svg",
     "solutionImageAlt": "열린 상한을 가진 합성함수의 치역과 자연수 개수",
     "solutionImageCaption": "[2, 3(2a+3)²+2)의 최솟값/상한",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "questionUid": "qid_v1_96437a66e0933f52ab1b3190bd038414914be73eee41f679f2f91fd3ae1c1b23",
+    "sourceQid": 22,
+    "sourceOrdinal": 22,
+    "sourceArchiveFile": "original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2020|매산여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js","sourceOrdinal":22,"sourceQid":22,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_매산여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_매산여고_2학기_기말_고1_기출.evidence.json","sourcePdfSha256":"9ECC3F5AAC8F4C2CC5454579507CE2F409D2DB5366F0C0036B6E213EFE4CE913"}
+  
   }
 ];

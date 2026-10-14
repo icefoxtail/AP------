@@ -38,7 +38,14 @@ window.questionBank = [
     ],
     "tags": ["객관식", "집합"],
     "answer": "④",
-    "solution": "집합 $B$는 5 이하의 소수로 이루어져 있으므로 $B=\\{2,3,5\\}$이다.\n\n① $2\\in A$이므로 참이다.\n② $7$은 $B$의 원소가 아니므로 $7\\notin B$는 참이다.\n③ $B=\\{2,3,5\\}$의 모든 원소가 $A$에 속하므로 $B\\subset A$는 참이다.\n④ $4$는 $B$의 원소가 아니므로 $B-A$에 속하지 않는다. 따라서 $4\\in B-A$는 거짓이다.\n⑤ 공집합은 모든 집합의 부분집합이므로 $\\varnothing\\subset A$는 참이다.\n\n틀린 것은 ④이다."
+    "solution": "집합 $B$는 5 이하의 소수로 이루어져 있으므로 $B=\\{2,3,5\\}$이다.\n\n① $2\\in A$이므로 참이다.\n② $7$은 $B$의 원소가 아니므로 $7\\notin B$는 참이다.\n③ $B=\\{2,3,5\\}$의 모든 원소가 $A$에 속하므로 $B\\subset A$는 참이다.\n④ $4$는 $B$의 원소가 아니므로 $B-A$에 속하지 않는다. 따라서 $4\\in B-A$는 거짓이다.\n⑤ 공집합은 모든 집합의 부분집합이므로 $\\varnothing\\subset A$는 참이다.\n\n틀린 것은 ④이다.",
+    "questionUid": "qid_v1_7db39813d71fb79693855590fe72edabc12d5bf69de52752c10a2a3837dbf639",
+    "sourceQid": 1,
+    "sourceOrdinal": 1,
+    "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":1,"sourceQid":1,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
+    "difficultyReason": "집합 원소와 포함 관계를 직접 판정하는 기초 문항."
+  
   },
   {
     "id": 2,
@@ -71,7 +78,14 @@ window.questionBank = [
     "choices": ["10", "12", "16", "18", "20"],
     "tags": ["객관식", "집합"],
     "answer": "①",
-    "solution": "$A\\subset B$이고 $B\\subset A$이므로 두 집합은 같다.\n\n$B$에는 $2,3$이 있으므로 $A=\\{2,a+1,7\\}$에도 $3$이 있어야 한다. 따라서 $a+1=3$, $a=2$이다.\n\n이때 $A=\\{2,3,7\\}$이다. $B=\\{2b-3,2,3\\}$가 이 집합과 같으려면 $2b-3=7$이어야 하므로 $b=5$이다.\n\n따라서 $ab=2\\cdot5=10$이고 정답은 ①이다."
+    "solution": "$A\\subset B$이고 $B\\subset A$이므로 두 집합은 같다.\n\n$B$에는 $2,3$이 있으므로 $A=\\{2,a+1,7\\}$에도 $3$이 있어야 한다. 따라서 $a+1=3$, $a=2$이다.\n\n이때 $A=\\{2,3,7\\}$이다. $B=\\{2b-3,2,3\\}$가 이 집합과 같으려면 $2b-3=7$이어야 하므로 $b=5$이다.\n\n따라서 $ab=2\\cdot5=10$이고 정답은 ①이다.",
+    "questionUid": "qid_v1_b4b9f6a601590de48b05aa04a951cc3f313d57bace1ed9d3132f26edaf008e66",
+    "sourceQid": 2,
+    "sourceOrdinal": 2,
+    "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":2,"sourceQid":2,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
+    "difficultyReason": "상호 포함을 등식으로 바꿔 매개변수 둘을 찾는 2단계 문항."
+  
   },
   {
     "id": 3,
@@ -104,7 +118,14 @@ window.questionBank = [
     "choices": ["3", "7", "15", "31", "63"],
     "tags": ["객관식", "집합"],
     "answer": "⑤",
-    "solution": "28의 양의 약수는 $1,2,4,7,14,28$로 6개이다.\n\n원소가 6개인 집합의 부분집합은 각 원소를 넣거나 넣지 않는 두 선택으로 세므로 모두 $2^6=64$개이다. 진부분집합은 집합 자신을 제외한 부분집합이므로\n$64-1=63$개이다.\n\n따라서 정답은 ⑤이다."
+    "solution": "28의 양의 약수는 $1,2,4,7,14,28$로 6개이다.\n\n원소가 6개인 집합의 부분집합은 각 원소를 넣거나 넣지 않는 두 선택으로 세므로 모두 $2^6=64$개이다. 진부분집합은 집합 자신을 제외한 부분집합이므로\n$64-1=63$개이다.\n\n따라서 정답은 ⑤이다.",
+    "questionUid": "qid_v1_6d39dcfddfa91ea00ed5b13def6b5c2a8cdebedd6776b8297a3085815a710a8c",
+    "sourceQid": 3,
+    "sourceOrdinal": 3,
+    "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":3,"sourceQid":3,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
+    "difficultyReason": "원소 수와 진부분집합 정의를 적용하는 직접 문항."
+  
   },
   {
     "id": 4,
@@ -143,7 +164,14 @@ window.questionBank = [
     ],
     "tags": ["객관식", "명제"],
     "answer": "①",
-    "solution": "명제의 역은 가정과 결론의 자리를 서로 바꿔 만든다.\n\n원래 명제의 가정은 $x+y>0$, 결론은 “$x>0$ 또는 $y>0$”이다. 따라서 역은 “$x>0$ 또는 $y>0$이면 $x+y>0$이다.”\n\n이는 보기 ①이다."
+    "solution": "명제의 역은 가정과 결론의 자리를 서로 바꿔 만든다.\n\n원래 명제의 가정은 $x+y>0$, 결론은 “$x>0$ 또는 $y>0$”이다. 따라서 역은 “$x>0$ 또는 $y>0$이면 $x+y>0$이다.”\n\n이는 보기 ①이다.",
+    "questionUid": "qid_v1_ceb440a523d54d8f3d9cecd85443ba751a56d395d7e813f2a5aa58df48513f0f",
+    "sourceQid": 4,
+    "sourceOrdinal": 4,
+    "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":4,"sourceQid":4,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
+    "difficultyReason": "역의 정의를 적용하는 기초 문항."
+  
   },
   {
     "id": 5,
@@ -176,7 +204,14 @@ window.questionBank = [
     "choices": ["1", "4", "9", "16", "25"],
     "tags": ["객관식", "실수와 식"],
     "answer": "③",
-    "solution": "조건 $3x+4y=15$에서 코시·슈바르츠 부등식을 적용한다.\n\n$(3x+4y)^2\\le(3^2+4^2)(x^2+y^2)$이므로\n$15^2\\le25(x^2+y^2)$,\n$x^2+y^2\\ge9$이다.\n\n등호는 $(x,y)$가 $(3,4)$의 실수배일 때 성립한다. $x=3t$, $y=4t$라 놓으면 조건에서\n$3(3t)+4(4t)=25t=15$,\n$t=\\dfrac35$이다.\n따라서 $(x,y)=\\left(\\dfrac95,\\dfrac{12}{5}\\right)$에서 9가 실제로 얻어진다.\n\n그러므로 최솟값은 9이고 정답은 ③이다."
+    "solution": "조건 $3x+4y=15$에서 코시·슈바르츠 부등식을 적용한다.\n\n$(3x+4y)^2\\le(3^2+4^2)(x^2+y^2)$이므로\n$15^2\\le25(x^2+y^2)$,\n$x^2+y^2\\ge9$이다.\n\n등호는 $(x,y)$가 $(3,4)$의 실수배일 때 성립한다. $x=3t$, $y=4t$라 놓으면 조건에서\n$3(3t)+4(4t)=25t=15$,\n$t=\\dfrac35$이다.\n따라서 $(x,y)=\\left(\\dfrac95,\\dfrac{12}{5}\\right)$에서 9가 실제로 얻어진다.\n\n그러므로 최솟값은 9이고 정답은 ③이다.",
+    "questionUid": "qid_v1_895001059b4866dbd7d9f80e35c919b9845e08c4bc59a7d1638582345526278d",
+    "sourceQid": 5,
+    "sourceOrdinal": 5,
+    "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":5,"sourceQid":5,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
+    "difficultyReason": "부등식 하한과 등호 가능성을 함께 확인하는 중간 난도."
+  
   },
   {
     "id": 6,
@@ -209,7 +244,14 @@ window.questionBank = [
     "choices": ["ㄱ, ㄴ", "ㄱ, ㄷ", "ㄱ, ㄹ", "ㄴ, ㄷ", "ㄴ, ㄹ"],
     "tags": ["객관식", "명제", "실수와 식"],
     "answer": "⑤",
-    "solution": "필요충분조건은 조건이 성립할 때와 $x=y=0$일 때가 서로 정확히 일치해야 한다.\n\nㄱ. $x-y=0$은 $x=y$만 뜻한다. 예를 들어 $x=y=1$도 만족하므로 필요충분조건이 아니다.\n\nㄴ. $|x|+|y|=0$이면 두 절댓값이 모두 0이어야 하므로 $x=y=0$이다. 반대로 $x=y=0$이면 식도 0이다. 따라서 필요충분조건이다.\n\nㄷ. $xy=0$은 둘 중 하나가 0이라는 뜻이므로 둘 다 0일 필요는 없다. 필요충분조건이 아니다.\n\nㄹ. 제곱은 음수가 될 수 없으므로 $x^2+y^2=0$이면 두 제곱이 모두 0이다. 따라서 $x=y=0$과 필요충분조건이다.\n\n해당하는 것은 ㄴ, ㄹ이므로 정답은 ⑤이다."
+    "solution": "필요충분조건은 조건이 성립할 때와 $x=y=0$일 때가 서로 정확히 일치해야 한다.\n\nㄱ. $x-y=0$은 $x=y$만 뜻한다. 예를 들어 $x=y=1$도 만족하므로 필요충분조건이 아니다.\n\nㄴ. $|x|+|y|=0$이면 두 절댓값이 모두 0이어야 하므로 $x=y=0$이다. 반대로 $x=y=0$이면 식도 0이다. 따라서 필요충분조건이다.\n\nㄷ. $xy=0$은 둘 중 하나가 0이라는 뜻이므로 둘 다 0일 필요는 없다. 필요충분조건이 아니다.\n\nㄹ. 제곱은 음수가 될 수 없으므로 $x^2+y^2=0$이면 두 제곱이 모두 0이다. 따라서 $x=y=0$과 필요충분조건이다.\n\n해당하는 것은 ㄴ, ㄹ이므로 정답은 ⑤이다.",
+    "questionUid": "qid_v1_f778b20432795baaa67d8d2ce2f80f66394b3820b9575d47f931c0ecc05d94ea",
+    "sourceQid": 6,
+    "sourceOrdinal": 6,
+    "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":6,"sourceQid":6,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
+    "difficultyReason": "네 조건의 양방향 성립 여부를 각각 판정하는 중간 난도."
+  
   },
   {
     "id": 7,
@@ -242,7 +284,14 @@ window.questionBank = [
     "choices": ["0", "1", "2", "3", "4"],
     "tags": ["객관식", "집합", "대응"],
     "answer": "②",
-    "solution": "13을 4로 나눈 나머지를 구한다.\n\n$13=4\\cdot3+1$이므로 나머지는 1이다.\n\n따라서 정답은 ②이다."
+    "solution": "13을 4로 나눈 나머지를 구한다.\n\n$13=4\\cdot3+1$이므로 나머지는 1이다.\n\n따라서 정답은 ②이다.",
+    "questionUid": "qid_v1_687cba9db05441a31468d49056dd5319f9960b039b330caefa1356578aa66f77",
+    "sourceQid": 7,
+    "sourceOrdinal": 7,
+    "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":7,"sourceQid":7,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
+    "difficultyReason": "나눗셈의 나머지를 직접 계산하는 기초 문항."
+  
   },
   {
     "id": 8,
@@ -275,7 +324,14 @@ window.questionBank = [
     "choices": ["4", "9", "12", "13", "15"],
     "tags": ["객관식", "함수"],
     "answer": "①",
-    "solution": "합성함수는 안쪽 함수부터 계산한다.\n\n$f(-1)=2(-1)+3=1$이다.\n\n따라서\n$(g\\circ f)(-1)=g(1)$\n$=-(1)^2+8(1)-3$\n$=-1+8-3=4$이다.\n\n정답은 ①이다."
+    "solution": "합성함수는 안쪽 함수부터 계산한다.\n\n$f(-1)=2(-1)+3=1$이다.\n\n따라서\n$(g\\circ f)(-1)=g(1)$\n$=-(1)^2+8(1)-3$\n$=-1+8-3=4$이다.\n\n정답은 ①이다.",
+    "questionUid": "qid_v1_7ec79bc5b34adb2f804d4b88eda01c22a749e858af46f9eeac0dae40a15c4e4c",
+    "sourceQid": 8,
+    "sourceOrdinal": 8,
+    "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":8,"sourceQid":8,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
+    "difficultyReason": "합성함수 순서를 따라 대입하는 기초 문항."
+  
   },
   {
     "id": 9,
@@ -308,7 +364,14 @@ window.questionBank = [
     "choices": ["-3", "1", "12", "13", "17"],
     "tags": ["객관식", "함수"],
     "answer": "②",
-    "solution": "$f^{-1}(-7)=-1$이라는 말은 $f(-1)=-7$이라는 뜻이다. 두 조건에서 $a,b$를 구한다.\n\n$f(3)=9$에서 $3a+b=9$,\n$f(-1)=-7$에서 $-a+b=-7$이다.\n두 식을 빼면 $4a=16$이므로 $a=4$, 이어서 $b=-3$이다.\n\n따라서 $f(x)=4x-3$이고\n$f(1)=1$,\n$(f\\circ f)(1)=f(1)=1$이다.\n\n정답은 ②이다."
+    "solution": "$f^{-1}(-7)=-1$이라는 말은 $f(-1)=-7$이라는 뜻이다. 두 조건에서 $a,b$를 구한다.\n\n$f(3)=9$에서 $3a+b=9$,\n$f(-1)=-7$에서 $-a+b=-7$이다.\n두 식을 빼면 $4a=16$이므로 $a=4$, 이어서 $b=-3$이다.\n\n따라서 $f(x)=4x-3$이고\n$f(1)=1$,\n$(f\\circ f)(1)=f(1)=1$이다.\n\n정답은 ②이다.",
+    "questionUid": "qid_v1_12fcb4ee8e54dedab96c240e323b4a5ef199e2fc03d7cb5ff66b0b47a7bb5ecc",
+    "sourceQid": 9,
+    "sourceOrdinal": 9,
+    "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":9,"sourceQid":9,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
+    "difficultyReason": "두 함수 조건으로 계수를 구한 뒤 합성값을 찾는 문항."
+  
   },
   {
     "id": 10,
@@ -342,7 +405,14 @@ window.questionBank = [
     "tags": ["객관식", "함수"],
     "answer": "②",
     "solution": "함수와 그 역함수의 그래프가 만나는 점에서는 두 좌표가 같아야 한다. 따라서 교점의 $x$좌표 $a$는 $f(a)=a$를 만족한다.\n\n$3a+2=a$에서 $2a=-2$, $a=-1$이다.\n\n실제로 역함수는 $f^{-1}(x)=\\dfrac{x-2}{3}$이고 두 식을 같게 놓아도 $3x+2=\\dfrac{x-2}{3}$에서 $x=-1$을 얻는다.\n\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/20_효천고_2학기_중간_고1_기출/q10-solution.svg"
+    "solutionImage": "assets/images/20_효천고_2학기_중간_고1_기출/q10-solution.svg",
+    "questionUid": "qid_v1_678fc4d63c9403676dbc9e99c19092b89a956ae1f38be4f79cfdfa1d630678b2",
+    "sourceQid": 10,
+    "sourceOrdinal": 10,
+    "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":10,"sourceQid":10,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
+    "difficultyReason": "역함수 그래프의 교점을 고정점 방정식으로 바꾸는 문항."
+  
   },
   {
     "id": 11,
@@ -361,7 +431,7 @@ window.questionBank = [
     "problemTypeKey": "PT_SET_EXTREMUM",
     "templateKey": "TPL_INTERSECTION_RANGE",
     "crossConceptKeys": [],
-    "conditionKeys": ["COND_NATURAL_NUMBER"],
+    "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
@@ -375,7 +445,14 @@ window.questionBank = [
     "choices": ["40", "60", "80", "100", "120"],
     "tags": ["객관식", "집합"],
     "answer": "④",
-    "solution": "두 활동 중 하나 이상을 신청한 학생 수를 $U$라 하면, 신청하지 않은 학생은 $200-U$명이다.\n\n신청하지 않은 학생이 하나 이상 신청한 학생보다 120명 적으므로\n$200-U=U-120$,\n$2U=320$,\n$U=160$이다.\n따라서 어느 활동도 신청하지 않은 학생은 40명이다.\n\n$A$만 신청한 학생을 $x$명, $B$만 신청한 학생을 $y$명, 둘 다 신청한 학생을 $z$명이라 하자. $A$ 신청자가 $B$ 신청자보다 40명 많으므로\n$x+z=(y+z)+40$, 즉 $x-y=40$이다.\n또 $x+y+z=160$이다. $y=x-40$을 대입하면 $z=200-2x$이다.\n\n$y=x-40\\ge0$에서 $x\\ge40$이다. 또\n$z=160-x-y=160-x-(x-40)=200-2x\\ge0$이므로 $x\\le100$이다.\n\n$x=100$일 때 $y=60$, $z=0$이므로 실제로 조건을 만족한다. 이때 $A$ 신청자는 100명, $B$ 신청자는 60명이고, 둘 중 하나 이상을 신청한 학생은 160명이다.\n\n따라서 최댓값은 100명이다."
+    "solution": "두 활동 중 하나 이상을 신청한 학생 수를 $U$라 하면, 신청하지 않은 학생은 $200-U$명이다.\n\n신청하지 않은 학생이 하나 이상 신청한 학생보다 120명 적으므로\n$200-U=U-120$,\n$2U=320$,\n$U=160$이다.\n따라서 어느 활동도 신청하지 않은 학생은 40명이다.\n\n$A$만 신청한 학생을 $x$명, $B$만 신청한 학생을 $y$명, 둘 다 신청한 학생을 $z$명이라 하자. $A$ 신청자가 $B$ 신청자보다 40명 많으므로\n$x+z=(y+z)+40$, 즉 $x-y=40$이다.\n또 $x+y+z=160$이다. $y=x-40$을 대입하면 $z=200-2x$이다.\n\n$y=x-40\\ge0$에서 $x\\ge40$이다. 또\n$z=160-x-y=160-x-(x-40)=200-2x\\ge0$이므로 $x\\le100$이다.\n\n$x=100$일 때 $y=60$, $z=0$이므로 실제로 조건을 만족한다. 이때 $A$ 신청자는 100명, $B$ 신청자는 60명이고, 둘 중 하나 이상을 신청한 학생은 160명이다.\n\n따라서 최댓값은 100명이다.",
+    "questionUid": "qid_v1_c1c9b182cb7f0c5dfb2b51bddbc2b9b53e289f8711018a1287f972f5295a8b7e",
+    "sourceQid": 11,
+    "sourceOrdinal": 11,
+    "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":11,"sourceQid":11,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
+    "difficultyReason": "합집합 크기와 A만 신청 인원 변수로 최댓값을 찾는 복합 문항."
+  
   },
   {
     "id": 12,
@@ -408,7 +485,14 @@ window.questionBank = [
     "choices": ["A, B", "A, C", "B, C", "B, D", "C, D"],
     "tags": ["객관식", "명제"],
     "answer": "⑤",
-    "solution": "과자를 먹은 학생은 정확히 두 명이다.\n\n(가) 두 명이 함께 먹었으므로 먹은 학생 수는 2명이다.\n(나) $A$가 먹으면 $C$도 먹는다.\n(다) $D$가 먹지 않으면 $C$도 먹지 않는다. 대우를 취하면 $C$가 먹었을 때 $D$도 먹었다.\n(라) $A$가 먹지 않으면 $B$도 먹지 않는다. 대우를 취하면 $B$가 먹었을 때 $A$도 먹었다.\n\n만약 $B$가 먹었다면 (라), (나), (다)의 대우에 의해 $A,C,D$도 모두 먹어 네 명이 된다. 이는 정확히 두 명이라는 조건에 어긋나므로 $B$는 먹지 않았다.\n\n만약 $A$가 먹었다면 (나), (다)의 대우에 의해 $C,D$도 먹어 세 명이 되므로 $A$도 먹지 않았다. 남은 두 명은 $C,D$이고, 두 학생은 실제로 함께 먹은 두 명이므로 조건을 모두 만족한다.\n\n따라서 정답은 ⑤이다."
+    "solution": "과자를 먹은 학생은 정확히 두 명이다.\n\n(가) 두 명이 함께 먹었으므로 먹은 학생 수는 2명이다.\n(나) $A$가 먹으면 $C$도 먹는다.\n(다) $D$가 먹지 않으면 $C$도 먹지 않는다. 대우를 취하면 $C$가 먹었을 때 $D$도 먹었다.\n(라) $A$가 먹지 않으면 $B$도 먹지 않는다. 대우를 취하면 $B$가 먹었을 때 $A$도 먹었다.\n\n만약 $B$가 먹었다면 (라), (나), (다)의 대우에 의해 $A,C,D$도 모두 먹어 네 명이 된다. 이는 정확히 두 명이라는 조건에 어긋나므로 $B$는 먹지 않았다.\n\n만약 $A$가 먹었다면 (나), (다)의 대우에 의해 $C,D$도 먹어 세 명이 되므로 $A$도 먹지 않았다. 남은 두 명은 $C,D$이고, 두 학생은 실제로 함께 먹은 두 명이므로 조건을 모두 만족한다.\n\n따라서 정답은 ⑤이다.",
+    "questionUid": "qid_v1_5029348b376acb61025d7ca2f64ccf6d21de1bed09abb14d3513ee1bcaa6292a",
+    "sourceQid": 12,
+    "sourceOrdinal": 12,
+    "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":12,"sourceQid":12,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
+    "difficultyReason": "세 함의와 정확히 두 명 조건을 조합하는 논리 추론 문항."
+  
   },
   {
     "id": 13,
@@ -441,7 +525,14 @@ window.questionBank = [
     "choices": ["-1", "-2", "-3", "-4", "-5"],
     "tags": ["객관식", "명제", "부등식"],
     "answer": "④",
-    "solution": "먼저 $p$를 정리한다.\n$3x+4<10$에서 $3x<6$이므로 $p$는 $x<2$이다.\n\n$p$가 $q$의 필요조건이라는 말은 $q$가 성립하면 $p$도 성립한다는 뜻이다. 따라서 $|x-k|\\le5$를 만족하는 모든 $x$가 $x<2$여야 한다.\n\n$q$의 해는 $k-5\\le x\\le k+5$이다. 오른쪽 끝 $k+5$도 포함되므로 $k+5<2$이어야 한다. 따라서 $k<-3$이고, 이를 만족하는 가장 큰 정수는 $-4$이다.\n\n정답은 ④이다."
+    "solution": "먼저 $p$를 정리한다.\n$3x+4<10$에서 $3x<6$이므로 $p$는 $x<2$이다.\n\n$p$가 $q$의 필요조건이라는 말은 $q$가 성립하면 $p$도 성립한다는 뜻이다. 따라서 $|x-k|\\le5$를 만족하는 모든 $x$가 $x<2$여야 한다.\n\n$q$의 해는 $k-5\\le x\\le k+5$이다. 오른쪽 끝 $k+5$도 포함되므로 $k+5<2$이어야 한다. 따라서 $k<-3$이고, 이를 만족하는 가장 큰 정수는 $-4$이다.\n\n정답은 ④이다.",
+    "questionUid": "qid_v1_39a179287396290d7a477698a40cf2d58bbd17b45b43bf6527f970e6fe2dc39a",
+    "sourceQid": 13,
+    "sourceOrdinal": 13,
+    "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":13,"sourceQid":13,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
+    "difficultyReason": "필요조건 방향과 열린 구간 끝점을 함께 판단하는 문항."
+  
   },
   {
     "id": 14,
@@ -474,7 +565,14 @@ window.questionBank = [
     "choices": ["9", "10", "11", "12", "13"],
     "tags": ["객관식", "다항식", "부등식"],
     "answer": "③",
-    "solution": "분자를 인수분해한다.\n$x^3+3x^2-12x-32=(x+4)(x^2-x-8)$이고, 분모는\n$x^2-16=(x-4)(x+4)$이다.\n\n$x>4$이므로 분모는 0이 아니며 약분할 수 있다.\n$\\dfrac{x^3+3x^2-12x-32}{x^2-16}$\n$=\\dfrac{x^2-x-8}{x-4}$이다.\n\n나눗셈하면\n$\\dfrac{x^2-x-8}{x-4}=x+3+\\dfrac4{x-4}$이다.\n$t=x-4$라 두면 $t>0$이고 식은 $t+7+\\dfrac4t$가 된다.\n\n$t+\\dfrac4t-4=\\dfrac{(t-2)^2}{t}\\ge0$이므로 $t+\\dfrac4t\\ge4$이다. 따라서 원래 식은 11 이상이고, $t=2$ 즉 $x=6$에서 11을 얻는다.\n\n최솟값은 11이므로 정답은 ③이다."
+    "solution": "분자를 인수분해한다.\n$x^3+3x^2-12x-32=(x+4)(x^2-x-8)$이고, 분모는\n$x^2-16=(x-4)(x+4)$이다.\n\n$x>4$이므로 분모는 0이 아니며 약분할 수 있다.\n$\\dfrac{x^3+3x^2-12x-32}{x^2-16}$\n$=\\dfrac{x^2-x-8}{x-4}$이다.\n\n나눗셈하면\n$\\dfrac{x^2-x-8}{x-4}=x+3+\\dfrac4{x-4}$이다.\n$t=x-4$라 두면 $t>0$이고 식은 $t+7+\\dfrac4t$가 된다.\n\n$t+\\dfrac4t-4=\\dfrac{(t-2)^2}{t}\\ge0$이므로 $t+\\dfrac4t\\ge4$이다. 따라서 원래 식은 11 이상이고, $t=2$ 즉 $x=6$에서 11을 얻는다.\n\n최솟값은 11이므로 정답은 ③이다.",
+    "questionUid": "qid_v1_915db40a9d1231020ac090ce71a88e8ec08168f94ea775e4842b1d115a108f5c",
+    "sourceQid": 14,
+    "sourceOrdinal": 14,
+    "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":14,"sourceQid":14,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
+    "difficultyReason": "인수분해·약분·완전제곱을 연쇄 적용하는 문항."
+  
   },
   {
     "id": 15,
@@ -493,7 +591,7 @@ window.questionBank = [
     "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
     "templateKey": "TPL_QUADRATIC_DOMAIN_BIJECTION",
     "crossConceptKeys": ["CC_QUADRATIC_FUNCTION"],
-    "conditionKeys": ["COND_NATURAL_NUMBER"],
+    "conditionKeys": ["COND_FUNCTION_BIJECTION","COND_NATURAL_NUMBER"],
     "integrationPattern": "REINTERPRETATION",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
@@ -508,7 +606,14 @@ window.questionBank = [
     "tags": ["객관식", "함수"],
     "answer": "⑤",
     "solution": "$(가)$에서\n$f(0)=a(-3)(-b)=3ab=6$이므로 $ab=2$이다.\n$a,b$는 자연수이므로 가능한 쌍은 $(a,b)=(1,2)$ 또는 $(2,1)$이다.\n\n이차함수 $a(x-3)(x-b)$의 대칭축은 두 근 $3,b$의 중점인 $x=\\dfrac{3+b}{2}$이다. $x>2$에서 일대일이려면 꼭짓점이 이 구간 안에 있으면 안 된다. 축의 오른쪽과 왼쪽에서 같은 함숫값이 생기기 때문이다.\n\n$(1,2)$이면 축은 $x=\\dfrac52>2$이므로 일대일이 아니다.\n$(2,1)$이면 축은 $x=2$이고, $x>2$에서는 함수가 한 방향으로 엄격히 증가하므로 일대일이다.\n\n따라서 $a=2,b=1$이고\n$f(5)=2(5-3)(5-1)=2\\cdot2\\cdot4=16$이다.\n\n정답은 ⑤이다.",
-    "solutionImage": "assets/images/20_효천고_2학기_중간_고1_기출/q15-solution.svg"
+    "solutionImage": "assets/images/20_효천고_2학기_중간_고1_기출/q15-solution.svg",
+    "questionUid": "qid_v1_1493faa04c38a5951f44dfffd5d0fe91887ff04e28a7f3cca76e88acec2ff9bb",
+    "sourceQid": 15,
+    "sourceOrdinal": 15,
+    "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":15,"sourceQid":15,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
+    "difficultyReason": "매개변수 쌍과 열린 정의역에서의 일대일성을 분석하는 문항."
+  
   },
   {
     "id": 16,
@@ -527,7 +632,7 @@ window.questionBank = [
     "problemTypeKey": "PT_SET_AGGREGATE",
     "templateKey": "TPL_SUBSET_SUM_AGGREGATE",
     "crossConceptKeys": ["CC_NUMBER_PRIME_COPRIME"],
-    "conditionKeys": ["COND_NATURAL_NUMBER"],
+    "conditionKeys": ["COND_COPRIME_TO_FIXED_INTEGER","COND_NATURAL_NUMBER","COND_NONEMPTY_SELECTION","COND_NON_COPRIME_TO_FIXED_INTEGER","COND_ODD_SELECTED_SUM","COND_RANGE"],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
@@ -541,7 +646,14 @@ window.questionBank = [
     "choices": ["259", "287", "301", "315", "343"],
     "tags": ["객관식", "집합"],
     "answer": "③",
-    "solution": "$X\\cap B=\\varnothing$이므로 $X$의 원소는 56과 서로소인 수가 아니다. 56은 소인수 $2,7$만 가지므로 각 원소는 2 또는 7의 배수이다.\n\n또 모든 원소가 10과 서로소이므로 홀수이고 5의 배수도 아니다. 따라서 $X$에 들어갈 수 있는 수는 100 이하의 홀수 7의 배수 중 5의 배수가 아닌 수이다.\n\n그 수는 $7,21,49,63,77,91$이다. 합은\n$7+21+49+63+77+91=308$이다.\n여섯 수가 모두 홀수이므로 이들을 모두 선택하면 합은 짝수이다. 합을 홀수로 만들려면 홀수 개를 골라야 하며, 합을 가장 크게 하려면 합 전체에서 가장 작은 수 7 하나를 빼면 된다.\n\n따라서 최댓값은 $308-7=301$이고 정답은 ③이다."
+    "solution": "$X\\cap B=\\varnothing$이므로 $X$의 원소는 56과 서로소인 수가 아니다. 56은 소인수 $2,7$만 가지므로 각 원소는 2 또는 7의 배수이다.\n\n또 모든 원소가 10과 서로소이므로 홀수이고 5의 배수도 아니다. 따라서 $X$에 들어갈 수 있는 수는 100 이하의 홀수 7의 배수 중 5의 배수가 아닌 수이다.\n\n그 수는 $7,21,49,63,77,91$이다. 합은\n$7+21+49+63+77+91=308$이다.\n여섯 수가 모두 홀수이므로 이들을 모두 선택하면 합은 짝수이다. 합을 홀수로 만들려면 홀수 개를 골라야 하며, 합을 가장 크게 하려면 합 전체에서 가장 작은 수 7 하나를 빼면 된다.\n\n따라서 최댓값은 $308-7=301$이고 정답은 ③이다.",
+    "questionUid": "qid_v1_fa57a523c25af29a8bf201f4cb0c37403992346d5746e51adbfe4ce31cb7ba63",
+    "sourceQid": 16,
+    "sourceOrdinal": 16,
+    "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":16,"sourceQid":16,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
+    "difficultyReason": "약수 조건으로 후보를 제한한 뒤 홀짝 제약 최댓값을 찾는 상 난도."
+  
   },
   {
     "id": 17,
@@ -560,7 +672,7 @@ window.questionBank = [
     "problemTypeKey": "PT_FINITE_BIJECTION",
     "templateKey": "TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_FUNCTION_BIJECTION"],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
@@ -574,7 +686,14 @@ window.questionBank = [
     "choices": ["-4", "-2", "0", "2", "4"],
     "tags": ["객관식", "함수"],
     "answer": "①",
-    "solution": "$f$는 일대일대응이므로 $1,2,\\ldots,7$을 서로 다르게 대응시키는 순열이다.\n\n$x=1$ 조건에서 $f(f(1))+f^{-1}(1)=2$이다. 두 항은 모두 양의 정수이므로 둘 다 1이어야 한다. 따라서 $f^{-1}(1)=1$, 즉 $f(1)=1$이다.\n\n$x=2$ 조건은 $f(f(2))+f^{-1}(2)=4$이다. $f(1)=1$이고 서로 다른 값으로 대응하므로 $f(2)\\ne1$, $f^{-1}(2)\\ne1$이다. 가능한 두 양의 정수의 합이 4이므로 두 항은 각각 2이고, $f(2)=2$이다.\n\n$x=6$ 조건에서 $f(f(6))+f^{-1}(6)=12$이다. $f(6)\\ne6$이므로 $f^{-1}(6)\\ne6$. 두 항은 5와 7이어야 한다. 만약 $f^{-1}(6)=5$이면 $f(5)=6$이고 $f(3)+f(5)=10$에서 $f(3)=4$이다. 남은 출력은 $3,5,7$인데 $f(f(6))=7$을 만들 수 없어 모순이다. 따라서 $f^{-1}(6)=7$, $f(7)=6$, $f(f(6))=5$이다.\n\n이제 $f(3)+f(5)=10$이고 1,2,6은 이미 사용되었다. 남은 출력 중 합이 10인 두 값은 3과 7이므로 $\\{f(3),f(5)\\}=\\{3,7\\}$. 나머지 출력은 4와 5이다. $f(6)$은 4 또는 5인데, $f(6)=5$이면 $f(f(6))=f(5)$가 5가 아니므로 불가능하다. 따라서 $f(6)=4$, $f(4)=5$이다.\n\n그러므로 가능한 순서는 $(f(1),\\ldots,f(7))=(1,2,3,5,7,4,6)$ 또는 $(1,2,7,5,3,4,6)$이다. 두 경우 모두 $f(7)=6$이다.\n\n구하는 값은\n$\\sum_{i=1}^7 f(i)-2(f(3)+f(5)+f(7))$\n$=(1+2+3+4+5+6+7)-2(10+6)$\n$=28-32=-4$이다.\n\n정답은 ①이다."
+    "solution": "$f$는 일대일대응이므로 $1,2,\\ldots,7$을 서로 다르게 대응시키는 순열이다.\n\n$x=1$ 조건에서 $f(f(1))+f^{-1}(1)=2$이다. 두 항은 모두 양의 정수이므로 둘 다 1이어야 한다. 따라서 $f^{-1}(1)=1$, 즉 $f(1)=1$이다.\n\n$x=2$ 조건은 $f(f(2))+f^{-1}(2)=4$이다. $f(1)=1$이고 서로 다른 값으로 대응하므로 $f(2)\\ne1$, $f^{-1}(2)\\ne1$이다. 가능한 두 양의 정수의 합이 4이므로 두 항은 각각 2이고, $f(2)=2$이다.\n\n$x=6$ 조건에서 $f(f(6))+f^{-1}(6)=12$이다. $f(6)\\ne6$이므로 $f^{-1}(6)\\ne6$. 두 항은 5와 7이어야 한다. 만약 $f^{-1}(6)=5$이면 $f(5)=6$이고 $f(3)+f(5)=10$에서 $f(3)=4$이다. 남은 출력은 $3,5,7$인데 $f(f(6))=7$을 만들 수 없어 모순이다. 따라서 $f^{-1}(6)=7$, $f(7)=6$, $f(f(6))=5$이다.\n\n이제 $f(3)+f(5)=10$이고 1,2,6은 이미 사용되었다. 남은 출력 중 합이 10인 두 값은 3과 7이므로 $\\{f(3),f(5)\\}=\\{3,7\\}$. 나머지 출력은 4와 5이다. $f(6)$은 4 또는 5인데, $f(6)=5$이면 $f(f(6))=f(5)$가 5가 아니므로 불가능하다. 따라서 $f(6)=4$, $f(4)=5$이다.\n\n그러므로 가능한 순서는 $(f(1),\\ldots,f(7))=(1,2,3,5,7,4,6)$ 또는 $(1,2,7,5,3,4,6)$이다. 두 경우 모두 $f(7)=6$이다.\n\n구하는 값은\n$\\sum_{i=1}^7 f(i)-2(f(3)+f(5)+f(7))$\n$=(1+2+3+4+5+6+7)-2(10+6)$\n$=28-32=-4$이다.\n\n정답은 ①이다.",
+    "questionUid": "qid_v1_f34995af27c9dbf6cf0ce09b3b4f4ff5cbcd1cf3fa9497a61e08a2790ff93b53",
+    "sourceQid": 17,
+    "sourceOrdinal": 17,
+    "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":17,"sourceQid":17,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
+    "difficultyReason": "순열성, 역함수 위치, 경우 분기를 결합한 고난도 문항."
+  
   },
   {
     "id": 18,
@@ -592,8 +711,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_FINITE_BIJECTION",
     "templateKey": "TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
+    "crossConceptKeys": ["CC_INVERSE_FUNCTION"],
+    "conditionKeys": ["COND_EXACTLY_N_INPUTS_SATISFY_FUNCTION_RELATION","COND_FUNCTION_BIJECTION","COND_UNIVERSAL_FUNCTION_VALUE_DISTANCE"],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
@@ -608,7 +727,14 @@ window.questionBank = [
     "tags": ["객관식", "함수"],
     "answer": "④",
     "solution": "먼저 $f(a)=3a$가 가능하려면 $3a\\in Y$여야 한다. $a\\in X$ 중 해당하는 값은 $a=1,3,5$이다. 그러나 (나)에 의해 $|f(1)-1|\\ge5$이므로 $f(1)=3$은 불가능하다. 조건 (가)를 만족하려면 나머지 두 가능성이 모두 성립해야 하므로\n$f(3)=9$, $f(5)=15$이다.\n\n$f$는 일대일대응이므로 아직 사용하지 않은 출력은 $3,6,12$이다. $b=7$일 때 $|f(7)-7|\\ge5$를 만족하는 남은 값은 12뿐이므로 $f(7)=12$이다. 그러면 남은 출력은 3과 6이다. $b=9$에서는 $|f(9)-9|\\ge5$여야 하므로 $f(9)=3$, 따라서 $f(1)=6$이다.\n\n대응을 정리하면 $1\\mapsto6$, $3\\mapsto9$, $5\\mapsto15$, $7\\mapsto12$, $9\\mapsto3$이다. 따라서 $f(5)=15$, $f^{-1}(6)=1$이다. 또 $f^{-1}(3)=9$, $f^{-1}(9)=3$이므로 $(f^{-1}\\circ f^{-1})(3)=3$이다.\n\n구하는 값은 $15+1+3=19$이고 정답은 ④이다.",
-    "sourceMode": "ALIVE_REPLACEMENT"
+    "sourceMode": "ALIVE_REPLACEMENT",
+    "questionUid": "qid_v1_ead15505373ca38216e676bd14422ec57ba2b7c831e36966ebebb4fb3344118e",
+    "sourceQid": 18,
+    "sourceOrdinal": 18,
+    "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":18,"sourceQid":18,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
+    "difficultyReason": "대응 조건과 역함수 합성을 함께 추론하는 고난도 문항."
+  
   },
   {
     "id": 19,
@@ -641,7 +767,14 @@ window.questionBank = [
     "choices": [],
     "tags": ["서술형", "집합"],
     "answer": "{1,2,3,5,6,8}",
-    "solution": "먼저 드모르간 법칙으로\n$A^c\\cap B=(A\\cup B^c)^c$이다.\n\n또 $(A\\cap B)^c$와 $A\\cup B^c$를 합치면 전체집합 $U$가 된다. 실제로 원소가 $A\\cap B$에 있으면 $A\\cup B^c$에 있고, 그렇지 않으면 $(A\\cap B)^c$에 있다. 따라서\n$U=\\{1,2,3,4,5,6,7,8,9\\}$이다.\n\n주어진 두 집합에서\n$A^c\\cap B=U\\setminus\\{1,2,4,5,6,7,9\\}=\\{3,8\\}$,\n$A\\cap B=U\\setminus\\{3,4,7,8,9\\}=\\{1,2,5,6\\}$이다.\n\n$B$는 $A\\cap B$와 $A^c\\cap B$를 합친 집합이므로\n$B=\\{1,2,5,6\\}\\cup\\{3,8\\}=\\{1,2,3,5,6,8\\}$이다.\n\n세 번째 조건 $A^c\\cap B^c=\\{4,7\\}$과도 일치한다. 따라서 $B=\\{1,2,3,5,6,8\\}$이다."
+    "solution": "먼저 드모르간 법칙으로\n$A^c\\cap B=(A\\cup B^c)^c$이다.\n\n또 $(A\\cap B)^c$와 $A\\cup B^c$를 합치면 전체집합 $U$가 된다. 실제로 원소가 $A\\cap B$에 있으면 $A\\cup B^c$에 있고, 그렇지 않으면 $(A\\cap B)^c$에 있다. 따라서\n$U=\\{1,2,3,4,5,6,7,8,9\\}$이다.\n\n주어진 두 집합에서\n$A^c\\cap B=U\\setminus\\{1,2,4,5,6,7,9\\}=\\{3,8\\}$,\n$A\\cap B=U\\setminus\\{3,4,7,8,9\\}=\\{1,2,5,6\\}$이다.\n\n$B$는 $A\\cap B$와 $A^c\\cap B$를 합친 집합이므로\n$B=\\{1,2,5,6\\}\\cup\\{3,8\\}=\\{1,2,3,5,6,8\\}$이다.\n\n세 번째 조건 $A^c\\cap B^c=\\{4,7\\}$과도 일치한다. 따라서 $B=\\{1,2,3,5,6,8\\}$이다.",
+    "questionUid": "qid_v1_e14accdd01ad3295f1b1853617e77a9db54bb7e72a71277ab5f13b1c86085521",
+    "sourceQid": 19,
+    "sourceOrdinal": 19,
+    "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":19,"sourceQid":19,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
+    "difficultyReason": "여러 여집합 조건으로 교집합을 복원하는 서술형."
+  
   },
   {
     "id": 20,
@@ -674,7 +807,14 @@ window.questionBank = [
     "choices": [],
     "tags": ["서술형", "명제", "부등식"],
     "answer": "64",
-    "solution": "명제 “어떤 실수 $x$에 대하여 $x^2-16x+k<0$이다”의 부정은 “모든 실수 $x$에 대하여 $x^2-16x+k\\ge0$이다”이다.\n\n제곱을 완성하면\n$x^2-16x+k=(x-8)^2+k-64$이다.\n\n$(x-8)^2$의 최솟값은 $x=8$에서 0이다. 따라서 모든 실수 $x$에서 식이 0 이상이려면 $k-64\\ge0$, 즉 $k\\ge64$여야 한다. 가장 작은 값은 $k=64$이다.\n\n정답은 64이다."
+    "solution": "명제 “어떤 실수 $x$에 대하여 $x^2-16x+k<0$이다”의 부정은 “모든 실수 $x$에 대하여 $x^2-16x+k\\ge0$이다”이다.\n\n제곱을 완성하면\n$x^2-16x+k=(x-8)^2+k-64$이다.\n\n$(x-8)^2$의 최솟값은 $x=8$에서 0이다. 따라서 모든 실수 $x$에서 식이 0 이상이려면 $k-64\\ge0$, 즉 $k\\ge64$여야 한다. 가장 작은 값은 $k=64$이다.\n\n정답은 64이다.",
+    "questionUid": "qid_v1_c6f57389974d1717381cfc9b7263eeb65ff22f2501e1ed42305ba36a8c038efc",
+    "sourceQid": 20,
+    "sourceOrdinal": 20,
+    "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":20,"sourceQid":20,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
+    "difficultyReason": "양화사 부정과 이차식 전 구간 비음수 조건을 결합한 문항."
+  
   },
   {
     "id": 21,
@@ -693,7 +833,7 @@ window.questionBank = [
     "problemTypeKey": "PT_SET_CARDINALITY",
     "templateKey": "TPL_INTERSECTION_CARDINALITY_DIRECT",
     "crossConceptKeys": ["CC_CIRCLE_EQUATION"],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_EXACT_INTERSECTION_COUNT"],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
@@ -708,7 +848,14 @@ window.questionBank = [
     "tags": ["서술형", "집합", "방정식"],
     "answer": "144/13<k<16",
     "solution": "$|3x|+|2y|=12$의 그래프는 꼭짓점 $(4,0),(0,6),(-4,0),(0,-6)$을 갖는 마름모이다. 원 $x^2+y^2=k$는 중심이 원점이고 반지름이 $r=\\sqrt{k}$인 원이다.\n\n마름모의 한 변은 제1사분면에서 $3x+2y=12$이다. 원점에서 이 직선까지의 거리는\n$\\dfrac{12}{\\sqrt{3^2+2^2}}=\\dfrac{12}{\\sqrt{13}}$이다.\n\n원과 한 변이 두 점에서 만나려면 원의 반지름이 변의 두 끝점까지 거리보다 모두 작고, 직선까지 거리보다 커야 한다. 가장 가까운 꼭짓점은 $(4,0)$이므로 각 변에서 두 교점을 만들 조건은\n$\\dfrac{12}{\\sqrt{13}}<r<4$이다.\n\n마름모의 네 변에서 각각 두 교점이 생기므로 전체 교점은 8개이다. 경계에서는 $r=12/\\sqrt{13}$일 때 각 변에 접해 4개이고, $r=4$일 때 축 위 꼭짓점과 변 내부 점이 겹쳐 모두 6개이므로 끝값은 포함하지 않는다.\n\n$r=\\sqrt{k}$를 대입해 제곱하면\n$\\dfrac{144}{13}<k<16$이다.",
-    "solutionImage": "assets/images/20_효천고_2학기_중간_고1_기출/q21-solution.svg"
+    "solutionImage": "assets/images/20_효천고_2학기_중간_고1_기출/q21-solution.svg",
+    "questionUid": "qid_v1_6153e122a5e9b42e16cf1de4a069b8b9374b159f1f431f277477713be6a387a3",
+    "sourceQid": 21,
+    "sourceOrdinal": 21,
+    "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":21,"sourceQid":21,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
+    "difficultyReason": "동심원과 마름모의 교점 개수 및 경계 중복을 따지는 고난도 서술형."
+  
   },
   {
     "id": 22,
@@ -727,7 +874,7 @@ window.questionBank = [
     "problemTypeKey": "PT_ITERATED_COMPOSITION",
     "templateKey": "TPL_ITERATION_PERIOD",
     "crossConceptKeys": [],
-    "conditionKeys": ["COND_NATURAL_NUMBER"],
+    "conditionKeys": ["COND_FUNCTION_BIJECTION","COND_NATURAL_NUMBER","COND_PIECEWISE_DOMAIN_PARTITION"],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
@@ -741,6 +888,13 @@ window.questionBank = [
     "choices": [],
     "tags": ["서술형", "함수"],
     "answer": "6",
-    "solution": "역함수 $g$가 존재하려면 $f$는 $X$에서 $X$로의 일대일대응이어야 한다.\n\n$f(1)=1$, $f(2)=4$이므로 나머지 두 입력 3,4는 남은 출력 2,3을 서로 나누어 가져야 한다.\n$f(3)=3+a$, $f(4)=4+a$이므로 두 출력은 연속한 두 수이다. 이들이 2,3이 되려면 $a=-1$이다.\n\n따라서 $f(1)=1$, $f(2)=4$, $f(3)=2$, $f(4)=3$이고 역함수는\n$g(1)=1$, $g(2)=3$, $g(3)=4$, $g(4)=2$이다.\n\n$g$는 1을 고정하고 $2\\mapsto3\\mapsto4\\mapsto2$로 세 수를 순환시킨다. $2020=3\\cdot673+1$이므로 $g^{2020}=g$이다. 따라서 $g^{2020}(2)=3$, $g^{2020}(3)=4$이다.\n\n구하는 값은 $a+g^{2020}(2)+g^{2020}(3)=-1+3+4=6$이다."
+    "solution": "역함수 $g$가 존재하려면 $f$는 $X$에서 $X$로의 일대일대응이어야 한다.\n\n$f(1)=1$, $f(2)=4$이므로 나머지 두 입력 3,4는 남은 출력 2,3을 서로 나누어 가져야 한다.\n$f(3)=3+a$, $f(4)=4+a$이므로 두 출력은 연속한 두 수이다. 이들이 2,3이 되려면 $a=-1$이다.\n\n따라서 $f(1)=1$, $f(2)=4$, $f(3)=2$, $f(4)=3$이고 역함수는\n$g(1)=1$, $g(2)=3$, $g(3)=4$, $g(4)=2$이다.\n\n$g$는 1을 고정하고 $2\\mapsto3\\mapsto4\\mapsto2$로 세 수를 순환시킨다. $2020=3\\cdot673+1$이므로 $g^{2020}=g$이다. 따라서 $g^{2020}(2)=3$, $g^{2020}(3)=4$이다.\n\n구하는 값은 $a+g^{2020}(2)+g^{2020}(3)=-1+3+4=6$이다.",
+    "questionUid": "qid_v1_f83d8ca07e6f4e62e4a9c8b7a8b767b23efee763aca9f5e793ce63bbb1ea8644",
+    "sourceQid": 22,
+    "sourceOrdinal": 22,
+    "sourceArchiveFile": "original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js",
+    "provenance": {"sourceId":"2020|효천고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_효천고_2학기_중간_고1_기출.js","sourceOrdinal":22,"sourceQid":22,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_효천고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"37F9D2300421BFA6BBB6A70AFD18A96B482EDD3257CC61EA93EEE3D7B50C92A0"},
+    "difficultyReason": "역순열의 주기와 큰 합성 횟수를 처리하는 서술형."
+  
   }
 ];

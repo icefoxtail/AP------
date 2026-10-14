@@ -34,13 +34,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 1,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 하: 정의나 기본 성질을 곧바로 적용하는 사고가 중심이다. 문제은행 difficultyBucket 1: 풀이가 직접 읽기나 대입 한 번으로 끝난다. 현재 풀이 근거: 항등함수이므로 $f(3)=3$이다. 조건 $f(3)=g(1)$에서 상수함수 $g$의 값은 항상 $3$임을 알 수 있다. 따라서 $f(5)=5$, $g(5)=3$이므로 $f(5)+g(5)=5+3=8$이다. 정답은 ①이다.",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_SPECIAL_FUNCTION_PROPERTIES",
     "templateKey": "TPL_SPECIAL_FUNCTION_DIRECT",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "conditionKeys": ["COND_FUNCTION_TYPE_RESTRICTION","COND_FUNCTION_VALUE_CONSTRAINT"],
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_0f62c75a0ddae429bb2df77405d5691d8288b4097c5d8f77d943c9600b0e5ffb",
+    "sourceQid": 1,
+    "sourceOrdinal": 1,
+    "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":1,"sourceQid":1,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+  
   },
   {
     "id": 2,
@@ -75,13 +82,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 함수는 정의역의 각 원소에 공역의 원소가 하나씩 대응해야 한다. $X$의 원소를 각각 대입해 값이 모두 $Y$에 속하는지 확인한다. ① $x=-1,0,1,2$에서 값은 $0,-1,0,3$이다. 이 중 $-1 otin Y$이므로 $Y$로의 함수가 아니다. ② 값은…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_FUNCTION_DEFINITION_JUDGMENT",
     "templateKey": "TPL_FUNCTION_JUDGMENT_MAPPING",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_06dd571f9799c49ccb8e2c231dd626ec079a05cdb36d3f88a6a9b93399f7ba73",
+    "sourceQid": 2,
+    "sourceOrdinal": 2,
+    "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":2,"sourceQid":2,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+  
   },
   {
     "id": 3,
@@ -116,13 +130,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: $f^{-1}(1)=3$은 $f(3)=1$이라는 뜻이다. $f(x)=ax+b$에 주어진 두 조건을 대입한다. $f(-1)=-7$에서 $-a+b=-7$, $f(3)=1$에서 $3a+b=1$이다. 두 식을 빼면 $4a=8$이므로 $a=2$이다. $-2+b=-7$이므로…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_INVERSE_VALUE",
     "templateKey": "TPL_INVERSE_FUNCTION_FORM",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "conditionKeys": ["COND_FUNCTION_VALUE_CONSTRAINT"],
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_14038d2041723cdb8cea159f25c2b1d08044e03bbb728e54355c1af4685b4838",
+    "sourceQid": 3,
+    "sourceOrdinal": 3,
+    "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":3,"sourceQid":3,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+  
   },
   {
     "id": 4,
@@ -157,15 +178,22 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 제곱근 안의 값이 음이 아니어야 하므로 $1-x\\ge0$이고, 정의역은 $x\\le1$이다. 따라서 $a=1$이다. $x\\le1$에서 $\\sqrt{1-x}\\ge0$이므로 $y=-\\sqrt{1-x}-3\\le-3$이다. $x=1$에서 실제로 $y=-3$을 가지므로 치역은…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+    "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_DIRECT",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_RANGE"],
     "integrationPattern": "SEQUENTIAL",
     "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q04-solution.svg",
-    "solutionImageAlt": "무리함수 그래프: x≤1이고 끝점 (1,−3), 치역은 y≤−3."
+    "solutionImageAlt": "무리함수 그래프: x≤1이고 끝점 (1,−3), 치역은 y≤−3.",
+    "questionUid": "qid_v1_5e2cbbbc5e0984b65fb5e26eb0b4225f490674f41bdd9de7cb0630de96b11cd1",
+    "sourceQid": 4,
+    "sourceOrdinal": 4,
+    "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":4,"sourceQid":4,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+  
 },
   {
     "id": 5,
@@ -200,13 +228,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 자연수는 양의 정수이므로 $x,y,z\\ge1$이다. $x=1+x'$, $y=1+y'$, $z=1+z'$로 두면 $x',y',z'$는 음이 아닌 정수이고 $5x'+y'+3z'\\le6$이다. $z'=0$이면 $x'=0$일 때 $y'=0,1,\\ldots,6$의 7가지,…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
     "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "conditionKeys": ["COND_NATURAL_NUMBER","COND_RANGE"],
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_f274039ff5d25c9592d044ab2997353416e678fa5d234c35a97a0246ed43b0b3",
+    "sourceQid": 5,
+    "sourceOrdinal": 5,
+    "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":5,"sourceQid":5,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+  
   },
   {
     "id": 6,
@@ -241,13 +276,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 여학생 3명을 한 묶음으로 보면 이 묶음과 남학생 4명, 모두 5개의 대상을 한 줄로 세운다. 이 순서는 $5!$가지이다. 묶음 안에서 여학생 3명이 서는 순서는 $3!$가지이므로 곱의 법칙에 따라 $5!\\times3!=120\\times6=720$이다. 정답은 ②이다.",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
     "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "conditionKeys": ["COND_CONSECUTIVE_GROUPING"],
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_c3de93b785db243ee15d1289fe4705e48c91e74d3bfd1b547d567a99de145a55",
+    "sourceQid": 6,
+    "sourceOrdinal": 6,
+    "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":6,"sourceQid":6,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+  
   },
   {
     "id": 7,
@@ -282,13 +324,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 2: 표준적인 연속 적용이 필요하지만 별도 경우 분기는 없다. 현재 풀이 근거: 남학생을 $k$명 뽑으면 여학생은 $5-k$명 뽑는다. 남학생은 3명 중, 여학생은 5명 중에서 뽑고 적어도 남학생 1명과 여학생 2명이 있어야 하므로 $k=1,2,3$이다. $k=1$: $\\binom31\\binom54=3\\cdot5=15$가지. $k=2$:…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
     "templateKey": "TPL_COMBINATION_SELECTION",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "conditionKeys": ["COND_MINIMUM_CATEGORY_COUNTS"],
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_a69ed1dfc1d3b154301c33ee528ad1ba29492918eeb8e17d710efee8c81c35bd",
+    "sourceQid": 7,
+    "sourceOrdinal": 7,
+    "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":7,"sourceQid":7,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+  
   },
   {
     "id": 8,
@@ -323,13 +372,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 경계 $x=-2$에서 식은 이어진다. $x -2$에서는 $f(x)=(3+a)x+2a-1$이다. 두 기울기가 같은 부호이고 $0$이 아니면 그래프 전체가 한 방향으로 엄격히 변한다. 또 양쪽 끝에서 함수값이 각각 서로 반대 방향으로 무한히 커지거나 작아지므로 치역은 실수…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
     "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "conditionKeys": ["COND_FUNCTION_BIJECTION","COND_INTEGER"],
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_078b62c1fcea2215ff6d762bbdfe37bf51b962e6d588d6d89080a0cb8cf656e6",
+    "sourceQid": 8,
+    "sourceOrdinal": 8,
+    "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":8,"sourceQid":8,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+  
   },
   {
     "id": 9,
@@ -366,13 +422,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 그림에서 $y=f(x)$와 $y=x$의 점선 대응을 읽으면 $f(c)=b$이고 $f(d)=c$이다. 따라서 $f^{-1}(b)=c$, 이어서 $f^{-1}(c)=d$이다. 그러므로 $(f^{-1}\\circ f^{-1})(b)=d$이고 정답은 ④이다.",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_INVERSE_GRAPH",
     "templateKey": "TPL_INVERSE_GRAPH_GEOMETRY",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "conditionKeys": ["COND_FUNCTION_BIJECTION"],
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_dbbc3661d66979f74644112e660e90cd4dbebf3c9a24fd102579374fec10f49c",
+    "sourceQid": 9,
+    "sourceOrdinal": 9,
+    "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":9,"sourceQid":9,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePage":3}
+  
   },
   {
     "id": 10,
@@ -409,13 +472,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 그림의 대응은 $f(1)=3$, $f(2)=1$, $f(3)=2$이다. 따라서 3에서 시작하면 $3\\to2\\to1\\to3\\to2\\to1\\to\\cdots$ 의 주기 3이 반복된다. $150$은 3의 배수이므로 $f^{150}(3)=3$이다. $200=3\\cdot66+2$이므로…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_COMPOSITION_EVALUATION",
     "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "conditionKeys": ["COND_ITERATION_COUNT"],
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_a81c6b30bb61d2fdc3029682127047f354a7c4e7237c61d5f4db4b0d833f80ae",
+    "sourceQid": 10,
+    "sourceOrdinal": 10,
+    "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":10,"sourceQid":10,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePage":3}
+  
   },
   {
     "id": 11,
@@ -450,6 +520,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: $\\dfrac{2x+5}{x-1}=2+\\dfrac7{x-1}$이다. $x=8$이면 $y=3$이므로 ①은 참이고, 점근선은 $x=1$, $y=2$라서 ②도 참이다. $y=2+\\dfrac7{x-1}$의 값은 $2$가 될 수 없으므로 ④도 참이다. ⑤의 함수는…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
@@ -458,7 +529,13 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "유리함수 그래프: 점근선 x=1, y=2. 0<x<1에서 그래프는 x축 아래에 있다."
+    "solutionImageAlt": "유리함수 그래프: 점근선 x=1, y=2. 0<x<1에서 그래프는 x축 아래에 있다.",
+    "questionUid": "qid_v1_d98584574053fd83433eec076740afdd6f11fa824903118f3fa0afac10ad35ff",
+    "sourceQid": 11,
+    "sourceOrdinal": 11,
+    "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":11,"sourceQid":11,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+  
 },
   {
     "id": 12,
@@ -495,13 +572,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: 유리함수 그래프의 수직점근선은 $x=1$이므로 $-a=1$, 즉 $a=-1$이다. 수평점근선은 $y=6$이므로 $b=6$이다. $y$절편이 3이어서 $c/a=3$, 따라서 $c=-3$이다. 이 값을 $y=\\sqrt{cx+b}+a$에 대입하면…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_17b47e6adefe974473c086b35c2296580751108455f30e71622a3ec271266ca3",
+    "sourceQid": 12,
+    "sourceOrdinal": 12,
+    "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":12,"sourceQid":12,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePage":3}
+  
   },
   {
     "id": 13,
@@ -536,13 +620,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 중: 익숙한 개념을 자료와 연결하고 후속 판단까지 이어야 한다. 문제은행 difficultyBucket 3: 둘 이상의 연결 판단을 하되 분기·경계 구조는 제한적이다. 현재 풀이 근거: 현민이가 음료와 케이크를 하나씩 고르는 방법은 $n\\cdot3$가지이다. 정현이는 현민이와 다른 것을 골라야 하므로 음료는 $n-1$가지, 케이크는 2가지이다. 따라서 전체 경우의 수는 $n\\cdot3\\cdot(n-1)\\cdot2=180$이다. $n(n-1)=30$이고 자연수",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
     "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "conditionKeys": ["COND_DISTINCT_CATEGORY_SELECTION","COND_NATURAL_NUMBER"],
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_007b4d0c01e1225c5456a2ada63d9e9c5e9327849f33e80f2ab0bfa9eead1d67",
+    "sourceQid": 13,
+    "sourceOrdinal": 13,
+    "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":13,"sourceQid":13,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+  
   },
   {
     "id": 14,
@@ -577,13 +668,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: 100원 동전 개수는 0~4개, 500원 동전도 0~4개, 1000원 지폐는 0개 또는 1개를 쓸 수 있다. 아무것도 쓰지 않는 한 경우를 빼면 지불 방법 수는 $a=5\\cdot5\\cdot2-1=49$이다. 금액을 100원 단위로 쓰면 $i+5j+10k$이고 $0\\le…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
     "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "conditionKeys": ["COND_NONEMPTY_SELECTION"],
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_4bcde409452eccb629438d357fb8ff128d7319beba7b07e59d28d8be8f633a88",
+    "sourceQid": 14,
+    "sourceOrdinal": 14,
+    "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":14,"sourceQid":14,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+  
   },
   {
     "id": 15,
@@ -618,13 +716,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: 선택한 세 숫자의 합이 3의 배수이려면 각 수를 3으로 나눈 나머지가 0, 1, 2에서 하나씩 나와야 한다. 나머지 0인 수는 0, 6이고, 나머지 1은 4, 나머지 2는 2, 8이다. 세 숫자 조합은 $2\\cdot1\\cdot2=4$개이다. 각 조합의 배열은 6개이지만,…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
     "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "conditionKeys": ["COND_DISTINCT_DIGITS","COND_NONZERO","COND_DIVISIBILITY"],
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_e854050f9f1e5d0130574a340bd02b12bb9fb24580b4dae1ccfa3f29d9bc3685",
+    "sourceQid": 15,
+    "sourceOrdinal": 15,
+    "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":15,"sourceQid":15,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+  
   },
   {
     "id": 16,
@@ -659,15 +764,22 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 5: 여러 구간·경계·경우를 맞춰 전체 구조를 종합해야 한다. 현재 풀이 근거: $x\\le4$인 부분의 치역은 $[a,\\infty)$이다. $x>4$인 부분은 $1+\\dfrac4{x-3}$이므로 치역은 $(1,5)$이다. 전체 치역이 $(1,\\infty)$가 되려면 첫 부분이 $[5,\\infty)$를 채워야 하므로 $a=5$이다. 두 치역은 겹치지 않아…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
     "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_RANGE","COND_FUNCTION_INJECTIVE","COND_PIECEWISE_DOMAIN_PARTITION"],
     "integrationPattern": "SEQUENTIAL",
     "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "두 구간 함수의 그래프: x=4에서 (4,5) 포함, 치역은 [5,∞)와 (1,5)."
+    "solutionImageAlt": "두 구간 함수의 그래프: x=4에서 (4,5) 포함, 치역은 [5,∞)와 (1,5).",
+    "questionUid": "qid_v1_6e3deda17460b0da37b0227ab9bc507182ec429e83f2e487730bb77e8582a797",
+    "sourceQid": 16,
+    "sourceOrdinal": 16,
+    "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":16,"sourceQid":16,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+  
 },
   {
     "id": 17,
@@ -702,13 +814,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 5: 여러 구간·경계·경우를 맞춰 전체 구조를 종합해야 한다. 현재 풀이 근거: ㄱ. $c=f^{-1}(1)$이라 하자. $f(2)=2$이면 $f^{-1}(2)=2$이다. 원래 식에 $(a,b)=(2,1)$을 넣으면 $2=2c$이므로 $c=1$이다. $(a,b)=(1,1)$을 넣으면 $f(1)=c^2=1$이다. 따라서 ㄱ은 거짓이다. ㄴ. $a=b$를…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
+    "templateKey": "TPL_FUNCTIONAL_EQUATION_SYMMETRY",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "FUNCTIONAL_RELATION"
+    "conditionKeys": ["COND_FUNCTION_BIJECTION","COND_UNIVERSAL_INPUTS"],
+    "integrationPattern": "INTERDEPENDENT",
+    "questionUid": "qid_v1_e1187cace30c22ecb2298d1d31deb2b61a95919c7199734f65b23c982dc12562",
+    "sourceQid": 17,
+    "sourceOrdinal": 17,
+    "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":17,"sourceQid":17,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+  
   },
   {
     "id": 18,
@@ -743,13 +862,19 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: $f(-2)<f(-1)<f(0)<f(1)<f(2)$이므로 가운데 다섯 함수값은 $X$에서 서로 다른 원소 다섯 개를 고른 뒤 작은 순서로 놓은 것이다. 따라서 그 선택은 $\\binom75=21$가지이다. 양 끝의 함수값은 $f(-3)=u$, $f(3)=-u$로 정해진다.…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
+    "crossConceptKeys": ["CC_COMBINATORICS_COUNTING"],
+    "conditionKeys": ["COND_STRICT_MONOTONE_VALUES","COND_ENDPOINT_SUM_ZERO"],
     "integrationPattern": "SEQUENTIAL",
-    "problemTypeKey": null,
-    "templateKey": null
+    "problemTypeKey": "PT_FUNCTION_COUNTING",
+    "templateKey": "TPL_MONOTONE_FUNCTION_COUNT",
+    "questionUid": "qid_v1_ecc58b57bc90bc51721e723e43b0fa1b7e7e8017806523cabdb383159556b93c",
+    "sourceQid": 18,
+    "sourceOrdinal": 18,
+    "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":18,"sourceQid":18,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
   },
   {
     "id": 19,
@@ -778,13 +903,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 5: 여러 구간·경계·경우를 맞춰 전체 구조를 종합해야 한다. 현재 풀이 근거: $f(x)=x+a$이므로 $f(2)=a+2$이다. $a+2\\ge a$이므로 $(g\\circ f)(2)=g(a+2)=(a+2)^2$이다. 이제 $g(3)$을 $a$의 범위에 따라 나눈다. 첫째, $a\\le3$이면 $3\\ge a$이므로 $g(3)=3^2=9$, 따라서…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
     "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH"
+    "conditionKeys": ["COND_PIECEWISE_DOMAIN_PARTITION"],
+    "integrationPattern": "CASE_BRANCH",
+    "questionUid": "qid_v1_f77bf2d0b68da23f8549bf4bbaec8466d0a37fe51916fe922278a8aab2b96065",
+    "sourceQid": 19,
+    "sourceOrdinal": 19,
+    "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":19,"sourceQid":19,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+  
   },
   {
     "id": 20,
@@ -807,21 +939,28 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "layoutTag": "grid",
     "wide": false,
-    "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
-    "subUnit": "무리함수의 뜻과 계산",
+    "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+    "subUnit": "무리함수의 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 5: 여러 구간·경계·경우를 맞춰 전체 구조를 종합해야 한다. 현재 풀이 근거: $g(x)=\\sqrt{x-k}-k$의 정의역은 $x\\ge k$이다. $f(x)=3+\\dfrac4{x-2}$는 $x 2$에서 각각 감소하고, $g$는 정의역에서 증가한다. 따라서 각 가지에서 $f(x)-g(x)$는 감소한다. 먼저 $x>2$인 오른쪽 가지를 본다.…",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [],
-    "conditionKeys": [],
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+    "crossConceptKeys": ["CC_RATIONAL_RADICAL_GRAPH_INTERSECTION"],
+    "conditionKeys": ["COND_RANGE","COND_NONZERO"],
     "integrationPattern": "SEQUENTIAL",
     "solutionImage": "assets/images/19_팔마고_2학기_기말_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "k=0인 대표 그래프에서 두 함수의 두 교점을 보이고, 일반 k의 범위는 해설의 단조성 분석으로 구한다."
+    "solutionImageAlt": "k=0인 대표 그래프에서 두 함수의 두 교점을 보이고, 일반 k의 범위는 해설의 단조성 분석으로 구한다.",
+    "questionUid": "qid_v1_86031550ca03f8dfe935dac6f44fbd362f33b5007435acf85246cf66d73d3344",
+    "sourceQid": 20,
+    "sourceOrdinal": 20,
+    "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":20,"sourceQid":20,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+  
 },
   {
     "id": 21,
@@ -850,12 +989,19 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
+    "difficultyReason": "학습용 level 상: 복수 조건·표현을 조정해 가능한 구조를 종합적으로 결정해야 한다. 문제은행 difficultyBucket 4: 조건 결합, 분기, 또는 배열·선택 집계가 풀이의 핵심 부담이다. 현재 풀이 근거: 천의 자리는 짝수 $2,4,6$ 중 하나이므로 3가지이다. 천의 자리가 짝수이므로 백의 자리는 홀수 $1,3,5$ 중 하나여야 한다. 따라서 천의 자리와 백의 자리의 선택은 $3\\cdot3$가지이다. 이제 십의 자리와 일의 자리를 센다. 천의 자리와 백의 자리에서 숫자 하나씩",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_DISTINCT_DIGITS","COND_PARITY_POSITION","COND_NO_ADJACENT_EVEN"],
     "integrationPattern": "SEQUENTIAL",
     "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
-    "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT"
+    "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+    "questionUid": "qid_v1_fabfbd73a57f8ef41fc49f1ab3a515ff6efd4e19131a9de9a458912f9fde2bd4",
+    "sourceQid": 21,
+    "sourceOrdinal": 21,
+    "sourceArchiveFile": "original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+    "provenance": {"sourceId":"2019|팔마고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js","sourceOrdinal":21,"sourceQid":21,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_팔마고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json"}
+  
   }
 ];

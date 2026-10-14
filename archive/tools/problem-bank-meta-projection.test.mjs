@@ -35,6 +35,65 @@ const args = () => ({
   gradeCourseAllowlist: [{ grade: '고2', curriculumKey: '2015', courseKey: '수학I' }],
   scopeParents: [scopeParent()], canonicalParents: [canonicalParent()],
 });
+const reviewedH1Args = (packId = 'H1_FOUNDATION', packVersion = '1.0.0') => {
+  const input = args();
+  const row = input.meta;
+  const fieldsReviewed = [
+    'curriculum', 'standardCourse', 'standardUnitKey', 'standardUnit', 'subUnitKey', 'subUnit',
+    'problemTypeKey', 'templateKey', 'crossConceptKeys', 'conditionKeys', 'integrationPattern',
+    'level', 'difficultyBucket', 'nativeL1', 'nativeL2', 'nativeL3', 'nativeL4',
+    'nativeCurriculum', 'nativeTaxonomyPath', 'nativeTaxonomyAuthority', 'rpmMapping',
+    'registrationPackId', 'registrationPackVersion', 'sourceJsSha256', 'difficultyConfidence', 'difficultyReason', 'classificationEvidence',
+  ];
+  const witness = (role, char) => ({
+    role, status: 'PASS', reviewerIdentity: role + '-reviewer', ref: role + '.json',
+    sha256: char.repeat(64), artifactRawSha256: char.repeat(64), sourceJsSha256: row.sourceJsSha256, questionUid,
+    sourceFingerprint: row.sourceFingerprint, contentFingerprint: row.contentFingerprint, fieldsReviewed,
+  });
+  row.metadataStatus = 'approved_exam_meta_source';
+  row.curriculum = '2015';
+  row.metadataRevision = 'meta-foundation:H1_ORIGINAL_SOURCE@1.0.0:reviewed-v1';
+  row.reviewStatus = 'reviewed_pass';
+  row.metaFoundationStatus = 'ACTIVE';
+  row.registrationPackId = 'H1_ORIGINAL_SOURCE';
+  row.registrationPackVersion = '1.0.0';
+  row.catalogSourceJsSha256 = 'e'.repeat(64);
+  row.fieldStatus.standardUnit = 'manual_review_pending';
+  row.fieldStatus.subUnit = 'manual_review_pending';
+  row.approvalEvidence = [];
+  row.sourceJsSha256 = 'c'.repeat(64);
+  row.reviewedOriginalMetaSourceJsSha256 = row.sourceJsSha256;
+  row.reviewedOriginalMetaManifestPath = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/h1-fast-lane-c-20261013.original.json';
+  row.reviewedOriginalMetaManifestSha256 = 'd'.repeat(64);
+  row.problemTypeKey = 'PT_TEST_H1';
+  row.templateKey = 'TPL_TEST_H1';
+  row.crossConceptKeys = ['CC_TEST_H1'];
+  row.conditionKeys = ['COND_TEST_H1'];
+  row.integrationPattern = 'CASE_BRANCH';
+  row.level = '중';
+  row.difficultyBucket = 3;
+  row.difficultyConfidence = 'high';
+  row.nativeL1 = '함수'; row.nativeL2 = '지수함수'; row.nativeL3 = '그래프 해석'; row.nativeL4 = '조건별 교점 판단';
+  row.nativeTaxonomyPath = ['H15-C-01', 'H15-C-01-GRAPH', 'PT_TEST_H1', 'TPL_TEST_H1'];
+  row.nativeTaxonomyAuthority = {
+    registrationPackId: 'H1_ORIGINAL_SOURCE', registrationPackVersion: '1.0.0',
+    packId, packVersion, ownerPack: packId, ownerPackVersion: packVersion,
+    taxonomyOwnerPack: packId, taxonomyOwnerPackVersion: packVersion,
+    templateOwnerPack: packId, templateOwnerPackVersion: packVersion,
+    bindingOwnerPack: 'H1_ORIGINAL_SOURCE', bindingOwnerPackVersion: '1.0.0', bindingDisposition: 'SOURCE_EXTENSION_ACTIVE_BINDING',
+    standardUnitKey: row.standardUnitKey, subUnitKey: row.subUnitKey, problemTypeKey: row.problemTypeKey, templateKey: row.templateKey,
+  };
+  row.nativeMetaStatus = 'CONFIRMED';
+  row.classificationEvidence = { positiveCriterion: 'directly uses the target concept', negativeCriterion: 'distinguishes the neighboring concept' };
+  row.rpmMapping = { authority: 'RPM_LOCKED', lockedMasterSha256: 'c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c', status: 'NO_EQUIVALENT_PATH', lockedRowIds: [] };
+  row.reviewedOriginalMetaEvidence = {
+    schemaVersion: 'reviewed-original-exam-meta-v1', manifestPath: row.reviewedOriginalMetaManifestPath,
+    manifestSha256: row.reviewedOriginalMetaManifestSha256, metadataRevision: row.metadataRevision,
+    sourceJsSha256: row.sourceJsSha256, reviewWitnesses: [witness('AUTHOR_META_REVIEW', 'f'), witness('INDEPENDENT_META', '1')],
+  };
+  input.identity.sourceArchiveFile = row.sourceArchiveFile;
+  return input;
+};
 
 test('creates a display-only projection from a source-bound approved core tag and unique canonical parent', () => {
   const result = metaView.createSourceBoundDisplayProjection(args());
@@ -107,14 +166,100 @@ test('original projection consumes only typed display-only metadata and does not
   assert.equal(view.subUnit, '지수함수의 활용');
   assert.equal(view.rpmL1, '지수함수와 로그함수');
   assert.equal(view.rpmL2, '지수함수');
-  assert.equal(view.metaStatus.rpmL1, 'CONFIRMED');
-  assert.equal(view.metaStatus.rpmL2, 'CONFIRMED');
+  assert.equal(view.metaStatus.rpmL1, 'RECORDED');
+  assert.equal(view.metaStatus.rpmL2, 'RECORDED');
   assert.equal(view.problemTypeKey, null);
   assert.equal(view.templateKey, null);
   assert.equal(view.metaCompleteness, 'EVIDENCE_DEBT');
   assert.equal(view.verifiedEligible, false);
   assert.deepEqual(view.canonicalAssignmentReasons, ['canonical_parent_missing']);
   assert.equal(view.assignmentEvidence, null);
+});
+
+test('projects reviewed original H1 semantics separately from RPM and keeps eligibility evidence distinct', () => {
+  const input = reviewedH1Args();
+  const { projection } = metaView.createSourceBoundDisplayProjection(input);
+  assert.equal(projection.projectionStatus, 'DISPLAY_ONLY_SOURCE_BOUND');
+  assert.equal(projection.nativeL1, '함수');
+  assert.equal(projection.nativeL4, '조건별 교점 판단');
+  assert.equal(projection.problemTypeKey, 'PT_TEST_H1');
+  assert.equal(projection.templateKey, 'TPL_TEST_H1');
+  assert.equal(projection.sourceBinding.sourceJsSha256, input.meta.sourceJsSha256);
+  assert.equal(projection.sourceBinding.catalogSourceJsSha256, input.meta.catalogSourceJsSha256);
+  assert.deepEqual(projection.rpmMapping, input.meta.rpmMapping);
+  assert.equal('rpmL1' in projection, false);
+  const row = {
+    questionUid, sourceFile, sourceOrdinal: 1, sourceKind: 'original',
+    metaProjection: projection, currentSourceJsSha256: input.meta.catalogSourceJsSha256,
+    metadataAssignmentEvidence: { metadataRevision: input.meta.metadataRevision },
+    rpmL1: null, rpmL2: null, rpmL3: null, rpmL4: null,
+  };
+  const [view] = metaView.buildIndex([row], []);
+  assert.equal(view.problemTypeKey, 'PT_TEST_H1');
+  assert.equal(view.templateKey, 'TPL_TEST_H1');
+  assert.equal(view.crossConceptKeys[0], 'CC_TEST_H1');
+  assert.equal(view.conditionKeys[0], 'COND_TEST_H1');
+  assert.equal(view.integrationPattern, 'CASE_BRANCH');
+  assert.equal(view.difficultyBucket, 3);
+  assert.equal(view.nativeL1, '함수');
+  assert.equal(view.nativeCurriculum, '2015');
+  assert.equal(view.nativeL4, '조건별 교점 판단');
+  assert.equal(view.rpmL1, null);
+  assert.equal(view.rpmL2, null);
+  assert.equal(view.rpmMapping.authority, 'RPM_LOCKED');
+  assert.equal(view.verifiedEligible, false);
+  assert.equal(metaView.query([view], {
+    integrationPattern: 'CASE_BRANCH', nativeL1: '함수', nativeL2: '지수함수', nativeL3: '그래프 해석',
+    nativeL4: '조건별 교점 판단', level: '중', nativeCurriculum: '2015',
+    problemTypeKey: 'PT_TEST_H1', templateKey: 'TPL_TEST_H1',
+    crossConceptKeys: ['CC_TEST_H1'], conditionKeys: ['COND_TEST_H1'],
+  }).length, 1);
+  const [staleView] = metaView.buildIndex([{ ...row, currentSourceJsSha256: '9'.repeat(64) }], []);
+  assert.equal(staleView.metaProjectionStatus, 'SOURCE_META_STALE_OR_UNAVAILABLE');
+  assert.equal(staleView.problemTypeKey, null);
+  assert.equal(staleView.nativeL1, null);
+  assert.equal(staleView.metaStatus.nativeL1, 'STALE');
+  assert.equal(staleView.directSelectable, true);
+  const [unavailableView] = metaView.buildIndex([{
+    questionUid, sourceFile, sourceOrdinal: 1, sourceKind: 'original',
+    metadataAssignmentEvidence: { metadataRevision: 'meta-foundation:H1_ORIGINAL_SOURCE@1.0.0:reviewed-v1' },
+    currentSourceJsSha256: input.meta.sourceJsSha256,
+    problemTypeKey: 'PT_TEST_H1', templateKey: 'TPL_TEST_H1', nativeL1: '함수',
+  }], []);
+  assert.equal(unavailableView.problemTypeKey, null);
+  assert.equal(unavailableView.metaProjectionStatus, 'SOURCE_META_STALE_OR_UNAVAILABLE');
+});
+
+test('fails closed when either original H1 Meta witness is absent, stale, or lacks field coverage', () => {
+  const absent = reviewedH1Args();
+  absent.meta.reviewedOriginalMetaEvidence.reviewWitnesses.pop();
+  assert.equal(metaView.createSourceBoundDisplayProjection(absent).reason, 'DISPLAY_PROJECTION_CORE_APPROVAL_MISSING');
+  const stale = reviewedH1Args();
+  stale.meta.reviewedOriginalMetaEvidence.reviewWitnesses[1].sourceFingerprint = '9'.repeat(64);
+  assert.equal(metaView.createSourceBoundDisplayProjection(stale).reason, 'DISPLAY_PROJECTION_CORE_APPROVAL_MISSING');
+  const wrongSourceBytes = reviewedH1Args();
+  wrongSourceBytes.meta.reviewedOriginalMetaEvidence.reviewWitnesses[0].sourceJsSha256 = '9'.repeat(64);
+  assert.equal(metaView.createSourceBoundDisplayProjection(wrongSourceBytes).reason, 'DISPLAY_PROJECTION_CORE_APPROVAL_MISSING');
+  const incomplete = reviewedH1Args();
+  incomplete.meta.reviewedOriginalMetaEvidence.reviewWitnesses.forEach(witness => { witness.fieldsReviewed = ['problemTypeKey']; });
+  assert.equal(metaView.createSourceBoundDisplayProjection(incomplete).reason, 'DISPLAY_PROJECTION_CORE_APPROVAL_MISSING');
+  const oldR1 = reviewedH1Args();
+  oldR1.meta.reviewedOriginalMetaEvidence.reviewWitnesses[0].role = 'R1_META';
+  oldR1.meta.reviewedOriginalMetaEvidence.reviewWitnesses[0].status = 'REUSE_SOURCE_META_REVIEW';
+  assert.equal(metaView.createSourceBoundDisplayProjection(oldR1).reason, 'DISPLAY_PROJECTION_CORE_APPROVAL_MISSING');
+});
+
+test('accepts an exact active non-H1 authority pack without relabeling its path as RPM', () => {
+  const input = reviewedH1Args('MIDDLE1', '1.0.1');
+  const { projection } = metaView.createSourceBoundDisplayProjection(input);
+  assert.equal(projection.nativeTaxonomyAuthority.registrationPackId, 'H1_ORIGINAL_SOURCE');
+  assert.equal(projection.nativeTaxonomyAuthority.packId, 'MIDDLE1');
+  assert.equal(projection.nativeTaxonomyAuthority.ownerPack, 'MIDDLE1');
+  assert.equal(projection.nativeTaxonomyAuthority.ownerPackVersion, '1.0.1');
+  assert.equal('L1' in projection, false);
+  assert.equal('rpmL1' in projection, false);
+  const wrongVersion = reviewedH1Args('MIDDLE1', '1.0.0');
+  assert.equal(metaView.createSourceBoundDisplayProjection(wrongVersion).reason, 'DISPLAY_PROJECTION_CORE_APPROVAL_MISSING');
 });
 
 test('ignores untyped or unavailable nested projections', () => {
@@ -185,5 +330,17 @@ test('projects all twenty published Maesan Math I core tags for search without c
   assert.match(html, /<select id="subUnitKey">/);
   assert.match(html, /f\.standardUnitKey=el\('standardUnitKey'\)\.value/);
   assert.match(html, /f\.subUnitKey=el\('subUnitKey'\)\.value/);
+  assert.match(html, /id="problemTypeKey"/);
+  assert.match(html, /id="templateKey"/);
+  assert.match(html, /id="crossConceptKey"/);
+  assert.match(html, /id="conditionKey"/);
+  assert.match(html, /id="integrationPattern"/);
+  assert.match(html, /id="nativeCurriculum"/);
+  assert.match(html, /id="level"/);
+  assert.match(html, /id="rpmL1"/);
+  assert.match(html, /원본 \$\{row\.nativeCurriculum/);
+  assert.match(html, /원본 Meta 분류가 현재 자료와 연결되지 않아 표시되지 않습니다/);
+  assert.match(html, /row\.nativeTaxonomyAuthority\?\.registrationPackId/);
+  assert.match(html, /id="nativeL1"/);
   assert.match(html, /refreshCoreMetaKeyOptions/);
 });
