@@ -68,7 +68,8 @@ window.questionBank = [
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
-      "기출"
+      "기출",
+      "표"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -248,7 +249,8 @@ window.questionBank = [
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
-      "기출"
+      "기출",
+      "표"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -266,7 +268,7 @@ window.questionBank = [
     "unitInferStatus": "content_keyword",
     "sourceDisplayNoLabel": "6",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -299,7 +301,8 @@ window.questionBank = [
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
-      "기출"
+      "기출",
+      "그래프"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -348,7 +351,8 @@ window.questionBank = [
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
-      "기출"
+      "기출",
+      "그래프"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -411,7 +415,7 @@ window.questionBank = [
     "unitInferStatus": "content_keyword",
     "sourceDisplayNoLabel": "9",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -456,7 +460,7 @@ window.questionBank = [
     "unitInferStatus": "content_keyword",
     "sourceDisplayNoLabel": "10",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -490,7 +494,7 @@ window.questionBank = [
       "OCR-based content fill; verify against source image before live archive promotion."
     ],
     "level": "중",
-    "category": "통계적 추정",
+    "category": "확률분포",
     "originalCategory": "통계적 추정",
     "standardUnitKey": "H15-PS-05",
     "standardUnit": "확률분포",
@@ -535,7 +539,7 @@ window.questionBank = [
       "OCR-based content fill; verify against source image before live archive promotion."
     ],
     "level": "상",
-    "category": "통계적 추정",
+    "category": "확률분포",
     "originalCategory": "통계적 추정",
     "standardUnitKey": "H15-PS-05",
     "standardUnit": "확률분포",
@@ -577,7 +581,9 @@ window.questionBank = [
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "round13_continue_to_zero_completed",
     "tags": [
-      "기출"
+      "기출",
+      "표",
+      "그래프"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -595,7 +601,7 @@ window.questionBank = [
     "unitInferStatus": "term_default",
     "sourceDisplayNoLabel": "13",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -667,7 +673,8 @@ window.questionBank = [
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "meitner_line_ocr_content_filled",
     "tags": [
-      "기출"
+      "기출",
+      "표"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -708,7 +715,8 @@ window.questionBank = [
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "round12_continue_to_zero_resolved",
     "tags": [
-      "기출"
+      "기출",
+      "도형"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -788,7 +796,8 @@ window.questionBank = [
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "round12_continue_to_zero_resolved",
     "tags": [
-      "기출"
+      "기출",
+      "표"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -828,7 +837,8 @@ window.questionBank = [
     "solutionStatus": "solution_rewritten",
     "reviewStatus": "round12_continue_to_zero_resolved",
     "tags": [
-      "기출"
+      "기출",
+      "표"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -847,7 +857,7 @@ window.questionBank = [
     "contentStatus": "round12_reconstructed_from_page_image",
     "sourceDisplayNoLabel": "19",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -887,7 +897,7 @@ window.questionBank = [
     "contentStatus": "round12_reconstructed_from_page_image",
     "sourceDisplayNoLabel": "20",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   }
